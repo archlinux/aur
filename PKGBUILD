@@ -5,7 +5,7 @@
 
 _realname=mutter
 pkgname=$_realname-catalyst
-pkgver=3.22.2+5+gd9fc81e
+pkgver=3.22.2+6+g06f5b6b3e
 pkgrel=1
 pkgdesc="A window manager for GNOME with patches for catalyst compatibility"
 url="https://git.gnome.org/browse/mutter"
@@ -34,16 +34,21 @@ conflicts=('mutter' "gnome-shell>${pkgver:0:6}+999")
 provides=("mutter=${pkgver}")
 groups=('gnome')
 options=('!emptydirs')
-_commit=d9fc81e702a949980323b0f11b6764fcd1599872  # gnome-3-22
+_commit=06f5b6b3e37eb96b91b475b1e57a3f1056ab815a  # gnome-3-22
 source=("git+https://git.gnome.org/browse/mutter#commit=$_commit"
+  "startup-notification.patch"
   "catalyst-workaround.patch"
   "catalyst mutter cogl.patch")
 sha256sums=('SKIP'
+            '5a35ca4794fc361219658d9fae24a3ca21a365f2cb1901702961ac869c759366'
             'cf6c54cf23dc5898ab105d8bde2d60fd3f6671b319ffef12b0584544bfb23655'
             '55079a9daddedc22d9fe4dcfe2e87607345dfafb370f8e7fb6a98c0acae3348a')
 
 prepare() {
   cd "$_realname"
+
+  # https://bugs.archlinux.org/task/51940
+  patch -Np1 -i ../startup-notification.patch
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=741581
   echo "Commenting out call to function with XRRChangeOutputProperty to fix issue with catalyst"
@@ -54,6 +59,11 @@ prepare() {
   echo "Patches applied"
 
   NOCONFIGURE=1 ./autogen.sh
+}
+
+pkgver() {
+  cd "$_realname"
+  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
