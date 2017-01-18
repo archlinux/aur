@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=slingshot-launcher
-pkgver=2.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='The Pantheon Application Launcher'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gnome-menus' 'gtk3' 'json-glib'
          'libgranite.so' 'libswitchboard-2.0.so' 'libwingpanel-2.0.so')
 makedepends=('cmake' 'vala')
 source=("https://launchpad.net/slingshot/loki/${pkgver}/+download/slingshot-launcher-${pkgver}.tar.xz")
-sha256sums=('2281edec0a66f6a971579b8a824f5e664d62de377c1a707934d0ecbdab2a3d2e')
+sha256sums=('1a9e6bba791fe0c4795cecfe4404971813ed6f3930af9be532493d3e1a35e435')
 
 prepare() {
   cd slingshot-launcher-${pkgver}
