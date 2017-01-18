@@ -1,0 +1,18 @@
+pkgbase = cluttermm
+	pkgdesc = C++ wrappers for clutter
+	pkgver = 1.23.1
+	pkgrel = 1
+	url = https://developer.gnome.org/cluttermm/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = mm-common
+	makedepends = git
+	depends = clutter
+	depends = atkmm
+	depends = pangomm
+	source = https://github.com/GNOME/cluttermm/archive/e261355c656ccea39bc7e3851ebc031d0734398c.tar.gz
+	sha256sums = bd09e687fbc627b18f21f700b3d94ec5c37ec8c3f1e97527ea92714e2198d61e
+
+pkgname = cluttermm
+
