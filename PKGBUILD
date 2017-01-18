@@ -42,6 +42,6 @@ build() {
 }
 
 package() {
-  install -D -m755 "${_build_dir}/nheqminer" -t "${pkgdir}/usr/bin/nheqminer_${_flavour}"
+  install -D -m755 "${_build_dir}/nheqminer" "${pkgdir}/usr/bin/nheqminer_${_flavour}"
   install -D -m644 "${pkgname}/LICENSE_MIT" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
