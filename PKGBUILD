@@ -1,29 +1,21 @@
-# Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
+# Maintainer: archlinux.info:tdy
+# Contributor: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=nuvola-app-spotify
-pkgdesc='Spotify integration for Nuvola Player 3.0'
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
-
-license=('BSD')
-
-# template start; name=nuvola-app; version=1.0.1;
-# Template-Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
-
-arch=('any')
-depends=('nuvolaplayer')
-makedepends=('lasem' 'scour')
-sha256sums=('b2c1fa48dd6e1386d883e7c7f05f01f9c222414cf4fd5b0b553fffd5fe14cca8')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz")
-url="https://github.com/tiliado/${pkgname}"
+pkgdesc="Spotify for Nuvola Player 3"
+arch=(any)
+url=https://github.com/tiliado/$pkgname
+license=(BSD)
+depends=(nuvolaplayer flashplayer gst-plugins-ugly gst-plugins-good)
+makedepends=(scour)
+conflicts=($pkgname-git)
+source=(https://github.com/tiliado/$pkgname/archive/$pkgver.tar.gz)
+sha256sums=(ba719eaa61f01bf5a77e3be915b4f50b261e329743ff89c96596d993fb75bdb7)
 
 package() {
-	cd "${pkgname}-${pkgver}"
-
-	# Optimize SVG icons (scour), generate PNG icons (lasem), build and install.
-	make install DEST="${pkgdir}/usr/share/nuvolaplayer3/web_apps"
-
-	# Install all available licenses.
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE*
+  cd $pkgname-$pkgver
+  make DEST="$pkgdir"/usr/share/nuvolaplayer3/web_apps install
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-# template end;
