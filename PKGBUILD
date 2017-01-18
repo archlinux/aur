@@ -1,7 +1,7 @@
 # Maintainer: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
 
 pkgname=tensorflow
-pkgver=0.12.1+1875+g9830ed87d
+pkgver=0.12.1+1975+g21fc5fea0
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
@@ -12,7 +12,7 @@ conflicts=('tensorflow' 'libtensorflow')
 makedepends=('git' 'bazel' 'python-numpy')
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
-_commit=9830ed87d46245a72a9d0c2dce854e6732c5542a
+_commit=21fc5fea096a1d9132090eb9b55cb324eddb2045
 source=("git+https://github.com/tensorflow/tensorflow#commit=$_commit")
 md5sums=('SKIP')
 
@@ -54,6 +54,8 @@ prepare() {
   export TF_ENABLE_XLA=0
   # enable jemalloc support
   export TF_NEED_JEMALLOC=1
+  # set up architecture dependent optimization flags
+  export CC_OPT_FLAGS="-march=native"
 
   # make sure the proxy variables are in all caps, otherwise bazel ignores them
   export HTTP_PROXY=`echo $http_proxy | sed -e 's/\/$//'`
@@ -63,7 +65,7 @@ prepare() {
 build() {
   cd ${srcdir}/tensorflow
   ./configure
-  bazel build -c opt ${_build_opts} --copt=-march=native tensorflow:libtensorflow_c.so
+  bazel build -c opt ${_build_opts} --copt=$(CC_OPT_FLAGS) tensorflow:libtensorflow_c.so
   # copy the built library out of the bazel directory
   cp -f bazel-bin/tensorflow/libtensorflow_c.so .
 }
