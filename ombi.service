@@ -7,7 +7,7 @@ User=ombi
 Group=ombi
 WorkingDirectory=/opt/ombi
 Type=simple
-ExecStart=/usr/bin/mono /opt/ombi/PlexRequests.exe -p 3579
+ExecStart=/usr/bin/mono /opt/ombi/Ombi.exe -p 3579
 Restart=always
 TimeoutStopSec=30
 

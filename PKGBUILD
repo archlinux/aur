@@ -3,7 +3,7 @@
 
 pkgname=ombi
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple automated way for users to request new content for Plex"
 arch=('any')
 url="https://github.com/tidusjar/Ombi"
@@ -17,7 +17,7 @@ source=("https://github.com/tidusjar/Ombi/releases/download/v${pkgver}/Ombi.zip"
         "${pkgname}.sysusers")
 
 sha256sums=('292039ac73e531e0252f095b7a846e46c18307b06fa05c39821fe459a5723c2a'
-            '7848835b38d284625ad9fe6d1a3bf01a233b6b6ebc59d8071daef2e618b16f93'
+            '2407c8183aa48f8666063169dc79d0cbdb99a01b11cdf47c168ce8f2c990d3f8'
             '27704e4b5c5d944b774bf4d180684ff76f157d37ba9c5e39f7d03493962c81c6')
 
 package() {
