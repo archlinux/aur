@@ -4,7 +4,7 @@
 
 pkgname=xf86-input-synaptics-gesturesonly
 _pkgname=xf86-input-synaptics
-pkgver=1.8.3
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Synaptics driver for notebook touchpads"
 arch=('i686' 'x86_64')
@@ -17,14 +17,12 @@ conflicts=('synaptics')
 groups=('xorg-input-drivers')
 options=('!libtool' 'zipman')
 source=("$_pkgname"::"git://anongit.freedesktop.org/xorg/driver/xf86-input-synaptics#tag=$_pkgname-$pkgver"
-        '50-synaptics.conf.patch'
         '14393-gestures-only.patch')
 md5sums=('SKIP'
-         '5ae00aad3e70265defa5bd08da621b5c'
-         '21afe2219d3bf9a628bbae1e4922978e')
+         '8639335e76a1dd50f77ace9fc8fe0975')
 sha256sums=('SKIP'
-            '8c24a04508acfab32b78e8dfbebe589e35f908cc74f1225215eed6fd48c530c3'
-            '781ed57c18b55c3826f5b3be7c966c6d6dadf2234b9e42fb1052150c987172be')
+            'fb08b1b9a3f565e0559587e4dc9450c740279c727f57aff9d571e303c1911892')
+
 
 prepare() {
   cd "$srcdir/$_pkgname"
@@ -38,7 +36,6 @@ build() {
   ./autogen.sh
   ./configure --prefix=/usr --with-xorg-conf-dir=/etc/X11/xorg.conf.d
   make
-  patch conf/50-synaptics.conf < $srcdir/50-synaptics.conf.patch
 }
 package() {
   cd "$srcdir/$_pkgname"

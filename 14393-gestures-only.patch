@@ -1,44 +1,5 @@
-diff --git a/conf/50-synaptics.conf b/conf/50-synaptics.conf
-index aa50456..6c9c7d7 100644
---- a/conf/50-synaptics.conf
-+++ b/conf/50-synaptics.conf
-@@ -15,6 +15,34 @@ Section "InputClass"
- # enabled by default. See the following link for details:
- # http://who-t.blogspot.com/2010/11/how-to-ignore-configuration-errors.html
- #       MatchDevicePath "/dev/input/event*"
-+
-+# Uncomment as desired:
-+#        Option "TapButton1" "1"
-+#        Option "TapButton2" "3"
-+#        Option "TapButton3" "2"
-+#        Option "VertEdgeScroll" "on"
-+#        Option "VertTwoFingerScroll" "on"
-+#        Option "HorizEdgeScroll" "on"
-+#        Option "HorizTwoFingerScroll" "on"
-+#        Option "CircularScrolling" "on"
-+#        Option "CircScrollTrigger" "2"
-+#        Option "EmulateTwoFingerMinZ" "40"
-+#        Option "EmulateTwoFingerMinW" "8"
-+#        Option "CoastingSpeed" "0"
-+
-+# Uncomment as desired:
-+#        Option "TapButton1" "1"
-+#        Option "TapButton2" "3"
-+#        Option "TapButton3" "2"
-+#        Option "VertEdgeScroll" "on"
-+#        Option "VertTwoFingerScroll" "on"
-+#        Option "HorizEdgeScroll" "on"
-+#        Option "HorizTwoFingerScroll" "on"
-+#        Option "CircularScrolling" "on"
-+#        Option "CircScrollTrigger" "2"
-+#        Option "EmulateTwoFingerMinZ" "40"
-+#        Option "EmulateTwoFingerMinW" "8"
-+#        Option "CoastingSpeed" "0"
- EndSection
- 
- Section "InputClass"
 diff --git a/include/synaptics-properties.h b/include/synaptics-properties.h
-index 32ab2e1..91d8160 100644
+index 0f79b64..d74dc2e 100644
 --- a/include/synaptics-properties.h
 +++ b/include/synaptics-properties.h
 @@ -158,4 +158,7 @@
@@ -50,7 +11,7 @@ index 32ab2e1..91d8160 100644
 +
  #endif                          /* _SYNAPTICS_PROPERTIES_H_ */
 diff --git a/man/synaptics.man b/man/synaptics.man
-index 76756be..71ef3ea 100644
+index 4f87b01..1b00e42 100644
 --- a/man/synaptics.man
 +++ b/man/synaptics.man
 @@ -518,6 +518,15 @@ initialized if
@@ -69,19 +30,19 @@ index 76756be..71ef3ea 100644
  
  .SH CONFIGURATION DETAILS
  .SS Area handling
-@@ -907,6 +916,10 @@ disables the button area.
+@@ -905,6 +914,10 @@ disables the button area.
+ 
  32 bit, 8 values, RBL, RBR, RBT, RBB, MBL, MBR, MBT, MBB.
  
- .TP 7
++.TP 7
 +.BI "Synaptics Gestures Only"
 +8 bit (BOOL).
 +
-+.TP 7
+ .TP 7
  .BI "Synaptics Capabilities"
  This read-only property expresses the physical capability of the touchpad,
- most notably whether the touchpad hardware supports multi-finger tapping and
 diff --git a/src/properties.c b/src/properties.c
-index 718d054..6e376f9 100644
+index c776e6c..05c3c2b 100644
 --- a/src/properties.c
 +++ b/src/properties.c
 @@ -95,6 +95,7 @@ Atom prop_secondary_softbutton_areas = 0;
@@ -92,7 +53,7 @@ index 718d054..6e376f9 100644
  
  static Atom
  InitTypedAtom(DeviceIntPtr dev, char *name, Atom type, int format, int nvalues,
-@@ -381,6 +382,10 @@ InitDeviceProperties(InputInfoPtr pInfo)
+@@ -382,6 +383,10 @@ InitDeviceProperties(InputInfoPtr pInfo)
                                         SYNAPTICS_PROP_NOISE_CANCELLATION, 32, 2,
                                         values);
  
@@ -103,7 +64,7 @@ index 718d054..6e376f9 100644
      /* only init product_id property if we actually know them */
      if (priv->id_vendor || priv->id_product) {
          values[0] = priv->id_vendor;
-@@ -814,6 +819,12 @@ SetProperty(DeviceIntPtr dev, Atom property, XIPropertyValuePtr prop,
+@@ -815,6 +820,12 @@ SetProperty(DeviceIntPtr dev, Atom property, XIPropertyValuePtr prop,
          para->hyst_x = hyst[0];
          para->hyst_y = hyst[1];
      }
@@ -117,18 +78,18 @@ index 718d054..6e376f9 100644
          return BadValue;        /* read-only */
      else { /* unknown property */
 diff --git a/src/synaptics.c b/src/synaptics.c
-index 2d49a12..168bdba 100644
+index c7ba9ad..f67e470 100644
 --- a/src/synaptics.c
 +++ b/src/synaptics.c
 @@ -673,6 +673,7 @@ set_default_parameters(InputInfoPtr pInfo)
      pars->tap_move = xf86SetIntOption(opts, "MaxTapMove", tapMove);
-     pars->tap_time_2 = xf86SetIntOption(opts, "MaxDoubleTapTime", 100);
+     pars->tap_time_2 = xf86SetIntOption(opts, "MaxDoubleTapTime", 180);
      pars->click_time = xf86SetIntOption(opts, "ClickTime", 100);
 +    pars->gestures_only = xf86SetBoolOption(opts, "GesturesOnly", pars->gestures_only);
      pars->clickpad = xf86SetBoolOption(opts, "ClickPad", pars->clickpad);       /* Probed */
      if (pars->clickpad)
          pars->has_secondary_buttons = xf86SetBoolOption(opts,
-@@ -3207,7 +3208,7 @@ HandleState(InputInfoPtr pInfo, struct SynapticsHwState *hw, CARD32 now,
+@@ -3138,7 +3139,7 @@ HandleState(InputInfoPtr pInfo, struct SynapticsHwState *hw, CARD32 now,
          buttons |= 1 << (priv->tap_button - 1);
  
      /* Post events */
@@ -138,14 +99,14 @@ index 2d49a12..168bdba 100644
  
      if (priv->mid_emu_state == MBE_LEFT_CLICK) {
 diff --git a/src/synapticsstr.h b/src/synapticsstr.h
-index 8917991..4181407 100644
+index 33524e5..b23ec3c 100644
 --- a/src/synapticsstr.h
 +++ b/src/synapticsstr.h
-@@ -225,6 +225,7 @@ typedef struct _SynapticsParameters {
+@@ -229,6 +229,7 @@ typedef struct _SynapticsParameters {
      int area_left_edge, area_right_edge, area_top_edge, area_bottom_edge;       /* area coordinates absolute */
      int softbutton_areas[4][4]; /* soft button area coordinates, 0 => right, 1 => middle , 2 => secondary right, 3 => secondary middle button */
      int hyst_x, hyst_y;         /* x and y width of hysteresis box */
-+    Bool gestures_only;                /* do not post mouse input events */
- } SynapticsParameters;
++    Bool gestures_only;         /* do not post mouse input events */
  
- struct _SynapticsPrivateRec {
+     int maxDeltaMM;               /* maximum delta movement (vector length) in mm */
+ } SynapticsParameters;
