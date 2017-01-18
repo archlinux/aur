@@ -1,6 +1,6 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=(python-vxi11-git python2-vxi11-git)
-pkgver=0.8.r7.g7cdafd4
+pkgver=0.9.r0.g83fc5b4
 pkgrel=1
 pkgdesc="A Python VXI-11 driver for controlling instruments over Ethernet."
 arch=('any')
