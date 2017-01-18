@@ -2,7 +2,7 @@
 
 pkgname=ciao
 pkgver=82
-pkgrel=1
+pkgrel=2
 pkgdesc="Ciao - Cloud Integrated Advanced Orchestrator"
 arch=('x86_64' 'i686')
 url="https://github.com/01org/ciao"
