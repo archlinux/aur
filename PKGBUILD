@@ -1,7 +1,7 @@
 # Maintainer: Joseph Simone <averagejoey2000 tfwno . gf>
 pkgname=mccgdi
 pkgver="2.0.9"
-pkgrel=5
+pkgrel=6
 pkgdesc="PPD files for Panasonic Printers"
 arch=('x86_64' 'i686')
 url="panasonic.com"
@@ -53,8 +53,8 @@ _RESTORECON=/sbin/restorecon
 _LIB_FILES="L_H0JDJCZAZ_2 L_H0JDJCZAZ"
 for _file in $_LIB_FILES; do
 	cp $srcdir/$pkgname-$pkgver-$arch/lib/$_file.so.1.0.0 $_INSTALL_LIB_PATH/
-	ln -sf $_INSTALL_LIB_PATH/$_file.so.1.0.0 $_INSTALL_LIB_PATH/$_file.so.1
-	ln -sf $_INSTALL_LIB_PATH/$_file.so.1 $_INSTALL_LIB_PATH/$_file.so
+	ln -sf /usr/lib/$_file.so.1.0.0 $_INSTALL_LIB_PATH/$_file.so.1
+	ln -sf /usr/lib/$_file.so.1 $_INSTALL_LIB_PATH/$_file.so
 done
 
 for _file in $_FILTER_PROGRAMS; do
