@@ -1,0 +1,20 @@
+pkgbase = cc-oci-runtime
+	pkgdesc = Intel Clear Containers runtime
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://clearlinux.org
+	arch = x86_64
+	license = GPLv2
+	checkdepends = valgrind
+	makedepends = go
+	makedepends = glib2
+	makedepends = libmnl
+	makedepends = json-glib
+	makedepends = check
+	makedepends = bash-bats
+	makedepends = gcc
+	source = https://github.com/01org/cc-oci-runtime/archive/2.1.0-rc.3.tar.gz
+	sha1sums = a0d3ec7afbdee60623eb2b1edc82f3615c6b767b
+
+pkgname = cc-oci-runtime
+
