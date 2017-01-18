@@ -1,11 +1,15 @@
---- a/lib/pac_conn	2016-08-04 21:43:47.000000000 +0200
-+++ b/lib/pac_conn	2016-08-04 22:24:13.287336297 +0200
-@@ -929,6 +929,8 @@
+--- a/lib/pac_conn	2017-01-18 17:50:49.527906426 +0100
++++ b/lib/pac_conn	2017-01-18 17:50:25.048291812 +0100
+@@ -929,8 +929,10 @@
  			$connection_cmd = "$METHOD -X $$CFG{'tmp'}{'xid'} -g $$CFG{'tmp'}{'width'}x$$CFG{'tmp'}{'height'} $CONNECT_OPTS" . ( $MANUAL ? '' : " -u $USER -p -" ) . " $IP:$PORT";
  			$connection_txt = "$METHOD -X $$CFG{'tmp'}{'xid'} -g $$CFG{'tmp'}{'width'}x$$CFG{'tmp'}{'height'} $CONNECT_OPTS" . ( $MANUAL ? '' : " -u $USER -p -" ) . " $IP:$PORT";
  		} elsif ( defined $$CFG{'tmp'}{'xid'} ) {
-+			$$CFG{'tmp'}{'width'}-=3;
-+			$$CFG{'tmp'}{'height'}-=0;
- 			$connection_cmd = "$METHOD /parent-window:$$CFG{'tmp'}{'xid'} /size:$$CFG{'tmp'}{'width'}x$$CFG{'tmp'}{'height'} $CONNECT_OPTS" . ( $MANUAL ? '' : " /u:$USER" ) . " /v:$IP:$PORT";
- 			$connection_txt = "$METHOD /parent-window:$$CFG{'tmp'}{'xid'} /size:$$CFG{'tmp'}{'width'}x$$CFG{'tmp'}{'height'} $CONNECT_OPTS" . ( $MANUAL ? '' : " /u:$USER" ) . " /v:$IP:$PORT";
+-			$connection_cmd = "$METHOD -g $$CFG{'tmp'}{'width'}x$$CFG{'tmp'}{'height'} $CONNECT_OPTS" . ( $MANUAL ? '' : " -u $USER" ) . " $IP:$PORT";
+-			$connection_txt = "$METHOD -g $$CFG{'tmp'}{'width'}x$$CFG{'tmp'}{'height'} $CONNECT_OPTS" . ( $MANUAL ? '' : " -u $USER" ) . " $IP:$PORT";
++			$$CFG{'tmp'}{'width'}-=5;
++			$$CFG{'tmp'}{'height'}-=5;
++			$connection_cmd = "$METHOD /parent-window:$$CFG{'tmp'}{'xid'} /size:$$CFG{'tmp'}{'width'}x$$CFG{'tmp'}{'height'} $CONNECT_OPTS" . ( $MANUAL ? '' : " /u:$USER" ) . " /v:$IP:$PORT";
++			$connection_txt = "$METHOD /parent-window:$$CFG{'tmp'}{'xid'} /size:$$CFG{'tmp'}{'width'}x$$CFG{'tmp'}{'height'} $CONNECT_OPTS" . ( $MANUAL ? '' : " /u:$USER" ) . " /v:$IP:$PORT";
  		} elsif ( $METHOD eq 'rdesktop' ) {
+ 			$connection_cmd = "$METHOD $CONNECT_OPTS" . ( $MANUAL ? '' : " -u $USER -p -" ) . " -T \"$TITLE\" $IP:$PORT";
+ 			$connection_txt = "$METHOD $CONNECT_OPTS" . ( $MANUAL ? '' : " -u $USER -p -" ) . " -T \"$TITLE\" $IP:$PORT";
