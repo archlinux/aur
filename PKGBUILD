@@ -7,7 +7,7 @@
 _pkgname=digikam
 pkgname=digikam-without-akonadi-mediawiki-vkontakte
 pkgver=5.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -35,18 +35,20 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
     -DBUILD_TESTING=OFF \
+    -DDIGIKAMSC_COMPILE_KIPIPLUGINS=OFF \
     -DDIGIKAMSC_COMPILE_PO=ON \
-    -DDIGIKAMSC_COMPILE_DOC=ON \
     -DENABLE_KFILEMETADATASUPPORT=ON \
     -DENABLE_MYSQLSUPPORT=ON \
-    -DENABLE_OPENCV3=ON 
+    -DENABLE_APPSTYLES=ON \
+    -DENABLE_OPENCV3=ON \
+    -Wno-dev
   make
 }
 
 package() {
   cd "${_pkgname}-${pkgver}"
   make DESTDIR="$pkgdir" install
-  
-# Provided by kipi-plugins
-#  rm "$pkgdir"/usr/share/locale/*/LC_MESSAGES/{kipiplugin*,libkvkontakte}.mo
+
+  # Provided by kipi-plugins
+  rm "$pkgdir"/usr/share/locale/*/LC_MESSAGES/{kipiplugin*,libkvkontakte}.mo
 }

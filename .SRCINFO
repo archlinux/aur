@@ -1,7 +1,7 @@
 pkgbase = digikam-without-akonadi-mediawiki-vkontakte
 	pkgdesc = Digital photo management application for KDE
 	pkgver = 5.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.digikam.org/
 	arch = i686
 	arch = x86_64
