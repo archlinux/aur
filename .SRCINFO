@@ -7,7 +7,6 @@ pkgbase = mate-icon-theme-dev
 	groups = mate
 	license = GPL
 	makedepends = icon-naming-utils
-	makedepends = mate-common-dev
 	depends = gtk-update-icon-cache
 	provides = mate-icon-theme
 	provides = mate-icon-theme-gtk3
