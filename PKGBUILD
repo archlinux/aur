@@ -3,14 +3,14 @@
 # KNOSSOS saves its user preferences in $HOME/.config/MPIMF/
 
 pkgname=knossos-git
-pkgver=4.1.2+800.g3723b09
+pkgver=5.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A software tool for the visualization and annotation of 3D image data. It was developed for the rapid reconstruction of neural morphology and connectivity."
-url="http://www.knossostool.org/"
+url="https://www.knossostool.org/"
 license=("GPL2")
 depends=("glu"
-    "qt5-python27"
+    "qt5-python27-git" # qt5-python27
     "quazip-qt5"
     "snappy"
 )
@@ -33,7 +33,7 @@ build() {
 	mkdir -p "build-$CHOST-$pkgname"
 	cd "build-$CHOST-$pkgname"
 	cmake -G Ninja ../knossos
-	ninja
+	cmake --build .
 }
 
 package() {
