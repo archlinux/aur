@@ -9,10 +9,10 @@ pkgbase = cc-oci-runtime
 	makedepends = go
 	makedepends = glib2
 	makedepends = libmnl
-	makedepends = json-glib
 	makedepends = check
 	makedepends = bash-bats
 	makedepends = gcc
+	depends = json-glib
 	source = https://github.com/01org/cc-oci-runtime/archive/2.1.0-rc.3.tar.gz
 	sha1sums = a0d3ec7afbdee60623eb2b1edc82f3615c6b767b
 

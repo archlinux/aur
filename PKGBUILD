@@ -9,10 +9,10 @@ pkgdesc="Intel Clear Containers runtime"
 arch=(x86_64)
 url="https://clearlinux.org"
 license=('GPLv2')
+depends=('json-glib')
 makedepends=('go'
         'glib2'
         'libmnl'
-        'json-glib'
         'check'
         'bash-bats'
         'gcc')
