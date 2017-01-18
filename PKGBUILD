@@ -20,7 +20,7 @@ _enable_vaapi=0        # Patch for VAAPI HW acceleration NOTE: don't work in som
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=57.0.2979.0
+pkgver=57.0.2984.0
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
