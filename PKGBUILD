@@ -2,18 +2,18 @@
 # Submitter : Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=obconf-qt
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Openbox configuration tool. Qt port of ObConf"
 arch=("i686" "x86_64")
 url="http://lxqt.org"
 license=("GPL2")
 depends=("qt5-base" "openbox" "qt5-x11extras" "gtk-update-icon-cache")
-makedepends=("cmake" "qt5-tools" "liblxqt" "git")
+makedepends=("cmake" "qt5-tools" "liblxqt" "git" "lxqt-build-tools")
 source=("https://github.com/lxde/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
         "https://github.com/lxde/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz.asc")
 validpgpkeys=(7C733BA5F585AAD669E4D23A42C9C8D3AF5EA5E3)
-sha256sums=('a7fdfa0ce2da8310b6ff5e3c7375efb18a99316335853af2c8624ca2faa13182'
+sha256sums=('3af6610a01740c8d9221c7eecc8114c8db953341990b2008f9cbc65ea856e216'
             'SKIP')
 
 build() {
