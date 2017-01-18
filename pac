@@ -17,7 +17,7 @@ __maintainer__ = 'Ricardo Band'
 __email__ = 'email@ricardo.band'
 
 import sys
-from subprocess import check_output, call
+from subprocess import call, run, PIPE
 
 
 def search(search_term: str) -> list:
@@ -51,7 +51,8 @@ def search(search_term: str) -> list:
 
     """
     result: List[dict] = []
-    out: str = check_output(['pacaur', '-Ss', search_term])
+    p = run(['pacaur', '-Ss', search_term], stdout=PIPE)
+    out: str = p.stdout.decode()
     entry: dict = {}
 
     for line in out.decode().split('\n'):
@@ -148,7 +149,7 @@ def install(numbers: list, packages: list):
     Gets the chosen packages and concatinates them. Then executes the pacaur command with the packages to install them.
     """
     names = [packages[i]['package'] for i in numbers]
-    call('pacaur -S %s' % ' '.join(names), shell=True)
+    call(f"pacaur -S {' '.join(names)}", shell=True)
 
 
 if __name__ == '__main__':
