@@ -15,7 +15,7 @@ provides=('liri-settings')
 groups=('liri-git')
 
 _gitroot="git://github.com/lirios/settings.git"
-_gitbranch=release/0.9.0
+_gitbranch=master
 _gitname=settings
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
 md5sums=('SKIP')
