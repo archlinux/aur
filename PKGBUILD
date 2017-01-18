@@ -2,19 +2,19 @@
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 
 pkgname=photoqt
-pkgver=1.5
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="Fast and highly configurable image viewer with a simple and nice interface."
 arch=('any')
 url="http://photoqt.org/"
 license=('GPL2')
-depends=('exiv2' 'graphicsmagick' 'qt5-base' 'qt5-imageformats' 'qt5-multimedia' 'qt5-charts' 'qt5-svg' 'qt5-declarative' 'qt5-quickcontrols' 'libraw' 'qt5-graphicaleffects')
+depends=('exiv2' 'graphicsmagick' 'qt5-imageformats' 'qt5-multimedia' 'qt5-svg' 'qt5-quickcontrols' 'libraw' 'qt5-graphicaleffects' 'hicolor-icon-theme')
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 makedepends=('cmake' 'qt5-tools')
 install=$pkgname.install
 source=(http://photoqt.org/pkgs/$pkgname-$pkgver.tar.gz)
-md5sums=('1946384fe98a06e196dd99574fa4469a')
+md5sums=('76631e1362bc416dda879371be66c23c')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
