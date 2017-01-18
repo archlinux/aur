@@ -12,7 +12,7 @@ source=(
   "mqttfx.desktop")
 md5sums=(
   "f889407aa65219f46cf4c0ba382976d6"
-  "969bd490389ef4c4423c10e49883a7d9"
+  "0ce12491a9910a9c889356b04922f0f9"
 )
 depends=()
 
