@@ -3,13 +3,12 @@
 
 pkgname=freefonts
 pkgver=0.10
-pkgrel=3
+pkgrel=4
 pkgdesc='A set of free Type1 fonts'
 arch=('any')
 url='http://www.gimp.org/'
 license=('custom')
 makedepends=('fontconfig' 'xorg-font-utils')
-install=freefonts.install
 source=("ftp://ftp.gimp.org/pub/gimp/fonts/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('1babf159f79221c2fd6778d49b4740907e63bd4febeeac0a597760d2b5d71608')
 
