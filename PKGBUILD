@@ -2,7 +2,7 @@
 # Contributor: Army
 _pkgname=vim-latexsuite
 pkgname=$_pkgname-git
-pkgver=0.r835.ae5a9cb
+pkgver=0.r913.0e832ae
 pkgrel=1
 epoch=1
 pkgdesc="Provides a comprehensive set of tools to view, edit, and compile LaTeX documents within Vim. Also provides macros to speed up the creation of LaTeX documents."
@@ -16,7 +16,7 @@ optdepends=('python2' 'texlive-bin')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install=$pkgname.install
-source=("$_pkgname::git+git://git.code.sf.net/p/vim-latex/vim-latex")
+source=("$_pkgname::git+https://github.com/vim-latex/vim-latex.git")
 md5sums=('SKIP')
 
 pkgver() {
