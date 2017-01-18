@@ -1,6 +1,6 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=(python-myhdl-git python2-myhdl-git)
-pkgver=0.9.0.r264.g393c650
+pkgver=0.9.0.r265.ga56544b
 pkgrel=1
 pkgdesc="a Python-Based Hardware Description Language"
 arch=('any')
