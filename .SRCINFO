@@ -1,6 +1,6 @@
 pkgbase = pmenu
 	pkgdesc = A dynamic terminal-based menu inspired by dmenu written in Python without dependencies with an optional MRU ordering which could also be used as an application launcher and CtrlP alternative.
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/sgtpep/pmenu
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = pmenu
 	depends = python
 	optdepends = bash: pmenu-run application launcher
 	optdepends = grep: pmenu-run application launcher
-	source = https://raw.githubusercontent.com/sgtpep/pmenu/v0.3.2/pmenu
-	source = https://raw.githubusercontent.com/sgtpep/pmenu/v0.3.2/pmenu-run
-	md5sums = 35f59359bf8b3e81a50e8f8ef16e98e6
-	md5sums = 2ee3252e45eec43a0131dfaba8e0a6bf
+	source = https://raw.githubusercontent.com/sgtpep/pmenu/v0.3.3/pmenu
+	source = https://raw.githubusercontent.com/sgtpep/pmenu/v0.3.3/pmenu-run
+	md5sums = 9554266840db476365d659d80b94f2b3
+	md5sums = dba6c2ce400aa3fe4c548918d644f256
 
 pkgname = pmenu
 
