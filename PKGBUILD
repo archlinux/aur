@@ -30,7 +30,6 @@ pkgver() {
 
 package() {
 	cd $srcdir/${pkgname}
-    pwd
 	install -d $pkgdir/usr/share/fonts/{TTF,Type1}
 	install -m644 gbk/*.ttf $pkgdir/usr/share/fonts/TTF
 	install -m644 mac/*.ttf $pkgdir/usr/share/fonts/TTF
