@@ -14,10 +14,10 @@ optdepends=("java-runtime>=$_major: Run the examples"
             "java-environment>=$_major: Compile and run the examples")
 makedepends=('pacman>=4.2.0')
 options=('!strip')
-source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build-demos/jdk-$pkgver-linux-i586-demos.tar.gz")
-source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build-demos/jdk-$pkgver-linux-x64-demos.tar.gz")
-md5sums_i686=('477d9862374177c810b0b7d73b4f1e53')
-md5sums_x86_64=('477d9862374177c810b0b7d73b4f1e53')
+source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build-demos/e9e7ea248e2c4826b92b3f075a80e441/jdk-$pkgver-linux-i586-demos.tar.gz")
+source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build-demos/e9e7ea248e2c4826b92b3f075a80e441/jdk-$pkgver-linux-x64-demos.tar.gz")
+md5sums_i686=('3f514d95d0c47fb778797d376512f0b0')
+md5sums_x86_64=('927dfb4c076ac2b5a757fdb04b8e1453')
 
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 
