@@ -1,7 +1,7 @@
 pkgbase = pacmanager-git
 	pkgdesc = Perl Auto Connector PAC Manager. GIT version with fixed FreeRDP interface.
 	pkgver = 4.5.5.8
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/perseo22/pacmanager
 	arch = any
 	license = GPL3
@@ -26,7 +26,7 @@ pkgbase = pacmanager-git
 	source = git+https://github.com/perseo22/pacmanager.git
 	source = fix_xfreerdp_embed_window.patch
 	sha256sums = SKIP
-	sha256sums = 678379ca96a59434ec623ecff8765969fcda5d41bc540ff5a587471c3e217b0e
+	sha256sums = 15c5208214c6ecc4b3a3525efa00dbef31402a59ad14c05f3f7af0135c781973
 
 pkgname = pacmanager-git
 
