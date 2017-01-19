@@ -1,11 +1,11 @@
-# Maintainer: edoz90
+# Maintainers: edoz90, Det
 # Based on jre: https://aur.archlinux.org/packages/jre/
 
 pkgname=jdk-arm
 _pkgname=jdk
 _major=8
-_minor=111
-_build=b14
+_minor=121
+_build=b13
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java Development Kit (v8) for ARMv7, ARMv6 and ARMv8 (64-bit)"
@@ -16,45 +16,45 @@ depends=('ca-certificates-java' 'java-environment-common' 'java-runtime-common')
 optdepends=('alsa-lib: for basic sound support' 'ttf-font: fonts')
 makedepends=('pacman>=4.2.0')
 provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start=$_major" "java-environment=$_major"
-          "java-runtime-jre=$_major" "java-runtime-headless-jre=$_major" "java-web-start-jre=$_major" "java-environment-jdk=$_major")
+"java-runtime-jre=$_major" "java-runtime-headless-jre=$_major" "java-web-start-jre=$_major" "java-environment-jdk=$_major")
 
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib/jvm/java-$_major-$_pkgname
 
 backup=("etc/java-$_jname/arm/jvm.cfg"
-        "etc/java-$_jname/images/cursors/cursors.properties"
-        "etc/java-$_jname/management/jmxremote.access"
-        "etc/java-$_jname/management/management.properties"
-        "etc/java-$_jname/security/java.policy"
-        "etc/java-$_jname/security/java.security"
-        "etc/java-$_jname/content-types.properties"
-        "etc/java-$_jname/flavormap.properties"
-        "etc/java-$_jname/fontconfig.properties.src"
-        "etc/java-$_jname/logging.properties"
-        "etc/java-$_jname/net.properties"
-        "etc/java-$_jname/psfont.properties.ja"
-        "etc/java-$_jname/psfontj2d.properties"
-        "etc/java-$_jname/sound.properties")
+"etc/java-$_jname/images/cursors/cursors.properties"
+"etc/java-$_jname/management/jmxremote.access"
+"etc/java-$_jname/management/management.properties"
+"etc/java-$_jname/security/java.policy"
+"etc/java-$_jname/security/java.security"
+"etc/java-$_jname/content-types.properties"
+"etc/java-$_jname/flavormap.properties"
+"etc/java-$_jname/fontconfig.properties.src"
+"etc/java-$_jname/logging.properties"
+"etc/java-$_jname/net.properties"
+"etc/java-$_jname/psfont.properties.ja"
+"etc/java-$_jname/psfontj2d.properties"
+"etc/java-$_jname/sound.properties")
 [[ $CARCH = aarch64 ]] && backup[0]="etc/java-$_jname/aarch64/jvm.cfg"
 options=('!strip') # JDK debug-symbols
 install=$pkgname.install
 source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
-        "jconsole-$_jname.desktop"
-        "jmc-$_jname.desktop"
-        "jvisualvm-$_jname.desktop"
-        "policytool-$_jname.desktop")
-source_armv6h=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-arm32-vfp-hflt.tar.gz")
+"jconsole-$_jname.desktop"
+"jmc-$_jname.desktop"
+"jvisualvm-$_jname.desktop"
+"policytool-$_jname.desktop")
+source_armv6h=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/e9e7ea248e2c4826b92b3f075a80e441/$_pkgname-$pkgver-linux-arm32-vfp-hflt.tar.gz")
 source_armv7h=("$source_armv6h")
-source_aarch64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_pkgname-$pkgver-linux-arm64-vfp-hflt.tar.gz")
+source_aarch64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/e9e7ea248e2c4826b92b3f075a80e441/$_pkgname-$pkgver-linux-arm64-vfp-hflt.tar.gz")
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          'b4f0da18e03f7a9623cb073b65dde6c1'
          '8f0ebcead2aecad67fbd12ef8ced1503'
          'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
          '98245ddb13914a74f0cc5a028fffddca')
-md5sums_armv6h=('e74f9808168fb41570ee727e8e3f3366')
-md5sums_armv7h=('e74f9808168fb41570ee727e8e3f3366')
-md5sums_aarch64=('2f428b30b713542e3ed48fb7668bcfe2')
+md5sums_armv6h=('ba6417ff462ed659e44e16e357dc574c')
+md5sums_armv7h=("$md5sums_armv6h")
+md5sums_aarch64=('2da4b8645d2e43dda0ac0458141d4c75')
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
@@ -120,7 +120,7 @@ package() {
     # - http://www.eyrie.org/~eagle/notes/debian/jce-policy.html
     install -m644 "$srcdir"/UnlimitedJCEPolicyJDK$_major/*.jar jre/lib/security/
     install -Dm644 "$srcdir"/UnlimitedJCEPolicyJDK$_major/README.txt \
-                   "$pkgdir"/usr/share/doc/$_pkgname/README_-_Java_JCE_Unlimited_Strength.txt
+        "$pkgdir"/usr/share/doc/$_pkgname/README_-_Java_JCE_Unlimited_Strength.txt
 
     msg2 "Enabling copy+paste in unsigned applets..."
     # Copy/paste from system clipboard to unsigned Java applets has been disabled since 6u24:
@@ -132,5 +132,5 @@ package() {
         // - https://blogs.oracle.com/kyle/entry/copy_and_paste_in_java\n \
         // - http://slightlyrandombrokenthoughts.blogspot.com/2011/03/oracle-java-applet-clipboard-injection.html\n \
         permission java.awt.AWTPermission \"accessClipboard\";" \
-    -i "$pkgdir"/etc/java-$_jname/security/java.policy
+        -i "$pkgdir"/etc/java-$_jname/security/java.policy
 }
