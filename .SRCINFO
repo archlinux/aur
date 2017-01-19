@@ -1,0 +1,18 @@
+pkgbase = capsudo-git
+	pkgdesc = sudo for POSIX capabilities, git version
+	pkgver = r9.6637183
+	pkgrel = 1
+	url = https://git.archlinux.org/users/thomas/capsudo.git/
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = iniparser
+	depends = libcap
+	provides = capsudo
+	conflicts = capsudo
+	backup = etc/capsudoers
+	source = capsudo::git+https://git.archlinux.org/users/thomas/capsudo.git
+	md5sums = SKIP
+
+pkgname = capsudo-git
+
