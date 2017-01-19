@@ -1,7 +1,7 @@
 # Maintainer : Vassilis Palassopoulos <palasso [at] gmail [dot] com>
 
 pkgname=ecere-sdk
-pkgver=0.44.11
+pkgver=0.44.15
 pkgrel=1
 pkgdesc="A SDK for building cross-platform GUI and graphics apps using the eC language"
 arch=('i686' 'x86_64')
@@ -13,10 +13,10 @@ provides=('ecere-sdk')
 conflicts=('ecere-sdk-git')
 options=('!strip' 'staticlibs')
 source=("https://github.com/ecere/ecere-sdk/archive/${pkgver}.tar.gz")
-md5sums=('3c81cdfd86b94766a2bf89f66423ab7f')
+md5sums=('b029a6be39cb3d5b6834eb63ea8b1725')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make CFLAGS="$(pkg-config libffi --cflags)" ENABLE_SSL=y
 }
 
