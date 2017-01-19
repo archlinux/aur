@@ -2,8 +2,8 @@
 # Contributors: Ng Oon-Ee, Dan Vratil
 # Based on [extra]'s nvidia-utils: https://www.archlinux.org/packages/extra/x86_64/nvidia-utils/
 
-pkgname=('nvidia-utils-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
-pkgver=375.26
+pkgname=('nvidia-utils-beta' 'nvidia-egl-wayland-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
+pkgver=378.09
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -21,8 +21,8 @@ source=('20-nvidia.conf')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
 md5sums=('2640eac092c220073f0668a7aaff61f7')
-md5sums_i686=('b0706e88ad173f6b9c7bd2e5a838c163')
-md5sums_x86_64=('5595fb385e41638c5118784114b03d9a')
+md5sums_i686=('a55ef673b805549cd72f2e9d5b7a844a')
+md5sums_x86_64=('6e3fe1150fb70c1dabd113e613186cfd')
 
 _create_links() {
   # create missing soname links
@@ -119,6 +119,18 @@ package_nvidia-libgl-beta() {
   ln -s nvidia/ "$pkgdir"/usr/share/licenses/nvidia-libgl
 }
 
+package_nvidia-egl-wayland-beta() {
+  pkgdesc="NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.0.0) for 'nvidia-utils-beta'"
+  depends=('nvidia-utils-beta')
+  provides=('egl-wayland')
+  conflicts=('egl-wayland')
+  cd $_pkg
+
+  install -Dm755 libnvidia-egl-wayland.so.1.0.0 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1.0.0
+  ln -s libnvidia-egl-wayland.so.1.0.0 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so
+  ln -s libnvidia-egl-wayland.so.1.0.0 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1
+}
+
 package_nvidia-utils-beta() {
   pkgdesc="NVIDIA driver utilities and libraries (beta version)"
   depends=('xorg-server')
@@ -153,8 +165,8 @@ package_nvidia-utils-beta() {
   install -Dm755 libEGL.so.1 "$pkgdir"/usr/lib/nvidia/libEGL.so.1
   install -Dm755 libEGL_nvidia.so.$pkgver "$pkgdir"/usr/lib/libEGL_nvidia.so.$pkgver
   install -Dm755 libnvidia-eglcore.so.$pkgver "$pkgdir"/usr/lib/libnvidia-eglcore.so.$pkgver
-  install -Dm755 libnvidia-egl-wayland.so.$pkgver "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.$pkgver
   install -Dm644 10_nvidia.json "$pkgdir"/usr/share/glvnd/egl_vendor.d/10_nvidia.json
+  install -Dm644 10_nvidia_wayland.json "$pkgdir"/usr/share/glvnd/egl_vendor.d/10_nvidia_wayland.json
 
   # OpenGL ES
   install -Dm755 libGLESv1_CM.so.1 "$pkgdir"/usr/lib/nvidia/libGLESv1_CM.so.1
