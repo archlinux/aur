@@ -2,12 +2,12 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname="cups-nosystemd"
-pkgver=2.2.0
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
 license=('GPL')
-url="http://www.cups.org/"
+url="https://www.cups.org/"
 groups=('eudev-base')
 depends=('acl' 'pam' "libcups>=${pkgver}" 'cups-filters' 'bc' 'colord'
          'dbus' 'hicolor-icon-theme' 'libpaper')
@@ -37,18 +37,16 @@ source=(https://github.com/apple/cups/releases/download/v${pkgver}/cups-${pkgver
         cups-no-gzip-man.patch
 	cups-1.6.0-fix-install-perms.patch
 	cups-1.6.2-statedir.patch
-	fix_endless_loops.diff
 	)
-md5sums=('e22d943cff300411d3616dc2ee86272c'
-         '9657daa21760bb0b5fa3d8b51d5e01a1'
-         'fc8286f185e2cc5f7e1f6843bf193e2b'
-         '96f82c38f3f540b53f3e5144900acf17'
-         '3ba9e3410df1dc3015463d615ef91b3b'
-         '1beb4896f217bc241bc08a422274ec0c'
-         '39dd3141991c3052b73f59ece70e1ea6'
-         '5117f65342fcc69c6a506529e4daca9e'
-         '451609db34f95209d64c38474de27ce1'
-         '32f6e1f907247dab466c37403d87d4e4')
+sha256sums=('f589bb7d5d1dc3aa0915d7cf2b808571ef2e1530cd1a6ebe76ae8f9f4994e4f6'
+            '87cd833e7c07a36298341e35d5ce0534ce68fdf76ce3e9eda697e5455b963d1b'
+            'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
+            '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
+            'ff3eb0782af0405f5dafe89e04b1b4ea7a49afc5496860d724343bd04f375832'
+            '1423673e16e374ed372c5b69aebc785b6674bf40601c74a5c08454f672ffa7f1'
+            'b8fc2e3bc603495f0278410350ea8f0161d9d83719feb64f573b63430cb4800b'
+            '4a4a885bb2e111bd67bcb90a5780f33841b18bc02382317fb5e64c384aa0c4c8'
+            '23349c96f2f7aeb7d48e3bcd35a969f5d5ac8f55a032b0cfaa0a03d7e37ea9af')
 
 prepare() {
   cd cups-${pkgver}
