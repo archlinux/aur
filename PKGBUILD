@@ -20,9 +20,11 @@ conflicts=('vscode-oss')
 provides=('vscode-oss')
 
 source=("${pkgver}-${pkgrel}.tar.gz::https://github.com/Microsoft/vscode/archive/${_commit}.tar.gz"
-        "${pkgname}.desktop")
+        "${pkgname}.desktop"
+        'vscode181_compile.patch')
 sha256sums=('789e14d14ff11b7cf32202bab164fe3cd6b4b1eb1e428d76c516fa5395e8af68'
-            '2ce2c6033667092c5e854036b676533fd433e9daf9ac8ce0f00606193420e72d')
+            '2ce2c6033667092c5e854036b676533fd433e9daf9ac8ce0f00606193420e72d'
+            '31b2cd19acb11a2d6fc5f92691943b02a267a2d11672758abb2ef26168f9973f')
 
 if (( VSCODE_NONFREE )); then
     source+=('product_json.patch')
@@ -49,6 +51,9 @@ esac
 
 prepare() {
     cd "${srcdir}/vscode-${_commit}"
+
+    # Backported from git
+    patch -p1 -i "${srcdir}/vscode181_compile.patch"
 
     if (( VSCODE_NONFREE )); then
         patch -p1 -i "${srcdir}/product_json.patch"
