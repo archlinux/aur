@@ -1,12 +1,12 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=vis-git
-pkgver=0.2.r689.g0803eef
+pkgver=0.2.r693.g53f84f7
 pkgrel=1
 pkgdesc='modern, legacy free, simple yet efficient vim-like editor - git checkout'
 arch=('i686' 'x86_64')
 url='http://www.brain-dump.org/projects/vis/'
-depends=('ncurses' 'libtermkey' 'lua' 'lua-lpeg' 'file')
+depends=('ncurses' 'libtermkey' 'lua' 'lua-lpeg' 'tre' 'file')
 makedepends=('git')
 checkdepends=('vim')
 conflicts=('vis')
