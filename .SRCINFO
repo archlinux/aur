@@ -1,0 +1,18 @@
+pkgbase = saba-meeting-client-bin
+	pkgdesc = Software Client allowing to participate on Saba web-meetings and e-classrooms.
+	pkgver = 8.5.0.078
+	pkgrel = 1
+	url = https://www.saba.com/us/apps/collaboration/
+	arch = x86_64
+	license = unknown
+	depends = lib32-libxtst
+	depends = lib32-alsa-lib
+	depends = lib32-libxrender
+	depends = lib32-libxmu
+	depends = lib32-fontconfig
+	options = !strip
+	source = http://mt202.sabameeting.com/SiteRoots/main/Install/linux/SabaMeetingClient.rpm.gz
+	md5sums = d5ea7d2dc3822db745569e50f2d74d41
+
+pkgname = saba-meeting-client-bin
+
