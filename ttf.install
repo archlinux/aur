@@ -1,11 +1,3 @@
-_update_font_cache() {
-	echo -n "Updating font cache... "
-	fc-cache -f > /dev/null
-	mkfontscale /usr/share/fonts/TTF
-	mkfontdir /usr/share/fonts/TTF
-	echo "done."
-}
-
 _warn_11838() {
 	cat <<EOM
  ***    WARNING: due to cairo developers being lazy*, Unifont may display incorrectly
@@ -18,17 +10,14 @@ EOM
 post_install() {
 	ln -fs ../conf.avail/20-unifont-noaa.conf /etc/fonts/conf.d
 	ln -fs ../conf.avail/20-unifont-upper.conf /etc/fonts/conf.d
-	_update_font_cache
 	_warn_11838
 }
 
 post_remove() {
 	rm -f /etc/fonts/conf.d/20-unifont-noaa.conf
 	rm -f /etc/fonts/conf.d/20-unifont-upper.conf
-	_update_font_cache
 }
 
 post_upgrade() {
-	_update_font_cache
 	_warn_11838
 }
