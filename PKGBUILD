@@ -1,15 +1,15 @@
 # Maintainer: Dustin Falgout <dustin@antergos.com>
 
 pkgname=lightdm-webkit2-greeter
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.2.2
+pkgrel=1
 pkgdesc='LightDM greeter that uses WebKit2 for theming via HTML/JavaScript.'
 arch=('i686' 'x86_64')
 url='https://github.com/antergos/lightdm-webkit2-greeter'
 license=('GPL3')
 groups=('system')
 makedepends=('gobject-introspection' 'meson' 'gettext')
-depends=('lightdm' 'webkit2gtk>=2.12' 'webkit2gtk<2.14.3' 'accountsservice')
+depends=('lightdm' 'webkit2gtk' 'accountsservice')
 provides=('lightdm-webkit-greeter')
 conflicts=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos')
 replaces=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos')
@@ -18,9 +18,9 @@ _artwork_url='https://sources.archlinux.org/other/artwork'
 source=("${pkgname}-${pkgver}.zip::https://github.com/Antergos/${pkgname}/archive/${pkgver}.zip"
 		"archlinux-logo.svg::${_artwork_url}/archlinux-logo-light-scalable.svg"
 		'archlinux-user.svg')
-md5sums=('368ad70f4fc749b499953e3ed4547175'
-         '1ae4cc2e2469acbe15775358ed6b11b4'
-         'b270926ddd965fc63a632156cedd734d')
+md5sums=('c32a7a879b69d6217ee18afdf830f572'
+		'1ae4cc2e2469acbe15775358ed6b11b4'
+		'b270926ddd965fc63a632156cedd734d')
 
 
 build() {
