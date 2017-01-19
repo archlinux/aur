@@ -1,6 +1,6 @@
 pkgbase = mate-desktop-dev
 	pkgdesc = Library with common API for various MATE modules
-	pkgver = 1.17.1
+	pkgver = 1.17.2
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = mate-desktop-dev
 	provides = mate-desktop-gtk3
 	conflicts = mate-desktop
 	conflicts = mate-desktop-gtk3
-	source = http://pub.mate-desktop.org/releases/1.17/mate-desktop-1.17.1.tar.xz
-	sha1sums = aed9772afe17a3577b376dbc37a597f8b36fc273
+	source = http://pub.mate-desktop.org/releases/1.17/mate-desktop-1.17.2.tar.xz
+	sha1sums = b89777424ef98199b0c3e8387441a08559992e65
 
 pkgname = mate-desktop-dev
 	pkgdesc = Library with common API for various MATE modules (GTK3 version)
