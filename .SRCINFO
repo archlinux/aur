@@ -1,0 +1,18 @@
+pkgbase = clutter-gtkmm
+	pkgdesc = C++ wrapper for clutter-gtk, allowing you to use cluttermm with gtkmm windows and widgets
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://developer.gnome.org/clutter-gtkmm/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = mm-common
+	makedepends = git
+	depends = clutter-gtk
+	depends = cluttermm
+	depends = gtkmm3
+	source = https://github.com/GNOME/clutter-gtkmm/archive/da62b18e98d6ec1c7a00f5be92e21315014516f8.tar.gz
+	sha256sums = cb647c02d70b76769b9b352c1262cc4f81520348ab7d4413fc5df99dc2674798
+
+pkgname = clutter-gtkmm
+
