@@ -4,7 +4,7 @@
 
 pkgname=hyper
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A terminal built on web technologies"
 arch=('any')
@@ -25,7 +25,7 @@ install=
 changelog=
 source=(
     "https://github.com/zeit/$pkgname/archive/${pkgver}.tar.gz"
-    "https://raw.githubusercontent.com/zeit/art/master/hyper/mark/Hyper-Mark-120%403x.png"
+    "https://raw.githubusercontent.com/zeit/art/master/hyper/mark/Hyper-Mark-120@3x.png"
     "Hyper.desktop"
 )
 noextract=()
@@ -51,13 +51,21 @@ prepare() {
 
     # for now use just npm since errors have been reported
     npm install
+
+    # Also hacky but need to explicitly install webpack at the correct version
+    # or the app won't run. See https://github.com/zeit/hyper/issues/1418.
+    # Hopefully this can be removed asap
+    npm install webpack@2.2.0-rc.3
 }
 
 build() {
     cd "$pkgname-$pkgver"
 
-    # can't use npm_or_yarn b/c yarn rebuild doesn't work
-    npm run pack
+    npm run build
+
+    # this is hacky, but otherwise the package.json dist rule tries to build
+    # for debian, rpm, etc.
+    ./node_modules/.bin/build --linux dir
 }
 
 package() {
@@ -79,5 +87,5 @@ package() {
     # ln -s /usr/share/electron/lib{node,ffmpeg}.so .
 
     install -Dm644 "$srcdir/Hyper.desktop" "$pkgdir/usr/share/applications/Hyper.desktop"
-    install -Dm644 "$srcdir/Hyper-Mark-120%403x.png" "$pkgdir/usr/share/pixmaps/hyper.png"
+    install -Dm644 "$srcdir/Hyper-Mark-120@3x.png" "$pkgdir/usr/share/pixmaps/hyper.png"
 }
