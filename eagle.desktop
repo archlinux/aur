@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=EAGLE Light Edition
+Name=Autodesk EAGLE
 TryExec=/usr/bin/eagle
 Exec=eagle %U
 Icon=eagle.png
