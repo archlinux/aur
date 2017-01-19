@@ -3,14 +3,14 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=2.11.2
-pkgrel=1
+pkgrel=2
 _wwwpkgname=AdminLTE
 _wwwpkgver=2.3.1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
 license=('GPL2')
 url="https://github.com/pi-hole/pi-hole"
-depends=('dnsmasq' 'lighttpd' 'php-cgi' 'bc' 'perl')
+depends=('dnsmasq' 'lighttpd' 'php-cgi' 'bc' 'perl' 'net-tools')
 conflicts=('pi-hole-standalone')
 install=$pkgname.install
 backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt')
