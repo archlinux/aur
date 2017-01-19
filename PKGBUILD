@@ -1,7 +1,7 @@
-# Maintainer: Auguste Pop < auguste [at] gmail [dot] com >
+# Maintainer: user6553591 <Message on Reddit>
 # Contributor: P. Badredin <p dot badredin at gmail dot com>
 # Contributor: Justin Blanchard <UncombedCoconut at gmail dot com>
-# Contributor: user6553591 <Message on Reddit>
+# Contributor: Auguste Pop < auguste [at] gmail [dot] com >
 
 pkgname=stockfish
 pkgver=8
