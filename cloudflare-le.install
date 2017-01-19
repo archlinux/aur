@@ -2,7 +2,7 @@ post_install() {
 		echo "-------------------------------------------------"
 		echo ""
 		echo -e "\e[31mDo not forget to change configuration and add your Cloudflare ID, Token, and 
-domain name to /etc/cloudflare-le/cloudflare.conf and add "/usr/lib/cloudflare-le/pause_all_domains.sh" to 
+zone names to /etc/cloudflare-le/cloudflare.conf and add "/usr/lib/cloudflare-le/pause_all_domains.sh" to 
 --pre-hook and "/usr/lib/cloudflare-le/unpause_all_domains.sh" to --post-hook in Certbot. \e[0m"
 		echo ""
 		echo "-------------------------------------------------"
