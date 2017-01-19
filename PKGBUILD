@@ -2,17 +2,17 @@
 # Contributor: Daniel Ehlers <danielehlers@mindeye.net>
 
 pkgname=smarty3
-pkgver=3.1.21
-pkgrel=2
+pkgver=3.1.30
+pkgrel=1
 pkgdesc='Smarty is a PHP template engine'
 url='http://www.smarty.net'
 license=('LGPL')
 depends=('php>=5.2')
 arch=('any')
-source=("http://www.smarty.net/files/Smarty-${pkgver}.tar.gz")
-sha256sums=('e872f98a194a31b9dea710fceb308431c0e2b846e46ce845b547f54e5789c465')
+source=("https://github.com/smarty-php/smarty/archive/v${pkgver}.tar.gz")
+sha256sums=('62461370c73fb3eb315c6a0a55f9bdbb04d115a0e3eaf46d76d68336524f344f')
 
 package() {
     install -d "${pkgdir}/usr/share/php"
-    cp -dpr --no-preserve=ownership "${srcdir}/Smarty-${pkgver}/libs" "${pkgdir}/usr/share/php/smarty3"
+    cp -dpr --no-preserve=ownership "${srcdir}/smarty-${pkgver}/libs" "${pkgdir}/usr/share/php/smarty3"
 }
