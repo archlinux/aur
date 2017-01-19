@@ -1,7 +1,7 @@
 pkgbase = php-redis
 	pkgdesc = PHP extension for interfacing with Redis
 	pkgver = 3.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://pecl.php.net/package/redis
 	arch = x86_64
 	arch = i686
