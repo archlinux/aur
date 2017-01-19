@@ -5,7 +5,7 @@
 _ver=1.17
 _pkgbase=mate-screensaver
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=5
 pkgdesc='Screensaver for MATE'
 url="http://mate-desktop.org"
@@ -21,7 +21,7 @@ optdepends=('mate-power-manager: Add power management support.'
             'rss-glx: Really slick screensavers.')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('c676ba7203a4f8ef9279ea9fb0a05950a10b74f7')
+sha1sums=('8d4283952fe371b92b441969698f32550cc7244f')
 
 prepare() {
     cd "${srcdir}"
