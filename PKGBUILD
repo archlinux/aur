@@ -11,8 +11,8 @@
 
 _pkgname=playonlinux5
 pkgname=${_pkgname}-git
-pkgver=r1491.09432248
-pkgrel=4
+pkgver=r1500.18b43a68
+pkgrel=1
 epoch=2
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
 arch=('any')
@@ -33,22 +33,24 @@ sha256sums=(
 	)
 
 pkgver() {
+
   cd "${_pkgname}"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
+
 }
 
 build() {
+
   cd "${_pkgname}"
 
   # Set environment
-  # Set JAVA_HOME to include Java 8 for users not defaulted to Java 8 yet
   if (( $(archlinux-java get | cut -d "-" -f2) < 8 )) || [[ ! -f /usr/bin/javac ]]; then
 
 	# test for openjdk, fall back on other jdks if not found
-	# Take the highest sorted version of either (head -1) so that versions above 8 will be selected
+	# Take the highest sorted version (alpahumericly,head -1)
 	_openjdk=$(ls /usr/lib/jvm/java-{8,9}-openjdk/bin/javac 2>/dev/null | cut -d "/" -f-5)
 
 	if [[ "${_openjdk}" ]]; then
@@ -63,11 +65,11 @@ build() {
 
   # Build
   mvn package
-
+  
 }
 
 package() {
-
+  
   # Extract
   install -d "${pkgdir}/opt/"
   bsdtar -xf "${_pkgname}/phoenicis-dist/target/phoenicis-dist.zip"
