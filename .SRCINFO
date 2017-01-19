@@ -1,0 +1,27 @@
+pkgbase = ilspymono-git
+	pkgdesc = CLI reflector for Mono based on ILSpy
+	pkgver = r2.933d582
+	pkgrel = 1
+	url = http://github.com/andreif/ILSpyMono
+	arch = any
+	license = MIT
+	license = LGPL2.1
+	license = custom:MSPL
+	makedepends = git
+	depends = mono
+	provides = ilspymono
+	conflicts = ilspymono
+	options = !strip
+	source = git://github.com/andreif/ILSpy.git
+	source = git://github.com/icsharpcode/AvalonEdit.git
+	source = git://github.com/icsharpcode/NRefactory.git
+	source = git://github.com/jbevain/cecil.git
+	source = git://github.com/andreif/ILSpyMono.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = ilspymono-git
+
