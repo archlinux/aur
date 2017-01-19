@@ -7,8 +7,8 @@
 # remain until the packages are removed. "1" to enable.
 _lib32=0
 
-pkgname=('nvidia-full-beta-all' 'nvidia-utils-full-beta-all' 'nvidia-libgl-full-beta-all' 'opencl-nvidia-full-beta-all')
-pkgver=375.26
+pkgname=('nvidia-full-beta-all' 'nvidia-utils-full-beta-all' 'nvidia-egl-wayland-full-beta-all' 'nvidia-libgl-full-beta-all' 'opencl-nvidia-full-beta-all')
+pkgver=378.09
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -32,9 +32,9 @@ source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Lin
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run")
 md5sums=('2640eac092c220073f0668a7aaff61f7')
 #         '96a37004a3394b01385d3ea9d8e8fa86')
-md5sums_i686=('b0706e88ad173f6b9c7bd2e5a838c163')
-md5sums_x86_64=('5595fb385e41638c5118784114b03d9a')
-[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('d60819b2e377398c7296999ab5e7c1a4')
+md5sums_i686=('a55ef673b805549cd72f2e9d5b7a844a')
+md5sums_x86_64=('6e3fe1150fb70c1dabd113e613186cfd')
+[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('05ef2fbdf4617921fc4fdccd7f849e0e')
 
 # Auto-detect patches (e.g. linux-4.1.patch)
 for _patch in $(find "$startdir" -maxdepth 1 -name '*.patch' -printf "%f\n"); do
@@ -175,6 +175,18 @@ package_nvidia-libgl-full-beta-all() {
   ln -s nvidia/ "$pkgdir"/usr/share/licenses/nvidia-libgl
 }
 
+package_nvidia-egl-wayland-full-beta-all() {
+  pkgdesc="NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.0.0) for 'nvidia-utils-full-beta-all'"
+  depends=('nvidia-utils-full-beta-all')
+  provides=('egl-wayland')
+  conflicts=('egl-wayland')
+  cd $_pkg
+
+  install -Dm755 libnvidia-egl-wayland.so.1.0.0 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1.0.0
+  ln -s libnvidia-egl-wayland.so.1.0.0 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so
+  ln -s libnvidia-egl-wayland.so.1.0.0 "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.1
+}
+
 package_nvidia-utils-full-beta-all() {
   pkgdesc="NVIDIA driver utilities and libraries for 'nvidia-full-beta-all'"
   depends=('xorg-server')
@@ -209,8 +221,8 @@ package_nvidia-utils-full-beta-all() {
   install -Dm755 libEGL.so.1 "$pkgdir"/usr/lib/nvidia/libEGL.so.1
   install -Dm755 libEGL_nvidia.so.$pkgver "$pkgdir"/usr/lib/libEGL_nvidia.so.$pkgver
   install -Dm755 libnvidia-eglcore.so.$pkgver "$pkgdir"/usr/lib/libnvidia-eglcore.so.$pkgver
-  install -Dm755 libnvidia-egl-wayland.so.$pkgver "$pkgdir"/usr/lib/libnvidia-egl-wayland.so.$pkgver
   install -Dm644 10_nvidia.json "$pkgdir"/usr/share/glvnd/egl_vendor.d/10_nvidia.json
+  install -Dm644 10_nvidia_wayland.json "$pkgdir"/usr/share/glvnd/egl_vendor.d/10_nvidia_wayland.json
 
   # OpenGL ES
   install -Dm755 libGLESv1_CM.so.1 "$pkgdir"/usr/lib/nvidia/libGLESv1_CM.so.1
