@@ -1,7 +1,7 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 
 pkgname=smplayer-themes-svn
-pkgver=16.6.0.r7958
+pkgver=16.8.0.r8377
 pkgrel=1
 pkgdesc="Themes for SMPlayer"
 arch=('any')
