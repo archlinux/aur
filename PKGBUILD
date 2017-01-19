@@ -1,7 +1,7 @@
 # Maintainer: Daniel Hillenbrand <codeworkx@bbqlinux.org>
 pkgname=openhab-beta
 _pkgver=2.0.0
-pkgver=2.0.0_20161225
+pkgver=2.0.0_20170119
 pkgrel=1
 pkgdesc="openHAB2 open source home automation software"
 arch=('any')
@@ -15,10 +15,10 @@ conflicts=('openhab-runtime' 'openhab-addons')
 backup=('etc/openhab/conf/services/addons.cfg'
 		'etc/openhab/conf/services/runtime.cfg')
 
-source=("https://openhab.ci.cloudbees.com/job/openHAB-Distribution/lastSuccessfulBuild/artifact/distributions/openhab-online/target/openhab-online-${_pkgver}-SNAPSHOT.zip"
+source=("https://openhab.ci.cloudbees.com/job/openHAB-Distribution/lastSuccessfulBuild/artifact/distributions/openhab/target/openhab-${_pkgver}-SNAPSHOT.zip"
         "openhab.service")
 
-noextract=("openhab-online-${_pkgver}-SNAPSHOT.zip")
+noextract=("openhab-${_pkgver}-SNAPSHOT.zip")
 
 sha256sums=('SKIP'
             '92be5e206c878bb1a1b476f62b815f24dca198e8e0055095f797d264d8521bfe')
@@ -31,7 +31,7 @@ prepare() {
 	mkdir -p "$srcdir/openhab"
 	cd "$srcdir/openhab"
 
-	unzip "$srcdir/openhab-online-${_pkgver}-SNAPSHOT.zip"
+	unzip "$srcdir/openhab-${_pkgver}-SNAPSHOT.zip"
 }
 
 package() {
