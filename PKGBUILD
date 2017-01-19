@@ -1,6 +1,6 @@
 # Maintainer: Jason Papakostas <vithos@gmail.com>
 pkgname='vector-web'
-_upstream_version='0.9.5'
+_upstream_version='0.9.6'
 pkgver="${_upstream_version//-/_}" # sometimes upstream uses hyphens; we can't
 pkgrel=1
 pkgdesc='A glossy Matrix collaboration client for the web'
@@ -15,7 +15,7 @@ install="$pkgname.install"
 changelog="CHANGELOG.md"
 source=("riot-web-v$_upstream_version.tar.gz::https://github.com/vector-im/$pkgname/archive/v$_upstream_version.tar.gz"
         'Caddyfile.example')
-sha256sums=('1a54d4d8227ac718defa3cfb002511635eba6dc77cf7b81238bebacc525499e1'
+sha256sums=('afc3ef62dddd7751fcea793d2676f96924200f28afbe5d81e2890a67cfeaf72a'
             '73b20f2c48eec6a800cce1364db80b4298f0df89df8faa339a1a76b6f1615add')
 _unpacked_dirname="riot-web-$_upstream_version"
 
