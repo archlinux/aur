@@ -3,7 +3,7 @@
 
 pkgname=wesnoth-devel
 pkgver=1.13.6
-pkgrel=1
+pkgrel=2
 pkgdesc="development version of a turn-based strategy game on a fantasy world"
 arch=('i686' 'x86_64')
 url="http://www.wesnoth.org/"
@@ -29,6 +29,8 @@ md5sums=('ebfc1f936db5c46bd85b747aa7317ab2'
 '959aea3af36e7b2a1be6bf4537ec54b7'
 '5182ce65c28a8bd62043c3a7fc09e642')
 
+PKGEXT='.pkg.tar'
+
 prepare() {
   cd "${srcdir}/wesnoth-$pkgver"
 
@@ -47,7 +49,7 @@ build() {
   #gcc 6 patching
   #patch -p1 < ../../patch_gcc6.patch
 
-  scons prefix=/usr program_suffix=-devel datadirname=wesnoth-devel prefsdir=.wesnoth-devel fifodir=/run/wesnothd-devel \
+  scons jobs=4 desktop_entry=False  prefix=/usr program_suffix=-devel datadirname=wesnoth-devel prefsdir=.wesnoth-devel fifodir=/run/wesnothd-devel \
   boostdir=/usr/include boostlibdir=/usr/include \
   localedir=/usr/share/locale docdir=/usr/share/doc/wesnoth-devel mandir=/usr/share/man/wesnoth-devel python_site_packages_dir=/lib/python/site-packages/wesnoth wesnoth wesnothd campaignd
 }
@@ -68,10 +70,10 @@ package(){
  #chmod +x ${pkgdir}/var/run/wesnothd-devel
  #chmod o+r ${pkgdir}/var/run/wesnothd-devel
  
- rm -f ${pkgdir}/usr/share/applications/wesnoth.desktop
- rm -f ${pkgdir}/usr/share/applications/wesnoth_editor.desktop
- rm -f ${pkgdir}/usr/share/icons/wesnoth-icon.png
- rm -f ${pkgdir}/usr/share/icons/wesnoth_editor-icon.png
+ #rm -f ${pkgdir}/usr/share/applications/wesnoth.desktop
+ #rm -f ${pkgdir}/usr/share/applications/wesnoth_editor.desktop
+ #rm -f ${pkgdir}/usr/share/icons/wesnoth-icon.png
+ #rm -f ${pkgdir}/usr/share/icons/wesnoth_editor-icon.png
  rm -rf ${pkgdir}/run/wesnothd-devel/
  rm -rf ${pkgdir}/run/
 
