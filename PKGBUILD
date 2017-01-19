@@ -2,13 +2,13 @@
 
 _name=girl
 pkgname=$_name-git
-pkgver=9.6.1.r1.ge8cdf70
+pkgver=9.7.1.r0.g7332228
 pkgrel=1
 pkgdesc="GNOME Internet Radio Locator"
 arch=(i686 x86_64)
 url="https://wiki.gnome.org/Apps/Girl"
 license=(GPL)
-depends=(gstreamer0.10-base libgnomeui streamripper totem)
+depends=(gst-plugins-base-libs libgnomeui streamripper totem)
 makedepends=(git gnome-common gtk-doc intltool itstool)
 provides=($_name)
 conflicts=($_name)
@@ -33,5 +33,5 @@ check(){
 
 package() {
   cd "$srcdir/$_name"
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" install
 }
