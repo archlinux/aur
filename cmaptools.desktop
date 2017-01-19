@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=CmapTools
+Comment=The IHMC CmapTools for concept maps
+Exec=cmaptools
+Icon=/opt/cmaptools/icon.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Applications;Office

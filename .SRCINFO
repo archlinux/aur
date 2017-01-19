@@ -1,0 +1,22 @@
+pkgbase = cmaptools
+	pkgdesc = The IHMC CmapTools for concept maps
+	pkgver = v6.02
+	pkgrel = 1
+	url = http://cmap.ihmc.us/
+	arch = x86_64
+	license = unknown
+	makedepends = the_silver_searcher
+	depends = desktop-file-utils
+	source = http://cmapdownload.ihmc.us/installs/CmapTools/Linux/Linux64CmapTools_v6.02_08-11-16.bin
+	source = installer.properties
+	source = icon.png
+	source = cmaptools.desktop
+	source = cmaptools
+	md5sums = 622c89d77c3a57dbe9a1a9a7a06e6dce
+	md5sums = a6aa32dfa1a7a5bc5e6dc585e197e002
+	md5sums = c37998dc8a4703de169283d49a49c40d
+	md5sums = 23f9a626c04321284930d6a79b2cf5b1
+	md5sums = acda9def3e84dd87066530ba187bcd1d
+
+pkgname = cmaptools
+
