@@ -29,8 +29,6 @@ post_install() {
     if pidof Xorg >/dev/null; then
         echo ":: Please reboot or exit X to unload the current module."
     fi
-
-	echo ":: NOTE: You may want to stick to .27: https://devtalk.nvidia.com/default/topic/950647/linux/black-screen-with-367-35/"
 }
 
 post_upgrade() {
@@ -40,8 +38,6 @@ post_upgrade() {
     if (( $(vercmp $1 $2) != 0 )); then
         _rmmod
     fi
-
-	echo ":: NOTE: You might not want to clear Pacman cache from .27: https://devtalk.nvidia.com/default/topic/950647/linux/black-screen-with-367-35/"
 }
 
 post_remove() {
