@@ -9,10 +9,10 @@ arch=('any')
 url="https://github.com/NVIDIA/$_pkgname"
 license=('MIT')
 makedepends=('git')
-source=("git+$url.git")
-md5sums=('SKIP')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
+source=("git+$url.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
