@@ -10,8 +10,8 @@ url="http://www.krename.net"
 license=('GPL')
 depends=('kdelibs4support' 'taglib' 'podofo' 'kjs' 'exiv2' 'hicolor-icon-theme')
 makedepends=('cmake' 'automoc4' 'extra-cmake-modules' 'kdoctools')
-provides=$_pkgname
-conflicts=$_pkgname
+provides=($_pkgname)
+conflicts=($_pkgname)
 install=krename.install
 source=(http://downloads.sourceforge.net/project/krename/KDE4%20krename-stable/${pkgver}/${_pkgname}-${pkgver}.tar.bz2
         "fix_libpodofo.patch"
