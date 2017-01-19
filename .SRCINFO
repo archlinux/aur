@@ -1,0 +1,15 @@
+pkgbase = cloudflare-le
+	pkgdesc = Renew Let's Encrypt SSL with Full (Strict) SSL and no webroot possibility
+	pkgver = 1
+	pkgrel = 1
+	url = https://ckdake.com/content/2016/certbot-and-cloudflare.html
+	install = cloudflare-le.install
+	arch = any
+	license = unknown
+	depends = jq
+	optdepends = certbot: the default Let's Encrypt client
+	source = cloudflare-le-1.tar.gz
+	md5sums = d6c75c49165370ff49423eed9805fa13
+
+pkgname = cloudflare-le
+

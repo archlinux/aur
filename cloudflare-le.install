@@ -1,0 +1,11 @@
+post_install() {
+		echo "-------------------------------------------------"
+		echo ""
+		echo -e "\e[31mDo not forget to change configuration and add your Cloudflare ID, Token, and domain name to /etc/cloudflare-le/cloudflare.conf\e[0m"
+		echo ""
+		echo "-------------------------------------------------"
+}
+
+op=$1
+shift
+$op $*
