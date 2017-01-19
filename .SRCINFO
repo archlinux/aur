@@ -11,6 +11,7 @@ pkgbase = wire-desktop
 	makedepends = npm
 	makedepends = python2
 	makedepends = yarn
+	makedepends = git
 	depends = alsa-lib
 	depends = gconf
 	depends = gtk2
