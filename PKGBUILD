@@ -2,12 +2,12 @@
 # Maintainer: Thomas Guimbretiere <profmobius@mojang.com>
 pkgname=minecraft-launcher
 pkgver=2.0.579
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Minecraft Launcher"
 arch=('x86_64')
 url="https://mojang.com/"
 license=('All rights reserved')
-depends=('java-runtime=8' 'icu57')
+depends=('java-runtime=8' 'icu57' 'xorg-xrandr')
 source=(
 https://launcher.mojang.com/mc-staging/launcher/linux/5f8adda8401888c37be5e3c91b2f369fea3bacf2/x86_64/minecraft-launcher-2.0.579.tar.gz
 minecraft-launcher.desktop
