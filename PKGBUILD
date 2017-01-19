@@ -10,11 +10,10 @@ provides=('hunspell-ru')
 conflicts=('hunspell-ru')
 replaces=('hunspell-ru')
 arch=(any)
-url="http://extensions.libreoffice.org/extension-center/russian-spellcheck-dictionary.-based-on-works-of-aot-group"
+url="https://extensions.libreoffice.org/extensions/russian-spellcheck-dictionary.-based-on-works-of-aot-group"
 license=('LGPL')
 optdepends=('hunspell: the spell checking libraries and apps')
-source=(http://extensions.libreoffice.org/extension-center/russian-spellcheck-dictionary.-based-on-works-of-aot-group/pscreleasefolder.2011-09-06.6209385965/${pkgver}/${_realname}-${_pkgver}.oxt)
-#source=(http://extensions.libreoffice.org/extension-center/russian-dictionary-pack/releases/0.3.8/dict_pack_ru-aot-0-3-8.oxt)
+source=(https://extensions.libreoffice.org/extensions/russian-spellcheck-dictionary.-based-on-works-of-aot-group/${pkgver}/@@download/file/${_realname}-${_pkgver}.oxt)
 md5sums=('01f7f7cb8975029dca39cc144b75022c')
 
 build() {
