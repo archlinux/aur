@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
-cd /usr/lib/CLIQZ-MOZVER
+cd /usr/lib/CLIQZ
 exec ./CLIQZ
