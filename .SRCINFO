@@ -1,0 +1,17 @@
+pkgbase = mod_intercept_form_submit
+	pkgdesc = Apache module to intercept application's login form submission and run PAM authentication.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://www.adelton.com/apache/mod_intercept_form_submit/
+	arch = i686
+	arch = x86_64
+	license = apache-2.0
+	makedepends = pkgconfig
+	depends = apache
+	depends = mod_authnz_pam
+	depends = pam
+	source = https://fedorapeople.org/cgit/adelton/public_git/mod_intercept_form_submit.git/snapshot/mod_intercept_form_submit-1.1.0.tar.xz
+	sha1sums = 0698fd4d67a837d03f32d049bb75f1eda7ef13c3
+
+pkgname = mod_intercept_form_submit
+
