@@ -11,7 +11,7 @@ depends=('texlive-core')
 pkgdesc="A LaTeX package for drawing UML diagrams using pgf/tikz"
 url="http://www.ensta-paristech.fr/~kielbasi/tikzuml/index.php?lang=en"
 arch=('any')
-install=texlive-tikz-uml.install
+install="${pkgname}".install
 source=(http://perso.ensta-paristech.fr/~kielbasi/tikzuml/var/files/src/tikzuml-v${pkgver}-${_reldate}.tbz)
 md5sums=('8065a79c8cdf6fc99251d569dbaa65ec')
 
