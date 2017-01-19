@@ -8,9 +8,10 @@ pkgdesc="A work-in-progress implementation of a EGL External Platform library to
 arch=('i686' 'x86_64')
 url="https://github.com/NVIDIA/$_pkgname"
 license=('MIT')
-depends=('mesa' 'wayland' 'eglexternalplatform-git')
+depends=('mesa' 'wayland' 'eglexternalplatform')
 makedepends=('git')
-conflicts=('nvidia-utils<378.09')
+conflicts=("$_pkgname" 'nvidia-utils<378.09')
+provides=("$_pkgname")
 source=("git+$url.git")
 md5sums=('SKIP')
 
