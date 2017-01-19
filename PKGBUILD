@@ -3,7 +3,7 @@
 pkgname=gog-spacechem
 _pkgname=spacechem
 pkgver=2.0.0.5
-pkgrel=5
+pkgrel=6
 pkgdesc="A puzzle game where you build elaborate chemical factories."
 url="http://www.zachtronics.com/spacechem/"
 license=('custom')
@@ -35,7 +35,7 @@ prepare(){
 
     cd "${srcdir}"
     echo $PWD
-    patch -Np0 < ../gog-spacechem.patch
+    patch -Np0 < ./gog-spacechem.patch
 
     cd "${srcdir}/data/noarch"
     sed -r -i \

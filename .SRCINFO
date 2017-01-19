@@ -1,7 +1,7 @@
 pkgbase = gog-spacechem
 	pkgdesc = A puzzle game where you build elaborate chemical factories.
 	pkgver = 2.0.0.5
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.zachtronics.com/spacechem/
 	arch = i686
 	arch = x86_64
