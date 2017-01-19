@@ -2,7 +2,7 @@
 
 pkgbase=vis-standalone-git
 pkgname=(vis-standalone-git vis-single-git)
-pkgver=0.2.r686.ge247d57
+pkgver=0.2.r689.g0803eef
 pkgrel=1
 _pkgver_libmusl=1.1.16
 _pkgver_ncurses=6.0
@@ -32,8 +32,7 @@ source=('git://github.com/martanne/vis.git'
         "attr-${_pkgver_attr}.tar.gz::https://download.savannah.gnu.org/releases/attr/attr-${_pkgver_attr}.src.tar.gz"
         "attr-${_pkgver_attr}.tar.gz.sig::https://download.savannah.gnu.org/releases/attr/attr-${_pkgver_attr}.src.tar.gz.sig"
         "acl-${_pkgver_acl}.tar.gz::https://download.savannah.gnu.org/releases/acl/acl-${_pkgver_acl}.src.tar.gz"
-        "acl-${_pkgver_acl}.tar.gz.sig::https://download.savannah.gnu.org/releases/acl/acl-${_pkgver_acl}.src.tar.gz.sig"
-        '0001-standalone-work-around-borked-dependencies-in-acl.patch')
+        "acl-${_pkgver_acl}.tar.gz.sig::https://download.savannah.gnu.org/releases/acl/acl-${_pkgver_acl}.src.tar.gz.sig")
 sha256sums=('SKIP'
             'SKIP'
             '937185a5e5d721050306cf106507a006c3f1f86d86cd550024ea7be909071011'
@@ -46,7 +45,6 @@ sha256sums=('SKIP'
             '25772f653ac5b2e3ceeb89df50e4688891e21f723c460636548971652af0a859'
             'SKIP'
             '179074bb0580c06c4b4137be4c5a92a701583277967acdb5546043c7874e0d23'
-            'SKIP'
             'SKIP')
 
 MAKEFLAGS="-j1"
@@ -65,8 +63,6 @@ prepare() {
 		SOURCE="$(basename ${SOURCE})"
 		ln -s ../../../${SOURCE} dependency/sources/${SOURCE}
 	done
-
-	patch -Np1 < ../0001-standalone-work-around-borked-dependencies-in-acl.patch
 }
 
 pkgver() {
