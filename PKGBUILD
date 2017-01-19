@@ -1,22 +1,24 @@
+# Maintainer:  Joost Bremmer <toost.b@gmail.com>
+# Contributor: lukebond
+
 pkgname=neovim-ctrlp
-pkgver=1.79
-_gitcommit=c1646e3
+pkgver=1.80
 pkgrel=1
 pkgdesc="Full path fuzzy file, buffer, mru, tag, ... finder"
 arch=('any')
-url="http://kien.github.com/ctrlp.vim/"
+url="http://ctrlpvim.github.com/ctrlp.vim/"
 license=('custom:vim')
 depends=('neovim')
 optdepends=('ctags: for searching tags')
 groups=('neovim-plugins')
 install=nvim-doc.install
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/kien/ctrlp.vim/tarball/$_gitcommit"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ctrlpvim/ctrlp.vim/archive/$pkgver.tar.gz"
   LICENSE)
-sha1sums=('9d9f7631a1ac579eb0c895a8707fb0e7111736bb'
-          'be741035a33a75861fa14fcbd634d4174912c540')
+sha256sums=('65762884e4787bb6c13812ea2a0b82ec3bb1e5e552a43aea4a0e9700c2f0b1f2'
+            '446c67d93c43addf076fe103a71844c2d875d478f82186436567dd221f2652f3')
 
 package() {
-  cd "${srcdir}/kien-ctrlp.vim-${_gitcommit}"
+  cd "${srcdir}/ctrlp.vim-${pkgver}"
 
   installpath="${pkgdir}/usr/share/nvim/runtime"
 

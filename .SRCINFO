@@ -1,18 +1,18 @@
 pkgbase = neovim-ctrlp
 	pkgdesc = Full path fuzzy file, buffer, mru, tag, ... finder
-	pkgver = 1.79
+	pkgver = 1.80
 	pkgrel = 1
-	url = http://kien.github.com/ctrlp.vim/
+	url = http://ctrlpvim.github.com/ctrlp.vim/
 	install = nvim-doc.install
 	arch = any
 	groups = neovim-plugins
 	license = custom:vim
 	depends = neovim
 	optdepends = ctags: for searching tags
-	source = neovim-ctrlp-1.79.tar.gz::https://github.com/kien/ctrlp.vim/tarball/c1646e3
+	source = neovim-ctrlp-1.80.tar.gz::https://github.com/ctrlpvim/ctrlp.vim/archive/1.80.tar.gz
 	source = LICENSE
-	sha1sums = 9d9f7631a1ac579eb0c895a8707fb0e7111736bb
-	sha1sums = be741035a33a75861fa14fcbd634d4174912c540
+	sha256sums = 65762884e4787bb6c13812ea2a0b82ec3bb1e5e552a43aea4a0e9700c2f0b1f2
+	sha256sums = 446c67d93c43addf076fe103a71844c2d875d478f82186436567dd221f2652f3
 
 pkgname = neovim-ctrlp
 
