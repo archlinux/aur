@@ -13,10 +13,11 @@ license=('GPL')
 depends=('kdelibs4support')
 makedepends=('cmake' 'extra-cmake-modules' 'kdoctools' 'qt5-tools')
 conflicts=("$_pkgname")
-source=("${_pkgname}-${pkgver}.tar.bz2::http://kde-apps.org/CONTENT/content-files/156421-${_pkgname}-${pkgver}.tar.bz2"
+source=("${_pkgname}-${pkgver}.tar.bz2::https://dl.opendesktop.org/api/files/download/id/1460972065/156421-${_pkgname}-${pkgver}.tar.bz2"
         "port_to_qt5.patch")
 install="${pkgname}.install"
-sha256sums=('aefb7296a5207e13c4f3624acb6fd3ea359972fbee7f618686f970036067f476' 'SKIP')
+md5sums=('200c6a1109e6cc77694c4d147e9d8763'
+            '0c1dccca83fcdb69d006d901f4ecf5cd')
 
 prepare() {
     cd "${srcdir}"/${_pkgname}
