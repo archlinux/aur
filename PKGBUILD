@@ -6,7 +6,6 @@ pkgver=0.1.25
 _pythonz_ver=1.11.3
 _resumableurl_ver=0.1.4
 pkgrel=1
-
 pkgdesc="Python Env Wrapper, a set of tools to manage multiple virtual environments, with its hard dependencies"
 url="https://github.com/berdario/pew"
 arch=('any')
@@ -14,8 +13,8 @@ license=('MIT')
 depends=('python' 'python-virtualenv' 'python-virtualenv-clone')
 makedepends=('python' 'python-setuptools')
 optdepends=('libtinfo: for running pypy')
-replaces=('pew' 'python-pythonz' 'python-pythonz-bd' 'python-resumable-urlretrieve')
-conflicts=('pew' 'python-pythonz' 'python-pythonz-bd' 'python-resumable-urlretrieve')
+replaces=('python-pew' 'python-pythonz' 'python-pythonz-bd' 'python-resumable-urlretrieve')
+conflicts=('python-pew' 'python-pythonz' 'python-pythonz-bd' 'python-resumable-urlretrieve')
 source=("https://github.com/berdario/pew/archive/${pkgver}.tar.gz"
 "https://github.com/berdario/resumable-urlretrieve/archive/${_resumableurl_ver}.tar.gz"
 "https://pypi.python.org/packages/41/66/477eef589811b02559a7dc530a599eb5315938182a5437ae34f25ded7403/pythonz-bd-${_pythonz_ver}.tar.gz"
