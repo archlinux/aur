@@ -1,0 +1,8 @@
+post_install() {
+    ln -s /usr/share/crossftp/crossftp.sh /usr/bin/crossftp
+}
+
+pre_remove() {
+    rm /usr/bin/crossftp
+}
+
