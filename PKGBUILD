@@ -1,6 +1,8 @@
 # Contributor: naquad <naquad@gmail.com>
+# Contributor: TJM <tommy.mairo@gmail.com> (0xC62463BE9F6B2D7D)
+
 pkgname=http_load
-pkgver=2014.8.14
+pkgver=2016.03.09
 pkgrel=1
 pkgdesc="http_load is a webserver performance testing tool."
 arch=(i686 x86_64)
@@ -9,9 +11,9 @@ license=('GPL')
 groups=('network')
 makedepends=("pkgconfig")
 provides=('http_load')
-_reldate=14aug2014
+_reldate=09Mar2016
 source=("http://www.acme.com/software/http_load/http_load-$_reldate.tar.gz")
-md5sums=('44514f4f1f2a4791be6f2e003618ae99')
+sha256sums=("5a7b00688680e3fca8726dc836fd3f94f403fde831c71d73d9a1537f215b4587")
 
 
 build() {
@@ -28,4 +30,3 @@ package(){
   cp http_load.1 "$pkgdir"/usr/share/man/man1
 }
 
-# vim:set ts=2 sw=2 et:

@@ -1,6 +1,6 @@
 pkgbase = http_load
 	pkgdesc = http_load is a webserver performance testing tool.
-	pkgver = 2014.8.14
+	pkgver = 2016.03.09
 	pkgrel = 1
 	url = http://www.acme.com/software/http_load/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = http_load
 	license = GPL
 	makedepends = pkgconfig
 	provides = http_load
-	source = http://www.acme.com/software/http_load/http_load-14aug2014.tar.gz
-	md5sums = 44514f4f1f2a4791be6f2e003618ae99
+	source = http://www.acme.com/software/http_load/http_load-09Mar2016.tar.gz
+	sha256sums = 5a7b00688680e3fca8726dc836fd3f94f403fde831c71d73d9a1537f215b4587
 
 pkgname = http_load
 
