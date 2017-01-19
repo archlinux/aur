@@ -1,9 +1,10 @@
 # Maintainer: Auguste Pop < auguste [at] gmail [dot] com >
 # Contributor: P. Badredin <p dot badredin at gmail dot com>
 # Contributor: Justin Blanchard <UncombedCoconut at gmail dot com>
+# Contributor: user6553591 <Message on Reddit>
 
 pkgname=stockfish
-pkgver=7
+pkgver=8
 pkgrel=1
 epoch=1
 pkgdesc="A strong chess engine written by Tord Romstad, Marco Costalba, Joona Kiiski"
@@ -12,8 +13,8 @@ url="http://stockfishchess.org/"
 license=('GPL3')
 install=${pkgname}.install
 _pkgfilename=${pkgname}-${pkgver}-src
-source=("http://stockfish.s3.amazonaws.com/${_pkgfilename}.zip")
-md5sums=('41f1410820192466d15166712181ae03')
+source=("https://${pkgname}.s3.amazonaws.com/${_pkgfilename}.zip")
+sha512sums=('4dcc8c6e975367e96d5b4e76c241094e1bade53fd19fa29320a5df10177ff5ae04844ca7ae9f9cfe929aa1341d898aabbbe523bbdab4c5beef75ca8332ce50c1')
 
 build()
 {
