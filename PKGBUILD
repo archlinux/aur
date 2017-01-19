@@ -5,8 +5,8 @@
 pkgbase=python-flickrapi
 pkgname=(python-flickrapi python2-flickrapi)
 _pkgname=flickrapi
-pkgver=2.1.2
-pkgrel=3
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="The official Python interface to the Flickr API"
 arch=('any')
 url="http://stuvel.eu/flickrapi"
@@ -14,8 +14,8 @@ license=('Python')
 makedepends=('python-docutils' 'python2-docutils' 'python-setuptools' 'python2-setuptools' 'python-requests-toolbelt' 'python2-requests-toolbelt'
              'python-requests-oauthlib' 'python2-requests-oauthlib' 'python-six' 'python2-six')
 checkdepends=('python-nose' 'python2-nose')
-source=("http://pypi.python.org/packages/source/f/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('210ea986ff111195a97d8416d136fe38b98247640be954f761f89e1df5ea712d5d8d69cdae40bf3d9e569baf01fc83510fbc9c5da03a93d4456163101a829d96')
+source=("https://pypi.io/packages/source/f/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('53f78436ab921d9e400d1fdf105f932e0bbf4bb1b4ac69b77dbbe52b59b10c7b21b95633dfe5405122e0d95fb3631fe61f9fc8dd72fe8782837c14075a6a06da')
 
 prepare() {
   cp -a $_pkgname-$pkgver{,-py2}
@@ -50,8 +50,6 @@ package_python-flickrapi() {
 
   python setup.py install --root=$pkgdir/ --optimize=1
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-
-  rm "$pkgdir"/usr/lib/python3.6/site-packages/{README,LICENSE,UPGRADING}.txt
 }
 
 package_python2-flickrapi() {
@@ -61,6 +59,4 @@ package_python2-flickrapi() {
 
   python2 setup.py install --root=$pkgdir/ --optimize=1
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-
-  rm "$pkgdir"/usr/lib/python2.7/site-packages/{README,LICENSE,UPGRADING}.txt
 }
