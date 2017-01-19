@@ -2,7 +2,7 @@
 pkgname='vector-web'
 _upstream_version='0.9.6'
 pkgver="${_upstream_version//-/_}" # sometimes upstream uses hyphens; we can't
-pkgrel=1
+pkgrel=2
 pkgdesc='A glossy Matrix collaboration client for the web'
 arch=('any')
 url="https://github.com/vector-im/$pkgname"
