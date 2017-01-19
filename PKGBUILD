@@ -1,7 +1,7 @@
 # Maintainer: Quint Guvernator <quint@guvernator.net>
 
 pkgname=w3
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="$pkgname: the wee weechat wrapper"
 url="https://github.com/qguv/$pkgname"
@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL')
 depends=('weechat' 'python')
 source=("https://github.com/qguv/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('b9230235405923b22c800b0f5144d621a92726cb051a213de8c7ec166b20987c')
+sha256sums=('53dfa609e6121c224c2eb2dc9c23d6fd7d1fe604943134bdd7af94103a75e286')
 
 package() {
   cd "$srcdir/${pkgname}-$pkgver"
