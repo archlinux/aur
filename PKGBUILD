@@ -2,7 +2,7 @@
 
 pkgname=papirus-libreoffice-theme-git
 pkgver=20170119
-pkgrel=1
+pkgrel=2
 pkgdesc="Papirus theme for LibreOffice (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
 arch=('any')
