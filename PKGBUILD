@@ -10,8 +10,8 @@ url="https://www.adelton.com/apache/mod_authnz_pam/"
 depends=('apache'
 		'pam')
 makedepends=('pkgconfig')
-source=(https://github.com/adelton/mod_authnz_pam/archive/${pkgname}-${pkgver}.tar.gz)
-sha1sums=('18495384f2bb5c702f6a02b4a84043ded8f964a5')
+source=(https://fedorapeople.org/cgit/adelton/public_git/mod_authnz_pam.git/snapshot/${pkgname}-${pkgver}.tar.xz)
+sha1sums=('644c25da063ae560cea8e6a7abf61a62a516e9a5')
 
 build() {
 	cd "${pkgname}-${pkgname}-${pkgver}"
