@@ -2,14 +2,14 @@
 # Contributor: carstene1ns <url/mail: arch carsten-teibes de>
 
 pkgname=trackma-git
-pkgver=0.6.2
+pkgver=0.7.r5.ge7c5fc0
 pkgrel=1
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 arch=('any')
 url="http://z411.github.io/trackma/"
 license=('GPL3')
 depends=('python'
-    'lsof')
+         'python-pyinotify')
 
 makedepends=('python'
     'python-setuptools'
@@ -21,7 +21,7 @@ optdepends=('python-gobject: GTK frontend'
     'python-pillow:  thumbnail images for GUI frontends'
     'python-pyqt5:   Qt frontend'
     'python-urwid:   ncurses frontend'
-    'python-pyinotify: instant media recognition')
+    'lsof:           polling tracker/pyinotify alternative')
 
 source=(${pkgname}::"git+https://github.com/z411/${pkgname%-git}.git"
     "${pkgname%-git}-curses.desktop"
