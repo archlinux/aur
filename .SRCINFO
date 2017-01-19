@@ -1,13 +1,13 @@
 pkgbase = r-cran-rgl
 	pkgdesc = OpenGL 3D visualization module for R
-	pkgver = 0.95.1247
+	pkgver = 0.97.0
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/rgl/index.html
 	arch = any
 	license = GPL2
 	depends = r
-	source = http://cran.r-project.org/src/contrib/rgl_0.95.1247.tar.gz
-	md5sums = 4cd297d0e0f5f9380bbad8b810e21706
+	source = https://cran.r-project.org/src/contrib/rgl_0.97.0.tar.gz
+	md5sums = aa80ebab65cb81c1341ed468ff460922
 
 pkgname = r-cran-rgl
 
