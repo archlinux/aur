@@ -3,7 +3,7 @@
 
 pkgname=dnscrypt-proxy-git
 _pkgname=dnscrypt-proxy
-pkgver=1.9.2.2299.c00f10d
+pkgver=1.9.3.2307.ed45dd5
 pkgrel=1
 pkgdesc="Is a protocol for securing communications between a client and a DNS resolver"
 arch=('i686' 'x86_64')
