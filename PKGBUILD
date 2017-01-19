@@ -17,5 +17,5 @@ package() {
 	  cd "$srcdir/"
 
 	  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
-	  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+	  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
