@@ -6,7 +6,7 @@
 # Contributor: Michael Straube <straubem@gmx.de>
 
 pkgname=guayadeque
-pkgver=0.4.3
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='Lightweight music player'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ optdepends=('gst-plugins-good: Support for PulseAudio and additional file format
             'gst-libav: Support for additional file formats'
             'gvfs: Support for external devices')
 source=("https://github.com/anonbeat/guayadeque/archive/v${pkgver}.tar.gz")
-sha256sums=('43d925c6dc30c1f9e2e8182b10de6a9076d962877779f6b9e0194d1ee79a07d8')
+sha256sums=('a0c4eb9f0eb42e701880a1d196e847d68a3b443716a6240389fbfafef3f5d19c')
 
 _BUILDFLDR='localbuild'
 
