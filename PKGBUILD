@@ -1,7 +1,7 @@
 # Maintainer: cocreature <moritz.kiefer<at>purelyfunctional<dot>org>
 
 pkgname=carla-git
-pkgver=1.9.6.r496.ge07f144
+pkgver=1.9.6.r500.g0e81fd3
 pkgrel=1
 pkgdesc="Audio Plugin Host"
 arch=('i686' 'x86_64')
@@ -21,8 +21,7 @@ depends=("python-pyqt4"
          "zita-resampler"
          "clxclient"
          "ntk-git"
-         "qt5-base"
-         "libpng12")
+         "qt5-base")
 makedepends=('git')
 optdepends=("pygtk: NekoFilter UI"
             "zlib: extra native plugins"
@@ -39,15 +38,15 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
   sed 's/libpng12/libpng/' -i "source/Makefile.mk"
+  sed 's/libpng12/libpng/' -i "source/native-plugins/Makefile"
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  make
+  make EXPERIMENTAL_PLUGINS=true
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir/" PREFIX=/usr install
+  make EXPERIMENTAL_PLUGINS=true DESTDIR="$pkgdir/" PREFIX=/usr install
 }
-
