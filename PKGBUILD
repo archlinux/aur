@@ -3,7 +3,7 @@
 # Based on [multilib]'s lib32-nvidia-utils: https://www.archlinux.org/packages/multilib/x86_64/lib32-nvidia-utils/
 
 pkgname=('lib32-nvidia-utils-beta' 'lib32-nvidia-libgl-beta' 'lib32-opencl-nvidia-beta')
-pkgver=375.26
+pkgver=378.09
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -12,7 +12,7 @@ license=('custom:NVIDIA')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86-$pkgver"
 source=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/$_pkg.run")
-md5sums=('b0706e88ad173f6b9c7bd2e5a838c163')
+md5sums=('a55ef673b805549cd72f2e9d5b7a844a')
 
 _create_links() {
   # create missing soname links
@@ -82,6 +82,7 @@ package_lib32-nvidia-libgl-beta() {
   ln -s /usr/lib32/nvidia/libEGL.so.1 "$pkgdir"/usr/lib32/libEGL.so.1
   ln -s libEGL.so.1 "$pkgdir"/usr/lib32/libEGL.so.$pkgver
   ln -s libEGL.so.1 "$pkgdir"/usr/lib32/libEGL.so
+  ln -s libnvidia-egl-wayland.so.1.0.0 "$pkgdir"/usr/lib32/libnvidia-egl-wayland.so.1
 
   # OpenGL ES 1 (link)
   ln -s /usr/lib32/nvidia/libGLESv1_CM.so.1 "$pkgdir"/usr/lib32/libGLESv1_CM.so.1
@@ -123,7 +124,7 @@ package_lib32-nvidia-utils-beta() {
   install -Dm755 libEGL.so.1 "$pkgdir"/usr/lib32/nvidia/libEGL.so.1
   install -Dm755 libEGL_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libEGL_nvidia.so.$pkgver
   install -Dm755 libnvidia-eglcore.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-eglcore.so.$pkgver
-  install -Dm755 libnvidia-egl-wayland.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-egl-wayland.so.$pkgver
+  install -Dm755 libnvidia-egl-wayland.so.1.0.0 "$pkgdir"/usr/lib32/libnvidia-egl-wayland.so.1.0.0
 
   # OpenGL ES
   install -Dm755 libGLESv1_CM.so.1 "$pkgdir"/usr/lib32/nvidia/libGLESv1_CM.so.1
