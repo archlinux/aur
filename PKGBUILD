@@ -3,7 +3,7 @@
 pkgname=crispy-doom
 pkgdesc="Vanilla-compatible enhanced Doom engine"
 pkgver=3.5
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://fabiangreffrath.github.io/crispy-doom"
 license=('GPL2')
@@ -16,7 +16,7 @@ install=crispy-doom.install
 source=(https://github.com/fabiangreffrath/$pkgname/archive/$pkgname-$pkgver.tar.gz
         0001-man-docgen-simplecpp-Force-UTF-8-reading-and-writing.patch)
 sha256sums=('bbb257977b2c141591f12a1c335c861f81f012a8b5b5ac195159d19d532c73e3'
-            '53547aac735a88348aceb7fed70e0d7e6035601030ebafb9ce29fdb5f821028e')
+            'cf26a5f9fe89f86e89c491e428889fd06512e60dba25bb97d2c517dfde121a5d')
 
 prepare() {
   # GitHub's generated archive prefix kind of sucks.

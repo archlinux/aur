@@ -53,7 +53,7 @@ index 510c2ba2..d40e5c7b 100755
              else:
                  line = line.replace("@content", content)
 -                print(line.rstrip())
-+                sys.stdout.buffer.write(line.rstrip().encode('UTF-8'))
++                sys.stdout.buffer.write(line.rstrip().encode('UTF-8') + b'\n')
  
      finally:
          f.close()
@@ -62,7 +62,7 @@ index 510c2ba2..d40e5c7b 100755
  
      for t in targets:
 -        print(t.wiki_output())
-+        sys.stdout.buffer.write(t.wiki_output().encode('UTF-8'))
++        sys.stdout.buffer.write(t.wiki_output().encode('UTF-8') + b'\n')
  
  def plaintext_output(targets, template_file):
  
