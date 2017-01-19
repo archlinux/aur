@@ -1,0 +1,15 @@
+pkgbase = lidarquadtree-git
+	pkgdesc = Lidarquadtree is a library originally built and used for LAG software. It features disk caching of points to allow it to load potentially very huge datasets and still support spatial indexing, meaning it can be using for LAS processing.
+	pkgver = r384.6b0b2fb
+	pkgrel = 1
+	url = https://github.com/arsf/lag/tree/master/lidarquadtree
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = lzo
+	depends = laslib-git
+	source = git+https://github.com/arsf/lag.git
+	md5sums = SKIP
+
+pkgname = lidarquadtree-git
+
