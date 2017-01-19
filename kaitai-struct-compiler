@@ -1,0 +1,12 @@
+#!/bin/sh
+
+LIBS=/usr/share/java/kaitai-struct-compiler/*
+LIBS_STR=""
+
+for f in $LIBS
+do
+	LIBS_STR="$LIBS_STR:$f"
+done
+
+java -cp "$LIBS_STR" io.kaitai.struct.Main "$@"
+
