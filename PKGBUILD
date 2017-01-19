@@ -6,7 +6,7 @@ _pkgname=paraview
 _PkgName=ParaView
 _pkgver=5.2.0
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="ParaView is an open-source, multi-platform data analysis and visualization application"
 arch=('x86_64')
 url="http://www.paraview.org/"
@@ -33,4 +33,9 @@ package() {
   # Install script to set path
   install -Dm755 "${srcdir}/paraview.sh" \
     "${pkgdir}/etc/profile.d/paraview.sh"
+
+  # Symlink for desktop entries
+  mkdir -p "${pkgdir}/usr/share/applications"
+  ln -sf "${pkgdir}/opt/${_pkgname}/share/applications/${_pkgname}.desktop" \
+    "${pkgdir}/usr/share/applications/"
 }
