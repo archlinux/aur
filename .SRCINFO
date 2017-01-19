@@ -1,0 +1,39 @@
+pkgbase = openvpn-unroot-git
+	pkgdesc = Run OpenVPN without root privileges
+	pkgver = r1.f2e4844
+	pkgrel = 1
+	url = https://github.com/wknapik/openvpn-unroot
+	arch = any
+	license = MIT
+	checkdepends = bash>=4.4.0
+	checkdepends = bash-bats
+	checkdepends = coreutils
+	checkdepends = curl
+	checkdepends = docker
+	checkdepends = grep
+	checkdepends = make
+	checkdepends = openvpn
+	checkdepends = procps-ng
+	checkdepends = shellcheck
+	checkdepends = sudo
+	makedepends = git
+	depends = bash>=4.4.0
+	depends = coreutils
+	depends = findutils
+	depends = glibc
+	depends = grep
+	depends = iproute2
+	depends = openvpn
+	depends = sed
+	depends = shadow
+	depends = sudo
+	depends = util-linux
+	depends = which
+	optdepends = systemd
+	provides = openvpn-unroot
+	conflicts = openvpn-unroot
+	source = git+https://github.com/wknapik/openvpn-unroot.git
+	md5sums = SKIP
+
+pkgname = openvpn-unroot-git
+
