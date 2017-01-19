@@ -2,7 +2,7 @@
 
 pkgname=antibody
 pkgver=2.2.4
-pkgrel=2
+pkgrel=1
 pkgdesc="A faster and simpler antigen written in Golang."
 arch=('i686' 'x86_64')
 url="http://getantibody.github.io/"
@@ -17,5 +17,5 @@ package() {
 	  cd "$srcdir/"
 
 	  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
-	  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.md"
+	  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
