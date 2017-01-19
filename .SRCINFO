@@ -1,0 +1,16 @@
+pkgbase = gometalinter
+	pkgdesc = golang meta linter
+	pkgver = 1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	depends = go
+	depends = git
+	source = gometalinter
+	md5sums = d8d3640069c485ca415ab3adb18523ef
+
+pkgname = gometalinter
+

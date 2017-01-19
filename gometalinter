@@ -1,0 +1,3 @@
+#!/bin/bash
+
+PATH=$PATH:/usr/bin/gometalinters gometalinter.v1 "$@"
