@@ -1,33 +1,21 @@
 pkgname=amule-git
-pkgver=2.3.2.r8.20f3a3b
+pkgver=2.3.2.r35.047a55c93
 pkgrel=1
 pkgdesc='Client for the eD2k and Kad networks'
 arch=(i686 x86_64)
 url=http://amule.org/
 license=(GPL)
-depends=(
-#  boost-libs
-  crypto++
-  gd
-  geoip
-  libupnp
-  wxgtk2.8
-)
-makedepends=(
-#  boost
-  git
-)
+depends=(boost-libs crypto++ gd geoip libupnp wxgtk)
+makedepends=(boost git)
 conflicts=(amule)
 source=(
 git+https://github.com/amule-project/amule.git
-http://svgicons.o7a.net/unofficial/amule.png
 https://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/configure_ignore_gdlib-config_garbage.diff
 https://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/use_xdg-open_as_preview_default.diff
 https://anonscm.debian.org/cgit/pkg-amule/amule.git/plain/debian/patches/version_check.diff
 https://raw.githubusercontent.com/pld-linux/aMule/master/aMule-cas-datadir.patch
 )
 sha256sums=(SKIP
-            737873e5f29dabaca6f9ac96b612eda8cba0236b6618e380107ea7d1d7665b78
             594a667bac53d3c881523c8c1a49d622a0752d84e0601aef062a586493ba998e
             902f8f719c1c02335880621717f23c683da8edbb31add75d3e1267b190e03b9c
             7bf39a64a723ab3e55ccfef93df2ec9cdd8108e56aa0733a4412755931cb3244
@@ -41,9 +29,6 @@ pkgver() {
 
 prepare() {
   cd amule/
-
-  cp $srcdir/amule.png ./
-  sed -i s/amule.xpm/amule.png/ Makefile.am
 
   patch -Np1 < $srcdir/aMule-cas-datadir.patch
   sed -i 's\/usr/share/fonts/corefonts/times.ttf\/usr/share/fonts/TTF/DejaVuSerif.ttf\
@@ -64,19 +49,18 @@ build() {
   local confopts=(
     --disable-debug
     --disable-rpath
+    --enable-alc
     --enable-alcc
-    --enable-amule-daemon
     --enable-amulecmd
+    --enable-amule-gui
     --enable-cas
     --enable-ccache
     --enable-geoip
     --enable-mmap
     --enable-optimize
-    --enable-webserver
-    --enable-xas
+    --enable-wxcas
     --prefix=/usr
-#    --with-boost
-    --with-wx-config=wx-config-2.8
+    --with-boost
   )
 
   ./configure ${confopts[@]}
@@ -84,13 +68,14 @@ build() {
   make
 }
 
+check() {
+  cd amule/
+
+  make check
+}
+
 package() {
   cd amule/
 
   make DESTDIR=$pkgdir install
-
-  install -m644 *.txt docs/{*.dia,AUTHORS,COPYING,README.*} README* $pkgdir/usr/share/doc/amule/
-
-  install -d $pkgdir/usr/share/doc/amule/cas/
-  install -m644 src/utils/cas/README $pkgdir/usr/share/doc/amule/cas/
 }
