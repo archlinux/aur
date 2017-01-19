@@ -5,7 +5,7 @@
 _ver=1.17
 _pkgbase=mate-power-manager
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=5
 pkgdesc="Power management tool for the MATE desktop"
 url="http://mate-desktop.org"
@@ -21,7 +21,7 @@ optdepends=('mate-panel: Set brightness and inhibit power management from the pa
             'yelp: for reading MATE help documents')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 groups=('mate-extra')
-sha1sums=('dbd991820c7e332bd2d01ee519466a3c65f1d662')
+sha1sums=('c85789b963f5217df16050ab9861e8dfa3120c66')
 
 prepare() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
