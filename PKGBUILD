@@ -8,7 +8,7 @@ pkgname=('elektra-git'
          'java-elektra-git'
          'ruby-elektra-git'
          )
-pkgver=0.8.19.r8846.83e0ea113
+pkgver=0.8.19.r8926.b9456f4ac
 pkgrel=1
 pkgdesc="A universal hierarchical configuration store. (GIT version)"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ makedepends=('qt5-declarative'
              'git'
              'cmake'
              'boost'
-             'botan-1.10'
+             'botan1.10'
              'doxygen'
              'graphviz'
              'swig'
@@ -35,7 +35,6 @@ makedepends=('qt5-declarative'
              'jna'
              'curl'
              'ruby'
-             'hicolor-icon-theme'
              )
 provides=('elektra')
 conflicts=('elektra')
@@ -106,9 +105,11 @@ package_elektra-git() {
   # fix references to SRCDIR
   for i in $(find ${pkgdir}/usr/share/doc -type f); do sed "s|${srcdir}|/usr/share/doc|g" -i ${i} ;done
 
+
   rm -fr "${pkgdir}/usr/lib/ruby"
   rm -fr "${pkgdir}/usr/lib/lua"
-  rm -fr "${pkgdir}/usr/lib/"python*
+  rm -fr "${pkgdir}/$(python -c "import os; import inspect; print(os.path.dirname(inspect.getfile(inspect)))")"
+  rm -fr "${pkgdir}/$(python2 -c "import os; import inspect; print(os.path.dirname(inspect.getfile(inspect)))")"
 
   rm -fr "${pkgdir}/usr/lib/elektra/tool_exec/gen"
   rm -fr "${pkgdir}/usr/lib/elektra/tool_exec/find-tools"
