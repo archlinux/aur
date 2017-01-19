@@ -1,6 +1,6 @@
 pkgbase = xargo
 	pkgdesc = Effortless cross compilation of Rust programs to custom bare-metal targets like ARM Cortex-M
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/japaric/xargo
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = xargo
 	makedepends = cargo
 	depends = rustup
 	depends = gcc-libs-multilib
-	source = https://github.com/japaric/xargo/archive/v0.3.3.zip
-	sha256sums = c5f761907b144e2d637085afe368beabceeacbf659c8f784afd197ced3742ced
+	source = https://github.com/japaric/xargo/archive/v0.3.4.zip
+	sha256sums = 20264d9bdb94fa3c76f7c1071c15f9bc7d2ae17c7da3bf3dc8a5edf672d32786
 
 pkgname = xargo
 
