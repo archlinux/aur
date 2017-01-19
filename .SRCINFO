@@ -8,6 +8,7 @@ pkgbase = giza-pp-git
 	license = GPL2
 	makedepends = gcc
 	makedepends = make
+	makedepends = git
 	depends = tcsh
 	provides = giza
 	conflicts = mgiza-git
