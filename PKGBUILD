@@ -2,16 +2,16 @@
 
 _pkgname=terminal_velocity
 pkgname=terminal_velocity-git
-pkgver=0.102.9062e85
+pkgver=0.102.1beb614
 pkgrel=1
 pkgdesc="A fast note-taking app for the UNIX terminal (patched)"
 arch=('any')
-url="https://github.com/seanh/terminal_velocity"
+url="https://github.com/vhp/terminal_velocity"
 license=('GPL')
 depends=("python2-urwid" "python2-chardet")
 makedepends=('git')
 source=(
-  'git://github.com/seanh/terminal_velocity.git'
+  'git://github.com/vhp/terminal_velocity.git'
   '001_fix_shell_escape.patch'
   '002_sort_found_notes.patch'
 )
