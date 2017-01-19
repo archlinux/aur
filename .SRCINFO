@@ -1,6 +1,6 @@
 pkgbase = smplayer-svn
 	pkgdesc = Advanced front-end for MPlayer/MPV
-	pkgver = 16.4.0.7864.r7958
+	pkgver = 16.11.0.8339.r8377
 	pkgrel = 1
 	url = http://smplayer.sourceforge.net/
 	install = smplayer-svn.install

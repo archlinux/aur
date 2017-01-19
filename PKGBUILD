@@ -2,7 +2,7 @@
 # Contributors: Det, goetzc, Ner0, Lari Tikkanen, oke3, Flamelab, WAntilles
 
 pkgname=smplayer-svn
-pkgver=16.4.0.7864.r7958
+pkgver=16.11.0.8339.r8377
 pkgrel=1
 pkgdesc="Advanced front-end for MPlayer/MPV"
 arch=('i686' 'x86_64')
