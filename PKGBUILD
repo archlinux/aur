@@ -2,7 +2,7 @@
 # Contributor: Kevin Dodd <jesin00 at gmail dot com>
 
 pkgname=clustal-omega
-pkgver=1.2.1
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Protein sequence alignment program"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('glib2' 'argtable')
 source=("http://www.clustal.org/omega/${pkgname}-${pkgver}.tar.gz")
 options=(libtool staticlibs)
-sha1sums=('50f67eb3244c25c9380e7afef0e157161535121b')
+sha1sums=('9ff2c88df0f488de61f80d997198700407ac6c04')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
