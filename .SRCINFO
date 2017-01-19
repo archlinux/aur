@@ -1,0 +1,21 @@
+pkgbase = lag-git
+	pkgdesc = LAG is a software for visualisation, analysis and processing of LiDAR data.
+	pkgver = r384.6b0b2fb
+	pkgrel = 1
+	url = https://github.com/arsf/lag
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = laslib-git
+	depends = lidarquadtree-git
+	depends = boost
+	depends = gtkmm
+	depends = gtkglextmm
+	depends = libgeotiff
+	source = git+https://github.com/arsf/lag.git
+	source = 0001-bugfix-lag.cpp-fix-opengl-context-creation.patch
+	md5sums = SKIP
+	md5sums = 794eb60e1fcb9bfcc5a934a70709d87f
+
+pkgname = lag-git
+
