@@ -2,7 +2,7 @@
 
 pkgname=ttf-exljbris
 pkgver=1.1
-pkgrel=5
+pkgrel=6
 pkgdesc='A collection of free opentype fonts by Jos Buivenga. Includes Delicious, Diavlo, Fontin, Fontin Sans and Tallys'
 arch=('i686' 'x86_64')
 license=('custom')
@@ -20,6 +20,11 @@ sha256sums=('e9d5ce8e7c8dbf521727bddfbbe1e947fb28f5a0143ee7f5287f45e5beb70ed2'
 	'8b04ea509ec5fa8ddf921c94ba1824130071d16b7f83b09bc257b9311ff65a6e'
 	'c0b951253e07557590b3dc2c7ffea19d553b3f5bf34d45f80b4114d90e527bad'
 	'ea29b01be55f6498af65c3553fb84d67babd881ac382697ba4d6a2e7ff1af5b0')
+
+prepare() {
+	# remove hidden file
+	find -type f -name ".*" -delete
+}
 
 package() {
 	mkdir -p ${pkgdir}/usr/share/fonts/OTF
