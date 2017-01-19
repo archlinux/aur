@@ -1,8 +1,8 @@
 # Maintainer: Felipe Morales <hel.sheep@gmail.com>
 _pkgname=plotinus
 pkgname=$_pkgname-git
-pkgver=r2.aa73741
-pkgrel=1
+pkgver=r2
+pkgrel=2
 pkgdesc="A searchable command palette in every modern GTK+ application"
 arch=(any)
 url="http://github.com/p-e-w/plotinus"
