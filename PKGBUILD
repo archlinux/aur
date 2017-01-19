@@ -2,8 +2,8 @@
 
 _pkgname=terminal_velocity
 pkgname=terminal_velocity-git
-pkgver=0.96.5667177
-pkgrel=3
+pkgver=0.102.9062e85
+pkgrel=1
 pkgdesc="A fast note-taking app for the UNIX terminal (patched)"
 arch=('any')
 url="https://github.com/seanh/terminal_velocity"
@@ -16,7 +16,7 @@ source=(
   '002_sort_found_notes.patch'
 )
 sha1sums=('SKIP'
-          '7b04f0f28a4801931f7a0e499f5131d5a5c3653c'
+          '92addaf76d635bf0ece018c8b35bb6a70740a1ae'
           '426613e5620251c37854e489b21e4790c6c7df3b')
 
 pkgver() {
