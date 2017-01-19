@@ -1,0 +1,14 @@
+pkgbase = texlive-tikz-uml
+	pkgdesc = A LaTeX package for drawing UML diagrams using pgf/tikz
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.ensta-paristech.fr/~kielbasi/tikzuml/index.php?lang=en
+	install = texlive-tikz-uml.install
+	arch = any
+	license = GPL
+	depends = texlive-core
+	source = http://perso.ensta-paristech.fr/~kielbasi/tikzuml/var/files/src/tikzuml-v1.0-2016-03-29.tbz
+	md5sums = 8065a79c8cdf6fc99251d569dbaa65ec
+
+pkgname = texlive-tikz-uml
+
