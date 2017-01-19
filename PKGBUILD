@@ -5,7 +5,7 @@
 _ver=1.17
 _pkgbase=mate-control-center
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=5
 pkgdesc="The Control Center for MATE"
 url="http://mate-desktop.org"
@@ -23,7 +23,7 @@ makedepends=('docbook2x' 'mate-common-dev' 'yelp-tools' 'libmatekbd' 'libunique3
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('09791e63894221ee005d51b4589e6c5cf6c4ccfc')
+sha1sums=('146f6319521cb51559bf26e6ded11dbd63d92b3a')
 
 prepare() {
     cd "${srcdir}"
