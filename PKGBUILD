@@ -5,28 +5,32 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=libpulse-nosystemd
-_pkgbase=pulseaudio
 pkgdesc="Client library for PulseAudio"
-pkgver=9.0
+pkgver=10.0
 pkgrel=1
 arch=(i686 x86_64)
 url="http://www.freedesktop.org/wiki/Software/PulseAudio"
 license=(LGPL)
-depends=(dbus libasyncns libcap libxtst libsm libsndfile json-c)
-makedepends=(libasyncns libcap attr libxtst libsm libsndfile libtool rtkit
-             speexdsp tdb dbus intltool orc json-c gtk3 check libsoxr)
+depends=(dbus libasyncns libcap libxtst libsm libsndfile)
+makedepends=(attr libtool rtkit speexdsp tdb intltool orc gtk3 check libsoxr)
 provides=("libpulse=${pkgver}")
 conflicts=('libpulse')
 replaces=('libpulse')
 backup=(etc/pulse/client.conf)
 options=(!emptydirs)
-source=(http://freedesktop.org/software/$_pkgbase/releases/$_pkgbase-$pkgver.tar.xz
+_commit=84952e6a092b6a0c5b153bd7a4f6e490810681c8  # tags/v10.0^0
+source=("git+https://anongit.freedesktop.org/git/pulseaudio/pulseaudio#commit=$_commit"
         padsp-lib32.patch)
-sha256sums=('c3d3d66b827f18fbe903fe3df647013f09fc1e2191c035be1ee2d82a9e404686'
+sha256sums=('SKIP'
             '7832fc59df76538ff10aedd297c03cb7ff117235da8bfad26082994bb5b84332')
 
+prepare() {
+  cd pulseaudio
+  NOCONFIGURE=1 ./bootstrap.sh
+}
+
 build() {
-  cd $_pkgbase-$pkgver
+  cd pulseaudio
 
   DATADIRNAME=share ./configure --prefix=/usr \
     --sysconfdir=/etc \
@@ -50,7 +54,7 @@ build() {
 }
 
 package() {
-  cd $_pkgbase-$pkgver
+  cd pulseaudio
   make -j1 DESTDIR="$pkgdir"/temp install
 
   cd "$pkgdir"
