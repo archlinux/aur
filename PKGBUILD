@@ -3,8 +3,8 @@
 _pkgnamefmt=LibreOffice
 _pkgname=libreoffice
 pkgname=${_pkgname}-dev-bin
-_LOver=5.3.0.1
-pkgver=5.3.0.1
+_LOver=5.3.0.2
+pkgver=5.3.0.2
 _basever=5.3
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -38,8 +38,8 @@ provides=('libreoffice' 'libreoffice-en-US')
 
 source_i686=("http://dev-builds.libreoffice.org/pre-releases/rpm/x86/${_pkgnamefmt}_${_LOver}_Linux_x86_rpm.tar.gz")
 source_x86_64=("http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/${_pkgnamefmt}_${_LOver}_Linux_x86-64_rpm.tar.gz")
-sha256sums_i686=('74b697d07e084bea82c0436d590b9abd1784d27810d13e5f049ac93442d60164')
-sha256sums_x86_64=('0e37e1ac084a66105bbe3939848d2d6bef6382f0a173893a3604e2c9c07b5e7e')
+sha256sums_i686=('de0c52df1a526a90a216b4924221f1c9e7503ca4a0083cbb8c00212ed605e7c2')
+sha256sums_x86_64=('9b2e679d015ba3fa4218b95104031391d3732c80f901ee252c9a4e23923fe233')
 
 package() {
 	cd ${_pkgnamefmt}_${_LOver}*/RPMS
