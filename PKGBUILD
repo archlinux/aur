@@ -2,7 +2,7 @@
 
 _pkgname=terminal_velocity
 pkgname=terminal_velocity-git
-pkgver=0.102.1beb614
+pkgver=0.1a7.r19.g1beb614
 pkgrel=1
 pkgdesc="A fast note-taking app for the UNIX terminal (patched)"
 arch=('any')
@@ -21,7 +21,7 @@ sha1sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  echo "0.$(git rev-list --count HEAD).$(git describe --always)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
