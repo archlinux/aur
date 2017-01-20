@@ -8,6 +8,7 @@ pkgbase = git-series
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	makedepends = cmake
 	depends = git
 	source = https://github.com/git-series/git-series/archive/0.9.1.tar.gz
 	sha256sums = c0362e19d3fa168a7cb0e260fcdecfe070853b163c9f2dfd2ad8213289bc7e5f
