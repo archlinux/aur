@@ -4,7 +4,7 @@
 # Contributor (Arch): Nicolas Pouillard <nicolas.pouillard@gmail.com>
 
 pkgname=tahoe-lafs
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="Secure, decentralized, and fault-tolerant filesystem."
 url='https://tahoe-lafs.org/trac/tahoe-lafs'
@@ -46,7 +46,7 @@ source=("https://tahoe-lafs.org/downloads/tahoe-lafs-$pkgver.tar.bz2"
         "https://tahoe-lafs.org/downloads/tahoe-lafs-$pkgver.tar.bz2.asc")
 
 # https://tahoe-lafs.org/downloads/tahoe-release-signing-gpg-key.asc
-sha256sums=('e4a97c12cde3148d3921b8dfca3bfc73eede0b466f082afa817a8f438de72477'
+sha256sums=('7a2eeb0522d888cd98887605837827ab55f43ff058176aae432884eae50c2e75'
             'SKIP')
 
 validpgpkeys=('E34E62D06D0E69CFCA4179FFBDE0D31D68666A7A')
