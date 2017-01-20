@@ -1,7 +1,7 @@
 # Maintainer: Abdó Roig-Maranges <abdo.roig@gmail.com>
 
 pkgname=git-series
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Git extension that tracks changes to a patch series over time"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('git')
 makedepends=('rust' 'cargo')
 optdepends=()
 source=("https://github.com/git-series/git-series/archive/${pkgver}.tar.gz")
-sha256sums=('dcc8957d83cf79e63a6baa3f2ece8862839767305e4a0a7820709d362eac89d5')
+sha256sums=('c0362e19d3fa168a7cb0e260fcdecfe070853b163c9f2dfd2ad8213289bc7e5f')
 
 build() {
   cd "$srcdir/git-series-${pkgver}"
