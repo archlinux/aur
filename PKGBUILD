@@ -2,13 +2,13 @@
 
 pkgname=pogo
 pkgver=0.8.7
-pkgrel=3
+pkgrel=4
 pkgdesc='Plays your music. Nothing else.'
 arch=('any')
 url='https://github.com/jendrikseipp/pogo'
 license=('GPL')
 depends=('pygtk' 'gstreamer0.10-python' 'gstreamer0.10-base-plugins' 'mutagen'
-         'python2-dbus' 'python2-pillow')
+         'python2-dbus' 'python2-pillow' 'gtk2')
 optdepends=('python2-notify: desktop notifications'
             'gnome-settings-daemon: GNOME media keys'
             'pulseaudio: PulseAudio support'

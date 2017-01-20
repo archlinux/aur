@@ -1,7 +1,7 @@
 pkgbase = pogo
 	pkgdesc = Plays your music. Nothing else.
 	pkgver = 0.8.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jendrikseipp/pogo
 	arch = any
 	license = GPL
@@ -11,6 +11,7 @@ pkgbase = pogo
 	depends = mutagen
 	depends = python2-dbus
 	depends = python2-pillow
+	depends = gtk2
 	optdepends = python2-notify: desktop notifications
 	optdepends = gnome-settings-daemon: GNOME media keys
 	optdepends = pulseaudio: PulseAudio support
