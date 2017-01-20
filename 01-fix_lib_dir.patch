@@ -1,0 +1,12 @@
+diff -aur kaitai-struct-compiler-0.5.pristine/bin/kaitai-struct-compiler kaitai-struct-compiler-0.5.new/bin/kaitai-struct-compiler
+--- kaitai-struct-compiler-0.5.pristine/bin/kaitai-struct-compiler	2017-01-20 15:48:53.379117710 +0100
++++ kaitai-struct-compiler-0.5.new/bin/kaitai-struct-compiler	2017-01-20 15:50:03.335780612 +0100
+@@ -332,7 +332,7 @@
+ declare -r real_script_path="$(realpath "$0")"
+ declare -r app_home="$(realpath "$(dirname "$real_script_path")")"
+ # TODO - Check whether this is ok in cygwin...
+-declare -r lib_dir="$(realpath "${app_home}/../lib")"
++declare -r lib_dir="/usr/share/java/kaitai-struct-compiler"
+ declare -a app_mainclass=("io.kaitai.struct.Main")
+ 
+ declare -r script_conf_file="${app_home}/../conf/application.ini"
