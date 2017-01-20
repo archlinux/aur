@@ -5,7 +5,7 @@
 
 pkgname=bluejeans
 pkgver=1.20.25
-pkgrel=1
+pkgrel=2
 pkgdesc="BlueJeans desktop app for video calls"
 arch=('x86_64')
 url="https://www.bluejeans.com"
