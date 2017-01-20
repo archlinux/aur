@@ -1,24 +1,24 @@
 pkgname=kndiswrapper-qt5
-pkgver=0.4.0
-pkgrel=2
+pkgver=20151216.gfe796ea
+pkgrel=1
 pkgdesc='Frontend for ndiswrapper'
 url='http://kde-apps.org/content/show.php/KNDISWrapper?content=86885'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('qt5-base' 'ndiswrapper')
 makedepends=('qt5-tools')
-provides=kndiswrapper
-conflicts=kndiswrapper
-source=("http://ftp.riken.jp/Linux/momonga/development/source/SOURCES/kndiswrapper-${pkgver}.tgz" "qt5.patch")
-sha1sums=('SKIP' 'SKIP')
+provides=(kndiswrapper)
+conflicts=(kndiswrapper)
+source=("git+https://github.com/maz-1/kndiswrapper.git")
+sha1sums=('SKIP')
 
-prepare() {
-  cd "$srcdir/kndiswrapper-${pkgver}"
-  patch -p1 -i $srcdir/qt5.patch
+pkgver() {
+  cd "$srcdir/kndiswrapper"
+  echo "$(git show -s --format="%ci"|grep -oP '\d{4}-\d{2}-\d{2}'|sed 's:-::g').g$(git describe --always)"
 }
 
 build() {
-  cd "$srcdir/kndiswrapper-${pkgver}"
+  cd "$srcdir/kndiswrapper"
   mkdir -p build
   cd build
   qmake-qt5 ..
@@ -28,17 +28,17 @@ build() {
   lrelease-qt5 ./build/translations/*.ts
 }
 package() {
-  cd "$srcdir/kndiswrapper-${pkgver}"
+  cd "$srcdir/kndiswrapper"
   #./install.sh "$pkgdir"
   mkdir -p ${pkgdir}/usr/share/{kndiswrapper,applications,pixmaps}
   mkdir -p ${pkgdir}/usr/bin
   
-  cp "./icons/kndiswrapper.xpm" "${pkgdir}/usr/share/kndiswrapper/kndiswrapper.xpm"
-  cp "./icons/kndiswrapper.xpm" "${pkgdir}/usr/share/pixmaps/kndiswrapper.xpm"
+  cp "./icons/kndiswrapper.svg" "${pkgdir}/usr/share/kndiswrapper/kndiswrapper.svg"
+  cp "./icons/kndiswrapper.svg" "${pkgdir}/usr/share/pixmaps/kndiswrapper.svg"
   cp build/kndiswrapper ${pkgdir}/usr/bin
   chmod 755 "${pkgdir}/usr/bin/kndiswrapper"
-  cp "./translations/"*.qm "${pkgdir}/usr/share/kndiswrapper"
-  cp "./translations/cards_known_to_work.txt" "${pkgdir}/usr/share/kndiswrapper"
+  cp "./build/translations/"*.qm "${pkgdir}/usr/share/kndiswrapper"
+  cp "./build/translations/cards_known_to_work.txt" "${pkgdir}/usr/share/kndiswrapper"
   cat > "${pkgdir}/usr/share/applications/kndiswrapper.desktop" <<EOF
 [Desktop Entry]
 Encoding=UTF-8
