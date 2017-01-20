@@ -1,13 +1,13 @@
 pkgbase = python-mistralclient
 	pkgdesc = Python client library for Mistral
-	pkgver = 2.1.2
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = http://docs.openstack.org/developer/python-mistralclient
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = git+https://git.openstack.org/openstack/python-mistralclient#tag=2.1.2
+	source = git+https://git.openstack.org/openstack/python-mistralclient#tag=3.0.0
 	md5sums = SKIP
 
 pkgname = python-mistralclient
