@@ -1,7 +1,7 @@
 pkgbase = critter-engine
 	pkgdesc = A UCI chess engine (~3168 Elo)
 	pkgver = 1.6a
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.vlasak.biz/critter
 	arch = i686
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname=critter-engine
 pkgver=1.6a
-pkgrel=1
+pkgrel=2
 pkgdesc="A UCI chess engine (~3168 Elo)"
 arch=(i686 x86_64)
 url=http://www.vlasak.biz/critter
@@ -14,8 +14,7 @@ sha256sums=(c43743def81c31fd690d610fd53a64f4d99d478ffc301ad8628aac841682a4a7
 [[ $CARCH == i686 ]] && _pkgver=${pkgver/.}-32bit || _pkgver=${pkgver/.}-64bit
 
 package() {
-  install -dm755 "$pkgdir"/usr/lib/$pkgname/
-  install -m755 ${pkgname%-*}-$_pkgver "$pkgdir"/usr/lib/$pkgname/
-  install -m644 book.cbk "$pkgdir"/usr/lib/$pkgname/
+  install -Dm755 ${pkgname%-*}-$_pkgver "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 book.cbk "$pkgdir"/usr/share/$pkgname/book.cbk
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
