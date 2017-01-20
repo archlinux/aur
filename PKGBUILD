@@ -2,14 +2,14 @@
 
 pkgname=libvolk-git
 _gitname=volk
-pkgver=v1.2.1.5.gc512eb8
+pkgver=v1.3.20.ge495168
 pkgrel=1
 pkgdesc="The Vector-Optimized Library of Kernels from Gnuradio"
 arch=('i686' 'x86_64')
 url="http://libvolk.org/"
 license=('GPL3')
 depends=('gcc-libs' 'boost-libs' 'orc' 'python2')
-makedepends=('git' 'boost' 'cmake' 'python2-cheetah')
+makedepends=('git' 'boost' 'cmake' 'python2-mako')
 source=("git://github.com/gnuradio/volk.git")
 md5sums=('SKIP')
 conflicts=('libvolk')
