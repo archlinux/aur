@@ -1,0 +1,39 @@
+--- ecos-python-2.0.4-orig/setup.py	2015-09-10 11:33:19.000000000 -0400
++++ ecos-python-2.0.4/setup.py	2017-01-20 10:35:13.330569455 -0500
+@@ -9,7 +9,7 @@
+ from platform import system
+ import numpy
+ 
+-lib = []
++lib = ['ecos']
+ if system() == 'Linux':
+     lib += ['rt']
+ 
+@@ -21,25 +21,8 @@
+                         ('DLONG', None),
+                         ('LDL_LONG', None),
+                         ('CTRLC', 1)],
+-                    include_dirs = ['ecos/include', numpy.get_include(),
+-                        'ecos/external/amd/include',
+-                        'ecos/external/ldl/include',
+-                        'ecos/external/SuiteSparse_config'],
+-                    sources = ['src/ecosmodule.c',
+-                        'ecos/external/ldl/src/ldl.c',
+-                        'ecos/src/cone.c',
+-                        'ecos/src/ctrlc.c',
+-                        'ecos/src/ecos.c',
+-                        'ecos/src/equil.c',
+-                        'ecos/src/expcone.c',
+-                        'ecos/src/kkt.c',
+-                        'ecos/src/preproc.c',
+-                        'ecos/src/spla.c',
+-                        'ecos/src/splamm.c',
+-                        'ecos/src/timer.c',
+-                        'ecos/src/wright_omega.c'
+-                    ] + glob('ecos/external/amd/src/*.c')
+-                      + glob('ecos/ecos_bb/*.c'))       # glob bb source files
++                    include_dirs = ['/usr/include/ecos/', numpy.get_include()],
++                    sources = ['src/ecosmodule.c'])
+ 
+ setup(
+     name = 'ecos',

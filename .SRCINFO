@@ -1,0 +1,20 @@
+pkgbase = python-ecos
+	pkgdesc = Python interface for ECOS.
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/embotech/ecos-python
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = ecos
+	source = https://github.com/embotech/ecos-python/archive/v2.0.4.tar.gz
+	source = use_external_ecos.patch
+	sha256sums = d16907b0e9f41bbe7f43c37562e0d361db1f4d2e5fc7e91125899b4fdd062790
+	sha256sums = 49303c5fe700ccdc06fabdab87e5a0518b495fe32a99b2062f301e15dc4a0c72
+
+pkgname = python-ecos
+
