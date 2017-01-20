@@ -1,7 +1,7 @@
 # Maintainer: Rick Kerkhof <rick.2889@gmail.com>
 pkgname=soundnode-git
-pkgver=r774.3175946
-pkgrel=5
+pkgver=r832.982e279
+pkgrel=1
 pkgdesc="Soundcloud client for the desktop"
 arch=('x86_64' 'i686')
 url="http://www.soundnodeapp.com/"
@@ -13,46 +13,40 @@ provides=('soundnode')
 options=('!strip')
 
 depends=('gconf' 'gtk2' 'libxtst' 'nss' 'alsa-lib' 'libnotify' 'fontconfig')
+makedepends=('git' 'npm')
 
-# This thing requires wine to build, and just to create an icon for the win32 instance.
-# Fails if it doesn't exist, so we better include it.
-makedepends=('git' 'npm' 'wine' 'wine-mono' 'wine_gecko' 'nw-gyp')
-
-source=("git+https://github.com/Soundnode/soundnode-app.git")
-sha256sums=("SKIP")
+source=("git+https://github.com/Soundnode/soundnode-app.git"
+        "$pkgname.desktop")
+sha256sums=('SKIP'
+            '4613630387d6a2073bff66f8fe3d0d352d353ad50811e19ec2470fe09f88985a')
 
 pkgver() {
-	cd soundnode-app
- 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        cd soundnode-app
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd soundnode-app
-	sed -i -e "s/\/usr\/share\/soundnode\/Soundnode/\/opt\/soundnode-git\/Soundnode/g" fpm/soundnode.desktop
-	
-	make build
+        cd soundnode-app
+        npm install
+        npm run clean
+        npm run webpack:prod
+        npm run sass:prod
+        npm run package:linux
 }
 
 package() {
-	install -dm755 "$pkgdir"/usr/bin
-        install -dm755 "$pkgdir"/opt/
-        install -dm755 "$pkgdir"/usr/share/applications/
-	
-        install -Dm644 "$srcdir"/soundnode-app/fpm/soundnode.desktop "$pkgdir"/usr/share/applications/
+        install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 
-	if [ -d "$srcdir"/build ]; then
-		rm -r "$srcdir"/build
-	fi
+        install -dm755 $pkgdir/opt/$pkgname
 
-	mkdir "$srcdir"/build
-	if [ $CARCH = "x86_64" ]; then
-		cp -Lr "$srcdir"/soundnode-app/dist/Soundnode/linux64/* "$srcdir"/build
-	else
-		cp -Lr "$srcdir"/soundnode-app/dist/Soundnode/linux32/* "$srcdir"/build
-	fi
+        if [ $CARCH = "x86_64" ]; then
+                cp -a --no-preserve=ownership -r $srcdir/soundnode-app/dist/Soundnode/Soundnode-linux-x64/* $pkgdir/opt/$pkgname
+                install -Dm644 $srcdir/soundnode-app/dist/Soundnode/Soundnode-linux-x64/Soundnode $pkgdir/usr/bin/soundnode
+        else
+                cp -a --no-preserve=ownership -r $srcdir/soundnode-app/dist/Soundnode/Soundnode-linux-x32/* $pkgdir/opt/$pkgname
+                install -Dm644 $srcdir/soundnode-app/dist/Soundnode/Soundnode-linux-x32/Soundnode $pkgdir/usr/bin/soundnode
+        fi
 
-        # We're creating a broken link here. It'll be fixed when all files are in place :)
-        ln -s /opt/"$pkgname"/Soundnode "$pkgdir"/usr/bin/soundnode
-
-	cp -Lr "$srcdir"/build "$pkgdir"/opt/"$pkgname"
+        # Install the icon
+        install -Dm644 $srcdir/soundnode-app/app/soundnode.png $pkgdir/opt/$pkgname/soundnode.png
 }
