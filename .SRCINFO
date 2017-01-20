@@ -1,0 +1,28 @@
+pkgbase = ushare
+	pkgdesc = A free UPnP A/V Media Server for Linux
+	pkgver = 1.1a
+	pkgrel = 20
+	url = http://ushare.geexbox.org
+	install = ushare.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libupnp
+	depends = libdlna
+	depends = sudo
+	depends = ffmpeg-compat
+	backup = etc/ushare/ushare.conf
+	backup = etc/conf.d/ushare
+	source = http://ushare.geexbox.org/releases/ushare-1.1a.tar.bz2
+	source = upnp-build-fix.patch
+	source = ushare-config.patch
+	source = segfault.patch
+	source = ushare.service
+	md5sums = 5bbcdbf1ff85a9710fa3d4e82ccaa251
+	md5sums = 32c29f9f673e8b3a3d9e7bf5e60febbc
+	md5sums = 5243475c0cebc5db49296b2f3691085b
+	md5sums = 0b0fbf5d103f0ebb72716cbad0b28ffa
+	md5sums = db6187257b4623ef155b5575526d5d87
+
+pkgname = ushare
+

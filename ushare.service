@@ -1,0 +1,11 @@
+[Unit]
+Description=ushare
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/ushare
+ExecStart=/usr/bin/ushare -D -x --cfg=/etc/ushare/ushare.conf
+Type=forking
+
+[Install]
+WantedBy=multi-user.target
