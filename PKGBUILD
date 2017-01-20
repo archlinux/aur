@@ -2,24 +2,24 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.15.2
+pkgver=2.15.3
 pkgrel=1
 pkgdesc="GTK+ Web content engine library"
-arch=('i686' 'x86_64')
-url="http://webkitgtk.org/"
-license=('custom')
-depends=('libxt' 'libxslt' 'enchant' 'geoclue2' 'gst-plugins-base-libs'
-	 'libsecret' 'libwebp' 'harfbuzz-icu' 'gtk3' 'libnotify' 'hyphen')
-makedepends=('gtk2' 'gperf' 'gobject-introspection' 'ruby' 'gtk-doc' 'cmake' 'python' 'python2')
+arch=(i686 x86_64)
+url="https://webkitgtk.org/"
+license=(custom)
+depends=(libxt libxslt enchant geoclue2 gst-plugins-base-libs
+         libsecret libwebp harfbuzz-icu gtk3 libnotify hyphen)
+makedepends=(gtk2 gperf gobject-introspection ruby gtk-doc cmake python python2)
 optdepends=('gtk2: Netscape plugin support'
             'gst-plugins-base: free media decoding'
             'gst-plugins-good: media decoding'
             'gst-libav: nonfree media decoding')
-options=('!emptydirs')
-
-# webkitgtk's signature scheme (sha1-file-as-pgp-message) is bananas and not supported
-source=(http://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz)
-sha256sums=('756f14ad2ca84e25dc245f2b736ab31de58d1eb66fef76e75a1985179072471f')
+options=(!emptydirs)
+source=(https://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz{,.asc})
+sha256sums=('2f93245918d92e4010ea6cb72096b5a1357fb3f8d1dfdbf4873b7174cd2ac8ec'
+            'SKIP')
+validpgpkeys=('D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3')
 
 provides=('webkit2gtk')
 conflicts=('webkit2gtk')
