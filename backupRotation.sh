@@ -45,7 +45,7 @@
 
 # account        default : gmail
 # endregion
-# region default o ptions
+# region default options
 # Example:
 # declare -A source_target_mappings=(
 #     ['SOURCE_URL1']='TARGET_URL1 RECIPIENT_E_MAIL_ADDRESS' \
