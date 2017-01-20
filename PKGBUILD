@@ -9,7 +9,7 @@
 
 pkgname=xnviewmp
 pkgver=0.84
-pkgrel=1
+pkgrel=2
 pkgdesc="An efficient multimedia viewer, browser and converter."
 url="http://www.xnview.com/en/xnviewmp/"
 
@@ -19,7 +19,7 @@ depends=('glib2' 'expat' 'libpng12' 'gstreamer0.10-base' 'desktop-file-utils' 'l
 optdepends=('gvfs: support for moving files to trash')
 
 source_x86_64=("http://download.xnview.com/XnViewMP-linux-x64.tgz")
-md5sums_x86_64=('bbb8bfac5a212103830c9b1dca51c2ae')
+md5sums_x86_64=('a1202367f23f32e14a6a0d860564e1da')
 source_i686=("http://download.xnview.com/XnViewMP-linux.tgz")
 md5sums_i686=('75e9e03aa41da988eb66524574794b31')
 
@@ -34,14 +34,13 @@ package() {
   install -m644 "${startdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -D -m644 "${srcdir}/XnView/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # Remove the bundled framework libs (Qt and icu). They don't even work in 0.84,
-  # and at least for now it works with the system libraries. Also everyone likes
-  # dividing their package size by 4 :-)
-  rm "${pkgdir}/opt/${pkgname}/lib/"lib*
-
   # Clean up
   rm "${pkgdir}/opt/${pkgname}/XnView.desktop"{,~}
   chmod -x "${pkgdir}/opt/${pkgname}/xnview.png"
+
+  # 0.84 clean-up: the second release of 0.84 fixed the libicu issue but forgot
+  # to remove the old version...
+  rm "${pkgdir}/opt/${pkgname}/lib/"libicu*.54*
 }
 
 # vim:set ts=2 sw=2 et:
