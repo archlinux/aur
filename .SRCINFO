@@ -1,12 +1,12 @@
 pkgbase = critter-engine
-	pkgdesc = A UCI chess engine (3168~3294 Elo)
+	pkgdesc = A UCI chess engine (~3168 Elo)
 	pkgver = 1.6a
 	pkgrel = 1
 	url = http://www.vlasak.biz/critter
 	arch = i686
 	arch = x86_64
 	license = custom
-	source = critter-engine-1.6a.zip::http://www.vlasak.biz/critter-engine/countl.php
+	source = critter-engine-1.6a.zip::http://www.vlasak.biz/critter/countl.php
 	source = COPYING
 	sha256sums = c43743def81c31fd690d610fd53a64f4d99d478ffc301ad8628aac841682a4a7
 	sha256sums = c058b6621ec706a363b0012edb3ff0066321d9aa7709645f72af29fab7449274
