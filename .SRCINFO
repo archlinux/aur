@@ -1,0 +1,28 @@
+pkgbase = genesis-git
+	pkgdesc = A digital audio workstation
+	pkgver = r570.d96914d
+	pkgrel = 1
+	url = https://github.com/andrewrk/genesis
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = unicode-character-database
+	makedepends = gcc5
+	depends = libsoundio
+	depends = libepoxy
+	depends = glfw
+	depends = glm
+	depends = ffmpeg
+	depends = rhash
+	depends = rucksack
+	provides = genesis
+	conflicts = genesis
+	source = git+https://github.com/andrewrk/genesis.git
+	source = genesis.sh
+	sha256sums = SKIP
+	sha256sums = c93e4a2f6498bebc2eed7d6c1f05209a047477db73b8941a4f9f65f7b90f0495
+
+pkgname = genesis-git
+
