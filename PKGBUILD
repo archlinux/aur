@@ -3,7 +3,7 @@
 
 _pkgname=luigi
 pkgname=python2-${_pkgname}
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Workflow mgmgt + task scheduling + dependency resolution"
 arch=('any')
@@ -12,9 +12,9 @@ makedepends=('python2-setuptools')
 optdepends=('python2-mechanize: for debugging Hadoop jobs more easily')
 url="https://github.com/spotify/luigi"
 license=('Apache')
-source=(https://pypi.python.org/packages/6a/84/42bea7839bc6eee8c219775f6afe3e296a554985a0aa216fb6090478a3e5/luigi-2.4.0.tar.gz)
-md5sums=('76303fa7281ac0c6a95aa9ada13acc3e')
-sha256sums=('5c63d960c5219346acf29b925f5de7585427555a863b5f9e27fa19611f2d8382')
+source=(https://github.com/spotify/luigi/archive/2.5.0.tar.gz)
+md5sums=('5034f2db41f100d6dd12a59f70e19544')
+sha256sums=('6d4ecdadf36bff364e471e38fac619a8bbc7edf1f2167ffbdc0188494f1487e0')
 
 build() {
   cd "$srcdir/${_pkgname}-$pkgver"
