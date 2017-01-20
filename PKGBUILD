@@ -4,14 +4,14 @@
 # Contributor: Aline Freitas <aline@alinefreitas.com.br>
 
 pkgname=polkit-git
-pkgver=0.113.r13.g4e86fbc
+pkgver=0.113.r29.g3272a98
 pkgrel=1
 epoch=1
 pkgdesc="Application development toolkit for controlling system-wide privileges"
 arch=(i686 x86_64)
 license=(LGPL)
 url="http://www.freedesktop.org/wiki/Software/polkit"
-depends=(glib2 pam expat systemd js17)
+depends=(glib2 pam expat systemd js)
 makedepends=(intltool gtk-doc gobject-introspection git)
 install=polkit.install
 provides=('polkit')
