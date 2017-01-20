@@ -14,6 +14,7 @@ pkgbase = python-cvxpy
 	depends = python-scipy
 	depends = python-toolz
 	depends = python-cvxcanon
+	optdepends = python-scs
 	source = https://github.com/cvxgrp/cvxpy/archive/v0.4.8.tar.gz
 	sha256sums = d8d957449aed59c1e6c4b1f3984f637e996816f3a824bc061712e69c40b1e3b9
 

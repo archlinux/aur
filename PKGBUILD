@@ -13,6 +13,7 @@ depends=('python'
     'python-toolz'
     'python-cvxcanon')
 makedepends=('python-setuptools')
+optdepends=('python-scs')
 license=('GPL3')
 arch=('any')
 source=("https://github.com/cvxgrp/cvxpy/archive/v${pkgver}.tar.gz")
