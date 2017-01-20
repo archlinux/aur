@@ -18,9 +18,6 @@ conflicts=()
 source=("git://github.com/cubanpit/$_pkgname")
 md5sums=('SKIP')
 
-pkgver() {
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 package () {
 	cd "$srcdir"
 	install -Dm755 "$srcdir/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
