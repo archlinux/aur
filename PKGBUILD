@@ -2,13 +2,13 @@
 # Contributor: rtfreedman
 
 pkgname=csoundqt
-pkgver=0.9.2.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="A frontend for Csound featuring a highlighting editor with autocomplete, interactive widgets and integrated help"
 arch=('i686' 'x86_64')
-url="http://qutecsound.sourceforge.net/"
+url="https://csoundqt.github.io/"
 license=('GPL3') # or, at your option, LGPL2
-depends=('csound' 'qt4' 'csound-doc')
+depends=('csound' 'qt5-base' 'csound-doc')
 makedepends=('shared-mime-info')
 _rtmidi=rtmidi-2.1.0
 source=("https://github.com/CsoundQt/CsoundQt/archive/$pkgver.tar.gz" 
@@ -16,7 +16,7 @@ source=("https://github.com/CsoundQt/CsoundQt/archive/$pkgver.tar.gz"
         "http://www.music.mcgill.ca/~gary/rtmidi/release/${_rtmidi}.tar.gz"
         "csoundqt-mime.xml"
         "csoundqt-icons.tar.gz")
-sha256sums=('ddb28002dcf27d034bf2cd9b433325094c56e0cad7f7c6caad24740d993ad374'
+sha256sums=('409c3fe7081d51561392f96732066d1f2f5168d76e7a10c2dd60ea632fc6d58b'
             '6d08233ee50eec15bbcb59f1edcee56626264fb37590603bc88af4764e8dda9d'
             'a0a59226614b878e7c32890cb7c38a6fe48a97082baf4913297d4c3958a9b3ac'
             '2d78945761ff6f673ac93f7d879a691eb77466e73a40ef77e4a8f3c3c374d599'
@@ -35,7 +35,7 @@ build() {
 # Now uses RtMidi, see: http://qutecsound.sourceforge.net/pages/develop.html
 # For csound midi module, remove CONFIG+=rtmidi "RTMIDI_DIR=${_rtmidi}".
 # For PythonQt add CONFIG+=pythonqt.
-  qmake-qt4 qcs.pro CONFIG+=rtmidi "RTMIDI_DIR=${_rtmidi}"
+  qmake-qt5 qcs.pro CONFIG+=rtmidi "RTMIDI_DIR=${_rtmidi}"
   make
 }
 
@@ -51,7 +51,7 @@ package() {
       "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/csoundqt.png"
   done
 # docs
-  install -Dm644 doc/*.pdf  -t "$pkgdir"/usr/share/doc/csoundqt  
+  install -Dm644 doc/*.pdf  -t "$pkgdir"/usr/share/doc/csoundqt
   find examples -type f -print0 | xargs -0 -n1 -i{} install -Dm644 '{}' "$pkgdir"/usr/share/doc/csoundqt/'{}'
   cd src
   find Examples -type f -print0 | xargs -0 -n1 -i{} install -Dm644 '{}' "$pkgdir"/usr/share/csoundqt/'{}'
