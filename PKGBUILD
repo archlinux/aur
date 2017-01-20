@@ -3,7 +3,7 @@
 
 _appname=cocos2d-x
 pkgname=cocos2d-x-src
-pkgver=3.14
+pkgver=3.14.1
 pkgrel=3
 pkgdesc="Cocos2D-X is a game engine that supports multiple platforms such as iOS, Android, WinXP/7/8, WP8, BlackBerry, MeeGo, Marmelade, WebOS, Mac OS X"
 arch=('i686' 'x86_64')
@@ -64,7 +64,7 @@ source=(
 "BugsTest.cpp.patch"
 )
 sha1sums=(
-'f510ae35c078d602d53f0c203be971d6fa4efdd3'
+'66b7a6a93899abbcfc94e22a075c7c286a15135c'
 '2cff669a51b66d513824be811688aa9da553e400'
 '353bdefe07bdb6eb7f53aff20d20e83b488c1c05'
 '49b7919fc38803c1dd2f5b1d47fb0c75fde1fec6'
