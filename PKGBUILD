@@ -7,7 +7,7 @@ _gui=true
 pkgbase=simulationcraft
 pkgname=simulationcraft
 _pkgname=simc
-_simver=710
+_simver=715
 _simrel=01
 pkgver=${_simver}_${_simrel}
 pkgrel=1
@@ -18,7 +18,7 @@ license=('GPL3')
 source=("https://github.com/simulationcraft/simc/archive/release-${_simver}-${_simrel}.tar.gz"
         'SimulationCraft.desktop')
 
-md5sums=('390e337fe072ae82aa7441ad0e7ad060'
+md5sums=('99b874978d62b019e10316c556e80ea0'
          '9e52edb48f39888bc13a0b9bd5f8d758')
 
 prepare() {
