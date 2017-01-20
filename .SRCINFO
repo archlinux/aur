@@ -1,0 +1,12 @@
+pkgbase = lazygull-engine
+	pkgdesc = A UCI chess engine based on Gull 3
+	pkgver = alpha_0.3
+	pkgrel = 1
+	url = https://github.com/basil00/Gull
+	arch = x86_64
+	license = MIT
+	source = https://github.com/basil00/Gull/archive/LazyGull-alpha-0.3.tar.gz
+	sha256sums = 0d3952fde37bfb6000fdfde71f1fce9d6a15e1d8aa691131630802dcd36889bc
+
+pkgname = lazygull-engine
+
