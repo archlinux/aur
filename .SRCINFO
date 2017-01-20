@@ -1,0 +1,23 @@
+pkgbase = frinika
+	pkgdesc = A free music workstation (sequencer, software synth, audio recording, etc.)
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://www.frinika.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = BSD
+	license = custom
+	depends = java-runtime
+	depends = jack
+	noextract = frinika-0.8.1-2016-11-21.zip
+	source = https://downloads.sourceforge.net/frinika/frinika-0.8.1-2016-11-21.zip
+	source = frinika.desktop
+	source = frinika.sh
+	sha256sums = 379f11a29a042b0963d2070ea0100750a5357a5d45bf1117f1faa70e86150bbb
+	sha256sums = 6dff025123dddd899a3f424a675444b75950a45bebaa217ff6b3cfc7a1232ba7
+	sha256sums = ff34c2db17dbc98b114721ff8c45669c59874344b4705094ef9b411c3f2c7e68
+
+pkgname = frinika
+

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Frinika
+Comment=A free music workstation
+TryExec=frinika
+Exec=/usr/bin/frinika %f
+Icon=frinika
