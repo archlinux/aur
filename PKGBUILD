@@ -13,7 +13,6 @@ url="https://www.gnu.org/software/binutils/"
 license=('GPL')
 groups=('cross-devel')
 depends=('glibc>=2.24-2' 'zlib')
-makedepends=('git')
 checkdepends=('dejagnu' 'bc')
 options=('staticlibs' '!distcc' '!ccache')
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig}
