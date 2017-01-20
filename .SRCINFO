@@ -1,7 +1,7 @@
 pkgbase = trelby
 	pkgdesc = A multiplatform, feature-rich screenwriting program
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.trelby.org
 	arch = any
 	license = GPL
