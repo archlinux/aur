@@ -2,7 +2,7 @@
 
 pkgname=tibia
 pkgver=11.04.4320
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast-paced free massively multiplayer online role-playing game."
 arch=('x86_64')
 url="http://www.tibia.com"
@@ -29,6 +29,9 @@ prepare() {
 package() {
   mkdir -p "${pkgdir}/opt/Tibia"
   cp -drv --no-preserve=ownership ${pkgname}-${pkgver}/* "${pkgdir}/opt/Tibia"
+  chmod -R 775 "${pkgdir}/opt/Tibia"
+  chgrp -R games "${pkgdir}/opt/Tibia"
+
   install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 ${pkgname}-${pkgver}/tibia.ico -t "${pkgdir}/usr/share/pixmaps/"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
