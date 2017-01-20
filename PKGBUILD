@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-mistralclient' 'python2-mistralclient')
-pkgver='2.1.2'
+pkgver='3.0.0'
 pkgrel='1'
 pkgdesc='Python client library for Mistral'
 arch=('any')
