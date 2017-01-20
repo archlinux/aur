@@ -7,7 +7,7 @@
 _pkgname=gitea
 _gourl="code.gitea.io"
 pkgname=gitea-git
-pkgver=r4718.727675dd
+pkgver=r4795.369972b1
 pkgrel=1
 pkgdesc='A painless self-hosted Git service.'
 url='https://gitea.io/'
@@ -53,7 +53,7 @@ prepare() {
 
 build() {
   cd ${srcdir}/src/${_gourl}/${_pkgname}
-  GOPATH="${srcdir}" LDFLAGS="" make DESTDIR="$pkgdir/" TAGS="sqlite tidb pam" clean generate build
+  GOPATH="${srcdir}" make DESTDIR="$pkgdir/" TAGS="sqlite tidb pam" clean generate build
 }
 
 package() {
