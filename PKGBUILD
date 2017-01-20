@@ -6,7 +6,7 @@
 _pkgname=xdg-utils
 pkgname=$_pkgname-mimeo
 pkgver=1.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Command line tools that assist applications with a variety of desktop integration tasks; patched to use mimeo"
 arch=('any')
 url="https://wiki.freedesktop.org/www/Software/xdg-utils/"
@@ -14,7 +14,6 @@ license=('MIT')
 depends=('sh' 'xorg-xset') # xset needed inside xdg-screensaver
 makedepends=('docbook-xsl' 'lynx' 'xmlto' 'git')
 optdepends=('kde-cli-tools: for KDE Plasma5 support in xdg-open'
-            'libgnome: for GNOME support in xdg-open'
             'exo: for Xfce support in xdg-open'
             'xorg-xprop: for Xfce support in xdg-open'
             'pcmanfm: for LXDE support in xdg-open'
