@@ -13,7 +13,7 @@ pkgbase = pb-for-desktop
 	depends = libappindicator-gtk3
 	depends = libxtst
 	depends = nss
-	provides = temps
+	provides = pb-for-desktop
 	source = https://github.com/sidneys/pb-for-desktop/releases/download/v3.2.1/pb-for-desktop-3.2.1.pacman
 	sha256sums = 2bf3e1725c16054e8fe5f659adf118df0530934e16c14d862a832958bd64d00d
 
