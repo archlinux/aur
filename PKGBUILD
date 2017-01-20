@@ -15,7 +15,7 @@ pkgdesc="The GNU Compiler Collection"
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
-makedepends=('binutils>=2.27' 'libmpc' 'doxygen' 'git')
+makedepends=('binutils>=2.27' 'libmpc' 'doxygen')
 checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs')
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$gccver/gcc-$gccver.tar.bz2{,.sig}
