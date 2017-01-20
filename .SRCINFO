@@ -1,0 +1,13 @@
+pkgbase = jupyterlab
+	pkgdesc = JupyterLab computational environment
+	pkgver = 0.13.1
+	pkgrel = 1
+	url = https://github.com/jupyterlab/jupyterlab
+	arch = any
+	license = custom
+	depends = jupyter-notebook
+	source = jupyterlab-0.13.1::https://github.com/jupyterlab/jupyterlab/archive/v0.13.1.tar.gz
+	sha256sums = 4d95b6ef7383e747a1c24cf417c8397916ec4c44e11d371fb55b8441355fb8f7
+
+pkgname = jupyterlab
+
