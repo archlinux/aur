@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=papirus-filezilla-themes-git
-pkgver=20161127
+pkgver=20170120
 pkgrel=1
 pkgdesc="Papirus theme for Filezilla (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
@@ -22,5 +22,5 @@ pkgver() {
 package() {
     cd $pkgname
     install -d $pkgdir/usr/share/filezilla/resources
-    cp -a ./{papirus,papirus-dark} $pkgdir/usr/share/filezilla/resources/
+    cp -a ./{epapirus,papirus,papirus-dark} $pkgdir/usr/share/filezilla/resources/
 }
