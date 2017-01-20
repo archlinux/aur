@@ -1,6 +1,6 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
-pkgname=warframe-git
+pkgname=warframe-wine-git
 pkgver=1.0000
 pkgrel=1
 pkgdesc="Warframe: Install/Run wrapper"
