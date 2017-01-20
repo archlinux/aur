@@ -1,6 +1,6 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=alock-git
-pkgver=2.3.r5.gdcf95e0
+pkgver=2.3.r12.g329ac15
 pkgrel=1
 pkgdesc="Simple transparent screen-lock"
 arch=('i686' 'x86_64')
@@ -22,6 +22,7 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+  sed -i -e 's,"login","system-auth",' src/auth_pam.c
   autoreconf -fiv
 }
 
