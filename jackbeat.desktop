@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Jackbeat
+Comment=An audio sequencer for musicians and sound artists
+TryExec=jackbeat
+Exec=/usr/bin/jackbeat %f
+Icon=jackbeat
+MimeType=application/jab;
+Categories=AudioVideo;Sequencer;

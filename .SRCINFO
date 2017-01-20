@@ -1,0 +1,21 @@
+pkgbase = jackbeat
+	pkgdesc = An audio sequencer for musicians and sound artists
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = http://jackbeat.samalyse.org/about
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	depends = liblo
+	depends = portaudio
+	depends = libpulse
+	source = https://bitbucket.org/olivierg/jackbeat/downloads/jackbeat-0.7.6.tar.gz
+	source = jackbeat.desktop
+	source = jackbeat.xpm
+	sha256sums = bce178a7fd45be5f72607600a0c830d1fc44ecdac772ee4695db2e444a480967
+	sha256sums = 5844a95ba10d4151c6e0c3debcd55996b4edb6b91545ccb619a806a884dfd9b8
+	sha256sums = 6bcb5268e996a2205d460c40b9d53e318c70a813667ff5fee8c68bbe32693a8e
+
+pkgname = jackbeat
+
