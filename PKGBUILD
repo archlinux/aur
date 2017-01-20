@@ -16,6 +16,8 @@ package() {
     bsdtar -xf $srcdir/$pkgname-$pkgver-1-rpm/packages/$pkgname-$pkgver-1.$CARCH.rpm
     bsdtar -xf $srcdir/$pkgname-$pkgver-1-rpm/packages/cnijfilter-common-$pkgver-1.$CARCH.rpm
     rm -R usr/lib/cups
-    mv usr/lib64/* usr/lib
-    rm -R usr/lib64
+    if [ "${CARCH}" = 'x86_64' ]; then
+      mv usr/lib64/* usr/lib
+      rm -R usr/lib64
+    fi
 }
