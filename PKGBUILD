@@ -1,7 +1,6 @@
 # Maintainer: Bilal ELmoussaoui <bil.elmoussaoui@gmail.com>
 
 pkgname=pb-for-desktop
-_pkgbase=Pb
 pkgrel=1
 pkgver=3.2.1
 _pkgver="v$pkgver"
