@@ -3,7 +3,7 @@
 
 pkgname=ath9k-htc-firmware
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Free firmware files for the Qualcomm Atheros AR7010 and AR9271 USB 802.11n NICs'
 arch=('any')
 url='http://wireless.kernel.org/en/users/Drivers/ath9k_htc'
