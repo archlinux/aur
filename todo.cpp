@@ -93,15 +93,14 @@ int main(int argc, char *argv[]) {
             action = 0;
         }else if ( !strcmp( argv[1], "add") ) {
             action = 1;
-        }else if ( !strcmp( argv[1], "remove") ) {
+        }else if ( !strcmp( argv[1], "remove")  || !strcmp( argv[1], "rm") ) {
             action = 2;
-        }else if ( !strcmp( argv[1], "rm") ) {
-            action = 2;
-        }else if ( !strcmp( argv[1], "check") ) {
+        }else if ( !strcmp( argv[1], "check")   || !strcmp( argv[1], "ck") ) {
             action = 3;
         }else if ( !strcmp( argv[1], "uncheck") ) {
             action = 9;
-        }else if ( !strcmp( argv[1], "standby") ) {
+        }else if ( !strcmp( argv[1], "standby") || !strcmp( argv[1], "st")
+                                                || !strcmp( argv[1], "sb") ) {
             action = 10;
         }else if ( !strcmp( argv[1], "miss") ) {
             action = 11;
@@ -117,7 +116,8 @@ int main(int argc, char *argv[]) {
                 cout << "Erreur : Priorité non interprétable" << endl;
         }else if ( !strcmp( argv[1], "checked") ) {
             action = 6;
-        }else if ( !strcmp( argv[1], "clean") || !strcmp( argv[1], "clear") ) {
+        }else if ( !strcmp( argv[1], "clean") || !strcmp( argv[1], "clear") 
+                                              || !strcmp( argv[1], "cl")  ) {
             action = 7;
         }else if ( !strcmp( argv[1], "unchecked") || !strcmp( argv[1], "todo") ) {
             action = 8;
