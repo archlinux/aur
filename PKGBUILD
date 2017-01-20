@@ -3,7 +3,7 @@
 
 pkgname=ath9k-htc-firmware
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Free firmware files for the Qualcomm Atheros AR7010 and AR9271 USB 802.11n NICs'
 arch=('any')
 url='http://wireless.kernel.org/en/users/Drivers/ath9k_htc'
@@ -29,7 +29,7 @@ build() {
 
   export CTARGET="xtensa-unknown-elf"
   export CC="xtensa-unknown-elf"
-  export CFLAGS="-mtext-section-literals -O2 -pipe --param=ssp-buffer-size=4 -fno-aggressive-loop-optimizations"
+  export CFLAGS="-mtext-section-literals -O2 -pipe --param=ssp-buffer-size=4 -fno-aggressive-loop-optimizations -Wno-implicit-function-declaration"
   export CXXFLAGS="${CFLAGS}"
 
   cat > target_firmware/build/toolchain.cmake <<EOF
