@@ -20,17 +20,5 @@ package() {
   fi
   cd $pkgdir
   bsdtar -xf $rpmfile
-  mv $pkgdir/usr/lib64 $pkgdir/usr/lib
-}
-
-
-package() {
-  if [ "${CARCH}" = 'x86_64' ]; then
-    rpmfile=$(find "$srcdir" -name cnijfilter-mg2500series-$pkgver*${CARCH}*.rpm)
-  elif [ "${CARCH}" = 'i686' ]; then
-    rpmfile=$(find "$srcdir" -name cnijfilter-mg2500series-$pkgver*i386*.rpm)
-  fi
-  cd $pkgdir
-  bsdtar -xf $rpmfile
-  mv $pkgdir/usr/lib64 $pkgdir/usr/lib
+  [[ "${CARCH}" = 'x86_64' ]] && mv $pkgdir/usr/lib64 $pkgdir/usr/lib
 }
