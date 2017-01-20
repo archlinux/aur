@@ -2,7 +2,7 @@
 
 pkgbase=vis-standalone-git
 pkgname=(vis-standalone-git vis-single-git)
-pkgver=0.2.r689.g0803eef
+pkgver=0.2.r693.g53f84f7
 pkgrel=1
 _pkgver_libmusl=1.1.16
 _pkgver_ncurses=6.0
@@ -47,8 +47,6 @@ sha256sums=('SKIP'
             '179074bb0580c06c4b4137be4c5a92a701583277967acdb5546043c7874e0d23'
             'SKIP')
 
-MAKEFLAGS="-j1"
-
 prepare() {
 	cd vis/
 
@@ -63,6 +61,9 @@ prepare() {
 		SOURCE="$(basename ${SOURCE})"
 		ln -s ../../../${SOURCE} dependency/sources/${SOURCE}
 	done
+
+	# standalone: work around borked dependencies in attr
+	git cherry-pick -n a6d36cef54d7b89f7b7ec57e6c75c59fcc52f9b4
 }
 
 pkgver() {
