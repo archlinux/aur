@@ -1,6 +1,6 @@
 pkgbase = qdigidoc
 	pkgdesc = Qt based UI application for verifying and signing digital signatures
-	pkgver = 3.12.2.1453
+	pkgver = 3.12.3.1466
 	pkgrel = 1
 	url = http://www.id.ee/
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = qdigidoc
 	depends = ccid
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	source = https://installer.id.ee/media/ubuntu/pool/main/q/qdigidoc/qdigidoc_3.12.2.1453.orig.tar.xz
+	source = https://installer.id.ee/media/ubuntu/pool/main/q/qdigidoc/qdigidoc_3.12.3.1466.orig.tar.xz
 	validpgpkeys = 43650273CE9516880D7EB581B339B36D592073D4
-	sha256sums = 36ffd7330bc2f2671c9958fc67bf664a33f13e491de5ffc1f31e7e458aee5dfa
+	sha256sums = 4ee0f4c20baadfd6c182d57afd99664c015e59f6393c9ee67203a3b03b22a393
 
 pkgname = qdigidoc
 
