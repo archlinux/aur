@@ -1,7 +1,7 @@
 # Contributor: Jan Kašpar <jan.kaspar at gmail dot com>
 pkgname=xrootd
-pkgver=4.4.0
-pkgrel=2
+pkgver=4.5.0
+pkgrel=1
 pkgdesc="The XROOTD project aims at giving high performance, scalable fault tolerant access to data repositories of many kinds."
 arch=('i686' 'x86_64')
 url="http://xrootd.org/"
@@ -14,7 +14,7 @@ source=(
 )
 
 md5sums=(
-	'58f55e56801d3661d753ff5fd33dbcc9'
+	'd485df3d4a991e1c35efa4bf9ef663d7'
 )
 
 build()

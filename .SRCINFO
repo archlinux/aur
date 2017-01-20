@@ -1,15 +1,15 @@
 pkgbase = xrootd
 	pkgdesc = The XROOTD project aims at giving high performance, scalable fault tolerant access to data repositories of many kinds.
-	pkgver = 4.4.0
-	pkgrel = 2
+	pkgver = 4.5.0
+	pkgrel = 1
 	url = http://xrootd.org/
 	arch = i686
 	arch = x86_64
 	license = Stanford, Jr. University
 	makedepends = make
 	makedepends = cmake
-	source = http://xrootd.org/download/v4.4.0/xrootd-4.4.0.tar.gz
-	md5sums = 58f55e56801d3661d753ff5fd33dbcc9
+	source = http://xrootd.org/download/v4.5.0/xrootd-4.5.0.tar.gz
+	md5sums = d485df3d4a991e1c35efa4bf9ef663d7
 
 pkgname = xrootd
 
