@@ -2,8 +2,8 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-libreoffice-theme
-_commit=fe7ac9a
-pkgver=20170112
+_commit=bc83211
+pkgver=20170119
 pkgrel=1
 pkgdesc="Papirus theme for LibreOffice"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname}"
