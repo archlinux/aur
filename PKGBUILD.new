@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A glossy Matrix collaboration client for the desktop."
 arch=("any")
 license=("Apache")
-#options=(!strip)
+options=('!strip')
 source=("https://github.com/vector-im/riot-web/releases/download/v$pkgver/vector-v$pkgver.tar.gz"{,.asc}
         "https://raw.githubusercontent.com/vector-im/riot-web/v$pkgver/package.json"
         "https://raw.githubusercontent.com/vector-im/riot-web/v$pkgver/electron/src/"{electron-main.js,squirrelhooks.js,vectormenu.js}
