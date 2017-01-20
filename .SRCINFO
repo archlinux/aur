@@ -1,6 +1,6 @@
 pkgbase = mate-session-manager-dev
 	pkgdesc = The MATE Session Handler (GTK3 version)
-	pkgver = 1.17.0
+	pkgver = 1.17.1
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
@@ -34,8 +34,8 @@ pkgbase = mate-session-manager-dev
 	provides = mate-session-manager-gtk3
 	conflicts = mate-session-manager
 	conflicts = mate-session-manager-gtk3
-	source = http://pub.mate-desktop.org/releases/1.17/mate-session-manager-1.17.0.tar.xz
-	sha1sums = b2f97c06a41fe7ff4d1e19663a28c40113ef7631
+	source = http://pub.mate-desktop.org/releases/1.17/mate-session-manager-1.17.1.tar.xz
+	sha1sums = 1be36277cad8aa57097477876a519d20f93a7d68
 
 pkgname = mate-session-manager-dev
 
