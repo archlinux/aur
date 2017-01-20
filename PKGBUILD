@@ -25,7 +25,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data-git
-pkgver=20170106.r3227.7ad55854
+pkgver=20170120.r3267.faab60c4
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -49,7 +49,7 @@ source=("$pkgname::git+https://git.purrdata.net/jwilkes/purr-data.git"
 	"userconfig.patch")
 md5sums=('SKIP'
          '39c53063dc18681f29b12c08d9c453aa'
-         '0707c240816e87b0f605058c2ab8e153')
+         '056770a94f3c13799c09d3ece273154f')
 # nw.js sdk binaries
 nwjsname=nwjs-sdk
 nwjsver=0.18.5
