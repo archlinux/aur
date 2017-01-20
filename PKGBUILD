@@ -1,6 +1,6 @@
-# Original author: Nicolas Kielbasiewicz (nicolas.kielbasiewicz@ensta-paristech.fr)
+# Original author: Hanno Rein (hanno[AT]hanno-rein.de)
 # Maintainer: Jakob Jungreithmeir <https://aur.archlinux.org/account/Acrypter>
-# Last edited: 17th January 2017
+# Last edited: 20th January 2017
 
 pkgname=texlive-coffee-stains
 pkgver=4.0
