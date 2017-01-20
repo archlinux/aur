@@ -192,7 +192,7 @@ Subject: Backup has failed
 <head>
 </head>
 <body>
-    <p>$(echo -e $message | sed --regexp-extended 's/"([^"]+)"/"<span style="font-weight:bold">\1<\/span>"/g')</p>
+    <p>$(echo -e $message | sed --regexp-extended 's/"([^"]+)"/"<span style="font-weight:bold">\1<\/span>"/g' | sed --regexp-extended 's/(failed)/<span style="font-weight:bold">\1<\/span>/g')</p>
     <p>
         <pre>
 $(tree "$target_path" | sed 's/</\&lt;/g' | sed 's/>/\&gt;/g' | sed "0,/${target_daily_file_name}${target_file_extension}/s/${target_daily_file_name}${target_file_extension}/<span style="font-weight:bold">${target_daily_file_name}${target_file_extension}<\\/span>/" | sed "s/${target_weekly_file_name}${target_file_extension}/<span style="font-weight:bold">${target_weekly_file_name}${target_file_extension}<\\/span>/" | sed "s/${target_monthly_file_name}${target_file_extension}/<span style="font-weight:bold">${target_monthly_file_name}${target_file_extension}<\\/span>/")
