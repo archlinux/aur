@@ -1,8 +1,8 @@
 # Maintainer: Ricardo Cabral <ricardo.arturo.cabral@gmail.com>
 
 pkgname=tibia
-pkgver=11.04.4320
-pkgrel=2
+pkgver=11.04.4347
+pkgrel=1
 pkgdesc="A fast-paced free massively multiplayer online role-playing game."
 arch=('x86_64')
 url="http://www.tibia.com"
@@ -14,9 +14,9 @@ source=("${pkgname}-${pkgver}.tar.gz::http://static.tibia.com/download/tibia.x64
         'http://www.tibia.com/support/agreement.php'
         "tibia-starter.patch")
 
-sha256sums=('59e0094545305e7eebdf370f74188291f5cd560a75222f6db6feee5252e166fd'
+sha256sums=('6e2ef99bc264b9feff47db103d82ae1f9d6648d66ca1689b73a6d1fd58160f2f'
             'fb192d96b893d012c0ecbf216885846c2826bdb72ae7824879959d3b01564f34'
-            'aef753b36439bb5dba1c9a3c4618e57386ee0f6218423b6e8916fe30a01079c3')
+            '345547cf4fd388758d7d28638135f1861f33c1712bac3dc5870a1423b3d13f99')
 
 prepare() {
   gendesk -f -n
