@@ -3,7 +3,7 @@
 pkgname=critter-engine
 pkgver=1.6a
 pkgrel=1
-pkgdesc="A UCI chess engine (3168~3294 Elo)"
+pkgdesc="A UCI chess engine (~3168 Elo)"
 arch=(i686 x86_64)
 url=http://www.vlasak.biz/critter
 license=(custom)
