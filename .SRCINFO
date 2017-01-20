@@ -1,0 +1,24 @@
+pkgbase = whaawmp
+	pkgdesc = GTK+ media player written in python and using GStreamer
+	pkgver = 0.2.14
+	pkgrel = 3
+	url = http://home.gna.org/whaawmp/
+	arch = any
+	license = GPL3
+	license = custom
+	makedepends = intltool
+	depends = gstreamer0.10-python
+	depends = gstreamer0.10-good
+	depends = pygtk
+	depends = python2-xdg
+	depends = desktop-file-utils
+	optdepends = gstreamer0.10-bad-plugins: Extra media codecs, DVD menu support
+	optdepends = gstreamer0.10-base-plugins: Extra media codecs
+	optdepends = gstreamer0.10-ffmpeg: Extra media codecs
+	optdepends = gstreamer0.10-good-plugins: Extra media codecs
+	optdepends = gstreamer0.10-ugly-plugins: Extra media codecs
+	source = http://download.gna.org/whaawmp/0.2.14/whaawmp-0.2.14.tar.bz2
+	sha256sums = b4ce6113879c2ffb50868d5df471380de1fb8800ce2191cc7f0821f1d11a61da
+
+pkgname = whaawmp
+
