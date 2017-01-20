@@ -1,13 +1,13 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com?>
 pkgname=gnuradio-simple-ra-git
 _pkgname=simple_ra
-pkgver=20151012
+pkgver=20160903
 pkgrel=1
 pkgdesc="Simple radio astronomy for Gnuradio."
 url="http://sdr.osmocom.org/trac/"
 arch=('any')
 license=('GPL')
-depends=('python2-pyserial' 'python2-pyephem' 'gnuradio-ra-blocks-git')
+depends=('python2-pyserial' 'python2-pyephem' 'gnuradio-ra-blocks-git' 'gnuradio-osmosdr')
 makedepends=('git')
 source=("git+https://github.com/patchvonbraun/$_pkgname")
 md5sums=('SKIP')
