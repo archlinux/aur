@@ -19,7 +19,7 @@ sha256sums=(a46661507444a7ba80a3202fd637220198853db7b6b6cb3a0ce441c7eb6f72e6
 prepare() {
   cd $pkgname-$pkgver/$pkgname
   sed -i 's:/opt:/usr/share:; s:by.py$:& %f:' -s $pkgname.desktop src/misc.py 
-  sed -i 's:by.py$:& %f:; 8i\MimeType=application/trelby;' $pkgname.desktop
+  sed -i 's:by.py$:& %f:; 8c\MimeType=application/trelby;' $pkgname.desktop
   sed -i "s:program's installation:/usr/share/doc/$pkgname:" manual.html
   sed -i '1s:$:2:; 4i\import wxversion\nwxversion.select("2.8")\n' src/$pkgname.py
 }
