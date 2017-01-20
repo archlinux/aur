@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Raptor
+Comment=A chess GUI for FICS
+Exec=/usr/bin/raptor
+Icon=/usr/share/java/raptor-fics/resources/images/raptorIcon.gif

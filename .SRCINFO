@@ -1,0 +1,18 @@
+pkgbase = raptor-chess
+	pkgdesc = A chess GUI for freechess.org (aka FICS)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://raptor-fics-interface.github.io/Raptor
+	arch = x86_64
+	license = BSD
+	depends = gtk2
+	noextract = Raptor_v1.0_Linux_x86_64_GTK2.zip
+	source = https://github.com/Raptor-Fics-Interface/Raptor/releases/download/v1.0/Raptor_v1.0_Linux_x86_64_GTK2.zip
+	source = raptor-chess.desktop
+	source = raptor-chess.sh
+	sha256sums = f16dbd757c4edec9d78fbfa6581c4d914aa546361fc253a4e0c19bd47281f9b0
+	sha256sums = 09499c5cf036eea9e709f85dd5b792831519243ed12bab1e02ad4c2ce5e281af
+	sha256sums = d3e693654722f8e588b1ca598bdb327d3ac6f6f4cde25ad22fcbc8ff82f42f65
+
+pkgname = raptor-chess
+
