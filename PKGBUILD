@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=heirloom-ex-vi-git
-pkgver=4.1.0.r4.g4867427.r19.4867427
+pkgver=4.1.3.r41.d47dc5a
 pkgrel=1
 epoch=
 pkgdesc="The traditional Vi"
