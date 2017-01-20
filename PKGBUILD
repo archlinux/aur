@@ -7,12 +7,10 @@ pkgdesc="A glossy Matrix collaboration client for the desktop."
 arch=("any")
 license=("Apache")
 source=("git+https://github.com/vector-im/riot-web.git#tag=v$pkgver"
-#source=("https://github.com/vector-im/riot-web/releases/download/v0.9.5/vector-v0.9.5.tar.gz"{,.asc}
         "Riot.desktop"
         "riot-web.sh"
         "riot.svg"
         "riot.png")
-#validpgpkeys=('6FEB6F83D48B93547E7DFEDEE019645248E8F4A1')
 url="https://riot.im/"
 makedepends=("git" "npm")
 depends=("electron")
@@ -29,18 +27,15 @@ prepare() {
 }
 
 build() {
-#  cd $srcdir/vector-v$pkgver
   cd $srcdir/riot-web
   npm install
   npm run build
 }
 
 package() {
-#  cd $srcdir/vector-v$pkgver
   cd $srcdir/riot-web
   mkdir -p $pkgdir/usr/lib/$pkgname/{webapp,electron}
 
-  #cp -r $srcdir/riot-web/* $pkgdir/usr/lib/$pkgname/
   cp $srcdir/riot-web/package.json $pkgdir/usr/lib/$pkgname/
   cp -r $srcdir/riot-web/webapp/* $pkgdir/usr/lib/$pkgname/webapp/
   cp -r $srcdir/riot-web/electron/* $pkgdir/usr/lib/$pkgname/electron/
