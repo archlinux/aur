@@ -1,16 +1,16 @@
 pkgbase = dyplompwr
 	pkgdesc = Latex package with unofficial thesis template for students of Wrocław University of Technology
-	pkgver = 1.0
-	pkgrel = 1
+	pkgver = 2.0
+	pkgrel = 2
 	url = https://github.com/rkubosz/dyplompwr
 	arch = any
 	license = MIT
 	depends = texlive-core
 	depends = urw-garamond
 	depends = urw-classico
-	source = https://github.com/rkubosz/dyplompwr/releases/download/v1.0/dyplompwr.zip
+	source = https://github.com/rkubosz/dyplompwr/releases/download/v2.0/dyplompwr.zip
 	source = license
-	md5sums = be7a7957f5680cb44db2b0cb3f132a1d
+	md5sums = 7acfcf67b6697133131fb61acf708d99
 	md5sums = 532f9a8276206a404a50e40544238013
 
 pkgname = dyplompwr
