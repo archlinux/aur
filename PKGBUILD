@@ -2,7 +2,7 @@
 # This PKGBUILD is maintained at https://github.com/winged/aur-packages
 
 pkgname=phpctags
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="An enhanced PHP ctags index generator"
 arch=('any')
@@ -15,11 +15,14 @@ optdepends=()
 
 install='phpctags.install'
 
-source=("http://vim-php.com/phpctags/install/phpctags.phar")
-sha256sums=('6e6c59cf0b45832dd5e3a01d2c6cfade5eeaad30daa46db48e74f2ecaa6fbaaa')
+source=("https://github.com/vim-php/phpctags/archive/$pkgver.zip")
+sha256sums=('0d995dc1c432b7b451b5e2cd03064047d5b30939f9b05b994a4630ea537a5afe')
 
 package() {
-  install -Dm755 phpctags.phar "$pkgdir/usr/bin/phpctags"
+  cd $pkgname-$pkgver
+  ls -aslh
+  make
+  install -Dm755 build/phpctags.phar "$pkgdir/usr/bin/phpctags"
 }
 
 # vim:set ts=2 sw=2 et:
