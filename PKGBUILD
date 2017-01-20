@@ -1,9 +1,9 @@
-# Maintainer: Alex Eckhart <eckhartalex@gmail.com>
+# Maintainer: Tomasz Paś <kierek93@gmail.com>
 # Contributor: Thomas Schneider <maxmusterm@gmail.com>
 
 pkgname=libretro-parallel-git
 _gitname=mupen64plus-libretro
-pkgver=4293.575a0c8
+pkgver=4409.d40e5f88
 pkgrel=1
 pkgdesc="Mupen64plus with dynarec and vulkan powered rdp lle"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('custom' 'GPL' 'LGPL')
 makedepends=('git' 'vulkan-headers' 'llvm')
 depends=('libglvnd' 'vulkan-icd-loader' 'clang')
 source=("${_gitname}::git://github.com/libretro/${_gitname}.git"
-	"https://raw.github.com/libretro/libretro-super/master/dist/info/parallel_libretro.info")
+	"https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/parallel_libretro.info")
 groups=('libretro')
 
 md5sums=('SKIP'
@@ -26,13 +26,13 @@ pkgver() {
 build() {
   cd "${_gitname}"
   if [ $CARCH == "i686" ];then
-   make WITH_DYNAREC=x86 HAVE_VULKAN=1 HAVE_PARALLEL_RSP=1
+   make WITH_DYNAREC=x86 HAVE_PARALLEL_ONLY=1
   else
-   make WITH_DYNAREC=$CARCH HAVE_VULKAN=1 HAVE_PARALLEL_RSP=1
+   make WITH_DYNAREC=$CARCH HAVE_PARALLEL_ONLY=1
   fi
 }
 
 package() {
-  install -Dm644 "${srcdir}/parallel_libretro.info" "${pkgdir}/usr/lib/libretro/libretro-parallel.info"
+  install -Dm644 "${srcdir}/parallel_libretro.info" "${pkgdir}/usr/share/libretro/info/libretro-parallel.info"
   install -Dm644 "${_gitname}/parallel_libretro.so" "${pkgdir}/usr/lib/libretro/libretro-parallel.so"
 }
