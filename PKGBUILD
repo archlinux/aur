@@ -1,6 +1,6 @@
 # Mantainer maz-1 < ohmygod19993 at gmail dot com >
 pkgname=polkit-kde-kcmodules-frameworks 
-pkgver=20170119.g8d55dee
+pkgver=20170120.g8d55dee
 _revision=8d55deee00e385bad6897e470d7467f522db477c
 pkgrel=1
 pkgdesc="Set of configuration modules which allows administrator to change polkit settings."
@@ -10,7 +10,7 @@ license=('GPL')
 provides=(polkit-kde-kcmodules)
 conflicts=(polkit-kde-kcmodules)
 depends=('kdelibs4support' 'polkit-qt5' 'kcmutils')
-makedepends=('extra-cmake-modules' 'git' 'kdoctools')
+makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'kdesignerplugin')
 source=("git+https://anongit.kde.org/polkit-kde-kcmodules-1.git#commit=${_revision}"
         "port_to_kf5.patch")
 groups=('plasma')
