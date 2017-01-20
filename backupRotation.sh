@@ -45,7 +45,7 @@
 
 # account        default : gmail
 # endregion
-# region default options
+# region default o ptions
 # Example:
 # declare -A source_target_mappings=(
 #     ['SOURCE_URL1']='TARGET_URL1 RECIPIENT_E_MAIL_ADDRESS' \
@@ -68,6 +68,7 @@ number_of_weekly_retention_days=56 # Weekly backups for the last 2 month.
 number_of_monthly_retention_days=365 # Monthly backups for the last year.
 target_file_extension='.tar.gz'
 backup_command='rsync --recursive --delete --perms --executability --owner --group --times --devices --specials --acls --links --super --whole-file --force --protect-args --hard-links --max-delete=1 --progress --human-readable --itemize-changes --verbose --exclude=.git --exclude=.npm --exclude=node_modules --exclude=.local "$source_path" "$target_file_path" && tar --create --verbose --gzip --file "${target_file_path}${target_file_extension}" "$target_file_path" && rm --recursive --verbose "$target_file_path"'
+post_backup_command=''
 # Folder to delete is the last command line argument.
 cleanup_command='rm --recursive --verbose'
 verbose=false
@@ -107,6 +108,7 @@ for source_path in "${!source_target_mappings[@]}"; do
     else
         backup_command+="${backup_command} &>/dev/null"
     fi
+    successful=false
     if eval "$backup_command"; then
         # Clean outdated daily backups.
         [ -d "${target_path}/${daily_target_path}" ] && \
@@ -122,15 +124,18 @@ for source_path in "${!source_target_mappings[@]}"; do
             find "${target_path}/${monthly_target_path}" -mtime \
                 +"$number_of_monthly_retention_days" -exec $cleanup_command \
                 {} \;
-        message="Source files in \"$source_path\" from node \"$name\" successfully backed up to \"${target_file_path}${target_file_extension}\".\n\nCurrent Backup structure:\n"
-        $verbose && echo -e "$message" && tree "$target_path" && \
-            df ./ --human-readable
-        if hash msmtp && [[ "$sender_e_mail_address" != '' ]]; then
-            for e_mail_address in \
-                $(echo "${source_target_mappings[$source_path]}" | \
-                grep ' .+$' --only-matching --extended-regexp)
-            do
-                msmtp --read-recipients <<EOF
+        [[ "$post_backup_command" == '' ]] || eval "$post_backup_command" && \
+            successful=true
+        if $successful; then
+            message="Source files in \"$source_path\" from node \"$name\" successfully backed up to \"${target_file_path}${target_file_extension}\".\n\nCurrent Backup structure:\n"
+            $verbose && echo -e "$message" && tree "$target_path" && \
+                df ./ --human-readable
+            if hash msmtp && [[ "$sender_e_mail_address" != '' ]]; then
+                for e_mail_address in \
+                    $(echo "${source_target_mappings[$source_path]}" | \
+                    grep ' .+$' --only-matching --extended-regexp)
+                do
+                    msmtp --read-recipients <<EOF
 MIME-Version: 1.0
 Content-Type: text/html
 From: $sender_e_mail_address
@@ -155,14 +160,16 @@ $(tree "$target_path" | sed 's/</\&lt;/g' | sed 's/>/\&gt;/g' | sed "0,/${target
 </html>
 
 EOF
-            done
+                done
+            fi
+            if [[ "$monitoring_url" != '' ]]; then
+                curl --request PUT --header 'Content-Type: application/json' \
+                    --data "{\"source\": \"$source_path\", \"target\": \"$target_path\", \"error\": false}" \
+                    "$monitoring_url"
+            fi
         fi
-        if [[ "$monitoring_url" != '' ]]; then
-            curl --request PUT --header 'Content-Type: application/json' \
-                --data "{\"source\": \"$source_path\", \"target\": \"$target_path\", \"error\": false}" \
-                "$monitoring_url"
-        fi
-    else
+    fi
+    if ! $successful; then
         message="Source files in \"$source_path\" from node \"$name\" should be backed up but has failed.\n\nCurrent Backup structure:\n"
         $verbose && echo -e "$message" &>/dev/stderr && \
             tree "$target_path" && df ./ --human-readable
