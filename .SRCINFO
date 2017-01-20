@@ -1,0 +1,14 @@
+pkgbase = liblaxjson
+	pkgdesc = C library for parsing JSON config files
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/andrewrk/liblaxjson
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	source = https://github.com/andrewrk/liblaxjson/archive/1.0.5.tar.gz
+	sha256sums = ffc495b5837e703b13af3f5a5790365dc3a6794f12f0fa93fb8593b162b0b762
+
+pkgname = liblaxjson
+
