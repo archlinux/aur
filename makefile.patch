@@ -1,0 +1,12 @@
+diff -aur mpgedit_0-75dev2_src/mpgedit/gui/makefile.linux mpgedit_0-75dev2_src.new/mpgedit/gui/makefile.linux
+--- mpgedit_0-75dev2_src/mpgedit/gui/makefile.linux	2009-04-07 17:21:23.000000000 +0200
++++ mpgedit_0-75dev2_src.new/mpgedit/gui/makefile.linux	2017-01-20 20:11:37.000000000 +0100
+@@ -18,7 +18,7 @@
+                 ledtime.o
+ 
+ xmpgedit: $(XMPGEDIT_OBJS) ../libmpgeditlib.a
+-	$(CC) $(LDFLAGS) $(XMPGEDIT_OBJS) -o xmpgedit -L.. -lmpgeditlib \
++	$(CC) $(LDFLAGS) $(XMPGEDIT_OBJS) -o xmpgedit -L.. -lmpgeditlib -ldl \
+                `pkg-config --libs gtk+-2.0` $(EFENCE)
+ 
+ 

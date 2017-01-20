@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=xmpgedit
+Comment=Lossless MP3 audio cutter
+Exec=xmpgedit %F
+Terminal=false
+Type=Application
+Categories=Utility;Audio;AudioVideoEditing
+StartupNotify=true
