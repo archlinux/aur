@@ -1,6 +1,6 @@
 # Original author: Nicolas Kielbasiewicz (nicolas.kielbasiewicz@ensta-paristech.fr)
-# Maintainer: Jakob Jungreithmeir <https://aur.archlinux.org/account/Acrypter>
-# Last edited: 17th January 2017
+# Maintainer: Jakob Jungreithmeir <https://aur.archlinux.org/account/JakobJung>
+# Last edited: 20th January 2017
 
 pkgname=texlive-tikz-uml
 pkgver=1.0
