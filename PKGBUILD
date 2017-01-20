@@ -4,7 +4,7 @@
 
 pkgname=libunity
 pkgver=7.1.4
-pkgrel=4
+pkgrel=5
 pkgdesc='Library for instrumenting and integrating with all aspects of the Unity shell'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/libunity'
@@ -15,12 +15,12 @@ source=("https://launchpad.net/ubuntu/+archive/primary/+files/libunity_$pkgver+1
 sha256sums=('SKIP')
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${srcdir}
   ./autogen.sh --prefix='/usr' --sysconfdir='/etc' --localstatedir='/var' --disable-static
   make
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${srcdir}
   make DESTDIR="${pkgdir}" install
 }
