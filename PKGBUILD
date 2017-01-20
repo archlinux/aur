@@ -1,5 +1,5 @@
 # Original author: Hanno Rein (hanno[AT]hanno-rein.de)
-# Maintainer: Jakob Jungreithmeir <https://aur.archlinux.org/account/Acrypter>
+# Maintainer: Jakob Jungreithmeir <https://aur.archlinux.org/account/JakobJung>
 # Last edited: 20th January 2017
 
 pkgname=texlive-coffee-stains
