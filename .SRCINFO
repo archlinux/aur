@@ -1,8 +1,9 @@
 pkgbase = capsudo-git
 	pkgdesc = sudo for POSIX capabilities, git version
 	pkgver = r9.6637183
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.archlinux.org/users/thomas/capsudo.git/
+	install = capsudo-git.install
 	arch = any
 	license = unknown
 	makedepends = git

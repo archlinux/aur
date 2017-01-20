@@ -1,0 +1,7 @@
+post_install() {
+	setcap cap_setpcap+p /usr/bin/capsudo
+}
+
+post_upgrade() {
+	setcap cap_setpcap+p /usr/bin/capsudo
+}

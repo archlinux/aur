@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Schneider <nioncode+pkgbuild at gmail dot com>
 pkgname=capsudo-git
 pkgver=r9.6637183
-pkgrel=1
+pkgrel=2
 pkgdesc="sudo for POSIX capabilities, git version"
 arch=('any')
 url="https://git.archlinux.org/users/thomas/capsudo.git/"
@@ -13,6 +13,7 @@ conflicts=("${pkgname%-git}")
 backup=(etc/capsudoers)
 source=('capsudo::git+https://git.archlinux.org/users/thomas/capsudo.git')
 md5sums=('SKIP')
+install=capsudo-git.install
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
