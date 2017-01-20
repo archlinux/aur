@@ -11,10 +11,10 @@
 # installed version of that library. They change around paths every
 # update and just generally don't seem to care much.
 pkgname=synergy
-pkgver=1.8.6
+pkgver=1.8.7
 pkgrel=1
 pkgdesc='Share a single mouse and keyboard between multiple computers'
-url='http://synergy-foss.org'
+url='https://symless.com/synergy/'
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('gcc-libs' 'libxtst' 'libxinerama' 'libxkbcommon-x11' 'avahi' 'curl' 'openssl')
@@ -24,7 +24,7 @@ source=(synergy-${pkgver}.tar.gz::https://github.com/symless/synergy/archive/v${
         system-gtest.patch
         synergys.socket
         synergys.service)
-sha512sums=('e0816c280c77d4a865f4b7d4a9081963032a156bfb6da51e6b67a6fc41f8f18b097d3fc7c96218db268c36d0148021f9ddba95fe56daff8bfc54219dbdfe14a5'
+sha512sums=('2c86d2adb7424d2ea36d0c6b88500379d353c9d3086e2dd4aa1f0919d731d13e224c44e19eaf8c6ffcd7ac232fdfbd4f8b11f76f09e537dd4f0932359527db6d'
             '4bef039f59b565d08079a8187df76f9773cfddeb81376ccc42f5570049389f114559721ed7b0464c4a4d1431ba72a736b11755573019583d0075d9da08c03ed2'
             'f9c124533dfd0bbbb1b5036b7f4b06f7f86f69165e88b9146ff17798377119eb9f1a4666f3b2ee9840bc436558d715cdbfe2fdfd7624348fae64871f785a1a62'
             '9663a11b915e10e60317e732a4d1191e8f8ff19176994c27dd20aa445daab7565bd624e5575c9c639d144293879fbe8376834a076723f778fd322ebd1c9f2029')
