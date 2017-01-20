@@ -44,14 +44,13 @@
 pkgbase=ttf-ms-win10
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
 pkgver=10.0.14393
-pkgrel=3
+pkgrel=4
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=(custom)
 depends=(fontconfig xorg-fonts-encodings xorg-mkfontscale xorg-mkfontdir)
 provides=(ttf-font)
 conflicts=(ttf-vista-fonts)
-install=$pkgbase.install
 
 _ttf_ms_win10=(
 #########################################################################################

@@ -1,8 +1,7 @@
 pkgbase = ttf-ms-win10
 	pkgver = 10.0.14393
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.microsoft.com/typography/fonts/product.aspx?PID=164
-	install = ttf-ms-win10.install
 	arch = any
 	license = custom
 	depends = fontconfig
