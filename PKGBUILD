@@ -21,14 +21,14 @@
 set -u
 _pkgname='cpdf'
 pkgname="${_pkgname}"
-pkgver='2.2'
+pkgver='2.2.1'
 _binver='2.1.1'; _binhash='17372d86935f7541ae0bc7ff0b9eebb721af0cb0' # version 2.1
 pkgrel=1
 pkgdesc='Coherent PDF and smpdf to manipulate PDF files including merge, encrypt, decrypt, scale, crop, rotate, bookmarks, stamp, logos, page numbers'
 arch=('x86_64' 'i686')
 url='http://community.coherentpdf.com'
 license=('custom')
-depends=('camlpdf>=2.2a')
+depends=('camlpdf>=2.2')
 makedepends=('ocaml' 'ocaml-findlib')
 conflicts=('cpdf-bin') # temporary
 options=('!makeflags' 'staticlibs')
@@ -50,7 +50,7 @@ source=(
 )
 unset _srcfile _srcmastname _srcdirname
 sha256sums=('55a0de2b225413d7cda3784e6336f40f707a31b8f018c1cd24a8396df9dda65f'
-            '5d8a4956cb944c27e28cae47f4fe6c6bd92472ea58f4648f17c6a45e157377c6')
+            '304877313312859fb4155091548bfb47295798367aeddb1d93f6640640335006')
 
 _pkgver_disabled() {
   set -u
