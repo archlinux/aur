@@ -1,6 +1,6 @@
 pkgbase = pulseaudiocontrol
 	pkgdesc = Pulseaudio command line control
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/YanDoroshenko/pulseaudio-control
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = pulseaudiocontrol
 	depends = libpulse>=4.0
 	depends = pulseaudio>=4.0
 	depends = sed
-	source = https://github.com/YanDoroshenko/pulseaudiocontrol/raw/master/pulseaudiocontrol-1.1-4.tar.xz
-	sha256sums = 8bf79e46099411e2c8bc6e88e10103650b44b93ba323965504e3319494bb748c
+	source = https://github.com/YanDoroshenko/pulseaudiocontrol/raw/master/pulseaudiocontrol-1.1-5.tar.xz
+	sha256sums = 9a1678875e4fde5cc756ec18f4b5cf369a91be12557081f38f072ec2d8f3e7ff
 
 pkgname = pulseaudiocontrol
