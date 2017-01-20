@@ -3,7 +3,7 @@
 
 pkgname=pdepend
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for PHP software metrics"
 url="http://pdepend.org/"
 arch=("any")
@@ -13,7 +13,7 @@ install="${pkgname}.install"
 source=("http://static.pdepend.org/php/${pkgver}/pdepend.phar"
         "https://raw.githubusercontent.com/pdepend/pdepend/${pkgver}/LICENSE"
         "pdepend.install")
-sha512sums=('547dfeb76c989c46cf29d649f58e2f76425825252e6b6316b24b78d621e1f6f388b9d5f3e584056ac84b1abd64ebb04ab06d42e42498765e9b1097a63b368ada'
+sha512sums=('f21850f14ed7cb6c4ed236b04320519aed6202620897ebb25833a3f123b882ed3159cfc8f244ae317bee66f16fa07c64b4496ba83167a3858ab31b23478f6470'
             'e77faa58731d21b1f55523f8aec955043ba383f472a76b5cfb5994a6cdfdf3dc63d3a329b50754ab9ff0ab869920bc38a58b3688bf37d3cddac22585b917c2d9'
             '918537da7a6431b3c9c2bfd55dd0e317b586924e65a547c4216b58df1f12081737f12af7f19e81365befd15af1ee26046ad7ca086a3c9bde0466c0d9257cd1ac')
 
