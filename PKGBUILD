@@ -63,6 +63,7 @@ depends=('alsa-lib'
          'pango'
          'pcre'
          'pixman'
+         'pulseaudio'
          'wayland'
          'xz'
          'zlib')
