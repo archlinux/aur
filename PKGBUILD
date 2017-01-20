@@ -20,6 +20,7 @@ makedepends=("git" "npm")
 depends=("electron")
 #replaces=('vector-web')  # @vith
 replaces=('riot-web')
+conflicts=('riot-web')
 sha512sums=('SKIP'
             '103e08dd228967f75bf7f7a84d8764afdc7e88b3eb8d833e909ee8ca56bed3c451b7297c733de1459f37f1d9f50a3f9859879298ebfe92befe44c0785be7903c'
             '48ec620b07fc57de790abdb1f01048825fa7864d22d3f3494055b3919538868ac9c48048d94ad1655f93da595cc1a06a625170aa070979f98a9d39b5ded34cae'
