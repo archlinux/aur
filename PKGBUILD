@@ -5,7 +5,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=2.6.3.r11781.51fc290
+pkgver=2.9.7.r12193.b16863523
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -42,7 +42,7 @@ depends=('python2'
          'python2-flask-login>=0.4.0'
          'python2-flask-cors>=2.1.2'
          'python2-pyparsing>=2.0.3'
-         'python2-safe>=0.4'
+         'python2-zxcvbn'
          'python2-future>=0.15.2'
          'python2-terminaltables>=3.1.0'
          'python2-colorclass>=2.2.0'
@@ -108,7 +108,7 @@ package() {
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 
   # Make sure the perms allow reading by all
-  chmod ugo+r ${pkgdir}/usr/lib/python2.7/site-packages/FlexGet-2.6.*.dev0-py2.7.egg-info/*
+  chmod ugo+r ${pkgdir}/usr/lib/python2.7/site-packages/FlexGet-2.9.*.dev0-py2.7.egg-info/*
 
   # install systemd user unit
   install -Dm644 ../flexget.service "${pkgdir}"/usr/lib/systemd/user/flexget.service
