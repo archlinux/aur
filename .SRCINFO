@@ -1,0 +1,16 @@
+pkgbase = texlive-coffee-stains
+	pkgdesc = A LaTeX package for drawing coffee stains using pgf/tikz
+	pkgver = 4.0
+	pkgrel = 1
+	url = http://hanno-rein.de/archives/349
+	install = texlive-coffee-stains.install
+	arch = any
+	license = Custom FOSS
+	depends = texlive-core
+	source = http://hanno-rein.de/downloads/coffee4.tar.gz
+	source = LICENSE
+	md5sums = 419e2a2f352da52733c0cbfb03534e40
+	md5sums = 1c0d717000b8d526c5e3f6abed1e6012
+
+pkgname = texlive-coffee-stains
+
