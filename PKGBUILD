@@ -1,7 +1,7 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
-_pythonmod=zxcvbn
+_pythonmod=zxcvbn-python
 pkgname=python2-zxcvbn
-pkgver=1.0
+pkgver=4.4.12
 pkgrel=1
 pkgdesc="Password strength estimator"
 arch=('any')
@@ -12,7 +12,7 @@ depends=(
     )
 makedepends=('python2-setuptools')
 source=("https://pypi.io/packages/source/${_pythonmod:0:1}/${_pythonmod}/${_pythonmod}-$pkgver.tar.gz")
-md5sums=('4b875b9f954a7aef2269eb8c1177b591')
+md5sums=('ca8e19e3ff37c16e88bd0f70e3fabdad')
 
 build() {
   cd ${srcdir}/${_pythonmod}-$pkgver
