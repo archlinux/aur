@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Steel <jsteel at archlinux.org>
 
 pkgname=cpp-hocon
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="C++ port of the Typesafe Config library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/puppetlabs/cpp-hocon"
 license=('APACHE')
 makedepends=('boost' 'cmake' 'leatherman')
 source=($pkgname-$pkgver.tar.gz::https://github.com/puppetlabs/cpp-hocon/archive/$pkgver.tar.gz)
-md5sums=('8db77c4ba4bb44047450c19ff43b3f51')
+md5sums=('64c3aa720ac716865052ef2c4cf7d16e')
 
 build() {
   cd $pkgname-$pkgver
