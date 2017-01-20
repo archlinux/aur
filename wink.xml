@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/x-wink">
+        <comment>Wink project file</comment>
+        <icon name="wink-mime"/>
+        <glob-deleteall/>
+        <glob pattern="*.wnk"/>
+    </mime-type>
+</mime-info>
