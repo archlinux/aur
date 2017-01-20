@@ -8,8 +8,10 @@ pkgdesc="ttf version of terminus-font"
 arch=(any)
 depends=(fontconfig xorg-font-utils)
 
-source=("https://deadsoftware.ru/files/kalterfx/aur.archlinux.org/packages/terminus-re33/terminus-re33.ttf.gz")
-sha256sums=('ccf315c5ffeac3efee3fbc9e066595a05e4f79aa0742831598a4ab7c28641d25')
+_source_url='https://deadsoftware.ru/files/kalterfx/aur.archlinux.org/packages/terminus-re33'
+
+source=("$_source_url/terminus-re33.ttf.gz")
+sha512sums=("$(curl "$_source_url/terminus-re33.ttf.gz.sha512sum.gz" | gzip -d)")
 
 package() {
 	install -Dm644 "$srcdir/${pkgname}.ttf" \

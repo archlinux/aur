@@ -6,7 +6,7 @@ pkgbase = terminus-re33
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = https://deadsoftware.ru/files/kalterfx/aur.archlinux.org/packages/terminus-re33/terminus-re33.ttf.gz
-	sha256sums = ccf315c5ffeac3efee3fbc9e066595a05e4f79aa0742831598a4ab7c28641d25
+	sha512sums = ecc11f4814835ac936ef8007ad73898c123c3ded09c1941871500f977d62bf59eecf64dc18955ff8eae1c49b94df3c30d2fed2970cc2bfe915aea292005ca1a7
 
 pkgname = terminus-re33
 
