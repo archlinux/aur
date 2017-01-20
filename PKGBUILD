@@ -1,4 +1,5 @@
-# Maintainer: S Leduc <sebastien@sleduc.fr>
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Contributor: S Leduc <sebastien@sleduc.fr>
 # Contributor: Martin Villagra <mvillagra0@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
 # Contributor: Nikhil Bysani <nikron@gmail.com>
@@ -8,7 +9,7 @@
 
 pkgname=mediatomb
 pkgver=0.12.1
-pkgrel=13
+pkgrel=14
 pkgdesc="Free UPnP/DLNA media server"
 arch=('i686' 'x86_64' 'armv6h')
 url="http://mediatomb.cc/"
@@ -17,7 +18,8 @@ depends=('file' 'curl' 'ffmpegthumbnailer' 'libexif' 'libmp4v2' 'sqlite3' 'tagli
 optdepends=('mariadb: to store your music database in mariadb')
 backup=('etc/conf.d/mediatomb')
 install=mediatomb.install
-source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
+source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+        'mediatomb.sysusers'
         'mediatomb.service'
         'mediatomb-mariadb.service'
         'mediatomb.conf'
@@ -29,6 +31,7 @@ source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
         'libavformat.patch'
         'symlinks.patch')
 sha256sums=('31163c34a7b9d1c9735181737cb31306f29f1f2a0335fb4f53ecccf8f62f11cd'
+            '99e2602eebb9f5236107b0bee473a4187c7df7732745ad83542a3dcca9cb7d5a'
             'e46de674e49aa85116a8ff127908f7bac21198ce7625404004b8b7832eccd3f4'
             '9c917f0d6e568ce0ad77c0ed17e4bbaabc0e7a1c0a3e4772b786fb1565db9768'
             '70e4a4b89cef9a7f6f5f800e1793a6cb807f52b39e5a17d0a91356608b95e62d'
@@ -40,15 +43,20 @@ sha256sums=('31163c34a7b9d1c9735181737cb31306f29f1f2a0335fb4f53ecccf8f62f11cd'
             '76b11706d70ed8f5e157d96ca441c90c46c42176102fcb651b4ab1102b61bfee'
             '72f7532d7cd827ab655df652d2912175739fe16d2b1ad989d987a0b147a1d2e8')
 
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  patch -Np1 < "${srcdir}/gcc46.patch"
+  patch -Np1 < "${srcdir}/tonewjs.patch"
+  patch -Np1 < "${srcdir}/jsparse.patch"
+  patch -Np1 < "${srcdir}/libav_0.7_support.patch"
+  patch -Np1 < "${srcdir}/libmp4v2_191_p497.patch"
+  patch -Np1 < "${srcdir}/libavformat.patch"
+  patch -Np1 < "${srcdir}/symlinks.patch"
+}
+
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  patch -Np1 -i "$srcdir/gcc46.patch"
-  patch -Np1 -i "$srcdir/tonewjs.patch"
-  patch -Np1 -i "$srcdir/jsparse.patch"
-  patch -Np1 -i "$srcdir/libav_0.7_support.patch"
-  patch -Np1 -i "$srcdir/libmp4v2_191_p497.patch"
-  patch -Np1 -i "$srcdir/libavformat.patch"
-  patch -Np1 -i "$srcdir/symlinks.patch"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   ./configure --prefix=/usr \
               --enable-mysql \
@@ -59,11 +67,12 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="${pkgdir}" install
 
-  install -D -m0644 "$srcdir/mediatomb.service" "$pkgdir/usr/lib/systemd/system/mediatomb.service"
-  install -D -m0644 "$srcdir/mediatomb-mariadb.service" "$pkgdir/usr/lib/systemd/system/mediatomb-mariadb.service"
-  install -D -m0644 "$srcdir/mediatomb.conf" "$pkgdir/etc/conf.d/mediatomb"
+  install -Dm644 "${srcdir}/mediatomb.sysusers" "${pkgdir}/usr/lib/sysusers.d/mediatomb.conf"
+  install -Dm644 "${srcdir}/mediatomb.service" "${pkgdir}/usr/lib/systemd/system/mediatomb.service"
+  install -Dm644 "${srcdir}/mediatomb-mariadb.service" "${pkgdir}/usr/lib/systemd/system/mediatomb-mariadb.service"
+  install -Dm644 "${srcdir}/mediatomb.conf" "${pkgdir}/etc/conf.d/mediatomb"
 }
