@@ -195,9 +195,10 @@ Subject: Backup has failed
     <p>$(echo -e $message | sed --regexp-extended 's/"([^"]+)"/"<span style="font-weight:bold">\1<\/span>"/g')</p>
     <p>
         <pre>
-$(df ./ --human-readable | grep "${target_daily_file_name}${target_file_extension}")
+$(tree "$target_path" | sed 's/</\&lt;/g' | sed 's/>/\&gt;/g' | sed "0,/${target_daily_file_name}${target_file_extension}/s/${target_daily_file_name}${target_file_extension}/<span style="font-weight:bold">${target_daily_file_name}${target_file_extension}<\\/span>/" | sed "s/${target_weekly_file_name}${target_file_extension}/<span style="font-weight:bold">${target_weekly_file_name}${target_file_extension}<\\/span>/" | sed "s/${target_monthly_file_name}${target_file_extension}/<span style="font-weight:bold">${target_monthly_file_name}${target_file_extension}<\\/span>/")
         </pre>
     </p>
+    <p><pre>$(df ./ --human-readable)</pre></p>
 </body>
 </html>
 
