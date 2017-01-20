@@ -1,0 +1,12 @@
+pkgbase = andscacs-engine
+	pkgdesc = A UCI chess engine (~3239 Elo)
+	pkgver = 0.89
+	pkgrel = 1
+	url = http://www.andscacs.com
+	arch = x86_64
+	license = custom
+	source = http://www.andscacs.com/andscacs089.zip
+	sha256sums = 0ee9344538dcf4449d71b9ea55a9c4affee9e5454f54dd9c35bb573e8c691af7
+
+pkgname = andscacs-engine
+
