@@ -125,7 +125,7 @@ int main(int argc, char *argv[]) {
         else
             action = 0;
     if( action == -1 ) {
-        cout << "Usage : todo [show,add,remove,check/uncheck,set,clean/clear,checked,unchecked/todo]" << endl;
+        cout << "Usage : todo [show,add,remove,check,uncheck,set,clean|clear|cl,checked,unchecked,todo]" << endl;
     } else {
         ifstream file(".todo.txt", ios::in);
 
