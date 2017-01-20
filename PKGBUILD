@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-oslo-log' 'python2-oslo-log')
-pkgver='3.19.0'
+pkgver='3.20.0'
 pkgrel='1'
 pkgdesc='Oslo Log library'
 arch=('any')
