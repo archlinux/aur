@@ -8,21 +8,20 @@
 
 pkgname=stumpwm-git
 _pkgname=stumpwm
-pkgver=1.0.0.r0.g37a0ae9
+pkgver=1.0.0.r18.gd70c5fa
 pkgrel=1
 pkgdesc="A tiling, keyboard-driven window manager written in common lisp"
 arch=('i686' 'x86_64')
 url="https://stumpwm.github.io"
 license=('GPL2')
 provides=('stumpwm')
-makedepends=('autoconf')
 
 source=(${_pkgname}::git+https://github.com/stumpwm/stumpwm
         ${_pkgname}-contrib::git+https://github.com/stumpwm/stumpwm-contrib)
 md5sums=('SKIP'
          'SKIP')
 
-depends=('common-lisp' 'cl-asdf' 'clx-git' 'cl-ppcre')
+makedepends=('common-lisp' 'cl-asdf' 'clx-git' 'cl-ppcre' 'cl-alexandria')
 optdepends=('xorg-xprop: for stumpish (StumpWM Interactive Shell)'
             'rlwrap: for stumpish completion and history'
             'emacs: Edit and eval stumpwm code with M-x stumpwm-mode'
