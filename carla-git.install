@@ -1,3 +1,0 @@
-update-mime-database usr/share/mime
-update-desktop-database -q
-xdg-icon-resource
