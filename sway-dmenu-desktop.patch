@@ -1,0 +1,19 @@
+*** /usr/bin/i3-dmenu-desktop	2017-01-21 06:43:09.864229747 -0600
+--- sway-dmenu-desktop	2017-01-21 06:45:17.234818564 -0600
+***************
+*** 448,454 ****
+      if (exists($app->{StartupNotify}) && !$app->{StartupNotify}) {
+          $nosn = '--no-startup-id';
+      }
+!     $cmd = qq|exec $nosn "$exec"|;
+  }
+  
+  system('i3-msg', $cmd) == 0 or die "Could not launch i3-msg: $?";
+--- 448,454 ----
+      if (exists($app->{StartupNotify}) && !$app->{StartupNotify}) {
+          $nosn = '--no-startup-id';
+      }
+!     $cmd = qq|exec $nosn $exec|;
+  }
+  
+  system('i3-msg', $cmd) == 0 or die "Could not launch i3-msg: $?";
