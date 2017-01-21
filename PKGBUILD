@@ -6,8 +6,8 @@
 
 pkgname=pcmanfm-gtk3
 _pkgname=pcmanfm
-pkgver=1.2.4
-pkgrel=2
+pkgver=1.2.5
+pkgrel=1
 pkgdesc='Extremely fast and lightweight file manager (GTK+ 3 version)'
 arch=('i686' 'x86_64')
 url='http://pcmanfm.sourceforge.net/'
@@ -16,11 +16,10 @@ groups=('lxde-gtk3')
 depends=('libfm-gtk3' 'lxmenu-data')
 makedepends=('intltool')
 optdepends=('gvfs: for trash support, mounting with udisks and remote filesystems'
-            'udisks: alternative for mounting volumes'
             'xarchiver: archive management')
 conflicts=($_pkgname)
 source=(https://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver.tar.xz)
-md5sums=('19764c2f59653724c8713e0064fa6829')
+sha256sums=('0c86cac028b705ff314c7464d814c2cf7ff604c17491c20aa204b1ef1a80ad67')
 
 build() {
   cd $_pkgname-$pkgver
