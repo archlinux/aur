@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=WebJCS
+Comment=A level editor for Jazz Jackrabbit 2.
+GenericName=Level editor
+Exec=/usr/bin/webjcs
+Icon=webjcs
+Type=Application
+StartupNotify=true
+Categories=Game;Development;Utility;
+StartupWMClass=webjcs
+MimeType=application/x-jazz2-level;

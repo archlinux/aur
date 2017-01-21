@@ -1,0 +1,28 @@
+pkgbase = webjcs-git
+	pkgdesc = A level editor for Jazz Jackrabbit 2.
+	pkgver = 2017.01.21
+	pkgrel = 1
+	url = https://github.com/daniel-j/webjcs
+	install = webjcs.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	makedepends = npm
+	makedepends = curl
+	makedepends = make
+	depends = electron
+	optdepends = emscripten: for tracker music file support (makedepend)
+	provides = webjcs
+	conflicts = webjcs
+	source = webjcs.desktop
+	source = webjcs.mime.xml
+	source = launch.sh
+	source = git+https://github.com/daniel-j/webjcs.git
+	sha1sums = 2119a3c3242425973c2770706169738ab88885d0
+	sha1sums = 6fefe6635686400121fb982550e3964a1b12ea00
+	sha1sums = 7d8c099cd6237dc0a27c142bb630e3660c462cab
+	sha1sums = SKIP
+
+pkgname = webjcs-git
+

@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/x-jazz2-level">
+        <comment>Jazz2 Level</comment>
+        <glob pattern="*.j2l"/>
+    </mime-type>
+    <mime-type type="application/x-jazz2-tileset">
+        <comment>Jazz2 Tileset</comment>
+        <glob pattern="*.j2t"/>
+    </mime-type>
+</mime-info>
