@@ -24,17 +24,17 @@ md5sums=(
 install='ttf-mac-fonts.install'
 
 pkgver() {
-        cd "${srcdir}/${pkgname}"
-        svn info | awk '/Revision/{r=$2}/Date/{gsub(/-/,"");d=$4}END{print d"."r}'
+        cd "${srcdir}"/"${pkgname}"
+        LC_ALL=C svn info | awk '/Revision/{r=$2}/Date/{gsub(/-/,"");d=$4}END{print d"."r}'
 }
 
 package() {
-	cd $srcdir/${pkgname}
-	install -d $pkgdir/usr/share/fonts/{TTF,Type1}
-	install -m644 gbk/*.ttf $pkgdir/usr/share/fonts/TTF
-	install -m644 mac/*.ttf $pkgdir/usr/share/fonts/TTF
-	install -m644 mac/*.pfb $pkgdir/usr/share/fonts/Type1
+	cd "${srcdir}/${pkgname}"
+	install -d "${pkgdir}"/usr/share/fonts/{TTF,Type1}
+	install -m644 gbk/*.ttf "${pkgdir}"/usr/share/fonts/TTF
+	install -m644 mac/*.ttf "${pkgdir}"/usr/share/fonts/TTF
+	install -m644 mac/*.pfb "${pkgdir}"/usr/share/fonts/Type1
 
-	install -d $pkgdir/usr/share/licenses/$pkgname
-	install -m644 $srcdir/SafariWindows.pdf $pkgdir/usr/share/licenses/$pkgname/
+	install -d "${pkgdir}"/usr/share/licenses/${pkgname}
+	install -m644 "${srcdir}"/SafariWindows.pdf "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
