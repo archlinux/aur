@@ -1,7 +1,7 @@
 # Contributor: Tatsuyuki Ishi <ishitatsuyuki at gmail dot com>
 
 pkgrel=1
-pkgver=r173.6cb9d54
+pkgver=r263.9f4c21c
 pkgname=zsh-zim-git
 pkgdesc="ZIM - Zsh IMproved"
 url="https://github.com/Eriner/zim"
@@ -14,7 +14,7 @@ source=('git://github.com/Eriner/zim.git' 'zim.install')
 options=('!strip')
 install='zim.install'
 sha256sums=('SKIP'
-            'ce9391f23d553fe220ee3eae5cfc10cd6d1b905d0ef900ce577c400f01e3f305')
+            'ce75bb1cc5a2471310c666b48ed8942114c87675cd98cfc9207bd6befc086c42')
 _gitname='zim'
 backup=('etc/zsh/zlogin' 'etc/zsh/zimrc' 'etc/zsh/zshrc')
 
