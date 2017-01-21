@@ -3,7 +3,7 @@
 pkgname=webjcs-git
 _gitname=webjcs
 pkgver=2017.01.21
-pkgrel=2
+pkgrel=3
 pkgdesc="A level editor for Jazz Jackrabbit 2."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/daniel-j/webjcs"
@@ -30,7 +30,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${_gitname}"
   npm install --no-optional
-  NO_WEB=1 gulp build -p
+  NO_WEB=1 node_modules/.bin/gulp build -p
   which emcc > /dev/null 2>&1 && make libopenmpt || echo 'emscripten is not installed, skipping libopenmpt'
   make asar
 }
