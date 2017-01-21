@@ -1,0 +1,31 @@
+diff -aur package.pristine/Makefile package.new/Makefile
+--- package.pristine/Makefile	2017-01-21 13:16:38.006668631 +0100
++++ package.new/Makefile	2017-01-21 13:19:46.427337356 +0100
+@@ -12,13 +12,15 @@
+ 
+ VERSION=0.6.4
+ 
++PREFIX=/usr
++
+ # Directory for Standard .qcl files
+ 
+-QCLDIR = /usr/local/lib/qcl
++QCLDIR = $(DESTDIR)$(PREFIX)/lib/qcl
+ 
+ # Path for qcl binaries
+ 
+-QCLBIN = /usr/local/bin
++QCLBIN = $(DESTDIR)$(PREFIX)/bin
+ 
+ ARCH = `g++ -dumpmachine || echo bin`
+ 
+@@ -82,7 +84,8 @@
+ #CXX = g++
+ #CPP = $(CC) -E
+ CXXFLAGS = -c $(ARCHOPT) $(DEBUG) $(PLOPT) $(RLOPT) $(IRQOPT) $(ENCOPT) -I$(QCDIR) -DDEF_INCLUDE_PATH="\"$(QCLDIR)\""
+-LDFLAGS = $(ARCHOPT) -L$(QCDIR) $(DEBUG) $(PLLIB) -lm -lfl -lqc $(RLLIB) 
++#LDFLAGS = $(ARCHOPT) -L$(QCDIR) $(DEBUG) $(PLLIB) -lm -lfl -lqc $(RLLIB) 
++LDFLAGS = $(ARCHOPT) -L$(QCDIR) $(DEBUG) $(PLLIB) -lm -L/usr/lib/libfl.a -lqc $(RLLIB) 
+ 
+ FILESCC = $(wildcard *.cc)
+ FILESH = $(wildcard *.h)
