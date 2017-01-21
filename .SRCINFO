@@ -1,6 +1,6 @@
 pkgbase = tini
 	pkgdesc = A tiny but valid `init` for containers
-	pkgver = 0.10.0
+	pkgver = 0.13.2
 	pkgrel = 1
 	url = https://github.com/krallin/tini
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = tini
 	depends = glibc
 	provides = tini
 	conflicts = tini
-	source = tini::git+https://github.com/krallin/tini.git#tag=v0.10.0
+	source = tini::git+https://github.com/krallin/tini.git#commit=c6e0058046c674e6bc982675f41db69829568c32
 	sha512sums = SKIP
 
 pkgname = tini
