@@ -1,7 +1,7 @@
 pkgname=python-aiodns
 _pkgname=aiodns
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An asynchronous python DNS library using asyncio"
 arch=('i686' 'x86_64')
 url="https://github.com/saghul/aiodns"
