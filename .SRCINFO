@@ -1,0 +1,18 @@
+pkgbase = filebydate
+	pkgdesc = organize files depending on their file or exif dates
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://trixon.se/projects/java/filebydate/
+	arch = any
+	license = Apache
+	makedepends = desktop-file-utils
+	depends = java-runtime=8
+	source = http://trixon.se/files/filebydate-1.0.0-bin.zip
+	source = filebydate.sh
+	source = filebydate.desktop
+	sha256sums = cc820a03e9e3415e2326d2f971a6dad7f681b9bed654adaec8c3a61665f191e4
+	sha256sums = c2597c42471798834798ddee7f9dcef7a0811b181b2f335699f131f2ccafeca0
+	sha256sums = 3fc348ada388e3dcb265a83837d3f264ff1ff1cc07973c42384d8cf928c2f2fd
+
+pkgname = filebydate
+

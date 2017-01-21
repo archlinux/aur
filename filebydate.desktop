@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=filebydate
+Exec=/usr/bin/filebydate
+Icon=filebydate
+Categories=System;
+Keywords=organize;date;photo
