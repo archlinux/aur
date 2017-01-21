@@ -2,7 +2,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=borna-fonts
-pkgver=1.0
+pkgver=20011225
 pkgrel=1
 pkgdesc="Borna Rayaneh Co. Persian B font series."
 url="http://www.bornaray.com/products/font.html"
