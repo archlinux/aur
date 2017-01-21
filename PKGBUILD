@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=ttf-vazir-code
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A beautiful monospace Persian font based on ttf-vazir and Inconsolata fonts."
 arch=('any')
@@ -10,8 +10,7 @@ license=('OFL')
 groups=(persian-fonts)
 depends=('fontconfig' 'xorg-font-utils')
 source=("https://github.com/rastikerdar/vazir-code-font/releases/download/v$pkgver/vazir-code-font-v$pkgver.zip")
-install=$pkgname.install
-md5sums=('f42563cc53c703029017b5e9c9d9a09f')
+md5sums=('f49285bffe61e437108ea986f4929eae')
 
 package() {  
     install -d $pkgdir/usr/share/fonts/$pkgname
