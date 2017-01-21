@@ -1,12 +1,12 @@
-diff -Naur sparkleshare-1.5.0.orig/SparkleShare/Linux/SparkleUI.cs sparkleshare-1.5.0/SparkleShare/Linux/SparkleUI.cs
---- sparkleshare-1.5.0.orig/SparkleShare/Linux/SparkleUI.cs	2016-01-31 03:10:01.820152958 +0000
-+++ sparkleshare-1.5.0/SparkleShare/Linux/SparkleUI.cs	2016-01-31 03:15:36.915518296 +0000
-@@ -61,7 +61,7 @@
+diff -Naur SparkleShare-325bc848afe460911d596eff1e09a4d39cd0b638.orig/SparkleShare/Linux/UserInterface.cs SparkleShare-325bc848afe460911d596eff1e09a4d39cd0b638/SparkleShare/Linux/UserInterface.cs
+--- SparkleShare-325bc848afe460911d596eff1e09a4d39cd0b638.orig/SparkleShare/Linux/UserInterface.cs	2016-12-16 19:27:32.000000000 +0100
++++ SparkleShare-325bc848afe460911d596eff1e09a4d39cd0b638/SparkleShare/Linux/UserInterface.cs	2017-01-21 18:07:36.298740982 +0100
+@@ -62,7 +62,7 @@
  
          public void Run ()
          {   
--            (this.application as GLib.Application).Run (null, null);
-+            (this.application as GLib.Application).Run (0, null);
+-            (application as GLib.Application).Run ("org.sparkleshare.SparkleShare", new string [0]);
++            (application as GLib.Application).Run (0, null);
          }
  
  
