@@ -1,6 +1,6 @@
 # Maintainer: Félicien Pillot <felicien.pillot@member.fsf.org>
 pkgname=make7libre
-pkgver=0.8.2
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="Free/libre block match puzzle game"
 arch=('x86_64')

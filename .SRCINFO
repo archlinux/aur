@@ -1,6 +1,6 @@
 pkgbase = make7libre
 	pkgdesc = Free/libre block match puzzle game
-	pkgver = 0.8.2
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://gitlab.com/felandral/make7libre
 	changelog = ChangeLog
@@ -8,11 +8,11 @@ pkgbase = make7libre
 	license = GPL3
 	makedepends = intltool
 	depends = gtkmm3
-	source = https://gitlab.com/felandral/make7libre/raw/dist/make7libre-0.8.2.tar.gz
-	source = https://gitlab.com/felandral/make7libre/raw/dist/make7libre-0.8.2.tar.gz.sig
+	source = https://gitlab.com/felandral/make7libre/raw/dist/make7libre-0.8.4.tar.gz
+	source = https://gitlab.com/felandral/make7libre/raw/dist/make7libre-0.8.4.tar.gz.sig
 	validpgpkeys = 0F4775FC247B70595AD7573513907AE74D527673
 	md5sums = c373eca8c215a75418a5f8add707e5cb
-	md5sums = bc615f805a886084938dcbed9e71db17
+	md5sums = 1399fccaddf4a6781629a04209fbed28
 
 pkgname = make7libre
 

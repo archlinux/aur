@@ -1,6 +1,11 @@
 # Maintainer: Félicien Pillot <felicien.pillot@member.fsf.org>
 # ChangeLog file for Make7Libre
 
+	2017-01-15  Félicien Pillot <felicien.pillot@member.fsf.org>
+	* GitRepo: New release (0.8.4)
+	* PKGBUILD: Updated version, md5sums, deleted source filenames
+	* .SRCINFO: Updated (manually, by copying content from PKGBUILD)
+	
 	2017-01-11  Félicien Pillot <felicien.pillot@member.fsf.org>
 	* GitRepo: New release (0.8.2)
 	* PKGBUILD: Updated version, md5sums, deleted source filenames
