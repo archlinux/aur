@@ -1,0 +1,16 @@
+pkgbase = webkitgtk-sharp
+	pkgdesc = C# bindings for WebKitGTK+
+	pkgver = 2.0.0
+	pkgrel = 2
+	url = https://github.com/xDarkice/webkitgtk-sharp
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = soup-sharp
+	depends = gtk-sharp-3
+	depends = webkitgtk
+	source = https://github.com/xDarkice/webkitgtk-sharp/releases/download/2.0.0/webkitgtk-sharp-2.0.0.tar.gz
+	sha256sums = 63a73586000a5528812e00c9bf5a6123848996aa8c9e494945216b50f0ffa3d9
+
+pkgname = webkitgtk-sharp
+
