@@ -1,5 +1,5 @@
 pkgname=osvr-core-git
-pkgver=0.2.r2263.g8e0ce2e7
+pkgver=0.2.r2264.g5e99fb6e
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
@@ -50,6 +50,9 @@ git commit -am "update vrpn"
 git remote add toastedcrumpets https://github.com/toastedcrumpets/OSVR-Core.git || true
 git fetch toastedcrumpets uvc-camera
 git merge toastedcrumpets/uvc-camera --no-edit
+
+
+git cherry-pick 3b5e3a6f3132afbdaf251161ba3b3d03c790f45f #disable ignored-attributes warning on gcc
 }
 
 build() {
