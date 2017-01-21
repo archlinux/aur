@@ -1,6 +1,6 @@
 pkgbase = slade
 	pkgdesc = SLADE3 Doom editor
-	pkgver = 3.1.1.4
+	pkgver = 3.1.1.5
 	pkgrel = 1
 	url = http://slade.mancubus.net/
 	install = install
@@ -23,9 +23,9 @@ pkgbase = slade
 	depends = wxgtk>=3.0
 	depends = xdg-utils
 	depends = zlib
-	source = https://github.com/sirjuddington/SLADE/archive/3.1.1.4.tar.gz
+	source = https://github.com/sirjuddington/SLADE/archive/3.1.1.5.tar.gz
 	source = slade.desktop
-	sha256sums = ea71d8dcb7c99cea5afabdbf9c469955ff6c2072c450a62c346da3d9856f2e58
+	sha256sums = 1b1c9e8267d8749f6087297ec629d1ca81777bb1b74e51853508a570e4368e2a
 	sha256sums = e69d6e0da523c5d649bd51316fa827175b5858cb91b4ad311b2f0d0dedd8b9bb
 
 pkgname = slade
