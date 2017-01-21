@@ -1,0 +1,15 @@
+pkgbase = soup-sharp
+	pkgdesc = C# bindings for libsoup
+	pkgver = 2.42.2
+	pkgrel = 1
+	url = https://github.com/xDarkice/soup-sharp
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = gtk-sharp-3
+	depends = libsoup
+	source = https://github.com/xDarkice/soup-sharp/releases/download/2.42.2/soup-sharp-2.42.2.tar.gz
+	sha256sums = a318c69ecf8aa74ab25467e4337288d79b69abd6f68e6739d9f615148b9174f3
+
+pkgname = soup-sharp
+
