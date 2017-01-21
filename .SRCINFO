@@ -1,6 +1,6 @@
 pkgbase = dbmain
 	pkgdesc = A free data-modeling and data-architecture tool
-	pkgver = 9.3.0
+	pkgver = 10.0.1
 	pkgrel = 1
 	url = http://www.db-main.eu/
 	arch = i686
@@ -24,10 +24,10 @@ pkgbase = dbmain
 	md5sums = b39e20bbd5360fd70b7b23f0f69689d4
 	md5sums = 048f1f5f6fe6e5b29d8e7cbeb825103d
 	md5sums = 6bb248b5807368118996f3f5ad2edb68
-	source_i686 = http://intranet.rever.eu/DISTRIBUTION/DB-MAIN/dbm-930-linux-i386-setup.tar.gz
-	md5sums_i686 = 135f604257f68d221ca82a4f55054a40
-	source_x86_64 = http://intranet.rever.eu/DISTRIBUTION/DB-MAIN/dbm-930-linux-amd64-setup.tar.gz
-	md5sums_x86_64 = 9dc45b2090fafd4b61526960cf521a84
+	source_i686 = http://www.rever.eu/db-main/files/dbm-1001-linux-i386-setup.tar.gz
+	md5sums_i686 = 7d3365af0cfe9cd16d2d5e77a24bda62
+	source_x86_64 = http://www.rever.eu/db-main/files/dbm-1001-linux-amd64-setup.tar.gz
+	md5sums_x86_64 = 13175bef81eacd8d709ae33fe70cffbd
 
 pkgname = dbmain
 
