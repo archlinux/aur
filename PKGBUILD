@@ -5,13 +5,13 @@
 # Contributor: William Díaz <wdiaz [at] archlinux [dot] us>
 
 pkgname=cpyrit-opencl-git
-pkgver=0.5.0.r21.g6111f10
-pkgrel=1
+pkgver=0.5.0.r26.g6cf2c12
+pkgrel=2
 pkgdesc="The famous WPA precomputed cracker, OpenCL backend (Git version)"
 url="https://github.com/JPaulMora/Pyrit"
 license=('GPL3')
 arch=('i686' 'x86_64')
-depends=('pyrit-git' 'libcl')
+depends=('pyrit-git' 'opencl-icd-loader')
 makedepends=('opencl-headers' 'git')
 provides=('cpyrit-opencl' 'cpyrit-opencl-svn')
 conflicts=('cpyrit-opencl' 'cpyrit-opencl-svn')
