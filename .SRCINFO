@@ -1,17 +1,18 @@
 pkgbase = jotasync
 	pkgdesc = rsync GUI with integrated scheduler
-	pkgver = 0.2.8
-	pkgrel = 3
+	pkgver = 0.2.9
+	pkgrel = 1
 	url = http://jotasync.trixon.se/
 	arch = any
 	license = Apache
+	makedepends = desktop-file-utils
 	depends = java-runtime=8
-	source = http://jotasync.trixon.se/files/jotasync-0.2.8-bin.zip
+	source = http://jotasync.trixon.se/files/jotasync-0.2.9-bin.zip
 	source = jotaclient.sh
 	source = jotaserver.sh
 	source = jotasync.sh
 	source = jotasync.desktop
-	sha256sums = 905e34af3c3d5f5468c3c83b35d8edd784f20421f0d3678ea59a017742b7fbf9
+	sha256sums = b0ce54d6a8e945b5279323bfb004a457e4a3a3394ba783aec4ad16268c6a00df
 	sha256sums = fa3eb8adf913d5e4a72087dd99e826dedf38792ce229499c70f329a651f08f9c
 	sha256sums = a81db2e919a697669a58a119a6bcf11570422abb6f67b0f381a4b65f5246b6af
 	sha256sums = 1bbbe11c32dba035dce9cd8737a9cc333a6559842d2721abcd5e5614b343c705
