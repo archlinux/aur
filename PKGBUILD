@@ -9,7 +9,7 @@
 
 pkgname=xnviewmp
 pkgver=0.84
-pkgrel=2
+pkgrel=3
 pkgdesc="An efficient multimedia viewer, browser and converter."
 url="http://www.xnview.com/en/xnviewmp/"
 
@@ -37,10 +37,6 @@ package() {
   # Clean up
   rm "${pkgdir}/opt/${pkgname}/XnView.desktop"{,~}
   chmod -x "${pkgdir}/opt/${pkgname}/xnview.png"
-
-  # 0.84 clean-up: the second release of 0.84 fixed the libicu issue but forgot
-  # to remove the old version...
-  rm "${pkgdir}/opt/${pkgname}/lib/"libicu*.54*
 }
 
 # vim:set ts=2 sw=2 et:
