@@ -5,20 +5,20 @@
 # Contributor: Özgür Sarıer <ozgursarier1011601115[at]gmail[dot]com>
 
 pkgname=viber
-pkgver=6.0.1.5
-pkgrel=2
+pkgver=6.5.5.1481
+pkgrel=1
 pkgdesc="Proprietary cross-platform IM and VoIP software"
 arch=('x86_64')
 url="http://viber.com"
 license=('custom')
-depends=('libxss' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm' 'libcurl-compat')
+depends=('libxss' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm' 'libxss' 'openssl' 'libpulse' 'alsa-lib' 'nss' 'libxcomposite' 'libxcursor' 'libxdamage' 'libcurl-compat' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'gst-libav')
 options=('!strip')
 source=("http://download.cdn.viber.com/cdn/desktop/Linux/${pkgname}.deb"
         "eula.html"
         "viber")
-sha256sums=('712d6d21b0e8dbd6cf4589f37615d6b65a2b3d99bcf012396d6219b3afb8db08'
-            '037194f911c193b039fd5bcdb5296f8d65e5075006d67822519b5bc7da0c8788'
-            'b58bc642de9ba931eadb3743ca4b6dea93f6e21dd33cc181f62fef08843a8f99')
+md5sums=('b952d0c15184e665e8603b498159e48f'
+         'd128190efcd7312829583e682cf46b98'
+         '51943e698680b19eb85e66f4c3c22adf')
 
 prepare() {
   cd "${srcdir}"
