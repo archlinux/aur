@@ -25,5 +25,5 @@ pkgver() {
 package() {
   install -D "$_pkgname/webqqircd.py" "$pkgdir/usr/bin/webqqircd"
   install -Dm644 "$_pkgname/mq.js" -t "$pkgdir/usr/share/webqqircd/"
-  install -Dm644 webqqircd.service -t "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 "$_pkgname/webqqircd.service" -t "$pkgdir/usr/lib/systemd/system/"
 }
