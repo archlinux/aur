@@ -1,7 +1,7 @@
 # Contributor: Angelo Theodorou <encelo@users.sourceforge.net>
 pkgname=lives
-pkgver=2.8.3
-pkgrel=2
+pkgver=2.8.4
+pkgrel=1
 pkgdesc="A Video Editing System"
 arch=('i686' 'x86_64')
 url="http://lives-video.com"
@@ -11,7 +11,7 @@ optdepends=('xorg-utils' 'sdl' 'libogg' 'mkvtoolnix-cli' 'libmatroska' 'ogmtools
 options=(!emptydirs)
 changelog=lives.changelog
 source=(http://lives-video.com/releases/LiVES-$pkgver.tar.bz2)
-md5sums=('77c63dab400491cfcd762823c34d1c61')
+md5sums=('eed927e94143f9806fcd70a8ff40b696')
 
 build() {
   cd ${pkgname}-${pkgver}
