@@ -1,40 +1,40 @@
-# Maintainer: quomoow <quomoow@gmail.com>
+# Maintainer: archlinux.info:tdy
+# Contributor: quomoow <quomoow@gmail.com>
+
 pkgname=pcmanfm-git
-_pkgname=pcmanfm
-pkgver=0.0.0.0
+pkgver=r1493.4555839
 pkgrel=1
-pkgdesc="An extremely fast, lightweight, yet feature-rich file manager with 
-tabbed browsing"
-arch=('i686' 'x86_64')
-url="http://pcmanfm.sourceforge.net/"
-license=('GPL')
-depends=('libfm-gtk2')
-makedepends=('git' 'intltool' 'pkg-config')
-optdepends=('gnome-menus: applications menu and "Open with" dialog'
-	'gvfs: mounting of local and remote drives'
-	'lxmenu-data: applications menu and "Open with" dialog')
-provides=('pcmanfm')
-conflicts=('pcmanfm')
-source=(git://pcmanfm.git.sourceforge.net/gitroot/pcmanfm/pcmanfm)
-md5sums=('SKIP')
+pkgdesc="A fast, lightweight, yet feature-rich file manager with tabbed browsing"
+arch=(i686 x86_64)
+url=http://pcmanfm.sourceforge.net
+license=(GPL)
+depends=(libfm-gtk2)
+makedepends=(git intltool)
+optdepends=('gnome-menus: app menu and "Open with" dialog'
+            'lxmenu-data: app menu and "Open with" dialog'
+            'gvfs: mount local and remote drives')
+provides=(pcmanfm)
+conflicts=(pcmanfm)
+source=($pkgname::git+git://${pkgname/-/.}.sourceforge.net/gitroot/pcmanfm/pcmanfm)
+sha256sums=(SKIP)
+
+pkgver() {
+  cd $pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
-	cd "${_pkgname}"
-
-	./autogen.sh
+  cd $pkgname
+  ./autogen.sh
 }
 
 build() {
-  cd "${_pkgname}"
-
+  cd $pkgname
   ./configure --prefix=/usr --sysconfdir=/etc
-
   make
 }
 
 package() {
-  cd "${_pkgname}"
-
-  make DESTDIR="${pkgdir}/" install
+  cd $pkgname
+  make DESTDIR="$pkgdir" install
 }
-

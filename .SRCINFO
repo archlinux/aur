@@ -1,22 +1,21 @@
 pkgbase = pcmanfm-git
-	pkgdesc = An extremely fast, lightweight, yet feature-rich file manager with tabbed browsing
-	pkgver = 0.0.0.0
+	pkgdesc = A fast, lightweight, yet feature-rich file manager with tabbed browsing
+	pkgver = r1493.4555839
 	pkgrel = 1
-	url = http://pcmanfm.sourceforge.net/
+	url = http://pcmanfm.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = intltool
-	makedepends = pkg-config
 	depends = libfm-gtk2
-	optdepends = gnome-menus: applications menu and "Open with" dialog
-	optdepends = gvfs: mounting of local and remote drives
-	optdepends = lxmenu-data: applications menu and "Open with" dialog
+	optdepends = gnome-menus: app menu and "Open with" dialog
+	optdepends = lxmenu-data: app menu and "Open with" dialog
+	optdepends = gvfs: mount local and remote drives
 	provides = pcmanfm
 	conflicts = pcmanfm
-	source = git://pcmanfm.git.sourceforge.net/gitroot/pcmanfm/pcmanfm
-	md5sums = SKIP
+	source = pcmanfm-git::git+git://pcmanfm.git.sourceforge.net/gitroot/pcmanfm/pcmanfm
+	sha256sums = SKIP
 
 pkgname = pcmanfm-git
 
