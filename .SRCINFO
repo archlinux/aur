@@ -1,10 +1,11 @@
 pkgbase = todolist-git
 	pkgdesc = A light-weight and simple task manager based upon GTD
-	pkgver = r84.c3c8817
+	pkgver = r106.206a280
 	pkgrel = 1
 	url = https://http://todolist.site/
 	arch = x86_64
 	license = MIT
+	checkdepends = go
 	makedepends = git
 	depends = go
 	options = !strip

@@ -1,11 +1,12 @@
 # Maintainer: Quey-Liang Kao<s101062801@m101.nthu.edu.tw>
 
 pkgname=todolist-git
-pkgver=r84.c3c8817
+pkgver=r106.206a280
 pkgrel=1
 pkgdesc="A light-weight and simple task manager based upon GTD"
 depends=('go')
 makedepends=('git')
+checkdepends=('go')
 arch=('x86_64')
 source=("git+https://github.com/gammons/todolist")
 url="https://http://todolist.site/"
@@ -33,6 +34,11 @@ package() {
     export GOPATH=$srcdir/go/
     mkdir -p $pkgdir/usr/bin
     cp $GOPATH/bin/todolist $pkgdir/usr/bin/
+}
+
+check() {
+    export GOPATH=$srcdir/go/
+    go test github.com/gammons/todolist/todolist
 }
 
 pkgver() {
