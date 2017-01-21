@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
-pkgname=iran-nastaliq
+pkgname=iran-nastaliq-fonts
 pkgver=20150704
 pkgrel=1
 pkgdesc="A free Unicode calligraphic Persian font."
@@ -17,12 +17,12 @@ source=("$pkgname::git+https://github.com/font-store/font-IranNastaliq.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $srcdir/$pkgname
+	cd $pkgname
 	git log -1 --format="%cd" --date=short | sed 's|-||g'
 }
 
 package() {
-  cd ${pkgname%-fonts}
+  cd $pkgname
   install -d "$pkgdir/usr/share/fonts/${pkgname%-fonts}"
   install -t "$pkgdir/usr/share/fonts/${pkgname%-fonts}" -m644 ./old/*.ttf
   install -t "$pkgdir/usr/share/fonts/${pkgname%-fonts}" -m644 ./WebFonts/{*.ttf,*.woff*}
