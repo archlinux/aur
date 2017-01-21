@@ -1,17 +1,17 @@
 # Maintainer: Arctic Ice Studio <development@arcticicestudio.com>
 pkgname=mqttfx-bin
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="A MQTT Client written in Java based on Eclipse Paho"
 arch=('x86_64')
 url="http://mqttfx.jfx4ee.org"
 license=('Apache')
 options=('!strip' '!upx')
 source=(
-  "http://www.jensd.de/apps/mqttfx/1.2.1/mqttfx-${pkgver}-64bit.deb"
+  "http://www.jensd.de/apps/mqttfx/1.3.1/mqttfx-${pkgver}-64bit.deb"
   "mqttfx.desktop")
 md5sums=(
-  "f889407aa65219f46cf4c0ba382976d6"
+  "4429b9d5c8e10eaeb1f7784047f36502"
   "0ce12491a9910a9c889356b04922f0f9"
 )
 depends=()
