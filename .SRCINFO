@@ -1,0 +1,16 @@
+pkgbase = blam
+	pkgdesc = Simple newsreader for GNOME written in C Sharp
+	pkgver = 1.8.12
+	pkgrel = 4
+	url = https://git.gnome.org/browse/blam
+	arch = any
+	license = GPL
+	makedepends = intltool
+	depends = webkit-sharp
+	depends = gconf-sharp
+	depends = notify-sharp
+	source = https://download.gnome.org/sources/blam/1.8/blam-1.8.12.tar.xz
+	sha256sums = 6294d13629cd0cabc50ed3a489682b50c2c61972d55d8209b59b2a8b434810ea
+
+pkgname = blam
+
