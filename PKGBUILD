@@ -1,7 +1,7 @@
 _npmname=typings
-_npmver=1.3.1
+_npmver=2.1.0
 pkgname=nodejs-typings
-pkgver=1.3.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="TypeScript Definition manager for DefinitelyTyped"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('94d766d5200026f3ad83c22da3e4a5f479bb3c19')
+sha1sums=('9cdbe0cd1626ab61b379e06ba4a3910d1d791006')
 
 
 package() {
