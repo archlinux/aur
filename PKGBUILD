@@ -1,12 +1,13 @@
-# Maintainer:  jyantis <yantis@yantis.net>
+# Maintainer:  koukourikos <ekoukourikos@freemail.gr>
+# Contributor: jyantis <yantis@yantis.net>
 
 pkgname=pypdfocr-git
-pkgver=0.8.2.r207.4b80f2d
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 pkgdesc='Tesseract OCR based PDF Filing. Converts a non searchable PDF into a searchable PDF and more options including folder watching and automatically uploading to Evernote'
 arch=('any')
 url='https://github.com/virantha/pypdfocr'
-license=('custom')
+license=('Apache')
 depends=('python2'
          'python2-pillow'
          'python2-watchdog'
@@ -54,8 +55,8 @@ package() {
 
   python2 setup.py install --root="${pkgdir}" --optimize=1
 
-  # No License so install Readme
-  install -D -m644 README.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # Install License
+  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Install Documentation
   install -D -m644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"

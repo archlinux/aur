@@ -1,10 +1,10 @@
 pkgbase = pypdfocr-git
 	pkgdesc = Tesseract OCR based PDF Filing. Converts a non searchable PDF into a searchable PDF and more options including folder watching and automatically uploading to Evernote
-	pkgver = 0.8.2.r207.4b80f2d
-	pkgrel = 2
+	pkgver = 0.9.1
+	pkgrel = 1
 	url = https://github.com/virantha/pypdfocr
 	arch = any
-	license = custom
+	license = Apache
 	makedepends = git
 	makedepends = python2-setuptools
 	depends = python2
