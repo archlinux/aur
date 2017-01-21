@@ -9,7 +9,7 @@
 
 pkgname=keepassxc-git
 _gitname=keepassxc
-pkgver=2.0.3.http.r43.g3c89ce9
+pkgver=2.0.3.http.r128.g5458d77
 pkgrel=1
 pkgdesc="A reboot with keepasshttp of an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
 arch=('i686' 'x86_64')
@@ -43,6 +43,9 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=/usr/lib \
         -DCMAKE_VERBOSE_MAKEFILE=OFF \
         -DWITH_GUI_TESTS=ON \
+        -DWITH_XC_AUTOTYPE=ON \
+        -DWITH_XC_HTTP=ON \
+        -DWITH_XC_YUBIKEY=ON \
         -DCMAKE_BUILD_TYPE=Release ..
     make
 }
