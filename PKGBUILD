@@ -1,7 +1,7 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=theshell-blueprint
-pkgver=5.3b
+pkgver=6.0b
 pkgrel=0
 pkgdesc="Desktop Shell that gets out of your way"
 arch=("x86_64")
@@ -21,6 +21,7 @@ md5sums=('SKIP')
 build() {
 	cd "$pkgname-$pkgver"
 	qdbuscpp2xml -M -s notificationdbus.h -o org.freedesktop.Notifications.xml
+	qdbuscpp2xml -a -o org.thesuite.power.xml upowerdbus.h
 	qmake theShell.pro
 	make
 }
@@ -32,4 +33,6 @@ package() {
 	cp "$pkgname-$pkgver/init_theshell" "$pkgdir/usr/bin"
 	mkdir -p "$pkgdir/usr/share/xsessions"
 	cp "$pkgname-$pkgver/theshell.desktop" "$pkgdir/usr/share/xsessions"
+	mkdir -p "$pkgdir/usr/share/theshell/translations"
+	cp "$pkgname-$pkgver/translations/"* "$pkgdir/usr/share/theshell/translations"
 }
