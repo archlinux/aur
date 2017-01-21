@@ -3,7 +3,7 @@
 pkgname=poezio-git
 _pkgname=poezio
 pkgrel=1
-pkgver=20150629.be9f447
+pkgver=20170108.806485d
 pkgdesc="A full-featured command-line irc-like (muc-centered) jabber client (git)"
 arch=('i686' 'x86_64')
 url="http://poez.io"
