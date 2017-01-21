@@ -1,0 +1,12 @@
+[Unit]
+Description=loolwsd as a service
+
+[Service]
+User=lool
+ExecStart=/usr/bin/loolwsd --o:sys_template_path=/opt/lool/systemplate --o:lo_template_path=/opt/collaboraoffice5.1 --o:child_root_path=/opt/lool/child-roots --o:file_server_root_path=/usr/share/loolwsd
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
