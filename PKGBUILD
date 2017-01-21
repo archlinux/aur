@@ -3,8 +3,8 @@
 
 pkgname=asdcplib2
 _pkgname=asdcplib
-pkgver=2.6.17
-pkgrel=2
+pkgver=2.7.18
+pkgrel=1
 pkgdesc="open source implementation of SMPTE and the MXF Interop “Sound & Picture Track File” format with IMF support"
 arch=('i686' 'x86_64')
 url="http://www.cinecert.com/asdcplib/"
@@ -12,8 +12,8 @@ license=('custom')
 depends=('expat' 'openssl')
 
 source=("http://download.cinecert.com/asdcplib/${_pkgname}-${pkgver}.tar.gz")
-sha1sums=('660f5f69733230f5fbb710ea31d8509987294aae')
-md5sums=('4a3cf9710aa924860f93c87b3148f44a')
+sha1sums=('4772b4f0c4ab887f30e092b0a4f87dcc73ea36fd')
+md5sums=('6180176e13dc0241437f8b2630433766')
 
 prepare() {
 	# --as-needed seems to break compatibility with libexpat, and configure step does not detect libexpat
