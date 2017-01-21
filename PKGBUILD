@@ -3,7 +3,7 @@
 # Contributor: Score_Under <seejay.11@gmail.com>
 
 pkgname=xnp2-svn
-pkgver=0.86.2805
+pkgver=0.86.2819
 pkgrel=1
 pkgdesc="X Neko Project II, a PC-9801 emulator. (SVN Version)"
 arch=('i686' 'x86_64')
@@ -11,11 +11,13 @@ url='http://www.nonakap.org/np2'
 license=('BSD')
 depends=('gtk2'
          'sdl2_mixer'
+         'libxxf86vm'
          )
+makedepends=('nasm')
 conclicts=('xnp2')
 provides=('xnp2')
 source=("xnp2::svn+http://amethyst.yui.ne.jp/svn/pc98/np2/trunk/")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd xnp2
@@ -34,6 +36,7 @@ build() {
     --prefix=/usr \
     --enable-build-all \
     #--enable-gtk3
+
   LC_ALL=C make
 }
 
