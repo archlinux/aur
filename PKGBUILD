@@ -2,7 +2,7 @@
 
 pkgname=fotoxx
 pkgver=17.01.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for improving image files made with a digital camera"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
 arch=('i686' 'x86_64')
