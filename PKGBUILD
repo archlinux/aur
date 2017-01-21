@@ -3,7 +3,7 @@
 
 pkgname=borna-fonts
 pkgver=20011225
-pkgrel=1
+pkgrel=2
 pkgdesc="Borna Rayaneh Co. Persian B font series."
 url="http://www.bornaray.com/products/font.html"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('fontconfig')
 provides=('ttf-borna' "$pkgname")
 conflicts=('ttf-borna' "$pkgname")
 replaces=('ttf-borna')
-source=("$pkgname-$pkgver.zip::http://www.bornaray.com/downloads/bfonts.zip")
+source=("$pkgname.zip::http://www.bornaray.com/downloads/bfonts.zip")
 sha256sums=('f9d7dcabe3378b82d7d32ae5b4f41b90dc9f72a572604ee59b4ebde54851379a')
 
 prepare() {
