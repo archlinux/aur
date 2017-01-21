@@ -1,19 +1,24 @@
 pkgbase = drmr-git
-	pkgdesc = DrMr is an LV2 sampler plugin that can play Hydrogen drumkits
-	pkgver = 20120709
-	pkgrel = 2
+	pkgdesc = DrMr is an LV2 sampler plugin that can play Hydrogen drumkits.
+	pkgver = r90.ba6994a
+	pkgrel = 1
 	url = https://github.com/nicklan/drmr
 	arch = i686
 	arch = x86_64
-	groups = drmr
+	groups = lv2-plugins
 	license = GPL
 	makedepends = git
 	depends = libsndfile
 	depends = libsamplerate
 	depends = expat
 	depends = lv2
+	depends = gtk2
+	provides = drmr
 	provides = drmr
 	conflicts = drmr
+	conflicts = drmr
+	source = drmr::git+https://github.com/nicklan/drmr.git
+	md5sums = SKIP
 
 pkgname = drmr-git
 

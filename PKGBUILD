@@ -1,46 +1,41 @@
-# Maintainer: Nick Lanham <nick@afternight.org>
-pkgname=drmr-git
-pkgver=20120709
-pkgrel=2
-pkgdesc="DrMr is an LV2 sampler plugin that can play Hydrogen drumkits"
+# Maintainer: Valentin Rouet <v.rouet@gmail.com>
+
+_pkgname=drmr
+pkgname="${_pkgname}-git"
+pkgver=r90.ba6994a
+pkgrel=1
+pkgdesc="DrMr is an LV2 sampler plugin that can play Hydrogen drumkits."
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://github.com/nicklan/drmr"
-groups=('drmr')
-depends=('libsndfile' 'libsamplerate' 'expat' 'lv2')
+groups=('lv2-plugins')
+depends=('libsndfile' 'libsamplerate' 'expat' 'lv2' 'gtk2')
 makedepends=('git')
-provides=('drmr')
-conflicts=('drmr')
+provides=('drmr' "${_pkgname}")
+conflicts=('drmr' "${_pkgname}")
+source=("${_pkgname}::git+https://github.com/nicklan/drmr.git")
+md5sums=('SKIP')
 
-_gitroot="git://github.com/nicklan/drmr.git"
-_gitname="drmr"
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  revision=$(git rev-list --count HEAD)
+  hash=$(git rev-parse --short HEAD)
+  echo r$revision.$hash
+}
 
 build() {
-  cd "${srcdir}/"
-  msg "Getting git sources"
+  cd "${srcdir}/${_pkgname}"
 
-  if [ -d ${srcdir}/$_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone ${_gitroot}
-  fi
-
-  msg "Git checkout finished"
-
-  msg "Building package"  
-
-  msg "PKG: $pkgdir"
-
-  cd ${srcdir}/${_gitname}
-
-  [ -d build ] || mkdir build && cd build
-
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr  
+  mkdir -p build
+  cd build
+  cmake .. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${_gitname}/build"
+  cd "${srcdir}/${_pkgname}/build"
   make DESTDIR="$pkgdir/" install
 }
