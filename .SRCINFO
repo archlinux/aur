@@ -1,0 +1,18 @@
+pkgbase = barefoot-git
+	pkgdesc = Convert Fountain screenplay files to plain text, ready for printing, from the shell
+	pkgver = r17.6960d86
+	pkgrel = 1
+	url = https://gitlab.com/notklaatu/barefoot
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = boost
+	depends = boost-libs
+	provides = barefoot
+	conflicts = barefoot
+	source = barefoot-git::git+https://gitlab.com/notklaatu/barefoot
+	sha256sums = SKIP
+
+pkgname = barefoot-git
+
