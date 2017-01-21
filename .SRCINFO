@@ -1,0 +1,28 @@
+pkgbase = midori-gtk2
+	pkgdesc = Lightweight web browser (GTK2)
+	pkgver = 0.5.11
+	pkgrel = 6
+	url = http://www.midori-browser.org/
+	arch = x86_64
+	arch = i686
+	license = LGPL2.1
+	makedepends = bzr
+	makedepends = intltool
+	makedepends = vala
+	makedepends = cmake
+	makedepends = ninja
+	depends = webkitgtk2
+	depends = libxss
+	depends = gcr
+	optdepends = gst-plugins-base: HTML5 OGG videos support
+	optdepends = gst-plugins-good: HTML5 H264 and WebM videos support
+	optdepends = gst-libav: HTML5 H264 videos support
+	optdepends = aria2: download utility
+	provides = midori
+	conflicts = midori
+	options = !emptydirs
+	source = http://www.midori-browser.org/downloads/midori_0.5.11_all_.tar.bz2
+	sha256sums = 96191a96be71144ae848a409fae5a1d6d52a00e583f33122081f47ead9c49c3d
+
+pkgname = midori-gtk2
+
