@@ -7,7 +7,8 @@ pkgdesc=""
 arch=('any')
 url="https://github.com/Jokymon/binstruct"
 license=('GPL3')
-depends=(pip)
+depends=()
+makedepends=(python-pip)
 md5sums=()
 #install=.install
 
