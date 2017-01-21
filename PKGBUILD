@@ -5,8 +5,8 @@
 # Report all package issues to `https://github.com/SShrike/pkgbuilds`
 
 pkgname=gtkd-git
-pkgver=3.5.0.r2.7ccbaab4
-pkgrel=2
+pkgver=3.5.1.r9.c1103dae
+pkgrel=1
 pkgdesc='D bindings for GTK+ and related libraries.'
 url='http://gtkd.org/'
 license=('LGPL')
@@ -28,13 +28,13 @@ pkgver() {
 build() {
   cd 'GtkD'
 
-  LDFLAGS='' DC='ldc' make shared-libs shared-gstreamer shared-vte shared-peas
+  LDFLAGS='' DC='ldc' make libdir='lib/' shared-libs shared-gstreamer shared-vte shared-peas
 }
 
 package() {
   cd 'GtkD'
 
-  make prefix='/usr' DESTDIR="${pkgdir}/" \
+  make prefix='/usr' libdir='lib/' DESTDIR="${pkgdir}/" \
     install-shared install-shared-gstreamer install-shared-vte install-shared-peas \
     install-headers install-headers-gstreamer install-headers-vte install-headers-peas
 }
