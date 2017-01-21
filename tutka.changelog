@@ -1,0 +1,5 @@
+2017-01-21 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Updated dependencies array
+	Deleted the .install file
