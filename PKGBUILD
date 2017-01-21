@@ -4,8 +4,8 @@
 
 _pkgname=awesome
 pkgname=awesome-luajit-git
-pkgver=4.0.90.gf69769f7
-pkgrel=3
+pkgver=4.0.138.g90bbcf19
+pkgrel=1
 pkgdesc="awesome window manager built with luajit"
 arch=('i686' 'x86_64')
 url='http://awesome.naquadah.org/'
@@ -27,7 +27,6 @@ source=("$pkgname::git+https://github.com/awesomeWM/awesome.git"
 sha256sums=('SKIP'
             '5c5437448cc9f01be6ccbb298f5c86d0f8c4bcae23a22e6af699aff0d10f642f'
             '8f25957ef5453f825e05a63a74e24843aad945af86ddffcc0a84084ca2cf9928')
-install=awesome-luajit.install
 
 pkgver() {
   cd $pkgname
