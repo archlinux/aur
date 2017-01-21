@@ -2,8 +2,8 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='xtables-addons'
-pkgver='2.11'
-pkgrel='2'
+pkgver='2.12'
+pkgrel='1'
 pkgdesc='Xtables-addons is a set of additional extensions for the Xtables packet filter that is present in the Linux kernel'
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -13,8 +13,8 @@ makedepends=('linux-api-headers' 'linux-headers' 'libtool' 'gcc' 'pkg-config')
 conflicts=('xtables-addons-dkms')
 replaces=('xtables-addons-dkms')
 install="${pkgname}.install"
-source=("https://sourceforge.net/projects/${pkgname}/files/Xtables-addons/${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('f14f8953a9d3a70157a82883886ff6ec866c61dbea1585edb421478107279921')
+source=("https://sourceforge.net/projects/${pkgname}/files/Xtables-addons//${pkgname}-${pkgver}.tar.xz")
+sha256sums=('c4865aa1c64c5ff173ff7b5d69425466c71f0f9b5eb5299c52c68bdcd46fa63b')
 _kernver="`pacman -Ql linux| awk '/(\/modules\/)([0-9.-])+-ARCH\/$/ {print $2}'`"
 
 prepare() {
