@@ -3,7 +3,7 @@
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 
 pkgname=kismon
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="GUI client for kismet (wireless scanner/sniffer/monitor)"
 arch=('any')
