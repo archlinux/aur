@@ -2,8 +2,8 @@
 
 _pkgname=avogadrolibs
 pkgname="${_pkgname}-git"
-pkgver=1.90.0.r1252.963cbb3
-pkgrel=4
+pkgver=1.90.0.r1254.1f3c3bf
+pkgrel=5
 pkgdesc="Avogadro 2: libraries"
 url="http://openchemistry.org/projects/avogadro2"
 arch=("i686" "x86_64")
@@ -51,4 +51,6 @@ package() {
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}" install
   install -D -m 644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  # Don't install bundled jsoncpp
+  rm "${pkgdir}/usr/lib/libjsoncpp.a"
 }
