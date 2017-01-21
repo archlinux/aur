@@ -1,8 +1,8 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname='persepolis-git'
-pkgver=2.3.2.r0.gdc628d0
-pkgrel=2
+pkgver=2.3.3.r0.g7c305e4
+pkgrel=1
 pkgdesc="A graphical front-end for aria2 download manager with lots of features (Github version)."
 arch=('any')
 url="https://persepolisdm.github.io/"
@@ -23,6 +23,10 @@ pkgver() {
 	)
 }
 
+prepare() {
+    cd "${srcdir}/${pkgname}"
+    gzip -k -9 ./man/persepolis.1
+}
 package() {
 	cd "${srcdir}/${pkgname}"
 	install -d ${pkgdir}/usr/{bin,share/{persepolis,pixmaps,applications,licenses/persepolis}}
@@ -30,7 +34,7 @@ package() {
 	cp -a ./files/*   ${pkgdir}/usr/share/persepolis
 	install -Dm755 ./persepolis ${pkgdir}/usr/bin/persepolis
 	install -Dm644 ./Persepolis\ Download\ Manager.desktop ${pkgdir}/usr/share/applications/persepolis.desktop
-	install -Dm644 ./persepolis.1.gz ${pkgdir}/usr/share/man/man1/persepolis.1.gz
+	install -Dm644 ./man/persepolis.1.gz ${pkgdir}/usr/share/man/man1/persepolis.1.gz
 	cp ./files/icon.svg ${pkgdir}/usr/share/pixmaps/persepolis.svg
 	cp ./LICENSE ${pkgdir}/usr/share/licenses/persepolis/
 }
