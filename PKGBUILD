@@ -1,12 +1,13 @@
-# Maintainer: VirtualTam <virtualtam@flibidi.net>
+# Maintainer:  VirtualTam  <virtualtam@flibidi.net>
+# Contributor: Uwe Koloska <kolewu@koloro.de>
 pkgname=minetestmapper-git
-pkgver=6e30d47
-pkgrel=2
+pkgver=07c371f
+pkgrel=1
 pkgdesc="Minetest map generator"
 arch=('i686' 'x86_64')
 url="http://wiki.minetest.net/Minetestmapper"
 license=('LGPL')
-depends=('gd' 'leveldb' 'sqlite' 'zlib')
+depends=('gd' 'leveldb' 'postgresql-libs' 'sqlite')
 makedepends=('cmake' 'git')
 provides=('minetestmapper')
 _gitname="minetestmapper"
@@ -20,15 +21,11 @@ pkgver() {
 
 build(){
   cd ${_gitname}
-  cmake . -DENABLE_LEVELDB=1 -DCMAKE_INSTALL_PREFIX="/usr/share/${_gitname}"
+  cmake . -DENABLE_LEVELDB=1 -DCMAKE_INSTALL_PREFIX="/usr/" -DCUSTOM_SHAREDIR="/usr/share/${_gitname}"
   make
 }
 
 package() {
   cd ${_gitname}
-  # hack: colors.txt is expected to be in the same folder as the executable
-  install -Dm755 "${_gitname}" "${pkgdir}/usr/share/${_gitname}/${_gitname}"
-  install -Dm644 "colors.txt" "${pkgdir}/usr/share/${_gitname}/colors.txt"
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -s "/usr/share/${_gitname}/${_gitname}" "${pkgdir}/usr/bin/${_gitname}"
+  make DESTDIR="${pkgdir}" install
 }
