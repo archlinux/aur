@@ -1,6 +1,6 @@
 pkgbase = beignet
 	pkgdesc = An open source OpenCL implementation for Intel IvyBridge+ iGPUs
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://01.org/beignet
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = beignet
 	depends = opencl-headers
 	provides = opencl-intel
 	conflicts = opencl-intel
-	source = https://01.org/sites/default/files/beignet-1.2.1-source.tar.gz
-	sha256sums = b74eb03534a12b86a896cdbd8209b072c8a38e7af456195793a498428a7ac81f
+	source = https://01.org/sites/default/files/beignet-1.3.0-source.tar.gz
+	sha256sums = 63d98b4fe8fba3dbc0299d29fef84560625e5ac51b16b8fed453021d4afb5cd5
 
 pkgname = beignet
 
