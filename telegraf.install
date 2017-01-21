@@ -3,4 +3,5 @@
 post_install() {
   systemd-sysusers /usr/lib/sysusers.d/telegraf.conf
   systemd-tmpfiles --create /usr/lib/tmpfiles.d/telegraf.conf
+  install -d -m 755 -o telegraf -g telegraf /var/log/telegraf
 }
