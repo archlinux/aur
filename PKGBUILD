@@ -11,8 +11,8 @@
 
 pkgname=gdal1
 _pkgname=gdal
-pkgver=1.11.2
-pkgrel=3
+pkgver=1.11.5
+pkgrel=1
 pkgdesc="A translator library for raster geospatial data formats"
 arch=('i686' 'x86_64')
 url="http://www.gdal.org/"
@@ -27,7 +27,7 @@ source=(http://download.osgeo.org/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.ta
         gdal-1.5.1-python-install.patch
         poppler-0.31.patch
 		glibc.patch)
-sha256sums=('66bc8192d24e314a66ed69285186d46e6999beb44fc97eeb9c76d82a117c0845'
+sha256sums=('49f99971182864abed9ac42de10545a92392d88f7dbcfdb11afe449a7eb754fe'
             '55a0a961b2d1caddf80f18b6763a96690b0b6443fbd5a0c89e29503ded3bcea6'
             '4fc42bdb729cec92920236ef9f3302fab497069dbb7d41d81222e7e48a36e7a6'
             'f0096bfbd9219a000d173a97ee10e30d8939c3fff40ef44e2dfb1a494b617a9f')
@@ -35,8 +35,8 @@ sha256sums=('66bc8192d24e314a66ed69285186d46e6999beb44fc97eeb9c76d82a117c0845'
 prepare() {
   cd "${srcdir}"/$_pkgname-$pkgver
   patch -Np0 -i "${srcdir}"/gdal-1.5.1-python-install.patch
-  patch -Np1 -i "${srcdir}"/poppler-0.31.patch
-  patch -Np3 -i "${srcdir}"/glibc.patch
+  # patch -Np1 -i "${srcdir}"/poppler-0.31.patch
+  # patch -Np3 -i "${srcdir}"/glibc.patch
 
 # python2 fixes
   sed -i 's_python python1.5_python2 python python1.5_' configure
