@@ -3,15 +3,15 @@
 
 pkgname=persian-hm-xs2-fonts
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Persian font series derived from X Series 2 fonts with Kashida feature."
 url="http://dma8hm1334.bitbucket.org/persian-hm-xs2/index.html"
 arch=(any)
 license=('custom:OFL')
 depends=('fontconfig')
-provides=('ttf-persian-hm-ftx' "$pkgname")
-conflicts=('ttf-persian-hm-ftx' "$pkgname")
-replaces=('ttf-persian-hm-ftx')
+provides=('ttf-persian-hm-xs2' "$pkgname")
+conflicts=('ttf-persian-hm-xs2' "$pkgname")
+replaces=('ttf-persian-hm-xs2')
 source=("https://bitbucket.org/dma8hm1334/persian-hm-xs2-$pkgver/downloads/persian-hm-xs2-$pkgver.7z")
 sha256sums=('e87d8c25f1c36bca8605a4cee42056d8a76da7bab9cc898408565874e492fe62')
 
