@@ -4,17 +4,27 @@
 
 pkgname=qt4pas
 pkgver=2.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Free Pascal Qt4 Binding Library"
 arch=('i686' 'x86_64')
 url="http://users.telenet.be/Jan.Van.hijfte/qtforfpc/fpcqt4.html"
 license=('LGPL')
-depends=('qtwebkit')
-source=("http://users.telenet.be/Jan.Van.hijfte/qtforfpc/V2.5/qt4pas-V2.5_Qt4.5.3.tar.gz")
-md5sums=('8249bc17e4167e077d22c7f5fb118bb2')
+depends=('qt4')
+source=(
+    'http://users.telenet.be/Jan.Van.hijfte/qtforfpc/V2.5/qt4pas-V2.5_Qt4.5.3.tar.gz'
+    'qtwebkit.patch'
+)
+sha256sums=('825423db80da4df5c21816c0392b3394cddfe2f3293dfd08ace84941726affea'
+            'af1721fbf6706931d0b82dd28b3540f56a65e1585b75873c4ac9eaddecf9c921')
+
+prepare() {
+	cd "qt4pas-V2.5_Qt4.5.3/"
+
+    patch -p0 -i "$srcdir/qtwebkit.patch"
+}
 
 build() {
-	cd "$srcdir/qt4pas-V2.5_Qt4.5.3/"
+	cd "qt4pas-V2.5_Qt4.5.3/"
 
 	qmake-qt4 -query
 	qmake-qt4
@@ -22,7 +32,8 @@ build() {
 }
 
 package() {
-	cd "$srcdir/qt4pas-V2.5_Qt4.5.3/"
+	cd "qt4pas-V2.5_Qt4.5.3/"
+
 	INSTALL_ROOT="$pkgdir" make install
 
 	pushd "$pkgdir/usr/lib"
