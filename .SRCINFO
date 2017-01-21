@@ -1,0 +1,16 @@
+pkgbase = perl-quota
+	pkgdesc = Quota - Perl interface to file system quotas
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://metacpan.org/release/Quota
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOMZO/Quota-1.7.2.tar.gz
+	md5sums = d4ed0acc56ece4e5080a7a6d827e9c66
+
+pkgname = perl-quota
+
