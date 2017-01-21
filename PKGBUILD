@@ -8,13 +8,13 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=7.5.rc0.r0.ga4df481584
+pkgver=7.6.beta0.r0.gd92d7c01f4
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
 url="http://www.sagemath.org"
 license=(GPL)
-depends=(ipython2 ppl palp brial cliquer maxima-ecl gfan sympow tachyon nauty python2-rpy2 python2-fpylll
+depends=(ipython2 ppl palp brial cliquer maxima-ecl gfan sympow tachyon nauty python2-rpy2 python2-fpylll python2-psutil
   python2-matplotlib python2-scipy python2-sympy python2-networkx python2-pillow python2-future libgap flintqs lcalc lrcalc arb
   eclib gmp-ecm zn_poly gd python2-cvxopt pynac linbox rubiks pari-galdata pari-seadata-small planarity rankwidth
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials)
@@ -26,23 +26,25 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'modular_decomposition: modular decomposition of graphs' 'ffmpeg: to export animations to video' 'imagemagick: to show animations'
   'coxeter3: Coxeter groups implementation' 'cryptominisat2: SAT solver' 'gap-data: for computing Galois groups'
   'lrs: Algorithms for linear reverse search used in game theory and for computing volume of polytopes'
-  'libhomfly: for computing the homfly polynomial of links' 'libbraiding: for computing in braid groups')
-makedepends=(cython2 boost ratpoints symmetrica fflas-ffpack python2-jinja coin-or-cbc libhomfly libbraiding
+  'libhomfly: for computing the homfly polynomial of links' 'libbraiding: for computing in braid groups'
+  'python2-pynormaliz: Normaliz backend for polyhedral computations')
+makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhomfly libbraiding
   mcqd coxeter3 cryptominisat2 modular_decomposition bliss-graphs tdlib python2-pkgconfig meataxe git) # libfes
 source=("git://git.sagemath.org/sage.git#branch=develop" 
         env.patch skip-check.patch cython-sys-path.patch is-package-installed.patch package.patch disable-fes.patch
-        jupyter-path.patch test-optional.patch ecm-7.patch increase-rtol.patch)
-md5sums=('SKIP'
-         '70b7c1c5da6400e1ae48cf1e5a2d2879'
-         '17771a1e59e14535cc837a189d3cb8a7'
-         '0de8f29a99a48e2ca2a13045f122c386'
-         '409b0a2c520eb33281b5f262afcb6c76'
-         'ccfd5b1bc4796f414f1531be52504dd7'
-         'a40b32a7b5d83379745b538be85064c8'
-         'e618d534f42428e298e12b1aa94c1a31'
-         '921017fd2d9dadbb6b602ac0476bfd58'
-         'e4a91dcedbc5e617919e5a9bf1310f24'
-         '1db8db7bfed5f991d55ae11d810ff5cb')
+        jupyter-path.patch test-optional.patch ecm-7.patch increase-rtol.patch r-no-readline.patch)
+sha256sums=('SKIP'
+            '9dba04ff13626a7b6c338a8b18a6c27d343f68a547a218533cf773af3dae6635'
+            '178074c0a22da4a8129ec299a6845aaae8cf3ef1da6f62b34f2ec0ed50c1e6a2'
+            'ff7e034d08ab084fdb193484f7fe3a659ebcd8ab33a2b7177237d65b26de7872'
+            'd60fb0fbd27991ce9496ca035a54b03334b5b53f244227a8d6e13f3327ce75d2'
+            '4a2297e4d9d28f0b3a1f58e1b463e332affcb109eafde44837b1657e309c8212'
+            'c9e2bfa91baf155cce1bee09c11b0214c20c38e4fc9f5e2d090da86564110327'
+            '889b65598d2a15e73eb482f543ec9b28d8992eeb57b07883c2e9627dfee15a9b'
+            '81d08c6a760f171f3381455b66a6c84789c9f0eefddbe6ca5794075514ad8c3a'
+            '06bc1e5b409e21d49fc71ef03e96ec35b7a9b524bfd1f81a2dbf5c64a55e5acf'
+            '1c068c524a2926ba222b36b0f4229a45c6f00c2225ffde0b0555e4e9659342d5'
+            'ef9f401fa84fe1772af9efee6816643534f2896da4c23b809937b19771bdfbbf')
 
 pkgver() {
   cd sage
@@ -55,8 +57,6 @@ prepare(){
 # Arch-specific patches
 # assume all optional packages are installed
   patch -p0 -i ../package.patch
-# don't try to link against libpng 1.2
-  sed -e 's|png12|png|' -i src/module_list.py
 # set env variables
   patch -p0 -i ../env.patch
 # skip checking build status
@@ -71,6 +71,8 @@ prepare(){
   patch -p1 -i ../ecm-7.patch
 # increase numerical tolerance, needed by scipy 0.18
   patch -p1 -i ../increase-rtol.patch
+# fix freezes in R interface with readline 7 (Debian)
+  patch -p1 -i ../r-no-readline.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
@@ -85,6 +87,7 @@ prepare(){
   sed -e 's|cython {OPT}|cython2 {OPT}|' -e 's|python setup.py|python2 setup.py|' -i src/sage/misc/cython.py
   sed -e 's|exec ipython|exec ipython2|' -e 's|cygdb|cygdb2|g' -i src/bin/sage
   sed -e "s|'cython'|'cython2'|" -i src/bin/sage-cython
+  sed -e 's|bin/python|bin/python2|g' -i src/bin/sage-env
 }
 
 build() {
