@@ -1,29 +1,26 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 # TODO PhantomJS from repo?!
+# TODO Double quotes around $srcdir & $pkgdir
 
 pkgbase=riot
-pkgname=(riot-desktop)  # riot-web will be added soon(tm)
+pkgname=(riot-desktop riot-web)
 pkgver=0.9.6
-pkgrel=1
-pkgdesc="A glossy Matrix collaboration client for the desktop."
+pkgrel=2
 arch=("any")
 license=("Apache")
 source=("$pkgbase::git+https://github.com/vector-im/riot-web.git#tag=v$pkgver"
         "Riot.desktop"
-        "riot-web.sh"
+        "riot-desktop.sh"
         "riot.svg"
         "riot.png")
 validpgpkeys=('6FEB6F83D48B93547E7DFEDEE019645248E8F4A1')  # riot.im (Debian signing key)
 url="https://riot.im/"
 makedepends=("git" "npm")
 depends=("electron")
-#replaces=('vector-web')  # @vith
-replaces=('riot-web')
-conflicts=('riot-web')
 sha512sums=('SKIP'
-            '103e08dd228967f75bf7f7a84d8764afdc7e88b3eb8d833e909ee8ca56bed3c451b7297c733de1459f37f1d9f50a3f9859879298ebfe92befe44c0785be7903c'
-            '48ec620b07fc57de790abdb1f01048825fa7864d22d3f3494055b3919538868ac9c48048d94ad1655f93da595cc1a06a625170aa070979f98a9d39b5ded34cae'
+            'c2622a1fa082fdf114f0280e001c9d3b07846741a6adc434d36c32ee7b5799d7b6bea87f00fc18765a58b29bfd663f4053d7cf82ee0e58161303ac0208aed32a'
+            '53d619f3aab36cbc8d7f8625302fb55fea69d4861911d92c8b30e34f9601f0e5ab797d0fd1e6f5c74b4cca10ffcd4af1a2595aaeeea25d7ebea3dada34359137'
             'bf88f617f7327b73e10d452c4f316f39e999874c25c6eac124036a28508c9ecadcc15e9540c4297903f1bac88cc580c48f69220c455369a8a21eef688071966b'
             '9bc5c155384bb6d17c9007e9fb17c644db0b86e7c4ca03396d845bdc2916ddf906570bdeca9133d6f09e6920531e742aed31738b4ad77196fdd48e54784d50cf')
 
@@ -69,7 +66,22 @@ build() {
   npm run build
 }
 
-package() {
+package_riot-web() {
+  pkgdesc="A glossy Matrix collaboration client for the web."
+  replaces=('vector-web')  # @vith
+
+  mkdir -p $pkgdir/{etc,usr/share}/webapps/$pkgname/
+
+  cp -r $srcdir/$pkgbase/webapp/* $pkgdir/usr/share/webapps/$pkgname/
+  cp $srcdir/$pkgbase/config.sample.json $pkgdir/etc/webapps/$pkgname/config.json
+  ln -s /etc/webapps/$pkgname/config.json $pkgdir/usr/share/webapps/$pkgname/
+}
+
+package_riot-desktop() {
+  pkgdesc="A glossy Matrix collaboration client for the desktop."
+  conflicts=('riot-web')
+  replaces=('riot-web')  # this will be removed in some time
+
   cd $srcdir/$pkgbase
   mkdir -p $pkgdir/usr/lib/$pkgname/{webapp,electron}
 
@@ -78,7 +90,7 @@ package() {
   cp -r $srcdir/$pkgbase/electron/* $pkgdir/usr/lib/$pkgname/electron/
 
   install -Dm644 $srcdir/Riot.desktop $pkgdir/usr/share/applications/Riot.desktop
-  install -Dm755 $srcdir/riot-web.sh $pkgdir/usr/bin/riot-web
+  install -Dm755 $srcdir/riot-desktop.sh $pkgdir/usr/bin/riot-desktop
 
   install -Dm644 $srcdir/riot.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/riot.svg
   install -Dm644 $srcdir/riot.png $pkgdir/usr/share/pixmaps/riot.png
