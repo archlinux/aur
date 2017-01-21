@@ -6,7 +6,7 @@
 
 _pkgname="liferea"
 _pkgver="1.12"
-_prerelease="rc1"
+_prerelease="rc2"
 
 pkgname="${_pkgname}-unstable"
 pkgver="${_pkgver}.${_prerelease}"
@@ -27,7 +27,7 @@ options=('!libtool' '!emptydirs')
 provides=('liferea')
 conflicts=('liferea' 'liferea-git')
 source=("https://github.com/lwindolf/${_pkgname}/archive/v${_pkgver}-${_prerelease}.tar.gz")
-sha256sums=('49416c9a013bc2a5eac0d82602571df3cbd6be7aa06521eeac91587f2eb77572')
+sha256sums=('dd0dc8aa3bb21f67d4759286ecedf8ab2250471ae7bb09a5c8978e371e17f38c')
 
 build() {
     cd "${_pkgname}-${_pkgver}-${_prerelease}"
