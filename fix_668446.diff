@@ -1,0 +1,101 @@
+--- chrome/browser/ui/libgtkui/BUILD.gn	2017-01-21 01:34:13.510335097 +0100
++++ chrome/browser/ui/libgtkui/BUILD.gn.new	2017-01-21 01:34:01.410694761 +0100
+@@ -128,52 +128,55 @@
+ 
+ # TODO(thomasanderson): libgtk2ui and libgtk3ui share much of the same code.
+ # Extract the common code into a template.
+-component("libgtk2ui") {
+-  sources = common_sources + [
+-              "native_theme_gtk2.cc",
+-              "native_theme_gtk2.h",
+-            ]
+-  configs += common_configs
+-  defines = [ "LIBGTKUI_IMPLEMENTATION" ]
+ 
+-  # GTK2 pulls pangoft2 as dependency, and pangoft2 depends on harfbuzz.
+-  # To avoid missing indirectly referenced harfbuzz symbols from pango,
+-  # some hack is required when bundled harfbuzz is used and component build is
+-  # disabled.
+-  # See crbug.com/462689 for details.
+-  all_dependent_configs = [ "//third_party/harfbuzz-ng:pangoft2_link_hack" ]
++if (use_gtk3) {
++  # This is compiled with "all" even when it's not referenced to ensure that
++  # GTK3 continues to build. GTK3 is explicitly specified by some distros.
++  component("libgtk3ui") {
++    sources = common_sources + [
++                "native_theme_gtk3.cc",
++                "native_theme_gtk3.h",
++              ]
++    configs += common_configs
++    defines = [ "LIBGTKUI_IMPLEMENTATION" ]
+ 
+-  deps = common_deps + [
+-           "//build/config/linux/gtk2",
+-           "//build/config/linux/gtk2:gtkprint2",
+-         ]
+-  public_deps = [
+-    "//chrome/browser:theme_properties",
+-  ]
+-}
++    # GTK3 pulls pangoft2 as dependency, and pangoft2 depends on harfbuzz.
++    # To avoid missing indirectly referenced harfbuzz symbols from pango,
++    # some hack is required when bundled harfbuzz is used and component build is
++    # disabled.
++    # See crbug.com/462689 for details.
++    all_dependent_configs = [ "//third_party/harfbuzz-ng:pangoft2_link_hack" ]
+ 
+-# This is compiled with "all" even when it's not referenced to ensure that
+-# GTK3 continues to build. GTK3 is explicitly specified by some distros.
+-component("libgtk3ui") {
+-  sources = common_sources + [
+-              "native_theme_gtk3.cc",
+-              "native_theme_gtk3.h",
+-            ]
+-  configs += common_configs
+-  defines = [ "LIBGTKUI_IMPLEMENTATION" ]
++    deps = common_deps + [
++             "//build/config/linux/gtk3",
++             "//build/config/linux/gtk3:gtkprint3",
++           ]
++    public_deps = [
++      "//chrome/browser:theme_properties",
++    ]
++  }
++} else {
++  component("libgtk2ui") {
++    sources = common_sources + [
++                "native_theme_gtk2.cc",
++                "native_theme_gtk2.h",
++              ]
++    configs += common_configs
++    defines = [ "LIBGTKUI_IMPLEMENTATION" ]
+ 
+-  # GTK3 pulls pangoft2 as dependency, and pangoft2 depends on harfbuzz.
+-  # To avoid missing indirectly referenced harfbuzz symbols from pango,
+-  # some hack is required when bundled harfbuzz is used and component build is
+-  # disabled.
+-  # See crbug.com/462689 for details.
+-  all_dependent_configs = [ "//third_party/harfbuzz-ng:pangoft2_link_hack" ]
++    # GTK2 pulls pangoft2 as dependency, and pangoft2 depends on harfbuzz.
++    # To avoid missing indirectly referenced harfbuzz symbols from pango,
++    # some hack is required when bundled harfbuzz is used and component build is
++    # disabled.
++    # See crbug.com/462689 for details.
++    all_dependent_configs = [ "//third_party/harfbuzz-ng:pangoft2_link_hack" ]
+ 
+-  deps = common_deps + [
+-           "//build/config/linux/gtk3",
+-           "//build/config/linux/gtk3:gtkprint3",
+-         ]
+-  public_deps = [
+-    "//chrome/browser:theme_properties",
+-  ]
++    deps = common_deps + [
++             "//build/config/linux/gtk2",
++             "//build/config/linux/gtk2:gtkprint2",
++           ]
++    public_deps = [
++      "//chrome/browser:theme_properties",
++    ]
++  }
+ }

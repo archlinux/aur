@@ -7,3 +7,4 @@
 !chromium-widevine-r1.patch
 !BUILD.gn
 !minizip.patch
+!fix_668446.diff

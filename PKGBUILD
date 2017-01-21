@@ -9,18 +9,18 @@
 ## -- Build options -- ##
 #########################
 
-_use_clang=0           # Use clang compiler (downloaded binaries from google). Results in faster build and smaller chromium.
-_use_ccache=0          # Use ccache when build.
-_use_pax=0             # Set 1 to change PaX permisions in executables NOTE: only use if use PaX environment.
-_use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then build with GTK2.
-_debug_mode=0          # Build in debug mode.
-_enable_vaapi=0        # Patch for VAAPI HW acceleration NOTE: don't work in some graphic cards, for example, NVIDIA
+_use_clang=0     # Use clang compiler (downloaded binaries from google). Results in faster build and smaller chromium.
+_use_ccache=0    # Use ccache when build.
+_use_pax=0       # Set 1 to change PaX permisions in executables NOTE: only use if use PaX environment.
+_use_gtk3=1      # If set 1, then build with GTK3 support, if set 0, then build with GTK2.
+_debug_mode=0    # Build in debug mode.
+_enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some graphic cards, for example, NVIDIA
 
 ##############################################
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=57.0.2984.0
+pkgver=57.0.2986.0
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -87,6 +87,7 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'minizip.patch'
         # Patch from crbug (chromium bugtracker)
         'chromium-widevine-r1.patch'
+        'fix_668446.diff'
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-55.0.2873.0.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -102,10 +103,10 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             '95ba939b9372e533ecbcc9ca034f3e9fc6621d3bddabb57c4d092ea69fa6c840'
             # Patch from crbug (chromium bugtracker)
             '0d537830944814fe0854f834b5dc41dc5fc2428f77b2ad61d4a5e76b0fe99880'
+            '4ec7ef64298599e1e30c6391e68f2fd1f6d5dd35a964f78693d7501b98311955'
             )
 options=('!strip')
 install=chromium-dev.install
-noextract=("${_vaapi_patch_sources}")
 
 ################################################
 ## -- Don't touch anything below this line -- ##
@@ -146,11 +147,11 @@ fi
 if [ "${_use_gtk3}" = "1" ]; then
   depends+=('gtk3')
   _launcher_gtk='GTK=3'
-  optdepends+=('libappindicator-gtk3: Needed for show systray icon in the panel in plasma-next (KF5)')
+  optdepends+=('libappindicator-gtk3: Needed for show systray icon in the panel')
   _gtk3=true
 elif [ "${_use_gtk3}" = "0" ]; then
   depends+=('gtk2')
-  optdepends+=('libappindicator-gtk2: Needed for show systray icon in the panel in plasma-next (KF5)')
+  optdepends+=('libappindicator-gtk2: Needed for show systray icon in the panel')
   _gtk3=false
 fi
 
@@ -408,6 +409,9 @@ prepare() {
 
   patch -p1 -i "${srcdir}/minizip.patch"
 
+  # https://crbug.com/668446
+  patch -p0 -i "${srcdir}/fix_668446.diff"
+
   # Patch from crbug (chromium bugtracker).
   # https://crbug.com/473866
   patch -p0 -i "${srcdir}/chromium-widevine-r1.patch"
@@ -516,7 +520,7 @@ build() {
 
 package() {
   # Install launcher.
-  make -C "chromium-launcher-${_launcher_ver}" CHROMIUM_SUFFIX="-dev" PREFIX=/usr DESTDIR="${pkgdir}" install-strip
+  make -C "chromium-launcher-${_launcher_ver}" CHROMIUM_SUFFIX="-dev" PREFIX=/usr DESTDIR="${pkgdir}" ${_launcher_gtk} install-strip
   install -Dm644 "chromium-launcher-${_launcher_ver}/LICENSE" "${pkgdir}/usr/share/licenses/chromium-dev/LICENSE.launcher"
 
   pushd "chromium-${pkgver}/out/Release" &> /dev/null
