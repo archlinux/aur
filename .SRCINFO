@@ -1,7 +1,7 @@
 pkgbase = poezio
 	pkgdesc = A full-featured command-line irc-like xmpp (jabber) client
 	pkgver = 0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://poez.io
 	arch = i686
 	arch = x86_64

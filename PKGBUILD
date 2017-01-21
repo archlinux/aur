@@ -1,7 +1,7 @@
 # Maintainer: mathieui <mathieui[at]mathieui.net>
 
 pkgname=poezio
-pkgrel=1
+pkgrel=2
 pkgver=0.10
 pkgdesc="A full-featured command-line irc-like xmpp (jabber) client"
 arch=('i686' 'x86_64')
