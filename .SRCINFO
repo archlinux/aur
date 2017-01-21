@@ -1,6 +1,6 @@
 pkgbase = qzdoom
 	pkgdesc = Advanced Doom source port with true color renderer
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
@@ -46,7 +46,7 @@ pkgbase = qzdoom
 	optdepends = timidity++: Timidity MIDI device
 	optdepends = urbanbrawl-wad: Urban Brawl: Action Doom 2 game data
 	optdepends = xorg-xmessage: crash dialog (other)
-	source = qzdoom::git://github.com/raa-eruanna/qzdoom.git#tag=q1.2.1
+	source = qzdoom::git://github.com/raa-eruanna/qzdoom.git#tag=q1.2.2
 	source = launcher.desktop
 	sha256sums = SKIP
 	sha256sums = 0b3bcbe2cdebda2fed887b796f4ff0fa51f3d544e80cab16b3b1cbd7813b7e04
