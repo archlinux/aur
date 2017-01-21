@@ -5,7 +5,7 @@
 
 pkgname='gtkd'
 pkgver='3.5.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='D bindings for GTK+ and related libraries.'
 arch=('x86_64' 'i686')
 url='http://gtkd.org/'
@@ -19,13 +19,13 @@ sha512sums=('71fd514fc617a39c2aa970d02cb8e02ea017acda2bf3f5e24998f87c56718c4deb7
 build() {
   cd ${srcdir}/GtkD-${pkgver}
 
-  LDFLAGS='' DC='ldc' make shared-libs shared-gstreamer shared-vte shared-peas
+  LDFLAGS='' DC='ldc' make libdir='lib/' shared-libs shared-gstreamer shared-vte shared-peas
 }
 
 package() {
   cd ${srcdir}/GtkD-${pkgver}
 
-  make prefix='/usr' DESTDIR="${pkgdir}/" \
+  make prefix='/usr' libdir='lib/' DESTDIR="${pkgdir}/" \
     install-shared install-shared-gstreamer install-shared-vte install-shared-peas \
     install-headers install-headers-gstreamer install-headers-vte install-headers-peas
 }
