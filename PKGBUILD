@@ -3,7 +3,7 @@
 pkgname=webjcs-git
 _gitname=webjcs
 pkgver=2017.01.21
-pkgrel=1
+pkgrel=2
 pkgdesc="A level editor for Jazz Jackrabbit 2."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/daniel-j/webjcs"
@@ -56,5 +56,5 @@ package() {
   install "${srcdir}/webjcs.mime.xml" "${pkgdir}/usr/share/mime/packages/${_gitname}.xml"
 
   # License
-  install -Dm644 "${srcdir}/${_gitname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${_gitname}/LICENSE" "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
 }
