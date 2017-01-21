@@ -11,7 +11,7 @@ _use_ppa=true
 
 pkgname=gtk3-ubuntu
 _ubuntu_rel=1ubuntu1~ubuntu16.10.1
-pkgver=3.22.5
+pkgver=3.22.7
 pkgrel=1
 pkgdesc="GObject-based multi-platform toolkit"
 arch=(i686 x86_64)

@@ -1,6 +1,6 @@
 pkgbase = gtk3-ubuntu
 	pkgdesc = GObject-based multi-platform toolkit
-	pkgver = 3.22.5
+	pkgver = 3.22.7
 	pkgrel = 1
 	url = http://www.gtk.org/
 	install = gtk3.install
@@ -35,12 +35,12 @@ pkgbase = gtk3-ubuntu
 	depends = wayland
 	depends = wayland-protocols
 	optdepends = libcanberra: gtk3-widget-factory demo
-	provides = gtk3=3.22.5
+	provides = gtk3=3.22.7
 	conflicts = gtk3
-	source = https://download.gnome.org/sources/gtk+/3.22/gtk+-3.22.5.tar.xz
+	source = https://download.gnome.org/sources/gtk+/3.22/gtk+-3.22.7.tar.xz
 	source = settings.ini
 	source = gtk-query-immodules-3.0.hook
-	source = http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/g/gtk+3.0/gtk+3.0_3.22.5-1ubuntu1~ubuntu16.10.1.debian.tar.xz
+	source = http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/g/gtk+3.0/gtk+3.0_3.22.7-1ubuntu1~ubuntu16.10.1.debian.tar.xz
 	sha512sums = f1969612a89c67fb0414843f3cc51ce91894c9fdfdf6b6e00472d761848b5b1be529d35f2da43c26d345e4b39e81980d2de53d16f194d96775ba21f3c6d0926c
 	sha512sums = ad2c0b0388f4169592b9574f0b3db673a969b7c4721548c4ac7c438eddbcdc378fcaac04e2b6c858a1562cc23ddf4804e5f7be08068340b7c9365e2b11ddcfb8
 	sha512sums = f0ffd95544863f2e10fda81488b4727aa9a8a35a7d39fb96872db6664d03442db2b58af788b5990825c7b3a83681f7220ca481409cca5421dfb39b9a3bbac9ac
