@@ -1,7 +1,7 @@
 pkgbase = x-corners
 	pkgdesc = A commandline tool to set up hot corners under X11
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mstraube/x-corners
 	arch = i686
 	arch = x86_64
