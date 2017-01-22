@@ -1,6 +1,6 @@
 pkgbase = nitrokey-app
 	pkgdesc = Nitrokey management application
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://www.nitrokey.com
 	install = nitrokey-app.install
@@ -11,8 +11,8 @@ pkgbase = nitrokey-app
 	depends = qt5-base
 	depends = libusb
 	depends = hicolor-icon-theme
-	source = https://github.com/Nitrokey/nitrokey-app/archive/v0.6.1.tar.gz
-	sha256sums = ee02871049c7ff318269f5d63ba2fd86535628c2937790534a6965f768a1706c
+	source = nitrokey-app-0.6.2.tar.gz::https://github.com/Nitrokey/nitrokey-app/archive/v0.6.2.tar.gz
+	sha256sums = dd66272baf2b6818b9bb40391ec4901a36d2df2dbfb8c925b6502a57bd57bf01
 
 pkgname = nitrokey-app
 
