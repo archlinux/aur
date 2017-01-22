@@ -1,6 +1,6 @@
 pkgbase = goblocks
 	pkgdesc = Fast, lightweight i3status replacement written in Go
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/davidscholberg/goblocks
 	install = goblocks.install
