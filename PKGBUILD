@@ -6,7 +6,7 @@
 pkgname=xtensa-unknown-elf-binutils
 pkgver=2.27
 _pkgverpatch=$pkgver
-pkgrel=1.91.1
+pkgrel=1.92
 pkgdesc="A set of programs to assemble and manipulate binary and object files"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://www.gnu.org/software/binutils/"
