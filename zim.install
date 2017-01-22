@@ -20,7 +20,7 @@ post_remove() {
 }
 
 compile_scripts() {
-	sed 's/\&!//' /usr/lib/zim/templates/zlogin | zsh
+	zsh -c 'source /usr/lib/zim/templates/{zshrc,zlogin}'
 }
 
 remove_compiled_scripts() {
