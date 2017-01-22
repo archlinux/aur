@@ -1,0 +1,12 @@
+pkgbase = ttf-kanjistrokeorders
+	pkgdesc = Kanji Stroke Order Font
+	pkgver = 4.001
+	pkgrel = 1
+	url = https://sites.google.com/site/nihilistorguk/
+	arch = any
+	license = custom
+	source = https://sites.google.com/site/nihilistorguk/KanjiStrokeOrders_v4.001.zip
+	sha512sums = 93ad839464912b2d7164b9b0195c5ac02aff233e4de5d19b3f9c4f0f901f8577c6db6efd4fb115d5c414f533f82d1671dfe42799b07d6b82b0e5af96f7076f84
+
+pkgname = ttf-kanjistrokeorders
+
