@@ -20,7 +20,7 @@ _suffix=pre-release
 pkgname=("kodi-$_suffix" "kodi-eventclients-$_suffix" "kodi-tools-texturepacker-$_suffix" "kodi-dev-$_suffix")
 pkgver=17.0rc3
 _codename=Krypton
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -79,7 +79,6 @@ package_kodi-pre-release() {
     'lsb-release: log distro information in crashlog'
     'pulseaudio: PulseAudio support'
     'shairplay: AirPlay support'
-    'udisks: Automount external drives'
     'unrar: Archives support'
     'unzip: Archives support'
     'upower: Display battery level'
