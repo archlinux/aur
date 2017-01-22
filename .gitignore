@@ -1,0 +1,6 @@
+src/
+pkg/
+ng-jackspa-*.tar.xz
+ng-jackspa-*.src.tar.gz
+ngjackspa-*.tar.gz
+.AURINFO
