@@ -1,12 +1,12 @@
 pkgbase = correcthorse
 	pkgdesc = Passphrase generator based on https://xkcd.com/936/
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rmartinjak/correcthorse
 	arch = i686
 	arch = x86_64
 	license = WTFPL
-	source = https://github.com/rmartinjak/correcthorse/archive/v1.0.tar.gz
+	source = correcthorse-1.0.tar.gz::https://github.com/rmartinjak/correcthorse/archive/v1.0.tar.gz
 	md5sums = 3d691f786f5879f5b902585472d6d195
 
 pkgname = correcthorse
