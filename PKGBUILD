@@ -4,7 +4,7 @@
 # Submitter: BxS <bxsbxs at gmail dot com>
 
 pkgname=microchip-mplabx-bin
-pkgver=3.50
+pkgver=3.51
 _mplabcomm_version=3.22.00
 pkgrel=1
 pkgdesc="IDE for Microchip PIC and dsPIC development"
@@ -35,9 +35,9 @@ source=("http://ww1.microchip.com/downloads/en/DeviceDoc/${_mplabx_installer}.ta
         "LICENSE")
 source_x86_64=("fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/")
 
-md5sums=('d20f08bb8822c876542308bf4a75a590'
+md5sums=('e2ef9753af072543717d27549da923f8'
          'a34a85b2600a26f1c558bcd14c2444bd')
-md5sums_x86_64=('92b9a1dc8fa0534048790731a7bf2fc5')
+md5sums_x86_64=('a12f5c06479f3cd0678e705e08b95233')
 
 backup=("etc/mplab_ide.conf")
 
