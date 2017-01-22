@@ -1,0 +1,13 @@
+post_install() {
+  echo "You can echo useless stuff at the user here."
+  chmod +x /usr/bin/backup/backup
+  PATH=$PATH:/usr/bin/backup
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  rm -rf /usr/bin/backup/backup
+}
