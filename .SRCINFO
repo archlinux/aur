@@ -1,8 +1,8 @@
 pkgbase = gottengeography
 	pkgdesc = Automagically geotag photos with GPX data.
 	pkgver = 2.5
-	pkgrel = 2
-	url = http://exolucere.ca/gottengeography/
+	pkgrel = 3
+	url = https://launchpad.net/gottengeography
 	install = gottengeography.install
 	arch = any
 	license = GPL3
