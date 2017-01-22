@@ -4,7 +4,7 @@
 pkgname=myanimelist_client
 pkgver=0.1
 pkgrel=1
-pkgdesc="Simple MAL client made on Ruby"
+pkgdesc="Simple MyAnimeList client"
 arch=('any')
 url=""
 license=('GPL')

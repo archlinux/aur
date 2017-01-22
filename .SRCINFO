@@ -1,5 +1,5 @@
 pkgbase = myanimelist_client
-	pkgdesc = Simple MAL client made on Ruby
+	pkgdesc = Simple MyAnimeList client
 	pkgver = 0.1
 	pkgrel = 1
 	arch = any
