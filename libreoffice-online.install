@@ -1,0 +1,12 @@
+post_install() {
+  getent group lool > /dev/null || groupadd -r lool > /dev/null
+  getent passwd lool > /dev/null || useradd -g lool lool > /dev/null
+  chown -R lool:lool /var/cache/loolwsd \
+                     /var/lib/lool/child-roots
+}
+
+post_remove() {
+   userdel -rf lool
+   groupdel lool
+}
+
