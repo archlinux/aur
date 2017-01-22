@@ -1,0 +1,17 @@
+pkgbase = ttf-noto-fonts-simple
+	pkgdesc = Google Noto TTF fonts
+	pkgver = 2017.01.12
+	pkgrel = 2
+	url = https://www.google.com/get/noto/
+	arch = any
+	groups = custom
+	license = custom:SIL
+	optdepends = noto-fonts-cjk: CJK characters
+	optdepends = noto-fonts-emoji: Emoji characters
+	provides = ttf-font noto-fonts
+	conflicts = noto-fonts
+	source = noto-fonts-721e63c04fa8fb8b4d7c1c908e68e721317d8b53.tar.gz::https://github.com/googlei18n/noto-fonts/archive/721e63c04fa8fb8b4d7c1c908e68e721317d8b53.tar.gz
+	sha256sums = a36a76566381d6f2b72cf4831c3d052804beb63ad94fa3ff4a6cae3412a50202
+
+pkgname = ttf-noto-fonts-simple
+
