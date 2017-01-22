@@ -14,7 +14,7 @@ source=('git://github.com/Eriner/zim.git' 'zim.install')
 options=('!strip')
 install='zim.install'
 sha256sums=('SKIP'
-            '957cf992cab05b884e0f4514e2ec4246c4c07fcb01a564cc92b57afe1109d41f')
+            '9029f2f61ad96e0556a5b82f0b5b75863b495db0e00afb3ed37d81b4ba7ee1b5')
 _gitname='zim'
 backup=('etc/zsh/zlogin' 'etc/zsh/zimrc' 'etc/zsh/zshrc')
 

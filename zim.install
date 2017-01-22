@@ -20,7 +20,7 @@ post_remove() {
 }
 
 compile_scripts() {
-	zsh -c 'source /usr/lib/zim/templates/{zshrc,zlogin}'
+	zsh -c 'source /etc/zsh/zshrc; source /usr/lib/zim/templates/zlogin;'
 }
 
 remove_compiled_scripts() {
