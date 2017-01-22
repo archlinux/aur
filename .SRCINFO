@@ -1,9 +1,8 @@
 pkgbase = kochmorse-git
-	pkgdesc = A simple morse tutor using the Koch method - GIT version.
-	pkgver = 3.1.0
+	pkgdesc = A simple (Ham Radio) morse tutor using the Koch method - GIT version.
+	pkgver = 3.2.2.r6.g5ceff39
 	pkgrel = 1
 	url = https://github.com/hmatuschek/kochmorse
-	install = kochmorse.install
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -11,10 +10,13 @@ pkgbase = kochmorse-git
 	makedepends = git
 	depends = qt5-svg
 	depends = portaudio
-	depends = libxkbcommon-x11
-	depends = desktop-file-utils
+	optdepends = hamradio-menus: XDG compliant menuing
 	provides = kochmorse
 	conflicts = kochmorse
+	conflicts = kochmorse-py
+	source = kochmorse::git+https://github.com/hmatuschek/kochmorse.git#branch=master
+	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = kochmorse-git
 

@@ -2,55 +2,47 @@
 
 pkgname=kochmorse-git
 _pkgname=kochmorse
-pkgver=3.1.0
+_author=hmatuschek
+pkgver=3.2.2.r6.g5ceff39
 pkgrel=1
-pkgdesc="A simple morse tutor using the Koch method - GIT version."
+pkgdesc="A simple (Ham Radio) morse tutor using the Koch method - GIT version."
 arch=('i686' 'x86_64')
-url="https://github.com/hmatuschek/kochmorse"
+url="https://github.com/$_author/$_pkgname"
 license=('GPL')
-depends=('qt5-svg' 'portaudio' 'libxkbcommon-x11' 'desktop-file-utils')
+depends=('qt5-svg' 'portaudio')
+optdepends=('hamradio-menus: XDG compliant menuing')
 makedepends=('cmake' 'git')
 provides=('kochmorse')
-conflicts=('kochmorse')
-install=$_pkgname.install
-
-_gitroot=https://github.com/hmatuschek/kochmorse.git
-_gitname=master
+conflicts=('kochmorse' 'kochmorse-py')
+source=("$_pkgname::git+$url.git#branch=master")
 
 pkgver() {
-	cd "$srcdir/${_gitname}-build"
+	cd "$_pkgname"
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "$srcdir"
-	msg "Connecting to GIT server...."
+	cd "$_pkgname"
+	msg "Preparing sources..."
 
-	if [[ -d "$_gitname" ]]; then
-		cd "$_gitname" && git pull origin
-		msg "The local files are updated."
-	else
- 		git clone "$_gitroot" "$_gitname"
-	fi
-
-	msg "GIT checkout done or server timeout"
-	msg "Starting build..."
-
-	rm -rf "$srcdir/$_gitname-build"
-	git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+	sed -i -e s:'Teaching;':'Application;HamRadio': shared/$_pkgname.desktop
+	sed -i '$ a X-DCOP-ServiceType=none' shared/$_pkgname.desktop
+	sed -i '$ a X-KDE-SubstituteUID=false' shared/$_pkgname.desktop
 }
 
 build() {
-	cd "$srcdir/${_gitname}-build"
+	cd "$_pkgname"
 	msg "Starting build..."
 
-	cmake -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RELEASE -DPORTAUDIO_INCLUDE_DIRS=/usr/include
 	make
 }
 
 package() {
-	cd "$srcdir/$_gitname-build"
+	cd "$_pkgname"
 	msg "Starting packaging..."
 
 	make DESTDIR="$pkgdir/" install
 }
+md5sums=('SKIP')
+sha256sums=('SKIP')
