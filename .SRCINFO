@@ -1,7 +1,7 @@
 pkgbase = cutechess-git
 	pkgdesc = Tools for working with chess engines
 	pkgver = r1878.8d265fe
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cutechess.com
 	arch = i686
 	arch = x86_64
