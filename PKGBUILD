@@ -3,7 +3,7 @@
 # Contributor: Pat Brisbin <pbrisbin@gmail.com>
 # Contributor: Max Falk <gmdfalk@gmail.com>
 pkgname=rcm
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="rc file (dotfiles) management"
 arch=('any')
@@ -29,4 +29,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('ddcf638b367b0361d8e063c29fd573dbe1712d1b83e8d5b3a868e4aa45ffc847')
+sha256sums=('9c8f92dba63ab9cb8a6b3d0ccf7ed8edf3f0fb388b044584d74778145fae7f8f')
