@@ -1,6 +1,6 @@
 pkgbase = python-gpxpy
 	pkgdesc = Python GPX (GPS eXchange format) parser
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/tkrajina/gpxpy
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-gpxpy
 	depends = python>=3.2
 	depends = python-lxml>=3.1.2
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/g/gpxpy/gpxpy-1.1.1.tar.gz
-	sha256sums = 7c0353a5f7363d205d767c3df249b19ca68ea5c9421d93c44574d192b9d6f47a
+	source = https://pypi.python.org/packages/51/3c/29004507bc4d5c1248a1a37ec01c2030b2e977609c219244d81f3041b745/gpxpy-1.1.2.tar.gz
+	sha256sums = c46b8fe738c6402638d2b5434020bc6ccd24b15090d7234fe9b158fdea14f354
 
 pkgname = python-gpxpy
 
