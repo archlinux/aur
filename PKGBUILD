@@ -1,35 +1,35 @@
-# Maintainer: Sabart Otto - Seberm <seberm[at]gmail[dot].com
+# Maintainer: Michael Straube <straubem@gmx.de>
+# Contributor: Sabart Otto - Seberm <seberm[at]gmail[dot].com
 
 pkgname=ttyqr-git
-pkgver=20120217
+pkgver=r5.56f7658
 pkgrel=1
-pkgdesc="draw QR codes straight into the terminal"
+pkgdesc="Draw QR codes straight into the terminal"
 url="https://github.com/oskar456/ttyqr"
 arch=('i686' 'x86_64')
-license=('GPLv3')
-install=
-source=()
+license=('GPL3')
 depends=('qrencode')
 makedepends=('git')
+source=("git+https://github.com/oskar456/ttyqr.git")
+md5sums=('SKIP')
 
-_gitname="ttyqr"
-_gitroot="git://github.com/oskar456/${_gitname}.git"
+pkgver() {
+  cd ${pkgname%-git}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
+prepare() {
+  cd ${pkgname%-git}
+  # Use Arch's CFLAGS
+  sed -i 's/-ggdb/$(CFLAGS)/' Makefile
+}
 
 build() {
-  cd $srcdir
-  msg "Connecting to GIT (${_gitroot}) ..."
+  cd ${pkgname%-git}
+  make
+}
 
-  if [ -d $_gitname ]; then
-    cd $_gitname && git pull origin
-    msg "The local files of ${_gitname} were updated."
-  else
-    git clone $_gitroot $_gitname
-  fi
-  
-  msg "GIT checkout done or server timeout"
-
-  cd ${srcdir}/$_gitname
-  make && install -Dm755 $_gitname ${pkgdir}/usr/bin/${_gitname}
- 
+package() {
+  cd ${pkgname%-git}
+  install -Dm755 ttyqr "${pkgdir}"/usr/bin/ttyqr
 }
