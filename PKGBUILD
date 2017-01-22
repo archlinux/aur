@@ -4,7 +4,7 @@
 _pkgname=rpass
 pkgname=rpass-git
 pkgver=r7.3001b45
-pkgrel=1
+pkgrel=2
 pkgdesc="GPG-based, secure, pluggable, encrypted, and simple commandline password manager."
 arch=('any')
 url="https://github.com/rscare/rpass"
@@ -25,6 +25,5 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_pkgname/python_interface"
-
-  python setup.py install --prefix="/usr" --root="$pkgdir/"
+  python setup.py install --prefix="/usr" --root="$pkgdir/" --optimize=1
 }

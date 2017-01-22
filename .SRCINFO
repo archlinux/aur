@@ -1,7 +1,7 @@
 pkgbase = rpass-git
 	pkgdesc = GPG-based, secure, pluggable, encrypted, and simple commandline password manager.
 	pkgver = r7.3001b45
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rscare/rpass
 	arch = any
 	license = GPL
