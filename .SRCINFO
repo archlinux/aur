@@ -1,0 +1,27 @@
+pkgbase = xv
+	pkgdesc = A nice image viewer
+	pkgver = 3.10a
+	pkgrel = 22
+	url = http://www.trilon.com/xv/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = libxt
+	depends = libpng
+	depends = libx11
+	depends = libtiff
+	depends = jasper
+	options = !emptydirs
+	source = ftp://ftp.trilon.com/pub/xv/xv-3.10a.tar.gz
+	source = http://downloads.sourceforge.net/sourceforge/png-mng/xv-3.10a-jumbo-patches-20070520.tar.gz
+	source = http://www.sonic.net/~roelofs/code/xv-3.10a-enhancements.20070520-20081216.diff
+	source = license.txt
+	source = xv-3.10a-libpng15.patch
+	sha1sums = 092f8eb100f16d6b91c88b126c2b2b998eb09b99
+	sha1sums = d00308c1687d9d803d26ef40c73d19a0f593c626
+	sha1sums = 40bfb0889b820e0f9d3bd7d771144ec3458acc66
+	sha1sums = 4561344e8f2c30eee9c55b14a14f062d89d6e7b7
+	sha1sums = 3d19aa0c6ecc8b554081906babe0b4f9a6946da3
+
+pkgname = xv
+
