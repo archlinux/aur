@@ -3,8 +3,8 @@
 pkgname=trustedqsl-git
 _pkgname=trustedqsl
 __pkgname=tqsl
-pkgver=2.3.1
-#.beta.r0.g460d71a
+pkgver=2.3.1.beta.r3.gfcbc48c
+#.beta.r3.gfcbc48c
 pkgrel=1
 pkgdesc="QSO log signing & upload - ARRL's Logbook of The World (LoTW) - GIT version"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="http://lotw.arrl.org/"
 license=('custom:ARRL')
 depends=('wxgtk2.8' 'curl' 'hamradio-menus')
 makedepends=('cmake')
-provides=('tqsllib')
+provides=('tqsllib' 'trustedqsl')
 conflicts=('trustedqsl' 'trustedqsl-devel')
 replaces=('tqsl')
 source=("$pkgname::git+http://git.code.sf.net/p/${_pkgname}/${__pkgname}"

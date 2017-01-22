@@ -1,6 +1,6 @@
 pkgbase = trustedqsl-git
 	pkgdesc = QSO log signing & upload - ARRL's Logbook of The World (LoTW) - GIT version
-	pkgver = 2.3.1
+	pkgver = 2.3.1.beta.r3.gfcbc48c
 	pkgrel = 1
 	url = http://lotw.arrl.org/
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = trustedqsl-git
 	depends = curl
 	depends = hamradio-menus
 	provides = tqsllib
+	provides = trustedqsl
 	conflicts = trustedqsl
 	conflicts = trustedqsl-devel
 	replaces = tqsl
