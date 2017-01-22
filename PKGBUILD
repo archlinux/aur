@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Magno <alexandre.mbm@gmail.com>
 pkgname=comporg
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 _forker=ENE
 pkgdesc="Manage and organize your electronic components, datasheets and application notes"
@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('GPLv3')
 depends=('qt4')
 source=("https://github.com/${_forker}/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('7cc2925a1ffec927ac619570e2f1470e')
+md5sums=('29b010e4af82ec6a0598aa897d904977')
 
 package(){
     cd "${srcdir}/${pkgname}-${pkgver}"
