@@ -17,7 +17,7 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  npm install --user root -g --prefix "${pkgdir}/usr"
+  npm install --cache ../cache --user root -g --prefix "${pkgdir}/usr"
 }
 
 # vim:set ts=2 sw=2 et:
