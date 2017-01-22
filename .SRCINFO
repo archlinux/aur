@@ -1,6 +1,6 @@
 pkgbase = msgpack-tools
 	pkgdesc = Command-line tools for converting between MessagePack and JSON
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://github.com/ludocode/msgpack-tools
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = msgpack-tools
 	license = MIT
 	makedepends = cmake
 	depends = gcc-libs
-	source = https://github.com/ludocode/msgpack-tools/releases/download/v0.5/msgpack-tools-0.5.tar.gz
-	sha256sums = 6f382a74fd8715a8a0e6a2561a9f10b16db7604b3139486908b4054709f81d08
+	source = https://github.com/ludocode/msgpack-tools/releases/download/v0.6/msgpack-tools-0.6.tar.gz
+	sha256sums = 98c8b789dced626b5b48261b047e2124d256e5b5d4fbbabdafe533c0bd712834
 
 pkgname = msgpack-tools
 
