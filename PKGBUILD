@@ -6,13 +6,15 @@
 
 pkgname=wine-stable
 pkgver=1.8.6
-pkgrel=1
+pkgrel=2
 
 source=(https://dl.winehq.org/wine/source/1.8/wine-$pkgver.tar.bz2{,.sign}
-        30-win32-aliases.conf)
+        30-win32-aliases.conf
+        0001-programs-winhlp32-Use-noyywrap-for-macro.lex.l.patch)
 sha256sums=('b1797896eb3b63aab8a4753cc756d6211a0e85460146a1b52063ec79c13906d3'
             'SKIP'
-            '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7')
+            '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
+            'da2f15457044a397483bbf52bf4e59f1000bf270ab823a0b8957e905a1a933f7')
 validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
               DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
 
@@ -56,6 +58,14 @@ conflicts=("wine")
 prepare() {
   # Allow ccache to work
   mv wine-$pkgver wine
+
+  for patch in ../*.patch; do
+    if [ ! -f "$patch" ]; then
+      break;
+    else
+      patch -d wine -p1 -i "$patch"
+    fi
+  done
 
   sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i wine/configure*
 

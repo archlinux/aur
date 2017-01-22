@@ -1,0 +1,35 @@
+From e0889eac30d17b995d4f8a9f5c80f9d994050c29 Mon Sep 17 00:00:00 2001
+From: Mike Swanson <mikeonthecomputer@gmail.com>
+Date: Sun, 22 Jan 2017 10:49:44 -0800
+Subject: [PATCH] programs/winhlp32: Use noyywrap for macro.lex.l
+
+flex 2.6.3 broke the previous version, but this is a well-supported
+way of achieving the same goal, used elsewhere in the Wine source too.
+---
+ programs/winhlp32/macro.lex.l | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/programs/winhlp32/macro.lex.l b/programs/winhlp32/macro.lex.l
+index 8f6945ca98..ff8a4832d3 100644
+--- a/programs/winhlp32/macro.lex.l
++++ b/programs/winhlp32/macro.lex.l
+@@ -20,7 +20,7 @@
+  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
+  */
+ %}
+-%option noinput nounput never-interactive 8bit
++%option noinput nounput noyywrap never-interactive 8bit
+ %x quote
+ %{
+ #include "config.h"
+@@ -367,7 +367,3 @@ WINHELP_WINDOW* MACRO_CurrentWindow(void)
+ {
+     return lex_data ? lex_data->window : Globals.active_win;
+ }
+-
+-#ifndef yywrap
+-int yywrap(void) { return 1; }
+-#endif
+-- 
+2.11.0
+
