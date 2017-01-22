@@ -1,7 +1,7 @@
 # Maintainer: Alex Szczuczko <alex@szc.ca>
 
 pkgname=pillarsofeternity-gog
-pkgver=2.13.0.17
+pkgver=2.15.0.19
 pkgrel=1
 pkgdesc="A modern RPG in the style of classics like Baldur's Gate"
 arch=("x86_64")
@@ -16,7 +16,7 @@ source=("${pkgname}.desktop"
 # bsdtar doesn't seem to like this .sh
 noextract=("gog_pillars_of_eternity_${pkgver}.sh")
 sha256sums=("6751ac84acaf2603183ecaa8c5f64c164f0b33aac08426135a898461ce12a655"
-            "c5912f294c05474b753779ecc54cf8bfacad4d32f68658b446594ea8db2cf8d8")
+            "2c25cf1d650ce651360e4c3d39fb4a5a96fa5da3915e26ec2f867ce028b47e8f")
 
 # Disable compression of the package
 PKGEXT=".pkg.tar"
