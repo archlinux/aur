@@ -3,12 +3,12 @@
 
 pkgname=nextcloud-app-collabora-online
 pkgver=1.1.25
-pkgrel=2
+pkgrel=3
 pkgdesc="Integrate Collabora Online into NextCloud"
 arch=('any')
 url="https://github.com/nextcloud/richdocuments"
 license=('AGPL')
-depends=('nextcloud' 'libreoffice-online-bin')
+depends=('nextcloud' 'libreoffice-online')
 makedepends=()
 options=('!strip')
 source=("richdocuments-${pkgver}.tar.gz::https://github.com/nextcloud/richdocuments/releases/download/1.1.25/richdocuments.tar.gz")
