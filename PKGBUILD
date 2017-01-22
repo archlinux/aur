@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-knock
 _pkgbasever=4.9-gnu
-_pkgver=4.9.3-gnu
+_pkgver=4.9.5-gnu
 _knockpatchver=4.9_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -65,7 +65,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP'
-            'df4408961165279f45611374e86d817de84c164b93c125d8a0fbee2535a5bbdfef3c40e629541024428257b56105284fe50d402c496ca42b4202fb57e61f65a9'
+            'eef05ff60088fd4389c5eefa80b22e97fd178702fb226ff3a4aed6892ce4df6ae002c2c9e9d5838a17328c25fef14fcecb054e203b556b3a08f84e80de4777c2'
             'SKIP'
             'a00e9fc0b930021242b231dfdd15160eaefbfad4aaa0ba0426bb9a25dd14acc1825cbb1bc9c680a6d43baca797591dc219e232862f566457752ff378e03600a3'
             'SKIP'
@@ -84,7 +84,7 @@ sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca4
             '002d5e0ccfa5824c1750912a6400ff722672d6587b74ba66b1127cf1228048f604bba107617cf4f4477884039af4d4d196cf1b74cefe43b0bddc82270f11940d'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '72d92d0a48ecdecf82799f09004946e1b2de69a4e0b42d7a9bdcf41ab38b61657df3e30e0c9f86c707f44cec93ab21a78f0a7195d806671c220edc578cffe857'
+            'ec84fb15c7b429e657ffbec17f3f03c9eef5e2d9766f2166dffa332c6a0052f1de512a5cb8973f4d3dee2411edee829fbad6e67669e74278b475dd50db7805bd'
             'SKIP'
             'ccf18eb2c3d33a57871cbadd5ad825d2f2f489e69c54c7293b160abdc3e9e5c6a664ba7926a617d31affcf20b7ecb4e8de54fa78438c574aa1b257f686faade9'
             '69f13bb2e353727acbe39034978729272511c6578aa2faf8c829e1bb89c22e769262289b76d93254314304ebd7547c45cdc8ba6afc278444a8fd09f71dff9757'
