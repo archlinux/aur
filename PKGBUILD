@@ -13,7 +13,7 @@ url="http://www.unigine.com"
 license=('custom:UNIGINE Engine')
 depends=('libgl' 'gcc-libs' 'libxrandr' 'libxinerama' 'fontconfig')
 optdepends=('openal: sound support')
-source=("http://uk1-dl.techpowerup.com/Benchmarking/"${_pkgname}"-"${pkgver}".run")
+source=("https://assets.unigine.com/d/"${_pkgname}"-"${pkgver}".run")
 sha512sums=('3db8ae47c0f03bbd01c64e64021c83919a5b6b3f546aa426fe196021ae9e4cbcc44ead5b6a0315b6dd6817352ecb55a0b4a0758966198b12b6418b211551c902')
 
 [ "${CARCH}" = "i686" ] && _arch=x86
