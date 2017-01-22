@@ -14,7 +14,7 @@ optdepends=('ethtool: device configuration')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 
-source=("http://12244.wpc.azureedge.net/8012244/drivers/rtdrivers/cn/nic/0005-${_pkgbase}-${pkgver}.tar.bz2"
+source=("http://12244.wpc.azureedge.net/8012244/drivers/rtdrivers/cn/nic/0006-${_pkgbase}-${pkgver}.tar.bz2"
         'dkms.conf')
 
 package() {
