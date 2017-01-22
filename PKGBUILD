@@ -3,8 +3,8 @@
 
 _pkgname=lvtk
 pkgname="${_pkgname}-git"
-pkgver=1.2.0.r21.g6bfe981
-pkgrel=2
+pkgver=2.0.0.r484.6bfe981
+pkgrel=1
 pkgdesc="A set of C++ wrappers around the LV2 C API"
 arch=('i686' 'x86_64')
 url="https://github.com/lvtk/lvtk"
@@ -22,7 +22,8 @@ changelog=ChangeLog
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  git describe --long | sed -r 's/^release.//;s/([^-]*-g)/r\1/;s/-/./g'
+  local ver=`grep "^LVTK_VERSION" wscript | cut -d "'" -f 2`
+  echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {

@@ -1,3 +1,8 @@
+2017-01-22 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 2.0.0.r484.6bfe981-1 :
+	Fixed pkgver
+
 2016-01-18 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 1.2.0.r21.g6bfe981-2 :
