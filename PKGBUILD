@@ -4,7 +4,7 @@
 pkgbase=patool
 pkgname=('patool' 'patool-py2')
 pkgver=1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="portable command line archive file manager"
 arch=('any')
 url="https://wummel.github.io/patool/"
@@ -23,7 +23,7 @@ package_patool() {
 
   cd "$srcdir/${pkgbase}-${pkgver}"
 
-  python setup.py install --root=$pkgdir --prefix=/usr
+  python setup.py install --root=$pkgdir --prefix=/usr --optimize=1
 }
 
 package_patool-py2() {
@@ -33,5 +33,5 @@ package_patool-py2() {
 
   cd "$srcdir/${pkgbase}-${pkgver}"
 
-  python2 setup.py install --root=$pkgdir --prefix=/usr
+  python2 setup.py install --root=$pkgdir --prefix=/usr --optimize=1
 }
