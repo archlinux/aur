@@ -3,7 +3,7 @@
 _pkgname=canto-curses
 pkgname=canto-curses-git
 pkgver=0.9.7.r5.g0b52314
-pkgrel=1
+pkgrel=2
 pkgdesc="ncurses user interface for canto-daemon/canto-next. Git version"
 url="http://codezen.org/canto-ng/"
 license=('GPL')
@@ -24,12 +24,10 @@ pkgver() {
 
 build() {
     cd $srcdir/$_pkgname
-
     python setup.py build
 }
 
 package() {
     cd $srcdir/$_pkgname
-
-    python setup.py install --prefix=/usr --root=${pkgdir} #--optimize=1
+    python setup.py install --prefix=/usr --root=${pkgdir} --optimize=1 --skip-build
 }
