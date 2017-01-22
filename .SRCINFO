@@ -1,26 +1,25 @@
 pkgbase = simpleburn
 	pkgdesc = A simple GTK+ application for burning CDs and DVDs
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = http://simpleburn.tuxfamily.org/
 	arch = i686
 	arch = x86_64
 	license = CeCILL
-	makedepends = cmake>=2.6
+	makedepends = cmake>=2.8
 	makedepends = pkgconfig
 	depends = cdrtools
 	depends = gtk3
 	depends = libdvdread
 	depends = libcddb
 	depends = libcdio
-	optdepends = mpg123: needed for burning audio CD from MP3 encoded files
-	optdepends = lame: needed for cd audio extraction to mp3
+	optdepends = mpg123: needed for burning audio CD from MP3 encoded files (or mpg321)
 	optdepends = vorbis-tools: needed for burning audio CD from Vorbis encoded files
-	optdepends = mpg321: alternative to mpg123
-	optdepends = gmplayer: needed for video and audio preview
+	optdepends = lame: needed for cd audio extraction to mp3
+	optdepends = gnome-mplayer: needed for video and audio preview (or smplayer)
 	optdepends = mencoder: needed for video DVD extraction
-	source = http://simpleburn.tuxfamily.org/IMG/gz/simpleburn-1.8.1.tar.gz
-	md5sums = 11cf5b9a69fda6c72b1ae1277fafa386
+	source = http://simpleburn.tuxfamily.org/IMG/gz/simpleburn-1.8.2.tar.gz
+	md5sums = 9df96114ff3eb71ad3b9f16eb6848f3a
 
 pkgname = simpleburn
 
