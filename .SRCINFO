@@ -16,6 +16,7 @@ pkgbase = docker-bin
 	optdepends = btrfs-progs: btrfs backend support
 	optdepends = lxc: lxc backend support
 	conflicts = docker
+	conflicts = docker-git
 	options = !strip
 	source = https://get.docker.com/builds/Linux/x86_64/docker-1.13.0.tgz
 	source = https://github.com/docker/docker/archive/v1.13.0.tar.gz
