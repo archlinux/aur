@@ -66,7 +66,7 @@ prepare() {
   cp -v ${srcdir}/mozconfig .mozconfig
 
   # WebRTC build tries to execute "python" and expects Python 2
-  mkdir "$srcdir/path"
+  mkdir -p "$srcdir/path"
   ln -s /usr/bin/python2 "$srcdir/path/python"
 }
 
