@@ -2,7 +2,7 @@
 
 pkgname=haste-server-git
 _gitname=haste-server
-pkgver=r246.6835eef
+pkgver=r259.eb5c8ee
 pkgrel=1
 pkgdesc="Prettiest, easiest to use pastebin ever made"
 arch=('any')
@@ -41,7 +41,7 @@ package() {
   cd "${srcdir}/${_gitname}"
 
   install -Dm644 "../../${_gitname}.service" -t "${pkgdir}/usr/lib/systemd/system"
-  npm install --user root -g --prefix "${pkgdir}/usr"
+  npm install --cache ../cache --user root -g --prefix "${pkgdir}/usr"
 }
 
 # vim:set ts=2 sw=2 et:
