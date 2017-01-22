@@ -2,7 +2,7 @@
 
 _pkgname=ytfs
 pkgname=${_pkgname}-git
-pkgver=r81.5d79276
+pkgver=r86.d689c7f
 pkgrel=1
 pkgdesc="FUSE based filesystem for YouTube (git version)"
 arch=('any')
@@ -21,6 +21,5 @@ pkgver() {
 
 package() {
   cd ${_pkgname}
-
-  python setup.py install --prefix=/usr --root=${pkgdir}
+  python setup.py install --prefix=/usr --root=${pkgdir} --optimize=1
 }
