@@ -2,7 +2,7 @@
 # Contributor: Sébastien "Seblu" Luttringer
 
 pkgname=docker-bin
-pkgver=1.12.5
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
 arch=('x86_64')
@@ -20,8 +20,8 @@ source=(
   "https://get.docker.com/builds/Linux/x86_64/docker-${pkgver}.tgz"
   "https://github.com/docker/docker/archive/v${pkgver}.tar.gz"
   "docker.sysusers")
-md5sums=('668fffe70895731f426c006da09d7997'
-         '2372c98dce8ebcc16fcd9afe51f5042c'
+md5sums=('80234efd9aedf8b2da81bfe550cbee43'
+         '23d3875ac67d5b67dd1918c45ba98537'
          '8cf9900ebada61f352a03465a088da34')
 
 build() {
@@ -39,12 +39,13 @@ package() {
   install -Dm755 'docker-containerd-shim' "$pkgdir/usr/bin/docker-containerd-shim"
   install -Dm755 'docker-containerd-ctr' "$pkgdir/usr/bin/docker-containerd-ctr"
   install -Dm755 'docker-runc' "$pkgdir/usr/bin/docker-runc"
+  install -Dm755 'docker-init' "$pkgdir/usr/bin/docker-init"
+  # completion
+  install -Dm644 'completion/bash/docker' "$pkgdir/usr/share/bash-completion/completions/docker"
+  install -Dm644 'completion/zsh/_docker' "$pkgdir/usr/share/zsh/site-functions/_docker"
+  install -Dm644 'completion/fish/docker.fish' "$pkgdir/usr/share/fish/vendor_completions.d/docker.fish"
 
   cd ../docker-$pkgver
-  # completion
-  install -Dm644 'contrib/completion/bash/docker' "$pkgdir/usr/share/bash-completion/completions/docker"
-  install -Dm644 'contrib/completion/zsh/_docker' "$pkgdir/usr/share/zsh/site-functions/_docker"
-  install -Dm644 'contrib/completion/fish/docker.fish' "$pkgdir/usr/share/fish/vendor_completions.d/docker.fish"
   # systemd
   install -Dm644 'contrib/init/systemd/docker.service' "$pkgdir/usr/lib/systemd/system/docker.service"
   install -Dm644 'contrib/init/systemd/docker.socket' "$pkgdir/usr/lib/systemd/system/docker.socket"
