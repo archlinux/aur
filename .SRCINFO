@@ -4,7 +4,6 @@ pkgbase = ttf-noto-fonts-simple
 	pkgrel = 2
 	url = https://www.google.com/get/noto/
 	arch = any
-	groups = custom
 	license = custom:SIL
 	optdepends = noto-fonts-cjk: CJK characters
 	optdepends = noto-fonts-emoji: Emoji characters

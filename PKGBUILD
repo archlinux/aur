@@ -8,7 +8,6 @@ pkgdesc="Google Noto TTF fonts"
 arch=(any)
 url="https://www.google.com/get/noto/"
 license=(custom:SIL)
-groups=("custom")
 provides=("ttf-font noto-fonts")
 conflicts=("noto-fonts")
 optdepends=('noto-fonts-cjk: CJK characters' 'noto-fonts-emoji: Emoji characters')
