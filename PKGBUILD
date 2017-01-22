@@ -1,7 +1,7 @@
 # Maintainer: Alex Szczuczko <alex@szc.ca>
 
 pkgname=pillarsofeternity-thewhitemarch1-gog
-pkgver=2.7.0.9
+pkgver=2.9.0.11
 pkgrel=1
 pkgdesc="Part 1 of The White March expansion to Pillars of Eternity"
 arch=("any")
@@ -10,7 +10,7 @@ license=("custom:commercial")
 options=("!emptydirs")
 depends=("pillarsofeternity-gog")
 source=("gog_pillars_of_eternity_white_march_part_1_dlc_${pkgver}.sh::file://gog_pillars_of_eternity_white_march_part_1_dlc_${pkgver}.sh")
-sha256sums=("5de2a04ad61d394f849fe3739890ca40ab748f153fa68673569a3207351724ca")
+sha256sums=("42c09a9bbf949d8a17fe1ab34d54a76df3793fd7076fd1ee2e8eb31c516dec9b")
 
 # Disable compression of the package
 PKGEXT=".pkg.tar"
