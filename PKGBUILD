@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=caffeine-ng
-pkgver=3.3.8
+pkgver=3.3.12
 pkgrel=1
 pkgdesc="Status bar application able to temporarily inhibit the screensaver and sleep mode."
 arch=(any)
@@ -17,7 +17,7 @@ options=(!emptydirs !libtool)
 install=$pkgname.install
 source=("https://pypi.io/packages/source/c/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 
-md5sums=('d9ea712b0012ac0606e3186adc37ffe8')
+md5sums=('054ad5cfd815ee2aac720ec5fed1ea7a')
 
 build() {
   cd "$srcdir"/caffeine-ng-${pkgver}
