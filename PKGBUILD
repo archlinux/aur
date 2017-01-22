@@ -3,7 +3,7 @@
 pkgbase=cutechess
 pkgname=(cutechess cutechess-cli libcutechess libcutechess-docs)
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for working with chess engines"
 arch=(i686 x86_64)
 url=http://cutechess.com
@@ -32,6 +32,10 @@ package_cutechess() {
   cd $pkgbase-gui-$pkgver/projects
   install -Dm755 gui/$pkgname "$pkgdir"/usr/bin/$pkgname
   install -Dm644 COPYING.gui "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 gui/res/icons/${pkgname}_32x32.xpm \
+    "$pkgdir"/usr/share/pixmaps/${pkgname}_32x32.xpm
+  install -Dm644 ../dist/linux/$pkgname.desktop \
+    "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
 
 package_cutechess-cli() {
