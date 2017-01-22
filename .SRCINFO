@@ -1,0 +1,28 @@
+pkgbase = udisks
+	pkgdesc = Disk Management Service
+	pkgver = 1.0.5
+	pkgrel = 3
+	url = http://www.freedesktop.org/wiki/Software/udisks
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = docbook-xsl
+	depends = systemd
+	depends = util-linux
+	depends = sg3_utils
+	depends = glib2
+	depends = dbus-glib
+	depends = polkit
+	depends = parted
+	depends = device-mapper
+	depends = libatasmart
+	depends = lsof
+	depends = libgudev
+	source = http://hal.freedesktop.org/releases/udisks-1.0.5.tar.gz
+	source = drop-pci-db.patch
+	md5sums = 70d48dcfe523a74cd7c7fbbc2847fcdd
+	md5sums = 773cccd70afd18ace4332037feff67ec
+
+pkgname = udisks
+
