@@ -1,0 +1,20 @@
+pkgbase = scangearmp-mg5200
+	pkgdesc = Canon Scanner Driver (mg5200 series)
+	pkgver = 1.60
+	pkgrel = 10
+	url = http://support-my.canon-asia.com/contents/MY/EN/0100303302.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = sane
+	depends = gimp
+	depends = libusb-compat
+	source = http://gdlp01.c-wss.com/gds/3/0100003033/01/scangearmp-source-1.60-1.tar.gz
+	source = fix_png15.patch
+	source = fix_configure.patch
+	md5sums = 15782d670f9d5c5904e00610508114f3
+	md5sums = 6609d7fe171e67451658a3665442972c
+	md5sums = 8c21b22ef834b17bcdad6e97d8916ca2
+
+pkgname = scangearmp-mg5200
+
