@@ -1,0 +1,36 @@
+diff -Naur indiv-screenlets-0.1.6.orig/src/dayNight/dayNightScreenlet.py indiv-screenlets-0.1.6/src/dayNight/dayNightScreenlet.py
+--- indiv-screenlets-0.1.6.orig/src/dayNight/dayNightScreenlet.py	2012-01-27 22:51:45.000000000 +0100
++++ indiv-screenlets-0.1.6/src/dayNight/dayNightScreenlet.py	2013-09-15 16:12:07.698782839 +0200
+@@ -32,7 +32,7 @@
+ import pango
+ import math
+ import os
+-import Image
++from PIL import Image
+ import time
+ import datetime
+ import Sun
+diff -Naur indiv-screenlets-0.1.6.orig/src/Lipik/LipikScreenlet.py indiv-screenlets-0.1.6/src/Lipik/LipikScreenlet.py
+--- indiv-screenlets-0.1.6.orig/src/Lipik/LipikScreenlet.py	2012-01-27 22:51:45.000000000 +0100
++++ indiv-screenlets-0.1.6/src/Lipik/LipikScreenlet.py	2013-09-15 16:12:07.695449426 +0200
+@@ -33,7 +33,7 @@
+ from screenlets.options import FontOption, ColorOption
+ 
+ import gtk
+-import Image
++from PIL import Image
+ import os
+ from gtk import gdk
+ import cairo
+diff -Naur indiv-screenlets-0.1.6.orig/src/Lyrics/gui/utils.py indiv-screenlets-0.1.6/src/Lyrics/gui/utils.py
+--- indiv-screenlets-0.1.6.orig/src/Lyrics/gui/utils.py	2011-08-22 08:54:04.000000000 +0200
++++ indiv-screenlets-0.1.6/src/Lyrics/gui/utils.py	2013-09-15 16:12:07.698782839 +0200
+@@ -127,7 +127,7 @@
+     except:
+         pass
+ """
+-import Image
++from PIL import Image
+ def thumbnail(path):
+     image = Image.open(path)
+     print dir(image)

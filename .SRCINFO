@@ -1,0 +1,25 @@
+pkgbase = screenlets-pack-basic
+	pkgdesc = Desktop widgets for Screenlets
+	pkgver = 0.1.6
+	pkgrel = 3
+	url = https://launchpad.net/indiv-screenlets
+	arch = any
+	license = GPL3
+	makedepends = dos2unix
+	depends = screenlets
+	optdepends = python2-feedparser: Clear Rss Screenlet
+	optdepends = python2-pytz: Freemeteo Weather Screenlet
+	optdepends = python2-pillow: Lipik, Lyrics Screenlets
+	optdepends = python2-numpy: Lipik Screenlet
+	source = https://launchpad.net/indiv-screenlets/trunk/0.1.6/+download/indiv-screenlets-0.1.6.tar.bz2
+	source = https://launchpad.net/indiv-screenlets/trunk/0.1.6/+download/indiv-screenlets-0.1.6.tar.bz2.asc
+	source = drop-gnomevfs.patch
+	source = screenlets-pack-basic-pillow.patch
+	validpgpkeys = D82D1D02396B27DC5045E356A01AFB1B15E8CCA4
+	md5sums = d908308a60eecbee13a21917d36b10bc
+	md5sums = SKIP
+	md5sums = 0ee366b0eafea6b646a7a5f02df2a65c
+	md5sums = 4e30b2ad949e05f2a32770c95f95cd8f
+
+pkgname = screenlets-pack-basic
+
