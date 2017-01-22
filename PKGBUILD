@@ -1,7 +1,7 @@
-# Maintainer: MasterLaser <vaporeon@vaporeon.io>
+# Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=mednaffe-gtk2
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="front-end (GUI) for mednafen emulator (GTK2 Version)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('mednafen' 'gtk2')
 provides=('mednaffe')
 conflicts=('mednaffe')
 source=(https://sites.google.com/site/amatcoder/mednaffe/downloads/mednaffe-$pkgver.tar.gz)
-sha1sums=('e2e5b0dc3e5bb8cc975dfe860e6f4242577d10a4')
+sha1sums=('74a7283522b75eb5dda209595cbe434708fd608f')
 
 build() {
   cd "$srcdir"/mednaffe-$pkgver
