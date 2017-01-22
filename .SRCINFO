@@ -1,0 +1,27 @@
+pkgbase = perl-gstreamer-interfaces
+	pkgdesc = GStreamer::Interfaces
+	pkgver = 0.06
+	pkgrel = 9
+	url = http://search.cpan.org/dist/GStreamer-Interfaces
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = glib-perl
+	depends = gstreamer0.10-base
+	depends = perl-extutils-pkgconfig
+	depends = perl-gstreamer
+	depends = perl-extutils-depends
+	options = !emptydirs
+	source = http://www.cpan.org/authors/id/T/TS/TSCH/GStreamer-Interfaces-0.06.tar.gz
+	md5sums = aa9583a484fa6829935b360887ecda45
+
+pkgname = perl-gstreamer-interfaces
+	depends = glib-perl
+	depends = gstreamer0.10-base
+	depends = perl-extutils-pkgconfig
+	depends = perl-gstreamer
+	depends = perl-extutils-depends
+	depends = perl>=
+	depends = perl<
+
