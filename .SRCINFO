@@ -1,0 +1,27 @@
+pkgbase = perl-gtk2-webkit
+	pkgdesc = Gtk2::WebKit
+	pkgver = 0.09
+	pkgrel = 7
+	url = http://search.cpan.org/dist/Gtk2-WebKit
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = gtk2-perl
+	depends = webkitgtk2
+	depends = perl-extutils-depends
+	depends = perl-extutils-pkgconfig
+	options = !emptydirs
+	source = http://www.cpan.org/authors/id/F/FL/FLORA/Gtk2-WebKit-0.09.tar.gz
+	md5sums = e696fc2b15d6189370e19bce9a9e56f3
+
+pkgname = perl-gtk2-webkit
+	depends = perl
+	depends = gtk2-perl
+	depends = webkitgtk2
+	depends = perl-extutils-depends
+	depends = perl-extutils-pkgconfig
+	depends = perl>=
+	depends = perl<
+
