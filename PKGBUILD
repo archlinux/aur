@@ -1,6 +1,6 @@
 _pkgname=bitbucket
 pkgname=atlassian-${_pkgname}
-pkgver=4.9.1
+pkgver=4.13.0
 pkgrel=1
 pkgdesc="Bitbucket Server"
 url="https://www.atlassian.com/software/${_pkgname}/server"
@@ -40,7 +40,7 @@ package() {
     install -Dm644 "$srcdir/${_pkgname}.sysusers" "$pkgdir/usr/lib/sysusers.d/${_pkgname}.conf"
 }
 
-sha256sums=('cc8833c9f69f9f33f89ca0a7ebd7efe2e604b5e37e1e77f3500c26217dfa6855'
+sha256sums=('c98f343f51f81db6ebb7cf3e84737b07cdc7e919aeb039fa1fe1fe638b69971a'
             'cdba0049a5ed6757aa469baa194383d51664f04f6a17e23e7f7e4935201ce629'
             'd7c7735e2b092b58c89c272ae1afe8122a51d2b8edc5c46ccdd470c29ef1cfc1'
             '4fd916cab8d0004678fca749d45858e265d0ab698b7d3a6de038a62b72a7c17f'
