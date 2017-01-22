@@ -1,0 +1,99 @@
+diff -Naur arista-0.9.7.orig/arista/__init__.py arista-0.9.7/arista/__init__.py
+--- arista-0.9.7.orig/arista/__init__.py	2011-01-24 22:41:29.000000000 +0100
++++ arista-0.9.7/arista/__init__.py	2014-06-08 19:51:38.950314069 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+     Arista Transcoder Library
+diff -Naur arista-0.9.7.orig/arista/inputs/haldisco.py arista-0.9.7/arista/inputs/haldisco.py
+--- arista-0.9.7.orig/arista/inputs/haldisco.py	2011-05-27 17:49:00.000000000 +0200
++++ arista-0.9.7/arista/inputs/haldisco.py	2014-06-08 19:52:09.766980512 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+     Arista Input Device Discovery
+diff -Naur arista-0.9.7.orig/arista/inputs/__init__.py arista-0.9.7/arista/inputs/__init__.py
+--- arista-0.9.7.orig/arista/inputs/__init__.py	2011-06-17 22:46:02.000000000 +0200
++++ arista-0.9.7/arista/inputs/__init__.py	2014-06-08 19:52:12.686980492 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+     Arista Input Device Discovery
+diff -Naur arista-0.9.7.orig/arista/inputs/udevdisco.py arista-0.9.7/arista/inputs/udevdisco.py
+--- arista-0.9.7.orig/arista/inputs/udevdisco.py	2011-05-27 17:49:10.000000000 +0200
++++ arista-0.9.7/arista/inputs/udevdisco.py	2014-06-08 19:52:14.726980475 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+     Arista Input Device Discovery
+diff -Naur arista-0.9.7.orig/arista/presets.py arista-0.9.7/arista/presets.py
+--- arista-0.9.7.orig/arista/presets.py	2011-06-16 02:14:43.000000000 +0200
++++ arista-0.9.7/arista/presets.py	2014-06-08 19:51:42.280314045 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+     Arista Presets
+diff -Naur arista-0.9.7.orig/arista/queue.py arista-0.9.7/arista/queue.py
+--- arista-0.9.7.orig/arista/queue.py	2011-06-17 23:09:48.000000000 +0200
++++ arista-0.9.7/arista/queue.py	2014-06-08 19:51:25.120314168 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+     Arista Queue Handling
+diff -Naur arista-0.9.7.orig/arista/transcoder.py arista-0.9.7/arista/transcoder.py
+--- arista-0.9.7.orig/arista/transcoder.py	2011-06-17 17:09:31.000000000 +0200
++++ arista-0.9.7/arista/transcoder.py	2014-06-08 19:51:47.443647340 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+     Arista Transcoder
+diff -Naur arista-0.9.7.orig/arista/utils.py arista-0.9.7/arista/utils.py
+--- arista-0.9.7.orig/arista/utils.py	2011-06-11 15:59:17.000000000 +0200
++++ arista-0.9.7/arista/utils.py	2014-06-08 19:51:49.763647324 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """
+     Arista Utilities
+diff -Naur arista-0.9.7.orig/arista-gtk arista-0.9.7/arista-gtk
+--- arista-0.9.7.orig/arista-gtk	2011-06-20 16:10:53.000000000 +0200
++++ arista-0.9.7/arista-gtk	2014-06-08 19:51:11.363647601 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ """
+     Arista Desktop Transcoder (GTK+ client)
+diff -Naur arista-0.9.7.orig/arista-transcode arista-0.9.7/arista-transcode
+--- arista-0.9.7.orig/arista-transcode	2011-06-16 02:21:39.000000000 +0200
++++ arista-0.9.7/arista-transcode	2014-06-08 19:51:07.286980965 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # -*- coding: UTF-8 -*-
+ 
+ """
+diff -Naur arista-0.9.7.orig/setup.py arista-0.9.7/setup.py
+--- arista-0.9.7.orig/setup.py	2011-06-20 16:11:26.000000000 +0200
++++ arista-0.9.7/setup.py	2014-06-08 19:50:55.606981050 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import os
+ import sys

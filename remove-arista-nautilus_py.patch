@@ -1,0 +1,11 @@
+diff -Naur arista-0.9.7-orig/setup.py arista-0.9.7/setup.py
+--- arista-0.9.7-orig/setup.py	2011-06-20 16:11:26.000000000 +0200
++++ arista-0.9.7/setup.py	2014-09-20 17:59:52.603607332 +0200
+@@ -25,7 +25,6 @@
+     (os.path.join("share", "doc", "arista"), [
+         "README.md", "LICENSE", "AUTHORS"
+     ]),
+-    (os.path.join("share", "nautilus-python", "extensions"), ["arista-nautilus.py"]),
+ ]
+ 
+ for (prefix, path) in [("arista", "presets"), 

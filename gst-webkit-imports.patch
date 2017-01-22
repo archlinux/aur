@@ -1,0 +1,30 @@
+diff -Naur arista-0.9.7.orig/arista-gtk arista-0.9.7/arista-gtk
+--- arista-0.9.7.orig/arista-gtk	2011-06-20 16:10:53.000000000 +0200
++++ arista-0.9.7/arista-gtk	2014-06-08 19:58:38.190311033 +0200
+@@ -59,12 +59,6 @@
+     pynotify = None
+     _log.info("Unable to import pynotify - desktop notifications disabled")
+ 
+-try:
+-    import webkit
+-except ImportError:
+-    webkit = None
+-    _log.info("Unable to import webkit - in-app documentation disabled")
+-
+ import arista
+ 
+ _ = gettext.gettext
+@@ -2334,6 +2328,13 @@
+     import gst
+     import gst.pbutils
+     
++    # FIXME: if webkit is imported before gst the whole application hangs indefinitely
++    try:
++        import webkit
++    except ImportError:
++        webkit = None
++        _log.info("Unable to import webkit - in-app documentation disabled")
++
+     arista.init()
+     
+     lc_path = arista.utils.get_path("locale", default = "")
