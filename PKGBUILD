@@ -2,13 +2,13 @@
 
 pkgname=capers
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 _commit=90cf1769b8ae935e304994f0f3155c218c42ce39
 pkgdesc='Play checkers against the computer and study draughts games from books'
 arch=('i686' 'x86_64')
 url='http://arton.cunst.net/capers/index.html'
 license=('GPL')
-depends=('pygtk' 'gnome-python')
+depends=('pygtk' 'gnome-python' 'gtk2')
 source=("capers.tar.gz::https://github.com/hungerburg/capers/archive/$_commit.tar.gz"
         'capers.sh')
 sha256sums=('1d5f5be3d9c38d3e36e56e7c6a20a529cf47f047c34b90863ba2f805fbd729a4'
