@@ -1,0 +1,192 @@
+From cd9c9cf9f93bc4043522e5994410bb92cb281209 Mon Sep 17 00:00:00 2001
+From: equinox <equinox@chaos-at-home.org>
+Date: Thu, 30 Jan 2014 22:49:17 +0100
+Subject: [PATCH] fixed usage of deprecated functions listenWith and
+ connectWith
+
+Hi,
+
+Beginning with python twisted 13 the deprecated functions listenWith
+and connectWith were removed. This prevents flumotion from being used
+on current Ubuntu releases and will be unusable with Debian Jessie.
+My attached patch fixes the problem.
+
+regards
+ christian
+
+Signed-off-by: Christian Pointner <equinox@spreadspace.org>
+---
+ flumotion/component/common/streamer/streamer.py   | 12 ++++++------
+ flumotion/component/feed.py                       |  6 ++++--
+ flumotion/component/misc/httpserver/httpserver.py | 10 ++++++----
+ flumotion/component/misc/porter/porter.py         | 18 ++++++++++++------
+ flumotion/job/main.py                             |  5 +++--
+ flumotion/worker/base.py                          |  8 +++++++-
+ flumotion/worker/feedserver.py                    |  8 ++++++--
+ 7 files changed, 44 insertions(+), 23 deletions(-)
+
+diff --git a/flumotion/component/common/streamer/streamer.py b/flumotion/component/common/streamer/streamer.py
+index cc6591f..194c5cb 100644
+--- a/flumotion/component/common/streamer/streamer.py
++++ b/flumotion/component/common/streamer/streamer.py
+@@ -561,9 +561,9 @@ def updatePorterDetails(self, path, username, password):
+                 self._pbclient.stopTrying() # Stop trying to connect with the
+                                             # old connector.
+                 self._pbclient.resetDelay()
+-                reactor.connectWith(
+-                    fdserver.FDConnector, self._porterPath,
+-                    self._pbclient, 10, checkPID=False)
++                c = fdserver.FDConnector(self._porterPath, self._pbclient,
++                                         10, checkPID=False, reactor=reactor)
++                c.connect()
+         else:
+             raise errors.WrongStateError(
+                 "Can't specify porter details in master mode")
+@@ -624,9 +624,9 @@ def do_setup(self):
+ 
+             self.info("Starting porter login at \"%s\"", self._porterPath)
+             # This will eventually cause d to fire
+-            reactor.connectWith(
+-                fdserver.FDConnector, self._porterPath,
+-                self._pbclient, 10, checkPID=False)
++            c = fdserver.FDConnector(self._porterPath, self._pbclient,
++                                     10, checkPID=False, reactor=reactor)
++            c.connect()
+         else:
+             # Streamer is standalone.
+             try:
+diff --git a/flumotion/component/feed.py b/flumotion/component/feed.py
+index 2f23ac2..9646975 100644
+--- a/flumotion/component/feed.py
++++ b/flumotion/component/feed.py
+@@ -135,8 +135,10 @@ def startConnecting(self, host, port, authenticator, timeout=30,
+         """
+         assert self._factory is None
+         self._factory = FeedClientFactory(self)
+-        reactor.connectWith(PassableClientConnector, host, port,
+-                            self._factory, timeout, bindAddress)
++        c = PassableClientConnector(host, port, self._factory, timeout,
++                                    bindAddress, reactor=reactor)
++        c.connect()
++
+         return self._factory.login(authenticator)
+ 
+     def requestFeed(self, host, port, authenticator, fullFeedId):
+diff --git a/flumotion/component/misc/httpserver/httpserver.py b/flumotion/component/misc/httpserver/httpserver.py
+index c83b943..40fe10b 100644
+--- a/flumotion/component/misc/httpserver/httpserver.py
++++ b/flumotion/component/misc/httpserver/httpserver.py
+@@ -408,8 +408,9 @@ def do_setup(self):
+             self._pbclient.startLogin(creds, self._pbclient.medium)
+             self.info("Logging to porter on socketPath %s", self._porterPath)
+             # This will eventually cause d to fire
+-            reactor.connectWith(fdserver.FDConnector, self._porterPath,
+-                self._pbclient, 10, checkPID=False)
++            c = fdserver.FDConnector(self._porterPath, self._pbclient, 10,
++                                     checkPID=False, reactor=reactor)
++            c.connect()
+         else:
+             # File Streamer is standalone.
+             try:
+@@ -500,8 +501,9 @@ def _updatePath(self, path):
+         self._pbclient.stopTrying()
+ 
+         self._pbclient.resetDelay()
+-        reactor.connectWith(fdserver.FDConnector, self._porterPath,
+-                            self._pbclient, 10, checkPID=False)
++        c = fdserver.FDConnector(self._porterPath, self._pbclient, 10,
++                                 checkPID=False, reactor=reactor)
++        c.connect()
+ 
+     def _timeoutRequests(self):
+         self._timeoutRequestsCallLater = None
+diff --git a/flumotion/component/misc/porter/porter.py b/flumotion/component/misc/porter/porter.py
+index 58a30e0..d76c485 100644
+--- a/flumotion/component/misc/porter/porter.py
++++ b/flumotion/component/misc/porter/porter.py
+@@ -323,9 +323,15 @@ def do_setup(self):
+             except OSError:
+                 pass
+ 
+-            self._socketlistener = reactor.listenWith(
+-                fdserver.FDPort, self._socketPath,
+-                serverfactory, mode=self._socketMode)
++            # listenWith is deprecated but the function never did much anyway
++            #
++            # self._socketlistener = reactor.listenWith(
++            #    fdserver.FDPort, self._socketPath,
++            #    serverfactory, mode=self._socketMode)
++            self._socketlistener = fdserver.FDPort(self._socketPath,
++                serverfactory, reactor=reactor, mode=self._socketMode)
++            self._socketlistener.startListening()
++
+             self.info("Now listening on socketPath %s", self._socketPath)
+         except error.CannotListenError:
+             self.warning("Failed to create socket %s" % self._socketPath)
+@@ -350,9 +356,9 @@ def do_setup(self):
+         # appropriate protocol (HTTP, RTSP, etc.)
+         factory = PorterProtocolFactory(self, proto)
+         try:
+-            reactor.listenWith(
+-                fdserver.PassableServerPort, self._port, factory,
+-                    interface=self._interface)
++            p = fdserver.PassableServerPort(self._port, factory,
++                      interface=self._interface, reactor=reactor)
++            p.startListening()
+             self.info("Now listening on interface %r on port %d",
+                       self._interface, self._port)
+         except error.CannotListenError:
+diff --git a/flumotion/job/main.py b/flumotion/job/main.py
+index 4109643..2241df0 100644
+--- a/flumotion/job/main.py
++++ b/flumotion/job/main.py
+@@ -52,8 +52,9 @@ def main(args):
+     log.info('job', 'Connecting to worker on socket %s' % (socket))
+ 
+     job_factory = job.JobClientFactory(avatarId)
+-    reactor.connectWith(fdserver.FDConnector, socket, job_factory,
+-        10, checkPID=False)
++    c = fdserver.FDConnector(socket, job_factory, 10, checkPID=False,
++                             reactor=reactor)
++    c.connect()
+ 
+     reactor.addSystemEventTrigger('before', 'shutdown',
+         job_factory.medium.shutdownHandler)
+diff --git a/flumotion/worker/base.py b/flumotion/worker/base.py
+index 2ed613e..0c9e5d6 100644
+--- a/flumotion/worker/base.py
++++ b/flumotion/worker/base.py
+@@ -183,7 +183,13 @@ def listen(self):
+         # our particular Port, which creates Transports that we know how to
+         # pass FDs over.
+         self.debug("Listening for FD's on unix socket %s", self._socketPath)
+-        port = reactor.listenWith(fdserver.FDPort, self._socketPath, f)
++
++        # listenWith is deprecated but the function never did much anyway
++        #
++        # port = reactor.listenWith(fdserver.FDPort, self._socketPath, f)
++        port = fdserver.FDPort(self._socketPath, f, reactor=reactor)
++        port.startListening()
++
+         self._port = port
+ 
+     ### portal.IRealm method
+diff --git a/flumotion/worker/feedserver.py b/flumotion/worker/feedserver.py
+index c581b6b..e0d7ee1 100644
+--- a/flumotion/worker/feedserver.py
++++ b/flumotion/worker/feedserver.py
+@@ -61,8 +61,12 @@ def listen(self, bouncer, portNum, unsafeTracebacks=0):
+         factory = pb.PBServerFactory(portal,
+                                      unsafeTracebacks=unsafeTracebacks)
+ 
+-        tport = reactor.listenWith(fdserver.PassableServerPort, portNum,
+-                                   factory)
++        # listenWith is deprecated but the function never did much anyway
++        #
++        # tport = reactor.listenWith(fdserver.PassableServerPort, portNum,
++        #                            factory)
++        tport = fdserver.PassableServerPort(portNum, factory, reactor=reactor)
++        tport.startListening()
+ 
+         self._tport = tport
+         self.debug('Listening for feed requests on TCP port %d',
