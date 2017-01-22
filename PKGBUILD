@@ -1,8 +1,8 @@
 # Maintainer: luke bonham <dada [at] archlinux [dot] info>
 
 pkgname=awesome-freedesktop-git
-pkgver=86.a0c6a6b
-pkgrel=1
+pkgver=87.27da971
+pkgrel=2
 pkgdesc="Freedesktop.org menu and desktop icons support for Awesome WM"
 arch=('any')
 url="https://github.com/copycat-killer/awesome-freedesktop"
@@ -22,6 +22,6 @@ pkgver() {
 package() {
   mv awesome-freedesktop freedesktop
   install -dm755 "$pkgdir/usr/share/awesome/lib/freedesktop"
-  rm -rf freedesktop/{wiki,.git*}
+  rm -rf freedesktop/{wiki,.git*,*.rockspec,*TEMPLATE*,*.png}
   cp -a freedesktop "$pkgdir/usr/share/awesome/lib/"
 }
