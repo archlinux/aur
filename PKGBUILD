@@ -1,6 +1,5 @@
-# Maintainer: Jan Holthuis <holthuis.jan@googlemail.com> 
 pkgname=unrarall-git
-pkgver=0.2.r98.g1bcf008
+pkgver=0.4.4.r133.8a67a83
 pkgrel=1
 pkgdesc="unrarall is a utility to unrar and clean up various files (.e.g. rar files)."
 arch=('any')
@@ -20,8 +19,9 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/unrarall"
+  _ver="$(cat unrarall|grep UNRARALL_VERSION=|grep -o "[[:digit:]]*"|paste -sd'.')"
   # Use the tag of the last commit
-  git describe --long | sed -e 's/\([^-]*-\)g/r\1/;s/-/./g' -e 's/^v//'
+  echo "$_ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = unrarall-git
 	pkgdesc = unrarall is a utility to unrar and clean up various files (.e.g. rar files).
-	pkgver = 0.0.0
-	pkgrel = 2
+	pkgver = 0.4.4.r133.8a67a83
+	pkgrel = 1
 	url = https://github.com/arfoll/unrarall
 	arch = any
 	license = GPL3
