@@ -1,0 +1,24 @@
+pkgbase = screenlets
+	pkgdesc = Widget framework that consists of small owner-drawn applications
+	pkgver = 0.1.6
+	pkgrel = 6
+	url = https://launchpad.net/screenlets
+	arch = any
+	license = GPL3
+	depends = python2-beautifulsoup3
+	depends = python2-dbus
+	depends = python2-gconf
+	depends = python2-gnomekeyring
+	depends = python2-rsvg
+	depends = pywebkitgtk
+	depends = python2-wnck
+	depends = python2-xdg
+	optdepends = screenlets-pack-basic: Desktop widgets
+	source = https://launchpad.net/screenlets/trunk/0.1.6/+download/screenlets-0.1.6.tar.bz2
+	source = https://launchpad.net/screenlets/trunk/0.1.6/+download/screenlets-0.1.6.tar.bz2.asc
+	validpgpkeys = D82D1D02396B27DC5045E356A01AFB1B15E8CCA4
+	md5sums = 028ce6b6c8764190d435436d5cbaf68c
+	md5sums = SKIP
+
+pkgname = screenlets
+
