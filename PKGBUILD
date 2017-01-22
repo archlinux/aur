@@ -12,7 +12,7 @@ pkgbase=linux-libre-grsec-xen
 _pkgbasever=4.8-gnu
 _pkgver=4.8.17-gnu
 _grsecver=3.1
-_timestamp=201701121950
+_timestamp=201701151620
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -73,7 +73,7 @@ sha512sums=('728da6c27bd73a41866d37c82bfdc350a3bff59e15291e80a94af9e0b7b4401ea16
             'SKIP'
             'e8e52f5a4ea0a8c78cf9704963710962cfc33e764f3de14359591d5ed656b42212ccd83a20923e3c755375c040e155520aad01d41adebface831b5decc62c08e'
             'SKIP'
-            'e28f26375eba7fa6f9f6a22142d490e9a6d65d4a50f5027f823b515e2c0e3fd303a587d4057d682af8c48bb7ad41c3c36ef4bf001de61f3c378efebcbe73a0a9'
+            '40c94b598768ba10d587095986ab7b33e90d0f12c11d77b4d3ac8d288ffde799f38d59e33c3949f952dbaaa018fc0da651bc2aebfa65747367f3852cda230111'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
