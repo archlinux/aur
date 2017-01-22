@@ -2,12 +2,12 @@
 
 pkgname=emojione-picker-git
 pkgver=0.1.r37.gcb5f504
-pkgrel=3
+pkgrel=4
 pkgdesc='Emoji picker based on icons by Emojione '
 arch=('any')
 url='https://github.com/gentakojima/emojione-picker-ubuntu'
 license=('GPL3;cc-by-4.0')
-depends=('python2' 'python2-gobject')
+depends=('python2' 'python2-gobject' 'libappindicator-gtk3')
 makedepends=('git')
 source=('git+https://github.com/gentakojima/emojione-picker-ubuntu.git')
 sha256sums=('SKIP')
