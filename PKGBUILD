@@ -3,7 +3,7 @@
 
 pkgname=libreoffice-online
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="HTML5-based/cloud-based version of the office suite"
 arch=("x86_64")
 url="https://cgit.freedesktop.org/libreoffice/online/"
@@ -27,15 +27,16 @@ build() {
 	--with-lo-path=/usr/lib/libreoffice \
 	--prefix=/
   #./configure --enable-silent-rules --with-lokit-path=/usr/include/libreoffice --with-lo-path=/usr/lib/libreoffice
-  make
+  BUILDING_FROM_RPMBUILD=yes make
 }
 
 package() {
   cd "${srcdir}/online-${pkgver}-3"
-  make DESTDIR=${pkgdir} install
+  BUILDING_FROM_RPMBUILD=yes make DESTDIR=${pkgdir} install
   install -Dm644 "${srcdir}/loolwsd.service" "${pkgdir}/usr/lib/systemd/system/loolwsd.service"
   mv ${pkgdir}/bin ${pkgdir}/share ${pkgdir}/usr/
   mkdir -p "${pkgdir}/var/lib/lool"
   mkdir -p "${pkgdir}/var/cache/loolwsd"
   mkdir -p "${pkgdir}/var/lib/lool/child-roots"
+  cp -r systemplate "${pkgdir}/var/lib/lool"
 }

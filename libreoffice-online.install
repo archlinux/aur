@@ -1,8 +1,15 @@
 post_install() {
   getent group lool > /dev/null || groupadd -r lool > /dev/null
   getent passwd lool > /dev/null || useradd -g lool lool > /dev/null
+  post_update()
+}
+
+post_update() {
   chown -R lool:lool /var/cache/loolwsd \
-                     /var/lib/lool/child-roots
+                     /var/lib/lool/child-roots \
+                     /var/lib/lool/systemplate
+  setcap cap_fowner,cap_mknod,cap_sys_chroot=ep /usr/bin/loolforkit
+  setcap cap_sys_admin=ep /usr/bin/loolmount
 }
 
 post_remove() {
