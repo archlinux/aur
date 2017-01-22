@@ -1,7 +1,7 @@
 # Maintainer: arch AT nnamuab DOT de
 pkgname=phreeqc
-pkgver=3.3.9
-_pkgsvn=11951
+pkgver=3.3.10
+_pkgsvn=12220
 pkgrel=1
 pkgdesc="A Computer Program for Speciation, Batch-Reaction, One-Dimensional Transport, and Inverse Geochemical Calculations"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ source=("ftp://brrftp.cr.usgs.gov/pub/charlton/phreeqc/phreeqc-$pkgver-$_pkgsvn.
         install.sh
         phreeqc.el
         "https://raw.githubusercontent.com/jaalto/project-emacs--folding-mode/master/folding.el")
-md5sums=('1b6c91b9849aedc5f8e6c7b9d7a57e41'
+md5sums=('c78db4331a9eaa469fcbee36e69a2101'
          '8facd6e784cd1985b2c57c092b753002'
          '0a5486d29b999e52dd8eb1bafd114699'
          'd262512bd4a19a68805914d35f8f9019')
