@@ -4,23 +4,21 @@
 
 pkgname=trustedqsl
 __pkgname=tqsl
-pkgver=2.2.2
-pkgrel=2
+pkgver=2.3
+pkgrel=1
 pkgdesc="QSO log signing data for the ARRL Logbook of The World (LoTW)"
 arch=('i686' 'x86_64')
 url="http://lotw.arrl.org/"
 license=('custom:ARRL')
 depends=('wxgtk2.8' 'curl' 'hamradio-menus')
 makedepends=('cmake')
-provides=('tqsllib')
+provides=('tqsllib' 'trustedqsl')
 conflicts=('trustedqsl-git')
 replaces=('tqsl')
-install=$pkgname.install
 source=(http://www.arrl.org/files/file/LoTW%20Instructions/${__pkgname}-${pkgver}.tar.gz
 	diff.CMakeLists.txt.apps
 	diff.CMakeLists.txt.src
-	$pkgname.desktop
-	$pkgname.install)
+	$pkgname.desktop)
 
 prepare() {
 	cd "$srcdir/${__pkgname}-$pkgver"
@@ -55,13 +53,11 @@ package() {
 
 	rm -rf $pkgdir/usr/include
 }
-md5sums=('3bfd1eb11ea8aadc937d44483850ce93'
+md5sums=('d2b8d7eed62ec9882171d5e2dd8de17f'
          'bbdec5f6ae2d23bb2c74c84df07d2c70'
          '8f401e02bfdefb486bbbeaba58522486'
-         '860b305f9cf6db8cc1c14dc88cef34fc'
-         'f7e1e2722c972f3420cfd69492c79073')
-sha256sums=('3b5ebaba011070722a01819783a47c3661557975693f5355bb2abe1adc170f05'
+         '860b305f9cf6db8cc1c14dc88cef34fc')
+sha256sums=('557a748e90b5462e3abb34ac13c55e42fc2f4249d5b18618157115990478cbbb'
             '84eb4f182e90d6996d687952e82c47c2cc7c8fcd95a4290ef7b8c77b4d7b6e4e'
             '0adb97d5a65701465309b8fed0fe8fbc04400d3342102887f05fddf52d985f87'
-            'cb638467e305f6f9426a22841dbbb4d656a30f48e4c1c27e87dd82890794c167'
-            'f703f8de14eb277dc72cc837086fbd55f5d772049a44200686c8ae76348f6614')
+            'cb638467e305f6f9426a22841dbbb4d656a30f48e4c1c27e87dd82890794c167')
