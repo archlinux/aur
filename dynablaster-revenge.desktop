@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Dynablaster Revenge
+Icon=/usr/share/dynablaster-revenge/data/icons/dynablaster_revenge-256.ico
+Exec=dynablaster-revenge
+Categories=Game;
+Keywords=Bomberman;
