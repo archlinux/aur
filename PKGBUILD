@@ -1,5 +1,5 @@
 pkgname=osvr-core-git
-pkgver=0.2.r2266.g5f987adc
+pkgver=0.2.r2266.g4451c6c7
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
@@ -53,9 +53,6 @@ git merge toastedcrumpets/uvc-camera --no-edit
 
 
 git cherry-pick 3b5e3a6f3132afbdaf251161ba3b3d03c790f45f #disable ignored-attributes warning on gcc
-
-
-git pull toastedcrumpets pull/1/head --no-edit #add libusb.h include
 }
 
 build() {
