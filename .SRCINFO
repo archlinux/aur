@@ -1,7 +1,7 @@
 pkgbase = fotoxx
 	pkgdesc = A program for improving image files made with a digital camera
 	pkgver = 17.01.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.kornelix.net/fotoxx/fotoxx.html
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = fotoxx
 	optdepends = brasero: for burning
 	options = !makeflags
 	source = http://www.kornelix.net/downloads/tarballs/fotoxx-17.01.1.tar.gz
-	md5sums = 14157ef7d424e83f9fe0767c69fac9b4
+	md5sums = d1819d6be5298e531cbce635448805c2
 
 pkgname = fotoxx
 
