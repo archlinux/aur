@@ -11,17 +11,17 @@ license=('custom:Faddeeva' 'custom:Amos')
 depends=('gcc-libs')
 makedepends=('gcc-fortran')
 options=('!emptydirs')
-source=("https://github.com/JuliaLang/openspecfun/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/JuliaLang/openspecfun/archive/v${pkgver}.tar.gz")
 md5sums=('1cb5297bac37519b47962fb288960125')
 
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	make prefix=/usr bindir=/usr/bin libdir=/usr/lib includedir=/usr/include
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make prefix=/usr bindir=/usr/bin libdir=/usr/lib includedir=/usr/include
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	make DESTDIR="$pkgdir" prefix=/usr bindir=/usr/bin libdir=/usr/lib includedir=/usr/include install
-	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="$pkgdir" prefix=/usr bindir=/usr/bin libdir=/usr/lib includedir=/usr/include install
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
