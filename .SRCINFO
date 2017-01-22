@@ -1,0 +1,13 @@
+pkgbase = myanimelist_client
+	pkgdesc = Simple MAL client made on Ruby
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = ruby
+	depends = curl
+	source = https://github.com/Akimoge/myanimelist-client/releases/download/0.1/MyAnimeList_client-0.1.tar.gz
+	md5sums = 4bcf00d0546d2ba481ba7c825bedae05
+
+pkgname = myanimelist_client
+
