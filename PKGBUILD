@@ -1,7 +1,7 @@
 # Maintainer: Malte Rabenseifner <mail@malte-rabenseifner.de>
 
 pkgname=icingaweb2
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Icinga Web 2 Interface"
 license=('GPL')
@@ -13,7 +13,7 @@ optdepends=('php-gd: export data to PDF'
 url="http://www.icinga.org"
 source=("https://github.com/Icinga/${pkgname}/archive/v${pkgver}.tar.gz")
 install='icingaweb2.install'
-sha256sums=('aa8c1b2a0e655aa646045cb39c9db054fcb59bd0cac6751934f5b246aa067696')
+sha256sums=('27150d96a2172d0fa0c77389970052a1bf7aa6553494e80837f6699e96e24bc6')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -24,14 +24,14 @@ package() {
   mkdir -p "$pkgdir/usr/share/webapps/icingaweb2"
   mkdir -p "$pkgdir/var/log/icingaweb2"
 
-  cp -r application doc library modules public bin "$pkgdir/usr/share/webapps/icingaweb2"
+  cp -r application bin doc library modules public "$pkgdir/usr/share/webapps/icingaweb2"
+  cp -r --parents etc/schema "$pkgdir/usr/share/webapps/icingaweb2"
   ln -s /usr/share/webapps/icingaweb2/bin/icingacli "$pkgdir/usr/bin/icingacli"
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/icingaweb2/LICENSE"
   install -Dm644 etc/bash_completion.d/icingacli "$pkgdir/etc/bash_completion.d/icingacli"
-  cp -r etc/schema "$pkgdir/usr/share/icingaweb2"
 
   #chmod 2770 "$pkgdir/etc/webapps/icingaweb2"
   chmod 2770 "$pkgdir/etc/icingaweb2"
-  chmod 750 "$pkgdir/var/log/icingaweb2"
+  chmod 2770 "$pkgdir/var/log/icingaweb2"
 }
