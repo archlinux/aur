@@ -1,16 +1,16 @@
 # based on libfreefare PKGBUILD by James Buckley
 pkgname=libfreefare-git
-pkgver=0.3.5.r441.g14219ab
+pkgver=0.4.0.r507.g295104a
 pkgrel=1
-pkgdesc='Provides a convenient API for MIFARE card manipulations'
+pkgdesc='A convenience API for NFC cards manipulations on top of libnfc'
 arch=('i686' 'x86_64')
-url='http://code.google.com/p/nfc-tools/'
+url='http://nfc-tools.org/index.php?title=Libfreefare'
 license=('LGPL3')
 depends=('libnfc>=1.7.0')
 makedepends=('git')
 provides=('libfreefare')
 conflicts=('libfreefare')
-source=('git+https://code.google.com/p/libfreefare/')
+source=('git+https://github.com/nfc-tools/libfreefare.git')
 sha256sums=('SKIP')
 
 _gitname=libfreefare

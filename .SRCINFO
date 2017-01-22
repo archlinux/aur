@@ -1,8 +1,8 @@
 pkgbase = libfreefare-git
-	pkgdesc = Provides a convenient API for MIFARE card manipulations
-	pkgver = 0.3.5.r441.g14219ab
+	pkgdesc = A convenience API for NFC cards manipulations on top of libnfc
+	pkgver = 0.4.0.r507.g295104a
 	pkgrel = 1
-	url = http://code.google.com/p/nfc-tools/
+	url = http://nfc-tools.org/index.php?title=Libfreefare
 	arch = i686
 	arch = x86_64
 	license = LGPL3
@@ -10,7 +10,7 @@ pkgbase = libfreefare-git
 	depends = libnfc>=1.7.0
 	provides = libfreefare
 	conflicts = libfreefare
-	source = git+https://code.google.com/p/libfreefare/
+	source = git+https://github.com/nfc-tools/libfreefare.git
 	sha256sums = SKIP
 
 pkgname = libfreefare-git
