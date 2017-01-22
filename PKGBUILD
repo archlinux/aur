@@ -3,10 +3,10 @@
 pkgname='python-django-storages'
 _module='django-storages'
 pkgver='1.5.2'
-pkgrel=1
+pkgrel=2
 pkgdesc="Support for many storages (S3, Libcloud, etc) in Django."
 url="https://github.com/jschneier/django-storages"
-depends=('python')
+depends=('python' 'python-django')
 makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
