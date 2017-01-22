@@ -1,0 +1,20 @@
+pkgbase = glslc-git
+	pkgdesc = Command-line GLSL/HLSL to SPIR-V compiler with Clang-compatible arguments
+	pkgver = 323.4fa3150
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/google/shaderc/tree/master/glslc
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python
+	provides = glslc=323.4fa3150
+	conflicts = glslc
+	source = https://github.com/google/shaderc
+	md5sums = SKIP
+
+pkgname = glslc-git
+
