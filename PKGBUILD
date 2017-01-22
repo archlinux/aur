@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-shortcuts
 _gitname=shortcuts-gnome-extension
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Creates a pop-up that describes the commonly used keyboard shortcuts in GNOME Shell"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('gettext')
 options=('!emptydirs')
 install=${pkgname}.install
 source=("https://gitlab.com/paddatrapper/${_gitname}/repository/archive.tar.gz?ref=${pkgver}")
-sha256sums=('b815faf0bac4f24eb70bb72495abfe422af1651333e41b94d6a10fa7b9e18a8b')
+sha256sums=('6e169ba525948e40ca924820912507a98661f7574fdab441b338cfa320c16697')
 
 build() {
   cd "${srcdir}/${_gitname}-${pkgver}"*
