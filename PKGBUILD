@@ -1,30 +1,45 @@
+# Maintainer: not_anonymous <nmlibertarian@gmail.com>
 # Contributor: Johann Klähn <kljohann@gmail.com>
 # Contributor: Vitaliy Berdinskikh ur6lad[at]i.ua
 # Contributor: Ward De Ridder <aur[at]warddr.eu>
-# Maintainer: not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=kochmorse
-_pkgname=KochMorse
-pkgver=0.99.7
-pkgrel=2
-pkgdesc="A easy to use Morse Code trainer using the Koch-method."
-arch=('any')
-url="http://kochmorse.googlecode.com"
+_author=hmatuschek
+pkgver=3.2.2
+pkgrel=1
+pkgdesc="A easy to use Morse Code (Ham Radio) trainer using the Koch-method."
+arch=('i686' 'x86_64')
+url="https://github.com/$_author/$pkgname"
 license=('GPL')
-depends=('pygtk' 'python2-pyalsaaudio' 'desktop-file-utils')
-install=$pkgname.install
-source=($url/files/${_pkgname}-$pkgver.tar.gz)
+depends=('qt5-svg' 'portaudio')
+makedepends=('cmake')
+optdepends=('hamradio-menus: XDG compliant menuing')
+provides=('kochmorse')
+conflicts=('kochmorse-py' 'kochmorse-git')
+source=($url/archive/v$pkgver.tar.gz)
 
 prepare() {
-	cd $srcdir/${_pkgname}-$pkgver/${_pkgname}
+	cd "$srcdir/$pkgname-$pkgver"
+	msg "Preparing sources..."
 
-	sed -i 's:python:python2:' kochmorse.py
+	sed -i -e s:'Teaching;':'Application;HamRadio': shared/$pkgname.desktop
+	sed -i '$ a X-DCOP-ServiceType=none' shared/$pkgname.desktop
+	sed -i '$ a X-KDE-SubstituteUID=false' shared/$pkgname.desktop
+}	
+build() {
+	cd "$srcdir/$pkgname-$pkgver"
+	msg "Starting build..."
+
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RELEASE -DPORTAUDIO_INCLUDE_DIRS=/usr/include
+	make
 }
 
 package() {
-	cd $srcdir/${_pkgname}-$pkgver
+	cd "$srcdir/$pkgname-$pkgver"
+	msg "Starting packaging..."
 
-	python2 setup.py install --root=$pkgdir || return 1
+	make DESTDIR="$pkgdir/" install
 }
-md5sums=('126a74c816b895984a1d8a3ab207aa86')
-sha256sums=('47c43ffeb921ccf83727086b9c98c41a20bf286f3473ed77919d8511b54b0a44')
+
+md5sums=('12a790d10db8e8f0460efa90ab3e02d5')
+sha256sums=('93db5ee28334c9e5c795f4c6e7297375d31e39d09c36448d7d85f22e73428a28')
