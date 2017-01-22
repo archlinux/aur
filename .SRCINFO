@@ -1,0 +1,21 @@
+pkgbase = teensytools-git
+	pkgdesc = GUI and command-line tools to manage Teensy devices
+	pkgver = 0.8.0.r70.ge282172
+	pkgrel = 1
+	url = http://github.com/Koromix/teensytools
+	arch = x86_64
+	arch = i686
+	license = custom:Unlicense
+	makedepends = git
+	makedepends = imagemagick
+	depends = teensyduino
+	depends = libudev.so
+	depends = qt5-base
+	provides = teensytools
+	provides = ty
+	conflicts = ty
+	source = git+https://github.com/Koromix/teensytools.git
+	sha256sums = SKIP
+
+pkgname = teensytools-git
+
