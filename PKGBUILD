@@ -25,7 +25,8 @@ sha1sums=('c6f7b99986f93c9df78653c3e6a3b5043f65145e'
           '929874e10c796b8795e679c44c0c2667c2f4ed8a')
 
 prepare() {
-    patch -p1 < ../colored-emoji.patch
+    cd "$srcdir"
+    patch -p1 -i colored-emoji.patch
 }
 
 build() {
