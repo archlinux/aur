@@ -1,0 +1,22 @@
+pkgbase = audiowaveform-git
+	pkgdesc = Generate waveform data and render waveform images from audio files
+	pkgver = 1.0.12.r1.ge43eb2c
+	pkgrel = 1
+	url = https://github.com/bbc/audiowaveform
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = libmad
+	depends = libsndfile
+	depends = libid3tag
+	depends = gd
+	provides = audiowaveform
+	conflicts = audiowaveform
+	source = git+https://github.com/bbc/audiowaveform.git
+	md5sums = SKIP
+
+pkgname = audiowaveform-git
+
