@@ -4,7 +4,7 @@
 # Contributor: koral <koral at mailoo dot org>
 
 pkgname=nix
-pkgver=1.11.5
+pkgver=1.11.6
 pkgrel=1
 pkgdesc="A purely functional package manager"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('LGPL')
 depends=('perl-www-curl' 'perl-dbd-sqlite' 'gc' 'libsodium')
 makedepends=('bzip2' 'gc' 'openssl')
 source=("https://nixos.org/releases/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('272361d091c735b0e80627fa23fb7c600957472301dd7e54d237069452f3addb')
+sha256sums=('e729d55a9276756108a56bc1cbe2e182ee2e4be2b59b1c77d5f0e3edd879b2a3')
 
 build () {
   cd "$pkgname-$pkgver"
