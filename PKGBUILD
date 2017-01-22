@@ -2,8 +2,8 @@
 
 pkgname=ng-jackspa
 pkgver=1.0
-pkgrel=1
-pkgdesc="A set LADSPA plugin hosts for JACK with several graphical and terminal user interfaces"
+pkgrel=2
+pkgdesc="A set of LADSPA plugin hosts for JACK with graphical and terminal user interfaces"
 arch=('i686' 'x86_64')
 url="https://gna.org/projects/ngjackspa"
 license=('GPL2')
