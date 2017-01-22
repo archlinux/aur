@@ -1,7 +1,7 @@
 # Maintainer: NextHendrix <cjones12@sheffield.ac.uk>
 
 pkgname=tor-browser-hardened
-pkgver=6.5a5
+pkgver=6.5a6
 pkgrel=1
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor (Hardened)'
 url='https://www.torproject.org/projects/torbrowser.html.en'
@@ -11,7 +11,6 @@ depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
 'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
 'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
 optdepends=('zenity: simple dialog boxes'
-'kdebase-kdialog: KDE dialog boxes'
 'gst-plugins-good: h.264 video'
 'gst-libav: h.264 video'
 'libpulse: PulseAudio audio driver'
@@ -28,7 +27,7 @@ source+=("${pkgname}.desktop"
 sha256sums=('145dd2eb75f9823edad5627c35371eb90a1d3d6c7df00d88262697cda11036d3'
             '17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
             '53b8802862bc81c9f701670256dc35a1424de903106d7ece3cc985ccc5f05214')
-sha256sums_x86_64=('350637c2324ee11ccb563d7f058801983722462c29cf87acf727d7a88739b42f'
+sha256sums_x86_64=('03e7107d803af2e8c964980f7cbdb4f18af33e1b07867d8d1084bcede5597189'
                    'SKIP')
 
 noextract_x86_64=("tor-browser-linux64-${pkgver}-hardened_ALL.tar.xz")
