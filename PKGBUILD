@@ -36,7 +36,7 @@ prepare() {
 package() {
   cd "${srcdir}/${_gitname}"
 
-  npm install --user root -g --prefix "${pkgdir}/usr"
+  npm install --cache ../cache --user root -g --prefix "${pkgdir}/usr"
   install -Dm644 "${_gitname,}.service" -t "${pkgdir}/usr/lib/systemd/system" 
 }
 
