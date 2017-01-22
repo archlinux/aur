@@ -5,12 +5,12 @@ After=network.target
 
 [Service]
 Type=simple
-#User=gogs
-#Group=gogs
+User=http
+Group=http
 #WorkingDirectory=/srv/gogs/
-ExecStart=/usr/share/pydio/pydio-booster -c /etc/pydio/pydio.conf
+ExecStart=/usr/share/pydio/pydio-booster -conf /etc/pydio/pydio.conf
 Restart=always
-#Environment=USER=gogs HOME=/home/gogs
+#Environment=USER=http HOME=/
 
 [Install]
 WantedBy=multi-user.target
