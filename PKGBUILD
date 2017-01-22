@@ -2,7 +2,7 @@
 
 pkgname=peerflix-git
 _gitname=peerflix
-pkgver=0.30.0.r0.g1d54f5b
+pkgver=0.36.1.r0.g72b28e6
 pkgrel=1
 pkgdesc="Streaming torrent client for node.js"
 arch=('any')
@@ -25,7 +25,7 @@ package() {
   cd "${srcdir}/${_gitname}"
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_gitname}"
-  npm install --user root -g --prefix "${pkgdir}/usr"
+  npm install --cache ../cache --user root -g --prefix "${pkgdir}/usr"
 }
 
 # vim:set ts=2 sw=2 et:
