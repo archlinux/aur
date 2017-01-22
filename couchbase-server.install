@@ -36,5 +36,5 @@ post_upgrade() {
 
   echo Upgrading couchbase-server-community ...
   echo "  /opt/couchbase/bin/install/cbupgrade -c /opt/couchbase/var/lib/couchbase/config -a yes"
-  /opt/couchbase/bin/install/cbupgrade -c /opt/couchbase/var/lib/couchbase/config -a yes 2>&1
+  python2 /opt/couchbase/bin/install/cbupgrade -c /opt/couchbase/var/lib/couchbase/config -a yes 2>&1
 }

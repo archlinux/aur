@@ -1,7 +1,7 @@
 pkgbase = couchbase-server-community
 	pkgdesc = A document database featuring a powerful query language and unrivaled performance at scale.
-	pkgver = 4.0.0
-	pkgrel = 4
+	pkgver = 4.5.0
+	pkgrel = 1
 	url = http://www.couchbase.com/
 	install = couchbase-server.install
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = couchbase-server-community
 	depends = gcc-libs
 	depends = sqlite
 	depends = openssl
-	depends = libtinfo5
+	depends = ncurses5-compat-libs
 	depends = zlib
-	source = couchbase-server-community-v4.0.0.deb::http://packages.couchbase.com/releases/4.0.0/couchbase-server-community_4.0.0-ubuntu14.04_amd64.deb
+	source = couchbase-server-community-v4.5.0.deb::http://packages.couchbase.com/releases/4.5.0/couchbase-server-community_4.5.0-ubuntu14.04_amd64.deb
 	source = couchbase-server.service
-	md5sums = 950bf7eeebc139c1602d322d675e6d98
+	md5sums = 441cd6928b599d5d8e86df25818c10a9
 	md5sums = d6d13dde7d40fb31e786623f3f16c3c2
 
 pkgname = couchbase-server-community
