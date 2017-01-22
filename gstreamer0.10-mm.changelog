@@ -1,0 +1,15 @@
+2014-11-12 Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+	* package renamed to gstreamer0.10-mm 0.10.11-1
+
+2012-10-28 Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+	* gstreamermm 0.10.11-1
+
+2010-02-02 Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+	* gstreamermm 0.10.10-1
+
+2010-02-02 Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+	* Update to major release 0.10.6
+
+2009-11-07 Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+	* Package moved to [community] as a dependency of subtitleeditor
+	* version 0.10.5

@@ -1,0 +1,16 @@
+pkgbase = gstreamer0.10-mm
+	pkgdesc = C++ interface for GStreamer 0.10
+	pkgver = 0.10.11
+	pkgrel = 2
+	url = http://gstreamer.freedesktop.org/bindings/cplusplus.html
+	changelog = gstreamer0.10-mm.changelog
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = gstreamer0.10-base
+	depends = libxml++
+	source = http://ftp.gnome.org/pub/GNOME/sources/gstreamermm/0.10/gstreamermm-0.10.11.tar.xz
+	sha256sums = 12b5f377363594a69cb79f2f5cd0a8b1813ca6553680c3216e6354cfd682ebc6
+
+pkgname = gstreamer0.10-mm
+
