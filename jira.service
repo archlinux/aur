@@ -21,6 +21,13 @@ $JAVA_OPTS $CATALINA_OPTS \
 -Dcatalina.home=${CATALINA_HOME} \
 -Djava.endorsed.dirs=${JAVA_ENDORSED_DIRS} \
 -Djava.io.tmpdir=${CATALINA_TMPDIR} \
+-Dmail.mime.decodeparameters=true \
+-Dorg.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true \
+-Djava.awt.headless=true \
+-Datlassian.standalone=JIRA \
+-Dorg.dom4j.factory=com.atlassian.core.xml.InterningDocumentFactory \
+-XX:+PrintGCDateStamps \
+-XX:-OmitStackTraceInFastThrow \
 -Djava.util.logging.config.file=${CATALINA_BASE}/conf/logging.properties \
 -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager \
 org.apache.catalina.startup.Bootstrap \
