@@ -61,6 +61,8 @@ build() {
   CFLAGS=${CFLAGS/-pipe/}
   CXXFLAGS=${CXXFLAGS/-pipe/}
 
+  # --disable-linker-build-id: https://bugs.archlinux.org/task/34902
+
   ${srcdir}/gcc-$gccver/configure --prefix=/usr \
       --libdir=/usr/lib \
       --libexecdir=/usr/lib \
@@ -78,7 +80,7 @@ build() {
       --disable-libstdcxx-pch \
       --disable-libssp \
       --enable-gnu-unique-object \
-       --enable-linker-build-id \
+      --disable-linker-build-id \
       --enable-lto \
       --enable-plugin \
       --enable-install-libiberty \
