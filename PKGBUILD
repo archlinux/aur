@@ -20,6 +20,6 @@ package() {
 	gem install myanimelist_client
 	gem install nokogiri
 	gem install json
-	install -Dm777 anime "${pkgdir}/usr/bin/anime"
+	install -Dm755 anime "${pkgdir}/usr/bin/anime"
 	install -Dm644 config.json "${pkgdir}/etc/mal/config.json"
 }
