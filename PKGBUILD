@@ -27,7 +27,7 @@ prepare() {
 package() {
   cd "${srcdir}/${pkgname^}-${pkgver}"
 
-  npm install --user root -g --prefix "${pkgdir}/usr"
+  npm install --cache ../cache --user root -g --prefix "${pkgdir}/usr"
   install -Dm644 "${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
 }
 
