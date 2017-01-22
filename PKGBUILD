@@ -1,14 +1,14 @@
 # AUR/linux-lts-tomoyo PKGBUILD
 # Maintainer: dysphoria <>
 #
-# arch/core/linux-lts $Id: PKGBUILD 282965 2016-12-09 19:16:43Z andyrtr $
+# arch/core/linux-lts $Id: PKGBUILD 287109 2017-01-21 21:56:55Z andyrtr $
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-lts-tomoyo
 _srcname=linux-4.4
-pkgver=4.4.43
+pkgver=4.4.44
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -28,7 +28,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '000017fb4d658c95fff9754b1409952c177fef2567eacb9386c86a4060ab27ff'
+            '43e67f75f28f5c81fc63d53498a33113dbda133fa7cb83be697825f6a8ee761e'
             'SKIP'
             'b11702727b1503e5a613946790978481d34d8ecc6870337fadd3ce1ef084a8e2'
             '68c7296ff2f5f55d69e83aa4d20f925df740b1eb1e6bdb0f13e8a170360ed09f'
@@ -46,10 +46,6 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
-
-  # fix a race condition that allows to gain root
-  # https://marc.info/?l=linux-netdev&m=148054660230570&w=2
-  patch -p1 -i "${srcdir}/fix_race_condition_in_packet_set_ring.diff"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
