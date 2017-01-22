@@ -1,7 +1,7 @@
 pkgbase = pythia8
 	pkgdesc = Generation of high-energy physics events.
 	pkgver = 8.2.19
-	pkgrel = 3
+	pkgrel = 4
 	url = http://home.thep.lu.se/Pythia/
 	arch = i686
 	arch = x86_64
