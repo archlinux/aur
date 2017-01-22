@@ -4,7 +4,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=python-zconfig
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Structured configuration library for python3"
 arch=('i686' 'x86_64')
 url="https://pypi.python.org/pypi/ZConfig"
