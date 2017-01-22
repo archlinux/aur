@@ -7,7 +7,7 @@
 
 pkgbase=linux-git
 _srcname=linux
-pkgver=4.10rc4.r0.g49def1853334
+pkgver=4.10rc5.r0.g7a308bb3016f
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -21,7 +21,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
         "${pkgbase}.preset")
 sha256sums=('SKIP'
             'becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc'
-            'e34b9c4d3046d3515a096f872f515fd4a67f8abe9dae5d87652446e8ac5413a6'
+            '356322a3fbb8c53d9d7002397537aa9614577ded430f27b6bc35793ba2e186f4'
             '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7')
 
 _kernelname=${pkgbase#linux}
@@ -48,6 +48,9 @@ prepare() {
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
+  # get kernel version
+  make prepare
+
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
   #make menuconfig # CLI menu for configuration
@@ -56,12 +59,6 @@ prepare() {
   #make oldconfig # using old config from previous kernel version
   make olddefconfig # old config from previous kernel, defaults for new options
   # ... or manually edit .config
-
-  # get kernel version
-  make prepare
-
-  # rewrite configuration
-  yes "" | make config >/dev/null
 }
 
 build() {
