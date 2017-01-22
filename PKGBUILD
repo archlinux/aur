@@ -7,7 +7,7 @@ pkgver=1.030.02
 pkgrel=1
 pkgdesc="r8101 realtek lan drivers (DKMS)"
 arch=('i686' 'x86_64')
-url="http://realtek.com.tw/"
+url="http://www.realtek.com.tw/"
 license=('GPL2')
 depends=('dkms>=2.2.0.3+git151023-5')
 optdepends=('ethtool: device configuration')
