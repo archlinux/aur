@@ -1,0 +1,25 @@
+pkgbase = perl-gstreamer
+	pkgdesc = Interface to the GStreamer library
+	pkgver = 0.20
+	pkgrel = 3
+	url = http://search.cpan.org/dist/GStreamer
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = glib-perl>=1.180
+	depends = gstreamer0.10
+	depends = perl-extutils-pkgconfig>=1.07
+	depends = perl-extutils-depends>=0.205
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/X/XA/XAOC/GStreamer-0.20.tar.gz
+	md5sums = c848ea3dca4017953755f787dc8add8f
+
+pkgname = perl-gstreamer
+	depends = glib-perl>=1.180
+	depends = gstreamer0.10
+	depends = perl-extutils-pkgconfig>=1.07
+	depends = perl-extutils-depends>=0.205
+	depends = perl>=
+	depends = perl<
+
