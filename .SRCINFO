@@ -1,0 +1,22 @@
+pkgbase = perlpanel
+	pkgdesc = The ideal accompaniment to a light-weight Window Manager such as OpenBox, or a desktop-drawing program like iDesk.
+	pkgver = 20080729
+	pkgrel = 6
+	url = http://savannah.nongnu.org/projects/perlpanel
+	arch = any
+	license = GPL
+	depends = glade-perl
+	depends = gnome-vfs-perl
+	depends = perl-date-manip
+	depends = perl-gnome2-wnck
+	depends = perl-locale-gettext
+	depends = perl-xml-parser
+	depends = perl-xml-simple
+	depends = hicolor-icon-theme
+	source = http://archlinux-stuff.googlecode.com/files/PerlPanel-20080729.tar.gz
+	source = arch.patch
+	md5sums = 8c7b76c4a5447ba4deef34b29bf883b7
+	md5sums = c224817ecd0fa7372b3326a3f8196c3e
+
+pkgname = perlpanel
+
