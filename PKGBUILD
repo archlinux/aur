@@ -9,6 +9,7 @@ arch=(i686 x86_64)
 url='http://ruby-gnome2.sourceforge.jp/'
 license=(LGPL2.1)
 depends=(ruby ruby-glib2=$pkgver ruby-gobject-introspection=$pkgver)
+makedepends=(gobject-introspection)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
