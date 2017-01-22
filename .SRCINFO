@@ -1,0 +1,18 @@
+pkgbase = brother-fax2840
+	pkgdesc = Brother FAX2840 driver
+	pkgver = 1.1.0_1
+	pkgrel = 1
+	url = http://www.brother.com
+	arch = x86_64
+	arch = i686
+	license = custom:Brother
+	depends = perl
+	depends = bash
+	depends = lib32-glibc
+	source = http://download.brother.com/welcome/dlf005728/fax2840cupswrapper-3.0.1-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf005726/fax2840lpr-3.0.1-1.i386.rpm
+	md5sums = a2efd7b93210b0020eb59a0e630ee2f8
+	md5sums = f46b6f7f71ec0e38fe56eb65dca2e65c
+
+pkgname = brother-fax2840
+
