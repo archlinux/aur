@@ -1,0 +1,14 @@
+pkgbase = kiwi
+	pkgdesc = A set of classes and wrappers for PyGTK
+	pkgver = 1.9.29
+	pkgrel = 4
+	url = http://www.async.com.br/projects/kiwi
+	arch = any
+	license = LGPL
+	depends = pygtk
+	options = !emptydirs
+	source = http://download.gnome.org/sources/kiwi/1.9/kiwi-1.9.29.tar.bz2
+	sha256sums = 0ffa912cd180b3092b3ff636c582ab2c40f0f8eb541ada07b1432631a2d49e90
+
+pkgname = kiwi
+
