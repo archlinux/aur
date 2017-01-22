@@ -1,3 +1,3 @@
 #!/bin/bash
 
-electron /usr/lib/riot-desktop/
+electron /usr/lib/riot/
