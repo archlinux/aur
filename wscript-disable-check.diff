@@ -1,0 +1,13 @@
+--- wscript.orig	2017-01-22 16:43:53.239526285 +0100
++++ wscript	2017-01-22 16:44:02.719526022 +0100
+@@ -29,8 +29,8 @@
+                uselib_store='BOOST', mandatory=True)
+     conf.check(header_name='boost/spirit/include/classic_parse_tree.hpp',
+                uselib_store='BOOST', mandatory=True)
+-    conf.check(header_name='boost/spirit/include/classic_utility.hpp',
+-               uselib_store='BOOST', mandatory=True)
++    #conf.check(header_name='boost/spirit/include/classic_utility.hpp',
++    #           uselib_store='BOOST', mandatory=True)
+     conf.check(header_name='boost/spirit/include/classic_ast.hpp',
+                uselib_store='BOOST', mandatory=True)
+ 
