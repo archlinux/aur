@@ -1,8 +1,9 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
+# Contributor: Benjamin Asbach <archlinux-aur.lxd@impl.it>
 
 pkgname=lxd
 pkgver=2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="REST API, command line tool and OpenStack integration plugin for LXC."
 arch=('x86_64')
 url="https://github.com/lxc/lxd"
@@ -53,7 +54,8 @@ package() {
   install=lxd.install
 
   mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/lib/lxd/"
+  mkdir -p "$pkgdir/usr/lib/lxd"
+  mkdir -p "$pkgdir/usr/share/bash-completion/completions"
 
   install -p -m755 "$srcdir/bin/"* "$pkgdir/usr/bin"
 
@@ -68,8 +70,10 @@ package() {
   install -D -m644 "${srcdir}/lxd.service" \
       "${pkgdir}/usr/lib/systemd/system/lxd.service"
 
+  # Bash completions
+  install -p -m755 "$srcdir/$pkgname-$pkgname-$pkgver/config/bash/lxd-client" "$pkgdir/usr/share/bash-completion/completions/lxc"
 
-  # Example configuration files.
+  # Example configuration files
   mkdir -p "$pkgdir/usr/share/lxd/"
   mkdir -p "$pkgdir/usr/share/lxd/systemd/system/"
   mkdir -p "$pkgdir/usr/share/lxd/netctl/"
