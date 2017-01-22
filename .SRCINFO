@@ -1,0 +1,24 @@
+pkgbase = wxgtk2.8
+	pkgdesc = GTK+ implementation of wxWidgets API for GUI
+	pkgver = 2.8.12.1
+	pkgrel = 4
+	url = http://wxwidgets.org
+	arch = i686
+	arch = x86_64
+	license = custom:wxWindows
+	makedepends = gstreamer0.10-base-plugins
+	makedepends = gconf
+	makedepends = glu
+	depends = gtk2
+	depends = gstreamer0.10-base
+	depends = sdl
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/wxpython/wxPython-src-2.8.12.1.tar.bz2
+	source = wxGTK-collision.patch
+	source = make-abicheck-non-fatal.patch
+	sha1sums = 05688dc03d61631750f5904273122bb40a2115f5
+	sha1sums = 75d2292a0058570aa6071b4bee6eef69e47f1208
+	sha1sums = dfe38650c655395b90bf082b5734c4093508bfa3
+
+pkgname = wxgtk2.8
+
