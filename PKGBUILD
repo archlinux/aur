@@ -18,7 +18,7 @@ _gitname=Genesis-Plus-GX
 source=("git+https://github.com/libretro/${_gitname}.git"
         "https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
 md5sums=('SKIP'
-         'ac4e4f3c7f0e3f94abb969b9a9d24609')
+         'SKIP')
 
 pkgver() {
   cd "${_gitname}"
