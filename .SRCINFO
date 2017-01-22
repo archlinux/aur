@@ -1,0 +1,16 @@
+pkgbase = pywebkitgtk
+	pkgdesc = Python bindings to the WebKit GTK+ port
+	pkgver = 1.1.8
+	pkgrel = 3
+	url = http://code.google.com/p/pywebkitgtk/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = webkitgtk2
+	depends = pygtk
+	options = !makeflags
+	source = http://pywebkitgtk.googlecode.com/files/pywebkitgtk-1.1.8.tar.gz
+	md5sums = 158335385354ba38090c9324b37bf225
+
+pkgname = pywebkitgtk
+
