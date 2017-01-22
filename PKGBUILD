@@ -3,12 +3,12 @@
 _pkgname=libfm-qt
 pkgname=$_pkgname-git
 pkgver=0.11.1.8.g4556a9b
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt port of libfm, a library providing components to build desktop file managers'
 arch=('i686' 'x86_64')
 url='https://github.com/lxde/libfm-qt'
 license=('LGPL')
-depends=('qt5-x11extras' 'libfm>=1.2.0')
+depends=('qt5-x11extras' 'libfm')
 makedepends=('git' 'cmake' 'qt5-tools' 'lxqt-build-tools-git')
 provides=("$_pkgname")
 conflicts=("$_pkgname" 'pcmanfm-qt<=0.10.0')
