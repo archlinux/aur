@@ -47,7 +47,7 @@ build() {
 
 package() {
 	mkdir -p $pkgdir/usr/lib/zim
-	cp -r $srcdir/$_gitname/* $pkgdir/usr/lib/zim
+	rsync -ar --exclude=.git $srcdir/$_gitname/ $pkgdir/usr/lib/zim
 
 	mkdir -p $pkgdir/etc
 	cp -r $srcdir/etc/zsh $pkgdir/etc
