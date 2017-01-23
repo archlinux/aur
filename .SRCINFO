@@ -1,0 +1,29 @@
+pkgbase = ros-jade-carrot-planner
+	pkgdesc = ROS - This planner attempts to find a legal place to put a carrot for the robot to follow.
+	pkgver = 1.12.7
+	pkgrel = 1
+	url = http://wiki.ros.org/carrot_planner
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-jade-nav-core
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-base-local-planner
+	makedepends = ros-jade-costmap-2d
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-tf
+	makedepends = ros-jade-pluginlib
+	makedepends = eigen3
+	depends = ros-jade-nav-core
+	depends = ros-jade-roscpp
+	depends = ros-jade-base-local-planner
+	depends = ros-jade-costmap-2d
+	depends = ros-jade-tf
+	depends = ros-jade-pluginlib
+	depends = eigen3
+	source = navigation-release-release-jade-carrot_planner.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/jade/carrot_planner.tar.gz
+	sha256sums = 20d76ccea22143f38038452f8a0ed9dec92bc3123d33040f431085a7246e4d2e
+
+pkgname = ros-jade-carrot-planner
+
