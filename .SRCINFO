@@ -1,8 +1,8 @@
 pkgbase = sconsify
 	pkgdesc = CLI Spotify client
 	pkgver = 0.3.0
-	pkgrel = 1
-	url = www.sconsify.org
+	pkgrel = 2
+	url = http://www.sconsify.org
 	arch = x86_64
 	license = Apache
 	depends = portaudio

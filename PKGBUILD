@@ -1,10 +1,10 @@
 # Maintainer: Andrew Walls <andrew.walls2 (at) gmail.com>
 pkgname=sconsify
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI Spotify client"
 arch=('x86_64')
-url="www.sconsify.org"
+url="http://www.sconsify.org"
 license=('Apache')
 depends=('portaudio' 'libspotify')
 source=("https://github.com/fabiofalci/sconsify/releases/download/v$pkgver/linux-x86_64-sconsify-$pkgver.zip")
