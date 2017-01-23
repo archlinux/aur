@@ -2,9 +2,10 @@
 basename="fxsdk"
 pkgname="$basename-git"
 pkgver=r9.e4bde46
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to program for the Casio fx9860 calculators"
 arch=("i686" "x86_64")
+provides=("fxsdk")
 source=("git+http://git.planet-casio.com/lephe/$basename.git")
 md5sums=("SKIP")
 
