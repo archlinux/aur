@@ -1,9 +1,9 @@
 # Maintainer: Raimar Buehmann (raimar)
 
 pkgname=lxtask-git
-pkgver=0.1.7.r409.20160221
+pkgver=0.1.7.r410.20170121
 pkgrel=1
-pkgdesc="Task manager and system monitor for LXDE"
+pkgdesc="Lightweight X11 task manager and system monitor for LXDE"
 arch=('i686' 'x86_64')
 license=('GPL2')
 groups=('lxde-git')
@@ -14,7 +14,7 @@ conflicts=('lxtask')
 replaces=('lxtask' 'lxtask-git=20120117-1')
 url="http://lxde.org/"
 source=(
-	$pkgname::git+http://git.lxde.org/git/lxde/lxtask.git
+	$pkgname::git+https://git.lxde.org/git/lxde/lxtask.git
 #	$pkgname::git+git://git.lxde.org/git/lxde/lxtask.git
 	Added-key-binding-Del-to-terminate-and-Shift-Del-to-kill-task.patch
 	Changed-default-button-for-terminate-to-Yes.patch

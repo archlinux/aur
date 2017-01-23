@@ -1,6 +1,6 @@
 pkgbase = lxtask-git
-	pkgdesc = Task manager and system monitor for LXDE
-	pkgver = 0.1.7.r409.20160221
+	pkgdesc = Lightweight X11 task manager and system monitor for LXDE
+	pkgver = 0.1.7.r410.20170121
 	pkgrel = 1
 	url = http://lxde.org/
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = lxtask-git
 	conflicts = lxtask
 	replaces = lxtask
 	replaces = lxtask-git=20120117-1
-	source = lxtask-git::git+http://git.lxde.org/git/lxde/lxtask.git
+	source = lxtask-git::git+https://git.lxde.org/git/lxde/lxtask.git
 	source = Added-key-binding-Del-to-terminate-and-Shift-Del-to-kill-task.patch
 	source = Changed-default-button-for-terminate-to-Yes.patch
 	sha256sums = SKIP
