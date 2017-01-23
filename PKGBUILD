@@ -11,7 +11,7 @@ url='http://gambitscheme.org/'
 license=('LGPL2.1' 'Apache')
 depends=('bash')
 options=('staticlibs')
-source=("http://www.iro.umontreal.ca/~${pkgname%-c}/download/${pkgname%-c}/v${pkgver%.*}/source/${pkgname/-c/-v}${pkgver//./_}-devel.tgz")
+source=("https://www.iro.umontreal.ca/~${pkgname%-c}/download/${pkgname%-c}/v${pkgver%.*}/source/${pkgname/-c/-v}${pkgver//./_}-devel.tgz")
 sha256sums=('1404a7b83b2943072ccdb24ffeb878e5fc52ddeceedd1d3d107993a426caa66a')
 
 build() {
