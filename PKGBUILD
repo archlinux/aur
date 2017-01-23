@@ -5,7 +5,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=45.6.0
+pkgver=45.7.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox
         mozilla-1245076-1.patch
         no-libnotify.patch
         harfbuzz-1.1.3-fixed.patch.gz)
-sha256sums=('c1e7ddf6efb0f54c8071131b6395f4942a422c2ab70f2e9a81b588373d6fbf5b'
+sha256sums=('4b5610691d32b77dd0dec25902f0d19e530c184cedc11babb530621cbdd33143'
             '21ef71942681206c650862215543f35fd0ceaed362d93d6f9c30f7a24fb204b4'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
