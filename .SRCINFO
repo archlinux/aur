@@ -1,0 +1,26 @@
+pkgbase = ros-jade-move-slow-and-clear
+	pkgdesc = ROS - move_slow_and_clear.
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = http://wiki.ros.org/move_slow_and_clear
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-jade-nav-core
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-geometry-msgs
+	makedepends = ros-jade-costmap-2d
+	makedepends = ros-jade-cmake-modules
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-pluginlib
+	depends = ros-jade-nav-core
+	depends = ros-jade-geometry-msgs
+	depends = ros-jade-pluginlib
+	depends = ros-jade-roscpp
+	depends = ros-jade-costmap-2d
+	source = ros-jade-move-slow-and-clear-1.13.1-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/jade/move_slow_and_clear/1.13.1-0.tar.gz
+	sha256sums = 87235627b2328f52dcf1d5a4e36f3d449d8fca4924f62749ee55c904f56e1a0b
+
+pkgname = ros-jade-move-slow-and-clear
+
