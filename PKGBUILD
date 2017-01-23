@@ -149,7 +149,6 @@ _core_configure_options="\
                  -opensource \
                  -v \
                  -silent \
-                 -c++std 14 \
                  -release \
                  -fontconfig \
                  -system-freetype \
