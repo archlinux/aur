@@ -2,7 +2,7 @@
 
 pkgname='persepolis'
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical front-end for aria2 download manager with lots of features."
 arch=('any')
 url="https://persepolisdm.github.io/"
@@ -12,7 +12,7 @@ optdepends=('firefox-flashgot: for integrating with firefox.')
 provides=("${pkgname}" "persepolis")
 conflicts=("${pkgname}" "persepolis")
 source=("${pkgname}.tar.gz::https://github.com/persepolisdm/persepolis/archive/${pkgver}.tar.gz")
-md5sums=('4aeb796efcc0f3527df5b042c01352e6')
+sha256sums=('2d52fd03b2a98bedd2b6d57401422f42deb15dc63e52bc7384816f6ba289e8bd')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
