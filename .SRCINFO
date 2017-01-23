@@ -1,0 +1,21 @@
+pkgbase = ros-jade-move-base-msgs
+	pkgdesc = ROS - Holds the action description and relevant messages for the move_base package.
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = http://wiki.ros.org/move_base_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-actionlib-msgs
+	makedepends = ros-jade-geometry-msgs
+	depends = ros-jade-actionlib-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-geometry-msgs
+	source = ros-jade-move-base-msgs-1.13.0-0.tar.gz::https://github.com/ros-gbp/navigation_msgs-release/archive/release/jade/move_base_msgs/1.13.0-0.tar.gz
+	sha256sums = 7eaa1bde5c221cdba0f29f176605a0626efae3d9c2172e5133a44e90b76e6c05
+
+pkgname = ros-jade-move-base-msgs
+
