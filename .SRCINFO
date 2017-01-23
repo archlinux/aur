@@ -1,0 +1,16 @@
+pkgbase = autorlogin-git
+	pkgdesc = A wrapper around rlogin to restart it upon connection loss
+	pkgver = 1.d30d2d2
+	pkgrel = 1
+	url = none
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	provides = autorlogin
+	conflicts = autorlogin
+	source = git+https://bitbucket.org/calcmogul/autorlogin
+	md5sums = SKIP
+
+pkgname = autorlogin-git
+
