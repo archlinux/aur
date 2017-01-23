@@ -4,33 +4,31 @@
 
 pkgname=utox
 _pkgname=uTox
-pkgver=0.9.8
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='Lightweight Tox client'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
-url="https://github.com/GrayHatter/uTox"
-license=('GPL3')
-depends=('desktop-file-utils'
-         'fontconfig'
+url="https://github.com/uTox/uTox"
+license=('GPL3' 'MIT')
+depends=('fontconfig'
          'libfilteraudio'
-         'hicolor-icon-theme'
-         'libdbus'
          'libxext'
          'libxrender'
          'openal'
          'toxcore'
          'v4l-utils')
-optdepends=('gtk3: GTK file picker')
-makedepends=('toxcore')
-source=("https://github.com/GrayHatter/$_pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('5e33ec8500a70ea2bd468881b2eec5d7f6adb112a64a9fdc5e6e3ff6f9c20e8e')
+optdepends=('gtk3: GTK file picker' 'libdbus: Notification support')
+makedepends=('toxcore>=0.1.0')
+source=("https://github.com/uTox/$_pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('091b84768ea96eea7b12e0017c77f9015a7e3a105f5451f33f906af14b498de7')
 
 build() {
   cd "$_pkgname-$pkgver"
+  CFLAGS="-Wl,-z,noexecstack" cmake . -DCMAKE_BUILD_TYPE=Release -DENABLE_ASAN=OFF -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
   cd "$_pkgname-$pkgver"
-  make PREFIX=/usr DESTDIR="$pkgdir" install
+  make PREFIX="/usr" DESTDIR="$pkgdir" install
 }
