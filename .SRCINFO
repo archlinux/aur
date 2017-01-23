@@ -1,0 +1,17 @@
+pkgbase = ros-jade-voxel-grid
+	pkgdesc = ROS - voxel_grid provides an implementation of an efficient 3D voxel grid.
+	pkgver = 1.12.7
+	pkgrel = 1
+	url = http://wiki.ros.org/voxel_grid
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	depends = ros-jade-roscpp
+	source = ros-jade-voxel-grid-1.12.7-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/jade/voxel_grid/1.12.7-0.tar.gz
+	sha256sums = SKIP
+
+pkgname = ros-jade-voxel-grid
+
