@@ -1,13 +1,13 @@
 # Maintainer: Chris Nixon <chris.nixon@sigma.me.uk>
 pkgname=ripgrep-git
-pkgver=0.1.17.2.rf5eb36b
+pkgver=0.1.2.6.rb678862
 pkgrel=1
 pkgdesc="A search tool that combines the usability of The Silver Searcher with the raw speed of grep."
 arch=('i686' 'x86_64')
 url="https://github.com/BurntSushi/ripgrep"
 license=('UNLICENSE' 'MIT')
 provides=("ripgrep")
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 conflicts=('ripgrep')
 source=("$pkgname::git+https://github.com/BurntSushi/ripgrep")
 sha1sums=('SKIP')
@@ -28,7 +28,7 @@ build() {
 pkgver() {
   cd "$pkgname"
   # Get the first part of the latest tag and append the current revision
-  echo "$(git describe --long --tags | sed 's/\(^.*\)-.*.*/\1/;s/-/./g').r$(git log --pretty=format:'%h' -n 1)"
+  echo "$(git describe --long --tags | sed 's/^[a-zA-Z]*[.-]*\(.*\)-.*.*/\1/;s/-/./g').r$(git log --pretty=format:'%h' -n 1)"
 }
 
 package() {
