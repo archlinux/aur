@@ -1,6 +1,4 @@
 post_install() {
-#    xdg-icon-resource forceupdate
-#    update-desktop-database -q
     echo
     echo
     echo -e "\t                        GAME NOTES"
@@ -14,11 +12,9 @@ post_install() {
     echo
     echo
 
-} 
+}
 
 post_upgrade() {
-#    xdg-icon-resource forceupdate
-#    update-desktop-database -q
     echo
     echo "Thanks for using my pkg :)"
     echo

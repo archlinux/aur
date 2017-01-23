@@ -1,6 +1,6 @@
 # Maintainer: Fabian <plusfabi[AT+thegoogleadress]>
 pkgname=pokemon-revolution-online-bin
-pkgver=0.95.8.20161201MERRYCHRISTMAS
+pkgver=0.95.9.20170123
 pkgrel=1
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
@@ -22,14 +22,14 @@ package() {
 
     # Variables
     ## i know this isnt a good thing and nobody wants to see this on aur, but itll make things easier for me #Fabian
-    ## directory files naming is usually VNAMING_Date, binary VNAMING.x86_64 
+    ## directory files naming is usually VNAMING_Date, binary VNAMING.x86_64
     __VNAMING="PROLinux64" ##like PROLinux95_45_data, PROLinux95_45.x86_64
-    
+
     __DLDIR=$(xdg-user-dir DOWNLOAD) ##downloaddirectory
     __DDLA="http://tiny.cc/PROLinux" ##download link
-    __DDLFN="PROXmasLinux.zip" ##filename
-    __DDLFMD5="6ee28befaee8a13a564bfc8fd28f1a9f" #md5sum
-    
+    __DDLFN="PROLinuxPikachu.zip" ##filename
+    __DDLFMD5="b614a0c9722808105e4a1ed5d8be152f" #md5sum
+
     ## "Something's missing"? -> No One Cares - Atreyu c;
     if [ ! -f ${__DLDIR}/${__DDLFN} ]; then
     {
@@ -39,8 +39,8 @@ package() {
     }
     fi
     ## lets check the md5sum
-    if [ "$(md5sum ${__DLDIR}/${__DDLFN} | awk '{print $1}')" != "${__DDLFMD5}" ]; then 
-    { 
+    if [ "$(md5sum ${__DLDIR}/${__DDLFN} | awk '{print $1}')" != "${__DDLFMD5}" ]; then
+    {
         echo "${__DLDIR}/${__DDLFN} MD5 MISMATCH, please remove the old file before downloading"
         echo "rm \"${__DLDIR}/${__DDLFN}\""
         echo "Download: ${__DDLA}"
@@ -48,17 +48,17 @@ package() {
         echo "maybe this pkgbuild is out-of-date. please report this:"
         echo "https://aur.archlinux.org/packages/pokemon-revolution-online-bin/"
         exit 1
-    } 
+    }
     fi
-    
+
     #bsdtar -x -p -f "${__DLDIR}/${__DDLFN}"
-    ## we're using unzip for now, since bsdtar cant handle the zip file 
+    ## we're using unzip for now, since bsdtar cant handle the zip file
     ## bsdtar: Invalid central directory signature
     ## bsdtar: Error exit delayed from previous errors.
     unzip "${__DLDIR}/${__DDLFN}"
-    
+
     # CREATE FOLDERS
-    ## copy the folderstructure of the original without content.    
+    ## copy the folderstructure of the original without content.
     /usr/bin/find "." -type d -exec \
         install -d -m755 "${pkgdir}/opt/Pokemon Revolution/{}" \;
 
@@ -82,7 +82,7 @@ package() {
     /usr/bin/sed -i "s/GAMEEXECPATHSETBYPKGBUILD/\/usr\/bin\/pokemonrevolution/" "${srcdir}/net.pokemon-revolution-online.desktop"
     ## let's Install the *.desktop file
     install -D -m644 "${srcdir}/net.pokemon-revolution-online.desktop" \
-    "${pkgdir}/usr/share/applications/net.pokemon-revolution-online.desktop" 
+    "${pkgdir}/usr/share/applications/net.pokemon-revolution-online.desktop"
 
     # START SCRIPT
     ## set the correct directory

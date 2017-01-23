@@ -1,6 +1,6 @@
 pkgbase = pokemon-revolution-online-bin
 	pkgdesc = A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games.
-	pkgver = 0.95.8.20161201MERRYCHRISTMAS
+	pkgver = 0.95.9.20170123
 	pkgrel = 1
 	url = http://pokemon-revolution-online.net
 	install = INSTALL
