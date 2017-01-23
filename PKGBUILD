@@ -1,7 +1,7 @@
 # Maintainer:  benutzer193 <registerbn+arch a_t gmail d_ot com>
 pkgname=flips-git
 _pkgname='Flips'
-pkgver=r21.45de4fb
+pkgver=r24.8357fd9
 pkgrel=1
 pkgdesc="Patcher for IPS and BPS files"
 arch=('any')
