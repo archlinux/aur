@@ -1,7 +1,7 @@
 pkgbase = vaudtax
 	pkgdesc = VaudTax
 	pkgver = 2016
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.vd.ch/themes/etat-droit-finances/impots/vaudtax/
 	arch = i686
 	arch = x86_64
