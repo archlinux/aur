@@ -3,7 +3,7 @@
 
 pkgname=netbeans-javaee
 pkgver=8.2
-pkgrel=4
+pkgrel=5
 pkgdesc='Netbeans IDE for Java EE'
 arch=('any')
 
@@ -30,8 +30,6 @@ sha512sums=(
 )
 
 prepare() {
-    cd "${srcdir}"
-
     # The zip file comes with files for other OS as well, let's remove them.
     rm $(find -name '*\.exe' -or -name '*\.bat' -or -name '*\.dll')
     rm -r $(find -name 'MacOSX*' -or -name 'Windows*' -or -name 'SunOS*' -or -name 'FreeBSD*')
