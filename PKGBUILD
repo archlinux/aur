@@ -1,28 +1,26 @@
 # Maintainer: luke bonham <dada [at] archlinux [dot] info>
 
 pkgname=lain-git
-pkgver=1454.7e4175f
-pkgrel=1
+pkgcom=1454
+pkgsha=7e4175f
+pkgver=$pkgcom.$pkgsha
+pkgrel=2
 pkgdesc="Layouts, Utilities and Widgets for Awesome WM"
 arch=('any')
 url="https://github.com/copycat-killer/lain"
 license=('GPL2')
 depends=('awesome')
-optdepends=('curl: for IMAP and weather widgets')
+optdepends=('curl: for widgets accessing network resources')
 makedepends=('git')
 provides=('lain')
 conflicts=('lain')
 source=("git://github.com/copycat-killer/lain.git")
 md5sums=('SKIP')
 
-pkgver() {
-  cd lain
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 package() {
   install -dm755 "$pkgdir/usr/share/awesome/lib/lain"
-  rm -r lain/{wiki,.git*}
+  git --git-dir=lain/.git --work-tree=lain/ reset --hard $pkgsha --quiet
+  rm -rf lain/{wiki,.git*,*.rockspec,*TEMPLATE*}
   cp -a lain "$pkgdir/usr/share/awesome/lib/"
 
   # Fix permissions
