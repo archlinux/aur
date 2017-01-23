@@ -1,9 +1,8 @@
 pkgbase = netbeans-javaee
 	pkgdesc = Netbeans IDE for Java EE
 	pkgver = 8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://netbeans.org
-	install = netbeans-javaee.install
 	arch = any
 	license = CDDL
 	makedepends = gendesk

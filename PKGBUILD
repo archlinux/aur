@@ -3,7 +3,7 @@
 
 pkgname=netbeans-javaee
 pkgver=8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Netbeans IDE for Java EE'
 arch=('any')
 
@@ -15,7 +15,6 @@ depends=('java-environment' 'ttf-font' 'libxtst' 'giflib' 'atk')
 provides=('netbeans')
 conflicts=('netbeans')
 
-install=${pkgname}.install
 options=(!strip)
 
 # src.: https://netbeans.org/downloads/zip.html
