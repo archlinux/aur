@@ -1,7 +1,7 @@
 pkgbase = build-generator-stable-git
 	pkgdesc = Generates jobs on a Jenkins server according to specifications
-	pkgver = 0.8.4.415573d
-	pkgrel = 2
+	pkgver = 0.9.1.aa4a9e4
+	pkgrel = 1
 	url = https://projects.cor-lab.org/projects/build-generator
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = build-generator-stable-git
 	provides = build-generator
 	conflicts = build-generator
 	options = !strip
-	source = build-generator::git+https://code.cor-lab.org/git/build-generator#branch=0.8
+	source = build-generator::git+https://code.cor-lab.org/git/build-generator#branch=0.9
 	source = configuration-options::git+https://github.com/scymtym/configuration.options
 	source = parser::git+https://github.com/scymtym/parser.ini
 	source = rosetta::git+https://code.cor-lab.org/git/rosetta.git.cl

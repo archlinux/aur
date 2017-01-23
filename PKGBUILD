@@ -1,8 +1,8 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname='build-generator-stable-git'
-pkgver=0.8.4.415573d
-pkgrel=2
+pkgver=0.9.1.aa4a9e4
+pkgrel=1
 pkgdesc='Generates jobs on a Jenkins server according to specifications'
 arch=('i686' 'x86_64')
 url='https://projects.cor-lab.org/projects/build-generator'
@@ -10,7 +10,7 @@ license=('LGPL3')
 depends=('openssl' 'git' 'subversion' 'unp' 'mercurial' 'lsb-release' 'graphviz')
 makedepends=('git' 'cmake' 'sbcl' 'cl-launch')
 options=("!strip")
-source=("build-generator::git+https://code.cor-lab.org/git/build-generator#branch=0.8"
+source=("build-generator::git+https://code.cor-lab.org/git/build-generator#branch=0.9"
         "configuration-options::git+https://github.com/scymtym/configuration.options"
         "parser::git+https://github.com/scymtym/parser.ini"
         "rosetta::git+https://code.cor-lab.org/git/rosetta.git.cl"
