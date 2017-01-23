@@ -2,7 +2,7 @@
 pkgname=vaudtax
 pkgver=2016
 _pkgver=1.0.1-production
-pkgrel=1
+pkgrel=2
 pkgdesc="VaudTax"
 url="http://www.vd.ch/themes/etat-droit-finances/impots/vaudtax/"
 depends=('webkitgtk2' 'jre8-openjdk' 'gnome-vfs')
@@ -31,7 +31,7 @@ package() {
 	install -D -m644 version.xml "${pkgdir}${_app_home}/version.xml"
 
 	cp ${pkgname}-${pkgver} "${pkgdir}"${_app_home}/bin/${pkgname}
-	ln -s "${pkgdir}"${_app_home}/bin/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
+	ln -s ${_app_home}/bin/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 }
 md5sums=('caa0e1a0e46823fc83de03e38ed23aef'
          '50de86f022910871d336571832e5f810')
