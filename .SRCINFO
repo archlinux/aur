@@ -1,0 +1,18 @@
+pkgbase = vaudtax
+	pkgdesc = VaudTax
+	pkgver = 2016
+	pkgrel = 1
+	url = http://www.vd.ch/themes/etat-droit-finances/impots/vaudtax/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = webkitgtk2
+	depends = jre8-openjdk
+	depends = gnome-vfs
+	source = https://vaudtax-dl.vd.ch/vaudtax2016/telechargement/linux/VaudTax_2016.tar.gz
+	source = execute_from_usr_share.patch
+	md5sums = caa0e1a0e46823fc83de03e38ed23aef
+	md5sums = 50de86f022910871d336571832e5f810
+
+pkgname = vaudtax
+
