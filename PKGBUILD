@@ -3,7 +3,7 @@
 
 pkgname=dnscrypt-proxy-git
 _pkgname=dnscrypt-proxy
-pkgver=1.9.3.2307.ed45dd5
+pkgver=1.9.4.2355.d6b61d9
 pkgrel=1
 pkgdesc="Is a protocol for securing communications between a client and a DNS resolver"
 arch=('i686' 'x86_64')
@@ -24,8 +24,10 @@ pkgver() {
 prepare() {
  cd ${srcdir}/${_pkgname}
   sed -e 's|^ExecStart=.*|ExecStart=/usr/bin/dnscrypt-proxy /etc/dnscrypt-proxy.conf|' \
-         -i dnscrypt-proxy.service
+         -i dnscrypt-proxy.service.in
   sed -e 's|python|python2|' -i contrib/generate-domains-blacklist.py
+  sed -e 's|^PKG_DATA_DIR=.*|PKG_DATA_DIR="../.."|' \
+         -i contrib/dnscrypt-update-resolvers.sh.in
 }
 
 build() {
@@ -43,19 +45,27 @@ package() {
   install -dm755 "$pkgdir/usr/share/${_pkgname}/script"
   install -m 644 COPYING "$pkgdir"/usr/share/licenses/${_pkgname}
   install -m 644 AUTHORS NEWS README README.markdown "$pkgdir"/usr/share/doc/${_pkgname}
-  install -m 644 dnscrypt-proxy.service "$pkgdir"/usr/lib/systemd/system
+  install -m 644 dnscrypt-proxy.service.in "$pkgdir"/usr/lib/systemd/system/dnscrypt-proxy.service
   install -m 644 dnscrypt-proxy.socket "$pkgdir"/usr/lib/systemd/system
 
-## Installing script to generate domains blacklist
+## Installing scripts to generate domains blacklist and update resolvers
  cd ${srcdir}/${_pkgname}/contrib/
   install -m 644 generate-domains-blacklist.py "$pkgdir/usr/share/${_pkgname}/script"
   install -m 644 domains-blacklist.conf "$pkgdir/usr/share/${_pkgname}/script"
+  install -m 644 *.sh.in "$pkgdir/usr/share/${_pkgname}/script/dnscrypt-update-resolvers.sh"
   install -m 644 *.txt "$pkgdir/usr/share/${_pkgname}/script"
 
-cat > "$pkgdir/usr/bin/generate-domains-blacklist" << EOF
+cat > "$pkgdir/usr/bin/dnscrypt-update-resolvers" << EOF
+#!/bin/bash
+cd /usr/share/dnscrypt-proxy/script && sh dnscrypt-update-resolvers.sh "\$@"
+EOF
+
+cat > "$pkgdir/usr/bin/dnscrypt-domains-blacklist" << EOF
 #!/bin/bash
 cd /usr/share/dnscrypt-proxy/script && python2 generate-domains-blacklist.py "\$@"
 EOF
-  chmod 755 "${pkgdir}/usr/bin/generate-domains-blacklist"
+  
+  chmod 755 "${pkgdir}/usr/bin/dnscrypt-update-resolvers"
+  chmod 755 "${pkgdir}/usr/bin/dnscrypt-domains-blacklist"
 }
 sha512sums=('SKIP')
