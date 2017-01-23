@@ -1,8 +1,9 @@
 # Maintainer: Thorsten Töpper <atsutane-aur@freethoughts.de>
+# Co-Maintainer: Ingo Bürk <ingo.buerk@airblader.de>
 # Contributor: William Giokas <1007380@gmail.com>
 
 pkgname=i3status-git
-pkgver=2.10.r11.g8532980
+pkgver=2.11
 pkgrel=1
 pkgdesc='Generates status bar to use with dzen2 or wmii'
 arch=('i686' 'x86_64')
