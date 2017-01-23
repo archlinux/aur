@@ -21,7 +21,7 @@ conflicts=('fenrir')
 install="$pkgname".install
 source=("https://github.com/chrys87/${pkgname}/archive/${pkgver}.zip"
   'fenrir.install')
-md5sums=('db43ef04c609288655e7de4879fb7a83'
+md5sums=('5608665ea50ce8cdb87b61fc175199b0'
          '6e9e07056b744789e8d62fcf56b612ce')
 
 package()
