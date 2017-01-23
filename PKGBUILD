@@ -15,6 +15,7 @@ optdepends=('sqlite: SQLite support'
             'memcached: MemCached support'
             'openssh: GIT over SSH support')
 conflicts=('gitea-git' 'gitea-git-dev')
+install=gitea.install
 backup=('etc/gitea/app.ini')
 source=(https://github.com/go-gitea/gitea/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-amd64
         gitea.service

@@ -1,0 +1,6 @@
+# arg 1:  the new package version
+post_install() {
+  printf "==> To use gitea with openssh:\n"
+  printf "    You may want to\n"
+  printf "    usermod -d /var/lib/gitea/repos git\n"
+}
