@@ -1,0 +1,73 @@
+diff -ur libsamplerate-0.1.9.orig/configure.ac libsamplerate-0.1.9/configure.ac
+--- libsamplerate-0.1.9.orig/configure.ac	2016-09-18 14:53:30.000000000 -0700
++++ libsamplerate-0.1.9/configure.ac	2017-01-22 16:39:39.327592504 -0800
+@@ -93,10 +93,6 @@
+ 		AC_HELP_STRING([--disable-gcc-opt], [disable gcc optimisations ]),
+ 		ac_arg_gcc_opt="N", ac_arg_gcc_opt="Y")
+ 
+-AC_ARG_ENABLE(fftw,
+-		AC_HELP_STRING([--disable-fftw], [disable usage of FFTW ]),
+-		ac_arg_fftw="N", ac_arg_fftw="Y")
+-
+ AC_ARG_ENABLE(cpu-clip,
+ 		AC_HELP_STRING([--disable-cpu-clip], [disable tricky cpu specific clipper]),
+ 		ac_arg_cpu_clip="N", ac_arg_cpu_clip="Y")
+@@ -198,24 +194,6 @@
+ 	fi
+ 
+ #====================================================================================
+-# Check for libfftw3 which is required for the test and example programs.
+-
+-if test $ac_arg_fftw = "Y" ; then
+-	PKG_CHECK_MODULES(FFTW3, fftw3 >= 0.15.0, ac_cv_fftw3=1, ac_cv_fftw3=0)
+-	AC_DEFINE_UNQUOTED([HAVE_FFTW3],$ac_cv_fftw3,[Set to 1 if you have libfftw3.])
+-
+-	if test x$ac_cv_fftw3 = x1 ; then
+-		ac_cv_fftw3=yes
+-		HAVE_FFTW3=1
+-		fi
+-	fi
+-
+-if test x$ac_cv_fftw3 != xyes ; then
+-	ac_cv_fftw3=no
+-	HAVE_FFTW3=0
+-	fi
+-
+-#====================================================================================
+ # GCC stuff.
+ 
+ if test $ac_cv_c_compiler_gnu = yes ; then
+@@ -310,7 +288,7 @@
+ 
+ AC_CONFIG_FILES([Makefile M4/Makefile src/Version_script \
+ 			Win32/Makefile Win32/Makefile.mingw \
+-			src/Makefile examples/Makefile tests/Makefile doc/Makefile \
++			src/Makefile doc/Makefile \
+ 			libsamplerate.spec samplerate.pc])
+ AC_OUTPUT
+ 
+@@ -337,10 +315,8 @@
+ AC_MSG_RESULT([
+   Extra tools required for testing and examples :
+ 
+-    Have FFTW : ................... ${ac_cv_fftw3}])
+-
+-AC_MSG_RESULT([    Have libsndfile : ............. ${ac_cv_sndfile}])
+-AC_MSG_RESULT([    Have ALSA : ................... ${ac_cv_header_alsa_asoundlib_h}
++    Have libsndfile : ............. ${ac_cv_sndfile}
++    Have ALSA : ................... ${ac_cv_header_alsa_asoundlib_h}
+ ])
+ 
+ AC_MSG_RESULT([  Installation directories :
+diff -ur libsamplerate-0.1.9.orig/Makefile.am libsamplerate-0.1.9/Makefile.am
+--- libsamplerate-0.1.9.orig/Makefile.am	2014-11-30 02:44:50.000000000 -0800
++++ libsamplerate-0.1.9/Makefile.am	2017-01-22 16:27:34.194861214 -0800
+@@ -2,7 +2,7 @@
+ 
+ DISTCHECK_CONFIGURE_FLAGS = --enable-gcc-werror
+ 
+-SUBDIRS = M4 src doc examples tests
++SUBDIRS = M4 src doc
+ DIST_SUBDIRS = Win32 $(SUBDIRS)
+ 
+ EXTRA_DIST = autogen.sh libsamplerate.spec.in samplerate.pc.in Make.bat
