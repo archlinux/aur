@@ -4,7 +4,7 @@
 pkgname=python-slycot-git
 _gitname=Slycot
 pkgver=140.234447c
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper for selected SLICOT routines, notably including solvers for Riccati, Lyapunov and Sylvester equations."
 arch=('i686' 'x86_64')
 url="http://github.com/jgoppert/Slycot"
