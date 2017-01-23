@@ -2,7 +2,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=tslint
-pkgver=4.2.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="A Linter for the TypeScript language."
 arch=('any')
@@ -18,5 +18,4 @@ package() {
   rm -r "$pkgdir"/usr/etc
 }
 
-sha256sums=('7d3e2c7c2a0afca41be6b4c67c6adab8b4c012f3eab4a79d606cd367aa102cd1')
-# vim:set ts=2 sw=2 et:
+sha256sums=('51585c29e4ea310f8bea4c84abbf3ee1a4d37fa33cc382ffefc5f0b71d76cc34')
