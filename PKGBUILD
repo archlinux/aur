@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=greenisland
-pkgver=0.8.1
+pkgver=0.9.0.1
 pkgrel=1
 pkgdesc="Green Island: Qt-based compositor infrastructure for Wayland"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -13,7 +13,7 @@ conflicts=('greenisland-git')
 makedepends=('gdb' 'extra-cmake-modules' 'xcb-util-cursor' 'libxcursor')
 options=('debug')
 source=("https://github.com/greenisland/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha1sums=('a90b60dbd742d7279f62ac94ea8806597e1878b0')
+sha256sums=('d50547faf140fcf93859e152c2deb6d001d60a0eb6ee564535315618868295ba')
 
 prepare() {
 	mkdir build
