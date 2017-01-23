@@ -6,7 +6,7 @@ _extramodules=extramodules-4.10-mainline
 
 pkgname=bbswitch-mainline
 pkgver=0.8
-pkgrel=10
+pkgrel=11
 pkgdesc="Kernel module allowing to switch dedicated graphics card on Optimus laptops for linux-mainline"
 arch=('i686' 'x86_64')
 url="https://github.com/Bumblebee-Project/${_pkgname}"
