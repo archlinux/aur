@@ -45,6 +45,8 @@ package_gurobi() {
 
   cd "$srcdir/${_basename}${pkgver//./}/linux64/"
 
+  awk 'NR==22 {$0="if version != (2, 7) and version != (3, 5) and version != (3, 6):"} { print }' setup.py
+
   install -d "${pkgdir}/usr/bin/" "${pkgdir}/usr/share/doc/${_basename}/" \
           "${pkgdir}/usr/include/" "${pkgdir}/usr/lib/${_basename}/matlab/"
 
