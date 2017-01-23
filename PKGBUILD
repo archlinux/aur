@@ -12,15 +12,17 @@ arch=('i686' 'x86_64')
 url="http://www.craftychess.com/"
 license=('custom')
 source=("http://www.craftychess.com/downloads/source/$pkgname-$pkgver.zip"
-	"`[[ "$_build_book" = '0' ]] && echo book.bin.orj::`http://www.craftychess.com/downloads/book/book.`[[ "$_build_book" = '0' ]] && echo bin || echo pgn.gz`"
+	"http://www.craftychess.com/downloads/book/book.`[[ "$_build_book" = '0' ]] && echo bin || echo pgn.gz`"
 	"http://www.craftychess.com/downloads/book/start.pgn.gz"
 	"http://www.craftychess.com/downloads/book/startc.pgn.gz"
-	"COPYRIGHT")
+	"COPYRIGHT"
+	"CRAFTY.FAQ")
 md5sums=('d8ad87d9b0fc39a437595203d7b302fc'
 	 "`[[ "$_build_book" = '0' ]] && echo f8f93189c64324b1959a489da822438e || echo 05efad71289b2d328da5110df4a19f85`"
 	 '880279c223dc34164837a351faafe2f0'
 	 '7a53d5f09d2baa5e7f0df4ee81961cfb'
-	 '438cec9f32fb79f58822f97cf64e7afb')
+	 '438cec9f32fb79f58822f97cf64e7afb'
+	 'f744727e291b6dec7e7c69bb3586b6dd')
 
 prepare() {
 	cd "$srcdir"
@@ -35,7 +37,9 @@ build() {
 	make unix-gcc-profile
 
 	cd "$srcdir"
-    
+	
+	[[ "$_build_book" = '0' ]] && mv book.bin book.bin.orj
+
 	msg "Creating books.bin..."
 	./crafty "book create start.pgn 60" quit
 	mv book.bin books.bin
@@ -62,4 +66,5 @@ package() {
 	install -m644 books.bin "$pkgdir/usr/share/crafty/"
 	install -m644 bookc.bin "$pkgdir/usr/share/crafty/"
 	install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
+	install -Dm644 CRAFTY.FAQ "$pkgdir/usr/share/doc/$pkgname/CRAFTY.FAQ"
 }
