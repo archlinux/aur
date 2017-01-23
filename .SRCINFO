@@ -1,15 +1,16 @@
 pkgbase = certbot-systemd-nginx
 	pkgdesc = Systemd service for Certbot certificate renewal with nginx servers
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://github.com/lnicola/certbot-systemd-nginx
+	install = certbot-systemd-nginx.install
 	arch = any
 	license = MIT
 	depends = certbot
 	depends = nginx
 	replaces = letsencrypt-systemd-nginx
-	source = git+https://github.com/lnicola/certbot-systemd-nginx.git
-	md5sums = SKIP
+	source = https://github.com/lnicola/certbot-systemd-nginx/archive/v1.4.tar.gz
+	sha256sums = 5edfbaa14792a264634ec375bf95fc160e83c7c7005a84b6af6d16965bb45909
 
 pkgname = certbot-systemd-nginx
 

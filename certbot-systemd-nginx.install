@@ -1,0 +1,13 @@
+authenticator_message() {
+    printf "===> This package no longer uses the standalone authenticator.\n"
+    printf "     Please see the certbot documentation about using the webroot or nginx authenticators.\n"
+    printf "     Webroot is the least intrusive when migrating from standalone and only takes four lines to set up.\n"
+}
+
+post_install() {
+    authenticator_message
+}
+
+post_upgrade() {
+    authenticator_message
+}
