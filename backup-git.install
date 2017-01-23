@@ -4,6 +4,10 @@ post_install() {
   PATH=$PATH:/usr/bin/backup
 }
 
+pre_upgrade () {
+backup=('/etc/backup.conf')
+}
+
 post_upgrade() {
   post_install
 }
