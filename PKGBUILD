@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-location
-_qtver=5.7.1
+_qtver=5.8.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -11,11 +11,12 @@ url='http://qt-project.org/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='Provides access to position, satellite and area monitoring classes'
 depends=('qt5-declarative')
-makedepends=()
+makedepends=('gypsy' 'gconf')
+optdepends=('gypsy: Gypsy geolocation plugin')
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-opensource-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('e08b12addd6b9d995fdf059c5c9e04b3')
+md5sums=('2077d5d6f926087614c9e94021019c0e')
 
 prepare() {
   mkdir -p build
