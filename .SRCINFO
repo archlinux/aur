@@ -1,7 +1,7 @@
 pkgbase = kismon
 	pkgdesc = GUI client for kismet (wireless scanner/sniffer/monitor)
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.salecker.org/software/kismon.html
 	arch = any
 	license = BSD

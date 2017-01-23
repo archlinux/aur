@@ -4,7 +4,7 @@
 
 pkgname=kismon
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI client for kismet (wireless scanner/sniffer/monitor)"
 arch=('any')
 url="https://www.salecker.org/software/kismon.html"
