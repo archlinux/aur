@@ -69,8 +69,8 @@ package_gurobi() {
   # Programming interfaces
   install lib/*.so* "${pkgdir}/usr/lib/"
   install -m644 lib/*.a "${pkgdir}/usr/lib/"
-  ln -sf ./libgurobi.so.6.5.2 "${pkgdir}/usr/lib/libgurobi65.so"
-  ln -sf ./libgurobi_g++4.2.a "${pkgdir}/usr/lib/libgurobi_c++.a"
+  ln -sf ./libgurobi.so.7.0.1 "${pkgdir}/usr/lib/libgurobi65.so"
+  ln -sf ./libgurobi_g++5.2.a "${pkgdir}/usr/lib/libgurobi_c++.a"
 
   python2 setup.py install --root="$pkgdir" --optimize=1
   python3 setup.py install --root="$pkgdir" --optimize=1
