@@ -10,7 +10,7 @@
 
 pkgname=keepassxc
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A reboot with keepasshttp of an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
 arch=('i686' 'x86_64')
 url="https://github.com/keepassxreboot/keepassx"
@@ -19,8 +19,10 @@ depends=('libxtst' 'shared-mime-info' 'qt5-x11extras' 'hicolor-icon-theme' 'desk
 makedepends=('intltool' 'cmake' 'qt5-base' 'qt5-tools' 'zlib' 'libgcrypt')
 conflicts=('keepassx2')
 provides=('keepassx2')
-source=("https://github.com/keepassxreboot/keepassxc/archive/${pkgver}.tar.gz")
-sha256sums=('15442c5094b2aeb7e54a8b39aa19f47ae1561695ac6949e74409294370700d48')
+source=("https://github.com/keepassxreboot/keepassxc/releases/download/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2"{,.sig})
+sha256sums=('23a39aeda8f2e6263b0821826cfb8735275fba104712748c7a5e41e1f87fb0a6'
+            'SKIP')
+validpgpkeys=('BF5A669F2272CF4324C1FDA8CFB4C2166397D0D2') # KeePassXC Release <release@keepassxc.org>
 
 prepare() {
     cd "${pkgname}-${pkgver}"
