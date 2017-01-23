@@ -7,22 +7,9 @@ arch=('x86_64')
 url="www.sconsify.org"
 license=('Apache')
 depends=('portaudio' 'libspotify')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/fabiofalci/sconsify/releases/download/v${pkgver//_/-}/linux-$CARCH-$pkgname-${pkgver//_/-}.zip")
-noextract=()
-md5sums=('eee9e68031b608cd84d3180625194694')
-validpgpkeys=()
+source=("https://github.com/fabiofalci/sconsify/releases/download/v$pkgver/linux-x86_64-sconsify-$pkgver.zip")
+sha256sums=('fb6510eaa85e8e9365d37847d57eaa01620fd5b61c690edaa2a76415695fa54a')
 
 package() {
-    mkdir -p $pkgdir/usr/bin
-    cp sconsify $pkgdir/usr/bin
+    install -Dm755 sconsify "$pkgdir"/usr/bin/sconsify
 }
