@@ -8,6 +8,8 @@ license=("MIT")
 arch=("any")
 
 build() {
+    cd "$srcdir/$_pypiname-$pkgver"
+    sed "s|version='0.0.5'|version='0.0.6'|g" -i setup.py
     cd "$srcdir"
     cp -r "$_pypiname-$pkgver" "$_pypiname-$pkgver-py2"
 }
