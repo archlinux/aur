@@ -3,7 +3,7 @@
 
 pkgname=libreoffice-online
 pkgver=2.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="HTML5-based/cloud-based version of the office suite"
 arch=("x86_64")
 url="https://cgit.freedesktop.org/libreoffice/online/"
@@ -28,6 +28,7 @@ build() {
 	--prefix=/usr \
 	--sysconfdir=/etc
   #./configure --enable-silent-rules --with-lokit-path=/usr/include/libreoffice --with-lo-path=/usr/lib/libreoffice
+  sed -i 's|LOOLWSD_CACHEDIR = /usr/var/cache/loolwsd|LOOLWSD_CACHEDIR = /var/cache/loolwsd|g' Makefile
   BUILDING_FROM_RPMBUILD=yes make
 }
 
