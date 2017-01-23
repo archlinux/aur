@@ -2,7 +2,7 @@
 
 pkgname=lxdm-themes
 pkgver=1
-pkgrel=5
+pkgrel=6
 pkgdesc="Archlinux, ArchlinuxFull, ArchlinuxTop, Arch-Dark, Arch-Stripes and IndustrialArch lxdm themes"
 arch=(any)
 url="https://wiki.archlinux.org/index.php/LXDM#Themes"
@@ -16,7 +16,7 @@ source=('http://allanmcrae.com/files/lxdm-theme.tar.gz'                   # Arch
         'git://github.com/redtide/lxdm-theme-archlinux.git'               # ArchlinuxFull
         'http://xdsl.hi2.ro/work/archlinux-lxdm.tar.gz'                   # ArchlinuxTop
         'git+https://github.com/M4rQu1Nh0S/industrial-arch.git'           # IndustrialArch
-        'https://dl.dropboxusercontent.com/u/33870708/lxdm-themes.tar.gz' # Arch-Dark, Arch-Stripes
+        'https://www.dropbox.com/s/a8inrdfys3a71c1/lxdm-themes.tar.gz?dl=1' # Arch-Dark, Arch-Stripes
         )
 noextract=('lxdm-theme.tar.gz' 'archlinux-lxdm.tar.gz')
 sha256sums=('1eeaee69da8dd0ab28fc6967b06d4594980808bed83e822858a31b46926acbe7'
