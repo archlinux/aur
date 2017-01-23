@@ -2,7 +2,7 @@
 
 _npmname=nightwatch
 pkgname=nodejs-$_npmname
-pkgver=0.9.9
+pkgver=0.9.12
 pkgrel=1
 pkgdesc="Write End-to-End tests in Node.js quickly and effortlessly that run against a Selenium server."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha256sums=('eee8843f63f2f5cf58cb2af1c533cccb79a68b0ec986e35ce7ed940fe42a758f')
+sha256sums=('42435d0a2d1fa960256e997dc53fdf8b8fe6f8ae8b120b18945413aee1a0f62e')
 noextract=($_npmname-$pkgver.tgz)
 
 package() {
