@@ -3,7 +3,7 @@
 
 pkgname=netbeans-javaee
 pkgver=8.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Netbeans IDE for Java EE'
 arch=('any')
 
@@ -68,5 +68,5 @@ package() {
 
     # Desktop shortcut and icon
 	install -Dm644 netbeans.desktop "${pkgdir}/usr/share/applications/netbeans.desktop"
-    install -Dm644 "$srcdir/netbeans.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -Dm644 "$srcdir/netbeans.png" "$pkgdir/usr/share/pixmaps/netbeans.png"
 }
