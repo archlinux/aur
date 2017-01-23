@@ -3,7 +3,7 @@
 pkgname=ndm
 _pkgbase=ndm
 pkgrel=1
-pkgver=0.1.3
+pkgver=0.1.4
 _pkgver=v$pkgver
 pkgdesc="npm desktop manager"
 url="https://github.com/720kb/ndm"
@@ -11,8 +11,6 @@ provides=('ndm')
 arch=('x86_64')
 license=('GPL3')
 makedepends=('unzip')
-backup=()
-install=''
 source=(
     "${_pkgbase}.desktop"
     ${_pkgbase}{16,24,32,48,64,96,128,256,512}.png
@@ -32,16 +30,14 @@ sha256sums=(
         'dec92be5e28941f99a0c81c0cb1df8ec76abea6fed58481f412d4a92972bc40c'
         )
 
-sha256sums_x86_64=('23676122af122dba27616716dd1e3d649dd83c96a80219f97398d2830547a5ee')
+sha256sums_x86_64=('0b8008558da9b3bc614afa4593fb6a79d367a831656002b9e286dfbbe749724e')
 
 package() {
-    
     install -dm755 "$pkgdir/usr/share/applications/"
     install -d "$pkgdir"/opt/${_pkgbase}/
     install -Dm755 "$srcdir/linux-unpacked/$pkgbase" "$pkgdir/usr/bin/$pkgbase"
     mv "$srcdir/linux-unpacked/" "$srcdir/$pkgbase"
     cp -R "$srcdir/$pkgbase" $pkgdir/opt/
-   
     install -Dm755 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
     for icon_size in 16 32 48 64 128 256 512; do
         icon_dir="$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
