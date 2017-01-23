@@ -16,7 +16,7 @@
 
 pkgname=setools
 pkgver=4.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Policy analysis tools for SELinux"
 groups=('selinux')
 arch=('i686' 'x86_64')
@@ -38,14 +38,14 @@ sha256sums=('4c2049877f2f68e4485b72bc280fe20127b49a019169a2cf1d8295c908bdcdfe')
 prepare() {
   cd "${pkgname}-${pkgver}"
 
-  # Flex 2.6.1 generates C code which causes -Wsign-compare to trigger:
-  #     libqpol/policy_scan.c: In function ‘yy_scan_bytes’:
-  #     libqpol/policy_scan.c:3254:17: warning: comparison between signed and
-  #     unsigned integer expressions [-Wsign-compare]
-  #        for ( i = 0; i < _yybytes_len; ++i )
-  #                       ^
+  # Flex 2.6.3 generates C code which causes -Werror to trigger:
+  #     libqpol/policy_scan.c:398:0: error: "yywrap" redefined [-Werror]
+  #         #define yywrap() (/*CONSTCOND*/1)
+  #     libqpol/policy_scan.c:74:0: note: this is the location of the previous definition
+  #         #define yywrap yywrap
+  # This a a bug in Flex, https://github.com/westes/flex/issues/155
   # Do not make the build fail because of this
-  sed -e "s/\('-Werror',\)/\1 '-Wno-error=sign-compare',/" -i setup.py
+  sed -e "s/'-Werror',//" -i setup.py
 }
 
 build() {
