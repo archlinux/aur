@@ -7,7 +7,7 @@ pkgdesc="The first true cross-platform Sandbox MMO -- game data files for live s
 url="https://albiononline.com/"
 arch=('x86_64')
 license=('custom')
-depends=('libgl' 'gstreamer0.10-good' 'albion-online-launcher-bin')
+depends=('libgl' 'albion-online-launcher-bin')
 source=("https://live.albiononline.com/autoupdate/albiononline-linux-full-${pkgver}.zip" "albion-online-live.desktop")
 noextract=("albiononline-linux-full-${pkgver}.zip")
 
