@@ -15,7 +15,7 @@ md5sums=('6330abfc46231a73bd6a4caeb660c412')
 
 package() {
 	cd "${srcdir}/$_pkgname-$pkgver"
-	mkdir -p $pkgdir/usr/share/$pkgname
-	cp -r * $pkgdir/usr/share/$pkgname
+	mkdir -p $pkgdir/usr/share/java/$pkgname
+	cp -r * $pkgdir/usr/share/java/$pkgname
 	install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
