@@ -6,7 +6,7 @@
 
 pkgname=wine-stable
 pkgver=1.8.6
-pkgrel=2
+pkgrel=3
 
 source=(https://dl.winehq.org/wine/source/1.8/wine-$pkgver.tar.bz2{,.sign}
         30-win32-aliases.conf
@@ -59,7 +59,7 @@ prepare() {
   # Allow ccache to work
   mv wine-$pkgver wine
 
-  for patch in ../*.patch; do
+  for patch in *.patch; do
     if [ ! -f "$patch" ]; then
       break;
     else
