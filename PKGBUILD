@@ -6,7 +6,7 @@ pkgbase=systemd-git
 pkgname=('systemd-git' 'libsystemd-git' 'systemd-sysvcompat-git')
 pkgdesc="systemd from git"
 pkgver=232.r615.g88e4dbd50
-pkgrel=1
+pkgrel=2
 branch='master'
 arch=('i686' 'x86_64')
 url="https://www.github.com/systemd/systemd"
@@ -16,7 +16,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git')
 options=('strip' '!distcc' '!ccache')
 source=("systemd-git::git://github.com/systemd/systemd.git#branch=${branch}"
-		'initcpio-hook-udev'
+		    'initcpio-hook-udev'
         'initcpio-install-systemd'
         'initcpio-install-udev'
         'arch.conf'
@@ -89,11 +89,11 @@ package_systemd-git() {
   pkgdesc="system and service manager"
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' 'libsystemd' 'libidn' 'lz4' 'pam' 'libelf' 'libseccomp'
+           'libgcrypt' 'libsystemd-git' 'libidn' 'lz4' 'pam' 'libelf' 'libseccomp'
            'util-linux' 'xz')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" "systemd=$pkgver")
-  replaces=('nss-myhostname' 'systemd-tools' 'udev')
-  conflicts=('nss-myhostname' 'systemd-tools' 'udev')
+  replaces=('nss-myhostname' 'systemd-tools' 'udev' 'systemd')
+  conflicts=('nss-myhostname' 'systemd-tools' 'udev' 'systemd')
   optdepends=('cryptsetup: required for encrypted block devices'
               'libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
