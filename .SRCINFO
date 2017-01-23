@@ -1,0 +1,32 @@
+pkgbase = ros-jade-effort-controllers
+	pkgdesc = ROS - effort_controllers.
+	pkgver = 0.11.2
+	pkgrel = 1
+	url = https://github.com/ros-controls/ros_controllers/wiki
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-controller-interface
+	makedepends = ros-jade-control-msgs
+	makedepends = ros-jade-control-toolbox
+	makedepends = ros-jade-realtime-tools
+	makedepends = ros-jade-angles
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-forward-command-controller
+	makedepends = ros-jade-dynamic-reconfigure
+	makedepends = ros-jade-urdf
+	depends = ros-jade-controller-interface
+	depends = ros-jade-control-msgs
+	depends = ros-jade-control-toolbox
+	depends = ros-jade-realtime-tools
+	depends = ros-jade-angles
+	depends = ros-jade-forward-command-controller
+	depends = ros-jade-dynamic-reconfigure
+	depends = ros-jade-urdf
+	source = effort_controllers::git+https://github.com/ros-gbp/ros_controllers-release.git#branch=release/jade/effort_controllers
+	md5sums = SKIP
+
+pkgname = ros-jade-effort-controllers
+
