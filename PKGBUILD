@@ -4,8 +4,8 @@ pkgname=linux-mainline-usermode
 true && pkgname=(linux-mainline-usermode linux-mainline-usermode-modules)
 pkgbase=linux-mainline-usermode
 _kernelname=${pkgbase#linux}
-_srcname=linux-4.9
-_patchname=patch-4.10-rc4
+_srcname=linux-4.10-rc5
+#_patchname=patch-4.10-rc4
 pkgver=4.10rc4
 pkgrel=1
 pkgdesc="User mode Linux-mainline kernel and modules"
@@ -15,14 +15,13 @@ url="http://user-mode-linux.sourceforge.net/"
 depends=('coreutils')
 makedepends=('bc' 'inetutils' 'vde2-static' 'vde2')
 source=(
-	"https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
+	"https://cdn.kernel.org/pub/linux/kernel/v4.x/testing/${_srcname}.tar.xz"
 #	"https://mirrors.ustc.edu.cn/kernel.org/linux/kernel/v4.x/${_srcname}.tar.xz"
-	"https://cdn.kernel.org/pub/linux/kernel/v4.x/testing/${_patchname}.xz"
+#	"https://cdn.kernel.org/pub/linux/kernel/v4.x/testing/${_patchname}.xz"
 #	"https://mirrors.ustc.edu.cn/kernel.org/linux/kernel/v4.x/testing/${_patchname}.xz"
 	"config-i686" "config-x86_64"
     )
-sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
-            '95b8a31b423d4eb33af0963de41a1a657baf8f06ebfa02bcffd14c4dc3b1a167'
+sha256sums=('cdc49b0b83327ef0295e82c35035f0c34223fdfba9d4b94068d33f202c506d9b'
             'f001a5860c927c14e12eb6c4c09ad22e57834a0f44d71c9516bc2c2f6f1a290f'
             '2a786756a47a52b77ae4bffb31eadd60a7a717c2e3544a315f1cfe9ba9091f30')
 validpgpkeys=(
@@ -38,7 +37,7 @@ prepare() {
   # patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # mainline: add patch
-  patch -p1 -i "${srcdir}/${_patchname}" || true
+  #patch -p1 -i "${srcdir}/${_patchname}" || true
 }
 
 build() {
