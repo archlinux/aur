@@ -1,0 +1,25 @@
+pkgbase = netbeans-javaee
+	pkgdesc = Netbeans IDE for Java EE
+	pkgver = 8.2
+	pkgrel = 1
+	url = https://netbeans.org
+	install = netbeans-javaee.install
+	arch = any
+	license = CDDL
+	makedepends = gendesk
+	makedepends = setconf
+	depends = java-environment
+	depends = ttf-font
+	depends = libxtst
+	depends = giflib
+	depends = atk
+	provides = netbeans
+	conflicts = netbeans
+	options = !strip
+	source = http://download.netbeans.org/netbeans/8.2/final/zip/netbeans-8.2-201609300101-javaee.zip
+	source = https://cdn.rawgit.com/ComFreek/chocolatey-packages/779f5c96f817ed1fa0d76fd90841873dc6c0ba74/icons/netbeans.png
+	sha512sums = cf4cb469370e060bc6ba4f65fc5da8c308cbfbbcc810976ba752a06eedf3d2fd7845928355a2d80c41d37d85a859a1cd1183b4972de67ffc1bc58fa73202f707
+	sha512sums = 875099689e9ddcb3700defe01c68ef4ced3539f3a8bcfd9fdf605632ce1069a9b95ec16cf4fbd01f07958d3dbad659614daacd7af7ecb95cda43b48f456c74fb
+
+pkgname = netbeans-javaee
+
