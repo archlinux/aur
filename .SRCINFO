@@ -1,0 +1,32 @@
+pkgbase = ros-jade-navigation
+	pkgdesc = ROS - A 2D navigation stack that takes in information from odometry, sensor streams, and a goal pose and outputs safe velocity commands that are sent to a mobile base.
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = http://wiki.ros.org/navigation
+	arch = any
+	license = BSD,LGPL,LGPL (amcl)
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-nav-core
+	depends = ros-jade-carrot-planner
+	depends = ros-jade-fake-localization
+	depends = ros-jade-clear-costmap-recovery
+	depends = ros-jade-base-local-planner
+	depends = ros-jade-amcl
+	depends = ros-jade-navfn
+	depends = ros-jade-global-planner
+	depends = ros-jade-map-server
+	depends = ros-jade-voxel-grid
+	depends = ros-jade-dwa-local-planner
+	depends = ros-jade-robot-pose-ekf
+	depends = ros-jade-move-base-msgs
+	depends = ros-jade-move-slow-and-clear
+	depends = ros-jade-costmap-2d
+	depends = ros-jade-rotate-recovery
+	depends = ros-jade-move-base
+	source = ros-jade-navigation-1.13.1-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/jade/navigation/1.13.1-0.tar.gz
+	sha256sums = 38dbba6374c2ffe5d045404846cc1a8b16361d91a761a3a27331a91b06c07c11
+
+pkgname = ros-jade-navigation
+
