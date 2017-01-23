@@ -7,6 +7,7 @@ pkgbase = gint-git
 	depends = fxsdk
 	depends = sh3eb-elf-binutils
 	depends = sh3eb-elf-gcc
+	options = !strip
 	source = git+http://git.planet-casio.com/lephe/gint.git
 	md5sums = SKIP
 

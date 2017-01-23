@@ -6,6 +6,7 @@ pkgrel=2
 pkgdesc="Gint and a libc for the Casio fx9860 calculators"
 arch=("i686" "x86_64")
 depends=("fxsdk" "sh3eb-elf-binutils" "sh3eb-elf-gcc")
+options=(!strip)
 source=("git+http://git.planet-casio.com/lephe/$basename.git")
 md5sums=("SKIP")
 
