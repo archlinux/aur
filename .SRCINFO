@@ -1,24 +1,24 @@
 pkgbase = aldo
 	pkgdesc = Morse code tutor with a random number generator & skill level testing
-	pkgver = 0.7.7
-	pkgrel = 2
+	pkgver = 0.7.8
+	pkgrel = 1
 	url = http://aldo.nongnu.org/
-	install = aldo.install
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
 	depends = libao
-	depends = desktop-file-utils
-	source = http://savannah.nongnu.org/download/aldo/aldo-0.7.7.tar.bz2
-	source = aldo.install
+	depends = gcc-libs
+	source = aldo::git+http://git.savannah.gnu.org/r/aldo.git#branch=master
 	source = aldo.desktop
 	source = hamradio.png
-	md5sums = 7baefd992953a0f4c56085af835495b1
-	md5sums = f7e1e2722c972f3420cfd69492c79073
+	md5sums = SKIP
 	md5sums = db0b42dd5494090f4382d854433eba06
 	md5sums = b24ce93a15cca693efa662ab90ae0fda
-	sha256sums = f1b8849d09267fff3c1f5122097d90fec261291f51b1e075f37fad8f1b7d9f92
-	sha256sums = f703f8de14eb277dc72cc837086fbd55f5d772049a44200686c8ae76348f6614
+	sha256sums = SKIP
 	sha256sums = 34db7c1c2ac1b2d5d434a4fbf8c6b87f62f7fe1e873b9b236c854fb4ff87962d
 	sha256sums = e55aabbf91ad110672d87290582705a55c6a52bb5b487c7bd195f5e18cc550b3
 
