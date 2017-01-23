@@ -1,0 +1,12 @@
+--- Cam/bin/cam	2017-01-09 03:22:31.000000000 +0300
++++ Cam2/bin/cam	2017-01-24 00:11:37.123969255 +0300
+@@ -2,7 +2,8 @@
+ <?php
+ $autoloaders = array(
+   __DIR__.'/../vendor/autoload.php',
+-  __DIR__.'/../../../autoload.php'
++  __DIR__.'/../../../autoload.php',
++  '/usr/lib/cam/vendor/autoload.php'
+ );
+ foreach ($autoloaders as $autoloader) if (file_exists($autoloader)) require $autoloader;
+ 

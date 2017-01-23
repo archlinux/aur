@@ -1,0 +1,18 @@
+pkgbase = cam
+	pkgdesc = Unified console archive manager for zip/rar/7z/tar/iso/gz/bz2/xz.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/wapmorgan/CAM
+	arch = any
+	license = MIT
+	makedepends = composer
+	depends = php
+	optdepends = php-rar: Working with rar archives
+	optdepends = php-bzip2: Working with .bz2 archives
+	optdepends = php-lzma2: Working with .xz archives
+	optdepends = p7zip: Working with .7z archives
+	source = binary.patch
+	md5sums = 4dcb9f1f8545826d7135202a36dbf300
+
+pkgname = cam
+
