@@ -1,7 +1,7 @@
 pkgbase = blitz-request
 	pkgdesc = The best commandline REST API and stress tester.
-	pkgver = 1.0.0.4
-	pkgrel = 1
+	pkgver = 1.0.0.5
+	pkgrel = 7
 	url = https://github.com/chenshuiluke/blitz-request
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = blitz-request
 	depends = jdk8-openjdk
 	depends = jre8-openjdk
 	noextract = blitz-request.jar
-	source = https://github.com/chenshuiluke/blitz-request/releases/download/1.0.0.4/blitz-request.jar
+	source = https://github.com/chenshuiluke/blitz-request/releases/download/1.0.0.5/blitz-request.jar
 	md5sums = SKIP
 
 pkgname = blitz-request
