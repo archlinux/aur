@@ -1,7 +1,7 @@
 # Maintainer: Fredrik Strandin <fredrik@strandin.name>
 
 pkgname='hunspell-en-us-large'
-pkgver=2016.06.26
+pkgver=2017.01.22
 pkgrel=1
 pkgdesc="US English large hunspell dictionaries"
 arch=('any')
@@ -9,7 +9,7 @@ url="http://wordlist.sourceforge.net/"
 license=('LGPL' 'custom:scowl')
 optdepends=('hunspell: the spell checking libraries and apps')
 source=(http://downloads.sourceforge.net/wordlist/hunspell-en_US-large-${pkgver}.zip)
-sha256sums=('16a431777e6ed6c471d521defe11cdc492da0322b8b90d9f2ea3aef7d8284408')
+sha256sums=('45ef7af6a766679bea3cb06ffbd4fbabfbca864290a48ccbf95557de6d2b11da')
 
 package() {
   cd "$srcdir"
