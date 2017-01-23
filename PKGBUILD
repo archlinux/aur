@@ -1,55 +1,66 @@
-# Maintainer: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
-# Contributor: Marcel Korpel <marcel[dot]korpel[at]gmail>
-# Contributor: Thomas Dziedzic < gostrc [at] gmail >
-# Contributor: breakdown <breakdown[at]archlinux[dot]us>
-# Contributor: fs4000 <matthias_dienstbier[at]yahoo[dot]de>
-# Contributor: William Heinbockel <wheinbockel[at]gmail[dot]com>
-# Contributor: Adrian C. <anrxc..sysphere.org>
+# Maintainer: Yurii Kolesnykov <yurikoles@gmail.com>
+# Contributor: AndyRTR <andyrtr@archlinux.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xf86-video-intel-git
-pkgver=2.99.917+560+gd167280
+_branch=master
+pkgver=2.99.917+747+g028c946d
 pkgrel=1
-
+epoch=1
+arch=(i686 x86_64)
+url="https://01.org/linuxgraphics"
+license=('custom')
+install=$pkgname.install
 pkgdesc="X.org Intel i810/i830/i915/945G/G965+ video drivers"
-url="http://intellinuxgraphics.org/"
-arch=("i686" "x86_64")
-license=("custom")
-
-depends=("intel-dri" "libxvmc" "libpciaccess" "libdrm" "dri2proto" "xcb-util" "libxfixes" "udev")
-makedepends=("git" "xorg-server-devel" "X-ABI-VIDEODRV_VERSION=20" "libx11"
-             "xf86driproto" "glproto" "resourceproto" "scrnsaverproto" "mesa" "libxrender")
-provides=("xf86-video-intel")
-conflicts=("xf86-video-intel")
-replaces=("xf86-video-intel")
-
-options=("!libtool" "!strip")
-source=($pkgname::git://anongit.freedesktop.org/git/xorg/driver/${pkgname%-git})
-sha1sums=('SKIP')
+depends=('mesa-dri' 'libxvmc' 'pixman' 'xcb-util>=0.3.9')
+makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=23' 'libx11' 'libxrender'
+             # additional deps for intel-virtual-output
+             'libxrandr' 'libxinerama' 'libxcursor' 'libxtst' 'libxss'
+             # additional for git snapshot
+             'git')
+optdepends=('libxrandr: for intel-virtual-output'
+            'libxinerama: for intel-virtual-output'
+            'libxcursor: for intel-virtual-output'
+            'libxtst: for intel-virtual-output'
+            'libxss: for intel-virtual-output')
+replaces=('xf86-video-intel-uxa' 'xf86-video-intel-sna' 'xf86-video-intel')
+provides=('xf86-video-intel-uxa' 'xf86-video-intel-sna' 'xf86-video-intel')
+conflicts=('xorg-server<1.19' 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSION>=24'
+           'xf86-video-intel-sna' 'xf86-video-intel-uxa' 'xf86-video-i810' 'xf86-video-intel-legacy'
+           'xf86-video-intel')
+groups=('xorg-drivers')
+#source=(${url}/archive/individual/driver/${pkgname}-${pkgver}.tar.bz2)
+source=("$pkgname::git://anongit.freedesktop.org/xorg/driver/xf86-video-intel#branch=${_branch}")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    git describe --always | sed 's|-|.|g'
+  cd $pkgname
+  git describe --long | sed 's/-/+/g'
 }
 
+prepare() {
+  cd $pkgname
+  NOCONFIGURE=1 ./autogen.sh
+}
 
 build() {
-    cd "$pkgname"
-    ./autogen.sh --prefix=/usr \
-		 --enable-xvmc \
-		 --enable-sna
-    # --enable-glamor
-    # --enable-kms-only
-    make
+  cd $pkgname
+  ./configure --prefix=/usr \
+    --libexecdir=/usr/lib \
+    --with-default-dri=3
+  make
 }
 
 check() {
-    cd "$pkgname"
-    make check
+  cd $pkgname
+  make check
 }
 
-package () {
-    cd "$pkgname"
-    make DESTDIR="$pkgdir" install
+package() {
+  cd $pkgname
 
-    install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  make DESTDIR="${pkgdir}" install
+
+  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 }

@@ -1,0 +1,21 @@
+post_install() {
+  cat <<MSG
+>>> This driver now uses DRI3 as the default Direct Rendering
+    Infrastructure. You can try falling back to DRI2 if you run
+    into trouble. To do so, save a file with the following 
+    content as /etc/X11/xorg.conf.d/20-intel.conf :
+      Section "Device"
+        Identifier  "Intel Graphics"
+        Driver      "intel"
+        Option      "DRI" "2"             # DRI3 is now default 
+        #Option      "AccelMethod"  "sna" # default
+        #Option      "AccelMethod"  "uxa" # fallback
+      EndSection
+MSG
+}
+
+post_upgrade() {
+  if (( $(vercmp $2 1:2.99.917+684+g6988b87-3) < 0 )); then
+    post_install
+  fi
+}
