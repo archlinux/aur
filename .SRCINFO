@@ -1,24 +1,17 @@
 pkgbase = leocad
-	pkgdesc = LeoCAD is a CAD program for creating virtual LEGO models. It has an easy to use interface and currently includes over 6000 different pieces created by the LDraw community.
-	pkgver = 0.83
+	pkgdesc = A CAD program for creating virtual LEGO models
+	pkgver = 0.83.2
 	pkgrel = 1
 	url = http://leocad.org
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = qtchooser
-	makedepends = subversion
-	depends = zlib
-	depends = libjpeg
-	depends = libpng
-	depends = gtk2
-	depends = mesa
-	source = leocad::svn+http://svn.leocad.org/tags/leocad-0.83
-	source = http://github.com/tozian/leocad-arch/raw/master/source/Library-Linux-9306.zip
-	source = leocad.sh
-	md5sums = SKIP
-	md5sums = e3268cf8fbe50b6abd2c4bf31247ab83
-	md5sums = cbe0189f828a7cf6a42754352a72eeac
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	optdepends = ldraw-parts-library: additional LEGO parts
+	source = leocad-0.83.2.tar.gz::https://github.com/leozide/leocad/archive/v0.83.2.tar.gz
+	sha256sums = 4f532a2fca620e512b38c0526370900969e5f25d84cff300927887d147a94984
 
 pkgname = leocad
 

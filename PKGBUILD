@@ -1,43 +1,32 @@
+# Maintainer: Michael Straube <straubem@gmx.de>
 # Contributor: Seth Schroeder <theking@kingdomofseth.com>
 # Contributor: Sven Schneider <archlinux.sandmann@googlemail.com>
- 
+
 pkgname=leocad
-pkgver=0.83
-_piecesver=9306
+pkgver=0.83.2
 pkgrel=1
-pkgdesc="LeoCAD is a CAD program for creating virtual LEGO models. It 
-has an easy to use interface and currently includes over 6000 different 
-pieces created by the LDraw community."
+pkgdesc="A CAD program for creating virtual LEGO models"
 arch=('i686' 'x86_64')
 url="http://leocad.org"
 license=('GPL')
-makedepends=('qtchooser' 'subversion')
-depends=('zlib' 'libjpeg' 'libpng' 'gtk2' 'mesa')
-source=(${pkgname}::svn+http://svn.leocad.org/tags/leocad-$pkgver
-http://github.com/tozian/leocad-arch/raw/master/source/Library-Linux-${_piecesver}.zip
-leocad.sh)
-md5sums=('SKIP'
-'e3268cf8fbe50b6abd2c4bf31247ab83'
-'cbe0189f828a7cf6a42754352a72eeac')
- 
+depends=('qt5-base' 'hicolor-icon-theme')
+makedepends=('qt5-tools')
+optdepends=('ldraw-parts-library: additional LEGO parts')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/leozide/leocad/archive/v$pkgver.tar.gz")
+sha256sums=('4f532a2fca620e512b38c0526370900969e5f25d84cff300927887d147a94984')
+
 build() {
-cd "${srcdir}/${pkgname}"
- 
-# install the binary to /usr/share
-qmake-qt4 leocad.pro
-sed 's#$(INSTALL_ROOT)/usr/bin#$(INSTALL_ROOT)/usr/share/leocad/bin#g' -i Makefile
-make
-}
- 
-package() {
-cd "${srcdir}/${pkgname}"
- 
-make INSTALL_ROOT="${pkgdir}" install
- 
-install -dm755 "${pkgdir}/usr/share/leocad/pieces/"
-install -Dm644 "${srcdir}/library.bin" "${pkgdir}/usr/share/leocad/pieces/library.bin"
- 
-install -dm755 "${pkgdir}/usr/bin/"
-install -Dm755 "${srcdir}/leocad.sh" "${pkgdir}/usr/bin/leocad"
+  cd $pkgname-$pkgver
+
+  qmake-qt5 \
+    INSTALL_PREFIX=/usr \
+    DISABLE_UPDATE_CHECK=1 \
+    LDRAW_LIBRARY_PATH=/usr/share/ldraw
+  make
 }
 
+package() {
+  cd $pkgname-$pkgver
+
+  make INSTALL_ROOT="$pkgdir" install
+}
