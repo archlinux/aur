@@ -1,0 +1,10 @@
+post_install() {
+    udevadm control --reload-rules
+    systemctl daemon-reload
+    systemctl start g810-led
+    systemctl enable g810-led
+
+    echo "Installed unit files:"
+    echo "g810-led.service: set keyboard profile on boot"
+    echo "g810-led-reboot: set keyboard profile on reboot"
+}

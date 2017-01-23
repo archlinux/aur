@@ -1,0 +1,21 @@
+pkgbase = g810-led
+	pkgdesc = Linux led controller for the Logitech G810, G410, G610 and G910 keyboards
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/MatMoul/g810-led/
+	install = g810-led.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = hidapi
+	optdepends = libusb: alternative USB communication library (slower, more stable)
+	backup = etc/g810-led/profile
+	backup = etc/g810-led/reboot
+	source = https://github.com/MatMoul/g810-led/archive/master.zip
+	md5sums = a3c8874ce8b5ec20c75ac76ad0bf0700
+
+pkgname = g810-led
+
