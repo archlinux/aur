@@ -1,7 +1,7 @@
 pkgbase = systemd-git
 	pkgdesc = systemd from git
 	pkgver = 232.r615.g88e4dbd50
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.github.com/systemd/systemd
 	arch = i686
 	arch = x86_64
@@ -83,18 +83,18 @@ pkgname = systemd-git
 	optdepends = quota-tools: kernel-level quota management
 	optdepends = systemd-sysvcompat-git: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
+	provides = systemd=232.r615.g88e4dbd50
+	provides = udev=232.r615.g88e4dbd50
 	provides = nss-myhostname
 	provides = systemd-tools=232.r615.g88e4dbd50
-	provides = udev=232.r615.g88e4dbd50
-	provides = systemd=232.r615.g88e4dbd50
+	conflicts = systemd
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
-	conflicts = systemd
+	replaces = systemd
 	replaces = nss-myhostname
 	replaces = systemd-tools
 	replaces = udev
-	replaces = systemd
 	backup = etc/pam.d/systemd-user
 	backup = etc/systemd/coredump.conf
 	backup = etc/systemd/journald.conf

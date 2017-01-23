@@ -6,7 +6,7 @@ pkgbase=systemd-git
 pkgname=('systemd-git' 'libsystemd-git' 'systemd-sysvcompat-git')
 pkgdesc="systemd from git"
 pkgver=232.r615.g88e4dbd50
-pkgrel=2
+pkgrel=3
 branch='master'
 arch=('i686' 'x86_64')
 url="https://www.github.com/systemd/systemd"
@@ -91,9 +91,9 @@ package_systemd-git() {
   depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' 'libsystemd-git' 'libidn' 'lz4' 'pam' 'libelf' 'libseccomp'
            'util-linux' 'xz')
-  provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" "systemd=$pkgver")
-  replaces=('nss-myhostname' 'systemd-tools' 'udev' 'systemd')
-  conflicts=('nss-myhostname' 'systemd-tools' 'udev' 'systemd')
+  provides=("systemd=$pkgver" "udev=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver")
+  replaces=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
+  conflicts=('systemd' 'nss-myhostname' 'systemd-tools' 'udev' )
   optdepends=('cryptsetup: required for encrypted block devices'
               'libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
