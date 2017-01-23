@@ -1,0 +1,22 @@
+pkgbase = psimedia
+	pkgdesc = Voice and video chat plugin for Psi-like IM clients. The implementation is based on GStreamer.
+	pkgver = 20121205
+	pkgrel = 1
+	url = http://delta.affinix.com/psimedia/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = pkgconfig
+	makedepends = gdb
+	makedepends = git
+	depends = psi
+	depends = speex
+	depends = gstreamer0.10-base
+	depends = qt4
+	depends = gstreamer0.10-good-plugins
+	depends = liboil
+	source = psimedia::git://github.com/psi-im/psimedia.git#commit=4918a1cc5e9489b4960c25b473fbd324f6cebc86
+	md5sums = SKIP
+
+pkgname = psimedia
+
