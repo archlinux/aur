@@ -3,7 +3,7 @@
 
 pkgname=libreoffice-online
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="HTML5-based/cloud-based version of the office suite"
 arch=("x86_64")
 url="https://cgit.freedesktop.org/libreoffice/online/"
@@ -38,5 +38,5 @@ package() {
   mkdir -p "${pkgdir}/var/lib/lool"
   mkdir -p "${pkgdir}/var/cache/loolwsd"
   mkdir -p "${pkgdir}/var/lib/lool/child-roots"
-  cp -r systemplate "${pkgdir}/var/lib/lool"
+  chmod u+w "${pkgdir}/var/lib/lool/child-roots"
 }
