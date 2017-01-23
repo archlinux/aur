@@ -10,7 +10,7 @@
 
 pkgname=strongswan
 pkgver=5.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="open source IPsec implementation"
 url='http://www.strongswan.org'
 license=("GPL")
@@ -80,7 +80,7 @@ build() {
         --enable-aesni --enable-eap-ttls --enable-radattr --enable-xauth-pam --enable-xauth-noauth \
         --enable-eap-dynamic --enable-eap-peap --enable-eap-tls --enable-chapoly --enable-unity \
         --with-capabilities=libcap --enable-newhope --enable-ntru --enable-mgf1 --enable-sha3 \
-        --enable-bliss
+        --enable-test-vectors --enable-bliss
 # if you want networkmanager support, add --enable-nm
 #       --enable-ruby-gems --enable-python-eggs
   make
