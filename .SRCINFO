@@ -21,7 +21,6 @@ pkgbase = zoom
 	depends = sqlite
 	depends = xcb-util-keysyms
 	depends = qt5-webengine
-	depends = gstreamer0.10-base
 	depends = qt5-svg
 	options = !strip
 	source_i686 = zoom-2.0.81497.0116_i386.deb::https://zoom.us/client/2.0.81497.0116/zoom_i386.deb
