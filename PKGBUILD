@@ -1,14 +1,14 @@
 # Maintainer: Joseph Lansdowne <J49137@gmail.com>
 pkgname=lib32-libbass
 pkgver=2.4.12
-pkgrel=3
+pkgrel=4
 pkgdesc="BASS audio library (32-bit)"
 arch=(x86_64)
 url="http://www.un4seen.com/"
 license=(custom)
 depends=(alsa-lib)
 source=(http://dl.un4seen.com/files/bass24-linux.zip LICENSE)
-md5sums=('8609a94f0f54c0037bfc9c82bb301ad3'
+md5sums=('7ba6fbf12b3893096f0ef8e238eb624b'
          '3ab2a50d2f88f284eb854a6a9a35f51f')
 
 build () {
