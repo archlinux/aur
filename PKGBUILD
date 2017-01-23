@@ -3,7 +3,7 @@
 pkgname=appimage-git
 _gitname=AppImageKit
 pkgdesc="Package desktop applications as AppImages that run on common Linux-based operating systems, such as RHEL, CentOS, Ubuntu, Fedora, debian and derivatives."
-pkgver=r325.a6efcca
+pkgver=r438.f25c428
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://appimage.org"
@@ -32,6 +32,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_gitname}"
+  git checkout master
   cmake .
 }
 
