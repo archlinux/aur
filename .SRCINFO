@@ -1,7 +1,7 @@
 pkgbase = franz-bin
 	pkgdesc = Franz is a free messaging app / former Emperor of Austria and combines chat & messaging services into one application. Franz currently supports Slack, WhatsApp, WeChat, HipChat, Facebook Messenger, Telegram, Google Hangouts, GroupMe, Skype and many more.
 	pkgver = 4.0.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://meetfranz.com/
 	arch = i686
 	arch = x86_64
@@ -29,9 +29,9 @@ pkgbase = franz-bin
 	sha256sums = 6e761371afadf155b8bc25e94fd7de371c16130a87338300e5800924916a7a28
 	sha256sums = f99c2ecb2bc00e05690dbfd62dbe6a0253ec4e156b097ed79e3cec7c820fbfd8
 	sha256sums = dd0d0fd89d6f3bcdc1e318e910509035204b461a553ff0d32127e37b25692e0c
-	source_i686 = https://github.com/imprecision/franz-app/releases/download/4.0.4/Franz-linux-ia32-4.0.4.tgz
+	source_i686 = https://github.com/meetfranz/franz-app/releases/download/4.0.4/Franz-linux-ia32-4.0.4.tgz
 	sha256sums_i686 = de47566b0de0a4ba966300e7708462bd3eb662e619fa4068a29f47285495899a
-	source_x86_64 = https://github.com/imprecision/franz-app/releases/download/4.0.4/Franz-linux-x64-4.0.4.tgz
+	source_x86_64 = https://github.com/meetfranz/franz-app/releases/download/4.0.4/Franz-linux-x64-4.0.4.tgz
 	sha256sums_x86_64 = 65e63c9aa71c46f391ce5b62bca0b77dcae59d0cef18691e39e4c5ec24a85e6b
 
 pkgname = franz-bin
