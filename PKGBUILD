@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Time Tracking Software."
 arch=('x86_64')
 provides=('toggldesktop')
-conflicts=('toggldesktop')
+conflicts=('toggldesktop' 'toggl-bin')
 
 depends=('libxss'
   'openssl'
