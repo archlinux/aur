@@ -3,7 +3,7 @@
 
 pkgname=netbeans-javaee
 pkgver=8.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Netbeans IDE for Java EE'
 arch=('any')
 
@@ -30,7 +30,7 @@ sha512sums=(
 )
 
 prepare() {
-	cd "${srcdir}"
+    cd "${srcdir}"
 
     # The zip file comes with files for other OS as well, let's remove them.
     rm $(find -name '*\.exe' -or -name '*\.bat' -or -name '*\.dll')
@@ -63,10 +63,10 @@ prepare() {
 package() {
     mkdir -p "$pkgdir/usr/"{bin,share/netbeans}
 
-	cp -r "$srcdir/netbeans" "$pkgdir/usr/share/"
-	ln -s /usr/share/netbeans/bin/netbeans "${pkgdir}/usr/bin/netbeans"
+    cp -r "$srcdir/netbeans" "$pkgdir/usr/share/"
+    ln -s /usr/share/netbeans/bin/netbeans "${pkgdir}/usr/bin/netbeans"
 
     # Desktop shortcut and icon
-	install -Dm644 netbeans.desktop "${pkgdir}/usr/share/applications/netbeans.desktop"
+    install -Dm644 netbeans.desktop "${pkgdir}/usr/share/applications/netbeans.desktop"
     install -Dm644 "$srcdir/netbeans.png" "$pkgdir/usr/share/pixmaps/netbeans.png"
 }
