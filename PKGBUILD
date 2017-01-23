@@ -16,14 +16,9 @@ depends=("firefox>=38")
 source=("https://addons.mozilla.org/firefox/downloads/file/410478/${_plugin_name}-${pkgver}${_plugin_ext}.xpi")
 sha256sums=('d571f6e11daaec28bf9ec77edcd6f23cfaf5e5f55cd670d63b678f69048c7747')
 
-prepare() {
-  cd "${srcdir}"
-  unzip -qqo "${_plugin_name}-${pkgver}${_plugin_ext}.xpi" -d "${_plugin_name}-${pkgver}"
-}
-
 package() {
   cd "${srcdir}"
-  _extension_id="$(sed -n '/.*em:id="\(.*\)".*/{s//\1/p;q}' ${_plugin_name}-${pkgver}/install.rdf)"
+  _extension_id="$(sed -n '/.*em:id="\(.*\)".*/{s//\1/p;q}' install.rdf)"
   _extension_dest="${pkgdir}/usr/lib/firefox/browser/extensions/${_extension_id}"
   install -Dm644 ${_plugin_name}-${pkgver}${_plugin_ext}.xpi "${_extension_dest}.xpi"
 }
