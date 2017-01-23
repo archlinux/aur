@@ -45,7 +45,9 @@ package_gurobi() {
 
   cd "$srcdir/${_basename}${pkgver//./}/linux64/"
 
-  awk 'NR==22 {$0="if version != (2, 7) and version != (3, 5) and version != (3, 6):"} { print }' setup.py
+  awk 'NR==22 {$0="if version != (2, 7) and version != (3, 5) and version != (3, 6):"} 1' setup.py > setup2.py
+  mv setup2.py setup.py
+  cp -r lib/python3.5_utf32 lib/python3.6_utf32 
 
   install -d "${pkgdir}/usr/bin/" "${pkgdir}/usr/share/doc/${_basename}/" \
           "${pkgdir}/usr/include/" "${pkgdir}/usr/lib/${_basename}/matlab/"
@@ -76,7 +78,7 @@ package_gurobi() {
 
   python2 setup.py install --root="$pkgdir" --optimize=1
   python3 setup.py install --root="$pkgdir" --optimize=1
-  install -D "lib/python3.5_utf32/gurobipy/gurobipy.so" "${pkgdir}/usr/lib/python3.5/site-packages/gurobipy/"
+  install -D "lib/python3.6_utf32/gurobipy/gurobipy.so" "${pkgdir}/usr/lib/python3.6/site-packages/gurobipy/"
 
   install -D -m644 lib/gurobi.jar "${pkgdir}/usr/share/java/${_basename}/gurobi.jar"
 
