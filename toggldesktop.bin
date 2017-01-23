@@ -1,2 +1,2 @@
 #!/bin/sh
-LD_LIBRARY_PATH=/opt/toggldesktop/lib /opt/toggldesktop/TogglDesktop
+LD_LIBRARY_PATH=/opt/toggldesktop/lib /opt/toggldesktop/TogglDesktop.sh "$@"
