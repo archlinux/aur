@@ -3,7 +3,7 @@
 pkgbase=python-control
 pkgname=('python2-control' 'python-control')
 pkgver=0.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Implements basic operations for analysis and design of feedback control systems in Python"
 arch=('any')
 license=('BSD')
