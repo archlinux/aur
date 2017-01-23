@@ -1,7 +1,7 @@
 pkgbase = mons
 	pkgdesc = Bash script to quickly manage 2-monitors display using xrandr.
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ventto/mons.git
 	arch = any
 	license = MIT
