@@ -1,0 +1,35 @@
+pkgbase = ros-jade-dwa-local-planner
+	pkgdesc = ROS - This package provides an implementation of the Dynamic Window Approach to local robot navigation on a plane.
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = http://wiki.ros.org/dwa_local_planner
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-jade-nav-core
+	makedepends = ros-jade-tf
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-base-local-planner
+	makedepends = ros-jade-costmap-2d
+	makedepends = ros-jade-pcl-conversions
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-cmake-modules
+	makedepends = ros-jade-dynamic-reconfigure
+	makedepends = ros-jade-nav-msgs
+	makedepends = ros-jade-pluginlib
+	makedepends = eigen3
+	depends = ros-jade-nav-core
+	depends = ros-jade-tf
+	depends = ros-jade-roscpp
+	depends = ros-jade-base-local-planner
+	depends = ros-jade-costmap-2d
+	depends = ros-jade-dynamic-reconfigure
+	depends = ros-jade-nav-msgs
+	depends = ros-jade-pluginlib
+	depends = eigen3
+	source = ros-jade-dwa-local-planner-1.13.1-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/jade/dwa_local_planner/1.13.1-0.tar.gz
+	sha256sums = 845f9b2871d2828bc99b0555a0cefa87889078bbbe4658d7c8d678202384beec
+
+pkgname = ros-jade-dwa-local-planner
+
