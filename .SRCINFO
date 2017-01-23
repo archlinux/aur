@@ -1,0 +1,34 @@
+pkgbase = ros-jade-global-planner
+	pkgdesc = ROS - A path planner library and node.
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = http://wiki.ros.org/global_planner
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-jade-nav-core
+	makedepends = ros-jade-tf
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-geometry-msgs
+	makedepends = ros-jade-navfn
+	makedepends = ros-jade-angles
+	makedepends = ros-jade-costmap-2d
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-dynamic-reconfigure
+	makedepends = ros-jade-nav-msgs
+	makedepends = ros-jade-pluginlib
+	depends = ros-jade-nav-core
+	depends = ros-jade-tf
+	depends = ros-jade-roscpp
+	depends = ros-jade-geometry-msgs
+	depends = ros-jade-navfn
+	depends = ros-jade-costmap-2d
+	depends = ros-jade-dynamic-reconfigure
+	depends = ros-jade-nav-msgs
+	depends = ros-jade-pluginlib
+	source = ros-jade-global-planner-1.13.1-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/jade/global_planner/1.13.1-0.tar.gz
+	sha256sums = 2fbf1a7a162abcd381e420b2b57055731d33dc92694b91cc6a0222e53b043c40
+
+pkgname = ros-jade-global-planner
+
