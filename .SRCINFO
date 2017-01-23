@@ -1,7 +1,7 @@
 pkgbase = lux
 	pkgdesc = Bash script to easily control brightness on backlight controllers.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ventto/lux.git
 	arch = any
 	license = GPL3
