@@ -1,0 +1,24 @@
+pkgbase = ttf-droid-simple
+	pkgdesc = General-purpose fonts released by Google as part of Android
+	pkgver = 2012.10.17
+	pkgrel = 5
+	url = http://www.droidfonts.com/
+	arch = any
+	license = Apache
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	provides = ttf-font
+	provides = ttf-droid
+	conflicts = ttf-droid
+	source = https://sources.archlinux.org/other/community/ttf-droid/ttf-droid-20121017.tar.xz
+	source = serif-fontconfig.conf
+	source = sans-fontconfig.conf
+	source = sans-mono-fontconfig.conf
+	sha256sums = f068efec9e8201fe0d1be75b1a4751c98d14dc44267b2237f549403b2a8069e3
+	sha256sums = 311c79e55fc58e83f066377393e59865518dcbe09b51e5fe3459b69fbac3b6af
+	sha256sums = 93a0dc8e3258be4fafa68df120add114018bb723af7c0d61b60c6d908fcd87b2
+	sha256sums = 42da7d1ac6d7055971c8b1bb98a83e893fbed621534b04247a5f6ed89ca14d44
+
+pkgname = ttf-droid-simple
+
