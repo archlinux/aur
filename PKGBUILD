@@ -22,6 +22,13 @@ source=("https://github.com/tensorflow/tensorflow/archive/${pkgver}.zip"
 md5sums=('5cbd72426e1f16d103eb8f780488bf82'
          '0c9dae7ad2ef6ea234b6aa178a688d7b')
 
+prepare() {
+  cd "$srcdir/tensorflow-${pkgver}"
+
+  # fix for issue 6594
+  sed -i 's|zlib.net/zlib|zlib.net/fossils/zlib|' "$srcdir/tensorflow-${pkgver}/tensorflow/workspace.bzl"
+}
+
 build() {
   cd "$srcdir/tensorflow-${pkgver}"
 
@@ -39,13 +46,9 @@ build() {
   export TF_CUDNN_VERSION=$(sed -n 's/^#define CUDNN_MAJOR\s*\(.*\).*/\1/p' $CUDNN_INSTALL_PATH/include/cudnn.h)
   export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-5
 
-  # fix for issue 6594
-  sed -i 's/zlib.net/zlib.net\/fossils/' "$srcdir/tensorflow-${pkgver}/tensorflow/workspace.bzl"
-
   ./configure
   bazel build -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
   bazel-bin/tensorflow/tools/pip_package/build_pip_package $srcdir/tmp
-
   bazel shutdown
 }
 
@@ -60,3 +63,4 @@ package() {
   install -Dm755 $srcdir/python-tensorflow.sh "$pkgdir/etc/profile.d/python-tensorflow.sh"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
