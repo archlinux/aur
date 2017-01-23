@@ -2,13 +2,13 @@
 
 pkgname=magic-wormhole-git
 _pkgname=${pkgname%-*}
-pkgver=0.8.2
+pkgver=0.9.2
 pkgrel=2
 pkgdesc="Securely transfer data between computers"
 arch=('any')
 url="https://github.com/warner/${_pkgname}"
 license=('MIT')
-depends=('python' 'python-click' 'python-cffi' 'python-autobahn' 'python-tqdm' 'python-hkdf' 'python-pynacl' 'python-spake2' 'python-humanize' 'python-idna' 'python-service-identity')
+depends=('python' 'python-click' 'python-cffi' 'python-autobahn' 'python-tqdm' 'python-hkdf' 'python-pynacl' 'python-spake2' 'python-humanize' 'python-idna' 'python-service-identity' 'python-ipaddress')
 makedepends=('python-setuptools')
 source=("git+${url}.git")
 md5sums=('SKIP')
