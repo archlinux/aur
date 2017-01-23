@@ -62,14 +62,12 @@ package() {
   done
 
   # Licenses
-  install -Dm644 'Google-Terms-of-Service.html' \
-      "$pkgdir/usr/share/licenses/$pkgname/Google-Terms-of-Service.html"
-  install -Dm644 'Google-Earth-Additional-Terms-of-Service.html' \
-      "$pkgdir/usr/share/licenses/$pkgname/Google-Earth-Additional-Terms-of-Service.html"
-  install -Dm644 'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html' \
-      "$pkgdir/usr/share/licenses/$pkgname/Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html"
-  install -Dm644 'Google-Privacy-Policy.html' \
-      "$pkgdir/usr/share/licenses/$pkgname/Google-Privacy-Policy.html"
+  for i in 'Google-Terms-of-Service.html' \
+           'Google-Earth-Additional-Terms-of-Service.html' \
+           'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html' \
+           'Google-Privacy-Policy.html'; do
+     install -Dm644 $i "$pkgdir"/usr/share/licenses/$pkgname/$i
+  done
 
   msg2 "Removing the Debian-intended cron job and duplicated images..."
   rm -r "$pkgdir"/etc/cron.daily/ "$pkgdir"/$_instdir/product_logo_*.png
