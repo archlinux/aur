@@ -1,40 +1,105 @@
-# Maintainer: Karel Louwagie <karel@louwagie.net>
+# Maintainer: Samuel Walladge <samuel at swalladge dot id dot au>
+# Contributor: Karel Louwagie <karel@louwagie.net>
 
 pkgname=toggldesktop
-pkgver=7.4.7
+pkgver=7.4.14
 pkgrel=1
-pkgdesc="Time Tracking Software."
+pkgdesc="Toggl time tracking software"
 arch=('x86_64')
-
+url="https://github.com/toggl/toggldesktop"
+license=('BSD')
 depends=('libxss'
-	'openssl'
-	'poco'
-	'qt5-base'
-	'qt5-declarative'
-	'qt5-location'
-	'qt5-sensors'
-	'qt5-svg'
-	'qt5-webchannel'
-	'qt5-webkit')
+         'openssl'
+         'qt5-base'
+         'qt5-declarative'
+         'qt5-location'
+         'qt5-sensors'
+         'qt5-svg'
+         'qt5-webchannel'
+         'qt5-webkit'
+         'qt5-x11extras')
+makedepends=('readline' 'gendesk')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/toggl/toggldesktop/archive/v${pkgver}.tar.gz"
+        "production.patch"
+        )
 
-url='https://toggl.com/'
-source=('removelibs.list'
-	'toggldesktop.deb::https://toggl.com/api/v8/installer?app=td&platform=deb64&channel=stable'
-	'toggldesktop.bin')
+sha512sums=('c223fb08acd4d089f1e4a028ec27a685c83b5ea97bfd34abe23e2c2a98a689fba24dd0d9190ca535ed35d64d064e51c774f8d6880241c60ab8b66da5e4f9fad8'
+            'b694b38cf9ab0391dc6b1fc7a7e0dccf910e1edd16389d9eb8b2a893df1fddb86e6eb212bebdf008c8ec6991dc05f3dac6996ba2aa570211cd68f503879cadaa')
+
+conflicts=('toggldesktop-bin' 'toggl-bin')
 
 prepare() {
-	    tar -xf data.tar.xz
-	    for lib in `cat removelibs.list`
-	    do
-		rm -rf $srcdir/opt/toggldesktop/lib/$lib
-	    done
+  cd "${srcdir}"
+
+  # patch to build for production
+  # https://github.com/toggl/toggldesktop/wiki/Building-Toggl-Desktop-from-source-for-usage-with-live-servers
+  (
+    cd "${pkgname}-${pkgver}"
+    patch -p1 < ../production.patch
+  )
+
+  # make the run script
+  cat << EOF > ${pkgname}
+#!/bin/bash
+exec /opt/${pkgname}/TogglDesktop.sh "\$@"
+EOF
+
+  # generate a desktop file
+  gendesk -f -n --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" --name "Toggl Desktop"
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make deps
+  make
 }
 
 package() {
-	cp -a $srcdir/opt/ $srcdir/usr/ $pkgdir
-	install -D -m 0755 toggldesktop.bin $pkgdir/usr/bin/toggldesktop
+  cd "${srcdir}"
+  install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm755 ${pkgname}  ${pkgdir}/usr/bin/${pkgname}
+
+  cd "${pkgname}-${pkgver}"
+
+  # license file in standard location
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  out="${pkgdir}/opt/${pkgname}"
+
+  # Copy Toggl Desktop shared library
+  install -Dm644 src/lib/linux/TogglDesktopLibrary/build/release/libTogglDesktopLibrary.so.1 ${out}/lib/libTogglDesktopLibrary.so.1
+
+  # Copy README
+  install -Dm644 src/ui/linux/README ${out}
+
+  # Copy Bugsnag library
+  install -Dm644 third_party/bugsnag-qt/build/release/libbugsnag-qt.so.1 ${out}/lib/libbugsnag-qt.so.1
+
+  # Copy Poco libraries
+  for lib in libPocoCrypto.so.31 libPocoData.so.31 libPocoDataSQLite.so.31 libPocoFoundation.so.31 libPocoJSON.so.31 libPocoNet.so.31 libPocoNetSSL.so.31 libPocoUtil.so.31 libPocoXML.so.31; do
+    install -Dm644 third_party/poco/lib/Linux/x86_64/${lib} ${out}/lib/${lib}
+  done
+
+  # Copy executable
+  install -Dm755 src/ui/linux/TogglDesktop/build/release/TogglDesktop ${out}
+
+  # Copy startup script
+  install -Dm755 src/ui/linux/TogglDesktop.sh ${out}
+
+  # Copy icons
+  install -Dm644 src/ui/linux/TogglDesktop/icons/1024x1024/${pkgname}_gray.png ${out}/icons/1024x1024/${pkgname}_gray.png
+  for res in 1024x1024 128x128 16x16 24x24 256x256 32x32 48x48 64x64 96x96; do
+    install -Dm644 src/ui/linux/TogglDesktop/icons/${res}/${pkgname}.png ${out}/icons/${res}/${pkgname}.png
+  done
+
+  # Copy certificate bundle
+  install -Dm644 src/ssl/cacert.pem ${out}
+
+  # link icon for desktop file
+  install -dm755 "${pkgdir}/usr/share/pixmaps/"
+  ln -s "/opt/${pkgname}/icons/1024x1024/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
 
-sha512sums=('5c8fc6fcc8d9905455cc54a61412dc772667599c5abab056d308223c54c85ef47afc3078acbb44ac84f8e1b31ccd838d245e3ce0a3037ddec9201549125f6847'
-            'e6fe30927a7fd34b29f8a8587aa62ed9ca88e5a12ae0ca220d8cb6a2db77cc0904527bd9d2a72eb830a576f8d38b65f3cc4d3263c0329b3c7aaf24e8161ebd03'
-            'b784a9beff75e0aab5b59f53c1d200c377a2df967b92762ddc371043940c09fba169642f3e0c066b49060d4cf62e6cf68305a5ad8ad73d120ea18f0fd280307f')
+# vim:set ts=2 sw=2 et:
+
+

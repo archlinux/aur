@@ -1,8 +1,5 @@
-# ignore build files                                                                                                                                                                           
+# ignore build files
 *.pkg.tar.xz
 *.sig
 src/
 pkg/
- 
-# ignore sources
-toggldesktop.deb

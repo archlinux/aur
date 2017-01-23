@@ -1,0 +1,36 @@
+diff --git a/src/context.cc b/src/context.cc
+index f47a23c13..45d169056 100644
+--- a/src/context.cc
++++ b/src/context.cc
+@@ -76,7 +76,7 @@ Context::Context(const std::string app_name, const std::string app_version)
+ , idle_(&ui_)
+ , last_sync_started_(0)
+ , sync_interval_seconds_(0)
+-, update_check_disabled_(false)
++, update_check_disabled_(true)
+ , quit_(false)
+ , ui_updater_(this, &Context::uiUpdaterActivity)
+ , reminder_(this, &Context::reminderActivity)
+@@ -88,9 +88,6 @@ Context::Context(const std::string app_name, const std::string app_version)
+         Poco::Net::HTTPSStreamFactory::registerFactory();
+     }
+ 
+-    urls::SetUseStagingAsBackend(
+-        app_version.find("7.0.0") != std::string::npos);
+-
+     Poco::ErrorHandler::set(&error_handler_);
+     Poco::Net::initializeSSL();
+ 
+diff --git a/src/ui/linux/TogglDesktop/TogglDesktop.pro b/src/ui/linux/TogglDesktop/TogglDesktop.pro
+index bf49aaa41..cc6b6a4ef 100644
+--- a/src/ui/linux/TogglDesktop/TogglDesktop.pro
++++ b/src/ui/linux/TogglDesktop/TogglDesktop.pro
+@@ -8,7 +8,7 @@ VERSION = 7.0.0
+ 
+ DEFINES += APP_VERSION=\\\"$$VERSION\\\"
+ 
+-ENVIRONMENT = "development"
++ENVIRONMENT = "production"
+ 
+ DEFINES += APP_ENVIRONMENT=\\\"$$ENVIRONMENT\\\"
+ 
