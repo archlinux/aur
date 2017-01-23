@@ -1,0 +1,12 @@
+pkgbase = gint-git
+	pkgdesc = Gint and a libc for the Casio fx9860 calculators
+	pkgver = r32.49df2a5
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	depends = fxsdk
+	source = git+http://git.planet-casio.com/lephe/gint.git
+	md5sums = SKIP
+
+pkgname = gint-git
+
