@@ -1,7 +1,7 @@
 pkgbase = leocad
 	pkgdesc = A CAD program for creating virtual LEGO models
 	pkgver = 0.83.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://leocad.org
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,10 @@ pkgbase = leocad
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = hicolor-icon-theme
-	optdepends = ldraw-parts-library: additional LEGO parts
 	source = leocad-0.83.2.tar.gz::https://github.com/leozide/leocad/archive/v0.83.2.tar.gz
+	source = https://github.com/leozide/leocad/releases/download/v0.83.2/Library-Linux-9306.zip
 	sha256sums = 4f532a2fca620e512b38c0526370900969e5f25d84cff300927887d147a94984
+	sha256sums = 65c93a613b43160cb1d2855ae54dd7d47b92410179926ab391c887faa4f98c59
 
 pkgname = leocad
 
