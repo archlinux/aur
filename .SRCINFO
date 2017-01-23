@@ -1,9 +1,10 @@
 pkgbase = fxsdk-git
 	pkgdesc = Tools to program for the Casio fx9860 calculators
 	pkgver = r9.e4bde46
-	pkgrel = 1
+	pkgrel = 2
 	arch = i686
 	arch = x86_64
+	provides = fxsdk
 	source = git+http://git.planet-casio.com/lephe/fxsdk.git
 	md5sums = SKIP
 
