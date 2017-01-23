@@ -1,7 +1,7 @@
 pkgbase = libint2
 	pkgdesc = A high-performance library for evaluation of molecular integrals of many-body operators over Gaussian functions
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/evaleev/libint
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = libint2
 	makedepends = gcc
 	makedepends = automake
 	makedepends = autoconf
+	depends = boost
+	depends = boost-libs
 	source = https://github.com/evaleev/libint/archive/master.zip
 	md5sums = SKIP
 

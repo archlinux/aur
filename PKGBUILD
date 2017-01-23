@@ -1,14 +1,14 @@
 # Maintainer: Alexander Oleynichenko <alexvoleynichenko@gmail.com>
 pkgname=libint2
 pkgver='2.3.0'
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A high-performance library for evaluation of molecular integrals of many-body operators over Gaussian functions"
 arch=('i686' 'x86_64')
 url="https://github.com/evaleev/libint"
 license=('GPL')
 groups=()
-depends=()
+depends=(boost boost-libs)
 makedepends=(gcc automake autoconf)
 checkdepends=()
 optdepends=()
