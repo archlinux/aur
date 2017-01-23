@@ -4,7 +4,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano DOT torromeo AT google mail service>
 
 pkgname=python-unbound
-pkgver=1.5.9
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Validating, recursive, and caching DNS resolver: python binding'
 url='http://unbound.net/'
@@ -17,7 +17,7 @@ optdepends=('expat: unbound-anchor')
 _basename='unbound'
 validpgpkeys=('EDFAA3F2CA4E6EB05681AF8E9F6F1C2D7E045F8D')
 source=("http://unbound.net/downloads/${_basename}-${pkgver}.tar.gz"{,.asc})
-sha1sums=('4882c52aac0abcd72a86ac5d06e9cd39576620ce'
+sha1sums=('9b7606b016b447dc837efc108cee94f3fecf4ede'
           'SKIP')
 
 build() {
@@ -48,7 +48,7 @@ package() {
         rm -r "${pkgdir}/usr/lib/libunbound.la"
         rm -r "${pkgdir}/usr/lib/libunbound.so"
         rm -r "${pkgdir}/usr/lib/libunbound.so.2"
-        rm -r "${pkgdir}/usr/lib/libunbound.so.2.4.1"
+        rm -r "${pkgdir}/usr/lib/libunbound.so.2.4.3"
 
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
