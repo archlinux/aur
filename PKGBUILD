@@ -2,8 +2,8 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -60,12 +60,11 @@ backup=('etc/conf.d/libvirt-guests'
 	'etc/sasl2/libvirt.conf')
 install="libvirt.install"
 validpgpkeys=('C74415BA7C9C7F78F02E1DC34606B8A5DE95BC1F')
-source=("https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc}
+source=("https://libvirt.org/sources/$pkgname-$pkgver.tar.xz" #{,.asc}
 	libvirtd.conf.d
 	libvirtd-guests.conf.d
 	libvirt.tmpfiles.d)
-sha256sums=('b727c5f43ed3d7337ec2c2f2031ebd4207507978f68d00ad13d4f0f84aad6224'
-            'SKIP'
+sha256sums=('819dffefbfd6ae95dfe1b28cfdee15ebcf9f91bbd732157488a57705bf81cb1e'
             '9d0597bbf2bd7892420cebaf0563236fe1483b83ae95ee6263c1ce7f44a44134'
             '0896c30100e9e40aee1eb4a2cf0cac2c0bdd5fd7b077b9d2680d90e77435ea66'
             '5c26353833944db8dc97aa63843734519d6521bd8d88497d94d910ee9d3169d8')
