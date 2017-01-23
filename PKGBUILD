@@ -9,44 +9,45 @@
 # Contributor: Paolo Stivanin <admin at polslinux dot it>
 
 pkgname=keepassxc
-pkgver=2.0.3
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="A reboot with keepasshttp of an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
 arch=('i686' 'x86_64')
 url="https://github.com/keepassxreboot/keepassx"
 license=('GPL2')
 depends=('libxtst' 'shared-mime-info' 'qt5-x11extras' 'hicolor-icon-theme' 'desktop-file-utils' 'libmicrohttpd')
 makedepends=('intltool' 'cmake' 'qt5-base' 'qt5-tools' 'zlib' 'libgcrypt')
-conflicts=('keepassx-svn' 'keepassx' 'keepassx-git' 'keepassx2-git' 'keepassx2' 'keepassx2-yubikey-git' 'keepassx-http' 'keepassx-reboot-git')
-provides=("keepassx{,2}" 'keepassx-http' 'keepassx-reboot')
-replaces=('keepassx-http' 'keepassx-reboot')
-source=("https://github.com/keepassxreboot/keepassxc/archive/${pkgver}-http.tar.gz")
-sha256sums=('fe62a1a30629485df2350c8375fdf68f68a5827d2fe90439cd7397557f88662d')
+conflicts=('keepassx2')
+provides=('keepassx2')
+source=("https://github.com/keepassxreboot/keepassxc/archive/${pkgver}.tar.gz")
+sha256sums=('15442c5094b2aeb7e54a8b39aa19f47ae1561695ac6949e74409294370700d48')
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}-http"
+    cd "${pkgname}-${pkgver}"
     sed -i '/git/d' src/CMakeLists.txt
     mkdir -p build
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}-http/build"
+    cd "${pkgname}-${pkgver}/build"
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_BINDIR=/usr/bin \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib \
         -DCMAKE_VERBOSE_MAKEFILE=OFF \
         -DWITH_GUI_TESTS=OFF \
+	-DWITH_XC_AUTOTYPE=ON \
+	--DWITH_XC_HTTP=ON \
         -DCMAKE_BUILD_TYPE=Release ..
     make
 }
 
 check() {
-    cd "${srcdir}/${pkgname}-${pkgver}-http/build"
+    cd "${pkgname}-${pkgver}/build"
     make test
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}-http/build"
+    cd "${pkgname}-${pkgver}/build"
     make DESTDIR="${pkgdir}" install
 }
 
