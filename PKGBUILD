@@ -4,7 +4,7 @@
 # TODO: create a flow-examples package and add as an optdepend
 
 pkgname=flow-bin
-pkgver=0.37.4
+pkgver=0.38.0
 pkgrel=1
 epoch=
 pkgdesc="Adds static typing to JavaScript to improve developer productivity and code quality"
@@ -23,11 +23,14 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://raw.githubusercontent.com/facebook/flow/v${pkgver}/LICENSE")
-source_x86_64=("https://github.com/facebook/flow/releases/download/v${pkgver}/flow-linux64-v${pkgver}.zip")
-sha256sums=('7e143b7118d0d0d294ecac71a0dcf24275f3f9cc7a74a157a121ea18ec085114')
-sha256sums_x86_64=('fedcfe5f5da285ece7f14fb648d0ec963928959ea003fddc1702e1b34368e255')
-noextract=()
+source=(
+	"https://github.com/facebook/flow/releases/download/v${pkgver}/flow-linux64-v${pkgver}.zip"
+	"https://raw.githubusercontent.com/facebook/flow/v${pkgver}/LICENSE"
+)
+sha256sums=(
+	'c587d6a929fdf260a086bf9e1f7370f199bd84e17ce34d3f611794cf3792bc1c'
+	'7e143b7118d0d0d294ecac71a0dcf24275f3f9cc7a74a157a121ea18ec085114'
+)
 
 package() {
 	install -Dm0755 flow/flow "${pkgdir}/usr/bin/flow"
