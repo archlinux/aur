@@ -2,18 +2,22 @@
 
 pkgname=gone-home-hib
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Gone home is an interactive exploration simulator by Fullbright."
 arch=('i686' 'x86_64')
 url="http://www.gonehomegame.com/"
 license=('custom: commercial')
 depends=('glu' 'libxext' 'libxcursor')
+# If Firejail is installed, this application will be sandboxed automatically.
+optdepends=('firejail: Automatically sandbox this application from your OS')
 source=("hib://GoneHome_v${pkgver}.tar.gz"
         "${pkgname}.desktop"
-        "${pkgname}.install")
-sha256sums=("ecd01fcde184f7d1937579e7d5d4a791007887b88f9baa10039747166bb2d097"
-            "dea74a9436b2b37a63265c0606195293cb751855e2de473e678ab85600c92053"
-            "ea11e510a7c52e485cf1e87eb985691029b62fc694830a0c57f14b4173ac8edd")
+        "${pkgname}.install"
+        "$pkgname")
+sha256sums=('ecd01fcde184f7d1937579e7d5d4a791007887b88f9baa10039747166bb2d097'
+            'dea74a9436b2b37a63265c0606195293cb751855e2de473e678ab85600c92053'
+            'ea11e510a7c52e485cf1e87eb985691029b62fc694830a0c57f14b4173ac8edd'
+            'fa70977fb6bc2686f627d1131c158fcf39fcebb3b93c63b29b0c4a29e6df1b23')
 install="${pkgname}.install"
 [ "$CARCH" == "x86_64" ] && _arch="x86_64" || _arch="x86"
 # Prevent compressing final package
@@ -28,7 +32,7 @@ PKGEXT='.pkg.tar'
 # DLAGENTS+=('hib::/usr/bin/hib-dlagent -k $KEY -u $USER -p $PASS -o %o %u')
 #
 # The following is just a fallback to the above to notify the user:
-DLAGENTS+=("hib::/usr/bin/echo %u - This is is not a real URL, you need to download the humble bundle file manually to \"$PWD\" or setup a hib:// DLAGENT. Read this PKGBUILD for more information.")
+DLAGENTS+=("hib::/usr/bin/echo %u Download the HIB installer to \"$PWD\" or set up a hib:// DLAGENT. Read this PKGBUILD for more information.")
 
 package() {
     # Launcher and Data
@@ -37,7 +41,8 @@ package() {
 
     # Install Binaries/Launchers
     mkdir -p "$pkgdir/usr/bin"
-    ln -s "/opt/${pkgname}/GoneHome.${_arch}"  "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+    sed -i "s/ARCH/$_arch/" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Integration
     mkdir -p "$pkgdir/usr/share/pixmaps"

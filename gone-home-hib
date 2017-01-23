@@ -1,0 +1,12 @@
+#!/bin/sh
+
+run='/opt/gone-home-hib/GoneHome.ARCH'
+cd /opt/gone-home-hib/ || exit 1  # The launcher fails unless in its dir.
+
+if which firejail >/dev/null 2>&1 && [ -z "$FIREJAIL_IGNORE" ]; then
+  echo "Firejail detected. Enforcing a sandbox."
+  echo "To bypass Firejail enforcement, run FIREJAIL_IGNORE=1 $run."
+  firejail --caps.drop=all "$run"
+else
+  "$run"
+fi
