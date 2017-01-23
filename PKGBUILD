@@ -2,7 +2,7 @@
 # Please note you must have a Vulkan-capable GPU
 
 pkgname=vkquake
-pkgver=0.93
+pkgver=0.94
 pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
 arch=('i686' 'x86_64')
@@ -11,8 +11,9 @@ provides=('vkquake')
 url="https://github.com/Novum/vkquake"
 license=('GPL2')
 depends=(
- 'git' 'flac' 'glibc' 'libgl' 'libmad' 'libmikmod' 'libogg' 
-'libvorbis' 'libx11' 'opusfile' 'sdl2' 'vulkan-validation-layers'
+		 'git' 'flac' 'glibc' 'libgl' 'libmad' 'libmikmod' 'libogg' 
+		 'libvorbis' 'libx11' 'opusfile' 'sdl2' 'vulkan-validation-layers'
+		 'tslib'
 )
 install=$pkgname.install
 source=("git+https://github.com/Novum/vkquake.git#tag=${pkgver}"
