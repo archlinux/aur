@@ -1,12 +1,13 @@
+EXTRAMODULES=extramodules-4.10-mainline
+
 post_install() {
-    EXTRAMODULES='extramodules-4.5-mainline'
-    depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+  depmod -v $(cat /usr/lib/modules/$EXTRAMODULES/version) > /dev/null 2>&1
 }
 
 post_upgrade() {
-    post_install
+  depmod -v $(cat /usr/lib/modules/$EXTRAMODULES/version) > /dev/null 2>&1
 }
 
 post_remove() {
-    post_install
+  depmod -v $(cat /usr/lib/modules/$EXTRAMODULES/version) > /dev/null 2>&1
 }
