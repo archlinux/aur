@@ -2,7 +2,7 @@
 
 pkgname=nightcode
 _name=Nightcode
-pkgver=2.1.8
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="A simple IDE for Clojure and ClojureScript."
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=('nightcode-git')
 source=("https://github.com/oakes/Nightcode/archive/$pkgver.tar.gz"
         "https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh"
         "nightcode.desktop")
-sha256sums=('9fd1afc1e92543166e1429aec9f3dddca237bd9b922c2be056afea6e49ef0219'
+sha256sums=('b32c0d9b12cff7d3b9cc5d7cc9d78b54567d484ac7321789c2c7bd356f0e16b1'
             '895def8ef37f4b78bb37a26566ce970dc24219e880154a18ef7ade5a778d3a2f'
             '8fb613946bb9cb3dc636933ff2f0c7de8c61d2b43e49b9d6baf380b07377eaa1')
 noextract=('boot.sh')
