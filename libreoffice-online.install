@@ -1,7 +1,7 @@
 post_install() {
   getent group lool > /dev/null || groupadd -r lool > /dev/null
   getent passwd lool > /dev/null || useradd -g lool lool > /dev/null
-  post_update()
+  post_update
 }
 
 post_update() {
@@ -17,5 +17,6 @@ post_update() {
 post_remove() {
    userdel -rf lool
    groupdel lool
+   rm -r /var/lib/lool
 }
 
