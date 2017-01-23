@@ -1,0 +1,31 @@
+pkgbase = ros-jade-robot-pose-ekf
+	pkgdesc = ROS - The Robot Pose EKF package is used to estimate the 3D pose of a robot, based on (partial) pose measurements coming from different sources.
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = http://wiki.ros.org/robot_pose_ekf
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-geometry-msgs
+	makedepends = ros-jade-std-msgs
+	makedepends = ros-jade-rostest
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-sensor-msgs
+	makedepends = ros-jade-tf
+	makedepends = ros-jade-nav-msgs
+	makedepends = ros-jade-bfl
+	depends = ros-jade-roscpp
+	depends = ros-jade-geometry-msgs
+	depends = ros-jade-std-msgs
+	depends = ros-jade-rostest
+	depends = ros-jade-sensor-msgs
+	depends = ros-jade-tf
+	depends = ros-jade-nav-msgs
+	depends = ros-jade-bfl
+	source = ros-jade-robot-pose-ekf-1.13.1-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/jade/robot_pose_ekf/1.13.1-0.tar.gz
+	sha256sums = 69fdf2c87669d948d4b3edf027646293e3044fb8a1bc8aad5adb6e7ec84b953f
+
+pkgname = ros-jade-robot-pose-ekf
+
