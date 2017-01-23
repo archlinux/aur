@@ -10,8 +10,8 @@ arch=('i686' 'x86_64')
 url="http://nouveau.freedesktop.org/"
 license=('GPL')
 depends=('libdrm' 'systemd' 'mesa-dri')
-makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=20' 'git')
-conflicts=('xorg-server<1.16' 'X-ABI-VIDEODRV_VERSION<20' 'X-ABI-VIDEODRV_VERSION>=21', 'xf86-video-nouveau')
+makedepends=('xorg-server-devel' 'git')
+conflicts=('xorg-server<1.19' 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSION>=24', 'xf86-video-nouveau')
 groups=('xorg-drivers' 'xorg')
 install=$pkgname.install
 #source=(http://xorg.freedesktop.org/archive/individual/driver/$pkgname-$pkgver.tar.bz2)

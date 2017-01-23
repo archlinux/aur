@@ -10,14 +10,13 @@ pkgbase = xf86-video-nouveau-git
 	groups = xorg
 	license = GPL
 	makedepends = xorg-server-devel
-	makedepends = X-ABI-VIDEODRV_VERSION=20
 	makedepends = git
 	depends = libdrm
 	depends = systemd
 	depends = mesa-dri
-	conflicts = xorg-server<1.16
-	conflicts = X-ABI-VIDEODRV_VERSION<20
-	conflicts = X-ABI-VIDEODRV_VERSION>=21,
+	conflicts = xorg-server<1.19
+	conflicts = X-ABI-VIDEODRV_VERSION<23
+	conflicts = X-ABI-VIDEODRV_VERSION>=24,
 	conflicts = xf86-video-nouveau
 	source = git://anongit.freedesktop.org/nouveau/xf86-video-nouveau
 	sha256sums = SKIP
