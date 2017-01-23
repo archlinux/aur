@@ -4,7 +4,7 @@ pkgname=python-pipenv
 pkgver=0.2.4
 pkgrel=1
 pkgdesc="An experimental project that aims to bring the best of all packaging worlds to the Python world."
-url="https://github.com/kennethreitz/python-humanfriendly"
+url="https://github.com/kennethreitz/pipenv"
 license=('MIT')
 depends=('python' 'python-crayons' 'python-toml' 'python-click' 'python-pip' 'python-virtualenv' 
 'python-requirements-parser' 'python-delegator.py')
