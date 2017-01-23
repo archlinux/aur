@@ -3,7 +3,7 @@
 pkgname=backup-git
 _gitname=backup
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple tar based incremental daily backup script based on systemd'
 arch=('x86_64')
 url=https://github.com/dhtseany/backup
@@ -18,11 +18,11 @@ build() {
 	echo "Staging package"
 	mkdir -p usr/bin/backup
 	mkdir -p usr/share/backup
-	mkdir -p etc
+	mkdir -p etc/systemd
 	mv backup.conf etc/backup.conf
 	mv backup.sh usr/bin/backup/backup
-	mv backup.service usr/share/backup/backup.service.example
-	mv backup.timer usr/share/backup/backup.timer.example
+	mv backup.service etc/systemd/system/backup.service
+	mv backup.timer etc/systemd/system/backup.timer
 	mv storage-mounts-Public.mount usr/share/backup/storage-mounts-Public.mount.example
 }
 
