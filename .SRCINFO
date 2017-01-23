@@ -1,7 +1,7 @@
 pkgbase = ygopro-bin
 	pkgdesc = YGOPRO is a free online dueling system made for playing Yu-Gi-Oh! duels.
-	pkgver = 1.033.A
-	pkgrel = 3
+	pkgver = 1.033.D
+	pkgrel = 1
 	url = https://github.com/cromerc/ygopro
 	install = ygopro-bin.install
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = ygopro-bin
 	options = !strip
 	options = emptydirs
 	backup = opt/ygopro/system.conf
-	source = https://github.com/cromerc/ygopro/archive/1.033.A-2.tar.gz
+	source = https://github.com/cromerc/ygopro/archive/1.033.D-1.tar.gz
 	source = ygopro.sh
-	sha256sums = f67dc54506f6f41e9463958283ab980fffb364bb10e783a8b46f5ad3b6233c59
+	sha256sums = 017604d20afbef5ec548eceff3040db14427da499e833908b79b9321c61bd5dd
 	sha256sums = 706523e0c9732107e889cb20f3eece86096791237a959847bcd1debbdeb09532
 
 pkgname = ygopro-bin
