@@ -1,7 +1,7 @@
 # Maintainer: Fabian <plusfabi[AT+thegoogleadress]>
 pkgname=pokemon-revolution-online-bin
 pkgver=0.95.9.20170123
-pkgrel=1
+pkgrel=2
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
 url="http://pokemon-revolution-online.net"
@@ -13,7 +13,7 @@ conflicts=('pokemon-revolution-online')
 install="INSTALL"
 source=('net.pokemon-revolution-online.desktop' 'pokemonrevolution' 'copyright' 'pokemonrevolution.svg')
 md5sums=('3215173b6f1673d868e71f1d953ed9d2'
-         '1b667f450341675b6b2c1750e034516c'
+         '468427350f89449698740c8d2aae581e'
          '0efcd0393015ff149217f9ced4670513'
          '8446ead3097e1b87e3a63b667d956569')
 

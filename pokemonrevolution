@@ -3,8 +3,9 @@
 GAMEDIR="GAMEDIRNAMESETBYPKGBUILD"
 GAMEBINARY="GAMEBINARYNAMESETBYPKGBUILD"
 
-## enforce opengl to workaround a bug that makes the game start in direct3d mode on linux -> "-force-opengl"
-OPTIONS="-force-opengl"
+## enforce opengl to workaround a bug that makes the game start in direct3d mode on linux -> "-force-glcore"
+## https://docs.unity3d.com/Manual/OpenGLCoreDetails.html
+OPTIONS="-force-glcore"
 
 echo -e "--> \"${GAMEDIR}/${GAMEBINARY}\" ${OPTIONS} ${@}"
 echo -e "..."

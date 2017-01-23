@@ -1,7 +1,7 @@
 pkgbase = pokemon-revolution-online-bin
 	pkgdesc = A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games.
 	pkgver = 0.95.9.20170123
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pokemon-revolution-online.net
 	install = INSTALL
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = pokemon-revolution-online-bin
 	source = copyright
 	source = pokemonrevolution.svg
 	md5sums = 3215173b6f1673d868e71f1d953ed9d2
-	md5sums = 1b667f450341675b6b2c1750e034516c
+	md5sums = 468427350f89449698740c8d2aae581e
 	md5sums = 0efcd0393015ff149217f9ced4670513
 	md5sums = 8446ead3097e1b87e3a63b667d956569
 
