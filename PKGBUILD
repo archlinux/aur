@@ -3,18 +3,18 @@
 # Contributor: Matej Stuchlik <matej.stuchlik at gmail dot com>
 
 pkgname=openrocket
+_pkgname=OpenRocket
 pkgver=15.03
-pkgrel=1
-pkgdesc="A free and open source, fully featured model rocket simulator"
+pkgrel=2
+pkgdesc="A free and fully featured rocket flight simulator - 6 degrees of freedom"
 arch=('any')
-url="http://openrocket.sourceforge.net/"
-license=("GPL3")
-depends=("java-environment" "desktop-file-utils")
-install=$pkgname.install
-source=(http://download.sourceforge.net/project/$pkgname/$pkgname/$pkgver/OpenRocket-$pkgver.jar
+url=http://openrocket.info/
+license=('GPL3')
+depends=('java-environment' 'bash')
+source=("https://github.com/$pkgname/$pkgname/releases/download/release-$pkgver/$_pkgname-15.03.jar"
         $pkgname.1
 	de_debian.tar.gz)
-noextract=(OpenRocket-$pkgver.jar)
+noextract=($_pkgname-$pkgver.jar)
 
 package() {
 	cd $srcdir
