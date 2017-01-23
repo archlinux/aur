@@ -1,0 +1,26 @@
+pkgbase = ros-jade-amcl
+	pkgdesc = ROS - amcl is a probabilistic localization system for a robot moving in 2D.
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = http://wiki.ros.org/amcl
+	arch = any
+	license = LGPL
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-jade-tf
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-rostest
+	makedepends = ros-jade-std-srvs
+	makedepends = ros-jade-nav-msgs
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-dynamic-reconfigure
+	makedepends = ros-jade-message-filters
+	depends = ros-jade-dynamic-reconfigure
+	depends = ros-jade-tf
+	depends = ros-jade-roscpp
+	depends = ros-jade-nav-msgs
+	source = ros-jade-amcl-1.13.1-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/jade/amcl/1.13.1-0.tar.gz
+	sha256sums = 438effd697499e867c5a4f1b69d290356c2e00a225fb88ab723dafd0ccf11a63
+
+pkgname = ros-jade-amcl
+
