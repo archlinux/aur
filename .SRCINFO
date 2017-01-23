@@ -1,0 +1,30 @@
+pkgbase = ros-jade-fake-localization
+	pkgdesc = ROS - A ROS node that simply forwards odometry information.
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = http://wiki.ros.org/fake_localization
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rospy
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-geometry-msgs
+	makedepends = ros-jade-angles
+	makedepends = ros-jade-message-filters
+	makedepends = ros-jade-rosconsole
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-tf
+	makedepends = ros-jade-nav-msgs
+	depends = ros-jade-roscpp
+	depends = ros-jade-geometry-msgs
+	depends = ros-jade-rospy
+	depends = ros-jade-nav-msgs
+	depends = ros-jade-rosconsole
+	depends = ros-jade-tf
+	depends = ros-jade-message-filters
+	source = ros-jade-fake-localization-1.13.1-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/jade/fake_localization/1.13.1-0.tar.gz
+	sha256sums = 4747c2a65440cf4dbd9e5c6263b2b36fbbc91f98e820842b6c1f81297cd4d933
+
+pkgname = ros-jade-fake-localization
+
