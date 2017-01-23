@@ -6,7 +6,7 @@
 
 pkgname=wine-stable
 pkgver=1.8.6
-pkgrel=3
+pkgrel=4
 
 source=(https://dl.winehq.org/wine/source/1.8/wine-$pkgver.tar.bz2{,.sign}
         30-win32-aliases.conf
@@ -63,7 +63,7 @@ prepare() {
     if [ ! -f "$patch" ]; then
       break;
     else
-      patch -d wine -p1 -i "$patch"
+      patch -d wine -p1 -i "../$patch"
     fi
   done
 
