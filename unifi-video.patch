@@ -1,5 +1,14 @@
---- unifi-video.orig	2017-01-16 10:42:40.000000000 -0800
-+++ unifi-video	2017-01-22 17:14:16.801263396 -0800
+--- unifi-video.orig	2017-01-23 10:36:51.077626710 -0800
++++ unifi-video	2017-01-23 10:37:33.537399593 -0800
+@@ -251,7 +251,7 @@
+ 		 -Dcom.sun.management.jmxremote.authenticate=false \
+ 		 -Dcom.sun.management.jmxremote.port=${JVM_JMXREMOTE_PORT}"
+ 	[ -z "${JVM_JMXREMOTE_HOST}" ] && \
+-		JVM_JMXREMOTE_HOST=$(hostname -I | cut -d' ' -f1)
++		JVM_JMXREMOTE_HOST=$(hostname -i | cut -d' ' -f1)
+ 	[ -z "${JVM_JMXREMOTE_HOST}" ] || \
+ 		JVM_OPTS="${JVM_OPTS} -Djava.rmi.server.hostname=${JVM_JMXREMOTE_HOST}"
+ 
 @@ -274,7 +274,6 @@
  case $ACTION in
  	start)
