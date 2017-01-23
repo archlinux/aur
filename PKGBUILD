@@ -2,7 +2,7 @@
 pkgname=wire-desktop-git
 _pkgname=wire-desktop
 _name=wire
-pkgver=2.11.2687.r6.g4ed0adc
+pkgver=2.11.2688.r2.ge890ff6
 pkgrel=1
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
@@ -11,6 +11,7 @@ license=('GPL3')
 conflicts=('wire-desktop-bin' 'wire-desktop')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
 makedepends=('gendesk' 'grunt-cli' 'npm' 'python2')
+optdepends=('hunspell-en: for English spellcheck support')
 provides=('wire-desktop')
 source=("git://github.com/wireapp/wire-desktop.git")
 sha256sums=('SKIP')
@@ -59,6 +60,10 @@ package() {
     install -Dm644 "${srcdir}/${_pkgname}/resources/icons/${res}.png" \
       "${pkgdir}/usr/share/icons/hicolor/${res}/apps/${_name}.png"
   done
+
+  # Spellcheck dictionaries
+  rm -rf "${pkgdir}/usr/lib/${_name}/resources/app/node_modules/spellchecker/vendor/hunspell_dictionaries"
+  ln -s "/usr/share/hunspell" "${pkgdir}/usr/lib/${_name}/resources/app/node_modules/spellchecker/vendor/hunspell_dictionaries"
 
   # Place license files
   for license in "LICENSE.electron.txt" "LICENSES.chromium.html"; do
