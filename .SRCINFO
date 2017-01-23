@@ -1,8 +1,8 @@
 pkgbase = systemd-git
 	pkgdesc = systemd from git
-	pkgver = 232.r595.g8171bcc70
+	pkgver = 232.r615.g88e4dbd50
 	pkgrel = 1
-	url = http://www.freedesktop.org/wiki/Software/systemd
+	url = https://www.github.com/systemd/systemd
 	arch = i686
 	arch = x86_64
 	makedepends = acl
@@ -37,20 +37,28 @@ pkgbase = systemd-git
 	source = initcpio-install-udev
 	source = arch.conf
 	source = loader.conf
-	source = udev-hwdb.hook
+	source = splash-arch.bmp::https://git.archlinux.org/svntogit/packages.git/plain/trunk/splash-arch.bmp?h=packages/systemd
 	source = systemd-user.pam
+	source = systemd-hwdb.hook
+	source = systemd-sysusers.hook
+	source = systemd-tmpfiles.hook
+	source = systemd-update.hook
 	sha512sums = SKIP
 	sha512sums = f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73
 	sha512sums = 52af734947a768758d5eb3f18e31a1cfec6699eca6fa10e40b90c7f11991509186c0a696e3490af3eaba80064ea4cb93e041579abf05addf072d294300aa4b28
 	sha512sums = fec639de0d99967ed3e67289eff5ff78fff0c5829d350e73bed536a8391f1daa1d118d72dbdc1f480ffd33fc22b72f4817d0973bd09ec7f182fd26ad87b24355
 	sha512sums = 61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648
 	sha512sums = c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5
-	sha512sums = 888ab01bc6e09beb08d7126472c34c9e1aa35ea34e62a09e900ae34c93b1de2fcc988586efd8d0dc962393974f45c77b206d59a86cf53e370f061bf9a1b1a862
+	sha512sums = 5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75
 	sha512sums = b90c99d768dc2a4f020ba854edf45ccf1b86a09d2f66e475de21fe589ff7e32c33ef4aa0876d7f1864491488fd7edb2682fc0d68e83a6d4890a0778dc2d6fe19
+	sha512sums = 2c1f765e7cefc50f07ad994634ea25d9396e6b9c0de46e58f18377e642a471517a0dbf5eb547070a38c6ecf84ec8e030f650a6cee010871cd7a466a32534adda
+	sha512sums = 9d27d97f172a503f5b7044480a0b9ccc0c4ed5dbb2eb3b2b1aa929332c3bcfe38ef0c0310b6566f23b34f9c05b77035221164a7ab7677784c4a54664f12fca22
+	sha512sums = 0f4efddd25256e09c42b953caeee4b93eb49ecc6eaebf02e616b4dcbfdac9860c3d8a3d1a106325b2ebc4dbc6e08ac46702abcb67a06737227ccb052aaa2a067
+	sha512sums = 10190fba9f39a8f4b620a0829e0ba8ed63bb4dbeca712966011ee7807880d01ab2abff1a80baafeb6674db70526a473fe585db8190e864f318fc4d6068552618
 
 pkgname = systemd-git
 	pkgdesc = system and service manager
-	install = systemd-git.install
+	install = systemd.install
 	license = GPL2
 	license = LGPL2.1
 	depends = acl
@@ -76,9 +84,9 @@ pkgname = systemd-git
 	optdepends = systemd-sysvcompat-git: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	provides = nss-myhostname
-	provides = systemd-tools=232.r595.g8171bcc70
-	provides = udev=232.r595.g8171bcc70
-	provides = systemd=232.r595.g8171bcc70
+	provides = systemd-tools=232.r615.g88e4dbd50
+	provides = udev=232.r615.g88e4dbd50
+	provides = systemd=232.r615.g88e4dbd50
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
