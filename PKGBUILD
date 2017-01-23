@@ -1,9 +1,10 @@
 # Maintainer: Jan-Erik Rediger <badboy at archlinux dot us>
+# Co-Maintainer: Ingo Bürk <ingo.buerk@airblader.de>
 # Contributor: Thorsten Töpper <atsutane-aur@freethoughts.de>
 # Contributor: William Giokas <1007380@gmail.com>
 
 pkgname=i3lock-git
-pkgver=2.6.r35.g105a86d
+pkgver=2.8.r10.g9c8ae8b
 pkgrel=1
 pkgdesc="An improved screenlocker based upon XCB and PAM"
 arch=('i686' 'x86_64')
