@@ -1,9 +1,7 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
-# Contributor: Nowaker <spam@nowaker.net>
-# Contributor: ahmad200512@yandex.ru
+# Maintainer: Yegorius <yegorius@domic.us>
 
 pkgname=teamcity
-pkgver=10.0.3
+pkgver=10.0.4
 pkgrel=1
 pkgdesc='Continuous integration server from JetBrains'
 arch=('any')
@@ -15,7 +13,7 @@ source=("http://download.jetbrains.com/teamcity/TeamCity-${pkgver}.tar.gz"
         'teamcity-agent.service'
         'teamcity-server.service'
         'teamcity.conf')
-sha512sums=('d59f3ebcb4ecffccc828b86f87967c4b2f91d27a1f85ea963ca5f5f5ab3febe5152a2ae9280b9a88e876f984c398e25a0e8937ba0daae963549df777bde19270'
+sha512sums=('7326500bfa13a2ceadb4c995e12e073f79f06e87fddd8a680e86de501949225cd04a8749a4fe7de00681c1f227688cd4a97f1cbff63979f1525984b9086042a0'
             'bf8786f45d9b9101027b6efe2e1732988d032cb1ae1655b2188b61eda70d0df49d48c0de191e2eb00378fd44722a61592fcd26f5426ff150fc72d78b448a3223'
             '4cf06ff10623ede0e37fd76727845c9574ef52f2309f93bb44604422cbce633b0cfeed783bc1a5840c457cc8f3e602cb10e9b995a30ca94097d51da23534a063'
             'c2997eafd5cefdb68340815d3286418dfb37e9ba9ab1f3147e89c21ebcdb7fdb5392b7a36b592ea1f4ab0f68da4f5bfc38ae25b475ac3ff10794e99049ea558b')
