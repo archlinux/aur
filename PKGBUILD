@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-chess-git  
-pkgver=834.4b7f4e5
-pkgrel=2
+pkgver=836.8257a9d
+pkgrel=1
 pkgdesc="Chess client written entirely in Emacs Lisp"
 arch=('any')
 url="http://github.com/jwiegley/emacs-chess.git"
@@ -43,5 +43,5 @@ package() {
      rm $_i
   done
   find . -type f -exec chmod 644 {} \;
-  find . -type f -exec chown root:games {} \;
+  find . -exec chown root:root {} \;
 } 
