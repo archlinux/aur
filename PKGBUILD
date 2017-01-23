@@ -1,7 +1,7 @@
 # Contributor: Alexander Oleynichenko <alexvoleynichenko@gmail.com>
 pkgname=bader
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Quantum chemistry - Bader population analysis"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://theory.cm.utexas.edu/henkelman/code/bader/"
 license=('GPL')
 groups=()
 depends=()
-makedepends=()
+makedepends=(gcc-fortran)
 checkdepends=()
 optdepends=()
 provides=()
