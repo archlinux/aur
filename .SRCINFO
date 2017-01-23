@@ -1,0 +1,28 @@
+pkgbase = ros-jade-clear-costmap-recovery
+	pkgdesc = ROS - This package provides a recovery behavior for the navigation stack that attempts to clear space by reverting the costmaps used by the navigation stack to the static map outside of a given area.
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = http://wiki.ros.org/clear_costmap_recovery
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-jade-nav-core
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-costmap-2d
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-cmake-modules
+	makedepends = ros-jade-tf
+	makedepends = ros-jade-pluginlib
+	makedepends = eigen3
+	depends = ros-jade-nav-core
+	depends = ros-jade-tf
+	depends = ros-jade-pluginlib
+	depends = ros-jade-roscpp
+	depends = ros-jade-costmap-2d
+	depends = eigen3
+	source = ros-jade-clear-costmap-recovery-1.13.1-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/jade/clear_costmap_recovery/1.13.1-0.tar.gz
+	sha256sums = 18ee78982b6155b0c8fd7006247ade61011bdf33febd4f48506409922a347bdc
+
+pkgname = ros-jade-clear-costmap-recovery
+
