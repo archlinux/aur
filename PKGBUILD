@@ -17,9 +17,9 @@ md5sums=('1ac54e1f4ff09420373e4942d88b2a1f')
 package() {
 	mkdir -p ${pkgdir}/etc/mal
 	cd ${srcdir}
-#	gem install myanimelist_client
-#	gem install nokogiri
-#	gem install json
+	gem install myanimelist_client
+	gem install nokogiri
+	gem install json
 	install -Dm755 anime "${pkgdir}/usr/bin/anime"
 	install -Dm644 config.json "${pkgdir}/etc/mal/config.json"
 	echo "\n Please insert your MAL account details to /etc/mal/config.json \n"
