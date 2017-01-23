@@ -1,0 +1,27 @@
+pkgbase = ros-jade-map-server
+	pkgdesc = ROS - map_server provides the map_server ROS Node, which offers map data as a ROS Service.
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = http://wiki.ros.org/map_server
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rostest
+	makedepends = ros-jade-tf
+	makedepends = ros-jade-nav-msgs
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = sdl_image
+	makedepends = yaml-cpp
+	depends = ros-jade-rostest
+	depends = ros-jade-tf
+	depends = ros-jade-nav-msgs
+	depends = ros-jade-roscpp
+	depends = sdl_image
+	depends = yaml-cpp
+	source = ros-jade-map-server-1.13.1-0.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/jade/map_server/1.13.1-0.tar.gz
+	sha256sums = ac7cb39f337ebf1a287f02be25981b7eae654cdb54072eb7b1eeb71ae3dc30cf
+
+pkgname = ros-jade-map-server
+
