@@ -1,0 +1,16 @@
+pkgbase = rice3d
+	pkgdesc = command line 3d model viewer using text and terminal escape codes
+	pkgver = VERSION
+	pkgrel = 1
+	url = https://github.com/martijnat/rice3d
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python
+	provides = rice3d
+	source = rice3d::git+https://github.com/martijnat/rice3d
+	md5sums = SKIP
+
+pkgname = rice3d
+
