@@ -2,7 +2,7 @@
 basename="gint"
 pkgname="$basename-git"
 pkgver=r32.49df2a5
-pkgrel=1
+pkgrel=2
 pkgdesc="Gint and a libc for the Casio fx9860 calculators"
 arch=("i686" "x86_64")
 depends=("fxsdk")
@@ -22,5 +22,5 @@ build() {
 
 package() {
   cd "$basename"
-  make folder="$pkgdir/usr/share" install
+  make folder="$pkgdir/$(fxsdk --folder)" install
 }
