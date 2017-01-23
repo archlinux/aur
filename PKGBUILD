@@ -4,7 +4,7 @@
 
 pkgname=pocketsphinx
 pkgver=5prealpha
-pkgrel=6
+pkgrel=7
 pkgdesc='Lightweight speech recognition engine, specifically tuned for handheld and mobile devices, though it works equally well on the desktop.'
 arch=('i686' 'x86_64')
 url='http://cmusphinx.sourceforge.net'
@@ -59,5 +59,5 @@ package() {
   libtool --finish "$pkgdir/usr/lib"
   libtool --finish "$pkgdir/usr/lib/gstreamer-1.0"
   libtool --finish "$pkgdir/usr/lib/python2.7/site-packages/pocketsphinx"
-  libtool --finish "$pkgdir/usr/lib/python3.5/site-packages/pocketsphinx"
+  libtool --finish "$pkgdir/usr/lib/python3.6/site-packages/pocketsphinx"
 }
