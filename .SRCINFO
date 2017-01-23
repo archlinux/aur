@@ -1,16 +1,14 @@
 pkgbase = pokemmo
-	pkgdesc = An MMO based on the Pokémon Universe
-	pkgver = 1.1
+	pkgdesc = MMO based on the Pokémon Universe
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = http://pokemmo.eu
 	install = pokemmo.install
 	arch = any
 	license = custom
 	depends = java-runtime
-	source = https://pokemmo.eu/download_file/?id=5/pokemmo_1.1.rpm
-	source = pokemmo.install
-	sha256sums = b56780bcbe37c8f155be16788d79a790d4231018687e279d3b8782e644e2114e
-	sha256sums = edfc9fcaf78521bbc63d858822e76229eaeb7feb444b4c59728ac8689785ef01
+	source = https://pokemmo.eu/download_file/?id=5/pokemmo_1.2.1.rpm
+	sha256sums = dc37446213a95bd6c8b8192514c68bd8ad69b53ccc6ffc18512fb5c59cd4dc07
 
 pkgname = pokemmo
 
