@@ -9,7 +9,7 @@ license=('GPL')
 url='https://github.com/gps1539/stock_quote'
 depends=('python' 'python-numpy' 'python-colorama')
 makedepends=()
-source=("https://raw.githubusercontent.com/gps1539/stock_quote/master/stock_quote")
+source=("https://raw.githubusercontent.com/gps1539/stock_quote/master/stock_quote/stock")
 md5sums=('7bfa299b9c7ca08d366b4acce8d99ae2')
 
 package()
