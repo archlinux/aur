@@ -1,0 +1,23 @@
+pkgbase = ros-jade-nav-core
+	pkgdesc = ROS - This package provides common interfaces for navigation specific robot actions.
+	pkgver = 1.31.1
+	pkgrel = 1
+	url = http://wiki.ros.org/nav_core
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-jade-std-msgs
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-costmap-2d
+	makedepends = ros-jade-tf
+	makedepends = ros-jade-geometry-msgs
+	depends = ros-jade-std-msgs
+	depends = ros-jade-costmap-2d
+	depends = ros-jade-tf
+	depends = ros-jade-geometry-msgs
+	source = ros-jade-nav-core-1.31.1-0_22.tar.gz::https://github.com/ros-gbp/navigation-release/archive/release/jade/nav_core/1.31.1-0_22.tar.gz
+	sha256sums = acc677c25f387fcaa77c1796ca669e8e62d078617ce92fe555974209f67069a8
+
+pkgname = ros-jade-nav-core
+
