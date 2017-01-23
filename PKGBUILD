@@ -20,7 +20,7 @@ build() {
 	mkdir -p usr/share/backup
 	mkdir -p etc/systemd/system
 	mv backup.conf etc/backup.conf
-	mv backup.sh usr/bin/backup/backup
+	mv backup usr/bin/backup/backup
 	mv backup.service etc/systemd/system/backup.service
 	mv backup.timer etc/systemd/system/backup.timer
 	mv storage-mounts-Public.mount usr/share/backup/storage-mounts-Public.mount.example
