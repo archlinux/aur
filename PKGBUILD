@@ -8,7 +8,7 @@
 _attempt_fix=0
 
 pkgname=google-earth
-pkgver=7.1.7.2606
+pkgver=7.1.8.3036
 pkgrel=1
 pkgdesc="A 3D interface to view satellite images of Earth and other objects"
 arch=('i686' 'x86_64')
@@ -35,8 +35,8 @@ md5sums=('e84f5d51ea3545c131d1794f89f6464a'
          'SKIP'
          'SKIP'
          'SKIP')
-md5sums_i686=('61c0b9466e2c0805c764aa8865e7866f')
-md5sums_x86_64=('0026cac93221ebf8282299f29aeb96d8')
+md5sums_i686=('bf6ccc911ce09a9ec5dc0e6ee98e92d5')
+md5sums_x86_64=('77cb0eacde195c224767a77ccf54c8ef')
 
 _instdir=/opt/google/earth/free/
 
