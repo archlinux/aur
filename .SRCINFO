@@ -5,6 +5,8 @@ pkgbase = gint-git
 	arch = i686
 	arch = x86_64
 	depends = fxsdk
+	depends = sh3eb-elf-binutils
+	depends = sh3eb-elf-gcc
 	source = git+http://git.planet-casio.com/lephe/gint.git
 	md5sums = SKIP
 
