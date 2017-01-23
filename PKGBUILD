@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="An advanced rule-based (regular-expression) and unicode-aware tokenizer for various languages. Tokenization is an essential first step in any NLP pipeline."
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('ticcutils>=0.13' 'icu' 'libxml2' 'libfolia>=1.3' 'uctodata>=0.1')
+depends=('ticcutils>=0.13' 'icu' 'libxml2' 'libfolia>=1.3' 'uctodata>=0.4')
 makedepends=('libtool' 'autoconf' 'autoconf-archive')
 options=(!libtool)
 _gituser="LanguageMachines"
