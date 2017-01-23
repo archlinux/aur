@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=carve
 pkgver=1.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Fast, robust constructive solid geometry library"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/carve/"
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('gcc-libs')
 makedepends=('boost' 'cmake' 'freeglut')
 optdepends=('freeglut: carve-view')
-source=("http://${pkgname}.googlecode.com/files/${pkgname}-${pkgver}.tgz"
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${pkgname}-${pkgver}.tgz"
         "boost.patch"
         "read_ply.patch"
         "rng.patch")
