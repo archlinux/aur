@@ -4,14 +4,14 @@ index c630705..18357e5 100644
 +++ b/vmci/Makefile
 @@ -43,7 +43,11 @@ INCLUDE      += -I$(SRCROOT)/shared
  endif
-
-
+ 
+ 
 +ifdef KVERSION
 +VM_UNAME = $(KVERSION)
 +else
  VM_UNAME = $(shell uname -r)
 +endif
-
+ 
  # Header directory for the running kernel
  ifdef LINUXINCLUDE
 diff --git a/vmci/Makefile.kernel b/vmci/Makefile.kernel
@@ -19,29 +19,29 @@ index 8e6e7d0..28eb503 100644
 --- a/vmci/Makefile.kernel
 +++ b/vmci/Makefile.kernel
 @@ -21,7 +21,7 @@ CC_OPTS += -DVMCI
-
+ 
  INCLUDE += -I$(SRCROOT)/shared -I$(SRCROOT)/common -I$(SRCROOT)/linux
-
+ 
 -EXTRA_CFLAGS := $(CC_OPTS) $(INCLUDE)
 +EXTRA_CFLAGS := $(CC_OPTS) $(INCLUDE) $(LINUXINCLUDE)
-
+ 
  obj-m += $(DRIVER).o
-
+ 
 diff --git a/vmci/linux/driver.c b/vmci/linux/driver.c
-index f676166..06b3d8a 100644
+index f676166..9e42f3f 100644
 --- a/vmci/linux/driver.c
 +++ b/vmci/linux/driver.c
 @@ -26,6 +26,7 @@
-
+ 
  #include <linux/file.h>
  #include <linux/fs.h>
 +#include <linux/vmalloc.h>
  #include <linux/init.h>
  #if defined(__x86_64__) && LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
  #   include <linux/ioctl32.h>
-@@ -1467,12 +1468,13 @@ VMCIUserVALockPage(VA addr) // IN:
+@@ -1467,12 +1468,19 @@ VMCIUserVALockPage(VA addr) // IN:
     int retval;
-
+ 
     down_read(&current->mm->mmap_sem);
 -#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
 -   retval = get_user_pages(addr, 1, 1, 0, &page, NULL);
@@ -51,12 +51,18 @@ index f676166..06b3d8a 100644
     retval = get_user_pages(current, current->mm, addr,
 -                           1, 1, 0, &page, NULL);
  #endif
-+                           1, 1, 0, &page, NULL);
++                           1,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 9, 0)
++                           1, 0,
++#else
++                           FOLL_WRITE,
++#endif
++                           &page, NULL);
 +
     up_read(&current->mm->mmap_sem);
-
+ 
     if (retval != 1) {
-@@ -1687,7 +1689,11 @@ vmci_guest_init(void)
+@@ -1687,7 +1695,11 @@ vmci_guest_init(void)
     /* This should be last to make sure we are done initializing. */
     retval = pci_register_driver(&vmci_driver);
     if (retval < 0) {
@@ -68,8 +74,8 @@ index f676166..06b3d8a 100644
        data_buffer = NULL;
        return retval;
     }
-@@ -2474,7 +2480,11 @@ vmci_exit(void)
-
+@@ -2474,7 +2486,11 @@ vmci_exit(void)
+ 
     if (guestDeviceInit) {
        pci_unregister_driver(&vmci_driver);
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 15, 0)
@@ -79,18 +85,18 @@ index f676166..06b3d8a 100644
 +#endif
        guestDeviceInit = FALSE;
     }
-
-@@ -2483,7 +2493,7 @@ vmci_exit(void)
-
+ 
+@@ -2483,7 +2499,7 @@ vmci_exit(void)
+ 
        VMCI_HostCleanup();
-
+ 
 -      retval = misc_deregister(&linuxState.misc);
 +      retval = compat_misc_deregister(&linuxState.misc);
        if (retval) {
           Warning(LGPFX "Module %s: error unregistering\n", VMCI_MODULE_NAME);
        } else {
 diff --git a/vmci/linux/vmciKernelIf.c b/vmci/linux/vmciKernelIf.c
-index 3fba8b6..d41769f 100644
+index 3fba8b6..1836442 100644
 --- a/vmci/linux/vmciKernelIf.c
 +++ b/vmci/linux/vmciKernelIf.c
 @@ -40,6 +40,7 @@
@@ -98,12 +104,12 @@ index 3fba8b6..d41769f 100644
  #include <linux/vmalloc.h>
  #include <linux/wait.h>
 +#include <linux/skbuff.h>
-
+ 
  #include "compat_highmem.h"
  #include "compat_interrupt.h"
 @@ -1198,16 +1199,29 @@ __VMCIMemcpyToQueue(VMCIQueue *queue,   // OUT:
        }
-
+ 
        if (isIovec) {
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
           struct iovec *iov = (struct iovec *)src;
@@ -111,7 +117,7 @@ index 3fba8b6..d41769f 100644
 +         struct msghdr *msg = (struct msghdr *)src;
 +#endif
           int err;
-
+ 
           /* The iovec will track bytesCopied internally. */
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
           err = memcpy_fromiovec((uint8 *)va + pageOffset, iov, toCopy);
@@ -133,7 +139,7 @@ index 3fba8b6..d41769f 100644
           memcpy((uint8 *)va + pageOffset, (uint8 *)src + bytesCopied, toCopy);
 @@ -1273,11 +1287,19 @@ __VMCIMemcpyFromQueue(void *dest,             // OUT:
        }
-
+ 
        if (isIovec) {
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
           struct iovec *iov = (struct iovec *)dest;
@@ -141,7 +147,7 @@ index 3fba8b6..d41769f 100644
 +         struct msghdr *msg = (struct msghdr *)dest;
 +#endif
           int err;
-
+ 
           /* The iovec will track bytesCopied internally. */
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
           err = memcpy_toiovec(iov, (uint8 *)va + pageOffset, toCopy);
@@ -163,9 +169,9 @@ index 3fba8b6..d41769f 100644
        pages[i] = NULL;
     }
  }
-@@ -2048,21 +2074,18 @@ VMCIHost_GetUserMemory(VA64 produceUVA,       // IN
+@@ -2048,21 +2074,22 @@ VMCIHost_GetUserMemory(VA64 produceUVA,       // IN
     int err = VMCI_SUCCESS;
-
+ 
     down_write(&current->mm->mmap_sem);
 -#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
 +#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 99)
@@ -180,7 +186,11 @@ index 3fba8b6..d41769f 100644
                             (VA)produceUVA,
 +#endif
                             produceQ->kernelIf->numPages,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 9, 0)
                             1, 0,
++#else
++                           FOLL_WRITE,
++#endif
                             produceQ->kernelIf->u.h.headerPage,
                             NULL);
 -#endif
@@ -188,10 +198,10 @@ index 3fba8b6..d41769f 100644
     if (retval < produceQ->kernelIf->numPages) {
        Log("get_user_pages(produce) failed (retval=%d)\n", retval);
        VMCIReleasePages(produceQ->kernelIf->u.h.headerPage, retval, FALSE);
-@@ -2070,9 +2093,13 @@ VMCIHost_GetUserMemory(VA64 produceUVA,       // IN
+@@ -2070,11 +2097,19 @@ VMCIHost_GetUserMemory(VA64 produceUVA,       // IN
        goto out;
     }
-
+ 
 +#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 99)
 +   retval = get_user_pages((VA)consumeUVA,
 +#else
@@ -200,8 +210,14 @@ index 3fba8b6..d41769f 100644
                             (VA)consumeUVA,
 +#endif
                             consumeQ->kernelIf->numPages,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 9, 0)
                             1, 0,
++#else
++                           FOLL_WRITE,
++#endif
                             consumeQ->kernelIf->u.h.headerPage,
+                            NULL);
+    if (retval < consumeQ->kernelIf->numPages) {
 diff --git a/vmci/shared/compat_module.h b/vmci/shared/compat_module.h
 index 2af7372..729aedc 100644
 --- a/vmci/shared/compat_module.h
@@ -209,7 +225,7 @@ index 2af7372..729aedc 100644
 @@ -80,4 +80,13 @@ static const char __module_cat(tag, __LINE__)[]                               \
     typedef int compat_mod_param_bool;
  #endif
-
+ 
 +/*
 + * Linux kernel >= 4.2.99 does not return anything from misc_deregister
 + */

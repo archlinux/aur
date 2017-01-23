@@ -88,10 +88,10 @@ index 7e7ad99..5f508f6 100644
     crc = 0xffffffff;                  /* init CRC for each address */
     for (byte = 0; byte < ETH_ALEN; byte++) { /* for each address byte */
 diff --git a/vmnet/userif.c b/vmnet/userif.c
-index 2b976d7..8c3f685 100644
+index 2b976d7..5298406 100644
 --- a/vmnet/userif.c
 +++ b/vmnet/userif.c
-@@ -113,12 +113,12 @@ UserifLockPage(VA addr) // IN
+@@ -113,12 +113,18 @@ UserifLockPage(VA addr) // IN
     int retval;
  
     down_read(&current->mm->mmap_sem);
@@ -103,11 +103,17 @@ index 2b976d7..8c3f685 100644
     retval = get_user_pages(current, current->mm, addr,
 -                           1, 1, 0, &page, NULL);
  #endif
-+                           1, 1, 0, &page, NULL);
++                           1,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 9, 0)
++                           1, 0,
++#else
++                           FOLL_WRITE,
++#endif
++                           &page, NULL);
     up_read(&current->mm->mmap_sem);
  
     if (retval != 1) {
-@@ -182,13 +182,13 @@ VNetUserIfMapUint32Ptr(VA uAddr,        // IN: pointer to user memory
+@@ -182,13 +188,13 @@ VNetUserIfMapUint32Ptr(VA uAddr,        // IN: pointer to user memory
   *
   *    Sets up notification by filling in pollPtr, actPtr, and recvClusterCount
   *    fields.
@@ -124,7 +130,7 @@ index 2b976d7..8c3f685 100644
   *    recvClusterPage are filled in VNetUserIf structure.
   *
   *-----------------------------------------------------------------------------
-@@ -278,8 +278,8 @@ VNetUserIfSetupNotify(VNetUserIF *userIf, // IN
+@@ -278,8 +284,8 @@ VNetUserIfSetupNotify(VNetUserIF *userIf, // IN
   * VNetUserIfUnsetupNotify --
   *
   *      Destroys permanent mapping for notify structure provided by user.
@@ -135,7 +141,7 @@ index 2b976d7..8c3f685 100644
   *      None.
   *
   * Side effects:
-@@ -333,7 +333,7 @@ VNetUserIfUnsetupNotify(VNetUserIF *userIf) // IN
+@@ -333,7 +339,7 @@ VNetUserIfUnsetupNotify(VNetUserIF *userIf) // IN
   *
   *      Free the user interface port.
   *
@@ -144,7 +150,7 @@ index 2b976d7..8c3f685 100644
   *      None.
   *
   * Side effects:
-@@ -355,7 +355,7 @@ VNetUserIfFree(VNetJack *this) // IN
+@@ -355,7 +361,7 @@ VNetUserIfFree(VNetJack *this) // IN
        }
        dev_kfree_skb(skb);
     }
@@ -153,7 +159,7 @@ index 2b976d7..8c3f685 100644
     if (userIf->pollPtr) {
        VNetUserIfUnsetupNotify(userIf);
     }
-@@ -379,7 +379,7 @@ VNetUserIfFree(VNetJack *this) // IN
+@@ -379,7 +385,7 @@ VNetUserIfFree(VNetJack *this) // IN
   *
   *      This jack is receiving a packet. Take appropriate action.
   *
@@ -162,7 +168,7 @@ index 2b976d7..8c3f685 100644
   *      None.
   *
   * Side effects:
-@@ -395,12 +395,12 @@ VNetUserIfReceive(VNetJack       *this, // IN
+@@ -395,12 +401,12 @@ VNetUserIfReceive(VNetJack       *this, // IN
     VNetUserIF *userIf = (VNetUserIF*)this->private;
     uint8 *dest = SKB_2_DESTMAC(skb);
     unsigned long flags;
@@ -177,7 +183,7 @@ index 2b976d7..8c3f685 100644
     if (!VNetPacketMatch(dest,
                          userIf->port.paddr,
                          (const uint8 *)userIf->port.exactFilter,
-@@ -410,12 +410,12 @@ VNetUserIfReceive(VNetJack       *this, // IN
+@@ -410,12 +416,12 @@ VNetUserIfReceive(VNetJack       *this, // IN
        userIf->stats.droppedMismatch++;
        goto drop_packet;
     }
@@ -192,7 +198,7 @@ index 2b976d7..8c3f685 100644
     if (skb->len > ETHER_MAX_QUEUED_PACKET) {
        userIf->stats.droppedLargePacket++;
        goto drop_packet;
-@@ -439,7 +439,7 @@ VNetUserIfReceive(VNetJack       *this, // IN
+@@ -439,7 +445,7 @@ VNetUserIfReceive(VNetJack       *this, // IN
  
     wake_up(&userIf->waitQueue);
     return;
@@ -201,7 +207,7 @@ index 2b976d7..8c3f685 100644
   drop_packet:
     dev_kfree_skb(skb);
  }
-@@ -452,7 +452,7 @@ VNetUserIfReceive(VNetJack       *this, // IN
+@@ -452,7 +458,7 @@ VNetUserIfReceive(VNetJack       *this, // IN
   *
   *      Callback for read operation on this userif entry in vnets proc fs.
   *
@@ -210,7 +216,7 @@ index 2b976d7..8c3f685 100644
   *      Length of read operation.
   *
   * Side effects:
-@@ -471,21 +471,21 @@ VNetUserIfProcRead(char    *page,  // IN/OUT: buffer to write into
+@@ -471,21 +477,21 @@ VNetUserIfProcRead(char    *page,  // IN/OUT: buffer to write into
                                     //      read
                     void    *data)  // IN: client data - not used
  {
@@ -238,7 +244,7 @@ index 2b976d7..8c3f685 100644
  		  "dropped.down %u dropped.mismatch %u "
  		  "dropped.overflow %u dropped.largePacket %u",
                    userIf->stats.droppedDown,
-@@ -494,7 +494,7 @@ VNetUserIfProcRead(char    *page,  // IN/OUT: buffer to write into
+@@ -494,7 +500,7 @@ VNetUserIfProcRead(char    *page,  // IN/OUT: buffer to write into
  		  userIf->stats.droppedLargePacket);
  
     len += sprintf(page+len, "\n");
@@ -247,7 +253,7 @@ index 2b976d7..8c3f685 100644
     *start = 0;
     *eof   = 1;
     return len;
-@@ -508,7 +508,7 @@ VNetUserIfProcRead(char    *page,  // IN/OUT: buffer to write into
+@@ -508,7 +514,7 @@ VNetUserIfProcRead(char    *page,  // IN/OUT: buffer to write into
   *
   *      Copy part of datagram to userspace.
   *
@@ -256,7 +262,7 @@ index 2b976d7..8c3f685 100644
   *	zero    on success,
   *	-EFAULT if buffer is an invalid area
   *
-@@ -545,12 +545,12 @@ VNetCopyDatagram(const struct sk_buff *skb,	// IN: skb to copy
+@@ -545,12 +551,12 @@ VNetCopyDatagram(const struct sk_buff *skb,	// IN: skb to copy
   *
   *      Copy part of datagram to userspace doing checksum at same time.
   *
@@ -271,7 +277,7 @@ index 2b976d7..8c3f685 100644
   *	folded checksum (non-negative value) on success,
   *	-EINVAL if offset is too big,
   *	-EFAULT if buffer is an invalid area
-@@ -572,7 +572,7 @@ VNetCsumCopyDatagram(const struct sk_buff *skb,	// IN: skb to copy
+@@ -572,7 +578,7 @@ VNetCsumCopyDatagram(const struct sk_buff *skb,	// IN: skb to copy
     char *curr = buf;
     const skb_frag_t *frag;
  
@@ -280,7 +286,7 @@ index 2b976d7..8c3f685 100644
      * Something bad happened. We skip only up to skb->nh.raw, and skb->nh.raw
      * must be in the header, otherwise we are in the big troubles.
      */
-@@ -629,7 +629,7 @@ VNetCsumCopyDatagram(const struct sk_buff *skb,	// IN: skb to copy
+@@ -629,7 +635,7 @@ VNetCsumCopyDatagram(const struct sk_buff *skb,	// IN: skb to copy
   *      Copy complete datagram to the user space. Fill correct checksum
   *	into the copied datagram if nobody did it yet.
   *
@@ -289,7 +295,7 @@ index 2b976d7..8c3f685 100644
   *      On success byte count, on failure -EFAULT.
   *
   * Side effects:
-@@ -658,7 +658,7 @@ VNetCopyDatagramToUser(const struct sk_buff *skb,	// IN
+@@ -658,7 +664,7 @@ VNetCopyDatagramToUser(const struct sk_buff *skb,	// IN
        size_t skl;
        int csum;
        u_int16_t csum16;
@@ -298,7 +304,7 @@ index 2b976d7..8c3f685 100644
        skl = compat_skb_csum_start(skb);
        if (VNetCopyDatagram(skb, buf, skl)) {
  	 return -EFAULT;
-@@ -689,7 +689,7 @@ VNetCopyDatagramToUser(const struct sk_buff *skb,	// IN
+@@ -689,7 +695,7 @@ VNetCopyDatagramToUser(const struct sk_buff *skb,	// IN
   *      The virtual network's read file operation. Reads the next pending
   *      packet for this network connection.
   *
@@ -307,7 +313,7 @@ index 2b976d7..8c3f685 100644
   *      On success the len of the packet received,
   *      else if no packet waiting and nonblocking 0,
   *      else -errno.
-@@ -700,7 +700,7 @@ VNetCopyDatagramToUser(const struct sk_buff *skb,	// IN
+@@ -700,7 +706,7 @@ VNetCopyDatagramToUser(const struct sk_buff *skb,	// IN
   *----------------------------------------------------------------------
   */
  
@@ -316,7 +322,7 @@ index 2b976d7..8c3f685 100644
  VNetUserIfRead(VNetPort    *port, // IN
                 struct file *filp, // IN
                 char        *buf,  // OUT
-@@ -768,7 +768,7 @@ VNetUserIfRead(VNetPort    *port, // IN
+@@ -768,7 +774,7 @@ VNetUserIfRead(VNetPort    *port, // IN
   *      The virtual network's write file operation. Send the raw packet
   *      to the network.
   *
@@ -325,7 +331,7 @@ index 2b976d7..8c3f685 100644
   *      On success the count of bytes written else errno.
   *
   * Side effects:
-@@ -777,7 +777,7 @@ VNetUserIfRead(VNetPort    *port, // IN
+@@ -777,7 +783,7 @@ VNetUserIfRead(VNetPort    *port, // IN
   *----------------------------------------------------------------------
   */
  
@@ -334,7 +340,7 @@ index 2b976d7..8c3f685 100644
  VNetUserIfWrite(VNetPort    *port, // IN
                  struct file *filp, // IN
                  const char  *buf,  // IN
-@@ -789,8 +789,8 @@ VNetUserIfWrite(VNetPort    *port, // IN
+@@ -789,8 +795,8 @@ VNetUserIfWrite(VNetPort    *port, // IN
     /*
      * Check size
      */
@@ -345,7 +351,7 @@ index 2b976d7..8c3f685 100644
         count > ETHER_MAX_QUEUED_PACKET) {
        return -EINVAL;
     }
-@@ -807,25 +807,25 @@ VNetUserIfWrite(VNetPort    *port, // IN
+@@ -807,25 +813,25 @@ VNetUserIfWrite(VNetPort    *port, // IN
     /*
      * Allocate an sk_buff.
      */
@@ -376,7 +382,7 @@ index 2b976d7..8c3f685 100644
     VNetSend(&userIf->port.jack, skb);
  
     return count;
-@@ -839,7 +839,7 @@ VNetUserIfWrite(VNetPort    *port, // IN
+@@ -839,7 +845,7 @@ VNetUserIfWrite(VNetPort    *port, // IN
   *
   *      XXX
   *
@@ -385,7 +391,7 @@ index 2b976d7..8c3f685 100644
   *      0 on success
   *      -errno on failure
   *
-@@ -862,8 +862,8 @@ VNetUserIfIoctl(VNetPort      *port,  // IN
+@@ -862,8 +868,8 @@ VNetUserIfIoctl(VNetPort      *port,  // IN
        return -EINVAL;
     case SIOCSETNOTIFY2:
  #ifdef VMX86_SERVER
@@ -396,7 +402,7 @@ index 2b976d7..8c3f685 100644
         * the console os that are from the VMKernel address space which  was the
         * only case we used this.
         */
-@@ -906,20 +906,20 @@ VNetUserIfIoctl(VNetPort      *port,  // IN
+@@ -906,20 +912,20 @@ VNetUserIfIoctl(VNetPort      *port,  // IN
        break;
  
     case SIOCSIFFLAGS:
@@ -422,7 +428,7 @@ index 2b976d7..8c3f685 100644
           spin_lock_irqsave(&q->lock, flags);
           if (userIf->pollPtr) {
              if (skb_queue_empty(q)) {
-@@ -936,11 +936,11 @@ VNetUserIfIoctl(VNetPort      *port,  // IN
+@@ -936,11 +942,11 @@ VNetUserIfIoctl(VNetPort      *port,  // IN
     case SIOCINJECTLINKSTATE:
        {
           uint8 linkUpFromUser;
@@ -436,7 +442,7 @@ index 2b976d7..8c3f685 100644
           if (linkUpFromUser != 0 && linkUpFromUser != 1) {
              return -EINVAL;
           }
-@@ -952,7 +952,7 @@ VNetUserIfIoctl(VNetPort      *port,  // IN
+@@ -952,7 +958,7 @@ VNetUserIfIoctl(VNetPort      *port,  // IN
        return -ENOIOCTLCMD;
        break;
     }
@@ -445,7 +451,7 @@ index 2b976d7..8c3f685 100644
     return 0;
  }
  
-@@ -964,7 +964,7 @@ VNetUserIfIoctl(VNetPort      *port,  // IN
+@@ -964,7 +970,7 @@ VNetUserIfIoctl(VNetPort      *port,  // IN
   *
   *      The virtual network's file poll operation.
   *
@@ -454,7 +460,7 @@ index 2b976d7..8c3f685 100644
   *      Return POLLIN if success, else sleep and return 0.
   *      FIXME: Should not we always return POLLOUT?
   *
-@@ -980,7 +980,7 @@ VNetUserIfPoll(VNetPort     *port, // IN
+@@ -980,7 +986,7 @@ VNetUserIfPoll(VNetPort     *port, // IN
                 poll_table   *wait) // IN
  {
     VNetUserIF *userIf = (VNetUserIF*)port->jack.private;
@@ -463,7 +469,7 @@ index 2b976d7..8c3f685 100644
     poll_wait(filp, &userIf->waitQueue, wait);
     if (!skb_queue_empty(&userIf->packetQueue)) {
        return POLLIN;
-@@ -995,8 +995,8 @@ VNetUserIfPoll(VNetPort     *port, // IN
+@@ -995,8 +1001,8 @@ VNetUserIfPoll(VNetPort     *port, // IN
   * VNetUserIfSetUplinkState --
   *
   *      Sends link state change event.
@@ -474,7 +480,7 @@ index 2b976d7..8c3f685 100644
   *      0 on success, errno on failure.
   *
   * Side effects:
-@@ -1038,7 +1038,7 @@ VNetUserIfSetUplinkState(VNetPort *port, uint8 linkUp)
+@@ -1038,7 +1044,7 @@ VNetUserIfSetUplinkState(VNetPort *port, uint8 linkUp)
     event.header.eventId = 0;
     event.header.classSet = VNET_EVENT_CLASS_UPLINK;
     event.header.type = VNET_EVENT_TYPE_LINK_STATE;
@@ -483,7 +489,7 @@ index 2b976d7..8c3f685 100644
      * XXX kind of a hack, vmx will coalesce linkup/down if they come from the
      * same adapter.
      */
-@@ -1063,8 +1063,8 @@ VNetUserIfSetUplinkState(VNetPort *port, uint8 linkUp)
+@@ -1063,8 +1069,8 @@ VNetUserIfSetUplinkState(VNetPort *port, uint8 linkUp)
   *
   *      Create a user level port to the wonderful world of virtual
   *      networking.
@@ -494,7 +500,7 @@ index 2b976d7..8c3f685 100644
   *      Errno. Also returns an allocated port to connect to,
   *      NULL on error.
   *
-@@ -1080,7 +1080,7 @@ VNetUserIf_Create(VNetPort **ret) // OUT
+@@ -1080,7 +1086,7 @@ VNetUserIf_Create(VNetPort **ret) // OUT
     VNetUserIF *userIf;
     static unsigned id = 0;
     int retval;
@@ -503,7 +509,7 @@ index 2b976d7..8c3f685 100644
     userIf = kmalloc(sizeof *userIf, GFP_USER);
     if (!userIf) {
        return -ENOMEM;
-@@ -1089,7 +1089,7 @@ VNetUserIf_Create(VNetPort **ret) // OUT
+@@ -1089,7 +1095,7 @@ VNetUserIf_Create(VNetPort **ret) // OUT
     /*
      * Initialize fields.
      */
@@ -512,7 +518,7 @@ index 2b976d7..8c3f685 100644
     userIf->port.id = id++;
  
     userIf->port.jack.peer = NULL;
-@@ -1134,7 +1134,7 @@ VNetUserIf_Create(VNetPort **ret) // OUT
+@@ -1134,7 +1140,7 @@ VNetUserIf_Create(VNetPort **ret) // OUT
     /*
      * Rest of fields.
      */
@@ -521,7 +527,7 @@ index 2b976d7..8c3f685 100644
     userIf->port.flags = IFF_RUNNING;
  
     memset(userIf->port.paddr, 0, sizeof userIf->port.paddr);
-@@ -1147,12 +1147,12 @@ VNetUserIf_Create(VNetPort **ret) // OUT
+@@ -1147,12 +1153,12 @@ VNetUserIf_Create(VNetPort **ret) // OUT
     userIf->port.fileOpWrite = VNetUserIfWrite;
     userIf->port.fileOpIoctl = VNetUserIfIoctl;
     userIf->port.fileOpPoll = VNetUserIfPoll;
