@@ -61,7 +61,8 @@ _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 _pkgvermajmin="5.8"
 _pkgverpatch=".0"
 # -{alpha/beta/rc}
-_dev_suffix="-rc"
+_dev_suffix=""
+pkgrel=7
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}${_dev_suffix}
@@ -112,7 +113,6 @@ $_float && _additional_configure_flags="$_additional_configure_flags -qreal floa
 
 # PKGBUILD vars
 
-pkgrel=6
 pkgname="qt-sdk"
 
 if [[ -n ${_piver} ]] || ! $_building; then
@@ -138,8 +138,8 @@ url="http://www.qt.io"
 license=("LGPL3" "GPL3")
 optdepends=('qtcreator: Integrated Raspberry Pi IDE development')
 makedepends=("git" "pkgconfig" "gcc")
-_provider=http://qt.mirror.constant.com/
-#_provider=https://download.qt.io
+#_provider=http://qt.mirror.constant.com/
+_provider=https://download.qt.io
 
 # shouldn't be needed
 _core_configure_options="\
@@ -169,7 +169,7 @@ _core_configure_options="\
 
 if ! $_build_from_head; then
   source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.7z")
-  sha256sums=("SKIP" "cf698bb8fda691afa18dc3bf709bf7782ec1c9e41ee2a1cfacab516b78c36ea9")
+  sha256sums=("SKIP" "0efc79805cfeacc1bd2d10d8d6033e95b6c42cb5d68b1d5a1069b141006a2358")
 fi
 
 options=('!strip')
