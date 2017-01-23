@@ -1,7 +1,7 @@
 # Maintainer: Luke Chen Shui <chenshuiluke@gmail.com>
 pkgname=blitz-request
 pkgver=1.0.0.5
-pkgrel=6
+pkgrel=7
 epoch=
 pkgdesc="The best commandline REST API and stress tester. "
 arch=('i686' 'x86_64')
