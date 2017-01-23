@@ -3,7 +3,7 @@
 
 pkgname=toggldesktop
 pkgver=7.4.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Toggl time tracking software"
 arch=('x86_64')
 url="https://github.com/toggl/toggldesktop"
