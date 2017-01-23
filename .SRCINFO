@@ -1,6 +1,6 @@
 pkgbase = cronograph-conky
 	pkgdesc = A free, conky clock widget for X which displays date, time and weather information
-	pkgver = 7.1.170121
+	pkgver = 7.1.170123
 	pkgrel = 1
 	url = https://github.com/drxspace/cronoconky
 	install = cronograph-conky.install
@@ -18,8 +18,8 @@ pkgbase = cronograph-conky
 	options = !emptydirs
 	options = !optipng
 	options = !debug
-	source = https://github.com/drxspace/cronoconky/releases/download/7.1.170121/v7.1.170121.tar.gz
-	sha1sums = f100cd9f688d8ff7db41ca91711693a7246c8cb3
+	source = https://github.com/drxspace/cronoconky/releases/download/7.1.170123/v7.1.170123.tar.gz
+	sha1sums = f3cd6e9f6490ac06eef166155d368d7aed988b77
 
 pkgname = cronograph-conky
 
