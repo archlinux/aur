@@ -3,7 +3,7 @@
 
 pkgname=myanimelist_client
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple MyAnimeList client"
 arch=('any')
 url=""
@@ -21,6 +21,7 @@ package() {
 	gem install nokogiri
 	gem install json
 	install -Dm755 anime "${pkgdir}/usr/bin/anime"
+        install -Dm755 manga "${pkgdir}/usr/bin/manga"
 	install -Dm644 config.json "${pkgdir}/etc/mal/config.json"
 	echo "\n Please insert your MAL account details to /etc/mal/config.json \n"
 }
