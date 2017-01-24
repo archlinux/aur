@@ -3,14 +3,15 @@
 # Contributor: Dominik Picheta <morfeusz8@gmail.com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Jesus Alvarez <jeezusjr@gmail.com>
+# Contributor: Zion Nimchuk <zionnimchuk@gmail.com>
 
 pkgbase=nim-git
 pkgname=('nim-git' 'nimble-git' 'nimsuggest-git')
-pkgver=20161208
+pkgver=20170124
 pkgrel=1
 arch=('i686' 'x86_64')
 groups=('nim')
-makedepends=('git' 'texlive-bin' 'texlive-core')
+makedepends=('git' 'texlive-bin' 'texlive-core' 'texlive-fontsextra')
 source=(git+https://github.com/nim-lang/Nim
         git+https://github.com/nim-lang/csources
         git+https://github.com/nim-lang/nimble
