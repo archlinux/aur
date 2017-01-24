@@ -2,7 +2,7 @@
 # Contributor: Angel_Caido
 
 pkgname=dualsub-git
-pkgver=v1.0.0.r13.g1a76881
+pkgver=v1.0.0.r28.g26d11c2
 pkgrel=1
 pkgdesc="tool for merging and translating subtitles"
 url="https://github.com/bonigarcia/dualsub"
@@ -28,7 +28,7 @@ build() {
 
 package() {
   cd ${srcdir}/${pkgname}
-  install -Dm755 ./target/dualsub-1.1.0-SNAPSHOT-jar-with-dependencies.jar ${pkgdir}/usr/share/java/dualsub/dualsub.jar
+  install -Dm755 ./target/dualsub-1.1.0-jar-with-dependencies.jar ${pkgdir}/usr/share/java/dualsub/dualsub.jar
   install -D -m644 $srcdir/dualsub.png $pkgdir/usr/share/pixmaps/dualsub.png
   install -D -m644 $srcdir/dualsub.desktop $pkgdir/usr/share/applications/dualsub.desktop
   mkdir -p -m755 ${pkgdir}/usr/bin
