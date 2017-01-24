@@ -11,7 +11,7 @@ install=$pkgname.install
 source=("$pkgname.links"
 	"https://github.com/ryanoasis/nerd-fonts/raw/v1.0.0/LICENSE")
 sha256sums=(
-	'0ac47a1532911d35f76f7eb95e42be73302a11d240021570dce15d2bda22040d'
+    'c45ebda7272090d69f2a835fda92e38cf7f669ec4293b3d3e1b2c8eff43bcdd8'
 	'25f0b18305451ab7353c534098d9daf4051fbedfac6d5ef9be5de42e007e1c3f')
 
 prepare() {
