@@ -1,7 +1,7 @@
 # Maintainer: Allen M. <ase1590@hotmail.com>
 
 pkgname=wxpython-phoenix-git
-pkgver=r2748.gcd8da03c
+pkgver=r2752.g8304ec1b
 pkgrel=1
 pkgdesc="Python 3 implementation of the WxPython UI library"
 arch=('x86_64' 'i686')
