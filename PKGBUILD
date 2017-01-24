@@ -8,7 +8,7 @@
 pkgbase=bacula
 _dir_backends=("${pkgbase}-dir-sqlite3" "${pkgbase}-dir-mariadb" "${pkgbase}-dir-postgresql")
 pkgname=("${pkgbase}-common" "${pkgbase}-console" "${pkgbase}-fd" "${pkgbase}-bat" "${pkgbase}-sd" "${pkgbase}-dir" ${_dir_backends[@]} "${pkgbase}-dir-mysql")
-pkgver=7.4.3
+pkgver=7.4.4
 pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="${pkgbase^} - A Network Backup Tool "
@@ -23,7 +23,7 @@ source=("http://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}-${pk
         '00-qmake4.patch'
         '01-basename.patch')
 
-sha1sums=('ca9d11b038dda91a65d8bf98981645ad0f0800f6'
+sha1sums=('6c7e152d665837b736cca69a72108a5aa21fc4c3'
           '1a68381bd8d0b78cffe78634d160b1a287333c4e'
           '151c6d8b06d8be029a9a50be4d6e64954c88f48c'
           'a682cd35bf2a85fd7274f4241a91483c53c43f37'
