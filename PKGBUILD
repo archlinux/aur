@@ -4,7 +4,7 @@
 # Contributor: s1gma,shirokuro
 
 pkgname=scapy-git
-pkgver=2.3.2.1634.94953c1
+pkgver=2.3.3.dev206
 pkgrel=1
 pkgdesc="A powerful interactive packet manipulation program written in Python"
 url="http://www.secdev.org/projects/scapy/"
@@ -25,8 +25,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  printf "%s.%s.%s" "$(git describe --tags --abbrev=0|sed -r 's|v?([^-]+).*|\1|')" \
-    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  PYTHONPATH=. python2 -c "print __import__('scapy').VERSION"
 }
 
 prepare() {
