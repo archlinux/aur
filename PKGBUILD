@@ -1,7 +1,7 @@
-# Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
+# Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=lmod
-pkgver=7.3.3
+pkgver=7.3.9
 pkgrel=1
 pkgdesc="environment modules system based on Lua, supports legacy TCL modules"
 arch=('i686' 'x86_64')
@@ -13,7 +13,6 @@ optdepends=('tcsh: supported shell'
 provides=('modules')
 conflicts=('lmod-git' 'modules')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TACC/Lmod/archive/$pkgver.tar.gz")
-md5sums=('560a9ce20881d2c4cac288c864d5c1c9')
 
 build() {
   cd $srcdir/Lmod-$pkgver
@@ -41,3 +40,5 @@ package() {
   ln -sf /usr/share/lmod/lmod/init/zsh     modules.zsh
   popd
 }
+
+md5sums=('a5a842d6a8142d674067e005a61b7040')
