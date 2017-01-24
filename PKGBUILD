@@ -1,7 +1,7 @@
 pkgname=mopidy-soundcloud
 _pkgpyname=Mopidy-SoundCloud
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Mopidy extension for playing music from SoundCloud"
 arch=('any')
 url="https://github.com/mopidy/mopidy-soundcloud"
@@ -10,7 +10,7 @@ depends=(
   'python2'
   'python2-requests'
   'python2-pykka>=1.1'
-  'gstreamer0.10-ugly-plugins'
+  'gst-plugins-ugly'
   'mopidy>=1.0'
 )
 makedepends=('python2')
