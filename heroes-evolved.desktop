@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Name=Heroes Evolved
+Comment=Heroes Evolved is the new micro-client MOBA from R2 Games. (Wine)
+Exec=heroes-evolved
+Terminal=false
+Icon=heroes-evolved
+Type=Application
+Categories=Wine;Game;Games;
