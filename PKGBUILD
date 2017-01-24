@@ -2,7 +2,7 @@
 # Contributor: Michal Soltys <soltys@ziu.info>
 
 pkgname=nuttcp
-pkgver=7.3.3
+pkgver=8.1.4
 pkgrel=1
 pkgdesc="TCP/UDP network testing tool - simple, easy to use, with interesting feature set."
 arch=(i686 x86_64)
@@ -11,8 +11,7 @@ license=('GPL')
 depends=('glibc')
 install=nuttcp.install
 source=(http://nuttcp.net/nuttcp/nuttcp-${pkgver}/nuttcp.c)
-sha256sum=('dfbff3c38fb0cbdc474ca6d13539d425')
-md5sums=('dfbff3c38fb0cbdc474ca6d13539d425')
+md5sums=('f3e236273f509f4f3993d9f842ffd860')
 
 build() {
   cd $srcdir
