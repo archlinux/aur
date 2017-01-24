@@ -1,0 +1,4 @@
+/cura-plugin-octoprint/
+*.pkg.tar*
+/src/
+/pkg/
