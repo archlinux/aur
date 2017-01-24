@@ -10,19 +10,15 @@
 
 pkgname=keepassxc
 pkgver=2.1.0
-pkgrel=4
-pkgdesc="A reboot with keepasshttp of an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
+pkgrel=5
+pkgdesc="A reboot of an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
 arch=('i686' 'x86_64')
 url="https://github.com/keepassxreboot/keepassx"
 license=('GPL2')
 depends=('libxtst' 'shared-mime-info' 'qt5-x11extras' 'hicolor-icon-theme' 'desktop-file-utils' 'libmicrohttpd')
 makedepends=('intltool' 'cmake' 'qt5-base' 'qt5-tools' 'zlib' 'libgcrypt')
-conflicts=('keepassx2')
-provides=('keepassx2')
-source=("https://github.com/keepassxreboot/keepassxc/releases/download/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2"{,.sig}
-	'147-keepasshttp.patch')
+source=("https://github.com/keepassxreboot/keepassxc/releases/download/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2"{,.sig})
 sha256sums=('23a39aeda8f2e6263b0821826cfb8735275fba104712748c7a5e41e1f87fb0a6'
-            'SKIP'
             'd1422a63e59a9b5a28a74e3e1a99f371d2f34b37fa0620330663afb086155992')
 validpgpkeys=('BF5A669F2272CF4324C1FDA8CFB4C2166397D0D2') # KeePassXC Release <release@keepassxc.org>
 
@@ -30,7 +26,6 @@ prepare() {
     cd "${pkgname}-${pkgver}"
     sed -i '/git/d' src/CMakeLists.txt
     mkdir -p build
-    patch -p1 < ../147-keepasshttp.patch
 }
 
 build() {
@@ -41,7 +36,7 @@ build() {
         -DCMAKE_VERBOSE_MAKEFILE=OFF \
         -DWITH_GUI_TESTS=OFF \
 	-DWITH_XC_AUTOTYPE=ON \
-	-DWITH_XC_HTTP=ON \
+	-DWITH_XC_HTTP=OFF \
         -DCMAKE_BUILD_TYPE=Release ..
     make
 }
