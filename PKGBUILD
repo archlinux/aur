@@ -20,7 +20,7 @@ depends=('libxtst' 'shared-mime-info' 'qt5-x11extras' 'hicolor-icon-theme' 'desk
 makedepends=('intltool' 'cmake' 'qt5-base' 'qt5-tools' 'zlib' 'libgcrypt')
 conflicts=('keepassxc')
 provides=('keepassxc')
-source=("https://github.com/keepassxreboot/keepassxc/releases/download/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2"{,.sig}
+source=("https://github.com/keepassxreboot/keepassxc/releases/download/${pkgver}/${_pkgname}-${pkgver}-src.tar.bz2"{,.sig}
 	'147-keepasshttp.patch')
 sha256sums=('23a39aeda8f2e6263b0821826cfb8735275fba104712748c7a5e41e1f87fb0a6'
             'SKIP'
