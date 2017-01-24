@@ -1,26 +1,21 @@
 pkgbase = inadyn-fork
-	pkgdesc = Simple dynamic DNS client - fork of the original INADYN implementation from Narcis Ilisei
-	pkgver = 1.99.15
+	pkgdesc = Dynamic DNS client with SSL/TLS support
+	pkgver = 2.1
 	pkgrel = 1
 	url = http://troglobit.com/inadyn.html
-	arch = x86_64
 	arch = i686
-	arch = armv6h
-	arch = armv7h
+	arch = x86_64
 	license = GPL
+	depends = ca-certificates
+	depends = confuse
+	depends = libite
 	depends = openssl
 	provides = inadyn
-	conflicts = inadyn-opendns
-	conflicts = inadyn
-	conflicts = inadyn-mt
-	conflicts = inadyn-fork-git
 	backup = etc/inadyn.conf
-	source = https://github.com/troglobit/inadyn/releases/download/1.99.15/inadyn-1.99.15.tar.xz
+	source = https://github.com/troglobit/inadyn/releases/download/v2.1/inadyn-2.1.tar.xz
 	source = inadyn.conf
-	source = inadyn.service
-	sha256sums = b54ed82653e9bd6624e579433907aecfd3e83bdab9ed0b3c21d6817c799ac715
-	sha256sums = 2da656ca5b971484c7e033e9e9bcd26afbf4fa08f707f7ca44d954d1646353d7
-	sha256sums = 4587f4ae2a4215f9ba67d5b3b7d0aa120a9ebd31677472fa68d8792f42d7135f
+	sha256sums = 87639a7c1ddc047074601ad60188279a2a0d9393367f046c153de0e24586b3ac
+	sha256sums = 4967d5fad250f38167b78c53862674afec7851f7c7bb648d00afe34db062bc60
 
 pkgname = inadyn-fork
 
