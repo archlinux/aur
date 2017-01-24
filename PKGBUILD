@@ -1,7 +1,7 @@
 # Maintainer: Timothy Rice <t.rice@ms.unimelb.edu.au>
 
 pkgname=datamash
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A command-line program which performs numeric, textual and statistical operations on plain text data."
 arch=('i686' 'x86_64')
@@ -25,4 +25,4 @@ package() {
     cd "$pkgname-$pkgver/"
     make DESTDIR="$pkgdir/" install
 }
-md5sums=('79a6affca08107a095e97e4237fc8775')
+md5sums=('cb917de6a108e20b31aa817cd76463a8')
