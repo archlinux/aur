@@ -10,7 +10,7 @@
 
 pkgname=keepassxc
 pkgver=2.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A reboot with keepasshttp of an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
 arch=('i686' 'x86_64')
 url="https://github.com/keepassxreboot/keepassx"
