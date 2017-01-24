@@ -2,7 +2,7 @@
 
 pkgname=librespot-git
 _pkgname=librespot
-pkgver=218.f79df63
+pkgver=258.9e495d6
 pkgrel=1
 epoch=1
 pkgdesc="An open source client library for Spotify."
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/plietar/librespot"
 license=('MIT')
 depends=('rust' 'protobuf')
-makedepends=('cargo')
+makedepends=('cargo' 'portaudio')
 provides=('librespot')
 conflicts=('librespot')
 source=('git+https://github.com/plietar/librespot'
