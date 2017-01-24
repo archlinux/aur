@@ -1,7 +1,7 @@
 # Maintainer: Zion Nimchuk <zionnimchuk@gmail.com>
 pkgname=jgrasp
 _version=2.0.3
-_version_postfix=04
+_version_postfix=05
 pkgver=${_version}"_"${_version_postfix}
 pkgrel=1
 pkgdesc="Lightweight development environment written in Java."
@@ -17,7 +17,7 @@ source=(
     "jGRASP.desktop"
     "LICENSE"
 )
-sha512sums=('959324c18307b0c26fabde1815429769fcd964fd44706e32b907bd2ad7d18c97edb0b94b1b34e90ad375418c78124f668c0ad679d5755b9383914598ebd87379'
+sha512sums=('81e5a9ceb5f046fd1c39264776dfeea03bd1354be4836de614b0b6c97155522d9d337402ffb0af8f3946fcc8530cf04ef1b1189360c923eba7d6c64519a721bf'
                         '5127e410f5123802310c6ea216b8bb82b8d650bd0540188b6d84a9c42d9f3882ce111f3eebdd73340a2c84d6d50c1ce62f947fcb21bd2154c2ddeecf91779918'
                         'c081c3418f476bec578bb01b95ebbf0b06b3c9290b9d60efc5f4b504fc9e5eba8749724ab5bd4ad5f2a4b417b7adcf6feb92ee938aa50c464c3fdcee7d2159d8'
                         'd7cb5729610ae80879d34c1869b6fff7be9e0742165cdf80c44d8e279e4f9676d423104a666625dd43d31263d359c59005d66522916a982156d81537f03e654f'
@@ -44,6 +44,6 @@ package() {
     rm ./*.bat
     rm -r ./osx104
     
-    #I don't know where else to put this. If you have a suggestion, leave a comment!
+    #Copy to proper install directory
     cp -R "${srcdir}/${pkgname}/" "${pkgdir}/usr/share/${pkgname}/"
 }
