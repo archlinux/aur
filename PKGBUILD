@@ -2,7 +2,7 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='ovirt-engine-sdk-python'
-pkgver='3.6.9.1'
+pkgver='3.6.9.2'
 pkgrel='1'
 pkgdesc='oVirt Engine Software Development Kit (Python)'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python2' 'python2-lxml' 'python2-pycurl')
 makedepends=('python2' 'python2-setuptools')
 license=('ASL 2.0')
 source=("http://resources.ovirt.org/pub/ovirt-master-snapshot/src/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('41df07cfee5017077665ed7678334505788746b15d46b224c1f89bb7cfb9ddc9')
+sha256sums=('7d1e8f6b9352d4a9d1b3c9a0b26af3b99650c6a1da6406182236c67cf142f07b')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
