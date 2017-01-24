@@ -1,6 +1,6 @@
 pkgbase = libvirt-zfs
 	pkgdesc = API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc) with ZFS support enabled
-	pkgver = 2.5.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = http://libvirt.org/
 	install = libvirt.install
@@ -93,7 +93,7 @@ pkgbase = libvirt-zfs
 	backup = etc/logrotate.d/libvirtd.qemu
 	backup = etc/logrotate.d/libvirtd.uml
 	backup = etc/sasl2/libvirt.conf
-	source = git+git://libvirt.org/libvirt.git#tag=v2.5.0
+	source = git+git://libvirt.org/libvirt.git#tag=v3.0.0
 	source = libvirtd.conf.d
 	source = libvirtd-guests.conf.d
 	source = libvirt.tmpfiles.d
