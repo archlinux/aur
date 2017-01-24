@@ -4,13 +4,12 @@
 
 pkgname=ttf-opensans
 pkgver=1.10
-pkgrel=2
+pkgrel=3
 pkgdesc='Sans-serif typeface designed by Steve Matteson and commissioned by Google'
 arch=('any')
 url='https://fonts.google.com/specimen/Open+Sans'
 license=('Apache')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-install="${pkgname}.install"
 source=("${pkgname}.zip::https://fonts.google.com/download?family=Open%20Sans"
         "${pkgname}-condensed.zip::https://fonts.google.com/download?family=Open%20Sans%20Condensed")
 sha256sums=('b1e0925c81122343c10b4bd4f7406120394eee5203748a6ce9693e68780d090a'
