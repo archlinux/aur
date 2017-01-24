@@ -2,7 +2,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=networkmanager-openvpn
-pkgver=1.2.6
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="NetworkManager VPN plugin for OpenVPN"
 url="https://wiki.gnome.org/Projects/NetworkManager"
@@ -11,8 +11,8 @@ license=(GPL)
 depends=(libnm-glib libsecret openvpn)
 makedepends=(libnm-gtk intltool python git)
 install=networkmanager-openvpn.install
-_commit=41d2ad56b6436e6e6fa5c41609fd64fb60e33b48  # tags/1.2.7-dev~1
-source=("git://git.gnome.org/network-manager-openvpn#commit=$_commit")
+_commit=3b19f480395aadf50de531d0a3df9bb8d924fe62  # tags/1.2.8^0
+source=("git+https://git.gnome.org/browse/network-manager-openvpn#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
