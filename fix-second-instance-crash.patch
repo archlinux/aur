@@ -1,0 +1,35 @@
+--- bin/shutter	2017-01-04 10:56:38.404752277 +0100
++++ bin/shutter-fixed	2017-01-04 11:15:49.794702540 +0100
+@@ -322,6 +322,12 @@
+ 
+     #send $cmdid
+     if ( defined $cmdid && defined $extra ) {
++        if (!$extra) {
++            # Quick fix to avoid segmentation fault in some environments.
++
++            $extra = "text=>null";
++        }
++    
+         $app->send_message( $cmdid, text => $extra );
+     }
+     elsif ( defined $cmdid ) {
+@@ -487,7 +493,13 @@
+                     #take screenshot
+                 }
+                 else {
+-                    &evt_take_screenshot( 'global_keybinding', $cmd, undef, $message->get_text );
++                    my $extra = $message->get_text;
++                    
++                    if ( $extra eq "text=>null" ) {
++                        $extra = '';
++                    }
++                
++                    &evt_take_screenshot( 'global_keybinding', $cmd, undef, $extra );
+                 }
+             }
+ 
+@@ -11334,3 +11346,4 @@
+ B<https://bugs.launchpad.net/shutter/+filebug>
+ 
+ =cut
++
