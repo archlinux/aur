@@ -1,6 +1,6 @@
 pkgbase = rice3d
 	pkgdesc = command line 3d model viewer using text and terminal escape codes
-	pkgver = r73.ba624f6
+	pkgver = r74.29e2d55
 	pkgrel = 1
 	url = https://github.com/martijnat/rice3d
 	arch = i686
