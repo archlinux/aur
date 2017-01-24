@@ -6,7 +6,7 @@
 
 pkgname=linuxsampler-svn
 _pkgname="${pkgname%-svn}"
-pkgver=r3050
+pkgver=r3099
 pkgrel=1
 pkgdesc="Sampler backend, including sampler engine, audio and MIDI drivers, network layer (LSCP) API and native C++ API"
 arch=("i686" "x86_64")
@@ -34,7 +34,8 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   make -f Makefile.svn
-  ./configure --prefix=/usr --enable-vstsdk-dir="$srcdir/VST3 SDK"
+  ./configure --prefix=/usr --enable-vstsdk-dir="$srcdir/VST3 SDK" \
+              --enable-default-instruments-db-location="$pkgdir/var/lib/linuxsampler/instruments.db"
   make
 }
 
