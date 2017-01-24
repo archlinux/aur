@@ -6,11 +6,12 @@ pkgbase = tmsu
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = go
 	depends = fuse
 	depends = sqlite>=3
 	provides = tmsu
-	source = https://github.com/oniony/TMSU/archive/v0.6.1.tar.gz
+	source = tmsu-0.6.1.tar.gz::https://github.com/oniony/TMSU/archive/v0.6.1.tar.gz
 	sha256sums = 00483d9ca12cb868e9587207556a8293bd43ee5a2993a6fe9f0c93edef918a7f
 
 pkgname = tmsu

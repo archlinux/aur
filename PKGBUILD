@@ -9,9 +9,10 @@ pkgdesc="A tool for tagging your files and accessing them through a virtual file
 arch=('i686' 'x86_64')
 url="http://tmsu.org/"
 depends=('go' 'fuse' 'sqlite>=3')
+makedepends=('git')
 provides=('tmsu')
 license=('GPL3')
-source=("https://github.com/oniony/TMSU/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/oniony/TMSU/archive/v$pkgver.tar.gz")
 sha256sums=('00483d9ca12cb868e9587207556a8293bd43ee5a2993a6fe9f0c93edef918a7f')
 
 build() {
