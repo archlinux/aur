@@ -33,7 +33,7 @@ depends=('openssl>=1.0.2'
          'python2-pycparser'
          'python2-six'
          'libffi'
-         'python2-foolscap>=0.12.5'
+         'python2-foolscap>=0.12.6'
          'net-tools' # provides /sbin/ifconfig
          'python2-setuptools'
          'python2-shutilwhich>=1.1.0'
