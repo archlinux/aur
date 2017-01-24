@@ -1,0 +1,7 @@
+post_install(){
+  echo "==> Hyphenation files are in: /usr/share/neatroff/hyph/"
+  echo "    To use them, \`.hpf' request must be set, for example:"
+  echo "      .hpf hyph-de-1996.pat.txt hyph-de-1996.hyp.txt hyph-de-1996.chr.txt"
+  echo "    More info in /usr/share/doc/neatroff-suite/neatroff.pdf"
+}
+
