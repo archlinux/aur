@@ -1,0 +1,19 @@
+post_install() {
+  for username in `ls /home`; do
+    user_exists=$(id -u $username > /dev/null 2>&1; echo $?)
+
+    if [ "$user_exists" != "1" ]; then
+        su - $username -c "systemctl --user enable appimaged"
+    fi
+  done
+}
+
+pre_remove() {
+  for username in `ls /home`; do
+    user_exists=$(id -u $username > /dev/null 2>&1; echo $?)
+
+    if [ "$user_exists" != "1" ]; then
+        su - $username -c "systemctl --user disable appimaged"
+    fi
+  done
+}

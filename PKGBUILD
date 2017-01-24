@@ -3,16 +3,17 @@
 pkgname=appimage-git
 _gitname=AppImageKit
 pkgdesc="Package desktop applications as AppImages that run on common Linux-based operating systems, such as RHEL, CentOS, Ubuntu, Fedora, debian and derivatives."
-pkgver=r438.f25c428
+pkgver=r428.8cbfebc
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://appimage.org"
 license=('MIT')
-depends=('fuse' 'glib2' 'glibc' 'binutils' 'coreutils' 'zlib' 'libpng' 'inotify-tools')
-makedepends=('git' 'cmake')
+depends=('fuse' 'glib2' 'glibc' 'binutils' 'coreutils' 'zlib' 'lz4' 'zsync' 'inotify-tools' 'openssl' 'libarchive' 'xz')
+makedepends=('git')
 provides=('appimage')
 conflicts=('appimage')
 options=('!strip')
+install="$pkgname.install"
 source=(
   'git://github.com/probonopd/AppImageKit'
 )
@@ -32,13 +33,41 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_gitname}"
-  git checkout master
-  cmake .
+
+  # Fix build script for archlinux
+  sed -i s/Bstatic/Bdynamic/g build.sh
+  # workaround so no root priviliges are needed
+  sed -i "s/\/out\//out\//g" build.sh
+  #sed -i -E "s/find.*/cp \/usr\/lib\/libarchive.so.13 appimaged.AppDir\/usr\/lib\//g" build\-appdirs.sh
+  sed -i "s/find /#find /g" build-appdirs.sh
+
+  # Generate appimaged.service file
+  echo "[Unit]" > appimaged.service
+  echo "Description=AppImage daemon" >> appimaged.service
+  echo "After=basic.target" >> appimaged.service
+  echo "[Service]" >> appimaged.service
+  echo "ExecStart=/usr/bin/appimaged" >> appimaged.service
+  echo "Restart=always" >> appimaged.service
+  echo "RestartSec=5s" >> appimaged.service
+  echo "StartLimitInterval=0" >> appimaged.service
+  echo "[Install]" >> appimaged.service
+  echo "WantedBy=graphical.target" >> appimaged.service
 }
 
 build() {
   cd "${srcdir}/${_gitname}"
-  make
+  ./build.sh
+
+  # Copy metainfo files
+  mkdir -p appimagetool.AppDir/usr/share/metainfo/
+  mkdir -p appimaged.AppDir/usr/share/metainfo/
+
+  cp resources/usr/share/metainfo/appimagetool.appdata.xml appimagetool.AppDir/usr/share/metainfo/
+  cp resources/usr/share/metainfo/appimaged.appdata.xml appimaged.AppDir/usr/share/metainfo/
+
+  # Generate appimage files
+  appimagetool.AppDir/AppRun -n appimagetool.AppDir appimagetool
+  appimagetool.AppDir/AppRun -n appimaged.AppDir appimaged
 }
 
 package(){
@@ -46,12 +75,13 @@ package(){
 
   mkdir -p $pkgdir/usr/bin
   mkdir -p $pkgdir/usr/share/appimage
+  mkdir -p $pkgdir/usr/lib/systemd/user/
 
-  cp AppImageAssistant $pkgdir/usr/bin/
-  cp AppImageExtract $pkgdir/usr/bin/
-  cp AppImageMonitor $pkgdir/usr/bin/
+  cp appimagetool $pkgdir/usr/bin/
+  cp appimaged $pkgdir/usr/bin/
 
-  cp desktopintegration $pkgdir/usr/share/appimage/
   cp AppRun.c $pkgdir/usr/share/appimage/
   cp README.md $pkgdir/usr/share/appimage/
+
+  cp appimaged.service $pkgdir/usr/lib/systemd/user/
 }
