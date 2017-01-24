@@ -1,0 +1,14 @@
+pkgbase = python-rtree
+	pkgdesc = Python wrapper for libspatialindex
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = http://toblerity.github.com/rtree/
+	arch = any
+	license = LGPL2.1
+	makedepends = python-setuptools
+	depends = spatialindex
+	source = https://github.com/Toblerity/rtree/archive/0.8.3.tar.gz
+	sha256sums = ab9d29ea3935d189ce32217ad5f5aff464a7ded9e9f9777e2d8dbf11dcf90b93
+
+pkgname = python-rtree
+
