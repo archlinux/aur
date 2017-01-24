@@ -1,0 +1,21 @@
+_depmod() {
+  EXTRAMODULES=extramodules-4.8-ARCH
+  depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+}
+
+post_install() {
+  cat << EOF
+==> Stuff about rebooting :)
+EOF
+  _depmod
+}
+
+post_upgrade() {
+  _depmod
+}
+
+post_remove() {
+  _depmod
+}
+
+# vim:set ts=2 sw=2 et:
