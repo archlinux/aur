@@ -1,18 +1,24 @@
 pkgbase = mattermost-desktop
-	pkgdesc = Mattermost Desktop (Beta) for Linux
+	pkgdesc = Mattermost Desktop application for Linux (Beta)
 	pkgver = 3.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mattermost/desktop
 	arch = i686
 	arch = x86_64
-	license = MIT
+	license = Apache
 	makedepends = npm
 	makedepends = gendesk
 	makedepends = libicns
 	makedepends = graphicsmagick
+	depends = gtk2
+	depends = libxtst
+	depends = libxss
 	depends = gconf
+	depends = nss
+	depends = nspr
+	depends = alsa-lib
 	source = https://github.com/mattermost/desktop/archive/v3.5.0.tar.gz
-	sha256sums = 9948a5647906c6e759961072f838cebb38c5649a112fe9d053b90ec13e2c564c
+	sha512sums = 06924e4ce18cbe8fd50c0742a74b0a2ec732c7a419bb741c6991097a0a7be01afdfc4ce43125856508aa06750e35d12ce34d06a1e5d6eb6ddd14e81a0a6dffba
 
 pkgname = mattermost-desktop
 
