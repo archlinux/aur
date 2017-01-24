@@ -5,14 +5,11 @@ echo 'https://wiki.archlinux.org/index.php/System-tar-and-restore'
 echo '--------------------------------------------------------------------------'
 echo 'QUICK INSTRUCTIONS'
 echo
-echo 'BACKUP'
-echo 'Run as root: backup.sh'
-echo 'The sample configuration file can be found at /usr/share/system-tar-and-restore/backup.conf'
+echo 'MAIN SCRIPT'
+echo 'Run as root: star.sh'
+echo 'The sample configuration file for backup mode can be found at /usr/share/system-tar-and-restore/backup.conf'
 echo
-echo 'RESTORE/TRANSFER'
-echo 'Run as root: restore.sh'
-echo
-echo 'GUI'
+echo 'GUI WRAPPER'
 echo 'Run as root: star-gui.sh'
 echo '--------------------------------------------------------------------------'
 }
