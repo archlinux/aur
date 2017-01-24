@@ -1,6 +1,6 @@
 pkgbase = razer-daemon
 	pkgdesc = A daemon for controlling razer-driver
-	pkgver = 1.1.6
+	pkgver = 1.1.8
 	pkgrel = 3
 	url = https://github.com/terrycain/razer_drivers
 	install = razer-daemon.install
@@ -18,7 +18,7 @@ pkgbase = razer-daemon
 	depends = python-notify2
 	depends = python-pyudev
 	optdepends = python-razer: python library for controlling the daemon
-	source = razer-daemon::git+git://github.com/terrycain/razer_drivers.git#tag=v1.1.6
+	source = razer-daemon::git+git://github.com/terrycain/razer_drivers.git#tag=v1.1.8
 	md5sums = SKIP
 
 pkgname = razer-daemon
