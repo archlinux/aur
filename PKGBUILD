@@ -1,8 +1,10 @@
-# Maintainer : Michael Schubert <mschu.dev at gmail>
+# Maintainer: Michael Schubert <mschu.dev at gmail>
 # Contributor: yescalona <yescalona[at]ug[dot]uchile[dot]cl>
-# Contributor : soeren <nonick[at]posteo[dot]de>
+# Contributor: soeren <nonick[at]posteo[dot]de>
+# Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
+
 pkgname='blast+-bin'
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="New suite of BLAST tools that utilizes the NCBI C++ Toolkit"
 arch=('x86_64')
@@ -12,7 +14,7 @@ depends=('perl' 'zlib')
 provides=('blast+')
 conflicts=('blast+')
 source=("ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/$pkgver/ncbi-blast-$pkgver+-x64-linux.tar.gz")
-md5sums=('633039829d04fb9fa8d0fe1ae5debb65')
+md5sums=('681b6ecf8d1d08b63f5f940fb53bd6e8')
 
 package() {
   install -d "$pkgdir"/usr/bin
