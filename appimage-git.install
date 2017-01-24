@@ -3,8 +3,8 @@ post_install() {
     user_exists=$(id -u $username > /dev/null 2>&1; echo $?)
 
     if [ "$user_exists" != "1" ]; then
-        su - $username -c "mkdir -p /home/jgm/.config/systemd/user/graphical.target.wants/"
-        su - $username -c "ln -s /usr/lib/systemd/user/appimaged.service /home/jgm/.config/systemd/user/graphical.target.wants/appimaged.service"
+        su - $username -c "mkdir -p /home/$username/.config/systemd/user/graphical.target.wants/"
+        su - $username -c "ln -s /usr/lib/systemd/user/appimaged.service /home/$username/.config/systemd/user/graphical.target.wants/appimaged.service"
     fi
   done
 }
@@ -14,8 +14,8 @@ pre_remove() {
     user_exists=$(id -u $username > /dev/null 2>&1; echo $?)
 
     if [ "$user_exists" != "1" ]; then
-        su - $username -c "rm /home/jgm/.config/systemd/user/graphical.target.wants/appimaged.service"
-        su - $username -c "rmdir /home/jgm/.config/systemd/user/graphical.target.wants > /dev/null 2>&1"
+        su - $username -c "rm /home/$username/.config/systemd/user/graphical.target.wants/appimaged.service"
+        su - $username -c "rmdir /home/$username/.config/systemd/user/graphical.target.wants > /dev/null 2>&1"
     fi
   done
 }
