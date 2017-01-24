@@ -1,0 +1,15 @@
+pkgbase = dovecot-libsodium-plugin
+	pkgdesc = Dovecot libsodium plugin for Argon2 & SCRYPT hashing schemes
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/LuckyFellow/dovecot-libsodium-plugin
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = dovecot
+	depends = dovecot
+	source = git+https://github.com/LuckyFellow/dovecot-libsodium-plugin.git
+	sha512sums = SKIP
+
+pkgname = dovecot-libsodium-plugin
+
