@@ -1,41 +1,43 @@
-# Maintainer: David Schury <dasc at posteo de>
-pkgname=inadyn-fork-git
-_pkgname=inadyn
-pkgver=2.0.rc1.32.ge91da87
-pkgrel=2
-pkgdesc='Simple dynamic DNS client - fork of the original INADYN implementation from Narcis Ilisei'
-url='http://troglobit.com/inadyn.html'
-arch=('any')
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: David Schury <dasc at posteo de>
+
+_pkgname=inadyn-fork
+pkgname=$_pkgname-git
+pkgver=2.1.r64.gfc1d555
+pkgrel=1
+pkgdesc="Dynamic DNS client with SSL/TLS support"
+arch=('i686' 'x86_64')
+url="http://troglobit.com/inadyn.html"
 license=('GPL')
-depends=('libite' 'confuse>=3.0' 'openssl' 'ca-certificates')
+depends=('ca-certificates' 'confuse' 'openssl')
 makedepends=('git')
-backup=('etc/inadyn.conf')
-conflicts=('inadyn-opendns' 'inadyn' 'inadyn-mt' 'inadyn-fork')
 provides=('inadyn')
-source=("${_pkgname}::git+https://github.com/troglobit/${_pkgname}.git"
-        "inadyn.conf")
+conflicts=('inadyn')
+backup=('etc/inadyn.conf')
+source=($pkgname::git+https://github.com/troglobit/inadyn.git
+        inadyn.conf)
 sha256sums=('SKIP'
-            '1add79028daf20a7f615f5b9d1e17a8850035168c0b14ecf3291d976a106cd2c')
+            '4967d5fad250f38167b78c53862674afec7851f7c7bb648d00afe34db062bc60')
 
 pkgver() {
-	cd "${_pkgname}"
-	git describe --tags | sed -e 's|-|.|g' -e 's|^v||'
+  cd $pkgname
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "${_pkgname}"
-	./autogen.sh
-	./configure --prefix=/usr --sbindir=/usr/bin --enable-openssl
-	make
+  cd $pkgname
+  ./autogen.sh
+  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --enable-openssl
+  make
 }
 
 package() {
-	cd "${_pkgname}"
-	make DESTDIR=$pkgdir install
+  install -Dm600 inadyn.conf "$pkgdir/etc/inadyn.conf"
 
-	install -Dm600 $srcdir/${_pkgname}/examples/dyndns.conf $pkgdir/usr/share/inadyn/examples/dyndns.conf
-	install -Dm600 $srcdir/${_pkgname}/examples/freedns.conf $pkgdir/usr/share/inadyn/examples/freedns.conf
-	install -Dm600 $srcdir/${_pkgname}/examples/custom.conf $pkgdir/usr/share/inadyn/examples/custom.conf
-
-	install -Dm600 ../inadyn.conf $pkgdir/etc/inadyn.conf
+  cd $pkgname
+  install -Dm644 examples/dyndns.conf "$pkgdir/usr/share/inadyn/examples/dyndns.conf"
+  install -Dm644 examples/freedns.conf "$pkgdir/usr/share/inadyn/examples/freedns.conf"
+  install -Dm644 examples/custom.conf "$pkgdir/usr/share/inadyn/examples/custom.conf"
+  make DESTDIR="$pkgdir" install
 }
+
