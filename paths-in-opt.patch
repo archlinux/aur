@@ -1,17 +1,8 @@
 diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index 3db6a1a..4a310f2 100755
+index db5a7e7..b12df2c 100755
 --- a/include/ClientGUI.py
 +++ b/include/ClientGUI.py
-@@ -219,7 +219,7 @@ class FrameGUI( ClientGUITopLevelWindows.FrameThatResizes ):
-         
-         aboutinfo.SetDescription( description )
-         
--        with open( os.path.join( HC.BASE_DIR, 'license.txt' ), 'rb' ) as f: license = f.read()
-+        with open( '/usr/share/licenses/hydrus/license.txt', 'rb' ) as f: license = f.read()
-         
-         aboutinfo.SetLicense( license )
-         
-@@ -378,7 +378,7 @@ class FrameGUI( ClientGUITopLevelWindows.FrameThatResizes ):
+@@ -383,7 +383,7 @@ class FrameGUI( ClientGUITopLevelWindows.FrameThatResizes ):
                              python_executable = python_executable.replace( 'pythonw', 'python' )
                              
                          
@@ -21,10 +12,10 @@ index 3db6a1a..4a310f2 100755
                      
                      time_waited = 0
 diff --git a/include/HydrusConstants.py b/include/HydrusConstants.py
-index 3f5f659..8807427 100755
+index 2cbc4b0..13038df 100755
 --- a/include/HydrusConstants.py
 +++ b/include/HydrusConstants.py
-@@ -3,27 +3,12 @@ import sys
+@@ -3,30 +3,15 @@ import sys
  
  # dirs
  
@@ -55,6 +46,10 @@ index 3f5f659..8807427 100755
 +HELP_DIR = "/opt/hydrus/help"
 +INCLUDE_DIR = "/opt/hydrus/include"
 +STATIC_DIR = "/opt/hydrus/static"
+ 
+ DEFAULT_DB_DIR = os.path.join( BASE_DIR, 'db' )
+-LICENSE_PATH = os.path.join( BASE_DIR, 'license.txt' )
++LICENSE_PATH = "/usr/share/licenses/hydrus/license.txt"
  
  #
  
