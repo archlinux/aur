@@ -8,7 +8,7 @@ arch=('x86_64' 'i686')
 url="https://github.com/wxWidgets/Phoenix"
 license=('custom:wxWindows')
 depends=('python' 'wxgtk')
-makedepends=('mesa' 'glu' 'git' 'libpng' 'libjpeg-turbo' 'webkitgtk2' 'libtiff' 'sdl' 'gstreamer0.10-base-plugins' 'libnotify' 'freeglut' 'gtk2')
+makedepends=('mesa' 'glu' 'git' 'libpng' 'libjpeg-turbo' 'webkitgtk2' 'libtiff' 'sdl' 'gst-plugins-base' 'libnotify' 'freeglut' 'gtk2')
 source=("$pkgname::git+${url}"
 		"git+https://github.com/wxWidgets/wxWidgets.git")
 md5sums=('SKIP' 'SKIP')
