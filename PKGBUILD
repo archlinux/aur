@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=amide-hg
 pkgver=1.0.6r109.7b8fc8a59fd2
-pkgrel=1
+pkgrel=2
 pkgdesc="Medical Imaging Data Examiner - mercurial checkout"
 url="http://amide.sourceforge.net/packages.html"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ prepare() {
 build() {
   cd "$srcdir"/${pkgname%-hg}/${pkgname%-hg}-current
   autoreconf
-   ./configure --prefix=/usr --enable-ffmpeg --enable-libdcmdata --with-xmedcon-exec-prefix=/usr/bin
+   ./configure --prefix=/usr --enable-ffmpeg --enable-libvolpack --enable-libdcmdata --with-xmedcon-exec-prefix=/usr/bin
   make
 }
 
