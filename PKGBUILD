@@ -10,15 +10,15 @@ license=(custom)
 depends=(qt5-webkit python postgresql-libs hicolor-icon-theme)
 makedepends=(python-setuptools python-sphinx imagemagick)
 source=(https://ftp.postgresql.org/pub/pgadmin3/pgadmin4/v$pkgver/source/$pkgname-$pkgver.tar.gz{,.sig}
-        0001-python-venv-stuff.patch)
+        0001-Simplify-Server-s-python-setup.patch)
 sha256sums=('3c6a8bc6bf8db767786628d076c9ea89db8a76ed6ad0fb4e940d617d4476aba6'
             'SKIP'
-            '209da09d14f7f9b949a567ad39e37f4a7a0627e505f2e6ac716a4ede8e12f9be')
+            'b5a5fcc458c05d5dd97527d7528f10b2af7b5accd0a31823aae2fd8b07518b9b')
 validpgpkeys=('E0C4CEEB826B1FDA4FB468E024ADFAAF698F1519')
 
 prepare() {
   cd $pkgname-$pkgver
-  patch -Np1 -i ../0001-python-venv-stuff.patch
+  patch -Np1 -i ../0001-Simplify-Server-s-python-setup.patch
   convert runtime/pgAdmin4.{ico,png}
 }
 
