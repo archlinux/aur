@@ -4,7 +4,7 @@
 
 pkgname=libxml2
 pkgver=2.9.4+12+ge905f081
-pkgrel=4
+pkgrel=5
 pkgdesc="XML parsing library, version 2"
 arch=(i686 x86_64)
 license=('MIT')
@@ -14,9 +14,11 @@ makedepends=('python2' 'python' 'git')
 url="http://www.xmlsoft.org/"
 _commit=e905f08123e4a6e7731549e6f09dadff4cab65bd  # master
 source=(git://git.gnome.org/libxml2#commit=$_commit
-        http://www.w3.org/XML/Test/xmlts20080827.tar.gz)
+        https://www.w3.org/XML/Test/xmlts20080827.tar.gz
+libxml2-2.9.4-remove-pyverify_fd.patch)
 md5sums=('SKIP'
-         'ae3d1ebe000a3972afa104ca7f0e1b4a')
+         'ae3d1ebe000a3972afa104ca7f0e1b4a'
+         '0fcbf80989e6aa1f974465226259e818')
 
 pkgver() {
   cd $pkgname
@@ -28,6 +30,7 @@ prepare() {
   mkdir build-py2
   mv xmlconf build-py2/
   cd $pkgname
+  patch -Np1 -i ../libxml2-2.9.4-remove-pyverify_fd.patch
   NOCONFIGURE=1 ./autogen.sh
 }
 
