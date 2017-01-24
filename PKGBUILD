@@ -2,10 +2,11 @@
 # Contributor: Paul Préfontaine <paul+archlinuxaur@prefontaine.name>
 # Contributor: HLFH
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
+# Contributor: The_Decryptor
 
 pkgname=h2o
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64')
 depends=('libuv' 'libyaml' 'wslay' 'zlib')
@@ -26,6 +27,7 @@ build() {
   msg2 'Building...'
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DWITH_BUNDLED_SSL=on \
     -DWITH_MRUBY=on \
     .
