@@ -22,10 +22,8 @@ prepare() {
 }
 
 package() {
-    install -d ${pkgdir}/usr/share/fonts/OTF
     install -d ${pkgdir}/usr/share/fonts/TTF
     install -d ${pkgdir}/usr/share/licenses/${pkgname}
-    install -Dm644 ${srcdir}/*.otf ${pkgdir}/usr/share/fonts/OTF
     install -Dm644 ${srcdir}/*.ttf ${pkgdir}/usr/share/fonts/TTF
     install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
 }
