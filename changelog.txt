@@ -1,3 +1,42 @@
+Version 2.8.0 - 12 Jan 2017
+- Changes to adapter_wwwarea52hkhnet from GComyn.
+- Minor fix to adapter_squidgeorgpeja from GComyn.
+- New site by GComyn: fanficauthors.net
+- New site by GComyn: www.lushstories.com
+- New site by GComyn: www.wuxiaworld.com
+- New site by GComyn: trekfanfiction.net
+- New site by GComyn: archive.shriftweb.org
+- New site by GComyn: firefly.populli.org
+- New site by GComyn: sebklaine.net
+- New site by GComyn: www.utopiastories.com
+- New site by GComyn: www.fireflyfans.net
+- Replace twcslibrary.net with starslibrary.net
+- No covers from smilies on royalroadl plus label debug output from
+  royalroadl.
+- Fix resetting confirm dialog checks.
+- Add 'Delete on Reject by Default' option.
+- Fixes for extended/accented chars in URLs for adapter_wwwlushstoriescom.
+- Add iso-8859-1 to default decode list.
+- Fixes for utf8 in desc for adapter_wuxiaworldcom
+- Fix for adapter_spikeluvercom desc containing extra stuff.
+- NEW - Experimental support for more than one adapter under the same domain
+  name:
+- New Site: sinful-dreams.com/wicked/temptation
+- New Site: sinful-dreams.com/whispered/muse
+- New Site: sinful-dreams.com/unicorn/fic
+- Fix for tthfanfic.org change from http to https
+- Add chapter URL normalization to adapter_tthfanficorg for http to https
+  change to recognize pre-existing chapters. Also protects against title
+  changes.
+- Strip 'Crossover' prefix from SV titles--base_xenforoforum_adapter.
+- Get non-label rating for base_efiction adapter_darksolaceorg.
+- Fixes for wuxiaworld.com chapter URLs.
+- Metadata fixes for adapter_wwwlushstoriescom from GComyn.
+- Adding chapter_title_error_mark for continue_on_chapter_error, force errors
+  to always retry on update.
+- Generalize continue_on_chapter_error so all adapters can use it.
+- Update translations.
+
 Version 2.7.0 - 14 Dec 2016
 - New site: writing.whimsicalwanderings.net - Thanks GComyn!
 - New site: www.giantessworld.net - Thanks GComyn!
@@ -24,37 +63,3 @@ Version 2.7.0 - 14 Dec 2016
 - Make QQ ask for user/pass if necessary instead of just fail.
 - Remove more script tags from squidge.org/peja metadata.
 - Update translations. (plugin only)
-
-Version 2.6.0 - 17 Nov 2016
-- Fix for wraithbait.com - no longer displays review counts, remove code that
-  collects them.
-- New site: royalroadl.com Thanks wassname!
-- Allow '_u#.xhtml' file names in updates. For Calibre Convert on Anthologies,
-  then manually split.
-- Add Last Checked Column feature
-- Fixes for adapter_adultfanfictionorg.py from GComyn.
-- New site: chosentwofanfic.com -- Thanks GComyn!
-- New site: www.asexstories.com -- Thanks GComyn!
-- New site: www.bdsmlibrary.com -- Thanks GComyn!
-- New site: www.ficsite.com -- Thanks GComyn!
-- Tweaks and fixes across several sites from GComyn.
-- Site lotrfanfiction.com changed date format.
-- Improve quotev.com not found reporting a little.
-- Fix for potterfics.com layout change.
-- Remove duplicate adapter for fanfiction.lucifael.com--still supported.
-- Update translations.
-- Fix to handle incorrect HTML better in Get URLs from Page.
-- Add strip_text_links INI param to allowed list for asexstories.com.
-- Change comments sanitization for calibre to be less draconic.
-- Fix author fetch for post URL base_xenforoforum.
-- Don't use 'uparrow' quote links as chapter links in base_xenforoforum.
-- Adding remove_spoilers and legend_spoilers features and css example for
-  spoilers for base_xenforoforum.
-- Remove noscript tags from base_xenforoforum content--otherwise double images
-  appear in Kindle and Nook.
-- Copy make_soup to epubutils.py for noscript handling, otherwise noscript
-  contents get & escaped.
-- Use DOTALL regular expression processing on replace_metadata and
-  in/exclude_metadata. Should only effect description where it will allow full
-  replacement.
-- Update translations.
