@@ -19,7 +19,7 @@ source=('git://github.com/go-gitea/gitea.git'
         'gitea.tmpfiles')
 sha256sums=('SKIP'
             'f7b570315bd98a4e2d1c82ebdc2e78d76f6df49286ca4ac59cfb2b3f9985d1f9'
-            'd2cbe28275cf97d54d1fbf5c30ff0becb7caa3555f702282c20cb34b6435204d'
+            '775e1f936d861ae7b421e4458bc5facfd64d0e219bf6c0c72fe58e76aa18a016'
             'd8efbf6f1e634548a3ee875c9a7444282966ffe76f2ed9532ee7b724a364264b'
             '5631db5f47b41cdae180b98214e436856daec497949c68c1e13f70f12bbb855d')
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')

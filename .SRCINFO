@@ -31,7 +31,7 @@ pkgbase = gitea-git
 	source = gitea.tmpfiles
 	sha256sums = SKIP
 	sha256sums = f7b570315bd98a4e2d1c82ebdc2e78d76f6df49286ca4ac59cfb2b3f9985d1f9
-	sha256sums = d2cbe28275cf97d54d1fbf5c30ff0becb7caa3555f702282c20cb34b6435204d
+	sha256sums = 775e1f936d861ae7b421e4458bc5facfd64d0e219bf6c0c72fe58e76aa18a016
 	sha256sums = d8efbf6f1e634548a3ee875c9a7444282966ffe76f2ed9532ee7b724a364264b
 	sha256sums = 5631db5f47b41cdae180b98214e436856daec497949c68c1e13f70f12bbb855d
 
