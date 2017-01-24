@@ -27,7 +27,6 @@ pkgbase = slurm-llnl-git
 	optdepends = gtk2: enables the sview command, a simple graphical frontend
 	provides = slurm-llnl=17.02.0.0pre2.r683.g4589be047d
 	conflicts = slurm-llnl
-	conflicts = slurm-llnl-dev
 	backup = etc/default/slurm-llnl
 	source = slurm-tmpfiles.conf
 	source = slurm-llnl-default-conf

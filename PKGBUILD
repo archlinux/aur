@@ -27,7 +27,7 @@ optdepends=("hwloc: enables the task/cgroup plugin"
 	"gtk2: enables the sview command, a simple graphical frontend")
 makedepends=('python' 'git')
 provides=("slurm-llnl=${pkgver}")
-conflicts=('slurm-llnl' 'slurm-llnl-dev')
+conflicts=('slurm-llnl')
 backup=('etc/default/slurm-llnl')
 install="${pkgname}.install"
 source=("slurm-tmpfiles.conf"
