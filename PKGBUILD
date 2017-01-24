@@ -1,4 +1,4 @@
-# Maintainer: Morten Linderud
+# Maintainer: Morten Linderud <morten@linderud.pw>
 
 pkgname=dep-git
 _pkgname=dep
