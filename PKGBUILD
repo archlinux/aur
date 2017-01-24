@@ -4,9 +4,9 @@
  pkgrel=1
  pkgdesc="An open source package for Speaker and Language recognition"
  url="http://lium.univ-lemans.fr/sidekit/"
- depends=('python' 'python-pip' 'python-matplotlib' 'python-mock' 'python-pyparsing' 'python-dateutil'
+ depends=('python' 'python-matplotlib' 'python-mock' 'python-pyparsing' 'python-dateutil'
  'python-nose' 'python-numpy' 'python-six' 'python-scipy' 'python-h5py' 'python-pandas' 'python-theano')
- optdepends=()
+ makedepends=('python-pip')
  license=('LGPL')
  arch=('any')
  source=("http://lium.univ-lemans.fr/sidekit/_downloads/${pkgname}-${pkgver}.tar.gz")
