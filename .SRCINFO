@@ -1,0 +1,17 @@
+pkgbase = libparistraceroute-git
+	pkgdesc = Paris traceroute is a new version of the well-known network diagnosis and measurement tool
+	pkgver = v0.93.r12.gafbbcbe
+	pkgrel = 1
+	url = https://github.com/libparistraceroute/libparistraceroute
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	provides = libparistraceroute,paris-traceroute
+	conflicts = libparistraceroute,paris-traceroute
+	source = git+https://github.com/libparistraceroute/libparistraceroute.git
+	md5sums = SKIP
+
+pkgname = libparistraceroute-git
+
