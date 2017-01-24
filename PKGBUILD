@@ -3,30 +3,28 @@
 # Contributor: Army
 # Contributor: Funkmuscle
 
-_pkgname=guitarix
-pkgname=$_pkgname-git
-pkgver=0.35.1.r16.g63c9045
+pkgname=guitarix-git
+pkgver=0.35.2.r26.g249cd194
 pkgrel=1
-pkgdesc="a virtual guitar amplifier for Linux"
+pkgdesc="A virtual guitar amplifier for Linux"
 arch=('i686' 'x86_64')
 url="http://guitarix.sourceforge.net"
 license=('GPL')
-depends=('gtkmm' 'liblrdf' 'boost-libs' 'zita-convolver' 'eigen' 'lilv' 'ffmpeg' 'webkitgtk2' 'gtk-engines')
-makedepends=('git' 'python2' 'boost' 'intltool' 'lv2' 'gperf')
+depends=('gtkmm' 'liblrdf' 'lilv' 'bluez-libs' 'boost-libs' 'webkitgtk2' 'zita-convolver' 'zita-resampler')
+makedepends=('python' 'python2' 'boost' 'eigen' 'gperf' 'intltool' 'lv2')
 optdepends=('meterbridge: sound meters')
-provides=("$_pkgname" 'guitarix2' 'gx_head')
-conflicts=("$_pkgname" 'guitarix2' 'gx_head')
-install=$pkgname.install
-source=("$_pkgname::git+git://git.code.sf.net/p/guitarix/git")
+provides=("${pkgname%-*}" 'guitarix2' 'gx_head')
+conflicts=("${pkgname%-*}" 'guitarix2' 'gx_head')
+source=("${pkgname%-*}"::"git+git://git.code.sf.net/p/guitarix/git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "${pkgname%-*}"
   git describe --long --tags | sed -r 's/^V//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$_pkgname/trunk"
+  cd "${pkgname%-*}/trunk"
   python2 waf configure --prefix=/usr \
                         --includeresampler \
                         --convolver-ffmpeg \
@@ -40,7 +38,7 @@ build() {
 }
 
 package() {
-  cd "$_pkgname/trunk"
+  cd "${pkgname%-*}/trunk"
   python2 waf install --destdir="$pkgdir"
 }
 
