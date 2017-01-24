@@ -1,0 +1,14 @@
+pkgbase = python-descartes
+	pkgdesc = Python lib for using geometric objects as matplotlib paths and patches.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://bitbucket.org/sgillies/descartes/
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	source = descartes-1.1.0.tar.gz
+	sha256sums = 135a502146af5ed6ff359975e2ebc5fa4b71b5432c355c2cafdc6dea1337035b
+
+pkgname = python-descartes
+
