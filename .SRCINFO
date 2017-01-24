@@ -1,0 +1,15 @@
+pkgbase = dvblink-viewer
+	pkgdesc = DVBLink Viewer is the TV viewer app for the DVBLink server for streaming TV.
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = http://www.dvblogic.com
+	arch = x86_64
+	license = custom:"Copyright (c) 2006-2017 DVBLogic"
+	depends = tar>=1.22
+	options = !strip
+	options = !upx
+	source_x86_64 = http://www.dvblogic.com/download/installations/pc-linux-ubuntu-x86_64/dvblink-viewer-pc-linux-ubuntu-x86_64-6.0.0.deb
+	sha256sums_x86_64 = 58a25a4698094e4846bf65b35e9aafa1d867e277733dac456f5004d6dfb345b5
+
+pkgname = dvblink-viewer
+
