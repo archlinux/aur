@@ -1,0 +1,16 @@
+pkgbase = muttator-git
+	pkgdesc = Make Thunderbird look and behave like Vim
+	pkgver = r5195.1114a563
+	pkgrel = 1
+	url = http://www.vimperator.org/muttator
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = thunderbird>=38.0
+	provides = muttator
+	conflicts = muttator
+	source = muttator-git::git+https://github.com/vimperator/vimperator-labs.git
+	sha256sums = SKIP
+
+pkgname = muttator-git
+
