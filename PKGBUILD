@@ -3,7 +3,7 @@
 _pyname=conda
 pkgname=python-conda
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OS-agnostic, system-level binary package manager and ecosystem"
 arch=('any')
 url="http://conda.pydata.org/docs/"
@@ -12,8 +12,7 @@ depends=('python' 'python-pycosat>=0.6.1' 'python-requests' 'python-ruamel.yaml-
 optdepends=(
   'python-conda-build: to use the conda build command'
 )
-provides=('conda' 'activate' 'deactivate')
-conflicts=('python-conda-git')
+provides=('python-conda' 'python-conda-env')
 options=(!emptydirs)
 source=(
   https://github.com/$_pyname/$_pyname/archive/$pkgver.tar.gz
