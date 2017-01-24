@@ -1,7 +1,7 @@
 pkgbase = eclipse-pydev
 	pkgdesc = Python IDE for Eclipse
 	pkgver = 5.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pydev.org/
 	arch = any
 	license = EPL
@@ -10,7 +10,7 @@ pkgbase = eclipse-pydev
 	depends = eclipse>=3.8
 	conflicts = eclipse-aptana
 	source = PyDev_5.4.0.zip::http://downloads.sourceforge.net/project/pydev/pydev/PyDev%205.4.0/PyDev%205.4.0.zip
-	md5sums = f251d62acf1b91953f22da6ff4fc673f
+	sha1sums = b53bc44b7ddc0e52751a0b85120d6c2ce09b8475
 
 pkgname = eclipse-pydev
 

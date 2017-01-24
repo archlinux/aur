@@ -1,9 +1,10 @@
 # Contributor: Arthur Zamarin <arthurzam@gmail.com>
-# Maintainer: David Rosenstrauch <darose@darose.net>
+# Contributor: David Rosenstrauch <darose@darose.net>
+# Maintainer: Eric Ozwigh <ozwigh at gmail dot com>
 
 pkgname=eclipse-pydev
 pkgver=5.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python IDE for Eclipse"
 url="http://pydev.org/"
 arch=('any')
@@ -12,17 +13,17 @@ depends=('java-environment>=7' 'eclipse>=3.8')
 makedepends=('unzip')
 conflicts=('eclipse-aptana')
 source=("PyDev_${pkgver}.zip::http://downloads.sourceforge.net/project/pydev/pydev/PyDev%20${pkgver}/PyDev%20${pkgver}.zip")
-md5sums=('f251d62acf1b91953f22da6ff4fc673f')
+sha1sums=('b53bc44b7ddc0e52751a0b85120d6c2ce09b8475')
 
-package () {
+package() {
 
-  _dest="${pkgdir}/usr/lib/eclipse/dropins/pydev/eclipse"
-  
+  _dest="${pkgdir}/usr/lib/eclipse/dropins/pydev"
+
   cd "$srcdir"
   mkdir -p "${_dest}"
-  
+
   cp -r {features,plugins} "$_dest/"
 
-  find "$pkgdir/usr/lib/eclipse" -type d -exec chmod 755 {} \;
-  find "$pkgdir/usr/lib/eclipse" -type f -exec chmod 644 {} \;
+  find "${_dest}" -type d -exec chmod 755 {} \;
+  find "${_dest}" -type f -exec chmod 644 {} \;
 }
