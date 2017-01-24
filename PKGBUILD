@@ -4,7 +4,7 @@
 pkgname=tor-git
 _branch=master
 #_branch=maint-0.2.6
-pkgver=0.3.0.0.alpha.23295
+pkgver=0.3.0.2.alpha.23890
 pkgrel=1
 pkgdesc="An anonymizing overlay network (development version)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
