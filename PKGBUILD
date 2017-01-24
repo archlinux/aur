@@ -1,8 +1,8 @@
 # Maintainer: luke bonham <dada [at] archlinux [dot] info>
 
 pkgname=lain-git
-pkgcom=1497
-pkgsha=03fdf98
+pkgcom=1498
+pkgsha=32eddd5
 pkgver=$pkgcom.$pkgsha
 pkgrel=1
 pkgdesc="Layouts, Utilities and Widgets for Awesome WM"
