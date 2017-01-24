@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/opt/Sqlectron/Sqlectron &
+/opt/Sqlectron/sqlectron &

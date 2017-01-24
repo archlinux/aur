@@ -1,7 +1,7 @@
 # Maintainer: Edison Ibañez <edison@opmbx.org>
 pkgname=sqlectron-gui
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and lightweight SQL client desktop with cross database and platform support."
 arch=('i686' 'x86_64')
 url="https://sqlectron.github.io/"
@@ -20,7 +20,7 @@ source=("Sqlectron.sh"
         "Sqlectron-512x512.png")
 source_x86_64=("https://github.com/sqlectron/$pkgname/releases/download/v$pkgver/Sqlectron-$pkgver.tar.gz")
 source_i686=("https://github.com/sqlectron/$pkgname/releases/download/v$pkgver/Sqlectron-$pkgver-ia32.tar.gz")
-md5sums=('f0770e47e7ad5926d24cf9953c1ceb71'
+md5sums=('58802570c7d263582272aab558f9ce47'
          '59f6894e35ab7ce3da5ee594fad41ed4'
          '85d6ce586470159c1fc3722c0df19fa7'
          '3f2b8a5e1a3efa6fb2d40ff03f11475c'
@@ -41,7 +41,7 @@ package() {
   cp -rf "$srcdir/Sqlectron-$pkgver" "$pkgdir/opt/Sqlectron"
   install -dm 775 "$pkgdir/opt/Sqlectron"
   install -dm 755 "$pkgdir/usr/bin/"
-  install -Dm 775 "Sqlectron.sh" "$pkgdir/usr/bin/Sqlectron"
+  install -Dm 775 "Sqlectron.sh" "$pkgdir/usr/bin/sqlectron"
   install -Dm 644 "$srcdir/Sqlectron.desktop" "$pkgdir/usr/share/applications/Sqlectron.desktop"
   install -Dm 644 "$srcdir/Sqlectron-16x16.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/Sqlectron.png"
   install -Dm 644 "$srcdir/Sqlectron-24x24.png" "$pkgdir/usr/share/icons/hicolor/24x24/apps/Sqlectron.png"
