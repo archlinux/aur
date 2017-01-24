@@ -1,6 +1,6 @@
 pkgbase = ts-qtplatform
 	pkgdesc = Qt Platform Abstraction for theShell
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 0
 	url = https://github.com/vicr123/ts-qtplatform
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ts-qtplatform
 	depends = qt5-base
 	depends = contemporary-widgets
 	depends = kiconthemes
-	source = ts-qtplatform-1.0::git+https://github.com/vicr123/ts-qtplatform#branch=master
+	source = ts-qtplatform-1.1::git+https://github.com/vicr123/ts-qtplatform#branch=master
 	md5sums = SKIP
 
 pkgname = ts-qtplatform
