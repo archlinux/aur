@@ -9,7 +9,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=calibre-git
-pkgver=2.76.0.r8.g9d37292fe5
+pkgver=2.77.0.r69.g86f5bb8c6d
 pkgrel=1
 _mathjax_commit=c493143c02f5809b1112af6c5a2c8eab31050118
 pkgdesc="Ebook management application, from git"
@@ -23,12 +23,11 @@ depends=('python2-dateutil' 'python2-cssutils' 'python2-mechanize' 'mtdev'
          'python2-netifaces' 'python2-cssselect' 'python2-apsw'
          'qt5-webkit' 'qt5-svg' 'python2-pygments' 'optipng')
 makedepends=('git' 'qt5-x11extras' 'xdg-utils')
-optdepends=('ipython2: to use calibre-debug'
-            'udisks: required for mounting certain devices')
+optdepends=('ipython2: to use calibre-debug')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git://github.com/kovidgoyal/${pkgname%-git}.git"
-        "git://github.com/kovidgoyal/${pkgname%-git}-translations.git"
+source=("git+https://github.com/kovidgoyal/${pkgname%-git}.git"
+        "git+https://github.com/kovidgoyal/${pkgname%-git}-translations.git"
         "MathJax-${_mathjax_commit}.tar.gz::https://github.com/kovidgoyal/MathJax/archive/${_mathjax_commit}.tar.gz"
         "common-user-agents.txt")
 sha256sums=('SKIP'
