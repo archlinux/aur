@@ -2,12 +2,12 @@
 
 pkgname=gnome-shell-extension-radio-git
 pkgver=1.4.r25.gd6d6eb3
-pkgrel=1
+pkgrel=2
 pkgdesc="Gnome shell extension for listening to internet radio streams."
 arch=(any)
 url="https://github.com/hslbck/gnome-shell-extension-radio"
 license=('GPL')
-depends=('gnome-shell>=3.18' 'gst-plugins-bad' 'gst-plugins-bad' 'gst-plugins-bad' 'gst-plugins-bad')
+depends=('gnome-shell>=3.18' 'gst-plugins-bad' 'gst-plugins-good' 'gst-plugins-ugly' 'gst-libav')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
