@@ -9,6 +9,7 @@ url='https://github.com/solus-project/brisk-menu'
 license=('GPL2')
 groups=('mate')
 depends=('mate-panel-gtk3')
+makedepends=('gnome-common')
 source=("https://github.com/solus-project/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
 md5sums=('76104267448188a1074d714e6f32b187')
 
