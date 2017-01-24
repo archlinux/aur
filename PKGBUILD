@@ -3,7 +3,7 @@
 
 pkgname='ovirt-guest-agent'
 _mainver='1.0.12'
-_subrel='2'
+_subrel='3'
 pkgver="${_mainver}.${_subrel}"
 pkgrel='1'
 pkgdesc='The oVirt Guest Agent'
@@ -18,7 +18,7 @@ source=("https://evilissimo.fedorapeople.org/releases/${pkgname}/${_mainver}/${p
 	"ovirt-guest-agent-1.0.12.1_python_pycodestyle.patch"
 	"sysusers.conf"
 	"${pkgname}.service")
-sha256sums=('8bf256b95907c5a1ddfd566a3b5c08d46343f6b47dfd9ad99f7c9408e47363e9'
+sha256sums=('1d99f7bdfca42eacfddd5257731ccbc8f639725ca62ac7bfac11fe894fa9f2c8'
             '95c162b584dd137296bcec70d14079d4b93d10d8542a87bd8f1cd6ad01e4b140'
             '23ca1080d0ea1c4214afa60849087c91e8eaecf03afcb69ef9ee19220644163a'
             'fab3d62ecd8f6546d5b193f4ca22919de20451678b4cce2c53aa0977fed4f483'
