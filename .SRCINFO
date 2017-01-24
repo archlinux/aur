@@ -1,7 +1,7 @@
 pkgbase = wire-desktop-bin
 	pkgdesc = Modern communication, full privacy.
 	pkgver = 2.11.2692
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wire.com/
 	arch = i686
 	arch = x86_64

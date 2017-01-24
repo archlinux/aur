@@ -1,7 +1,7 @@
 # Maintainer: Fernando Barillas <fbis251@mailbox.org>
 pkgname=wire-desktop-bin
 pkgver=2.11.2692
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern communication, full privacy.'
 arch=('i686' 'x86_64')
 url='https://wire.com/'
@@ -27,4 +27,9 @@ package() {
   deb_package="wire_${pkgver}_${deb_arch}.deb"
   ar xf "$deb_package"
   tar xf data.tar.xz -C "$pkgdir"
+
+  # Add wire symlink to a directory in the $PATH
+  path_dir="${pkgdir}/usr/local/bin"
+  install -d "${path_dir}"
+  ln -s "/opt/Wire/wire" "${path_dir}"
 }
