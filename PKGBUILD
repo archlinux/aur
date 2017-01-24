@@ -42,8 +42,8 @@ build() {
 
 check() {
   cd ${pkgname}/test
-  # Disabled tests as they currently hang
-  #./run_tests
+  # Run only main tests, without network access
+  ./run_tests -K netaccess -F
 }
 
 package() {
