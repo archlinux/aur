@@ -2,16 +2,16 @@
 # Original PKGBUILD by: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=clblas
-pkgver=2.10
-pkgrel=0
+pkgver=2.12
+pkgrel=1
 pkgdesc="A software library containing BLAS functions written in OpenCL"
 arch=("i686" "x86_64")
 url="https://github.com/clMathLibraries/clBLAS"
 license=('APACHE')
-builddepends=("amdapp-sdk" "boost")
-depends=("amdapp-sdk")
-source=("https://github.com/clMathLibraries/clBLAS/archive/v2.10.tar.gz")
-sha512sums=('5ed43104aae565292e0df4cc9e014cf483ccc0ff89257ebb5817f6508bfc9593585ed658da639f2167fbfb5d92ef116be4d5de3694f56e1a1e228bd42b1c05c6')
+depends=("opencl-headers" "ocl-icd" "boost")
+provides=('clblas')
+source=("https://github.com/clMathLibraries/clBLAS/archive/v2.12.tar.gz")
+sha512sums=('5d9b0c58adde69e83d95e9c713e0cdc5f64785fe7e05553a14c57fa483c4ef39e9dc780c26880a7f15924967d5ce4ea29035c29d63eac7ee5a2ae5ddacac2b72')
 
 if [ "$CARCH" == "x86_64" ]; then
     _bits=64
