@@ -3,7 +3,7 @@
 
 _pkgbase=razer-driver
 pkgname=razer-driver-dkms
-pkgver=1.1.6
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="An entirely open source driver for managing Razer peripherals on Linux. (DKMS)"
 arch=('x86_64')
