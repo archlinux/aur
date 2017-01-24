@@ -1,0 +1,4 @@
+/cura-plugin-orientation/
+*.pkg.tar*
+/src/
+/pkg/
