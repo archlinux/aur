@@ -6,12 +6,12 @@ pkgver=2.27
 pkgrel=2
 pkgdesc="A set of programs for manipulating and analyzing Unicode text"
 arch=('i686' 'x86_64')
-url="http://billposer.org/Software/unidesc.html"
+url="https://billposer.org/Software/unidesc.html"
 license=('GPL3')
 depends=(glibc ascii2binary)
 makedepends=('unicode-character-database')
 optdepends=()
-source=("http://billposer.org/Software/Downloads/$pkgname-$pkgver.tar.bz2")
+source=("https://billposer.org/Software/Downloads/$pkgname-$pkgver.tar.bz2")
 sha512sums=(
 	'610a75797ceb503712e513fa3d2ec51ce1d72083d40f51bf55667073d5298b35b4f9edcf724f6ae195d54be48a6e0a0b22d73c9084a16ccd725ddf91a1ee49c4'
 )
