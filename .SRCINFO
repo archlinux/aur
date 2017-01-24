@@ -1,0 +1,15 @@
+pkgbase = makepkg-meta
+	pkgdesc = Easily create and install custom metapackages
+	pkgver = r18.97242c5
+	pkgrel = 1
+	url = https://github.com/andrewgregory/makepkg-meta
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = perl
+	depends = bash
+	source = makepkg-meta::git+https://github.com/andrewgregory/makepkg-meta.git#branch=master
+	md5sums = SKIP
+
+pkgname = makepkg-meta
+
