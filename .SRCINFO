@@ -1,15 +1,17 @@
 pkgbase = lua-iconv
 	pkgdesc = Lua bindings for the iconv API
 	pkgver = 7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ittner.github.com/lua-iconv/
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = luarocks
 	depends = lua
-	source = https://luarocks.org/lua-iconv-7-1.src.rock
-	sha512sums = 88046ca7aec54993c64a1cd6d5a2c6a7793a3987b21d37441ad23bb3af229b3cd28385b73cd99f9351a3362b7219709bad762f401c70926f0dbbe5efd7a61e8e
+	source = https://github.com/downloads/ittner/lua-iconv/lua-iconv-7.tar.gz
+	source = https://github.com/downloads/ittner/lua-iconv/lua-iconv-7.tar.gz.sig
+	validpgpkeys = 9B49FCE2E6B9D1AD610129AD4F6DF1140041A1FB
+	sha512sums = 03b537ba6050ca8e59e6a62474e837c0d6463d1da4610e6da820afc573659571f75de0c7507792e8b7348fd91623d7af7050ead18bd09ec0c7b89a742e024a57
+	sha512sums = SKIP
 
 pkgname = lua-iconv
 
