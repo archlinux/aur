@@ -1,14 +1,14 @@
 # Contributor: Tatsuyuki Ishi <ishitatsuyuki at gmail dot com>
 
 pkgrel=1
-pkgver=r268.cc34e3f
+pkgver=r269.61ff601
 pkgname=zsh-zim-git
 pkgdesc="ZIM - Zsh IMproved"
 url="https://github.com/Eriner/zim"
 arch=('any')
 license=('MIT')
 depends=('zsh')
-makedepends=('git')
+makedepends=('git' 'rsync')
 optdepends=('otf-powerline-symbols-git: for eriner prompt')
 source=('git://github.com/Eriner/zim.git' 'zim.install')
 options=('!strip')
