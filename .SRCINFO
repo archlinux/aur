@@ -1,14 +1,15 @@
 pkgbase = nbopen
-	pkgdesc = Opens an IPython notebook in the best available server
-	pkgver = 0.3
-	pkgrel = 4
+	pkgdesc = Opens an Jupyter notebook in the best available server
+	pkgver = 0.4.2
+	pkgrel = 1
 	url = https://github.com/takluyver/nbopen
 	arch = any
 	license = BSD
 	depends = python
 	depends = jupyter
-	source = nbopen-0.3.tar.gz::https://github.com/takluyver/nbopen/archive/0.3.tar.gz
-	md5sums = 755586703000f635ebf842f6e37dc60c
+	depends = shared-mime-info>=1.7
+	source = https://files.pythonhosted.org/packages/py3/n/nbopen/nbopen-0.4.2-py3-none-any.whl
+	md5sums = b1044661e46907b24f1948767b5a1049
 
 pkgname = nbopen
 

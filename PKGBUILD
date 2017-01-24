@@ -1,28 +1,24 @@
 pkgname=nbopen
-pkgver=0.3
-pkgrel=4
-pkgdesc='Opens an IPython notebook in the best available server'
+pkgver=0.4.2
+pkgrel=1
+pkgdesc='Opens an Jupyter notebook in the best available server'
 url="https://github.com/takluyver/$pkgname"
 arch=('any')
 license=('BSD')
-depends=('python' 'jupyter')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-md5sums=('755586703000f635ebf842f6e37dc60c')
-
-build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	python setup.py build
-}
+depends=('python' 'jupyter' 'shared-mime-info>=1.7')
+_wheel="$pkgname-$pkgver-py3-none-any.whl"
+source=("https://files.pythonhosted.org/packages/py3/${pkgname::1}/$pkgname/$_wheel")
+md5sums=('b1044661e46907b24f1948767b5a1049')
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	pip install --compile --no-deps --ignore-installed --root="$pkgdir" "$_wheel"
 	
-	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
-	
-	install -Dm755 {,"$pkgdir/usr/share/mime/packages/"}application-x-ipynb+json.xml
+	cd "$srcdir/$pkgname"
 	install -Dm755 {,"$pkgdir/usr/share/applications/"}nbopen.desktop
 	
 	for s in 16 24 32 48 64 128 256 512; do
 		install -Dm644 "icons/ipynb_icon_${s}x${s}.png" "$pkgdir/usr/share/icons/hicolor/${s}x${s}/mimetypes/application-x-ipynb+json.png"
 	done
+	
+	rm -rf "$pkgdir/usr/lib/python"*'/site-packages/nbopen/'{application-x-ipynb+json.xml,icons,nbopen.desktop}
 }
