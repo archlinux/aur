@@ -3,18 +3,17 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=jrtplib
-pkgver=3.9.1
-pkgrel=2
+pkgver=3.10.0
+pkgrel=1
 pkgdesc='An object-oriented RTP library written in C++'
 arch=('i686' 'x86_64')
-url='http://research.edm.uhasselt.be/~jori/page/index.php?n=CS.Jrtplib'
+url='http://research.edm.uhasselt.be/jori/page/CS/Jrtplib.html'
 license=('MIT')
 #options=('!libtool')
 depends=('jthread>=1.3.1')
 makedepends=('cmake')
 source=("http://research.edm.uhasselt.be/jori/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('97468e1d6765d77c40a6d248f3d6cb83')
-sha256sums=('dfd08752e5cc0abae3e2dfbdaf9cf545319128e5bc1add222f782f50a584b20c')
+sha256sums=('431b743692aff13b6d16469082220f67c16c02dde71decb5a9fa8d3e7d763fab')
 
 build() {
   cd "$pkgname-$pkgver"
