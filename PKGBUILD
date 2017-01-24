@@ -1,9 +1,9 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
-# Maintainer: Janusz Lewandowski <lew21@xtreeme.org>
+
 pkgname=('python-pydbus'
          'python2-pydbus')
 _pkgname='pydbus'
-pkgver='0.5.1'
+pkgver='0.6.0'
 pkgrel='1'
 pkgdesc='Pythonic DBus library'
 arch=('any')
@@ -11,8 +11,8 @@ url='https://github.com/LEW21/pydbus'
 license=('LGPL')
 makedepends=('python-setuptools'
              'python2-setuptools')
-source=("https://pypi.python.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('e054c81fd9eaa550c3b566fc4049b477')
+source=("https://pypi.python.org/packages/58/56/3e84f2c1f2e39b9ea132460183f123af41e3b9c8befe222a35636baa6a5a/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('4207162eff54223822c185da06c1ba8a34137a9602f3da5a528eedf3f78d0f2c')
 
 package_python-pydbus()
 {
