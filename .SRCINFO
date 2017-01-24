@@ -1,0 +1,28 @@
+pkgbase = perl-gtk2-imageview
+	pkgdesc = Perl bindings to the GtkImageView image viewer widget
+	pkgver = 0.05
+	pkgrel = 7
+	url = http://search.cpan.org/dist/Gtk2-ImageView/
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	checkdepends = perl-test-pod
+	checkdepends = xorg-server-xvfb
+	makedepends = perl-extutils-depends
+	makedepends = perl-extutils-pkgconfig
+	depends = cairo-perl
+	depends = glib-perl
+	depends = gtk2-perl
+	depends = gtkimageview
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RA/RATCLIFFE/Gtk2-ImageView-0.05.tar.gz
+	md5sums = 7c961071b347b6a64b8351fdd87ec4c0
+
+pkgname = perl-gtk2-imageview
+	depends = cairo-perl
+	depends = glib-perl
+	depends = gtk2-perl
+	depends = gtkimageview
+	depends = perl>=
+	depends = perl<
+
