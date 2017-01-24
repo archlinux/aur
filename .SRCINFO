@@ -1,8 +1,9 @@
 pkgbase = btrfs-progs-git
 	pkgdesc = Btrfs filesystem utilities
-	pkgver = 4.9_r6_gb74d9a3c
+	pkgver = 4.9_r33_g2a471100
 	pkgrel = 1
 	url = http://btrfs.wiki.kernel.org/index.php/Main_Page
+	install = btrfs-progs-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -18,9 +19,13 @@ pkgbase = btrfs-progs-git
 	source = btrfs-progs-unstable::git+http://repo.or.cz/r/btrfs-progs-unstable/devel.git#branch=devel
 	source = initcpio-hook-btrfs::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/initcpio-hook-btrfs?h=packages/btrfs-progs
 	source = initcpio-install-btrfs::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/initcpio-install-btrfs?h=packages/btrfs-progs
+	source = btrfs-scrub@.service::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/btrfs-scrub@.service?h=packages/btrfs-progs
+	source = btrfs-scrub@.timer::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/btrfs-scrub@.timer?h=packages/btrfs-progs
 	md5sums = SKIP
 	md5sums = b09688a915a0ec8f40e2f5aacbabc9ad
 	md5sums = 7241ba3a4286d08da0d50b7176941112
+	md5sums = 794b867e09451284c545bae112aa0cfd
+	md5sums = 502221c1b47a3bb2c06703d4fb90a0c2
 
 pkgname = btrfs-progs-git
 
