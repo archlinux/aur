@@ -19,9 +19,11 @@ optdepends=('libpulse: PulseAudio audio driver'
             'gst-libav: h.264 support'
             'gst-plugins-good: h.264 support')
 source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=${pkgver}_Release"
-        mozconfig.in)
+        mozconfig.in
+        sed.patch)
 md5sums=('SKIP'
-         '17d3e79f16ffa6fe1630849b71fb4709')
+         '17d3e79f16ffa6fe1630849b71fb4709'
+         '048a6f60fe43e5c3e066fe9181e1a078')
 
 prepare() {
   sed 's#%SRCDIR%#'"$srcdir"'#g' mozconfig.in > mozconfig
@@ -29,6 +31,7 @@ prepare() {
 
   chmod -R +x build/autoconf/* python/*
   find . -name '*.sh' -exec chmod +x {} \;
+  patch -p1 -i "$srcdir/sed.patch"
 }
 
 build() {

@@ -32,8 +32,10 @@ pkgbase = palemoon
 	optdepends = gst-plugins-good: h.264 support
 	source = git+https://github.com/MoonchildProductions/Pale-Moon#tag=27.0.3_Release
 	source = mozconfig.in
+	source = sed.patch
 	md5sums = SKIP
 	md5sums = 17d3e79f16ffa6fe1630849b71fb4709
+	md5sums = 048a6f60fe43e5c3e066fe9181e1a078
 
 pkgname = palemoon
 
