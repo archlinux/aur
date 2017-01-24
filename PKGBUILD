@@ -4,15 +4,15 @@
 pkgbase=python2-macs2
 pkgname=('python2-macs2')
 _pkgname=MACS2
-pkgver=2.1.0.20140616
+pkgver=2.1.1.20160309
 pkgrel=1
 pkgdesc="MACS -- Model-based Analysis of ChIP-Seq"
 arch=('i686' 'x86_64')
 url="https://github.com/taoliu/MACS/"
 license=('Artistic')
 depends=('python2-numpy')
-source=(https://pypi.python.org/packages/source/M/${_pkgname}/${_pkgname}-${pkgver}.tar.gz)
-md5sums=('ad105b9ad25bc2eedc78c38d54cf76e8')
+source=("https://pypi.io/packages/source/m/macs2/MACS2-${pkgver}.tar.gz")
+md5sums=('1cc2fab44b232992060c7ab592bf43fa')
 
 prepare() {
   cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-py2"
