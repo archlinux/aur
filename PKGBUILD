@@ -1,6 +1,6 @@
 # Maintainer: Fahad Hossain <8bit.demoncoder AT gmail.com>
 pkgname='xopen-file'
-pkgver='1.0.1'
+pkgver='1.0.2'
 pkgrel=1
 pkgdesc="Open files using xdg-open"
 arch=('any')
