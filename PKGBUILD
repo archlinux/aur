@@ -4,7 +4,7 @@
 pkgname=shutter-bzr
 _realname=shutter
 pkgver=1278
-pkgrel=8
+pkgrel=9
 pkgdesc="A featureful screenshot tool (formerly gscrot) - Mario Kemper's Experimental branch"
 arch=('i686' 'x86_64')
 url="http://shutter-project.org/"
@@ -30,11 +30,13 @@ provides=('gscrot' 'shutter')
 conflicts=('shutter')
 replaces=('gscrot')
 source=('bug_1396368.patch'
-			'bug_1618310.patch'
-			'CVE-2015-0854.patch')
+	'bug_1618310.patch'
+	'bug_731874.patch'
+	'CVE-2015-0854.patch')
 md5sums=('0d35f8b2439cb5634fe75d3210d6c3e9'
-			'6ba9ded906a6de88a29fdc62a411af25'
-			'8eed7a77e7a0c488d01a3cbc415dfb5a')
+	'6ba9ded906a6de88a29fdc62a411af25'
+	'1c6233dbd912fa7836f2e5ed69ef555d'
+	'8eed7a77e7a0c488d01a3cbc415dfb5a')
 
 _bzrtrunk=lp:shutter
 _bzrmod=trunk
@@ -42,11 +44,12 @@ _bzrmod=trunk
 build() {
 	cd ${srcdir}
 	msg "Connecting to the server...."
-
+	
+	# LANG=C for bzr commands as temporary workaround for https://bugs.launchpad.net/bzr/+bug/1644003
 	if [ ! -d ./${_bzrmod} ]; then
-		bzr co ${_bzrtrunk} ${_bzrmod} 
+		LANG=C bzr co ${_bzrtrunk} ${_bzrmod} 
 	else
-		bzr up ${_bzrmod}
+		LANG=C bzr up ${_bzrmod}
 	fi
 
 	msg "BZR checkout done or server timeout"
@@ -57,6 +60,7 @@ build() {
 	cp -r ./${_bzrmod}/* ./${_bzrmod}-build
 	patch ${srcdir}/${_bzrmod}-build/share/shutter/resources/system/upload_plugins/upload/Dropbox.pm < bug_1396368.patch
 	patch ${srcdir}/${_bzrmod}-build/bin/shutter < bug_1618310.patch
+	patch ${srcdir}/${_bzrmod}-build/bin/shutter < bug_731874.patch
 	patch ${srcdir}/${_bzrmod}-build/share/shutter/resources/modules/Shutter/App/HelperFunctions.pm < CVE-2015-0854.patch
 }
 package() {
