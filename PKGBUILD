@@ -7,15 +7,15 @@
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 
 _pkgname=gitlab
-pkgname=gitlab-ee
-pkgver=8.15.4
-pkgrel=2
+pkgname=${_pkgname}-ee
+pkgver=8.16.0
+pkgrel=1
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/gitlab-org/gitlab-ce/tree/master#README"
 license=('MIT')
-conflicts=('gitlab')
-provides=('gitlab')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 depends=('ruby2.3' 'git' 'ruby2.3-bundler' 'gitlab-workhorse' 'openssh' 'redis' 'libxslt' 'icu' 'nodejs')
 makedepends=('cmake' 'postgresql' 'mariadb')
 optdepends=('postgresql: database backend'
@@ -44,7 +44,7 @@ source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/gitlab-org/gitlab-ee/r
         nginx-ssl.conf.example
         lighttpd.conf.example)
 install='gitlab.install'
-sha512sums=('c76cd3011a24b182ee5d73f1806ec6335465fbd63c55296ff87650617e63fa98b26f2f2df9e1ede07c3701279a6ede3daf6d943d1d86e80a32e45c7f464e4b6c'
+sha512sums=('ef3053acbadc720ec89cb8fa60b35ab46912f6af0abb423752d49a65a6a508f9ffcbeb811f44f546fa95b2d012293a57d908b291bb9d03fc6007dd87ce8000ee'
             '56cce150645ef74fa42a6100c8bc7689c4012579e1f3ba237c06c367b121246b39e968044615fa21c4757bc8e9d06f37f8ac8d39aa8b808c758e716857553f66'
             '52651e4a5dd2d632e31b7275283f9b8ab2c32c4d56b63d17bd843f300e273e382e339e5aed66222b1b2279273357cbb73aa38119f04784fe380d1550346f1ff3'
             '79cfb8ee740ab30f970c3113659b8349128abeae5e32cc81bb905f89a6db9941b7778040a094b884262daf020f66a1aee49a12d34fbb94efce6ade946bb4625b'
@@ -65,7 +65,7 @@ _datadir="/usr/share/webapps/${_pkgname}"
 _etcdir="/etc/webapps/${_pkgname}"
 _homedir="/var/lib/${_pkgname}"
 _logdir="/var/log/${_pkgname}"
-_srcdir="${_pkgname}-ee-v${pkgver/_/-}-ee-"
+_srcdir="${_pkgname}-ee-v${pkgver}-ee-"
 
 prepare() {
   cd "${srcdir}/${_srcdir}"*
