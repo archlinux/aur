@@ -1,5 +1,6 @@
---- caddy_old.service	2016-12-22 00:10:37.749475603 +0100
-+++ caddy_new.service	2016-12-22 00:11:15.758066472 +0100
+diff -aur init.pristine/linux-systemd/caddy.service init.new/linux-systemd/caddy.service
+--- init.pristine/linux-systemd/caddy.service	2017-01-24 22:53:51.936956151 +0100
++++ init.new/linux-systemd/caddy.service	2017-01-24 22:55:11.580292966 +0100
 @@ -10,14 +10,14 @@
  StartLimitBurst=5
  
