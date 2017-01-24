@@ -3,7 +3,7 @@
 pkgname=spotify-web-player-bin
 _pkgbase=spotifywebplayer
 pkgver=1.0.35
-pkgrel=1
+pkgrel=2
 pkgdesc="A Spotify Web Player wrapper in Electron"
 arch=('i686' 'x86_64')
 url="https://github.com/Quacky2200/Spotify-Web-Player-for-Linux"
@@ -19,7 +19,7 @@ source_i686+=("${url}/releases/download/${pkgver}/${_pkgbase}-${pkgver}-ia32.zip
 source_x86_64+=("${url}/releases/download/${pkgver}/${_pkgbase}-${pkgver}_x86_64.zip")
 
 sha256sums=(
-        '2ec7eb7678428b0cc5ffea99855a6d845be95853ca2a966afdcbed5c199dd6c0'
+        'fdbdceb58c70bd47239f885ef57eb6ac0708b683ae2eb17884a6f92172e3f8a3'
         'cc9bfb4e2bd332ab1dfffd3f801aea2b0f36a50d6d966bd04ed4d304e3bf2753'
         'df6ce086c33e2b854418a07d87024792302b17dc77b456c2a89e937b39499d38'
         '3f0cc717f703fa4e50243a7053d3bc39fa7da79ae0abbfdbe48141a3a5279e9a'

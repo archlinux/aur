@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Spotify Web Player for Linux
 Comment=An Electron wrapper of Spotify Web Player to increase desktop integration for a stable Spotify Player for Linux replacement
-Exec=spotifywebplayer
+Exec="/opt/spotifywebplayer/spotifywebplayer"
 Terminal=false
 Type=Application
 Icon=spotifywebplayer
