@@ -3,7 +3,8 @@ post_install() {
     user_exists=$(id -u $username > /dev/null 2>&1; echo $?)
 
     if [ "$user_exists" != "1" ]; then
-        su - $username -c "systemctl --user enable appimaged"
+        su - $username -c "mkdir -p /home/jgm/.config/systemd/user/graphical.target.wants/"
+        su - $username -c "ln -s /usr/lib/systemd/user/appimaged.service /home/jgm/.config/systemd/user/graphical.target.wants/appimaged.service"
     fi
   done
 }
@@ -13,7 +14,8 @@ pre_remove() {
     user_exists=$(id -u $username > /dev/null 2>&1; echo $?)
 
     if [ "$user_exists" != "1" ]; then
-        su - $username -c "systemctl --user disable appimaged"
+        su - $username -c "rm /home/jgm/.config/systemd/user/graphical.target.wants/appimaged.service"
+        su - $username -c "rmdir /home/jgm/.config/systemd/user/graphical.target.wants > /dev/null 2>&1"
     fi
   done
 }
