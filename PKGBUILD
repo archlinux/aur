@@ -1,7 +1,7 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
 
 pkgname=python-pipenv
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="An experimental project that aims to bring the best of all packaging worlds to the Python world."
 url="https://github.com/kennethreitz/pipenv"
@@ -10,7 +10,7 @@ depends=('python' 'python-crayons' 'python-toml' 'python-click' 'python-pip' 'py
 'python-requirements-parser' 'python-delegator.py')
 makedepends=('python-setuptools')
 source=("https://github.com/kennethreitz/pipenv/archive/v${pkgver}.tar.gz")
-md5sums=('d14190876c6d2c9bc815a1ef06e22b3f')
+md5sums=('c79da1b8453714bd9df0961debc18710')
 arch=('any')
 
 package() {
