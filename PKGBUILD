@@ -1,7 +1,9 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=ni-visa
-pkgver=15.5.0
+pkgver=16.0.0
+_f_number=0
+_short_ver=${pkgver%.0}
 pkgrel=1
 pkgdesc="National Instruments NI-VISA(TM) Software for Linux"
 url="http://www.ni.com/download/ni-visa-5.4.1/4629/en/"
@@ -13,15 +15,19 @@ makedepends=('rpmextract')
 optdepends=('python2-pyvisa: python 2 frontend'
 'python-pyvisa: python 3 frontend')
 
-source=("http://download.ni.com/support/softlib/visa/NI-VISA/15.5/Linux/NI-VISA-${pkgver}.iso")
-md5sums=('049033dc8d884c71c53744021e235c3c')
+source=("http://download.ni.com/support/softlib/visa/NI-VISA/${_short_ver}/Linux/NI-VISA-${pkgver}.iso")
+md5sums=('7bd345779ce11ff79d5cb970d3bf99b3')
 
 build () {
   mkdir -p extracted
-  tar -xvf nivisa-${pkgver}f1.tar.gz -C extracted
+  bsdtar -xvf nivisa-${pkgver}f${_f_number}.tar.gz -C extracted
   cd extracted/rpms
-  rpmextract.sh *.noarch.rpm
-  rpmextract.sh *.${_suffix}.rpm
+  echo "do a thing"
+  for f in *.noarch.rpm *.${_suffix}.rpm
+  do
+     echo "Processing $f"
+     bsdtar -xvf $f
+  done
   rm -rf *.rpm
 }
 
@@ -38,6 +44,7 @@ package() {
 
   cd "${pkgdir}/opt/${pkgname}"
   rm *.iso
+  rm *.tar.gz
 
   cd "${pkgdir}/usr/local"
   mv * ..
