@@ -1,7 +1,7 @@
 # Maintainer: Dustin Falgout <dustin@antergos.com>
 
 pkgname=brisk-menu
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Modern, efficient menu for the MATE Desktop Environment.'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 groups=('mate')
 depends=('mate-panel-gtk3')
 source=("https://github.com/solus-project/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-md5sums=('23cc3495371365ee4f19712c415d8b13')
+md5sums=('76104267448188a1074d714e6f32b187')
 
 
 build() {
