@@ -8,14 +8,14 @@ pkgver=2.3.2.1634.94953c1
 pkgrel=1
 pkgdesc="A powerful interactive packet manipulation program written in Python"
 url="http://www.secdev.org/projects/scapy/"
-depends=('tcpdump' 'python2' )
-optdepends=('python2-crypto: WEP decryption support'
+depends=('tcpdump' 'python2')
+optdepends=('python2-cryptography: WEP, IPsec and SSL/TLS support'
             'python2-pyx: psdump() and pdfdump() functions'
-            'python2-gnuplot: plotting support'
+            'python2-matplotlib: plotting support'
             'graphviz: conversations() method support'
             'sox: for VOIP support')
 makedepends=('git')
-checkdepends=('python2-crypto' 'python2-pyx' 'python2-gnuplot' 'graphviz' 'sox')
+checkdepends=('python2-cryptography' 'python2-pyx' 'python2-matplotlib' 'graphviz' 'sox')
 arch=('any')
 license=('GPL2')
 provides=('scapy')
