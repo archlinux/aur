@@ -1,5 +1,5 @@
 pkgname=mstpd
-pkgver=0.04.r57.ga41b99cf0100
+pkgver=0.04.r81.g1b1d9a6
 pkgrel=1
 pkgdesc="User-space RSTP and MSTP daemon"
 url="https://github.com/mstpd/mstpd"
@@ -22,7 +22,12 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin
+  ./configure \
+    --prefix=/usr         \
+    --sysconfdir=/etc     \
+    --sbindir=/usr/bin    \
+    --libexecdir=/usr/lib \
+    ;
   make
 }
 
@@ -32,10 +37,8 @@ package() {
   cd "$pkgname"
   make DESTDIR="$pkgdir" install
 
-  for _f in "$pkgdir"/usr/share/man/man*/*; do
-    rm -f "$_f"
-    cp -a "$pkgdir"/usr/lib/mstpctl-utils/"${_f##*/}" "$_f"
-  done
+  mkdir -p "$pkgdir"/usr/share/bash-completion
+  mv "$pkgdir"/etc/bash_completion.d "$pkgdir"/usr/share/bash-completion/completions
 
   cd "$srcdir"
   install -Dm 644 mstpd.service "$pkgdir"/usr/lib/systemd/system/mstpd.service
