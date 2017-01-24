@@ -1,0 +1,27 @@
+pkgbase = perl-goo-canvas
+	pkgdesc = Perl bindings for GooCanvas
+	pkgver = 0.06
+	pkgrel = 7
+	url = http://search.cpan.org/dist/Goo-Canvas/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-extutils-depends
+	makedepends = perl-extutils-pkgconfig
+	depends = cairo-perl
+	depends = glib-perl
+	depends = goocanvas1
+	depends = gtk2-perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/Y/YE/YEWENBIN/Goo-Canvas-0.06.tar.gz
+	md5sums = 7dfe0be8c17bfd641d18384d4fd8fb23
+
+pkgname = perl-goo-canvas
+	depends = cairo-perl
+	depends = glib-perl
+	depends = goocanvas1
+	depends = gtk2-perl
+	depends = perl>=
+	depends = perl<
+
