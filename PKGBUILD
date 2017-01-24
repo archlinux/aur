@@ -1,6 +1,6 @@
 # Maintainer: Vinson Chuong <vinsonchuong@gmail.com>
 pkgname=prototypical
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc=A\ starting\ point\ for\ a\ project
 arch=(any)
@@ -21,7 +21,8 @@ checkdepends=(
 	bats-git
 	git
 )
-source=(https://github.com/vinsonchuong/prototypical/archive/v0.0.6-1.tar.gz)
+source=(https://github.com/vinsonchuong/prototypical/archive/v0.0.7-1.tar.gz)
+
 md5sums=("SKIP")
 build () 
 { 
