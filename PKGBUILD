@@ -3,7 +3,7 @@
 pkgname=dep-git
 _pkgname=dep
 pkgver=r208.8572e8b
-pkgrel=1
+pkgrel=2
 pkgdesc="Go dependency tool"
 arch=('x86_64' 'i686')
 url="https://github.com/golang/dep"
@@ -29,11 +29,9 @@ build() {
   export GOBIN="$srcdir/bin"
   export PATH=$PATH:$GOPATH/bin
 
-  msg2 'Installing dependencies...'
   cd "$GOPATH"/src
   go get -d -v github.com/golang/dep
 
-  msg2 'Building binary...'
   cd "$GOPATH"/src/github.com/golang/dep
   go build -o "${_pkgname}"
 }
