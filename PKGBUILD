@@ -1,8 +1,8 @@
 # Maintainer: Gui||aume <michaudg@gmail.com>
 
 pkgname=rocketchat-client
-pkgver=2.2.0
-pkgrel=3
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="The Ultimate Open Source Web Chat Platform"
 arch=('x86_64')
 license=('The MIT License (MIT)')
