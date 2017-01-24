@@ -2,6 +2,7 @@
 *.asc
 *.pkg.tar.xz
 *.patch
+*.pkg.tar
 
 pkg/
 src/
