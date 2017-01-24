@@ -1,6 +1,6 @@
 pkgbase = setroot
 	pkgdesc = simple program that sets your (X11) wallpaper. inspired by the *setroots and feh.
-	pkgver = v1.5
+	pkgver = v2.0.g16b07b3
 	pkgrel = 1
 	url = https://github.com/ttzhou/setroot
 	install = setroot.install
@@ -15,7 +15,7 @@ pkgbase = setroot
 	optdepends = libxinerama: for multiple monitors
 	provides = setroot
 	conflicts = setroot
-	source = git+https://github.com/ttzhou/setroot.git#tag=v1.5
+	source = git+https://github.com/ttzhou/setroot.git
 	md5sums = SKIP
 
 pkgname = setroot

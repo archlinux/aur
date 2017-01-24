@@ -3,7 +3,7 @@
 
 _pkgname=setroot
 pkgname=setroot
-pkgver=v1.5
+pkgver=v2.0.g16b07b3
 pkgrel=1
 pkgdesc="simple program that sets your (X11) wallpaper. inspired by the *setroots and feh."
 arch=('i686' 'x86_64')
@@ -15,18 +15,18 @@ optdepends=('sxiv: use its image viewer along with key-handler to call setroot'
             'libxinerama: for multiple monitors')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+https://github.com/ttzhou/${_pkgname}.git#tag=${pkgver}")
-install=setroot.install
+source=("git+https://github.com/ttzhou/${_pkgname}.git")
+install='setroot.install'
 md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  echo $(git describe)
+  echo $(git describe --long | sed 's|-[0-9]\+-|.|g')
 }
 
 build() {
   cd $_pkgname
-  make xinerama=$(pkg-config --exists xinerama && echo 1)
+  make xinerama="$(pkg-config --exists xinerama && echo 1)"
 }
 
 package() {
