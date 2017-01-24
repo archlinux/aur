@@ -2,7 +2,7 @@
 
 pkgname=xtitle
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Outputs X window titles'
 arch=('i686' 'x86_64')
 url="https://github.com/baskerville/${pkgname}"
@@ -10,7 +10,7 @@ license=('custom:Unlicense')
 depends=('libxcb' 'xcb-util-wm' 'xcb-util')
 provides=("${pkgname}")
 conflicts=("${pkgname}" "${pkgname}-git")
-source=("https://www.github.com/baskerville/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 md5sums=('78c531089280b5b88a77ca06b6c74dd2')
 
 build() {
