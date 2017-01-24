@@ -2,7 +2,7 @@
 
 pkgname=lf
 pkgver=nightly
-pkgrel=2
+pkgrel=3
 pkgdesc='lf: A terminal file manager, heavily inspired by ranger (Precompiled binary from official repository)'
 arch=('i686' 'x86_64')
 url='https://github.com/gokcehan/lf'
