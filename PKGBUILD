@@ -8,7 +8,7 @@ pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url="https://github.com/PowerShell/PowerShell"
 license=('MIT')
-makedepends=('git' 'cmake' 'proot' 'dotnet-cli')
+makedepends=('git' 'cmake' 'proot' 'dotnet')
 depends=('bash' 'icu55')
 source=($pkgname::git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver
         pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop
