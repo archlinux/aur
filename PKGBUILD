@@ -10,7 +10,7 @@ license=('GPL')
 depends=('python')
 optdepends=('fuse: additional features')
 makedepends=('python-sphinx')
-source=("https://github.com/darkfeline/dantalian/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/darkfeline/dantalian/archive/v${pkgver}.tar.gz")
 sha256sums=('263f3834a6fa89e3fe148b5cd133243dfdcd211801b62f68e538cf0138b49bf1')
 
 build() {
