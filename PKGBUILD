@@ -92,5 +92,8 @@ package_samsung-unified-driver-scanner()
         source "$srcdir"/uld/noarch/package_utils
         source "$srcdir"/uld/noarch/scanner-script.pkg
         fill_full_template "$srcdir"/uld/noarch/etc/smfp.rules.in "$pkgdir"/usr/lib/udev/rules.d/60_smfp_samsung.rules
+
+        mkdir -p "$pkgdir"/opt/samsung/scanner/share
+        cp "$OEM_FILE" "$pkgdir"/opt/samsung/scanner/share
     )
 }
