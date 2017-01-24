@@ -1,6 +1,6 @@
 # Maintainer: Chris Nixon <chris.nixon@sigma.me.uk>
 pkgname=ripgrep-git
-pkgver=0.4.0.0.r057ed63
+pkgver=0.4.0.r12.b678862
 pkgrel=1
 pkgdesc="A search tool that combines the usability of The Silver Searcher with the raw speed of grep."
 arch=('i686' 'x86_64')
@@ -27,15 +27,13 @@ build() {
 
 pkgver() {
   cd "$pkgname"
-  # Get the first part of the latest tag and append the current revision
-  local tag=$(git tag | grep -v "^[a-zA-Z]" | tail -n1)
-  echo "$(git describe --long $tag | sed 's/^\(.*\)-.*.*/\1/;s/-/./g').r$(git log --pretty=format:'%h' -n 1 $tag)"
+  local tag=$(git tag --sort=-v:refname | grep '^[0-9]' | head -1)
+  local commits_since=$(git rev-list $tag..HEAD --count)
+  echo "$tag.r$commits_since.$(git log --pretty=format:'%h' -n 1)"
 }
 
 package() {
   cd "$pkgname"
-  git checkout "$(git tag | grep -v "^[a-zA-Z]" | tail -n1)"
-
   install -Dm755 "target/release/rg" "$pkgdir/usr/bin/rg"
   install -Dm644 "doc/rg.1" "$pkgdir/usr/share/man/man1/rg.1"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/ripgrep/README.md"
