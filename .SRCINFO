@@ -9,6 +9,7 @@ pkgbase = networkmanager-dmenu-git
 	makedepends = git
 	depends = python
 	depends = networkmanager
+	depends = python-gobject
 	optdepends = dmenu: either dmenu or rofi is required
 	optdepends = rofi: either dmenu or rofi is required
 	optdepends = network-manager-applet: for the nm-connection-editor GUI

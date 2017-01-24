@@ -8,7 +8,7 @@ pkgdesc="Control NetworkManager via dmenu"
 arch=('any')
 url="https://github.com/firecat53/nmcli-dmenu"
 license=('MIT')
-depends=('python' 'networkmanager')
+depends=('python' 'networkmanager' 'python-gobject')
 makedepends=('git')
 optdepends=('dmenu: either dmenu or rofi is required'
             'rofi: either dmenu or rofi is required'
