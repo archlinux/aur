@@ -12,7 +12,7 @@ depends=('bash' 'gmp')
 optdepends=()
 options=('staticlibs' '!emptydirs' '!makeflags')
 install="${pkgname}.install"
-source=("http://downloads.sourceforge.net/project/ats2-lang/ats2-lang/ats2-postiats-${pkgver}/${_pkgname}-${pkgver}.tgz")
+source=("https://downloads.sourceforge.net/project/ats2-lang/ats2-lang/ats2-postiats-${pkgver}/${_pkgname}-${pkgver}.tgz")
 sha256sums=('2decd0d8d2d0dcc63e0bab739fefc8cb751a1c75a4f08cecd1511785f200cece')
 
 build() {
