@@ -2,6 +2,7 @@ pkgbase = myanimelist_client
 	pkgdesc = Simple MyAnimeList client
 	pkgver = 1.0
 	pkgrel = 2
+	url = http://mal.orosu.eu/
 	arch = any
 	license = GPL
 	depends = ruby
