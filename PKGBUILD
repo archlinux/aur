@@ -10,7 +10,7 @@
 
 _name=vlc
 pkgname=vlc-git
-pkgver=3.0.0.r10711.gf4e90b1391
+pkgver=3.0.0.r10880.gc12d9fb6a7
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
 arch=('i686' 'x86_64')
@@ -19,17 +19,16 @@ license=('LGPLv2.1' 'GPLv3')
 depends=('a52dec' 'faad2' 'ffmpeg' 'libdca' 'libdvbpsi'
          'libdvdnav' 'libmad' 'libmatroska' 'libmpcdec' 'libmpeg2'
          'libproxy' 'libshout' 'libtar' 'libtiger' 'libupnp'
-         'libxinerama' 'libxpm' 'lua' 'qt5-base' 'sdl_image'
+         'libxinerama' 'libxpm' 'lua' 'sdl_image'
          'taglib' 'xcb-util-keysyms' 'zvbi')
-makedepends=('aalib' 'flac' 'git' 'gnome-vfs' 'kdelibs'
+makedepends=('aalib' 'flac' 'git' 'kdelibs'
              'libavc1394' 'libbluray' 'libcaca' 'libdc1394' 'libdvdcss'
              'libgme' 'libgoom2' 'libmtp' 'libnotify' 'librsvg'
-             'libssh2' 'lirc-utils' 'live-media' 'mesa' 'opus'
-             'portaudio' 'projectm' 'twolame' 'vcdimager' 'xosd')
+             'libssh2' 'lirc' 'live-media' 'mesa' 'opus'
+             'portaudio' 'projectm' 'twolame' 'vcdimager' 'xosd' 'qt5-base' 'smbclient')
 optdepends=('aalib: for ASCII art plugin'
             'avahi: for service discovery using bonjour protocol'
             'flac: for Free Lossless Audio Codec plugin'
-            'gnome-vfs: for GNOME Virtual File System support'
             'kdelibs: KDE Solid hardware integration'
             'libavc1394: for devices using the 1394ta AV/C'
             'libbluray: for Blu-Ray support'
@@ -45,7 +44,7 @@ optdepends=('aalib: for ASCII art plugin'
             'libssh2: for sftp support'
             'libva-intel-driver: back-end for intel cards'
             'libva-vdpau-driver: vdpau back-end for nvidia'
-            'lirc-utils: for lirc plugin'
+            'lirc: for lirc plugin'
             'lua-socket: for http interface'
             'ncurses: for ncurses interface support'
             'opus: for opus support'
