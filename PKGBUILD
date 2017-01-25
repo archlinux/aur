@@ -3,7 +3,7 @@
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 
 pkgname=udunits
-pkgver=2.2.23
+pkgver=2.2.24
 pkgrel=1
 pkgdesc="A tool for calculations of physical quantities"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('expat')
 options=('!libtool')
 install=udunits.install
 source=(ftp://ftp.unidata.ucar.edu/pub/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('797227219df63df5e6cca3e3ca98245781e56f2334bf73649bee63b4b31c4979')
+sha256sums=('20bac512f2656f056385429a0e44902fdf02fc7fe01c14d56f3c724336177f95')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
