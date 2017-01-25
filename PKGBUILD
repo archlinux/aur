@@ -1,7 +1,7 @@
 # Maintainer: twilinx <twilinx@mesecons.net>
 
 pkgname=gtk3-typeahead
-pkgver=3.22.5
+pkgver=3.22.7
 pkgrel=1
 conflicts=(gtk3)
 provides=("gtk3=$pkgver")
@@ -16,7 +16,7 @@ optdepends=('libcanberra: gtk3-widget-factory demo'
             'gtk3-print-backends: Printing')
 makedepends=(gobject-introspection libcanberra gtk-doc git colord rest libcups)
 license=(LGPL)
-_commit=a8991a6bea0023c6d5bec8b2ab704b7ae067d7a6  # tags/3.22.5^0
+_commit=a22e80122ede660844742fd7e41f16ef8e070510 # tags/3.22.7^0
 source=("git://git.gnome.org/gtk+#commit=$_commit"
         settings.ini
         gtk-query-immodules-3.0.hook
