@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Autopano Video Pro
+Comment=Stitch and create 360° videos automatically with Autopano Video Pro
+Exec=autopanovideopro
+Icon=/opt/autopanovideo_pro/Resources/UI/autopanovideopro.png
+Terminal=false
+Type=Application
+Categories=Application;AudioVideo;Video;
