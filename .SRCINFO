@@ -8,6 +8,7 @@ pkgbase = gtimelog-collabora-nokeyring-git
 	license = GPL2
 	makedepends = git
 	makedepends = python2
+	depends = libsoup
 	provides = gtimelog
 	source = gtimelog::git+https://git.collabora.co.uk/cgit/gtimelog.git
 	source = nokeyring.patch
