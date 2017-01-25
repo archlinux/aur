@@ -4,7 +4,7 @@
 
 pkgname=playitslowly
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Software to play back audio files at a different speed or pitch. It does also allow you to loop over a certain part of a file."
 arch=('i686' 'x86_64')
 url=http://29a.ch/$pkgname
@@ -27,7 +27,6 @@ build() {
 package() {
     cd $pkgname-$pkgver/
     python3 setup.py install --prefix=/usr --root="$pkgdir"
-    chmod -R o+r $pkgdir/usr/lib/python3.5/site-packages/playitslowly
     install -Dm644 -t $pkgdir/usr/share/icons/hicolor/32x32/apps share/icons/hicolor/32x32/${pkgname}.png
     install -Dm644 -t $pkgdir/usr/share/icons/hicolor/scalable/apps share/icons/hicolor/scalable/${pkgname}.svg
     install -Dm644 -t $pkgdir/usr/share/pixmaps share/pixmaps/${pkgname}.png
