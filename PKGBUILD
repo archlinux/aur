@@ -2,7 +2,7 @@
 # Contributor: hagabaka
 
 pkgname='peazip-qt-build'
-pkgver=6.2.0
+pkgver=6.3.0
 pkgrel=1
 pkgdesc='Free cross-platform file archiver (compiles from source)'
 license=('GPL3')
@@ -16,9 +16,9 @@ conflicts=('peazip' 'peazip-gtk2' 'peazip-gtk2-build' 'peazip-qt' 'peazip-qt-ope
 install=peazip.install
 source=("https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip-$pkgver.src.zip"
         "http://www.peazip.org/downloads/additional/peazip_optional_formats_plugin-1.LINUX.INST.tar.gz")
-sha256sums=('ec5993e5b3bc982bf62d9aa085e7f71bfd77361c1814ae24334c00d2212e5f88'
+sha256sums=('01155484ff615133327b056f1f5aef672916f1b842bb9c599aec0a3b88db270a'
             '7f3fc1ea200d482500360eadda9298c4d5900ca822d21b5a0e11ff9de4d499ff')
-sha512sums=('66a0617d8fce1b991f5fa7640d489b1f3fbb488c284551c4cfd275f4d66116f2f1245c179730376b853fd9a67c72409002ed55af198a52e74d79ee0695acf439'
+sha512sums=('a22800d4c70304113d3c191f35395005f6667eb2791ff90035c2448784a259eb937487625ee34c4b8723557a570a16b708f6d8e4a53eb39bc6e21479e847d94c'
             '8b308510a2c81ad2704cef19ed3fb2baf1dde0e123cf3e4c96e5e42a330e23002f3443c9fce009120492afc82b0ab063344c8029fe6fe851a4bea4814bacdaa8')
 
 build() {
