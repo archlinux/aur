@@ -1,7 +1,7 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-libvpx
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="VP8 and VP9 codec (mingw-w64)"
 arch=('any')
 url="http://www.webmproject.org/"
@@ -24,13 +24,17 @@ prepare() {
 build() {
   for _arch in ${_architectures}; do
     mkdir -p ${srcdir}/libvpx-$pkgver/build-${_arch} && cd ${srcdir}/libvpx-$pkgver/build-${_arch}
+
+    unset EXTRA_CFLAGS
+
     if [ ${_arch} = "i686-w64-mingw32" ]; then
       _targetarch="x86-win32-gcc"
+      EXTRA_CFLAGS="-mstackrealign"
     else
       _targetarch="x86_64-win64-gcc"
     fi
 
-    CROSS="${_arch}-" ../configure \
+    CFLAGS="$EXTRA_CFLAGS $CFLAGS" CROSS="${_arch}-" ../configure \
         --prefix=/usr/${_arch} \
         --target=${_targetarch} \
         --enable-runtime-cpu-detect \
