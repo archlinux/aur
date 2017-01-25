@@ -10,14 +10,15 @@ pkgdesc='A complete solution for creation and editing PDF files'
 url='http://code-industry.net/free-pdf-editor.php'
 arch=('x86_64')
 license=('custom')
-depends=('qt5-base' 'qt5-svg' 'sane')
 makedepends=('patchelf')
 source=('masterpdfeditor.desktop')
 source_x86_64=("http://get.code-industry.net/public/master-pdf-editor-${pkgver}_qt5.amd64.tar.gz")
-sha256sums=('7c585afe0760855a0a509d6edf10d9f1dd6b73c045ec6cac39939a96d0ce796b')
-sha256sums_x86_64=('5c0fc5446c5c543e8b87ac75e7589ee55c63a583cd5a9748a713320f2a46f89c')
+sha1sums=('5b3a0392390e49d4f7f4e478dd336476436f5cfa')
+sha1sums_x86_64=('26549ca453e1b6adde4c0557566b60bcefec445b')
 
 package() {
+  depends=('qt5-base' 'qt5-svg' 'sane')
+
   install -d "$pkgdir"{/opt/,/usr/bin/,/usr/share/applications/}
   cp -a --no-preserve=ownership master-pdf-editor-${pkgver%%.*} "$pkgdir/opt/"
   sed "s/VERMAJ/${pkgver%%.*}/g" masterpdfeditor.desktop > "$pkgdir/usr/share/applications/masterpdfeditor${pkgver%%.*}.desktop"

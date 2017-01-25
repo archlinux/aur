@@ -6,13 +6,13 @@ pkgbase = masterpdfeditor
 	arch = x86_64
 	license = custom
 	makedepends = patchelf
+	source = masterpdfeditor.desktop
+	sha1sums = 5b3a0392390e49d4f7f4e478dd336476436f5cfa
+	source_x86_64 = http://get.code-industry.net/public/master-pdf-editor-4.0.30_qt5.amd64.tar.gz
+	sha1sums_x86_64 = 26549ca453e1b6adde4c0557566b60bcefec445b
+
+pkgname = masterpdfeditor
 	depends = qt5-base
 	depends = qt5-svg
 	depends = sane
-	source = masterpdfeditor.desktop
-	sha256sums = 7c585afe0760855a0a509d6edf10d9f1dd6b73c045ec6cac39939a96d0ce796b
-	source_x86_64 = http://get.code-industry.net/public/master-pdf-editor-4.0.30_qt5.amd64.tar.gz
-	sha256sums_x86_64 = 5c0fc5446c5c543e8b87ac75e7589ee55c63a583cd5a9748a713320f2a46f89c
-
-pkgname = masterpdfeditor
 
