@@ -16,7 +16,7 @@ sha256sums=(e8c63c5eb090edf23a156ec2317f7803c34102c121eac8a77e8d8ea567432f15)
 prepare() {
   cd $pkgname-$_commit/
 
-  find -type f -exec sed -i '/^!#/ ! s/python$/python2/' {} +
+  find -type f -exec sed -i '/^#!/ s/python$/python2/' {} +
 }
 
 build() {
@@ -24,7 +24,7 @@ build() {
 
   pyrcc4 icons.qrc > gui/qt/icons_rc.py
 
-  ./contrib/make_locale
+  contrib/make_locale
 
   ./setup.py build
 }
