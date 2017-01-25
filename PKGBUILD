@@ -9,7 +9,6 @@ arch=('any')
 url="http://software.sil.org/gentium/"
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-makedepends=('unzip')
 conflicts=('ttf-sil-fonts')
 source=("http://software.sil.org/downloads/d/gentium/$_pkgname-$pkgver.zip"
         "http://software.sil.org/downloads/d/gentium/$_pkgname$_pkgsubname-$pkgver.zip")
