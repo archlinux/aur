@@ -134,7 +134,7 @@ _source_package_name=${_qt_package_name_prefix}-${_pkgver}
 
 pkgdesc="Qt SDK for the Raspberry Pi 1/2/3"
 arch=("x86_64")
-url="http://www.qt.io"
+url="http://chaos-reins.com/qpi/"
 license=("LGPL3" "GPL3")
 optdepends=('qtcreator: Integrated Raspberry Pi IDE development')
 makedepends=("git" "pkgconfig" "gcc")
