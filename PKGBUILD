@@ -17,7 +17,7 @@ prepare() {
     # Some of the build steps below require this patch
     msg2 "Fixing python references for python2"
     cd ${srcdir}/${_dirname}
-    find . -type f -print0 | xargs -0 sed -i 's|^#!\s*\(/usr\)/bin/env\s\+python\s*$|#!/usr/bin/env python2|'
+    find . -type f -print0 | xargs -0 sed -i 's|^#!\s*\(/usr\)\?/bin/env\s\+python\s*$|#!/usr/bin/env python2|'
     find . -type f -print0 | xargs -0 sed -i 's|^#!\s*\(/usr\)\?/bin/python\s*$|#!/usr/bin/env python2|'
 
     msg2 "Building CutTools"
@@ -26,7 +26,7 @@ prepare() {
     make -j1
     make clean
 
-    # msg2 "Building CutTools"
+    # msg2 "Building DiscreteSampler"
     msg2 "Can't build DiscreteSampler (if you need this, I welcome a patch)"
     # cd ${srcdir}/${_dirname}/vendor/DiscreteSampler
     # make
