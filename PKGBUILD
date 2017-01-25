@@ -1,4 +1,5 @@
-# Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
 pkgname=gtimelog
 pkgver=0.9.1
