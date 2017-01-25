@@ -9,10 +9,10 @@ arch=('any')
 url='https://gtimelog.org/'
 license=('GPL')
 depends=('python' 'python-gobject' 'python-setuptools')
-source=(http://pypi.python.org/packages/source/g/$pkgname/$pkgname-${pkgver}.tar.gz)
+source=("http://pypi.python.org/packages/source/g/$pkgname/$pkgname-${pkgver}.tar.gz")
 md5sums=('5e95d0e968ad24778e0ae9fee748d73f')
 
 package() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
   python setup.py install --root="$pkgdir"
 }
