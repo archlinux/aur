@@ -7,7 +7,7 @@ license=('BSD')
 url="http://opencv.org/"
 options=('!buildflags' 'staticlibs' '!strip')
 depends=('mingw-w64-crt' 'mingw-w64-jasper' 'mingw-w64-libpng' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libtiff' 'mingw-w64-zlib' 'mingw-w64-openexr' 'mingw-w64-libwebp')
-makedepends=('mingw-w64-cmake')
+makedepends=('mingw-w64-cmake' 'mingw-w64-eigen')
 source=("https://github.com/Itseez/opencv/archive/${pkgver}.tar.gz")
 md5sums=('a43b65488124ba33dde195fea9041b70')
 
