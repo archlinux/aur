@@ -1,12 +1,12 @@
 pkgbase = zarith
 	pkgdesc = Implements arithmetic and logical operations over arbitrary-precision integers and rational numbers
 	pkgver = 1.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ocaml/Zarith
 	arch = x86_64
 	arch = i686
 	license = GPL2
-	makedepends = ocaml>=3.08
+	makedepends = ocaml>=3.12.1
 	depends = gmp
 	source = https://github.com/ocaml/Zarith/archive/release-1.4.1.tar.gz
 	md5sums = 6b4886b457c1ee8c28763fe26cff9e48
