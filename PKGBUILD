@@ -2,27 +2,26 @@
 # Contributor: feuri <mail at feuri dot de>
 
 pkgname=python-pysdl2
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="A Python wrapper around the SDL2 library"
-
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/marcusva/py-sdl2/overview"
 license=('custom:CC0')
-
 depends=('python' 'sdl2')
 optdepends=('sdl2_gfx' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf')
-
-source=(https://bitbucket.org/marcusva/py-sdl2/downloads/PySDL2-${pkgver}.tar.gz)
-md5sums=('720b33ed048c169643406ae39ca4dd8d')
+source=("https://bitbucket.org/marcusva/py-sdl2/downloads/PySDL2-$pkgver.tar.gz")
+sha256sums=('500eeef667a12ab2790b9fbf25f24b2e1de3bdc9d0b07fd94112ad486149e276')
 
 build() {
-  cd "${srcdir}/PySDL2-${pkgver}"
-  python3 setup.py build
+  cd PySDL2-$pkgver
+
+  python setup.py build
 }
 
 package() {
-  cd "${srcdir}/PySDL2-${pkgver}"
-  python3 setup.py install --root="${pkgdir}"
-  install -m 644 -D doc/copying.rst ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  cd PySDL2-$pkgver
+
+  python setup.py install --root="$pkgdir"
+  install -Dm644 doc/copying.rst "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
