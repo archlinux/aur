@@ -4,12 +4,12 @@
 
 pkgname=zarith
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Implements arithmetic and logical operations over arbitrary-precision integers and rational numbers'
 arch=(x86_64 i686)
 url='https://github.com/ocaml/Zarith'
 license=('GPL2')
-depends=('glibc')
+depends=('gmp')
 makedepends=('ocaml>=3.08')
 source=("https://github.com/ocaml/Zarith/archive/release-${pkgver}.tar.gz")
 md5sums=('6b4886b457c1ee8c28763fe26cff9e48')
