@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=openvpn-git
-pkgver=2.4.rc2.r25.g76096c60
+pkgver=2.4.rc2.r26.g4590c383
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) - git checkout'
 arch=('i686' 'x86_64')
@@ -13,10 +13,8 @@ conflicts=('openvpn' 'openvpn-dev')
 provides=('openvpn=2.4.0' 'openvpn-dev')
 license=('custom')
 # for 2.4.x release branch append: #branch=release/2.4
-source=('git://github.com/OpenVPN/openvpn.git'
-        '0001-plugin.patch')
-sha256sums=('SKIP'
-            'b8254067b4ef5d157d87267a76938d86f101972303c7ff20131cc9f28659a30c')
+source=('git://github.com/OpenVPN/openvpn.git')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd openvpn/
@@ -35,9 +33,6 @@ pkgver() {
 
 prepare() {
 	cd openvpn/
-
-	# plugin path
-	patch -Np1 < "${srcdir}"/0001-plugin.patch
 
 	# regenerate configure script
 	autoreconf -vi
