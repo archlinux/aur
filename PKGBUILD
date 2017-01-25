@@ -4,14 +4,14 @@
 
 pkgname=bmpanel
 pkgver=0.9.27
-pkgrel=5
+pkgrel=6
 pkgdesc="A modern, NETWM compliant, bitmap theme-based x11 panel."
 arch=('i686' 'x86_64')
 url="http://nsf.110mb.com/bmpanel/"
 license=('custom')
 depends=('imlib2' 'fontconfig' 'libxrender' 'libxcomposite' 'ttf-dejavu')
-source=(ftp://ftp.ru.debian.org/gentoo-distfiles/distfiles/$pkgname-$pkgver.tar.gz)
-md5sums=('23c2ecc89ec386a94b962a3d55403b24')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nsf/bmpanel/archive/$pkgver.tar.gz")
+md5sums=('042f3cfd1da27ea2b287980add42aafc')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
