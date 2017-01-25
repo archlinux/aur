@@ -1,0 +1,29 @@
+pre_install() {
+    # preparing module
+    rmmod brcmfmac
+}
+
+post_install() {
+    # restarting module after needed file installing
+    modprobe brcmfmac
+}
+
+pre_upgrade() {
+    # preparing module
+    rmmod brcmfmac
+}
+
+post_upgrade() {
+    # restarting module after needed file updating
+    modprobe brcmfmac
+}
+
+pre_remove() {
+    # since you don't need wi-fi, I guess I can remove module?
+    rmmod brcmfmac
+}
+
+post_remove() {
+    # enjoy your wi-fi-less device :D
+    modprobe brcmfmac
+}

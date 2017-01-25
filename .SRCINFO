@@ -1,0 +1,15 @@
+pkgbase = t200ta-wifi
+	pkgdesc = Wi-Fi lib for ASUS T200TA (and possibly other Bay Trail devices)
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/DX37/T200TA
+	install = t200ta-wifi.install
+	arch = any
+	license = GPL
+	optdepends = networkmanager: awesome internet connections manager
+	optdepends = network-manager-applet: GUI and tray icon for networkmanager
+	source = https://github.com/DX37/T200TA/raw/master/libs/brcmfmac43340-sdio.txt
+	md5sums = fd635836716e71a543b2c134d01e0613
+
+pkgname = t200ta-wifi
+
