@@ -3,7 +3,7 @@
 pkgname=scotch
 pkgver=6.0.4
 _downloadnum=34618  # gforge is insane
-pkgrel=2
+pkgrel=3
 pkgdesc="Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. This is the all-inclusive version (MPI/serial/esmumps)."
 url="http://www.labri.fr/perso/pelegrin/scotch/"
 license=("custom:CeCILL-C")
@@ -28,6 +28,9 @@ prepare() {
  
   # Fix C compiler
   sed -i "s/CCD\t.*=.*gcc/CCD = mpicc/" Makefile.inc
+
+  # Fix bison/flex
+  sed -i "s/define yywrap/define scotchyywrap/" libscotch/parser_ll.l
 
   # Also enable bzip2 compression
   sed -i "s/-DCOMMON_FILE_COMPRESS_GZ/-DCOMMON_FILE_COMPRESS_GZ -DCOMMON_FILE_COMPRESS_BZ2/" Makefile.inc
