@@ -5,7 +5,7 @@ pkgbase = pdfsizeopt-git
 	url = https://github.com/pts/pdfsizeopt
 	arch = any
 	license = GPL2
-	makedepends = subversion
+	makedepends = git
 	depends = python2>=2.4
 	depends = ghostscript>=8.61
 	depends = sam2p
