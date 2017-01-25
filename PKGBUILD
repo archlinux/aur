@@ -11,7 +11,7 @@ pkgdesc="An x-cursor theme inspired by macOS and based on KDE Breeze (HiDPI)"
 arch=('any')
 url="https://github.com/keeferrourke/capitaine-cursors"
 license=('LGPL3')
-source=("capitaine-cursors-hidpi-src.tar.gz::https://raw.githubusercontent.com/DebauchedSloth/capitaine-cursors/master/capitaine-cursors-hidpi-src.tar.gz")
+source=("capitaine-cursors-hidpi-src.tar.gz::https://github.com/DebauchedSloth/capitaine-cursors/raw/e3cf81f88cbfac357b059f32b83eaa9ba29558cf/capitaine-cursors-hidpi-src.tar.gz")
 md5sums=('9aa24dc5c5fa62e9c949383a066ce868')
 sha256sums=('e96b2bd2c316f22fdf2825facd45d946c4cf90be79edc6d059601f6625e06fcb')
 
