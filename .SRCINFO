@@ -1,7 +1,7 @@
 pkgbase = pdfsizeopt-git
 	pkgdesc = PDF file size optimizer
-	pkgver = r263.cba29b4
-	pkgrel = 2
+	pkgver = r271.6f1d901
+	pkgrel = 1
 	url = https://github.com/pts/pdfsizeopt
 	arch = any
 	license = GPL2
@@ -17,9 +17,7 @@ pkgbase = pdfsizeopt-git
 	conflicts = pdfsizeopt-svn
 	replaces = pdfsizeopt-svn
 	source = git+https://github.com/pts/pdfsizeopt
-	source = archpackage.patch
 	md5sums = SKIP
-	md5sums = 6ccd8d71b9833b30ae027aad6d81302b
 
 pkgname = pdfsizeopt-git
 
