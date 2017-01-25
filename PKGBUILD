@@ -3,7 +3,7 @@ pkgname=picard-plugins-git
 pkgver=1.3.r115.10f7471
 _pkgver=1.3
 pkgrel=1
-pkgdesc="plugins from picard-plugins repository (except contrib)"
+pkgdesc="plugins from picard-plugins repository"
 arch=('any')
 url="https://picard.musicbrainz.org/plugins/"
 license=('GPL')
@@ -24,14 +24,6 @@ package() {
   install -d "$plugindir"
   # copy all plugins
   cp -r * "$plugindir"
-
-  # remove plugins already in Picard package (contrib)
-  cd "$plugindir"
-  rm -r addrelease albumartist_website classicdiscnumber \
-    cuesheet discnumber featartist featartistsintitles \
-    lastfm lastfmplus no_release release_type replaygain \
-    sort_multivalue_tags standardise_performers titlecase \
-    tracks2clipboard viewvariables
 }
 
 # vim:set ts=2 sw=2 et:
