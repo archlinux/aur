@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /opt/gopro-vr-player/
+./GoProVRPlayer.sh $@

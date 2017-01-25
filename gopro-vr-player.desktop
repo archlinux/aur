@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=GoPro VR Player
+Comment=Play 360° videos and images directly on your Linux computer!
+Exec=gopro-vr-player
+Icon=/opt/gopro-vr-player/Resources/UI/GoProVRPlayer.png
+Terminal=false
+Type=Application
+Categories=Application;AudioVideo;Video;
