@@ -13,7 +13,7 @@ md5sums=('afd93670483381dbd5b565823022147c')
 package() {
 
         mkdir -p "$pkgdir/opt/${pkgname}"
-        cp -r "${srcdir}/${pkgname}-v0.3.59-amd64/"* "${pkgdir}/opt/${pkgname}" -R
+        cp -r "${srcdir}/${pkgname}-v0.3.61-amd64/"* "${pkgdir}/opt/${pkgname}" -R
         find "$pkgdir" -type f -exec chmod 644 {} \;
         find "$pkgdir" -name torguard -exec chmod 755 {} \;
         find "$pkgdir" -name torguard-wrapper -exec chmod 755 {} \;
@@ -21,5 +21,5 @@ package() {
         find "$pkgdir" -name openvpn  -exec chmod 755 {} \;
 
         install -d "$pkgdir"/usr/bin/
-        ln -s /opt/torguard/bin/torguard-wrapper "$pkgdir"/usr/bin/torguard
+        ln -s /opt/torguard/bin/torguard "$pkgdir"/usr/bin/torguard
 }
