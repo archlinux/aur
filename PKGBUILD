@@ -24,6 +24,8 @@ build() {
 
   pyrcc4 icons.qrc > gui/qt/icons_rc.py
 
+  protoc --proto_path=lib/ --python_out=lib/ lib/paymentrequest.proto
+
   contrib/make_locale
 
   ./setup.py build
