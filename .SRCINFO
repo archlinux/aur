@@ -1,7 +1,7 @@
 pkgbase = qt5-styleplugins
 	pkgdesc = Additional style plugins for Qt5
 	pkgver = 5.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://code.qt.io/cgit/qt/qtstyleplugins
 	install = install.sh
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = qt5-styleplugins
 	depends = libx11
 	provides = qt5-styleplugins
 	conflicts = qt5-styleplugins
-	source = qtstyleplugins::git+https://code.qt.io/qt/qtstyleplugins.git#commit=695d8d5793e86f7ad06b931e2418e02fefc74c09
+	source = qtstyleplugins::git+https://code.qt.io/qt/qtstyleplugins.git#commit=84b443109729664c7a0bd124b42c493f28069efc
 	sha512sums = SKIP
 
 pkgname = qt5-styleplugins
