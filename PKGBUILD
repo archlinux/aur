@@ -6,11 +6,10 @@
 _gemname=mixlib-shellout
 pkgname=ruby-${_gemname}
 pkgver=2.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Run external commands on Unix or Windows"
 arch=('any')
 depends=('ruby')
-makedepends=('ruby-rspec')
 url="https://rubygems.org/gems/${_gemname}"
 noextract=($_gemname-$pkgver.gem)
 license=('Apache')
