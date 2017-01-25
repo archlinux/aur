@@ -1,6 +1,6 @@
 pkgbase = retext-git
 	pkgdesc = A simple editor for Markdown and ReStructuredText markup languages
-	pkgver = 20130920
+	pkgver = 20170125
 	pkgrel = 1
 	url = http://retext.sourceforge.net/
 	install = retext-git.install
@@ -20,7 +20,7 @@ pkgbase = retext-git
 	optdepends = python-pyenchant: for spell checking support
 	provides = retext
 	conflicts = retext
-	source = retext-git::git://git.code.sf.net/p/retext/git
+	source = retext-git::git+https://github.com/retext-project/retext
 	source = retext.desktop
 	source = x-retext-markdown.xml
 	source = x-retext-rst.xml

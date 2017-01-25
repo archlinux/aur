@@ -1,7 +1,7 @@
-# Maintainer:  Shaw <puxx@mail.ustc.edu.cn>
+# Maintainer: Jan Korte <j.korte@me.com>
 
 pkgname=retext-git
-pkgver=20130920
+pkgver=20170125
 pkgrel=1
 pkgdesc="A simple editor for Markdown and ReStructuredText markup languages"
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('python-markdown: for Markdown language support'
             'python-pyenchant: for spell checking support')
 provides=('retext')
 conflicts=('retext')
-source=("$pkgname::git://git.code.sf.net/p/retext/git"
+source=("$pkgname::git+https://github.com/retext-project/retext"
         "retext.desktop"
         "x-retext-markdown.xml"
         "x-retext-rst.xml")
