@@ -3,8 +3,8 @@
 
 pkgname=minio
 pkgver=2016.12.13
-_pkgver='2016-12-13T17-19-42Z'
-pkgrel=3
+_pkgver='2017-01-25T03-14-52Z'
+pkgrel=1
 pkgdesc='Object storage server compatible with Amazon S3'
 arch=('x86_64' 'i686')
 url='https://minio.io'
@@ -16,7 +16,7 @@ install=minio.install
 source=(https://github.com/minio/minio/archive/RELEASE.${_pkgver}.tar.gz
         minio.conf
         minio.service)
-sha512sums=('34c376f36e90c88ebf9d08caadc7834ac45a413be808614e8c407657c322a2cb8d09696af76a010724265798bf146a24855d817072622af89977d4063a7bcd37'
+sha512sums=('3e547d59f6218ea85aebf404751c1afe4ea066f726290c143371a2be9ac4778431318ab47c2a73875cc829684342efb46031932a518ff7854c1477899466efd0'
             '630a5d109409074b67be71b663a43ad09104121cca3637bb0542df19e375023bff7d7e2cbf39e52cc3cd060d41c363a90bd4ff7734aed1a5ca43a600f6d6d275'
             '36dbd6b9d27d66b3e7dfb4f6b20fc1939dc42286b5c0ffc399760e5bebffee08548834a0a780d45b815c7c78ca6c738bf0da61ec734131fcc704e65874e04486')
 
