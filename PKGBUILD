@@ -1,6 +1,6 @@
 # Maintainer: Martijn Terpstra <bigmartijn@gmail.com>
 pkgname=rice3d
-pkgver=r74.29e2d55
+pkgver=r75.bb4e3f0
 pkgrel=1
 pkgdesc="command line 3d model viewer using text and terminal escape codes"
 arch=('i686' 'x86_64')
