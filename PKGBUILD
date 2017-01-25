@@ -1,7 +1,7 @@
 # Maintainer: Marco Scarpetta <marcoscarpetta02@gmail.com>
 
 pkgname=kube-develop
-pkgver=r537.859f30d
+pkgver=r562.04bdd56
 pkgrel=1
 pkgdesc='A modern groupware client based on QtQuick and Sink (development branch)'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('sink-develop' 'messagelib' 'qgpgme')
 makedepends=('extra-cmake-modules' 'git')
 conflicts=(kube)
 provides=(kube)
-source=("git://anongit.kde.org/kube.git#branch=dev/imapsync")
+source=("git://anongit.kde.org/kube.git#branch=develop")
 sha256sums=('SKIP')
 
 pkgver() {
