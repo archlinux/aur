@@ -1,7 +1,7 @@
 # Maintainer: Fernando Barillas <fbis251@mailbox.org>
 pkgname=wire-desktop-bin
-pkgver=2.11.2692
-pkgrel=2
+pkgver=2.11.2695
+pkgrel=1
 pkgdesc='Modern communication, full privacy.'
 arch=('i686' 'x86_64')
 url='https://wire.com/'
@@ -10,8 +10,8 @@ conflicts=('wire-desktop')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
 source_i686=("https://wire-app.wire.com/linux/wire_${pkgver}_i386.deb")
 source_x86_64=("https://wire-app.wire.com/linux/wire_${pkgver}_amd64.deb")
-sha256sums_i686=('49f786108b852454844f25313c0d1ff4f02bf7c32a264d5e14a68b99c0f421d6')
-sha256sums_x86_64=('a10ab8c4c90b864974203820f86d918d67b70ea9db6aebe7f82fe34a13e0f828')
+sha256sums_i686=('2a5746db510b8df58aae6c39746906fd20125e49d6088875c624a9e287d0a34a')
+sha256sums_x86_64=('efc92497ada00470923ecada32f21df8b5ccc433be3e55af8cbcd16017dc9a2a')
 
 package() {
   if [ "$CARCH" = "i686" ] ; then
@@ -29,7 +29,7 @@ package() {
   tar xf data.tar.xz -C "$pkgdir"
 
   # Add wire symlink to a directory in the $PATH
-  path_dir="${pkgdir}/usr/local/bin"
+  path_dir="${pkgdir}/usr/bin"
   install -d "${path_dir}"
   ln -s "/opt/Wire/wire" "${path_dir}"
 }
