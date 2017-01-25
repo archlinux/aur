@@ -1,15 +1,13 @@
 pkgbase = xilinx-usb-drivers
-	pkgdesc = libusb/ppdev-connector for Xilinx JTAG tools (like iMPACT)
+	pkgdesc = Platform Cable USB and Digilent USB-JTAG support for Xilinx (iMPACT)
 	pkgver = 14.7
-	pkgrel = 1
+	pkgrel = 2
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = git
-	depends = xilinx-ise
-	options = !strip
-	source = git+git://git.zerfleddert.de/usb-driver
-	md5sums = SKIP
+	depends = xilinx-ise=14.7
+	depends = fxload
+	optdepends = digilent.adept.utilities: Digilent programmer support
 
 pkgname = xilinx-usb-drivers
 

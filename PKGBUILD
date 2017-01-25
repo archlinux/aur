@@ -2,42 +2,39 @@
 
 pkgname=xilinx-usb-drivers
 pkgver=14.7
-pkgrel=1
-pkgdesc="libusb/ppdev-connector for Xilinx JTAG tools (like iMPACT)"
+pkgrel=2
+pkgdesc="Platform Cable USB and Digilent USB-JTAG support for Xilinx (iMPACT)"
 arch=('i686' 'x86_64')
 license=('custom')
-depends=('xilinx-ise')
-makedepends=('git')
-options=('!strip')
-source=("git+git://git.zerfleddert.de/usb-driver")
-md5sums=('SKIP')
+depends=('xilinx-ise=14.7' 'fxload')
+optdepends=('digilent.adept.utilities: Digilent programmer support')
 
+_ise=/opt/Xilinx/14.7/ISE_DS/ISE
 if [[ $CARCH == 'i686' ]]; then
     _arch=lin
 elif [[ $CARCH == 'x86_64' ]]; then
     _arch=lin64
 fi
 
-build() {
-    cd ${srcdir}/usb-driver
-    if [[ $CARCH == 'i686' ]]; then
-        make lib32
-    elif [[ $CARCH == 'x86_64' ]]; then
-        make
-    fi
-}
-
 package() {
-    cd ${srcdir}/usb-driver
+    # Install udev rules
+    mkdir -p ${pkgdir}/usr/lib/udev/rules.d
+    sed -e 's/TEMPNODE/tempnode/' \
+        -e 's/SYSFS/ATTRS/g' \
+        -e 's/BUS/SUBSYSTEMS/' \
+        -e 's/sbin/usr\/bin/' \
+        -e 's!/usr/share!'${_ise}'/bin/'${_arch}'!' \
+        ${_ise}/bin/${_arch}/xusbdfwu.rules > ${pkgdir}/usr/lib/udev/rules.d/60-xusbdfwu.rules
 
+    # iMPACT expects firmware files in /usr/share before connecting
     mkdir -p ${pkgdir}/usr/share
-    mkdir -p ${pkgdir}/etc/udev/rules.d
-
-    echo "Copying firmware to /usr/share"
-    for fw in "${XILINX}/bin/$_arch/"xusb*.hex; do
-        cp -v "${fw}" "${pkgdir}/usr/share/"
+    for fw in ${_ise}/bin/${_arch}/xusb*.hex; do
+        ln -s "${fw}" ${pkgdir}/usr/share/
     done
 
-    echo "Installing udev rules"
-    sed -e 's/TEMPNODE/tempnode/' -e 's/SYSFS/ATTRS/g' -e 's/BUS/SUBSYSTEMS/' ${XILINX}/bin/$_arch/xusbdfwu.rules >${pkgdir}/etc/udev/rules.d/xusbdfwu.rules
+    # Install Digilent plugin
+    # See https://wiki.archlinux.org/index.php/Xilinx_ISE_WebPACK#Digilent_USB-JTAG_Drivers
+    mkdir -p ${pkgdir}${_ise}/lib/${_arch}/plugins/Digilent/libCseDigilent
+    cd ${_ise}/bin/${_arch}/digilent/libCseDigilent_2.4.4-${CARCH}/${_arch}/14.1/libCseDigilent
+    install -m644 libCseDigilent.{so,xml} ${pkgdir}${_ise}/lib/${_arch}/plugins/Digilent/libCseDigilent
 }
