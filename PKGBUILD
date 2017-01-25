@@ -11,7 +11,7 @@ depends=("python2>=2.4" "ghostscript>=8.61" "sam2p" "tif22pnm")
 provides=(pdfsizeopt)
 conflicts=(pdfsizeopt-svn)
 replaces=(pdfsizeopt-svn)
-makedepends=('subversion')
+makedepends=('git')
 optdepends=("multivalent-pdf-tools: to optimise cross reference table and object serialisation [use --use-multivalent=true]"
             "pngout: to optimise the size of PNG parts [use --use-jbig2=true]"
             "jbig2enc: to manage JBIG2 parts [use --use-pngout=true]")
