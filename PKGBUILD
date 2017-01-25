@@ -7,12 +7,12 @@
 
 pkgname=pgadmin3-lts
 pkgver=1.23.0a
-pkgrel=1
+pkgrel=2
 pkgdesc="Comprehensive design and management interface for PostgreSQL (LTS by BigSQL)"
 arch=('i686' 'x86_64')
 url="https://www.bigsql.org/"
 license=('custom')
-depends=('wxgtk2.8' 'postgresql-libs' 'libxslt')
+depends=('wxgtk' 'postgresql-libs' 'libxslt')
 makedepends=('libpqxx' 'krb5' 'postgresql' 'imagemagick')
 provides=("pgadmin3=$pkgver")
 conflicts=("pgadmin3")
@@ -26,13 +26,11 @@ prepare() {
   cd "$pkgname"
   CPPFLAGS+=" -fno-delete-null-pointer-checks"
   ./bootstrap
-  sed -i 's/wx-config/wx-config-2.8/' configure
-  sed -i 's/wxrc/wxrc-2.8/g' stringextract pgadmin/ui/embed-xrc
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  [ -f Makefile ] ||  ./configure --prefix=/usr --with-wx-version=2.8
+  [ -f Makefile ] ||  ./configure --prefix=/usr --with-wx-version=3.0
   make
 }
 
