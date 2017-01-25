@@ -1,0 +1,14 @@
+pkgbase = sjeng
+	pkgdesc = An XBoard chess engine including a text-based interface and variant support (standard, bughouse, crazyhouse, antichess, losers)
+	pkgver = 11.2
+	pkgrel = 1
+	url = https://sjeng.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gdbm
+	source = https://sjeng.org/ftp/Sjeng-Free-11.2.tar.gz
+	sha256sums = aaf584d12e79f8e366710d40cc02a27a7927dd924234421107b2fb8e84cfd727
+
+pkgname = sjeng
+
