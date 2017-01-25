@@ -1,6 +1,6 @@
 pkgbase = arachne-pnr-git
 	pkgdesc = Place and route tool for FPGAs
-	pkgver = r135.eb7876b
+	pkgver = r187.e97e35c
 	pkgrel = 1
 	url = https://github.com/cseed/arachne-pnr
 	arch = x86_64

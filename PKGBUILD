@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Bøe <sebastianbooe@gmail.com>
 pkgname=arachne-pnr-git
 pkgrel=1
-pkgver=r135.eb7876b
+pkgver=r187.e97e35c
 pkgdesc=" Place and route tool for FPGAs"
 arch=('x86_64' 'i686')
 url="https://github.com/cseed/arachne-pnr"
@@ -20,10 +20,10 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  make ICEBOX=/usr/share/icebox
+  make ICEBOX=/usr/share/icebox PREFIX=/usr
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make ICEBOX=/usr/share/icebox DESTDIR="$pkgdir/usr" install
+	make ICEBOX=/usr/share/icebox PREFIX=$pkgdir/usr install
 }
