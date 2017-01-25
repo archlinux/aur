@@ -3,7 +3,7 @@
 pkgname='tor-browser-ru'
 pkgver='6.5'
 _language='ru'
-pkgrel=1
+pkgrel=2
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
 url='https://www.torproject.org/projects/torbrowser.html.en'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
 optdepends=('zenity: simple dialog boxes'
-            'kdebase-kdialog: KDE dialog boxes'
+            'kdialog: KDE dialog boxes'
             'gst-plugins-good: h.264 video'
             'gst-libav: h.264 video'
             'libpulse: PulseAudio audio driver'
