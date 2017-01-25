@@ -5,7 +5,8 @@ pkgver=0.99.163
 pkgrel=2
 pkgdesc="The Itsy Package Management System"
 url="http://handhelds.org/moin/moin.cgi/Ipkg"
-source=(http://www.handhelds.org/download/packages/${pkgname}/${pkgname}-${pkgver}.tar.gz)
+# Mirror from http://www.filewatcher.com/m/ipkg-0.99.163.tar.gz.470728-0.html
+source=(ftp://ftp.osuosl.org/.2/nslu2/sources/${pkgname}-${pkgver}.tar.gz)
 md5sums=('0b10ad2924611bccaea8ddf98481a192')
 arch=('i686' 'x86_64')
 license=('GPL')
