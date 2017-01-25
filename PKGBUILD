@@ -7,8 +7,8 @@
 
 pkgname=pywebkitgtk
 pkgver=1.1.8
-pkgrel=4
-pkgdesc="Python bindings to the WebKit GTK+ port"
+pkgrel=5
+pkgdesc="Python2 bindings to the WebKit GTK+ port"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/${pkgname}/"
 license=('LGPL')
