@@ -1,20 +1,20 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
-# Warning: If you are downgrading from the development branch (Wine 1.9.x,
+# Warning: If you are downgrading from the development branch (Wine 2.1.x,
 # for example), your WINEPREFIX may break and experience unusual bugs.
 # Try to make a clean WINEPREFIX, such as by doing “rm -rf ~/.wine”
 
 pkgname=wine-stable
-pkgver=1.8.6
-pkgrel=4
+pkgver=2.0
+pkgrel=1
 
-source=(https://dl.winehq.org/wine/source/1.8/wine-$pkgver.tar.bz2{,.sign}
+source=(https://dl.winehq.org/wine/source/2.0/wine-$pkgver.tar.bz2{,.sign}
         30-win32-aliases.conf
-        0001-programs-winhlp32-Use-noyywrap-for-macro.lex.l.patch)
-sha256sums=('b1797896eb3b63aab8a4753cc756d6211a0e85460146a1b52063ec79c13906d3'
+        0001-programs-winhlp32-Use-noyywrap-for-macro.lex.l-and-p.patch)
+sha256sums=('9756f5a2129b6a83ba701e546173cbff86caa671b0af73eb8f72c03b20c066c6'
             'SKIP'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
-            'da2f15457044a397483bbf52bf4e59f1000bf270ab823a0b8957e905a1a933f7')
+            'd6ab08b246be10459957aa5c5f1a620793a2974125191fc7da4a23f7e4484293')
 validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
               DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
 
@@ -74,7 +74,7 @@ prepare() {
 
   # Get rid of old build dirs
   rm -rf wine-{32,64}-build
-  mkdir wine-32-build
+  mkdir wine-{32,64}-build
 }
 
 build() {
@@ -83,7 +83,6 @@ build() {
   if [[ $CARCH == x86_64 ]]; then
     msg2 "Building Wine-64..."
 
-    mkdir wine-64-build
     cd "$srcdir/wine-64-build"
     ../wine/configure \
       --prefix=/usr \
