@@ -9,6 +9,7 @@ provides=('gtimelog')
 arch=('i686' 'x86_64')
 url="https://git.collabora.co.uk/cgit/gtimelog.git"
 license=('GPL2')
+depends=('libsoup')
 makedepends=('git' 'python2')
 source=("$_pkgbase::git+https://git.collabora.co.uk/cgit/gtimelog.git"
         'nokeyring.patch')
