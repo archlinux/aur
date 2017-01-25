@@ -1,7 +1,7 @@
 pkgbase = scotch
 	pkgdesc = Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. This is the all-inclusive version (MPI/serial/esmumps).
 	pkgver = 6.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.labri.fr/perso/pelegrin/scotch/
 	arch = i686
 	arch = x86_64
