@@ -7,7 +7,7 @@
 # https://github.com/cacack/pkgbuilds/tree/master/ccextractor
 
 pkgname=ccextractor
-pkgver=0.84
+pkgver=0.85
 pkgrel=1
 pkgdesc="A fast closed captions extractor for MPEG files."
 arch=('i686' 'x86_64')
@@ -15,9 +15,9 @@ url="http://www.ccextractor.org"
 license=('GPL')
 depends=('gcc-libs' 'tesseract')
 source=(
-   http://downloads.sourceforge.net/ccextractor/$pkgname.src.$pkgver.zip
+   http://downloads.sourceforge.net/ccextractor/$pkgname-src-nowin.$pkgver.zip
 )
-sha512sums=('1d6671c4d42915a61f3fd48ea693d4791048bc052a9859fbe4bdf32e551aa880517f0b6712e7c7588fe49127e491324c1eee9c1a17cb805879d6a03c775480cd')
+sha512sums=('53adc017b7b1679302677e3773aabdcceddabdd8a6550cf8b9fb98150b7323a1cc6dbe67a48ebcdf22a4d013c00831907799032dd0f7f6f06943252be8177cec')
 
 build() {
   cd "$srcdir/$pkgname/linux"
