@@ -25,8 +25,7 @@ optdepends=('zenity: simple dialog boxes'
             'libnotify: Gnome dialog boxes')
 install="${pkgname}.install"
 
-validpgpkeys=('8738A680B84B3031A630F2DB416F061063FEE659'
-              'EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
+validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
 source_x86_64=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-linux64-${pkgver}_${_language}.tar.xz"{,.asc})
 source_i686=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-linux32-${pkgver}_${_language}.tar.xz"{,.asc})
 source+=("${pkgname}.desktop"
