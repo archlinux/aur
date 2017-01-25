@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=fbpad-mkfn-git
 pkgver=r3.8901524
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Create fbpad font files."
 arch=('i686' 'x86_64')
@@ -33,6 +33,10 @@ prepare() {
   cd "$srcdir/$pkgname"
   ## if compiled with freetype2 support, package depends on freetype2:
   #sed -i '5s/^/#/; 6s/^/#/; 7s/^/#/; 10s/^#//; 11s/^#//; 12s/^#//' Makefile
+
+  ## gen.sh adjustments
+  sed -i '4s@"/path/to/fonts"@"/usr/share/fonts/TTF/" # path to fonts@g' gen.sh
+  sed -i 's@./mkfn@fbpad-mkfn@g' gen.sh
 }
 
 build() {
