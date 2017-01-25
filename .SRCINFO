@@ -1,0 +1,23 @@
+pkgbase = profanity-python2-git
+	pkgdesc = A console based jabber client. Built against Python 2, to use Python 2 plugins.
+	pkgver = 1.b712820
+	pkgrel = 1
+	url = http://www.profanity.im
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = autoconf-archive
+	depends = curl
+	depends = expat
+	depends = libnotify
+	depends = libotr
+	depends = libxss
+	depends = libstrophe-git
+	provides = profanity
+	conflicts = profanity
+	source = profanity::git://github.com/boothj5/profanity.git#branch=master
+	sha256sums = SKIP
+
+pkgname = profanity-python2-git
+
