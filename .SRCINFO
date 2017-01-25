@@ -1,6 +1,6 @@
 pkgbase = gotty-bin
 	pkgdesc = Simple command line tool that turns your CLI tools into web applications. 
-	pkgver = 0.0.12
+	pkgver = 0.0.13
 	pkgrel = 1
 	url = https://github.com/yudai/gotty
 	arch = i686
