@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20161115.5ed7e6c
+pkgver=20170123.35b2aeef
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS and CBZ viewer'
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,8 +13,10 @@ license=('AGPL3')
 makedepends=('git')
 depends=('curl' 'freetype2' 'jbig2dec' 'libjpeg-turbo' 'libxext' 'openjpeg2')
 source=('git://git.ghostscript.com/mupdf.git'
+        'git://git.ghostscript.com/mujs.git'
         'desktop')
 sha1sums=('SKIP'
+          'SKIP'
           '31573e5da3fbf0162c0926511fc9858f2052fa6c')
 
 conflicts=("${_pkgname}")
@@ -28,6 +30,7 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_pkgname}"
 
+	sed "/mujs.git/c url = $(pwd)/../mujs" -i .gitmodules
 	git submodule update --init thirdparty/mujs
 
 	# link against system libopenjp2 dynamically
