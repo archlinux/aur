@@ -6,7 +6,7 @@
 # AND (!) the first line in the .install file!
 
 pkgname='tor-browser-de'
-pkgver='6.0.8'
+pkgver='6.5'
 _language='de'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: Anonymes Surfen mit Firefox und Tor'
@@ -17,15 +17,14 @@ depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
 optdepends=('zenity: simple dialog boxes'
-            'kdebase-kdialog: KDE dialog boxes'
+            'kdialog: KDE dialog boxes'
             'gst-plugins-good: h.264 video'
             'gst-libav: h.264 video'
             'libpulse: PulseAudio audio driver'
             'libnotify: Gnome dialog boxes')
 install="${pkgname}.install"
 
-validpgpkeys=('8738A680B84B3031A630F2DB416F061063FEE659'
-              'EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
+validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
 
 source_x86_64=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-linux64-${pkgver}_${_language}.tar.xz"{,.asc})
 source_i686=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-linux32-${pkgver}_${_language}.tar.xz"{,.asc})
@@ -36,9 +35,9 @@ source+=("${pkgname}.desktop"
 md5sums=('5b0844612fcbed11666e3c766072b092'
          '494afbfa60fb4ce21840244cc3f7208c'
          'bb53b2544e2038943e703c7c6ccf48a1')
-md5sums_x86_64=('9f3d281499607195b407c15e5e9752fd'
+md5sums_x86_64=('1a88ed59508afcac2f46820ac58fc8b2'
                 'SKIP')
-md5sums_i686=('8c937200ed8e059ffde4b441745efd8f'
+md5sums_i686=('994ceb1643ba1acbcc17ee4f3d4e2bb6'
               'SKIP')
 
 noextract_x86_64=("tor-browser-linux64-${pkgver}_${_language}.tar.xz")
