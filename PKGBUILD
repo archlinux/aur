@@ -7,7 +7,7 @@
 
 pkgname=midori
 pkgver=0.5.11
-pkgrel=4
+pkgrel=5
 pkgdesc='Lightweight web browser (GTK3)'
 arch=('x86_64' 'i686')
 url='http://www.midori-browser.org/'
@@ -16,7 +16,7 @@ install='midori.install'
 conflicts=('midori-gtk2')
 provides=('midori')
 replaces=('midori-gtk3')
-depends=('webkitgtk' 'libxss' 'gcr' 'zeitgeist') # webkit2gtk
+depends=('webkit2gtk' 'libxss' 'gcr' 'zeitgeist')
 makedepends=('bzr' 'intltool' 'vala' 'cmake' 'ninja')
 optdepends=('gst-plugins-base: HTML5 OGG videos support'
             'gst-plugins-good: HTML5 H264 and WebM videos support'
@@ -30,10 +30,11 @@ build() {
   cd "$pkgname-$pkgver"
   mkdir -p build
   cd build
+  # HALF_BRO_INCOM_WEBKIT2=ON sets USE_GTK3=ON
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DUSE_GTK3=1 \
+    -DHALF_BRO_INCOM_WEBKIT2=ON \
     -G Ninja
   ninja
 }
