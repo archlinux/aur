@@ -2,7 +2,7 @@
 
 _pkgname=audacious-plugins
 pkgname=${_pkgname}-qt5
-pkgver=3.8.1
+pkgver=3.8.2
 pkgrel=1
 pkgdesc="Plugins for Audacious (qt5 interface)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://audacious-media-player.org/"
 license=('BSD' 'GPL')
 
 makedepends=("audacious-qt5>=$pkgver" 'qt5-multimedia'
-             'glib2' 'python2' # for gdbus-codegen
+             'glib2' 'python' # for gdbus-codegen
              'alsa-lib' 'pulseaudio' 'jack2' 'lame' 'libvorbis' 'flac'
              'mpg123' 'faad2' 'ffmpeg' 'libmodplug' 'fluidsynth' 'libcdio-paranoia' 'libsidplayfp' 'wavpack'
              'dbus-glib' 'libnotify' 'lirc' 'curl' 'libmtp'
@@ -47,7 +47,7 @@ optdepends=('alsa-lib: Advanced Linux Sound Arch. output'
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=(http://distfiles.audacious-media-player.org/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('109c0559c072703dd8d9fc0bb1c5121126bd1e0edcc2804e1ea85974d98e2638')
+sha256sums=('d7cefca7a0e32bf4e58bb6e84df157268b5e9a6771a0e8c2da98b03f92a5fdd4')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
