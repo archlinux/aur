@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethereum-git
-pkgver=1.3.0.20161028.27da262
+pkgver=1.3.0.20170125.6f0c62e75
 pkgrel=1
 pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, cpp-ethereum including ethminer and eth, latest unstable git version)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=(
   'boost'
   'crypto++'
   'leveldb'
-  'libcl'
+  'ocl-icd'
   'libmicrohttpd'
   'miniupnpc'
   'opencl-headers'
