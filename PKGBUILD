@@ -2,13 +2,13 @@
 
 pkgname=miniterm-git
 _pkgname=miniterm
-pkgver=v1.0.r1.2426fd9
+pkgver=1.1.0.r0.8e5915e
 pkgrel=1
 pkgdesc="Lightweight VTE terminal emulator with colorscheme support (fork of tinyterm)"
 arch=('i686' 'x86_64')
 url="https://github.com/laelath/miniterm"
 license=('MIT')
-depends=('vte3')
+depends=('vte3' 'glib2')
 makedepends=('git')
 source=('git://github.com/laelath/miniterm.git')
 md5sums=('SKIP')
