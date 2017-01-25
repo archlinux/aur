@@ -1,0 +1,10 @@
+[Unit]
+Description=Bluetooth attach
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/btattach --bredr /dev/ttyS1 -P bcm
+ExecStop=/usr/bin/killall btattach
+
+[Install]
+WantedBy=multi-user.target

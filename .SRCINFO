@@ -1,0 +1,18 @@
+pkgbase = t200ta-bluetooth
+	pkgdesc = Bluetooth service and lib for ASUS T200TA (and possibly other Bay Trail devices)
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/DX37/T200TA
+	install = t200ta-bluetooth.install
+	arch = any
+	license = GPL
+	depends = bluez
+	depends = bluez-utils
+	optdepends = blueman: GUI for Bluetooth controling
+	source = BCM43341B0.hcd
+	source = btattach.service
+	md5sums = b0d4f0e9dde065cfa8cb6e9a77a4dfb2
+	md5sums = 600d70a51614a827b8201630c374705c
+
+pkgname = t200ta-bluetooth
+

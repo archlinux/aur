@@ -1,0 +1,37 @@
+post_install() {
+    # starting bluetooth service
+    systemctl enable bluetooth.service --now
+
+    # starting btattach service for controller activation
+    systemctl enable btattach.service --now
+
+    echo "=================================================================="
+    echo "You can now run hciconfig and look for new hci device."
+    echo "Run bluetoothctl for Bluetooth cli control or install blueman for GUI."
+    echo "=================================================================="
+}
+
+post_upgrade() {
+    echo "Reloading services..."
+
+    # reloading configuration since files updated
+    systemctl daemon-reload
+
+    # restarting bluetooth service
+    systemctl restart bluetooth.service
+
+    # restarting btattach service for controller reactivation
+    systemctl restart btattach.service
+}
+
+pre_remove() {
+    echo "Deactivating services before deleting..."
+
+    # stopping and disabling btattach service before delete
+    systemctl stop btattach.service
+    systemctl disable btattach.service
+
+    # stopping and disabling bluetooth service
+    systemctl stop bluetooth.service
+    systemctl disable bluetooth.service
+}
