@@ -6,7 +6,7 @@
 # Maintainer: Kamil Cukrowski <kamil@dyzio.pl>
 # picpgm author: Christian Stadler
 pkgname=picpgm
-pkgver=2.9.2.0
+pkgver=2.9.2.3
 pkgrel=1
 epoch=
 pkgdesc="The PICPgm Development Programmer Software is a free and simple In-System-Development Programmer Software for the Microchip PIC microcontrollers."
@@ -27,7 +27,7 @@ install=
 changelog=
 source=("http://picpgm.picprojects.net/download/${pkgname}-${pkgver}-linux-i386.tar.gz")
 noextract=()
-md5sums=("b03387a00142f066f419f16adb64b28a")
+md5sums=("5a54cb6b3a146409e19d5b4039bcb804")
 validpgpkeys=()
 
 package() {
