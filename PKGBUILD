@@ -3,10 +3,10 @@
 
 pkgname=gtimelog
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Small GTK+ app for keeping track of your time'
 arch=('any')
-url='http://mg.pov.lt/gtimelog/'
+url='https://gtimelog.org/'
 license=('GPL')
 depends=('python' 'python-gobject' 'python-setuptools')
 source=(http://pypi.python.org/packages/source/g/$pkgname/$pkgname-${pkgver}.tar.gz)
