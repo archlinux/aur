@@ -1,0 +1,26 @@
+pkgbase = gnome-perl
+	pkgdesc = Perl bindings for libgnome
+	pkgver = 1.045
+	pkgrel = 4
+	url = http://gtk2-perl.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = perl-extutils-pkgconfig
+	makedepends = perl-extutils-depends
+	depends = gnomecanvas-perl
+	depends = gnome-vfs-perl
+	depends = libgnomeui
+	depends = perl
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/sourceforge/gtk2-perl/Gnome2-1.045.tar.gz
+	md5sums = 95c06139f9d950df17c9cb0340c74168
+
+pkgname = gnome-perl
+	depends = gnomecanvas-perl
+	depends = gnome-vfs-perl
+	depends = libgnomeui
+	depends = perl
+	depends = perl>=
+	depends = perl<
+
