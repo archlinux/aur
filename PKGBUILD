@@ -1,47 +1,38 @@
 # Maintainer: Constantin Lorenz <Cons27773964@aol.com>
 
-pkgname=sandboxed-tor-browser # '-bzr', '-git', '-hg' or '-svn'
-pkgver=0.0.3.r1.g6477aea
+pkgname=sandboxed-tor-browser
+pkgver=0.0.3
 pkgrel=1
+torbrowserver=7.0a1	# for easier source access
+epoch=
 pkgdesc="A sandboxed version of the Tor Browser, currently in alpha!"
 arch=('x86_64')
 url="https://trac.torproject.org/projects/tor/wiki/doc/TorBrowser/Sandbox/Linux"
 license=('AGPL3')
 groups=()
 depends=(bubblewrap gtk3 gnome-themes-standard)
+makedepends=(make gcc gb go libnotify)
+checkdepends=()
 optdepends=(libnotify)
-makedepends=(make git gcc gb go libnotify)
-provides=("${pkgname%-VCS}")
-conflicts=("${pkgname%-VCS}")
+provides=("${pkgname%}")
+conflicts=("${pkgname%}")
 replaces=()
 backup=()
 options=()
 install=
-source=('git+https://git.torproject.org/tor-browser/sandboxed-tor-browser.git')
+changelog=
+source_x86_64=("https://www.torproject.org/dist/torbrowser/${torbrowserver}/sandbox-${pkgver}-linux64.zip")
 source+=("${pkgname}.desktop"
-         "${pkgname}.png")
+        "${pkgname}.png")
 noextract=()
-md5sums=('SKIP'
-         '49042133dbfad9f06df48c934dc123e6'
+md5sums=('49042133dbfad9f06df48c934dc123e6'
          '494afbfa60fb4ce21840244cc3f7208c')
-
-
-pkgver() {
-	cd "$srcdir/${pkgname%-VCS}"
-
-
-# Git, tags available
-	printf "$(git describe --long | sed 's/^sandboxed-tor-browser-//;s/\([^-]*-g\)/r\1/;s/-/./g')"
-
-}
-
+md5sums_x86_64=('6aecb89fbbcec84e5019137ee775074e')
+validpgpkeys=()
 
 package() {
-	cd "$srcdir/${pkgname%}"
-	make DESTDIR="$pkgdir/"	
 	cd "$srcdir"
 	install -Dm 644 ${pkgname}.desktop      ${pkgdir}/usr/share/applications/${pkgname}.desktop
    	install -Dm 644 ${pkgname}.png          ${pkgdir}/usr/share/pixmaps/${pkgname}.png
-   	install -Dm 755 ${srcdir}/sandboxed-tor-browser/bin/sandboxed-tor-browser           ${pkgdir}/usr/bin/${pkgname}
+   	install -Dm 755 ${srcdir}/sandbox/sandboxed-tor-browser           ${pkgdir}/usr/bin/${pkgname}
 }
-
