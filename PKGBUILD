@@ -6,22 +6,17 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=amule-remote-tools
-pkgver=10965
-pkgrel=2
+pkgver=10983
+pkgrel=1
 pkgdesc="aMule Remote Tools CLI and GUI"
 arch=('i686' 'x86_64')
 url="http://www.amule.org"
 license=('GPL')
 conflicts=('amule')
-depends=('wxgtk2.8' 'geoip')
-makedepends=('crypto++' 'git')
+depends=('wxgtk' 'geoip' 'boost-libs')
+makedepends=('crypto++' 'git' 'ccache' 'boost')
 source=("git://repo.or.cz/amule.git#tag=amule-svn-r$pkgver")
 md5sums=('SKIP')
-
-prepare() {
-  cd amule
-  sed -e 's|wx-config|wx-config-2.8|g' -i configure
-}
 
 build() {
   cd amule
@@ -41,14 +36,14 @@ build() {
               --enable-ccache \
               --enable-geoip \
               --disable-upnp \
-              --with-wxversion=2.8 \
               --disable-monolithic \
               --disable-ed2k \
               --disable-xas \
               --disable-fileview \
               --disable-plasmamule \
               --disable-static \
-              --disable-kde-in-home
+              --disable-kde-in-home \
+              --with-boost
 
   make
 }
@@ -58,4 +53,3 @@ package() {
 
   make DESTDIR=${pkgdir} install
 }
-
