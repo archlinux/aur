@@ -1,49 +1,47 @@
-# Maintainer: Blair Bonnett <blair.bonnett at gmail dot com>
+# Maintainer: Maxim Kurnosenko <asusx2@mail.ru>
+# Contributor: Blair Bonnett <blair.bonnett at gmail dot com>
 
 pkgname=htop-temperature
-pkgver=1.0.3
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Interactive process viewer with added support for CPU temperature"
 arch=('i686' 'x86_64')
-url="http://htop.sourceforge.net/"
+url="http://hisham.hm/htop/"
 license=('GPL')
 depends=('ncurses' 'lm_sensors')
-makedepends=('python2')
+makedepends=('python')
 optdepends=('lsof: show files opened by a process'
             'strace: attach to a running process')
 provides=('htop')
 conflicts=('htop')
 options=('!emptydirs')
-source=("http://hisham.hm/htop/releases/1.0.3/htop-1.0.3.tar.gz"
-        "htop-1.0.3-temperature.patch")
-sha256sums=('055c57927f75847fdc222b5258b079a9542811a9dcf5421c615c7e17f55d1829'
-            '6b52b5b5c0cce04ab71d8603409927dffb77433526b08a35087eb028bab0a5cf')
+source=("http://hisham.hm/htop/releases/$pkgver/htop-$pkgver.tar.gz"
+        "htop-$pkgver-temperature.patch")
+sha256sums=('179be9dccb80cee0c5e1a1f58c8f72ce7b2328ede30fb71dcdf336539be2f487'
+            '68a96dc51a9cb847e40ad95ecf91a80979ca377f6b947e5cc9b2ef2c7dcb333e')
 
 prepare() {
-  # Standard htop package commands.
-  cd "htop-1.0.3"
-  sed -i 's|ncursesw/curses.h|curses.h|' RichString.[ch] configure
-  sed -i 's|python|python2|' scripts/MakeHeader.py
+  cd "htop-$pkgver"
 
   # Add CPU temperature patch.
-  patch -p1 -N < ../htop-1.0.3-temperature.patch
+  patch -p1 -N < ../htop-$pkgver-temperature.patch
 }
 
 build() {
-  cd "htop-1.0.3"
+  cd "htop-$pkgver"
 
   ./autogen.sh
   ./configure \
       --prefix=/usr \
+      --sysconfdir=/etc \
       --enable-unicode \
       --enable-openvz \
       --enable-vserver \
-      --enable-cgroup \
-      --enable-oom
+      --enable-cgroup
 
   make
 }
 
 package() {
-  make -C "htop-1.0.3" DESTDIR="$pkgdir" install
+  make -C "htop-$pkgver" DESTDIR="$pkgdir" install
 }
