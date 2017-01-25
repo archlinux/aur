@@ -1,24 +1,25 @@
 # $Id: PKGBUILD 131550 2015-04-17 17:12:22Z bgyorgy $
-# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Contributor:: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Angel Velasquez <angvp@archlinux.org>  
 # Contributor: kasa <biuta.jr@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
+# Maintainer: zoe <chp321 at gmail dot com>
 
 pkgname=pywebkitgtk
 pkgver=1.1.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Python bindings to the WebKit GTK+ port"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/pywebkitgtk/"
+url="http://code.google.com/p/${pkgname}/"
 license=('LGPL')
 depends=('webkitgtk2' 'pygtk')
 options=('!makeflags')
-source=(http://pywebkitgtk.googlecode.com/files/${pkgname}-${pkgver}.tar.gz)
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${pkgname}-${pkgver}.tar.gz)
 md5sums=('158335385354ba38090c9324b37bf225')
 
 build() {
     cd ${pkgname}-${pkgver}
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr PYTHON=python2
     make
 }
 
