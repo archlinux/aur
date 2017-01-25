@@ -1,8 +1,8 @@
 # Maintainer: Obed N Munoz <obed.n.munoz@intel.com>
 
 pkgname=ciao
-pkgver=82
-pkgrel=3
+pkgver=83
+pkgrel=4
 pkgdesc="Ciao - Cloud Integrated Advanced Orchestrator"
 arch=('x86_64' 'i686')
 url="https://github.com/01org/ciao"
