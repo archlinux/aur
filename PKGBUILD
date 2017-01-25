@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=openvpn-git
-pkgver=2.4.rc2.r9.gf38942d1
+pkgver=2.4.rc2.r25.g76096c60
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) - git checkout'
 arch=('i686' 'x86_64')
@@ -14,11 +14,9 @@ provides=('openvpn=2.4.0' 'openvpn-dev')
 license=('custom')
 # for 2.4.x release branch append: #branch=release/2.4
 source=('git://github.com/OpenVPN/openvpn.git'
-        '0001-plugin.patch'
-        '0002-do-not-race-on-RuntimeDirectory.patch')
+        '0001-plugin.patch')
 sha256sums=('SKIP'
-            'b8254067b4ef5d157d87267a76938d86f101972303c7ff20131cc9f28659a30c'
-            'a87b081f998db99190e8b9e185cd7aade5bd6dfb5c03777c82b75d28cd3b375c')
+            'b8254067b4ef5d157d87267a76938d86f101972303c7ff20131cc9f28659a30c')
 
 pkgver() {
 	cd openvpn/
@@ -40,9 +38,6 @@ prepare() {
 
 	# plugin path
 	patch -Np1 < "${srcdir}"/0001-plugin.patch
-
-        # do not race on RuntimeDirectory
-        patch -Np1 < "${srcdir}"/0002-do-not-race-on-RuntimeDirectory.patch
 
 	# regenerate configure script
 	autoreconf -vi
@@ -74,7 +69,7 @@ package() {
 	# Install openvpn
 	make DESTDIR="${pkgdir}" install
 
-	# Create empty configuration directory
+	# Create empty configuration directories
 	install -d -m0750 -g 90 "${pkgdir}"/etc/openvpn/{client,server}
 
 	# Install examples
@@ -92,11 +87,5 @@ package() {
 			*) install -D -m0644 "${FILE}" "${pkgdir}/usr/share/openvpn/${FILE}" ;;
 		esac
 	done
-
-	# Install systemd files
-	install -d -m0755 "${pkgdir}"/usr/lib/systemd/system/
-	install -m0644 distro/systemd/openvpn-{client,server}@.service "${pkgdir}"/usr/lib/systemd/system/
-	install -D -m0644 distro/systemd/openvpn.conf "${pkgdir}"/usr/lib/tmpfiles.d/openvpn.conf
-	install -d -m0710 "${pkgdir}"/run/openvpn-{client,server}
 }
 
