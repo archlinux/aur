@@ -9,9 +9,9 @@ provides=('gtimelog')
 arch=('i686' 'x86_64')
 url="https://git.collabora.co.uk/cgit/gtimelog.git"
 license=('GPL2')
-depends=('libsoup' 'python2' 'python2-gobject')
+depends=('libsoup' 'python2' 'python2-gobject' 'python2-setuptools')
 makedepends=('git' 'python2' 'python2-setuptools')
-source=("$_pkgbase::git+https://git.collabora.co.uk/cgit/gtimelog.git"
+source=("$_pkgbase::git://git.collabora.co.uk/git/gtimelog.git"
         'nokeyring.patch')
 sha256sums=('SKIP'
             '7550c70300659a387a900ed0ee80dd3afafc8f655284b02e9cf46dced9a99227')
