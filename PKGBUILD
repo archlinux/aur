@@ -1,7 +1,7 @@
 # Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
 pkgname=splunkforwarder
-basever=6.5.1
-pkgver=${basever}_f74036626f0c
+basever=6.5.2
+pkgver=${basever}_67571ef4b87d
 pkgrel=1
 pkgdesc="Splunk Universal Forwarder"
 url="https://www.splunk.com/"
@@ -13,8 +13,8 @@ source=("$pkgname.service")
 source_i686=("https://download.splunk.com/products/universalforwarder/releases/$basever/linux/$pkgname-${pkgver//_/-}-Linux-i686.tgz")
 source_x86_64=("https://download.splunk.com/products/universalforwarder/releases/$basever/linux/$pkgname-${pkgver//_/-}-Linux-x86_64.tgz")
 sha256sums=('8bd6b2bcf9e9d89d3ab2160c409687313bbee00b7e44b3df3266b44d15a5c152')
-sha256sums_x86_64=('9e5bcf980b6053eb5e1d11d35c059cef1cec7fdf3c00941fdea2776d3edaf1fc')
-sha256sums_i686=('b9c446c10f783f3eb5571fa2cb085579ba19771e4602c8f73cc626ed5d1a1079')
+sha256sums_x86_64=('5abff1db8867b69c38c197c2cd2bbaf4b4379ce74cda25c65f13e55b4dfa47fb')
+sha256sums_i686=('baa211d426dcde9749d2d7d4e56ef745b7e4188ec2443f37a480783d0ad39ebd')
 
 package() {
 	cd "$srcdir"
