@@ -97,7 +97,7 @@ build() {
               --prefix=/usr \
               --sysconfdir=/etc \
               LUAC=/usr/bin/luac  LUA_LIBS="`pkg-config --libs lua`" \
-              RCC=/usr/bin/rcc-qt4
+              RCC=/usr/bin/rcc-qt5
 
   make
 }
