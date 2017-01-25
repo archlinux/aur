@@ -3,7 +3,7 @@
 
 pkgname=gtimelog
 pkgver=0.9.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Small GTK+ app for keeping track of your time'
 arch=('any')
 url='https://gtimelog.org/'
@@ -14,5 +14,5 @@ md5sums=('5e95d0e968ad24778e0ae9fee748d73f')
 
 package() {
   cd "$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir"
+  python setup.py install --root="$pkgdir" --optimize=1
 }
