@@ -1,13 +1,13 @@
 # Maintainer: Michael Carlberg <c@rlberg.se>
 # Contributor: Michael Carlberg <c@rlberg.se>
 pkgname=polybar
-pkgver=2.5.2
-pkgrel=3
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="A fast and easy-to-use status bar"
 arch=("i686" "x86_64")
 url="https://github.com/jaagr/polybar"
 license=("MIT")
-depends=("libxft" "xcb-util-wm" "xcb-util-image")
+depends=("cairo" "xcb-util-image" "xcb-util-wm" "xcb-util-xrm")
 optdepends=("alsa-lib: volume module support"
             "libmpdclient: mpd module support"
             "wireless_tools: network module support"
