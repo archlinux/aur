@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /opt/osu-native-git
+mono 'osu!.exe' "$@"
