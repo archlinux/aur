@@ -1,9 +1,9 @@
-# Maintainer: Ordoe ordoe <aur@cach.co>
+# Maintainer: Afri 5chdn <aur@cach.co>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethereum
 pkgver=1.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, full webthree-umbrella)"
 arch=('i686' 'x86_64')
 depends=(
@@ -20,21 +20,15 @@ depends=(
   'libmicrohttpd'
   'miniupnpc'
   'ncurses'
-  'libcl'
+  'ocl-icd'
   'opencl-headers'
   'openssl'
   'python2'
   'qt5-base'
   'qt5-declarative'
-  'qt5-quick1'
-  'qt5-quickcontrols'
   'qt5-webengine'
-  'qt5-webkit'
-  'qt5-graphicaleffects'
   'readline'
   'snappy'
-  'llvm'
-  'scons'
   'gperftools'
 )
 makedepends=(
@@ -43,9 +37,7 @@ makedepends=(
   'cmake'
   'gcc'
   'libtool'
-  'yasm'
   'git'
-  'clang'
 )
 groups=('ethereum')
 url="https://github.com/ethereum/webthree-umbrella"
@@ -57,33 +49,22 @@ sha256sums=(
   'SKIP'
 )
 provides=(
-  'alethone'
   'alethzero'
+  'bench'
   'eth'
   'ethkey'
   'ethminer'
   'ethrpctest'
   'ethvm'
-  'exp'
   'lllc'
-  'mix'
+  'mix-ide'
   'rlp'
   'solc'
-  'ethereum'
 )
 conflicts=(
-  'alethone'
-  'alethzero'
-  'eth'
-  'ethkey'
-  'ethminer'
-  'ethrpctest'
-  'ethvm'
-  'exp'
-  'lllc'
-  'mix'
-  'rlp'
-  'solc'
+  'cpp-ethereum'
+  'solidity'
+  'solidity-git'
   'ethereum-git'
 )
 
