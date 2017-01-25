@@ -1,0 +1,15 @@
+CP_USER="lazylibrarian"
+CP_GROUP="lazylibrarian"
+CP_DIR="/var/lib/lazylibrarian"
+
+## arg 1:  the new package version
+post_install() {
+  systemd-sysusers lazylibrarian.conf
+  chown -R ${CP_USER}:${CP_GROUP} ${CP_DIR}
+  echo "  >> If you want a custom user or path for LazyLibrarian, remember to edit the service file as well."
+}
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  chown -R ${CP_USER}:${CP_GROUP} ${CP_DIR}
+}
