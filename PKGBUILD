@@ -1,3 +1,5 @@
+# Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
+
 pkgname=wol-systemd
 pkgver=20150903
 pkgrel=2
