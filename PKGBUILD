@@ -7,6 +7,7 @@ pkgdesc="Stitch and create 360° videos automatically with Autopano Video Pro BE
 arch=('x86_64')
 url='http://www.kolor.com/autopano-video/'
 license=('custom: "commercial"')
+provides=('autopanovideopro')
 optdepends=('autopanogiga: Edit control points manually'
             'gopro-vr-player: 360 video player')
 install="$pkgname.install"
