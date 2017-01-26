@@ -2,7 +2,7 @@
 # Contributor: Francesco Colista <francesco.colista@gmail.com>
 
 pkgname=luasql-odbc
-pkgver=2.3.0
+pkgver=2.3.4
 pkgrel=0
 pkgdesc='ODBC module for Lua'
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ url='http://www.keplerproject.org/luasql/'
 license=('MIT/X11')
 depends=('lua' 'unixodbc')
 source=("https://github.com/keplerproject/luasql/archive/v${pkgver}.zip")
-md5sums=('dae8388c549b5fccbd16ecc2d49b8f3d')
+md5sums=('4c1c9899ac2aab300d21d5cab715346f')
 
 build() {
   cd $srcdir/luasql-$pkgver
-  make T=odbc PREFIX=/usr DRIVER_LIBS=-lodbc DRIVER_INCS=-DUNIXODBC -I/usr/include
+  make odbc 
 }
 
 package() {
