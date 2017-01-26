@@ -1,0 +1,27 @@
+diff --git a/tests/output.72~ b/tests/output.72~
+new file mode 100644
+index 0000000..995afc7
+--- /dev/null
++++ b/tests/output.72~
+@@ -0,0 +1,8 @@
++
++
++
++  1
++  3
++  5
++33 total bytes used by duplicates:
++Total used: 33 bytes (0 KiB, 0 MiB, 0 GiB)
+diff --git a/tests/test.72 b/tests/test.72
+index ba1cc70..51e536e 100755
+--- a/tests/test.72
++++ b/tests/test.72
+@@ -12,7 +12,7 @@ checkrv $?
+ DESC="report"
+ $DUPD_CMD report --cut `pwd`/files8/ | grep -v "Duplicate report from database" > nreport
+ checkrv $?
+-check_nreport output.72
++check_nreport output.72~
+ 
+ (cd ./files8 && ./clean_files)
+ 

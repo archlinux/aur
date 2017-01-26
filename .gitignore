@@ -1,0 +1,19 @@
+### https://raw.github.com/github/gitignore/a41bfbea916d6d2e010d0d232895f9c65bd0d502/ArchLinuxPackages.gitignore
+
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
+
+# Ignore package source folders
+*/*
+

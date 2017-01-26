@@ -1,0 +1,21 @@
+pkgbase = dupd-git
+	pkgdesc = CLI utility to find duplicate files
+	pkgver = 1.3.r83.ged1888f
+	pkgrel = 1
+	url = http://www.virkki.com/dupd
+	arch = i686
+	arch = x86_64
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = dupd=1.3.r83.ged1888f
+	conflicts = dupd
+	source = dupd::git+https://github.com/jvirkki/dupd.git
+	source = libbloom::git+https://github.com/jvirkki/libbloom.git
+	source = test.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 5228e790f359376d51a9348cb72092eb
+
+pkgname = dupd-git
+
