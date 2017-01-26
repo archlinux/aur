@@ -2,7 +2,7 @@
 # Contributor: Nico Suarez <nicodoggie@gmail.com>
 
 pkgname=galera
-pkgver=25.3.19
+pkgver=25.3.20
 pkgrel=1
 pkgdesc='WSREP provider'
 arch=('i686' 'x86_64' 'mips64el')
@@ -13,7 +13,7 @@ url='http://www.codership.com'
 options=('!libtool')
 validpgpkeys=('44B7345738EBDE52594DAD80D669017EBC19DDBA') # Codership Oy <info@galeracluster.com>
 source=("http://releases.galeracluster.com/source/${pkgname}-3-${pkgver}.tar.gz"{,.asc})
-sha256sums=('76700900a95c8d16c5f5975e4cbc1e0b3dac1a7ffea1aff84d5d225137eedbdb' 'SKIP')
+sha256sums=('aae9b44a7b06c0b0cd9e2f1b9bbaf9ca47c630076a6b7c66e8747e01fd343a64' 'SKIP')
 
 build(){
   cd "${pkgname}-3-${pkgver}"
