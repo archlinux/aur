@@ -1,23 +1,30 @@
 # Maintainer: Cayde Dixon <me@cazzar.net>
 # Contributor: Anthony Anderson <aantony4122@gmail.com>
 
+
+_branch='discord'
+
 pkgname=discord
 pkgver=0.0.1
-pkgrel=2
-pkgdesc='Discord Stable linux release'
+pkgrel=3
+pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
 url='https://discordapp.com/'
 provides=('discord')
 license=('custom')
 depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss')
-optdepends=('freetype2-infinality: If you have black screens with emojis install this.' 'libpulse: For pulseaudio support' )
+optdepends=(
+  'libpulse: For pulseaudio support'
+  'noto-fonts-emoji: Google font for emoji support.'
+  'ttf-symbola: Font for emoji support.'
+)
 
 install="Discord.install"
 source=(Discord.desktop LICENSE Discord.sh)
 source_x86_64=("https://dl.discordapp.net/apps/linux/${pkgver}/discord-${pkgver}.tar.gz")
-md5sums=('fdc9784f37b28178b2e9c498e4eebed9'
-         '86acf3328debd24b95cdd037a276e059'
-         '0dd3e753e0a96ad20de6b307bcd20b23')
+md5sums=('a9046504943624ac4861983d67a1404b'
+         '9a481caa5a223defd608f5505202f595'
+         'ec3c1ddbf598ef27130daeb34ca9d9c7')
 md5sums_x86_64=('8356283b4e72d36955fa2589d4dd321a')
 
 
@@ -39,9 +46,8 @@ package() {
 
   # Main binary
   install -d "${pkgdir}/usr/bin"
-  #ln -s "/opt/${pkgname}/DiscordCanary" "${pkgdir}/usr/bin/DiscordCanary"
-  #installing from .sh due to how the tar extracts.
-  install "${srcdir}/Discord.sh" "${pkgdir}/usr/bin/discord"
+  #install "${srcdir}/Discord.sh" "${pkgdir}/usr/bin/discord"
+  ln -s "/opt/${pkgname}/DiscordCanary" "${pkgdir}/usr/bin/${pkgname}"
 
   # Create symbolic link to the icon
   install -d "${pkgdir}/usr/share/pixmaps"
