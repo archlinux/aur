@@ -1,0 +1,18 @@
+pkgbase = python2-js2py
+	pkgdesc = JavaScript to Python translator & JavaScript interpreter written in 100% pure Python
+	pkgver = 0.43
+	pkgrel = 1
+	url = https://github.com/PiotrDabkowski/Js2Py
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-pyjsparser
+	depends = python2-six
+	depends = python2-tzlocal
+	source = https://files.pythonhosted.org/packages/source/J/Js2Py/Js2Py-0.43.tar.gz
+	source = https://raw.githubusercontent.com/PiotrDabkowski/Js2Py/master/LICENSE.md
+	md5sums = ebc56834f07012322f8a19bb6a4e74b0
+	md5sums = faa744092d3fb3314632e815e7c3a560
+
+pkgname = python2-js2py
+
