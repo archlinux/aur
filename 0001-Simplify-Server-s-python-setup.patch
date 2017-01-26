@@ -1,17 +1,26 @@
-From 3605c5c714d9915beafc1d8a7e1360e20eb4980b Mon Sep 17 00:00:00 2001
-From: Dave Page <dpage@pgadmin.org>
-Date: Fri, 6 Jan 2017 12:11:35 +0100
+From 5a73a2fe9d3a5ec4f36e2cf01205ea87ebb2ff07 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Thu, 26 Jan 2017 20:25:59 +0100
 Subject: [PATCH] Simplify Server's python setup
 
+If the program name is set to match the venv's interpreter executable,
+Py_Initialize will set up sys.path to match the virtualenv.
+
+Instead of having the configuring a full search path, configure just the
+executable and let Python figure out the rest.
+
+Use PySys_SetArgvEx to avoid the path getting modified further.
+
+Tested on Arch Linux using Python 2.7.13 and Python 3.6.
 ---
  runtime/BrowserWindow.cpp |   6 +-
  runtime/ConfigWindow.cpp  |  16 +++-
  runtime/ConfigWindow.h    |   6 +-
  runtime/ConfigWindow.ui   |  22 ++++-
- runtime/Server.cpp        | 227 +++++++++++-----------------------------------
+ runtime/Server.cpp        | 228 +++++++++++-----------------------------------
  runtime/Server.h          |   6 +-
  runtime/pgAdmin4.cpp      |   6 +-
- 7 files changed, 97 insertions(+), 192 deletions(-)
+ 7 files changed, 99 insertions(+), 191 deletions(-)
 
 diff --git a/runtime/BrowserWindow.cpp b/runtime/BrowserWindow.cpp
 index 4b96abe50c89b14c..6279cd4b303d8e06 100644
@@ -153,10 +162,10 @@ index 40d87be43803204a..8b379052a1da8cd0 100644
      </layout>
     </item>
 diff --git a/runtime/Server.cpp b/runtime/Server.cpp
-index e5be20569faaf6c4..408ae62b6c4aea1c 100644
+index e5be20569faaf6c4..9b40bde74fbe74bd 100644
 --- a/runtime/Server.cpp
 +++ b/runtime/Server.cpp
-@@ -22,183 +22,84 @@
+@@ -22,183 +22,87 @@
  // App headers
  #include "Server.h"
  
@@ -236,7 +245,8 @@ index e5be20569faaf6c4..408ae62b6c4aea1c 100644
 +    wcscpy(m_pyAppName, appName.c_str());
 +    qDebug() << "Python interpreter: " << QString::fromWCharArray(m_pyAppName);
  #endif
--
++    Py_SetProgramName(m_pyAppName);
+ 
 -    // Setup the search path
 -    QSettings settings;
 -    QString python_path = settings.value("PythonPath").toString();
@@ -344,7 +354,8 @@ index e5be20569faaf6c4..408ae62b6c4aea1c 100644
 -        Py_SetPythonHome(wcPythonHome);
 -#endif
 -    }
-+    //Py_SetProgramName(m_pyAppName);
++    // Reset the path in case this isn't our first initialization
++    Py_SetPath(NULL);
  
      Py_Initialize();
  
@@ -393,7 +404,7 @@ index e5be20569faaf6c4..408ae62b6c4aea1c 100644
  }
  
  bool Server::Init()
-@@ -258,33 +159,11 @@ void Server::run()
+@@ -258,33 +162,11 @@ void Server::run()
  
      // Run the app!
  #ifdef PYTHON2
