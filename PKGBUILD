@@ -4,7 +4,7 @@
 pkgname=latte-dock-git
 pkgver=0.5.91.r24.g96a153f
 pkgrel=1
-pkgdesc='A dock based on plasma frameworks git version'
+pkgdesc='A dock based on plasma frameworks - git version'
 arch=('i686' 'x86_64')
 url='https://github.com/psifidotos/Latte-Dock'
 license=('GPL3')
