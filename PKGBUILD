@@ -1,5 +1,5 @@
-# $Id$
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer Yurii Kolesnykov <yurikoles@gmail.com>
+# Credit: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gstreamer0.10-ffmpeg
 pkgver=0.10.13
