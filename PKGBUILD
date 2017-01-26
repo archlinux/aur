@@ -21,7 +21,7 @@ package() {
   mkdir -p "$_npmdir"
   cd "$_npmdir"
   npm install --user root -g --prefix "$pkgdir/usr" $pkgname@$pkgver
-  rmdir $pkgdir/usr/etc
+  rmdir "$pkgdir/usr/etc"
 }
 
 # vim:set ts=2 sw=2 et:
