@@ -6,7 +6,7 @@
 # Maintainer: Marco Pompili <aur@emarcs.org>
 
 pkgname=v8
-pkgver=5.6.178
+pkgver=5.7.441.1
 pkgrel=1
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
