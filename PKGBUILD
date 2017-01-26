@@ -10,14 +10,14 @@
 pkgname=('jre8-openjdk-jetbrains-headless' 'jre8-openjdk-jetbrains' 'jdk8-openjdk-jetbrains' 'openjdk8-jetbrains-src' 'openjdk8-jetbrains-doc')
 pkgbase=java8-openjdk-jetbrains
 _java_ver=8
-# Found @ http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+# Found @ https://github.com/JetBrains/jdk8u/releases
 _jdk_update=112
-_jdk_build=584
+_jdk_build=705
 pkgver=${_java_ver}.u${_jdk_update}
 _repo_ver=jb${_java_ver}u${_jdk_update}-b${_jdk_build}
 pkgrel=1
 arch=('i686' 'x86_64')
-url='http://openjdk.java.net/'
+url='https://github.com/JetBrains/jdk8u'
 license=('GPL2')
 makedepends=('java-environment-openjdk' 'ccache' 'cpio' 'unzip' 'zip'
              'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib')
@@ -32,14 +32,14 @@ source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         nashorn-${_repo_ver}.tar.gz::${_url_src}_nashorn/archive/${_repo_ver}.tar.gz
         build_with_gcc6.patch)
 
-sha256sums=('83bb54b8bf846a3f78c3049396c5208fd09ba162158fee9c29540a928112f10b'
-            '5ebb7bebc7b3e06ac50c511579ac886e0fc1058dba87b38f0f8b2d4578183ce6'
-            '75e6738d26dc71343dda519d5f2a3e0d90a623a05990acce9091b79474721c85'
-            '32d291eee4f91ef134b9b569dfb8267db28eee383f7b54dee461f8cb3fe07517'
-            'be8716df4e6da4ad4f09a721da70ab73896451a2438cb0d514da47b03698d2c7'
-            '5640a0612e716b00e80f007e48ee8953003039bb3ada2f72a5dde0c5786a0a7e'
-            '8fe93ce1c9189c84e23afc199181def7d71f5fe0f143b7cc4034118175b5c16b'
-            '0d209275a99681ebb04375510e292b1f7a0cd211bf4bc006f5f2eb6ab6a78ba2'
+sha256sums=('db9c36153bb5e21756fdd437d8553e84009234e877e90918fab896b454593759'
+            '9ea3ad4fbc13a7cd58ab7a0cb2e494e03a271c287f22eb7bfe578c029eb13fd6'
+            '005df7ec7abf5b4c6678116c229a2355574709703596fcc70f3d443217a2c16c'
+            '6c6b6a5b7688f169fff56593a82f9f5def85de4c618a7bf30b4cddb009e1fb0a'
+            'b085d9f92bd4d9141f306a6b45e201a9e03c5b400fe25c841f4de3de8368b8eb'
+            'ff8b72c7a9aca9cef08b6bb16d0b9b1cf466100f7571076fe28d7237af656e22'
+            'f2bdcb8cbcc66d448e45d4475cec91b0f6265118b465df6ed01b712755c27f12'
+            '4a239bd67f1a6ee81aad986e5ae8becf11e46b3fe9c29cff978d6188bfde6f91'
             '7b954b746178c8613660e71fa7b1b968d892e1850f3603301436836a62e244c8')
 
 case "${CARCH}" in
