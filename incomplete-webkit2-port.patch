@@ -1,0 +1,737 @@
+diff --git a/README b/README
+index d7b8bc2..c86940d 100644
+--- a/README
++++ b/README
+@@ -4,4 +4,4 @@ be used to print those.
+ 
+ Requirements:
+  * gtk+
+- * webkitgtk
++ * webkit2gtk
+diff --git a/configure.ac b/configure.ac
+index 199cf44..4af59a4 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -31,9 +31,8 @@ m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
+ IT_PROG_INTLTOOL([0.40.6])
+ 
+ GLIB_REQUIRED=2.14.0
+-GTK2_REQUIRED=2.20.0
+ GTK3_REQUIRED=2.99.3
+-WEBKIT_REQUIRED=1.1.23
++WEBKIT_REQUIRED=2.10.0
+ 
+ AC_PROG_LN_S
+ AC_PROG_CC
+@@ -47,29 +46,8 @@ if test "x$enable_maintainer_mode" = "xyes"; then
+         DEPRECATION_FLAGS="$DISABLE_DEPRECATED"
+ fi
+ 
+-AC_MSG_CHECKING([which gtk+ version to compile against])
+-AC_ARG_WITH([gtk],
+-  [AS_HELP_STRING([--with-gtk=2.0|3.0],[which gtk+ version to compile against (default: 3.0)])],
+-  [case "$with_gtk" in
+-     2.0|3.0) ;;
+-     *) AC_MSG_ERROR([invalid gtk version specified]) ;;
+-   esac],
+-  [with_gtk=3.0])
+-AC_MSG_RESULT([$with_gtk])
+-
+-case "$with_gtk" in
+-  2.0)
+-    DEPENDENCY_PC="glib-2.0 >= $GLIB_REQUIRED gtk+-2.0 >= $GTK2_REQUIRED webkit-1.0 >= $WEBKIT_REQUIRED gconf-2.0"
+-    GTKUNIXPRINT_PC="gtk+-unix-print-2.0"
+-    ;;
+-  3.0)
+-    DEPENDENCY_PC="glib-2.0 >= $GLIB_REQUIRED gtk+-3.0 >= $GTK3_REQUIRED webkitgtk-3.0 >= $WEBKIT_REQUIRED"
+-    GTKUNIXPRINT_PC="gtk+-unix-print-3.0"
+-    AC_DEFINE([HAVE_GNOME3], 1,
+-              [Use GNOME 3 technologies])
+-    ;;
+-esac
+-AM_CONDITIONAL(HAVE_GNOME3, test "$with_gtk" == 3.0)
++DEPENDENCY_PC="glib-2.0 >= $GLIB_REQUIRED gtk+-3.0 >= $GTK3_REQUIRED webkit2gtk-4.0 >= $WEBKIT_REQUIRED"
++GTKUNIXPRINT_PC="gtk+-unix-print-3.0"
+ 
+ PKG_CHECK_MODULES([DEPENDENCY], [$DEPENDENCY_PC])
+ AC_SUBST([DEPENDENCY_CFLAGS])
+@@ -84,22 +62,6 @@ if test "$with_gtk_unix_print" == "yes"; then
+             [Build with gtk-unix-print features])
+ fi
+ 
+-# *****
+-# GConf
+-# *****
+-
+-if test "$with_gtk" == 2.0; then
+-  AC_PATH_PROG([GCONFTOOL], [gconftool-2], [no])
+-
+-  if test "x$GCONFTOOL" = xno; then
+-    AC_MSG_ERROR([gconftool-2 not found])
+-  fi
+-
+-  AM_GCONF_SOURCE_2
+-else
+-  AM_CONDITIONAL(GCONF_SCHEMAS_INSTALL, false)
+-fi
+-
+ # *****************
+ # Add warning flags
+ # *****************
+diff --git a/data/Makefile.am b/data/Makefile.am
+index 412443c..d6d4042 100644
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -1,37 +1,13 @@
+-schema_in_files = thumbnailer.schemas.in
+ thumbnailer_DATA_files = gnome-web-photo.thumbnailer
+ 
+ cssdir = $(pkgdatadir)
+ css_DATA = style.css
+ 
+-if !HAVE_GNOME3
+-@INTLTOOL_SCHEMAS_RULE@
+-
+-schemadir = $(GCONF_SCHEMA_FILE_DIR)
+-schema_DATA = $(schema_in_files:%.in=%)
+-
+-install-data-local: $(schema_DATA)
+-if GCONF_SCHEMAS_INSTALL
+-	if test -z "$(DESTDIR)" ; then \
+-	for p in $^ ; do \
+-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $$p >&1 > /dev/null; \
+-	done \
+-	fi
+-endif
+-endif
+-
+-if HAVE_GNOME3
+ thumbnailerdir = $(datadir)/thumbnailers
+ thumbnailer_DATA = $(thumbnailer_DATA_files)
+-endif
+ 
+ EXTRA_DIST = \
+-	$(schema_in_files)		\
+ 	$(thumbnailer_DATA_files)	\
+ 	$(css_DATA)
+ 
+-CLEANFILES = $(schema_DATA)
+-DISTCLEANFILES = $(schema_DATA)
+-MAINTAINERCLEANFILES = $(schema_DATA)
+-
+ -include $(top_srcdir)/git.mk
+diff --git a/data/thumbnailer.schemas.in b/data/thumbnailer.schemas.in
+deleted file mode 100644
+index f3a3d65..0000000
+--- a/data/thumbnailer.schemas.in
++++ /dev/null
+@@ -1,48 +0,0 @@
+-<gconfschemafile>
+-  <schemalist>
+-    <schema>
+-      <key>/schemas/desktop/gnome/thumbnailers/text@html/enable</key>
+-      <applyto>/desktop/gnome/thumbnailers/text@html/enable</applyto>
+-      <owner>gnome-web-photo</owner>
+-      <type>bool</type>
+-      <default>true</default>
+-      <locale name="C">
+-        <short>Whether to enable thumbnailing of HTML files</short>
+-        <long>Whether to enable thumbnailing of HTML files.</long>
+-      </locale>
+-    </schema>
+-    <schema>
+-      <key>/schemas/desktop/gnome/thumbnailers/text@html/command</key>
+-      <applyto>/desktop/gnome/thumbnailers/text@html/command</applyto>
+-      <owner>gnome-web-photo</owner>
+-      <type>string</type>
+-      <default>gnome-web-photo --mode=thumbnail --timeout=16 --thumbnail-size=%s %u %o</default>
+-      <locale name="C">
+-        <short>The command to thumbnail HTML files</short>
+-        <long>The command to thumbnail HTML files.</long>
+-      </locale>
+-   </schema>
+-    <schema>
+-      <key>/schemas/desktop/gnome/thumbnailers/application@xhtml@xml/enable</key>
+-      <applyto>/desktop/gnome/thumbnailers/application@xhtml@xml/enable</applyto>
+-      <owner>gnome-web-photo</owner>
+-      <type>bool</type>
+-      <default>true</default>
+-      <locale name="C">
+-        <short>Whether to enable thumbnailing of XHTML files</short>
+-        <long>Whether to enable thumbnailing of XHTML files.</long>
+-      </locale>
+-    </schema>
+-    <schema>
+-      <key>/schemas/desktop/gnome/thumbnailers/application@xhtml@xml/command</key>
+-      <applyto>/desktop/gnome/thumbnailers/application@xhtml@xml/command</applyto>
+-      <owner>gnome-web-photo</owner>
+-      <type>string</type>
+-      <default>gnome-web-photo --mode=thumbnail --timeout=16 --thumbnail-size=%s %u %o</default>
+-      <locale name="C">
+-        <short>The command to thumbnail XHTML files</short>
+-        <long>The command to thumbnail XHTML files.</long>
+-      </locale>
+-   </schema>
+-  </schemalist>
+-</gconfschemafile>
+diff --git a/src/gnome-web-photo.c b/src/gnome-web-photo.c
+index e5b6fec..5e5061e 100644
+--- a/src/gnome-web-photo.c
++++ b/src/gnome-web-photo.c
+@@ -28,30 +28,20 @@
+ #include <glib.h>
+ #include <glib/gi18n.h>
+ #include <gtk/gtk.h>
+-#include <webkit/webkit.h>
++#include <webkit2/webkit2.h>
+ 
+ #ifdef HAVE_GTK_UNIX_PRINT
+ #include <gtk/gtkunixprint.h>
+ #endif
+ 
+-#ifdef HAVE_GNOME3
+ #include <gio/gio.h>
+ #include <cairo/cairo-xlib.h>
+-#else
+-#include <gconf/gconf-client.h>
+-#endif
+ 
+ #include "photo-offscreen-window.h"
+ 
+-#ifdef HAVE_GNOME3
+ #define GSETTINGS_DESKTOP_INTERFACE  "org.gnome.desktop.interface"
+ #define GSETTINGS_VARIABLE_FONT_KEY  "document-font-name"
+ #define GSETTINGS_MONOSPACE_FONT_KEY "monospace-font-name"
+-#else
+-#define GCONF_VARIABLE_FONT_KEY      "/desktop/gnome/interface/document_font_name"
+-#define GCONF_MONOSPACE_FONT_KEY     "/desktop/gnome/interface/monospace_font_name"
+-#define GCONF_EPHY_MINIMUM_FONT_SIZE "/apps/epiphany/web/minimum_font_size"
+-#endif
+ 
+ #define DEFAULT_VARIABLE_FONT     "Sans 10"
+ #define DEFAULT_MONOSPACE_FONT    "Monospace 10"
+@@ -121,87 +111,36 @@ typedef struct {
+ \******************/
+ 
+ static gboolean
+-_on_new_window (WebKitWebView             *webview,
+-                WebKitWebFrame            *frame,
+-                WebKitNetworkRequest      *request,
+-                WebKitWebNavigationAction *action,
+-                WebKitWebPolicyDecision   *decision)
+-{
+-  webkit_web_policy_decision_ignore (decision);
+-  return TRUE;
+-}
+-
+-static gboolean
+-_on_print_requested (WebKitWebView  *webview,
+-                     WebKitWebFrame *frame)
+-{
+-  return TRUE;
+-}
+-
+-static gboolean
+-_on_console_message (WebKitWebView *webview,
+-                     const gchar   *message,
+-                     guint          line_number,
+-                     const gchar   *source_id)
+-{
+-  return TRUE;
+-}
+-
+-static gboolean
+-_on_script_alert (WebKitWebView  *webview,
+-                  WebKitWebFrame *frame,
+-                  const gchar    *message)
++_on_new_window (WebKitWebView            *web_view,
++                WebKitPolicyDecision     *decision,
++                WebKitPolicyDecisionType  decision_type)
+ {
+   return TRUE;
+ }
+ 
+ static gboolean
+-_on_script_confirm (WebKitWebView  *webview,
+-                    WebKitWebFrame *frame,
+-                    const gchar    *message,
+-                    gboolean       *confirmed)
++_on_print_requested (WebKitWebView  *web_view,
++                     WebKitPrintOperation *print_operation)
+ {
+-  *confirmed = FALSE;
+   return TRUE;
+ }
+ 
+ static gboolean
+-_on_script_prompt (WebKitWebView   *webview,
+-                   WebKitWebFrame  *frame,
+-                   const gchar     *message,
+-                   const gchar     *default_txt,
+-                   const gchar    **text)
++_on_script_dialog (WebKitWebView  *web_view,
++                   WebKitScriptDialog *dialog)
+ {
+-  *text = NULL;
+-  return TRUE;
+-}
+-
+-static gboolean
+-_on_geolocation (WebKitWebView                   *webview,
+-                 WebKitWebFrame                  *frame,
+-                 WebKitGeolocationPolicyDecision *decision)
+-{
+-  webkit_geolocation_policy_deny (decision);
+   return TRUE;
+ }
+ 
+ static void
+ _prepare_web_view (WebKitWebView *webview)
+ {
+-  g_signal_connect (webview, "new-window-policy-decision-requested",
++  g_signal_connect (webview, "decide-policy",
+                     G_CALLBACK (_on_new_window), NULL);
+-  g_signal_connect (webview, "print-requested",
++  g_signal_connect (webview, "print",
+                     G_CALLBACK (_on_print_requested), NULL);
+-  g_signal_connect (webview, "console-message",
+-                    G_CALLBACK (_on_console_message), NULL);
+-  g_signal_connect (webview, "script-alert",
+-                    G_CALLBACK (_on_script_alert), NULL);
+-  g_signal_connect (webview, "script-confirm",
+-                    G_CALLBACK (_on_script_confirm), NULL);
+-  g_signal_connect (webview, "script-prompt",
+-                    G_CALLBACK (_on_script_prompt), NULL);
+-  g_signal_connect (webview, "geolocation-policy-decision-requested",
+-                    G_CALLBACK (_on_geolocation), NULL);
++  g_signal_connect (webview, "script-dialog",
++                    G_CALLBACK (_on_script_dialog), NULL);
+ }
+ 
+ 
+@@ -237,16 +176,12 @@ _parse_font (const char  *font_descr,
+ }
+ 
+ static void
+-_prepare_web_settings (WebKitWebSettings *settings,
+-                       const char        *user_css,
+-                       gboolean           print_background,
+-                       gboolean           disable_plugins)
++_prepare_web_settings (WebKitSettings *settings,
++                       const char     *user_css,
++                       gboolean        print_background,
++                       gboolean        disable_plugins)
+ {
+-#ifdef HAVE_GNOME3
+   GSettings *gsettings;
+-#else
+-  GConfClient *client;
+-#endif
+   char *value;
+   char *font_name = NULL;
+   int   font_size = 0;
+@@ -265,27 +200,18 @@ _prepare_web_settings (WebKitWebSettings *settings,
+                 "enable-html5-local-storage", FALSE,
+                 /* no automatic popup or other similar behavior */
+                 "javascript-can-open-windows-automatically", FALSE,
+-                "auto-resize-window", FALSE,
+                 /* ensure secure settings */
+                 "javascript-can-access-clipboard", FALSE,
+-                "enable-universal-access-from-file-uris", FALSE,
++                "allow-universal-access-from-file-urls", FALSE,
+                 /* custom css */
+-                "user-stylesheet-uri", user_css,
++                /* TODO: user-stylesheet-uri setting */
+                 NULL);
+ 
+   /* Fetch fonts from user config */
+ 
+-#ifdef HAVE_GNOME3
+   gsettings = g_settings_new (GSETTINGS_DESKTOP_INTERFACE);
+-#else
+-  client = gconf_client_get_default ();
+-#endif
+ 
+-#ifdef HAVE_GNOME3
+   value = g_settings_get_string (gsettings, GSETTINGS_VARIABLE_FONT_KEY);
+-#else
+-  value = gconf_client_get_string (client, GCONF_VARIABLE_FONT_KEY, NULL);
+-#endif
+   _parse_font (value, DEFAULT_VARIABLE_FONT, &font_name, &font_size);
+   g_free (value);
+ 
+@@ -296,11 +222,7 @@ _prepare_web_settings (WebKitWebSettings *settings,
+                 NULL);
+   g_free (font_name);
+ 
+-#ifdef HAVE_GNOME3
+   value = g_settings_get_string (gsettings, GSETTINGS_MONOSPACE_FONT_KEY);
+-#else
+-  value = gconf_client_get_string (client, GCONF_MONOSPACE_FONT_KEY, NULL);
+-#endif
+   _parse_font (value, DEFAULT_MONOSPACE_FONT, &font_name, &font_size);
+   g_free (value);
+ 
+@@ -310,12 +232,8 @@ _prepare_web_settings (WebKitWebSettings *settings,
+                 NULL);
+   g_free (font_name);
+ 
+-#ifdef HAVE_GNOME3
+   /* We can't assume the GSettings schemas for epiphany are installed */
+   font_size = DEFAULT_MINIMUM_SIZE;
+-#else
+-  font_size = gconf_client_get_int (client, GCONF_EPHY_MINIMUM_FONT_SIZE, NULL);
+-#endif
+   if (font_size == 0)
+     font_size = DEFAULT_MINIMUM_SIZE;
+ 
+@@ -323,11 +241,7 @@ _prepare_web_settings (WebKitWebSettings *settings,
+                 "minimum-font-size", font_size,
+                 NULL);
+ 
+-#ifdef HAVE_GNOME3
+   g_object_unref (gsettings);
+-#else
+-  g_object_unref (client);
+-#endif
+ }
+ 
+ 
+@@ -336,17 +250,12 @@ _prepare_web_settings (WebKitWebSettings *settings,
+ \*****************/
+ 
+ static void
+-_prepare_webkit (WebKitWebView     *webview,
+-                 WebKitWebSettings *settings,
+-                 const char        *user_css,
+-                 gboolean           print_background,
+-                 gboolean           disable_plugins)
++_prepare_webkit (WebKitWebView  *webview,
++                 WebKitSettings *settings,
++                 const char     *user_css,
++                 gboolean        print_background,
++                 gboolean        disable_plugins)
+ {
+-  SoupSession* session = webkit_get_default_session();
+-
+-  /* We don't want auth dialogs */
+-  soup_session_remove_feature_by_type (session, WEBKIT_TYPE_SOUP_AUTH_DIALOG);
+-
+   _prepare_web_view (webview);
+   _prepare_web_settings (settings, user_css, print_background, disable_plugins);
+ }
+@@ -359,7 +268,6 @@ _prepare_webkit (WebKitWebView     *webview,
+ static void
+ _write_photo (PhotoData *data)
+ {
+-#ifdef HAVE_GNOME3
+   cairo_surface_t *surface;
+   cairo_status_t   status;
+ 
+@@ -376,28 +284,11 @@ _write_photo (PhotoData *data)
+                   data->uri, cairo_status_to_string (status));
+       break;
+   }
+-#else
+-  GdkPixbuf *pixbuf;
+-  GError    *error = NULL;
+-
+-  pixbuf = gtk_offscreen_window_get_pixbuf (GTK_OFFSCREEN_WINDOW (data->window));
+-  gdk_pixbuf_save (pixbuf, data->outfile, "png", &error, NULL);
+-  g_object_unref (pixbuf);
+-
+-  if (error) {
+-    data->error = TRUE;
+-    /* Translators: first %s is a URI */
+-    g_printerr (_("Error while saving '%s': %s\n"),
+-                data->uri, error->message);
+-    g_error_free (error);
+-  }
+-#endif
+ }
+ 
+ static void
+ _write_thumbnail (PhotoData *data)
+ {
+-#ifdef HAVE_GNOME3
+   cairo_surface_t *surface;
+   cairo_surface_t *thumb_surface;
+   cairo_t         *cr;
+@@ -444,73 +335,26 @@ _write_thumbnail (PhotoData *data)
+                   data->uri, cairo_status_to_string (status));
+       break;
+   }
+-#else
+-  GdkPixbuf *pixbuf;
+-  GdkPixbuf *thumb_pixbuf;
+-  GError    *error = NULL;
+-  int width;
+-  int height;
+-  int thumb_width;
+-  int thumb_height;
+-
+-  pixbuf = gtk_offscreen_window_get_pixbuf (GTK_OFFSCREEN_WINDOW (data->window));
+-  width = gdk_pixbuf_get_width (pixbuf);
+-  height = gdk_pixbuf_get_height (pixbuf);
+-
+-  /* Too tall? It'll be a square */
+-  if (height > width) {
+-    GdkPixbuf *subpixbuf;
+-
+-    subpixbuf = gdk_pixbuf_new_subpixbuf (pixbuf, 0, 0, width, width);
+-    g_object_unref (pixbuf);
+-
+-    pixbuf = subpixbuf;
+-    height = width;
+-  }
+-
+-  thumb_width = data->thumbnail_size;
+-  thumb_height = (data->thumbnail_size * height) / (double) width;
+-
+-  thumb_pixbuf = gdk_pixbuf_scale_simple (pixbuf,
+-                                          thumb_width, thumb_height,
+-                                          GDK_INTERP_BILINEAR);
+-
+-  gdk_pixbuf_save (thumb_pixbuf, data->outfile, "png", &error, NULL);
+-
+-  g_object_unref (pixbuf);
+-  g_object_unref (thumb_pixbuf);
+-
+-  if (error) {
+-    data->error = TRUE;
+-    /* Translators: first %s is a URI */
+-    g_printerr (_("Error while thumbnailing '%s': %s\n"),
+-                data->uri, error->message);
+-    g_error_free (error);
+-  }
+-#endif
+ }
+ 
+ static void
+ _print_photo (PhotoData *data)
+ {
+-  GtkPrintOperation *operation;
+-  WebKitWebFrame    *main_frame;
+-  GError            *error = NULL;
+-
+-  main_frame = webkit_web_view_get_main_frame (data->webview);
++  WebKitPrintOperation *operation;
++  GError               *error = NULL;
+ 
+ #ifdef HAVE_GTK_UNIX_PRINT
+   if (data->printer) {
+     GtkPrintSettings  *settings;
+ 
+-    operation = gtk_print_operation_new ();
++    operation = webkit_print_operation_new (WEBKIT_WEB_VIEW (data->webview));
+     settings = gtk_print_settings_new ();
+     gtk_print_settings_set_printer (settings, data->printer);
+-    gtk_print_operation_set_print_settings (operation, settings);
++    gtk_print_operation_set_print_settings (GTK_PRINT_OPERATION (operation), settings);
+ 
+     error = NULL;
+-    webkit_web_frame_print_full (main_frame, operation,
+-                                 GTK_PRINT_OPERATION_ACTION_PRINT, &error);
++    webkit_print_operation_run_dialog (operation, GTK_WINDOW (gtk_widget_get_toplevel (gtk_widget_get_toplevel (GTK_WIDGET 
++(data->webview)))));
+ 
+     g_object_unref (operation);
+ 
+@@ -525,12 +369,12 @@ _print_photo (PhotoData *data)
+ #endif
+ 
+   if (data->outfile) {
+-    operation = gtk_print_operation_new ();
+-    gtk_print_operation_set_export_filename (operation, data->outfile);
++    operation = webkit_print_operation_new (WEBKIT_WEB_VIEW (data->webview));
++    gtk_print_operation_set_export_filename (GTK_PRINT_OPERATION (operation), data->outfile);
+ 
+     error = NULL;
+-    webkit_web_frame_print_full (main_frame, operation,
+-                                 GTK_PRINT_OPERATION_ACTION_EXPORT, &error);
++    webkit_print_operation_run_dialog (operation, GTK_WINDOW (gtk_widget_get_toplevel (gtk_widget_get_toplevel (GTK_WIDGET 
++(data->webview)))));
+ 
+     g_object_unref (operation);
+ 
+@@ -605,11 +449,11 @@ _on_delay (PhotoData *data)
+ }
+ 
+ static gboolean
+-_on_web_view_load_error (WebKitWebView  *webview,
+-                         WebKitWebFrame *frame,
+-                         const char     *uri,
+-                         GError         *error,
+-                         PhotoData      *data)
++_on_web_view_load_error (WebKitWebView   *web_view,
++                         WebKitLoadEvent  load_event,
++                         gchar           *failing_uri,
++                         GError          *error,
++                         PhotoData       *data)
+ {
+   /* Cancelling is explicitly done by us, so we don't do anything here */
+   if (error->domain == WEBKIT_NETWORK_ERROR &&
+@@ -618,7 +462,7 @@ _on_web_view_load_error (WebKitWebView  *webview,
+ 
+   data->error = TRUE;
+   /* Translators: first %s is a URI */
+-  g_printerr (_("Error while loading '%s': %s\n"), uri, error->message);
++  g_printerr (_("Error while loading '%s': %s\n"), failing_uri, error->message);
+ 
+   gtk_main_quit ();
+ 
+@@ -644,11 +488,11 @@ _web_view_loaded_idle (PhotoData *data)
+ }
+ 
+ static void
+-_on_web_view_load_status (WebKitWebView *webview,
+-                          GParamSpec    *pspec,
+-                          PhotoData     *data)
++_on_web_view_load_status (WebKitWebView   *webview,
++                          WebKitLoadEvent  load_event,
++                          PhotoData       *data)
+ {
+-  switch (webkit_web_view_get_load_status (webview)) {
++  switch (load_event) {
+     case WEBKIT_LOAD_FINISHED:
+       /* For local files, we finish the load so fast that the page is not even
+        * rendered. Going back to the idle loop fixes this. */
+@@ -656,10 +500,6 @@ _on_web_view_load_status (WebKitWebView *webview,
+       data->idle_id = g_idle_add ((GSourceFunc) _web_view_loaded_idle, data);
+       break;
+ 
+-    case WEBKIT_LOAD_FAILED:
+-      /* Ignore since we'll have the load-error event */
+-      break;
+-
+     default:
+       break;
+   }
+@@ -676,33 +516,9 @@ _on_timeout (PhotoData *data)
+     data->idle_id = 0;
+   }
+ 
+-  if (data->force) {
+-    switch (webkit_web_view_get_load_status (data->webview)) {
+-      case WEBKIT_LOAD_FIRST_VISUALLY_NON_EMPTY_LAYOUT:
+-      case WEBKIT_LOAD_FINISHED:
+-        /* Translators: first %s is a URI */
+-        g_printerr (_("Timed out while loading '%s'. Outputting current view...\n"), data->uri);
+-
+-        if (data->delay > 0) {
+-          quit = FALSE;
+-          data->delay_id = g_timeout_add_seconds (data->delay,
+-                                                  (GSourceFunc) _on_delay, data);
+-        } else
+-          _do_action (data);
+-
+-        break;
+-
+-      default:
+-        data->error = TRUE;
+-        /* Translators: first %s is a URI */
+-        g_printerr (_("Timed out while loading '%s'. Nothing to output...\n"), data->uri);
+-        break;
+-    }
+-  } else {
+-    data->error = TRUE;
+-    /* Translators: first %s is a URI */
+-    g_printerr (_("Timed out while loading '%s'.\n"), data->uri);
+-  }
++  data->error = TRUE;
++  /* Translators: first %s is a URI */
++  g_printerr (_("Timed out while loading '%s'.\n"), data->uri);
+ 
+   /* We have to do it after checking the load status */
+   webkit_web_view_stop_loading (data->webview);
+@@ -716,10 +532,10 @@ _on_timeout (PhotoData *data)
+ static GtkWidget *
+ _create_web_window (PhotoData *data)
+ {
+-  GtkWidget         *window;
+-  GtkWidget         *webview;
+-  WebKitWebSettings *settings;
+-  int                max_height;
++  GtkWidget      *window;
++  GtkWidget      *webview;
++  WebKitSettings *settings;
++  int             max_height;
+ 
+   if (data->mode != MODE_DEBUG)
+     window = photo_offscreen_window_new ();
+@@ -754,7 +570,7 @@ _create_web_window (PhotoData *data)
+   webview = webkit_web_view_new ();
+   data->webview = WEBKIT_WEB_VIEW (webview);
+ 
+-  settings = webkit_web_settings_new ();
++  settings = webkit_settings_new ();
+ 
+   _prepare_webkit (data->webview, settings,
+                    data->user_css,
+@@ -771,16 +587,16 @@ _create_web_window (PhotoData *data)
+   if (data->mode == MODE_DEBUG)
+     gtk_widget_hide (window);
+ 
+-  g_signal_connect (webview, "load-error",
++  g_signal_connect (webview, "load-failed",
+                     G_CALLBACK (_on_web_view_load_error), data);
+-  g_signal_connect (webview, "notify::load-status",
++  g_signal_connect (webview, "load-changed",
+                     G_CALLBACK (_on_web_view_load_status), data);
+ 
+   if (data->timeout > 0)
+     data->timeout_id = g_timeout_add_seconds (data->timeout,
+                                               (GSourceFunc) _on_timeout, data);
+ 
+-  webkit_web_view_open (data->webview, data->uri);
++  webkit_web_view_load_uri (data->webview, data->uri);
+ 
+   return window;
+ }
+diff --git a/src/photo-offscreen-window.c b/src/photo-offscreen-window.c
+index a1465c5..6e66827 100644
+--- a/src/photo-offscreen-window.c
++++ b/src/photo-offscreen-window.c
+@@ -85,7 +85,6 @@ photo_offscreen_window_get_property (GObject    *obj,
+     }
+ }
+ 
+-#ifdef HAVE_GNOME3
+ static void
+ photo_offscreen_window_get_preferred_width (GtkWidget *widget,
+                                             gint      *minimum,
+@@ -115,21 +114,6 @@ photo_offscreen_window_get_preferred_height (GtkWidget *widget,
+     *natural = MIN (*natural, window->priv->max_height);
+   }
+ }
+-#else
+-static void
+-photo_offscreen_window_size_request (GtkWidget      *widget,
+-                                     GtkRequisition *requisition)
+-{
+-  PhotoOffscreenWindow *window = PHOTO_OFFSCREEN_WINDOW (widget);
+-
+-  GTK_WIDGET_CLASS (photo_offscreen_window_parent_class)->size_request (widget, requisition);
+-
+-  if (window->priv->max_width > 0)
+-    requisition->width = MIN (requisition->width, window->priv->max_width);
+-  if (window->priv->max_height > 0)
+-    requisition->height = MIN (requisition->height, window->priv->max_height);
+-}
+-#endif
+ 
+ static void
+ photo_offscreen_window_class_init (PhotoOffscreenWindowClass *class)
+@@ -141,12 +125,8 @@ photo_offscreen_window_class_init (PhotoOffscreenWindowClass *class)
+   object_class->set_property = photo_offscreen_window_set_property;
+   object_class->get_property = photo_offscreen_window_get_property;
+ 
+-#ifdef HAVE_GNOME3
+   widget_class->get_preferred_width = photo_offscreen_window_get_preferred_width;
+   widget_class->get_preferred_height = photo_offscreen_window_get_preferred_height;
+-#else
+-  widget_class->size_request = photo_offscreen_window_size_request;
+-#endif
+ 
+   /**
+    * PhotoOffscreenWindow:max-width:
