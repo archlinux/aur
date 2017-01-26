@@ -5,9 +5,9 @@ pre_upgrade() {
 }
 
 post_upgrade() {
-  cd /usr/share/webapps/mantisbt
-
-  rm mantis_offline.php
+  echo "Please follow the steps from 2. onwards at: https://mantisbt.org/docs/master-1.3.x/en-US/Admin_Guide/html-single/#admin.install.upgrade"
+  echo "After upgrading, bring MantisBT back to normal operation mode by deleting mantis_offline.php as follows:"
+  echo "rm /usr/share/webapps/mantisbt/mantis_offline.php"
 }
 
 post_remove() {
