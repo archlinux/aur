@@ -1,0 +1,23 @@
+pkgbase = gstreamer0.10
+	pkgdesc = GStreamer Multimedia Framework
+	pkgver = 0.10.36
+	pkgrel = 4
+	url = http://gstreamer.com
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = pkgconfig
+	makedepends = gobject-introspection
+	makedepends = git
+	depends = libxml2
+	depends = glib2
+	source = git://anongit.freedesktop.org/gstreamer-sdk/gstreamer#commit=3ddc31eaa18c3be1613e43430eca78a3e445639e
+	source = tests-remove-silly-test_fail_abstract_new-check.patch
+	source = bison3.patch
+	sha256sums = SKIP
+	sha256sums = d3d3f4f04453831fdb4244bfe174a38c4e6f9f4da5c8c9050dcfa1a6097aad52
+	sha256sums = ed154e280abf59b24d98a8ab0fe868b449b26aa61f7ae3813fab8ac615fcaefa
+
+pkgname = gstreamer0.10
+
