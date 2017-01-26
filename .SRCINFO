@@ -1,0 +1,66 @@
+pkgbase = gstreamer0.10-base
+	pkgver = 0.10.36
+	pkgrel = 3
+	url = http://gstreamer.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = pkgconfig
+	makedepends = gstreamer0.10>=0.10.36
+	makedepends = orc
+	makedepends = libxv
+	makedepends = alsa-lib
+	makedepends = cdparanoia
+	makedepends = libvisual
+	makedepends = libvorbis
+	makedepends = libtheora
+	makedepends = pango
+	makedepends = gobject-introspection
+	makedepends = git
+	options = !emptydirs
+	source = git://anongit.freedesktop.org/gstreamer-sdk/gst-plugins-base#commit=48d5966f12d4e6b71c96db0600cf76ef0ef14b3a
+	source = fix-crash-0-byte-ogg.patch
+	source = colorbalance-fix-abi.patch
+	source = revert-decodebin-playbin-removal.patch
+	source = videoscale-fix-negotiation.patch
+	source = ayuv64-lanczos.patch
+	source = gstaudio-symbols.patch
+	sha256sums = SKIP
+	sha256sums = a6a01035ea9627737f9c17f72919857ed43ccc7c2cb08b645b43ed89f78d0f4f
+	sha256sums = 7442c5c68068428b8c7ac1d3825ce29f1bb152b75b77047b9e806c7d322b780c
+	sha256sums = ba20659fafea73db016ddaecd128f12087e0957ce35cf2c3ce29f72c51551ef3
+	sha256sums = ae27f7be58997217f67898b37b138a485c203389e56b65e6b31c23f769ef39ca
+	sha256sums = 3792dfe80c69f51c0db98533e8fb16707b5dd2ee6933ea6098583af873ceb44a
+	sha256sums = 56e7a988df39d2ec4befa265536ad8c30d3c8d18d136cebef64e8d6baac1abae
+
+pkgname = gstreamer0.10-base
+	pkgdesc = GStreamer Multimedia Framework Base plugin libraries
+	depends = gstreamer0.10>=0.10.36
+	depends = orc
+	depends = libxv
+
+pkgname = gstreamer0.10-base-plugins
+	pkgdesc = GStreamer Multimedia Framework Base Plugins (gst-plugins-base)
+	groups = gstreamer0.10-plugins
+	depends = gstreamer0.10-base=0.10.36
+	depends = alsa-lib
+	depends = cdparanoia
+	depends = libvisual
+	depends = libvorbis
+	depends = libtheora
+	depends = pango
+	conflicts = gstreamer0.10-alsa
+	conflicts = gstreamer0.10-theora
+	conflicts = gstreamer0.10-libvisual
+	conflicts = gstreamer0.10-pango
+	conflicts = gstreamer0.10-cdparanoia
+	conflicts = gstreamer0.10-vorbis
+	conflicts = gstreamer0.10-ogg
+	replaces = gstreamer0.10-alsa
+	replaces = gstreamer0.10-theora
+	replaces = gstreamer0.10-libvisual
+	replaces = gstreamer0.10-pango
+	replaces = gstreamer0.10-cdparanoia
+	replaces = gstreamer0.10-vorbis
+	replaces = gstreamer0.10-ogg
+
