@@ -21,8 +21,7 @@ optdepends=(
 
 install="Discord.install"
 source=(Discord.desktop LICENSE Discord.sh)
-M
-source_x86_64=("https://dl.discordapp.net/apps/linux/${pkgver}/${branch}-${pkgver}.tar.gz")
+source_x86_64=("https://dl.discordapp.net/apps/linux/${pkgver}/${_branch}-${pkgver}.tar.gz")
 md5sums=('a9046504943624ac4861983d67a1404b'
          '9a481caa5a223defd608f5505202f595'
          'ec3c1ddbf598ef27130daeb34ca9d9c7')
