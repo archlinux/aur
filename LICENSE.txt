@@ -1,0 +1,45 @@
+---------------------------------------------------------------------------
+
+SAC - Single Assignment C
+
+---------------------------------------------------------------------------
+
+SAC COPYRIGHT NOTICE, LICENSE, AND DISCLAIMER
+
+(c) Copyright 1994 - 2016 by
+
+  SAC Development Team
+
+  http://www.sac-home.org
+  email:info@sac-home.org
+
+---------------------------------------------------------------------------
+
+The SAC compiler, the SAC standard library, and all accompanying
+software and documentation (in the following named this software)
+is developed by the SAC Development Team (in the following named
+the developer) which reserves all rights on this software.
+
+Permission to use this software is hereby granted free of charge
+for any non-profit purpose in a non-commercial environment, i.e. for
+educational or research purposes in a non-profit institute or for
+personal, non-commercial use. For this kind of use it is allowed to
+copy or redistribute this software under the condition that the
+complete distribution for a certain platform is copied or
+redistributed and this copyright notice, license agreement, and
+warranty disclaimer appears in each copy. ANY use of this software with
+a commercial purpose or in a commercial environment is not granted by
+this license.
+
+The developer disclaims all warranties with regard to this software,
+including all implied warranties of merchantability and fitness.  In no
+event shall the developer be liable for any special, indirect or
+consequential damages or any damages whatsoever resulting from loss of
+use, data, or profits, whether in an action of contract, negligence, or
+other tortuous action, arising out of or in connection with the use or
+performance of this software. The entire risk as to the quality and
+performance of this software is with you. Should this software prove
+defective, you assume the cost of all servicing, repair, or correction.
+
+---------------------------------------------------------------------------
+ 

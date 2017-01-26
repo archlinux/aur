@@ -1,0 +1,16 @@
+pkgbase = sac2c
+	pkgdesc = Provides the compiler of the Single-Assignment C programming language.
+	pkgver = 1.2BETA367
+	pkgrel = 1
+	url = http://www.sac-home.org/
+	arch = x86_64
+	license = custom:SAC
+	depends = gcc
+	depends = hwloc
+	source = sac2c.rpm::http://www.sac-home.org/lib/exe/fetch.php?media=download:sac2c:v1.2:sac2c-1.2-beta-blackforest-367-gfb6f0-omnibus.rpm
+	source = LICENSE.txt
+	md5sums = a06cdf9b083caf4d92a7fdb712b354ac
+	md5sums = 7959e1a802cfaa1b6fde1d5e73eeef86
+
+pkgname = sac2c
+
