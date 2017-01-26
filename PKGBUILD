@@ -1,12 +1,12 @@
 # Contributor: Tom < reztho at archlinux dot us >
 pkgname=openmsx-catapult
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Front-end for openMSX: the MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
 url="http://openmsx.org"
 license=('GPL')
-depends=('libxml2' 'wxgtk2.8' 'zlib' 'libjpeg' 'libpng' 'libtiff' "openmsx=${pkgver}")
+depends=('libxml2' 'wxgtk' 'zlib' 'libjpeg' 'libpng' 'libtiff' "openmsx=${pkgver}")
 makedepends=('python2')
 source=("https://github.com/openMSX/wxcatapult/archive/RELEASE_${pkgver//./_}.tar.gz")
 
