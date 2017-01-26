@@ -3,7 +3,7 @@
 
 pkgname=gstreamer0.10-ffmpeg
 pkgver=0.10.13
-pkgrel=2
+pkgrel=3
 pkgdesc="Gstreamer FFMpeg Plugin"
 arch=('i686' 'x86_64')
 license=('GPL')

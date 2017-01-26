@@ -1,7 +1,7 @@
 pkgbase = gstreamer0.10-ffmpeg
 	pkgdesc = Gstreamer FFMpeg Plugin
 	pkgver = 0.10.13
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gstreamer.net
 	arch = i686
 	arch = x86_64
