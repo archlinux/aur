@@ -1,0 +1,14 @@
+pkgbase = trader
+	pkgdesc = Star Trader, a simple text-based game of interstellar trading
+	pkgver = 7.9
+	pkgrel = 1
+	url = http://www.zap.org.au/software/trader/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = ftp://ftp.zap.org.au/pub/trader/unix/trader-7.9.tar.xz
+	md5sums = 454b824b26003704337d91dd203e2a5a
+
+pkgname = trader
+
