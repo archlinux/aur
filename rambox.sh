@@ -1,2 +1,2 @@
 #!/bin/bash
-exec /opt/rambox/Rambox $@
+exec /opt/rambox/rambox $@
