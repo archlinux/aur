@@ -1,7 +1,7 @@
-# Maintainer: Chiku < chirantan dot mitra at domain dot com >
+# Maintainer: Chiku < chirantan dot mitra at gmail dot com >
 
 pkgname=zukitwo-themes-git
-pkgver=20160418.r87.7fedc33
+pkgver=20170126.r152.92f980b
 pkgrel=1
 pkgdesc="A theme for GTK3, GTK2, Metacity, xfwm4, Gnome Shell and Unity - git version"
 arch=('any')
@@ -21,7 +21,7 @@ _gitname=zukitwo-themes
 
 pkgver() {
   cd "$pkgname"
-  printf "20160418.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "20170126.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
