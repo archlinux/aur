@@ -1,0 +1,28 @@
+From 5765db50a19498e3d1576b4279cb2ca984da9dcd Mon Sep 17 00:00:00 2001
+From: Edward Hervey <bilboed@bilboed.com>
+Date: Tue, 23 Sep 2014 09:47:31 +0200
+Subject: check/soup: Temporarily disable G_ENABLE_DIAGNOSTIC
+
+The SOUP_SERVER_PORT property has been deprecated in recent libsoup
+versions.
+
+diff --git a/tests/check/elements/souphttpsrc.c b/tests/check/elements/souphttpsrc.c
+index 33431ac..dfb682b 100644
+--- a/tests/check/elements/souphttpsrc.c
++++ b/tests/check/elements/souphttpsrc.c
+@@ -602,7 +602,12 @@ run_server (guint * http_port, guint * https_port)
+ 
+   *http_port = *https_port = 0;
+ 
++  /* The G_ENABLE_DIAGNOSTIC is temporarily overriden to avoid
++   * property deprecation warnings (for the SOUP_SERVER_PORT
++   * property) */
++  g_setenv ("G_ENABLE_DIAGNOSTIC", "0", TRUE);
+   server = soup_server_new (SOUP_SERVER_PORT, port, NULL);
++  g_setenv ("G_ENABLE_DIAGNOSTIC", "1", TRUE);
+   if (!server) {
+     GST_DEBUG ("Unable to bind to server port %u", port);
+     return FALSE;
+-- 
+cgit v0.10.2
+
