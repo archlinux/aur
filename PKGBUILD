@@ -7,7 +7,7 @@ pkgdesc="Binary version of Abrowser, safe and easy web browser from Mozilla"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://trisquel.info/en/wiki/abrowser-help"
-depends=('gtk2' 'gcc-libs' 'libidl2' 'mozilla-common' 'nss>=3.12.10' 'libxt'
+depends=('gtk2' 'gtk3' 'gcc-libs' 'libidl2' 'mozilla-common' 'nss>=3.12.10' 'libxt'
          'libxrender' 'hunspell' 'startup-notification' 'mime-types' 'dbus-glib'
          'alsa-lib' 'libevent' 'sqlite3>=3.7.4' 'libnotify' 'desktop-file-utils'
          'libvpx' 'lcms' 'nspr>=4.8.8' 'libevent' 'libpng' 'cairo')

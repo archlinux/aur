@@ -10,6 +10,7 @@ pkgbase = abrowser-bin
 	license = GPL
 	license = LGPL
 	depends = gtk2
+	depends = gtk3
 	depends = gcc-libs
 	depends = libidl2
 	depends = mozilla-common
