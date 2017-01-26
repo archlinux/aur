@@ -31,7 +31,6 @@ pkgbase = abrowser-bin
 	depends = libevent
 	depends = libpng
 	depends = cairo
-	depends = gnome-vfs
 	source_i686 = http://us.archive.trisquel.info/trisquel/pool/main/f/firefox/abrowser_50.1.0+build2-0ubuntu0.14.04.1+7.0trisquel47_i386.deb
 	sha256sums_i686 = 6402f071dd20d34da1355a4de8a1d3226dd13440c5ef134e58d08b59b5cf46de
 	source_x86_64 = http://us.archive.trisquel.info/trisquel/pool/main/f/firefox/abrowser_50.1.0+build2-0ubuntu0.14.04.1+7.0trisquel47_amd64.deb
