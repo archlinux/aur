@@ -13,7 +13,7 @@ license=('GPL')
 arch=('any')
 provides=('stig')
 conflicts=('stig')
-source=("git+https://github.com/rndusr/stig.git")
+source=("git+https://github.com/rndusr/stig.git#branch=dev")
 sha256sums=('SKIP')
 
 pkgver() {
