@@ -1,19 +1,20 @@
-# Maintainer : eolianoe <eolianoe At GoogleMAIL DoT CoM>
+# Maintainer : Jörg Behrmann <behrmann@physik.fu-berlin.de>
+# Contributer: eolianoe <eolianoe At GoogleMAIL DoT CoM>
 # Contributor: Michele Mocciola <mickele>
 # Contributor: Guillaume Dollé <dolle dot guillaume at gmail dot com >
 
-pkgname=mumps-seq
+pkgname=mumps-seq-shared
 _pkgname=mumps
 _PKGNAME=MUMPS
 pkgver=5.0.2
 pkgrel=1
-pkgdesc="Sparse solver library using Gaussian elimination (sequential version)"
+pkgdesc="Sparse solver library using Gaussian elimination (sequential version, shared library version)"
 url="http://mumps.enseeiht.fr"
 license=('custom')
 depends=('gcc-libs' 'blas' 'metis')
 provides=('mumps')
-conflicts=('mumps')
-arch=('i686' 'x86_64')
+conflicts=('mumps' 'mumps-seq')
+arch=('any')
 source=("http://mumps.enseeiht.fr/${_PKGNAME}_${pkgver}.tar.gz"
         "Makefile.seq.inc"
         "shared-libseq.patch"
