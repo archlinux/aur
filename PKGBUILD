@@ -3,15 +3,15 @@
 # Contributor: Janne Haapsaari <haaja@iki.fi>
 
 pkgname=gnome-shell-pomodoro-git
-pkgver=r897.8e3e903
+pkgver=r912.bbb932f
 pkgrel=1
 _gitbranch='master'
 pkgdesc='A time management utility for GNOME based on the pomodoro technique'
 arch=('i686' 'x86_64')
 url='https://github.com/codito/gnome-shell-pomodoro/'
 license=('GPL3')
-depends=('gnome-desktop' 'libcanberra' 'gstreamer' 'gobject-introspection')
-makedepends=('intltool' 'vala' 'gnome-common' 'docbook2x' 'perl-xml-sax-expat' 'appstream-glib')
+depends=('gnome-desktop' 'libcanberra' 'gstreamer' 'gobject-introspection' 'libpeas' 'appstream-glib')
+makedepends=('intltool' 'vala' 'gnome-common' 'docbook2x' 'perl-xml-sax-expat')
 conflicts=('gnome-shell-pomodoro')
 provides=('gnome-shell-pomodoro')
 source=("$pkgname"::"git+https://github.com/codito/gnome-shell-pomodoro.git#branch=${_gitbranch}")
