@@ -1,15 +1,15 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem++-hg
-pkgver=3.49.r3938.59cc9fca5855
-_pkgver=3.49
+pkgver=3.51.r3955.563c79bf8d1a
+_pkgver=3.51
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method (Mercurial)'
 arch=('i686' 'x86_64')
 url="http://www.freefem.org/ff++/index.htm"
 license=('LGPL')
-depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-cpp-fortran' 'gsl' 'openmpi' 'openblas-lapack' 'arpack')
-makedepends=('mercurial' 'gcc-fortran' 'texlive-core')
+depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-cpp-fortran' 'gsl' 'openmpi' 'openblas-lapack' 'arpack' 'petsc')
+makedepends=('mercurial' 'gcc-fortran' 'flex-git' 'texlive-core')
 provides=("freefem++=$_pkgver")
 conflicts=('freefem++')
 backup=('etc/freefem++.pref')
@@ -25,21 +25,10 @@ pkgver() {
 build() {
   cd "$srcdir/ff++"
   autoreconf -i 
-  perl download/getall -a
+  perl download/getall -a 
   ./configure CC=mpicc CXX=mpic++ FC=mpifort \
 	      --enable-download --enable-m64 --sysconfdir=/etc \
-	      --with-mpi --disable-schwarz --prefix=/usr 
-  cd "$srcdir/ff++"/download/PETSc
-  cp Makefile Makefile.old
-  sed -e 's/--download-ml/--with-shared-libraries/' \
-      -e 's/all-local:/#all-local:/' \
-      -e 's/(CC)/(MPICC)/' Makefile.old > Makefile
-  make
-  cd -
-  cp configure configure.old
-  sed 's/\/petsc\/conf\/petscvariables/\/conf\/petscvariables/' \
-      configure.old > configure
-  cd "$srcdir/ff++"
+	      --with-mpi --prefix=/usr 
   
   ./configure CC=mpicc CXX=mpic++ FC=mpifort \
 	      CXXFLAGS=" -std=c++11" \
@@ -47,15 +36,15 @@ build() {
     --sysconfdir=/etc \
     --enable-download \
     --with-mpi \
-    --with-petsc=$srcdir/download/PETSc/petsc-3.5.2/arch-linux2-c-debug \
-    --disable-hpddm --enable-schwarz
+    --with-petsc=/usr/petsc/conf/petscvariables
+    
   make 
 }
 
-#check() {
- # cd "$srcdir/ff++"
- # make check || true
-#}
+check() {
+  cd "$srcdir/ff++"
+  make check || true
+}
 
 package() {
   cd "$srcdir/ff++"
