@@ -1,16 +1,18 @@
-# Maintainer: George Eleftheriou <eleftg>
+# Contributor: George Eleftheriou <eleftg>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Jed Brown <jedbrown>
 # Contributor: eolianoe <eolianoe>
  
 pkgname=scotch-mpich
 pkgver=6.0.4
 _downloadnum=34618  # gforge is insane
-pkgrel=2
-_prefix=/opt/mpich
+pkgrel=3
+_prefix=/usr
 pkgdesc="Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. This is the parallel version using the MPICH implementation (MPICH/ptesmumps)."
 url="http://www.labri.fr/perso/pelegrin/scotch/"
 license=("custom:CeCILL-C")
 depends=('zlib' 'bzip2' 'mpich')
+makedepends=('flex-git') # flex won't work
 replaces=('ptscotch-mpich')
 arch=('i686' 'x86_64')
 source=("http://gforge.inria.fr/frs/download.php/file/${_downloadnum}/scotch_${pkgver}.tar.gz")
