@@ -1,6 +1,6 @@
 pkgbase = hardcode-tray-git
 	pkgdesc = Fixes Hardcoded Tray Icons
-	pkgver = 3.6.5
+	pkgver = 3.6.5.r10.ga11c47f
 	pkgrel = 1
 	url = https://github.com/bil-elmoussaoui/Hardcode-Tray
 	arch = i686
