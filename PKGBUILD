@@ -1,8 +1,8 @@
 # Maintainer: Thomas "Ventto" Venriès <thomas.venries@gmail.com>
 
 pkgname=mons
-pkgver=0.1
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 pkgdesc='Bash script to quickly manage 2-monitors display using xrandr.'
 arch=('any')
 url="https://github.com/Ventto/${pkgname}.git"
