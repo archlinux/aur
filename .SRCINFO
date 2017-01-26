@@ -1,17 +1,24 @@
 pkgbase = oneplay-codec-pack
-	pkgdesc = This package contains every gstreamer-plugin from Fluendo
 	pkgver = 22
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.oneplaydirect.com/oneplay/oneplay-codec-pack/
 	arch = x86_64
 	arch = i686
 	license = custom
-	depends = gst-plugins-base-libs
+	conflicts = fluendo-megabundle
+	replaces = fluendo-megabundle
+	source = oneplay-gstreamer-codecs-pack-22.x86_64.tar.bz2::http://www.fluendo.com/en/oneplay/download/8026/35/
+	md5sums = 527b443c658c8526199c65c5d53266f5
+
+pkgname = gstreamer0.10-oneplay
+	pkgdesc = This package contains every gstreamer plugin from Fluendo for gstreamer 0.10
 	depends = gstreamer0.10-base
 	depends = curl
 	depends = pango
-	conflicts = fluendo-megabundle
-	replaces = fluendo-megabundle
 
-pkgname = oneplay-codec-pack
+pkgname = gst-plugins-oneplay
+	pkgdesc = This package contains every gstreamer-plugin from Fluendo for gstreamer 1.0
+	depends = gst-plugins-base-libs
+	depends = curl
+	depends = pango
 
