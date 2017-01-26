@@ -16,7 +16,7 @@ MRuby::Build.new do |conf|
   conf.gem github: 'mattn/mruby-http', checksum_hash: '22d4fccd820705f6bef8e8f4989bdb4cf435f576' # Latest
   conf.gem github: 'matsumotory/mruby-httprequest', checksum_hash: '9a0b6a0a2e5918b60501af412163000e3db83c58' # Latest
   conf.gem github: 'iij/mruby-iijson', checksum_hash: '2472d063fce158249862b43bf51a84aec63336c7' # Latest
-  conf.gem github: 'iij/mruby-io', checksum_hash: '458b517c6f5d5bdf0ab2f742841279d6f43e9aac' # Specified by mitamae
+  conf.gem github: 'iij/mruby-io', checksum_hash: '69623078a86b45617a6fdbe0238c147e280ad9db' # Specified by mitamae
   conf.gem github: 'mattn/mruby-onig-regexp', checksum_hash: '367c9b6bb2250290bc06e23087127c1b60ee45d5' # Latest
   conf.gem github: 'k0kubun/mruby-open3', checksum_hash: '211550775492e68ba217526808cf1df9deb7fa5a' # Specified by mitamae
   conf.gem github: 'fastly/mruby-optparse', checksum_hash: 'e6397a090d1efe04d5dab57c63897f0d79bbad89' # Latest
