@@ -3,7 +3,6 @@ pkgbase = abrowser-bin
 	pkgver = 50.1.0
 	pkgrel = 1
 	url = https://trisquel.info/en/wiki/abrowser-help
-	install = abrowser.install
 	arch = i686
 	arch = x86_64
 	license = MPL

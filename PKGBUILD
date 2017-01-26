@@ -12,8 +12,6 @@ depends=('gtk2' 'gtk3' 'gcc-libs' 'libidl2' 'mozilla-common' 'nss>=3.12.10' 'lib
          'alsa-lib' 'libevent' 'sqlite3>=3.7.4' 'libnotify' 'desktop-file-utils'
          'libvpx' 'lcms' 'nspr>=4.8.8' 'libevent' 'libpng' 'cairo')
 
-install=abrowser.install
-
 s_pkgname=abrowser
 build=build2
 ubuntu_ver=14.04.1
