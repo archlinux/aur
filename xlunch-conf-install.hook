@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = File
+Target = usr/share/applications/*
+
+[Action]
+Description = Updating xlunch icons.conf...
+Exec = bin/sh -c 'while read -r f; do xlunch-create-entry "$f" >> /etc/xlunch/icons.conf; cat /etc/xlunch/icons.conf | sort | uniq > /etc/xlunch/icons-new.conf; mv /etc/xlunch/icons-new.conf /etc/xlunch/icons.conf; done'
+When = PostTransaction
+NeedsTargets

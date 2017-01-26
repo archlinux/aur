@@ -1,12 +1,10 @@
 [Trigger]
 Operation = Install
-Operation = Remove
 Operation = Upgrade
 Type = File
 Target = usr/bin/xlunch
-Target = usr/share/applications/*
 
 [Action]
-Description = Generating xlunch icons.conf
+Description = Generating new xlunch icons.conf
 Exec = bin/sh -c 'xlunch-genconf > /etc/xlunch/icons.conf'
 When = PostTransaction
