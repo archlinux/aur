@@ -7,15 +7,6 @@ build_kernel_modules=false
 
 # Furthermore it is possible to build the package from a specific git commit by uncommenting the variable "_commit" and setting it to a valid commit. pkgrel should be bumped up too then.
 
-#pkgname=razer-drivers
-#arch=('any')
-#pkgver=0.0.0.1
-#pkgrel=1
-#package() {
-#echo "true"
-#}
-
-#if false; then # packages are in conflict until merged
 pkgbase=razer-drivers
 pkgname=('python-razer' 'razer-daemon' 'razer-driver-dkms')
 if $build_kernel_modules; then
@@ -116,4 +107,3 @@ package_razer-driver-arch() {
   find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 }
 fi
-#fi
