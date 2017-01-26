@@ -1,17 +1,17 @@
 # Maintainer: Manuel Mendez <mmendez534@gmail.com>
 # Submitter: Robin Martinjak <rob@kingofnerds.net>
 
+# vim:set ts=2 sw=2 et:
+
 pkgname=makeself
-pkgver=2.2.0
-pkgrel=3
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Utility to create self-extracting packages"
 arch=('any')
 url="http://megastep.org/makeself"
 license=('GPL')
 depends=('bash')
-makedepends=('lynx')
 source=("https://github.com/megastep/$pkgname/archive/release-$pkgver.tar.gz")
-sha256sums=('9c9d003e097d9c198433a05926e64d9b7cd330c7f10cb4e6048877d0a87de341')
 
 build() {
 	cd $srcdir/$pkgname-release-$pkgver
@@ -28,4 +28,4 @@ package() {
 	install -m755 makeself-header.sh $pkgdir/usr/share/$pkgname
 }
 
-# vim:set ts=2 sw=2 et:
+sha256sums=('e89ceeabc28246e62887177942adc9c466c9eab04809a2854eb42c6ce66630fa')
