@@ -1,9 +1,10 @@
-# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Maintainer: Javier Tia <javier dot tia at gmail dot com>
+# Old Maintainer: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Baurzhan Muftakhidinov <baurthefirst at gmail dot com>
 
 pkgname=libnotifymm
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ wrappers for libnotify"
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -13,12 +14,14 @@ url="http://www.gnome.org/"
 sha256sums=('bfe4b4411265d5bf437408735a37b6ad8e4da772eec1e2aa18792745e6a60954')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   CXXFLAGS="$CXXFLAGS -std=c++11" ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
+
+# vim:set ft=sh ts=2 sw=2 et:
