@@ -3,7 +3,7 @@
 
 _pkgname=socnetv
 pkgname=$_pkgname-git
-pkgver=2.0.r14.g46dd188
+pkgver=2.2.r5.gba5ddde
 pkgrel=1
 pkgdesc="Social Networks Analysis and Visualisation (Development version)"
 arch=('any')
@@ -13,12 +13,12 @@ depends=('qt5-base')
 makedepends=('git')
 provides=('socnetv-git')
 conflicts=('socnetv')
-source=("$_pkgname::git://git.code.sf.net/p/socnetv/git#branch=develop")
+source=("$_pkgname::git://github.com/socnetv/app.git")
 md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/$_pkgname"
-    git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+	git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
