@@ -1,0 +1,18 @@
+pkgbase = python-urwidtrees-git
+	pkgdesc = Tree widgets for urwid
+	pkgver = 1.0.2.r35.9142c59
+	pkgrel = 1
+	url = https://github.com/pazz/urwidtrees
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-sphinx
+	depends = python-urwid>=1.1.0
+	depends = python-mock
+	provides = python-urwidtrees
+	conflicts = python-urwidtrees
+	source = git+https://github.com/pazz/urwidtrees.git
+	sha256sums = SKIP
+
+pkgname = python-urwidtrees-git
+
