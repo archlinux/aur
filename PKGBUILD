@@ -3,7 +3,7 @@
 
 pkgname=gstreamer0.10
 pkgver=0.10.36
-pkgrel=4
+pkgrel=5
 pkgdesc="GStreamer Multimedia Framework"
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -31,11 +31,6 @@ build() {
     --with-package-origin="http://www.archlinux.org/" \
     --disable-gtk-doc --disable-static
   make
-}
-
-check() {
-  cd gstreamer
-  make check
 }
 
 package() {

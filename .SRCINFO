@@ -1,7 +1,7 @@
 pkgbase = gstreamer0.10
 	pkgdesc = GStreamer Multimedia Framework
 	pkgver = 0.10.36
-	pkgrel = 4
+	pkgrel = 5
 	url = http://gstreamer.com
 	arch = i686
 	arch = x86_64
