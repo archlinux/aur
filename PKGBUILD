@@ -3,8 +3,8 @@
 # Contributor: Étienne Deparis <etienne [at] depar [dot] is>
 
 pkgname=khal
-pkgver=0.9.0
-pkgrel=0
+pkgver=0.9.1
+pkgrel=1
 pkgdesc='CLI calendar application build around CalDAV'
 arch=('any')
 url='http://lostpackets.de/khal/'
@@ -14,9 +14,9 @@ depends=('python-urwid' "python-tzlocal>=1.0"
          "python-click>=3.2" 'python-configobj' "python-icalendar>=3.9.2" 'python-xdg'
          'python-pkginfo')
 optdepends=('python-setproctitle' 'vdirsyncer')
-checkdepends=('python-pytest' 'python-freezegun')
+checkdepends=('python-pytest' 'python-freezegun' 'vdirsyncer')
 source=("https://lostpackets.de/khal/downloads/khal-${pkgver}.tar.gz")
-sha256sums=('b9aa992a8ed1a5d816eeeff79256ad7edea591acdf16ae30e65bfdc3adef0f8d')
+sha256sums=('99ab487a2fd18f7ee54a50b288618596bad4a40a2d0dbddef9d4902be1953d97')
 
 prepare(){
   cd "$srcdir/$pkgname-$pkgver"
@@ -31,7 +31,6 @@ build() {
 }
 
 check() {
-  return 0
   cd "$srcdir/$pkgname-$pkgver"
 
   # When using a clean chroot,
