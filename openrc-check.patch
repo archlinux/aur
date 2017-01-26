@@ -1,0 +1,16 @@
+--- openresolv-3.8.1/configure	2016-05-19 16:06:35.000000000 +0530
++++ openresolv-3.8.1/configure.new	2017-01-26 20:56:30.843262243 +0530
+@@ -64,6 +64,13 @@ if [ -z "$RUNDIR" ]; then
+ 		RUNDIR=/var/run
+ 	fi
+ fi	
++if [ -z "$RESTARTCMD" ]; then
++	printf "Checking for OpenRC ... "
++	if [ -x /usr/bin/rc-service ]; then
++		RESTARTCMD="if /usr/bin/rc-service -e \1; then /usr/bin/rc-service \1 -- -Ds restart; fi"
++		echo "yes"
++	fi
++fi
+ 
+ : ${SED:=sed}
+ 
