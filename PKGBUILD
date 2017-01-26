@@ -3,7 +3,7 @@
 pkgname=rambox-bin
 _pkgname=rambox
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Free and Open Source messaging and emailing app that combines common web applications into one.'
 arch=('i686' 'x86_64')
 depends=('alsa-lib' 'bash' 'desktop-file-utils' 'gconf' 'gtk2' 'libnotify' 'libxtst' 'libxss' 'nss')
@@ -12,7 +12,7 @@ url='http://rambox.pro/'
 license=('MIT')
 source=("${_pkgname}.sh" "${_pkgname}.desktop" "${_pkgname}.png")
 source_i686=("https://github.com/saenzramiro/rambox/releases/download/$pkgver/rambox-$pkgver-ia32.tar.gz")
-source_x86_64=("https://github.com/saenzramiro/rambox/releases/download/$pkgver/rambox-$pkgver.tar.gz")
+source_x86_64=("https://github.com/saenzramiro/rambox/releases/download/$pkgver/rambox-$pkgver-x64.tar.gz")
 
 sha256sums=('ee2573d62b580e8ee584335534976396761b5da53a009bccb881b9cf6cb2041d'
             '61ad70a929c402e24c79b8868208310f9b3c4d7801db2b791af38293231ee524'
