@@ -1,17 +1,27 @@
-# Maintainer: Christopher Loen <christopherloen at gmail dot com>
-pkgname='python2-cfscrape'
-pkgver='1.6.4'
+# Maintainer: Caesim404 <caesim404 at gmail dot com>
+    
+pkgname=python2-cfscrape
+_pypiname=${pkgname/python2-/}
+pkgver=1.6.8
 pkgrel=1
-pkgdesc="A simple Python module to bypass Cloudflare's anti-bot page"
-arch=('x86_64')
-url='https://github.com/eudemonics/cloudget'
-license=('unknown')
-depends=('python2' 'python2-pip' 'python2-pyexecjs')
-source=('https://pypi.python.org/packages/35/b1/eb0f1d428d5d547a7fad7c0874d63a6ba1171ea6dbc7091eec9ecbb0c7cf/cfscrape-1.6.4.tar.gz')
-sha256sums=('86cd1e32c28db9a5b166f79c73eb89b798087c5ec80cf10adc2c2b430f8bd604')
+pkgdesc="A simple Python module to bypass Cloudflare's anti-bot page, using Requests"
+arch=(any)
+url="https://github.com/Anorov/cloudflare-scrape"
+license=(MIT)
+depends=(python2-requests python2-js2py)
+makedepends=(python2-setuptools)
+source=("https://files.pythonhosted.org/packages/source/${_pypiname::1}/${_pypiname}/${_pypiname}-${pkgver}.tar.gz"
+        "https://raw.githubusercontent.com/Anorov/cloudflare-scrape/master/LICENSE")
+md5sums=("481c7c386904cd75e1cb43decc1b662f"
+         "93d4804f061e05530be1a85b24185408")
 
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	pip2 install --isolated --root="${pkgdir}" --no-deps --ignore-installed .
+	cd "${srcdir}"
+	
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	
+	cd "${_pypiname}-${pkgver}"
+	
+	python2 setup.py install --root="$pkgdir" --optimize=1
 }
