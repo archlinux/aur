@@ -1,24 +1,162 @@
-From 14cd1000f23e5d450380efb51926132eba64f26e Mon Sep 17 00:00:00 2001
-From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+From 3605c5c714d9915beafc1d8a7e1360e20eb4980b Mon Sep 17 00:00:00 2001
+From: Dave Page <dpage@pgadmin.org>
 Date: Fri, 6 Jan 2017 12:11:35 +0100
 Subject: [PATCH] Simplify Server's python setup
 
-If the program name is set to match the venv's interpreter executable,
-Py_Initialize will set up sys.path to match the virtualenv.
-
-Use PySys_SetArgvEx to avoid the path getting modified further.
-
-Tested on Arch Linux using Python 2.7.13 and Python 3.6.
 ---
- runtime/Server.cpp | 221 ++++++++++++-----------------------------------------
- runtime/Server.h   |   6 +-
- 2 files changed, 52 insertions(+), 175 deletions(-)
+ runtime/BrowserWindow.cpp |   6 +-
+ runtime/ConfigWindow.cpp  |  16 +++-
+ runtime/ConfigWindow.h    |   6 +-
+ runtime/ConfigWindow.ui   |  22 ++++-
+ runtime/Server.cpp        | 227 +++++++++++-----------------------------------
+ runtime/Server.h          |   6 +-
+ runtime/pgAdmin4.cpp      |   6 +-
+ 7 files changed, 97 insertions(+), 192 deletions(-)
 
+diff --git a/runtime/BrowserWindow.cpp b/runtime/BrowserWindow.cpp
+index 4b96abe50c89b14c..6279cd4b303d8e06 100644
+--- a/runtime/BrowserWindow.cpp
++++ b/runtime/BrowserWindow.cpp
+@@ -1215,17 +1215,17 @@ void BrowserWindow::preferences()
+ 
+     ConfigWindow *dlg = new ConfigWindow();
+     dlg->setWindowTitle(QWidget::tr("Configuration"));
+-    dlg->setPythonPath(settings.value("PythonPath").toString());
++    dlg->setPythonExecutable(settings.value("PythonExecutable").toString());
+     dlg->setApplicationPath(settings.value("ApplicationPath").toString());
+     dlg->setModal(true);
+     ok = dlg->exec();
+ 
+-    QString pythonpath = dlg->getPythonPath();
++    QString pythonexecutable = dlg->getPythonExecutable();
+     QString applicationpath = dlg->getApplicationPath();
+ 
+     if (ok)
+     {
+-        settings.setValue("PythonPath", pythonpath);
++        settings.setValue("PythonExecutable", pythonexecutable);
+         settings.setValue("ApplicationPath", applicationpath);
+     }
+ }
+diff --git a/runtime/ConfigWindow.cpp b/runtime/ConfigWindow.cpp
+index 3fb1a2738eb89ec0..c31345bf08d06d88 100644
+--- a/runtime/ConfigWindow.cpp
++++ b/runtime/ConfigWindow.cpp
+@@ -17,6 +17,14 @@ ConfigWindow::ConfigWindow(QWidget *parent) :
+     ui(new Ui::ConfigWindow)
+ {
+     ui->setupUi(this);
++
++#ifdef PYTHON2
++    ui->pythonExecutableLineEdit->setPlaceholderText(
++                QString(QWidget::tr("The Python 2 executable to use (may be within a virtual environment)")));
++#else
++    ui->pythonExecutableLineEdit->setPlaceholderText(
++                QString(QWidget::tr("The Python 3 executable to use (may be within a virtual environment)")));
++#endif
+ }
+ 
+ ConfigWindow::~ConfigWindow()
+@@ -34,9 +42,9 @@ void ConfigWindow::on_buttonBox_rejected()
+     this->close();
+ }
+ 
+-QString ConfigWindow::getPythonPath()
++QString ConfigWindow::getPythonExecutable()
+ {
+-    return ui->pythonPathLineEdit->text();
++    return ui->pythonExecutableLineEdit->text();
+ }
+ 
+ QString ConfigWindow::getApplicationPath()
+@@ -45,9 +53,9 @@ QString ConfigWindow::getApplicationPath()
+ }
+ 
+ 
+-void ConfigWindow::setPythonPath(QString path)
++void ConfigWindow::setPythonExecutable(QString path)
+ {
+-    ui->pythonPathLineEdit->setText(path);
++    ui->pythonExecutableLineEdit->setText(path);
+ }
+ 
+ void ConfigWindow::setApplicationPath(QString path)
+diff --git a/runtime/ConfigWindow.h b/runtime/ConfigWindow.h
+index 0027a742aca7b762..c4487fcc6e97f354 100644
+--- a/runtime/ConfigWindow.h
++++ b/runtime/ConfigWindow.h
+@@ -26,10 +26,10 @@ public:
+     explicit ConfigWindow(QWidget *parent = 0);
+     ~ConfigWindow();
+ 
+-    QString getPythonPath();
++    QString getPythonExecutable();
+     QString getApplicationPath();
+ 
+-    void setPythonPath(QString path);
++    void setPythonExecutable(QString path);
+     void setApplicationPath(QString path);
+ 
+ private slots:
+@@ -38,7 +38,7 @@ private slots:
+ 
+ private:
+     Ui::ConfigWindow *ui;
+-    QString m_pythonpath, m_applicationpath;
++    QString m_pythonexecutable, m_applicationpath;
+ };
+ 
+ #endif // CONFIGWINDOW_H
+diff --git a/runtime/ConfigWindow.ui b/runtime/ConfigWindow.ui
+index 40d87be43803204a..8b379052a1da8cd0 100644
+--- a/runtime/ConfigWindow.ui
++++ b/runtime/ConfigWindow.ui
+@@ -29,14 +29,24 @@
+       <enum>QFormLayout::ExpandingFieldsGrow</enum>
+      </property>
+      <item row="0" column="0">
+-      <widget class="QLabel" name="pythonPathLabel">
++      <widget class="QLabel" name="pythonExecutableLabel">
++       <property name="sizeIncrement">
++        <size>
++         <width>0</width>
++         <height>1</height>
++        </size>
++       </property>
+        <property name="text">
+-        <string>Python Path</string>
++        <string>Python Executable</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+-      <widget class="QLineEdit" name="pythonPathLineEdit"/>
++      <widget class="QLineEdit" name="pythonExecutableLineEdit">
++       <property name="placeholderText">
++        <string>The python executable to use (may be within a virtual environment)</string>
++       </property>
++      </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="applicationPathLabel">
+@@ -46,7 +56,11 @@
+       </widget>
+      </item>
+      <item row="1" column="1">
+-      <widget class="QLineEdit" name="applicationPathLineEdit"/>
++      <widget class="QLineEdit" name="applicationPathLineEdit">
++       <property name="placeholderText">
++        <string>The directory containing pgAdmin4.py (do not include the file name)</string>
++       </property>
++      </widget>
+      </item>
+     </layout>
+    </item>
 diff --git a/runtime/Server.cpp b/runtime/Server.cpp
-index e5be20569faaf6c4..709819fa5fd9865a 100644
+index e5be20569faaf6c4..408ae62b6c4aea1c 100644
 --- a/runtime/Server.cpp
 +++ b/runtime/Server.cpp
-@@ -22,183 +22,78 @@
+@@ -22,183 +22,84 @@
  // App headers
  #include "Server.h"
  
@@ -68,11 +206,17 @@ index e5be20569faaf6c4..709819fa5fd9865a 100644
 +    QString binPath = venvBinPath.canonicalFilePath();
 +
 +    if (binPath.isEmpty())
-+      // Use default Python environment from PATH
-+      binPath.append("python");
++    {
++      // Use default Python environment from the config, or lastly, PATH
++      QSettings settings;
++      binPath.append(settings.value("PythonExecutable").toString());
++      if (binPath.isEmpty())
++          binPath.append("python");
++    }
 +    else
-+      // Ensure the python symlink is not resolved
++    {
 +      binPath.append("/python");
++    }
  
      // Python3 requires conversion of char  * to wchar_t *, so...
  #ifdef PYTHON2
@@ -200,7 +344,7 @@ index e5be20569faaf6c4..709819fa5fd9865a 100644
 -        Py_SetPythonHome(wcPythonHome);
 -#endif
 -    }
-+    Py_SetProgramName(m_pyAppName);
++    //Py_SetProgramName(m_pyAppName);
  
      Py_Initialize();
  
@@ -249,7 +393,7 @@ index e5be20569faaf6c4..709819fa5fd9865a 100644
  }
  
  bool Server::Init()
-@@ -258,33 +153,11 @@ void Server::run()
+@@ -258,33 +159,11 @@ void Server::run()
  
      // Run the app!
  #ifdef PYTHON2
@@ -300,6 +444,31 @@ index 8df8503bb553eca4..5cc51f3d8b3e1f9b 100644
  };
  
  #endif // SERVER_H
+diff --git a/runtime/pgAdmin4.cpp b/runtime/pgAdmin4.cpp
+index b1f470d811a7cfb1..d9a47178f0dbad16 100644
+--- a/runtime/pgAdmin4.cpp
++++ b/runtime/pgAdmin4.cpp
+@@ -111,17 +111,17 @@ int main(int argc, char * argv[])
+ 
+             ConfigWindow *dlg = new ConfigWindow();
+             dlg->setWindowTitle(QWidget::tr("Configuration"));
+-            dlg->setPythonPath(settings.value("PythonPath").toString());
++            dlg->setPythonExecutable(settings.value("PythonExecutable").toString());
+             dlg->setApplicationPath(settings.value("ApplicationPath").toString());
+             dlg->setModal(true);
+             ok = dlg->exec();
+ 
+-            QString pythonpath = dlg->getPythonPath();
++            QString pythonexecutable = dlg->getPythonExecutable();
+             QString applicationpath = dlg->getApplicationPath();
+ 
+             if (ok)
+             {
+-                settings.setValue("PythonPath", pythonpath);
++                settings.setValue("PythonExecutable", pythonexecutable);
+                 settings.setValue("ApplicationPath", applicationpath);
+                 settings.sync();
+             }
 -- 
 2.11.0
 
