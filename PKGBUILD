@@ -1,7 +1,7 @@
 # Maintainer: Hugo Courtial <hugo [at] courtial [not colon] me>
 pkgname=natron-plugins
-pkgver=234 
-pkgrel=2
+pkgver=358 
+pkgrel=1
 arch=("i686" "x86_64")
 pkgdesc="Extra OpenFX plugins for Natron"
 url="https://github.com/NatronVFX/natron-plugins"
