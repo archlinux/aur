@@ -1,0 +1,57 @@
+pkgbase = gstreamer0.10-ugly
+	pkgver = 0.10.19
+	pkgrel = 17
+	url = http://gstreamer.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = pkgconfig
+	makedepends = gstreamer0.10-base>=0.10.34
+	makedepends = libdvdread
+	makedepends = lame
+	makedepends = libmpeg2
+	makedepends = a52dec
+	makedepends = libmad
+	makedepends = libsidplay
+	makedepends = libcdio
+	makedepends = libx264
+	makedepends = x264
+	makedepends = opencore-amr
+	makedepends = git
+	source = git://anongit.freedesktop.org/gstreamer-sdk/gst-plugins-ugly#commit=d637756a8e569753e9869c2c0728288f5dbc5089
+	source = opencore-amr.patch
+	source = cdio-cd-text-api.patch
+	md5sums = SKIP
+	md5sums = d8feb6c99bfaff8be6b2c48ea4e98e47
+	md5sums = 6c1c665f864387f3a77d32231fedeaab
+
+pkgname = gstreamer0.10-ugly
+	pkgdesc = GStreamer Multimedia Framework Ugly plugin libraries
+	depends = gstreamer0.10-base>=0.10.34
+
+pkgname = gstreamer0.10-ugly-plugins
+	pkgdesc = GStreamer Multimedia Framework Ugly Plugins (gst-plugins-ugly)
+	groups = gstreamer0.10-plugins
+	depends = gstreamer0.10-ugly=0.10.19
+	depends = libdvdread
+	depends = lame
+	depends = libmpeg2
+	depends = a52dec
+	depends = libmad
+	depends = libsidplay
+	depends = libcdio
+	depends = libx264
+	depends = opencore-amr
+	conflicts = gstreamer0.10-dvdread
+	conflicts = gstreamer0.10-mpeg2dec
+	conflicts = gstreamer0.10-mad
+	conflicts = gstreamer0.10-lame
+	conflicts = gstreamer0.10-sidplay
+	conflicts = gstreamer0.10-a52dec
+	replaces = gstreamer0.10-dvdread
+	replaces = gstreamer0.10-mpeg2dec
+	replaces = gstreamer0.10-mad
+	replaces = gstreamer0.10-lame
+	replaces = gstreamer0.10-sidplay
+	replaces = gstreamer0.10-a52dec
+
