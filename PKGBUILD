@@ -1,7 +1,7 @@
 # Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
 
 pkgname=trizen
-pkgver=147.bf5198e
+pkgver=150.6e22eec
 pkgrel=1
 pkgdesc="Trizen's AUR Package Manager: A lightweight wrapper for AUR."
 arch=('any')
@@ -20,6 +20,7 @@ depends=(
          )
 
 optdepends=(
+            'perl-json-xs: faster JSON deserialization'
             'perl-term-readline-gnu: for better STDIN support'
            )
 
