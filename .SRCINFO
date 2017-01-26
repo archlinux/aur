@@ -1,9 +1,8 @@
 pkgbase = webjcs-git
 	pkgdesc = A level editor for Jazz Jackrabbit 2.
-	pkgver = 2017.01.21
-	pkgrel = 3
+	pkgver = r85.6310777
+	pkgrel = 1
 	url = https://github.com/daniel-j/webjcs
-	install = webjcs.install
 	arch = i686
 	arch = x86_64
 	arch = armv7h
