@@ -1,17 +1,17 @@
 pkgbase = lit
 	pkgdesc = Toolkit for developing, sharing, and running luvit/lua programs and libraries.
-	pkgver = 3.4.4
+	pkgver = 3.5.2
 	pkgrel = 1
 	url = https://github.com/luvit/lit
 	arch = any
 	license = Apache
 	makedepends = luvi
 	depends = luvi
-	noextract = lit-3.4.4.zip
+	noextract = lit-3.5.2.zip
 	options = !strip
-	source = lit-3.4.4.zip::https://lit.luvit.io/packages/luvit/lit/v3.4.4.zip
+	source = lit-3.5.2.zip::https://lit.luvit.io/packages/luvit/lit/v3.5.2.zip
 	source = fakeluvi
-	sha256sums = b3ae9b15ab1ab596d38c3bfbd8b61a901227625fb13603f996e60639e9597e4c
+	sha256sums = d4ffc525dea6d60d4a226767870e8990bf4efaabc300e7cf38481716efd9b653
 	sha256sums = c152cdc2d87b031302234b5b6b6047d34017119354fee312a81bb349989fbe7b
 
 pkgname = lit
