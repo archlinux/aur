@@ -2,7 +2,7 @@
 
 pkgname=zoom
 pkgver=2.0.81497.0116
-pkgrel=1
+pkgrel=2
 pkgdesc="Video Conferencing and Web Conferencing Service"
 arch=('i686' 'x86_64')
 license=('custom')
