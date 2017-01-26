@@ -4,8 +4,8 @@
 
 pkgbase=python-ipdb
 pkgname=(python-ipdb python2-ipdb)
-pkgver=0.10.1
-pkgrel=2
+pkgver=0.10.2
+pkgrel=1
 pkgdesc="IPython-enabled pdb"
 url="http://pypi.python.org/pypi/ipdb"
 makedepends=('python-setuptools' 'python2-setuptools' 'ipython' 'ipython2' 'git')
