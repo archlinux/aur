@@ -29,6 +29,6 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   make install DESTDIR="$pkgdir"
-  mkdir -p $pkgdir/etc/rules.d/
-  echo 'ACTION=="add", ATTR{idVendor}=="07cf", ATTR{idProduct}=="6101", MODE="0666"' > $pkgdir/etc/rules.d/60-casio-calculators-usb.rules
+  mkdir -p $pkgdir/etc/udev/rules.d/
+  echo 'ACTION=="add", ATTR{idVendor}=="07cf", ATTR{idProduct}=="6101", MODE="0666"' > $pkgdir/etc/udev/rules.d/60-casio-calculators-usb.rules
 }
