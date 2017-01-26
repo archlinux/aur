@@ -1,20 +1,21 @@
-# Maintainer: Boohbah <boohbah at gmail.com>
+# Maintainer: Olaf Leidinger <oleid@mescharet.de>
+# Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 # Contributor: Jonathan Chan <jyc@fastmail.fm>
 # Contributor: misc <tastky@gmail.com>
 # Contributor: NextHendrix <cjones12 at sheffield.ac.uk>
 
-pkgbase=linux-git
+pkgbase=linux-surface-pro-4-git
 _srcname=linux
-pkgver=4.10rc5.r0.g7a308bb3016f
+pkgver=4.9.r7.g8181ead45d71
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
-source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
+source=('git+https://gitlab.com/jimdigriz/linux.git#branch=mssp4'
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -22,7 +23,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
 sha256sums=('SKIP'
             'becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc'
             '356322a3fbb8c53d9d7002397537aa9614577ded430f27b6bc35793ba2e186f4'
-            '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7')
+            '6292681bf7aeead87d257f2fd95df1a2149effd5d5807aea40f0b1953e345efd')
 
 _kernelname=${pkgbase#linux}
 
@@ -41,15 +42,18 @@ prepare() {
     cat "${srcdir}/config" > ./.config
   fi
 
+  # Inject config changes to Arch's default config
+  cat <<'EOF' >> .config
+CONFIG_INTEL_IPTS=m
+CONFIG_BLK_DEV_NVME=y
+EOF
+
   # set localversion to git commit
   sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-${pkgver##*.}\"|g" ./.config
   sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
-
-  # get kernel version
-  make prepare
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
@@ -59,6 +63,9 @@ prepare() {
   #make oldconfig # using old config from previous kernel version
   make olddefconfig # old config from previous kernel, defaults for new options
   # ... or manually edit .config
+
+  # get kernel version
+  make prepare
 }
 
 build() {
@@ -68,7 +75,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules (git version)"
+  pkgdesc="The Linux kernel and modules for MS Surface Pro 4 (git version)"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=('linux')
@@ -107,8 +114,11 @@ _package() {
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
-  # remove the firmware
+  # remove the firmware but the Intel touch screen firmware
+  mv "${pkgdir}/lib/firmware/intel/ipts" "${pkgdir}"
   rm -rf "${pkgdir}/lib/firmware"
+  mkdir -p "${pkgdir}/lib/firmware/intel"
+  mv "${pkgdir}/ipts" "${pkgdir}/lib/firmware/intel"
   # make room for external modules
   ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
   # add real version for building modules and running depmod from post_install/upgrade
@@ -130,7 +140,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for Linux kernel (git version)"
+  pkgdesc="Header files and scripts for building modules for Linux kernel (Surface Pro 4 git version)"
   provides=('linux-headers')
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
@@ -255,7 +265,7 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)"
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel (Surface Pro 4 git version)"
   provides=('linux-docs')
 
   cd "${_srcname}"

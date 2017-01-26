@@ -1,0 +1,14 @@
+# mkinitcpio preset file for the 'linux-surface-pro-4-git' package
+
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux-surface-pro-4-git"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/initramfs-linux-surface-pro-4-git.img"
+#default_options=""
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/boot/initramfs-linux-surface-pro-4-git-fallback.img"
+fallback_options="-S autodetect"
