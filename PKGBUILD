@@ -7,7 +7,7 @@
 # Contributor: wertarbyte (original author of auto-disper and autorandr)
 
 pkgname=autorandr-git
-pkgver=r244.9b1ef49
+pkgver=1.0.r16.g855c18b
 pkgrel=1
 pkgdesc="Auto-detect the connect display hardware and load the appropiate X11 setup using xrandr. Formerly autodisper. No disper support."
 arch=('any')
@@ -38,7 +38,7 @@ sha256sums=('SKIP'
 pkgver() {
   cd "${srcdir}/${pkgname}"
   ( set -o pipefail
-    git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   ) 2>/dev/null
 }
