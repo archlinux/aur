@@ -22,6 +22,7 @@ pkgbase = firefox-beta-bin
 	depends = mime-types
 	depends = nss
 	depends = sqlite
+	depends = pulseaudio
 	optdepends = ffmpeg: H264/AAC/MP3 decoding
 	optdepends = libpulse: PulseAudio driver
 	optdepends = networkmanager: Location detection via available WiFi networks
