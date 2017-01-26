@@ -2,12 +2,12 @@
 
 pkgname=dooble-qt4
 pkgver=1.56c
-pkgrel=1
+pkgrel=2
 pkgdesc='A safe WebKit Web browser'
 url='http://dooble.sourceforge.net/'
 arch=('i686' 'x86_64')
 license=('custom:3-clause BSD')
-depends=('qtwebkit' 'libspoton=2015.06.17' "dooble-common=${pkgver}")
+depends=('qtwebkit' 'libspoton>=2015.06.17' "dooble-common=${pkgver}")
 makedepends=('qtwebkit' 'sed' 'coreutils')
 source=("dooble-${pkgver}.tar.gz::https://downloads.sourceforge.net/project/dooble/Version%20${pkgver}/Dooble.d.tar.gz?r=")
 sha256sums=('03b5bb0460aa8f4f731a47b70c571942a186fb0e7c4b74f546cef356be0afe6a')
