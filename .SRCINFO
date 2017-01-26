@@ -1,0 +1,13 @@
+pkgbase = python-distro
+	pkgdesc = A much more elaborate, renewed alternative implementation for Python's platform.linux_distribution()
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/nir0s/distro
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	source = https://github.com/nir0s/distro/archive/v1.0.2.tar.gz
+	sha512sums = bb78f18e95115d4db819af75e3deb1802d80bcec87cadae1f471b9a1b06d4099dce78b6b0b31c42c0e322a9b22e1b03e554b8c1e8c5f3da40423bf7b5e70c340
+
+pkgname = python-distro
+
