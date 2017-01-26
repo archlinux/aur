@@ -1,7 +1,7 @@
 pkgbase = discord-ptb
 	pkgdesc = All-in-one voice and text chat for gamers that's free and secure.
 	pkgver = 0.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://discordapp.com/
 	install = DiscordPTB.install
 	arch = x86_64

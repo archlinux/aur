@@ -6,7 +6,7 @@ _branch='-ptb'
 
 pkgname='discord-ptb'
 pkgver=0.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
 url='https://discordapp.com/'
@@ -46,7 +46,7 @@ package() {
   # Main binary
   install -d "${pkgdir}/usr/bin"
   #install "${srcdir}/Discord.sh" "${pkgdir}/usr/bin/discord"
-  ln -s "/opt/${pkgname}/DiscordCanary" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${pkgname}/DiscordPTB" "${pkgdir}/usr/bin/${pkgname}"
 
   # Create symbolic link to the icon
   install -d "${pkgdir}/usr/share/pixmaps"
