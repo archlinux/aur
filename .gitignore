@@ -1,0 +1,21 @@
+
+# Created by https://www.gitignore.io/api/arch,archlinuxpackages
+
+#!! ERROR: arch is undefined. Use list command to see defined gitignore types !!#
+
+### ArchLinuxPackages ###
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
+
+# End of https://www.gitignore.io/api/arch,archlinuxpackages
