@@ -1,9 +1,10 @@
 # Submbitter: Eric Bélanger <eric@archlinux.org>
-# Maintainer: McNoggins <gagnon88 (at) gmail (dot) com>
+# Contributor: McNoggins <gagnon88 (at) gmail (dot) com>
+# Maintainer: zoe <chp321 (at) gmail (dot) com>
 
 pkgname=qt3
 pkgver=3.3.8b
-pkgrel=9
+pkgrel=10
 epoch=1
 pkgdesc="A cross-platform application and UI framework"
 arch=('i686' 'x86_64')
