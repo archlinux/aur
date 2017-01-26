@@ -1,14 +1,15 @@
 # $Id: PKGBUILD 194370 2016-11-02 10:31:59Z alucryd $
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
+# Maintainer: zoe <chp321 [at] gmail [dot] com>
 
 pkgname=ffmpeg0.10
 pkgver=0.10.16
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
@@ -23,11 +24,10 @@ provides=('ffmpeg-compat'
           'libswresample.so' 'libavformat.so' 'libavfilter.so'
           'libavdevice.so')
 replaces=('ffmpeg-compat')
-source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2"{,.asc}
+source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2"
         'ffmpeg-0.10-libvpx-1.5.patch')
-validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
+#validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
 sha256sums=('e77823cbd58dfdb61f88059476070bc432d80e3821c14abcf804ef709d2f3fd1'
-            'SKIP'
             'd6797973889582b82b7c81b91a39c222e09b5ccf8a7e031c364ae1e9275a497d')
 
 prepare() {
