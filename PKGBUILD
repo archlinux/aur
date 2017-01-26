@@ -2,7 +2,7 @@
 
 pkgname=('conan')
 pkgver=0.18.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
 url="https://conan.io"
@@ -20,6 +20,12 @@ depends=('python-pyjwt>=1.4.0' 'python-pyjwt<1.5.0'
 source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz" "requests-2.13.0.patch")
 sha512sums=('c1ecfc47eb39d196871e957e1cd28e0d19ad1f5bd0ef2f9988818af469174256d537c77ef90a55842d47683b97c16ccbf8e5f0e0aec239c22fbd80b009daf265'
             'dda8b4a53c57dd888f5f28c7d4808fbdedb466e7f44e779baea4b19d613bd84001b7b7db4dc7c5698aeb1815b8a4496220a51abfe9476ab542f6f314b0f73c2a')
+
+prepare() {
+  cd $pkgname-$pkgver
+  patch -Np1 -i "${srcdir}/requests-2.13.0.patch"
+}
+      
 
 build() {
   cd "$srcdir/conan-$pkgver"
