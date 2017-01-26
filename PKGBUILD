@@ -2,26 +2,36 @@
 
 pkgname=rest
 pkgver=0.8.0
-pkgrel=1
-pkgdesc="A helper library for RESTful services."
+pkgrel=2
+pkgdesc="Helper library for RESTful services"
 arch=(i686 x86_64)
-url="http://www.gtk.org/"
-license=(GPL2)
-depends=(glib2 libxml2 'libsoup')
-makedepends=(gobject-introspection)
-source=(http://download.gnome.org/sources/$pkgname/${pkgver:0:3}/$pkgname-${pkgver}.tar.xz)
-sha256sums=('e7b89b200c1417073aef739e8a27ff2ab578056c27796ec74f5886a5e0dff647')
+url="https://wiki.gnome.org/Projects/Librest"
+license=(LGPL2.1)
+depends=(glib2 libxml2 libsoup)
+makedepends=(gobject-introspection gtk-doc git glib2-docs)
+_commit=47502e1f9444bef18e833c5f3a18e29a7945c0e8  # tags/0.8.0^0
+source=("git+https://git.gnome.org/browse/librest#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd librest
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd librest
+  NOCONFIGURE=1 ./autogen.sh
+}
 
 build() {
-  cd $pkgname-$pkgver
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc
+  cd librest
+  ./configure --prefix=/usr --sysconfdir=/etc --enable-gtk-doc
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd librest
   make DESTDIR="$pkgdir" install
 }
 
