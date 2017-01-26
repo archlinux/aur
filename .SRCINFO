@@ -1,12 +1,13 @@
 pkgbase = polybar-git
 	pkgdesc = A fast and easy-to-use status bar
-	pkgver = 3.0.0
-	pkgrel = 2
+	pkgver = 3.0.1
+	pkgrel = 1
 	url = https://github.com/jaagr/polybar
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	makedepends = python
 	makedepends = python2
 	makedepends = pkg-config
