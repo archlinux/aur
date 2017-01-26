@@ -8,7 +8,7 @@ pkgbase = t200ta-wifi
 	license = GPL
 	optdepends = networkmanager: awesome internet connections manager
 	optdepends = network-manager-applet: GUI and tray icon for networkmanager
-	source = https://github.com/DX37/T200TA/raw/master/libs/brcmfmac43340-sdio.txt
+	source = brcmfmac43340-sdio.txt
 	md5sums = fd635836716e71a543b2c134d01e0613
 
 pkgname = t200ta-wifi
