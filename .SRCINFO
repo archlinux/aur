@@ -1,0 +1,18 @@
+pkgbase = gopass
+	pkgdesc = The team password manager. Written in Go.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/justwatchcom/gopass
+	arch = x86_64
+	license = MIT
+	depends = xclip
+	depends = bash
+	depends = gnupg
+	depends = pwgen
+	provides = gopass=1.0.0-rc2
+	source_x86_64 = gopass-1.0.0-rc2-1-x86_64.pkg.tar.xz::https://www.moviecycle.com/gopass/releases/1.0.0-rc2/gopass-1.0.0-rc2-1-x86_64.pkg.tar.xz
+	md5sums_x86_64 = 4db30794ee65f204599a7e30bb880f29
+	sha256sums_x86_64 = 5825e8a608d9e94fe5315c60751964f80bd42dfc5ea5b21509ede32aeb78c3da
+
+pkgname = gopass
+
