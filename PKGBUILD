@@ -11,9 +11,9 @@ license=('LGPL')
 url="http://gstreamer.com"
 depends=('libxml2' 'glib2')
 makedepends=('intltool' 'pkgconfig' 'gobject-introspection' 'git')
-source=('https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-0.10.36.tar.xz'
-        tests-remove-silly-test_fail_abstract_new-check.patch
-        bison3.patch)
+source=("https://gstreamer.freedesktop.org/src/$_pkgname/$_pkgname-$pkgver.tar.xz"
+        "tests-remove-silly-test_fail_abstract_new-check.patch"
+        "bison3.patch")
 sha256sums=('9151aa108c177054387885763fa0e433e76780f7c5655c70a5390f2a6c6871da'
             'd3d3f4f04453831fdb4244bfe174a38c4e6f9f4da5c8c9050dcfa1a6097aad52'
             'ed154e280abf59b24d98a8ab0fe868b449b26aa61f7ae3813fab8ac615fcaefa')
