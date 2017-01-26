@@ -2,7 +2,7 @@
 
 pkgname=eslint-plugin-react
 pkgver=6.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='React specific linting rules for ESLint'
 arch=('any')
 url='https://github.com/yannickcr/eslint-plugin-react'
