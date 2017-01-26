@@ -1,0 +1,14 @@
+pkgbase = php-codesniffer-drupalsecure
+	pkgdesc = Secure coding validation tool for Drupal built on PHP_CodeSniffer and modeled after work on DrupalCS in the Coder module
+	pkgver = r3.782f704
+	pkgrel = 1
+	url = https://www.drupal.org/sandbox/coltrane/1921926
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = php-codesniffer
+	source = secure_cs::git+https://git.drupal.org/sandbox/coltrane/1921926.git
+	md5sums = SKIP
+
+pkgname = php-codesniffer-drupalsecure
+
