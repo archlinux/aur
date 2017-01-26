@@ -7,6 +7,7 @@ pkgbase = eslint-plugin-react
 	license = MIT
 	makedepends = npm
 	depends = nodejs
+	depends = eslint
 	noextract = eslint-plugin-react-6.8.0.tgz
 	source = http://registry.npmjs.org/eslint-plugin-react/-/eslint-plugin-react-6.8.0.tgz
 	md5sums = SKIP
