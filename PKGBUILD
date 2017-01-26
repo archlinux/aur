@@ -24,6 +24,6 @@ build() {
 
 package() {
   mkdir -p ${pkgdir}/opt
-  cp -a ${srcdir} ${pkgdir}/opt/cbang
+  cp -a ${srcdir}/cbang "${pkgdir}/opt/${pkgname}"
 }
 
