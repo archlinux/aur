@@ -1,6 +1,6 @@
 pkgname=chakaracore
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="the core part of the Chakra Javascript engine that powers Microsoft Edge"
 arch=('any')
 url="https://github.com/Microsoft/ChakraCore"
@@ -19,5 +19,9 @@ build() {
 package() {
   cd "$srcdir/ChakraCore-${pkgver}/BuildLinux/Release"
   make DESTDIR="${pkgdir}" install
+  mkdir -p "${pkgdir}/usr/include"
+  mkdir -p "${pkgdir}/usr/lib"
+  cp "$srcdir/ChakraCore-${pkgver}/BuildLinux/Release/bin/ChakraCore/libChakraCore.so" "${pkgdir}/usr/lib"
+  cp "$srcdir/ChakraCore-${pkgver}/lib/Jsrt/"*.h "${pkgdir}/usr/include/."  
 }
 
