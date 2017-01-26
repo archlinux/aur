@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Subtitle Edit
 Comment=A subtitle editor
-Exec=/usr/bin/subtitleedit
+Exec=/usr/bin/subtitleedit %F
 Icon=/usr/share/pixmaps/subtitleedit.png
 Terminal=false
 Type=Application
