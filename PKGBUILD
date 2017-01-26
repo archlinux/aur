@@ -12,9 +12,9 @@ _channel=developer
 
 _release_year=2017
 _release_month=01
-_release_day=23
-_release_time=00-40-04
-_release_version=52.0a2
+_release_day=26
+_release_time=08-40-43
+_release_version=53.0a2
 
 pkgname="${_name}-${_channel}-de"
 pkgdesc='Standalone web browser from mozilla.org, developer build - German'
@@ -26,8 +26,7 @@ license=('MPL' 'GPL' 'LGPL')
 _file="${_name}-${_release_version}.de.linux-x86_64"
 _release_dir="${_release_year}-${_release_month}-${_release_day}-${_release_time}-mozilla-aurora-l10n"
 source=("firefox_$pkgver.tar.bz2::https://ftp.mozilla.org/pub/firefox/nightly/$_release_year/$_release_month/$_release_dir/$_file.tar.bz2"
-        "firefox_$pkgver.checksums::https://ftp.mozilla.org/pub/firefox/nightly/$_release_year/$_release_month/$_release_dir/$_file.checksums"
-        "firefox_$pkgver.checksums.asc::https://ftp.mozilla.org/pub/firefox/nightly/$_release_year/$_release_month/$_release_dir/$_file.checksums.asc"
+        "firefox_$pkgver.checksums.asc::https://ftp.mozilla.org/pub/firefox/nightly/$_release_year/$_release_month/$_release_dir/$_file.tar.bz2.asc"
         "firefox-$_channel.desktop"
         "vendor.js")
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 'sqlite' 'dbus-glib')
@@ -35,20 +34,6 @@ provides=(firefox-developer)
 conflicts=(firefox-developer)
 
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')
-
-prepare() {
-    # Check if the hash provided in this PKGBUILD equals the one provided and signed by upstream.
-    valid_hash=$(grep -e "sha512.*linux-x86_64\.tar\.bz2" "firefox_$pkgver.checksums" | cut -d " " -f1)
-    actual_hash=${sha512sums[0]}
-
-    if [ "$valid_hash" != "$actual_hash" ];
-    then
-        error "SHA512 hash in this PKGBUILD was not correctly signed."
-        exit 1
-    else
-        echo "SHA512 hash in this PKGBUILD was signed correctly."
-    fi
-}
 
 package() {
     install -d $pkgdir/{usr/{bin,share/{applications,pixmaps}},opt}
@@ -60,8 +45,7 @@ package() {
     install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
 }
 
-sha512sums=('e67ce9e91c15ff8982fd5ef38ffca0e5c632bf9243690c7a6acb4ea031656b7d09a6a4750394f532c4ef254b84775b57bd1391431a94ab3d89634fe9535e583d'
-            'cb83670630ad06110053edff88ba4d8a0542cddfa19bae4e38ffab11835327185e3485e13b21d35f2cf8435b7c2be841b7e305c61a8e8a84466c0b09fe83acf1'
+sha512sums=('cab601255cf79deac8c4da8a587afcff8b51276893dc0eed71cd4e847b286e8a14605512f85da975184532352d131a4310d5d157e4ec22713901ce29a7136c17'
             'SKIP'
             'b109b884ed79e9e214541750a0fcac8d7d8891cc7f0e0d472b717a5b71e569ab5852534bceaab045a5b13a9290a7905604d08fe97e28c675a2266c30fe719cb6'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')

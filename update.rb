@@ -5,7 +5,7 @@
 require 'date'
 require 'net/http'
 
-FF_VERSION = "52.0a2"
+FF_VERSION = "53.0a2"
 
 # Check current version.
 pkgbuild = File.read "PKGBUILD"
@@ -26,12 +26,12 @@ def attempt_upgrade (date)
 	request_url = URI "https://ftp.mozilla.org/pub/firefox/nightly/#{year}/#{month}/"
 	response = Net::HTTP.get(request_url)
 	search = %r~href="/(pub/firefox/nightly/#{year}/#{month}/#{year}-#{month}-#{day}-([0-9-]+)-mozilla-aurora-l10n/)"~
-	result = search.match response
-	return false if result.nil?
-	release_time = result[2]
+	matches = response.scan(search)
+	return false if matches.empty?
+	release_url, release_time = matches.max_by{|_, t| t}
 
 	# Check if the release actually exists (sometimes it's not included in the directory).
-	base_url = "https://ftp.mozilla.org/#{result[1]}"
+	base_url = "https://ftp.mozilla.org/#{release_url}"
 	filename = "firefox-#{FF_VERSION}.de.linux-x86_64.tar.bz2"
 	uri = URI(base_url + filename)
 	
