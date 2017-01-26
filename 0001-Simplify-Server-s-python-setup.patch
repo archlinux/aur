@@ -1,4 +1,4 @@
-From 038e787a61c37f3eebd75cf6bbc8e441ad5b7f91 Mon Sep 17 00:00:00 2001
+From 14cd1000f23e5d450380efb51926132eba64f26e Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Fri, 6 Jan 2017 12:11:35 +0100
 Subject: [PATCH] Simplify Server's python setup
@@ -10,15 +10,15 @@ Use PySys_SetArgvEx to avoid the path getting modified further.
 
 Tested on Arch Linux using Python 2.7.13 and Python 3.6.
 ---
- runtime/Server.cpp | 225 ++++++++++++-----------------------------------------
+ runtime/Server.cpp | 221 ++++++++++++-----------------------------------------
  runtime/Server.h   |   6 +-
- 2 files changed, 56 insertions(+), 175 deletions(-)
+ 2 files changed, 52 insertions(+), 175 deletions(-)
 
 diff --git a/runtime/Server.cpp b/runtime/Server.cpp
-index e5be20569faaf6c4..45fda0a1e3e55555 100644
+index e5be20569faaf6c4..709819fa5fd9865a 100644
 --- a/runtime/Server.cpp
 +++ b/runtime/Server.cpp
-@@ -22,183 +22,82 @@
+@@ -22,183 +22,78 @@
  // App headers
  #include "Server.h"
  
@@ -56,7 +56,6 @@ index e5be20569faaf6c4..45fda0a1e3e55555 100644
 +
 +    // Get the application directory
 +    QString appDir = qApp->applicationDirPath();
-+    QByteArray pathEnv = qgetenv("PATH");
 +
 +    // Build (and canonicalise) the virtual environment path
 +#ifdef Q_OS_MAC
@@ -68,15 +67,12 @@ index e5be20569faaf6c4..45fda0a1e3e55555 100644
 +#endif
 +    QString binPath = venvBinPath.canonicalFilePath();
 +
-+    // Prepend the bin directory to the path
-+    if (!pathEnv.isEmpty() && !pathEnv.startsWith(";"))
-+        pathEnv.prepend(";");
-+    pathEnv.prepend(binPath.toLocal8Bit());
-+
-+    qputenv("PATH", pathEnv);
-+
-+    // Ensure the python symlink is not resolved
-+    binPath.append("/python");
++    if (binPath.isEmpty())
++      // Use default Python environment from PATH
++      binPath.append("python");
++    else
++      // Ensure the python symlink is not resolved
++      binPath.append("/python");
  
      // Python3 requires conversion of char  * to wchar_t *, so...
  #ifdef PYTHON2
@@ -253,7 +249,7 @@ index e5be20569faaf6c4..45fda0a1e3e55555 100644
  }
  
  bool Server::Init()
-@@ -258,33 +157,11 @@ void Server::run()
+@@ -258,33 +153,11 @@ void Server::run()
  
      // Run the app!
  #ifdef PYTHON2

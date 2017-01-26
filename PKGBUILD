@@ -13,7 +13,7 @@ source=(https://ftp.postgresql.org/pub/pgadmin3/pgadmin4/v$pkgver/source/$pkgnam
         0001-Simplify-Server-s-python-setup.patch)
 sha256sums=('3c6a8bc6bf8db767786628d076c9ea89db8a76ed6ad0fb4e940d617d4476aba6'
             'SKIP'
-            'b5a5fcc458c05d5dd97527d7528f10b2af7b5accd0a31823aae2fd8b07518b9b')
+            '35755d1fc82ad59e90b37c8ac52a0031fb92d557002e6cb3724df78e2abe5f30')
 validpgpkeys=('E0C4CEEB826B1FDA4FB468E024ADFAAF698F1519')
 
 prepare() {
