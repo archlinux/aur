@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# coding: utf-8
 
 """
 pac - wrapper around pacaur to mimic yaourts search feature
@@ -17,10 +16,11 @@ __maintainer__ = 'Ricardo Band'
 __email__ = 'email@ricardo.band'
 
 import sys
+from typing import List
 from subprocess import call, run, PIPE
 
 
-def search(search_term: str) -> list:
+def search(search_term: str) -> List[dict]:
     """
     Search for the given terms using pacaur and return the results. The output of pacaur looks like this:
 
@@ -51,13 +51,14 @@ def search(search_term: str) -> list:
 
     """
     result: List[dict] = []
-    out: str = run(['pacaur', '-Ss', search_term], stdout=PIPE).stdout
+    out: str = run(['pacaur', '-Ss', search_term], stdout=PIPE).stdout.decode()
     entry: dict = {}
 
-    for line in out.decode().split('\n'):
+    for line in out.split('\n'):
         if line.startswith(' '):
             entry['description'] = line.strip()
             result.append(entry)
+            # create a new entry
             entry = {}
         elif line != '':
             l = line.split('/')
@@ -83,7 +84,7 @@ def search(search_term: str) -> list:
     return result
 
 
-def present(entries: list):
+def present(entries: List[dict]):
     """
     Present the list of entries with numbers in front of it. For each package it displays 2 lines like this:
 
@@ -121,7 +122,7 @@ def present(entries: list):
     print(f"{CYELLOW2}==>{CEND} {CBOLD}-------------------------------------------------------{CEND}")
 
 
-def parse_num(numbers: str):
+def parse_num(numbers: str) -> List[int]:
     """
     Takes a string like '1 2 3 6-8' and finds out which numbers the user wants. In this case 1,2,3,6,7,8.
     It can detect single digits or ranges seperated by space. A range must be given as from-to, where 'from' is always
@@ -140,10 +141,11 @@ def parse_num(numbers: str):
             result.append(int(n) - 1)
         else:
             sys.exit(f'{n} is not a number')
+
     return result
 
 
-def install(numbers: list, packages: list):
+def install(numbers: List[int], packages: List[dict]):
     """
     Gets the chosen packages and concatinates them. Then executes the pacaur command with the packages to install them.
     """
