@@ -1,7 +1,7 @@
 pkgbase = discord-canary
 	pkgdesc = Discord Canary linux release
 	pkgver = 0.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://discordapp.com/
 	install = DiscordCanary.install
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = discord-canary
 	depends = alsa-lib
 	depends = nspr
 	depends = nss
+	depends = libc++
 	optdepends = freetype2-infinality: If you have black screens with emojis install this.
 	optdepends = libpulse: For pulseaudio support
 	provides = discord-canary
