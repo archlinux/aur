@@ -1,0 +1,32 @@
+pkgbase = libgnome
+	pkgver = 2.32.1
+	pkgrel = 6
+	url = http://www.gnome.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = gnome-vfs
+	makedepends = libbonobo
+	makedepends = gconf
+	makedepends = gvfs
+	makedepends = libcanberra
+	options = !emptydirs
+	source = https://download.gnome.org/sources/libgnome/2.32/libgnome-2.32.1.tar.bz2
+	source = 0001-Don-t-use-G_DISABLE_DEPRECATED.patch
+	sha256sums = b2c63916866485793b87398266dd7778548c1734923c272a94d84ee011b6f7a4
+	sha256sums = c2521ed5985159b33a0a5bf53b89012abd9521391fc8ce4c9c73289ca18eb147
+
+pkgname = libgnome
+	pkgdesc = Common libraries for GNOME
+	depends = libgnome-data=2.32.1
+	depends = gnome-vfs
+	depends = libbonobo
+	depends = gconf
+	depends = gvfs
+	depends = libcanberra
+
+pkgname = libgnome-data
+	pkgdesc = Common data from libgnome
+	depends = gconf
+
