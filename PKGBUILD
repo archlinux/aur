@@ -3,7 +3,7 @@
 _name=netbox
 pkgname=${_name}
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="IP address management (IPAM) and data center infrastructure management (DCIM) tool."
 arch=('any')
 url="https://github.com/digitalocean/${_name}"
@@ -31,7 +31,8 @@ depends=('python'
          'python-py-gfm'
          'python-psycopg2'
          'python-sqlparse'
-         'python-xmltodict')
+         'python-xmltodict'
+				 'python-yaml')
 
 conflicts=("${_name}-git")
 replaces=("${_name}-git")
