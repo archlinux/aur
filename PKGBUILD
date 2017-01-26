@@ -10,7 +10,7 @@ options=('!strip')
 url="https://www.jetbrains.com/pycharm-edu/"
 provides=('pycharm-edu')
 license=('Apache')
-depends=('java-runtime-common' 'java-runtime' 'giflib' 'ttf-font')
+depends=('giflib' 'ttf-font' 'libxtst' 'libxslt')
 source=(https://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz
         'pycharm-edu.desktop')
 optdepends=('ipython2: For enhanced interactive Python shell v2'
