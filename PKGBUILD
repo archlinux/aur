@@ -2,7 +2,7 @@
 
 pkgname=eslint-plugin-promise
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Enforce best practices for JavaScript promises'
 arch=('any')
 url='https://github.com/xjamundx/eslint-plugin-promise'

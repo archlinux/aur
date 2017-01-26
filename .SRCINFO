@@ -1,7 +1,7 @@
 pkgbase = eslint-plugin-promise
 	pkgdesc = Enforce best practices for JavaScript promises
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xjamundx/eslint-plugin-promise
 	arch = any
 	license = MIT
