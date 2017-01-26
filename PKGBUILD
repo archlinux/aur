@@ -24,7 +24,7 @@ declare -rgA _system_libs=(
 )
 
 pkgname=chromium
-pkgver=55.0.2883.87
+pkgver=56.0.2924.76
 pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
@@ -35,7 +35,7 @@ depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libexif' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'perl' 'perl-file-basedir'
          'pciutils' 'desktop-file-utils' 'hicolor-icon-theme')
 depends+=(${_system_libs[@]})
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'git')
+makedepends=('gtk3' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'git')
 optdepends=('kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet')
@@ -43,16 +43,14 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
-        chromium-52.0.2743.116-unset-madv_free.patch
+        chromium-glib-2.24.patch
         chromium-system-ffmpeg-r4.patch
-        chromium-icu58.patch
         chromium-widevine.patch)
-sha256sums=('e81bd3140d9c84dfee04d9a94686dfe6a20ae79475d84f17154c5536dcb81a58'
+sha256sums=('cfb08e226b9c16ad887eb96d715a9cc4ab097d1a79e2e68c8749a7a4164b3c38'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
-            '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
+            '6953651c002efe7fca8cda3143e963037ed38a0a4bc7ccb79304637c45340047'
             'e3c474dbf3822a0be50695683bd8a2c9dfc82d41c1524a20b4581883c0c88986'
-            'fad964da0295a6a7b4393778e717ebdfd37dec33fe78beb2c639abd3973deb7a'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -72,13 +70,9 @@ prepare() {
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
 
-  # Build fixes from Gentoo
+  # Fixes from Gentoo
   patch -Np1 -i ../chromium-system-ffmpeg-r4.patch
-  patch -Np1 -i ../chromium-icu58.patch
-
-  # Disable MADV_FREE (if set by glibc)
-  # https://bugzilla.redhat.com/show_bug.cgi?id=1361157
-  patch -Np1 -i ../chromium-52.0.2743.116-unset-madv_free.patch
+  patch -Np1 -i ../chromium-glib-2.24.patch
 
   # Work around bug in blink in which GCC 6 optimizes away null pointer checks
   # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=833524
