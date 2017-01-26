@@ -1,24 +1,34 @@
 # Maintainer: Cayde Dixon <me@cazzar.net>
 # Contributor: Anthony Anderson <aantony4122@gmail.com>
 
+
+_branch='discord-canary'
+
 pkgname=discord-canary
 pkgver=0.0.14
-pkgrel=2
-pkgdesc='Discord Canary linux release'
+pkgrel=3
+pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
 url='https://discordapp.com/'
-provides=('discord-canary')
+provides=('discord')
 license=('custom')
 depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'libc++')
-optdepends=('freetype2-infinality: If you have black screens with emojis install this.' 'libpulse: For pulseaudio support' )
+optdepends=(
+  'libpulse: For pulseaudio support'
+  'noto-fonts-emoji: Google font for emoji support.'
+  'ttf-symbola: Font for emoji support.'
+)
 
 install="DiscordCanary.install"
-source=(DiscordCanary.desktop LICENSE DiscordCanary.sh)
-source_x86_64=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/discord-canary-${pkgver}.tar.gz") #This is always latest build, right now I do not know of a version param.
-sha256sums=('e554dbc5d8b4e6753e9a921336508d051af575c2d77b96be9e3f72a5f4ca837a'
-            '688f418cd32a682c6d331c211fedd48ff86ee8ba5a7640f589eadb32996af80f'
-            '912cb31b21023980614437b859bb11f39697108c0e9ca21778f81da8065a0815')
-sha256sums_x86_64=('30d83de7bee2afe6d1708bc4a9901dde5a011c6940e3b5c0b4b8b9f64c588874')
+source=(DiscordCanary.desktop LICENSE)
+source_x86_64=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/${_branch}-${pkgver}.tar.gz")
+md5sums=('2ff4b71f582b9d62eadbb487d4190d15'
+         '9a481caa5a223defd608f5505202f595')
+md5sums_x86_64=('01051d494f17a7028dae891292b8594f')
+
+
+
+#This is always latest build, right now I do not know of a version param.
 
 package() {
   # Install the main files.
@@ -35,9 +45,8 @@ package() {
 
   # Main binary
   install -d "${pkgdir}/usr/bin"
-  #ln -s "/opt/${pkgname}/DiscordCanary" "${pkgdir}/usr/bin/DiscordCanary"
-  #installing from .sh due to how the tar extracts.
-  install "${srcdir}/DiscordCanary.sh" "${pkgdir}/usr/bin/discord-canary"
+  #install "${srcdir}/Discord.sh" "${pkgdir}/usr/bin/discord"
+  ln -s "/opt/${pkgname}/DiscordCanary" "${pkgdir}/usr/bin/${pkgname}"
 
   # Create symbolic link to the icon
   install -d "${pkgdir}/usr/share/pixmaps"
