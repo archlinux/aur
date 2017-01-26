@@ -1,0 +1,16 @@
+pkgbase = python-pyjsparser
+	pkgdesc = Fast JavaScript parser (based on esprima.js)
+	pkgver = 2.4.5
+	pkgrel = 1
+	url = https://github.com/PiotrDabkowski/pyjsparser
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pyjsparser/pyjsparser-2.4.5.tar.gz
+	source = https://raw.githubusercontent.com/PiotrDabkowski/Js2Py/master/LICENSE.md
+	md5sums = 69a028f632baf7fe79fe2df253cbfd26
+	md5sums = faa744092d3fb3314632e815e7c3a560
+
+pkgname = python-pyjsparser
+
