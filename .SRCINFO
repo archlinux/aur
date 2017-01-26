@@ -1,7 +1,7 @@
 pkgbase = streamlink-git
 	pkgdesc = CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)
 	pkgver = 0.3.0.r18.g6400e04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://streamlink.github.io/
 	arch = any
 	license = BSD
@@ -12,7 +12,7 @@ pkgbase = streamlink-git
 	makedepends = python-sphinx
 	depends = python-iso3166
 	depends = python-iso639
-	depends = python-pycryptodome
+	depends = python-crypto
 	depends = python-requests
 	depends = rtmpdump
 	optdepends = ffmpeg: Required to play streams that are made up of separate audio and video streams, eg. YouTube 1080p+
@@ -20,7 +20,9 @@ pkgbase = streamlink-git
 	provides = streamlink
 	conflicts = streamlink
 	source = git+https://github.com/streamlink/streamlink.git
-	sha256sums = SKIP
+	source = https://src.fedoraproject.org/cgit/rpms/python-streamlink.git/plain/python-streamlink-0.3.0-pycrypto.patch
+	sha512sums = SKIP
+	sha512sums = 1c25435d71555f3e077a36ff203e1259d8a9921a6ec1b4c4c152a0330bf69f4961eeece15a968819967d6acdc6365736620a6a3d69348cf9f06d38efbe6fdcb3
 
 pkgname = streamlink-git
 
