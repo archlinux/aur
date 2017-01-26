@@ -1,0 +1,19 @@
+pkgbase = libbonoboui
+	pkgdesc = User Interface library for Bonobo
+	pkgver = 2.24.5
+	pkgrel = 3
+	url = http://www.gnome.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = intltool
+	makedepends = pkg-config
+	depends = libgnomecanvas
+	depends = libgnome
+	options = !emptydirs
+	source = https://download.gnome.org/sources/libbonoboui/2.24/libbonoboui-2.24.5.tar.bz2
+	sha256sums = fab5f2ac6c842d949861c07cb520afe5bee3dce55805151ce9cd01be0ec46fcd
+
+pkgname = libbonoboui
+
