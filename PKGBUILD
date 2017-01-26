@@ -7,7 +7,7 @@
 pkgname=dosbox-debug
 srcname=dosbox
 pkgver=0.74
-pkgrel=2
+pkgrel=3
 pkgdesc='Emulator with builtin DOS for running DOS games (includes debugger for DOS apps)'
 arch=('x86_64' 'i686')
 url='http://dosbox.sourceforge.net/'
@@ -27,8 +27,8 @@ md5sums=('b9b240fa87104421962d14eee71351e8'
 prepare() {
   cd "$srcdir"
 
-  gendesk --pkgname "$srcname" --pkgdesc "$pkgdesc" --exec "$srcname" --name "DOSBox"
-  gendesk --pkgname "$pkgname" --pkgdesc "$pkgdesc" --terminal=true --name "DOSBox (debug)"
+  gendesk -f --pkgname "$srcname" --pkgdesc "$pkgdesc" --exec "$srcname" --name "DOSBox"
+  gendesk -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --terminal=true --name "DOSBox (debug)"
 }
 
 build() {
