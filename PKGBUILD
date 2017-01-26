@@ -2,7 +2,7 @@
 pkgname=gimp-plugin-image-reg
 _srcname=gimp-image-reg
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Image registration plugin for the GIMP"
 arch=('i686' 'x86_64')
 url="http://registry.gimp.org/node/24248"
@@ -14,6 +14,7 @@ md5sums=('405b87140880de18d695173ee6b08981')
 
 build() {
   cd "$srcdir/${_srcname}-${pkgver}"
+  sed -i 's#^GIMP_PLUGIN_BINDIR=.*$#&\nGIMP_PLUGIN_BINDIR="/usr/lib/gimp/2.0/plug-ins"#' ./configure
   LIBS='-lm' ./configure --prefix=/usr
   make
 }
