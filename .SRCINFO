@@ -7,6 +7,7 @@ pkgbase = eslint-plugin-promise
 	license = MIT
 	makedepends = npm
 	depends = nodejs
+	depends = eslint
 	noextract = eslint-plugin-promise-3.4.0.tgz
 	source = http://registry.npmjs.org/eslint-plugin-promise/-/eslint-plugin-promise-3.4.0.tgz
 	md5sums = SKIP
