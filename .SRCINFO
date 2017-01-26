@@ -1,0 +1,21 @@
+pkgbase = gstreamer0.10-ffmpeg
+	pkgdesc = Gstreamer FFMpeg Plugin
+	pkgver = 0.10.13
+	pkgrel = 2
+	url = http://www.gstreamer.net
+	arch = i686
+	arch = x86_64
+	groups = gstreamer0.10-plugins
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = yasm
+	makedepends = sdl
+	makedepends = git
+	makedepends = gtk-doc
+	depends = gstreamer0.10-base
+	depends = bzip2
+	source = git://anongit.freedesktop.org/gstreamer-sdk/gst-ffmpeg#commit=94e587b9182c6d2fde9a61c9def790c8047453c0
+	sha256sums = SKIP
+
+pkgname = gstreamer0.10-ffmpeg
+
