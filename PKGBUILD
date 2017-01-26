@@ -1,11 +1,12 @@
 # $Id: PKGBUILD 174746 2016-05-11 04:30:34Z fyan $
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: TDY <tdy@archlinux.info>
 # Contributor: Olaf Leidinger <leidola@newcon.de>
+# Maintainer: zoe <chp321 [at] gmail [dot] com>
 
 pkgname=perl-gtk2-imageview
 pkgver=0.05
-pkgrel=7
+pkgrel=8
 pkgdesc="Perl bindings to the GtkImageView image viewer widget"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Gtk2-ImageView/"
