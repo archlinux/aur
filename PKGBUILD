@@ -1,18 +1,17 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 
 pkgname=goodvibes
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Lightweight internet radio player"
 arch=('i686' 'x86_64')
 url="https://github.com/elboulangero/goodvibes"
 license=('GPL')
 depends=("glib2" "libsoup" "libxml2" "gst-plugins-base"
-         "gst-plugins-base-libs" "gtk3" "libnotify" "dbus"
-         "libkeybinder3")
-makedepends=("inkscape")
+         "gst-plugins-ugly" "gtk3" "libnotify" "dconf")
+makedepends=("inkscape" "libkeybinder3")
 source=("https://github.com/elboulangero/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('658abc4e08a7e7c47645c31950d2ee5416f5f531273596067bbfb893d58946c4')
+sha256sums=('730612e15f40886eba3b61e0a6cd138c51799a5f9f3848291547426ae14b3aca')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
