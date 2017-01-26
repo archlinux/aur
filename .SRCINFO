@@ -1,13 +1,13 @@
 pkgbase = python-muranoclient
 	pkgdesc = Python client library for Murano
-	pkgver = 0.11.1
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = http://docs.openstack.org/developer/python-muranoclient
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = git+https://git.openstack.org/openstack/python-muranoclient#tag=0.11.1
+	source = git+https://git.openstack.org/openstack/python-muranoclient#tag=0.12.0
 	sha256sums = SKIP
 
 pkgname = python-muranoclient

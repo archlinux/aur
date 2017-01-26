@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-muranoclient' 'python2-muranoclient')
-pkgver='0.11.1'
+pkgver='0.12.0'
 pkgrel='1'
 pkgdesc='Python client library for Murano'
 arch=('any')
