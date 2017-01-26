@@ -1,7 +1,7 @@
 pkgbase = blink
 	pkgdesc = A state of the art, easy to use SIP client
-	pkgver = 2.0.0
-	pkgrel = 3
+	pkgver = 3.0.1
+	pkgrel = 1
 	url = http://icanblink.com
 	arch = any
 	license = GPL3
@@ -11,11 +11,14 @@ pkgbase = blink
 	depends = python2-application
 	depends = python2-gmpy2
 	depends = python2-gnutls
-	depends = python2-pyqt
-	depends = python2-sipsimple
+	depends = python2-google-api-python-client
+	depends = python2-pyqt5
+	depends = python2-sipsimple>=3.1
 	depends = python2-zope-interface
-	source = https://github.com/AGProjects/blink-qt/archive/release-2.0.0/blink-qt-2.0.0.tar.gz
-	sha256sums = 28cb43a4030eed444c45af8bbc627b8fe60523847c1db53337f4d4ebbd8bca2a
+	depends = qt5-webkit
+	depends = qt5-svg
+	source = https://github.com/AGProjects/blink-qt/archive/release-3.0.1/blink-qt-3.0.1.tar.gz
+	sha256sums = 187bf7467c32c553f1f82660aeb8572cd9ff2bdbdf9ee7c83f731a78f76856df
 
 pkgname = blink
 

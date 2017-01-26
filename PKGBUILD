@@ -2,8 +2,8 @@
 
 pkgname='blink'
 _reponame='blink-qt'
-pkgver='2.0.0'
-pkgrel='3'
+pkgver='3.0.1'
+pkgrel='1'
 pkgdesc='A state of the art, easy to use SIP client'
 arch=('any')
 url='http://icanblink.com'
@@ -13,12 +13,15 @@ depends=('icu'
          'python2-application'
          'python2-gmpy2'
          'python2-gnutls'
-         'python2-pyqt'
-         'python2-sipsimple'
-         'python2-zope-interface')
+         'python2-google-api-python-client'
+         'python2-pyqt5'
+         'python2-sipsimple>=3.1'
+         'python2-zope-interface'
+         'qt5-webkit'
+         'qt5-svg')
 
 source=("https://github.com/AGProjects/${_reponame}/archive/release-${pkgver}/${_reponame}-${pkgver}.tar.gz")
-sha256sums=('28cb43a4030eed444c45af8bbc627b8fe60523847c1db53337f4d4ebbd8bca2a')
+sha256sums=('187bf7467c32c553f1f82660aeb8572cd9ff2bdbdf9ee7c83f731a78f76856df')
 
 build() {
   cd ${srcdir}/${_reponame}-release-${pkgver}
