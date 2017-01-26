@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=prosody-mod-admin-web-hg
-pkgver=r2051.cb0fc00a7086
-pkgrel=2
+pkgver=r2463.e2d955f6167f
+pkgrel=1
 pkgdesc="A basic web administration interface for prosody."
 arch=('any')
 url="https://modules.prosody.im/mod_admin_web.html"
