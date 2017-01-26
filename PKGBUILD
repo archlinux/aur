@@ -6,7 +6,7 @@
 _pkgbase=nginx-mainline
 pkgbase=${_pkgbase}-addons
 pkgname=("${pkgbase}" "${_pkgbase}-full")
-pkgver=1.11.7
+pkgver=1.11.9
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -17,7 +17,7 @@ source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         service
         logrotate)
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
-md5sums=('2b4a4874b8fedbd5ba7829579d1f5973'
+md5sums=('7aeca793819c2b8df134c0b1cfe98361'
          'SKIP'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          'd6a6d4d819f03a675bacdfabd25aa37e')
