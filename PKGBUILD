@@ -33,6 +33,6 @@ build() {
 }
 
 package() {
-  install -Dm644 "${srcdir}/parallel_libretro.info" "${pkgdir}/usr/share/libretro/info/libretro-parallel.info"
-  install -Dm644 "${_gitname}/parallel_libretro.so" "${pkgdir}/usr/lib/libretro/libretro-parallel.so"
+  install -Dm644 "${srcdir}/parallel_libretro.info" "${pkgdir}/usr/share/libretro/info/parallel_libretro.info"
+  install -Dm644 "${_gitname}/parallel_libretro.so" "${pkgdir}/usr/lib/libretro/parallel_libretro.so"
 }
