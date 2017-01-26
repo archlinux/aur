@@ -1,20 +1,30 @@
 # Maintainer: Cayde Dixon <me@cazzar.net>
 # Contributor: Anthony Anderson <aantony4122@gmail.com>
 
-pkgname=discord-ptb
+
+_branch='-ptb'
+
+pkgname='discord-ptb'
 pkgver=0.0.1
-pkgrel=3
-pkgdesc='Discord PTB linux release'
+pkgrel=4
+pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
 url='https://discordapp.com/'
-provides=('discord-ptb')
+provides=('discord')
 license=('custom')
 depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss')
-optdepends=('freetype2-infinality: If you have black screens with emojis install this.' 'libpulse: For pulseaudio support' )
+optdepends=(
+  'libpulse: For pulseaudio support'
+  'noto-fonts-emoji: Google font for emoji support.'
+  'ttf-symbola: Font for emoji support.'
+)
 
 install="DiscordPTB.install"
-source=(DiscordPTB.desktop LICENSE DiscordPTB.sh)
-source_x86_64=("https://dl-ptb.discordapp.net/apps/linux/${pkgver}/discord-ptb-${pkgver}.tar.gz")
+source=(DiscordPTB.desktop LICENSE)
+source_x86_64=("https://dl${_branch}.discordapp.net/apps/linux/${pkgver}/discord${_branch}-${pkgver}.tar.gz")
+md5sums=('6a23b54347910ff151fce2023589b27e'
+         '9a481caa5a223defd608f5505202f595')
+md5sums_x86_64=('97c0b016d1aace174493cb18e949abd7')
 
 
 
@@ -35,9 +45,8 @@ package() {
 
   # Main binary
   install -d "${pkgdir}/usr/bin"
-  #ln -s "/opt/${pkgname}/DiscordCanary" "${pkgdir}/usr/bin/DiscordCanary"
-  #installing from .sh due to how the tar extracts.
-  install "${srcdir}/DiscordPTB.sh" "${pkgdir}/usr/bin/discord-ptb"
+  #install "${srcdir}/Discord.sh" "${pkgdir}/usr/bin/discord"
+  ln -s "/opt/${pkgname}/DiscordCanary" "${pkgdir}/usr/bin/${pkgname}"
 
   # Create symbolic link to the icon
   install -d "${pkgdir}/usr/share/pixmaps"
@@ -46,7 +55,3 @@ package() {
   # License
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-md5sums=('57dbf8949f99692919a5244a39998cc4'
-         '86acf3328debd24b95cdd037a276e059'
-         'f49fa4791d8feafeef470040fb16746d')
-md5sums_x86_64=('97c0b016d1aace174493cb18e949abd7')

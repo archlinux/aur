@@ -5,6 +5,6 @@ GenericName=Internet Messenger
 Exec=/usr/bin/discord-ptb
 Icon=/usr/share/pixmaps/discord-ptb.png
 Type=Application
-StartupNotify=true
+StartupNotify=false
 Categories=Network;InstantMessaging;
 StartupWMClass=discord
