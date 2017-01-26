@@ -1,0 +1,18 @@
+pkgbase = libgnomeui
+	pkgdesc = User Interface library for GNOME
+	pkgver = 2.24.5
+	pkgrel = 2
+	url = http://www.gnome.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = pkg-config
+	depends = libbonoboui
+	depends = libgnome-keyring
+	depends = libsm
+	source = https://download.gnome.org/sources/libgnomeui/2.24/libgnomeui-2.24.5.tar.bz2
+	sha256sums = ae352f2495889e65524c979932c909f4629a58e64290fb0c95333373225d3c0f
+
+pkgname = libgnomeui
+
