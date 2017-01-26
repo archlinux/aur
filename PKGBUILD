@@ -1,7 +1,7 @@
 # Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=scalafmt
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="code formatter for the Scala programming language"
 arch=(any)
@@ -17,5 +17,5 @@ package() {
   install -Dm755 $srcdir/scalafmt.sh                        $pkgdir/usr/bin/scalafmt
 }
 
-md5sums=('3bc54b7a408ef324c67cec81f555ad2e'
+md5sums=('bbea2f6ed64d5da04fc9a01c06d3da38'
          '85c5625e53067977576925c9dfc0c553')
