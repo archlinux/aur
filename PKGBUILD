@@ -8,9 +8,11 @@ arch=('x86_64' 'i686')
 license=('unknown')
 [[ "$CARCH" == "x86_64" ]] && depends=('mesa' 'gcc-libs-multilib')
 [[ "$CARCH" == "i686" ]] && depends=('lib32-libxext' 'lib32-libxcursor' 'lib32-glu')
-source=("http://ams4.dl.dbolical.com/dl/2596eb459ffebaf379f3f3d3902a0b8b/53330a40/2013/07/18/Monochroma_Kickstarter_Linux_Demo_v0.11.zip")
+#source=("http://ams4.dl.dbolical.com/dl/2596eb459ffebaf379f3f3d3902a0b8b/53330a40/2013/07/18/Monochroma_Kickstarter_Linux_Demo_v0.11.zip")
+source=("dlfrom://Monochroma_Kickstarter_Linux_Demo_v0.11.zip")
 md5sums=('4f33f384cd293c2ce448412a7eb52ca4')
 PKGEXT=".pkg.tar"
+DLAGENTS+=('dlfrom:://usr/bin/echo "Upstream is gone, please download the game file manually from www.moddb.com/games/monochroma/downloads/monochroma-linux-demo-v011 and save it to $(pwd)."')
 [[ "$CARCH" == "x86_64" ]] && _arch=x86_64 || _arch=x86
  
 package() {
