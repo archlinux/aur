@@ -3,8 +3,8 @@
 pkgbase=gridcoinresearch
 pkgname=('gridcoinresearch-daemon' 'gridcoinresearch-qt')
 pkgver=3.5.8.4
-pkgrel=1
-pkgdesc="Gridcoin P2P Cryptocurrency"
+pkgrel=2
+pkgdesc="GridCoin is a cryptocurrency that helps science via BOINC"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://gridcoin.us"
 license=('custom:gridcoin')
@@ -41,7 +41,7 @@ build() {
 }
 
 package_gridcoinresearch-daemon() {
-  pkgdesc="GridCoin is a PoS-based cryptocurrency - Daemon"
+  pkgdesc="GridCoin is a cryptocurrency that helps science via BOINC - Daemon"
   depends=('boost-libs' 'libzip' 'miniupnpc' 'curl' 'boinc')
   install=gridcoin.install
 
@@ -52,7 +52,7 @@ package_gridcoinresearch-daemon() {
 }
 
 package_gridcoinresearch-qt() {
-  pkgdesc="GridCoin is a PoS-based cryptocurrency - Qt"
+  pkgdesc="GridCoin is a cryptocurrency that helps science via BOINC - Qt"
   depends=('boost-libs' 'qrencode' 'qt5-base' 'libzip' 'miniupnpc' 'curl' 'boinc')
   install=gridcoin.install
 
