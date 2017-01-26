@@ -1,0 +1,28 @@
+diff -up openssl-1.0.2a/crypto/x509/by_file.c.x509 openssl-1.0.2a/crypto/x509/by_file.c
+--- openssl-1.0.2a/crypto/x509/by_file.c.x509	2015-04-09 18:16:29.365456157 +0200
++++ openssl-1.0.2a/crypto/x509/by_file.c	2015-04-09 18:16:26.398387618 +0200
+@@ -152,9 +152,12 @@ int X509_load_cert_file(X509_LOOKUP *ctx
+                 }
+             }
+             i = X509_STORE_add_cert(ctx->store_ctx, x);
+-            if (!i)
+-                goto err;
+-            count++;
++            /* ignore any problems with current certificate 
++               and continue with the next one */
++            if (i)
++                count++;
++            else
++                ERR_clear_error();
+             X509_free(x);
+             x = NULL;
+         }
+@@ -167,7 +170,7 @@ int X509_load_cert_file(X509_LOOKUP *ctx
+         }
+         i = X509_STORE_add_cert(ctx->store_ctx, x);
+         if (!i)
+-            goto err;
++            ERR_clear_error();
+         ret = i;
+     } else {
+         X509err(X509_F_X509_LOAD_CERT_FILE, X509_R_BAD_X509_FILETYPE);

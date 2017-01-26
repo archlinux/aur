@@ -1,7 +1,7 @@
 # Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Filip Brcic <brcha@gna.org>
 pkgname=mingw-w64-openssl
-_ver=1.0.2j
+_ver=1.0.2k
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=1
 pkgdesc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (mingw-w64)"
@@ -12,13 +12,13 @@ options=(!strip !buildflags staticlibs !emptydirs)
 license=("custom:BSD")
 url="http://www.openssl.org"
 source=("http://www.openssl.org/source/openssl-$_ver.tar.gz"{,.asc}
-"openssl-0.9.6-x509.patch"
+"openssl-1.0.2a-x509.patch"
 "openssl-1.0.0a-ldflags.patch"
 "openssl-1.0.1-x32.patch"
 "openssl-1.0.2a-parallel-build.patch")
-md5sums=('96322138f0b69e61b7212bc53d5e912b'
+md5sums=('f965fc0bf01bf882b31314b61391ae65'
          'SKIP'
-         '990d027cc82ff8b2acffead24073d43c'
+         'c730f823023879de28513081aedbf06b'
          'dd616e53eba607f5ab46634f93d5c5a5'
          '7400927e547cd4c68d2af2fe0b322345'
          '7ea5aaac21cee0f89dfb58b03219caaa')
@@ -31,7 +31,7 @@ prepare() {
   patch -p1 -i ${srcdir}/openssl-1.0.0a-ldflags.patch
   patch -p1 -i ${srcdir}/openssl-1.0.2a-parallel-build.patch
   patch -p1 -i ${srcdir}/openssl-1.0.1-x32.patch
-  patch -p1 -i ${srcdir}/openssl-0.9.6-x509.patch
+  patch -p1 -i ${srcdir}/openssl-1.0.2a-x509.patch
   sed -i -e '/^"mingw"/ s/-fomit-frame-pointer -O3 -march=i486 -Wall/-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4/' Configure
   sed -i -e '/^"mingw64"/ s/-O3 -Wall/-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4/' Configure
 }
