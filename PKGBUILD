@@ -8,7 +8,7 @@ pkgdesc="JavaScript to Python translator & JavaScript interpreter written in 100
 arch=(any)
 url="https://github.com/PiotrDabkowski/Js2Py"
 license=(MIT)
-depends=(python-pyjsperser python-six python-tzlocal)
+depends=(python-pyjsparser python-six python-tzlocal)
 makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_pypiname::1}/${_pypiname}/${_pypiname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/PiotrDabkowski/Js2Py/master/LICENSE.md")
