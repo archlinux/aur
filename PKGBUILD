@@ -2,7 +2,7 @@
 # Contributor: eagletmt <eagletmt@gmail.com>
 pkgname=ttf-ricty
 pkgver=4.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Japanese TrueType font for developers by mixing Inconsolata and Migu 1M.'
 arch=('any')
 url='http://www.rs.tus.ac.jp/yyusa/ricty.html'
@@ -15,8 +15,8 @@ sha1sums=('c38475f680d1c0d648949a1e70722b5c31895690')
 
 build() {
   cd "$srcdir"
-  chmod +x ./ricty_generator.sh
-  ./ricty_generator.sh -dr0 /usr/share/fonts/TTF/{Inconsolata-Regular.ttf,Inconsolata-Bold.ttf,migu-1m-regular.ttf,migu-1m-bold.ttf}
+  chmod +x ./ricty_generator-${pkgver}.sh
+  ./ricty_generator-${pkgver}.sh -dr0 /usr/share/fonts/TTF/{Inconsolata-Regular.ttf,Inconsolata-Bold.ttf,migu-1m-regular.ttf,migu-1m-bold.ttf}
 }
 
 package() {
