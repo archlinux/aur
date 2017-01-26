@@ -1,0 +1,27 @@
+pkgbase = pogo-git
+	pkgdesc = Plays your music. Nothing else.
+	pkgver = 0.8.7.r44.gcced2a1
+	pkgrel = 1
+	url = https://github.com/jendrikseipp/pogo
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = pygtk
+	depends = gst-python
+	depends = python-mutagen
+	depends = python-dbus
+	depends = python-pillow
+	depends = gtk3
+	optdepends = libnotify: desktop notifications
+	optdepends = gnome-settings-daemon: GNOME media keys
+	optdepends = pulseaudio: PulseAudio support
+	optdepends = gst-plugins-good: PulseAudio support and good codecs
+	optdepends = gst-plugins-bad: additional codecs
+	optdepends = gst-plugins-ugly: additional codecs
+	optdepends = gst-libav: libav codec
+	conflicts = pogo
+	source = git+https://github.com/jendrikseipp/pogo.git
+	md5sums = SKIP
+
+pkgname = pogo-git
+
