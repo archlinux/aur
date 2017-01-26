@@ -1,14 +1,15 @@
-# Maintainer: Auguste Pop <auguste [at] gmail [dot] com>
+# Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
+# Submitter  : Auguste Pop <auguste [at] gmail [dot] com>
 
 pkgname=natch
-pkgver=2.5Beta
+pkgver=3.1
 pkgrel=1
 pkgdesc="A software solving chess proof games"
 arch=('i686' 'x86_64')
 url="http://natch.free.fr/Natch.html"
 license=('GPL2')
 source=("http://natch.free.fr/Natch/Natch-$pkgver.tar.gz")
-md5sums=('95065310b1d5ee2a9ebf85111c55399b')
+md5sums=('bb7b8a354af273b39ca7eee870ad1f03')
 
 build()
 {
