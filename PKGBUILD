@@ -2,7 +2,7 @@
 
 pkgname=('python-oslo-log' 'python2-oslo-log')
 pkgver='3.20.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Oslo Log library'
 arch=('any')
 url="https://pypi.python.org/pypi/oslo.log/$pkgver"
@@ -13,11 +13,15 @@ makedepends=('git' 'python-setuptools' 'python2-setuptools' 'python-pbr' 'python
              'python-debtcollector' 'python2-debtcollector' 'python-pyinotify' 'python2-pyinotify'
              'python-dateutil' 'python2-dateutil')
 checkdepends=('python-oslotest' 'python2-oslotest' 'python2-unittest2')
-source=("git+https://git.openstack.org/openstack/oslo.log#tag=$pkgver")
-md5sums=('SKIP')
+source=("git+https://git.openstack.org/openstack/oslo.log#tag=$pkgver"
+        '1640564d.patch')
+sha256sums=('SKIP'
+            '7692de02f8fd3411972d43505a78d23f0ccb6faa107ba3df7e511921372cb786')
 
 prepare() {
-  cp -a oslo.log{,-py2}
+  cd "$srcdir"/oslo.log
+  patch -p1 < "$srcdir"/1640564d.patch
+  cp -a "$srcdir"/oslo.log{,-py2}
 }
 
 build() {
