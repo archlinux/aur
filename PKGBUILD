@@ -4,7 +4,7 @@
 
 pkgname=gnome-perl
 pkgver=1.045
-pkgrel=4
+pkgrel=5
 pkgdesc="Perl bindings for libgnome"
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -29,7 +29,7 @@ package() {
 if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
 	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
 	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
-	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
+	depends+=('perl>=$_perlver_min" "perl<$_perlver_max')
 fi
 # template end;
 }

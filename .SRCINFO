@@ -1,7 +1,7 @@
 pkgbase = gnome-perl
 	pkgdesc = Perl bindings for libgnome
 	pkgver = 1.045
-	pkgrel = 4
+	pkgrel = 5
 	url = http://gtk2-perl.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -21,6 +21,5 @@ pkgname = gnome-perl
 	depends = gnome-vfs-perl
 	depends = libgnomeui
 	depends = perl
-	depends = perl>=
-	depends = perl<
+	depends = perl>=$_perlver_min" "perl<$_perlver_max
 
