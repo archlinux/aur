@@ -1,10 +1,11 @@
 # $Id: PKGBUILD 114533 2014-07-01 19:33:20Z jelle $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
+# Maintainer: zoe <chp32 [at] gmail [dot] com>
 
 pkgname=goocanvas1
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A cairo canvas widget for GTK+"
 arch=(i686 x86_64)
 url="http://live.gnome.org/GooCanvas"
