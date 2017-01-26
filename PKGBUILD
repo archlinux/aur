@@ -9,7 +9,7 @@ license=('GPL')
 provides=('dff-git')
 conflicts=('dff')
 groups=()
-depends=('qt4' 'python-pyqt4' 'python2-pyqt4' 'python2-magic' 'python2-apsw' 'python2-pillow' 'poppler-qt4' 'python2-poppler-qt4' 'ffmpeg' 'libbfio-git' 'libbde-git' 'libewf-git' 'libpff-git' 'libvshadow-git')
+depends=('qt4' 'python-pyqt4' 'python2-pyqt4' 'python2-magic' 'python2-apsw' 'python2-pillow' 'poppler-qt4' 'python2-poppler-qt4' 'ffmpeg' 'libbfio-git' 'libbde-git' 'libewf-git' 'libpff-git' 'libvshadow-git' 'fuse')
 makedepends=('autoconf' 'automake' 'libtool' 'gettext' 'pkg-config' 'bison' 'flex' 'swig' 'tre' 'pkg-config' 'libbfio-git' 'libbde-git' 'libewf-git' 'libpff-git' 'libvshadow-git' 'git' 'cmake')
 optdepends=(
   'python2-pefile: PE files support'

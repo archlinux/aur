@@ -36,6 +36,7 @@ pkgbase = dff-git
 	depends = libewf-git
 	depends = libpff-git
 	depends = libvshadow-git
+	depends = fuse
 	optdepends = python2-pefile: PE files support
 	optdepends = reglookup: registry hives support
 	optdepends = volatility: volatile memory support
