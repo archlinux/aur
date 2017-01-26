@@ -8,7 +8,7 @@
 
 _pkgname=gitlab
 pkgname=${_pkgname}-ee
-pkgver=8.16.1
+pkgver=8.16.2
 pkgrel=1
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/gitlab-org/gitlab-ee/r
         nginx-ssl.conf.example
         lighttpd.conf.example)
 install='gitlab.install'
-sha512sums=('b65642decc6ca8cb275f07208b7c8a883ae925061bcbc53caf75f3cb83377b30136b24b016ecc964017f1bb1145ee3103cebfa835cbc4a2e93835744a7a9b26f'
+sha512sums=('fec12dba08e266d4e182179be39c767a6777ad76edba62c39935b23827337cb9bde3c6ca568be432a026a18aad97d7933d310d5be2fa93329f5d19c2d7fe1f84'
             '56cce150645ef74fa42a6100c8bc7689c4012579e1f3ba237c06c367b121246b39e968044615fa21c4757bc8e9d06f37f8ac8d39aa8b808c758e716857553f66'
             '52651e4a5dd2d632e31b7275283f9b8ab2c32c4d56b63d17bd843f300e273e382e339e5aed66222b1b2279273357cbb73aa38119f04784fe380d1550346f1ff3'
             '79cfb8ee740ab30f970c3113659b8349128abeae5e32cc81bb905f89a6db9941b7778040a094b884262daf020f66a1aee49a12d34fbb94efce6ade946bb4625b'
@@ -172,6 +172,7 @@ package() {
   # Fix for ruby-2.3 and bundle-2.3
   sed -i "s|bundle|bundle-2.3|g" "${pkgdir}${_datadir}/lib/tasks/gitlab/check.rake"
   grep -rl "bin/env ruby" "${pkgdir}${_datadir}" | xargs sed -i "s|bin/env ruby$|bin/env ruby-2.3|g"
+  grep -rl "bin/env rake" "${pkgdir}${_datadir}" | xargs sed -i "s|bin/env rake$|bin/env rake-2.3|g"
 
   # Install config files
   for config_file in application.rb gitlab.yml unicorn.rb resque.yml; do
