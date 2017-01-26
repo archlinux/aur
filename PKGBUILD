@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-manilaclient' 'python2-manilaclient')
-pkgver='1.11.0'
+pkgver='1.13.0'
 pkgrel='1'
 pkgdesc='Python client library for Manila'
 arch=('any')

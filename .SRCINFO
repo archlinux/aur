@@ -1,13 +1,13 @@
 pkgbase = python-manilaclient
 	pkgdesc = Python client library for Manila
-	pkgver = 1.11.0
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = http://docs.openstack.org/developer/python-manilaclient
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = git+https://git.openstack.org/openstack/python-manilaclient#tag=1.11.0
+	source = git+https://git.openstack.org/openstack/python-manilaclient#tag=1.13.0
 	md5sums = SKIP
 
 pkgname = python-manilaclient
