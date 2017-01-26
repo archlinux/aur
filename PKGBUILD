@@ -19,6 +19,7 @@ source=("http://download.kde.org/stable/plasma/$pkgver/oxygen-fonts-$pkgver.tar.
 sha256sums=('a02f6580e9a53cb16694a99adbb6dbf76f17584f3e97f469a22286299507838c')
 
 prepare() {
+  [[ -d build ]] && rm -rf build
   mkdir build
 }
 
