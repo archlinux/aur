@@ -1,0 +1,18 @@
+pkgbase = python-iso3166
+	pkgdesc = Self-contained ISO 3166-1 country definitions.
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/deactivated/python-iso3166
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = iso3166-0.7.zip::https://github.com/deactivated/python-iso3166/archive/master.zip
+	sha256sums = 462304b5eb53453d13c6ab2adb3d4a57aad01f4b190b01abc27af5ccede35f40
+
+pkgname = python-iso3166
+	depends = python
+
+pkgname = python2-iso3166
+	depends = python2
+
