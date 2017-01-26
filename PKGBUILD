@@ -1,11 +1,12 @@
 # $Id: PKGBUILD 174744 2016-05-11 04:23:20Z fyan $
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Shanto <shanto@hotmail.com>
 # Contributor: TDY <tdy@gmx.com>
+# Maintainer: zoe <chp321 [at] gmail [dot] com>
 
 pkgname=perl-goo-canvas
 pkgver=0.06
-pkgrel=7
+pkgrel=8
 pkgdesc="Perl bindings for GooCanvas"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Goo-Canvas/"
