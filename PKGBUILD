@@ -4,7 +4,7 @@ pkgname=php56-memcache
 _pkgbase="${pkgname#php56-}"
 _phpbase="${pkgname#-memcache}"
 pkgver=3.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Memcache module for php56"
 arch=('i686' 'x86_64')
 url="https://pecl.php.net/package/memcache"
@@ -12,7 +12,7 @@ license=('PHP')
 provides=("php-memcache=${pkgver}-${pkgrel}")
 depends=('php56>=5.6.17-3')
 checkdepends=('memcached')
-CFLAGS+='-std=gnu89'
+CFLAGS+=' -std=gnu89'
 backup=('etc/php56/conf.d/memcache.ini')
 install=php56-memcache.install
 source=(https://pecl.php.net/get/memcache-${pkgver}.tgz)
