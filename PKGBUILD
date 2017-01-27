@@ -3,7 +3,7 @@
 pkgname=python-pipfile
 pkgver=0.0.1
 pkgrel=1
-pkgdesc="An experimental project that aims to bring the best of all packaging worlds to the Python world."
+pkgdesc="Pipfile and its sister Pipfile.lock are a replacement for the existing standard pip's requirements.txt file."
 url="https://github.com/pypa/pipfile"
 license=('Apache' 'BSD')
 depends=('python' 'python-toml')
