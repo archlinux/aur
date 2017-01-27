@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=dcrspy-git
-pkgver=20160822
+pkgver=20161127
 pkgrel=1
 pkgdesc="Decred data monitor"
 arch=('i686' 'x86_64')
@@ -40,7 +40,7 @@ package() {
           -t "$pkgdir/usr/share/licenses/dcrspy"
 
   msg2 'Installing docs...'
-  for _doc in README.md TODO sample-dcrspy.conf; do
+  for _doc in README.md sample-dcrspy.conf; do
     install -Dm 644 "$srcdir/src/github.com/chappjc/dcrspy/$_doc" \
             -t "$pkgdir/usr/share/doc/dcrspy"
   done
