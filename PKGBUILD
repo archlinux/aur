@@ -5,11 +5,11 @@ pkgver=7.0.29566
 pkgrel=1
 pkgdesc='Issue tracker designed for development teams'
 arch=('i686' 'x86_64')
-options=('!strip')
 url='http://www.jetbrains.com/youtrack/'
 license=('Commercial')
-depends=('java-runtime')
+depends=('java-runtime-headless')
 backup=('etc/youtrack/youtrack.conf')
+options=('!strip')
 install=youtrack.install
 source=(youtrack.jar::https://download.jetbrains.com/charisma/${pkgname}-${pkgver}.jar
         youtrack.conf
