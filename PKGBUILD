@@ -24,8 +24,8 @@ pkgver() {
 }
 
 build() {
-    GOPATH="$srcdir" go build ${_gourl}/cmd/shadowsocks-server
-    GOPATH="$srcdir" go build ${_gourl}/cmd/shadowsocks-local
+    GOPATH="$srcdir" go install ${_gourl}/cmd/shadowsocks-server
+    GOPATH="$srcdir" go install ${_gourl}/cmd/shadowsocks-local
 }
 
 check() {
