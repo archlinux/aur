@@ -1,15 +1,10 @@
 # Maintainer: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
 
 # TODO:
-#       * why keymap change ?
 #       * systemd file
 #       * is this x86_64 and i386 (should be but go to test)?
-#       * add UDEV rules in /usr/lib
-#       * ask for gpg signature
-#       * test ?!
-#       * https://wiki.archlinux.org/index.php/Makepkg#CFLAGS.2FCXXFLAGS.2FCPPFLAGS_in_makepkg.conf_do_not_work_for_QMAKE_based_packages
+#       * Why my udev rules + udev controll--reload + udevadm trigger change my X keymap to US ?
 #       * make a git version ?
-#       * Why my udev rules + udev controll--reload + udevadm trigger change my X keymap to US
 pkgname=moolticute
 pkgver=0.5.2
 pkgrel=1
