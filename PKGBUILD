@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=albion-online-live-game-data-bin
-pkgver=1.0.307.71647
+pkgver=1.0.307.72278
 pkgrel=1
 pkgdesc="The first true cross-platform Sandbox MMO -- game data files for live server"
 url="https://albiononline.com/"
@@ -12,7 +12,7 @@ source=("https://live.albiononline.com/autoupdate/albiononline-linux-full-${pkgv
 noextract=("albiononline-linux-full-${pkgver}.zip")
 
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
-md5sums=('0b1b5eac553673d0880192762981d740'
+md5sums=('a551ca984e656ae1797874e535f03edd'
          '0bde53bc71f7d3f5fec295f156a34235')
 
 PKGEXT='.pkg.tar'
