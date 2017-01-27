@@ -3,7 +3,7 @@
 
 pkgbase=django-allauth
 pkgname=('python-django-allauth' 'python2-django-allauth')
-pkgver=0.28.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="Integrated set of Django applications addressing authentication, registration, account management as well as 3rd party (social) account authentication."
 arch=('any')
