@@ -1,13 +1,13 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=rivet
 pkgver=2.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A particle physics package for data analysis and validation of Monte Carlo event generators"
 arch=('x86_64' 'i686')
 url="http://rivet.hepforge.org"
 license=('GPL2')
 depends=('python2' 'yoda>=1.6.3' 'fastjet' 'gsl' 'hepmc')
-makedepends=('cython2' 'boost' 'autoconf' 'libtool' 'automake')
+makedepends=('cython2' 'autoconf' 'libtool' 'automake')
 source=(http://www.hepforge.org/archive/rivet/Rivet-$pkgver.tar.gz)
 md5sums=('c0ae99feaca25590a4e06ac56291e875')
 
