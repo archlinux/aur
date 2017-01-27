@@ -54,5 +54,6 @@ package() {
 	cd "${pkgname}-${pkgver}-beta/build/"
 
 	make INSTALL_ROOT="${pkgdir}/" install
-        install -Dm644 "${srcdir}/69-mooltipass.rules" "${pkgdir}/usr/lib/udev/rules.d/69-mooltipass.rules"
+        install -Dm644 "${srcdir}/69-mooltipass.rules" \
+                "${pkgdir}/usr/lib/udev/rules.d/69-mooltipass.rules"
 }
