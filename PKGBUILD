@@ -3,19 +3,24 @@
 
 _pkgname=iris
 pkgname=mopidy-${_pkgname}
-pkgver=2.10.17
+pkgver=2.11.2
 pkgrel=1
 pkgdesc='A Mopidy Web client that utilizes the Spotify and EchoNest frameworks. (Formerly Spotmop)'
 arch=('any')
 url="https://github.com/jaedb/${_pkgname}"
 license=('APACHE')
-depends=('python2' 'mopidy>=0.19' 'mopidy-spotify' 'python2-configobj' 'mopidy-local-images' 'python2-spotipy' 'python2-pylast')
-makedepends=('python2' 'python2-setuptools')
+depends=('python2' 'mopidy' 'mopidy-spotify' 'python2-configobj'
+         'mopidy-local-images' 'python2-spotipy' 'python2-pylast')
+makedepends=('python2' 'python2-setuptools' 'python2-pip')
 optdepends=('mopidy-local-sqlite: local library support')
-source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('7ccca0a25cd2608192f7ee076dcb67d0b60f368982f89dae5f15ec459fc53f3e')
+source=("https://files.pythonhosted.org/packages/source/M/Mopidy-Iris/Mopidy-Iris-${pkgver}.tar.gz")
+sha256sums=('30d7f4e597d51bc4737c58f80a22c96bfb720aaf85898cf154865537bbc3e37f')
 
 package() {
-  cd "${srcdir}/Iris-${pkgver}"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  cd "${srcdir}/Mopidy-Iris-${pkgver}"
+  PIP_CONFIG_FILE=/dev/null pip2 install \
+    --isolated \
+    --root="${pkgdir}" \
+    --ignore-installed \
+    --no-deps .
 }
