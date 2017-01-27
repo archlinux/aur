@@ -1,11 +1,11 @@
 [Unit]
 Description=Moolticute daemon
-Type=Simple
 
 [Service]
 ExecStart=/usr/bin/moolticuted
 KillMode=process
 Restart=always
+Type=simple
 
 [Install]
 WantedBy=multi-user.target
