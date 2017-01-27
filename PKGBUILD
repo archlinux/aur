@@ -2,8 +2,8 @@
 
 pkgname=brave-git
 _pkgname=browser-laptop
-pkgver=0.13.1.5004
-pkgrel=2
+pkgver=0.13.1.5162
+pkgrel=1
 pkgdesc="A web browser that stops ads and trackers by default. Master branch."
 arch=('x86_64') # Upstream supports x86_64 only
 url="https://www.brave.com/"
@@ -54,24 +54,17 @@ package() {
 
   install -d -m0755 "$pkgdir"/usr/lib
 
-  # Yes, btrfs, Thanks for asking. :-)
   cp -a --reflink=auto Brave-linux-x64 "$pkgdir"/usr/lib/brave
 
-  install -dm0755 "$pkgdir"/usr/bin
-
   install -Dm0755 "$srcdir"/brave "$pkgdir"/usr/bin/brave
-
-  install -dm0755 "$pkgdir"/usr/share/applications
 
   install -Dm0755 "$srcdir"/brave.desktop "$pkgdir"/usr/share/applications/brave.desktop
 
   install -Dm0644 res/app.png "$pkgdir"/usr/share/pixmaps/brave.png
 
-  install -dm0755 "$pkgdir"/usr/share/licenses/brave-git
+  install -Dm0755 LICENSE.txt "$pkgdir"/usr/share/licenses/brave-git/MPL2
 
-  cp --reflink=auto LICENSE.txt "$pkgdir"/usr/share/licenses/brave-git/MPL2
-
-  mv "$pkgdir"/usr/lib/brave/{LICENSE,LICENSES.chromium.html} "$pkgdir"/usr/share/licenses/brave-git/
+  cp -a --reflink=auto "$pkgdir"/usr/lib/brave/{LICENSE,LICENSES.chromium.html} "$pkgdir"/usr/share/licenses/brave-git/
 
   ln -s /usr/lib/PepperFlash "$pkgdir"/usr/lib/pepperflashplugin-nonfree 
 }
