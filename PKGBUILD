@@ -8,7 +8,7 @@ license=(MIT)
 depends=(python2-btchip python2-dnspython python2-ecdsa python2-jsonrpclib python2-ltc_scrypt
          python2-matplotlib python2-pbkdf2 python2-protobuf python2-pyqt4 python2-qrcode
          python2-requests python2-slowaes zbar)
-makedepends=(python2-pycurl python2-setuptools)
+makedepends=(gettext python2-pycurl)
 _commit=608df09
 source=($pkgname-$_commit.tar.gz::https://codeload.github.com/pooler/$pkgname/tar.gz/$_commit)
 sha256sums=(e8c63c5eb090edf23a156ec2317f7803c34102c121eac8a77e8d8ea567432f15)
