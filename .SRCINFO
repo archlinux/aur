@@ -1,0 +1,23 @@
+pkgbase = ttf-arphic-extra
+	pkgdesc = Extra fonts released under revised Arphic Public License for non-profit use only
+	pkgver = 20100309
+	pkgrel = 1
+	url = http://www.arphic.com/tw/index.htm
+	install = arphic.install
+	arch = any
+	license = custom:Arphic_Public_License_nonprofit
+	makedepends = unrar
+	depends = fontconfig
+	depends = xorg-font-utils
+	noextract = arplmingu20lt.rar
+	noextract = arplbaosong2gbklt.rar
+	noextract = public_license.rar
+	source = http://www.arphic.com/uploads/Download/font/arplmingu20lt.rar
+	source = http://www.arphic.com/uploads/Download/font/arplbaosong2gbklt.rar
+	source = http://www.arphic.com/uploads/Download/font/public_license.rar
+	sha256sums = 2e75608ef3208abc1d9d26b74d4f1e926c88534999b818bb1e3a19330c39ade2
+	sha256sums = 0cac44a3ec50303e374c040485e13a1ecf570c6d835504c50e064734b0300fbf
+	sha256sums = e20087a5f9b06008dd3639afdc81c469ea56514e11e4e6f849f547bfaa57684d
+
+pkgname = ttf-arphic-extra
+
