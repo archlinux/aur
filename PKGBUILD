@@ -2,7 +2,6 @@
 
 # TODO:
 #       * why keymap change ?
-#       * say user may want to trigger
 #       * systemd file
 #       * Rename moolticulte => moolticute :/
 #       * Moolticute or moolticulte?
