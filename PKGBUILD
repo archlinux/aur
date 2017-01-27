@@ -6,7 +6,7 @@ pkgdesc="Exceed on Demand Client from OpenText (x86_64)."
 arch=('x86_64')
 license=('custom')
 groups=()
-url=("http://connectivity.opentext.de/products/linux--und-unix-plattformen.aspx")
+url="http://connectivity.opentext.de/products/linux--und-unix-plattformen.aspx"
 source=("http://mimage.opentext.com/patches/connectivity/eod8/_ed0wn15/e0dc1n7/linux/eodclient8-${pkgver}-linux-x64.tar.gz")
 md5sums=('9145373848fc88cf35012e173aa18192')
 
