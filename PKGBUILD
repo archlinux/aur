@@ -14,8 +14,8 @@ makedepends=('go')
 _gourl=github.com/shadowsocks/shadowsocks-go
 
 prepare() {
-    GOPATH="$srcdir" go get -d -u ${_gourl}/cmd/shadowsocks-server
-    GOPATH="$srcdir" go get -d -u ${_gourl}/cmd/shadowsocks-local
+    GOPATH="$srcdir" go get -d -fix -v -x -u ${_gourl}/cmd/shadowsocks-server
+    GOPATH="$srcdir" go get -d -fix -v -x -u ${_gourl}/cmd/shadowsocks-local
 }
 
 pkgver() {
@@ -24,8 +24,8 @@ pkgver() {
 }
 
 build() {
-    GOPATH="$srcdir" go get -fix -v -x -u ${_gourl}/cmd/shadowsocks-server
-    GOPATH="$srcdir" go get -fix -v -x -u ${_gourl}/cmd/shadowsocks-local
+    GOPATH="$srcdir" go build ${_gourl}/cmd/shadowsocks-server
+    GOPATH="$srcdir" go build ${_gourl}/cmd/shadowsocks-local
 }
 
 check() {
