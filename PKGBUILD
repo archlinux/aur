@@ -10,7 +10,7 @@ url='https://github.com/zrax/string_theory'
 license=('MIT')
 makedepends=('cmake')
 source=("${_ghname}-${pkgver}.tar.gz::https://github.com/zrax/${_ghname}/archive/${pkgver}.tar.gz")
-sha256sums=('21bf616e970dbe9693b345987b04a1f92231e06f3b50691c76b5c020509f4cb5')
+sha256sums=('8eaf92d8b01b46bcc0e42f0404de5ed9319c2c69d77803c8b7ec5f8a3d583ff4')
 
 build() {
     mkdir -p "${srcdir}/build"
