@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=chakracore-cauldron-git
-pkgver=v1.4.0.r551.g0dd9cd340
+pkgver=v1.3.0.r1539.g979a9f3a
 pkgrel=1
 pkgdesc="the core part of the Chakra Javascript engine that powers Microsoft Edge-Cauldron fork"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('cmake'
 	'clang'
 	'icu')
-source=("https://github.com/CauldronDevelopmentLLC/ChakraCore")
+source=("git+https://github.com/CauldronDevelopmentLLC/ChakraCore.git")
 md5sums=('SKIP')
 
 pkgver() {
