@@ -5,7 +5,7 @@
 pkgname=gnomecanvas-perl
 _realname=Gnome2-Canvas
 pkgver=1.002
-pkgrel=14
+pkgrel=15
 pkgdesc="Gnome2-Canvas perl bindings for libgnomecanvas"
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -27,10 +27,10 @@ package() {
   make install DESTDIR="${pkgdir}"
 
 # template start; name=perl-binary-module-dependency; version=1;
-if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
-	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
-	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
-	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
-fi
+#if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
+#	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
+#	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
+#	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
+#fi
 # template end;
 }
