@@ -3,7 +3,6 @@
 # TODO:
 #       * why keymap change ?
 #       * systemd file
-#       * upload rules (+ check signature) + update udev rules
 #       * beta make  quiet hard to pkg
 #       * is this x86_64 and i386 (should be but go to test)?
 #       * add UDEV rules in /usr/lib
