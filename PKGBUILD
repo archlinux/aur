@@ -1,6 +1,6 @@
 # Maintainer: Joost Bremmer <toost dot b at gmail dot com >
 pkgname=steam-appmanifest-git
-pkgver=1.0.r5.gc690470
+pkgver=1.0.r15.g454e6da
 pkgrel=1
 pkgdesc="a short python script that tricks Steam for Linux into downloading non-Linux apps."
 arch=(any)
@@ -25,6 +25,7 @@ pkgver() {
 package() {
   cd "${srcdir}/${pkgname}"
   install -Dvm755 "steam-appmanifest.py" "${pkgdir}/usr/bin/steam-appmanifest"
+  install -Dvm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
