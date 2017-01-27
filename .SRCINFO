@@ -1,7 +1,7 @@
 pkgbase = asciiflow2-git
 	pkgdesc = ASCII flow chart editor
-	pkgver = r130.cfc0813
-	pkgrel = 1
+	pkgver = r132.f9e489c
+	pkgrel = 2
 	url = https://github.com/lewish/asciiflow2
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = asciiflow2-git
 	makedepends = asar
 	depends = electron>=1.4.0
 	provides = asciiflow2
-	source = asciiflow2::git+https://github.com/charliewolf/asciiflow2.git#branch=electron
+	source = asciiflow2::git+https://github.com/lewish/asciiflow2.git#branch=master
 	source = asciiflow2.sh
 	source = asciiflow2.desktop
 	sha256sums = SKIP

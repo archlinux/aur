@@ -1,11 +1,10 @@
 # Maintainer: Charlie Wolf <charlie@wolf.is>
 
-_branch=electron
-_github_fork=charliewolf
+_branch=master
 _pkgname=asciiflow2
 pkgname=${_pkgname}-git
-pkgver=r130.cfc0813
-pkgrel=1
+pkgver=r132.f9e489c
+pkgrel=2
 pkgdesc="ASCII flow chart editor"
 arch=('x86_64' 'i686')
 url="https://github.com/lewish/asciiflow2"
@@ -18,7 +17,7 @@ sha256sums=('SKIP'
 '8288ce0bfcb5701d540db69c8f22083fb7dc7fcb400f201b5f1fc756196759c4'
 'e062178509ae01a1ab2721291d668bf143471957c5a7f987a35db72a765bea40') 
 
-source=("asciiflow2::git+https://github.com/${_github_fork}/${_pkgname}.git#branch=${_branch}" "${_pkgname}.sh" "${_pkgname}.desktop")
+source=("asciiflow2::git+https://github.com/lewish/${_pkgname}.git#branch=${_branch}" "${_pkgname}.sh" "${_pkgname}.desktop")
 
 pkgver() {
   cd "$_pkgname"
