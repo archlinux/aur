@@ -1,8 +1,9 @@
 # Contributor: Yarema aka Knedlyk <yupadmin@gmail.com>
+# Maintainer: zoe <chp321 [at] gmail [dot] com>
 
 pkgname=radiotray
 pkgver=0.7.3
-pkgrel=7
+pkgrel=8
 commit=1717a0e8c143
 pkgdesc="An online radio streaming player that runs on a Linux system tray."
 arch=(any)
@@ -17,7 +18,7 @@ provides=(radiotray)
 source=(https://bitbucket.org/carlmig/radio-tray/get/${pkgname}-${pkgver}.tar.gz
 	encoding.patch
 	gtk.patch)
-conflicts=(radiotray-hg)
+conflicts=(radiotray-hg radiotray-python3-git)
 package() {
     cd $srcdir/carlmig-radio-tray-$commit
     patch -p1 < $srcdir/encoding.patch	|| return 1
