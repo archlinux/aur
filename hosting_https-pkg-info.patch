@@ -1,0 +1,14 @@
+diff --git a/hosting_https.info b/hosting_https.info
+index 965395b..3c2bea1 100644
+--- a/hosting_https.info
++++ b/hosting_https.info
+@@ -7,3 +7,9 @@ dependencies[] = hosting_certificate
+ core = 7.x
+ 
+ files[] = hosting_https.service.inc
++
++; Information added via an AUR patch on 2016-01-27
++version = "7.x-3.x"
++core = "7.x"
++project = "hosting_https"
++datestamp = "1485557017"

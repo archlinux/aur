@@ -1,0 +1,13 @@
+diff --git a/task.hosting.inc b/task.hosting.inc
+index 2c393ce..01c5a90 100644
+--- a/task.hosting.inc
++++ b/task.hosting.inc
+@@ -127,7 +127,7 @@ function drush_hosting_task() {
+     $hook = 'hosting_' . $task->ref->type . '_context_options';
+     foreach (module_implements($hook) as $module) {
+       $function = $module . '_' . $hook;
+-      call_user_func($function, $task);
++      call_user_func_array($function, array(&$task));
+     }
+ 
+     drush_invoke_process('@none', 'provision-save', array('@' . $task->ref->hosting_name), $task->context_options, array('method' => $mode, 'integrate' => TRUE));
