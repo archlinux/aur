@@ -1,0 +1,22 @@
+--- /usr/share/brother/Printer/dcp353c/lpd/filterdcp353c	2017-01-27 20:55:15.097436992 +0100
++++ /usr/share/brother/Printer/dcp353c/lpd/filterdcp353c	2017-01-27 20:58:27.990085683 +0100
+@@ -32,7 +32,18 @@
+ INPUT_TEMP=`mktemp /tmp/br_input.XXXXXX`
+ cat > $INPUT_TEMP
+ 
+-FILE_TYPE=`file $INPUT_TEMP | sed -e 's/^.*:[ ]*//' -e 's/[ ].*//'`
++# make a new extra tmp file I call INPUT_TEMP0
++INPUT_TEMP0=`mktemp /tmp/br_input.XXXXXX`
++
++# get the length of INPUT_TEMP in bytes and subtract 1
++LENGTH=`wc -c $INPUT_TEMP | cut -d' ' -f1`
++let LENGTH-=1
++
++# copy INPUT_TEMP to INPUT_TEMP0 minus that pesky EOT code
++head -c $LENGTH $INPUT_TEMP > $INPUT_TEMP0
++
++# change this line so it checks INPUT_TEMP0 instead of INPUT_TEMP
++FILE_TYPE=`file $INPUT_TEMP0 | sed -e 's/^.*:[ ]*//' -e 's/[ ].*//'`
+ 
+ #if [ "$FILE_TYPE" = "PostScript" -o "$FILE_TYPE" = "PDF" ] ; then
+ 	PSCONV_OP="$PAPER_INF $RCFILE"
