@@ -1,4 +1,4 @@
-# Maintainer: pavbaranov
+# Maintainer: auipga
 # Based on PKGBUILD by Maintainer: Libernux <dutchman55@gmx.com> for DCP135C
 pkgname="brother-dcp353c"
 pkgver="1.0.1"
@@ -37,8 +37,7 @@ prepare() {
 
     # patch
     # see https://bbs.archlinux.org/viewtopic.php?pid=940524#p940524
-    patch -Np1 -i "filterdcp353c.patch"
-#    patch -Np1 -i "${srcdir}/filterdcp353c.patch"
+    patch -Np1 -i "${srcdir}/filterdcp353c.patch"
 
     # setup cups-directories
     install -d $srcdir/usr/share/cups/model
