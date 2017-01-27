@@ -1,13 +1,13 @@
 pkgname=monodevelop-git-nuget3
 _pkgname=monodevelop
-pkgver=r47310
+pkgver=r48043
 _branch="master"
-pkgrel=1
+pkgrel=2
 pkgdesc="An IDE primarily designed for C# and other .NET languages - built from git sources. WARNING: building this package will require you to download >500 MB worth of data."
 arch=('any')
 url="http://www.monodevelop.com"
 license=('GPL')
-depends=('mono>=4.0.1' 'mono-addins>=0.6.2' 'gnome-sharp' 'hicolor-icon-theme' 'http-parser' 'curl' 'fsharp')
+depends=('mono>=4.0.1' 'mono-addins>=0.6.2' 'gtk-sharp-2' 'hicolor-icon-theme' 'http-parser' 'curl' 'fsharp')
 makedepends=('rsync' 'cmake' 'git' 'nuget3' 'mono-pcl')
 options=(!makeflags)
 optdepends=('xsp: To run ASP.NET pages directly from monodevelop')

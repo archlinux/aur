@@ -1,7 +1,7 @@
 pkgbase = monodevelop-git-nuget3
 	pkgdesc = An IDE primarily designed for C# and other .NET languages - built from git sources. WARNING: building this package will require you to download >500 MB worth of data.
-	pkgver = r47310
-	pkgrel = 1
+	pkgver = r48043
+	pkgrel = 2
 	url = http://www.monodevelop.com
 	arch = any
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = monodevelop-git-nuget3
 	makedepends = mono-pcl
 	depends = mono>=4.0.1
 	depends = mono-addins>=0.6.2
-	depends = gnome-sharp
+	depends = gtk-sharp-2
 	depends = hicolor-icon-theme
 	depends = http-parser
 	depends = curl
