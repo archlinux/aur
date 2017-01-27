@@ -1,6 +1,6 @@
 pkgbase = aegir
 	pkgdesc = Configuration for a dedicated Aegir server to host Drupal sites.
-	pkgver = 7.x_3.9_beta1
+	pkgver = 7.x_3.9
 	pkgrel = 1
 	url = http://aegirproject.org
 	install = aegir.install

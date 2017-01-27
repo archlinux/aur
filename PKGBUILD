@@ -1,7 +1,7 @@
 # Maintainer: James An <james@jamesan.ca>
 
 pkgname=aegir
-pkgver=7.x_3.9_beta1
+pkgver=7.x_3.9
 pkgrel=1
 pkgdesc="Configuration for a dedicated Aegir server to host Drupal sites."
 arch=('any')
@@ -63,22 +63,22 @@ package() {
     install -Dm644 php-fpm.systemd.conf "$pkgdir/usr/lib/systemd/system/php-fpm.service.d/aegir.conf"
 
     msg2 'Creating $pkgname directory structure'
-    install --directory --owner=http --group=http --mode=6775 "$pkgdir/etc/drush"{,/cache{,/{complete,default,download,usage}}}
-    install --directory --owner=http --group=http --mode=6775 "$pkgdir/var/lib/$pkgname"
-    install --directory --owner=http --group=http --mode=0700 "$pkgdir/var/lib/$pkgname/.ssh"{,/ctrl-sockets}
+    install --directory --owner=http --group=http --mode=ug=rwxs,o=rx "$pkgdir/etc/drush"{,/cache{,/{complete,default,download,usage}}}
+    install --directory --owner=http --group=http --mode=ug=rwxs,o=rx "$pkgdir/var/lib/$pkgname"
+    install --directory --owner=http --group=http --mode=u=rx "$pkgdir/var/lib/$pkgname/.ssh"{,/ctrl-sockets}
     mkdir -p "$pkgdir/srv/http" "$pkgdir/etc/skel"
     ln -s /etc/drush "$pkgdir/srv/http/.drush"
     ln -s /etc/drush "$pkgdir/etc/skel/.drush"
     ln -s /etc/drush "$pkgdir/var/lib/$pkgname/.drush"
     ln -s "/var/lib/$pkgname/.ssh" "$pkgdir/srv/http/.ssh"
-    umask 066
+    #~ umask 066
     mkdir -p "$pkgdir/var/lib/$pkgname/"{config{,/{includes,server_{localhost,master{,/nginx}}}},clients}
-    umask 077
+    #~ umask 077
     mkdir -p "$pkgdir/var/lib/$pkgname/"{backups,config/server_master/nginx/{platform,post,pre,subdir,platform,vhost}.d}
-    umask 027
+    #~ umask 027
     mkdir -p "$pkgdir/var/lib/$pkgname/"clients/admin
-    umask 007
-      mkdir -p "$pkgdir/var/lib/$pkgname/"config/self
+    #~ umask 007
+    mkdir -p "$pkgdir/var/lib/$pkgname/"config/self
     ln -s "/var/lib/$pkgname/config/server_master/nginx.conf"         "$pkgdir/var/lib/$pkgname/config/nginx.conf"
     ln -s "/var/lib/$pkgname/config/includes/nginx_vhost_common.conf" "$pkgdir/var/lib/$pkgname/config/includes/nginx_advanced_include.conf"
     ln -s "/var/lib/$pkgname/config/includes/nginx_vhost_common.conf" "$pkgdir/var/lib/$pkgname/config/includes/nginx_simple_include.conf"
