@@ -4,15 +4,13 @@
 pkgname=makemkv-cli
 pkgver=1.10.4
 pkgrel=1
-pkgdesc="DVD and Blu-ray to MKV converter and network streamer - CLI only"
+pkgdesc='DVD and Blu-ray to MKV converter and network streamer - CLI only'
 arch=('i686' 'x86_64')
-url="http://www.makemkv.com"
+url='http://www.makemkv.com'
 license=('LGPL' 'MPL' 'custom')
 depends=('ffmpeg')
+optdepends_x86_64=('lib32-glibc: dts support')
 conflicts=('makemkv')
-if [ "$CARCH" = "x86_64" ]; then
-  optdepends=('lib32-glibc: dts support')
-fi
 install=makemkv.install
 source=(${url}/download/makemkv-bin-${pkgver}.tar.gz
         ${url}/download/makemkv-oss-${pkgver}.tar.gz
