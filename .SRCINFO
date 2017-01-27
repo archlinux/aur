@@ -1,7 +1,7 @@
 pkgbase = python-viivakoodi
 	pkgdesc = Barcode generator for Python. Fork of pyBarcode project.
 	pkgver = 0.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/kxepal/viivakoodi
 	arch = any
 	license = MIT

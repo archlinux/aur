@@ -4,7 +4,7 @@ _pymodule=viivakoodi
 pkgbase=python-${_pymodule}
 pkgname=("python2-${_pymodule}" "python-${_pymodule}")
 pkgver=0.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Barcode generator for Python. Fork of pyBarcode project.'
 arch=('any')
 url="https://github.com/kxepal/${_pymodule}"
@@ -23,6 +23,13 @@ check() {
     done
 }
 
+build() {
+    cd "${srcdir}/${_pymodule}-${pkgver}"
+
+    python setup.py build
+    python2 setup.py build
+}
+
 package_python-viivakoodi() {
     depends=('python-setuptools')
     optdepends=('python-pillow: render barcodes as images')
@@ -30,7 +37,7 @@ package_python-viivakoodi() {
                   'python-mock'
                   'python-tox')
     cd "${srcdir}/${_pymodule}-${pkgver}"
-    python setup.py install --root="${pkgdir}/" --optimize=1
+    python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.launcher"
@@ -44,7 +51,7 @@ package_python2-viivakoodi() {
                   'python2-tox') 
 
     cd "${srcdir}/${_pymodule}-${pkgver}"
-    python2 setup.py install --root="${pkgdir}/" --optimize=1
+    python2 setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.launcher"
