@@ -1,4 +1,4 @@
-# Maintainer: Samadi van Koten
+# Maintainer: Samadi van Koten <me at vktec dot co dot uk>
 
 pkgname=ircd-hybrid
 pkgver=8.2.21
