@@ -3,7 +3,7 @@
 
 pkgname=xapian-tcl-bindings
 _realname=xapian-bindings
-pkgver=1.2.23
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Bindings allowing Xapian to be used from Tcl"
 arch=(i686 x86_64)
@@ -16,7 +16,7 @@ groups=(xapian)
 # installed.
 depends=('tcl' 'tcllib' 'xapian-core')
 source=(http://oligarchy.co.uk/xapian/${pkgver}/${_realname}-$pkgver.tar.xz)
-md5sums=('013ef1b953cec486bc67a98a0f364e32')
+md5sums=('a9608da12f4c3071991eb671a34b72bb')
 
 build() {
   cd "$srcdir/${_realname}-$pkgver"
