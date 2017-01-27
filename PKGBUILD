@@ -12,7 +12,7 @@ url="http://www.intenct.nl/projects/django-allauth/"
 makedepends=('python-setuptools'
              'python2-setuptools')
 source=("https://github.com/pennersr/${pkgbase}/archive/${pkgver}.tar.gz")
-sha256sums=('52a526cb4b9547f673d6f00ef66a581301fdaf8d00a701e3c8315f3393c29afa')
+sha256sums=('6d1794e42b0e9652da4d41772fae7b1717f271a817203c2fc3301ee786ec768c')
 
 package_python-django-allauth() {
   depends=('python' 'python-django' 'python-openid' 'python-requests-oauthlib'
