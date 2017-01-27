@@ -1,5 +1,5 @@
 pkgbase = mwptools-git
-	pkgdesc = mission planner for MSP
+	pkgdesc = mission planner for iNav and MSP flight controllers
 	pkgver = r672.946adec
 	pkgrel = 1
 	url = https://github.com/stronnag/mwptools.git
@@ -20,8 +20,7 @@ pkgbase = mwptools-git
 	depends = bluez
 	depends = espeak
 	depends = libgudev
-	depends = gstreamer0.10
-	depends = gtk2
+	depends = gstreamer1.0
 	depends = cairo
 	depends = pango
 	depends = libxml2

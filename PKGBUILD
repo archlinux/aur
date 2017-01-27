@@ -4,13 +4,13 @@ _pkgname=mwptools
 pkgname=mwptools-git
 pkgver=r672.946adec
 pkgrel=1
-pkgdesc='mission planner for MSP'
+pkgdesc='mission planner for iNav and MSP flight controllers'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/stronnag/mwptools.git'
 license=('GPLv2')
 makedepends=('git')
 depends=('ruby' 'gtk3' 'gdl' 'libchamplain' 'clutter' 'vala' 'bluez'
- 'espeak' 'libgudev' 'gstreamer0.10' 'gtk2' 'cairo' 'pango' 'libxml2'
+ 'espeak' 'libgudev' 'gstreamer1.0' 'cairo' 'pango' 'libxml2'
  'blackbox-tools-git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
