@@ -1,8 +1,8 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-ppsspp-git
-pkgver=17177.5f7bcf7
-pkgrel=1
+pkgver=17177.5f7bcf7bf
+pkgrel=2
 pkgdesc="libretro implementation of PPSSPP (PlayStation Portable/PSP)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/libretro-ppsspp"
