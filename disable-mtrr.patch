@@ -4,8 +4,8 @@ Description: Disable MTRR on kernel >= 4.3
  longer exported. The Nvidia kernel shim still uses it as of 304.131, causing
  the module to error out when loading. Disable MTRR if running on 4.3 or greater
  until upstream fixes it.
---- a/nv-linux.h
-+++ b/nv-linux.h
+--- a/kernel/nv-linux.h
++++ b/kernel/nv-linux.h
 @@ -256,6 +256,15 @@
  #include <linux/seq_file.h>
  #endif
