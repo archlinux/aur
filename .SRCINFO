@@ -1,0 +1,29 @@
+pkgbase = armv8l-linux-gnueabihf-glibc
+	pkgdesc = GNU C Library (armv8l-linux-gnueabihf)
+	pkgver = 2.23
+	pkgrel = 5
+	url = http://www.gnu.org/software/libc/
+	arch = any
+	license = GPL
+	license = LGPL
+	makedepends = armv8l-linux-gnueabihf-gcc-stage2>=6.1.1
+	makedepends = gperf
+	depends = armv8l-linux-gnueabihf-linux-api-headers>=4.5.5
+	provides = armv8l-linux-gnueabihf-glibc-headers=2.23
+	provides = armv8l-linux-gnueabihf-eglibc
+	conflicts = armv8l-linux-gnueabihf-glibc-headers
+	conflicts = armv8l-linux-gnueabihf-eglibc
+	replaces = armv8l-linux-gnueabihf-glibc-headers
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = http://ftp.gnu.org/gnu/libc/glibc-2.23.tar.xz
+	source = http://ftp.gnu.org/gnu/libc/glibc-2.23.tar.xz.sig
+	source = glibc-1915d6d1.patch.xz
+	validpgpkeys = F37CDAB708E65EA183FD1AF625EF0A436C2A4AFF
+	md5sums = 456995968f3acadbed39f5eba31678df
+	md5sums = SKIP
+	md5sums = 90fad90d55a4c70d91a79539ed3642e2
+
+pkgname = armv8l-linux-gnueabihf-glibc
+
