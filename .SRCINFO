@@ -1,7 +1,7 @@
 pkgbase = streamlink
 	pkgdesc = CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://streamlink.github.io/
 	arch = any
 	license = BSD
@@ -9,15 +9,13 @@ pkgbase = streamlink
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	makedepends = python-sphinx
-	depends = python-crypto
+	depends = python-pycryptodome
 	depends = python-requests
 	depends = rtmpdump
 	optdepends = ffmpeg: Required to play streams that are made up of separate audio and video streams, eg. YouTube 1080p+
 	optdepends = python-librtmp: Required by the ustreamtv plugin to be able to use non-mobile streams.
 	source = https://src.fedoraproject.org/lookaside/pkgs/python-streamlink/streamlink-0.3.0-without-win32-binaries.tar.gz/sha512/753a41a13af88c11cff1b8b1e3a422b3eb9fe97516d2e33ec2460cb0560b1400af74de91def833dd1c904082e32f4d744ddd7ec7992c6fdb028e27e2a312d099/streamlink-0.3.0-without-win32-binaries.tar.gz
-	source = https://src.fedoraproject.org/cgit/rpms/python-streamlink.git/plain/python-streamlink-0.3.0-pycrypto.patch
 	sha512sums = 753a41a13af88c11cff1b8b1e3a422b3eb9fe97516d2e33ec2460cb0560b1400af74de91def833dd1c904082e32f4d744ddd7ec7992c6fdb028e27e2a312d099
-	sha512sums = 1c25435d71555f3e077a36ff203e1259d8a9921a6ec1b4c4c152a0330bf69f4961eeece15a968819967d6acdc6365736620a6a3d69348cf9f06d38efbe6fdcb3
 
 pkgname = streamlink
 
