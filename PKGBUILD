@@ -1,5 +1,4 @@
 # Maintainer: Camden Cheek <ccheek22@gmail.com>
-pkgbase='python-adb'
 pkgname='python-adb-git'
 pkgver=r65.fb09de9
 pkgrel=1
