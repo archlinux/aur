@@ -1,4 +1,5 @@
-# Maintainer: Ariel Popper <a@arielp.com>
+# Maintainer: Robert Ma (Hexcles) <bob1211@gmail.com>
+# Submitter: Ariel Popper <a@arielp.com>
 
 _gitname=powerline
 pkgname="otf-powerline-symbols-git"
