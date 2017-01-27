@@ -4,7 +4,7 @@
 pkgbase=python-webassets
 pkgname=('python2-webassets' 'python-webassets')
 _pipname=webassets
-pkgver=0.12
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Asset management application for Python web development"
 arch=('any')
@@ -12,7 +12,7 @@ url="http://github.com/miracle2k/webassets"
 license=('BSD')
 makedepends=('python2-django' 'python-django' 'python2-setuptools' 'python-setuptools')
 source=("https://github.com/miracle2k/webassets/archive/$pkgver.tar.gz")
-sha512sums=('ad95e5345f9f736389fc684c5b51bb47ad5abb3bdca03a3a4649892095d139722aaf5aa57677997fe869e751b1b82a63c3a882c58005bc6a2ab954bc479447b7')
+sha256sums=('34d94191b9c69df16fb6504d513a57851870e545bec7ad239e93e66bb9767682')
 
 prepare() {
   cp -r $_pipname-$pkgver python2-$_pipname-$pkgver
