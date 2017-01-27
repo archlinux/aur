@@ -29,7 +29,7 @@ build() {
 
 package() {
   cd "${srcdir}/python-adb"
-  python setup.py install --root="$pkgdir" --optimize=1 || return 1
+  python2 setup.py install --root="$pkgdir" --optimize=1 || return 1
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
