@@ -5,7 +5,7 @@
 _branch='discord-canary'
 
 pkgname=discord-canary
-pkgver=0.0.14
+pkgver=0.0.15
 pkgrel=3
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(DiscordCanary.desktop LICENSE)
 source_x86_64=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/${_branch}-${pkgver}.tar.gz")
 md5sums=('2ff4b71f582b9d62eadbb487d4190d15'
          '9a481caa5a223defd608f5505202f595')
-md5sums_x86_64=('01051d494f17a7028dae891292b8594f')
+md5sums_x86_64=('7b41b6fe99f9748d32ed01c54c862145')
 
 
 
