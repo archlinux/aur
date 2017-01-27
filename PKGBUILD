@@ -6,10 +6,10 @@
 pkgname=awesome-scratch-git
 _gitname=awesome-configs
 pkgver=3.4.14.2.g51f463b
-pkgrel=1
+pkgrel=2
 pkgdesc="Basic drop-down applications and scratchpad manager for Awesome WM"
 arch=("any")
-url="https://awesome.naquadah.org/wiki/Scratchpad_manager"
+url="http://git.sysphere.org/awesome-configs"
 license=("WTFPL2")
 depends=("awesome")
 makedepends=("git")
