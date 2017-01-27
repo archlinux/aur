@@ -2,7 +2,7 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=0.99.1258
+pkgver=1.1.55
 _gwtver=2.7.0
 _ginver=1.5
 _clangver=3.8.0
@@ -42,10 +42,16 @@ prepare() {
     cp -r "${srcdir}/gwt-${_gwtver}/"* lib/gwt/${_gwtver}
 
     cd "${srcdir}/${_gitname}/dependencies/common"
-    install -d dictionaries mathjax-26 pandoc libclang/{3.5,builtin-headers}
+    install -d dictionaries pandoc libclang/{3.5,builtin-headers}
+
+    ln -sfT "/usr/share/mathjax" mathjax-26
+    ln -sfT "/usr/bin/pandoc" pandoc/pandoc
+    ln -sfT "/usr/bin/pandoc-citeproc" pandoc/pandoc-citeproc
+    ln -sfT "/usr/lib/libclang.so" libclang/3.5/libclang.so
+    ln -sfT "/usr/lib/clang/$_clangver/include" libclang/builtin-headers/3.5
 
     msg "Downloading and installing R packages"
-    ./install-packages
+    bash install-packages
 }
 
 build() {
@@ -64,17 +70,7 @@ package() {
     make DESTDIR="${pkgdir}" install
     # Install the license
     install -Dm 644 ../COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-    # Remove unnecessary directories
-    rm -rf "${pkgdir}/usr/lib/rstudio/resources/"{dictionaries,mathjax-26}
     # Creaate symlinks
     install -d "${pkgdir}/usr/bin"
     ln -sf /usr/lib/rstudio/bin/rstudio "${pkgdir}/usr/bin/rstudio"
-    ln -sf /usr/share/myspell/dicts "${pkgdir}/usr/lib/rstudio/resources/dictionaries"
-    ln -sf /usr/share/mathjax "${pkgdir}/usr/lib/rstudio/resources/mathjax-26"
-    install -d "${pkgdir}/usr/lib/rstudio/resources/libclang/3.5"
-    ln -sf /usr/lib/libclang.so "${pkgdir}/usr/lib/rstudio/resources/libclang/3.5/libclang.so"
-    ln -sf /usr/lib/clang/$_clangver/include "${pkgdir}/usr/lib/rstudio/resources/libclang/builtin-headers/3.5"
-    install -d "${pkgdir}/usr/lib/rstudio/bin/pandoc"
-    ln -sf /usr/bin/pandoc "${pkgdir}/usr/lib/rstudio/bin/pandoc/pandoc"
-    ln -sf /usr/bin/pandoc-citeproc "${pkgdir}/usr/lib/rstudio/bin/pandoc/pandoc-citeproc"
 }
