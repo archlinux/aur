@@ -1,0 +1,24 @@
+pkgbase = armv8l-linux-gnueabihf-gcc-stage1
+	pkgdesc = The GNU Compiler Collection. Stage 1 for toolchain building (armv8l-linux-gnueabihf)
+	pkgver = 6.1.1
+	pkgrel = 3
+	url = http://gcc.gnu.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	depends = armv8l-linux-gnueabihf-binutils>=2.26.1-1
+	depends = libmpc
+	depends = zlib
+	options = !emptydirs
+	options = !distcc
+	options = !strip
+	source = https://github.com/gcc-mirror/gcc/archive/1bbd3999.tar.gz
+	source = http://isl.gforge.inria.fr/isl-0.16.1.tar.bz2
+	md5sums = d4c4546f927b2984d66574b1b5cb817e
+	md5sums = ac1f25a0677912952718a51f5bc20f32
+
+pkgname = armv8l-linux-gnueabihf-gcc-stage1
+
