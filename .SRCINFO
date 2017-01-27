@@ -1,6 +1,6 @@
 pkgbase = ramme
 	pkgdesc = Unofficial Instagram Desktop App
-	pkgver = 2.3.0
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://github.com/terkelg/ramme/
 	arch = x86_64
@@ -8,10 +8,8 @@ pkgbase = ramme
 	depends = electron
 	options = !docs
 	options = !emptydirs
-	source = https://github.com/terkelg/ramme/releases/download/2.3.0/Ramme-linux-2.3.0.zip
-	source = ramme.desktop
-	md5sums = 55ce27dbea407e0270781a60348ba34c
-	md5sums = f02bbf5ad28e32c46b9ad7b7c217ecbc
+	source = https://github.com/terkelg/ramme/releases/download/v3.0.3/Ramme_3.0.3_amd64.deb
+	md5sums = e69bde9fe73124bf1ecd91e0fb792b55
 
 pkgname = ramme
 
