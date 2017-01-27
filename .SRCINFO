@@ -1,7 +1,7 @@
 pkgbase = iscan-plugin-gt-1500
 	pkgdesc = iscan plugin for the Epson GT-1500 scanner
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	install = gt-1500.install
 	arch = i686
