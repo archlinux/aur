@@ -1,0 +1,20 @@
+pkgbase = yaxg-git
+	pkgdesc = Yet Another X Grabber
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/DanielFGray/yaxg
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	optdepends = slop: for selecting regions and windows
+	optdepends = maim: for saving screenshots
+	optdepends = ffmpeg: for recording videos
+	optdepends = byzanz: for recording gifs
+	optdepends = libnotify: for notifications
+	provides = yaxg
+	source = yaxg-git::git+https://github.com/DanielFGray/yaxg.git
+	md5sums = SKIP
+
+pkgname = yaxg-git
+
