@@ -1,6 +1,6 @@
 pkgbase = opencl-amd
 	pkgdesc = OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack.
-	pkgver = 16.50.362463
+	pkgver = 16.60.379184
 	pkgrel = 1
 	url = http://www.amd.com
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = opencl-amd
 	depends = ocl-icd
 	optdepends = linux-cik: amdgpu support for CIK cards (Bonaire/Hawaii series)
 	conflicts = amdgpocl
-	source = https://www2.ati.com/drivers/linux/ubuntu/amdgpu-pro-16.50-362463.tar.xz
+	source = https://www2.ati.com/drivers/linux/ubuntu/amdgpu-pro-16.60-379184.tar.xz
 	sha256sums = a959013fd641a07107af65d9dd54a019ddcc4a14f467d5d620fabc3497aa88f2
 
 pkgname = opencl-amd
