@@ -1,6 +1,6 @@
 pkgbase = tor-browser-bin
 	pkgdesc = Tor Browser is +1 for privacy and -1 for mass surveillance
-	pkgver = 6.0.8
+	pkgver = 6.5
 	pkgrel = 1
 	url = https://www.torproject.org/projects/torbrowser.html.en
 	arch = i686
@@ -35,13 +35,13 @@ pkgbase = tor-browser-bin
 	sha512sums = 3bb1b255b75178bf8b002e3e7da448c5b6427561fce6552f95ffdd00f75755a916a5f0057440917eece52f164d9ddf1cbb6ba91f2430553a73c94cf23d6a7618
 	sha512sums = 236338469e13b4991c2abb94d4844d0149bb98094f1661b0a41256df0400cfe9904882117aae9edbea9261d99aea42745e03d745b523243d9a75fa5151062e18
 	sha512sums = 54ba3df337f07b3072636bf42b255de26eddde773e82f7588c4ed9cf29c20ea5522c460855151036dad307dc023c76266e57f530352bb129b6afef95bf28c038
-	source_i686 = https://dist.torproject.org/torbrowser/6.0.8/tor-browser-linux32-6.0.8_en-US.tar.xz
-	source_i686 = https://dist.torproject.org/torbrowser/6.0.8/tor-browser-linux32-6.0.8_en-US.tar.xz.asc
-	sha256sums_i686 = 275968cbbcdd66f6c5e8bd7dc2d32cf287d2a58093dbe1c29eb10c480871787f
+	source_i686 = https://dist.torproject.org/torbrowser/6.5/tor-browser-linux32-6.5_en-US.tar.xz
+	source_i686 = https://dist.torproject.org/torbrowser/6.5/tor-browser-linux32-6.5_en-US.tar.xz.asc
+	sha256sums_i686 = 6942bfcb61710b5ad49d7142c8d5f68b945d115dd1554dd4a1c6b0739fe83af8
 	sha256sums_i686 = SKIP
-	source_x86_64 = https://dist.torproject.org/torbrowser/6.0.8/tor-browser-linux64-6.0.8_en-US.tar.xz
-	source_x86_64 = https://dist.torproject.org/torbrowser/6.0.8/tor-browser-linux64-6.0.8_en-US.tar.xz.asc
-	sha256sums_x86_64 = 1cf078282ea4050ff14c12da3838dbc9b040b60cd18182805afd1339c5d95ee8
+	source_x86_64 = https://dist.torproject.org/torbrowser/6.5/tor-browser-linux64-6.5_en-US.tar.xz
+	source_x86_64 = https://dist.torproject.org/torbrowser/6.5/tor-browser-linux64-6.5_en-US.tar.xz.asc
+	sha256sums_x86_64 = c4714061748a70d3871dd84ff88d2f317b386d290a5c1fb94a504a1c256f1960
 	sha256sums_x86_64 = SKIP
 
 pkgname = tor-browser-bin
