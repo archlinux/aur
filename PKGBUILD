@@ -2,7 +2,7 @@
 
 pkgname=checkmate
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A program to compare theoretical models against many recent experimental analyses"
 url="http://checkmate.hepforge.org/"
 arch=('i686' 'x86_64')
@@ -34,6 +34,7 @@ prepare() {
 }
 
 build() {
+    msg2 "Compiling source"
     cd CheckMATE-${pkgver}
     ./configure --prefix="${pkgdir}/usr/" \
                 --with-hepmc=/usr \
@@ -46,7 +47,12 @@ build() {
                 --with-madgraph=/usr/share/madgraph
     make
 
+    msg2 "Cleaning temporary build files"
+    find . -type f -name "*.o" -o -name "*.lo" -print0 | xargs -0 rm -f
+
+    msg2 "Compiling Python files"
     python2 -O -m compileall -qf . || true
+
 }
 
 package() {
@@ -58,6 +64,9 @@ package() {
     install -d "${pkgdir}/usr/share/CheckMATE"
     cp -r "${srcdir}/CheckMATE-${pkgver}/tools" "${pkgdir}/usr/share/CheckMATE"
     cp -r "${srcdir}/CheckMATE-${pkgver}/data" "${pkgdir}/usr/share/CheckMATE/"
+
+    rm -rf "${pkgdir}/usr/share/CheckMATE/tools/analysis/src/" \
+           "${pkgdir}/usr/share/CheckMATE/tools/fritz/src/"
 }
 
 # Local Variables:
