@@ -1,13 +1,13 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=freebsd-docs-developers-handbook
 pkgver=49455
-pkgrel=1
+pkgrel=2
 pkgdesc="The FreeBSD Developers' Handbook from the FreeBSD Documentation Project."
 arch=(any)
 url="https://www.freebsd.org/docs.html"
 license=('BSD')
 source=("ftp://ftp.freebsd.org/pub/FreeBSD/doc/en_US.ISO8859-1/books/developers-handbook/book.html-split.tar.bz2")
-md5sums=('f86471d34b17d9c2c403659103029cea')
+md5sums=('bfc6240482fee0d6324d4b3900752f62')
 
 prepare() {
     rm $srcdir/book.html-split.tar.bz2
