@@ -1,0 +1,12 @@
+2016-11-26 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 1:1.8.7.108.g0390bc97e-1 :
+	Changed package versioning scheme: now includes upstream version and git
+	  info to match what MicroPython REPL banner shows.
+	Removed 'readline' from depends, MicroPython now uses its own readline
+	  implementation.
+	Removed 'pip-setuptools' and 'pip-virtualenv' from optdepends, the
+	  'pip-micropython' tool is deprecated and not installed anymore.
+	Adapted to upstream changes in compilation procedure.
+	Added workround to fix compilation errors in axtls due to leaking of
+	  -Werror in CFLAGS from top-level Makefile in makepkg build environment.
