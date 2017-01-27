@@ -1,7 +1,7 @@
 # Maintainer: Camden Cheek <ccheek22@gmail.com>
 pkgname='python-adb-git'
 pkgver=r65.fb09de9
-pkgrel=2
+pkgrel=3
 pkgdesc="Python ADB + Fastboot implementation"
 arch=('any')
 url="https://github.com/google/python-adb.git"
