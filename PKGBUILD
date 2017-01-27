@@ -1,32 +1,25 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=streamlink-git
-pkgver=0.3.0.r18.g6400e04
+pkgver=0.3.0.r26.g9ce489d
 pkgrel=2
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
 url='https://streamlink.github.io/'
 license=('BSD')
-depends=("python-"{iso3166,iso639,crypto,requests} 'rtmpdump')
+depends=("python-"{iso3166,iso639,pycryptodome,requests} 'rtmpdump')
 checkdepends=("python-"{mock,pytest})
 makedepends=('git' "python-"{setuptools,sphinx})
 optdepends=('ffmpeg: Required to play streams that are made up of separate audio and video streams, eg. YouTube 1080p+'
             'python-librtmp: Required by the ustreamtv plugin to be able to use non-mobile streams.')
 provides=('streamlink')
 conflicts=('streamlink')
-source=('git+https://github.com/streamlink/streamlink.git'
-        'https://src.fedoraproject.org/cgit/rpms/python-streamlink.git/plain/python-streamlink-0.3.0-pycrypto.patch')
-sha512sums=('SKIP'
-            '1c25435d71555f3e077a36ff203e1259d8a9921a6ec1b4c4c152a0330bf69f4961eeece15a968819967d6acdc6365736620a6a3d69348cf9f06d38efbe6fdcb3')
+source=('git+https://github.com/streamlink/streamlink.git')
+sha512sums=('SKIP')
 
 pkgver() {
   cd streamlink
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd streamlink
-  patch -p1 < ../python-streamlink-0.3.0-pycrypto.patch
 }
 
 build() {
