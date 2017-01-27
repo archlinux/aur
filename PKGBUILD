@@ -13,6 +13,11 @@ makedepends=('go')
 #options=('!strip')
 _gourl=github.com/shadowsocks/shadowsocks-go
 
+prepare() {
+    GOPATH="$srcdir" go get -d -u ${_gourl}/cmd/shadowsocks-server
+    GOPATH="$srcdir" go get -d -u ${_gourl}/cmd/shadowsocks-local
+}
+
 pkgver() {
     cd "$srcdir/src/${_gourl}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
