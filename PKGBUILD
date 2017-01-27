@@ -3,7 +3,7 @@
 _pkgname=polybar
 pkgname="${_pkgname}-git"
 pkgver=3.0.2
-pkgrel=2
+pkgrel=1
 pkgdesc="A fast and easy-to-use status bar"
 arch=("i686" "x86_64")
 url="https://github.com/jaagr/polybar"
@@ -19,33 +19,30 @@ optdepends=("alsa-lib: volume module support"
             "curl: github module support")
 makedepends=("cmake" "git" "python" "python2" "pkg-config")
 provides=("polybar")
-conflicts=("polybar" "lemonbuddy-git" "lemonbuddy")
+conflicts=("polybar")
 install="${_pkgname}.install"
 source=("${_pkgname}::git+${url}.git")
 md5sums=("SKIP")
 
 pkgver() {
-  cd "$_pkgname" || exit
-  git describe --long --tags | sed "s/-/.r/;s/-/./g"
+  git -C "${_pkgname}" describe --long --tags | sed "s/-/.r/;s/-/./g"
 }
 
 prepare() {
-  cd "$_pkgname" || exit
-  git submodule update --init --recursive
-  mkdir build
+  git -C "${_pkgname}" submodule update --init --recursive
+  mkdir -p "${_pkgname}/build"
 }
 
 build() {
-  cd "${_pkgname}" || exit
-  [ -x version.sh ] && ./version.sh >/dev/null
-  cd build || exit
+  cd "${_pkgname}/build" || exit 1
+  if [ -x ../common/version.sh ]; then
+    ../common/version.sh
+  fi
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-  make
+  cmake --build .
 }
 
 package() {
-  cd "${_pkgname}/build" || exit
-  make DESTDIR="$pkgdir/" install
-  cd .. || exit
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  cmake --build "${_pkgname}/build" --target install -- DESTDIR="${pkgdir}"
+  install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }

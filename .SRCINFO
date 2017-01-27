@@ -1,7 +1,7 @@
 pkgbase = polybar-git
 	pkgdesc = A fast and easy-to-use status bar
 	pkgver = 3.0.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/jaagr/polybar
 	arch = i686
 	arch = x86_64
@@ -25,8 +25,6 @@ pkgbase = polybar-git
 	optdepends = siji-git: Font used in example config
 	provides = polybar
 	conflicts = polybar
-	conflicts = lemonbuddy-git
-	conflicts = lemonbuddy
 	source = polybar::git+https://github.com/jaagr/polybar.git
 	install = polybar.install
 	md5sums = SKIP
