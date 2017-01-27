@@ -1,6 +1,6 @@
 # Maintainer: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
+
 # TODO:
-#       * install license anyway ?
 #       * why keymap change ?
 #       * say user may want to trigger
 #       * systemd file
