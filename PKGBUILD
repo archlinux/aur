@@ -1,7 +1,7 @@
 # Maintainer: Philipp Joram <mail AT phijor DOT me>
 
 pkgname=cutentr-git
-pkgver=0.1.1.r4.gc082b06
+pkgver=0.1.1.r8.gb73f714
 pkgrel=1
 pkgdesc="POC Qt 3DS streaming client for NTR CFW"
 arch=('x86_64')
@@ -19,14 +19,13 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  qmake
+  qmake PREFIX=/usr
   make
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
-  install -Dm755 -t "${pkgdir}/usr/bin" cutentr
-  install -Dm644 -t "${pkgdir}/usr/share/applications" cutentr.desktop
+  make INSTALL_ROOT="${pkgdir}" install
 }
 
 # vim:set ts=2 sw=2 et:
