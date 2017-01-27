@@ -1,0 +1,15 @@
+pkgbase = boost-sml-git
+	pkgdesc = Your scalable C++14 header State Machine Library with no dependencies
+	pkgver = v1.0.1.r314.gdd2464f
+	pkgrel = 1
+	url = http://boost-experimental.github.io/sml/index.html
+	arch = i686
+	arch = x86_64
+	license = Boost
+	makedepends = make
+	depends = gcc-libs
+	source = boost-sml-git::git+https://github.com/boost-experimental/sml.git
+	sha256sums = SKIP
+
+pkgname = boost-sml-git
+
