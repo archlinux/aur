@@ -1,7 +1,7 @@
 pkgbase = gnome-vfs-perl
 	pkgdesc = Gnome2-VFS perl bindings for gnome-vfs
 	pkgver = 1.082
-	pkgrel = 4
+	pkgrel = 5
 	url = http://gtk2-perl.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -16,9 +16,4 @@ pkgbase = gnome-vfs-perl
 	md5sums = 374e7d611d080d893bb3da9d40c64733
 
 pkgname = gnome-vfs-perl
-	depends = gtk2-perl
-	depends = gnome-vfs
-	depends = perl
-	depends = perl>=
-	depends = perl<
 

@@ -4,7 +4,7 @@
 
 pkgname=gnome-vfs-perl
 pkgver=1.082
-pkgrel=4
+pkgrel=5
 pkgdesc="Gnome2-VFS perl bindings for gnome-vfs"
 arch=(i686 x86_64)
 license=('LGPL')
@@ -26,10 +26,10 @@ package() {
   make DESTDIR="${pkgdir}" install
 
 # template start; name=perl-binary-module-dependency; version=1;
-if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
-	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
-	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
-	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
-fi
+#if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
+#	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
+#	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
+#	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
+#fi
 # template end;
 }
