@@ -3,37 +3,36 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 # Contributor: Philipp Überbacher <hollunder at gmx dot at>
 
-_pkgbasename=qtractor
-pkgname=${_pkgbasename}-git
-pkgver=0.8.0.r0.gca80cfb
+pkgname=qtractor-git
+pkgver=0.8.0.r47.g700bfa8a
 pkgrel=1
 pkgdesc="Audio/MIDI multitrack sequencer"
 arch=('i686' 'x86_64')
 url="http://qtractor.sourceforge.net/"
 license=('GPL')
-depends=('qt5-x11extras' 'gtk2' 'suil' 'lilv' 'libmad' 'liblo' 'rubberband')
+depends=(liblo rubberband lilv qt5-x11extras gcc-libs-multilib gtk2 suil libmad)
 makedepends=('qt5-tools' 'ladspa' 'dssi')
 optdepends=('dssi-vst: win32 VST support')
-provides=("${_pkgbasename}")
-conflicts=("${_pkgbasename}")
-source=("${_pkgbasename}::git://github.com/rncbc/qtractor.git")
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
+source=("${pkgname%-*}"::"git://github.com/rncbc/qtractor.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgbasename}"
+  cd "${srcdir}/${pkgname%-*}"
   # cutting off the 'qtractor_' prefix present in the git tag + remaining underscores (ugly but gets the job done).
   git describe --long | sed 's/^qtractor_//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/\_/./g'
 }
 
 build() {
-  cd "${srcdir}/${_pkgbasename}"
+  cd "${srcdir}/${pkgname%-*}"
   make -f Makefile.git
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgbasename}"
+  cd "${srcdir}/${pkgname%-*}"
   make DESTDIR="${pkgdir}" install
 }
 
