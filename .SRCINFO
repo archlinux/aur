@@ -1,0 +1,20 @@
+pkgbase = armv8l-linux-gnueabihf-gdb
+	pkgdesc = The GNU Debugger for the ARM hard float target
+	pkgver = 7.11
+	pkgrel = 1
+	url = http://www.gnu.org/software/gdb/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = texinfo
+	depends = xz
+	depends = ncurses
+	depends = expat
+	depends = python2
+	depends = guile
+	options = !emptydirs
+	source = http://ftp.gnu.org/gnu/gdb/gdb-7.11.tar.xz
+	sha256sums = 7a434116cb630d77bb40776e8f5d3937bed11dea56bafebb4d2bc5dd389fe5c1
+
+pkgname = armv8l-linux-gnueabihf-gdb
+
