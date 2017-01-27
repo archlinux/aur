@@ -1,6 +1,6 @@
 pkgname=rippled
 pkgrel=1
-pkgver=0.40.1
+pkgver=0.50.0
 pkgdesc="Ripple peer-to-peer network daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/ripple/rippled"
@@ -8,7 +8,7 @@ license=('custom:ISC')
 backup=("etc/${pkgname}/rippled.cfg" "etc/${pkgname}/validators.txt")
 depends=('protobuf' 'openssl' 'boost-libs')
 makedepends=('git' 'scons' 'boost')
-source=("git://github.com/ripple/rippled.git#commit=e91aacc")
+source=("git://github.com/ripple/rippled.git#tag=$pkgver")
 sha512sums=('SKIP')
 
 build() {
