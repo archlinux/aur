@@ -2,7 +2,7 @@
 
 pkgname=aegir-provision
 _pkgname=${pkgname##*-}
-pkgver=7.x_3.9_beta1
+pkgver=7.x_3.9
 pkgrel=1
 pkgdesc="mass Drupal hosting system - backend"
 arch=('any')
@@ -10,7 +10,7 @@ url='http://aegirproject.org'
 license=('GPL')
 depends=('drush>=7')
 source=("https://ftp.drupal.org/files/projects/$_pkgname-${pkgver//_/-}.tar.gz")
-md5sums=('2dfbaecb93a1ac1d60f9ee37fd0f2d1d')
+md5sums=('97f5e1e63b121fa2f442b45b5731ce68')
 
 package() {
     cd $_pkgname
