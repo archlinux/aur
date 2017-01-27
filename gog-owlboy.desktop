@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OWLBOY
+Comment=Owlboy is a 'hi-bit' adventure game, where you can fly and explore a brand new world in the clouds!
+Exec=gog-owlboy
+Icon=gog-owlboy
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8

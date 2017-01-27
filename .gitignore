@@ -1,0 +1,9 @@
+# Blacklist:
+*
+
+# Whitelist:
+!PKGBUILD
+!.SRCINFO
+!gog-owlboy
+!gog-owlboy.desktop
+
