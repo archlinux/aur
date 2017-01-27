@@ -21,6 +21,5 @@ pkgname = gnome-perl
 	depends = gnome-vfs-perl
 	depends = libgnomeui
 	depends = perl
-	depends = perl>=
-	depends = perl<
+	depends = perl=
 
