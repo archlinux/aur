@@ -1,0 +1,13 @@
+--- a/CheckMATE-2.0.3/tools/analysis/include/base/AnalysisBase.h
++++ b/CheckMATE-2.0.3/tools/analysis/include/base/AnalysisBase.h
+@@ -24,8 +24,8 @@
+ #include "ExRootAnalysis/ExRootTreeReader.h"
+ #include "ExRootAnalysis/ExRootResult.h"
+ 
+-#include "external/fastjet/JetDefinition.hh"
+-#include "external/fastjet/ClusterSequence.hh"
++#include "fastjet/JetDefinition.hh"
++#include "fastjet/ClusterSequence.hh"
+ 
+ #include "ETMiss.h"
+ #include "FinalStateObject.h"

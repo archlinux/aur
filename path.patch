@@ -1,0 +1,25 @@
+--- a/CheckMATE-2.0.3/tools/python/info.py
++++ b/CheckMATE-2.0.3/tools/python/info.py
+@@ -678,9 +678,9 @@ class Info(dict):
+         if config_paths != dict() and config_paths['pythia8_lib_path']:
+             cls.paths['pythia8_lib_path'] = config_paths['pythia8_lib_path']
+ 
+-        cls.paths['checkmate'] = os.path.split(os.path.split(os.path.split(os.path.realpath(__file__))[0])[0])[0]
+-        
+-        cls.paths['results'] = os.path.join(cls.paths['checkmate'], 'results')
++        cls.paths['checkmate'] = '/usr/share/CheckMATE'
++        
++        cls.paths['results'] = os.path.join('/tmp/CheckMATE/', 'results')
+         cls.paths['tools'] = os.path.join(cls.paths['checkmate'], 'tools')
+         cls.paths['data'] = os.path.join(cls.paths['checkmate'], 'data')
+         
+--- a/CheckMATE-2.0.3/tools/python/CheckMATE.raw
++++ b/CheckMATE-2.0.3/tools/python/CheckMATE.raw
+@@ -1,6 +1,6 @@
+ #!/usr/bin/python
+ import sys,os
+-sys.path.append(os.path.join(os.path.split(os.path.split(os.path.realpath(__file__))[0])[0], "tools", "python"))
++sys.path.append("/usr/share/CheckMATE/tools/python")
+ sys.path.append('ROOT_LIB_DIR')
+ from checkmate_core import CheckMATE2
+ from advprint import AdvPrint

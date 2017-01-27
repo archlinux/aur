@@ -1,0 +1,28 @@
+--- a/CheckMATE-2.0.3/tools/analysis/include/base/AnalysisBase.h
++++ b/CheckMATE-2.0.3/tools/analysis/include/base/AnalysisBase.h
+@@ -21,8 +21,8 @@
+ #include <TMatrixDEigen.h>
+ 
+ #include "classes/DelphesClasses.h"
+-#include "external/ExRootAnalysis/ExRootTreeReader.h"
+-#include "external/ExRootAnalysis/ExRootResult.h"
++#include "ExRootAnalysis/ExRootTreeReader.h"
++#include "ExRootAnalysis/ExRootResult.h"
+ 
+ #include "external/fastjet/JetDefinition.hh"
+ #include "external/fastjet/ClusterSequence.hh"
+--- a/CheckMATE-2.0.3/tools/fritz/include/delpheshandler/DelphesHandler.h
++++ b/CheckMATE-2.0.3/tools/fritz/include/delpheshandler/DelphesHandler.h
+@@ -28,9 +28,9 @@
+ 
+ #include "CMExRootTreeBranch.h"
+ #include "CMExRootTreeWriter.h"
+-#include "external/ExRootAnalysis/ExRootTreeBranch.h"
+-#include "external/ExRootAnalysis/ExRootTreeWriter.h"
+-#include "external/ExRootAnalysis/ExRootTreeReader.h"
++#include "ExRootAnalysis/ExRootTreeBranch.h"
++#include "ExRootAnalysis/ExRootTreeWriter.h"
++#include "ExRootAnalysis/ExRootTreeReader.h"
+ 
+ #ifdef HAVE_PYTHIA
+ #include "PythiaHandler.h"
