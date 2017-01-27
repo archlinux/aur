@@ -1,50 +1,49 @@
 # Maintainer: Lukasz Pozarlik <lpozarlik@gmail.com>
+# Co-maintainer: Carl George < arch at cgtx dot us >
 # Contributor: Duy Truong <jimreynold2nd@yahoo.com>
 
-pkgbase=python-jira
-pkgname=('python-jira'
-  'python2-jira')
+_name="jira"
+_module="$_name"
+
+pkgname=("python-$_module" "python2-$_module")
 pkgdesc="Python library for interacting with JIRA via REST APIs"
 pkgver="1.0.9"
-pkgrel=1
-url="https://pypi.python.org/pypi/jira"
+pkgrel=2
+url="https://github.com/pycontribs/jira"
 license=('BSD')
 arch=('any')
-source=("https://pypi.python.org/packages/cc/e8/c037baa32e43685f080e3c33b5a4a057e7fa83ee753e4505ef10278a73e6/jira-${pkgver}.tar.gz"
-  'client.patch')
-md5sums=('67f3d7cf6892c33f41bf2dcacc777213'
-         '47fe5653ef156d7fc8f14b5cb0527197')
+makedepends=("python-pbr>=1.9" "python2-pbr>=1.9")
+source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('ac789108fd64154dfaab7609864f6901cef54b57fa2f6ae4df2ecad1cdd82ea6')
 
-prepare(){
-  patch -p1 -i "${srcdir}/client.patch"
+build() {
+    cd "$_name-$pkgver"
+    python setup.py build
+    python2 setup.py build
 }
 
 package_python-jira(){
-makedepends=('python-requests'
-  'python-setuptools')
-depends=('python'
-  'python-requests'
-  'python-six'
-  #'python-tlslite'
-  'python-requests-toolbelt'
-  'python-requests-oauthlib'
-  'python-oauthlib')
-  cd "${srcdir}/jira-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1
+    depends=("python-pbr"
+             "python-requests-oauthlib>=0.6.1"
+             "python-requests>=2.10.0"
+             "python-requests-toolbelt"
+             "python-setuptools>=20.10.1"
+             "python-six>=1.10.0"
+             "python-defusedxml")
+    cd "$_name-$pkgver"
+    python setup.py install --skip-build --root="$pkgdir" --optimize=1
+    install -D --mode 644 --target-directory "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
-
 
 package_python2-jira(){
-makedepends=('python2-requests'
-  'python2-setuptools')
-depends=('python2'
-  'python2-requests'
-  'python2-six'
-  'python2-tlslite'
-  'python2-requests-toolbelt'
-  'python2-requests-oauthlib'
-  'python2-oauthlib')
-  cd "${srcdir}/jira-${pkgver}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+    depends=("python2-pbr"
+             "python2-requests-oauthlib>=0.6.1"
+             "python2-requests>=2.10.0"
+             "python2-requests-toolbelt"
+             "python2-setuptools>=20.10.1"
+             "python2-six>=1.10.0"
+             "python2-defusedxml")
+    cd "$_name-$pkgver"
+    python2 setup.py install --skip-build --root="$pkgdir" --optimize=1
+    install -D --mode 644 --target-directory "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
-
