@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Yet Another X Grabber"
 arch=('i686' 'x86_64')
 url="https://github.com/DanielFGray/yaxg"
-license=('custom')
+license=('GNU')
 #depends=()
 optdepends=('slop: for selecting regions and windows'
             'maim: for saving screenshots'
