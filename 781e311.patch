@@ -1,0 +1,21 @@
+From 781e31188326232df2e0b57b10da09395d4301a1 Mon Sep 17 00:00:00 2001
+From: Michele Selvaggi <michele.selvaggi@uclouvain.be>
+Date: Thu, 24 Nov 2016 10:52:50 +0100
+Subject: [PATCH] fixed typo in display cmake list
+
+---
+ display/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/delphes-3.4.0/display/CMakeLists.txt b/delphes-3.4.0/display/CMakeLists.txt
+index 43d208e..b3a9efd 100644
+--- a/delphes-3.4.0/display/CMakeLists.txt
++++ b/delphes-3.4.0/display/CMakeLists.txt
+@@ -15,6 +15,6 @@ add_library(display OBJECT ${sources} DisplayDict.cxx)
+ # install pcms if they are created
+ if (${ROOT_VERSION} GREATER 6)
+   install(FILES
+-      ${PROJECT_BINARY_DIR}/external/DisplayDict_rdict.pcm
++      ${PROJECT_BINARY_DIR}/display/libDisplayDict_rdict.pcm
+       DESTINATION lib)
+ endif()

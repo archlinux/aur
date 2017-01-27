@@ -1,0 +1,85 @@
+From 0f5bf9d9e29b38f680ebcaf979921989a54af915 Mon Sep 17 00:00:00 2001
+From: Joschka Lingemann <joschka.lingemann@cern.ch>
+Date: Wed, 23 Nov 2016 18:02:52 +0100
+Subject: [PATCH] Add missing install targets
+
+- header files for some ExRoot* classes
+- all pcm files generated when ROOT version > 6.x
+---
+ classes/CMakeLists.txt                 |  7 +++++++
+ display/CMakeLists.txt                 |  7 +++++++
+ external/ExRootAnalysis/CMakeLists.txt | 13 ++++++++++++-
+ modules/CMakeLists.txt                 | 12 +++++++++++-
+ 4 files changed, 37 insertions(+), 2 deletions(-)
+
+diff --git a/delphes-3.4.0/classes/CMakeLists.txt b/delphes-3.4.0/classes/CMakeLists.txt
+index fd7fb15..51b353c 100644
+--- a/delphes-3.4.0/classes/CMakeLists.txt
++++ b/delphes-3.4.0/classes/CMakeLists.txt
+@@ -20,3 +20,10 @@ add_library(classes OBJECT ${sources} ClassesDict.cxx)
+ 
+ # install public headers
+ install(FILES ${headers} DESTINATION include/classes)
++
++# install pcms if they are created
++if (${ROOT_VERSION} GREATER 6)
++  install(FILES
++      ${PROJECT_BINARY_DIR}/classes/libClassesDict_rdict.pcm
++      DESTINATION lib)
++endif()
+diff --git a/delphes-3.4.0/display/CMakeLists.txt b/delphes-3.4.0/display/CMakeLists.txt
+index d11b9c6..43d208e 100644
+--- a/delphes-3.4.0/display/CMakeLists.txt
++++ b/delphes-3.4.0/display/CMakeLists.txt
+@@ -11,3 +11,10 @@ list(REMOVE_ITEM headers ${CMAKE_CURRENT_SOURCE_DIR}/DisplayLinkDef.h)
+ DELPHES_GENERATE_DICTIONARY(DisplayDict ${headers} LINKDEF DisplayLinkDef.h)
+ 
+ add_library(display OBJECT ${sources} DisplayDict.cxx)
++
++# install pcms if they are created
++if (${ROOT_VERSION} GREATER 6)
++  install(FILES
++      ${PROJECT_BINARY_DIR}/external/DisplayDict_rdict.pcm
++      DESTINATION lib)
++endif()
+diff --git a/delphes-3.4.0/external/ExRootAnalysis/CMakeLists.txt b/delphes-3.4.0/external/ExRootAnalysis/CMakeLists.txt
+index 6ac4873..6cf2043 100644
+--- a/delphes-3.4.0/external/ExRootAnalysis/CMakeLists.txt
++++ b/delphes-3.4.0/external/ExRootAnalysis/CMakeLists.txt
+@@ -12,4 +12,15 @@ DELPHES_GENERATE_DICTIONARY(ExRootAnalysisDict ${headers} LINKDEF ExRootAnalysis
+ add_library(ExRootAnalysis OBJECT ${sources} ExRootAnalysisDict.cxx)
+ 
+ # install headers needed by public Delphes headers to include/
+-install(FILES ExRootTask.h ExRootConfReader.h DESTINATION include/ExRootAnalysis)
++install(FILES ExRootTask.h ExRootConfReader.h ExRootTreeWriter.h ExRootTreeBranch.h
++        DESTINATION include/ExRootAnalysis)
++
++# install all LinkDef files into the same folder to ease user environment
++install(FILES ExRootAnalysisLinkDef.h DESTINATION include)
++
++# install pcms if they are created
++if (${ROOT_VERSION} GREATER 6)
++  install(FILES
++      ${PROJECT_BINARY_DIR}/external/ExRootAnalysis/libExRootAnalysisDict_rdict.pcm
++      DESTINATION lib)
++endif()
+diff --git a/delphes-3.4.0/modules/CMakeLists.txt b/delphes-3.4.0/modules/CMakeLists.txt
+index 0b0604f..c2d7394 100644
+--- a/delphes-3.4.0/modules/CMakeLists.txt
++++ b/delphes-3.4.0/modules/CMakeLists.txt
+@@ -19,4 +19,14 @@ list(REMOVE_ITEM sources ${CMAKE_CURRENT_SOURCE_DIR}/PileUpMergerPythia8.cc)
+ add_library(modules OBJECT ${sources} FastJetDict.cxx ModulesDict.cxx)
+ 
+ # install public headers
+-install(FILES Delphes.h DESTINATION include/modules)
++install(FILES Delphes.h
++        DESTINATION include/modules
++)
++
++# install pcms if they are created
++if (${ROOT_VERSION} GREATER 6)
++  install(FILES
++      ${PROJECT_BINARY_DIR}/modules/libModulesDict_rdict.pcm
++      ${PROJECT_BINARY_DIR}/modules/libFastJetDict_rdict.pcm
++      DESTINATION lib)
++endif()

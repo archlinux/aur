@@ -1,0 +1,57 @@
+From 7d8363633177b762d8293d313bd4ce0cbbc397e8 Mon Sep 17 00:00:00 2001
+From: JP-Ellis <josh@jpellis.me>
+Date: Fri, 27 Jan 2017 20:04:35 +1100
+Subject: [PATCH] Include all ExRootAnalysis headers
+
+When the headers are installed by `make install`, they are all installed in:
+```
+$INSTALL_PREFIX/include/ExRootAnalysis
+```
+
+In addition, one include directive has been fixed as per instructions in the
+pull request.
+
+Signed-off-by: JP-Ellis <josh@jpellis.me>
+---
+ examples/CaloGrid.cpp                  |  2 +-
+ external/ExRootAnalysis/CMakeLists.txt | 14 ++++++++++++--
+ 2 files changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/delphes-3.4.0/examples/CaloGrid.cpp b/delphes-3.4.0/examples/CaloGrid.cpp
+index 5cc15b5..f466fa9 100644
+--- a/delphes-3.4.0/examples/CaloGrid.cpp
++++ b/delphes-3.4.0/examples/CaloGrid.cpp
+@@ -10,7 +10,7 @@
+ 
+ #include "display/Delphes3DGeometry.h"
+ #include "classes/DelphesClasses.h"
+-#include "external/ExRootAnalysis/ExRootConfReader.h"
++#include "ExRootAnalysis/ExRootConfReader.h"
+ 
+ #include "TCanvas.h"
+ #include "TStyle.h"
+diff --git a/delphes-3.4.0/external/ExRootAnalysis/CMakeLists.txt b/delphes-3.4.0/external/ExRootAnalysis/CMakeLists.txt
+index 6cf2043..ca4bae3 100644
+--- a/delphes-3.4.0/external/ExRootAnalysis/CMakeLists.txt
++++ b/delphes-3.4.0/external/ExRootAnalysis/CMakeLists.txt
+@@ -12,8 +12,18 @@ DELPHES_GENERATE_DICTIONARY(ExRootAnalysisDict ${headers} LINKDEF ExRootAnalysis
+ add_library(ExRootAnalysis OBJECT ${sources} ExRootAnalysisDict.cxx)
+ 
+ # install headers needed by public Delphes headers to include/
+-install(FILES ExRootTask.h ExRootConfReader.h ExRootTreeWriter.h ExRootTreeBranch.h
+-        DESTINATION include/ExRootAnalysis)
++install(FILES
++  ExRootClassifier.h
++  ExRootConfReader.h
++  ExRootFilter.h
++  ExRootProgressBar.h
++  ExRootResult.h
++  ExRootTask.h
++  ExRootTreeBranch.h
++  ExRootTreeReader.h
++  ExRootTreeWriter.h
++  ExRootUtilities.h
++  DESTINATION include/ExRootAnalysis)
+ 
+ # install all LinkDef files into the same folder to ease user environment
+ install(FILES ExRootAnalysisLinkDef.h DESTINATION include)

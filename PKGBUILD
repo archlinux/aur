@@ -2,7 +2,7 @@
 
 pkgname=delphes
 pkgver=3.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A framework for fast simulation of a generic collider experiment"
 url="http://cp3.irmp.ucl.ac.be/projects/delphes"
 arch=('i686' 'x86_64')
@@ -10,12 +10,18 @@ license=('GPLv3')
 depends=("cmake"
          "root")
 source=("https://github.com/delphes/delphes/archive/${pkgver}.tar.gz"
-        "ExRootAnalysis.patch")
+        "0f5bf9d.patch"
+        "7d83636.patch"
+        "781e311.patch")
 sha256sums=('35a11e7c027a4f0523827babce7b496ff660dfabb2e8b94fd8be1da7468ad197'
-            'be6fc8df9c89d2b7a14ce8f01b9848ec13eec63aece31d51939baa90d89ba60f')
+            '502ba71464610b4a76708941cb528bfb30829ebaff6a6b8509304086d13cefea'
+            '550ed21c707ba71c8df702291b914b00835c44b56118cdc074c31d9a43e7ae6d'
+            'c48fab60b712d7ac3841ebeba4feb8201da3daf73ebcc7103790f088543d39ea')
 
 prepare() {
-    patch -p 1 < ExRootAnalysis.patch
+    patch -p 1 < 0f5bf9d.patch
+    patch -p 1 < 781e311.patch
+    patch -p 1 < 7d83636.patch
 }
 
 build() {
