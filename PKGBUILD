@@ -14,13 +14,13 @@ sha256sums=('51c80d5ac2c1f8f4a8c75fa271646529c8a6393a0b088dab50fb62138d092ee9')
 makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-lazr-delegates() {
-  depends=('python')
+  depends=('python' 'python-setuptools' 'python-zope-interface' 'python-nose')
   cd "$srcdir/$_pkgbase-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
 package_python2-lazr-delegates() {
-  depends=('python2')
+  depends=('python2' 'python2-setuptools' 'python2-zope-interface' 'python2-nose')
   cd "$srcdir/$_pkgbase-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
