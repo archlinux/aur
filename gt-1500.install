@@ -1,9 +1,9 @@
 post_install() {
   echo "Running iscan-registry to register plugins and firmware with iscan"
-  iscan-registry -a interpreter usb 0x04b8 0x012e /usr/lib/iscan/libesint86 /usr/share/iscan/esfw86.bin
+  iscan-registry -a interpreter usb 0x04b8 0x0133 /usr/lib/iscan/libesint86 /usr/share/iscan/esfw86.bin
 }
 
 pre_remove() {
   echo "Unregistering gt-1500 plugins/firmware"
-  iscan-registry -r interpreter usb 0x04b8 0x012e /usr/lib/iscan/libesint86 /usr/share/iscan/esfw86.bin
+  iscan-registry -r interpreter usb 0x04b8 0x0133 /usr/lib/iscan/libesint86 /usr/share/iscan/esfw86.bin
 }
