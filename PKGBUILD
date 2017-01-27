@@ -2,7 +2,7 @@
 
 _pkgname=epiphany
 pkgname=$_pkgname-git
-pkgver=3.23.3+36+g9525654e9
+pkgver=3.23.4+53+ga0545a9e5
 pkgrel=1
 install=epiphany.install
 pkgdesc="A GNOME web browser based on the WebKit rendering engine."
@@ -39,7 +39,7 @@ prepare() {
   git config --local libgd.url "${srcdir}/libgd"
   git config --local gvdb.url "${srcdir}/gvdb/gvdb"
   git submodule update
-  patch -Np1 -i ../pluginsdir.diff
+  # patch -Np1 -i ../pluginsdir.diff
   NOCONFIGURE=1 ./autogen.sh
 }
 
