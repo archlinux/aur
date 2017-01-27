@@ -1,13 +1,13 @@
 pkgbase = beets-copyartifacts-git
 	pkgdesc = A beets plugin that moves non-music files during the import process.
-	pkgver = 0.1.2.r24.dac4a16
+	pkgver = 0.1.2.r34.1a0c281
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/sbarakat/beets-copyartifacts
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = python2
+	depends = python
 	depends = beets
 	provides = beets-copyartifacts
 	conflicts = beets-copyartifacts
