@@ -1,7 +1,7 @@
 # Contributor: jellysheep <max.mail@dameweb.de>
 
 pkgname=mingw-w64-eigen
-pkgver=3.3.1
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra. (mingw-w64)"
 arch=('any')
@@ -11,15 +11,17 @@ makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://bitbucket.org/eigen/eigen/get/${pkgver}.tar.bz2"
         'eigen-3.2_gcc58087.patch')
-sha1sums=('d1a9c2b64db3628956482b4a934cab3b508dc29e'
+sha1sums=('d6fc2c3d7c627441dfcc6089c1cca07e0b5e1be5'
           '87bc1e62edce393aaa3145f66791abbafff7e08f')
-provides=('mingw-w64-eigen3')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "$srcdir"/eigen-eigen-*
   patch -p1 -i "$srcdir"/eigen-3.2_gcc58087.patch
+
+  #https://gitlab.kitware.com/cmake/cmake/issues/16509
+  sed -i "s|find_package(CUDA|#find_package(CUDA|g" unsupported/test/CMakeLists.txt
 }
 
 build() {
