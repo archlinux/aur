@@ -1,6 +1,6 @@
 # Maintainer: Jianfeng Zhang <swordfeng123@gmail.com> https://keybase.io/swordfeng
 
-pkgbase=shadowsocks-go
+pkgbase=shadowsocks-go-git
 pkgname=('shadowsocks-go-server' 'shadowsocks-go-local')
 groups=('shadowsocks-go')
 pkgver=1.2.1.r2.g5c6f652
