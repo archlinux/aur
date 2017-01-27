@@ -1,6 +1,6 @@
 pkgbase = python-pycryptodome
 	pkgver = 3.4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.pycryptodome.org/
 	arch = i686
 	arch = x86_64
@@ -15,11 +15,13 @@ pkgname = python-pycryptodome
 	pkgdesc = Collection of cryptographic algorithms and protocols, implemented for use from Python 3.
 	depends = python
 	depends = gmp
+	provides = python-crypto
 	conflicts = python-crypto
 
 pkgname = python2-pycryptodome
 	pkgdesc = Collection of cryptographic algorithms and protocols, implemented for use from Python 2.
 	depends = python2
 	depends = gmp
+	provides = python2-crypto
 	conflicts = python2-crypto
 

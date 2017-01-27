@@ -3,7 +3,7 @@
 pkgbase=python-pycryptodome
 pkgname=('python-pycryptodome' 'python2-pycryptodome')
 pkgver=3.4.3
-pkgrel=2
+pkgrel=3
 license=('BSD')
 arch=('i686' 'x86_64')
 url='http://www.pycryptodome.org/'
@@ -35,6 +35,7 @@ package_python-pycryptodome() {
   pkgdesc="Collection of cryptographic algorithms and protocols, implemented for use from Python 3."
   depends=('python' 'gmp')
   conflicts=('python-crypto')
+  provides=('python-crypto')
 
   cd "pycryptodome-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
@@ -45,6 +46,7 @@ package_python2-pycryptodome() {
   pkgdesc="Collection of cryptographic algorithms and protocols, implemented for use from Python 2."
   depends=('python2' 'gmp')
   conflicts=('python2-crypto')
+  provides=('python2-crypto')
 
   cd "pycryptodome-$pkgver-python2"
   python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
