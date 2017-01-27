@@ -1,0 +1,4 @@
+ircd-hybrid-*.tar.gz
+ircd-hybrid-*.pkg.tar.xz
+src/
+pkg/
