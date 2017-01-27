@@ -1,13 +1,13 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=freebsd-docs-porters-handbook
-pkgver=49693
+pkgver=49802
 pkgrel=1
 pkgdesc="The Porter's Handbook from the FreeBSD Documentation Project."
 arch=(any)
 url="https://www.freebsd.org/docs.html"
 license=('BSD')
 source=("ftp://ftp.freebsd.org/pub/FreeBSD/doc/en_US.ISO8859-1/books/porters-handbook/book.html-split.tar.bz2")
-md5sums=('610ab621468683edaa2cc1e028dfcdca')
+md5sums=('67ffe65654cc7c1234f624fa4d9e2219')
 
 prepare() {
     rm $srcdir/book.html-split.tar.bz2
