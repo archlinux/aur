@@ -30,7 +30,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data
-pkgver=20170120.r3267.faab60c4
+pkgver=20170126.r3294.1ce4a09c
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -48,7 +48,7 @@ makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync')
 conflicts=('purr-data')
 install=purr-data.install
 options=('!makeflags' '!strip')
-source=("$pkgname::git+https://git.purrdata.net/jwilkes/purr-data.git#commit=faab60c456d870e5edc6864314f32ac2e10dbfe0"
+source=("$pkgname::git+https://git.purrdata.net/jwilkes/purr-data.git#commit=1ce4a09c57098fe9523caf078f1a49eeea02215a"
 	"RTcmix-pd-LCPLAY-stabilize.patch"
 	"userconfig.patch")
 md5sums=('SKIP'
