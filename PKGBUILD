@@ -1,7 +1,8 @@
+# Maintainer: Étienne Deparis <etienne@depar.is>
 # Maintainer: Christoph J. Thompson <thompsonc@protonmail.ch>
 
 pkgname=nitrokey-app
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Nitrokey management application"
 arch=('i686' 'x86_64')
@@ -11,7 +12,7 @@ depends=('qt5-base' 'libusb' 'hicolor-icon-theme')
 makedepends=('cmake')
 install=nitrokey-app.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Nitrokey/nitrokey-app/archive/v$pkgver.tar.gz")
-sha256sums=('dd66272baf2b6818b9bb40391ec4901a36d2df2dbfb8c925b6502a57bd57bf01')
+sha256sums=('6ab756ca34e0deedfe5e99eeb5763a68adc9bafad78ee94b3b9aad2d28fed8c8')
 
 prepare() {
   cd $pkgname-$pkgver
