@@ -1,7 +1,7 @@
 pkgbase = brave-git
 	pkgdesc = A web browser that stops ads and trackers by default. Master branch.
 	pkgver = 0.13.1.5004
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.brave.com/
 	arch = x86_64
 	groups = networking

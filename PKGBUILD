@@ -3,7 +3,7 @@
 pkgname=brave-git
 _pkgname=browser-laptop
 pkgver=0.13.1.5004
-pkgrel=1
+pkgrel=2
 pkgdesc="A web browser that stops ads and trackers by default. Master branch."
 arch=('x86_64') # Upstream supports x86_64 only
 url="https://www.brave.com/"
@@ -63,7 +63,7 @@ package() {
 
   install -dm0755 "$pkgdir"/usr/share/applications
 
-  cp --reflink=auto "$srcdir"/brave.desktop "$pkgdir"/usr/share/applications/brave.desktop
+  install -Dm0755 "$srcdir"/brave.desktop "$pkgdir"/usr/share/applications/brave.desktop
 
   install -Dm0644 res/app.png "$pkgdir"/usr/share/pixmaps/brave.png
 
