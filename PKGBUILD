@@ -24,7 +24,7 @@ declare -rgA _system_libs=(
 )
 
 pkgname=inox
-pkgver=55.0.2883.87
+pkgver=56.0.2924.76
 pkgrel=1
 _launcher_ver=3
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
@@ -36,18 +36,17 @@ depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'ffmpeg' 'icu' 'libevent'
          'dbus' 'flac' 'snappy' 'libwebp' 'libxslt' 're2' 'minizip'
          'pciutils' 'libpulse' 'harfbuzz-icu' 'libsecret' 'libvpx'
          'perl' 'perl-file-basedir' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'git')
+makedepends=('gtk3' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'git')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
-optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
+optdepends=('kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet')
 install=inox.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/inox.desktop
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-52.0.2743.116-unset-madv_free.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-glib-2.24.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-system-ffmpeg-r4.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-icu58.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-widevine.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-battery-status-service.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-autofill-download-manager.patch
@@ -68,34 +67,35 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-new-avatar-menu.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-first-run-behaviour.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/fix-building-without-safebrowsing.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/fix-building-without-webrtc.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/product_logo_{16,22,24,32,48,64,128,256}.png)
 
-sha256sums=('e81bd3140d9c84dfee04d9a94686dfe6a20ae79475d84f17154c5536dcb81a58'
+sha256sums=('cfb08e226b9c16ad887eb96d715a9cc4ab097d1a79e2e68c8749a7a4164b3c38'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
-            '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
+            '6953651c002efe7fca8cda3143e963037ed38a0a4bc7ccb79304637c45340047'
             'e3c474dbf3822a0be50695683bd8a2c9dfc82d41c1524a20b4581883c0c88986'
-            'fad964da0295a6a7b4393778e717ebdfd37dec33fe78beb2c639abd3973deb7a'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
             'c46e918f9e469aefdf4861967dcba98a30b3af0fedb5cb0f674efbdf253bc87a'
-            'e64ec33773d31ea599ec3436a728f5a2d9a6a2c07e69ec70176d051a5144553a'
+            '2bed04239c29040275022b73db1dc78cdb03a043b94ef5dbaf7052403454eb03'
             'a7329d7f3099f6b8dfe4b7addeb7abbca1cf079139a86c6483a51fed0190478e'
-            'b3fa783f09c5cd927d4af43c9c0a1f24744d840d5002c2e5a5c5af073fdbcf1b'
+            '65eb73400a7bd3c3bd2735b24edf26e0af0d600829858ffc6df648c78ec76f12'
             '3a331e004ac84a493dced9a990f71119d3ef31ebbfd67b13a7ec194e835dea11'
             'c2bab92d8d237d341b79d868e814807c3f862d3b3c22a87bbf5e905853e516ae'
             'ed4471fa8a984ccea7fd1900a76865e65a8f5afb6a6390faa22a4758d77bbc07'
             '562eea848542f76537a9f3993bac397b523d0ce419416daf0bb4dd17f5203c7c'
             'b081462f645ffab7aaf2c310761c269329d3d22a36cf463dd0ba5ebb3da2141e'
             'e325c598fa3357d7eac10a7635b63e8f543cd77d60ffc299b32560861fc16e67'
-            'fe6eddac22aeb0cab1dfcf5932e6d996b7dc3f1a260f55f388a9c397f8cf3d00'
+            'bdb2b5c7174ddf71d1f172c7f99d2d11f3e62595756d31a587e1264308f7d67c'
             '8412971b2814c1135375d5e5fc52f0f005ac15ed9e7625db59f7f5297f92727e'
             '55b75daf5aad2a8929c80837f986d4474993f781c0ffa4169e38483b0af6e385'
-            '37f9ad0b8d572378ad2c1c6c47d2135f76d5c15a20170bb1712d7bd40caf247e'
+            'b01a3f25cb91bcce9bc950c61929d0383cee46ff4deb59fb1e371385003fcbfe'
             '9e1ce0c47dd51595f13a6f611de39573022c7ff59fc003ab775a5319ebfedad8'
             'bb28fcc1a2fd37ee972b2b02014bbb467cc1baef85c9e6c998b11e97d47c9ac9'
             '9e37751dca4a2b60681ba14119bc3839685ae420686664de7dfc4245f9eeff3c'
             'c47efe038f502d4fe2b66e59347b01c58ee8739a8d8f050c6c1cc60752d24f13'
-            '94a8bc6bc33c781c676da1fc4d2901a89e0c71c9284a007520d025a580e1cf36'
+            '27fa8a5c6354e38ff72c4dfa3a6ec01d8e336c84fd809ba4b5a69ce6d556d8cb'
+            'a5a5c298564b2ee2608ef9eb139d3200252cd1afd2d77fcb475451323d9de042'
             '71471fa4690894420f9e04a2e9a622af620d92ac2714a35f9a4c4e90fa3968dd'
             '4a533acefbbc1567b0d74a1c0903e9179b8c59c1beabe748850795815366e509'
             '7b88830c5e0e9819f514ad68aae885d427541a907e25607e47dee1b0f38975fd'
@@ -120,15 +120,12 @@ prepare() {
   # Make it possible to remove third_party/adobe
   echo > "flapper_version.h"
 
-  # Build fixes from Gentoo
+  # Fixes from Gentoo
   patch -Np1 -i ../chromium-system-ffmpeg-r4.patch
-  patch -Np1 -i ../chromium-icu58.patch
-
-  # Disable MADV_FREE (if set by glibc)
-  # https://bugzilla.redhat.com/show_bug.cgi?id=1361157
-  patch -Np1 -i ../chromium-52.0.2743.116-unset-madv_free.patch
+  patch -Np1 -i ../chromium-glib-2.24.patch
 
   patch -Np1 -i ../fix-building-without-safebrowsing.patch
+  patch -Np1 -i ../fix-building-without-webrtc.patch
 
   # Apply Inox patches
   patch -Np1 -i ../disable-autofill-download-manager.patch
@@ -199,7 +196,7 @@ build() {
     'is_debug=false'
     'fatal_linker_warnings=false'
     'treat_warnings_as_errors=false'
-    'fieldtrial_testing_like_official_build=false'
+    'fieldtrial_testing_like_official_build=true'
     'remove_webcore_debug_symbols=true'
     'ffmpeg_branding="Chrome"'
     'proprietary_codecs=true'
