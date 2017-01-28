@@ -18,9 +18,9 @@ backup=()
 options=()
 install=()
 changeLog=()
-source=("https://bitbucket.org/Thesilentdrifter/tutanota-electron/raw/838b4dfa85ffcda444f54fca8bc7c94363f0f0c4/tutanota-electron-git.tar.gz")
-md5sums=('d248b739df5578c713637c80e3dd3a07')
-sha512sums=('549774afb58995c002bb1e174a632712d0907cb14e82c2599e9451fb1e53f1f8f949ba16c7812f6549aa0d4079cb1691f701d65917fb100e5f5fe8d125d06abf')
+source=("https://bitbucket.org/Thesilentdrifter/tutanota-electron/raw/551775cb506ccd86d55f6af2fac51e07b986572e/tutanota-electron-git.tar.gz")
+md5sums=('7ec5cf25d73d68f8d74a0664609df84c')
+sha512sums=('32c4d3f6537c3772a8dac03de974b923600f08fe46fe5561f131ac1312d8fdb6d1f16fa92c44b9e0be8c66604f053a879927ef19f05c9a1117ad0efc4a67430d')
 build() {
   cd "$pkgname"
   ./build.sh
