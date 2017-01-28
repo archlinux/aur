@@ -6,7 +6,7 @@ pkgrel=0
 arch=('i686' 'x86_64')
 url='https://github.com/keplerproject/lua-compat-5.3'
 license=('MIT')
-makedepends=('lua51' 'lua52')
+makedepends=('lua51')
 source=("https://github.com/keplerproject/lua-compat-5.3/archive/v$pkgver.tar.gz")
 md5sums=('98f93f9de24b26ee5f6f7053979599f8')
 
