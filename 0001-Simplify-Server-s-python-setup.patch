@@ -1,26 +1,17 @@
-From 5a73a2fe9d3a5ec4f36e2cf01205ea87ebb2ff07 Mon Sep 17 00:00:00 2001
-From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
-Date: Thu, 26 Jan 2017 20:25:59 +0100
+From b18ddcf15e8af2e91c23419df8549d73f3e965c3 Mon Sep 17 00:00:00 2001
+From: Dave Page <dpage@pgadmin.org>
+Date: Thu, 28 Jan 2017 01:15:00 +0100
 Subject: [PATCH] Simplify Server's python setup
 
-If the program name is set to match the venv's interpreter executable,
-Py_Initialize will set up sys.path to match the virtualenv.
-
-Instead of having the configuring a full search path, configure just the
-executable and let Python figure out the rest.
-
-Use PySys_SetArgvEx to avoid the path getting modified further.
-
-Tested on Arch Linux using Python 2.7.13 and Python 3.6.
 ---
  runtime/BrowserWindow.cpp |   6 +-
  runtime/ConfigWindow.cpp  |  16 +++-
  runtime/ConfigWindow.h    |   6 +-
  runtime/ConfigWindow.ui   |  22 ++++-
- runtime/Server.cpp        | 228 +++++++++++-----------------------------------
+ runtime/Server.cpp        | 227 +++++++++++-----------------------------------
  runtime/Server.h          |   6 +-
- runtime/pgAdmin4.cpp      |   6 +-
- 7 files changed, 99 insertions(+), 191 deletions(-)
+ runtime/pgAdmin4.cpp      | 103 ++++++++++-----------
+ 7 files changed, 143 insertions(+), 243 deletions(-)
 
 diff --git a/runtime/BrowserWindow.cpp b/runtime/BrowserWindow.cpp
 index 4b96abe50c89b14c..6279cd4b303d8e06 100644
@@ -162,10 +153,10 @@ index 40d87be43803204a..8b379052a1da8cd0 100644
      </layout>
     </item>
 diff --git a/runtime/Server.cpp b/runtime/Server.cpp
-index e5be20569faaf6c4..9b40bde74fbe74bd 100644
+index e5be20569faaf6c4..078ec1ac93dc6a1b 100644
 --- a/runtime/Server.cpp
 +++ b/runtime/Server.cpp
-@@ -22,183 +22,87 @@
+@@ -22,183 +22,84 @@
  // App headers
  #include "Server.h"
  
@@ -245,8 +236,7 @@ index e5be20569faaf6c4..9b40bde74fbe74bd 100644
 +    wcscpy(m_pyAppName, appName.c_str());
 +    qDebug() << "Python interpreter: " << QString::fromWCharArray(m_pyAppName);
  #endif
-+    Py_SetProgramName(m_pyAppName);
- 
+-
 -    // Setup the search path
 -    QSettings settings;
 -    QString python_path = settings.value("PythonPath").toString();
@@ -354,8 +344,7 @@ index e5be20569faaf6c4..9b40bde74fbe74bd 100644
 -        Py_SetPythonHome(wcPythonHome);
 -#endif
 -    }
-+    // Reset the path in case this isn't our first initialization
-+    Py_SetPath(NULL);
++    Py_SetProgramName(m_pyAppName);
  
      Py_Initialize();
  
@@ -404,7 +393,7 @@ index e5be20569faaf6c4..9b40bde74fbe74bd 100644
  }
  
  bool Server::Init()
-@@ -258,33 +162,11 @@ void Server::run()
+@@ -258,33 +159,11 @@ void Server::run()
  
      // Run the app!
  #ifdef PYTHON2
@@ -456,30 +445,127 @@ index 8df8503bb553eca4..5cc51f3d8b3e1f9b 100644
  
  #endif // SERVER_H
 diff --git a/runtime/pgAdmin4.cpp b/runtime/pgAdmin4.cpp
-index b1f470d811a7cfb1..d9a47178f0dbad16 100644
+index b1f470d811a7cfb1..e295e17b320f5e80 100644
 --- a/runtime/pgAdmin4.cpp
 +++ b/runtime/pgAdmin4.cpp
-@@ -111,17 +111,17 @@ int main(int argc, char * argv[])
+@@ -72,68 +72,63 @@ int main(int argc, char * argv[])
  
-             ConfigWindow *dlg = new ConfigWindow();
-             dlg->setWindowTitle(QWidget::tr("Configuration"));
+     // Fire up the webserver
+     Server *server;
++    server = new Server(port);
+ 
+-    bool done = false;
+-
+-    while (done != true)
++    if (!server->Init())
+     {
+-        server = new Server(port);
++        qDebug() << server->getError();
+ 
+-        if (!server->Init())
++        QString error = QString(QWidget::tr("An error occurred initialising the application server:\n\n%1")).arg(server->getError());
++        QMessageBox::critical(NULL, QString(QWidget::tr("Fatal Error")), error);
++
++        exit(1);
++    }
++
++    server->start();
++
++    // This is a hack. Wait a second and then check to see if the server thread
++    // is still running. If it's not, we probably had a startup error
++    delay(1000);
++
++    // Any errors?
++    if (server->isFinished() || server->getError().length() > 0)
++    {
++        splash->finish(NULL);
++
++        qDebug() << server->getError();
++
++        QString error = QString(QWidget::tr("An error occurred initialising the application server:\n\n%1")).arg(server->getError());
++        QMessageBox::critical(NULL, QString(QWidget::tr("Fatal Error")), error);
++
++        // Allow the user to tweak the Python Path if needed
++        QSettings settings;
++        bool ok;
++
++        ConfigWindow *dlg = new ConfigWindow();
++        dlg->setWindowTitle(QWidget::tr("Configuration"));
++        dlg->setPythonExecutable(settings.value("PythonExecutable").toString());
++        dlg->setApplicationPath(settings.value("ApplicationPath").toString());
++        dlg->setModal(true);
++        ok = dlg->exec();
++
++        QString pythonexecutable = dlg->getPythonExecutable();
++        QString applicationpath = dlg->getApplicationPath();
++
++        if (ok)
+         {
+-            qDebug() << server->getError();
++            settings.setValue("PythonExecutable", pythonexecutable);
++            settings.setValue("ApplicationPath", applicationpath);
++            settings.sync();
+ 
+-            QString error = QString(QWidget::tr("An error occurred initialising the application server:\n\n%1")).arg(server->getError());
+-            QMessageBox::critical(NULL, QString(QWidget::tr("Fatal Error")), error);
++            QString msg = QString(QWidget::tr("Please restart the application to allow the changes to take effect."));
++            QMessageBox::information(NULL, QString(QWidget::tr("Restart")), msg);
+ 
+-            exit(1);
+-        }
+-
+-        server->start();
+-
+-        // This is a hack. Wait a second and then check to see if the server thread
+-        // is still running. If it's not, we probably had a startup error
+-        delay(1000);
+-
+-        // Any errors?
+-        if (server->isFinished() || server->getError().length() > 0)
+-        {
+-            splash->finish(NULL);
+-
+-            qDebug() << server->getError();
+-
+-            QString error = QString(QWidget::tr("An error occurred initialising the application server:\n\n%1")).arg(server->getError());
+-            QMessageBox::critical(NULL, QString(QWidget::tr("Fatal Error")), error);
+-
+-            // Allow the user to tweak the Python Path if needed
+-            QSettings settings;
+-            bool ok;
+-
+-            ConfigWindow *dlg = new ConfigWindow();
+-            dlg->setWindowTitle(QWidget::tr("Configuration"));
 -            dlg->setPythonPath(settings.value("PythonPath").toString());
-+            dlg->setPythonExecutable(settings.value("PythonExecutable").toString());
-             dlg->setApplicationPath(settings.value("ApplicationPath").toString());
-             dlg->setModal(true);
-             ok = dlg->exec();
- 
+-            dlg->setApplicationPath(settings.value("ApplicationPath").toString());
+-            dlg->setModal(true);
+-            ok = dlg->exec();
+-
 -            QString pythonpath = dlg->getPythonPath();
-+            QString pythonexecutable = dlg->getPythonExecutable();
-             QString applicationpath = dlg->getApplicationPath();
- 
-             if (ok)
-             {
+-            QString applicationpath = dlg->getApplicationPath();
+-
+-            if (ok)
+-            {
 -                settings.setValue("PythonPath", pythonpath);
-+                settings.setValue("PythonExecutable", pythonexecutable);
-                 settings.setValue("ApplicationPath", applicationpath);
-                 settings.sync();
-             }
+-                settings.setValue("ApplicationPath", applicationpath);
+-                settings.sync();
+-            }
+-            else
+-            {
+-                exit(1);
+-            }
+-
+-            delete server;
++            exit(0);
+         }
+         else
+-            done = true;
++        {
++            exit(1);
++        }
+     }
+ 
+ 
 -- 
 2.11.0
 
