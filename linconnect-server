@@ -1,3 +1,0 @@
-#!/usr/bin/sh
-
-exec python2 /usr/lib/linconnect/linconnect_server.py
