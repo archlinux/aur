@@ -1,0 +1,18 @@
+pkgbase = gog-bastion
+	pkgdesc = An action role-playing game set in a lush imaginative world (GOG version)
+	pkgver = 2.0.0.1
+	pkgrel = 1
+	url = http://www.supergiantgames.com/games/bastion
+	arch = i686
+	arch = x86_64
+	license = custom
+	optdepends = firejail: Automatically sandbox this application from your OS
+	source = gog://gog_bastion_2.0.0.1.sh
+	source = gog-bastion.desktop
+	source = gog-bastion
+	sha256sums = 8c5e08d8a22d24b928b06472bb12ac2c039e1dec1931cef89999c305e96478f6
+	sha256sums = fafd66b2441bf8e889ad7331bdc162efb6989b5999bb4235f2ba07fef9f6c718
+	sha256sums = b18220f78b29d6a1f9eb92a9def50021f217784eeaf447b7564b99e11a24ad40
+
+pkgname = gog-bastion
+
