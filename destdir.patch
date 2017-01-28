@@ -1,0 +1,58 @@
+diff -ur andreas-kupries-critcl-62a03a2/build.tcl andreas-kupries-critcl-62a03a2-mod/build.tcl
+--- andreas-kupries-critcl-62a03a2/build.tcl	2016-11-03 08:36:34.000000000 +0100
++++ andreas-kupries-critcl-62a03a2-mod/build.tcl	2017-01-28 11:31:04.251417238 +0100
+@@ -1,7 +1,7 @@
+ #!/bin/sh
+ # -*- tcl -*- \
+ exec tclsh "$0" ${1+"$@"}
+-package require Tcl 8.4
++package require Tcl 8.5
+ unset -nocomplain ::errorInfo
+ set me [file normalize [info script]]
+ proc main {} {
+@@ -105,6 +105,24 @@
+     }
+     return $path
+ }
++proc dstlfromlib {path} {
++    # kinda the inverse of findlib above
++    # returns the path to dstlpath, relative the */lib path returned by findlib
++    # The path is returned
++    # as a list of directories 
++    set relpath {}
++    while {1} {
++        if {[file tail $path] eq "lib"} {
++            break
++        }
++        set new [file dirname $path]
++        set relpath [list [file tail $path] {*}$relpath]
++        if {$new eq $path} break
++        set path $new
++    }
++    return $relpath
++}
++        
+ proc id {cv vv} {
+     upvar 1 $cv commit $vv version
+ 
+@@ -366,9 +384,17 @@
+ 	# Application: critcl
+ 
+ 	set theapp [critapp $dsta]
+-
+-	set    c [open $theapp w]
+-	puts  $c "#!/bin/sh\n# -*- tcl -*- \\\nexec [file dirname [file normalize [info nameofexecutable]/___]] \"\$0\" \$\{1+\"\$@\"\}\npackage require critcl::app\ncritcl::app::main \$argv"
++	set reldstl [dstlfromlib $dstl]
++        
++	set c [open $theapp w]
++	puts $c {#!/bin/sh}
++	puts $c "# -*- tcl -*- \\"
++        puts $c "exec [file dirname [file normalize [info nameofexecutable]/___]] \"\$0\" \$\{1+\"\$@\"\}\n"
++        puts $c {set libpath [file normalize [file join [file dirname [info script]] .. lib]]}
++        puts $c "set libpath \[file join \$libpath $reldstl \]"
++        puts $c {if {$libpath ni $auto_path} {lappend auto_path $libpath}}
++        puts $c "\npackage require critcl::app"
++        puts $c "critcl::app::main \$argv"
+ 	close $c
+ 	+x $theapp
+ 	
