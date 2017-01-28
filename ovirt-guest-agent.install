@@ -1,8 +1,6 @@
 post_install() {
-  /usr/bin/systemd-sysusers ovirt-guest-agent.conf
   /usr/bin/udevadm trigger --subsystem-match="virtio-ports" \
     --attr-match="name=com.redhat.rhevm.vdsm"
-  /usr/bin/systemctl daemon-reload
 }
 
 pre_remove() {
@@ -19,7 +17,6 @@ pre_remove() {
 
 post_remove() {
   /usr/bin/userdel ovirtagent > /dev/null
-  /usr/bin/systemctl daemon-reload
   /usr/bin/udevadm trigger --subsystem-match="virtio-ports" \
     --attr-match="name=com.redhat.rhevm.vdsm"
 }
