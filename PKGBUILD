@@ -1,6 +1,6 @@
 pkgname=cms-germany-git
 pkgver=r3304.6735dd6a
-pkgrel=1
+pkgrel=2
 pkgdesc="CMS, or Contest Management System, is a distributed system for running and (to some extent) organizing a programming contest. This is a fork used for the German IOI team selection process."
 arch=('i686' 'x86_64')
 url="https://github.com/ioi-germany/cms"
@@ -19,6 +19,7 @@ optdepends=(
 )
 makedepends=(
   'asciidoc'
+  'python2-setuptools'
 )
 
 provides=('cms-germany' 'isolate-germany')
