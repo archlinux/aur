@@ -1,43 +1,49 @@
-# Maintainer: Auguste Pop <auguste [at] gmail [dot] com>
+# Maintainer: Michael Straube <straubem@gmx.de>
+# Contributor: Auguste Pop <auguste [at] gmail [dot] com>
 
 pkgname=xboard-git
 pkgrel=1
-pkgver=20150516
-pkgdesc="A graphical user interfaces for chess"
+pkgver=4.9.1.r7.gd887d64f
+pkgdesc="Graphical user interfaces for chess"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/xboard/"
 license=('GPL3')
-depends=('gnuchess' 'gtk2' 'desktop-file-utils' 'librsvg')
+depends=('gnuchess' 'gtk2')
 makedepends=('git')
-_reponame=xboard
-provides=("$_reponame")
-conflicts=("$_reponame")
-source=("git://git.savannah.gnu.org/$_reponame.git")
-backup=("etc/$_reponame/$_reponame.conf")
-install=$_reponame.install
+conflicts=("xboard")
+#backup=("etc/xboard.conf")
+source=("git+http://git.savannah.gnu.org/r/xboard.git")
 md5sums=('SKIP')
 
-pkgver()
-{
-    cd "$srcdir/$_reponame"
-    git log -1 --format="%cd" --date=short | sed 's|-||g'
+pkgver() {
+  cd ${pkgname%-git}
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build()
-{
-    cd "$srcdir/$_reponame"
-
-    # using gnuchess, which is in repo as default chess engine
-    sed -i 's/fairymax/gnuchess/' gtk/xboard.h xaw/xboard.h xboard.conf
-    ./autogen.sh
-    ./configure --prefix=/usr --mandir=/usr/share/man \
-        --sysconfdir=/etc/xboard --disable-rpath --disable-update-mimedb \
-        --enable-zippy --with-gtk
-    make
+prepare() {
+  cd ${pkgname%-git}
+  # Use gnuchess as default engine
+  sed -i 's/fairymax/gnuchess/g' {xaw,gtk}/xboard.h xboard.conf
 }
 
-package()
-{
-    cd "${srcdir}/$_reponame"
-    make DESTDIR="${pkgdir}" install
+build() {
+  cd ${pkgname%-git}
+
+  ./autogen.sh
+
+  ./configure \
+    --prefix=/usr \
+    --mandir=/usr/share/man \
+    --sysconfdir=/etc \
+    --disable-update-mimedb \
+    --with-gtk \
+    --enable-zippy
+  make
+}
+
+package() {
+  cd ${pkgname%-git}
+
+  make DESTDIR="$pkgdir" install
+  install -Dm755 cmail "$pkgdir"/usr/bin/cmail
 }
