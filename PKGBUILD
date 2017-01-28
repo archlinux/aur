@@ -11,7 +11,7 @@ set -u
 #_ubver='1.7.3~177~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
 #_ubver='1.7.5~180~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
 #_ubver='1.7.6~184~ubuntu14.04.1'; _libgee='libgee>=0.18.0'
-_ubver='17.1'; _ubrel='425'; _libgee='libgee>=0.18.0'
+_ubver='17.2'; _ubrel='429'; _libgee='libgee>=0.18.0'
 pkgname='timeshift'
 pkgver="${_ubver}"
 pkgrel='1'
@@ -31,7 +31,8 @@ _verwatch=("${url//code/bazaar}/trunk/changes" 'v\([0-9\.]\+\)' 't')
 #source=("${url}/+files/${_srcdir}.tar.gz")
 _srcdir='~teejee2008/timeshift/trunk'
 source=("timeshift_v${_ubver}_r${_ubrel}.tgz::${url//code/bazaar}/trunk/tarball/${_ubrel}" 'sha256sums.txt')
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('2d7513c581757f60e051ed3bfe053f98f6be3c162692b577d60c93e3dc5ff048'
+            '85fe8263aacd294cb455d9216e649ba16d7710afbb5d0b64d2a29b932f76283e')
 
 prepare_disable() {
   set -u
