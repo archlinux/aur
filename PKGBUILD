@@ -5,13 +5,13 @@ pkgbase=gstreamer0.10-good
 _pkgname=gst-plugins-good
 pkgname=('gstreamer0.10-good' 'gstreamer0.10-good-plugins')
 pkgver=0.10.31
-pkgrel=13
+pkgrel=14
 arch=('i686' 'x86_64')
 license=('LGPL')
 makedepends=('intltool' 'pkgconfig' 'gstreamer0.10-base>=0.10.36-3' 'libavc1394' 'libiec61883' 'aalib' 'libshout' 'libdv' 'flac' 'gconf' 'wavpack' 'taglib' 'libsoup-gnome' 'v4l-utils' 'libcaca' 'bzip2' 'gdk-pixbuf2' 'libpulse' 'jack' 'git' 'cairo' 'libgudev')
 url="http://gstreamer.freedesktop.org/"
 options=(!emptydirs)
-source=("git://repo.or.cz/gstreamer-sdk/$_pkgname#commit=e28fd8886f05bb51c147f871f3a1db2fc2b735a9"
+source=("git+http://repo.or.cz/gstreamer-sdk/$_pkgname.git#commit=e28fd8886f05bb51c147f871f3a1db2fc2b735a9"
         'test-rtp-payloading.patch'
         'souptest.patch')
 sha256sums=('SKIP'

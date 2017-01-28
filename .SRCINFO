@@ -1,6 +1,6 @@
 pkgbase = gstreamer0.10-good
 	pkgver = 0.10.31
-	pkgrel = 13
+	pkgrel = 14
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = gstreamer0.10-good
 	makedepends = cairo
 	makedepends = libgudev
 	options = !emptydirs
-	source = git://repo.or.cz/gstreamer-sdk/gst-plugins-good#commit=e28fd8886f05bb51c147f871f3a1db2fc2b735a9
+	source = git+http://repo.or.cz/gstreamer-sdk/gst-plugins-good.git#commit=e28fd8886f05bb51c147f871f3a1db2fc2b735a9
 	source = test-rtp-payloading.patch
 	source = souptest.patch
 	sha256sums = SKIP
