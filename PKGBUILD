@@ -5,7 +5,7 @@ pkgbase=gstreamer0.10-good
 _pkgname=gst-plugins-good
 pkgname=('gstreamer0.10-good' 'gstreamer0.10-good-plugins')
 pkgver=0.10.31
-pkgrel=15
+pkgrel=16
 arch=('i686' 'x86_64')
 license=('LGPL')
 makedepends=('intltool' 'pkgconfig' 'gstreamer0.10-base>=0.10.36-3' 'libavc1394' 'libiec61883' 'aalib' 'libshout' 'libdv' 'flac' 'gconf' 'wavpack' 'taglib' 'libsoup-gnome' 'v4l-utils' 'libcaca' 'bzip2' 'gdk-pixbuf2' 'libpulse' 'jack' 'git' 'cairo' 'libgudev')
@@ -42,11 +42,6 @@ build() {
 
   make
   sed -e 's/gst sys ext/gst/' -i Makefile
-}
-
-check() {
-  cd $_pkgname
-  make check
 }
 
 package_gstreamer0.10-good() {
