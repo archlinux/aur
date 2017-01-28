@@ -1,13 +1,13 @@
 pkgbase = gstreamer0.10-bad
 	pkgver = 0.10.23
-	pkgrel = 20
+	pkgrel = 21
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	license = GPL
 	makedepends = pkgconfig
-	makedepends = gstreamer0.10-base>=0.10.36
+	makedepends = gstreamer0.10-base>=0.10.36-3
 	makedepends = xvidcore
 	makedepends = libdca
 	makedepends = bzip2
