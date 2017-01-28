@@ -3,7 +3,7 @@
 
 # All dependencies are included with the gog_owlboy_$version.sh file.
 # For good measure I was able to track all but 2 down:
-#   libmojoshader - https://icculus.
+#   libmojoshader - https://icculus.org/mojoshader/
 #   libXNAFileDialog - https://github.com/flibitijibibo/XNAFileDialog
 
 pkgname=gog-owlboy
