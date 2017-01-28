@@ -6,7 +6,7 @@
 #     with Contribution of Eric Forgeot < http://ifiction.free.fr >
 pkgname=gargoyle-git
 pkgver=20160918.67251c3
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive Fiction multi-interpreter that supports all major IF formats (development version)"
 arch=('i686' 'x86_64' 'armv6h')
 url="https://github.com/garglk/garglk"
