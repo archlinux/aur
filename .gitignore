@@ -1,0 +1,8 @@
+# sources
+*.tar.gz
+
+# build logs
+*.log
+
+# packages
+*.pkg.tar.xz
