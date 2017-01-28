@@ -1,7 +1,5 @@
 # Maintainer: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
 
-# TODO:
-#       * make a git version ?
 pkgname=moolticute
 pkgver=0.5.2
 pkgrel=1
@@ -14,8 +12,7 @@ depends=('libusb'
          'qt5-base'
          'qt5-websockets')
 
-makedepends=('make'
-             'qt5-base')
+makedepends=('make')
 checkdepends=()
 optdepends=()
 install="${pkgname}.install"

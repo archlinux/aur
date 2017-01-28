@@ -8,7 +8,6 @@ pkgbase = moolticute
 	arch = i686
 	license = GPL3
 	makedepends = make
-	makedepends = qt5-base
 	depends = libusb
 	depends = qt5-base
 	depends = qt5-websockets
