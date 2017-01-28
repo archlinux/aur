@@ -1,0 +1,18 @@
+pkgbase = lua-lpeg-patterns
+	pkgver = 0.4
+	pkgrel = 0
+	url = https://github.com/daurnimator/lpeg_patterns
+	arch = any
+	license = MIT
+	source = https://github.com/daurnimator/lpeg_patterns/archive/v0.4.tar.gz
+	md5sums = d28a92b86891ffc2f3a044ac01628491
+
+pkgname = lua-lpeg-patterns
+	pkgdesc = lpeg-patterns library for Lua 5.3
+
+pkgname = lua51-lpeg-patterns
+	pkgdesc = lpeg-patterns library for Lua 5.1
+
+pkgname = lua52-lpeg-patterns
+	pkgdesc = lpeg-patterns library for Lua 5.2
+
