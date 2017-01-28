@@ -1,7 +1,7 @@
 pkgbase = igb
 	pkgdesc = Linux* Base Driver for Intel(R) Ethernet Network Connection
 	pkgver = 5.3.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/e1000/files/igb%20stable/
 	install = igb.install
 	arch = i686
@@ -10,7 +10,9 @@ pkgbase = igb
 	makedepends = linux-headers>=2.6.30
 	depends = linux>=2.6.30
 	source = igb-5.3.5.4-src.tar.gz::https://downloads.sourceforge.net/project/e1000/igb%20stable/5.3.5.4/igb-5.3.5.4.tar.gz
+	source = kernel4.9.patch
 	sha256sums = 804fe3c5c3a65b4ce8681569175b62efd648240f5fbbc349689f14de0d3dee6d
+	sha256sums = c6dc82cf45b09271cae1818130ac215a64d96a5e9237c11f2b5bc757603111a2
 
 pkgname = igb
 
