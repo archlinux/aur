@@ -10,6 +10,9 @@ build_kernel_modules=false
 pkgbase=razer-drivers
 pkgname=('python-razer' 'razer-daemon' 'razer-driver-dkms')
 if $build_kernel_modules; then
+    # For kernel update: Update the two variables and the .install file!
+    _linux_current=4.9
+    _linux_next=4.10
     pkgname+=('razer-driver-arch')
 fi
 pkgver=1.1.8
@@ -21,7 +24,7 @@ url="https://github.com/terrycain/razer-drivers"
 license=('GPL2')
 makedepends=('make' 'python' 'python-setuptools')
 if $build_kernel_modules; then
-    makedepends+=('linux-headers>=4.8' 'linux-headers<4.9' 'linux>=4.8' 'linux<4.9')
+    makedepends+=("linux-headers>=$_linux_current" "linux-headers<$_linux_next" "linux>=$_linux_current" "linux<$_linux_next")
 fi
 if [ -z $_commit ]; then
   source=("https://github.com/terrycain/razer-drivers/archive/v$pkgver.tar.gz")
@@ -72,8 +75,7 @@ package_razer-driver-dkms() {
 }
 
 if $build_kernel_modules; then
-# remember to also adjust the .install files and the package deps below
-_extramodules=extramodules-4.8-ARCH
+_extramodules=extramodules-$_linux_current-ARCH
 
 build() {
   if [ -z $_commit ]; then
@@ -90,7 +92,7 @@ build() {
 package_razer-driver-arch() {
   pkgdesc="An entirely open source driver for managing Razer peripherals on Linux. (for stock 'linux' kernel)"
   depends=('udev')
-  depends=('linux>=4.8' 'linux<4.9')
+  depends=("linux>=$_linux_current" "linux<$_linux_next")
   provides=('RAZER-DRIVERS-MODULES')
   conflicts=('RAZER-DRIVERS-MODULES')
   install=razer-driver-arch.install
