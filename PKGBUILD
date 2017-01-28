@@ -5,14 +5,14 @@ pkgbase=gstreamer0.10-base
 _pkgname=gst-plugins-base
 pkgname=('gstreamer0.10-base' 'gstreamer0.10-base-plugins')
 pkgver=0.10.36
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 license=('LGPL')
 makedepends=('pkgconfig' 'gstreamer0.10>=0.10.36-7' 'orc' 'libxv' 'alsa-lib' 'cdparanoia' 
              'libvisual' 'libvorbis' 'libtheora' 'pango' 'gobject-introspection' 'git')
 options=(!emptydirs)
 url='http://gstreamer.freedesktop.org/'
-source=("git://anongit.freedesktop.org/gstreamer-sdk/$_pkgname#commit=48d5966f12d4e6b71c96db0600cf76ef0ef14b3a"
+source=("git://repo.or.cz/gstreamer-sdk/$_pkgname.git#commit=48d5966f12d4e6b71c96db0600cf76ef0ef14b3a"
         fix-crash-0-byte-ogg.patch
         colorbalance-fix-abi.patch
         revert-decodebin-playbin-removal.patch
