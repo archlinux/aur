@@ -8,28 +8,26 @@
 # files will be provided in '/opt'.
 
 _year=2017
-_release="" # R1
-_sdkver=16.5
+_release="R2"
+_sdkver=16.5.1
 pkgname=intel-media-sdk
-pkgver="$_year".R1 # ."$_release"
+pkgver="${_year}.${_release}"
 pkgrel=1
 pkgdesc="Intel Media SDK (only SDK files, no kernel patches, no system modifications)"
 arch=('x86_64')
 url="https://software.intel.com/en-us/intel-media-server-studio"
-license=('custom' 'BSD')
+license=('custom')
 makedepends=('poppler')
 provides=('libmfx' 'libmfx.a' 'iHD_drv_video.so' 'libmfxhw64.so' 'libmfxsw64.so'
           'libmfx_h264la_hw64.so' 'libmfx_vp8d_hw64.so' 'igfxcmjit64.so' 'igfxcmrt64.so')
-source=("http://registrationcenter-download.intel.com/akdlm/irc_nas/9700/MediaServerStudioEssentials${_year}.tar.gz")
-sha256sums=('1dc127ea8d775a91fb0e7d2d9f015e0d62752c919d84e172fc1176578df478bc')
+source=("http://registrationcenter-download.intel.com/akdlm/irc_nas/vcp/11167/MediaServerStudioEssentials${_year}${_release}.tar.gz")
+sha256sums=('5f32f7abddec54751203f2937c4ad7748013dee9849d7c61786091c38bffdaf4')
 
 prepare() {
         cd "${srcdir}/MediaServerStudioEssentials${_year}${_release}"
-        
         bsdtar -x -f "SDK${_year}Production${_sdkver}.tar.gz"
         
         cd "${srcdir}/MediaServerStudioEssentials${_year}${_release}/SDK${_year}Production${_sdkver}/Generic"
-        
         bsdtar -x -f intel-linux-media_generic_"$_sdkver"-*_64bit.tar.gz
 }
 
