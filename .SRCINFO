@@ -1,0 +1,18 @@
+pkgbase = gog-transistor
+	pkgdesc = A sci-fi themed action RPG that invites you to wield an extraordinary weapon of unknown origin as you fight through a stunning futuristic city
+	pkgver = 2.0.0.3
+	pkgrel = 1
+	url = http://www.supergiantgames.com/games/transistor
+	arch = i686
+	arch = x86_64
+	license = custom
+	optdepends = firejail: Automatically sandbox this application from your OS
+	source = gog://gog_transistor_2.0.0.3.sh
+	source = gog-transistor.desktop
+	source = gog-transistor
+	sha256sums = 46bc519d331bbebc1d155b06bf5407e2846c2bf945c9a06dd34182184c3792fd
+	sha256sums = 1582e8bad6e6b5908afc6a63bc637f99f11c9b1e04dbec732410a4ffb7667eca
+	sha256sums = 0e2fac1f46ae0e39a396e5a18be580bd3489709b5d495192b8b32576f71ce5c1
+
+pkgname = gog-transistor
+

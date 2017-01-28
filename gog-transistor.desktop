@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Transistor
+Comment=A sci-fi themed action RPG that invites you to wield an extraordinary weapon of unknown origin as you fight through a stunning futuristic city.
+Exec=gog-transistor
+Icon=gog-transistor
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
