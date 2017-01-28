@@ -1,0 +1,18 @@
+pkgbase = gog-serpent-in-the-staglands
+	pkgdesc = A 90s CRPG in every way but the release date
+	pkgver = 2.13.0.18
+	pkgrel = 1
+	url = http://www.playstarbound.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	optdepends = firejail: Automatically sandbox this application from your OS
+	source = gog://gog_serpent_in_the_staglands_2.13.0.18.sh
+	source = gog-serpent-in-the-staglands.desktop
+	source = gog-serpent-in-the-staglands
+	sha256sums = 7c4e3aa177f0e111787518cdc56e655666200f7d7e63b0f98041f3b2cb6929d9
+	sha256sums = 544f8f7dcde614624b75529af4e689d878f0faa704e34d8e69590663a0cd2523
+	sha256sums = 757bf6a7d4119cb3df1717b17fa26b346c1e47aaec95505c0a03985433740939
+
+pkgname = gog-serpent-in-the-staglands
+

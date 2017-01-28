@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Serpent in the Staglands
+Comment=A 90s CRPG in every way but the release date
+Exec=gog-serpent-in-the-staglands
+Icon=gog-serpent-in-the-staglands
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
