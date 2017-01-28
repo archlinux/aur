@@ -1,7 +1,7 @@
 # Maintainer: Albert Vaca Cintora <albertvaka@gmail.com>
 
 pkgname=clazy-git
-pkgver=r467.9064bfc
+pkgver=r1016.6fb181b
 pkgrel=1
 pkgdesc='Static C++ code checker'
 arch=(i686 x86_64)
