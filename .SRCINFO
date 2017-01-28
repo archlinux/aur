@@ -1,6 +1,6 @@
 pkgbase = gstreamer0.10-ugly
 	pkgver = 0.10.19
-	pkgrel = 18
+	pkgrel = 19
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = gstreamer0.10-ugly
 	makedepends = x264
 	makedepends = opencore-amr
 	makedepends = git
-	source = git+http://repo.or.cz/gstreamer-sdk/gst-plugins-ugly.git#commit=d637756a8e569753e9869c2c0728288f5dbc5089
+	source = git+https://gitlab.com/gstreamer-sdk/gst-plugins-ugly.git#commit=d637756a8e569753e9869c2c0728288f5dbc5089
 	source = opencore-amr.patch
 	source = cdio-cd-text-api.patch
 	md5sums = SKIP
