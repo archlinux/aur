@@ -33,9 +33,9 @@ prepare() {
 build() {
   cd ${srcdir}/${_pkgname}
 
-  rm -rf ${srcdir}/${_pkgname}/build
-  mkdir -p ${srcdir}/${_pkgname}/build
-  cd ${srcdir}/${_pkgname}/build
+  rm -rf build
+  mkdir -p build
+  cd build
 
   cmake ..                      \
     -DCMAKE_BUILD_TYPE=Release  \
@@ -48,7 +48,7 @@ build() {
     -DMapper_BUILD_DOXYGEN=0    \
     -DMapper_PACKAGE_NAME=${pkgname} \
     -Wno-dev
-  make -j4
+  make -j$(nproc)
 }
 
 package() {
