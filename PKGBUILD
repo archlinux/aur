@@ -20,21 +20,6 @@ source=("https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.tar.gz"
 	   "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-${pkgver}/patches/06-tunnelblick-openvpn_xorpatch-e.diff")
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
-pkgver() {
-	cd "${_pkgname}-${pkgver}"/
-
-	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		printf '%s.r%s.g%s' \
-			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
-			"$(git rev-list --count ${GITTAG}..)" \
-			"$(git log -1 --format='%h')"
-	else
-		printf '0.r%s.g%s' \
-			"$(git rev-list --count master)" \
-			"$(git log -1 --format='%h')"
-	fi
-}
-
 prepare() {
 	cd "${_pkgname}-${pkgver}"/
 
