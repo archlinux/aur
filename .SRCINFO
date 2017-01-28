@@ -1,6 +1,6 @@
 pkgbase = gstreamer0.10-base
 	pkgver = 0.10.36
-	pkgrel = 5
+	pkgrel = 6
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = gstreamer0.10-base
 	makedepends = gobject-introspection
 	makedepends = git
 	options = !emptydirs
-	source = git://repo.or.cz/gstreamer-sdk/gst-plugins-base.git#commit=48d5966f12d4e6b71c96db0600cf76ef0ef14b3a
+	source = git+http://repo.or.cz/gstreamer-sdk/gst-plugins-base.git#commit=48d5966f12d4e6b71c96db0600cf76ef0ef14b3a
 	source = fix-crash-0-byte-ogg.patch
 	source = colorbalance-fix-abi.patch
 	source = revert-decodebin-playbin-removal.patch
