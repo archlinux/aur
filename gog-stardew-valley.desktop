@@ -1,10 +1,10 @@
 [Desktop Entry]
-Encoding=UTF-8
 Name=Stardew Valley
-Comment=An open-ended country-life RPG
+Comment=You’ve inherited your grandfather’s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life.
 Exec=gog-stardew-valley
 Icon=gog-stardew-valley
-StartupNotify=true
-Terminal=false
 Type=Application
-Categories=Application;Game;AudioVideo;
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8

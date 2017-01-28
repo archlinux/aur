@@ -1,0 +1,13 @@
+#! /bin/sh
+
+run="/opt/gog-stardew-valley/start.sh"
+# The launcher fails unless in its dir.
+cd "/opt/gog-stardew-valley/" || exit 1
+
+if which firejail >/dev/null 2>&1 && [ -z "$FIREJAIL_IGNORE" ]; then
+    echo "Firejail detected. Enforcing a sandbox"
+    echo "To bypass Firejail enforcement, run FIREJAIL_IGNORE=1 $run."
+    firejail --caps.drop=all "$run"
+else
+  "${run}"
+fi
