@@ -3,7 +3,7 @@
 
 pkgname='flow-tools'
 pkgver='0.68.5.1'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="Netflow collector, analyser and report generator."
 arch=('i686' 'x86_64')
 url="https://code.google.com/archive/p/${pkgname}"
@@ -49,12 +49,12 @@ build() {
 
 package() {
   pushd "${srcdir}"
-  install -dm775 -o 174 -g 174 "${pkgdir}/var/lib/${pkgname}"
-  install -Dm644 "flow-capture.service" "${pkgdir}/usr/lib/systemd/system/flow-capture.service"
-  install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/flow-tools.conf"
-  install -Dm644 "flow-capture.conf" "${pkgdir}/etc/${pkgname}/flow-capture.conf"
+  install -dm0775 -o 174 -g 174 "${pkgdir}/var/lib/${pkgname}"
+  install -Dm0644 "flow-capture.service" "${pkgdir}/usr/lib/systemd/system/flow-capture.service"
+  install -Dm0644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -Dm0644 "flow-capture.conf" "${pkgdir}/etc/${pkgname}/flow-capture.conf"
   pushd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm0644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
   popd
 }
