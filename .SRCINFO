@@ -16,6 +16,7 @@ pkgname = lua-http
 	depends = lua-lpeg
 	depends = lua-lpeg-patterns>=0.3
 	depends = lua-fifo
+	optdepends = lua-zlib: gzip compression
 
 pkgname = lua51-http
 	pkgdesc = HTTP Library for Lua 5.1
@@ -27,6 +28,7 @@ pkgname = lua51-http
 	depends = lua51-lpeg
 	depends = lua51-lpeg-patterns>=0.3
 	depends = lua51-fifo
+	optdepends = lua51-zlib: gzip compression
 
 pkgname = lua52-http
 	pkgdesc = HTTP Library for Lua 5.2
@@ -37,4 +39,5 @@ pkgname = lua52-http
 	depends = lua52-lpeg
 	depends = lua52-lpeg-patterns>=0.3
 	depends = lua52-fifo
+	optdepends = lua52-zlib: gzip compression
 

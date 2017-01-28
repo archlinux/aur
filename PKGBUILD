@@ -23,6 +23,7 @@ package_lua-http() {
 	         'lua-lpeg'
 	         'lua-lpeg-patterns>=0.3'
 	         'lua-fifo')
+	optdepends=('lua-zlib: gzip compression')
 
 	cd lua-http-"$pkgver"
 	install -Dm644 http/*.lua -t "$pkgdir"/usr/share/lua/5.3/http/
@@ -41,6 +42,7 @@ package_lua51-http() {
 	         'lua51-lpeg'
 	         'lua51-lpeg-patterns>=0.3'
 	         'lua51-fifo')
+	optdepends=('lua51-zlib: gzip compression')
 
 	cd lua-http-"$pkgver"
 	install -Dm644 http/*.lua -t "$pkgdir"/usr/share/lua/5.1/http/
@@ -57,6 +59,7 @@ package_lua52-http() {
 	         'lua52-lpeg'
 	         'lua52-lpeg-patterns>=0.3'
 	         'lua52-fifo')
+	optdepends=('lua52-zlib: gzip compression')
 
 	cd lua-http-"$pkgver"
 	install -Dm644 http/*.lua -t "$pkgdir"/usr/share/lua/5.2/http/
