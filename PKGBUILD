@@ -4,7 +4,7 @@
 
 pkgname=okular
 pkgver=16.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Document Viewer'
 arch=(i686 x86_64)
 url="http://kde.org/applications/graphics/okular/"
