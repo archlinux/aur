@@ -4,7 +4,7 @@
 pkgname=ozone
 pkgver=2.22m
 pkgrel=1
-epoch=3
+epoch=4
 pkgdesc="Segger Ozone JLink debugger for Linux"
 arch=('i686' 'x86_64')
 license=('custom')
