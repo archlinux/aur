@@ -32,9 +32,6 @@ prepare() {
 	git apply ../../04-tunnelblick-openvpn_xorpatch-c.diff
 	git apply ../../05-tunnelblick-openvpn_xorpatch-d.diff
 	git apply ../../06-tunnelblick-openvpn_xorpatch-e.diff
-
-	# apply watermark patch
-	git apply ../../xor_watermark.patch
 }
 
 build() {
