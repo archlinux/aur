@@ -1,0 +1,10 @@
+[Unit]
+Description=Prometheus HAProxy Exporter
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/prometheus-haproxy-exporter
+ExecStart=/usr/bin/prometheus_haproxy_exporter ${DAEMON_OPTIONS}
+
+[Install]
+WantedBy=multi-user.target
