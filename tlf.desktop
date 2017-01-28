@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=TLF
+Name[en_US]=TLF
+Comment=CT Style Logging Program
+Comment[en_US]=CT Style Logging Program
+Encoding=UTF-8
+Exec=xterm -geometry 80x25 -fn -*-fixed-medium-r-*-*-24-*-*-*-*-*-iso8859-* tlf
+Icon=tlf.png
+MimeType=text/plain
+StartupNotify=true
+Type=Application
+Categories=Application;HamRadio
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false

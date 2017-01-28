@@ -1,0 +1,36 @@
+pkgbase = tlf-git
+	pkgdesc = a console mode networked logging and contest program for hamradio
+	pkgver = 1.2.4.5.r23.g325f223
+	pkgrel = 1
+	url = https://tlf.github.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = pkg-config
+	depends = hamlib
+	optdepends = cwdaemon: transmitting cw
+	optdepends = cty: country files
+	optdepends = joe: editing qsos
+	optdepends = xplanet: mapped qso display
+	provides = tlf
+	conflicts = tlf
+	source = tlf::git+https://github.com/Tlf/tlf.git#branch=master
+	source = diff.ax.curses.panel.h
+	source = tlf.desktop
+	source = tlf.png
+	source = tlf.1
+	md5sums = SKIP
+	md5sums = 9c5d7a5ded56d42403150c91fa5f873b
+	md5sums = b83cca73cea288ed139993efceb245b5
+	md5sums = f148583e02660cb430f638fd8f71f452
+	md5sums = b706428f41d32bd5f4f6f671057638c0
+	sha256sums = SKIP
+	sha256sums = b5a9f130e1342ba6da068320630eaaa4f5146689bd74b610608a75b7e7170c07
+	sha256sums = cc7b5bcf825ea342d126a54a778c4f837ea0da4a12101383f99282041eb5d574
+	sha256sums = 0ddcde4f0dfa98540d4314660108ed49bfa0bc3d8b87cb46906dfd6f12be2497
+	sha256sums = 766253a6f4b1d7e0526366875a46e220d637665c3c44e551f8d3db4ed88aaf81
+
+pkgname = tlf-git
+
