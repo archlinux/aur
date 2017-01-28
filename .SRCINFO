@@ -1,7 +1,7 @@
 pkgbase = fastdriver-git
 	pkgdesc = Fast-ODP (Old-Driver-Protocol) command line tool, C++ implementation
 	pkgver = v0.2.beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lackofdream/fastdriver
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = fastdriver-git
 	makedepends = git
 	makedepends = cmake
 	depends = crypto++
+	depends = boost
 	provides = fastdriver
 	options = !buildflags
 	options = staticlibs

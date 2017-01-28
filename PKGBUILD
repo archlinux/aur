@@ -9,12 +9,12 @@
 # Maintainer: Ning Humbert <galaxy0419@gmail.com>
 pkgname=fastdriver-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=v0.2.beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast-ODP (Old-Driver-Protocol) command line tool, C++ implementation"
 arch=('i686' 'x86_64')
 url="https://github.com/lackofdream/fastdriver"
 license=('Apache')
-depends=('crypto++')
+depends=('crypto++' 'boost')
 makedepends=('git' 'cmake') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=('fastdriver')
 options=('!buildflags' 'staticlibs')
