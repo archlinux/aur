@@ -25,7 +25,7 @@ source=('https://github.com/openvpn/openvpn/archive/v2.4.0.tar.gz'
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-	cd src/openvpn-2.4.0/
+	cd openvpn-2.4.0/
 
 	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
 		printf '%s.r%s.g%s' \
@@ -40,7 +40,7 @@ pkgver() {
 }
 
 prepare() {
-	cd src/openvpn-2.4.0/
+	cd openvpn-2.4.0/
 
 	# regenerate configure script
 	autoreconf -vi
@@ -57,7 +57,7 @@ prepare() {
 }
 
 build() {
-	cd src/openvpn-2.4.0/
+	cd openvpn-2.4.0/
 
 	./configure \
 		--prefix=/usr \
@@ -71,13 +71,13 @@ build() {
 }
 
 check() {
-	cd src/openvpn-2.4.0/
+	cd openvpn-2.4.0/
 
 	make check
 }
 
 package() {
-	cd src/openvpn-2.4.0/
+	cd openvpn-2.4.0/
 
 	# Install openvpn
 	make DESTDIR="${pkgdir}" install
