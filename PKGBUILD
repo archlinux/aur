@@ -2,8 +2,8 @@
 pkgname=bloonix-plugins-basic
 #_pkgname=
 provides=('bloonix-plugins-basic')
-pkgver=0.60
-pkgrel=2
+pkgver=0.61
+pkgrel=1
 pkgdesc='Bloonix Monitoring Basic Plugins'
 arch=('i686' 'x86_64')
 url='https://bloonix.org'
@@ -33,5 +33,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('3ba8654bc6692c47ef3d96642e6cc272')
-sha1sums=('c0907dbd0e0ccfcbfcbbfc3188f178ace9b02d26')
+md5sums=('328548333f1dd9a8b2e0ed9ab5053974')
+sha1sums=('5d22d41ef4ea5071dfe4df16524892d5d66a0e51')
