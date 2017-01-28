@@ -1,0 +1,18 @@
+pkgbase = lua-fifo
+	pkgver = 0.2
+	pkgrel = 0
+	url = https://github.com/daurnimator/fifo.lua
+	arch = any
+	license = MIT
+	source = https://github.com/daurnimator/fifo.lua/archive/0.2.tar.gz
+	md5sums = 8f2744f6199eaee9676430d1f0136605
+
+pkgname = lua-fifo
+	pkgdesc = Fifo library for Lua 5.3
+
+pkgname = lua51-fifo
+	pkgdesc = Fifo library for Lua 5.1
+
+pkgname = lua52-fifo
+	pkgdesc = Fifo library for Lua 5.2
+
