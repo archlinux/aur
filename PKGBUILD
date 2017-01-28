@@ -7,13 +7,13 @@
 
 pkgname=soundkonverter-frameworks-git
 pkgver=v2.2.2.r32.g81287bc
-pkgrel=2
+pkgrel=3
 pkgdesc="Front-end to various audio converters"
 arch=('i686' 'x86_64')
 url="http://www.kde-apps.org/content/show.php?content=29024"
 license=('GPL')
 depends=('kdelibs4support'
-        'libkcddb-git'
+        'libkcddb'
         'taglib'
 	'hicolor-icon-theme')
 makedepends=('kdoctools'
