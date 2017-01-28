@@ -11,7 +11,7 @@
 # x86_64: all from i686 and ffmpeg-full-git
 
 pkgname=mpv-full-git
-pkgver=0.22.0.r54.g82855be
+pkgver=0.23.0.r154.g9c90c902c1
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (Git version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -74,6 +74,7 @@ build() {
 	            --disable-html-build \
 	            --disable-pdf-build \
 	            \
+	            --enable-cplugins \
 	            --enable-vf-dlopen-filters \
 	            --enable-zsh-comp \
 	            --disable-test \
@@ -98,7 +99,6 @@ build() {
 	            --enable-vapoursynth \
 	            --enable-vapoursynth-lazy \
 	            --enable-libarchive \
-	            --enable-libswresample \
 	            --enable-libavdevice \
 	            --lua=52arch \
 	            \
@@ -157,6 +157,7 @@ build() {
 	            --enable-gl \
 	            \
 	            --enable-vaapi-hwaccel \
+	            --enable-vaapi-hwaccel-new \
 	            --disable-videotoolbox-hwaccel \
 	            --disable-videotoolbox-gl \
 	            --enable-vdpau-hwaccel \
