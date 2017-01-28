@@ -4,7 +4,7 @@
 pkgname='xupnpd'
 pkgdesc="eXtensible UPnP agent (proxy IP TV multicast to DLNA)"
 pkgver='1.033'
-pkgrel='4'
+pkgrel='5'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url="http://${pkgname}.org"
 license=('GPL2')
@@ -15,10 +15,10 @@ source=("${pkgname}::git+https://github.com/clark15b/${pkgname}"
         "res_and_conf_dirs.patch"
         "${pkgname}.service"
         "sysusers.conf")
-sha256sums=("SKIP"
-            "95d436d2bc55bd6fb8affdc4901045d0600092a6045a34f977f79a5950638114"
-            "0f6c2a42f676c24dba7bebc804a34f363b12e2dcb4c61bc547c0b722afe09808"
-            "3f669a1034bcfb9923822fb0adf6d5a379beb7a184a89cd4d72a5b02bc072852")
+sha256sums=('SKIP'
+            '95d436d2bc55bd6fb8affdc4901045d0600092a6045a34f977f79a5950638114'
+            '0f6c2a42f676c24dba7bebc804a34f363b12e2dcb4c61bc547c0b722afe09808'
+            '3f669a1034bcfb9923822fb0adf6d5a379beb7a184a89cd4d72a5b02bc072852')
 _var="var/lib/${pkgname}"
 _usr="usr/share/${pkgname}"
 backup=("${_var}/${pkgname}.lua")
