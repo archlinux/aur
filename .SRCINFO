@@ -9,7 +9,7 @@ pkgbase = minisphere
 	depends = allegro5-git
 	depends = libmng
 	source = https://github.com/fatcerberus/minisphere/archive/v4.4.0.tar.gz
-	sha256sums = d0b9bd99af057dec41275806db7d531a14ff7cd6b8c4d2c6ffed95b07c0319b8
+	sha256sums = f7bc5746ec975c9c879496f05333f4e75368e2cf475e2d23fc4a431a26dd3870
 
 pkgname = minisphere
 
