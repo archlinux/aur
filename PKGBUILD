@@ -1,22 +1,29 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
 # Contributor: Arvedui <arvedui@posteo.de>
 # Contributor: Marc Plano-Lesay <marc.planolesay@gmail.com>
+# Contributor: Joost Bremmer <toost.b@gmail.com>
 
 pkgname=python-discogs-client
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="This is the official Discogs API client for Python. You can use it to query the Discogs music database for metadata on artists, releases, and more."
 depends=('python' "python-requests" "python-oauthlib")
 makedepends=('python-setuptools')
 arch=('any')
-source=(discogs-client-$pkgver.tar.gz::https://github.com/discogs/discogs_client/archive/v$pkgver.tar.gz)
-md5sums=('a30f35e514249a6eeadddd9c89bf9db9')
+# pypi doesn't ship a license so we have to get it from gh
+source=(discogs-client-$pkgver.tar.gz::https://pypi.python.org/packages/1f/1f/62a8cee111ff72c5ad379039adef8c872813602ffd516ba35368726f14c2/${pkgname#python-}-${pkgver}.tar.gz
+        LICENSE::https://github.com/discogs/discogs_client/raw/master/LICENSE)
+md5sums=('c82be8006e1c02fcfc2bb42a2e312151'
+         'c1e6695335325feb11337315fb930f21')
 url="https://github.com/discogs/discogs_client"
-license=("custom:Discogs")
+license=("BSD")
 
 package() {
-  cd $srcdir/discogs_client-$pkgver
+  cd $srcdir/${pkgname#python-}-$pkgver
   python setup.py install --root=$pkgdir --optimize=1
 
+  cd $srcdir
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+# vim: set ts=2 sw=2 et:
