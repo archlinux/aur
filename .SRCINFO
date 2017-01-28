@@ -7,7 +7,7 @@ pkgbase = gstreamer0.10-good
 	license = LGPL
 	makedepends = intltool
 	makedepends = pkgconfig
-	makedepends = gstreamer0.10-base
+	makedepends = gstreamer0.10-base>=0.10.36-3
 	makedepends = libavc1394
 	makedepends = libiec61883
 	makedepends = aalib
@@ -28,10 +28,10 @@ pkgbase = gstreamer0.10-good
 	makedepends = cairo
 	makedepends = libgudev
 	options = !emptydirs
-	source = git://anongit.freedesktop.org/gstreamer-sdk/gst-plugins-good#commit=e28fd8886f05bb51c147f871f3a1db2fc2b735a9
+	source = https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-0.10.31.tar.xz
 	source = test-rtp-payloading.patch
 	source = souptest.patch
-	sha256sums = SKIP
+	sha256sums = 77a8436a7c0a15f876bad29616835046890df2bcaf72da02151bd91e3d292b64
 	sha256sums = c2f7f07f9bf5ca3afddc81d0a44665d2d54b1e9aea0ef1b25d219cf34bf7bb29
 	sha256sums = 3a74492c3d2939efabe7e22211c2350084e0a8cc3af23f553130f1e774c5f1e1
 
