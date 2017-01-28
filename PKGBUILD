@@ -36,7 +36,7 @@ optdepends=(
 source=(
     "gog://${pkgname//-/_}_${pkgver}.sh"
     "${pkgname}.desktop"
-    "$pkgname"
+    "${pkgname}"
 )
 sha256sums=(
     '76958e0bb434d2514873aaddb892bc6c7055c39799ecde5f62a56345136853fc'
