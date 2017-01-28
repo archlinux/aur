@@ -1,0 +1,14 @@
+pkgbase = openyahtzee
+	pkgdesc = Open-source version of the classic game Yahtzee
+	pkgver = 1.9.3
+	pkgrel = 1
+	url = https://www.openyahtzee.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = boost
+	depends = wxgtk
+	source = http://downloads.sourceforge.net/openyahtzee/openyahtzee-1.9.3.tar.xz
+	md5sums = 9bccc2477047c29cb33b8cb23e21ef3c
+
+pkgname = openyahtzee
+
