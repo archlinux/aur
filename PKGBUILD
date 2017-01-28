@@ -4,28 +4,28 @@
 pkgname=gstreamer0.10
 _pkgname=gstreamer
 pkgver=0.10.36
-pkgrel=6
+pkgrel=7
 pkgdesc="GStreamer Multimedia Framework"
 arch=('i686' 'x86_64')
 license=('LGPL')
-url="http://gstreamer.com"
+url='https://gstreamer.freedesktop.org/'
 depends=('libxml2' 'glib2')
 makedepends=('intltool' 'pkgconfig' 'gobject-introspection' 'git')
-source=("https://gstreamer.freedesktop.org/src/$_pkgname/$_pkgname-$pkgver.tar.xz"
-        "tests-remove-silly-test_fail_abstract_new-check.patch"
-        "bison3.patch")
-sha256sums=('9151aa108c177054387885763fa0e433e76780f7c5655c70a5390f2a6c6871da'
+source=("git://anongit.freedesktop.org/gstreamer-sdk/gstreamer#commit=3ddc31eaa18c3be1613e43430eca78a3e445639e"
+        'tests-remove-silly-test_fail_abstract_new-check.patch'
+        'bison3.patch')
+sha256sums=('SKIP'
             'd3d3f4f04453831fdb4244bfe174a38c4e6f9f4da5c8c9050dcfa1a6097aad52'
             'ed154e280abf59b24d98a8ab0fe868b449b26aa61f7ae3813fab8ac615fcaefa')
 
 prepare() {
-  cd $_pkgname-$pkgver
+  cd $_pkgname
   patch -Np1 -i ../tests-remove-silly-test_fail_abstract_new-check.patch
   patch -Np1 -i ../bison3.patch
   sed -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' -i configure.ac
 }
 build() {
-  cd $_pkgname-$pkgver
+  cd $_pkgname
   NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib \
     --with-package-name="GStreamer (Archlinux)" \
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd $_pkgname
   make DESTDIR="${pkgdir}" install
 
   #Remove unversioned gst-* binaries to get rid of conflicts
