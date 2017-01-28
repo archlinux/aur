@@ -6,13 +6,17 @@ pkgbase = gog-stardew-valley
 	arch = i686
 	arch = x86_64
 	license = custom
+	depends = openal
+	depends = sdl2
 	optdepends = firejail: Automatically sandbox this application from your OS
 	source = gog://gog_stardew_valley_2.3.0.4.sh
 	source = gog-stardew-valley.desktop
 	source = gog-stardew-valley
 	sha256sums = 88e1fae7226c7bfa91cb28c137c24867e12b1a0b6e824e6ffe73e1eefc166aac
 	sha256sums = 1dc48ca70b7274c065ee65e285102b07962096b650a34a898d10d6749039d3ca
-	sha256sums = fe0d3cedb10ed9cd4ea5c9c44ce8fc5c7c3f152a51d7e4aef85b7fcbfceac10e
+	sha256sums = 7e03458fab2b426cce514a42663e56efd33d072bd319f513a5c8bdf7f4e09905
+	depends_i686 = lib32-openal
+	depends_i686 = lib32-sdl2
 
 pkgname = gog-stardew-valley
 
