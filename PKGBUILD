@@ -4,8 +4,8 @@
 
 _pkgname=kde-thumbnailer-apk
 pkgname=${_pkgname}-kf5
-pkgver=1.0
-pkgrel=2
+pkgver=20170128.gc8f141c
+pkgrel=1
 pkgdesc="Preview image generator plugin for Android Application Package files. KF5 Ver."                                                                                      
 arch=('i686' 'x86_64')                                                                       
 url="http://kde-apps.org/content/show.php?content=156421"                                                  
@@ -13,16 +13,20 @@ license=('GPL')
 depends=('kdelibs4support')
 makedepends=('cmake' 'extra-cmake-modules' 'kdoctools' 'qt5-tools')
 conflicts=("$_pkgname")
-source=("${_pkgname}-${pkgver}.tar.bz2::https://dl.opendesktop.org/api/files/download/id/1460972065/156421-${_pkgname}-${pkgver}.tar.bz2"
-        "port_to_qt5.patch")
+source=("git+https://github.com/z3ntu/kde-thumbnailer-apk")
 install="${pkgname}.install"
-md5sums=('200c6a1109e6cc77694c4d147e9d8763'
-            '0c1dccca83fcdb69d006d901f4ecf5cd')
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/${_pkgname}"
+  echo "$(git show -s --format="%ci"|grep -oP '\d{4}-\d{2}-\d{2}'|sed 's:-::g').g$(git describe --always)"
+}
 
 prepare() {
-    cd "${srcdir}"/${_pkgname}
-    patch -p1 < ../port_to_qt5.patch
+  rm -rf build
+  mkdir -p build
 }
+
 build() {
   cd "${srcdir}"/${_pkgname}
   cmake -DCMAKE_BUILD_TYPE=Release \
