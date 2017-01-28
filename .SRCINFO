@@ -1,13 +1,13 @@
 pkgbase = virtualbox-modules-lqx
-	pkgver = 5.1.12
-	pkgrel = 2
+	pkgver = 5.1.14
+	pkgrel = 1
 	url = http://virtualbox.org
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = linux-lqx-headers
-	makedepends = virtualbox-host-dkms>=5.1.12
-	makedepends = virtualbox-guest-dkms>=5.1.12
+	makedepends = virtualbox-host-dkms>=5.1.14
+	makedepends = virtualbox-guest-dkms>=5.1.14
 	makedepends = dkms
 
 pkgname = virtualbox-host-modules-lqx
