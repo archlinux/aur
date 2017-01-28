@@ -1,0 +1,18 @@
+pkgbase = gog-sublevel-zero
+	pkgdesc = First-person roguelike six-degree-of-freedom shooter set in a universe where reality is falling apart
+	pkgver = 2.1.0.2
+	pkgrel = 1
+	url = http://www.sigtrapgames.com/sublevelzero
+	arch = i686
+	arch = x86_64
+	license = custom
+	optdepends = firejail: Automatically sandbox this application from your OS
+	source = gog://gog_sublevel_zero_2.1.0.2.sh
+	source = gog-sublevel-zero.desktop
+	source = gog-sublevel-zero
+	sha256sums = 0464056ab98d22f36f65fce35db9c97fe4e912eab4d6ba5063a836ee26d5d0de
+	sha256sums = 2d3883161f411121db39d16792b53b5e21f90a35ff9166a10d4e09fc553339a4
+	sha256sums = 6f7b930ac2abb0866793d6f1e850ba759f919bc6762561a1a3b9080586f035cb
+
+pkgname = gog-sublevel-zero
+

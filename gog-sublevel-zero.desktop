@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Sublevel Zero
+Comment=First-person roguelike six-degree-of-freedom shooter set in a universe where reality is falling apart
+Exec=gog-sublevel-zero
+Icon=gog-sublevel-zero
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
