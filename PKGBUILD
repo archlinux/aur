@@ -5,13 +5,13 @@ pkgbase=gstreamer0.10-bad
 _pkgname=gst-plugins-bad
 pkgname=('gstreamer0.10-bad' 'gstreamer0.10-bad-plugins')
 pkgver=0.10.23
-pkgrel=21
+pkgrel=22
 arch=('i686' 'x86_64')
 license=('LGPL' 'GPL')
 makedepends=('pkgconfig' 'gstreamer0.10-base>=0.10.36-3' 'xvidcore' 'libdca' 'bzip2' 'libdc1394' 'neon' 'faac' 'musicbrainz' 'faad2' 'libmms' 'libcdaudio' 'libmpcdec' 'mjpegtools' 'libdvdnav' 'libmodplug' 'jasper' 'liblrdf' 'libofa' 'soundtouch' 'libvdpau' 'schroedinger' 'libass' 'libvpx' 'gsm' 'libgme' 'rtmpdump' 'libsndfile' 'librsvg' 'wildmidi' 'opus' 'git' 'spandsp' 'celt')
 url="http://gstreamer.freedesktop.org/"
 options=(!emptydirs)
-source=("git://repo.or.cz/gstreamer-sdk/$_pkgname.git#commit=57569a4854a0f2d14ef19a8264a4ae9a7a1d1125"
+source=("git+http://repo.or.cz/gstreamer-sdk/$_pkgname.git#commit=57569a4854a0f2d14ef19a8264a4ae9a7a1d1125"
         fix-libmodplug-include.patch
         drop-vpx-compat-defs.patch
         disable-assrender-test.patch
