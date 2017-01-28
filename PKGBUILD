@@ -1,8 +1,8 @@
 # Maintainer: Emeric <emeric.grange@gmail.com>
 # Created: 12/12/2016
 pkgname=autopanovideopro-beta
-pkgver=2.6.0
-pkgrel=1
+pkgver=2.6.0.301
+pkgrel=2
 pkgdesc="Stitch and create 360° videos automatically with Autopano Video Pro BETA (trial version)."
 arch=('x86_64')
 url='http://www.kolor.com/autopano-video/'
@@ -11,10 +11,9 @@ provides=('autopanovideopro')
 optdepends=('autopanogiga: Edit control points manually'
             'gopro-vr-player: 360 video player')
 install="$pkgname.install"
-_archiveversion=301
 _archivename=AutopanoVideoPro_Linux64_${pkgver}.tar.xz
 
-source=("$_archivename::http://download.kolor.com/avp/beta/linux64tarxz/${pkgver}.${_archiveversion}"
+source=("$_archivename::http://download.kolor.com/avp/beta/linux64tarxz/${pkgver}"
         "$pkgname"
         "$pkgname.desktop")
 
