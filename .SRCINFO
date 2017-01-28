@@ -1,0 +1,19 @@
+pkgbase = crawl-hib
+	pkgdesc = The dungeon crawler where your friends control the monsters
+	pkgver = 0.12.04
+	pkgrel = 1
+	url = http://www.powerhoof.com/crawl
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	optdepends = firejail: Automatically sandbox this application from your OS
+	source = hib://crawl-0-12-04-linux.tar.gz
+	source = crawl-hib.desktop
+	source = crawl-hib
+	sha256sums = 935ad1c5a24ae0e9a633c9c2eb935d18ba774f47ede43b152399332f2190c86b
+	sha256sums = 73285ec023bd5b8978130252c3b94b3d5075b6e439ac9553430bbb64e6f329f6
+	sha256sums = 8a0526fd065a16081e76aed1fe89ae1e5c3f8fe2c078f9f598b30a62a0cf0c27
+
+pkgname = crawl-hib
+
