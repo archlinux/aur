@@ -1,7 +1,7 @@
 pkgbase = shutter
 	pkgdesc = a featureful screenshot tool (formerly gscrot)
 	pkgver = 0.93.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://shutter-project.org/
 	arch = any
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = shutter
 	depends = imagemagick
 	depends = procps
 	depends = librsvg
+	depends = gnome-perl
 	depends = gtk2-perl
 	depends = desktop-file-utils
 	depends = perl-gnome2-wnck

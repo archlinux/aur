@@ -8,12 +8,12 @@
 
 pkgname=shutter
 pkgver=0.93.1
-pkgrel=5
+pkgrel=6
 pkgdesc="a featureful screenshot tool (formerly gscrot)"
 arch=('any')
 url="http://shutter-project.org/"
 license=('GPL3')
-depends=(xdg-utils imagemagick procps librsvg gtk2-perl desktop-file-utils
+depends=(xdg-utils imagemagick procps librsvg gnome-perl gtk2-perl desktop-file-utils
          perl-{gnome2-wnck,gtk2-{imageview,unique},x11-protocol}
          perl-{proc-{simple,processtable},net-dbus}
          perl-{sort-naturally,json,json-xs,xml-simple,www-mechanize,locale-gettext}
