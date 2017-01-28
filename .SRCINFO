@@ -3,7 +3,7 @@
 pkgbase = openorienteering-mapper-git
 	pkgdesc = Orienteering mapmaking program
 	pkgver = 0.6.7.r3204.d77941c9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openorienteering.github.io/apps/mapper/
 	install = openorienteering-mapper.install
 	arch = i686
