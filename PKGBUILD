@@ -2,8 +2,8 @@
 # Contributor: Auguste Pop <auguste [at] gmail [dot] com>
 
 pkgname=xboard-git
-pkgrel=1
 pkgver=4.9.1.r7.gd887d64f
+pkgrel=1
 pkgdesc="Graphical user interfaces for chess"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/xboard/"
@@ -17,11 +17,13 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
+
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd ${pkgname%-git}
+
   # Use gnuchess as default engine
   sed -i 's/fairymax/gnuchess/g' {xaw,gtk}/xboard.h xboard.conf
 }
