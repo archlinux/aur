@@ -1,0 +1,23 @@
+pkgbase = haguichi-indicator-bzr
+	pkgdesc = Provides an indicator for Haguichi. Development version.
+	pkgver = r23
+	pkgrel = 1
+	url = http://www.haguichi.net
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv7h
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = haguichi
+	provides = haguichi-indicator
+	conflicts = haguichi-indicator
+	source = bzr+lp:haguichi-indicator
+	sha256sums = SKIP
+
+pkgname = haguichi-indicator-bzr
+
