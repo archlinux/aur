@@ -1,0 +1,23 @@
+pkgbase = lua-luaossl
+	pkgver = 20161214
+	pkgrel = 0
+	url = http://25thandclement.com/~william/projects/luaossl.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	depends = openssl
+	source = https://github.com/wahern/luaossl/archive/rel-20161214.tar.gz
+	md5sums = 8bc4262993f2de058f65a09294fcfc47
+
+pkgname = lua-luaossl
+	pkgdesc = Most comprehensive OpenSSL module in the Lua universe for Lua 5.3
+
+pkgname = lua51-luaossl
+	pkgdesc = Most comprehensive OpenSSL module in the Lua universe for Lua 5.1
+
+pkgname = lua52-luaossl
+	pkgdesc = Most comprehensive OpenSSL module in the Lua universe for Lua 5.2
+
