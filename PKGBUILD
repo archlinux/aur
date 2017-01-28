@@ -4,7 +4,7 @@
 pkgname=shutter-bzr
 _realname=shutter
 pkgver=1278
-pkgrel=9
+pkgrel=10
 pkgdesc="A featureful screenshot tool (formerly gscrot) - Mario Kemper's Experimental branch"
 arch=('i686' 'x86_64')
 url="http://shutter-project.org/"
@@ -32,11 +32,13 @@ replaces=('gscrot')
 source=('bug_1396368.patch'
 	'bug_1618310.patch'
 	'bug_731874.patch'
-	'CVE-2015-0854.patch')
+	'CVE-2015-0854.patch'
+	'bug_1596733.patch')
 md5sums=('0d35f8b2439cb5634fe75d3210d6c3e9'
 	'6ba9ded906a6de88a29fdc62a411af25'
 	'1c6233dbd912fa7836f2e5ed69ef555d'
-	'8eed7a77e7a0c488d01a3cbc415dfb5a')
+	'8eed7a77e7a0c488d01a3cbc415dfb5a'
+	'a2ac67b81fe6b1ec817c32d6afe1beb7')
 
 _bzrtrunk=lp:shutter
 _bzrmod=trunk
@@ -62,6 +64,8 @@ build() {
 	patch ${srcdir}/${_bzrmod}-build/bin/shutter < bug_1618310.patch
 	patch ${srcdir}/${_bzrmod}-build/bin/shutter < bug_731874.patch
 	patch ${srcdir}/${_bzrmod}-build/share/shutter/resources/modules/Shutter/App/HelperFunctions.pm < CVE-2015-0854.patch
+	cd ${srcdir}/${_bzrmod}-build/
+	patch -p0 < "${srcdir}/bug_1596733.patch"
 }
 package() {
 	cd ${srcdir}/${_bzrmod}-build
