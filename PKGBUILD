@@ -1,18 +1,18 @@
 # Maintainer: Simon Hanna <simon dot hanna AT serve-me DOT info>
 
 pkgname=('mailman-core-git')
-pkgver=r8342.015a498
+pkgver=r8875.dfb807e04
 pkgrel=1
 pkgdesc="A mailing list management system"
 arch=(any)
 provides=('mailman-core')
 conflicts=('mailman' 'mailman-core-git')
 makedepends=('python-setuptools' 'git')
-checkdepends=('python-tox')
 depends=('python-zope-interface' 'python-zope-event' 'python-zope-configuration'
-         'python-zope-component' 'python-passlib' 'python-nose2' 'python-httplib2'
+         'python-zope-component' 'python-passlib' 'python-httplib2'
          'python-flufl-lock' 'python-flufl-i18n' 'python-flufl-bounce' 'python-falcon'
-         'python-alembic' 'python-lazr-config' 'python-lazr-smtptest' 'python-mock'
+         'python-alembic' 'python-lazr-config' 'python-lazr-smtptest'
+         'python-aiosmtpd' 'python-atpublic' 'python-dnspython' 'python-requests'
          'python-sqlalchemy' 'postfix')
 optdepends=('python-mailman-hyperkitty-plugin: Plugin to send emails to Hyperkitty for archival')
 url="https://gitlab.com/mailman/mailman"
@@ -34,15 +34,6 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-  cd "$srcdir/mailman"
-  python setup.py build
-}
-
-build() {
-  cd "$srcdir/mailman"
-  tox -e py35
-}
 
 package() {
   # install systemd files
