@@ -1,43 +1,21 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 # Contributor: Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
 
-# Please comment unwanted cmdpack tools in "_utils" section.
-
 pkgbase=cmdpack
 groups=($pkgbase)
-_utils=(
-# Like below, add # at the beginning of unwanted tools' line.
-# 'unwantedtool'
-  'bin2ecm'
-  'bin2iso'
-  'bincomp'
-  'brrrip'
-  'byteshuf'
-  'byteswap'
-  'cdpatch'
-  'fakecrc'
-  'hax65816'
-  'id3point'
-  'pecompat'
-  'rels'
-  'screamf'
-  'subfile'
-  'uips'
-  'usfv'
-  'vb2rip'
-  'wordadd'
-  'zerofill'
-)
+_utils=('bin2ecm' 'bincomp' 'brrrip' 'byteshuf' 'cdpatch' 'fakecrc'
+        'hax65816' 'pecompat' 'rels' 'screamf' 'uips' 'vb2rip'
+        'wordadd')
 for _tool in ${_utils[@]}; do pkgname+=("$pkgbase-$_tool"); done
-pkgver=1.05
-pkgrel=2
+pkgver=1.06
+pkgrel=1
 pkgdesc="Collection of command line utilities, most for emulation or disk images. (${_utils[*]})"
 arch=('i686' 'x86_64')
 url="https://github.com/chungy/cmdpack"
 license=('GPL3')
 makedepends=('asciidoc')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('f5e132ca4f1d7a560375c7a8dfacdaa00d71dc5cf65ee1f2b9a94033c953c96a')
+sha256sums=('6ce7029c0f2b0fbc6a1e26fb3ad8003ed18836aa3ef35f148ec51cde0b703307')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
@@ -60,16 +38,6 @@ for _tool in "${_utils[@]}"; do
                 conflicts=('ecm-tools')
                 provides=('ecm-tools' '$_tool')
                 replaces=('ecm-tools')
-                make DESTDIR=\"\$pkgdir\" prefix=/usr install-$_tool
-                }"
-  elif [[ "$_tool" == "bin2iso" ]]; then
-      eval "$add_pkg_func
-                conflicts=('bin2iso')
-                make DESTDIR=\"\$pkgdir\" prefix=/usr install-$_tool
-                }"
-  elif [[ "$_tool" == "zerofill" ]]; then
-      eval "$add_pkg_func
-                conflicts=('ucommon')
                 make DESTDIR=\"\$pkgdir\" prefix=/usr install-$_tool
                 }"
   else
