@@ -4,7 +4,7 @@
 pkgname=gstreamer0.10-ffmpeg
 _pkgname=gst-ffmpeg
 pkgver=0.10.13
-pkgrel=4
+pkgrel=5
 pkgdesc="Gstreamer FFMpeg Plugin"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -12,7 +12,7 @@ depends=('gstreamer0.10-base' 'bzip2')
 makedepends=('pkgconfig' 'yasm' 'sdl' 'git' 'gtk-doc')
 url="http://gstreamer.freedesktop.org/"
 groups=('gstreamer0.10-plugins')
-source=("git://repo.or.cz/gstreamer-sdk/_pkgname#commit=94e587b9182c6d2fde9a61c9def790c8047453c0")
+source=("git://repo.or.cz/gstreamer-sdk/$_pkgname#commit=94e587b9182c6d2fde9a61c9def790c8047453c0")
 sha256sums=('SKIP')
 
 build() {
