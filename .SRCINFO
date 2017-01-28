@@ -1,0 +1,35 @@
+pkgbase = openvpn-xor-git
+	pkgdesc = An easy-to-use, robust and highly configurable VPN (Virtual Private Network) - git checkout
+	pkgver = 2.4.rc2.r26.g4590c383
+	pkgrel = 1
+	url = https://github.com/Tunnelblick/Tunnelblick/tree/master/third_party/sources/openvpn
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = systemd
+	depends = openssl
+	depends = lzo
+	depends = iproute2
+	depends = libsystemd
+	depends = pkcs11-helper
+	optdepends = easy-rsa: easy CA and certificate handling
+	provides = openvpn=2.4.0
+	provides = openvpn-dev
+	conflicts = openvpn
+	conflicts = openvpn-dev
+	source = https://github.com/openvpn/openvpn/archive/v2.4.0.tar.gz
+	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.4.0/patches/02-tunnelblick-openvpn_xorpatch-a.diff
+	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.4.0/patches/03-tunnelblick-openvpn_xorpatch-b.diff
+	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.4.0/patches/04-tunnelblick-openvpn_xorpatch-c.diff
+	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.4.0/patches/05-tunnelblick-openvpn_xorpatch-d.diff
+	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.4.0/patches/06-tunnelblick-openvpn_xorpatch-e.diff
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = openvpn-xor-git
+

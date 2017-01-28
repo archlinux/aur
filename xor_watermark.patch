@@ -1,0 +1,12 @@
+diff --git a/src/openvpn/options.c b/src/openvpn/options.NEW.c
+index 3886f77..5709920 100644
+--- a/src/openvpn/options.c
++++ b/src/openvpn/options.c
+@@ -107,6 +107,7 @@ const char title_string[] =
+ #ifdef HAVE_AEAD_CIPHER_MODES
+     " [AEAD]"
+ #endif
++    " [XOR]"
+     " built on " __DATE__
+ ;
+ 
