@@ -3,7 +3,7 @@
 
 pkgname=nimf-git
 _pkgname=nimf
-pkgver=2016.09.26.55363fd
+pkgver=2017.01.28.a29e324
 pkgrel=1
 pkgdesc="Nimf is an input method framework"
 arch=('any')
