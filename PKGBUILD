@@ -6,10 +6,10 @@
 # The following guidelines are specific to BZR, GIT, HG and SVN packages.
 # Other VCS sources are not natively supported by makepkg yet.
 
-# Maintainer: Nino van der Linden (dev@ninov.de)
+# Maintainer: Nino van der Linden (dev at ninov.de)
 _pkgname=go-fonts
 pkgname=$_pkgname-git
-pkgver=r192.b7f8df6
+pkgver=r205.83686c5
 pkgrel=1
 pkgdesc="The Go font family"
 arch=(any)
@@ -35,15 +35,11 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${pkgname}/font/gofont/ttfs"
-	# Install proportional fonts
-	for f in Go-Regular.ttf Go-Medium.ttf Go-Medium-Italic.ttf Go-Italic.ttf Go-Bold.ttf Go-Bold-Italic.ttf
+	for f in *.ttf
 	do
-		install -Dm644 "$f" "$pkgdir"/usr/share/fonts/Go/"$f"
-	done
-
-	# Install monospace fonts
-	for f in Go-Mono.ttf Go-Mono-Italic.ttf Go-Mono-Bold-Italic.ttf
-	do
-		install -Dm644 "$f" "$pkgdir/usr/share/fonts/Go Mono/$f"
+		if [[ $f =~ ^Go-Mono.* ]]
+			then install -Dm644 "$f" "$pkgdir/usr/share/fonts/Go Mono/$f"
+			else install -Dm644 "$f" "$pkgdir/usr/share/fonts/Go/$f"
+		fi	
 	done
 }
