@@ -1,6 +1,6 @@
 # Maintainer: Guillaume ALAUX <guillaume@archlinux.org>
 pkgname=tomcat8
-pkgver=8.0.39
+pkgver=8.0.41
 pkgrel=1
 pkgdesc='Open source implementation of the Java Servlet 3.1 and JavaServer Pages 2.3 technologies'
 arch=('any')
@@ -23,7 +23,7 @@ source=(https://www.apache.org/dist/tomcat/tomcat-8/v${pkgver}/bin/apache-tomcat
 validpgpkeys=('A9C5DF4D22E99998D9875A5110C01C5A2F6059E7'  # Mark E D Thomas
               '713DA88BE50911535FE716F5208B0AB1D63011C7') # Violeta Georgieva Georgieva
 
-sha256sums=('4093aa19f70ebb2749d40fa81486971c1dc7f275da188f1436c62faedaf51e9a'
+sha256sums=('a57204b5434755b5767299bbcd32e3afd2d6327cafa6b8372077f824aa7176d7'
             'SKIP'
             '01ba022e06d6afa71f6f7d774e48c042c63eca9e06f0c95c92cf8d5a3828a8b2'
             '02e7a1edb82ed117629189806d40c2c7b70ec994ecbafc11cb7dc7eec35af216'
