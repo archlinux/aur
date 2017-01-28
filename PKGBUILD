@@ -2,11 +2,11 @@
 
 pkgname=kubernetes-helm
 pkgver=2.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to manage Kubernetes charts"
 arch=('i686' 'x86_64')
 url="https://github.com/kubernetes/helm"
-depends=('kubectl-bin')
+optdepends=('kubectl-bin: Check Kubernetes status')
 license=('Apache')
 source_i686=("https://kubernetes-helm.storage.googleapis.com/helm-v$pkgver-linux-386.tar.gz")
 source_x86_64=("https://kubernetes-helm.storage.googleapis.com/helm-v$pkgver-linux-amd64.tar.gz")
