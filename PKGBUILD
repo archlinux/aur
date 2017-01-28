@@ -2,7 +2,7 @@
 
 pkgname=fonts-meta-extended-lt
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc='Extended font collection meta package, ported from Infinality (lite version).'
 arch=('any')
 url='http://bohoomil.com/doc/05-fonts/'
@@ -26,9 +26,9 @@ depends=(
   'ttf-opensans'
   'ttf-signika'
   'ttf-ubuntu-font-family'
+  'xorg-fonts-misc'
 )
 optdepends=(
-  't1-cursor-ib'
   'ttf-gelasio-ib'
 )
 provides=('ibfonts-meta-extended-lt' 'xorg-fonts-type1')
