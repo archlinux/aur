@@ -3,7 +3,7 @@ _orgname=openorienteering
 _pkgname=mapper
 pkgname=${_orgname}-${_pkgname}
 pkgver=0.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Orienteering mapmaking program"
 arch=('i686' 'x86_64')
 url="http://openorienteering.github.io/apps/mapper/"
@@ -19,9 +19,9 @@ sha256sums=('9dfecd5aa05665e853f8acce07ee9c036c076e117ea838a73e6098e742caab9d')
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
 
-  rm -rf ${srcdir}/${_pkgname}-${pkgver}/build
-  mkdir -p ${srcdir}/${_pkgname}-${pkgver}/build
-  cd ${srcdir}/${_pkgname}-${pkgver}/build
+  rm -rf build
+  mkdir -p build
+  cd build
 
   cmake ..                      \
     -DCMAKE_BUILD_TYPE=Release  \
@@ -32,7 +32,7 @@ build() {
     -DMapper_BUILD_DOXYGEN=0    \
     -DMapper_PACKAGE_NAME=${pkgname} \
     -Wno-dev
-  make -j4
+  make -j$(nproc)
 }
 
 package() {
