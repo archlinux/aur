@@ -9,10 +9,13 @@ pkgbase = lua-lpeg-patterns
 
 pkgname = lua-lpeg-patterns
 	pkgdesc = A collection of LPEG patterns for Lua 5.3
+	depends = lua-lpeg
 
 pkgname = lua51-lpeg-patterns
 	pkgdesc = A collection of LPEG patterns for Lua 5.1
+	depends = lua51-lpeg
 
 pkgname = lua52-lpeg-patterns
 	pkgdesc = A collection of LPEG patterns for Lua 5.2
+	depends = lua52-lpeg
 
