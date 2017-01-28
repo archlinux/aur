@@ -2,14 +2,14 @@
 
 pkgname=python-ftfy-git
 _gitname=python-ftfy
-pkgver=r194.7f025a2
+pkgver=r340.3a17430
 pkgrel=1
 pkgdesc='Fixes some problems with Unicode text after the fact'
 url="https://github.com/LuminosoInsight/python-ftfy"
 arch=('any')
 license=('MIT')
 makedepends=('python' 'python-setuptools')
-depends=('python')
+depends=('python' 'python-html5lib')
 source=('git+https://github.com/LuminosoInsight/python-ftfy.git')
 sha256sums=('SKIP')
 
