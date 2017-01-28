@@ -1,12 +1,15 @@
 pkgbase = acme-sac
 	pkgdesc = Programmer's editor and shell, running over Inferno
 	pkgver = 0.14
-	pkgrel = 2
+	pkgrel = 5
 	url = http://code.google.com/p/acme-sac/
-	arch = any
+	arch = x86_64
 	license = GPL
+	depends = lib32-libx11
+	depends = lib32-libxext
+	depends = gcc-multilib
 	provides = acme
-	source = http://acme-sac.googlecode.com/files/acme-sac_0.14_i386.deb
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/acme-sac/acme-sac_0.14_i386.deb
 	md5sums = 178477dd90abb650fd6b1f1babb3edf8
 
 pkgname = acme-sac

@@ -1,7 +1,7 @@
 # Maintainer: Felipe Morales <hel.sheep@gmail.com>
 pkgname=acme-sac
 pkgver=0.14
-pkgrel=4
+pkgrel=5
 pkgdesc="Programmer's editor and shell, running over Inferno"
 arch=('x86_64')
 #arch=('i386')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('lib32-libx11' 'lib32-libxext' 'gcc-multilib')
 #depends=('gcc' 'libx11' 'libxext')
 provides=('acme')
-source=(http://acme-sac.googlecode.com/files/acme-sac_0.14_i386.deb)
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/acme-sac/acme-sac_0.14_i386.deb)
 noextract=()
 md5sums=(178477dd90abb650fd6b1f1babb3edf8)
 
