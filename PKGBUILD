@@ -4,14 +4,14 @@
 
 pkgname=xf86-video-sisimedia
 pkgver=0.9.1
-pkgrel=12
+pkgrel=13
 pkgdesc="X.org SiS 671 video driver"
 arch=('i686' 'x86_64')
 url="http://www.linuxconsulting.ro/xorg-drivers/"
 license=('custom')
 depends=('glibc')
-makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=20' 'xf86dgaproto')
-conflicts=('xorg-server<1.18' 'X-ABI-VIDEODRV_VERSION<20' 'X-ABI-VIDEODRV_VERSION>=21')
+makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=23' 'xf86dgaproto')
+conflicts=('xorg-server<1.19' 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSION>=24')
 install="${pkgname}.install"
 source=(https://sources.archlinux.org/other/xf86-video-sisimedia/xf86-video-sisimedia-0.9.1_20091203.tar.bz2
         xf86-video-sis-0.9.1-20102701.patch
@@ -43,40 +43,42 @@ source=(https://sources.archlinux.org/other/xf86-video-sisimedia/xf86-video-sisi
         disable-UploadToScreen-DownloadFromScreen.patch
         remove-ImplicitPointerConversions.patch
         xserver117.patch
+        xserver119.patch
         COPYING
         "${pkgname}.conf")
-sha1sums=('22e6616df49ec82755daae08043a29aaf92fa430'
-          '61715bb86180decde55a56fad9a12d841c89fbb2'
-          '33fdea57187a2758802bcb9572d3a864aaab4d59'
-          '6f05eae535b099b01c2819e63c68d4489b940267'
-          'a6cb5da9312d32d729ad2619d8ae50cb26ba7d4d'
-          'df728052a89c4152abbe89826756040dac23b624'
-          '4bed1c2455ed447f7053cb0729e99cbe598b3274'
-          'd7802db5c49540ab136e71450cc846cfccd8b8d1'
-          'e2236d2d00338f1658c66d9b972919af39897071'
-          '0c6b9322e6cb22c67e04d50a0b818a2dd4585cf2'
-          '802829a8ebd2b7e35fcc86665d842b1594a8ba30'
-          'c26afe7508183735b7568b435be9c270ceeb62f1'
-          'd2fa2a21454f3a161bcd8ae4d349657561049edd'
-          '5e288526bfa2c534f1feabdb571da16da8a1c7a6'
-          'e86d702cb0b5e9bf43ff732696229965e176db7c'
-          'b5f260bed7e705808ec05620316e503ed5d52ee5'
-          'ca25df590590284161cd68440fc4f0cfeb8618b2'
-          'ce60625b915e8bd82a6ab2c78e52eb589f27a083'
-          '963ef59ecd0ca478434623efb68fce9ee832501d'
-          '5f686c54383c6677b043c6ca0b565b023c1907f9'
-          '4ea8d76b3e74172109e7013a2931e571d3a2f4e1'
-          '1d29504466840d2fbe1fc355d78666c1a9cd9b76'
-          '1fdd74a2aef9455ac5c37d1fe0146d81aa905d2d'
-          '370af234867df98206a98c8cd0a6c89323593f6b'
-          '4ea333d659abe2b78f07511467c5356f39bf8695'
-          'e130b4b4cafa0d54426a9b9c4735ad4bf46686f5'
-          '9bef0b61c0505cc64464073d73684e6933d3f84c'
-          'ff95fd41be43560245caa40adc6b481f2dafca7d'
-          '511564f7422ea78e903d8287c5f282586ab7420e'
-          'fa1b4bb9b6962f7f3216cd5ac6f1336644390aa5'
-          'a64e244f274bcb155f892d0488a1a4b1b2f7d70d'
-          '189b32b78109d3387fa9dac30ed58872ce5c9f66')
+md5sums=('daefc4cff89369c8d8cb19e2c0e10392'
+         'cc73233a068f43d43d221ae9503d9439'
+         'af9ed85941e55c2265e8d1d5ed87a9db'
+         'dba2b699bc6de7372e943e1fc9e63cf3'
+         '6d71a792a4095729fdc0228f5745b22e'
+         '5b7e71398f3d2f97d0d6fac5d3ecef9f'
+         '835dd274aab955a31b3f605cc7a1426c'
+         'a107f743971a936860be8d58202e91da'
+         'bd1a1e0568a3bde61c4eebb2f371506b'
+         'be07ee3c3e29c300b9713ca33f52d57e'
+         'e27ccc9e3079e11faa25fd8c8ba3e404'
+         '58efde36feac99af42800153dbdeb164'
+         '3e8a7bdf01ac655fb4b2c702bab102e1'
+         'eaa8107f9a829f1effe5f531c9eeb2fa'
+         '112c0f36fa12f1ab780a88ba6f821968'
+         '928b9c60f4f202cb2f82c7fab378f4f4'
+         '2065cef9831b0056487671847297e01b'
+         '6d9158cb913c48e766db6e5ed7f69fc2'
+         'ecee75ab73a8e0b44c42965b8edd7839'
+         'e1aacbb42c06a9cfdba25e02bcdf96ea'
+         'ce19f076ea76cfbd64f4f62e4e74649e'
+         'b75e481d1ff20516b6cdf9e7e6e51df9'
+         '77613b89bdcf7c8ff89e80a3bcafdd41'
+         '619b382be2a7a04181d87cfb64c48bb2'
+         'a07599fa75e043b9726d38ce5c8699cb'
+         '4db75df6299dcdb5f7701637a3aee52f'
+         'ed665d7314acd5b58e0b30406438cfc3'
+         '724ebdc6548f6098e5be8394defacf9e'
+         '03b5e15301df697d2e9775e6b741ff92'
+         '3110f169b66bec5120d6875708924337'
+         '92fdffbd9b5ff1e4ac30fd73587287a8'
+         'cbbdd887d04deb501076c22917e2030d'
+         'ea53ab81de92a5dfa155f0160b960ebb')
 
 prepare() {
   cd "${srcdir}/xf86-video-sis-${pkgver}"
@@ -117,6 +119,8 @@ prepare() {
 
   patch -Np1 -i "${srcdir}/remove-ImplicitPointerConversions.patch"
   patch -Np1 -i "${srcdir}/xserver117.patch"
+
+  patch -Np1 -i "${srcdir}/xserver119.patch"
 
   autoreconf -fi
 }

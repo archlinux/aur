@@ -1,0 +1,20 @@
+diff --git a/src/xf86-video-sis-0.9.1/src/sis_driver.c
+index 4f8aa46..8690166 100644
+--- a/src/sis_driver.c
++++ b/src/sis_driver.c
+@@ -8761,13 +8761,13 @@ SISModeInit(ScrnInfoPtr pScrn, DisplayModePtr mode)
+ /*******************************************************/
+ 
+ static void
+-SISBlockHandler(ScreenPtr pScreen, pointer pTimeout, pointer pReadmask)
++SISBlockHandler(ScreenPtr pScreen, pointer pTimeout)
+ {
+     ScrnInfoPtr pScrn = xf86ScreenToScrn(pScreen);
+     SISPtr pSiS = SISPTR(pScrn);
+ 
+     pScreen->BlockHandler = pSiS->BlockHandler;
+-    (*pScreen->BlockHandler) (pScreen, pTimeout, pReadmask);
++    (*pScreen->BlockHandler) (pScreen, pTimeout);
+     pScreen->BlockHandler = SISBlockHandler;
+ 
+ #ifdef SISDUALHEAD
