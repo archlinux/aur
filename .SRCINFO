@@ -6,9 +6,9 @@ pkgbase = tutanota-electron-git
 	arch = x86_64
 	depends = gulp-cli
 	depends = npm
-	source = https://bitbucket.org/Thesilentdrifter/tutanota-electron/raw/18f0e53855a9e3cea875b06d3e7b41d3e78f89f1/tutanota-electron-git.tar.gz
-	md5sums = 412022f31bb1d860b101da30da44051b
-	sha512sums = 7877b7e53fac77ca493d1010db42480d9f064d1a60e575267082c1c2bad594c0756bfe9a04b13ed4f5a58869d895be7f876a74099640e489ed062ef9865de903
+	source = https://bitbucket.org/Thesilentdrifter/tutanota-electron/raw/9ccdfe5e9f2e21503e0bcb23ff0086efbeae8c03/tutanota-electron-git.tar.gz
+	md5sums = 4d34c71b8df2356623a6983e2f8bd31e
+	sha512sums = 24240b90cf29b31f5d1ba6cdf835472a5447166e551aae966162c7a5ce7db3828a8ffbfda68f856c6f159ec1d2ed3292371e367dd97002d5a65342e6cdc420b2
 
 pkgname = tutanota-electron-git
 
