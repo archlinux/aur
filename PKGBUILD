@@ -2,18 +2,18 @@
 # Contributor: Bob Finch <w9ya@qrparci.net>
 
 pkgname=tlf
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="a console mode networked logging and contest program for hamradio"
-url="https://tlf.github.com/index2.html"
+url="https://tlf.github.com/"
 license=('GPL')
-depends=('hamlib' 'desktop-file-utils')
+depends=('hamlib')
+makedepends=('autoconf' 'automake' 'pkg-config')
 optdepends=('cwdaemon: transmitting cw'
 	    'cty: country files'
 	    'joe: editing qsos'
 	    'xplanet: mapped qso display')
 arch=('i686' 'x86_64')
-install=$pkgname.install
 source=(https://github.com/Tlf/tlf/archive/$pkgname-$pkgver.tar.gz
 #        http://sharon.esrac.ele.tue.nl/pub/linux/ham/tlf/nrau
         $pkgname.desktop
@@ -44,11 +44,11 @@ package() {
 	install -D -m 644 ../$pkgname.png $pkgdir/usr/share/pixmaps
 	install -D -m 644 ../$pkgname.desktop $pkgdir/usr/share/applications
 }
-md5sums=('14d8e8df085912916ed1ac7803b0c311'
-         '48289e3e0a0a20453714ce0f982f56d6'
+md5sums=('ce03806349170fac84f6408b5e67f109'
+         'b83cca73cea288ed139993efceb245b5'
          'f148583e02660cb430f638fd8f71f452'
          'b706428f41d32bd5f4f6f671057638c0')
-sha256sums=('dace18abdf93d754acc47a97bef9accc5422348e92aa654a2684abaa07bc5425'
-            '213f636ac5fbfc1e6eaa5f2ca9665514b51faa2879a0635fe075227d4de83ed1'
+sha256sums=('2af47ab875a76aa17805d6c134d5a37d7854b726a5f9d04152e963a25f874976'
+            'cc7b5bcf825ea342d126a54a778c4f837ea0da4a12101383f99282041eb5d574'
             '0ddcde4f0dfa98540d4314660108ed49bfa0bc3d8b87cb46906dfd6f12be2497'
             '766253a6f4b1d7e0526366875a46e220d637665c3c44e551f8d3db4ed88aaf81')
