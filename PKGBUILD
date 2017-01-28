@@ -2,17 +2,19 @@
 # Contributor: garion < garion @ mailoo.org >
 
 pkgname=vobsub2srt-git
-pkgver=v1.0pre6.62.g9283345
+pkgver=v1.0pre6.72.g04bd6c9
 pkgrel=1
 pkgdesc="Convert IDX/SUB subtitles into SRT text subtitles"
 arch=('i686' 'x86_64')
-url="https://github.com/ruediger/VobSub2SRT/blob/master/README.org"
+url='https://github.com/ruediger/VobSub2SRT/blob/master/README.org'
 license=('GPL')
 depends=('tesseract')
 optdepends=('tesseract-data: Tesseract OCR data')
-makedepends=('cmake' 'git')
+makedepends=('cmake'
+             'git'
+             )
 source=('vobsub2srt::git://github.com/ruediger/VobSub2SRT.git')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd vobsub2srt
@@ -29,6 +31,7 @@ build(){
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBASH_COMPLETION_PATH=/usr/share/bash-completion/completions
+
   make
 }
 
