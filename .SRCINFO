@@ -1,0 +1,13 @@
+pkgbase = pass-update
+	pkgdesc = A pass extension that provides a convenient solution to update an existing password.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/roddhjav/pass-update
+	arch = any
+	license = GPL3
+	depends = pass
+	source = https://github.com/roddhjav/pass-update/archive/0.1.tar.gz
+	sha512sums = 62b290d22e0868283739b8d93d98f5c425e9d9dd80f753a40a6428c3e03745c5cf6a389979c0e30bc9b291693ef817d23149d6fb00b2b3e327ecb2b74636c2a2
+
+pkgname = pass-update
+
