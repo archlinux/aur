@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=SW4STM32
+Comment=System Workbench for STM32
+Exec=sw4stm32
+Icon=/opt/sw4stm32/icon.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Applications;Development
