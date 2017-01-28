@@ -10,7 +10,7 @@ pkgdesc="Preview image generator plugin for Android Application Package files. K
 arch=('i686' 'x86_64')                                                                       
 url="http://kde-apps.org/content/show.php?content=156421"                                                  
 license=('GPL')                                                    
-depends=('kdelibs4support')
+depends=('kio' 'karchive')
 makedepends=('cmake' 'extra-cmake-modules' 'kdoctools' 'qt5-tools')
 conflicts=("$_pkgname")
 source=("git+https://github.com/z3ntu/kde-thumbnailer-apk")
