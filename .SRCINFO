@@ -18,7 +18,7 @@ pkgbase = gstreamer0.10-ugly
 	makedepends = x264
 	makedepends = opencore-amr
 	makedepends = git
-	source = git://anongit.freedesktop.org/gstreamer-sdk/gst-plugins-ugly#commit=d637756a8e569753e9869c2c0728288f5dbc5089
+	source = git://repo.or.cz/gstreamer-sdk/gst-plugins-ugly.git#commit=d637756a8e569753e9869c2c0728288f5dbc5089
 	source = opencore-amr.patch
 	source = cdio-cd-text-api.patch
 	md5sums = SKIP
