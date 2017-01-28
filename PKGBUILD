@@ -4,7 +4,7 @@ pkgver=0.7.5
 pkgrel=2
 pkgdesc="A console (ncurses) client for vk.com written in D"
 arch=('x86_64' 'i686')
-url="https://github.com/HaCk3Dq/vk"
+url="https://github.com/vk-cli/vk"
 license=('Apache')
 depends=('curl' 'openssl' 'ncurses>=5.7')
 makedepends=('dub' 'dmd>=2.071.0' 'git' 'dtools')
