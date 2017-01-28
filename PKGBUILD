@@ -7,7 +7,7 @@ pkgdesc="A secure email client"
 arch=('x86_64')
 url="https://bitbucket.org/Thesilentdrifter/tutanota-electron"
 licence=('BSD')
-depends=('gulp-cli' 'npm')
+depends=('gconf' 'gulp-cli' 'npm')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -18,9 +18,9 @@ backup=()
 options=()
 install=()
 changeLog=()
-source=("https://bitbucket.org/Thesilentdrifter/tutanota-electron/raw/551775cb506ccd86d55f6af2fac51e07b986572e/tutanota-electron-git.tar.gz")
-md5sums=('7ec5cf25d73d68f8d74a0664609df84c')
-sha512sums=('32c4d3f6537c3772a8dac03de974b923600f08fe46fe5561f131ac1312d8fdb6d1f16fa92c44b9e0be8c66604f053a879927ef19f05c9a1117ad0efc4a67430d')
+source=("https://bitbucket.org/Thesilentdrifter/tutanota-electron/raw/8ca2bfecf1df17c0444bc27fcc9e187f3d88553d/tutanota-electron-git.tar.gz")
+md5sums=('b31cbabdee3abefc90cc77879c203a09')
+sha512sums=('d11862b21e32dd4d7b5800c4bb4148e332e07aa369080259c5fe619de6b3f5cd7bfe3943f75a742518d9abfa6d31d0c15c52f889c9ed805d63cf612bd9f8e653')
 build() {
   cd "$pkgname"
   ./build.sh
