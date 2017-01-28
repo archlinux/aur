@@ -6,7 +6,7 @@ pkgbase = gstreamer0.10-base
 	arch = x86_64
 	license = LGPL
 	makedepends = pkgconfig
-	makedepends = gstreamer0.10>=0.10.36
+	makedepends = gstreamer0.10>=0.10.36-7
 	makedepends = orc
 	makedepends = libxv
 	makedepends = alsa-lib

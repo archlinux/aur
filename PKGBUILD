@@ -1,16 +1,18 @@
 # Maintainer Yurii Kolesnykov <yurikoles@gmail.com>
 # Credit: Jan de Groot <jgc@archlinux.org>
 
-pkgbase=('gstreamer0.10-base')
+pkgbase=gstreamer0.10-base
+_pkgname=gst-plugins-base
 pkgname=('gstreamer0.10-base' 'gstreamer0.10-base-plugins')
 pkgver=0.10.36
 pkgrel=3
 arch=('i686' 'x86_64')
 license=('LGPL')
-makedepends=('pkgconfig' 'gstreamer0.10>=0.10.36' 'orc' 'libxv' 'alsa-lib' 'cdparanoia' 'libvisual' 'libvorbis' 'libtheora' 'pango' 'gobject-introspection' 'git')
+makedepends=('pkgconfig' 'gstreamer0.10>=0.10.36-7' 'orc' 'libxv' 'alsa-lib' 'cdparanoia' 
+             'libvisual' 'libvorbis' 'libtheora' 'pango' 'gobject-introspection' 'git')
 options=(!emptydirs)
-url="http://gstreamer.freedesktop.org/"
-source=("git://anongit.freedesktop.org/gstreamer-sdk/gst-plugins-base#commit=48d5966f12d4e6b71c96db0600cf76ef0ef14b3a"
+url='http://gstreamer.freedesktop.org/'
+source=("git://anongit.freedesktop.org/gstreamer-sdk/$_pkgname#commit=48d5966f12d4e6b71c96db0600cf76ef0ef14b3a"
         fix-crash-0-byte-ogg.patch
         colorbalance-fix-abi.patch
         revert-decodebin-playbin-removal.patch
@@ -26,7 +28,7 @@ sha256sums=('SKIP'
             '56e7a988df39d2ec4befa265536ad8c30d3c8d18d136cebef64e8d6baac1abae')
 
 prepare() {
-  cd gst-plugins-base
+  cd $_pkgname
   sed -i -e '/AC_PATH_XTRA/d' -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' configure.ac
   patch -Np1 -i ../fix-crash-0-byte-ogg.patch
   patch -Np1 -i ../colorbalance-fix-abi.patch
@@ -37,18 +39,18 @@ prepare() {
 }
 
 build() {
-  cd gst-plugins-base
+  cd $_pkgname
   NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --disable-static --enable-experimental --disable-gnome_vfs --disable-gtk-doc \
-    --with-package-name="GStreamer Base Plugins (Archlinux)" \
-    --with-package-origin="http://www.archlinux.org/"
+    --disable-static --enable-experimental --disable-gnome_vfs --disable-gtk-doc #\
+    # --with-package-name="GStreamer Base Plugins (Archlinux)" \
+    # --with-package-origin="http://www.archlinux.org/"
   make
   sed -e 's/^SUBDIRS_EXT =.*/SUBDIRS_EXT =/' -i Makefile
 }
 
 check() {
-  cd gst-plugins-base
+  cd $_pkgname
   make check
 }
 
@@ -56,7 +58,7 @@ package_gstreamer0.10-base() {
   pkgdesc="GStreamer Multimedia Framework Base plugin libraries"
   depends=('gstreamer0.10>=0.10.36' 'orc' 'libxv')
 
-  cd gst-plugins-base
+  cd $_pkgname
   make DESTDIR="${pkgdir}" install
 }
 
@@ -67,7 +69,7 @@ package_gstreamer0.10-base-plugins() {
   conflicts=('gstreamer0.10-alsa' 'gstreamer0.10-theora' 'gstreamer0.10-libvisual' 'gstreamer0.10-pango' 'gstreamer0.10-cdparanoia' 'gstreamer0.10-vorbis' 'gstreamer0.10-ogg')
   groups=('gstreamer0.10-plugins')
 
-  cd gst-plugins-base
+  cd $_pkgname
   make -C gst-libs DESTDIR="${pkgdir}" install
   make -C ext DESTDIR="${pkgdir}" install
   make -C gst-libs DESTDIR="${pkgdir}" uninstall
