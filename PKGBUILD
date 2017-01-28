@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=ananicy-git
-pkgver=106.dff6866
+pkgver=107.f1eeabf
 pkgrel=1
 pkgdesc="Ananicy - is Another auto nice daemon, with community rules support"
 arch=('any')
@@ -20,5 +20,5 @@ pkgver() {
 
 package() {
   cd "$srcdir/${pkgname}/"
-  ./install.sh PREFIX="$pkgdir"
+  make PREFIX="$pkgdir"
 }
