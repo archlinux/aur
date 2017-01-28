@@ -1,9 +1,6 @@
 # Maintainer: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
 
 # TODO:
-#       * is this x86_64 and i386 (should be but go to test)?
-#               QXcbConnection: Could not connect to display + core dump + segfault (only i686
-#       * Why my udev rules + udev controll--reload + udevadm trigger change my X keymap to US ?
 #       * make a git version ?
 pkgname=moolticute
 pkgver=0.5.2
@@ -23,7 +20,6 @@ checkdepends=()
 optdepends=()
 install="${pkgname}.install"
 
-# https://github.com/raoulh/moolticute/archive/v0.5.2-beta.tar.gz
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}-beta.tar.gz"
         '69-mooltipass.rules'
         'moolticute.service')
