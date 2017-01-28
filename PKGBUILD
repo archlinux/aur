@@ -5,8 +5,8 @@
 _pkgname=idos-timetable-data-chaps-trains-idol
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2016_12_13
-pkgrel=2
+pkgver=2017_1_26
+pkgrel=1
 pkgdesc="Timetable data for the timetable search engines by CHAPS: Trains in Liberec public transport reagion (IDOL). Note that this timetable needs the purchased version of IDOS to run."
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
