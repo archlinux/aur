@@ -13,7 +13,7 @@
 _pppver=2.4.7
 
 pkgname=networkmanager-consolekit-noscan
-pkgver=1.4.4
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Network Management daemon with scan disabled after connection established"
 arch=('i686' 'x86_64')
@@ -106,10 +106,13 @@ check() {
 package() {
 	cd NetworkManager-$pkgver
 	make DESTDIR="$pkgdir" install
-	make DESTDIR="$pkgdir" -C libnm uninstall
-	make DESTDIR="$pkgdir" -C libnm-glib uninstall
-	make DESTDIR="$pkgdir" -C libnm-util uninstall
-	make DESTDIR="$pkgdir" -C vapi uninstall
+
+	# remove conflicting files from libnm, etc
+	rm ${pkgdir}/usr/lib/libnm*
+	rm ${pkgdir}/usr/share/vala/vapi/libnm*
+	rm -rf ${pkgdir}/usr/lib/girepository-1.0/*
+	rm -rf ${pkgdir}/usr/share/gir-1.0
+	rm -rf ${pkgdir}/usr/share/gtk-doc
 
 	# Some stuff to move is left over
 	rm -r "$pkgdir/usr/include"
@@ -119,8 +122,6 @@ package() {
 	install -m755 -d "$pkgdir/etc/NetworkManager/dnsmasq.d"
 
 	rm -r "$pkgdir/var/run"
-	rmdir -p --ignore-fail-on-non-empty \
-	"$pkgdir"/usr/{share/{vala/vapi,gir-1.0},lib/girepository-1.0}
 
     	install -dm 750 -o polkitd "${pkgdir}"/usr/share/polkit-1/rules.d
 
