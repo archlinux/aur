@@ -1,7 +1,7 @@
 # Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=lmod
-pkgver=7.3.12
+pkgver=7.3.13
 pkgrel=1
 pkgdesc="environment modules system based on Lua, supports legacy TCL modules"
 arch=('i686' 'x86_64')
@@ -41,4 +41,4 @@ package() {
   popd
 }
 
-md5sums=('d1cdce391467ca36825855c92bfa7b97')
+md5sums=('6fbe1d7a4baec5b66a6c21d8dc93a952')
