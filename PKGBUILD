@@ -3,7 +3,7 @@
 # Remove the --enable-openmp flag below if you do not want parallelization.
 
 pkgname=python-graph-tool
-pkgver=2.19
+pkgver=2.20
 pkgrel=1
 pkgdesc='A Python module for manipulation and statistical analysis of graphs'
 arch=('i686' 'x86_64')
@@ -17,13 +17,10 @@ provides=(python3-graph-tool)
 conflicts=(python3-graph-tool)
 replaces=(python3-graph-tool)
 options=(!libtool)
-source=("http://downloads.skewed.de/graph-tool/graph-tool-$pkgver.tar.bz2"
-        "0001-Fix-dlopen-flags-problem-with-Python-3.6.patch")
-sha256sums=('eba1090f94b0434890beedaf0c100dd0fc77e41ebfe29b4725d76cadb82099af'
-            'a594d8f0c6b7abc6357bc25e2e4b87bf92710ebab0f240d70cffd936d94cc7cd')
+source=("http://downloads.skewed.de/graph-tool/graph-tool-$pkgver.tar.bz2")
+sha256sums=('fc9df701062c556b818824aa9578368ef0faec195696b008512ee948db3ae628')
 prepare() {
   cd "$srcdir/graph-tool-$pkgver"
-  patch -p1 -i $srcdir/0001-Fix-dlopen-flags-problem-with-Python-3.6.patch
   ./configure --enable-openmp --prefix=/usr --docdir="/usr/share/doc/$pkgname"
 }
 
