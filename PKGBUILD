@@ -5,7 +5,7 @@ _pkgname='bigloo'
 pkgname="${_pkgname}-devel"
 epoch=23
 _pkgver='4.3a'
-_pkgsuffix='beta04Jan17'
+_pkgsuffix='beta26Jan17'
 pkgver="${_pkgver}"."${_pkgsuffix}"
 pkgrel=1
 pkgdesc="Fast scheme compiler"
@@ -20,9 +20,8 @@ provides=('bigloo=$pkgver')
 conflicts=('bigloo')
 options=('!makeflags' 'libtool' 'staticlibs' '!strip')
 source=("ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${_pkgname}${_pkgver}-${_pkgsuffix}.tar.gz" "satisfy-ldconfig.sh")
-sha256sums=('6467dfe44dfede2049ae2dce0fa4da554a727af0f78f1a4d1d7e5b7963913611'
+sha256sums=('f4784072060a444ffc332b248f1813dde08e9908a1cd22689eaaf3fdf8e92cc7'
             'b45d2dc176f2b8c6496da9bfaad76d9398172dbef288984f6415824c1c93a4c2')
-
 
 prepare() {
   cd "${srcdir}/${_pkgname}${_pkgver}"
@@ -31,7 +30,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}${_pkgver}"
-LANG=C
+
   CFLAGS+=" -fPIC" ./configure --prefix=/usr \
     --enable-ssl \
     --enable-sqlite \
