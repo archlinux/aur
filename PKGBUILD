@@ -1,6 +1,7 @@
 # $Id: PKGBUILD 273590 2016-08-11 09:35:58Z eworm $
 # Maintainer: Ronald van Haren <ronald.archlinux.org>
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
+# Contributor: George Amanakis <g_amanakis@yahoo.com>
 
 pkgname=iproute2-cake
 pkgver=4.9.0
