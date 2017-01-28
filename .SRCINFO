@@ -1,7 +1,7 @@
 pkgbase = corebird
 	pkgdesc = Native Gtk+ Twitter Client
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://corebird.baedert.org/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = corebird
 	makedepends = vala>=0.28
 	makedepends = automake
 	depends = gtk3>=3.18
+	depends = gettext>=0.19.7
 	depends = glib2>=2.40
 	depends = rest>=0.7
 	depends = sqlite3

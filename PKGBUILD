@@ -2,12 +2,13 @@
 
 pkgname=corebird
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Native Gtk+ Twitter Client"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://corebird.baedert.org/"
 depends=('gtk3>=3.18'
+     'gettext>=0.19.7'
      'glib2>=2.40'
      'rest>=0.7'
      'sqlite3'
