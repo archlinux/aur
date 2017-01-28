@@ -20,7 +20,7 @@ _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some grap
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=57.0.2986.0
+pkgver=57.0.2987.8
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -409,13 +409,13 @@ prepare() {
 
   patch -p1 -i "${srcdir}/minizip.patch"
 
-  # https://crbug.com/668446
-  patch -p0 -i "${srcdir}/fix_668446.diff"
-
   # Patch from crbug (chromium bugtracker).
   # https://crbug.com/473866
   patch -p0 -i "${srcdir}/chromium-widevine-r1.patch"
   sed 's|@WIDEVINE_VERSION@|The Cake Is a Lie|g' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
+
+  # https://crbug.com/668446
+  patch -p0 -i "${srcdir}/fix_668446.diff"
 
   # Try to fix libpng errors.
   msg2 "Attempt for fix libpng errors"
