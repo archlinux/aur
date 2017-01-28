@@ -3,7 +3,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=folly-git
-pkgver=0.57.0.r288.gc79d034
+pkgver=2016.12.19.00.r112.g0ea1868e
 pkgrel=1
 pkgdesc='Folly is an open-source C++ library developed and used at Facebook'
 arch=(i686 x86_64)
@@ -12,16 +12,16 @@ license=(Apache)
 conflicts=(folly)
 provides=(folly)
 replaces=(folly)
-depends=(google-glog gflags double-conversion libevent xz boost-libs jemalloc lz4)
+depends=(google-glog gflags double-conversion libevent boost-libs jemalloc xz lz4 zstd snappy)
 makedepends=(git boost python2)
 source=(
   git+https://github.com/facebook/folly.git
-  http://googletest.googlecode.com/files/gtest-1.6.0.zip
+  gtest-1.7.0.zip::https://github.com/google/googletest/archive/release-1.7.0.zip
 )
 # that sucks that the project downloads gtests sources, it should use system libraries
 # https://github.com/facebook/folly/issues/48
 md5sums=('SKIP'
-         '4577b49f2973c90bf9ba69aa8166b786')
+         'ef5e700c8a0f3ee123e2e0209b8b4961')
 
 pkgver() {
   cd folly
@@ -33,7 +33,7 @@ prepare() {
   find -name '*.py' -exec sed -i 's|^#!/usr/bin/env python$|#!/usr/bin/env python2|' {} \;
 
   cd test
-  ln -sf "$srcdir"/gtest-1.6.0
+  ln -sf $srcdir/googletest-release-1.7.0 gtest-1.7.0
 }
 
 build() {
@@ -42,7 +42,7 @@ build() {
   cd folly/folly
   autoreconf --install
   # disable shared libs as double-conversion does not have shared libs
-  ./configure --prefix=/usr --enable-shared
+  ./configure --prefix=/usr # --enable-shared
   make
 }
 
