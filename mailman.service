@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 User=mailman
-ExecStart=/usr/bin/mailman start
+ExecStart=/usr/bin/mailman start -f
 ExecReload=/usr/bin/mailman restart
 ExecStop=/usr/bin/mailman stop
 StandardError=syslog

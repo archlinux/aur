@@ -26,7 +26,7 @@ source=('git+https://gitlab.com/mailman/mailman.git'
         'mailman.cfg')
 sha256sums=('SKIP'
             'a99bf88267184fee0568856ac09bb682224ee67029cfc20f603a43fe5f053dad'
-            '96c8fad27e6af4272c1eaeaab77f33bb0b4bf86e4b21e0c4ceca3a5c9d37f0a8'
+            '81048cb6a27490fb36881b2eb88567b2ea2271b481dd0254fe9a398e6ca9beaf'
             'f48dac59786be58c6a8b5fe2a12f4f356872d87600be64506f22066508847f3a')
 
 pkgver() {
