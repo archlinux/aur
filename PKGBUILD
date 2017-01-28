@@ -2,7 +2,7 @@
 # Maintainer : David Phillips <dbphillipsnz gmail dot com>
  
 pkgname=wkhtmltopdf-static
-pkgver=0.12.3
+pkgver=0.12.4
 pkgrel=1
 pkgdesc="Shell utility to convert HTML to PDF using Webkit and Qt (upstream static build)"
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ options=('!strip')
 
 source_x86_64=("http://download.gna.org/wkhtmltopdf/0.12/${pkgver}/wkhtmltox-${pkgver}_linux-generic-amd64.tar.xz")
 source_i686=("http://download.gna.org/wkhtmltopdf/0.12/${pkgver}/wkhtmltox-${pkgver}_linux-generic-i386.tar.xz")
-md5sums_i686=('883cf4841e7da5c71d0910023c66d18b')
-md5sums_x86_64=('6e991e1a1f3293ab673afa015703ef86')
+md5sums_i686=('ce1a2c0b2cf786ccc5d5828c42c99ddd')
+md5sums_x86_64=('96b7306cebb9e65355f69f7ab63df68b')
 
 package() {
 	cd "${pkgdir}"
