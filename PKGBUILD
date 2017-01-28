@@ -9,7 +9,7 @@ _pkgname=android-qt5
 pkgname=${_pkgname}-${android_arch}
 _pkgver=5.8
 pkgver=${_pkgver}.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt 5 for Android"
 arch=('i686' 'x86_64')
 url='https://www.qt.io'
@@ -50,21 +50,15 @@ esac
 
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
 source=("http://download.qt-project.org/official_releases/qt/${_pkgver}/${pkgver}/single/${_pkgfqn}.tar.xz"
-        "JavaScriptCore.pri.patch"
-        "imageformats.pro.patch")
+        "JavaScriptCore.pri.patch")
 sha256sums=('0f4c54386d3dbac0606a936a7145cebb7b94b0ca2d29bc001ea49642984824b6'
-            '133dad6c8d0bedaa5d561be26b2f7185e671900c50d11476ecb2e2ef6792d455'
-            '943e8c03dc2218250f75cec3b663d90e6bb98d9b64b9f12b01713c284e5e4673')
+            '133dad6c8d0bedaa5d561be26b2f7185e671900c50d11476ecb2e2ef6792d455')
 
 prepare() {
     cd ${_pkgfqn}
 
     # Platform specific patches.
     case "$android_arch" in
-        arm64-v8a)
-            # Disable WebP image format.
-            patch -Np1 -i "../imageformats.pro.patch"
-            ;;
         armeabi)
             # Disable JIT.
             patch -Np1 -i "../JavaScriptCore.pri.patch"
@@ -130,10 +124,6 @@ build() {
 
     # Platform specific patches
     case "$android_arch" in
-        mips)
-             configue_opts+="
-                 -skip qt3d"
-            ;;
         x86)
              configue_opts+="
                  -no-sql-mysql
