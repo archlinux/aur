@@ -1,0 +1,14 @@
+pkgbase = gog-towerfall-ascension-dark-world
+	pkgdesc = Expansion for Towerfall: Ascension
+	pkgver = 2.3.0.5
+	pkgrel = 1
+	url = http://www.towerfall-game.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gog-towerfall-ascension
+	source = gog://gog_towerfall_ascension_dark_world_2.3.0.5.sh
+	sha256sums = 870aaaa9ac9bdb9ead3bd875856b1ad6758926d9530be35a6fed04fee89bb871
+
+pkgname = gog-towerfall-ascension-dark-world
+
