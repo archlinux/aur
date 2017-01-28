@@ -1,11 +1,11 @@
 # Maintainer: luke bonham <dada [at] archlinux [dot] info>
 
 pkgname=lain-git
-pkgcom=1517
-pkgsha=08b9a76
+pkgcom=1518
+pkgsha=19a7003
 pkgver=$pkgcom.$pkgsha
 pkgrel=1
-pkgdesc="Layouts, widgets and utilities for Awesome WM"
+pkgdesc="Layouts, asynchronous widgets and utilities for Awesome WM"
 arch=('any')
 url="https://github.com/copycat-killer/lain"
 license=('GPL2')
