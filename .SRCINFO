@@ -1,7 +1,7 @@
 pkgbase = gstreamer0.10
 	pkgdesc = GStreamer Multimedia Framework
 	pkgver = 0.10.36
-	pkgrel = 9
+	pkgrel = 10
 	url = https://gstreamer.freedesktop.org/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = gstreamer0.10
 	makedepends = git
 	depends = libxml2
 	depends = glib2
-	source = git://repo.or.cz/gstreamer-sdk/gstreamer.git#commit=3ddc31eaa18c3be1613e43430eca78a3e445639e
+	source = git+http://repo.or.cz/gstreamer-sdk/gstreamer.git#commit=3ddc31eaa18c3be1613e43430eca78a3e445639e
 	source = tests-remove-silly-test_fail_abstract_new-check.patch
 	source = bison3.patch
 	sha256sums = SKIP
