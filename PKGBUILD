@@ -6,7 +6,7 @@ _quagga='quagga'
 _cumulus='CumulusNetworks'
 pkgname="${_quagga}_cumulus"
 pkgver='0.99.23.1'
-pkgrel='4'
+pkgrel='5'
 pkgdesc="Routing daemon suite with ${_cumulus} patches. Support Multi-Instance OSPF."
 arch=('i686' 'x86_64')
 url="https://github.com/${_cumulus}/${_quagga}"
@@ -67,11 +67,9 @@ prepare() {
   patch -p1 -i "${srcdir}/${_quagga}-${_cumulus}-2.5.6_json-c.patch"
   # https://github.com/CumulusNetworks/quagga/commit/5fd1f74742debed7f5bfe5d9416f363906917ec5#diff-67e997bcfdac55191033d57a16d1408a
   patch -p1 -i "${srcdir}/${_quagga}-${_cumulus}-2.5.9_configure_shell.patch"
-}
 
-build() {
-  cd "${srcdir}/${_quagga}-${pkgver}"
-  autoreconf -i
+  autoreconf -fvi
+
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
@@ -99,11 +97,16 @@ build() {
     --enable-multipath=64 \
     --enable-user=quagga \
     --enable-group=quagga \
+    --enable-vty-group=quagga \
     --enable-configfile-mask=0640 \
     --enable-logfile-mask=0640 \
     --enable-systemd=yes \
     --enable-poll=yes \
     --enable-tcp-zebra
+}
+
+build() {
+  cd "${srcdir}/${_quagga}-${pkgver}"
   make
 }
 
@@ -111,15 +114,15 @@ package() {
   pushd "${srcdir}/${_quagga}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
-  install -Dm644 "redhat/${_quagga}.logrotate" "$pkgdir/etc/logrotate.d/${_quagga}"
+  install -Dm0644 "redhat/${_quagga}.logrotate" "$pkgdir/etc/logrotate.d/${_quagga}"
   sed -ri 's|/var/run/quagga|/run/quagga|g' "$pkgdir/etc/logrotate.d/${_quagga}"
 
   pushd "${srcdir}"
-  install -d -m 755 "${pkgdir}"/usr/lib/{systemd/system,tmpfiles.d,sysusers.d}
+  install -dm0755 "${pkgdir}"/usr/lib/{systemd/system,tmpfiles.d,sysusers.d}
   for d in zebra ripd ripngd bgpd ospfd ospfd-instance@ ospf6d isisd babeld pimd; do
-    install -D -m 644 ${d}.service "${pkgdir}/usr/lib/systemd/system/${d}.service"
+    install -Dm0644 ${d}.service "${pkgdir}/usr/lib/systemd/system/${d}.service"
   done
-  install -D -m 644 "${_quagga}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_quagga}.conf"
-  install -D -m 644 "${_quagga}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_quagga}.conf"
+  install -Dm0644 "${_quagga}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_quagga}.conf"
+  install -Dm0644 "${_quagga}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_quagga}.conf"
   popd
 }
