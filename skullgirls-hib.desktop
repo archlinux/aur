@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Skullgirls
+Comment=A fast-paced 2D fighting game
+Exec=skullgirls-hib
+Icon=skullgirls-hib
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8

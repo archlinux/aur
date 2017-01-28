@@ -1,0 +1,19 @@
+pkgbase = skullgirls-hib
+	pkgdesc = A fast-paced 2D fighting game
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://www.skullgirls.com
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	optdepends = firejail: Automatically sandbox this application from your OS
+	source = hib://Skullgirls-1.0.1.sh
+	source = skullgirls-hib.desktop
+	source = skullgirls-hib
+	sha256sums = b558c80e764e63acddf37e3fb51723ff5e4011386199707f5e3b41057213963f
+	sha256sums = 7613e7b41b785693ffd2d383bc68a1220bfa763e2fefaa3e45823a48514c9a55
+	sha256sums = e2be1e73db299f42f9c8fd6b62cbf022741cae77719803aabce1c05433b5d650
+
+pkgname = skullgirls-hib
+
