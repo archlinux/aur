@@ -41,7 +41,7 @@ pkgbase = gstreamer0.10-bad
 	makedepends = spandsp
 	makedepends = celt
 	options = !emptydirs
-	source = git://anongit.freedesktop.org/gstreamer-sdk/gst-plugins-bad#commit=57569a4854a0f2d14ef19a8264a4ae9a7a1d1125
+	source = git://repo.or.cz/gstreamer-sdk/gst-plugins-bad.git#commit=57569a4854a0f2d14ef19a8264a4ae9a7a1d1125
 	source = fix-libmodplug-include.patch
 	source = drop-vpx-compat-defs.patch
 	source = disable-assrender-test.patch

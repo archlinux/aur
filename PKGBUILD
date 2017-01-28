@@ -2,6 +2,7 @@
 # Credit: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=gstreamer0.10-bad
+_pkgname=gst-plugins-bad
 pkgname=('gstreamer0.10-bad' 'gstreamer0.10-bad-plugins')
 pkgver=0.10.23
 pkgrel=21
@@ -10,7 +11,7 @@ license=('LGPL' 'GPL')
 makedepends=('pkgconfig' 'gstreamer0.10-base>=0.10.36-3' 'xvidcore' 'libdca' 'bzip2' 'libdc1394' 'neon' 'faac' 'musicbrainz' 'faad2' 'libmms' 'libcdaudio' 'libmpcdec' 'mjpegtools' 'libdvdnav' 'libmodplug' 'jasper' 'liblrdf' 'libofa' 'soundtouch' 'libvdpau' 'schroedinger' 'libass' 'libvpx' 'gsm' 'libgme' 'rtmpdump' 'libsndfile' 'librsvg' 'wildmidi' 'opus' 'git' 'spandsp' 'celt')
 url="http://gstreamer.freedesktop.org/"
 options=(!emptydirs)
-source=("git://anongit.freedesktop.org/gstreamer-sdk/gst-plugins-bad#commit=57569a4854a0f2d14ef19a8264a4ae9a7a1d1125"
+source=("git://repo.or.cz/gstreamer-sdk/$_pkgname.git#commit=57569a4854a0f2d14ef19a8264a4ae9a7a1d1125"
         fix-libmodplug-include.patch
         drop-vpx-compat-defs.patch
         disable-assrender-test.patch
@@ -26,7 +27,7 @@ sha256sums=('SKIP'
             '7a8698df3b53c34c627c00d3b025045818898cedc5ee7ffa13272d8758fcefd2')
 
 prepare() {
-  cd gst-plugins-bad
+  cd $_pkgname
   sed -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' -i configure.ac
   patch -Np1 -i ../fix-libmodplug-include.patch
   patch -Np1 -i ../drop-vpx-compat-defs.patch
@@ -37,7 +38,7 @@ prepare() {
 }
 
 build() {
-  cd gst-plugins-bad
+  cd $_pkgname
   NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --disable-static --enable-experimental --disable-gtk-doc \
@@ -49,16 +50,11 @@ build() {
   sed -e 's/gst sys ext/gst/' -i Makefile
 }
 
-check() {
-  cd gst-plugins-bad
-  make check
-}
-
 package_gstreamer0.10-bad() {
   pkgdesc="GStreamer Multimedia Framework Bad Plugin libraries (gst-plugins-bad)"
   depends=('gstreamer0.10-base>=0.10.34')
 
-  cd gst-plugins-bad
+  cd $_pkgname
   make DESTDIR="${pkgdir}" install
 }
 
@@ -67,7 +63,7 @@ package_gstreamer0.10-bad-plugins() {
   depends=("gstreamer0.10-bad=${pkgver}" 'xvidcore' 'libdca' 'bzip2' 'libdc1394' 'neon' 'faac' 'musicbrainz' 'faad2' 'libmms' 'libcdaudio' 'libmpcdec' 'mjpegtools' 'libdvdnav' 'libmodplug' 'jasper' 'liblrdf' 'libofa' 'libvdpau' 'soundtouch' 'libass' 'schroedinger' 'libvpx' 'gsm' 'rtmpdump' 'libgme' 'libsndfile' 'librsvg' 'wildmidi' 'opus' 'celt' 'spandsp')
   groups=('gstreamer0.10-plugins')
 
-  cd gst-plugins-bad
+  cd $_pkgname
   make -C gst-libs DESTDIR="${pkgdir}" install
   make -C ext DESTDIR="${pkgdir}" install
   make -C sys DESTDIR="${pkgdir}" install
