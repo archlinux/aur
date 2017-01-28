@@ -10,7 +10,7 @@ source=("https://github.com/daurnimator/lpeg_patterns/archive/v$pkgver.tar.gz")
 md5sums=('d28a92b86891ffc2f3a044ac01628491')
 
 package_lua-lpeg-patterns() {
-	pkgdesc='lpeg-patterns library for Lua 5.3'
+	pkgdesc='A collection of LPEG patterns for Lua 5.3'
 
 	cd lpeg_patterns-"$pkgver"
 	install -Dm644 lpeg_patterns/* -t "$pkgdir"/usr/share/lua/5.3/lpeg_patterns/
@@ -18,7 +18,7 @@ package_lua-lpeg-patterns() {
 }
 
 package_lua51-lpeg-patterns() {
-	pkgdesc='lpeg-patterns library for Lua 5.1'
+	pkgdesc='A collection of LPEG patterns for Lua 5.1'
 
 	cd lpeg_patterns-"$pkgver"
 	install -Dm644 lpeg_patterns/* -t "$pkgdir"/usr/share/lua/5.1/lpeg_patterns/
@@ -26,7 +26,7 @@ package_lua51-lpeg-patterns() {
 }
 
 package_lua52-lpeg-patterns() {
-	pkgdesc='lpeg-patterns library for Lua 5.2'
+	pkgdesc='A collection of LPEG patterns for Lua 5.2'
 
 	cd lpeg_patterns-"$pkgver"
 	install -Dm644 lpeg_patterns/* -t "$pkgdir"/usr/share/lua/5.2/lpeg_patterns/

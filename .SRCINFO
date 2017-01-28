@@ -8,11 +8,11 @@ pkgbase = lua-lpeg-patterns
 	md5sums = d28a92b86891ffc2f3a044ac01628491
 
 pkgname = lua-lpeg-patterns
-	pkgdesc = lpeg-patterns library for Lua 5.3
+	pkgdesc = A collection of LPEG patterns for Lua 5.3
 
 pkgname = lua51-lpeg-patterns
-	pkgdesc = lpeg-patterns library for Lua 5.1
+	pkgdesc = A collection of LPEG patterns for Lua 5.1
 
 pkgname = lua52-lpeg-patterns
-	pkgdesc = lpeg-patterns library for Lua 5.2
+	pkgdesc = A collection of LPEG patterns for Lua 5.2
 
