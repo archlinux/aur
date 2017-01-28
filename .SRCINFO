@@ -9,6 +9,8 @@ pkgbase = fossamail-i18n
 	license = MPL
 	license = GPL
 	license = LGPL
+	depends = fossamail>=27.0
+	depends = fossamail<27.1
 
 pkgname = fossamail-i18n-bg
 	pkgdesc = Bulgarian language pack for FossaMail
