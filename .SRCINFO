@@ -1,0 +1,40 @@
+pkgbase = lua-http
+	pkgver = 0.1
+	pkgrel = 0
+	url = https://github.com/daurnimator/lua-http
+	arch = any
+	license = MIT
+	makedepends = pandoc
+	source = https://github.com/daurnimator/lua-http/archive/v0.1.tar.gz
+	md5sums = f5da73665fb3a13cd600e8b17e0c1bb9
+
+pkgname = lua-http
+	pkgdesc = HTTP Library for Lua 5.3
+	depends = lua-cqueues>=20161214
+	depends = lua-luaossl>=20161208
+	depends = lua-basexx>=0.2.0
+	depends = lua-lpeg
+	depends = lua-lpeg-patterns>=0.3
+	depends = lua-fifo
+
+pkgname = lua51-http
+	pkgdesc = HTTP Library for Lua 5.1
+	depends = lua51-compat53>=0.3
+	depends = lua51-bitop
+	depends = lua51-cqueues>=20161214
+	depends = lua51-luaossl>=20161208
+	depends = lua51-basexx>=0.2.0
+	depends = lua51-lpeg
+	depends = lua51-lpeg-patterns>=0.3
+	depends = lua51-fifo
+
+pkgname = lua52-http
+	pkgdesc = HTTP Library for Lua 5.2
+	depends = lua52-compat53>=0.3
+	depends = lua52-cqueues>=20161214
+	depends = lua52-luaossl>=20161208
+	depends = lua52-basexx>=0.2.0
+	depends = lua52-lpeg
+	depends = lua52-lpeg-patterns>=0.3
+	depends = lua52-fifo
+
