@@ -1,13 +1,24 @@
-#! /bin/sh
+#! /bin/bash
 
-run="/opt/gog-owlboy/start.sh"
-# The launcher fails unless in its dir.
-cd /opt/gog-undertale/ || exit 1
+pkgname="gog-owlboy"
+pkgdir="/opt/${pkgname}/"
+run="${pkgdir}/start.sh"
 
-if which firejail >/dev/null 2>&1 && [ -z "$FIREJAIL_IGNORE" ]; then
-  echo "Firejail detected. Enforcing a sandbox"
-  echo "To bypass Firejail enforcement, run FIREJAIL_IGNORE=1 $run."
-  firejail --caps.drop=all "$run"
+if hash firejail; then
+    echo "Firejail detected; attempting to enforce a sandbox..."
+    if [[ -f "${XDG_CONFIG_HOME}/firejail/${pkgname}.profile" ]]; then
+        echo "Firejail profile for ${pkgname} found in ${XDG_CONFIG_HOME}/firejail/"
+        echo "Enforcing a sandbox!"
+        firejail "${run}"
+    elif [[ -f "/etc/firejail/${pkgname}.profile" ]]; then
+        echo "Firejail profile for ${pkgname} found in /etc/firejail/"
+        echo "Enforcing a sandbox!"
+        firejail "${run}"
+    else
+        echo "No Firejail profile detected!"
+        echo "Skipping Firejail sandbox..."
+        "${run}"
+    fi
 else
-  "$run"
+    "${run}"
 fi

@@ -6,13 +6,21 @@ pkgbase = gog-owlboy
 	arch = i686
 	arch = x86_64
 	license = custom
+	depends = libogg
+	depends = libvorbis
+	depends = openal
+	depends = sdl2
 	optdepends = firejail: Automatically sandbox this application from your OS
 	source = gog://gog_owlboy_2.0.0.1.sh
 	source = gog-owlboy.desktop
 	source = gog-owlboy
 	sha256sums = 76958e0bb434d2514873aaddb892bc6c7055c39799ecde5f62a56345136853fc
 	sha256sums = 8574e2463800004ddf97e49d2760d834413bf51fda4b1a57ead8cc10b07ac4f2
-	sha256sums = 22b307b01c96852220e1be33e1cfa19410c7dd009135540e6d48ed35bace17f0
+	sha256sums = 160b4d0fb275d3c1d4d6d574ca4085579e944e67dd32bd0a0c6e79f2e3d105a6
+	depends_i686 = lib32-libogg
+	depends_i686 = lib32-libvorbis
+	depends_i686 = lib32-openal
+	depends_i686 = lib32-sdl2
 
 pkgname = gog-owlboy
 
