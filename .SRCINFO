@@ -1,0 +1,20 @@
+pkgbase = bed-latex
+	pkgdesc = BEd: Beamer Editor, GUI for LaTeX Beamer presentations.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://framagit.org/delisle/bed
+	install = bed.install
+	arch = any
+	license = GPL3
+	depends = python>=3.0
+	depends = python-pyqt5
+	depends = python-poppler-qt5
+	depends = texlive-core
+	depends = texlive-latexextra
+	optdepends = python-pygments
+	conflicts = bed
+	source = bed-1.1.tar.gz::https://framagit.org/delisle/bed/repository/archive.tar.gz?ref=v1.1
+	md5sums = e14089fdab9ec1607dee4e9ee31434c2
+
+pkgname = bed-latex
+
