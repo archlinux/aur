@@ -1,8 +1,8 @@
 # Maintainer: TheSilentDrifter a.k.a Larry Dewey <larry.j.dewey@gmail.com>
 
 pkgname=tutanota-electron-git
-pkgver=0.0.1
-pkgrel=1
+pkgver=0.0.2
+pkgrel=2
 pkgdesc="A secure email client"
 arch=('x86_64')
 url="https://bitbucket.org/Thesilentdrifter/tutanota-electron"
@@ -19,12 +19,10 @@ options=()
 install=()
 changeLog=()
 source=("https://bitbucket.org/Thesilentdrifter/tutanota-electron/raw/82fd82caa6515e2c55ed6400a3f6fb32918a2b72/tutanota-electron-git.tar.gz")
-md5sums=(f2a936d72db2f2156836d122fceee67c)
-sha512sums=(17678c208d419fda214bfa584a8dd4ab30724b6b3b80f545818de85da432b14431e10b9e537029be6dda900466cc7e33a9b9ab40892de3902f11c42b5f68bf51)
-
+md5sums=('19b704db8dfae33c99a38e68d1b918bc')
+sha512sums=('6cd87a397467e7a247456ac63ffa25163a15cc19f931be21e4f30f0d77c064838a89e0dd246cb88afe6c5169c4ac34117b4316f26991aed11384978fb6d5df1c')
 build() {
   cd "$pkgname"
-  sudo npm install electron-packager -g
   ./build.sh
 }
 
