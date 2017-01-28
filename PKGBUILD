@@ -4,14 +4,14 @@
 pkgname=gstreamer0.10
 _pkgname=gstreamer
 pkgver=0.10.36
-pkgrel=10
+pkgrel=11
 pkgdesc="GStreamer Multimedia Framework"
 arch=('i686' 'x86_64')
 license=('LGPL')
 url='https://gstreamer.freedesktop.org/'
 depends=('libxml2' 'glib2')
 makedepends=('intltool' 'pkgconfig' 'gobject-introspection' 'git')
-source=("git+http://repo.or.cz/gstreamer-sdk/$_pkgname.git#commit=3ddc31eaa18c3be1613e43430eca78a3e445639e"
+source=("git+https://gitlab.com/gstreamer-sdk/$_pkgname.git#commit=3ddc31eaa18c3be1613e43430eca78a3e445639e"
         'tests-remove-silly-test_fail_abstract_new-check.patch'
         'bison3.patch')
 sha256sums=('SKIP'
