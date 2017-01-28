@@ -65,7 +65,7 @@ After=network.target
 Type=simple
 #User=nobody
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE
-ExecStart=/usr/bin/shadowsocks-server -c /etc/shadowsocks/%i.json
+ExecStart=/usr/bin/shadowsocks-local -c /etc/shadowsocks/%i.json
 
 [Install]
 WantedBy=multi-user.target
