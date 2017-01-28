@@ -1,0 +1,17 @@
+pkgbase = hid-asus-dkms-git
+	pkgdesc = ASUS HID DKMS Driver
+	pkgver = r76.627ddb9
+	pkgrel = 1
+	url = http://www.asus.com/
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	options = !strip
+	source = git+https://github.com/vlasenko/hid-asus-dkms.git
+	source = 41-hid-asus.rules
+	sha256sums = SKIP
+	sha256sums = 3fbd48f7d2f58c7f9f27bcfb65c09b914d14a61924095f20a8eface0ef776e27
+
+pkgname = hid-asus-dkms-git
+

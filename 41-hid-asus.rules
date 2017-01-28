@@ -1,0 +1,1 @@
+ACTION=="add" ENV{MODALIAS}=="hid:b0018g0001v00000B05p00000101", RUN+="/bin/sh -c 'kname=`uname -r`; insmod `find /lib/modules/$kname -name hid-asus.ko ! -wholename /lib/modules/$kname/kernel/drivers/hid/hid-asus.ko`; D=`basename %p`; echo $D > /sys/bus/hid/drivers/hid-generic/unbind; echo $D > /sys/bus/hid/drivers/hid-asus/bind'"

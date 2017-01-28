@@ -1,0 +1,9 @@
+# downloadable source
+/hid-asus-dkms
+# binary package
+/hid-asus-dkms-git-*.pkg.tar*
+# build directory
+/src
+/pkg
+# kde directory file
+.directory
