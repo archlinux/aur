@@ -1,6 +1,6 @@
 pkgbase = openvpn-xor-git
 	pkgdesc = An easy-to-use, robust and highly configurable VPN (Virtual Private Network) - git checkout
-	pkgver = 2.4.rc2.r26.g4590c383
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/Tunnelblick/Tunnelblick/tree/master/third_party/sources/openvpn
 	arch = i686
@@ -18,6 +18,7 @@ pkgbase = openvpn-xor-git
 	provides = openvpn-dev
 	conflicts = openvpn
 	conflicts = openvpn-dev
+	conflicts = openvpn-git
 	source = https://github.com/openvpn/openvpn/archive/v2.4.0.tar.gz
 	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.4.0/patches/02-tunnelblick-openvpn_xorpatch-a.diff
 	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.4.0/patches/03-tunnelblick-openvpn_xorpatch-b.diff

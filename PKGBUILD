@@ -1,8 +1,7 @@
 # Maintainer: Pete Alexandrou <pete@ozmartians.com>
-
 pkgname=openvpn-xor-git
 _pkgname=openvpn
-pkgver=2.4.rc2.r26.g4590c383
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) - git checkout'
 arch=('i686' 'x86_64')
@@ -10,22 +9,19 @@ url='https://github.com/Tunnelblick/Tunnelblick/tree/master/third_party/sources/
 depends=('openssl' 'lzo' 'iproute2' 'libsystemd' 'pkcs11-helper')
 optdepends=('easy-rsa: easy CA and certificate handling')
 makedepends=('git' 'systemd')
-conflicts=('openvpn' 'openvpn-dev')
+conflicts=('openvpn' 'openvpn-dev' 'openvpn-git')
 provides=('openvpn=2.4.0' 'openvpn-dev')
 license=('custom')
-# for 2.4.x release branch append: #branch=release/2.4
-# source=('git://github.com/OpenVPN/openvpn.git')
-
-source=('https://github.com/openvpn/openvpn/archive/v2.4.0.tar.gz'
-	   'https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.4.0/patches/02-tunnelblick-openvpn_xorpatch-a.diff'
-	   'https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.4.0/patches/03-tunnelblick-openvpn_xorpatch-b.diff'
-	   'https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.4.0/patches/04-tunnelblick-openvpn_xorpatch-c.diff'
-	   'https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.4.0/patches/05-tunnelblick-openvpn_xorpatch-d.diff'
-	   'https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.4.0/patches/06-tunnelblick-openvpn_xorpatch-e.diff')
+source=("https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.tar.gz"
+	   "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-${pkgver}/patches/02-tunnelblick-openvpn_xorpatch-a.diff"
+	   "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-${pkgver}/patches/03-tunnelblick-openvpn_xorpatch-b.diff"
+	   "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-${pkgver}/patches/04-tunnelblick-openvpn_xorpatch-c.diff"
+	   "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-${pkgver}/patches/05-tunnelblick-openvpn_xorpatch-d.diff"
+	   "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-${pkgver}/patches/06-tunnelblick-openvpn_xorpatch-e.diff")
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-	cd openvpn-2.4.0/
+	cd "${_pkgname}-${pkgver}"/
 
 	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
 		printf '%s.r%s.g%s' \
@@ -40,7 +36,7 @@ pkgver() {
 }
 
 prepare() {
-	cd openvpn-2.4.0/
+	cd "${_pkgname}-${pkgver}"/
 
 	# regenerate configure script
 	autoreconf -vi
@@ -57,7 +53,7 @@ prepare() {
 }
 
 build() {
-	cd openvpn-2.4.0/
+	cd "${_pkgname}-${pkgver}"/
 
 	./configure \
 		--prefix=/usr \
@@ -71,13 +67,13 @@ build() {
 }
 
 check() {
-	cd openvpn-2.4.0/
+	cd "${_pkgname}-${pkgver}"/
 
 	make check
 }
 
 package() {
-	cd openvpn-2.4.0/
+	cd "${_pkgname}-${pkgver}"/
 
 	# Install openvpn
 	make DESTDIR="${pkgdir}" install
