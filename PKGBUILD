@@ -4,15 +4,15 @@
 
 pkgname=fife
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 _githubname=fifengine
 pkgdesc="Flexible Isometric Free Engine is a cross platform game creation framework"
 arch=(i686 x86_64)
 url="http://fifengine.net/"
 license=('LGPL')
-depends=('boost-libs' 'fifechan' 'libgl' 'libvorbis' 'libxcursor' 'tinyxml'
-         'openal' 'python2' 'sdl_image' 'sdl_ttf')
-makedepends=('cmake' 'mesa' 'swig' 'zlib')
+depends=('boost' 'boost-libs' 'fifechan' 'libgl' 'libogg' 'libpng' 'libvorbis'
+         'sdl2' 'sdl2_ttf' 'sdl2_image' 'openal' 'python2' 'tinyxml' 'zlib')
+makedepends=('cmake' 'mesa' 'swig')
 source=("https://github.com/${_githubname}/${_githubname}/archive/${pkgver}.tar.gz")
 md5sums=('d1bac8339f207b797a2e3dbd85383a66')
 sha256sums=('babd4c1c6e2f991d2cf61d5746f34a66ca18e1c95782599c95c4382949d3d8f1')
