@@ -1,15 +1,17 @@
-# Contributor: gamanakis
+# $Id: PKGBUILD 273590 2016-08-11 09:35:58Z eworm $
+# Maintainer: Ronald van Haren <ronald.archlinux.org>
+# Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=iproute2-cake
 pkgver=4.9.0
-pkgrel=2
-pkgdesc="IP Routing Utilities with tc-support for the CAKE scheduler"
+pkgrel=3
+pkgdesc="IP Routing Utilities"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2"
 #950 patch: https://raw.githubusercontent.com/lede-project/source/master/package/network/utils/iproute2/patches/950-add-cake-to-tc.patch
-#tc-cake.8 man page: https://github.com/dtaht/tc-adv/blob/master/man/man8/tc-cake.8
-depends=('glibc' 'iptables' 'sch_cake')
+#modified according to github.com/dtaht/tc-adv repository
+depends=('glibc' 'iptables')
 makedepends=('linux-atm')
 optdepends=('linux-atm: ATM support')
 groups=('base')
@@ -22,14 +24,13 @@ backup=('etc/iproute2/ematch_map' 'etc/iproute2/rt_dsfield' 'etc/iproute2/rt_pro
 validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E') # Stephen Hemminger
 source=("http://www.kernel.org/pub/linux/utils/net/${pkgname/-cake}/${pkgname/-cake}-${pkgver}.tar."{xz,sign}
         '0001-make-iproute2-fhs-compliant.patch'
-	'950-add-cake-to-tc.patch'
-	'tc-cake.8.gz')
-
+	'950b-add-cake-to-tc.patch'
+	)
 prepare() {
   cd "${srcdir}/${pkgname/-cake}-${pkgver}"
 
   # set correct fhs structure
-  patch -Np1 -i "${srcdir}/950-add-cake-to-tc.patch"
+  patch -Np1 -i "${srcdir}/950b-add-cake-to-tc.patch"
   patch -Np1 -i "${srcdir}/0001-make-iproute2-fhs-compliant.patch"
 
   # do not treat warnings as errors
@@ -57,13 +58,8 @@ package() {
   cd "${pkgdir}"
   mv sbin usr/bin
 
-  cd "${srcdir}"
-  cp tc-cake.8.gz "${pkgdir}/usr/share/man/man8"
-
 }
-
 sha1sums=('fc28f956a7a9695473312d0ed35dc24a7ef9d7f6'
           'SKIP'
           '1ed328854983b3f9df0a143aa7c77920916a13c1'
-          'f0693506ece8bcaa5377adfe490c88e066436ff0'
-          '809c815b4d86c68ed90f8d5c875a7a49618e3051')
+          '73c7e31c299fdb6d720fe0d0401b427f4cbd069c')
