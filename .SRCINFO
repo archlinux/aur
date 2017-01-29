@@ -1,7 +1,7 @@
 pkgbase = bigloo-devel
 	pkgdesc = Fast scheme compiler
 	pkgver = 4.3a.beta26Jan17
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 23
 	url = http://www-sop.inria.fr/mimosa/fp/Bigloo/
 	arch = i686
@@ -17,10 +17,8 @@ pkgbase = bigloo-devel
 	depends = gmp
 	depends = libpulse
 	depends = libuv
-	depends = gstreamer0.10-base
 	depends = mpg123
 	depends = flac
-	depends = libuv
 	optdepends = emacs: for bee
 	optdepends = java-environment: for compiling into jvm
 	provides = bigloo=$pkgver

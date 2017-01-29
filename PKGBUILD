@@ -7,12 +7,12 @@ epoch=23
 _pkgver='4.3a'
 _pkgsuffix='beta26Jan17'
 pkgver="${_pkgver}"."${_pkgsuffix}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast scheme compiler"
 arch=('i686' 'x86_64')
 url="http://www-sop.inria.fr/mimosa/fp/Bigloo/"
 license=('GPL' 'LGPL')
-depends=('openssl' 'sqlite3' 'avahi' 'libunistring' 'gmp' 'libpulse' 'libuv' 'gstreamer0.10-base' 'mpg123' 'flac' 'libuv')
+depends=('openssl' 'sqlite3' 'avahi' 'libunistring' 'gmp' 'libpulse' 'libuv' 'mpg123' 'flac')
 makedepends=('zip' 'emacs')
 optdepends=('emacs: for bee'
 	    'java-environment: for compiling into jvm')
@@ -35,7 +35,7 @@ build() {
     --enable-ssl \
     --enable-sqlite \
     --enable-alsa \
-    --enable-gstreamer \
+    --disable-gstreamer \
     --enable-libuv \
     --mandir=/usr/share/man \
     --infodir=/usr/share/info \
