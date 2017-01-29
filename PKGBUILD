@@ -2,18 +2,17 @@
 # Contributor: Alexey Stukalov <astukalov@gmail.com>
 
 pkgname=smartsynchronize
-pkgver=3.4.5
+pkgver=3.4.6
 pkgrel=1
 pkgdesc="Comparing Directories the Smart Way"
 arch=("any")
-url="http://www.syntevo.com/smartsynchronize/index.html"
+url="https://www.syntevo.com/smartsynchronize/"
 license=('custom')
-depends=('java-runtime' 'gtk2' 'gtk-update-icon-cache')
-source=("http://www.syntevo.com/downloads/${pkgname}/${pkgname}-generic-${pkgver//\./_}.tar.gz"
+depends=('java-runtime>=8' 'gtk3' 'gtk-update-icon-cache')
+source=("https://www.syntevo.com/static/smart/download/${pkgname}/${pkgname}-generic-${pkgver//\./_}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('d9fbc7b0fd90a33d05fdc0c6647df3ddd3701ff9ab0af248ff48f63b0f8351c1'
+sha256sums=('ecefc2a1ff0094b9c179b97de73447fafafa104587471fef083ccd3d7c6b03e7'
             'ee21447d20ef52b65f5becb7a004c10acb925d4219d42f3be2aae61115d9f52f')
-install="${pkgname}.install"
 
 package() {
   # Install desktop file
