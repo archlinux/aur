@@ -8,18 +8,22 @@ arch=('i686' 'x86_64')
 url="http://sz81.sourceforge.net/"
 license=("GPL2")
 depends=('sdl')
-source=(http://downloads.sourceforge.net/sourceforge/sz81/sz81-$pkgver-source.tar.gz
+source=(https://downloads.sourceforge.net/sourceforge/sz81/sz81-$pkgver-source.tar.gz
         Makefile.patch)
-md5sums=('e0ec83d076793e6275dd58d22139eabe'
-         'ee08235fbd63a49b69f8572b01e810b7')
+sha256sums=('4ad530435e37c2cf7261155ec43f1fc9922e00d481cc901b4273f970754144e1'
+            '3811139b5921fef0e25be80a453a9a15f5358996b263389dc34320132088a37a')
+
+prepare() {
+  cd $pkgname-$pkgver
+  patch -p0 -i ../Makefile.patch
+}
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  patch -p0 < $srcdir/Makefile.patch
-  make || return 1
+  cd $pkgname-$pkgver
+  make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  make PREFIX=$pkgdir/usr install
+  cd $pkgname-$pkgver
+  make PREFIX="$pkgdir"/usr install
 }

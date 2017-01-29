@@ -7,10 +7,10 @@ pkgbase = sz81
 	arch = x86_64
 	license = GPL2
 	depends = sdl
-	source = http://downloads.sourceforge.net/sourceforge/sz81/sz81-2.1.7-source.tar.gz
+	source = https://downloads.sourceforge.net/sourceforge/sz81/sz81-2.1.7-source.tar.gz
 	source = Makefile.patch
-	md5sums = e0ec83d076793e6275dd58d22139eabe
-	md5sums = ee08235fbd63a49b69f8572b01e810b7
+	sha256sums = 4ad530435e37c2cf7261155ec43f1fc9922e00d481cc901b4273f970754144e1
+	sha256sums = 3811139b5921fef0e25be80a453a9a15f5358996b263389dc34320132088a37a
 
 pkgname = sz81
 
