@@ -2,19 +2,21 @@
 # Contributor: Po-An,Yang(Antonio) <yanganto gmail.com>
 
 # Todo: If there'a any files left in they cache they should probably be deleted on uninstall
+# Todo: Can we build the source code?
 
 set -u
 pkgname='networkminer'
-pkgver='2.0'
-pkgrel='3'
-pkgdesc='A packet analyzer'
+pkgver='2.1.1'
+pkgrel='1'
+pkgdesc='A Network Forensic Analysis Tool for advanced Network Traffic Analysis, sniffer and packet analyzer'
 arch=('any')
 url='http://www.netresec.com/'
 license=('GPL2')
 depends=('mono')
+_verwatch=('http://www.netresec.com/?page=NetworkMiner' '\s\+<[nt][a-z]\+>NetworkMiner\s\([0-9][^<]\+\)</[a-z]\+>.*' 'f')
 _srcname="NetworkMiner_${pkgver//\./-}"
 source=("${_srcname}.zip::https://www.netresec.com/?download=NetworkMiner")
-sha256sums=('36251ea16966954412b804a0d7b51bcd077fff8f138cfb1fd06d3589fb5cd0a5')
+sha256sums=('a429bdaaa703736a56fa116ff237bdd936eb9bbebbf11bf12ef3d8ffa877f2c7')
 
 package() {
   set -u
@@ -40,7 +42,7 @@ Exec=Networkminer.sh
 Terminal=false
 Type=Application
 #Icon=
-Categories=Application;Utilities;
+Categories=Application;Utility;
 MimeType=application/x-executable
 EOF
   ) "${pkgdir}/usr/share/applications/NetworkMiner.desktop"
