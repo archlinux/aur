@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-semifull-git
 	pkgdesc = Record, convert and stream audio and video (Git version with all possible libs)
-	pkgver = N.83028.gb53b3a4f6a
+	pkgver = N.83277.gc4a3526b57
 	pkgrel = 1
 	url = http://www.ffmpeg.org/
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = ffmpeg-semifull-git
 	makedepends = yasm
 	makedepends = opencl-headers
 	makedepends = flite
+	makedepends = jdk
 	depends = alsa-lib
 	depends = zlib
 	depends = bzip2

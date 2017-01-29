@@ -10,7 +10,7 @@
 # flite1
 
 pkgname=ffmpeg-semifull-git
-pkgver=N.83028.gb53b3a4f6a
+pkgver=N.83277.gc4a3526b57
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ depends=(
 )
 depends_x86_64=('cuda')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (experimental)')
-makedepends=('git' 'yasm' 'opencl-headers' 'flite')
+makedepends=('git' 'yasm' 'opencl-headers' 'flite' 'jdk')
 provides=(
     'ffmpeg' 'qt-faststart' 'ffmpeg-git' 'ffmpeg-full' 'ffmpeg-semifull' 'ffmpeg-full-extra' 'ffmpeg-full-nvenc'
     'ffmpeg-libfdk_aac' 'libavutil.so' 'libavcodec.so' 'libavformat.so' 'libavdevice.so'
