@@ -28,7 +28,7 @@ _sysroot=""
 _piver=""
 _use_mesa=false
 _float=false
-_shadow_build=false
+_shadow_build=true
 _debug=true
 _skip_web_engine=false
 _static_build=false
@@ -137,7 +137,7 @@ arch=("x86_64")
 url="http://chaos-reins.com/qpi/"
 license=("LGPL3" "GPL3")
 optdepends=('qtcreator: Integrated Raspberry Pi IDE development')
-makedepends=("git" "pkgconfig" "gcc")
+makedepends=("git" "pkgconfig" "gcc" "gperf" "python")
 #_provider=http://qt.mirror.constant.com/
 _provider=https://download.qt.io
 
