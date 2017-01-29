@@ -2,11 +2,11 @@
 
 pkgname=rclone-browser
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple cross-platform GUI for rclone'
 url='https://mmozeiko.github.io/RcloneBrowser/'
 arch=('i686' 'x86_64')
-license=('GPL3')
+license=('custom:Public Domain')
 source=("https://github.com/mmozeiko/RcloneBrowser/archive/${pkgver}.tar.gz"
         'rclone-browser.desktop')
 sha256sums=('b3e718180ad9475517da55b5b7bbeb83434a2b621bc4b0e924870764cf77bf50'
@@ -21,11 +21,12 @@ package() {
   cmake .. -DCMAKE_BUILD_TYPE=Release -DRCLONE_BROWSER_VERSION=${pkgver}
   cmake --build .
 
-  install -dm755 "$pkgdir"/usr/bin
-  install -m755 "$srcdir"/RcloneBrowser-${pkgver}/build/build/rclone-browser \
+  install -Dm755 "$srcdir"/RcloneBrowser-${pkgver}/build/build/rclone-browser \
                 "$pkgdir"/usr/bin/rclone-browser
 
-  install -dm755 "$pkgdir"/usr/share/applications
-  install -m644 "$srcdir"/rclone-browser.desktop \
+  install -Dm644 "$srcdir"/RcloneBrowser-${pkgver}/LICENSE \
+                "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
+
+  install -Dm644 "$srcdir"/rclone-browser.desktop \
                 "$pkgdir"/usr/share/applications/rclone-browser.desktop
 }
