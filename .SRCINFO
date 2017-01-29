@@ -1,0 +1,15 @@
+pkgbase = python-latexcodec
+	pkgdesc = A lexer and codec to work with LaTeX code in Python
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/mcmtroffaes/latexcodec
+	arch = any
+	license = MIT
+	makedepends = python-distribute
+	depends = python
+	depends = python-six
+	source = https://pypi.io/packages/source/l/latexcodec/latexcodec-1.0.4.tar.gz
+	sha256sums = 62bf8a3ee298f169a4d014dad5522bc1325b54dc98789a453fd338620387cb6c
+
+pkgname = python-latexcodec
+
