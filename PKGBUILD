@@ -13,13 +13,13 @@ depends=('portaudio' 'ffmpeg' 'gstreamer0.10' 'gstreamer0.10-base-plugins' 'gstr
 makedepends=('libarchive')
 conflicts=('ivideon-video-server-nogui')
 source=("https://packages.ivideon.com/ubuntu/pool/non-free/i/${pkgname}/${pkgname}_${pkgver}-${pkgrel}~${_rel}_amd64.deb"
-	"https://packages.ivideon.com/ubuntu/pool/non-free/libd/libdahuasdk/libdahuasdk_1.0.1_amd64.deb"
+	"https://packages.ivideon.com/ubuntu/pool/non-free/libd/libdahuasdk/libdahuasdk_1.0.2_amd64.deb"
 	"videoserverd.service"
 	"videoserverd.conf"
 	"sysusers.conf"
 	"videoservertmp.conf")
 sha256sums=('72b44eceadffd0dc33f38d1298ab3bf42f552b02568e20812301a2a46c9686da'
-            '95cec3d42b8c4386075d1a14184e5fab80ba75f87885d15f9f9245fac120a267'
+            '7da74ca97c53669f95efea718bbf05ddd7b0d5b0b97dc93d2777ed8c64388254'
             '48cd5beedc9992a26448ee06c44460c8e9f3014154adcad0eee39aa985851071'
             'f0010bc64cd7c1b5aefcc7241f0e0074528aec1a4b51dd08bd429e95acd26012'
             '91c4b133ad4d1fda72679ab393b647ac24a56e3c0d46cd2a908a47ed8524ec81'
