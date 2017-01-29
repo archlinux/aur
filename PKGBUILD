@@ -62,7 +62,7 @@ _pkgvermajmin="5.8"
 _pkgverpatch=".0"
 # -{alpha/beta/rc}
 _dev_suffix=""
-pkgrel=7
+pkgrel=9
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
 _pkgver=${pkgver}${_dev_suffix}
@@ -201,6 +201,8 @@ build() {
   unset LDFLAGS
   unset CFLAGS
   unset CXXFLAGS
+
+  source ${startdir}/python_override_env
 
   local _srcdir="${srcdir}/${_source_package_name}"
   local _bindir="${_srcdir}"
