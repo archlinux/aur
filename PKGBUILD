@@ -6,13 +6,12 @@ pkgdesc="A computer algebra system designed specifically for the solution of pro
 arch=('i686' 'x86_64')
 url="http://cadabra.science/"
 license=('GPL')
-provides=('cadabra2')
-conflicts=('cadabra2')
+conflicts=('cadabra2-git')
 depends=('python-matplotlib' 'gtkmm3' 'jsoncpp' 'mathjax' 'boost-libs' 'python-sympy' 'texlive-core')
 makedepends=('cmake' 'boost')
 source=("$pkgname::git+https://github.com/kpeeters/cadabra2#tag=$pkgver" "package.patch")
 md5sums=('SKIP'
-         'b04444f9ba31aa482dd88473dd90d59b')
+         '2cf414a7280fd64858d1d19d38d4bd8c')
 install=package.install
 
 prepare() {

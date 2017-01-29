@@ -1,9 +1,9 @@
 diff -aur -bZwB -x .git cadabra2.old/frontend/CMakeLists.txt cadabra2/frontend/CMakeLists.txt
---- cadabra2.old/frontend/CMakeLists.txt	2016-06-04 10:24:47.557487173 -0400
-+++ cadabra2/frontend/CMakeLists.txt	2016-06-04 10:25:19.020696432 -0400
-@@ -21,8 +21,8 @@
-
- execute_process(COMMAND kpsewhich -var-value=TEXMFLOCAL OUTPUT_VARIABLE INSTALL_LATEX_DIR OUTPUT_STRIP_TRAILING_WHITESPACE)
+--- cadabra2.old/frontend/CMakeLists.txt	2017-01-29 09:40:31.904324635 -0500
++++ cadabra2/frontend/CMakeLists.txt	2017-01-29 09:40:54.937598647 -0500
+@@ -25,8 +25,8 @@
+   execute_process(COMMAND kpsewhich -var-value=TEXMFLOCAL OUTPUT_VARIABLE INSTALL_LATEX_DIR OUTPUT_STRIP_TRAILING_WHITESPACE)
+ endif()
  # Get the last path in the LaTeX install dir, if there is more than one separated by a ':'.
 -#string(REPLACE ":" ";" INSTALL_LATEX_DIR "${INSTALL_LATEX_DIR}")
 -#list(GET INSTALL_LATEX_DIR -1 INSTALL_LATEX_DIR)
@@ -12,3 +12,17 @@ diff -aur -bZwB -x .git cadabra2.old/frontend/CMakeLists.txt cadabra2/frontend/C
  set(INSTALL_LATEX_DIR "${INSTALL_LATEX_DIR}/tex/latex/cadabra2")
  message("-- Installing LaTeX style files in ${INSTALL_LATEX_DIR}")
  install(DIRECTORY DESTINATION ${INSTALL_LATEX_DIR} DIRECTORY_PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE
+diff -aur -bZwB -x .git cadabra2.old/tests/CMakeLists.txt cadabra2/tests/CMakeLists.txt
+--- cadabra2.old/tests/CMakeLists.txt	2017-01-29 09:40:31.907657960 -0500
++++ cadabra2/tests/CMakeLists.txt	2017-01-29 09:40:54.937598647 -0500
+@@ -37,8 +37,8 @@
+ foreach(NBTEST ${NBTESTS})
+   add_custom_command(OUTPUT  ${CDBOUT}/${NBTEST}.cdb
+ 	 DEPENDS ${CNBIN}/${NBTEST}.cnb ${DC}
+-	 COMMAND cadabra2cadabra
+-	 ARGS    ${CNBIN}/${NBTEST}.cnb ${CDBOUT}/${NBTEST}.cdb
++   COMMAND env
++   ARGS    LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/client_server ${CMAKE_BINARY_DIR}/client_server/cadabra2cadabra ${CNBIN}/${NBTEST}.cnb ${CDBOUT}/${NBTEST}.cdb
+ 	 COMMENT "Creating ${NBTEST} notebook...")
+   add_custom_target("${NBTEST}_test" ALL echo -n DEPENDS ${CDBOUT}/${NBTEST}.cdb)
+   add_test(${NBTEST}  ${CMAKE_SOURCE_DIR}/core/cadabra2 ${CDBOUT}/${NBTEST}.cdb)
