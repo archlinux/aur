@@ -3,8 +3,8 @@
 pkgname=appimage-git
 _gitname=AppImageKit
 pkgdesc="Package desktop applications as AppImages that run on common Linux-based operating systems, such as RHEL, CentOS, Ubuntu, Fedora, debian and derivatives."
-pkgver=r431.ce2d4d7
-pkgrel=2
+pkgver=r442.1dc201b
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://appimage.org"
 license=('MIT')
@@ -34,11 +34,8 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_gitname}"
 
-  # Fix build script for archlinux
-  sed -i s/Bstatic/Bdynamic/g build.sh
-  # workaround so no root priviliges are needed
-  sed -i "s/\/out\//out\//g" build.sh
-  #sed -i -E "s/find.*/cp \/usr\/lib\/libarchive.so.13 appimaged.AppDir\/usr\/lib\//g" build\-appdirs.sh
+  ./build.sh --clean
+
   sed -i "s/find /#find /g" build-appdirs.sh
 
   # Generate appimaged.service file
@@ -56,7 +53,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  ./build.sh
+  ./build.sh --no-dependencies --use-shared-libs
 
   # Copy metainfo files
   mkdir -p appimagetool.AppDir/usr/share/metainfo/
