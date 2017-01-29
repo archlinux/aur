@@ -12,6 +12,7 @@ pkgbase = keybase-git
 	makedepends = yarn
 	makedepends = git
 	makedepends = rsync
+	makedepends = npm
 	depends = fuse
 	depends = gconf
 	conflicts = keybase
