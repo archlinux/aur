@@ -4,12 +4,12 @@
 pkgname="python2-pybtex"
 _pkgname="pybtex"
 pkgver="0.21"
-pkgrel=1
+pkgrel=2
 pkgdesc="Pybtex reads citation information from a file and produces a formatted bibliography."
 arch=("any")
 url="http://pybtex.sourceforge.net"
 license=("GPL")
-depends=("python2")
+depends=("python2" "python2-yaml" "python2-latexcodec")
 makedepends=("python2-distribute")
 source=("https://pypi.io/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha256sums=('af8a6c7c74954ad305553b118d2757f68bc77c5dd5d5de2cc1fd16db90046000')
