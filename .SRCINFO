@@ -1,0 +1,14 @@
+pkgbase = clyde-git
+	pkgdesc = Download pacman packages nightly for cpcache
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nroi/clyde
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-yaml
+	source = git+https://github.com/nroi/clyde.git
+	sha256sums = SKIP
+
+pkgname = clyde-git
+
