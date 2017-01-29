@@ -1,7 +1,7 @@
 pkgbase = mosesdecoder
 	pkgdesc = State of the art Statistical Machine Translation system - Stable Release 3
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.statmt.org/moses
 	install = mosesdecoder.install
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = mosesdecoder
 	depends = xmlrpc-c
 	optdepends = giza-pp-git: for training models
 	optdepends = mgiza: multithreaded giza for training models
-	source = mosesdecoder::git+https://github.com/moses-smt/mosesdecoder.git#branch=RELEASE-3.0
+	source = mosesdecoder::git+https://github.com/moses-smt/mosesdecoder.git#branch=RELEASE-3.0-cpp14
 	source = mosesdecoder.sh
 	md5sums = SKIP
 	md5sums = 888ae605a7b0a816005d44923b523016
