@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-haguichi-indicator-git
+	pkgdesc = Let's you control Haguichi directly from the system status area in GNOME Shell.
+	pkgver = r15.2596e0b
+	pkgrel = 1
+	url = https://github.com/ztefn/gse-haguichi-indicator
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-haguichi-indicator
+	conflicts = gnome-shell-extension-haguichi-indicator
+	source = git+https://github.com/ztefn/gse-haguichi-indicator
+	sha512sums = SKIP
+
+pkgname = gnome-shell-extension-haguichi-indicator-git
+
