@@ -8,8 +8,10 @@ pkgbase = gog-owlboy
 	license = custom
 	depends = libogg
 	depends = libvorbis
+	depends = mojoshader-git
 	depends = openal
 	depends = sdl2
+	depends = xnafiledialog-git
 	optdepends = firejail: Automatically sandbox this application from your OS
 	source = gog://gog_owlboy_2.0.0.1.sh
 	source = gog-owlboy.desktop
@@ -21,6 +23,8 @@ pkgbase = gog-owlboy
 	depends_i686 = lib32-libvorbis
 	depends_i686 = lib32-openal
 	depends_i686 = lib32-sdl2
+	depends_i686 = mojoshader-git
+	depends_i686 = xnafiledialog-git
 
 pkgname = gog-owlboy
 

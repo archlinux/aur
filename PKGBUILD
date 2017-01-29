@@ -21,14 +21,18 @@ arch=(
 depends_x86_64=(
     'libogg'
     'libvorbis'
+    'mojoshader-git'
     'openal'
     'sdl2'
+    'xnafiledialog-git'
 )
 depends_i686=(
     'lib32-libogg'
     'lib32-libvorbis'
     'lib32-openal'
     'lib32-sdl2'
+    'mojoshader-git'
+    'xnafiledialog-git'
 )
 optdepends=(
     'firejail: Automatically sandbox this application from your OS'
