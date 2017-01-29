@@ -92,6 +92,7 @@ pkgbase = ffmpeg-semifull-git
 	depends = libomxil-bellagio
 	depends = cuda
 	optdepends = intel-media-sdk: for Intel QSV support (experimental)
+	optdepends = khronos-ocl-icd-svn: opencl ICD loader from Khronos, non-conflicting.
 	provides = ffmpeg
 	provides = qt-faststart
 	provides = ffmpeg-git

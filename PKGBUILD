@@ -30,7 +30,7 @@ depends=(
     'libomxil-bellagio'
 )
 depends_x86_64=('cuda')
-optdepends_x86_64=('intel-media-sdk: for Intel QSV support (experimental)')
+optdepends_x86_64=('intel-media-sdk: for Intel QSV support (experimental)' 'khronos-ocl-icd-svn: opencl ICD loader from Khronos, non-conflicting.')
 makedepends=('git' 'yasm' 'opencl-headers' 'flite' 'java-environment')
 provides=(
     'ffmpeg' 'qt-faststart' 'ffmpeg-git' 'ffmpeg-full' 'ffmpeg-semifull' 'ffmpeg-full-extra' 'ffmpeg-full-nvenc'
