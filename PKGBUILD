@@ -7,7 +7,7 @@ pkgname=dwarffortress-lnp-git
 pkgver=43.03
 _pkgver=43_03
 _dfhack_pkgrel=r1
-pkgrel=5
+pkgrel=6
 epoch=0
 pkgdesc="Installer for the Lazy Newb Pack to run Dwarf Fortress. Includes vanilla dwarf fortress, dfhack and graphics"
 arch=(x86_64)
@@ -52,7 +52,7 @@ source=(git+"https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux"
         git+"https://github.com/DFgraphics/Wanderlust.git"#tag=43.04
         git+"https://github.com/DFHack/dfhack.git"#tag=0.${pkgver}-${_dfhack_pkgrel}
         git+"https://github.com/svenstaro/dwarf_fortress_unfuck.git"#tag=0.${pkgver}
-        git+"https://github.com/mifki/df-twbt.git"
+        git+"https://github.com/mifki/df-twbt.git"#tag=v5.70
         hg+"https://bitbucket.org/Pidgeot/python-lnp"
         "http://bay12games.com/dwarves/df_${_pkgver}_linux.tar.bz2"
         'DFAnnouncementFilter.zip'::'http://dffd.bay12games.com/download.php?id=7905&f=DFAnnouncementFilter.zip'
