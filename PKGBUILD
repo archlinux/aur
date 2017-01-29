@@ -4,7 +4,7 @@
 
 _pkgname=compton-conf
 pkgname=${_pkgname}-git
-pkgver=0.2.1.0.g841c35a
+pkgver=0.2.1.2.g5603f30
 pkgrel=2
 pkgdesc='A graphical configuration tool for Compton X composite manager. Development version.'
 arch=('i686' 'x86_64')
