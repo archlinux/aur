@@ -1,5 +1,5 @@
 # Maintainer: parnmatt <matt@parnmatt.co.uk>
-# Original Maintainer: 2ion <dev@2ion.de>
+# Previous Maintainer: 2ion <dev@2ion.de>
 
 pkgname=cpdf-bin
 pkgver=2.2

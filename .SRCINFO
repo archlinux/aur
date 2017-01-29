@@ -1,5 +1,5 @@
 pkgbase = cpdf-bin
-	pkgdesc = Command line tools allowing you to manipulate existing PDF files in a variety of ways
+    pkgdesc = Coherent PDF commandline tool binary to manipulate PDF files including merge, encrypt, decrypt, scale, crop, rotate, bookmarks, stamp, logos, page numbers, compress, etc.
 	pkgver = 2.2
 	pkgrel = 1
 	url = http://community.coherentpdf.com
