@@ -1,9 +1,9 @@
 # Maintainer: Melvin Vermeeren <mail@mel.vin>
 # Edited from: firefox-extension-https-everywhere
 
-_pkgname=tab_wheel_scroll-20160511.0.0-tb+fx+sm
+_pkgname=tab_wheel_scroll-20170104.7.46-fx+sm+tb
 pkgname=firefox-extension-tabwheelscroll
-pkgver=2016.05.11.0.0
+pkgver=2017.01.04.7.46
 pkgrel=1
 pkgdesc="Plugin for firefox that allows you to change tabs by scrolling in the tabbar."
 license=('MPL')
@@ -13,7 +13,7 @@ depends=("firefox")
 makedepends=("unzip")
 source=("https://addons.cdn.mozilla.net/user-media/addons/6501/${_pkgname}.xpi")
 noextract=("${_pkgname}.xpi")
-sha256sums=('a11f452ad7bb5c3447cb7b9619f504b49e01f8faaa7f432b914eaaeaefb3fda3')
+sha256sums=('9d55e7f1f237a602107ac4e4fceeb8cc9abb0cf7ecbb2bb28928da9b68ffde77')
 
 prepare() {
 	cd "$srcdir"
