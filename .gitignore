@@ -1,2 +1,7 @@
 *
+!PKGBUILD
+.SRCINFO
+!.gitignore
+!filebydate.desktop
+!filebydate.sh
 

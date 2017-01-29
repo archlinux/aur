@@ -1,7 +1,7 @@
 # Maintainer: Patrik Karlsson <pata.karlsson@gmail.com>
 
 pkgname=filebydate
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="organize files depending on their file or exif dates"
 arch=('any')
@@ -15,7 +15,7 @@ source=(
 	'filebydate.desktop'
 )
 sha256sums=(
-	'cc820a03e9e3415e2326d2f971a6dad7f681b9bed654adaec8c3a61665f191e4'
+	'43fcac94322b8c6683608936963821a52b2d966f164b8d460bb9d7e1126771fb'
 	'c2597c42471798834798ddee7f9dcef7a0811b181b2f335699f131f2ccafeca0'
 	'3fc348ada388e3dcb265a83837d3f264ff1ff1cc07973c42384d8cf928c2f2fd'
 )
