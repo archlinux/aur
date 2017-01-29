@@ -9,11 +9,11 @@ license=('BSD')
 makedepends=('python-setuptools')
 provides=('python-restless')
 options=(!emptydirs)
-source=("git+https://github.com/toastdriven/restless")
+source=("https://github.com/toastdriven/restless.git")
 sha256sums=('SKIP')
 
 package() {
-  cd restless
+  cd $srcdir/restless
   python setup.py install --root="$pkgdir/" --optimize=1
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

@@ -8,7 +8,7 @@ pkgbase = python-restless-git
 	makedepends = python-setuptools
 	provides = python-restless
 	options = !emptydirs
-	source = git+https://github.com/toastdriven/restless
+	source = https://github.com/toastdriven/restless.git
 	sha256sums = SKIP
 
 pkgname = python-restless-git
