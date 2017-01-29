@@ -1,0 +1,18 @@
+pkgbase = basenji
+	pkgdesc = Volume indexing tool designed for easy and fast indexing of CD/DVD and other type of volume collections.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://launchpad.net/basenji
+	arch = any
+	license = GPL
+	makedepends = gio-sharp
+	depends = dbus-sharp-glib
+	depends = gnome-desktop2
+	depends = gtk-sharp-2
+	depends = taglib-sharp
+	depends = udisks
+	source = https://launchpad.net/basenji/trunk/1.0.1/+download/basenji-1.0.1.tar.gz
+	md5sums = eee951ac995359bedab23b964a8e5502
+
+pkgname = basenji
+
