@@ -1,4 +1,4 @@
-# Maintainer: Andrey Vihrov <andrey.vihrov at gmail.com>
+# Contributor: Andrey Vihrov <andrey.vihrov at gmail.com>
 # Contributor: Frank Vanderham <twelve.eighty (at) gmail.>
 # Contributor: USA-RedDragon (AUR)
 
