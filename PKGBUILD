@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname='k3b-l10n-bin-git'
-pkgver=20160731
+pkgver=20170129
 pkgrel=1
 pkgdesc="Language packs for K3B KF5 GIT version"
 arch=('any')
