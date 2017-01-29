@@ -9,7 +9,7 @@ pkgbase = ruby-curses
 	depends = ruby
 	options = !emptydirs
 	source = https://rubygems.org/downloads/curses-1.0.2.gem
-	sha256sums = 6bb70325b45b82eacd219ffb51cbcd80b4ecf648493bc528384dfbafa9515e87
+	sha1sums = 27f6cd667a0384724ff5d6b1f99b69886266fbb6
 
 pkgname = ruby-curses
 
