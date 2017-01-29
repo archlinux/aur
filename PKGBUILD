@@ -2,12 +2,12 @@
 # Contributor: Michael Straube <straubem@gmx.de>
 
 pkgname=latte-dock-git
-pkgver=0.5.91.r31.gf91f9f2
+pkgver=0.5.91.r48.gc4fcd9a
 pkgrel=1
 pkgdesc='A dock based on plasma frameworks - git version'
 arch=('i686' 'x86_64')
 url='https://github.com/psifidotos/Latte-Dock'
-license=('GPL3')
+license=('GPL')
 depends=('qt5-base' 'qt5-declarative' 'qt5-x11extras' 'kiconthemes' 'kdbusaddons'
          'kxmlgui' 'kdeclarative' 'plasma-framework' 'plasma-desktop')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'python')
