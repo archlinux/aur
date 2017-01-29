@@ -4,7 +4,7 @@
 
 pkgname=libgadu
 pkgver=1.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="This library implements the client side of the Gadu-Gadu protocol"
 arch=('i686' 'x86_64')
 url="http://libgadu.net/"
