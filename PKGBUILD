@@ -13,6 +13,7 @@ arch=('x86_64')
 url='https://www.unrealengine.com/'
 makedepends=('clang' 'mono' 'dos2unix' 'cmake' 'git')
 depends=('icu' 'xdg-user-dirs' 'sdl2' 'qt4' 'python')
+conflicts=('hardening-wrapper')
 license=('custom:UnrealEngine')
 
 source=(
@@ -31,17 +32,16 @@ md5sums=(
   '183ca1792f46a21461ed6f4c6d621a37'
 )
 
-# seems these are no longer necessary; package is 3 Gib smaller with default options
-#options=(!strip staticlibs)
-
 prepare() {
   patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/Setup.sh" remove-clang35-dependency.patch
   patch "$srcdir/UnrealEngine/Engine/Source/Developer/iOS/IOSPlatformEditor/Private/IOSTargetSettingsCustomization.cpp" IOS-Typo.patch  
   patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs" ignore-return-value-error.patch
 
   cd $srcdir/UnrealEngine
-  # help to clean up old builds when there is a new version
+
+  # clean up old builds before building a new version
   # git clean -xdf
+
   ./Setup.sh
   ./GenerateProjectFiles.sh
 }
@@ -49,17 +49,20 @@ prepare() {
 build() {
 
   cd $srcdir/UnrealEngine
+
   # this should work instead of "git clean", but something leftover causes crashes
   #make ARGS=-clean
 
   # first build fails with more than one process
   make -j1
 
+  # deleting non-linux files would make the install quite a bit smaller, but things break when they are missing...
+
   # delete windows-only files
   #find \( -iname "Win64" -o -iname "vs2013" -o -iname "vs2015" \) -type d -prune -exec rm -r "{}" \;
   #find -iregex '.*\.\(exe\|dll\|bat\|vcx?proj\(\.filters\|\.user\)?\|sln\)$' -delete
 
-  # delete mac-only files (1+ GiB)
+  # delete mac-only files
   #find Engine/Source/ThirdParty \( -iname "IOS" -o -iname "TVOS" -o -iname "osx64" \) -type d -prune -exec rm -r "{}" \;
 }
 
@@ -73,7 +76,6 @@ package() {
 
   # engine
   install -d "$pkgdir/opt/$pkgname/Engine"
-  # these folders needs to be writable, otherwise there is a segmentation fault when starting the editor
   cp -r Engine/Binaries "$pkgdir/opt/$pkgname/Engine/Binaries"
   cp -r Engine/Build "$pkgdir/opt/$pkgname/Engine/Build"
   cp -r Engine/Config "$pkgdir/opt/$pkgname/Engine/Config"
@@ -87,6 +89,8 @@ package() {
   cp -r Engine/Saved "$pkgdir/opt/$pkgname/Engine/Saved"
   cp -r Engine/Shaders "$pkgdir/opt/$pkgname/Engine/Shaders"
   cp -r Engine/Source "$pkgdir/opt/$pkgname/Engine/Source" # the source cannot be redistributed, but seems to be needed to compile c++ projects
+  
+  # these folders needs to be writable, otherwise there is a segmentation fault when starting the editor
   chmod -R a+rwX "$pkgdir/opt/$pkgname/Engine"
 
   # content
