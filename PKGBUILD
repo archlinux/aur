@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/patrickelectric/Gcode3D"
 license=('GPL2')
 buildDepends=('git' 'cmake' 'extra-cmake-modules')
-depends=('qt5-base' 'qt5-declarative')
+depends=('qt5-base' 'qt5-declarative' 'qt5-canvas3d')
 source=('git://github.com/patrickelectric/Gcode3D.git')
 md5sums=(SKIP)
 

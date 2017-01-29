@@ -8,6 +8,7 @@ pkgbase = gcode3d-git
 	license = GPL2
 	depends = qt5-base
 	depends = qt5-declarative
+	depends = qt5-canvas3d
 	source = git://github.com/patrickelectric/Gcode3D.git
 	md5sums = SKIP
 
