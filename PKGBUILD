@@ -1,6 +1,6 @@
 # Maintainer: Christian Mauderer <oss@c-mauderer.de>
 pkgname=sii-slp-cups-git
-pkgver=r3.6b25589
+pkgver=r10.8d75c25
 pkgrel=1
 pkgdesc="Linux cups drivers for Smart Label Printers slp100 slp200 slp240 slp440 slp450 slp620 slp650"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('cups' 'libcups' 'libjpeg' 'zlib')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/c-mauderer/smart-label-printer-slp-linux-driver.git")
+source=("${pkgname%-git}::git+https://github.com/paulfurley/smart-label-printer-slp-linux-driver.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -19,11 +19,11 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${pkgname%-git}/src"
 	make build
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${pkgname%-git}/src"
 	make DESTDIR="$pkgdir/" install
 }
