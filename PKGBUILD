@@ -2,7 +2,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-arena
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 arch=("i686" "x86_64")
 pkgdesc="Extra OpenFX plugins for Natron"
