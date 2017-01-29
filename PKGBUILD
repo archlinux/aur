@@ -1,6 +1,6 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=targetcli-fb
-pkgver=2.1.fb43
+pkgver=2.1.fb45
 pkgrel=1
 pkgdesc="free branch of the targetcli LIO administration shell (iSCSI + Co)"
 arch=('any')
@@ -10,14 +10,13 @@ groups=()
 depends=('python-rtslib-fb>=2.1.fb52' 'python-configshell-fb>=1.1.fb17'
          'python-dbus')
 makedepends=('python-setuptools')
-# TODO: optdepend on python-ethtool when available for python3
-optdepends=()
+optdepends=('python-ethtool')
 provides=('targetcli')
 backup=()
 options=()
 install=
 source=(https://fedorahosted.org/releases/t/a/targetcli-fb/$pkgname-$pkgver.tar.gz)
-sha256sums=('63e7c85df26ffd2b1ef34e9113585d7eb8b3fd8d4bf84ebe025a14bf518e7459')
+sha256sums=('f977897450521a848c077e0faf7d8025d0af1b8859e3abfaeecbf7083a08008c')
 
 
 build() {
