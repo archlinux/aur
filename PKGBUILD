@@ -1,9 +1,9 @@
 # Maintainer: Melvin Vermeeren <mail@mel.vin>
 # Edited from: firefox-extension-https-everywhere
 
-_pkgname=colorific-7.0-tb+fx
+_pkgname=colorific-7.4-fx+sm+tb
 pkgname=firefox-extension-colorific
-pkgver=7.0
+pkgver=7.4
 pkgrel=1
 pkgdesc="Plugin for firefox that allows you to colorize all websites to your own preferences."
 license=('MPL')
@@ -13,7 +13,7 @@ depends=("firefox")
 makedepends=("unzip")
 source=("https://addons.cdn.mozilla.net/user-media/addons/386335/${_pkgname}.xpi")
 noextract=("${_pkgname}.xpi")
-sha256sums=('53463f7e8b0b553a36e9ee6eed70c30f6767c8123d40221b5207fbc2bdb40389')
+sha256sums=('a19dc8b716cb6ebda1a66c0ff10c80773165481058e47c23498bacaa0521d4d1')
 
 prepare() {
 	cd "$srcdir"
