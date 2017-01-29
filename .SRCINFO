@@ -1,7 +1,7 @@
 pkgbase = juffed-qt5-git
 	pkgdesc = A lightweight cross-platform text editor. Development version.
 	pkgver = 0.10.85.g5ba17f9
-	pkgrel = 3
+	pkgrel = 4
 	url = http://juffed.com/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = juffed-qt5-git
 	makedepends = qt5-tools
 	depends = enca
 	depends = qscintilla-qt5
-	depends = desktop-file-utils
 	provides = juffed=0.10.85.g5ba17f9
 	provides = juffed-plugins=0.10.85.g5ba17f9
 	conflicts = juffed

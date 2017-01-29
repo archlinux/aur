@@ -3,13 +3,13 @@
 _pkgname=juffed
 pkgname=${_pkgname}-qt5-git
 pkgver=0.10.85.g5ba17f9
-pkgrel=3
+pkgrel=4
 pkgdesc='A lightweight cross-platform text editor. Development version.'
 arch=('i686' 'x86_64')
 url='http://juffed.com/'
 license=('GPL2')
 
-depends=('enca' 'qscintilla-qt5' 'desktop-file-utils')
+depends=('enca' 'qscintilla-qt5')
 makedepends=('git' 'cmake' 'qt5-tools')
 provides=("${_pkgname}=${pkgver}" "${_pkgname}-plugins=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
