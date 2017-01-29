@@ -1,6 +1,6 @@
 # Maintainer: Rich Li <rich@dranek.com>
 pkgname='python-xarray'
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="N-D labeled arrays and datasets in Python"
 url="http://xarray.pydata.org"
@@ -10,6 +10,7 @@ makedepends=('python-setuptools')
 depends=('python-numpy' 'python-pandas')
 optdepends=('python-netcdf4: NetCDF4 support'
             'python-bottleneck: Faster NaN operations'
+            # 'python-pynio: GRIB and other file format support'   # (no Python 3 support yet)
             'python-scipy: OPeNDAP support' 
             'python-matplotlib: Plotting support'
             'python-dask: Enable out-of-core parallel computation')
@@ -18,9 +19,9 @@ replaces=('python-xray')
 #source=(https://pypi.python.org/packages/source/x/xarray/xarray-"$pkgver".tar.gz)
 # I'm using the Github source instead of the PyPI source since the Github source includes the data files used for testing
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pydata/xarray/archive/v$pkgver.tar.gz")
-md5sums=('6862b32f9e43bb870dbf460198e00358')
-sha1sums=('31c4cd31196efdc2200f09ac54e824fb30a06eeb')
-sha256sums=('d8766ea5a7d2349142b08a384552fd2b470126a2de70aa31a183e98b52c354f4')
+md5sums=('891595c6c3220a8bceb4be6b91cc2f52')
+sha1sums=('f8c014c86cac68abe99e5c3cd715dfabf04a7aa3')
+sha256sums=('05a1ee48cd887ff738c8451fcfb9408103f714df94f16cc944b1c160b4064f95')
 
 build() {
   cd "$srcdir/xarray-$pkgver"
@@ -29,12 +30,12 @@ build() {
 
 check() {
   cd "$srcdir/xarray-$pkgver"
-  py.test xarray
+  pytest xarray
 }
  
 package() {
   cd "$srcdir/xarray-$pkgver"
-  python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
+  python setup.py install --skip-build --prefix=/usr --root="$pkgdir/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
