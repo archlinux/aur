@@ -1,0 +1,15 @@
+pkgbase = python-restless-git
+	pkgdesc = A lightweight REST miniframework for Python.
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/toastdriven/restless
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	provides = python-restless
+	options = !emptydirs
+	source = git+https://github.com/toastdriven/restless
+	sha256sums = SKIP
+
+pkgname = python-restless-git
+
