@@ -6,14 +6,14 @@ pkgbase = dybuk-git
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = cargo
 	makedepends = git
 	makedepends = rust
-	makedepends = cargo
 	depends = gcc-libs
 	provides = dybuk
 	conflicts = dybuk
 	source = git://github.com/Ticki/dybuk.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = dybuk-git
 
