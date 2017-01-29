@@ -3,12 +3,12 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=hop-git
-pkgver=3.0.0r821.e96784c
+pkgver=3.0.0r822.b60c4eb
 pkgrel=1
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
-depends=('bigloo' 'openssl' 'gmp' 'libunistring' 'libuv' 'avahi' 'sqlite')
+depends=('bigloo-devel' 'gmp' 'libunistring' 'libuv' 'avahi' 'sqlite')
 conflicts=('hop')
 provides=('hop')
 install=hop.install
