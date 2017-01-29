@@ -8,7 +8,7 @@
 
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=20170113.ddaab3349b
+pkgver=20170129.954625c165
 pkgrel=1
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
 arch=('x86_64')
@@ -123,7 +123,6 @@ CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
 	            --enable-vapoursynth \
 	            --enable-vapoursynth-lazy \
 	            --enable-libarchive \
-	            --enable-libswresample \
 	            --enable-libavdevice \
 	            --lua=luajit \
 	            \
