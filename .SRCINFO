@@ -1,6 +1,6 @@
 pkgbase = decklink-sdk
 	pkgdesc = Blackmagic Design DeckLink SDK
-	pkgver = 10.5
+	pkgver = 10.8.3
 	pkgrel = 1
 	epoch = 1
 	url = https://www.blackmagicdesign.com/support/family/capture-and-playback
@@ -12,8 +12,8 @@ pkgbase = decklink-sdk
 	depends = mesa
 	depends = qt4
 	options = !strip
-	source = file://Blackmagic_DeckLink_SDK_10.5.zip
-	sha256sums = d99a1e5ad300dc1ea5b267dd319c497d946664afe3cd2058dbaa79743dc52d28
+	source = local://Blackmagic_DeckLink_SDK_10.5.zip
+	sha256sums = be6e582c878ce6abc7faa03085d1715b45d83c2cc4e7717b0f05cf01dffb8445
 
 pkgname = decklink-sdk
 
