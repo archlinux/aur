@@ -3,7 +3,7 @@
 _pkgname=cleanupdate
 pkgname=cleanupdate-git
 pkgver=0.6
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple script to speed up updating and cleaning your system"
 arch=('any')
 url="https://github.com/cubanpit/$_pkgname"
