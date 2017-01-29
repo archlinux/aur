@@ -1,14 +1,13 @@
 # Maintainer: Patrice Peterson <runiq at archlinux dot us>
-# Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname="python2-latexcodec"
 _pkgname="latexcodec"
 pkgver="1.0.4"
-pkgrel=1
-pkgdesc="Pybtex reads citation information from a file and produces a formatted bibliography."
+pkgrel=2
+pkgdesc="A lexer and codec to work with LaTeX code in Python"
 arch=("any")
-url="http://pybtex.sourceforge.net"
-license=("GPL")
+url="https://github.com/mcmtroffaes/latexcodec"
+license=("MIT")
 depends=("python2" "python2-six")
 makedepends=("python2-distribute")
 source=("https://pypi.io/packages/source/l/$_pkgname/$_pkgname-$pkgver.tar.gz")

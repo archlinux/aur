@@ -1,10 +1,10 @@
 pkgbase = python2-latexcodec
-	pkgdesc = Pybtex reads citation information from a file and produces a formatted bibliography.
+	pkgdesc = A lexer and codec to work with LaTeX code in Python
 	pkgver = 1.0.4
-	pkgrel = 1
-	url = http://pybtex.sourceforge.net
+	pkgrel = 2
+	url = https://github.com/mcmtroffaes/latexcodec
 	arch = any
-	license = GPL
+	license = MIT
 	makedepends = python2-distribute
 	depends = python2
 	depends = python2-six
