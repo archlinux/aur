@@ -2,7 +2,7 @@
 # Contributor: Yegorius <yegorius@domic.us>
 
 pkgname=pulseaudio-dlna-git
-pkgver=0.5.2.r18ad83b
+pkgver=0.5.2.r8a39674
 pkgrel=1
 pkgdesc="A small DLNA server which brings DLNA/UPnP support to PulseAudio (development version)"
 arch=('i686' 'x86_64')
