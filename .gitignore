@@ -1,0 +1,4 @@
+pkg/
+src/
+fdm_materials/
+*.pkg.tar.xz
