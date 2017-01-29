@@ -1,12 +1,12 @@
 # Contributor: Johannes Dewender  arch at JonyJD dot net
 # Contributor: C. Dominik Bódi  dominik.bodi at gmx dot de
 pkgname=debhelper-python
-pkgver=3.5.1
+pkgver=3.5.3
 pkgrel=1
 _pkgname=python3-defaults
-_pkgrel=3
+_pkgrel=1
 _pkgname2=dh-python
-_pkgver2=2.20151103
+_pkgver2=2.20160818
 pkgdesc="debhelper scripts for Python 3: py3versions, python3.pm"
 arch=('any')
 url="http://packages.debian.org/sid/python3"
@@ -20,8 +20,8 @@ replaces=()
 options=()
 source=(http://ftp.debian.org/debian/pool/main/p/$_pkgname/${_pkgname}_$pkgver-$_pkgrel.tar.gz
 http://ftp.debian.org/debian/pool/main/d/$_pkgname2/${_pkgname2}_$_pkgver2.tar.xz)
-sha256sums=('8d1284430b77775d4cea62a33b0685e0523b8dfa2ebcc092d382af5cb5b4f237'
-            '4b7792423f7e22c1b4ccfafda162c4815de1cf3917465a23f85721496595f944')
+sha256sums=('aa58a9fceb9975f71be344e594393cf3384dd6b55d9541abf0bee7c5dce8ec15'
+            '9491b21ee97f1b57bcd84ee40c557ab38f3fed50641cb7d25545632cad5b09c7')
 
 build() {
   #cd "$srcdir/$_pkgname-$pkgver"
@@ -32,8 +32,8 @@ build() {
   #  sed -i -e '1s|/usr/bin/python3$|/usr/bin/python|' $file
   #done
 
-  #cd "$srcdir/$_pkgname2-$_pkgver2"
-  cd "$srcdir/$_pkgname2"
+  cd "$srcdir/$_pkgname2-$_pkgver2"
+  #cd "$srcdir/$_pkgname2"
   make
 }
 
@@ -63,8 +63,8 @@ package() {
   mkdir -p $pkgdir/usr/share/licenses/$pkgname/
   install -D -m 644 debian/copyright $pkgdir/usr/share/licenses/$pkgname/
 
-  #cd "$srcdir/$_pkgname2-$_pkgver2"
-  cd "$srcdir/$_pkgname2"
+  cd "$srcdir/$_pkgname2-$_pkgver2"
+  #cd "$srcdir/$_pkgname2"
   make DESTDIR="$pkgdir/" PREFIX=/usr install
 
   # create symlinks to executables in order to make this look like in
