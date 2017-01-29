@@ -1,8 +1,8 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=polychromatic-git
+pkgver=0.3.6.1.r0.gf324b50
 pkgrel=1
-pkgver=0.3.6.r1.ga275aca
 pkgdesc='A graphical front end for managing Razer peripherals under GNU/Linux.'
 arch=('any')
 license=('GPL2')
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 package() {  
-  _pythondir=$(python -c 'import sys; print(sys.path[-1])')
+  _pythondir=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
 
   cd $srcdir/polychromatic
 
