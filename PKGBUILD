@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.3.0+23104.2805cc365a86
+pkgver=4.3.0+23114.19e958974410
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -39,6 +39,7 @@ pkgver() {
 }
 
 build() {
+  LANG=C
   [[ -d "$srcdir"/${_hgrepo}-local ]] && rm -rf $srcdir/${_hgrepo}-local
   cp -rf "$srcdir"/${_hgrepo} $srcdir/${_hgrepo}-local
   cd "$srcdir"/${_hgrepo}-local
