@@ -1,0 +1,32 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7c0e2cf..fd3dceb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -58,14 +58,6 @@ target_link_libraries(trezord ${OS_LIBRARIES})
+ # add dynamic libs
+ find_package(CURL REQUIRED)
+ find_package(libmicrohttpd REQUIRED)
+-
+-# add static libs
+-if (NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+-  set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
+-  set(BUILD_SHARED_LIBS off)
+-  set(Boost_USE_STATIC_LIBS on)
+-  set(CMAKE_FIND_STATIC FIRST)
+-endif(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+ find_package(Boost 1.53.0 REQUIRED
+   regex thread system unit_test_framework program_options chrono)
+ find_package(Protobuf 2.5.0 REQUIRED)
+diff --git a/cmake/modules/Findjsoncpp.cmake b/cmake/modules/Findjsoncpp.cmake
+index b51a2db..e4a3b7c 100644
+--- a/cmake/modules/Findjsoncpp.cmake
++++ b/cmake/modules/Findjsoncpp.cmake
+@@ -4,7 +4,7 @@
+ 
+ find_path(JSONCPP_INCLUDE_DIR json
+   HINTS "${CMAKE_SOURCE_DIR}/vendor/jsoncpp/include")
+-find_library(JSONCPP_LIBRARY NAMES json
++find_library(JSONCPP_LIBRARY NAMES jsoncpp
+   HINTS "${CMAKE_BINARY_DIR}/lib/jsoncpp/lib")
+ 
+ set(JSONCPP_LIBRARIES ${JSONCPP_LIBRARY})

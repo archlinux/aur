@@ -3,7 +3,7 @@ _pkgname=trezord
 pkgname="${_pkgname}-git"
 gitname="${_pkgname}"
 pkgrel=1
-pkgver=1.2.0.r4.g490eb46
+pkgver=1.2.0.r7.g1aad8fe
 pkgdesc='TREZOR Communication Daemon'
 url='http://bitcointrezor.com/'
 arch=('i686' 'x86_64')
@@ -18,12 +18,14 @@ source=(
     'git://github.com/trezor/trezor-crypto.git'
     'git://github.com/trezor/trezor-common.git'
     "${_pkgname}.sysusers"
+    "${_pkgname}.patch"
 )
 sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
     'a4106f04d8322836905c6d300c0fb54849063bbc258ef76e28acdbec7c1c4df4'
+    '3101ef63935ca2e07457e0eccbd01e58b111f0194e998f541dbd503b1c393d8c'
 )
 
 prepare() {
@@ -32,9 +34,7 @@ prepare() {
     git config submodule.'vendor/trezor-crypto'.url "${srcdir}/trezor-crypto"
     git submodule update
 
-    # Disable static linking
-    sed -i "/if (NOT ${CMAKE_SYSTEM_NAME} MATCHES \"Darwin\")/,/endif(NOT ${CMAKE_SYSTEM_NAME} MATCHES \"Darwin\")/d" CMakeLists.txt
-    sed -i "s/NAMES json$/&cpp/" cmake/modules/Findjsoncpp.cmake
+    git apply "${srcdir}/${_pkgname}.patch"
 
     # Generate Protocol Buffers
     cd "${srcdir}/trezor-common/protob"
