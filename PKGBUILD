@@ -1,6 +1,6 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=dh-autoreconf
-pkgver=12
+pkgver=13
 pkgrel=1
 pkgdesc="debhelper add-on to call autoreconf and clean up after the build"
 arch=('any')
@@ -8,7 +8,7 @@ url="http://packages.debian.org/sid/dh-autoreconf"
 license=('GPL')
 depends=('debhelper' 'perl' 'autoconf' 'automake' 'gettext' 'libtool')
 source=(http://ftp.debian.org/debian/pool/main/d/$pkgname/${pkgname}_$pkgver.tar.xz)
-sha256sums=('5773e8e88a73a90659adc78f12aa9f85bb41636029a2a2ee215eb14a69416c6c')
+sha256sums=('fc16e039870bf5aa7428df74e91956f67a172eed60b0957f247efd59ac0b2a15')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
