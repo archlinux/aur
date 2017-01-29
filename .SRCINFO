@@ -14,11 +14,9 @@ pkgname = python-git-remote-dropbox
 	depends = python-dropbox
 	depends = git
 	depends = dropbox
-	conflicts = python2-git-remote-dropbox
 
 pkgname = python2-git-remote-dropbox
 	depends = python2-dropbox
 	depends = git
 	depends = dropbox
-	conflicts = python-git-remote-dropbox
 
