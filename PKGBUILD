@@ -3,7 +3,7 @@
 
 pkgname="python2-pybtex"
 _pkgname="pybtex"
-pkgver="0.18"
+pkgver="0.21"
 pkgrel=1
 pkgdesc="Pybtex reads citation information from a file and produces a formatted bibliography."
 arch=("any")
@@ -11,7 +11,8 @@ url="http://pybtex.sourceforge.net"
 license=("GPL")
 depends=("python2")
 makedepends=("python2-distribute")
-source=("http://pypi.python.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.bz2")
+source=("https://pypi.io/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=('af8a6c7c74954ad305553b118d2757f68bc77c5dd5d5de2cc1fd16db90046000')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -28,4 +29,3 @@ package() {
 }
 
 # vim:ts=2:sw=2:et:
-sha256sums=('fa152603ed30393bae43c9ef2eb410f98d0866d0f655b5c2fcdfbe6e9ca99e93')
