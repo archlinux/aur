@@ -1,4 +1,6 @@
 # Maintainer: Muhammad Yahya Harlan <muhammad.harlan@binus.ac.id>
+# Contributor: Antoine Lubineau <antoine@lubignon.info>
+
 
 pkgname=decklink-sdk
 pkgver=10.8.3
