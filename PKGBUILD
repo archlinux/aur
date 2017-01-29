@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-wayland-git
-pkgver=20170127.86184df
+pkgver=20170130.cf49d8d
 pkgrel=1
 pkgdesc="QtWayland additions and QPA plugin"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -36,7 +36,8 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DKDE_INSTALL_LIBDIR=lib \
-		-DKDE_INSTALL_LIBEXECDIR=lib
+		-DKDE_INSTALL_LIBEXECDIR=lib \
+		-DBUILD_HACK=ON
 	make
 }
 
