@@ -1,9 +1,4 @@
-# vim:set ts=2 sw=2 ft=sh et:
-
-# arg 1:  the new package version
-post_install() {
-  systemd-sysusers virtualbox.conf
-}
+#!/bin/bash
 
 # arg 1:  the new package version
 # arg 2:  the old package version
@@ -13,3 +8,5 @@ post_upgrade() {
     echo '==> Check you have the headers matching your kernel installed'
   fi
 }
+
+# vim:set ts=2 sw=2 ft=sh et:
