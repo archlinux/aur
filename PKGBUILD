@@ -1,4 +1,4 @@
-# Maintainer: Sigmund Vestergaard <sigmundv at gmail dot com>
+# Maintainer: Jim Heald <james.r.heald@gmail.com>
 pkgname=python-restless-git
 pkgver=2.0.3
 pkgrel=1
@@ -13,7 +13,7 @@ source=("git+https://github.com/toastdriven/restless")
 sha256sums=('SKIP')
 
 package() {
-  cd "$srcdir/restless"
+  cd restless
   python setup.py install --root="$pkgdir/" --optimize=1
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
