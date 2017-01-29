@@ -1,0 +1,15 @@
+pkgbase = mojoshader-git
+	pkgdesc = Fork of icculus's HLSL Bytecode -> GLSL translator with tweaks for MonoGame
+	pkgver = r1119.21e527f
+	pkgrel = 1
+	url = https://github.com/MonoGame/mojoshader
+	arch = i686
+	arch = x86_64
+	license = zlib
+	makedepends = git
+	depends = mono
+	source = git://github.com/MonoGame/mojoshader.git
+	sha256sums = SKIP
+
+pkgname = mojoshader-git
+
