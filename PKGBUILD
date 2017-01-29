@@ -3,7 +3,7 @@
 
 pkgname=qtodotxt
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform UI client for todo.txt files (see todotxt.com)."
 arch=('any')
 url="https://github.com/mNantern/QTodoTxt"
@@ -12,7 +12,7 @@ depends=('python-pyside' 'python-pyqt5' 'python-dateutil')
 provides=('qtodotxt')
 conflicts=('qtodotxt-hg' 'qtodotxt-git')
 install=$pkgname.install
-source=("https://github.com/mNantern/QTodoTxt/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mNantern/QTodoTxt/archive/v$pkgver.tar.gz")
 md5sums=('b1cdce280980163f12d47c7ce60b7027')
 
 package() {
@@ -24,5 +24,3 @@ package() {
   mkdir -p $pkgdir/usr/bin/
   ln -s /usr/share/qtodotxt/bin/qtodotxt $pkgdir/usr/bin/qtodotxt
 }
-
-# vim:set ts=2 sw=2 et:
