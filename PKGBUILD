@@ -3,7 +3,7 @@
 
 pkgname=compton-conf
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A graphical configuration tool for Compton X composite manager'
 arch=('i686' 'x86_64')
 url='https://github.com/lxde/compton-conf'
