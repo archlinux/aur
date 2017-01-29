@@ -1,16 +1,18 @@
 # Maintainer: Moritz Schönherr <moritz.schoenherr@gmail.com>
 pkgname=ttf-fate-core
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="The ttf font used in the Fate Core Rulebook"
 arch=('any')
 license=('custom')
 url="http://faterpg.com"
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 install=ttf.install
-source=("http://www.faterpg.com/wp-content/uploads/2013/06/Fate-Core-Font.ttf_.zip")
+source=("http://www.faterpg.com/wp-content/uploads/2013/06/Fate-Core-Font.ttf_.zip"
+	"LICENSE")
 
-md5sums=('c910b1af331ab2a785d24cd51d0a0559')
+md5sums=('c910b1af331ab2a785d24cd51d0a0559'
+	 'fcc4115441ba1fc05fc31c02f29ead25')
 
 package() {
   cd $srcdir
