@@ -32,9 +32,7 @@ build() {
 package_python-git-remote-dropbox-git() {
   depends=(python-dropbox git dropbox)
   provides=(python-git-remote-dropbox)
-  conflicts=(python-git-remote-dropbox
-             python2-git-remote-dropbox
-             python2-git-remote-dropbox-git)
+  conflicts=(python-git-remote-dropbox)
 
   cd git-remote-dropbox
   python setup.py install --root="$pkgdir" --optimize=1
@@ -44,9 +42,7 @@ package_python-git-remote-dropbox-git() {
 package_python2-git-remote-dropbox-git() {
   depends=(python2-dropbox git dropbox)
   provides=(python2-git-remote-dropbox)
-  conflicts=(python-git-remote-dropbox
-             python2-git-remote-dropbox
-             python-git-remote-dropbox-git)
+  conflicts=(python2-git-remote-dropbox)
 
   cd git-remote-dropbox-py2
   python2 setup.py install --root="$pkgdir" --optimize=1
