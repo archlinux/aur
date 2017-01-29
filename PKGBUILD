@@ -1,11 +1,11 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=vibe-git
-pkgver=20161009.1b9bb76
+pkgver=20161016.cb539a7
 pkgrel=1
 pkgdesc="A collection of core classes used throughout Liri"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://liri.io"
+url="https://liri.io"
 license=('LGPL3')
 depends=('qt5-base' 'qt5-declarative' 'qt5-tools' 'kwallet' 'solid' 'networkmanager-qt'
          'modemmanager-qt' 'pulseaudio' 'libqtxdg' 'fluid-git')
