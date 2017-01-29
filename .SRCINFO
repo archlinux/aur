@@ -1,15 +1,15 @@
 pkgbase = keepass-plugin-otpkeyprov
 	pkgdesc = A plugin that allows to use the YubiKey OTP functionality in Keepass.
-	pkgver = 2.4
+	pkgver = 2.5
 	pkgrel = 1
 	url = http://keepass.info/plugins.html#otpkeyprov
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = keepass
+	depends = keepass>=2.35
 	optdepends = yubikey-personalization: For configuring a YubiKey
-	source = http://keepass.info/extensions/v2/otpkeyprov/OtpKeyProv-2.4.zip
-	sha512sums = a63721e5d2ae81786d4e64d316799d066459a53e911fc71558f354aaa67d8199ef2cca1172bfdff86aedfab895ce872e0a06cef4eb2e34ecec69ebaf5639cf86
+	source = http://keepass.info/extensions/v2/otpkeyprov/OtpKeyProv-2.5.zip
+	sha512sums = 7e0a470f2bc32b4b6f68a6eab90b01a42a85a309f1d0208c205011a0e1a8779c0953ac36b144e0d4245d3820201fc0dd00f698abf28ba7034ae847550e25001f
 
 pkgname = keepass-plugin-otpkeyprov
 
