@@ -1,15 +1,15 @@
 # Maintainer: Eli Schwartz <eschwartz93@gmail.com>
 
 pkgname=qt5gtk2
-pkgver=0.3
-pkgrel=2
+pkgver=0.4
+pkgrel=1
 pkgdesc="GTK+2.0 integration plugins for Qt5"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/trialuser02/${pkgname}"
 license=('GPL')
 depends=('qt5-base')
 source=("${url}/downloads/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('de2095f9fe31cb0142601fba8ee5af23a659ca7463514c95f21b012c79f4bfa9')
+sha256sums=('4743de9559606bacd6f3d8835aac769b13c3d76d8698a05c95888430c4f0fbbd')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
