@@ -3,7 +3,7 @@
 
 _pkgname=librespot
 pkgname=librespot-alsa-git
-pkgver=r241.baf2b65
+pkgver=r258.9e495d6
 pkgrel=1
 pkgdesc='An open source client library for Spotify (ALSA Backend).'
 url='https://github.com/plietar/librespot.git'
@@ -19,10 +19,10 @@ sha256sums=('SKIP'
             'cd05d40dcc1572aba86aed732b5e0e47ff644d6c40380cc2d2b4d80acc2c2b1f'
             '61b68cf5776374218caf525d707a52bf14d349e4f1a7c8ef76b8ed5789f19114')
 arch=('x86_64' 'i686')
-depends=('alsa-lib')
-makedepends=('git' 'portaudio' 'rust' 'protobuf' 'cargo')
+depends=('alsa-lib' 'portaudio')
+makedepends=('git' 'rust' 'protobuf' 'cargo')
 install=librespot.install
-backup=("etc/librespot.conf")
+backup=('etc/librespot.conf')
 conflicts=('librespot' 'librespot-git')
 provides=('librespot')
 
