@@ -1,6 +1,6 @@
 pkgbase = osvr-core-git
 	pkgdesc = The core libraries, applications, and plugins of the OSVR software platform.
-	pkgver = 0.2.r2266.g4451c6c7
+	pkgver = 0.2.r2275.g3b7be094
 	pkgrel = 1
 	url = https://github.com/OSVR/OSVR-Core
 	arch = i686
@@ -19,14 +19,12 @@ pkgbase = osvr-core-git
 	source = vendor-jenkins-ctest-plugin::git+https://github.com/rpavlik/jenkins-ctest-plugin.git
 	source = vendor-vrpn::git+https://github.com/vrpn/vrpn.git
 	source = FindJsonCpp.cmake
-	source = 0001-remove-pointless-boost-check.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 2dd82e55b6291d32c611dd899d8a8164
-	md5sums = 6894516ac3a744b04f6e40c8abf5de9d
 
 pkgname = osvr-core-git
 

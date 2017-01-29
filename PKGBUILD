@@ -1,5 +1,5 @@
 pkgname=osvr-core-git
-pkgver=0.2.r2266.g4451c6c7
+pkgver=0.2.r2275.g3b7be094
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
@@ -13,7 +13,6 @@ source=("osvr-core::git+https://github.com/OSVR/OSVR-Core.git"
 	"vendor-jenkins-ctest-plugin::git+https://github.com/rpavlik/jenkins-ctest-plugin.git"
 	"vendor-vrpn::git+https://github.com/vrpn/vrpn.git"
 	"FindJsonCpp.cmake"
-	"0001-remove-pointless-boost-check.patch"
 ) #TODO: add more recursive submodules
 
 
@@ -35,22 +34,11 @@ prepare() {
 
   mkdir -p "$srcdir/osvr-core-build/"
 
+git pull origin pull/492/head --no-edit #WIP positional tracking
+
 #temporary fix for boost incompatibility
-#sed -i "s/105900/106200/g" src/osvr/Common/IPCRingBuffer.cpp #doesn't work with 1.62
+#sed -i "s/105900/106200/g" src/osvr/Common/IPCRingBuffer.cpp
 #sed -i "s/105900/106200/g" cmake-local/BoostTargets.cmake
-git am -3 "$srcdir"/0001-remove-pointless-boost-check.patch
-
-#https://github.com/OSVR/OSVR-Core/pull/468
-cd vendor/vrpn
-git reset --hard origin/master
-cd ..
-git commit -am "update vrpn"
-
-#WIP positional tracking
-git remote add toastedcrumpets https://github.com/toastedcrumpets/OSVR-Core.git || true
-git fetch toastedcrumpets uvc-camera
-git merge toastedcrumpets/uvc-camera --no-edit
-
 
 git cherry-pick 3b5e3a6f3132afbdaf251161ba3b3d03c790f45f #disable ignored-attributes warning on gcc
 }
@@ -83,5 +71,4 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         '2dd82e55b6291d32c611dd899d8a8164'
-         '6894516ac3a744b04f6e40c8abf5de9d')
+         '2dd82e55b6291d32c611dd899d8a8164')
