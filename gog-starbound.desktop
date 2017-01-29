@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Starbound
+Comment=An extraterrestrial sandbox adventure game
+Exec=gog-starbound
+Icon=gog-starbound
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8

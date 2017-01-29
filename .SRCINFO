@@ -1,0 +1,18 @@
+pkgbase = gog-starbound
+	pkgdesc = An extraterrestrial sandbox adventure game
+	pkgver = 2.11.0.12
+	pkgrel = 1
+	url = http://www.playstarbound.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	optdepends = firejail: Automatically sandbox this application from your OS
+	source = gog://gog_starbound_2.11.0.12.sh
+	source = gog-starbound.desktop
+	source = gog-starbound
+	sha256sums = aca83ef0ff7c5c569daff65c678fe9ce4f0dd2bed23a2d3904ee8e75357940ac
+	sha256sums = a6a270b19c6561a60f491781521ab5e3d216013c95a3a66d58fb05680064682c
+	sha256sums = 0aaedd7aeafcb26d090e37d099d4b56e0119026d9bad67df77804ae62c115655
+
+pkgname = gog-starbound
+
