@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('GPL3')
 depends=('qt5-tools' 'qt5-wayland' 'qt5-accountsservice-git'
-         'pam' 'greenisland-git' 'vibe-git' 'liri-workspace-git')
+         'pam' 'liri-wayland-git' 'vibe-git' 'liri-workspace-git')
 optdepends=('weston: nested mode support')
 makedepends=('git' 'extra-cmake-modules')
 conflicts=('hawaii-shell-git' 'papyros-shell-git' 'liri-shell')
