@@ -2,8 +2,8 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=lib32-libteam
-pkgver=1.23
-pkgrel=2
+pkgver=1.26
+pkgrel=1
 pkgdesc='Library for controlling team network device'
 arch=('x86_64')
 url='http://libteam.org/'
@@ -11,7 +11,7 @@ license=('LGPL2.1')
 depends=('lib32-dbus' 'lib32-libnl' 'lib32-zeromq' 'libteam')
 makedepends=('gcc-multilib' 'lib32-jansson' 'lib32-libdaemon' 'swig')
 source=("http://libteam.org/files/libteam-${pkgver}.tar.gz")
-sha256sums=('d8cd132c425032cc3a7e9314c55485e32243875e0b1adbddd043bbadf1d28c5a')
+sha256sums=('0ad5eae9e1a7835e784c5e21e8df323ca29ccc3ab8a8187fdc9ff3f6765c9b34')
 
 build() {
   cd libteam-${pkgver}
