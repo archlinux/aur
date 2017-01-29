@@ -1,0 +1,15 @@
+pkgbase = xnafiledialog-git
+	pkgdesc = This is XNAFileDialog, a portable file dialog for XNA games.
+	pkgver = r12.a4ea6b1
+	pkgrel = 1
+	url = https://github.com/flibitijibibo/XNAFileDialog
+	arch = i686
+	arch = x86_64
+	license = zlib
+	makedepends = git
+	depends = mono
+	source = git://github.com/flibitijibibo/XNAFileDialog
+	sha256sums = SKIP
+
+pkgname = xnafiledialog-git
+
