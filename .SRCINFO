@@ -1,6 +1,6 @@
 pkgbase = python2-xarray
 	pkgdesc = N-D labeled arrays and datasets in Python
-	pkgver = 0.8.2
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = http://xarray.pydata.org
 	arch = any
@@ -15,10 +15,10 @@ pkgbase = python2-xarray
 	optdepends = python2-scipy: OPeNDAP support
 	optdepends = python2-matplotlib: Plotting support
 	replaces = python2-xray
-	source = python2-xarray-0.8.2.tar.gz::https://github.com/pydata/xarray/archive/v0.8.2.tar.gz
-	md5sums = 6862b32f9e43bb870dbf460198e00358
-	sha1sums = 31c4cd31196efdc2200f09ac54e824fb30a06eeb
-	sha256sums = d8766ea5a7d2349142b08a384552fd2b470126a2de70aa31a183e98b52c354f4
+	source = python2-xarray-0.9.0.tar.gz::https://github.com/pydata/xarray/archive/v0.9.0.tar.gz
+	md5sums = 891595c6c3220a8bceb4be6b91cc2f52
+	sha1sums = f8c014c86cac68abe99e5c3cd715dfabf04a7aa3
+	sha256sums = 05a1ee48cd887ff738c8451fcfb9408103f714df94f16cc944b1c160b4064f95
 
 pkgname = python2-xarray
 
