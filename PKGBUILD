@@ -31,7 +31,7 @@ depends=(
 )
 depends_x86_64=('cuda')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (experimental)')
-makedepends=('git' 'yasm' 'opencl-headers' 'flite' 'java-runtime')
+makedepends=('git' 'yasm' 'opencl-headers' 'flite' 'java-environment')
 provides=(
     'ffmpeg' 'qt-faststart' 'ffmpeg-git' 'ffmpeg-full' 'ffmpeg-semifull' 'ffmpeg-full-extra' 'ffmpeg-full-nvenc'
     'ffmpeg-libfdk_aac' 'libavutil.so' 'libavcodec.so' 'libavformat.so' 'libavdevice.so'
