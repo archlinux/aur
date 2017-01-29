@@ -14,11 +14,11 @@ source=("$pkgname-$pkgver.tar.gz::http://repo.or.cz/conkeror.git/snapshot/$pkgve
 md5sums=('c496c836c1b5b5ea573329f1115bda34')
 
 build() {
-	cd $pkgname-$pkgver*
+	cd $pkgname-$pkgver*/
 	make PREFIX=/usr
 }
 
 package() {
-	cd $pkgname-$pkgver*
+	cd $pkgname-$pkgver*/
 	make DESTDIR="$pkgdir" PREFIX=/usr install
 }
