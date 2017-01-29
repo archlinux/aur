@@ -1,7 +1,7 @@
 pkgbase = vokoscreen-git
 	pkgdesc = An easy to use screencast creator. Development version.
-	pkgver = 2.5.0.39.g19b4d68
-	pkgrel = 1
+	pkgver = 2.5.3.beta.11.g7b2824f
+	pkgrel = 2
 	url = http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = vokoscreen-git
 	depends = lsof
 	depends = pulseaudio-alsa
 	depends = xdg-utils
-	provides = vokoscreen=2.5.0.39.g19b4d68
+	provides = vokoscreen=2.5.3.beta.11.g7b2824f
 	conflicts = vokoscreen
 	source = git+https://github.com/vkohaupt/vokoscreen.git
 	source = fix_lrelease.patch
