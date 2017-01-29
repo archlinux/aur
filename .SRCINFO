@@ -1,6 +1,6 @@
 pkgbase = galendae-git
 	pkgdesc = A basic popup calendar that can be styled to match workspace themes
-	pkgver = r24.df3c4b0
+	pkgver = r25.a856ce4
 	pkgrel = 1
 	url = https://github.com/chris-marsh/galendae
 	arch = i686
