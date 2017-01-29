@@ -2,7 +2,7 @@
 
 _pkgname=qpdfwalker
 pkgname=qpdfwalker
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Tool for browsing hierarchy of low level objects in a PDF file."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  git checkout tags/0.2.0
+  git checkout tags/0.3.0
   qmake-qt5 qpdfwalker.pro
   make
 }
