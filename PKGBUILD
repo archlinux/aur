@@ -9,7 +9,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=calibre-git
-pkgver=2.77.0.r69.g86f5bb8c6d
+pkgver=2.78.0.r3.g1e7f04d391
 pkgrel=1
 _mathjax_commit=c493143c02f5809b1112af6c5a2c8eab31050118
 pkgdesc="Ebook management application, from git"
@@ -90,7 +90,7 @@ package() {
 
   install -Dm644 resources/calibre-mimetypes.xml "${pkgdir}/usr/share/mime/packages/calibre-mimetypes.xml"
 
-  sed -i "/numeric_version = .*/c\numeric_version = ('""${pkgver//./\', \'}""')" \
+  sed -i '/^numeric_version = /c\numeric_version = '"$(printf "(%s, %s, %s, '%s', '%s')" ${pkgver//./ })" \
       "${pkgdir}/usr/lib/calibre/calibre/constants.py"
 
   # Compiling bytecode FS#33392
