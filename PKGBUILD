@@ -1,11 +1,11 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=fluid-git
-pkgver=20161002.783a2e6
+pkgver=20170129.edc9025
 pkgrel=1
-pkgdesc="Components for Qt Quick applications"
+pkgdesc="Components for Qt Quick applications with Material Design and Universal"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url='http://liri.io'
+url='https://liri.io'
 license=('MPL2')
 depends=('qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-svg')
 makedepends=('git' 'extra-cmake-modules')
