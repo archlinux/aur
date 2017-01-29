@@ -1,6 +1,6 @@
 pkgbase = pvs-studio
 	pkgdesc = Static code analyzer for C, C++ and C#
-	pkgver = 6.12.20591.1
+	pkgver = 6.13.20904.1
 	pkgrel = 1
 	url = http://www.viva64.com/en/pvs-studio
 	install = pvs-studio.install
@@ -10,8 +10,8 @@ pkgbase = pvs-studio
 	depends = qemu-headless-arch-extra
 	optdepends = how-to-use-pvs-studio-free: for adding special comments to a source code
 	options = !strip
-	source = http://files.viva64.com/pvs-studio-6.12.20591.1-x86_64.tgz
-	sha256sums = 9ceb8d10f3236020be01d7ba815f610a08ee70f969d842f64394d9a191679073
+	source = http://files.viva64.com/pvs-studio-6.13.20904.1-x86_64.tgz
+	sha256sums = 85b0404d2b7a96dc0fb95820a3250e8820e22b95570d2c6f56907a92f6ca7243
 	source_i686 = pvs-studio.binfmt.d
 	sha256sums_i686 = fd7b1f7b48aa84205c1c0f60f630f1a33504e0e4904c5b0e8ae2477494899c97
 

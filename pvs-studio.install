@@ -9,7 +9,7 @@ post_upgrade() {
 }
 
 post_remove() {
-  if [ -f /proc/sys/fs/binfmt_misc/pvs-studio ]; then
+  if [ $(uname -m) == i686 ] && [ -f /proc/sys/fs/binfmt_misc/pvs-studio ]; then
     echo -1 > /proc/sys/fs/binfmt_misc/pvs-studio
   fi
 }
