@@ -1,8 +1,8 @@
 # Maintainer: Tomas Jasek <tomsik68(at)gmail(dot)com>
 
 pkgname="papyrus"
-pkgver="2.0.1"
-pkgrel=3
+pkgver="2.0.2"
+pkgrel=1
 pkgdesc="Graphical editing tool for UML based on eclipse."
 arch=('i686' 'x86_64')
 url="http://www.eclipse.org/papyrus/"
@@ -19,8 +19,8 @@ install=
 changelog=
 _eclipsever="neon"
 source_i686=("http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/modeling/mdt/papyrus/rcp/${_eclipsever}/${pkgver}/papyrus-${_eclipsever}-${pkgver}-linux32.tar.gz")
-md5sums_i686=('08d05bb5407d0762f14d11fa665da3c9')
-md5sums_x86_64=('67eed1baa1206d88be8467c2d90fac8b')
+md5sums_i686=('55ab4ea4cc6da06fbdea4e2659f49498')
+md5sums_x86_64=('6304576c21d5560f9dd1d112e7c4364b')
 source_x86_64=("http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/modeling/mdt/papyrus/rcp/${_eclipsever}/${pkgver}/papyrus-${_eclipsever}-${pkgver}-linux64.tar.gz")
 noextract=()
 
@@ -28,7 +28,7 @@ build() {
   cd $srcdir
   tar -xvzf papyrus-${_eclipsever}-${pkgver}-linux*.tar.gz
   mkdir -p $srcdir/usr/bin/
-  echo '#!/bin/sh\nexec /usr/lib/papyrus/papyrus' > $srcdir/usr/bin/papyrus
+  echo -e '#!/bin/sh\nexec /usr/lib/papyrus/papyrus' > $srcdir/usr/bin/papyrus
 }
 
 package() {
