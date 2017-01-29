@@ -4,7 +4,7 @@
 
 _pkgname=certbot
 pkgname=${_pkgname}-user
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Let’s Encrypt certbot running as certbot user rather than root, with either standalone or webroot mode."
 arch=('any')
@@ -21,7 +21,7 @@ source=("https://pypi.io/packages/source/c/${_pkgname}/${_pkgname}-${pkgver}.tar
         "${_pkgname}.tmpfiles"
         "${_pkgname}.sysusers")
 validpgpkeys=('A2CFB51FA275A7286234E7B24D17C995CD9775F2') # Let's Encrypt Client Team <letsencrypt-client@eff.org>
-sha256sums=('e0d699adb3f8ca3e077a4db339de29ebb3f790fbc5f3f02e446e227ed40aa743'
+sha256sums=('33729ce100fc9d00d9820c81fc3ef9b95802b8d261f0cca0cce422bc568b1631'
             'SKIP'
             'ca72fe5f7e6ccbbe8afc084d9255f93e3b81ce2793a77103a9382fa9eaff6c97'
             '151621a821f56178408851e016c7fda67dc4c726f210ad3279b29fd1f43282fa')
