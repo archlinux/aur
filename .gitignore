@@ -1,7 +1,7 @@
-# Packages
-*.xz
+# Blacklist
+*
 
-# Package source
-pkg/
-src/
-mono/
+# Whitelist
+!mono.binfmt.d
+!PKGBUILD
+!.SRCINFO

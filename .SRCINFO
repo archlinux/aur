@@ -5,28 +5,28 @@ pkgbase = mono-git
 	url = http://www.mono-project.com/
 	arch = i686
 	arch = x86_64
+	license = custom=MITX11
+	license = custom=MSPL
+	license = BSD
 	license = GPL
 	license = LGPL2.1
 	license = MPL
-	license = BSD
-	license = custom=MITX11
-	license = custom=MSPL
 	makedepends = git
-	depends = zlib
-	depends = libgdiplus
-	depends = sh
-	depends = python
 	depends = ca-certificates
+	depends = libgdiplus
 	depends = mono
-	provides = monodoc
+	depends = python
+	depends = sh
+	depends = zlib
 	provides = mono
-	conflicts = monodoc
+	provides = monodoc
 	conflicts = mono
+	conflicts = monodoc
 	options = !makeflags
 	source = git://github.com/mono/mono.git
 	source = mono.binfmt.d
-	md5sums = SKIP
-	md5sums = b9ef8a65fea497acf176cca16c1e2402
+	sha256sums = SKIP
+	sha256sums = 9a657fc153ef4ce23bf5fc369a26bf4a124e9304bde3744d04c583c54ca47425
 
 pkgname = mono-git
 
