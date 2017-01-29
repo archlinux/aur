@@ -1,7 +1,7 @@
 pkgbase = python-latexcodec
 	pkgdesc = A lexer and codec to work with LaTeX code in Python
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mcmtroffaes/latexcodec
 	arch = any
 	license = MIT

@@ -1,10 +1,9 @@
 # Maintainer: Patrice Peterson <runiq at archlinux dot us>
-# Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname="python-latexcodec"
 _pkgname="latexcodec"
 pkgver="1.0.4"
-pkgrel=1
+pkgrel=2
 pkgdesc="A lexer and codec to work with LaTeX code in Python"
 arch=("any")
 url="https://github.com/mcmtroffaes/latexcodec"
