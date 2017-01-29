@@ -121,7 +121,7 @@ fi
 $_static_build && pkgname="${pkgname}-static"
 
 if $_debug; then
-  _additional_configure_flags="-force-debug-info -separate-debug-info"
+  _additional_configure_flags="$_additional_configure_flags -force-debug-info -separate-debug-info"
 fi
 
 _libspkgname="${pkgname}-target-libs"
