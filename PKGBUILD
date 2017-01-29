@@ -2,10 +2,10 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=2.11.2
-pkgrel=2
+pkgver=2.12
+pkgrel=1
 _wwwpkgname=AdminLTE
-_wwwpkgver=2.3.1
+_wwwpkgver=2.4
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
 license=('GPL2')
@@ -31,13 +31,13 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	blacklist.txt
 	mimic_setupVars.conf.sh)
 
-md5sums=('32a79fcd5d2d49228e99a493418469a1'
-         '55b9d787c62ba89a8f5ae94793f632eb'
+md5sums=('451877c24c517e056cf4289f72dd5c0b'
+         '6c05d58230a115c7facfa506e4611697'
          '3acf27ca01d931db363634dbfc95a061'
          '3f1aeea43af0b192edb36b9e5484ff87'
          'f39fa3e607ff7346e93febfa2d0e565e'
          '2d10140f19f54015e6ab2807267e8aaf'
-         'b891631e10465da17f7d885222b9a8af'
+         '27ee227bc8143addb6e80f194fc97719'
          '990b8abd0bfbba23a7ce82c59f2e3d64'
          '047f13d4ac97877f724f87b002aaee63'
          'd42a864f88299998f8233c0bc0dd093d'
@@ -63,19 +63,15 @@ prepare() {
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 3" && return 1 ; fi
   sed -i '/reconfigurePiholeFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
 
-  sed -n "/setupLCDFunction() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 4" && return 1 ; fi
-  sed -i '/setupLCDFunction() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
-
   sed -n "/uninstallFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 5" && return 1 ; fi
   sed -i '/uninstallFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
 
-  sed -n "/:::  \-[d,u,s]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -n "/:::  \-[d,u]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 6" && return 1 ; fi
   sed -i '/:::  \-[d,u,s]/d' "$srcdir"/$_pkgname-$pkgver/pihole
 
-  sed -n "/\"\-[d,u,r,s]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -n "/\"\-[d,u,r]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 7" && return 1 ; fi
   sed -i '/\"\-[d,u,r,s]/d' "$srcdir"/$_pkgname-$pkgver/pihole
 
@@ -89,6 +85,9 @@ prepare() {
   sed -n "/#ensure \/etc\/dnsmasq\.d\//w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: arch useless 1" && return 1 ; fi
   sed -i '/#ensure \/etc\/dnsmasq\.d\//,+5d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  sed -n "/#Overwrite /w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: arch useless 2" && return 1 ; fi
+  sed -i '/#Overwrite /,+1d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
 
 # -----------------
 

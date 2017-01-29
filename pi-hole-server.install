@@ -1,10 +1,10 @@
 post_install() {
   echo -e "\e[1;33m==>\e[0m Please read configuration instructions at /usr/share/doc/pihole/configuration"
-  echo -e "\e[1;33m==>\e[0m \e[1;31mVer. 2.11.1-1\e[0m: lighttpd conf file is changed"
+  echo -e "\e[1;33m==>\e[0m \e[1;31mVer. 2.12-1\e[0m: lighttpd conf file is changed"
   echo -e "\e[1;33m==>\e[0m Please follow configuration upgrade steps"
   echo -e "\e[1;33m==>\e[0m Neutrino emissions detected..."
-  [ -e /proc/net/if_inet6 ] && touch /etc/pihole/.useIPv6  #this will be obsoleted soon
   touch /etc/dnsmasq.d/02-pihole-dhcp.conf
+  touch /etc/dnsmasq.d/03-pihole-wildcard.conf
   chown -R http.http /srv/http/pihole
   systemd-tmpfiles --create pi-hole.conf
   /opt/pihole/mimic_setupVars.conf.sh
@@ -29,6 +29,7 @@ post_remove() {
   rm -R /etc/pihole/
   [ -e /run/log/pihole.log ] && rm /run/log/pihole.log
   [ -e /etc/dnsmasq.d/02-pihole-dhcp.conf ] && rm /etc/dnsmasq.d/02-pihole-dhcp.conf
+  [ -e /etc/dnsmasq.d/03-pihole-wildcard.conf ] && rm /etc/dnsmasq.d/03-pihole-wildcard.conf
 }
 
 _dnsmasq_address_setup() {   # official code here
