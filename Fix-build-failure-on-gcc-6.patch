@@ -1,0 +1,33 @@
+From 632e87969c3a5562a5d4842b03613267ba6236b2 Mon Sep 17 00:00:00 2001
+From: Petter Reinholdtsen <pere@debian.org>
+Date: Sun, 17 Jul 2016 08:59:10 +0200
+Subject: [PATCH] Fix build failure on gcc 6
+
+Array initializers for a char array fail for constants > 128
+on platforms where char is signed.  Cast to fix it.
+---
+ gzip.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/gzip.cpp b/gzip.cpp
+index 2aeaad3..35ccf31 100644
+--- a/gzip.cpp
++++ b/gzip.cpp
+@@ -23,12 +23,12 @@ inline unsigned long calculateCrc32(const QByteArray &data)
+ QByteArray gzipCompress(const QByteArray &data)
+ {
+ 	const char header[10] = {
+-		0x1f, 0x8b,	// ID1 + ID2
++		0x1f, static_cast<char>(0x8b),	// ID1 + ID2
+ 		8,			// Compression Method
+ 		0,			// Flags
+ 		0, 0, 0, 0, // Modification Time
+ 		2,			// Extra Flags
+-		255,		// Operating System
++		static_cast<char>(255),		// Operating System
+ 	};
+ 
+ 	QByteArray compressedData = qCompress(data);
+-- 
+2.11.0
+
