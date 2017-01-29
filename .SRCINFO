@@ -1,0 +1,16 @@
+pkgbase = ttf-fate-core
+	pkgdesc = The ttf font used in the Fate Core Rulebook
+	pkgver = 1
+	pkgrel = 1
+	url = http://faterpg.com
+	install = ttf.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://www.faterpg.com/wp-content/uploads/2013/06/Fate-Core-Font.ttf_.zip
+	md5sums = c910b1af331ab2a785d24cd51d0a0559
+
+pkgname = ttf-fate-core
+
