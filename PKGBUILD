@@ -1,12 +1,12 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=amide  
 pkgver=1.0.5
-pkgrel=6
+pkgrel=7
 pkgdesc="Medical Imaging Data Examiner"
 url="http://amide.sourceforge.net/packages.html"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('dcmtk>=3.6.0' 'xmedcon' 'libgnomecanvas' 'ffmpeg' 'gsl' 'gnome-vfs')
+depends=('dcmtk' 'xmedcon' 'libgnomecanvas' 'ffmpeg' 'gnome-vfs' 'gconf' 'gsl')
 optdepends=('volpack: for volume rendering')
 makedepends=('gnome-doc-utils' 'gtk-doc' 'intltool')
 source=(http://downloads.sourceforge.net/project/$pkgname/amide/$pkgver/$pkgname-$pkgver.tgz gsl.patch alignment_mutual_information.patch)
@@ -23,11 +23,14 @@ prepare() {
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver/
-  ./configure --prefix=/usr --disable-ffmpeg --enable-libdcmdata=no --enable-gtk-doc=yes
+  ./configure --prefix=/usr --disable-ffmpeg --enable-libdcmdata=no \
+	      --enable-gtk-doc=yes --enable-amide-debug=no
   make
-  ./configure --prefix=/usr --disable-ffmpeg --enable-libdcmdata --with-xmedcon-exec-prefix=/usr/bin
+  ./configure --prefix=/usr --disable-ffmpeg --enable-libdcmdata \
+	      --with-xmedcon-exec-prefix=/usr/bin --enable-amide-debug=no
   make
 }
+
 package() {
   cd "$srcdir"/$pkgname-$pkgver
   make DESTDIR=$pkgdir install
