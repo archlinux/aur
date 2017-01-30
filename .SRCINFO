@@ -1,7 +1,7 @@
 pkgbase = libcd
 	pkgdesc = Platform-independent graphics library
 	pkgver = 5.11
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.tecgraf.puc-rio.br/cd/
 	arch = i686
 	arch = x86_64
