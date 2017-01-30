@@ -10,7 +10,7 @@ license=('MIT')
 depends=(python-icalendar python-urwid python-xdg python-parsedatetime
          python-atomicwrites python-click python-setuptools-scm)
 optdepends=('python-click-repl-git: the repl command.')
-checkdepends=('python-pytest' 'python-hypothesis')
+checkdepends=('python-pytest' 'python-hypothesis' 'python-pytest-runner')
 source=("https://pypi.io/packages/source/t/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('c8ee39c2055f66b12b4567e705c050f4')
 
