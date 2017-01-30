@@ -1,8 +1,8 @@
 # Maintainer: Felipe Morales <hel.sheep@gmail.com>
 _pkgname=plotinus
 pkgname=$_pkgname-git
-pkgver=r2
-pkgrel=2
+pkgver=r12.975c69d
+pkgrel=1
 pkgdesc="A searchable command palette in every modern GTK+ application"
 arch=(any)
 url="http://github.com/p-e-w/plotinus"
@@ -11,7 +11,7 @@ groups=()
 makedepends=('git' 'vala' 'cmake')
 depends=('gtk3')
 source=(
-  'git://github.com/p-e-w/plotinus.git'
+  'git+https://github.com/p-e-w/plotinus.git#branch=master'
   'plotinus.sh'
   )
 md5sums=(
