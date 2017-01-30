@@ -11,18 +11,19 @@ depends=('python')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://github.com/tldr-pages/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('fcb6a4a4e4cbd00ddbd814958e865395')
+_commit='8069f7a9ad395eb61db1cd9098db47ab2f3b6936'
+source=("git+https://github.com/tldr-pages/${pkgname}.git#commit=${_commit}")
+md5sums=('SKIP')
 
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}"
 	python setup.py build
 }
 
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}"
 	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
