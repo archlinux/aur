@@ -19,6 +19,7 @@ optdepends=('brltty: For Braille support'
 makedepends=('git')
 provides=('fenrir')
 conflicts=('fenrir')
+backup=('etc/settings/settings.conf')
 install="$pkgname".install
 source=("git+https://github.com/chrys87/${_gitname}.git"
   'fenrir-git.install')
