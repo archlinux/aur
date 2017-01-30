@@ -1,0 +1,102 @@
+Description of the data, nomenclature of the filenames/ data abbreviations.
+===========================================================================
+
+
+Scales:
+-------
+1:10 million:  1cm = 100km
+1:50 million:  1cm = 500km
+1:110 million: 1cm = 1100km
+
+
+Image sizes:
+------------
+1:10 million, high resolution (HR): 21,600 x 10,800 pixels.
+1:10 million, low resolution (LR): 16,200 x 8,100 pixels.
+1:40 million, low resolution (LR): 10,800 x 5,400-pixels.
+
+
+General map themes:
+-------------------
+
+HYP: Cross-blended Hypsometric Tints
+
+  Cross-blended Hypsometric Tints offer a partial solution to a long-standing map reading problem: many people misidentify hypsometric tints (elevation colors) as vegetation or climate regions. Conventional hypsometric tints often show green in the lowlands, yellow in mid elevations, and red in the highlands. These map colors incorrectly suggest to the untutored that forests cover the parched Persian Gulf region and a hot desert climate prevails on the Greenland ice cap.
+
+  Cross-blended hypsometric tints instead use modified elevation colors for regions that people presumably associate with the natural environment. The Sahara is dusty brown, northern Russia is boreal forest green, the Mekong delta is jungle green, and Antarctica is icy blue-grey. As in nature, the map colors gradually blend into one another across regions (x and y axis) and from lowlands to highlands (z axis), hence the name cross-blended hypsometric tints.
+
+
+NE1: Natural Earth I
+
+  Satellite-derived land cover data and shaded relief presented with a light, natural palette suitable for making thematic and reference maps. Natural Earth I is available with ocean bottom data, or without.
+
+
+NE2: Natural Earth II
+
+  Natural Earth II is a raster map dataset that portrays the world environment in an idealized manner with little human influence. Imagine the urban landscapes of New York, Paris, and Tokyo restored to temperate forest, southern Russia as the open steppe it once was, and the Amazon River basin covered with unbroken rainforest. A successor dataset to the original Natural Earth, Natural Earth II owes its inspiration to the classic physical maps published by the National Geographic Society.
+
+  The softly blended colors of Natural Earth II make it a suitable base for general-purpose mapping, including historical maps, because it shows the world much as it looked before the modern era. Natural Earth II data comes in several versions for use with cartography and GIS software.
+
+
+OB: Ocean Bottom
+
+  Blended depth colors and relief shading of the ocean bottom derived from CleanTOPO2 data. The ocean color extends beneath land areas as a flat tint -- mask it with the 10m Natural Earth vector shoreline, or a shoreline from another data source.
+
+
+BATH: Bathymetry
+
+  Rasterized 10m vector polygons in a layered Photoshop file that you can manipulate for color and then save a GeoTIF —use with the provided TFW world file. Optional reference layers include an ocean mask and land shaded relief.
+
+
+SR: Shaded Relief
+
+  Grayscale shaded relief of land areas only derived from downsampled SRTM Plus elevation data clipped to the 10 million-scale/ 50 million-scale Natural Earth coastline. A flat gray tint fills water areas.
+
+
+GRAY: Gray Earth
+
+  The aim of Gray Earth is mapmakers working in black and white and those seeking a neutral terrain base map on which to overlay vibrant colors representing thematic data. Against the gray terrain, colors will pop. The terrain combines shaded relief and hypsography in even proportions and with just the right amount of contrast; Earth’s landforms are clear to see yet the terrain is light enough so as not to interfere with overprinting type and lines. Gray Earth is also highly malleable in Photoshop. A simple levels adjustment can make the terrain lighter or darker depending on your map design intent.
+
+
+MSR: Manual Shaded Relief
+
+  * 1:10 million scale:
+    Generalized shaded relief of land areas only fitted to the 10 million-scale Natural Earth coastline, drainages, political boundaries, and spot elevations.
+
+  * 1:50 million scale:
+    Drawn by Tom Patterson (January 2015) in Adobe Photoshop using a Wacom tablet and stylus. Digital relief generated from SRTM Plus elevation data served as a reference while drawing. Grayscale shaded relief of land areas only. The relief fits the 50 million-scale Natural Earth coastline, drainages, and spot elevations. A flat gray tint fills water areas. File size: 10,800 x 5,400 pixels.
+
+
+Sub-themes:
+-----------
+
+US:
+
+  USA, souther Canada, Mexico, Central America, and the Caribbean.
+
+10M:
+  In 1:10 million scale (datasets without this are also 1:10 million)
+
+50M:
+  In 1:50 million scale (without this, it is 1:10 million scale).
+
+HR:
+  10m scale large size variant TIFF images.
+
+LR:
+  10m scale medium size variant OR 50m scale (low size variant) TIFF images.
+
+LC:
+  Colouring based on land cover.
+
+SR:
+  With shaded relief.
+
+W:
+  With ocean and sea water.
+
+OB:
+  With ocean bottom rendering.
+
+DR:
+  With rivers and lakes ("drainages").

@@ -1,0 +1,3 @@
+The Natural Earth Data, obtainable from http://www.naturalearthdata.com/, is public domain.
+
+More information about terms of use can be found at http://www.naturalearthdata.com/about/terms-of-use/.
