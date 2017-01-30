@@ -9,7 +9,7 @@ makedepends=('python-distribute')
 install=${pkgname}.install
 source=("https://github.com/padelt/temper-python/archive/v${pkgver}.tar.gz")
 sha256sums=('9edd0fa91975d83edffbcc0211843815bd07305adddad21669de0467a9d487b0')
-depends=('python2' 'python2-pyusb-beta' 'python2-setuptools' 'python2-snmp-passpersist')
+depends=('python2' 'python2-pyusb-git' 'python2-setuptools' 'python2-snmp-passpersist')
 provides=("${pkgname}")
 
 prepare() {
