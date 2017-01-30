@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=The Witcher 2 Assassins of Kings
+Comment=Enjoy a captivating story, dynamic combat system and beautiful graphics in the second installment in the RPG saga about the Witcher, Geralt of Rivia.
+Exec=gog-the-witcher-2-assassins-of-kings
+Icon=gog-the-witcher-2-assassins-of-kings
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
