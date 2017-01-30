@@ -1,7 +1,7 @@
 # Maintainer: Viliam Ganz <viliam.ganz@gmail.com>
 pkgname=kafkatool
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="The Ultimate Kafka UI Tool"
 arch=("x86_64")
@@ -9,7 +9,7 @@ url="http://www.kafkatool.com"
 license=('custom')
 groups=()
 depends=('java-runtime')
-makedepends=('expect')
+makedepends=('expect' 'gendesk')
 checkdepends=()
 optdepends=()
 provides=()
@@ -75,7 +75,7 @@ expect eof
     sed -i -- "s~$pkgdir~~g" $pkgdir/opt/kafkatool/.install4j/*
     ln -s /opt/kafkatool/kafkatool $pkgdir/usr/bin/kafkatool
     
-    gendesk --pkgname "$pkgname" --pkgdesc "$pkgdesc"
+    gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
     install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm644 "$pkgname.png" "$pkgdir/opt/kafkatool/.install4j/$pkgname.png"
+    install -Dm644 "$pkgdir/opt/kafkatool/.install4j/$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
