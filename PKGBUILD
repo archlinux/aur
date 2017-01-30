@@ -1,9 +1,11 @@
+# Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 pkgname=deadbeef-plugin-spectrogram-git
 pkgver=0.+r25.20150110
 pkgrel=1
 pkgdesc="Spectrogram Plugin for the DeaDBeeF audio player (development version)"
 url="https://github.com/cboxdoerfer/ddb_spectrogram"
 arch=('i686' 'x86_64')
+license=('GPL2')
 depends=('deadbeef')
 makedepends=('git')
 conflicts=('deadbeef-plugin-spectrogram')
