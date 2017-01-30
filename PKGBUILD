@@ -36,7 +36,6 @@ optdepends=(
   'hyphen-ro: Romanian hyphenation rules'
 )
 source=(https://github.com/wbsoft/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-install=${pkgname}.install
 md5sums=('e5ff8cdbec7b83601afb576c94e7aecb')
 
 prepare() {
