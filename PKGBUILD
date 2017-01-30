@@ -6,7 +6,7 @@
 _reponame=cpp-utilities
 pkgname=mingw-w64-c++utilities
 _name=${pkgname#mingw-w64-}
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 arch=('any')
 pkgdesc='Common C++ classes and routines such as argument parser, IO and conversion utilities (mingw-w64)'
@@ -16,7 +16,7 @@ optdepends=("$pkgname-doc: API documentation")
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('25fe5a5d12d1b96cfabdb3e92d72f4feded804b471f253b38ae63921b01f8f82')
+sha256sums=('fc9d99a13db8584f25787e3f531fc4b2e71a2febc2fce5f78e04be0698d1b0db')
 options=(!buildflags staticlibs !strip !emptydirs)
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || _configurations='-DENABLE_STATIC_LIBS:BOOL=ON'
