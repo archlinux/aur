@@ -1,9 +1,9 @@
 # Maintainer: Kieran Colford <kieran@kcolford.com>
 pkgname=bauerbill-over-pacaur
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc="Replace pacaur with bauerbill."
+pkgdesc="Use bauerbill to satisfy any dependencies on pacaur."
 arch=('any')
 url="https://aur.archlinux.org/packages/bauerbill-over-pacaur"
 license=('GPL')
