@@ -5,10 +5,10 @@ pkgbase=gstreamer0.10-ugly
 _pkgname=gst-plugins-ugly
 pkgname=('gstreamer0.10-ugly' 'gstreamer0.10-ugly-plugins')
 pkgver=0.10.19
-pkgrel=19
+pkgrel=20
 arch=('i686' 'x86_64')
 license=('LGPL')
-makedepends=('pkgconfig' 'gstreamer0.10-base>=0.10.34' 'libdvdread' 'lame' 'libmpeg2' 'a52dec' 'libmad' 'libsidplay' 'libcdio' 'libx264' 'x264' 'opencore-amr' 'git')
+makedepends=('pkgconfig' 'gstreamer0.10-base>=0.10.36-8' 'libdvdread' 'lame' 'libmpeg2' 'a52dec' 'libmad' 'libsidplay' 'libcdio' 'libx264' 'x264' 'opencore-amr' 'git')
 url="http://gstreamer.freedesktop.org/"
 source=("git+https://gitlab.com/gstreamer-sdk/$_pkgname.git#commit=d637756a8e569753e9869c2c0728288f5dbc5089"
         opencore-amr.patch
@@ -33,11 +33,6 @@ build() {
     --with-package-origin="http://www.archlinux.org/"
   make
   sed -e 's/gst-libs gst ext/gst-libs gst/' -i Makefile
-}
-
-check() {
-  cd $_pkgname
-  make check
 }
 
 package_gstreamer0.10-ugly() {

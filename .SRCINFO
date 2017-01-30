@@ -1,12 +1,12 @@
 pkgbase = gstreamer0.10-ugly
 	pkgver = 0.10.19
-	pkgrel = 19
+	pkgrel = 20
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = pkgconfig
-	makedepends = gstreamer0.10-base>=0.10.34
+	makedepends = gstreamer0.10-base>=0.10.36-8
 	makedepends = libdvdread
 	makedepends = lame
 	makedepends = libmpeg2
