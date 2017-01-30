@@ -1,0 +1,10 @@
+--- a/CheckMATE-2.0.3/tools/fritz/include/pythiahandler/PythiaHandler.h
++++ b/CheckMATE-2.0.3/tools/fritz/include/pythiahandler/PythiaHandler.h
+@@ -1,6 +1,7 @@
+ #ifndef _PYTHIAHANDLER
+ #define _PYTHIAHANDLER
+ 
++#include <cstddef>
+ #include "Pythia8/Pythia.h"
+ 
+ #ifdef HAVE_HEPMC
