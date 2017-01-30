@@ -8,7 +8,7 @@
 # Contributor: TIanyi Cui <tianyicui@gmail.com>
 
 pkgname=nodejs6
-pkgver=6.9.2
+pkgver=6.9.4
 pkgrel=1
 pkgdesc='v6 of nodejs evented I/O for V8 javascript'
 arch=('i686' 'x86_64')
@@ -20,12 +20,12 @@ optdepends=('npm: nodejs package manager')
 conflicts=('nodejs')
 provides=('nodejs')
 source=("https://github.com/nodejs/node/archive/v$pkgver.tar.gz")
-sha256sums=('750b98520c3dee716f045711d7fcce81ad4816b49002aa4cfa8336d54a84d001')
+sha256sums=('146fa19d79fb8cc13ea5a702907dd3fa8336939e08a19d48b51c3481e06d8df8')
 
 prepare() {
   cd node-$pkgver
 
-  msg 'Fixing for python2 name... will take a while...'
+  msg 'Fixing python names... will take a while...'
   find -type f -exec sed \
     -e 's_^#!/usr/bin/env python$_&2_' \
     -e 's_^\(#!/usr/bin/python2\).[45]$_\1_' \
