@@ -17,5 +17,5 @@ package() {
     mkdir -p "$pkgdir/usr/share/java/tla-toolbox"
     cp -r toolbox/* "$pkgdir/usr/share/java/tla-toolbox/"
     mkdir -p "$pkgdir/usr/bin"
-    ln -s "$pkgdir/usr/share/java/tla-toolbox/toolbox" "$pkgdir/usr/bin/tla-toolbox"
+    ln -s '/usr/share/java/tla-toolbox/toolbox' "$pkgdir/usr/bin/tla-toolbox"
 }
