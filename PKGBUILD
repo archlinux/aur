@@ -8,8 +8,8 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=pure-ftpd
-pkgver=1.0.44
-pkgrel=2
+pkgver=1.0.45
+pkgrel=1
 pkgdesc="A secure, production-quality and standard-conformant FTP server, focused on efficiency and ease of use."
 arch=('i686' 'x86_64')
 url="http://www.pureftpd.org/"
@@ -24,7 +24,7 @@ source=("http://download.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-${pkgver}
 	'welcome.msg'
 	'pure-ftpd.install' )
 
-md5sums=('8da4207c02a72267abfdf0a9fc2bf3a9'
+md5sums=('0e7ce6816586c87a5f2707d902bc5b53'
          '0d0845e17607ffb212eae0112c58e9ff'
          '37a45c88a0f038de37b4a87c6c447534'
          '7e91835f7e7975bd0536648fc99e5a22'
@@ -32,8 +32,6 @@ md5sums=('8da4207c02a72267abfdf0a9fc2bf3a9'
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
-	# Switch TLS lines to prevent config parser error
-	sed -n '1,61p;63p' src/simpleconf_ftpd.h >_ && sed -n '62p;64,1000p' src/simpleconf_ftpd.h >>_ && mv _ src/simpleconf_ftpd.h
 	./configure --prefix=/usr \
 	--bindir=/usr/bin \
 	--sbindir=/usr/bin \
