@@ -1,9 +1,3 @@
-post_install() {
-  echo -n "Updating desktop database ..."
-  update-desktop-database -q
-  echo " done."
-}
-
 post_remove() {
   echo "=> If you will not play Lost Labyrinth in the future, remove the directory '/usr/share/lostlabyrinth'."
 }
