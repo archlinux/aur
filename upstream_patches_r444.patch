@@ -1,43 +1,4 @@
-diff -uprNEBZ --suppress-blank-empty a/extensions/PythonQt_QtAll/PythonQt_QtAll.cpp b/extensions/PythonQt_QtAll/PythonQt_QtAll.cpp
---- a/extensions/PythonQt_QtAll/PythonQt_QtAll.cpp	2016-06-09 06:46:16.000000000 -0500
-+++ b/extensions/PythonQt_QtAll/PythonQt_QtAll.cpp	2016-07-25 06:06:45.000000000 -0500
-@@ -45,6 +45,7 @@ void PythonQt_init_QtXmlPatterns(PyObjec
- void PythonQt_init_QtMultimedia(PyObject*);
- void PythonQt_init_QtQml(PyObject*);
- void PythonQt_init_QtQuick(PyObject*);
-+void PythonQt_init_QtUiTools(PyObject*);
- 
- #ifdef PYTHONQT_WITH_WEBKIT
- void PythonQt_init_QtWebKit(PyObject*);
-@@ -67,6 +68,7 @@ namespace PythonQt_QtAll
-     PythonQt_init_QtMultimedia(0);
-     PythonQt_init_QtQml(0);
-     PythonQt_init_QtQuick(0);
-+    PythonQt_init_QtUiTools(0);
-   };
- };
- 
-diff -uprNEBZ --suppress-blank-empty a/extensions/PythonQt_QtAll/PythonQt_QtAll.pro b/extensions/PythonQt_QtAll/PythonQt_QtAll.pro
---- a/extensions/PythonQt_QtAll/PythonQt_QtAll.pro	2016-06-09 07:00:18.000000000 -0500
-+++ b/extensions/PythonQt_QtAll/PythonQt_QtAll.pro	2016-07-25 06:06:45.000000000 -0500
-@@ -21,7 +21,7 @@ SOURCES +=                \
- 
- QT += gui svg sql network xml xmlpatterns opengl
- QT += widgets printsupport multimedia multimediawidgets
--QT += quick qml quickwidgets
-+QT += quick qml quickwidgets uitools
- 
- include ($$PYTHONQT_GENERATED_PATH/com_trolltech_qt_core/com_trolltech_qt_core.pri)
- include ($$PYTHONQT_GENERATED_PATH/com_trolltech_qt_gui/com_trolltech_qt_gui.pri)
-@@ -34,6 +34,7 @@ include ($$PYTHONQT_GENERATED_PATH/com_t
- include ($$PYTHONQT_GENERATED_PATH/com_trolltech_qt_multimedia/com_trolltech_qt_multimedia.pri)
- include ($$PYTHONQT_GENERATED_PATH/com_trolltech_qt_qml/com_trolltech_qt_qml.pri)
- include ($$PYTHONQT_GENERATED_PATH/com_trolltech_qt_quick/com_trolltech_qt_quick.pri)
-+include ($$PYTHONQT_GENERATED_PATH/com_trolltech_qt_uitools/com_trolltech_qt_uitools.pri)
- 
- PythonQtWebKit {
-   QT += webkit webkitwidgets
-diff -uprNEBZ --suppress-blank-empty a/generator/abstractmetalang.cpp b/generator/abstractmetalang.cpp
+diff -uprNEBZ a/generator/abstractmetalang.cpp b/generator/abstractmetalang.cpp
 --- a/generator/abstractmetalang.cpp	2015-06-18 08:32:57.000000000 -0500
 +++ b/generator/abstractmetalang.cpp	2016-08-03 02:16:08.000000000 -0500
 @@ -838,14 +838,24 @@ AbstractMetaFunctionList AbstractMetaCla
@@ -69,7 +30,7 @@ diff -uprNEBZ --suppress-blank-empty a/generator/abstractmetalang.cpp b/generato
  }
  
  /*******************************************************************************
-diff -uprNEBZ --suppress-blank-empty a/generator/abstractmetalang.h b/generator/abstractmetalang.h
+diff -uprNEBZ a/generator/abstractmetalang.h b/generator/abstractmetalang.h
 --- a/generator/abstractmetalang.h	2014-09-25 05:51:32.000000000 -0500
 +++ b/generator/abstractmetalang.h	2016-08-01 04:12:32.000000000 -0500
 @@ -800,7 +800,8 @@ public:
@@ -82,7 +43,7 @@ diff -uprNEBZ --suppress-blank-empty a/generator/abstractmetalang.h b/generator/
      void addPropertySpec(QPropertySpec *spec) { m_property_specs << spec; }
      QList<QPropertySpec *> propertySpecs() const { return m_property_specs; }
  
-diff -uprNEBZ --suppress-blank-empty a/generator/LGPL_EXCEPTION.txt b/generator/LGPL_EXCEPTION.txt
+diff -uprNEBZ a/generator/LGPL_EXCEPTION.txt b/generator/LGPL_EXCEPTION.txt
 --- a/generator/LGPL_EXCEPTION.txt	1969-12-31 18:00:00.000000000 -0600
 +++ b/generator/LGPL_EXCEPTION.txt	2010-02-19 15:04:26.000000000 -0600
 @@ -0,0 +1,22 @@
@@ -108,7 +69,7 @@ diff -uprNEBZ --suppress-blank-empty a/generator/LGPL_EXCEPTION.txt b/generator/
 +
 +Furthermore, you are not required to apply this additional permission to a
 +modified version of the Library.
-diff -uprNEBZ --suppress-blank-empty a/generator/LICENSE.LGPL b/generator/LICENSE.LGPL
+diff -uprNEBZ a/generator/LICENSE.LGPL b/generator/LICENSE.LGPL
 --- a/generator/LICENSE.LGPL	1969-12-31 18:00:00.000000000 -0600
 +++ b/generator/LICENSE.LGPL	2010-02-19 15:04:26.000000000 -0600
 @@ -0,0 +1,514 @@
@@ -626,7 +587,7 @@ diff -uprNEBZ --suppress-blank-empty a/generator/LICENSE.LGPL b/generator/LICENS
 +That's all there is to it!
 +
 +
-diff -uprNEBZ --suppress-blank-empty a/generator/merge.sh b/generator/merge.sh
+diff -uprNEBZ a/generator/merge.sh b/generator/merge.sh
 --- a/generator/merge.sh	1969-12-31 18:00:00.000000000 -0600
 +++ b/generator/merge.sh	2010-03-05 16:03:37.000000000 -0600
 @@ -0,0 +1,11 @@
@@ -642,7 +603,7 @@ diff -uprNEBZ --suppress-blank-empty a/generator/merge.sh b/generator/merge.sh
 +xsltproc -o typesystem_svg.xml --stringparam source 'typesystem_svg-qtscript.xml'  merge.xsl typesystem_svg-common.xml
 +xsltproc -o typesystem_xmlpatterns.xml --stringparam source 'typesystem_xmlpatterns-qtscript.xml'  merge.xsl typesystem_xmlpatterns-common.xml
 \ No newline at end of file
-diff -uprNEBZ --suppress-blank-empty a/generator/setupgenerator.cpp b/generator/setupgenerator.cpp
+diff -uprNEBZ a/generator/setupgenerator.cpp b/generator/setupgenerator.cpp
 --- a/generator/setupgenerator.cpp	2016-05-03 04:25:38.000000000 -0500
 +++ b/generator/setupgenerator.cpp	2016-08-01 04:12:32.000000000 -0500
 @@ -105,7 +105,7 @@ static QStringList getOperatorCodes(cons
@@ -654,7 +615,7 @@ diff -uprNEBZ --suppress-blank-empty a/generator/setupgenerator.cpp b/generator/
      r.insert("PythonQt::Type_NonZero");
    }
  
-diff -uprNEBZ --suppress-blank-empty a/generator/shellheadergenerator.cpp b/generator/shellheadergenerator.cpp
+diff -uprNEBZ a/generator/shellheadergenerator.cpp b/generator/shellheadergenerator.cpp
 --- a/generator/shellheadergenerator.cpp	2016-05-10 10:01:30.000000000 -0500
 +++ b/generator/shellheadergenerator.cpp	2016-08-09 07:20:29.000000000 -0500
 @@ -267,7 +267,11 @@ void ShellHeaderGenerator::write(QTextSt
@@ -686,9 +647,9 @@ diff -uprNEBZ --suppress-blank-empty a/generator/shellheadergenerator.cpp b/gene
    }
  
    AbstractMetaFieldList fields = meta_class->fields();
-diff -uprNEBZ --suppress-blank-empty a/generator/typesystem_core.xml b/generator/typesystem_core.xml
+diff -uprNEBZ a/generator/typesystem_core.xml b/generator/typesystem_core.xml
 --- a/generator/typesystem_core.xml	2016-05-30 07:33:59.000000000 -0500
-+++ b/generator/typesystem_core.xml	2016-06-13 04:54:38.000000000 -0500
++++ b/generator/typesystem_core.xml	2017-01-10 10:32:13.000000000 -0600
 @@ -550,6 +550,8 @@
    <rejection class="QObject" function-name="disconnectNotify"/>
    <rejection class="QObject" function-name="registerUserData"/>
@@ -698,9 +659,18 @@ diff -uprNEBZ --suppress-blank-empty a/generator/typesystem_core.xml b/generator
    <rejection class="QRegion" function-name="cleanUp"/>
    <rejection class="QSettings" function-name="registerFormat"/>
    <rejection class="QVector" function-name="back"/>
-diff -uprNEBZ --suppress-blank-empty a/generator/typesystem_gui.xml b/generator/typesystem_gui.xml
+@@ -1391,8 +1393,6 @@
+     <modify-function signature="QCoreApplication(int &amp;, char  **, int)" remove="all"/>
+   
+     <modify-function signature="QCoreApplication(int &amp;, char **)" remove="all"/>
+-    <!-- ### arguments() causes a warning: "QScriptValue::setProperty(arguments): cannot change flags of a native property" -->
+-    <modify-function signature="arguments()" remove="all"/>
+   </object-type>
+ 
+   <object-type name="QSettings">
+diff -uprNEBZ a/generator/typesystem_gui.xml b/generator/typesystem_gui.xml
 --- a/generator/typesystem_gui.xml	2016-06-01 03:20:27.000000000 -0500
-+++ b/generator/typesystem_gui.xml	2016-06-20 04:58:59.000000000 -0500
++++ b/generator/typesystem_gui.xml	2016-11-21 03:11:48.000000000 -0600
 @@ -1307,6 +1307,17 @@ PyObject* constScanLine(QImage* image, i
    <object-type name="QWizard">
      <!-- ### Requires correct class name in meta object -->
@@ -719,7 +689,24 @@ diff -uprNEBZ --suppress-blank-empty a/generator/typesystem_gui.xml b/generator/
    </object-type>
    <object-type name="QWizardPage">
    </object-type>
-diff -uprNEBZ --suppress-blank-empty a/src/PythonQtConversion.cpp b/src/PythonQtConversion.cpp
+@@ -2163,8 +2174,6 @@ PyObject* constScanLine(QImage* image, i
+       <modify-function signature="topLevelWidget()const" remove="all"/> <!--### Obsolete in 4.3-->
+       <modify-function signature="windowActivationChange(bool)" remove="all"/> <!--### Obsolete in 4.3-->
+   
+-    <modify-function signature="fontInfo()const" remove="all"/>
+-    <modify-function signature="fontMetrics()const" remove="all"/>
+     <modify-function signature="sizeHint()const" rename="getSizeHint"/>
+     <modify-function signature="minimumSizeHint()const" rename="getMinimumSizeHint"/>
+   </object-type>
+@@ -2828,7 +2837,6 @@ PyObject* constScanLine(QImage* image, i
+     <modify-function signature="QApplication(int&amp;,char**,int)" remove="all"/>
+     <modify-function signature="commitData(QSessionManager&amp;)" remove="all"/>
+     <modify-function signature="saveState(QSessionManager&amp;)" remove="all"/>
+-    <modify-function signature="fontMetrics()" remove="all"/>
+   </object-type>
+ 
+   <object-type name="QMouseEventTransition"/>
+diff -uprNEBZ a/src/PythonQtConversion.cpp b/src/PythonQtConversion.cpp
 --- a/src/PythonQtConversion.cpp	2016-06-02 07:30:53.000000000 -0500
 +++ b/src/PythonQtConversion.cpp	2016-07-21 08:36:40.000000000 -0500
 @@ -746,9 +746,14 @@ QString PythonQtConv::PyObjGetRepresenta
@@ -781,7 +768,7 @@ diff -uprNEBZ --suppress-blank-empty a/src/PythonQtConversion.cpp b/src/PythonQt
  #else
    return type == &PyUnicode_Type || type == &PyString_Type;
  #endif
-diff -uprNEBZ --suppress-blank-empty a/src/PythonQt.cpp b/src/PythonQt.cpp
+diff -uprNEBZ a/src/PythonQt.cpp b/src/PythonQt.cpp
 --- a/src/PythonQt.cpp	2016-05-23 02:31:11.000000000 -0500
 +++ b/src/PythonQt.cpp	2016-06-20 03:26:33.000000000 -0500
 @@ -1977,6 +1977,7 @@ void PythonQtPrivate::buildDynamicMetaOb
@@ -792,7 +779,7 @@ diff -uprNEBZ --suppress-blank-empty a/src/PythonQt.cpp b/src/PythonQt.cpp
        PythonQtProperty* prop = (PythonQtProperty*)value;
        QMetaPropertyBuilder newProp = builder.addProperty(PyString_AsString(key), prop->data->cppType);
        newProp.setReadable(true);
-diff -uprNEBZ --suppress-blank-empty a/src/PythonQtSlotDecorator.cpp b/src/PythonQtSlotDecorator.cpp
+diff -uprNEBZ a/src/PythonQtSlotDecorator.cpp b/src/PythonQtSlotDecorator.cpp
 --- a/src/PythonQtSlotDecorator.cpp	2016-05-19 10:22:41.000000000 -0500
 +++ b/src/PythonQtSlotDecorator.cpp	2016-07-21 08:36:40.000000000 -0500
 @@ -42,9 +42,9 @@ int PythonQtSlotDecorator_init(PyObject
@@ -807,7 +794,7 @@ diff -uprNEBZ --suppress-blank-empty a/src/PythonQtSlotDecorator.cpp b/src/Pytho
      return 0;
    }
  
-diff -uprNEBZ --suppress-blank-empty a/src/PythonQtStdDecorators.cpp b/src/PythonQtStdDecorators.cpp
+diff -uprNEBZ a/src/PythonQtStdDecorators.cpp b/src/PythonQtStdDecorators.cpp
 --- a/src/PythonQtStdDecorators.cpp	2016-06-06 06:45:45.000000000 -0500
 +++ b/src/PythonQtStdDecorators.cpp	2016-06-20 03:26:33.000000000 -0500
 @@ -153,12 +153,12 @@ QVariant PythonQtStdDecorators::property
@@ -826,7 +813,7 @@ diff -uprNEBZ --suppress-blank-empty a/src/PythonQtStdDecorators.cpp b/src/Pytho
  #endif
  }
  
-diff -uprNEBZ --suppress-blank-empty a/src/PythonQtStdDecorators.h b/src/PythonQtStdDecorators.h
+diff -uprNEBZ a/src/PythonQtStdDecorators.h b/src/PythonQtStdDecorators.h
 --- a/src/PythonQtStdDecorators.h	2016-06-06 06:45:45.000000000 -0500
 +++ b/src/PythonQtStdDecorators.h	2016-06-20 03:26:33.000000000 -0500
 @@ -106,10 +106,10 @@ public Q_SLOTS:

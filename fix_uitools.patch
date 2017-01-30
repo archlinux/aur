@@ -1,0 +1,39 @@
+diff -uprNEBZ a/extensions/PythonQt_QtAll/PythonQt_QtAll.cpp b/extensions/PythonQt_QtAll/PythonQt_QtAll.cpp
+--- a/extensions/PythonQt_QtAll/PythonQt_QtAll.cpp	2016-06-09 06:46:16.000000000 -0500
++++ b/extensions/PythonQt_QtAll/PythonQt_QtAll.cpp	2017-01-30 09:48:56.402459250 -0600
+@@ -45,6 +45,7 @@ void PythonQt_init_QtXmlPatterns(PyObjec
+ void PythonQt_init_QtMultimedia(PyObject*);
+ void PythonQt_init_QtQml(PyObject*);
+ void PythonQt_init_QtQuick(PyObject*);
++void PythonQt_init_QtUiTools(PyObject*);
+ 
+ #ifdef PYTHONQT_WITH_WEBKIT
+ void PythonQt_init_QtWebKit(PyObject*);
+@@ -67,6 +68,7 @@ namespace PythonQt_QtAll
+     PythonQt_init_QtMultimedia(0);
+     PythonQt_init_QtQml(0);
+     PythonQt_init_QtQuick(0);
++    PythonQt_init_QtUiTools(0);
+   };
+ };
+ 
+diff -uprNEBZ a/extensions/PythonQt_QtAll/PythonQt_QtAll.pro b/extensions/PythonQt_QtAll/PythonQt_QtAll.pro
+--- a/extensions/PythonQt_QtAll/PythonQt_QtAll.pro	2016-06-09 07:00:18.000000000 -0500
++++ b/extensions/PythonQt_QtAll/PythonQt_QtAll.pro	2017-01-30 09:50:42.279126391 -0600
+@@ -21,7 +21,7 @@ SOURCES +=                \
+ 
+ QT += gui svg sql network xml xmlpatterns opengl
+ QT += widgets printsupport multimedia multimediawidgets
+-QT += quick qml quickwidgets
++QT += quick qml quickwidgets uitools
+ 
+ include ($$PYTHONQT_GENERATED_PATH/com_trolltech_qt_core/com_trolltech_qt_core.pri)
+ include ($$PYTHONQT_GENERATED_PATH/com_trolltech_qt_gui/com_trolltech_qt_gui.pri)
+@@ -34,6 +34,7 @@ include ($$PYTHONQT_GENERATED_PATH/com_t
+ include ($$PYTHONQT_GENERATED_PATH/com_trolltech_qt_multimedia/com_trolltech_qt_multimedia.pri)
+ include ($$PYTHONQT_GENERATED_PATH/com_trolltech_qt_qml/com_trolltech_qt_qml.pri)
+ include ($$PYTHONQT_GENERATED_PATH/com_trolltech_qt_quick/com_trolltech_qt_quick.pri)
++include ($$PYTHONQT_GENERATED_PATH/com_trolltech_qt_uitools/com_trolltech_qt_uitools.pri)
+ 
+ PythonQtWebKit {
+   QT += webkit webkitwidgets
