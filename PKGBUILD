@@ -18,6 +18,7 @@ depends=('desktop-file-utils' 'fontconfig' 'glu' 'hicolor-icon-theme' 'ld-lsb>=3
 [[ $_attempt_fix = 1 ]] && depends+=('freeimage' 'libpng15' 'qtwebkit')
 optdepends=('catalyst-utils: For AMD Catalyst'
             'nvidia-utils: For the NVIDIA driver')
+provides=('google-earth')
 options=('!emptydirs')
 install=$pkgname.install
 source=('googleearth.sh'
