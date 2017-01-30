@@ -1,0 +1,43 @@
+pkgbase = python-pyside2-git
+	pkgver = 2.0.0.r2067.ccfa8440
+	pkgrel = 1
+	url = http://qt-project.org/wiki/PySide
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = python
+	makedepends = python2
+	makedepends = qt5.6
+	makedepends = python-shiboken2-git
+	makedepends = python2-shiboken2-git
+	makedepends = cmake
+	makedepends = qt5.6-webkit
+	makedepends = phonon
+	source = python-pyside2-git::git+https://code.qt.io/pyside/pyside.git
+	source = sphinx-build2.patch
+	source = disable-qwebengine.patch
+	md5sums = SKIP
+	md5sums = 0431767d635147c638063c71a2a138b3
+	md5sums = 8ce66a738fe9f9f87f7178e507b0d774
+
+pkgname = pyside2-common-git
+	pkgdesc = Provides LGPL Qt bindings for Python and related tools for binding generation (Common Files)
+
+pkgname = python2-pyside2-git
+	pkgdesc = Provides LGPL Qt bindings for Python and related tools for binding generation (Python 2 version)
+	depends = python2
+	depends = qt5.6
+	depends = python2-shiboken2-git
+	depends = pyside2-common-git
+	optdepends = qt5.6-webkit: for PySide2.QtWebKit
+	optdepends = phonon: for PySide2.phonon
+
+pkgname = python-pyside2-git
+	pkgdesc = Provides LGPL Qt bindings for Python and related tools for binding generation (Python 3 version)
+	depends = python
+	depends = qt5.6
+	depends = python-shiboken2-git
+	depends = pyside2-common-git
+	optdepends = qt5.6-webkit: for PySide2.QtWebKit
+	optdepends = phonon: for PySide2.phonon
+

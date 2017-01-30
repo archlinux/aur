@@ -1,0 +1,28 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 52bbbe23..a409efe7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -172,8 +172,8 @@ find_package(Qt5Quick)
+ find_package(Qt5Qml)
+ find_package(Qt5QuickWidgets)
+ find_package(Qt5WebChannel)
+-find_package(Qt5WebEngine)
+-find_package(Qt5WebEngineWidgets)
++#find_package(Qt5WebEngine)
++#find_package(Qt5WebEngineWidgets)
+ find_package(Qt5WebSockets)
+ 
+ if(UNIX AND NOT APPLE)
+diff --git a/PySide2/CMakeLists.txt b/PySide2/CMakeLists.txt
+index 28f591d9..20e9ee44 100644
+--- a/PySide2/CMakeLists.txt
++++ b/PySide2/CMakeLists.txt
+@@ -26,7 +26,7 @@ find_package(Qt5Qml)
+ find_package(Qt5Quick)
+ find_package(Qt5QuickWidgets)
+ find_package(Qt5WebChannel)
+-find_package(Qt5WebEngineWidgets)
++#find_package(Qt5WebEngineWidgets)
+ find_package(Qt5WebSockets)
+ 
+ if(UNIX AND NOT APPLE)

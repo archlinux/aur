@@ -1,0 +1,13 @@
+diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+index c5d0169d..a4f246b3 100644
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -9,7 +9,7 @@ add_custom_target(qdoc3
+                 SOURCE "pyside.qdocconf")
+ 
+ 
+-find_program(SPHINX_BUILD NAMES sphinx-build)
++find_program(SPHINX_BUILD NAMES sphinx-build2)
+ if (${SPHINX_BUILD} MATCHES "SPHINX_BUILD-NOTFOUND")
+     message(FATAL_ERROR "sphinx-build command not found.")
+ endif()
