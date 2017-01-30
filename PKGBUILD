@@ -2,10 +2,10 @@
 
 pkgname=kronometer
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple chronometer application."
 arch=('i686' 'x86_64')
-url="http://aelog.org/kronometer"
+url="https://eang.it/kronometer"
 license=('GPL2')
 depends=('kxmlgui' 'hicolor-icon-theme')
 makedepends=('extra-cmake-modules' 'kdoctools' 'python')
