@@ -1,7 +1,7 @@
 pkgbase = python-adb-git
 	pkgdesc = Python ADB + Fastboot implementation
 	pkgver = r65.fb09de9
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/google/python-adb.git
 	arch = any
 	license = apachev2
@@ -9,7 +9,7 @@ pkgbase = python-adb-git
 	makedepends = python2>=2.7
 	depends = libusb>=1.0.16
 	depends = python2-libusb1>=1.2.0
-	depends = python2-m2crypto<=0.24
+	depends = python2-m2crypto>=0.24
 	source = git+https://github.com/google/python-adb.git
 	md5sums = SKIP
 
