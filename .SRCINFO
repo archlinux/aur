@@ -1,7 +1,7 @@
 pkgbase = naturalearth-data-vector-all-latest
-	pkgdesc = A public domain map dataset, featuring tightly integrated vector and raster data, with which you can make a variety of maps with cartography or GIS software. This package provides the cultural and physical data in 1:10mio, 1:50mio and 1:110mio scale.
+	pkgdesc = A public domain map dataset, tightly integrated vector and raster data, to make a variety of maps with cartography or GIS software. This package provides the cultural and physical data in 1:10mio, 1:50mio and 1:110mio scale. WARNING: Over 900 MiB big.
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = http://www.naturalearthdata.com/
 	arch = any
