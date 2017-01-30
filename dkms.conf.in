@@ -1,11 +1,8 @@
 PACKAGE_NAME=@PKGNAME@
 PACKAGE_VERSION=@PKGVER@
-MAKE[0]="make KVERSION=$kernelver"
+MAKE[0]="make KVERSION=$kernelver MODULEBUILDDIR=$dkms_tree/$PACKAGE_NAME/$PACKAGE_VERSION/build"
 CLEAN[0]="make clean"
 
-# The vsock module depends on symbols exported by the vmci module, so it
-# needs to be built afterwards; the MODULEBUILDDIR variable tells the makefiles
-# where to store / retrive those symbol files.
 BUILT_MODULE_NAME[0]="vmblock"
 BUILT_MODULE_NAME[1]="vmci"
 BUILT_MODULE_NAME[2]="vmmon"

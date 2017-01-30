@@ -11,7 +11,7 @@
 pkgname=vmware-modules-dkms
 _pkgbase=vmware-modules
 pkgver=308.0
-pkgrel=12
+pkgrel=13
 pkgdesc="VMware Workstation kernel modules (DKMS)"
 arch=('i686' 'x86_64')
 url="http://www.vmware.com/"
@@ -34,9 +34,9 @@ source=('Makefile'
         'vmnet.patch'
         'vsock.patch'
         'NOTES')
-sha256sums=('9041b85cea2e2c35b27629d47bee2e37b913635e5ace54a46fd9c45f90c4f1d4'
+sha256sums=('493ff26082307ff58f19b391c5a72625d7071ad12fed9232f0f2e2d4339c3a45'
             '7baecdfd979d57aed7dac0db57e0165fc1730b15ed6bf42ed25571e68ec34b52'
-            'c8f9399196b50fb7ffb763e006bd54c8153d2c0717d935590ea9bf673346f1d3'
+            '489ab58c7bc605588271f41e563c4e97ea65798fbc4ab7ec5b2135c79df5de1a'
             'b81a2c26a6af145a934118a0d19d22ff7a73464dfa849d24ba0dd785f119ae7e'
             'f24586ccb45106322bcff9dff92ef2caf9f32c73f2ec1c67f178c7ee2559ac0e'
             '270493aac68667a78e3aab54316a4548d15e610c19c5791f7b6cc2e7483be6da'

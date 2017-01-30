@@ -14,7 +14,7 @@ KVERSION = $(shell uname -r)
 all: $(foreach m, $(MODULES), $m.ko)
 
 %.ko: % $(TARDIR)/%.tar
-	$(MAKE) KVERSION=$(KVERSION) VM_KBUILD=yes -C $*
+	$(MAKE) KVERSION=$(KVERSION) VM_KBUILD=yes MODULEBUILDDIR=$(MODULEBUILDDIR) -C $*
 	mv $*.o $*.ko
 
 $(MODULES): %: $(TARDIR)/%.tar
@@ -24,6 +24,8 @@ $(MODULES): %: $(TARDIR)/%.tar
 	if [ -e $*.patch ] ; then \
 		patch -p1 < $*.patch ; \
 	fi;
+
+vsock.ko: vmci.ko
 
 clean:
 	rm -rf $(MODULES)
