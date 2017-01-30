@@ -24,10 +24,23 @@ md5sums=('146fa386c212892a5fe917c671056aeb'
 
 build() {
   cd "$pkgname"
-  # iup_plot not built due to libcd package not installing libcdcontextplus
-  # iup_view not built due to needing static libraries
+  # iupview not built due to needing static libraries
   # iuplua5 and iupconsole not built due to libcd package not installing libcdlua53
-  make iup iupcd iupcontrols iupgl iupglcontrols iupmatrixex iup_mglplot iup_scintilla iupim iupimglib iupweb iuptuio ledc \
+  make iup iupgtk \
+    iupcd \
+    iupcontrols \
+    iupmatrixex \
+    iup_plot \
+    iup_mglplot \
+    iup_scintilla \
+    iupgl \
+    iupglcontrols \
+    iupim \
+    iupole \
+    iupweb \
+    iuptuio \
+    iupimglib \
+    ledc \
     CD_LIB=/usr/lib \
     CD_INC=/usr/include/cd \
     IM_LIB=/usr/lib \
