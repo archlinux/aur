@@ -22,8 +22,8 @@ depends_i686=(
 	'python2-protobuf'
 	'python2-pyopenssl'
 	'python2-twisted')
-source_x86_64=("https://labs.mwrinfosecurity.com/system/assets/931/original/drozer_${pkgver}.deb")
-source_i686=("https://labs.mwrinfosecurity.com/system/assets/931/original/drozer_${pkgver}.deb")
+source_x86_64=("https://github.com/mwrlabs/drozer/releases/download/2.3.4/drozer_2.3.4.deb")
+source_i686=("https://github.com/mwrlabs/drozer/releases/download/2.3.4/drozer_2.3.4.deb")
 md5sums_x86_64=('901c7775fa2eb0e0c9943d380cf902a2')
 md5sums_i686=('901c7775fa2eb0e0c9943d380cf902a2')
 
