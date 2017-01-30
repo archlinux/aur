@@ -1,17 +1,17 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gstreamer
-pkgver=1.10.2
+pkgver=1.10.3
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
-makedepends=(mingw-w64-configure bison flex)
+makedepends=('mingw-w64-configure' 'bison' 'flex')
 depends=('mingw-w64-glib2' 'mingw-w64-libxml2')
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=(${url}/src/gstreamer/gstreamer-${pkgver}.tar.xz)
-sha256sums=('150e8e81febac94c161d8141cde78a38038a8f56e8ec549f353da54994278d65')
+sha256sums=('85b9dc1b2991f224fa90d534ec57014896c479e061dc9fa1bc16ae17cbebb63d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -46,7 +46,7 @@ package() {
 
     rm $pkgdir/usr/$_arch/lib/gstreamer-1.0/*.a
     rm $pkgdir/usr/$_arch/lib/gstreamer-1.0/*.la
-    rm -rf "$pkgdir"/usr/${_arch}/share/{aclocal,man,locale}
+    rm -rf "$pkgdir"/usr/${_arch}/share/{aclocal,man,locale,bash-completion}
 
     find "$pkgdir" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir" -name '*.dll' -o -name '*.a' -exec ${_arch}-strip -g {} \;
