@@ -8,7 +8,7 @@ pkgname="python-numpy-mkl"
 true && pkgname=('python-numpy-mkl' 'python2-numpy-mkl')
 #pkgname=('python-numpy')
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python compiled with intel mkl"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -21,8 +21,8 @@ source=( https://github.com/numpy/numpy/archive/v${pkgver}.tar.gz
 	  'site64.cfg' 'site32.cfg' 'intel.py' 'intelccompiler.py' '__init__2.py.patch' '__init__3.py.patch' )
 
 sha256sums=( 'edec8d62882bef688a0cfd6b79987a722d26028238b6120b47974da58824ad08' 
-             '894e325c342511c29b98ec84b11e23f5e807f3088a7910e1d64279c626b5c898' 
-             'be10bb0e5f42e3511f2bbd536707744c0da943ed9d4dc8b981a23daa617e80d3' 
+             '86cd68a695a5e1d76f8e53cda70c888c4ed04349f15c8096d4492e346e7187e1' 
+             '882f2717deca0fd6a2e2384aac2dc7973c566f9cd2ba46777c3b5ffdffa814df' 
              'f2c6fa043b8c888f6df672a6031c3a4917909230236b725c6ce7e924a6d01462' 
              'a3faf52563f265b8adbb912c6acf969787a9d423e960c877ea9abd128976f814'
              '257adf2130c2cde081da61ac38d3fbce0c352d9b4af206d89d7a7e77c54b264a'
