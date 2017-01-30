@@ -1,4 +1,3 @@
-src
-pkg
-*.deb
-*.pkg.tar*
+*
+!.SRCINFO
+!PKGBUILD
