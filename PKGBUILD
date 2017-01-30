@@ -1,4 +1,4 @@
-# Maintainer: Philippe Miron <tuxication@gmail.com>
+# Maintainer: Pablo Orduna <pabloorduna98@gmail.com>
 
 pkgname=cryptocat
 pkgver=3.2.07
@@ -29,7 +29,7 @@ prepare() {
 	unzip $srcdir/Cryptocat.zip -d $pkgname
 	cp -R $srcdir/$pkgname/Cryptocat-linux-x64/* $pkgname
 	rm -R $srcdir/$pkgname/Cryptocat-linux-x64
-	gpg2 --verify Cryptocat.zip.asc Cryptocat.zip
+#	gpg2 --verify Cryptocat.zip.asc Cryptocat.zip
 	gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
 }
 
