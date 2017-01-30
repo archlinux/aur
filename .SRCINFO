@@ -1,6 +1,6 @@
 pkgbase = iup
 	pkgdesc = C cross platform GUI toolkit
-	pkgver = 3.20
+	pkgver = 3.21
 	pkgrel = 1
 	url = http://www.tecgraf.puc-rio.br/iup/
 	arch = i686
@@ -20,10 +20,10 @@ pkgbase = iup
 	depends = glib2
 	depends = webkitgtk
 	options = staticlibs
-	source = http://downloads.sourceforge.net/project/iup/3.20/Docs%20and%20Sources/iup-3.20_Sources.tar.gz
-	source = http://downloads.sourceforge.net/project/iup/3.20/Docs%20and%20Sources/iup-3.20_Docs.pdf
-	md5sums = fa1c47d1fcbe138300b85166e6bb7474
-	md5sums = 86becc02f33ff17366232af0cdd3c5d7
+	source = http://downloads.sourceforge.net/project/iup/3.21/Docs%20and%20Sources/iup-3.21_Sources.tar.gz
+	source = http://downloads.sourceforge.net/project/iup/3.21/Docs%20and%20Sources/iup-3.21_Docs.pdf
+	md5sums = 146fa386c212892a5fe917c671056aeb
+	md5sums = 78ab12cd403409930dc00abfd2165685
 
 pkgname = iup
 

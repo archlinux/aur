@@ -4,7 +4,7 @@
 # Contributor: maoserr
 
 pkgname=iup
-pkgver=3.20
+pkgver=3.21
 pkgrel=1
 pkgdesc="C cross platform GUI toolkit"
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ source=(
   "http://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Docs.pdf"
 )
 
-md5sums=('fa1c47d1fcbe138300b85166e6bb7474'
-         '86becc02f33ff17366232af0cdd3c5d7')
+md5sums=('146fa386c212892a5fe917c671056aeb'
+         '78ab12cd403409930dc00abfd2165685')
 
 build() {
   cd "$pkgname"
