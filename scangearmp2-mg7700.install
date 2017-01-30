@@ -1,18 +1,26 @@
 post_install() {
-    if [ -x /usr/bin/udevadm ]; then
-        /usr/bin/udevadm control --reload-rules 2> /dev/null
-        /usr/bin/udevadm trigger --action=add --subsystem-match=usb 2> /dev/null
-    fi
+if [ -x /usr/bin/udevadm ]; then
+    /usr/bin/udevadm control --reload-rules 2> /dev/null
+    /usr/bin/udevadm trigger --action=add --subsystem-match=usb 2> /dev/null
+fi
+cat << EOF
+Make sure to add yourself to the scanner group:
+
+sudo gpasswd -a <Yourusername> scanner
+
+so scangearmp2 can write to the /usr/lib/bjlib/canon_mfp2_net.ini file.
+Otherwise it will just complain that it can't find your printer.
+EOF
 }
 
 post_upgrade() {
-    if [ -x /usr/bin/udevadm ]; then
-        /usr/bin/udevadm control --reload-rules 2> /dev/null
-        /usr/bin/udevadm trigger --action=add --subsystem-match=usb 2> /dev/null
-    fi
+if [ -x /usr/bin/udevadm ]; then
+    /usr/bin/udevadm control --reload-rules 2> /dev/null
+    /usr/bin/udevadm trigger --action=add --subsystem-match=usb 2> /dev/null
+fi
 }
 
 post_remove() {
-    # remove sgmp_setting files
-    rm -f /var/tmp/canon_sgmp2_setting*.*
+# remove sgmp_setting files
+rm -f /var/tmp/canon_sgmp2_setting*.*
 }

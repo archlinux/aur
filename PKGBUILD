@@ -2,21 +2,22 @@
 
 pkgname=scangearmp2-mg7700
 pkgver=3.20
-pkgrel=1
+pkgrel=2
 pkgdesc='Canon ScanGear MP (PIXMA MG3640, PIXMA MG3650, PIXMA MG5740, PIXMA MG5750, PIXMA MG6840, PIXMA MG6850, PIXMA MG7740, PIXMA MG7750)'
 arch=('i686' 'x86_64')
 url='http://support-th.canon-asia.com/contents/TH/EN/0100690502.html'
 license=('custom')
 depends=('gtk2')
 provides=("scangearmp2=$pkgver")
-source=("http://gdlp01.c-wss.com/gds/5/0100006905/01/scangearmp2-${pkgver}-${pkgrel}-deb.tar.gz")
+install=scangearmp2-mg7700.install
+source=("http://gdlp01.c-wss.com/gds/5/0100006905/01/scangearmp2-${pkgver}-1-deb.tar.gz")
 sha256sums=('37cad11b1ed7b646b798e0de36585c192ff44849a818f88c0a3daebb4d879dad')
 
 prepare() {
   local _pkgarch=$(echo -n "${CARCH}" | sed 's/x86_/amd/' | sed 's/i6/i3/')
-  local _debdir="scangearmp2-${pkgver}-${pkgrel}-deb/packages"
+  local _debdir="scangearmp2-${pkgver}-1-deb/packages"
 
-  ar -x "${_debdir}/scangearmp2_${pkgver}-${pkgrel}_${_pkgarch}.deb" "data.tar.gz"
+  ar -x "${_debdir}/scangearmp2_${pkgver}-1_${_pkgarch}.deb" "data.tar.gz"
   bsdtar -xzf data.tar.gz
 }
 
