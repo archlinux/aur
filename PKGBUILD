@@ -1,6 +1,6 @@
-# Maintainer: drakkan <nicola dot murino at gmail.com>
+# Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-rtsp-server
-pkgver=1.10.2
+pkgver=1.10.3
 pkgrel=1
 pkgdesc="RTSP server library based on GStreamer (mingw-w64)"
 arch=(any)
@@ -8,10 +8,10 @@ url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
 depends=('mingw-w64-gstreamer' 'mingw-w64-gst-plugins-base')
 options=('!strip' '!buildflags' 'staticlibs')
-makedepends=('mingw-w64-configure' 'mingw-w64-gstreamer' 'mingw-w64-gst-plugins-base')
+makedepends=('mingw-w64-configure')
 
 source=("${url}src/gst-rtsp-server/gst-rtsp-server-${pkgver}.tar.xz")
-sha256sums=('822dd6f754fea2bbf3369a7c388372f49b74668fb57943c1888675e544b07235')
+sha256sums=('baf9f7d229711cb3d823a447a930132f809b3321eab3535491bb01c8a21566fe')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -21,7 +21,7 @@ build() {
     mkdir -p "build-${_arch}"
     cd "build-${_arch}"
     ${_arch}-configure \
-      --with-package-name="GStreamer Rtsp Server (Arch Linux)" \
+      --with-package-name="GStreamer RTSP Server Library (Arch Linux)" \
       --with-package-origin="http://www.archlinux.org/" 
 
     # https://bugzilla.gnome.org/show_bug.cgi?id=655517
