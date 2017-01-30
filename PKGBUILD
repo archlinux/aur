@@ -1,7 +1,7 @@
 # Maintainer: Michele Cereda <cereda.michele@gmail.com>
 # Contributor: JokerYu <dayushinn@gmail.com>, Olivier Bilodeau <obilodeau@gosecure.ca>
 pkgname=forticlientsslvpn
-pkgver=4.4.2330
+pkgver=4.4.2331
 pkgrel=1
 epoch=1
 pkgdesc="Fortinet SSL VPN Client for linux"
@@ -19,7 +19,7 @@ elif [ "$CARCH" = "x86_64" ]; then
   _arch=64bit
 fi
 
-sha256sums=('b07d9b431f6fa481cd8f82e5a3d76ff4552bf1c65d3fe80615f5449e2d2005c9'
+sha256sums=('c0affee5516d6426cf5bc7ac1f0d1c158fef02cb377817d4c5a917acab1b62bd'
             '5d4737629cadf38194ffc68d927a202cbac5f9fbcf825f11407c00e6a15842fb'
             '92f0dcc5431221d6832220b3ddec8d9606fff9ded4f8590eabd1c9ff3e37cb8b'
             '4f63f4503dca7633a4d7a1cf874ede1f33f877a701813349c5cd63889151f4a2'

@@ -1,6 +1,6 @@
 pkgbase = forticlientsslvpn
 	pkgdesc = Fortinet SSL VPN Client for linux
-	pkgver = 4.4.2330
+	pkgver = 4.4.2331
 	pkgrel = 1
 	epoch = 1
 	url = https://support.fortinet.com
@@ -13,14 +13,14 @@ pkgbase = forticlientsslvpn
 	depends = gtk2
 	optdepends = gtk-engines: for gtk theme support
 	optdepends = gnome-themes-standard: for theming
-	source = https://github.com/mcereda/forticlientsslvpn/raw/master/tarball/forticlientsslvpn_linux_4.4.2330.tar.gz
+	source = https://github.com/mcereda/forticlientsslvpn/raw/master/tarball/forticlientsslvpn_linux_4.4.2331.tar.gz
 	source = forticlientsslvpn.sh
 	source = forticlientsslvpn_cli.sh
 	source = forticlientsslvpn.desktop
 	source = forticlientsslvpn.png
-	sha256sums = b07d9b431f6fa481cd8f82e5a3d76ff4552bf1c65d3fe80615f5449e2d2005c9
-	sha256sums = 5742a8ae7dde1a1fde698ce2108ade9b51d497579c1e4375ff928325112a8780
-	sha256sums = 18061ae130992bfdd1b2fc18b2a6cd64e9ee6da63dae28cee1c28f2a40b60b15
+	sha256sums = c0affee5516d6426cf5bc7ac1f0d1c158fef02cb377817d4c5a917acab1b62bd
+	sha256sums = 5d4737629cadf38194ffc68d927a202cbac5f9fbcf825f11407c00e6a15842fb
+	sha256sums = 92f0dcc5431221d6832220b3ddec8d9606fff9ded4f8590eabd1c9ff3e37cb8b
 	sha256sums = 4f63f4503dca7633a4d7a1cf874ede1f33f877a701813349c5cd63889151f4a2
 	sha256sums = 15d46db76a39f32736ee3a469fc1b821e6290453c701af823875a493d06901df
 
