@@ -2,7 +2,7 @@
 # Original authors: Jordi Cortadella, Michael Kishinevsky, Alex Kondratyev, Luciano Lavagno, Enric Pastor and Alexandre Yakovlev
 pkgname=petrify
 pkgver=4.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A tool for synthesis of Petri Nets and asynchronous circuits "
 arch=('i686' 'x86_64')
 url="http://www.lsi.upc.edu/~jordicf/petrify/distrib/home.html"

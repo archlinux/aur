@@ -1,7 +1,7 @@
 pkgbase = petrify
 	pkgdesc = A tool for synthesis of Petri Nets and asynchronous circuits
 	pkgver = 4.2
-	pkgrel = 3
+	pkgrel = 5
 	url = http://www.lsi.upc.edu/~jordicf/petrify/distrib/home.html
 	arch = i686
 	arch = x86_64
