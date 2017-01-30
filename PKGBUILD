@@ -1,12 +1,12 @@
-# Maintainer: Jakub Klinkovský <kuba.klinkovsky@gmail.com>
+# Maintainer: Jakub Klinkovský <j.l.k@gmx.com>
 
 pkgname="hyphen-cs"
 pkgdesc="Czech hyphenation rules"
 pkgver=20061030
-pkgrel=1
+pkgrel=2
 arch=("any")
 optdepends=("hyphen: offers hyphenation library functions")
-url="http://ooo.mirror.dkm.cz/pub/openoffice/contrib/dictionaries/"
+url="http://download.services.openoffice.org/contrib/dictionaries/"
 license=("GPL2")
 source=(${url}hyph_cs_CZ.zip)
 md5sums=('7dc7192fb3c141db6518c54781df6846')
