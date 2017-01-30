@@ -5,7 +5,7 @@
 
 pkgname=firejail-extras
 pkgver=0.9.44
-pkgrel=14
+pkgrel=15
 pkgdesc="Extra profiles for firejail"
 arch=('any')
 url="https://github.com/chiraag-nataraj/firejail-profiles"
@@ -40,7 +40,7 @@ sha384sums=( 'SKIP'
 package() {
 
 	cd "${srcdir}"
-
+        msg2 remove profiles added to upstream
         rm   ${srcdir}/firejail-profiles/firefox.profile
         rm   ${srcdir}/firejail-profiles/google-chrome.profile
         rm   ${srcdir}/firejail-profiles/libreoffice.profile
@@ -55,6 +55,7 @@ package() {
         rm   ${srcdir}/firejail-profiles/virtualbox.profile  
         rm   ${srcdir}/firejail-profiles/luminance-hdr.profile
         rm   ${srcdir}/firejail-profiles/mupdf.profile
+        rm   ${srcdir}/firejail-profiles/pidgin.profile
      
 
         rm   ${srcdir}/fe/7z.profile
@@ -62,7 +63,9 @@ package() {
         rm   ${srcdir}/fe/keepass.profile
         rm   ${srcdir}/fe/keepassx.profile
         rm   ${srcdir}/fe/zathura.profile
-
+        
+        msg2 create package
+       
 	mkdir -p "${pkgdir}/etc/firejail"
 
 
