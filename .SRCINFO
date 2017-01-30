@@ -1,7 +1,7 @@
 pkgbase = electrum-ltc
 	pkgdesc = Lightweight Litecoin client
 	pkgver = 2.7.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://electrum-ltc.org/
 	arch = any
 	license = MIT
@@ -20,8 +20,8 @@ pkgbase = electrum-ltc
 	depends = python2-requests
 	depends = python2-slowaes
 	depends = zbar
-	source = electrum-ltc-608df09.tar.gz::https://codeload.github.com/pooler/electrum-ltc/tar.gz/608df09
-	sha256sums = e8c63c5eb090edf23a156ec2317f7803c34102c121eac8a77e8d8ea567432f15
+	source = electrum-ltc-e13e590.tar.gz::https://codeload.github.com/pooler/electrum-ltc/tar.gz/e13e590
+	sha256sums = a2593e63a0ff748d4e776aa2a5a012482df2f07c3bf5e651e230f9bfdb7c0f5d
 
 pkgname = electrum-ltc
 
