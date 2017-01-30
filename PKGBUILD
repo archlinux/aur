@@ -1,7 +1,7 @@
 # Maintainer: Viliam Ganz <viliam.ganz@gmail.com>
 pkgname=kafkatool
 pkgver=1.0.1
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="The Ultimate Kafka UI Tool"
 arch=("x86_64")
@@ -29,9 +29,10 @@ package() {
         install -dm 755 "$pkgdir/usr/bin"
         echo -e "#!/bin/bash\n/bin/bash -c \"DISPLAY='' $srcdir/kafkatool.sh\"" > $srcdir/install.sh
         chmod +x $srcdir/install.sh
+        chmod +x $srcdir/kafkatool.sh
         
         EXPECT="#!/usr/bin/expect -f
-	
+
 
 set timeout -1
 exp_internal 1
