@@ -1,6 +1,7 @@
+# shellcheck disable=SC2034,SC2154,SC2164
 pkgname=('vimperator-git')
 _srcname='vimperator'
-pkgver='r1'
+pkgver='r5195'
 pkgrel='1'
 pkgdesc='Make Firefox look and behave like Vim'
 arch=('any')
@@ -18,7 +19,7 @@ source=(
 )
 sha512sums=(
     'SKIP'
-    '83121899d5acadf96677542784534ce4c03e7cbdfd2d04610270df9c24dfb317520bd291dea9ba1d571e23b7473df7e92bbfc441010500ad6017f507207c2202'
+    'SKIP'
 )
 
 EXTENSION_ID='vimperator@mozdev.org'

@@ -1,20 +1,21 @@
 diff --git a/common/Makefile b/common/Makefile
-index 17b700e..6f53a68 100644
+index 408711e5..cdcf04e2 100644
 --- a/common/Makefile
 +++ b/common/Makefile
-@@ -142,11 +142,11 @@ xpi:
+@@ -156,15 +156,10 @@ xpi:
+ 		-a ! -name '*.jsm'           \
  		-delete
  
- 	# Zip the whole directory and remove dist folder
+-	# Zip the whole directory and remove dist folder
 -	@echo Packaging up $(XPI_NAME).xpi
 -	cd $(XPI_PATH) && zip -q -9r ../$(XPI_NAME).xpi *
-+	# @echo Packaging up $(XPI_NAME).xpi
-+	# cd $(XPI_PATH) && zip -q -9r ../$(XPI_NAME).xpi *
- 
+-
  	# Clean out build files
 -	rm -rf $(XPI_PATH)
-+	# rm -rf $(XPI_PATH)
  	rm -rf ../downloads/common
  
 -	@echo "SUCCESS: $(XPI_FILE)"
 +	@echo "SUCCESS: $(XPI_PATH)"
+ 
+ sign: xpi
+ 	@echo "Signing XPI"
