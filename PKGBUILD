@@ -7,12 +7,11 @@ pkgrel=1
 pkgdesc="Coherent PDF commandline tool binary to manipulate PDF files including merge, encrypt, decrypt, scale, crop, rotate, bookmarks, stamp, logos, page numbers, compress, etc."
 arch=('x86_64' 'i686')
 url="http://community.coherentpdf.com"
-license=('custom:eula')
+license=('custom')
 depends=('glibc')
 makedepends=('coreutils' 'binutils') # install, strip
 provides=('cpdf')
-conflicts=('cpdf-git')
-replaces=('cpdf-git')
+conflicts=('cpdf')
 
 _pkgname=${pkgname%-bin}
 _base_url='https://raw.githubusercontent.com/coherentgraphics/cpdf-binaries/master'
