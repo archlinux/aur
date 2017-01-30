@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=mkcl-git
-pkgver=1.1.9.99.g8ca4595
+pkgver=1.1.10.12.g00f30cb
 pkgrel=1
 pkgdesc="ManKai Common Lisp -- git-version"
 arch=('i686' 'x86_64')
@@ -10,24 +10,29 @@ depends=('gawk')
 makedepends=('git')
 provides=('common-lisp' 'cl-asdf')
 conflicts=('mkcl')
-source=("git+https://gitlab.common-lisp.net/mkcl/mkcl.git")
-options=('staticlibs' '!makeflags')
-md5sums=('SKIP')
-_gitname="mkcl"
+source=("git+https://gitlab.common-lisp.net/mkcl/mkcl.git" blank.patch)
+options=('staticlibs')
+md5sums=('SKIP' '3d1beb963c043626c83ecec212d659f1')
+
+
+prepare() {
+  cd "${pkgname%-git}"
+  patch -Np1 < ../blank.patch
+}
 
 pkgver() {
-  cd $srcdir/$_gitname
+  cd "${pkgname%-git}"
   git describe --tags | sed 's|-|.|g'|cut -c2-
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-  CC=gcc ./configure --prefix=/usr
+  cd "${pkgname%-git}"
+   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd "${pkgname%-git}"
   make prefix="$pkgdir/usr" install
   install -m 644 -D "Copyright" \
 	  "$pkgdir/usr/share/licenses/$pkgname/Copyright"
