@@ -1,7 +1,7 @@
 pkgbase = libresonic
 	pkgdesc = A free, web-based media streamer and jukebox.
 	pkgver = 6.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Libresonic/libresonic/
 	install = libresonic.install
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = libresonic
 	backup = var/lib/libresonic/db
 	backup = var/lib/libresonic/libresonic.properties
 	backup = var/lib/libresonic/libresonic.sh
-	source = https://jenkins.undocumented.software/job/libresonic/233/artifact/libresonic-booter/target/libresonic-booter-jar-with-dependencies.jar
+	source = https://jenkins.undocumented.software/job/libresonic/lastSuccessfulBuild/artifact/libresonic-booter/target/libresonic-booter-jar-with-dependencies.jar
 	source = https://github.com/Libresonic/libresonic/releases/download/v6.1/libresonic-v6.1.war
 	source = libresonic.sh
 	source = libresonic.service

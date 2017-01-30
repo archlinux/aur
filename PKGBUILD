@@ -2,7 +2,7 @@
 
 pkgname=libresonic
 pkgver=6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('any')
 url="https://github.com/Libresonic/libresonic/"
@@ -12,7 +12,7 @@ conflicts=('subsonic' 'subsonic-kang' 'subsonic-kang-git' 'subsonic-beta')
 backup=('var/lib/libresonic/db' 'var/lib/libresonic/libresonic.properties' 'var/lib/libresonic/libresonic.sh')
 noextract=(libresonic-v${pkgver}.war libresonic-booter-jar-with-dependencies.jar)
 install=$pkgname.install
-source=(https://jenkins.undocumented.software/job/libresonic/233/artifact/libresonic-booter/target/libresonic-booter-jar-with-dependencies.jar
+source=(https://jenkins.undocumented.software/job/libresonic/lastSuccessfulBuild/artifact/libresonic-booter/target/libresonic-booter-jar-with-dependencies.jar
         https://github.com/Libresonic/libresonic/releases/download/v${pkgver}/libresonic-v${pkgver}.war
         'libresonic.sh'
         'libresonic.service')
