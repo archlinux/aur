@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=duc-git
-pkgver=1.4.3.5.g815424e
+pkgver=1.4.3.6.ge0933ee
 pkgrel=1
 pkgdesc="collection of tools for inspecting and visualizing disk usage (git version)"
 arch=('i686' 'x86_64')
