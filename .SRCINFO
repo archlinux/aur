@@ -1,6 +1,6 @@
 pkgbase = 3dstool
 	pkgdesc = An all-in-one tool for extracting/creating 3ds roms.
-	pkgver = 1.0.17
+	pkgver = 1.0.19
 	pkgrel = 1
 	url = https://github.com/dnasdw/3dstool
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = 3dstool
 	makedepends = glibc
 	depends = openssl
 	options = !strip
-	source = https://github.com/dnasdw/3dstool/archive/v1.0.17.tar.gz
+	source = https://github.com/dnasdw/3dstool/archive/v1.0.19.tar.gz
 	source = 00-3dstool-share-ignore.patch
-	sha256sums = 44ca9cbec8af2132579a2bdd4ed55beb974b4bdbdd2767b2189c6a307c11486c
+	sha256sums = c20b2a886630ace079c0b2699e5954aa75b2630def434985162b63b5e2996f6e
 	sha256sums = 7f5016f7edf82a6236e4cc7e9378a3c9be28ec6ea22fde3d4b5b635d78d5da9d
 
 pkgname = 3dstool

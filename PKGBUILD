@@ -1,7 +1,7 @@
 # Maintainer: yubimusubi
 pkgbase=3dstool
 pkgname=('3dstool')
-pkgver=1.0.17
+pkgver=1.0.19
 pkgrel=1
 pkgdesc="An all-in-one tool for extracting/creating 3ds roms."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=(
     '00-3dstool-share-ignore.patch'
 )
 sha256sums=(
-    '44ca9cbec8af2132579a2bdd4ed55beb974b4bdbdd2767b2189c6a307c11486c'
+    'c20b2a886630ace079c0b2699e5954aa75b2630def434985162b63b5e2996f6e'
     '7f5016f7edf82a6236e4cc7e9378a3c9be28ec6ea22fde3d4b5b635d78d5da9d'
 )
 
