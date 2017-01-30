@@ -1,3 +1,15 @@
+2017-01-30 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.2.1.6-1:
+    [!] Added localization support for ASF.
+    [!] Reworked ASF heartbeats.
+    [!] ASF is now smart enough to automatically skip farming games that weren't released yet.
+    Added CurrentCulture global config property for overriding default language.
+    Added unused keys response to !redeem.
+    Removed SteamApiKey, API key is now automatically fetched by ASF during runtime. Big thanks to @il-marc for initial implementation!
+    Renamed HttpTimeout to ConnectionTimeout. New property is also responsible for several other types of timeouts, such as Steam network and heartbeats.
+    Fixed potential exploit allowing attacker to trigger ASF error message.
+    Fixed !addlicense and other store-based functionality not working properly for accounts restricted with SteamParentalPIN.
+    Major code improvements, optimizations and bugfixes.
 2017-01-04 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.2.0.5-1:
     [!] Removed ForwardKeysToOtherBots and DistributeKeys - it's unified under new RedeemingPreferences bot config property.
