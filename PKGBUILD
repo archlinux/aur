@@ -1,7 +1,7 @@
 # Maintainer: desbma
 pkgname=python-hddfancontrol
-pkgver=1.2.5
-pkgrel=4
+pkgver=1.2.6
+pkgrel=1
 pkgdesc="Regulate fan speed according to hard drive temperature"
 arch=('any')
 _gitname='hddfancontrol'
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('python' 'python-daemon' 'hdparm' 'hddtemp')
 makedepends=('python-setuptools')
 source=("${_gitname}-${pkgver}.tar.gz::https://github.com/desbma/${_gitname}/archive/${pkgver}.tar.gz")
-md5sums=('e71ad947ca278b703fb39328d31974d9')
+md5sums=('84bfc9c067bda938a5db519cedd7ff83')
 
 check() {
     cd "${_gitname}-${pkgver}"
@@ -20,4 +20,6 @@ check() {
 package() {
     cd "${_gitname}-${pkgver}"
     python setup.py install --root="${pkgdir}"
+    install -Dm 644 systemd/hddfancontrol.service "$pkgdir/usr/lib/systemd/system/hddfancontrol.service"
+    install -Dm 644 systemd/hddfancontrol.conf "$pkgdir/etc/conf.d/hddfancontrol"
 }
