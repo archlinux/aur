@@ -6,12 +6,12 @@
 
 pkgname=gnome-gmail-notifier
 pkgver=0.10.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A Gmail Inbox Monitor for the GNOME2 desktop"
 arch=('i686' 'x86_64')
 url="https://code.google.com/archive/p/gnome-gmail-notifier/"
 license=('GPL2')
-depends=('gconf' 'gstreamer0.10' 'gtk2' 'libgnome-keyring' 'libnotify' 'libsoup')
+depends=('gconf' 'gtk2' 'gstreamer0.10-good' 'libgnome-keyring' 'libnotify' 'libsoup')
 makedepends=('intltool')
 source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/gnome-gmail-notifier/${pkgname}-${pkgver}.tar.bz2 libnotify.patch)
 md5sums=('697dea845b968af0f3526bad36f5855a' '808d1fd8ff9ff5d63c661a3351922ff0')

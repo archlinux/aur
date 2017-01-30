@@ -1,15 +1,15 @@
 pkgbase = gnome-gmail-notifier
 	pkgdesc = A Gmail Inbox Monitor for the GNOME2 desktop
 	pkgver = 0.10.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://code.google.com/archive/p/gnome-gmail-notifier/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = intltool
 	depends = gconf
-	depends = gstreamer0.10
 	depends = gtk2
+	depends = gstreamer0.10-good
 	depends = libgnome-keyring
 	depends = libnotify
 	depends = libsoup
