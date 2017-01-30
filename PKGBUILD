@@ -4,9 +4,9 @@ pkgname=linux-mainline-usermode
 true && pkgname=(linux-mainline-usermode linux-mainline-usermode-modules)
 pkgbase=linux-mainline-usermode
 _kernelname=${pkgbase#linux}
-_srcname=linux-4.10-rc5
+_srcname=linux-4.10-rc6
 #_patchname=patch-4.10-rc4
-pkgver=4.10rc5
+pkgver=4.10rc6
 pkgrel=1
 pkgdesc="User mode Linux-mainline kernel and modules"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source=(
 #	"https://mirrors.ustc.edu.cn/kernel.org/linux/kernel/v4.x/testing/${_patchname}.xz"
 	"config-i686" "config-x86_64"
     )
-sha256sums=('cdc49b0b83327ef0295e82c35035f0c34223fdfba9d4b94068d33f202c506d9b'
+sha256sums=('3bee15b3b1c644da44c36522e62895d6062bb418e4b1bee3796e91501bb0beac'
             'f001a5860c927c14e12eb6c4c09ad22e57834a0f44d71c9516bc2c2f6f1a290f'
             '2a786756a47a52b77ae4bffb31eadd60a7a717c2e3544a315f1cfe9ba9091f30')
 validpgpkeys=(
