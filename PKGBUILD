@@ -1,7 +1,7 @@
 # Maintainer: Nils Bars <arch@nbars.de>
  
 pkgname=cutecom
-pkgver=0.30.4
+pkgver=0.40.0
 pkgrel=1
 pkgdesc="A graphical serial terminal"
 arch=('i686' 'x86_64')
@@ -25,4 +25,4 @@ package() {
   install -D -m 644 cutecom.1 ${pkgdir}/usr/share/man/man1/cutecom.1
 }
  
-md5sums=('315c8161a45e124ce3ab3ee106e28a01')
+md5sums=('606e3e666b35e4bc16ff78a1562892d6')
