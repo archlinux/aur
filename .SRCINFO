@@ -1,0 +1,41 @@
+pkgbase = naturalearth-data-vector-all-latest
+	pkgdesc = A public domain map dataset, featuring tightly integrated vector and raster data, with which you can make a variety of maps with cartography or GIS software. This package provides the cultural and physical data in 1:10mio, 1:50mio and 1:110mio scale.
+	pkgver = 2.0.0
+	pkgrel = 1
+	epoch = 0
+	url = http://www.naturalearthdata.com/
+	arch = any
+	groups = naturalearth
+	groups = naturalearth-data
+	license = custom:public domain
+	optdepends = naturalearth-data-raster: For complimentary raster rendering of earth surface.
+	provides = naturalearth-data-vector-all=2.0.0
+	provides = naturalearth-data-vector-cultural-10m=2.0.0
+	provides = naturalearth-data-vector-cultural-50m=2.0.0
+	provides = naturalearth-data-vector-cultural-110m=2.0.0
+	provides = naturalearth-data-vector-physical-10m=2.0.0
+	provides = naturalearth-data-vector-physical-50m=2.0.0
+	provides = naturalearth-data-vector-physical-110m=2.0.0
+	provides = naturalearth-data-vector-cultural=2.0.0
+	provides = naturalearth-data-vector-physical=2.0.0
+	provides = naturalearth-data-vector=2.0.0
+	provides = naturalearth-data=2.0.0
+	conflicts = naturalearth-data-vector-all
+	conflicts = naturalearth-data-vector-cultural-10m
+	conflicts = naturalearth-data-vector-cultural-50m
+	conflicts = naturalearth-data-vector-cultural-110m
+	conflicts = naturalearth-data-vector-physical-10m
+	conflicts = naturalearth-data-vector-physical-50m
+	conflicts = naturalearth-data-vector-physical-110m
+	conflicts = naturalearth-data-vector-cultural
+	conflicts = naturalearth-data-vector-physical
+	conflicts = naturalearth-data-vector
+	source = natural_earth_vector_all.zip::http://naciscdn.org/naturalearth/packages/natural_earth_vector.zip
+	source = LICENSE.html::http://www.naturalearthdata.com/about/terms-of-use/
+	source = public_domain.txt
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 718babc7ca208819649828125942f68807006c9307205c0f041de9d7a7e927a0
+
+pkgname = naturalearth-data-vector-all-latest
+
