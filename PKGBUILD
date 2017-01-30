@@ -10,9 +10,9 @@ license=('GPL3')
 depends=('systemd' 'wayland-protocols' 'libdrm' 'libinput' 'qt5-declarative' 'qt5-wayland'
          'xkeyboard-config' 'libxkbcommon' 'glib2' 'fontconfig' 'freetype2')
 makedepends=('git' 'extra-cmake-modules' 'xcb-util-cursor' 'libxcursor')
+conflicts=('greenisland' 'greenisland-git' 'liri-wayland')
+replaces=('greenisland' 'greenisland-git' 'liri-wayland')
 provides=('liri-wayland')
-conflicts=('liri-wayland')
-replaces=('liri-wayland')
 groups=('liri-git')
 
 _gitroot="git://github.com/lirios/wayland.git"
