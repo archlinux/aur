@@ -35,7 +35,6 @@ optdepends=(
 conflicts=('frescobaldi')
 provides=('frescobaldi')
 source=("${pkgname}"::'git://github.com/wbsoft/frescobaldi.git')
-install=frescobaldi-git.install
 md5sums=('SKIP')
 
 pkgver() {
