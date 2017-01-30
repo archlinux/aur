@@ -1,0 +1,35 @@
+pkgbase = aosp-devel
+	pkgdesc = Metapackage to pull all dependencies required to build modern Android
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Android#Building_Android
+	arch = x86_64
+	license = None
+	depends = gcc-multilib
+	depends = git
+	depends = gnupg
+	depends = flex
+	depends = bison
+	depends = gperf
+	depends = sdl
+	depends = wxgtk
+	depends = squashfs-tools
+	depends = curl
+	depends = ncurses
+	depends = zlib
+	depends = schedtool
+	depends = perl-switch
+	depends = zip
+	depends = unzip
+	depends = libxslt
+	depends = python2-virtualenv
+	depends = bc
+	depends = rsync
+	depends = ncurses5-compat-libs
+	depends = lib32-zlib
+	depends = lib32-ncurses
+	depends = lib32-readline
+	depends = lib32-ncurses5-compat-libs
+
+pkgname = aosp-devel
+
