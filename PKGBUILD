@@ -2,8 +2,9 @@
 # Contributor: Vladislav Odobesku <positivcheg94@gmail.com>
 
 pkgname=python-tensorflow
-pkgver=0.12.1
-pkgrel=3
+pkgver=1.0.0rc0
+pkgrel=1
+_pkgver=1.0.0-rc0
 
 pkgdesc="Computation using data flow graphs for scalable machine learning."
 url="https://tensorflow.org/"
@@ -17,28 +18,31 @@ depends=('python-numpy' 'python-protobuf')
 makedepends=('python-wheel' 'python-pip' 'bazel' 'cuda' 'cudnn' 'gcc5')
 optdepends=('cuda: GPU support' 'cudnn: GPU support')
 
-source=("https://github.com/tensorflow/tensorflow/archive/${pkgver}.zip"
+source=("https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.zip"
         'python-tensorflow.sh')
-md5sums=('5cbd72426e1f16d103eb8f780488bf82'
+md5sums=('66eb25a8d50150c8cd8acd3f50c2c3dc'
          '0c9dae7ad2ef6ea234b6aa178a688d7b')
 
 prepare() {
-  cd "$srcdir/tensorflow-${pkgver}"
+  cd "$srcdir/tensorflow-${_pkgver}"
 
   # fix for issue 6594
-  sed -i 's|zlib.net/zlib|zlib.net/fossils/zlib|' "$srcdir/tensorflow-${pkgver}/tensorflow/workspace.bzl"
+  sed -i 's|zlib.net/zlib|zlib.net/fossils/zlib|' "$srcdir/tensorflow-${_pkgver}/tensorflow/workspace.bzl"
 }
 
 build() {
-  cd "$srcdir/tensorflow-${pkgver}"
+  cd "$srcdir/tensorflow-${_pkgver}"
 
   # Some of this are set to the default value just to avoid an interactive prompt while building.
   export PYTHON_BIN_PATH=/usr/bin/python
   export PYTHON_LIB_PATH=$($PYTHON_BIN_PATH -c 'import site; print(site.getsitepackages()[0])')
+  export CC_OPT_FLAGS="$CFLAGS"
   export TF_NEED_GCP=0
   export TF_NEED_HDFS=0
   export TF_NEED_OPENCL=0
   export TF_NEED_CUDA=1
+  export TF_NEED_JEMALLOC=1
+  export TF_ENABLE_XLA=1
   export TF_CUDA_COMPUTE_CAPABILITIES="3.5,5.2"
   export CUDA_TOOLKIT_PATH=/opt/cuda
   export CUDNN_INSTALL_PATH=/opt/cuda
@@ -53,7 +57,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/tensorflow-${pkgver}"
+  cd "$srcdir/tensorflow-${_pkgver}"
 
   WHEEL_PACKAGE=`find $srcdir/tmp -name "tensor*.whl"`
 

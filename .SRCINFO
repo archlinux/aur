@@ -1,7 +1,7 @@
 pkgbase = python-tensorflow
 	pkgdesc = Computation using data flow graphs for scalable machine learning.
-	pkgver = 0.12.1
-	pkgrel = 3
+	pkgver = 1.0.0rc0
+	pkgrel = 1
 	url = https://tensorflow.org/
 	arch = i686
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = python-tensorflow
 	conflicts = python-tensorflow-cuda
 	conflicts = tensorflow
 	conflicts = tensorflow-git
-	source = https://github.com/tensorflow/tensorflow/archive/0.12.1.zip
+	source = https://github.com/tensorflow/tensorflow/archive/v1.0.0-rc0.zip
 	source = python-tensorflow.sh
-	md5sums = 5cbd72426e1f16d103eb8f780488bf82
+	md5sums = 66eb25a8d50150c8cd8acd3f50c2c3dc
 	md5sums = 0c9dae7ad2ef6ea234b6aa178a688d7b
 
 pkgname = python-tensorflow
