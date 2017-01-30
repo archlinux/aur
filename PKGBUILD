@@ -31,7 +31,6 @@ build() {
     --enable-pop \
     --enable-imap \
     --enable-smtp \
-    --enable-hcache \
     --enable-sidebar \
     --enable-compressed \
     --with-gss=/usr \
