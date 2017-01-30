@@ -3,7 +3,7 @@ _gitver="2.0.0"
 _gitbranch="develop"
 
 pkgname="sonarr-git"
-pkgver=2.0.0.r6923.713e109
+pkgver=2.0.0.r7071.ef044f1ff
 pkgrel=1
 pkgdesc="Automated TV series manager and downloader - git branch ${_gitbranch}"
 arch=(any)
@@ -27,12 +27,10 @@ install='sonarr.install'
 changelog=
 source=("git://github.com/Sonarr/Sonarr.git#branch=${_gitbranch}"
         "sonarr.sh"
-        "sonarr.service"
-        "0001-Mono-Set-process-name.patch")
+        "sonarr.service")
 sha256sums=('SKIP'
             'd594c4d5ad3c1b196a00cb9f005d4917ad4d8bb2ebf501010e8be7f349b3caa6'
-            '1ebf903e6199dae6032c7839b00ed20566404daf87cb307ffc9ee8539722a845'
-            '28ed9a1aa71d0d255c18e2ca17c52b845f69c19e3d2653607cff9a7f478931e1')
+            '1ebf903e6199dae6032c7839b00ed20566404daf87cb307ffc9ee8539722a845')
 
 
 pkgver() {
@@ -46,9 +44,6 @@ prepare() {
 
   # Install necessary nodejs libraries
   npm install
-
-  msg2 "Patching Mono-Set-process-name"
-  git apply --ignore-whitespace "${srcdir}/0001-Mono-Set-process-name.patch"
 
   git submodule update --init
 }
