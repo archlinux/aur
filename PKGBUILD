@@ -21,7 +21,7 @@ pkgver() {
 }
 
 build() {
-  cd $_gitname
+  cd "${_gitname}"
 
   touch AUTHORS
   touch ChangeLog
@@ -30,16 +30,16 @@ build() {
 }
 
 package_deadbeef-plugin-musical-spectrum-gtk2-git() {
-  pkgdesc=$_pkgdesc" GTK2 Ver."
+  pkgdesc="${_pkgdesc} GTK2 version."
   depends=('deadbeef' 'fftw' 'gtk2')
   provides=('deadbeef-plugin-musical-spectrum-gtk2')
   conflicts=('deadbeef-plugin-musical-spectrum-gtk2')
-  install -D -v -c $srcdir/$_gitname/gtk2/ddb_vis_musical_spectrum_GTK2.so $pkgdir/usr/lib/deadbeef/ddb_vis_musical_spectrum_GTK2.so
+  install -D -v -c "${srcdir}/${_gitname}/gtk2/ddb_vis_musical_spectrum_GTK2.so" "${pkgdir}/usr/lib/deadbeef/ddb_vis_musical_spectrum_GTK2.so"
 }
 package_deadbeef-plugin-musical-spectrum-gtk3-git() {
-  pkgdesc=$_pkgdesc" GTK3 Ver."
+  pkgdesc="${_pkgdesc} GTK3 version."
   depends=('deadbeef' 'fftw' 'gtk3')
   provides=('deadbeef-plugin-musical-spectrum-gtk3')
   conflicts=('deadbeef-plugin-musical-spectrum-gtk3')
-  install -D -v -c $srcdir/$_gitname/gtk3/ddb_vis_musical_spectrum_GTK3.so $pkgdir/usr/lib/deadbeef/ddb_vis_musical_spectrum_GTK3.so
+  install -D -v -c "${srcdir}/${_gitname}/gtk3/ddb_vis_musical_spectrum_GTK3.so" "${pkgdir}/usr/lib/deadbeef/ddb_vis_musical_spectrum_GTK3.so"
 }
