@@ -6,8 +6,8 @@
 
 pkgname=qsanguoshav2-git
 _gitname=QSanguosha-v2
-pkgver=6017.bc669c2
-pkgrel=8
+pkgver=6046.142064ec
+pkgrel=1
 pkgdesc="An open source online version of the famous board game Sanguosha"
 arch=('i686' 'x86_64')
 url="https://github.com/Mogara/QSanguosha-v2"
@@ -29,6 +29,10 @@ pkgver() {
 
 build() {
 	cd ${srcdir}/${_gitname}
+
+    sed -i "s|if (AI::GetRelation3v3(player, judge->who) != AI::Friend) return false;|if (AI::GetRelation3v3(player, judge->who) != AI::Friend) return NULL;|" src/package/special3v3.cpp
+    sed -i "s|<fmod\.hpp>|<fmodex/fmod.hpp>|" src/pch.h
+    sed -i "s|for (int i = 0; roles\\[i\\] != '\\\0'; i++) |for (int i = 0; roles\\[i\\] != QChar('\\\0'); i++) |" src/core/engine.cpp
 	qmake-qt5 .
 	make
 }

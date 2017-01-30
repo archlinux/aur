@@ -1,7 +1,7 @@
 pkgbase = qsanguoshav2-git
 	pkgdesc = An open source online version of the famous board game Sanguosha
-	pkgver = 6017.bc669c2
-	pkgrel = 8
+	pkgver = 6046.142064ec
+	pkgrel = 1
 	url = https://github.com/Mogara/QSanguosha-v2
 	arch = i686
 	arch = x86_64
