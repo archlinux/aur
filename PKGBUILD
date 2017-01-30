@@ -1,11 +1,11 @@
 # Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
 pkgname=dell-ulnm
 pkgver=3.0_038H3
-pkgrel=3
+pkgrel=4
 pkgdesc="Dell UPS Local Node Manager"
 url="http://www.dell.com/"
 arch=('x86_64')
-depends=('libusb-compat' 'js17')
+depends=('libusb-compat')
 license=('custom')
 install="$pkgname.install"
 source=(
