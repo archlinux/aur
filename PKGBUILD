@@ -1,4 +1,3 @@
-
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 pkgbase=deadbeef-plugin-waveform-git
 pkgname=(deadbeef-plugin-waveform-gtk2-git deadbeef-plugin-waveform-gtk3-git)
@@ -22,7 +21,7 @@ pkgver() {
 
 
 build() {
-  cd $_gitname
+  cd "${_gitname}"
 
   touch AUTHORS
   touch ChangeLog
@@ -31,12 +30,12 @@ build() {
 }
 
 package_deadbeef-plugin-waveform-gtk2-git() {
-  pkgdesc=$_pkgdesc". GTK2 Ver"
+  pkgdesc="${_pkgdesc}. GTK2 Ver"
   depends=('deadbeef' 'sqlite' 'gtk2')
   conflicts=('deadbeef-plugin-waveform-gtk2')
   provides=('deadbeef-plugin-waveform-gtk2')
-  
-  install -D -v -c $srcdir/$_gitname/gtk2/ddb_misc_waveform_GTK2.so $pkgdir/usr/lib/deadbeef/ddb_misc_waveform_GTK2.so
+
+  install -D -v -c "${srcdir}/${_gitname}/gtk2/ddb_misc_waveform_GTK2.so" "${pkgdir}/usr/lib/deadbeef/ddb_misc_waveform_GTK2.so"
 }
 
 package_deadbeef-plugin-waveform-gtk3-git() {
@@ -44,6 +43,5 @@ package_deadbeef-plugin-waveform-gtk3-git() {
   depends=('deadbeef' 'sqlite' 'gtk3')
   conflicts=('deadbeef-plugin-waveform-gtk3')
   provides=('deadbeef-plugin-waveform-gtk3')
-  install -D -v -c $srcdir/$_gitname/gtk3/ddb_misc_waveform_GTK3.so $pkgdir/usr/lib/deadbeef/ddb_misc_waveform_GTK3.so
+  install -D -v -c "${srcdir}/${_gitname}/gtk3/ddb_misc_waveform_GTK3.so" "${pkgdir}/usr/lib/deadbeef/ddb_misc_waveform_GTK3.so"
 }
-
