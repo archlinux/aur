@@ -1,0 +1,39 @@
+pkgbase = shiboken2-git
+	pkgver = 2.0.0.r2447.f7fb80a
+	pkgrel = 1
+	url = http://www.pyside.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5.6
+	makedepends = python2
+	makedepends = python
+	makedepends = libxslt
+	source = shiboken2-git::git+https://code.qt.io/pyside/shiboken.git
+	source = sphinx-build2.patch
+	md5sums = SKIP
+	md5sums = 915d0fc351ff2e7c5deaa1066aeeae67
+
+pkgname = python2-shiboken2-git
+	pkgdesc = Support library for Python2 bindings
+	depends = qt5.6
+	depends = libxslt
+	depends = python2
+	depends = shiboken2-git
+
+pkgname = python-shiboken2-git
+	pkgdesc = Support library for Python bindings
+	depends = libxslt
+	depends = python
+	depends = shiboken2-git
+
+pkgname = shiboken2-git
+	pkgdesc = CPython bindings generator for C++ libraries
+	depends = qt5.6
+	depends = python
+	depends = libxslt
+	optdepends = python2-shiboken2-git: for compilation against python2
+	optdepends = python-shiboken2-git: for compilation against python
+

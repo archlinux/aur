@@ -1,0 +1,18 @@
+diff --git a/ApiExtractor/doc/CMakeLists.txt b/ApiExtractor/doc/CMakeLists.txt
+index d78844d..e9245e1 100644
+--- a/ApiExtractor/doc/CMakeLists.txt
++++ b/ApiExtractor/doc/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ 
+-find_program(SPHINX sphinx-build DOC "Path to sphinx-build binary.")
++find_program(SPHINX sphinx-build2 DOC "Path to sphinx-build binary.")
+ 
+ if (SPHINX)
+     message("-- sphinx-build - found")
+@@ -7,4 +7,4 @@ if (SPHINX)
+     add_custom_target(doc ${SPHINX} -b html -c . ${CMAKE_CURRENT_SOURCE_DIR} html )
+ else()
+     message("-- sphinx-build - not found! doc target disabled")
+-endif()
+\ No newline at end of file
++endif()
