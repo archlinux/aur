@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-mpfr'
-pkgver='3.34'
+pkgver='3.35'
 pkgrel='1'
 pkgdesc="perl interface to the MPFR (floating point) library."
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=('perl' 'gmp>=6.1.1' 'mpfr>=3.1.4.p1')
 makedepends=()
 url='https://metacpan.org/release/Math-MPFR'
 source=("https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-MPFR-$pkgver.tar.gz")
-md5sums=('9ec9b88c0ffcda30260fd6f470b7d478')
-sha512sums=('c5367d167f5a407bcacf305969a9b658e5dd057c71f61993605be93f5b5a743646561f03e575217b898242138a1206fe804875ba727ce5d9e3ba9ae9b08cf200')
+md5sums=('654d7e4e19ed94504d1c0aadef09c5d3')
+sha512sums=('084c3ed2367cc1d6761860708a4bc05515c48dd5196950612b1b11afea0d853c90ff1660707370265b80add66596db263d4002fcd5753b5f5af21deb700a3e85')
 _distdir="Math-MPFR-$pkgver"
 
 build() {
