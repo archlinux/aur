@@ -12,7 +12,6 @@ url="http://www.tecgraf.puc-rio.br/iup/"
 license=('MIT')
 makedepends=('lsb-release' 'lua')
 depends=('libcd' 'libim' 'gtk3' 'libpng' 'ftgl' 'zlib' 'freetype2' 'cairo' 'pango' 'glib2' 'webkitgtk' 'openmotif' 'libxpm')
-options=(staticlibs)
 
 source=(
   "http://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Sources.tar.gz"
