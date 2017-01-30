@@ -1,7 +1,7 @@
 #Maintainer: M0Rf30
 
 pkgname=openbazaard
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
@@ -68,7 +68,7 @@ msg2 "Remove git folder"
   rm -rf $pkgdir/var/lib/${pkgname}/{.git*,.eslint*,.travis*}
 }
 
-md5sums=('bb85cac3f74799dd543dae5094a22e49'
+md5sums=('0ef16dacd120d09de2d99b470492fb95'
          'df247302f02ad1af79e009fa75ced4bc'
          '7949d40abcd8bdaee27ff670d5b6c1c7'
          '3dccb27e5df2324880fde3f1b0972a2c')
