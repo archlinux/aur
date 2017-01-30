@@ -1,0 +1,17 @@
+pkgbase = lineageos-devel
+	pkgdesc = Metapackage to pull all dependencies required to build LineageOS
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Android#Building_Android
+	arch = x86_64
+	license = None
+	depends = aosp-devel
+	depends = xml2
+	depends = lzop
+	depends = pngcrush
+	depends = imagemagick
+	optdepends = maven
+	optdepends = gradle
+
+pkgname = lineageos-devel
+
