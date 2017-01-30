@@ -1,0 +1,4 @@
+*.pkg.tar.xz
+micropython-lib
+src/*
+pkg/*
