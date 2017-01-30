@@ -1,7 +1,7 @@
 pkgbase = qt5-styleplugins
 	pkgdesc = Additional style plugins for Qt5
 	pkgver = 5.0.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://code.qt.io/cgit/qt/qtstyleplugins
 	install = install.sh
 	arch = i686
