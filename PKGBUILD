@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/iup/"
 license=('MIT')
 makedepends=('lsb-release' 'lua')
-depends=('libcd' 'libim' 'gtk3' 'libpng' 'ftgl' 'zlib' 'freetype2' 'cairo' 'pango' 'glib2' 'webkitgtk')
+depends=('libcd' 'libim' 'gtk3' 'libpng' 'ftgl' 'zlib' 'freetype2' 'cairo' 'pango' 'glib2' 'webkitgtk' 'openmotif' 'libxpm')
 options=(staticlibs)
 
 source=(
@@ -26,7 +26,7 @@ build() {
   cd "$pkgname"
   # iupview not built due to needing static libraries
   # iuplua5 and iupconsole not built due to libcd package not installing libcdlua53
-  make iup iupgtk \
+  make iup iupgtk iupmot \
     iupcd \
     iupcontrols \
     iupmatrixex \
