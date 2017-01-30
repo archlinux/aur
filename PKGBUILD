@@ -2,7 +2,7 @@
 pkgbase=parallels-tools
 pkgname=(parallels-tools parallels-tools-dkms)
 pkgver=11.2.2.32651
-pkgrel=2
+pkgrel=3
 pkgdesc="Parallels virtualization integration services & drivers"
 arch=('x86_64')
 url="https://parallels.com"
@@ -32,6 +32,7 @@ source=(
 	dir://parallels-tools/installer/prl-x11.sh
 	dir://parallels-tools/installer/prl-x11.service
 	dir://parallels-tools/installer/prlfsmountd.sh
+	'0001-fix-for-4.9.y.patch'
 )
 
 sha1sums=('af32269e60b11704be9fca73ea9586da01b37ae2'
@@ -45,7 +46,12 @@ sha1sums=('af32269e60b11704be9fca73ea9586da01b37ae2'
           'c50bf939719eba4ebb34e4bd8a0921e1cbe4d901'
           '82ab36a2876a1d30fad92ebf06d87b0d8d7210a8'
           'bd681d740b4a1a68adfd4f94afec5934c2ea69ac'
-          '56d3fc7c9abb7c63b9c6356422261f0a87cf3b22')
+          '56d3fc7c9abb7c63b9c6356422261f0a87cf3b22'
+          'dca57db6826f044d23fc26c0df3736a5dfb9ae6d')
+
+prepare() {
+	patch -p1 -i ../0001-fix-for-4.9.y.patch
+}
 
 package_parallels-tools() {
 	cp -r "${srcdir}"/xorg.${XORG_VERSION}/usr "${pkgdir}"

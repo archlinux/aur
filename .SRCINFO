@@ -1,7 +1,7 @@
 pkgbase = parallels-tools
 	pkgdesc = Parallels virtualization integration services & drivers
 	pkgver = 11.2.2.32651
-	pkgrel = 2
+	pkgrel = 3
 	url = https://parallels.com
 	arch = x86_64
 	license = custom: commercial
@@ -25,6 +25,7 @@ pkgbase = parallels-tools
 	source = dir://parallels-tools/installer/prl-x11.sh
 	source = dir://parallels-tools/installer/prl-x11.service
 	source = dir://parallels-tools/installer/prlfsmountd.sh
+	source = 0001-fix-for-4.9.y.patch
 	sha1sums = af32269e60b11704be9fca73ea9586da01b37ae2
 	sha1sums = 604bcee0d5c9ac6a347c6ce40792ddc7598f99dd
 	sha1sums = 8d7b264653f8167904d0328e1fc540fc0b7bc7eb
@@ -37,6 +38,7 @@ pkgbase = parallels-tools
 	sha1sums = 82ab36a2876a1d30fad92ebf06d87b0d8d7210a8
 	sha1sums = bd681d740b4a1a68adfd4f94afec5934c2ea69ac
 	sha1sums = 56d3fc7c9abb7c63b9c6356422261f0a87cf3b22
+	sha1sums = dca57db6826f044d23fc26c0df3736a5dfb9ae6d
 
 pkgname = parallels-tools
 

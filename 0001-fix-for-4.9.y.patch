@@ -1,0 +1,81 @@
+From 8695b6d330e237f5e21bef576d0ba3e49832b6fe Mon Sep 17 00:00:00 2001
+From: Cody P Schafer <dev@codyps.com>
+Date: Mon, 30 Jan 2017 12:22:26 -0500
+Subject: [PATCH] fix for 4.9.y
+
+---
+ prl_fs/SharedFolders/Guest/Linux/prl_fs/inode.c   | 12 ++++++++++++
+ prl_tg/Toolgate/Guest/Linux/prl_tg/prltg.c        |  2 +-
+ prl_tg/Toolgate/Guest/Linux/prl_tg/prltg_compat.h | 10 ++++++++--
+ 3 files changed, 21 insertions(+), 3 deletions(-)
+
+diff --git a/prl_fs/SharedFolders/Guest/Linux/prl_fs/inode.c b/prl_fs/SharedFolders/Guest/Linux/prl_fs/inode.c
+index 5502d70..e8d0043 100644
+--- a/prl_fs/SharedFolders/Guest/Linux/prl_fs/inode.c
++++ b/prl_fs/SharedFolders/Guest/Linux/prl_fs/inode.c
+@@ -382,11 +382,22 @@ static int prlfs_rmdir(struct inode *dir, struct dentry *dentry)
+         return ret;
+ }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,9,0)
+ static int prlfs_rename(struct inode *old_dir, struct dentry *old_de,
+ 			struct inode *new_dir, struct dentry *new_de)
++#else
++static int prlfs_rename(struct inode *old_dir, struct dentry *old_de,
++			struct inode *new_dir, struct dentry *new_de, unsigned int flags)
++#endif
+ {
+ 	void *np, *nbuf;
+ 	int nbuflen;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,9,0)
++	if (flags)
++		return -EINVAL;
++#endif
++
++	{
+ 	PRLFS_STD_INODE_HEAD(old_de)
+ 	nbuflen = PATH_MAX;
+ 	nbuf = kmalloc(nbuflen, GFP_KERNEL);
+@@ -406,6 +417,7 @@ static int prlfs_rename(struct inode *old_dir, struct dentry *old_de,
+ out_free1:
+ 	kfree(nbuf);
+ 	PRLFS_STD_INODE_TAIL
++	}
+ }
+ 
+ /*
+diff --git a/prl_tg/Toolgate/Guest/Linux/prl_tg/prltg.c b/prl_tg/Toolgate/Guest/Linux/prl_tg/prltg.c
+index a03e742..9f54ec1 100644
+--- a/prl_tg/Toolgate/Guest/Linux/prl_tg/prltg.c
++++ b/prl_tg/Toolgate/Guest/Linux/prl_tg/prltg.c
+@@ -480,7 +480,7 @@ static TG_PAGED_BUFFER *map_user_request(TG_PAGED_BUFFER *buf, TG_BUFFER *sbuf,
+ 	/* lock userspace pages */
+ 	got = get_user_pages(
+ 			     sbuf->u.Va, npages,
+-			     sbuf->Writable, 0,
++			     sbuf->Writable ? FOLL_WRITE : 0,
+ 			     uple->p, NULL);
+ 	up_read(&current->mm->mmap_sem);
+ 
+diff --git a/prl_tg/Toolgate/Guest/Linux/prl_tg/prltg_compat.h b/prl_tg/Toolgate/Guest/Linux/prl_tg/prltg_compat.h
+index c158a70..37044b4 100644
+--- a/prl_tg/Toolgate/Guest/Linux/prl_tg/prltg_compat.h
++++ b/prl_tg/Toolgate/Guest/Linux/prl_tg/prltg_compat.h
+@@ -193,6 +193,12 @@ prltg_proc_create_data(char *name, umode_t mode, struct proc_dir_entry *parent,
+ #define page_cache_get(x) get_page(x)
+ #define page_cache_release(x) put_page(x)
+ #else
+-#define get_user_pages(_1, _2, _3, _4, _5, _6) \
+-		get_user_pages(current, current->mm, _1, _2, _3, _4, _5, _6)
++#endif
++
++# if LINUX_VERSION_CODE < KERNEL_VERSION(4, 6, 0)
++#define get_user_pages(_start, _nr_pages, _gup_flags, _pages, _vmas) \
++		get_user_pages(current, current->mm, _start, _nr_pages, !!(_gup_flags & FOLL_WRITE), !!(_gup_flags & FOLL_FORCE), _pages, _vmas)
++# elif LINUX_VERSION_CODE < KERNEL_VERSION(4, 9, 0)
++#  define get_user_pages(_start, _nr_pages, _gup_flags, _pages, _vmas) \
++		get_user_pages(_start, _nr_pages, !!(_gup_flags & FOLL_WRITE), !!(_gup_flags & FOLL_FORCE), _pages, _vmas)
+ #endif
+-- 
+2.11.0
+
