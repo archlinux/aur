@@ -1,7 +1,7 @@
 # Maintainer: Justin R. St-Amant <jstamant24 at gmail dot  com>
 pkgname=camotics-git
 pkgver=1.0.6.r127.g776b29b
-pkgrel=1
+pkgrel=2
 pkgdesc="3-axis NC machining simulation software"
 arch=('i686' 'x86_64')
 url="http://camotics.org/"
@@ -34,11 +34,11 @@ pkgver() {
 
 build() {
   cd "$srcdir/cbang"
-  scons
+  scons qt_version=4
   export CBANG_HOME=$PWD
 
   cd "$srcdir/$pkgname"
-  scons
+  scons qt_version=4
 }
 
 package() {
@@ -47,5 +47,5 @@ package() {
           "$pkgdir/usr/share/applications/camotics.desktop"
   cd "$srcdir/$pkgname"
   install -Dm644 "images/camotics.png" "$pkgdir/usr/share/pixmaps/camotics.png"
-  scons install compiler=gnu install_prefix="$pkgdir/usr"
+  scons install compiler=gnu install_prefix="$pkgdir/usr" qt_version=4
 }
