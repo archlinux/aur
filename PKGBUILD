@@ -2,7 +2,7 @@
 # Contributor: Max Schlemmer <max.schlemmer@gmail.com>
 pkgname=python-kwant
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Python package for numerical calculations on tight-binding models with a strong focus on quantum transport"
 arch=('any')
 url="http://kwant-project.org/"

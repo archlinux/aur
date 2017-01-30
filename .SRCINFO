@@ -1,7 +1,7 @@
 pkgbase = python-kwant
 	pkgdesc = Python package for numerical calculations on tight-binding models with a strong focus on quantum transport
 	pkgver = 1.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://kwant-project.org/
 	arch = any
 	license = BSD
