@@ -1,13 +1,13 @@
 # Maintainer: Louis des Landes <aur@psykar.com>
 pkgname=deepgit
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to investigate the history of source code."
 arch=('any')
 url="http://www.syntevo.com/deepgit/"
 license=('custom')
 depends=(
-    'java-environment'
+    'java-runtime'
     'hicolor-icon-theme'
     'bash'
 )
