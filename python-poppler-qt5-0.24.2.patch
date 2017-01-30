@@ -1,6 +1,6 @@
-diff -aur python-poppler-qt5-0.24.2.pristine/poppler-qt5.sip python-poppler-qt5-0.24.2.new/poppler-qt5.sip
---- python-poppler-qt5-0.24.2.pristine/poppler-qt5.sip	2016-02-07 14:36:03.574983819 +0100
-+++ python-poppler-qt5-0.24.2.new/poppler-qt5.sip	2016-02-07 14:37:37.955122246 +0100
+diff -aur python-poppler-qt5-0.24.2/poppler-qt5.sip python-poppler-qt5-0.24.2.new/poppler-qt5.sip
+--- python-poppler-qt5-0.24.2/poppler-qt5.sip	2015-02-24 07:54:42.000000000 +0100
++++ python-poppler-qt5-0.24.2.new/poppler-qt5.sip	2017-01-27 13:12:04.849162349 +0100
 @@ -6,10 +6,13 @@
   */
  
@@ -17,3 +17,35 @@ diff -aur python-poppler-qt5-0.24.2.pristine/poppler-qt5.sip python-poppler-qt5-
  
  %Timeline {
      POPPLER_V0_20_0
+diff -aur python-poppler-qt5-0.24.2/types.sip python-poppler-qt5-0.24.2.new/types.sip
+--- python-poppler-qt5-0.24.2/types.sip	2015-02-24 07:54:42.000000000 +0100
++++ python-poppler-qt5-0.24.2.new/types.sip	2017-01-27 13:13:53.539750992 +0100
+@@ -212,7 +212,7 @@
+       return 0;
+ 
+     for (int i = 0; i < PySequence_Size(sipPy); ++i)
+-      if (!sipCanConvertToMappedType(PySequence_ITEM(sipPy, i), qlinkedlist_type, SIP_NOT_NONE))
++      if (!sipCanConvertToType(PySequence_ITEM(sipPy, i), qlinkedlist_type, SIP_NOT_NONE))
+         return 0;
+ 
+     return 1;
+@@ -224,16 +224,16 @@
+   for (int i = 0; i < PySequence_Size(sipPy); ++i)
+   {
+     int state;
+-    QLinkedList<TYPE> * t = reinterpret_cast< QLinkedList<TYPE> * >(sipConvertToMappedType(PySequence_ITEM(sipPy, i), qlinkedlist_type, sipTransferObj, SIP_NOT_NONE, &state, sipIsErr));
++    QLinkedList<TYPE> * t = reinterpret_cast< QLinkedList<TYPE> * >(sipConvertToType(PySequence_ITEM(sipPy, i), qlinkedlist_type, sipTransferObj, SIP_NOT_NONE, &state, sipIsErr));
+ 
+     if (*sipIsErr)
+     {
+-      sipReleaseInstance(t, sipClass_TYPE, state);
++      sipReleaseType(t, qlinkedlist_type, state);
+       delete ql;
+       return 0;
+     }
+     ql->append(*t);
+-    sipReleaseInstance(t, sipClass_TYPE, state);
++    sipReleaseType(t, qlinkedlist_type, state);
+   }
+ 
+   *sipCppPtr = ql;
