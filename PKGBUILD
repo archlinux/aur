@@ -3,7 +3,7 @@
 
 pkgname=openfx-gmic-bin
 pkgver=1.01
-pkgrel=1
+pkgrel=2
 pkgdesc="GMIC OpenFX plugins for Natron"
 arch=('x86_64')
 url="https://github.com/NatronVFX/openfx-gmic/releases"
@@ -21,7 +21,7 @@ package() {
   msg2 "Creating directory structure..."
   mkdir -p "$pkgdir"/usr/OFX/Plugins/
  
-  cp -r "$srcdir"/ "$pkgdir"/usr/OFX/Plugins/
+  cp -r "$srcdir"/GMIC.ofx.bundle "$pkgdir"/usr/OFX/Plugins/
 
   
 }
