@@ -10,12 +10,12 @@
 
 pkgname=lwks-beta
 pkgver=14.0.0.0
-pkgrel=91477
+pkgrel=91724
 pkgdesc="Lightworks is a professional video editing suite"
 arch=('x86_64')
 url="http://www.lwks.com/"
 license=('custom')
-depends=('gtk3' 'portaudio' 'libgl' 'glu' 'ffmpeg' 'ffmpeg-compat' 'libedit' 'nvidia-cg-toolkit')
+depends=('gtk3' 'portaudio' 'libgl' 'glu' 'ffmpeg' 'ffmpeg0.10' 'libedit' 'nvidia-cg-toolkit')
 optdepends=('nvidia-utils: only for nVidia users')
 provides=('lightworks')
 conflicts=('lightworks', 'lwks')
@@ -25,7 +25,7 @@ source=(
     )
 
 sha256sums=(
-    '3e9d9c1b4e497d8e74e77d58be1ab33b01b354b747fd345d7173dc08f6d49ee1'
+    '0a47d6b554b008c11a10d78313f9e4b08decab98dee4c2a6f9d3f3dce8d1dd38'
     '1c6722888cf4ab5cbf4bdfd6272b7d524f0ee547f443a98cf554d6fa8ae5c1ca'
     )
 
