@@ -1,0 +1,15 @@
+pkgbase = kafkatool
+	pkgdesc = The Ultimate Kafka UI Tool
+	pkgver = 1.0.1
+	pkgrel = 0
+	url = http://www.kafkatool.com
+	arch = x86_64
+	license = custom
+	makedepends = expect
+	depends = java-runtime
+	noextract = kafkatool.sh
+	source = http://www.kafkatool.com/download/kafkatool.sh
+	md5sums = d620a3911f24964a191aa44d28edf587
+
+pkgname = kafkatool
+
