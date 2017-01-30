@@ -1,7 +1,7 @@
 pkgbase = minecraft
 	pkgdesc = An open-world game whose gameplay revolves around breaking and placing blocks
 	pkgver = latest
-	pkgrel = 25
+	pkgrel = 26
 	url = http://www.minecraft.net/
 	install = minecraft.install
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = minecraft
 	source = minecraft.png
 	source = minecraft.install
 	source = LICENSE
-	md5sums = b8d4ebcdc3f32f857270a56c40ff2c66
+	md5sums = b0795db46de753b74b44bed380b2cf94
 	md5sums = 85273e24404cc6865805f951487b8a1e
 	md5sums = ecb1bd9b6e6305987b6fb5832ab0b468
 	md5sums = dfecf76f9db4497399f4b7c171150c89
