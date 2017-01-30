@@ -1,0 +1,11 @@
+
+post_install() {
+
+echo
+echo "***************************************************************************"
+echo "*                                                                         *"
+echo "*  The built-in game ROMS are in '/usr/share/parajve/data/roms/' folder.  *"
+echo "*                                                                         *"
+echo "***************************************************************************"
+echo
+}

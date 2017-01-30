@@ -1,0 +1,22 @@
+pkgbase = parajve
+	pkgdesc = Advanced emulator for the GCE Vectrex game console(1982) with built-in game ROMS.
+	pkgver = 0.7.0
+	pkgrel = 2
+	url = http://www.vectrex.fr/ParaJVE/
+	install = parajve.install
+	arch = any
+	license = custom
+	depends = java-runtime
+	source = http://www.gametronik.com/site/rubriques/niCGE/Emulateurs/ParaJVE_0.7.0_linux.tgz
+	source = http://dl.openhandhelds.org/dingoo/screenshots/splash.png
+	source = LICENSE
+	source = parajve
+	source = parajve.desktop
+	md5sums = 146dcf4bd42865d5fb930dde6a8d34f5
+	md5sums = 3b44b85d75849edd67bc021e2e03317e
+	md5sums = 301c00d4fc4a84abe451d089b5de9751
+	md5sums = e3034de35272ec9363fe91564d461c29
+	md5sums = a0536133a127435f8f715d5dd68da074
+
+pkgname = parajve
+

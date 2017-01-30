@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=ParaJVE
+GenericName=Vectrex Emulator
+Exec=parajve
+Icon=/usr/share/pixmaps/parajve.png
+Categories=Game;ArcadeGame
