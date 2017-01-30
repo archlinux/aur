@@ -22,6 +22,7 @@ md5sums=('50d6a03bb1e73fcc62633f2535494733'
          '4e5ba38f84cb7a107110318764707d87'
          '214b5ab19962418fa755a45b35504219')
 noextract=(im-${pkgver}_Sources.tar.gz)
+options=('staticlibs')
 
 build() {
   tar xf im-${pkgver}_Sources.tar.gz # sources have a problem with bsdtar, use gnutar instead

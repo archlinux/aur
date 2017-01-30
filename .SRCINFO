@@ -12,6 +12,7 @@ pkgbase = libim
 	optdepends = lua51: bindings for Lua are available
 	optdepends = fftw: for fft support
 	noextract = im-3.12_Sources.tar.gz
+	options = staticlibs
 	source = http://downloads.sourceforge.net/project/imtoolkit/3.12/Docs%20and%20Sources/im-3.12_Sources.tar.gz
 	source = http://downloads.sourceforge.net/project/imtoolkit/3.12/Docs%20and%20Sources/im-3.12_Docs.pdf
 	source = LICENSE
