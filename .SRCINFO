@@ -1,6 +1,6 @@
 pkgbase = gstreamer0.10-base
 	pkgver = 0.10.36
-	pkgrel = 7
+	pkgrel = 8
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
 	arch = x86_64

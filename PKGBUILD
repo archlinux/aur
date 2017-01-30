@@ -5,7 +5,7 @@ pkgbase=gstreamer0.10-base
 _pkgname=gst-plugins-base
 pkgname=('gstreamer0.10-base' 'gstreamer0.10-base-plugins')
 pkgver=0.10.36
-pkgrel=7
+pkgrel=8
 arch=('i686' 'x86_64')
 license=('LGPL')
 makedepends=('pkgconfig' 'gstreamer0.10>=0.10.36-7' 'orc' 'libxv' 'alsa-lib' 'cdparanoia' 
@@ -47,11 +47,6 @@ build() {
     # --with-package-origin="http://www.archlinux.org/"
   make
   sed -e 's/^SUBDIRS_EXT =.*/SUBDIRS_EXT =/' -i Makefile
-}
-
-check() {
-  cd $_pkgname
-  make check
 }
 
 package_gstreamer0.10-base() {
