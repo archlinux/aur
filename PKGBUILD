@@ -46,5 +46,7 @@ package() {
     ln -s "/var/lib/${pkgname}/"{data,var} "${pkgdir}/usr/share/webapps/${pkgname}/"
     chown -R http:http "$_VAR_DIR"
 
+    sed -i "${_VAR_DIR}/var/bootstrap.php.cache" -e "s@__DIR__.'/../@'/usr/share/webapps/${pkgname}/@"
+
     chown -R http:http "${pkgdir}/usr/share/webapps/${pkgname}"
 }
