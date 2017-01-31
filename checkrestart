@@ -173,37 +173,25 @@ def main():
     packages = {}
     diverted = None
 
-    dpkgQuery = ["dpkg-query", "--search"] + list(programs.keys())
+    pacmanQuery = ["pacman", "-Qo"] + list(programs.keys())
     if verbose:
-        print("[DEBUG] Running: %s" % ' '.join(dpkgQuery))
-    dpkgProc = subprocess.Popen(dpkgQuery, shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                                env = lc_all_c_env)
+        print("[DEBUG] Running: %s" % ' '.join(pacmanQuery))
+    pacmanProc = subprocess.Popen(pacmanQuery, shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                  env = lc_all_c_env)
     while True:
-            line = dpkgProc.stdout.readline().decode("utf-8")
+            line = pacmanProc.stdout.readline().decode("utf-8")
             if not line:
                 break
             if verbose:
-                print("[DEBUG] Reading line from dpkg-query: %s" % line)
-            if line.startswith('local diversion'):
-                continue
-            if not ':' in line:
+                print("[DEBUG] Reading line from pacman: %s" % line)
+
+            m = re.match('^(?P<program>\S+) is owned by (?P<pkgname>\S+) \S+$', line)
+
+            if not m:
                 continue
 
-            m = re.match('^diversion by (\S+) (from|to): (.*)$', line)
-            if m:
-                if m.group(2) == 'from':
-                    diverted = m.group(3)
-                    continue
-                if not diverted:
-                    raise Exception('Weird error while handling diversion')
-                packagename, program = m.group(1), diverted
-            else:
-                 packagename, program = line[:-1].split(': ')
-                 if program == diverted:
-                     # dpkg prints a summary line after the diversion, name both
-                     # packages of the diversion, so ignore this line
-                     # mutt-patched, mutt: /usr/bin/mutt
-                    continue
+            packagename, program = m.group("pkgname"), m.group("program")
+
             packages.setdefault(packagename,Package(packagename))
             try:
                  packages[packagename].processes.extend(programs[program])
@@ -214,7 +202,7 @@ def main():
             sys.stdout.flush()
 
     # Close the pipe
-    dpkgProc.stdout.close()
+    pacmanProc.stdout.close()
 
     # Remove the ignored packages from the list of packages
     if ignorelist:
@@ -235,13 +223,13 @@ def main():
         sys.exit(0)
 
     for package in list(packages.values()):
-        dpkgQuery = ["dpkg-query", "--listfiles", package.name]
+        pacmanQuery = ["pacman", "-Qql", package.name]
         if verbose:
             print("[DEBUG] Running: %s" % ' '.join(dpkgQuery))
-        dpkgProc = subprocess.Popen(dpkgQuery, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-                                env = lc_all_c_env)
+        pacmanProc = subprocess.Popen(pacmanQuery, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                                      env = lc_all_c_env)
         while True:
-            line = dpkgProc.stdout.readline().decode("utf-8")
+            line = pacmanProc.stdout.readline().decode("utf-8")
             if not line:
                 break
             path = line[:-1]
@@ -250,7 +238,7 @@ def main():
                     continue
                 package.initscripts.add(path[12:])
             # If running on a systemd system, extract the systemd's service files from the package
-            if is_systemd and path.startswith('/lib/systemd/system/') and path.endswith('.service') and path.find('.wants') == -1:
+            if is_systemd and path.startswith('/usr/lib/systemd/system/') and path.endswith('.service') and path.find('.wants') == -1:
             # Read the service file and make sure it is not of type 'oneshot'
                 servicefile = open (path)
                 is_oneshot = False
@@ -260,9 +248,9 @@ def main():
                          continue
                 servicefile.close ()
                 if not is_oneshot:
-                    package.systemdservice.add(path[20:])
+                    package.systemdservice.add(path[24:])
             sys.stdout.flush()
-        dpkgProc.stdout.close()
+        pacmanProc.stdout.close()
 
         # Alternatively, find init.d scripts that match the process name
         if len(package.initscripts) == 0 and len(package.systemdservice) == 0:
