@@ -1,7 +1,7 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=conan-git
-pkgver=0.18.1.r29.g83ad421
+pkgver=0.18.1.r37.g7a7f908
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
@@ -16,7 +16,8 @@ depends=('python'
          'python-fasteners>=0.14.1'
          'python-six>=1.10.0'
          'python-node-semver=0.1.1'
-         'python-bottle>=0.12.8' 'python-bottle<0.13')
+         'python-bottle>=0.12.8' 'python-bottle<0.13'
+         'python-distro>=1.0.2' 'python-distro<1.1.0')
 makedepends=('python-setuptools')
 provides=('conan')
 conflicts=('conan')
