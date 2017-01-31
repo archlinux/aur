@@ -17,30 +17,19 @@ makedepends=('git')
 _gitroot='git://github.com/Bumblebee-Project/bbswitch.git'
 _gitname='bbswitch'
 _gitbranch='develop'
-source=("${_gitname}::${_gitroot}#branch=${_gitbranch}"
-        "dkms.conf.in"
-        "makefile_dkms.patch")
-sha256sums=("SKIP"
-            "6bcdd486de01b8cb4842d94be7b33baa52c9405782bf227102cfa32ed691b8cd"
-            "a05fb9e528f8d67d9819054d548c74e05e799cc570eddcb4f81a886b6d4d3812")
+source=("${_gitname}::${_gitroot}#branch=${_gitbranch}")
+sha256sums=("SKIP")
 
 pkgver() {
     cd "$srcdir/${_gitname}"
     git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
-prepare() {
-    cd "${srcdir}/${_gitname}"
-
-    # patch Makefile to consider KERNELRELEASE
-    patch -p1 < "${srcdir}/makefile_dkms.patch"
-}
-
 build() {
     cd "${srcdir}/${_gitname}"
 
     # create dkms.conf
-    sed -e "s/@PKGVER@/${pkgver}/" < "${srcdir}/dkms.conf.in" > dkms.conf
+    sed -e "s/#MODULE_VERSION#/${pkgver}/" < "dkms/dkms.conf" > dkms.conf
 }
 
 package() {
