@@ -1,0 +1,11 @@
+diff -Nura mt7610u_wifi_sta/common/rtusb_dev_id.c mt7610u_wifi_sta_b/common/rtusb_dev_id.c
+--- mt7610u_wifi_sta/common/rtusb_dev_id.c	2017-01-31 21:46:20.345297040 +0300
++++ mt7610u_wifi_sta_b/common/rtusb_dev_id.c	2017-01-31 21:45:49.958480956 +0300
+@@ -42,6 +42,7 @@
+    	{USB_DEVICE(0x7392,0xA711)}, /* Edimax 7711ULC/7711MAC */
+    	{USB_DEVICE(0x7392,0xB711)}, /* Elecom WDC-433SU2M */
+ 	{USB_DEVICE(0x148F,0x761A)}, /* TP-LINK Archer T2UH */
++  {USB_DEVICE(0x2357,0x0105)}, /* TP-LINK Archer T1U */
+ 	{USB_DEVICE(0x148F,0x760A)}, /* TP-LINK */
+ 	{USB_DEVICE(0x0B05,0x17D1)}, /* ASUS USB-AC51 */
+ 	{USB_DEVICE(0x0B05,0x17DB)}, /* ASUS USB-AC50 */

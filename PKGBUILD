@@ -3,7 +3,7 @@
 
 pkgname=mt7610u_wifi_sta
 pkgver=4606187
-pkgrel=2
+pkgrel=3
 # To get an overview of witch WiFi dongle has this chipset refer to https://wikidevi.com/wiki/MediaTek_MT7610U
 pkgdesc="Kernel module for MediaTek MT7610U chipset featured in TP-Link Archer T2U and T2UH, TP-Link TL-WDN5200, ASUS USB-AC50, ASUS USB-AC51, Comcast Xfinity KXW02AAA, D-Link DWA-171 rev B1 and more"
 arch=('any')
@@ -12,12 +12,13 @@ url="https://github.com/Myria-de/mt7610u_wifi_sta_v3002_dpo_20130916"
 depends=('linux')
 makedepends=('git' 'linux-headers')
 install="depmod.install"
-source=("mt7610u_wifi_sta"::"git+https://github.com/Myria-de/mt7610u_wifi_sta_v3002_dpo_20130916.git" "0001-fix-compile-against-kernel-4.6.patch")
-md5sums=('SKIP' 'aef239125f6420706d7bf5252455d4af')
+source=("mt7610u_wifi_sta"::"git+https://github.com/Myria-de/mt7610u_wifi_sta_v3002_dpo_20130916.git" "0001-fix-compile-against-kernel-4.6.patch" "0002-add-tplink-archer-t1u.patch")
+md5sums=('SKIP' 'aef239125f6420706d7bf5252455d4af' '45476e7b0ccad4812069ea4f943b29c0')
 
 build() {
   cd "${srcdir}/${pkgname}"
   patch -p1 < "${srcdir}/0001-fix-compile-against-kernel-4.6.patch"
+  patch -p1 < "${srcdir}/0002-add-tplink-archer-t1u.patch"
 	make -C "${srcdir}/${pkgname}"
 }
 
