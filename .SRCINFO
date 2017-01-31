@@ -1,0 +1,18 @@
+pkgbase = kdav-git
+	pkgdesc = A DAV protocol implementation with KJobs
+	pkgver = r989.8eefc09
+	pkgrel = 1
+	url = https://cgit.kde.org/kdav.git/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = qt5-base
+	provides = kdav
+	conflicts = kdav
+	source = git://anongit.kde.org/kdav.git
+	sha256sums = SKIP
+
+pkgname = kdav-git
+
