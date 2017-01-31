@@ -1,0 +1,18 @@
+pkgbase = pypy-appdirs
+	pkgdesc = A small Python module for determining appropriate platform-specific dirs, e.g. a "user data dir".
+	pkgver = 1.4.0
+	pkgrel = 5
+	url = https://github.com/ActiveState/appdirs
+	arch = any
+	license = MIT
+	makedepends = pypy-setuptools
+	makedepends = pypy3-setuptools
+	source = https://pypi.io/packages/source/a/appdirs/appdirs-1.4.0.tar.gz
+	md5sums = 1d17b4c9694ab84794e228f28dc3275b
+
+pkgname = pypy-appdirs
+	depends = pypy
+
+pkgname = pypy3-appdirs
+	depends = pypy3
+
