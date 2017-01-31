@@ -1,13 +1,13 @@
 # Maintainer: Light <sidus at arbornet.org>
 
 pkgname=poseidon-browser-git
-pkgver=r87.6ebaddf
+pkgver=r90.29267cd
 pkgrel=1
 pkgdesc='A fast, minimal and lightweight browser.'
 url='https://github.com/sidus-dev/poseidon'
 arch=('any')
 license=('GPL3' 'MIT')
-depends=('python3' 'python-gobject' 'python-decorator' 'python-six' 'python-requests' 'python-pillow' 'python-cairo' 'pyopenssl' 'gtk3' 'gtksourceview3' 'webkit2gtk>=2.12.3')
+depends=('binutils' 'fakeroot' 'tk' 'python3' 'python-gobject' 'python-decorator' 'python-six' 'python-requests' 'python-pillow' 'python-cairo' 'pyopenssl' 'gtk3' 'gtksourceview3' 'webkit2gtk>=2.12.3')
 optdepends=('gst-libav: HTML5 H264 videos support'
             'gst-plugins-base: HTML5 OGG videos support'
             'gst-plugins-good: HTML5 H264 and WebM videos support'
