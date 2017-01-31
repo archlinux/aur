@@ -1,0 +1,18 @@
+pkgbase = autopanopro-beta
+	pkgdesc = Create beautiful panoramas by stitching multiple photos automatically with Autopano Pro (BETA) (trial version).
+	pkgver = 4.4.0.200
+	pkgrel = 1
+	url = http://www.kolor.com/autopano/
+	install = autopanopro-beta.install
+	arch = x86_64
+	license = custom: "commercial"
+	provides = autopanopro
+	source = AutopanoPro_Linux64_4.4.0.200.tar.xz::http://download.kolor.com/app/beta/linux64tarxz/
+	source = autopanopro-beta
+	source = autopanopro-beta.desktop
+	sha256sums = 20e9089830bf39f4c866545ef9614a6c379bceb640751c243a0ffdb4bd7936a1
+	sha256sums = e17b9f0f43071b5d0276a506f48f1a349a10618fda718826724f29f5d3f86b55
+	sha256sums = c2adb8967201d2e7d79a17992ea51829706908ad6aa39f617b8a6fa2fe10fd4e
+
+pkgname = autopanopro-beta
+

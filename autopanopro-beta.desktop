@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=AutopanoPro (BETA)
+Comment=Create beautiful panoramas by stitching multiple photos automatically with Autopano Pro (BETA)
+Exec=autopanopro-beta
+Icon=/opt/kolor/autopanopro-beta/Resources/UI/autopano_pro.png
+Terminal=false
+Type=Application
+Categories=Application;Graphics;
