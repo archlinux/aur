@@ -26,11 +26,15 @@ pkgver() {
     git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-package() {
+prepare() {
   cd "${srcdir}/${_pkgname}"
 
   # Exceprt adapted from upstream Makefile.dkms
   sed -e "s/#MODULE_VERSION#/${pkgver}/" -i "dkms/dkms.conf"
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}"
 
   install -dm755 "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
   install -Dm644 Makefile bbswitch.c dkms/dkms.conf "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
