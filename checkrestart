@@ -7,6 +7,8 @@
 #   complaining about deleted inodes/files under /tmp/, /var/log/,
 #   /var/run or named   /SYSV.
 # - introduced a verbose option
+# Copyright (C) 2016 Flisk <flisk@fastmail.mx>
+# - Ported the script to work on Arch Linux.
 
 # PENDING:
 # - included code from 'psdel' contributed by Sam Morris <sam_AT_robots.org.uk> to
@@ -31,8 +33,8 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301 USA
 #
-# On Debian systems, a copy of the GNU General Public License may be
-# found in /usr/share/common-licenses/GPL.
+# On Arch Linux systems, a copy of the GNU General Public License may be found
+# in /usr/share/licenses/common/GPL2/license.txt
 
 import sys
 import os, errno
