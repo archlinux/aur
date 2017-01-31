@@ -1,7 +1,7 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 # Contributor: Tom <tomgparchaur@gmail.com>
 pkgname=cacti-spine
-pkgver=0.8.8_h
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Faster poller for Cacti."
 arch=('i686' 'x86_64')
@@ -12,21 +12,11 @@ makedepends=('help2man')
 options=('!makeflags')
 backup=('etc/spine.conf')
 source=( "http://www.cacti.net/downloads/spine/${pkgname}-${pkgver/_/}.tar.gz")
-md5sums=('935e2bc12ba6a4d2d9dc05c959291e69')
+md5sums=('6ce2f93b0f6543b3ea52d5ee9e02d7de')
 
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver/_/}"
-
-  /usr/bin/aclocal
-  /usr/bin/libtoolize --force --copy
-  /usr/bin/autoheader
-  /usr/bin/autoconf
-  /usr/bin/automake --add-missing --copy --force-missing
-}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver/_/}"
-  export CFLAGS="$CFLAGS -lpthread -lm"
   ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
