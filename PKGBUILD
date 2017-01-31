@@ -1,5 +1,5 @@
 pkgname=osvr-core-git
-pkgver=0.2.r2275.g3b7be094
+pkgver=0.2.r2811.gfb94cccd
 pkgrel=1
 pkgdesc="The core libraries, applications, and plugins of the OSVR software platform."
 arch=(i686 x86_64)
@@ -34,13 +34,14 @@ prepare() {
 
   mkdir -p "$srcdir/osvr-core-build/"
 
-git pull origin pull/492/head --no-edit #WIP positional tracking
+git pull origin pull/492/head --no-edit # positional tracking videobasedtracker
+git pull origin pull/493/head --no-edit # positional tracking unifiedvideoinertialtracker
 
 #temporary fix for boost incompatibility
 #sed -i "s/105900/106200/g" src/osvr/Common/IPCRingBuffer.cpp
 #sed -i "s/105900/106200/g" cmake-local/BoostTargets.cmake
 
-git cherry-pick 3b5e3a6f3132afbdaf251161ba3b3d03c790f45f #disable ignored-attributes warning on gcc
+#git cherry-pick 3b5e3a6f3132afbdaf251161ba3b3d03c790f45f #disable ignored-attributes warning on gcc
 }
 
 build() {
