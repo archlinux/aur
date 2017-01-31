@@ -1,0 +1,18 @@
+pkgbase = autopanogiga-beta
+	pkgdesc = Create beautiful panoramas by stitching multiple photos automatically with Autopano Giga (BETA) (trial version).
+	pkgver = 4.4.0.200
+	pkgrel = 1
+	url = http://www.kolor.com/autopano/
+	install = autopanogiga-beta.install
+	arch = x86_64
+	license = custom: "commercial"
+	provides = autopanogiga
+	source = AutopanoGiga_Linux64_4.4.0.200.tar.xz::http://download.kolor.com/apg/beta/linux64tarxz/
+	source = autopanogiga-beta
+	source = autopanogiga-beta.desktop
+	sha256sums = 10e27583d86bc6fea137f9a2f1cb595cae7817943a0badfc06a5fa92f4d2324a
+	sha256sums = f8d17764d0c4fb551a948b30fde19afa73a60f0d4d6fc4da425b0ac73184992c
+	sha256sums = 897940b591ac3e7afa21b6be54bbb59353e736c4b70326e98ca30cc6d63761ed
+
+pkgname = autopanogiga-beta
+
