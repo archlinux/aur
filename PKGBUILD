@@ -2,7 +2,7 @@
 # Contributor: François M. <francois5537 @ gmail.com>
 
 pkgname=manager-accounting
-pkgver=16.12.31
+pkgver=17.1.16
 pkgrel=1
 pkgdesc='Manager is free accounting software for small business'
 arch=('i686' 'x86_64')
@@ -16,10 +16,12 @@ source=(
   "LICENSE"
   "fix-path.patch"
   "https://mngr.s3.amazonaws.com/manager-accounting.zip"
+  "https://raw.githubusercontent.com/ericsink/SQLitePCL.raw/master/sqlite3/sqlite3.c"
 )
 sha256sums=(
   'bd144763506372341487683b0f28ad627e7e8923ea8ef8569541b55f4b987061'
   '81e73bbae1a386dc76bd1f8b018868864c802cb242667d18b9d6f005518859f7'
+  'SKIP'
   'SKIP'
 )
 
@@ -53,10 +55,19 @@ prepare() {
   mono ManagerServer.exe -port 1 2>&1 > /dev/null
 }
 
+build() {
+  gcc -shared -fPIC -O3 -DNDEBUG -DSQLITE_DEFAULT_FOREIGN_KEYS=1 \
+      -DSQLITE_ENABLE_FTS3_PARENTHESIS -DSQLITE_ENABLE_FTS4 \
+      -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_JSON1 \
+      -DSQLITE_ENABLE_RTREE \
+      -o libe_sqlite3.so sqlite3.c
+}
+
 package() {
   install -d $pkgdir/usr/{bin,lib,share/{applications,icons}}
   cp -r opt/manager-accounting $pkgdir/usr/lib/
   cp -r usr/share/icons/* $pkgdir/usr/share/icons/
+  cp libe_sqlite3.so "${pkgdir}/usr/lib/${pkgname}/"
   ln -s /usr/lib/manager-accounting/manager-accounting $pkgdir/usr/bin/manager-accounting
   install -m644 usr/share/applications/$pkgname.desktop $pkgdir/usr/share/applications/
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
