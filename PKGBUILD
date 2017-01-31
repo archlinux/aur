@@ -1,8 +1,9 @@
-# Maintainer: Alois Nespor <info@aloisnespor.info>
+# Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
+# Contributor: Alois Nespor <info@aloisnespor.info>
 # Contributor: speps <speps dot aur dot archlinux dot org>
 
 pkgname=rssguard
-pkgver=3.3.5
+pkgver=3.3.7
 pkgrel=1
 pkgdesc="A simple (yet powerful) Qt5 feed reader."
 arch=('i686' 'x86_64')
@@ -28,4 +29,4 @@ package() {
   cd $pkgname-$pkgver
   make INSTALL_ROOT="$pkgdir/" install
 }
-sha256sums=('c8f9d05d498e63f5654dca2fc27834403d6cd76f078639a5d6e1b2acbc6e81bf')
+sha256sums=('a90542dbd14d8a4b0cf925e3ad0ee16edd0c1229d8f6c96fb615eec12bfd61ff')
