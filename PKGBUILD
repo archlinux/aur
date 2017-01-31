@@ -1,9 +1,9 @@
 # Maintainer: Chris Marsh <chris.pm@gmail.com>
 
 pkgname=galendae-git
-pkgver=r32.e0e5c02
+pkgver=r36.0410aaa
 pkgrel=1
-pkgdesc="A basic popup calendar that can be styled to match workspace themes"
+pkgdesc="A lightweight popup calendar that can be styled to match workspace themes"
 arch=('i686' 'x86_64')
 url="https://github.com/chris-marsh/galendae"
 license=('MIT')
