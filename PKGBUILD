@@ -9,13 +9,13 @@ _builddir=("${_gitname}/build")
 _prefix="/usr"
 
 pkgname="$_gitname-git"
-pkgver=0.1.881
+pkgver=0.1.882
 pkgrel=1
 pkgdesc="A Wayland shell client"
 arch=(i686 x86_64)
 url="https://github.com/giucam/orbital"
 license=('LGPL')
-depends=('weston-orbital-git' 'qt5-tools' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-wayland' 'oxygen-icons')
+depends=('weston' 'qt5-tools' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-wayland' 'oxygen-icons')
 optdepends=('solid' 'alsa-lib')
 makedepends=('git' 'cmake')
 provides=("$_pkgname")
