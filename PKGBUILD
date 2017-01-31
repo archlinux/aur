@@ -1,4 +1,5 @@
-# Maintainer : adytzu2007 <adybac at gmail {dot} com>
+# Maintainer : Davi da Silva Böger <dsboger at gmail dot com>
+# Contributor : adytzu2007 <adybac at gmail {dot} com>
 # Contributor: Samsagax <samsagax at gmail {dot} com>
 # Contributor : abbradar <nikoamia at gmail {dot} com>
 
