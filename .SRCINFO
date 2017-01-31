@@ -1,0 +1,14 @@
+pkgbase = deezer-native-sdk
+	pkgdesc = Software development kit for the Deezer's API.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://developers.deezer.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libpulse
+	source = https://files.deezer.com/developers/deezer-native-sdk-v1.1.1-v00351755.zip
+	md5sums = 8752f0fce65b2cbf1b8861d9b370a3ed
+
+pkgname = deezer-native-sdk
+
