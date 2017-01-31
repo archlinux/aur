@@ -5,13 +5,13 @@
 # Committer: Manolis Tzanidakis <manolis@archlinux.org>
 
 pkgname=courier-imap
-pkgver=4.17.2
+pkgver=4.17.3
 pkgrel=1
 pkgdesc="IMAP(s)/POP3(s) Server"
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL2')
 url="http://www.courier-mta.org/imap/"
-depends=('courier-maildrop' 'gcc-libs' 'gamin' 'gdbm' 'openssl' 'courier-unicode>=1.3')
+depends=('courier-maildrop' 'gcc-libs' 'gamin' 'gdbm' 'openssl' 'courier-unicode>=1.4')
 backup=('etc/courier-imap/imapd.cnf' 'etc/courier-imap/pop3d.cnf' \
         'etc/courier-imap/imapd' 'etc/courier-imap/imapd-ssl' \
         'etc/courier-imap/pop3d' 'etc/courier-imap/pop3d-ssl')
@@ -23,7 +23,7 @@ source=(http://downloads.sourceforge.net/project/courier/imap/${pkgver}/${pkgnam
 	courier-imapd.service
 	courier-pop3d.service
 	courier-pop3d-ssl.service)
-sha512sums=('11e821b56d0d6447ef15e3098c4b464bfae5fe25022aa8762f75d5db8573b2007ae74c1491ad49ccb036989d83629fa4b7335997410c3aea99b0aeb28d24f976'
+sha512sums=('3166cc703cdc09a71d33257671a662d95cfdb8977bc3b19e0218a4d25eb99a1a108d2868a6eb593106e6538aadf684f11ff0426cd58d522e3ca4b2988f0a88f1'
 	    'fcbc553e2b4542f246762ed1b20f1ae6a8f2b7c808e9ac537577e21ad933a0b1b4ea04eabb900ef423e2f4d037f973e73bf5f7e8ff6f0e3f7997f26dfd39b09f'
 	    'daec41de02a8b056a0b54e9c5446e144192762e4354875fb18b306473e006eadee74664e65f45e07e071b70158f741720a9acd41c14474d61ee0c619a59e8a98'
 	    '329ae0f76d5db53ed5392584ddfe7c4a10bfcec51a50c80d10fda1c318ab4929251ecc206403e045dba2c1d7388334473e2d8bf04dcfcc3d07301e89a609ea57'
