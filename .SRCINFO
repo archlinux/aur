@@ -1,0 +1,31 @@
+pkgbase = hamlib-git-python3
+	pkgdesc = Ham radio equipment control libraries - compiled for Python3
+	pkgver = 358aacbe
+	pkgrel = 1
+	url = http://hamlib.org
+	arch = i686
+	arch = x86_64
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	license = LGPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = swig
+	depends = tcl
+	depends = python
+	depends = libxml2
+	depends = libusb
+	provides = hamlib
+	provides = hamlib-git
+	conflicts = hamlib
+	conflicts = hamlib-git
+	options = !emptydirs
+	source = hamlib-git::git+git://git.code.sf.net/p/hamlib/code
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = hamlib-git-python3
+
