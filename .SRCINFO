@@ -1,16 +1,25 @@
 pkgbase = pypy-setuptools
 	pkgdesc = Easily download, build, install, upgrade, and uninstall Python packages
-	pkgver = 32.3.1
+	pkgver = 34.1.0
 	pkgrel = 1
 	epoch = 1
 	url = http://pypi.python.org/pypi/setuptools
 	arch = any
 	license = PSF
-	depends = pypy
-	provides = pypy-distribute
-	replaces = pypy-distribute
-	source = https://pypi.io/packages/source/s/setuptools/setuptools-32.3.1.zip
-	sha512sums = a88bef95affc18e09775deda6e741dd49d6272608cbefb7ccf52965eef5d7477ce3ad54ef507afcd7753c17afd8149b32be67dac4bda1cdbff05c316b1bc8f67
+	source = https://pypi.io/packages/source/s/setuptools/setuptools-34.1.0.zip
+	sha512sums = 5bb52bd8b23464cacb2f89c0e1cdd6c563153ce6981306bb7b0589b510434633dd60711bfd614120842213a922ddc2a357df54bfcd0358a3bfc79941a27a21cc
 
 pkgname = pypy-setuptools
+	depends = pypy
+	depends = pypy-packaging
+	depends = pypy-appdirs
+	provides = pypy-distribute
+	replaces = pypy-distribute
+
+pkgname = pypy3-setuptools
+	depends = pypy3
+	depends = pypy3-packaging
+	depends = pypy3-appdirs
+	provides = pypy3-distribute
+	replaces = pypy3-distribute
 
