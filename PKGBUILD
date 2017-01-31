@@ -1,7 +1,7 @@
 # Maintainer: Wes Barnett <wes at wbarnett dot us>
 pkgname=snap-sync
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Use snapper snapshots to backup to external drive"
 arch=(any)
 url="https://github.com/wesbarnett/snap-sync"
