@@ -9,7 +9,7 @@ url="http://keepass.info/plugins.html#keeautoexec"
 license=("GPLv2")
 depends=("keepass")
 source=("http://keepass.info/extensions/v2/keeautoexec/KeeAutoExec-$pkgver.zip")
-md5sums=('6d539d3cf89ebef936020b0d157551de')
+md5sums=('b577f00fa69226107ab09667e2a18362')
 
 package() {
   cd "$srcdir"
