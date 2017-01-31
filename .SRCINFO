@@ -1,17 +1,17 @@
 pkgbase = pylama
 	pkgdesc = Code audit tool for python
-	pkgver = 7.0.9
-	pkgrel = 2
+	pkgver = 7.3.3
+	pkgrel = 1
 	url = https://github.com/klen/pylama
 	arch = any
 	license = GPL3
-	depends = python-pycodestyle
-	depends = pydocstyle
-	depends = python-pyflakes
-	depends = python-mccabe
+	depends = python-pycodestyle>=2.0.0
+	depends = python-pydocstyle>=1.1.1
+	depends = python-pyflakes>=1.3.0
+	depends = python-mccabe>=0.5.2
 	optdepends = pylama_pylint: pylint support
-	source = https://github.com/klen/pylama/archive/7.0.9.tar.gz
-	sha256sums = bd28f352bb2c336d572e1c5ec2fabab44c06a8d8bc91e9f47da441f2329bf7db
+	source = https://github.com/klen/pylama/archive/7.3.3.tar.gz
+	sha256sums = cd34aeabc4acb96cfe5b0aa428023151a7538f9fa2d66688acd91818d51d912b
 
 pkgname = pylama
 
