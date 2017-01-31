@@ -20,8 +20,8 @@ source=(
 	graylog.service
 )
 sha256sums=('eb66106d609d00c55e6d914d14b7ea881f8db9317fb443a8bbc66c55f924f94c'
-            '4d3c0bb83c7a02a5a902670b060d045068f5201728194a4473b2c2ba99bbd43d'
-            'f9f3d3bd670d7889eb6053b016d365f37eaa9b736c9076ae101b3efeab7f428f')
+            'SKIP'
+            'SKIP')
 
 package() {
 	cd "$srcdir/$pkgname-${pkgver/_/-}"
