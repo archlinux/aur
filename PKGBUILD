@@ -5,14 +5,14 @@
 pkgname=popcorntime-git
 _pkgname=popcorntime
 _gitname=popcorn-desktop
-pkgver=r6157.5aabb4b
+pkgver=r6211.db796345
 pkgrel=1
 pkgdesc="Stream movies and TV shows from torrents"
 arch=('i686' 'x86_64')
 url="https://popcorntime.sh"
 license=('GPL3')
-depends=('alsa-lib' 'gconf' 'gtk2' 'nss' 'ttf-font' 'libxtst' 'libnotify' 'desktop-file-utils')
-makedepends=('git' 'npm' 'bower' 'nodejs-grunt-cli' 'gulp')
+depends=('alsa-lib' 'gconf' 'gtk2' 'nss' 'ttf-font' 'libxtst' 'libnotify')
+makedepends=('git' 'npm')
 conflicts=('popcorntime' 'popcorn-time-ce')
 provides=('popcorntime')
 options=('!strip')
@@ -29,14 +29,11 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "${_gitname}"
-  npm install
-}
-
 build() {
   cd "${_gitname}"
-  gulp build -p ${_platform}
+
+  npm install
+  node_modules/.bin/gulp build --platforms ${_platform}
 }
 
 package() {
@@ -56,4 +53,5 @@ package() {
 
   # Copy complete content of source archive to /usr/share/${_pkgname}/
   cp -a "${_bpath}"/* "${pkgdir}/usr/share/${_pkgname}/"
+  chmod +x "${pkgdir}/usr/share/${_pkgname}/Popcorn-Time"
 }
