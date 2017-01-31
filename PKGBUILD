@@ -1,9 +1,9 @@
 # Maintainer: Alex Kubica <alexkubicail@gmail.com>
 # Contributor: Manoel Vilela <manoel_vilela@engineer.com>
 _name=mal
-_tag=v0.2.3
+_tag=v0.3.0
 pkgname=python-mal-git
-pkgver=r137.b2afa77
+pkgver=r177.e223001
 pkgrel=1
 pkgdesc="MyAnimeList command line interface"
 arch=(any)
