@@ -9,7 +9,7 @@ pkgdesc="An online radio streaming player that runs on a Linux system tray."
 arch=(any)
 url="http://radiotray.wordpress.com/"
 license=(GPL)
-depends=('gstreamer', 'gstreamer0.10-base-plugins' 'gstreamer0.10-python' 'pygtk' \
+depends=('gstreamer' 'gstreamer0.10-base-plugins' 'gstreamer0.10-python' 'pygtk' \
 'python2-notify' 'python2-xdg' 'python2-dbus' 'gstreamer0.10-good-plugins' \
 'python2-gobject' 'python2-lxml')
 optdepends=('gstreamer0.10-bad-plugins' 'gstreamer0.10-ugly-plugins' 'gstreamer0.10-ffmpeg') 
