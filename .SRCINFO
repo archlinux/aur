@@ -1,0 +1,19 @@
+pkgbase = dash-sh
+	pkgdesc = A POSIX compliant shell that aims to be as small as possible
+	pkgver = 0.5.9.1
+	pkgrel = 1
+	url = http://gondor.apana.org.au/~herbert/dash/
+	install = dash-sh.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	provides = dash
+	provides = sh
+	conflicts = dash
+	conflicts = bash
+	source = http://gondor.apana.org.au/~herbert/dash/files/dash-sh-0.5.9.1.tar.gz
+	sha1sums = 7b9cb47fc2a007c26fedc99d22a7fc1dc2f5f914
+
+pkgname = dash-sh
+
