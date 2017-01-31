@@ -2,7 +2,7 @@
 
 pkgbase=python-social-auth-core
 pkgname=($pkgbase 'python2-social-auth-core')
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Core component of the python-social-auth ecosystem'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python2-setuptools'
              'python-defusedxml' 'python-six' 'python-pyjwt' 'python-requests-oauthlib' 'python-openid'
              'python2-defusedxml' 'python2-six' 'python2-pyjwt' 'python2-requests-oauthlib' 'python2-openid')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/python-social-auth/social-core/archive/$pkgver.tar.gz")
-sha256sums=('becdae55c3d050ec456844f282e6b468df0847b131e615017019ca97b631d972')
+sha256sums=('833f4b2b737ac47a9d9e0974d1914b61c3195a90769acb0ae9eb8639a97dcdee')
 
 prepare() {
     cp -r social-core-$pkgver social-core-$pkgver-python2
