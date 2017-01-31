@@ -1,0 +1,14 @@
+pkgbase = python-pyvbox
+	pkgdesc = A Pythonic implementation of the VirtualBox Main API
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mjdorma/pyvbox
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = virtualbox-sdk
+	source = https://github.com/mjdorma/pyvbox/archive/v1.0.0.tar.gz
+	sha256sums = b1349d7462e6427302bff3fba4df2cf1cced4b3a1baa5a697351295b177ee4b2
+
+pkgname = python2-pyvbox
+
