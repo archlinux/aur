@@ -12,11 +12,9 @@ license=('GPL3')
 depends=('qt5-base')
 makedepends=('qt5-tools')
 optdepends=('mariadb: MySQL/MariaDB storage backend support'
-	    'qt5-webengine: more feature and support of browsing' )
-provides=('rss-guard')
-conflicts=('rss-guard' 'rssguard-git')
-replaces=('rss-guard')
-source=("https://github.com/martinrotter/rssguard/archive/$pkgver.tar.gz")
+            'qt5-webengine: more feature and support of browsing' )
+source=($pkgname-$pkgver.tar.gz::"https://github.com/martinrotter/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('a90542dbd14d8a4b0cf925e3ad0ee16edd0c1229d8f6c96fb615eec12bfd61ff')
 
 
 build() {
@@ -29,4 +27,3 @@ package() {
   cd $pkgname-$pkgver
   make INSTALL_ROOT="$pkgdir/" install
 }
-sha256sums=('a90542dbd14d8a4b0cf925e3ad0ee16edd0c1229d8f6c96fb615eec12bfd61ff')
