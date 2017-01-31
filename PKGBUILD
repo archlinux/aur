@@ -7,6 +7,7 @@ pkgdesc="Command-line utility to allow for editing directory contents with an ed
 arch=('any')
 license=('GPL')
 depends=('perl')
+conflics=('moreutils')
 source=("vidir")
 md5sums=("c64891d2963ebe5dded66764ac9b1a6b")
 
