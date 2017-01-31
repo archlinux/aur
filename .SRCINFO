@@ -1,6 +1,6 @@
 pkgbase = gnumeric-minimal
 	pkgdesc = A GNOME-less spreadsheet program
-	pkgver = 1.12.32
+	pkgver = 1.12.33
 	pkgrel = 1
 	url = http://www.gnome.org/projects/gnumeric/
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = gnumeric-minimal
 	provides = gnumeric
 	conflicts = gnumeric
 	options = !makeflags
-	source = http://ftp.gnome.org/pub/gnome/sources/gnumeric/1.12/gnumeric-1.12.32.tar.xz
+	source = http://ftp.gnome.org/pub/gnome/sources/gnumeric/1.12/gnumeric-1.12.33.tar.xz
 	source = revert-warnings.patch::https://projects.archlinux.de/svntogit/packages.git/plain/trunk/revert-warnings.patch?h=packages/gnumeric
-	sha256sums = a07bc83e2adaeb94bfa2c737c9a19d90381a19cb203dd7c4d5f7d6cfdbee6de8
+	sha256sums = 7eade408b6c20d2e8ad557d539e5e2f29705845a2eaa181b38934bb0cad49c0b
 	sha256sums = bcafca016b809000c2a5bf911e2e3dfa4de28f9e541d9964574cac5c7ce09e53
 
 pkgname = gnumeric-minimal
