@@ -1,5 +1,5 @@
---- a/usr/lib/python3.5/site-packages/system76driver/actions.py	2014-05-09 23:55:11.090907554 -0400
-+++ b/usr/lib/python3.5/site-packages/system76driver/actions.py	2014-05-10 00:20:19.868672154 -0400
+--- a/usr/lib/python3.6/site-packages/system76driver/actions.py	2014-05-09 23:55:11.090907554 -0400
++++ b/usr/lib/python3.6/site-packages/system76driver/actions.py	2014-05-10 00:20:19.868672154 -0400
 @@ -282,9 +282,16 @@
          return not params.issuperset(self.add)
  
@@ -12,7 +12,7 @@
 +                print('No grub detected! Manually add following kernel option to your bootloader: %s' % ' '.join(self.add))
 +            if self.remove:
 +                print('No grub detected! Manually remove following kernel option to your bootloader: %s' % ' '.join(self.remove))
-+            return False            
++            return False
 +        else:
 +            current = self.get_current_cmdline()
 +            params = set(current.split())
