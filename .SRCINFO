@@ -1,6 +1,6 @@
 pkgbase = vpndemon
 	pkgdesc = VPNKS protects you against leaks caused by disconnetction
-	pkgver = 1.0
+	pkgver = 3.0
 	pkgrel = 5
 	url = https://github.com/plasticbrain/vpnkillswitch
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = vpndemon
 	depends = nm-connection-editor
 	depends = openvpn
 	depends = systemd
-	source = master.zip
+	source = https://github.com/primaryobjects/vpndemon/archive/master.zip
 	sha256sums = e93b043e621644752d688f8c45836bd7b5f6f283fbcf2e9241afea35ed0221b7
 	sha384sums = a750b66d813750d9aa63ed76e79d1c51c39b2619835fa9571fa2ead8b04d64333c7424646211cf53f4e6422aa0af88dc
 	sha512sums = 38da3528540b4aa9cbe539dc2769ff76e73a734cd4a15ce2fe0f66978a9825d4e36a39c5dac8ce4deb5bac2a1f22b67d876d55a0c8b38544d9120b64597bf08a
