@@ -1,14 +1,14 @@
 # Maintainer: Tom Richards <tom@tomrichards.net>
 
-_nginxver=1.10.2
-_passengerver=5.1.0
+_nginxver=1.10.3
+_passengerver=5.1.2
 
 pkgname=nginx-passenger
-pkgver=1.10.2
-pkgrel=2
+pkgver=1.10.3
+pkgrel=1
 pkgdesc="HTTP Server with Passenger Module"
 arch=('i686' 'x86_64')
-url='http://nginx.org'
+url='https://nginx.org'
 license=('custom')
 depends=('pcre' 'zlib' 'openssl' 'geoip' 'curl' 'gd' 'ruby')
 optdepends=('python: Support for python web apps'
@@ -28,18 +28,22 @@ backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/win-utf'
         'etc/logrotate.d/nginx')
 install="${pkgname}.install"
-source=("https://nginx.org/download/nginx-${_nginxver}.tar.gz"
-        "https://phusion-passenger.s3.amazonaws.com/releases/passenger-${_passengerver}.tar.gz"
-        'service'
-        'logrotate'
-        'packaging.patch')
-sha256sums=('1045ac4987a396e2fa5d0011daf8987b612dd2f05181b67507da68cbe7d765c2'
-            'a46970b520ba0b1ecc9eac5c9b45f459fcdae882a02e462a375bab7ff0683545'
+source=($url/download/nginx-$_nginxver.tar.gz{,.asc}
+        https://phusion-passenger.s3.amazonaws.com/releases/passenger-$_passengerver.tar.gz{,.asc}
+        service
+        logrotate
+        packaging.patch)
+validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8'  # Maxim Dounin <mdounin@mdounin.ru>
+              'D5F0851426939232F437AB722AC745A50A212A8C') # Phusion Software Signing <software-signing@phusion.nl>
+sha256sums=('75020f1364cac459cb733c4e1caed2d00376e40ea05588fb8793076a4c69dd90'
+            'SKIP'
+            '7fb03a54650ef5e508895c9e45bc2d8151f6c4811ea6797e81f017fedddfdbab'
+            'SKIP'
             '6fe4c5eb7332f5eebdd7e08e46256a3d344bd375e9134be66013fbc52059e1ac'
-            '272907d3213d69dac3bd6024d6d150caa23cb67d4f121e4171f34ba5581f9e98'
+            'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e'
             '2da1ede016ca328f254bfb10e95ff0a5ef2790382a9a87ffde77524956a31749')
 
-_common_flags=(
+_flags=(
     --with-ipv6
     --with-pcre-jit
     --with-file-aio
@@ -51,9 +55,12 @@ _common_flags=(
     --with-http_geoip_module
     --with-http_gunzip_module
     --with-http_gzip_static_module
+    --with-http_image_filter_module
     --with-http_mp4_module
+    --with-http_random_index_module
     --with-http_realip_module
     --with-http_secure_link_module
+    --with-http_slice_module
     --with-http_ssl_module
     --with-http_stub_status_module
     --with-http_sub_module
@@ -63,12 +70,6 @@ _common_flags=(
     --with-stream
     --with-stream_ssl_module
     --with-threads
-)
-
-_stable_flags=(
-    --with-http_image_filter_module
-    --with-http_random_index_module
-    --with-http_slice_module
 )
 
 prepare() {
@@ -104,8 +105,7 @@ build() {
         --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
         --http-scgi-temp-path=/var/lib/nginx/scgi \
         --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
-        ${_common_flags[@]} \
-        ${_stable_flags[@]} \
+        ${_flags[@]} \
         --add-module="$_nginx_addon_dir"
     make
 }
