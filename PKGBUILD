@@ -19,6 +19,8 @@
 # Arch: build dependencies for the target device documented in PKGBUILD.libs
 # Fedora: systemd-devel mesa-*-devel wayland*-devel fontconfig-devel libinput-devel freetype-devel qt5-qtdeclarative-devel
 
+pkgname="qt-sdk"
+
 # Sanity check
 _building=true
 
@@ -37,6 +39,18 @@ _patching=true
 
 if [[ -z ${startdir} ]]; then
   _building=false;
+fi
+
+if [[ -f minimal ]]; then
+  _skip_qtscript=true;
+  _skip_web_engine=true;
+  _skip_qt_widgets=true;
+  _debug=false;
+  pkgname="${pkgname}-minimal"
+fi
+
+if [[ -f target_host ]]; then
+  _target_host=true;
 fi
 
 # Sanity check options
@@ -58,14 +72,14 @@ fi
 
 # vars
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
-_pkgvermajmin="5.8"
+_pkgvermajmin="5.9"
 _pkgverpatch=".0"
-# -{alpha/beta/rc}
-_dev_suffix=""
-pkgrel=9
+# {alpha/beta/beta2/rc}
+_dev_suffix="beta2"
+pkgrel=3
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_head && pkgver=6.6.6
-_pkgver=${pkgver}${_dev_suffix}
+_pkgver=${pkgver}-${_dev_suffix}
 _release_type="development_releases"
 _mkspec="linux-rpi${_piver}-g++"
 _additional_configure_flags=""
@@ -93,27 +107,27 @@ if $_target_host; then
   _use_mesa=true
 else
   depends=("qpi${_piver}-toolchain")
-  install=qpi.install
-
-  rm $install
-  touch $install
-fi
-
-if [[ -f testing ]]; then
-  _skip_web_engine=true;
-  _debug=false;
 fi
 
 if [[ -z "${_dev_suffix}" ]]; then _release_type="official_releases"; fi
 
 $_build_from_head && _patching=false && _shadow_build=true
 $_skip_web_engine && _additional_configure_flags="$_additional_configure_flags -skip qtwebengine"
+$_skip_qt_script && _additional_configure_flags="$_additional_configure_flags -skip qtscript"
+$_skip_qt_widgets && _additional_configure_flags="$_additional_configure_flags -no-widgets"
 $_static_build && _additional_configure_flags="$_additional_configure_flags -static"
 $_float && _additional_configure_flags="$_additional_configure_flags -qreal float"
 
+if $_skip_web_engine; then
+  _additional_configure_flags="$_additional_configure_flags -no-icu"
+fi
+
 # PKGBUILD vars
 
-pkgname="qt-sdk"
+install=qpi.install
+
+rm $install
+touch $install
 
 if [[ -n ${_piver} ]] || ! $_building; then
   pkgname="${pkgname}-raspberry-pi${_piver}"
@@ -127,10 +141,15 @@ fi
 _libspkgname="${pkgname}-target-libs"
 _libsdebugpkgname="${pkgname}-target-libs-debug"
 _packaginguser=$(whoami)
-_baseprefix=/opt
-_installprefix=${_baseprefix}/${pkgname}
 _qt_package_name_prefix="qt-everywhere-opensource-src"
 _source_package_name=${_qt_package_name_prefix}-${_pkgver}
+_baseprefix=/opt
+_installprefix=${_baseprefix}/${pkgname}
+
+if $_target_host; then
+  _baseprefix=/usr
+  _installprefix=${_baseprefix}
+fi
 
 pkgdesc="Qt SDK for the Raspberry Pi 1/2/3"
 arch=("x86_64")
@@ -140,35 +159,46 @@ optdepends=('qtcreator: Integrated Raspberry Pi IDE development')
 makedepends=("git" "pkgconfig" "gcc" "gperf" "python")
 #_provider=http://qt.mirror.constant.com/
 _provider=https://download.qt.io
+_tmpfs_dir=/vortex
+
+_arch_specific_configure_options="\
+    -prefix /usr \
+    -docdir /usr/share/doc/qt \
+    -headerdir /usr/include/qt \
+    -archdatadir /usr/lib/qt \
+    -datadir /usr/share/qt \
+    -sysconfdir /etc/xdg \
+    -examplesdir /usr/share/doc/qt/examples \
+    -no-rpath"
 
 # shouldn't be needed
 _core_configure_options="\
-                 -prefix ${_installprefix} \
                  -optimized-tools \
+                 -optimized-qmake \
                  -confirm-license \
                  -opensource \
                  -v \
                  -silent \
                  -release \
                  -fontconfig \
+                 -system-sqlite \
                  -system-freetype \
+                 -system-harfbuzz \
+                 -dbus-linked \
+                 -openssl-linked \
                  -pch \
                  -opengl es2 \
                  -egl \
                  -journald \
                  -make libs \
-                 -no-icu \
-                 -no-compile-examples \
-                 \
-                 -reduce-relocations \
-                 -reduce-exports \
                  -ltcg \
                  \
-                 -skip qtscript"
+                 -reduce-relocations \
+                 -reduce-exports"
 
 if ! $_build_from_head; then
-  source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.7z")
-  sha256sums=("SKIP" "0efc79805cfeacc1bd2d10d8d6033e95b6c42cb5d68b1d5a1069b141006a2358")
+  source=("git://github.com/sirspudd/mkspecs.git" "${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.tar.xz")
+  sha256sums=("SKIP" "b74c30cd80474880b4a0c2f0ed6efdbda16ebe72cdc26f2a85bb025a42d5d838")
 fi
 
 options=('!strip')
@@ -196,36 +226,52 @@ if ! $_target_host; then
   trap finish EXIT
 fi
 
+adjust_bin_dir() {
+  if [[ -n ${_srcdir} ]]; then
+    _bindir="${_srcdir}"
+  else
+    # Probably repackaging: gonna have to make some assumptions
+    _bindir="${startdir}/src/${_source_package_name}"
+  fi
+  if $_shadow_build; then
+    _bindir="${_bindir}-build"
+    if [[ -d $_tmpfs_dir ]]; then
+      _bindir="${_tmpfs_dir}/${_bindir}"
+    fi
+  fi
+}
+
+adjust_src_dir() {
+  if $_build_from_head; then
+     if [[ -z $_local_qt5_repo ]]; then echo "Need to set a repo dir to build from head"; exit 1; fi
+    _srcdir=$_local_qt5_repo
+  fi
+}
+
 build() {
   # Qt tries to do the right thing and stores these, breaking cross compilation
   unset LDFLAGS
   unset CFLAGS
   unset CXXFLAGS
 
-  source ${startdir}/python_override_env
+  export PATH=${startdir}:${PATH}
 
-  local _srcdir="${srcdir}/${_source_package_name}"
-  local _bindir="${_srcdir}"
+  _srcdir="${srcdir}/${_source_package_name}"
+  adjust_src_dir
+  adjust_bin_dir
+
   local _basedir="${_srcdir}/qtbase"
   local _waylanddir="${_srcdir}/qtwayland"
   local _declarativedir="${_srcdir}/qtdeclarative"
   local _webenginedir="${_srcdir}/qtwebengine"
   local _mkspec_dir="${_basedir}/mkspecs/devices/${_mkspec}"
 
-  if $_shadow_build; then
-    _bindir="${_srcdir}-build"
-    rm -Rf ${_bindir}
-    mkdir -p ${_bindir}
-  fi
-
-  if $_build_from_head; then
-     if [[ -z $_local_qt5_repo ]]; then echo "Need to set a repo dir to build from head"; exit 1; fi
-    _srcdir=$_local_qt5_repo
-  fi
-
   cd ${_srcdir}
 
-if ! $_target_host; then
+if $_target_host; then
+  echo "INCLUDEPATH += /usr/include/openssl-1.0" >> ${_basedir}/src/network/network.pro
+  export OPENSSL_LIBS='-L/usr/lib/openssl-1.0 -lssl -lcrypto'
+else
   # Get our mkspec
   rm -Rf $_mkspec_dir
   cp -r "${srcdir}/mkspecs/${_mkspec}" $_mkspec_dir
@@ -241,15 +287,25 @@ if $_patching; then
   sed -i "s/error/warning/" ${_reducerelocations} || exit 1
 
   cd ${_basedir}
-  patch -p1 < ${startdir}/0001-Check-lib64-as-well-as-lib.patch
+  #patch -p1 < ${startdir}/0001-Check-lib64-as-well-as-lib.patch
+
+  cd ${_declarativedir}
+  #patch -p1 < ${startdir}/0001-Fix-crash-in-QQuickPixmapReader-friends.patch
+
+  cd ${_waylanddir}
+  #patch -p1 < ${startdir}/0001-Fix-brcm-egl-build-by-correcting-commit-usage.patch
+
+  cd ${_webenginedir}
+  # reverse patch which breaks dynamic loading of EGL/GLESvs with rpi proprietary drivers
+  patch -p1 < ${startdir}/0001-Revert-Fully-qualify-libEGL.so.1-libEGLESv2.so.2-lib.patch
 
   # Work around our embarresing propensity to stomp on your own tailored build configuration
-  sed -i "s/O[23]/Os/"  ${_basedir}/mkspecs/common/gcc-base.conf || exit 1
+  # sed -i "s/O[23]/Os/"  ${_basedir}/mkspecs/common/gcc-base.conf || exit 1
 fi
 
+  rm -Rf ${_bindir}
+  mkdir -p ${_bindir}
   cd ${_bindir}
-
-  # skipping on principle: qtscript xcb
 
   # Too bleeding big
   # -developer-build \
@@ -264,11 +320,15 @@ fi
 
 if $_target_host; then
   local _configure_line="${_srcdir}/configure \
+                 -platform linux-clang \
+                 -make tools \
+                 ${_arch_specific_configure_options} \
                  ${_core_configure_options} \
                  ${_additional_configure_flags}"
 else
   local _configure_line="${_srcdir}/configure \
                  ${_core_configure_options} \
+                 -prefix ${_installprefix} \
                  -hostprefix ${_installprefix} \
                  -qtlibinfix "Pi${_piver}" \
                  -sysroot ${_sysroot} \
@@ -293,16 +353,9 @@ create_install_script() {
 }
 
 package() {
-  local _srcdir="${srcdir}/${_source_package_name}"
-  local _bindir="${_srcdir}"
+  adjust_bin_dir
 
-if $_shadow_build; then
-  _bindir="${_srcdir}-build"
-fi
-
-if ! $_target_host; then
-  create_install_script
-fi
+  #create_install_script
 
   # cleanup
   rm -Rf ${pkgdir}
@@ -327,6 +380,7 @@ fi
   local _profiledfn=qpi.sh
 
   local _installed_dir="${pkgdir}/${_sysroot}/${_baseprefix}"
+
 if $_target_host; then
   _installed_dir="${pkgdir}/${_baseprefix}"
 fi
@@ -373,7 +427,9 @@ fi
   runuser -l ${_packaginguser} -c 'makepkg -d -f' || exit 1
   mv ${_libsdir}/${_libspkgname}-${pkgver}-${pkgrel}-any.pkg.tar.xz ${startdir}
 
+if $_debug; then
   cd ${_libsdebugdir}
   runuser -l ${_packaginguser} -c 'makepkg -d -f' || exit 1
   mv ${_libsdebugdir}/${_libsdebugpkgname}-${pkgver}-${pkgrel}-any.pkg.tar.xz ${startdir}
+fi
 }
