@@ -9,7 +9,7 @@
 
 pkgname=keepassxc-git
 _gitname=keepassxc
-pkgver=2.1.0.r0.g8a3ac7a
+pkgver=2.1.0.r40.g0091cb3
 pkgrel=1
 pkgdesc="A reboot with keepasshttp of an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ conflicts=('keepassx-svn' 'keepassx' 'keepassx-git' 'keepassx2-git' 'keepassx2' 
 provides=("keepassx"{,2}"=${pkgver}" "keepassx-svn=${pkgver}" "keepassx2-git=${pkgver}")
 replaces=('keepassx-http' 'keepassx-reboot-git')
 options=(!emptydirs)
-source=(git+https://github.com/keepassxreboot/keepassxc.git#branch=master)
+source=(git+https://github.com/keepassxreboot/keepassxc.git#branch=develop)
 md5sums=('SKIP')
 
 pkgver() {
