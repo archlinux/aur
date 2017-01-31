@@ -44,7 +44,7 @@ package() {
   mkdir -p "$pkgdir/etc/ld.so.conf.d" "$pkgdir/usr/share" "$pkgdir/opt/nessus" \
            "$pkgdir/usr/lib"
 
-  cp -a lib "$pkgdir/usr"
+  #cp -a lib "$pkgdir/usr"
 
   # path to libraries
   echo /opt/nessus/lib > "$pkgdir/etc/ld.so.conf.d/nessus.conf"
