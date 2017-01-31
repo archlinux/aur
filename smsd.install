@@ -1,11 +1,11 @@
 # arg 1:  the new package version
 post_install() {
-	getent group smsd >/dev/null 2>&1 || groupadd smsd
+	getent group smsd >/dev/null 2>&1 || groupadd -r smsd
 	if getent passwd smsd >/dev/null 2>&1; then
 		usermod -d /var/spool/sms -c 'SMS Gateway Daemon' \
 			-s /sbin/nologin smsd >/dev/null 2>&1
 	else
-		useradd -c 'SMS Gateway Daemon' -g smsd \
+		useradd -r -c 'SMS Gateway Daemon' -g smsd \
 			-d /var/spool/sms -s /sbin/nologin smsd >/dev/null 2>&1
 	fi
 	groupmems -g uucp -a smsd >/dev/null 2>&1

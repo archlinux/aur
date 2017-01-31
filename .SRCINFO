@@ -1,7 +1,7 @@
 pkgbase = smstools3
 	pkgdesc = SMS gateway which can send and receive messages through GSM modems and mobile phones
 	pkgver = 3.1.15
-	pkgrel = 4
+	pkgrel = 5
 	url = http://smstools3.kekekasvi.com/
 	install = smsd.install
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = smstools3
 	md5sums = 0241ef60e646fac1a06254a848e61ed7
 	md5sums = 4cadb840b5604a73831ef53f8c24bb11
 	md5sums = eabdaf793ed2fb9883ea0923b31450d3
-	md5sums = d0489ac2ec24784eabf2e781afd86240
+	md5sums = 24b41505c471d0594174bca4a1555f8f
 	md5sums = ebc64ebc17f874fc0b1e6f0b4ce7fc79
 	md5sums = 6209da5f6d2b53bb8814f6181aa42848
 	md5sums = 647c58aa56c6a29d6e68e73c239715f4
