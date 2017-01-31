@@ -3,7 +3,7 @@
 
 _pkgname=tqdm
 pkgname=(python-${_pkgname} python2-${_pkgname})
-pkgver=4.8.4
+pkgver=4.11.2
 pkgrel=1
 pkgdesc="Simple Python Progress Meter"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python2-setuptools')
 depends=('python')
 options=('!emptydirs')
 source=(https://github.com/tqdm/tqdm/releases/download/v${pkgver}/tqdm-${pkgver}.tar.gz)
-sha512sums=('69bae17df10a0cdd3f85e3f613d78b3e22fc21fb0260598bc1bc42ab517673ec71d13aa5b72641b5e984b78d6c82dca04f1211fcd1ee08da468fee2eb20d2062')
+sha512sums=('3aca25ffa76d4f9562f3dd980dcd0a2cc936ef4b8b155394323c7ea7eeeade692f567b294c82827327c55029b9b969e65c1f45dbc5be9b265c2c23f84c0fb056')
 
 prepare() {
     cp -a "${srcdir}/${_pkgname}-${pkgver}"{,-py2}
