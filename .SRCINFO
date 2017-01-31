@@ -1,7 +1,7 @@
 pkgbase = pypy-pyparsing
 	pkgdesc = General parsing module for Python
 	pkgver = 2.1.10
-	pkgrel = 2
+	pkgrel = 3
 	url = http://pyparsing.wikispaces.com/
 	arch = any
 	license = MIT
