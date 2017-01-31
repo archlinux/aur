@@ -6,7 +6,6 @@ post_upgrade() {
   if ! getent passwd spampd >/dev/null; then
     useradd -m -d /var/lib/spampd -r spampd
   fi
-  systemd-tmpfiles --create spampd.conf
 }
 
 # vim:set ts=2 sw=2 et:
