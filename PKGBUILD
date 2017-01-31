@@ -1,4 +1,5 @@
 # Maintainer: Pablo Orduna <pabloorduna98@gmail.com>
+# Contributor: Philippe Miron <tuxication@gmail.com>
 
 pkgname=cryptocat
 pkgver=3.2.07
