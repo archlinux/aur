@@ -1,7 +1,7 @@
 pkgbase = libresonic
 	pkgdesc = A free, web-based media streamer and jukebox.
 	pkgver = 6.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Libresonic/libresonic/
 	install = libresonic.install
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = libresonic
 	source = https://github.com/Libresonic/libresonic/releases/download/v6.1/libresonic-v6.1.war
 	source = libresonic.sh
 	source = libresonic.service
-	sha256sums = 042ab6833a8fa351712ff34899d6c0ba0024e420f16f81661a17405df081f246
+	sha256sums = SKIP
 	sha256sums = 34e4771f730f6de17aa2ba039cfab26772af3ab08e3f0c36d3f0c7a6e315a8e0
 	sha256sums = f1f4a22efb411d1f31f834f9f229e81c39d7f4db720281d9b0862c2f1b4d0697
 	sha256sums = afcef7b8ce8ceab58569440ed17d5828f39da072ea0d6e3e9fb82ac2feafcf9f

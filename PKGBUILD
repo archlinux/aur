@@ -2,7 +2,7 @@
 
 pkgname=libresonic
 pkgver=6.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('any')
 url="https://github.com/Libresonic/libresonic/"
@@ -31,7 +31,7 @@ package() {
   chmod +x $pkgdir/var/lib/libresonic/libresonic.sh
 }
 
-sha256sums=('042ab6833a8fa351712ff34899d6c0ba0024e420f16f81661a17405df081f246'
+sha256sums=('SKIP'
             '34e4771f730f6de17aa2ba039cfab26772af3ab08e3f0c36d3f0c7a6e315a8e0'
             'f1f4a22efb411d1f31f834f9f229e81c39d7f4db720281d9b0862c2f1b4d0697'
             'afcef7b8ce8ceab58569440ed17d5828f39da072ea0d6e3e9fb82ac2feafcf9f')
