@@ -12,8 +12,7 @@ depends=('python' 'boost-libs' 'jsoncpp' 'android-sdk-build-tools')
 makedepends=('git' 'boost')
 provides=('redex')
 conflicts=('redex')
-source=("git+https://github.com/facebook/${_pkgname}/"
-        "${_pkgname}.patch")
+source=("git+https://github.com/facebook/${_pkgname}/")
 sha256sums=('SKIP'
             '62e48fd8c554cfaaf21eadca6d74617f559780f1fd0fa9d61b5201fce961d6bb')
 
