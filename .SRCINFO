@@ -11,7 +11,6 @@ pkgbase = redex-git
 	depends = python
 	depends = boost-libs
 	depends = jsoncpp
-	depends = android-sdk-build-tools
 	provides = redex
 	conflicts = redex
 	source = git+https://github.com/facebook/redex/
