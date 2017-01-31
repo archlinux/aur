@@ -1,0 +1,19 @@
+pkgbase = pypy-pyparsing
+	pkgdesc = General parsing module for Python
+	pkgver = 2.1.10
+	pkgrel = 2
+	url = http://pyparsing.wikispaces.com/
+	arch = any
+	license = MIT
+	makedepends = pypy-setuptools
+	makedepends = pypy3-setuptools
+	makedepends = subversion
+	source = svn://svn.code.sf.net/p/pyparsing/code/tags/pyparsing_2.1.10
+	sha256sums = SKIP
+
+pkgname = pypy-pyparsing
+	depends = pypy
+
+pkgname = pypy3-pyparsing
+	depends = pypy3
+
