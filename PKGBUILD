@@ -13,7 +13,6 @@ provides=('bbswitch')
 conflicts=('bbswitch-git' 'bbswitch' 'dkms-bbswitch')
 depends=('dkms' 'linux-headers')
 makedepends=('git')
-install=bbswitch-dkms-git.install
 _gitroot='git://github.com/Bumblebee-Project/bbswitch.git'
 _gitname='bbswitch'
 _gitbranch='develop'
