@@ -1,0 +1,23 @@
+pkgbase = pypy-packaging
+	pkgdesc = Core utilities for Python packages
+	pkgver = 16.8
+	pkgrel = 1
+	url = https://github.com/pypa/packaging
+	arch = any
+	license = Apache
+	makedepends = pypy-setuptools
+	makedepends = pypy3-setuptools
+	makedepends = pypy-pyparsing
+	makedepends = pypy3-pyparsing
+	makedepends = git
+	source = git+https://github.com/pypa/packaging.git#tag=16.8
+	md5sums = SKIP
+
+pkgname = pypy-packaging
+	depends = pypy-pyparsing
+	depends = pypy-six
+
+pkgname = pypy3-packaging
+	depends = pypy3-pyparsing
+	depends = pypy3-six
+
