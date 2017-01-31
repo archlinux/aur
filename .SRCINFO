@@ -1,0 +1,26 @@
+pkgbase = python-django-cms
+	pkgdesc = An Advanced Django CMS
+	pkgver = 3.4.1
+	pkgrel = 1
+	url = https://django-cms.org
+	arch = any
+	license = BSD
+	source = python-django-cms-3.4.1.tar.gz::https://github.com/divio/django-cms/archive/3.4.1.tar.gz
+	md5sums = 458e98b6b83edc60088eb48edba16b84
+
+pkgname = python-django-cms
+	depends = python-django
+	depends = python-django-classy-tags
+	depends = python-django-formtools
+	depends = python-treebeard
+	depends = python-django-sekizai
+	depends = python-djangocms-admin-style
+
+pkgname = python2-django-cms
+	depends = python2-django
+	depends = python2-django-classy-tags
+	depends = python2-django-formtools
+	depends = python2-treebeard
+	depends = python2-django-sekizai
+	depends = python2-djangocms-admin-style
+
