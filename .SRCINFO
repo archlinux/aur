@@ -1,0 +1,16 @@
+pkgbase = inkscape-silhouette-git
+	pkgdesc = Inkscape driver for silhouette device
+	pkgver = 1.19.r28.g3c28053
+	pkgrel = 1
+	url = https://github.com/fablabnbg/inkscape-silhouette.git
+	arch = any
+	license = GPL3
+	depends = inkscape
+	depends = python2
+	depends = python2-lxml
+	depends = python2-pyusb
+	source = git://github.com/fablabnbg/inkscape-silhouette.git
+	sha256sums = SKIP
+
+pkgname = inkscape-silhouette-git
+
