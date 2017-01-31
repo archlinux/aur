@@ -2,7 +2,7 @@
 
 pkgname=qmmp-plugin-youtube
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Qt-based Multimedia Player (Qmmp) to search and play musics directly from YouTube"
 arch=('i686' 'x86_64')
 url="https://github.com/rigon/qmmp-plugin-youtube"
@@ -17,10 +17,6 @@ build() {
 
 	qmake
 	make -j4
-
-	cmake ./ -DCMAKE_INSTALL_PREFIX=bin/
-	make -j4 install && bin/qmmp_launcher
-
 }
 
 package() {
