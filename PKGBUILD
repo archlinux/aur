@@ -5,8 +5,8 @@
 # Contributor: Tobias Kieslich <tobias@justdreams.de>
 
 pkgname=courier-authlib
-pkgver=0.66.4
-pkgrel=2
+pkgver=0.67.0
+pkgrel=1
 pkgdesc="Authentification library for the courier mailserver(s)"
 arch=(i686 x86_64)
 license=('GPL2')
@@ -25,7 +25,7 @@ install=${pkgname}.install
 source=(http://downloads.sourceforge.net/project/courier/authlib/${pkgver}/${pkgname}-${pkgver}.tar.bz2
         courier-authlib.tmpfiles
 	authdaemond.service)
-sha512sums=('0987bc9d33a013ae842e0ea3e4e83ef9d6196c2f923a6970e049a36b8ccddbf0c4465c43c7e27d6718480e981f573795f6417478de1ff685264f3439e8dffdc9'
+sha512sums=('6e3da28d555761177727c44b1422bf5baf6ffbf28f53cea89a4a8e13daa5433803deba1614295d9679c41b5be4750f464e7869a2d3ecbfd91ae84e7281c4f3ef'
 	    '6fa87f52a3a26ae470bc28f9ff6d5f7c16afc5ccaf0d3209378e7339271d568dc59ca9fc9d0b5bbfc4155e76702f5de18899237252860a4a3636eabb94a770d7'
 	    '923b501bd250068956d304c2ab922af4e22f2828eae9fb17dc5945bbd2af3d0eb641ba8783a91a20f970bdda95e97f6ef2801e0b50d767c626ca38de6cb140b4')
 
