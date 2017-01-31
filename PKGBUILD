@@ -2,13 +2,13 @@
 
 pkgbase=vis-standalone-git
 pkgname=(vis-standalone-git vis-single-git)
-pkgver=0.2.r701.gcdd8c4b
+pkgver=0.2.r711.g963c238
 pkgrel=1
 _pkgver_libmusl=1.1.16
 _pkgver_ncurses=6.0
 _pkgver_libtermkey=0.19
-_pkgver_lua=5.3.3
-_pkgver_lpeg=1.0.0
+_pkgver_lua=5.3.4
+_pkgver_lpeg=1.0.1
 _pkgver_attr=2.4.47
 _pkgver_acl=2.2.52
 pkgdesc='modern, legacy free, simple yet efficient vim-like editor - statically linked - git checkout'
@@ -40,8 +40,8 @@ sha256sums=('SKIP'
             'f551c24b30ce8bfb6e96d9f59b42fbea30fa3a6123384172f9e7284bcf647260'
             'SKIP'
             'c505aa4cb48c8fa59c526265576b97a19e6ebe7b7da20f4ecaae898b727b48b7'
-            '5113c06884f7de453ce57702abaac1d618307f33f6789fa870e87a59d772aca2'
-            '10190ae758a22a16415429a9eb70344cf29cbda738a6962a9f94a732340abf8e'
+            'f681aa518233bc407e23acf0f5887c884f17436f000d453b2491a9f11a52400c'
+            '62d9f7a9ea3c1f215c77e0cadd8534c6ad9af0fb711c3f89188a8891c72f026b'
             '25772f653ac5b2e3ceeb89df50e4688891e21f723c460636548971652af0a859'
             'SKIP'
             '179074bb0580c06c4b4137be4c5a92a701583277967acdb5546043c7874e0d23'
