@@ -1,0 +1,15 @@
+pkgbase = mkpackage-git
+	pkgdesc = Collect an Arch package using its information from a local pacman database
+	pkgver = 5.fbe2fd1
+	pkgrel = 1
+	url = https://github.com/kalterfive/mkpackage
+	arch = any
+	license = GPL3
+	depends = bash
+	provides = mkpackage
+	conflicts = mkpackage
+	source = mkpackage::git://github.com/kalterfive/mkpackage
+	md5sums = SKIP
+
+pkgname = mkpackage-git
+
