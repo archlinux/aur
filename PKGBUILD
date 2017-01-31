@@ -1,5 +1,5 @@
 pkgname=openvr-git
-pkgver=41.b967460
+pkgver=43.7fa6470
 pkgrel=1
 pkgdesc="API and runtime that allows access to VR hardware from multiple vendors. Contains API and samples. The runtime is under SteamVR in Tools on Steam. Note: There's no compositor for linux, so try with hellovr -nocompositor"
 arch=('x86_64')
@@ -25,37 +25,44 @@ pkgver() {
 prepare() {
   cd "$srcdir/openvr"
   # Patch for https://github.com/ValveSoftware/openvr/issues/315
-  git apply -vvv "$srcdir"/countof.patch
 }
 
 build() {
   #export CXX=clang++
   #export CC=clang
 
-  cd "$srcdir/openvr"
-  cd samples
-  mkdir -p build
-  cd build
+  cd openvr
+  cmake -DBUILD_SHARED=0 -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=Release .
+  make
 
-  cmake .. -DCMAKE_BUILD_TYPE=Release
+  cmake -DBUILD_SHARED=1 -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=Release .
+  make
+
+  cd samples
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/ -Wno-dev .
 
   make
 }
 
 package() {
-  cd "$srcdir/openvr"
+  #make install DESTDIR="$pkgdir"
+  #make install DESTDIR="$pkgdir"
+  install -d "$pkgdir"/usr/lib
+  install -m 555 openvr/bin/linux64/libopenvr_api.so "$pkgdir/usr/lib"
+  install -m 555 openvr/bin/linux64/libopenvr_api.a "$pkgdir/usr/lib"
 
-  install -d "$pkgdir/usr/lib"
+  cd build-samples
+  #make install DESTDIR="$pkgdir"
   install -d "$pkgdir/usr/bin"
-  install -d "$pkgdir/usr/include/"
-
-  cp -ra "$srcdir/openvr/headers"/* "$pkgdir/usr/include/"
-  install "$srcdir/openvr/headers"/* "$pkgdir/usr/include/"
-  install -m 555 "$srcdir/openvr/lib/linux64/libopenvr_api.so" "$pkgdir/usr/lib"
   install -m 755 "$srcdir/openvr/samples/bin/linux64/hellovr_opengl" "$pkgdir/usr/bin"
-  install -m 755 "$srcdir/openvr/samples/bin/linux64/helloworldoverlay" "$pkgdir/usr/bin"
-  #install -m 755 "$srcdir/build/samples/hellovr_opengl/run_hellovr.sh" "$pkgdir/usr/bin/run_hellovr.sh"
   install -m 755 "$srcdir/openvr/samples/bin/cube_texture.png" "$pkgdir/usr/" #TODO: fix source code to look in proper place
+  install -m 755 "$srcdir/openvr/samples/bin/linux64/helloworldoverlay" "$pkgdir/usr/bin"
+  install -m 755 "$srcdir/openvr/samples/bin/linux64/tracked_camera_openvr_sample" "$pkgdir/usr/bin"
+  #install -m 755 "$srcdir/build/samples/hellovr_opengl/run_hellovr.sh" "$pkgdir/usr/bin/run_hellovr.sh"
+  
+  install -d "$pkgdir/usr/include/"
+  cp -ra "$srcdir/openvr/headers"/* "$pkgdir/usr/include/"
+  #install "$srcdir/openvr/headers"/* "$pkgdir/usr/include/"
   
 }
 
