@@ -1,0 +1,12 @@
+post_install() {
+	# remember the user to accept the license before use
+	# the program will not run otherwise
+	echo -e "\nPlease remember to accept the license\nYou can do it running /opt/fortinet/forticlientsslvpn/helper/setup.linux.sh as root\n"
+}
+
+post_upgrade() {
+        # remember the user to re-accept the license before use
+        # the program will not run otherwise
+        echo -e "\nPlease remember to re-accept the license\nYou can do it running /opt/fortinet/forticlientsslvpn/helper/setup.linux.sh as root again\n"
+}
+
