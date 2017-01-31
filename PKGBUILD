@@ -1,8 +1,8 @@
 # Maintainer: shizy <shizukesa4 at gmail dot com>
 pkgname=gloom
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
-pkgdesc='a X11 backlight dimming, screen lock, and cursor management tool for laptops.'
+pkgdesc='an X11 backlight dimming, screen lock, and cursor management tool.'
 arch=('x86_64')
 url=https://github.com/shizy/gloom
 license=('MIT')
