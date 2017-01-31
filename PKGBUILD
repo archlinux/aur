@@ -4,7 +4,7 @@
 pkgname=pypy-pyparsing
 pkgname=('pypy-pyparsing' 'pypy3-pyparsing')
 pkgver=2.1.10
-pkgrel=3
+pkgrel=4
 pkgdesc='General parsing module for Python'
 arch=('any')
 url='http://pyparsing.wikispaces.com/'
@@ -43,7 +43,7 @@ package_pypy3-pyparsing() {
 
   cd pyparsing_$pkgver/src
 
-  pypy3 setup.py install --prefix=/opt/pypy --root="$pkgdir" --optimize=1
+  pypy3 setup.py install --prefix=/opt/pypy3 --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
