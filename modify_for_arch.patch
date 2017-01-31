@@ -1,6 +1,6 @@
 diff -Naur a/program/functions.py b/program/functions.py
 --- a/program/functions.py	2010-12-05 01:18:57.000000000 +0800
-+++ b/program/functions.py	2015-10-26 14:47:11.167286057 +0800
++++ b/program/functions.py	2017-01-31 15:43:03.677139199 +0800
 @@ -54,10 +54,10 @@
  
  
@@ -19,7 +19,7 @@ diff -Naur a/program/functions.py b/program/functions.py
      print _('Making system dirs ...')
      errors = []
 -    for each in ( '/proc', '/sys', '/tmp', '/mnt', '/media', '/media/cdrom0' ):
-+    for each in ( '/run', '/dev', '/proc', '/sys', '/tmp', '/mnt', '/media', '/media/cdrom0', '/var/lib/systemd/coredump' ):
++    for each in ( '/run', '/dev', '/proc', '/sys', '/tmp', '/mnt', '/media', '/var/lib/systemd/coredump' ):
          tmp = commands.getstatusoutput( 'mkdir -p %s'%(target_root + each)  )
          if tmp[0] != 0:
              errors.append( _('Error occurred when mkdir %s , you need to make it manually.')%(target_root + each) )
@@ -32,7 +32,7 @@ diff -Naur a/program/functions.py b/program/functions.py
  '''
      MPs = mp_config.keys()
      MPs.sort()
-@@ -438,12 +438,16 @@
+@@ -438,12 +438,17 @@
      defaultExcludes.append( '/proc' )
      defaultExcludes.append( '/sys' )
      defaultExcludes.append( '/tmp' )
@@ -41,6 +41,7 @@ diff -Naur a/program/functions.py b/program/functions.py
 +    defaultExcludes.append( '/.snapshots' )
 +    defaultExcludes.append( '/var/lib/systemd/coredump' )
 +    defaultExcludes.append( '/home/*/.cache' )
++    defaultExcludes.append( '/home/*/.ccache' )
      defaultExcludes.append( '/mnt' )
      defaultExcludes.append( '/media' )
      
@@ -50,7 +51,7 @@ diff -Naur a/program/functions.py b/program/functions.py
      defaultExcludes.append( '/etc/blkid.tab' )
      defaultExcludes.append( '/etc/udev/rules.d/70-persistent-net.rules' )
  
-@@ -490,16 +491,16 @@
+@@ -490,16 +495,16 @@
                  defaultExcludes.append( '/lib/modules/' + kernelVersion + '/volatile/' + each )
  
      # /var/cache/apt/archives/*.deb
@@ -75,19 +76,19 @@ diff -Naur a/program/functions.py b/program/functions.py
  
 diff -Naur a/program/sh/install_grub.sh b/program/sh/install_grub.sh
 --- a/program/sh/install_grub.sh	2010-07-14 12:53:44.000000000 +0800
-+++ b/program/sh/install_grub.sh	2015-10-26 14:46:53.829725481 +0800
++++ b/program/sh/install_grub.sh	2017-01-31 15:43:03.677139199 +0800
 @@ -79,7 +79,7 @@
  
  
  echo "Generating grub.cfg ..."
 -target_cmd "$target_dir" update-grub
-+target_cmd "$target_dir" grub-mkconfig -o /boot/grub/grub.cfg
++target_cmd "$target_dir" grub-mkconfig -o ./boot/grub/grub.cfg
  
  
  if [ $? -eq 0 ] ; then
 diff -Naur a/program/ucloner_cmd.py b/program/ucloner_cmd.py
 --- a/program/ucloner_cmd.py	2010-12-05 01:25:02.000000000 +0800
-+++ b/program/ucloner_cmd.py	2015-10-26 14:48:39.320636280 +0800
++++ b/program/ucloner_cmd.py	2017-01-31 15:43:03.677139199 +0800
 @@ -130,7 +130,7 @@
          print 'functions.generate_fstab() done.'
          
@@ -106,10 +107,26 @@ diff -Naur a/program/ucloner_cmd.py b/program/ucloner_cmd.py
      f = file(exclusionListFile, 'w')
      for each in exList:
          f.write( each.strip('\r \n') + '\n' )
-diff -Naur a/ucloner_gui.py b/ucloner_gui.py
---- a/program/ucloner_gui.py	2015-10-26 23:12:28.000000000 +0800
-+++ b/program/ucloner_gui.py	2015-10-28 19:37:18.092016519 +0800
-@@ -53,7 +53,9 @@
+diff -Naur a/program/ucloner_gui.py b/program/ucloner_gui.py
+--- a/program/ucloner_gui.py	2010-12-28 14:00:35.000000000 +0800
++++ b/program/ucloner_gui.py	2017-01-31 15:46:49.536905266 +0800
+@@ -31,6 +31,15 @@
+ 
+ 
+ 
++import re
++Distro_ID="Linux"
++with open('/etc/os-release') as f:
++    for line in f:
++        Distro_Obj = re.search(u'(?<=ID_LIKE=).+',line)
++        if Distro_Obj != None :
++            Distro_ID=Distro_Obj.group(0)
++            break
++
+ 
+ 
+ 
+@@ -53,7 +62,9 @@
  
  
  
@@ -120,7 +137,7 @@ diff -Naur a/ucloner_gui.py b/ucloner_gui.py
  
  
  
-@@ -336,6 +338,7 @@
+@@ -336,6 +347,7 @@
          self.parent.set_sensitive(True)
          try:
              os.kill( self.id_subproc, signal.SIGKILL )
@@ -128,7 +145,7 @@ diff -Naur a/ucloner_gui.py b/ucloner_gui.py
          except:
              pass
  
-@@ -343,6 +346,7 @@
+@@ -343,6 +355,7 @@
      def stop_task(self, widget):
          try:
              os.kill( self.id_subproc, signal.SIGKILL )
@@ -136,7 +153,16 @@ diff -Naur a/ucloner_gui.py b/ucloner_gui.py
          except:
              pass
  
-@@ -674,12 +678,14 @@
+@@ -538,7 +551,7 @@
+         self.button_browse.connect('clicked', self.on_button_browse_clicked )
+         # 文件名
+         self.entry_backup_filename = self.builder.get_object('entry_backup_filename')
+-        self.entry_backup_filename.set_text( time.strftime('%Y-%m-%d_%H%M%S') + '.squashfs' )
++        self.entry_backup_filename.set_text( Distro_ID + "-" + time.strftime('%Y-%m-%d_%H%M%S') + '.squashfs' )
+ 
+ 
+         # 底部按钮 
+@@ -674,12 +687,14 @@
          self.parent.set_sensitive(True)
          try:
              os.kill( self.id_subproc, signal.SIGKILL )
