@@ -61,7 +61,7 @@ def find_cmd(cmd):
 
 def checksystemd():
 # Check if systemd is installed in the system
-    if os.path.exists('/bin/systemd'):
+    if os.path.exists('/bin/systemctl'):
         return 0
     return 1
 
