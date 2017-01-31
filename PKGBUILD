@@ -2,7 +2,7 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=2.12
+pkgver=2.12.1
 pkgrel=1
 _wwwpkgname=AdminLTE
 _wwwpkgver=2.4
@@ -31,7 +31,7 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	blacklist.txt
 	mimic_setupVars.conf.sh)
 
-md5sums=('451877c24c517e056cf4289f72dd5c0b'
+md5sums=('fe6c7e1c3ae51f688574c2f3816b9e0f'
          '6c05d58230a115c7facfa506e4611697'
          '3acf27ca01d931db363634dbfc95a061'
          '3f1aeea43af0b192edb36b9e5484ff87'
