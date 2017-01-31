@@ -2,7 +2,7 @@
 #gpg key avaible at gpg --keyserver pgp.mit.edu --recv-keys DB68D18158C19A535A538524507F8DFE0C99485B
 pkgname=vpndemon
 pkgver=3.0
-pkgrel=5
+pkgrel=6
 pkgdesc="VPNKS protects you against leaks caused by disconnetction"
 arch=('any')
 url="https://github.com/plasticbrain/vpnkillswitch"
@@ -25,6 +25,7 @@ package() {	mkdir -p "${pkgdir}/usr/bin"
         echo "If you've questions about this package, please read: http://mikeeverhart.net/2015/12/vpn-killswitch-bash-script/"
         echo "For recovery your connection please run # vpnkillswitch up" 
         mv ${pkgdir}/usr/bin/vpndemon.sh  ${pkgdir}/usr/bin/vpndemon
+        chmod +x ${pkgdir}/usr/bin/vpndemon
           
 }
 

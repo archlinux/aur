@@ -1,7 +1,7 @@
 pkgbase = vpndemon
 	pkgdesc = VPNKS protects you against leaks caused by disconnetction
 	pkgver = 3.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/plasticbrain/vpnkillswitch
 	arch = any
 	license = GPL
