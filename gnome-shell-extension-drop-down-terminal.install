@@ -1,7 +1,7 @@
 post_install() {
   echo ''
   echo '==> To enable Drop Down Terminal:'
-  echo '==> Reload Gnome Shell with Alt-F2 r'
+  echo '==> Reload Gnome Shell with Alt-F2 r (on Xorg)'
   echo '==> Enable it with the gnome-tweak-tool'
   echo '==> or run "gnome-shell-extension-tool -e drop-down-terminal@gs-extensions.zzrough.org"'
   echo ''
