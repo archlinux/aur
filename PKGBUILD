@@ -4,8 +4,8 @@
 # Contributor : abbradar <nikoamia at gmail {dot} com>
 
 pkgname=bbswitch-dkms-git
-pkgver=v0.8.r0.g0c38f97
-pkgrel=2
+pkgver=0.8.r0.g0c38f97
+pkgrel=1
 pkgdesc="kernel module allowing to switch dedicated graphics card on Optimus laptops, dkms version"
 arch=('i686' 'x86_64')
 url="http://github.com/Bumblebee-Project/bbswitch"
@@ -22,7 +22,7 @@ sha256sums=("SKIP")
 
 pkgver() {
     cd "$srcdir/${_gitname}"
-    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
