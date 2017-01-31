@@ -2,17 +2,15 @@
 
 pkgname=nautilus-nutstore
 pkgver=3.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Nutstore integration for Nautilus.'
 arch=(x86_64 i686)
 url='https://jianguoyun.com/'
 license=(CCPL:by-nd GPL2)
-depends=(libnautilus-extension)
-optdepends=('nutstore: Nutstore client (system-wide)'
-            'gtk2: per-user Nutstore depend'
-            'java-runtime: per-user Nutstore depend'
-            'python2-notify: per-user Nutstore depend')
+depends=(libnautilus-extension
+         nutstore)
 source=("https://jianguoyun.com/static/exe/installer/nutstore_linux_src_installer.tar.gz")
+sha256sums=('1d419da4c5d32bf124b7e11c9a914aa671665ca3ebb29d1336e339ecb1310de9')
 
 build()
 {
@@ -28,4 +26,3 @@ package()
     install -D -m 644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
     rm -rf $pkgdir/usr/share/icons/hicolor/64x64/apps/
 }
-md5sums=('60db9e2747eda4fb684dd802a2259abe')
