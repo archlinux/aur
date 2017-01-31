@@ -5,20 +5,29 @@
 # Contributor: DrZaius <lou[at]fakeoutdoorsman[dot]com>
 
 pkgname=lib32-libfdk-aac
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Fraunhofer FDK AAC codec library (32-bit)'
 arch=('x86_64')
 url='http://sourceforge.net/projects/opencore-amr/'
 license=('custom')
 depends=('glibc')
-provides=('libfdk-aac.so')
-source=("http://downloads.sourceforge.net/opencore-amr/fdk-aac-${pkgver}.tar.gz")
-sha256sums=('5910fe788677ca13532e3f47b7afaa01d72334d46a2d5e1d1f080f1173ff15ab')
+makedepends=('git')
+provides=('lib32-libfdk-aac.so')
+_commit='74c1a2a4f831285cbd93ec1427f1670d3c5c5e52'
+source=("git+https://github.com/mstorsjo/fdk-aac.git#commit=${_commit}")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd fdk-aac
+
+  git describe | sed 's/^v//; s/-/.r/; s/-g/./'
+}
 
 build() {
-  cd fdk-aac-${pkgver}
+  cd fdk-aac
 
+  ./autogen.sh
   CC='gcc -m32' CXX='g++ -m32' CXXFLAGS='-Wno-narrowing -O2'  ./configure \
     --prefix='/usr' \
     --libdir=/usr/lib32 \
@@ -27,7 +36,7 @@ build() {
 }
 
 package () {
-  cd fdk-aac-${pkgver}
+  cd fdk-aac
 
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}/usr/include"
