@@ -21,7 +21,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${pkgname}"
-    sed -i "s/pypi/arch/" __init__.py
+    sed -i "s/pypi/arch/" vidcutter/__init__.py
 }
 
 build() {
