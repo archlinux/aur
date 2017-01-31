@@ -2,7 +2,7 @@
 
 pkgname=nutstore
 pkgver=3.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc='a cloud service that lets you sync and share files anywhere.'
 arch=(x86_64 i686)
 url='https://jianguoyun.com/'
@@ -33,7 +33,7 @@ package()
     cd $srcdir
     install -D -m755 nutstore $pkgdir/usr/bin/nutstore
     install -D -m644 license $pkgdir/usr/share/licenses/$pkgname/license
-    rm nustore license *.tar.gz
+    rm nutstore license *.tar.gz
     mkdir -p $pkgdir/opt/$pkgname && cp -aR ./ $pkgdir/opt/$pkgname
     install -D -m644 gnome-config/menu/nutstore-menu.desktop $pkgdir/usr/share/applications/nutstore.desktop
     install -D -m644 app-icon/nutstore.png $pkgdir/usr/share/icons/hicolor/64x64/apps/nutstore.png
