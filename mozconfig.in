@@ -9,12 +9,10 @@ mk_add_options MOZ_OBJDIR=%SRCDIR%/pmbuild
 ac_add_options --disable-installer
 ac_add_options --disable-updater
 
-ac_add_options --disable-tests
-ac_add_options --disable-mochitests
 ac_add_options --disable-debug
 
 ac_add_options --enable-jemalloc
-#ac_add_options --enable-jemalloc-lib #does nothing?
+#ac_add_options --enable-jemalloc-lib #potentially causes serious regressions
 ac_add_options --with-pthreads
 
 ac_add_options --enable-strip
@@ -22,7 +20,7 @@ ac_add_options --enable-optimize="-O2 -msse2 -mfpmath=sse"
 
 ac_add_options --x-libraries=/usr/lib
 
-# gcc6 doesn't work, explicitly use gcc5
+# gcc6 now builds, but explicitly use gcc5 for now. Upstream recommends using gcc4.9 over either but is EOL.
 export CC=gcc-5
 export CXX=g++-5
 
@@ -33,20 +31,14 @@ mk_add_options PYTHON=/usr/bin/python2
 mk_add_options MOZ_MAKE_FLAGS="-j4"
 
 # disable junk
-ac_add_options --disable-accessibility
 ac_add_options --disable-codesighs
 ac_add_options --disable-gamepad
 ac_add_options --disable-logging
 ac_add_options --disable-necko-wifi
-ac_add_options --disable-parental-controls
-ac_add_options --disable-safe-browsing
-ac_add_options --disable-webrtc
 ac_add_options --disable-websms-backend
-ac_add_options --disable-valgrind
 
 # enable useful features
 ac_add_options --enable-chrome-format=omni
-ac_add_options --enable-gstreamer
-ac_add_options --enable-pulseaudio
 ac_add_options --enable-startup-notification
-ac_add_options --enable-url-classifier
+ac_add_options --enable-shared-js
+ac_add_options --enable-devtools
