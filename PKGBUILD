@@ -5,7 +5,7 @@
 
 pkgname=bbswitch-dkms-git
 pkgver=v0.8.r0.g0c38f97
-pkgrel=1
+pkgrel=2
 pkgdesc="kernel module allowing to switch dedicated graphics card on Optimus laptops, dkms version"
 arch=('i686' 'x86_64')
 url="http://github.com/Bumblebee-Project/bbswitch"
