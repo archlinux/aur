@@ -2,7 +2,7 @@
 # Maintainer: Ben Alex <ben.alex@acegi.com.au>
 
 pkgname=elephantdrive
-pkgver=3.0.20
+pkgver=3.0.24
 pkgrel=1
 pkgdesc='Service for the Elephant Drive encrypted cloud backup service'
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ backup=('etc/elephantdrive.config')
 source=('elephantdrive.service'
         "http://distribution.vaultservices.net/edNative/master${pkgver}/linux/Linux_Elephantdrive_${arch}_${pkgver}.tar.gz")
 md5sums=('09a3214b733fe5313b4424926fb3ffa8'
-         '0442944159c554f5d6264a82e746655b')
+         '6a2c5aed044b48b644a83d3282c5da67')
 
 package() {
 	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
