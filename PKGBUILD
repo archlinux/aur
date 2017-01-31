@@ -2,7 +2,7 @@
 
 pkgname=simplenote-electron-bin
 _pkgname=simplenote
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="The simplest way to keep notes."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'gconf' 'alsa-lib' 'nss' 'libxtst' 'gtk2' 'libnotify')
 optdepends=()
 provides=('simplenote')
 source=("https://github.com/Automattic/simplenote-electron/releases/download/v${pkgver}/${_pkgname}-${pkgver}.deb")
-md5sums=('7ead835110aee9dd6d4b77faacf5b3d0')
+sha256sums=('65754c94a462833dadce98f84ccbd66ffdbb060e1871b368f9c6f5403aaaa3c5')
 
 package() {
   cd ${srcdir}
