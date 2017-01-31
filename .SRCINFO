@@ -1,0 +1,17 @@
+pkgbase = raspberry-remote-git
+	pkgdesc = Control remote plugs with the Raspberry Pi, features a webinterface. Uses RCSwitch and wiringPi.
+	pkgver = 70.8a5b705
+	pkgrel = 1
+	url = https://github.com/xkonni/raspberry-remote
+	arch = armv7h
+	arch = armv6h
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = wiringpi-git
+	source = git://github.com/xkonni/raspberry-remote
+	md5sums = SKIP
+
+pkgname = raspberry-remote-git
+
