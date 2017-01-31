@@ -1,0 +1,12 @@
+pkgbase = swiss-army-scrot
+	pkgdesc = Simple screenshot utility that integrates nicely into i3 and XFCE.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = xclip
+	depends = scrot
+	optdepends = libnotify: desktop notifications when you take screenshots
+
+pkgname = swiss-army-scrot
+
