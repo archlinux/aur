@@ -1,7 +1,7 @@
 pkgbase = bed-latex-git
 	pkgdesc = BEd: Beamer Editor, GUI for LaTeX Beamer presentations.
 	pkgver = git
-	pkgrel = 1
+	pkgrel = 2
 	url = https://framagit.org/delisle/bed
 	install = bed.install
 	arch = any
@@ -13,7 +13,8 @@ pkgbase = bed-latex-git
 	depends = texlive-latexextra
 	optdepends = python-pygments
 	provides = bed-latex
-	conflicts = bed,bed-latex
+	conflicts = bed
+	conflicts = bed-latex
 	source = bed-latex-git::git+https://framagit.org/delisle/bed.git
 	md5sums = SKIP
 

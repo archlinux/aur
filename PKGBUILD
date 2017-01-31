@@ -1,7 +1,7 @@
 # Maintainer: Jean-Baptiste Delisle <jb dot delisle at aliceadsl dot fr>
 pkgname=bed-latex-git
 pkgver=git
-pkgrel=1
+pkgrel=2
 pkgdesc="BEd: Beamer Editor, GUI for LaTeX Beamer presentations."
 arch=(any)
 url="https://framagit.org/delisle/bed"
@@ -10,7 +10,7 @@ depends=('python>=3.0' 'python-pyqt5' 'python-poppler-qt5' 'texlive-core' 'texli
 optdepends=('python-pygments')
 makedepends=()
 provides=('bed-latex')
-conflicts=('bed','bed-latex')
+conflicts=('bed' 'bed-latex')
 install="bed.install"
 source=("$pkgname::git+https://framagit.org/delisle/bed.git")
 md5sums=('SKIP')
