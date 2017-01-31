@@ -1,0 +1,16 @@
+pkgbase = python-django-classy-tags
+	pkgdesc = Class based template tags for Django
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/django-classy-tags/
+	arch = any
+	license = BSD
+	source = https://pypi.python.org/packages/e0/64/a4a72d2bd04848864e7c39b30a3f44be05c328a7f7a4b6406369ad21daac/django-classy-tags-0.8.0.tar.gz
+	md5sums = ce744abd9dc3a96f87b8164bfb31a6ff
+
+pkgname = python-django-classy-tags
+	depends = python
+
+pkgname = python2-django-classy-tags
+	depends = python2
+
