@@ -9,7 +9,7 @@ pkgdesc="Inkscape driver for silhouette device"
 arch=('any')
 url="https://github.com/fablabnbg/inkscape-silhouette.git"
 license=('GPL3')
-depends=('inkscape' 'python2' 'python2-lxml' 'python2-pyusb')
+depends=('python2-setuptools' 'inkscape' 'python2' 'python2-lxml' 'python2-pyusb')
 source=("git://github.com/fablabnbg/inkscape-silhouette.git")
 sha256sums=('SKIP')
 

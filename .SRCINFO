@@ -5,6 +5,7 @@ pkgbase = inkscape-silhouette-git
 	url = https://github.com/fablabnbg/inkscape-silhouette.git
 	arch = any
 	license = GPL3
+	depends = python2-setuptools
 	depends = inkscape
 	depends = python2
 	depends = python2-lxml
