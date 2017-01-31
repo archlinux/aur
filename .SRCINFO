@@ -1,7 +1,8 @@
 pkgbase = swiss-army-scrot
 	pkgdesc = Simple screenshot utility that integrates nicely into i3 and XFCE.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
+	url = https://gitla.in/flisk/swiss-army-scrot
 	arch = any
 	license = MIT
 	depends = xclip
