@@ -1,0 +1,215 @@
+.\" checkrestart.1 - provide a list of processes that need to be restarted
+.\" Copyright (C) 2006-2014 Javier Fernandez-Sanguino
+.\"
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2, or (at your option)
+.\" any later version.
+.\"
+.\" On Debian systems, a copy of the GNU General Public License version 2
+.\" can be found in /usr/share/common-licenses/GPL-2.
+.TH checkrestart 1 "December 19 2006" "debian\-goodies" "debian\-goodies"
+.SH NAME
+checkrestart \- check which processes need to be restarted after an upgrade
+.SH SYNOPSIS
+.B checkrestart [ -hvpan ] [ -b blacklist_file ] [ -i package_name ] [ -e pid ]
+.SH DESCRIPTION
+The
+.B checkrestart
+program tries to determine if there are processes in the system
+that need to be restarted after a system upgrade. This is necessary since an upgrade
+will usually bring new system libraries and running processes will be still
+using the old versions of the libraries. In \fIstable\fP Debian GNU/Linux
+systems this is typically needed to eliminate a system exposure to a
+vulnerability which might have been fixed by upgrading a library which that
+process makes use of.
+
+.P
+Consequently,
+.B checkrestart
+is sometimes used as an audit tool to find outdated versions of libraries in use,
+particularly after security upgrades. Administrators should not, however, rely
+on its output completely (see \fBBUGS\fP below).
+
+.P
+This script needs to run as root in order to obtain the information it needs
+for analysis.
+
+.SH OPTIONS
+
+.TP
+\fB\-h\fP, \fB \-\-help\fP
+Show the program help and exit.
+
+.TP
+\fB\-v\fP, \fB\-\-verbose\fP
+Generate detailed output. This output includes the list of all
+processes found using deleted files or descriptors as well as the deleted files
+and descriptors found.
+
+.TP
+\fB\-p\fP, \fB\-\-package\fP
+Only process deleted files that belong to a package, ignoring deleted files
+which do not have an associated package in the package system.
+
+.TP
+\fB\-a\fP, \fB\-\-all\fP
+Process all deleted files regardless of location. This makes
+the program analyse deleted files even if they would be discarded
+because they are located in locations, such as
+.I /tmp
+, which are known to produce false positives. It will take preceded if used
+simultaneously with the
+.B -p
+option.
+
+.TP
+\fB\-b\fP \fIfile\fP, \fB\-\-blacklist=\fP\fIfile\fP
+Read a blacklist of regular expressions from
+.I file.
+Any files matching the patterns will be ignored. More than one pattern
+can be provided by using this option more than once.
+
+.TP
+\fB\-i\fP \fIname\fP, \fB\-\-ignore=\fP\fIname\fP
+Ignore services that are associated to the package name provided in
+.I name.
+More than one package can be provided by using this option more than once.
+
+.TP
+\fB\-e\fP \fIpid\fP, \fB\-\-excludepid=\fP\fIpid\fP
+Exclude processes running with
+.I pid
+when looking for open files. This can speed up checkrestart on systems with a
+large number of open files. Note: this option only works if
+.B lsof(8)
+is not used.  More than one process identifier can be provided by
+using this option more than once.
+
+.TP
+\fB\-n\fP, \fB\-\-nolsof\fP
+Do not use
+.B lsof(8)
+even if available. In some systems where there are large number of files the
+use of lsof might be inefficient. Use this option to disable lsof. Notice also
+that if lsof is not installed an alternative mechanism to extract deleted files
+will be used instead. Consequently, there is no need to set this option
+in systems that do not have
+.B lsof(8)
+installed.
+
+.SH EXIT STATUS
+
+The program will exit with error (1) if a non-root user tries to run it. Otherwise,
+it will always exit with error status 0.
+
+.SH EXAMPLE
+
+Start it as user root without parameters:
+
+  # checkrestart
+  Found 20 processes using old versions of upgraded files
+  (15 distinct programs)
+  (14 distinct packages)
+
+  Of these, 12 seem to contain init scripts which can be used to restart them:
+  The following packages seem to have init scripts that could be used to restart them:
+  gpm:
+          3044    /usr/sbin/gpm
+  rpcbind:
+          2208    /sbin/rpcbind
+  bind9:
+          8463    /usr/sbin/named
+  openssh-server:
+          22124   /usr/sbin/sshd
+  ntp:
+          4078    /usr/sbin/ntpd
+  tftpd-hpa:
+          3417    /usr/sbin/in.tftpd
+  uptimed:
+          2704    /usr/sbin/uptimed
+  cron:
+          3019    /usr/sbin/cron
+  postfix:
+          22145   /usr/lib/postfix/qmgr
+          8892    /usr/lib/postfix/master
+  hddtemp:
+          3174    /usr/sbin/hddtemp
+  autofs:
+          2792    /usr/sbin/automount
+  openbsd-inetd:
+          3254    /usr/sbin/inetd
+
+  These are the init scripts:
+  service gpm restart
+  service rpcbind restart
+  service bind9 restart
+  service ssh restart
+  service ntp restart
+  service tftpd-hpa restart
+  service uptimed restart
+  service cron restart
+  service postfix restart
+  service hddtemp restart
+  service autofs restart
+  service openbsd-inetd restart
+
+  These processes do not seem to have an associated init script to restart them:
+  isc-dhcp-client:
+          3775    /sbin/dhclient
+
+.SH BUGS
+This program might fail if the output of the \fBlsof(8)\fP utility changes since it
+depends on it to detect which deleted files are used by processes. It might
+also output some false positives depending on the processes' behaviour since
+it does not check yet if the (deleted) files in use are really libraries.
+
+.P
+If you find a false positive in
+.B checkrestart
+please provide the following information when submitting a bug report:
+
+.IP \(em
+The output of \fBcheckrestart\fP using the \fB-v\fP (verbose) option.
+
+.IP \(em
+The output of running the following command as root:
+.PP
+        lsof | egrep 'delete|DEL|path inode'
+.PP
+
+.P
+.B checkrestart
+is also sensitive to the kernel version in use. And might fail to work with newer
+(or older) versions.
+
+.SH  SEE ALSO
+\fBlsof(8)\fP, \fBneedrestart(8)\fP
+
+Please note that the
+.B needrestart
+program uses a different logic to determine which services should be restarted
+based on deleted files. Results might not be exactly the same as those provided
+by
+.B checkrestart
+
+.SH AUTHOR
+
+.B checkrestart
+was written by Matt Zimmerman for the Debian GNU/Linux distribution. It was
+later improved by Javier Fernandez-Sanguino with contributions from many
+different users and developers of the Debian GNU/Linux distribution.
+
+.SH COPYRIGHT AND LICENCE
+
+Copyright (C) 2001 Matt Zimmerman <mdz@debian.org>
+.br
+Copyright (C) 2007,2010-2015 Javier Fernandez-Sanguino <jfs@debian.org>
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2, or (at your option)
+any later version.
+
+On Debian systems, a copy of the GNU General Public License version 2
+can be found in /usr/share/common-licenses/GPL-2.
