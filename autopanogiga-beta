@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd /opt/autopanogiga-beta/
+cd /opt/kolor/autopanogiga-beta/
 ./AutopanoGiga.sh $@
