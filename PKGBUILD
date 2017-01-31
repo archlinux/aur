@@ -6,7 +6,7 @@
 pkgname=bbswitch-dkms-git
 _pkgname='bbswitch'
 pkgver=0.8.r0.g0c38f97
-pkgrel=3
+pkgrel=4
 pkgdesc="kernel module allowing to switch dedicated graphics card on Optimus laptops, dkms version"
 arch=('i686' 'x86_64')
 url="http://github.com/Bumblebee-Project/bbswitch"
@@ -30,11 +30,10 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   # Exceprt adapted from upstream Makefile.dkms
-  modver=`awk -F'"' '/define *BBSWITCH_VERSION/{print $2}' < bbswitch.c`
-  sed -e "s/#MODULE_VERSION#/${modver}/" < "dkms/dkms.conf" > dkms.conf
+  sed -e "s/#MODULE_VERSION#/${pkgver}/" -i "dkms/dkms.conf"
 
-  install -dm755 "${pkgdir}/usr/src/${_pkgname}-${modver}"
-  install -Dm644 Makefile bbswitch.c dkms.conf "${pkgdir}/usr/src/${_pkgname}-${modver}"
+  install -dm755 "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
+  install -Dm644 Makefile bbswitch.c dkms/dkms.conf "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
 
   install -dm755 "${pkgdir}/usr/share/doc/${_pkgname}/"
   install -Dm644 NEWS README.md "${pkgdir}/usr/share/doc/${_pkgname}/"
