@@ -2,7 +2,7 @@
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com> 
 
 pkgname=rtags-git
-pkgver=r6523.6641603
+pkgver=r6697.a9796852
 pkgrel=1
 pkgdesc="RTags is a client/server application that indexes C/C++ code."
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ source=("git+${url}.git"
         rdm.service
         rdm.socket)
 sha256sums=('SKIP'
-            '69e04a0b57f329b251fac89710e41448e28b0719c93267fe03c5b98a6d37b172'
-            '25d1842a4187a1933ff27833201cfd0879da71a50241860e32edecfc7e75f14f')
+            '2ceac912b6ae0e41d4d9634b6d60027ce4b4f9912ac927b82f5d2e4beae5cf4a'
+            '56bf4f3e8208ea142c61ed6f80b4907f15e2bab8d690763cff8fb15f893ad16d')
 
 pkgver() {
     cd rtags
