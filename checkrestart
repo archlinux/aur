@@ -42,6 +42,7 @@ import sys
 import string
 import subprocess
 import getopt
+import glob
 from stat import *
 
 def checkroot():
@@ -308,7 +309,12 @@ def lsoffilescheck(blacklist = None):
 # Use LSOF to extract the list of deleted files
     processes = {}
 
-    for line in os.popen('lsof +XL -F nf').readlines():
+# Avoid stat()-ing gvfs file systems because it's mostly pointless and
+# generates unsightly warning messages.
+    lsof_args = " ".join(["-e {}/gvfs".format(path)
+                          for path in glob.glob("/run/user/*")])
+
+    for line in os.popen('lsof +XL -F nf ' + lsof_args).readlines():
         field, data = line[0], line[1:-1]
 
         if field == 'p':
