@@ -1,0 +1,17 @@
+pkgbase = redex
+	pkgdesc = A bytecode optimizer for Android apps
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://fbredex.com/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = boost
+	depends = python
+	depends = boost-libs
+	depends = jsoncpp
+	source = https://github.com/facebook/redex/archive/v1.1.0.tar.gz
+	sha256sums = af2c81db4e0346e1aeef570e105c60ebfea730d62fd928d996f884abda955990
+
+pkgname = redex
+
