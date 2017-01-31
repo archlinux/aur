@@ -1,0 +1,18 @@
+pkgbase = ttf-metamorphous
+	pkgdesc = Metamorphous Font
+	pkgver = 20170131
+	pkgrel = 1
+	url = http://sorkintype.com/fonts.html
+	install = install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = ttf-metamorphous-20170131::http://www.1001freefonts.com/d/5661/metamorphous.zip
+	source = install
+	md5sums = 4b84170446d219bea6b290f4eeadd9ad
+	md5sums = b9b03309f730947d472a63b0e5ca3bb1
+
+pkgname = ttf-metamorphous
+
