@@ -14,7 +14,7 @@
 
 pkgname=uuid
 pkgver=1.6.2
-pkgrel=12
+pkgrel=13
 pkgdesc="OSSP Universally Unique Identifier"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.ossp.org/pkg/lib/uuid"
@@ -22,14 +22,17 @@ license=('MIT')
 depends=('sh')
 options=('!libtool')
 source=("http://www.mirrorservice.org/sites/ftp.ossp.org/pkg/lib/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+        "http://pkgs.fedoraproject.org/cgit/rpms/uuid.git/plain/uuid-aarch64.patch"
         ossp.patch)
 sha512sums=('16c7e016ce08d7679cc6ee7dec43a886a8c351960acdde99f8f9b590c7232d521bc6e66e4766d969d22c3f835dcc2814fdecc44eef1cd11e7b9b0f9c41b5c03e'
+	    '534ade47bf17531108d96c46bfc489b9fd4b1e7a66fcd903c8036210bdc6e631d591d04184e37b56c64ee74c05af799971d47d4cf30b25b45e05413319ae2f34'
             '36d0ea6088c12a5e382c3098f11214b202e96f91e4efd5cac567d5a81e836f78eeb654f051c576a211ec2dd5337b1f0a20d4246e84a0842fce22ae5fa96e5be9')
 
 build() {
   cd "${pkgname}"-"${pkgver}"
   # Rename because conflicts with util-linux
   patch -p1 -i "${srcdir}"/ossp.patch
+  patch -p1 -i "${srcdir}"/uuid-aarch64.patch
   ./configure --prefix=/usr --with-perl
   make
 }
