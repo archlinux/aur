@@ -51,7 +51,6 @@ package() {
   install -m 555 openvr/bin/linux64/libopenvr_api.so "$pkgdir/usr/lib"
   install -m 555 openvr/bin/linux64/libopenvr_api.a "$pkgdir/usr/lib"
 
-  cd build-samples
   #make install DESTDIR="$pkgdir"
   install -d "$pkgdir/usr/bin"
   install -m 755 "$srcdir/openvr/samples/bin/linux64/hellovr_opengl" "$pkgdir/usr/bin"
