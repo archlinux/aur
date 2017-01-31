@@ -1,6 +1,6 @@
 pkgbase = kitematic
 	pkgdesc = Visual Docker Container Management
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/docker/kitematic
 	arch = x86_64
