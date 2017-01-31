@@ -1,0 +1,241 @@
+#!/usr/bin/perl
+
+=head1 NAME
+
+vidir - edit directory
+
+=head1 SYNOPSIS
+
+B<vidir> [--verbose] [directory|file|-] ...
+
+=head1 DESCRIPTION
+
+vidir allows editing of the contents of a directory in a text editor. If no
+directory is specified, the current directory is edited. 
+
+When editing a directory, each item in the directory will appear on its own
+numbered line. These numbers are how vidir keeps track of what items are
+changed. Delete lines to remove files from the directory, or
+edit filenames to rename files. You can also switch pairs of numbers to
+swap filenames.
+
+Note that if "-" is specified as the directory to edit, it reads a list of
+filenames from stdin and displays those for editing. Alternatively, a list
+of files can be specified on the command line.
+
+=head1 OPTIONS
+
+=over 4
+
+=item -v, --verbose
+
+Verbosely display the actions taken by the program.
+
+=back
+
+=head1 EXAMPLES
+
+=over 4
+
+=item vidir
+
+=item vidir *.jpeg
+
+Typical uses.
+
+=item find | vidir -
+
+Edit subdirectory contents too. To delete subdirectories,
+delete all their contents and the subdirectory itself in the editor.
+
+=item find -type f | vidir -
+
+Edit all files under the current directory and subdirectories.
+
+=back
+
+=head1 ENVIRONMENT VARIABLES
+
+=over 4
+
+=item EDITOR
+
+Editor to use.
+
+=item VISUAL
+
+Also supported to determine what editor to use.
+
+=back
+
+=head1 AUTHOR
+
+Copyright 2006 by Joey Hess <id@joeyh.name>
+
+Licensed under the GNU GPL.
+
+=cut
+
+use File::Basename;
+use File::Path qw(make_path);
+use File::Spec;
+use File::Temp;
+use Getopt::Long;
+
+my $error=0;
+
+my $verbose=0;
+if (! GetOptions("verbose|v" => \$verbose)) {
+	die "Usage: $0 [--verbose] [directory|file|-]\n";
+}
+
+my @dir;
+if (! @ARGV) {
+	push @ARGV, "."
+}
+foreach my $item (@ARGV) {
+	if ($item eq "-") {
+		push @dir, map { chomp; $_ } <STDIN>;
+		close STDIN;
+		open(STDIN, "/dev/tty") || die "reopen: $!\n";
+	}
+	elsif (-d $item) {
+		$item =~ s{/?$}{/};
+		opendir(DIR, $item) || die "$0: cannot read $item: $!\n";
+		push @dir, map { "$item$_" } sort readdir(DIR);
+		closedir DIR;
+	}
+	else {
+		push @dir, $item;
+	}
+}
+
+if (grep(/[[:cntrl:]]/, @dir)) {
+	die "$0: control characters in filenames are not supported\n";
+}
+
+my $tmp=File::Temp->new(TEMPLATE => "dirXXXXX", DIR => File::Spec->tmpdir);
+open (OUT, ">".$tmp->filename) || die "$0: cannot create ".$tmp->filename.": $!\n";
+
+my %item;
+my $c=0;
+foreach (@dir) {
+	next if /^(.*\/)?\.$/ || /^(.*\/)?\.\.$/;
+	$item{++$c}=$_;
+	print OUT "$c\t$_\n";
+}
+@dir=();
+close OUT || die "$0: cannot write ".$tmp->filename.": $!\n";
+
+my @editor="vi";
+if (-x "/usr/bin/editor") {
+	@editor="/usr/bin/editor";
+}
+if (exists $ENV{EDITOR}) {
+	@editor=split(' ', $ENV{EDITOR});
+}
+if (exists $ENV{VISUAL}) {
+	@editor=split(' ', $ENV{VISUAL});
+}
+$ret=system(@editor, $tmp);
+if ($ret != 0) {
+	die "@editor exited nonzero, aborting\n";
+}
+
+open (IN, $tmp->filename) || die "$0: cannot read ".$tmp->filename.": $!\n";
+while (<IN>) {
+	chomp;
+	if (/^(\d+)\t{0,1}(.*)/) {
+		my $num=int($1);
+		my $name=$2;
+		if (! exists $item{$num}) {
+			die "$0: unknown item number $num\n";
+		}
+		elsif ($name ne $item{$num}) {
+			next unless length $name;
+			my $src=$item{$num};
+			my $dir=dirname($name);
+
+			if (! (-e $src || -l $src) ) {
+				print STDERR "$0: $src does not exist\n";
+				delete $item{$num};
+				next;
+			}
+
+			# deal with swaps
+			if (-e $name || -l $name) {
+				my $tmp=$name."~";
+				my $c=0;
+				while (-e $tmp || -l $tmp) {
+					$c++;
+					$tmp=$name."~$c";
+				}
+				if (! rename($name, $tmp)) {
+					print STDERR "$0: failed to rename $name to $tmp: $!\n";
+					$error=1;
+				}
+				elsif ($verbose) {
+					print "'$name' -> '$tmp'\n";
+				}
+				foreach my $item (keys %item) {
+					if ($item{$item} eq $name) {
+						$item{$item}=$tmp;
+					}
+				}
+			}
+
+			if ((! -d $dir) && (! make_path($dir, {
+							verbose => $verbose,
+						}))) {
+				print STDERR "$0: failed to create directory tree $dir: $!\n";
+				$error=1;
+			}
+			elsif (! rename($src, $name)) {
+				print STDERR "$0: failed to rename $src to $name: $!\n";
+				$error=1;
+			}
+			else {
+				if (-d $name) {
+					foreach (values %item) {
+						s,^\Q$src\E($|/),$name$1,;
+					}
+				}
+				if ($verbose) {
+					print "'$src' => '$name'\n";
+				}
+			}
+		}
+		delete $item{$num};
+	}
+	elsif (/^\s*$/) {
+		# skip empty line
+	}
+	else {
+		die "$0: unable to parse line \"$_\", aborting\n";
+	}
+}
+close IN || die "$0: cannot read ".$tmp->filename.": $!\n";
+unlink($tmp.'~') if -e $tmp.'~';
+
+sub rm {
+	my $file = shift;
+
+	if (-d $file && ! -l $file) {
+		return rmdir $file;
+	}
+	else {
+		return unlink $file;
+	}
+}
+
+foreach my $item (reverse sort values %item) {
+	if (! rm($item)) {
+		print STDERR "$0: failed to remove $item: $!\n";
+		$error=1;
+	}
+	if ($verbose) {
+		print "removed '$item'\n";
+	}
+}
+
+exit $error;
