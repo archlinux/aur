@@ -1,13 +1,14 @@
 # Maintainer: Frantisek Fladung <ametisf@gmail.com>
 
 pkgname=velox-ametisf-git
-pkgver=0.0.2.r280.g6d37585
+pkgver=0.0.2.r290.g81721e4
 pkgrel=1
 pkgdesc="Ametisf's fork of velox."
 arch=('i686' 'x86_64')
 url="https://github.com/ametisf/velox"
 license=('MIT')
 depends=('swc')
+optdepends=('terminus-font: bitmap font for nicer rendering')
 conflicts=('velox')
 provides=('velox')
 source=("$pkgname::git+https://github.com/ametisf/velox.git")

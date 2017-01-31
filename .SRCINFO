@@ -7,6 +7,7 @@ pkgbase = velox-ametisf-git
 	arch = x86_64
 	license = MIT
 	depends = swc
+	optdepends = terminus-font: bitmap font for nicer rendering
 	provides = velox
 	conflicts = velox
 	source = velox-ametisf-git::git+https://github.com/ametisf/velox.git
