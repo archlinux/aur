@@ -2,7 +2,7 @@
 pkgname=feedreader-git
 pkgver=1.6.2.r1672.b538ade
 _pkgver=1.6.2 # Must be manually bumped when a new stable version is released (see pkgver())
-pkgrel=1
+pkgrel=2
 pkgdesc="FeedReader is a modern desktop application designed to complement existing web-based RSS accounts."
 arch=('i686' 'x86_64')
 url="https://github.com/jangernert/FeedReader"
@@ -26,7 +26,11 @@ pkgver() {
 build() {
   mkdir -p "$srcdir/FeedReader/build"
   cd "$srcdir/FeedReader/build"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DGSETTINGS_COMPILE=OFF ..
+  cmake \
+	  -DCMAKE_INSTALL_PREFIX=/usr \
+	  -DGSETTINGS_COMPILE=OFF \
+	  -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+	  ..
   make
 }
 
