@@ -15,7 +15,6 @@ depends=('libusb'
 makedepends=('make')
 checkdepends=()
 optdepends=()
-install="${pkgname}.install"
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}-beta.tar.gz"
         '69-mooltipass.rules'
