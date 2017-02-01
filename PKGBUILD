@@ -11,7 +11,8 @@ license=('GPL')
 depends=('glibc')
 conflicts=("${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}")
-source=(http://www.and.org/ustr/$pkgver/ustr-$pkgver.tar.bz2
+# http://www.and.org/ustr/$pkgver/ustr-$pkgver.tar.bz2 is no longer available
+source=(http://pkgs.fedoraproject.org/repo/pkgs/ustr/ustr-$pkgver.tar.bz2/93147d9f0c9765d4cd0f04f7e44bdfce/ustr-$pkgver.tar.bz2
     0001-Fix-the-prototype-of-ustrp_utf8_valid.patch
     0002-Mark-inline-functions-as-static-to-fix-build-with-GC.patch)
 md5sums=('93147d9f0c9765d4cd0f04f7e44bdfce'
