@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-good-git
-pkgver=1.11.1.r46.af47e93b9
+pkgver=1.11.1.r49.19c9600ea
 pkgrel=1
 _gitname=gst-plugins-good
 pkgdesc="GStreamer Multimedia Framework Good Plugins (mingw-w64)"
@@ -10,7 +10,6 @@ license=('LGPL')
 depends=('mingw-w64-glib2' 'mingw-w64-libxml2' 'mingw-w64-gstreamer-git' 'mingw-w64-orc')
 makedepends=('git' 'mingw-w64-configure' 'mingw-w64-libsoup' 'mingw-w64-cairo' 'mingw-w64-gdk-pixbuf2' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libpng' 'mingw-w64-libvpx' 'mingw-w64-bzip2' 'mingw-w64-speex' 'mingw-w64-flac' 'mingw-w64-wavpack')
 options=('!strip' '!buildflags' 'staticlibs')
-provides=('mingw-w64-gst-plugins-good')
 conflicts=('mingw-w64-gst-plugins-good')
 
 source=("$_gitname::git://anongit.freedesktop.org/gstreamer/$_gitname")
