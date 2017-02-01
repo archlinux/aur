@@ -3,7 +3,7 @@
 
 pkgname=lcov
 pkgver=1.13
-pkgrel=1
+pkgrel=2
 pkgdesc="front-end for GCC's coverage testing tool gcov"
 arch=('any')
 url="http://ltp.sourceforge.net/coverage/lcov.php"
@@ -26,7 +26,7 @@ package()
 {
  cd "$srcdir/$pkgname-$pkgver"
 
- make PREFIX="$pkgdir" install
+ make PREFIX="$pkgdir/usr" install
 }
 
 sha256sums=('44972c878482cc06a05fe78eaa3645cbfcbad6634615c3309858b207965d8a23'
