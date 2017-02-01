@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-ugly-git
-pkgver=1.11.1.r3.bf8835a7
+pkgver=1.11.1.r6.184351ae
 pkgrel=1
 _gitname=gst-plugins-ugly
 pkgdesc="GStreamer Multimedia Framework Ugly Plugins (mingw-w64)"
@@ -10,7 +10,6 @@ license=('LGPL')
 depends=('mingw-w64-glib2' 'mingw-w64-gstreamer-git' 'mingw-w64-gst-plugins-base-git' 'mingw-w64-orc')
 makedepends=('git' 'mingw-w64-configure' 'mingw-w64-x264' 'mingw-w64-lame' 'mingw-w64-opencore-amr')
 options=('!strip' '!buildflags' 'staticlibs')
-provides=('mingw-w64-gst-plugins-ugly')
 conflicts=('mingw-w64-gst-plugins-ugly')
 
 source=("$_gitname::git://anongit.freedesktop.org/gstreamer/$_gitname")
