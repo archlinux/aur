@@ -1,0 +1,18 @@
+pkgbase = xplugd-git
+	pkgdesc = A UNIX daemon that executes a script on X input and RandR changes.
+	pkgver = v1.2.r9.gac258b7
+	pkgrel = 1
+	url = https://github.com/troglobit/xplugd
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libxi
+	depends = libxrandr
+	optdepends = sh: example script
+	provides = xplugd
+	source = xplugd::git+https://github.com/troglobit/xplugd.git
+	md5sums = SKIP
+
+pkgname = xplugd-git
+
