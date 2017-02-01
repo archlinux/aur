@@ -1,0 +1,31 @@
+From 675c94accde7fd2981aca8a7cc51b3403d994949 Mon Sep 17 00:00:00 2001
+From: Tobias Eliasson <arnestig@gmail.com>
+Date: Mon, 24 Oct 2016 20:56:42 +0200
+Subject: [PATCH]  - Fixed compiler issues with gcc6. Solves issue #2
+
+---
+ src/RDPDatabase.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/RDPDatabase.h b/src/RDPDatabase.h
+index 232b662..dc8b1cf 100644
+--- a/src/RDPDatabase.h
++++ b/src/RDPDatabase.h
+@@ -36,7 +36,7 @@ namespace ConnectionType
+         VNC
+     };
+ 
+-    inline wxString getConnectionTypeName( ConnectionType::ConnectionType connectionType )
++    inline wxString getConnectionTypeName( ConnectionType connectionType )
+     {
+         switch ( connectionType )
+         {
+@@ -55,7 +55,7 @@ namespace ConnectionType
+         }
+     }
+ 
+-    inline ConnectionType::ConnectionType getConnectionTypeForPort( int port )
++    inline ConnectionType getConnectionTypeForPort( int port )
+     {
+         switch ( port )
+         {
