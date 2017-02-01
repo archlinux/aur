@@ -3,15 +3,15 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=firefox-extension-beyond-australis
-pkgver=1.4.6
-pkgrel=2
+pkgver=1.4.7
+pkgrel=1
 pkgdesc='Australis was the code name for the current Firefox theme, it aimed to make a great browser look awesome. Now you can go one step further and also make it feel awesome to use!'
 _extname=the-fox-only-better
 arch=('any')
 license=('MPLv2')
 depends=('firefox')
 replaces=('firefox-extension-the-fox-only-better')
-md5sums=('295a237f2b9ddda56385fef948299741')
+md5sums=('0d086bb1779cec721a13a6272b8ade0c')
 
 [ "$arch" ] || arch=('any')
 
