@@ -3,7 +3,7 @@
 pkgbase = nessus
 	pkgdesc = Vulnerability scanner
 	pkgver = 6.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nessus.org
 	install = nessus.install
 	arch = x86_64
