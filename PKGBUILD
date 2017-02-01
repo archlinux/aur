@@ -1,26 +1,23 @@
+# Maintainer: archlinux.info:tdy
+
 pkgname=vitables
 pkgver=2.1
 pkgrel=1
-pkgdesc="A graphical tool for browsing and editing files in both PyTables and HDF5 formats."
-url="http://vitables.org/"
-depends=( 'python2' 'python2-pytables' 'python2-pyqt4' )
-makedepends=( 'python2-sphinx' )
-license=( 'GPL3' )
-arch=( 'any' )
-install=( "${pkgname}.install" )
-source=( "http://downloads.sourceforge.net/project/vitables/ViTables-${pkgver}/ViTables-${pkgver}.tar.gz" )
-md5sums=( '8aea53f86bcdfc28d215b3cfb6c437e9' )
+pkgdesc="A GUI browser and editor for PyTables/HDF5 files"
+arch=(any)
+url=http://vitables.org
+license=(GPL3)
+depends=(python2-pyqt4 python2-pytables)
+makedepends=(python2-sphinx)
+source=(https://downloads.sourceforge.net/$pkgname/ViTables-$pkgver.tar.gz)
+sha256sums=(f0413fa725617fbb3f0be03cb1f41b5b841c6946098a629f3fcb8a99fb9be14a)
 
 build() {
-    cd ${srcdir}/ViTables-${pkgver}
-    python2 setup.py build
+  cd ViTables-$pkgver
+  python2 setup.py build
 }
 
 package() {
-    cd ${srcdir}/ViTables-${pkgver}
-
-    python2 setup.py install --root="${pkgdir}" --optimize=1 
-
-    install -D -m 0644 "unixapp/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -D -m 0644 "unixapp/${pkgname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+  cd ViTables-$pkgver
+  python2 setup.py install --root="$pkgdir" --optimize=1
 }
