@@ -3,7 +3,7 @@
 
 pkgname=screencloud
 pkgver=1.3.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Easy to use screenshot sharing application."
 arch=('i686' 'x86_64')
 url="https://github.com/olav-st/screencloud"
