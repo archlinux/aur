@@ -1,6 +1,6 @@
-PKGVER="1.3.1"
+PKGVER=1.3.1
 REL=1
-VER="$(PKGVER)-$(REL)"
+VER=$(PKGVER)-$(REL)
 
 EOL=$
 
