@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=vagrant-libvirt
-pkgver=0.0.36
+pkgver=0.0.37
 pkgrel=1
 _foglibvirtver=0.3.0
 _fogcorever=1.43.0
@@ -31,7 +31,7 @@ noextract=("formatador-$_formatadorver.gem"
            "fog-core-$_fogcorever.gem"
            "ruby-libvirt-$_libvirtver.gem"
            "vagrant-libvirt-$pkgver.gem")
-sha256sums=('683a4924dbe28309d7a85d51e2ca3c3c07c79ce5781665a83d117b3ab69840ef'
+sha256sums=('51555842b73b075cbcb9264d7a2e121bf8920f7bf265c9db899d48960bc67fc8'
             '61f1261500dd18ea42452a7a69dce8606057e9c1143d1224201d8c29db0bc703'
             '866b816e7516d6787bc074fcec8bb530ebf196685fee03cf56a69ecd852e8229'
             '079bf3f4b03c6cde89d88256fed06c855680eba614ff8cf4674e033414031191'
