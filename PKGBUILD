@@ -2,7 +2,7 @@
 # Based on python33 PKGBUILD (g.schulz)
 
 pkgname=python35
-pkgver=3.5.2
+pkgver=3.5.3
 pkgrel=1
 _pybasever=3.5
 pkgdesc="Next generation of the python high-level scripting language"
@@ -14,7 +14,7 @@ makedepends=('tk' 'sqlite' 'valgrind')
 optdepends=('tk: for tkinter' 'sqlite')
 options=('!makeflags')
 source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
-sha256sums=('0010f56100b9b74259ebcd5d4b295a32324b58b517403a10d1a2aa7cb22bca40')
+sha256sums=('eefe2ad6575855423ab630f5b51a8ef6e5556f774584c06beab4926f930ddbb0')
 
 build() {
   cd "${srcdir}/Python-${pkgver}"
