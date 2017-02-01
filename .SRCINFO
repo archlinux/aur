@@ -1,6 +1,6 @@
 pkgbase = otf-pecita
 	pkgdesc = A handwritten font with attached letters.
-	pkgver = 5.2
+	pkgver = 5.4
 	pkgrel = 1
 	url = http://pecita.eu
 	install = pecita.install
@@ -11,10 +11,8 @@ pkgbase = otf-pecita
 	depends = xorg-font-utils
 	source = http://pecita.eu/b/Pecita.otf
 	source = OFL.txt
-	md5sums = 71eb605b8f5b6d6eb29f103be94eed7a
+	md5sums = 2d9707af5d62c09a782b31aa96de12cb
 	md5sums = 3fa78374b78960f75ba6b4440309ac91
-	sha256sums = 55c9c996dfe12c96a0032d427ea6a36fe273b40ca91190fdcbb41e6f7a25086f
-	sha256sums = 02db0ecd402bde9494564c4b0cbd4e4b8be4845e16ed8126c57d9dd93b04a065
 
 pkgname = otf-pecita
 
