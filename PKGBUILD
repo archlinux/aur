@@ -3,19 +3,17 @@
 # Original Contributor: Bob Finch <w9ya@arrl.net>
 
 pkgname=xpsk31
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="Ham Radio PSK31 engine using X/GTK+"
 arch=('i686' 'x86_64')
 url="http://www.qsl.net/5b4az/pkg/psk31/xpsk31/xpsk31.html"
 license=(GPL)
-depends=('gtk2' 'alsa-lib' 'desktop-file-utils')
-makedepends=('autoconf' 'automake' 'intltool'
-# 'imagemagick'
- 'pkg-config')
-install=$pkgname.install
+optdepends=('hamradio-menus: XDG compliant menuing')
+depends=('gtk2' 'alsa-lib')
+makedepends=('autoconf' 'automake' 'intltool' 'pkg-config')
+# 'imagemagick: used IF you want to convert icons/images')
 source=(http://www.qsl.net/5b4az/pkg/psk31/$pkgname/$pkgname-$pkgver.tar.bz2
-	diff.autogen.sh
 	diff.Makefile.am
 	$pkgname.desktop
 	$pkgname.1
@@ -26,7 +24,6 @@ source=(http://www.qsl.net/5b4az/pkg/psk31/$pkgname/$pkgname-$pkgver.tar.bz2
 prepare() {
 	cd $srcdir/$pkgname-$pkgver
 
-	patch -p0 < ../diff.autogen.sh
 	patch -p0 < ../diff.Makefile.am
 
 #	sed -i s:xpm:png: Makefile.am
@@ -66,15 +63,13 @@ package() {
 	install -Dm644 ../xdemorse.png $pkgdir/usr/share/pixmaps/$pkgname.png
 	install -Dm644 ../$pkgname.man.1.gz $pkgdir/usr/share/man/man1/$pkgname.1.gz
 }
-md5sums=('062a60a76a5b0518164dae53d8d1c77f'
-         'ad6b0e6dd69c1d0efd01efef63ace093'
+md5sums=('952385221c0a577e099ee3d3897db24b'
          'ed09102ed5862054b0f8579f78ab475f'
          'c784ec5d71a3897c515add6aa370cccd'
          '856292e1d2c0f01745218c24e1bf690a'
          'edcd3f301ec8ea95453d40534beb6ede'
          '633652b8446b6970576444e0b8c4e3d9')
-sha256sums=('26b686ccc6f404f42fc26416d13eef1f762f0bead3e069962f168ec69fe99eea'
-            'cc38902be0fc1026cc027cd0fdab7e78bbfb336df36b90b8f25060775636924a'
+sha256sums=('b0118503dc87964cfac120de540b8c3b3d2a7cb20b4344a9cb6dd9f4a5dd519d'
             '2377350a73d13e78a567ab4dd035dac445cc59056d123d75d370755dfddc2e7f'
             'd1afe06070b7a6eec1967194c2d7a5a38cf29e73dca35976a72d52707dece0a5'
             '1286f9c1a67f7e96440d5a218bad5e7b745642f17b72750e37089779bf75eec9'
