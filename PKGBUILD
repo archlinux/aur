@@ -2,12 +2,13 @@
 # Maintainer: Ido Kanner <idokan@gmail.com>
 pkgname=apex-bin
 _pkgname=apex
+pkgdesc="Build, deploy, and manage AWS Lambda functions with ease (with Go support!)."
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 arch=('1686' 'x86_64')
 license=('MIT')
 url='http://apex.run/'
-provides=('apex', 'apex.run')
+provides=('apex' 'apex.run')
 md5sums=('SKIP')
 noextract=()
 makedepends=('binutils')
