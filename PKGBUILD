@@ -2,7 +2,7 @@
 
 pkgbase=('stig')
 pkgname=('stig')
-pkgver=0.1.0a
+pkgver=0.2.0a
 pkgrel=1
 pkgdesc='TUI and CLI client for the Transmission daemon'
 url='https://github.com/rndusr/stig'
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('GPL')
 arch=('any')
 source=("stig-${pkgver}.tar.gz::https://github.com/rndusr/stig/archive/v${pkgver}.tar.gz")
-sha256sums=('9f2f3d012939136e93b7ebb9c2651a19d5771486bc8d5eca48aaa71a316f7b68')
+sha256sums=('26eac3d8992a09e56063509e7062b233cfb523946d9df747cc666a7ebc67feb6')
 
 build() {
     cd "stig-${pkgver}"
