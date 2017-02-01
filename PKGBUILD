@@ -3,17 +3,18 @@
 
 pkgname="cups-nosystemd"
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://www.cups.org/"
 groups=('eudev-base')
-depends=('acl' 'pam' "libcups>=${pkgver}" 'cups-filters' 'bc' 'colord'
+depends=('acl' 'pam' "libcups>=${pkgver}" 'cups-filters' 'bc'
          'dbus' 'hicolor-icon-theme' 'libpaper')
 makedepends=('libtiff>=4.0.0' 'libpng>=1.5.7' 'xdg-utils' 'krb5' 'xinetd'
              'gzip' 'autoconf' 'avahi' 'gnutls' 'inetutils')
 optdepends=('xdg-utils: xdg .desktop file support'
+            'colord: for ICC color profile support'
             'cups-openrc: cups openrc initscript')
 provides=("cups=${pkgver}")
 conflicts=('cups' 'cups-eudev')
