@@ -12,7 +12,7 @@
 _clang_completer=y
 
 pkgname=neovim-youcompleteme-core-git
-pkgver=r1976.3fde57b0
+pkgver=r1997.f6867340
 pkgrel=1
 pkgdesc='A code-completion engine for Vim'
 arch=(i686 x86_64)
@@ -80,7 +80,6 @@ package() {
 	mkdir -p "${pkg_ycmd_dir}"
 
 	cp -r "${srcdir}/YouCompleteMe/"{autoload,doc,plugin,python} "${pkgdir}/usr/share/nvim/runtime"
-	cp -r "${srcdir}/YouCompleteMe/third_party/retries" "${pkgdir}/usr/share/nvim/runtime/third_party"
 	cp -r "${src_ycmd_dir}/"{ycmd,ycm_core.so,CORE_VERSION} "${pkg_ycmd_dir}"
 	if [ "${_clang_completer}" == 'y' ]; then
 		clang_version="$(clang --version|sed -n 's/clang version \([0-9.]\+\) .*/\1/p')"
