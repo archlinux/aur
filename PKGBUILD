@@ -26,6 +26,8 @@ md5sums=('57a153870f697b2dbf261bdfe09d61a0')
 
 build() {
   cd "${srcdir}"/Proc-Queue-${pkgver}
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
 
   perl Makefile.PL INSTALLDIRS=vendor
 
@@ -34,6 +36,7 @@ build() {
 
 package() {
   cd "${srcdir}"/Proc-Queue-${pkgver}
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 
   make DESTDIR="${pkgdir}" install
 
