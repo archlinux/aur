@@ -3,7 +3,7 @@ pre_install() {
 }
 
 post_install() {
-  ln -sf /usr/bin/newlisp-10.7.0 /usr/bin/newlisp
+  ln -sf /usr/bin/newlisp-10.7.1 /usr/bin/newlisp
 }
 
 pre_upgrade() {
@@ -11,7 +11,7 @@ pre_upgrade() {
 }
 
 post_upgrade() {
-  ln -sf /usr/bin/newlisp-10.7.0 /usr/bin/newlisp
+  ln -sf /usr/bin/newlisp-10.7.1 /usr/bin/newlisp
 }
 
 pre_remove() {
