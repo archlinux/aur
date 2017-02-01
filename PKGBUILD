@@ -1,9 +1,9 @@
 # Maintainer: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=upwork
-pkgver=4.2.95.0.9
+pkgver=4.2.115.0.7
 _rawver=${pkgver//./_}
-_hashver="xgmle488qryoawe"
+_hashver="n66kq4suk1ud047"
 pkgrel=1
 pkgdesc="Team App (ex. oDesk)"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ install=upwork.install
 
 source=("https://dl.devtrue.net/archlinux/upwork/LICENSE")
 md5sums=('56198f3b7f1d0371d89a044c3e110cdd')
-md5sums_i686=('2d7abf0656f8c2687a6f159142f940b9')
-md5sums_x86_64=('997525729f7d52e7f7315bff896dbe01')
+md5sums_i686=('23799f56ee51882ce7ffecddf547e3f6')
+md5sums_x86_64=('e1e913b7bdd37125db53308066f062e8')
 # how to get links Standart, Beta, Alpha: grep "https://updates-desktopapp.upwork.com/binaries" ~/.Upwork/Upwork/Logs/* | tail -n 4
 source_x86_64=(upwork_amd64_${pkgver}.deb::https://updates-desktopapp.upwork.com/binaries/v${_rawver}${_hashver}/upwork_amd64.deb)
 source_i686=(upwork_i386_${pkgver}.deb::https://updates-desktopapp.upwork.com/binaries/v${_rawver}${_hashver}/upwork_i386.deb)
