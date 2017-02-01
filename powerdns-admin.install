@@ -5,6 +5,8 @@ post_install() {
   if ! getent passwd powerdns-admin >/dev/null; then
     useradd -u 980 --system -c 'powerdns-admin worker user' -g powerdns-admin -d /usr/share/webapps/powerdns-admin -s /usr/bin/nologin powerdns-admin
   fi
+  echo Configure database properties in /etc/webapps/powerdns-admin/config.py and
+  echo create database using /usr/share/webapps/powerdns-admin/create_db.py
 }
 
 post_upgrade() {

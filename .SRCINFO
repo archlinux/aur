@@ -1,7 +1,7 @@
 pkgbase = powerdns-admin-git
 	pkgdesc = Web GUI for PowerDNS autoritative server
 	pkgver = r250.e49510c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ngoduykhanh/PowerDNS-Admin
 	install = powerdns-admin.install
 	arch = any
@@ -23,6 +23,7 @@ pkgbase = powerdns-admin-git
 	depends = python2-qrcode
 	depends = python2-flask-oauthlib
 	depends = python2-dnspython
+	depends = python2-tempita
 	optdepends = powerdns: autoritative server itself
 	optdepends = postgresql: postgresql backend
 	optdepends = python2-psycopg2: postgresql adapter
@@ -34,7 +35,7 @@ pkgbase = powerdns-admin-git
 	source = powerdns-admin.install
 	source = powerdns-admin.service
 	md5sums = SKIP
-	md5sums = edde746cf96d975211b50ad649eb3b5b
+	md5sums = ad4f38f9118d38cc4c9769393c339d63
 	md5sums = 4bd6a642f527d8cefc06b4df26b558a0
 
 pkgname = powerdns-admin-git

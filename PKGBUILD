@@ -1,7 +1,7 @@
 # Maintainer: Sergey Shatunov <me@prok.pw>
 pkgname=powerdns-admin-git
 pkgver=r250.e49510c
-pkgrel=1
+pkgrel=2
 pkgdesc="Web GUI for PowerDNS autoritative server"
 arch=('any')
 url="https://github.com/ngoduykhanh/PowerDNS-Admin"
@@ -11,7 +11,8 @@ depends=('python2' 'python2-flask' 'python2-flask-wtf' 'python2-flask-login'
          'python2-flask-sqlalchemy'
          'python2-configobj' 'python2-bcrypt' 'python2-requests'
          'python2-ldap' 'python2-sqlalchemy' 'python2-sqlalchemy-migrate'
-         'python2-pyotp' 'python2-qrcode' 'python2-flask-oauthlib' 'python2-dnspython')
+         'python2-pyotp' 'python2-qrcode' 'python2-flask-oauthlib'
+         'python2-dnspython' 'python2-tempita')
 makedepends=('git' 'libmariadbclient')
 optdepends=('powerdns: autoritative server itself'
             'postgresql: postgresql backend'
@@ -24,7 +25,7 @@ source=('powerdns-admin-git::git+https://github.com/ngoduykhanh/PowerDNS-Admin.g
         'powerdns-admin.install'
         'powerdns-admin.service')
 md5sums=('SKIP'
-         'edde746cf96d975211b50ad649eb3b5b'
+         'ad4f38f9118d38cc4c9769393c339d63'
          '4bd6a642f527d8cefc06b4df26b558a0')
 
 _uid=980
