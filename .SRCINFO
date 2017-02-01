@@ -5,6 +5,7 @@ pkgbase = iproute2-selinux
 	url = http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2
 	arch = i686
 	arch = x86_64
+	groups = selinux
 	license = GPL2
 	makedepends = iptables
 	makedepends = linux-atm
@@ -23,7 +24,6 @@ pkgbase = iproute2-selinux
 	sha256sums = f60fefe4c17d3b768824bb50ae6416292bcebba06d73452e23f4147b46b827d3
 
 pkgname = iproute2-selinux
-	groups = base
 	depends = glibc
 	depends = iptables
 	depends = libselinux

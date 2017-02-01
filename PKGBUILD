@@ -11,6 +11,7 @@ pkgrel=1
 pkgdesc='IP Routing Utilities with SELinux support'
 arch=('i686' 'x86_64')
 license=('GPL2')
+groups=('selinux')
 url='http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2'
 makedepends=('iptables' 'linux-atm' 'linuxdoc-tools' 'texlive-bin' 'texlive-core' 'texlive-latexextra')
 options=('staticlibs' '!makeflags')
@@ -46,7 +47,6 @@ build() {
 package_iproute2-selinux() {
   depends=('glibc' 'iptables' 'libselinux')
   optdepends=('linux-atm: ATM support')
-  groups=('base')
   provides=('iproute' "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   conflicts=('iproute' "${pkgname/-selinux}")
   replaces=('iproute')
