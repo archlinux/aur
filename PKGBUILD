@@ -44,7 +44,7 @@ _use_current=
 
 pkgbase=linux-ck
 _srcname=linux-4.9
-pkgver=4.9.6
+pkgver=4.9.7
 pkgrel=1
 _ckpatchversion=1
 arch=('i686' 'x86_64')
@@ -71,12 +71,12 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         )
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'cd0d5ea27c487a7d1354ba3e80f85af4924b77ad1180f1fbfaf6844ae03c8728'
+            'db4a5bade2a07d2f801e8c5c39dd310f35cfbbe90a953938cfbc14495b3e520c'
             'SKIP'
             '5b9d8f4ef73f87e8595de66ccc38bad86e290fd9453bd536b9cc950f5344b82d'
             'c26b4b76ca3b3dc864e1470001b46f65e007252e984e9b3c6cc8e90a18b7317f'
-            'f9593b21535146c9a9bc50fc360ccb1aec5eff3af271dc73d1bece670636a12d'
-            '5e2ffe1a014fbd8efc075552e3b3b946eda23ff3b5e1feee464af6374d5ba254'
+            'ed326bb2167d73fb2a1d32b3f2c584a2e0f6408216ce9eeb6fbdcbb9b94858cb'
+            '8ee19a7c969c16ada8b7447f27c4ceda4bafe0dbf2a84aaf722deb0397b593c9'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
