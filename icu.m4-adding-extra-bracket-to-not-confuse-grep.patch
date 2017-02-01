@@ -1,0 +1,23 @@
+From: Carsten Schoenert <c.schoenert@t-online.de>
+Date: Tue, 10 Jan 2017 18:54:06 +0100
+Subject: icu.m4: adding extra bracket to not confuse grep
+
+One bracket is "lost" while the creation of the configure script, so
+adding a third bracket that will be removed while running autoreconf.
+---
+ mozilla/build/autoconf/icu.m4 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mozilla/build/autoconf/icu.m4 b/mozilla/build/autoconf/icu.m4
+index 943a378c50..fd9ed3eaeb 100644
+--- a/mozilla/build/autoconf/icu.m4
++++ b/mozilla/build/autoconf/icu.m4
+@@ -73,7 +73,7 @@ if test -n "$USE_ICU"; then
+         fi
+     fi
+ 
+-    version=`sed -n 's/^[[:space:]]*#[[:space:]]*define[[:space:]][[:space:]]*U_ICU_VERSION_MAJOR_NUM[[:space:]][[:space:]]*\([0-9][0-9]*\)[[:space:]]*$/\1/p' "$icudir/common/unicode/uvernum.h"`
++    version=`sed -n 's/^[[[:space:]]]*#[[:space:]]*define[[:space:]][[:space:]]*U_ICU_VERSION_MAJOR_NUM[[:space:]][[:space:]]*\([0-9][0-9]*\)[[:space:]]*$/\1/p' "$icudir/common/unicode/uvernum.h"`
+     if test x"$version" = x; then
+        AC_MSG_ERROR([cannot determine icu version number from uvernum.h header file $lineno])
+     fi
