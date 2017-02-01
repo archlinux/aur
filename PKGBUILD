@@ -3,7 +3,7 @@
 # Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=emacs-dash
-pkgver=2.12.1
+pkgver=2.13.0
 pkgrel=1
 pkgdesc='A modern list API for Emacs'
 arch=('any')
@@ -11,14 +11,12 @@ url="https://github.com/magnars/dash.el"
 license=('GPL')
 makedepends=('emacs')
 depends=('emacs')
-install=emacs-dash.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/magnars/dash.el/archive/$pkgver.tar.gz")
-sha256sums=('41460193aa74787b247b09ad7cae696016110abba2a922ef1a067472eba15220')
+md5sums=('f246c9665345a6870820f8f9567c7c18')
 
 build() {
   cd dash.el-"$pkgver"
-  emacs -batch -L . -f batch-byte-compile dash{,-functional}.el
-  sh create-docs.sh
+  emacs -Q -batch -L . -f batch-byte-compile dash{,-functional}.el
 }
 
 package() {
@@ -30,3 +28,4 @@ package() {
   install -Dm644 dash.info "$pkgdir"/usr/share/info/dash.info
   gzip "$pkgdir"/usr/share/info/dash.info
 }
+
