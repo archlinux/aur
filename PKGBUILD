@@ -1,7 +1,5 @@
-# Maintainer: Simon Tunnat <simon+aur@tunn.at>
-# Previous maintainer: whity <andregoncalo.bras@gmail.com>
 pkgname=sql-workbench
-pkgver=119
+pkgver=121
 pkgrel=1
 epoch=
 pkgdesc="SQL Workbench/J is a free, DBMS-independent, cross-platform SQL query tool."
@@ -9,7 +7,7 @@ arch=('any')
 url="http://www.sql-workbench.net/"
 license=('custom')
 groups=()
-depends=('java-runtime>=7')
+depends=('java-runtime>=8')
 makedepends=(
   'unzip'
 )
@@ -24,7 +22,7 @@ install=
 changelog=
 source=("http://www.sql-workbench.net/Workbench-Build${pkgver}.zip")
 noextract=("Workbench-Build${pkgver}.zip")
-md5sums=('4bdd530d7298b61dd41c9752ab753322')
+sha256sums=('3187f053ce9317fbb5b78305f20345f4b83a7beb8a15e139f1ed52dc9437cd21')
 
 build() {
   unzip "Workbench-Build${pkgver}".zip
