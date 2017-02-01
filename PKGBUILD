@@ -9,7 +9,6 @@ license=(custom:OFL)
 depends=(fontconfig xorg-fonts-encodings xorg-mkfontdir xorg-mkfontscale)
 provides=(ttf-font ttf-oxygen ttf-oxygen-git)
 conflicts=(ttf-google-fonts-git ttf-oxygen ttf-oxygen-git)
-install=${pkgname}.install
 source=(OFL.txt Oxygen-Bold.ttf Oxygen-Light.ttf Oxygen-Regular.ttf OxygenMono-Regular.ttf)
 sha512sums=('ea77302599c998d8e84ff47481482d6939ec7c6d15c2ff99422361a870f7faf56f111b3ff0ce2ab9baea4b1bd010f76b76d87408ee92170204fdc31bb0cb5e46'
             '20e8f86bf9fa2733a48710f7a4ab950dd0ac574185c8244a5f13c5f08d2f95c8213df1a2ff02f784b108229462449a3a0f4f2789b04476471705be2443f8bdf4'
