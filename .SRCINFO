@@ -1,5 +1,5 @@
 pkgbase = libwebsockets-libuv
-	pkgdesc = C library for websocket clients and servers
+	pkgdesc = C library for websocket clients and servers (compiled with libuv support)
 	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://libwebsockets.org
