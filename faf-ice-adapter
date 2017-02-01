@@ -1,2 +1,0 @@
-!/usr/bin/env bash
-/usr/bin/env node /usr/lib/faf-ice-adapter/faf-ice-adapter.js "$@"
