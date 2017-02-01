@@ -1,4 +1,4 @@
-pkgbase = apex
+pkgbase = apex-bin
 	pkgver = 0.12.0
 	pkgrel = 1
 	url = http://apex.run/
@@ -11,5 +11,5 @@ pkgbase = apex
 	source = https://github.com/apex/apex/releases/download/v0.12.0/apex_linux_amd64
 	md5sums = SKIP
 
-pkgname = apex
+pkgname = apex-bin
 

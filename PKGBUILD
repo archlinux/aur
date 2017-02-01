@@ -1,6 +1,6 @@
 # $Id$
 # Maintainer: Ido Kanner <idokan@gmail.com>
-pkgname=apex
+pkgname=apex-bin
 _pkgname=apex
 pkgver=0.12.0
 pkgrel=1
