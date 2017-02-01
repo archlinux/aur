@@ -12,6 +12,7 @@ license=('PSF')
 url="http://pypi.python.org/pypi/setuptools"
 source=("https://pypi.io/packages/source/s/setuptools/setuptools-${pkgver}.zip")
 sha512sums=('5bb52bd8b23464cacb2f89c0e1cdd6c563153ce6981306bb7b0589b510434633dd60711bfd614120842213a922ddc2a357df54bfcd0358a3bfc79941a27a21cc')
+makedepends=('pypy3' 'pypy3-packaging' 'pypy' 'pypy-packaging')
 
 prepare() {
   cd "${srcdir}"/setuptools-${pkgver}
@@ -38,7 +39,6 @@ _check_pypy3-setuptools() {
 
 package_pypy-setuptools() {
   depends=('pypy' 'pypy-packaging' 'pypy-appdirs')
-  makedepends=('pypy' 'pypy-packaging')
   provides=('pypy-distribute')
   replaces=('pypy-distribute')
   cd "${srcdir}/setuptools-${pkgver}"
@@ -47,7 +47,6 @@ package_pypy-setuptools() {
 
 package_pypy3-setuptools() {
   depends=('pypy3' 'pypy3-packaging' 'pypy3-appdirs')
-  makedepends=('pypy3' 'pypy3-packaging')
   provides=('pypy3-distribute')
   replaces=('pypy3-distribute')
   cd "${srcdir}/setuptools-${pkgver}"
