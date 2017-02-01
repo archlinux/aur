@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=svgcleaner
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="An application that cleans svg images from unnecessary data in batch mode."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/RazrFalcon/SVGCleaner"
 license=('GPL2')
 makedepends=('gcc-libs' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RazrFalcon/SVGCleaner/archive/v${pkgver}.tar.gz")
-sha256sums=('ab3eb89e8edcf98414809535c5f0e6ad2fb95b51ab074e579b9751075bad9810')
+sha256sums=('843abc42a012cd65cf680473657e2d3c0f30415c80b8e6edb86a0c5589b3db06')
 
 build() {
   cd "${srcdir}/svgcleaner-${pkgver}/src/"
