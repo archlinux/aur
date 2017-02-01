@@ -1,0 +1,20 @@
+[Unit]
+Description=Mediawiki Parsoid web service on node.js
+Documentation=http://www.mediawiki.org/wiki/Parsoid
+Wants=local-fs.target network.target
+After=local-fs.target network.target
+ 
+[Install]
+WantedBy=multi-user.target
+ 
+[Service]
+Type=simple
+User=parsoid
+Group=parsoid
+WorkingDirectory=/usr/share/webapps/parsoid
+ExecStart=/usr/bin/node /usr/share/webapps/parsoid/bin/server.js
+KillMode=process
+Restart=on-success
+PrivateTmp=true
+StandardOutput=syslog
+
