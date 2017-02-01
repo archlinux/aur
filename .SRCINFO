@@ -1,0 +1,17 @@
+pkgbase = perl-statistics-basic
+	pkgdesc = A collection of very basic statistics modules
+	pkgver = 1.6611
+	pkgrel = 1
+	url = https://metacpan.org/release/Statistics-Basic
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-number-format>=1.42
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JE/JETTERO/Statistics-Basic-1.6611.tar.gz
+	md5sums = 1ee961c3a4b9c0a594dc3cfccbcd1ed1
+	sha512sums = 10d726f9ace2a78753ec6cd91bd2c7cc7958eac11de762c3f4deff1a90e0837269484b7adc2ba22f3de128c3bf3a626cb70a9fd752a3eff5fd60db52cb7a7d68
+
+pkgname = perl-statistics-basic
+
