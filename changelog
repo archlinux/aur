@@ -1,3 +1,13 @@
+2017-02-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.2.2.1-1:
+    [!] Fixed network instability introduced in ASF V2.1.1.2. Coincidentally, this has nothing to do with network enhancements that arrived in V2.1.1.6. Huge thanks to Budgie and other folks helping me with their debug logs.
+    Added OptimizationMode global config property.
+    Added multiple bot targets for commands.
+    Unified the format of ASF responses for easier strings manipulation. All responses should start with a newline now.
+    Added SteamTarget NLog logging target, available with custom logging configs.
+    Removed !*all commands, such as: !lootall, !statusall, !startall and !ownsall. Use newly-introduced multiple bot targets, such as !status ASF for previous !statusall.
+    Fixed writing debug log for multiple bots at once.
+    Misc code improvements, optimizations and bugfixes.
 2017-01-30 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.2.1.6-1:
     [!] Added localization support for ASF.
