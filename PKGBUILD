@@ -9,7 +9,6 @@ license=(custom:OFL)
 depends=(fontconfig xorg-fonts-encodings xorg-mkfontdir xorg-mkfontscale)
 provides=(ttf-font ttf-share)
 conflicts=(ttf-google-fonts-git ttf-share)
-install=${pkgname}.install
 source=(OFL.txt Share-Bold.ttf Share-BoldItalic.ttf Share-Italic.ttf Share-Regular.ttf ShareTech-Regular.ttf ShareTechMono-Regular.ttf)
 sha512sums=('a80f466c5ed8cb3be78950b47996c65e363cd6980bbc20a38227c75b626119699077f8be4c8b26ab9567819d23a025bad9cc45fc2cc25bd8fc95ae5ac7477ff0'
             'dc2108cfd25e7a79bea2d6a205833f3cabb5ccf628e9bfff5dcbf6d105dca3103eb4ac99b2f7659d440f36881f7dc83c1bf04d1aeb6bfe24c9cc44f683af7e8f'
