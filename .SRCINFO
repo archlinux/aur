@@ -1,0 +1,31 @@
+pkgbase = suricata-git
+	pkgdesc = Suricata is a free and open source, mature, fast and robust network threat detection engine
+	pkgver = 3.2.r87.gf407d770
+	pkgrel = 1
+	url = https://suricata-ids.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = CUSTOM
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = make
+	makedepends = gcc
+	makedepends = pkg-config
+	makedepends = fakeroot
+	depends = libcap-ng
+	depends = libnet
+	depends = libpcap
+	depends = libyaml
+	depends = pcre
+	backup = etc/suricata/suricata.yaml
+	backup = etc/suricata/classification.config
+	backup = etc/suricata/reference.config
+	source = suricata-git::git://phalanx.openinfosecfoundation.org/oisf.git
+	source = libhtp::git+https://github.com/OISF/libhtp.git#branch=0.5.x
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = suricata-git
+

@@ -1,0 +1,8 @@
+# Ignored folders
+src/
+suricata-git/
+libhtp/
+
+# Ignored files
+*.pkg.tar.xz
+
