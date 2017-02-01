@@ -1,5 +1,5 @@
 pkgname=larryshell
-pkgver='0.0.4'
+pkgver='1.3.1'
 pkgrel='1'
 pkgdesc="LarryShell modifies bash to create a more affluent command-line interface."
 arch=('any')
@@ -7,7 +7,7 @@ license=('MIT')
 depends=('bash')
 source=("https://jhoughton.me/larryshell/${pkgver}-${pkgrel}.tar.gz")
 url='https://github.com/Devon-Austin-Wood-Thomas/larryshell'
-md5sums=('463e1c485dc0afb36a7852e1357a9baa')
+md5sums=('0030479b379f4f9fa01b8241a28f6001')
 
 package() {
     cd $srcdir/larryshell

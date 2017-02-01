@@ -1,4 +1,4 @@
-PKGVER="0.0.4"
+PKGVER="1.3.1"
 REL=1
 VER="$(PKGVER)-$(REL)"
 
