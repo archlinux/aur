@@ -2,7 +2,7 @@
 
 pkgname=aegir
 pkgver=7.x_3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Configuration for a dedicated Aegir server to host Drupal sites."
 arch=('any')
 url='http://aegirproject.org'
@@ -36,7 +36,7 @@ source=("$pkgname.service"
         'php.ini'
         'sudoers'
 )
-md5sums=('b0f2e5dca01b32c967cd823dab6b8779'
+md5sums=('81c8f6285f3f17184dc8655e2942f3fc'
          '95bce00a6c0ac2a0b51642449554105b'
          'd43026960060bc677549baa26a24c9ee'
          'e1bb28d05fc072f6cf86d18716cf1f97'
@@ -72,16 +72,16 @@ package() {
     ln -s /etc/drush "$pkgdir/var/lib/$pkgname/.drush"
     ln -s "/var/lib/$pkgname/.ssh" "$pkgdir/srv/http/.ssh"
     #~ umask 066
-    mkdir -p "$pkgdir/var/lib/$pkgname/"{config{,/{includes,server_{localhost,master{,/nginx}}}},clients}
+    mkdir -p "$pkgdir/var/lib/$pkgname/"{config{,/{includes,server_{localhost,master{,/nginx}},{self-signed,ssl}.d,letsencrypt{,.d/well-known/acme-challenge}},clients}
     #~ umask 077
     mkdir -p "$pkgdir/var/lib/$pkgname/"{backups,config/server_master/nginx/{platform,post,pre,subdir,platform,vhost}.d}
     #~ umask 027
     mkdir -p "$pkgdir/var/lib/$pkgname/"clients/admin
     #~ umask 007
     mkdir -p "$pkgdir/var/lib/$pkgname/"config/self
-    ln -s "/var/lib/$pkgname/config/server_master/nginx.conf"         "$pkgdir/var/lib/$pkgname/config/nginx.conf"
-    ln -s "/var/lib/$pkgname/config/includes/nginx_vhost_common.conf" "$pkgdir/var/lib/$pkgname/config/includes/nginx_advanced_include.conf"
-    ln -s "/var/lib/$pkgname/config/includes/nginx_vhost_common.conf" "$pkgdir/var/lib/$pkgname/config/includes/nginx_simple_include.conf"
+    ln -s "/var/lib/$pkgname/config/server_master/nginx.conf" "$pkgdir/var/lib/$pkgname/config/nginx.conf"
+    ln -sr "nginx_vhost_common.conf" "$pkgdir/var/lib/$pkgname/config/includes/nginx_advanced_include.conf"
+    ln -sr "nginx_vhost_common.conf" "$pkgdir/var/lib/$pkgname/config/includes/nginx_simple_include.conf"
 
     chown -R http:http "$pkgdir/etc/drush" "$pkgdir/var/lib/$pkgname" "$pkgdir/var/spool/cron/$pkgname"
 }
