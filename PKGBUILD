@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Kamenskikh <aleksey.kamenskikh@gmail.com>
 pkgname=mssql-server
-pkgver=14.0.100.187
-_prodver=${pkgver}-1
+pkgver=14.0.200.24
+_prodver=${pkgver}-2
 pkgrel=1
 pkgdesc="Microsoft SQL Server for Linux"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('unknown')
 depends=('python2-configparser')
 makedepends=('rpmextract')
 source=("https://packages.microsoft.com/rhel/7/$pkgname/$pkgname-$_prodver.x86_64.rpm")
-md5sums=('3d653255dc7c9c1484cad87ab69d1836')
+md5sums=('d498ce2395cca3d094152bc84a9575e5')
 noextract=("$pkgname-$_prodver.x86_64.rpm")
 install=$pkgname.install
 
