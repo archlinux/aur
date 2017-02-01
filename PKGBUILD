@@ -11,7 +11,7 @@ license=('GPL2' 'CUSTOM')
 makedepends=('git' 'autoconf' 'automake' 'make' 'gcc' 'pkg-config' 'fakeroot')
 depends=('libcap-ng' 'libnet' 'libpcap' 'libyaml' 'pcre')
 #optdepends=('')
-backup=('etc/suricata/suricata.yaml' 'etc/suricata/classification.config' 'etc/suricata/reference.config')
+backup=('etc/suricata/suricata.yaml' 'etc/suricata/classification.config' 'etc/suricata/reference.config' 'etc/suricata/threshold.config')
 source=("${pkgname}::git://phalanx.openinfosecfoundation.org/oisf.git" "libhtp::git+https://github.com/OISF/libhtp.git#branch=0.5.x")
 md5sums=('SKIP' 'SKIP')
 

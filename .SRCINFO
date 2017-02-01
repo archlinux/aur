@@ -22,6 +22,7 @@ pkgbase = suricata-git
 	backup = etc/suricata/suricata.yaml
 	backup = etc/suricata/classification.config
 	backup = etc/suricata/reference.config
+	backup = etc/suricata/threshold.config
 	source = suricata-git::git://phalanx.openinfosecfoundation.org/oisf.git
 	source = libhtp::git+https://github.com/OISF/libhtp.git#branch=0.5.x
 	md5sums = SKIP
