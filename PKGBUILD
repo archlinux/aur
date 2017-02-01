@@ -10,7 +10,7 @@
 
 _name=vlc
 pkgname=vlc-git
-pkgver=3.0.0.r10880.gc12d9fb6a7
+pkgver=3.0.0.r10897.g2659d13ccc
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ depends=('a52dec' 'faad2' 'ffmpeg' 'libdca' 'libdvbpsi'
          'libproxy' 'libshout' 'libtar' 'libtiger' 'libupnp'
          'libxinerama' 'libxpm' 'lua' 'sdl_image'
          'taglib' 'xcb-util-keysyms' 'zvbi')
-makedepends=('aalib' 'flac' 'git' 'kdelibs'
+makedepends=('aalib' 'flac' 'git'
              'libavc1394' 'libbluray' 'libcaca' 'libdc1394' 'libdvdcss'
              'libgme' 'libgoom2' 'libmtp' 'libnotify' 'librsvg'
              'libssh2' 'lirc' 'live-media' 'mesa' 'opus'
