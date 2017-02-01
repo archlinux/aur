@@ -1,6 +1,6 @@
 # Contributor: scrawler <scrawler@gmail.com>
 pkgname=newlisp
-pkgver=10.7.0
+pkgver=10.7.1
 pkgrel=1
 pkgdesc="newLISP is a LISP like, general purpose scripting language."
 url="http://www.newlisp.org"
@@ -10,7 +10,7 @@ depends=('readline')
 optdepends=('jdk8-openjdk')
 options=('docs')
 source=(http://newlisp.org/downloads/$pkgname-$pkgver.tgz)
-md5sums=('6ae2d21205366f39d4edf2aa16ba5c18')
+md5sums=('e4c8da46f7b435a5b2de441f6929527c')
 install=$pkgname.install
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = newlisp
 	pkgdesc = newLISP is a LISP like, general purpose scripting language.
-	pkgver = 10.7.0
+	pkgver = 10.7.1
 	pkgrel = 1
 	url = http://www.newlisp.org
 	install = newlisp.install
@@ -10,8 +10,8 @@ pkgbase = newlisp
 	depends = readline
 	optdepends = jdk8-openjdk
 	options = docs
-	source = http://newlisp.org/downloads/newlisp-10.7.0.tgz
-	md5sums = 6ae2d21205366f39d4edf2aa16ba5c18
+	source = http://newlisp.org/downloads/newlisp-10.7.1.tgz
+	md5sums = e4c8da46f7b435a5b2de441f6929527c
 
 pkgname = newlisp
 
