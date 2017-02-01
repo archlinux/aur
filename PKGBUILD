@@ -2,7 +2,7 @@
 
 _plug=knlmeanscl
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.0.0.1.r389.706218c
+pkgver=1.0.0.r417.ff06954
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
