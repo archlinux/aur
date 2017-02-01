@@ -1,8 +1,8 @@
 # Maintainer: luke bonham <dada [at] archlinux [dot] info>
 
 pkgname=lain-git
-pkgcom=1530
-pkgsha=1555e23
+pkgcom=1531
+pkgsha=a1ba902
 pkgver=$pkgcom.$pkgsha
 pkgrel=1
 pkgdesc="Layouts, asynchronous widgets and utilities for Awesome WM"
@@ -18,11 +18,18 @@ source=("git://github.com/copycat-killer/lain.git")
 md5sums=('SKIP')
 
 package() {
-  install -dm755 "$pkgdir/usr/share/awesome/lib/lain"
-  git --git-dir=lain/.git --work-tree=lain/ reset --hard $pkgsha --quiet
-  rm -rf lain/{wiki,.git*,*.rockspec,*TEMPLATE*}
-  cp -a lain "$pkgdir/usr/share/awesome/lib/"
+    aw=$(which awesome | grep local) # check if awesome is stable or git
+    if [ -z ${#aw} ]; then
+        aw_path="$pkgdir/usr/share/awesome/lib"
+    else
+        aw_path="$pkgdir/usr/local/share/awesome/lib"
+    fi
 
-  # Fix permissions
-  find "$pkgdir" -type f ! -path "*/scripts/*" -print0 | xargs -0 chmod -R 644
+    install -dm755 "$aw_path/lain"
+    git --git-dir=lain/.git --work-tree=lain/ reset --hard $pkgsha --quie
+    rm -rf lain/{wiki,.git*,*.rockspec,*TEMPLATE*}
+    cp -a lain $aw_path
+
+    # Fix permissions
+    find "$pkgdir" -type f ! -path "*/scripts/*" -print0 | xargs -0 chmod -R 644
 }
