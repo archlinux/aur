@@ -1,16 +1,17 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
-pkgname=mingw-w64-gstreamer-git
-pkgver=1.11.1.r15.94da8f5d8
+pkgbase=mingw-w64-gstreamer-git
+pkgname=('mingw-w64-gstreamer-git' 'mingw-w64-gstreamer-git-vslib') 
+pkgver=1.11.1.r17.ef42e3811
 pkgrel=1
 _gitname=gstreamer
 pkgdesc="GStreamer Multimedia Framework (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
-makedepends=('mingw-w64-configure' 'bison' 'flex' 'git')
+makedepends=('mingw-w64-configure' 'mingw-w64-tools' 'bison' 'flex' 'git')
 depends=('mingw-w64-glib2' 'mingw-w64-libxml2')
+optdepends=('mingw-w64-gstreamer-git-vslib: Visual Studio import lib')
 options=('!strip' '!buildflags' 'staticlibs')
-provides=('mingw-w64-gstreamer')
 conflicts=('mingw-w64-gstreamer')
 
 source=("$_gitname::git://anongit.freedesktop.org/gstreamer/$_gitname")
@@ -49,7 +50,12 @@ build() {
 }
 
 
-package() {
+libs=('libgstbase-1.0-0.dll'
+  'libgstcontroller-1.0-0.dll'
+  'libgstnet-1.0-0.dll'
+  'libgstreamer-1.0-0.dll')
+
+package_mingw-w64-gstreamer-git() {
   cd "${srcdir}/$_gitname"
 
   for _arch in ${_architectures}; do
@@ -60,11 +66,33 @@ package() {
     rm $pkgdir/usr/$_arch/lib/gstreamer-1.0/*.la
     rm -rf "$pkgdir"/usr/${_arch}/share/{aclocal,man,locale,bash-completion}
 
+    # generate vs import lib
+    mkdir -p "$srcdir/$pkgname-vslib/${_arch}" && pushd "$srcdir/$pkgname-vslib/${_arch}"
+    DLL_PATH="$pkgdir"/usr/${_arch}/bin/
+    for dll in ${libs[@]};
+    do
+	    gendef ${DLL_PATH}${dll}
+	    ${_arch}-dlltool -d ${dll::-4}.def -l ${dll:3:-6}.lib -D ${DLL_PATH}
+    done
+    popd
+
     find "$pkgdir" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir" -name '*.dll' -o -name '*.a' -exec ${_arch}-strip -g {} \;
     find "$pkgdir" -name '*.exe' -exec ${_arch}-strip --strip-all {} \;
 
     cd ..
+  done
+}
+
+package_mingw-w64-gstreamer-git-vslib() {
+  pkgdesc="GStreamer Multimedia Framework import lib for Visual Studio (mingw-w64)"
+  depends=("mingw-w64-gstreamer-git=$pkgver")
+  unset optdepends
+
+  for _arch in ${_architectures}; do
+    LIB_PATH="$pkgdir"/usr/${_arch}/lib/
+    mkdir -p ${LIB_PATH} 
+    cp "$srcdir/$pkgname/${_arch}/"{*.lib,*.def} "${LIB_PATH}"
   done
 }
 
