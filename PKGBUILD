@@ -9,7 +9,7 @@ _builddir=("${_gitname}/build")
 _prefix="/usr"
 
 pkgname="$_gitname-git"
-pkgver=0.1.882
+pkgver=0.1.883
 pkgrel=1
 pkgdesc="A Wayland shell client"
 arch=(i686 x86_64)
