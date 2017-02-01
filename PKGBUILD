@@ -3,7 +3,7 @@
 
 pkgname=kore-git
 _gitname=kore
-pkgver=1.2.3.release.r76.g5f77092
+pkgver=2.0.0.release.r80.g261fb3c
 pkgrel=1
 pkgdesc="An easy to use, scalable and secure web application framework for writing web APIs in C."
 arch=('i686' 'x86_64')
