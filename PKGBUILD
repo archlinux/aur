@@ -1,6 +1,6 @@
 # Maintainer: K1412 <jonathan@opensides.be>
 pkgname=fusiondirectory-webservice-shell
-pkgver=1.0.18
+pkgver=1.0.19
 pkgrel=1
 pkgdesc="Webservice shell for FusionDirectory"
 arch=("any")
@@ -10,7 +10,7 @@ depends=("perl-term-readline-gnu" "perl-lwp-protocol-https" "perl-term-shellui" 
 
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz")
 
-md5sums=('2b2cc3c9213491deffbfc7e27a1af13a')
+md5sums=('409aebff6a90aef73cce834485501305')
 
 package() {
   cd ./fusiondirectory-plugins-${pkgver}
