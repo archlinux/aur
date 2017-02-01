@@ -10,7 +10,6 @@ license=('LGPL')
 depends=('mingw-w64-gstreamer-git' 'mingw-w64-gst-plugins-base-git')
 makedepends=('mingw-w64-configure')
 options=('!strip' '!buildflags' 'staticlibs')
-provides=('mingw-w64-gst-libav')
 conflicts=('mingw-w64-gst-libav')
 
 source=("$_gitname::git://anongit.freedesktop.org/gstreamer/$_gitname")
