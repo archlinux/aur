@@ -7,8 +7,8 @@
 _pkgname=palemoon
 pkgname="${_pkgname}-26"
 pkgver=26.5.0
-pkgrel=1
-pkgdesc="Pale Moon web browser, old version 26 (still with the jetpack SDK addon technology, but not maintained anymore)."
+pkgrel=2
+pkgdesc="Pale Moon web browser, old version 26 (still with the jetpack SDK addon technology, but not maintained anymore). Unofficial New Moon-branding."
 arch=(
       'i686'
       'x86_64'
@@ -16,9 +16,11 @@ arch=(
 url="http://www.palemoon.org/"
 provides=(
           "${_pkgname}=${pkgver}"
+          "newmoon=${pkgver}"
          )
 conflicts=(
            "${_pkgname}"
+           "newmoon"
           )
 license=(
          'MPL'
@@ -53,18 +55,13 @@ optdepends=(
 source=(
         git+"https://github.com/MoonchildProductions/Pale-Moon#tag=${pkgver}_Release"
         "mozconfig.in"
-        "mozconfig.in.patch"
        )
 sha256sums=(
             'SKIP'
-            '6111b2df9057c770f83193b0ef3424ac45ce036951776f34f2bae45fe61d98bf'
-            'c5ef03e89b49101748b5a255582ad8cf7c23a5dbf9d1d0dbd09302e806edeadb'
+            '2f5b82b4257af9e7d77fbde1af406bf6cc9861fb3195161c2a9bba74c255e91b'
            )
 
 prepare() {
-  msg "Patching 'mozconfig.in'"
-  patch --verbose --follow-symlinks "${srcdir}/mozconfig.in" < "${srcdir}/mozconfig.in.patch"
-
   sed 's#%SRCDIR%#'"$srcdir"'#g' mozconfig.in > mozconfig
   cd Pale-Moon
 
