@@ -1,9 +1,9 @@
 pkgbase = dwm-uleenucks-git
 	pkgdesc = A dynamic window manager for X
-	pkgver = 6.1.5.g56a31dc
-	pkgrel = 4
+	pkgver = 6.1.14.gbb3bd6f
+	pkgrel = 1
 	epoch = 1
-	url = https://git.uleenucks.de/builds/
+	url = http://dwm.suckless.org
 	install = dwm.install
 	arch = i686
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = dwm-uleenucks-git
 	source = compile.sh
 	source = dwm-6.1-center.diff
 	md5sums = SKIP
-	md5sums = 53acc5aead54700e3709e0d33fe5d252
-	md5sums = ac89a24396a42dee2922c06d31388c5e
-	md5sums = 2fb39fa984c6676363051d0bafc74dc6
+	md5sums = fbfa9c221f239c45c422876a7d236200
+	md5sums = e7b776ca83ca06ab1124de5e9be3822e
+	md5sums = 8d309c744a149e807b66139978301c9b
 	md5sums = 5f6f840c692f43f7e349bb87e895ff26
 
 pkgname = dwm-uleenucks-git

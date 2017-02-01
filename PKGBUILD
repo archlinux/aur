@@ -1,14 +1,15 @@
+# Maintainer: uleenucks <dev@uleenucks.de>
 pkgname=dwm-uleenucks-git
 _pkgname=dwm
 pkgdesc="dwm with uleenucks personalisations"
-pkgver=6.1.5.g56a31dc
+pkgver=6.1.14.gbb3bd6f
 pkgver(){
   cd $_pkgname
   git describe --tags |sed 's/-/./g'
 }
-pkgrel=4
+pkgrel=1
 pkgdesc="A dynamic window manager for X"
-url="https://git.uleenucks.de/builds/"
+url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
 license=('MIT')
 options=(zipman)
@@ -26,9 +27,9 @@ source=("$_pkgname::git+http://git.suckless.org/dwm"
         dwm-6.1-center.diff)
 
 md5sums=('SKIP'
-         '53acc5aead54700e3709e0d33fe5d252'
-         'ac89a24396a42dee2922c06d31388c5e'
-         '2fb39fa984c6676363051d0bafc74dc6'
+         'fbfa9c221f239c45c422876a7d236200'
+         'a604227c591b5bb06498316de684f91a'
+         '8d309c744a149e807b66139978301c9b'
          '5f6f840c692f43f7e349bb87e895ff26')
 
 prepare() {
