@@ -3,8 +3,8 @@
 
 pkgname='perl-data-dumper'
 pkgver='2.161'
-pkgrel='1'
-pkgdesc="stringified perl data structures, suitable for both printing and eval"
+pkgrel='2'
+pkgdesc="Stringified perl data structures, suitable for both printing and eval"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')

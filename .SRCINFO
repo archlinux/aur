@@ -1,7 +1,7 @@
 pkgbase = perl-data-dumper
-	pkgdesc = stringified perl data structures, suitable for both printing and eval
+	pkgdesc = Stringified perl data structures, suitable for both printing and eval
 	pkgver = 2.161
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Data-Dumper
 	arch = i686
 	arch = x86_64
