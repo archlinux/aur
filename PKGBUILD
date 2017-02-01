@@ -14,7 +14,7 @@ license=('custom:UNIGINE Engine')
 depends=('libgl' 'gcc-libs' 'libxrandr' 'libxinerama' 'fontconfig')
 optdepends=('openal: sound support')
 source=("https://assets.unigine.com/d/"${_pkgname}"-"${pkgver}".run")
-sha512sums=('3db8ae47c0f03bbd01c64e64021c83919a5b6b3f546aa426fe196021ae9e4cbcc44ead5b6a0315b6dd6817352ecb55a0b4a0758966198b12b6418b211551c902')
+sha512sums=('f075968d9812c7bd6a19cd27c48612203ce81f48b14ba56239419957fd3342adb31267ed8c261b7b1c68e2589a07d4cee84b199fb12d8d69e2d6a34fbdcf76c1')
 
 [ "${CARCH}" = "i686" ] && _arch=x86
 [ "${CARCH}" = "x86_64" ] && _arch=x64
