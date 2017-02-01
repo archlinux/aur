@@ -1,0 +1,25 @@
+pkgbase = graveman
+	pkgdesc = Graveman is a GPL frontend for: cdrecord, mkisofs, readcd, sox, flac, dvd+rw-format/dvd+rw-tools and cdrdao.
+	pkgver = 0.3.12
+	pkgrel = 1
+	url = https://graveman.tuxfamily.org
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	depends = glib2>=2.4.0
+	depends = libglade>=2.4.0
+	depends = libid3tag>=0.15
+	depends = libmad>=0.15
+	depends = libogg>=1.0.0
+	depends = libvorbis>=1.0.0
+	depends = cdrtools>=2.0.0
+	depends = dvd+rw-tools>=5.20
+	depends = sox>=12.17.0
+	depends = flac>=1.1.0
+	depends = cdrdao>=1.1.9
+	depends = libmng>=1.0.0
+	source = http://graveman.tuxfamily.org/sources/graveman-0.3.12-5.tar.gz
+	md5sums = 94183b71f345e405badcdf92ea04dfac
+
+pkgname = graveman
+
