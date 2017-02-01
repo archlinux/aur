@@ -43,8 +43,8 @@ package() {
     install -d "$pkgdir"/usr/${_arch}/lib
     install -m644 libpython${_pybasever}*.a "$pkgdir"/usr/${_arch}/lib
     install -d "$pkgdir"/usr/${_arch}/bin
-    install -d "$pkgdir"/usr/${_arch}/include
-    cp -r ../Include "$pkgdir"/usr/${_arch}/include/python${_pybasever}
+    install -d "$pkgdir"/usr/${_arch}/include/python${_pybasever}
+    install -m644 ../Include/*.h "$pkgdir"/usr/${_arch}/include/python${_pybasever}
     install -m644 ../PC/pyconfig.h "$pkgdir"/usr/${_arch}/include/python${_pybasever}
     install -m755 python${_pybasever}.dll "$pkgdir"/usr/${_arch}/bin
     install -d "$pkgdir"/usr/${_arch}/lib/python${_pybasever}
