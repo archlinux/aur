@@ -1,4 +1,4 @@
-PKGVER="$(shell git -C larryshell rev-parse --short HEAD)$(shell git rev-parse --short HEAD)"
+PKGVER="0.0.4"
 REL=1
 VER="$(PKGVER)-$(REL)"
 
@@ -12,7 +12,8 @@ build:
 	tar cvf $(VER).tar.gz \
 		larryshell/larryshell \
 		larryshell/larryshellrc \
-		larryshell/larryshell-errors.txt
+		larryshell/larryshell-errors.txt \
+		larryshell/larryascii
 	cp $(VER).tar.gz /srv/http/larryshell
 	perl -pi -e "s/(pkgver=).*$(EOL)/\1'$(PKGVER)'/" PKGBUILD
 	perl -pi -e "s/(pkgrel=).*$(EOL)/\1'$(REL)'/" PKGBUILD
