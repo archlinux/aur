@@ -1,0 +1,15 @@
+pkgbase = apex
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = http://apex.run/
+	arch = 1686
+	arch = x86_64
+	license = MIT
+	makedepends = binutils
+	provides = apex,
+	provides = apex.run
+	source = https://github.com/apex/apex/releases/download/v0.12.0/apex_linux_amd64
+	md5sums = SKIP
+
+pkgname = apex
+
