@@ -1,23 +1,23 @@
 # Maintainer: Hanspeter Portner <dev at open-music-kontrollers dot ch>
 pkgname=patchmatrix
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="A JACK patch bay in matrix layout"
 arch=('i686' 'x86_64')
 url='https://github.com/OpenMusicKontrollers/patchmatrix'
 license=('Artistic2.0')
 groups=()
-depends=('efl' 'jack' 'sqlite' 'hicolor-icon-theme')
+depends=('jack' 'sqlite' 'hicolor-icon-theme' 'libglvnd')
 makedepends=('cmake' 'lv2')
 provides=()
 conflicts=()
 replaces=()
 backup=()
 options=()
-install=patchmatrix.install
+install=()
 source=("https://github.com/OpenMusicKontrollers/$pkgname/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=('d513ab0a5ab0ceee8d3add65e9875699')
+md5sums=('ec0bc4e67847ebf4587769a1546225d4')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"

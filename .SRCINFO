@@ -1,20 +1,19 @@
 pkgbase = patchmatrix
 	pkgdesc = A JACK patch bay in matrix layout
-	pkgver = 0.2.1
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/OpenMusicKontrollers/patchmatrix
-	install = patchmatrix.install
 	arch = i686
 	arch = x86_64
 	license = Artistic2.0
 	makedepends = cmake
 	makedepends = lv2
-	depends = efl
 	depends = jack
 	depends = sqlite
 	depends = hicolor-icon-theme
-	source = https://github.com/OpenMusicKontrollers/patchmatrix/archive/0.2.1.tar.gz
-	md5sums = d513ab0a5ab0ceee8d3add65e9875699
+	depends = libglvnd
+	source = https://github.com/OpenMusicKontrollers/patchmatrix/archive/0.6.0.tar.gz
+	md5sums = ec0bc4e67847ebf4587769a1546225d4
 
 pkgname = patchmatrix
 
