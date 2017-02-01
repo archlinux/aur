@@ -5,8 +5,8 @@
 
 # Maintainer: Nicolas Haigh <haigh.nicolas at googlemail dot com>
 pkgname=python2-owm
-pkgver=2.6.0
-pkgrel=2
+pkgver=2.6.1
+pkgrel=1
 pkgdesc="A wrapper for the OpenWeatherMap API"
 arch=('any')
 url="https://github.com/csparpa/pyowm"
@@ -15,7 +15,7 @@ depends=('python2>=2.7')
 makedepends=("python2-setuptools")
 options=("strip")
 source=("https://github.com/csparpa/pyowm/archive/$pkgver.tar.gz")
-md5sums=('0ef75380a15ad59be9f53948be08b73c')
+md5sums=('fad252fff9e062af5b0df888cf4ee1ab')
 
 prepare() {
 	cd "pyowm-$pkgver"
