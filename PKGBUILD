@@ -4,7 +4,7 @@
 # Contributor: American_Jesus
 pkgname=palemoon
 pkgver=27.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
 url="http://www.palemoon.org/"
@@ -22,7 +22,7 @@ source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=${pkgver}_Rel
         mozconfig.in
         sed.patch)
 md5sums=('SKIP'
-         '033551ecd40cc00580ed77fa00f31559'
+         'bcae79c3f48663a2d993978782388bc6'
          '048a6f60fe43e5c3e066fe9181e1a078')
 
 prepare() {
