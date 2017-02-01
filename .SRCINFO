@@ -1,5 +1,5 @@
 pkgbase = phorward
-	pkgdesc = C library and tool for regular expressions, lexical analysis, parsing and more.
+	pkgdesc = C library and tools for regular expressions, lexical analysis, parsing and more.
 	pkgver = 0.18.0
 	pkgrel = 1
 	url = http://www.phorward.info
@@ -7,7 +7,7 @@ pkgbase = phorward
 	arch = x86_64
 	arch = armv6h
 	license = BSD
-	optdepends = txt2tags: Documentation generator
+	depends = txt2tags
 	source = http://www.phorward.info/products/phorward/phorward-0.18.0-source.tar.gz
 	md5sums = b2938fdbf207736bfbfa8100342c5865
 
