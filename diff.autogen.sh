@@ -3,5 +3,3 @@
 @@ -10 +10 @@
 -test "$REQUIRED_AUTOMAKE_VERSION" || REQUIRED_AUTOMAKE_VERSION=1.9
 +test "$REQUIRED_AUTOMAKE_VERSION" || REQUIRED_AUTOMAKE_VERSION=1.15
-@@ -357,0 +358 @@
-+    1.15*) automake_progs="automake-1.15 " ;;
