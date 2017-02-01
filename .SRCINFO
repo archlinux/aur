@@ -1,6 +1,6 @@
 pkgbase = jautolock-git
 	pkgdesc = An automatic X screen-locker/screen-saver
-	pkgver = 0.5.r1.19e3e05
+	pkgver = 0.6.r6.7e871e3
 	pkgrel = 1
 	url = https://github.com/johnchen902/jautolock
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = jautolock-git
 	license = GPL3
 	makedepends = git
 	depends = confuse
+	depends = libxdg-basedir
 	depends = libxss
 	provides = jautolock
 	conflicts = jautolock

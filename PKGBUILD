@@ -1,13 +1,13 @@
 # Maintainer: Pochang Chen <johnchen902@gmail.com>
 
 pkgname=jautolock-git
-pkgver=0.5.r1.19e3e05
+pkgver=0.6.r6.7e871e3
 pkgrel=1
 pkgdesc="An automatic X screen-locker/screen-saver"
 arch=('i686' 'x86_64')
 url="https://github.com/johnchen902/jautolock"
 license=('GPL3')
-depends=('confuse' 'libxss')
+depends=('confuse' 'libxdg-basedir' 'libxss')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
