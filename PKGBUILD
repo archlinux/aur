@@ -2,7 +2,7 @@
 
 pkgname=brave-git
 _pkgname=browser-laptop
-pkgver=0.13.1.5208
+pkgver=0.13.1.5213
 pkgrel=1
 pkgdesc="A web browser that stops ads and trackers by default. Master branch."
 arch=('x86_64') # Upstream supports x86_64 only
@@ -20,7 +20,7 @@ source=("git://github.com/brave/browser-laptop.git"
         'brave')
 sha384sums=('SKIP'
             'f950675fb4a3f9e48374f8a2667e7a45889206a3062c8182e474143607fc26bd17e852a1ef494607dbd3ff4de325e05f'
-            'c3a0231272b287d5741f4347bc64627e65c2bf7adb303ba8beb2584b6ca22579f080dc2bc7be5227a3100f16f1dd7023')
+            '59cfb17410b5a0b7265327543531fb6b81baf7f5fe829f8a46707a98a16e38fa1fd160bd2cf01bdc1e23d63f5677c1f9')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
