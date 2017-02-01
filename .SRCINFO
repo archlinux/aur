@@ -1,0 +1,18 @@
+pkgbase = sickmuse
+	pkgdesc = Collectd RRD web graphing application
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/mlavin/sickmuse
+	arch = any
+	license = BSD
+	makedepends = python2-pip
+	makedepends = sed
+	depends = python2
+	depends = python2-tornado
+	depends = python2-rrdtool
+	options = !emptydirs
+	source = https://raw.githubusercontent.com/mlavin/sickmuse/76f4b835b06fd6a7e91c0c751f0c1f1491e77366/systemd/sickmuse.service
+	md5sums = 131da6cab8bb67ff4b8cc37a1a4d001c
+
+pkgname = sickmuse
+
