@@ -5,8 +5,8 @@
 
 # Maintainer: Nicolas Haigh <haigh.nicolas at googlemail dot com>
 pkgname=python-owm
-pkgver=2.6.0
-pkgrel=2
+pkgver=2.6.1
+pkgrel=1
 pkgdesc="A wrapper for the OpenWeatherMap API"
 arch=('any')
 url="https://github.com/csparpa/pyowm"
