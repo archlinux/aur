@@ -1,7 +1,7 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=td-agent
-pkgver=2.3.2
-pkgrel=2
+pkgver=2.3.4
+pkgrel=1
 _pkgrel=0
 pkgdesc='Open-Source Log Collector'
 arch=('x86_64')
@@ -32,5 +32,5 @@ package() {
 
 # vim: set ft=sh:
 
-sha256sums=('614b94fab0cfeeb4289c0d774c6948748f1ea40806894d0aed2dee174a02dc75'
+sha256sums=('74eafe5a55a177751463fd632464c6225cd057343eb64afda478d32ffb6390d5'
             'a1202a84c8618b7b0e005037f24492fe82aef2ffeb2925e4e4637dbd56e994c0')
