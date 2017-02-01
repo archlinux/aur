@@ -1,0 +1,25 @@
+pkgbase = osxcross-git
+	pkgdesc = OS X cross toolchain for Linux, FreeBSD and NetBSD
+	pkgver = 0.14
+	pkgrel = 1
+	url = https://github.com/tpoechtrager/osxcross
+	arch = x86_64
+	license = MIT
+	makedepends = clang>=3.2
+	makedepends = patch
+	makedepends = libxml2
+	makedepends = bash
+	optdepends = llvm: for Link Time Optimization support and ld64 -bitcode_bundle support
+	optdepends = uuid: for ld64 -random_uuid support
+	optdepends = xar: for ld64 -bitcode_bundle support
+	provides = osxcross
+	conflicts = osxcross
+	noextract = MacOSX10.11.sdk.tar.xz
+	options = !strip
+	source = git+https://github.com/tpoechtrager/osxcross.git
+	source = https://s3.dockerproject.org/darwin/v2/MacOSX10.11.sdk.tar.xz
+	md5sums = SKIP
+	md5sums = b0d81b95746c7e698c39c7df1e15ca7d
+
+pkgname = osxcross-git
+
