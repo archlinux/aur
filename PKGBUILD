@@ -1,5 +1,5 @@
 pkgname=fusiondirectory-plugin-webservice
-pkgver=1.0.18
+pkgver=1.0.19
 pkgrel=1
 pkgdesc="Management plugin for webservice"
 arch=("any")
@@ -10,7 +10,7 @@ depends=("fusiondirectory>=$pkgver")
 install=fusiondirectory-plugin-webservice.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
 "http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
-md5sums=('2b2cc3c9213491deffbfc7e27a1af13a' 'bc433a65fecf5a46fb083fd1d6590001')
+md5sums=('409aebff6a90aef73cce834485501305' 'a8502cf3ba20477f80de10a59c462c14')
 
 package() {
 cd ./fusiondirectory-plugins-${pkgver}
