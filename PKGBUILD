@@ -2,7 +2,7 @@
 
 pkgname=moolticute-git
 _pkgname="${pkgname%-git}"
-pkgver=0.5.2.r0.g9486816
+pkgver=0.5.2.r20.g9a97fc1
 pkgrel=1
 pkgdesc="Easy companion for Mooltipass device"
 arch=('x86_64' 'i686')
@@ -18,7 +18,6 @@ makedepends=('git'
              'make')
 checkdepends=()
 optdepends=()
-install="${_pkgname}.install"
 
 source=("git+${url}.git"
         '69-mooltipass.rules'
