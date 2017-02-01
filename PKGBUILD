@@ -12,7 +12,7 @@
 
 pkgname=perl-date-parse
 pkgver=2.30
-pkgrel=2
+pkgrel=3
 pkgdesc='Parse date strings into time values'
 arch=('any')
 url='http://search.cpan.org/~gbarr/TimeDate-2.30/'
@@ -24,12 +24,15 @@ md5sums=('b1d91153ac971347aee84292ed886c1c')
 
 build() {
   cd "$srcdir"/TimeDate-$pkgver
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 package() {
   cd "$srcdir"/TimeDate-$pkgver
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   make DESTDIR="$pkgdir" install
 }
 
