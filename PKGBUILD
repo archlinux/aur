@@ -24,12 +24,15 @@ md5sums=('1a429260ec4584642b670ba393350461')
 
 build() {
   cd "$srcdir"/Net--RabbitMQ-$pkgver
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 package() {
   cd "$srcdir"/Net--RabbitMQ-$pkgver
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   make DESTDIR="$pkgdir" install
   chmod -R u=rwX,go=rwX "$pkgdir"
 }
