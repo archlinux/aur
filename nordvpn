@@ -1,0 +1,42 @@
+#!/usr/bin/sh
+
+get_service() {
+    systemctl --type=service | grep openvpn-client@nordvpn | awk '{print $1}'
+}
+
+command=$1
+shift
+
+case $command in
+    list)
+        find /etc/openvpn/client/ -type l -name "nordvpn_*${1}*.conf" \
+             | xargs -L1 basename \
+             | cut -d _ -f 2 \
+             | cut -d . -f 1 \
+             | sort -g
+        ;;
+    status)
+        service=$(get_service)
+        test -z $service || systemctl status $service
+        ;;
+    start)
+        service=$(get_service)
+        test -z $service || $0 stop
+        systemctl $command openvpn-client@nordvpn_${1}
+        ;;
+    stop|restart)
+        service=$(get_service)
+        test -z $service || systemctl $command $service
+        ;;
+    *)
+        echo "usage: nordvpn command [options]"
+        echo
+        echo "Available commands:"
+        echo "    list [server_name_pattern]"
+        echo "        List available servers."
+        echo "    status"
+        echo "        Show current systemd service status, if any."
+        echo "    start|stop|restart server_name"
+        echo "        Start, stop or restart systemd service for specified server."
+        ;;
+esac

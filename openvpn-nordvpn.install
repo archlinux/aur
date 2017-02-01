@@ -1,0 +1,24 @@
+create_credentials() {
+    if [ ! -f /etc/openvpn/client/nordvpn/credentials.conf ]; then
+        echo "login" > /etc/openvpn/client/nordvpn/credentials.conf
+        echo "password" >> /etc/openvpn/client/nordvpn/credentials.conf
+        chmod 400 /etc/openvpn/client/nordvpn/credentials.conf
+        echo "Please update /etc/openvpn/client/nordvpn/credentials.conf"
+    fi
+}
+
+post_install() {
+    create_credentials
+}
+
+post_upgrade() {
+    create_credentials
+}
+
+pre_remove() {
+    nordvpn stop
+}
+
+post_remove() {
+    rm -rf /etc/openvpn/client/nordvpn
+}

@@ -1,0 +1,16 @@
+pkgbase = openvpn-nordvpn
+	pkgdesc = OpenVPN configuration files and helper for nordvpn.com
+	pkgver = 17.2.1
+	pkgrel = 1
+	install = openvpn-nordvpn.install
+	arch = any
+	license = MIT
+	makedepends = unzip
+	depends = openvpn
+	depends = systemd
+	noextract = zip
+	source = https://nordvpn.com/api/files/zip
+	sha256sums = d2ab555e0c601a4b220339fa84e35909aab59451bd115b795cdb76b552991810
+
+pkgname = openvpn-nordvpn
+
