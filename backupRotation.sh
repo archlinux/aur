@@ -128,7 +128,7 @@ for source_path in "${!source_target_mappings[@]}"; do
             successful=true
         if $successful; then
             message="Source files in \"$source_path\" from node \"$name\" successfully backed up to \"${target_file_path}${target_file_extension}\".\n\nCurrent Backup structure:\n"
-            $verbose && echo -e "$message" && tree "$target_path" && \
+            $verbose && echo -e "$message" && tree -h -t "$target_path" && \
                 df ./ --human-readable
             if hash msmtp && [[ "$sender_e_mail_address" != '' ]]; then
                 for e_mail_address in \
@@ -152,7 +152,7 @@ Subject: Backup was successful
     <p>$(echo -e $message | sed --regexp-extended 's/"([^"]+)"/"<span style="font-weight:bold">\1<\/span>"/g')</p>
     <p>
         <pre>
-$(tree "$target_path" | sed 's/</\&lt;/g' | sed 's/>/\&gt;/g' | sed "0,/${target_daily_file_name}${target_file_extension}/s/${target_daily_file_name}${target_file_extension}/<span style="font-weight:bold">${target_daily_file_name}${target_file_extension}<\\/span>/" | sed "s/${target_weekly_file_name}${target_file_extension}/<span style="font-weight:bold">${target_weekly_file_name}${target_file_extension}<\\/span>/" | sed "s/${target_monthly_file_name}${target_file_extension}/<span style="font-weight:bold">${target_monthly_file_name}${target_file_extension}<\\/span>/")
+$(tree -h -t "$target_path" | sed 's/</\&lt;/g' | sed 's/>/\&gt;/g' | sed "0,/${target_daily_file_name}${target_file_extension}/s/${target_daily_file_name}${target_file_extension}/<span style="font-weight:bold">${target_daily_file_name}${target_file_extension}<\\/span>/" | sed "s/${target_weekly_file_name}${target_file_extension}/<span style="font-weight:bold">${target_weekly_file_name}${target_file_extension}<\\/span>/" | sed "s/${target_monthly_file_name}${target_file_extension}/<span style="font-weight:bold">${target_monthly_file_name}${target_file_extension}<\\/span>/")
         </pre>
     </p>
     <p><pre>$(df ./ --human-readable)</pre></p>
@@ -172,7 +172,7 @@ EOF
     if ! $successful; then
         message="Source files in \"$source_path\" from node \"$name\" should be backed up but has failed.\n\nCurrent Backup structure:\n"
         $verbose && echo -e "$message" &>/dev/stderr && \
-            tree "$target_path" && df ./ --human-readable
+            tree -h -t "$target_path" && df ./ --human-readable
         if hash msmtp && [[ "$sender_e_mail_address" != '' ]]; then
             for e_mail_address in \
                 $(echo "${source_target_mappings[$source_path]}" | \
@@ -195,7 +195,7 @@ Subject: Backup has failed
     <p>$(echo -e $message | sed --regexp-extended 's/"([^"]+)"/"<span style="font-weight:bold">\1<\/span>"/g' | sed --regexp-extended 's/(failed)/<span style="font-weight:bold">\1<\/span>/g')</p>
     <p>
         <pre>
-$(tree "$target_path" | sed 's/</\&lt;/g' | sed 's/>/\&gt;/g' | sed "0,/${target_daily_file_name}${target_file_extension}/s/${target_daily_file_name}${target_file_extension}/<span style="font-weight:bold">${target_daily_file_name}${target_file_extension}<\\/span>/" | sed "s/${target_weekly_file_name}${target_file_extension}/<span style="font-weight:bold">${target_weekly_file_name}${target_file_extension}<\\/span>/" | sed "s/${target_monthly_file_name}${target_file_extension}/<span style="font-weight:bold">${target_monthly_file_name}${target_file_extension}<\\/span>/")
+$(tree -h -t "$target_path" | sed 's/</\&lt;/g' | sed 's/>/\&gt;/g' | sed "0,/${target_daily_file_name}${target_file_extension}/s/${target_daily_file_name}${target_file_extension}/<span style="font-weight:bold">${target_daily_file_name}${target_file_extension}<\\/span>/" | sed "s/${target_weekly_file_name}${target_file_extension}/<span style="font-weight:bold">${target_weekly_file_name}${target_file_extension}<\\/span>/" | sed "s/${target_monthly_file_name}${target_file_extension}/<span style="font-weight:bold">${target_monthly_file_name}${target_file_extension}<\\/span>/")
         </pre>
     </p>
     <p><pre>$(df ./ --human-readable)</pre></p>
