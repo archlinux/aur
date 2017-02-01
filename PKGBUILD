@@ -2,13 +2,13 @@
 
 _pkgname=epiphany
 pkgname=$_pkgname-git
-pkgver=3.23.4+53+ga0545a9e5
+pkgver=3.23.4+100+g88aacc4f8
 pkgrel=1
 install=epiphany.install
 pkgdesc="A GNOME web browser based on the WebKit rendering engine."
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=("glib2" "gtk3>=3.22.0" "libsoup>=2.48.0" 'libnotify' 'gsettings-desktop-schemas' 'webkit2gtk>=2.15.1' 
+depends=("glib2" "gtk3>=3.22.0" "libsoup>=2.48.0" 'libnotify' 'gsettings-desktop-schemas' 'webkit2gtk>=2.15.4'
 		  'nss' 'iso-codes' 'dconf' 'gobject-introspection' 'desktop-file-utils' 'libxml2' 'libsecret'
 		  'hicolor-icon-theme' 'gcr' 'gnome-desktop' 'libwnck3' 'appstream-glib' 'libhttpseverywhere')
 makedepends=('intltool' 'gnome-doc-utils' 'gnome-common' 'git' 'startup-notification' 'yelp-tools')
