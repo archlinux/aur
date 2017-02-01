@@ -2,7 +2,7 @@
 
 pkgname=caff-svn
 _pkgname=caff
-pkgver=0.r885
+pkgver=0.r890
 pkgrel=1
 pkgdesc="CA Fire and Forget is a script that helps you in keysigning."
 arch=('any')
