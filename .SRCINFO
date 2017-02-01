@@ -55,7 +55,6 @@ pkgbase = diffoscope-git
 	optdepends = ghc: haskell utilities support
 	optdepends = gnupg: GNU privacy guard support
 	optdepends = mono: mono support
-	optdepends = mono-tools: mono utilities support
 	optdepends = openssh: OpenSSH key comparing support
 	optdepends = poppler: PDF utilities support
 	optdepends = sqlite: SQLite support

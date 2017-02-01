@@ -27,7 +27,6 @@ optdepends=(
   'ghc: haskell utilities support'
   'gnupg: GNU privacy guard support'
   'mono: mono support'
-  'mono-tools: mono utilities support'
   'openssh: OpenSSH key comparing support'
   'poppler: PDF utilities support'
   'sqlite: SQLite support'
