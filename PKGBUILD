@@ -3,7 +3,7 @@
 
 pkgname=firefox-wayland-git
 pkgver=ea5f69b51549
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -68,7 +68,7 @@ prepare() {
   patch -Np1 -i ../rust-i686.patch
 
   # Small upstream bug reading icu version
-  patch -Np0 -i ../icu.m4-adding-extra-bracket-to-not-confuse-grep.patch
+  patch -Np2 -i ../icu.m4-adding-extra-bracket-to-not-confuse-grep.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo "ac_add_options --with-google-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
