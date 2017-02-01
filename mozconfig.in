@@ -1,3 +1,8 @@
+# The following help information is taken from https://books.google.de/books?id=eZQY4MCdjfoC&pg=PA339&lpg=PA339&dq=%22MOZILLA_OFFICIAL%22&source=bl&ots=ihhgFFyy1i&sig=N4XAXk8zgELVywQcYqK5D4b5oSM&hl=en&sa=X&ved=0ahUKEwjxyZG3hu_RAhUCNxQKHd1_BdIQ6AEINDAJ#v=onepage&q=%22MOZILLA_OFFICIAL%22&f=false
+# This can be put into mozconfig:
+# Common environment flags as noted in mozilla/config/config.mk,
+# configure options as printed out by mozilla/configure --help.
+
 ac_add_options --disable-official-branding
 ac_add_options --with-branding=browser/branding/unofficial
 export MOZILLA_OFFICIAL=1
@@ -19,7 +24,7 @@ ac_add_options --disable-jemalloc
 ac_add_options --with-pthreads
 
 ac_add_options --enable-strip
-ac_add_options --enable-optimize="-O3 -msse2 -mfpmath=sse"
+ac_add_options --enable-optimize="-O2 -msse2 -mfpmath=sse"
 
 ac_add_options --x-libraries=/usr/lib
 

@@ -1,7 +1,7 @@
 pkgbase = palemoon-26
 	pkgdesc = Pale Moon web browser, old version 26 (still with the jetpack SDK addon technology, but not maintained anymore). Unofficial New Moon-branding.
 	pkgver = 26.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.palemoon.org/
 	arch = i686
 	arch = x86_64
@@ -28,13 +28,11 @@ pkgbase = palemoon-26
 	optdepends = gst-libav: h.264 support
 	optdepends = gst-plugins-good: h.264 support
 	provides = palemoon=26.5.0
-	provides = newmoon=26.5.0
 	conflicts = palemoon
-	conflicts = newmoon
 	source = git+https://github.com/MoonchildProductions/Pale-Moon#tag=26.5.0_Release
 	source = mozconfig.in
 	sha256sums = SKIP
-	sha256sums = 2f5b82b4257af9e7d77fbde1af406bf6cc9861fb3195161c2a9bba74c255e91b
+	sha256sums = 808a602d5504cb68fac706644ac01b09d8236ec7793ea81dbd453b9eb1afec32
 
 pkgname = palemoon-26
 

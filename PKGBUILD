@@ -7,7 +7,7 @@
 _pkgname=palemoon
 pkgname="${_pkgname}-26"
 pkgver=26.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Pale Moon web browser, old version 26 (still with the jetpack SDK addon technology, but not maintained anymore). Unofficial New Moon-branding."
 arch=(
       'i686'
@@ -16,11 +16,9 @@ arch=(
 url="http://www.palemoon.org/"
 provides=(
           "${_pkgname}=${pkgver}"
-          "newmoon=${pkgver}"
          )
 conflicts=(
            "${_pkgname}"
-           "newmoon"
           )
 license=(
          'MPL'
@@ -58,7 +56,7 @@ source=(
        )
 sha256sums=(
             'SKIP'
-            '2f5b82b4257af9e7d77fbde1af406bf6cc9861fb3195161c2a9bba74c255e91b'
+            '808a602d5504cb68fac706644ac01b09d8236ec7793ea81dbd453b9eb1afec32'
            )
 
 prepare() {
