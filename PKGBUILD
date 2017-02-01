@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl
-pkgver=16.05.8
+pkgver=16.05.9
 pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management"
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ sha512sums=('61f07699353d607ec43bab2a4fe29b4a380dab10108619e67ca2737193ab044a6e2
             'a1c2478a049dc1c024d773a73f363da6c9106d9533137f919394e8213376cb9167c8fcca7b038d1c45c441a1adce4524ccb68b6dd269a1000aba11b84b5352d5'
             'ae2d0275bc9e0aac15d0d1dd4913b70ed4d4032e76c9c6ffdeae345c55834219f6495429d1d1c9129779221d6d08bada1228ccdb1c671b05d4a92ed6088bf55c'
             '56459e20d7f2624a8e8dd2982693b257e65df22c3609d991afdc1b2f79adaefc0586a76fd5fdd7dc2bdd39b3af0c91f38ddc4b1139081968903450bc28aca304'
-            '26613c787681c7561ebcccb963ba0ce3a1507aedc5e98a912668dfac139e775ea02e7e2f476768bfa628f54eb1e2ab8acbc525597baaad38afcd01433be26a86')
+            '065ef8fb3aef74e664a5c797c4a0ce948610aa7bb9f9ba4f6a80490f3b44678a951a502facdd6dbedad6aeeb7f57c4c3b14c19b5ec1e7257927f9b653e9cc604')
 
 
 build() {
