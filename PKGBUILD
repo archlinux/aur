@@ -9,6 +9,7 @@ pkgdesc='An educational tool for designing and simulating digital logic circuits
 arch=('any')
 url="http://www.cburch.com/logisim/"
 license=('GPL2')
+makedepends=('java-environment')
 depends=('sh' 'java-runtime' 'gtk-update-icon-cache' 'desktop-file-utils' 'shared-mime-info')
 install=${pkgname}.install
 source=(http://downloads.sourceforge.net/sourceforge/circuit/${_truepkgname}-${pkgver}.jar
