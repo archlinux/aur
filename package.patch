@@ -1,9 +1,10 @@
---- lock	2016-10-13 18:55:28.357697602 -0400
-+++ locknew	2016-10-13 22:13:50.715240569 -0400
-@@ -79,8 +79,7 @@
+--- lock	2017-01-02 17:28:33.843036153 -0500
++++ lockpatch	2017-02-01 10:20:06.797667790 -0500
+@@ -79,9 +79,7 @@
+ 
  "${SHOT[@]}" "$IMAGE"
  
- # get path where the script is located to find the lock icon
+-# get path where the script is located to find the lock icon
 -SCRIPTPATH=$(realpath "$0")
 -SCRIPTPATH=${SCRIPTPATH%/*}
 +SCRIPTPATH="/usr/share/i3lock-fancy"
