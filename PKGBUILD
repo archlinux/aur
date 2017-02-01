@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=extrace-git
-pkgver=0.1.r0.gf977c0f
+pkgver=0.3.r1.g2eb72c6
 pkgrel=1
 epoch=
 pkgdesc="Trace exec() calls system-wide."
@@ -37,6 +37,7 @@ package() {
   cd "$srcdir/$pkgname"
   install -Dm755 extrace $pkgdir/usr/bin/extrace
   install -m755 pwait $pkgdir/usr/bin/pwait
+  install -Dm644 extrace.1 $pkgdir/usr/share/man/man1/extrace.1
   mkdir -p $pkgdir/usr/share/licenses/$pkgname/
   sed '16,49!d' extrace.c > $pkgdir/usr/share/licenses/$pkgname/LICENSE.extrace
   sed '10,46!d' pwait.c > $pkgdir/usr/share/licenses/$pkgname/LICENSE.pwait
