@@ -1,15 +1,15 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=rclone-browser
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc='Simple cross-platform GUI for rclone'
 url='https://mmozeiko.github.io/RcloneBrowser/'
 arch=('i686' 'x86_64')
 license=('custom:Public Domain')
 source=("https://github.com/mmozeiko/RcloneBrowser/archive/${pkgver}.tar.gz"
         'rclone-browser.desktop')
-sha256sums=('b3e718180ad9475517da55b5b7bbeb83434a2b621bc4b0e924870764cf77bf50'
+sha256sums=('538d1985e8f2f933485035dd3c80806813a7d223f04f0cd788b9b401150d09a8'
             'efb243a0865106562f2e4cba14da0c5bcbf4387762bd6107067e3cc6d467ed06')
 makedepends=('cmake')
 depends=('qt5-base' 'rclone')
