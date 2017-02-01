@@ -4,7 +4,7 @@
 
 pkgname=chrome-remote-desktop
 pkgver=56.0.2924.51
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to securely access your computer over the Internet through Chrome."
 url="https://chrome.google.com/webstore/detail/gbchcmhmhahfdphkhkmpfmihenigjmpp"
 arch=('x86_64')
@@ -31,7 +31,7 @@ prepare() {
   cd "$srcdir"
 
   msg2 'Extracting data from debian package'
-  bsdtar -xf data.tar.gz -C .
+  bsdtar -xf data.tar.xz -C .
 
   msg2 'Patching Python script'
   sed -e '1 s/python/python2/' \
@@ -60,7 +60,7 @@ package() {
 
   msg2 "Adding systemd user service file"
   install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/user/$pkgname.service"
-  
+
   msg2 "Adding runnable crd command"
   install -Dm755 "crd" "$pkgdir/usr/bin/crd"
 
