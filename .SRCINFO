@@ -1,0 +1,17 @@
+pkgbase = unicc
+	pkgdesc = Universal, target-language independent LALR(1) parser generator
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://www.phorward.info
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = BSD
+	depends = phorward
+	source = http://www.phorward.info/products/unicc/unicc-1.1.0-source.tar.gz
+	source = http://www.phorward.info/products/unicc/unicc.pdf
+	md5sums = 5411db004a8bbde40670e72427e95d1a
+	md5sums = c0e4266f171e391d1af601882f7e80b3
+
+pkgname = unicc
+
