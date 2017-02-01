@@ -1,0 +1,33 @@
+pkgbase = firefox-dev
+	pkgdesc = Standalone web browser from mozilla.org, developer build
+	pkgver = 52.0a2
+	pkgrel = 1
+	url = http://www.mozilla.org/firefox/developer
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = alsa-lib
+	depends = libxt
+	depends = libnotify
+	depends = mime-types
+	depends = nss
+	depends = gtk3
+	depends = sqlite3
+	depends = dbus-glib
+	source_i686 = https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-aurora/firefox-52.0a2.en-US.linux-x86_64.tar.bz2
+	source_i686 = firefox-developer.desktop
+	source_i686 = vendor.js
+	sha512sums_i686 = SKIP
+	sha512sums_i686 = 9075e0d67e4dc153dcf514f3aa2b2415ce8b39275eedbf02a3cd122949b95bf4af9dad358516145decf445d1a903d52a634f4eeeb44bb67864de02e646a76631
+	sha512sums_i686 = bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010
+	source_x86_64 = https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-aurora/firefox-52.0a2.en-US.linux-x86_64.tar.bz2
+	source_x86_64 = firefox-developer.desktop
+	source_x86_64 = vendor.js
+	sha512sums_x86_64 = SKIP
+	sha512sums_x86_64 = 9075e0d67e4dc153dcf514f3aa2b2415ce8b39275eedbf02a3cd122949b95bf4af9dad358516145decf445d1a903d52a634f4eeeb44bb67864de02e646a76631
+	sha512sums_x86_64 = bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010
+
+pkgname = firefox-dev
+
