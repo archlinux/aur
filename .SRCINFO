@@ -1,6 +1,6 @@
 pkgbase = python35
 	pkgdesc = Next generation of the python high-level scripting language
-	pkgver = 3.5.2
+	pkgver = 3.5.3
 	pkgrel = 1
 	url = http://www.python.org/
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = python35
 	optdepends = tk: for tkinter
 	optdepends = sqlite
 	options = !makeflags
-	source = http://www.python.org/ftp/python/3.5.2/Python-3.5.2.tar.xz
-	sha256sums = 0010f56100b9b74259ebcd5d4b295a32324b58b517403a10d1a2aa7cb22bca40
+	source = http://www.python.org/ftp/python/3.5.3/Python-3.5.3.tar.xz
+	sha256sums = eefe2ad6575855423ab630f5b51a8ef6e5556f774584c06beab4926f930ddbb0
 
 pkgname = python35
 
