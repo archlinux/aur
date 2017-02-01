@@ -2,16 +2,14 @@
 
 pkgname=mopidy-scrobbler
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mopidy extension for scrobbling played tracks to Last.fm"
 arch=('any')
-url="http://www.mopidy.com"
+url="https://github.com/mopidy/mopidy-scrobbler/"
 license=('APACHE')
 depends=(
 	'mopidy>=0.18'
-	'python2-pykka>=1.1'
-	'python2-pylast>=0.5.7'
-	'python2-setuptools')
+	'python2-pylast>=0.5.7')
 makedepends=('python2')
 provides=('mopidy-scrobbler')
 source=("https://github.com/mopidy/${pkgname}/archive/v${pkgver}.tar.gz")
