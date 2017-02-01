@@ -1,0 +1,24 @@
+pkgbase = keeweb-devel
+	pkgdesc = Desktop password manager compatible with KeePass databases.
+	pkgver = v1.3.3.r80.gab46c0d
+	pkgrel = 1
+	url = https://github.com/keeweb/keeweb
+	arch = any
+	license = MIT
+	makedepends = nodejs-grunt
+	makedepends = npm
+	makedepends = sed
+	depends = electron
+	depends = xdg-utils
+	depends = sh
+	provides = keeweb
+	conflicts = keeweb
+	source = git+https://github.com/keeweb/keeweb.git#branch=develop
+	source = kdbx.xml
+	source = keeweb.desktop
+	sha512sums = SKIP
+	sha512sums = beb2de28654be6c2cb234d8ab5b983e19c25512b4814ab486785f26fe5d3609dd42acee21582f5bc54f2e0fefa676a1af833164c1b7939b83fd62923686b7665
+	sha512sums = a2fcc7a18a73a024b912eb0c496f948c82fa5d7ea06c2e5a855b1bd84dcfbe2eb0152f70fe1c9c6ed725cd88dc89cca59a55e8e5657bc94f61bca6db9fc228ee
+
+pkgname = keeweb-devel
+
