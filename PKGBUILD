@@ -2,7 +2,7 @@
 # Contributor: Dean Galvin <deangalvin3@gmail.com>
 pkgname="home-assistant"
 pkgdesc='Home Assistant is an open-source home automation platform running on Python 3'
-pkgver=0.36.1
+pkgver=0.37
 pkgrel=1
 url="https://home-assistant.io/"
 license=('MIT')
@@ -16,7 +16,7 @@ optdepends=('git: install component requirements from github'
 conflicts=('python-home-assistant' 'python-home-assistant-git')
 source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
 "home-assistant.service")
-sha256sums=('9a314b318ec1b9eeb2208246f13c0d3483735d7db437c17b6b52d02ec2ceb4aa'
+sha256sums=('c0e509b4dc77bcbc96717988b04ed966be3f66e2cd31e9b937458d2629b5241f'
             'd5363dd4dc136182bef5d0e48d4e9674642025d83c55ca2ef48d4ac401c72a8c')
 backup=('var/lib/hass/configuration.yaml')
 install='hass.install'
@@ -44,5 +44,5 @@ package() {
   cd ${srcdir}/${pkgname}-${pkgver}
 
   python3 setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
