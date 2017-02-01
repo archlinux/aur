@@ -1,18 +1,18 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Libernux <dutchman55@gmx.com>
 # Contributor: Roland Singer <roland@manjaro.org>
-pkgname="brother-dcp7040"
-pkgver="2.0.2"
-pkgrel=1
+pkgname=brother-dcp7040
+pkgver=2.0.2
+pkgrel=2
 pkgdesc="LPR and CUPS driver for the Brother DCP7040"
 arch=('i686' 'x86_64')
-url="http://solutions.brother.com/linux/en_us/"
+url=http://solutions.brother.com/linux/en_us/
 license=('custom:brother commercial license')
 depends=('cups')
 install="$pkgname.install"
 source=(
-	"http://www.brother.com/pub/bsc/linux/dlf/brdcp7040lpr-$pkgver-$pkgrel.i386.rpm"
-	"http://www.brother.com/pub/bsc/linux/dlf/cupswrapperDCP7040-$pkgver-$pkgrel.i386.rpm"
+	"http://www.brother.com/pub/bsc/linux/dlf/brdcp7040lpr-$pkgver-1.i386.rpm"
+	"http://www.brother.com/pub/bsc/linux/dlf/cupswrapperDCP7040-$pkgver-1.i386.rpm"
 	'cupswrapper-license.txt'
 	'lpr-license.txt'
 )
@@ -61,4 +61,9 @@ package() {
 	if [ -d $srcdir/opt ]; then cp -R $srcdir/opt $pkgdir; fi
 	install -m 644 -D cupswrapper-license.txt $pkgdir/usr/share/licenses/${pkgname}/cupswrapper-licence.txt
 	install -m 644 -D lpr-license.txt $pkgdir/usr/share/licenses/${pkgname}/lpr-licence.txt
+    #
+    #Applying both commands from archasaurusrex comment
+    #
+    echo DCP7040 | sudo tee $pkgdir/usr/share/brother/inf/brPrintList
+    chown daemon:lp $pkgdir/usr/share/brother/inf/brDCP7040rc
 }
