@@ -1,5 +1,6 @@
 # $Id$
-# Maintainer: Ido Rosen <ido@kernel.org>
+# Maintainer: Jamin Collins <jamin.collins@gmail.com>
+# Contributor: Ido Rosen <ido@kernel.org>
 # Contributor: Evan Teitelman <teitelmanevan@gmail.com>
 # Contributor: Eric Renfro <erenfro@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
@@ -11,13 +12,9 @@
 # Contributor: David Anderson <dave@natulte.net>
 # Contributor: Joe Julian <me@joejulian.name>
 #
-# NOTE: To request changes to this package, please submit a pull request
-#       to the GitHub repository at https://github.com/ido/packages-archlinux
-#       Otherwise, open a GitHub issue.  Thank you! -Ido
-#
 
 pkgname=ceph-git
-pkgver=0.89.370.gcfb03b2
+pkgver=11.1.0.7326.g3b807e763a
 pkgrel=1
 epoch=1
 pkgdesc='Distributed, fault-tolerant file system delivering object, block, and file storage in one unified system.'
@@ -28,17 +25,47 @@ depends=('libedit' 'libsigc++' 'gtkmm' 'btrfs-progs' 'crypto++'
          'gperftools>=1.8.3-2' 'python2' 'fuse' 'keyutils'
          'libatomic_ops' 'curl' 'libaio' 'fcgi' 'expat' 'boost'
          'leveldb' 'xfsprogs')
-makedepends=('boost' 'boost-libs' 'yasm')
+makedepends=('git' 'boost' 'boost-libs' 'yasm' 'cmake' 'python-sphinx' 'python2-lttngust' 'cython2' 'nss')
 install=ceph.install
 options=('!libtool' 'emptydirs')
 provides=('ceph')
 conflicts=('ceph')
 source=("git+https://github.com/ceph/ceph.git"
+        "git+https://github.com/ceph/ceph-object-corpus.git"
+        "git+https://github.com/ceph/civetweb"
+        "git+https://github.com/ceph/jerasure.git"
+        "git+https://github.com/ceph/gf-complete.git"
+        "git+https://github.com/ceph/rocksdb"
+        "git+https://github.com/ceph/ceph-erasure-code-corpus.git"
+        "git+https://github.com/ceph/googletest"
+        "git+https://github.com/ceph/spdk.git"
+        "git+https://github.com/ceph/xxHash.git"
+        "git+https://github.com/ceph/isa-l"
+        "git+https://github.com/ceph/lua.git"
+        "git+https://github.com/ceph/Beast.git"
+        "git+https://github.com/boostorg/boost.git"
+        "git+https://github.com/ceph/dpdk"
+        "git+https://github.com/facebook/zstd"
         "ceph-osd@.service"
         "ceph-mon@.service"
         "ceph-mds@.service"
         "ceph.install")
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '29483c0f6718e8830cf52c0d31e391fb52dc1b460bcb65cf9c72dfab83e5b5ce'
             'a50811ce62fd6cdcc17d8f1e4d9700c1889ab4bfc5e9a22155bd725a27715e3c'
             'b8239a04cc42e3e4ced2e141df6804e61e875131a5c95d6bcbfc3b44f388d44b'
@@ -52,65 +79,90 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname%%-git}"
-  git submodule sync
+  SRC_SUBMODULES=('civetweb'
+                  'rocksdb'
+                  'googletest'
+                  'spdk'
+                  'xxHash'
+                  'isa-l'
+                  'lua'
+                  'Beast'
+                  'boost'
+                  'dpdk'
+                  'zstd'
+                 )
+  for SUBMODULE in ${SRC_SUBMODULES[@]}; do
+    rm -fr "${srcdir}/${pkgname%%-git}/src/${SUBMODULE}"
+    mv "${srcdir}/${SUBMODULE}" "${srcdir}/${pkgname%%-git}/src/${SUBMODULE}"
+  done
+
+  for SUBMODULE in ceph-object-corpus ceph-erasure-code-corpus; do
+    rm -fr "${srcdir}/${pkgname%%-git}/${SUBMODULE}"
+    mv "${srcdir}/${SUBMODULE}" "${srcdir}/${pkgname%%-git}/${SUBMODULE}"
+  done
+
+  rm -fr "${srcdir}/${pkgname%%-git}/src/erasure-code/jerasure/jerasure"
+  mv "${srcdir}/jerasure" "${srcdir}/${pkgname%%-git}/src/erasure-code/jerasure/jerasure"
+
+  rm -fr "${srcdir}/${pkgname%%-git}/src/erasure-code/jerasure/gf-complete"
+  mv "${srcdir}/gf-complete" "${srcdir}/${pkgname%%-git}/src/erasure-code/jerasure/gf-complete"
+
   git submodule update --init
-
-  # fix python scripts to use python2
-  find . -type f -exec sed -i 's,^#!/usr/bin/env python$,#!/usr/bin/env python2,g' {} \;
-
-  # run setup.py script with python2
-  find . -type f ! -name 'tox.ini' -exec sed -i 's,python setup.py,python2 setup.py,g' {} \;
 }
 
 build() {
   cd "${srcdir}/${pkgname%%-git}"
 
-  ./autogen.sh
-  LIBS="-lpthread -lboost_system" PYTHON=/usr/bin/python2 LDFLAGS="" ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --with-radosgw
+  test -d build && rm -rf build
+  mkdir build
 
-  make
+  # fix python scripts to use python2
+  alias python=python2
+
+  cd "${srcdir}/${pkgname%%-git}/build"
+  cmake \
+    -DWITH_SYSTEM_BOOST:BOOL="1" \
+    -DCMAKE_INSTALL_PREFIX:PATH="/usr" \
+    -DDEBUG_GATHER:BOOL="0" \
+    "$@" ..
+  make DESTDIR="${pkgdir}"
 }
 
 package() {
-  cd "${srcdir}/${pkgname%%-git}"
+  cd "${srcdir}/${pkgname%%-git}/build"
+
+  make DESTDIR="${pkgdir}" install
 
   # Some python scripts are autogenerated through Makefiles. Fix those
   # too, or /usr/bin/ceph will have the wrong shebang.
-  find . -type f -exec sed -i 's,^#!/usr/bin/env python$,#!/usr/bin/env python2,g' {} \;
+  find ${pkgdir} -type f -exec sed -i 's,^#!/usr/bin/env python$,#!/usr/bin/env python2,g' {} \;
 
-  make DESTDIR="$pkgdir" install
-
-  install -dm755 "$pkgdir/var/run/ceph" "$pkgdir/var/log/ceph" \
-    "$pkgdir/etc/rc.d" "$pkgdir/etc/ceph"
+  install -d --mode=755 "${pkgdir}/var/run/ceph" "${pkgdir}/var/log/ceph" \
+    "${pkgdir}/etc/rc.d" "${pkgdir}/etc/ceph"
 
   # Systemd.
-  install -dm755 "$pkgdir/usr/lib/systemd/system"
-  install -Dm644 "$srcdir/ceph-osd@.service" "$pkgdir/usr/lib/systemd/system/ceph-osd@.service"
-  install -Dm644 "$srcdir/ceph-mon@.service" "$pkgdir/usr/lib/systemd/system/ceph-mon@.service"
-  install -Dm644 "$srcdir/ceph-mds@.service" "$pkgdir/usr/lib/systemd/system/ceph-mds@.service"
-  install -Dm755 "src/init-ceph" "$pkgdir/etc/rc.d/ceph"
+  install -d --mode=755 "${pkgdir}/usr/lib/systemd/system"
+  install -D --mode=644 "${srcdir}/ceph-osd@.service" "${pkgdir}/usr/lib/systemd/system/ceph-osd@.service"
+  install -D --mode=644 "${srcdir}/ceph-mon@.service" "${pkgdir}/usr/lib/systemd/system/ceph-mon@.service"
+  install -D --mode=644 "${srcdir}/ceph-mds@.service" "${pkgdir}/usr/lib/systemd/system/ceph-mds@.service"
 
   # Ceph udev rules.
-  install -Dm644 "udev/50-rbd.rules" "$pkgdir/usr/lib/udev/rules.d/50-rbd.rules"
-  install -Dm644 "udev/60-ceph-partuuid-workaround.rules" \
-    "$pkgdir/usr/lib/udev/rules.d/60-ceph-partuuid-workaround.rules"
-  install -Dm644 "udev/95-ceph-osd-alt.rules" "$pkgdir/usr/lib/udev/rules.d/95-ceph-osd.rules"
+  for RULE in ${srcdir}/${pkgname%%-git}/udev/*.rules; do
+    install -D --mode=644 "${RULE}" "${pkgdir}/usr/lib/udev/rules.d/$(basename ${RULE})"
+  done
 
   # Fix bin directory.
-  mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
+  mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
 
   # Sample config.
-  install -Dm644 "$pkgdir/usr/share/doc/ceph/sample.ceph.conf" \
-    "$pkgdir/etc/ceph/ceph.conf.sample"
+  install -D --mode=644 "${pkgdir}/usr/share/doc/ceph/sample.ceph.conf" \
+    "${pkgdir}/etc/ceph/ceph.conf.sample"
 
   # License.
-  install -Dm644 COPYING \
-    "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
+  install -D --mode=644 ${srcdir}/${pkgname%%-git}/COPYING \
+    "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
   # Clean up.
-  rmdir "$pkgdir/var/run/ceph"
+  rmdir "${pkgdir}/var/run/ceph"
 }
 
