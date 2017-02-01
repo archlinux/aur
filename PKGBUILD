@@ -1,8 +1,8 @@
 # Maintainer: Thomas "Ventto" Venriès <thomas.venries@gmail.com>
 
 pkgname=xpub
-pkgver=0.1
-pkgrel=2
+pkgver=0.3
+pkgrel=1
 pkgdesc='Bash script to get X display environment variables from anywhere.'
 arch=('any')
 url="https://github.com/Ventto/${pkgname}.git"
