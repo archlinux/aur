@@ -3,7 +3,7 @@
 
 _name=firefox
 _channel=developer
-pkgname="${_name}-${_channel}"
+pkgname="${_name}-dev"
 pkgdesc='Standalone web browser from mozilla.org, developer build'
 url='http://www.mozilla.org/firefox/developer'
 pkgver=53.0a2
