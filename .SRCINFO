@@ -1,0 +1,14 @@
+pkgbase = circos-docs
+	pkgdesc = Circos tutorials
+	pkgver = 0.67
+	pkgrel = 1
+	url = http://circos.ca
+	arch = any
+	license = GPL
+	noextract = circos-tutorials-0.67.tgz
+	options = docs
+	source = http://circos.ca/distribution/circos-tutorials-0.67.tgz
+	sha256sums = 3ac7baa47fcbb73222f0045522e234c35b6788bfb9e99d8be96d76f53c51b2c7
+
+pkgname = circos-docs
+
