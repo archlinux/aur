@@ -16,14 +16,11 @@ pkgdesc="Oracle Java $_major Development Kit Snapshot (32-bit)"
 arch=('x86_64')
 url=https://jdk$_major.java.net/
 license=('custom')
-depends=('ca-certificates-java' 'desktop-file-utils' 'hicolor-icon-theme' 'java32-environment-common' 
-         'java32-runtime-common' 'lib32-glibc' 'lib32-libjpeg-turbo' 'lib32-lcms2' 'lib32-libxrender'
-         'lib32-libxtst' 'lib32-nss' 'shared-mime-info' 'xdg-utils')
+depends=('ca-certificates-java' 'hicolor-icon-theme' 'java32-environment-common' 'java32-runtime-common'
+         'lib32-gcc-libs' 'lib32-libxrender' 'lib32-libxtst' 'lib32-nss' 'xdg-utils')
 optdepends=('eclipse: "Oracle Java Mission Control" plugins for Eclipse'
             'lib32-alsa-lib: for basic sound support'
-            'lib32-gtk2: for Gtk+ look and feel (desktop)'
-            'ttf-font: fonts')
-makedepends=('pacman>=4.2.0')
+            'lib32-gtk2: for Gtk+ look and feel (desktop)')
 provides=("java32-runtime=$_major" "java32-runtime-headless=$_major" "java32-web-start=$_major" "java32-environment=$_major"
           "java32-runtime-jre=$_major" "java32-runtime-headless-jre=$_major" "java32-web-start-jre=$_major" "java32-environment-jdk=$_major"
           "java32-openjfx=$_major")
@@ -32,8 +29,7 @@ provides=("java32-runtime=$_major" "java32-runtime-headless=$_major" "java32-web
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib32/jvm/java32-$_major-$_pkgname
 
-backup=("etc/java32-$_jname/i386/jvm.cfg"
-        "etc/java32-$_jname/management/jmxremote.access"
+backup=("etc/java32-$_jname/management/jmxremote.access"
         "etc/java32-$_jname/management/management.properties"
         "etc/java32-$_jname/security/java.policy"
         "etc/java32-$_jname/security/java.security"
