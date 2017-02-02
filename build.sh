@@ -8,7 +8,7 @@ VER=$PKGVER-$REL
 
 EOL="$"
 
-./fetch.sh
+./fetch.sh $PKGVER $REL
 
 tar cvf $VER.tar.gz \
     larryshell/larryshell \
