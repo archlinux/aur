@@ -2,7 +2,7 @@
 # Contributor : All of you ;)
 
 pkgname=cronograph-conky
-pkgver=7.5.170126
+pkgver=8.0.170202
 pkgrel=1
 pkgdesc="A free, conky clock widget for X which displays date, time and weather information"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('conky-lua-archers-git' 'curl' 'lm_sensors')
 makedepends=('git' 'fontconfig')
 optdepends=('hddtemp: https://wiki.archlinux.org/index.php/Hddtemp')
 source=("https://github.com/drxspace/cronoconky/releases/download/${pkgver}/v${pkgver}.tar.gz")
-sha1sums=('ec7a775fb0c451e900ecf1cdcca7cf7cb4a1c6d0')
+sha1sums=('a5d2c01b821e2237b9e1ee39d54fc1ce9563596f')
 install='cronograph-conky.install'
 options=(!strip !docs !emptydirs !optipng !debug)
 
