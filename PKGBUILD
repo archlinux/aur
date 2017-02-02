@@ -21,8 +21,26 @@ check() {
     make check
 }
 
+md5sums=('cb917de6a108e20b31aa817cd76463a8')
+mk_srcinfo() {
+    printf "pkgbase = %s\n" "$pkgname"
+    printf "\tpkgdesc = %s\n" "$pkgdesc"
+    printf "\tpkgver = %s\n" "$pkgver"
+    printf "\tpkgrel = %s\n" "$pkgrel"
+    printf "\turl = %s\n" "$url"
+    printf "\tarch = %s\n" ${arch[@]}
+    printf "\tlicense = %s\n" ${license[@]}
+    printf "\tdepends = %s\n" ${depends[@]}
+    printf "\tsource = %s\n" ${source[@]}
+    printf "\tmd5sums = %s\n" ${md5sums[@]}
+    printf "\n"
+    printf "pkgname = %s\n" "$pkgname"
+}
+
 package() {
+    echo -n "Generating .SRCINFO ... "
+    mk_srcinfo > ../.SRCINFO
+    echo "Done."
     cd "$pkgname-$pkgver/"
     make DESTDIR="$pkgdir/" install
 }
-md5sums=('cb917de6a108e20b31aa817cd76463a8')
