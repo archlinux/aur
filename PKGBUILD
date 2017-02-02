@@ -4,7 +4,7 @@ pkgname=lain-git
 pkgcom=1531
 pkgsha=a1ba902
 pkgver=$pkgcom.$pkgsha
-pkgrel=1
+pkgrel=2
 pkgdesc="Layouts, asynchronous widgets and utilities for Awesome WM"
 arch=('any')
 url="https://github.com/copycat-killer/lain"
@@ -18,8 +18,8 @@ source=("git://github.com/copycat-killer/lain.git")
 md5sums=('SKIP')
 
 package() {
-    aw=$(which awesome | grep local) # check if awesome is stable or git
-    if [ -z ${#aw} ]; then
+    # check if awesome is stable or git
+    if [ -d "/usr/share/awesome/lib/"]; then
         aw_path="$pkgdir/usr/share/awesome/lib"
     else
         aw_path="$pkgdir/usr/local/share/awesome/lib"
@@ -30,6 +30,6 @@ package() {
     rm -rf lain/{wiki,.git*,*.rockspec,*TEMPLATE*}
     cp -a lain $aw_path
 
-    # Fix permissions
+    # fix scripts permissions
     find "$pkgdir" -type f ! -path "*/scripts/*" -print0 | xargs -0 chmod -R 644
 }
