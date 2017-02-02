@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tex2page-git
-pkgver=20170128
+pkgver=20170201
 pkgrel=1
 pkgdesc="Lisp program for making Web pages from TeX documents"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/ds26gte/tex2page"
 license=('custom')
 depends=('bash' 'guile')
 makedepends=('git' 'texlive-formatsextra' 'texlive-bibtexextra' 'texlive-core')
-source=("git+https://github.com/ds26gte/tex2page#commit=073c2245494cd55f1ef23fbc534e0c582ad2d168")
+source=("git+https://github.com/ds26gte/tex2page")
 md5sums=('SKIP')
 
 
