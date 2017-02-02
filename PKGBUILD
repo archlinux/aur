@@ -11,10 +11,9 @@ pkgdesc="Standalone web browser from mozilla.org - Beta"
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/en-US/firefox/channel/#beta"
 license=('MPL' 'GPL' 'LGPL')
-depends=('alsa-lib' 'dbus-glib' 'desktop-file-utils' 'gtk2' 'gtk3' 'hicolor-icon-theme'
-         'icu' 'libevent' 'libvpx' 'libxt' 'mime-types' 'nss' 'sqlite' 'pulseaudio')
+depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'pulseaudio')
 optdepends=('ffmpeg: H264/AAC/MP3 decoding'
-            'libpulse: PulseAudio driver'
+            'libnotify: Notification integration'
             'networkmanager: Location detection via available WiFi networks'
             'upower: Battery API')
 provides=("firefox=$pkgver")

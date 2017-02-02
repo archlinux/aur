@@ -13,8 +13,8 @@ blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 post_install() {
-    note 1 "This package installs side-by-side with [extra]'s firefox."
-    note 2 "The launcher is called: 'firefox-beta'."
+    note 1 "This installs side-by-side with extra/firefox"
+    note 2 "The launcher is called: 'firefox-beta'"
 }
 
 post_upgrade() {
