@@ -1,0 +1,80 @@
+[ The following has been translated from Russian by http://http://translate.google.com/ ]
+
+* Output of the command 'balong-usbdload':
+
+== %< ==
+
+Emergency USB-loader Balong-chipset, version 2.02, (c) forth32, 2015
+  - Not specified file name to download
+
+== >% ==
+
+* Output of the command 'balong-usbdload -h:
+
+== %< ==
+
+The tool is designed for emergency USB-boot devices Chipeta Balong V7
+
+./balong-usbdload [options] <file name to download>
+
+ The valid keys are:
+
+-p <tty>  - serial port for communication with the loader (by default, /dev/ttyUSB0)
+-f        - usbloader only ship to the fastboot (without running Linux)
+-b        - similar to -f, in addition to disable checking of defect blocks when erasing
+-t <file> - take the partition table of the specified file
+-m        - show bootloader partition table and exit
+-s n      - set the flag for the file section n (the key can be specified multiple times)
+-c        - not automatically erase the patch sections
+
+== >% ==
+
+* Output of the command 'loader-patch':
+
+== %< ==
+
+automatic modification program downloaders Balong V7, (c) forth32
+  - Not specified file name to download
+  - To specify the -h key tips
+
+== >% ==
+
+* Output of the command 'loader-patch -h':
+
+== %< ==
+
+The program for automatic patch downloaders Balong V7 platforms
+
+./loader-patch [options] <file loader usbloader>
+
+  The valid keys are:
+
+-o file - the output file name. By default, only the possibility of verification of the patch
+-b      - add a patch that disables checking of defective units
+
+== >% ==
+
+* Output of the command 'ptable-injector':
+
+== %< ==
+
+- Not Specified loader file name
+
+== >% ==
+
+* Output of the command 'ptable-injector -h':
+
+== %< ==
+
+Utility to replace the partition table in the loader usbloader
+  The modem must be in the fastboot mode
+
+./ptable-injector [options] <file name usbloader>
+
+  The valid keys are:
+
+-m        - show current map sections in usbloader
+-x        - extract the current map file in ptable.bin
+-r <file> - replace sections of the map to the map of the specified file
+
+== >% ==

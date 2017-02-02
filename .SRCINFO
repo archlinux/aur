@@ -1,0 +1,22 @@
+pkgbase = balong-usbdload-git
+	pkgdesc = Low level USB Flashing/ downloader utility for Huawei E3372 and other modems baesd on Balong v7. Includes temporary usb loader "firmware" for some devices.
+	pkgver = r59.762a458
+	pkgrel = 2
+	url = http://github.com/forth32/balong-usbdload
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	optdepends = balongflash: For flashing firmware after downloading temporary USB downloader code with balong-usbdload.
+	provides = balong-usbdload=r59.762a458
+	provides = balong-usbdload-data=r59.762a458
+	conflicts = balong-usbdload
+	source = balong-usbdload::git+https://github.com/forth32/balong-usbdload.git
+	source = helpmessages_english.txt
+	source = README.english.md
+	sha256sums = SKIP
+	sha256sums = 96346a31d173909514a29dca5e2a7eb0540b635ae42220b179f2654a35e9d2ab
+	sha256sums = b418646e48436a8b55733bf270e3050cbf6ecaa1ec31862f06754333dd691594
+
+pkgname = balong-usbdload-git
+
