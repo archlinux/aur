@@ -1,7 +1,7 @@
 pkgbase = liferea-unstable
 	pkgdesc = A desktop news aggregator for online news feeds and weblogs - Unstable
 	pkgver = 1.12.rc2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lzone.de/liferea/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = liferea-unstable
 	makedepends = pkgconfig
 	makedepends = diffutils
 	makedepends = intltool
-	depends = webkitgtk
+	depends = webkit2gtk
 	depends = libnotify
 	depends = json-glib
 	depends = libpeas

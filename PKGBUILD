@@ -10,12 +10,12 @@ _prerelease="rc2"
 
 pkgname="${_pkgname}-unstable"
 pkgver="${_pkgver}.${_prerelease}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop news aggregator for online news feeds and weblogs - Unstable"
 arch=('i686' 'x86_64')
 url="http://lzone.de/liferea/"
 license=('GPL')
-depends=('webkitgtk' 'libnotify' 'json-glib' 'libpeas' 'desktop-file-utils' 'gobject-introspection' 'python2-gobject')
+depends=('webkit2gtk' 'libnotify' 'json-glib' 'libpeas' 'desktop-file-utils' 'gobject-introspection' 'python2-gobject')
 makedepends=('pkgconfig' 'diffutils' 'intltool')
 optdepends=(
     'gnome-keyring: for keyring plugin support'
