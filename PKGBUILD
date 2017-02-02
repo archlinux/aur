@@ -1,6 +1,6 @@
 # Maintainer: n0vember <n0vember at half-9 dot net>
 pkgname=bash_unit
-pkgver=1.0.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="bash unit testing enterprise edition framework for professionals"
 arch=('any')
