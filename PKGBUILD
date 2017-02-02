@@ -5,16 +5,15 @@
 
 # Maintainer: Joshua Hardy <joshinsilico@gmail.com>
 pkgname=eman2
-pkgver=2.12
+pkgver=2.2
 pkgrel=1
 pkgdesc="Greyscale scientific image processing suite for processing data from transmission electron microscopes"
 arch=(x86_64)
 url="http://blake.bcm.edu/emanwiki/EMAN2"
 license=('GPL')
-depends=()
-source=("http://ncmi.bcm.edu/ncmi/software/counter_222/software_133/manage_addProduct/NCMI/attendee_factory/eman$pkgver.linux64.tar.gz" 
-'eman2.sh' 'eman2-installer')
-md5sums=('2e21b310c957fc3b21f8c6b551b60fdb' 'SKIP' 'SKIP')
+depends=('python2 libjpeg-turbo python2-numpy hdf5 fftw boost libtiff libpng cmake gsl ftgl python2-matplotlib ipython qt4 python2-pyqt4 python2-opengl')
+source=("http://ncmi.bcm.edu/ncmi/software/counter_222/software_135/manage_addProduct/NCMI/attendee_factory/eman$pkgver.linux64.gcc5.tbz" 'eman2.sh' 'eman2-installer')
+md5sums=('961c4c16cbb17ddc92e387f4c7ba6556' 'SKIP' 'SKIP')
 options=(!strip)
 
 prepare () {
@@ -24,11 +23,6 @@ prepare () {
 }
 build() {
 	cd "$srcdir/EMAN2"
-#	sed -e 's,export EMAN2DIR=`pwd`,export EMAN2DIR=/opt/eman2,' $srcdir/EMAN2/eman2-installer > 
-#$srcdir/EMAN2/eman2-installer.tmp
-#	mv $srcdir/EMAN2/eman2-installer.tmp $srcdir/EMAN2/eman2-installer
-#	chmod +x eman2-installer	
-#	EMAN2DIR=pwd
 	./eman2-installer
 }
 
