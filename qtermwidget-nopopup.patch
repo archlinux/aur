@@ -1,0 +1,28 @@
+diff -aur qtermwidget.old/lib/qtermwidget.cpp qtermwidget.new/lib/qtermwidget.cpp
+--- qtermwidget.old/lib/qtermwidget.cpp	2017-02-02 18:46:38.348055934 +0100
++++ qtermwidget.new/lib/qtermwidget.cpp	2017-02-02 18:52:58.683344264 +0100
+@@ -60,6 +60,12 @@
+ }
+ 
+ 
++void QTermWidget::showResizePopup(bool showWidget)
++{
++    m_impl->m_terminalDisplay->setTerminalSizeHint(showWidget);
++}
++
++
+ Session *TermWidgetImpl::createSession(QWidget* parent)
+ {
+     Session *session = new Session(parent);
+diff -aur qtermwidget.old/lib/qtermwidget.h qtermwidget.new/lib/qtermwidget.h
+--- qtermwidget.old/lib/qtermwidget.h	2017-02-02 18:46:38.348055934 +0100
++++ qtermwidget.new/lib/qtermwidget.h	2017-02-02 18:51:42.100927453 +0100
+@@ -224,6 +224,8 @@
+     /** True if the title() or icon() was (ever) changed by the session. */
+     bool isTitleChanged() const;
+ 
++    void showResizePopup(bool);
++
+ signals:
+     void finished();
+     void copyAvailable(bool);

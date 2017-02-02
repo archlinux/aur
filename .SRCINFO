@@ -1,0 +1,21 @@
+pkgbase = qtermwidget
+	pkgdesc = A terminal widget for Qt
+	pkgver = 0.7.1.3.g947742c
+	pkgrel = 1
+	url = https://github.com/lxde/qtermwidget
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	provides = qtermwidget
+	provides = qtermwidget-nopopup
+	conflicts = qtermwidget
+	source = git+https://github.com/lxde/qtermwidget.git#commit=947742cc88748557fdb82659665da034084d55f4
+	source = qtermwidget-nopopup.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = qtermwidget-nopopup-git
+
