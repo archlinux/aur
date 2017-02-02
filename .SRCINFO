@@ -1,0 +1,22 @@
+pkgbase = lean2-git
+	pkgdesc = Lean Theorem Prover 2
+	pkgver = 0.2.0.r8682.eedbd197d
+	pkgrel = 1
+	url = http://leanprover.github.io/
+	arch = x86_64
+	arch = i386
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	makedepends = python
+	makedepends = gperftools
+	depends = gmp
+	depends = mpfr
+	depends = lua>=5.2
+	optdepends = emacs: emacs mode
+	conflicts = lean-bin
+	source = lean2-git::git+https://github.com/leanprover/lean2.git
+	md5sums = SKIP
+
+pkgname = lean2-git
+
