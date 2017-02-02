@@ -1,5 +1,5 @@
 pkgname=chaosvpn
-pkgver=2.18
+pkgver=2.19
 pkgrel=1
 pkgdesc="Config generator for chaosVPN"
 arch=('i686' 'x86_64')

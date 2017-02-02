@@ -1,6 +1,6 @@
 pkgbase = chaosvpn
 	pkgdesc = Config generator for chaosVPN
-	pkgver = 2.18
+	pkgver = 2.19
 	pkgrel = 1
 	url = http://wiki.hamburg.ccc.de
 	arch = i686
