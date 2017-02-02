@@ -1,6 +1,6 @@
 pkgbase = hhvm-hack-git
 	pkgdesc = HHVM's Hack tools (hh_client, hh_server, hh_format et al.)
-	pkgver = 3.17.1
+	pkgver = 3.17.2
 	pkgrel = 1
 	url = http://hacklang.org/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = hhvm-hack-git
 	makedepends = cmake
 	makedepends = libdwarf
 	conflicts = hhvm
-	source = hhvm::git+https://github.com/facebook/hhvm#tag=HHVM-3.17.1
+	source = hhvm::git+https://github.com/facebook/hhvm#tag=HHVM-3.17.2
 	md5sums = SKIP
 
 pkgname = hhvm-hack-git

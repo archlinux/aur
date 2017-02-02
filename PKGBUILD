@@ -1,6 +1,6 @@
 # Maintainer: Michael Alexander <beefsack@gmail.com>
 pkgname=hhvm-hack-git
-pkgver=3.17.1
+pkgver=3.17.2
 pkgrel=1
 pkgdesc="HHVM's Hack tools (hh_client, hh_server, hh_format et al.)"
 arch=('x86_64')
@@ -9,17 +9,14 @@ license=('PHP')
 makedepends=('git' 'ocaml' 'ocamlbuild' 'ocaml-compiler-libs' 'ocaml-ctypes' 'gcc' 'cmake' 'libdwarf')
 conflicts=("hhvm")
 source=(
-	#'https://github.com/facebook/hhvm/commit/2a4d3da.patch'
 	"hhvm::git+https://github.com/facebook/hhvm#tag=HHVM-${pkgver}"
 )
 md5sums=(
-	#'a9b12ff007d9590a25d7a945edf590c7'
 	'SKIP'
 )
 
 prepare() {
 	cd "$srcdir/hhvm"
-	#git apply "$srcdir/2a4d3da.patch"
 }
 
 build() {
