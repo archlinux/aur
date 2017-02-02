@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=skympc-git
-pkgver=r123.8bd5664
+pkgver=1.6.2.r125.g776ab89
 pkgrel=1
 pkgdesc="A simple MPD (Music Player Daemon) client, powerd by Qt"
 arch=('i686' 'x86_64')
@@ -16,7 +16,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd SkyMPC
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  skympc_version=$(grep -oP 'SkyMPC_Version = "\K[^"]+' src/version.cpp)
+  printf "%s.r%s.g%s" "$skympc_version" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
