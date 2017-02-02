@@ -8,7 +8,7 @@
 
 _pack=nan
 pkgname=octave-$_pack
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="A statistics and machine learning toolbox for data with and w/o missing values"
 arch=(any)
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('e40e76cce8957d819f006dd73e2cb231')
+md5sums=('5f62903b5f4593889b07c3d89636281a')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
