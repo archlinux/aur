@@ -1,7 +1,7 @@
 # Maintainer: Seriel <jack@seriel.pw>
 
 pkgname=urxvtconfig
-pkgver=1.5.379c83b
+pkgver=1.5.r5.g47d7f67
 pkgrel=1
 pkgdesc='A graphical user interface tool for configuration of the rxvt-unicode terminal emulator.'
 arch=('x86_64')
@@ -21,13 +21,16 @@ pkgver() {
   git describe --tags --long | sed -r -e 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
 }
 
-build() {
-  cd "${srcdir}/${pkgname}"
-  make
-}
+#build() {
+#  cd "${srcdir}/${pkgname}"
+#  /usr/lib64/qt4/bin/qmake source/URXVTConfig.pro
+#  make
+#}
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd $pkgname
+  /usr/lib64/qt4/bin/qmake source/URXVTConfig.pro
   make DESTDIR="${pkgdir}" install
   install -D -m 755 urxvtconfig "$pkgdir/usr/bin/urxvtconfig"
+  install -D -m 644 source/urxvtconfig.desktop  "$pkgdir/usr/share/applications/urxvtconfig.desktop"
 }
