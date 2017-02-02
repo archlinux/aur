@@ -1,7 +1,7 @@
 # Author: Julian Xhokaxhiu <info@julianxhokaxhiu.com>
 pkgname=chromium-fullscreen
 pkgver=1
-pkgrel=5
+pkgrel=6
 pkgdesc="A script in order to run Chromium in fullscreen mode under the chromium user"
 url=""
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
