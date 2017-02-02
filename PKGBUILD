@@ -2,7 +2,7 @@
 # Issues: https://github.com/toastercup/aur-packages/issues
 
 pkgname=polyvox-git
-pkgver=r1108.95f0aa2
+pkgver=r2156.c986c9f0
 pkgrel=1
 pkgdesc="PolyVox is a library for storing, manipulating, and displaying volumetric representations of objects"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd $srcdir && mkdir -p build && cd $_
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE:STRING=Release "../$pkgname"
+  cmake -DENABLE_EXAMPLES=OFF -DENABLE_TESTS=OFF -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE:STRING=Release "../$pkgname"
   make
 }
 
@@ -29,5 +29,6 @@ package() {
   cd "$srcdir/build"
   make DESTDIR="$pkgdir/" install
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
-  cp "$srcdir/$pkgname/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/"
+  cp "$srcdir/$pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/"
 }
+
