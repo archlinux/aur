@@ -1,6 +1,6 @@
 pkgbase = ophidia-terminal
 	pkgdesc = The Ophidia Terminal is an advanced bash-like interpreter through which it is possible to submit arbitrary requests to an Ophidia Server
-	pkgver = 0.10.6
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/indigo-dc/ophidia-terminal
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = ophidia-terminal
 	depends = openssl
 	depends = readline
 	depends = libssh2
-	source = https://github.com/indigo-dc/ophidia-terminal/archive/v0.10.6.tar.gz
-	md5sums = 8759eb9b366b2f49c5ee7daada710499
+	source = https://github.com/indigo-dc/ophidia-terminal/archive/v0.11.0.tar.gz
+	md5sums = e74a7b098a16726fa8b4f09bb3ac9b32
 
 pkgname = ophidia-terminal
 
