@@ -21,15 +21,17 @@ function check($r, $m) {
 }
 
 $AUR_BUILD_DIR="/srv/http/larryshell_aur";
+$VERSION=$request["release"]["tag_name"];
+$RELEASE="1";
 
 // --exit-code:
 //  0 if no changes
 //  1 if changes
 system("git -C $AUR_BUILD_DIR/larryshell fetch");
 system("git -C $AUR_BUILD_DIR/larryshell diff --exit-code HEAD FETCH_HEAD", $ret);
-// check(1 - $ret, 'No changes');
+check(1 - $ret, 'No changes');
 
-system("bash $AUR_BUILD_DIR/build.sh",  $ret);
+system("bash $AUR_BUILD_DIR/build.sh $VERSION $RELEASE",  $ret);
 check($ret, 'Build failed');
 
 system("git -C $AUR_BUILD_DIR add .");
