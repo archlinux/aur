@@ -17,9 +17,16 @@ source=("git://github.com/copycat-killer/awesome-freedesktop.git")
 md5sums=('SKIP')
 
 package() {
-  mv awesome-freedesktop freedesktop
-  install -dm755 "$pkgdir/usr/share/awesome/lib/freedesktop"
-  git --git-dir=freedesktop/.git --work-tree=freedesktop/ reset --hard $pkgsha --quiet
-  rm -rf freedesktop/{wiki,.git*,*.rockspec,*TEMPLATE*,*.png}
-  cp -a freedesktop "$pkgdir/usr/share/awesome/lib/"
+    # check if awesome is stable or git
+    if [ -d "/usr/share/awesome/lib/" ]; then
+        aw_path="$pkgdir/usr/share/awesome/lib"
+    else
+        aw_path="$pkgdir/usr/local/share/awesome/lib"
+    fi
+
+    mv awesome-freedesktop freedesktop
+    install -dm755 "$aw_path/freedesktop"
+    git --git-dir=freedesktop/.git --work-tree=freedesktop/ reset --hard $pkgsha --quiet
+    rm -rf freedesktop/{wiki,.git*,*.rockspec,*TEMPLATE*,*.png}
+    cp -a freedesktop $aw_path
 }
