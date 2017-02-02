@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=mkcl-git
-pkgver=1.1.10.12.g00f30cb
+pkgver=1.1.10.14.g16ceee1
 pkgrel=1
 pkgdesc="ManKai Common Lisp -- git-version"
 arch=('i686' 'x86_64')
@@ -10,15 +10,9 @@ depends=('gawk')
 makedepends=('git')
 provides=('common-lisp' 'cl-asdf')
 conflicts=('mkcl')
-source=("git+https://gitlab.common-lisp.net/mkcl/mkcl.git" blank.patch)
+source=("git+https://gitlab.common-lisp.net/mkcl/mkcl.git")
 options=('staticlibs')
-md5sums=('SKIP' '3d1beb963c043626c83ecec212d659f1')
-
-
-prepare() {
-  cd "${pkgname%-git}"
-  patch -Np1 < ../blank.patch
-}
+md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
