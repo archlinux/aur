@@ -4,7 +4,10 @@
 *.swp
 *.swo
 \#*\#
+.tramp_history
 
-
-# sources
+# Archives
 *.zip
+*.gz
+*.bz
+*.xz
