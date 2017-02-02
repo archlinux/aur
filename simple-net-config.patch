@@ -41,15 +41,3 @@ diff --git a/app/dosboxconstructor_server.conf b/app/dosboxconstructor_server.co
 -exit
 \ No newline at end of file
 +IPXNET STARTSERVER 19900
-diff --git a/app/dosboxconstructor_single.conf b/app/dosboxconstructor_single.conf
---- a/app/dosboxconstructor_single.conf
-+++ b/app/dosboxconstructor_single.conf
-@@ -1,7 +1,5 @@
- [IPX]
--Enable=1
--Connection=1
--ipx=true
-+ipx=false
- 
- [autoexec]
- # Lines in this section will be run at startup.

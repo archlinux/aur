@@ -41,7 +41,7 @@ while true; do
     case "$1" in
         -h|--help) _help; shift ;;
         --windowed) WINDOWED=1; shift ;;
-        --settings) START_SETTINGS=1; shift ;;
+        --settings) START_SETTINGS=1; WINDOWED=1; shift ;;
         --client) START_CLIENT=1; shift ;;
         --server) START_SERVER=1; shift ;;
         --) shift; break ;;
