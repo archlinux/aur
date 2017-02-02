@@ -10,8 +10,8 @@ license=('MIT')
 depends=('xclip' 'bash' 'gnupg')
 provides=("gopass=${pkgver}")
 
-source_x64_64=("gopass-${pkgver}-linux-amd64.tar.gz::https://www.justwatch.com/gopass/releases/${pkgver}/gopass-${pkgver}-linux-amd64.tar.gz")
-sha256sums_x86_64=('9bf3d0e438270e72649b70446b9d71ebd6258c00fe180db4419ddf6ab48eab04')
+source_x86_64=("gopass-${pkgver}-${pkgrel}-x86_64.tar.xz::https://www.justwatch.com/gopass/releases/${pkgver}/gopass-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz")
+sha256sums_x86_64=('d1d012a80a7bfca02bc49bfb59fcf1f8f7f1ca2b61278d96d4b89cabbd65bb01')
 
 package() {
   cd "$srcdir"
