@@ -2,9 +2,9 @@
 # Contributor: Matthew Wardrop <mister.wardrop@gmail.com>
 
 pkgbase=linux-surfacepro3-rt
-_srcname=linux-4.9
+_srcname=linux-4.9.6
 pkgver=${_srcname#linux-}
-_rtver=rt1
+_rtver=rt4
 pkgrel=2.25
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-surfacepro3-rt"
@@ -13,8 +13,8 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'elfutils')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver}/older/patch-${pkgver}-${_rtver}.patch.xz"
-        "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver}/older/patch-${pkgver}-${_rtver}.patch.sign"
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver%.*}/older/patch-${pkgver}-${_rtver}.patch.xz"
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/${pkgver%.*}/older/patch-${pkgver}-${_rtver}.patch.sign"
         # Brain Fuck Scheduler & other personal patches
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfq.patch'
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs.patch'
@@ -32,9 +32,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
 )
 
-sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
+sha256sums=('f493af770a5b08a231178cbb27ab517369a81f6039625737aa8b36d69bcfce9b'
             'SKIP'
-            'c777fec0c28c1ab27fb798990e0572af8413c7993a4f6017faca8908c1d90579'
+            'a5492f54815b759c661db94665d4fe6ef2518462e50258bf566ff1cb27886b78'
             'SKIP'
             '242d32d0fe819852e74d93b8a044cf24a40a9474d6f00ca93a19aa98298dcefa'
             '51f91681b708149fe91e565f5c40811477428e2aa86f8726a20e0e7c55c5407c'
@@ -51,7 +51,7 @@ sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0fcd0b22fe9ec58ba41b81b463f68d619b6898a5c405fb26c85237a183240371'
             'ed9b9e6efaf4f23e7ae3406322b4d1d3080e8dbc7ab3f03bcbf728ca2010e21b'
-            '8626f726565a4126063d768a67b55a8f0898a794a412a1ca12de80e9b4aa1949'
+            '33518bda35c07da11c8a48c4f62bb03cb6ad576001338c5ee27d320f815e59b6'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c')
 
 validpgpkeys=(
@@ -73,6 +73,7 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd "${srcdir}/${_srcname}"
 
+  ##
   ## Options which are currently buggy/broken: BFS/BFQ patches and unsupported BCache module
   if [ "$bfq" = 'y' ]; then patch -p1 -i "${srcdir}/bfq.patch"; fi
   if [ "$bfs" = 'y' ]; then for i in bfs bfs-fixes{1..3}; do patch -p1 -i "${srcdir}/${i}.patch"; done; fi
@@ -82,6 +83,8 @@ prepare() {
     cp "${srcdir}/linux-${pkgver}/include/linux/rwsem.h" "${srcdir}/linux-${pkgver}/drivers/md/bcache/"
     sed -i '/#include "bcache.h"/i #include "rwsem.h"\n' "${srcdir}/linux-${pkgver}/drivers/md/bcache/request.c"
   fi
+  ## Options which are currently buggy/broken: BFS/BFQ patches and unsupported BCache module
+  ##
 
   ## Add personal patches
   if [ "$personal" = 'y' ]; then for i in init kconfig xattr; do patch -p1 -i "${srcdir}/${i}.patch"; done; fi
