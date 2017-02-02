@@ -5,27 +5,29 @@
 
 pkgbase=python-tempita
 pkgname=('python-tempita' 'python2-tempita')
-pkgver=0.5.2
-pkgrel=4
+pkgver=0.5.3dev20170202
+_commit=47414a7c6e46a9a9afe78f0bce2ea299fa84d10d
+pkgrel=1
 pkgdesc="A lightweight unicode templating language"
 arch=('any')
 url="http://pythonpaste.org/tempita/"
 license=('custom:MIT')
 makedepends=('python-distribute' 'python2-distribute')
-source=(https://pypi.python.org/packages/source/T/Tempita/Tempita-${pkgver}.tar.gz)
-sha256sums=('cacecf0baa674d356641f1d406b8bff1d756d739c46b869a54de515d08e6fc9c')
+#source=(https://pypi.python.org/packages/source/T/Tempita/Tempita-${pkgver}.tar.gz)
+source=("$pkgbase::git://github.com/gjhiggins/tempita.git#commit=${_commit}")
+sha256sums=('SKIP')
 
 package_python-tempita() {
   depends=('python')
 
-  cd "$srcdir"/Tempita-${pkgver}
+  cd "$srcdir"/$pkgbase
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
 package_python2-tempita() {
   depends=('python2')
 
-  cd "$srcdir"/Tempita-${pkgver}
+  cd "$srcdir"/$pkgbase
   sed -e 's|from urllib.parse|from urllib|' -i tempita/__init__.py
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
