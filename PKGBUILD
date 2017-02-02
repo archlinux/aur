@@ -12,11 +12,9 @@ pkgdesc="Oracle Java $_major Runtime Environment (public release - end of suppor
 arch=('i686' 'x86_64')
 url="https://www.java.com/en/download/faq/java_$_major.xml"
 license=('custom')
-depends=('ca-certificates-java' 'desktop-file-utils' 'hicolor-icon-theme' 'java-runtime-common'
-         'libxrender' 'libxtst' 'shared-mime-info' 'xdg-utils')
+depends=('ca-certificates-java' 'hicolor-icon-theme' 'java-runtime-common' 'nss' 'xdg-utils')
 optdepends=('alsa-lib: for basic sound support'
-            'gtk2: for Gtk+ look and feel (desktop)'
-            'ttf-font: fonts')
+            'gtk2: for Gtk+ look and feel (desktop)')
 provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start=$_major"
           "java-runtime-jre=$_major" "java-runtime-headless-jre=$_major" "java-web-start-jre=$_major")
 
