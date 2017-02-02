@@ -1,7 +1,7 @@
 # Maintainer: Seriel <jack@seriel.pw>
 
 pkgname=urxvtconfig
-pkgver=1.5.r2.gc5f5bfc
+pkgver=1.5.379c83b
 pkgrel=1
 pkgdesc='A graphical user interface tool for configuration of the rxvt-unicode terminal emulator.'
 arch=('x86_64')
