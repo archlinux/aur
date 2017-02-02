@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=arch-upgrade
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Desktop app to upgrade your Arch Linux system"
 url="https://github.com/bulletmark/$pkgname"
@@ -10,7 +10,7 @@ depends=("python-html2text")
 backup=("etc/$pkgname.conf")
 source=("$url/archive/$pkgver.tar.gz")
 install=install.sh
-md5sums=('1e5f591d2b3c4d80a651a3bad5cd3a17')
+md5sums=('3a5f852aeeffac27f6fd773ba6756b2f')
 
 package() {
   cd "$pkgname-$pkgver"
