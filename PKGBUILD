@@ -3,7 +3,7 @@
 
 pkgname=mingw-w64-gettext
 pkgver=0.19.8.1
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc='GNU internationalization library (mingw-w64)'
 depends=('mingw-w64-termcap' 'mingw-w64-libunistring')
@@ -12,7 +12,6 @@ options=(!strip !buildflags staticlibs)
 license=("GPL")
 url="http://www.gnu.org/software/gettext/"
 source=("http://ftp.gnu.org/pub/gnu/gettext/gettext-${pkgver}.tar.gz"{,.sig}
-        "00-relocatex-libintl-0.18.3.1.patch"
         "05-always-use-libintl-vsnprintf.mingw.patch"
         "06-dont-include-ctype-after-gnulibs-wctype.mingw.patch"
         "07-fix-asprintf-conflict.mingw.patch"
@@ -21,7 +20,6 @@ source=("http://ftp.gnu.org/pub/gnu/gettext/gettext-${pkgver}.tar.gz"{,.sig}
         "intl.pc")
 md5sums=('97e034cf8ce5ba73a28ff6c3c0638092'
          'SKIP'
-         '6f43ea4763a0cd461f60c71197832fba'
          '27852a388b8cf38188dc392c244230ff'
          'f69747f43f279b8a81286cfe5916b82f'
          '3ebccf730ec3377b068027eb2283afb2'
@@ -34,10 +32,6 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 prepare() {
   cd gettext-$pkgver
-  rm -f gettext-runtime/intl/canonicalize.c
-  rm -f gettext-runtime/intl/relocatex.{h,c}
-  rm -f MINGW-PATCHES/README-relocatex-libintl.txt
-  patch -p1 -i ${srcdir}/00-relocatex-libintl-0.18.3.1.patch
   patch -p0 -i ${srcdir}/05-always-use-libintl-vsnprintf.mingw.patch
   patch -p0 -i ${srcdir}/06-dont-include-ctype-after-gnulibs-wctype.mingw.patch
   patch -p0 -i ${srcdir}/07-fix-asprintf-conflict.mingw.patch
