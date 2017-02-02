@@ -8,7 +8,6 @@ pkgbase = datamash
 	license = GPL
 	depends = glibc
 	source = http://ftp.gnu.org/gnu/datamash/datamash-1.1.1.tar.gz
-	md5sums = 79a6affca08107a095e97e4237fc8775
+	md5sums = cb917de6a108e20b31aa817cd76463a8
 
 pkgname = datamash
-
