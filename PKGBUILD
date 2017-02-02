@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=radium
-pkgver=4.3.2
+pkgver=4.4.4
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -31,31 +31,40 @@ makedepends=(
     'qt5-tools'
     'libxrandr'
     'steinberg-vst36'
-    'libpthread-stubs'
 )
 options=(!strip)
 source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
-        "faust-accept-clang-390.patch"
+        "faust-accept-current-clang.patch"
         "dont-empty-qt-library-paths.patch"
         "fix-misleading-indentation.patch"
+        "fix-X11_keyboard-compilation.patch"
+        "use-system-libxcb.patch"
         "use-system-vstsdk.patch")
-md5sums=('72317a81bf94a34ae0b27188e17f8957'
-         '9c72bd466ead73e36b0c2d4297d76870'
+md5sums=('800c54b418a4247a105a7ceb89e62015'
+         'df250d13d5826b35c9139e6d436ebac9'
          '77c202bc0a36562eb7b805ad6b7a85b3'
          '1ca36c75ce4b3fed28c22753b8dc045a'
-         '661c15bc037131c1ad8f8f11d3bc957f')
+         '24e927620d8aeb09c83b903a92dacf9f'
+         '60e99f9362d08726877d14ea2cdfd5c6'
+         'b8ae40ee614d56931f4f8f463912f3c4')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
 
-    msg2 "Fixing faust2 compilation on llvm 3.9.0"
-    patch -Nsp1 < "${srcdir}/faust-accept-clang-390.patch"
+    msg2 "Fixing faust2 compilation on llvm 3.9.1"
+    patch -Nsp1 < "${srcdir}/faust-accept-current-clang.patch"
 
     msg2 "Fixing QT_QPA_PLATFORM_PLUGIN_PATH problem"
     patch -Nsp1 < "${srcdir}/dont-empty-qt-library-paths.patch"
 
     msg2 "Fixing misleading indentation"
     patch -Nsp1 < "${srcdir}/fix-misleading-indentation.patch"
+
+    msg2 "Fixing X11_keyboard compilation"
+    patch -Nsp1 < "${srcdir}/fix-X11_keyboard-compilation.patch"
+
+    msg2 "Switching to systemd-wide libxcb"
+    patch -Nsp1 < "${srcdir}/use-system-libxcb.patch"
 
     # Use the VST SDK from steinberg-vst36, so the user doesn't have to
     # manually put it into his home directory

@@ -5,8 +5,8 @@ diff -aur --no-dereference package.pristine/Makefile.Qt package.new/Makefile.Qt
  
  FLAGOPTS = $(DEFINES) -DGUIISQT -DUSE_GFX_OP_QUEUE -DFULL_VERSION=$(FULL_VERSION) -DIS_LITTLE_ENDIAN=1 -DUSE_OPENGL=1 $(VISUAL) $(REQTYPE_TYPE) $(MENU_TYPE)
  
--COMMONOPT = -c $(RADIUM_BFD_CFLAGS) `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_61_0 -I${HOME}/SDKs/vstsdk2.4 -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -fno-omit-frame-pointer
-+COMMONOPT = -c $(RADIUM_BFD_CFLAGS) `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_61_0 -I/usr/include/vst36 -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -fno-omit-frame-pointer
+-COMMONOPT = -c $(RADIUM_BFD_CFLAGS) `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_62_0 -I ~/SDKs/VST3\ SDK -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -fno-omit-frame-pointer -Wno-unknown-pragmas
++COMMONOPT = -c $(RADIUM_BFD_CFLAGS) `cat buildtype.opt` -I$(GCDIR)/include -I$(P) -I$(PYPATH) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I${HOME}/boost_1_62_0 -I/usr/include/vst36 -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -fno-omit-frame-pointer -Wno-unknown-pragmas
  
  ifeq ($(RADIUM_QT_VERSION),5)
  	COMMONOPT += -DUSE_QT5
@@ -17,8 +17,8 @@ diff -aur --no-dereference package.pristine/check_dependencies.sh package.new/ch
      exit 5
  fi
  
--if [ ! -f ~/SDKs/vstsdk2.4/pluginterfaces/vst2.x/aeffect.h ] ; then
--    echo 'Steinberg VST headers not found. (Missing "~/SDKs/vstsdk2.4/pluginterfaces/vst2.x/aeffect.h")'
+-if [[ ! -f ~/SDKs/vstsdk2.4/pluginterfaces/vst2.x/aeffect.h && ! -f ~/SDKs/"VST3 SDK"/pluginterfaces/vst2.x/aeffect.h ]] ; then
+-    echo 'Steinberg VST headers not found. (Missing "~/SDKs/vstsdk2.4/pluginterfaces/vst2.x/aeffect.h or "~/SDKs/VST3 SDK/pluginterfaces/vst2.x/aeffect.h")'
 +if [ ! -f /usr/include/vst36/pluginterfaces/vst2.x/aeffect.h ] ; then
 +    echo 'Steinberg VST headers not found. (Missing "/usr/include/vst36/pluginterfaces/vst2.x/aeffect.h")'
      echo 'You should find these files in the "VST Audio Plug-Ins SDK" from http://www.steinberg.net/en/company/developers.html'

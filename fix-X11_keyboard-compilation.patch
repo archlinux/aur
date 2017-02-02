@@ -1,0 +1,14 @@
+Only in package.new: .Makefile.Qt.swp
+diff -aur --no-dereference package.pristine/Makefile.Qt package.new/Makefile.Qt
+--- package.pristine/Makefile.Qt	2017-02-02 01:15:50.335803833 +0100
++++ package.new/Makefile.Qt	2017-02-02 02:18:48.679033631 +0100
+@@ -1087,7 +1087,7 @@
+ 	$(CC) X11/X11_instrument.c $(OPT)
+ 
+ X11_keyboard.o:  $(BUILD_DEPENDENCIES) X11/X11_keyboard.cpp
+-	$(CCC) X11/X11_keyboard.cpp $(QTOPT) -DUSE_QT$(RADIUM_QT_VERSION)
++	$(CCC) X11/X11_keyboard.cpp $(CPPOPT) $(QT_CFLAGS) -DUSE_QT$(RADIUM_QT_VERSION)
+ 
+ #X11_MidiProperties.o:  $(BUILD_DEPENDENCIES) X11/X11_MidiProperties.c
+ #	$(CC) X11/X11_MidiProperties.c $(OPT) 
+Only in package.new: Makefile.Qt~

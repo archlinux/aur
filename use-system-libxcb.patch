@@ -1,0 +1,55 @@
+diff -aur --no-dereference package.pristine/Qt/Qt_Main.cpp package.new/Qt/Qt_Main.cpp
+--- package.pristine/Qt/Qt_Main.cpp	2017-01-26 17:00:32.000000000 +0100
++++ package.new/Qt/Qt_Main.cpp	2017-02-02 02:36:04.552338576 +0100
+@@ -2426,18 +2426,6 @@
+   //abort();
+ 
+ #endif // !defined(RELEASE)
+-
+-#if defined(FOR_LINUX)
+-  {
+-    QString name(dlpi_name);
+-    if (name.contains("libxcb.so")){
+-      if (!name.contains("bin/packages/libxcb-1.12/src/.libs/")){
+-        fprintf(stderr,"\n\n%c[31mError. A version of libxcb not included with Radium has been dynamically linked into the program. Something is wrong the installation of Radium.\nOlder versions of libxcb (probably before 1.11.1) are unstable with Radium.%c[0m\n\n", 0x1b, 0x1b);
+-        abort();
+-      }
+-    }
+-  }
+-#endif
+  
+  
+ 
+Only in package.new/Qt: Qt_Main.cpp~
+diff -aur --no-dereference package.pristine/bin/packages/build.sh package.new/bin/packages/build.sh
+--- package.pristine/bin/packages/build.sh	2017-01-26 17:00:32.000000000 +0100
++++ package.new/bin/packages/build.sh	2017-02-02 02:36:22.135671428 +0100
+@@ -189,27 +189,5 @@
+     cd ../
+ fi
+ 
+-if [[ $RADIUM_QT_VERSION == 5 ]]
+-then
+-
+-    rm -fr xcb-proto-1.12/
+-    tar xvjf xcb-proto-1.12.tar.bz2
+-    cd xcb-proto-1.12/
+-    mkdir install
+-    ./configure --prefix=`pwd`/install
+-    make
+-    make install
+-    cd ..
+-    
+-    rm -fr libxcb-1.12
+-    tar xvjf libxcb-1.12.tar.bz2 
+-    cd libxcb-1.12
+-    export PKG_CONFIG_PATH=`pwd`/../xcb-proto-1.12/install/lib/pkgconfig:$PKG_CONFIG_PATH
+-    ./configure
+-    make
+-    cd ..
+-    
+-fi
+-
+ 
+ touch deletemetorebuild
+Only in package.new/bin/packages: build.sh~
