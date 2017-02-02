@@ -12,7 +12,7 @@ arch=('any')
 url='https://www.java.com/en/download/faq/java_6.xml'
 license=('custom:Oracle')
 options=('!strip')
-optdepends=("java-environment>=$_major: Compile and run the examples")
+optdepends=("java-environment>=$_major: Compile and run examples")
 source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/jdk-$pkgver-apidocs.zip"
         'LICENSE')
 md5sums=('a8805b35af0d9b2aa14fe0d1212355b7'
