@@ -12,8 +12,7 @@ pkgdesc="Documentation for Oracle Java Development Kit"
 arch=('any')
 url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
 license=('custom:Oracle')
-optdepends=("java-runtime>=$_major: Run the examples"
-            "java-environment>=$_major: Compile and run the examples")
+optdepends=("java-environment>=$_major: Compile and run examples")
 options=('!strip')
 source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/e9e7ea248e2c4826b92b3f075a80e441/jdk-$pkgver-docs-all.zip"
         "http://download.oracle.com/otn-pub/java/javafx/$_major.0.$_minor-$_build/e9e7ea248e2c4826b92b3f075a80e441/javafx-$pkgver-apidocs.zip"
