@@ -5,7 +5,7 @@
 
 pkgname=vinagre
 pkgver=3.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A VNC Client for the GNOME desktop"
 url="https://wiki.gnome.org/Apps/Vinagre"
 arch=(i686 x86_64)
@@ -14,11 +14,11 @@ depends=(libsecret gtk-vnc vte3 telepathy-glib avahi dconf spice-gtk3 gnutls fre
 makedepends=(docbook-xsl intltool openssh itstool spice-protocol vala gnome-common appstream-glib git)
 optdepends=('openssh: SSH plugin')
 groups=(gnome-extra)
-_commit=272163645240debe41620f3bff84af8cb475f742  # master
-source=("git://git.gnome.org/vinagre#commit=$_commit"
-        freerdp2.patch)
+_commit=272163645240debe41620f3bff84af8cb475f742  # master~2
+source=("git+https://git.gnome.org/browse/vinagre#commit=$_commit"
+        freerdp2017.diff)
 sha256sums=('SKIP'
-            '17282b64a78f92f317d62c98a5650595745e9dec93b4b223f1bb89747094b75c')
+            'fbf3ecc4126f1090e4979c4921bd52b8fa3d5c31330457d98c4df384d0cdcf34')
 
 pkgver() {
   cd $pkgname
@@ -31,7 +31,7 @@ prepare() {
   # Fixup missing tag for pkgver()
   git tag -f 3.22.0 272163645240debe41620f3bff84af8cb475f742
 
-  patch -Np1 -i ../freerdp2.patch
+  patch -Np1 -i ../freerdp2017.diff
 
   NOCONFIGURE=1 ./autogen.sh
 }
