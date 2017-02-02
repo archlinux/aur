@@ -5,6 +5,7 @@ pkgbase = ustr-selinux
 	url = http://www.and.org/ustr/
 	arch = i686
 	arch = x86_64
+	groups = selinux
 	license = GPL
 	depends = glibc
 	provides = ustr=1.0.4-4

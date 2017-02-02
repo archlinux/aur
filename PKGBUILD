@@ -8,6 +8,7 @@ pkgdesc="micro string API for C with patches to make it work with gcc>=5.1"
 arch=(i686 x86_64)
 url="http://www.and.org/ustr/"
 license=('GPL')
+groups=('selinux')
 depends=('glibc')
 conflicts=("${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}")
