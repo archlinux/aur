@@ -1,8 +1,7 @@
 # Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 pkgname=telegram-desktop-dev
-pkgver=0.9.51
+pkgver=1.0.6
 pkgrel=1
-_qtver=5.6.0
 pkgdesc='Official desktop version of Telegram messaging app. Development release.'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
@@ -10,28 +9,28 @@ license=('GPL3')
 depends=(
 	'ffmpeg'
 	'icu'
-	'libmng'
 	'libxkbcommon-x11'
-	'libinput'
 	'libproxy'
 	'openal'
-	# Detected by namcap
-	'tslib'
 	'xcb-util-wm'
 	'xcb-util-keysyms'
 	'xcb-util-image'
-	'jasper'
+	'xcb-util-renderutil'
 	'hicolor-icon-theme'
 )
 makedepends=(
-	# Dependencies moved from 'depends'
+	'git'
+	'libunity'
+	'libappindicator-gtk2'
 	'libva'
 	'mtdev'
 	'libexif'
 	'libwebp'
-	# Build dependencies
-	'libunity'
-	'libappindicator-gtk2'
+	'google-breakpad-git'
+	'chrpath'
+	'cmake'
+	'python'
+	'python2'
 	# QT5 build dependencies
 	'xcb-util-keysyms'
 	'libgl'
@@ -47,24 +46,14 @@ makedepends=(
 	'libsm'
 	'libxkbcommon-x11'
 	# For qtimageformats
+	'jasper'
 	'libjpeg-turbo'
 	'libpng'
-	'libtiff'
 	'libmng'
+	'libtiff'
 	'libwebp'
-	# Normal make-depends
-	'mtdev'
-	'libfbclient'
-	'libmariadbclient'
-	'sqlite'
-	'unixodbc'
-	'postgresql-libs'
-	'alsa-lib'
-	'gst-plugins-base-libs'
-	'gtk2'
-	'libpulse'
-	'cups'
-	'freetds'
+	# For qtwayland
+	'wayland'
 )
 optdepends=(
 	'libappindicator-gtk2: to hide Telegram in the tray bar (GTK2-based desktop environment)'
@@ -72,76 +61,69 @@ optdepends=(
 	'libappindicator-sharp: to hide Telegram in the tray bar (Unity-based desktop environment)'
 	'pulseaudio-jack: JACK support behind PulseAudio'
 )
+_qt_version=5.6.2
+# Hacky way to handle versioning as we wish
+_real_version="tag=v$pkgver"
 source=(
-	"tdesktop-${pkgver}.tar.gz::https://github.com/telegramdesktop/tdesktop/archive/v$pkgver.tar.gz"
-	#"http://download.qt.io/official_releases/qt/${_qtver%.*}/$_qtver/submodules/qt5-opensource-src-$_qtver.tar.xz"
-	"http://download.qt.io/official_releases/qt/${_qtver%.*}/$_qtver/submodules/qtbase-opensource-src-$_qtver.tar.xz"
-	"http://download.qt.io/official_releases/qt/${_qtver%.*}/$_qtver/submodules/qtimageformats-opensource-src-$_qtver.tar.xz"
-	"breakpad.tar.gz::https://chromium.googlesource.com/breakpad/breakpad/+archive/master.tar.gz"
-	"breakpad-lss.tar.gz::https://chromium.googlesource.com/linux-syscall-support/+archive/master.tar.gz"
+	"tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#${_real_version}"
+	"https://download.qt.io/official_releases/qt/${_qt_version%.*}/$_qt_version/submodules/qtbase-opensource-src-$_qt_version.tar.xz"
+	"https://download.qt.io/official_releases/qt/${_qt_version%.*}/$_qt_version/submodules/qtimageformats-opensource-src-$_qt_version.tar.xz"
+	"https://download.qt.io/official_releases/qt/${_qt_version%.*}/$_qt_version/submodules/qtwayland-opensource-src-$_qt_version.tar.xz"
+	"git+https://chromium.googlesource.com/external/gyp"
 	"telegramdesktop.desktop"
 	"tg.protocol"
+	# Thanks eduardosm, got from his 'telegram-desktop' AUR package
+	"aur-fixes.diff::https://aur.archlinux.org/cgit/aur.git/plain/aur-fixes.diff?h=telegram-desktop"
 )
-noextract=(
-	'breakpad.tar.gz'
-	'breakpad-lss.tar.gz'
-)
-sha256sums=('246c321c009f7eeb3b616503b19c270688a790bf691feac838b3d91bfd51c55b'
-            '6efa8a5c559e92b2e526d48034e858023d5fd3c39115ac1bfd3bb65834dbd67a'
-            '2c854275a689a513ba24f4266cc6017d76875336671c2c8801b4b7289081bada'
+sha256sums=('SKIP'
+            '2f6eae93c5d982fe0a387a01aeb3435571433e23e9d9d9246741faf51f1ee787'
+            '4fb153be62dac393cbcebab65040b3b9d6edecd1ebbe5e543401b0e45bd147e4'
+            '035c3199f4719627b64b7020f0f4574da2b4cb78c6981aba75f27b872d8e6c86'
             'SKIP'
-            'SKIP'
-            'adb111ad10872e2858c8ccdd8645a1566736dec8d48deb50a9a7c0fbcae5cfb0'
-            'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb')
+            '41c22fae6ae757936741e63aec3d0f17cafe86b2d6153cdd1d01a5581e871f17'
+            'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
+            '7e01cae1a5163b475de36cde77d23891b3324a766bf2f4d525f8140b4f65f6b1')
 
 prepare() {
-	ln -sf "$srcdir/tdesktop-$pkgver" "$srcdir/tdesktop"
 	cd "$srcdir/tdesktop"
 
 	mkdir -p "$srcdir/Libraries"
 
-	# Extract QT5 in the proper folders and patch it properly
-	local qt_patch_file="$srcdir/tdesktop/Telegram/Patches/qtbase_${_qtver//./_}.diff"
-	local qt_build_dir="$srcdir/Libraries/qt_${_qtver//./_}"
-	if [ "$qt_patch_file" -nt "$qt_build_dir" ]; then
-		rm -rf "$qt_build_dir"
-		mkdir -p "$qt_build_dir"
-		#mv "$srcdir/qt-everywhere-opensource-src-$_qtver" "$srcdir/Libraries/QtStatic"
-		mv "$srcdir/qtbase-opensource-src-$_qtver" "$qt_build_dir/qtbase"
-		mv "$srcdir/qtimageformats-opensource-src-$_qtver" "$qt_build_dir/qtimageformats"
-		cd "$qt_build_dir/qtbase"
+	local qt_patch_file="$srcdir/tdesktop/Telegram/Patches/qtbase_${_qt_version//./_}.diff"
+	local qt_src_dir="$srcdir/Libraries/qt${_qt_version//./_}"
+	if [ "$qt_patch_file" -nt "$qt_src_dir" ]; then
+		rm -rf "$qt_src_dir"
+		mkdir "$qt_src_dir"
+
+		mv "$srcdir/qtbase-opensource-src-$_qt_version" "$qt_src_dir/qtbase"
+		mv "$srcdir/qtimageformats-opensource-src-$_qt_version" "$qt_src_dir/qtimageformats"
+		mv "$srcdir/qtwayland-opensource-src-$_qt_version" "$qt_src_dir/qtwayland"
+
+		cd "$qt_src_dir/qtbase"
 		patch -p1 -i "$qt_patch_file"
 	fi
 
-	# Extract breakpad manually in the proper folder
-	rm -rf "$srcdir/Libraries/breakpad/"
-	mkdir -p "$srcdir/Libraries/breakpad/src/third_party/lss"
-	bsdtar -xf "$srcdir/breakpad.tar.gz" -C "$srcdir/Libraries/breakpad"
-	bsdtar -xf "$srcdir/breakpad-lss.tar.gz" -C "$srcdir/Libraries/breakpad/src/third_party/lss"
+	cd "$srcdir/gyp"
+	git apply "$srcdir/tdesktop/Telegram/Patches/gyp.diff"
+	sed -i 's/exec python /exec python2 /g' "$srcdir/gyp/gyp"
 
-	# Fix defines and paths in Telegram Desktop project file
-	sed -i 's/CUSTOM_API_ID//g' "$srcdir/tdesktop/Telegram/Telegram.pro"
-	sed -i 's,LIBS += /usr/local/lib/libxkbcommon.a,,g' "$srcdir/tdesktop/Telegram/Telegram.pro"
-	sed -i 's,LIBS += /usr/local/lib/libz.a,LIBS += -lz,g' "$srcdir/tdesktop/Telegram/Telegram.pro"
-	sed -i "s,/usr/local/tdesktop/Qt-5.6.0,$srcdir/qt,g" "$srcdir/tdesktop/Telegram/Telegram.pro"
+	if [ ! -h "$srcdir/Libraries/gyp" ]; then
+		ln -s "$srcdir/gyp" "$srcdir/Libraries/gyp"
+	fi
 
-	(
-		echo "DEFINES += TDESKTOP_DISABLE_AUTOUPDATE"
-		echo "DEFINES += TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME"
-		echo 'INCLUDEPATH += "/usr/lib/glib-2.0/include"'
-		echo 'INCLUDEPATH += "/usr/lib/gtk-2.0/include"'
-		echo 'INCLUDEPATH += "/usr/include/opus"'
-		echo 'LIBS += -lcrypto -lssl'
-	) >> "$srcdir/tdesktop/Telegram/Telegram.pro"
+	cd "$srcdir/tdesktop"
+	git apply "$srcdir/aur-fixes.diff"
 }
 
 build() {
-	# Use patched QT
-	local qt_build_dir="$srcdir/Libraries/qt_${_qtver//./_}"
-	cd "$qt_build_dir/qtbase"
+	# Build patched Qt
+	local qt_src_dir="$srcdir/Libraries/qt${_qt_version//./_}"
+
+	cd "$qt_src_dir/qtbase"
 	./configure \
 		-prefix "$srcdir/qt" \
 		-release \
+		-force-debug-info \
 		-opensource \
 		-confirm-license \
 		-system-zlib \
@@ -152,71 +134,44 @@ build() {
 		-system-pcre \
 		-system-xcb \
 		-system-xkbcommon-x11 \
-		-no-opengl \
+		-no-gtkstyle \
 		-static \
 		-nomake examples \
-		-nomake tests \
-		-verbose
+		-nomake tests
+		#-no-opengl
 	make
 	make install
-	# Add our QT5 to PATH
 	export PATH="$srcdir/qt/bin:$PATH"
 
-	# Build QT5 imageformats module
-	cd "$qt_build_dir/qtimageformats"
-	qmake
+	cd "$qt_src_dir/qtimageformats"
+	qmake .
 	make
 	make install
 
-	# Build breakpad
-	cd "$srcdir/Libraries/breakpad"
-	./configure
+	cd "$qt_src_dir/qtwayland"
+	qmake .
 	make
+	make install
 
-	# Build codegen_style
-	mkdir -p "$srcdir/tdesktop/Linux/obj/codegen_style/Debug"
-	cd "$srcdir/tdesktop/Linux/obj/codegen_style/Debug"
-	qmake CONFIG+=debug ../../../../Telegram/build/qmake/codegen_style/codegen_style.pro
+	# Build Telegram Desktop
+	rm -rf "$srcdir/tdesktop/out"
+	cd "$srcdir/tdesktop/Telegram/gyp"
+
+	"$srcdir/Libraries/gyp/gyp" \
+		-Dlinux_path_qt="$srcdir/qt" \
+		-Dlinux_lib_ssl=-lssl \
+		-Dlinux_lib_crypto=-lcrypto \
+		-Dlinux_lib_icu="-licuuc -licutu -licui18n" \
+		--depth=. --generator-output=../.. -Goutput_dir=out Telegram.gyp --format=cmake
+	cd "$srcdir/tdesktop/out/Release"
+	cmake .
 	make
-
-	# Build codegen_numbers
-	mkdir -p "$srcdir/tdesktop/Linux/obj/codegen_numbers/Debug"
-	cd "$srcdir/tdesktop/Linux/obj/codegen_numbers/Debug"
-	qmake CONFIG+=debug ../../../../Telegram/build/qmake/codegen_numbers/codegen_numbers.pro
-	make
-
-	# Build MetaLang
-	mkdir -p "$srcdir/tdesktop/Linux/DebugIntermediateLang"
-	cd "$srcdir/tdesktop/Linux/DebugIntermediateLang"
-	qmake CONFIG+=debug "../../Telegram/MetaLang.pro"
-	make
-
-	# Prepare for Telegram Desktop
-	mkdir -p "$srcdir/tdesktop/Linux/ReleaseIntermediate"
-	cd "$srcdir/tdesktop/Linux/ReleaseIntermediate"
-
-	# Generate missing dependencies
-	./../codegen/Debug/codegen_style \
-		"-I./../../Telegram/Resources" \
-		"-I./../../Telegram/SourceFiles" \
-		"-o./../../Telegram/GeneratedFiles/styles" \
-		all_files.style \
-		--rebuild
-	./../codegen/Debug/codegen_numbers \
-		"-o./../../Telegram/GeneratedFiles" \
-		"./../../Telegram/Resources/numbers.txt"
-	./../DebugLang/MetaLang \
-		-lang_in ./../../Telegram/Resources/langs/lang.strings \
-		-lang_out ./../../Telegram/GeneratedFiles/lang_auto
-
-	# Finally, build Telegram
-	qmake CONFIG+=release "../../Telegram/Telegram.pro"
-	make
+	chrpath --delete Telegram
 }
 
 package() {
 	install -dm755 "$pkgdir/usr/bin"
-	install -m755 "$srcdir/tdesktop/Linux/Release/Telegram" "$pkgdir/usr/bin/telegram-desktop"
+	install -m755 "$srcdir/tdesktop/out/Release/Telegram" "$pkgdir/usr/bin/telegram-desktop"
 
 	install -d "$pkgdir/usr/share/applications"
 	install -m644 "$srcdir/telegramdesktop.desktop" "$pkgdir/usr/share/applications/telegramdesktop.desktop"
