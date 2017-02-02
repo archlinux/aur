@@ -3,17 +3,17 @@
 # Maintainer: Eric Ozwigh <ozwigh at gmail dot com>
 
 pkgname=eclipse-pydev
-pkgver=5.4.0
-pkgrel=2
+pkgver=5.5.0
+pkgrel=1
 pkgdesc="Python IDE for Eclipse"
 url="http://pydev.org/"
 arch=('any')
 license=('EPL')
-depends=('java-environment>=7' 'eclipse>=3.8')
+depends=('java-environment>=8' 'eclipse>=4.6')
 makedepends=('unzip')
 conflicts=('eclipse-aptana')
 source=("PyDev_${pkgver}.zip::http://downloads.sourceforge.net/project/pydev/pydev/PyDev%20${pkgver}/PyDev%20${pkgver}.zip")
-sha1sums=('b53bc44b7ddc0e52751a0b85120d6c2ce09b8475')
+sha1sums=('a8aba7aa8243d232ec0c3465249ecab1803d063e')
 
 package() {
 
