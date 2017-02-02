@@ -2,7 +2,7 @@
 # Contributor: Dan Vratil <vratil@progdansoft.com>
 
 pkgname=k3b-git
-pkgver=17.04.00.r6067.58070f10f
+pkgver=17.04.00.r6077.ea85ffc6c
 pkgrel=1
 pkgdesc="Feature-rich and easy to handle CD burning application. (Git version)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,6 @@ depends=('qt5-webkit'
          'knotifyconfig'
          'kcmutils'
          'libkcddb'
-         'musicbrainz'
          'libdvdread'
          'libmpcdec'
          'libmad'
