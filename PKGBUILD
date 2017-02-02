@@ -13,8 +13,7 @@ pkgdesc="A 3D interface to view satellite images of Earth and other objects - Pr
 arch=('i686' 'x86_64')
 url="https://www.google.com/earth/index.html"
 license=('custom:earth')
-depends=('desktop-file-utils' 'fontconfig' 'glu' 'hicolor-icon-theme' 'ld-lsb>=3-5'
-         'libgl' 'libsm' 'libxrender' 'mesa' 'shared-mime-info' 'xdg-utils')
+depends=('glu' 'hicolor-icon-theme' 'ld-lsb>=3-5' 'libsm' 'libxrender' 'nss')
 [[ $_attempt_fix = 1 ]] && depends+=('freeimage' 'libpng15' 'qtwebkit')
 optdepends=('catalyst-utils: For AMD Catalyst'
             'nvidia-utils: For the NVIDIA driver')
