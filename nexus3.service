@@ -1,0 +1,14 @@
+[Unit]
+Description=Nexus 3 Service
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/opt/nexus3/bin/nexus start
+ExecStop=/opt/nexus3/bin/nexus stop
+User=nexus3
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+

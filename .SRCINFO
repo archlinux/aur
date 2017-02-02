@@ -1,0 +1,16 @@
+pkgbase = nexus3
+	pkgdesc = Nexus 3 Repository Manager OSS
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = http://nexus.sonatype.org
+	install = nexus3.install
+	arch = i686
+	arch = x86_64
+	depends = java-runtime=8
+	source = http://download.sonatype.com/nexus/3/nexus-3.2.0-01-unix.tar.gz
+	source = nexus3.service
+	sha1sums = 71fa28e8bb5ef026d06c7519cc9e6ff953cc0535
+	sha1sums = SKIP
+
+pkgname = nexus3
+

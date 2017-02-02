@@ -1,0 +1,47 @@
+#!/bin/sh
+
+# arg 1:  the new package version
+post_install() {
+
+  echo "Creating nexus3 user and group and setting permissions..."
+  getent group nexus3 > /dev/null || usr/sbin/groupadd nexus3
+  getent passwd nexus3 > /dev/null || usr/sbin/useradd -c \
+        'nexus3 Repository Manager' -g nexus3 -d '/opt/nexus3' \
+        --system -s /bin/bash nexus3 &> /dev/null
+
+  chown -R nexus3:nexus3 /opt/nexus3
+
+
+  echo
+  echo 'For the Nexus user guide please visit:'
+  echo
+  echo '  https://books.sonatype.com/nexus-book/reference3/'
+  echo
+  echo 'The default administrator user is:'
+  echo '  username: admin'
+  echo '  password: admin123'
+  echo
+  echo 'The default port is 8081'
+  echo
+  echo "Nexus3's data are stored in /opt/nexus3/data"
+  echo
+  echo "To start nexus 3 please run systemctl start nexus3"
+  echo
+
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  chown -R nexus3:nexus3 /opt/nexus3
+}
+
+# arg 1:  the old package version
+post_remove() {
+  echo "Removing nexus3 user and group..."
+  getent passwd nexus3 > /dev/null && usr/sbin/userdel nexus3 &>/dev/null
+  getent group nexus3 > /dev/null && usr/sbin/groupdel nexus3 &>/dev/null  
+  /bin/true
+}
+
+
