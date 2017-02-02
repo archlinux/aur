@@ -1,9 +1,8 @@
 pkgbase = ttf-arphic-extra
 	pkgdesc = Extra fonts released under revised Arphic Public License for non-profit use only
 	pkgver = 20100309
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.arphic.com.tw/en/home/index
-	install = arphic.install
 	arch = any
 	license = custom:Arphic_Public_License_nonprofit
 	makedepends = unrar

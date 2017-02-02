@@ -3,14 +3,13 @@
 
 pkgname=ttf-arphic-extra
 pkgver=20100309
-pkgrel=1
+pkgrel=2
 pkgdesc="Extra fonts released under revised Arphic Public License for non-profit use only"
 arch=('any')
 url="http://www.arphic.com.tw/en/home/index"
 license=('custom:Arphic_Public_License_nonprofit')
 depends=('fontconfig' 'xorg-font-utils')
 makedepends=('unrar')
-install=arphic.install
 _baseurl="http://www.arphic.com/uploads/Download/font"
 source=("${_baseurl}/arplmingu20lt.rar"      # MingU20 Light
         "${_baseurl}/arplbaosong2gbklt.rar"  # BaoSong2GBK Light
