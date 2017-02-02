@@ -1,7 +1,7 @@
 pkgbase = patchmatrix
 	pkgdesc = A JACK patch bay in matrix layout
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenMusicKontrollers/patchmatrix
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,8 @@ pkgbase = patchmatrix
 	depends = jack
 	depends = sqlite
 	depends = hicolor-icon-theme
-	depends = libglvnd
+	depends = libxext
+	depends = libgl
 	source = https://github.com/OpenMusicKontrollers/patchmatrix/archive/0.6.0.tar.gz
 	md5sums = ec0bc4e67847ebf4587769a1546225d4
 
