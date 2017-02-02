@@ -1,6 +1,6 @@
 pkgbase = nautilus-hide
 	pkgdesc = Extension for Nautilus to hide files without renaming them
-	pkgver = 0.1.3
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/brunonova/nautilus-hide
 	install = nautilus-hide.install
@@ -10,8 +10,9 @@ pkgbase = nautilus-hide
 	makedepends = gettext
 	depends = nautilus
 	depends = python-nautilus
-	source = https://github.com/brunonova/nautilus-hide/releases/download/v0.1.3/nautilus-hide_0.1.3.tar.xz
-	md5sums = e4b0f6450c35a3b43d2652e4679e9468
+	depends = xdotool
+	source = https://github.com/brunonova/nautilus-hide/releases/download/v0.2.0/nautilus-hide_0.2.0.tar.xz
+	md5sums = 9284fbc49e5ac64a7c4429764ecd81eb
 
 pkgname = nautilus-hide
 

@@ -1,16 +1,16 @@
 # Maintainer: Bruno Nova <brunomb.nova@gmail.com>
 pkgname=nautilus-hide
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Extension for Nautilus to hide files without renaming them"
 arch=('any')
 url="https://github.com/brunonova/$pkgname"
 license=('GPL3')
-depends=('nautilus' 'python-nautilus')
+depends=('nautilus' 'python-nautilus' 'xdotool')
 makedepends=('cmake>=2.6' 'gettext')
 install="$pkgname.install"
 source=("https://github.com/brunonova/$pkgname/releases/download/v$pkgver/${pkgname}_$pkgver.tar.xz")
-md5sums=('e4b0f6450c35a3b43d2652e4679e9468')
+md5sums=('9284fbc49e5ac64a7c4429764ecd81eb')
 
 build() {
 	cd "$srcdir"
