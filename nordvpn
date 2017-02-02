@@ -4,6 +4,14 @@ get_service() {
     systemctl --type=service | grep openvpn-client@nordvpn | awk '{print $1}'
 }
 
+run_ping() {
+    remote=$(grep -E '^remote [0-9.]+ [0-9]+$' $1 | cut -d ' ' -f 2)
+    test ! -z $remote || exit 1
+    bin=$(which ping)
+    test $? -eq 0 || echo "ping not found, please install iputils"
+    $bin -c 4 -A $remote | tail -n 1 | cut -d / -f 5
+}
+
 command=$1
 shift
 
@@ -14,6 +22,20 @@ case $command in
              | cut -d _ -f 2 \
              | cut -d . -f 1 \
              | sort -g
+        ;;
+    ping)
+        file=/etc/openvpn/client/nordvpn_${1}.conf
+        test -f $file || exit 1
+        run_ping $file
+        ;;
+    rank)
+        tmp=$(mktemp)
+        for f in $(find /etc/openvpn/client/ -type l -name "nordvpn_*${1}*.conf")
+        do
+            echo $(basename $f .conf | cut -d _ -f 2) $(run_ping $f) >> $tmp
+        done
+        sort -k 2 -n $tmp
+        rm -f $tmp
         ;;
     status)
         service=$(get_service)
@@ -34,6 +56,10 @@ case $command in
         echo "Available commands:"
         echo "    list [server_name_pattern]"
         echo "        List available servers."
+        echo "    ping server_name"
+        echo "        Show round trip latency"
+        echo "    rank [server_name_pattern]"
+        echo "        Ping all servers matching pattern and rank them"
         echo "    status"
         echo "        Show current systemd service status, if any."
         echo "    start|stop|restart server_name"
