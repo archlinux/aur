@@ -2,7 +2,7 @@
 pkgname=cliqz
 _pkgname=browser-f
 _vendorname=CLIQZ
-pkgver=1.9.2
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Firefox-based privacy aware web browser"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("https://github.com/cliqz-oss/browser-f/archive/${pkgver}.tar.gz"
         "mozconfig"
         "cliqz"
         "firefox-50.1.0-configure-regexp.patch")
-sha256sums=('0c6e9be1c045f7dade342031eda6445828d5ca9b0c7f9c8f16688fee79c1aed3'
+sha256sums=('e8871ce4ae90fcdf22e0f949982e1270753480ab013c3da9882b6c653f02323e'
             'ebb68a51d1289f53e1adb9501d4309db9a0cc73d6eb8da6dc86143f0879b6fc7'
             'cd07bf42ad08a626250572890f1a038a85bc7715637371b23c11b39690ab9c7a'
             'f746874e84217ce6a7ddf9f8aacdb2e70845db0ba7a5b54134fd0ed4221c7723')
@@ -26,6 +26,8 @@ sha256sums=('0c6e9be1c045f7dade342031eda6445828d5ca9b0c7f9c8f16688fee79c1aed3'
 prepare() {
   cd $srcdir/$_pkgname-$pkgver/mozilla-release
   sed -i 's/ifeq ($(OS_ARCH), Linux)/ifeq ($(OS_ARCH), Nope)/' toolkit/mozapps/installer/upload-files.mk
+  sed -i "s/@MOZ_APP_DISPLAYNAME@/$_vendorname/g" toolkit/mozapps/installer/linux/rpm/mozilla.desktop
+  sed -i "s/@MOZ_APP_NAME@/$pkgname/g" toolkit/mozapps/installer/linux/rpm/mozilla.desktop
 
   patch -Np1 -i ../../firefox-50.1.0-configure-regexp.patch
 
@@ -45,9 +47,6 @@ build() {
   CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-schedule-insns2"
 
   ./magic_build_and_package.sh
-
-  sed -i "s/@MOZ_APP_DISPLAYNAME@/$_vendorname/g" mozilla-release/toolkit/mozapps/installer/linux/rpm/mozilla.desktop
-  sed -i "s/@MOZ_APP_NAME@/$pkgname/g" mozilla-release/toolkit/mozapps/installer/linux/rpm/mozilla.desktop
 }
 
 package() {
