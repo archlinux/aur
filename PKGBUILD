@@ -13,7 +13,6 @@ license=('LGPL')
 depends=('at-spi2-core' 'qt4>=4.8')
 makedepends=('git')
 options=('!libtool')
-# qtatspi 0.4.0 or later is part of QT5 thus we need last QT4 compatible version 0.3.1
 source=("git://anongit.kde.org/qtatspi.git#tag=v0.3.1"
         qt-accessibility.sh)
 md5sums=('SKIP'
