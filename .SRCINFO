@@ -1,4 +1,4 @@
-pkgbase = frozensynapse
+pkgbase = frozensynapse-hib
 	pkgdesc = A top-down simultaneous-turn-based tactical combat game (Humble Bundle version)
 	pkgver = 1.0.32+h20120614
 	pkgrel = 1
@@ -19,5 +19,5 @@ pkgbase = frozensynapse
 	md5sums = bcbfce04bd280b69bddea7a4bef0864a
 	md5sums = e5480e851062946708572273c9545b9c
 
-pkgname = frozensynapse
+pkgname = frozensynapse-hib
 

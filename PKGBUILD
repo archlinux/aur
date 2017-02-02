@@ -2,7 +2,8 @@
 # Contributor: Gadget3000 <gadget3000 at msn dot com>
 # Contributor: wido <widowild [ta] myopera [tod] com>
 
-pkgname=frozensynapse
+pkgname=frozensynapse-hib
+_installname=frozensynapse
 pkgver=1.0.32+h20120614
 _hibver=1339710386
 pkgrel=1
@@ -22,9 +23,9 @@ options=('!upx')
 PKGEXT='.pkg.tar'
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
 
-_archive="$pkgname-linux-32-$_hibver.run"
+_archive="$_installname-linux-32-$_hibver.run"
 source=("hib://$_archive"
-        "$pkgname.desktop")
+        "$_installname.desktop")
 md5sums=('bcbfce04bd280b69bddea7a4bef0864a'
          'e5480e851062946708572273c9545b9c')
 
@@ -33,23 +34,23 @@ package(){
   
   # Extract game files
   chmod +x $_archive
-  ./$_archive --mode unattended --unattendedmodeui none --prefix "$pkgdir/opt/$pkgname"
+  ./$_archive --mode unattended --unattendedmodeui none --prefix "$pkgdir/opt/$_installname"
   
   
   cd "$pkgdir"
   
   # Remove unneeded files
-  rm opt/$pkgname/{uninstall,*.desktop}
+  rm opt/$_installname/{uninstall,*.desktop}
   
   # Fix permissions
-  chmod 644 opt/$pkgname/cacert.pem
+  chmod 644 opt/$_installname/cacert.pem
   
   # Install launch script
-  echo -e "#!/bin/sh\ncd /opt/$pkgname && exec ./FrozenSynapse \$*" \
+  echo -e "#!/bin/sh\ncd /opt/$_installname && exec ./FrozenSynapse \$*" \
         > "$srcdir/launcher.sh"
-  install -Dm755 "$srcdir/launcher.sh" usr/bin/$pkgname
+  install -Dm755 "$srcdir/launcher.sh" usr/bin/$_installname
 
   # Install desktop entry & icon
-  install -Dm644 "$srcdir/$pkgname.desktop" usr/share/applications/$pkgname.desktop
-  install -Dm644 opt/$pkgname/fs_icon.png usr/share/pixmaps/$pkgname.png
+  install -Dm644 "$srcdir/$_installname.desktop" usr/share/applications/$_installname.desktop
+  install -Dm644 opt/$_installname/fs_icon.png usr/share/pixmaps/$_installname.png
 }
