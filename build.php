@@ -2,12 +2,12 @@
 
 $body = file_get_contents('php://input');
 $request = json_decode($body, TRUE);
-if($request['action'] != "release") {
+if(strcmp($_SERVER["HTTP_X_GITHUB_EVENT"], "release") != 0) {
     die("{success:false,message:'We did not receive a release request'}");
 }
 
-$good_passwd="ef09039ff36e10fe6b7264a3b8703af3ef5fb624fd47384115ab3ae538d77ae8f9e9a7b9b39e805fa1122c14aefa414cde05e96773b90c4f2ade5b18014e6fa9";
-$passwd=escapeshellcmd(trim($_SERVER['X-Hub-Signature']));
+$good_passwd="90b145e66e20ce106bd4a65e36353e78e8196162338ac941d4af522c503a23225b112c8e7ca371a1b23634435cb8bdf583963d5e0d085267b6cdb09c6105ca64";
+$passwd=escapeshellcmd($_SERVER['HTTP_X_HUB_SIGNATURE']);
 $hashed_passwd=shell_exec("printf $passwd | sha512sum | cut -d ' ' -f 1");
 $cmp = strcmp(trim($hashed_passwd), trim($good_passwd));
 if($cmp != 0) {
@@ -20,12 +20,14 @@ function check($r, $m) {
     }
 }
 
+$AUR_BUILD_DIR="/srv/http/larryshell_aur";
+
 // --exit-code:
 //  0 if no changes
 //  1 if changes
 system("git -C $AUR_BUILD_DIR/larryshell fetch");
 system("git -C $AUR_BUILD_DIR/larryshell diff --exit-code HEAD FETCH_HEAD", $ret);
-check(1 - $ret, 'No changes');
+// check(1 - $ret, 'No changes');
 
 system("bash $AUR_BUILD_DIR/build.sh",  $ret);
 check($ret, 'Build failed');
