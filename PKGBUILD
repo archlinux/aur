@@ -1,12 +1,12 @@
 # Maintainer: Sayantan Khan <bolt.khan at gmail dot com>
 
 pkgname=lean2-git
-_pkgver=0.2.0
-pkgver=0.2.0.r8682.eedbd197d
+#_pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Lean Theorem Prover 2'
-arch=('x86_64' 'i386')
-url="http://leanprover.github.io/"
+arch=('x86_64')
+url="https://github.com/leanprover/lean2"
 license=('Apache')
 depends=('gmp' 'mpfr' 'lua>=5.2')
 makedepends=('git' 'cmake' 'python' 'gperftools')
@@ -15,10 +15,10 @@ conflicts=('lean-bin')
 source=("$pkgname::git+https://github.com/leanprover/lean2.git")
 md5sums=(SKIP)
 
-pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git describe --always)"
-}
+#pkgver() {
+  #cd "$srcdir/$pkgname"
+  #printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git describe --always)"
+#}
 
 prepare() {
   git clone https://github.com/leanprover/emacs-dependencies "$pkgname"/src/emacs/dependencies

@@ -1,10 +1,9 @@
 pkgbase = lean2-git
 	pkgdesc = Lean Theorem Prover 2
-	pkgver = 0.2.0.r8682.eedbd197d
+	pkgver = 0.2.1
 	pkgrel = 1
-	url = http://leanprover.github.io/
+	url = https://github.com/leanprover/lean2
 	arch = x86_64
-	arch = i386
 	license = Apache
 	makedepends = git
 	makedepends = cmake
