@@ -6,7 +6,7 @@
 # Maintainer: Joshua Hardy <joshinsilico@gmail.com>
 pkgname=eman2
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Greyscale scientific image processing suite for processing data from transmission electron microscopes"
 arch=(x86_64)
 url="http://blake.bcm.edu/emanwiki/EMAN2"
