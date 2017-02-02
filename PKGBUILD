@@ -2,20 +2,16 @@
 # Contributors: Ner0, alexwizard, thotypous, jdhore, xduugu, randypenguin, bdheeman, AlK
 
 pkgname=chromium-snapshot-bin
-pkgver=54.0.2829.0.r411883
+pkgver=58.0.3001.0.r447745
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Latest Snapshot)"
 arch=('x86_64')
 url="https://build.chromium.org"
 license=('BSD')
-depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
-         'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
-         'speech-dispatcher' 'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
-         'perl' 'perl-file-basedir' 'desktop-file-utils' 'hicolor-icon-theme'
-         'gconf')
-optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
+depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
+optdepends=('kdialog:: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
-            'kdeutils-kwalletmanager: for storing passwords in KWallet'
+            'kwallet: for storing passwords in KWallet'
             'pepper-flash: for Pepper Flash plugin [AUR]')
 provides=('chromium')
 install=$pkgname.install
