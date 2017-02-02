@@ -1,6 +1,6 @@
 pkgbase = freefem++-hg
 	pkgdesc = A PDE oriented language using the finite element method (Mercurial)
-	pkgver = 3.51.r3955.563c79bf8d1a
+	pkgver = 3.51.r3969.310d576bf867
 	pkgrel = 1
 	url = http://www.freefem.org/ff++/index.htm
 	arch = i686
