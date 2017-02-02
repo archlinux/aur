@@ -15,11 +15,9 @@ pkgdesc="Oracle Java $_major Runtime Environment Snapshot"
 arch=('i686' 'x86_64')
 url=https://jdk$_major.java.net/
 license=('custom')
-depends=('ca-certificates-java' 'desktop-file-utils' 'hicolor-icon-theme' 'java-runtime-common'
-         'libxrender' 'libxtst' 'shared-mime-info' 'xdg-utils')
+depends=('ca-certificates-java' 'hicolor-icon-theme' 'java-runtime-common' 'nss' 'xdg-utils')
 optdepends=('alsa-lib: for basic sound support'
-            'gtk2: for Gtk+ look and feel (desktop)'
-            'ttf-font: fonts')
+            'gtk2: for Gtk+ look and feel (desktop)')
 provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start=$_major"
           "java-runtime-jre=$_major" "java-runtime-headless-jre=$_major" "java-web-start-jre=$_major"
           "java-openjfx=$_major")
@@ -28,8 +26,7 @@ provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib/jvm/java-$_major-$_pkgname/jre
 
-backup=("etc/java-$_jname/amd64/jvm.cfg"
-        "etc/java-$_jname/management/jmxremote.access"
+backup=("etc/java-$_jname/management/jmxremote.access"
         "etc/java-$_jname/management/management.properties"
         "etc/java-$_jname/security/java.policy"
         "etc/java-$_jname/security/java.security"
