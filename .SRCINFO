@@ -1,13 +1,13 @@
 pkgbase = datamash
 	pkgdesc = A command-line program which performs numeric, textual and statistical operations on plain text data.
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://www.gnu.org/software/datamash/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	source = http://ftp.gnu.org/gnu/datamash/datamash-1.0.7.tar.gz
+	source = http://ftp.gnu.org/gnu/datamash/datamash-1.1.1.tar.gz
 	md5sums = 79a6affca08107a095e97e4237fc8775
 
 pkgname = datamash
