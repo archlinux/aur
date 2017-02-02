@@ -1,13 +1,13 @@
 # Maintainer: Pete Alexandrou (ozmartian) <pete@ozmartians.com>
 pkgname=tvlinker
-pkgver=3.0.5
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="TV show link scraper + downloader for tv-release.net with a modern PyQt5 GUI"
 arch=('any')
 license=('GPL3')
 url="http://tvlinker.ozmartians.com"
 source=(https://github.com/ozmartian/${pkgname}/archive/${pkgver}.tar.gz)
-depends=('python-pyqt5' 'python-qtawesome-git' 'python-beautifulsoup4' 'python-lxml')
+depends=('python-pyqt5' 'python-beautifulsoup4' 'python-lxml')
 makedepends=('git' 'sed' 'python-setuptools')
 provides=()
 conflicts=()
