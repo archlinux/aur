@@ -7,11 +7,11 @@ pkgdesc="The team password manager. Written in Go."
 arch=('x86_64')
 url="https://github.com/justwatchcom/gopass"
 license=('MIT')
-depends=('xclip' 'bash' 'gnupg' 'pwgen')
-provides=("gopass=${pkgver}-rc2")
-source_x86_64=("gopass-${pkgver}-rc2-1-x86_64.pkg.tar.xz::https://www.moviecycle.com/gopass/releases/${pkgver}-rc2/gopass-${pkgver}-rc2-1-x86_64.pkg.tar.xz")
-md5sums_x86_64=('4db30794ee65f204599a7e30bb880f29')
-sha256sums_x86_64=('5825e8a608d9e94fe5315c60751964f80bd42dfc5ea5b21509ede32aeb78c3da')
+depends=('xclip' 'bash' 'gnupg')
+provides=("gopass=${pkgver}")
+
+source_x64_64=("gopass-${pkgver}-linux-amd64.tar.gz::https://www.justwatch.com/gopass/releases/${pkgver}/gopass-${pkgver}-linux-amd64.tar.gz")
+sha256sums_x86_64=('9bf3d0e438270e72649b70446b9d71ebd6258c00fe180db4419ddf6ab48eab04')
 
 package() {
   cd "$srcdir"
