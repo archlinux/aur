@@ -1,0 +1,6 @@
+#!/bin/sh
+if (cat /proc/filesystems | grep exfat) ; then
+	mount -i -t exfat "$@"
+else
+	mount.exfat-fuse "$@"
+fi
