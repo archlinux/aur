@@ -8,7 +8,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/ametisf/velox"
 license=('MIT')
 depends=('swc')
-optdepends=('terminus-font: bitmap font for nicer rendering')
+optdepends=('terminus-font: bitmap font for nicer rendering'
+            'dstatus: status bar for velox')
 conflicts=('velox')
 provides=('velox')
 source=("$pkgname::git+https://github.com/ametisf/velox.git")
