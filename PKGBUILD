@@ -3,7 +3,7 @@
 
 _gemname=parser
 pkgname=ruby-${_gemname}
-pkgver=2.3.3.0
+pkgver=2.3.3.1
 pkgrel=1
 pkgdesc="A Ruby parser written in pure Ruby"
 arch=('any')
@@ -15,7 +15,7 @@ source=(
 	"https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem"
 )
 sha256sums=(
-	'79c0d8a275fe67394920d085f92bf4cb4986ee1a95a891704dd1747d366cd899'
+	'78212b3e2bbd7fd52ab0b47af41a3998dce29d0ec32b391aea6f666c4df2f4da'
 )
 
 package() {
