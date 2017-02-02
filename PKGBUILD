@@ -1,18 +1,18 @@
 # Maintainer: Dave Blair <mail@dave-blair.de>
-# Contributor: 
-# Contributor: 
+# Contributor:
+# Contributor:
 
 pkgname='minitube-aur'
 pkgver='2.6'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A youtube client that does not need flash'
 conflicts=('minitube')
 arch=('i686' 'x86_64')
 url='http://flavio.tordini.org/minitube'
 license=('gpl3')
 install=${pkgname}.install
-depends=('phonon-qt5' 
-	 'qt5-script' 
+depends=('phonon-qt5'
+	 'qt5-declarative'
 	 'hicolor-icon-theme')
 if [[ $CARCH = 'i686' ]]; then
   source=("http://flavio.tordini.org/files/minitube/minitube.deb")
@@ -30,5 +30,5 @@ prepare() {
 package() {
   cd "$srcdir"
   msg2 "Packaging..."
-  mv usr ${pkgdir/usr}  
+  mv usr ${pkgdir/usr}
 }
