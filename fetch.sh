@@ -8,5 +8,6 @@ then
     git pull || echo "Pulled"
 else
     git clone git@github.com:Devon-Austin-Wood-Thomas/larryshell larryshell
+    cd larryshell
 fi
 git checkout tags/v$1
