@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny at project-insanity dot org>
 
 pkgname=tor-messenger-bin
-pkgver=0.3.0b1
+pkgver=0.3.0b2
 _language='en-US'
 pkgrel=1
 pkgdesc="Tor Messenger is +1 for privacy and -1 for mass surveillance"
@@ -14,8 +14,8 @@ source_x86_64=("https://dist.torproject.org/tormessenger/${pkgver}/tor-messenger
 source+=(tor-messenger.desktop
          tor-messenger.png
          tor-messenger.sh)
-sha256sums_i686=('4ccb5484103a4bae62ba9b047e82a0abdcf4438507909e9152f9240a4f46d6f8')
-sha256sums_x86_64=('f5a4aa5bcd096ecc4a2788eaca3c7978c42d058cde101635421798ca638ece5a')
+sha256sums_i686=('49c72bffd15d64f880e3d81bda7e1843f48fc645875eae903c01d5ab8543913c')
+sha256sums_x86_64=('1d8ebf019c7b7c8d8a949cfb3bcefc85c0d876dd91c18b052d616f23b82c5df6')
 sha256sums+=('f0df8e7237c295d81a991ba72e59cbbc7e3ade6d49f5178ed4aa226f8b7d5da0'
              '967353473d53da791bfb16eaf55e9a95b1d059502e40b0aaae7a1ab297f7d259'
 	     'dd817794af9633ef635e24f9994854728914c47814e3dcc1785649529cb87968')
