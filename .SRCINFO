@@ -1,0 +1,20 @@
+pkgbase = dstep-git
+	pkgdesc = Automatic C header to D module translator
+	pkgver = r375.d3478da
+	pkgrel = 1
+	url = https://github.com/jacob-carlborg/dstep
+	arch = i686
+	arch = x86_64
+	groups = dlang
+	license = custom
+	makedepends = dub
+	makedepends = dmd
+	depends = clang35
+	provides = dstep
+	source = git+https://github.com/jacob-carlborg/dstep.git
+	source = http://www.boost.org/LICENSE_1_0.txt
+	sha1sums = SKIP
+	sha1sums = 3cba29011be2b9d59f6204d6fa0a386b1b2dbd90
+
+pkgname = dstep-git
+
