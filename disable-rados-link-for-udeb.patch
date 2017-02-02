@@ -1,0 +1,50 @@
+Index: multipath-tools/libmultipath/checkers/Makefile
+===================================================================
+--- multipath-tools.orig/libmultipath/checkers/Makefile	2016-10-09 14:24:29.363815742 +0530
++++ multipath-tools/libmultipath/checkers/Makefile	2016-10-09 14:25:00.867588678 +0530
+@@ -5,21 +5,35 @@
+ 
+ CFLAGS += -I..
+ 
+-# If you add or remove a checker also update multipath/multipath.conf.5
+-LIBS= \
+-	libcheckcciss_tur.so \
+-	libcheckreadsector0.so \
+-	libchecktur.so \
+-	libcheckdirectio.so \
+-	libcheckemc_clariion.so \
+-	libcheckhp_sw.so \
+-	libcheckrdac.so \
+-	libcheckrbd.so
++ifeq ($(USE_RADOS), 1)
++	# If you add or remove a checker also update multipath/multipath.conf.5
++	LIBS= \
++		libcheckcciss_tur.so \
++		libcheckreadsector0.so \
++		libchecktur.so \
++		libcheckdirectio.so \
++		libcheckemc_clariion.so \
++		libcheckhp_sw.so \
++		libcheckrdac.so \
++		libcheckrbd.so
++else
++	# If you add or remove a checker also update multipath/multipath.conf.5
++	LIBS= \
++		libcheckcciss_tur.so \
++		libcheckreadsector0.so \
++		libchecktur.so \
++		libcheckdirectio.so \
++		libcheckemc_clariion.so \
++		libcheckhp_sw.so \
++		libcheckrdac.so
++endif
+ 
+ all: $(LIBS)
+ 
++ifeq ($(USE_RADOS), 1)
+ libcheckrbd.so: rbd.o
+ 	$(CC) $(LDFLAGS) $(SHARED_FLAGS) -o $@ $^ -lrados -ludev
++endif
+ 
+ libcheckdirectio.so: libsg.o directio.o
+ 	$(CC) $(LDFLAGS) $(SHARED_FLAGS) -o $@ $^ -laio

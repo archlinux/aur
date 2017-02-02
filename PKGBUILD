@@ -21,9 +21,9 @@ makedepends=('git')
 conflicts=('multipath-tools-git')
 install=multipath-tools.install
 source=("multipath-tools::git+http://git.opensvc.com/multipath-tools/.git#tag=${pkgver}"
-        http://http.debian.net/debian/pool/main/m/multipath-tools/multipath-tools_0.6.4-1.debian.tar.xz)
+        "disable-rados-link-for-udeb.patch")
 sha256sums=('SKIP'
-            'e966a60dcb397e830c7d64bcf4a00186bc2a60e85326b8162950d925c84dd6dd')
+            '4de168f30e3c50aabcedd833112de3da1a025edf32f5bdf06d0d93a9ece60407')
 
 # The rbd checker requires librados. On Arch this would require ceph to be
 # installed, requiring a lot of space, not needed by most people.
@@ -42,7 +42,7 @@ prepare() {
 
   # Disable rbd checker if not explicitly requested
   if [ $USERADOS -eq 0 ]; then
-    patch -p1 < "${srcdir}"/debian/patches/disable-rados-link-for-udeb.patch
+    patch -p1 < "${srcdir}"/disable-rados-link-for-udeb.patch
   fi
 }
 
