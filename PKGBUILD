@@ -10,7 +10,7 @@ url="https://github.com/lxde/qterminal"
 license=("GPL2")
 provides=("$_pkgname" "$_pkgname-nopopup-git")
 conflicts=("$_pkgname")
-depends=("qtermwidget-nopopup")
+depends=("qtermwidget-nopopup-git")
 makedepends=("lxqt-build-tools")
 _commit=c12cb924bcf808369e262be1dc8f4e21eb935d33
 source=("git+https://github.com/lxde/$_pkgname.git#commit=$_commit"
