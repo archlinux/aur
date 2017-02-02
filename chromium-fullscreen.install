@@ -1,7 +1,4 @@
 pre_install() {
-  # Update systemd sysusers
-  systemd-sysusers
-
   # Create Home folder
   mkdir -p /home/chromium
 
@@ -13,6 +10,9 @@ pre_install() {
 }
 
 post_install() {
+  # Update systemd sysusers
+  systemd-sysusers
+
   # Fix permissions
   chown -R chromium:chromium /home/chromium
 
