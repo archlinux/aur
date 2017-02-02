@@ -17,5 +17,5 @@ sha256sums=('496aa6041db8f0b7c93a8a5e2e2a32723357491c4cedb5493db7b94c734fc104')
 package() {
   cd "$srcdir/takoshell-$pkgver"
   python setup.py install --root=$pkgdir
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/license"
+  install -D -m644 "takoshell/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/license"
 }
