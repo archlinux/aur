@@ -9,6 +9,7 @@ pkgbase = qterminal-nopopup-git
 	makedepends = lxqt-build-tools
 	depends = qtermwidget-nopopup
 	provides = qterminal
+	provides = qterminal-nopopup-git
 	conflicts = qterminal
 	source = git+https://github.com/lxde/qterminal.git#commit=c12cb924bcf808369e262be1dc8f4e21eb935d33
 	source = qterminal-nopopup.patch
