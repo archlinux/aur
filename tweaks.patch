@@ -1,0 +1,144 @@
+diff -uprNx '.*' vtuner.linux-driver/vtunerc_ctrldev.c vtuner_tweak/vtunerc_ctrldev.c
+--- vtuner.linux-driver/vtunerc_ctrldev.c	2015-03-27 16:20:00.000000000 +0100
++++ vtuner_tweak/vtunerc_ctrldev.c	2015-05-10 02:19:42.000000000 +0200
+@@ -404,7 +411,7 @@ void vtunerc_unregister_ctrldev(struct v
+ int vtunerc_ctrldev_xchange_message(struct vtunerc_ctx *ctx,
+ 		struct vtuner_message *msg, int wait4response)
+ {
+-	//dprintk(ctx, "XCH_MSG: %d: entered\n", msg->type);
++	dprintk(ctx, "XCH_MSG: %d: entered\n", msg->type);
+ 	if (down_interruptible(&ctx->xchange_sem))
+ 		return -ERESTARTSYS;
+ 
+@@ -413,7 +420,7 @@ int vtunerc_ctrldev_xchange_message(stru
+ 		up(&ctx->xchange_sem);
+ 		return 0;
+ 	}
+-	//dprintk(ctx, "XCH_MSG: %d: continue\n", msg->type);
++	dprintk(ctx, "XCH_MSG: %d: continue\n", msg->type);
+ 
+ #if 0
+ 	BUG_ON(ctx->ctrldev_request.type != -1);
+@@ -433,7 +440,7 @@ int vtunerc_ctrldev_xchange_message(stru
+ 
+ 	if (wait_event_interruptible(ctx->ctrldev_wait_response_wq,
+ 				ctx->ctrldev_response.type != -1)) {
+-		//dprintk(ctx, "XCH_MSG: %d: wait_event interrupted\n", msg->type);
++		dprintk(ctx, "XCH_MSG: %d: wait_event interrupted\n", msg->type);
+ 		ctx->ctrldev_request.type = -1;
+ 		up(&ctx->xchange_sem);
+ 		return -ERESTARTSYS;
+@@ -441,7 +448,7 @@ int vtunerc_ctrldev_xchange_message(stru
+ 
+ 	BUG_ON(ctx->ctrldev_response.type == -1);
+ 
+-	//dprintk(ctx, "XCH_MSG: %d -> %d (DONE)\n", msg->type, ctx->ctrldev_response.type);
++	dprintk(ctx, "XCH_MSG: %d -> %d (DONE)\n", msg->type, ctx->ctrldev_response.type);
+ 	memcpy(msg, &ctx->ctrldev_response, sizeof(struct vtuner_message));
+ 	ctx->ctrldev_response.type = -1;
+ 
+diff -uprNx '.*' vtuner.linux-driver/vtunerc_main.c vtuner_tweak/vtunerc_main.c
+--- vtuner.linux-driver/vtunerc_main.c	2015-03-27 16:20:00.000000000 +0100
++++ vtuner_tweak/vtunerc_main.c	2015-05-10 02:19:42.000000000 +0200
+@@ -101,10 +101,10 @@ static void pidtab_copy_to_msg(struct vt
+ 				struct vtuner_message *msg)
+ {
+ 	int i;
+-
+-	for (i = 0; i < (MAX_PIDTAB_LEN - 1); i++)
++	
++	for (i = 0; i < MAX_PIDTAB_LEN ; i++)
+ 		msg->body.pidlist[i] = ctx->pidtab[i]; /*TODO: optimize it*/
+-	msg->body.pidlist[MAX_PIDTAB_LEN - 1] = 0;
++	/* msg->body.pidlist[MAX_PIDTAB_LEN - 1] = 0; */
+ }
+ 
+ static int vtunerc_start_feed(struct dvb_demux_feed *feed)
+@@ -128,8 +128,12 @@ static int vtunerc_start_feed(struct dvb
+ 		return -EINVAL;
+ 	}
+ 
+-	/* organize PID list table */
++	if (feed->pid >= 0x2000 ) {
++	  printk(KERN_ERR "vtunerc%d: full mux not supported\n",ctx->idx);
++	  return -EINVAL;
++	}
+ 
++	/* organize PID list table */
+ 	if (pidtab_find_index(ctx->pidtab, feed->pid) < 0) {
+ 		pidtab_add_pid(ctx->pidtab, feed->pid);
+ 
+diff -uprNx '.*' vtuner.linux-driver/vtunerc_proxyfe.c vtuner_tweak/vtunerc_proxyfe.c
+--- vtuner.linux-driver/vtunerc_proxyfe.c	2015-03-27 16:20:00.000000000 +0100
++++ vtuner_tweak/vtunerc_proxyfe.c	2016-01-10 03:04:10.468098249 +0100
+@@ -174,52 +180,12 @@ static int dvb_proxyfe_set_frontend(stru
+ 
+ 		if (ctx->vtype == VT_S2 && c->delivery_system == SYS_DVBS2) {
+ 			/* DELIVERY SYSTEM: S2 delsys in use */
+-			msg.body.fe_params.u.qpsk.fec_inner = 9;
++			msg.body.fe_params.u.qpsk.fec_inner |= 32;
+ 
+ 			/* MODULATION */
+ 			if (c->modulation == PSK_8)
+-				/* signal PSK_8 modulation used */
+-				msg.body.fe_params.u.qpsk.fec_inner += 9;
+-
+-			/* FEC */
+-			switch (c->fec_inner) {
+-			case FEC_1_2:
+-				msg.body.fe_params.u.qpsk.fec_inner += 1;
+-				break;
+-			case FEC_2_3:
+-				msg.body.fe_params.u.qpsk.fec_inner += 2;
+-				break;
+-			case FEC_3_4:
+-				msg.body.fe_params.u.qpsk.fec_inner += 3;
+-				break;
+-			case FEC_4_5:
+-				msg.body.fe_params.u.qpsk.fec_inner += 8;
+-				break;
+-			case FEC_5_6:
+-				msg.body.fe_params.u.qpsk.fec_inner += 4;
+-				break;
+-			/*case FEC_6_7: // undefined
+-				msg.body.fe_params.u.qpsk.fec_inner += 2;
+-				break;*/
+-			case FEC_7_8:
+-				msg.body.fe_params.u.qpsk.fec_inner += 5;
+-				break;
+-			case FEC_8_9:
+-				msg.body.fe_params.u.qpsk.fec_inner += 6;
+-				break;
+-			/*case FEC_AUTO: // undefined
+-				msg.body.fe_params.u.qpsk.fec_inner += 2;
+-				break;*/
+-			case FEC_3_5:
+-				msg.body.fe_params.u.qpsk.fec_inner += 7;
+-				break;
+-			case FEC_9_10:
+-				msg.body.fe_params.u.qpsk.fec_inner += 9;
+-				break;
+-			default:
+-				; /*FIXME: what now? */
+-				break;
+-			}
++			  /* signal PSK_8 modulation used */
++			  msg.body.fe_params.u.qpsk.fec_inner |= 64;
+ 
+ 			/* ROLLOFF */
+ 			switch (c->rolloff) {
+@@ -506,10 +480,10 @@ static struct dvb_frontend_ops dvb_proxy
+ 		.frequency_tolerance	= 29500,
+ 		.symbol_rate_min	= 1000000,
+ 		.symbol_rate_max	= 45000000,
+-		.caps = FE_CAN_INVERSION_AUTO |
+-			FE_CAN_FEC_1_2 | FE_CAN_FEC_2_3 | FE_CAN_FEC_3_4 |
+-			FE_CAN_FEC_5_6 | FE_CAN_FEC_7_8 | FE_CAN_FEC_AUTO |
+-			FE_CAN_QPSK
++		.caps = FE_CAN_INVERSION_AUTO | FE_CAN_FEC_1_2 |
++				FE_CAN_FEC_2_3 | FE_CAN_FEC_3_4 | FE_CAN_FEC_4_5 | 
++				FE_CAN_FEC_5_6 | FE_CAN_FEC_7_8 | FE_CAN_FEC_8_9 |
++				FE_CAN_QPSK | FE_CAN_RECOVER
+ 	},
+ 
+ 	.release = dvb_proxyfe_release,
