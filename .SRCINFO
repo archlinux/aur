@@ -1,6 +1,6 @@
 pkgbase = google-chrome
 	pkgdesc = An attempt at creating a safer, faster, and more stable browser (Stable Channel)
-	pkgver = 56.0.2924.76
+	pkgver = 56.0.2924.87
 	pkgrel = 1
 	url = https://www.google.com/chrome
 	install = google-chrome.install
@@ -29,10 +29,10 @@ pkgbase = google-chrome
 	optdepends = ttf-liberation: fix fonts for some PDFs
 	options = !emptydirs
 	options = !strip
-	source = google-chrome-stable_56.0.2924.76_amd64.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+	source = google-chrome-stable_56.0.2924.87_amd64.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 	source = https://www.google.com/chrome/browser/privacy/eula_text.html
 	source = google-chrome-stable.sh
-	md5sums = 9bea32f92259df72f34b7d30804fa672
+	md5sums = c0143f6d5b5ffd291def19d2763c41fe
 	md5sums = SKIP
 	md5sums = 99fa93d5e7fb5d622cef0f9621f3ffa3
 
