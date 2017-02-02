@@ -1,0 +1,30 @@
+pkgbase = canon-pixma-ip7200-printer
+	pkgdesc = Complete stand alone driver for Canon Pixma IP7200 series
+	pkgver = 3.80
+	pkgrel = 1
+	url = http://www.canon-europe.com/printers/inkjet/pixma/pixma_ip7250/
+	install = canon-pixma-ip7200-printer.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = deb2targz
+	makedepends = sed
+	depends = lib32-popt
+	depends = lib32-libpng12
+	depends = lib32-libusb-compat
+	depends = lib32-libtiff4
+	depends = lib32-libxml2
+	depends = lib32-gtk2
+	source = cnijfilter-ip7200series-3.80-1-deb.tar.gz::http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwNDY1NTAx
+	source = canon-pixma-ip7200-printer.license
+	md5sums = 02724e8cd782545257ce3416aee65c72
+	md5sums = d8faf0e75ee3d1989eed39d55cb3e8fb
+	depends_i686 = popt
+	depends_i686 = libpng12
+	depends_i686 = libusb-compat
+	depends_i686 = libtiff4
+	depends_i686 = libxml2
+	depends_i686 = gtk2
+
+pkgname = canon-pixma-ip7200-printer
+
