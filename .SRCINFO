@@ -1,7 +1,7 @@
 pkgbase = lily
 	pkgdesc = An interpreted language with a focus on expressiveness and type safety
-	pkgver = 0.18
-	pkgrel = 2
+	pkgver = 1.0
+	pkgrel = 0
 	url = https://fascinatedbox.github.io/lily/
 	arch = x86_64
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = lily
 	depends = glibc
 	provides = lily
 	conflicts = lily
-	source = lily-0.18.tar.gz::https://github.com/fascinatedbox/lily/archive/v0.18.tar.gz
-	sha256sums = 87ca3fb6d5c84f8dab78fb3bcf52ac74988a77ae21a01e43b02e82fbd8ed936f
+	source = lily-1.0.tar.gz::https://github.com/fascinatedbox/lily/archive/v1.0.tar.gz
+	sha256sums = 6ea719ba3ae3b677b44ca25281ac7bf63f3241b4e6faef6d6bfc794993e292bd
 
 pkgname = lily
 
