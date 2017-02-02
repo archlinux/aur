@@ -12,7 +12,8 @@ depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
 optdepends=('kdialog:: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet'
-            'pepper-flash: for Pepper Flash plugin [AUR]')
+            'pepper-flash: for Pepper Flash plugin [AUR]'
+            'ttf-liberation: fix fonts for some PDFs')
 provides=('chromium')
 install=$pkgname.install
 _build=$(curl -s "http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/LAST_CHANGE")
