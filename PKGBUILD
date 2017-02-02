@@ -1,14 +1,13 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=kde-servicemenus-peazip
-pkgver=20160719
+pkgver=20170202
 pkgrel=1
-pkgdesc="PeaZip archiver services, fixed for Dolphin KF5."
+pkgdesc="PeaZip archiver services, fixed for Dolphin KF5"
 arch=('any')
 url="http://peazip.org"
 license=('GPL')
-depends=('dolphin')
-optdepends=('peazip-qt-build' 'peazip-qt-opensuse')
+depends=('dolphin' 'peazip-qt')
 source=('peazipadd.desktop' 'peazipext.desktop' 'peazipextfolder.desktop' 'peazipexthere.desktop' 'peazipopen.desktop')
 sha256sums=('f7327d11418109548a62874dd72d03722db0450c5aaefd0f07dd336b1088d766'
             '6a7f7508b387c174efaafad21c1aa08a9f9b84c87975ca570bd1927249ded404'
@@ -18,5 +17,4 @@ sha256sums=('f7327d11418109548a62874dd72d03722db0450c5aaefd0f07dd336b1088d766'
 
 package() {
     install -Dm644 -t "${pkgdir}/usr/share/kservices5/ServiceMenus/"    ${srcdir}/*.desktop
-    install -Dm644 -t "${pkgdir}/usr/share/kde4/services/ServiceMenus/" ${srcdir}/*.desktop
 }
