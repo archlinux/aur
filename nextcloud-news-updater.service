@@ -1,10 +1,17 @@
 [Unit]
-After=default.target
+Description=Nextcloud news updater service
+After=default.targ
 
 [Service]
 Type=simple
 User=http
+Group=http
 ExecStart=/usr/bin/owncloud-news-updater -c /etc/webapps/nextcloud/news/nextcloud-news-updater.ini
+PrivateTmp=yes
+ProtectSystem=full
+ReadOnlyDirectories=/etc/webapps/nextcloud /usr/share/webapps/nextcloud
+ProtectHome=yes
+NoNewPrivileges=yes
 
 [Install]
 WantedBy=default.target
