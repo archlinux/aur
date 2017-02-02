@@ -12,13 +12,11 @@ pkgdesc="Oracle Java $_major Development Kit (32-bit) (public release - end of s
 arch=('x86_64')
 url="https://www.java.com/en/download/faq/java_$_major.xml"
 license=('custom')
-depends=('ca-certificates-java' 'desktop-file-utils' 'hicolor-icon-theme' 'java32-environment-common' 
-         'java32-runtime-common' 'lib32-glibc' 'lib32-libjpeg-turbo' 'lib32-lcms2' 'lib32-libxrender'
-         'lib32-libxtst' 'lib32-nss' 'shared-mime-info' 'xdg-utils')
+depends=('ca-certificates-java' 'hicolor-icon-theme' 'java32-environment-common' 'java32-runtime-common'
+         'lib32-gcc-libs' 'lib32-libxrender' 'lib32-libxtst' 'lib32-nss' 'xdg-utils')
 optdepends=('eclipse: "Oracle Java Mission Control" plugins for Eclipse'
             'lib32-alsa-lib: for basic sound support'
-            'lib32-gtk2: for Gtk+ look and feel (desktop)'
-            'ttf-font: fonts')
+            'lib32-gtk2: for Gtk+ look and feel (desktop)')
 provides=("java32-runtime=$_major" "java32-runtime-headless=$_major" "java32-web-start=$_major" "java32-environment=$_major"
           "java32-runtime-jre=$_major" "java32-runtime-headless-jre=$_major" "java32-web-start-jre=$_major" "java32-environment-jdk=$_major")
 
