@@ -1,0 +1,1 @@
+export QT_ACCESSIBILITY=1
