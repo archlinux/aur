@@ -1,0 +1,69 @@
+diff -Naur ./nemo-media-columns-3.2.1+betsy.orig/nemo-media-columns.py ./nemo-media-columns-3.2.1+betsy/nemo-media-columns.py
+--- ./nemo-media-columns-3.2.1+betsy.orig/nemo-media-columns.py	2017-02-02 13:16:13.056986227 -0500
++++ ./nemo-media-columns-3.2.1+betsy/nemo-media-columns.py	2017-02-02 13:16:37.710320043 -0500
+@@ -5,7 +5,7 @@
+ # jmdsdf: version 2 adds extra ID3 and EXIF tag support
+ # jmdsdf: added better error handling for ID3 tags, added mp3 length support, distinguished
+ #         between exif image size and true image size
+-# SabreWolfy: set consistent hh:mm:ss format, fixed bug with no ID3 information 
++# SabreWolfy: set consistent hh:mm:ss format, fixed bug with no ID3 information
+ #             throwing an unhandled exception
+ # jmdsdf: fixed closing file handles with mpinfo (thanks gueba)
+ # jmdsdf: fixed closing file handles when there's an exception (thanks Pitxyoki)
+@@ -33,7 +33,10 @@
+ # for reading videos. for future improvement, this can also read mp3!
+ import kaa.metadata
+ # for reading image dimensions
+-import Image
++try:
++	from PIL import Image
++except:
++	import Image
+ # for reading pdf
+ try:
+ 	from pyPdf import PdfFileReader
+@@ -89,7 +92,7 @@
+ 
+ 		# strip file:// to get absolute path
+ 		filename = urllib.unquote(file.get_uri()[7:])
+-		
++
+ 		# mp3 handling
+ 		if file.is_mime_type('audio/mpeg'):
+ 			# attempt to read ID3 tag
+@@ -117,7 +120,7 @@
+ 				file.add_string_attribute('tracknumber', "[no ID3]")
+ 				file.add_string_attribute('genre', "[no ID3]")
+ 				file.add_string_attribute('date', "[no ID3]")
+-				
++
+ 			# try to read MP3 information (bitrate, length, samplerate)
+ 			try:
+ 				mpfile = open (filename)
+@@ -136,7 +139,7 @@
+ 				try:
+ 					mpfile.close()
+ 				except:	pass
+-	
++
+ 		# image handling
+ 		if file.is_mime_type('image/jpeg') or file.is_mime_type('image/png') or file.is_mime_type('image/gif') or file.is_mime_type('image/bmp'):
+ 			# EXIF handling routines
+@@ -204,7 +207,7 @@
+ 				try: file.add_string_attribute('tracknumber',info.trackno)
+ 				except: file.add_string_attribute('tracknumber', '[n/a]')
+ 				try: file.add_string_attribute('date',info.userdate)
+-				except: file.add_string_attribute('date', '[n/a]')					
++				except: file.add_string_attribute('date', '[n/a]')
+ 				try: file.add_string_attribute('album',info.album)
+ 				except: file.add_string_attribute('album', '[n/a]')
+ 			except:
+@@ -231,7 +234,7 @@
+ 			except:
+ 				file.add_string_attribute('title', "[no info]")
+ 				file.add_string_attribute('artist', "[no info]")
+-					
++
+ 		self.get_columns()
+ 
+ 	def get_name_and_desc(self):
