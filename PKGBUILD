@@ -11,9 +11,7 @@ pkgdesc="Standalone Mail/News reader - Bleeding edge binary version"
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/thunderbird"
 license=('GPL' 'LGPL' 'MPL')
-depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig' 'freetype2' 'gtk-update-icon-cache'
-         'gtk2' 'hicolor-icon-theme' 'libnotify' 'libpng' 'libvpx' 'libxt' 'mime-types' 'nss' 'pixman'
-         'sqlite' 'startup-notification')
+depends=('dbus-glib' 'gtk3' 'libxt' 'nss')
 optdepends=('libcanberra: for sound support')
 provides=("thunderbird=$pkgver")
 conflicts=('thunderbird-beta')

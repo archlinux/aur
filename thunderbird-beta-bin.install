@@ -13,7 +13,6 @@ blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 post_install() {
-    _update
     note 1 "This package installs side-by-side with [extra]'s thunderbird."
     note 2 "The launcher is called: 'thunderbird-beta'."
 }
