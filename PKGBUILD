@@ -18,7 +18,7 @@
 pkgbase=kodi-pre-release
 _suffix=pre-release
 pkgname=("kodi-$_suffix" "kodi-eventclients-$_suffix" "kodi-tools-texturepacker-$_suffix" "kodi-dev-$_suffix")
-pkgver=17.0rc4
+pkgver=17.0
 _codename=Krypton
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ makedepends=(
 source=(
   "kodi-$pkgver-$_codename.tar.gz::https://github.com/xbmc/xbmc/archive/$pkgver-$_codename.tar.gz"
 )
-sha256sums=('0fb082436da543777798f84162f2366654fbcd97388e008bb3359204fe7da797')
+sha256sums=('4bfffa2493973ae15ab1d922632c09a2583908d6140bc4f58ec8f9314e4f6545')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
