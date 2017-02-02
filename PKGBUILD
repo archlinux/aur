@@ -2,7 +2,7 @@
 # Maintainer: Karuna Murti <karuna.murti@gmail.com>
 
 pkgname=mssql-msodbcsql
-pkgver=13.0.1.0
+pkgver=13.1.3.0
 pkgrel=1
 _srcname=msodbcsql
 _prodver=${pkgver}-1
@@ -13,7 +13,7 @@ license=('custom')
 depends=('unixodbc' 'krb5')
 makedepends=('rpmextract')
 source=("https://packages.microsoft.com/rhel/7/prod/$_srcname-$_prodver.x86_64.rpm")
-sha256sums=('65f39323e6c13e8cf658f57f43d6ba0736c58f2a162397d8fd0ae0dc8926ed0b')
+sha256sums=('ab62c91da327fd6a24717061b88df1db6ff40ddf00e7c1ff53737df1d036dd5b')
 install=msodbcsql.install
 
 package() {
@@ -23,3 +23,4 @@ package() {
   ln -s /usr/lib/libssl.so.1.0.0 $pkgdir/usr/lib/libssl.so.10
   ln -s /usr/lib/libcrypto.so.1.0.0 $pkgdir/usr/lib/libcrypto.so.10
 }
+
