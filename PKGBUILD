@@ -8,9 +8,9 @@
 
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
-_commit=ee428b0eead68bf0fb99ab5fdc4439be227b6281
+_commit=12e4e9d3fc73e4783fd74221b6cab77b6f1a14d9
 arch=('i686' 'x86_64' 'armv7h')
 url='https://code.visualstudio.com/'
 license=('MIT')
@@ -20,11 +20,9 @@ conflicts=('vscode-oss')
 provides=('vscode-oss')
 
 source=("${pkgver}-${pkgrel}.tar.gz::https://github.com/Microsoft/vscode/archive/${_commit}.tar.gz"
-        "${pkgname}.desktop"
-        'vscode181_compile.patch')
-sha256sums=('789e14d14ff11b7cf32202bab164fe3cd6b4b1eb1e428d76c516fa5395e8af68'
-            '2ce2c6033667092c5e854036b676533fd433e9daf9ac8ce0f00606193420e72d'
-            '31b2cd19acb11a2d6fc5f92691943b02a267a2d11672758abb2ef26168f9973f')
+        "${pkgname}.desktop")
+sha256sums=('1636395fe89d198ef4e6ae72010fbe64a29d77dd1f751cbf5a0e77517d7f157b'
+            '2ce2c6033667092c5e854036b676533fd433e9daf9ac8ce0f00606193420e72d')
 
 if (( VSCODE_NONFREE )); then
     source+=('product_json.patch')
@@ -51,9 +49,6 @@ esac
 
 prepare() {
     cd "${srcdir}/vscode-${_commit}"
-
-    # Backported from git
-    patch -p1 -i "${srcdir}/vscode181_compile.patch"
 
     if (( VSCODE_NONFREE )); then
         patch -p1 -i "${srcdir}/product_json.patch"
