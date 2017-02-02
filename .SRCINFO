@@ -1,6 +1,6 @@
 pkgbase = dfuse_pack
 	pkgdesc = A DfuSe packer (USB device firmware upgrade STMicroelectronics extension)
-	pkgver = 0.1.2
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/OpenMusicKontrollers/dfuse_pack/
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = dfuse_pack
 	license = Artistic2.0
 	makedepends = pkg-config
 	makedepends = cmake
-	depends = efl
-	source = https://github.com/OpenMusicKontrollers/dfuse_pack/archive/0.1.2.tar.gz
-	md5sums = fd3dbe3f4f08e9d5ee49da736b149ca1
+	depends = glibc
+	source = https://github.com/OpenMusicKontrollers/dfuse_pack/archive/0.10.0.tar.gz
+	md5sums = 21810f66c5b1664923319e64b8f62190
 
 pkgname = dfuse_pack
 
