@@ -24,7 +24,7 @@ $AUR_BUILD_DIR="/srv/http/larryshell_aur";
 
 // Remove first v
 $VERSION=substr($request["release"]["tag_name"],1);
-$RELEASE="3";
+$RELEASE="1";
 
 /*
 // --exit-code:
