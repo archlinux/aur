@@ -1,4 +1,4 @@
-pkgbase = qtermwidget
+pkgbase = qtermwidget-nopopup-git
 	pkgdesc = A terminal widget for Qt
 	pkgver = 0.7.1.3.g947742c
 	pkgrel = 1

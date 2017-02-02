@@ -2,7 +2,6 @@
 
 _pkgname=qtermwidget
 pkgname=$_pkgname-nopopup-git
-pkgbase=qtermwidget
 pkgver=0.7.1.3.g947742c
 pkgrel=1
 pkgdesc="A terminal widget for Qt"
@@ -19,7 +18,7 @@ source=("git+https://github.com/lxde/$_pkgname.git#commit=$_commit"
 sha256sums=("SKIP" "SKIP")
 
 prepare() {
-    cd $pkgbase
+    cd qtermwidget
 
     patch -p1 -i ../qtermwidget-nopopup.patch
 }
