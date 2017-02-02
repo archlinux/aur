@@ -1,0 +1,13 @@
+pkgbase = libreoffice-impress-templates
+	pkgdesc = Freely-licensed LibreOffice Impress templates
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://dohliam.github.io/libreoffice-impress-templates
+	arch = any
+	license = MIT
+	depends = libreoffice
+	source = https://github.com/dohliam/libreoffice-impress-templates/releases/download/v2.2/libreoffice-impress-templates-all_2.2-1.deb
+	sha512sums = 1395360240649bd6a6cc7e838b542cd2cf7535401a47307dcbde0e7d00f81f4069c1f13e030be4d8ead4655264753960263ab108530c9e0b04fa63faaaae00cf
+
+pkgname = libreoffice-impress-templates
+
