@@ -1,6 +1,6 @@
 pkgbase = mnemosyne
 	pkgdesc = A flash-card tool with a sophisticated card review algorithm
-	pkgver = 2.4
+	pkgver = 2.4.1
 	pkgrel = 3
 	url = http://www.mnemosyne-proj.org
 	install = mnemosyne.install
@@ -17,8 +17,8 @@ pkgbase = mnemosyne
 	optdepends = texlive-core: support for mathematical formulae in cards
 	optdepends = ttf-ms-fonts: support for non-latin labels on statistic plots
 	conflicts = mnemosyne-bzr
-	source = http://downloads.sourceforge.net/mnemosyne-proj/Mnemosyne-2.4.tar.gz
-	md5sums = b89ef0de414dd351f77f5c17c6f54376
+	source = http://downloads.sourceforge.net/mnemosyne-proj/Mnemosyne-2.4.1.tar.gz
+	md5sums = 6282a92604e4082b75312e72fc1ae297
 
 pkgname = mnemosyne
 
