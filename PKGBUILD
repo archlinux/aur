@@ -1,6 +1,6 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
 pkgname=('python2-rasterio')
-pkgver=1.0a5
+pkgver=1.0a6
 pkgrel=1
 pkgdesc="Fast and direct raster I/O for use with Numpy and SciPy (Python 2)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('python2-affine' 'python2-cligj' 'python2-numpy' 'python2-snuggs'
          'python2-click-plugins' 'python2-enum34' 'gdal')
 options=(!emptydirs)
 source=("$url/archive/$pkgver.zip")
-sha256sums=('d773506efa63ee0d367b32c34ae40ff4a2f61254be3a01f038dc68eb9ba1fbb0')
+sha256sums=('9b0d5b6a72ebac6ec70b2d7c6736eaf165791ebc9a6f9fb804435813cdb533e3')
 
 build() {
   cd "$srcdir/rasterio-$pkgver"
