@@ -1,0 +1,42 @@
+diff -aur qterminal.old/src/properties.cpp qterminal/src/properties.cpp
+--- qterminal.old/src/properties.cpp	2017-02-02 19:23:10.410732338 +0100
++++ qterminal/src/properties.cpp	2017-02-02 19:27:41.488117315 +0100
+@@ -123,6 +123,7 @@
+     saveSizeOnExit = m_settings->value("SaveSizeOnExit", true).toBool();
+     savePosOnExit = m_settings->value("SavePosOnExit", true).toBool();
+     useCWD = m_settings->value("UseCWD", false).toBool();
++    showResizeMessage = m_settings->value("ShowResizeMessage", false).toBool();
+ 
+     // bookmarks
+     useBookmarks = m_settings->value("UseBookmarks", false).toBool();
+@@ -200,6 +201,7 @@
+     m_settings->setValue("SavePosOnExit", savePosOnExit);
+     m_settings->setValue("SaveSizeOnExit", saveSizeOnExit);
+     m_settings->setValue("UseCWD", useCWD);
++    m_settings->setValue("ShowResizeMessage", showResizeMessage);
+ 
+     // bookmarks
+     m_settings->setValue("UseBookmarks", useBookmarks);
+diff -aur qterminal.old/src/properties.h qterminal/src/properties.h
+--- qterminal.old/src/properties.h	2017-02-02 19:23:10.410732338 +0100
++++ qterminal/src/properties.h	2017-02-02 18:20:01.351918189 +0100
+@@ -94,6 +94,7 @@
+ 
+         bool changeWindowTitle;
+         bool changeWindowIcon;
++        bool showResizeMessage;
+ 
+         QMap< QString, QAction * > actions;
+ 
+diff -aur qterminal.old/src/termwidget.cpp qterminal/src/termwidget.cpp
+--- qterminal.old/src/termwidget.cpp	2017-02-02 19:23:10.414065641 +0100
++++ qterminal/src/termwidget.cpp	2017-02-02 19:30:00.926730905 +0100
+@@ -35,6 +35,7 @@
+     TermWidgetCount++;
+     QString name("TermWidget_%1");
+     setObjectName(name.arg(TermWidgetCount));
++    showResizePopup(Properties::Instance()->showResizeMessage);
+ 
+     setFlowControlEnabled(FLOW_CONTROL_ENABLED);
+     setFlowControlWarningEnabled(FLOW_CONTROL_WARNING_ENABLED);
+     

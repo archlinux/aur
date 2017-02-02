@@ -1,0 +1,19 @@
+pkgbase = qterminal-nopopup-git
+	pkgdesc = Lightweight Qt-based terminal emulator - Patched to hide resize popup
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/lxde/qterminal
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = lxqt-build-tools
+	depends = qtermwidget-nopopup
+	provides = qterminal
+	conflicts = qterminal
+	source = git+https://github.com/lxde/qterminal.git#commit=c12cb924bcf808369e262be1dc8f4e21eb935d33
+	source = qterminal-nopopup.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = qterminal-nopopup-git
+
