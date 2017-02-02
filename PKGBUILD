@@ -3,7 +3,7 @@
 pkgname=ndm
 _pkgbase=ndm
 pkgrel=1
-pkgver=0.1.4
+pkgver=1.0.0
 _pkgver=v$pkgver
 pkgdesc="npm desktop manager"
 url="https://github.com/720kb/ndm"
@@ -30,7 +30,7 @@ sha256sums=(
         'dec92be5e28941f99a0c81c0cb1df8ec76abea6fed58481f412d4a92972bc40c'
         )
 
-sha256sums_x86_64=('0b8008558da9b3bc614afa4593fb6a79d367a831656002b9e286dfbbe749724e')
+sha256sums_x86_64=('8c944bfd10af742e0c5e25d5032ecd246986b795fea072c3be85bec86d599b9d')
 
 package() {
     install -dm755 "$pkgdir/usr/share/applications/"
