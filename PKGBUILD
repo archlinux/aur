@@ -3,7 +3,7 @@
 
 pkgname=carla
 pkgver=1.9.7
-pkgrel=4
+pkgrel=5
 pkgdesc="Audio Plugin Host"
 arch=('i686' 'x86_64')
 url="http://kxstudio.sf.net/carla"
@@ -18,8 +18,6 @@ optdepends=(
   'qt4: LV2 QT4 UI support'
   'zynaddsubfx: ZynAddSubFX banks'
 )
-provides=("${pkgname}")
-conflicts=("${pkgname}-git")
 source=("https://github.com/falkTX/Carla/archive/${pkgver}.tar.gz"
         "pyqt.patch::https://github.com/falkTX/Carla/commit/9ff1711b8fdf0acb4608498463ed4608889ead1e.patch")
 sha512sums=('f8b7247eace54a49398800a377efa9fb88267d52ccd0297a6fb4b64c04da24ac10260bdfe8ee8f7d15e13928dcc15c3e84a66f7c97c6a11c2bbe0e74b1d60587'
