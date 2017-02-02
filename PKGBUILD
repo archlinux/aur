@@ -9,7 +9,7 @@ arch=('any')
 url='http://www.gimp.org/'
 license=('custom')
 makedepends=('fontconfig' 'xorg-font-utils')
-source=("ftp://ftp.gimp.org/pub/gimp/fonts/${pkgname}-${pkgver}.tar.gz")
+source=("https://download.gimp.org/pub/gimp/fonts/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('1babf159f79221c2fd6778d49b4740907e63bd4febeeac0a597760d2b5d71608')
 
 package() {
