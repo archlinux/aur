@@ -1,29 +1,30 @@
-# Maintainer: Sebastian Lau <lauseb644@gmail.com>
+# Maintainer: twa022 <twa022 at gmail dot com>
+# Contributor: Sebastian Lau <lauseb644@gmail.com>
 # Contributor: Serede Sixty Six <serede.dev@gmail.com>
 
-pkgname=nemo-image-converter
+pkgname='nemo-image-converter'
 pkgver=3.2.0
+_mintrel='betsy'
 pkgrel=1
-pkgdesc="nemo extension to mass resize or rotate images"
+pkgdesc="Resize and rotate images directly in Nemo"
 arch=('i686' 'x86_64')
-url="https://github.com/linuxmint/nemo-extensions"
 license=('GPL2')
-groups=('nemo-extensions')
-depends=('nemo>=3.2' 'imagemagick')
+url="https://github.com/linuxmint/nemo-extensions"
+depends=('nemo' 'imagemagick')
 makedepends=('gnome-common')
-install="${pkgname}.install"
-
-source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
-sha256sums=('1536fd828b2ee0a8f194155a9e13b8cce937b403b5c87d8e579d7b1ced8d6d14')
+options=('!emptydirs')
+source=("${pkgname}-${pkgver}.tar.gz::http://packages.linuxmint.com/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}+${_mintrel}.tar.gz")
+sha256sums=('3bdda1a6275341828e1c0d52cc51d5edf0f8e8aaba5998f813201fec51f9d1cf')
 
 build() {
-    cd "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"
-    ./autogen.sh
-    ./configure --prefix="/usr" --sysconfdir="/etc"
-    make
+  cd ${pkgname}-${pkgver}+${_mintrel}
+
+  ./autogen.sh --prefix=/usr
+  make
 }
 
 package() {
-    cd "${srcdir}/nemo-extensions-${pkgver}/${pkgname}"
-    make DESTDIR="${pkgdir}" install
+  cd ${pkgname}-${pkgver}+${_mintrel}
+
+  make DESTDIR="${pkgdir}" install
 }
