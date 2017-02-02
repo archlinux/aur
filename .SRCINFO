@@ -1,6 +1,6 @@
 pkgbase = python34
 	pkgdesc = Major release 3.4 of the Python high-level programming language
-	pkgver = 3.4.5
+	pkgver = 3.4.6
 	pkgrel = 1
 	url = http://www.python.org/
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = python34
 	optdepends = tk: for tkinter
 	optdepends = sqlite
 	options = !makeflags
-	source = http://www.python.org/ftp/python/3.4.5/Python-3.4.5.tar.xz
-	sha256sums = ee64b1c8a47461009abf25252332d29a4e587cb4f0c1c96aa793a3732e9d898a
+	source = http://www.python.org/ftp/python/3.4.6/Python-3.4.6.tar.xz
+	sha256sums = f13428bbe6aa9e3b9b6499502dc488c26096349ed7a21f7a0c1db90911115f40
 
 pkgname = python34
 
