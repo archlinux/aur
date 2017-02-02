@@ -5,8 +5,8 @@
 pkgbase=linux-zen           # Build -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.9
-_zenpatch=zen-4.9.6-0f0ad79e4fd56474c7d21169edc6144615c86580.diff
-pkgver=4.9.6
+_zenpatch=zen-4.9.7-4ed6cb79a6fd1dd33512ffdc429694795b97651a.diff
+pkgver=4.9.7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
@@ -30,9 +30,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'cd0d5ea27c487a7d1354ba3e80f85af4924b77ad1180f1fbfaf6844ae03c8728'
+            'db4a5bade2a07d2f801e8c5c39dd310f35cfbbe90a953938cfbc14495b3e520c'
             'SKIP'
-            'b768a7bd777b53a0a6dbce82b2626bfda7fa8a50fc00b5c4c61fe0cee4114a29'
+            '17b31105d9f4926ba91908dd26de09bfe3b7d1ebed0cdaa231a697efc9a940c7'
             'SKIP'
             'c1f3bfd84bf664221495e9975bc337edb40f7c14f992ce65ea85c0376ed2f30f'
             '8823a62efee521df49fce92bbcf7e30ba39310d8b2a2595dd8dbe04a06e04567'
