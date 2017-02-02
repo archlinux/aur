@@ -5,13 +5,13 @@
 pkgname=gnumeric-minimal
 _pkgname=gnumeric
 pkgver=1.12.33
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNOME-less spreadsheet program"
 arch=('i686' 'x86_64')
 url="http://www.gnome.org/projects/gnumeric/"
 license=('GPL')
 depends=("goffice>=0.10.28")
-makedepends=('intltool')
+makedepends=('intltool' 'itstool')
 conflicts=('gnumeric')
 provides=('gnumeric')
 options=('libtool')

@@ -1,12 +1,13 @@
 pkgbase = gnumeric-minimal
 	pkgdesc = A GNOME-less spreadsheet program
 	pkgver = 1.12.33
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnome.org/projects/gnumeric/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
+	makedepends = itstool
 	depends = goffice>=0.10.28
 	provides = gnumeric
 	conflicts = gnumeric
