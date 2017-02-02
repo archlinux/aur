@@ -1,7 +1,7 @@
-# Maintainer: Joshua Hardy joshinsilico
+# Maintainer: Joshua Hardy joshinsilico@gmail.com
 pkgname=xds
-pkgver=20160930
-pkgrel=1
+pkgver=20161101
+pkgrel=2
 pkgdesc="X-ray Detector Software for processing single-crystal monochromatic diffraction data recorded by the rotation method."
 arch=(x86_64)
 url="http://xds.mpimf-heidelberg.mpg.de/"
@@ -10,7 +10,7 @@ depends=('bash')
 makedepends=('prelink')
 optdepends=('xdsgui' 'xds-viewer' 'xdsstat')
 source=("ftp://ftp.mpimf-heidelberg.mpg.de/pub/kabsch/XDS-INTEL64_Linux_x86_64.tar.gz")
-md5sums=('fe5ccdc8bc7ed1d20abe3166eeb98f93')
+md5sums=('9ff1d56d5d4219961cd36df78b8086df')
 build() {
 	cd "${srcdir}"/XDS-INTEL64_Linux_x86_64/
 	execstack -c mintegrate_par
