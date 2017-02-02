@@ -3,13 +3,13 @@
 
 pkgname=kde-servicemenus-dropbox
 pkgver=0.16.1
-pkgrel=8
+pkgrel=9
 pkgdesc="A servicemenu for KDE4 which allows easy access to most of Dropbox features. It uses Dropbox CLI to generate public urls, and pyndexer to allow sharing directories in public directory."
 url="https://www.kde-look.org/p/998468/"
 license=('GPL')
 arch=(any)
 conflicts=('dropbox-servicemenu')
-depends=('dropbox' 'python2' 'kdebase-kdialog' 'python2-m2crypto' 'sharutils' 'recode' 'perl' 'sqlite' 'xdg-utils')
+depends=('dropbox' 'python2' 'kdialog' 'python2-m2crypto' 'sharutils' 'recode' 'perl' 'sqlite' 'xdg-utils')
 source=("https://dl.opendesktop.org/api/files/download/id/1466690475/124416-DropboxServiceMenu-${pkgver}.tar.gz"
         "kde5.patch")
 md5sums=('3c0186649311611abfbb8ac016a67791'
