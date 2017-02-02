@@ -1,2 +1,5 @@
 edk2-ovmf*
+*.pkg.tar.xz
+src/
+pkg/
 
