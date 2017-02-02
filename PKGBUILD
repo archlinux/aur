@@ -12,7 +12,7 @@ pkgdesc="A lightweight unicode templating language"
 arch=('any')
 url="http://pythonpaste.org/tempita/"
 license=('custom:MIT')
-makedepends=('python-distribute' 'python2-distribute')
+makedepends=('python-distribute' 'python2-distribute' 'git')
 #source=(https://pypi.python.org/packages/source/T/Tempita/Tempita-${pkgver}.tar.gz)
 source=("$pkgbase::git://github.com/gjhiggins/tempita.git#commit=${_commit}")
 sha256sums=('SKIP')
