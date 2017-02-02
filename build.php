@@ -6,8 +6,9 @@ if(strcmp($_SERVER["HTTP_X_GITHUB_EVENT"], "release") != 0) {
     die("{success:false,message:'We did not receive a release request'}");
 }
 
-$good_passwd="90b145e66e20ce106bd4a65e36353e78e8196162338ac941d4af522c503a23225b112c8e7ca371a1b23634435cb8bdf583963d5e0d085267b6cdb09c6105ca64";
-$passwd=escapeshellcmd($_SERVER['HTTP_X_HUB_SIGNATURE']);
+$good_passwd="cd73fbf67557d29398a8fef58d367d7c92c880563c86ac9b3a74537f3207949df6024501491e19603d30957135e1562426098e47d5fbdb74620c87f6b2d396dc";
+$passwd=escapeshellcmd($_GET['secret']);
+echo $passwd;
 $hashed_passwd=shell_exec("printf $passwd | sha512sum | cut -d ' ' -f 1");
 $cmp = strcmp(trim($hashed_passwd), trim($good_passwd));
 if($cmp != 0) {
