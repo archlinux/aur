@@ -7,9 +7,7 @@ load() {
 }
 
 unload() {
-	if [ -e /run/vtunerc*.pid ]; then
-		:
-	else
+	if [ ! -e /run/vtunerc*.pid ]; then
 		rmmod -f vtunerc
 	fi
 }

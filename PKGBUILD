@@ -1,10 +1,10 @@
 # Maintainer: Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
+_gitver=ec05cde34dd77678933c912a6b4abab5d81b9a5b
 pkgbase=vtuner.apps
 pkgdesc="access DVB devices over the network"
 pkgname=('vtuner-client' 'vtuner-server')
-pkgver=2.1_ec05cde3
-pkgrel=2
-_gitver=ec05cde34dd77678933c912a6b4abab5d81b9a5b
+pkgver=2.1_gec05cde
+pkgrel=3
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://code.google.com/p/vtuner/"
 license=('GPL2')
@@ -21,7 +21,7 @@ sha256sums=('7a8d3d6e8fc2c97b9f80c1a2208faecfac92aeb3bed863b9b98f66e0a25b1a4b'
             '9e4568a92caf05b5add190e792b788100aea3aac783ff1681c816a7ac87c631b'
             'd886e2aa59c122a4feebdcacbadeef8022b597c369d527328c0aea571f66f7a0'
             '42f3bb7ed053afa338535bd649b4738bf142a9d039010f6bd1a356cf51e80dbc'
-            '75afc288f0cb1be62e7d719fe0d5c1fadd703f80d8b0850e9799b0f14be4a045')
+            'd25fe328c78df500a96f593d9b030e0f5cd65ce476870ef7772598ef2a49415b')
 
 prepare() {
 	cd ${srcdir}/${pkgbase}-${_gitver}
@@ -36,7 +36,7 @@ build() {
 
 package_vtuner-client() {
 	pkgdesc="VTuner client for virtual DVB's"
-	depends=('vtuner-module')
+	depends=('vtunerc-dkms')
 	backup=('etc/conf.d/vtunerc0')
 	install -Dm744 ${srcdir}/${pkgbase}-${_gitver}/dist/${CARCH}/vtunerc.${CARCH} ${pkgdir}/usr/bin/vtunerc
 	install -Dm644 ${srcdir}/vtunerc@.service ${pkgdir}/usr/lib/systemd/system/vtunerc@.service
