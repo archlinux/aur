@@ -2,7 +2,7 @@
 
 pkgbase=vis-standalone-git
 pkgname=(vis-standalone-git vis-single-git)
-pkgver=0.2.r720.ga8f67d4
+pkgver=0.2.r725.gbd36b0b
 pkgrel=1
 _pkgver_libmusl=1.1.16
 _pkgver_ncurses=6.0
@@ -19,6 +19,7 @@ checkdepends=('vim')
 conflicts=('vis')
 provides=('vis')
 license=('custom:ISC')
+backup=('etc/vis/visrc.lua')
 validpgpkeys=('836489290BB6B70F99FFDA0556BCDB593020450F'  # musl libc <musl@libc.org>
               'C52048C0C0748FEE227D47A2702353E0F7E48EDB'  # Thomas Dickey <dickey@invisible-island.net>
               '600CD204FBCEA418BD2CA74F154343260542DF34') # Brandon Philips
@@ -99,6 +100,8 @@ package_vis-standalone-git() {
 	cd vis/
 
 	make DESTDIR="${pkgdir}" PREFIX='/usr/' install
+
+	install -D -m0644 lua/visrc.lua "${pkgdir}"/etc/vis/visrc.lua
 }
 
 package_vis-single-git() {
@@ -107,5 +110,7 @@ package_vis-single-git() {
 	cd vis/
 
 	install -D -m0755 vis-single "${pkgdir}/usr/bin/vis"
+
+	install -D -m0644 lua/visrc.lua "${pkgdir}"/etc/vis/visrc.lua
 }
 
