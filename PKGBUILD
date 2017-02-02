@@ -2,8 +2,8 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=signal
-pkgver=0.27.0
-pkgrel=2
+pkgver=0.28.0
+pkgrel=1
 license=('GPL3')
 pkgdesc='Signal Private Messenger for the Desktop'
 depends=('nwjs-bin-0.17.3')
@@ -11,12 +11,12 @@ makedepends=('npm' 'ruby-sass')
 arch=("i686" "x86_64")
 url='https://whispersystems.org'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/WhisperSystems/Signal-Desktop/archive/v${pkgver}.tar.gz")
-sha512sums=('b0c509578f0f3b68eaec4349a6777a79689b54469a310bd7be4a5917f9826a7f1168a4bbe45bfa50b8e1e4059ed7139588214f56497efbde91f447113c193430')
+sha512sums=('2266fe1fcbd08775de8ab7a8622f8e8f3f057230ca739a99b27f51b871d0cf18f78029a77bbe57b442f867513d8436289d914a6596b7ce77e56197a60ac27f7d')
 
 build() {
   cd "Signal-Desktop-${pkgver}"
   npm install
-  node_modules/grunt-cli/bin/grunt
+  node_modules/grunt-cli/bin/grunt -f
 }
 
 package() {
