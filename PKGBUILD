@@ -15,11 +15,8 @@ license=('LGPL')
 depends=('lib32-at-spi2-core' 'lib32-qt4>=4.8' 'qt-at-spi')
 makedepends=('gcc-multilib' 'git' 'qt4')
 options=('!libtool')
-# qtatspi 0.4.0 or later is part of QT5 thus we need last QT4 compatible version 0.3.1
 source=("git://anongit.kde.org/qtatspi.git#tag=v0.3.1")
 md5sums=('SKIP')
-#source=("$_pkgname-$pkgver.tar.gz::http://quickgit.kde.org/?p=qtatspi.git&a=snapshot&h=f0fb5fd1&fmt=tgz")
-#md5sums=('622b5f48a0c7e88d6378055845667be5')
 
 prepare() {
 	cd qtatspi
