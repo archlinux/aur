@@ -6,7 +6,7 @@ pkgname=lib32-liblphobos
 groups=('dlang' 'dlang-ldc')
 provides=("d-runtime" "d-stdlib")
 replaces=("lib32-liblphobos-devel")
-pkgver=1.1.0.beta3.r157.gbb3e1648
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Runtime and Phobos library for the LLVM based D compiler. (32-bit)"
 arch=('x86_64')
@@ -14,18 +14,8 @@ url="https://github.com/ldc-developers/ldc"
 license=('BSD')
 depends=('ldc' 'lib32-curl' 'lib32-gcc-libs')
 makedepends=('git' 'llvm' 'libconfig' 'cmake')
-#source=("git+$url#tag=v${pkgver}")
-_commit=bb3e16481c14cf2bf161d9ff0e396500ab373ddb
-source=("git+$url#tag=$_commit")
+source=("git+$url#tag=v${pkgver}")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd ldc
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
 
 build() {
   cd ldc
