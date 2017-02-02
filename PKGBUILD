@@ -12,8 +12,7 @@ pkgrel=1
 arch=('any')
 url="https://jdk$_major.java.net/"
 license=('custom:Oracle BSD')
-optdepends=("java-runtime>=$_major: Run the examples"
-            "java-environment>=$_major: Compile and run the examples")
+optdepends=("java-environment>=$_major: Compile and run examples")
 options=('!strip')
 source=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/jdk-${_pkgver}_doc-api-spec.tar.gz"
         "http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/javafx-${_pkgver}_doc.zip"
