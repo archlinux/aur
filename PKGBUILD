@@ -1,7 +1,7 @@
 # Maintainer: Renaud Littolff <rlittolff@gmail.com>
 
 pkgname=insomnia
-pkgver=4.2.7
+pkgver=4.2.8
 pkgrel=2
 pkgdesc="A simple and beautiful REST API and HTTP client"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://insomnia.rest/"
 options=('!strip' '!upx')
 
 source=("https://downloads.insomnia.rest/linux/insomnia_${pkgver}_amd64.deb")
-md5sums=('42b04ecd8d038d11b928a92a4d91d912')
+md5sums=('fa57ea28d42ec8ee8884fc524493a2de')
 
 package() {
     cd "${srcdir}"
