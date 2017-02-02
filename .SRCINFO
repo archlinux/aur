@@ -1,6 +1,6 @@
 pkgbase = vlc-git
 	pkgdesc = A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)
-	pkgver = 3.0.0.r10897.g2659d13ccc
+	pkgver = 3.0.0.r10950.gfaa5a38a4c
 	pkgrel = 1
 	url = http://www.videolan.org/vlc/
 	install = vlc.install
@@ -84,7 +84,7 @@ pkgbase = vlc-git
 	optdepends = ttf-freefont: for subtitle font
 	optdepends = twolame: for TwoLAME mpeg2 encoder plugin
 	optdepends = vcdimager: navigate VCD with libvcdinfo
-	provides = vlc=3.0.0.r10897.g2659d13ccc
+	provides = vlc=3.0.0.r10950.gfaa5a38a4c
 	conflicts = vlc
 	conflicts = vlc-dev
 	conflicts = vlc-plugin
