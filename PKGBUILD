@@ -1,5 +1,5 @@
-# Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
-# Contributor: falkTX <falktx at gmail dot com>
+# Maintainer: Llewelyn Trahaearn <WoefulDerelict [at] GMail [dot] com>
+# Contributor: falkTX <falktx [at] gmail [dot] com>
 
 pkgname=carla
 pkgver=1.9.7
