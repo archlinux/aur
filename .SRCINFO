@@ -10,7 +10,7 @@ pkgbase = qtermwidget-nopopup-git
 	makedepends = cmake
 	depends = qt5-base
 	provides = qtermwidget
-	provides = qtermwidget-nopopup
+	provides = qtermwidget-nopopup-git
 	conflicts = qtermwidget
 	source = git+https://github.com/lxde/qtermwidget.git#commit=947742cc88748557fdb82659665da034084d55f4
 	source = qtermwidget-nopopup.patch
