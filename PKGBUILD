@@ -1,7 +1,7 @@
-# Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
+# Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=beast2
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
 pkgdesc='Bayesian Evolutionary Analysis by Sampling Trees'
 arch=(any)
@@ -10,7 +10,6 @@ license=('GPL2')
 depends=('bash' 'java-runtime>=8')
 optdepends=('beagle-lib')
 source=("https://github.com/CompEvol/beast2/releases/download/v$pkgver/BEAST.v$pkgver.Linux.tgz")
-md5sums=('f6d7ff11d5cd90ad5000f24a820eda4d')
 
 package() {
   cd $srcdir
@@ -26,3 +25,5 @@ package() {
     ln -s $i
   done
 }
+
+md5sums=('aa7579069e47a2ef6257071205320665')
