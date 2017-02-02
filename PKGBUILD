@@ -3,7 +3,7 @@
 
 pkgname=polyvox-git
 pkgver=r2156.c986c9f0
-pkgrel=1
+pkgrel=2
 pkgdesc="PolyVox is a library for storing, manipulating, and displaying volumetric representations of objects"
 arch=('i686' 'x86_64')
 url="http://www.volumesoffun.com/polyvox-about/"
