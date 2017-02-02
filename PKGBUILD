@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=vis-git
-pkgver=0.2.r693.g53f84f7
+pkgver=0.2.r725.gbd36b0b
 pkgrel=1
 pkgdesc='modern, legacy free, simple yet efficient vim-like editor - git checkout'
 arch=('i686' 'x86_64')
@@ -12,6 +12,7 @@ checkdepends=('vim')
 conflicts=('vis')
 provides=('vis')
 license=('custom:ISC')
+backup=('etc/vis/visrc.lua')
 source=('git://github.com/martanne/vis.git'
         'git://github.com/martanne/vis-test.git')
 sha256sums=('SKIP'
@@ -59,5 +60,7 @@ package() {
 	cd vis/
 
 	make DESTDIR="${pkgdir}" install
+
+	install -D -m0644 lua/visrc.lua "${pkgdir}"/etc/vis/visrc.lua
 }
 
