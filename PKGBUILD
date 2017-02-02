@@ -13,11 +13,12 @@ pkgdesc="Standalone Mail/News reader - Bleeding edge version with optional PGO"
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/thunderbird"
 license=('GPL' 'LGPL' 'MPL')
-depends=('alsa-lib' 'dbus-glib' 'desktop-file-utils' 'fontconfig' 'freetype2' 'gtk-update-icon-cache' 'gtk2'
-         'hicolor-icon-theme' 'hunspell' 'libjpeg' 'libnotify' 'libpng' 'libvpx' 'libxt' 'mime-types'
-         'mozilla-common' 'nspr' 'nss' 'pixman' 'sqlite' 'startup-notification')
+depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
+         'dbus-glib' 'alsa-lib' 'libvpx' 'libevent' 'nss' 'hunspell'
+         'sqlite' 'ttf-font' 'icu')
+makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'gconf'
+             'libpulse' 'inetutils')
 optdepends=('libcanberra: for sound support')
-makedepends=('autoconf2.13' 'mesa' 'python2' 'unzip' 'wireless_tools' 'yasm' 'zip')
 [[ $_pgo = 1 ]] && makedepends+=('imake' 'xorg-server-xvfb')
 provides=("thunderbird=$pkgver")
 install=$pkgname.install
