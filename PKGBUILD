@@ -12,12 +12,10 @@ pkgdesc="Oracle Java $_major Runtime Environment (32-bit) (public release - end 
 arch=('x86_64')
 url='http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html'
 license=('custom')
-depends=('ca-certificates-java' 'desktop-file-utils' 'hicolor-icon-theme' 'java32-runtime-common'
-         'lib32-glibc' 'lib32-libjpeg-turbo' 'lib32-lcms2' 'lib32-libxrender' 'lib32-libxtst'
-         'lib32-nss' 'shared-mime-info' 'xdg-utils')
+depends=('ca-certificates-java' 'hicolor-icon-theme' 'java32-runtime-common' 'lib32-gcc-libs'
+         'lib32-libxrender' 'lib32-libxtst' 'lib32-nss' 'xdg-utils')
 optdepends=('lib32-alsa-lib: for basic sound support'
-            'lib32-gtk2: for Gtk+ look and feel (desktop)'
-            'ttf-font: fonts')
+            'lib32-gtk2: for Gtk+ look and feel (desktop)')
 provides=("java32-runtime=$_major" "java32-runtime-headless=$_major" "java32-web-start=$_major"
           "java32-runtime-jre=$_major" "java32-runtime-headless-jre=$_major" "java32-web-start-jre=$_major"
           "java32-openjfx=$_major")
