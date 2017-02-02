@@ -4,10 +4,10 @@
 
 pkgname=vim-notes
 pkgver=0.33.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy note taking in Vim "
 arch=('any')
-url="http:/www.vim.org/scripts/script.php?script_id=3375"
+url="http://www.vim.org/scripts/script.php?script_id=3375"
 _src_id=23710
 license=('MIT')
 groups=('vim-plugins')
