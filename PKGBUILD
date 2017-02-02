@@ -2,7 +2,7 @@
 
 pkgname=routersploit-git
 _pkgname=routersploit
-pkgver=2.2.1.r73.g73362f2
+pkgver=2.2.1.r98.g041c29e
 pkgrel=1
 pkgdesc="An open-source exploitation framework dedicated to embedded devices."
 arch=('any')
@@ -21,10 +21,6 @@ pkgver() {
 	git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
 	|| printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
-}
-
-build() {
-	cd "${srcdir}/${_pkgname}"
 }
 
 package() {
