@@ -2,7 +2,7 @@
 
 pkgname=tako
 pkgver=0.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="A command language and shell based on Python"
 arch=('any')
 url="https://takoshell.org/"

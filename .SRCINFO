@@ -1,7 +1,7 @@
 pkgbase = tako
 	pkgdesc = A command language and shell based on Python
 	pkgver = 0.0.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://takoshell.org/
 	install = tako.install
 	arch = any
