@@ -1,0 +1,40 @@
+# $Id$
+# Maintainer: John Andersen <johnandersenpdx@gmail.com>
+
+post_install() {
+  cat << EOF
+You need to enable the Clear Containers runtime by adding it to the docker
+daemons command line options. To do this you need to make an override file for
+the systemd service that starts docker. Only add the --default-runtime if you
+want to always use the cc-oci-runtime instead of runc by default.
+
+$ sudo mkdir -p /etc/systemd/system/docker.service.d/
+$ sudo vi /etc/systemd/system/docker.service.d/override.conf
+
+[Service]
+ExecStart=
+ExecStart=/usr/bin/dockerd -D --add-runtime cor=/usr/bin/cc-oci-runtime \
+  --default-runtime=cor
+
+$ sudo systemctl daemon-reload
+$ sudo systemctl restart docker
+$ sudo systemctl enable cc-proxy.socket
+$ sudo systemctl start cc-proxy.socket
+
+If you are running a recent enough kernel (4.3+), you should consider
+increasing the TasksMax= systemd setting. Without this, the number of Clear
+Containers you are able to run will be limited.
+
+Run the commands below and if they display OK, proceed, else skip this section:
+
+$ grep -q ^pids /proc/cgroups && echo OK
+Assuming you got an OK:
+
+$ cd /etc/systemd/system/docker.service.d/
+$ sudo vi /etc/systemd/system/docker.service.d/clr-containers.conf
+
+[Service]
+# Allow maximum number of containers to run.
+TasksMax=infinity
+EOF
+}
