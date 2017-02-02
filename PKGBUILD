@@ -9,11 +9,7 @@ license=('BSD')
 url="https://github.com/reverse-shell/routersploit"
 depends=('readline' 'python2-requests' 'python2-paramiko' 'python2-beautifulsoup4' 'python2-pysnmp')
 source=("${pkgname}_v${pkgver}.tar.gz"::"https://github.com/reverse-shell/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('f10020e98d36d64caf2b646d38747a6fdbdf1859a499db621fb8037323e35e8cd2ca0c4857162cab14c8c2ca1774ba0c0c12c5c3dd28dd6d10bbf44f689ee2e4')
-
-build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-}
+sha512sums=('59262588fb1004a22c72f6f551f455f82bc461c2768dd001694c8a395cf11796138627f9bf94f45da1f289910b9119bcbabd1deb74f97e2649220631a59bcb4a')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

@@ -11,6 +11,6 @@ pkgbase = routersploit
 	depends = python2-beautifulsoup4
 	depends = python2-pysnmp
 	source = routersploit_v2.2.1.tar.gz::https://github.com/reverse-shell/routersploit/archive/v2.2.1.tar.gz
-	sha512sums = f10020e98d36d64caf2b646d38747a6fdbdf1859a499db621fb8037323e35e8cd2ca0c4857162cab14c8c2ca1774ba0c0c12c5c3dd28dd6d10bbf44f689ee2e4
+	sha512sums = 59262588fb1004a22c72f6f551f455f82bc461c2768dd001694c8a395cf11796138627f9bf94f45da1f289910b9119bcbabd1deb74f97e2649220631a59bcb4a
 
 pkgname = routersploit
