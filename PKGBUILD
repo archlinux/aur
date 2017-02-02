@@ -1,7 +1,7 @@
 # Maintainer: Felix Wiegand <koffeinflummi@gmail.com>
 
 pkgname="armake"
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="An open-source implementation of the Arma modding tools."
 arch=('i686' 'x86_64')
