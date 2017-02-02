@@ -1,6 +1,6 @@
 pkgbase = bash_unit
 	pkgdesc = bash unit testing enterprise edition framework for professionals
-	pkgver = 1.0.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/pgrange/bash_unit
 	arch = any
