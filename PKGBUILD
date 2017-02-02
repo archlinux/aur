@@ -8,8 +8,9 @@ pkgdesc="An open-source implementation of the Arma modding tools."
 arch=('i686' 'x86_64')
 url="https://github.com/KoffeinFlummi/armake"
 license=('GPL2')
-depends=()
+depends=('openssl')
 optdepends=()
+conflicts=('armake')
 source=("git+https://github.com/KoffeinFlummi/armake.git")
 sha256sums=('SKIP')
 

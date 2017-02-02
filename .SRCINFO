@@ -6,6 +6,8 @@ pkgbase = armake-git
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	depends = openssl
+	conflicts = armake
 	source = git+https://github.com/KoffeinFlummi/armake.git
 	sha256sums = SKIP
 
