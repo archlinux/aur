@@ -1,5 +1,0 @@
---- BeautifulDiscord/requirements.txt	2017-01-08 13:25:35.616506571 +0100
-+++ BeautifulDiscord/requirements.txt.fix	2017-01-08 13:25:59.093173587 +0100
-@@ -1 +1 @@
--psutil==4.3.1
-+psutil>=4.3.1
