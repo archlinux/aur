@@ -21,6 +21,7 @@ depends=(
 'flac>=1.1.0'
 'cdrdao>=1.1.9'
 'libmng>=1.0.0'
+'perl-xml-parser'
 )
 
 source=("http://graveman.tuxfamily.org/sources/$pkgname-$pkgver$_pkgverappendix.tar.gz")

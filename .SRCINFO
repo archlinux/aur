@@ -18,6 +18,7 @@ pkgbase = graveman
 	depends = flac>=1.1.0
 	depends = cdrdao>=1.1.9
 	depends = libmng>=1.0.0
+	depends = perl-xml-parser
 	source = http://graveman.tuxfamily.org/sources/graveman-0.3.12-5.tar.gz
 	md5sums = 94183b71f345e405badcdf92ea04dfac
 
