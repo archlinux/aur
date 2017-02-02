@@ -19,12 +19,8 @@ makedepends=('git'
 checkdepends=()
 optdepends=()
 
-source=("git+${url}.git"
-        '69-mooltipass.rules'
-        'moolticute.service')
-sha256sums=('SKIP'
-            'e8e8da3f29d27e34a9f41b23ba04b74dbf25bcc7d586e5b6d2ee72bade889503'
-            '135d7dda3698872745bec79fa2ee7a964fa2fbc90f90d1d57e034bc0104ce13a')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -49,8 +45,4 @@ package() {
 	cd "${srcdir}/${_pkgname}/build/"
 
 	make INSTALL_ROOT="${pkgdir}/" install
-        install -Dm644 "${srcdir}/69-mooltipass.rules" \
-                "${pkgdir}/usr/lib/udev/rules.d/69-mooltipass.rules"
-        install -Dm644 "${srcdir}/moolticute.service" \
-                "${pkgdir}/usr/lib/systemd/user/moolticute.service"
 }

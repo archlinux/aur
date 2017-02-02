@@ -1,9 +1,0 @@
-# udev rules for allowing console user(s) and libusb access to Mooltipass Mini devices
-ACTION!="add|change", GOTO="mooltipass_end"
-
-# console user
-KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="09a0", MODE="0660", TAG+="uaccess"
-# libusb
-SUBSYSTEM=="usb", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="09a0", MODE="0660", TAG+="uaccess"
-
-LABEL="mooltipass_end"

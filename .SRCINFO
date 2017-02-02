@@ -14,10 +14,6 @@ pkgbase = moolticute-git
 	provides = moolticute
 	conflicts = moolticute
 	source = git+https://github.com/raoulh/moolticute.git
-	source = 69-mooltipass.rules
-	source = moolticute.service
 	sha256sums = SKIP
-	sha256sums = e8e8da3f29d27e34a9f41b23ba04b74dbf25bcc7d586e5b6d2ee72bade889503
-	sha256sums = 135d7dda3698872745bec79fa2ee7a964fa2fbc90f90d1d57e034bc0104ce13a
 
 pkgname = moolticute-git
