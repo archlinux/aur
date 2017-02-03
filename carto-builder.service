@@ -1,0 +1,14 @@
+[Unit]
+Description=CARTO Builder
+After=syslog.target network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/carto/builder
+Environment=RAILS_ENV=development
+Environment=HOME=/tmp
+Environment=RAILS_LOG_BASE_PATH=/var/log/carto/builder
+ExecStart=/usr/bin/bundle exec thin start --threaded -p 3000 --threadpool-size 5
+
+[Install]
+WantedBy=multi-user.target

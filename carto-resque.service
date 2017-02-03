@@ -1,0 +1,14 @@
+[Unit]
+Description=CARTO Builder queue
+After=syslog.target network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/carto/builder
+Environment=RAILS_ENV=development
+Environment=HOME=/tmp
+Environment=RAILS_CONFIG_BASE_PATH=/etc/carto/builder
+ExecStart=/usr/bin/bundle exec ./script/resque
+
+[Install]
+WantedBy=multi-user.target

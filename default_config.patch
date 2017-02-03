@@ -1,0 +1,148 @@
+diff --git a/config.ru b/config.ru
+index 8137b61079..0ba4f5d4fa 100644
+--- a/config.ru
++++ b/config.ru
+@@ -17,4 +17,5 @@
+ # ---------------------
+ 
+ require ::File.expand_path('../config/environment',  __FILE__)
++use Rack::Static, :urls => ["/assets"], :root => "public"
+ run CartoDB::Application
+diff --git a/config/app_config.yml.sample b/config/app_config.yml.sample
+index 4dad079ad0..408d668aa9 100644
+--- a/config/app_config.yml.sample
++++ b/config/app_config.yml.sample
+@@ -9,15 +9,15 @@ defaults: &defaults
+     csv_guessing:     true
+   debug_assets: true
+   mandatory_keys:     [layer_opts, sql_api, varnish_management, redis, session_domain]
+-  session_domain:     '.localhost.lan'
++  session_domain:     'localhost'
+   # If activated, urls will use usernames in format //SESSION_DOMAIN/user/USERNAME and ignore subdomains if present
+-  subdomainless_urls: false
++  subdomainless_urls: true
+   http_port:           3000 # nil|integer. HTTP port to use when building urls. Leave empty to use default (80)
+-  https_port:          # nil|integer. HTTPS port to use when building urls. Leave empty to use default (443)
++  https_port:          3000 # nil|integer. HTTPS port to use when building urls. Leave empty to use default (443)
+   secret_token:       '71c2b25921b84a1cb21c71503ab8fb23'
+-  account_host:       'localhost.lan:3000'
++  account_host:       'localhost:3000'
+   account_path:       '/account'
+-  vizjson_cache_domains: ['.localhost.lan']
++  vizjson_cache_domains: ['.localhost']
+   data_library:
+     username:         'common-data'
+     path:             '/data-library'
+@@ -28,33 +28,33 @@ defaults: &defaults
+     filter: 'mapnik'
+     internal:
+       protocol:      'http'
+-      domain:        'localhost.lan'
++      domain:        'localhost'
+       port:          '8181'
+       host:          '127.0.0.1'
+       verifycert:     false
+     private:
+       protocol:      'http'
+-      domain:        'localhost.lan'
++      domain:        'localhost'
+       port:          '8181'
+       verifycert:     false
+     public:
+       protocol:      'http'
+-      domain:        'localhost.lan'
++      domain:        'localhost'
+       port:          '8181'
+       verifycert:     false
+   sql_api:
+     private:
+       protocol:   'http'
+-      domain:     'localhost.lan'
++      domain:     'localhost'
+       endpoint:   '/api/v1/sql'
+       port:       8080
+     public:
+       protocol:   'http'
+-      domain:     'localhost.lan'
++      domain:     'localhost'
+       endpoint:   '/api/v2/sql'
+       port:       8080
+   api_requests_service_url: ''
+-  developers_host:    'http://developers.localhost.lan:3000'
++  developers_host:    'http://developers.localhost:3000'
+   google_analytics:
+     primary:          ''
+     embeds:           ''
+@@ -152,7 +152,7 @@ defaults: &defaults
+     timeout: 5 # socket timeout
+     trigger_verbose: true
+   redis:
+-    host: '127.0.0.1'
++    host: '10.42.0.1'
+     port: 6379
+     connect_timeout: 2
+     read_timeout: 3
+@@ -163,7 +163,7 @@ defaults: &defaults
+       users_metadata:      5
+       redis_migrator_logs: 6
+   org_metadata_api:
+-    host: 'localhost.lan'
++    host: 'localhost'
+     port: '3000'
+     username: "extension"
+     password: "elephant"
+@@ -253,10 +253,10 @@ defaults: &defaults
+         interactivity:      "cartodb_id"
+         debug:              false
+         visible:            true
+-        tiler_domain:       "localhost.lan"
++        tiler_domain:       "localhost"
+         tiler_port:         "80"
+         tiler_protocol:     "http"
+-        sql_domain:         "localhost.lan"
++        sql_domain:         "localhost"
+         sql_port:           "80"
+         sql_protocol:       "http"
+         extra_params:       { cache_policy: 'persist' }
+@@ -283,12 +283,12 @@ defaults: &defaults
+     #   max_size_in_bytes: 1048576 # Optional, default is 1 MB
+     #   location: 'organization_assets' # Optional subdirectory for local assets, default is 'organization_assets'
+   app_assets:
+-    asset_host: "//cartodb-libs.global.ssl.fastly.net/cartodbui"
++    # asset_host: "//cartodb-libs.global.ssl.fastly.net/cartodbui"
+   avatars:
+     gravatar_enabled: true
+-    base_url: 'example.com/avatars'
+-    kinds: ['stars', 'mountains']
+-    colors: ['red', 'blue']
++    base_url: '/assets/unversioned/images/avatars'
++    kinds: ['ghost', 'heart', 'marker', 'mountain', 'pacman', 'planet', 'star']
++    colors: ['green', 'orange', 'red', 'yellow']
+   dropbox_api_key: ""
+   gdrive:
+     api_key: ""
+@@ -535,6 +535,7 @@ defaults: &defaults
+     sqlserver:
+       enabled: false
+       max_rows: 500000
++  enforce_non_empty_layer_css: false
+ 
+ development:
+   <<: *defaults
+@@ -547,7 +548,6 @@ development:
+     url_purge_command: 'url.purge'
+     retries: 5
+     timeout: 5
+-  enforce_non_empty_layer_css: false
+ 
+ test:
+   <<: *defaults
+@@ -557,7 +557,7 @@ test:
+     port: 6335
+   enforce_non_empty_layer_css: false
+   api_requests_es_service:
+-    url: "http://api-calls-service.localhost.lan/search"
++    url: "http://api-calls-service.localhost/search"
+     body: ""
+ 
+ staging:
