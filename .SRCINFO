@@ -7,7 +7,11 @@ pkgbase = datamash
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	source = http://ftp.gnu.org/gnu/datamash/datamash-1.1.1.tar.gz
-	md5sums = cb917de6a108e20b31aa817cd76463a8
+	source = https://ftp.gnu.org/gnu/datamash/datamash-1.1.1.tar.gz
+	source = https://ftp.gnu.org/gnu/datamash/datamash-1.1.1.tar.gz.sig
+	validpgpkeys = F576AAAC1B0FF849792D8CB129A794FD2272BC86
+	sha256sums = 420819b3d7372ee3ce704add847cff7d08c4f8176c1d48735d4a632410bb801b
+	sha256sums = SKIP
 
 pkgname = datamash
+
