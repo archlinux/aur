@@ -1,0 +1,10 @@
+[Unit]
+Description=CARTO SQL API
+After=syslog.target network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/node /opt/carto/sql-api/app.js -c /etc/carto/sql-api.conf
+
+[Install]
+WantedBy=multi-user.target

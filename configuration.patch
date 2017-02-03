@@ -1,0 +1,22 @@
+diff --git a/config/environments/development.js.example b/config/environments/development.js.example
+index 0e2bce8..b4a6105 100644
+--- a/config/environments/development.js.example
++++ b/config/environments/development.js.example
+@@ -8,7 +8,7 @@ module.exports.useProfiler = true;
+ module.exports.log_format   = '[:date] :remote-addr :method :req[Host]:url :status :response-time ms -> :res[Content-Type] (:res[X-SQLAPI-Profiler])';
+ // If log_filename is given logs will be written there, in append mode. Otherwise stdout is used (default).
+ // Log file will be re-opened on receiving the HUP signal
+-module.exports.log_filename = 'logs/cartodb-sql-api.log';
++module.exports.log_filename = '/var/log/carto/sql-api/carto-sql-api.log';
+ // Regular expression pattern to extract username
+ // from hostname. Must have a single grabbing block.
+ module.exports.user_from_host = '^(.*)\\.localhost';
+@@ -31,7 +31,7 @@ module.exports.db_port      = '5432';
+ module.exports.db_batch_port      = '5432';
+ module.exports.finished_jobs_ttl_in_seconds = 2 * 3600; // 2 hours
+ module.exports.batch_query_timeout = 12 * 3600 * 1000; // 12 hours in milliseconds
+-module.exports.batch_log_filename = 'logs/batch-queries.log';
++module.exports.batch_log_filename = '/var/log/carto/sql-api/batch-queries.log';
+ // Max number of queued jobs a user can have at a given time
+ module.exports.batch_max_queued_jobs = 64;
+ // Capacity strategy to use.
