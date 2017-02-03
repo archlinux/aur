@@ -2,12 +2,12 @@
 pkgname=rhythmbox-equalizer
 _gitrev=aa34ada
 pkgver=15.01.06.$_gitrev
-pkgrel=1
+pkgrel=2
 pkgdesc="10 band graphical equalizer for Rhythmbox"
 arch=(any)
 url=http://luqmana.github.io/rhythmbox-plugins
 license=(unknown)
-depends=(rhythmbox python)
+depends=(gconf python rhythmbox)
 source=(rhythmbox-plugins.tar.gz::http://github.com/luqmana/rhythmbox-plugins/tarball/master)
 md5sums=(19d9171ae2ca62e78a28a144da47ef3b)
 
