@@ -9,7 +9,7 @@ arch=("x86_64")
 url="https://cgit.freedesktop.org/libreoffice/online/"
 license=("MPL")
 makedepends=("cppunit" "poco" "libreoffice-fresh-sdk")
-depends=("libpng12" "poco" "pcre" "cpio")
+depends=("libpng12" "poco" "pcre" "cpio" "libreoffice")
 backup=("etc/loolwsd/loolwsd.xml")
 install="libreoffice-online.install"
 
