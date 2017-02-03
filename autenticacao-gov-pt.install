@@ -8,8 +8,6 @@ post_install() {
 		size="${icon##*/autenticacao_gov_pt_}"
 		"$XDG_ICON_RESOURCE" install --size "${size%.png}" "$icon" "autenticacao-gov-pt"
 	done
-
-	update-desktop-database > /dev/null 2>&1 || true
 }
 
 post_upgrade() {
@@ -26,6 +24,4 @@ post_remove() {
 		size="${icon##*/autenticacao_gov_pt_}"
 		"$XDG_ICON_RESOURCE" uninstall --size "${size%.png}" "$icon" "autenticacao-gov-pt"
 	done
-
-	update-desktop-database > /dev/null 2>&1 || true
 } 
