@@ -12,7 +12,7 @@ checkdepends=()
 optdepends=('txt2tags: Documentation generator')
 #changelog=CHANGELOG
 source=("http://www.phorward.info/products/phorward/$pkgname-$pkgver.tar.gz")
-md5sums=('a0ccd26cd5462adac4da57a25d73d4b4')
+md5sums=('07b8fc94e0ce4fba5e293973f249ed23')
 
 build() {
 	cd "$pkgname-$pkgver"
