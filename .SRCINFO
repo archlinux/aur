@@ -1,7 +1,7 @@
 pkgbase = shutter
 	pkgdesc = a featureful screenshot tool (formerly gscrot)
 	pkgver = 0.93.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://shutter-project.org/
 	arch = any
 	license = GPL3

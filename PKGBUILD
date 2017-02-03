@@ -8,7 +8,7 @@
 
 pkgname=shutter
 pkgver=0.93.1
-pkgrel=7
+pkgrel=8
 pkgdesc="a featureful screenshot tool (formerly gscrot)"
 arch=('any')
 url="http://shutter-project.org/"
@@ -49,7 +49,8 @@ prepare() {
       -i bin/shutter
   patch -p0 < "${srcdir}/CVE-2015-0854.patch"
   patch -p0 < "${srcdir}/fix-dropbox.patch"
-  patch -p0 < "${srcdir}/fix-unicode.patch"
+#  patch -p0 < "${srcdir}/fix-unicode.patch"
+  patch ${srcdir}/$pkgname-$pkgver/bin/shutter < "${srcdir}/fix-unicode.patch"
   patch -p0 < "${srcdir}/fix-second-instance-crash.patch"
   patch -p0 < "${srcdir}/fix-imgur.patch"
 }
