@@ -1,10 +1,10 @@
 post_install() {
   getent group lool > /dev/null || groupadd -r lool > /dev/null
   getent passwd lool > /dev/null || useradd -g lool lool > /dev/null
-  post_update
+  post_upgrade
 }
 
-post_update() {
+post_upgrade() {
   loolwsd-systemplate-setup /var/lib/lool/systemplate /usr/lib/libreoffice
   chown -R lool:lool /var/cache/loolwsd \
                      /var/lib/lool/child-roots \
