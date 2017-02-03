@@ -6,20 +6,18 @@
 _target_arch=arm
 _target=${_target_arch}-linux-gnueabihf
 pkgname=${_target}-linux-api-headers
-pkgver=4.5.5
-_basever=4.5
+pkgver=4.7
+_basever=4.7
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace (${_target})"
 arch=('any')
 url="http://www.gnu.org/software/libc"
 license=('GPL2')
 source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-${_basever}.tar.xz
-        http://www.kernel.org/pub/linux/kernel/v4.x/linux-${_basever}.tar.sign
-        http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz
-        http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign)
-md5sums=('a60d48eee08ec0536d5efb17ca819aef'
-         'SKIP'
-         'fe89010925304f6f07713741f0c8e811'
+        http://www.kernel.org/pub/linux/kernel/v4.x/linux-${_basever}.tar.sign)
+        #http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz
+        #http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign)
+md5sums=('5276563eb1f39a048e4a8a887408c031'
          'SKIP')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E')  # Greg Kroah-Hartman
