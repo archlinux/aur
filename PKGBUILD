@@ -6,7 +6,7 @@
 # Contributor: William J. Bowman <bluephoenix47@gmail.com>
 pkgname=coq
 pkgver=8.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Formal proof management system'
 arch=('i686' 'x86_64')
 url='https://coq.inria.fr/'
@@ -16,6 +16,8 @@ depends=('ocaml' 'camlp4')
 makedepends=('ocaml-findlib')
 optdepends=('coqide: graphical Coq IDE'
             'coq-doc: offline documentation')
+replaces=('coq-nox')
+conflicts=('coq-nox')
 source=("https://coq.inria.fr/distrib/V$pkgver/files/coq-$pkgver.tar.gz"
         "0001-Fix-incorrect-documentation-that-prevents-successful.patch"
         "0002-Avoid-concurrent-runs-when-producing-html-documentat.patch")
