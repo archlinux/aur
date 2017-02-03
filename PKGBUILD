@@ -10,7 +10,7 @@ url="http://photoqt.org/imgurqt"
 provides=("imgurqt")
 license=("GPL2")
 depends=("qt5-base")
-makedepends=("git cmake")
+makedepends=("git" "cmake")
 source=("git+https://gitlab.com/luspi/imgurqt.git")
 md5sums=("SKIP")
 
