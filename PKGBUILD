@@ -3,15 +3,15 @@
 
 pkgname=("python-dill" "python2-dill")
 pkgbase=python-dill
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=3
 pkgdesc='Serialize all of python (almost)'
 arch=('any')
 url='http://pypi.python.org/pypi/dill/'
 license=('BSD')
-source=("http://pypi.python.org/packages/source/d/dill/dill-$pkgver.tgz" "python2-dill.install")
-md5sums=('5b0c312f034914be2e230457747d9b6c'
-         '03858fb53bf5ae72e3f39f4346c9e40f')
+source=("https://github.com/uqfoundation/dill/releases/download/$pkgver/dill-$pkgver.tgz" "python2-dill.install")
+md5sums=('eff3385ff87c3de142ce502b38fb928a'
+         '2ac075f39bab33c203e7b25adb3e07b3')
 
 build() {
     cd "$srcdir/dill-$pkgver"
@@ -34,5 +34,5 @@ package_python2-dill() {
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     mv "$pkgdir/usr/bin/get_objgraph.py" "$pkgdir/usr/bin/get_objgraph2.py"
-    mv "$pkgdir/usr/bin/unpickle.py" "$pkgdir/usr/bin/unpickle2.py"
+    mv "$pkgdir/usr/bin/dill_unpickle.py" "$pkgdir/usr/bin/dill_unpickle2.py"
 }

@@ -1,6 +1,7 @@
 post_install(){
     cat << \here
-Accompanying programs unpickle.py and get_objgraph.py are available as unpickle2.py and get_objgraph2.py
+Accompanying programs dill_unpickle.py and get_objgraph.py are available as dill_unpickle2.py and get_objgraph2.py.
+Attention: dill_unpickle.py was known as unpickle.py before.
 here
 }
 
