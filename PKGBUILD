@@ -1,7 +1,7 @@
 # Contributor: $pooky Hunter <spookyh+arch@gmail.org>
 
 pkgname=apt-mirror
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="APT sources mirroring tool"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('perl')
 makedepends=('')
 source=(http://ftp.de.debian.org/debian/pool/main/a/apt-mirror/apt-mirror_$pkgver.orig.tar.xz)
-md5sums=('4a5c552630ecb8e1bf6460340d79cb1a')
+md5sums=('628005f93529ee1f4cf61741a7187b1d')
 backup=('etc/apt/mirror.list' 'etc/apt/mirror_jessie.list')
 
 package() {
