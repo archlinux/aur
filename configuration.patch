@@ -1,0 +1,40 @@
+diff --git a/config/environments/development.js.example b/config/environments/development.js.example
+index 6800d4c6..e814f8cc 100644
+--- a/config/environments/development.js.example
++++ b/config/environments/development.js.example
+@@ -34,8 +34,8 @@ var config = {
+     //  2. {{=it.user}}: will use the username as extraced from `user_from_host` or `base_url_detached`.
+     //  3. {{=it.port}}: will use the `port` from this very same configuration file.
+     ,resources_url_templates: {
+-        http: 'http://{{=it.user}}.localhost.lan:{{=it.port}}/api/v1/map',
+-        https: 'http://localhost.lan:{{=it.port}}/user/{{=it.user}}/api/v1/map'
++        http: 'http://{{=it.user}}.localhost:{{=it.port}}/api/v1/map',
++        https: 'http://localhost:{{=it.port}}/user/{{=it.user}}/api/v1/map'
+     }
+ 
+     // Maximum number of connections for one process
+@@ -56,7 +56,7 @@ var config = {
+     // If log_filename is given logs will be written
+     // there, in append mode. Otherwise stdout is used (default).
+     // Log file will be re-opened on receiving the HUP signal
+-    ,log_filename: undefined
++    ,log_filename: '/var/log/carto/tiler/node-windshaft.log'
+     // Templated database username for authorized user
+     // Supported labels: 'user_id' (read from redis)
+     ,postgres_auth_user: 'development_cartodb_user_<%= user_id %>'
+@@ -228,13 +228,13 @@ var config = {
+             // where the SQL API is running, it will use a custom Host header to specify the username.
+             endpoint: 'http://127.0.0.1:8080/api/v2/sql/job',
+             // the template to use for adding the host header in the batch api requests
+-            hostHeaderTemplate: '{{=it.username}}.localhost.lan'
++            hostHeaderTemplate: '{{=it.username}}.localhost'
+         },
+         logger: {
+             // If filename is given logs comming from analysis client  will be written
+             // there, in append mode. Otherwise 'log_filename' is used. Otherwise stdout is used (default).
+             // Log file will be re-opened on receiving the HUP signal
+-            filename: '/tmp/analysis.log'
++            filename: '/var/log/carto/tiler/analysis.log'
+         },
+         // Define max execution time in ms for analyses or tags
+         // If analysis or tag are not found in redis this values will be used as default.

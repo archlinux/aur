@@ -1,0 +1,10 @@
+[Unit]
+Description=CARTO Tiler
+After=syslog.target network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/node /opt/carto/tiler/app.js -c /etc/carto/tiler.conf
+
+[Install]
+WantedBy=multi-user.target
