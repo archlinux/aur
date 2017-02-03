@@ -1,15 +1,15 @@
 pkgbase = firefox-extension-https-everywhere
 	pkgdesc = Plugin for firefox which ensures you are using https whenever it's possible.
-	pkgver = 5.2.9
+	pkgver = 5.2.10
 	pkgrel = 1
 	url = https://www.eff.org/https-everywhere
 	arch = any
 	license = GPL2
 	makedepends = unzip
 	depends = firefox
-	noextract = https-everywhere-5.2.9.xpi
-	source = https-everywhere-5.2.9.xpi::https://addons.mozilla.org/firefox/downloads/file/557482/
-	sha256sums = 770668c7f296d6c0bde3320354854781fc5e871feda345d2b22005ee33eacdaf
+	noextract = https-everywhere-5.2.10.xpi
+	source = https-everywhere-5.2.10.xpi::https://addons.mozilla.org/firefox/downloads/file/578449/
+	sha256sums = 721f4bb48891ebb1a92d3a044a0b3513ed58e629d2e2671c6f8bdbbbf02e2ce9
 
 pkgname = firefox-extension-https-everywhere
 
