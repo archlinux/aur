@@ -1,8 +1,8 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=streamlink-git
-pkgver=0.3.0.r26.g9ce489d
-pkgrel=2
+pkgver=0.3.1.r0.g2c34781
+pkgrel=1
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
 url='https://streamlink.github.io/'
