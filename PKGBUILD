@@ -3,7 +3,7 @@
 
 pkgname=electronic-wechat
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A better WeChat client"
 arch=('x86_64')
 url="https://github.com/geeeeeeeeek/electronic-wechat"
@@ -69,7 +69,9 @@ package() {
     cd "$srcdir/$pkgname/dist/electronic-wechat-linux-x64/"
     mkdir -p "$pkgdir/usr/lib/$pkgname/"
     cp -rv --no-preserve='ownership' -- * "$pkgdir/usr/lib/$pkgname/"
-    install -Dm755 "$srcdir/electronic-wechat.sh.in" "$pkgdir/usr/bin/electronic-wechat"
+    # install -Dm755 "$srcdir/electronic-wechat.sh.in" "$pkgdir/usr/bin/electronic-wechat"
+    mkdir -p "$pkgdir/usr/bin"
+    ln -sf "/usr/lib/$pkgname/electronic-wechat" "$pkgdir/usr/bin/"
 }
 
 sha256sums=('SKIP'
