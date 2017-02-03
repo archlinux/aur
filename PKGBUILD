@@ -6,21 +6,18 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-binutils
-pkgver=2.26.1
+pkgver=2.27
 pkgrel=1
-_commit=c29838e7
+_commit=2870b1ba
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils/"
 license=('GPL')
-depends=('glibc>=2.23' 'zlib')
+depends=('glibc>=2.24' 'zlib')
 options=('staticlibs' '!distcc' '!ccache')
 source=(#git://sourceware.org/git/binutils-gdb.git#commit=${_commit}
         http://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2)
-        #binutils-${_commit}.patch)
-md5sums=(#'SKIP'
-         'd2b24e5b5301b7ff0207414c34c3e0fb')
-         #'0820efe4f2087f5f557602a32f561dcd')
+md5sums=('2869c9bf3e60ee97c74ac2a6bf4e9d68')
 
 prepare() {
   cd binutils-${pkgver}
