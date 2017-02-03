@@ -1,7 +1,7 @@
 pkgbase = ttysterm
 	pkgdesc = Simple serial terminal
-	pkgver = 20160921
-	pkgrel = 2
+	pkgver = 20170112
+	pkgrel = 1
 	url = https://rtime.felk.cvut.cz/gitweb/sojka/sterm.git
 	arch = i686
 	arch = x86_64
