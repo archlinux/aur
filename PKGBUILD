@@ -1,39 +1,20 @@
 # Maintainer: Steven Honeyman <stevenhoneyman at gmail com>
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
-# Patches taken from upstream svn to fix specific problems that
-# Arch Linux users were having (see AUR comments) - 2014-06-09
-
 pkgname=fslint
-pkgver=2.44
-pkgrel=2
+pkgver=2.46
+pkgrel=1
 pkgdesc="A utility to find and clean various forms of lint on a filesystem"
 arch=('any')
 url="http://www.pixelbeat.org/fslint/"
 license=('GPL')
 depends=('pygtk' 'python2')
-source=(http://www.pixelbeat.org/$pkgname/$pkgname-$pkgver.tar.gz
-        fslint-2.44_fix-multiselect-regression_r291.patch
-        fslint-2.44_gtk-init-graceful_r292.patch)
-sha256sums=('8491a9cd76725e652ac8fe07288ba1f896d9331e30593c0ff3ab9e82e863f0ae'
-            'f8786f1c564678e01cd2b52674a48e61858661f5337f5332a7635de5f082c239'
-            '4a87d8bbe6699f0932af2c06d38ba6547bd8905e4db51404b3db4c3e3d36c9a9')
+source=(http://www.pixelbeat.org/$pkgname/$pkgname-$pkgver.tar.xz)
+sha256sums=('f15daebfecfd2eea0d3b48a0193e25974b71dcf1e4b4a33d5a3dcfb7bb9c90cc')
 
 prepare() {
   cd "${srcdir}"/$pkgname-$pkgver
   sed -i -e s_^liblocation=.*_liblocation=\'/usr/share/fslint\'_ fslint-gui
-
-  # fixes a regression with multiple select in duplicate file finder
-  patch -p2 -i ../fslint-2.44_fix-multiselect-regression_r291.patch
-
-  # handle gtk init problem gracefully
-  patch -p2 -i ../fslint-2.44_gtk-init-graceful_r292.patch
-
-  sed -i 's/env python/&2/' fslint-gui \
-                            fslint/fstool/dupwaste \
-                            fslint/supprt/rmlint/fixdup \
-                            fslint/supprt/rmlint/merge_hardlinks
-  sed -i 's/bin.python/&2/' fslint/supprt/md5sum_approx
 }
 
 package() {
