@@ -1,0 +1,15 @@
+pkgbase = minergate-cli
+	pkgdesc = Cryptocurrency miner and Mining Pool (console version)
+	pkgver = 4.05
+	pkgrel = 1
+	url = http://www.minergate.com/
+	arch = x86_64
+	license = custom
+	depends = qt5-base
+	depends = qt5-websockets
+	provides = minergate-cli
+	source = https://minergate.com/download/deb-cli
+	md5sums = 9e7cc91ef8cf6289c9c1d3e2efce8b3d
+
+pkgname = minergate-cli
+
