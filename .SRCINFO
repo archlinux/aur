@@ -1,14 +1,14 @@
 pkgbase = rust-src
 	pkgdesc = Rust source files
-	pkgver = 1.14.0
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = http://rust-lang.org
 	arch = any
 	license = MIT
 	license = Apache
 	options = !strip
-	source = https://static.rust-lang.org/dist/rustc-1.14.0-src.tar.gz
-	sha256sums = c790edd2e915bd01bea46122af2942108479a2fda9a6f76d1094add520ac3b6b
+	source = https://static.rust-lang.org/dist/rustc-1.15.0-src.tar.gz
+	sha256sums = 33f3747d231ede34b56c6cc0ae6be8cbaa29d2fdb39d86f25693dceb9fc5f164
 
 pkgname = rust-src
 
