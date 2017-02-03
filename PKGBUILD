@@ -1,7 +1,7 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org
 
 pkgname=squishyball
-pkgver=20140210.19583
+pkgver=19599
 pkgrel=1
 pkgdesc='Perform sample comparison testing on the command line'
 url='https://svn.xiph.org/trunk/squishyball/'
@@ -14,7 +14,7 @@ sha1sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
-	svn info | awk '/Revision/{r=$2}/Date/{gsub(/-/,"");d=$4}END{print d"."r}'
+	svn info | awk '/Revision/{print $2}'
 }
 
 build() {

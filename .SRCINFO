@@ -1,6 +1,6 @@
 pkgbase = squishyball
 	pkgdesc = Perform sample comparison testing on the command line
-	pkgver = 20140210.19583
+	pkgver = 19599
 	pkgrel = 1
 	url = https://svn.xiph.org/trunk/squishyball/
 	arch = i686
