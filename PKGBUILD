@@ -1,17 +1,15 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 # Contributor: Taras Shpot <mrshpot@gmail.com>
-pkgname=('rust-git' 'rust-doc-git')
+# Contributor: Tatsuyuki Ishi <ishitatsuyuki@gmail.com>
+pkgname=('rust-git' 'rust-docs-git' 'rust-src-git')
 pkgver=1.0.0.beta.2833.gb850046
 epoch=3
-pkgrel=2
-pkgdesc="A safe, concurrent, practical language from Mozilla."
+pkgrel=3
+pkgdesc="Systems programming language focused on safety, speed and concurrency"
 arch=('i686' 'x86_64')
 url="http://www.rust-lang.org/"
 license=('MIT' 'Apache')
-makedepends=('git' 'gcc' 'curl'
-             'libffi' 'python2')
-optdepends=('haskell-pandoc: to build the documentation'
-            'emacs: to build the emacs mode')
+makedepends=('git' 'libffi' 'python2' 'curl' 'llvm' 'jemalloc')
 source=("git+https://github.com/rust-lang/rust.git"
         "git+https://github.com/rust-lang/compiler-rt.git"
         "git+https://github.com/rust-lang/jemalloc.git"
@@ -37,7 +35,7 @@ sha512sums=('SKIP'
 
 pkgver() {
 	cd rust
-	git describe | sed -e 's/^release-//' -e 'y/-/./'
+	echo "$(grep -m1 '^CFG_RELEASE_NUM=' mk/main.mk | cut -d'=' -f2)"."$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -55,16 +53,18 @@ END
 build() {
 	cd rust
 
-	# src/rust/src/compiler-rt/make/platform/clang_linux.mk only exports LANG
-	# when parsing the output of gcc -v. Let us set LC_ALL as well.
-	export LANG=C LC_ALL=C
+	./configure \
+		--prefix=/usr \
+		--disable-rustbuild \
+		--llvm-root=/usr \
+		--enable-llvm-link-shared \
+		--jemalloc-root=/usr/lib/
 
-	./configure --prefix=/usr --disable-rpath --disable-rustbuild
-	make all
+	make
 }
 
 package_rust-git() {
-	depends=('shared-mime-info')
+	depends=('shared-mime-info' 'llvm-libs')
 	optdepends=('rust-doc-git: language and API documentation')
 	provides=('rust')
 	conflicts=('rust')
@@ -74,12 +74,11 @@ package_rust-git() {
 	cd rust
 
 	make DESTDIR="$pkgdir" install
-	rm -fr "$pkgdir"/usr/share/doc/rust/html
 
-	rm -f "$pkgdir"/usr/lib/rustlib/{components,manifest-rustc,manifest-rust-docs,rust-installer-version,install.log,uninstall.sh}
+	rm -f "$pkgdir"/usr/lib/rustlib/{manifest-rust-docs,install.log,uninstall.sh}
 
-	install --directory "$pkgdir"/usr/share/licenses/rust-git/
-	install -m644 COPYRIGHT LICENSE-* "$pkgdir"/usr/share/licenses/rust-git/
+	install --directory "$pkgdir"/usr/share/licenses/$pkgname/
+	install -m644 COPYRIGHT LICENSE-* "$pkgdir"/usr/share/licenses/$pkgname/
 
 	install --directory "$pkgdir"/usr/share/vim/vimfiles/
 	cp -a "$srcdir"/rust.vim/*/ "$pkgdir"/usr/share/vim/vimfiles/
@@ -91,28 +90,34 @@ package_rust-git() {
 	emacs --eval '(byte-recompile-directory "." 0)' --quick --batch 2> /dev/null || true
 	install --directory "$pkgdir"/usr/share/emacs/site-lisp/
 	cp -a rust-mode.* "$pkgdir"/usr/share/emacs/site-lisp/
+
+	rm -fr "$pkgdir"/usr/share/doc
 }
 
-package_rust-doc-git() {
-	pkgdesc="A safe, concurrent, practical language from Mozilla. (Language and API documentation)"
+package_rust-docs-git() {
+	pkgdesc="Systems programming language focused on safety, speed and concurrency (Language and API documentation)"
 	arch=('any')
 	options+=('!strip' '!emptydirs')
 	optdepends=('rust-git: to compile and run the programs you can write using this documentation')
-	provides=('rust-doc')
-	conflicts=('rust-doc')
+	provides=('rust-doc' 'rust-docs')
+	conflicts=('rust-doc' 'rust-docs')
+	replaces=('rust-doc-git')
 
 	cd rust
 
-	_docdir="$pkgdir"/usr/share/doc/rust
-	install --directory "$_docdir"
-	cp -r doc/* "$_docdir"/ || true
+	install --directory "$pkgdir"/usr/share/doc
+	cp -r doc "$pkgdir"/usr/share/doc/rust
 
-	chmod -R 644 "$_docdir"
-	find "$_docdir" -type d -exec chmod 755 {} +
-	for ext in aux out log toc; do
-		rm -f "$_docdir"/*."$ext"
-	done
+	install --directory "$pkgdir"/usr/share/licenses/$pkgname/
+	install -m644 COPYRIGHT LICENSE-* "$pkgdir"/usr/share/licenses/$pkgname/
+}
 
-	install --directory "$pkgdir"/usr/share/licenses/rust-doc-git/
-	install -m644 COPYRIGHT LICENSE-* "$pkgdir"/usr/share/licenses/rust-doc-git/
+package_rust-src-git() {
+	pkgdesc="Systems programming language focused on safety, speed and concurrency (Source Code)"
+	arch=('any')
+	provides=('rust-src')
+	conflicts=('rust-src')
+
+	cd rust
+	git checkout-index -a --prefix "$pkgdir"/usr/src/rust/
 }
