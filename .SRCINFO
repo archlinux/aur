@@ -1,0 +1,43 @@
+pkgbase = lxc-selinux
+	pkgdesc = Linux Containers
+	pkgver = 2.0.7
+	pkgrel = 1
+	epoch = 1
+	url = http://linuxcontainers.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = docbook2x
+	makedepends = lua
+	depends = bash
+	depends = perl
+	depends = libseccomp
+	depends = libcap
+	depends = python
+	depends = cgmanager
+	depends = rsync
+	depends = libselinux
+	optdepends = arch-install-scripts: for archlinux template
+	optdepends = dnsmasq: lxc-net.service
+	optdepends = lua
+	optdepends = lua-filesystem: lxc-top
+	optdepends = lua-alt-getopt: lxc-top
+	provides = lxc=2.0.7-1
+	conflicts = lxc
+	options = emptydirs
+	backup = etc/lxc/default.conf
+	backup = etc/default/lxc
+	source = https://linuxcontainers.org/downloads/lxc-selinux-2.0.7.tar.gz
+	source = https://linuxcontainers.org/downloads/lxc-selinux-2.0.7.tar.gz.asc
+	source = lxc.tmpfiles.d
+	source = lxc.service
+	source = lxc-auto.service
+	validpgpkeys = 602F567663E593BCBD14F338C638974D64792D67
+	sha256sums = 1c09c075f06ec029f86fa6370c7d379494ff4c66a129eda17af7b7b41e055f5d
+	sha256sums = SKIP
+	sha256sums = 10e4f661872f773bf3122a2f9f2cb13344fea86a4ab72beecb4213be4325c479
+	sha256sums = 711fb84c87b143cb0098e095fdebb040b15f553a854efbe846a00100bdb9ae88
+	sha256sums = 4174fcc0a664108f1884920930a3dbec0aeceed1fc24f00c200a583c06d447d0
+
+pkgname = lxc-selinux
+
