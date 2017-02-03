@@ -1,4 +1,4 @@
-# Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 # Contributor: Matthew Bauer <mjbauer95@gmail.com>
 
 pkgname=idevicerestore-git
