@@ -2,22 +2,21 @@
 # Contributor: s1gma <s1gma@mindslicer.com>
 
 pkgname=medusa-git
-pkgver=2.2.17.5a7b76e
-pkgrel=2
+pkgver=2.2.20.52ba417
+pkgrel=1
 pkgdesc='Speedy, massively parallel and modular login brute-forcer for network'
 url='http://www.foofus.net/jmk/medusa/medusa.html'
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('openssl')
+# TODO: revisit rdp if freerdp2 is supported
 optdepends=(
   'openssl: HTTP, MSSQL, SMBNT and SSL-based connection support'
   'libssh2: SSH support'
   'postgresql-libs: PostgreSQL support'
   'afpfs-ng: AFP support'
-  'subversion: Subversion support'
-  'freerdp: RDP support'
-)
-makedepends=('git' 'pkg-config' 'libssh2' 'libpqxx' 'afpfs-ng' 'subversion' 'freerdp')
+  'subversion: Subversion support')
+makedepends=('git' 'libssh2' 'libpqxx' 'afpfs-ng' 'subversion' 'freerdp')
 source=(${pkgname}::git+https://github.com/jmk-foofus/medusa)
 sha512sums=('SKIP')
 
@@ -29,7 +28,7 @@ pkgver() {
 
 prepare() {
   cd ${pkgname}
-  autoreconf --force --install
+  autoreconf -fiv
 }
 
 build() {
