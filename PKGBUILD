@@ -7,7 +7,7 @@ pkgdesc="An Objective Caml interface to gtk2, with most bindings to gtk2 librari
 arch=("i686" "x86_64")
 license=('LGPL')
 url="http://lablgtk.forge.ocamlcore.org/"
-depends=('gtk2' 'gtkspell' 'libgnomecanvas' 'librsvg' 'libgnomeui' 'gtksourceview2')
+depends=('gtk2' 'gtkspell' 'libgnomecanvas' 'librsvg' 'gtksourceview2')
 provides=("lablgtk2==${pkgver}")
 conflicts=("lablgtk2")
 makedepends=('ocaml>=4.0.3' 'camlp4>=4.03+1')
