@@ -2,17 +2,17 @@
 
 pkgname=yabar-git
 _pkgname=yabar
-pkgver=0.5.0.r0.g15d16fb
+pkgver=0.4.0.r26.g0d096c4
 pkgrel=1
 pkgdesc="A modern and lightweight status bar for X window managers"
 arch=('i686' 'x86_64')
 url="https://github.com/geommer/yabar"
 license=('MIT')
-depends=('cairo' 'alsa-lib' 'pango' 'libconfig' 'xcb-util-wm' 'gdk-pixbuf2')
+depends=('pango' 'libconfig' 'xcb-util-wm' 'gdk-pixbuf2')
 makedepends=('git')
 provides=('yabar')
 conflicts=('yabar')
-source=(git://github.com/yabar-dev/yabar.git)
+source=(git://github.com/geommer/yabar.git)
 md5sums=('SKIP')
 
 pkgver() {
