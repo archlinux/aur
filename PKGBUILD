@@ -1,8 +1,8 @@
 # Maintainer: Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
 pkgname='minisatip'
 pkgdesc="SAT>IP server, tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards"
-pkgver=0.4.1
-pkgrel=6
+pkgver=0.5.69
+pkgrel=1
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://minisatip.org"
 license=('GPL2')
@@ -13,7 +13,7 @@ depends=('libdvbcsa' 'linuxtv-dvb-apps')
 optdepends=('oscam: channels descrambling')
 backup=('etc/conf.d/minisatip')
 install='minisatip.install'
-source=("git+https://github.com/catalinii/minisatip#commit=99fed041702c3a136008a285b5c015a981a5dfd3"
+source=("git+https://github.com/catalinii/minisatip#commit=bd493b1addd4a2d73ead880b5ea66a239e80224d"
         'minisatip.service'
         'minisatip.sysuser'
         'minisatip.conf')
@@ -27,16 +27,12 @@ pkgver() {
 	tac minisatip.h | awk -F"[^.^0-9]*" '/VERSION_BUILD/ {printf $2}'
 }
 
-prepare() {
-	cd ${srcdir}/minisatip
-	git format-patch -1 43482f469e9efd9d9b2026d9346b9b1331a90d32
-	sed -i 's/FLAGS?/FLAGS/g' 0001-Add-EXTRA_CFLAGS-adn-EXTRA_LDFLAGS-to-Makefile.patch
-	patch -p1 -i 0001-Add-EXTRA_CFLAGS-adn-EXTRA_LDFLAGS-to-Makefile.patch
-}
 
 build() {
 	cd ${srcdir}/minisatip
-	make DVBCA=yes EXTRA_CFLAGS="${CFLAGS}" EXTRA_LDFLAGS="${LDFLAGS}"
+	./configure
+	sed -i 's/FLAGS?/FLAGS/g' Makefile
+	make EXTRA_CFLAGS="${CFLAGS}" EXTRA_LDFLAGS="${LDFLAGS}"
 }
 
 package() {
