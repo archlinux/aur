@@ -8,6 +8,8 @@ arch=('i686' 'x86_64')
 url='https://github.com/killercup/cargo-edit'
 license=('MIT')
 depends=('cargo')
+conflicts=('cargo-edit-git')
+provide=('cargo-edit')
 source=("https://github.com/killercup/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('654248c876e1123be7ee98bb1b64efe8')
 
