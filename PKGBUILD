@@ -1,6 +1,6 @@
 # Maintainer: Pete Alexandrou (ozmartian) <pete@ozmartians.com>
 pkgname=vidcutter-git
-pkgver=2.6.5.r0.gfea4b24
+pkgver=2.6.5.r0.g83cde3b
 pkgrel=1
 pkgdesc="FFmpeg based video cutter & joiner with a modern PyQt5 GUI"
 arch=('any')
@@ -21,7 +21,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${pkgname}"
-    sed -i "s/pypi/arch/" vidcutter/__init__.py
+    sed -i "s/pypi/arch/" "vidcutter/__init__.py"
 }
 
 build() {
