@@ -1,4 +1,4 @@
-# Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 # Contributor: Kovivchak Evgen <oneonfire@gmail.com>
 # Contributer: Scimmia <scimmia22 at outlook dot com>
 # Contributor: Orivej Desh <smpuj@bk.ru>
