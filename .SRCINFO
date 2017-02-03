@@ -1,0 +1,19 @@
+pkgbase = h5pyviewer
+	pkgdesc = Classes and tools to view *.hdf5-Files
+	pkgver = 0.0.1.6
+	pkgrel = 1
+	url = https://github.com/ganymede42/h5pyViewer
+	arch = any
+	license = BSD
+	depends = python2
+	depends = python2-h5py
+	depends = python2-numpy
+	depends = python2-matplotlib
+	depends = wxpython
+	source = https://files.pythonhosted.org/packages/source/h/h5pyViewer/h5pyViewer-0.0.1.6.tar.gz
+	source = h5pyViewer.desktop
+	md5sums = da47fcfe8e05764abae49a174b6c8621
+	md5sums = 3be07481951e4a264ae9af04b001616c
+
+pkgname = h5pyviewer
+
