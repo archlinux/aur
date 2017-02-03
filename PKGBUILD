@@ -1,4 +1,4 @@
-# Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 # Contributor: Adam Eberlin < ae at adameberlin dot com >
 
 pkgname=libplist-git
