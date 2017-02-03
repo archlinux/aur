@@ -1,7 +1,7 @@
 pkgbase = gnome-vfs-perl
 	pkgdesc = Gnome2-VFS perl bindings for gnome-vfs
 	pkgver = 1.082
-	pkgrel = 5
+	pkgrel = 6
 	url = http://gtk2-perl.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gnome-vfs-perl
 	makedepends = perl-extutils-pkgconfig
 	makedepends = perl-extutils-depends
 	depends = gtk2-perl
-	depends = gnome-vfs
+	depends = gnome-vfs-nosmb
 	depends = perl
 	options = !emptydirs
 	source = http://downloads.sourceforge.net/sourceforge/gtk2-perl/Gnome2-VFS-1.082.tar.gz
