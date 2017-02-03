@@ -1,6 +1,6 @@
 pkgbase = tuiview
 	pkgdesc = Lightweight raster GIS viewer and attribute table writer
-	pkgver = 1.1.9
+	pkgver = 1.1.10
 	pkgrel = 1
 	url = http://tuiview.org
 	arch = i686
@@ -13,9 +13,8 @@ pkgbase = tuiview
 	depends = gdal
 	depends = python2-pyqt4
 	options = !emptydirs
-	source = https://bitbucket.org/chchrsc/tuiview/downloads/TuiView-1.1.9.tar.gz
-	md5sums = 7d0fd3a03ebbe5bd6a2fd5e49f5b70ba
-	sha256sums = 41e706f0c2d821fa7c4e07b667a3455f466bf0c3579dac8a4ab118774fc1d6ed
+	source = https://bitbucket.org/chchrsc/tuiview/downloads/TuiView-1.1.10.tar.gz
+	sha256sums = 08b8fb200bbba037884361c95d6b1dfb1f955a9087aa6a638c0e6adba42df08e
 
 pkgname = tuiview
 

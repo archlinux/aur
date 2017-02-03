@@ -1,6 +1,6 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
 pkgname=('tuiview')
-pkgver=1.1.9
+pkgver=1.1.10
 pkgrel=1
 pkgdesc="Lightweight raster GIS viewer and attribute table writer"
 arch=('i686' 'x86_64')
@@ -11,8 +11,7 @@ depends=("${makedepends[@]}")
 options=(!emptydirs)
 _srcpath="TuiView-$pkgver"
 source=("https://bitbucket.org/chchrsc/$pkgname/downloads/$_srcpath.tar.gz")
-md5sums=('7d0fd3a03ebbe5bd6a2fd5e49f5b70ba')
-sha256sums=('41e706f0c2d821fa7c4e07b667a3455f466bf0c3579dac8a4ab118774fc1d6ed')
+sha256sums=('08b8fb200bbba037884361c95d6b1dfb1f955a9087aa6a638c0e6adba42df08e')
 
 prepare() {
   # Updates the shebang in Python scripts for Python 2
