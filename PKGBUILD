@@ -1,7 +1,7 @@
 # Maintainer: Janne Heß <jannehess@gmail.com>
 
 pkgname=autoenv
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Directory-based environments'
 url="https://github.com/kennethreitz/${pkgname}"
@@ -9,7 +9,7 @@ license=('custom')
 checkdepends=('bash' 'zsh' 'dash')
 conflicts=("${pkgname}-git")
 source=(https://github.com/kennethreitz/${pkgname}/archive/v${pkgver}.tar.gz)
-sha512sums=('d5c0d90e9bd641524636bf898f4c31c26c699fa7b9f641801cd1f3bf507b16d5d8e5e02a9dad9d8aa69d1a6b9125520b3d832c0388d05150b10ff41b4425359b')
+sha512sums=('0b3c1e391ad6cc6eee8d8d005c50abcdd6ae5987ffb7ce003ba04f0aa9f44213063e0d87b62637690eae2fe67f3c1df359707c6c526d0d9abcc90a7a42a7ff76')
 arch=('any')
 install='autoenv.install'
 
