@@ -1,15 +1,16 @@
 # Maintainer: Alex Tharp <toastercup@gmail.com>
-# Upstream URL: https://github.com/highfidelity/hifi
 
 pkgname=hifi-git
 pkgver=r50816.f4e57898c6
-pkgrel=1
+pkgrel=2
 pkgdesc="High Fidelity is an open, decentralized virtual world using sensors to control avatars and dynamically assigned devices as servers. This provides the client, servers and dev tools. (git - master)"
 arch=('i686' 'x86_64')
 url="https://github.com/highfidelity/hifi"
-license=('Apache2')
+license=('Apache')
 install="${pkgname}.install"
 makedepends=('git' 'cmake>=2.8.12.2')
+provides=('hifi')
+conflicts=('hifi')
 _qt5version=5.5.1
 depends=("qt5-base>=$_qt5version"
          "qt5-script>=$_qt5version"
@@ -71,7 +72,7 @@ prepare() {
 
 build() {
   cd $srcdir && mkdir -p build && cd $_
-  cmake -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir/opt/interface" -DCMAKE_BUILD_TYPE:STRING=Release "../$_githifi"
+  cmake -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir/opt/hifi/interface" -DCMAKE_BUILD_TYPE:STRING=Release "../$_githifi"
   make
 }
 
