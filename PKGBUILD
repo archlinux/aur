@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
 pkgname='minisatip-git'
 pkgdesc="SAT>IP server, tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards (experimental)"
-pkgver=0.5.43_92bf0d8
+pkgver=0.7.4_g3f62a80
 pkgrel=1
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://minisatip.org"
@@ -13,7 +13,7 @@ depends=('libdvbcsa' 'linuxtv-dvb-apps' 'openssl')
 optdepends=('oscam: channels descrambling')
 backup=('etc/conf.d/minisatip')
 install='minisatip.install'
-source=("git+https://github.com/catalinii/minisatip"
+source=("git+https://github.com/catalinii/minisatip#branch=0.7"
         'minisatip.service'
         'minisatip.sysuser'
         'minisatip.conf')
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd ${srcdir}/minisatip
-	printf "%s_%s" "$(tac minisatip.h | awk -F"[^.^0-9]*" '/VERSION_BUILD/ {printf $2}')" "$(git rev-parse --short HEAD)"
+	printf "%s_g%s" "$(tac minisatip.h | awk -F"[^.^0-9]*" '/VERSION_BUILD/ {printf $2}')" "$(git rev-parse --short HEAD)"
 }
 
 build() {
