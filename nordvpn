@@ -51,7 +51,7 @@ case $command in
         test -z $service || systemctl $command $service
         ;;
     *)
-        echo "usage: nordvpn command [options]"
+        echo "usage: $(basename $0) command [options]"
         echo
         echo "Available commands:"
         echo "    list [server_name_pattern]"

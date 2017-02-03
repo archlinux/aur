@@ -2,7 +2,7 @@
 
 pkgname=openvpn-nordvpn
 pkgver=17.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenVPN configuration files and helper for nordvpn.com"
 arch=(any)
 url="http://www.nordvpn.com"
@@ -22,16 +22,14 @@ prepare() {
 }
 
 build() {
-    find conf -name '*.ovpn' | parallel sed \'s/^auth-user-pass.*$/auth-user-pass \\/etc\\/openvpn\\/client\\/nordvpn\\/credentials.conf/g\' -i {}
+    find conf -name '*.ovpn' | parallel -j4 sed \'s/^auth-user-pass.*$/auth-user-pass \\/etc\\/openvpn\\/client\\/nordvpn\\/credentials.conf/g\' -i {}
 }
 
 package() {
-    mkdir -p $pkgdir/etc/openvpn/client/nordvpn
-    chmod -R 750 $pkgdir/etc/openvpn/client
     for f in $(find conf -type f -name '*udp1194.ovpn'); do
-        install -m 444 $f $pkgdir/etc/openvpn/client/nordvpn
+        install -D -m 444 $f $pkgdir/etc/openvpn/client/nordvpn/$(basename $f)
         ln -s /etc/openvpn/client/nordvpn/$(basename $f) $pkgdir/etc/openvpn/client/nordvpn_$(echo $(basename $f) | cut -d '.' -f 1).conf
     done
-    mkdir -p $pkgdir/usr/bin
-    install -m 755 ../nordvpn $pkgdir/usr/bin
+    chmod 750 $pkgdir/etc/openvpn/client
+    install -D -m 755 ../nordvpn $pkgdir/usr/bin/nordvpn
 }
