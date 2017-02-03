@@ -1,0 +1,25 @@
+From f6fd3e591777b3b67d006a334788e4647136901c Mon Sep 17 00:00:00 2001
+From: Johnathan Jenkins <john@nixheads.co.uk>
+Date: Fri, 3 Feb 2017 08:42:21 -0800
+Subject: [PATCH] fix psp scapper
+
+---
+ es-app/src/scrapers/GamesDBScraper.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/es-app/src/scrapers/GamesDBScraper.cpp b/es-app/src/scrapers/GamesDBScraper.cpp
+index 6fbe3ef..77fd239 100644
+--- a/es-app/src/scrapers/GamesDBScraper.cpp
++++ b/es-app/src/scrapers/GamesDBScraper.cpp
+@@ -58,7 +58,7 @@ const std::map<PlatformId, const char*> gamesdb_platformid_map = boost::assign::
+ 	(PLAYSTATION_3, "Sony Playstation 3")
+ 	(PLAYSTATION_4, "Sony Playstation 4")
+ 	(PLAYSTATION_VITA, "Sony Playstation Vita")
+-	(PLAYSTATION_PORTABLE, "Sony PSP")
++	(PLAYSTATION_PORTABLE, "Sony Playstation Portable")
+ 	(SUPER_NINTENDO, "Super Nintendo (SNES)")
+ 	(TURBOGRAFX_16, "TurboGrafx 16")
+ 	(WONDERSWAN, "WonderSwan")
+-- 
+2.11.0
+

@@ -5,7 +5,7 @@
 pkgname=emulationstation-git
 _gitname=EmulationStation
 pkgrel=1
-pkgver=819.76c1538
+pkgver=820.54a3c3e
 pkgdesc="A graphical front-end for emulators with controller navigation. Developed for the Raspbery Pi, but runs on most Linux systems."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/Herdinger/EmulationStation"
@@ -17,8 +17,10 @@ depends+=('raspberrypi-firmware')
 else
 depends+=('libgl')
 fi
-source=('git://github.com/Herdinger/EmulationStation.git')
-md5sums=('SKIP')
+source=('git://github.com/Herdinger/EmulationStation.git'
+       'psp_scapper.patch')
+md5sums=('SKIP'
+         '3a5732b192e6c25ec655bc4bffa0a0c6')
 provides=('emulationstation')
 
 pkgver() {
@@ -27,6 +29,8 @@ pkgver() {
 }
 
 build() {
+    cd "$srcdir/$_gitname"
+    patch -Np1 -i "$srcdir"/psp_scapper.patch
     mkdir "$srcdir/$_gitname/build"
     cd "$srcdir/$_gitname/build"
     cmake ..
