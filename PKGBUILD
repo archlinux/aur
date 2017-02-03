@@ -1,7 +1,7 @@
 # Maintainer: Kevin Alberts <kevin@kevinalberts.nl>
 
 pkgname=fastonosql
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Cross-platform open source Redis, Memcached, SSDB, LevelDB, RocksDB, UnQLite, LMDB, UpscaleDB GUI management tool."
 arch=('x86_64')
@@ -9,8 +9,8 @@ license=('GPL3')
 url="http://fastonosql.com"
 options=('!strip' '!upx')
 
-source=("http://fastonosql.com/downloads/linux/fastonosql-1.4.1-x86_64.deb")
-sha256sums=('df740f1ba12b80efa575f4952ebc713475fb493c37560f20f46a4a7aa1811d4a')
+source=("http://fastonosql.com/downloads/linux/fastonosql-1.5.0-x86_64.deb")
+sha256sums=('baaabd4cc5c076c887a2c46100e54a54a042805047917d651c51d56699d3dd9b')
 
 depends=("glibc>=2.12" "gcc-libs>=4.4.7")
 
