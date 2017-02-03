@@ -37,7 +37,7 @@ sha256sums=('SKIP'
             '8fb00d96cb11ef3d9c250d6a5389c7eaf9f71d1259fb0a2cd210bf707adb8a71'
             '62eeb51c1ee81c2545fa0c1ac5a2b8f4a112ede4113095ce2ea4a66d07059734'
             'abae4abc0495026b35b982b426207e7cbad4bf5314a1e706fa295c7f91886307'
-            '4620e60b50e1c478b571f3a634e3bb5b839ff4bfdfeb358300d19d598dbf51cd')
+            '6477d371ce0341404bcee0023fe2805667eed61bdf070755b9e9c4abb5433375')
 
 _kernelname=${pkgbase#linux}
 
