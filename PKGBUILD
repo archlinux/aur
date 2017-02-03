@@ -9,7 +9,7 @@ arch=('x86_64' 'i686')
 url="http://www.citrix.com/English/ps2/products/product.asp?contentID=1689163&ntref=prod_top"
 license=('custom:Citrix')
 depends=('alsa-lib' 'libvorbis' 'curl' 'gtk2' 'libpng12' 'libxml2' 'libxaw' 'libxext' 'libxft'
-  'libxinerama' 'libxmu' 'libxp' 'libxpm' 'libxt' 'ca-certificates')
+  'libxinerama' 'libxmu' 'libxp' 'libxpm' 'libxt' 'ca-certificates' 'gstreamer0.10-good-plugins')
 makedepends=('automake' 'autoconf' 'wget')
 optdepends=(
   'xerces-c: gtk2 configuration manager'

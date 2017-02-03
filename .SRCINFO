@@ -25,6 +25,7 @@ pkgbase = icaclient
 	depends = libxpm
 	depends = libxt
 	depends = ca-certificates
+	depends = gstreamer0.10-good-plugins
 	optdepends = xerces-c: gtk2 configuration manager
 	optdepends = webkitgtk2: gtk2 selfservice/storefront ui
 	conflicts = bin32-citrix-client
@@ -45,9 +46,9 @@ pkgbase = icaclient
 	md5sums = 1f214f6f456f59afd1a3275580f4240e
 	md5sums = 59f8e50cc0e0c399d47eb7ace1df5a32
 	md5sums = dca5a1f51449ef35f1441b900d622276
-	source_x86_64 = icaclient-x64-13.4.tar.gz::http://downloads.citrix.com/10836/linuxx64-13.4.0.10109380.tar.gz?__gda__=1472501990_997b092b7ac3825a512cfa43261c0f63
+	source_x86_64 = icaclient-x64-13.4.tar.gz::http://downloads.citrix.com/10836/linuxx64-13.4.0.10109380.tar.gz?__gda__=1486152496_1a28c9c62eed8d76d558066b61482356
 	md5sums_x86_64 = e3fd715e0f8cd72715a51d8593394b19
-	source_i686 = icaclient-x86-13.4.tar.gz::http://downloads.citrix.com/10832/linuxx86-13.4.0.10109380.tar.gz?__gda__=1472501988_c387c8d6202a7d72f5ce25dfd3362a42
+	source_i686 = icaclient-x86-13.4.tar.gz::http://downloads.citrix.com/10832/linuxx86-13.4.0.10109380.tar.gz?__gda__=1486152496_0c8bdccb173cc04173474fc5f50ea1a1
 	md5sums_i686 = 486dc36b74adf0a017bddc42a01a2db3
 
 pkgname = icaclient
