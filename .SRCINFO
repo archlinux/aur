@@ -1,0 +1,45 @@
+pkgbase = gitlab-runner-custom-executors
+	pkgdesc = The official GitLab CI runner written in Go with a LXC Executor
+	pkgver = 1.10.4
+	pkgrel = 1
+	url = https://gitlab.com/gitlab-org/gitlab-ci-multi-runner
+	install = gitlab-runner.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	makedepends = git
+	makedepends = go-bindata
+	makedepends = mercurial
+	depends = ca-certificates
+	depends = curl
+	depends = git
+	depends = glibc
+	depends = tar
+	provides = gitlab-runner=1.10.4-1
+	conflicts = gitlab-runner
+	noextract = prebuilt-x86_64.tar.xz
+	noextract = prebuilt-arm.tar.xz
+	backup = etc/gitlab-runner/config.toml
+	source = git+https://gitlab.com/gitlab-org/gitlab-ci-multi-runner.git#tag=v1.10.4
+	source = https://gitlab-ci-multi-runner-downloads.s3.amazonaws.com/master/docker/prebuilt-x86_64.tar.xz
+	source = https://gitlab-ci-multi-runner-downloads.s3.amazonaws.com/master/docker/prebuilt-arm.tar.xz
+	source = gitlab-runner.install
+	source = gitlab-runner.service
+	source = gitlab-runner.sysusers
+	source = gitlab-runner.tmpfiles
+	source = config.toml
+	source = lxc_executor.patch
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = d5888f378c5b12b84e4238b191ef56a97a81c9073d27dcb47065998f0a1f6caf9f13314ae908e72a06f4d29d1bd1f4f72338c97268391e2c98706216c8281f3e
+	sha512sums = ed24841242a56a3b10dd80cd23e0c980f6bbe5fd0ebd4c6b46529947e4920cc9c03e4f4b239da8a798c801a6cdd757415113f97e45c1032f2c519fdaec4d3ae0
+	sha512sums = 8aa7f08702e99053c696fcc2aaba83beb9e9cd6f31973d82862db9350ac46df3a095377625d31fe909677525290d2de922d7a97930ed235774cb8f0da8944d40
+	sha512sums = 6751d9fa0b27172d1b419c4138f5ac15cbc7c9147653a7258cf1470216142c637210bb60608c7ed0974e0e4057e5ddeae32225df1bb36e7dd1f20fec71e33cc3
+	sha512sums = f39c23fc06636f31c3fadb9a630c54527e8255098f18d275772cb30875d0a7463717101704070d432f2b69ab71f076a9538172a439bc307722dad2c7e260f752
+	sha512sums = f88b8e6a8afb4f11bf61cfb6f680f611946658a8ea9c31588fb0b4be505bc72ac1af30ce819a2e74631d47919d684f121a625c091b3e6e891df5c434ae04acff
+
+pkgname = gitlab-runner-custom-executors
+

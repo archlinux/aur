@@ -1,0 +1,499 @@
+From c9008c8525a3daacd8d21d129e98e103134615bb Mon Sep 17 00:00:00 2001
+From: Marc Mettke <marc@itmettke.de>
+Date: Sun, 8 Jan 2017 20:50:32 +0100
+Subject: [PATCH] Implemented LXC as Executor
+
+* Container defined by "container-name"
+* Detects whether a Container is started or not
+* Container is started if currently not running
+* SubContainers can be created with OverlayFS using "slave-name"
+* Multiple SubContainers can be used by appending a "randomid"
+* Added Exec Command
+* Added Register Command
+---
+ commands/exec.go                   |   1 +
+ commands/register.go               |  26 ++++++++++++++++++++++++++
+ common/config.go                   |   7 +++++++
+ executors/lxc/executor_lxc.go      |  92 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ executors/lxc/executor_lxc_test.go |   1 +
+ helpers/lxc/lxc.go                 |  81 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ helpers/lxc/lxc_command.go         | 171 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ main.go                            |   1 +
+ 8 files changed, 380 insertions(+), 0 deletions(-)
+ create mode 100644 executors/lxc/executor_lxc.go
+ create mode 100644 executors/lxc/executor_lxc_test.go
+ create mode 100644 helpers/lxc/lxc.go
+ create mode 100644 helpers/lxc/lxc_command.go
+
+diff --git a/commands/exec.go b/commands/exec.go
+index 5ae5491..2228d79 100644
+--- a/commands/exec.go
++++ b/commands/exec.go
+@@ -16,6 +16,7 @@ import (
+ 
+ 	// Force to load all executors, executes init() on them
+ 	_ "gitlab.com/gitlab-org/gitlab-ci-multi-runner/executors/docker"
++	_ "gitlab.com/gitlab-org/gitlab-ci-multi-runner/executors/lxc"
+ 	_ "gitlab.com/gitlab-org/gitlab-ci-multi-runner/executors/parallels"
+ 	_ "gitlab.com/gitlab-org/gitlab-ci-multi-runner/executors/shell"
+ 	_ "gitlab.com/gitlab-org/gitlab-ci-multi-runner/executors/ssh"
+diff --git a/commands/register.go b/commands/register.go
+index ac1539e..a3eaec2 100644
+--- a/commands/register.go
++++ b/commands/register.go
+@@ -107,6 +107,19 @@ func (s *RegisterCommand) askDocker() {
+ 	s.Docker.Volumes = append(s.Docker.Volumes, "/cache")
+ }
+ 
++func (s *RegisterCommand) askLxc() {
++	s.LXC.ContainerName = s.ask("lxc-container-name", "Please enter the Name of the Container (e.g. my-container)")
++	s.LXC.SlaveName = s.ask("lxc-slave-name", "Please enter a Name for a Slave Container to be created by the runner if you don't want to persist changes in the container (e.g. my-slave-container)")
++	if s.LXC.SlaveName != "" {
++		var err error
++		answer := s.ask("lxc-container-name", "Please enter true if you want to use Random Ids for your Slave Container to use multiple at once (e.g. true)")
++		s.LXC.SlaveRandomIdentifier, err = strconv.ParseBool(answer)
++		if err != nil {
++			s.LXC.SlaveRandomIdentifier = false
++		}
++	}
++}
++
+ func (s *RegisterCommand) askParallels() {
+ 	s.Parallels.BaseName = s.ask("parallels-vm", "Please enter the Parallels VM (e.g. my-vm):")
+ }
+@@ -217,6 +230,18 @@ func (s *RegisterCommand) askExecutorOptions() {
+ 		s.askVirtualBox()
+ 		s.askSSHLogin()
+ 	}
++	additionalExecutors(s)
++}
++
++func additionalExecutors(s *RegisterCommand) {
++	lxc := s.LXC
++	s.LXC = nil
++
++	switch s.Executor {
++	case "lxc":
++		s.LXC = lxc
++		s.askLxc()
++	}
+ }
+ 
+ func (s *RegisterCommand) Execute(context *cli.Context) {
+@@ -279,6 +304,7 @@ func init() {
+ 				Machine:    &common.DockerMachine{},
+ 				Docker:     &common.DockerConfig{},
+ 				SSH:        &ssh.Config{},
++				LXC:        &common.LxcConfig{},
+ 				Parallels:  &common.ParallelsConfig{},
+ 				VirtualBox: &common.VirtualBoxConfig{},
+ 			},
+diff --git a/common/config.go b/common/config.go
+index 463a4bc..290b634 100644
+--- a/common/config.go
++++ b/common/config.go
+@@ -87,6 +87,12 @@ type DockerMachine struct {
+ 	offPeakTimePeriods *timeperiod.TimePeriod
+ }
+ 
++type LxcConfig struct {
++	ContainerName         string `toml:"container-name,omitempty" json:"container-name" long:"container-name" env:"LXC_CONTAINER_NAME" description:"The Name of the Container to use"`
++	SlaveName             string `toml:"slave-name,omitempty" json:"slave-name" long:"slave-name" env:"LXC_SLAVE_NAME" description:"The Name of the Slave to create from the Container (deleted after each build)"`
++	SlaveRandomIdentifier bool   `toml:"slave-random-id,omitempty" json:"slave-random-id" long:"slave-random-identifier" env:"LXC_RANDOM_ID" description:"Adds a Random Id to the Slave at creation to allow a Runner to use multiple Machines at once"`
++}
++
+ type ParallelsConfig struct {
+ 	BaseName         string `toml:"base_name" json:"base_name" long:"base-name" env:"PARALLELS_BASE_NAME" description:"VM name to be used"`
+ 	TemplateName     string `toml:"template_name,omitempty" json:"template_name" long:"template-name" env:"PARALLELS_TEMPLATE_NAME" description:"VM template to be created"`
+@@ -172,6 +178,7 @@ type RunnerSettings struct {
+ 	Cache      *CacheConfig      `toml:"cache,omitempty" json:"cache" group:"cache configuration" namespace:"cache"`
+ 	Machine    *DockerMachine    `toml:"machine,omitempty" json:"machine" group:"docker machine provider" namespace:"machine"`
+ 	Kubernetes *KubernetesConfig `toml:"kubernetes,omitempty" json:"kubernetes" group:"kubernetes executor" namespace:"kubernetes"`
++	LXC        *LxcConfig        `toml:"lxc,omitempty" json:"lxc" group:"lxc executor" namespace:"lxc"`
+ }
+ 
+ type RunnerConfig struct {
+diff --git a/executors/lxc/executor_lxc.go b/executors/lxc/executor_lxc.go
+new file mode 100644
+index 0000000..f043efb
+--- /dev/null
++++ b/executors/lxc/executor_lxc.go
+@@ -0,0 +1,92 @@
++package lxc
++
++import (
++	"errors"
++
++	"gitlab.com/gitlab-org/gitlab-ci-multi-runner/common"
++	"gitlab.com/gitlab-org/gitlab-ci-multi-runner/executors"
++	"gitlab.com/gitlab-org/gitlab-ci-multi-runner/helpers/lxc"
++)
++
++type executor struct {
++	executors.AbstractExecutor
++	command lxc.Client
++}
++
++func (e *executor) Prepare(globalConfig *common.Config, config *common.RunnerConfig, build *common.Build) error {
++	err := e.AbstractExecutor.Prepare(globalConfig, config, build)
++	if err != nil {
++		return err
++	}
++
++	e.Println("Using LXC executor...")
++	if e.BuildShell.PassFile {
++		return errors.New("LXC doesn't support shells that require script file")
++	}
++
++	if e.Config.LXC == nil {
++		return errors.New("Missing LXC configuration")
++	}
++
++	e.Debugln("Starting LXC command...")
++
++	// Create LXC command
++	e.command = lxc.Client{
++		Config: *e.Config.LXC,
++		Stdout: e.BuildTrace,
++		Stderr: e.BuildTrace,
++	}
++
++	e.Debugln("Connecting to LXC server...")
++	err = e.command.Connect()
++	if err != nil {
++		return err
++	}
++	return nil
++}
++
++func (e *executor) Run(cmd common.ExecutorCommand) error {
++	err := e.command.Run(lxc.Command{
++		Environment: e.BuildShell.Environment,
++		Command:     e.BuildShell.GetCommandWithArguments(),
++		Stdin:       cmd.Script,
++		Abort:       cmd.Abort,
++	})
++	return err
++}
++
++func (e *executor) Cleanup() {
++	e.command.Cleanup()
++	e.AbstractExecutor.Cleanup()
++}
++
++func init() {
++	options := executors.ExecutorOptions{
++		DefaultBuildsDir: "builds",
++		DefaultCacheDir:  "/cache",
++		SharedBuildsDir:  true,
++		Shell: common.ShellScriptInfo{
++			Shell:         "bash",
++			Type:          common.LoginShell,
++			RunnerCommand: "gitlab-runner",
++		},
++		ShowHostname: true,
++	}
++
++	creator := func() common.Executor {
++		return &executor{
++			AbstractExecutor: executors.AbstractExecutor{
++				ExecutorOptions: options,
++			},
++		}
++	}
++
++	featuresUpdater := func(features *common.FeaturesInfo) {
++		features.Variables = true
++	}
++
++	common.RegisterExecutor("lxc", executors.DefaultExecutorProvider{
++		Creator:         creator,
++		FeaturesUpdater: featuresUpdater,
++	})
++}
+diff --git a/executors/lxc/executor_lxc_test.go b/executors/lxc/executor_lxc_test.go
+new file mode 100644
+index 0000000..99b5cd3
+--- /dev/null
++++ b/executors/lxc/executor_lxc_test.go
+@@ -0,0 +1 @@
++package lxc_test
+diff --git a/helpers/lxc/lxc.go b/helpers/lxc/lxc.go
+new file mode 100644
+index 0000000..1ca0f94
+--- /dev/null
++++ b/helpers/lxc/lxc.go
+@@ -0,0 +1,81 @@
++package lxc
++
++import (
++	"io"
++	"math/rand"
++	"os/exec"
++	"strconv"
++	"strings"
++	"time"
++)
++
++const (
++	RUNNING   = 1
++	STOPPED   = 2
++	UNDEFINED = 3
++)
++
++func initializeRandomSeed() {
++	rand.Seed(time.Now().UTC().UnixNano())
++}
++
++func getRandomNumber(min int64, max int64) int64 {
++	return min + rand.Int63n(max-min)
++}
++
++func getRandomNameForContainer(name string) string {
++	return name + strconv.FormatInt(getRandomNumber(100000000, 999999999), 10)
++}
++
++func checkContainerState(name string, stderr io.Writer) (int, error) {
++	cmd := exec.Command("lxc-info", "-sHn", name)
++	cmd.Stderr = stderr
++	out, err := cmd.Output()
++	if err != nil {
++		return -1, err
++	}
++	output := string(out)
++	if strings.Contains(output, "RUNNING") {
++		return RUNNING, nil
++	} else if strings.Contains(output, "STOPPED") {
++		return STOPPED, nil
++	} else {
++		return UNDEFINED, nil
++	}
++}
++
++func startContainer(name string, stdout io.Writer, stderr io.Writer) error {
++	cmd := exec.Command("lxc-start", "-n", name)
++	cmd.Stdout = stdout
++	cmd.Stderr = stderr
++	return cmd.Run()
++}
++
++func attachToContainer(name string, stdout io.Writer, stderr io.Writer, commands ...string) *exec.Cmd {
++	arguments := append([]string{"-n", name, "--"}, commands...)
++	cmd := exec.Command("lxc-attach", arguments...)
++	cmd.Stdout = stdout
++	cmd.Stderr = stderr
++	return cmd
++}
++
++func copyContainerAsSnapshot(name string, newname string, stdout io.Writer, stderr io.Writer) error {
++	cmd := exec.Command("lxc-copy", "-sn", name, "-N", newname)
++	cmd.Stdout = stdout
++	cmd.Stderr = stderr
++	return cmd.Run()
++}
++
++func stopContainer(name string, stdout io.Writer, stderr io.Writer) error {
++	cmd := exec.Command("lxc-stop", "-n", name)
++	cmd.Stdout = stdout
++	cmd.Stderr = stderr
++	return cmd.Run()
++}
++
++func destroyContainer(name string, stdout io.Writer, stderr io.Writer) error {
++	cmd := exec.Command("lxc-destroy", "-n", name)
++	cmd.Stdout = stdout
++	cmd.Stderr = stderr
++	return cmd.Run()
++}
+diff --git a/helpers/lxc/lxc_command.go b/helpers/lxc/lxc_command.go
+new file mode 100644
+index 0000000..76fc1c2
+--- /dev/null
++++ b/helpers/lxc/lxc_command.go
+@@ -0,0 +1,171 @@
++package lxc
++
++import (
++	"bytes"
++	"errors"
++	"io"
++	"time"
++
++	"gitlab.com/gitlab-org/gitlab-ci-multi-runner/common"
++	"gitlab.com/gitlab-org/gitlab-ci-multi-runner/helpers"
++)
++
++type Client struct {
++	Config common.LxcConfig
++
++	Stdout         io.Writer
++	Stderr         io.Writer
++	ConnectRetries int
++
++	connected bool
++	stop      bool
++	destroy   bool
++	container string
++}
++
++type Command struct {
++	Environment []string
++	Command     []string
++	Stdin       string
++	Abort       chan interface{}
++}
++
++type ExitError struct {
++	Inner error
++}
++
++func (e *ExitError) Error() string {
++	if e.Inner == nil {
++		return "error"
++	}
++	return e.Inner.Error()
++}
++
++func handleSlaveCreation(c *Client) error {
++	if c.Config.SlaveName != "" {
++		c.stop = true
++		c.destroy = true
++		c.container = c.Config.SlaveName
++		if c.Config.SlaveRandomIdentifier == true {
++			c.container = getRandomNameForContainer(c.container)
++		}
++		return copyContainerAsSnapshot(c.Config.ContainerName, c.container, c.Stdout, c.Stderr)
++	}
++	return nil
++}
++
++func handleStarted(c *Client) error {
++	if c.Config.SlaveName != "" {
++		return errors.New("The Container " + c.Config.ContainerName + " must not be used when defining OverlayFSName. Please stop it and try again")
++	}
++	return nil
++}
++
++func handleStopped(c *Client) error {
++	err := handleSlaveCreation(c)
++	if err != nil {
++		return err
++	}
++	err = startContainer(c.container, c.Stdout, c.Stderr)
++	if err != nil {
++		return err
++	}
++	state, err := checkContainerState(c.container, c.Stderr)
++	if err != nil {
++		return err
++	}
++	if state != RUNNING {
++		return errors.New("Unable to start Container")
++	}
++	return nil
++}
++
++func waitForNetwork() {
++	time.Sleep(10 * time.Second)
++}
++
++func (c *Client) Connect() error {
++	c.stop = false
++	c.destroy = false
++	if c.Config.ContainerName == "" {
++		return errors.New("Host cannot be empty")
++	}
++	if c.Config.SlaveRandomIdentifier == true && c.Config.SlaveName == "" {
++		c.Stdout.Write([]byte("Warning: RandomIndentifier: true can only be used with OverlayFSName and will be ignored"))
++	}
++	initializeRandomSeed()
++	state, err := checkContainerState(c.Config.ContainerName, c.Stderr)
++	if err != nil {
++		return err
++	}
++	if state == STOPPED {
++		handleStopped(c)
++	} else if state == RUNNING {
++		handleStarted(c)
++	} else {
++		return errors.New("Could not determinate Container State")
++	}
++	waitForNetwork()
++	c.connected = true
++	return nil
++}
++
++func (c *Client) Exec(command string) error {
++	if c.connected != true {
++		return errors.New("Container not accessible")
++	}
++	return attachToContainer(c.container, c.Stdout, c.Stderr, command).Run()
++}
++
++func (c *Command) fullCommand() []string {
++	var arguments []string
++	// TODO: This method is compatible only with Bjourne compatible shells
++	for _, part := range c.Command {
++		arguments = append(arguments, part)
++	}
++	return arguments
++}
++
++func (c *Client) Run(command Command) error {
++	if c.connected != true {
++		return errors.New("Container not accessible")
++	}
++
++	var envVariables bytes.Buffer
++	for _, keyValue := range command.Environment {
++		envVariables.WriteString("export " + helpers.ShellEscape(keyValue) + "\n")
++	}
++
++	cmd := attachToContainer(c.container, c.Stdout, c.Stderr, command.fullCommand()...)
++	cmd.Stdin = io.MultiReader(
++		&envVariables,
++		bytes.NewBufferString(command.Stdin),
++	)
++	err := cmd.Start()
++	if err != nil {
++		return err
++	}
++
++	waitCh := make(chan error)
++	go func() {
++		waitCh <- cmd.Wait()
++	}()
++
++	select {
++	case <-command.Abort:
++		cmd.Process.Kill()
++		return <-waitCh
++
++	case err := <-waitCh:
++		return err
++	}
++}
++
++func (c *Client) Cleanup() {
++	if c.stop {
++		stopContainer(c.container, c.Stdout, c.Stderr)
++	}
++	if c.destroy {
++		destroyContainer(c.container, c.Stdout, c.Stderr)
++	}
++}
+diff --git a/main.go b/main.go
+index 6a15969..71ee0e9 100644
+--- a/main.go
++++ b/main.go
+@@ -15,6 +15,7 @@ import (
+ 	_ "gitlab.com/gitlab-org/gitlab-ci-multi-runner/executors/docker"
+ 	_ "gitlab.com/gitlab-org/gitlab-ci-multi-runner/executors/docker/machine"
+ 	_ "gitlab.com/gitlab-org/gitlab-ci-multi-runner/executors/kubernetes"
++	_ "gitlab.com/gitlab-org/gitlab-ci-multi-runner/executors/lxc"
+ 	_ "gitlab.com/gitlab-org/gitlab-ci-multi-runner/executors/parallels"
+ 	_ "gitlab.com/gitlab-org/gitlab-ci-multi-runner/executors/shell"
+ 	_ "gitlab.com/gitlab-org/gitlab-ci-multi-runner/executors/ssh"
+--
+libgit2 0.24.0
+
