@@ -1,5 +1,5 @@
 # -*- shell-script -*-
-# Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 # Contributor: goodmen <goodmenzy@gmail.com>
 
 pkgname=crosstool-ng-git
