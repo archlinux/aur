@@ -1,7 +1,7 @@
 pkgbase = tvlinker
 	pkgdesc = TV show link scraper + downloader for tv-release.net with a modern PyQt5 GUI
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tvlinker.ozmartians.com
 	arch = any
 	license = GPL3

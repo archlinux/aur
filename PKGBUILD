@@ -1,7 +1,7 @@
 # Maintainer: Pete Alexandrou (ozmartian) <pete@ozmartians.com>
 pkgname=tvlinker
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TV show link scraper + downloader for tv-release.net with a modern PyQt5 GUI"
 arch=('any')
 license=('GPL3')
