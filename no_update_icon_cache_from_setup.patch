@@ -1,0 +1,42 @@
+diff -Naur ./rabbitvcs.orig/setup.py ./rabbitvcs/setup.py
+--- ./rabbitvcs.orig/setup.py	2017-02-02 19:07:28.477399332 -0500
++++ ./rabbitvcs/setup.py	2017-02-02 19:07:42.327399603 -0500
+@@ -11,7 +11,7 @@
+ # For more information see: http://docs.python.org/dist/dist.html
+ #
+ 
+-# TODO: this all feels just a little too shell scripty, refactoring it later 
++# TODO: this all feels just a little too shell scripty, refactoring it later
+ # might be a good idea.
+ 
+ # NOTES:
+@@ -120,8 +120,8 @@
+ # Ready to install
+ #==============================================================================
+ 
+-# Calling the setup function will actually install RabbitVCS and also creates 
+-# an .egg-info file in /usr/lib/python<version>/site-packages/ or 
++# Calling the setup function will actually install RabbitVCS and also creates
++# an .egg-info file in /usr/lib/python<version>/site-packages/ or
+ # /usr/share/python-support/rabbitvcs when generating a Debian package.
+ dist = setup(
+     # The following arguments will be included in the .egg.info file,
+@@ -151,18 +151,3 @@
+     },
+     data_files=translations + icons + documentation + config_spec
+ )
+-
+-#
+-# Post installation
+-#
+-
+-# Make sure the icon cache is deleted and recreated
+-if sys.argv[1] == "install":
+-
+-    if os.uname()[0] != 'Darwin':
+-        print "Running gtk-update-icon-cache-3.0"
+-        
+-        subprocess.Popen(
+-            ["gtk-update-icon-cache-3.0", icon_theme_directory], 
+-            stdout=subprocess.PIPE
+-        ).communicate()[0]
