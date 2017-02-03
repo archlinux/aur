@@ -3,7 +3,7 @@
 
 pkgname=conky-lua-archers-git
 _pkgname=conky
-pkgver=3164.c6ef3ba5
+pkgver=3165.e84ca1f9
 pkgrel=1
 pkgdesc="A free, light-weight system monitor for X with lua enabled for Arch based distros"
 arch=('i686' 'x86_64')
