@@ -1,7 +1,7 @@
 # Maintainer: Karel Kočí <cynerd@email.cz>
 
 pkgname=openssl-purify
-_ver=1.0.2j
+_ver=1.0.2k
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=1
