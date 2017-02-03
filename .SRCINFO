@@ -1,0 +1,14 @@
+pkgbase = python-gtts-token
+	pkgdesc = Token for gTTS
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/Boudewijn26/gTTS-token
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = python-gtts-token::https://pypi.python.org/packages/4c/c8/dd58eba1464729095217d3acfc4f6581348c6f495ea3342ed7dbc9f9e133/gTTS-token-1.1.1.zip#md5=39f56680d81c3d553ccc663f013a48f8
+	md5sums = 39f56680d81c3d553ccc663f013a48f8
+
+pkgname = python-gtts-token
+
