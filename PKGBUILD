@@ -27,7 +27,7 @@ options=('emptydirs')
 backup=('etc/lxc/default.conf'
 	'etc/default/lxc')
 validpgpkeys=('602F567663E593BCBD14F338C638974D64792D67')
-source=("https://linuxcontainers.org/downloads/lxc/$pkgname-${pkgver}.tar.gz"{,.asc}
+source=("https://linuxcontainers.org/downloads/lxc/${pkgname/-selinux}-${pkgver}.tar.gz"{,.asc}
 	"lxc.tmpfiles.d"
 	"lxc.service"
 	"lxc-auto.service")
