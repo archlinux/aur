@@ -38,10 +38,9 @@ sha256sums=('1c09c075f06ec029f86fa6370c7d379494ff4c66a129eda17af7b7b41e055f5d'
             '4174fcc0a664108f1884920930a3dbec0aeceed1fc24f00c200a583c06d447d0')
 
 prepare() {
-  cd "$srcdir/$pkgname-${pkgver/_/-}"
+  cd "$srcdir/${pkgname/-selinux}-${pkgver/_/-}"
   sed -i \
-    -e 's|"\\"-//Davenport//DTD DocBook V3.0//EN\\""|"\\"-//OASIS//DTD DocBook XML\\" 
-\\"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd\\""|' \
+    -e 's|"\\"-//Davenport//DTD DocBook V3.0//EN\\""|"\\"-//OASIS//DTD DocBook XML\\" \\"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd\\""|' \
     configure.ac
   sed -i \
     -e 's|$(sysconfdir)/bash_completion.d/|/usr/share/bash-completion/completions/|g' \
@@ -55,7 +54,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname-${pkgver/_/-}"
+  cd "$srcdir/${pkgname/-selinux}-${pkgver/_/-}"
   ./autogen.sh
   ./configure \
     --prefix=/usr \
@@ -76,7 +75,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-${pkgver/_/-}"
+  cd "$srcdir/${pkgname/-selinux}-${pkgver/_/-}"
 
   make DESTDIR="$pkgdir" install
   install -d -m755 "$pkgdir/var/lib/lxc"
