@@ -2,41 +2,37 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=libreoffice-online
-pkgver=2.0.2
-pkgrel=6
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="HTML5-based/cloud-based version of the office suite"
 arch=("x86_64")
 url="https://cgit.freedesktop.org/libreoffice/online/"
 license=("MPL")
-makedepends=("cppunit" "poco" "libreoffice")
+makedepends=("cppunit" "poco" "libreoffice-fresh-sdk")
 depends=("libpng12" "poco" "pcre" "cpio")
 backup=("etc/loolwsd/loolwsd.xml")
 install="libreoffice-online.install"
 
-source=("git+https://github.com/LibreOffice/core.git"
-	"${pkgname}-${pkgver}-3.tar.gz::https://github.com/LibreOffice/online/archive/${pkgver}-3.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LibreOffice/online/archive/${pkgver}.tar.gz"
 	"loolwsd.service")
-sha512sums=('SKIP'
-	    'a0c2084fbd14b01a344ca4a8839ac75ea3c9e35d05a2dea8a2f93d98c6ff22f891367069c8c9fe4a48ee1ffd17ff6ddf15ac61e4cafbc9e1ef0aff32963cb5ff'
+sha512sums=('4658238b6343a6ed1faf221737486fcbcfc9514d0a5d0e4c0df3c875ae6b78b745e4ea57f79b3e2be107b2acde7ace3d87990241205fcaa30c37fd96ec459203'
 	    '71fd3aec864b1f084dafc602a7fadc91fed146b57dba8cacc7bc277a42f197616a6a43c07d13e2e74a604166cd691a81f5c7de447ddecb680919e3f6b451adb6')
 
 build() {
-  cd "${srcdir}/online-${pkgver}-3"
+  cd "${srcdir}/online-${pkgver}"
   ./autogen.sh
   ./configure --enable-silent-rules \
-	--with-lokit-path=${srcdir}/core/include \
+	--with-lokit-path=/usr/include/libreoffice \
 	--with-lo-path=/usr/lib/libreoffice \
 	--prefix=/usr \
 	--sysconfdir=/etc
-  #./configure --enable-silent-rules --with-lokit-path=/usr/include/libreoffice --with-lo-path=/usr/lib/libreoffice
   BUILDING_FROM_RPMBUILD=yes make
 }
 
 package() {
-  cd "${srcdir}/online-${pkgver}-3"
+  cd "${srcdir}/online-${pkgver}"
   BUILDING_FROM_RPMBUILD=yes make DESTDIR=${pkgdir} install
   install -Dm644 "${srcdir}/loolwsd.service" "${pkgdir}/usr/lib/systemd/system/loolwsd.service"
-  #mv ${pkgdir}/bin ${pkgdir}/share ${pkgdir}/usr/
   mkdir -p "${pkgdir}/var/lib/lool"
   mkdir -p "${pkgdir}/var/cache/loolwsd"
   mkdir -p "${pkgdir}/var/lib/lool/child-roots"
