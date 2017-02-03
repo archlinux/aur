@@ -1,0 +1,16 @@
+pkgbase = pglogical
+	pkgdesc = Logical replaction for PostgreSQL
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://2ndquadrant.com/en/resources/pglogical/
+	changelog = pglogical.changelog
+	arch = i686
+	arch = x86_64
+	license = PostgreSQL
+	depends = postgresql
+	options = !makeflags
+	source = https://github.com/2ndQuadrant/pglogical/archive/REL1_2_2.tar.gz
+	sha256sums = 4d784e0b836a180f403260c747da7f7634104966bf4a4bb38342b87df2d14d1e
+
+pkgname = pglogical
+
