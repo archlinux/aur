@@ -1,25 +1,64 @@
-# Maintainer : André Fettouhi <a.fettouhi@gmail.com>
+# Maintainer: Dan Beste <dan.ray.beste@gmail.com>
+# Thanks to: Ainola for the base PKGBUILD (gog-undertale)
+
+# All dependencies are included with the gog_dragonsphere_$version.sh archive.
 
 pkgname=gog-dragonsphere
-pkgver=1.0.0.1
+pkgver=2.0.0.2
 pkgrel=1
-pkgdesc="A challenging adventure game that will captivate with clever puzzles and thrilling environments."
-arch=("i686" "x86_64")
-url="http://www.gog.com/game/dragonsphere"
-license=("custom")
-groups=("games")
-source=("local://dragonsphere_${pkgver}.tar.gz" "gog-dragonsphere")
-sha256sums=('27906a6c46b0c4d2b8830f5e363a4c4cf40121ab8f8c0caba81fa83323b6dc03'
-            '1cb7c00e7bebc3a44ce1e7cce224acc8bda6b6668792bb95b84a2d1a71df8400')
-depends=(libpng12 unionfs-fuse)
-#options=('!strip')
-PKGEXT=.pkg.tar 
+pkgdesc="Owned King Of Callahach! It's been twenty years since your father saved the world by entrapping the evil Sorcerer Sanwe. Now the spell is waning. Sanwe's malevolent force will soon consume the land, and only you can stop him."
+url="https://www.gog.com/game/dragonsphere"
+license=(
+    'custom'
+)
+arch=(
+    'i686'
+    'x86_64'
+)
+optdepends=(
+    'firejail: Automatically sandbox this application from your OS'
+)
+source=(
+    "gog://${pkgname//-/_}_${pkgver}.sh"
+    "${pkgname}.desktop"
+    "${pkgname}"
+)
+sha256sums=(
+    'be0f2536655bf444c31c78767de171103d9b87ad9078b2fbb370416b1f7979ab'
+    '765684a1ab55c678f3dce487330a84954b290e6f5b8894d712d24bdb810409b0'
+    'd18a17f83d1efcf85bcbf479081bccb0433f9891e8822d9ef90e606a0dfb0d20'
+)
+DLAGENTS=(
+    "gog::/usr/bin/echo %u Download the GOG file to $PWD or set up a gog:// DLAGENT."
+)
+groups=(
+    'games'
+    'gog'
+)
 
-package() {
-  mkdir -p "${pkgdir}"/opt/gog/dragonsphere
-  cp -r "${srcdir}"/Dragonsphere/* "${pkgdir}"/opt/gog/dragonsphere
-  install -Dm644 "${srcdir}"/Dragonsphere/support/gog-dragonsphere-primary.desktop "${pkgdir}"/usr/share/applications/gog-dragonsphere.desktop
-  install -Dm644 "${srcdir}"/Dragonsphere/support/gog-dragonsphere.png "${pkgdir}"/usr/share/pixmaps/gog-dragonsphere.png
-  install -Dm644 "${srcdir}"/Dragonsphere/docs/End\ User\ License\ Agreement.txt "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
-  install -Dm755 "${srcdir}/gog-dragonsphere" "${pkgdir}/usr/bin/gog-dragonsphere"
-} 
+package(){
+    cd "${srcdir}"
+
+    # Install game
+    install -d "${pkgdir}/opt/${pkgname}/"
+    install -d "${pkgdir}/opt/${pkgname}/support"
+    install -d "${pkgdir}/usr/bin/"
+    cp -r "data/noarch" "${pkgdir}/opt/${pkgname}/"
+    
+
+    find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} \;
+    install -Dm755 "data/noarch/start.sh"               \
+        "${pkgdir}/opt/${pkgname}/"
+    install -Dm755 data/noarch/support/*.{sh,shlib} -t  \
+        "${pkgdir}/opt/${pkgname}/support"
+
+    # Desktop integration
+    install -Dm 644 "data/noarch/support/icon.png" \
+        "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "data/noarch/docs/End User License Agreement.txt" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm 644 "${srcdir}/${pkgname}.desktop" \
+        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm755 "${srcdir}/${pkgname}" \
+        "${pkgdir}/usr/bin/${pkgname}"
+}

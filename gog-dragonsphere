@@ -1,13 +1,24 @@
-#!/usr/bin/bash
-gogdir="/opt/gog/dragonsphere"
-homedir="$HOME/.gog/dragonsphere"
-mkdir -p "$homedir"/{game,config/data/DRAGON}
+#! /bin/bash
 
-if [[ ! -e "$homedir/config/dosboxDragonsphere.conf" ]]; then
-  cp "$gogdir/dosboxDragonsphere.conf" "$homedir/config/dosboxDragonsphere.conf"
+pkgname="gog-dragonsphere"
+pkgdir="/opt/${pkgname}/"
+run="${pkgdir}/start.sh"
+
+if hash firejail; then
+    echo "Firejail detected; attempting to enforce a sandbox..."
+    if [[ -f "${XDG_CONFIG_HOME}/firejail/${pkgname}.profile" ]]; then
+        echo "Firejail profile for ${pkgname} found in ${XDG_CONFIG_HOME}/firejail/"
+        echo "Enforcing a sandbox!"
+        firejail "${run}"
+    elif [[ -f "/etc/firejail/${pkgname}.profile" ]]; then
+        echo "Firejail profile for ${pkgname} found in /etc/firejail/"
+        echo "Enforcing a sandbox!"
+        firejail "${run}"
+    else
+        echo "No Firejail profile detected!"
+        echo "Skipping Firejail sandbox..."
+        "${run}"
+    fi
+else
+    "${run}"
 fi
-
-unionfs "$homedir/config=RW:$gogdir=RO" "$homedir/game"
-"$homedir"/game/start.sh
-fusermount -u "$homedir/game"
-

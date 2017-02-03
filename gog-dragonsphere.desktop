@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Dragonsphere
+Comment=Newly-crowned King Of Callahach! It's been twenty years since your father saved the world by entrapping the evil Sorcerer Sanwe. Now the spell is waning. Sanwe's malevolent force will soon consume the land, and only you can stop him.
+Exec=gog-dragonsphere
+Icon=gog-dragonsphere
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
