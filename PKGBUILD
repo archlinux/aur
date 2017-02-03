@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=radare2-bindings
-pkgver=1.0.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Language bindings of the radare2 api for valabind and friends'
 url='http://radare.org'
@@ -11,7 +11,7 @@ depends=('radare2' 'python2' 'python')
 makedepends=('valabind')
 options=('!emptydirs')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/radare/radare2-bindings/archive/${pkgver}.tar.gz)
-sha512sums=('a023d36f381cb70d36ed63580f6b369968d5e2a60a059523b5960af1810cefb2e52fc6edbd52be29ac940b0dd31772cc9ff3f96a9f6a78fb42dc43d604a48e7e')
+sha512sums=('f7a923688769187d8e55fa81d8d967ec537f051e92e9662054d44ba4a2f0b93630ff77cc30418c5553d15e6646f3cbb24266ad67443fba7394e8d360ee9be623')
 
 build() {
   cd ${pkgname}-${pkgver}
