@@ -1,14 +1,14 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=deployer
-pkgver=3.3.0
-pkgrel=2
+pkgver=4.2.1
+pkgrel=1
 pkgdesc="A deployment tool written in PHP with support for popular frameworks out of the box."
 arch=('any')
 url="http://deployer.org/"
 license=('MIT')
 depends=('php')
-makedepends=('php-composer' 'git')
+makedepends=('composer' 'git')
 source=("git+https://github.com/deployphp/deployer.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
