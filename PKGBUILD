@@ -6,23 +6,23 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-gcc-stage2
-pkgver=6.1.1
+pkgver=6.3.1
 _pkgver=6
 _islver=0.16.1
-pkgrel=3
-_commit=1bbd3999
+pkgrel=1
+_commit=4ca53f06ff7d346ef8021a23108f23a5406a0417
 pkgdesc="The GNU Compiler Collection. Stage 2 for toolchain building (${_target})"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
-depends=("${_target}-binutils>=2.26.1-1" "${_target}-glibc-headers>=2.23-5" 'libmpc' 'zlib')
+depends=("${_target}-binutils>=2.27" "${_target}-glibc-headers>=2.24" 'libmpc' 'zlib')
 options=('!emptydirs' '!distcc' '!strip')
 conflicts=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
 provides=("${_target}-gcc-stage1=${pkgver}")
 source=(https://github.com/gcc-mirror/gcc/archive/${_commit}.tar.gz
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
-md5sums=('d4c4546f927b2984d66574b1b5cb817e'
+md5sums=('e65d06ed7c00e68bc84f6989752a09eb'
          'ac1f25a0677912952718a51f5bc20f32')
 
 prepare() {
@@ -56,20 +56,35 @@ build() {
       --with-build-sysroot=/usr/${_target} \
       --with-as=/usr/bin/${_target}-as \
       --with-ld=/usr/bin/${_target}-ld \
-      --libdir=/usr/lib --libexecdir=/usr/lib \
-      --with-arch=armv6 --with-float=hard --with-fpu=vfp \
-      --target=${_target} --host=${CHOST} --build=${CHOST} \
+      --libdir=/usr/lib \
+      --libexecdir=/usr/lib \
       --disable-nls \
       --enable-languages=c,c++ \
-      --disable-shared --disable-threads \
-      --with-system-zlib --with-isl --enable-__cxa_atexit \
-      --disable-libunwind-exceptions --enable-clocale=gnu \
-      --disable-libstdcxx-pch --disable-libssp \
-      --enable-gnu-unique-object --enable-linker-build-id \
-      --disable-lto --disable-plugin --enable-install-libiberty \
-      --with-linker-hash-style=gnu --enable-gnu-indirect-function \
-      --disable-multilib --disable-werror \
-      --enable-checking=release
+      --disable-shared \
+      --disable-threads \
+      --with-system-zlib \
+      --with-isl \
+      --enable-__cxa_atexit \
+      --disable-libunwind-exceptions \
+      --enable-clocale=gnu \
+      --disable-libstdcxx-pch \
+      --disable-libssp \
+      --enable-gnu-unique-object \
+      --enable-linker-build-id \
+      --disable-lto \
+      --disable-plugin \
+      --enable-install-libiberty \
+      --with-linker-hash-style=gnu \
+      --enable-gnu-indirect-function \
+      --disable-multilib \
+      --disable-werror \
+      --enable-checking=release \
+      --target=${_target} \
+      --host=${CHOST} \
+      --build=${CHOST} \
+      --with-arch=armv6 \
+      --with-float=hard \
+      --with-fpu=vfp
 
   make all-gcc all-target-libgcc
 }
