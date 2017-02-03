@@ -8,7 +8,7 @@
 
 pkgname=jabref
 pkgver=3.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI frontend for BibTeX, written in Java"
 arch=('any')
 url="http://www.jabref.org/"
@@ -24,7 +24,7 @@ source=(https://github.com/JabRef/jabref/releases/download/v${pkgver}/JabRef-${p
 noextract=(JabRef-${pkgver}.jar)
 sha256sums=('f7226e9eb64f96ef2d179c4b1f9e9bcd7a630d247f2feb0ecaa243408379720a'
             '19f74c294c572a431e0fadc00671aa5ca77149f8d0572fc01d5944eba06b0c6c'
-            '0355f5135a6d855416160d4ff1cf8fe5e55921088b83491647b6a714dae87dda'
+            'd5d31399586f0d76f0e408620a2d868e5c830708d350385a2281bc2138ecd607'
             'f958793f6e408bab7db84973169b30ed61077112d3f552dbcc9f068847317602')
 
 prepare() {
