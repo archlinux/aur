@@ -1,36 +1,50 @@
+# Maintainer: Peter Mattern <pmattern at arcor dot de>
 # Maintainer: Simon Hanna <simon dot hanna AT serve-me DOT info>
 
-pkgname=('python-django-crispy-forms' 'python2-django-crispy-forms')
-pkgver=1.6.0
+pkgbase=python-django-crispy-forms
+pkgname=($pkgbase 'python2-django-crispy-forms')
+pkgver=1.6.1
 pkgrel=1
-pkgdesc="Provides DRY django forms"
-arch=(any)
-url="https://github.com/maraujop/django-crispy-forms"
+pkgdesc='DRY Django forms'
+arch=('any')
+url='https://github.com/django-crispy-forms/django-crispy-forms'
 license=('MIT')
-options=(!emptydirs)
-source=("https://github.com/maraujop/django-crispy-forms/archive/${pkgver}.tar.gz")
-sha256sums=('dc20b4ce41cc352917a32042f763f7d450deee4b981521530ad8b71c8d13b78e')
+makedepends=('python-setuptools' 'python-django' 'python2-setuptools' 'python2-django')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/django-crispy-forms/django-crispy-forms/archive/$pkgver.tar.gz")
+sha256sums=('84f70d6cd0f9b7baf69d010fe493ad82e9e4ea7a385eb4dc42e3d9187866a716')
 
-makedepends=('python-setuptools' 'python2-setuptools')
-checkdepends=('python-tox')
+prepare() {
+    cp -r django-crispy-forms-$pkgver django-crispy-forms-$pkgver-python2
+}
 
-check() {
-  cd "$srcdir/django-crispy-forms-$pkgver"
-  tox -e py35-django19 py27-django19
+build() {
+
+    cd $srcdir/django-crispy-forms-$pkgver
+    python setup.py build
+
+    cd $srcdir/django-crispy-forms-$pkgver-python2
+    python2 setup.py build
+
 }
 
 package_python-django-crispy-forms() {
-  depends=('python-django')
-  cd "$srcdir/django-crispy-forms-$pkgver"
-  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  python setup.py install --root="$pkgdir/" --optimize=1
+
+    depends=('python-django')
+
+    cd django-crispy-forms-$pkgver
+    python setup.py install --root $pkgdir --optimize=1
+
+    install -Dm644 $srcdir/django-crispy-forms-$pkgver/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+
 }
 
 package_python2-django-crispy-forms() {
-  depends=('python2-django')
-  cd "$srcdir/django-crispy-forms-$pkgver"
-  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
-}
 
-# vim:set ts=2 sw=2 et:
+    depends=('python2-django')
+
+    cd django-crispy-forms-$pkgver-python2
+    python2 setup.py install --root $pkgdir --optimize=1
+
+    install -Dm644 $srcdir/django-crispy-forms-$pkgver-python2/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+
+}
