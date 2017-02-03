@@ -1,0 +1,17 @@
+pkgbase = perl-crypt-mysql
+	pkgdesc = emulate MySQL PASSWORD() function.
+	pkgver = 0.04
+	pkgrel = 1
+	url = https://metacpan.org/release/Crypt-MySQL
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl-digest-sha1>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/I/IK/IKEBE/Crypt-MySQL-0.04.tar.gz
+	md5sums = e9a2d1e7f478fe8c90a15c47de37c0ae
+	sha512sums = d9774f80789a6c5f5a0a5c410ac50f1cf4c9312c03b56258a198917a3ab5d6af6cb93cc93c7269642cc33bde8a7cf841c4184412dbb411944adccc187056d079
+
+pkgname = perl-crypt-mysql
+
