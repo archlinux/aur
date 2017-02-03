@@ -1,4 +1,4 @@
-# Maintainer: Timothy Rice <t.rice@ms.unimelb.edu.au>
+# Maintainer: Timothy Rice <timothy.rice@unimelb.edu.au>
 
 pkgname=datamash
 pkgver=1.1.1
