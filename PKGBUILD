@@ -65,7 +65,7 @@ build() {
 
 package_rust-git() {
 	depends=('shared-mime-info' 'llvm-libs')
-	optdepends=('rust-doc-git: language and API documentation')
+	optdepends=('rust-docs-git: language and API documentation')
 	provides=('rust')
 	conflicts=('rust')
 	options=('staticlibs')
