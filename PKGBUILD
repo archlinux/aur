@@ -1,14 +1,15 @@
-# Maintainer: Anton Kalmykov <anton dot kalmykov at gmail dot com>
+# Maintainer: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
+# Contributer Anton Kalmykov <anton dot kalmykov at gmail dot com>
 
 _basename=airwave
 pkgname=${_basename}-git
-pkgver=r123.d263ca1
+pkgver=r155.8cd3507
 pkgrel=1
 pkgdesc="Airwave is a WINE-based VST bridge, that allows for the use of Windows 32- and 64-bit VST 2.4 audio plugins with Linux VST hosts"
 arch=("i686" "x86_64")
 license=("MIT")
 url="https://github.com/phantom-code/airwave"
-depends=("wine>=1.7" "qt5-base")
+depends=("wine>=1.7" "qt5-base" "steinberg-vst36")
 makedepends=("git" "cmake>=2.8")
 
 if [[ $CARCH == "x86_64" ]]; then
@@ -18,10 +19,9 @@ fi
 provides=("airwave")
 conflicts=("airwave")
 
-source=("git+https://github.com/phantom-code/airwave.git#branch=develop"
-	"http://www.steinberg.net/sdk_downloads/vstsdk360_22_11_2013_build_100.zip")
+source=("git+https://github.com/phantom-code/airwave.git#branch=master")
 
-md5sums=("SKIP" "1ac422ebb4aa2e86061278412c347b55")
+sha256sums=("SKIP")
 
 pkgver()
 {
@@ -37,11 +37,11 @@ build()
 		rm -rf build
 	fi
 
-	mkdir build && cd build
+	mkdir -p build && cd build
 
 	cmake -DCMAKE_INSTALL_PREFIX="/usr"       \
 		  -DCMAKE_BUILD_TYPE="Release"        \
-		  -DVSTSDK_PATH="${srcdir}/VST3 SDK" ..
+		  -DVSTSDK_PATH="/usr/include/vst36" ..
 	make
 }
 
