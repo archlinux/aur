@@ -41,7 +41,7 @@ prepare() {
   #    -e 's/pyqtconfig.*qt_version/QT_VERSION/' \
   #    -i python/console/console.py
   
-  sed -i 's/QWT_LIBRARY_NAMES qwt-qt5 qwt6-qt5/QWT_LIBRARY_NAMES qwt qwt-qt5 qwt6-qt5/'  cmake/FindQwt.cmake
+  #sed -i 's/QWT_LIBRARY_NAMES qwt-qt5 qwt6-qt5/QWT_LIBRARY_NAMES qwt qwt-qt5 qwt6-qt5/'  cmake/FindQwt.cmake
 
   [[ -d build ]] || mkdir build
 }
@@ -50,7 +50,7 @@ build() {
   cd $_pkgname/build
   
   cmake -G "Unix Makefiles" ../ \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_PREFIX=/opt/$pkgname \
     -DQGIS_MANUAL_SUBDIR=share/man \
     -DENABLE_TESTS=FALSE \
     -DWITH_INTERNAL_QWTPOLAR=FALSE \
@@ -73,6 +73,9 @@ package() {
   make DESTDIR="$pkgdir" install
 
   cd "$srcdir/$_pkgname"
+  
+  install -d -m755 $pkgdir/usr/bin
+  ln -s $pkgdir/opt/$pkgname/bin/qgis "$pkgdir/usr/bin/qgis-git"
 
   # install desktop files and icons
   install -Dm644 debian/{qgis,qbrowser}.desktop -t "$pkgdir/usr/share/applications/"
@@ -90,4 +93,8 @@ package() {
 
   # compile python files, since the cmake option doesn't seem to account for DESTDIR
   python -m compileall -q "$pkgdir"
+  
+  # link libraries
+  install -d -m755 "${pkgdir}"/etc/ld.so.conf.d/
+  echo '/opt/qgis-git/lib' > "${pkgdir}"/etc/ld.so.conf.d/qgis-git.conf
 }
