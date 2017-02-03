@@ -1,0 +1,18 @@
+pkgbase = perl-net-websocket-server
+	pkgdesc = A straightforward Perl WebSocket server with minimal dependencies.
+	pkgver = 0.003004
+	pkgrel = 1
+	url = https://metacpan.org/release/Net-WebSocket-Server
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-protocol-websocket>=0.12
+	depends = perl>=5.006
+	depends = perl-yaml
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOPAZ/Net-WebSocket-Server-0.003004.tar.gz
+	md5sums = 0625548472d30554d1ea24c4fa61fe38
+	sha512sums = 06ef525b8051a9ec65b0a7def2627f11d29a9a3177e90519754e0aea24f60aa5383a434ddacb6cfdeb65b70c3184e7fb1833aa619f0553fdb76b1e3530c3a3f2
+
+pkgname = perl-net-websocket-server
+
