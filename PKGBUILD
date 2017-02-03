@@ -2,7 +2,7 @@
 
 pkgname=libreoffice-impress-templates
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Freely-licensed LibreOffice Impress templates"
 arch=(any)
 url="https://dohliam.github.io/libreoffice-impress-templates"
@@ -14,4 +14,7 @@ sha512sums=('1395360240649bd6a6cc7e838b542cd2cf7535401a47307dcbde0e7d00f81f4069c
 package() {
 	msg2 "Extracting the data.tar.xz..."
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
+	#Fix directory premissions
+	find "$pkgdir" -type d -exec chmod 755 '{}' \;
+	find "$pkgdir" -type f -exec chmod 644 '{}' \;
 }
