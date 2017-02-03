@@ -5,7 +5,7 @@
 pkgname=unigine-tropics
 _pkgname=Unigine_Tropics
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Demonstration and benchmarking of the Unigine 3D engine"
 arch=('i686' 'x86_64')
 url="http://unigine.com/"
@@ -16,27 +16,26 @@ md5sums=('73729f5ccde2bcf991ecff10feb6dbdf'
   depends=('libstdc++5' 'libxrandr' 'libgl' 'openal' 'libxinerama')
 [ `uname -m` = 'x86_64' ] &&
   depends=('lib32-libstdc++5' 'lib32-libxrandr' 'lib32-libgl' 'lib32-openal' 'lib32-libxinerama')
-source=(http://mirror74.ddns.school-adm.ru/Soft/Info-Test/Unigine_benchmarks/${_pkgname}-${pkgver}.run \
-  LICENSE)
-
+source=(http://download.fileplanet.com/ftp1/052010/${_pkgname}-${pkgver}.run
+        LICENSE)
 build() {
-  cd "$srcdir"
+  cd "${srcdir}"
   sh ${_pkgname}-$pkgver.run
 }
 
 package() {
-  cd "$srcdir"
-  install -m755 -d $pkgdir/opt/$pkgname
-  cp -r tropics/* $pkgdir/opt/$pkgname/
+  cd "${srcdir}"
+  install -m755 -d "${pkgdir}/opt/${pkgname}"
+  cp -r tropics/* "${pkgdir}/opt/${pkgname}/"
   
-  for _file in $pkgdir/opt/$pkgname/*.sh; do
-    sed -i "s_\./bin_/opt/$pkgname/bin_" $_file
-    install -m755 -D $_file $pkgdir/usr/bin/${pkgname}_${_file/*\//}
-    rm -f $_file
+  for _file in "${pkgdir}/opt/${pkgname}/"*.sh; do
+    sed -i "s_\./bin_/opt/${pkgname}/bin_" $_file
+    install -m755 -D "${_file}" "${pkgdir}/usr/bin/${pkgname}_${_file/*\//}"
+    rm -f "${_file}"
   done
   
-  find $pkgdir/opt/$pkgname -type d -exec chmod 755 {} +
-  find $pkgdir/opt/$pkgname -type f -exec chmod 644 {} +
-  find $pkgdir/opt/$pkgname -name Tropics -exec chmod 755 {} +
-  install -m644 -D LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} +
+  find "${pkgdir}/opt/${pkgname}" -type f -exec chmod 644 {} +
+  find "${pkgdir}/opt/${pkgname}" -name Tropics -exec chmod 755 {} +
+  install -m644 -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
