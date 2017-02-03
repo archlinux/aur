@@ -1,4 +1,4 @@
-# Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 # Contributor: Alex Brinister <alex_brinister at yahoo dot com>
 
 pkgname=libimobiledevice-git
