@@ -1,7 +1,7 @@
 # Maintainer: Pete Alexandrou (ozmartian) <pete@ozmartians.com>
 pkgname=vidcutter
 pkgver=2.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="FFmpeg based video cutter & joiner with a modern PyQt5 GUI"
 arch=('any')
 license=('GPL3')

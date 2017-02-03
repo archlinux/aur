@@ -1,7 +1,7 @@
 pkgbase = vidcutter
 	pkgdesc = FFmpeg based video cutter & joiner with a modern PyQt5 GUI
 	pkgver = 2.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://vidcutter.ozmartians.com
 	install = vidcutter.install
 	arch = any
