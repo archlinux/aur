@@ -1,12 +1,11 @@
 [Desktop Entry]
 Name=Firefox Developer
 GenericName=Web Browser
-Icon=firefox-developer-icon
+Icon=/opt/firefox-developer/browser/icons/mozicon128.png
 Type=Application
-Categories=Application;Network;
+Categories=Network;
 MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;
-Encoding=UTF-8
 Exec=firefox-developer --class=firefox-developer %u
 Terminal=false
-MultipleArgs=false
+X-MultipleArgs=false
 StartupNotify=true
