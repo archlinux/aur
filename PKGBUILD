@@ -31,7 +31,7 @@ pkgver() {
 build() {
     cd "$srcdir/$_gitname"
     patch -Np1 -i "$srcdir"/psp_scapper.patch
-    mkdir "$srcdir/$_gitname/build"
+    mkdir -p "$srcdir/$_gitname/build"
     cd "$srcdir/$_gitname/build"
     cmake ..
     make
