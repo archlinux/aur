@@ -3,12 +3,12 @@
 
 pkgname=libreoffice-online
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="HTML5-based/cloud-based version of the office suite"
 arch=("x86_64")
 url="https://cgit.freedesktop.org/libreoffice/online/"
 license=("MPL")
-makedepends=("cppunit" "poco" "libreoffice-fresh-sdk")
+makedepends=("cppunit" "poco" "libreoffice-fresh-sdk" "jake" "npm")
 depends=("libpng12" "poco" "pcre" "cpio" "libreoffice")
 backup=("etc/loolwsd/loolwsd.xml")
 install="libreoffice-online.install"
@@ -27,6 +27,8 @@ build() {
 	--prefix=/usr \
 	--sysconfdir=/etc
   BUILDING_FROM_RPMBUILD=yes make
+  cd loleaflet
+  make
 }
 
 package() {
@@ -38,4 +40,5 @@ package() {
   mkdir -p "${pkgdir}/var/lib/lool/child-roots"
   chmod u+w "${pkgdir}/var/lib/lool/child-roots"
   sed -i 's|/usr/var/cache/loolwsd|/var/cache/loolwsd|g' ${pkgdir}/etc/loolwsd/loolwsd.xml
+  cp -r "loleaflet/dist" "${pkgdir}/usr/share/loleaflet"
 }
