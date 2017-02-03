@@ -5,20 +5,29 @@
 # Contributor: George Giorgidze <giorgidze@gmail.com>
 # Contributor: William J. Bowman <bluephoenix47@gmail.com>
 pkgname=coq
-pkgver=8.5pl3
-pkgrel=2
-pkgdesc='Formal proof management system. Full version that includes CoqIDE.'
+pkgver=8.6
+pkgrel=1
+pkgdesc='Formal proof management system'
 arch=('i686' 'x86_64')
 url='https://coq.inria.fr/'
 license=('GPL')
 options=('!emptydirs')
-depends=('gtk2' 'ocaml' 'camlp4' 'gtksourceview2')
-makedepends=('ocaml-findlib' 'lablgtk2-full')
-optdepends=('coq-doc')
-source=("https://coq.inria.fr/distrib/V$pkgver/files/coq-$pkgver.tar.gz")
-md5sums=('b1295e3ec6e27e301c1cb33de537b77d')
-sha1sums=('daecdf067520ad031711a5839e4251f921cb83d6')
-sha256sums=('305b92e05d406d4d0c64f43d4fadb6b89419120a1d4ae4115ed1c5eb8812d33b')
+depends=('ocaml' 'camlp4')
+makedepends=('ocaml-findlib')
+optdepends=('coqide: graphical Coq IDE'
+            'coq-doc: offline documentation')
+source=("https://coq.inria.fr/distrib/V$pkgver/files/coq-$pkgver.tar.gz"
+        "0001-Fix-incorrect-documentation-that-prevents-successful.patch"
+        "0002-Avoid-concurrent-runs-when-producing-html-documentat.patch")
+sha1sums=('617a6f86d09dde0e409f3fa22268daf7be3f5bba'
+          'ec5e9af33f37d2eb154f8de13815cb7f1f2fba6e'
+          '201f1db7fd3e7e072ff7c94cfcdabdcc5910ccdd')
+
+prepare() {
+  cd "$srcdir/coq-$pkgver"
+  patch -p1 < ../0001-Fix-incorrect-documentation-that-prevents-successful.patch
+  patch -p1 < ../0002-Avoid-concurrent-runs-when-producing-html-documentat.patch
+}
 
 build() {
   cd "$srcdir/coq-$pkgver"
@@ -27,7 +36,7 @@ build() {
     -prefix '/usr' \
     -mandir '/usr/share/man' \
     -configdir '/etc/xdg/coq/' \
-    -coqide opt \
+    -coqide no \
     -with-doc no \
     -usecamlp4
 
@@ -37,5 +46,6 @@ build() {
 package() {
   cd "$srcdir/coq-$pkgver"
 
-  make COQINSTALLPREFIX="$pkgdir" install
+  make COQINSTALLPREFIX="$pkgdir" install-coq
+  rm -f "${pkgdir}/usr/share/man/man1/coqide.1"
 }
