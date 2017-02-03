@@ -1,7 +1,7 @@
 # Maintainer: Karel Koči <cynerd@email.cz>
 pkgname=ttysterm
-pkgver=20160921
-pkgrel=2
+pkgver=20170112
+pkgrel=1
 pkgdesc="Simple serial terminal"
 arch=('i686' 'x86_64')
 url="https://rtime.felk.cvut.cz/gitweb/sojka/sterm.git"
