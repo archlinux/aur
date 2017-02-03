@@ -1,7 +1,7 @@
 pkgbase = pglogical
 	pkgdesc = Logical replaction for PostgreSQL
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://2ndquadrant.com/en/resources/pglogical/
 	changelog = pglogical.changelog
 	arch = i686

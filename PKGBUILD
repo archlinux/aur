@@ -1,7 +1,7 @@
 # Maintainer: Svenne Krap <svenne@krap.dk>
 pkgname=pglogical
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Logical replaction for PostgreSQL"
 arch=('i686' 'x86_64')
 url="https://2ndquadrant.com/en/resources/pglogical/"
