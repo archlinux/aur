@@ -7,12 +7,14 @@ pkgname="${_name}-dev"
 pkgdesc='Standalone web browser from mozilla.org, developer build'
 url='http://www.mozilla.org/firefox/developer'
 pkgver=53.0a2_20170203084124
+_ffver=53.0a2
+_ffbid=20170203084124
 # Next version: 53.0a2
 # Current BID: 20170203084124
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
-_file="${_name}-${pkgver}.en-US.linux-${CARCH}"
+_file="${_name}-${_ffver}.en-US.linux-${CARCH}"
 _srcurl="https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-aurora"
 source_i686=("${_srcurl}/${_file}.tar.bz2" "firefox-$_channel.desktop" "vendor.js")
 source_x86_64=("${_srcurl}/${_file}.tar.bz2" "firefox-$_channel.desktop" "vendor.js")
