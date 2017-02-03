@@ -5,31 +5,32 @@
 
 pkgname=emacs-pretest
 _pkgname=emacs
-pkgver=25.1.91
-pkgrel=1
+pkgver=25.2
+_pkgver=25.2-rc1
+pkgrel=0.1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
-depends=('librsvg' 'gpm' 'giflib' 'libxpm' 'libotf' 'm17n-lib' 'gtk3' 'hicolor-icon-theme' 'gconf' 'desktop-file-utils' 'alsa-lib' 'imagemagick' 'gnutls')
+depends=('librsvg' 'gpm' 'giflib' 'libxpm' 'libotf' 'm17n-lib' 'gtk3' 'hicolor-icon-theme' 'dconf' 'desktop-file-utils' 'alsa-lib' 'imagemagick' 'gnutls')
 provides=('emacs')
 conflicts=('emacs')
-source=(ftp://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$pkgver.tar.xz{,.sig})
-sha512sums=('09ecd852e6bf523c8ae7835b496fbd53c0dafeccaa5c3319e9a7f664be0816fdd5acbe9c5267f2dab2912aff9656448ac53f6b22329aea15d3e3af41c04806ff'
+source=(ftp://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig})
+sha512sums=('717cd9b058e4e9d6d8abe7d78a7538745c9a2e29f7f61fa58f3502584a755bb6d4b2d74ce912878e3730f5a72eabf63be1ce1cbb8fa99e1372763ec77df09384'
             'SKIP')
 validpgpkeys=('B29426DEFB07724C3C35E5D36592E9A3A0B0F199' '28D3BED851FDF3AB57FEF93C233587A47C207910')
 
 build() {
   cd "$srcdir"/$_pkgname-$pkgver
   export PATH=$(echo "$PATH" | sed 's!/usr/lib/hardening-wrapper/bin!!g')
-  export REL_ALLOC=no
+  #export REL_ALLOC=no
   local confopts=(--prefix=/usr
                   --sysconfdir=/etc
                   --libexecdir=/usr/lib
                   --localstatedir=/var
                   --with-x-toolkit=gtk3
                   --with-xft)
-  ac_cv_lib_gif_EGifPutExtensionLast=yes ./configure "${confopts[@]}"
+  ./configure "${confopts[@]}"
   make
 }
 
