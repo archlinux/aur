@@ -3,7 +3,7 @@
 
 pkgname=libreoffice-online
 pkgver=2.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="HTML5-based/cloud-based version of the office suite"
 arch=("x86_64")
 url="https://cgit.freedesktop.org/libreoffice/online/"
@@ -40,5 +40,6 @@ package() {
   mkdir -p "${pkgdir}/var/lib/lool/child-roots"
   chmod u+w "${pkgdir}/var/lib/lool/child-roots"
   sed -i 's|/usr/var/cache/loolwsd|/var/cache/loolwsd|g' ${pkgdir}/etc/loolwsd/loolwsd.xml
-  cp -r "loleaflet/dist" "${pkgdir}/usr/share/lolwsd/loleaflet"
+  mkdir -p "${pkgdir}/usr/share/loolwsd/loleaflet"
+  cp -r "loleaflet/dist" "${pkgdir}/usr/share/loolwsd/loleaflet/"
 }
