@@ -3,14 +3,13 @@
 pkgname=python-btrfs
 pkgver=5
 pkgrel=1
-pkgdesc=""
+pkgdesc="Python Btrfs"
 arch=('any')
-url="https://github.com/Jokymon/binstruct"
+url="https://github.com/knorrie/python-btrfs"
 license=('GPL3')
 depends=()
 makedepends=(python-pip)
 md5sums=()
-#install=.install
 
 package() {
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps btrfs
