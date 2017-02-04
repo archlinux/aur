@@ -1,6 +1,6 @@
 # Maintainer: Justin Frank <jf.laelath@gmail.com>
 pkgname=typingtest-git
-pkgver=1.0.3.r0.ba48655
+pkgver=1.0.4.r0.62bbf5d
 pkgrel=1
 pkgdesc="A typing test program desktop program with customizability"
 arch=(x86_64)
@@ -8,7 +8,7 @@ url="https://github.com/laelath/typingtest"
 license=('GPL')
 groups=()
 depends=('gtkmm3')
-makedepends=('git' 'cmake' 'xdg-utils')
+makedepends=('git' 'cmake')
 backup=()
 options=()
 install=
