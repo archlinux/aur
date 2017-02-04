@@ -1,14 +1,15 @@
+# Maintainer: Marco Scarpetta <marcoscarpetta02@gmail.com>
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=kasync-git
-pkgver=r88.6bc6092
+pkgver=r110.7ea6a87
 pkgrel=1
 pkgdesc='A C++ library for controlling asynchronous tasks'
 arch=('i686' 'x86_64')
 url='https://github.com/KDE/kasync'
 license=('GPL')
 depends=('qt5-base')
-makedepends=('extra-cmake-modules' 'git')
+makedepends=('extra-cmake-modules' 'git' 'clang')
 conflicts=(kasync)
 provides=(kasync)
 source=("git://anongit.kde.org/kasync.git")
@@ -26,6 +27,10 @@ prepare() {
 build() { 
   cd build
   cmake ../kasync \
+    -DENABLE_TESTING=OFF \
+    -DCMAKE_C_COMPILER=/usr/bin/clang \
+    -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
+    -DWITH_KJOB=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DLIB_INSTALL_DIR=lib \
