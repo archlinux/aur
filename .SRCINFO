@@ -1,0 +1,13 @@
+pkgbase = thrust
+	pkgdesc = A parallel algorithms library which resembles the C++ Standard Template Library (STL).
+	pkgver = 1.8.2
+	pkgrel = 1
+	url = http://thrust.github.io/
+	arch = any
+	license = APACHE
+	depends = cuda
+	source = https://github.com/thrust/thrust/releases/download/1.8.2/thrust-1.8.2.zip
+	sha256sums = 00925daee4d9505b7f33d0ed42ab0de0f9c68c4ffbe2a41e6d04452cdee77b2d
+
+pkgname = thrust
+
