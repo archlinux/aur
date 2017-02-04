@@ -11,7 +11,7 @@ license=('custom:University of Illinois/NCSA Open Source License')
 arch=('i686' 'x86_64')
 # gcc-libs needed for libgcc_s, because Arch doesn't use a pure compiler-rt clang
 depends=('glibc' 'libc++abi' 'gcc-libs')
-makedepends=('clang' 'cmake' 'subversion')
+makedepends=('clang' 'cmake')
 source=("http://www.llvm.org/releases/$pkgver/libcxx-${pkgver}.src.tar.xz"{,.sig})
 sha512sums=('a5976e4096624a7307b3e43f4a22ac2dc74572226e0f57af9f3ef537a14c3cff1601b7042aef9dc40a0ee53ca76b08d72eb9c253dcf34f115d3153c302db7070'
             'SKIP')
