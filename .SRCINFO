@@ -1,14 +1,16 @@
 pkgbase = filegive
 	pkgdesc = Easy sending of files, point-to-point
-	pkgver = 0.7.1
-	pkgrel = 2
+	pkgver = 0.7.5
+	pkgrel = 1
 	url = http://vicerveza.homeunix.net/~viric/cgi-bin/filegive
 	arch = x86_64
 	arch = i686
-	license = AGPLv3
-	depends = go
-	source = http://vicerveza.homeunix.net/~viric/cgi-bin/filegive/tarball/filegive-0.7.1.tar.gz?uuid=v0.7.1
-	sha256sums = 0ae1b575506d0884a60a58a4705c7a92fb9d82535f473a91b03026848d8bde93
+	license = AGPL3
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	source = http://vicerveza.homeunix.net/~viric/cgi-bin/filegive/tarball/filegive-0.7.5.tar.gz?uuid=v0.7.5
+	sha256sums = 39ad3d2a0bd4b4f235e73c382afd1a9bd913af3c87870231555ef87a9eea99ef
 
 pkgname = filegive
 
