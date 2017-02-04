@@ -2,12 +2,12 @@
 
 pkgname=prometheus-snmp-exporter-bin
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="SNMP Exporter for Prometheus (binary, not built from source)"
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 url="https://github.com/prometheus/snmp_exporter"
 license=('Apache')
-depends=('prometheus')
+depends=()
 makedepends=()
 provides=('prometheus-snmp-exporter')
 conflicts=('prometheus-snmp-exporter')
@@ -44,5 +44,5 @@ package() {
     install -D -m0755 "${srcdir}/prometheus-snmp-exporter.service" "${pkgdir}/usr/lib/systemd/system/prometheus-snmp-exporter.service"
 
     # Install snmp.yml
-    install -D -m644 "${srcdir}/snmp.yml" "${pkgdir}/etc/prometheus/snmp.yml"
+    install -D -m644 snmp.yml "${pkgdir}/etc/prometheus/snmp.yml"
 }
