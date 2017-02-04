@@ -12,7 +12,7 @@
 pkgbase=lib32-mesa-test-git
 pkgname=('lib32-mesa-test-git' 'lib32-mesa-test-libgl-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=13.1.0_devel.87338.0f2e9a8986
+pkgver=17.1.0_devel.88759.106a51440d
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'glproto' 'lib32-libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
@@ -54,7 +54,7 @@ build () {
                --prefix=/usr \
                --sysconfdir=/etc \
                --with-dri-driverdir=/usr/lib32/xorg/modules/dri \
-               --with-gallium-drivers=i915,ilo,r300,r600,radeonsi,nouveau,svga,swrast,virgl \
+               --with-gallium-drivers=i915,r300,r600,radeonsi,nouveau,svga,swrast,virgl \
                --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
                --with-egl-platforms=x11,drm,wayland \
                --with-vulkan-drivers=intel,radeon \
