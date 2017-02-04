@@ -6,7 +6,7 @@
 
 _pkgname=get_iplayer
 pkgname=$_pkgname-git
-pkgver=2.95
+pkgver=2.98
 pkgrel=1
 pkgdesc="Download TV and radio programmes from BBC iPlayer"
 arch=('any')
@@ -15,27 +15,17 @@ license=('GPL3')
 
 # perl-libwww is the LWP module
 depends=('perl-libwww'
+         #'perl-lwp-protocol-https'
          'perl-xml-libxml'
-         'perl-xml-simple'
+         'perl-xml-simple')
 
-         'perl-html-parser')
-
+# Having only 'optdepends atomicparsley' is sufficient to install either atomicparsley or atomicparsley-largefile-hg.
+# However, added 'optdepends atomicparsley-largefile-hg' so 'pacman -Qi' will show 'atomicparsley-largefile-hg [installed]'
 optdepends=(
-  # Having only 'optdepends atomicparsley' is sufficient to install either atomicparsley or atomicparsley-largefile-hg.
-  # However, added 'optdepends atomicparsley-largefile-hg' so 'pacman -Qi' will show 'atomicparsley-largefile-hg [installed]'
   'atomicparsley: MP4 and M4A files metadata tagging'
   'atomicparsley-largefile-hg: MP4 and M4A files metadata tagging (preferred)'
   'ffmpeg: FLV files to MP4, M4A, MP3 or AVI files'
-
-  # Deprecated
-  'perl-authen-sasl: Mail search results via SSL'
-  'perl-mp3-info: Catalogue MP3 files in localfiles plugin'
-  'perl-mp3-tag: MP3 files metadata tagging'
-  'perl-net-smtp-ssl: Mail search results via SSL'
-  'perl-net-smtp-tls: Mail search results via TLS'
-  'perl-net-smtps: Mail search results via TLS (alternative)'
   'flvstreamer: Flash audio/video streams to FLV files. An "rtmpdump" alternative'
-  'id3v2: MP3 files metadata tagging. Alternative "perl-mp3-tag" is preferred (full ID3 tagging)'
   'rtmpdump: Flash audio/video streams to FLV files')
 
 makedepends=('git')
