@@ -1,18 +1,16 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky AT gmail.com>
 pkgname=rawtherapee-git
-pkgver=3314.0b32f12
+pkgver=4214.c4a06048
 pkgrel=1
-pkgdesc="RAW photo editor"
+pkgdesc="A powerful cross-platform raw image processing program"
 arch=('i686' 'x86_64')
 url="http://www.rawtherapee.com/"
 license=('GPL3')
-depends=('fftw' 'gtkmm' 'libcanberra' 'libiptcdata' 'lcms2' 'desktop-file-utils' 'hicolor-icon-theme')
-optdepends=('gtk-engines: workaround theme bug under GNOME')
+depends=('fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('cmake' 'git')
 provides=('rawtherapee')
 conflicts=('rawtherapee')
-install=rawtherapee.install
-source=('rawtherapee::git+https://github.com/Beep6581/RawTherapee.git')
+source=('rawtherapee::git+https://github.com/Beep6581/RawTherapee.git#branch=dev')
 md5sums=('SKIP')
 
 pkgver() {
