@@ -1,6 +1,6 @@
 # Maintainer: tPenguinLTG <tpenguinltg@hotmail.com>
 pkgname=fortune-mod-foxtrot
-pkgver=2214424
+pkgver=1701191814
 pkgrel=1
 _ver=1
 pkgdesc="Fortune quotes from FoxTrot"
@@ -12,6 +12,11 @@ makedepends=('wikiquote-fortune>=1.4')
 source=()
 sha256sums=()
 
+pkgver()
+{
+    wikiquote-fortune FoxTrot date-only >/dev/null &&
+    cat version
+}
 
 build()
 {
@@ -26,4 +31,3 @@ package()
     install -dm755 -- "${pkgdir}/usr/share/fortune"
     install -m644 -- foxtrot foxtrot.dat "${pkgdir}/usr/share/fortune"
 }
-
