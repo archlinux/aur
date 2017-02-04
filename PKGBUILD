@@ -5,7 +5,7 @@
 pkgname=epsxe
 _pkgname=ePSXe
 pkgver=2.0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Enhanced PSX emulator"
 url="http://epsxe.com"
 arch=('i686' 'x86_64')
@@ -20,21 +20,21 @@ source=(${pkgname}.desktop ${pkgname}.png ${pkgname}.sh)
 md5sums=('aeb34e2ca34f968630ca133ea821c61c'
          'eb0c46b8ae1355c589792f6be1835e47'
          '50b64bd9ac4d9a92d40876c9595a4326')
-if [[ $CARCH == "x86_64" ]]; then
-    source+=("http://www.epsxe.com/files/ePSXe${pkgver//./}linux_x64.zip")
-    md5sums+=('79fefeb4bff26bf1d374befb35b390df')
-else
+#if [[ $CARCH == "x86_64" ]]; then
+#    source+=("http://www.epsxe.com/files/ePSXe${pkgver//./}linux_x64.zip")
+#    md5sums+=('79fefeb4bff26bf1d374befb35b390df')
+#else
     source+=("http://www.epsxe.com/files/ePSXe${pkgver//./}linux.zip")
     md5sums+=('3e1976822eb260722b31c9f24cb1d6e1')
-fi
+#fi
 
 package () {
   #srcpath="${srcdir}/${_pkgname}${pkgver//./}linux"
   binary="${_pkgname}"
-  if [[ $CARCH == "x86_64" ]]; then
+ # if [[ $CARCH == "x86_64" ]]; then
   #    srcpath+="_x64"
-      binary="${pkgname}_x64"
-  fi
+ #     binary="${pkgname}_x64"
+ # fi
 
   #cd "${srcpath}"
   cd "${srcdir}"
