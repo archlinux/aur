@@ -4,12 +4,13 @@ pkgname=cmaptools
 pkgver=v6.02
 _pkgdate=08-11-16
 pkgrel=1
-pkgdesc="The IHMC CmapTools for concept maps"
+pkgdesc="The IHMC Cmap Tools for concept maps"
 arch=('x86_64')
 url="http://cmap.ihmc.us/"
 license=('unknown')
-depends=('desktop-file-utils')
-makedepends=('the_silver_searcher')
+depends=('java-environment')
+makedepends=('the_silver_searcher' 'unzip' 'inetutils')
+
 source=(http://cmapdownload.ihmc.us/installs/CmapTools/Linux/Linux64CmapTools_$pkgver\_$_pkgdate.bin
 	installer.properties
 	icon.png
@@ -46,23 +47,20 @@ package() {
 	install -Dm644 icon.png $pkgdir/opt/cmaptools/icon.png
 
 	# Copy desktop file
-	install -Dm644 cmaptools.desktop $pkgdir/usr/local/share/applications/cmaptools.desktop
+	install -Dm644 cmaptools.desktop $pkgdir/usr/share/applications/cmaptools.desktop
 
 	# Copy bash executable to path
-	install -Dm755 cmaptools $pkgdir/usr/local/bin/cmaptools
+	install -Dm755 cmaptools $pkgdir/usr/bin/cmaptools
 
 	# Fix references to $pkgdir because installer is dumb
 	cd $pkgdir
 	ag $pkgdir -l --print0 | xargs -0 sed -i "s=$pkgdir=/opt=g"
+
+	# Remove embedded JRE
+	rm -r $pkgdir/opt/cmaptools/jre
+
+	# Clean file rights
+	find $pkgdir/opt/cmaptools -type d -print0 | xargs -0 chmod 755
+	find $pkgdir/opt/cmaptools -type f -print0 | xargs -0 chmod 644
+	chmod 755 $pkgdir/opt/cmaptools/bin/CmapTools
 }
-
-post_install() {
-	update-desktop-database -q
-}
-
-post_remove() {
-	update-desktop-database -q
-}
-
-
-
