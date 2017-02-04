@@ -1,0 +1,14 @@
+pkgbase = umoci
+	pkgdesc = umoci modifies Open Container images
+	pkgver = 0.0.0_rc3
+	pkgrel = 1
+	url = https://www.cyphar.com/blog/post/umoci-new-oci-image-tool
+	arch = i686
+	arch = x86_64
+	license = Apache 2.0
+	makedepends = go
+	source = umoci.tar.gz::https://github.com/cyphar/umoci/archive/v0.0.0-rc3.tar.gz
+	md5sums = SKIP
+
+pkgname = umoci
+
