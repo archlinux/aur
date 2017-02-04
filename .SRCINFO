@@ -1,6 +1,6 @@
 pkgbase = openra-kang
 	pkgdesc = An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL
-  pkgver = kang.bc319c5
+  pkgver = kang.c72e5cb
 	pkgrel = 1
 	url = http://www.openra.net
 	install = openra.install
