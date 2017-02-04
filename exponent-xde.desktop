@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Exponent XDE
+Comment=Mobile app development environment
+Exec=exponent-xde
+Icon=exponent-xde
+Terminal=false
+Type=Application
+Categories=Development
