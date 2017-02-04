@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=inkscape-bzr
-pkgver=r15465
-pkgrel=1
+pkgver=r15470
+pkgrel=2
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from bzr trunk"
 url="https://launchpad.net/inkscape"
 arch=('i686' 'x86_64')
@@ -44,6 +44,7 @@ build() {
   cmake .. \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE=RELEASE \
+	-DWITH_GNOME_VFS=OFF \
 	-DWITH_DBUS=OFF
   make 
 }

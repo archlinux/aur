@@ -1,7 +1,7 @@
 pkgbase = inkscape-bzr
 	pkgdesc = An Open Source vector graphics editor, using SVG file format, from bzr trunk
-	pkgver = r15465
-	pkgrel = 1
+	pkgver = r15470
+	pkgrel = 2
 	url = https://launchpad.net/inkscape
 	arch = i686
 	arch = x86_64
