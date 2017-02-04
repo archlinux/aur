@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  help2man -N -n "${pkgdesc}" -h -h -v -v ./${pkgname} | gzip - > ${pkgname}.1.gz
+  help2man -N -n "${pkgdesc}" -h -h -v -v src/${pkgname}.sh | gzip - > ${pkgname}.1.gz
 }
 
 package() {
