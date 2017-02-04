@@ -31,7 +31,7 @@ package() {
 	# silent installation instructions)
 	chmod +x Linux64CmapTools_$pkgver\_$_pkgdate.bin
 	./Linux64CmapTools_$pkgver\_$_pkgdate.bin \
-		-f installer.properties \
+		-f $PWD/installer.properties \
 		-DUSER_INSTALL_DIR=$pkgdir/opt/cmaptools \
 		-DUSER_SHORTCUTS=$pkgdir/usr/share/applications \
 	|| true
