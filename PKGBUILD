@@ -2,7 +2,7 @@
 pkgname=wire-desktop
 _pkgname=wire
 pkgver=2.11.2703
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
 url='https://wire.com/'
@@ -30,11 +30,6 @@ build() {
   else
     echo "Unknown architecture"; exit 1;
   fi
-}
-
-check() {
-  cd "${srcdir}/${pkgname}-release-${pkgver}"
-  npm test
 }
 
 package() {
