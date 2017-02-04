@@ -1,7 +1,7 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 _pkgname=alsa-lib
 pkgname="${_pkgname}"-noassertion
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="An alternative implementation of Linux sound support, built without assertions"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 license=('GPL')
 source=(ftp://ftp.alsa-project.org/pub/lib/${_pkgname}-$pkgver.tar.bz2)
-sha1sums=('574a0ebd4d218c81f73a0abae79f0e3cc9a6e402')
+sha1sums=('8ef0b9725296ac8f24e06f20196f5b2b62ab27a9')
 
 build() {
   cd "$srcdir/${_pkgname}-$pkgver"
