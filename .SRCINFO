@@ -1,0 +1,15 @@
+pkgbase = projekt
+	pkgdesc = Utility for fsharp project files
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = http://fsprojects.github.io/Projekt/
+	arch = any
+	license = MIT
+	depends = mono
+	source = https://github.com/fsprojects/Projekt/releases/download/0.0.4/Projekt.zip
+	source = projekt
+	sha256sums = 1a275888dc5825b53539e321d3a82a6caac95f3922f299f1194f56206de06565
+	sha256sums = e1abe3257624cd80ce1016deacfb77326ed8d6f35017a31c6b40700ec754fa3b
+
+pkgname = projekt
+
