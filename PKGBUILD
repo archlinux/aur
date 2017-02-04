@@ -15,8 +15,8 @@
 #   - replace setools 3.3.8 with setools3-libs and install setools then.
 
 pkgname=setools
-pkgver=4.0.1
-pkgrel=3
+pkgver=4.1.0
+pkgrel=1
 pkgdesc="Policy analysis tools for SELinux"
 groups=('selinux')
 arch=('i686' 'x86_64')
@@ -25,15 +25,17 @@ license=('GPL' 'LGPL')
 depends=('libselinux>=2.5' 'python' 'python-networkx')
 optdepends=('python-pyqt5: needed for graphical tools'
             'python2: Python2 support'
-            'python2-networkx: Python2 support')
-makedepends=('bison' 'flex' 'swig'
+            'python2-enum34: Python2 support'
+            'python2-networkx: Python2 support'
+            'qt5-tools: display apol help with Qt Assistant')
+makedepends=('bison' 'flex' 'swig' 'qt5-tools'
              'python-setuptools' 'python-tox'
              'python2' 'python2-setuptools' 'python2-networkx' 'python2-mock' 'python2-tox')
 checkdepends=('checkpolicy')
 conflicts=("selinux-${pkgname}")
 provides=("selinux-${pkgname}=${pkgver}-${pkgrel}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TresysTechnology/setools/archive/${pkgver}.tar.gz")
-sha256sums=('4c2049877f2f68e4485b72bc280fe20127b49a019169a2cf1d8295c908bdcdfe')
+sha256sums=('cc251572c50298e2705617c8a0ddb5ae7cfe0bde2480bc0c6a4e44341d3df831')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -46,10 +48,20 @@ prepare() {
   # This a a bug in Flex, https://github.com/westes/flex/issues/155
   # Do not make the build fail because of this
   sed -e "s/'-Werror',//" -i setup.py
+
+  # Install apol.qch too
+  sed "s/\(package_data={'': \['\*\.ui', '\*\.qhc'\)\]/\1, '*.qch']/" -i setup.py
+  echo 'include setoolsui/apol/apol.qch' >> MANIFEST.in
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
+
+  # Rebuild apol help files
+  qcollectiongenerator qhc/apol.qhcp
+  cp -f qhc/apol.qhc setoolsgui/apol/apol.qhc
+  cp -f qhc/apol.qch setoolsgui/apol/apol.qch
+
   python2 setup.py build
   python setup.py build
 }
