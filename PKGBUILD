@@ -1,0 +1,86 @@
+pkgname=telegram-desktop-systemqt
+pkgver=1.0.6
+pkgrel=1
+pkgdesc='Official desktop version of Telegram messaging app. (Use system Qt)'
+arch=('i686' 'x86_64')
+url="https://desktop.telegram.org/"
+license=('GPL3')
+depends=(
+    'ffmpeg'
+    'hicolor-icon-theme'
+    'minizip'
+    'openal'
+    'qt5-base'
+)
+makedepends=(
+    'cmake'
+    'dee'
+    'git'
+    'gyp-git'
+    'libappindicator-gtk2'
+    'libexif'
+    'libva'
+    'libwebp'
+    'mtdev'
+    'python'
+    'python2'
+)
+source=(
+    "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
+    "telegramdesktop.desktop"
+    "tg.protocol"
+    "Avoid-depending-on-static-libraries.patch"
+    "Fix-desktop-integration-issues.patch"
+    "Flags-for-precompiled-header-and-MOC.patch"
+    "Fix-rcc-path.patch"
+    "CMakeLists.inj"
+)
+sha256sums=('SKIP'
+            '41c22fae6ae757936741e63aec3d0f17cafe86b2d6153cdd1d01a5581e871f17'
+            'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
+            '386a9b3a68e82f6be5686f64736042c53eea398cc835f74bb198c34312198889'
+            '4e1c87bad5f2538bf9fce0b54e7f984d7f269e3b1f6e44e1097b8abcc28c68e0'
+            '952c7590cb05354c70037745d980fa97c36e36f96a1fa7d0db29a5c6a1d8dbd1'
+            'cf4dbb293afdbfd226861a00a42790a15b23bea296eccf35853d104e07ea345a'
+            '7a06af83609168a8eaec59a65252caa41dcd0ecc805225886435eb65073e9c82')
+
+prepare() {
+    cd "$srcdir/tdesktop"
+    git apply "$srcdir/Avoid-depending-on-static-libraries.patch"
+    git apply "$srcdir/Fix-desktop-integration-issues.patch"
+    git apply "$srcdir/Flags-for-precompiled-header-and-MOC.patch"
+    git apply "$srcdir/Fix-rcc-path.patch"
+}
+
+build() {
+    cd "$srcdir/tdesktop"
+    export EXTRA_CPPFLAGS="-DTDESKTOP_DISABLE_AUTOUPDATE -DTDESKTOP_DISABLE_CRASH_REPORTS -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME"
+    export CPPFLAGS="$CPPFLAGS $EXTRA_CPPFLAGS"
+    gyp \
+        -Gconfig=Release \
+        --depth=Telegram/gyp --generator-output=../.. -Goutput_dir=out Telegram/gyp/Telegram.gyp --format=cmake
+    NUM=$((`wc -l < out/Release/CMakeLists.txt` - 2))
+    sed -i "$NUM r ../CMakeLists.inj" out/Release/CMakeLists.txt
+    cd "$srcdir/tdesktop/out/Release"
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=None
+    make
+}
+
+package() {
+    install -dm755 "$pkgdir/usr/bin"
+    install -m755 "$srcdir/tdesktop/out/Release/Telegram" "$pkgdir/usr/bin/telegram-desktop"
+
+    install -d "$pkgdir/usr/share/applications"
+    install -m644 "$srcdir/telegramdesktop.desktop" "$pkgdir/usr/share/applications/telegramdesktop.desktop"
+
+    install -d "$pkgdir/usr/share/kde4/services"
+    install -m644 "$srcdir/tg.protocol" "$pkgdir/usr/share/kde4/services/tg.protocol"
+
+    local icon_size icon_dir
+    for icon_size in 16 32 48 64 128 256 512; do
+        icon_dir="$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
+
+        install -d "$icon_dir"
+        install -m644 "$srcdir/tdesktop/Telegram/Resources/art/icon${icon_size}.png" "$icon_dir/telegram-desktop.png"
+    done
+}
