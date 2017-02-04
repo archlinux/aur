@@ -6,7 +6,7 @@ _quagga='quagga'
 _cumulus='CumulusNetworks'
 pkgname="${_quagga}_cumulus"
 pkgver='0.99.23.1'
-pkgrel='5'
+pkgrel='6'
 pkgdesc="Routing daemon suite with ${_cumulus} patches. Support Multi-Instance OSPF."
 arch=('i686' 'x86_64')
 url="https://github.com/${_cumulus}/${_quagga}"
@@ -15,7 +15,6 @@ depends=('libcap' 'libnl' 'readline' 'ncurses' 'perl' 'json-c')
 makedepends=('patch' 'gcc' 'grep')
 conflicts=("${_quagga}")
 provides=("${_quagga}")
-install="${_quagga}.install"
 source=("http://download.savannah.gnu.org/releases/${_quagga}/${_quagga}-${pkgver}.tar.gz"
 	"http://http.debian.net/debian/pool/main/q/${_quagga}/${_quagga}_0.99.22.4-1+wheezy2.debian.tar.gz"
 	"http://oss.cumulusnetworks.com/CumulusLinux-${_ver}.tar.gz"
