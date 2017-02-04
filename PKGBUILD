@@ -1,7 +1,7 @@
 # Maintainer: "purplerhino" Douglas Hitchcock <clarkaddison(at)gmail(dot)com>
 
 pkgname=sococo
-pkgver=0.5.0_11995
+pkgver=0.5.1_12881
 pkgrel=1
 pkgdesc="Sococo for Linux"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 
 source_x86_64=("https://s.sococo.com/rs/client/linux64/apt/pool/main/sococo-${pkgver//_/-}_amd64.deb")
 
-sha256sums_x86_64=('247424064b2f1f071827479793f0877c0b34f88c6dbed03bc7aa78abbcfbc226')
+sha256sums_x86_64=('fa3e33bef7282cd922424d0fe3f3aea3cae66bc83117410670899eb727c7ce78')
 
 package() {
     bsdtar -O -xf "sococo-${pkgver//_/-}"*.deb data.tar.gz | bsdtar -C "$pkgdir" -xJf -
