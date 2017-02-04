@@ -18,7 +18,7 @@ build() {
   cd "$pkgname-$pkgver"
 
   emacs --batch -f batch-byte-compile flycheck.el
-  makeinfo --force --no-split -o doc/flycheck.info doc/flycheck.texi
+  #makeinfo --force --no-split -o doc/flycheck.info doc/flycheck.texi
 }
 
 package() {
