@@ -1,6 +1,6 @@
 # Maintainer: Sam Stuewe <halosghost at archlinux dot info>
 
-pkgname=libbase-git
+pkgname=libbase58-git
 pkgver=v0.1.4.r6.gbee00a6
 pkgrel=1
 
