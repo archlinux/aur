@@ -2,7 +2,7 @@
 #Contributor: Kristof Jozsa <kjozsa@fsdev.hu>
 
 pkgname=eclipse-scala-ide
-pkgver=4.4.1
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="Scala IDE for Eclipse"
 arch=('any')
