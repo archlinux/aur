@@ -1,3 +1,5 @@
+# PLEASE READ THE COMMENTS ON THE AUR AND READ THE WIKI ARTICLE ABOUT BUILDING PACKAGES
+# BEFORE SENDING MAIL!
 ## Contributor: nikicat <develniks at gmail dot com>
 # Contributor: danilo <gezuru at gmail dot com>
 # Contributor: Jason Begley <jayray at digitalgoat dot com>
