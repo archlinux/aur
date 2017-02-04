@@ -16,18 +16,18 @@
 #
 #
 pkgname="zfs-utils-linux-lts"
-pkgver=0.6.5.8_4.4.45_1
+pkgver=0.6.5.9_4.4.46_1
 pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
-depends=("spl-linux-lts" "linux-lts=4.4.45")
-makedepends=("linux-lts-headers=4.4.45")
+depends=("spl-linux-lts" "linux-lts=4.4.46")
+makedepends=("linux-lts-headers=4.4.46")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.6.5.8/zfs-0.6.5.8.tar.gz"
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.6.5.9/zfs-0.6.5.9.tar.gz"
         "zfs-utils.bash-completion-r1"
         "zfs-utils.initcpio.install"
         "zfs-utils.initcpio.hook")
-sha256sums=("d77f43f7dc38381773e2c34531954c52f3de80361b7bb10c933a7482f89cfe84"
+sha256sums=("b724b57dbddae59246fdc15f88f1224061c712945bb36412a2087e0c7760d77f"
             "b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540"
             "17114052aa20c528f022f7f1349971aa28810e2ed2c97871226b5679a91f7e77"
             "90d50df503464e8d76770488dbd491cb633ee27984d4d3a31b03f1a4e7492038")
@@ -38,17 +38,17 @@ install=zfs-utils.install
 conflicts=('zfs-utils-linux' 'zfs-utils-linux-git')
 
 build() {
-    cd "${srcdir}/zfs-0.6.5.8"
+    cd "${srcdir}/zfs-0.6.5.9"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --with-mounthelperdir=/usr/bin \
                 --libdir=/usr/lib --datadir=/usr/share --includedir=/usr/include \
-                --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-0.6.5.8 \
+                --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-0.6.5.9 \
                 --with-config=user
     make
 }
 
 package() {
-    cd "${srcdir}/zfs-0.6.5.8"
+    cd "${srcdir}/zfs-0.6.5.9"
     make DESTDIR="${pkgdir}" install
     # Remove uneeded files
     rm -r "${pkgdir}"/etc/init.d
