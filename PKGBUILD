@@ -4,13 +4,14 @@ _base=dolfin
 _fragment="#branch=master"
 pkgname=python-${_base}-git
 pkgdesc="the C++/Python interface of FEniCS, providing a consistent PSE (Problem Solving Environment) for ordinary and partial differential equations."
-pkgver=20161125
+pkgver=20170131
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/fenics-project/${_base}"
 license=('GPL3')
 groups=('fenics-git')
-depends=('cppunit' 'eigen' 'gl2ps' 'hdf5' 'python-dijitso-git' 'python-ffc-git' 'python-instant-git' 'python-ply' 'python-six' 'python-sympy' 'slepc' 'suitesparse' 'scotch')
+depends=('cppunit' 'eigen' 'gl2ps' 'hdf5' 'python-dijitso-git' 'python-ffc-git' 'python-instant-git' 'python-ply' 'python-six' 'python-sympy' 'slepc' 'suitesparse')
+optdepends=('scotch: libraries for graph, mesh and hypergraph partitioning')
 makedepends=('git' 'swig')
 options=(!emptydirs)
 source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git${_fragment}")
@@ -39,6 +40,7 @@ build() {
 		-DPYTHON_EXECUTABLE="${py_interp}" \
 		-DDOLFIN_USE_PYTHON3=ON \
 		-DDOLFIN_ENABLE_VTK=OFF \
+		-DDOLFIN_ENABLE_DOCS=OFF \
 		-DCMAKE_SKIP_BUILD_RPATH=TRUE \
 		-DCMAKE_SKIP_RPATH=TRUE \
 		-DCMAKE_BUILD_TYPE="Release"
