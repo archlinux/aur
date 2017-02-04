@@ -1,5 +1,5 @@
 pkgname=terrafirma
-pkgver=3.0.5
+pkgver=3.0.18
 pkgrel=1
 pkgdesc='Mapping for Terraria'
 arch=('any')
@@ -8,7 +8,7 @@ license=(BSD)
 depends=()
 makedepends=(qt5-base qt5-tools)
 source=("https://github.com/mrkite/TerraFirma/archive/$pkgver.tar.gz")
-sha256sums=('39979593daf64bbe253dd71dc284008ed1ae124b46135f59ce14bf2ffe0f333e')
+sha256sums=('e309ae7cbc691dd737e51ec3e1bf6d153fb8bac8ccef9181df66eb883e416d97')
 
 build() {
 	cd "$srcdir/TerraFirma-$pkgver"
