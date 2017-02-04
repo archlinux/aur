@@ -9,6 +9,7 @@ pkgbase = setools
 	license = GPL
 	license = LGPL
 	checkdepends = checkpolicy
+	checkdepends = python2-enum34
 	makedepends = bison
 	makedepends = flex
 	makedepends = swig
