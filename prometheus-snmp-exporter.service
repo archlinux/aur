@@ -3,7 +3,7 @@ Description=Prometheus Exporter for SNMP metrics
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/prometheus_snmp_exporter
+ExecStart=/usr/bin/prometheus_snmp_exporter -config-file /etc/prometheus/snmp.yml -log.level warn
 
 [Install]
 WantedBy=multi-user.target
