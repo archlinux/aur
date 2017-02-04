@@ -2,12 +2,12 @@
 # Wed Jul 20 09:35:05 UTC 2016
 pkgbase = mu-editor
 	pkgdesc = A "micro" editor for MicroPython
-	pkgver = latest
+	pkgver = 0.9.13
 	pkgrel = 1
-	url = https://github.com/ntoll/mu
+	epoch = 1
+	url = https://codewith.mu/
 	arch = any
 	license = GPL3
-	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pyqt5
@@ -16,8 +16,8 @@ pkgbase = mu-editor
 	depends = python-pyflakes
 	depends = python-pyserial
 	depends = qt5-serialport
-	source = git+https://github.com/ntoll/mu
-	sha256sums = SKIP
+	source = https://github.com/mu-editor/mu/archive/v0.9.13.tar.gz
+	sha256sums = 68361c59c24d700339e41fcab0726883ffa20d3f0937dbfc89d2f08e2515cf41
 
 pkgname = mu-editor
 
