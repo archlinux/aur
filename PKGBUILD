@@ -4,41 +4,23 @@
 # Contributor: Travis Nickles <ryoohki7@yahoo.com>
 
 pkgname=qjoypad
-pkgver=4.1.0
-pkgrel=5
+pkgver=4.3.0
+pkgrel=1
 pkgdesc='Program with a QT interface that converts gamepad/joystick events into key strokes and mouse actions in XWindows'
 arch=('i686' 'x86_64')
-url='http://qjoypad.sourceforge.net/'
+url='https://github.com/panzi/qjoypad'
 license=('GPL')
-depends=('qt4' 'libxtst')
+depends=('qt5-base' 'libxtst')
 install=${pkgname}.install
+source=("https://github.com/panzi/$pkgname/archive/v$pkgver.tar.gz")
 
-source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
-	'qjoypad.desktop'
-	'x11.patch')
-
-md5sums=('d4a262c29bd3955c0fe51e9a0d31f619'
-         'a90839531415df510410558c47076cfc'
-         'f6e8a44d0a4b53c7f28e6b98beb265de')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}/src"
-  patch -p3 <../../x11.patch
-  sed -i 's/ qmake / qmake-qt4 /' config
-}
+md5sums=('1e8084db56dacdb863ca5e5e40f0d640')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/src"
-
-  ./config --prefix=/usr --install-dir=$pkgdir --devdir=/dev/input --debug --qmake4bin=/usr/lib/qt4/bin/qmake
+  cd "${srcdir}/${pkgname}-${pkgver}/"
+  mkdir -p build
+  cd build
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
   make
-
   make DESTDIR="$pkgdir/" install
-
-  install -d "${pkgdir}/usr/share/applications/"
-  install -d "${pkgdir}/usr/share/icons/hicolor/24x24/apps/"
-  install -d "${pkgdir}/usr/share/icons/hicolor/64x64/apps/"
-  install -m644 "${srcdir}/qjoypad.desktop" "${pkgdir}/usr/share/applications/"
-  install -m644 "${srcdir}/$pkgname-$pkgver/icons/gamepad4-24x24.png" "${pkgdir}/usr/share/icons/hicolor/24x24/apps/qjoypad.png"
-  install -m644 "${srcdir}/$pkgname-$pkgver/icons/gamepad4-64x64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/qjoypad.png"
 }
