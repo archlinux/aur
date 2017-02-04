@@ -1,4 +1,4 @@
- 
+
 post_install() {
   echo "To use the toolchain, environment variables have to be set in your shell."
   echo "Files setting them for POSIX compatible shells (bash, zsh, ...) and fish are"
