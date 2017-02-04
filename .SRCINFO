@@ -18,6 +18,7 @@ pkgbase = inkscape-bzr
 	depends = aspell
 	depends = gc
 	depends = poppler-glib
+	depends = libdbus
 	depends = libxslt
 	depends = gsl
 	depends = imagemagick
