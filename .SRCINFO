@@ -1,6 +1,6 @@
 pkgbase = kimap2-git
 	pkgdesc = Job-based API for interacting with IMAP servers
-	pkgver = r762.c316bdf
+	pkgver = r765.df01ac2
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/pim/kimap2
 	arch = i686
