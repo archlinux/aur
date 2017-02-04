@@ -1,7 +1,7 @@
 pkgbase=('python2-ezfreecad')
 pkgname=('python2-ezfreecad')
 _module='ezFreeCAD'
-pkgver='0.1'
+pkgver='0.11'
 pkgrel=1
 pkgdesc="Python wrapper for interfacing with FreeCAD it make it easier to draw 3D objects programmatically"
 url="https://github.com/AFMD/ezFreeCAD"
@@ -10,7 +10,7 @@ makedepends=('python2-setuptools')
 license=('unknown')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/e/ezfreecad/ezFreeCAD-${pkgver}.tar.gz")
-md5sums=('60b738b7a85a2320fd1248f1d9b866f8')
+md5sums=('14699f2af178b11a1053fcc2a13600b6')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
