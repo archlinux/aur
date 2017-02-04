@@ -3,7 +3,7 @@
 # Contributor: Michael Herold <arch@michaeljherold.com>
 # Contributor: Ryan Marcus <ryan@rmarcus.info>
 
-pkgname=cargo-bin
+pkgname=cargo-nightly-bin
 pkgrel=1
 pkgver=20160517
 pkgdesc="Cargo downloads your Rust project's dependencies and compiles your project."
