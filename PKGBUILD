@@ -4,7 +4,7 @@
 pkgbase=riot
 pkgname=('riot-desktop' 'riot-web')
 pkgver=0.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A glossy Matrix collaboration client, web and desktop versions."
 arch=('any')
 url="https://riot.im"
@@ -43,6 +43,7 @@ package_riot-web() {
   cp -r webapp "${pkgdir}"/usr/lib/${pkgbase}/
   install -Dm644 config.sample.json -t "${pkgdir}"/usr/lib/${pkgbase}/webapp/
   ln -s /etc/${pkgbase}/config.json "${pkgdir}"/usr/lib/${pkgbase}/webapp/
+  echo "${pkgver}" > "${pkgdir}"/usr/lib/${pkgbase}/webapp/version
 }
 
 package_riot-desktop() {
