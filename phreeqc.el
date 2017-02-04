@@ -52,6 +52,11 @@
 	:type 'string
 	:group 'phreeqc)
 
+(defcustom phreeqc-manual-fn "/usr/share/doc/phreeqc/Phreeqc_3_2013_manual.pdf"
+	"Name and path of the default thermodynamic database."
+	:type 'string
+	:group 'phreeqc)
+
 (defcustom phreeqc-indent 4
   "*This variable gives the indentation in Phreeqc-Mode."
   :type 'integer
@@ -89,6 +94,8 @@
           '("Visit Output" . phreeqc-visit-output))
 		(define-key menu-map [phreeqc-compile]
           '("Run Phreeqc" . phreeqc-compile))
+		(define-key menu-map [phreeqc-manual]
+          '("Phreeqc manual" . phreeqc-visit-manual))
 		(setq phreeqc-mode-map map)))
 
 (defvar phreeqc-output-mode-map nil
@@ -487,6 +494,12 @@ with no args, if that value is non-nil."
   (find-file-other-frame
    (concat (file-name-sans-extension buffer-file-name) ".out"))
   (phreeqc-output-mode))
+
+(defun phreeqc-visit-manual ()
+  "Visit PhreeqC v3 manual"
+  (interactive)
+  (find-file-other-frame phreeqc-manual-fn))
+
 
 (defun phreeqc-next-output-fold ()
   "Visit output from Phreeqc-Simulation and move cursor to next fold."
