@@ -2,7 +2,7 @@
 pkgname=('python2-ethtool' 'python-ethtool')
 _pkgname=python-ethtool
 pkgver=0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="python bindings for the ethtool kernel interface"
 arch=('i686' 'x86_64')
 url="https://fedorahosted.org/python-ethtool/"
@@ -54,12 +54,6 @@ package_python2-ethtool() {
   depends+=('python2')
   cd "$srcdir/$_pkgname-$pkgver"
   python2 setup.py install --skip-build --root="$pkgdir/" --optimize=1
-
-  install -d "$pkgdir/usr/bin"
-  install -m 0755 pethtool.py "$pkgdir/usr/bin/pethtool"
-  sed -i '1s/python/python2/' "$pkgdir/usr/bin/pethtool"
-  install -m 0755 pifconfig.py "$pkgdir/usr/bin/pifconfig"
-  sed -i '1s/python/python2/' "$pkgdir/usr/bin/pifconfig"
 }
 
 # vim:set ts=2 sw=2 et:
