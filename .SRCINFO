@@ -1,0 +1,12 @@
+pkgbase = fortune-mod-foxtrot
+	pkgdesc = Fortune quotes from FoxTrot
+	pkgver = 2214424
+	pkgrel = 1
+	url = http://en.wikiquote.org/wiki/FoxTrot
+	arch = any
+	license = custom:cc-sa-3.0
+	makedepends = wikiquote-fortune>=1.4
+	depends = fortune-mod
+
+pkgname = fortune-mod-foxtrot
+
