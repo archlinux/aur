@@ -4,19 +4,17 @@ _pkgname=jackass
 pkgname="${_pkgname}-git"
 pkgver=1.0.r13.adcd7eb
 _pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A VST plugin that provides JACK-MIDI support for VST hosts."
 arch=('i686' 'x86_64')
 url="https://github.com/falkTX/JackAss/"
 license=('MIT')
 depends=('gcc-libs-multilib' 'wine')
-makedepends=('git')
+makedepends=('git' 'steinberg-vst36')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("${_pkgname}::git+https://github.com/falkTX/JackAss.git"
-        'http://www.steinberg.net/sdk_downloads/vstsdk360_22_11_2013_build_100.zip')
-sha256sums=('SKIP'
-            '74e41da563a1c91e86677530936cb46a15f1af76b29d4c1877134cf29eafb718')
+source=("${_pkgname}::git+https://github.com/falkTX/JackAss.git")
+sha256sums=('SKIP')
 changelog=ChangeLog
 
 
@@ -29,7 +27,8 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  make CXXFLAGS="-I ${srcdir}/VST3\\ SDK" linux wine32 wine64
+  sed -i -e 's|public\.sdk/source/vst2\.x/|vst36/|' JackAss.cpp
+  make linux wine32 wine64
 }
 
 package() {
