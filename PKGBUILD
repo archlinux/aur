@@ -5,7 +5,7 @@
 
 _pkgname=elasticsearch
 pkgname=elasticsearch17
-pkgver=1.7.5
+pkgver=1.7.6
 pkgrel=1
 pkgdesc="Distributed RESTful search engine built on top of Lucene (1.7.x)"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ source=(
   elasticsearch-tmpfile.conf
   elasticsearch.default
 )
-sha256sums=('0aa58947d66b487488e86059352deb7c6cab5da4accdff043cce9fed7c3d2fa7'
+sha256sums=('78affc30353730ec245dad1f17de242a4ad12cf808eaa87dd878e1ca10ed77df'
             '8f1b4f6e22b472a4f4e711f010d6733a06935b46bb7314360f27c2ab506d6e46'
             '7c1e06cdf838b5ad090e0463de5dab3e8d62f0d7e6ac04e0b0049a4007dee612'
             'b3feb1e9c7e7ce6b33cea6c727728ed700332aae942ca475c3bcc1d56b9f113c'
