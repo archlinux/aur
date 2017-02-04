@@ -15,7 +15,7 @@
 # archzfs github page.
 #
 pkgname="zfs-linux-git"
-pkgver=0.7.0_rc3_r39_g160af7710_4.9.6_1
+pkgver=0.7.0_rc3_r69_g57c6a9174_4.9.6_1
 pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System."
 depends=("kmod" "spl-linux-git" "zfs-utils-linux-git" "linux=4.9.6")
@@ -29,13 +29,14 @@ license=("CDDL")
 install=zfs.install
 provides=("zfs")
 conflicts=('zfs-linux' 'zfs-linux-lts')
+replaces=("zfs-git")
 
 build() {
     cd "${srcdir}/zfs"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-0.6.5.8 --with-config=kernel \
+                --libexecdir=/usr/lib/zfs-0.6.5.9 --with-config=kernel \
                 --with-linux=/usr/lib/modules/4.9.6-1-ARCH/build \
                 --with-linux-obj=/usr/lib/modules/4.9.6-1-ARCH/build
     make
