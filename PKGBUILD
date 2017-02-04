@@ -4,7 +4,7 @@
 
 _pkgname=pioneer
 pkgname=$_pkgname-bin
-pkgver=20150912
+pkgver=20161129
 pkgrel=1
 pkgdesc="A freeform single player space adventure in the spirit of Frontier: Elite II."
 arch=('i686' 'x86_64')
@@ -31,11 +31,8 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 }
 
-# makepkg --geninteg >> PKGBUILD
-
 md5sums=('46e51941124eb3cf1af9233820223478'
          '1f05200234c41b4320f59de80534669c'
          '9e61ce70a75f6b9ad0fd5cab5d0b7420')
-md5sums_i686=('b472e03666792b9e016267cb5557e71a')
-md5sums_x86_64=('6fd1f6353ada6bd027d3381a0f0793a5')
-
+md5sums_i686=('feee66ae6071fdc0421d028ff43df492')
+md5sums_x86_64=('79d840670c43482ed5d2cf01cda89a4d')
