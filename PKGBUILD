@@ -4,11 +4,11 @@
 # Contributor: Julien Machiels
 
 pkgname=waifu2x-converter-cpp-cuda-git
-pkgver=r427.f89dd61
+pkgver=r463.f2cbb2e
 pkgrel=1
 pkgdesc="Image Super-Resolution for Anime-Style-Art. (re-implementation in C++ using OpenCV). with CUDA support (GIT Version)"
 arch=('x86_64')
-url='https://github.com/tanakamura/waifu2x-converter-cpp'
+url='https://github.com/DeadSix27/waifu2x-converter-cpp'
 license=('MIT')
 depends=('opencv'
          'cuda'
@@ -23,7 +23,7 @@ provides=('waifu2x-converter-cpp'
 conflicts=('waifu2x-converter-cpp'
            'waifu2x'
            )
-source=('git+https://github.com/tanakamura/waifu2x-converter-cpp.git')
+source=('git+https://github.com/DeadSix27/waifu2x-converter-cpp.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -44,7 +44,9 @@ build() {
     -DCMAKE_SKIP_RPATH=ON \
     -DCUDA_CUDA_LIBRARY=/opt/cuda/lib64/stub/libcuda.so \
     -DCUDA_NVCC_FLAGS='-std=c++11' \
-    -DINSTALL_MODELS=ON
+    -DINSTALL_MODELS=ON \
+    -DOVERRIDE_OPENCV=ON \
+    -DOPENCV_PREFIX=/usr
 
   make
 }
