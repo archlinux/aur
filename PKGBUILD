@@ -26,5 +26,5 @@ package() {
 
   install -d "$pkgdir/usr/share/emacs/site-lisp/flycheck"
   install -Dm644 flycheck.{el,elc} "$pkgdir/usr/share/emacs/site-lisp/flycheck"
-  install -Dm644 doc/flycheck.info "$pkgdir/usr/share/info/flycheck.info"
+  #install -Dm644 doc/flycheck.info "$pkgdir/usr/share/info/flycheck.info"
 }
