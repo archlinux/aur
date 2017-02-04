@@ -1,0 +1,32 @@
+pkgbase = zalo
+	pkgdesc = Zalo - Nhắn gửi yêu thương
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://zalo.me/pc
+	arch = x86_64
+	license = custom
+	depends = libappindicator-gtk2
+	depends = glibc
+	depends = gcc-multilib
+	depends = gdk-pixbuf2
+	depends = mesa
+	depends = glib2
+	depends = gtk2
+	depends = harfbuzz
+	depends = icu
+	depends = libpng
+	depends = libpulse
+	depends = openssl
+	depends = libstdc++5
+	depends = libx11
+	depends = libxext
+	depends = zlib
+	depends = qt5-multimedia
+	depends = sqlcipher
+	source = http://res.zaloapp.com/pc/ZaloSetupLinux.deb
+	source = zalo
+	md5sums = 451e9d5ac746d8a89b86282020b496ba
+	md5sums = 56b30da353661e268300bb168c796cdb
+
+pkgname = zalo
+
