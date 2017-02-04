@@ -1,0 +1,189 @@
+diff -Naupr frr_orig/redhat/bgpd.service frr/redhat/bgpd.service
+--- frr_orig/redhat/bgpd.service	1970-01-01 07:00:00.000000000 +0700
++++ frr/redhat/bgpd.service	2017-02-04 21:44:22.399171740 +0700
+@@ -0,0 +1,15 @@
++[Unit]
++Description=BGP routing daemon
++Documentation=man:bgpd(8) man:zebra(8)
++BindTo=zebra.service
++After=network.target zebra.service
++
++[Service]
++Type=forking
++PIDFile=/run/frr/bgpd.pid
++ExecStart=/usr/bin/bgpd -d
++ExecReload=/bin/kill -HUP $MAINPID
++Restart=on-abort
++
++[Install]
++WantedBy=multi-user.target
+diff -Naupr frr_orig/redhat/isisd.service frr/redhat/isisd.service
+--- frr_orig/redhat/isisd.service	1970-01-01 07:00:00.000000000 +0700
++++ frr/redhat/isisd.service	2017-02-04 21:44:28.029195379 +0700
+@@ -0,0 +1,15 @@
++[Unit]
++Description=IS-IS routing daemon
++Documentation=man:isis(8) man:zebra(8)
++BindTo=zebra.service
++After=network.target zebra.service
++
++[Service]
++Type=forking
++PIDFile=/run/frr/isisd.pid
++ExecStart=/usr/bin/isisd -d
++ExecReload=/bin/kill -HUP $MAINPID
++Restart=on-abort
++
++[Install]
++WantedBy=multi-user.target
+diff -Naupr frr_orig/redhat/ldpd.service frr/redhat/ldpd.service
+--- frr_orig/redhat/ldpd.service	1970-01-01 07:00:00.000000000 +0700
++++ frr/redhat/ldpd.service	2017-02-04 21:44:14.649139198 +0700
+@@ -0,0 +1,15 @@
++[Unit]
++Description=LDP engine
++Documentation=man:ldpd(8) man:zebra(8)
++BindTo=zebra.service
++After=network.target zebra.service
++
++[Service]
++Type=forking
++PIDFile=/run/frr/ldpd.pid
++ExecStart=/usr/bin/ldpd -d
++ExecReload=/bin/kill -HUP $MAINPID
++Restart=on-abort
++
++[Install]
++WantedBy=multi-user.target
+diff -Naupr frr_orig/redhat/ospf6d.service frr/redhat/ospf6d.service
+--- frr_orig/redhat/ospf6d.service	1970-01-01 07:00:00.000000000 +0700
++++ frr/redhat/ospf6d.service	2017-02-04 21:44:34.375888694 +0700
+@@ -0,0 +1,15 @@
++[Unit]
++Description=OSPF routing daemon for IPv6
++Documentation=man:ospfd(8) man:zebra(8)
++BindTo=zebra.service
++After=network.target zebra.service
++
++[Service]
++Type=forking
++PIDFile=/run/frr/ospf6d.pid
++ExecStart=/usr/bin/ospf6d -d
++ExecReload=/bin/kill -HUP $MAINPID
++Restart=on-abort
++
++[Install]
++WantedBy=multi-user.target
+diff -Naupr frr_orig/redhat/ospfd-instance@.service frr/redhat/ospfd-instance@.service
+--- frr_orig/redhat/ospfd-instance@.service	1970-01-01 07:00:00.000000000 +0700
++++ frr/redhat/ospfd-instance@.service	2017-02-04 21:44:38.465905867 +0700
+@@ -0,0 +1,15 @@
++[Unit]
++Description=OSPF routing daemon instance %i
++Documentation=man:ospfd(8) man:zebra(8)
++BindTo=zebra.service
++After=network.target zebra.service ospfd.service
++
++[Service]
++Type=forking
++PIDFile=/run/frr/ospfd-%i.pid
++ExecStart=/usr/bin/ospfd -n %i -d
++ExecReload=/bin/kill -HUP $MAINPID
++Restart=on-abort
++
++[Install]
++WantedBy=multi-user.target
+diff -Naupr frr_orig/redhat/ospfd.service frr/redhat/ospfd.service
+--- frr_orig/redhat/ospfd.service	1970-01-01 07:00:00.000000000 +0700
++++ frr/redhat/ospfd.service	2017-02-04 21:44:41.415918254 +0700
+@@ -0,0 +1,15 @@
++[Unit]
++Description=OSPF routing daemon
++Documentation=man:ospfd(8) man:zebra(8)
++BindTo=zebra.service
++After=network.target zebra.service
++
++[Service]
++Type=forking
++PIDFile=/run/frr/ospfd.pid
++ExecStart=/usr/bin/ospfd -d
++ExecReload=/bin/kill -HUP $MAINPID
++Restart=on-abort
++
++[Install]
++WantedBy=multi-user.target
+diff -Naupr frr_orig/redhat/pimd.service frr/redhat/pimd.service
+--- frr_orig/redhat/pimd.service	1970-01-01 07:00:00.000000000 +0700
++++ frr/redhat/pimd.service	2017-02-04 21:45:14.026054971 +0700
+@@ -0,0 +1,14 @@
++[Unit]
++Description=PIM multicast routing engine
++Documentation=man:pimd(8) man:zebra(8)
++BindTo=zebra.service
++After=network.target zebra.service
++
++[Service]
++Type=forking
++PIDFile=/run/frr/pimd.pid
++ExecStart=/usr/sbin/pimd -d
++Restart=on-abort
++
++[Install]
++WantedBy=multi-user.target
+diff -Naupr frr_orig/redhat/ripd.service frr/redhat/ripd.service
+--- frr_orig/redhat/ripd.service	1970-01-01 07:00:00.000000000 +0700
++++ frr/redhat/ripd.service	2017-02-04 21:45:16.656065993 +0700
+@@ -0,0 +1,15 @@
++[Unit]
++Description=RIP routing daemon
++Documentation=man:ripd(8) man:zebra(8)
++BindTo=zebra.service
++After=network.target zebra.service
++
++[Service]
++Type=forking
++PIDFile=/run/frr/ripd.pid
++ExecStart=/usr/bin/ripd -d
++ExecReload=/bin/kill -HUP $MAINPID
++Restart=on-abort
++
++[Install]
++WantedBy=multi-user.target
+diff -Naupr frr_orig/redhat/ripngd.service frr/redhat/ripngd.service
+--- frr_orig/redhat/ripngd.service	1970-01-01 07:00:00.000000000 +0700
++++ frr/redhat/ripngd.service	2017-02-04 21:47:08.866535951 +0700
+@@ -0,0 +1,15 @@
++[Unit]
++Description=RIP routing daemon for IPv6
++Documentation=man:ripngd(8) man:zebra(8)
++BindTo=zebra.service
++After=network.target zebra.service
++
++[Service]
++Type=forking
++PIDFile=/run/frr/ripngd.pid
++ExecStart=/usr/bin/ripngd -d
++ExecReload=/bin/kill -HUP $MAINPID
++Restart=on-abort
++
++[Install]
++WantedBy=multi-user.target
+diff -Naupr frr_orig/redhat/zebra.service frr/redhat/zebra.service
+--- frr_orig/redhat/zebra.service	1970-01-01 07:00:00.000000000 +0700
++++ frr/redhat/zebra.service	2017-02-04 21:47:15.876565302 +0700
+@@ -0,0 +1,15 @@
++[Unit]
++Description=GNU Zebra routing manager
++Documentation=man:zebra(8)
++After=network.target
++
++[Service]
++Type=forking
++PIDFile=/run/frr/zebra.pid
++ExecStartPre=/sbin/ip route flush proto zebra
++ExecStart=/usr/bin/zebra -d
++ExecReload=/bin/kill -HUP $MAINPID
++Restart=on-abort
++
++[Install]
++WantedBy=multi-user.target
