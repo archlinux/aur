@@ -1,13 +1,13 @@
 pkgbase = certbot-user
 	pkgdesc = Let’s Encrypt certbot running as certbot user rather than root, with either standalone or webroot mode.
-	pkgver = 0.10.2
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://certbot.eff.org
 	arch = any
 	license = Apache
 	checkdepends = python2-nose
 	depends = ca-certificates
-	depends = python2-acme=0.10.2
+	depends = python2-acme=0.11.1
 	depends = python2-configargparse
 	depends = python2-configobj
 	depends = python2-cryptography
@@ -25,12 +25,12 @@ pkgbase = certbot-user
 	depends = systemd
 	provides = certbot
 	conflicts = certbot
-	source = https://pypi.io/packages/source/c/certbot/certbot-0.10.2.tar.gz
-	source = https://pypi.io/packages/source/c/certbot/certbot-0.10.2.tar.gz.asc
+	source = https://pypi.io/packages/source/c/certbot/certbot-0.11.1.tar.gz
+	source = https://pypi.io/packages/source/c/certbot/certbot-0.11.1.tar.gz.asc
 	source = certbot.tmpfiles
 	source = certbot.sysusers
 	validpgpkeys = A2CFB51FA275A7286234E7B24D17C995CD9775F2
-	sha256sums = 33729ce100fc9d00d9820c81fc3ef9b95802b8d261f0cca0cce422bc568b1631
+	sha256sums = 6c1724486d500c5163c9313d6a14af5af9f4515f79553627303a6b86df2c3af2
 	sha256sums = SKIP
 	sha256sums = ca72fe5f7e6ccbbe8afc084d9255f93e3b81ce2793a77103a9382fa9eaff6c97
 	sha256sums = 151621a821f56178408851e016c7fda67dc4c726f210ad3279b29fd1f43282fa
