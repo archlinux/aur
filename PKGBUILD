@@ -2,7 +2,7 @@
 
 pkgname=perl-gtk2-appindicator
 pkgver=0.15
-pkgrel=4
+pkgrel=5
 pkgdesc="Gtk2::AppIndicator - Perl extension for libappindicator"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/~oesterhol/Gtk2-AppIndicator/lib/Gtk2/AppIndicator.pm"
