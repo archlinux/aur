@@ -1,0 +1,20 @@
+pkgbase = haguichi-indicator
+	pkgdesc = Provides an indicator for Haguichi
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = http://www.haguichi.net
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv7h
+	license = GPL3
+	makedepends = cmake
+	makedepends = vala
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = haguichi
+	source = http://launchpad.net/haguichi-indicator/0.3/0.3.2/+download/haguichi-indicator-0.3.2.tar.xz
+	sha256sums = e5e7d740a2b3807ba96ab08e5e563b82fbda37a82f551801091d0757712cf973
+
+pkgname = haguichi-indicator
+
