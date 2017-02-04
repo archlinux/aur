@@ -1,14 +1,14 @@
 pkgbase = vuze-plugin-mldht
 	pkgdesc = A plugin for the alternative Distributed Hash Table implementation (DHT) used by µTorrent
-	pkgver = 1.5.7
+	pkgver = 1.5.9
 	pkgrel = 1
 	url = http://plugins.vuze.com/details/mlDHT
 	arch = any
 	license = GPL2
 	depends = vuze
-	noextract = mlDHT_1.5.7.jar
-	source = http://plugins.vuze.com/plugins/mlDHT_1.5.7.jar
-	md5sums = 04ea830ec72fed9df326348954695bdc
+	noextract = mlDHT_1.5.9.jar
+	source = http://plugins.vuze.com/plugins/mlDHT_1.5.9.jar
+	md5sums = 0a18eb80e8533731a2011ce2cf4b5e19
 
 pkgname = vuze-plugin-mldht
 

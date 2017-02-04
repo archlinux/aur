@@ -3,7 +3,7 @@
 
 pkgname=vuze-plugin-mldht
 _name=mlDHT
-pkgver=1.5.7
+pkgver=1.5.9
 pkgrel=1
 pkgdesc="A plugin for the alternative Distributed Hash Table implementation (DHT) used by µTorrent"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('vuze')
 source=("http://plugins.vuze.com/plugins/${_name}_$pkgver.jar")
 noextract=("${_name}_$pkgver.jar")
-md5sums=('04ea830ec72fed9df326348954695bdc')
+md5sums=('0a18eb80e8533731a2011ce2cf4b5e19')
 
 package () {
   for i in /opt/vuze*; do
