@@ -21,7 +21,7 @@ sha256sums=('SKIP'
             'c7d852229ae8a1b816ec476554c5d703a5513e6578a38672a52f7e7fca653b73'
             'ddaccc43724be3b89d154aced64c6b04089047345c71dcbd60dc41719faae1f6'
             'd9716504c4c8eb9f1e238ecca6e691cb645657ae0bc32621e9ff10c6791dc978'
-            '05f97e21e3807fa48e048a56b393bf9fe7e450ded978ccdfb04923b460ec62d1')
+            '40d7cf2596fdc6f2c94998dd93aba76107828e7cf4dbd77b99fd1b4c36712dc4')
 
 depends=('libbsd')
 makedepends=('git')
