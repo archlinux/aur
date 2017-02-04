@@ -1,30 +1,19 @@
+# Maintainer: hexchain <i@hexchain.org>
+
+# Thanks Nicholas Guriev <guriev-ns@ya.ru> for the patches!
+# https://github.com/mymedia2/tdesktop
+
 pkgname=telegram-desktop-systemqt
 pkgver=1.0.6
-pkgrel=1
-pkgdesc='Official desktop version of Telegram messaging app. (Use system Qt)'
+pkgrel=2
+pkgdesc='Experimental build of Telegram Desktop (using system Qt)'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
-depends=(
-    'ffmpeg'
-    'hicolor-icon-theme'
-    'minizip'
-    'openal'
-    'qt5-base'
-)
-makedepends=(
-    'cmake'
-    'dee'
-    'git'
-    'gyp-git'
-    'libappindicator-gtk2'
-    'libexif'
-    'libva'
-    'libwebp'
-    'mtdev'
-    'python'
-    'python2'
-)
+depends=('ffmpeg' 'hicolor-icon-theme' 'minizip' 'openal' 'qt5-base')
+makedepends=('cmake' 'dee' 'git' 'gyp-git' 'libappindicator-gtk2' 'libexif' 'libva' 'libwebp' 'mtdev' 'python' 'python2')
+conflicts=('telegram-desktop')
+provides=('telegram-desktop')
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
     "telegramdesktop.desktop"
