@@ -1,0 +1,9 @@
+[Unit]
+Description=Prometheus Exporter for SNMP metrics
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/prometheus_snmp_exporter
+
+[Install]
+WantedBy=multi-user.target
