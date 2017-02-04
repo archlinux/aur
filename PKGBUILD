@@ -2,7 +2,7 @@
 # Contributor: Artem Sereda <overmind88@gmail.com>
 
 pkgname=kvpm
-pkgver=0.9.9
+pkgver=0.9.10
 # _pkgver=pl1
 pkgrel=1
 pkgdesc="Front end for Linux LVM and Gnu parted. It also handles creating and mounting file systems"
@@ -11,7 +11,7 @@ url="http://sourceforge.net/projects/kvpm/"
 license=('GPL')
 depends=('parted' 'kdebase-runtime' 'lvm2>=2.02.98')
 makedepends=('cmake' 'automoc4')
-sha256sums=('97f4a2f0632f9df7a9e3731c93088ba0725d942838603cdb4a4cba53c1c02604')
+sha256sums=('16c44cf8f7bfbe3ba1c203b7245bc43bd66da847eb138d4c2a82a706850cc41c')
 install=$pkgname.install
 # source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}-${_pkgver}.tar.gz)
 source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz)
