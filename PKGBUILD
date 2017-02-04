@@ -24,6 +24,7 @@ sha256sums=('SKIP'
             'afb2c1a757720c70798e7f7218f823297a43bc61e0cb192e9443df67c2963903'
             'd3ad7dd270e57d36a22caef21bff17f2eb4acb0ad9087f6a17ca4a0bf9c566fc'
             'd03554bd926954218c243a1a97d39ea9700d064a2374f671249a533ebd970375')
+
 _jkarch=i386
 [ "$CARCH" == "x86_64" ] && {
         _jkarch=x86_64
