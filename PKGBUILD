@@ -18,7 +18,7 @@ build() {
   cd "$pkgname-$pkgver"
 
   emacs --batch -f batch-byte-compile flycheck.el
-  #makeinfo --force --no-split -o doc/flycheck.info doc/flycheck.texi
+  #makeinfo --force --no-split -o doc/flycheck.info doc/flycheck.texi //not needed 
 }
 
 package() {
@@ -26,5 +26,5 @@ package() {
 
   install -d "$pkgdir/usr/share/emacs/site-lisp/flycheck"
   install -Dm644 flycheck.{el,elc} "$pkgdir/usr/share/emacs/site-lisp/flycheck"
-  #install -Dm644 doc/flycheck.info "$pkgdir/usr/share/info/flycheck.info"
+  #install -Dm644 doc/flycheck.info "$pkgdir/usr/share/info/flycheck.info"  //not needed
 }
