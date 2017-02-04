@@ -12,13 +12,13 @@
 pkgbase=mesa-test-git
 pkgname=('mesa-test-git' 'mesa-test-libgl-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=13.1.0_devel.87261.b58d1ee
+pkgver=17.1.0_devel.88759.106a51440d
 pkgrel=1
 arch=('x86_64')
-makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
-             'libxshmfence' 'libxxf86vm'  'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm-svn'
-             'libomxil-bellagio' 'libclc' 'clang-svn' 'git' 'nettle' 'libtxc_dxtn' 'ocl-icd'
-             'libxvmc' 'vulkan-icd-loader' 'libgcrypt' 'libudev.so')
+makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'libdrm' 'nettle' 'glproto'
+             'dri2proto' 'dri3proto' 'presentproto' 'libxml2' 'libx11' 'libxshmfence' 
+             'libxxf86vm'  'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'libomxil-bellagio'
+             'libtxc_dxtn' 'ocl-icd' 'vulkan-icd-loader' 'libgcrypt')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git+https://anongit.freedesktop.org/git/mesa/mesa.git'
@@ -48,7 +48,7 @@ build () {
   ./autogen.sh --prefix=/usr \
                --sysconfdir=/etc \
                --with-dri-driverdir=/usr/lib/xorg/modules/dri \
-               --with-gallium-drivers=i915,ilo,r300,r600,radeonsi,nouveau,svga,swrast,virgl \
+               --with-gallium-drivers=i915,r300,r600,radeonsi,nouveau,svga,swrast,virgl \
                --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
                --with-egl-platforms=x11,drm,wayland \
                --with-vulkan-drivers=intel,radeon \
@@ -110,8 +110,8 @@ build () {
 
 package_mesa-test-git () {
   pkgdesc="an open-source implementation of the OpenGL specification, git version"
-  depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'elfutils'
-           'libomxil-bellagio' 'libtxc_dxtn' 'nettle' 'llvm-libs-svn' 'libxvmc')
+  depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
+           'libomxil-bellagio' 'libtxc_dxtn' 'nettle' 'llvm-libs-svn')
   optdepends=('opengl-man-pages: for the OpenGL API man pages')
   provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-driver')
   replaces=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau')
