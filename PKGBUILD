@@ -2,7 +2,7 @@
 
 pkgname=bloscpack
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='command line interface to and serialization format for Blosc.'
 arch=(any)
 url='https://github.com/Blosc/bloscpack'
@@ -11,12 +11,11 @@ depends=(python-blosc
          python-numpy
          python-six)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/Blosc/bloscpack/archive/v${pkgver}.tar.gz)
-md5sums=('e466118b1d425c64aca9ea4f44df11c8')
+sha256sums=('306ff2e12815e58c8320f0668ef9bcac3d840431d93b7727d7eda391cc255b02')
 
 build()
 {
     cd ${pkgname}-${pkgver}
-    #sed -i -e '/blosc==/s|==1\.2\.7|>=1\.3\.2|' requirements.txt setup.py
     python setup.py build
 }
 
