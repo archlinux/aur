@@ -22,12 +22,13 @@ pkgver() {
 }
 
 build() {
-  cd "$_pkgname"
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr
+  mkdir -p build
+  cd build
+  cmake "$srcdir/$_pkgname" -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  cd "$_pkgname"
+  cd build
   make DESTDIR="$pkgdir" install
 }
