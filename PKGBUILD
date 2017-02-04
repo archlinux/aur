@@ -1,8 +1,8 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lsi-msm
-pkgver=16.05.04.00
-_pkgver="$(echo "${pkgver}" | sed 's/\./-/3')"
+_pkgver=16.11.00-03
+pkgver="${_pkgver//-/.}"
 pkgrel=1
 pkgdesc="LSI Logic MegaRAID Storage Manager Suite"
 arch=('i686' 'x86_64')
@@ -41,9 +41,7 @@ makedepends=('icu'
              'lynx'
              )
           # OpenPegasus site don't like wget/curl. :/
-DLAGENTS=('https::/usr/bin/lynx -accept_all_cookies -cmd_script=lynx_script_for_download_pegasus %u'
-          'http::/usr/bin/curl -LC - -O'
-          )
+DLAGENTS=('https::/usr/bin/lynx -accept_all_cookies -cmd_script=lynx_script_for_download_pegasus %u')
 source=('lynx_script_for_download_pegasus' #IMPORTANT for download pegasus zip. please don't move to other place
         'https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz'
         'msm_profile.sh'
@@ -58,8 +56,8 @@ source=('lynx_script_for_download_pegasus' #IMPORTANT for download pegasus zip. 
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.14.1-build-fixes.patch'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.14.1-ssl-include.patch'
         )
-source_i686=("${pkgver}_Linux-x86_MSM.tar.gz::http://docs.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_installer-${_pkgver}.tar.gz")
-source_x86_64=("${pkgver}_Linux-x64_MSM.tar.gz::http://docs.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_x64_installer-${_pkgver}.tar.gz")
+source_i686=("${pkgver}_Linux-x86_MSM.tar.gz::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_installer-${_pkgver}.tar.gz")
+source_x86_64=("${pkgver}_Linux-x64_MSM.tar.gz::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_x64_installer-${_pkgver}.tar.gz")
 sha256sums=('72d24d357601b9df8a418a7e7851d3b55c32614394e5507146fe961e4712c5e8'
             '9f2f13a35da218f3cb6e8478246ff7c4d3010560bb4d5de9cbf4272d48e353fb'
             '11892783bc2569ad1f4bac0ec8f91f1e7e54c795f9b6454e93348a6ca0cf2a5b'
@@ -74,8 +72,8 @@ sha256sums=('72d24d357601b9df8a418a7e7851d3b55c32614394e5507146fe961e4712c5e8'
             '5863314f2ff17c32bc340efd5241f809bc1372b8e2fde0b3a2e22c7ab9b64281'
             '5de02253442ef8cb3b6f744fa4dd3237b66d96911ab8badd63336a7e1d28a429'
             )
-sha256sums_i686=('e74ca40fc3d2c48daaed1b1e10d19271796e6073e9c57c56b0076e1d7731ee8d')
-sha256sums_x86_64=('95c104ea4f77c52df79e50cd22fb882928a578cc875ca3f5776e147bddf9f756')
+sha256sums_i686=('e00e8418fcc6e991525686de30dcbae8581595cc8a640eaf75a70dde0422c72b')
+sha256sums_x86_64=('f7ab9dd104ca4c6ed64b9a44be3fe2760328874c89ef46d8ccb92f67a750b012')
 install=lsi-msm.install
 backup=('etc/lsi_mrdsnmp/LSI_StorSNMP.ini'
         'etc/lsi_mrdsnmp/sas/sas_TrapDestination.conf'
@@ -212,9 +210,6 @@ package() {
 
   # Create soname links
   _create_links
-
-  # Softlinking needed libs
-  (cd opt/lsi/snmp/lib; ln -s libstorelibir-3.so.*.* libstorelibir-3.so.7)
 
   # Add /opt/lsi/msm/lib, /opt/lsi/Pegasus and /opt/lsi/snmp/lib to ldconf search path
   install -Dm644 "${srcdir}/ld.so.lsi-msm.conf" etc/ld.so.conf.d/lsi.conf
