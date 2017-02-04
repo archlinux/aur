@@ -1,7 +1,7 @@
 pkgbase = sstp-server
 	pkgdesc = A Secure Socket Tunneling Protocol (SSTP) server.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sorz/sstp-server
 	arch = x86_64
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = sstp-server
 	source = https://github.com/sorz/sstp-server/archive/v0.4.0.tar.gz
 	source = sstp-server@.service
 	sha256sums = b592381b4bcfec091441763b1b994c7297f14ca0265c976447a0d78bdbaf00ec
-	sha256sums = c282f4450eb00adf5d306a5cbe316441c6866d2f0f6a558dbc1f5f79819e1e87
+	sha256sums = 15cd7335939668d7f8487574ae457192257550ceadf50fb74393536997a42c10
 
 pkgname = sstp-server
 

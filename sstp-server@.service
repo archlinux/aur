@@ -8,7 +8,8 @@ Restart=on-failure
 ExecStart=/usr/bin/sstpd -f /etc/sstp-server.ini -s %i
 
 PrivateTmp=true
-PrivateDevices=true
+DevicePolicy=closed
+DeviceAllow=char-ppp rw
 ProtectHome=true
 ProtectSystem=full
 
