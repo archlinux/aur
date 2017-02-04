@@ -2,10 +2,10 @@
 pkgname=('waifu2x-converter-cpp-git')
 _srcname='waifu2x-converter-cpp'
 pkgdesc='Image Super-Resolution for Anime-Style Art'
-pkgver='r427'
+pkgver='r463'
 pkgrel='1'
 arch=('i686' 'x86_64')
-url="https://github.com/tanakamura/${_srcname}"
+url="https://github.com/DeadSix27/${_srcname}"
 license=('MIT')
 
 depends=('opencv' 'opencl-headers')
@@ -30,8 +30,9 @@ build() {
 
     cmake \
         -DCMAKE_INSTALL_PREFIX='/usr' \
-        -DCMAKE_BUILD_TYPE='RELEASE' \
+        -DCMAKE_BUILD_TYPE='Release' \
         -DINSTALL_MODELS='ON' \
+        -DOVERRIDE_OPENCV='ON' \
         .
     make
 }
