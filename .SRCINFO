@@ -10,7 +10,6 @@ pkgbase = mumble-stable-minimal
 	makedepends = mesa
 	depends = qt4
 	depends = speex
-	depends = lsb-release
 	depends = libxi
 	depends = avahi
 	depends = libsndfile

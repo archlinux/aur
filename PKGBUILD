@@ -7,7 +7,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Mumble is an open source voice chat application similar to TeamSpeak. This release doesn't include Text2Speech, Overlay and several plugins."
 license=('BSD')
-depends=('qt4' 'speex' 'lsb-release' 'libxi' 'avahi' 'libsndfile' 'protobuf' 'libpulse' 'jack' 'opus' 'xdg-utils')
+depends=('qt4' 'speex' 'libxi' 'avahi' 'libsndfile' 'protobuf' 'libpulse' 'jack' 'opus' 'xdg-utils')
 makedepends=('boost' 'mesa')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
