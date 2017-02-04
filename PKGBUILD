@@ -1,14 +1,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem++-hg
-pkgver=3.51.r3969.310d576bf867
+pkgver=3.51.r3970.88961c74485e
 _pkgver=3.51
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method (Mercurial)'
 arch=('i686' 'x86_64')
 url="http://www.freefem.org/ff++/index.htm"
 license=('LGPL')
-depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-cpp-fortran' 'gsl' 'openmpi' 'openblas-lapack' 'arpack' 'petsc')
+depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5-cpp-fortran' 'gsl' 'openmpi' 'openblas-lapack' 'arpack' 'parmetis' 'python')
 makedepends=('mercurial' 'gcc-fortran' 'flex-git' 'texlive-core')
 provides=("freefem++=$_pkgver")
 conflicts=('freefem++')
@@ -35,9 +35,7 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --enable-download \
-    --with-mpi \
-    --with-petsc=/usr/petsc/conf/petscvariables
-    
+    --with-mpi 
   make 
 }
 
