@@ -1,6 +1,6 @@
 pkgbase = flycheck
 	pkgdesc = Modern on-the-fly syntax checking extension for GNU Emacs
-	pkgver = 0.30
+	pkgver = 30
 	pkgrel = 1
 	url = http://www.flycheck.org/
 	arch = any
