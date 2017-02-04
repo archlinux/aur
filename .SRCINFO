@@ -1,7 +1,7 @@
 pkgbase = wire-desktop
 	pkgdesc = Modern, private messenger. Based on Electron.
 	pkgver = 2.11.2703
-	pkgrel = 2
+	pkgrel = 1
 	url = https://wire.com/
 	arch = x86_64
 	arch = i686

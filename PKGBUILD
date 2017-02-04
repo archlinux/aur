@@ -2,7 +2,7 @@
 pkgname=wire-desktop
 _pkgname=wire
 pkgver=2.11.2703
-pkgrel=2
+pkgrel=1
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
 url='https://wire.com/'
