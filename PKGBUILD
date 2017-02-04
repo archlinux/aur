@@ -1,11 +1,11 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.0.9.r324.5f15c66
+pkgver=0.0.0.9.r444.a809f3341
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=('x86_64')
-url='https://github.com/DHrpcs3/rpcs3'
+url='https://github.com/RPCS3/rpcs3'
 license=('GPL2')
 depends=('gcc-libs' 'glew' 'glibc' 'glu' 'libgl' 'libpng' 'libx11' 'openal'
          'wxgtk' 'yaml-cpp' 'zlib'
