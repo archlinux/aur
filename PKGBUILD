@@ -10,7 +10,7 @@
 
 pkgname=strongswan
 pkgver=5.5.1
-pkgrel=4
+pkgrel=5
 pkgdesc="open source IPsec implementation"
 url='http://www.strongswan.org'
 license=("GPL")
@@ -39,6 +39,8 @@ vici.conf,x509.conf,xauth-eap.conf,xauth-generic.conf,xcbc.conf,unity.conf}
 source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2"
     "https://download.strongswan.org/strongswan-${pkgver}.tar.bz2.sig"
     "configure_ac.patch"
+    "2222-charon-systemd-sighup.patch"
+    "2238-eap-dynamic-auth.patch"
     )
 
 validpgpkeys=("948F158A4E76A27BF3D07532DF42C170B34DBA77")
@@ -47,7 +49,9 @@ validpgpkeys=("948F158A4E76A27BF3D07532DF42C170B34DBA77")
 # doesn't yield any more security and just increases the work users initially have to invest.
 sha256sums=('720b301991f77bdedd8d551a956f52e2d11686a0ec18e832094f86cf2b842ab7'
             'SKIP'
-            '003750d77fa501075f1fdb6f55926dc544407c5dd26e2fd8d5eb4917ddf0b3f7')
+            '003750d77fa501075f1fdb6f55926dc544407c5dd26e2fd8d5eb4917ddf0b3f7'
+            'SKIP'
+            'SKIP')
             
 # We don't build libipsec because it would get loaded before kernel-netlink and netkey, which
 # would case processing to be handled in user space. Also, the plugin is experimental. If you need it,
@@ -56,6 +60,8 @@ prepare()
 {
     cd "${srcdir}/${pkgname}-${pkgver}"
     patch -p1 -l < "${srcdir}/configure_ac.patch"
+    patch -p1 -l < "${srcdir}/2222-charon-systemd-sighup.patch"
+    patch -p1 -l < "${srcdir}/2238-eap-dynamic-auth.patch"
     autoreconf
 }
 
@@ -80,7 +86,7 @@ build() {
         --enable-aesni --enable-eap-ttls --enable-radattr --enable-xauth-pam --enable-xauth-noauth \
         --enable-eap-dynamic --enable-eap-peap --enable-eap-tls --enable-chapoly --enable-unity \
         --with-capabilities=libcap --enable-newhope --enable-ntru --enable-mgf1 --enable-sha3 \
-        --enable-test-vectors --enable-bliss
+        --enable-bliss
 # if you want networkmanager support, add --enable-nm
 #       --enable-ruby-gems --enable-python-eggs
   make
