@@ -10,7 +10,6 @@ pkgbase = flycheck
 	depends = emacs
 	depends = emacs-dash
 	source = https://github.com/flycheck/flycheck/archive/30.tar.gz
-	sha256sums = skip
 
 pkgname = flycheck
 

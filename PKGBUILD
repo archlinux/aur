@@ -12,7 +12,7 @@ license=('GPL')
 depends=('emacs' 'emacs-dash')
 makedepends=('emacs' 'texinfo')
 source=("https://github.com/flycheck/flycheck/archive/$pkgver.tar.gz")
-sha256sums=('skip')
+sha256sum=('skip')
 
 build() {
   cd "$pkgname-$pkgver"
