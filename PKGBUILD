@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://libcxxabi.llvm.org/"
 license=('MIT' 'custom:University of Illinois/NCSA Open Source License')
 depends=('gcc-libs')
-makedepends=('libunwind' 'clang' 'libc++')
+makedepends=('clang' 'cmake' 'libc++' 'libunwind' 'llvm')
 source=("http://www.llvm.org/releases/$pkgver/libcxxabi-${pkgver}.src.tar.xz"{,.sig})
 sha512sums=('4f5603f1476b759c86d4784728fbdd212c59b30dc56d787c1834bf68a9cd83071fa22658d24e5a58beb94c0c656b0e4457d7da6e3048715dd36bd68380fc336e'
             'SKIP')
