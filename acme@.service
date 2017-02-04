@@ -5,7 +5,9 @@ Requires=network.target
 AssertFileNotEmpty=/etc/acme/%I.conf
 
 [Service]
-# You need to configure http server so that directory "/run/acme-challenge" was the alias of "/.well-known/acme-challenge"
+# You need to configure http server
+# so that directory "/run/acme-challenge"
+# was the alias of "/.well-known/acme-challenge"
 #
 # Nginx example:
 #
@@ -25,8 +27,14 @@ Environment="ACME_ACCOUNT=letsencrypt"
 EnvironmentFile=/etc/acme/%I.conf
 
 ExecStartPre=/usr/bin/install -dm0700 "${ACME_DIR}/certs/%I"
+ExecStopPost=/usr/bin/sh -c "[ ! -x '/etc/acme/%I.hook' ] || exec '/etc/acme/%I.hook'"
 
-ExecStart=/usr/bin/acme-client $ACME_ARGS -f "${ACME_DIR}/accounts/${ACME_ACCOUNT}.pem" -c "${ACME_DIR}/certs/%I" -k "${ACME_DIR}/certs/%I/privkey.pem" -C /run/acme-challenge $ACME_DOMAINS
+ExecStart=/usr/bin/acme-client $ACME_ARGS         \
+	-f "${ACME_DIR}/accounts/${ACME_ACCOUNT}.pem" \
+	-c "${ACME_DIR}/certs/%I"                     \
+	-k "${ACME_DIR}/certs/%I/privkey.pem"         \
+	-C /run/acme-challenge                        \
+	$ACME_DOMAINS
 
 CapabilityBoundingSet=CAP_SYS_CHROOT CAP_SETUID CAP_SETGID
 NoNewPrivileges=true

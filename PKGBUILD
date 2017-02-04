@@ -1,26 +1,27 @@
 # Maintainer: surefire@cryptomile.net
-
 pkgname=acme-client-git
-pkgver=0.1.15.r2.g1613a32
+pkgver=0.1.16+2+g94f9e1e
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h')
-license=('BSD')
+license=('custom:ISC')
 pkgdesc="Yet another ACME client, specifically for Let's Encrypt, but one with a strong focus on security. Written in C."
 url='https://kristaps.bsd.lv/acme-client/'
 
-_sslver=2.5.0
+_sslver=2.5.1
 
 source=(${pkgname}::'git+https://github.com/kristapsdz/acme-client-portable.git'
         "http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${_sslver}.tar.gz"
         'acme@.timer'
         'acme@.service'
-        'example.conf')
+        'example.conf'
+        'example.hook')
 
 sha256sums=('SKIP'
-            '8652bf6b55ab51fb37b686a3f604a2643e0e8fde2c56e6a936027d12afda6eae'
+            'f71ae0a824b78fb1a47ffa23c9c26e9d96c5c9b29234eacedce6b4c7740287cd'
             'c7d852229ae8a1b816ec476554c5d703a5513e6578a38672a52f7e7fca653b73'
-            'd6e274929979a385308f29b4f15a923ce888b57faca9925b6f46a995b2bfd662'
-            '7ba2721a5eba7eaa10b5fdc1dea213f6e08ab29f3b69c49a2310c7a9a349bc9d')
+            'ddaccc43724be3b89d154aced64c6b04089047345c71dcbd60dc41719faae1f6'
+            'd9716504c4c8eb9f1e238ecca6e691cb645657ae0bc32621e9ff10c6791dc978'
+            '05f97e21e3807fa48e048a56b393bf9fe7e450ded978ccdfb04923b460ec62d1')
 
 depends=('libbsd')
 makedepends=('git')
@@ -32,22 +33,15 @@ options=('emptydirs')
 
 pkgver() {
 	cd "${pkgname}"
-	git describe --long --tags | sed 's/VERSION_//;s/\([^-]*-g\)/r\1/;s/[-_]/./g'
-}
-
-prepare() {
-	cd "${pkgname}"
-
-	# Disable libseccomp
-	sed -i GNUmakefile -e '/pkg-config --exists libseccomp/ s/echo 1/echo 0/'
+	git describe --long --tags | sed 's/^VERSION_//; s/_/./g; s/-/+/g'
 }
 
 build() {
-	cd "libressl-${_sslver}"
+	cd "$srcdir/libressl-${_sslver}"
 	./configure --disable-shared --enable-static
 	make
 
-	cd "../${pkgname}"
+	cd "$srcdir/$pkgname"
 	make \
 		CPPFLAGS="-I../libressl-${_sslver}/include" \
 		LDFLAGS="-L../libressl-${_sslver}/{tls,ssl,crypto}/.libs"
@@ -62,6 +56,7 @@ package() {
 
 	install -Dm644 -t "${pkgdir}/usr/lib/systemd/system" ../acme@.{timer,service}
 	install -Dm644 -t "${pkgdir}/etc/acme" ../example.conf
+	install -Dm755 -t "${pkgdir}/etc/acme" ../example.hook
 
-	install -dm0755 "${pkgdir}/var/lib/acme"/{accounts,certs}
+	install -dm755 "${pkgdir}/var/lib/acme"/{accounts,certs}
 }

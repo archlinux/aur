@@ -1,4 +1,5 @@
 acme-client-git/
-*.tgz
+pkg/
+src/
+*.pkg.tar.*
 *.tar.gz
-*.tar.xz

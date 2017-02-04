@@ -1,12 +1,12 @@
 pkgbase = acme-client-git
 	pkgdesc = Yet another ACME client, specifically for Let's Encrypt, but one with a strong focus on security. Written in C.
-	pkgver = 0.1.15.r2.g1613a32
+	pkgver = 0.1.16+2+g94f9e1e
 	pkgrel = 1
 	url = https://kristaps.bsd.lv/acme-client/
 	arch = x86_64
 	arch = i686
 	arch = armv7h
-	license = BSD
+	license = custom:ISC
 	makedepends = git
 	depends = libbsd
 	provides = acme-client
@@ -15,15 +15,17 @@ pkgbase = acme-client-git
 	conflicts = letskencrypt
 	options = emptydirs
 	source = acme-client-git::git+https://github.com/kristapsdz/acme-client-portable.git
-	source = http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.5.0.tar.gz
+	source = http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.5.1.tar.gz
 	source = acme@.timer
 	source = acme@.service
 	source = example.conf
+	source = example.hook
 	sha256sums = SKIP
-	sha256sums = 8652bf6b55ab51fb37b686a3f604a2643e0e8fde2c56e6a936027d12afda6eae
+	sha256sums = f71ae0a824b78fb1a47ffa23c9c26e9d96c5c9b29234eacedce6b4c7740287cd
 	sha256sums = c7d852229ae8a1b816ec476554c5d703a5513e6578a38672a52f7e7fca653b73
-	sha256sums = d6e274929979a385308f29b4f15a923ce888b57faca9925b6f46a995b2bfd662
-	sha256sums = 7ba2721a5eba7eaa10b5fdc1dea213f6e08ab29f3b69c49a2310c7a9a349bc9d
+	sha256sums = ddaccc43724be3b89d154aced64c6b04089047345c71dcbd60dc41719faae1f6
+	sha256sums = d9716504c4c8eb9f1e238ecca6e691cb645657ae0bc32621e9ff10c6791dc978
+	sha256sums = 05f97e21e3807fa48e048a56b393bf9fe7e450ded978ccdfb04923b460ec62d1
 
 pkgname = acme-client-git
 
