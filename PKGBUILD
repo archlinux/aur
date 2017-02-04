@@ -16,15 +16,15 @@
 #
 #
 pkgname="zfs-linux-lts"
-pkgver=0.6.5.8_4.4.45_1
+pkgver=0.6.5.9_4.4.46_1
 pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System."
-depends=("kmod" "spl-linux-lts" "zfs-utils-linux-lts" "linux-lts=4.4.45")
-makedepends=("linux-lts-headers=4.4.45")
+depends=("kmod" "spl-linux-lts" "zfs-utils-linux-lts" "linux-lts=4.4.46")
+makedepends=("linux-lts-headers=4.4.46")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.6.5.8/zfs-0.6.5.8.tar.gz")
-sha256sums=("d77f43f7dc38381773e2c34531954c52f3de80361b7bb10c933a7482f89cfe84")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.6.5.9/zfs-0.6.5.9.tar.gz")
+sha256sums=("b724b57dbddae59246fdc15f88f1224061c712945bb36412a2087e0c7760d77f")
 groups=("archzfs-linux-lts")
 license=("CDDL")
 install=zfs.install
@@ -32,21 +32,21 @@ provides=("zfs")
 conflicts=('zfs-linux' 'zfs-linux-git')
 
 build() {
-    cd "${srcdir}/zfs-0.6.5.8"
+    cd "${srcdir}/zfs-0.6.5.9"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-0.6.5.8 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.4.45-1-lts/build \
-                --with-linux-obj=/usr/lib/modules/4.4.45-1-lts/build
+                --libexecdir=/usr/lib/zfs-0.6.5.9 --with-config=kernel \
+                --with-linux=/usr/lib/modules/4.4.46-1-lts/build \
+                --with-linux-obj=/usr/lib/modules/4.4.46-1-lts/build
     make
 }
 
 package() {
-    cd "${srcdir}/zfs-0.6.5.8"
+    cd "${srcdir}/zfs-0.6.5.9"
     make DESTDIR="${pkgdir}" install
     cp -r "${pkgdir}"/{lib,usr}
     rm -r "${pkgdir}"/lib
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.4.45-1-lts/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.4.46-1-lts/Module.symvers
 }
