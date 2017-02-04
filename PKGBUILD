@@ -51,10 +51,11 @@ package_riot-desktop() {
   backup=("etc/${pkgbase}/config.json")
   cd ${pkgbase}-web-${pkgver}
 
-  install -d "${pkgdir}"/{usr/lib/${pkgbase}/electron,etc/${pkgbase}}
+  install -d "${pkgdir}"/{usr/lib/${pkgbase}/electron{,img},etc/${pkgbase}}
 
   install -Dm644 package.json -t "${pkgdir}"/usr/lib/${pkgbase}
   cp -r electron/src "${pkgdir}"/usr/lib/${pkgbase}/electron/
+  install -Dm644 electron/img/riot.png -t "${pkgdir}"/usr/lib/${pkgbase}/electron/img
   install -Dm644 electron/riot.im/config.json -t "${pkgdir}"/etc/${pkgbase}
 
   install -Dm644 "${srcdir}"/${pkgbase}.desktop "${pkgdir}"/usr/share/applications/${pkgbase}.desktop
