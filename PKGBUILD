@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=wingide
-_wingver=6.0.1
+_wingver=6.0.2
 _wingrel=1
 _wing_patch_lvl=1 #bump this when adding a patch
 pkgver=$_wingver.$_wingrel.$_wing_patch_lvl
@@ -10,14 +10,15 @@ pkgdesc="Wing IDE Professional is the full-featured Python IDE for professional 
 url="http://www.wingware.com"
 license=('custom')
 arch=('x86_64')
-_wingpatch=("fix-analysis-hang-6.0.1p1-all.tar")
+_wingpatch=("fix-remote-debug-6.0.2p1-all.tar" "py3-pi-files-6.0.2p2-linux64.tar")
 _patch_url_prefix=http://wingware.com/pub/$pkgname/$_wingver/patches/
 _wingpatch=( "${_wingpatch[@]/#/$_patch_url_prefix}" )
 source=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_wingrel-x86_64-linux.tar.bz2" ${_wingpatch[*]})
 depends=('hicolor-icon-theme' 'libpng' 'python2' 'xdg-utils')
 options=(!strip !emptydirs)
-md5sums=('1bce867231ee8e7fbbf02f8ed91f7664'
-         'e69636f7e2aefd75e5a6a75f0e036527')
+md5sums=('e3d7ba6435b747ac348166d7db5aef00'
+         '18df10d42f3e7befd012db2c41c5a03f'
+         '03046d03198fe1535e24735ef6a8bd0e')
 
 install=${pkgname}.install
 
