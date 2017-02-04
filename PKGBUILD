@@ -30,7 +30,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data
-pkgver=20170201.r3308.0a9633a5
+pkgver=20170204.r3313.b154b32c
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -48,7 +48,16 @@ makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync')
 conflicts=('purr-data')
 install=purr-data.install
 options=('!makeflags' '!strip')
-source=("$pkgname::git+https://git.purrdata.net/jwilkes/purr-data.git#commit=0a9633a58247db1da8356491722027e4edf11f88"
+# This is jwilkes' upstream repo:
+# "$pkgname::git+https://git.purrdata.net/jwilkes/purr-data.git"
+# But we rather use a special "release" branch in our own fork instead, which
+# is used solely for packaging purposes. This branch gets updated whenever we
+# have a new (and tested) revision to be pushed out (as well as official
+# releases once they start coming out). This is easier to maintain, doesn't
+# depend on upstream tagging releases and candidates, and also deals with
+# situations where upstream lags behind on already submitted merge requests
+# with important bugfixes and additions.
+source=("$pkgname::git+https://git.purrdata.net/aggraef/purr-data.git#branch=release"
 	"RTcmix-pd-LCPLAY-stabilize.patch"
 	"userconfig.patch")
 md5sums=('SKIP'
