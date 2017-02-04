@@ -3,6 +3,8 @@
 # Contributor: Arjan Timmerman <arjan@soulfly.nl>
 # Contributor: Wael Nasreddine <gandalf@siemens-mobiles.org>
 
+# Forked from https://git.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/gnome-python-desktop&id=69d00edc8f9b85c5dcfe8750fecd68aa77243674
+
 pkgname=python2-rsvg
 pkgver=2.32.0
 pkgrel=16
