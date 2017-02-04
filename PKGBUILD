@@ -64,10 +64,14 @@ build() {
 check() {
 	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
 
-	make tests
-
-	# Connectivity tests will fail with makechrootpkg since
+	[[ -e /.arch-chroot ]] && return
+	# Connectivity tests will fail under makechrootpkg since
 	# it runs as nobody which has /bin/false as login shell.
+
+	[[ -e /usr/bin/scp ]] || return
+	# Tests require openssh to be already installed system-wide.
+
+	make tests
 }
 
 package() {
