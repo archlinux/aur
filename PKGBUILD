@@ -27,6 +27,7 @@ prepare() {
 build() { 
   cd "${srcdir}/build"
   cmake "${srcdir}/kdav" \
+    -DENABLE_TESTING=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DLIB_INSTALL_DIR=lib \
