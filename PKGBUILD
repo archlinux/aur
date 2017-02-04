@@ -5,7 +5,7 @@
 
 pkgname=python2-rsvg
 pkgver=2.32.0
-pkgrel=1
+pkgrel=16
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 depends=('pygtk' 'librsvg')
