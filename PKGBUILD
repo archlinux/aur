@@ -16,15 +16,8 @@ sha256sums=('500eeef667a12ab2790b9fbf25f24b2e1de3bdc9d0b07fd94112ad486149e276'
             'SKIP')
 validpgpkeys=('8045642355B844E284606ED2F5645D06D1395E36') # Marcus von Appen
 
-build() {
-  cd PySDL2-$pkgver
-
-  python setup.py build
-}
-
 package() {
   cd PySDL2-$pkgver
-
   python setup.py install --root="$pkgdir"
   install -Dm644 doc/copying.rst "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
