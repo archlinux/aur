@@ -5,7 +5,7 @@
 
 pkgname=glabels-light
 _pkgname=glabels
-pkgver=3.2.1
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Creating labels and business cards the very easy way - minimal dependencies"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ provides=('glabels')
 makedepends=('intltool' 'itstool')
 install=$_pkgname.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.xz)
-sha256sums=('db615f653b6e78ef1209814b5e6d8d3af4f8d3444a259ddbcc0dfb279c7df855')
+sha256sums=('d40e079395d30adbcd8204f41d08f7a8da9ec130bffa4cb3c130fbe2322b6410')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
