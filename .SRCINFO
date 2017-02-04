@@ -1,0 +1,12 @@
+pkgbase = mint-backgrounds-serena
+	pkgdesc = The backgrounds included in Linux Mint 18.1 Serena
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-serena
+	arch = any
+	license = Various
+	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-serena/mint-backgrounds-serena_1.1.tar.gz
+	sha1sums = cc4855f7cadb73d3803feb49cb8541ae3e721d43
+
+pkgname = mint-backgrounds-serena
+
