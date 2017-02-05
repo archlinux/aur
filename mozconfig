@@ -54,8 +54,6 @@ ac_add_options --enable-system-pixman
 ac_add_options --enable-default-toolkit=cairo-gtk3
 
 # Features
-ac_add_options --enable-shared-js
-ac_add_options --enable-devtools
 ac_add_options --disable-libproxy
 ac_add_options --disable-crashreporter
 ac_add_options --disable-eme
@@ -70,10 +68,7 @@ ac_add_options --disable-webspeech
 ac_add_options --disable-necko-wifi
 ac_add_options --disable-webrtc
 ac_add_options --disable-gamepad
-ac_add_options --disable-logging
-ac_add_options --disable-installer
 ac_add_options --disable-mobile-optimize
-ac_add_options --disable-codesighs
 ac_add_options --disable-debug
 ac_add_options --disable-debug-symbols
 
