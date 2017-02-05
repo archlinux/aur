@@ -4,7 +4,7 @@
 # Thanks to the Linux Mint project http://linuxmint.com/
 
 pkgname='mint-x-icons'
-pkgver='1.3.9'
+pkgver='1.4.0'
 pkgrel='1'
 pkgdesc='Icon theme for Linux Mint. Based on mintified versions of Clearlooks Revamp, Elementary and Faenza.'
 arch=('any')
@@ -14,7 +14,7 @@ source=("${url}/${pkgname}_${pkgver}.tar.xz")
 depends=('gdk-pixbuf2' 'gtk-update-icon-cache')
 options=('!strip')
 install="${pkgname}.install"
-sha256sums=('adbbbd81f14eb40b1df237ab3d9b4628add6e3f681f64c3982d3deb5257a0a83')
+sha256sums=('970ccf67b5b120e23956f05029e52b1810f96d874a1cac1a9841f38ed4827c5e')
 
 prepare() {
 	find "${srcdir}" -type d ! -perm 755 -exec chmod 755 {} +
