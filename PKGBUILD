@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname='dq'
 pkgver='20161210'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Small recursive DNS server and tools with DNSCurve support'
 url='https://mojzis.com/software/dq/'
 arch=('x86_64' 'i686')
@@ -38,7 +38,7 @@ prepare () {
 
 build () {
 	cd "${pkgname}"
-	echo '/usr/lib/dq' > conf-sbin
+	echo '/usr/bin' > conf-sbin
 	echo '/usr/bin' > conf-bin
 	make
 }
@@ -46,6 +46,9 @@ build () {
 package () {
 	cd "${pkgname}"
 	make install DESTDIR="${pkgdir}"
+
+	install -m 755 -d "${pkgdir}/usr/lib/dq"
+	mv "${pkgdir}/usr/bin/dqcache" "${pkgdir}/usr/lib/dq/"
 
 	# Manpages are no installed by "make install"
 	install -m 644 -D man/dq.1 \
