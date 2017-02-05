@@ -5,26 +5,28 @@
 # Contributor: David El-Saig <daud.ici@gmail.com>
 
 pkgname=libnds
-pkgver=1.5.12
-_pkgverexamples=20140401
+pkgver=1.6.1
+_pkgverexamples=20170124
 pkgrel=1
 pkgdesc="Library for Nintendo DS homebrew development"
 arch=('any')
-url="http://www.devkitpro.org"
+url="http://devkitpro.org"
 license=('custom')
 depends=('devkitarm')
 optdepends=('maxmod: music and sound solution library for NDS and GBA'
             'default_arm7: helper binary to initialize NDS hardware (needed for most examples)')
 source=("http://downloads.sourceforge.net/sourceforge/devkitpro/$pkgname-src-$pkgver.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/nds-examples-$_pkgverexamples.tar.bz2")
-sha256sums=('206b075b9ff500ec5b341f2faa4e38f80a4936995ee19fed790bc72f560a20f5'
-            '51ef0e5a5c278a3fba59e43b8e8d8cb27e2f622f5f82655eb16b0d46bf1f3c77')
+sha256sums=('8d214836b2028496a4c656d70b4a12cb04b9fdc7aebaf6bb759fb8ce00889baf'
+            '226056abd92d866bfaa46eda125d7c0281d2630556fbd619c0bdfdde9b571863')
 noextract=("nds-examples-$_pkgverexamples.tar.bz2")
 options=(!strip staticlibs)
 
 build() {
+  # set environment
   source /etc/profile.d/devkitarm.sh
-  make
+
+  make -j1
 }
 
 package() {
@@ -33,7 +35,7 @@ package() {
   make install
   # examples
   install -d "$DEVKITPRO"/examples/nds
-  bsdtar -x -f nds-examples-$_pkgverexamples.tar.bz2 -C "$DEVKITPRO"/examples/nds
+  bsdtar xf nds-examples-$_pkgverexamples.tar.bz2 -C "$DEVKITPRO"/examples/nds
   # fix permissions
   chown -R root:root "$DEVKITPRO"/examples
   find "$DEVKITPRO"/examples -type d -exec chmod +rx "{}" \+

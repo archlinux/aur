@@ -1,20 +1,20 @@
 pkgbase = libnds
 	pkgdesc = Library for Nintendo DS homebrew development
-	pkgver = 1.5.12
+	pkgver = 1.6.1
 	pkgrel = 1
-	url = http://www.devkitpro.org
+	url = http://devkitpro.org
 	arch = any
 	license = custom
 	depends = devkitarm
 	optdepends = maxmod: music and sound solution library for NDS and GBA
 	optdepends = default_arm7: helper binary to initialize NDS hardware (needed for most examples)
-	noextract = nds-examples-20140401.tar.bz2
+	noextract = nds-examples-20170124.tar.bz2
 	options = !strip
 	options = staticlibs
-	source = http://downloads.sourceforge.net/sourceforge/devkitpro/libnds-src-1.5.12.tar.bz2
-	source = http://downloads.sourceforge.net/sourceforge/devkitpro/nds-examples-20140401.tar.bz2
-	sha256sums = 206b075b9ff500ec5b341f2faa4e38f80a4936995ee19fed790bc72f560a20f5
-	sha256sums = 51ef0e5a5c278a3fba59e43b8e8d8cb27e2f622f5f82655eb16b0d46bf1f3c77
+	source = http://downloads.sourceforge.net/sourceforge/devkitpro/libnds-src-1.6.1.tar.bz2
+	source = http://downloads.sourceforge.net/sourceforge/devkitpro/nds-examples-20170124.tar.bz2
+	sha256sums = 8d214836b2028496a4c656d70b4a12cb04b9fdc7aebaf6bb759fb8ce00889baf
+	sha256sums = 226056abd92d866bfaa46eda125d7c0281d2630556fbd619c0bdfdde9b571863
 
 pkgname = libnds
 
