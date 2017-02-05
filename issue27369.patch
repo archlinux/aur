@@ -1,0 +1,25 @@
+
+# HG changeset patch
+# User Martin Panter <vadmium+py@gmail.com>
+# Date 1468460573 0
+# Node ID 1c06e02b968a1645ebaa282fd2c40f6356792251
+# Parent  1c07bd735282009f73cbe4d27ebb7fdbc08f1460# Parent  5b64175c6c2408391782849cd68553e67bdb0989
+Issue #27369: Merge test_pyexpat from 3.2 into 3.3
+
+diff --git a/Lib/test/test_pyexpat.py b/Lib/test/test_pyexpat.py
+--- a/Lib/test/test_pyexpat.py
++++ b/Lib/test/test_pyexpat.py
+@@ -603,11 +603,9 @@ class MalformedInputTest(unittest.TestCa
+         # \xc2\x85 is UTF-8 encoded U+0085 (NEXT LINE)
+         xml = b"<?xml version\xc2\x85='1.0'?>\r\n"
+         parser = expat.ParserCreate()
+-        try:
++        err_pattern = r'XML declaration not well-formed: line 1, column \d+'
++        with self.assertRaisesRegex(expat.ExpatError, err_pattern):
+             parser.Parse(xml, True)
+-            self.fail()
+-        except expat.ExpatError as e:
+-            self.assertEqual(str(e), 'XML declaration not well-formed: line 1, column 14')
+ 
+ class ErrorMessageTest(unittest.TestCase):
+     def test_codes(self):

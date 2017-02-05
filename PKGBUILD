@@ -16,12 +16,16 @@ makedepends=('tk' 'sqlite' 'valgrind' 'bluez-libs' 'mpdecimal' 'hardening-wrappe
 optdepends=('mpdecimal: for decimal'
             'sqlite'
             'tk: for tkinter'
-            'xz')
+            'xz'
+            'net-tools: arp, ifconfig and netstat are used in the uuid module')
+checkdepends=('net-tools')
 options=('!makeflags')
 source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz
-        python-3.3-ssl-nosslv3.patch)
+        python-3.3-ssl-nosslv3.patch
+        issue27369.patch)
 sha256sums=('5226e4bf7a530c3ff2bcde0c94e0e09e59a8bcde0114fe0268bc925bdabb5d3f'
-            'd54bc0ac72218b37c1c2f7a8f03f904a06c2270518a5f3b9e27e54578fe1fb04')
+            'd54bc0ac72218b37c1c2f7a8f03f904a06c2270518a5f3b9e27e54578fe1fb04'
+            '9defb8e0a18577979816b77c33b16a9f154e332bb3ce554e046c84f0f3998d7e')
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
@@ -37,6 +41,10 @@ prepare() {
   rm -rf Modules/zlib
   rm -rf Modules/_ctypes/{darwin,libffi}*
   rm -rf Modules/_decimal/libmpdec
+
+  # Tests break with --with-system-expat and Expat 2.2.0
+  # https://bugs.python.org/issue27369
+  patch -p1 -i ../issue27369.patch
 }
 
 build() {
