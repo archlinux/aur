@@ -1,0 +1,7 @@
+cctools-port/
+pkg/
+src/
+*.gz
+*.log
+*.tar
+*.xz
