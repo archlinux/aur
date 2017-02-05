@@ -2,8 +2,8 @@
 
 _name=netbox
 pkgname=${_name}
-pkgver=1.8.3
-pkgrel=2
+pkgver=1.8.4
+pkgrel=1
 pkgdesc="IP address management (IPAM) and data center infrastructure management (DCIM) tool."
 arch=('any')
 url="https://github.com/digitalocean/${_name}"
@@ -42,7 +42,7 @@ source=("${url}/archive/v${pkgver}.tar.gz"
         "${_name}.tmpfile"
 				"debug_toolbar_middleware.patch"
 				"gunicorn_config.py")
-sha256sums=('a8ad15f96ae2f606c950f907c46a4a40a546fc0269e6fd40a760efff3f8c4363'
+sha256sums=('f59d46affde19cb2c0f84d535293d5068c0b4aaa3bffd1a01ad4b272afb1e1cb'
             '12bb0253aea3dd763ee8bb1a17064256155b79e904a4350abf89cf4c65235951'
             '1028bac96ddcd18c10646dff26027b4891fcab4381436e2b6ea3302887a5586f'
             '2d6d55cad836eca187a7dfe40227f994e9b2f565e71fd39e296bc8bb73bf259a'
