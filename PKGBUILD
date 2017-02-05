@@ -8,8 +8,7 @@
 # Demos available in `java-openjfx/src/openjfx/apps/samples`
 # To build them: `ant -Dplatforms.JDK_1.8.home=/usr/lib/jvm/default jar`
 
-_libname=openjfx
-pkgbase=java-${_libname}
+pkgbase=java-openjfx
 pkgname=('java-openjfx' 'java-openjfx-doc' 'java-openjfx-src')
 _java_ver=8
 _jdk_update=76
@@ -22,13 +21,13 @@ arch=('i686' 'x86_64')
 url='https://wiki.openjdk.java.net/display/OpenJFX/Main'
 license=('GPL')
 depends=('java-runtime-openjdk=8' 'gstreamer' 'libxtst' 'webkitgtk2' 'ffmpeg' 'qt5-base')
-makedepends=('java-environment-openjdk=8' 'mercurial' 'bison' 'gperf' 'gtk2'
-             'libxtst' 'ffmpeg' 'python' 'qt5-base' 'webkitgtk2' 'ruby')
-source=(openjfx::hg+http://hg.openjdk.java.net/openjfx/8u-dev/rt#tag=${_hgtag}
+makedepends=('java-environment-openjdk=8' 'bison' 'gperf' 'gtk2'
+             'libxtst' 'ffmpeg' 'python' 'qt5-base' 'webkitgtk2' 'ruby' 'cmake')
+source=(http://hg.openjdk.java.net/openjfx/8u-dev/rt/archive/${_hgtag}.tar.bz2
         gradle.properties
         https://services.gradle.org/distributions/gradle-1.8-bin.zip)
 
-sha256sums=('SKIP'
+sha256sums=('06fc7263f47d505895dba7ce68e7d436e161ea87828d3297e477f7f5d8c0d338'
             '1d09385ac23d755aec079954247365de3875507641f5ecd7bd3511ebf3fa9e3c'
             'a342bbfa15fd18e2482287da4959588f45a41b60910970a16e6d97959aea5703')
 
@@ -40,7 +39,7 @@ case $CARCH in
 esac
 
 build() {
-  cd "${srcdir}/${_libname}"
+  cd "rt-${_hgtag}"
 
   ln -sf "${srcdir}/gradle.properties" .
   export GRADLE_USER_HOME="${srcdir}/gradle_home"
@@ -54,7 +53,7 @@ package_java-openjfx() {
   conflicts=('openjfx')
   replaces=('openjfx')
 
-  local _builddir="${srcdir}/${_libname}/build"
+  local _builddir="${srcdir}/rt-${_hgtag}/build"
   local _sdkdir="${_builddir}/sdk"
 
   install -d "${pkgdir}${_openjdk8dir}/jre/lib/${_CARCH}"
@@ -78,7 +77,7 @@ package_java-openjfx-doc() {
   conflicts=('openjfx-doc')
   replaces=('openjfx-doc')
 
-  local _builddir="${srcdir}/${_libname}/build"
+  local _builddir="${srcdir}/rt-${_hgtag}/build"
   local _sdkdir="${_builddir}/sdk"
   local docdir="/usr/share/doc"
 
@@ -91,7 +90,7 @@ package_java-openjfx-src() {
   conflicts=('openjfx-src')
   replaces=('openjfx-src')
 
-  local _builddir="${srcdir}/${_libname}/build"
+  local _builddir="${srcdir}/rt-${_hgtag}/build"
   local _sdkdir="${_builddir}/sdk"
 
   install -d "${pkgdir}${_openjdk8dir}"
