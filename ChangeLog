@@ -1,5 +1,10 @@
 2017-02-05 Fabien Dubosson <fabien.dubosson@gmail.com>
 
+    * 1.1.1-2:
+    Add poppler-glib as dependency
+
+2017-02-05 Fabien Dubosson <fabien.dubosson@gmail.com>
+
     * 1.1.1-1:
     New upstream release
 

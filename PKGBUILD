@@ -3,7 +3,7 @@
 
 pkgname=paperwork
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool to make papers searchable - scan & forget'
 arch=('any')
 url='https://github.com/jflesch/paperwork'
@@ -14,7 +14,7 @@ depends=('pygobject2-devel' 'pygtk' 'python-pycountry'
          'python-joblib' 'python-numpy' 'python-scipy' 'python-scikit-learn'
          'python-scikit-image' 'python-gobject' 'python-nltk' 'python-termcolor'
          'python-simplebayes' 'python-pypillowfight' 'python-cairo'
-         'glade' 'gnome-icon-theme-symbolic' 'gnome-icon-theme')
+         'glade' 'gnome-icon-theme-symbolic' 'gnome-icon-theme' 'poppler-glib')
 makedepends=('python' 'python-setuptools' 'git')
 optdeps=('cuneiform: alternativer OCR')
 source=("paperwork-gui-${pkgver}.tgz::https://github.com/jflesch/paperwork/archive/${pkgver}.tar.gz"
