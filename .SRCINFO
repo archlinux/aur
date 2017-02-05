@@ -1,0 +1,22 @@
+pkgbase = lld-svn
+	pkgdesc = The LLVM Linker
+	pkgver = 294126
+	pkgrel = 1
+	url = http://lld.llvm.org
+	arch = x86_64
+	license = custom:University of Illinois/NCSA
+	makedepends = svn
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python2
+	depends = zlib
+	depends = ncurses
+	provides = lld
+	conflicts = lld
+	source = llvm::svn+http://llvm.org/svn/llvm-project/llvm/trunk
+	source = lld::svn+http://llvm.org/svn/llvm-project/lld/trunk
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = lld-svn
+
