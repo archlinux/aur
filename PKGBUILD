@@ -109,7 +109,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules for devices with byt-max98090 sound, like chromebooks"
+  pkgdesc="The Archlinux kernel and modules with patches for byt-max98090 sound, like chromebooks"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
