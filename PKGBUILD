@@ -2,7 +2,7 @@
 # Contributor: Reventlov <contact+aur at volcanis dot me>
 
 pkgname=searx-git
-pkgver=v0.10.0.r33.gd5c0dcd
+pkgver=v0.11.0.r41.ge389a0c7
 pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
@@ -15,13 +15,12 @@ install=searx.install
 source=('git+https://github.com/asciimoo/searx.git'
         'searx.install'
         'searx.service')
-sha1sums=('SKIP'
-          'b6b255450c2eee590d0d591b1541a927c7b7dd3d'
-	  '39014add79c5d3e7a237bec42124eaed70c4423b')
+sha256sums=('SKIP'
+            'f7ee8effdc16c6ac0cab089d9edc12d99dba95ac81b0b3568f87b4f59866f309'
+            '25b9ea2bbadfaad14c532b7796176272ff79d64c2c756e9cdaa5c2de25d0b03c')
 
 pkgver() {
-  cd $srcdir/searx
-
+  cd $srcdir/searx/
   ( set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -29,25 +28,21 @@ pkgver() {
 }
 
 prepare() {
-  cd $srcdir/searx
+  cd $srcdir/searx/
+  sed -i 's|==|>=|g' requirements.txt
 
-  sed -i "s|==|>=|g" requirements.txt
-
-  msg2 "Generating ultra-secret key..."
+  msg2 "Generating secret key..."
   sed -i "s/ultrasecretkey\" # change this!/`openssl rand -hex 128`\"/g" searx/settings.yml
-  sleep 2
 }
 
 package() {
-  cd $srcdir/searx
-
+  cd $srcdir/searx/
   python2 setup.py install --root=$pkgdir --optimize=1
   
-  cd $pkgdir/usr/lib/python2.7/site-packages
+  cd $pkgdir/usr/lib/python2.7/site-packages/
   mv README.rst searx/
   mv tests searx/
 
   install -Dm 0644 searx/settings.yml $pkgdir/etc/searx/settings.yml
-
   install -Dm 0644 $srcdir/searx.service $pkgdir/usr/lib/systemd/system/searx.service
 }
