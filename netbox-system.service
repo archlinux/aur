@@ -6,7 +6,7 @@ After=network.target
 User=netbox
 Type=simple
 PIDFile=/run/netbox/netbox.pid
-ExecStart=/usr/bin/gunicorn-python2 -c /etc/netbox/gunicorn_config.py --pythonpath /opt/netbox -p /run/netbox/netbox.pid netbox.wsgi
+ExecStart=/usr/bin/gunicorn -c /etc/netbox/gunicorn_config.py --pythonpath /opt/netbox -p /run/netbox/netbox.pid netbox.wsgi
 
 [Install]
 WantedBy=multi-user.target
