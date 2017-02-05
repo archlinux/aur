@@ -1,7 +1,7 @@
 # Maintainer: FenixFyreX <chaz.domerese@gmail.com>
 
 pkgname=amixst
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='A free and open source volume wheel using Alsa and Qt5.'
 arch=('i686' 'x86_64')
@@ -13,9 +13,9 @@ makedepends=('git' 'qt5-tools' 'gcc')
 optdepends=('qt5-styleplugins: more Qt5 styles')
 provides=("${pkgname}=${pkgver}")
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/FenixFyreX/amixst/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/FenixFyreX/amixst/archive/v${pkgver}.tar.gz")
 
-md5sums=("d603599e0338a37e79f0e45974e68a87")
+md5sums=("fb40f02baaf451f05500f8c1f2f45b10")
 
 prepare() {
     mkdir -p "${srcdir}"/build

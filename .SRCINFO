@@ -1,6 +1,6 @@
 pkgbase = amixst
 	pkgdesc = A free and open source volume wheel using Alsa and Qt5.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/FenixFyreX/amixst
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = amixst
 	depends = qt5-base
 	depends = alsa-lib
 	optdepends = qt5-styleplugins: more Qt5 styles
-	provides = amixst=1.0.0
-	source = amixst-1.0.0.tar.gz::https://github.com/FenixFyreX/amixst/archive/1.0.0.tar.gz
-	md5sums = d603599e0338a37e79f0e45974e68a87
+	provides = amixst=1.0.1
+	source = amixst-1.0.1.tar.gz::https://github.com/FenixFyreX/amixst/archive/v1.0.1.tar.gz
+	md5sums = fb40f02baaf451f05500f8c1f2f45b10
 
 pkgname = amixst
 
