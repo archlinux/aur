@@ -2,17 +2,18 @@
 
 pkgname=xreader-git
 _pkgbasename=xreader
-pkgver=1.0.8.r0.gb148a44
+pkgver=1.2.2.r0.g14031ff
 pkgrel=1
 pkgdesc="Document viewer for files like PDF and Postscript. X-Apps Project (git version)."
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('ghostscript' 'poppler-glib' 'djvulibre' 'desktop-file-utils' 'gsettings-desktop-schemas' 'gtk3' 'gtk2' 'libsecret')
-
+depends=('ghostscript' 'poppler-glib' 'djvulibre' 'desktop-file-utils'
+    'gsettings-desktop-schemas' 'gtk3' 'gtk2' 'libsecret' 'libspectre' 'webkit2gtk')
 makedepends=('git' 'mate-common' 'yelp-tools')
 optdepends=('nemo: nemo extension (must be enabled at compile time)'
     'caja-extensions-common: caja extension (must be enabled at compile time)'
-    'gtk3-print-backends: printer support in gtk3 apps')
+    'gtk3-print-backends: printer support in gtk3 apps'
+    'texlive-bin: support for dvi files')
 provides=($_pkgname)
 conflicts=("${_pkgbasename}")
 url='https://github.com/linuxmint/xreader'
@@ -39,4 +40,3 @@ package(){
     cd ${srcdir}/${pkgname}
     make DESTDIR="$pkgdir/" install
 }
-
