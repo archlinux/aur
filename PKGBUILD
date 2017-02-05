@@ -6,7 +6,7 @@
 
 pkgname=cin-bin
 pkgver=5.1
-pkgrel=20170101
+pkgrel=20170131
 pkgdesc="Cinelerra ($pkgver) ($pkgrel)"
 arch=('x86_64')
 url="http://www.cinelerra-cv.org/five"
@@ -16,19 +16,13 @@ depends=('xorg-server' 'xorg-server-utils' 'libpng' 'libxv' 'libva'
 makedepends=('yasm' 'nasm' 'cmake'
 'libxml2' 'perl-xml-libxml' 'perl-xml-parser' 'python2')
 conflicts=('cinelerra-cv' 'cinelerra-heroine' 'cin')
-source=(https://bitbucket.org/juanperez89/cinelerra5/downloads/cinbie-$pkgver-$pkgrel-x86_64.pkg.tar.xz
-cinbie-$pkgver-$pkgrel-x86_64.pkg.tar.xz.sig
+source=(https://cinelerra-cv.org/five/pkgs/arch/cin-$pkgver-$pkgrel-$arch.pkg.tar.xz
 )
-sha256sums=('c660f51cba956b19be47509534ee927aeaeaaea7da41565a4fc0b6844e1ab615'
-            'SKIP')
-sha384sums=('cb5bf24edd847408e6477a9e6d9cbb7ae2b7292d5c6bfd00a973d6b37dd687fa314eb1c49f74f1760aeb15b6ca65c05e'
-            'SKIP')
-sha512sums=('7a936c6eaa9169a2a7fbb309573a17b383e64ff25e8ab0db3a35661409ec214ace0bec9b2d2d0f20ca0dda16a33cfea59bba916414bb1ba80aacfacca33fcba5'
-            'SKIP')
-validgpgkeys=('DB68D18158C19A535A538524507F8DFE0C99485B')
-
+sha256sums=('4eabb0194240fc5d0021d0702d96fc940db8e9b18316a8305719c39a96a9de4e')
+sha384sums=('f1fb3e26559886ea9ec296411249c10c4962252d4287ebd23ff58c96e253f43316ffe73069714b71aa2269a3bef6e650')
+sha512sums=('144d5433b8fc56096c87c2a4e8e07df4f0d61e4e44c6044f8d8efab2a022a96a7b8a5d4608fa79ff635cce8f5705fdb21fcbdbaba97b4f6b5684123247af769e')
 package() {
-tar xJvf ${srcdir}/cinbie-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz -C ${pkgdir}/
+tar xJvf ${srcdir}/cin-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz -C ${pkgdir}/
 }
 
 # vim:set ts=2 sw=2 et:
