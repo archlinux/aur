@@ -1,16 +1,16 @@
 pkgbase = default_arm7
 	pkgdesc = A very useful library for Nintendo DS homebrew development
-	pkgver = 0.6.0
+	pkgver = 0.7.1
 	pkgrel = 1
-	url = http://www.devkitpro.org/
+	url = http://devkitpro.org
 	arch = any
 	license = custom
 	depends = libnds
 	depends = dswifi
 	depends = maxmod
 	options = !strip
-	source = http://downloads.sourceforge.net/sourceforge/devkitpro/default_arm7-src-0.6.0.tar.bz2
-	sha256sums = 49f63204d323a7adafa648c8bcd05d45046bec4c7c15d794fae132c2a7479218
+	source = default_arm7-src-0.7.1.tar.gz::https://github.com/devkitPro/default-arm7/archive/v0.7.1.tar.gz
+	sha256sums = ecd23ced4d5fa1eb7f7702bca45a652e87bfdfbe460a909ec8e37b7637f2106f
 
 pkgname = default_arm7
 
