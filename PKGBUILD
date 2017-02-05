@@ -1,8 +1,8 @@
 # Maintainer: Alexander Schmidt <alex@treefish.org>
 
 pkgname=valentina-hg
-pkgver=r2467.0d020896d25d
-pkgrel=2
+pkgver=r4333+.8ae4df1ede2f+
+pkgrel=1
 pkgdesc="Sewing pattern drafting tool aiming to remake the garment industry"
 arch=('i686' 'x86_64')
 url="http://valentinaproject.bitbucket.org"
@@ -25,7 +25,8 @@ prepare() {
 build() {
   cd "$srcdir/valentina"
   qmake PREFIX=/usr PREFIX_LIB=/usr/lib Valentina.pro -r \
-  	CONFIG+=noDebugSymbols CONFIG+=no_ccache
+	CONFIG+=noTests CONFIG+=noRunPath CONFIG+=no_ccache \
+	CONFIG+=noDebugSymbols
   make
 }
 
