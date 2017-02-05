@@ -10,7 +10,7 @@ url="http://libcxx.llvm.org/"
 license=('MIT' 'custom:University of Illinois/NCSA Open Source License')
 arch=('i686' 'x86_64')
 depends=('gcc-libs')
-makedepends=('clang' 'cmake' 'python' 'libunwind' 'llvm')
+makedepends=('clang' 'cmake' 'python' 'libunwind')
 source=("http://llvm.org/releases/$pkgver/llvm-$pkgver.src.tar.xz"{,.sig}
         "http://llvm.org/releases/$pkgver/libcxx-$pkgver.src.tar.xz"{,.sig}
         "http://llvm.org/releases/$pkgver/libcxxabi-$pkgver.src.tar.xz"{,.sig})
@@ -41,6 +41,8 @@ prepare() {
   bsdtar --strip-components 1 --uid 0 --gid 0 -zxf \
          ${srcdir}/${source[4]##*/} -C \
          llvm/projects/libcxxabi
+  sed -i 's/CREDITS.TXT/CREDITS/' llvm/projects/libcxx/LICENSE.TXT
+  sed -i 's/CREDITS.TXT/CREDITS/' llvm/projects/libcxxabi/LICENSE.TXT
   [[ -d build ]] || mkdir build
 }
  
@@ -58,9 +60,10 @@ build() {
 
 package_libc++() {
   pkgdesc='A new implementation of the C++ standard library, targeting C++11.'
-  depends+=("libc++abi=${pkgver}-${pkgrel}")
+  depends=("libc++abi=${pkgver}-${pkgrel}")
   cd ${srcdir}/build
   make DESTDIR="${pkgdir}" install-libcxx
+  install -Dm644 ${srcdir}/llvm/projects/libcxx/CREDITS.TXT "${pkgdir}/usr/share/licenses/${pkgname}/CREDITS"
   install -Dm644 ${srcdir}/llvm/projects/libcxx/LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
  
@@ -68,12 +71,14 @@ package_libc++abi() {
   pkgdesc='A new implementation of low level support for a standard C++ library'
   cd ${srcdir}/build
   make DESTDIR="${pkgdir}" install-libcxxabi
+  install -Dm644 ${srcdir}/llvm/projects/libcxxabi/CREDITS.TXT "${pkgdir}/usr/share/licenses/${pkgname}/CREDITS"
   install -Dm644 ${srcdir}/llvm/projects/libcxxabi/LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
  
 package_libc++experimental() {
-  depends+=("libc++=$pkgver-$pkgrel")
+  depends=("libc++=$pkgver-$pkgrel")
   pkgdesc='A new implementation of the C++ standard library, targeting C++11 (experimental library)'
   install -Dm644 ${srcdir}/build/lib/libc++experimental.a ${pkgdir}/usr/lib/libc++experimental.a
+  install -Dm644 ${srcdir}/llvm/projects/libcxx/CREDITS.TXT "${pkgdir}/usr/share/licenses/${pkgname}/CREDITS"
   install -Dm644 ${srcdir}/llvm/projects/libcxx/LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
