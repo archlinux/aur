@@ -13,11 +13,11 @@ pkgbase=lib32-mesa-test-git
 pkgname=('lib32-mesa-test-git' 'lib32-mesa-test-libgl-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=17.1.0_devel.88759.106a51440d
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'glproto' 'lib32-libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'lib32-libxshmfence' 'lib32-libxxf86vm'  'lib32-libxdamage' 'gcc-multilib' 'lib32-libvdpau' 'lib32-wayland' 'lib32-elfutils' 'lib32-llvm-svn'
-              'git' 'lib32-nettle' 'lib32-libtxc_dxtn'
+              'git' 'lib32-libtxc_dxtn'
              'lib32-libxvmc' 'lib32-libgcrypt' 'lib32-systemd')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
@@ -58,7 +58,6 @@ build () {
                --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
                --with-egl-platforms=x11,drm,wayland \
                --with-vulkan-drivers=intel,radeon \
-               --with-sha1=libnettle \
                --enable-texture-float \
                --enable-osmesa \
                --enable-xa \
@@ -84,8 +83,6 @@ build () {
 #                                   [default=auto]
 # --with-vulkan-drivers[=DIRS...]   comma delimited Vulkan drivers list, e.g. "intel"
 #                                   [default=no]
-#
-# --with-sha1=libc|libmd|libnettle|libgcrypt|libcrypto|libsha1|CommonCrypto|CryptoAPI       choose SHA1 implementation
 # --enable-texture-float            enable floating-point textures and renderbuffers 
 #                                   [default=disabled]
 # --enable-osmesa                   enable OSMesa library
@@ -115,7 +112,7 @@ build () {
 package_lib32-mesa-test-git () {
   pkgdesc="an open-source implementation of the OpenGL specification, git version"
   depends=('mesa-test-git' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-elfutils'
-           'lib32-libtxc_dxtn' 'lib32-nettle' 'lib32-llvm-libs-svn')
+           'lib32-libtxc_dxtn' 'lib32-llvm-libs-svn')
   optdepends=('opengl-man-pages: for the OpenGL API man pages')
   provides=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau')
   replaces=('lib32-mesa' 'lib32-opencl-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau')
