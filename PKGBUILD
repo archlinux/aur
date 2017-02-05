@@ -6,19 +6,19 @@
 # Contributor: William J. Bowman <bluephoenix47@gmail.com>
 pkgname=('coq' 'coqide' 'coq-doc')
 pkgver=8.6
-pkgrel=1
+pkgrel=3
 pkgdesc='Formal proof management system'
 arch=('i686' 'x86_64')
 url='https://coq.inria.fr/'
 license=('GPL')
 groups=('coq')
 options=('!emptydirs')
-depends=('gtk2' 'ocaml' 'camlp4' 'gtksourceview2')
+depends=('ocaml' 'camlp4' 'gtk2' 'gtksourceview2')
 makedepends=('ocaml-findlib'
              'lablgtk2' 'gendesk' # coqide
-             'texlive-bin' 'texlive-latexextra' 'texlive-pictures'
+             'texlive-bin' 'texlive-latexextra' 'texlive-pictures' # coq-doc
              'texlive-fontsextra' 'texlive-science'
-             'fig2dev' 'imagemagick' 'hevea' 'ghostscript') # coq-doc
+             'fig2dev' 'imagemagick' 'hevea' 'ghostscript')
 source=("https://coq.inria.fr/distrib/V$pkgver/files/coq-$pkgver.tar.gz"
         "0001-Fix-incorrect-documentation-that-prevents-successful.patch"
         "0002-Avoid-concurrent-runs-when-producing-html-documentat.patch")
@@ -53,7 +53,8 @@ build() {
 
 package_coq() {
   depends=('ocaml' 'camlp4')
-  optdepends=('coqide: for the graphical Coq IDE')
+  optdepends=('coqide: graphical Coq IDE'
+              'coq-doc: offline documentation')
   # coq-nox was the old name for coq without coqide
   replaces=('coq-nox')
   conflicts=('coq-nox')
