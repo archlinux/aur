@@ -3,12 +3,12 @@
 # Contributor: Tiago Camargo <tcamargo@gmail.com>
 
 pkgname=libogc
-pkgver=1.8.15
+pkgver=1.8.16
 _pkgverexamples=20161115
 pkgrel=1
 pkgdesc="Library for Nintendo Gamecube/Wii homebrew development"
 arch=('any')
-url="http://www.devkitpro.org"
+url="http://devkitpro.org"
 license=('custom')
 depends=('devkitppc')
 optdepends=('libfat-ogc: fat filesystem access from homebrew'
@@ -18,7 +18,7 @@ source=("http://downloads.sourceforge.net/sourceforge/devkitpro/$pkgname-src-$pk
         "http://downloads.sourceforge.net/sourceforge/devkitpro/gamecube-examples-$_pkgverexamples.tar.bz2")
 noextract=("wii-examples-$_pkgverexamples.tar.bz2"
            "gamecube-examples-$_pkgverexamples.tar.bz2")
-sha256sums=('a8d29e346776fd4afeaebdfe01ded4b20b7e25e5363abb5629b623248c499ff0'
+sha256sums=('59a7474c9c8f920553dea2ca645df054630840034e4c1b0568a7e992da87f657'
             '451a656b3af9900be1f1ae1253573d13fb448a27818ed2a403174ec28a749e56'
             '6ef8a17aa863916865aab635a6e026ec1eb16d52b1a196e555c84fe53ad6a19f')
 options=(!strip staticlibs)
