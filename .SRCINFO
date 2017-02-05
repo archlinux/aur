@@ -1,6 +1,6 @@
 pkgbase = pianobarfly-git
 	pkgdesc = A console client for the personalized web radio pandora
-	pkgver = 20140330
+	pkgver = 20161028
 	pkgrel = 1
 	url = https://github.com/nega0/pianobarfly
 	arch = any

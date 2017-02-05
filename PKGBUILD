@@ -1,7 +1,7 @@
 # Maintainer: Cyker Way <cykerway at gmail dot com>
 
 pkgname=pianobarfly-git
-pkgver=20140330
+pkgver=20161028
 pkgrel=1
 pkgdesc="A console client for the personalized web radio pandora"
 arch=(any)
