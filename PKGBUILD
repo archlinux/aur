@@ -1,19 +1,21 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=libfat-gba
-pkgver=1.0.14
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Library for accessing FAT filesystems from Nintendo Gameboy Advance homebrew"
 arch=('any')
-url="http://chishm.drunkencoders.com/libfat/"
+url="https://www.chishm.com/libfat/"
 license=('custom')
 depends=('libgba')
 source=("http://downloads.sourceforge.net/sourceforge/devkitpro/libfat-src-$pkgver.tar.bz2")
-sha256sums=('bfa7768d9a199b2a93e8aacf010f73df59bb7d029df95b7d176a83d9131d20cc')
+sha256sums=('e4de0f7b19928dcb9c7c5f135be82d75d606035033ce632b5e8c0629f4f7d04b')
 options=(!strip staticlibs)
 
 build() {
+  # set environment
   source /etc/profile.d/devkitarm.sh
+
   make gba-release
 }
 

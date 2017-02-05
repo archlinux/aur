@@ -1,15 +1,15 @@
 pkgbase = libfat-gba
 	pkgdesc = Library for accessing FAT filesystems from Nintendo Gameboy Advance homebrew
-	pkgver = 1.0.14
+	pkgver = 1.1.0
 	pkgrel = 1
-	url = http://chishm.drunkencoders.com/libfat/
+	url = https://www.chishm.com/libfat/
 	arch = any
 	license = custom
 	depends = libgba
 	options = !strip
 	options = staticlibs
-	source = http://downloads.sourceforge.net/sourceforge/devkitpro/libfat-src-1.0.14.tar.bz2
-	sha256sums = bfa7768d9a199b2a93e8aacf010f73df59bb7d029df95b7d176a83d9131d20cc
+	source = http://downloads.sourceforge.net/sourceforge/devkitpro/libfat-src-1.1.0.tar.bz2
+	sha256sums = e4de0f7b19928dcb9c7c5f135be82d75d606035033ce632b5e8c0629f4f7d04b
 
 pkgname = libfat-gba
 
