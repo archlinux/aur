@@ -1,15 +1,15 @@
 pkgbase = mint-x-theme
 	pkgdesc = A Linux Mint theme. Includes GTK2, GTK3, Metacity and Xfce components.
-	pkgver = 1.8
-	pkgrel = 2
+	pkgver = 1.9
+	pkgrel = 0
 	url = http://packages.linuxmint.com
 	arch = any
 	license = GPL3
 	conflicts = mint-themes
 	source = http://packages.linuxmint.com/pool/main/m/mint-themes/mint-themes_1.4.8.tar.xz
-	source = http://packages.linuxmint.com/pool/main/m/mint-themes-gtk3/mint-themes-gtk3_3.18+8.tar.xz
+	source = http://packages.linuxmint.com/pool/main/m/mint-themes-gtk3/mint-themes-gtk3_3.18+11.tar.xz
 	sha256sums = 55e338403dfba0cfd44ded2ffbece925f9c5e02cedafc697eb577f302612d212
-	sha256sums = 646cd198b45881f901aa0a8dca3835ce137e1e3348f553b13bbc5e3ce1a2dc2f
+	sha256sums = 6fdcfcaa62ea5dc31b7ad28b7ba30c3e4d024baaccf414bdf74668c105a1358e
 
 pkgname = mint-x-theme
 
