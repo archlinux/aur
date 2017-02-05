@@ -1,0 +1,4 @@
+post_install() {
+	getent group bley &>/dev/null || groupadd -r bley >/dev/null
+	getent passwd bley &>/dev/null || useradd -r -g bley -d /etc/bley -s /bin/false bley >/dev/null
+}
