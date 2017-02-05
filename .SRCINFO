@@ -1,0 +1,36 @@
+pkgbase = actionfps
+	pkgdesc = A game based on the open-source AssaultCube first-person shooter (FPS)
+	pkgver = 1000
+	pkgrel = 1
+	url = https://actionfps.com
+	arch = i686
+	arch = x86_64
+	license = ZLIB
+	license = custom
+	makedepends = mesa
+	makedepends = clang
+	depends = sdl
+	depends = sdl_mixer
+	depends = sdl_image
+	depends = openal
+	depends = zlib
+	depends = gcc-libs
+	depends = libgl
+	depends = glu
+	depends = curl
+	provides = actionfps
+	source = https://github.com/ActionFPS/ActionFPS-Game/archive/version_1000.tar.gz
+	source = actionfps-gcc6-1.patch
+	source = actionfps
+	source = actionfps-server
+	source = actionfps.desktop
+	source = actionfps.png
+	md5sums = 32dad06e74202dea378efff732c0c249
+	md5sums = ac0b864edc62900fecaa547fd456645e
+	md5sums = 3273bc8220f2e50e39e8076f06d8144d
+	md5sums = d00249969554bd600f5a39187a10c5d4
+	md5sums = 22aaf111f2bce517000baaa375ba9321
+	md5sums = f7da6cb5df462439693b4c2560223a97
+
+pkgname = actionfps
+

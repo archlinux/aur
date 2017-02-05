@@ -1,0 +1,14 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=actionfps
+Icon=actionfps
+Type=Application
+Terminal=false
+MultipleArgs=false
+Name=Actionfps
+GenericName=Realistic Multiplayer FPS
+MimeType=text/html
+StartupNotify=false
+Categories=Game;ActionGame;
+Comment=A multiplayer, first-person shooter game, based on the CUBE engine. Fast, arcade gameplay.
+MimeType=x-scheme-handler/actionfps

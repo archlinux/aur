@@ -1,0 +1,270 @@
+diff -Naur a/source/src/bot/bot_waypoint.cpp b/source/src/bot/bot_waypoint.cpp
+--- a/source/src/bot/bot_waypoint.cpp	2017-01-28 18:36:39.304498305 +0400
++++ b/source/src/bot/bot_waypoint.cpp	2017-01-28 18:50:44.804515824 +0400
+@@ -1202,7 +1202,7 @@
+                     flCost += (1.0f-flFraction)*0.5f;
+                }
+ 
+-               if ((abs(a) > 4) || (abs(b) > 4)) continue;
++               if ((iabs(a) > 4) || (iabs(b) > 4)) continue;
+ 
+                vec from = to;
+                to.z -= (JUMP_HEIGHT - 1.0f);
+@@ -1230,7 +1230,7 @@
+                     flCost += (1.0f-flFraction)*0.5f;
+                }
+ 
+-               if ((abs(a) > 4) || (abs(b) > 4)) continue;
++               if ((iabs(a) > 4) || (iabs(b) > 4)) continue;
+ 
+                vec from = to;
+                to.z -= (JUMP_HEIGHT - 1.0f);
+@@ -1650,12 +1650,12 @@
+ void CWaypointClass::GetNodeIndexes(const vec &v_origin, short *i, short *j)
+ {
+      // Function code by cheesy and PMB
+-     //*i = abs((int)((int)(v_origin.x + (2*ssize)) / SECTOR_SIZE));
+-     //*j = abs((int)((int)(v_origin.y + (2*ssize)) / SECTOR_SIZE));
++     //*i = iabs((int)((int)(v_origin.x + (2*ssize)) / SECTOR_SIZE));
++     //*j = iabs((int)((int)(v_origin.y + (2*ssize)) / SECTOR_SIZE));
+      //*i = (int)((v_origin.x) / ssize * MAX_MAP_GRIDS);
+      //*j = (int)((v_origin.y) / ssize * MAX_MAP_GRIDS);
+-     *i = abs((int)((v_origin.x) / MAX_MAP_GRIDS));
+-     *j = abs((int)((v_origin.y) / MAX_MAP_GRIDS));
++     *i = iabs((int)((v_origin.x) / MAX_MAP_GRIDS));
++     *j = iabs((int)((v_origin.y) / MAX_MAP_GRIDS));
+ 
+      if (*i > MAX_MAP_GRIDS - 1)
+           *i = MAX_MAP_GRIDS - 1;
+diff -Naur a/source/src/command.cpp b/source/src/command.cpp
+--- a/source/src/command.cpp	2017-01-28 18:36:39.307831652 +0400
++++ b/source/src/command.cpp	2017-01-28 18:52:31.451604564 +0400
+@@ -560,7 +560,7 @@
+             if(lc<=seer_t1.length())
+             {
+                 int dt = seer_t1[seer_index] - seer_t1[lc];
+-                if(abs(dt)<2)
++                if(iabs(dt)<2)
+                 {
+                     conoutf("SCRIPT EXECUTION warning [%d:%s]", &p, p);
+                     seer_t2.add(seer_t1[seer_index]);
+@@ -1876,4 +1876,4 @@
+     printf("\n");
+ }
+ 
+-COMMAND(debugargs, "v");
+\ No newline at end of file
++COMMAND(debugargs, "v");
+diff -Naur a/source/src/command.h b/source/src/command.h
+--- a/source/src/command.h	2017-01-28 18:36:39.307831652 +0400
++++ b/source/src/command.h	2017-01-28 18:55:14.932251334 +0400
+@@ -92,6 +92,7 @@
+ #define VARNP(name, global, min, cur, max) int global = variable(#name, min, cur, max, &global, NULL, true)
+ #define VARF(name, min, cur, max, body)  extern int name; void var_##name() { body; } int name = variable(#name, min, cur, max, &name, var_##name, false)
+ #define VARFP(name, min, cur, max, body) extern int name; void var_##name() { body; } int name = variable(#name, min, cur, max, &name, var_##name, true)
++#define VARNFP(name, global, min, cur, max, body) extern int global; void var_##name() { body; } int global = variable(#name, min, cur, max, &global, var_##name, true)
+ 
+ #define FVARP(name, min, cur, max) float name = fvariable(#name, min, cur, max, &name, NULL, true)
+ #define FVAR(name, min, cur, max)  float name = fvariable(#name, min, cur, max, &name, NULL, false)
+diff -Naur a/source/src/crypto.cpp b/source/src/crypto.cpp
+--- a/source/src/crypto.cpp	2017-01-28 18:36:39.307831652 +0400
++++ b/source/src/crypto.cpp	2017-01-28 19:00:46.546895794 +0400
+@@ -760,7 +760,7 @@
+ const char *genpwdhash(const char *name, const char *pwd, int salt)
+ {
+     static string temp;
+-    formatstring(temp)("%s %d %s %s %d", pwd, salt, name, pwd, abs(PROTOCOL_VERSION));
++    formatstring(temp)("%s %d %s %s %d", pwd, salt, name, pwd, iabs(PROTOCOL_VERSION));
+     tiger::hashval hash;
+     tiger::hash((uchar *)temp, (int)strlen(temp), hash);
+     formatstring(temp)("%s %s %s", hashchunktoa(hash.chunks[0]), hashchunktoa(hash.chunks[1]), hashchunktoa(hash.chunks[2]));
+@@ -914,4 +914,4 @@
+   }
+ 
+   return ret;
+-}
+\ No newline at end of file
++}
+diff -Naur a/source/src/editing.cpp b/source/src/editing.cpp
+--- a/source/src/editing.cpp	2017-01-28 18:36:39.307831652 +0400
++++ b/source/src/editing.cpp	2017-01-28 19:03:14.050897839 +0400
+@@ -165,12 +165,12 @@
+ // update current selection, or add a new one
+ void makesel(bool isnew)
+ {
+-    if(isnew || sels.length() == 0) addselection(min(lastx, cx), min(lasty, cy), abs(lastx-cx)+1, abs(lasty-cy)+1, max(lasth, ch));
++    if(isnew || sels.length() == 0) addselection(min(lastx, cx), min(lasty, cy), iabs(lastx-cx)+1, iabs(lasty-cy)+1, max(lasth, ch));
+     else
+     {
+         block &cursel = sels.last();
+         cursel.x = min(lastx, cx); cursel.y = min(lasty, cy);
+-        cursel.xs = abs(lastx-cx)+1; cursel.ys = abs(lasty-cy)+1;
++        cursel.xs = iabs(lastx-cx)+1; cursel.ys = iabs(lasty-cy)+1;
+         cursel.h = max(lasth, ch);
+         correctsel(cursel);
+     }
+@@ -991,7 +991,7 @@
+     }
+     if(xo || yo)
+     {
+-        block b = { max(-xo, 0), max(-yo, 0), ssize - abs(xo), ssize - abs(yo) }, *cp = blockcopy(b);
++        block b = { max(-xo, 0), max(-yo, 0), ssize - iabs(xo), ssize - iabs(yo) }, *cp = blockcopy(b);
+         cp->x = max(xo, 0);
+         cp->y = max(yo, 0);
+         blockpaste(*cp);
+diff -Naur a/source/src/entity.h b/source/src/entity.h
+--- a/source/src/entity.h	2017-01-28 18:36:39.307831652 +0400
++++ b/source/src/entity.h	2017-01-28 19:04:03.171122415 +0400
+@@ -561,7 +561,7 @@
+     {
+         const int maxskin[2] = { 4, 6 };
+         t = team_base(t < 0 ? team : t);
+-        nextskin[t] = abs(s) % maxskin[t];
++        nextskin[t] = iabs(s) % maxskin[t];
+     }
+ };
+ 
+diff -Naur a/source/src/main.cpp b/source/src/main.cpp
+--- a/source/src/main.cpp	2017-01-28 18:36:39.307831652 +0400
++++ b/source/src/main.cpp	2017-01-28 19:08:03.538884468 +0400
+@@ -526,11 +526,11 @@
+ COMMANDF(screenres, "ii", (int *w, int *h) { screenres(*w, *h); });
+ 
+ static int curgamma = 100;
+-VARFP(gamma, 30, 100, 300,
++VARNFP(gamma, vgamma, 30, 100, 300,
+ {
+-    if(gamma == curgamma) return;
+-    curgamma = gamma;
+-    float f = gamma/100.0f;
++    if(vgamma == curgamma) return;
++    curgamma = vgamma;
++    float f = vgamma/100.0f;
+     if(SDL_SetGamma(f,f,f)==-1) conoutf("Could not set gamma: %s", SDL_GetError());
+ });
+ 
+diff -Naur a/source/src/platform.h b/source/src/platform.h
+--- a/source/src/platform.h	2017-01-28 18:36:39.311164998 +0400
++++ b/source/src/platform.h	2017-01-28 19:12:19.610248054 +0400
+@@ -3,13 +3,6 @@
+         #undef _FORTIFY_SOURCE
+     #endif
+ 
+-    #define gamma __gamma
+-#endif
+-
+-#include <math.h>
+-
+-#ifdef __GNUC__
+-    #undef gamma
+ #endif
+ 
+ #include <string.h>
+@@ -22,6 +15,7 @@
+ #include <vector>
+ #include <algorithm>
+ #include <string>
++#include <math.h>
+ 
+ #ifdef __MINGW32__
+     #include <stdint.h>
+diff -Naur a/source/src/protos.h b/source/src/protos.h
+--- a/source/src/protos.h	2017-01-28 18:36:39.311164998 +0400
++++ b/source/src/protos.h	2017-01-28 19:14:56.971094022 +0400
+@@ -1109,7 +1109,8 @@
+                 {
+                     demo_interm = true;
+                 }
+-                else if(ai > 0) maxdemos = ai; break;
++                else if(ai > 0) maxdemos = ai;
++                break;
+             }
+             case 'W': demopath = a; break;
+             case 'r': maprot = a; break;
+diff -Naur a/source/src/rendercubes.cpp b/source/src/rendercubes.cpp
+--- a/source/src/rendercubes.cpp	2017-01-28 18:36:39.311164998 +0400
++++ b/source/src/rendercubes.cpp	2017-01-28 19:20:09.016083692 +0400
+@@ -216,9 +216,9 @@
+     else        // continue strip
+     {
+         int lighterr = lighterror*2;
+-        if((abs(ol1r-l3->r)<lighterr && abs(ol2r-l4->r)<lighterr        // skip vertices if light values are close enough
+-        &&  abs(ol1g-l3->g)<lighterr && abs(ol2g-l4->g)<lighterr
+-        &&  abs(ol1b-l3->b)<lighterr && abs(ol2b-l4->b)<lighterr) || !wtex)
++        if((iabs(ol1r-l3->r)<lighterr && iabs(ol2r-l4->r)<lighterr        // skip vertices if light values are close enough
++        &&  iabs(ol1g-l3->g)<lighterr && iabs(ol2g-l4->g)<lighterr
++        &&  iabs(ol1b-l3->b)<lighterr && iabs(ol2b-l4->b)<lighterr) || !wtex)
+         {
+             verts.setsize(verts.length()-2);
+             nquads--;
+@@ -375,7 +375,7 @@
+     {
+         int lighterr = lighterror*2;
+         if((!hf && !ohf)
+-        && ((abs(ol1r-l2->r)<lighterr && abs(ol1g-l2->g)<lighterr && abs(ol1b-l2->b)<lighterr) || !wtex))       // skip vertices if light values are close enough
++        && ((iabs(ol1r-l2->r)<lighterr && iabs(ol1g-l2->g)<lighterr && abs(ol1b-l2->b)<lighterr) || !wtex))       // skip vertices if light values are close enough
+         {
+             verts.setsize(verts.length()-2);
+             nquads--;
+diff -Naur a/source/src/rendertext.cpp b/source/src/rendertext.cpp
+--- a/source/src/rendertext.cpp	2017-01-28 18:36:39.311164998 +0400
++++ b/source/src/rendertext.cpp	2017-01-28 19:21:03.273035596 +0400
+@@ -154,7 +154,7 @@
+         if(c=='r') c = stack[(sp > 0) ? --sp : sp]; // restore color
+         else if(c == 'b') { if(allowblinkingtext && !ignoreblinkingbit) stack[sp] *= -1; } // blinking text - only if allowed
+         else stack[sp] = c;
+-        switch(abs(stack[sp]))
++        switch(iabs(stack[sp]))
+         {
+             case '0': color = bvec( 2,  255,  128 ); break;   // green: player talk
+             case '1': color = bvec( 96,  160, 255 ); break;   // blue: team chat
+@@ -204,7 +204,7 @@
+             //default: color = bvec( 255, 255, 255 ); break;
+         }
+         int b = (int) (sinf(lastmillis / 200.0f) * 115.0f);
+-        b = stack[sp] > 0 ? 100 : min(abs(b), 100);
++        b = stack[sp] > 0 ? 100 : min(iabs(b), 100);
+         glColor4ub(color.x, color.y, color.z, (a * b) / 100);
+     }
+ }
+diff -Naur a/source/src/tools.h b/source/src/tools.h
+--- a/source/src/tools.h	2017-01-28 18:36:39.314498345 +0400
++++ b/source/src/tools.h	2017-01-28 19:24:31.250788417 +0400
+@@ -56,6 +56,7 @@
+ }
+ 
+ template <typename T> inline T pow2(T x) { return x*x; }
++inline int iabs(int n) { return labs(n); }
+ 
+ #define clamp(x,minval,maxval) (max(minval, min(x, maxval)))
+ #define rnd(x) ((int)(randomMT()&0xFFFFFF)%(x))
+diff -Naur a/source/src/world.cpp b/source/src/world.cpp
+--- a/source/src/world.cpp	2017-01-28 18:36:39.314498345 +0400
++++ b/source/src/world.cpp	2017-01-28 19:25:19.394371587 +0400
+@@ -79,8 +79,8 @@
+                     || abs(q->b - o[0]->b) > lighterr
+                     || q->ftex != o[0]->ftex
+                     || q->ctex != o[0]->ctex
+-                    || abs(q->r - o[0]->r) > lighterr           // perfect mip even if light is not exactly equal
+-                    || abs(q->g - o[0]->g) > lighterr
++                    || iabs(q->r - o[0]->r) > lighterr           // perfect mip even if light is not exactly equal
++                    || iabs(q->g - o[0]->g) > lighterr
+                     || q->utex != o[0]->utex) goto c;
+                 }
+                 if(r->type==CHF || r->type==FHF)                // can make a perfect mip out of a hf if slopes lie on one line
+diff -Naur a/source/src/worldrender.cpp b/source/src/worldrender.cpp
+--- a/source/src/worldrender.cpp	2017-01-28 18:36:39.314498345 +0400
++++ b/source/src/worldrender.cpp	2017-01-28 19:26:36.448103569 +0400
+@@ -297,10 +297,10 @@
+ void render_world(float vx, float vy, float vh, float changelod, int yaw, int pitch, float fov, float fovy, int w, int h)
+ {
+     loopi(LARGEST_FACTOR) stats[i] = 0;
+-    min_lod = minimap || (player1->isspectating() && player1->spectatemode == SM_OVERVIEW) ? MAX_LOD : MIN_LOD+abs(pitch)/12;
++    min_lod = minimap || (player1->isspectating() && player1->spectatemode == SM_OVERVIEW) ? MAX_LOD : MIN_LOD+iabs(pitch)/12;
+     yaw = 360-yaw;
+     float widef = fov/75.0f;
+-    int cdist = abs(yaw%90-45);
++    int cdist = iabs(yaw%90-45);
+     if(cdist<7)    // hack to avoid popup at high fovs at 45 yaw
+     {
+         min_lod = max(min_lod, (int)(MIN_LOD+(10-cdist)/1.0f*widef)); // less if lod worked better

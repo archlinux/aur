@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /usr/share/actionfps
+actionfps_client "--home=${HOME}/.actionfps/v1.2next" "--init=${HOME}/.actionfps/v1.2next/config/init.cfg" "$@"
