@@ -1,12 +1,14 @@
 pkgbase = yabar-git
 	pkgdesc = A modern and lightweight status bar for X window managers
-	pkgver = 0.4.0.r26.g0d096c4
+	pkgver = 0.4.0-79-gd606a5a
 	pkgrel = 1
 	url = https://github.com/geommer/yabar
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	depends = cairo
+	depends = alsa-lib
 	depends = pango
 	depends = libconfig
 	depends = xcb-util-wm
