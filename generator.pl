@@ -20,8 +20,7 @@ sub _find_max {
     @values    = grep { $_ ~~ $filter } @values if defined $filter;
 
     unless(@values) {
-        say "No values can be extracted.";
-        exit 1;
+        die "No values can be extracted.";
     }
 
     return maxstr @values;
@@ -71,13 +70,21 @@ sub _get_data {
     $release =~ /^\d{4}-\d{2}-(?<day>\d+)-(?<hour>\d+)-(?<minute>\d+)-(?<second>\d+)/;
     $data = { %$data, %+ };
 
-    my $package_i686 = _get_part($ua, $uri, qr($locale.linux-i686.tar.bz2$));
-    my $package_i686_sums = _get_part($ua, $uri, qr($locale.linux-i686.checksums$));
-    $data->{sha512sums_i686} = _get_hashsum($ua, $uri . $package_i686_sums, $package_i686);
+    my $package_x86_64;
+    eval {
+        $package_x86_64  = _get_part($ua, $uri, qr($locale.linux-x86_64.tar.bz2$));
+        my $package_x86_64_sums = _get_part($ua, $uri, qr($locale.linux-x86_64.checksums$));
+        $data->{sha512sums_x86_64} = _get_hashsum($ua, $uri . $package_x86_64_sums, $package_x86_64);
+    };
+    $data->{sha512sums_x86_64} //= 'SKIP';
 
-    my $package_x86_64  = _get_part($ua, $uri, qr($locale.linux-x86_64.tar.bz2$));
-    my $package_x86_64_sums = _get_part($ua, $uri, qr($locale.linux-x86_64.checksums$));
-    $data->{sha512sums_x86_64} = _get_hashsum($ua, $uri . $package_x86_64_sums, $package_x86_64);
+    eval {
+        my $package_i686 = _get_part($ua, $uri, qr($locale.linux-i686.tar.bz2$));
+        my $package_i686_sums = _get_part($ua, $uri, qr($locale.linux-i686.checksums$));
+        $data->{sha512sums_i686} = _get_hashsum($ua, $uri . $package_i686_sums, $package_i686);
+    };
+    $data->{sha512sums_i686} //= 'SKIP';
+    say "Can't get hashsums correctly: $@" if $@;
 
     $data->{version} = $1 if $package_x86_64 =~ /firefox-(\d+)/;
 
