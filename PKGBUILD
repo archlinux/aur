@@ -13,9 +13,9 @@ pkgbase=mesa-test-git
 pkgname=('mesa-test-git' 'mesa-test-libgl-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=17.1.0_devel.88759.106a51440d
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
-makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'libdrm' 'nettle' 'glproto'
+makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'libdrm' 'glproto'
              'dri2proto' 'dri3proto' 'presentproto' 'libxml2' 'libx11' 'libxshmfence' 
              'libxxf86vm'  'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'libomxil-bellagio'
              'libtxc_dxtn' 'ocl-icd' 'vulkan-icd-loader' 'libgcrypt')
@@ -52,7 +52,6 @@ build () {
                --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
                --with-egl-platforms=x11,drm,wayland \
                --with-vulkan-drivers=intel,radeon \
-               --with-sha1=libnettle \
                --enable-texture-float \
                --enable-osmesa \
                --enable-xa \
@@ -80,8 +79,6 @@ build () {
 #                                   [default=auto]
 # --with-vulkan-drivers[=DIRS...]   comma delimited Vulkan drivers list, e.g. "intel"
 #                                   [default=no]
-#
-# --with-sha1=libc|libmd|libnettle|libgcrypt|libcrypto|libsha1|CommonCrypto|CryptoAPI       choose SHA1 implementation
 # --enable-texture-float            enable floating-point textures and renderbuffers 
 #                                   [default=disabled]
 # --enable-osmesa                   enable OSMesa library
@@ -90,7 +87,7 @@ build () {
 #                                   [default=disabled]
 # --enable-nine                     enable build of the nine Direct3D9 API
 #                                   [default=no]
-# --enable-xvmc                     enable xvmc library
+# --disable-xvmc                    enable xvmc library
 #                                   [default=auto]
 # --enable-vdpau                    enable vdpau library
 #                                    [default=auto]
@@ -111,7 +108,7 @@ build () {
 package_mesa-test-git () {
   pkgdesc="an open-source implementation of the OpenGL specification, git version"
   depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-           'libomxil-bellagio' 'libtxc_dxtn' 'nettle' 'llvm-libs-svn')
+           'libomxil-bellagio' 'libtxc_dxtn' 'llvm-libs-svn')
   optdepends=('opengl-man-pages: for the OpenGL API man pages')
   provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opencl-driver')
   replaces=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'libva-mesa-driver' 'mesa-vdpau')
