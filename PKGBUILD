@@ -17,8 +17,10 @@ install=pegdbserver_power.install
 source=('file://S32_Power_Linux_v1.1.bin' 'license_gdb.pdf')
 sha256sums=('f378b5e397d7664c36c02c86b69f7237ad525eac2109ac4ddb50404cb1132a97'
             '6b135ddd5388f6a0dd1d1d9d6c6d7321423f391914312c4a4aafd9d851d10dbc')
+noextract=('S32_Power_Linux_v1.1.bin')
 
 build() {
+	unzip S32_Power_Linux_v1.1.bin || true
 	unzip C_/MakingInstalers/Layout/eclipse_zg_ia_sf.jar plugins/com.pemicro.debug.gdbjtag.ppc_$pkgver/lin/*
 	unzip C_/MakingInstalers/Layout/Drivers_zg_ia_sf.jar libusb_64_32/*
 }
