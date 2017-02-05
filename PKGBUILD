@@ -10,8 +10,8 @@
 PKGEXT=.pkg.tar
 
 pkgname=hon
-pkgver=3.9.5
-pkgrel=2
+pkgver=4.0
+pkgrel=1
 pkgdesc="Heroes of Newerth is a Real Time Strategy game heavily influcenced by DotA"
 arch=('i686' 'x86_64')
 url="http://www.heroesofnewerth.com/"
@@ -20,11 +20,11 @@ depends=('alsa-lib' 'gconf' 'gtk2'  'nss' 'libxss' 'libjpeg-turbo' 'cgmanager' '
 makedepends=('unzip')
 options=(!strip)
 install=hon.install
-source=('hon.desktop' 'license' "http://dl.heroesofnewerth.com/HoNClient-${pkgver}.sh")
-noextract=("HoNClient-${pkgver}.sh")
+source=('hon.desktop' 'license' "http://dl.heroesofnewerth.com/installers/linux/HoNClient.sh")
+noextract=("HoNClient.sh")
 md5sums=('25fb5ab8c49be0f1269c79520ccee789'
          'dd2c8cd0f5bcafa25cfb583a92e21aec'
-         'e7e689acb05de2d924a2f0829fe0cc59')
+         'd03e975286ae270d6bb77ae88b6ed3b4')
 
 package() {
     ## Thx to messo8080 for reminding us about the /tmp dir,
@@ -54,7 +54,7 @@ Continue?"
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
 
     # Extract Files
-    sh -c "unzip \"${srcdir}/HoNClient-${pkgver}.sh\" \"data/*\" -d \"${pkgdir}/opt/\"; true"    
+    sh -c "unzip \"${srcdir}/HoNClient.sh\" \"data/*\" -d \"${pkgdir}/opt/\"; true"    
     mv "${pkgdir}"/opt/{data,hon}
 
     # Install License
