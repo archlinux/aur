@@ -10,7 +10,9 @@ pkgbase = python-pytest-allure
 	depends = python-six
 	depends = python-namedlist
 	source = https://pypi.python.org/packages/79/34/7fee1e62f5d99b58f1a6b4b23f0d99caa3e1294fdfa4672c6e6ec9e25b15/pytest-allure-adaptor-1.7.6.tar.gz
+	source = fix001.diff
 	md5sums = 67d5cdb1c2ea53c227c876dec2f287ab
+	md5sums = 3043cd64176a904888d950871984deb9
 
 pkgname = python-pytest-allure
 

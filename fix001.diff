@@ -1,0 +1,33 @@
+--- ./allure/pytest_plugin.py	2016-11-21 16:21:21.000000000 +0200
++++ ./allure/pytest_plugin.py	2017-02-04 20:00:11.209182287 +0200
+@@ -4,7 +4,7 @@
+ import argparse
+ 
+ from collections import namedtuple
+-from _pytest.junitxml import mangle_testnames
++#from _pytest.junitxml import mangle_testnames
+ from six import text_type
+ 
+ from allure.common import AllureImpl, StepContext
+@@ -14,6 +14,10 @@
+     all_of, get_exception_message, now
+ from allure.structure import TestCase, TestStep, Attach, TestSuite, Failure, TestLabel
+ 
++def mangle_testnames(names):
++    names = [x.replace(".py", "") for x in names if x != '()']
++    names[0] = names[0].replace("/", '.')
++    return names
+ 
+ def pytest_addoption(parser):
+     parser.getgroup("reporting").addoption('--alluredir',
+--- ./setup.py	2016-11-21 16:21:21.000000000 +0200
++++ ./setup.py	2017-02-05 00:28:16.000000000 +0200
+@@ -7,7 +7,7 @@
+ 
+ install_requires = [
+     "lxml>=3.2.0",
+-    "pytest>=2.7.3,<=2.9.0",
++    "pytest>=2.7.3",
+     "namedlist",
+     "six>=1.9.0"
+ ]
