@@ -4,7 +4,7 @@
 
 pkgname=python33
 pkgver=3.3.6
-pkgrel=2
+pkgrel=3
 _pybasever=3.3
 _pymajver=3
 pkgdesc="Major release 3.3 of the Python high-level programming language"
