@@ -7,8 +7,8 @@ pkgbase = surfer
 	arch = x86_64
 	license = GPL
 	depends = webkit2gtk
-	source = surfer-1.tar.gz::https://github.com/nihilowy/surfer/archive/master.tar.gz
-	md5sums = 0af58b32eeee0d2a47229627c59fdfac
+	source = surfer-1.tar.gz::https://github.com/nihilowy/surfer.git
+	md5sums = 73454dfa10b9fe9c1a5e0b68064dc183
 
 pkgname = surfer
 
