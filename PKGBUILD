@@ -2,7 +2,7 @@
 
 pkgbase=notepadqq-src
 pkgname=notepadqq
-pkgver=0.53.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Notepad++-like editor for Linux'
 arch=('i686' 'x86_64')
