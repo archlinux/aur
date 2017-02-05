@@ -1,0 +1,14 @@
+post_upgrade() {
+  EXTRAMODULES='extramodules-4.9-ARCH'
+  depmod -a $(cat /usr/lib/modules/$EXTRAMODULES/version)
+}
+
+post_install() {
+  post_upgrade
+}
+
+post_remove() {
+  post_upgrade
+}
+
+# vim:set ts=2 sw=2 et:
