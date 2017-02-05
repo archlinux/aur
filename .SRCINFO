@@ -1,0 +1,52 @@
+pkgbase = linux-max98090
+	pkgver = 4.9.6
+	pkgrel = 1
+	url = https://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.9.6.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.9.6.sign
+	source = config
+	source = config.x86_64
+	source = 99-linux.hook
+	source = linux.preset
+	source = change-default-console-loglevel.patch
+	source = 0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch
+	source = max98090.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = 029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a
+	sha256sums = SKIP
+	sha256sums = cd0d5ea27c487a7d1354ba3e80f85af4924b77ad1180f1fbfaf6844ae03c8728
+	sha256sums = SKIP
+	sha256sums = 0ab035f5e2583b14742b7fb7216d49a192e5eebd027cb491c7941b9617e2dba2
+	sha256sums = 2f0f40dc9f6d51acc0fd10195e6aa087278691529bd64ed6abb7f9a4d4fde093
+	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = 3e955e0f1aae96bb6c1507236adc952640c9bd0a134b9995ab92106a33dc02d9
+	sha256sums = 3a4d8d182de94c031860c33ae35d92c5f9f3b987b0a5191c4e15366353a8d217
+
+pkgname = linux-max98090
+	pkgdesc = The Linux-max98090 kernel and modules for devices with byt-max98090 sound, like chromebooks
+	install = linux.max98090.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-max98090.preset
+
+pkgname = linux-max98090-headers
+	pkgdesc = Header files and scripts for building modules for Linux-max98090 kernel
+

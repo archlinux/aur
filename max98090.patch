@@ -1,0 +1,43 @@
+From da43ff6d81ec1c2f264326cb5c0b01260501aaa4 Mon Sep 17 00:00:00 2001
+From: Nicolas Porcel <nicolasporcel06@gmail.com>
+Date: Wed, 1 Feb 2017 23:41:33 +0100
+Subject: [PATCH] ASoC: Intel: byt-max98090 Fix GPIOs lookup
+To: nicolasporcel06@gmail.com
+
+Commit 9c3c9bc9cc98 ("gpiolib: tighten up ACPI legacy gpio lookups")
+changed the way fallback to _CRS-defined GPIOs is executed by requiring
+drivers use common connection ID for all GPIOs fetched from _CRS. This
+broke byt-max98090 driver, which expected GPIO core to ignore the names
+it supplied and simply give GPIOs 0 and 1 from whatever block it finds.
+
+By giving the same name to both GPIOs 0 and 1, the driver will perform
+the lookup for both of them instead of the first requested. This is the
+same behavior than before the commit.
+
+Signed-off-by: Nicolas Porcel <nicolasporcel06@gmail.com>
+---
+ sound/soc/intel/boards/byt-max98090.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/sound/soc/intel/boards/byt-max98090.c b/sound/soc/intel/boards/byt-max98090.c
+index d9f81b8d915d..a6e57d95c1e2 100644
+--- a/sound/soc/intel/boards/byt-max98090.c
++++ b/sound/soc/intel/boards/byt-max98090.c
+@@ -67,13 +67,13 @@ static struct snd_soc_jack_pin hs_jack_pins[] = {
+ 
+ static struct snd_soc_jack_gpio hs_jack_gpios[] = {
+ 	{
+-		.name		= "hp-gpio",
++		.name		= "byt_max98090",
+ 		.idx		= 0,
+ 		.report		= SND_JACK_HEADPHONE | SND_JACK_LINEOUT,
+ 		.debounce_time	= 200,
+ 	},
+ 	{
+-		.name		= "mic-gpio",
++		.name		= "byt_max98090",
+ 		.idx		= 1,
+ 		.invert		= 1,
+ 		.report		= SND_JACK_MICROPHONE,
+-- 
+2.11.0
