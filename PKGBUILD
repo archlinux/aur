@@ -13,7 +13,7 @@ license=('GPL2' 'CCPL')
 depends=('binutils' 'boost-libs' 'curl' 'enet' 'libogg' 'libpng' 'libvorbis'
          'libxml2' 'openal' 'sdl2' 'wxgtk' 'zlib' 'libgl' '0ad-data' 'glu'
          'gloox' 'miniupnpc' 'icu' 'nspr')
-makedepends=('boost' 'cmake' 'mesa' 'zip' 'python2' 'libsm')
+makedepends=('boost' 'cmake' 'mesa' 'zip' 'python2' 'libsm' 'git')
 source=("git+https://github.com/0ad/0ad.git")
 md5sums=('SKIP')
 
