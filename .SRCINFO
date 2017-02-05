@@ -1,0 +1,14 @@
+pkgbase = snapscreenshot
+	pkgdesc = Screenshot program for Linux text consoles
+	pkgver = 1.0.14.3
+	pkgrel = 1
+	url = http://bisqwit.iki.fi/source/snapscreenshot.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	source = http://bisqwit.iki.fi/src/arch/snapscreenshot-1.0.14.3.tar.bz2
+	sha256sums = b30ec09f182eb4205066d6640666a94bc453eaa2416e5c435b5a28e396c6fb3f
+
+pkgname = snapscreenshot
+
