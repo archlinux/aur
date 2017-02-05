@@ -1,7 +1,7 @@
 # Maintainer: Patrick Oppenlander <patrick.oppenlander@gmail.com>
 
 pkgname=cairo-minimal
-pkgver=1.14.2
+pkgver=1.14.8
 pkgrel=1
 pkgdesc="A vector graphics library - build with minimal dependencies"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ provides=('cairo-xcb' 'cairo')
 replaces=('cairo-xcb' 'cairo')
 source=(http://cairographics.org/releases/${pkgname:0:5}-$pkgver.tar.xz)
 
-sha1sums=('c8da68aa66ca0855b5d0ff552766d3e8679e1d24')
+sha1sums=('c6f7b99986f93c9df78653c3e6a3b5043f65145e')
 
 build() {
   cd ${pkgname:0:5}-$pkgver
