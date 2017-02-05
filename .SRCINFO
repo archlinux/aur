@@ -1,0 +1,19 @@
+pkgbase = sshsocksvpn
+	pkgdesc = Set of tools to interface with Kodi/XBMC
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/grimpy/koditools
+	arch = any
+	license = GPL2
+	makedepends = python-distribute
+	makedepends = git
+	depends = python
+	depends = python-psutil
+	depends = openssh
+	depends = badvpn
+	provides = sshsocksvpn
+	source = https://github.com/grimpy/sshsocksvpn/archive/v0.1.tar.gz
+	md5sums = 90c544297516eff662df3f4eeb51abcf
+
+pkgname = sshsocksvpn
+
