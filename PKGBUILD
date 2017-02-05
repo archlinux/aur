@@ -3,8 +3,8 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=bdisk
-pkgver=3.00
-pkgrel=5
+pkgver=3.01
+pkgrel=1
 _pkgver=${pkgver}
 #_pkgver=${pkgver}-BETA
 pkgdesc="An easy liveCD creator built in python. Supports hybrid ISOs/USB, iPXE, and UEFI."
@@ -19,10 +19,14 @@ depends=('dosfstools'
 	'dosfstools'
 	'squashfs-tools'
 	'python'
-	'python-validators'
+	'python-git'
+	'python-humanize'
 	'python-jinja'
 	'python-psutil'
-	'python-humanize')
+	'python-patch'
+	'python-pygpgme'
+	'python-pyopenssl'
+	'python-validators')
 #makedepends=( 'python' )
 makedepends=()
 conflicts=('bdisk-git')
@@ -31,11 +35,7 @@ install=
 changelog=
 noextract=()
 optdepends=('rsync: for rsync syncing'
-	'syslinux: for ipxe support'
-	'python-git: for ipxe and git sync support'
-	'python-pygpgme: for GPG support'
-	'python-patch: for ipxe support'
-	'python-pyopenssl: for iPXE support')
+	'syslinux: for ipxe support')
 source=("https://git.square-r00t.net/${_pkgname}/snapshot/${_pkgname}-${_pkgver}.tar.xz"
         "${_pkgname}-${_pkgver}.tar.xz.sig")
 sha512sums=('34f0f05712749f5fa9c32ed1df30a4b02a92add25d95297848095c6575a0e5a8f01b510a9be9f54a03618e2de7315196cbc599f85a1f0c95276e864e97515799'
