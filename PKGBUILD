@@ -9,7 +9,7 @@ pkgdesc="libretro port of Mednafen Saturn"
 arch=('x86_64')
 url="https://github.com/libretro/beetle-saturn-libretro"
 license=('GPLv2')
-makedepends=('git' 'llvm')
+makedepends=('git')
 depends=('libglvnd' 'clang')
 source=("${_gitname}::git://github.com/libretro/${_gitname}.git"
 	"https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/mednafen_saturn_libretro.info")

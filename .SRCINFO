@@ -7,7 +7,6 @@ pkgbase = libretro-mednafen-saturn-git
 	groups = libretro
 	license = GPLv2
 	makedepends = git
-	makedepends = llvm
 	depends = libglvnd
 	depends = clang
 	source = beetle-saturn-libretro::git://github.com/libretro/beetle-saturn-libretro.git
