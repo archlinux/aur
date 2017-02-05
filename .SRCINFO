@@ -19,9 +19,7 @@ pkgbase = pianobarfly-git
 	provides = pianobarfly
 	conflicts = pianobarfly
 	source = pianobarfly-git::git://github.com/nega0/pianobarfly.git
-	source = Makefile.patch
 	sha256sums = SKIP
-	sha256sums = 0478dd2ded42ce03841213259115dabb87a667882ba390260a67a95fc9339eda
 
 pkgname = pianobarfly-git
 

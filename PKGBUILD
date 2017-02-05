@@ -14,11 +14,9 @@ provides=('pianobarfly')
 conflicts=('pianobarfly')
 source=(
   "${pkgname}::git://github.com/nega0/pianobarfly.git"
-  Makefile.patch
 )
 sha256sums=(
   'SKIP'
-  '0478dd2ded42ce03841213259115dabb87a667882ba390260a67a95fc9339eda'
 )
 
 pkgver() {
@@ -28,7 +26,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  patch -p0 < ../Makefile.patch
 }
 
 build() {
