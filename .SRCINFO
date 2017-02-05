@@ -1,0 +1,165 @@
+pkgbase = php70
+	pkgdesc = PHP scripting language package for stable release of 7.0 series
+	pkgver = 7.0.15
+	pkgrel = 1
+	url = http://www.php.net
+	arch = i686
+	arch = x86_64
+	license = PHP
+	checkdepends = procps-ng
+	makedepends = apache
+	makedepends = aspell
+	makedepends = db
+	makedepends = enchant
+	makedepends = gd
+	makedepends = gmp
+	makedepends = icu
+	makedepends = libmcrypt
+	makedepends = libxslt
+	makedepends = libzip
+	makedepends = net-snmp
+	makedepends = postgresql-libs
+	makedepends = sqlite
+	makedepends = systemd
+	makedepends = tidy
+	makedepends = unixodbc
+	makedepends = curl
+	makedepends = libtool
+	makedepends = freetds
+	makedepends = pcre
+	source = https://php.net/distributions/php-7.0.15.tar.xz
+	source = https://php.net/distributions/php-7.0.15.tar.xz.asc
+	source = apache.patch
+	source = apache.conf
+	source = php-fpm.patch
+	source = php-fpm.tmpfiles
+	source = php.ini.patch
+	validpgpkeys = 1A4E8B7277C42E53DBA9C7B9BCAA30EA9C0D5763
+	validpgpkeys = 528995BFEDFBA7191D46839EF9BA0ADA31CBD89E
+	sha256sums = 300364d57fc4a6176ff7d52d390ee870ab6e30df121026649f8e7e0b9657fe93
+	sha256sums = SKIP
+	sha256sums = 819f05d2fd5a75c96e93c863517ca77dbd021a1224dc2d8096f758fb2937df6a
+	sha256sums = df075b89484eb3a08402788580de16d23123f95541b2e9aed8d928105de9b874
+	sha256sums = 651e3f9ba7ac337cbcf54b759f9367cdfadad1f3055d086750d45b0b20056ba7
+	sha256sums = b6b7f3ced56b75bf95513a46f43cde41fc28da714f5e0ed181caf2266f2f0c27
+	sha256sums = 2f678d039313ee613d59c8b4bf9f48068085df0fa8ac7ca4cf807e168061a8c9
+
+pkgname = php70
+	pkgdesc = A general-purpose scripting language that is especially suited to web development
+	depends = libxml2
+	depends = curl
+	depends = libzip
+	depends = pcre
+	provides = php=7.0.15
+	conflicts = php-ldap
+	replaces = php-ldap
+	backup = etc/${pkgbase}/php.ini
+
+pkgname = php70-cgi
+	pkgdesc = CGI and FCGI SAPI for PHP
+	depends = php70
+	provides = php-cgi=7.0.15
+
+pkgname = php70-apache
+	pkgdesc = Apache SAPI for PHP
+	depends = php70
+	depends = apache
+	backup = etc/httpd/conf/extra/php_module.conf
+
+pkgname = php70-fpm
+	pkgdesc = FastCGI Process Manager for PHP
+	depends = php70
+	depends = systemd
+	options = !emptydirs
+	backup = etc/php70/php-fpm.conf
+
+pkgname = php70-embed
+	pkgdesc = Embedded PHP SAPI library
+	depends = php70
+	provides = php70-embed=7.0.15
+	options = !emptydirs
+
+pkgname = php70-phpdbg
+	pkgdesc = Interactive PHP debugger
+	depends = php70
+	provides = php70-phpdbg=7.0.15
+	options = !emptydirs
+
+pkgname = php70-dblib
+	pkgdesc = dblib module for PHP
+	depends = php70
+	provides = php70-dblib=7.0.15
+
+pkgname = php70-enchant
+	pkgdesc = enchant module for PHP
+	depends = php70
+	depends = enchant
+	provides = php70-enchant=7.0.15
+
+pkgname = php70-gd
+	pkgdesc = gd module for PHP
+	depends = php70
+	depends = gd
+	provides = php70-gd=7.0.15
+
+pkgname = php70-imap
+	pkgdesc = imap module for PHP
+	depends = php70
+	depends = c-client
+	provides = php70-imap=7.0.15
+
+pkgname = php70-intl
+	pkgdesc = intl module for PHP
+	depends = php70
+	depends = icu
+	provides = php70-intl=7.0.15
+
+pkgname = php70-mcrypt
+	pkgdesc = mcrypt module for PHP
+	depends = php70
+	depends = libmcrypt
+	depends = libltdl
+	provides = php70-mcrypt=7.0.15
+
+pkgname = php70-odbc
+	pkgdesc = ODBC modules for PHP
+	depends = php70
+	depends = unixodbc
+	provides = php70-odbc=7.0.15
+
+pkgname = php70-pgsql
+	pkgdesc = PostgreSQL modules for PHP
+	depends = php70
+	depends = postgresql-libs
+	provides = php70-pgsql=7.0.15
+
+pkgname = php70-pspell
+	pkgdesc = pspell module for PHP
+	depends = php70
+	depends = aspell
+	provides = php70-pspell=7.0.15
+
+pkgname = php70-snmp
+	pkgdesc = snmp module for PHP
+	depends = php70
+	depends = net-snmp
+	provides = php70-snmp=7.0.15
+
+pkgname = php70-sqlite
+	pkgdesc = sqlite module for PHP
+	depends = php70
+	depends = sqlite
+	provides = php70-sqlite=7.0.15
+
+pkgname = php70-tidy
+	pkgdesc = tidy module for PHP
+	depends = php70
+	depends = tidyhtml
+	provides = php70-tidy=7.0.15
+
+pkgname = php70-xsl
+	pkgdesc = xsl module for PHP
+	depends = php70
+	depends = libxslt
+	provides = php70-xsl=7.0.15
+
