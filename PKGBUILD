@@ -2,11 +2,11 @@
 
 pkgname=sshsocksvpn
 provides=('sshsocksvpn')
-pkgrel=1
+pkgrel=2
 pkgver=0.1
 arch=('any')
 license=('GPL2')
-pkgdesc="Set of tools to interface with Kodi/XBMC"
+pkgdesc="Have an easy way to manage socks tunnels created via SSH and manage a tun2socks on top of it."
 url="https://github.com/grimpy/koditools"
 depends=('python' 'python-psutil' 'openssh' 'badvpn')
 makedepends=('python-distribute' 'git')

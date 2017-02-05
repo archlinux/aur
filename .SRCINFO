@@ -1,7 +1,7 @@
 pkgbase = sshsocksvpn
-	pkgdesc = Set of tools to interface with Kodi/XBMC
+	pkgdesc = Have an easy way to manage socks tunnels created via SSH and manage a tun2socks on top of it.
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/grimpy/koditools
 	arch = any
 	license = GPL2
