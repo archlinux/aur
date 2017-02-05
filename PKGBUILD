@@ -2,14 +2,14 @@
 
 _pkgname=MycroftPlasmoid
 pkgname=plasma5-applets-mycroft-git
-pkgver=r7.08caedd
+pkgver=r10.c3a46f6
 pkgrel=1
 pkgdesc="Mycroft Ai Plasmoid / Widget for KDE Plasma 5 Desktop"
 arch=("x86_64" "i686")
 url="https://github.com/AIIX/MycroftPlasmoid"
 license=('GPL3')
 depends=('qt5-websockets' 'qt5-quickcontrols2') # 'mycroft-core')
-makedepends=('git')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'plasma-framework' 'python')
 provides=("plasma5-applets-mycroft")
 conflicts=("plasma5-applets-mycroft")
 install=$pkgname.install
