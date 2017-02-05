@@ -4,23 +4,25 @@
 # Contributor: Nicolas Hureau <archlinux@kalenz.fr>
 
 pkgname=libgba
-pkgver=20150106
+pkgver=0.5.0
 _pkgverexamples=20090222
 pkgrel=1
 pkgdesc="Library for Nintendo Gameboy Advance homebrew development"
 arch=('any')
-url="http://www.devkitpro.org"
+url="http://devkitpro.org"
 license=('GPL' 'LGPL')
 depends=('devkitarm')
 options=(!strip staticlibs)
 source=("http://downloads.sourceforge.net/sourceforge/devkitpro/$pkgname-src-$pkgver.tar.bz2"
         "http://downloads.sourceforge.net/sourceforge/devkitpro/gba-examples-$_pkgverexamples.tar.bz2")
-sha256sums=('b74bfe25e98141caa6bb53de59d43ccb77da3139b78cf1c7a287d1ca237a2cd7'
+sha256sums=('f7d68dc2a456194131bb96bc7cd8f2c17e0ead961d6e58b8e7de9c2ff6027d9a'
             '10759af863d4222857f98867571b8f5bf4328d44446c7b4384cd3f029bc10753')
 noextract=("gba-examples-$_pkgverexamples.tar.bz2")
 
 build() {
+  # set environment
   source /etc/profile.d/devkitarm.sh
+
   make
 }
 
@@ -30,7 +32,7 @@ package() {
   make install
   # examples
   install -d "$DEVKITPRO"/examples/gba
-  bsdtar -x -f gba-examples-$_pkgverexamples.tar.bz2 -C "$DEVKITPRO"/examples/gba
+  bsdtar xf gba-examples-$_pkgverexamples.tar.bz2 -C "$DEVKITPRO"/examples/gba
   # fix permissions
   chown -R root:root "$DEVKITPRO"/examples
   find "$DEVKITPRO"/examples -type d -exec chmod +rx "{}" \+
