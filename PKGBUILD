@@ -4,12 +4,12 @@
 _gemname=kaitai-struct-visualizer
 pkgname=$_gemname
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced hex viewer and binary structure exploration tool (visualizer) using Kaitai Struct ksy files'
 arch=(any)
 url='http://kaitai.io'
 license=(GPL-3.0+)
-depends=(ruby kaitai-struct-compiler)
+depends=(ruby kaitai-struct-compiler ruby-kaitai-struct)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)

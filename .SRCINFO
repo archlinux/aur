@@ -1,12 +1,13 @@
 pkgbase = kaitai-struct-visualizer
 	pkgdesc = Advanced hex viewer and binary structure exploration tool (visualizer) using Kaitai Struct ksy files
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kaitai.io
 	arch = any
 	license = GPL-3.0+
 	depends = ruby
 	depends = kaitai-struct-compiler
+	depends = ruby-kaitai-struct
 	noextract = kaitai-struct-visualizer-0.5.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/kaitai-struct-visualizer-0.5.gem
