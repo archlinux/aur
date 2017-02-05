@@ -1,4 +1,5 @@
 *.tar.xz
+/gopass/
 /pkg/
 /src/
 /usr/bin/gopass
