@@ -1,0 +1,6 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!nodebb.service
+!nodebb.install

@@ -1,0 +1,21 @@
+[Unit]
+Description=NodeBB forum for Node.js.
+Documentation=http://nodebb.readthedocs.io/en/latest/
+After=system.slice multi-user.target
+
+[Service]
+Type=simple
+User=nodebb
+
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=nodebb
+
+Environment=NODE_ENV=production
+WorkingDirectory=/opt/nodebb
+ExecStart=/usr/bin/node loader.js --no-daemon --no-silent
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,39 @@
+#!/bin/sh
+
+# arg 1:  the new package version
+post_install() {
+
+  echo "Creating nodebb user and group and setting permissions..."
+  getent group nodebb > /dev/null || usr/sbin/groupadd nodebb
+  getent passwd nodebb > /dev/null || usr/sbin/useradd -c \
+        'NodeBB forum' -g nodebb -d '/opt/nodebb' \
+        --system -s /bin/bash nodebb &> /dev/null
+
+  chown -R nodebb:nodebb /opt/nodebb
+
+
+  echo
+  echo 'For the NodeBB documentation:'
+  echo
+  echo '    https://nodebb.readthedocs.io'
+  echo
+  echo 'To setup nodebb please run /opt/nodebb/nodebb setup'
+  echo
+  echo 'After setup to start nodebb please run systemctl start nodebb'
+  echo
+
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  chown -R nodebb:nodebb /opt/nodebb
+}
+
+# arg 1:  the old package version
+post_remove() {
+  echo "Removing nodebb user and group..."
+  getent passwd nodebb > /dev/null && usr/sbin/userdel nodebb &>/dev/null
+  getent group nodebb > /dev/null && usr/sbin/groupdel nodebb &>/dev/null  
+  /bin/true
+}

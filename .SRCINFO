@@ -1,0 +1,19 @@
+pkgbase = nodebb
+	pkgdesc = Node.js based forum software built for the modern web
+	pkgver = 1.x.x
+	pkgrel = 1
+	install = nodebb.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = npm
+	makedepends = git
+	depends = nodejs
+	optdepends = mongodb: Default database
+	source = nodebb::git+https://github.com/NodeBB/NodeBB.git#branch=v1.x.x
+	source = nodebb.service
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = nodebb
+
