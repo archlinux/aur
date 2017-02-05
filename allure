@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ALLURE_HOME=/opt/allure-commandline/ /opt/allure-commandline/bin/allure $@

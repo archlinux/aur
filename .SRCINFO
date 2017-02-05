@@ -1,0 +1,15 @@
+pkgbase = allure-commandline
+	pkgdesc = A flexible lightweight multi-language test report tool with the possibility to add steps, attachments, parameters and so on.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://allure.qatools.ru
+	arch = i686
+	arch = x86_64
+	depends = java-runtime
+	source = https://github.com/allure-framework/allure1/releases/download/allure-core-1.5.0/allure-commandline.tar.gz
+	source = allure
+	md5sums = 2182aea7a19ee8966665904fb7572eba
+	md5sums = d5cda88380d1d44d68e3eb72df369cd9
+
+pkgname = allure-commandline
+
