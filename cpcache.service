@@ -8,7 +8,7 @@ KillMode=process
 TimeoutSec=10
 User=cpcache
 Group=cpcache
-Environment=ELIXIR_ERL_OPTIONS="-sname cpcache -mnesia dir '/var/cache/cpcache/mnesia'"
+Environment="ELIXIR_ERL_OPTIONS=-sname cpcache -mnesia dir '/var/cache/cpcache/mnesia'"
 ExecStart=/usr/share/cpcache/bin/cpcache foreground
 
 [Install]

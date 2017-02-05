@@ -1,6 +1,6 @@
 # Maintainer: nroi <nroi@mailbox.org>
 pkgname=cpcache-git
-pkgver=r105.d7283e2
+pkgver=r108.2c6e74c
 pkgrel=1
 pkgdesc="central pacman cache"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -19,7 +19,7 @@ source=('git+https://github.com/nroi/cpcache.git'
 sha256sums=('SKIP'
             '0098e749b19617c0f7d619d47a3bc3015bab62e9ad0916087502daff672fb309'
             'a6ce949fba102e2f0904622d1f0417be15eee01e76516f80af1aa36a6c8ea312'
-            'a50a6132da18c9351f382ec14a0f0c6dca9a74e40005f2e1b404ccbcd7d6aee0'
+            'bf7ce69ec3df1a1f753df76998607331c0209f7dcd6564f0818cd6e86f4af1ba'
             '6deb112ac11a43a65891f8dcfa6844ca91c4852b8091e354caeac6afd7e00319'
 )
 
