@@ -4,7 +4,7 @@ pkgrel=1
 _bpn=illum
 pkgname=$_bpn-git
 pkgdesc="A daemon that responds to brightness keys by changing the backlight level"
-license=('AGPLv3')
+license=('AGPL3')
 arch=('i686' 'x86_64')
 
 url="https://github.com/jmesmon/$_bpn"
