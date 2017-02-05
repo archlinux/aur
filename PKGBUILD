@@ -6,13 +6,13 @@
 pkgbase=deluge-split
 _pkgbase=deluge
 pkgname=("${_pkgbase}-common" "${_pkgbase}-daemon" "${_pkgbase}-gtk" "${_pkgbase}-web" "${_pkgbase}-console")
-pkgver=1.3.13+2+g6c73105a7
-pkgrel=1
+pkgver=1.3.13+11+g48cedf635
+pkgrel=2
 arch=('any')
 url="http://deluge-torrent.org/"
 license=('GPL3')
 makedepends=('intltool' 'pygtk' 'librsvg' 'python2-mako' 'git')
-_commit=6c73105a7307508c8267614bfe0be9a34b9bfb36  # 1.3-stable
+_commit=48cedf635feb01b81d927e7e84d13067931381d7  # 1.3-stable
 source=("git://git.deluge-torrent.org/deluge.git#commit=$_commit"
         untag-build.patch
         deluged.service deluge-web.service)
