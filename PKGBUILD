@@ -1,75 +1,94 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=devkitarm
-pkgver=r45
-pkgrel=2
-pkgdesc="An ARM toolchain for GP32, Nintendo DS and GBA homebrew development"
+pkgver=r46
+_binutilsver=2.27
+_gccver=6.3.0
+_newlibver=2.5.0
+_gdbver=7.12
+_generaltoolsver=1.0.0
+_islver=0.16.1
+_gbatoolsver=1.0.0
+_gp32toolsver=1.0.2
+_dstoolsver=1.1.0
+_gritver=0.8.14
+_ndstoolver=2.0.1
+_dlditoolver=1.24.0
+_mmutilver=1.8.6
+_dfuutilver=0.9.1
+_stlinkver=1.2.1
+_3dslinkver=0.5.1
+_3dstoolsver=1.1.4
+_picassover=2.5.0
+pkgrel=1
+pkgdesc="ARM toolchain for GP32, Nintendo (3)DS and GBA homebrew development"
 arch=('i686' 'x86_64')
-url="http://www.devkitpro.org"
+url="http://devkitpro.org"
 license=('GPL')
 options=(!strip libtool staticlibs emptydirs)
 depends=('freeimage' 'python' 'flex' 'libmpc' 'libusb' 'guile')
 install=devkitarm.install
-source=("http://downloads.sourceforge.net/sourceforge/devkitpro/buildscripts-20151213.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/binutils-2.25.1.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/gcc-5.3.0.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/newlib-2.2.0.tar.gz"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/gdb-7.10.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/gbatools-1.0.0.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/gp32tools-1.0.1.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/dstools-1.0.2.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/grit-0.8.13.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/ndstool-1.50.3.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/general-tools-1.0.0.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/dlditool-1.24.0.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/mmutil-1.8.6.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/dfu-util-0.8.1.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/stlink-0.5.8.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/3dslink-0.5.1.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/3dstools-1.1.1.tar.bz2"
-        "http://downloads.sourceforge.net/sourceforge/devkitpro/picasso-2.1.0.tar.bz2"
+source=("http://downloads.sourceforge.net/sourceforge/devkitpro/buildscripts-20170126.tar.bz2"
+        "http://isl.gforge.inria.fr/isl-$_islver.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/binutils-$_binutilsver.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/gcc-$_gccver.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/newlib-$_newlibver.tar.gz"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/gdb-$_gdbver.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/general-tools-$_generaltoolsver.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/gbatools-$_gbatoolsver.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/gp32tools-$_gp32toolsver.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/dstools-$_dstoolsver.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/grit-$_gritver.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/ndstool-$_ndstoolver.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/dlditool-$_dlditoolver.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/mmutil-$_mmutilver.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/dfu-util-$_dfuutilver.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/stlink-$_stlinkver.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/3dslink-$_3dslinkver.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/3dstools-$_3dstoolsver.tar.bz2"
+        "http://downloads.sourceforge.net/sourceforge/devkitpro/picasso-$_picassover.tar.bz2"
         "devkitarm-skip-libs.patch"
-        "devkitarm-add-gcc-patch.patch"
-        "devkitarm-add-tool-patches.patch"
-        "fix-gcc-5.3.0-compilation-on-gcc-6.patch"
-        "fix-grit.patch"
-        "fix-gp32tools.patch"
-        "devkitarm.sh")
-sha256sums=('dffe312bdcd86b30bbe91969fb82c8634b6e7171548c04ee8ebf52540de28818'
-            'b5b14added7d78a8d1ca70b5cb75fef57ce2197264f4f5835326b0df22ac9f22'
-            'b84f5592e9218b73dbae612b5253035a7b34a9a1f7688d2e1bfaaf7267d5c4db'
-            'f8add263b0737591aff451b12a00c262c2efac4fa87d741fa1c318fc3bb335be'
-            '06e9f1a56a993f759e63563cd293fd222a8c8e89b70074f1800f5e1976f93a40'
-            '5e39c58f610410f19312d3fd4380418929912d2173dfa79fb7fe36a192988632'
-            '6724bed8e8767956d571b0f334652bdfe07e52ab3dafe2a8292a1d6c4134f413'
-            '96af20e6a352e741e8127579a6d64d10ff6d829dc757dfb157f7fb60c6d1abd2'
-            '052d52082e9aed9c9e7e60870dcc024d5473e437a73fb5ef0329acf794f8a4e8'
-            '674984065e3ab5f0321c024a5c88808c4f3651a9e054ddcb408121d93fcab862'
+        "devkitarm-use-in-tree-isl.patch"
+        "devkitarm.sh"
+        "devkitarm.fish")
+sha256sums=('6b142f265bc9c7fc9449f5b539198f140d231725b2ed0828749d8a1e0fad73ff'
+            '412538bb65c799ac98e17e8cfcdacbb257a57362acfaaff254b0fcae970126d2'
+            '369737ce51587f92466041a97ab7d2358c6d9e1b6490b3940eb09fb0a9a6ac88'
+            'f06ae7f3f790fbf0f018f6d40e844451e6bc3b7bc96e128e63b09825c1f8b29f'
+            '5b76a9b97c9464209772ed25ce55181a7bb144a66e5669aaec945aa64da3189b'
+            'dca6461fb6c78a662766d54580737e643b4b6dc43c26a197a8e9d7cb58872de2'
             '09474dfc1537e1008ee95b1a39a53715b8a740ee5ee37f4376607d6b110343c4'
+            '5e39c58f610410f19312d3fd4380418929912d2173dfa79fb7fe36a192988632'
+            '2a4adcd1ea1359fe401fde63384c553513ecc789a3ce1cf61c0d5ed7828edf9f'
+            'd36fce5cc8c8be0c6ba506517ca769ba8311b8a9310c525b20c80131b96251cb'
+            '9b60af9f8a462155213d50fe69b670587de60537f5fbb449a09db6418a3ffad6'
+            '164d41e4499a9079ca7bf3b2feae8dbd3b8a599cc81164e8160462d47f762423'
             '5ecf67bcd5e2088ad31cd27fa14db575001388abc19510c4297aae42e9cd5d2f'
             '5b9182accb99abc03c1a31c39c003fbc5cb0d4af65a44102ede6098828cd045e'
-            '2b56d91b86743f2ff09d818e0f2bd6704f154db5703b49c36b0a6d7da4e381e1'
-            'f528cdaf328b74e1814e88f0fcbe04f4ee221d45c740dc1456de4e4036047bb9'
+            'fdcee458cc5ca482810852cfce7fecf2e671d3881c329cd63c6a9030ffa9426e'
+            'fb8b9cc974849e074a9e8694d62c383ffee6470e17459178de23d215f16bc57a'
             '056bed0a85ad4d044f60a13752d721769fe0631cda0cc6d6831bf30e808f8e95'
-            '6dbf15bb5cbeee826b6ffc608288f1267ed3696d725956943545c0572401d548'
-            '79bf84b42da964918f6c8bb1294434ed1e10feab9a2b1f5a0183030637977650'
-            '97b498aa26aba743e141115cd8f1169aa8411532f589c3c845233a299f5ecf74'
-            '6462b0911186b1b0167c74e2b146d7c09b17974c021ce37087e8c157b6cdd59f'
-            '27353ac1375867b8d07889a35515e144f3f989588fec4364adc6c5317d17ae4f'
-            'e22c5cb2748a8a62eacbd9401fcdd7a1239a469ab7811382e7564e7554ce2341'
-            'e8fd36de318e8a2726c24d7de0190e475da628456380032a708e0ab232d5e091'
-            'fce6e900ee23ebe0bdee1e6f58e02ba521598f5a1a74eb5798ee35ca1f27be3b'
-            'fc5489fab5ee4ce5cd53c2e1549fd2958872a6777324920b89e03b88584072db')
-noextract=('binutils-2.25.1.tar.bz2' 'gcc-5.3.0.tar.bz2' 'newlib-2.2.0.tar.gz'
-           'gdb-7.10.tar.bz2' 'gbatools-1.0.0.tar.bz2' 'gp32tools-1.0.1.tar.bz2'
-           'dstools-1.0.2.tar.bz2' 'grit-0.8.13.tar.bz2' 'ndstool-1.50.3.tar.bz2'
-           'general-tools-1.0.0.tar.bz2' 'dlditool-1.24.0.tar.bz2' 'mmutil-1.8.6.tar.bz2'
-           'dfu-util-0.8.1.tar.bz2' 'stlink-0.5.8.tar.bz2' '3dslink-0.5.1.tar.bz2'
-           '3dstools-1.1.1.tar.bz2' 'picasso-2.1.0.tar.bz2')
+            'b54002b86e3a6005a204153d7567876f920a1a5c0a2bc288d95d98189ef0f5e3'
+            '2af6d351b8b1d3c107ab31463eca8e73f88f201e580c448bfc71876f4ebe314d'
+            '3ba88e36a690f45baf642afbb49bd40e7fc7fb53e3f2eb69b594057cd6071e6d'
+            'df823a3344aa91ce8f2fa706c9918f95a99e71e0c65f0d281c8e59cef858280a'
+            '9448465b2de6b6aefc5e0a8404f780f737cb86b4b1280d653712271b892908f9'
+            'c4cc42b085be7c48f06f75c934e846a61749d9ba5e31ee463a03ba27a01c8afd')
+noextract=("binutils-$_binutilsver.tar.bz2" "gcc-$_gccver.tar.bz2"
+           "newlib-$_newlibver.tar.gz" "gdb-$_gdbver.tar.bz2"
+           "general-tools-$_generaltoolsver.tar.bz2"
+           "gbatools-$_gbatoolsver.tar.bz2" "gp32tools-$_gp32toolsver.tar.bz2"
+           "dstools-$_dstoolsver.tar.bz2" "grit-$_gritver.tar.bz2"
+           "ndstool-$_ndstoolver.tar.bz2" "dlditool-$_dlditoolver.tar.bz2"
+           "mmutil-$_mmutilver.tar.bz2" "dfu-util-$_dfuutilver.tar.bz2"
+           "stlink-$_stlinkver.tar.bz2" "3dslink-$_3dslinkver.tar.bz2"
+           "3dstools-$_3dstoolsver.tar.bz2" "picasso-$_picassover.tar.bz2")
 
 prepare() {
-  # reset build dir
+  # reset build dir and force reinstalling already built tools
   rm -rf build
+  [ -d buildscripts/.devkitARM ] && find buildscripts/.devkitARM \
+    \( -name "installed-*" -o -name "installed" \) -delete
 
   # generate config file for automatic build
   cat << END > buildscripts/config.sh
@@ -89,11 +108,13 @@ END
   sed 's|$PATH:$TOOLPATH/$package/bin|$TOOLPATH/$package/bin:$PATH|' -i \
     buildscripts/build-devkit.sh
 
-  # add patch to build gcc 5.3.0 on gcc >6
-  patch -Np0 < devkitarm-add-gcc-patch.patch
+  # use in-tree isl
+  patch -Np0 < devkitarm-use-in-tree-isl.patch
+  # isl needlessly wants automake-14, upgrading
+  autoreconf -Wnone -fi isl-$_islver
 
-  # add patch to build tools on gcc >6
-  patch -Np0 < devkitarm-add-tool-patches.patch
+  # update gp32tools
+  sed 's/GP32_TOOLS_VER=1.0.1/GP32_TOOLS_VER=1.0.2/' -i buildscripts/build-devkit.sh
 
   # disable building of libraries, we have separate packages
   patch -Np0 < devkitarm-skip-libs.patch
@@ -110,6 +131,10 @@ build() {
 package() {
   install -d "$pkgdir"/opt/devkitpro
   cp -r build/devkitARM "$pkgdir"/opt/devkitpro
+  # gzip manually, as makepkg only cares for standard directories
+  gzip "$pkgdir"/opt/devkitpro/devkitARM/share/man/man*/*
+  gzip "$pkgdir"/opt/devkitpro/devkitARM/share/info/*
   # export environment variables
   install -Dm755 devkitarm.sh "$pkgdir"/etc/profile.d/devkitarm.sh
+  install -Dm644 devkitarm.fish "$pkgdir"/etc/fish/conf.d/devkitarm.fish
 }

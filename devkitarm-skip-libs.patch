@@ -1,7 +1,7 @@
-diff -Naur buildscripts/build-devkit.sh buildscripts.no-libs/build-devkit.sh
---- buildscripts/build-devkit.sh	2015-12-13 01:14:48.000000000 +0100
-+++ buildscripts.no-libs/build-devkit.sh	2015-12-13 14:07:28.118134277 +0100
-@@ -228,7 +228,7 @@
+diff -Naur buildscripts.old/build-devkit.sh buildscripts/build-devkit.sh
+--- buildscripts.old/build-devkit.sh	2017-01-25 20:10:12.000000000 +0100
++++ buildscripts/build-devkit.sh	2017-02-05 03:44:47.323301185 +0100
+@@ -218,7 +218,7 @@
  fi
  
  cd "$SRCDIR"
@@ -10,9 +10,9 @@ diff -Naur buildscripts/build-devkit.sh buildscripts.no-libs/build-devkit.sh
  do
  	echo $archive
  	if [ ! -f $archive ]; then
-@@ -246,16 +246,6 @@
- extract_and_patch newlib $NEWLIB_VER gz
- extract_and_patch gdb $GDB_VER bz2
+@@ -239,16 +239,6 @@
+ 	extract_and_patch binutils $MN_BINUTILS_VER bz2
+ fi
  
 -for archive in $targetarchives
 -do
@@ -27,14 +27,13 @@ diff -Naur buildscripts/build-devkit.sh buildscripts.no-libs/build-devkit.sh
  for archive in $hostarchives
  do
  	destdir=$(echo $archive | sed -e 's/\(.*\)-src-\(.*\)\.tar\.bz2/\1-\2/' )
-diff -Naur buildscripts/dkarm-eabi/scripts/build-crtls.sh buildscripts.no-libs/dkarm-eabi/scripts/build-crtls.sh
---- buildscripts/dkarm-eabi/scripts/build-crtls.sh	2015-02-15 17:25:19.000000000 +0100
-+++ buildscripts.no-libs/dkarm-eabi/scripts/build-crtls.sh	2015-12-13 14:07:28.121467658 +0100
-@@ -22,40 +22,3 @@
- $MAKE CRT=ds_arm9
- $MAKE CRT=ds_cart
- $target-gcc -march=armv6k -mfloat-abi=hard -c 3dsx_crt0.s -o armv6k/fpu/3dsx_crt0.o
--
+diff -Naur buildscripts.old/dkarm-eabi/scripts/build-crtls.sh buildscripts/dkarm-eabi/scripts/build-crtls.sh
+--- buildscripts.old/dkarm-eabi/scripts/build-crtls.sh	2017-01-25 17:51:43.000000000 +0100
++++ buildscripts/dkarm-eabi/scripts/build-crtls.sh	2017-02-05 03:45:21.605867639 +0100
+@@ -24,43 +24,3 @@
+ $MAKE ds_arm7_vram_crt0
+ $MAKE 3dsx_crt0
+ 
 -cd $BUILDDIR/libgba-$LIBGBA_VER
 -$MAKE || { echo "error building libgba"; exit 1; }
 -$MAKE install || { echo "error installing libgba"; exit 1; }
@@ -59,15 +58,19 @@ diff -Naur buildscripts/dkarm-eabi/scripts/build-crtls.sh buildscripts.no-libs/d
 -$MAKE nds-install || { echo "error building nds libfat"; exit 1; }
 -$MAKE gba-install || { echo "error installing gba libfat"; exit 1; }
 -
--cd $BUILDDIR/libmirko-$LIBMIRKO_VER
--$MAKE || { echo "error building libmirko"; exit 1; }
--$MAKE install || { echo "error installing libmirko"; exit 1; }
+-#cd $BUILDDIR/libmirko-$LIBMIRKO_VER
+-#$MAKE || { echo "error building libmirko"; exit 1; }
+-#$MAKE install || { echo "error installing libmirko"; exit 1; }
 -
 -cd $BUILDDIR/libfilesystem-$FILESYSTEM_VER
 -$MAKE || { echo "error building libfilesystem"; exit 1; }
 -$MAKE install || { echo "error installing libfilesystem"; exit 1; }
 -
 -cd $BUILDDIR/libctru-$LIBCTRU_VER
+-$MAKE || { echo "error building libctru"; exit 1; }
+-$MAKE install || { echo "error installing libctru"; exit 1; }
+-
+-cd $BUILDDIR/citro3d-$CITRO3D_VER
 -$MAKE || { echo "error building libctru"; exit 1; }
 -$MAKE install || { echo "error installing libctru"; exit 1; }
 -
