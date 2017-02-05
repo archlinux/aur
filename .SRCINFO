@@ -1,14 +1,14 @@
 pkgbase = imgtools
 	pkgdesc = A Tk extension to scale and rotate photo images
-	pkgver = 0.2
-	pkgrel = 2
+	pkgver = 0.3
+	pkgrel = 1
 	url = http://tkimgtools.sourceforge.net/index.html
 	arch = x86_64
 	license = BSD
 	depends = tk>=8.6
 	optdepends = tkimg: support for more image formats
-	source = https://sourceforge.net/projects/tkimgtools/files/0.2/imgtools-0.2.tar.gz/download
-	md5sums = ea0639257c9a142afc96d6ba39bb5ed4
+	source = https://sourceforge.net/projects/tkimgtools/files/0.3/imgtools-0.3.tar.gz/download
+	md5sums = 423d549faf818534bc0b75e9e614f2ef
 
 pkgname = imgtools
 
