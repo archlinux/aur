@@ -3,15 +3,15 @@
 # Contributor: Tiago Camargo <tcamargo@gmail.com>
 
 pkgname=libfat-ogc
-pkgver=1.0.14
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Library for acessing FAT filesystems from Nintendo Gamecube/Wii homebrew"
 arch=('any')
-url="http://www.chishm.com/libfat/"
+url="https://www.chishm.com/libfat/"
 license=('custom')
 depends=('libogc')
 source=("http://downloads.sourceforge.net/sourceforge/devkitpro/libfat-src-$pkgver.tar.bz2")
-sha256sums=('bfa7768d9a199b2a93e8aacf010f73df59bb7d029df95b7d176a83d9131d20cc')
+sha256sums=('e4de0f7b19928dcb9c7c5f135be82d75d606035033ce632b5e8c0629f4f7d04b')
 options=(!strip staticlibs)
 
 build() {
