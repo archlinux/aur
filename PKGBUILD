@@ -1,4 +1,5 @@
-# Maintainer: Rasmus Steinke <rasi at xssn dot at>
+# Maintainer: Varakh <varakh at varakh dot de>
+# Revived from: Rasmus Steinke <rasi at xssn dot at>
 # Revived from: Vincent Berset <msieurhappy@gmail.com>
 
 pkgname=mpd-sima
@@ -8,22 +9,20 @@ pkgdesc="Automagically add title to mpd playlist based on last.fm recomendations
 arch=('any')
 url="http://codingteam.net/project/sima"
 license=('GPL')
-depends=('python-musicpd')
+depends=('python>=3.2' 'python-musicpd>=0.4.0' 'python-requests>=2.2.0')
 makedepends=('python-setuptools')
-source=("http://codingteam.net/project/sima/download/file/mpd_sima-$pkgver.tar.xz"
+source=("http://media.kaliko.me/src/sima/releases/MPD_sima-$pkgver.tar.xz"
         "mpd-sima.service")
 
-build() {
-    cd "${srcdir}/MPD_sima-${pkgver}"
-
-    sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' \
-        mpd-sima simadb_cli
-}
-
 package() {
+
+    # Setup
     cd "${srcdir}/MPD_sima-${pkgver}"
-    python setup.py install --prefix=/usr --root="$pkgdir" || return 1
-    install -Dm644 ${srcdir}/mpd-sima.service ${pkgdir}/usr/lib/systemd/user/mpd-sima.service
+    /usr/bin/env python setup.py install --prefix=/usr --root="$pkgdir" || return 1
+
+    # Install systemd service
+    install -D -m644 "${srcdir}/mpd-sima.service" \
+      "${pkgdir}/usr/lib/systemd/system/mpd-sima.service"
 }
 
 md5sums=('81368753f1d696276e850a9e86dcc060'
