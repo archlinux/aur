@@ -1,8 +1,8 @@
 pkgbase = sshsocksvpn
 	pkgdesc = Have an easy way to manage socks tunnels created via SSH and manage a tun2socks on top of it.
 	pkgver = 0.1
-	pkgrel = 2
-	url = https://github.com/grimpy/koditools
+	pkgrel = 3
+	url = https://github.com/grimpy/sshsocksvpn
 	arch = any
 	license = GPL2
 	makedepends = python-distribute
