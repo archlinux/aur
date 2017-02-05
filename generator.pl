@@ -11,6 +11,7 @@ use List::Util qw(maxstr);
 
 use constant {
     ROOT => 'http://ftp.mozilla.org/pub/firefox/nightly/',
+    LATEST => 'http://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-aurora/',
 };
 
 sub _find_max {
@@ -20,7 +21,7 @@ sub _find_max {
     @values    = grep { $_ ~~ $filter } @values if defined $filter;
 
     unless(@values) {
-        say "No values can be extracted.";
+        die "No values can be extracted.";
         exit 1;
     }
 
@@ -55,31 +56,43 @@ sub _get_data {
     my $is_num = qr/^\d+/;
     my $data = {};
 
-    say "Year";
     my $year = _get_part($ua,$uri, $is_num);
     $uri .= $year;
     $year =~ s:/::;
     $data->{year} = $year;
 
-    say "Month";
     my $month = _get_part($ua, $uri, $is_num);
     $uri .= $month;
     $month =~ s:/::;
     $data->{month} = $month;
 
-    say "Release";
     my $release = _get_part($ua, $uri, qr(aurora/$));
     $uri .= $release;
     $release =~ /^\d{4}-\d{2}-(?<day>\d+)-(?<hour>\d+)-(?<minute>\d+)-(?<second>\d+)/;
     $data = { %$data, %+ };
 
     my $package_i686 = _get_part($ua, $uri, qr(en-US.linux-i686.tar.bz2$));
-    my $package_i686_sums = _get_part($ua, $uri, qr(en-US.linux-i686.checksums$));
-    $data->{sha512sums_i686} = _get_hashsum($ua, $uri . $package_i686_sums, $package_i686);
+    eval {
+        my $package_i686_sums    = _get_part($ua, $uri, qr(en-US.linux-i686.checksums$));
+        $data->{sha512sums_i686} = _get_hashsum($ua, $uri . $package_i686_sums, $package_i686);
+    };
+    # Fix problem with mozilla ftp missing files
+    if ($@) {
+        say "Can't get hashsum: $@";
+        $data->{sha512sums_i686} = 'SKIP';
+        undef $@;
+    }
 
     my $package_x86_64  = _get_part($ua, $uri, qr(en-US.linux-x86_64.tar.bz2$));
-    my $package_x86_64_sums = _get_part($ua, $uri, qr(en-US.linux-x86_64.checksums$));
-    $data->{sha512sums_x86_64} = _get_hashsum($ua, $uri . $package_x86_64_sums, $package_x86_64);
+    eval {
+        my $package_x86_64_sums = _get_part($ua, $uri, qr(en-US.linux-x86_64.checksums$));
+        $data->{sha512sums_x86_64} = _get_hashsum($ua, $uri . $package_x86_64_sums, $package_x86_64);
+    };
+    if ($@) {
+        say "Can't get hashsum: $@";
+        $data->{sha512sums_x86_64} = 'SKIP';
+        undef $@;
+    }
 
     $data->{version} = $1 if $package_x86_64 =~ /firefox-(\d+)/;
 
