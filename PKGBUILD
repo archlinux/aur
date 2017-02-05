@@ -11,7 +11,8 @@ optdepends=('postfix: mail server (Message Transfer Agent)'
 			'exim: mail server (Message Transfer Agent)'
 			'sqlite: required for SQLite support'
 			'python-psycopg2: required for PostgreSQL support'
-			'python-mysqlclient: required for MySQL support')
+			'python-mysqlclient: required for MySQL support'
+			'python-matplotlib: required for bleygraph')
 makedepends=('git' 'python-setuptools')
 provides=("bley")
 conflicts=("bley")

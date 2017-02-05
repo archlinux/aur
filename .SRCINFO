@@ -17,6 +17,7 @@ pkgbase = bley-git
 	optdepends = sqlite: required for SQLite support
 	optdepends = python-psycopg2: required for PostgreSQL support
 	optdepends = python-mysqlclient: required for MySQL support
+	optdepends = python-matplotlib: required for bleygraph
 	provides = bley
 	conflicts = bley
 	source = bley-git::git+https://github.com/evgeni/bley.git
