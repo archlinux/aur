@@ -46,9 +46,9 @@ prepare() {
   cd "${srcdir}/${_srcname}"
   
   # Get key of Linus Torvalds
-  gpg --keyserver pool.sks-keyservers.net --recv-keys ABAF11C65A2970B130ABE3C479BE3E4300411886
+  gpg --recv-keys ABAF11C65A2970B130ABE3C479BE3E4300411886
   # Get key of Greg Kroah-Hartman
-  gpg --keyserver pool.sks-keyservers.net --recv-keys 647F28654894E3BD457199BE38DBBDC86092693E
+  gpg --recv-keys 647F28654894E3BD457199BE38DBBDC86092693E
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
