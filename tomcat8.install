@@ -1,7 +1,4 @@
 post_install() {
-    systemd-sysusers tomcat8.conf
-    systemd-tmpfiles --create tomcat8.conf
-
   if [ -f lib/modules/$(uname -r)/kernel/security/capability.ko ]; then
     echo 'It appears that your current kernel has linux security'
     echo 'capabilities built as a module. Tomcat requires this'
