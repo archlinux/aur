@@ -1,11 +1,11 @@
-# Maintainer: Pierre Neidhardt <ambrevar@gmail.com>
+# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 _pkgname=gnuplot
 pkgname=$_pkgname-nogui
-pkgver=5.0.4
+pkgver=5.0.5
 pkgrel=1
 pkgdesc="Plotting package which outputs to X11, files and others. Without wxgtk/qt."
 arch=("i686" "x86_64")
@@ -16,12 +16,11 @@ makedepends=("emacs" "texinfo" "texlive-core" "texlive-latexextra")
 provides=("gnuplot")
 conflicts=("gnuplot" "gnuplot-nox")
 replaces=("gnuplot-notk")
-options=(!makeflags)
 install="$_pkgname.install"
 source=("http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.gz"
 	"lua53_compat.patch")
-sha1sums=('3a616a1beca8e86662afcc9d368aad6847ed4e0f'
-          '9005fa9e4da91ceedb8ccd1d761866e7b064f8b1')
+sha256sums=('25f3e0bf192e01115c580f278c3725d7a569eb848786e12b455a3fda70312053'
+            'bfd8a61abbf4491c74225cb9fd252619d4fc29751838bcb4c0639ffe05a00695')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
@@ -44,7 +43,7 @@ build() {
         --with-gihdir=/usr/share/gnuplot \
         --disable-wxwidgets \
         --with-qt=no \
-        --without-x \
+        --with-x \
         --with-readline=gnu
 
 	make pkglibexecdir=/usr/bin
