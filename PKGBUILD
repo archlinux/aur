@@ -11,25 +11,31 @@
 pkgbase=java-openjfx
 pkgname=('java-openjfx' 'java-openjfx-doc' 'java-openjfx-src')
 _java_ver=8
-_jdk_update=76
-_jdk_build=03
+_jdk_update=121
+_jdk_build=13
 _hgtag=${_java_ver}u${_jdk_update}-b${_jdk_build}
 pkgver=${_java_ver}.u${_jdk_update}
-pkgrel=2
+pkgrel=1
 pkgdesc='Java OpenJFX 8 client application platform (open-source implementation of JavaFX)'
 arch=('i686' 'x86_64')
 url='https://wiki.openjdk.java.net/display/OpenJFX/Main'
 license=('GPL')
 depends=('java-runtime-openjdk=8' 'gstreamer' 'libxtst' 'webkitgtk2' 'ffmpeg' 'qt5-base')
 makedepends=('java-environment-openjdk=8' 'bison' 'gperf' 'gtk2'
-             'libxtst' 'ffmpeg' 'python' 'qt5-base' 'webkitgtk2' 'ruby' 'cmake')
+             'libxtst' 'ffmpeg' 'python2' 'qt5-base' 'webkitgtk2' 'ruby' 'cmake')
 source=(http://hg.openjdk.java.net/openjfx/8u-dev/rt/archive/${_hgtag}.tar.bz2
         gradle.properties
-        https://services.gradle.org/distributions/gradle-1.8-bin.zip)
+        https://services.gradle.org/distributions/gradle-1.8-bin.zip
+        # https://anonscm.debian.org/cgit/pkg-java/openjfx.git/tree/debian/patches/17-gcc-compatibility.patch
+        17-gcc-compatibility.patch
+        # https://anonscm.debian.org/cgit/pkg-java/openjfx.git/tree/debian/patches/18-fix-ambiguous-pow.patch
+        18-fix-ambiguous-pow.patch)
 
-sha256sums=('06fc7263f47d505895dba7ce68e7d436e161ea87828d3297e477f7f5d8c0d338'
+sha256sums=('51008376a03c6603d0d0f039f3253cda98822fdda757f6cee385b594ef4ac85b'
             '1d09385ac23d755aec079954247365de3875507641f5ecd7bd3511ebf3fa9e3c'
-            'a342bbfa15fd18e2482287da4959588f45a41b60910970a16e6d97959aea5703')
+            'a342bbfa15fd18e2482287da4959588f45a41b60910970a16e6d97959aea5703'
+            '864967467efeaffdabe1e60b7cfd0a27ce93be55ef45ef9993790219ad164554'
+            'e909ae1dcb1d6c0fb0148815c3fcdbff8a15b2f05520eed2c830dc0859f75115')
 
 _openjdk8dir="/usr/lib/jvm/java-8-openjdk"
 
@@ -37,6 +43,13 @@ case $CARCH in
   'i686') _CARCH='i386' ;;
   'x86_64')_CARCH='amd64' ;;
 esac
+
+prepare() {
+  cd "rt-${_hgtag}"
+  for p in 17-gcc-compatibility.patch 18-fix-ambiguous-pow.patch; do
+    patch -p1 < "${srcdir}/${p}"
+  done
+}
 
 build() {
   cd "rt-${_hgtag}"
