@@ -4,10 +4,10 @@
 
 pkgname=mpd-sima
 pkgver=0.14.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Automagically add title to mpd playlist based on last.fm recomendations"
 arch=('any')
-url="http://codingteam.net/project/sima"
+url="http://kaliko.me/code/mpd-sima/"
 license=('GPL')
 depends=('python>=3.2' 'python-musicpd>=0.4.0' 'python-requests>=2.2.0')
 makedepends=('python-setuptools')
