@@ -22,7 +22,7 @@ _localmodcfg=
 pkgbase=linux-nvme               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.9
-pkgver=4.9.7
+pkgver=4.9.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -48,8 +48,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 )
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             '8e49bebf2cff105987c06303f0608a49af2e8204088f0f9b29e58a2bf5f56e00'
-            'db4a5bade2a07d2f801e8c5c39dd310f35cfbbe90a953938cfbc14495b3e520c'
-	    '2ae2ffb11d963acf9bbeaeea41dab7289221c573a784cd79233db11eaa189415'
+            'd53bb9fb309193cbbf88faa28f4cecfc312dbddaa4c2cbf089f2a7ecd56889c0'
+	    'bc4d2e39b4da6eadb508874ecdc2bbffc55cdfff2db8ae590a364c93769775f6'
 	    '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
             '41b9a64542befd2fea170776e8ec22a7d158dd3273633afc9b91662c448cd90a'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
