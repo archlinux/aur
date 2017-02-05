@@ -177,9 +177,12 @@ build() {
   make
 }
 
-function setconf() {
+function zarafa_cfg_set() {
     # 1: field / 2: value / 3: file
-    sed -i "s|^#*\s*\($1\).*|\1 = $2|" $3
+    # Replaces optional comments and spaces
+    # "# name = value" => "name = newvalue"
+    #
+    sed -i "s|^#*\s*\($1\)\s*\=.*|\1 = $2|" $3
 }
 
 package() {
@@ -216,63 +219,63 @@ package() {
   
   # *.cfg
   for cfg in ${pkgdir}/usr/share/doc/zarafa/example-config/*.cfg; do
-   setconf "run_as_user" "zarafa" ${cfg}
-   setconf "run_as_group" "zarafa" ${cfg}   
-   setconf "running_path" "/var/lib/zarafa" ${cfg}   
-   setconf "log_method" "syslog" ${cfg}  
-   setconf "log_file" "-" ${cfg}
-   setconf "log_level" "3" ${cfg}   
+   zarafa_cfg_set "run_as_user" "zarafa" ${cfg}
+   zarafa_cfg_set "run_as_group" "zarafa" ${cfg}   
+   zarafa_cfg_set "running_path" "/var/lib/zarafa" ${cfg}   
+   zarafa_cfg_set "log_method" "syslog" ${cfg}  
+   zarafa_cfg_set "log_file" "-" ${cfg}
+   zarafa_cfg_set "log_level" "3" ${cfg}   
    # => ssl security
-   setconf "ssl_prefer_server_ciphers" "yes" ${cfg}   
-   setconf "ssl_protocols" "TLSv1 TLSv1\.1 TLSv1\.2" ${cfg}
-   setconf "ssl_ciphers" "AES256\+EECDH:AES256\+EDH:\!aNULL" ${cfg}
-   setconf "ssl_private_key_file" "/etc/ssl/private/zarafa.key" ${cfg}   
-   setconf "ssl_certificate_file" "/etc/ssl/private/zarafa.crt" ${cfg}   
+   zarafa_cfg_set "ssl_prefer_server_ciphers" "yes" ${cfg}   
+   zarafa_cfg_set "ssl_protocols" "TLSv1 TLSv1\.1 TLSv1\.2" ${cfg}
+   zarafa_cfg_set "ssl_ciphers" "AES256\+EECDH:AES256\+EDH:\!aNULL" ${cfg}
+   zarafa_cfg_set "ssl_private_key_file" "/etc/ssl/private/zarafa.key" ${cfg}   
+   zarafa_cfg_set "ssl_certificate_file" "/etc/ssl/private/zarafa.crt" ${cfg}   
    # => socket connections only
-   setconf "server_bind" "127.0.0.1" ${cfg}
-   setconf "server_socket" "file:///var/run/zarafad/server.sock" ${cfg}
+   zarafa_cfg_set "server_bind" "127.0.0.1" ${cfg}
+   zarafa_cfg_set "server_socket" "file:///var/run/zarafad/server.sock" ${cfg}
   done
  
  
   # server.cfg
   cfg="${pkgdir}/usr/share/doc/zarafa/example-config/server.cfg"
-  setconf "mysql_socket" "/run/mysqld/mysqld.sock" ${cfg}
-  setconf "mysql_user" "zarafa" ${cfg}
-  setconf "mysql_password" "zarafa" ${cfg}
-  setconf "sync_log_all_changes" "no" ${cfg}
-  setconf "hide_everyone" "yes" ${cfg}   
-  setconf "attachment_compression" "0" ${cfg}
-  setconf "search_enabled" "no" ${cfg}
-  setconf "disabled_features" "" ${cfg}  
+  zarafa_cfg_set "mysql_socket" "/run/mysqld/mysqld.sock" ${cfg}
+  zarafa_cfg_set "mysql_user" "zarafa" ${cfg}
+  zarafa_cfg_set "mysql_password" "zarafa" ${cfg}
+  zarafa_cfg_set "sync_log_all_changes" "no" ${cfg}
+  zarafa_cfg_set "hide_everyone" "yes" ${cfg}   
+  zarafa_cfg_set "attachment_compression" "0" ${cfg}
+  zarafa_cfg_set "search_enabled" "no" ${cfg}
+  zarafa_cfg_set "disabled_features" "" ${cfg}  
   # => ssl security
-  setconf "server_tcp_enabled" "no" ${cfg}   
-  setconf "server_ssl_prefer_server_ciphers" "yes" ${cfg}   
-  setconf "server_ssl_protocols" "TLSv1 TLSv1\.1 TLSv1\.2" ${cfg}
-  setconf "server_ssl_ciphers" "AES256\+EECDH:AES256\+EDH:\!aNULL" ${cfg}
-  setconf "server_ssl_key_file" "/etc/ssl/private/zarafa.key" ${cfg}
-  setconf "server_ssl_key_pass" "" ${cfg}
-  setconf "server_ssl_ca_file" "/etc/ssl/private/zarafa.crt" ${cfg}
-  setconf "server_ssl_ca_path" "/etc/ssl/certs" ${cfg}
+  zarafa_cfg_set "server_tcp_enabled" "no" ${cfg}   
+  zarafa_cfg_set "server_ssl_prefer_server_ciphers" "yes" ${cfg}   
+  zarafa_cfg_set "server_ssl_protocols" "TLSv1 TLSv1\.1 TLSv1\.2" ${cfg}
+  zarafa_cfg_set "server_ssl_ciphers" "AES256\+EECDH:AES256\+EDH:\!aNULL" ${cfg}
+  zarafa_cfg_set "server_ssl_key_file" "/etc/ssl/private/zarafa.key" ${cfg}
+  zarafa_cfg_set "server_ssl_key_pass" "" ${cfg}
+  zarafa_cfg_set "server_ssl_ca_file" "/etc/ssl/private/zarafa.crt" ${cfg}
+  zarafa_cfg_set "server_ssl_ca_path" "/etc/ssl/certs" ${cfg}
   # => socket connection only
-  setconf "server_pipe_name" "/var/run/zarafad/server.sock" ${cfg}
+  zarafa_cfg_set "server_pipe_name" "/var/run/zarafad/server.sock" ${cfg}
 
   # spooler.cfg
-  setconf "allow_send_to_everyone" "no" "${pkgdir}/usr/share/doc/zarafa/example-config/spooler.cfg"
+  zarafa_cfg_set "allow_send_to_everyone" "no" "${pkgdir}/usr/share/doc/zarafa/example-config/spooler.cfg"
 
   # presence.cfg
-  setconf "plugins" "xmpp" "${pkgdir}/usr/share/doc/zarafa/example-config/presence.cfg"  
+  zarafa_cfg_set "plugins" "xmpp" "${pkgdir}/usr/share/doc/zarafa/example-config/presence.cfg"  
 
   # gateway.cfg
   cfg="${pkgdir}/usr/share/doc/zarafa/example-config/gateway.cfg"
-  setconf "imap_generate_utf8" "no" "${cfg}"  
-  setconf "imap_public_folders" "yes" "${cfg}"  
-  setconf "run_as_user" "nobody" "${cfg}"
-  setconf "run_as_group" "nobody" "${cfg}"
+  zarafa_cfg_set "imap_generate_utf8" "no" "${cfg}"  
+  zarafa_cfg_set "imap_public_folders" "yes" "${cfg}"  
+  zarafa_cfg_set "run_as_user" "nobody" "${cfg}"
+  zarafa_cfg_set "run_as_group" "nobody" "${cfg}"
 
   # ical.cfg
   cfg="${pkgdir}/usr/share/doc/zarafa/example-config/ical.cfg"
-  setconf "run_as_user" "nobody" "${cfg}"
-  setconf "run_as_group" "nobody" "${cfg}"
+  zarafa_cfg_set "run_as_user" "nobody" "${cfg}"
+  zarafa_cfg_set "run_as_group" "nobody" "${cfg}"
   
   # PIETMA
   ###

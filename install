@@ -1,8 +1,11 @@
 #!/bin/bash
 
-function setconf() {
+function zarafa_cfg_set() {
     # 1: field / 2: value / 3: file
-    sed -i "s|^#*\s*\($1\).*|\1 = $2|" $3
+    # Replaces optional comments and spaces
+    # "# name = value" => "name = newvalue"
+    #
+    sed -i "s|^#*\s*\($1\)\s*\=.*|\1 = $2|" $3
 }
 
 # care about existing files
@@ -66,7 +69,7 @@ post_upgrade() {
 
     case "$oldPackageVersion" in
 	7.2.1*)
-    	    installbasics
+	    installbasics
 
             # CONFIG
 	    # => defaults
@@ -82,8 +85,8 @@ post_upgrade() {
 
     # don't run gateway and ical as zarafa user - zarafa would grand access to all stores
     for cfg in /etc/zarafa/{gateway,ical}.cfg; do
-	setconf "run_as_user" "nobody" "${cfg}"
-	setconf "run_as_group" "nobody" "${cfg}"
+	zarafa_cfg_set "run_as_user" "nobody" "${cfg}"
+	zarafa_cfg_set "run_as_group" "nobody" "${cfg}"
     done
     
     echo 
