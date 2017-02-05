@@ -1,3 +1,15 @@
+2017-02-05 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.2.2.4-1:
+    Added back overall ASF status to !status ASF (it was accidentally removed during rewrite).
+    Added support for bot1..bot9 syntax when using multiple-target commands.
+    Added !oa and !sa command aliases.
+    ASF keyword in multiple-target commands is now case-insensitive.
+    Added WCFBinding global config property.
+    Added DontAcceptBotTrades option to TradingPreferences bot config property.
+    Changed default value of TradingPreferences from AcceptDonations to None.
+    Fixed possible ASF exit/crash on invalid Steam network responses.
+    Fixed too early ASF crash by postponing services init until runtime check.
+    Misc code improvements, optimizations and bugfixes.
 2017-02-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.2.2.1-1:
     [!] Fixed network instability introduced in ASF V2.1.1.2. Coincidentally, this has nothing to do with network enhancements that arrived in V2.1.1.6. Huge thanks to Budgie and other folks helping me with their debug logs.
