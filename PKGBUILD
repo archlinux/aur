@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus-svn
-pkgver=21748
+pkgver=21751
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
@@ -33,6 +33,7 @@ prepare() {
 }
 
 build() {
+  LANG=C
   cd "$srcdir"/$_svnmod/Scribus
   cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DCMAKE_SKIP_RPATH:BOOL=YES -DWANT_GRAPHICSMAGICK=1 \
