@@ -1,5 +1,4 @@
 # Maintainer: duffydack <duffydack73 {at] gmail {dot} com>
-#
 pkgbase=linux-max98090
 _srcname=linux-4.9
 pkgver=4.9.6
