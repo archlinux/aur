@@ -2,14 +2,14 @@
 
 _pkgname=lxqt-powermanagement
 pkgname=$_pkgname-git
-pkgver=0.9.0.14.g5a01b87
+pkgver=0.11.1.2.ga8f47af
 pkgrel=1
 pkgdesc="LXQt power management daemon"
 arch=("i686" "x86_64")
 url="http://lxqt.org"
 license=("GPL2")
 depends=("liblxqt-git" "libxcb" "qt5-svg" "upower")
-makedepends=("git" "cmake" "qt5-tools" "solid")
+makedepends=("lxqt-build-tools" "solid")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxde/$_pkgname.git")
