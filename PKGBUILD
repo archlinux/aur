@@ -3,10 +3,9 @@
 pkgname=rtl8192su-git
 _pkgname=rtl8192su
 pkgver=c00112c
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module for Realtek RTL8188SU/RTL8191SU/RTL8192SU devices"
 arch=('x86_64' 'i686')
-
 # https://wireless.wiki.kernel.org/en/users/Drivers/rtl819x
 # pointed to this github repo --> https://github.com/chunkeey/rtl8192su
 url="https://github.com/chunkeey/rtl8192su"
@@ -36,6 +35,7 @@ package() {
   _s="/usr/lib/modules/${_extramodules}/kernel/drivers/net/wireless/rtlwifi/rtl8192s"
   _base="/usr/lib/modules/${_extramodules}/kernel/drivers/net/wireless/rtlwifi"
 
+  # modules
   install -pd "$pkgdir/$_su"
   install -pd "$pkgdir/$_se"
   install -pd "$pkgdir/$_s"
@@ -49,6 +49,7 @@ package() {
   install -pm644 "$srcdir/$_pkgname/rtlwifi/rtl8192s/rtl8192s-common.ko.gz" \
     "$pkgdir/$_su/rtl8192s-common.ko.gz"
 
+  # firmware
   install -pd "$pkgdir/usr/lib/firmware/rtlwifi"
   for i in rtl8192sfw.bin rtl8192sufw-ap.bin rtl8192sufw-apple.bin \
     rtl8192sufw-windows.bin rtl8712u-linux-firmware-bad.bin \
