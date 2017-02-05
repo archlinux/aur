@@ -3,7 +3,7 @@
 pkgname=rtl8192du-git
 _pkgname=rtl8192du
 pkgver=69552b2
-pkgrel=4
+pkgrel=5
 pkgdesc="Kernel module for Realtek RTL8192DU USB wireless devices."
 arch=('x86_64' 'i686')
 url="https://github.com/lwfinger/rtl8192du"
@@ -41,10 +41,12 @@ build() {
 }
 
 package() {
+  # module
   install -d "$pkgdir/usr/lib/modules/${_extramodules}/kernel/drivers/net/wireless"
   install -m644 "$srcdir/$_pkgname/8192du.ko.gz" \
     "$pkgdir/usr/lib/modules/${_extramodules}/kernel/drivers/net/wireless/8192du.ko.gz"
 
+  # firmware
   install -d "$pkgdir/usr/lib/firmware/rtlwifi"
   install -m644 "$srcdir/$_pkgname/rtl8192dufw.bin" \
     "$pkgdir/usr/lib/firmware/rtlwifi/rtl8192dufw.bin"
