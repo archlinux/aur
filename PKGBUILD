@@ -2,30 +2,29 @@
 # Forked from palemoon PKGBUILD by WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: artiom <a.mv at gmx dot fr>
 pkgname=palemoon-git
-pkgver=27.1.0b1+c2e68c5c2
+pkgver=27.1.0b2+5adfb550f
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency (git version)"
 arch=('i686' 'x86_64')
 url="http://www.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib')
-	makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'gstreamer0.10' 'gstreamer0.10-base-plugins' 'libpulse' 'gcc5')
+	makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'ffmpeg' 'libpulse' 'gcc5')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libpulse: PulseAudio audio driver'
             'hunspell: spell checker and morphological analyzer'
-            'hyphen: library for hyphenation and justification'
-            'gstreamer0.10-bad-plugins'
-            'gstreamer0.10-good-plugins'
-            'gstreamer0.10-ugly-plugins')
+            'hyphen: library for hyphenation and justification')
 conflicts=('palemoon')
 provides=('palemoon' 'firefox')
 install=palemoon.install
 source=(git+"https://github.com/MoonchildProductions/Pale-Moon"
+		rhbz-966424.patch
         palemoon.desktop
         mozconfig.in)
 md5sums=('SKIP'
+         '95d212604b6c8354f9e255db5c3ce0ea'
          '32231f6e6a532021fd04c6d7b32f4270'
-         'SKIP')
+         'df0b183564a8a554a66311f403cc4ee8')
 
 pkgver() {
 	cd Pale-Moon
@@ -42,6 +41,8 @@ prepare() {
   
 build() {
   cd Pale-Moon
+  
+  patch -Np0 -i ../rhbz-966424.patch
 
   export CC="gcc-5"
   export CXX="g++-5"

@@ -9,11 +9,8 @@ export MOZILLA_OFFICIAL=1
 # number of cores your processor has
 mk_add_options MOZ_MAKE_FLAGS="-j8" 
 
-# not necessary if using firejail
-mk_add_options _FORTIFY_SOURCE=2
-
 # let's do some ricing
-ac_add_options --enable-optimize="-O2 -march=native -mtune=native"
+ac_add_options --enable-optimize="-O3 -msse2 -mfpmath=sse -march=native -mtune=native"
 
 # strip debugging symbols
 ac_add_options --enable-strip
@@ -21,7 +18,6 @@ ac_add_options --enable-strip
 # library and chrome format
 ac_add_options --enable-chrome-format=omni
 ac_add_options --x-libraries=/usr/lib
-ac_add_options --enable-url-classifier
 
 # Use System libraries
 #ac_add_options --enable-default-toolkit=cairo-gtk3 # breaks the build, gtk3 support is not ready
@@ -42,16 +38,13 @@ ac_add_options --enable-system-ffi
 ac_add_options --enable-system-pixman
 ac_add_options --enable-jemalloc
 ac_add_options --with-pthreads
-#ac_add_options --disable-elf-hack
 
 mk_add_options MOZ_CO_PROJECT=browser
 ac_add_options --enable-application=browser
-
 mk_add_options MOZ_OBJDIR=%SRCDIR%/pmbuild
 
-# Safe browsing doesn't apparently leak data about you, it can stay on
-ac_add_options --enable-safe-browsing
-ac_add_options --enable-url-classifier
+ac_add_options --enable-shared-js
+ac_add_options --enable-devtools
 
 # Disable geolocation web services
 ac_add_options --disable-necko-wifi
@@ -64,34 +57,18 @@ ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
 ac_add_options --disable-tests
 
-# Also removed in palemoon
-ac_add_options --disable-accessibility
-
 # Features
 ac_add_options --enable-startup-notification
 ac_add_options --enable-pulseaudio
 
-# You want to use gstreamer, or else h.264 html5 videos will not play
-ac_add_options --enable-gstreamer
-
 # disable stuff we probably don't need or want
-ac_add_options --disable-parental-controls
 ac_add_options --disable-gamepad
 ac_add_options --disable-logging
 ac_add_options --disable-installer
 ac_add_options --disable-updater
 ac_add_options --disable-websms-backend
-ac_add_options --disable-windows-mobile-components
-ac_add_options --disable-metro
-ac_add_options --disable-maintenance-service
 ac_add_options --disable-mobile-optimize
 ac_add_options --disable-codesighs
-ac_add_options --disable-b2g-ril
-ac_add_options --disable-b2g-bt
-ac_add_options --disable-b2g-camera
-ac_add_options --disable-mochitests
 ac_add_options --disable-debug
 ac_add_options --disable-debug-symbols
 ac_add_options --disable-codesighs
-ac_add_options --disable-safe-browsing
-ac_add_options --disable-valgrind
