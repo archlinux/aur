@@ -1,14 +1,14 @@
 # Maintainer: Aleksey Filippov <sarum9in@gmail.com>
 # Contributor: Friedrich Weber <fred@reichbier.de>
 pkgname=czmq
-pkgver=4.0.0
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="High-level C binding for 0MQ"
 arch=('i686' 'x86_64')
 url="http://czmq.zeromq.org"
 license=('MPL2')
 depends=('zeromq>=4.0')
-sha1sums=('9833bfd9bed7f06cef0589cb6b6e79cfce1c0cf3')
+sha1sums=('48a8ee3ab293c501b30cf936e349c5d745a1b5ea')
 makedepends=()
 source=("https://github.com/zeromq/czmq/archive/v${pkgver}.tar.gz")
 
