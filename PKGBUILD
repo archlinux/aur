@@ -20,7 +20,7 @@ _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some grap
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=57.0.2987.8
+pkgver=58.0.3000.4
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -58,6 +58,7 @@ makedepends=('libexif'
              'git'
              'imagemagick'
              'hwids'
+             'npm'
              )
 optdepends=('libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users'
             'libva-mesa-driver: HW video acceleration for Nouveau, r600 and radeonsi users'
@@ -87,7 +88,7 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'minizip.patch'
         # Patch from crbug (chromium bugtracker)
         'chromium-widevine-r1.patch'
-        'fix_668446.diff'
+        'fix_668446_r1.diff'
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-55.0.2873.0.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -103,7 +104,7 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             '95ba939b9372e533ecbcc9ca034f3e9fc6621d3bddabb57c4d092ea69fa6c840'
             # Patch from crbug (chromium bugtracker)
             '0d537830944814fe0854f834b5dc41dc5fc2428f77b2ad61d4a5e76b0fe99880'
-            '4ec7ef64298599e1e30c6391e68f2fd1f6d5dd35a964f78693d7501b98311955'
+            '5f7d403e2a4cd2503ba4946d5c7226c5e9caa3c8433c2175f2545e491cfd9e5f'
             )
 options=('!strip')
 install=chromium-dev.install
@@ -245,6 +246,7 @@ _keeplibs=(
   'third_party/mesa'
   'third_party/modp_b64'
   'third_party/mt19937ar'
+  'third_party/node'
   'third_party/openh264'
   'third_party/openmax_dl'
   'third_party/opus'
@@ -415,7 +417,7 @@ prepare() {
   sed 's|@WIDEVINE_VERSION@|The Cake Is a Lie|g' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
 
   # https://crbug.com/668446
-  patch -p0 -i "${srcdir}/fix_668446.diff"
+  patch -p0 -i "${srcdir}/fix_668446_r1.diff"
 
   # Try to fix libpng errors.
   msg2 "Attempt for fix libpng errors"
@@ -433,8 +435,10 @@ prepare() {
   echo > "${srcdir}/flapper_version.h"
 
   # Remove most bundled libraries. Some are still needed.
-  msg2 "Removing unnecessary components to save space"
+  msg2 "Removing unnecessary components to save space."
   python2 build/linux/unbundle/remove_bundled_libraries.py ${_keeplibs[@]} --do-remove
+
+  # Can lead fail
   rm -fr native_client/toolchain
   rm -fr build/linux/debian*
 
@@ -442,16 +446,23 @@ prepare() {
   find . -name '*.py' -exec sed -r 's|/usr/bin/python$|&2|g' -i {} +
   find . -name '*.py' -exec sed -r 's|/usr/bin/env python$|&2|g' -i {} +
 
-  touch chrome/test/data/webui/i18n_process_css_test.html
-
-  # Changing bundle libraries to system ones.
+  msg2 "Changing bundle libraries to system ones."
   python2 build/linux/unbundle/replace_gn_files.py --system-libraries ${_use_system[@]}
-
-  # update libaddressinput strings.
-  python2 third_party/libaddressinput/chromium/tools/update-strings.py
 
   # Use the file at run time instead of effectively compiling it in.
   sed 's|//third_party/usb_ids/usb.ids|/usr/share/hwdata/usb.ids|g' -i device/usb/BUILD.gn
+
+  msg2 "Update libaddressinput strings."
+  python2 third_party/libaddressinput/chromium/tools/update-strings.py
+
+  msg2 "Update nodejs deps"
+  # Fix some things in the update_node_binaries script
+  sed -e 's|latest-v6.x|${NODE_VERSION}|g' \
+      -e 's|rm "SHASUMS256.txt"|rm -fr "SHASUMS256.txt"|g' \
+      -i third_party/node/update_node_binaries
+
+  ./third_party/node/update_node_binaries
+  ./third_party/node/update_npm_deps
 
   if [ "${_build_nacl}" = "1" ]; then
     msg2 "Setup NaCl/PNaCl SDK: Download and install NaCl/PNaCl toolchains"

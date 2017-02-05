@@ -1,0 +1,53 @@
+--- chrome/browser/ui/libgtkui/BUILD.gn.orig	2017-02-05 00:32:39.518999004 +0100
++++ chrome/browser/ui/libgtkui/BUILD.gn	2017-02-05 00:23:33.532382915 +0100
+@@ -140,26 +140,28 @@
+   }
+ }
+ 
+-libgtkui("libgtk2ui") {
+-  sources = [
+-    "native_theme_gtk2.cc",
+-    "native_theme_gtk2.h",
+-  ]
+-  deps = [
+-    "//build/config/linux/gtk2",
+-    "//build/config/linux/gtk2:gtkprint2",
+-  ]
+-}
+-
+-# This is compiled with "all" even when it's not referenced to ensure that
+-# GTK3 continues to build. GTK3 is explicitly specified by some distros.
+-libgtkui("libgtk3ui") {
+-  sources = [
+-    "native_theme_gtk3.cc",
+-    "native_theme_gtk3.h",
+-  ]
+-  deps = [
+-    "//build/config/linux/gtk3",
+-    "//build/config/linux/gtk3:gtkprint3",
+-  ]
++if (use_gtk3) {
++  # This is compiled with "all" even when it's not referenced to ensure that
++  # GTK3 continues to build. GTK3 is explicitly specified by some distros.
++  libgtkui("libgtk3ui") {
++    sources = [
++      "native_theme_gtk3.cc",
++      "native_theme_gtk3.h",
++    ]
++    deps = [
++      "//build/config/linux/gtk3",
++      "//build/config/linux/gtk3:gtkprint3",
++    ]
++  }
++} else {
++  libgtkui("libgtk2ui") {
++    sources = [
++      "native_theme_gtk2.cc",
++      "native_theme_gtk2.h",
++    ]
++    deps = [
++      "//build/config/linux/gtk2",
++      "//build/config/linux/gtk2:gtkprint2",
++    ]
++  }
+ }
