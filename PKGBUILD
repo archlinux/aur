@@ -1,7 +1,7 @@
 # Maintainer Marcel Kleinfeller <marcel@oompf.de>
 
 pkgname="coda"
-pkgver=6.9.6
+pkgver=6.11.1
 pkgrel=1
 pkgdesc="A distributed file system with disconnected operation."
 
@@ -9,12 +9,12 @@ pkgdesc="A distributed file system with disconnected operation."
 
 arch=("i868" "x86_64" "armv7h")
 url="http://coda.cs.cmu.edu/"
-source=("http://coda.cs.cmu.edu/coda/source/coda-6.9.6.tar.xz")
-sha512sums=("0c425846c2ff3d425554472f8f09cc9af11fc3d2749a006a2bc0132abcf3ac10964593ca7a42f8a1a94a404dcc6753afc922a0f79df8a519b5dd1655959f4ab6")
+source=("http://coda.cs.cmu.edu/coda/source/coda-6.11.1.tar.xz")
+sha512sums=("6726edeb3253f79ed648adfd503d3c5001e0145100c6b63eb13c289ee54aeecd9eb2af3717675cdd35162ae7760a344efb42a09234a8efbc950338b8e3c170a5")
 license=("GPL")
 
 build() {
-    cd "${srcdir}/coda-6.9.6"
+    cd "${srcdir}/coda-6.11.1"
     ./bootstrap.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
     --datadir=/usr/share --includedir=/usr/include --with-lua
@@ -22,6 +22,6 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/coda-6.9.6"
+    cd "${srcdir}/coda-6.11.1"
     make DESTDIR="${pkgdir}" install
 }
