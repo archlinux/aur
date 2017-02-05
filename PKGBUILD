@@ -4,7 +4,7 @@
 
 pkgname=mpd-sima
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Automagically add title to mpd playlist based on last.fm recomendations"
 arch=('any')
 url="http://codingteam.net/project/sima"
