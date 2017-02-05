@@ -26,27 +26,7 @@ md5sums=('25fb5ab8c49be0f1269c79520ccee789'
          'dd2c8cd0f5bcafa25cfb583a92e21aec'
          'd03e975286ae270d6bb77ae88b6ed3b4')
 
-package() {
-    ## Thx to messo8080 for reminding us about the /tmp dir,
-    ## on new installs this dir is in ram by default.
-
-    if `pwd | grep -q "/tmp"`; then
-	echo \
-"You are trying to build this pkg in /tmp dir.
-This is not so good idea as /tmp dir is in RAM
-by default. If you know that you have lots of
-ram (>8G) and swap and want to continue building in
-the current directory write yes and press ENTER.
-Otherwise write no and press ENTER. (You might
-consider changing the temporary directory, e.g.
-using --tmp for yaourt.)
-Continue?"
-	read answer
-		if [ "${answer}" == "no" ]; then
-			false
-		fi
-    fi
-    
+package() {    
     #mv HoNClient-${pkgver}-${pkgrel}.sh HoNClient-${pkgver}.sh
 
     # Create Destination Directory

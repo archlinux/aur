@@ -1,3 +1,18 @@
+pre_install() {
+    ## Thx to messo8080 for reminding us about the /tmp dir,
+    ## on new installs this dir is in ram by default.
+
+    if `pwd | grep -q "/tmp"`; then
+	echo \
+"You are trying to build this pkg in /tmp dir.
+This is not so good idea as /tmp dir is in RAM
+by default. Proceed if you know that you have lots of
+ram (>8G) and swap and want to continue building in
+the current directory. (Note that you might
+consider changing the temporary directory, e.g.
+using --tmp for yaourt.)"
+    fi
+}
 
 post_install() {
     echo ">>> You must read and agree to the terms in the EULAs found"
