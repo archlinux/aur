@@ -5,7 +5,7 @@
 
 pkgname=flexget
 _pkgname=Flexget
-pkgver=2.8.14
+pkgver=2.9.15
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -43,8 +43,8 @@ depends=('python2'
          'python2-flask-login>=0.3.2'
          'python2-flask-cors>=2.1.2'
          'python2-pyparsing>=2.0.3'
-         'python2-safe'
          'python2-future'
+         'python2-zxcvbn'
          )
 optdepends=('python2-guppy: for memusage plugin' #AUR#
             'python2-transmissionrpc: Transmission support' #AUR#
@@ -61,7 +61,7 @@ source=("https://github.com/Flexget/Flexget/archive/${pkgver}.tar.gz"
 
 changelog=ChangeLog
 
-sha256sums=('1df2607ffb60dd17cbdc0d7aa865d952e79fbf450f5086b53075f1c1710433ef'
+sha256sums=('edb04e2f25e285583d4c8f418a26dc2537f457f1d4bea3cdc9eddbea9e61709e'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
 
