@@ -3,7 +3,7 @@
 
 pkgbase=python-rq
 pkgname=('python-rq' 'python2-rq')
-pkgver=0.6.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A simple, lightweight, library for creating background jobs, and processing them"
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/nvie/rq/"
 makedepends=('python' 'python-setuptools' 'python-click' 'python-redis'
              'python2' 'python2-setuptools' 'python2-click' 'python2-redis')
 source=("https://github.com/nvie/rq/archive/${pkgver}.tar.gz")
-sha256sums=('8c6c8b9328e4b0cb4e6abb11f9b75f44a80b91da07036a0079746302e759ef1c')
+sha256sums=('96640fd589efc18a264b18c5ea85fd1d22f26b22ab2d7744c59a60ff53c1e679')
 
 package_python-rq() {
     depends=('python' 'python-click' 'python-redis')
