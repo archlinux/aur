@@ -12,4 +12,4 @@ package() {
   install -m755 -d "${pkgdir}/usr/lib/udev/rules.d"
   install -m644 "${srcdir}/83-psvr.rules" "${pkgdir}/usr/lib/udev/rules.d/"
 }
-md5sums=('0d8b5658a1b636c12f259cdf00316908')
+md5sums=('aa0cadfab0837bced7b442b275768c46')
