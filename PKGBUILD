@@ -2,39 +2,78 @@
 # Contributor: Daniel Micay <danielmicay [at] gmail [dot] com>
 # Contributor: MThinkCpp <mtc [dot] maintainer [at] outlook [dot] com>
 
-pkgname=libc++
+pkgbase=('libc++')
+pkgname=("${pkgbase}" "${pkgbase}abi" "${pkgbase}experimental")
 pkgver=3.9.1
 pkgrel=1
-pkgdesc='A new implementation of the C++ standard library, targeting C++11.'
-url='http://libcxx.llvm.org'
-license=('custom:University of Illinois/NCSA Open Source License')
+url="http://libcxx.llvm.org/"
+license=('MIT' 'custom:University of Illinois/NCSA Open Source License')
 arch=('i686' 'x86_64')
-# gcc-libs needed for libgcc_s, because Arch doesn't use a pure compiler-rt clang
-depends=('glibc' 'libc++abi' 'gcc-libs')
-makedepends=('clang' 'cmake')
-source=("http://www.llvm.org/releases/$pkgver/libcxx-${pkgver}.src.tar.xz"{,.sig})
-sha512sums=('a5976e4096624a7307b3e43f4a22ac2dc74572226e0f57af9f3ef537a14c3cff1601b7042aef9dc40a0ee53ca76b08d72eb9c253dcf34f115d3153c302db7070'
+depends=('gcc-libs')
+makedepends=('clang' 'cmake' 'python' 'libunwind' 'llvm')
+source=("http://llvm.org/releases/$pkgver/llvm-$pkgver.src.tar.xz"{,.sig}
+        "http://llvm.org/releases/$pkgver/libcxx-$pkgver.src.tar.xz"{,.sig}
+        "http://llvm.org/releases/$pkgver/libcxxabi-$pkgver.src.tar.xz"{,.sig})
+noextract=("${source[@]##*/}")
+sha512sums=('50cbe8ee911080f586e77861c442348701bd02e2de0c090c54c34f82ac275ecfcd712af0f41e387c33b4a6057778a4258a27554292fe68ab4af3fd9dd6d90683'
+            'SKIP'
+            'a5976e4096624a7307b3e43f4a22ac2dc74572226e0f57af9f3ef537a14c3cff1601b7042aef9dc40a0ee53ca76b08d72eb9c253dcf34f115d3153c302db7070'
+            'SKIP'
+            '4f5603f1476b759c86d4784728fbdd212c59b30dc56d787c1834bf68a9cd83071fa22658d24e5a58beb94c0c656b0e4457d7da6e3048715dd36bd68380fc336e'
             'SKIP')
-validpgpkeys=(
-              # Bill Wendling <void@llvm.org>
+validpgpkeys=(# Bill Wendling <void@llvm.org>
               54E3BDE33185D9F69664D22455F5CD70BB5A0569
               # Tom Stellard <tom@stellard.net>
               11E521D646982372EB577A1F8F0871F202119294
               # Hans Wennborg <hans@chromium.org>
-              B6C8F98282B944E3B0D5C2530FC3042E345AD05D
-)
-
+              B6C8F98282B944E3B0D5C2530FC3042E345AD05D)
+ 
+prepare() {
+  [[ -d llvm ]] || mkdir llvm
+  bsdtar --strip-components 1 --uid 0 --gid 0 -zxf \
+         ${srcdir}/${source[0]##*/} -C \
+         llvm
+  [[ -d llvm/projects/libcxx ]] || mkdir llvm/projects/libcxx
+  bsdtar --strip-components 1 --uid 0 --gid 0 -zxf \
+         ${srcdir}/${source[2]##*/} -C \
+         llvm/projects/libcxx
+  [[ -d llvm/projects/libcxxabi ]] || mkdir  llvm/projects/libcxxabi
+  bsdtar --strip-components 1 --uid 0 --gid 0 -zxf \
+         ${srcdir}/${source[4]##*/} -C \
+         llvm/projects/libcxxabi
+  [[ -d build ]] || mkdir build
+}
+ 
 build() {
-  mkdir -p libcxx-${pkgver}.src/build
-  cd libcxx-${pkgver}.src/build
-  CC=clang CXX=clang++ cmake -G "Unix Makefiles" -DLIBCXX_CXX_ABI=libcxxabi \
-    -DLIBCXX_CXX_ABI_INCLUDE_PATHS=/usr/include/cxxabi \
-    -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "$srcdir/libcxx-${pkgver}.src"
-  make
+  cd build
+  CC=clang CXX=clang++ cmake \
+    -G "Unix Makefiles" \
+    -DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=On \
+    -DLIBCXX_INSTALL_EXPERIMENTAL_LIBRARY=Off \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    ${srcdir}/llvm
+  make cxx cxx_experimental
 }
 
-package() {
-  cd libcxx-${pkgver}.src/build
-  make DESTDIR="$pkgdir" install
-  install -Dm644 ${srcdir}/libcxx-${pkgver}.src/LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package_libc++() {
+  pkgdesc='A new implementation of the C++ standard library, targeting C++11.'
+  depends+=("libc++abi=${pkgver}-${pkgrel}")
+  cd ${srcdir}/build
+  make DESTDIR="${pkgdir}" install-libcxx
+  install -Dm644 ${srcdir}/llvm/projects/libcxx/LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+ 
+package_libc++abi() {
+  pkgdesc='A new implementation of low level support for a standard C++ library'
+  cd ${srcdir}/build
+  make DESTDIR="${pkgdir}" install-libcxxabi
+  install -Dm644 ${srcdir}/llvm/projects/libcxxabi/LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+ 
+package_libc++experimental() {
+  depends+=("libc++=$pkgver-$pkgrel")
+  pkgdesc='A new implementation of the C++ standard library, targeting C++11 (experimental library)'
+  install -Dm644 ${srcdir}/build/lib/libc++experimental.a ${pkgdir}/usr/lib/libc++experimental.a
+  install -Dm644 ${srcdir}/llvm/projects/libcxx/LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
