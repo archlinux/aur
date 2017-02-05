@@ -3,19 +3,21 @@
 # Contributor: Vithon <ratm@archlinux.us>
 
 pkgname=maxmod
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
-pkgdesc="A complete music and sound solution library for NDS and GBA"
+pkgdesc="A complete music and sound solution library for Nintendo NDS and GBA homebrew"
 arch=('any')
-url="http://devkitpro.org/maxmod.org/"
+url="http://devkitpro.org"
 license=('custom')
 depends=('devkitarm')
 options=(!strip staticlibs)
 source=("http://downloads.sourceforge.net/sourceforge/devkitpro/$pkgname-src-$pkgver.tar.bz2")
-sha256sums=('4c950e99a38ddacd3e33330dc9e117e7db40bb51c0e57f2efc9729dd5517db7f')
+sha256sums=('540f1f05e6139b6a2952640059c26bd07a73daf59cd8a1d524a13b7558a06070')
 
 build() {
+  # set environment
   source /etc/profile.d/devkitarm.sh
+
   make gba ds7 ds9
 }
 
