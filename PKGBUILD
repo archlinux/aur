@@ -3,8 +3,8 @@
 
 _realname=lLyrics
 pkgname=rhythmbox-llyrics
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="A Rhythmbox plugin for displaying lyrics in the sidebar"
 arch=('any')
 url="https://github.com/dmo60/lLyrics"
@@ -12,7 +12,7 @@ license=('GPL2')
 makedepends=('git')
 depends=('rhythmbox>=3.0' 'python-chardet' 'python-lxml')
 source=("https://github.com/dmo60/lLyrics/archive/v$pkgver.tar.gz")
-md5sums=('2d1bffacb570b4b1aadb92b5e6f0c087')
+md5sums=('5ae4319f10ff7813e2b5bc7b68f5e49f')
 
 prepare() {
 	cd "$srcdir/$_realname-$pkgver"
