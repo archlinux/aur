@@ -6,15 +6,15 @@
 
 pkgbase=linux-mptcp
 _srcname=mptcp
-pkgver=0.91.2.r3.g7dc057e
-pkgrel=2
+pkgver=0.91.3.r0.ga40a47b9a03d
+pkgrel=1
 epoch=1
 arch=('i686' 'x86_64')
 url="http://www.multipath-tcp.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git')
 options=('!strip')
-source=("git+https://github.com/multipath-tcp/mptcp#commit=7dc057edb502ded02b91ae9a68f1114ddcf4c8ff"
+source=("git+https://github.com/multipath-tcp/mptcp#commit=a40a47b9a03d13609c415ed1599c46b03dfb5744"
         # the main kernel config files
         'config' 'config.x86_64'
         # pacman hook for initramfs regeneration
