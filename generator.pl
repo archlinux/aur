@@ -55,16 +55,19 @@ sub _get_data {
     my $is_num = qr/^\d+/;
     my $data = {};
 
+    say "Year";
     my $year = _get_part($ua,$uri, $is_num);
     $uri .= $year;
     $year =~ s:/::;
     $data->{year} = $year;
 
+    say "Month";
     my $month = _get_part($ua, $uri, $is_num);
     $uri .= $month;
     $month =~ s:/::;
     $data->{month} = $month;
 
+    say "Release";
     my $release = _get_part($ua, $uri, qr(aurora/$));
     $uri .= $release;
     $release =~ /^\d{4}-\d{2}-(?<day>\d+)-(?<hour>\d+)-(?<minute>\d+)-(?<second>\d+)/;
