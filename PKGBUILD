@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname='dq'
-pkgver='20160808'
+pkgver='20161210'
 pkgrel='1'
 pkgdesc='Small recursive DNS server and tools with DNSCurve support'
 url='https://mojzis.com/software/dq/'

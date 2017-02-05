@@ -1,6 +1,6 @@
 pkgbase = dq
 	pkgdesc = Small recursive DNS server and tools with DNSCurve support
-	pkgver = 20160808
+	pkgver = 20161210
 	pkgrel = 1
 	url = https://mojzis.com/software/dq/
 	install = dq.install
@@ -12,7 +12,7 @@ pkgbase = dq
 	makedepends = git
 	makedepends = gnupg
 	depends = bash
-	source = dq::git+https://github.com/janmojzis/dq#tag=20160808
+	source = dq::git+https://github.com/janmojzis/dq#tag=20161210
 	source = root-servers
 	source = dqcache@.service
 	source = default.conf
