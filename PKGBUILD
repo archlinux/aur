@@ -6,14 +6,13 @@
 # Contributer: Bluthund <bluthund23@gmail.com>
 
 pkgname=caffeine-systray
-_gitname=caffeine-ng
 pkgver=2.5
 pkgrel=1
 # epoch was already set to 1 when I adopted it.
 epoch=1
 pkgdesc="Fork of caffeine that maintains systray support."
 arch=(any)
-url=https://github.com/hobarrera/$_gitname
+url=https://gitlab.com/hobarrera/caffeine-ng/
 license=(GPL3)
 depends=(dconf gtk2 hicolor-icon-theme kaa-metadata python2-dbus
          python2-gobject python2-notify python2-xdg python2-xlib)
@@ -23,15 +22,15 @@ replaces=(caffeine-oneclick)
 makedepends=(git)
 options=(!emptydirs !libtool)
 install=$pkgname.install
-source=(https://github.com/hobarrera/$_gitname/archive/v$pkgver.zip)
-sha256sums=('c7e61cfc7ad66bf34b9c8159a4d7b5b3356b69e6f6e75e103ec5cc1c7c585cd4')
+source=(https://gitlab.com/hobarrera/caffeine-ng/repository/archive.tar.gz?ref=v2.5)
+sha256sums=('73d2775e1f232594cea7978a4b6b5bead5e7549b2081c7db1fdd0b3a724bdc1f')
 
 prepare() {
-    cd $_gitname-$pkgver/
+    cd "$srcdir/caffeine-ng-v2.5-26c15ff68e4a6996d8da18229f15760ef42e2e05"
     find -name '*.py' -type f -exec sed -ri 's:^#!/usr/bin/(env )?python$:&2:' '{}' \;
 }
 
 package() {
-    cd $_gitname-$pkgver/
+    cd "$srcdir/caffeine-ng-v2.5-26c15ff68e4a6996d8da18229f15760ef42e2e05"
     python2 setup.py install --root="$pkgdir"
 }
