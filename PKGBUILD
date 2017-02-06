@@ -9,14 +9,15 @@
 #                                                                             #
 # API changes between different Kodi versions make it necessary to specify    #
 # the version of Kodi you want to build this package for. You can choose      #
-# between Isengard (15), Jarvis (16) and git master (99). Do so in the        #
-# following line.                                                             #
+# between Isengard (15), Jarvis (16), Krypton (17) and git master (99). Do so #
+# in the following line.                                                      #
+#                                                                             #
 ###############################################################################
 
-API=16
+API=17
 
 pkgname=kodi-platform-git
-pkgver=r38.15edaf7
+pkgver=r53.c8188d8
 pkgrel=1
 pkgdesc='Kodi platform support library'
 arch=('armv7h' 'i686' 'x86_64')
@@ -37,8 +38,10 @@ case "$API" in
   16)  depends+=('libplatform-legacy')
        source[0]="${pkgname}::git+https://github.com/xbmc/kodi-platform.git#commit=15edaf78d" ;;
   17)  depends+=('p8-platform')
+       makedepends+=('kodi-dev')
        source[0]="${pkgname}::git+https://github.com/xbmc/kodi-platform.git#commit=c8188d826" ;;
-  99)  depends+=('p8-platform') ;;
+  99)  depends+=('p8-platform')
+       makedepends+=('kodi-dev') ;;
   *)   error "Unknown API version. Follow instructions in PKGBUILD." && false
 esac
 
