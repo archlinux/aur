@@ -1,9 +1,12 @@
+# Maintainer: Sky Chan <diufanshu@gmail.com>
+# Contributor: Brenton Horne <brentonhorne77 at gmail dot com>
+# Contributor: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
+
 _pkgname=atom
 _version=beta
 _mirror=mirror
 
 # Versions
-_fus_url="https://github.com/fusion809"
 _language_gfm2_ver=0.92.2
 _language_ini_desktop_ver=1.18.3
 _language_liquid_ver=0.5.1
