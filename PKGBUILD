@@ -75,7 +75,7 @@ package() {
   cd "$srcdir/$_pkgname"
   
   install -d -m755 $pkgdir/usr/bin
-  ln -s $pkgdir/opt/$pkgname/bin/qgis "$pkgdir/usr/bin/qgis-git"
+  ln -s /opt/$pkgname/bin/qgis "$pkgdir/usr/bin/qgis-git"
 
   # install desktop files and icons
   install -Dm644 debian/{qgis,qbrowser}.desktop -t "$pkgdir/usr/share/applications/"
