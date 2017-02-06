@@ -1,0 +1,29 @@
+pkgbase = redshift-wayland-git
+	pkgdesc = Adjusts the color temperature of your screen according to your surroundings with Wayland support. (development version)
+	pkgver = 1.11.r26.g295c8fa
+	pkgrel = 1
+	url = https://github.com/Lourens-Rich/redshift
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	makedepends = python
+	depends = geoclue2
+	depends = libdrm
+	depends = libxcb
+	depends = libxxf86vm
+	optdepends = python-gobject: for redshift-gtk
+	optdepends = python-xdg: for redshift-gtk
+	optdepends = librsvg: for redshift-gtk
+	optdepends = weston: supporting wayland environment
+	optdepends = sway-git: supporting wayland environment
+	optdepends = orbital-git: supporting wayland environment
+	provides = redshift
+	provides = redshift-sway-git
+	conflicts = redshift
+	conflicts = redshift-sway-git
+	source = redshift::git+https://github.com/Lourens-Rich/redshift.git
+	md5sums = SKIP
+
+pkgname = redshift-wayland-git
+
