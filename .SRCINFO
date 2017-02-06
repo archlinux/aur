@@ -1,0 +1,17 @@
+pkgbase = minifb
+	pkgdesc = A small, cross platform library to create a frame buffer that you can draw pixels in
+	pkgver = r25.a5e8dd4
+	pkgrel = 1
+	url = https://github.com/emoon/minifb
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libx11
+	source = minifb::git+https://github.com/emoon/minifb
+	source = minifb.mk
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = minifb
+
