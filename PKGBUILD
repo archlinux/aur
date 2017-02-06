@@ -94,9 +94,7 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd "${srcdir}/${_srcname}"
 
-    ### Add upstream patch ### fix https://bugzilla.kernel.org/show_bug.cgi?id=189851
-        msg "Fix https://bugzilla.kernel.org/show_bug.cgi?id=189851"
-        patch -p1 -i "${srcdir}/net_handle_no_dst_on_skb_in_icmp6_send.patch"
+    ### Add upstream patch
         msg "Add upstream patch"
         patch -Np1 -i "${srcdir}/patch-${_pkgver}"
     
