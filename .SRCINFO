@@ -1,0 +1,18 @@
+pkgbase = python-mpv-git
+	pkgdesc = A ctypes-based Python interface to the mpv media player
+	pkgver = r55.8b9411e
+	pkgrel = 1
+	url = https://github.com/jaseg/python-mpv
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = mpv
+	provides = python-mpv
+	conflicts = python-mpv
+	source = python-mpv-git::git+https://github.com/jaseg/python-mpv.git
+	sha256sums = SKIP
+
+pkgname = python-mpv-git
+
