@@ -1,7 +1,7 @@
 pkgbase = jackett
 	pkgdesc = Use many trackers with Sonarr
 	pkgver = 0.7.983
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jackett/Jackett
 	install = jackett.install
 	arch = any
