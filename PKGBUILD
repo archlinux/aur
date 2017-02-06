@@ -6,7 +6,7 @@
 pkgname=scotch-mpich
 pkgver=6.0.4
 _downloadnum=34618  # gforge is insane
-pkgrel=3
+pkgrel=4
 _prefix=/usr
 pkgdesc="Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. This is the parallel version using the MPICH implementation (MPICH/ptesmumps)."
 url="http://www.labri.fr/perso/pelegrin/scotch/"
