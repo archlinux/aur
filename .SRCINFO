@@ -1,6 +1,6 @@
 pkgbase = cerebro
 	pkgdesc = Open-source productivity booster with a brain.
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://cerebroapp.com/
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = cerebro
 	depends = nss
 	provides = cerebro
 	conflicts = cerebro-git
-	source = 0.2.4.tar.gz::https://github.com/KELiON/cerebro/archive/0.2.4.tar.gz
-	sha256sums = 2a0e224f58b5137224ff83ca14a394e9c5f5d9b608ca3a30344085d028a853e3
+	source = 0.2.5.tar.gz::https://github.com/KELiON/cerebro/archive/0.2.5.tar.gz
+	sha256sums = 73a31526ac84d4cf412ddadc4f31c3f75bac3444d4c7a604621642a7f0dd074f
 
 pkgname = cerebro
 
