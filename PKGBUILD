@@ -4,13 +4,13 @@
 # Contributor: Dave Reisner <dreisner@archlinux.org>
 # Contributor: Tom Gundersen <teg@jklm.no>
 
-_spkgrel=7
+_spkgrel=8
 _repo=http://mirror.netcologne.de/archlinux/core/os
 
 pkgbase=eudev-systemdcompat
 pkgname=('eudev-systemd' 'libeudev-systemd')
 pkgver=232
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('GPL2')
 groups=('base' 'base-openrc')
@@ -19,10 +19,10 @@ source_i686=("$_repo/i686/libsystemd-$pkgver-${_spkgrel}-i686.pkg.tar.xz"
         "$_repo/i686/systemd-$pkgver-${_spkgrel}-i686.pkg.tar.xz")
 source_x86_64=("$_repo/x86_64/libsystemd-$pkgver-${_spkgrel}-x86_64.pkg.tar.xz"
         "$_repo/x86_64/systemd-$pkgver-${_spkgrel}-x86_64.pkg.tar.xz")
-md5sums_i686=('70432c280dc7ffe332c95620f652e006'
-              'b8b35b554cbac726329978840adb3b98')
-md5sums_x86_64=('67aa895d79df1e20e4390565311596f2'
-                '85c2a861842f6d5a94b8a194f16e389f')
+md5sums_i686=('458867be18c7d14af34c9d4c267e5880'
+              'db63aafd235f3993314e513119ec1a0b')
+md5sums_x86_64=('ec7b5aea73f3ddb0e893873e86a4e51b'
+                '966852761e024f4397d5c7de44c5dc72')
 
 package_eudev-systemd() {
     pkgdesc="systemd-sysuser and systemd-tmpfiles binary; systemd compatibility package"
