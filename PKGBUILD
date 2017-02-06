@@ -6,12 +6,12 @@
 _pkgname=phpunit
 pkgname=${_pkgname}
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PHPUnit is a programmer-oriented testing framework for PHP."
 url="https://phpunit.de"
 arch=("any")
 license=("BSD")
-depends=("php")
+depends=("php>=7.0.0")
 install="${_pkgname}.install"
 source=("https://phar.phpunit.de/phpunit-${pkgver}.phar"
         "https://raw.githubusercontent.com/sebastianbergmann/phpunit/${pkgver}/LICENSE")
