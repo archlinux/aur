@@ -19,8 +19,7 @@ optdepends=(
 makedepends=()
 
 source=(minikube_$pkgver::https://storage.googleapis.com/minikube/releases/v$pkgver/minikube-linux-amd64)
-sha512sums=('2a8ddf558bf4d9fc888eaa7eb3ebb2a226a5c851f6667c7af8ba8b4d84696426a05bb5dfc32716ba200b2250f6e5efcf2d759d18106243ce32a7c7de7db12da7')
-
+sha512sums=('50a824e95a4b514409b75730598004b58fe3b0e1dbe8c36a493eaa4e2f5e934d5aa21469f853dc887e87e72b0b7b118324654dedab012a56d6a6bf6703605ad3')
 package() {
   cd "$srcdir"
   install -d "$pkgdir/usr/bin"
