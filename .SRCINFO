@@ -1,0 +1,16 @@
+pkgbase = mpv-notify-git
+	pkgdesc = Desktop notifications for the mpv media player
+	pkgver = r19.019e278
+	pkgrel = 1
+	url = https://github.com/rohieb/mpv-notify
+	arch = any
+	license = MIT
+	depends = lua52-socket
+	depends = lua52-posix
+	depends = libnotify
+	depends = imagemagick
+	source = mpv-notify-git::git+https://github.com/rohieb/mpv-notify.git
+	sha256sums = SKIP
+
+pkgname = mpv-notify-git
+
