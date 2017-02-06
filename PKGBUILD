@@ -7,8 +7,8 @@
 _name=tomb
 pkgbase="${_name}-git"
 pkgname=("${_name}-git" "${_name}-kdf-git")
-pkgver=2.2.r3.gff57aa3
-pkgrel=2
+pkgver=2.3.r12.g5b7f875
+pkgrel=1
 pkgdesc="simple tool to manage encrypted storage"
 arch=('any')
 url="http://tomb.dyne.org/"
@@ -34,7 +34,8 @@ build() {
 
 package_tomb-git() {
     depends=('cryptsetup' 'gnupg' 'sudo' 'zsh' 'e2fsprogs')
-    optdepends=('steghide: steganography'
+    optdepends=('lsof: allows the operation slam'
+        'steghide: steganography'
         'dcfldd: show nice progress during massive I/O'
         'wipe: secure file deletion'
         'qrencode: for paper backups of keys'
