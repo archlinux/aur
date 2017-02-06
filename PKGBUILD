@@ -1,7 +1,7 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
 
 pkgname=python-pipenv
-pkgver=3.3.4
+pkgver=3.3.6
 pkgrel=1
 pkgdesc="An experimental project that aims to bring the best of all packaging worlds to the Python world."
 url="https://github.com/kennethreitz/pipenv"
@@ -15,7 +15,7 @@ depends=('python' 'python-blindspin' 'python-click'
 
 makedepends=('python-setuptools')
 source=("https://github.com/kennethreitz/pipenv/archive/v${pkgver}.tar.gz")
-md5sums=('cb62fba59ef1511228905f1f28cb6784')
+md5sums=('9f74dbb4e0a4f383c9dfd610dd65fc7f')
 arch=('any')
 
 package() {
