@@ -2,7 +2,7 @@
 
 pkgname=valentina-hg
 pkgver=r4336+.bcdc7919b3b4+
-pkgrel=2
+pkgrel=3
 pkgdesc="Sewing pattern drafting tool aiming to remake the garment industry"
 arch=('i686' 'x86_64')
 url="http://valentinaproject.bitbucket.org"
@@ -25,7 +25,7 @@ prepare() {
 build() {
   cd "$srcdir/valentina"
   qmake PREFIX=/usr PREFIX_LIB=/usr/lib Valentina.pro -r \
-    	CONFIG+=noTests CONFIG+=noRunPath CONFIG+=no_ccache \
+    	CONFIG+=noTests CONFIG+=no_ccache CONFIG+=noRunPath \
 	CONFIG+=noDebugSymbols
   make
 }

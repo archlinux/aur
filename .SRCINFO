@@ -1,7 +1,7 @@
 pkgbase = valentina-hg
 	pkgdesc = Sewing pattern drafting tool aiming to remake the garment industry
 	pkgver = r4336+.bcdc7919b3b4+
-	pkgrel = 2
+	pkgrel = 3
 	url = http://valentinaproject.bitbucket.org
 	arch = i686
 	arch = x86_64
