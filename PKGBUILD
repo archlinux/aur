@@ -27,7 +27,7 @@ license=('MIT')
 options=(!strip)
 depends=('git' 'gconf' 'gtk2' 'libnotify' 'libxtst' 'nss' 'python2' 'xdg-utils' 'desktop-file-utils' 'alsa-lib' 'libgnome-keyring')
 optdepends=('gvfs')
-conflicts=('atom-editor-beta')
+conflicts=('atom-editor-beta', 'atom-editor-beta-bin')
 install=$pkgname.install
 
 md5sums=('SKIP'
