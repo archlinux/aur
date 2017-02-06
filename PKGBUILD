@@ -3,7 +3,7 @@
 
 _pkgname=phpqa
 pkgname=${_pkgname}
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="PHPQA all-in-one Analyzer CLI tool."
 arch=("any")
@@ -12,7 +12,7 @@ license=("MIT")
 depends=("php")
 makedepends=("php-composer" "git")
 source=("${pkgname}-${pkgver}"::"https://github.com/jmolivas/phpqa/archive/${pkgver}.tar.gz")
-md5sums=('c8d8fb3df954cf8e2ab2ebab6d9f8078')
+md5sums=('02aaebb5c256a33a2d79f7ce98066ad3')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
