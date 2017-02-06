@@ -1,8 +1,9 @@
-# Maintainer: Jingbei Li <i@jingbei.li>
+# Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
+# Contributor: Jingbei Li <i@jingbei.li>
 
 pkgname=libwebsockets15
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight pure C library built to use minimal CPU and memory resources, and provide fast throughput in both directions."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://libwebsockets.org"
