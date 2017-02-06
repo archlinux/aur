@@ -6,7 +6,7 @@ pkgdesc="Python ADB + Fastboot implementation"
 arch=('any')
 url="https://github.com/google/python-adb.git"
 license=('apachev2')
-depends=('libusb>=1.0.16' 'python-libusb1>=1.2.0' 'python-rsa>=3.4' 'python-pyasn1>=0.1.9')
+depends=('libusb>=1.0.16' 'python-libusb1>=1.2.0' 'python-rsa>=3.4' 'python-pyasn1>=0.2.1')
 makedepends=('git' 'python>=3.6')
 provides=()
 conflicts=()

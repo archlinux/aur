@@ -10,7 +10,7 @@ pkgbase = python-adb-git
 	depends = libusb>=1.0.16
 	depends = python-libusb1>=1.2.0
 	depends = python-rsa>=3.4
-	depends = python-pyasn1>=0.1.9
+	depends = python-pyasn1>=0.2.1
 	source = git+https://github.com/google/python-adb.git
 	md5sums = SKIP
 
