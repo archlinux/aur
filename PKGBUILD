@@ -1,13 +1,13 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-ugly
 pkgver=1.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="GStreamer Multimedia Framework Ugly Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
 depends=('mingw-w64-glib2' 'mingw-w64-gstreamer' 'mingw-w64-gst-plugins-base' 'mingw-w64-orc')
-makedepends=('mingw-w64-configure' 'mingw-w64-x264' 'mingw-w64-lame' 'mingw-w64-opencore-amr')
+makedepends=('mingw-w64-configure' 'mingw-w64-x264' 'mingw-w64-lame' 'mingw-w64-opencore-amr' 'mingw-w64-mpg123')
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=(${url}/src/gst-plugins-ugly/gst-plugins-ugly-${pkgver}.tar.xz)
