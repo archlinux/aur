@@ -50,32 +50,32 @@ _use_current=
 
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
-_srcname=linux-4.8
-_pkgver=4.8.15
-_rtpatchver=rt10
+_srcname=linux-4.9
+_pkgver=4.9.6
+_rtpatchver=rt4
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=4
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc')
 _bfqrel=v7r11
-_bfqver=v8r4
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-${_bfqver}"
-#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.8.0-${_bfqver}/"
+_bfqver=v8r7
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.9.0-${_bfqver}"
+#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.9.0-${_bfqver}/"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign"
-        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.8/patch-${_pkgver}-${_rtpatchver}.patch.xz"
-        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.8/patch-${_pkgver}-${_rtpatchver}.patch.sign"
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.8.0.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-to-be-ported.patch"
-        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-to-.patch"
-        "${_bfqpath}/0004-Turn-BFQ-${_bfqrel}-into-BFQ-${_bfqver}-for-4.8.0.patch"
+        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.9/patch-${_pkgver}-${_rtpatchver}.patch.xz"
+        "http://www.kernel.org/pub/linux/kernel/projects/rt/4.9/patch-${_pkgver}-${_rtpatchver}.patch.sign"
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.5.0.patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.5.0.patch"
+        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for.patch"
+        "${_bfqpath}/0004-Turn-into-BFQ-${_bfqver}-for-4.9.0.patch"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'change-default-console-loglevel.patch'
         'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch'
@@ -85,17 +85,18 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '99-linux.hook'
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'net_handle_no_dst_on_skb_in_icmp6_send.patch'
         '0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch'
         # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
-        '0005-BFQ-update-to-v8r7.patch')
+        )
         
 _kernelname=${pkgbase#linux}
 
 prepare() {
   cd "${srcdir}/${_srcname}"
 
-    ### Add upstream patch
+    ### Add upstream patch ### fix https://bugzilla.kernel.org/show_bug.cgi?id=189851
+        msg "Fix https://bugzilla.kernel.org/show_bug.cgi?id=189851"
+        patch -p1 -i "${srcdir}/net_handle_no_dst_on_skb_in_icmp6_send.patch"
         msg "Add upstream patch"
         patch -Np1 -i "${srcdir}/patch-${_pkgver}"
     
@@ -113,10 +114,6 @@ prepare() {
     # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
         msg "Patching set DEFAULT_CONSOLE_LOGLEVEL to 4"
         patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-        
-    ### fix https://bugzilla.kernel.org/show_bug.cgi?id=189851
-        msg "Fix https://bugzilla.kernel.org/show_bug.cgi?id=189851"
-        patch -p1 -i "${srcdir}/net_handle_no_dst_on_skb_in_icmp6_send.patch"
     
     ### Revert a commit that causes memory corruption in i686 chroots on our
     # build server ("valgrind bash" immediately crashes)
@@ -125,7 +122,7 @@ prepare() {
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
-        for p in "${srcdir}"/000{1,2,3,4,5}-*BFQ*.patch; do
+        for p in "${srcdir}"/000{1,2,3,4}-*BFQ*.patch; do
         msg " $p"
         patch -Np1 -i "$p"
         done
@@ -467,26 +464,24 @@ for _p in ${pkgname[@]}; do
   }"
 done
 
-sha512sums=('a48a065f21e1c7c4de4cf8ca47b8b8d9a70f86b64e7cfa6e01be490f78895745b9c8790734b1d22182cf1f930fb87eaaa84e62ec8cc1f64ac4be9b949e7c0358'
+sha512sums=('bf67ff812cc3cb7e5059e82cc5db0d9a7c5637f7ed9a42e4730c715bf7047c81ed3a571225f92a33ef0b6d65f35595bc32d773356646df2627da55e9bc7f1f1a'
             'SKIP'
-            'd819c86f3fe93ee1d083fdce954ae06a683a22e8b0864da170714c5230c4c2fdecc29270194b1ad8a715b836b493141c8ff2c09e76a84426b7a89ebc31fb9e01'
+            '230ab118639d19b7a473e75f5463ea9add3db8cb70fe3ba546e053fc1bd32b1d353eb1c107f5467e5f24a26c43c623cf79cf8d5a5cef85613e4da989a6c0326a'
             'SKIP'
-            '8894497ea625a2f9a553074879dcb06ddcb789c7aa9006a8d3f2961e364104c67ac81e198b7b9c9f105b6d4c6cbdd3e89ecb089b3946acc8cdba2c24e40efd40'
+            '00414d8cbdfc4e8f676319469b198e2b0b2cbb25c286613fbd426aade501e591cbc7bb1a1c7729942183487e9585240a9886b2a05c0225d4237e3037f8a041ec'
             'SKIP'
-            '95a7b9dc5a6c378b19e199285b5c1c397ca0ca0cf03c42d185b57da68329e59d59294d1879998f4020a0dee10d36c550acf30f28970c82adb2e7604c86424178'
-            'dc0649dfe2a5ce8e8879a62df29a4a1959eb1a84e5d896a9cb119d6a85a9bad1b17135371799e0be96532e17c66043d298e4a14b18fad3078a1f425108f888c9'
-            '135afcffee2439e2260a71202658dce9ec5f555de3291b2d49a5cffdd953c6d7851b8a90e961576895555142a618e52220a7e4a46521ca4ba19d37df71887581'
-            '87ae76889ab84ced46c237374c124786551982f8ff7325102af9153aed1ab7be72bec4db1f7516426c5ee34c5ce17221679eb2f129c5cbdeec05c0d3cb7f785d'
+            '5709ec16030f372309c06020ab0cc23940cad320204ce12426b8b10b3bdbd9be25c8a7bae247ce341429e8a33d0097700a88149d54b29ff44a61d1d4aff66763'
+            '953566f2b74415cd5113882352c8518234c399e0e0a6cc118ddfa259c65d6fc30de00f25b605489d53e0b1f948bc7b3ebf8f20b970538f5bf7de5a7f33a0f641'
+            '8fed8499a52d685e81a1cffac7e6764a3720a923c3a3e4ccec33a4b0145dc84c24172363ff5574608d80c10462a4e824ef1b5ad3e5e5187f816e16adab774700'
+            '93338e0ae23d2832e4dc75b1b4dc6d2ba34d621a71c7951f1e70ddd483d091211b2aa429683b21a7f9cf2152e2d974b6a1a8cc7b0d6549a7f639870b07f5295e'
             'ab781ca0315316043d2074ad925288616ff4935e0c91b09090cd2a2cc392845eddf1c93b5dadda0eb434050459b51a4e2587e5099e6a9204d0d13b7f427d399c'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
-            '4242c567ec4d59b5ef08c4a08f1ff9f921e7f68f263b4c03485f1e2789f85fab2dc17c1d1188f1465059263261a2253583a728e450d91f55d32845c75174e209'
-            '80a08d20676d10b0286a7b2b356ef8014e3eb26182a058f804cd0fd24da8cd9ed5d3df77c81fb1a938848c5f07c6ff5013f23b92ff2b3e9a3727bbe406bc8c4a'
+            'e7c8fd3dd50272518323ac5f27e7e911e8138dbe1268865b5cc343e1c84d531e91d3581cd11df9513952d02e213e916d0c28ecd19acf2660519fc040dfaabb94'
+            '7a0a6eb4a2f0c4a981104ff4d09ff1a4ad75c9dc47d27276e0971b9fa16aeb208cb2c4158c491e8d067bf5f7f6c33ebd6826e18ad0d6203cac5711be453da93a'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'c53bd47527adbd2599a583e05a7d24f930dc4e86b1de017486588205ad6f262a51a4551593bc7a1218c96541ea073ea03b770278d947b1cd0d2801311fcc80e5'
-            '002d5e0ccfa5824c1750912a6400ff722672d6587b74ba66b1127cf1228048f604bba107617cf4f4477884039af4d4d196cf1b74cefe43b0bddc82270f11940d'
-            'da8d68ebdc95382e286e660765d861cee75fb3796bd08a034ad5add4bb01bf5a1d4ebb7e4ca537661568341698c9e3068a11951952d9ef7d03ecdb8273f90df6')
+            '002d5e0ccfa5824c1750912a6400ff722672d6587b74ba66b1127cf1228048f604bba107617cf4f4477884039af4d4d196cf1b74cefe43b0bddc82270f11940d')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
