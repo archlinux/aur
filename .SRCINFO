@@ -1,6 +1,6 @@
 pkgbase = octoprint-venv
 	pkgdesc = The snappy snappy web interface for your 3D printer! (virtualenv installation type)
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = http://octoprint.org/
 	install = octoprint.install
@@ -11,9 +11,9 @@ pkgbase = octoprint-venv
 	optdepends = mjpg-streamer: stream images from webcam
 	provides = octoprint
 	conflicts = octoprint
-	source = https://github.com/foosel/OctoPrint/archive/1.3.0.tar.gz
+	source = https://github.com/foosel/OctoPrint/archive/1.3.1.tar.gz
 	source = octoprint.service
-	sha256sums = bb411acd719176a222cacbf5ce66b80686eef43ee56ead312ffa719df1c5f44b
+	sha256sums = 791c18173c00a5858378d8f2295d8e947695e0e81e88629ee4132ae64594ffcb
 	sha256sums = 7f7aa02075901d7501a03bda082f050ba5862e58034f0216b5a76d2a25135d3a
 
 pkgname = octoprint-venv
