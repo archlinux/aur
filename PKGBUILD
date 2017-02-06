@@ -1,7 +1,7 @@
 # Maintainer: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
 
 pkgname=tensorflow
-pkgver=1.0.0+rc0
+pkgver=1.0.0+rc1
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
@@ -12,7 +12,7 @@ conflicts=('tensorflow' 'libtensorflow')
 makedepends=('git' 'bazel' 'python-numpy')
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
-_commit=0174cb2541b540653859399491ff9c2192a3d29d
+_commit=114a4627cb4b05dacb3228d5815a8dac30ddb07a
 source=("git+https://github.com/tensorflow/tensorflow#commit=$_commit")
 md5sums=('SKIP')
 
@@ -51,7 +51,7 @@ prepare() {
   # disable OpenCL support
   export TF_NEED_OPENCL=0
   # disable XLA JIT compiler
-  export TF_ENABLE_XLA=0
+  export TF_ENABLE_XLA=1
   # enable jemalloc support
   export TF_NEED_JEMALLOC=1
   # set up architecture dependent optimization flags
