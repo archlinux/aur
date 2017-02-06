@@ -3,14 +3,14 @@
 
 pkgname=tlf-git
 _pkgname=tlf
-pkgver=1.2.4.5.r23.g325f223
-#.r23.g325f223
+pkgver=1.2.4.5.r32.g465413d
+#.r32.g465413d
 pkgrel=1
 pkgdesc="a console mode networked logging and contest program for hamradio"
 arch=('i686' 'x86_64')
 url="https://tlf.github.com/"
 license=('GPL')
-depends=('hamlib')
+depends=('hamlib' 'hamradio-menus')
 makedepends=('autoconf' 'automake' 'pkg-config')
 optdepends=('cwdaemon: transmitting cw'
 	    'cty: country files'
@@ -21,9 +21,7 @@ optdepends=('cwdaemon: transmitting cw'
 provides=('tlf')
 conflicts=('tlf')
 source=("$_pkgname::git+https://github.com/Tlf/tlf.git#branch=master"
-#https://github.com/Tlf/tlf/archive/$pkgname-$pkgver.tar.gz
 #        http://sharon.esrac.ele.tue.nl/pub/linux/ham/tlf/nrau
-	diff.ax.curses.panel.h
         $_pkgname.desktop
 	$_pkgname.png
         $_pkgname.1)
@@ -31,12 +29,6 @@ source=("$_pkgname::git+https://github.com/Tlf/tlf.git#branch=master"
 pkgver() {
 	cd $_pkgname
 	git describe --long --tags | sed 's/^tlf-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd "$srcdir/$_pkgname"
-
-	patch -p0 < ../diff.ax.curses.panel.h
 }
 
 build() {
@@ -64,12 +56,10 @@ package() {
 	install -D -m 644 ../$_pkgname.desktop $pkgdir/usr/share/applications
 }
 md5sums=('SKIP'
-         '9c5d7a5ded56d42403150c91fa5f873b'
          'b83cca73cea288ed139993efceb245b5'
          'f148583e02660cb430f638fd8f71f452'
          'b706428f41d32bd5f4f6f671057638c0')
 sha256sums=('SKIP'
-            'b5a9f130e1342ba6da068320630eaaa4f5146689bd74b610608a75b7e7170c07'
             'cc7b5bcf825ea342d126a54a778c4f837ea0da4a12101383f99282041eb5d574'
             '0ddcde4f0dfa98540d4314660108ed49bfa0bc3d8b87cb46906dfd6f12be2497'
             '766253a6f4b1d7e0526366875a46e220d637665c3c44e551f8d3db4ed88aaf81')
