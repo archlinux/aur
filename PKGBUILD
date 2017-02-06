@@ -14,10 +14,10 @@
 pkgname=atom-editor-beta-bin-mirror
 pkgver=1.14.0.beta4
 pkgver() {
-  curl -sS https://github.com/atom/atom/releases.atom | grep -Eo 'v.*?beta([0-9]+)' | head -n 1 | sed -e 's/-/./' -e 's/v//'
+  curl -sS https://npm.taobao.org/mirrors/atom | grep -Eo '>.*?beta([0-9]+)' | sort -V | tail -n 1 | sed -e 's/>//' -e 's/-/./'
 }
 get_version() {
-   printf "%s" $(pkgver) | sed -e 's/\(.*\)\.beta/v\1-beta/'
+   printf "%s" $(pkgver) | sed -e 's/\(.*\)\.beta/\1-beta/'
 }
 pkgrel=1
 pkgdesc="Chrome-based text editor from Github - Beta Channel - Precompiled binary from official repository - Use source mirror host by npm.taobao.org in China"
@@ -33,7 +33,7 @@ install=$pkgname.install
 md5sums=('SKIP'
          '501719c940fcd9c3d82fb8edebdaae09'
          'b05aef80afa76162ff9a1992cef3f0f9')
-source=("atom-amd64-$(get_version).deb::https://atom-installer.github.com/$(get_version)/atom-amd64.deb"
+source=("atom-amd64-$(get_version).deb::https://npm.taobao.org/mirrors/atom/$(get_version)/atom-amd64.deb"
          atom-python.patch
          startupwmclass.patch)
 
