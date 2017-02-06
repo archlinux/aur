@@ -1,6 +1,6 @@
 pkgname=mingw-w64-opencv
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Computer Vision Library (mingw-w64)"
 arch=('any')
 license=('BSD')
