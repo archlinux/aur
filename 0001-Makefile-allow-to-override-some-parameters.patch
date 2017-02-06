@@ -1,0 +1,45 @@
+From 2b08b8d257f7778bb63d16fdc59a75731cbe7542 Mon Sep 17 00:00:00 2001
+From: Nicola Murino <nicola.murino@gmail.com>
+Date: Mon, 6 Feb 2017 16:06:14 +0100
+Subject: [PATCH] Makefile: allow to override some parameters
+
+---
+ Makefile | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index a1595a8..529ff40 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,14 +1,14 @@
+ VERSION=v2.4
+ 
+-prefix=/usr/local
++prefix?=/usr/local
+ 
+-CC=$(CROSS_COMPILE)gcc
+-LD=$(CROSS_COMPILE)ld
++CC?=$(CROSS_COMPILE)gcc
++LD?=$(CROSS_COMPILE)ld
+ 
+-SYS=posix
++SYS?=posix
+ #SYS=mingw
+ 
+-CRYPTO=OPENSSL
++CRYPTO?=OPENSSL
+ #CRYPTO=POLARSSL
+ #CRYPTO=GNUTLS
+ LIBZ=-lz
+@@ -25,7 +25,7 @@ CFLAGS=-Wall $(XCFLAGS) $(INC) $(DEF) $(OPT)
+ LDFLAGS=-Wall $(XLDFLAGS)
+ 
+ bindir=$(prefix)/bin
+-sbindir=$(prefix)/sbin
++sbindir=$(prefix)/bin
+ mandir=$(prefix)/man
+ 
+ BINDIR=$(DESTDIR)$(bindir)
+-- 
+2.11.0
+
