@@ -2,23 +2,23 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=php-sqlsrv
-pkgver=4.0.8
+pkgver=4.1.6
 pkgrel=1
-pkgdesc="Microsoft Drivers for PHP for SQL Server PHP 7 Linux"
+pkgdesc="Microsoft Drivers for PHP for SQL Server"
 arch=('i686' 'x86_64')
-url="https://github.com/Microsoft/msphpsql/tree/PHP-7.0-Linux"
+url="https://github.com/Microsoft/msphpsql"
 license=('MIT')
 depends=('php' 'msodbcsql')
-source=("https://github.com/Microsoft/msphpsql/archive/$pkgver-Linux/$pkgname-$pkgver.tar.gz")
-sha256sums=('09d6c0328111f47a85098441ae51a39409f2a7cf283e982eb0b73fe284a1e4d9')
+source=("https://github.com/Microsoft/msphpsql/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('b4fbc2ac04090e016c2ee168622213cc4dde99f3f82a6b88608fee6dd1a54d0b')
 backup=('etc/php/conf.d/sqlsrv.ini')
 
 build() {
-	cd "$srcdir"/msphpsql-$pkgver-Linux/source
+	cd "$srcdir"/msphpsql-$pkgver/source
 	sh packagize.sh
 
 	for ext in sqlsrv pdo_sqlsrv; do
-		cd "$srcdir"/msphpsql-$pkgver-Linux/source/$ext
+		cd "$srcdir"/msphpsql-$pkgver/source/$ext
 		phpize
 		./configure --prefix=/usr
 		make
@@ -27,7 +27,7 @@ build() {
 
 package() {
 	for ext in sqlsrv pdo_sqlsrv; do
-		cd "$srcdir"/msphpsql-$pkgver-Linux/source/$ext
+		cd "$srcdir"/msphpsql-$pkgver/source/$ext
 		make INSTALL_ROOT="$pkgdir" install
 	done
 
@@ -36,5 +36,5 @@ package() {
 	install -dm0755 etc/php/conf.d/
 	echo -e "extension=sqlsrv.so\nextension=pdo_sqlsrv.so" > etc/php/conf.d/sqlsrv.ini
 
-	install -Dm0644 "$srcdir"/msphpsql-$pkgver-Linux/LICENSE usr/share/licenses/$pkgname/LICENSE
+	install -Dm0644 "$srcdir"/msphpsql-$pkgver/LICENSE usr/share/licenses/$pkgname/LICENSE
 }
