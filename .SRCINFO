@@ -1,14 +1,14 @@
 pkgbase = phpqa
 	pkgdesc = PHPQA all-in-one Analyzer CLI tool.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/jmolivas/phpqa
 	arch = any
 	license = MIT
 	makedepends = php-composer
 	depends = php
-	source = phpqa-0.2.0::https://github.com/jmolivas/phpqa/archive/0.2.0.tar.gz
-	md5sums = f2c424045c703d36774e0fd796fb67b2
+	source = phpqa-0.3.0::https://github.com/jmolivas/phpqa/archive/0.3.0.tar.gz
+	md5sums = 6e5fbf3ecd7972a070c10e2ecace3218
 
 pkgname = phpqa
 
