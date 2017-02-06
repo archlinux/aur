@@ -29,10 +29,10 @@ source=("https://github.com/TheTorProject/gettorbrowser/releases/download/v${pkg
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}.sh")
-sha256sums=('c4714061748a70d3871dd84ff88d2f317b386d290a5c1fb94a504a1c256f1960' 'SKIP'
-            '3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7'
-            '17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
-            '1bca06dc844f000fd5aae91a082f0cc0f8ca3397dfbf88b0adc847a4e43e1f16')
+sha512sums=('39ff459b2e2ef0a5b2ca22c48aadb7277566a2b863ae8995446beff074f5dc959d6fcd72dc359877b7a160e2ec7a9e6230956cb088317d0a9c88aa5c52d62025' 'SKIP'
+            'ea785893bfec7e5d0c5caf6f73a119950f12751cec39186bb2335f410f30e207f43f7bc0bb9bac583d811d21e91157fd76dbdd6c6256ff680c065f477b8bb486'
+            '0a68a0a8cfeea630a91036d86b167cf640ab378e64e0d8ab55e9f99cde3c9d6a2d762ea0f5528f8a8e1579600fcc59eaa72ba499d95daeb4334e81ab644bfb02'
+            '87ceaa0fc03e43bd5cd591514ca9f5ad583982a80607180c8e3633ceb76de8a39e49fe37eb7f407e1e4c24ac4e6954b328699cbd714884bd80b6a0ef243e0946')
 noextract=("tor-browser-linux64-${pkgver}_${_language}.tar.xz")
 
 package() {
