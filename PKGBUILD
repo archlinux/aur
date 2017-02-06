@@ -2,14 +2,14 @@
 
 pkgname=mingw-w64-curl
 pkgver=7.52.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An URL retrival utility and library (mingw-w64)"
 arch=('any')
 url="http://curl.haxx.se"
 license=("MIT")
 depends=('mingw-w64-crt'
          'mingw-w64-gnutls'
-         'mingw-w64-libidn'
+         'mingw-w64-libidn2'
          'mingw-w64-libssh2'
          'mingw-w64-openssl'
          'mingw-w64-zlib')
