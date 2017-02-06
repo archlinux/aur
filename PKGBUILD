@@ -9,7 +9,7 @@
 
 pkgbase=linux-libre-nand         # Build stock kernel
 _pkgbasever=4.9-gnu
-_pkgver=4.9.5-gnu
+_pkgver=4.9.8-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -46,7 +46,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch')
 sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP'
-            'eef05ff60088fd4389c5eefa80b22e97fd178702fb226ff3a4aed6892ce4df6ae002c2c9e9d5838a17328c25fef14fcecb054e203b556b3a08f84e80de4777c2'
+            'e45e13db95ccffd05bade455be1a5fb5379de1c1a414288c7361f6509eade15358a1ab08764276e6fadad482e71e4b3453380b48583e2212a41256454c97fd21'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -54,8 +54,8 @@ sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca4
             'SKIP'
             '7a3716bfe3b9f546da309c7492f3e08f8f506813afeb1c737a474c83313d5c313cf4582b65215c2cfce3b74d9d1021c96e8badafe8f6e5b01fe28d2b5c61ae78'
             'SKIP'
-            '1c0ec093b08f921a6771daa44f6849a78194a44258f3ea1da48b466d84da8b2c37e75140aff0dcdc3d3b61149397e4085aff295cf04be1a92b9335ae42760e6a'
-            'e45cd5605c76c6cfed3ece210365bcab59f39286e70aaf0799a6035de035176d12f7ff0ce80f4faef77a0bffdb4892f0ae326307bf4a41cb0e8aa542e0a7ef86'
+            '644af5a9e4f12c6ce48d6eb60de1e83eab4833ffb3eae258a28611218ddf6ae9304c7c1095aabafb3107333f29af1072008aa52b0f554c0c9c3bcd315f36d3bc'
+            'd40eeba8b722e3a38e2a124eb8be6abdeb37a6b959a305460b1586a59f00216828233f030feb8e4f4ff1b16df9eb16b3540441aee180a1490d5fbda85022a47a'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
