@@ -7,13 +7,12 @@ pkgbase = jabref-mirror
 	license = MIT
 	depends = java-runtime>=8
 	optdepends = gsettings-desktop-schemas: For web search support
+	conflicts = jabref
 	noextract = JabRef-3.8.2.jar
 	source = http://jabref.oss-cn-shanghai.aliyuncs.com/JabRef-3.8.2.jar
-	source = https://raw.githubusercontent.com/JabRef/jabref/master/LICENSE.md
 	source = jabref.sh
 	source = jabref.desktop
 	sha256sums = f7226e9eb64f96ef2d179c4b1f9e9bcd7a630d247f2feb0ecaa243408379720a
-	sha256sums = 19f74c294c572a431e0fadc00671aa5ca77149f8d0572fc01d5944eba06b0c6c
 	sha256sums = d5d31399586f0d76f0e408620a2d868e5c830708d350385a2281bc2138ecd607
 	sha256sums = f958793f6e408bab7db84973169b30ed61077112d3f552dbcc9f068847317602
 
