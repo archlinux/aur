@@ -1,0 +1,14 @@
+pkgbase = ttf-lazenby-computer
+	pkgdesc = Lazenby Computer TTF font by Andrew Young, Disaster Fonts
+	pkgver = 1
+	pkgrel = 1
+	url = http://disasterfonts.co.uk
+	arch = any
+	license = CC BY-SA 4.0
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://disasterfonts.co.uk/dl/lazenbycomputer.zip
+	md5sums = da083557fe4ab421cdb5c336a4ad1c53
+
+pkgname = ttf-lazenby-computer
+
