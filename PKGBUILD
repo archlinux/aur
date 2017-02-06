@@ -29,8 +29,6 @@ build() {
   cd "${srcdir}/build"
   QGpgme_DIR=/usr/lib/cmake/Gpgmepp/ cmake "${srcdir}/kube" \
     -DENABLE_TESTING=OFF \
-    -DCMAKE_C_COMPILER=/usr/bin/clang \
-    -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DLIB_INSTALL_DIR=lib \
