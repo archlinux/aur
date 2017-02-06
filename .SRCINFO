@@ -1,0 +1,25 @@
+pkgbase = wxpython2.8
+	pkgdesc = A wxWidgets GUI toolkit for Python
+	pkgver = 2.8.12.1
+	pkgrel = 3
+	url = http://www.wxpython.org
+	install = wxpython2.8.install
+	arch = i686
+	arch = x86_64
+	license = custom:wxWindows
+	makedepends = mesa
+	makedepends = glu
+	depends = wxgtk2.8
+	depends = wxpython
+	depends = python2
+	source = http://downloads.sourceforge.net/wxpython/wxPython-src-2.8.12.1.tar.bz2
+	source = wxGTK-collision.patch
+	source = wxpython-cairo.patch
+	source = wxpython-fpb_default_style.patch
+	sha256sums = 1f3f153d9f1504c6ce2d2c4b23e940b8f58b81f4cba35cda1a5bb31142243cd0
+	sha256sums = e5e2af0d0649ddfcb401b4dd32362b41dc1b49fdb4d3974b39700f7d811f09f3
+	sha256sums = b2c8870336c4215646c760f9ae9c2a5ede9c9e4d6cb29f1a5763a4240db87f74
+	sha256sums = 57729f843d589c4890fd5f2fddb48e1d2f4a09d609188b4a744554daf0b2b246
+
+pkgname = wxpython2.8
+
