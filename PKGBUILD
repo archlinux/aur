@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 makedepends=('gtk2' 'pangomm' 'atkmm' 'glibmm-docs')
 license=('LGPL')
 options=('!emptydirs')
-url="http://www.gtkmm.org/"
-source=(http://ftp.gnome.org/pub/GNOME/sources/${pkgbase}/2.24/${pkgbase}-${pkgver}.tar.xz)
+url="https://www.gtkmm.org/"
+source=(https://ftp.gnome.org/pub/GNOME/sources/${pkgbase}/2.24/${pkgbase}-${pkgver}.tar.xz)
 sha256sums=('0680a53b7bf90b4e4bf444d1d89e6df41c777e0bacc96e9c09fc4dd2f5fe6b72')
 
 build() {
