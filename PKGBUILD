@@ -2,7 +2,8 @@
 
 pkgname=zesarux-git
 
-pkgver=r2603.eefcb12
+pkgver=r4518.3ebacc46
+_ver=4.3
 pkgrel=1
 pkgdesc="A Zx80/Zx81/Z88, Zx Spectrum 16/48/128/+2/+2A and ZX-Uno emulator with ULAPlus support. WARNING. This is a Snapshot version and not a stable one. Some features may not work or suffer random crashes or abnormal CPU use"
 arch=('i686' 'x86_64')
@@ -29,7 +30,8 @@ pkgver() {
 build() {
 	cd "$srcdir/zesarux-code"
 	./configure --prefix /usr --disable-caca --disable-aa
-	make
+	sed -i 's/tar -C/#tar -C/g' Makefile
+	make bintargz
 }
 package(){
 	if [  ! -d "${pkgdir}/usr" ]; then
@@ -38,13 +40,6 @@ package(){
 	fi
 	cd ${srcdir}/zesarux-code
 	cp zesarux "${pkgdir}/usr/bin/"
-	cp *.rom zxuno.flash *.mmc ${pkgdir}/usr/share/zesarux/
-	cp mantransfev3.bin ${pkgdir}/usr/share/zesarux/
-	
-	#cp -r festival_speech_filters ${pkgdir}/usr/share/zesarux/
-	cp -r tapes_snaps_eproms ${pkgdir}/usr/share/zesarux/
-	cp ACKNOWLEDGEMENTS Changelog HISTORY LICENSE README FEATURES ALTERNATEROMS INCLUDEDTAPES FAQ ${pkgdir}/usr/share/zesarux/
-	find ${pkgdir}/usr/share/zesarux/ -type f -print0| xargs -0 chmod 444
-	#chmod +x ${pkgdir}/usr/share/zesarux/macos_say_filter.sh
-	#chmod +x ${pkgdir}/usr/share/zesarux/festival_speech_filters/*
+	cp bintargztemp/ZEsarUX-${_ver}/* -r "${pkgdir}/usr/share/zesarux/"
+	rm "${pkgdir}/usr/share/zesarux/zesarux"
 }
