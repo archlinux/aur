@@ -1,41 +1,38 @@
 pkgname=libepoxy-git
 _name=libepoxy
-pkgver=1.2.25.r229.ga2a5190
+pkgver=1.4.0.r0.g9628670
 pkgrel=1
 pkgdesc="Epoxy is a library for handling OpenGL function pointer management for you"
 url="https://github.com/anholt/libepoxy"
 arch=('i686' 'x86_64')
 license=('BSD')
-depends=() # ???
-makedepends=("xorg-util-macros" "libx11" "python" "git")
+makedepends=("xorg-util-macros" "libx11" "python" "git" "meson")
 provides=("libepoxy")
 conflicts=("libepoxy")
-options=('!libtool')
 source=("git+https://github.com/anholt/libepoxy.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd $_name
-  #echo $(git rev-list --count HEAD).$(git describe --tags --long | tr -d v | tr - .)
-  echo $(git describe --long --tags | cut -d 'g' -f1)r$(git rev-list HEAD --count).g$(git describe --always) | tr -d v | tr - .
+
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  #  export CFLAGS="-Og -ggdb"
-  #  export CXXFLAGS="-Og -ggdb"
   cd "$_name"
 
-    ./autogen.sh --prefix=/usr
-    #./configure --prefix=/usr
+  rm -rf _build
+  meson _build --buildtype=release --prefix=/usr
+  ninja -C _build
 }
 
 #check() {
-#  cd "$_name"
-#  make -k check
+#  cd "$_name/_build"
+#
+#  ninja test
 #}
 
 package() {
-  cd "$_name"
-  make DESTDIR="$pkgdir" install
+  cd "$_name/_build"
+  env DESTDIR="$pkgdir" ninja install
 }
-
-md5sums=('SKIP')
