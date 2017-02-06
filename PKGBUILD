@@ -1,11 +1,11 @@
-# Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
+# Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=freeorion
 pkgver=0.4.6
 pkgrel=1
 pkgdesc="turn-based space empire and galactic conquest (4X) computer game"
+url="http://www.freeorion.org/"
 arch=('i686' 'x86_64')
-url="https://github.com/freeorion/freeorion/"
 license=('GPL2')
 depends=('boost-libs' 'python2' 'sdl2' 'libvorbis' 'glew' 'libtiff' 'libjpeg-turbo' 'openal' 'hicolor-icon-theme' 'freetype2')
 makedepends=('boost' 'cmake')
