@@ -1,12 +1,12 @@
 # Maintainer: Camden Cheek <ccheek22@gmail.com>
 pkgname='python-adb-git'
 pkgver=r65.fb09de9
-pkgrel=9
+pkgrel=10
 pkgdesc="Python ADB + Fastboot implementation"
 arch=('any')
 url="https://github.com/google/python-adb.git"
 license=('apachev2')
-depends=('libusb>=1.0.16' 'python-libusb1>=1.2.0' 'python-rsa>=3.4')
+depends=('libusb>=1.0.16' 'python-libusb1>=1.2.0' 'python-rsa>=3.4' 'python-pyasn1>=0.1.9')
 makedepends=('git' 'python>=3.6')
 provides=()
 conflicts=()
