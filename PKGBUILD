@@ -1,7 +1,7 @@
 # Maintainer: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
 
 pkgname=moolticute
-pkgver=0.5.2
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="Easy companion for Mooltipass device"
 arch=('x86_64' 'i686')
@@ -16,12 +16,8 @@ makedepends=('make')
 checkdepends=()
 optdepends=()
 
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}-beta.tar.gz"
-        '69-mooltipass.rules'
-        'moolticute.service')
-sha256sums=('a22d4078870da77affb67c7eae2d2cc426ec799a0928f494df32ab995431fe8a'
-           'e8e8da3f29d27e34a9f41b23ba04b74dbf25bcc7d586e5b6d2ee72bade889503'
-           '135d7dda3698872745bec79fa2ee7a964fa2fbc90f90d1d57e034bc0104ce13a')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}-beta.tar.gz")
+sha256sums=('7ea66a6c38822020136bae7aaa841812f9532dbfef5334f06806a1c642958d5e')
 
 build() {
 	cd "${pkgname}-${pkgver}-beta"
@@ -41,8 +37,4 @@ package() {
 	cd "${pkgname}-${pkgver}-beta/build/"
 
 	make INSTALL_ROOT="${pkgdir}/" install
-        install -Dm644 "${srcdir}/69-mooltipass.rules" \
-                "${pkgdir}/usr/lib/udev/rules.d/69-mooltipass.rules"
-        install -Dm644 "${srcdir}/moolticute.service" \
-                "${pkgdir}/usr/lib/systemd/user/moolticute.service"
 }
