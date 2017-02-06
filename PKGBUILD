@@ -8,7 +8,7 @@
 
 pkgname=redshift-wayland-git
 pkgver=1.11.r26.g295c8fa
-pkgrel=1
+pkgrel=2
 pkgdesc="Adjusts the color temperature of your screen according to your surroundings with Wayland support. (development version)"
 arch=('i686' 'x86_64')
 url='https://github.com/Lourens-Rich/redshift'
@@ -16,6 +16,7 @@ license=('GPL3')
 provides=('redshift' 'redshift-sway-git')
 conflicts=('redshift' 'redshift-sway-git')
 depends=('geoclue2' 'libdrm' 'libxcb' 'libxxf86vm')
+replaces=('redshift-sway-git')
 optdepends=('python-gobject: for redshift-gtk'
             'python-xdg: for redshift-gtk'
             'librsvg: for redshift-gtk'
