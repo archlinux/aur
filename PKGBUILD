@@ -1,3 +1,4 @@
+# Maintainer: Julie Palmer <julie (dot) palmer [at] yandex (dot) com>
 # Maintainer: Jason S. Wagner <jason at jasonswagner dot com>
 # To import the GPG key, run: gpg --recv-keys 0x28D618AF --keyserver hkp://keys.gnupg.net
 
