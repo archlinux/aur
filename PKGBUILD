@@ -3,17 +3,16 @@
 # Contributor: SirClueless
 
 pkgname=libtcod-hg
-pkgver=r291.4f2954a3b05c
+pkgver=r423.f164d6bb25a4
 pkgrel=1
 pkgdesc="Roguelike graphics/utility library. Development version."
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/libtcod/libtcod"
 license=('BSD')
-depends=('libpng' 'sdl' 'glu')
+depends=('sdl2')
 makedepends=('mercurial')
 provides=("${pkgname%-hg}")
 conflicts=("${pkgname%-hg}")
-options=(!makeflags)
 source=("hg+https://bitbucket.org/${pkgname%-hg}/${pkgname%-hg}")
 md5sums=('SKIP')
 
@@ -23,19 +22,18 @@ pkgver() {
 }
 
 build() {
-   cd "$srcdir/${pkgname%-hg}" 
-
-   make -f build/makefile-linux clean release TEMP=$srcdir/tmp
+   cd "$srcdir/${pkgname%-hg}/build/autotools"
+   autoreconf -i
+   ./configure --prefix=/usr
+   make
 }
 
 package() {
-   mkdir -p $pkgdir/usr/lib
-   mkdir -p $pkgdir/usr/include/$pkgname
-
-   cd "$srcdir/${pkgname%-hg}" 
+   cd "$srcdir/${pkgname%-hg}/build/autotools"
+   make DESTDIR="$pkgdir" install
    
-   install -D -m 644 libtcod{,gui,xx}.so $pkgdir/usr/lib/
-   install -D -m 644 include/*.h* $pkgdir/usr/include/$pkgname/
+   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+   cp "$srcdir/${pkgname%-hg}/LIBTCOD-LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
