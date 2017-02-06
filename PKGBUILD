@@ -3,7 +3,7 @@ pkgname=cliqz
 _pkgname=browser-f
 _vendorname=CLIQZ
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox-based privacy aware web browser"
 arch=('i686' 'x86_64')
 url="https://cliqz.com/"
@@ -18,7 +18,7 @@ source=("https://github.com/cliqz-oss/browser-f/archive/${pkgver}.tar.gz"
         "mozconfig"
         "cliqz"
         "firefox-50.1.0-configure-regexp.patch")
-sha256sums=('e8871ce4ae90fcdf22e0f949982e1270753480ab013c3da9882b6c653f02323e'
+sha256sums=('a9daa346c4317421b038ebf3e0d96a2bffac2c2886866133fb64439830c63674'
             'ebb68a51d1289f53e1adb9501d4309db9a0cc73d6eb8da6dc86143f0879b6fc7'
             'cd07bf42ad08a626250572890f1a038a85bc7715637371b23c11b39690ab9c7a'
             'f746874e84217ce6a7ddf9f8aacdb2e70845db0ba7a5b54134fd0ed4221c7723')
