@@ -22,7 +22,7 @@ build() {
   cd "$_name"
 
   rm -rf _build
-  meson _build --buildtype=release --prefix=/usr
+  meson _build --buildtype=release --prefix=/usr --libdir=/usr/lib
   ninja -C _build
 }
 
