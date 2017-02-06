@@ -22,9 +22,9 @@ package() {
     cp larryascii $pkgdir/usr/share/larryshell/
     cp larry.cow $pkgdir/usr/share/larryshell/
 
-    if [ -f /etc/shells ] && [ -z `grep /etc/shells /usr/bin/larryshell` ]
+    if [ -f /etc/shells ] && [ -z `grep /usr/bin/larryshell /etc/shells` ]
     then
-        if [ -z `grep /etc/shells /bin/sh` ]
+        if [ -z `grep /bin/sh /etc/shells` ]
         then
             sed -i'' -e 's/\(\/bin\/sh\)/\1\n\/usr\/bin\/larryshell/' /etc/shells
         else
