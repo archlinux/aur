@@ -2,7 +2,7 @@
 
 pkgname=yabar-git
 _pkgname=yabar
-pkgver=0.4.0.79.gd606a5a
+pkgver=0.4.0.r79.gd606a5a
 pkgrel=1
 pkgdesc="A modern and lightweight status bar for X window managers"
 arch=('i686' 'x86_64')
