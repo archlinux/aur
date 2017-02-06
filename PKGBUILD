@@ -5,19 +5,19 @@
 
 pkgname=xf86-input-evdev1.12
 _pkgname=xf86-input-evdev
-pkgver=2.10.1
+pkgver=2.10.5
 pkgrel=1
 pkgdesc="X.org evdev input driver"
 arch=(i686 x86_64)
 url="http://xorg.freedesktop.org/"
 license=('custom')
-depends=('glibc' 'systemd' 'mtdev' 'libevdev')
-makedepends=('xorg-server-devel>=1.12.0' 'xorg-server-devel<1.12.99' 'resourceproto' 'scrnsaverproto')
+depends=('glibc' 'libsystemd' 'mtdev' 'libevdev')
+makedepends=('xorg-server-devel>=1.12.0' 'xorg-server-devel<1.12.99' 'resourceproto' 'scrnsaverproto' 'systemd')
 conflicts=('xorg-server<1.12.0' 'xorg-server>=1.12.99' 'xf86-input-evdev' 'X-ABI-XINPUT_VERSION<16' 'X-ABI-XINPUT_VERSION>=17')
 provides=("$_pkgname=$pkgver")
 options=('!makeflags')
 source=(${url}/releases/individual/driver/${_pkgname}-${pkgver}.tar.bz2)
-sha256sums=('af9c2b47f5b272ae56b45da6bd84610fc9a3d80a4b32c8215842a39d862de017')
+sha256sums=('9edaa6205baf6d2922cc4db3d8e54a7e7773b5f733b0ae90f6be7725f983b70d')
 
 build() {
   cd ${_pkgname}-${pkgver}
