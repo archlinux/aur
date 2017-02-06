@@ -1,7 +1,7 @@
 # Maintainer: Frantisek Fladung <ametisf@gmail.com>
 
 pkgname=velox-ametisf-git
-pkgver=0.0.2.r290.g81721e4
+pkgver=0.0.2.r303.gdc24cb0
 pkgrel=1
 pkgdesc="Ametisf's fork of velox."
 arch=('i686' 'x86_64')
@@ -22,12 +22,7 @@ pkgver() {
 
 build() {
     cd $pkgname
-    cat > config.mk << EOF
-PREFIX = /usr
-LIBEXECDIR = /usr/lib
-V = 1
-EOF
-    make
+    make ENABLE_DEBUG=0
 }
 
 package() {
