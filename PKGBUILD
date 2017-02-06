@@ -1,7 +1,7 @@
 # Maintainer: Igor <f2404@yandex.ru>
 _pkgname=xfce4-terminal
 pkgname=xfce4-terminal-git
-pkgver=0.8.3.r1.g8466eaf
+pkgver=0.8.4.r1.g692495c
 pkgrel=1
 pkgdesc="A modern terminal emulator primarily for the Xfce desktop environment - git checkout"
 arch=('i686' 'x86_64')
