@@ -3,18 +3,18 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=glom
-pkgver=1.30.4
-pkgrel=5
+pkgver=1.31.6
+pkgrel=1
 pkgdesc="An easy-to-use database designer and user interface"
 arch=('i686' 'x86_64')
-url="http://www.glom.org/"
+url="https://www.glom.org/"
 license=('GPL')
 depends=('gettext' 'boost-libs' 'libgdamm' 'libxml++' 'python-gobject'
          'libepc' 'goocanvasmm' 'gtksourceviewmm' 'evince' 'postgresql')
 makedepends=('intltool' 'python-sphinx' 'boost' 'itstool' 'libgda-postgres' 'libgda-mysql')
 changelog=$pkgname.changelog
-source=(http://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('789bffc96f4ca993970d5dad222f9aa58390292b01274d85c3db4f92105da169')
+source=(https://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
+sha256sums=('6c5bb163e66d487f979763c3ca3437b56322581872429f1fc3af95f11a2eace0')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
@@ -22,9 +22,9 @@ build() {
   ./configure \
     --prefix=/usr \
     --with-postgres-utils=/usr/bin \
-    --disable-scrollkeeper \
     --disable-update-mime-database \
     --disable-static
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
