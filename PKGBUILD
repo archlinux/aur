@@ -1,6 +1,6 @@
 # Maintainer: Ng Oon-Ee <ngoonee.talk@gmail.com>
 pkgname=beancount-fava-git
-pkgver=r1182.0d0a4aa
+pkgver=r1238.f17754c
 pkgrel=1
 pkgdesc=""
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	make build-js
+	make
     python setup.py build
 }
 
