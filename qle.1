@@ -1,11 +1,15 @@
 #!/bin/sh
-mkdir -p $HOME/qle
+mkdir -p $HOME/qle/backup
 cd $HOME/qle
+cp -a *.db backup/.
+cp -a config/ backup/
 cp -ua /usr/share/qle/* .
+rm -f COPYING INSTALL BUGS NEWS
+cp -a backup/* .
 if [ -f /usr/share/cty/cty.dat ]; then
-    cp -ua /usr/share/cty/cty.dat .
+ln -sf /usr/share/cty/cty.dat cty.dat
 fi
 if [ -f /usr/share/masterscp/MASTER.SCP ]; then
-    cp -ua /usr/share/masterscp/MASTER.SCP master.scp
+ln -sf /usr/share/masterscp/MASTER.SCP master.scp
 fi
 ./qle.sh
