@@ -3,14 +3,14 @@
 # Submitter: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=jabref-git
-pkgver=3.8.1_v_2.9.2.r6071.958c50f71
+pkgver=4.0.0_v_2.9.2.r6339.2e9e7c89f
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
 arch=('any')
 url="https://www.jabref.org"
 license=('MIT')
 depends=('java-environment>=8')
-makedepends=('git' 'java-environment=8')
+makedepends=('git' 'java-environment=8' 'java-openjfx')
 optdepends=('gsettings-desktop-schemas: For web search support')
 provides=('jabref')
 conflicts=('jabref')
