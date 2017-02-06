@@ -21,4 +21,14 @@ package() {
     cp larryshell-errors.txt $pkgdir/usr/share/larryshell/
     cp larryascii $pkgdir/usr/share/larryshell/
     cp larry.cow $pkgdir/usr/share/larryshell/
+
+    if [ -f /etc/shells ] && [ -z `grep /etc/shells /usr/bin/larryshell` ]
+    then
+        if [ -z `grep /etc/shells /bin/sh` ]
+        then
+            sed -i'' -e 's/\(\/bin\/sh\)/\1\n\/usr\/bin\/larryshell/' /etc/shells
+        else
+            echo "/usr/bin/larryshell" >> /etc/shells
+        fi
+    fi
 }
