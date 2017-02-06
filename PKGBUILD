@@ -6,7 +6,7 @@ pkgdesc="Widely used commercial NMR interpreter"
 arch=('any')
 url="https://www.mestrelab.com"
 license=('custom:mestrelab')
-depends=('lib32-libltdl' 'lib32-gcc-libs' 'lib32-openssl' 'lib32-zlib' 'lib32-mesa-libgl' 'lib32-glib2' 'lib32-fontconfig' 'lib32-libxrender' 'lib32-libxi' 'lib32-libsm' 'lib32-libglu-git')
+depends=('lib32-libltdl' 'lib32-gcc-libs' 'lib32-openssl' 'lib32-zlib' 'lib32-mesa-libgl' 'lib32-glib2' 'lib32-fontconfig' 'lib32-libxrender' 'lib32-libxi' 'lib32-libsm' 'lib32-glu')
 source=("http://mestrelab.com/downloads/mnova/linux/Debian/8/mestrenova_11.0.2-18153_i386.deb")
         
 md5sums=('ef2a171236c7bcb1044566c959ffa1ee')

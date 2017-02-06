@@ -15,7 +15,7 @@ pkgbase = mestrenova
 	depends = lib32-libxrender
 	depends = lib32-libxi
 	depends = lib32-libsm
-	depends = lib32-libglu-git
+	depends = lib32-glu
 	source = http://mestrelab.com/downloads/mnova/linux/Debian/8/mestrenova_11.0.2-18153_i386.deb
 	md5sums = ef2a171236c7bcb1044566c959ffa1ee
 
