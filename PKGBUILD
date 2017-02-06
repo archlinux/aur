@@ -1,7 +1,7 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=girl
-pkgver=9.7.1
+pkgver=9.8.0
 pkgrel=1
 pkgdesc="GNOME Internet Radio Locator"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=(GPL)
 depends=(gst-plugins-base-libs libgnomeui streamripper totem)
 makedepends=(gtk-doc intltool itstool)
 source=(https://download.gnome.org/sources/$pkgname/${pkgver:0:3}/$pkgname-$pkgver.tar.xz)
-sha256sums=('35cab81d5342b54d2c352d834c75aaea8b6bfbd6e6fe9a26b239a7d59c6f2af7')
+sha256sums=('c38b0a635e2bf7774af9302a4b180a39ca6fec5100abdaca56c8b24fed6fe9d6')
 
 build() {
   cd $pkgname-$pkgver
