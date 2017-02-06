@@ -1,0 +1,18 @@
+pkgbase = wuzz-git
+	pkgdesc = Interactive cli tool for HTTP inspection
+	pkgver = r30.884a634
+	pkgrel = 1
+	url = https://github.com/asciimoo/wuzz
+	arch = x86_64
+	arch = i686
+	license = AGPL3
+	makedepends = go
+	provides = wuzz
+	conflicts = wuzz
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/asciimoo/wuzz.git
+	sha256sums = SKIP
+
+pkgname = wuzz-git
+
