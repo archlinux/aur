@@ -6,18 +6,13 @@
 
 pkgname=opencv-java
 _pkgbase=opencv
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library - Java bindings"
 arch=('i686' 'x86_64')
 license=('BSD')
 url="http://opencv.org/"
 depends=(
-	'intel-tbb'
-	'openexr'
-	'xine-lib'
-	'libdc1394'
-	'gtkglext'
 	"opencv>=$pkgver"
 	)
 makedepends=(
@@ -36,12 +31,8 @@ optdepends=(
 # Sources and checksums section
 source=(
 	"${_pkgbase}-${pkgver}.tar.gz::https://github.com/Itseez/opencv/archive/$pkgver.tar.gz"
-	"5852.patch::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/5852.patch?h=packages/opencv"
-	"gcc6.patch::https://aur.archlinux.org/cgit/aur.git/plain/gcc6.patch?h=opencv2"
 	)
-md5sums=('70e1dd07f0aa06606f1bc0e3fa15abd3'
-         '5bd9cd736b171c15cedee3a32a0c47ff'
-         'b07ddc26e72d3ece0348870b076dbbc0')
+md5sums=('a43b65488124ba33dde195fea9041b70')
 
 # CMake flags
 _cmakeopts=('-D WITH_OPENCL=ON'
@@ -68,18 +59,11 @@ _cmakeopts+=(
 	'-D ENABLE_SSE3=OFF'
 	)
 
-# all x64 CPUs support SSE2 but not SSE3
-[[ "$CARCH" = 'x86_64' ]] && _cmakeopts+=('-D ENABLE_SSE3=OFF')
-
 # prepare() and build() are the official ones
 prepare() {
 	# Setting JAVA_HOME
 	msg2 "Setting JAVA_HOME variable"
 	export JAVA_HOME="/usr/lib/jvm/default"
-	# Patches
-	cd $_pkgbase-$pkgver
-	patch -p1 -i ../5852.patch
-	patch -p1 -i ../gcc6.patch # Thanks to AUR opencv2 package!
 }
 
 build() {
