@@ -1,7 +1,7 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=infamousplugins-git
-pkgver=0.2.02.r71.g79881f6
+pkgver=0.2.02.r80.ga68e73d
 pkgrel=1
 pkgdesc="A collection of open-source LV2 plugins"
 arch=('i686' 'x86_64')
