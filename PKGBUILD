@@ -1,34 +1,24 @@
 # Maintainer: Malte Rabenseifner <mail@malte-rabenseifner.de>
 # Contributor: bebehei <bebe@bebehei.de>
 
-pkgname=icinga2
-pkgver=2.6.0
+pkgname=('icinga2-common' 'icinga2' 'icinga-studio')
+pkgbase=icinga2
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="An open source host, service and network monitoring program"
 license=('GPL')
 arch=('i686' 'x86_64')
 url="http://www.icinga.org"
 depends=('boost-libs' 'libedit' 'openssl' 'yajl')
-makedepends=('boost' 'cmake' 'libmariadbclient' 'postgresql-libs')
-optdepends=('monitoring-plugins: plugins needed for icinga checks'
-            'libmariadbclient: for MySQL support'
-            'postgresql-libs: for PostgreSQL support')
-backup=(etc/default/icinga2
-        etc/icinga2/features-available/{api,checker,command,compatlog}.conf
-        etc/icinga2/features-available/{debuglog,gelf,graphite}.conf
-        etc/icinga2/features-available/{ido-mysql,ido-pgsql,livestatus,mainlog}.conf
-        etc/icinga2/features-available/{notification,perfdata,statusdata,syslog}.conf
-        etc/icinga2/{constants,icinga2,init,zones}.conf
-        etc/logrotate.d/icinga2)
-install='icinga2.install'
-source=("https://github.com/Icinga/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('b04627d7508dda4bb7b75b74501586d34b5d3d8752291c56682ba1137af03270')
+makedepends=('boost' 'cmake' 'libmariadbclient' 'postgresql-libs' 'wxgtk')
+source=("https://github.com/Icinga/$pkgbase/archive/v$pkgver.tar.gz")
+sha256sums=('783d35c7fcd1b8fa7914633dc376dfad864ccd648b773bb5ef61bb2a1e86b425')
 
 build() {
-  mkdir -p "$srcdir/$pkgname-$pkgver/build"
-  cd "$srcdir/$pkgname-$pkgver/build"
+  mkdir -p "$srcdir/$pkgbase-$pkgver/build"
+  cd "$srcdir/$pkgbase-$pkgver/build"
 
-  cmake "$srcdir/$pkgname-$pkgver" \
+  cmake "$srcdir/$pkgbase-$pkgver" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_SYSCONFDIR=/etc \
     -DICINGA2_RUNDIR=/run \
@@ -37,13 +27,39 @@ build() {
     -DCMAKE_INSTALL_LOCALSTATEDIR=/var \
     -DICINGA2_SYSCONFIGFILE=/etc/default/icinga2 \
     -DICINGA2_PLUGINDIR=/usr/lib/monitoring-plugins \
-    -DUSE_SYSTEMD=ON
+    -DUSE_SYSTEMD=ON \
+    -DICINGA2_WITH_STUDIO=ON \
+    -DLOGROTATE_HAS_SU=OFF
 
   make
 }
 
-package() {
-  cd "$srcdir/$pkgname-$pkgver/build"
+package_icinga2-common() {
+  pkgdesc="Common files for Icinga2"
+
+  cd "$srcdir/$pkgbase-$pkgver/build"
+  make DESTDIR="$pkgdir" install
+  rm -r $pkgdir/{etc,run,var}
+  rm -r $pkgdir/usr/{bin,share}
+  rm -r $pkgdir/usr/lib/systemd
+  rm -r $pkgdir/usr/lib/icinga2/{prepare-dirs,safe-reload,sbin}
+}
+
+package_icinga2() {
+  depends=('icinga2-common')
+  optdepends=('monitoring-plugins: plugins needed for icinga checks'
+              'libmariadbclient: for MySQL support'
+              'postgresql-libs: for PostgreSQL support')
+  backup=(etc/default/icinga2
+          etc/icinga2/features-available/{api,checker,command,compatlog}.conf
+          etc/icinga2/features-available/{debuglog,gelf,graphite}.conf
+          etc/icinga2/features-available/{ido-mysql,ido-pgsql,livestatus,mainlog}.conf
+          etc/icinga2/features-available/{notification,perfdata,statusdata,syslog}.conf
+          etc/icinga2/{constants,icinga2,init,zones}.conf
+          etc/logrotate.d/icinga2)
+  install='icinga2.install'
+
+  cd "$srcdir/$pkgbase-$pkgver/build"
 
   make DESTDIR="$pkgdir" install
 
@@ -60,7 +76,7 @@ package() {
 	d /run/icinga2/cmd 2750 icinga icingacmd -
 	EOF
 
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgbase-$pkgver"
 
   install -Dm644 tools/syntax/vim/ftdetect/icinga2.vim "$pkgdir/usr/share/vim/vimfiles/ftdetect/icinga2.vim"
   install -Dm644 tools/syntax/vim/syntax/icinga2.vim "$pkgdir/usr/share/vim/vimfiles/syntax/icinga2.vim"
@@ -71,4 +87,18 @@ package() {
             "$pkgdir/var/spool/icinga2" \
             "$pkgdir/var/cache/icinga2" \
             "$pkgdir/var/log/icinga2"
+
+  rm -r $pkgdir/usr/lib/icinga2/lib*
+  rm $pkgdir/usr/bin/icinga-studio
+}
+
+package_icinga-studio() {
+  pkgdesc="Graphical tool for debugging and testing the Icinga2 API"
+  depends=('icinga2-common' 'wxgtk')
+
+  cd "$srcdir/$pkgbase-$pkgver/build"
+  make DESTDIR="$pkgdir" install
+  rm -r $pkgdir/{etc,run,var}
+  rm -r $pkgdir/usr/{lib,share}
+  rm $pkgdir/usr/bin/icinga2
 }
