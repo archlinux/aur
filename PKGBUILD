@@ -2,12 +2,12 @@
 
 pkgname=spotify-web-player
 pkgver=1.0.35
-pkgrel=1
+pkgrel=2
 pkgdesc="A Spotify Web Player wrapper in Electron"
 arch=('i686' 'x86_64')
 url="https://github.com/Quacky2200/Spotify-Web-Player-for-Linux"
 license=('MIT')
-depends=('libappindicator-gtk3' 'libnotify' 'unzip' 'electron' 'pepper-flash')
+depends=('libnotify' 'unzip' 'electron' 'pepper-flash')
 makedepends=('npm')
 optdepends=('dbus: Notification and MPRIS controller support')
 conflicts=("${pkgname}-git")
@@ -36,7 +36,7 @@ package() {
 
 	# Get additional modules
 	HOME=~/.electron-gyp npm install
-	npm rebuild --runtime=electron --target=$( electron --version | sed 's:^v::' ) --build-from-source
+	npm rebuild --runtime=electron --target=$( electron --version | sed 's:^v::' ) --disturl=https://atom.io/download/atom-shell --abi=50
 
 	# Install the program
 	mkdir -p "$pkgdir"/usr/lib
