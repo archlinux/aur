@@ -21,7 +21,9 @@ package() {
     cp larryshell-errors.txt $pkgdir/usr/share/larryshell/
     cp larryascii $pkgdir/usr/share/larryshell/
     cp larry.cow $pkgdir/usr/share/larryshell/
+}
 
+post_install() {
     if [ -f /etc/shells ] && [ -z `grep /usr/bin/larryshell /etc/shells` ]
     then
         if [ -z `grep /bin/sh /etc/shells` ]
@@ -30,5 +32,12 @@ package() {
         else
             echo "/usr/bin/larryshell" >> /etc/shells
         fi
+    fi
+}
+
+post_remove() {
+    if [ -f /etc/shells ] && ! [ -z `grep /usr/bin/larryshell /etc/shells` ]
+    then
+        sed -i'' -e 's/\n\/usr\/bin\/larryshell//' /etc/shells
     fi
 }
