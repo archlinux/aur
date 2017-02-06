@@ -1,0 +1,13 @@
+pkgbase = whatmask
+	pkgdesc = Small C program that will help you with network settings
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://www.laffeycomputer.com/whatmask.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://downloads.laffeycomputer.com/current_builds/whatmask/whatmask-1.2.tar.gz
+	md5sums = 26aeff74dbba70262ccd426e681dcf4a
+
+pkgname = whatmask
+
