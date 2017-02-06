@@ -1,0 +1,14 @@
+## arg 1:  the new package version
+post_install() {
+	if [[ ! "$1" < 0.15.0-1 ]]; then
+		echo "For video playback add the line 'FFmpegPath = /usr/bin/ffmpeg' to your config file: '\$XDG_CONFIG_HOME/opsu/.opsu.cfg'"
+	fi
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	if [[ ! "$1" < 0.15.0-1 ]] && [[ "$2" < 0.15.0-1 ]]; then
+		echo "For video playback add the line 'FFmpegPath = /usr/bin/ffmpeg' to your config file: '\$XDG_CONFIG_HOME/opsu/.opsu.cfg'"
+	fi
+}

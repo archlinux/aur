@@ -1,16 +1,19 @@
 # Maintainer: Lucki <Lucki at holarse-linuxgaming dot de>
 # Contributor in comments: Misc <https://aur.archlinux.org/account/misc/>
 # Contributor in comments: SajeOne <https://aur.archlinux.org/account/SajeOne/>
+# Contributor in email: tpenguinltg <https://aur.archlinux.org/account/tpenguinltg/>
 
 pkgname=opsu
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="An open source osu!-client written in Java."
 arch=('any')
 url="https://itdelatrisu.github.io/opsu/"
 license=('GPL3')
 changelog=.CHANGELOG
+install=opsu.install
 depends=('java-runtime' 'bash' 'xorg-xrandr')
+optdepends=('ffmpeg: Background video playback')
 makedepends=('java-environment' 'java-web-start' 'gradle' 'gendesk' 'git')
 provides=('opsu-git')
 conflicts=('opsu-git')
@@ -34,7 +37,7 @@ prepare()
 build()
 {
 	cd "${srcdir}/${pkgname}"
-	gradle jar -PXDG=true
+	gradle jar -PXDG=true -PexcludeFFmpeg
 }
 
 package()

@@ -1,28 +1,41 @@
 Features:
 
-    osu! HP algorithm. (e62822a)
-    Skin unpacker. (e9889b7)
-    Game ranking screen overhaul (positioning, animations, images). (64504f2, e49ca3c)
-    Slider follow circle animations. (99c698b)
-    Main menu UI tweaks (music info bar, moved things around). (d250d26)
-    New "About" menu when clicking on the GitHub logo in the main menu. (1d0f0b8)
-    Additional skin.ini options supported: SliderBallFlip, CursorCentre, AnimationFramerate, AllowSliderBallTint. (0f40ff4, f111730)
-    Skin v1 changes: slider tick results, "spinner-osu" result, white warning arrows. (7a1f527, 3d01e43)
-    Added bubble notifications. (21aa72b)
-    Added parallax effect. (b61eaf1)
+    Local users system. (0fd7c35, bcb53c5, fd99c62)
+        Change or add users by clicking on the profile in the main menu or song menu.
+        All previous scores without players are now assigned to "Guest".
+        Add custom user icons in skins by naming the icons "user0.png", "user1.png", "user2.png", etc.
+    Music video playback, using FFmpeg and YUNPM. (e6c90ad)
+        Requires beatmaps to be re-parsed (press F5 in the song menu).
+        Optionally, link your own FFmpeg shared library by setting the "FFmpegPath" property in the config file.
+    Updated and reorganized options menu, with added search functionality. (#240)
+    Performance graphs and stats. (510944f, 3b746ec)
+    2B maps are now playable. (0ae010e)
+    Mixed font support, now using Exo 2 as the main font. (6555797, ac19406)
+    Song menu navigation now resembles osu!. (e0ee1b2)
+    New back button. (#244)
+    Custom fixed speed option. (b22b1fb)
 
 Other changes:
 
-    Reduce FPS when window loses focus. (a7e0c8d)
-    Support Unicode input in text fields. (a0fcae8)
-    Right-click/drag in the song menu now scrolls to the mouse position. (41a27fe)
-    Removed old cursor style option. (0f40ff4)
-    Removed "playfield" image; use "menu-background" instead. (c250fce)
+    Crossfade between beatmap backgrounds in the song menu. (07ed975)
+    Hide some loading progress displays if loading is short. (6733420, a835c54)
+    Smarter and less frequent garbage collection, reducing the number of lagspikes. (baf35e3)
+    Added more music player shortcuts to the main menu. (7c6e9fa)
+    Don't show the in-game scoreboard initially if there are no scores. (29066c4)
+    Re-added the Hexide download server. (697673c)
 
 Bug fixes:
 
-    Fixed issues with slider ticks and repeats being over- or under-counted. (ceb4e5d)
-    Fixed an issue where multi-image default images were being loaded with higher priority than single-image skin images. (cf53c3d)
-    Fixed a hardcoded approach time in the stacking algorithm. (9b5f26d)
-    Fixed "Ignore All Beatmap Skins" option not ignoring combo colors. (9b627e0)
-
+    Fixed reloading beatmaps discarding saved data (e.g. play count, favorite status, etc.). (25356ce)
+    Fixed sound effect loading on some Linux systems. (#238, 039dd66)
+    Fixed wrong max combo count due to overlapping objects. (0ae010e)
+    Fixed skin parser treating versions as integers instead of floats. (f396bd9)
+    Fixed pitch/speed not being reset when moving to the game ranking screen. (29066c4)
+    Fixed some issues in the right-click navigation function in the song menu. (0a22d60)
+    Fixed wrong status messages in the song menu search function. (730a3ec)
+    Fixed global actions (hotkeys, volume changing) not working with the options overlay shown. (01040fc)
+    Fixed really bad things happening when OpenAL fails to load. (fca4fd4)
+    Fixed error handler crashing on a null pointer when receiving a null pointer exception. 😆 (db376af)
+    Fixed music fade-out errors causing crashes at the end of songs in Slick2D. (738f4dc)
+    Fixed unknown keys being treated as KEY_EQUALS in Slick2D. (084ec5b)
+    Fixed some FPS counter wrong values in Slick2D. (8aeb4ed)
