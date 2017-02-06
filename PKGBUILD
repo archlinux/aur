@@ -2,12 +2,12 @@
 
 pkgname=openbazaar
 pkgver=1.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(any)
 url="http://openbazaar.org"
 license=('MIT')
-depends=(electron037)
+depends=(electron)
 makedepends=(npm asar)
 source=(
 	"https://github.com/OpenBazaar/OpenBazaar-Client/archive/v$pkgver.tar.gz"
@@ -42,6 +42,6 @@ msg2 "Installing icons and desktop menu entry"
   install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/openbazaar.desktop
 }
 
-md5sums=('d11190d4b03dcc86c306e695cd48bb47'
-         'fef50202071cadef76388117ffc0c750'
+md5sums=('0cdf4a51f47a49d71846261cd36a0e00'
+         '978f2bc37d379c6ccd8c5942ef44612c'
          'dbca9273e9fc18a7aa5d1c395508fe60')
