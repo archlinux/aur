@@ -1,0 +1,95 @@
+diff -ur libidn2-0.16.orig/src/idn2.c libidn2-0.16/src/idn2.c
+--- libidn2-0.16.orig/src/idn2.c	2017-02-06 18:33:44.840135786 +0100
++++ libidn2-0.16/src/idn2.c	2017-02-06 18:59:32.753490461 +0100
+@@ -42,6 +42,68 @@
+ 
+ #include "blurbs.h"
+ 
++
++size_t getline(char **lineptr, size_t *n, FILE *stream) {
++    char *bufptr = NULL;
++    char *p = bufptr;
++    size_t size;
++    int c;
++
++    if (lineptr == NULL) {
++        return -1;
++    }
++    if (stream == NULL) {
++        return -1;
++    }
++    if (n == NULL) {
++        return -1;
++    }
++    bufptr = *lineptr;
++    size = *n;
++
++    c = fgetc(stream);
++    if (c == EOF) {
++        return -1;
++    }
++    if (bufptr == NULL) {
++        bufptr = malloc(128);
++        if (bufptr == NULL) {
++            return -1;
++        }
++        size = 128;
++    }
++    p = bufptr;
++    while(c != EOF) {
++        if ((p - bufptr) > (size - 1)) {
++            size = size + 128;
++            bufptr = realloc(bufptr, size);
++            if (bufptr == NULL) {
++                return -1;
++            }
++        }
++        *p++ = c;
++        if (c == '\n') {
++            break;
++        }
++        c = fgetc(stream);
++    }
++
++    *p++ = '\0';
++    *lineptr = bufptr;
++    *n = size;
++
++    return p - bufptr - 1;
++}
++
++
++
++
++
++
++
++
++
++
+ const char version_etc_copyright[] =
+   /* Do *not* mark this string for translation.  %s is a copyright
+      symbol suitable for this locale, and %d is the copyright
+@@ -161,9 +223,10 @@
+       free (output);
+     }
+   else
+-    error (EXIT_FAILURE, 0, "%s: %s",
++    exit(EXIT_FAILURE);
++    /*error (EXIT_FAILURE, 0, "%s: %s",
+ 	   args_info.register_given ? "register" : "lookup",
+-	   idn2_strerror (rc));
++	   idn2_strerror (rc));*/
+ }
+ 
+ int
+@@ -222,7 +285,8 @@
+     }
+ 
+   if (ferror (stdin))
+-    error (EXIT_FAILURE, errno, "%s", _("input error"));
++    exit(EXIT_FAILURE);
++    /*error (EXIT_FAILURE, errno, "%s", _("input error"));*/
+ 
+   cmdline_parser_free (&args_info);
+ 
