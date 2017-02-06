@@ -34,11 +34,11 @@ prepare() {
 
 package() {
   cd ${srcdir}
-  install -Dm755 JabRef-${pkgver}.jar ${pkgdir}/usr/share/java/${pkgname}/JabRef-${pkgver}.jar
+  install -Dm755 JabRef-${pkgver}.jar ${pkgdir}/usr/share/java/${_pkgname}/JabRef-${pkgver}.jar
 
-  install -Dm755 ${_pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
-  sed -i "s/VERSION/${pkgver}/" ${pkgdir}/usr/bin/${pkgname}
+  install -Dm755 ${_pkgname}.sh ${pkgdir}/usr/bin/${_pkgname}
+  sed -i "s/VERSION/${pkgver}/" ${pkgdir}/usr/bin/${_pkgname}
 
-  install -Dm644 ${_pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-  install -Dm644 images/icons/JabRef-icon-48.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+  install -Dm644 ${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
+  install -Dm644 images/icons/JabRef-icon-48.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
 }
