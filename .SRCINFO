@@ -1,7 +1,7 @@
 pkgbase = python2-qutip
 	pkgdesc = QuTiP is open-source software for simulating the dynamics of open quantum systems
-	pkgver = 3.1.0
-	pkgrel = 1
+	pkgver = 4.0.2
+	pkgrel = 2
 	url = http://qutip.org/index.html
 	arch = any
 	license = GPL3
@@ -13,8 +13,8 @@ pkgbase = python2-qutip
 	optdepends = mayavi: Optional. Needed for using the Bloch3d class
 	optdepends = python2-pyqt4: Optional, required only for GUI elements
 	optdepends = texlive-bin: Optional. Needed if using LaTeX in figures
-	source = http://qutip.org/downloads/3.1.0/qutip-3.1.0.tar.gz
-	md5sums = 73aefdc714149fa6e1a03de660f2eb2b
+	source = http://qutip.org/downloads/4.0.2/qutip-4.0.2.tar.gz
+	md5sums = 776efe4ff0019e00ac17073178481ba5
 
 pkgname = python2-qutip
 
