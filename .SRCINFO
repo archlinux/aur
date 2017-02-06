@@ -1,7 +1,7 @@
 pkgbase = phpqa
 	pkgdesc = PHPQA all-in-one Analyzer CLI tool.
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jmolivas/phpqa
 	arch = any
 	license = MIT
