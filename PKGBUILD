@@ -1,5 +1,5 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
-# Co-Maintainer: Marc Straube <email@marcstraube.de>
+# Contributor: Marc Straube <email@marcstraube.de>
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 # Please report issues at https://github.com/sanduhrs/arch-aur-phpunit
 
