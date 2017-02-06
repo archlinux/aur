@@ -3,7 +3,7 @@
 pkgbase = ccd2cue
 	pkgdesc = Convert CloneCD cuesheets (.ccd) to less-compatible CDRWIN cuesheets (.cue).
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://www.gnu.org/software/ccd2cue/
 	arch = i686
 	arch = x86_64
