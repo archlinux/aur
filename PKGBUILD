@@ -8,6 +8,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://libwebsockets.org"
 depends=('openssl' 'make')
 makedepends=('cmake')
+conflicts=('libwebsockets')
 license=('LGPL')
 source=("https://github.com/warmcat/libwebsockets/archive/v$pkgver.tar.gz")
 md5sums=('c66a7437e4d05f1f073630837a2142e9')
