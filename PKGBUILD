@@ -1,13 +1,13 @@
 # Maintainer : Breizh <breizh.craft.98@openmailbox.org>
 pkgname=p7screen
 pkgver=3.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Casio Communication Protocol 7.00 implementation"
 arch=('i686' 'x86_64')
 url="https://p7.planet-casio.com/"
 license=('GPL2')
 groups=()
-depends=('libusb>=1.0' 'libp7>=2.0')
+depends=('libusb>=1.0' 'libp7>=3.0')
 makedepends=('asciidoc>=8.6.9')
 optdepends=()
 provides=('p7screen')
