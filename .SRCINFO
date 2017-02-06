@@ -1,11 +1,13 @@
 pkgbase = mktoc
 	pkgdesc = Simple command line tool to create TOC files for CD burning with cdrdao
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pythonhosted.org/mktoc/
 	arch = any
 	license = GPL
 	depends = python2
+	depends = python2-setuptools
+	depends = python2-chardet
 	options = !emptydirs
 	source = https://github.com/cmcginty/mktoc/raw/master/dist/mktoc-1.3.tar.gz
 	md5sums = 2eabcdc8c9433d1a398e113b8a8299b4
