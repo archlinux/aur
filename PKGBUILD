@@ -6,14 +6,14 @@ pkgbase=xorg-server1.12
 _pkgbase=xorg-server
 pkgname=('xorg-server1.12' 'xorg-server1.12-xephyr' 'xorg-server1.12-xdmx' 'xorg-server1.12-xvfb' 'xorg-server1.12-xnest' 'xorg-server1.12-common' 'xorg-server1.12-devel')
 pkgver=1.12.4
-pkgrel=6
+pkgrel=7
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://xorg.freedesktop.org"
 makedepends=('pixman' 'libx11' 'mesa' 'libgl' 'xf86driproto' 'xcmiscproto' 'xtrans' 'bigreqsproto' 'randrproto' 'inputproto' 'fontsproto' 'videoproto'
              'compositeproto' 'recordproto' 'scrnsaverproto' 'resourceproto' 'xineramaproto' 'libxkbfile' 'libxfont' 'renderproto' 'libpciaccess'
              'libxv' 'xf86dgaproto' 'libxmu' 'libxrender' 'libxi' 'dmxproto' 'libxaw' 'libdmx' 'libxtst' 'libxres' 'xorg-xkbcomp' 'xorg-util-macros'
-             'xorg-font-util' 'glproto' 'dri2proto' 'libgcrypt')
+             'xorg-font-util' 'glproto' 'dri2proto' 'libgcrypt' 'systemd')
 options=('!libtool')
 source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2
         autoconfig-nvidia.patch
@@ -89,7 +89,6 @@ package_xorg-server1.12-common() {
   pkgdesc="Xorg server common files"
   depends=('xkeyboard-config' 'xorg-xkbcomp' 'xorg-setxkbmap' 'xorg-fonts-misc')
   conflicts=('xorg-server-common')
-  provides=("xorg-server-common=$pkgver")
 
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   install -m755 -d "${pkgdir}/usr/share/licenses/xorg-server1.12-common"
