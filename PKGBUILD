@@ -4,7 +4,7 @@
 pkgname=sink-develop
 pkgver=r1486.a213688
 pkgrel=1
-pkgdesc='Development branch of Akonadi replacement sink'
+pkgdesc='An offline-caching, synchronization and indexing system for PIM data (development branch)'
 arch=('i686' 'x86_64')
 url='https://github.com/KDE/sink'
 license=('GPL')
@@ -29,8 +29,6 @@ build() {
   cd "${srcdir}/build"
   cmake "${srcdir}/sink" \
     -DENABLE_TESTING=OFF \
-    -DCMAKE_C_COMPILER=/usr/bin/clang \
-    -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DLIB_INSTALL_DIR=lib \

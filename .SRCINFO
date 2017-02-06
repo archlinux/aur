@@ -1,5 +1,5 @@
 pkgbase = sink-develop
-	pkgdesc = Development branch of Akonadi replacement sink
+	pkgdesc = An offline-caching, synchronization and indexing system for PIM data (development branch)
 	pkgver = r1486.a213688
 	pkgrel = 1
 	url = https://github.com/KDE/sink
