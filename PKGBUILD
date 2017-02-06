@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=gogland
-pkgver=163.12024.20
+pkgver=163.12024.27
 pkgrel=1
 pkgdesc='Capable and Ergonomic Go IDE'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ optdepends=('java-environment>=8: use system java'
             'java-runtime-common: use system java')
 source=(https://download.jetbrains.com/go/${pkgname}-${pkgver}.tar.gz
         jetbrains-gogland.desktop)
-sha512sums=('5fe6553adf472f77632ff5df5fde2e6150a336d29725fab19f2ef11787e32d3747e9a486746dc9d5b740c58a7171708fcc6912f64d625cfc6a0a761dfc45baf7'
+sha512sums=('61e5d3135937fba61a3aae79b1617938ece1dc4cdd6d3d0215bf064591f6fe8536a0c2c709f471443b6919f66f58dc87b48a90a3aa79902f87f2446f98bf81d8'
             '49d0ecaa2082c4325107b0ce6b1eeda2c6983a779c45d3a44be0888f4321797db8613dd8b724b43695bf6884c3150e505d44d1aa74cd6efed49ed0879181ef36')
 
 package() {
