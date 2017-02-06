@@ -1,7 +1,7 @@
 # Maintainer: duffydack <duffydack73 {at] gmail {dot} com>
 pkgbase=linux-max98090
 _srcname=linux-4.9
-pkgver=4.9.6
+pkgver=4.9.7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -25,7 +25,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'cd0d5ea27c487a7d1354ba3e80f85af4924b77ad1180f1fbfaf6844ae03c8728'
+            'db4a5bade2a07d2f801e8c5c39dd310f35cfbbe90a953938cfbc14495b3e520c'
             'SKIP'
             '0ab035f5e2583b14742b7fb7216d49a192e5eebd027cb491c7941b9617e2dba2'
             '2f0f40dc9f6d51acc0fd10195e6aa087278691529bd64ed6abb7f9a4d4fde093'
@@ -44,11 +44,6 @@ _kernelname=${pkgbase#linux}
 prepare() {
   cd "${srcdir}/${_srcname}"
   
-  # Get key of Linus Torvalds
-  gpg --recv-keys ABAF11C65A2970B130ABE3C479BE3E4300411886
-  # Get key of Greg Kroah-Hartman
-  gpg --recv-keys 647F28654894E3BD457199BE38DBBDC86092693E
-
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
 
