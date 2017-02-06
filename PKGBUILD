@@ -15,7 +15,7 @@ url='https://github.com/Lourens-Rich/redshift'
 license=('GPL3')
 provides=('redshift')
 conflicts=('redshift')
-depends=('geoclue2' 'libdrm' 'libxcb' 'libxxf86vm' 'redshift-wayland-git')
+depends=('geoclue2' 'libdrm' 'libxcb' 'libxxf86vm')
 optdepends=('python-gobject: for redshift-gtk'
             'python-xdg: for redshift-gtk'
             'librsvg: for redshift-gtk'

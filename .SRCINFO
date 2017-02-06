@@ -12,7 +12,6 @@ pkgbase = redshift-sway-git
 	depends = libdrm
 	depends = libxcb
 	depends = libxxf86vm
-	depends = redshift-wayland-git
 	optdepends = python-gobject: for redshift-gtk
 	optdepends = python-xdg: for redshift-gtk
 	optdepends = librsvg: for redshift-gtk
