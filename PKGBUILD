@@ -9,14 +9,15 @@
 #                                                                             #
 # API changes between different Kodi versions make it necessary to specify    #
 # the version of Kodi you want to build this package for. You can choose      #
-# between Isengard (15), Jarvis (16) and git master (99). Do so in the        #
-# following line.                                                             #
+# between Isengard (15), Jarvis (16), Krypton (17) and git master (99). Do so #
+# in the following line.                                                      #
+#                                                                             #
 ###############################################################################
 
-API=16
+API=17
 
 pkgname=kodi-addon-pvr-hts-git
-pkgver=r510.9261047
+pkgver=r612.82ea43f
 pkgrel=1
 pkgdesc='Tvheadend HTSP PVR client addon for Kodi'
 arch=('armv7h' 'i686' 'x86_64')
@@ -35,8 +36,10 @@ case "$API" in
   16)  depends+=('libplatform-legacy')
        source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Jarvis" ;;
   17)  depends+=('p8-platform')
+       makedepends+=('kodi-dev')
        source[0]="${pkgname}::git+https://github.com/kodi-pvr/pvr.hts.git#branch=Krypton" ;;
-  99)  depends+=('p8-platform') ;;
+  99)  depends+=('p8-platform')
+       makedepends+=('kodi-dev') ;;
   *)   error "Unknown API version. Follow instructions in PKGBUILD." && false
 esac
 
