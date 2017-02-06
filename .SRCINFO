@@ -1,5 +1,5 @@
 pkgbase = beancount-fava-git
-	pkgver = r1182.0d0a4aa
+	pkgver = r1238.f17754c
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
