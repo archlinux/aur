@@ -17,7 +17,7 @@ source=("${pkgname}::git+${url}"
         "${pkgname}.tmpfiles"
         "${pkgname}_systemd_arch.patch")
 sha256sums=('SKIP'
-            '3cea17f98f4091ec8b55a482ef094abaf5e254fd50ddbdad8d83fffd52e2fcd1'
+            'd3eb1648c018d37e0327dad07ba42f08dfe610838d444d454ca4ab38ece1e8c4'
             '6f8dd86ef9c600763faead3052908531e8dc8ef67058e6f7f8da01bf0fe4eb89'
             '85f3396b49e3a3c84c344ee548bb2d185152356ca8a7bdcb5a850dc2e477665d')
 

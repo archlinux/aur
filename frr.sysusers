@@ -1,1 +1,4 @@
+# Create frr user
 u frr - - /run/frr
+# Create frrvty group and add frr user to this group
+m frr frrvty
