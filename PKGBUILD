@@ -6,10 +6,10 @@
 
 # This is a jabref mirror 
 
-pkgname=jabref
+pkgname=jabref-mirror
 pkgver=3.8.2
 pkgrel=2
-pkgdesc="GUI frontend for BibTeX, written in Java"
+pkgdesc="GUI frontend for BibTeX, written in Java, Using aliyun OSS to accelerate the source downloading process"
 arch=('any')
 url="http://www.jabref.org/"
 license=('MIT')
@@ -17,7 +17,7 @@ depends=('java-runtime>=8')
 optdepends=(
    'gsettings-desktop-schemas: For web search support'
 )
-source=(https://github.com/JabRef/jabref/releases/download/v${pkgver}/JabRef-${pkgver}.jar
+source=(http://jabref.oss-cn-shanghai.aliyuncs.com/JabRef-${pkgver}.jar
         https://raw.githubusercontent.com/JabRef/jabref/master/LICENSE.md
         jabref.sh
         jabref.desktop)
