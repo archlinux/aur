@@ -1,15 +1,15 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
 
 pkgname=pyston
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="An open-source Python implementation using JIT techniques."
 arch=('x86_64')
 license=('custom')
 url="https://github.com/dropbox/pyston"
 depends=('ncurses5-compat-libs')
-source=(https://github.com/dropbox/pyston/releases/download/v0.6/pyston-${pkgver}-linux64.tar.gz)
-sha256sums=('c31240a66cd3ed566ef88a8818a960d925fbf60ab17db722224794346b827f9f')
+source=(https://github.com/dropbox/pyston/releases/download/v${pkgver}/pyston-${pkgver}-linux64.tar.gz)
+sha256sums=('b09516d8e421cb004ef39d832bae600face4ecf80d9791469fb2c026bcf1faae')
 
 package() {
 	mkdir -p "${pkgdir}/opt/pyston"
