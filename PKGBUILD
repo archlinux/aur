@@ -1,4 +1,5 @@
-# Maintainer: cassfalg <cassfalg-git@gmx.de>
+# Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
+# Contributor: cassfalg <cassfalg-git@gmx.de>
 # Contributor: Christian Bühler <christian@cbuehler.de>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Elmo Todurov <todurov@gmail.com>
@@ -10,45 +11,45 @@
 pkgname=freeorion-git
 pkgver=r12449.ca4b3fea7
 pkgrel=1
-pkgdesc="Free Clone of Master of Orion."
-url="http://www.freeorion.org/index.php/Main_Page"
+pkgdesc="turn-based space empire and galactic conquest (4X) computer game"
+url="http://www.freeorion.org/"
 arch=('i686' 'x86_64')
-license=('GPL')
-depends=('boost-libs' 'python2' 'sdl2' 'libvorbis' 'libogg' 'glew' 'libtiff' 'libjpeg-turbo' 'openal')
-makedepends=('git' 'cmake' 'boost')
+license=('GPL2')
+depends=('boost-libs' 'python2' 'sdl2' 'libvorbis' 'glew' 'openal' 'hicolor-icon-theme' 'freetype2')
+makedepends=('boost' 'cmake' 'git')
 provides=('freeorion')
 conflicts=('freeorion')
-source=("freeorion.git::git+https://github.com/freeorion/freeorion.git#branch=master"
-        getversion.py
-        )
-md5sums=('SKIP'
-         '5fdadcc589bc4887fcf1684923226867')
 
+source=("$pkgname::git+https://github.com/freeorion/freeorion.git#branch=master")
+md5sums=('SKIP')
 
 pkgver() {
-  cd freeorion.git
-  python ../getversion.py
+  cd $srcdir/$pkgname
+
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  true #just to have a statement to execute...
-#  cd "$srcdir/freeorion.git"
-#  patch < ../../remove_oisinput.patch
+  cd $srcdir/$pkgname
+
+  mkdir -p build
 }
 
 build() {
-  mkdir -p "$srcdir/FreeOrion-build"
-  cd "$srcdir/FreeOrion-build"
+  cd $srcdir/$pkgname/build
+
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_BUILD_TYPE=Debug \
-    ../freeorion.git
+    ..
+
   make
 }
 
 package() {
-  cd "$srcdir/FreeOrion-build"
+  cd $srcdir/$pkgname/build
+
   make DESTDIR=$pkgdir install
 }
 

@@ -4,5 +4,4 @@ freeorion.git/
 src/
 pkg/
 #packages
-/freeorion-git*.tar
-/freeorion-git*.tar.*
+*.pkg.tar*
