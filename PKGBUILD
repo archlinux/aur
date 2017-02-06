@@ -25,7 +25,8 @@ prepare() {
 build() {
   cd "$srcdir/valentina"
   qmake PREFIX=/usr PREFIX_LIB=/usr/lib Valentina.pro -r \
-	CONFIG+=no_ccache CONFIG+=noDebugSymbols
+    	CONFIG+=noTests CONFIG+=noRunPath CONFIG+=no_ccache \
+	CONFIG+=noDebugSymbols
   make
 }
 
