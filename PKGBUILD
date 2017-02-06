@@ -1,6 +1,6 @@
 # Maintainer: Maxim Baz <cerebro@maximbaz.com>
 pkgname=cerebro
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Open-source productivity booster with a brain.'
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
 makedepends=('gendesk' 'npm')
 provides=('cerebro')
 source=("${pkgver}.tar.gz::https://github.com/KELiON/cerebro/archive/"$pkgver".tar.gz")
-sha256sums=('7d19667292dbad55a0ab86efd6973242b2f0b5de3fb70cb3e3ea9f782df498b6')
+sha256sums=('2a0e224f58b5137224ff83ca14a394e9c5f5d9b608ca3a30344085d028a853e3')
 
 prepare() {
   gendesk -f -n --name=Cerebro --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --exec="${pkgname}" --categories="System"
@@ -19,10 +19,6 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  # Patch dependencies to use nodejs v7
-  # TODO Remove with the next release, it is fixed in master now.
-  sed -ie 's/"node": "6.x"/"node": "7.x"/g' package.json
 
   npm install && cd ./app && npm install && cd ../
   npm run build
