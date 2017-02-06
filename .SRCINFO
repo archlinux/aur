@@ -1,7 +1,7 @@
 pkgbase = digikam-without-akonadi-mediawiki-vkontakte
-	pkgdesc = Digital photo management application for KDE
+	pkgdesc = minimized build of Digikam for non-KDE users, without Plasma/KDE integration
 	pkgver = 5.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.digikam.org/
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,6 @@ pkgbase = digikam-without-akonadi-mediawiki-vkontakte
 	depends = lensfun
 	depends = opencv
 	depends = knotifyconfig
-	depends = kfilemetadata
 	depends = marble
 	depends = threadweaver
 	depends = kcalcore

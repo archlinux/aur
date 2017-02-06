@@ -7,13 +7,13 @@
 _pkgname=digikam
 pkgname=digikam-without-akonadi-mediawiki-vkontakte
 pkgver=5.4.0
-pkgrel=2
-pkgdesc="Digital photo management application for KDE"
+pkgrel=3
+pkgdesc="minimized build of Digikam for non-KDE users, without Plasma/KDE integration"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
 depends=('liblqr' 'libkipi' 'libksane' 'lensfun' 'opencv' 'knotifyconfig'
-         'kfilemetadata' 'marble' 'threadweaver' 'kcalcore')
+         'marble' 'threadweaver' 'kcalcore')
 optdepends=('kipi-plugins: export to various online services'
             'hugin: panorama tool')
 makedepends=('extra-cmake-modules' 'boost' 'doxygen' 'eigen' 'kdoctools' 'kdesignerplugin')
@@ -37,7 +37,7 @@ build() {
     -DBUILD_TESTING=OFF \
     -DDIGIKAMSC_COMPILE_KIPIPLUGINS=OFF \
     -DDIGIKAMSC_COMPILE_PO=ON \
-    -DENABLE_KFILEMETADATASUPPORT=ON \
+    -DENABLE_KFILEMETADATASUPPORT=OFF \
     -DENABLE_MYSQLSUPPORT=ON \
     -DENABLE_APPSTYLES=ON \
     -DENABLE_OPENCV3=ON \
