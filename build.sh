@@ -10,11 +10,14 @@ EOL="$"
 
 ./fetch.sh $PKGVER $REL
 
+shopt -s extglob
+
 tar cvf $VER.tar.gz \
     larryshell/larryshell \
     larryshell/larryshellrc \
     larryshell/larryshell-errors.txt \
-    larryshell/larryascii
+    larryshell/larryascii \
+    larryshell/larry.cow
 
 cp $VER.tar.gz /srv/http/larryshell
 

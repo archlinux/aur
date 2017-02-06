@@ -17,7 +17,8 @@ package() {
     mkdir -p $pkgdir/usr/share/larryshell
 
     cp larryshell $pkgdir/usr/bin/
-    cp larryshellrc $pkgdir/etc/larryshell
-    cp larryshell-errors.txt $pkgdir/usr/share/larryshell
-    cp larryascii $pkgdir/usr/share/larryshell
+    cp larryshellrc $pkgdir/etc/larryshell/
+    cp larryshell-errors.txt $pkgdir/usr/share/larryshell/
+    cp larryascii $pkgdir/usr/share/larryshell/
+    cp larry.cow $pkgdir/usr/share/larryshell/
 }
