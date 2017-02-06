@@ -1,7 +1,7 @@
 pkgbase = libicns
 	pkgdesc = Library for manipulating Mac OS X icon files
 	pkgver = 0.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://icns.sourceforge.net
 	arch = i686
 	arch = x86_64

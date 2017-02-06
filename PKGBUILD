@@ -7,7 +7,7 @@
 
 pkgname=libicns
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for manipulating Mac OS X icon files'
 arch=('i686' 'x86_64')
 url='http://icns.sourceforge.net'
