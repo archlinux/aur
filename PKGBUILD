@@ -5,7 +5,7 @@
 # Contributor: Jens Kapitza <j dot kapitza at schwarze-allianz dot de>
 # Contributor: Olli <olli at coderkun dot de>
 
-# Demos available in `java-openjfx/src/openjfx/apps/samples`
+# Demos available in `apps/samples`
 # To build them: `ant -Dplatforms.JDK_1.8.home=/usr/lib/jvm/default jar`
 
 pkgbase=java-openjfx
@@ -20,9 +20,8 @@ pkgdesc='Java OpenJFX 8 client application platform (open-source implementation 
 arch=('i686' 'x86_64')
 url='https://wiki.openjdk.java.net/display/OpenJFX/Main'
 license=('GPL')
-depends=('java-runtime-openjdk=8' 'gstreamer' 'libxtst' 'webkitgtk2' 'ffmpeg' 'qt5-base')
 makedepends=('java-environment-openjdk=8' 'bison' 'gperf' 'gtk2'
-             'libxtst' 'ffmpeg' 'python2' 'qt5-base' 'webkitgtk2' 'ruby' 'cmake')
+             'libxtst' 'ffmpeg' 'python2' 'qt5-base' 'webkit2gtk' 'ruby' 'cmake')
 source=(http://hg.openjdk.java.net/openjfx/8u-dev/rt/archive/${_hgtag}.tar.bz2
         gradle.properties
         https://services.gradle.org/distributions/gradle-1.8-bin.zip
@@ -63,6 +62,7 @@ build() {
 
 package_java-openjfx() {
   pkgdesc='Java OpenJFX 8 client application platform (open-source implementation of JavaFX)'
+  depends=('java-runtime-openjdk=8' 'gstreamer' 'libxtst' 'webkit2gtk' 'ffmpeg' 'qt5-base')
   conflicts=('openjfx')
   replaces=('openjfx')
 
