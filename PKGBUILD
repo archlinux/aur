@@ -2,7 +2,7 @@
 
 pkgname=gogland-eap
 _pkgname=gogland
-pkgver=163.12024.20
+pkgver=163.12024.27
 pkgrel=1
 pkgdesc='Capable and Ergonomic Go IDE - EAP'
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ optdepends=('java-environment>=8: use system java'
             'java-runtime-common: use system java')
 source=(https://download.jetbrains.com/go/${_pkgname}-${pkgver}.tar.gz
         jetbrains-gogland-eap.desktop)
-sha512sums=('5fe6553adf472f77632ff5df5fde2e6150a336d29725fab19f2ef11787e32d3747e9a486746dc9d5b740c58a7171708fcc6912f64d625cfc6a0a761dfc45baf7'
+sha512sums=('61e5d3135937fba61a3aae79b1617938ece1dc4cdd6d3d0215bf064591f6fe8536a0c2c709f471443b6919f66f58dc87b48a90a3aa79902f87f2446f98bf81d8'
             '92ace1dfccb7df233d814dd80056eb2ca2b9e9ce1567b289ff76b174489fa3b42352d8aa3b28c05344207f293819320cd23c35e9c2088cda4ff0596aeb64ef87')
 
 package() {
