@@ -1,10 +1,10 @@
-# Maintainer:  Michael Lass <bevan@bi-co.net>
+# Maintainer:  Sky Chan <diufanshu@gmail.com>
+# Contributor: Michael Lass <bevan@bi-co.net>
 # Contributor: Hector Mtz-Seara <hseara.at.gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Christian Storm <Christian.Storm@gmx.de>
 
-# This PKGBUILD is maintained on github:
-# https://github.com/michaellass/AUR
+# This is a jabref mirror 
 
 pkgname=jabref
 pkgver=3.8.2
