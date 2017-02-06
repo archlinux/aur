@@ -6,8 +6,8 @@ pkgdesc="Python ADB + Fastboot implementation"
 arch=('any')
 url="https://github.com/google/python-adb.git"
 license=('apachev2')
-depends=('libusb>=1.0.16' 'python2-libusb1>=1.2.0' 'python2-m2crypto>=0.24')
-makedepends=('git' 'python2>=2.7')
+depends=('libusb>=1.0.16' 'python-libusb1>=1.2.0' 'python-m2crypto>=0.24')
+makedepends=('git' 'python>=3.6')
 provides=()
 conflicts=()
 replaces=()
@@ -24,12 +24,12 @@ pkgver() {
 
 build() {
     cd "${srcdir}/python-adb"
-    python2 setup.py build
+    python3 setup.py build
 }
 
 package() {
   cd "${srcdir}/python-adb"
-  python2 setup.py install --root="$pkgdir" --optimize=1 || return 1
+  python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
