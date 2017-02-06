@@ -1,7 +1,7 @@
 pkgbase = prayer-clock
 	pkgdesc = Catholic prayers reminder, contains Angelus and 3 O'clock Prayer
 	pkgver = 3.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://sourceforge.net/projects/prayerclock/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = prayer-clock
 	depends = gtk3
 	depends = gtkmm3
 	source = https://github.com/allencch/prayer-clock/raw/master/build/prayer-clock-3.0.3.tar.gz
-	md5sums = SKIP
+	md5sums = 5ce4c6df03bf011f65596c4f99ce8b3b
 
 pkgname = prayer-clock
 
