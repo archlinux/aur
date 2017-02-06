@@ -3,10 +3,10 @@
 _gemname=rubocop
 pkgname=ruby-${_gemname}
 pkgver=0.47.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic Ruby code style checking tool."
 arch=('any')
-depends=('ruby' 'ruby-parser' 'ruby-powerpack' 'ruby-rainbow' 'ruby-progressbar' 'ruby-unicode-display_width')
+depends=('ruby' 'ruby-parser' 'ruby-powerpack' 'ruby-rainbow' 'ruby-ruby-progressbar' 'ruby-unicode-display_width')
 url="https://rubygems.org/gems/${_gemname}"
 noextract=($_gemname-$pkgver.gem)
 license=('MIT')
