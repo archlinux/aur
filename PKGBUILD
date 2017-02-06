@@ -8,14 +8,14 @@
 
 pkgname=redshift-sway-git
 pkgver=1.11.r26.g295c8fa
-pkgrel=1
-pkgdesc="Adjusts the color temperature of your screen according to your surroundings with SirCmpwn's Sway support. (development version)"
+pkgrel=2
+pkgdesc="Will be removed. Please update to redshift-wayland-git package."
 arch=('i686' 'x86_64')
 url='https://github.com/Lourens-Rich/redshift'
 license=('GPL3')
 provides=('redshift')
 conflicts=('redshift')
-depends=('geoclue2' 'libdrm' 'libxcb' 'libxxf86vm')
+depends=('geoclue2' 'libdrm' 'libxcb' 'libxxf86vm' 'redshift-wayland-git')
 optdepends=('python-gobject: for redshift-gtk'
             'python-xdg: for redshift-gtk'
             'librsvg: for redshift-gtk'
