@@ -1,7 +1,7 @@
 # Maintainer: Peter Ivanov <ivanovp@gmail.com>
 
 pkgname=msp-flasher
-pkgver=1.03.07.00
+pkgver=1.03.11.00
 pkgrel=1
 pkgdesc="Flasher for TI MSP430 processor"
 arch=('i686' 'x86_64')
@@ -12,23 +12,20 @@ depends=('elfutils' 'libmpc' 'zlib')
 options=(!strip !emptydirs !libtool staticlibs !upx)
 PKGEXT=".pkg.tar"
 install=msp-flasher.install
-_installer=MSP430Flasher-1_03_07_00-linux-installer.run
-#http://downloads.ti.com/downloads/msp430/msp430_public_sw/mcu/msp430/MSPGCC/latest/msp430-gcc-full-linux-installer-3.5.0.0.run?__gda__=1445541569_e2a9880f9e7e8d5ce333484d874e915e
-#source=(" http://downloads.ti.com/downloads/msp430/msp430_public_sw/mcu/msp430/MSP430Flasher/latest/MSP430Flasher-1_03_07_00-linux-installer.run?__gda__=1445541273_f087c60a06efc87433dfea0ac54a50c4")
-# http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSP430Flasher/latest/index_FDS.html
-source=("http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSP430Flasher/1_03_07_00/exports/$_installer" "${pkgname}.sh")
-#source=("https://www.ti.com/general/docs/licreg/anonymousproddownload.tsp?downloadPage=true&location=http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSP430Flasher/1_03_07_00/exports/$_installer" "${pkgname}.sh")
-sha1sums=('3701260054be1208716f32f13bae94ef81424396'
+_installer=MSPFlasher-1_03_11_00-linux-installer.zip
+_installer_run=MSPFlasher-1.3.11-linux-installer.run
+source=("http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSP430Flasher/1_03_11_00/exports/$_installer" "${pkgname}.sh")
+sha1sums=('60eaf7987e982ec50058bdd79dd3cf0a94990dad'
           '8b01a45ab7ac219ff00824e53c324126b3c39763')
 _install_dir=/opt/ti/$pkgname
 
 build() {
-  chmod +x $_installer
+  chmod +x $_installer_run
 }
 
 package() {
   msg "Running TI's installer..."
-  ${srcdir}/$_installer --mode unattended --prefix $pkgdir$_install_dir
+  ${srcdir}/$_installer_run --mode unattended --prefix $pkgdir$_install_dir
   msg "Correcting directory permissions..."
   find $pkgdir$_install_dir -type d -print0|xargs -0 chmod 755
   mkdir -p $pkgdir/usr/lib
