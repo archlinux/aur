@@ -5,7 +5,7 @@ pkgbase=gstreamer0.10-bad
 _pkgname=gst-plugins-bad
 pkgname=('gstreamer0.10-bad' 'gstreamer0.10-bad-plugins')
 pkgver=0.10.23
-pkgrel=24
+pkgrel=25
 arch=('i686' 'x86_64')
 license=('LGPL' 'GPL')
 makedepends=('pkgconfig' 'gstreamer0.10-base>=0.10.36-3' 'xvidcore' 'libdca' 'bzip2' 'libdc1394' 'neon' 'faac' 'libmusicbrainz5' 'faad2' 'libmms' 'libcdaudio' 'libmpcdec' 'mjpegtools' 'libdvdnav' 'libmodplug' 'jasper' 'liblrdf' 'libofa' 'soundtouch' 'libvdpau' 'schroedinger' 'libass' 'libvpx' 'gsm' 'libgme' 'rtmpdump' 'libsndfile' 'librsvg' 'wildmidi' 'opus' 'git' 'spandsp' 'celt')
@@ -60,7 +60,7 @@ package_gstreamer0.10-bad() {
 
 package_gstreamer0.10-bad-plugins() {
   pkgdesc="GStreamer Multimedia Framework Bad Plugins (gst-plugins-bad)"
-  depends=("gstreamer0.10-bad=${pkgver}" 'xvidcore' 'libdca' 'bzip2' 'libdc1394' 'neon' 'faac' 'musicbrainz' 'faad2' 'libmms' 'libcdaudio' 'libmpcdec' 'mjpegtools' 'libdvdnav' 'libmodplug' 'jasper' 'liblrdf' 'libofa' 'libvdpau' 'soundtouch' 'libass' 'schroedinger' 'libvpx' 'gsm' 'rtmpdump' 'libgme' 'libsndfile' 'librsvg' 'wildmidi' 'opus' 'celt' 'spandsp')
+  depends=("gstreamer0.10-bad=${pkgver}" 'xvidcore' 'libdca' 'bzip2' 'libdc1394' 'neon' 'faac' 'libmusicbrainz5' 'faad2' 'libmms' 'libcdaudio' 'libmpcdec' 'mjpegtools' 'libdvdnav' 'libmodplug' 'jasper' 'liblrdf' 'libofa' 'libvdpau' 'soundtouch' 'libass' 'schroedinger' 'libvpx' 'gsm' 'rtmpdump' 'libgme' 'libsndfile' 'librsvg' 'wildmidi' 'opus' 'celt' 'spandsp')
   groups=('gstreamer0.10-plugins')
 
   cd $_pkgname

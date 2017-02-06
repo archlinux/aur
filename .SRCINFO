@@ -1,6 +1,6 @@
 pkgbase = gstreamer0.10-bad
 	pkgver = 0.10.23
-	pkgrel = 24
+	pkgrel = 25
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
 	arch = x86_64
@@ -70,7 +70,7 @@ pkgname = gstreamer0.10-bad-plugins
 	depends = libdc1394
 	depends = neon
 	depends = faac
-	depends = musicbrainz
+	depends = libmusicbrainz5
 	depends = faad2
 	depends = libmms
 	depends = libcdaudio
