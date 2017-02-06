@@ -2,14 +2,14 @@
 pkgbase=mingw-w64-gst-plugins-bad-git
 pkgname=('mingw-w64-gst-plugins-bad-git' 'mingw-w64-gst-plugins-bad-git-vslib')
 pkgver=1.11.1.r66.9b778f726
-pkgrel=1
+pkgrel=2
 _gitname=gst-plugins-bad
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
 license=('LGPL')
 depends=('mingw-w64-glib2' 'mingw-w64-libxml2' 'mingw-w64-gstreamer-git' 'mingw-w64-orc')
-makedepends=('git' 'mingw-w64-configure' 'mingw-w64-tools' 'mingw-w64-openh264' 'mingw-w64-nettle' 'mingw-w64-opus' 'mingw-w64-bzip2' 'mingw-w64-libsrtp' 'mingw-w64-vo-aacenc' 'mingw-w64-libkate' 'mingw-w64-librsvg' 'mingw-w64-openjpeg2' 'mingw-w64-opencv' 'mingw-w64-libfdk-aac')
+makedepends=('git' 'mingw-w64-configure' 'mingw-w64-tools' 'mingw-w64-openh264' 'mingw-w64-nettle' 'mingw-w64-opus' 'mingw-w64-bzip2' 'mingw-w64-libsrtp' 'mingw-w64-vo-aacenc' 'mingw-w64-libkate' 'mingw-w64-librsvg' 'mingw-w64-openjpeg2' 'mingw-w64-opencv' 'mingw-w64-libfdk-aac' 'mingw-w64-librtmp0')
 optdepends=('mingw-w64-gst-plugins-bad-git-vslib: Visual Studio import lib')
 options=('!strip' '!buildflags' 'staticlibs')
 conflicts=('mingw-w64-gst-plugins-bad')
