@@ -4,29 +4,22 @@
 pkgbase=gtkmm
 pkgname=('gtkmm' 'gtkmm-docs')
 pkgver=2.24.5
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
-makedepends=('gtk2' 'pangomm' 'atkmm' 'glibmm-docs' git mm-common)
+makedepends=('gtk2' 'pangomm' 'atkmm' 'glibmm-docs')
 license=('LGPL')
 options=('!emptydirs')
 url="http://www.gtkmm.org/"
-_commit=07fe88b054e91d10ec3bf32a85945cbc57248639  # tags/2.24.5^0
-source=("git+https://git.gnome.org/browse/gtkmm#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd $pkgbase
-  git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-  cd $pkgbase
-  NOCONFIGURE=1 ./autogen.sh
-}
+source=(http://ftp.gnome.org/pub/GNOME/sources/${pkgbase}/2.24/${pkgbase}-${pkgver}.tar.xz)
+sha256sums=('0680a53b7bf90b4e4bf444d1d89e6df41c777e0bacc96e9c09fc4dd2f5fe6b72')
 
 build() {
-  cd "${srcdir}/$pkgbase"
-  ./configure --prefix=/usr --enable-maintainer-mode
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+
+  # glibmm 2.46 uses C++11 features
+  CXXFLAGS+=' -std=c++11'
+
+  ./configure --prefix=/usr
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
@@ -34,7 +27,7 @@ build() {
 package_gtkmm() {
   pkgdesc="C++ bindings for gtk2"
   depends=('gtk2' 'pangomm' 'atkmm')
-  cd "${srcdir}/$pkgbase"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
 
   sed -i -e 's/^doc_subdirs/#doc_subdirs/' Makefile
 
@@ -44,6 +37,6 @@ package_gtkmm() {
 package_gtkmm-docs() {
   pkgdesc="Developer documentation for gtkmm v2"
 
-  cd "${srcdir}/$pkgbase"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make -C docs DESTDIR="${pkgdir}" install
 }
