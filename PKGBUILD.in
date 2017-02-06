@@ -1,5 +1,5 @@
 define(`GIT_NAME', `pvr.hts')dnl
-define(`GIT_VERSION', `branch=Jarvis')dnl
+define(`GIT_VERSION', `branch=Krypton')dnl
 define(`SRC_DIR', `src/GIT_NAME')dnl
 define(`ADDON_XML', `SRC_DIR/GIT_NAME/addon.xml.in')dnl
 define(`HTS_VERSION', `esyscmd(sed -e s/@PLATFORM@/dummy/g ADDON_XML | xmllint --xpath "string(/addon/@version)" - || echo 0)')dnl
@@ -18,7 +18,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/kodi-pvr/$_gitname"
 license=('GPL')
 groups=('kodi-addons')
-makedepends=('cmake' 'kodi-platform' 'libplatform-legacy' 'git')
+makedepends=('cmake' 'p8-platform' 'git' 'kodi-dev')
 depends=('kodi')
 source=("git+https://github.com/kodi-pvr/${_gitname}.git#${_gitver}")
 md5sums=('SKIP')
