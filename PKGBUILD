@@ -6,19 +6,21 @@
 
 pkgname=tortoisehg
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical tools for Mercurial"
 url="http://tortoisehg.bitbucket.org/"
 license=("GPL")
-depends=('python2' 'mercurial>=3.8' 'python2-pyqt4>=4.10' 'python2-qscintilla' 'python2-iniparse')
+depends=('python2' 'mercurial>=4.0' 'python2-pyqt4>=4.10' 'python2-qscintilla' 'python2-iniparse')
 builddepends=(python2)
 arch=('any')
 optdepends=('python2-pygments: syntax highlighting'
 	    'python2-nautilus: Python binding for Nautilus components')
-source=("http://bitbucket.org/tortoisehg/targz/downloads/${pkgname}-${pkgver}.tar.gz")
+source=("https://bitbucket.org/tortoisehg/thg/get/64cd46deba83a8998b799d4a5ef452ead2087d59.tar.gz")
+#source=("http://bitbucket.org/tortoisehg/targz/downloads/${pkgname}-${pkgver}.tar.gz")
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	#cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/tortoisehg-thg-64cd46deba83"
 
 	python2 setup.py install --prefix=/usr --root="${pkgdir}"
 	install -Dm 644 "contrib/mergetools.rc" "${pkgdir}/etc/mercurial/hgrc.d/thgmergetools.rc"
@@ -30,4 +32,4 @@ package() {
 	rm "${pkgdir}/usr/lib/python2.7/site-packages/hgext3rd/__init__.pyc"
 }
 
-sha256sums=('402230d547c4a2a9b3e5f42701a4b91509ce23c5d7837fc149152fbf7cf1e903')
+sha256sums=('04f1935eb8e8325ab5c760ced66d07d1024064e8fe1766819799d2b6621c60ca')
