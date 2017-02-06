@@ -1,81 +1,89 @@
-* commit 801488c0a445c36b63575552a1d26f3284839f19
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Mon Jan 9 02:37:31 2017 -0500
+*   commit 73cdde685de67b8f1482d136e5852af84f01499c
+|\  Merge: 58c4d60 b492e9f
+| | Author: Jeffrey Han <itdelatrisu@users.noreply.github.com>
+| | Date:   Mon Feb 6 11:04:09 2017 -0500
+| | 
+| |     Merge pull request #254 from tpenguinltg/synchronized-notifications
+| |     
+| |     Synchronize notifications list access
+| | 
+| * commit b492e9facbbe03b37bd2ac0634a6d67acfd4a842
+| | Author: tPenguinLTG <tpenguinltg@hotmail.com>
+| | Date:   Mon Feb 6 10:49:46 2017 -0500
+| | 
+| |     Prevent add/remove notification race condition
+| |     
+| |     Clearing the notifications is actually the end part of the larger
+| |     operation done by the preceding for loop, so it should be in the same
+| |     synchronized block. Doing this prevents a race condition where a
+| |     notification is added, but is then immediately removed without being
+| |     shown.
+| | 
+| * commit 1f6c9dfa9c1f4bfb6a66ba82795d1cd921ac511a
+|/  Author: tPenguinLTG <tpenguinltg@hotmail.com>
+|   Date:   Mon Feb 6 09:49:35 2017 -0500
+|   
+|       Synchronize notifications list access
+|       
+|       Prevents a ConcurrentModificationException when a notification is added
+|       while the list is iterated over.
+|       
+|       This approach is recommended in the docs:
+|       https://docs.oracle.com/javase/7/docs/api/java/util/Collections.html#synchronizedList%28java.util.List%29
 | 
-|     Updating to 0.14.0.
+* commit 58c4d60beecf5bbb27c7804ff11efd079c19eb99
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Sat Feb 4 21:02:40 2017 -0500
+| 
+|     Fixed video distortion. (thanks to @fluddokt)
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 | 
-* commit c1313a701c0b37e832377c3f8ec2eaf8fbbdcd42
+* commit 0507374378010748938effa8d8f695d41193a002
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Mon Jan 9 02:37:01 2017 -0500
+| Date:   Sat Feb 4 19:04:00 2017 -0500
 | 
-|     Fix an issue with right-click in the song menu.
+|     Updating to 0.15.0.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 | 
-* commit 04962a06d4692de0f6602466c68e1daa284fdf28
+* commit 3b746ecfe0080f4d6f07df59ec8e08a4b70c55bd
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Mon Jan 9 01:11:20 2017 -0500
+| Date:   Sat Feb 4 18:57:40 2017 -0500
 | 
-|     Updated copyright notices.
+|     Added average hit error and unstable rate to the ranking graph tooltip.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 | 
-* commit f8d3c388099d300cdd502bfac841bc1ea42628bc
+* commit dd93a25cba8e048962d640a59e9ed259e60ff5ea
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Mon Jan 9 00:48:55 2017 -0500
+| Date:   Sat Feb 4 18:06:12 2017 -0500
 | 
-|     Show a message if beatmap importing failed.
-|     This happens when the beatmap set contains no Standard mode beatmaps.
+|     Fixed hit timing issue not counting clicks on overlapping notes.
+|     (Major problem introduced by 0ae010e.)
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 | 
-* commit 73711c145e73783f39439e934a4b699e3695a8c9
+* commit b22b1fb81034029df56bf662a64bf43ead5558cb
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Mon Jan 9 00:40:03 2017 -0500
+| Date:   Sat Feb 4 17:40:09 2017 -0500
 | 
-|     Added various bubble notifications.
+|     Added custom fixed speed option.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 | 
-* commit 8f0df87b91f5d287df38cce4d7b046f97a59fa66
+* commit 510944f1e97e48aeb395776cad99d8fc428728e2
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Mon Jan 9 00:16:17 2017 -0500
+| Date:   Sat Feb 4 16:57:54 2017 -0500
 | 
-|     Minor fixes to bubble notifications.
+|     Added performance graphs (life frames).
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
 | 
-* commit 21aa72b566ce3f1d8b2d99d08c0447a19248fe3f
+* commit 5da33d81d14f2b70a7f771b0bdcb2c4e6b7f758c
 | Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Sun Jan 8 23:33:58 2017 -0500
+| Date:   Sat Feb 4 04:08:15 2017 -0500
 | 
-|     Added bubble notifications.
-|     
-|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-| 
-* commit 4a8198adf8a1fbdbc1d29cdcfd5f18302b795557
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Sun Jan 8 20:59:27 2017 -0500
-| 
-|     Refactored bar notifications into a NotificationManager class.
-|     
-|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-| 
-* commit aca94324ccedbda2fe5b6b613a68d95ec31eca1d
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Sun Jan 8 18:14:34 2017 -0500
-| 
-|     Always set User-Agent header (fixes Bloodcat 403 errors).
-|     
-|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
-| 
-* commit a0fcae837d7346b788cb225ad318e82145b59033
-| Author: Jeffrey Han <itdelatrisu@gmail.com>
-| Date:   Sun Jan 8 17:44:33 2017 -0500
-| 
-|     Support Unicode input in TextFields.
-|     Only tested in Windows for Microsoft Chinese/Japanese keyboards.
+|     BloodcatServer minor API update.
 |     
 |     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
