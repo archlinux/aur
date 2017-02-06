@@ -1,9 +1,9 @@
-pkgbase = atom-editor-beta-bin
-	pkgdesc = Chrome-based text editor from Github - Beta Channel - Precompiled binary from official repository
+pkgbase = atom-editor-beta-bin-mirror
+	pkgdesc = Chrome-based text editor from Github - Beta Channel - Precompiled binary from official repository - Use source mirror host by npm.taobao.org in China
 	pkgver = 1.14.0.beta4
 	pkgrel = 1
 	url = https://github.com/atom/atom
-	install = atom-editor-beta-bin.install
+	install = atom-editor-beta-bin-mirror.install
 	arch = x86_64
 	license = MIT
 	depends = git
@@ -27,5 +27,5 @@ pkgbase = atom-editor-beta-bin
 	md5sums = 501719c940fcd9c3d82fb8edebdaae09
 	md5sums = b05aef80afa76162ff9a1992cef3f0f9
 
-pkgname = atom-editor-beta-bin
+pkgname = atom-editor-beta-bin-mirror
 

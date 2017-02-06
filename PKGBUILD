@@ -1,5 +1,8 @@
-# Maintainer Jordan Klassen <forivall at gmail dot com>
+# Maintainer: Sky Chan <diufanshu@gmail.com>
 
+# Based on atom-editor-beta-bin
+# Maintainer Jordan Klassen <forivall at gmail dot com>
+#
 # Based on atom-editor-bin
 # Maintainer Danny Arnold <despair.blue at gmail dot com>
 # Contributor: Andre Miranda <andreldm1989 AT gmail DOT com>
@@ -8,7 +11,7 @@
 # Contributor: Samantha McVey <samantham@posteo.net>
 # Upstream URL: https://github.com/atom/atom
 
-pkgname=atom-editor-beta-bin
+pkgname=atom-editor-beta-bin-mirror
 pkgver=1.14.0.beta4
 pkgver() {
   curl -sS https://github.com/atom/atom/releases.atom | grep -Eo 'v.*?beta([0-9]+)' | head -n 1 | sed -e 's/-/./' -e 's/v//'
@@ -17,7 +20,7 @@ get_version() {
    printf "%s" $(pkgver) | sed -e 's/\(.*\)\.beta/v\1-beta/'
 }
 pkgrel=1
-pkgdesc="Chrome-based text editor from Github - Beta Channel - Precompiled binary from official repository"
+pkgdesc="Chrome-based text editor from Github - Beta Channel - Precompiled binary from official repository - Use source mirror host by npm.taobao.org in China"
 arch=('x86_64')
 url="https://github.com/atom/atom"
 license=('MIT')
