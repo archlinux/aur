@@ -1,6 +1,6 @@
 # Maintainer: Fernando Barillas <fbis251@mailbox.org>
 pkgname=wire-desktop-bin
-pkgver=2.11.2703
+pkgver=2.11.2705
 pkgrel=1
 pkgdesc='Modern communication, full privacy.'
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ conflicts=('wire-desktop')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
 source_i686=("https://wire-app.wire.com/linux/wire_${pkgver}_i386.deb")
 source_x86_64=("https://wire-app.wire.com/linux/wire_${pkgver}_amd64.deb")
-sha256sums_i686=('92a868d80655d7f394c04d2cf30c946188c3aa150ac7b277581ab8a9e8fbcd90')
-sha256sums_x86_64=('983c75fa89eb946469697019dc5514418a6415638a6924efa0724db66828fa34')
+sha256sums_i686=('fa43db2e458db40218f1101c97d0197901e8985b6fa87fc1c7df7c2c20d023a0')
+sha256sums_x86_64=('d5ff8a80373fec928563e24cd45e97196855c131ee9588e29b9c405a6a71e595')
 
 package() {
   if [ "$CARCH" = "i686" ] ; then
