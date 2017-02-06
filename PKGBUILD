@@ -3,7 +3,7 @@
 pkgname=gopass
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="The team password manager. Written in Go."
+pkgdesc="The slightly more awesome standard unix password manager for teams."
 arch=('x86_64')
 url="https://github.com/justwatchcom/gopass"
 license=('MIT')
