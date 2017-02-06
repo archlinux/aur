@@ -41,6 +41,6 @@ package() {
 	cd "${_pkgname}"
 	make PREFIX=/usr DESTDIR="${pkgdir}" install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
+	install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	install -Dm644 FAQ "${pkgdir}/usr/share/doc/${pkgname}/FAQ"
 }
