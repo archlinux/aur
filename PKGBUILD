@@ -12,7 +12,7 @@ _language='en-US'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
 url='https://www.torproject.org/projects/torbrowser.html.en'
-arch=('x86_64' 'i686')
+arch=('x86_64')
 license=('GPL')
 depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
@@ -24,22 +24,16 @@ optdepends=('zenity: simple dialog boxes'
             'libpulse: PulseAudio audio driver'
             'libnotify: Gnome dialog boxes')
 install="${pkgname}.install"
-
 validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
-source_x86_64=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-linux64-${pkgver}_${_language}.tar.xz"{,.asc})
-source_i686=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-linux32-${pkgver}_${_language}.tar.xz"{,.asc})
-source+=("${pkgname}.desktop"
-         "${pkgname}.png"
-         "${pkgname}.sh")
-
-sha256sums_x86_64=('c4714061748a70d3871dd84ff88d2f317b386d290a5c1fb94a504a1c256f1960' 'SKIP')
-sha256sums_i686=(  '6942bfcb61710b5ad49d7142c8d5f68b945d115dd1554dd4a1c6b0739fe83af8' 'SKIP')
-sha256sums+=('3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7'
-             '17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
-             '1bca06dc844f000fd5aae91a082f0cc0f8ca3397dfbf88b0adc847a4e43e1f16')
-
-noextract_x86_64=("tor-browser-linux64-${pkgver}_${_language}.tar.xz")
-noextract_i686=("tor-browser-linux32-${pkgver}_${_language}.tar.xz")
+source=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-linux64-${pkgver}_${_language}.tar.xz"{,.asc}
+        "${pkgname}.desktop"
+        "${pkgname}.png"
+        "${pkgname}.sh")
+sha256sums=('c4714061748a70d3871dd84ff88d2f317b386d290a5c1fb94a504a1c256f1960' 'SKIP'
+            '3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7'
+            '17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
+            '1bca06dc844f000fd5aae91a082f0cc0f8ca3397dfbf88b0adc847a4e43e1f16')
+noextract=("tor-browser-linux64-${pkgver}_${_language}.tar.xz")
 
 package() {
    cd "${srcdir}"
@@ -56,9 +50,5 @@ package() {
    install -Dm 644 ${pkgname}.png          ${pkgdir}/usr/share/pixmaps/${pkgname}.png
    install -Dm 755 ${pkgname}.sh           ${pkgdir}/usr/bin/${pkgname}
 
-   if [[ "$CARCH" == 'i686' ]]; then
-      install -Dm 644 tor-browser-linux32-${pkgver}_${_language}.tar.xz ${pkgdir}/opt/${pkgname}/tor-browser-linux32-${pkgver}_${_language}.tar.xz
-   else
-      install -Dm 644 tor-browser-linux64-${pkgver}_${_language}.tar.xz ${pkgdir}/opt/${pkgname}/tor-browser-linux64-${pkgver}_${_language}.tar.xz
-   fi
+   install -Dm 644 tor-browser-linux64-${pkgver}_${_language}.tar.xz ${pkgdir}/opt/${pkgname}/tor-browser-linux64-${pkgver}_${_language}.tar.xz
 }
