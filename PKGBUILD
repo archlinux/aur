@@ -5,7 +5,7 @@
 pkgname=epsxe
 _pkgname=ePSXe
 pkgver=2.0.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Enhanced PSX emulator"
 url="http://epsxe.com"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ options=(!strip)
 source=(${pkgname}.desktop ${pkgname}.png ${pkgname}.sh)
 md5sums=('aeb34e2ca34f968630ca133ea821c61c'
          'eb0c46b8ae1355c589792f6be1835e47'
-         '50b64bd9ac4d9a92d40876c9595a4326')
+         '071c43c1cb8f6b6470b7af60ad69247a')
 #if [[ $CARCH == "x86_64" ]]; then
 #    source+=("http://www.epsxe.com/files/ePSXe${pkgver//./}linux_x64.zip")
 #    md5sums+=('79fefeb4bff26bf1d374befb35b390df')
