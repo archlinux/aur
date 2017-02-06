@@ -1,8 +1,8 @@
 # Maintainer: Tyler Swagar <buttpickle69@shaw.ca>
 
 pkgname=ttf-merriweather
-pkgver=2.000
-pkgrel=2
+pkgver=2.001
+pkgrel=1
 pkgdesc='A typeface that is pleasant to read on screens by Sorkin Type Co'
 arch=('any')
 url='https://fonts.google.com/specimen/Merriweather'
@@ -10,23 +10,23 @@ license=('custom:SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git' 'ttf-merriweather-ib')
 install="${pkgname}.install"
-source=("Merriweather-Black-${pkgver}.ttf::https://github.com/google/fonts/raw/9e05c7347870f8e27a4a293a0df006939c4ddda2/ofl/merriweather/Merriweather-Black.ttf"
-        "Merriweather-BlackItalic-${pkgver}.ttf::https://github.com/google/fonts/raw/9e05c7347870f8e27a4a293a0df006939c4ddda2/ofl/merriweather/Merriweather-BlackItalic.ttf"
-        "Merriweather-Bold-${pkgver}.ttf::https://github.com/google/fonts/raw/9e05c7347870f8e27a4a293a0df006939c4ddda2/ofl/merriweather/Merriweather-Bold.ttf"
-        "Merriweather-BoldItalic-${pkgver}.ttf::https://github.com/google/fonts/raw/9e05c7347870f8e27a4a293a0df006939c4ddda2/ofl/merriweather/Merriweather-BoldItalic.ttf"
-        "Merriweather-Italic-${pkgver}.ttf::https://github.com/google/fonts/raw/9e05c7347870f8e27a4a293a0df006939c4ddda2/ofl/merriweather/Merriweather-Italic.ttf"
-        "Merriweather-Light-${pkgver}.ttf::https://github.com/google/fonts/raw/9e05c7347870f8e27a4a293a0df006939c4ddda2/ofl/merriweather/Merriweather-Light.ttf"
-        "Merriweather-LightItalic-${pkgver}.ttf::https://github.com/google/fonts/raw/9e05c7347870f8e27a4a293a0df006939c4ddda2/ofl/merriweather/Merriweather-LightItalic.ttf"
-        "Merriweather-Regular-${pkgver}.ttf::https://github.com/google/fonts/raw/9e05c7347870f8e27a4a293a0df006939c4ddda2/ofl/merriweather/Merriweather-Regular.ttf"
-        "${pkgname}-${pkgver}-OFL.txt::https://github.com/google/fonts/raw/9e05c7347870f8e27a4a293a0df006939c4ddda2/ofl/merriweather/OFL.txt")
-sha256sums=('5350971f435ee4799fbd96e8d4208c177cf468f13e52a5bafabca8933890712b'
-            'c1b73033f0356ecd5362796b391a50c9683bd6bb826429e33b4288dee29636c6'
-            '3b8c53954df2c0b0f47c417cb577423249da5f9cd21fd0e34e403ee0e6ec3eea'
-            '0025097606d3ae5a85abddec77539cb9d55397a2cb2e88ea95c479ea12101288'
-            'e7eea495c8745af73e03b7973f5002006860a991a2c2f213bf690a2276972d01'
-            '0ff2d78185d096bed3098a171f887b678caab9b143cd81f472c0074dd57a365f'
-            '8321208fe77f710d3f7429ba5a7c4873bd9374a361ca8d758a9ff4869aa412c1'
-            'f593e9a01036386e34386e9dbec0824544e591569df649f19c9a8817f6227926'
+source=("Merriweather-Black-${pkgver}.ttf::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/Merriweather-Black.ttf"
+        "Merriweather-BlackItalic-${pkgver}.ttf::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/Merriweather-BlackItalic.ttf"
+        "Merriweather-Bold-${pkgver}.ttf::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/Merriweather-Bold.ttf"
+        "Merriweather-BoldItalic-${pkgver}.ttf::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/Merriweather-BoldItalic.ttf"
+        "Merriweather-Italic-${pkgver}.ttf::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/Merriweather-Italic.ttf"
+        "Merriweather-Light-${pkgver}.ttf::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/Merriweather-Light.ttf"
+        "Merriweather-LightItalic-${pkgver}.ttf::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/Merriweather-LightItalic.ttf"
+        "Merriweather-Regular-${pkgver}.ttf::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/Merriweather-Regular.ttf"
+        "${pkgname}-${pkgver}-OFL.txt::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/OFL.txt")
+sha256sums=('9fbb4fe2db16613f6a1a6c3fac5c16e2642abf76cbcef1fd89f62f0d25faaf65'
+            '04f446a6425e5c6a019169da1c621ce3f1cb22ab43553c7f00b933080e0e5a26'
+            '07c866cc42802badf0a880658041570acf606eb2525bbd26ac4db202a2e129ad'
+            '8ae1576a1791e733fd1d02bc8da9a492e45b23fea224dbae098d88396068f2e5'
+            '5fb616e44968f566e5bd171247d47ab08239ea11ca02d3008cbffdcc3c3e3967'
+            '1ff545213d0e2b5f4c649a8122d41cc92ec4bbc97624eb58d40b4b554618d00e'
+            'f24beefcf02bfbf0337d26ce79676e2324d4972809318ee90193e3c5999a5a29'
+            '93fc8bdd56e2000b7dfee9e350a6c52cca1a4d546ff23b2b11ffd36879351f1d'
             'a66f32f6cb05795b28fea487250d7616274178dcbb946ec198e9f8ef5b30cbc2')
 
 package() {
