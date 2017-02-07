@@ -1,14 +1,14 @@
 pkgbase = neovim-plug
 	pkgdesc = A Neovim plugin manager
 	pkgver = 0.7.2
-	pkgrel = 1
-	url = http://github.com/junegunn/neovim-plug
+	pkgrel = 2
+	url = http://github.com/junegunn/vim-plug
 	install = neovim-plug.install
 	arch = any
 	groups = neovim-plugins
 	license = MIT
 	depends = neovim
-	source = https://github.com/junegunn/vim-plug/archive/0.7.2.tar.gz
+	source = http://github.com/junegunn/vim-plug/archive/0.7.2.tar.gz
 	source = neovim-plug.init.vim
 	sha512sums = c9d2954ad8501390e5c72ddefa4b2ff75843b850a5f330580c347ff9186e3e30c0bcd42bedd1381cf4ea55532a08e4d757b7a89d61726f9e1d38729631c24e78
 	sha512sums = 8e15c2074d0ce36daa0568167bcbcaf1038b8f65edcab661c9d41a9a18714b27accab28f5065408852329827ff4c84c03102c17bd542962cde1f057e88c4044c
