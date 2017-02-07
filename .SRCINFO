@@ -1,6 +1,6 @@
 pkgbase = clog-bin
-	pkgdesc = A conventional changelog for the rest of us
-	pkgver = v0.9.1
+	pkgdesc = Generate beautiful changelogs from your Git commit history
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/clog-tool/clog-cli
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = clog-bin
 	provides = clog
 	conflicts = clog-git
 	replaces = clog-git
-	source = http://wod.twentyfives.net/bin/clog/clog-v0.9.1--unknown-linux-gnu.tar.gz
-	sha256sums = 4d2bda2c691b4227424e871454469075d1636070d37e1037287cf08f027c2e66
+	source_x86_64 = https://github.com/clog-tool/clog-cli/releases/download/v0.9.2/clog-v0.9.2-x86_64-unknown-linux-gnu.tar.gz
+	sha512sums_x86_64 = 1045059d2edf7c72859e4069307ed1f95eec4443c781b655bbcb5fb5dd890861699491e5f2bb63476aa18cf07f8a003881bdb99134a1dbbf572086daff0ce0f3
 
 pkgname = clog-bin
 
