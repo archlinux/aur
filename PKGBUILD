@@ -2,7 +2,7 @@
 
 pkgname=vagrant-libvirt
 pkgver=0.0.37
-pkgrel=1
+pkgrel=2
 _foglibvirtver=0.3.0
 _fogcorever=1.43.0
 _fogjsonver=1.0.2
@@ -43,7 +43,7 @@ sha256sums=('51555842b73b075cbcb9264d7a2e121bf8920f7bf265c9db899d48960bc67fc8'
 package() {
     cd "$srcdir"
 
-    export CONFIGURE_ARGS='with-ldflags=-L/opt/vagrant/embedded/lib with-libvirt-include=/usr/include/libvirt with-libvirt-lib=/usr/lib'
+    export CONFIGURE_ARGS="with-ldflags=-L/opt/vagrant/embedded/lib with-libvirt-include=/usr/include/libvirt with-libvirt-lib=/opt/vagrant/not-existing-lib"
     export GEM_HOME=/opt/vagrant/embedded/gems
     export GEM_PATH=$GEM_HOME
     export PATH=/opt/vagrant/embedded/bin:$PATH
