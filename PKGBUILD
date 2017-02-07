@@ -5,7 +5,7 @@ pkgdesc="Free and open source real-time stenography engine."
 pkgver=3.1.0
 pkgrel=1
 arch=('any')
-license=('GPLv2 or any later version')
+license=('GPL2')
 depends=(
   'python2'
   'python2-appdirs'
