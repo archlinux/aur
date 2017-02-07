@@ -7,7 +7,8 @@ pkgdesc='Images in your terminal, using ANSI and Unicode.'
 arch=('any')
 url='https://github.com/rr-/termi'
 license=('MIT')
-depends=('python' 'python-pip' 'git')
+depends=('python' 'python-pip')
+makedepends=('git')
 source=("$pkgname::git://github.com/rr-/termi.git")
 sha256sums=('SKIP')
 
