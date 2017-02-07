@@ -1,9 +1,9 @@
 # Maintainer: Snaipe
 
 pkgname=criterion
-pkgver=2.3.0
-_fullver=2.3.0-1
-pkgrel=2
+pkgver=2.3.1
+_fullver=2.3.1
+pkgrel=1
 pkgdesc="A KISS, non-intrusive unit testing framework for C and C++"
 arch=('i686' 'x86_64')
 url="http://github.com/Snaipe/${pkgname}.git"
