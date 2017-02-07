@@ -1,0 +1,20 @@
+pkgbase = qtcreator-ros-git
+	pkgdesc = ROS related plugins for Qt Creator
+	pkgver = 0.1.alpha.r68.g2bd6745
+	pkgrel = 1
+	url = https://github.com/ros-industrial/ros_qtc_plugin
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = qt5-tools
+	makedepends = qtcreator-src
+	depends = qtcreator
+	depends = qtermwidget
+	depends = yaml-cpp
+	source = qtcreator-ros-git::git+https://github.com/ros-industrial/ros_qtc_plugin.git
+	source = 0000-floor-include-math.patch
+	sha256sums = SKIP
+	sha256sums = 0668aacb960563aaad8d5b93a160ab8043ec39eec5772cfd4ce93b38d86ac448
+
+pkgname = qtcreator-ros-git
+

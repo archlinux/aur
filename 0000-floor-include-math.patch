@@ -1,0 +1,13 @@
+diff --git a/src/project_manager/ros_project.cpp b/src/project_manager/ros_project.cpp
+index eb84838..8b777f9 100644
+--- a/src/project_manager/ros_project.cpp
++++ b/src/project_manager/ros_project.cpp
+@@ -53,6 +53,8 @@
+ #include <QProcessEnvironment>
+ #include <QtXml/QDomDocument>
+ 
++#include <math.h>
++
+ using namespace Core;
+ using namespace ProjectExplorer;
+ 
