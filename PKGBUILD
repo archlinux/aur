@@ -4,7 +4,7 @@
 
 pkgname=virtualbox-headless
 pkgver=5.1.14
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use. Headless build (no GUI, no Java).'
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
@@ -18,6 +18,7 @@ optdepends=('vde2: Virtual Distributed Ethernet support'
             'virtualbox-ext-vnc: VNC server support'
             'virtualbox-sdk: Developer kit')
 backup=('etc/vbox/vbox.cfg')
+provides=("virtualbox=${pkgver}")
 replaces=('virtualbox-ose' 'virtualbox')
 conflicts=('virtualbox-ose' 'virtualbox')
 install=virtualbox.install
