@@ -1,5 +1,4 @@
 # Maintainer: Tom Richards <tom@tomrichards.net>
-# https://github.com/t-richards/aur-3dm2
 pkgname=3dm2
 pkgver='2.11.00.021'
 pkgrel=1
@@ -10,7 +9,7 @@ license=('custom')
 conflicts=('tw_cli')
 backup=('etc/3dm2/3dm2.conf' 'etc/3dm2/3dm2.pem')
 install=${pkgname}.install
-source=("http://docs.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/3DM2_CLI-linux_10-2-2-1_9-5-5-1.zip"
+source=("https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/3DM2_CLI-linux_10-2-2-1_9-5-5-1.zip"
         '3dm2.service')
 sha256sums=('5354dd539d01163ee6d371da1bd595157dc6db8bfe0907dbb2b920d88cd627a9'
             '45903bd7b2848da5200f15d8e390f68ddfe14a9d5640818e8df75f6817e77463')
