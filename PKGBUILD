@@ -21,13 +21,13 @@ then
   if [ "$CARCH" == "i686" ]
   then
     source+=("zitaajbridgegui::https://bitbucket.org/leledumbo/zita-aj-bridge-gui/downloads/zitaajbridgegui-i386-qt")
-    md5sums+=('a94b2d0f2513c2c0ae3b0c9821360ab7')
+    md5sums+=('d548e37bee5ee741fb6b29a9e9725ffb')
   fi
 
   if [ "$CARCH" == "x86_64" ]
   then
     source+=("zitaajbridgegui::https://bitbucket.org/leledumbo/zita-aj-bridge-gui/downloads/zitaajbridgegui-x86_64-qt")
-    md5sums+=('60bba2a4556bb047a5951818dabb8482')
+    md5sums+=('0d8663cdc307ac931aa88d38b503e7d2')
   fi
 else
   depends+=('gtk2')
@@ -35,13 +35,13 @@ else
   if [ "$CARCH" == "i686" ]
   then
     source+=("zitaajbridgegui::https://bitbucket.org/leledumbo/zita-aj-bridge-gui/downloads/zitaajbridgegui-i386-gtk2")
-    md5sums+=('09621b9e485e0738fce246b3dc159a2c')
+    md5sums+=('b631af4aa255b52d79ef6adadb1b321e')
   fi
 
   if [ "$CARCH" == "x86_64" ]
   then
     source+=("zitaajbridgegui::https://bitbucket.org/leledumbo/zita-aj-bridge-gui/downloads/zitaajbridgegui-x86_64-gtk2")
-    md5sums+=('400ee74794d6428e3fff8445c536f3cb')
+    md5sums+=('6245f77bfdaf25d8b84940443d6f32ea')
   fi
 fi
 
