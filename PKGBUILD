@@ -3,7 +3,7 @@
 # Contributor: Boris Shomodjvarac <shomodj AT gmail DOT com>
 # Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
 pkgname=dbschema
-pkgver=7.4.11
+pkgver=7.4.12
 pkgrel=1
 pkgdesc='Relational Data Browse, Query Builder, SQL Editor, schema deployment and synchronization.'
 arch=('i686' 'x86_64')
