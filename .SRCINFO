@@ -1,11 +1,12 @@
 pkgbase = jid
 	pkgdesc = JSON incremental digger (Go installer)
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/simeji/jid
 	arch = any
 	license = MIT
-	depends = go
+	makedepends = go
+	makedepends = git
 	options = !strip
 	options = !emptydirs
 

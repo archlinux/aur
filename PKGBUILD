@@ -1,13 +1,13 @@
 # Maintainer: Edoardo Rosa <edoz90 at archlinux dot info>
 
 pkgname=jid
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='JSON incremental digger (Go installer)'
 url='https://github.com/simeji/jid'
 arch=('any')
 license=('MIT')
-depends=('go')
+makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 _gourl=github.com/simeji/jid/cmd/jid
 
