@@ -36,6 +36,11 @@ pkgver() {
   python2 setup.py patch_version | sed -n '/^patching version to /{s///;s/+/./;p;Q0};${Q1}'
 }
 
+prepare() {
+  cd "$pkgname"
+  sed -e 's/"py\(rcc\|uic\)5"/"python2-py\15"/' -i pyuic.json
+}
+
 build() {
   cd "$pkgname"
   PYTHONPATH="$(echo -n .eggs/pyqt_distutils-*.egg)" python2 setup.py build
