@@ -1,0 +1,15 @@
+pkgbase = grip-wpirobotics-bin
+	pkgdesc = GRIP Computer Vision Engine, generates C++ and java code for opencv use in FRC robots
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = http://wpiroboticsprojects.github.io/GRIP/#/
+	arch = x86_64
+	license = custom
+	depends = java-runtime
+	source = https://github.com/WPIRoboticsProjects/GRIP/releases/download/v1.5.2/grip-1.5.2-x64.deb
+	source = https://raw.githubusercontent.com/WPIRoboticsProjects/GRIP/master/LICENSE.txt
+	sha256sums = 3bacd7ee72b4fa0c0bbb613e3823d362a880f0d9d8132c136cdac57a6b49ee6c
+	sha256sums = ca4fbc73b15a3754fe97794157f7c2da90dc7df67f4e1989cf0bf6ded9e2f4ef
+
+pkgname = grip-wpirobotics-bin
+
