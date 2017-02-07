@@ -2,17 +2,17 @@
 # Contributor: Alessio Sergi <asergi at archlinux dot us>
 # Contributor: Asa Marco <marcoasa90[at]gmail[.]com>
 pkgname=kupfer
-pkgver=301
+pkgver=302
 pkgrel=1
 pkgdesc="Launcher application written in python. Similar to Gnome-Do / Launchy"
 arch=('i686' 'x86_64')
 url="https://kupferlauncher.github.io"
 license=('GPL3')
 depends=('libkeybinder3' 'python-dbus' 'python' 'python-cairo' 'libwnck3')
-makedepends=('python2' 'intltool')
+makedepends=('intltool')
 install=${pkgname}.install
 source=("https://github.com/kupferlauncher/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.xz")
-sha1sums=('d34c0cc0a4050d14b909f77200344c6e90ec0b14')
+sha1sums=('5cbd6648e83b4b6797930a7bdaca8e83947b8b8a')
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
@@ -21,15 +21,15 @@ build() {
   sed -i 's_rst2man_&2_Ig' wscript
 
   export PYTHON="/usr/bin/python"
-  /usr/bin/python2 waf configure --prefix=/usr \
+  ./waf configure --prefix=/usr \
                   --no-update-mime \
                   --no-update-icon-cache
-  /usr/bin/python2 waf
+  ./waf
 }
 
 package() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
- /usr/bin/python2 waf install -f --destdir="${pkgdir}"
+  ./waf install -f --destdir="${pkgdir}"
 }
 
 
