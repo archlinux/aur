@@ -1,7 +1,7 @@
 # Maintainer: Andrea Ratto <andrearatto_liste@yahoo.it>
 
 pkgname=awslogs
-pkgver=0.4.0
+pkgver=0.8.0
 pkgrel=0
 pkgdesc="AWSLogs client"
 arch=('any')
@@ -9,11 +9,12 @@ license=('Apache')
 url="https://github.com/jorgebastida/awslogs"
 depends=('python>=3'
          'python-boto3>=1.2.1'
+         'python-jmespath>=0.7.1' 'python-jmespath<1.0.0'
          'python-termcolor>=1.1.0'
          'python-dateutil>=2.4.0')
 makedepends=('python-wheel')
-source=("https://pypi.python.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-$pkgver.tar.gz")
-sha256sums=('e0f5ac669f24d719119f757d158080f9e1672ffffff5b11f3dbabdbee0fd9356')
+source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-$pkgver.tar.gz")
+md5sums=('31d055c1e0301bd6b1b7312a55587276')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
