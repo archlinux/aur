@@ -3,6 +3,7 @@ Description=Domoticz Daemon
 After=network.target
 
 [Service]
+Environment=LD_PRELOAD=/usr/lib/libcurl.so.3
 User=http
 ExecStart=/opt/domoticz/domoticz -www 8080 -daemon
 WorkingDirectory=/opt/domoticz
