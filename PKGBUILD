@@ -1,7 +1,7 @@
 _pkgbase=BeautifulDiscord
 pkgname=beautiful-discord
 pkgdesc="Adds custom CSS support to Discord"
-pkgver=git~4129c71
+pkgver=git~7153756
 pkgrel=1
 license=('MIT')
 arch=('any')
