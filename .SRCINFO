@@ -1,11 +1,13 @@
 pkgbase = cnijfilter-mg3500
 	pkgdesc = Canon IJ Printer Driver (for mg3500 series)
 	pkgver = 4.00
-	pkgrel = 1
+	pkgrel = 2
 	url = http://support-sg.canon-asia.com/contents/SG/EN/0100550402.html
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = binutils
+	makedepends = tar
 	depends = atk
 	depends = glibc
 	depends = glib2
