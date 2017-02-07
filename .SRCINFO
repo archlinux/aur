@@ -1,0 +1,36 @@
+pkgbase = cnijfilter-mg3500
+	pkgdesc = Canon IJ Printer Driver (for mg3500 series)
+	pkgver = 4.00
+	pkgrel = 1
+	url = http://support-sg.canon-asia.com/contents/SG/EN/0100550402.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = atk
+	depends = glibc
+	depends = glib2
+	depends = cairo
+	depends = cups
+	depends = fontconfig
+	depends = gtk2
+	depends = pango
+	depends = libpng12
+	depends = popt
+	depends = libtiff
+	depends = libx11
+	depends = libxcursor
+	depends = libxext
+	depends = libxfixes
+	depends = libxi
+	depends = libxinerama
+	depends = libxml2
+	depends = libxrandr
+	depends = libxrender
+	depends = cnijfilter-common
+	source = http://gdlp01.c-wss.com/gds/4/0100005504/01/cnijfilter-mg3500series-4.00-1-deb.tar.gz
+	source = LICENSE
+	sha256sums = c03e6b9873e60ea677ead4fa3c8285b6e323d08517b92bb9f699d84a59aaaceb
+	sha256sums = a64e2aa8d6a8c441d749457dffa875836fcd8cd29398ae6040038ad20189c960
+
+pkgname = cnijfilter-mg3500
+
