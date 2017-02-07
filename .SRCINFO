@@ -1,6 +1,6 @@
 pkgbase = bmdc-bzr
 	pkgdesc = DC + + client based on the source code FreeDC + + with Ignore Users.
-	pkgver = 324
+	pkgver = r865
 	pkgrel = 1
 	url = http://launchpad.net/bmdc++
 	install = bmdc-bzr.install
@@ -24,6 +24,8 @@ pkgbase = bmdc-bzr
 	conflicts = linuxdcpp-bzr
 	conflicts = linuxdcpp-bzr-i18n
 	conflicts = freedcpp
+	source = bmdc-bzr::bzr+https://code.launchpad.net/~manky/bmdc++/trunk
+	md5sums = SKIP
 
 pkgname = bmdc-bzr
 
