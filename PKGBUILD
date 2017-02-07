@@ -4,7 +4,7 @@
 
 pkgname=gnudatalanguage
 pkgver=0.9.7
-pkgrel=6
+pkgrel=1
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=('i686' 'x86_64')
 url="http://gnudatalanguage.sourceforge.net/"

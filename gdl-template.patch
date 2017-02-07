@@ -1,6 +1,6 @@
-diff -up gdl-0.9.6/src/specializations.hpp.gcc6 gdl-0.9.6/src/specializations.hpp
---- gdl-0.9.6/src/specializations.hpp.gcc6	2015-08-24 15:26:47.000000000 -0600
-+++ gdl-0.9.6/src/specializations.hpp	2016-03-03 16:30:46.694379312 -0700
+diff -up gdl-0.9.7/src/specializations.hpp.gcc6 gdl-0.9.7/src/specializations.hpp
+--- gdl-0.9.7/src/specializations.hpp.gcc6	2015-08-24 15:26:47.000000000 -0600
++++ gdl-0.9.7/src/specializations.hpp	2016-03-03 16:30:46.694379312 -0700
 @@ -534,16 +534,6 @@ void Data_<SpDString>::MinMax( DLong* mi
  
  // default_io.cpp
