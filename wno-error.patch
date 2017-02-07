@@ -1,0 +1,6 @@
+27,28c27,28
+< env.Append(CFLAGS= '-Wall -Werror -std=gnu99 -Wno-unknown-pragmas',
+<            CXXFLAGS='-std=gnu++11 -Wall -Werror -Wno-narrowing '
+---
+> env.Append(CFLAGS= '-Wall -std=gnu99 -Wno-unknown-pragmas',
+>            CXXFLAGS='-std=gnu++11 -Wall -Wno-narrowing '
