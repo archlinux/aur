@@ -13,6 +13,12 @@ source=("https://files.pythonhosted.org/packages/source/D/DBUtils/DBUtils-$pkgve
 sha256sums=('fc185892248ff2e008b4ef92192b4247308404464d8508b225f8900caa163c6b'
             '09281f86418aa02de8683d9a2b82ec3cdf8d6ff182b612ee874a003c683b6ee1')
 
+prepare() {
+	cd "$srcdir/DBUtils-$pkgver"
+	sed "s/'DBUtils.Examples', //g" -i setup.py
+	rm -rf DBUtils/{Docs,Examples}
+}
+
 build() {
 	cd "$srcdir/DBUtils-$pkgver"
 	python2 setup.py build
