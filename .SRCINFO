@@ -1,0 +1,24 @@
+pkgbase = kindleforpc
+	pkgdesc = Kindle for PC using wine
+	pkgver = 1.16.44025
+	pkgrel = 1
+	url = amazon.ca
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unarchiver
+	depends = wine
+	depends = desktop-file-utils
+	source = https://s3.amazonaws.com/kindleforpc/44025/KindleForPC-installer-1.16.44025.exe
+	source = LICENSE
+	source = kindleforpc.sh
+	source = kindleforpc.desktop
+	source = kindleforpc.png
+	sha256sums = 2655fa8be7b8f4659276c46ef9f3fede847135bf6e5c1de136c9de7af6cac1e2
+	sha256sums = de87f83a4c9b165ba1d225b28359fc9aaf0c8b449340a041ce75ae35776fbde7
+	sha256sums = 1d80da4ee0f78c37ebed19c2e0aff459eba3eac4bb80133170e029a6c831a1cd
+	sha256sums = db8df5930d4a63ee1298450c8702d2ebba0f0794e1232abb9a69f79227c5eeac
+	sha256sums = 10520bcb15237f5def5c0866473c46bae392199710fb210f35a1a37fedd509d5
+
+pkgname = kindleforpc
+

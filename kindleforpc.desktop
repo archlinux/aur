@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Kindle for PC
+GenericName=Ebook reader
+Comment=Kindle for PC using wine
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Icon=kindleforpc
+Exec=kindleforpc
+Categories=Graphics
