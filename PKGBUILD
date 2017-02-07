@@ -4,17 +4,16 @@
 _pkgname=clog
 pkgname=${_pkgname}-bin
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Generate beautiful changelogs from your Git commit history'
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url='https://github.com/clog-tool/clog-cli'
 license=('MIT')
 
 makedepends=()
 provides=('clog')
 conflicts=('clog-git')
-replaces=('clog-git')
 
 source_i686=(
     'https://github.com/clog-tool/clog-cli/releases/download/v0.9.2/clog-v0.9.2-i686-unknown-linux-gnu.tar.gz'
