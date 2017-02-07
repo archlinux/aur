@@ -2,8 +2,8 @@
 # Maintainer: Ainola
 
 pkgname=scudcloud
-pkgver=1.37
-pkgrel=3
+pkgver=1.39
+pkgrel=1
 epoch=2
 pkgdesc="A Slack client for Linux"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python' 'python-setuptools' 'python-dbus' 'python-pyqt4' 'qtwebkit' 'hunspell-en')
 groups=('messaging')
 source=("https://github.com/raelgc/scudcloud/archive/v${pkgver}.tar.gz")
-sha256sums=('8806c03408c6cc91c4887915cb2155c5f9e5aff063560921e165d7acaead4494')
+sha256sums=('652c29605258797aa8cf4c6ff3c97433f537f7e1d83121b89206b543db231b3c')
 
 package() {
     cd "${pkgname}-${pkgver}"
