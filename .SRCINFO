@@ -1,0 +1,16 @@
+pkgbase = neovim-bufexplorer
+	pkgdesc = A simple buffer list/switcher for Neovim
+	pkgver = 7.4.12
+	pkgrel = 1
+	url = https://github.com/jlanzarotta/bufexplorer
+	install = nvim-doc.install
+	arch = any
+	groups = neovim-plugins
+	license = BSD
+	depends = neovim
+	conflicts = neovim-buffexplorer
+	source = neovim-bufexplorer.tar.gz::https://github.com/jlanzarotta/bufexplorer/archive/7.4.12.tar.gz
+	sha256sums = bcd8549fdd64d149356f1995eaf3f7cd6e0996d8c9128b41085772a24e13a00a
+
+pkgname = neovim-bufexplorer
+
