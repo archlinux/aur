@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-integration-git
-pkgver=snapshot.2015.05.r33.g874b8f6
+pkgver=snapshot.2015.05.r250.g96fa27a
 pkgrel=1
 pkgdesc="Integration libraries for Magnum OpenGL graphics engine (Git version)"
 arch=('i686' 'x86_64')
