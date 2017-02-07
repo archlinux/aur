@@ -1,11 +1,12 @@
 pkgbase = kodi-addon-inputstream-adaptive
 	pkgdesc = InputStream client for adaptive streams for Kodi 17+
 	pkgver = 1.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/liberty-developer/inputstream.adaptive
 	arch = x86_64
 	arch = i686
 	license = GPL2
+	makedepends = kodi-dev
 	depends = kodi-platform=20160516.c8188d8
 	conflicts = kodi-addon-inputstream-adaptive
 	source = https://github.com/peak3d/inputstream.adaptive/archive/v1.0.6.tar.gz
