@@ -4,7 +4,7 @@ pkgbase='flask-table'
 pkgname=('python-flask-table' 'python2-flask-table')
 _module='flask_table'
 pkgver='0.3.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='HTML tables for use with the Flask micro-framework'
 arch=('any')
 url='http://pypi.python.org/pypi/Flask-Table/'
@@ -26,17 +26,19 @@ build() {
 }
 
 package_python2-flask-table() {
-#  cd "flask_table-${pkgver}"
   depends+=('python2' 'python2-flask' 'python2-flask-babel')
   cd "${srcdir}/${_module}-${pkgver}-python2"
+
   python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build --prefix="/usr"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_python-flask-table() {
-#  cd "flask_table-${pkgver}"
   depends+=('python' 'python-flask' 'python-flask-babel')
   cd "${srcdir}/${_module}-${pkgver}"
+
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build --prefix="/usr"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 
