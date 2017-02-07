@@ -1,6 +1,6 @@
-# Maintainer: Takashi Inoue <inoue@pitan.org>
+# Maintainer: Takashi Inoue <inoue(at)pitan.org>
 pkgname=mackerel-agent-git
-pkgver=0.25.1
+pkgver=0.39.3
 pkgrel=1
 pkgdesc="A revolutionary new kind of application performance management"
 arch=('i686' 'x86_64')
