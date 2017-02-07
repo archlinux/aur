@@ -1,6 +1,6 @@
 # Maintainer: Patrick Hanft <mail@patrick-hanft.de>
 pkgname=openfortivpn
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="An open implementation of Fortinet's proprietary PPP+SSL VPN solution"
 arch=('i686' 'x86_64')

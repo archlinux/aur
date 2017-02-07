@@ -1,6 +1,6 @@
 pkgbase = openfortivpn
 	pkgdesc = An open implementation of Fortinet's proprietary PPP+SSL VPN solution
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/adrienverge/openfortivpn
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = openfortivpn
 	depends = openssl
 	depends = ppp
 	backup = etc/openfortivpn/config
-	source = git+https://github.com/adrienverge/openfortivpn.git#tag=v1.2.0
+	source = git+https://github.com/adrienverge/openfortivpn.git#tag=v1.3.0
 	md5sums = SKIP
 
 pkgname = openfortivpn
