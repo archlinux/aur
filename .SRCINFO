@@ -8,6 +8,7 @@ pkgbase = moolticute
 	license = GPL3
 	makedepends = make
 	depends = libusb
+	depends = mooltipass-udev
 	depends = qt5-base
 	depends = qt5-websockets
 	source = moolticute-0.5.5.tar.gz::https://github.com/raoulh/moolticute/archive/v0.5.5-beta.tar.gz

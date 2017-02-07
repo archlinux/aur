@@ -9,6 +9,7 @@ url="https://github.com/raoulh/${pkgname}"
 license=('GPL3')
 
 depends=('libusb'
+         'mooltipass-udev'
          'qt5-base'
          'qt5-websockets')
 
@@ -35,6 +36,10 @@ build() {
 
 package() {
 	cd "${pkgname}-${pkgver}-beta/build/"
+        pwd
 
 	make INSTALL_ROOT="${pkgdir}/" install
+
+        # temporary remove udev rules until fully merged into mooltipass-udev
+        rm -rf "${pkgdir}/usr/lib/udev/"
 }
