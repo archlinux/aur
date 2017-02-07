@@ -1,0 +1,23 @@
+pkgbase = canon-pixma-mx340-complete
+	pkgdesc = Complete stand alone driver set (printing and scanning) for Canon Pixma MX350
+	pkgver = 3.30
+	pkgrel = 1
+	url = http://support-sg.canon-asia.com/contents/SG/EN/0100272202.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = binutils
+	depends = lib32-libcups
+	depends = lib32-popt
+	depends = lib32-libpng12
+	depends = lib32-libusb-compat
+	depends = lib32-libtiff4
+	source = http://gdlp01.c-wss.com/gds/1/0100002721/01/cnijfilter-mx340series-3.30-1-i386-deb.tar.gz
+	source = http://gdlp01.c-wss.com/gds/8/0100002728/01/scangearmp-mx340series-1.50-1-i386-deb.tar.gz
+	md5sums = b31b8b495e86dbda25fc4688917a9228
+	md5sums = c28e04ad07ddcbd235eb72d4503096ae
+
+pkgname = canon-pixma-mx340
+
+pkgname = canon-pixma-common
+
