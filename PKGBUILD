@@ -37,7 +37,8 @@ package() {
 	make INSTALL_ROOT=$pkgdir install
 
 	#clean pyc
-	rm $pkgdir/usr/share/moonplayer/plugins/plugin_acfun.py*
+	rm $pkgdir/usr/share/moonplayer/plugins/*.pyc
+
 	cd $pkgdir/usr/share
 
 	mv icons pixmaps
