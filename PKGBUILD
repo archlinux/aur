@@ -1,31 +1,35 @@
-# Maintainer: rws <elisp dot vim at google mail> (@xd1le on twitter)
+# Maintainer: William Gathoye <william at gathoye dot be>
+# Contributor: rws <elisp dot vim at google mail>
 
 _pkgname=clog
 pkgname=${_pkgname}-git
-pkgver=111
+pkgver=198
 pkgrel=1
-pkgdesc='A conventional changelog for the rest of us'
+
+pkgdesc='Generate beautiful changelogs from your Git commit history'
 arch=('i686' 'x86_64')
-url="https://github.com/thoughtram/${_pkgname}"
+url='https://github.com/clog-tool/clog-cli'
 license=('MIT')
+
 makedepends=('git' 'rust' 'cargo')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=('clog')
+conflicts=('clog-bin')
+
 source=("git://github.com/thoughtram/${_pkgname}.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git rev-list --count HEAD
+    cd "$srcdir/$_pkgname"
+    git rev-list --count HEAD
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  cargo build --release
+    cd "$srcdir/$_pkgname"
+    cargo build --release
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  mkdir -p "${pkgdir}/usr/bin"
-  cp -p target/release/clog "${pkgdir}/usr/bin"
+    cd "$srcdir/$_pkgname"
+    mkdir -p "${pkgdir}/usr/bin"
+    cp -p target/release/clog "${pkgdir}/usr/bin"
 }

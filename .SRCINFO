@@ -1,8 +1,8 @@
 pkgbase = clog-git
-	pkgdesc = A conventional changelog for the rest of us
-	pkgver = 111
+	pkgdesc = Generate beautiful changelogs from your Git commit history
+	pkgver = 198
 	pkgrel = 1
-	url = https://github.com/thoughtram/clog
+	url = https://github.com/clog-tool/clog-cli
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -10,9 +10,9 @@ pkgbase = clog-git
 	makedepends = rust
 	makedepends = cargo
 	provides = clog
-	conflicts = clog
+	conflicts = clog-bin
 	source = git://github.com/thoughtram/clog.git
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = clog-git
 
