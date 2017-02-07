@@ -20,26 +20,31 @@ optdepends=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}-beta.tar.gz")
 sha256sums=('7ea66a6c38822020136bae7aaa841812f9532dbfef5334f06806a1c642958d5e')
 
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}-beta"
+
+    sed -i "s/#define APP_VERSION \"git\"/#define APP_VERSION \"v${pkgver}-beta\"/" ./src/version.h
+}
+
 build() {
-	cd "${pkgname}-${pkgver}-beta"
+    cd "${pkgname}-${pkgver}-beta"
 
-        mkdir build
-        cd build/
+    mkdir build
+    cd build/
 
-        qmake-qt5 ../Moolticute.pro                     \
-                  PREFIX=/usr                           \
-                  QMAKE_CFLAGS_RELEASE="${CFLAGS}"      \
-                  QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"
+    qmake-qt5 ../Moolticute.pro                     \
+              PREFIX=/usr                           \
+              QMAKE_CFLAGS_RELEASE="${CFLAGS}"      \
+              QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"
 
-        make
+    make
 }
 
 package() {
-	cd "${pkgname}-${pkgver}-beta/build/"
-        pwd
+    cd "${pkgname}-${pkgver}-beta/build/"
 
-	make INSTALL_ROOT="${pkgdir}/" install
+    make INSTALL_ROOT="${pkgdir}/" install
 
-        # temporary remove udev rules until fully merged into mooltipass-udev
-        rm -rf "${pkgdir}/usr/lib/udev/"
+    # temporary remove udev rules until fully merged into mooltipass-udev
+    rm -rf "${pkgdir}/usr/lib/udev/"
 }
