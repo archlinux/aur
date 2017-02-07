@@ -19,6 +19,7 @@ depends=(
   'wmctrl'
 )
 makedepends=(
+  'git'
   'python2-babel'
   'python2-mock'
   'python2-pytest'

@@ -5,6 +5,7 @@ pkgbase = plover-git
 	url = http://www.openstenoproject.org/plover/
 	arch = any
 	license = GPLv2 or any later version
+	makedepends = git
 	makedepends = python2-babel
 	makedepends = python2-mock
 	makedepends = python2-pytest
