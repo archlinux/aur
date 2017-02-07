@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/rasguanabana/ytfs"
 license=('MIT')
 depends=('python-requests' 'python-fusepy' 'youtube-dl')
+makedepends=('git')
 source=("git://github.com/rasguanabana/${_pkgname}.git")
 md5sums=('SKIP')
 

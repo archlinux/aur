@@ -5,6 +5,7 @@ pkgbase = ytfs-git
 	url = https://github.com/rasguanabana/ytfs
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = python-requests
 	depends = python-fusepy
 	depends = youtube-dl
