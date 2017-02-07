@@ -1,0 +1,6 @@
+mooltipass-udev*-build.log
+mooltipass-udev*-package.log
+mooltipass-udev*-namcap.log
+mooltipass-udev*.tar.gz
+mooltipass-udev*.tar.xz
+mooltipass-udev*.tar.gz.asc
