@@ -1,13 +1,14 @@
 pkgbase = mssql-server
 	pkgdesc = Microsoft SQL Server for Linux
 	pkgver = 14.0.200.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/en-us/sql-server/sql-server-vnext-including-Linux
 	install = mssql-server.install
 	arch = x86_64
 	license = unknown
 	makedepends = rpmextract
 	depends = python2-configparser
+	depends = numactl
 	noextract = mssql-server-14.0.200.24-2.x86_64.rpm
 	source = https://packages.microsoft.com/rhel/7/mssql-server/mssql-server-14.0.200.24-2.x86_64.rpm
 	md5sums = d498ce2395cca3d094152bc84a9575e5
