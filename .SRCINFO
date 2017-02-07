@@ -1,6 +1,6 @@
 pkgbase = rescached-git
 	pkgdesc = Resolver/DNS cache daemon
-	pkgver = 1.4.0.r0.g0c33bd5
+	pkgver = 1.4.1.r0.gb23a696
 	pkgrel = 1
 	url = https://github.com/shuLhan/rescached
 	install = rescached-git.install
