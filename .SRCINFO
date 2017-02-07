@@ -12,6 +12,8 @@ pkgbase = qtalarm
 	makedepends = gcc
 	depends = qt5-base
 	depends = qt5-multimedia
+	depends = gst-plugins-base
+	depends = gst-plugins-good
 	source = https://random-hackery.net/qtalarm_source/QTalarm-1.9.1.tar.gz
 	md5sums = 708d01ecd65b4680ac5389756a366103
 
