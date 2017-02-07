@@ -1,11 +1,12 @@
 pkgbase = sipcmd-git
 	pkgdesc = Command line soft phone
 	pkgver = r31.ea2f66b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tmakkonen/sipcmd
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = ruby-ronn
 	depends = gcc-libs
 	depends = opal
 	source = sipcmd::git+https://github.com/tmakkonen/sipcmd.git
