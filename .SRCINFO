@@ -1,15 +1,15 @@
 pkgbase = neovim-syntastic
 	pkgdesc = Automatic syntax checking for Neovim
-	pkgver = 3.7.0
+	pkgver = 3.8.0
 	pkgrel = 1
-	url = http://www.vim.org/scripts/script.php?script_id=2736
+	url = https://github.com/vim-syntastic/syntastic
 	install = nvim-doc.install
 	arch = any
 	groups = neovim-plugins
 	license = custom:WTFPL
 	depends = neovim
-	source = neovim-syntastic-3.7.0.tar.gz::https://github.com/scrooloose/syntastic/archive/3.7.0.tar.gz
-	sha256sums = 4006fdd5e786ceeb493817c2b6b0d1e6a403089436c958239359a3e7fb7ab016
+	source = neovim-syntastic-3.8.0.tar.gz::https://github.com/vim-syntastic/syntastic/archive/3.8.0.tar.gz
+	sha256sums = aa46913abdfa35dfbd9f022d084680b375bf43b32b409378f4a697ab576a5673
 
 pkgname = neovim-syntastic
 

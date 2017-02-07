@@ -6,17 +6,17 @@
 
 pkgname=neovim-syntastic
 _pkgname=syntastic
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc='Automatic syntax checking for Neovim'
 arch=('any')
-url='http://www.vim.org/scripts/script.php?script_id=2736'
+url='https://github.com/vim-syntastic/syntastic'
 license=('custom:WTFPL')
 depends=('neovim')
 groups=('neovim-plugins')
 install=nvim-doc.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/scrooloose/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('4006fdd5e786ceeb493817c2b6b0d1e6a403089436c958239359a3e7fb7ab016')
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('aa46913abdfa35dfbd9f022d084680b375bf43b32b409378f4a697ab576a5673')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
