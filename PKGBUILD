@@ -1,7 +1,7 @@
 # Maintainer: Kieran Colford <kieran@kcolford.com>
 pkgname=ddns-git
 pkgver=v2.1.0.r0.49b4994
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic provisioning of dynamic DNS"
 arch=('any')
 url="https://github.com/kcolford/ddns"
@@ -29,5 +29,5 @@ pkgver() {
 package() {
   cd "$srcdir/ddns"
 
-  make DESTDIR="$pkgbuild"/usr install
+  make DESTDIR="$pkgdir"/usr install
 }
