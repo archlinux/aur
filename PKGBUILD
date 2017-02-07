@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-pysha3
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="SHA-3 wrapper (keccak) for Python"
 arch=('i686' 'x86_64')
@@ -10,9 +10,9 @@ makedepends=('python-setuptools')
 url="https://bitbucket.org/tiran/pykeccak"
 license=('PSFL')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/54/cb/d41dd01f060adff284c75c4e7d13c74c2211eee444e30d1488985cc1598c/pysha3-1.0.1.tar.gz)
-md5sums=('0293e3e8e788eee8da105a227c1fd062')
-sha256sums=('89c334f783426da529005fb8e53b46c02e838979c04f097127a0108b01c370df')
+source=(https://pypi.python.org/packages/73/bf/978d424ac6c9076d73b8fdc8ab8ad46f98af0c34669d736b1d83c758afee/pysha3-1.0.2.tar.gz)
+md5sums=('59cd2db7a9988c1f3f6aee40145e0c96')
+sha256sums=('fe988e73f2ce6d947220624f04d467faf05f1bbdbc64b0a201296bb3af92739e')
 
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
