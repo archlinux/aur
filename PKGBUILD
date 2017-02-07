@@ -5,10 +5,10 @@
 pkgname=neovim-taglist
 pkgver=46
 _scriptid=19574
-pkgrel=1
+pkgrel=2
 pkgdesc="A source code browser plugin for Neovim"
 arch=('any')
-url="http://neovim-taglist.sourceforge.net/"
+url="http://www.vim.org/scripts/script.php?script_id=273"
 license=('custom')
 depends=('neovim' 'ctags')
 makedepends=('unzip')

@@ -1,8 +1,8 @@
 pkgbase = neovim-taglist
 	pkgdesc = A source code browser plugin for Neovim
 	pkgver = 46
-	pkgrel = 1
-	url = http://neovim-taglist.sourceforge.net/
+	pkgrel = 2
+	url = http://www.vim.org/scripts/script.php?script_id=273
 	install = nvim-doc.install
 	arch = any
 	groups = neovim-plugins
