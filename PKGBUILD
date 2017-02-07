@@ -1,7 +1,7 @@
 # Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=pacolog
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='List recent commits for Arch Linux packages'
 url='https://github.com/protist/pacolog'
@@ -11,7 +11,7 @@ depends=('w3m')
 conflicts=('paclog')
 
 source=("https://github.com/protist/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('b5878de879a7603cea26ec49cc2a23b5d42f10be89b968f71f4e29415df8b734')
+sha256sums=('7b3b1a13da35af5c8fa2d80ea176924460ebbae13bcf79b6a6c109c7649de0f5')
 
 package() {
   cd "$pkgname-$pkgver"
