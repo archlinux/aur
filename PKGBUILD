@@ -3,7 +3,7 @@
 # Contributor: Orlando Garcia Feal <rodland at gmail dot com>
 
 pkgname=gnudatalanguage
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=6
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=('i686' 'x86_64')
@@ -13,11 +13,11 @@ depends=('python2' 'python2-numpy' 'plplot510' 'gsl' 'readline' 'hdf5' 'netcdf' 
     'netcdf-cxx' 'wxgtk' 'fftw' 'udunits' 'pslib' 'grib_api' 'udunits' 'eigen3')
 makedepends=('cmake')
 options=('!makeflags')
-source=(http://downloads.sourceforge.net/gnudatalanguage/gdl-${pkgver}v2.tgz \
+source=(http://downloads.sourceforge.net/gnudatalanguage/gdl-${pkgver}.tgz \
     gdl.profile \
     gdl-template.patch \
     typedefs.patch)
-md5sums=('6e97c4b005c1850e4b844fd3b8d96098'
+md5sums=('0cd285d85e00e76e37b92310a76579c2'
          '40aa5fd8278cd8e80425c62a577563cc'
          '00f15c08d58033fcc6eb458524ca3433'
          '70d375261e0f83f39332d379f5c0b4a3')
