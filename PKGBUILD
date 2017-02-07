@@ -4,14 +4,14 @@
 
 _name=kupfer
 pkgname=$_name-git
-pkgver=v301.r2.g2bae3642
+pkgver=v302.r11.gd8419c31
 pkgrel=1
 pkgdesc="An interface for quick and convenient access to applications and their documents."
 arch=(any)
 url="https://kupferlauncher.github.io/"
 license=('GPL')
 depends=('libkeybinder3' 'python-dbus' 'python' 'python-cairo' 'libwnck3')
-makedepends=('python2' 'intltool')
+makedepends=('intltool')
 optdepends=('gnome-python-desktop: enables all plugins and gnome integration'
             'xautomation: enables the Send Keys plugin')
 makedepends=('python2' 'intltool' 'git')
@@ -29,15 +29,15 @@ build() {
 	cd "$srcdir/$_name"
 
 	# fix man page generation
-	sed -i 's_rst2man_&2_Ig' wscript
+	#sed -i 's_rst2man_&2_Ig' wscript
 
-	export PYTHON=/usr/bin/python
+	#export PYTHON=/usr/bin/python
 
-	python2 waf configure --prefix=/usr --no-update-mime --no-update-icon-cache
-	python2 waf
+	python waf configure --prefix=/usr --no-update-mime --no-update-icon-cache
+	python waf
 } 
 
 package() {
 	cd "$srcdir/$_name"
-	python2 waf install -f --destdir="$pkgdir/"
+	python waf install -f --destdir="$pkgdir/"
 }
