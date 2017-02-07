@@ -1,14 +1,14 @@
 pkgbase = dbxcli
 	pkgdesc = A command line client for Dropbox built using the Go SDK
-	pkgver = 1.4.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/dropbox/dbxcli
 	arch = x86_64
 	arch = i686
 	license = Apache
 	makedepends = go
-	source = https://github.com/dropbox/dbxcli/archive/v1.4.0.zip
-	md5sums = a900192623494cbe4edbd941fe78491c
+	source = https://github.com/dropbox/dbxcli/archive/v2.0.0.zip
+	md5sums = dd809780a007ddad50ac5b9e6c313aaa
 
 pkgname = dbxcli
 
