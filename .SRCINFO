@@ -1,9 +1,9 @@
 pkgbase = domoticz
 	pkgdesc = Web based home automation
 	pkgver = 3.5877
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.domoticz.com
-	install = domoticz-beta.install
+	install = domoticz.install
 	arch = x86_64
 	arch = arm
 	arch = armv6h
@@ -14,6 +14,7 @@ pkgbase = domoticz
 	depends = curl
 	depends = sqlite
 	depends = boost-libs
+	depends = libcurl-compat
 	conflicts = domoticz-svn
 	conflicts = domoticz-git
 	conflicts = domoticz-beta
@@ -22,7 +23,7 @@ pkgbase = domoticz
 	source = domoticz.service
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 8627b3a82db83a0d94c830c007c09ffd38366505fced9c724a7c29414837f3ad
+	sha256sums = bf9e8cd4e1215ac3847bee60e7078777dbcd14787b33ecc443de451a1b0a1728
 
 pkgname = domoticz
 
