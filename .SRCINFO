@@ -6,6 +6,7 @@ pkgbase = laverna
 	arch = x86_64
 	arch = i686
 	license = MPL2
+	depends = gconf
 	source = laverna.desktop
 	sha512sums = e14850537e1dece925fcae70985115aa44dfae16845069cf6901f1c4dd868d3e77cdee272849d1d61b5886052dc323d8f890d8482c89641d15db18ef3f0e0c8a
 	source_x86_64 = https://github.com/Laverna/laverna/releases/download/0.7.4-RC1/laverna-0.7.4-RC1-linux-x64.zip

@@ -5,6 +5,7 @@ pkgver=0.7.4
 pkgrel=1
 pkgdesc="Laverna is a JavaScript note taking application with Markdown editor and encryption support. Consider it like open source alternative to Evernote."
 arch=("x86_64" "i686")
+depends=('gconf')
 url="https://laverna.cc/"
 license=('MPL2')
 source=("$pkgname.desktop")
