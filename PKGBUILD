@@ -2,13 +2,13 @@
 
 pkgname=wuzz-git
 _pkgname=wuzz
-pkgver=r30.884a634
-pkgrel=1
+pkgver=r42.982d64b
+pkgrel=2
 pkgdesc="Interactive cli tool for HTTP inspection"
 arch=('x86_64' 'i686')
 url="https://github.com/asciimoo/wuzz"
 license=('AGPL3')
-makedepends=('go')
+makedepends=('go' 'git')
 provides=('wuzz')
 conflicts=('wuzz')
 options=('!strip' '!emptydirs')
