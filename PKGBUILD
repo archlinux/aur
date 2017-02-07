@@ -1,4 +1,5 @@
-# Maintainer: Mateus Rodrigues Costa <charles [dot] costar [at] gmail [dot] com>
+# Maintainer: Marcin Nowak <marcin [dot] j [dot] nowak [at] gmail [dot] com>
+# Contributor: Mateus Rodrigues Costa <charles [dot] costar [at] gmail [dot] com>
 # Contributor: PieterDeBruijn <arch [at] pieterdebruijn [dot] nl [dot] com>
 # Contributor: stjhimy <stjhimy [at] gmail [dot] com>
 # Contributor: CYB3R <dima [at] golovin [dot] in>
@@ -6,7 +7,6 @@
 # Contributor: Scias <shining [dot] scias [at] gmail [dot] com>
 # Contributor: darzki <darzki [at] o2 [dot] pl>
 # Contributor: N30N <archlinux [at] alunamation [dot] com>
-# Contributor: Marcin Nowak <marcin [dot] j [dot] nowak [at] gmail [dot] com>
 
 pkgname=lwks-beta
 pkgver=14.0.0.0
