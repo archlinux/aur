@@ -1,3 +1,5 @@
+# Maintainer: Ayakael (Antoine Martin) <antoine.martin@protonmail.com>
+
 pkgname=scangearmp-common
 pkgver=2.20
 pkgrel=1
