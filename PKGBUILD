@@ -3,7 +3,7 @@
 # contributer: rob.til.freedman@googlemail.com
 
 pkgname=moonplayer
-pkgver=0.71.c11a9d4
+pkgver=0.73.r95
 pkgrel=1
 pkgdesc="A qt font-end for mplayer with the abilities of watching and downloading videos from chinese network"
 arch=('i686' 'x86_64')
@@ -12,13 +12,13 @@ license=('GPL')
 depends=('qt5-base' 'python' 'python2' 'mpv' 'you-get')
 makedepends=('git')
 source=(
-	"git+https://github.com/coslyk/moonplayer#commit=c11a9d4d"
+	"git+https://github.com/coslyk/moonplayer#branch=master"
 	)
 sha1sums=('SKIP')
 
 pkgver(){
 	cd $srcdir/$pkgname
-	echo $(grep "Latest version" README.md | awk '{ print $3 }' | sed 's/^v//g')."$(git describe --always)"
+	echo $(grep "Latest version" README.md | awk '{ print $3 }' | sed 's/^v//g')."r$(git rev-list --count HEAD)"
 }
 build() {
 	cd $srcdir/$pkgname/src
