@@ -1,6 +1,6 @@
 # Maintainer: Kieran Colford <kieran@kcolford.com>
 pkgname=ddns-git
-pkgver=r42.f380ceb
+pkgver=r43.c746254
 pkgrel=1
 pkgdesc="Automatic provisioning of dynamic DNS"
 arch=('any')
@@ -15,7 +15,6 @@ optdepends=('curl: for looking up your ip address'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
-backup=('etc/ddns.conf')
 options=()
 install=
 source=("git+$url")

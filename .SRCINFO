@@ -1,6 +1,6 @@
 pkgbase = ddns-git
 	pkgdesc = Automatic provisioning of dynamic DNS
-	pkgver = r42.f380ceb
+	pkgver = r43.c746254
 	pkgrel = 1
 	url = https://github.com/kcolford/ddns
 	arch = any
@@ -17,7 +17,6 @@ pkgbase = ddns-git
 	optdepends = postfix: MX records will be added if the mail server is online
 	provides = ddns
 	conflicts = ddns
-	backup = etc/ddns.conf
 	source = git+https://github.com/kcolford/ddns
 	md5sums = SKIP
 
