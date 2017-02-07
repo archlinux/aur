@@ -1,7 +1,7 @@
 # Maintainer: Ross Whitfield <whitfieldre@ornl.gov>
 pkgname=('python-nexpy' 'python2-nexpy')
 _pkgname=nexpy
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="NeXpy: A Python GUI to analyze NeXus data"
 url="http://nexpy.github.io/nexpy"
@@ -9,7 +9,7 @@ arch=("any")
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-six' 'python2-six')
 source=("https://github.com/nexpy/nexpy/archive/v${pkgver}.tar.gz")
-md5sums=('6b686a2810e488ad8a291aabd06eca9e')
+md5sums=('9409a1a0959496a2129adfe241d3ea82')
 
 prepare() {
     cp -a "${srcdir}/$_pkgname-$pkgver"{,-py2}

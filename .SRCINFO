@@ -1,6 +1,6 @@
 pkgbase = python-nexpy
 	pkgdesc = NeXpy: A Python GUI to analyze NeXus data
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = http://nexpy.github.io/nexpy
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-nexpy
 	makedepends = python2-setuptools
 	makedepends = python-six
 	makedepends = python2-six
-	source = https://github.com/nexpy/nexpy/archive/v0.9.2.tar.gz
-	md5sums = 6b686a2810e488ad8a291aabd06eca9e
+	source = https://github.com/nexpy/nexpy/archive/v0.9.3.tar.gz
+	md5sums = 9409a1a0959496a2129adfe241d3ea82
 
 pkgname = python-nexpy
 	depends = python-numpy
