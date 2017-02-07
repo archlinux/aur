@@ -7,7 +7,7 @@ pkgdesc="Movie downloader for usenet and torrents."
 arch=(any)
 url="https://github.com/galli-leo/Radarr"
 license=('GPL3')
-depends=('mono' 'libmediainfo' 'sqlite')
+depends=('mono' 'libmediainfo' 'sqlite' 'libgdiplus')
 optdepends=('sabnzbd: an NZB downloader'
             'nzbget: an NZB downloader'
             'transmission-cli: a torrent downloader (CLI and daemon version)'
