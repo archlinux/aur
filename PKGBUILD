@@ -18,7 +18,7 @@
 pkgbase=kodi-git
 pkgname=('kodi-git' 'kodi-eventclients-git' 'kodi-tools-texturepacker-git' 'kodi-dev-git')
 _gitname='xbmc'
-pkgver=20170205.0e7867f27b6
+pkgver=20170206.4c792dbb0a2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
@@ -38,8 +38,6 @@ source=(
 )
 sha256sums=('SKIP')
 
-_prefix='/usr'
-
 pkgver() {
   cd "$srcdir/$_gitname"
   git log -1 --date=short --format="%cd.%h" | tr -d '-'
@@ -53,7 +51,7 @@ prepare() {
 
 build() {
   cd kodi-build
-  cmake -DCMAKE_INSTALL_PREFIX=$_prefix \
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DENABLE_EVENTCLIENTS=ON \
     -DLIRC_DEVICE=/run/lirc/lircd \
@@ -73,8 +71,7 @@ package_kodi-git() {
   # depends expeced in FEH.py
   # 'mesa-demos' 'xorg-xdpyinfo'
   depends=(
-    'python2-pillow' 'python2-pybluez' 'python2-simplejson'
-    'mesa-demos' 'xorg-xdpyinfo'
+    'python2-pillow' 'python2-pybluez' 'python2-simplejson' 'xorg-xdpyinfo'
     'bluez-libs' 'fribidi' 'freetype2' 'glew' 'hicolor-icon-theme' 'libcdio'
     'libjpeg-turbo' 'libmariadbclient' 'libmicrohttpd' 'libpulse' 'libssh'
     'libva' 'libvdpau' 'libxrandr' 'libxslt' 'lzo' 'smbclient' 'taglib' 'tinyxml'
@@ -84,13 +81,14 @@ package_kodi-git() {
     'gdb: for meaningful backtraces in case of trouble - STRONGLY RECOMMENDED'
     'afpfs-ng: Apple shares support'
     'bluez: Blutooth support'
+    'python2-pybluez: Bluetooth support'
     'libnfs: NFS shares support'
     'libplist: AirPlay support'
     'libcec: Pulse-Eight USB-CEC adapter support'
     'lirc: Remote controller support'
+    'lsb-release: log distro information in crashlog'
     'pulseaudio: PulseAudio support'
     'shairplay: AirPlay support'
-    'udisks: Automount external drives'
     'unrar: Archives support'
     'unzip: Archives support'
     'upower: Display battery level'
@@ -113,10 +111,10 @@ package_kodi-git() {
   done
 
   # Licenses
-  install -dm755 ${pkgdir}${_prefix}/share/licenses/${pkgname}
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   for licensef in LICENSE.GPL copying.txt; do
-    mv ${pkgdir}${_prefix}/share/doc/kodi/${licensef} \
-      ${pkgdir}${_prefix}/share/licenses/${pkgname}
+    mv "$pkgdir/usr/share/doc/kodi/$licensef" \
+      "$pkgdir/usr/share/licenses/$pkgname"
   done
 
   # python2 is being used
