@@ -1,6 +1,6 @@
 # Maintainer: Kieran Colford <kieran@kcolford.com>
 pkgname=pacman-cycles-git
-pkgver=r2.8ba480d
+pkgver=r3.116d2cd
 pkgrel=1
 pkgdesc="A script to print out installed packages that are part of a dependency cycle."
 arch=('any')
