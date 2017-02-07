@@ -24,7 +24,7 @@
 
 [Unit]
 Description=Docker spec for running Rserve in a sandbox
-Documentation=https://github.com/JanWielemaker/rserve-sandbox https://github.com/JanWielemaker/rserve_client
+Documentation=https://github.com/frnmst/rserve-sandbox https://github.com/JanWielemaker/rserve_client
 Requires=docker.service
 After=docker.service
 

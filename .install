@@ -1,7 +1,7 @@
 post_install() {
     # Add rserve user and group.
-    getent group rserve &>/dev/null || groupadd -r rserve >/dev/null
-    getent passwd rserve &>/dev/null || useradd -m -d /home/rserve \
+    getent group rserve &>/dev/null || groupadd -g 32749 -r rserve >/dev/null
+    getent passwd rserve &>/dev/null || useradd -u 32749 -m -d /home/rserve \
 -s /bin/false -r -g rserve rserve >/dev/null    
     # Exec the chmod just like in the Makefile.
     chmod 750 /home/rserve
