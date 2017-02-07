@@ -1,7 +1,7 @@
 pkgbase = launch4j
 	pkgdesc = Cross-platform Java executable wrapper
 	pkgver = 3.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://launch4j.sf.net
 	arch = i686
 	arch = x86_64

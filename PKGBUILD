@@ -1,6 +1,6 @@
 pkgname="launch4j"
 pkgver="3.9"
-pkgrel="1"
+pkgrel="2"
 arch=('i686' 'x86_64')
 license=('custom')
 pkgdesc="Cross-platform Java executable wrapper"
@@ -35,5 +35,12 @@ Terminal=false
 
 EoF
 
+  cat > launch4j.sh << EoF
+#!/bin/bash
+/opt/launch4j/launch4j
+
+EoF
+
   install -D -m 644 $srcdir/launch4j.desktop $pkgdir/usr/share/applications/launch4j.desktop
+  install -D -m 755 $srcdir/launch4j.sh $pkgdir/usr/bin/launch4j
 }
