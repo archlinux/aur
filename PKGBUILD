@@ -14,7 +14,7 @@ depends=('libkeybinder3' 'python-dbus' 'python' 'python-cairo' 'libwnck3')
 makedepends=('intltool')
 optdepends=('gnome-python-desktop: enables all plugins and gnome integration'
             'xautomation: enables the Send Keys plugin')
-makedepends=('python2' 'intltool' 'git')
+makedepends=('intltool' 'git')
 provides=("$_name")
 conflicts=("$_name")
 source=("git+https://github.com/kupferlauncher/kupfer.git")
@@ -27,11 +27,6 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_name"
-
-	# fix man page generation
-	#sed -i 's_rst2man_&2_Ig' wscript
-
-	#export PYTHON=/usr/bin/python
 
 	python waf configure --prefix=/usr --no-update-mime --no-update-icon-cache
 	python waf
