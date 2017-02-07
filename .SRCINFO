@@ -2,7 +2,7 @@
 # Sun Feb 14 20:35:27 UTC 2016
 pkgbase = qtalarm
 	pkgdesc = Cross-platform Alarm Clock written with QT5
-	pkgver = 4700237.9.1
+	pkgver = 4700237.9.2
 	pkgrel = 1
 	url = http://random-hackery.net/
 	arch = i686
@@ -14,7 +14,8 @@ pkgbase = qtalarm
 	depends = qt5-multimedia
 	depends = gst-plugins-base
 	depends = gst-plugins-good
-	source = https://random-hackery.net/qtalarm_source/QTalarm-1.9.1.tar.gz
+	source = https://random-hackery.net/qtalarm_source/QTalarm-1.9.2.tar.gz
+	source = https://random-hackery.net/qtalarm_source/QTalarm-1.9.2.tar.gz.asc
 	md5sums = 708d01ecd65b4680ac5389756a366103
 
 pkgname = qtalarm
