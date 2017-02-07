@@ -5,15 +5,17 @@
 
 pkgname=telegram-desktop-systemqt
 pkgver=1.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Experimental build of Telegram Desktop (using system Qt)'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('ffmpeg' 'hicolor-icon-theme' 'minizip' 'openal' 'qt5-base')
-makedepends=('cmake' 'dee' 'git' 'gyp-git' 'libappindicator-gtk2' 'libexif' 'libva' 'libwebp' 'mtdev' 'python' 'python2')
+makedepends=('cmake' 'libappindicator-gtk3' 'dee' 'git' 'gyp-git' 'libexif' 'libva' 'libwebp' 'mtdev' 'python' 'python2')
+optdepends=('libappindicator-gtk3: AppIndicator tray icon')
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
+install="telegram-desktop.install"
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v$pkgver"
     "telegramdesktop.desktop"
@@ -22,6 +24,7 @@ source=(
     "Fix-desktop-integration-issues.patch"
     "Flags-for-precompiled-header-and-MOC.patch"
     "Fix-rcc-path.patch"
+    "Use-gtk3-headers.patch"
     "CMakeLists.inj"
 )
 sha256sums=('SKIP'
@@ -31,6 +34,7 @@ sha256sums=('SKIP'
             '4e1c87bad5f2538bf9fce0b54e7f984d7f269e3b1f6e44e1097b8abcc28c68e0'
             '952c7590cb05354c70037745d980fa97c36e36f96a1fa7d0db29a5c6a1d8dbd1'
             'cf4dbb293afdbfd226861a00a42790a15b23bea296eccf35853d104e07ea345a'
+            '5f3ac7c08df0293bed626293dbfb6040764abf28899db7681572cfb1d8bcaa6e'
             '7a06af83609168a8eaec59a65252caa41dcd0ecc805225886435eb65073e9c82')
 
 prepare() {
@@ -39,6 +43,7 @@ prepare() {
     git apply "$srcdir/Fix-desktop-integration-issues.patch"
     git apply "$srcdir/Flags-for-precompiled-header-and-MOC.patch"
     git apply "$srcdir/Fix-rcc-path.patch"
+    git apply "$srcdir/Use-gtk3-headers.patch"
 }
 
 build() {
