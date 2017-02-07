@@ -1,7 +1,7 @@
 # Maintainer: Simon Hanna <simon dot hanna AT serve-me DOT info>
 
 pkgname=('mailman-core-git')
-pkgver=r8875.dfb807e04
+pkgver=r8904.03e04a93e
 pkgrel=1
 pkgdesc="A mailing list management system"
 arch=(any)
@@ -9,7 +9,7 @@ provides=('mailman-core')
 conflicts=('mailman' 'mailman-core-git')
 makedepends=('python-setuptools' 'git')
 depends=('python-zope-interface' 'python-zope-event' 'python-zope-configuration'
-         'python-zope-component' 'python-passlib' 'python-httplib2'
+         'python-zope-component' 'python-passlib'
          'python-flufl-lock' 'python-flufl-i18n' 'python-flufl-bounce' 'python-falcon'
          'python-alembic' 'python-lazr-config' 'python-lazr-smtptest'
          'python-aiosmtpd' 'python-atpublic' 'python-dnspython' 'python-requests'
