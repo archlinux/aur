@@ -1,0 +1,9 @@
+#! /bin/sh
+# Move the compiled kernel modules wacom.ko and wacom_w8001.ko from the kernel specific folder (e.g., 3.17, 4.5) to the root folder.
+
+for f in `find -name "wacom.ko" -o -name "wacom_w8001.ko" -type f`
+do
+  mv $f .
+done
+
+
