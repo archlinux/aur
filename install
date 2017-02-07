@@ -1,26 +1,9 @@
 post_install() {
-  if [[ ! -f /etc/telegramircd/key.pem ]]; then
-    mkdir -p /etc/telegramircd
-    openssl req -x509 -newkey rsa:2048 -nodes -keyout /etc/telegramircd/key.pem -out /etc/telegramircd/cert.pem -subj '/CN=127.0.0.1' -days 9999
-    cat <<NOTE
+  cat <<NOTE
 NOTE:
-1. Redirect https://web.telegram.org/js/app.js to https://127.0.0.1:9003/app.js
-2. Import /etc/telegramircd/cert.pem to your browser. Instructions for Chrome/Chromium are listed below:
-  a. Visit chrome://settings/certificates
-  b. Import /etc/telegramircd/cert.pem
-  c. 'Authorities' tab page -> 'Untrusted 127.0.0.1' -> 'Edit...' -> 'Trust this certificate for identifying websites.'
+1. Install aur/telegram-cli-git
+2. Login `telegram-cli` to get credential before using telegramircd
 
 Refer to https://github.com/MaskRay/telegramircd for details.
 NOTE
-  fi
-}
-
-post_upgrade() {
-  post_install
-}
-
-post_remove() {
-  echo Removing /etc/telegramircd/
-  rm /etc/telegramircd/{cert,key}.pem
-  rmdir /etc/telegramircd
 }

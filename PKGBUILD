@@ -2,7 +2,7 @@
 
 pkgname=telegramircd-git
 _pkgname=telegramircd
-pkgver=r23.9ec2ae2
+pkgver=r30.54148e7
 pkgrel=1
 pkgdesc="IRC server capable of controlling web.telegram.org"
 arch=('i686' 'x86_64')
@@ -24,6 +24,5 @@ pkgver() {
 
 package() {
   install -D "$_pkgname/telegramircd.py" "$pkgdir/usr/bin/telegramircd"
-  install -Dm644 "$_pkgname/app.js" -t "$pkgdir/usr/share/telegramircd/"
   install -Dm644 "$_pkgname/telegramircd.service" -t "$pkgdir/usr/lib/systemd/system/"
 }
