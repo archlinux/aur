@@ -1,8 +1,8 @@
 # Maintainer: tuxflo
 
 pkgname=ecodmsclient
-pkgver=16.09.1
-pkgrel=2
+pkgver=16.09.2
+pkgrel=3
 pkgdesc="Document Management Software"
 arch=('x86_64')
 url="http://www.ecodms.de/index.php/de/"
@@ -11,9 +11,9 @@ depends=('bash' 'libappindicator-gtk2' 'qt5-svg' 'qt5-x11extras' 'libpng12' 'fre
 options=('!strip')
 install=${pkgname}.install
 
-source_x86_64=("ecodmsclient-${pkgver}_amd64.deb::http://www.ecodms.de/ecodms_160964/xenial/./ecodmsclient-16.09-1_amd64.deb")
+source_x86_64=("ecodmsclient-${pkgver}_amd64.deb::http://www.ecodms.de/ecodms_160964/xenial/./ecodmsclient-16.09-2-0_amd64.deb")
 
-md5sums_x86_64=('8eb936a67b53164f12284e6b872bc9f3')
+md5sums_x86_64=('b1d8c27a12b2fb235dfb1f26a204532b')
 
 package() {
   cd "${srcdir}"
