@@ -1,6 +1,6 @@
 pkgbase = wire-desktop-bin
 	pkgdesc = Modern communication, full privacy.
-	pkgver = 2.11.2707
+	pkgver = 2.11.2710
 	pkgrel = 1
 	url = https://wire.com/
 	arch = i686
@@ -13,10 +13,10 @@ pkgbase = wire-desktop-bin
 	depends = libxtst
 	depends = nss
 	conflicts = wire-desktop
-	source_i686 = https://wire-app.wire.com/linux/wire_2.11.2707_i386.deb
-	sha256sums_i686 = 301fd17c85167832b904008ec0d25bdd6a33e11805d5fd7727777e495bf0218c
-	source_x86_64 = https://wire-app.wire.com/linux/wire_2.11.2707_amd64.deb
-	sha256sums_x86_64 = a2a951a7914245affd06c74469a9e3b9f5c449aed6450296cb3b5f053d3b72b1
+	source_i686 = https://wire-app.wire.com/linux/wire_2.11.2710_i386.deb
+	sha256sums_i686 = 3810a0566e98f7fa915d3eed33f9363692409aa81fcc2353194d14e61dc779ab
+	source_x86_64 = https://wire-app.wire.com/linux/wire_2.11.2710_amd64.deb
+	sha256sums_x86_64 = 4a22b9ec694443db29ad28fc105ef29ce5b4b242cab0bf299274e2e5d0bd2dbc
 
 pkgname = wire-desktop-bin
 
