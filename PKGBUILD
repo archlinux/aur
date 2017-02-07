@@ -1,7 +1,7 @@
 # Maintainer: Alex Kubica <alexkubicail@gmail.com>
 # Contributor: Sébastien Feugère <smonff@riseup.net>
 pkgname=gopanda
-pkgver=2.5
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="Client for the Pandanet-IGS go Server" 
 arch=('i686' 'x86_64')

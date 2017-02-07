@@ -1,6 +1,6 @@
 pkgbase = gopanda
 	pkgdesc = Client for the Pandanet-IGS go Server
-	pkgver = 2.5
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = http://pandanet-igs.com/communities/gopanda2
 	arch = i686
