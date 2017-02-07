@@ -1,7 +1,7 @@
 pkgbase = cnijfilter-mx340
 	pkgdesc = Canon IJ Printer Driver (for mx340 series)
 	pkgver = 3.30
-	pkgrel = 1
+	pkgrel = 2
 	url = http://support-sg.canon-asia.com/contents/SG/EN/0100272202.html
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = cnijfilter-mx340
 	depends = pango
 	depends = libpng12
 	depends = popt
-	depends = libtiff3
+	depends = libtiff
 	depends = libx11
 	depends = libxcursor
 	depends = libxext
