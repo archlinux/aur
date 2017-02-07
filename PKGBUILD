@@ -8,6 +8,7 @@ url="http://support-sg.canon-asia.com/contents/SG/EN/0100272202.html"
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('atk' 'glibc' 'glib2' 'cairo' 'cups' 'fontconfig' 'gtk2' 'pango' 'libpng12' 'popt' 'libtiff' 'libx11' 'libxcursor' 'libxext' 'libxfixes' 'libxi' 'libxinerama' 'libxml2' 'libxrandr' 'libxrender' 'cnijfilter-common')
+makedepends=('binutils' 'tar')
 source=(
 "http://gdlp01.c-wss.com/gds/1/0100002721/01/cnijfilter-mx340series-${pkgver}-1-i386-deb.tar.gz"
 "LICENSE"
