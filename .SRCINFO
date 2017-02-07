@@ -1,19 +1,20 @@
 pkgbase = cargo-nightly-bin
-	pkgdesc = Cargo downloads your Rust project's dependencies and compiles your project.
-	pkgver = 20160517
+	pkgdesc = Rust package manager
+	pkgver = 20161126
 	pkgrel = 1
-	url = http://crates.io/
+	url = https://crates.io/
 	arch = x86_64
 	arch = i686
 	license = APACHE
 	license = MIT
-	depends = gcc-libs
-	depends = zlib
-	optdepends = rust: for rustc
+	depends = curl
+	depends = rust
 	provides = cargo
 	conflicts = cargo
-	source = https://static.rust-lang.org/cargo-dist/cargo-nightly--unknown-linux-gnu.tar.gz
-	md5sums = SKIP
+	source_x86_64 = https://static.rust-lang.org/cargo-dist/cargo-nightly-x86_64-unknown-linux-gnu.tar.gz
+	md5sums_x86_64 = SKIP
+	source_i686 = https://static.rust-lang.org/cargo-dist/cargo-nightly-i686-unknown-linux-gnu.tar.gz
+	md5sums_i686 = SKIP
 
 pkgname = cargo-nightly-bin
 
