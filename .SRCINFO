@@ -1,0 +1,32 @@
+pkgbase = rsbag-tools-cl-git
+	pkgdesc = RSBag common lisp tools
+	pkgver = 0.16.g44dfe04
+	pkgrel = 1
+	url = https://projects.cor-lab.org/projects/rsbag
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = rsb-proto-stable-git
+	makedepends = sbcl
+	options = !strip
+	source = rsbag-tools-cl::git+https://code.cor-lab.org/git/rsbag.git.tools-cl
+	source = rsbag-cl::git+https://code.cor-lab.org/git/rsbag.git.cl
+	source = rsb-tools-cl::git+https://code.cor-lab.org/git/rsb.git.tools-cl
+	source = rsb-cl::git+https://code.cor-lab.org/git/rsb.git.cl
+	source = cl-protobuf.tar.gz::https://github.com/scymtym/cl-protobuf/archive/release-0.1.tar.gz
+	source = network.spread.tar.gz::https://github.com/scymtym/network.spread/archive/release-0.3.1.tar.gz
+	source = architecture.builder-protocol.tar.gz::https://github.com/scymtym/architecture.builder-protocol/archive/release-0.5.tar.gz
+	source = iterate-sequence::git+https://github.com/scymtym/iterate-sequence
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = c5934f42b3f923564ea2debc207a5a3e
+	md5sums = 4f548d04ab6a1e86832f266d7276ed4f
+	md5sums = 8a0bca93913ee772fc9267485659552b
+	md5sums = SKIP
+
+pkgname = rsbag-tools-cl-git
+
