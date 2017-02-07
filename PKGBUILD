@@ -2,7 +2,7 @@
 
 pkgname=cnijfilter-mx340
 pkgver=3.30
-pkgrel=2
+pkgrel=3
 pkgdesc="Canon IJ Printer Driver (for mx340 series)"
 url="http://support-sg.canon-asia.com/contents/SG/EN/0100272202.html"
 arch=('i686' 'x86_64')
