@@ -29,7 +29,5 @@ pkgver() {
 package() {
   cd "$srcdir/ddns"
 
-  mkdir -p "$pkgdir"/{etc/ddns,usr/{bin,lib/systemd/system}}
-  install ddns "$pkgdir/usr/bin/ddns"
-  cp systemd/ddns.{service,timer} "$pkgdir"/usr/lib/systemd/system
+  make DESTDIR="$pkgbuild"/usr install
 }
