@@ -11,7 +11,8 @@ pkgdesc='Python library for validating Python data structures.'
 arch=('i686' 'x86_64')
 url="https://github.com/keleshev/${_name}"
 license=('MIT')
-makedepends=('python-setuptools' 'python-pytest' 'python2-setuptools' 'python2-pytest')
+makedepends=('python2-setuptools' 'python2-pytest')
+#makedepends=('python-setuptools' 'python-pytest' 'python2-setuptools' 'python2-pytest')
 source=("https://pypi.python.org/packages/source/s/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('b7494da450ce247fe8c7f2a8f9a73fbe5f1a634f64f734ce62aaba0708d76f0f')
 
