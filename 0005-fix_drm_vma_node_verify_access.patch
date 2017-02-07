@@ -1,0 +1,22 @@
+--- a/amd/amdgpu/amdgpu_ttm.c	2017-01-23 03:01:42.000000000 +0100
++++ b/amd/amdgpu/amdgpu_ttm.c	2017-02-06 13:49:25.767120946 +0100
+@@ -251,11 +251,19 @@
+ 
+ static int amdgpu_verify_access(struct ttm_buffer_object *bo, struct file *filp)
+ {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
++	struct drm_file *file_priv;
++#endif
+ 	struct amdgpu_bo *abo = container_of(bo, struct amdgpu_bo, tbo);
+ 
+ 	if (amdgpu_ttm_tt_get_usermm(bo->ttm))
+ 		return -EPERM;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
++	file_priv = filp->private_data;
++	return drm_vma_node_verify_access(&abo->gem_base.vma_node, file_priv);
++#else
+ 	return drm_vma_node_verify_access(&abo->gem_base.vma_node, filp);
++#endif
+ }
+ 
+ static void amdgpu_move_null(struct ttm_buffer_object *bo,

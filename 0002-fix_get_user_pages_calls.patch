@@ -1,0 +1,42 @@
+--- a/include/kcl/kcl_mm.h.orig	2017-01-28 02:30:14.442885328 +0100
++++ b/include/kcl/kcl_mm.h	2017-01-28 02:37:26.820383177 +0100
+@@ -5,15 +5,23 @@
+ 
+ static inline int kcl_get_user_pages(struct task_struct *tsk, struct mm_struct *mm,
+                                      unsigned long start, unsigned long nr_pages,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
++                                     unsigned int gup_flags, struct page **pages,
++#else
+                                      int write, int force, struct page **pages,
++#endif
+                                      struct vm_area_struct **vmas)
+ {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
++        return get_user_pages(start, nr_pages, gup_flags, pages, vmas);
++#else
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
+         return get_user_pages(start, nr_pages, write, force, pages, vmas);
+ #else
+         return get_user_pages(tsk, mm, start, nr_pages,
+                               write, force, pages, vmas);
+ #endif
++#endif
+ }
+ 
+ #endif /* AMDKCL_MM_H */
+--- a/amd/amdgpu/amdgpu_ttm.c.orig	2017-01-28 02:47:28.851390146 +0100
++++ b/amd/amdgpu/amdgpu_ttm.c	2017-01-28 02:49:47.584961727 +0100
+@@ -662,8 +662,13 @@
+ 		list_add(&guptask.list, &gtt->guptasks);
+ 		spin_unlock(&gtt->guptasklock);
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
++		r = kcl_get_user_pages(current, current->mm, userptr, num_pages,
++				       write ? FOLL_WRITE : 0, p, NULL);
++#else
+ 		r = kcl_get_user_pages(current, current->mm, userptr, num_pages,
+ 				       write, 0, p, NULL);
++#endif
+ 
+ 		spin_lock(&gtt->guptasklock);
+ 		list_del(&guptask.list);

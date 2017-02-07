@@ -1,0 +1,26 @@
+diff --git a/amd/display/amdgpu_dm/amdgpu_dm_types.c b/amd/display/amdgpu_dm/amdgpu_dm_types.c
+index edc8e86..0b38016 100644
+--- a/amd/display/amdgpu_dm/amdgpu_dm_types.c
++++ b/amd/display/amdgpu_dm/amdgpu_dm_types.c
+@@ -1675,6 +1676,10 @@ static int dm_plane_helper_prepare_fb(
+ 	struct drm_plane *plane,
+ 	struct drm_framebuffer *fb,
+ 	const struct drm_plane_state *new_state)
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
++static int dm_plane_helper_prepare_fb(
++	struct drm_plane *plane,
++	struct drm_plane_state *new_state)
+ #else
+ static int dm_plane_helper_prepare_fb(
+ 	struct drm_plane *plane,
+@@ -1718,6 +1723,10 @@ static void dm_plane_helper_cleanup_fb(
+ 	struct drm_plane *plane,
+ 	struct drm_framebuffer *fb,
+ 	const struct drm_plane_state *old_state)
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
++static void dm_plane_helper_cleanup_fb(
++	struct drm_plane *plane,
++	struct drm_plane_state *old_state)
+ #else
+ static void dm_plane_helper_cleanup_fb(
+ 	struct drm_plane *plane,

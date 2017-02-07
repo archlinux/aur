@@ -1,0 +1,12 @@
+--- a/Makefile.original	2017-01-28 02:08:55.850223022 +0100
++++ b/Makefile	2017-01-28 02:10:59.110499356 +0100
+@@ -24,6 +24,9 @@
+ subdir-ccflags-y += -DOS_NAME_SLE
+ else ifeq ("sles",$(OS_NAME))
+ subdir-ccflags-y += -DOS_NAME_SLE
++else ifeq ("arch",$(OS_NAME))
++subdir-ccflags-y += -DOS_NAME_ARCH
++OS_VERSION = "0.0"
+ else
+ subdir-ccflags-y += -DOS_NAME_UNKNOWN
+ endif
