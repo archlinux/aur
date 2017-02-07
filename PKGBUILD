@@ -3,25 +3,27 @@
 
 pkgname=mssql-tools
 pkgver=14.0.3.0
-_prodver=${pkgver}-1
-_binver=13.0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Microsoft® SQL Server® Tools for Linux"
 arch=('x86_64')
 url="https://www.microsoft.com/en-us/sql-server/sql-server-vnext-including-Linux"
-license=('unknown')
+license=('custom')
 depends=('msodbcsql')
-makedepends=('libarchive')
-source=("https://packages.microsoft.com/rhel/7/prod/$pkgname-$_prodver.x86_64.rpm")
-md5sums=('bf0cfb7f21c197d098b43ed1f510afcd')
-noextract=("$pkgname-$_prodver.x86_64.rpm")
+makedepends=('patchelf')
+options=('!strip')
+source=("https://packages.microsoft.com/rhel/7/prod/$pkgname-$pkgver-1.x86_64.rpm")
+sha256sums=('9db9907a8151648d211bd8005c2b87ffebeca9b43c25ee56e9640804a72eaee6')
 
 package() {
-  cd "$pkgdir"
-  bsdtar -x -f $srcdir/$pkgname-$_prodver.x86_64.rpm
-  mkdir -p $pkgdir/usr/bin/
-  chmod +x $pkgdir/opt/$pkgname/bin/sqlcmd
-  chmod +x $pkgdir/opt/$pkgname/bin/bcp
-  ln -s /opt/$pkgname/bin/sqlcmd $pkgdir/usr/bin/sqlcmd
-  ln -s /opt/$pkgname/bin/bcp $pkgdir/usr/bin/bcp
+  cd "$srcdir"
+  mv usr/share/{doc,licenses}
+  mv usr opt "$pkgdir"
+
+  install -dm755 "$pkgdir"/usr/bin/
+
+  cd "$pkgdir"/opt/$pkgname/bin
+  for bin in *; do
+    patchelf --set-rpath /opt/microsoft/msodbcsql/lib64 $bin
+    ln -s /opt/$pkgname/bin/$bin "$pkgdir"/usr/bin/$bin
+  done
 }
