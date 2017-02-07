@@ -1,0 +1,19 @@
+pkgbase = yandex-pgmigrate
+	pkgdesc = PostgreSQL migrations made easy
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/yandex/pgmigrate
+	arch = any
+	license = PostgreSQL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-sqlparse>=0.2.1
+	depends = python-psycopg2>=2.6.2
+	depends = python-yaml>=3.12
+	options = !emptydirs
+	source = https://github.com/yandex/pgmigrate/archive/v1.0.0.zip
+	md5sums = 6a1b0dd178c9afe12c4969596f8a686d
+	sha256sums = d90c926196b9701aa4959d36e364f93402aca0a1a2605481072969222b912859
+
+pkgname = yandex-pgmigrate
+
