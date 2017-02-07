@@ -43,10 +43,11 @@ package_neovim-airline() {
 
 package_neovim-airline-themes(){
   # set package local variables
+  url='https://github.com/vim-airline/vim-airline-themes'
   pkgver="$pkgver.$_themes_pkgver"
-  pkgrel=2
+  pkgrel=3
   pkgdesc='Themes for neovim-airline'
-  depends=('neovim-airline')
+  depends=('neovim-airline' 'neovim')
 
   cd "${pkgname[1]}"
   install -dv "$pkgdir/$_installpath"

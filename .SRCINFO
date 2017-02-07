@@ -19,5 +19,7 @@ pkgname = neovim-airline
 
 pkgname = neovim-airline-themes
 	pkgdesc = Themes for neovim-airline
+	url = https://github.com/vim-airline/vim-airline-themes
 	depends = neovim-airline
+	depends = neovim
 
