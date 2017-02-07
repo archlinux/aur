@@ -22,7 +22,7 @@ options=()
 install=
 changelog=
 source=("$url/archive/v$pkgver.tar.gz")
-md5sums=('2c9e54767885e70dc25737be7a69bc0e')
+md5sums=('7c2019cfa87a37c92e2fc00c87c8760c')
 noextract=()
 
 package() {
