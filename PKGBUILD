@@ -1,8 +1,8 @@
 # Maintainer: Weitian Leung <weitianleung[at]gmail[dot]com>
 
 pkgname=bing-wallpaper-git
-pkgver=r29
-pkgrel=3
+pkgver=r36
+pkgrel=1
 pkgdesc="Change wallpaper from Bing daily"
 arch=(any)
 url="https://github.com/marguerite/linux-bing-wallpaper"
