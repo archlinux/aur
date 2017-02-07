@@ -1,6 +1,5 @@
 post_install() {
   cat <<NOTE
-NOTE:
 1. Install aur/telegram-cli-git
 2. Login `telegram-cli` to get credential before using telegramircd
 

@@ -2,7 +2,7 @@
 
 pkgname=telegramircd-git
 _pkgname=telegramircd
-pkgver=r30.54148e7
+pkgver=r30.45a525a
 pkgrel=1
 pkgdesc="IRC server capable of controlling web.telegram.org"
 arch=('i686' 'x86_64')
