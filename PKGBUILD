@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-git
-pkgver=snapshot.2015.05.r178.g4389a58
+pkgver=snapshot.2015.05.r1216.gcd70bc8f
 pkgrel=1
 pkgdesc="C++11/C++14 and OpenGL 2D/3D graphics engine (Git version)"
 arch=('i686' 'x86_64')
@@ -30,6 +30,7 @@ build() {
         -DWITH_GLXAPPLICATION=ON \
         -DWITH_WINDOWLESSGLXAPPLICATION=ON \
         -DWITH_GLXCONTEXT=ON \
+        -DWITH_OPENGLTESTER=ON \
         -DWITH_MAGNUMFONT=ON \
         -DWITH_MAGNUMFONTCONVERTER=ON \
         -DWITH_OBJIMPORTER=ON \
@@ -38,7 +39,9 @@ build() {
         -DWITH_WAVAUDIOIMPORTER=ON \
         -DWITH_DISTANCEFIELDCONVERTER=ON \
         -DWITH_FONTCONVERTER=ON \
-        -DWITH_MAGNUMINFO=ON
+        -DWITH_IMAGECONVERTER=ON \
+        -DWITH_MAGNUMINFO=ON \
+        -DWITH_AL_INFO=ON
     make
 }
 
