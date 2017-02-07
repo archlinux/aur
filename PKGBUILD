@@ -5,8 +5,8 @@ _other_agents=n # you want agents for other operating systems? (y / n)
 _agent=n # agent is in seperate package check_mk-agent
 
 pkgname=check_mk
-pkgver=1.2.8p13
-pkgrel=2
+pkgver=1.2.8p16
+pkgrel=1
 pkgdesc="A comprehensive IT monitoring solution in the tradition of Nagios"
 license=('GPL2')
 arch=('any')
@@ -28,7 +28,7 @@ source=(
   'check_mk.patch'
   'setup.sh.patch'
 )
-md5sums=('df04190dea014f586f2723a6fb6b5419'
+md5sums=('b018d0c4eba2f10c99469ec0f64a879f'
          '078175f2851419ae53346a06a42f9f2c'
          'e10a352fff0563bddeb788c7f9aee759'
          '5e8cb4a9ca2b7e17c1c902be43808653'
