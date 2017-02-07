@@ -2,7 +2,7 @@
 _pyname=knossos
 pkgname=fs2-knossos
 pkgver=0.3.1
-pkgrel=2
+pkgrel=1
 pkgdesc="A simple mod manager for FreeSpace 2 Open"
 arch=('any')
 url="https://github.com/ngld/knossos"
