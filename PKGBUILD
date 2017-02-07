@@ -7,8 +7,8 @@
 
 _pluginame=i2pbote
 pkgname=i2p-plugin-${_pluginame}
-pkgver=0.4.3
-pkgrel=2
+pkgver=0.4.5
+pkgrel=1
 pkgdesc="A distributed email client for I2P"
 arch=('any')
 url="http://bote.i2p/"
@@ -21,7 +21,7 @@ provides=('i2pbotes')
 source=("file://${_pluginame}.su3")
 noextract=("file://${_pluginame}.su3")
 install="${_pluginame}.install"
-sha256sums=('19ae8e09f932d111dc8016e9a3c4f6fa78c059a650d3d735de08d5c1233b7780')
+sha256sums=('f10eada5acb9c9d55068d01dacc086b945530c9a28dab529e8e5830827cc2da7')
 
 _unpack_dir() {
   # use this to unpack the .war/.jar files. I2P does this automaticly on install
