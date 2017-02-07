@@ -1,0 +1,7 @@
+post_install() {
+    ln -s /usr/share/aria-ng /srv/http/
+}
+
+post_remove() {
+    rm -f /srv/http/aria-ng
+}

@@ -1,0 +1,26 @@
+pkgbase = aria-ng-git
+	pkgdesc = AriaNg, A Better Web Frontend for aria2 (a cross-platform download utility).
+	pkgver = r285.2e18f58
+	pkgrel = 1
+	url = https://github.com/mayswind/AriaNg
+	install = aria-ng-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = bower
+	makedepends = gulp
+	depends = aria2
+	provides = aria-ng-git
+	conflicts = aria-ng-git
+	source = aria-ng::git+https://github.com/mayswind/AriaNg.git
+	source = apache.example.conf
+	source = nginx.example.conf
+	source = aria-ng-git.install
+	sha256sums = SKIP
+	sha256sums = 66ec82974d11c30348df6ea705702fb569e9a6ca5ada8ca64445557468106148
+	sha256sums = c03411b9cc27fc1a8e4dfe8a8a4c5ce67b0a35abbfaff10d20a7faa692dfb617
+	sha256sums = c78e65e21d604dac4f0aa097006d5f81a487ddcf5f14dedad07ec11c6df9e79c
+
+pkgname = aria-ng-git
+
