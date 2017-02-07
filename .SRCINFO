@@ -1,0 +1,25 @@
+pkgbase = xmds
+	pkgdesc = software package that allows the fast and easy solution of sets of ordinary, partial and stochastic differential equations, using a variety of efficient numerical algorithms
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = http://www.xmds.org/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = python2
+	depends = hdf5
+	depends = fftw
+	depends = gsl
+	depends = python2-numpy
+	depends = python2-lxml
+	depends = python2-h5py
+	depends = python2-mpmath
+	depends = python2-markdown
+	depends = python2-cheetah
+	depends = python2-pyparsing
+	optdepends = openmp
+	source = https://sourceforge.net/projects/xmds/files/xmds-2.2.3.tar.gz
+	md5sums = ab913b2983e922a36dd8c9b5bb401ba9
+
+pkgname = xmds
+
