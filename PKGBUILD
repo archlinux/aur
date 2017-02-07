@@ -14,6 +14,7 @@ makedepends=()
 checkdepends=()
 optdepends=()
 
+# https://web.bourgeois.eu/static/pgp/3486CBAC7F116CA71351B0D7F7181B2010660E6F.asc
 validpgpkeys=('3486CBAC7F116CA71351B0D7F7181B2010660E6F')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/${pkgname}.git/snapshot/${pkgname}-${pkgver}.tar.gz"
