@@ -1,13 +1,13 @@
 pkgbase = the-libs
 	pkgdesc = Common libraries for the- applications by Victor Tran
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 0
 	url = https://github.com/vicr123/the-libs
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = qt5-base
-	source = the-libs-1.1::git+https://github.com/vicr123/the-libs#branch=master
+	source = the-libs-1.2::git+https://github.com/vicr123/the-libs#branch=master
 	md5sums = SKIP
 
 pkgname = the-libs
