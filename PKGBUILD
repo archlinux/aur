@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-examples-git
-pkgver=snapshot.2015.05.r184.gcfb6b22
+pkgver=snapshot.2015.05.r216.g87c4b88
 pkgrel=1
 pkgdesc="Examples for Magnum OpenGL graphics engine (Git version)"
 arch=('i686' 'x86_64')
@@ -31,6 +31,7 @@ build() {
         -DWITH_MOTIONBLUR_EXAMPLE=ON \
         -DWITH_PRIMITIVES_EXAMPLE=ON \
         -DWITH_PICKING_EXAMPLE=ON \
+        -DWITH_SHADOWS_EXAMPLE=ON \
         -DWITH_TEXT_EXAMPLE=ON \
         -DWITH_TEXTUREDTRIANGLE_EXAMPLE=ON \
         -DWITH_TRIANGLE_EXAMPLE=ON \
