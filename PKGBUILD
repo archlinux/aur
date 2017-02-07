@@ -1,7 +1,7 @@
 # Maintainer: Frantisek Fladung <ametisf@gmail.com>
 
 pkgname=velox-ametisf-git
-pkgver=0.0.2.r303.gdc24cb0
+pkgver=0.0.2.r304.g7d23d6c
 pkgrel=1
 pkgdesc="Ametisf's fork of velox."
 arch=('i686' 'x86_64')
@@ -27,5 +27,5 @@ build() {
 
 package() {
     cd $pkgname
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" PREFIX=/usr install
 }
