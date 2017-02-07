@@ -6,11 +6,11 @@ _channel=developer
 pkgname="${_name}-dev"
 pkgdesc='Standalone web browser from mozilla.org, developer build'
 url='http://www.mozilla.org/firefox/developer'
-pkgver=53.0a2_20170206084021
+pkgver=53.0a2_20170207084044
 _ffver=53.0a2
-_ffbid=20170206084021
+_ffbid=20170207084044
 # Next version: 53.0a2
-# Current BID: 20170206084021
+# Current BID: 20170207084044
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')

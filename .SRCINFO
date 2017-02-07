@@ -1,6 +1,6 @@
 pkgbase = firefox-dev
 	pkgdesc = Standalone web browser from mozilla.org, developer build
-	pkgver = 53.0a2_20170206084021
+	pkgver = 53.0a2_20170207084044
 	pkgrel = 1
 	url = http://www.mozilla.org/firefox/developer
 	arch = i686
