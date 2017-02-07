@@ -1,0 +1,16 @@
+pkgbase = scangearmp-mx340
+	pkgdesc = Canon IJ Scanner Driver (for mx340 series)
+	pkgver = 1.50
+	pkgrel = 1
+	url = http://support-sg.canon-asia.com/contents/SG/EN/0100272801.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = scangearmp-common>=1.50
+	source = http://gdlp01.c-wss.com/gds/8/0100002728/01/scangearmp-mx340series-1.50-1-i386-deb.tar.gz
+	source = LICENSE
+	sha256sums = fe4802a7dcf952c3a36db2f0ac63918217e99db4b901a22728d1a3cfa7d89b4e
+	sha256sums = a64e2aa8d6a8c441d749457dffa875836fcd8cd29398ae6040038ad20189c960
+
+pkgname = scangearmp-mx340
+
