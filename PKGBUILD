@@ -15,7 +15,8 @@ provides=('telegramircd')
 conflicts=('telegramircd')
 source=('git+https://github.com/MaskRay/telegramircd.git' install)
 install=install
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP'
+         '427a4bf3698821e6c465c9b8049ecd00')
 
 pkgver() {
   cd "$_pkgname"
