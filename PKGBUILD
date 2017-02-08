@@ -1,6 +1,6 @@
 # Maintainer: Kieran Colford <kieran@kcolford.com>
 pkgname=ddns-git
-pkgver=v2.1.1.r0.1395a93
+pkgver=2.1.1.r0.g1395a93
 pkgrel=1
 pkgdesc="Automatic provisioning of dynamic DNS"
 arch=('any')
@@ -23,7 +23,7 @@ noextract=()
 
 pkgver() {
   cd "$srcdir/ddns"
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  git describe --long | sed 's/v//;s/-/.r/;s/-/./g'
 }
 
 package() {
