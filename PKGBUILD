@@ -1,8 +1,8 @@
 # Maintainer: mrxx <mrxx at cyberhome dot at>
 
 pkgname=dislocker
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="Read BitLocker encrypted volumes under Linux"
 arch=('i686' 'x86_64')
 url="http://www.hsc.fr/ressources/outils/dislocker"
@@ -12,10 +12,14 @@ makedepends=('make' 'cmake')
 conflicts=('dislocker-git')
 optdepends=('ntfs-3g: NTFS file system support')
 source=(https://github.com/Aorimn/dislocker/archive/v$pkgver.tar.gz)
-sha1sums=('6e7ad789ec277eb4484742686cac1f69547abec5')
+sha1sums=('a2ca2c58cb2480399433119a53317180c564176d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+
+  # Fix v0.7 upstream path error
+  sed -i 's/DIS_MAN \${PROJECT_SOURCE_DIR}/DIS_MAN ../' src/CMakeLists.txt
+
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -Dlibdir=/usr/lib \
         -D WARN_FLAGS:STRING="-Wall -Wextra" \
