@@ -24,7 +24,7 @@ build() {
 
 package() {
   cd ${pkgname%-git}
-  install -d "$pkgdir"/usr/{bin,share/galendae/examples}
+  install -d "$pkgdir"/usr/{bin,share/galendae/config}
   install -m755 galendae "$pkgdir"/usr/bin/
   install -m644 config/* "$pkgdir"/usr/share/galendae/config/
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
