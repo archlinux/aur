@@ -4,7 +4,7 @@
 
 pkgname=mpd-sima
 pkgver=0.14.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Automagically add title to mpd playlist based on last.fm recomendations"
 arch=('any')
 url="http://kaliko.me/code/mpd-sima/"
@@ -25,8 +25,8 @@ package() {
     /usr/bin/env python setup.py install --prefix=/usr --root="$pkgdir" || return 1
 
     # Install systemd service
-    install -D -m644 "${srcdir}/mpd-sima.service" \
-      "${pkgdir}/usr/lib/systemd/system/mpd-sima.service"
+    install -D -m644 "${srcdir}/mpd-sima@.service" \
+      "${pkgdir}/usr/lib/systemd/system/mpd-sima@.service"
 }
 
 md5sums=('81368753f1d696276e850a9e86dcc060' '04e80db177aa9b0a2ea6da0d8fa99201' 'daa563e97dbcdef5aeaa1821081673d9')
