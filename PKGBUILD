@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-curl
 pkgver=7.52.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An URL retrival utility and library (mingw-w64)"
 arch=('any')
 url="http://curl.haxx.se"
@@ -23,7 +23,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 build() {
   cd "${srcdir}"/${pkgname#mingw-w64-}-${pkgver}
   for _arch in ${_architectures}; do
-    configure_args="--with-ssl --enable-ipv6 --with-libidn --with-libssh2 --without-ca-bundle --without-random"
+    configure_args="--with-ssl --enable-ipv6 --with-libidn2 --with-libssh2 --without-ca-bundle --without-random"
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
     ${_arch}-configure $configure_args \
       --enable-static --disable-shared ..
@@ -43,7 +43,7 @@ package() {
     make DESTDIR="${pkgdir}" install
     cd "${srcdir}/${pkgname#mingw-w64-}-${pkgver}/build-${_arch}"
     make DESTDIR="${pkgdir}" install
-    rm "$pkgdir"/usr/${_arch}/bin/*.exe
+    #rm "$pkgdir"/usr/${_arch}/bin/*.exe
     rm -r "${pkgdir}/usr/${_arch}/share"
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
