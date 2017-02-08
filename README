@@ -1,0 +1,25 @@
+This kernel consists of:
+
+- Zen (as in linux-zen)
+- MuQSS enabled (this is provided by Zen, but disabled by default)
+- flip_done timed out patch
+
+# Build instructions
+
+- Set up env:
+
+    sudo abs extra/linux-zen
+    cp -r /var/abs/extra/linux-zen /tmp/linux-zen
+
+- Copy over new configs/patches
+- Update checksums
+- makepkg -so
+- cd src/linux-*
+- make menuconfig
+- Enable MuQSS
+- Save
+- Copy config back to main
+- git commit -a -m 'Release ...'
+- makepkg -si
+- Boot into new kernel
+- All working good? git push

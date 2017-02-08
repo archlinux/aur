@@ -1,0 +1,40 @@
+--- drivers/gpu/drm/i915/intel_display.c	2017-02-08 13:42:57.459809921 +0000
++++ drivers/gpu/drm/i915/intel_display.c    2017-02-08 13:42:37.860244470 +0000
+@@ -14348,8 +14348,6 @@
+ 		WARN_ON(ret);
+ 	}
+ 
+-	drm_atomic_helper_wait_for_dependencies(state);
+-
+ 	if (intel_state->modeset) {
+ 		memcpy(dev_priv->min_pixclk, intel_state->min_pixclk,
+ 		       sizeof(intel_state->min_pixclk));
+@@ -14472,8 +14470,6 @@
+ 	if (intel_state->modeset && intel_can_enable_sagv(state))
+ 		intel_enable_sagv(dev_priv);
+ 
+-	drm_atomic_helper_commit_hw_done(state);
+-
+ 	if (intel_state->modeset)
+ 		intel_display_power_put(dev_priv, POWER_DOMAIN_MODESET);
+ 
+@@ -14481,8 +14477,6 @@
+ 	drm_atomic_helper_cleanup_planes(dev, state);
+ 	mutex_unlock(&dev->struct_mutex);
+ 
+-	drm_atomic_helper_commit_cleanup_done(state);
+-
+ 	drm_atomic_state_free(state);
+ 
+ 	/* As one of the primary mmio accessors, KMS has a high likelihood
+@@ -14548,10 +14542,6 @@
+ 		return -EINVAL;
+ 	}
+ 
+-	ret = drm_atomic_helper_setup_commit(state, nonblock);
+-	if (ret)
+-		return ret;
+-
+ 	INIT_WORK(&state->commit_work, intel_atomic_commit_work);
+ 
+ 	ret = intel_atomic_prepare_commit(dev, state, nonblock);
