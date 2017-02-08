@@ -2,7 +2,6 @@
 
 pkgname=propellor
 pkgver=3.3.0
-_commit=56a6d545fa789d34cda9a4297272a7723702bc6d
 pkgrel=1
 pkgdesc="property-based host configuration management in haskell"
 url="https://propellor.branchable.com/"
@@ -13,7 +12,7 @@ depends=("cabal-install" "ghc=8.0.1" "git" "gnupg" "gmp" "libffi"
          "haskell-ansi-terminal" "haskell-hackage-security" "haskell-ifelse" "haskell-network"
          "haskell-mtl" "haskell-transformers-base" "haskell-exceptions" "haskell-stm"
          "haskell-text")
-source=("git+https://github.com/joeyh/propellor.git#commit=$_commit")
+source=("git+https://github.com/joeyh/propellor.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {

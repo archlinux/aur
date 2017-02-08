@@ -25,7 +25,7 @@ pkgbase = propellor
 	depends = haskell-exceptions
 	depends = haskell-stm
 	depends = haskell-text
-	source = git+https://github.com/joeyh/propellor.git#commit=56a6d545fa789d34cda9a4297272a7723702bc6d
+	source = git+https://github.com/joeyh/propellor.git#tag=3.3.0
 	sha256sums = SKIP
 
 pkgname = propellor
