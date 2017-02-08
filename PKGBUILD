@@ -4,8 +4,7 @@
 # Contributor: Samed Beyribey <ras0ir@eventualis.org>
 pkgname=python-authres
 _pkgname=authentication-results-python
-pkgver=0.800
-_pkgver=0.8
+pkgver=0.900
 pkgrel=1
 pkgdesc="Python Authentication-Results headers generation and parsing"
 arch=('any')
@@ -13,8 +12,8 @@ url="http://launchpad.net/authentication-results-python"
 license=('Apache')
 depends=('python')
 conflicts=('python2-authres')
-source=(https://launchpad.net/$_pkgname/$pkgver/$_pkgver/+download/authres-$pkgver.tar.gz)
-sha256sums=('d28e3976a7d418917cbbf384018aa0e8a0489e41bfd9847309c5f8efb19f6efd')
+source=(https://launchpad.net/$_pkgname/$pkgver/$pkgver/+download/authres-$pkgver.tar.gz)
+sha256sums=('de91d6cc6e5c6fef545bbf0a810a765fab4ca162906d14f3f2a6b9858602c186')
  
 build() {
   cd "$srcdir/authres-$pkgver"
@@ -29,6 +28,6 @@ check() {
 
 package() {
   cd "$srcdir/authres-$pkgver"
-  python setup.py install --root=$pkgdir --optimize=1
+  python setup.py install --root="$pkgdir" --skip-build --optimize=1
 }
 
