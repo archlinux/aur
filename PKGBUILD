@@ -3,7 +3,7 @@
 
 _pkgname="joe"
 pkgname="joe-go"
-pkgver="1.0.1"
+pkgver="1.0.3"
 pkgrel=1
 pkgdesc="A .gitignore magician in your command line"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('go')
 conflicts=('python2-joe')
 install=joe.install
 source=("https://github.com/karan/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('6a26e8f40ae1022c4bceaae9e8b21844')
+md5sums=('c2a01d4e4753eee08cb5bd44db974aa6')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
@@ -26,7 +26,7 @@ build() {
 
 package() {
   mkdir -p ${pkgdir}/usr/bin
-  cp ${srcdir}/${_pkgname}-${pkgver}/build/joe ${pkgdir}/usr/bin
+  cp ${srcdir}/${_pkgname}-${pkgver}/build/joe ${pkgdir}/usr/bin/joe-gitignore
 }
 
 # vim:set ts=2 sw=2 et:
