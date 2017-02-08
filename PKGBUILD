@@ -3,7 +3,7 @@
 _pkgname=bumblebee-status
 pkgname=bumblebee-status-git
 pkgver=r292.188ee36
-pkgrel=2
+pkgrel=3
 pkgdesc="A modular, theme-able status line generator for the i3 window manager."
 arch=('any')
 url="https://github.com/tobi-wan-kenobi/bumblebee-status"
@@ -16,7 +16,7 @@ optdepends=('xorg-xbacklight: To display a displays brightness'
 	'xorg-seetxkbmap: Display/change the current keyboard layout'
 	'redshift: Display the redshifts current color'
 	'pulseaudio: Control pulseaudio sink/sources'
-	'xrandr: Enable/disable screen outputs')
+	'xorg-xrandr: Enable/disable screen outputs')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
