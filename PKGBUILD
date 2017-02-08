@@ -116,10 +116,7 @@ package_xorg-server-dev() {
 
   # see src/xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel-dev pkg
-  for VAR in VIDEODRV XINPUT EXTENSION; do
-    provides+=("X-ABI-${VAR}_VERSION=$(grep -Po "${VAR}_V.*\(\K[^)]*" "${_pkgbase}-${pkgver}/hw/xfree86/common/xf86Module.h" |& sed 's/, /./')")
-  done
-  provides+=('x-server' 'xorg-server')
+  provides=('X-ABI-VIDEODRV_VERSION=23' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server' 'xorg-server')
   conflicts=('nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting' 'xorg-server')
   replaces=('glamor-egl' 'xf86-video-modesetting')
   install=xorg-server-dev.install
