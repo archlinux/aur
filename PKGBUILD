@@ -3,7 +3,7 @@
 
 pkgname=retroarch-assets-xmb-git
 _gitname=retroarch-assets
-pkgver=r228.47b809a
+pkgver=r378.90b882d
 pkgrel=1
 pkgdesc='XMB menu assets for RetroArch (git-latest)'
 arch=('any')
