@@ -3,7 +3,7 @@
 pkgname=hqplayer-embedded
 _debpkgver=4.0.0a9-9_amd64
 pkgver=4.0.0a9
-pkgrel=3
+pkgrel=4
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
 arch=('x86_64')
@@ -17,11 +17,28 @@ sha256sums=('SKIP' '3f3295916908afbf195993b163d7dc98696dddbc7b2f6574aab9605046dd
 
 package() {
  cd "$srcdir"
-  bsdtar xf data.tar.xz -C "$pkgdir"
-  install -Dm644 "copyright" \
+  bsdtar xf data.tar.xz -C "$srcdir"
+    install -Dm644 "/etc/hqplayer/hqplayerd.xml" \
+    "$pkgdir/etc/hqplayer/hqplayerd.xml"
+    
+     install -Dm644 "/lib/systemd/system/hqplayerd.service" \
+    "$pkgdir/usr/lib/systemd/system/hqplayerd.service"
+    
+     install -Dm755 "/usr/bin/hqplayerd" \
+    "$pkgdir/usr/bin/hqplayerd"
+    
+      install -Dm644 "/usr/share/doc/hqplayerd/readme.txt.gz" \
+    "$pkgdir/usr/share/doc/hqplayerd/readme.txt.gz"
+    
+     install -Dm644 "/usr/share/doc/hqplayerd/rygel.conf.gz" \
+    "$pkgdir/usr/share/doc/hqplayerd/rygel.conf.gz"
+  
+     install -Dm644 "copyright" \
     "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-  install -Dm644 "hqplayerd_rygel.service" \
+    
+     install -Dm644 "hqplayerd_rygel.service" \
     "$pkgdir/usr/lib/systemd/user/hqplayerd_rygel.service"
-  install -Dm755 "start_hqplayerd.sh" \
+    
+     install -Dm755 "start_hqplayerd.sh" \
     "$pkgdir/usr/bin/start_hqplayerd.sh"
 }
