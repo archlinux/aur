@@ -1,7 +1,7 @@
 pkgbase = plumed
 	pkgdesc = An open source plugin for free energy calculations in molecular systems which works together with some of the most popular molecular dynamics engines.
-	pkgver = 2.2.3
-	pkgrel = 2
+	pkgver = 2.3
+	pkgrel = 1
 	url = http://www.plumed-code.org/
 	arch = i686
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = plumed
 	depends = lapack
 	depends = cblas
 	depends = zlib
-	depends = bash
+	depends = gsl
 	depends = libmatheval
 	provides = plumed
-	source = https://github.com/plumed/plumed2/archive/v2.2.3.tar.gz
-	sha1sums = 8758588849611cb7e5c326dba572c84508340b33
+	source = https://github.com/plumed/plumed2/archive/v2.3.tar.gz
+	sha1sums = 37385c0febef6f200a9b4c2b6b7ff116a3f6097c
 
 pkgname = plumed
 
