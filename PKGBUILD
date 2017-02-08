@@ -2,7 +2,7 @@
 
 pkgname=jalbum
 _basedir=/usr/lib/$pkgname
-pkgver=13.9
+pkgver=13.10
 pkgrel=1
 pkgdesc="free web photo album software and photo gallery software"
 arch=('any')
