@@ -2,9 +2,9 @@
 # Contributor: Vladislav Odobesku <positivcheg94@gmail.com>
 
 pkgname=python-tensorflow
-pkgver=1.0.0rc0
+pkgver=1.0.0rc1
 pkgrel=1
-_pkgver=1.0.0-rc0
+_pkgver=1.0.0-rc1
 
 pkgdesc="Computation using data flow graphs for scalable machine learning."
 url="https://tensorflow.org/"
@@ -20,15 +20,8 @@ optdepends=('cuda: GPU support' 'cudnn: GPU support')
 
 source=("https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.zip"
         'python-tensorflow.sh')
-md5sums=('66eb25a8d50150c8cd8acd3f50c2c3dc'
+md5sums=('4d229be8e533c28634b332e38283d3a1'
          '0c9dae7ad2ef6ea234b6aa178a688d7b')
-
-prepare() {
-  cd "$srcdir/tensorflow-${_pkgver}"
-
-  # fix for issue 6594
-  sed -i 's|zlib.net/zlib|zlib.net/fossils/zlib|' "$srcdir/tensorflow-${_pkgver}/tensorflow/workspace.bzl"
-}
 
 build() {
   cd "$srcdir/tensorflow-${_pkgver}"
@@ -36,7 +29,7 @@ build() {
   # Some of this are set to the default value just to avoid an interactive prompt while building.
   export PYTHON_BIN_PATH=/usr/bin/python
   export PYTHON_LIB_PATH=$($PYTHON_BIN_PATH -c 'import site; print(site.getsitepackages()[0])')
-  export CC_OPT_FLAGS="$CFLAGS"
+  export CC_OPT_FLAGS="-march=native"
   export TF_NEED_GCP=0
   export TF_NEED_HDFS=0
   export TF_NEED_OPENCL=0
