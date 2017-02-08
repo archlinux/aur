@@ -2,7 +2,8 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 _name=firefox
-_channel=aurora
+_channel=developer
+_codename=aurora
 pkgname="${_name}-dev"
 pkgdesc='Mozilla Firefox Developer Edition'
 url='http://www.mozilla.org/firefox/developer'
@@ -25,7 +26,7 @@ _file="${_name}-${_ffver}.en-US.linux-${CARCH}"
 _puburl="https://archive.mozilla.org/pub/firefox/nightly"
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases
 source=(
-  ${_puburl}/${year}/${month}/${year}-${month}-${day}-${hour}-${minute}-${second}-mozilla-${_channel}/${_name}-${_ffver}.${locale}.linux-${CARCH}.tar.bz2{,.asc}
+  ${_puburl}/${year}/${month}/${year}-${month}-${day}-${hour}-${minute}-${second}-mozilla-${_codename}/${_name}-${_ffver}.${locale}.linux-${CARCH}.tar.bz2{,.asc}
   "firefox-developer.desktop"
   "vendor.js"
 )
@@ -40,7 +41,7 @@ package() {
   cp -r firefox $pkgdir/opt/firefox-$_channel
 
   ln -s /opt/firefox-$_channel/firefox $pkgdir/usr/bin/firefox-$_channel
-  install -m644 $srcdir/firefox-developer.desktop $pkgdir/usr/share/applications/
+  install -m644 $srcdir/firefox-$_channel.desktop $pkgdir/usr/share/applications/
   install -m644 $srcdir/firefox/browser/icons/mozicon128.png $pkgdir/usr/share/pixmaps/$pkgname-icon.png
   ls
   install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
