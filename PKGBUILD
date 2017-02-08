@@ -1,8 +1,8 @@
 # Maintainer: Mort Yao <soimort@mort.ninja>
 
 pkgname=fstar
-pkgver=0.9.2.0
-pkgrel=2
+pkgver=0.9.4.0
+pkgrel=1
 pkgdesc='A Higher-Order Effectful Language Designed for Program Verification'
 url='https://fstar-lang.org/'
 license=('Apache')
@@ -12,7 +12,7 @@ makedepends=('fsharp' 'ocaml>=4.02' 'ocaml-batteries' 'ocaml-findlib')
 provides=('fstar')
 conflicts=('fstar-bin' 'fstar-git')
 source=("https://github.com/FStarLang/FStar/archive/v$pkgver.zip")
-md5sums=('ad66b5c9390ace4d3f9006898e2fbb9f')
+md5sums=('f9bd0fedbb78f3e853856314e90ec824')
 
 build() {
   cd "FStar-$pkgver"
