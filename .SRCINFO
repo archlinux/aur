@@ -1,14 +1,14 @@
 pkgbase = sconsify
 	pkgdesc = CLI Spotify client
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = http://www.sconsify.org
 	arch = x86_64
 	license = Apache
 	depends = portaudio
 	depends = libspotify
-	source = https://github.com/fabiofalci/sconsify/releases/download/v0.3.0/linux-x86_64-sconsify-0.3.0.zip
-	sha256sums = fb6510eaa85e8e9365d37847d57eaa01620fd5b61c690edaa2a76415695fa54a
+	source = https://github.com/fabiofalci/sconsify/releases/download/v0.4.0/linux-x86_64-sconsify-0.4.0.zip
+	sha256sums = 11d512a5225eab3127f253efa5d0c5d923dde99607ef656e07db3819dbad28a7
 
 pkgname = sconsify
 
