@@ -25,7 +25,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data-git
-pkgver=20170120.r3267.faab60c4
+pkgver=2.0.r3320.a243cb31
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -80,7 +80,7 @@ buildopt=${buildopt:--B}
 
 pkgver() {
   cd $srcdir/$pkgname
-  printf "%s.r%s.%s" "$(git log -1 --format=%cd --date=short | sed -e 's/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(grep PD_L2ORK_VERSION pd/src/m_pd.h | sed 's|^.define *PD_L2ORK_VERSION *"\(.*\)".*|\1|')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
