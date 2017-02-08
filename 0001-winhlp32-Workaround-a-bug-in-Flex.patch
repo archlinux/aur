@@ -1,0 +1,33 @@
+From cf6bdd7b7dc1dc1ba31bd48171c218ba3503eb76 Mon Sep 17 00:00:00 2001
+From: Sebastian Lackner <sebastian@fds-team.de>
+Date: Sat, 14 Jan 2017 05:48:28 +0100
+Subject: winhlp32: Workaround a bug in Flex.
+
+---
+ programs/winhlp32/macro.lex.l | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/programs/winhlp32/macro.lex.l b/programs/winhlp32/macro.lex.l
+index 8f6945ca988..da2dd22e447 100644
+--- a/programs/winhlp32/macro.lex.l
++++ b/programs/winhlp32/macro.lex.l
+@@ -20,7 +20,7 @@
+  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
+  */
+ %}
+-%option noinput nounput never-interactive 8bit
++%option noinput nounput never-interactive 8bit noyywrap
+ %x quote
+ %{
+ #include "config.h"
+@@ -367,7 +367,3 @@ WINHELP_WINDOW* MACRO_CurrentWindow(void)
+ {
+     return lex_data ? lex_data->window : Globals.active_win;
+ }
+-
+-#ifndef yywrap
+-int yywrap(void) { return 1; }
+-#endif
+-- 
+2.11.0
+

@@ -7,20 +7,28 @@
 
 _basename=wine
 pkgname=wine-ivb
-pkgver=1.9.20
+pkgver=2.1
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 
-source=(${pkgname}-${pkgver}.tar.bz2::https://dl.winehq.org/wine/source/1.9/$_basename-$_pkgbasever.tar.bz2
-        ${pkgname}-${pkgver}.tar.bz2.sign::https://dl.winehq.org/wine/source/1.9/$_basename-$_pkgbasever.tar.bz2.sign
+source=(${pkgname}-${pkgver}.tar.xz::https://dl.winehq.org/wine/source/2.x/$_basename-$_pkgbasever.tar.xz
+        ${pkgname}-${pkgver}.tar.xz.sign::https://dl.winehq.org/wine/source/2.x/$_basename-$_pkgbasever.tar.xz.sign
         30-win32-aliases.conf
+        0001-winhlp32-Workaround-a-bug-in-Flex.patch
         patch-$pkgver-ivb.patch
         patch_temp_constants.patch)
-sha512sums=('31841298104592eb615e0a3d70b06b69b5226f8c2b8865e639407399d8a19e20527779d76fe08fb913f6114c4908401f7efa9cfa56fc3360b832c30cc523e764'
+sha1sums=('6b84f820c36a2d9313b840bd06f8c519a013a68e'
+          'SKIP'
+          '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
+          '6ab256347d41e63694528db9e093c0abe8ca4bc1'
+          '561603ff0044a2d9e13b531562e7a31f316b2c86'
+          '3f94ad1c60213eac5d7e68c959423d0f18ed0b5f')
+sha512sums=('03d678ee6e89c2804813f2827255fcf59e96ca9a45b7d8ac441cfc84f835e5e5689c70a79a41a04c631e1add7807fa4a5758acef3bd7aadfb2e92e68958c6ef6'
             'SKIP'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
-            '42af4c34688119e38df40802d1450a7623749ea268ea25400ad6acddba11c55c4a3efc3a658bfcf071595e3ac7d45b9885b7efbd0eaebd22cb7ac1f7cc601529'
+            'a6c099fced12271f6ba14f3f93b322f50bc2ecf5cb0b8b7ed0cc1884269569fdd084fe8531dff8db71484f80e62cbd5b69a1a2d04100e9d7485de5b53b9a4bb5'
+            '40f2e87d26133ad3b5baa98fc9394314e28b28ece09822bd337e56290c392860916b4fc3f36b102b7bc038cfe149419d5d4bc8a1944f98349566bc96c58d77ed'
             '54e7927ea07137f2383734f65147ae18366a65a17c1970af06b13d5597f501ade3b2b435311bfae1759070895473f09382d75676e8b774c52ce540bc06cf5461')
 validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
               DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
@@ -66,13 +74,13 @@ makedepends=(autoconf ncurses bison perl fontforge flex
   libxcomposite         lib32-libxcomposite
   mesa                  lib32-mesa
   mesa-libgl            lib32-mesa-libgl
-  libcl                 lib32-libcl
+  opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   samba
   opencl-headers
 )
-  
+
 optdepends=(
   giflib                lib32-giflib
   libpng                lib32-libpng
@@ -88,7 +96,7 @@ optdepends=(
   libxcomposite         lib32-libxcomposite
   libxinerama           lib32-libxinerama
   ncurses               lib32-ncurses
-  libcl                 lib32-libcl
+  opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   cups
@@ -124,6 +132,7 @@ prepare() {
   cd $pkgname
   patch -Np1 -i "$srcdir/patch-$pkgver-ivb.patch"
   patch -Np1 -i "$srcdir/patch_temp_constants.patch"
+  patch -Np1 -i "$srcdir/0001-winhlp32-Workaround-a-bug-in-Flex.patch"
 }
 
 build() {
