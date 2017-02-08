@@ -1,6 +1,6 @@
 pkgbase = kwin-presentwindows-close
 	pkgdesc = KDE Window manager, reverting the removal of the close action in present windows
-	pkgver = 5.9.0
+	pkgver = 5.9.1
 	pkgrel = 1
 	url = https://www.kde.org/workspaces/plasmadesktop/
 	arch = i686
@@ -23,13 +23,13 @@ pkgbase = kwin-presentwindows-close
 	provides = kwin
 	conflicts = kdebase-workspace,
 	conflicts = kwin
-	source = http://download.kde.org/stable/plasma/5.9.0/kwin-5.9.0.tar.xz
-	source = http://download.kde.org/stable/plasma/5.9.0/kwin-5.9.0.tar.xz.sig
+	source = http://download.kde.org/stable/plasma/5.9.1/kwin-5.9.1.tar.xz
+	source = http://download.kde.org/stable/plasma/5.9.1/kwin-5.9.1.tar.xz.sig
 	source = presentwindows-close.patch
 	validpgpkeys = 2D1D5B0588357787DE9EE225EC94D18F7F05997E
 	validpgpkeys = 348C8651206633FD983A8FC4DEACEA00075E1D76
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
-	sha256sums = dfe7146d20003ad303bc06179d87fd0c7b6d34446f85bce047b58f71bd305709
+	sha256sums = 2ab9c9693f87b5ac40f5f4b57e9c157b7cfeaf62e4d399571817eabc607e1a0b
 	sha256sums = SKIP
 	sha256sums = a42e050f873632240595026b0f0f98ce4e109dd36a7768ba6b361d1b4854aefb
 
