@@ -3,20 +3,21 @@
 pkgname=wingide
 _wingver=6.0.2
 _wingrel=1
-_wing_patch_lvl=1 #bump this when adding a patch
+_wing_patch_lvl=2 #bump this when adding a patch
 pkgver=$_wingver.$_wingrel.$_wing_patch_lvl
 pkgrel=1
 pkgdesc="Wing IDE Professional is the full-featured Python IDE for professional programmers."
 url="http://www.wingware.com"
 license=('custom')
 arch=('x86_64')
-_wingpatch=("fix-remote-debug-6.0.2p1-all.tar" "py3-pi-files-6.0.2p2-linux64.tar")
+_wingpatch=("dont-fill-database-6.0.2p3-all.tar" "fix-remote-debug-6.0.2p1-all.tar" "py3-pi-files-6.0.2p2-linux64.tar")
 _patch_url_prefix=http://wingware.com/pub/$pkgname/$_wingver/patches/
 _wingpatch=( "${_wingpatch[@]/#/$_patch_url_prefix}" )
 source=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_wingrel-x86_64-linux.tar.bz2" ${_wingpatch[*]})
 depends=('hicolor-icon-theme' 'libpng' 'python2' 'xdg-utils')
 options=(!strip !emptydirs)
 md5sums=('e3d7ba6435b747ac348166d7db5aef00'
+         'b084f0bdbc2f4c250683f776f29d0ebc'
          '18df10d42f3e7befd012db2c41c5a03f'
          '03046d03198fe1535e24735ef6a8bd0e')
 
