@@ -3,7 +3,7 @@
 
 pkgname=plumed
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source plugin for free energy calculations in molecular systems which works together with some of the most popular molecular dynamics engines."
 url="http://www.plumed-code.org/"
 license=("GPL")
@@ -13,7 +13,7 @@ makedepends=()
 provides=('plumed')
 #install=$pkgname.install
 source=( https://github.com/plumed/plumed2/archive/v${pkgver}.tar.gz)
-sha1sums=('37385c0febef6f200a9b4c2b6b7ff116a3f6097c')
+sha1sums=('4e79efea1ee8efb81f08d6a3e3ce8f6ce5b364fa')
 #options=(!buildflags)
 
 build() {
