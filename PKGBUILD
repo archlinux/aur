@@ -17,6 +17,7 @@ depends=(
     'libnl'
     'libsystemd'
     'libusb'
+    'libxslt'
     'lz4'
     'xz'
 )

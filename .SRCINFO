@@ -15,6 +15,7 @@ pkgbase = nsntrace
 	depends = libnl
 	depends = libsystemd
 	depends = libusb
+	depends = libxslt
 	depends = lz4
 	depends = xz
 	source = https://github.com/jonasdn/nsntrace/archive/v3.tar.gz
