@@ -1,0 +1,20 @@
+pkgbase = redshift-light
+	pkgdesc = Adjusts the color temperature of your screen according to your surroundings, without redshift-gtk GUI.
+	pkgver = 1.11
+	pkgrel = 1
+	url = http://jonls.dk/redshift
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	makedepends = python
+	depends = geoclue2
+	depends = libdrm
+	depends = libxxf86vm
+	provides = redshift
+	conflicts = redshift
+	source = https://github.com/jonls/redshift/releases/download/v1.11/redshift-1.11.tar.xz
+	sha256sums = 10e350f93951c0521dd6f103d67a485972c307214f036e009acea2978fe4f359
+
+pkgname = redshift-light
+
