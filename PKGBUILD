@@ -4,8 +4,8 @@
 # Contributor: Tony Lambiris <tony@critialstack.com>
 
 pkgname=apt-git
-pkgver=1.4_beta2.r2.gf47f4b1
-pkgrel=2
+pkgver=1.4_rc1.r0.g08ac79026
+pkgrel=1
 pkgdesc="Command-line package manager used on Debian-based systems (git-latest)"
 arch=('i686' 'x86_64')
 url="http://packages.debian.org"
