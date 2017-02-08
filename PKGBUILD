@@ -1,7 +1,7 @@
 # Maintainer: Kieran Colford <kieran@kcolford.com>
 pkgname=ddns-git
-pkgver=v2.1.0.r0.49b4994
-pkgrel=2
+pkgver=v2.1.1.r0.1395a93
+pkgrel=1
 pkgdesc="Automatic provisioning of dynamic DNS"
 arch=('any')
 url="https://github.com/kcolford/ddns"
@@ -17,7 +17,7 @@ conflicts=("${pkgname%-git}")
 replaces=()
 options=()
 install=
-source=("git+$url#master")
+source=("git+$url")
 md5sums=('SKIP')
 noextract=()
 

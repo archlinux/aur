@@ -1,7 +1,7 @@
 pkgbase = ddns-git
 	pkgdesc = Automatic provisioning of dynamic DNS
-	pkgver = v2.1.0.r0.49b4994
-	pkgrel = 2
+	pkgver = v2.1.1.r0.1395a93
+	pkgrel = 1
 	url = https://github.com/kcolford/ddns
 	arch = any
 	license = GPL
@@ -17,7 +17,7 @@ pkgbase = ddns-git
 	optdepends = postfix: MX records will be added if the mail server is online
 	provides = ddns
 	conflicts = ddns
-	source = git+https://github.com/kcolford/ddns#master
+	source = git+https://github.com/kcolford/ddns
 	md5sums = SKIP
 
 pkgname = ddns-git
