@@ -1,7 +1,7 @@
 # Maintainer: Chris Marsh <chris.pm@gmail.com>
 
 pkgname=galendae-git
-pkgver=r36.0410aaa
+pkgver=r42.2c6e713
 pkgrel=1
 pkgdesc="A lightweight popup calendar that can be styled to match workspace themes"
 arch=('i686' 'x86_64')
@@ -26,7 +26,6 @@ package() {
   cd ${pkgname%-git}
   install -d "$pkgdir"/usr/{bin,share/galendae/examples}
   install -m755 galendae "$pkgdir"/usr/bin/
-  install -m644 examples/* "$pkgdir"/usr/share/galendae/examples/
-  install -m644 galendaerc "$pkgdir"/usr/share/galendae/examples/
+  install -m644 config/* "$pkgdir"/usr/share/galendae/config/
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
