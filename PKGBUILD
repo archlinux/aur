@@ -1,9 +1,10 @@
 # $Id: PKGBUILD 271837 2016-07-13 18:04:54Z arojas $
-# Maintainer : Ionut Biru <ibiru@archlinux.org>
+# Maintainer : mesmer <mesmer@archlinux.org>
+# Contributor : Ionut Biru <ibiru@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=flashplugin-beta
-pkgver=24.0.0.178
+pkgver=25
 pkgrel=1
 pkgdesc='Adobe Flash Player Beta'
 url='http://labs.adobe.com/downloads/flashplayer.html'
@@ -20,8 +21,9 @@ source=(mms.cfg)
 source_i686=("flash_player_npapi_linux_${pkgver}_i386.tar.gz"::https://fpdownload.macromedia.com/pub/labs/flashruntimes/flashplayer/linux32/flash_player_npapi_linux.i386.tar.gz)
 source_x86_64=("flash_player_npapi_linux_${pkgver}_x86_64.tar.gz"::https://fpdownload.macromedia.com/pub/labs/flashruntimes/flashplayer/linux64/flash_player_npapi_linux.x86_64.tar.gz)
 md5sums=('f34aae6279b40e0bd2abfb0d9963d7b8')
-md5sums_i686=('619c2853a986da2bb746537e4cee1df2')
-md5sums_x86_64=('7f4162a1a9a6e6fda35149b5add7c264')
+md5sums_i686=('dfd3088dc0a4f75b8f2e4fc155cbeba9')
+md5sums_x86_64=('039bfbce80409056e6c1980fc35b33e7')
+
 
 prepare () {
     # In Adobe's x86_64 tarball, files in usr/lib/ are symlinked to
