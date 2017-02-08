@@ -12,8 +12,11 @@ url="http://launchpad.net/authentication-results-python"
 license=('Apache')
 depends=('python')
 conflicts=('python2-authres')
-source=(https://launchpad.net/$_pkgname/$pkgver/$pkgver/+download/authres-$pkgver.tar.gz)
-sha256sums=('de91d6cc6e5c6fef545bbf0a810a765fab4ca162906d14f3f2a6b9858602c186')
+source=("https://launchpad.net/$_pkgname/$pkgver/$pkgver/+download/authres-$pkgver.tar.gz"
+        "https://launchpad.net/$_pkgname/$pkgver/$pkgver/+download/authres-$pkgver.tar.gz.asc")
+sha256sums=('de91d6cc6e5c6fef545bbf0a810a765fab4ca162906d14f3f2a6b9858602c186'
+            'SKIP')
+validpgpkeys=('E7729BFFBE85400FEEEE23B178D7DEFB9AD59AF1')  # Donald Scott Kitterman <scott@kitterman.com>
  
 build() {
   cd "$srcdir/authres-$pkgver"
