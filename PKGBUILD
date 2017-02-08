@@ -9,11 +9,11 @@ arch=('any')
 url="http://jalbum.net/"
 license=('custom' 'lgpl')
 depends=('java-openjfx')
-source=("http://download.jalbum.net/download/$pkgver/${pkgname/a/A}.zip"
+source=("$pkgname-$pkgver.zip::http://download.jalbum.net/download/$pkgver/${pkgname/a/A}.zip"
 "$pkgname.desktop"
 "$pkgname.sh")
 
-sha256sums=('950775fcc00b1be9bdb9c53371e3b5564f10851939cbce2c37a1658a4cec2b03'
+sha256sums=('179837c50233c9e14c17a15b893308ce34d1a296429675e0b6ff929783a6edc9'
             '9679ab294b5c5e0ad343b8a12026073fd2f622320d636cc05facaa2ff5b15825'
             'f4aec4248de127251fc32571732e91fd860f1954c650650a965bf77759cd85fc')
 
