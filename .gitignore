@@ -1,0 +1,4 @@
+phpsdl/
+src/
+pkg/
+*.pkg.tar.xz
