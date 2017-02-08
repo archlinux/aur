@@ -1,0 +1,37 @@
+pkgbase = eclipse-jsonedit
+	pkgdesc = Eclipse JSON Editor Plugin
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/boothen/Json-Eclipse-Plugin
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = eclipse
+	depends = eclipse-antlr4-runtime
+	noextract = jsonedit-feature_1.0.1.jar
+	noextract = jsonedit-core_1.0.1.jar
+	noextract = jsonedit-folding_1.0.1.jar
+	noextract = jsonedit-model_1.0.1.jar
+	noextract = jsonedit-outline_1.0.1.jar
+	noextract = jsonedit-preferences_1.0.1.jar
+	noextract = jsonedit-text_1.0.1.jar
+	noextract = jsonedit-editor_1.0.1.jar
+	source = http://boothen.github.io/Json-Eclipse-Plugin/features/jsonedit-feature_1.0.1.jar
+	source = http://boothen.github.io/Json-Eclipse-Plugin/plugins/jsonedit-core_1.0.1.jar
+	source = http://boothen.github.io/Json-Eclipse-Plugin/plugins/jsonedit-folding_1.0.1.jar
+	source = http://boothen.github.io/Json-Eclipse-Plugin/plugins/jsonedit-model_1.0.1.jar
+	source = http://boothen.github.io/Json-Eclipse-Plugin/plugins/jsonedit-outline_1.0.1.jar
+	source = http://boothen.github.io/Json-Eclipse-Plugin/plugins/jsonedit-preferences_1.0.1.jar
+	source = http://boothen.github.io/Json-Eclipse-Plugin/plugins/jsonedit-text_1.0.1.jar
+	source = http://boothen.github.io/Json-Eclipse-Plugin/plugins/jsonedit-editor_1.0.1.jar
+	md5sums = 449d269e8ba13722b901dc6775bf5b89
+	md5sums = 3e8821bee7bdd7107762b6dd7fa2881e
+	md5sums = 6053661ee76a900311b5ef51d04bec2f
+	md5sums = fe413155c99392256254460aa67d1d36
+	md5sums = c66400e728da9de7d1e0647ce79ba878
+	md5sums = bcdabc0abecabec3270eba6189bd7718
+	md5sums = 259cf7de6e7a3feebb6c1181c0777552
+	md5sums = 98e95e96e29bf7c87b415e3006dc29ba
+
+pkgname = eclipse-jsonedit
+
