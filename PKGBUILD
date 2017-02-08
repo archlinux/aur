@@ -26,7 +26,7 @@ _puburl="https://archive.mozilla.org/pub/firefox/nightly"
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases
 source=(
   ${_puburl}/${year}/${month}/${year}-${month}-${day}-${hour}-${minute}-${second}-mozilla-${_channel}/${_name}-${_ffver}.${locale}.linux-${CARCH}.tar.bz2{,.asc}
-  "firefox-$_channel.desktop"
+  "firefox-developer.desktop"
   "vendor.js"
 )
 sha512sums=('SKIP'
