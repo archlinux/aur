@@ -1,0 +1,12 @@
+diff --git a/sima/lib/track.py b/sima/lib/track.py
+index 10f2bdc..859cfa9 100644
+--- a/sima/lib/track.py
++++ b/sima/lib/track.py
+@@ -38,6 +38,7 @@ class Track:
+     """
+ 
+     def __init__(self, file=None, time=0, pos=-1, **kwargs):
++        'duration' in kwargs and kwargs.pop('duration')
+         self.title = self.artist = self.album = self.albumartist = ''
+         self.musicbrainz_artistid = self.musicbrainz_albumartistid = None
+         self.pos = int(pos)
