@@ -4,7 +4,7 @@
 
 pkgname=gnudatalanguage
 pkgver=0.9.7
-pkgrel=3
+pkgrel=4
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=('i686' 'x86_64')
 url="http://gnudatalanguage.sourceforge.net/"
@@ -14,8 +14,10 @@ depends=('python2' 'python2-numpy' 'plplot510' 'gsl' 'readline' 'hdf5' 'netcdf' 
 makedepends=('cmake')
 options=('!makeflags')
 source=(http://downloads.sourceforge.net/gnudatalanguage/gdl-${pkgver}.tgz \
+    gdl-template.patch \
     gdl.profile)
 md5sums=('0cd285d85e00e76e37b92310a76579c2'
+         '5be4d8c21ec3e004847e05f7978a77f0'
          '40aa5fd8278cd8e80425c62a577563cc')
 
 prepare() {

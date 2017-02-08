@@ -1,7 +1,7 @@
 pkgbase = gnudatalanguage
 	pkgdesc = An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)
 	pkgver = 0.9.7
-	pkgrel = 3
+	pkgrel = 4
 	url = http://gnudatalanguage.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -24,8 +24,10 @@ pkgbase = gnudatalanguage
 	depends = eigen3
 	options = !makeflags
 	source = http://downloads.sourceforge.net/gnudatalanguage/gdl-0.9.7.tgz
+	source = gdl-template.patch
 	source = gdl.profile
 	md5sums = 0cd285d85e00e76e37b92310a76579c2
+	md5sums = 5be4d8c21ec3e004847e05f7978a77f0
 	md5sums = 40aa5fd8278cd8e80425c62a577563cc
 
 pkgname = gnudatalanguage
