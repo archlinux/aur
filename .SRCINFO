@@ -1,7 +1,7 @@
 pkgbase = pacui-git
 	pkgdesc = A simple and interative Bash Frontend for Pacman/Pacaur/Yaourt
 	pkgver = 1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/excalibur1234/pacui
 	arch = any
 	license = GPL3
@@ -15,6 +15,7 @@ pkgbase = pacui-git
 	optdepends = update-notifier: Automatically get notified when updates are available.
 	provides = $_pkgname
 	conflicts = $_pkgname
+	conflicts = pacli-simple-git
 	replaces = pacli-simple-git
 	source = pacui::git+https://github.com/excalibur1234/pacui.git
 	md5sums = SKIP
