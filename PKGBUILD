@@ -2,8 +2,8 @@
 
 _pkgname=xlunch
 pkgname=xlunch-git
-pkgver=2.4.r0.g514bcd6
-pkgrel=2
+pkgver=2.4.1.r1.g0468acc
+pkgrel=1
 pkgdesc="Graphical app launcher for X with little dependencies"
 arch=('i686' 'x86_64')
 url="http://xlunch.org/"
