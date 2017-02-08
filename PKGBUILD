@@ -1,12 +1,12 @@
+# Maintainer: Erik Fleischer <erik [at] erlenweg [dot] de>
 # Contributor: Cian Mc Govern <cian [at] cianmcgovern [dot] com>
 # Contributor: Roland Singer <roland [at] manjaro [dot] org>
 # Contributor: TheBenj <thebenj88 [at] gmail [dot] com>
 # Contributor: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
-# Maintainer: Erik Fleischer <erik [at] erlenweg [dot] de>
 
 pkgname=crossover
-pkgver=16.0.0
-pkgrel=2
+pkgver=16.1.0
+pkgrel=1
 _pkgdebrel=1
 pkgdesc="Run Windows Programs on Linux"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ install=${pkgname}.install
 replaces=('crossover-games' 'crossover-pro' 'crossover-standard')
 
 source=("http://media.codeweavers.com/pub/${pkgname}/cxlinux/demo/${pkgname}_${pkgver}-${_pkgdebrel}.deb")
-md5sums=('c43b2772c04ad2a02d00686dd0fddda6')
+md5sums=('1632aa6cde02707cd057aaf7905acce0')
 
 depends=( 
     'python2' 'desktop-file-utils' 'pygtk' 'python2-dbus'
@@ -88,7 +88,6 @@ optdepends_x86_64=(
     'lib32-libxxf86dga: X11 Direct Graphics Access extension library.' 
     'lib32-mpg123: Needed by some Windows applications to play MP3 files.'
     'lib32-nss-mdns: (aur) host name resolution via mDNS'
-    'lib32-libcl: OpenCL bindings provided by nvidia'
     'lib32-openal: Provides audio support to Windows applications.' 
     'lib32-openssl: This library provides support for secure Internet communication.'
     'lib32-v4l-utils: Lets Windows applications access video devices.' 
