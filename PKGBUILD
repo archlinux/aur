@@ -2,9 +2,9 @@
 # Contributor: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs-plumed
-pkgver=5.1.2
-_gromacsver=5.1.2
-_plumedver=2.2.3
+pkgver=2016.1
+_gromacsver=2016.1
+_plumedver=2.3
 pkgrel=1
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)'
 url='http://www.gromacs.org/'
@@ -14,8 +14,10 @@ depends=('plumed' 'fftw' 'lesstif' 'perl' 'libxml2' 'libsm' 'libx11' 'gcc5')
 makedepends=('cmake')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-sha1sums=('4a9a77711206c8cd0e1f4dd31f2edc569589e9dc')
+sha1sums=('2d6d80e13dad28fe5bd222785c1658a698f6ae47')
 
+#With gcc5 currently there are less errors in the tests
+# also the compilation is possible in cuda capable machines
 export CC=gcc-5
 export CXX=g++-5
 
