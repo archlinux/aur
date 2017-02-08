@@ -3,7 +3,7 @@
 
 pkgname=retroarch-autoconfig-udev-git
 _gitname=retroarch-joypad-autoconfig
-pkgver=r769.e2c6df1
+pkgver=r1111.be1442f
 pkgrel=1
 pkgdesc='udev joypad autoconfig for RetroArch (git-latest)'
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = retroarch-autoconfig-udev-git
 	pkgdesc = udev joypad autoconfig for RetroArch (git-latest)
-	pkgver = r769.e2c6df1
+	pkgver = r1111.be1442f
 	pkgrel = 1
 	url = http://www.libretro.com/
 	arch = any
