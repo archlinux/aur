@@ -17,7 +17,7 @@ pkgbase = ddns-git
 	optdepends = postfix: MX records will be added if the mail server is online
 	provides = ddns
 	conflicts = ddns
-	source = git+https://github.com/kcolford/ddns
+	source = git+https://github.com/kcolford/ddns#master
 	md5sums = SKIP
 
 pkgname = ddns-git

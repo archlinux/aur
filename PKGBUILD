@@ -17,7 +17,7 @@ conflicts=("${pkgname%-git}")
 replaces=()
 options=()
 install=
-source=("git+$url")
+source=("git+$url#master")
 md5sums=('SKIP')
 noextract=()
 
