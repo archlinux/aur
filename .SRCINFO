@@ -1,7 +1,7 @@
 pkgbase = insomnia
 	pkgdesc = A simple and beautiful REST API and HTTP client
 	pkgver = 4.2.11
-	pkgrel = 2
+	pkgrel = 1
 	url = https://insomnia.rest/
 	arch = i686
 	arch = x86_64
