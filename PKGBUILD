@@ -3,21 +3,20 @@
 
 pkgname=tlf-git
 _pkgname=tlf
-pkgver=1.2.4.5.r32.g465413d
-#.r32.g465413d
+pkgver=1.3.0.r1.g3535aa1
+#.r1.g3535aa1
 pkgrel=1
 pkgdesc="a console mode networked logging and contest program for hamradio"
 arch=('i686' 'x86_64')
 url="https://tlf.github.com/"
 license=('GPL')
-depends=('hamlib' 'hamradio-menus')
+depends=('hamlib' 'xmlrpc-c' 'hamradio-menus')
 makedepends=('autoconf' 'automake' 'pkg-config')
 optdepends=('cwdaemon: transmitting cw'
 	    'cty: country files'
 	    'joe: editing qsos'
-	    'xplanet: mapped qso display')
-#	    'fldigi: digital modes/modem & gui/display')
-#		^^^ this might *require* additions to the ./configure ...
+	    'xplanet: mapped qso display'
+	    'fldigi: digital modes/modem & gui/display')
 provides=('tlf')
 conflicts=('tlf')
 source=("$_pkgname::git+https://github.com/Tlf/tlf.git#branch=master"
@@ -35,8 +34,8 @@ build() {
 	cd $srcdir/$_pkgname
 
 	autoreconf --install
-	./configure --prefix=/usr --enable-hamlib
-  
+	./configure --prefix=/usr --enable-hamlib --enable-fldigi-xmlrpc
+
 	make || return 1
 }
 
