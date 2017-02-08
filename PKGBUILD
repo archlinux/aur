@@ -2,7 +2,7 @@
 
 pkgname=skympc-git
 pkgver=1.6.2.r125.g776ab89
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple MPD (Music Player Daemon) client, powerd by Qt"
 arch=('i686' 'x86_64')
 url="http://www.soramimi.jp/skympc/index.html"
@@ -11,8 +11,10 @@ depends=('mpd' 'qt5-svg')
 makedepends=('git' 'ruby')
 provides=('skympc')
 conflicts=('skympc')
-source=("git+https://github.com/soramimi/SkyMPC.git")
-md5sums=('SKIP')
+source=("git+https://github.com/soramimi/SkyMPC.git"
+        'use-system-fonts-on-linux.patch')
+sha256sums=('SKIP'
+            '7c21787bbdc3882594d2cbf6bb8f74820e1a74c2527058c773bca53786a8ee79')
 
 pkgver() {
   cd SkyMPC
@@ -22,6 +24,7 @@ pkgver() {
 
 prepare() {
   cd SkyMPC
+  patch -p1 -i ../use-system-fonts-on-linux.patch
   ruby prepare.rb
 }
 

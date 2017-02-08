@@ -1,0 +1,11 @@
+diff -ruN a/src/BasicMainWindow.cpp b/src/BasicMainWindow.cpp
+--- a/src/BasicMainWindow.cpp	2017-02-08 02:33:18.260100911 +0100
++++ b/src/BasicMainWindow.cpp	2017-02-08 02:34:31.967949051 +0100
+@@ -63,7 +63,6 @@
+ #endif
+ 
+ 	QString s;
+-	s += "* {%1;}";
+ 	s += "#label_title, #label_artist, #label_disc {font-weight: bold;}";
+ 	s += "#label_progress {%2;}";
+ 	s += "#label_clock {%3; font-weight: bold;}";
