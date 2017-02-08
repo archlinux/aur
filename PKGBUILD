@@ -5,10 +5,10 @@
 pkgname=dunst-git
 _gitname=dunst
 pkgver=1.1.0.155.g42a641c.760
-pkgrel=1
+pkgrel=2
 pkgdesc="a lightweight notification-daemon - git version"
 arch=('i686' 'x86_64')
-url="http://www.knopwob.org/dunst"
+url="https://dunst-project.org/"
 license=('BSD')
 depends=('libxinerama' 'libxss' 'pango' 'libnotify' 'gtk2')
 if [ ! -e ${SRCDEST}/config.h ]; then
