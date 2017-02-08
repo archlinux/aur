@@ -1,0 +1,30 @@
+pkgbase = xdx-git
+	pkgdesc = Ham Radio DX-cluster client
+	pkgver = r461.6bf5ff3
+	pkgrel = 1
+	url = https://github.com/N0NB/xdx
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = pkg-config
+	makedepends = expect
+	makedepends = gettext
+	depends = gtk2
+	depends = cty
+	optdepends = hamradio-menus: XDG compliant menuing
+	optdepends = hamlib: rig interfacing
+	optdepends = gnuplot: graph output
+	optdepends = sox: sound output
+	provides = xdx
+	conflicts = xdx
+	source = xdx-git::git+https://github.com/N0NB/xdx#branch=master
+	source = tada
+	md5sums = SKIP
+	md5sums = ce51fb9118471e19a67943eee7195b94
+	sha256sums = SKIP
+	sha256sums = 95d28ca2de48c90db85fdf9990e49786dc16dd5289e844e61de3444c19669c57
+
+pkgname = xdx-git
+
