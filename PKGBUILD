@@ -3,12 +3,12 @@
 pkgname=yubikey-manager-qt
 _commit='d14158c0'
 pkgver="0.3.0.r9.g${_commit}"
-pkgrel=2
+pkgrel=3
 pkgdesc='Cross-platform application for configuring any YubiKey over all USB transports'
 arch=('i686' 'x86_64')
 url='https://developers.yubico.com/yubikey-manager-qt/'
 license=('BSD')
-depends=('python' 'qt5-base' 'qt5-webkit' 'qt5-quickcontrols' 'python-setuptools' 'python-pyotherside')
+depends=('yubikey-manager' 'python' 'qt5-base' 'qt5-quickcontrols' 'python-pyotherside')
 makedepends=('git') 
 replaces=('yubikey-neo-manager')
 validpgpkeys=('8D0B4EBA9345254BCEC0E843514F078FF4AB24C3') # Dag Heyman <dag@yubico.com>
