@@ -13,6 +13,6 @@ pkgbase = chirp-daily
 	conflicts = chirp
 	options = !emptydirs
 	source = http://trac.chirp.danplanet.com/chirp_daily/daily-20170207/chirp-daily-20170207.tar.gz
-	sha1sums = a1b8c99ccd77b19a10c8257ab0577f3454a25565
+	sha1sums = edcd695de2683131e6f6fcf826eaaafea44d78dd
 
 pkgname = chirp-daily
