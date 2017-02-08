@@ -4,7 +4,7 @@
 
 pkgname=mpd-sima
 pkgver=0.14.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Automagically add title to mpd playlist based on last.fm recomendations"
 arch=('any')
 url="http://kaliko.me/code/mpd-sima/"
@@ -29,4 +29,4 @@ package() {
       "${pkgdir}/usr/lib/systemd/system/mpd-sima@.service"
 }
 
-md5sums=('81368753f1d696276e850a9e86dcc060' '04e80db177aa9b0a2ea6da0d8fa99201' 'daa563e97dbcdef5aeaa1821081673d9')
+md5sums=('81368753f1d696276e850a9e86dcc060' '04e80db177aa9b0a2ea6da0d8fa99201' 'b5ea4f0955b08a55d72dc02678e9e0a4')
