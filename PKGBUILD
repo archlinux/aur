@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=firestorm-bin
 pkgver=5.0.1.52150
-pkgrel=1
+pkgrel=2
 pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life."
 url="http://www.firestormviewer.org/"
 license=('GPL')
@@ -10,9 +10,9 @@ depends=(apr-util dbus-glib glu gtk2 libgl libidn libjpeg-turbo libpng
          libxml2 mesa nss openal pangox-compat sdl zlib)
 optdepends=(
   'alsa-lib: for ALSA support'
-  'flashplugin: for inworld Flash support'
+  'pepper-flash: for inworld Flash support'
   'freealut: for OpenAL support'
-  'gstreamer0.10: For video support - may need good, bad and ugly plugins'
+  'gstreamer: For video support - may need good, bad and ugly plugins'
   'libpulse: for PulseAudio support'
   'mesa-libgl: For Intel, Radeon, Nouveau support'
   'nvidia-libgl: for NVIDIA support'
