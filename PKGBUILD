@@ -22,9 +22,8 @@ sha512sums=('bdafa1445483e5028796e9e9a0c63ecd248f3ac385e3003403f5749fb6454bed208
 build() {
   cd $srcdir/math-comp-math-comp-*/mathcomp/$pkgname
 
-  # SSReflect requires *a lot* of memory to build. It can be a good
-  # idea add -j1 to the following command to force a sequential build.
-  make
+  # Per recommendations from README, use -j 3
+  make -j 3
 }
 
 package(){
