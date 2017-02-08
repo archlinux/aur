@@ -5,7 +5,7 @@
 pkgname=epsxe
 _pkgname=ePSXe
 pkgver=2.0.5
-pkgrel=7
+pkgrel=8
 pkgdesc="Enhanced PSX emulator"
 url="http://epsxe.com"
 arch=('i686' 'x86_64')
@@ -56,6 +56,6 @@ package () {
   ln -sf "$HOME/.${pkgname}rc" -T "${pkgdir}/opt/${pkgname}/.${pkgname}rc"
 
   # libtinfo and ncurses crap
-  ln -s /usr/lib/libncursesw.so.6 "$pkgdir"/opt/"$pkgname"/libncurses.so.5
-  ln -s /usr/lib/libtinfo.so.6 "$pkgdir"/opt/"$pkgname"/libtinfo.so.5
+  ln -s /usr/lib32/libncursesw.so.6 "$pkgdir"/opt/"$pkgname"/libncurses.so.5
+  ln -s /usr/lib32/libtinfo.so.6 "$pkgdir"/opt/"$pkgname"/libtinfo.so.5
 }
