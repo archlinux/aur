@@ -4,7 +4,7 @@
 
 pkgname=xephem
 pkgver=3.7.7
-pkgrel=3
+pkgrel=4
 pkgdesc="The Serious Interactive Astronomical Software Ephemeris"
 arch=('i686' 'x86_64')
 url="http://www.clearskyinstitute.com/xephem/xephem.html"
@@ -12,7 +12,7 @@ license=("custom")
 depends=(libxmu lesstif)
 makedepends=()
 optdepends=(perl)
-source=(http://www.clearskyinstitute.com/xephem/$pkgname-$pkgver.tar.gz)
+source=(http://www.clearskyinstitute.com/xephem/$pkgname-$pkgver.tgz)
 md5sums=('27c67061a89085bf2b0d4e9deb758a79')
 
 build() {
