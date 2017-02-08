@@ -1,13 +1,14 @@
 pkgname='vault-bin'
 pkgdesc='A tool for managing secrets'
 pkgver='0.6.5'
-pkgrel=1
+pkgrel=2
 url='https://vaultproject.io/'
 license=('MPL')
 arch=('i686' 'x86_64' 'armv7h')
 depends=('glibc')
 conflicts=('vault' 'vault-git')
 install='vault.install'
+backup=('etc/vault.hcl')
 source=('vault.service'
         'vault.hcl'
         'LICENSE')
