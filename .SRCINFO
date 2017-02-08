@@ -1,21 +1,21 @@
 pkgbase = mpdris-git
 	pkgdesc = An implementation of the XMMS2 media player interface MPRIS as a client for MPD
-	pkgver = 20110110
+	pkgver = r31.304f83b
 	pkgrel = 1
 	url = http://ayeon.org/projects/mpDris/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = subversion
-	depends = python2>=2.4
-	depends = dbus-python>=0.80
-	depends = pygobject>=2.14
-	depends = python-mpd>=0.2.0
+	makedepends = git
+	depends = python2-dbus
+	depends = python2-gobject2
+	depends = python2-mpd2
 	optdepends = mpd: the Music Player Daemon
 	conflicts = mpdris
 	conflicts = mpdris-svn
-	replaces = mpdris-svn
 	backup = etc/mpDris.conf
+	source = mpris::git://ayeon.org/mpris.git
+	md5sums = SKIP
 
 pkgname = mpdris-git
 
