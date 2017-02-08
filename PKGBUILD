@@ -20,7 +20,7 @@ _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some grap
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=58.0.3000.4
+pkgver=58.0.3004.3
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -58,7 +58,8 @@ makedepends=('libexif'
              'git'
              'imagemagick'
              'hwids'
-             'npm'
+             'nodejs'
+             'wget'
              )
 optdepends=('libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users'
             'libva-mesa-driver: HW video acceleration for Nouveau, r600 and radeonsi users'
@@ -247,6 +248,7 @@ _keeplibs=(
   'third_party/modp_b64'
   'third_party/mt19937ar'
   'third_party/node'
+  'third_party/node/node_modules/vulcanize/third_party/UglifyJS2'
   'third_party/openh264'
   'third_party/openmax_dl'
   'third_party/opus'
@@ -419,6 +421,10 @@ prepare() {
   # https://crbug.com/668446
   patch -p0 -i "${srcdir}/fix_668446_r1.diff"
 
+  # Setup nodejs dependency
+  mkdir -p third_party/node/linux/node-linux-x64/bin/
+  ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/node
+
   # Try to fix libpng errors.
   msg2 "Attempt for fix libpng errors"
   for _path in 'chrome/app/theme' 'chrome/renderer' 'ui'; do
@@ -455,14 +461,6 @@ prepare() {
   msg2 "Update libaddressinput strings."
   python2 third_party/libaddressinput/chromium/tools/update-strings.py
 
-  msg2 "Update nodejs deps"
-  # Fix some things in the update_node_binaries script
-  sed -e 's|latest-v6.x|${NODE_VERSION}|g' \
-      -e 's|rm "SHASUMS256.txt"|rm -fr "SHASUMS256.txt"|g' \
-      -i third_party/node/update_node_binaries
-
-  ./third_party/node/update_node_binaries
-  ./third_party/node/update_npm_deps
 
   if [ "${_build_nacl}" = "1" ]; then
     msg2 "Setup NaCl/PNaCl SDK: Download and install NaCl/PNaCl toolchains"
@@ -549,9 +547,8 @@ package() {
   ln -s /usr/lib/chromium-dev/chromedriver "${pkgdir}/usr/bin/chromedriver-dev"
 
   # Install libs.
-  for i in libwidevinecdmadapter libclearkeycdm; do
-    install -Dm755 "${i}.so" "${pkgdir}/usr/lib/chromium-dev/${i}.so"
-  done
+  install -Dm755 libclearkeycdm.so "${pkgdir}/usr/lib/chromium-dev/libclearkeycdm.so"
+  install -Dm755 libwidevinecdmadapter.so "${pkgdir}/usr/lib/chromium-dev/libwidevinecdmadapter.so"
   install -Dm644 natives_blob.bin "${pkgdir}/usr/lib/chromium-dev/natives_blob.bin"
   install -Dm644 snapshot_blob.bin "${pkgdir}/usr/lib/chromium-dev/snapshot_blob.bin"
 
