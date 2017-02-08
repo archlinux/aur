@@ -1,0 +1,16 @@
+pkgbase = php70-apcu
+	pkgdesc = A userland caching module for php70
+	pkgver = 5.1.8
+	pkgrel = 1
+	url = https://pecl.php.net/package/APCu
+	arch = i686
+	arch = x86_64
+	license = PHP
+	depends = php70>=7.0.15
+	provides = php-apcu=5.1.8-1
+	backup = etc/php70/conf.d/apcu.ini
+	source = https://pecl.php.net/get/apcu-5.1.8.tgz
+	md5sums = 0ef8be2ee8acb4dba5a66b247a254995
+
+pkgname = php70-apcu
+
