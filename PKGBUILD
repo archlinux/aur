@@ -15,6 +15,7 @@ md5sums=('4cad7ae6c25b8148916fc702f4846a6f'
          '891ca4358eca8d9c2c1994aa3025fa04'
          'a2814a1a18af9eaaa6891509b21814c3')
 
+
 package() {
 	
 	install -D duckdns.sh "${pkgdir}/usr/bin/${pkgname}"
