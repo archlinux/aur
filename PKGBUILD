@@ -3,7 +3,7 @@
 
 pkgname='nextcloud-client'
 pkgver='2.2.4'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Nextcloud desktop client'
 arch=('i686' 'x86_64')
 url='https://nextcloud.com/'
@@ -22,7 +22,7 @@ backup=('etc/Nextcloud/sync-exclude.lst')
 prepare() {
   cd "${srcdir}/${pkgname}"
   git submodule update --init --recursive
-  mkdir "${srcdir}/${pkgname}/build-linux"
+  mkdir -p "${srcdir}/${pkgname}/build-linux"
 }
 
 build() {
