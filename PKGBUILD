@@ -2,7 +2,7 @@
 
 pkgname=mathcomp
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The entire mathematical components library for Coq."
 url="https://math-comp.github.io/math-comp/"
 arch=('i686' 'x86_64')
@@ -16,9 +16,8 @@ sha512sums=('bdafa1445483e5028796e9e9a0c63ecd248f3ac385e3003403f5749fb6454bed208
 build() {
   cd $srcdir/math-comp-math-comp-*/$pkgname
 
-  # mathcomp requires *a lot* of memory to build. It can be a good
-  # idea add -j1 to the following command to force a sequential build.
-  make
+  # Per recommendations from README, use -j 3
+  make -j 3
 }
 
 package(){
