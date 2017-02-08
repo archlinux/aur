@@ -1,9 +1,10 @@
-# $Id: PKGBUILD 252976 2015-12-06 20:11:36Z foutrelis $
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Geyslan G. Bem <geyslan@gmail.com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=wxgtk2.8
 pkgver=2.8.12.1
-pkgrel=4
+pkgrel=5
 pkgdesc="GTK+ implementation of wxWidgets API for GUI"
 arch=('i686' 'x86_64')
 url="http://wxwidgets.org"
@@ -13,10 +14,12 @@ makedepends=('gstreamer0.10-base-plugins' 'gconf' 'glu')
 options=('!emptydirs')
 source=(http://downloads.sourceforge.net/wxpython/wxPython-src-${pkgver}.tar.bz2
         wxGTK-collision.patch
-        make-abicheck-non-fatal.patch)
+        make-abicheck-non-fatal.patch
+        wxGTK-2.8.12.1-r2-gcc6.patch)
 sha1sums=('05688dc03d61631750f5904273122bb40a2115f5'
           '75d2292a0058570aa6071b4bee6eef69e47f1208'
-          'dfe38650c655395b90bf082b5734c4093508bfa3')
+          'dfe38650c655395b90bf082b5734c4093508bfa3'
+          'f1a3bc30ec8139d97ca239dc1bf6cbc2ceb5c5d9')
 
 prepare() {
   cd wx*-${pkgver}
@@ -25,6 +28,10 @@ prepare() {
   # C++ ABI check is too strict and breaks with GCC 5.1
   # https://bugzilla.redhat.com/show_bug.cgi?id=1200611
   patch -Np1 -i ../make-abicheck-non-fatal.patch
+
+  # fix gcc6 narrowing error
+  # https://bugs.gentoo.org/show_bug.cgi?id=592442
+  patch -p1 -i ../wxGTK-2.8.12.1-r2-gcc6.patch
 }
 
 build() {
