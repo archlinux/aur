@@ -1,8 +1,8 @@
 
 _pkgname=dontpanic
 pkgname=${_pkgname}-latest
-pkgver=1.7
-pkgrel=2
+pkgver=1.9
+pkgrel=1
 #epoch=1
 pkgdesc="Dontpanic is a python app to look for any movie or serie and watch them in 'streaming'. It looks like popcorntime, but doesn't depend of a centralized api."
 arch=(any)
@@ -18,7 +18,7 @@ conflicts=("${_pkgname}")
 
 source=("${_pkgname}::http://3hg.toile-libre.org/dontpanic/downloads/dontpanic-latest.tgz")
 	
-sha256sums=('a15881591c7d2600b1ca8cdc64b8a6d761983f951a3e1c1c29aa3e5a01273199')
+sha256sums=('0507f73c7791b43e8cb241cf8e570d0737393eecda95fcdb32d37fea809c0c27')
 
 pkgver() {
 	 #wget -qO- http://3hg.toile-libre.org/dontpanic/version
