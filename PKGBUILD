@@ -1,7 +1,7 @@
 # Maintainer: duffydack <duffydack73 {at] gmail {dot} com>
 pkgbase=linux-max98090
 _srcname=linux-4.9
-pkgver=4.9.7
+pkgver=4.9.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -25,7 +25,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'db4a5bade2a07d2f801e8c5c39dd310f35cfbbe90a953938cfbc14495b3e520c'
+            'd53bb9fb309193cbbf88faa28f4cecfc312dbddaa4c2cbf089f2a7ecd56889c0'
             'SKIP'
             '0ab035f5e2583b14742b7fb7216d49a192e5eebd027cb491c7941b9617e2dba2'
             '2f0f40dc9f6d51acc0fd10195e6aa087278691529bd64ed6abb7f9a4d4fde093'
