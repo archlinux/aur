@@ -2,7 +2,7 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname='anitya'
-pkgver='0.10.1'
+pkgver='0.11.0'
 pkgrel='1'
 pkgdesc="client for Fedora's cross-distribution upstream release monitoring"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python2' 'python2-'{sqlalchemy,jinja,openid,flask-openid,flask,wtforms
 _github='fedora-infra/anitya'
 _verwatch=("https://github.com/${_github}/releases.atom" '\s\+<title>\([^<]\+\)</title>' 'f')
 source=("anitya-${pkgver}.zip::https://github.com/${_github}/archive/${pkgver}.zip")
-sha256sums=('6ea2bf164f8996c7671750bb7340cb67ee73bf6886fb52b8e75ff2fab3eb5d49')
+sha256sums=('749093beb144436fefdae6bc801099d7f5eb1608c20aadb7440052805dd5a17d')
 
 package() {
   cd "anitya-${pkgver}"
