@@ -1,4 +1,5 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Andrey Vihrov <andrey.vihrov at gmail.com>
+# Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: cute.tec@gmail.com
 
