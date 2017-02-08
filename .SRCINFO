@@ -1,17 +1,15 @@
-pkgbase = dex-git
-	pkgdesc = A program to execute DesktopEntry files of type Application, primarily for window managers that do not implement the Freedesktop autostart specification
-	pkgver = 62.2d158ca
+pkgbase = hfsprescue-bin
+	pkgdesc = A program to recover hfs+ file systems
+	pkgver = 3.2
 	pkgrel = 1
-	url = https://github.com/jceb/dex
-	arch = any
+	url = https://www.plop.at/en/hfsprescue/full.html
+	arch = i686
+	arch = x86_64
 	license = GPL2
-	makedepends = git
-	makedepends = python-sphinx
-	depends = python
-	provides = dex
-	conflicts = dex
-	source = git+https://github.com/jceb/dex.git
-	sha256sums = SKIP
+	source = https://download.plop.at/hfsprescue/hfsprescue-3.2-precompiled.tar.gz
+	source = LICENSE
+	sha256sums = 83269af382db8ef7880f6c8aa4c3d1f960ea0a2d05571d1c8f182389cf6e6501
+	sha256sums = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
 
-pkgname = dex-git
+pkgname = hfsprescue-bin
 
