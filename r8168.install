@@ -1,5 +1,5 @@
 rebuild_module_dependencies() {
-	EXTRAMODULES='extramodules-4.7-aufs_friendly'
+	EXTRAMODULES='extramodules-4.9-aufs_friendly'
 	depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
 }
 
