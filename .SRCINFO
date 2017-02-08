@@ -1,8 +1,8 @@
 pkgbase = scangearmp-common
 	pkgdesc = Canon IJ Scanner Driver (Common package)
-	pkgver = 2.20
+	pkgver = 2.30
 	pkgrel = 1
-	url = http://support-asia.canon-asia.com/contents/ASIA/EN/0100470402.html
+	url = http://support-asia.canon-asia.com/contents/ASIA/EN/0100588302.html
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -15,9 +15,9 @@ pkgbase = scangearmp-common
 	optdepends = sane
 	optdepends = gimp>=2.0.0
 	options = emptydirs
-	source = http://gdlp01.c-wss.com/gds/1/0100005521/01/scangearmp-mg3500series-2.20-1-deb.tar.gz
+	source = http://gdlp01.c-wss.com/gds/3/0100005883/01/scangearmp-e400series-2.30-1-deb.tar.gz
 	source = LICENSE
-	sha256sums = d4a14171a14c6221c40b589b90945512fbb0762ab4d43fb4bab48f4f858a6340
+	sha256sums = e92149a22c55008b069b8748e79f042056dc09d60b6f1dea778baaec19af8b36
 	sha256sums = 1b890f509ae6795dfaea46e3a3bed6384d05bc4ef7ac047ec55e72fcb2101822
 
 pkgname = scangearmp-common
