@@ -1,16 +1,16 @@
 pkgbase = rpmdevtools
 	pkgdesc = RPM Development Tools
-	pkgver = 8.9
+	pkgver = 8.10
 	pkgrel = 1
-	url = https://fedorahosted.org/rpmdevtools/
+	url = https://pagure.io/rpmdevtools
 	arch = any
 	license = GPL2
 	makedepends = bash-completion
 	makedepends = help2man
 	depends = python
 	depends = rpm-org
-	source = https://fedorahosted.org/released/rpmdevtools/rpmdevtools-8.9.tar.xz
-	md5sums = 35bab0c28f2af544af53ac1aed598ac0
+	source = https://releases.pagure.org/rpmdevtools/rpmdevtools-8.10.tar.xz
+	md5sums = 74b083a2854e1e02f1a6b2e5f3725518
 
 pkgname = rpmdevtools
 
