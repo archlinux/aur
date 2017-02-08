@@ -4,7 +4,7 @@
 # Contributor: Filip <fila pruda com>, Det < nimetonmaili(at)gmail >
 
 _pkgname=r8168
-pkgname=r8168-aufs_friendly
+pkgname=r8168-aufs
 pkgver=8.043.02
 pkgrel=4
 pkgdesc="A kernel module for Realtek 8168 network cards(AUFS Friendly Kernel)"
