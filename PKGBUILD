@@ -25,7 +25,7 @@ package() {
 	chmod 755 $pkgdir/usr/share
 	chmod 755 $pkgdir/usr/share/applications
 
-	mkdir -p "$pkgdir/usr/local/bin"
+	mkdir -p "$pkgdir/usr/bin"
 	ln -s /opt/Rocket.Chat+/rocketchat ${pkgdir}/usr/bin
 }
 
