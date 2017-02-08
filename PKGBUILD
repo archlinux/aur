@@ -4,7 +4,7 @@
 
 pkgname=gnudatalanguage
 pkgver=0.9.7
-pkgrel=2
+pkgrel=3
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=('i686' 'x86_64')
 url="http://gnudatalanguage.sourceforge.net/"
@@ -17,6 +17,12 @@ source=(http://downloads.sourceforge.net/gnudatalanguage/gdl-${pkgver}.tgz \
     gdl.profile)
 md5sums=('0cd285d85e00e76e37b92310a76579c2'
          '40aa5fd8278cd8e80425c62a577563cc')
+
+prepare() {
+  sed -i '1d' gdl-template.patch
+  cd $srcdir/gdl-${pkgver}/
+  patch -p1 < ../gdl-template.patch
+}
 
 build() {
   cd $srcdir/gdl-${pkgver}
