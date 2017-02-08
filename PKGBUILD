@@ -1,7 +1,7 @@
 # Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 
 pkgname=vim-sneak
-pkgver=1.7.4
+pkgver=1.8
 pkgrel=1
 pkgdesc='The missing motion for Vim'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('vim')
 groups=('vim-plugins')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/justinmk/vim-sneak/archive/${pkgver}.tar.gz")
-sha512sums=('e9738b8e5fda3cb2d205e3c04778e25191c8850d283beafa9a798301c255cba7f777a21ed9514a4ccdc8f728246fcac248e61a4bb2eda934bc1284ef6af287ba')
+sha512sums=('176f2f90ca599625e920d0fddc393abe285ebe76717c0ca27ccb8ccc01a00f7c12800412662493ba8bd6c1e7d70f4629c574aad724a29526e7babc52dbfccad8')
 
 package() {
   cd "${srcdir}/vim-sneak-${pkgver}"
