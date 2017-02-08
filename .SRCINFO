@@ -1,7 +1,7 @@
 pkgbase = bumblebee-status-git
 	pkgdesc = A modular, theme-able status line generator for the i3 window manager.
 	pkgver = r292.188ee36
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tobi-wan-kenobi/bumblebee-status
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = bumblebee-status-git
 	optdepends = xorg-xset: Enable/disable automatic screen locking
 	optdepends = libnotify: Enable/disable automatic screen locking
 	optdepends = dnf: Display DNF package update information
-	optdepends = xorg-seetxkbmap: Display/change the current keyboard layout
+	optdepends = xorg-setxkbmap: Display/change the current keyboard layout
 	optdepends = redshift: Display the redshifts current color
 	optdepends = pulseaudio: Control pulseaudio sink/sources
 	optdepends = xorg-xrandr: Enable/disable screen outputs
