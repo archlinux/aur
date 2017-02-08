@@ -1,14 +1,14 @@
 pkgbase = python-pyfaidx
 	pkgdesc = Efficient pythonic random access to fasta subsequences.
-	pkgver = 0.4.2
+	pkgver = 0.4.8.1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/pyfaidx
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/mdshw5/pyfaidx/archive/v0.4.2.tar.gz
-	sha1sums = 66343c80757f978d4812e99d1afb8ea11c45f119
+	source = https://github.com/mdshw5/pyfaidx/archive/v0.4.8.1.tar.gz
+	sha1sums = 5229bff9d953c6ebdd22ad29c94b12bb74130a44
 
 pkgname = python-pyfaidx
 
