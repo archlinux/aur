@@ -1,6 +1,6 @@
 # Maintainer: Kieran Colford <kieran@kcolford.com>
 pkgname=ddns
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 epoch=
 pkgdesc="Automatic provisioning of Dynamic DNS."
@@ -22,7 +22,7 @@ options=()
 install=
 changelog=
 source=("$url/archive/v$pkgver.tar.gz")
-md5sums=('9721471d7efe2f10a07be314416d22e4')
+md5sums=('7ac7d7fdd4a989dee3c726ebf3d9728f')
 noextract=()
 
 package() {
