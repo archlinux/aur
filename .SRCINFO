@@ -1,0 +1,14 @@
+pkgbase = jerry
+	pkgdesc = A chess analysis GUI
+	pkgver = 3.0.6
+	pkgrel = 1
+	url = http://jerry-chess.github.io
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt5-svg
+	source = https://github.com/asdfjkl/jerry/archive/v.306.tar.gz
+	sha256sums = f6b70ba144e7179608c85eb1455b465de7cf3a1c11f3a99be8fa63b2ee6d6811
+
+pkgname = jerry
+
