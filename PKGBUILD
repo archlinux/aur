@@ -1,7 +1,7 @@
 # Maintainer: ngld <ngld@tproxy.de>
 _pyname=knossos
 pkgname=fs2-knossos
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A simple mod manager for FreeSpace 2 Open"
 arch=('any')
@@ -11,12 +11,11 @@ groups=()
 depends=('python' 'python-six' 'python-requests' 'python-pyqt5' 'python-semantic-version' 'python-raven' 'p7zip' 'openal' 'sdl2')
 makedepends=('python-setuptools')
 options=(!emptydirs)
-install=fs2-knossos.install
 source=(
-    "https://pypi.python.org/packages/17/f7/340904483511e158935d7e75e8cbbaf4812672cd0808336704a88cf09b9b/knossos-0.3.1.tar.gz"
+    "https://pypi.python.org/packages/41/45/f89b77fb39ad44a728ae79e479f17a024e24deb567c4138abcb0cb5bb5de/knossos-0.3.2.tar.gz"
     knossos.desktop)
-md5sums=('9e5d843cb40b25e4406842ddefa336db'
-         'e1089d09654420e95187d3adbe785670')
+md5sums=('7e3ba3dcceedd98b0b2c54faa99dc74b'
+         'afd34e2bf9b8f74c1fc5785662e1f04a')
 
 package() {
     cd "$srcdir/${_pyname}-$pkgver"
