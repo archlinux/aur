@@ -1,0 +1,4 @@
+phpopengl/
+src/
+pkg/
+*.pkg.tar.xz
