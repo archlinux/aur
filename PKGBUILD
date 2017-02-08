@@ -3,7 +3,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=fbthrift-git
-pkgver=0.31.0.r463.g8b8b6fb
+pkgver=2017.01.30.00.r15.g340f6393
 pkgrel=1
 pkgdesc='Facebook branch of Apache Thrift, including a new C++ server.'
 arch=(i686 x86_64)
@@ -12,8 +12,8 @@ license=(Apache)
 conflicts=(fbthrift thrift)
 provides=(fbthrift thrift)
 replaces=(fbthrift)
-depends=(wangle-git folly-git numactl krb5 python2)
-makedepends=(git scons cmake)
+depends=(wangle-git folly-git numactl krb5 python2 mstch)
+makedepends=(git scons cmake flex bison)
 source=(git+https://github.com/facebook/fbthrift.git)
 md5sums=(SKIP)
 
