@@ -2,7 +2,7 @@
 Name=Charm
 Icon=pycharm
 Exec=source ~/.bash_profile;/opt/pycharm-professional/bin/charm
-MimeType=text/x-python;
+MimeType=text/x-python;application/x-ipynb+json
 NoDisplay=true
 Type=Application
 Terminal=false
