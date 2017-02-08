@@ -11,7 +11,7 @@
 
 _pkgname=playonlinux5
 pkgname=${_pkgname}-git
-pkgver=r1605.9d2e6f49
+pkgver=r1609.55ea8a9f
 pkgrel=1
 epoch=2
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
@@ -26,10 +26,10 @@ source=(
 	'PlayOnLinux5.desktop'
 	'PlayOnLinux.sh'
 	)
-sha256sums=(
+md5sums=(
 	'SKIP'
-	'4703fc813fb18d3e414cc1483f03cb3c0c306e5725b7681b3dbc43fb7f6630de'
-	'a9a9c3d5ba3e9ebdbfe8153813a068ad703794bc6c9a4c6862a9a4c437ad2157'
+	'7fe925810fc7ec6d8745817b1c541e7b'
+	'60c82a463c2023368132c9b305887ada'
 	)
 
 pkgver() {

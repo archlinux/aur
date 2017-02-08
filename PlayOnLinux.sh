@@ -10,4 +10,4 @@ if (( $(archlinux-java get | cut -d "-" -f2) < 8 )); then
 fi
 
 # Start PlayOnLinux
-java -classpath "$CLASSPATH" com.playonlinux.javafx.JavaFXApplication "$@"
+java -classpath "$CLASSPATH" org.phoenicis.javafx.JavaFXApplication "$@"
