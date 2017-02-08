@@ -1,7 +1,7 @@
 # Maintainer: Jan-Erik Rediger <badboy at archlinux dot us>
 
 pkgname=bats-git
-pkgver=v0.4.0.r5.g955309a
+pkgver=v0.4.0.r6.g0360811
 pkgrel=1
 pkgdesc="Bash Automated Testing System"
 arch=("any")
@@ -11,6 +11,7 @@ depends=('bash')
 makedepends=('git')
 source=('git+https://github.com/sstephenson/bats.git')
 md5sums=('SKIP')
+conflicts=('bash-bats')
 
 _gitname='bats'
 
