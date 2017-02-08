@@ -1,6 +1,6 @@
 pkgbase = typingtest-git
 	pkgdesc = A typing test program desktop program with customizability
-	pkgver = 1.1.1.r0.f182ed8
+	pkgver = 1.1.2.r0.ea3ba0d
 	pkgrel = 1
 	url = https://github.com/laelath/typingtest
 	arch = x86_64

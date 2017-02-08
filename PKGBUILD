@@ -1,6 +1,6 @@
 # Maintainer: Justin Frank <jf.laelath@gmail.com>
 pkgname=typingtest-git
-pkgver=1.1.1.r0.f182ed8
+pkgver=1.1.2.r0.ea3ba0d
 pkgrel=1
 pkgdesc="A typing test program desktop program with customizability"
 arch=(x86_64)
