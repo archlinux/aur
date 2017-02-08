@@ -33,6 +33,13 @@ pkgver() {
 	fi
 }
 
+prepare() {
+	cd xfwm4
+
+	# https://bugzilla.xfce.org/show_bug.cgi?id=12534
+	git revert --no-commit 0dfb55407a830572f03297b3c118fac1f3c5b80d
+}
+
 build() {
 	cd xfwm4/
 
@@ -51,8 +58,7 @@ build() {
 		--enable-xpresent \
 		--enable-compositor \
 		--enable-xsync \
-		--disable-debug \
-		--disable-dependency-tracking
+		--disable-debug
 	make
 }
 
