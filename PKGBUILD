@@ -30,7 +30,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data
-pkgver=20170207.r3319.ae0f1873
+pkgver=2.0.r3321.6c86b010
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -54,9 +54,9 @@ options=('!makeflags' '!strip')
 # is used solely for packaging purposes. This branch gets updated whenever we
 # have a new (and tested) revision to be pushed out (as well as official
 # releases once they start coming out). This is easier to maintain, doesn't
-# depend on upstream tagging releases and candidates, and also deals with
-# situations where upstream lags behind on already submitted merge requests
-# with important bugfixes and additions.
+# depend on upstream tagging releases and candidates, and also allows us to
+# deal with situations where upstream lags behind on already submitted merge
+# requests with important bugfixes and additions.
 source=("$pkgname::git+https://git.purrdata.net/aggraef/purr-data.git#branch=release"
 	"RTcmix-pd-LCPLAY-stabilize.patch"
 	"userconfig.patch")
@@ -93,7 +93,7 @@ buildopt=${buildopt:--B}
 
 pkgver() {
   cd $srcdir/$pkgname
-  printf "%s.r%s.%s" "$(git log -1 --format=%cd --date=short | sed -e 's/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(grep PD_L2ORK_VERSION pd/src/m_pd.h | sed 's|^.define *PD_L2ORK_VERSION *"\(.*\)".*|\1|')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
