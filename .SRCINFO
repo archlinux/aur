@@ -1,7 +1,7 @@
 pkgbase = firefox-developer-da
 	pkgdesc = Standalone web browser from mozilla.org, developer build - Danish
-	pkgver = 52.0a2
-	pkgrel = 2
+	pkgver = 53.0a2
+	pkgrel = 3
 	url = http://www.mozilla.org/firefox/developer
 	arch = i686
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = firefox-developer-da
 	depends = gtk2
 	depends = sqlite3
 	depends = dbus-glib
-	source = https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-aurora-l10n/firefox-52.0a2.da.linux-x86_64.tar.bz2
+	source = https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-aurora-l10n/firefox-53.0a2.da.linux-x86_64.tar.bz2
 	source = firefox-developer.desktop
 	source = vendor.js
-	sha512sums = f53953005efbe9e68394ca69818d0088bea35d481c95ec980f06ca7695bb0cdc7f8d9ced7ecdf852d0cb0a6f29daf62948f2661e5972885c1f0bccac646da645
+	sha512sums = 133d446584ac75c689f0cf4f8c428cf30bc5d146eae46a6d1573e8afa3e005dee430806c3e4875b4c9ee2666a00b8790a7276a18bdfe7016e9b49a3a25e1ec68
 	sha512sums = b109b884ed79e9e214541750a0fcac8d7d8891cc7f0e0d472b717a5b71e569ab5852534bceaab045a5b13a9290a7905604d08fe97e28c675a2266c30fe719cb6
 	sha512sums = bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010
 
