@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/fincs/citro3d"
 license=('custom:BSD-like')
 sha256sums=('SKIP')
-depends=('devkitarm' 'ctrulib-git')
+depends=('devkitarm' 'libctru')
 makedepends=('git')
 options=('!strip' 'staticlibs')
 
