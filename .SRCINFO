@@ -1,0 +1,21 @@
+pkgbase = eclipse-antlr4-runtime
+	pkgdesc = Support for antlr parser generator in Eclipse
+	pkgver = 4.5.2
+	pkgrel = 1
+	url = https://github.com/boothen/Json-Eclipse-Plugin
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = eclipse
+	noextract = org.antlr.v4_4.5.2.jar
+	noextract = org.antlr.antlr4-runtime-osgi_4.5.2.1.jar
+	noextract = org.antlr.antlr4-runtime-osgi.source_4.5.2.1.jar
+	source = http://boothen.github.io/Json-Eclipse-Plugin/features/org.antlr.v4_4.5.2.jar
+	source = http://boothen.github.io/Json-Eclipse-Plugin/plugins/org.antlr.antlr4-runtime-osgi_4.5.2.1.jar
+	source = http://boothen.github.io/Json-Eclipse-Plugin/plugins/org.antlr.antlr4-runtime-osgi.source_4.5.2.1.jar
+	md5sums = 58d3f0a6bf3e8d709bbff19416fe37e3
+	md5sums = 8116b492724169f01a9417f75721221f
+	md5sums = 4e12a9a6ebc172027ed4e0a2f1205f16
+
+pkgname = eclipse-antlr4-runtime
+
