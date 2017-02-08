@@ -8,7 +8,7 @@
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless
 pkgver=3.2.3
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
