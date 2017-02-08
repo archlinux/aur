@@ -1,7 +1,7 @@
 # Maintainer: Mario Ray Mahardhika <leledumbo_cool@yahoo.co.id>
 pkgname=zita-ajbridge-gui
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="A simple GUI frontend for zita-ajbridge"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/leledumbo/zita-aj-bridge-gui"
