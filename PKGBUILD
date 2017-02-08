@@ -4,7 +4,7 @@
 
 pkgbase=linux-selinux
 _srcname=linux-4.9
-pkgver=4.9.7
+pkgver=4.9.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -28,7 +28,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'db4a5bade2a07d2f801e8c5c39dd310f35cfbbe90a953938cfbc14495b3e520c'
+            'd53bb9fb309193cbbf88faa28f4cecfc312dbddaa4c2cbf089f2a7ecd56889c0'
             'SKIP'
             '3be1bedba201d5831d4a72e6a05c33665a2dd854d5f043d5a6e19e11a6c03bbe'
             '8b59816e3e37947d5cffbfc0ad09c47524fca1aae162798a1cbd1974c4a68546'
