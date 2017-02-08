@@ -4,18 +4,17 @@
 # Contributor: cute.tec@gmail.com
 
 pkgname=xfwm4-git
-pkgver=4.12.0.r81.gc404635
+pkgver=4.12.0.r237.g03c4b509
 pkgrel=1
 pkgdesc='Xfce window manager - git checkout'
 arch=('i686' 'x86_64')
 license=('GPL2')
 url='http://git.xfce.org/xfce/xfwm4'
 groups=('xfce4')
-depends=('libxfce4ui' 'libwnck' 'libdrm' 'hicolor-icon-theme')
+depends=('libxfce4ui' 'libwnck' 'libdrm' 'hicolor-icon-theme' 'libepoxy' 'libxpresent')
 makedepends=('git' 'intltool' 'xfce4-dev-tools' 'exo')
 provides=('xfwm4')
 conflicts=('xfwm4')
-install=xfwm4-git.install
 source=('git://git.xfce.org/xfce/xfwm4')
 sha256sums=('SKIP')
 
@@ -46,10 +45,14 @@ build() {
 		--localstatedir=/var \
 		--disable-static \
 		--enable-startup-notification \
+		--enable-render \
 		--enable-randr \
+		--enable-epoxy \
+		--enable-xpresent \
 		--enable-compositor \
 		--enable-xsync \
-		--disable-debug
+		--disable-debug \
+		--disable-dependency-tracking
 	make
 }
 
