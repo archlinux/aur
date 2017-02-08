@@ -14,8 +14,8 @@ depends=('pcsclite' 'libusb-compat' 'scmccid')
 #backup=('usr/local/scm/ini/scmccid.ini')
 install=$pkgname.install
 
-source_i686=("http://support.identive-infrastructure.com/download/npa/SDI011_${pkgver}_linux_32bit.tar.gz")
-source_x86_64=("http://support.identive-infrastructure.com/download/npa/SDI011_${pkgver}_linux_64bit.tar.gz")
+source_i686=("https://www.scm-pc-card.de/file/driver/Readers_Writers/SDI011_${pkgver}_linux_32bit.tar.gz")
+source_x86_64=("https://www.scm-pc-card.de/file/driver/Readers_Writers/SDI011_${pkgver}_linux_64bit.tar.gz")
 
 sha256sums_i686=('d581539a0038da62fa472eefe93e036e4385c93537a11854ddac634a6b1ff02a')
 sha256sums_x86_64=('c1fe81367d159189f64a789700972e0d455871c8f7a6f436a9e614bd0066380e')
