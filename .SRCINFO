@@ -1,0 +1,16 @@
+pkgbase = bumblebee-status-git
+	pkgdesc = A modular, theme-able status line generator for the i3 window manager.
+	pkgver = r292.188ee36
+	pkgrel = 1
+	url = https://github.com/tobi-wan-kenobi/bumblebee-status
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-netifaces
+	provides = bumblebee-status
+	conflicts = bumblebee-status
+	source = git+https://github.com/tobi-wan-kenobi/bumblebee-status
+	md5sums = SKIP
+
+pkgname = bumblebee-status-git
+
