@@ -1,6 +1,6 @@
 pkgname='vault-bin'
 pkgdesc='A tool for managing secrets'
-pkgver='0.6.4'
+pkgver='0.6.5'
 pkgrel=1
 url='https://vaultproject.io/'
 license=('MPL')
@@ -17,9 +17,9 @@ source_armv7h=("https://releases.hashicorp.com/vault/${pkgver}/vault_${pkgver}_l
 sha512sums=('a97d10208fd99b29cf532c9b5882fe1bbb3faee1d1d706f95a9c379fef461c65a9f16c8530438920024e69871ebd8c7329e6b65025ad65092950bfb74ce393b3'
             '8f8769f2c285f77b10c1f96e43acb233c70509ca657a8113f9d1f13a73ba55de6acdc6984597a4e1da19d6a7748e05f3523461a3b4bce10b9541aa5340400dd6'
             'dd6de68678d972517c135992217f625a3bc728a6495e1f6052df9926cf9cbc212dfa2a612be5a25d7ce5eeeef41e2b12f0d82af6176a6e0ca043b43c622c6347')
-sha256sums_i686=('5a3d5fcfb996a576c0c11136cc6e471fe72bb12b5167694919ea95cbca466bd1')
-sha256sums_x86_64=('04d87dd553aed59f3fe316222217a8d8777f40115a115dac4d88fac1611c51a6')
-sha256sums_armv7h=('9a12a504088cc4e5b77200273383fec081a7d3df690c04fd13bd7983652c0211')
+sha256sums_i686=('85dd505f57964add2359798faca0302877b95386a852331bb0e7d43367a41949')
+sha256sums_x86_64=('c9d414a63e9c4716bc9270d46f0a458f0e9660fd576efb150aede98eec16e23e')
+sha256sums_armv7h=('b97e4da703b93870a614c53431da905029dbb54675f404f6a878536a1852fecf')
 
 package () {
 	install -Dm755 vault "${pkgdir}/usr/bin/vault"
