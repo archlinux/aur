@@ -7,6 +7,7 @@ pkgbase = bumblebee-status-git
 	license = MIT
 	makedepends = git
 	depends = python-netifaces
+	depends = python-psutil
 	provides = bumblebee-status
 	conflicts = bumblebee-status
 	source = git+https://github.com/tobi-wan-kenobi/bumblebee-status
