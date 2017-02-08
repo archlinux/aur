@@ -3,7 +3,7 @@
 pkgname=yubikey-manager-qt
 _commit='d14158c0'
 pkgver="0.3.0.r9.g${_commit}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform application for configuring any YubiKey over all USB transports'
 arch=('i686' 'x86_64')
 url='https://developers.yubico.com/yubikey-manager-qt/'
@@ -47,5 +47,8 @@ package() {
 	cd yubikey-manager-qt/
 
 	make INSTALL_ROOT="${pkgdir}/" install
+
+	install -D -m0644 resources/ykman-gui.desktop "${pkgdir}/usr/share/applications/ykman-gui.desktop"
+	install -D -m0644 resources/icons/ykman.png "${pkgdir}/usr/share/pixmaps/ykman.png"
 }
 
