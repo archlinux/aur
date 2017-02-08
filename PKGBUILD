@@ -35,7 +35,8 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'python2-pytest: For support testing inside Pycharm with Python 2'
             'python-pytest: For support testing inside Pycharm with Python 3'
             'python2-tox: Python environments for testing tool with Python 2'
-            'python-tox: Python environments for testing tool with Python 3')
+            'python-tox: Python environments for testing tool with Python 3', 
+            'jupyter: For support Jupyter Notebook')
 sha256sums=('72a7032ce618030db44179e7ae4e3b5d0ef761a7cbfeb34aeedf670b5d1059a3'
             '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
             'c1a74303d9e870918bd8068f761c8251b996694b1b96b3537fbca317679c4958'
