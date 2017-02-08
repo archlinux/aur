@@ -1,13 +1,13 @@
 # Maintainer: Clément DEMOULINS <clement@archivel.fr>
 
 pkgname=vcsn
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 pkgdesc="Finite state machine manipulation platform, consisting of a library and tools implemented on top of it."
 arch=('i686' 'x86_64')
 url="http://vcsn.lrde.epita.fr/"
 license=('GPL3')
-depends=('boost' 'gcc' 'ccache' 'libltdl' 'jupyter' 'mathjax' 'graphviz')
+depends=('boost' 'gcc' 'ccache' 'libltdl' 'jupyter' 'mathjax' 'graphviz' 'yaml-cpp')
 optdepends=('python-regex: to get better error messages')
 makedepends=('texlive-core' 'doxygen' 'python2-docutils')
 options=(!buildflags)
