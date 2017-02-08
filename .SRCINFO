@@ -13,7 +13,9 @@ pkgbase = pacui-git
 	optdepends = yaourt: Needed for AUR support.
 	optdepends = downgrade: Needed for hidded "downgrade" option.
 	optdepends = update-notifier: Automatically get notified when updates are available.
-	source = git+https://github.com/excalibur1234/pacui
+	provides = pacui
+	conflicts = pacui
+	source = pacui::git+https://github.com/excalibur1234/pacui.git
 	md5sums = SKIP
 
 pkgname = pacui-git
