@@ -8,7 +8,7 @@ pkgbase=linux-zen-flipdone
 _srcname=linux-4.9
 _zenpatch=zen-4.9.8-d48cc9dca58f613e9f3589f44d5962e717f8f6a1.diff
 pkgver=4.9.8
-pkgrel=5
+pkgrel=6
 arch=('i686' 'x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
 license=('GPL2')
@@ -37,7 +37,7 @@ sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             '1a93517a82b3e6de50625b4e308c4a643778fa9252ce94446317447f71b45e10'
             'SKIP'
             'c1f3bfd84bf664221495e9975bc337edb40f7c14f992ce65ea85c0376ed2f30f'
-            '8823a62efee521df49fce92bbcf7e30ba39310d8b2a2595dd8dbe04a06e04567'
+            '98e654a8e9c33ae7c5be3fd097cba2ad8874b57a35ae7a809ec784dfd7671aa5'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
