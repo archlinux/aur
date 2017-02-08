@@ -8,8 +8,8 @@ pkgrel=5
 pkgdesc="dry is a terminal application to manage Docker containers and images"
 url="http://moncho.github.io/dry/"
 arch=('x86_64' 'i686')
-license=('MPL2')
-depends=('glibc')
+license=('MIT')
+depends=('docker')
 if test "$CARCH" == i686; then
 source=(
   "${_pkgname}::https://github.com/moncho/dry/releases/download/${_pkgver}/dry-linux-386"

@@ -5,8 +5,8 @@ pkgbase = dry-bin
 	url = http://moncho.github.io/dry/
 	arch = x86_64
 	arch = i686
-	license = MPL2
-	depends = glibc
+	license = MIT
+	depends = docker
 	source = dry::https://github.com/moncho/dry/releases/download/v0.6-alpha.5/dry-linux-amd64
 	sha256sums = c787562a8b7276e755b9d9a8e9eb3717237866ea18fe7fe79aa076875fc6eb3e
 
