@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gambit
-pkgver=14.1.1
+pkgver=15.1.0
 pkgrel=1
 pkgdesc="Tools for doing computation in game theory - git version"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ depends=('wxgtk')
 makedepends=('git')
 provides=('gambit')
 conflicts=('gambit')
-source=(https://github.com/gambitproject/gambit/archive/v$pkgver.tar.gz ludecomp.diff)
-md5sums=('da5e1b4690b028a3d6cb8a8c27bc7725'
+source=("https://sourceforge.net/projects/$pkgname/files/gambit15/$pkgver/$pkgname-$pkgver.tar.gz" ludecomp.diff)
+md5sums=('7f1ca7d11fab293ab6ba0518f6c7c753'
          '4086c9c74892440e00c9be7f8ace4bce')
 options=('!makeflags')
 
