@@ -100,11 +100,12 @@ package_rust-docs-git() {
 
 	cd rust
 
-	install --directory "$pkgdir"/usr/share/doc
-	cp -r doc "$pkgdir"/usr/share/doc/rust
-
 	install --directory "$pkgdir"/usr/share/licenses/$pkgname/
 	install -m644 COPYRIGHT LICENSE-* "$pkgdir"/usr/share/licenses/$pkgname/
+
+	cd build/dist/doc
+	install --directory "$pkgdir"/usr/share/doc
+	cp -r * "$pkgdir"/usr/share/doc/rust
 }
 
 package_rust-src-git() {
