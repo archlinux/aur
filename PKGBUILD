@@ -1,5 +1,5 @@
 pkgname=qmidiplayer
-pkgver=0.8.3
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="A cross-platform midi file player based on libfluidsynth and Qt."
 arch=('i686' 'x86_64')
