@@ -62,10 +62,10 @@ package() {
     echo "Linking MathematicaScript"
     if [ "${CARCH}" = "x86_64" ]; then
         ln -s /opt/Mathematica/SystemFiles/Kernel/Binaries/Linux-x86-64/MathematicaScript
-        ln -s /opt/Mathematica/SystemFiles/Kernel/Binaries/Linux-x86-64/WolframScript
+        ln -s /opt/Mathematica/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript
     else
         ln -s /opt/Mathematica/SystemFiles/Kernel/Binaries/Linux/MathematicaScript
-        ln -s /opt/Mathematica/SystemFiles/Kernel/Binaries/Linux/WolframScript
+        ln -s /opt/Mathematica/SystemFiles/Kernel/Binaries/Linux/wolframscript
     fi
 
     echo "Copying menu and mimetype information"
