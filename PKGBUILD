@@ -2,8 +2,8 @@
 # Contributor: tembleking <tembleking at gmail dot com>
 
 pkgname=('python-chatterbot' 'python2-chatterbot')
-pkgver=0.5.3
-pkgrel=4
+pkgver=0.5.5
+pkgrel=1
 pkgdesc="ChatterBot is a machine learning, conversational dialog engine."
 arch=("any")
 url="https://github.com/gunthercox/ChatterBot"
@@ -42,4 +42,4 @@ package_python2-chatterbot() {
 }
 
 
-md5sums=('64991c8ca7e590ecb228bd9dd4617e75')
+md5sums=('4eac3382c6c351da899916d9d5cbfa5a')
