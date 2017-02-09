@@ -1,0 +1,8 @@
+post_install() {
+echo "
+  There are now 2 systemd user services, standard one hqplayerd.service and another hqplayerd_rygel.service that will enable rygel and the possibility to use BubbleUPnP in Android. Both are supporting Roon from version 1.3"
+}
+
+post_upgrade() {
+  post_install
+}

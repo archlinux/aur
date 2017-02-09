@@ -3,41 +3,44 @@
 pkgname=hqplayer-embedded
 _debpkgver=4.0.0a9-9_amd64
 pkgver=4.0.0a9
-pkgrel=5
+pkgrel=7
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
 arch=('x86_64')
 url="http://www.signalyst.com/custom.html"
 license=('custom')
+install=$pkgname.install
 depends=('alsa-lib' 'glibc' 'flac' 'gcc-libs' 'libgmpris' 'glib2')
 optdepends=('rygel: for network access with upnp' 'minimserver: UPnP Audio server')
-source=("https://www.signalyst.eu/bins/hqplayerd/xenial/hqplayerd_$_debpkgver.deb" 'copyright' 'hqplayerd_rygel.service' 'start_hqplayerd.sh')
-sha256sums=('SKIP' '3f3295916908afbf195993b163d7dc98696dddbc7b2f6574aab9605046dda2c7' 'ea4ea071b29bbbfce2223a0b8bbe7d62e3ac648af8f57ef49928381000bd82ea'
-'2c1a93ea66e59a7eee1b76fc70816bb9f6169b155eb42b390ecddb4b38b31ca5')
+source=("https://www.signalyst.eu/bins/hqplayerd/xenial/hqplayerd_$_debpkgver.deb" 'start_hqplayerd.sh' 'hqplayerd_rygel.service' 'hqplayerd.service')
+sha256sums=('SKIP'
+'2c1a93ea66e59a7eee1b76fc70816bb9f6169b155eb42b390ecddb4b38b31ca5'
+'649023546a37d074dab42ed90f29cb545be33bd3872f036cc4c14223db69a4a5'
+'cdbe452da60e5ed2287d9b4658175d39fbe3a9fd3b2b15b89c6a50184571e6f9')
 
 package() {
  cd "$srcdir"
   bsdtar xf data.tar.xz -C "$srcdir"
-    install -Dm644 "$srcdir/etc/hqplayer/hqplayerd.xml" \
+     install -Dm644 "$srcdir/etc/hqplayer/hqplayerd.xml" \
     "$pkgdir/etc/hqplayer/hqplayerd.xml"
-    
-     install -Dm644 "$srcdir/lib/systemd/system/hqplayerd.service" \
-    "$pkgdir/usr/lib/systemd/system/hqplayerd.service"
     
      install -Dm755 "$srcdir/usr/bin/hqplayerd" \
     "$pkgdir/usr/bin/hqplayerd"
     
-      install -Dm644 "$srcdir/usr/share/doc/hqplayerd/readme.txt.gz" \
+     install -Dm644 "$srcdir/usr/share/doc/hqplayerd/readme.txt.gz" \
     "$pkgdir/usr/share/doc/hqplayerd/readme.txt.gz"
     
      install -Dm644 "$srcdir/usr/share/doc/hqplayerd/rygel.conf.gz" \
     "$pkgdir/usr/share/doc/hqplayerd/rygel.conf.gz"
   
-     install -Dm644 "copyright" \
+     install -Dm644 "$srcdir/usr/share/doc/hqplayerd/copyright" \
     "$pkgdir/usr/share/licenses/$pkgname/COPYING"
     
      install -Dm644 "hqplayerd_rygel.service" \
     "$pkgdir/usr/lib/systemd/user/hqplayerd_rygel.service"
+    
+     install -Dm644 "hqplayerd.service" \
+    "$pkgdir/usr/lib/systemd/user/hqplayerd.service"
     
      install -Dm755 "start_hqplayerd.sh" \
     "$pkgdir/usr/bin/start_hqplayerd.sh"

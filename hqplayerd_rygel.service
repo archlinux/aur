@@ -1,9 +1,11 @@
 [Unit]
-Description=HQplayer embedded
+Description=HQPlayer Embedded daemon with rygel
 After=network.target sound.target
 
 [Service]
+Type=simple
+Restart=always
 ExecStart=/bin/bash /usr/bin/start_hqplayerd.sh
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target

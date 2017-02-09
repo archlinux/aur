@@ -1,0 +1,12 @@
+[Unit]
+Description=HQPlayer Embedded daemon
+After=network.target sound.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/hqplayerd
+Restart=always
+#EnvironmentFile=-/etc/default/hqplayerd
+
+[Install]
+WantedBy=multi-user.target
