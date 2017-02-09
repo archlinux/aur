@@ -1,6 +1,6 @@
 pkgbase = dolphin-klook
 	pkgdesc = KDE File Manager with KLook support
-	pkgver = 16.12.1
+	pkgver = 16.12.2
 	pkgrel = 1
 	url = http://kde.org/applications/system/dolphin/
 	install = dolphin.install
@@ -33,11 +33,11 @@ pkgbase = dolphin-klook
 	conflicts = dolphin
 	conflicts = dolphin-klook-frameworks
 	replaces = kdebase-dolphin
-	source = http://download.kde.org/stable/applications/16.12.1/src/dolphin-16.12.1.tar.xz
-	source = http://download.kde.org/stable/applications/16.12.1/src/dolphin-16.12.1.tar.xz.sig
+	source = http://download.kde.org/stable/applications/16.12.2/src/dolphin-16.12.2.tar.xz
+	source = http://download.kde.org/stable/applications/16.12.2/src/dolphin-16.12.2.tar.xz.sig
 	source = dolphin-klook.patch
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
-	sha256sums = b02bbfbe6d3f8eef6a6fd9b6ff6f5e90b47ad27c9f2e7ebcd25346287490fa6e
+	sha256sums = c657a80e241a341e85b28c30d064153df319319cee345dc7cc997576e1cc13f7
 	sha256sums = SKIP
 	sha256sums = b16c02d30cc41984d6b9a2adaf4e698ad4a1cea26a992f404d786bf763974cfc
 

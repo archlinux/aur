@@ -11,7 +11,7 @@
 
 pkgname=dolphin-klook
 _origpkgname="${pkgname%%-*}"
-pkgver=16.12.1
+pkgver=16.12.2
 pkgrel=1
 pkgdesc="KDE File Manager with KLook support"
 arch=(i686 x86_64)
@@ -29,7 +29,7 @@ groups=(kde-applications kdebase)
 source=("http://download.kde.org/stable/applications/$pkgver/src/$_origpkgname-$pkgver.tar.xz"{,.sig}
         "dolphin-klook.patch")
 install="dolphin.install"
-sha256sums=('b02bbfbe6d3f8eef6a6fd9b6ff6f5e90b47ad27c9f2e7ebcd25346287490fa6e'
+sha256sums=('c657a80e241a341e85b28c30d064153df319319cee345dc7cc997576e1cc13f7'
             'SKIP'
             'b16c02d30cc41984d6b9a2adaf4e698ad4a1cea26a992f404d786bf763974cfc')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7) # Albert Astals Cid <aacid@kde.org>
