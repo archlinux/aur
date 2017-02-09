@@ -1,3 +1,0 @@
-#+TITLE: madgraph-madanalysis [[https://aur.archlinux.org/packages/madgraph-madanalysis/][https://img.shields.io/aur/version/madgraph-madanalysis.svg]]
-
-MadGraph MadAnalysis bundled for installation on Arch Linux.
