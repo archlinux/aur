@@ -2,7 +2,7 @@
 # former Maintainer: si_kabayan <aaizap4p at gmail dot com>
 pkgname=raccoon
 pkgver=4.0.1
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Alternative Google Play (with GUI) client to download Android APK files to your computer"
 url="http://www.onyxbits.de/raccoon"
@@ -45,7 +45,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/raccoon" << \here
 #!/bin/sh
-exec java -Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Draccoon.home="$HOME/.Raccoon" -jar /usr/share/java/raccoon/raccoon-pkgver.jar "$@"
+exec java -Dawt.useSystemAAFontSettings=on -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Draccoon.home="$HOME/.Raccoon" -jar /usr/share/java/raccoon/Raccoon-desktop-pkgver.jar "$@"
 exit $?
 here
     sed -i "s/pkgver/$pkgver/" "$pkgdir/usr/bin/raccoon"
