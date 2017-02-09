@@ -1,6 +1,6 @@
 pkgbase = docker-volume-gvfs-git
 	pkgdesc = Docker GvFS (ftp, ssh, smb, ...) Volume Plugin
-	pkgver = 0.0.1.5a2b08c
+	pkgver = 0.0.1.8e25c2a
 	pkgrel = 1
 	url = https://github.com/sapk/docker-volume-gvfs
 	arch = i686

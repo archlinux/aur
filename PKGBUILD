@@ -2,7 +2,7 @@
 
 pkgname=docker-volume-gvfs-git
 _gitname="docker-volume-gvfs"
-pkgver=0.0.1.5a2b08c
+pkgver=0.0.1.8e25c2a
 _pkgver=0.0.1
 pkgrel=1
 pkgdesc='Docker GvFS (ftp, ssh, smb, ...) Volume Plugin'
