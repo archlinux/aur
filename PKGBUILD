@@ -77,7 +77,7 @@ isNoOpenGL() {
 }
 
 pkgname=mingw-w64-qt5-base-static
-pkgver=5.7.1
+pkgver=5.8.0
 pkgrel=1
 pkgdesc='A cross-platform application and UI framework (mingw-w64)'
 # The static variant doesn't contain any executables which need to be executed on the build machine
@@ -87,26 +87,26 @@ license=('GPL3' 'LGPL3' 'FDL' 'custom')
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-libjpeg-turbo' 'mingw-w64-sqlite'
          'mingw-w64-libpng' 'mingw-w64-openssl' 'mingw-w64-dbus' 'mingw-w64-harfbuzz'
          'mingw-w64-pcre')
-groups=('mingw-w64-qt' 'mingw-w64-qt5')
+groups=('mingw-w64-qt5')
 optdepends=('mingw-w64-postgresql: PostgreSQL support' 'mingw-w64-mariadb-connector-c: MySQL support')
 makedepends=('mingw-w64-gcc' 'mingw-w64-postgresql' 'mingw-w64-mariadb-connector-c' 'mingw-w64-pkg-config')
-options=(!strip !buildflags staticlibs !emptydirs)
+options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 _pkgfqn="qtbase-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-Fix-qwindows-plugin-linking-with-system-freetype.patch'
-        '0002-Fix-oci-config-test-on-windows.patch'
-        '0003-Don-t-set-QT_NO_SYSTEMSEMAPHORE-for-Windows.patch'
-        '0004-Fix-building-mysql-driver-under-mingw.patch'
-        '0005-Support-ANGLE-switches-via-configure-shell-script.patch'
-        '0006-Use-external-ANGLE-library.patch'
-        '0007-Fix-too-many-sections-assemler-error-in-OpenGL-facto.patch'
-        '0008-Make-sure-.pc-files-are-installed-correctly.patch'
-        '0009-Don-t-add-resource-files-to-LIBS-parameter.patch'
-        '0010-Prevent-debug-library-names-in-pkg-config-files.patch'
-        '0011-Fix-linking-against-static-D-Bus.patch'
-        '0012-Adjust-win32-g-mkspecs-profile.patch'
-        '0013-Fix-linking-against-external-harfbuzz.patch'
-        '0014-Fix-linking-against-static-pcre.patch'
+        '0001-Add-profile-for-cross-compilation-with-mingw-w64.patch'
+        '0002-Ensure-GLdouble-is-defined-when-using-dynamic-OpenGL.patch'
+        '0003-Use-external-ANGLE-library.patch'
+        '0004-Fix-too-many-sections-assemler-error-in-OpenGL-facto.patch'
+        '0005-Make-sure-.pc-files-are-installed-correctly.patch'
+        '0006-Don-t-add-resource-files-to-LIBS-parameter.patch'
+        '0007-Prevent-debug-library-names-in-pkg-config-files.patch'
+        '0008-Fix-linking-against-shared-static-libpng.patch'
+        '0009-Fix-linking-against-static-D-Bus.patch'
+        '0010-Fix-linking-against-static-freetype2.patch'
+        '0011-Fix-linking-against-static-harfbuzz.patch'
+        '0012-Fix-linking-against-static-pcre.patch'
+        '0013-Fix-linking-against-shared-static-MariaDB.patch'
+        '0014-Fix-linking-against-shared-static-PostgreSQL.patch'
         '0015-Rename-qtmain-to-qt5main.patch'
         '0016-Build-dynamic-host-libraries.patch'
         '0017-Enable-rpath-for-build-tools.patch'
@@ -116,86 +116,44 @@ source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/sub
         '0021-Merge-shared-and-static-library-trees.patch'
         '0022-Allow-usage-of-static-version-with-CMake.patch'
         '0023-Use-correct-pkg-config-static-flag.patch'
-        '0024-Use-shared-static-version-of-MariaDB.patch'
-        '0025-Use-shared-static-version-of-PostgreSQL.patch'
-        '0001-Fix-qwindows-plugin-linking-with-system-freetype.patch'
-        '0002-Fix-oci-config-test-on-windows.patch'
-        '0003-Don-t-set-QT_NO_SYSTEMSEMAPHORE-for-Windows.patch'
-        '0004-Fix-building-mysql-driver-under-mingw.patch'
-        '0005-Support-ANGLE-switches-via-configure-shell-script.patch'
-        '0006-Use-external-ANGLE-library.patch'
-        '0007-Fix-too-many-sections-assemler-error-in-OpenGL-facto.patch'
-        '0008-Make-sure-.pc-files-are-installed-correctly.patch'
-        '0009-Don-t-add-resource-files-to-LIBS-parameter.patch'
-        '0010-Prevent-debug-library-names-in-pkg-config-files.patch'
-        '0011-Fix-linking-against-static-D-Bus.patch'
-        '0012-Adjust-win32-g-mkspecs-profile.patch'
-        '0013-Fix-linking-against-external-harfbuzz.patch'
-        '0014-Fix-linking-against-static-pcre.patch'
-        '0015-Rename-qtmain-to-qt5main.patch'
-        '0016-Build-dynamic-host-libraries.patch'
-        '0017-Enable-rpath-for-build-tools.patch'
-        '0018-Use-system-zlib-for-build-tools.patch'
-        '0019-Disable-determing-default-include-and-lib-dirs-at-qm.patch'
-        '0020-Use-.dll.a-as-import-lib-extension.patch'
-        '0021-Merge-shared-and-static-library-trees.patch'
-        '0022-Allow-usage-of-static-version-with-CMake.patch'
-        '0023-Use-correct-pkg-config-static-flag.patch'
-        '0024-Use-shared-static-version-of-MariaDB.patch'
-        '0025-Use-shared-static-version-of-PostgreSQL.patch'
-        '0026-Fix-qt5_wrap_ui-macro.patch')
-md5sums=('f0809befe04160fbb73bbf38a06a2073'
-         '14ea9353fcc9234a9c7cb98ef14050a3'
-         '34c9df86a43132f58b18bd3061305b36'
-         '94f3ec6cdb456cc9b0535bd549cf2859'
-         'eb118e7a01ff8e39f608e715758ac3dd'
-         'c5184ae70974aaeaf5e1996dc7af6ec0'
-         '917a3439afa97afab1b0b722082d640b'
-         'bea9eb1a5be8e5e1ee2592007b112fe5'
-         '281a81a7c32cc2f4bfeb83f5bea29d59'
-         'ec262ef6bcf2f12832f83aad30d2f728'
-         '10c24aec6ca3743d01ca7e0f2704b024'
-         'bfa3574a0d44f831e412befba235b2ca'
-         '366b8209ba35b00e2fe4ddcf448ed015'
-         '0c17f618cbee73a49d7829da7c816cd7'
-         '11f26a2237acd5e78d5a3db4de2d6d90'
-         '632765f81a4b72b540376255a10b4c2e'
-         '1f57d40dc492822f2e931bdd3a0b7435'
-         '758afe3653d7ce126ebae03e6a8f222f'
-         'd616bd0fd1ac1ae0d749f93fcba0aeb1'
-         '6847671b013c249aaa2dd7d7e646e4e6'
-         '9e3c6cee969a55b15558f6a46f7aad20'
-         '7bf4cf112551bea4c4d3dd91ed7e1461'
-         '97ece0bb54a249aa0a1fc662eedc93de'
-         '4bdbf113772fdfe4cc6da53c866216b2'
-         '399555789f729477d65861179efaf9e3'
-         '295d83b50278474289727dc49a688e95'
-         '14ea9353fcc9234a9c7cb98ef14050a3'
-         '34c9df86a43132f58b18bd3061305b36'
-         '94f3ec6cdb456cc9b0535bd549cf2859'
-         'eb118e7a01ff8e39f608e715758ac3dd'
-         'c5184ae70974aaeaf5e1996dc7af6ec0'
-         '917a3439afa97afab1b0b722082d640b'
-         'bea9eb1a5be8e5e1ee2592007b112fe5'
-         '281a81a7c32cc2f4bfeb83f5bea29d59'
-         'ec262ef6bcf2f12832f83aad30d2f728'
-         '10c24aec6ca3743d01ca7e0f2704b024'
-         'bfa3574a0d44f831e412befba235b2ca'
-         '366b8209ba35b00e2fe4ddcf448ed015'
-         '0c17f618cbee73a49d7829da7c816cd7'
-         '11f26a2237acd5e78d5a3db4de2d6d90'
-         '632765f81a4b72b540376255a10b4c2e'
-         '1f57d40dc492822f2e931bdd3a0b7435'
-         '758afe3653d7ce126ebae03e6a8f222f'
-         'd616bd0fd1ac1ae0d749f93fcba0aeb1'
-         '6847671b013c249aaa2dd7d7e646e4e6'
-         '9e3c6cee969a55b15558f6a46f7aad20'
-         '7bf4cf112551bea4c4d3dd91ed7e1461'
-         '97ece0bb54a249aa0a1fc662eedc93de'
-         '4bdbf113772fdfe4cc6da53c866216b2'
-         '399555789f729477d65861179efaf9e3'
-         '295d83b50278474289727dc49a688e95'
-         '541413adc439b0650ad236f13c47e28e')
+        '0024-Fix-qt5_wrap_ui-macro.patch'
+        '0025-Ignore-errors-about-missing-feature-static.patch'
+        '0026-Enable-anf-fix-use-of-iconv.patch'
+        '0027-Ignore-failing-pkg-config-test.patch'
+        '0028-Include-uiviewsettingsinterop.h-correctly.patch'
+        '0029-Hardcode-linker-flags-for-libqwindows.dll.patch'
+        '0030-Prevent-qmake-from-messing-static-lib-dependencies.patch')
+md5sums=('6e1f7f6fb6333eb66e563b175c4e87e9'
+         '4870da8aa8e01334f0daf09be09e7f32'
+         'e86ad52f472a4c4a70f9061b5474b947'
+         '4c7c1df53c99182e296932d8cf398c5f'
+         'd18a5d3fc8570b03aed954a72b68739a'
+         '685860a2ac1410c49ab82648bc24f510'
+         'e1a1ca7caf93e8033a1915af457b7b98'
+         'bd7c1c99dca91ed604c84cf9632f7e0d'
+         '7fbfcbb581e07563ab87e17c33a6b48b'
+         'df541beb0bc0cc8054aae93f462c5923'
+         '4711804aaf43ec810e70898c32948237'
+         '3d4294c3279e69864fcdf87b6f852122'
+         '55c3593dc03079c794e97ed88136845b'
+         '5d04636091f7768b940d090178997384'
+         'd4cc6c6394c795a2e6708e797e49b616'
+         '8e234c3b077a8f942ee9a7e8209bfc79'
+         '6685fe994d64f3e1b2a4bfe6a645bb6a'
+         'a0fa368726934c21d3a0e8a5a61023c9'
+         '3dc9e1efaed892d0eb24dfa68769d0f2'
+         '53c06c4a646a9572b40982c4e29b5ce4'
+         '61f4848e9e0a8a6e183458c871070a53'
+         'fd2e8c22fdbb3f9415ee500bde5980fc'
+         '6a7539edc09f66bae5dfad7e3d210614'
+         '440f7d221985abcb781a519d1bc26ee7'
+         '504e6a091aa8b35a5b6b5a8c77b7d4e3'
+         'e85f6106f31bcd8da1213f670575941a'
+         '4046dcb53c3a6c735f6d7d4b866d80a0'
+         'c964ad83bff270380aa5ac0991e57c10'
+         '3921c665e46cbe39e012432db704089d'
+         '8f47783a83f54c82650502a120af4f16'
+         '2bc5f6f3d2c1cd0e2590a8e8e1cf0ff1')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 #_architectures='x86_64-w64-mingw32 i686-w64-mingw32'
@@ -259,6 +217,7 @@ build() {
   unset CFLAGS
   unset CXXFLAGS
   unset LDFLAGS
+  unset PKG_CONFIG_PATH
 
   for _arch in ${_architectures}; do
     # Phonon is disabled for now because we lack the directx headers
@@ -272,14 +231,13 @@ build() {
     # (sloppiness must be set to pch_defines,time_macros in ccache config)
 
     local qt_configure_args="\
-      -xplatform win32-g++ \
+      -xplatform mingw-w64-g++ \
       -optimized-qmake \
       -verbose \
       -opensource \
       -confirm-license \
       -force-pkg-config \
       -force-debug-info \
-      -audio-backend \
       -system-zlib \
       -system-libpng \
       -system-libjpeg \
@@ -288,11 +246,14 @@ build() {
       -system-harfbuzz \
       -system-pcre \
       -no-fontconfig \
-      -iconv \
+      -sql-mysql \
+      -sql-psql \
+      -sql-sqlite \
       -openssl \
       -dbus-linked \
       -no-glib \
       -no-icu \
+      -iconv \
       -release \
       -nomake examples \
       -make tools \
@@ -329,29 +290,16 @@ build() {
         qt_configure_args+=' -opengl dynamic'
       else
         msg2 'Using ANGLE as OpenGL backend'
-        qt_configure_args+=' -opengl angle'
+        qt_configure_args+=' -angle'
       fi
       # GL_GLEXT_PROTOTYPES must be defined to enable declarations of GLES functions
       qt_configure_args+=' -DGL_GLEXT_PROTOTYPES'
     fi
 
-    unset PKG_CONFIG_PATH
-
-    # Fix MySQL
-    if ! isStatic; then
-      export QT_LFLAGS_MYSQL="-L/usr/${_arch}/lib -lmysql"
-    fi
-    # Qt doesn't detect mysql correctly, so use this:
-    export QT_CFLAGS_MYSQL="-I/usr/${_arch}/include/mariadb"
-    # Hardcode MySQL flags into configure (really nice solution :( )
-    sed -e "s|^QT_CFLAGS_MYSQL=.*$|QT_CFLAGS_MYSQL=\"${QT_CFLAGS_MYSQL}\"|g" -i "${srcdir}/${_pkgfqn}/configure"
-    sed -e "s|^QT_LFLAGS_MYSQL=.*$|QT_LFLAGS_MYSQL=\"${QT_LFLAGS_MYSQL}\"|g" -i "${srcdir}/${_pkgfqn}/configure"
-    #sed -e "s|^QT_LFLAGS_MYSQL_R=.*$|QT_LFLAGS_MYSQL_R=\"${QT_LFLAGS_MYSQL_R}\"|g" -i "${srcdir}/${_pkgfqn}/configure"
-    qt_configure_args_mysql="-mysql_config /this/file/should/not/exist"
-    # TODO: test whether this workaround is still requried
+    # Fix MariaDB
+    qt_configure_args+=" -I/usr/${_arch}/include/mariadb"
 
     mkdir -p ../build-${_arch} && pushd ../build-${_arch}
-
     if isStatic; then
       ../${_pkgfqn}/configure -static $qt_configure_args $qt_configure_args_mysql
       make
@@ -378,11 +326,16 @@ package() {
       # Drop Qt5Bootstrap and libraries which are only provided as static lib
       # and are hence already present in shared build (such as Qt5OpenGLExtensions)
       rm -f "${pkgdir}/usr/${_arch}/lib/"{lib,}qt5main* \
+        "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5AccessibilitySupport* \
+        "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5DeviceDiscoverySupport* \
+        "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5EventDispatcherSupport* \
+        "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5FbSupport* \
+        "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5FontDatabaseSupport* \
+        "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5PlatformCompositorSupport* \
+        "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5ThemeSupport* \
         "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5OpenGLExtensions* \
         "${pkgdir}/usr/${_arch}/lib/"{lib,}Qt5PlatformSupport* \
         "${pkgdir}/usr/${_arch}/lib/"libQt5Bootstrap* \
-        "${pkgdir}/usr/${_arch}/lib/"libqtpng.a \
-        "${pkgdir}/usr/${_arch}/lib/"qtpng.static.prl
 
       # Also ensure config files don't conflict with shared version
       pushd "${pkgdir}/usr/${_arch}/lib/cmake"
