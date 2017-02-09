@@ -18,7 +18,7 @@ source=(https://apps.ankiweb.net/downloads/current/anki-$pkgver-source.tgz)
 sha256sums=('f9e8498d62cda2c2892ca2141ec1a318159499c6b280edeaf8c2b95e97e3ab4e')
 
 prepare() {
-    cd "$srcdir"/anki-$pkgverarchw
+    cd "$srcdir"/anki-$pkgverarch
   sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' anki/anki runanki
 }
 
