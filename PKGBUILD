@@ -9,7 +9,7 @@ url='http://https://sourceforge.net/projects/msgviewer/'
 license=('GPL3')
 makedepends=('')
 conflicts=('')
-source=("MSGViewer-${pkgver}-{$pkgrel}.noarch.rpm::http://sourceforge.net/projects/$pkgname/files/MSGViewer-${pkgver}/MSGViewer-${pkgver}-${pkgrel}.noarch.rpm/download")
+source=("MSGViewer-${pkgver}-${pkgrel}.noarch.rpm::http://sourceforge.net/projects/$pkgname/files/MSGViewer-${pkgver}/MSGViewer-${pkgver}-${pkgrel}.noarch.rpm/download")
 md5sums=('8a5c1581e9f774fd9a25d74a2cef554e')
 
  package() {
