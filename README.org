@@ -1,3 +1,0 @@
-#+TITLE: madgraph-pythia-pgs [[https://aur.archlinux.org/packages/madgraph-pythia-pgs/][https://img.shields.io/aur/version/madgraph-pythia-pgs.svg]]
-
-MadGraph Pythia PGS bundled for installation on Arch Linux.
