@@ -2,7 +2,7 @@
 
 pkgname=xpub
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Bash script to get X display environment variables from anywhere.'
 arch=('any')
 url="https://github.com/Ventto/${pkgname}.git"
