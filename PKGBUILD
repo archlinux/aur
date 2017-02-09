@@ -1,5 +1,6 @@
-# Maintainer: Black_Codec <orso.f.regna@gmail.com>
- 
+# Maintainer: Joan Figueras <ffigue at gmail dot com>
+# Contributor: Black_Codec <orso.f.regna@gmail.com>
+
 pkgname=guacamole-server
 pkgver=0.9.11
 pkgrel=1
