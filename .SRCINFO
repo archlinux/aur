@@ -1,0 +1,31 @@
+pkgbase = qtwebkit
+	pkgdesc = An open source web browser engine (Qt port)
+	pkgver = 2.3.4
+	pkgrel = 4
+	url = http://trac.webkit.org/wiki/QtWebKit
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	license = GPL3
+	makedepends = gperf
+	makedepends = python2
+	makedepends = ruby
+	makedepends = git
+	makedepends = mesa
+	depends = qt4
+	depends = systemd
+	depends = gst-plugins-base-libs
+	conflicts = qt<4.8
+	source = https://sources.archlinux.org/other/packages/qtwebkit/qtwebkit-2.3.4.tar.xz
+	source = http://download.qt-project.org/official_releases/qt/4.8/4.8.7/qt-everywhere-opensource-src-4.8.7.tar.gz
+	source = use-python2.patch
+	source = qwebview.patch
+	source = gcc-5.patch
+	sha1sums = 31bc60de1cf26bb0766d539b4d564651ddbb0650
+	sha1sums = 76aef40335c0701e5be7bb3a9101df5d22fe3666
+	sha1sums = 315b6ff603f35e5492a036f7082f6aa075dfb607
+	sha1sums = c3df6107233f466a032e36681cee07f16536657c
+	sha1sums = 5d506578ea30daeeeb1e91ab83876fe6d5669715
+
+pkgname = qtwebkit
+
