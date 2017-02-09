@@ -1,0 +1,18 @@
+diff --git a/jhbuild/defaults.jhbuildrc b/jhbuild/defaults.jhbuildrc
+index e467a49..de715c4 100644
+--- a/jhbuild/defaults.jhbuildrc
++++ b/jhbuild/defaults.jhbuildrc
+@@ -78,7 +78,12 @@ repos = {}
+ cvsroots = {}
+ svnroots = {}
+ branches = {}
+-module_autogenargs = {}
++# Arch-specific setting: we need to pass PYTHON=/usr/bin/python2 when building some modules.
++module_autogenargs = {
++    'itstool': autogenargs + ' PYTHON=/usr/bin/python2',
++    'telepathy-mission-control': autogenargs + ' PYTHON=/usr/bin/python2',
++    'WebKit': autogenargs + ' PYTHON=/usr/bin/python2',
++}
+ module_cmakeargs = {}
+ module_makeargs = {}
+ module_extra_env = {}
