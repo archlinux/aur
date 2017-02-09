@@ -1,0 +1,16 @@
+pkgbase = kink-hg
+	pkgdesc = Kink is a prototype-based functional language on the JVM. The goal of the language is easy and elastic programming with handful number of simple mechanisms.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://doc.kink-lang.org/kink/manual/index.html
+	arch = x86_64
+	groups = language
+	license = MIT
+	makedepends = apache-ant
+	makedepends = mercurial
+	depends = jre8-openjdk
+	source = hg+https://bitbucket.org/kink/kink
+	md5sums = SKIP
+
+pkgname = kink-hg
+
