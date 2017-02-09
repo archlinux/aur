@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Sublime-like terminal-based text editor."
 arch=("x86_64")
 url="https://github.com/slap-editor/$pkgname/"
-depends=('nodejs-lts-boron')
+depends=('nodejs-lts-boron=6.9.4')
 makedepends=('npm')
 license=('MIT')
 source=("https://github.com/slap-editor/$pkgname/archive/v${pkgver}.zip")
