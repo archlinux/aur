@@ -1,0 +1,25 @@
+From f00d75eaf8c61607543563d50630bf8084bf936d Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Thu, 9 Feb 2017 01:07:46 +0100
+Subject: [PATCH] Fix condition for _WIN32_IE/SHCreateItemFromParsingName
+
+---
+ src/winextras/qwinjumplist.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/winextras/qwinjumplist.cpp b/src/winextras/qwinjumplist.cpp
+index 9274cc5..962481e 100644
+--- a/src/winextras/qwinjumplist.cpp
++++ b/src/winextras/qwinjumplist.cpp
+@@ -41,7 +41,7 @@
+ #include <QtCore/QtGlobal>
+ 
+ #ifdef Q_CC_MINGW // MinGW: Enable SHCreateItemFromParsingName()
+-#  if defined(_WIN32_IE) && _WIN32_IE << 0x0700 // _WIN32_IE_IE70
++#  if defined(_WIN32_IE) && _WIN32_IE < 0x0700 // _WIN32_IE_IE70
+ #     undef _WIN32_IE
+ #  endif
+ #  ifndef _WIN32_IE
+-- 
+2.11.1
+
