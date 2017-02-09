@@ -41,16 +41,16 @@ md5sums=("f6d693807fc81728e0af13cf71c6ce9a"
          "16978d3d4d17cda2e0811e2c6362390a"
 
          "d764227784c6b7b71d620e40c23ef358"
-         "adfb9ce356804d51c46fd0f97c66222d"
+         "81a5f8bc5f3f66dbb7831c2893b57418"
 
          "dbff88a8deaf759c253293b25488035c"
-         "eaca424a102880d3668ff414020f99b8"
+         "d9fdd8dd4953bc434b802d5764d30b69"
 
          "0cbcff52a6c8ce42102ffc49c1edfbb3"
-         "5fe007c4080ae4c25d130c8cccc7f391"
+         "de6ca83e3dfacff8cb3f7a8492c6c909"
 
          "1bf0831d2640c50cf5c89fc84dfd7991"
-         "704a4631806191441b685728809d70e8")
+         "62c2ad8d9550198d09019f39957c8441")
 
 build() {
   echo $pkgdir
