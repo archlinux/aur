@@ -6,23 +6,23 @@
 # Contributor: Alexey Pavlov <alexpux@gmail.com>
 
 pkgname=mingw-w64-libssh
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Library for accessing ssh client services through C libraries (mingw-w64)"
 url="http://www.libssh.org/"
 license=('LGPL')
 arch=('any')
-depends=('mingw-w64-openssl')
+depends=('mingw-w64-openssl' 'mingw-w64-zlib')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-pkg-config' 'doxygen')
 options=(!strip !buildflags staticlibs)
 #cmocka
 #checkdepends=('openssh')
-source=(https://red.libssh.org/attachments/download/195/libssh-$pkgver.tar.xz
-        https://red.libssh.org/attachments/download/194/libssh-$pkgver.tar.asc
+source=(https://red.libssh.org/attachments/download/210/libssh-$pkgver.tar.xz
+        https://red.libssh.org/attachments/download/209/libssh-$pkgver.tar.asc
         mingw-as-unix.patch
         mingw-DATADIR-conflict.patch
         mingw-pkgconfig.patch)
-md5sums=('05465da8004f3258db946346213209de'
+md5sums=('ec36040a9d0cc343ba78edf3b6580855'
          'SKIP'
          'fc03637960f420837ad506892b444986'
          '7be13e00d27ce77f862012ee0654019b'
