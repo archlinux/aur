@@ -1,0 +1,12 @@
+pkgbase = shadowsocks-rss-auto
+	pkgdesc = Deploy Shadowsocks RSS Server with random configuration
+	pkgver = 0.01
+	pkgrel = 1
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python
+	depends = libsodium
+
+pkgname = shadowsocks-rss-auto
+
