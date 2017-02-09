@@ -10,19 +10,20 @@
 
 _qt_module=qtsensors
 pkgname=mingw-w64-qt5-sensors
-pkgver=5.7.1
+pkgver=5.8.0
 pkgrel=1
 arch=('any')
 pkgdesc="Provides access to sensor hardware and motion gesture recognition (mingw-w64)"
-depends=(mingw-w64-qt5-base mingw-w64-qt5-declarative)
-makedepends=(mingw-w64-gcc)
-options=(!strip !buildflags staticlibs)
+depends=('mingw-w64-qt5-base' 'mingw-w64-qt5-declarative')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
+options=('!strip' '!buildflags' 'staticlibs')
+groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-groups=(mingw-w64-qt mingw-w64-qt5)
-url="https://www.qt.io/"
+groups=('mingw-w64-qt5')
+url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('6ee0851638bd0bc1ba5be5acc166919f')
+md5sums=('c2062e07ab5d52d0fb8ef19c5ef6f86d')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
