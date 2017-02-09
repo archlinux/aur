@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/maandree/cg-tools"
 license=('GPL3')
 depends=(libcoopgamma)
-makedepends=(libcoopgamma)
+makedepends=(libcoopgamma libclut)
 source=($url/archive/$pkgver.tar.gz)
 sha256sums=(8a4b92c3f9b2df45663526c5ce9a81f1d66b11f9fd4e45112768cd6f97077273)
 
