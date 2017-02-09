@@ -1,7 +1,7 @@
-From 5e519508a93e9b6229f2f7f8052f2c1abf8f7ef1 Mon Sep 17 00:00:00 2001
+From 90dd18c931134b3a872d54e9f51df638f0ce8b4b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:32:00 +0200
-Subject: [PATCH 22/26] Allow usage of static version with CMake
+Subject: [PATCH 22/30] Allow usage of static version with CMake
 
 - Fix plugin detection and various details
 - Allow selecting between dynamic and static Qt versions
@@ -18,7 +18,7 @@ Subject: [PATCH 22/26] Allow usage of static version with CMake
  6 files changed, 358 insertions(+), 151 deletions(-)
 
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index 0ff1c6d142..d0d4a7fc1a 100644
+index 461a7fdff5..c4afc5251b 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
 @@ -38,7 +38,8 @@ split_incpath {
@@ -31,7 +31,7 @@ index 0ff1c6d142..d0d4a7fc1a 100644
  
      !build_pass:QMAKE_SUBSTITUTES += \
          cmake_extra_source_includes
-@@ -90,6 +91,8 @@ win32:!wince:!static:!staticlib {
+@@ -90,6 +91,8 @@ win32:!static:!staticlib {
  }
  
  static|staticlib:CMAKE_STATIC_TYPE = true
@@ -815,10 +815,10 @@ index 5baf0fdb10..54345e4117 100644
 -list(APPEND Qt5$${CMAKE_MODULE_NAME}_PLUGINS Qt5::$$CMAKE_PLUGIN_NAME)
 +endif()
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index f05a039d2f..831d7c74c0 100644
+index 8ac3a0f647..ed4a1f5c30 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
-@@ -997,6 +997,13 @@ MakefileGenerator::writePrlFile(QTextStream &t)
+@@ -998,6 +998,13 @@ MakefileGenerator::writePrlFile(QTextStream &t)
          for (ProStringList::Iterator it = libs.begin(); it != libs.end(); ++it)
              t << qv(project->values((*it).toKey()));
          t << endl;
@@ -833,7 +833,7 @@ index f05a039d2f..831d7c74c0 100644
  }
  
 diff --git a/src/corelib/Qt5CoreConfigExtras.cmake.in b/src/corelib/Qt5CoreConfigExtras.cmake.in
-index a5ed8b2ea3..3375e1eeea 100644
+index 545b9a3d1e..fd5c947b5f 100644
 --- a/src/corelib/Qt5CoreConfigExtras.cmake.in
 +++ b/src/corelib/Qt5CoreConfigExtras.cmake.in
 @@ -1,4 +1,10 @@
@@ -900,7 +900,7 @@ index a5ed8b2ea3..3375e1eeea 100644
 -set_property(TARGET Qt5::Core PROPERTY INTERFACE_COMPILE_FEATURES cxx_decltype)
 +set_property(TARGET ${IMPORTED_TARGET_NAME} PROPERTY INTERFACE_COMPILE_FEATURES cxx_decltype)
  
- !!IF contains(QT_CONFIG, reduce_exports)
+ !!IF qtConfig(reduce_exports)
  set(QT_VISIBILITY_AVAILABLE \"True\")
 @@ -162,14 +168,14 @@ if (NOT TARGET Qt5::WinMain)
          set(_isWin32 $<BOOL:$<TARGET_PROPERTY:WIN32_EXECUTABLE>>)
@@ -968,5 +968,5 @@ index 2e32911a64..31567d7da2 100644
          ${Qt5Gui_EGL_LIBRARIES} ${Qt5Gui_OPENGL_LIBRARIES}
      )
 -- 
-2.11.0
+2.11.1
 
