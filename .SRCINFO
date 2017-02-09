@@ -1,0 +1,19 @@
+pkgbase = lib32-libdbusmenu-qt
+	pkgdesc = A library that provides a Qt implementation of the DBusMenu spec (32-bit)
+	pkgver = 0.9.2
+	pkgrel = 3
+	url = https://launchpad.net/libdbusmenu-qt
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = gcc-multilib
+	makedepends = lib32-qjson
+	depends = lib32-qt4
+	source = http://launchpad.net/libdbusmenu-qt/trunk/0.9.2/+download/libdbusmenu-qt-0.9.2.tar.bz2
+	source = http://launchpad.net/libdbusmenu-qt/trunk/0.9.2/+download/libdbusmenu-qt-0.9.2.tar.bz2.asc
+	validpgpkeys = 45C43F82329D77F384214CCABEED35A5EEE34473
+	md5sums = 9a49484927669cd2ec91b3bf9ba8b79e
+	md5sums = SKIP
+
+pkgname = lib32-libdbusmenu-qt
+
