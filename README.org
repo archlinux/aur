@@ -1,3 +1,0 @@
-#+TITLE: CheckMATE [[https://aur.archlinux.org/packages/checkmate/][https://img.shields.io/aur/version/checkmate.svg]]
-
-CheckMATE bundled for installation on Arch Linux.
