@@ -1,14 +1,15 @@
 pkgbase = ttf-adobe-kaiti
 	pkgdesc = One fonts of Adobe's AdobeKaitiStd.R style.
-	pkgver = 5.004
-	pkgrel = 2
+	pkgver = 5.010
+	pkgrel = 1
 	url = http://www.adobe.com
 	install = ttf-adobe-kaiti.install
 	arch = any
 	license = unknown
 	depends = fontconfig
-	source = http://gthemes-china.googlecode.com/files/AdobeKaitiStd.tar.gz
-	md5sums = b37c29aafb8b80bd89f9c95cdd7097b5
+	noextract = AdobeKaitiStd.otf
+	source = AdobeKaitiStd.otf::https://raw.githubusercontent.com/mingchen/mac-osx-chinese-fonts/master/Adobe%20Simple%20Chinese%20Fonts/AdobeKaitiStd-Regular%20(v5.010).otf
+	md5sums = 0921cc969cb7c0ee78a40031bed0ab0b
 
 pkgname = ttf-adobe-kaiti
 
