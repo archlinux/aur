@@ -7,7 +7,7 @@
 
 pkgname=anki20
 pkgver=2.0.41
-pkgrel=2
+pkgrel=3
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="http://ankisrs.net/"
 license=('AGPL3')
@@ -18,7 +18,7 @@ source=(https://apps.ankiweb.net/downloads/current/anki-$pkgver-source.tgz)
 sha256sums=('f9e8498d62cda2c2892ca2141ec1a318159499c6b280edeaf8c2b95e97e3ab4e')
 
 prepare() {
-    cd "$srcdir"/anki-$pkgverarch
+  cd "$srcdir"/anki-$pkgver
   sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' anki/anki runanki
 }
 

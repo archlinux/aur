@@ -1,7 +1,7 @@
 pkgbase = anki20
 	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) efficiently
 	pkgver = 2.0.41
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ankisrs.net/
 	arch = any
 	license = AGPL3
