@@ -1,6 +1,6 @@
 pkgbase = bin32-jdk-devel
 	pkgdesc = Oracle Java 9 Development Kit Snapshot (32-bit)
-	pkgver = 9b155
+	pkgver = 9b156
 	pkgrel = 1
 	url = https://jdk9.java.net/
 	install = bin32-jdk-devel.install
@@ -39,7 +39,7 @@ pkgbase = bin32-jdk-devel
 	backup = etc/java32-jdk9/psfont.properties.ja
 	backup = etc/java32-jdk9/psfontj2d.properties
 	backup = etc/java32-jdk9/sound.properties
-	source = http://www.java.net/download/java/jdk9/archive/155/binaries/jdk-9-ea+155_linux-x86_bin.tar.gz
+	source = http://www.java.net/download/java/jdk9/archive/156/binaries/jdk-9-ea+156_linux-x86_bin.tar.gz
 	source = jconsole32-jdk9.desktop
 	source = jmc32-jdk9.desktop
 	source = jvisualvm32-jdk9.desktop
