@@ -1,14 +1,15 @@
 pkgbase = ttf-adobe-heiti
 	pkgdesc = One fonts of Adobe's AdobeHeitiStd.R style.
 	pkgver = 5.005
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.adobe.com
 	install = ttf-adobe-heiti.install
 	arch = any
 	license = unknown
 	depends = fontconfig
-	source = http://gthemes-china.googlecode.com/files/AdobeHeitiStd.tar.gz
-	md5sums = 598e5c354679c2ed46ea64f23417b83a
+	noextract = AdobeHeitiStd.otf
+	source = AdobeHeitiStd.otf::https://raw.githubusercontent.com/mingchen/mac-osx-chinese-fonts/master/Adobe%20Simple%20Chinese%20Fonts/AdobeHeitiStd-Regular.otf
+	md5sums = 5243e300d7d927d35fe96ed82837d7ed
 
 pkgname = ttf-adobe-heiti
 
