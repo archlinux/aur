@@ -1,26 +1,21 @@
 pkgbase = xombrero
 	pkgdesc = A minimalists web browser, vi-like but with traditional web browser behavior.
 	pkgver = 1.6.4
-	pkgrel = 2
-	url = https://opensource.conformal.com/wiki/xombrero
-	install = xombrero.install
+	pkgrel = 5
+	url = https://github.com/conformal/xombrero
 	arch = i686
 	arch = x86_64
 	license = custom:ISC
-	depends = webkitgtk3
+	depends = webkitgtk
 	depends = libbsd
 	depends = desktop-file-utils
 	conflicts = xxxterm
 	replaces = xxxterm
 	options = !emptydirs
-	source = https://opensource.conformal.com/snapshots/xombrero/xombrero-1.6.4.tgz
+	source = https://github.com/conformal/xombrero/archive/XOMBRERO_1_6_4.tar.gz
 	source = LICENSE
-	md5sums = 3c5458e448314494f48784c6303a695c
+	md5sums = a7c570f67b5791ec132bade643b508f7
 	md5sums = f3eeb6e8b70a3dcccb8ee57daf584c9e
 
 pkgname = xombrero
-	depends = webkitgtk3
-	depends = libbsd
-	depends = desktop-file-utils
-	conflicts = xombrero-gtk2
 
