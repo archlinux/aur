@@ -1,0 +1,13 @@
+pkgbase = ttf-bitstream-vera-dummy
+	pkgdesc = Bitstream Vera fonts (dummy package).
+	pkgver = 1.10
+	pkgrel = 11
+	url = http://www-old.gnome.org/fonts/
+	arch = any
+	license = custom
+	provides = ttf-font
+	provides = ttf-bitstream-vera
+	conflicts = ttf-bitstream-vera
+
+pkgname = ttf-bitstream-vera-dummy
+
