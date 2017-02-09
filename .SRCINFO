@@ -1,6 +1,6 @@
 pkgbase = avocode
 	pkgdesc = The bridge between designers and developers
-	pkgver = 2.12.5
+	pkgver = 2.12.6
 	pkgrel = 1
 	url = http://avocode.com/
 	install = avocode.install
@@ -18,10 +18,10 @@ pkgbase = avocode
 	source = avocode-app-icon.png
 	md5sums = e2c75eca26477c665c946beec421423a
 	md5sums = 96c2dd65a4a3ac5bcdba7426ade1960e
-	source_i686 = https://media.avocode.com/download/avocode-app/2.12.5/avocode-app-linux-ia32-2.12.5.zip
-	md5sums_i686 = 8e9083569615a62c1bcd2deff17f2470
-	source_x86_64 = https://media.avocode.com/download/avocode-app/2.12.5/avocode-app-linux-2.12.5.zip
-	md5sums_x86_64 = 1b45da635bfead694f38b77d2a334539
+	source_i686 = https://media.avocode.com/download/avocode-app/2.12.6/avocode-app-linux-ia32-2.12.6.zip
+	md5sums_i686 = 7b345aae106e92b9b812195a56e7a74e
+	source_x86_64 = https://media.avocode.com/download/avocode-app/2.12.6/avocode-app-linux-2.12.6.zip
+	md5sums_x86_64 = 21eb8c7951759c7700755f2fa1100c0b
 
 pkgname = avocode
 
