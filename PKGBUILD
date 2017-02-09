@@ -2,7 +2,7 @@
 
 pkgname=st-ametisf-git
 _pkgname=st
-pkgver=970.83e6089
+pkgver=.
 pkgrel=1
 pkgdesc='Port of simple terminal to wayland - ametisf fork'
 url='http://github.com/ametisf/st'
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('MIT')
 options=('zipman')
 depends=('libxft')
-makedepends=('ncurses' 'libxext' 'git')
+makedepends=('ncurses' 'libxext' 'git' 'tup')
 epoch=1
 # include config.h and any patches you want to have applied here
 source=('git+https://github.com/ametisf/st.git')
@@ -24,23 +24,16 @@ pkgver() {
     echo $(git rev-list --count wayland).$(git rev-parse --short wayland)
 }
 
-prepare() {
-    cd $srcdir/$_pkgname
-    # to use a custom config.h, place it in the package directory$
-    if [[ -f ${SRCDEST}/config.h ]]; then
-        cp "${SRCDEST}/config.h" .
-    fi
-}
-
 build() {
 	cd "${_pkgname}"
-	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+	tup init
+    tup upd
 }
 
 package() {
-	cd "${_pkgname}"
-	make PREFIX=/usr DESTDIR="${pkgdir}" install
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-	install -Dm644 FAQ "${pkgdir}/usr/share/doc/${pkgname}/FAQ"
+    mkdir -p $pkgdir/usr/{bin,share/{doc,licenses}/$pkgname}
+    install -m 755 $_pkgname/st $pkgdir/usr/bin
+	install -m 644 $_pkgname/LICENSE $pkgdir/usr/share/licenses/$pkgname
+	install -m 644 $_pkgname/README.md $pkgdir/usr/share/doc/$pkgname
+	install -m 644 $_pkgname/FAQ $pkgdir/usr/share/doc/$pkgname
 }
