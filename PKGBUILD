@@ -3,16 +3,16 @@
 # Contributor: Riley Trautman <asonix.dev@gmail.com>
 # Contributor: Michael Spencer <sonrisesoftware@gmail.com>
 
-pkgname=papyros-files
-pkgver=0.1
+pkgname=liri-files
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="The file manager for Papyros"
 arch=("i686" "x86_64")
-url="https://github.com/papyros/files-app"
-license=("LGPL")
-depends=("qml-material" "taglib")
-makedepends=("git" "cmake" "qt5-tools")
-source=("git+https://github.com/papyros/files-app.git#tag=v$pkgver")
+url="https://github.com/lirios/files"
+license=("GPL")
+depends=("fluid" "taglib")
+makedepends=("git" "extra-cmake-modules" "qt5-tools")
+source=("git+https://github.com/lirios/files.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
@@ -21,7 +21,7 @@ prepare() {
 
 build() {
   cd build
-  cmake "$srcdir/files-app" -DCMAKE_INSTALL_PREFIX=/usr
+  cmake "$srcdir/files" -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
