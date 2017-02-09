@@ -1,7 +1,7 @@
 pkgbase = scribus-devel
 	pkgdesc = Desktop publishing software
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.scribus.net/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = scribus-devel
 	makedepends = qt5-tools
 	depends = hunspell
 	depends = libcdr
-	depends = libcups
 	depends = libmspub
 	depends = libpagemaker
 	depends = libvisio
@@ -20,17 +19,18 @@ pkgbase = scribus-devel
 	depends = poppler
 	depends = python2
 	depends = qt5-declarative
-	depends = desktop-file-utils
 	depends = hicolor-icon-theme
-	depends = shared-mime-info
 	optdepends = tk: scripts based on tkinter
+	optdepends = hyphen-lang: hyphenation patterns for desired languages
 	provides = scribus
 	conflicts = scribus
 	source = https://downloads.sourceforge.net/scribus/scribus-1.5.2.tar.xz
 	source = https://downloads.sourceforge.net/scribus/scribus-1.5.2.tar.xz.asc
+	source = fix-qt-5.8-build.patch
 	validpgpkeys = 5086B8D68E70FDDF4C40045AEF7B95E7F60166DA
 	sha256sums = ec5eec23aeda655d3a761cffb85853dcd2ede3973b9e62a1b3c28bd1093c74f5
 	sha256sums = SKIP
+	sha256sums = 317e9bc8832b71accd9903cd97d9041cb39cd6afc304196fa2f84a9024dc34b6
 
 pkgname = scribus-devel
 

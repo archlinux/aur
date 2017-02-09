@@ -1,0 +1,11 @@
+--- a/scribus/plugins/gettext/xtgim/xtgscanner.cpp
++++ b/scribus/plugins/gettext/xtgim/xtgscanner.cpp
+@@ -1517,7 +1517,7 @@
+ 	currentParagraphStyle.charStyle().setParent(CommonStrings::DefaultCharacterStyle);
+ 	currentParagraphStyle.setLineSpacingMode(ParagraphStyle::AutomaticLineSpacing);
+ 	currentCharStyle = currentParagraphStyle.charStyle();
+-	while (lookAhead() != '\0')
++	while (lookAhead() != QChar('\0'))
+ 	{
+ 		token = getToken();
+ 		QHash<QString,void (XtgScanner::*)(void)> *temp = NULL;
