@@ -1,13 +1,13 @@
 # Maintainer: Olivier Biesmans <olivier at biesmans dot fr>
 pkgname=butterfly
-pkgver=1.5.2
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A sleek web based terminal emulator"
 arch=('any')
 url="https://pypi.python.org/pypi/butterfly"
 license=('GPL')
 groups=()
-depends=('python' 'python-tornado' 'python-pyopenssl')
+depends=('python' 'python-tornado' 'python-pyopenssl' 'tornado_systemd')
 makedepends=('python-setuptools')
 provides=()
 conflicts=()
@@ -16,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://pypi.python.org/packages/source/b/butterfly/butterfly-${pkgver}.tar.gz" "butterfly.service")
-sha256sums=('e08711d96995af503e39d7ef24b4f764954f191ea6a7a72ee7bde641769804eb'
+sha256sums=('93ecdef71b62e1809a48a706ac2ae86fdbeea6d722970cda99969bccad8ba7ef'
             '2e4fe822908270db8648bcdb492025ab4b972007860a92393b4d4313d6598dbe')
 
 package() {
