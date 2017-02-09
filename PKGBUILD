@@ -1,3 +1,4 @@
+# Maintainer: Chris Xiong <chirs241097@gmail.com>
 pkgname=qmidiplayer
 pkgver=0.8.5
 pkgrel=1
@@ -13,10 +14,11 @@ md5sums=('SKIP' 'SKIP')
 
 build() {
   cd "$srcdir/SMELT-master"
-  make
+  make -B
   cd "$srcdir/QMidiPlayer-master"
   export QMP_BUILD_MODE=1
-  SMELT_DIR="$srcdir/SMELT-master" qmake PREFIX="$pkgdir/usr/"
+  export SMELT_DIR="$srcdir/SMELT-master"
+  qmake PREFIX="$pkgdir/usr/"
   make
 }
 
