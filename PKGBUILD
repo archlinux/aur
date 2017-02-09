@@ -4,7 +4,7 @@
 # Contributor: Funkmuscle
 
 pkgname=guitarix-git
-pkgver=0.35.2.r31.g34cdb3c8
+pkgver=0.35.2.r33.ga11713b7
 pkgrel=1
 pkgdesc="A virtual guitar amplifier for Linux"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('python' 'python2' 'boost' 'eigen' 'gperf' 'intltool' 'lv2')
 optdepends=('meterbridge: sound meters')
 provides=("${pkgname%-*}" "guitarix2" "gx_head")
 conflicts=("${pkgname%-*}" "guitarix2" "gx_head")
-source=("${pkgname%-*}::git+git://git.code.sf.net/p/guitarix/git")
+source=("${pkgname%-*}::git+https://git.code.sf.net/p/guitarix/git")
 md5sums=('SKIP')
 
 pkgver() {
