@@ -1,7 +1,7 @@
-From 5b1b584626a4b89500bd8925dee62a61f869f179 Mon Sep 17 00:00:00 2001
+From 008256f455bb1e28f28cd9b492a0ecd34c05c0aa Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:27:28 +0200
-Subject: [PATCH 16/26] Build dynamic host libraries
+Subject: [PATCH 16/30] Build dynamic host libraries
 
 For better accordance with Arch Linux packaging
 standards
@@ -11,10 +11,10 @@ standards
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/mkspecs/features/qt_module.prf b/mkspecs/features/qt_module.prf
-index d9011f5482..cb29009970 100644
+index 31d628596c..360c99ac73 100644
 --- a/mkspecs/features/qt_module.prf
 +++ b/mkspecs/features/qt_module.prf
-@@ -25,7 +25,7 @@ isEmpty(VERSION): error("Module does not define version.")
+@@ -24,7 +24,7 @@ requires(!$$skip)
  
  # Compile as shared/DLL or static according to the option given to configure
  # unless overridden. Host builds are always static
@@ -34,5 +34,5 @@ index c3ed27d979..30d2114aa1 100644
 -INSTALLS = lib
 +INSTALLS += lib
 -- 
-2.11.0
+2.11.1
 

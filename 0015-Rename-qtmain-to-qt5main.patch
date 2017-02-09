@@ -1,7 +1,7 @@
-From 23032a6a5efa261c73b40adbc708cec7fe309b3d Mon Sep 17 00:00:00 2001
+From c15379dee443b353a9e1b1a5aff4301c29f3341b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:25:40 +0200
-Subject: [PATCH 15/26] Rename qtmain to qt5main
+Subject: [PATCH 15/30] Rename qtmain to qt5main
 
 Prevents conflict with mingw-w64-qt4 package
 ---
@@ -11,7 +11,7 @@ Prevents conflict with mingw-w64-qt4 package
  3 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index 11fb52a0b1..4adacf6762 100644
+index 1099e14b17..ed9b82fba9 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
 @@ -225,8 +225,8 @@ mac {
@@ -26,7 +26,7 @@ index 11fb52a0b1..4adacf6762 100644
          !isEmpty(CMAKE_STATIC_TYPE) {
              CMAKE_STATIC_WINDOWS_BUILD = "true"
 diff --git a/mkspecs/features/win32/windows.prf b/mkspecs/features/win32/windows.prf
-index 986067fc8c..339ac15efe 100644
+index ecb167bf18..7c9368c3b3 100644
 --- a/mkspecs/features/win32/windows.prf
 +++ b/mkspecs/features/win32/windows.prf
 @@ -5,7 +5,7 @@ contains(TEMPLATE, ".*app") {
@@ -39,7 +39,7 @@ index 986067fc8c..339ac15efe 100644
                  QMAKE_LIBS += -L$$QT.core.libs
              CONFIG(debug, debug|release): QMAKE_LIBS += $${entryLib}$${QT_LIBINFIX}d
 diff --git a/src/winmain/winmain.pro b/src/winmain/winmain.pro
-index b4977653ce..d63a684a18 100644
+index 4140ae48de..9ae73db74b 100644
 --- a/src/winmain/winmain.pro
 +++ b/src/winmain/winmain.pro
 @@ -2,7 +2,7 @@
@@ -52,5 +52,5 @@ index b4977653ce..d63a684a18 100644
  
  CONFIG += static
 -- 
-2.11.0
+2.11.1
 
