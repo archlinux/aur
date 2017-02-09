@@ -12,7 +12,7 @@ license=('Apache')
 url="http://www.google.com/fonts/specimen/Open+Sans"
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 install=$pkgname.install
-source=(https://googlefontdirectory.googlecode.com/hg-history/$_hgver/ofl/sourcesanspro/SourceSansPro-{Black,BlackItalic,Bold,BoldItalic,ExtraLight,ExtraLightItalic,Italic,Light,LightItalic,Regular,Semibold,SemiboldItalic}.ttf)
+source=(https://github.com/google/fonts/raw/master/ofl/sourcesanspro/SourceSansPro-{Black,BlackItalic,Bold,BoldItalic,ExtraLight,ExtraLightItalic,Italic,Light,LightItalic,Regular,Semibold,SemiboldItalic}.ttf)
 md5sums=('87dc85e3e9a6074a802e9e3d5838d492'
          '65a6a9b95d74e75505e768eb09cd3229'
          '5c6c404eca1aa7c5951e05d7f2cf40eb'
