@@ -1,32 +1,27 @@
-# Maintainer: Shen Miren <dickeny@gmail.com>
-# Contributer: Kan-Ru Chen <kanru@kanru.info>
+# Maintainer: Chris Down <chris@chrisdown.name>
+# Contributor: Shen Miren <dickeny@gmail.com>
+# Contributor: Kan-Ru Chen <kanru@kanru.info>
+
 pkgname=cconv
-pkgver=0.6.2
-pkgrel=2
+pkgver=0.6.3
+pkgrel=1
 pkgdesc="A iconv based simplified-traditional chinese conversion tool"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/cconv/"
+url="https://github.com/xiaoyjy/cconv"
 license=('GPL')
 depends=(glibc)
 options=(!libtool)
-source=(http://cconv.googlecode.com/files/$pkgname-$pkgver.tar.gz)
-sha1sums=('9775f91fd5600d176552a88625aaa1f64ece09c1')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  sed -i 's/ret > 0/ret >= 0/' main.c
-}
+source=("https://github.com/xiaoyjy/cconv/archive/v$pkgver.tar.gz")
+sha256sums=('82f46a94829f5a8157d6f686e302ff5710108931973e133d6e19593061b81d84')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
-  make
+    cd "${srcdir?}/$pkgname-$pkgver" || return 1
+    ./autogen.sh
+    ./configure --prefix=/usr
+    make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+    cd "$srcdir/$pkgname-$pkgver" || return 1
+    make DESTDIR="${pkgdir?}/" install
 }
-
-# vim:set ts=2 sw=2 et:
-
