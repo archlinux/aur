@@ -31,7 +31,7 @@ sha512sums=('SKIP'
 
 pkgver() {
 	cd rust
-	echo "$(grep -m1 '^CFG_RELEASE_NUM=' mk/main.mk | cut -d'=' -f2)"."$(git rev-parse --short HEAD)"
+	echo "$(grep -m1 'CFG_RELEASE_NUM' src/bootstrap/channel.rs | cut -d'"' -f2)"."$(git rev-parse --short HEAD)"
 }
 
 prepare() {
