@@ -3,5 +3,6 @@ Name=Goxel
 Comment=Open Source 3D voxel editor for Mac, Windows and Linux.
 TryExec=goxel
 Exec=goxel
+Icon=goxel
 Type=Application
 Categories=Graphics;3DGraphics;

@@ -1,7 +1,7 @@
 pkgbase = goxel
 	pkgdesc = Open Source 3D voxel editor for Mac, Windows and Linux.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://guillaumechereau.github.io/goxel/
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,11 @@ pkgbase = goxel
 	source = https://github.com/guillaumechereau/goxel/archive/v0.4.0.tar.gz
 	source = wno-error.patch
 	source = goxel.desktop
+	source = goxel.png
 	sha256sums = eb18c201150f4a137839df2d197c7f9596326a00fad6e6c26cc60f22e9f3439c
 	sha256sums = 481125eb004e777d1a474a75f04335126f4137c960f60525235735550c2889cf
-	sha256sums = a8b60dfaa8ada674cccce89c6b7007cc8915b4a332c02123bd7cea6a73c2d1d8
+	sha256sums = 9b29df7405a9593396bc7ea810dc2871cce7c4ee474c1fa56d32f56c2ca2d921
+	sha256sums = f857497012b8518817e321ff8e1e9f108c8e18b638285702f2041f82769d2652
 
 pkgname = goxel
 
