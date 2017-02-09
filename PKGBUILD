@@ -12,23 +12,25 @@
 
 _qt_module=qtdeclarative
 pkgname=mingw-w64-qt5-declarative
-pkgver=5.7.1
+pkgver=5.8.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Classes for QML and JavaScript languages (mingw-w64)'
 depends=('mingw-w64-qt5-base')
-makedepends=('mingw-w64-gcc' 'python')
-options=(!strip !buildflags staticlibs)
-groups=(mingw-w64-qt mingw-w64-qt5)
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'python')
+options=('!strip' '!buildflags' 'staticlibs')
+groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-url="https://www.qt.io/"
+url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Build-QML-dev-tools-as-shared-library.patch'
-        '0002-Ensure-static-plugins-are-exported.patch')
-md5sums=('e8940f4237bcedc67c8e9e753beb10d2'
-         '3fae1f1d463a55606be17d89a2ae7cc9'
-         'a5f0f56fd42bb72f38aac6909c860d6d')
+        '0002-Ensure-static-plugins-are-exported.patch'
+        '0003-Prevent-exporting-QML-parser-symbols-on-static-build.patch')
+md5sums=('4f55b3617abdff14706d02d761d5a0aa'
+         '8739ad352da4053430efb01fadff2a52'
+         'bfa8bbcc3b92bf8fe7e15266ba195380'
+         '8bf08d300c039dbdd58bab8b602eb175')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \

@@ -1,7 +1,7 @@
-From 361ef2263f38e5c605bc7fa1c1c35aabefd0935a Mon Sep 17 00:00:00 2001
+From b480b775adc7224a83338356a9228bed5d538618 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 23 Oct 2016 01:18:13 +0200
-Subject: [PATCH 2/2] Ensure static plugins are exported
+Subject: [PATCH 2/3] Ensure static plugins are exported
 
 ---
  src/qml/Qt5QmlConfigExtras.cmake.in | 2 +-
