@@ -10,6 +10,10 @@ arch=('any')
 provides=('ttf-font' 'ttf-bitstream-vera')
 conflicts=('ttf-bitstream-vera')
 
+build() {
+   echo "Nothing to build"
+}
+
 package() {
-  echo ""
+   echo "Nothing to package"
 }
