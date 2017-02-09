@@ -1,6 +1,6 @@
 # Contributor: dongfengweixiao ( dongfengweixiao [at] gmail [dot] com )
-#              initrdmk ( initrdmk [at] gmail [dot] com )
-# Maintainer: initrdmk ( initrdmk [at] gmail [dot] com )
+#              mkdong ( mingkaidong [at] gmail [dot] com )
+# Maintainer: mkdong ( mingkaidong [at] gmail [dot] com )
 
 pkgname=ttf-adobe-fangsong
 pkgver=5.010
