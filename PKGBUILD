@@ -2,15 +2,14 @@
 
 pkgname=xsatcom
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ham Radio - satellite tracking."
 arch=('i686' 'x86_64')
 url="http://www.qsl.net/5b4az/pkg/satellite/xsatcom/xsatcom.html"
 license=(GPL3)
-depends=('gtk2' 'desktop-file-utils')
-makedepends=('autoconf' 'automake' 'intltool' 'pkg-config')
+depends=('gtk2' 'hamradio-menus')
+makedepends=('autoconf' 'automake' 'intltool' 'pkg-config' 'gettext')
 optdepends=('xplanet: provides data on great circle map')
-install=$pkgname.install
 source=("http://www.qsl.net/5b4az/pkg/satellite/$pkgname/$pkgname-$pkgver.tar.bz2"
 	diff.Makefile.am
 	$pkgname.desktop
