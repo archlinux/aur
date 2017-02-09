@@ -1,7 +1,7 @@
 pkgbase = wxgtk2.8
 	pkgdesc = GTK+ implementation of wxWidgets API for GUI
 	pkgver = 2.8.12.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://wxwidgets.org
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,9 @@ pkgbase = wxgtk2.8
 	depends = gtk2
 	depends = gstreamer0.10-base
 	depends = sdl
+	depends = libsm
+	provides = wxgtk2.8=2.8.12.1
+	conflicts = wxgtk2.8-light
 	options = !emptydirs
 	source = http://downloads.sourceforge.net/wxpython/wxPython-src-2.8.12.1.tar.bz2
 	source = wxGTK-collision.patch

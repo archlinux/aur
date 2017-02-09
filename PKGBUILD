@@ -4,13 +4,15 @@
 
 pkgname=wxgtk2.8
 pkgver=2.8.12.1
-pkgrel=5
+pkgrel=6
 pkgdesc="GTK+ implementation of wxWidgets API for GUI"
 arch=('i686' 'x86_64')
 url="http://wxwidgets.org"
 license=('custom:wxWindows')
-depends=('gtk2' 'gstreamer0.10-base' 'sdl')
+depends=('gtk2' 'gstreamer0.10-base' 'sdl' 'libsm')
 makedepends=('gstreamer0.10-base-plugins' 'gconf' 'glu')
+provides=("wxgtk2.8=${pkgver}")
+conflicts=('wxgtk2.8-light')
 options=('!emptydirs')
 source=(http://downloads.sourceforge.net/wxpython/wxPython-src-${pkgver}.tar.bz2
         wxGTK-collision.patch
