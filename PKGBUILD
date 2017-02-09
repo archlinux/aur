@@ -2,6 +2,7 @@
 pkgname=shadowsocks-rss-auto
 pkgver=0.01
 pkgrel=1
+url="https://github.com/breakwa11/shadowsocks-rss"
 pkgdesc="Deploy Shadowsocks RSS Server with random configuration"
 arch=(any)
 license=('unknown')
