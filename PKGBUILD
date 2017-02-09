@@ -2,7 +2,7 @@
 
 pkgname=dislocker
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Read BitLocker encrypted volumes under Linux"
 arch=('i686' 'x86_64')
 url="http://www.hsc.fr/ressources/outils/dislocker"
@@ -12,7 +12,7 @@ makedepends=('make' 'cmake')
 conflicts=('dislocker-git')
 optdepends=('ntfs-3g: NTFS file system support')
 source=(https://github.com/Aorimn/dislocker/archive/v$pkgver.tar.gz)
-sha1sums=('a2ca2c58cb2480399433119a53317180c564176d')
+sha1sums=('0c5c62f63ba587663eb0474f1bd6ca7e345fe977')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
