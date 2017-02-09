@@ -2,7 +2,7 @@
 
 pkgname='nsntrace'
 pkgver=3
-pkgrel=1
+pkgrel=2
 pkgdesc="Perform network trace of a single process by using network namespaces."
 arch=('i686' 'x86_64')
 url="https://github.com/jonasdn/nsntrace"
@@ -10,6 +10,7 @@ license=('GPL2')
 groups=()
 depends=(
     'dbus'
+    'docbook-xsl'
     'glibc'
     'libpcap'
     'libgcrypt'

@@ -1,13 +1,14 @@
 pkgbase = nsntrace
 	pkgdesc = Perform network trace of a single process by using network namespaces.
 	pkgver = 3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jonasdn/nsntrace
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = automake
 	depends = dbus
+	depends = docbook-xsl
 	depends = glibc
 	depends = libpcap
 	depends = libgcrypt
