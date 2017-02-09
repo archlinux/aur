@@ -1,7 +1,7 @@
 # Maintainer: Ayrton Sparling <ayrton@sparling.us>
 _pkgname=lightdm-webkit2-material2
 pkgname=lightdm-webkit2-theme-material2
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="A material design LightDM theme for lightdm-webkit2-greeter"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/FallingSnow/${_pkgname}"
 license=('WTFPL')
 depends=('lightdm-webkit2-greeter')
 source=("https://github.com/FallingSnow/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('40396b2cc838818ec92f16dcfe3fb755d12dfa059cd1cf46a91addfbaa85d85a6ad79be8d613645afec8a77c1af9e657045c9d1f189e4bb0c64fcfab0ae39557')
+sha512sums=('b71c7c8cccb13150a48788f23fab038808530e58fbdedfada3f7def47df1fb2705546ef8b51a1f74c1830fad8b5286f329e8782404f1e8c82d392c6e2a018ab0')
 
 package() {
     rm "$srcdir/lightdm-webkit2-material2-${pkgver}.tar.gz"
