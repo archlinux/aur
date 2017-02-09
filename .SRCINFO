@@ -7,7 +7,7 @@ pkgbase = kde4-ftps-kio
 	arch = x86_64
 	license = GPL
 	makedepends = automoc4
-	source = http://kent.dl.sourceforge.net/project/kasablanca.berlios/kio-ftps-0.2.tar.gz
+	source = kio-ftps-0.2.tar.gz::http://sourceforge.net/projects/kasablanca.berlios/files/kio-ftps-0.2.tar.gz/download
 	md5sums = 33c555a9eee0cdfd68ae9050f6502069
 
 pkgname = kde4-ftps-kio

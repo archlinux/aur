@@ -9,8 +9,8 @@ url='http://kasablanca.berlios.de/kio-ftps/'
 license=('GPL')
 makedepends=('automoc4')
 conflicts=('')
- source=(http://kent.dl.sourceforge.net/project/kasablanca.berlios/kio-ftps-$pkgver.tar.gz)
- md5sums=('33c555a9eee0cdfd68ae9050f6502069')
+source=("kio-ftps-${pkgver}.tar.gz::http://sourceforge.net/projects/kasablanca.berlios/files/kio-ftps-${pkgver}.tar.gz/download")
+md5sums=('33c555a9eee0cdfd68ae9050f6502069')
 
  build() {
     cd ${srcdir}/kio-ftps
