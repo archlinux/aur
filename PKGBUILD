@@ -1,23 +1,25 @@
 pkgname=glib2-static
-pkgver=2.44.0
+pkgver=2.50.2
 pkgrel=1
-pkgdesc="Common C routines used by GTK+ and other libs"
+pkgdesc="Low level core library. Static library."
 url="http://www.gtk.org/"
 arch=(i686 x86_64)
-depends=('pcre' 'libffi' "glib2")
-makedepends=('pkg-config' 'python2' 'libxslt' 'docbook-xml' 'pcre' 'libffi' 'elfutils')
+makedepends=(libffi pcre zlib shared-mime-info python libelf)
+checkdepends=(desktop-file-utils dbus)
 optdepends=('python2: for gdbus-codegen and gtester-report'
             'elfutils: gresource inspection tool')
 options=('!docs' '!libtool' '!emptydirs' 'staticlibs')
-license=('LGPL')
+depends=(pcre libffi)
+license=(LGPL)
 source=(http://ftp.gnome.org/pub/GNOME/sources/glib/${pkgver%.*}/glib-$pkgver.tar.xz
 	revert-warn-glib-compile-schemas.patch)
-sha256sums=('f2d362b106a08fa801770d41829a06fcfe287a00421018869eebf5efc796f5b9'
+sha256sums=('be68737c1f268c05493e503b3b654d2b7f43d7d0b8c5556f7e4651b870acfbf5'
             '049240975cd2f1c88fbe7deb28af14d4ec7d2640495f7ca8980d873bb710cc97')
 
 prepare() {
   cd glib-$pkgver
   patch -Rp1 -i ../revert-warn-glib-compile-schemas.patch
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
@@ -26,8 +28,19 @@ build() {
       --sysconfdir=/etc \
       --with-pcre=system \
       --disable-fam --enable-static
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
+
+check() {
+  cd glib-$pkgver
+  if ! make check; then
+    # Rounding error in timer tests?
+    # GLib:ERROR:timer.c:38:test_timer_basic: assertion failed (micros == ((guint64)(elapsed * 1e6)) % 1000000): (1 == 0)
+    make check
+  fi
+}
+
 
 package() {
   cd glib-$pkgver
