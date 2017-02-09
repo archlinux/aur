@@ -1,4 +1,4 @@
-From b32771b178c106167dfa71ae3e2ac53e1845a3c2 Mon Sep 17 00:00:00 2001
+From 17ca839c5b370748fc55e64f826d39ab25eee13e Mon Sep 17 00:00:00 2001
 From: Jose Santiago <jsantiago@haivision.com>
 Date: Thu, 3 Nov 2016 14:36:10 -0500
 Subject: [PATCH 2/2] Fix build with ANGLE
