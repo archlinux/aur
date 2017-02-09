@@ -9,8 +9,10 @@
 # Contributor: N30N <archlinux [at] alunamation [dot] com>
 
 pkgname=lwks-beta
-pkgver=14.0.0.0
-pkgrel=91873
+lwksver=14.0.0.0
+lwksbuild=91873
+pkgver=$lwksver.$lwksbuild
+pkgrel=2
 pkgdesc="Lightworks is a professional video editing suite"
 arch=('x86_64')
 url="http://www.lwks.com/"
@@ -20,7 +22,7 @@ optdepends=('nvidia-utils: only for nVidia users')
 provides=('lightworks')
 conflicts=('lightworks', 'lwks')
 source=(
-    "http://downloads.lwks.com/Lightworks-Beta-$pkgrel-$pkgver.deb"
+    "http://downloads.lwks.com/Lightworks-Beta-$lwksbuild-$lwksver.deb"
     "http://ala.seblu.net/packages/p/portaudio/portaudio-19_20140130-3-x86_64.pkg.tar.xz"
     )
 
