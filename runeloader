@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on' exec java -Dnofork=true -Xmx512M -jar /usr/share/runeloader/RuneLoader.jar $@

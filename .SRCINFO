@@ -1,0 +1,20 @@
+pkgbase = runeloader
+	pkgdesc = The Ultimate RuneScape Toolkit
+	pkgver = 2.39
+	pkgrel = 2
+	url = https://www.runeloader.com/forum/portal.php
+	install = runeloader.install
+	arch = any
+	depends = java-runtime
+	noextract = RuneLoader.jar
+	source = https://www.runeloader.com/download/jar/RuneLoader.jar
+	source = runeloader
+	source = runeloader.desktop
+	source = runeloader.install
+	md5sums = 8f78e7c3196e8c5d61792ce8d5309a75
+	md5sums = e485e9967756e6e9995e3098650fc6da
+	md5sums = 7cd86c8dc2f308993a7a764b9caa2142
+	md5sums = 051a5cb51a200ba69bb246b9e647636a
+
+pkgname = runeloader
+

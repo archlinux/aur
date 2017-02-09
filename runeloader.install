@@ -1,0 +1,6 @@
+## arg 1:  the new package version
+post_install() {
+    echo ">> RuneLoader forums: https://www.runeloader.com/forum/index.php"
+    echo ">> RuneLoader stores its data in ~/RuneLoader/"
+}
+

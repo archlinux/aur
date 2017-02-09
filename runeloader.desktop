@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=RuneLoader
+GenericName=RuneLoader
+Comment=The Ultimate RuneScape Toolkit
+Exec=runeloader
+Terminal=false
+Type=Application
+Categories=Game;
+
