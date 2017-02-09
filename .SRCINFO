@@ -1,0 +1,17 @@
+pkgbase = anki20
+	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) efficiently
+	pkgver = 2.0.41
+	pkgrel = 1
+	url = http://ankisrs.net/
+	arch = any
+	license = AGPL3
+	depends = python2-pyqt4
+	depends = python2-beautifulsoup3
+	depends = python2-httplib2
+	depends = python2-sqlalchemy
+	optdepends = mplayer: sound playing
+	source = https://apps.ankiweb.net/downloads/current/anki-2.0.41-source.tgz
+	sha256sums = f9e8498d62cda2c2892ca2141ec1a318159499c6b280edeaf8c2b95e97e3ab4e
+
+pkgname = anki20
+
