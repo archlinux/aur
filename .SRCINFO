@@ -1,6 +1,6 @@
 pkgbase = elemental
 	pkgdesc = distributed-memory dense linear algebra
-	pkgver = 0.87.3
+	pkgver = 0.87.7
 	pkgrel = 1
 	url = https://github.com/elemental/Elemental
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = elemental
 	depends = libmpc
 	depends = python2
 	options = !makeflags
-	source = https://github.com/elemental/Elemental/archive/v0.87.3.tar.gz
-	md5sums = 690bb9be7388017c2e475b36182671e4
+	source = elemental-0.87.7.tar.gz::https://github.com/elemental/Elemental/archive/v0.87.7.tar.gz
+	sha512sums = 4e1210a93013759b47e6283042ce434a9fc793a1d23745dcca7705e28e1b29f54d6fe386ece183c0793fc9c713fa7621aa94a3289ee04b23a1ce82ff2abaa350
 
 pkgname = elemental
 
