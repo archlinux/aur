@@ -2,7 +2,7 @@
 # Contributor: megadriver <megadriver at gmx dot com>
 
 pkgname=xonsh
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="A Python-ish, BASHwards-compatible shell"
 url="http://xon.sh/"
@@ -13,7 +13,7 @@ optdepends=('python-prompt_toolkit: support for SHELL_TYPE=prompt_toolkit')
 makedepends=('python-setuptools')
 source=("https://github.com/scopatz/xonsh/archive/$pkgver.zip")
 install=xonsh.install
-sha256sums=('aadffef75c22e9ea7a77bcf6242091dcd77fa754415e289067d8b7abbccf61ce')
+sha256sums=('d44e38494e6c896231c3975bb99587a8072610d89d3a0b0ba94c70ea454ffa64')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
