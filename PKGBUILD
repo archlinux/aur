@@ -9,7 +9,7 @@ pkgdesc="Terminal for Liri OS"
 arch=("i686" "x86_64")
 url="https://github.com/lirios/terminal"
 license=("GPL")
-depends=("fluid" "vibe")
+depends=("fluid" "vibe" "dconf")
 makedepends=("git" "extra-cmake-modules")
 replaces=('papyros-terminal')
 source=("git+https://github.com/lirios/terminal.git#commit=$_commit")
