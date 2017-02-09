@@ -1,14 +1,15 @@
 pkgbase = ttf-adobe-fangsong
 	pkgdesc = One fonts of Adobe's AdobeFangsongStd.R style.
-	pkgver = 5.004
-	pkgrel = 2
+	pkgver = 5.010
+	pkgrel = 1
 	url = http://www.adobe.com
-	install = ttf-adobe-heiti.install
+	install = ttf-adobe-fangsong.install
 	arch = any
 	license = unknown
 	depends = fontconfig
-	source = http://gthemes-china.googlecode.com/files/AdobeFangsongStd.tar.gz
-	md5sums = 422e9125821651fd9d1461eb30809167
+	noextract = AdobeFangsongStd.otf
+	source = AdobeFangsongStd.otf::https://raw.githubusercontent.com/mingchen/mac-osx-chinese-fonts/master/Adobe%20Simple%20Chinese%20Fonts/AdobeFangsongStd-Regular%20(v5.010).otf
+	md5sums = b811e3430d85638dae9a4f2f05fffc4a
 
 pkgname = ttf-adobe-fangsong
 
