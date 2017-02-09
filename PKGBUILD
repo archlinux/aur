@@ -2,7 +2,7 @@
 # Contributor: Weng Xuetian <wengxt@gmail.com>
 
 pkgname=kmozillahelper-kf5
-pkgver=4.9.15
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Mozilla KDE Integration with KF5 support"
 url="https://github.com/openSUSE/kmozillahelper"
@@ -13,7 +13,7 @@ makedepends=("cmake" "extra-cmake-modules")
 provides=(kmozillahelper-frameworks kmozillahelper)
 conflicts=(kmozillahelper-frameworks kmozillahelper)
 source=("https://github.com/openSUSE/${pkgname%%-kf5}/archive/v${pkgver}.tar.gz")
-sha512sums=('a3cb31266b38a8e03774e1274c4180a0e85cf1de176a0fa1e2ca398e9c749b968adf7028fd7ec7df77b350318be1420086cfb359667dcf1faeef193bbdcc9abb')
+sha512sums=('e4ecb232bcea9dde3afe7ad059dbb0bbbb0e5de77708b008de325741efff900c2d8dd442a4a3b3a2fa5e5e44439668223d70126b959a311d2d75a7917edddcbc')
 
 build() {
 	mkdir -p "$srcdir/$pkgname-build"

@@ -1,6 +1,6 @@
 pkgbase = kmozillahelper-kf5
 	pkgdesc = Mozilla KDE Integration with KF5 support
-	pkgver = 4.9.15
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/openSUSE/kmozillahelper
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = kmozillahelper-kf5
 	provides = kmozillahelper
 	conflicts = kmozillahelper-frameworks
 	conflicts = kmozillahelper
-	source = https://github.com/openSUSE/kmozillahelper/archive/v4.9.15.tar.gz
-	sha512sums = a3cb31266b38a8e03774e1274c4180a0e85cf1de176a0fa1e2ca398e9c749b968adf7028fd7ec7df77b350318be1420086cfb359667dcf1faeef193bbdcc9abb
+	source = https://github.com/openSUSE/kmozillahelper/archive/v5.0.0.tar.gz
+	sha512sums = e4ecb232bcea9dde3afe7ad059dbb0bbbb0e5de77708b008de325741efff900c2d8dd442a4a3b3a2fa5e5e44439668223d70126b959a311d2d75a7917edddcbc
 
 pkgname = kmozillahelper-kf5
 
