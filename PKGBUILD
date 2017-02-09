@@ -51,7 +51,6 @@ build() {
 
 	./configure \
 		--prefix=/usr \
-		--disable-rustbuild \
 		--llvm-root=/usr \
 		--enable-llvm-link-shared \
 		--jemalloc-root=/usr/lib/
