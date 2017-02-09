@@ -1,6 +1,6 @@
 # Maintainer: Justin R. St-Amant <jstamant24 at gmail dot  com>
 pkgname=camotics-git
-pkgver=1.0.6.r143.g9460571
+pkgver=1.1.0.r0.g9460571
 pkgrel=1
 pkgdesc="3-axis NC machining simulation software"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ md5sums=('SKIP' 'bca9df64570c6c6e6773e8428e27cfb8')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+  git describe --long --tags | sed 's/-debug-/.r/;s/-/./'
 }
 
 build() {
