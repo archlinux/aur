@@ -1,0 +1,13 @@
+pkgbase = lejos-ev3
+	pkgdesc = A firmware and toolchain for programming the Lego EV3 in Java
+	pkgver = 0.9.1.beta
+	pkgrel = 1
+	url = http://lejos.sourceforge.net/
+	arch = any
+	license = GPL3
+	depends = java-environment
+	source = https://downloads.sourceforge.net/project/ev3.lejos.p/0.9.1-beta/leJOS_EV3_0.9.1-beta.tar.gz
+	md5sums = e58802d784ba990c09b4196fc99dc0ab
+
+pkgname = lejos-ev3
+
