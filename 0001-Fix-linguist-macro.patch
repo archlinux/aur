@@ -1,4 +1,4 @@
-From 77e3129a33d3297bddc514edb773bf30133fa838 Mon Sep 17 00:00:00 2001
+From ea7352aaf05931c8b20c19c5a7bd47b7bb9f54c9 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 21:44:42 +0200
 Subject: [PATCH] Fix linguist macro
