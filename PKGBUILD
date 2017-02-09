@@ -15,7 +15,7 @@ install=$pkgname.install
 source=("http://andreas.vdr-developer.org/fonts/download/vdrsymbols-ttf-20100612.tgz"
         "https://raw.githubusercontent.com/dejavu-fonts/dejavu-fonts/master/LICENSE")
 md5sums=('dad98a1cdb2b7deb3301ecf46181d258'
-         'a6f61a45e6175388cac48de6f6698fb5')
+         '449b2c30bfe5fa897fe87b8b70b16cfa')
 
 package() {
   mkdir -p "$pkgdir/usr/share/fonts/TTF"
