@@ -1,7 +1,7 @@
 pkgbase = raccoon
 	pkgdesc = Alternative Google Play (with GUI) client to download Android APK files to your computer
 	pkgver = 4.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.onyxbits.de/raccoon
 	install = raccoon.install
 	arch = any
