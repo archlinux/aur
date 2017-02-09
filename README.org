@@ -1,3 +1,0 @@
-#+TITLE: Delphes [[https://aur.archlinux.org/packages/delphes/][https://img.shields.io/aur/version/delphes.svg]]
-
-Delphes bundled for installation on Arch Linux.
