@@ -32,7 +32,7 @@ build(){
     bsdtar -x -f "sources/enginesource20091001.zip"
     cd darkplaces
     patch -Np1 -i "${srcdir}/libpng14.patch"
-    
+
     #build the binaries separately instead to avoid truncated files
     make CPUOPTIMIZATIONS="$CFLAGS" DP_FS_BASEDIR=/usr/share/nexuiz/ DP_LINK_TO_LIBJPEG=1 cl-nexuiz
     make CPUOPTIMIZATIONS="$CFLAGS" DP_FS_BASEDIR=/usr/share/nexuiz/ DP_LINK_TO_LIBJPEG=1 sdl-nexuiz
@@ -44,7 +44,7 @@ package(){
     install -Dm755 "Nexuiz/darkplaces/nexuiz-glx" "${pkgdir}/usr/bin/nexuiz-glx"
     install -Dm755 "Nexuiz/darkplaces/nexuiz-sdl" "${pkgdir}/usr/bin/nexuiz-sdl"
     install -Dm644 "${srcdir}/"*.desktop -t "${pkgdir}/usr/share/applications"
-    
+
     #docs
     install -dm755 "${pkgdir}/usr/share/doc/nexuiz/"
     mv "${srcdir}/Nexuiz/Docs/"* "${pkgdir}/usr/share/doc/nexuiz/"
@@ -62,7 +62,7 @@ package(){
     #remove unneeded cruft
     find "${pkgdir}/usr/share/nexuiz/server" -name "*_windows.bat" -exec rm {} \;
     find "${pkgdir}/usr/share/nexuiz/server" -name "*_mac.sh" -exec rm {} \;
-    
+
     #icons
     for size in 16 22 24 32 48 64 128 256 512; do
         install -Dm644 "${srcdir}/nex${size}.png" \
