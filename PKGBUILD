@@ -21,11 +21,9 @@ sha512sums=('50cbe8ee911080f586e77861c442348701bd02e2de0c090c54c34f82ac275ecfcd7
             'SKIP'
             '4f5603f1476b759c86d4784728fbdd212c59b30dc56d787c1834bf68a9cd83071fa22658d24e5a58beb94c0c656b0e4457d7da6e3048715dd36bd68380fc336e'
             'SKIP')
-validpgpkeys=(# Bill Wendling <void@llvm.org>
-              54E3BDE33185D9F69664D22455F5CD70BB5A0569
-              # Tom Stellard <tom@stellard.net>
+validpgpkeys=(# Tom Stellard <tom@stellard.net> (.1 releases)
               11E521D646982372EB577A1F8F0871F202119294
-              # Hans Wennborg <hans@chromium.org>
+              # Hans Wennborg <hans@chromium.org> (.0 releases)
               B6C8F98282B944E3B0D5C2530FC3042E345AD05D)
  
 prepare() {
