@@ -2,8 +2,10 @@
 
 _pkgname='bdelta'
 pkgname="${_pkgname}-git"
-pkgver=0.3.1.d20130130.rg53e49e1.fefefilesize
-pkgrel=2
+epoch=1
+_pkgver=latest
+pkgver=0.3.1.post2+g4782c58_20160919.fefefilesize
+pkgrel=1
 pkgdesc="A tool to create diffs of binary files. A sophisticated sequence matching library bundled with a delta creator and patch tool."
 url='https://github.com/jjwhitney/BDelta'
 arch=('i686' 'x86_64' 'arm')
@@ -14,6 +16,7 @@ depends=(
 
 makedepends=(
   "git"
+  "python2"
 )
 
 optdepends=(
@@ -47,7 +50,7 @@ pkgver() {
   _unpackeddir="${srcdir}/${_pkgname}"
   cd "${_unpackeddir}"
   
-  _ver="$(git describe | sed 's|^v||')"
+  _ver="$(python2 version.py | sed 's|^v||')"
   _rev="$(git describe --long | cut -d- -f3)"
   _date="$(git log -n 1 --pretty=format:%ci | cut -d' ' -f1 | tr -d '-')"
   
@@ -69,7 +72,7 @@ pkgver() {
     return 1
   fi
   
-  echo "${_ver}.d${_date}.r${_rev}${_extraver}"
+  echo "${_ver}+${_rev}_${_date}${_extraver}"
 }
 
 prepare() {
