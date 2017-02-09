@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd $pkgname
-    git describe --tags --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 build() {
