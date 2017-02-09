@@ -51,7 +51,7 @@ _use_current=
 pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _srcname=linux-4.9
-pkgver=4.9.8
+pkgver=4.9.9
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
@@ -61,7 +61,7 @@ makedepends=('kmod' 'inetutils' 'bc')
 _bfqrel=v7r11
 _bfqver=v8r7
 _bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.9.0-${_bfqver}"
-#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.9.0-${_bfqver}"
+_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.9.0-${_bfqver}"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
@@ -451,7 +451,7 @@ done
 
 sha512sums=('bf67ff812cc3cb7e5059e82cc5db0d9a7c5637f7ed9a42e4730c715bf7047c81ed3a571225f92a33ef0b6d65f35595bc32d773356646df2627da55e9bc7f1f1a'
             'SKIP'
-            '98400f66cdb4536dfefc8e88a60d9c84dd60e999e1f8547dd25c1e1476099fa76c4f6a0b6b45f91ddc6003ec6233a3e1b6e44b8172c8e89b3e9aca7ffde7b15e'
+            'a7a2d44b83b00b20f1424d12af0f42e1c576d3053feacd13491ef185661fb1c789b9265c500b62f5ede39f57b72f358820000fa6c852a5f035e566ee1dfcd5d9'
             'SKIP'
             '5709ec16030f372309c06020ab0cc23940cad320204ce12426b8b10b3bdbd9be25c8a7bae247ce341429e8a33d0097700a88149d54b29ff44a61d1d4aff66763'
             '953566f2b74415cd5113882352c8518234c399e0e0a6cc118ddfa259c65d6fc30de00f25b605489d53e0b1f948bc7b3ebf8f20b970538f5bf7de5a7f33a0f641'
