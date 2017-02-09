@@ -1,6 +1,6 @@
 pkgbase = eudev-systemdcompat
 	pkgver = 232
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = eudev-systemdcompat
 	source_x86_64 = http://mirror.netcologne.de/archlinux/core/os/x86_64/libsystemd-232-8-x86_64.pkg.tar.xz
 	source_x86_64 = http://mirror.netcologne.de/archlinux/core/os/x86_64/systemd-232-8-x86_64.pkg.tar.xz
 	md5sums_x86_64 = ec7b5aea73f3ddb0e893873e86a4e51b
-	md5sums_x86_64 = 966852761e024f4397d5c7de44c5dc72
+	md5sums_x86_64 = 0c9ea39248d5a24591e7b67c334d61e1
 
 pkgname = eudev-systemd
 	pkgdesc = systemd-sysuser and systemd-tmpfiles binary; systemd compatibility package

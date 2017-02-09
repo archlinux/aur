@@ -10,7 +10,7 @@ _repo=http://mirror.netcologne.de/archlinux/core/os
 pkgbase=eudev-systemdcompat
 pkgname=('eudev-systemd' 'libeudev-systemd')
 pkgver=232
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 license=('GPL2')
 groups=('base' 'base-openrc')
@@ -22,7 +22,7 @@ source_x86_64=("$_repo/x86_64/libsystemd-$pkgver-${_spkgrel}-x86_64.pkg.tar.xz"
 md5sums_i686=('458867be18c7d14af34c9d4c267e5880'
               'db63aafd235f3993314e513119ec1a0b')
 md5sums_x86_64=('ec7b5aea73f3ddb0e893873e86a4e51b'
-                '966852761e024f4397d5c7de44c5dc72')
+                '0c9ea39248d5a24591e7b67c334d61e1')
 
 package_eudev-systemd() {
     pkgdesc="systemd-sysuser and systemd-tmpfiles binary; systemd compatibility package"
