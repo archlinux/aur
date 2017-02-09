@@ -1,3 +1,0 @@
-#+TITLE: madgraph [[https://aur.archlinux.org/packages/madgraph/][https://img.shields.io/aur/version/madgraph.svg]]
-
-MadGraph bundled for installation on Arch Linux.
