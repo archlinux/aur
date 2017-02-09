@@ -1,6 +1,6 @@
 # Maintainer: Gustav Hansen <kusti8@gmail.com>
 pkgname=harmony-player
-pkgver=0.4.3
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="A next-gen music player built with Electron."
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("harmony-$pkgver.tar.xz::https://github.com/vincelwt/harmony/releases/do
         "harmony-32.png"
         "harmony-256.png"
         "harmony")
-md5sums=('0990eeeaf8220c711c964bdb9c6d4c04'
+md5sums=('9778635f28db1889d104d56da6bc8f1a'
          '776af71320e401646bf96a7d4c721d27'
          '9ff4e602debeaf6d88c625189342db52'
          'd3ff15f6c1dd18a81a933242aae9c892'
