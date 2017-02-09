@@ -3,7 +3,6 @@ pkgbase = guacamole-server
 	pkgver = 0.9.11
 	pkgrel = 1
 	url = http://guacamole.sourceforge.net/
-	install = guacamole.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
