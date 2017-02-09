@@ -1,14 +1,14 @@
 # Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
 pkgname=snapgene-viewer
-pkgver=3.2.2
+pkgver=3.3.2
 pkgrel=1
 pkgdesc='Software for plasmid mapping, primer design, and restriction site analysis'
 arch=('x86_64')
 url='http://www.snapgene.com/products/snapgene_viewer/'
 license=('custom')
-makedepends=('rpmextract' 'patchelf')
+makedepends=('patchelf')
 source=("snapgene_viewer_${pkgver}_linux.rpm::http://www.snapgene.com/products/snapgene_viewer/download.php?&majorRelease=${pkgver:0:3}&minorRelease=${pkgver}&os=linux_rpm")
-sha512sums=('e3a6da02fc8e07a347bf94b8972edfbd912c5256254a6fb31911c79b24a8796cabc55d522951a962d45a585eaa433c9447f6547444133f84d46c2f087ab0ab10')
+sha512sums=('8c09b3b9d95ab5feca50ff9082b2b4fad9868ba4a32a8289419bfda25bd88200a1117dc0ea1abe202bd3522780a7b91421298175e33db01d52f321d363225112')
 
 # Some shared libraries could be stripped out and installed as dependencies
 # instead.  However, directly calling the snapgene-viewer binary currently
@@ -16,7 +16,8 @@ sha512sums=('e3a6da02fc8e07a347bf94b8972edfbd912c5256254a6fb31911c79b24a8796cabc
 
 package() {
     cd "$pkgdir"
-    rpmextract.sh "$srcdir/snapgene_viewer_${pkgver}_linux.rpm"
+    cp -r "$srcdir/opt" "$pkgdir"
+    cp -r "$srcdir/usr" "$pkgdir"
     patchelf --remove-rpath "$pkgdir/opt/gslbiotech/snapgene-viewer/snapgene-viewer"
     patchelf --remove-rpath "$pkgdir/opt/gslbiotech/snapgene-viewer/libqntp.so.1"
     patchelf --remove-rpath "$pkgdir/opt/gslbiotech/snapgene-viewer/crypto/libqca-ossl.so"
