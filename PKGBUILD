@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
   cd $srcdir/$_gitname
-  GOPATH="$srcdir" make
+  make
 }
 
 package() {
