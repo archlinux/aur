@@ -1,0 +1,19 @@
+pkgbase = dict-freedict-eng-fra-svn
+	pkgdesc = English -> French dictionary for dictd et al. from Freedict.org
+	pkgver = r1487
+	pkgrel = 1
+	url = http://www.freedict.org/
+	install = dict-freedict-eng-fra-svn.install
+	arch = any
+	license = GPL
+	makedepends = subversion
+	makedepends = dictd
+	makedepends = freedict-tools
+	optdepends = dictd: dict client and server
+	provides = dict-freedict-eng-fra
+	conflicts = dict-freedict-eng-fra
+	source = svn+https://github.com/freedict/fd-dictionaries/trunk/eng-fra
+	md5sums = SKIP
+
+pkgname = dict-freedict-eng-fra-svn
+
