@@ -1,9 +1,16 @@
+# vim: ft=sh ts=2 sw=2 et:
+
+# arg 1:  the new package version
 post_install() {
-  mkdir /var/run/ceph
+  systemd-sysusers ceph.conf
+  systemd-tmpfiles --create ceph.conf
 }
 
-pre_remove() {
-  rmdir --ignore-fail-on-non-empty /var/run/ceph
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  if (( "$(vercmp $2 '10.2.2-1')" < 0 )); then
+    systemd-sysusers ceph.conf
+    systemd-tmpfiles --create ceph.conf
+  fi
 }
-
-# vim:set ts=2 sw=2 et:

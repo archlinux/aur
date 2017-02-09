@@ -14,20 +14,41 @@
 #
 
 pkgname=ceph-git
-pkgver=11.1.0.7326.g3b807e763a
+pkgver=12.0.0.140.g2ed28407e7
 pkgrel=1
 epoch=1
-pkgdesc='Distributed, fault-tolerant file system delivering object, block, and file storage in one unified system.'
-arch=('x86_64' 'i686')
+pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
+arch=('x86_64'
+      'i686')
 url='http://ceph.com/'
 license=('GPL')
-depends=('libedit' 'libsigc++' 'gtkmm' 'btrfs-progs' 'crypto++'
-         'gperftools>=1.8.3-2' 'python2' 'fuse' 'keyutils'
-         'libatomic_ops' 'curl' 'libaio' 'fcgi' 'expat' 'boost'
-         'leveldb' 'xfsprogs')
-makedepends=('git' 'boost' 'boost-libs' 'yasm' 'cmake' 'python-sphinx' 'python2-lttngust' 'cython2' 'nss')
+depends=('libedit'
+         'libsigc++'
+         'gtkmm'
+         'btrfs-progs'
+         'crypto++'
+         'gperftools>=1.8.3-2'
+         'python2'
+         'fuse'
+         'keyutils'
+         'libatomic_ops'
+         'curl'
+         'libaio'
+         'fcgi'
+         'expat'
+         'boost'
+         'leveldb'
+         'xfsprogs')
+makedepends=('git'
+             'boost'
+             'boost-libs'
+             'yasm'
+             'cmake'
+             'python-sphinx'
+             'cython2'
+             'nss')
 install=ceph.install
-options=('!libtool' 'emptydirs')
+options=('!emptydirs')
 provides=('ceph')
 conflicts=('ceph')
 source=("git+https://github.com/ceph/ceph.git"
@@ -69,100 +90,85 @@ sha256sums=('SKIP'
             '29483c0f6718e8830cf52c0d31e391fb52dc1b460bcb65cf9c72dfab83e5b5ce'
             'a50811ce62fd6cdcc17d8f1e4d9700c1889ab4bfc5e9a22155bd725a27715e3c'
             'b8239a04cc42e3e4ced2e141df6804e61e875131a5c95d6bcbfc3b44f388d44b'
-            'c1669b2bedc07a313b8bd29735296791abc0fd94eb353c9683b6015f2cc2c93c')
+            '9d713eca6096b28319cfd83eafee1486ece75e2f14fb505f86fe18027606a6bd')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%%-git}"
-  #printf "%s" "$(git describe --long --tags | sed 's/v//; s/-/./g')"
-  git describe --long --tags | sed 's/^v//; s/-/./g'
+    cd "${srcdir}/${pkgname%%-git}"
+    #printf "%s" "$(git describe --long --tags | sed 's/v//; s/-/./g')"
+    git describe --long --tags | sed 's/^v//; s/-/./g'
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname%%-git}"
-  SRC_SUBMODULES=('civetweb'
-                  'rocksdb'
-                  'googletest'
-                  'spdk'
-                  'xxHash'
-                  'isa-l'
-                  'lua'
-                  'Beast'
-                  'boost'
-                  'dpdk'
-                  'zstd'
-                 )
-  for SUBMODULE in ${SRC_SUBMODULES[@]}; do
-    rm -fr "${srcdir}/${pkgname%%-git}/src/${SUBMODULE}"
-    mv "${srcdir}/${SUBMODULE}" "${srcdir}/${pkgname%%-git}/src/${SUBMODULE}"
-  done
+    cd "${srcdir}/${pkgname%%-git}"
 
-  for SUBMODULE in ceph-object-corpus ceph-erasure-code-corpus; do
-    rm -fr "${srcdir}/${pkgname%%-git}/${SUBMODULE}"
-    mv "${srcdir}/${SUBMODULE}" "${srcdir}/${pkgname%%-git}/${SUBMODULE}"
-  done
+    # put all submodules in the right places
+    SRC_SUBMODULES=($(awk '/^\[submodule/ {print substr($2,2,length($2)-3)}' ${srcdir}/${pkgname%%-git}/.gitmodules | xargs -L1 basename))
+    for SUBMODULE in ${SRC_SUBMODULES[@]}; do
+        SUBMODULE_PATH=$(awk "/path\s*=.*${SUBMODULE}$/ {print \$3}" "${srcdir}/${pkgname%%-git}/.gitmodules")
+        rm -fr "${srcdir}/${pkgname%%-git}/${SUBMODULE_PATH}"
+        mv "${srcdir}/${SUBMODULE}" "${srcdir}/${pkgname%%-git}/${SUBMODULE_PATH}"
+    done
 
-  rm -fr "${srcdir}/${pkgname%%-git}/src/erasure-code/jerasure/jerasure"
-  mv "${srcdir}/jerasure" "${srcdir}/${pkgname%%-git}/src/erasure-code/jerasure/jerasure"
-
-  rm -fr "${srcdir}/${pkgname%%-git}/src/erasure-code/jerasure/gf-complete"
-  mv "${srcdir}/gf-complete" "${srcdir}/${pkgname%%-git}/src/erasure-code/jerasure/gf-complete"
-
-  git submodule update --init
+    git submodule update --init
 }
 
 build() {
-  cd "${srcdir}/${pkgname%%-git}"
+    cd "${srcdir}/${pkgname%%-git}"
 
-  test -d build && rm -rf build
-  mkdir build
+    test -d build && rm -rf build
+    mkdir build
 
-  # fix python scripts to use python2
-  alias python=python2
+    # fix python scripts to use python2
+    #alias python=python2
 
-  cd "${srcdir}/${pkgname%%-git}/build"
-  cmake \
-    -DWITH_SYSTEM_BOOST:BOOL="1" \
-    -DCMAKE_INSTALL_PREFIX:PATH="/usr" \
-    -DDEBUG_GATHER:BOOL="0" \
-    "$@" ..
-  make DESTDIR="${pkgdir}"
+    cd "${srcdir}/${pkgname%%-git}/build"
+    # list of options defaults: grep ^option CMakeLists.txt
+    cmake \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+        -DCMAKE_INSTALL_SBINDIR=/usr/bin \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+        -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
+        -DSPHINX_BUILD=/usr/bin/sphinx-build2 \
+        -DWITH_SYSTEM_BOOST=ON \
+        -DWITH_SYSTEMD=ON \
+        -DWITH_EMBEDDED=OFF \
+        -DWITH_OPENLDAP=OFF \
+        -DWITH_LTTNG=OFF \
+        -DHAVE_BABELTRACE=OFF \
+        -DWITH_TESTS=OFF \
+        ..
+    make
 }
 
 package() {
-  cd "${srcdir}/${pkgname%%-git}/build"
+    cd "${srcdir}/${pkgname%%-git}/build"
 
-  make DESTDIR="${pkgdir}" install
+    make DESTDIR="${pkgdir}" install
 
-  # Some python scripts are autogenerated through Makefiles. Fix those
-  # too, or /usr/bin/ceph will have the wrong shebang.
-  find ${pkgdir} -type f -exec sed -i 's,^#!/usr/bin/env python$,#!/usr/bin/env python2,g' {} \;
+    cd "${pkgdir}"
 
-  install -d --mode=755 "${pkgdir}/var/run/ceph" "${pkgdir}/var/log/ceph" \
-    "${pkgdir}/etc/rc.d" "${pkgdir}/etc/ceph"
+    # install tmpfiles.d
+    install -D -m 644 "${srcdir}"/${pkgname%%-git}/systemd/ceph.tmpfiles.d \
+        usr/lib/tmpfiles.d/${pkgname%%-git}.conf
+    #install -D -m 644 "${srcdir}"/ceph.sysusers \
+    #    usr/lib/sysusers.d/${pkgname%%-git}.conf
 
-  # Systemd.
-  install -d --mode=755 "${pkgdir}/usr/lib/systemd/system"
-  install -D --mode=644 "${srcdir}/ceph-osd@.service" "${pkgdir}/usr/lib/systemd/system/ceph-osd@.service"
-  install -D --mode=644 "${srcdir}/ceph-mon@.service" "${pkgdir}/usr/lib/systemd/system/ceph-mon@.service"
-  install -D --mode=644 "${srcdir}/ceph-mds@.service" "${pkgdir}/usr/lib/systemd/system/ceph-mds@.service"
+    # fix sbin path
+    msg2 'Fix sbin paths'
+    mv -v usr/sbin/* usr/bin
 
-  # Ceph udev rules.
-  for RULE in ${srcdir}/${pkgname%%-git}/udev/*.rules; do
-    install -D --mode=644 "${RULE}" "${pkgdir}/usr/lib/udev/rules.d/$(basename ${RULE})"
-  done
+    # fix bash completions path
+    msg2 'Fix bash completion path'
+    install -d -m 755 usr/share/bash-completion
+    mv -v etc/bash_completion.d usr/share/bash-completion/completions
 
-  # Fix bin directory.
-  mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
+    # remove debian init
+    rm -v etc/init.d/ceph
 
-  # Sample config.
-  install -D --mode=644 "${pkgdir}/usr/share/doc/ceph/sample.ceph.conf" \
-    "${pkgdir}/etc/ceph/ceph.conf.sample"
-
-  # License.
-  install -D --mode=644 ${srcdir}/${pkgname%%-git}/COPYING \
-    "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-
-  # Clean up.
-  rmdir "${pkgdir}/var/run/ceph"
+    # fix python2 shebang
+    msg2 'Fix python2 shebang'
+    find usr/bin -type f -executable -exec \
+        sed -i '1s,^#! \?/usr/bin/\(env \|\)python$,#!/usr/bin/python2,' {} \;
 }
 
