@@ -1,7 +1,7 @@
 pkgbase = haskell-apply-refact
 	pkgdesc = Perform refactorings specified by the refact library
 	pkgver = 0.3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hackage.haskell.org/package/apply-refact
 	arch = i686
 	arch = x86_64
