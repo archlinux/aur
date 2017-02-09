@@ -4,7 +4,7 @@
 # Edit the PKGBUILD prepare() to disable stuff.
 pkgname=telegram-desktop-patched
 pkgver=0.10.1
-pkgrel=9
+pkgrel=10
 pkgdesc='Telegram Desktop with bigger sticker panel and dark colour scheme patches.'
 arch=('i686' 'x86_64')
 url="https://git.mel.vin/groups/telegram_desktop"
