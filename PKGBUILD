@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=cg-tools
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Cooperative gamma tools"
 arch=(any)
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=(libcoopgamma)
 makedepends=(libcoopgamma)
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(c5bead670c9276ed52ab319c85be8705ca89d37a64d2ffa09b178a6eb40d7756)
+sha256sums=(8a4b92c3f9b2df45663526c5ce9a81f1d66b11f9fd4e45112768cd6f97077273)
 
 
 build() {
