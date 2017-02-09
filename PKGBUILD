@@ -2,7 +2,7 @@
 
 pkgname=pje-office
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="PJeOffice is a software made available by CNJ for electronic signing PJe system's documents"
 arch=('i686' 'x86_64')
 url='http://www.cnj.jus.br/wiki/index.php/PJeOffice'
@@ -14,21 +14,25 @@ install='pje-office.install'
 md5sums_i686=('c7d3df1069a1f9f12be41659ef4f7be7')
 md5sums_x86_64=('f971eba91dfa913b5d7e7c404681ba00')
 
-_clean() {
-	echo "- Cleaning up $srcdir"
-	rm -rf ${srcdir}/*
-}
-
 _fix() {
 	local _launcher
 
 	echo "- Fixing launcher"
-	_launcher=usr/share/pje-office/pjeOffice.sh
+	_launcher=usr/share/$pkgname/pjeOffice.sh
 	sed -i 's/^DIR=.*/DIR=$( cd "$( dirname $(readlink -f "${BASH_SOURCE[0]}" ) )" \&\& pwd )/' $_launcher
+}
 
-	echo "- Creating symbolic link to /$_launcher"
+_clinks() {
+	local _basepath
+	_basepath=usr/share/$pkgname
+
+	echo "- Creating symbolic links"
 	mkdir -p usr/bin
-	ln -s "/$_launcher" usr/bin/pjeOffice
+	ln -sf /$_basepath/pjeOffice.sh usr/bin/pjeOffice
+	mkdir -p usr/share/applications
+	ln -sf /$_basepath/shortcuts/$pkgname.desktop usr/share/applications/$pkgname.desktop
+	mkdir -p usr/share/icons
+	ln -sf /$_basepath/shortcuts/icons/PJeOffice.png usr/share/icons/PJeOffice.png
 }
 
 prepare() {
@@ -46,7 +50,6 @@ prepare() {
 	# remove extension
 	_srcfile="${_srcfile%.*}"
 
-	_clean
 	echo "- Converting deb to tar.xz"
 	deb2targz "$_srcfile.deb"
 
@@ -54,6 +57,7 @@ prepare() {
 	tar xf "$_srcfile.tar.xz"
 
 	_fix
+	_clinks
 }
 
 package() {
