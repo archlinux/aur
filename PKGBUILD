@@ -2,7 +2,7 @@
 
 pkgname=wine-staging-git
 pkgver=2.0.rc4.r19.ga90497bd+wine.2.0.rc5.r0.g3c54d4fb69
-pkgrel=1
+pkgrel=2
 pkgdesc="A compatibility layer for running Windows programs (staging branch, Git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/wine-compholio/wine-staging/"
@@ -71,8 +71,9 @@ optdepends=(
   'libva'                 'lib32-libva'
   'gtk3'                  'lib32-gtk3'
   'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
-  'cups'                  'samba'
-  'dosbox'                'oss'
+  'cups'
+  'samba'
+  'dosbox'
 )
 options=('staticlibs')
 source=(wine-git::'git://source.winehq.org/git/wine.git'
