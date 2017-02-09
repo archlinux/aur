@@ -1,0 +1,38 @@
+--- build.gradle	2017-02-08 20:40:07.003225435 -0800
++++ build.gradle	2017-02-08 20:45:03.017151076 -0800
+@@ -8,15 +8,9 @@
+  */
+
+
+-plugins {
+-  id "edu.sc.seis.launch4j" version "1.5.1"
+-}
+-
+-
+ // Apply the java plugin to add support for Java
+ apply plugin: 'java'
+ apply plugin: 'eclipse'
+-apply plugin: 'edu.sc.seis.launch4j'
+
+
+ // Settings
+@@ -44,19 +38,6 @@
+     with jar
+ }
+
+-
+-copyL4jLib.dependsOn fatJar
+-launch4j {
+-  externalLaunch4j = false
+-  copyConfigurable = project.tasks.fatJar.outputs.files
+-  outfile = 'Raccoon-' +version +'.exe'
+-  mainClassName = 'de.onyxbits.raccoon.Main'
+-  opt='-Dswing.defaultlaf=com.sun.java.swing.plaf.windows.WindowsLookAndFeel'
+-  opt='-Djava.net.preferIPv4Stack=true'
+-  jar = "lib/${project.tasks.fatJar.archiveName}"
+-  icon= '../../icon.ico'
+-}
+-
+ // In this section you declare the dependencies for your production and test code
+ dependencies {
+     // The production code uses the SLF4J logging API at compile time
