@@ -9,21 +9,21 @@
 
 _qt_module=qtactiveqt
 pkgname=mingw-w64-qt5-activeqt
-pkgver=5.7.1
+pkgver=5.8.0
 pkgrel=1
 arch=('any')
 pkgdesc="ActiveX integration framework (mingw-w64)"
-depends=(mingw-w64-qt5-base)
-makedepends=(mingw-w64-{gcc,headers,crt,winpthreads} python)
-options=(!strip !buildflags staticlibs)
-groups=(mingw-w64-qt mingw-w64-qt5)
+depends=('mingw-w64-qt5-base')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'python')
+options=('!strip' '!buildflags' 'staticlibs')
+groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL3' 'LGPL2.1' 'FDL' 'custom')
-url="https://www.qt.io/"
+url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         "qtactiveqt-fix-build.patch"
         "qtactiveqt-win64.patch")
-md5sums=('ac35c25e2581faffa92504bf8abe837e'
+md5sums=('d1c8ae9489b737957ba100bb27323eb5'
          '7a7ba436452aa56613b3fbb15684e094'
          '1264d0274586aec14f96a978b416b048')
 
