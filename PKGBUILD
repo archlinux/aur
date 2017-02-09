@@ -2,7 +2,7 @@
 
 pkgname=dataexplorer
 pkgver=3.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical tool to display data from various chargers/dischargers"
 url="http://savannah.nongnu.org/projects/dataexplorer"
 arch=("i686" "x86_64")
@@ -17,10 +17,13 @@ source=("http://download.savannah.gnu.org/releases/dataexplorer/dataexplorer-$pk
 
         "http://download.savannah.gnu.org/releases/dataexplorer/udev_rules/40-FTDI.rules"
         "http://download.savannah.gnu.org/releases/dataexplorer/udev_rules/40-FTDI.rules.sig"
+
         "http://download.savannah.gnu.org/releases/dataexplorer/udev_rules/40-MosChip.rules"
         "http://download.savannah.gnu.org/releases/dataexplorer/udev_rules/40-MosChip.rules.sig"
+
         "http://download.savannah.gnu.org/releases/dataexplorer/udev_rules/40-ProfilicTechnology.rules"
         "http://download.savannah.gnu.org/releases/dataexplorer/udev_rules/40-ProfilicTechnology.rules.sig"
+
         "http://download.savannah.gnu.org/releases/dataexplorer/udev_rules/40-SiliconLabs.rules"
         "http://download.savannah.gnu.org/releases/dataexplorer/udev_rules/40-SiliconLabs.rules.sig")
 
@@ -38,13 +41,16 @@ md5sums=("f6d693807fc81728e0af13cf71c6ce9a"
          "16978d3d4d17cda2e0811e2c6362390a"
 
          "d764227784c6b7b71d620e40c23ef358"
-         "df20b2b21abe3ee0b059744c11af71b9"
+         "adfb9ce356804d51c46fd0f97c66222d"
+
          "dbff88a8deaf759c253293b25488035c"
-         "3b29d8df5273d54b0c457f2d91362267"
+         "eaca424a102880d3668ff414020f99b8"
+
          "0cbcff52a6c8ce42102ffc49c1edfbb3"
-         "2d6cb07c2b48d1219901a7a73fef8147"
+         "5fe007c4080ae4c25d130c8cccc7f391"
+
          "1bf0831d2640c50cf5c89fc84dfd7991"
-         "0e20d3dafb846c81c185df90e003c47a")
+         "704a4631806191441b685728809d70e8")
 
 build() {
   echo $pkgdir
