@@ -7,7 +7,7 @@
 
 pkgname=python2-rsvg
 pkgver=2.32.0
-pkgrel=16
+pkgrel=17
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 depends=('pygtk' 'librsvg')
@@ -21,7 +21,26 @@ sha256sums=('09dbd580bf3b0ef60f91b090eafe6d08ddcc50a609e2b425a7f8eca46d4e0ee9')
 
 build() {
 	cd "gnome-python-desktop-$pkgver"
-	PYTHON=/usr/bin/python2 ./configure --prefix=/usr --disable-metacity
+	PYTHON=/usr/bin/python2 ./configure --prefix=/usr \
+		--disable-gtop \
+		--disable-metacity \
+		--disable-evolution \
+		--disable-wnck \
+		--disable-gnomekeyring \
+		--disable-bugbuddy \
+		--disable-gnomeprint \
+		--disable-gnomeprintui \
+		--disable-gtksourceview \
+		--disable-totem.plparser \
+		--disable-nautilusburn \
+		--disable-braseromedia \
+		--disable-braseroburn \
+		--disable-mediaprofiles \
+		--disable-metacity \
+		--disable-gnomedesktop \
+		--disable-evolution_ecal \
+		--disable-evolution \
+		--disable-evince
 	make
 }
 
