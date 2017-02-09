@@ -1,6 +1,6 @@
 pkgbase = neomutt
 	pkgdesc = The New Mutt: powerful text-based mail client with all the best feature patches
-	pkgver = 20170128
+	pkgver = 20170206
 	pkgrel = 1
 	url = http://www.neomutt.org/
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = neomutt
 	optdepends = urlview: for url menu
 	provides = mutt
 	conflicts = mutt
-	source = https://github.com/neomutt/neomutt/archive/neomutt-20170128.tar.gz
-	md5sums = 74398af40397fa26ba056a82eae08405
+	source = https://github.com/neomutt/neomutt/archive/neomutt-20170206.tar.gz
+	md5sums = e3d67be3d63a1fd55c249649dfbed1cb
 
 pkgname = neomutt
 
