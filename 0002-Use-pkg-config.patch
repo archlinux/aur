@@ -1,4 +1,4 @@
-From 963e661fc032d90f4eb4dc9820ad278e7d929414 Mon Sep 17 00:00:00 2001
+From 8143ac0ef800d154d1dc24204e98e346f7af97d6 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 21:56:42 +0200
 Subject: [PATCH 2/9] Use pkg-config

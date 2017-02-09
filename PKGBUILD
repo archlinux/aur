@@ -15,7 +15,7 @@
 
 _qt_module=qtwebkit
 pkgname=mingw-w64-qt5-webkit
-pkgver=5.7.1
+pkgver=5.8.0
 pkgrel=1
 arch=('any')
 pkgdesc="Classes for a WebKit2 based implementation and a new QML API (mingw-w64)"
@@ -36,13 +36,14 @@ depends=('mingw-w64-qt5-declarative'
 #depends+=('mingw-w64-webchannel')
 #depends+=('mingw-w64-gst-plugins-base')
 #optdepends+=('mingw-w64-gst-plugins-good: Webm codec support')
-makedepends=('mingw-w64-gcc' 'python' 'gperf' 'ruby' 'mingw-w64-pkg-config')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'python' 'gperf' 'ruby')
 options=('!strip' '!buildflags' 'staticlibs')
+groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-url="https://www.qt.io/"
+url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
-groups=(mingw-w64-qt mingw-w64-qt5)
-source=("https://download.qt.io/community_releases/${pkgver:0:3}/${pkgver}/${_pkgfqn}.tar.xz"
+groups=('mingw-w64-qt5')
+source=("https://download.qt.io/community_releases/${pkgver:0:3}/${pkgver}-final/${_pkgfqn}.tar.xz"
          '0001-Use-correct-ICU-libs.patch'
          '0002-Use-pkg-config.patch'
          '0003-Use-system-ANGLE-rather-than-bundled-version.patch'
@@ -52,16 +53,16 @@ source=("https://download.qt.io/community_releases/${pkgver:0:3}/${pkgver}/${_pk
          '0007-Include-intrin.h-for-declaration-of-_mm_mfence.patch'
          '0008-Link-against-ANGLE-even-if-Qt-is-configured-not-to.patch'
          '0009-Fixed-crash-probably-miscompilation-with-MinGW-w64-5.patch')
-md5sums=('4fa8f47383ce36d59dcc36d701ce93cd'
-         '723721e8a6e849d7504d81e2f842d563'
-         '18cdfcc4d7287a4ffd0a83c720c92140'
-         'c69032c133d7f49a6eef699ad9104ae2'
-         '0a3af101516cbdb229fbbbb79eb4fc1a'
-         'd66ccc9e2407cc454dfb9207ba1a006f'
-         '7cc0eb1eb242f048dd200d76dc528dec'
-         'bf52db2fb9589b12f98e2e90ca635677'
-         'f60cbd16a5e43a0cf2cc3bb1d00a3a08'
-         '40e45a139a7bd98c79e73af654351810')
+md5sums=('60a6935aca4a7c553d0ec4646ceed3b4'
+         '208ff77dc291de1c91b8143e7fb9c1ae'
+         '1ea0dc59ce4283e533126a0abb30f21a'
+         '695ba1f69129024dd3abb0bf6eb2b736'
+         '6b65ea17730b99ee3e24821089624d56'
+         'fdacb552245d089c77017977f52e8d51'
+         '5964c02a0dcf8c4af354bc0a0f4babd3'
+         '83fae95c74b670d84a03985d3dbd83d0'
+         '307d500b217ca9183d9f97d617461803'
+         'a9fd04dcfe19ef9458a0485219f24c64')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 

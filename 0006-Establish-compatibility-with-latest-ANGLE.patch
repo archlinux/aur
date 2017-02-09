@@ -1,4 +1,4 @@
-From a565915a6e70d1b6e3790a04a036fbce25c58b77 Mon Sep 17 00:00:00 2001
+From 5134bfb5375b9bedf5bdb15c8fadf441285802d9 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 22:19:57 +0200
 Subject: [PATCH 6/9] Establish compatibility with latest ANGLE

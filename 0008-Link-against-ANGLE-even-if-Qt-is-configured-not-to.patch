@@ -1,32 +1,31 @@
-From c139872c275f2bb62558b113048f0f3e54997d94 Mon Sep 17 00:00:00 2001
+From 8f0a0019f827815161291e4f63dfe8d15d32bd60 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 5 Nov 2016 12:46:27 +0100
 Subject: [PATCH 8/9] Link against ANGLE even if Qt is configured not to
 
 ---
- Source/WebCore/WebCore.pri | 12 ++++--------
- 1 file changed, 4 insertions(+), 8 deletions(-)
+ Source/WebCore/WebCore.pri | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
 
 diff --git a/Source/WebCore/WebCore.pri b/Source/WebCore/WebCore.pri
-index ddad897be..f69e22492 100644
+index d6c32e80c..42aadaacc 100644
 --- a/Source/WebCore/WebCore.pri
 +++ b/Source/WebCore/WebCore.pri
-@@ -215,15 +215,11 @@ enable?(WEB_AUDIO) {
- use?(3D_GRAPHICS) {
+@@ -216,14 +216,11 @@ use?(3D_GRAPHICS) {
      win32: {
          mingw: {
--            # Make sure OpenGL libs are after the webcore lib so MinGW can resolve symbols
--            contains(QT_CONFIG, opengles2) {
--                CONFIG(debug, debug|release):contains(QT_CONFIG, angle) {
+             # Make sure OpenGL libs are after the webcore lib so MinGW can resolve symbols
+-            qtConfig(opengles2) {
+-                CONFIG(debug, debug|release):qtConfig(angle) {
 -                    LIBS += $$QMAKE_LIBS_OPENGL_ES2_DEBUG
 -                } else {
 -                    LIBS += $$QMAKE_LIBS_OPENGL_ES2
 -                }
-+            # Always link against ANGLE
-+            CONFIG(debug, debug|release):contains(QT_CONFIG, angle) {
++            CONFIG(debug, debug|release):qtConfig(angle) {
 +                LIBS += $$QMAKE_LIBS_OPENGL_ES2_DEBUG
              } else {
 -                LIBS += $$QMAKE_LIBS_OPENGL
++                # Always link against ANGLE
 +                LIBS += $$QMAKE_LIBS_OPENGL_ES2
              }
          }

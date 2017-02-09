@@ -1,4 +1,4 @@
-From 32ba6b8bf5d5f6d62e558965308e93e13d95d76f Mon Sep 17 00:00:00 2001
+From 5d5d3ebbe9edcec899f4d11ce6709c533b446e25 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 21:53:59 +0200
 Subject: [PATCH 1/9] Use correct ICU libs
@@ -10,7 +10,7 @@ exactly the same as their native Linux counterpart
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Source/WTF/WTF.pri b/Source/WTF/WTF.pri
-index 1f4866d66..5d8933ae1 100644
+index 69e4cd1f3..b553075c2 100644
 --- a/Source/WTF/WTF.pri
 +++ b/Source/WTF/WTF.pri
 @@ -14,7 +14,7 @@ mac {

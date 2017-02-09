@@ -1,4 +1,4 @@
-From ee3e4e5bea2632ca06abb3936c10a57b2ebeedef Mon Sep 17 00:00:00 2001
+From 1059d77bb26bb03485fa2ab2f5770dec215a2de5 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 22:08:26 +0200
 Subject: [PATCH 4/9] Prevent symbols not being exported in Qt5WebKit.dll

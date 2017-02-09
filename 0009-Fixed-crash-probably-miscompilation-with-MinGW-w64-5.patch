@@ -1,4 +1,4 @@
-From 72acfdf5a9af50e3e2b8ba16fca16fb4408906f6 Mon Sep 17 00:00:00 2001
+From eeb2ce34b4997d7f959ff7c789441ed97c2f1934 Mon Sep 17 00:00:00 2001
 From: Konstantin Tokarev <annulen@yandex.ru>
 Date: Fri, 4 Nov 2016 00:44:49 +0300
 Subject: [PATCH 9/9] Fixed crash (probably miscompilation) with MinGW-w64

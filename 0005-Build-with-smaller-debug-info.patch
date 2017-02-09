@@ -1,4 +1,4 @@
-From b76e20abff2c6412daaf257b762be00fd628c77a Mon Sep 17 00:00:00 2001
+From 75d96925cc98690d90d8210566a6311c963219d4 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 22:13:44 +0200
 Subject: [PATCH 5/9] Build with smaller debug info
@@ -30,7 +30,7 @@ index dec9d42a9..910fc4eda 100644
  
  INCLUDEPATH += \
 diff --git a/Source/WTF/WTF.pri b/Source/WTF/WTF.pri
-index 5d8933ae1..2ef42ca3e 100644
+index b553075c2..64877cb3b 100644
 --- a/Source/WTF/WTF.pri
 +++ b/Source/WTF/WTF.pri
 @@ -8,6 +8,12 @@
@@ -47,7 +47,7 @@ index 5d8933ae1..2ef42ca3e 100644
      # Mac OS does ship libicu but not the associated header files.
      # Therefore WebKit provides adequate header files.
 diff --git a/Source/WebCore/WebCore.pri b/Source/WebCore/WebCore.pri
-index 37cde573a..ddad897be 100644
+index 26e9b8424..d6c32e80c 100644
 --- a/Source/WebCore/WebCore.pri
 +++ b/Source/WebCore/WebCore.pri
 @@ -7,6 +7,12 @@

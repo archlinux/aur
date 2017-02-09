@@ -1,4 +1,4 @@
-From 84a00afd27fca2550ecd068915b9551edb191e5b Mon Sep 17 00:00:00 2001
+From e2623801cfd15fdf24f0af2bfc01bdfb2b0ca22d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 22:21:54 +0200
 Subject: [PATCH 7/9] Include intrin.h for declaration of _mm_mfence
