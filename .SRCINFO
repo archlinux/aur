@@ -1,6 +1,6 @@
 pkgbase = dstatus-git
 	pkgdesc = status bar for velox
-	pkgver = 0.0.1.r12.geac3bbf
+	pkgver = .
 	pkgrel = 1
 	url = https://github.com/ametisf/dstatus
 	arch = i686
