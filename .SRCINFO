@@ -6,7 +6,7 @@ pkgbase = atinout
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	source = http://cznic.dl.sourceforge.net/project/atinout/v0.9.1/atinout-0.9.1.tar.gz
+	source = atinout-0.9.1.tar.gz::http://sourceforge.net/projects/atinout/files/v0.9.1/atinout-0.9.1.tar.gz/download
 	md5sums = 4448694147cd630dde1abfd73a10d753
 
 pkgname = atinout

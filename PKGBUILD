@@ -9,16 +9,16 @@ url='http://atinout.sourceforge.net/'
 license=('GPL3')
 makedepends=('')
 conflicts=('')
- source=(http://cznic.dl.sourceforge.net/project/atinout/v$pkgver/atinout-$pkgver.tar.gz)
+source=("atinout-${pkgver}.tar.gz::http://sourceforge.net/projects/atinout/files/v${pkgver}/atinout-${pkgver}.tar.gz/download")
 md5sums=('4448694147cd630dde1abfd73a10d753')
 
 
- build() {
+build() {
     cd ${srcdir}/atinout-$pkgver
     make
  }
 
- package() {
+package() {
     cd ${srcdir}/atinout-$pkgver
     install -Dm 755 atinout $pkgdir/usr/bin/atinout
 }
