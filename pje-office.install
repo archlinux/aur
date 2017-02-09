@@ -1,9 +1,9 @@
 ## arg 1:  the new package version
 post_install() {
 	echo "--"
-	echo "  pjeOffice's jsign module attempts to load AET library in /lib"
-	echo "  So you may have to create a link under /lib to your AET library, e.g."
-	echo "  $ ln -s /usr/lib/libaetpkss.so.3 /lib/libaetpkss.so"
+	echo "  pjeOffice's jsign module attempts to load base libraries (without versioning)"
+	echo "  So you may have to create a link to needed libs, e.g."
+	echo "  $ ln -s /usr/lib/libaetpkss.so.3 /usr/lib/libaetpkss.so"
 	echo "--"
 }
 
