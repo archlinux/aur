@@ -9,6 +9,7 @@ pkgbase = neard
 	makedepends = automake
 	makedepends = autoconf>=2.60
 	makedepends = libtool
+	makedepends = chrpath
 	depends = dbus>=1.2
 	depends = libnl
 	depends = glib2>=2.28

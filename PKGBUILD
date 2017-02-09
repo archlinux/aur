@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://01.org/linux-nfc/"
 license=('GPL2')
 depends=('dbus>=1.2' 'libnl' 'glib2>=2.28')
-makedepends=('automake' 'autoconf>=2.60' 'libtool')
+makedepends=('automake' 'autoconf>=2.60' 'libtool' 'chrpath')
 backup=(etc/neard/main.conf)
 source=(https://git.kernel.org/cgit/network/nfc/neard.git/snapshot/$pkgname-$pkgver.tar.gz
         bindir.patch
