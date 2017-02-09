@@ -11,8 +11,8 @@ makedepends=('cmake' 'kodi-platform')
 depends=("kodi")
 source=("https://github.com/janbar/pvr.mythtv/archive/${pkgver}.tar.gz"
         "https://github.com/xbmc/xbmc/archive/17.0-Krypton.tar.gz")
-md5sums=('592c37f08c920a593f64197ea13aa3f0'
-         '86ebb2f148090f12beb1e573dfd55e53')
+sha256sums=('596fc11f26574939c5610f82f033808ca8d923543462254e793eab08d6c7d41c'
+            '4bfffa2493973ae15ab1d922632c09a2583908d6140bc4f58ec8f9314e4f6545')
 
 build() {
   mkdir -p "pvr.mythtv-${pkgver}/build"
