@@ -3,9 +3,9 @@
 # Contributor: Christopher Krooß <didi2002@web.de>
 
 pkgname=greyhole
-pkgver=0.9.67
+pkgver=0.10.0
 pkgrel=1
-pkgdesc="Application that uses Samba to create a storage pool of all your available hard drives and allows you to create redundant copies of the files you store, in order to prevent data loss when part of your hardware fails."
+pkgdesc='Application that uses Samba to create a storage pool of all your available hard drives and allows you to create redundant copies of the files you store, in order to prevent data loss when part of your hardware fails.'
 arch=('x86_64')
 url="https://www.greyhole.net/"
 license=('GPL3')
@@ -14,15 +14,15 @@ backup=('etc/greyhole.conf')
 install='greyhole.install'
 source=("https://greyhole.net/releases/$pkgname-$pkgver.tar.gz"
         "greyhole.service")
-md5sums=('bfb135c29f881024a59d66fda4c650c9'
-         '667531c2298d018f8487bfbb58f0a94d')
+sha256sums=('bd158d58d9ccdb953ec6dd09c2f2f26d6983d1c0ac36d9eb4228cd1db374d663'
+            'f09cc153424934f2e7e0d8b66cdb47bd5f331640388202917533115d53962ef9')
 
 package() {
   cd "$pkgname-$pkgver"
 
   mkdir -p "$pkgdir/var/spool/greyhole"
   chmod 777 "$pkgdir/var/spool/greyhole"
-  mkdir -p "$pkgdir/usr/share/greyhole"
+  mkdir -p "$pkgdir/usr/share/greyhole/scripts-examples"
   install -m 0755 -D -p greyhole "$pkgdir/usr/bin/greyhole"
   install -m 0755 -D -p greyhole-dfree "$pkgdir/usr/bin/greyhole-dfree"
   install -m 0755 -D -p greyhole-dfree.php "$pkgdir/usr/share/greyhole"
@@ -36,6 +36,10 @@ package() {
   install -m 0644 -D -p docs/greyhole.conf.5.gz "$pkgdir/usr/share/man/man5/greyhole.conf.5.gz"
   install -m 0644 -D -p USAGE "$pkgdir/usr/share/greyhole/USAGE"
   install -m 0644 -D -p schema-mysql.sql "$pkgdir/usr/share/greyhole/schema-mysql.sql"
+  install -m 0755 -D -p scripts-examples/greyhole_file_changed.sh "$pkgdir/usr/share/greyhole/scripts-examples/greyhole_file_changed.sh"
+  install -m 0755 -D -p scripts-examples/greyhole_idle.sh "$pkgdir/usr/share/greyhole/scripts-examples/greyhole_idle.sh"
+  install -m 0755 -D -p scripts-examples/greyhole_notify_error.sh "$pkgdir/usr/share/greyhole/scripts-examples/greyhole_notify_error.sh"
+  install -m 0755 -D -p scripts-examples/greyhole_send_fsck_report.sh "$pkgdir/usr/share/greyhole/scripts-examples/greyhole_send_fsck_report.sh"
 
   install -m 0644 -D -p "$srcdir/greyhole.service" "$pkgdir/usr/lib/systemd/system/greyhole.service"
 
@@ -75,9 +79,9 @@ package() {
         install -m 644 "samba-module/bin/4.3/$_vfs_file" $pkgdir/usr/lib/greyhole/greyhole-samba43.so"
         ln -s "/usr/lib/greyhole/greyhole-samba43.so" $pkgdir/usr/lib/samba/vfs/greyhole.so"
         ;;
-    44 )
-        install -m 644 "samba-module/bin/4.4/$_vfs_file" "$pkgdir/usr/lib/greyhole/greyhole-samba44.so"
-        ln -s "/usr/lib/greyhole/greyhole-samba44.so" "$pkgdir/usr/lib/samba/vfs/greyhole.so"
+    45 )
+        install -m 644 "samba-module/bin/4.5/$_vfs_file" "$pkgdir/usr/lib/greyhole/greyhole-samba45.so"
+        ln -s "/usr/lib/greyhole/greyhole-samba45.so" "$pkgdir/usr/lib/samba/vfs/greyhole.so"
         ;;
     * )
         echo "Incompatible Samba version: Please see https://github.com/gboudreau/Greyhole/blob/master/INSTALL for manual build directions"
