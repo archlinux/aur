@@ -12,10 +12,7 @@ depends=('libusb'
          'mooltipass-udev'
          'qt5-base'
          'qt5-websockets')
-
 makedepends=('make')
-checkdepends=()
-optdepends=()
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}-beta.tar.gz")
 sha256sums=('7ea66a6c38822020136bae7aaa841812f9532dbfef5334f06806a1c642958d5e')
