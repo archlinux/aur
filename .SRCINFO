@@ -1,7 +1,7 @@
 pkgbase = qmidiplayer
 	pkgdesc = A cross-platform midi file player based on libfluidsynth and Qt.
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chrisoft.org/QMidiPlayer/
 	arch = i686
 	arch = x86_64
