@@ -32,9 +32,9 @@ prepare() {
     fi
 
     if [[ $(echo "${srcdir}" | wc -w) -ne 1 ]]; then
-        echo "ERROR: The Mathematica installer doesn't support directory names with spaces."
-        echo "Try building from a directory without spaces."
-        echo "Current build directory: ${srcdir}"
+        msg2 "ERROR: The Mathematica installer doesn't support directory names with spaces."
+        msg2 "Try building from a directory without spaces."
+        msg2 "Current build directory: ${srcdir}"
         false
     fi
 
@@ -42,13 +42,14 @@ prepare() {
 }
 
 package() {
+    msg2 "Running Mathematica installer"
     # https://reference.wolfram.com/language/tutorial/InstallingMathematica.html#650929293
     ${srcdir}/Mathematica_${pkgver}_LINUX.sh -- \
              -execdir=${pkgdir}/usr/bin \
              -targetdir=${pkgdir}/opt/Mathematica \
-             -auto # -user
+             -auto
 
-    echo "Fixing symbolic links"
+    msg2 "Fixing symbolic links"
     cd ${pkgdir}/usr/bin
     rm *
     ln -s /opt/Mathematica/Executables/math
@@ -59,7 +60,7 @@ package() {
     ln -s /opt/Mathematica/Executables/wolfram
     ln -s /opt/Mathematica/Executables/WolframKernel
 
-    echo "Linking MathematicaScript"
+    msg2 "Linking MathematicaScript"
     if [ "${CARCH}" = "x86_64" ]; then
         ln -s /opt/Mathematica/SystemFiles/Kernel/Binaries/Linux-x86-64/MathematicaScript
         ln -s /opt/Mathematica/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript
@@ -68,14 +69,14 @@ package() {
         ln -s /opt/Mathematica/SystemFiles/Kernel/Binaries/Linux/wolframscript
     fi
 
-    echo "Copying menu and mimetype information"
+    msg2 "Copying menu and mimetype information"
     mkdir -p ${pkgdir}/usr/share/applications
     mkdir -p ${pkgdir}/usr/share/desktop-directories
     mkdir -p ${pkgdir}/usr/share/mime/packages
 
     cd ${pkgdir}/opt/Mathematica/SystemFiles/Installation
 
-    desktopFile='wolfram-mathematica11.desktop'
+    desktopFile='wolfram-mathematica.desktop'
     sed -Ei 's|^(\s*TryExec=).*|\1/usr/bin/Mathematica|g' $desktopFile
     sed -Ei 's|^(\s*Exec=).*|\1/usr/bin/Mathematica %F|g' $desktopFile
     cp $desktopFile ${pkgdir}/usr/share/applications/
@@ -84,7 +85,7 @@ package() {
     cp wolfram-all.directory ${pkgdir}/usr/share/desktop-directories/
     cp *.xml ${pkgdir}/usr/share/mime/packages/
 
-    echo "Copying icons"
+    msg2 "Copying icons"
     mkdir -p ${pkgdir}/usr/share/icons/hicolor/{32x32,64x64,128x128}/{apps,mimetypes}
     cd ${pkgdir}/opt/Mathematica/SystemFiles/FrontEnd/SystemResources/X
     for i in "32" "64" "128"; do
@@ -102,14 +103,15 @@ package() {
            ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-vnd.wolfram.wl.png
     done
 
-    echo "Copying man pages"
+    msg2 "Copying man pages"
     mkdir -p ${pkgdir}/usr/share/man/man1
     cd ${pkgdir}/opt/Mathematica/SystemFiles/SystemDocumentation/Unix
     cp *.1 ${pkgdir}/usr/share/man/man1
 
-    echo "Fixing file permissions"
+    msg2 "Fixing file permissions"
     chmod go-w -R ${pkgdir}/*
 }
 
-# vim:set ts=2 sw=2 et:
-
+# Local Variables:
+# mode: sh
+# End:
