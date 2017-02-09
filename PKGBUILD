@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Michael Spencer <sonrisesoftware@gmail.com>
 
-pkgname=lirios-terminal
+pkgname=liri-terminal
 pkgver=0.0.0.20170118
 _commit=e6b33d1700f454e2c50f74756aa2579fc4994996
 pkgrel=1
