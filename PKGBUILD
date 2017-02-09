@@ -2,7 +2,7 @@
 
 pkgname=delphes
 pkgver=3.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A framework for fast simulation of a generic collider experiment"
 url="http://cp3.irmp.ucl.ac.be/projects/delphes"
 arch=('i686' 'x86_64')
@@ -31,6 +31,10 @@ build() {
 
 package() {
     make install
+
+    msg2 "Moving examples"
+    mkdir -p "${pkgdir}/usr/share/Delphes"
+    mv "${pkgdir}/usr/examples" "${pkgdir}/usr/share/Delphes/"
 }
 
 # Local Variables:
