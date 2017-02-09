@@ -1,7 +1,7 @@
-From 681c27e949a6c2469c4bbd3ea403432b2b6a301d Mon Sep 17 00:00:00 2001
+From 40049fa696cc4b02cab01cf3a79f5ea76b92d364 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 4 Dec 2016 20:35:47 +0100
-Subject: [PATCH 26/26] Fix qt5_wrap_ui() macro
+Subject: [PATCH 24/30] Fix qt5_wrap_ui() macro
 
 See https://github.com/Martchus/PKGBUILDs/issues/11
 ---
@@ -24,5 +24,5 @@ index f5e7b7f050..18d120f0c7 100644
            MAIN_DEPENDENCY ${infile} VERBATIM)
          list(APPEND ${outfiles} ${outfile})
 -- 
-2.11.0
+2.11.1
 

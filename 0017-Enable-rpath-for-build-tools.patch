@@ -1,7 +1,7 @@
-From 1fae399984442e1ece149022f4411c4cac7c16ad Mon Sep 17 00:00:00 2001
+From 25cdf3efda8669c68df7c8ad0332bdaddbf4d628 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 17:59:27 +0200
-Subject: [PATCH 17/26] Enable rpath for build tools
+Subject: [PATCH 17/30] Enable rpath for build tools
 
 - Required because library various tools depend on (libQt5Bootstrap.so) resides
   in folder /usr/${_arch}/lib
@@ -11,7 +11,7 @@ Subject: [PATCH 17/26] Enable rpath for build tools
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/mkspecs/features/qt_app.prf b/mkspecs/features/qt_app.prf
-index 46aca50cc2..e7636027aa 100644
+index cb84ae0da8..8d9471ed0a 100644
 --- a/mkspecs/features/qt_app.prf
 +++ b/mkspecs/features/qt_app.prf
 @@ -20,6 +20,7 @@ isEmpty(QMAKE_INFO_PLIST): CONFIG -= app_bundle
@@ -20,16 +20,16 @@ index 46aca50cc2..e7636027aa 100644
  host_build: QT -= gui   # no host tool will ever use gui
 +host_build: QMAKE_RPATHDIR += $$[QT_INSTALL_LIBS/dev] # force rpath
  host_build:force_bootstrap {
-     !build_pass:contains(QT_CONFIG, release_tools): CONFIG += release
+     !build_pass:qtConfig(release_tools): CONFIG += release
      contains(QT, core(-private)?|xml) {
 @@ -30,7 +31,6 @@ host_build:force_bootstrap {
  } else {
-     !build_pass:contains(QT_CONFIG, debug_and_release): CONFIG += release
+     !build_pass:qtConfig(debug_and_release): CONFIG += release
      target.path = $$[QT_INSTALL_BINS]
 -    CONFIG += relative_qt_rpath  # Qt's tools and apps should be relocatable
  }
  INSTALLS += target
  
 -- 
-2.11.0
+2.11.1
 

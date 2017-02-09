@@ -1,66 +1,72 @@
-From 4a2456d3e7372aaacf0aa25a116f85aebf21ef5b Mon Sep 17 00:00:00 2001
+From 96f65c5db2dfb4c4a646eabd48b4f864850b5121 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
-Subject: [PATCH 21/26] Merge shared and static library trees
+Subject: [PATCH 21/30] Merge shared and static library trees
 
 Allow installation of shared and static build in the same prefix
 ---
- configure                         |  6 ++++++
- mkspecs/features/default_post.prf |  8 ++++++++
- mkspecs/features/qt.prf           | 12 ++++++++++++
+ configure.pri                     |  7 +++++++
+ mkspecs/features/default_post.prf | 11 +++++++++++
+ mkspecs/features/qt.prf           | 15 +++++++++++++++
  mkspecs/features/spec_pre.prf     | 11 ++++++++---
  qmake/generators/makefile.cpp     |  9 ++++++---
- 5 files changed, 40 insertions(+), 6 deletions(-)
+ 5 files changed, 47 insertions(+), 6 deletions(-)
 
-diff --git a/configure b/configure
-index af275de52c..9ecc7f9ada 100755
---- a/configure
-+++ b/configure
-@@ -7187,6 +7187,12 @@ host_build {
- }
- QT_CONFIG += $QT_CONFIG
+diff --git a/configure.pri b/configure.pri
+index 19719736a9..0c4b8ebbf8 100644
+--- a/configure.pri
++++ b/configure.pri
+@@ -555,3 +555,10 @@ QMAKE_POST_CONFIGURE += \
  
+ # load and process input from configure.sh/.exe
+ include($$shadowed($$PWD)/config.tests/configure.cfg)
++
++# merge shared and static library trees
 +contains(CONFIG, static) {
 +    CONFIG -= shared
 +    QT_CONFIG += static jpeg gif
 +    QT_CONFIG -= shared
 +}
-+
- #versioning
- QT_VERSION = $QT_VERSION
- QT_MAJOR_VERSION = $QT_MAJOR_VERSION
 diff --git a/mkspecs/features/default_post.prf b/mkspecs/features/default_post.prf
-index e7e9a5bd87..799278d445 100644
+index e7e9a5bd87..72305ad9b8 100644
 --- a/mkspecs/features/default_post.prf
 +++ b/mkspecs/features/default_post.prf
-@@ -120,3 +120,11 @@ c++11|c++14|c++1z {
+@@ -1,5 +1,16 @@
+ # This file is loaded by qmake right after loading the actual project file.
  
- QMAKE_INCDIR += $$QMAKE_INCDIR_POST
- QMAKE_LIBDIR += $$QMAKE_LIBDIR_POST
-+
 +win32:contains(CONFIG, static) {
-+    DEFINES += QT_STATIC QT_DESIGNER_STATIC
++    # Ensure defines are set correctly for static build
 +    DEFINES -= QT_SHARED
-+    contains(QT_CONFIG, angle): DEFINES += QT_OPENGL_ES_2_ANGLE_STATIC
++    DEFINES *= QT_STATIC QT_DESIGNER_STATIC
++    contains(QT_CONFIG, angle): DEFINES *= QT_OPENGL_ES_2_ANGLE_STATIC
++    # Ensure we link against all dependencies statically
 +    QMAKE_LFLAGS += -static -static-libstdc++ -static-libgcc
-+    QMAKE_EXT_PRL=.static.prl # prevents qmake from finding the prl file for shared libs
++    # Prevent qmake from finding the prl file for shared libs
++    QMAKE_EXT_PRL = .static.prl
 +}
++
+ contains(TEMPLATE, ".*(lib|app)"):CONFIG += have_target
+ 
+ !have_target:!force_qt: CONFIG -= qt
 diff --git a/mkspecs/features/qt.prf b/mkspecs/features/qt.prf
-index bb52f23378..1815ba3241 100644
+index 98f794c485..1799622edd 100644
 --- a/mkspecs/features/qt.prf
 +++ b/mkspecs/features/qt.prf
-@@ -150,6 +150,18 @@ for(ever) {
+@@ -152,6 +152,21 @@ for(ever) {
              !isEmpty(MODULE_WINRT_CAPABILITIES_DEVICE): \
                  WINRT_MANIFEST.capabilities_device_default += $$MODULE_WINRT_CAPABILITIES_DEVICE
          }
 +
-+        win32:CONFIG(static) {
++        # Ensure linking against all required static libraries as defined in mingw-w64-g++ mkspec
++        win32:contains(CONFIG, static) {
 +            isEqual(MODULE_NAME, QtCore) {
 +                LIBS$$var_sfx += $$QMAKE_LIBS_CORE
 +            } else:isEqual(MODULE_NAME, QtGui) {
 +                LIBS$$var_sfx += $$QMAKE_LIBS_GUI
 +            } else:isEqual(MODULE_NAME, QtNetwork) {
 +                LIBS$$var_sfx += $$QMAKE_LIBS_NETWORK
++            } else:isEqual(MODULE_NAME, QtDBus) {
++                LIBS$$var_sfx += $$QMAKE_LIBS_DBUS
 +            } else:isEqual(MODULE_NAME, QtOpenGL) {
 +                LIBS$$var_sfx += $$QMAKE_LIBS_OPENGL
 +            }
@@ -69,7 +75,7 @@ index bb52f23378..1815ba3241 100644
      !isEmpty(BAD_QT):error("Unknown module(s) in QT$$var_sfx: $$replace(BAD_QT, _private$, -private)")
  
 diff --git a/mkspecs/features/spec_pre.prf b/mkspecs/features/spec_pre.prf
-index 090f348ebf..05d28636b9 100644
+index 51ea3a8321..275e080ae4 100644
 --- a/mkspecs/features/spec_pre.prf
 +++ b/mkspecs/features/spec_pre.prf
 @@ -14,9 +14,14 @@ QMAKE_EXT_H             = .h .hpp .hh .hxx
@@ -91,10 +97,10 @@ index 090f348ebf..05d28636b9 100644
  QMAKE_EXT_YACC          = .y
  
 diff --git a/qmake/generators/makefile.cpp b/qmake/generators/makefile.cpp
-index 04c0210eb9..f05a039d2f 100644
+index a762443fe2..8ac3a0f647 100644
 --- a/qmake/generators/makefile.cpp
 +++ b/qmake/generators/makefile.cpp
-@@ -3166,6 +3166,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
+@@ -3167,6 +3167,9 @@ MakefileGenerator::pkgConfigFileName(bool fixify, bool onlyPrependDestdir)
      if (project->isActiveConfig("debug")) {
          ret += "d";
      }
@@ -104,7 +110,7 @@ index 04c0210eb9..f05a039d2f 100644
      ret += Option::pkgcfg_ext;
      QString subdir = project->first("QMAKE_PKGCONFIG_DESTDIR").toQString();
      if(!subdir.isEmpty()) {
-@@ -3339,9 +3342,9 @@ MakefileGenerator::writePkgConfigFile()
+@@ -3340,9 +3343,9 @@ MakefileGenerator::writePkgConfigFile()
      t << endl;
  
      // requires
@@ -118,5 +124,5 @@ index 04c0210eb9..f05a039d2f 100644
  
      t << endl;
 -- 
-2.11.0
+2.11.1
 
