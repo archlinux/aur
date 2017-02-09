@@ -7,7 +7,7 @@
 
 pkgname=anki20
 pkgver=2.0.41
-pkgrel=1
+pkgrel=2
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="http://ankisrs.net/"
 license=('AGPL3')
