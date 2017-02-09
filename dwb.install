@@ -1,0 +1,5 @@
+post_upgrade(){
+    echo "==> If you are using extensions you should update the extensions with"
+    echo "==> dwbem -u or dwbem -Nu"
+}
+

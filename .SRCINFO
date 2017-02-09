@@ -1,0 +1,18 @@
+pkgbase = dwb
+	pkgdesc = A webkit web browser with vi-like keyboard shortcuts
+	pkgver = 2014.03.07.r135.gf9e861e
+	pkgrel = 1
+	url = http://portix.bitbucket.org/dwb/
+	install = dwb.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = json-c
+	depends = webkitgtk2
+	depends = desktop-file-utils
+	source = git+https://bitbucket.org/portix/dwb.git#commit=f9e861e
+	sha256sums = SKIP
+
+pkgname = dwb
+
