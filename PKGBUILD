@@ -1,7 +1,7 @@
 # Maintainer: Frantisek Fladung <ametisf@gmail.com>
 
 pkgname=velox-ametisf-git
-pkgver=0.0.2.r306.ge533638
+pkgver=462.e533638
 pkgrel=1
 pkgdesc="Ametisf's fork of velox."
 arch=('i686' 'x86_64')
