@@ -1,7 +1,7 @@
 pkgbase = xpub
 	pkgdesc = Bash script to get X display environment variables from anywhere.
-	pkgver = 0.3
-	pkgrel = 3
+	pkgver = 0.5
+	pkgrel = 1
 	url = https://github.com/Ventto/xpub.git
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = xpub
 	depends = bash
 	provides = xpub
 	conflicts = xpub
-	source = https://github.com/Ventto/xpub/archive/v0.3.tar.gz
+	source = https://github.com/Ventto/xpub/archive/v0.5.tar.gz
 	sha256sums = SKIP
 
 pkgname = xpub
