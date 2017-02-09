@@ -13,10 +13,10 @@ md5sums=('6b8b2ad275fd5f968ed7625447c242a4'
          '422a405d520e18ef9afade2e7c24440b')
 
 pkgver=6.2.1
-pkgrel=3
+pkgrel=4
 url="http://www.cewe.de/"
 license=("custom:eula")
-depends=('libx11' 'libjpeg' 'curl' 'wget')
+depends=('libx11' 'libjpeg' 'curl' 'wget' 'gstreamer0.10-base')
 makedepends=('unzip')
 arch=('i686' 'x86_64')
 source=("http://dls.photoprintit.de/download/Data/$_keyaccount/hps/$_setupFilename.tgz"
