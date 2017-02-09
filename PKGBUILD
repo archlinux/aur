@@ -2,7 +2,7 @@
 # Contributor: Sebastian Jug <seb AT stianj DOT ug>
 
 pkgname=openbazaar-bin
-pkgver=1.1.10
+pkgver=1.1.11
 pkgrel=1
 pkgdesc="OpenBazaar Client, Decentralized Peer to Peer Marketplace for Bitcoin -- Static binaries"
 arch=('i686' 'x86_64')
@@ -30,5 +30,5 @@ package() {
     install -Dm644 "$pkgdir/usr/share/openbazaar/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
 }
 
-md5sums_i686=('be42bd03c5a25c12170fa273f73ca21b')
-md5sums_x86_64=('2e98f4fffc95cd9789ec0f14bed01bab')
+md5sums_i686=('0b34b27420fdfeef0f8ae88980310c69')
+md5sums_x86_64=('8000eb6724bb7adb7cb49d92a7159990')
