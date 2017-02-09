@@ -5,7 +5,7 @@
 
 pkgbase=linux-userns
 _srcname=linux-4.9
-pkgver=4.9.7
+pkgver=4.9.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -29,7 +29,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'db4a5bade2a07d2f801e8c5c39dd310f35cfbbe90a953938cfbc14495b3e520c'
+            'd53bb9fb309193cbbf88faa28f4cecfc312dbddaa4c2cbf089f2a7ecd56889c0'
             'SKIP'
             'b5c2a685667a884477904c9fb337d944667b6144720ac2a67d1116f711e70768'
             'ab6c0fab5b147fab9ccef90c62b963510e92fbd068a6a33b9619537243fedca4'
