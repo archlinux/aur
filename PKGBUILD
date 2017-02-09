@@ -30,8 +30,8 @@ pkgver() {
 prepare() {
   cd "$srcdir"/$_svnmod/Scribus/scribus/plugins/scriptplugin
   find . -type f -name "*.py" -exec sed -i '1s+python$+python2+' {} \;
-#  cd "$srcdir"/$_svnmod/Scribus/scribus/plugins/scriptplugin/scripts
-#  sed -i '1s+python+python2+' Ligatursatz.py
+  cd "$srcdir"/$_svnmod/Scribus/scribus/plugins/scriptplugin/scripts
+  sed -i '1s+python+python2+' Ligatursatz.py
 }
 
 build() {
