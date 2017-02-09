@@ -1,6 +1,6 @@
 # Maintainer: valvetime <valvetimepackages@gmail.com>
 pkgname=telive
-pkgver=r94.278086d
+pkgver=d865b46
 pkgrel=1
 epoch=3
 pkgdesc="application for monitoring and listening to TETRA voice channels"
@@ -25,8 +25,7 @@ md5sums=('SKIP')
 
 
 build() {
- cd "$srcdir/$pkgname"
-
+  cd "$srcdir/$pkgname"
   make -j4
 }
 
@@ -39,17 +38,13 @@ pkgver() {
 
 package() {
 
- cd "$srcdir/$pkgname"
-
- T=$pkgdir/tetra
+  cd "$srcdir/$pkgname"
+  T=$pkgdir/tetra
   mkdir -p "$T/in" "$T/out" "$T/log" "$T/tmp" "$T/bin"
- 
- cp bin/* $T/bin
+  cp bin/* $T/bin
   touch $T/log/telive.log
-
-cp -r $srcdir/telive $pkgdir/tetra
-
-#make /tetra writeable by users of group wheel
-chown  -R :wheel $pkgdir/tetra
+  cp -r $srcdir/telive $pkgdir/tetra
+  #make /tetra writeable by users of group wheel
+  chown  -R :wheel $pkgdir/tetra
 
 }
