@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  echo $(git rev-list --count master).$(git rev-parse --short)
+  echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 build() {
