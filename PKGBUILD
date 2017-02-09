@@ -1,6 +1,6 @@
 pkgname=topinambour-git
 pkgver=1.0.11.r25.gf763f66
-pkgrel=1
+pkgrel=2
 pkgdesc="vte terminal based on the ruby-gtk3 bindings"
 arch=('i686' 'x86_64')
 url="https://github.com/cedlemo/topinambour"
@@ -29,6 +29,5 @@ package() {
     -i "${pkgdir}$(ruby -e 'puts Gem.default_dir')" \
     -n "${pkgdir}/usr/bin" \
     topinambour-*.gem
-mkdir -p "${pkgdir}/usr/share/glib-2.0/schemas"
-install -m644 "data/topinambour.gschema.xml" "$pkgdir/usr/share/glib-2.0/schemas"
+install -Dm644 "data/topinambour.gschema.xml" "$pkgdir/usr/share/glib-2.0/schemas/topinambour.gschema.xml"
 }
