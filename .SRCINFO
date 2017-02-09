@@ -1,6 +1,6 @@
 pkgbase = moolticute-git
 	pkgdesc = Easy companion for Mooltipass device
-	pkgver = 0.5.5.r0.ga26d2b8
+	pkgver = 0.5.5.r9.g3c6c740
 	pkgrel = 1
 	url = https://github.com/raoulh/moolticute
 	arch = x86_64

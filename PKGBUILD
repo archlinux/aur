@@ -2,7 +2,7 @@
 
 pkgname=moolticute-git
 _pkgname="${pkgname%-git}"
-pkgver=0.5.5.r0.ga26d2b8
+pkgver=0.5.5.r9.g3c6c740
 pkgrel=1
 pkgdesc="Easy companion for Mooltipass device"
 arch=('x86_64' 'i686')
@@ -17,8 +17,6 @@ depends=('libusb'
 
 makedepends=('git'
              'make')
-checkdepends=()
-optdepends=()
 
 source=("git+${url}.git")
 sha256sums=('SKIP')
