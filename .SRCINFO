@@ -1,0 +1,15 @@
+pkgbase = lib32-qjson
+	pkgdesc = A qt-based library that maps JSON data to QVariant objects (32-bit)
+	pkgver = 0.8.1
+	pkgrel = 4
+	url = http://qjson.sourceforge.net
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = gcc-multilib
+	depends = lib32-qt4
+	source = qjson-0.8.1.tar.gz::https://github.com/flavio/qjson/archive/0.8.1.tar.gz
+	md5sums = 4eef13da988edf8f91c260a3e1baeea9
+
+pkgname = lib32-qjson
+
