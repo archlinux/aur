@@ -2,7 +2,7 @@
 
 pkgname=filebeat-bin
 _pkgbase=${pkgname%%-bin}
-pkgver=1.2.3
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='Collects, pre-processes, and forwards log files from remote sources (precompiled)'
 arch=('i686' 'x86_64')
@@ -17,31 +17,37 @@ conflicts=("$_pkgbase")
 source=("$_pkgbase.install"
         "$_pkgbase.service"
         "$_pkgbase.sysusers")
-sha256sums=('337d78d9cb21745098c4cc75578f026e5a5819cd4d0575e3f4241f13370c0863'
-            '1b668b67134dcbca41193f7987371c6e9ead9853f3ebcb54d5c80a9d0b9decf0'
+sha256sums=('ec5ea00ff6204467639b7d1484332e63d85be4e131f065885a225b6a56db4767'
+            '6657b201197a682b955c0bcab132372f0be4009d54b9586014323e9860ea6838'
             '33feb3690f8b31563cc1e2da557c2aa326501ce9ccd7e0a142036902bfdb05ff')
 
-source_i686=("https://download.elastic.co/beats/$_pkgbase/$_pkgbase-$pkgver-i686.tar.gz")
-source_x86_64=("https://download.elastic.co/beats/$_pkgbase/$_pkgbase-$pkgver-x86_64.tar.gz")
-sha256sums_i686=('fbb694fefd18bdf355e680330fa1c098d9f8467581de3383c2d0d3db81047a10')
-sha256sums_x86_64=('b855b4930844a314cd3c8e965406ec7bd6388dbd8963535af5a8a1873945f8af')
-
-prepare() {
-    cd "$_pkgbase-$pkgver-$CARCH"
-
-    sed -i 's@#registry_file: .filebeat@registry_file: /var/lib/filebeat/registry@' \
-        filebeat.yml
-}
+source_i686=("https://artifacts.elastic.co/downloads/beats/$_pkgbase/$_pkgbase-$pkgver-linux-x86.tar.gz")
+source_x86_64=("https://artifacts.elastic.co/downloads/beats/$_pkgbase/$_pkgbase-$pkgver-linux-x86_64.tar.gz")
+sha256sums_i686=('5af19ed6ba39e79d1fa82313527e71824e074809ef038c04968b9803be2863d6')
+sha256sums_x86_64=('6361d1ad88bb0aa139b3441e914121ab12f129e3295fa3fef14af25fc0e54749')
 
 package() {
-    cd "$srcdir/$_pkgbase-$pkgver-$CARCH"
+    if [[ $CARCH == 'i686' ]] ; then
+      beats_arch=x86
+    else
+      beats_arch=$CARCH
+    fi
 
-    mkdir -p "$pkgdir/var/lib/$_pkgbase"
+    cd "$srcdir/$_pkgbase-$pkgver-linux-$beats_arch"
+
+    for d in lib log ; do
+        mkdir -p "$pkgdir/var/$d/$_pkgbase"
+    done
 
     install -D -m755 $_pkgbase     "$pkgdir/usr/bin/$_pkgbase"
-    install -D -m644 $_pkgbase.yml "$pkgdir/etc/$_pkgbase/$_pkgbase.yml"
-    install -D -m644 $_pkgbase.template.json \
-                     "$pkgdir/etc/$_pkgbase/$_pkgbase.template.json"
+
+    for f in $_pkgbase.{{,full.}yml,template{,-es2x}.json} ; do
+      install -D -m644 $f "$pkgdir/etc/$_pkgbase/$f"
+    done
+
+    for f in NOTICE README.md scripts/* ; do
+      install -D -m644 $f "$pkgdir/usr/share/$_pkgbase/$f"
+    done
 
     install -D -m644 "$srcdir/$_pkgbase.service" \
                      "$pkgdir/usr/lib/systemd/system/$_pkgbase.service"

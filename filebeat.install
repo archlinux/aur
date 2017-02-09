@@ -6,6 +6,7 @@ post_install() {
 
   # Required at this stage to ensure user & group are available
   install -d -o filebeat -g filebeat /var/lib/filebeat
+  install -d -o filebeat -g filebeat /var/log/filebeat
 }
 
 # Arg 1: new package version, arg 2: old package version
