@@ -1,0 +1,5 @@
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	echo -e "\n** Attention. Since version 0.9.10, webapp changed to guacamole-incubating\nChange your URI accordingly. **"
+}

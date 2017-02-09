@@ -16,7 +16,8 @@ optdepends=('libssh: for ssh protocol support'
 'libpulse: for pulseaudio support'
 'libtelnet: for telnet protocol support'
 )
- 
+install=guacamole.install
+
 source=("http://downloads.sourceforge.net/project/guacamole/current/source/$pkgname-$pkgver-incubating.tar.gz" 'guacd.service')
  
 md5sums=('b60b2fbf237844c74f796b8d02abe420'
