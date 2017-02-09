@@ -1,7 +1,7 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=python2-fafclient
-pkgver=0.12.0
-pkgrel=3
+pkgver=0.12.1
+pkgrel=1
 epoch=0
 pkgdesc="Forged Alliance Forever - Lobby Client. Community-driven client system for Supreme Commander: Forged Alliance."
 url="http://www.faforever.com/"
@@ -19,25 +19,24 @@ backup=()
 options=()
 install=
 changelog=
-_commitsha=ff8a2e48b143c9ef840e12baffebd33d457f236e
-source=("https://github.com/FAForever/client/archive/$_commitsha.tar.gz" 'FAForever.desktop')
-sha256sums=('50e3d8685d63c7ccbfb3d75e87c474d21ed2fb4aa6e725d9aabeac3e5da6eb59'
+source=("https://github.com/FAForever/client/archive/0.12.1.tar.gz" 'FAForever.desktop')
+sha256sums=('977739658485eb229076ab90b77068497554de9787ec0c7395292eedca328576'
             'f503475daa227d4ce1fa66063b065db7375ce3c0d161d77e3c2bd19c65468cbc')
 noextract=()
 validpgpkeys=()
 
 prepare() {
-  cd "client-$_commitsha"
+  cd "client-$pkgver"
   mv src fafclient
 }
 
 build() {
-  cd "client-$_commitsha"
+  cd "client-$pkgver"
   FAFCLIENT_VERSION=$pkgver python2 setup.py build
 }
 
 package() {
-  cd "client-$_commitsha"
+  cd "client-$pkgver"
   FAFCLIENT_VERSION=$pkgver python2 setup.py install --root="$pkgdir" --optimize=1 
   mkdir -p "$pkgdir/usr/share"
   cp -r "res" "$pkgdir/usr/share/fafclient"
