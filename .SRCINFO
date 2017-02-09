@@ -1,6 +1,6 @@
 pkgbase = dmenu-ametisf-git
 	pkgdesc = Wayland port of dmenu - ametisf fork
-	pkgver = 544.49fd8a0
+	pkgver = 550.5731797
 	pkgrel = 1
 	url = https://github.com/ametisf/dmenu
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = dmenu-ametisf-git
 	makedepends = git
 	makedepends = libx11
 	makedepends = swc
+	makedepends = tup
 	depends = sh
 	depends = wld
 	provides = dmenu
