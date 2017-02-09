@@ -2,14 +2,14 @@
 # Contributor: Sébastien "Seblu" Luttringer
 
 pkgname=docker-bin
-pkgver=1.13.0
-pkgrel=2
+pkgver=1.13.1
+pkgrel=1
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
 arch=('x86_64')
 url='https://www.docker.com/'
 license=('Apache')
 provides=('docker')
-conflicts=('docker' 'docker-git')
+conflicts=('docker-git')
 depends=('bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'systemd' 'libseccomp')
 makedepends=('go-md2man')
 optdepends=('btrfs-progs: btrfs backend support'
@@ -21,8 +21,8 @@ source=(
   "https://get.docker.com/builds/Linux/x86_64/docker-${pkgver}.tgz"
   "https://github.com/docker/docker/archive/v${pkgver}.tar.gz"
   "docker.sysusers")
-md5sums=('80234efd9aedf8b2da81bfe550cbee43'
-         '23d3875ac67d5b67dd1918c45ba98537'
+md5sums=('4ab003318dfa837b01c8332dad3dfa9d'
+         '032c39b2390a0f387cdb49bab8c4c712'
          '8cf9900ebada61f352a03465a088da34')
 
 build() {
