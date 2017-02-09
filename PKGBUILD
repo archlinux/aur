@@ -70,7 +70,7 @@ package_rust-git() {
 
 	make DESTDIR="$pkgdir" install
 
-	rm -f "$pkgdir"/usr/lib/rustlib/{manifest-rust-docs,install.log,uninstall.sh}
+	rm -f "$pkgdir"/usr/lib/rustlib/{components,manifest-rust-docs,install.log,uninstall.sh}
 
 	install --directory "$pkgdir"/usr/share/licenses/$pkgname/
 	install -m644 COPYRIGHT LICENSE-* "$pkgdir"/usr/share/licenses/$pkgname/
