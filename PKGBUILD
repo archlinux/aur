@@ -2,7 +2,7 @@
 
 pkgname=slap
 pkgver=0.1.61
-pkgrel=1
+pkgrel=2
 pkgdesc="Sublime-like terminal-based text editor."
 arch=("x86_64")
 url="https://github.com/slap-editor/$pkgname/"
