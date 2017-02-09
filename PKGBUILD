@@ -1,10 +1,10 @@
 # $Id: PKGBUILD 263841 2016-04-03 20:40:11Z anatolik $
-# Maintainer: TJM <tommy.mairo@gmail.com>
+# Maintainer: mesmer <mesmer@fisica.if.uff.br>
 
 pkgname=(vim-clipboard)
-pkgver=7.4.1689
+pkgver=8.0.0314
 _versiondir=74
-pkgrel=2
+pkgrel=1
 arch=(i686 x86_64)
 license=('custom:vim')
 url='http://www.vim.org'
@@ -122,7 +122,7 @@ package_vim-runtime() {
 }
 
 package_vim-clipboard() {
-  pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor'
+  pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor with +clipboard enabled'
   depends=("vim-runtime=${pkgver}-${pkgrel}" 'gpm' 'acl')
   optdepends=('python2: Python 2 language support'
               'python: Python 3 language support'
