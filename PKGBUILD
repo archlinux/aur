@@ -1,7 +1,7 @@
 # Maintainer: Ábel Futó <lebaotuf+arch at gmail dot com>
 # Contributor: John Schug <xtr.xtrnet@gmail.com>
 pkgname=z88dk
-pkgver=1.99A
+pkgver=1.99B
 #_pkgver=1.99A
 pkgrel=1
 pkgdesc="A small C compiler for the Zilog Z80."
@@ -10,10 +10,10 @@ url="http://z88dk.org"
 license=('custom:The Clarified Artistic License')
 depends=('perl')
 backup=(etc/profile.d/z88dk.sh)
-source=(http://downloads.sourceforge.net/project/z88dk/z88dk/${pkgver}/${pkgname}-src-${pkgver}-1.tgz
+source=(http://downloads.sourceforge.net/project/z88dk/z88dk/${pkgver}/${pkgname}-src-${pkgver}.zip
         fix-build.patch
         z88dk.sh)
-md5sums=('1b70d264bd5b03185894e9e903c15517'
+md5sums=('6412a730d1b38a8ecf393683981a33ae'
          '78871c2414844d5fc812d8994a2e2121'
          'a7d56837ef0cc9fbb05d2e21ddcc335c')
 
@@ -21,7 +21,7 @@ prepare() {
   cd "${srcdir}/${pkgname}"
 
   patch -Np1 < ../fix-build.patch
-  chmod +x config.sh
+  chmod +x config.sh build.sh
 }
 
 build() {
