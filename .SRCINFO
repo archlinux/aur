@@ -1,0 +1,31 @@
+pkgbase = lib32-qtcurve
+	pkgdesc = A configurable set of widget styles for KDE and Gtk
+	pkgver = 1.8.18
+	pkgrel = 2
+	url = https://github.com/QtCurve/qtcurve
+	arch = i686
+	arch = x86_64
+	groups = qtcurve
+	license = LGPL
+	makedepends = cmake
+	makedepends = gcc-multilib
+	makedepends = automoc4
+	makedepends = lib32-gtk2
+	makedepends = lib32-qt4
+	source = qtcurve-1.8.18.tar.gz::https://github.com/QtCurve/qtcurve/archive/1.8.18.tar.gz
+	source = qconfig.h
+	md5sums = 422d1876d944bb278855f320eda19368
+	md5sums = 6b89fb32651dd73d1c02185d23b86186
+
+pkgname = lib32-qtcurve-utils
+	depends = lib32-libx11
+
+pkgname = lib32-qtcurve-gtk2
+	depends = lib32-qtcurve-utils
+	depends = lib32-gtk2
+	depends = qtcurve-gtk2
+
+pkgname = lib32-qtcurve-qt4
+	depends = lib32-qtcurve-utils
+	depends = lib32-qt4
+
