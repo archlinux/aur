@@ -4,7 +4,7 @@
 
 pkgname=greyhole
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Application that uses Samba to create a storage pool of all your available hard drives and allows you to create redundant copies of the files you store, in order to prevent data loss when part of your hardware fails.'
 arch=('x86_64')
 url="https://www.greyhole.net/"
@@ -79,13 +79,17 @@ package() {
         install -m 644 "samba-module/bin/4.3/$_vfs_file" $pkgdir/usr/lib/greyhole/greyhole-samba43.so"
         ln -s "/usr/lib/greyhole/greyhole-samba43.so" $pkgdir/usr/lib/samba/vfs/greyhole.so"
         ;;
+    44 )
+        install -m 644 "samba-module/bin/4.4/$_vfs_file" "$pkgdir/usr/lib/greyhole/greyhole-samba44.so"
+        ln -s "/usr/lib/greyhole/greyhole-samba44.so" "$pkgdir/usr/lib/samba/vfs/greyhole.so"
+        ;;
     45 )
         install -m 644 "samba-module/bin/4.5/$_vfs_file" "$pkgdir/usr/lib/greyhole/greyhole-samba45.so"
         ln -s "/usr/lib/greyhole/greyhole-samba45.so" "$pkgdir/usr/lib/samba/vfs/greyhole.so"
         ;;
     * )
-        echo "Incompatible Samba version: Please see https://github.com/gboudreau/Greyhole/blob/master/INSTALL for manual build directions"
-        echo " You can still install this package, but it will not work until you add a greyhole-samba##.so file to /usr/lib/greyhole/"
+        echo 'Incompatible Samba version: Please see https://github.com/gboudreau/Greyhole/blob/master/INSTALL for manual build directions'
+        echo 'You can still install this package, but it will not work until you add a greyhole-samba.so file to /usr/lib/greyhole/'
         ;;
   esac
 
