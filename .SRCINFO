@@ -1,14 +1,15 @@
 pkgbase = ttf-adobe-song
 	pkgdesc = One fonts of Adobe's AdobeSongStd.L style.
 	pkgver = 5.002
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.adobe.com
 	install = ttf-adobe-song.install
 	arch = any
 	license = unknown
 	depends = fontconfig
-	source = http://gthemes-china.googlecode.com/files/AdobeSongStd.tar.gz
-	md5sums = dfb255e52b55d5ecd2343a5f5465740e
+	noextract = AdobeSongStd.otf
+	source = AdobeSongStd.otf::https://raw.githubusercontent.com/mingchen/mac-osx-chinese-fonts/master/Adobe%20Simple%20Chinese%20Fonts/AdobeSongStd-Light.otf
+	md5sums = ea2acdec4b71f834e158fd260bd15453
 
 pkgname = ttf-adobe-song
 
