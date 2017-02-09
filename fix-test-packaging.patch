@@ -1,0 +1,39 @@
+commit db7fa1fccd586b013cd5fcade3f7692c78df0da7
+Author: Ian Denhardt <ian@zenhack.net>
+Date:   Thu Feb 9 11:49:30 2017 -0500
+
+    Fix the packaging of tests
+    
+    * Include the tests in the sdist
+    * Don't install the test packages if present when running setup.py
+      install.
+    
+    This way installing correctly omits the tests/ subdirectory when
+    installing from a git checkout -- previously this would install a
+    package called "tests" as well. Furthermore, the tests are now included
+    in the sdist, as they should be.
+
+diff --git a/MANIFEST.in b/MANIFEST.in
+index 40c8eef..3b8a375 100644
+--- a/MANIFEST.in
++++ b/MANIFEST.in
+@@ -2,4 +2,5 @@ include COPYING
+ include NEWS
+ include extra/completion/alot-completion.zsh
+ include extra/alot.desktop
+-recursive-exclude tests *
++include tests
++recursive-exclude *
+diff --git a/setup.py b/setup.py
+index a3f6f90..ecfb33a 100755
+--- a/setup.py
++++ b/setup.py
+@@ -11,7 +11,7 @@ setup(name='alot',
+       author_email=alot.__author_email__,
+       url=alot.__url__,
+       license=alot.__copyright__,
+-      packages=find_packages(),
++      packages=find_packages(exclude=['tests*']),
+       package_data={'alot': [
+                              'defaults/alot.rc.spec',
+                              'defaults/notmuch.rc.spec',

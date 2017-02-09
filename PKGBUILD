@@ -5,7 +5,7 @@
 
 pkgname=alot
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="terminal-based MUA for the notmuch mail system"
 arch=(any)
 url="https://github.com/pazz/alot"
@@ -19,7 +19,8 @@ depends=(notmuch
          python2-twisted)
 makedepends=(python2-sphinx)
 options=(!emptydirs)
-source=($pkgname-$pkgver.tar.gz::https://github.com/pazz/$pkgname/archive/$pkgver.tar.gz)
+source=($pkgname-$pkgver.tar.gz::https://github.com/pazz/$pkgname/archive/$pkgver.tar.gz
+	fix-test-packaging.patch)
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -29,6 +30,11 @@ build() {
     # executable can't find the module, so we patch setup.py to fix the
     # dependency:
     sed -i -e 's/python-magic/file-magic/' setup.py
+
+    # Without this, the tests get picked up as part of the final package;
+    # see https://github.com/pazz/alot/pull/1030
+    patch -p1 < ../fix-test-packaging.patch
+
     python2 setup.py build
     make SPHINXBUILD=sphinx-build2 -C docs man html
 }
@@ -45,4 +51,5 @@ package() {
     cp -a docs/build/html/* "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 docs/build/man/alot.1 "$pkgdir/usr/share/man/man1/alot.1"
 }
-md5sums=('6669fa612518f807827ddeee5ed7f0e3')
+md5sums=('6669fa612518f807827ddeee5ed7f0e3'
+         'f9404378ac53423e7eb965ddbec956a4')
