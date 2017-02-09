@@ -25,8 +25,8 @@ PKGEXT=".pkg.tar"
 # To build this package you need to place the mathematica-installer into your startdir
 # If you don't own the installer you can download a trial version at http://www.wolfram.com/mathematica/trial
 
-package() {
-    if df "${pkgdir}" | grep -q tmpfs; then
+prepare() {
+    if df "${srcdir}" | grep -q tmpfs; then
         warning "Building Mathematica takes more than 8GB of space."
         warning "Building in a tmpfs (e.g. /tmp when mounted into RAM) may not work."
     fi
@@ -39,8 +39,9 @@ package() {
     fi
 
     chmod +x ${srcdir}/Mathematica_${pkgver}_LINUX.sh
+}
 
-    echo "Running Mathematica installer"
+package() {
     # https://reference.wolfram.com/language/tutorial/InstallingMathematica.html#650929293
     ${srcdir}/Mathematica_${pkgver}_LINUX.sh -- \
              -execdir=${pkgdir}/usr/bin \
