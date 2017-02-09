@@ -1,13 +1,14 @@
 # Maintainer: Frantisek Fladung <ametisf@gmail.com>
 
 pkgname=dstatus-git
-pkgver=0.0.1.r0.gdc46792
+pkgver=0.0.1.r12.geac3bbf
 pkgrel=1
 pkgdesc="status bar for velox"
 arch=('i686' 'x86_64')
 url="https://github.com/ametisf/dstatus"
 license=('MIT')
 depends=('swc' 'velox')
+makedepends=('tup')
 optdepends=('terminus-font: bitmap font for nicer rendering')
 source=("$pkgname::git+https://github.com/ametisf/dstatus.git")
 md5sums=('SKIP')
@@ -19,10 +20,11 @@ pkgver() {
 
 build() {
     cd $pkgname
-    make ENABLE_DEBUG=0
+    tup init
+    tup upd
 }
 
 package() {
-    cd $pkgname
-    make DESTDIR="$pkgdir" PREFIX=/usr install
+    mkdir -p $pkgdir/usr/bin
+    install -m 755 $pkgname/dstatus $pkgdir/usr/bin
 }

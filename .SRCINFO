@@ -1,11 +1,12 @@
 pkgbase = dstatus-git
 	pkgdesc = status bar for velox
-	pkgver = 0.0.1.r0.gdc46792
+	pkgver = 0.0.1.r12.geac3bbf
 	pkgrel = 1
 	url = https://github.com/ametisf/dstatus
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = tup
 	depends = swc
 	depends = velox
 	optdepends = terminus-font: bitmap font for nicer rendering
