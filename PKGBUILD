@@ -1,22 +1,22 @@
 # Maintainer: Rowan Lewis <rl@nbsp.io>
 
 pkgname=slap
-pkgver=0.1.60
+pkgver=0.1.61
 pkgrel=1
 pkgdesc="Sublime-like terminal-based text editor."
 arch=("x86_64")
 url="https://github.com/slap-editor/$pkgname/"
-depends=('nodejs' 'python2')
+depends=('nodejs-lts-boron')
 makedepends=('npm')
 license=('MIT')
 source=("https://github.com/slap-editor/$pkgname/archive/v${pkgver}.zip")
-sha256sums=('c372766546f1c33fd08fb6c6dc7879f90e529676c8dbfce211b4c67d04ae0b3f')
+sha256sums=('d02e767c786632fc1b9b7fcdad686aa3e6203b22569d636f8c4d5fe52fe983e5')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 
 	msg 'Fetching NPM dependencies...'
-	npm install --python="`which python2`"
+	npm install
 }
 
 package() {
