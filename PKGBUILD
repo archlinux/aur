@@ -17,9 +17,9 @@ options=('!strip')
 source=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/jdk-${_pkgver}_doc-api-spec.tar.gz"
         "http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/javafx-${_pkgver}_doc.zip"
         'LICENSE')
-md5sums=('78d22d1f513e8cc6123b9efd0dd35bf6'
-         '859a225f060761006a2c4f169887e075'
-         'f09947a67691a2d78d20a3885889981c')
+sha256sums=('17f3e38c33500d32c03761150ea2ebed4d742d4d7e5a476e326aec09d28a9fd8'
+            'c31114f28b98294619d90d1b4610ef82c5517eeb0342379af34467ef92600ea8'
+            '5f00ffce28036cf79da41c7fe0e29801e3148597a164ecc69f49e718ae370370')
 
 package_jdk-devel-docs() {
   pkgdesc="Documentation for Oracle Java $_major Development Kit Snapshot"
