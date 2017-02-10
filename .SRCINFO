@@ -1,6 +1,6 @@
 pkgbase = ugene
 	pkgdesc = A free cross-platform genome analysis suite
-	pkgver = 1.25.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = http://ugene.net
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = ugene
 	depends = glu
 	depends = procps-ng
 	depends = python
-	source = ugene-1.25.0.tar.gz::https://github.com/ugeneunipro/ugene/archive/1.25.0.tar.gz
-	sha256sums = 4b592a1a0ff5efba5dbdbee134755d957d132d85b6cedfbf6f7ba4b03bcea5ee
+	source = ugene-1.26.0.tar.gz::https://github.com/ugeneunipro/ugene/archive/1.26.0.tar.gz
+	sha256sums = 2807a1ef5fb24a0d1c382686c388dce438c7d175442a608d2dca21eb8db0fb24
 
 pkgname = ugene
 
