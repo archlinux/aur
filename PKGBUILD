@@ -1,10 +1,10 @@
-# Maintainer:  kjslag <kjslag at gmail dot com>
-# Contributor: Michael Pusterhofer <pusterhofer at student dot tugraz dot at>
-# Contributor: Raphael Scholer <rscholer@gmx.de>
+# Maintainer: Joshua Ellis <josh@jpellis.me>
 # Contributor: Anish Tondwalkar <anish@tjhsst.edu>
 # Contributor: Ghost91 <m_graeb11@cs.uni-kl.de>
+# Contributor: Michael Pusterhofer <pusterhofer at student dot tugraz dot at>
+# Contributor: Raphael Scholer <rscholer@gmx.de>
+# Contributor: kjslag <kjslag at gmail dot com>
 # Contributor: teratomata <teratomat@gmail.com>
-# Contributor: Joshua Ellis <josh@jpellis.me>
 
 pkgname=mathematica
 pkgver=11.0.1
