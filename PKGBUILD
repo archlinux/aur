@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=7.6.beta2.r0.g375d4ee776
+pkgver=7.6.beta3.r0.gbf876cbd5a
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -30,7 +30,7 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'libfes: exhaustive search of solutions for boolean equations' 'python2-pynormaliz: Normaliz backend for polyhedral computations'
   'three.js: alternative 3D plots engine' 'tachyon: alternative 3D plots engine')
 makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhomfly libbraiding
-  mcqd coxeter3 cryptominisat2 modular_decomposition bliss-graphs tdlib python2-pkgconfig meataxe git) # libfes
+  mcqd coxeter3 cryptominisat2 modular_decomposition bliss-graphs tdlib python2-pkgconfig meataxe libfes git)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
         env.patch skip-check.patch cython-sys-path.patch is-package-installed.patch package.patch
         jupyter-path.patch test-optional.patch ecm-7.patch increase-rtol.patch r-no-readline.patch
