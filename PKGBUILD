@@ -43,7 +43,7 @@ install=$pkgname.install
 source=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x86_bin.tar.gz"
         "policytool32-$_jname.desktop"
         'OTN-Early-Adopter-License-Terms.txt')
-sha256sums=('52c21405c3b6a9f041f53a27ec728958b6caeb7f70cfac35386aac5d9995197d'
+sha256sums=('c9ddcd8b8af75007b1b839952311e4d3f2b45886786f103f6d1ce5c93db5dd1c'
             '753adf70afa227029299d37b147c6368e3aa310523e673588d09f4f2ac756097'
             '5f00ffce28036cf79da41c7fe0e29801e3148597a164ecc69f49e718ae370370')
 
