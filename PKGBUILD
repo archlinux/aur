@@ -8,8 +8,8 @@ arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
 license=(custom)
 conflicts=(
-  vmware-systemd-services
   vmware-modules-dkms
+  vmware-systemd-services
 )
 depends=(
   dkms
