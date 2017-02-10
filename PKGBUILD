@@ -2,7 +2,7 @@
 
 pkgname=lean2-git
 #_pkgver=0.2.0
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Lean Theorem Prover 2'
 arch=('x86_64')
