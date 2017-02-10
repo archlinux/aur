@@ -1,0 +1,17 @@
+pkgbase = python-glmnet
+	pkgdesc = A Python port of the glmnet package.
+	pkgver = 1.0.0.r18.g1e63abd
+	pkgrel = 1
+	url = https://github.com/civisanalytics/python-glmnet
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = BSD
+	makedepends = gcc-fortran
+	makedepends = python
+	makedepends = python-numpy
+	source = git+https://github.com/civisanalytics/python-glmnet.git
+	sha256sums = SKIP
+
+pkgname = python-glmnet
+
