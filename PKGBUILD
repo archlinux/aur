@@ -3,8 +3,8 @@
 
 set -u
 pkgname='urbackup2-client-no-gui'
-pkgver='2.0.32'
-pkgrel='1'
+pkgver=2.0.36
+pkgrel=1
 pkgdesc='Client Server backup system'
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
 url='https://www.urbackup.org/'
@@ -26,7 +26,7 @@ source=(
   'defaults_client'
   "${_scripts[@]}"
 )
-sha256sums=('ab23bfa50a8205f426677477877605613616a230078d1f0ecaf5e23579eaacde'
+sha256sums=('e81be8f1fa54db297a180adda46b23e883922037155f9ae30f1320ff02388786'
             'd77fa6ad67141ae5cb4c3c6953783ce54aaaa3c1f2fe5bb28cd20948ddda12c4'
             '18b5eceb73086b86d904f80e9270df121d06d7c683f93c5449a82e7deb38e0ee'
             '334d9eb67a642d96e04874fd27c1b57d578c35b4cdc768d50db7ac2436f0927c'
