@@ -4,9 +4,9 @@
 pkgname=gstreamer0.10
 _pkgname=gstreamer
 pkgver=0.10.36
-pkgrel=11
+pkgrel=12
 pkgdesc="GStreamer Multimedia Framework"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL')
 url='https://gstreamer.freedesktop.org/'
 depends=('libxml2' 'glib2')
