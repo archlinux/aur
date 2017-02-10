@@ -1,5 +1,5 @@
 _npmname=git-run
-_npmver=0.5.2
+_npmver=0.5.3
 pkgname=nodejs-$_npmname # All lowercase
 pkgver=$_npmver
 pkgrel=1
@@ -11,7 +11,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(1edbc7163389067dd9f2c46ab3acff07889f8333)
+sha1sums=(92005049d5514753d53c4f90fd6f2b2b29a8e08c)
 
 package() {
   cd $srcdir
