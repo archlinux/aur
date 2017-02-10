@@ -2,7 +2,7 @@
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 pkgbase=python-debian
 pkgname=('python-debian' 'python2-debian')
-pkgver=0.1.29
+pkgver=0.1.30
 pkgrel=1
 pkgdesc="Python modules to work with Debian-related data formats"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 makedepends=('python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=(http://ftp.debian.org/debian/pool/main/p/$pkgbase/${pkgbase}_$pkgver.tar.xz)
-sha256sums=('932c81517a75fb4a86944b247b136895b08bbb010c28631c25afdf006d8b3373')
+sha256sums=('b90194b72788cd4abb7bcbfee214bc1181a6ace8a6a097b639c9f1464ec862d5')
 
 package_python-debian() {
   depends=(python-chardet python-six)
