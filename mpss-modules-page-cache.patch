@@ -1,17 +1,17 @@
-From 4eaa693c59dfad494e1e560cd1bd6d6ef1e2b9e5 Mon Sep 17 00:00:00 2001
-From: Marcel Huber <marcelhuberfoo@gmail.com>
-Date: Thu, 4 Aug 2016 13:34:10 +0200
-Subject: use newer functions for pages
+From 784943a81e3fe80af4a393ea6112a4f178489ce2 Mon Sep 17 00:00:00 2001
+From: Marcel Huber <marcel.huber@hsr.ch>
+Date: Fri, 10 Feb 2017 09:52:56 +0100
+Subject: use newer functions for get_user_pages
 
 ---
- host/tools_support.c  | 9 +++++++++
- host/vhost/mic_blk.c  | 8 ++++++++
- micscif/micscif_api.c | 8 ++++++++
- micscif/micscif_rma.c | 4 ++++
- 4 files changed, 29 insertions(+)
+ host/tools_support.c  | 12 ++++++++++++
+ host/vhost/mic_blk.c  |  8 ++++++++
+ micscif/micscif_api.c | 12 ++++++++++++
+ micscif/micscif_rma.c |  4 ++++
+ 4 files changed, 36 insertions(+)
 
-diff --git host/tools_support.c host/tools_support.c
-index d9b213d..832caf6 100644
+diff --git mpss-modules/host/tools_support.c mpss-modules/host/tools_support.c
+index 93922f8..ff8efcb 100644
 --- mpss-modules/host/tools_support.c
 +++ mpss-modules/host/tools_support.c
 @@ -64,7 +64,11 @@ mic_unpin_user_pages(struct page **pages, uint32_t nf_pages)
@@ -26,11 +26,14 @@ index d9b213d..832caf6 100644
  			}
  		}
  		kfree(pages);
-@@ -89,8 +93,13 @@ mic_pin_user_pages (void *data, struct page **pages, uint32_t len, int32_t *nf_p
-
+@@ -89,8 +93,16 @@ mic_pin_user_pages (void *data, struct page **pages, uint32_t len, int32_t *nf_p
+ 
  	// pin the user pages; use semaphores on linux for doing the same
  	down_read(&current->mm->mmap_sem);
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,6,0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,9,0)
++	*nf_pages = (int32_t)get_user_pages_remote(current, current->mm,
++			  (uint64_t)data, nr_pages, FOLL_WRITE|FOLL_FORCE, pages, NULL);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4,6,0)
 +	*nf_pages = (int32_t)get_user_pages_remote(current, current->mm,
 +			  (uint64_t)data, nr_pages, PROT_WRITE, 1, pages, NULL);
 +#else
@@ -38,9 +41,9 @@ index d9b213d..832caf6 100644
  			  nr_pages, PROT_WRITE, 1, pages, NULL);
 +#endif
  	up_read(&current->mm->mmap_sem);
-
+ 
  	// compare if the no of final pages is equal to no of requested pages
-diff --git host/vhost/mic_blk.c host/vhost/mic_blk.c
+diff --git mpss-modules/host/vhost/mic_blk.c mpss-modules/host/vhost/mic_blk.c
 index 12bc880..47a0924 100644
 --- mpss-modules/host/vhost/mic_blk.c
 +++ mpss-modules/host/vhost/mic_blk.c
@@ -65,14 +68,14 @@ index 12bc880..47a0924 100644
  	}
  	status = (ret < 0) ? VIRTIO_BLK_S_IOERR : VIRTIO_BLK_S_OK;
  	if (vbio->head != -1) {
-diff --git micscif/micscif_api.c micscif/micscif_api.c
-index 03d6d92..a61454c 100644
+diff --git mpss-modules/micscif/micscif_api.c mpss-modules/micscif/micscif_api.c
+index e13e59d..1c06105 100644
 --- mpss-modules/micscif/micscif_api.c
 +++ mpss-modules/micscif/micscif_api.c
-@@ -1981,7 +1981,11 @@ retry:
+@@ -1981,13 +1981,21 @@ retry:
  			}
  		}
-
+ 
 +#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,6,0)
 +		pinned_pages->nr_pages = get_user_pages_remote(
 +#else
@@ -81,7 +84,17 @@ index 03d6d92..a61454c 100644
  				current,
  				mm,
  				(uint64_t)addr,
-@@ -2007,7 +2011,11 @@ retry:
+ 				nr_pages,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,9,0)
++				FOLL_WRITE,
++#else
+ 				!!(prot & SCIF_PROT_WRITE),
+ 				0,
++#endif
+ 				pinned_pages->pages,
+ 				pinned_pages->vma);
+ 		up_write(&mm->mmap_sem);
+@@ -2007,7 +2015,11 @@ retry:
  				/* Roll back any pinned pages */
  				for (i = 0; i < pinned_pages->nr_pages; i++) {
  					if (pinned_pages->pages[i])
@@ -93,8 +106,8 @@ index 03d6d92..a61454c 100644
  				}
  				prot &= ~SCIF_PROT_WRITE;
  				try_upgrade = false;
-diff --git micscif/micscif_rma.c micscif/micscif_rma.c
-index 520d7bb..3e41407 100644
+diff --git mpss-modules/micscif/micscif_rma.c mpss-modules/micscif/micscif_rma.c
+index 9c6de2e..f0bf6c7 100644
 --- mpss-modules/micscif/micscif_rma.c
 +++ mpss-modules/micscif/micscif_rma.c
 @@ -413,7 +413,11 @@ int micscif_destroy_pinned_pages(struct scif_pinned_pages *pinned_pages)
@@ -109,6 +122,6 @@ index 520d7bb..3e41407 100644
  			}
  		}
  	}
---
-2.9.2
+-- 
+2.11.1
 

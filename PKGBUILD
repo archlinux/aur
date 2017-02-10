@@ -10,17 +10,17 @@ pkgname=(
   mpss-boot-files mpss-flash-files
 )
 pkgdesc="Intel® Manycore Platform Software Stack"
-pkgver=3.7.1
-pkgrel=9
+pkgver=3.8.1
+pkgrel=1
 arch=('x86_64')
 url="https://software.intel.com/en-us/articles/intel-manycore-platform-software-stack-mpss"
 license=('LGPL2.1')
 depends=(dkms python nfs-utils netctl ifplugd)
 makedepends=(asciidoc libarchive)
 source=(
-  http://registrationcenter-download.intel.com/akdlm/irc_nas/9226/mpss-${pkgver}-linux.tar
-  http://registrationcenter-download.intel.com/akdlm/irc_nas/9226/mpss-${pkgver}-k1om.tar
-  http://registrationcenter-download.intel.com/akdlm/irc_nas/9226/mpss-src-${pkgver}.tar
+  http://registrationcenter-download.intel.com/akdlm/irc_nas/11194/mpss-${pkgver}-linux.tar
+  http://registrationcenter-download.intel.com/akdlm/irc_nas/11194/mpss-${pkgver}-k1om.tar
+  http://registrationcenter-download.intel.com/akdlm/irc_nas/11194/mpss-src-${pkgver}.tar
   dkms.conf
   blacklist-mpss.conf
   mpss-daemon.service
@@ -29,7 +29,6 @@ source=(
   mpss-daemon-minimize-modules.patch
   mpss-modules-explicit-coprocessor-build.patch
   mpss-modules-init-indent.patch
-  mpss-modules-rcu-lockup.patch
   mpss-modules-page-cache.patch
   mpss-modules-Makefile.patch
   mpss-gen-symver-map-python3-compat.patch
@@ -39,9 +38,9 @@ source=(
   mpss-micmgmt-whitespace.patch
   mpss-coi-gcc6-compilation.patch
 )
-sha256sums=('3a8d070d7b82d41afa67766db8e3305621643ced1b3f8e2845bf333cdf39b83b'
-            'd73abe69df8f36e6214194fc010877b2ee5ea47e2227acf823d88896804899aa'
-            '4458257ded25dc7b69fa6de49e7ec066d0053ef6be54267bb283dbb4e6eb38c8'
+sha256sums=('812e8a965e83c9e278410f603f21d7427922bd20d6142903aaeb01a14b3403e1'
+            '7373fdef5bdafa3347abac75c0d9c4ae1154e78771a71e14e487c0d8b34d8705'
+            'f23293c73d03baabc066e26b4a0b1701d54c5dab5a63e9b51a437739cca83b1b'
             'a76162c169073060ee3a966e95342f29b3e342c956d29169c10a6dd97e342fa5'
             '42dda3527ed2496b851c0fad6a841f660a0c086ecf742bb4f132308b9e38d913'
             '8fe2d3b0f1374cf74ea9ef1c5ade0a6cdf891cbcd0438420c19da27feef144c7'
@@ -50,8 +49,7 @@ sha256sums=('3a8d070d7b82d41afa67766db8e3305621643ced1b3f8e2845bf333cdf39b83b'
             'b135e8af616fa2404777ae8c689ea97b9ffb73d18036039fd545108b9b9310fc'
             '2169df02b5623c43feb272f2d142472d2d42a089a370a6f33f470aa3dea50603'
             'b1264678b77a3ae64716e507e225fce5cfd1c77ae77d0119071c28cab74d0a97'
-            '3690295e9e24e6a8b42323ca5b2b76f56a3a8f4bdee75b3dfc5a3f01e3f3d1bc'
-            'ace053c75b096c2e120c73076c9a86fcbf1528518761766b9e41e975dc44ae43'
+            'a326ecc6c048a580a393908fa3350427288ec19d8b3fe6fe43ad331e153ec888'
             '565d86b880c0dbdd6c0a37383264175f0e3f74db45efa7dac166191ac129e44c'
             '17791147eef797e4fe161bb08e989685303dbff866d01f2e37335c09e6367688'
             '64d26ff84029d246868f995cf9fd49b20851a671208c3fa474e0fef5216708cd'
