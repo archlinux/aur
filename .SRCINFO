@@ -1,6 +1,6 @@
 pkgbase = mpdcron-git
 	pkgdesc = A 'cron' like program for mpd. It can execute scripts based on mpd's idle events
-	pkgver = v0.3.49.g1dd1618
+	pkgver = v0.3.55.ge49e604
 	pkgrel = 1
 	url = http://alip.github.io/mpdcron/
 	arch = i686

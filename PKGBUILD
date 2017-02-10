@@ -4,12 +4,12 @@
 
 pkgname=mpdcron-git
 _gitname=mpdcron
-pkgver=v0.3.49.g1dd1618
+pkgver=v0.3.55.ge49e604
 pkgrel=1
 pkgdesc="A 'cron' like program for mpd. It can execute scripts based on mpd's idle events"
 arch=('i686' 'x86_64')
 url="http://alip.github.io/mpdcron/"
-license="GPL"
+license=('GPL')
 provides=('mpdcron' 'eugene' 'homescrape' 'walrus')
 depends=('libmpdclient>=2.1' 'libdaemon' 'glib2' 'curl' 'sqlite3')
 makedepends=('git' 'gcc' 'make' 'autoconf')
