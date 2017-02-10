@@ -22,7 +22,7 @@ pkgver() {
 prepare() {
     cd "${srcdir}/${gitname}"
     sed -i 's|/usr/bin/python$|/usr/bin/python2|' configure
-    ./configure --prefix=/usr --libexecdir=/usr/lib
+    ./configure --prefix=/usr --libexecdir=/usr/lib --mandir=/usr/share/man/man1
     echo "LDFLAGSX += -lX11 -lm" >>config.mk
     sed -i 's|/usr/bin/python$|/usr/bin/python2|' repl.py
 }
