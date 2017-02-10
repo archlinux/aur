@@ -1,6 +1,6 @@
 pkgbase = debhelper
 	pkgdesc = A collection of programs that can be used in a debian/rules file to automate common tasks
-	pkgver = 10.2.3
+	pkgver = 10.2.5
 	pkgrel = 1
 	url = http://anonscm.debian.org/cgit/debhelper/debhelper.git/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = debhelper
 	depends = perl>=5.6.0
 	depends = po-debconf
 	optdepends = dh-make
-	source = git://anonscm.debian.org/debhelper/debhelper.git#tag=debian/10.2.3
+	source = git://anonscm.debian.org/debhelper/debhelper.git#tag=debian/10.2.5
 	md5sums = SKIP
 
 pkgname = debhelper
