@@ -1,6 +1,6 @@
 pkgbase = dnf-plugins-core
 	pkgdesc = Core DNF Plugins
-	pkgver = 1.0.0.0.rc1.1
+	pkgver = 1.0.1.1
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/dnf-plugins-core
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = dnf-plugins-core
 	depends = dnf>2.0.0
 	depends = python
 	options = !emptydirs
-	source = https://github.com/rpm-software-management/dnf-plugins-core/archive/dnf-plugins-core-1.0.0-0.rc1.1.tar.gz
-	md5sums = 52fa19872a5468919436ba2b55ce6688
+	source = https://github.com/rpm-software-management/dnf-plugins-core/archive/dnf-plugins-core-1.0.1-1.tar.gz
+	md5sums = 0cc3cc687e160ce76b1d8628be2d4ff0
 
 pkgname = dnf-plugins-core
 
