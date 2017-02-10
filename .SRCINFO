@@ -11,7 +11,7 @@ pkgbase = mpg321
 	depends = libid3tag
 	provides = mpg123
 	conflicts = mpg123
-	source = http://downloads.sourceforge.net/project/mpg321/mpg321/0.3.2/mpg321_0.3.2.orig.tar.gz
+	source = https://downloads.sourceforge.net/mpg321/mpg321_0.3.2.orig.tar.gz
 	sha512sums = f1bead2c11e4cde0f1a87e1b2e3d216ef80c9a5dd8b219841961688d44a5fc63a54b7af07359766fde0b2712ddc5d0a90b20149c3228cb2d70e830e15c8ab234
 
 pkgname = mpg321
