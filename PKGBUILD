@@ -1,8 +1,8 @@
 # Maintainer: Vyacheslav Konovalov <vyachkonovalov@gmail.com>
 
 pkgname=robomongo
-pkgver=0.9.0
-_ref='be655902b469b4a8a2fb4ddab1d4ffb45266e5cf'
+pkgver=1.0.0_rc1
+_ref='6ed27b7b838059667ab48c5a1ee75449d76303c2'
 _pkgname=$pkgname-${_ref}
 _opensslver=1.0.1p
 pkgrel=1
@@ -10,7 +10,7 @@ pkgdesc='Shell-centric cross-platform open source MongoDB management tool'
 arch=('i686' 'x86_64')
 url="https://robomongo.org/"
 license=('GPLv3')
-depends=('qt5-base' 'pcre' 'qjson')
+depends=('qt5-base')
 makedepends=('git' 'scons' 'cmake')
 conflicts=('robomongo-bin')
 source=('git+https://github.com/paralect/robomongo-shell.git#branch=roboshell-v3.2'
@@ -18,7 +18,7 @@ source=('git+https://github.com/paralect/robomongo-shell.git#branch=roboshell-v3
         "ftp://ftp.openssl.org/source/old/1.0.1/openssl-${_opensslver}.tar.gz"
         'robomongo.desktop')
 sha256sums=('SKIP'
-            '9f52b8c47f3fff0fb636ffcd2431b06c0fcbe1e8bf45130cdc789b4bb1d02ddc'
+            '753bdb84aac8b3a7d34967d354cfce5ff2500501f4c43202ff3c5013433a9e47'
             'bd5ee6803165c0fb60bbecbacacf244f1f90d2aa0d71353af610c29121e9b2f1'
             'bdd63f5d4bd35dd865a0164f285d19555e4ecafb2d11d01f67bdb86bd730a13d')
 
