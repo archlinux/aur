@@ -22,7 +22,7 @@ _localmodcfg=
 pkgbase=linux-nvme               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.9
-pkgver=4.9.8
+pkgver=4.9.9
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -47,20 +47,19 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'nvme.patch'
 )
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
-            '8e49bebf2cff105987c06303f0608a49af2e8204088f0f9b29e58a2bf5f56e00'
-            'd53bb9fb309193cbbf88faa28f4cecfc312dbddaa4c2cbf089f2a7ecd56889c0'
-	    'bc4d2e39b4da6eadb508874ecdc2bbffc55cdfff2db8ae590a364c93769775f6'
-	    '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
+            'SKIP'
+            'ec97e3bf8585865d409a804316b276a6b4e4939286de9757f99bfb41cf112078'
+            'SKIP'
+            '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
             '41b9a64542befd2fea170776e8ec22a7d158dd3273633afc9b91662c448cd90a'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-	    '8ba7d5596b65c7705958836ab93ac714dbccdcd7e806be49f667ed427eff3e83'
-	    '88893fcd9612ddda60133670a83153dc44b4b13a8a05f7a4e2173ffbc6973164'
+            '8ba7d5596b65c7705958836ab93ac714dbccdcd7e806be49f667ed427eff3e83'
+            '88893fcd9612ddda60133670a83153dc44b4b13a8a05f7a4e2173ffbc6973164'
             '945de39f2f52c78b4a500ff55c8e062d501cce3b3b739ea14ce76c6c77dc668d'
             'e5b6308dd489f7000a7d418bfdad32c850cd5d193ce9ca97b83515f3ae815413'
-            '14191cd53057be7de90d5d1abb1e86c4a6022f5d8520f6fd30021a587d5ce565'
-)
+            '14191cd53057be7de90d5d1abb1e86c4a6022f5d8520f6fd30021a587d5ce565')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman

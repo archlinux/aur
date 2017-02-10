@@ -1,5 +1,5 @@
 pkgbase = linux-nvme
-	pkgver = 4.9.8
+	pkgver = 4.9.9
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
