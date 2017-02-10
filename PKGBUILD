@@ -3,7 +3,7 @@
 
 pkgname=firefox-wayland-git
 pkgver=ea5f69b51549
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -101,7 +101,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd "gecko-dev"
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
 
   install -Dm644 ../vendor.js "$pkgdir/usr/lib/firefox/browser/defaults/preferences/vendor.js"
