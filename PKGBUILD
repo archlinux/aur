@@ -2,8 +2,8 @@
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 
 pkgbase=linux-vfio
-_srcname=linux-4.8
-pkgver=4.8.13
+_srcname=linux-4.9
+pkgver=4.9.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -21,24 +21,22 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-pci-Enable-overrides-for-missing-ACS-capabilities-4..patch'
-        '0001-i915-Add-module-option-to-support-VGA-arbiter-on-HD-.patch'
-        'fix_race_condition_in_packet_set_ring.diff'
-        'net_handle_no_dst_on_skb_in_icmp6_send.patch'
+        'add-acs-overrides.patch'
+        'i915-vga-arbiter.patch'
+        '0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch'
         )
-sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
+sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'f0e2f7f738e1a639956e01ba7ef8d3df40ecb5c7586eb366bcd4af70049a7a3c'
+            'd53bb9fb309193cbbf88faa28f4cecfc312dbddaa4c2cbf089f2a7ecd56889c0'
             'SKIP'
-            '01dd9e64e4d5c2188fcbb5a48375c987b16f28f383fb42559a34e1a2c5a8ef2a'
-            '4111ac3a567c2fccd56368c36dad29753c0df4eae721b4a475bae20dae76855a'
+            'b5c2a685667a884477904c9fb337d944667b6144720ac2a67d1116f711e70768'
+            'ab6c0fab5b147fab9ccef90c62b963510e92fbd068a6a33b9619537243fedca4'
             '8f407ad5ff6eff106562ba001c36a281134ac9aa468a596aea660a4fe1fd60b5'
             '99d0102c8065793096b8ea2ccc01c41fa3dcb96855f9f6f2c583b2372208c6f9'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'd36c589e3866535a9ac92911be64795967a05a6d300cc8b70abb79ea24b7b393'
-            '97c6eaff4dfd2059835351afa9466b43569f3eb45f6c57094f57a3f3fad7ec85'
-            '68067f9be72c0b7d0fe78f00514ad12cab597bfd63083ff4d9d2745c8bd3b616'
-            '144bb67184d7e1fda1a254b5364f72465e3070179713071c72c18618e7b6218a')
+            'a8337dc3d4ae977be091d2cfe9edb5769b9548c78ed67ebd6ab03029059c9e49'
+            '3e955e0f1aae96bb6c1507236adc952640c9bd0a134b9995ab92106a33dc02d9')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -52,12 +50,10 @@ prepare() {
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
 
-  # fix a race condition that allows to gain root
-  # https://marc.info/?l=linux-netdev&m=148054660230570&w=2
-  patch -p1 -i "${srcdir}/fix_race_condition_in_packet_set_ring.diff"
-
-  # https://bugzilla.kernel.org/show_bug.cgi?id=189851
-  patch -p1 -i "${srcdir}/net_handle_no_dst_on_skb_in_icmp6_send.patch"
+  # Revert a commit that causes memory corruption in i686 chroots on our
+  # build server ("valgrind bash" immediately crashes)
+  # https://bugzilla.kernel.org/show_bug.cgi?id=190061
+  patch -Rp1 -i "${srcdir}/0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -75,11 +71,11 @@ prepare() {
 
   # patches for vga arbiter fix in intel systems
   echo '==> Applying i915 VGA arbitration patch'
-  patch -p1 -i "${srcdir}/0001-i915-Add-module-option-to-support-VGA-arbiter-on-HD-.patch"
+  patch -p1 -i "${srcdir}/i915-vga-arbiter.patch"
 
   # Overrides for missing acs capabilities
   echo '==> Applying ACS override patch'
-  patch -p1 -i "${srcdir}/0001-pci-Enable-overrides-for-missing-ACS-capabilities-4..patch"
+  patch -p1 -i "${srcdir}/add-acs-overrides.patch"
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
