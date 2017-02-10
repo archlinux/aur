@@ -4,7 +4,7 @@
 pkgname=gstreamer0.10-ffmpeg
 _pkgname=gst-ffmpeg
 pkgver=0.10.13
-pkgrel=8
+pkgrel=9
 pkgdesc="Gstreamer FFMpeg Plugin"
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
@@ -22,10 +22,10 @@ build() {
   make
 }
 
-check() {
-  cd $_pkgname
-  make check
-}
+# check() {
+#   cd $_pkgname
+#   make check
+# }
 
 package() {
   cd $_pkgname
