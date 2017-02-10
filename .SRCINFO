@@ -2,7 +2,7 @@ pkgbase = lean2-git
 	pkgdesc = Lean Theorem Prover 2
 	pkgver = 0.2.1
 	pkgrel = 1
-	url = https://github.com/leanprover/lean2
+	url = https://github.com/Bolt64/lean2
 	arch = x86_64
 	license = Apache
 	makedepends = git
@@ -14,7 +14,7 @@ pkgbase = lean2-git
 	depends = lua>=5.2
 	optdepends = emacs: emacs mode
 	conflicts = lean-bin
-	source = lean2-git::git+https://github.com/leanprover/lean2.git
+	source = lean2-git::git+https://github.com/Bolt64/lean2
 	md5sums = SKIP
 
 pkgname = lean2-git
