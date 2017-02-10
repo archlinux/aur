@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer: edscott@imp.mx
 # Contributor: 
 
 pkgname=mingw-w64-dbh
@@ -10,14 +10,17 @@ license=('GPL')
 arch=('any')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'mingw-w64-gettext')
-source=("https://sourceforge.net/projects/dbh/files/dbh/${pkgver}/libdbh2-${pkgver}.tar.gz/download")
+source=("https://sourceforge.net/projects/dbh/files/dbh/${pkgver}/libdbh2-${pkgver}.tar.gz/download"
+        0001-remove-lrt.patch)
 options=('staticlibs' '!buildflags' '!strip')
-md5sums=('b06b504b694e5182f855d642e7dd31af')
+md5sums=('b06b504b694e5182f855d642e7dd31af'
+        '71f85b3c840b9714366283dd6a87be64')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/libdbh2-${pkgver}"
 
+  patch -N -i ../0001-remove-lrt.patch
   autoreconf -vfi
 }
 

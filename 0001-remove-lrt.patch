@@ -1,0 +1,9 @@
+--- dbh2.pc.in	2014-08-06 12:31:27.000000000 -0500
++++ dbh2.pc.in.new	2017-02-10 13:49:58.000000000 -0600
+@@ -7,5 +7,5 @@
+ Description: Diskbased Hashtables
+ Requires: @GLIB_DEPENDS@
+ Version: @VERSION@
+-Libs:   -ldbh -lm @PTHREAD_LIBS@ -lrt
++Libs:   -ldbh -lm @PTHREAD_LIBS@
+ Cflags: -I${includedir} @PTHREAD_CFLAGS@
