@@ -7,7 +7,8 @@ url="http://code.google.com/p/eggwm/"
 arch=('i686' 'x86_64')
 license=("GPL3")
 depends=('qt4')
-source=(http://$pkgname.googlecode.com/files/$pkgname-$pkgver.tar.gz)
+#source=(http://$pkgname.googlecode.com/files/$pkgname-$pkgver.tar.gz)
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/eggwm/eggwm-$pkgver.tar.gz)
 md5sums=('3442e56d9a78a44c349f9e83f15c8eac')
 
 build() {
