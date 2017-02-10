@@ -1,10 +1,11 @@
 pkgbase = gstreamer0.10-python
 	pkgdesc = Python bindings for GStreamer 0.10
 	pkgver = 0.10.22
-	pkgrel = 4
+	pkgrel = 5
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = LGPL
 	makedepends = pkgconfig
 	depends = pygobject>=2.20.0

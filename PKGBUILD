@@ -4,9 +4,9 @@
 pkgname=gstreamer0.10-python
 _pkgname=gst-python
 pkgver=0.10.22
-pkgrel=4
+pkgrel=5
 pkgdesc="Python bindings for GStreamer 0.10"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL')
 url="http://gstreamer.freedesktop.org/"
 depends=('pygobject>=2.20.0' 'gstreamer0.10-base>=0.10.36-3')
