@@ -3,14 +3,14 @@
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
 
 pkgname=linux-libre-firmware
-_pkgver=4.8-gnu
+_pkgver=4.9-gnu
 
 _srcname=linux-${_pkgver%-*}
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc='Firmware files for Linux-libre'
 arch=('any')
-url='http://linux-libre.fsfla.org/'
+url='https://linux-libre.fsfla.org/'
 license=('GPL2')
 depends=('ath9k-htc-firmware' 'openfwwf')
 provides=('linux-firmware')
@@ -42,9 +42,9 @@ replaces=('linux-firmware'
           'rt2x00-rt61-fw'
           'rt2x00-rt71w-fw'
           'amd-ucode')
-source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/linux-libre-${_pkgver}.tar.xz"
-        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/linux-libre-${_pkgver}.tar.xz.sign")
-sha256sums=('d54e0f8a27e24f3666c19b395c19dba194635db26929c89e78ffa4b2b0e8ca3a'
+source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/linux-libre-${_pkgver}.tar.xz"
+        "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/linux-libre-${_pkgver}.tar.xz.sign")
+sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
