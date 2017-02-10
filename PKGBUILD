@@ -43,10 +43,10 @@ source=("policytool-$_jname.desktop"
         'OTN-Early-Adopter-License-Terms.txt')
 source_i686=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x86_bin.tar.gz")
 source_x86_64=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x64_bin.tar.gz")
-md5sums=('855a74ddead31f8b30943ac1a7d3a7a6'
-         'f09947a67691a2d78d20a3885889981c')
-md5sums_i686=('ad79167f2753a7b1ebe39a2582b9a7e9')
-md5sums_x86_64=('79ebdfc6a94542409b4f5aa1ea8a5c1c')
+sha256sums=('82679f86f9ac4502710fd2563d68e28cc23de8a60f19921d4e53e362d798984e'
+            '5f00ffce28036cf79da41c7fe0e29801e3148597a164ecc69f49e718ae370370')
+sha256sums_i686=('52c21405c3b6a9f041f53a27ec728958b6caeb7f70cfac35386aac5d9995197d')
+sha256sums_x86_64=('cde1625235fae0daf42cd93dd699ec50ea4d32e402330b0a69c1eb13ffc21fce')
 
 package() {
     cd ${_pkgname}-${_major}
