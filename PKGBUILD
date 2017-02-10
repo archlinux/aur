@@ -45,8 +45,8 @@ source_i686=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/b
 source_x86_64=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/${_pkgname}-${_pkgver}-ea+${_build}_linux-x64_bin.tar.gz")
 sha256sums=('82679f86f9ac4502710fd2563d68e28cc23de8a60f19921d4e53e362d798984e'
             '5f00ffce28036cf79da41c7fe0e29801e3148597a164ecc69f49e718ae370370')
-sha256sums_i686=('52c21405c3b6a9f041f53a27ec728958b6caeb7f70cfac35386aac5d9995197d')
-sha256sums_x86_64=('cde1625235fae0daf42cd93dd699ec50ea4d32e402330b0a69c1eb13ffc21fce')
+sha256sums_i686=('c9ddcd8b8af75007b1b839952311e4d3f2b45886786f103f6d1ce5c93db5dd1c')
+sha256sums_x86_64=('a735654e9e8c7b36b0b6ada22f7d2a0316baa7b4a10aece3073e2b64df3cb2f5')
 
 package() {
     cd ${_pkgname}-${_major}
