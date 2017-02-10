@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=dcrspy
-pkgver=20161127
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Decred data monitor"
 arch=('i686' 'x86_64')
@@ -10,23 +10,20 @@ groups=('decred')
 url="https://github.com/chappjc/dcrspy"
 license=('ISC')
 options=('!strip' '!emptydirs')
-source=(git+https://github.com/chappjc/dcrspy)
-sha256sums=('SKIP')
-
-pkgver() {
-  cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short | sed "s|-||g"
-}
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/chappjc/$pkgname/tar.gz/v$pkgver)
+sha256sums=('9d52f28e5a53fdda868d6910ca0ec7fda7e74c5a22bd0b5ed276fc8e64afab74')
 
 prepare() {
   export GOPATH="$srcdir"
-  git clone "$srcdir/dcrspy" "$GOPATH/src/github.com/chappjc/dcrspy"
+  mkdir -p "$GOPATH/src/github.com/chappjc"
+  cp -dpr --no-preserve=ownership "$srcdir/dcrspy-$pkgver" \
+    "$GOPATH/src/github.com/chappjc/dcrspy"
 }
 
 build() {
   export GOPATH="$srcdir"
 
-  msg2 'Building dcrd and dependencies...'
+  msg2 'Building dcrspy and dependencies...'
   cd "$GOPATH/src/github.com/chappjc/dcrspy"
   glide install
   go install $(glide novendor)
