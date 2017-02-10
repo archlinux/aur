@@ -1,7 +1,7 @@
 gitname=fbpanel
 pkgname="$gitname-git"
 pkgver=44.478754b
-pkgrel=1
+pkgrel=2
 pkgdesc="NetWM compliant desktop panel (git)"
 license=(GPL)
 arch=(i686 x86_64)
