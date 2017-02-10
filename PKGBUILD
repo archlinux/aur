@@ -48,7 +48,7 @@ source=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binari
         "jvisualvm32-$_jname.desktop"
         "policytool32-$_jname.desktop"
         'OTN-Early-Adopter-License-Terms.txt')
-sha256sums=('c9ddcd8b8af75007b1b839952311e4d3f2b45886786f103f6d1ce5c93db5dd1c'
+sha256sums=('52c21405c3b6a9f041f53a27ec728958b6caeb7f70cfac35386aac5d9995197d'
             '4699009a941791cc82e6bcc85e80365b4c5b10f217e5f023a84f917abbe98ae1'
             '082c7594570133117e06f2b3a74c9e40ecea89384ab874fa1ef111e1c998302e'
             '653729575c23d7faaef6bb106fdc4889e9a2240723540ad92a74bf1972367faf'
