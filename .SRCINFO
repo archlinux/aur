@@ -1,127 +1,7 @@
 pkgbase = receitanet
 	pkgdesc = Programa Oficial da Receita para envio do IRPF
-	pkgver = 1.07
-	pkgrel = 4
-	url = http://www.receita.fazenda.gov.br
-	install = receitanet.install
-	arch = any
-	license = custom
-	depends = jre8-openjdk
-	depends = hicolor-icon-theme
-	depends = desktop-file-utils
-	source = http://www.receita.fazenda.gov.br/publico/programas/receitanet/receitanet-1.07-1.noarch.rpm
-	source = Copyright
-	source = receitanet.install
-	md5sums = 8c1d9e034f5a8bf87261aca9899256f2
-	md5sums = 0482abdccc0286f64ed66981fcca8975
-	md5sums = 9ffa35004b1cb3e108bb4221d630fc47
-
-pkgname = receitanet
-
-pkgbase = receitanet
-	pkgdesc = Programa Oficial da Receita para envio do IRPF
-	pkgver = 1.07
-	pkgrel = 5
-	url = http://www.receita.fazenda.gov.br
-	install = receitanet.install
-	arch = any
-	license = custom
-	depends = jre8-openjdk
-	depends = hicolor-icon-theme
-	depends = desktop-file-utils
-	source = http://www.receita.fazenda.gov.br/publico/programas/receitanet/receitanet-1.07-1.noarch.rpm
-	source = Copyright
-	source = receitanet.install
-	md5sums = 8c1d9e034f5a8bf87261aca9899256f2
-	md5sums = 0482abdccc0286f64ed66981fcca8975
-	md5sums = 17eef2df7ac4d55d1a7fd436ca89a6fc
-
-pkgname = receitanet
-
-pkgbase = receitanet
-	pkgdesc = Programa Oficial da Receita para envio do IRPF
-	pkgver = 1.07
-	pkgrel = 6
-	url = http://www.receita.fazenda.gov.br
-	install = receitanet.install
-	arch = any
-	license = custom
-	depends = jre8-openjdk
-	depends = hicolor-icon-theme
-	depends = desktop-file-utils
-	source = http://www.receita.fazenda.gov.br/publico/programas/receitanet/receitanet-1.07-1.noarch.rpm
-	source = Copyright
-	source = receitanet.install
-	md5sums = 8c1d9e034f5a8bf87261aca9899256f2
-	md5sums = 0482abdccc0286f64ed66981fcca8975
-	md5sums = 17eef2df7ac4d55d1a7fd436ca89a6fc
-
-pkgname = receitanet
-
-pkgbase = receitanet
-	pkgdesc = Programa Oficial da Receita para envio do IRPF
-	pkgver = 1.07
-	pkgrel = 6
-	url = http://www.receita.fazenda.gov.br
-	install = receitanet.install
-	arch = any
-	license = custom
-	depends = jre8-openjdk
-	depends = hicolor-icon-theme
-	depends = desktop-file-utils
-	source = http://www.receita.fazenda.gov.br/publico/programas/receitanet/receitanet-1.07-1.noarch.rpm
-	source = Copyright
-	source = receitanet.install
-	md5sums = 8c1d9e034f5a8bf87261aca9899256f2
-	md5sums = 0482abdccc0286f64ed66981fcca8975
-	md5sums = 17eef2df7ac4d55d1a7fd436ca89a6fc
-
-pkgname = receitanet
-
-pkgbase = receitanet
-	pkgdesc = Programa Oficial da Receita para envio do IRPF
-	pkgver = 1.07
-	pkgrel = 7
-	url = http://www.receita.fazenda.gov.br
-	install = receitanet.install
-	arch = any
-	license = custom
-	depends = jre8-openjdk
-	depends = hicolor-icon-theme
-	depends = desktop-file-utils
-	source = http://www.receita.fazenda.gov.br/publico/programas/receitanet/receitanet-1.07-1.noarch.rpm
-	source = Copyright
-	source = receitanet.install
-	md5sums = 8c1d9e034f5a8bf87261aca9899256f2
-	md5sums = 0482abdccc0286f64ed66981fcca8975
-	md5sums = 17eef2df7ac4d55d1a7fd436ca89a6fc
-
-pkgname = receitanet
-
-pkgbase = receitanet
-	pkgdesc = Programa Oficial da Receita para envio do IRPF
-	pkgver = 1.07
-	pkgrel = 7
-	url = http://www.receita.fazenda.gov.br
-	install = receitanet.install
-	arch = any
-	license = custom
-	depends = jre8-openjdk
-	depends = hicolor-icon-theme
-	depends = desktop-file-utils
-	source = http://www.receita.fazenda.gov.br/publico/programas/receitanet/receitanet-1.07-1.noarch.rpm
-	source = Copyright
-	source = receitanet.install
-	md5sums = 8c1d9e034f5a8bf87261aca9899256f2
-	md5sums = 0482abdccc0286f64ed66981fcca8975
-	md5sums = 339dcd1387350f6eb9ebb9f944f6b616
-
-pkgname = receitanet
-
-pkgbase = receitanet
-	pkgdesc = Programa Oficial da Receita para envio do IRPF
-	pkgver = 1.07
-	pkgrel = 8
+	pkgver = 1.09
+	pkgrel = 1
 	url = http://www.receita.fazenda.gov.br
 	install = receitanet.install
 	arch = any
@@ -129,10 +9,10 @@ pkgbase = receitanet
 	depends = java-runtime=8
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	source = http://www.receita.fazenda.gov.br/publico/programas/receitanet/receitanet-1.07-1.noarch.rpm
+	source = http://www.receita.fazenda.gov.br/publico/programas/receitanet/receitanet-1.09-1.noarch.rpm
 	source = Copyright
 	source = receitanet.install
-	md5sums = 8c1d9e034f5a8bf87261aca9899256f2
+	md5sums = ac01c9b1ee0ec50fc5f7d1e27bfb90c4
 	md5sums = 0482abdccc0286f64ed66981fcca8975
 	md5sums = 339dcd1387350f6eb9ebb9f944f6b616
 

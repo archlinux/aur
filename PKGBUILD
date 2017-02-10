@@ -2,19 +2,19 @@
 
 
 pkgname=receitanet
-pkgver=1.07
-pkgrel=8
+pkgver=1.09
+pkgrel=1
 license=('custom')
 
 arch=(any)
 pkgdesc='Programa Oficial da Receita para envio do IRPF'
 url='http://www.receita.fazenda.gov.br'
 
-source=(http://www.receita.fazenda.gov.br/publico/programas/receitanet/receitanet-1.07-1.noarch.rpm
+source=(http://www.receita.fazenda.gov.br/publico/programas/receitanet/receitanet-1.09-1.noarch.rpm
         Copyright
         $pkgname.install)
         
-md5sums=('8c1d9e034f5a8bf87261aca9899256f2'
+md5sums=('ac01c9b1ee0ec50fc5f7d1e27bfb90c4'
          '0482abdccc0286f64ed66981fcca8975'
          '339dcd1387350f6eb9ebb9f944f6b616')
 
