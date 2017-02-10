@@ -1,12 +1,12 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neateqn-git
-pkgver=r83.2561c5e
+pkgver=r87.592804e
 pkgrel=1
 epoch=
 pkgdesc="An eqn preprocessor for neatroff."
 arch=('i686' 'x86_64')
 url="http://litcave.rudi.ir/"
-license=('custom:BSD')
+license=('ISC')
 groups=()
 depends=('neatroff-git')
 makedepends=('git')
