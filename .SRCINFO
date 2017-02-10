@@ -1,6 +1,6 @@
 pkgbase = dnf-plugins-extras
 	pkgdesc = Extras DNF Plugins
-	pkgver = 0.10.0.rc1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/dnf-plugins-extras
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = dnf-plugins-extras
 	backup = etc/dnf/plugins/torproxy.conf
 	backup = etc/dnf/plugins/versionlock.conf
 	backup = etc/dnf/plugins/versionlock.list
-	source = https://github.com/rpm-software-management/dnf-plugins-extras/archive/0.10.0-rc1/dnf-plugins-extras-0.10.0-rc1.tar.gz
-	md5sums = 3eab757ba60b7fcf6ad4ecc42fc38fcc
+	source = https://github.com/rpm-software-management/dnf-plugins-extras/archive/0.10.0/dnf-plugins-extras-0.10.0.tar.gz
+	md5sums = e8582383dd7fa7c7cfaa0703fd89000f
 
 pkgname = dnf-plugins-extras
 

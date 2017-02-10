@@ -1,6 +1,5 @@
 pkgname=dnf-plugins-extras
-_pkgver=0.10.0-rc1
-pkgver=0.10.0.rc1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Extras DNF Plugins"
 arch=('any')
@@ -18,12 +17,10 @@ backup=('etc/dnf/plugins/local.conf'
         'etc/dnf/plugins/versionlock.conf'
         'etc/dnf/plugins/versionlock.list')
 options=(!emptydirs)
-source=("$url/archive/$_pkgver/$pkgname-$_pkgver.tar.gz")
-md5sums=('3eab757ba60b7fcf6ad4ecc42fc38fcc')
+source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+md5sums=('e8582383dd7fa7c7cfaa0703fd89000f')
 
 prepare() {
-	mv "$pkgname-$_pkgver" "$pkgname-$pkgver"
-
 	cd "$pkgname-$pkgver"
 	rm -rf build
 	mkdir build
