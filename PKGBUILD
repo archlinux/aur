@@ -8,16 +8,16 @@ arch=('any')
 url="https://github.com/fboender/jsonxs"
 license=('MIT')
 depends=('python2')
-source=("https://github.com/fboender/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('b407bd6d449d4d0eefd2ad7b9afada178337dbe4512253cb5b5ece3a6eb602daf88022000dc8555e0e244de926a899c6a2654b7f7c0b6999b3ffb639f21b2e1d')
+source=("https://github.com/fboender/jsonxs/releases/download/${pkgver}/jsonxs-${pkgver}.tar.gz")
+sha512sums=('af61e5d25b51b819f191ff2a70c11bbcb34d3a256d4f2744bbd76d88ccda6daf537c97e1822b610a0fca5b9d870839bf497969ec04ce0049dad3171e5ce9d9fb')
 
 build() {
-    cd $srcdir/${pkgname}-${pkgver}
+    cd $srcdir/jsonxs-${pkgver}
     python2 setup.py build
 }
 
 package() {
-    cd $srcdir/${pkgname}-${pkgver}
+    cd $srcdir/jsonxs-${pkgver}
     python2 setup.py install --root="$pkgdir" --optimize=1
 }
 
