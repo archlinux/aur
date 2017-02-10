@@ -5,7 +5,7 @@
 # Contributor: Ricardo <rikardo.horo@gmail.com>
 
 pkgname=gromacs
-pkgver=2016.1
+pkgver=2016.2
 pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
@@ -15,7 +15,7 @@ depends=('blas' 'lapack' 'cblas' 'zlib' 'hwloc' 'libx11' 'gcc5')
 makedepends=('cmake')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/${pkgname}-${pkgver}.tar.gz)
-sha1sums=('2d6d80e13dad28fe5bd222785c1658a698f6ae47')
+sha1sums=('59fd8a8a6b9fc798577c745638a5d3a447a3d2a0')
 
 #With gcc5 currently there are less errors in the tests
 # also the compilation is possible in cuda capable machines
