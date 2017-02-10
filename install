@@ -1,7 +1,7 @@
 post_install() {
   fc-cache -s > /dev/null
-  mkfontscale usr/share/fonts/TTF
-  mkfontdir usr/share/fonts/TTF
+  mkfontscale usr/share/fonts/local
+  mkfontdir usr/share/fonts/local
 }
 
 post_upgrade() {
