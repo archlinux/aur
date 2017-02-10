@@ -1,0 +1,18 @@
+pkgbase = 3270-fonts
+	pkgdesc = A font for the nostalgic from a 3270 series terminal.
+	pkgver = 490.790cd75
+	pkgrel = 1
+	url = https://github.com/rbanffy/3270font
+	install = install
+	arch = any
+	license = BSD
+	makedepends = fontforge
+	depends = xorg-fonts-encodings
+	depends = xorg-fonts-alias
+	depends = xorg-font-utils
+	depends = fontconfig
+	source = git://github.com/rbanffy/3270font.git
+	md5sums = SKIP
+
+pkgname = 3270-fonts
+
