@@ -1,28 +1,28 @@
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 pkgname=reportbug
-pkgver=6.6.6
-pkgrel=2
+pkgver=7.1.4
+pkgrel=1
 pkgdesc="report bugs in the Debian distribution + python modules"
 arch=('any')
 url="http://packages.debian.org/sid/reportbug"
 license=('MIT')
-depends=('python2-debian' 'python2-debianbts' 'apt'
+depends=('python-debian' 'python-debianbts' 'python-requests' 'apt'
 'sensible-utils')
-provides=("python2-reportbug=$pkgver")
-conflicts=('python2-reportbug')
+provides=("python-reportbug=$pkgver")
+conflicts=('python-reportbug')
 options=(!emptydirs)
 backup=('etc/reportbug.conf')
 source=(http://ftp.debian.org/debian/pool/main/r/$pkgname/${pkgname}_$pkgver.tar.bz2)
-sha256sums=('d9667bde27f8a275a96c200dd7492fd4318ca3924c86abcd4413d95eb2261e35')
+sha256sums=('3a4f0366ee7885408a07c24e6067d4e6ed6990ba6d57494226c916dc43fe27c8')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="$pkgdir/" --optimize=1
   mkdir -p $pkgdir/usr/share/man/man1/ $pkgdir/usr/share/man/man5/
   install -m644 -t $pkgdir/usr/share/man/man1/ man/*.1
   install -m644 -t $pkgdir/usr/share/man/man5/ man/*.5
