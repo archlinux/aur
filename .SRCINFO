@@ -1,0 +1,14 @@
+pkgbase = refind-black-git
+	pkgdesc = Minimalistic, flat, black and white theme for rEFInd.
+	pkgver = r2.3a2a9d9
+	pkgrel = 1
+	url = https://github.com/anthon38/refind-black
+	arch = any
+	license = none
+	makedepends = git
+	depends = refind-efi
+	source = git+https://github.com/anthon38/refind-black.git
+	md5sums = SKIP
+
+pkgname = refind-black-git
+
