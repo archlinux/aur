@@ -1,0 +1,15 @@
+## arg 1:  the new package version
+post_install() {
+        echo "--"
+        echo "  You may have to enable and start pcscd (pcsclite) service, e.g."
+        echo "  $ systemctl enable pcscd"
+	echo "  $ systemctl start pcscd"
+        echo "--"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+        post_install
+}
+
