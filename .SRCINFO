@@ -37,9 +37,9 @@ pkgbase = bin32-jre-devel
 	source = http://www.java.net/download/java/jdk9/archive/156/binaries/jre-9-ea+156_linux-x86_bin.tar.gz
 	source = policytool32-jre9.desktop
 	source = OTN-Early-Adopter-License-Terms.txt
-	md5sums = ad79167f2753a7b1ebe39a2582b9a7e9
-	md5sums = 643277e142823bf695b0a6327d3ef963
-	md5sums = f09947a67691a2d78d20a3885889981c
+	sha256sums = 52c21405c3b6a9f041f53a27ec728958b6caeb7f70cfac35386aac5d9995197d
+	sha256sums = 753adf70afa227029299d37b147c6368e3aa310523e673588d09f4f2ac756097
+	sha256sums = 5f00ffce28036cf79da41c7fe0e29801e3148597a164ecc69f49e718ae370370
 
 pkgname = bin32-jre-devel
 
