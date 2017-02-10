@@ -1,0 +1,438 @@
+diff --git a/vmblock/Makefile b/vmblock/Makefile
+index bbfe225..8ec1a86 100644
+--- a/vmblock/Makefile
++++ b/vmblock/Makefile
+@@ -43,7 +43,11 @@ INCLUDE      += -I$(SRCROOT)/shared
+ endif
+ 
+ 
++ifdef KVERSION
++VM_UNAME = $(KVERSION)
++else
+ VM_UNAME = $(shell uname -r)
++endif
+ 
+ # Header directory for the running kernel
+ ifdef LINUXINCLUDE
+diff --git a/vmblock/Makefile.kernel b/vmblock/Makefile.kernel
+index ab7a727..e3ec9d2 100644
+--- a/vmblock/Makefile.kernel
++++ b/vmblock/Makefile.kernel
+@@ -19,7 +19,7 @@
+ 
+ INCLUDE += -I$(SRCROOT)/include
+ 
+-EXTRA_CFLAGS := $(CC_OPTS) $(INCLUDE)
++EXTRA_CFLAGS := $(CC_OPTS) $(INCLUDE) $(LINUXINCLUDE)
+ 
+ EXTRA_CFLAGS += $(call vm_check_build, $(AUTOCONF_DIR)/cachecreate.c, -DVMW_KMEMCR_HAS_DTOR, )
+ EXTRA_CFLAGS += $(call vm_check_build, $(AUTOCONF_DIR)/cachector.c,   -DVMW_KMEMCR_CTOR_HAS_3_ARGS, )
+diff --git a/vmblock/linux/control.c b/vmblock/linux/control.c
+index 79716bd..5b6acb2 100644
+--- a/vmblock/linux/control.c
++++ b/vmblock/linux/control.c
+@@ -208,9 +208,17 @@ SetupProcDevice(void)
+    VMBlockSetProcEntryOwner(controlProcMountpoint);
+ 
+    /* Create /proc/fs/vmblock/dev */
++   // create_proc_entry deprecated in 3.10
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,10,0)
++   controlProcEntry = proc_create(VMBLOCK_CONTROL_DEVNAME,
++                                  VMBLOCK_CONTROL_MODE,
++                                  controlProcDirEntry,
++                                  &ControlFileOps);
++#else
+    controlProcEntry = create_proc_entry(VMBLOCK_CONTROL_DEVNAME,
+                                         VMBLOCK_CONTROL_MODE,
+                                         controlProcDirEntry);
++#endif
+    if (!controlProcEntry) {
+       Warning("SetupProcDevice: could not create " VMBLOCK_DEVICE "\n");
+       remove_proc_entry(VMBLOCK_CONTROL_MOUNTPOINT, controlProcDirEntry);
+@@ -218,7 +226,9 @@ SetupProcDevice(void)
+       return -EINVAL;
+    }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0) //Maybe 3.14? 3.13?
+    controlProcEntry->proc_fops = &ControlFileOps;
++#endif
+    return 0;
+ }
+ 
+@@ -272,17 +282,50 @@ CleanupProcDevice(void)
+  *----------------------------------------------------------------------------
+  */
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 13, 0)
++/* copy-paste from Lustre FS by pavlinux */
++static inline char *ll_getname(const char __user *filename)
++{
++       int ret = 0, len;
++       char *tmp = __getname();
++
++       if (!tmp)
++               return ERR_PTR(-ENOMEM);
++
++       len = strncpy_from_user(tmp, filename, PATH_MAX);
++       if (len == 0)
++               ret = -ENOENT;
++       else if (len > PATH_MAX)
++               ret = -ENAMETOOLONG;
++
++       if (ret) {
++               __putname(tmp);
++               tmp =  ERR_PTR(ret);
++       }
++       return tmp;
++};
++#endif
++
+ static int
+ ExecuteBlockOp(const char __user *buf,                // IN: buffer with name
+                const os_blocker_id_t blocker,         // IN: blocker ID (file)
+                int (*blockOp)(const char *filename,   // IN: block operation
+                               const os_blocker_id_t blocker))
+ {
+-   char *name;
++   struct filename *fn = NULL;
++   char *name = (char *)fn->name;
+    int i;
+    int retval;
+ 
+-   name = getname(buf);
++   // Not sure what changed in 3.13 to neccessitate this.
++   // Gentoo uses __getname(), though.
++   // https://github.com/gentoo/vmware/blob/master/app-emulation/vmware-modules/files/308-3.10-02-control.patch#L36
++   // ~MK
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 13, 0)
++   name = (char *)getname(buf);
++#else
++   name = (char *)ll_getname(buf);
++#endif
+    if (IS_ERR(name)) {
+       return PTR_ERR(name);
+    }
+@@ -293,7 +336,13 @@ ExecuteBlockOp(const char __user *buf,                // IN: buffer with name
+ 
+    retval = i < 0 ? -EINVAL : blockOp(name, blocker);
+ 
+-   putname(name);
++   // I'm not sure what this does, but you seem to know what you're doing ~MK
++   if (fn->name != fn->iname) { /* add by pavlinux */
++       __putname(fn->name);
++        kvfree(fn);
++   } else {
++       __putname(fn);
++   }
+ 
+    return retval;
+ }
+diff --git a/vmblock/linux/dentry.c b/vmblock/linux/dentry.c
+index 05ea95a..1245358 100644
+--- a/vmblock/linux/dentry.c
++++ b/vmblock/linux/dentry.c
+@@ -32,7 +32,13 @@
+ #include "block.h"
+ 
+ 
+-static int DentryOpRevalidate(struct dentry *dentry, struct nameidata *nd);
++// From what I can tell, this should've always been an unsigned int?
++static int DentryOpRevalidate(struct dentry *dentry,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 10, 0) // Maybe 3.14 or 3.13?
++                              struct nameidata *nd);
++#else
++                              unsigned int flags);
++#endif
+ 
+ struct dentry_operations LinkDentryOps = {
+    .d_revalidate = DentryOpRevalidate,
+@@ -60,7 +66,11 @@ struct dentry_operations LinkDentryOps = {
+ 
+ static int
+ DentryOpRevalidate(struct dentry *dentry,  // IN: dentry revalidating
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 10, 0)
+                    struct nameidata *nd)   // IN: lookup flags & intent
++#else
++                   unsigned int flags)     // IN: lookup flags & intent
++#endif
+ {
+    VMBlockInodeInfo *iinfo;
+    struct nameidata actualNd;
+@@ -101,7 +111,11 @@ DentryOpRevalidate(struct dentry *dentry,  // IN: dentry revalidating
+    if (actualDentry &&
+        actualDentry->d_op &&
+        actualDentry->d_op->d_revalidate) {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 10, 0)
++      return actualDentry->d_op->d_revalidate(actualDentry, flags);
++#else
+       return actualDentry->d_op->d_revalidate(actualDentry, nd);
++#endif
+    }
+ 
+    if (compat_path_lookup(iinfo->name, 0, &actualNd)) {
+diff --git a/vmblock/linux/file.c b/vmblock/linux/file.c
+index d7ac1f6..c5e6604 100644
+--- a/vmblock/linux/file.c
++++ b/vmblock/linux/file.c
+@@ -39,6 +39,7 @@ typedef ino_t inode_num_t;
+ #endif
+ 
+ /* Specifically for our filldir_t callback */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,11,0)
+ typedef struct FilldirInfo {
+    filldir_t filldir;
+    void *dirent;
+@@ -76,6 +77,7 @@ Filldir(void *buf,              // IN: Dirent buffer passed from FileOpReaddir
+    /* Specify DT_LNK regardless */
+    return info->filldir(info->dirent, name, namelen, offset, ino, DT_LNK);
+ }
++#endif
+ 
+ 
+ /* File operations */
+@@ -132,7 +134,12 @@ FileOpOpen(struct inode *inode,  // IN
+     * and that would try to acquire the inode's semaphore; if the two inodes
+     * are the same we'll deadlock.
+     */
++   // f_dentry is defined as f_path.dentry until 3.19
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,19,0)
+    if (actualFile->f_dentry && inode == actualFile->f_dentry->d_inode) {
++#else
++   if (actualFile->f_path.dentry && inode == actualFile->f_path.dentry->d_inode) {
++#endif
+       Warning("FileOpOpen: identical inode encountered, open cannot succeed.\n");
+       if (filp_close(actualFile, current->files) < 0) {
+          Warning("FileOpOpen: unable to close opened file.\n");
+@@ -164,13 +171,20 @@ FileOpOpen(struct inode *inode,  // IN
+  *----------------------------------------------------------------------------
+  */
+ 
++// pavlinux's patch completely removes this bit for kernels older than 3.13
+ static int
+ FileOpReaddir(struct file *file,  // IN
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,11,0)
+               void *dirent,       // IN
+               filldir_t filldir)  // IN
++#else
++              struct dir_context* ctx) //IN
++#endif
+ {
+    int ret;
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,11,0)
+    FilldirInfo info;
++#endif
+    struct file *actualFile;
+ 
+    if (!file) {
+@@ -184,12 +198,20 @@ FileOpReaddir(struct file *file,  // IN
+       return -EINVAL;
+    }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,11,0)
+    info.filldir = filldir;
+    info.dirent = dirent;
+ 
+    actualFile->f_pos = file->f_pos;
+    ret = vfs_readdir(actualFile, Filldir, &info);
+    file->f_pos = actualFile->f_pos;
++#else
++   /* Ricky Wong Yung Fei:
++    * Manipulation of pos is now handled internally by iterate_dir().
++    */
++   ret = iterate_dir(actualFile, ctx);
++   file->f_pos = actualFile->f_pos;
++#endif
+ 
+    return ret;
+ }
+@@ -236,8 +258,15 @@ FileOpRelease(struct inode *inode, // IN
+ }
+ 
+ 
++// pavlinux's patch drops FileOpReaddr for < 3.13
++// pavlinux's patch sets .owner = THIS_MODULE and .llseek = no_llseek
+ struct file_operations RootFileOps = {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,11,0)
+    .readdir = FileOpReaddir,
++#else
++   .iterate = FileOpReaddir,
++#endif
++   .owner   = THIS_MODULE,
+    .open    = FileOpOpen,
+    .release = FileOpRelease,
+ };
+diff --git a/vmblock/linux/inode.c b/vmblock/linux/inode.c
+index 098c94c..bd2bf01 100644
+--- a/vmblock/linux/inode.c
++++ b/vmblock/linux/inode.c
+@@ -35,13 +35,24 @@
+ 
+ 
+ /* Inode operations */
++// Again, it looks like last arg should've always been unsigned int ~MK
+ static struct dentry *InodeOpLookup(struct inode *dir,
+-                                    struct dentry *dentry, struct nameidata *nd);
+-static int InodeOpReadlink(struct dentry *dentry, char __user *buffer, int buflen);
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
+-static void *InodeOpFollowlink(struct dentry *dentry, struct nameidata *nd);
++                                    struct dentry *dentry,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0) // Maybe 3.12 or 3.13?
++                                    struct nameidata *nd);
+ #else
++                                    unsigned int flags);
++#endif
++static int InodeOpReadlink(struct dentry *dentry, char __user *buffer, int buflen);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 13)
+ static int InodeOpFollowlink(struct dentry *dentry, struct nameidata *nd);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
++static const char *InodeOpGetLink(struct dentry *dentry, struct inode *inode,
++                                  struct delayed_call *done);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 99)
++static const char *InodeOpFollowlink(struct dentry *dentry, void **cookie);
++#else
++static void *InodeOpFollowlink(struct dentry *dentry, struct nameidata *nd);
+ #endif
+ 
+ 
+@@ -49,9 +60,13 @@ struct inode_operations RootInodeOps = {
+    .lookup = InodeOpLookup,
+ };
+ 
+-static struct inode_operations LinkInodeOps = {
++struct inode_operations LinkInodeOps = {
+    .readlink    = InodeOpReadlink,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
++   .get_link = InodeOpGetLink,
++#else
+    .follow_link = InodeOpFollowlink,
++#endif
+ };
+ 
+ 
+@@ -75,7 +90,11 @@ static struct inode_operations LinkInodeOps = {
+ static struct dentry *
+ InodeOpLookup(struct inode *dir,      // IN: parent directory's inode
+               struct dentry *dentry,  // IN: dentry to lookup
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
+               struct nameidata *nd)   // IN: lookup intent and information
++#else
++              unsigned int flags)     // IN: lookup intent and information
++#endif
+ {
+    char *filename;
+    struct inode *inode;
+@@ -135,7 +154,12 @@ InodeOpLookup(struct inode *dir,      // IN: parent directory's inode
+    inode->i_size = INODE_TO_IINFO(inode)->nameLen;
+    inode->i_version = 1;
+    inode->i_atime = inode->i_mtime = inode->i_ctime = CURRENT_TIME;
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 10, 0)
+    inode->i_uid = inode->i_gid = 0;
++#else
++   inode->i_gid = make_kgid(current_user_ns(), 0);
++   inode->i_uid = make_kuid(current_user_ns(), 0);
++#endif
+    inode->i_op = &LinkInodeOps;
+ 
+    d_add(dentry, inode);
+@@ -176,8 +200,13 @@ InodeOpReadlink(struct dentry *dentry,  // IN : dentry of symlink
+    if (!iinfo) {
+       return -EINVAL;
+    }
+-
++#if LINUX_VERSION_CODE <= KERNEL_VERSION(3, 14, 99)
+    return vfs_readlink(dentry, buffer, buflen, iinfo->name);
++#elif LINUX_VERSION_CODE <= KERNEL_VERSION(4, 6, 99)
++   return readlink_copy(buffer, buflen, iinfo->name);
++#else
++   return generic_readlink(dentry, buffer, buflen);
++#endif
+ }
+ 
+ 
+@@ -198,30 +227,58 @@ InodeOpReadlink(struct dentry *dentry,  // IN : dentry of symlink
+  *----------------------------------------------------------------------------
+  */
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
+-static void *
++static
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 13)
++int
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 99)
++const char *
+ #else
+-static int
++void *
+ #endif
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
++InodeOpGetLink(struct dentry *dentry, struct inode *inode,
++               struct delayed_call *done)
++#else
+ InodeOpFollowlink(struct dentry *dentry,  // IN : dentry of symlink
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 99)
++                  void **cookie)
++#else
+                   struct nameidata *nd)   // OUT: stores result
++#endif
++#endif
+ {
+    int ret;
+    VMBlockInodeInfo *iinfo;
+ 
+    if (!dentry) {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
++      ret = -ECHILD;
++#else
+       Warning("InodeOpReadlink: invalid args from kernel\n");
+       ret = -EINVAL;
++#endif
+       goto out;
+    }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
++   iinfo = INODE_TO_IINFO(inode);
++#else
+    iinfo = INODE_TO_IINFO(dentry->d_inode);
++#endif
+    if (!iinfo) {
+       ret = -EINVAL;
+       goto out;
+    }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 12, 0)
+    ret = vfs_follow_link(nd, iinfo->name);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
++   return (char *)(iinfo->name);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 99)
++   return *cookie = (char *)(iinfo->name);
++#else
++   nd_set_link(nd, iinfo->name);
++#endif
+ 
+ out:
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
+diff --git a/vmblock/shared/compat_namei.h b/vmblock/shared/compat_namei.h
+index f82dd49..426d40b 100644
+--- a/vmblock/shared/compat_namei.h
++++ b/vmblock/shared/compat_namei.h
+@@ -45,4 +45,20 @@
+ #define compat_path_lookup(name, flags, nd)     path_lookup(name, flags, nd)
+ #endif
+ 
++/* nameidata struct for 4.2+ */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,2,0)
++struct nameidata {  
++   struct path    path;  
++   struct qstr    last;  
++   struct path    root;  
++   struct inode   *inode;  /* path.dentry.d_inode */  
++   unsigned int   flags;  
++   unsigned       seq, m_seq;  
++   int            last_type;  
++   unsigned       depth;  
++   struct file    *base;  
++   char           *saved_names[MAX_NESTED_LINKS + 1];  
++};
++#endif
++
+ #endif /* __COMPAT_NAMEI_H__ */

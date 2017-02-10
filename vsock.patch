@@ -1,0 +1,231 @@
+diff --git a/vsock/Makefile b/vsock/Makefile
+index 5d92e9b..7d315e8 100644
+--- a/vsock/Makefile
++++ b/vsock/Makefile
+@@ -42,8 +42,11 @@ AUTOCONF_DIR := $(SRCROOT)/shared/autoconf
+ INCLUDE      += -I$(SRCROOT)/shared
+ endif
+ 
+-
++ifdef KVERSION
++VM_UNAME = $(KVERSION)
++else
+ VM_UNAME = $(shell uname -r)
++endif
+ 
+ # Header directory for the running kernel
+ ifdef LINUXINCLUDE
+diff --git a/vsock/Makefile.kernel b/vsock/Makefile.kernel
+index 5218df2..374cc1f 100644
+--- a/vsock/Makefile.kernel
++++ b/vsock/Makefile.kernel
+@@ -25,7 +25,7 @@ INCLUDE += -I$(SRCROOT)/include
+ INCLUDE += -I$(SRCROOT)/linux
+ INCLUDE += -I$(SRCROOT)/common
+ 
+-EXTRA_CFLAGS := $(CC_OPTS) $(INCLUDE)
++EXTRA_CFLAGS := $(CC_OPTS) $(INCLUDE) $(LINUXINCLUDE)
+ EXTRA_CFLAGS += $(call vm_check_build, $(AUTOCONF_DIR)/netcreate_num_params.c, -DVMW_NETCREATE_KERNARG, )
+ 
+ 
+diff --git a/vsock/linux/af_vsock.c b/vsock/linux/af_vsock.c
+index bde1497..9f8f843 100644
+--- a/vsock/linux/af_vsock.c
++++ b/vsock/linux/af_vsock.c
+@@ -232,13 +232,29 @@ static int VSockVmciStreamSetsockopt(struct socket *sock, int level, int optname
+ static int VSockVmciStreamGetsockopt(struct socket *sock, int level, int optname,
+                                      char __user *optval, int __user * optlen);
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 0, 99)
+ static int VSockVmciDgramSendmsg(struct kiocb *kiocb,
++#else
++static int VSockVmciDgramSendmsg(
++#endif
+                                  struct socket *sock, struct msghdr *msg, size_t len);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 0, 99)
+ static int VSockVmciDgramRecvmsg(struct kiocb *kiocb, struct socket *sock,
++#else
++static int VSockVmciDgramRecvmsg(struct socket *sock,
++#endif
+                                  struct msghdr *msg, size_t len, int flags);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 0, 99)
+ static int VSockVmciStreamSendmsg(struct kiocb *kiocb,
++#else
++static int VSockVmciStreamSendmsg(
++#endif
+                                  struct socket *sock, struct msghdr *msg, size_t len);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 0, 99)
+ static int VSockVmciStreamRecvmsg(struct kiocb *kiocb, struct socket *sock,
++#else
++static int VSockVmciStreamRecvmsg(struct socket *sock,
++#endif
+                                  struct msghdr *msg, size_t len, int flags);
+ 
+ static int VSockVmciCreate(
+@@ -2822,11 +2838,18 @@ __VSockVmciCreate(struct net *net,       // IN: Network namespace
+     * From 2.6.9 to until 2.6.12 sk_alloc() used a cache in
+     * the protocol structure, but you still had to specify the size and cache
+     * yourself.
+-    * Most recently (in 2.6.24), sk_alloc() was changed to expect the
++    * In 2.6.24, sk_alloc() was changed to expect the
+     * network namespace, and the option to zero the sock was dropped.
+     *
++    * In 4.2, another parameter was added to sk_alloc() allowing you to specify
++    * whether or not the socket is to be a kernel socket. Previously, we passed
++    * 1 to this new parameter, but following Gentoo's lead
++    * ( https://github.com/gentoo/vmware/blob/master/app-emulation/vmware-modules/files/308-4.02-01-sk_alloc.patch#L19 )
++    * we have switched to passing 0.
+     */
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 99)
++   sk = sk_alloc(net, vsockVmciFamilyOps.family, priority, &vsockVmciProto, 0);
++#elif LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
+    sk = sk_alloc(vsockVmciFamilyOps.family, priority,
+                  vsockVmciProto.slab_obj_size, vsockVmciProto.slab);
+ #elif LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 24)
+@@ -4210,7 +4233,11 @@ VSockVmciShutdown(struct socket *sock,  // IN
+  */
+ 
+ static int
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 0, 99)
+ VSockVmciDgramSendmsg(struct kiocb *kiocb,          // UNUSED
++#else
++VSockVmciDgramSendmsg(
++#endif
+                       struct socket *sock,          // IN: socket to send on
+                       struct msghdr *msg,           // IN: message to send
+                       size_t len)                   // IN: length of message
+@@ -4302,7 +4329,11 @@ VSockVmciDgramSendmsg(struct kiocb *kiocb,          // UNUSED
+       goto out;
+    }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+    memcpy_fromiovec(VMCI_DG_PAYLOAD(dg), msg->msg_iov, len);
++#else
++   memcpy_from_msg(VMCI_DG_PAYLOAD(dg), msg, len);
++#endif
+ 
+    dg->dst = VMCI_MAKE_HANDLE(remoteAddr->svm_cid, remoteAddr->svm_port);
+    dg->src = VMCI_MAKE_HANDLE(vsk->localAddr.svm_cid, vsk->localAddr.svm_port);
+@@ -4540,7 +4571,11 @@ VSockVmciStreamGetsockopt(struct socket *sock,          // IN
+  */
+ 
+ static int
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 0, 99)
+ VSockVmciStreamSendmsg(struct kiocb *kiocb,          // UNUSED
++#else
++VSockVmciStreamSendmsg(
++#endif
+                        struct socket *sock,          // IN: socket to send on
+                        struct msghdr *msg,           // IN: message to send
+                        size_t len)                   // IN: length of message
+@@ -4662,7 +4697,11 @@ VSockVmciStreamSendmsg(struct kiocb *kiocb,          // UNUSED
+        * able to send.
+        */
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+       written = vmci_qpair_enquev(vsk->qpair, msg->msg_iov,
++#else
++      written = vmci_qpair_enquev(vsk->qpair, &msg->msg_iter.iov,
++#endif
+                                   len - totalWritten, 0);
+       if (written < 0) {
+          err = -ENOMEM;
+@@ -4709,7 +4748,11 @@ out:
+  */
+ 
+ static int
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 0, 99)
+ VSockVmciDgramRecvmsg(struct kiocb *kiocb,          // UNUSED
++#else
++VSockVmciDgramRecvmsg(
++#endif
+                       struct socket *sock,          // IN: socket to receive from
+                       struct msghdr *msg,           // IN/OUT: message to receive into
+                       size_t len,                   // IN: length of receive buffer
+@@ -4759,7 +4802,11 @@ VSockVmciDgramRecvmsg(struct kiocb *kiocb,          // UNUSED
+    }
+ 
+    /* Place the datagram payload in the user's iovec. */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+    err = skb_copy_datagram_iovec(skb, sizeof *dg, msg->msg_iov, payloadLen);
++#else
++   err = skb_copy_datagram_iter(skb, sizeof *dg, &msg->msg_iter, payloadLen);
++#endif
+    if (err) {
+       goto out;
+    }
+@@ -4800,7 +4847,11 @@ out:
+  */
+ 
+ static int
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 0, 99)
+ VSockVmciStreamRecvmsg(struct kiocb *kiocb,          // UNUSED
++#else
++VSockVmciStreamRecvmsg(
++#endif
+                        struct socket *sock,          // IN: socket to receive from
+                        struct msghdr *msg,           // IN/OUT: message to receive into
+                        size_t len,                   // IN: length of receive buffer
+@@ -4905,9 +4956,17 @@ VSockVmciStreamRecvmsg(struct kiocb *kiocb,          // UNUSED
+          }
+ 
+          if (flags & MSG_PEEK) {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+             read = vmci_qpair_peekv(vsk->qpair, msg->msg_iov, len - copied, 0);
++#else
++            read = vmci_qpair_peekv(vsk->qpair, &msg->msg_iter.iov, len - copied, 0);
++#endif
+          } else {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+             read = vmci_qpair_dequev(vsk->qpair, msg->msg_iov, len - copied, 0);
++#else
++            read = vmci_qpair_dequev(vsk->qpair, &msg->msg_iter.iov, len - copied, 0);
++#endif
+          }
+ 
+          if (read < 0) {
+diff --git a/vsock/linux/notify.c b/vsock/linux/notify.c
+index 5b1e134..82d8738 100644
+--- a/vsock/linux/notify.c
++++ b/vsock/linux/notify.c
+@@ -516,7 +516,11 @@ VSockVmciHandleWrote(struct sock *sk,            // IN
+    PKT_FIELD(vsk, sentWaitingRead) = FALSE;
+ #endif
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 15, 0)
+    sk->sk_data_ready(sk, 0);
++#else
++   sk->sk_data_ready(sk);
++#endif
+ }
+ 
+ 
+diff --git a/vsock/linux/notifyQState.c b/vsock/linux/notifyQState.c
+index 464454b..7933be7 100644
+--- a/vsock/linux/notifyQState.c
++++ b/vsock/linux/notifyQState.c
+@@ -164,7 +164,11 @@ VSockVmciHandleWrote(struct sock *sk,            // IN
+                      struct sockaddr_vm *dst,    // IN: unused
+                      struct sockaddr_vm *src)    // IN: unused
+ {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 15, 0)
+    sk->sk_data_ready(sk, 0);
++#else
++   sk->sk_data_ready(sk);
++#endif
+ }
+ 
+ 
+@@ -566,7 +570,11 @@ VSockVmciNotifyPktRecvPostDequeue(struct sock *sk,               // IN
+       }
+ 
+       /* See the comment in VSockVmciNotifyPktSendPostEnqueue */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 15, 0)
+       sk->sk_data_ready(sk, 0);
++#else
++      sk->sk_data_ready(sk);
++#endif
+    }
+ 
+    return err;

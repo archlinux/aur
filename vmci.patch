@@ -1,0 +1,265 @@
+diff --git a/vmci/Makefile b/vmci/Makefile
+index c630705..18357e5 100644
+--- a/vmci/Makefile
++++ b/vmci/Makefile
+@@ -43,7 +43,11 @@ INCLUDE      += -I$(SRCROOT)/shared
+ endif
+ 
+ 
++ifdef KVERSION
++VM_UNAME = $(KVERSION)
++else
+ VM_UNAME = $(shell uname -r)
++endif
+ 
+ # Header directory for the running kernel
+ ifdef LINUXINCLUDE
+diff --git a/vmci/Makefile.kernel b/vmci/Makefile.kernel
+index 8e6e7d0..28eb503 100644
+--- a/vmci/Makefile.kernel
++++ b/vmci/Makefile.kernel
+@@ -21,7 +21,7 @@ CC_OPTS += -DVMCI
+ 
+ INCLUDE += -I$(SRCROOT)/shared -I$(SRCROOT)/common -I$(SRCROOT)/linux
+ 
+-EXTRA_CFLAGS := $(CC_OPTS) $(INCLUDE)
++EXTRA_CFLAGS := $(CC_OPTS) $(INCLUDE) $(LINUXINCLUDE)
+ 
+ obj-m += $(DRIVER).o
+ 
+diff --git a/vmci/linux/driver.c b/vmci/linux/driver.c
+index f676166..9e42f3f 100644
+--- a/vmci/linux/driver.c
++++ b/vmci/linux/driver.c
+@@ -26,6 +26,7 @@
+ 
+ #include <linux/file.h>
+ #include <linux/fs.h>
++#include <linux/vmalloc.h>
+ #include <linux/init.h>
+ #if defined(__x86_64__) && LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
+ #   include <linux/ioctl32.h>
+@@ -1467,12 +1468,19 @@ VMCIUserVALockPage(VA addr) // IN:
+    int retval;
+ 
+    down_read(&current->mm->mmap_sem);
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
+-   retval = get_user_pages(addr, 1, 1, 0, &page, NULL);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 99)
++   retval = get_user_pages(addr,
+ #else
+    retval = get_user_pages(current, current->mm, addr,
+-                           1, 1, 0, &page, NULL);
+ #endif
++                           1,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 9, 0)
++                           1, 0,
++#else
++                           FOLL_WRITE,
++#endif
++                           &page, NULL);
++
+    up_read(&current->mm->mmap_sem);
+ 
+    if (retval != 1) {
+@@ -1687,7 +1695,11 @@ vmci_guest_init(void)
+    /* This should be last to make sure we are done initializing. */
+    retval = pci_register_driver(&vmci_driver);
+    if (retval < 0) {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 15, 0)
+       vfree(data_buffer);
++#else
++      kvfree(data_buffer);
++#endif
+       data_buffer = NULL;
+       return retval;
+    }
+@@ -2474,7 +2486,11 @@ vmci_exit(void)
+ 
+    if (guestDeviceInit) {
+       pci_unregister_driver(&vmci_driver);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 15, 0)
+       vfree(data_buffer);
++#else
++      kvfree(data_buffer);
++#endif
+       guestDeviceInit = FALSE;
+    }
+ 
+@@ -2483,7 +2499,7 @@ vmci_exit(void)
+ 
+       VMCI_HostCleanup();
+ 
+-      retval = misc_deregister(&linuxState.misc);
++      retval = compat_misc_deregister(&linuxState.misc);
+       if (retval) {
+          Warning(LGPFX "Module %s: error unregistering\n", VMCI_MODULE_NAME);
+       } else {
+diff --git a/vmci/linux/vmciKernelIf.c b/vmci/linux/vmciKernelIf.c
+index 3fba8b6..1836442 100644
+--- a/vmci/linux/vmciKernelIf.c
++++ b/vmci/linux/vmciKernelIf.c
+@@ -40,6 +40,7 @@
+ #include <linux/socket.h>       /* For memcpy_{to,from}iovec(). */
+ #include <linux/vmalloc.h>
+ #include <linux/wait.h>
++#include <linux/skbuff.h>
+ 
+ #include "compat_highmem.h"
+ #include "compat_interrupt.h"
+@@ -1198,16 +1199,29 @@ __VMCIMemcpyToQueue(VMCIQueue *queue,   // OUT:
+       }
+ 
+       if (isIovec) {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+          struct iovec *iov = (struct iovec *)src;
++#else
++         struct msghdr *msg = (struct msghdr *)src;
++#endif
+          int err;
+ 
+          /* The iovec will track bytesCopied internally. */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+          err = memcpy_fromiovec((uint8 *)va + pageOffset, iov, toCopy);
++#else
++         err = memcpy_from_msg((uint8 *)va + pageOffset, msg, toCopy);
++#endif
+          if (err != 0) {
+             if (kernelIf->host) {
+                kunmap(kernelIf->u.h.page[pageIndex]);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+             }
+             return VMCI_ERROR_INVALID_ARGS;
++#else
++              return VMCI_ERROR_INVALID_ARGS;
++            }
++#endif
+          }
+       } else {
+          memcpy((uint8 *)va + pageOffset, (uint8 *)src + bytesCopied, toCopy);
+@@ -1273,11 +1287,19 @@ __VMCIMemcpyFromQueue(void *dest,             // OUT:
+       }
+ 
+       if (isIovec) {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+          struct iovec *iov = (struct iovec *)dest;
++#else
++         struct msghdr *msg = (struct msghdr *)dest;
++#endif
+          int err;
+ 
+          /* The iovec will track bytesCopied internally. */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+          err = memcpy_toiovec(iov, (uint8 *)va + pageOffset, toCopy);
++#else
++         err = memcpy_to_msg(msg, (uint8 *)va + pageOffset, toCopy);
++#endif
+          if (err != 0) {
+             if (kernelIf->host) {
+                kunmap(kernelIf->u.h.page[pageIndex]);
+@@ -1834,7 +1856,11 @@ VMCIReleasePages(struct page **pages,  // IN
+       if (dirty) {
+          set_page_dirty(pages[i]);
+       }
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 99)
++      put_page(pages[i]);
++#else
+       page_cache_release(pages[i]);
++#endif
+       pages[i] = NULL;
+    }
+ }
+@@ -2048,21 +2074,22 @@ VMCIHost_GetUserMemory(VA64 produceUVA,       // IN
+    int err = VMCI_SUCCESS;
+ 
+    down_write(&current->mm->mmap_sem);
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 99)
+    retval = get_user_pages((VA)produceUVA,
+-                           produceQ->kernelIf->numPages,
+-                           1, 0,
+-                           produceQ->kernelIf->u.h.headerPage,
+-                           NULL);
+ #else
+    retval = get_user_pages(current,
+                            current->mm,
+                            (VA)produceUVA,
++#endif
+                            produceQ->kernelIf->numPages,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 9, 0)
+                            1, 0,
++#else
++                           FOLL_WRITE,
++#endif
+                            produceQ->kernelIf->u.h.headerPage,
+                            NULL);
+-#endif
++
+    if (retval < produceQ->kernelIf->numPages) {
+       Log("get_user_pages(produce) failed (retval=%d)\n", retval);
+       VMCIReleasePages(produceQ->kernelIf->u.h.headerPage, retval, FALSE);
+@@ -2070,11 +2097,19 @@ VMCIHost_GetUserMemory(VA64 produceUVA,       // IN
+       goto out;
+    }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 99)
++   retval = get_user_pages((VA)consumeUVA,
++#else
+    retval = get_user_pages(current,
+                            current->mm,
+                            (VA)consumeUVA,
++#endif
+                            consumeQ->kernelIf->numPages,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 9, 0)
+                            1, 0,
++#else
++                           FOLL_WRITE,
++#endif
+                            consumeQ->kernelIf->u.h.headerPage,
+                            NULL);
+    if (retval < consumeQ->kernelIf->numPages) {
+diff --git a/vmci/shared/compat_module.h b/vmci/shared/compat_module.h
+index 2af7372..729aedc 100644
+--- a/vmci/shared/compat_module.h
++++ b/vmci/shared/compat_module.h
+@@ -80,4 +80,13 @@ static const char __module_cat(tag, __LINE__)[]                               \
+    typedef int compat_mod_param_bool;
+ #endif
+ 
++/*
++ * Linux kernel >= 4.2.99 does not return anything from misc_deregister
++ */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 2, 99)
++#define compat_misc_deregister(misc) misc_deregister(misc)
++#else
++#define compat_misc_deregister(misc) ({misc_deregister(misc);0;})
++#endif
++
+ #endif /* __COMPAT_MODULE_H__ */
+diff --git a/vmci/shared/vm_device_version.h b/vmci/shared/vm_device_version.h
+index e2cb477..3dd7097 100644
+--- a/vmci/shared/vm_device_version.h
++++ b/vmci/shared/vm_device_version.h
+@@ -53,7 +53,9 @@
+  *    VMware HD Audio codec
+  *    VMware HD Audio controller
+  */
++#ifndef PCI_VENDOR_ID_VMWARE
+ #define PCI_VENDOR_ID_VMWARE                    0x15AD
++#endif
+ #define PCI_DEVICE_ID_VMWARE_SVGA2              0x0405
+ #define PCI_DEVICE_ID_VMWARE_SVGA               0x0710
+ #define PCI_DEVICE_ID_VMWARE_VGA                0x0711
+diff --git a/vmci/shared/vmci_kernel_if.h b/vmci/shared/vmci_kernel_if.h
+index 9def671..082fe59 100644
+--- a/vmci/shared/vmci_kernel_if.h
++++ b/vmci/shared/vmci_kernel_if.h
+@@ -93,7 +93,7 @@
+   typedef Semaphore VMCIEvent;
+   typedef Semaphore VMCIMutex;
+   typedef World_ID VMCIHostVmID;
+-  typedef uint32 VMCIHostUser;
++  typedef uint32_t VMCIHostUser;
+   typedef PPN *VMCIQPGuestMem;
+ #elif defined(linux)
+   typedef spinlock_t VMCILock;
