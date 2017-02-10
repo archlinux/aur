@@ -2,7 +2,7 @@
 
 pkgname=konsole-blurry
 _pkgname=konsole
-pkgver=16.12.1
+pkgver=16.12.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://kde.org/applications/system/konsole/'
@@ -18,7 +18,7 @@ replaces=('kdebase-konsole')
 conflicts=('kdebase-konsole<4.14.3-2')
 source=("http://download.kde.org/stable/applications/${pkgver}/src/konsole-${pkgver}.tar.xz" 
         "0001-add-blur-effect-when-set-transparency.patch")
-sha1sums=('02ce0360c7b87ecc5a51d73d514215b2d376c275'
+sha1sums=('d889147f592bcdd40576756a4ba3a861807cee24'
           'b3f8b444181e8e6f60d15d160375c26804429e9b')
 
 prepare() {
