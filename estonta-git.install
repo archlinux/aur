@@ -1,5 +1,7 @@
 #!/bin/bash
 post_install() {
-echo "Before using lerta or aldonos, copy /etc/estonta.conf to ~/.config/ and edit it."
+rm /usr/bin/lerta
+rm /usr/bin/aldonos
+echo "Before using estonta, copy /etc/estonta.conf to ~/.config/ and edit it."
 } 
 #post_install

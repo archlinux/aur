@@ -1,14 +1,14 @@
 # Maintainer: Corey Mwamba <contact.me@coreymwamba.co.uk>
 pkgname=estonta-git
 _pkgname=estonta
-pkgver=r31.fd64411
+pkgver=r49.36f15db
 pkgrel=1
 pkgbase=estonta-git
 pkgdesc="A simple Bash and Yad-based appointment system."
 arch=('i686' 'x86_64')
 url="https://github.com/coreymwamba/estonta"
 license=('GPL')
-optdepends=('yad:	graphical interface for aldonos')
+optdepends=('yad:	graphical interface')
 makedepends=('git')
 source=('git://github.com/coreymwamba/estonta')
 install='estonta-git.install'
@@ -17,11 +17,11 @@ pkgver() {
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-package(){
+package() {
 mkdir -p $pkgdir/usr/bin
 mkdir -p $pkgdir/etc
   cd "$_pkgname"
-install -p -D aldonos -m 0755 $pkgdir/usr/bin/aldonos
-install -p -D lerta -m 0755 $pkgdir/usr/bin/lerta
-install -p -D estonta.conf -m 0644 $pkgdir/etc/estonta.conf
+install -p -D estonta -m755 $pkgdir/usr/bin/estonta
+install -p -D estonta.conf -m644 $pkgdir/etc/estonta.conf
+install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
