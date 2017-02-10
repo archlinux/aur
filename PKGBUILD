@@ -6,13 +6,13 @@ pkgver=0.2.1
 pkgrel=1
 pkgdesc='Lean Theorem Prover 2'
 arch=('x86_64')
-url="https://github.com/leanprover/lean2"
+url="https://github.com/Bolt64/lean2"
 license=('Apache')
 depends=('gmp' 'mpfr' 'lua>=5.2')
 makedepends=('git' 'cmake' 'python' 'gperftools')
 optdepends=('emacs: emacs mode')
 conflicts=('lean-bin')
-source=("$pkgname::git+https://github.com/leanprover/lean2.git")
+source=("$pkgname::git+https://github.com/Bolt64/lean2")
 md5sums=(SKIP)
 
 #pkgver() {
@@ -21,7 +21,7 @@ md5sums=(SKIP)
 #}
 
 prepare() {
-  git clone https://github.com/leanprover/emacs-dependencies "$pkgname"/src/emacs/dependencies
+  git clone https://github.com/Bolt64/emacs-dependencies "$pkgname"/src/emacs/dependencies
   cd "$pkgname"/src/emacs # The following lines are to disable Flycheck, which seems to have some issues.
   sed -e '/Flycheck\ init/,+4d' lean-mode.el > lean-mode.el.new
   mv lean-mode.el lean-mode.el.old
