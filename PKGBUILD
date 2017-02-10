@@ -1,24 +1,36 @@
-# Maintainer: Christopher Loen  <christopherloen at gmail dot com>
-# Contributor: Scott Lawrence <bytbox@gmail.com>
-pkgname='python-libsass'
-pkgver='0.11.1'
+# Maintainer: Peter Cai <peter at typeblog.net>
+
+_name=libsass
+pkgname=python-libsass
+pkgver=0.12.3
 pkgrel=1
-pkgdesc="Python binding for libsass CSS compiler"
-arch=('any')
-url='http://dahlia.kr/libsass-python/'
-depends=('python')
-makedepends=('libsass' 'python2-pip' 'python-pip')
-source=('https://github.com/dahlia/libsass-python/releases/download/0.11.1/libsass-0.11.1.tar.gz')
-license=('MIT')
-sha256sums=('f060d7dab825942ca7f86d0c4adadf7d731a2e30f9bce6e4f010ad7d32adbf06')
+pkgdesc="A straightforward binding of libsass for Python."
+arch=('x86_64')
+url="https://pypi.python.org/pypi/libsass/"
+license=("MIT")
+source=(
+  "https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
+  "0000-use-system-libsass.patch"
+)
+md5sums=('b2b0735a975731e1d07804fd4e7251c2'
+         'b81c742608baa51b75dc9cf994f0974f')
+depends=(
+  "libsass"
+  "python"
+  "python-six"
+)
+makedepends=(
+  "python-setuptools"
+  "gcc"
+)
 
-package() {
-	echo Installation may be a bit slow, please wait
-    cd ${srcdir}/libsass-${pkgver}
-	echo :: Installing for python3.5 ...
-    pip3 install --prefix=/usr --isolated --root="${pkgdir}" --no-deps --ignore-installed .
-    echo :: Installing for python2.7 ...
-    pip2 install --prefix=/usr --isolated --root="${pkgdir}" --no-deps --ignore-installed .
-
+build() {
+  cd "$srcdir/$_name-$pkgver"
+  patch -Np1 -i "$srcdir/0000-use-system-libsass.patch"
+  python setup.py build
 }
 
+package() {
+  cd "$srcdir/$_name-$pkgver"
+  python setup.py install --root="$pkgdir/" --optimize=1
+}
