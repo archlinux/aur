@@ -4,9 +4,9 @@
 pkgname=gstreamer0.10-ffmpeg
 _pkgname=gst-ffmpeg
 pkgver=0.10.13
-pkgrel=7
+pkgrel=8
 pkgdesc="Gstreamer FFMpeg Plugin"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('gstreamer0.10-base' 'bzip2')
 makedepends=('pkgconfig' 'yasm' 'sdl' 'git' 'gtk-doc')

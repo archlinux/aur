@@ -1,10 +1,11 @@
 pkgbase = gstreamer0.10-ffmpeg
 	pkgdesc = Gstreamer FFMpeg Plugin
 	pkgver = 0.10.13
-	pkgrel = 7
+	pkgrel = 8
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	groups = gstreamer0.10-plugins
 	license = GPL
 	makedepends = pkgconfig
