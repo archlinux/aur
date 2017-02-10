@@ -1,0 +1,82 @@
+--- /home/roman/Devel/arch.packages/utopiadocs/src/utopia-documents-3.0.0/configure.orig
++++ /home/roman/Devel/arch.packages/utopiadocs/src/utopia-documents-3.0.0/configure
+@@ -92,68 +92,26 @@
+     fi
+     echo "It is advisable to build in a subdirectory."
+     echo "Would you prefer to configure in '$SUGGEST'?"
+-    select yn in "Yes" "No"; do
+-        case $yn in
+-            Yes)
+-                mkdir -p "$SUGGEST"
+-                DEST="$SUGGEST"
+-                break
+-                ;;
+-            No) break
+-                ;;
+-        esac
+-    done
++    mkdir -p "$SUGGEST"
++    DEST="$SUGGEST"
+ fi
+ 
+ if [ -e CMakeCache.txt ]; then
+     echo "This directory is already configured; reconfigure losing changes?"
+-    select yn in "Yes" "No"; do
+-        case $yn in
+-            Yes)
+-                rm -f CMakeCache.txt
+-                break
+-                ;;
+-            No)
+-                echo "Aborted configuration."
+-                exit 1
+-                ;;
+-        esac
+-        done
++    rm -f CMakeCache.txt
+ fi
+ 
+ if [ ! -e "$DEP/dependencies.cmake" -o ! -e "$DEP/CMakeCache.txt" ]; then
+     echo "The dependencies have not been built; configure and build them now?"
+-    select yn in "Yes" "No"; do
+-        case $yn in
+-            Yes)
+-                cd "$DEP"
+-                UTOPIA_VARIANT_CMAKE_OPTS=""
+-                for VARIANT in "${VARIANTS[@]}"; do
+-                    VARIANT_FILE="CMakeConfig/configurations/variant-$VARIANT.txt"
+-                    if [ -e "$VARIANT_FILE" ]; then
+-                        UTOPIA_VARIANT_CMAKE_OPTS='$UTOPIA_VARIANT_CMAKE_OPTS -C "$VARIANT_FILE"'
+-                    fi
+-                done
+ 
+-                cmake -D "CMAKE_BUILD_TYPE:STRING=$TYPE" \
+-                    -C "CMakeConfig/configurations/$PLAT.txt" \
+-                    -C "CMakeConfig/configurations/common.txt" \
+-                    -D "UTOPIA_CONFIGURED_PLATFORM:STRING=$PLAT" \
+-                    $UTOPIA_VARIANT_CMAKE_OPTS \
+-		    -G "$GEN" . || exit 1
++     cd "$DEP"
++     cmake -D "CMAKE_BUILD_TYPE:STRING=$TYPE" \
++       -C "CMakeConfig/configurations/$PLAT.txt" \
++       -C "CMakeConfig/configurations/common.txt" \
++       -D "UTOPIA_CONFIGURED_PLATFORM:STRING=$PLAT" \
++       -G "$GEN" . || exit 1
++     make -j4|| exit 1
+ 
+-                if [[ "$GEN" == "Ninja" ]]; then
+-                    ninja || exit 1
+-                else
+-                    make || exit 1
+-                fi
+-                break
+-                ;;
+-            No)
+-                exit 1
+-                ;;
+-        esac
+-        done
+ fi
+ 
+ cd "$DEST"
+
