@@ -20,13 +20,13 @@ md5sums=(SKIP)
   #printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git describe --always)"
 #}
 
-prepare() {
-  git clone https://github.com/Bolt64/emacs-dependencies "$pkgname"/src/emacs/dependencies
-  cd "$pkgname"/src/emacs # The following lines are to disable Flycheck, which seems to have some issues.
-  sed -e '/Flycheck\ init/,+4d' lean-mode.el > lean-mode.el.new
-  mv lean-mode.el lean-mode.el.old
-  mv lean-mode.el.new lean-mode.el
-}
+#prepare() {
+  #git clone https://github.com/Bolt64/emacs-dependencies "$pkgname"/src/emacs/dependencies
+  #cd "$pkgname"/src/emacs # The following lines are to disable Flycheck, which seems to have some issues.
+  #sed -e '/Flycheck\ init/,+4d' lean-mode.el > lean-mode.el.new
+  #mv lean-mode.el lean-mode.el.old
+  #mv lean-mode.el.new lean-mode.el
+#}
 
 build() {
   cd "$pkgname"
