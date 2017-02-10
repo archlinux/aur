@@ -33,4 +33,10 @@ build(){
 package(){
     cd "${srcdir}/${gitname}"
     make DESTDIR="$pkgdir/" install
+
+    # Add forgotten localization files
+    cd po
+    for mofile in *.mo;do
+        install -Dm755 "$mofile" "$pkgdir/usr/share/fbpanel/locale/${mofile%%_*}/LC_MESSAGES/fbpanel.mo"
+    done
 }
