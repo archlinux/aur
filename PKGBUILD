@@ -4,7 +4,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=lastpass-cli-git
-pkgver=1.0.0.r43.gd60e731
+pkgver=1.1.2.r0.gc9fa3a5
 pkgrel=1
 pkgdesc="LastPass command line interface tool (git version)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('openssl' 'curl' 'libxml2')
 makedepends=('asciidoc' 'git' 'cmake')
 optdepends=('xclip: clipboard support'
             'pinentry: securely read passwords')
-source=("git://github.com/lastpass/${pkgname%-git}.git")
+source=("git+https://github.com/lastpass/${pkgname%-git}.git")
 md5sums=('SKIP')
 
 pkgver() {
