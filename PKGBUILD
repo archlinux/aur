@@ -1,13 +1,13 @@
 # Maintainer: Cel Skeggs <arch@celskeggs.com>
 pkgname=libsyscall
-pkgver=0.1.2
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A library providing all of the assembly code needed for a C standard library"
 arch=('i686' 'x86_64')
 url="https://github.com/celskeggs/libsyscall"
 license=('MIT')
 source=("https://github.com/celskeggs/libsyscall/archive/v$pkgver.tar.gz")
-sha256sums=('960f1b3b934201a8da5966213e645d5b8d17107dff4ca54df461c4ee25aff5fd')
+sha256sums=('3a08f42b3999bd68a87d2f3ce506e9f302dfcfb14444cefcf1e39e731a482604')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
