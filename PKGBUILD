@@ -2,7 +2,7 @@
 
 _pkgname=fs-uae
 pkgname=fs-uae-devel
-pkgver=2.9.3dev
+pkgver=2.9.4dev
 pkgrel=1
 pkgdesc="Cross-platform Amiga emulator based on UAE/WinUAE (development version)."
 arch=("i686" "x86_64")
@@ -14,7 +14,7 @@ makedepends=('zip')
 source=("http://fs-uae.net/devel/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 provides=("fs-uae")
 conflicts=("fs-uae")
-sha1sums=('e7700edcaf4b557964376faec6de5a9ce6ea02b4')
+sha1sums=('8cfbc1b91437d4605973d7d5b6226da3525537d8')
 
 #MAKEFLAGS="-j1"
 
