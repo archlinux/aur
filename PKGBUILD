@@ -1,13 +1,13 @@
 # Maintainer: David Pflug <david at pflug.email>
 pkgname=graphscad
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="An OpenSCAD-based Nodal editor to create customizable objects for 3D printing"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h')
 url="http://graphscad.blogspot.com/"
 license=('GPL')
 source=("http://${pkgname}.free.fr/${pkgname}_ubu_v${pkgver}.zip")
-sha256sums=('85edb9eca65690d3ba07ba80c2d5af90251161ea3091ff42d8a58d1272f39a8d')
+sha256sums=('74410b3e06071ed7f2a5821d5185879613b95eb67d9de4c064d575f1d5c6080e')
 depends=('zlib' 'python')
 
 package() {
