@@ -5,8 +5,8 @@ pkgbase=gstreamer0.10-ugly
 _pkgname=gst-plugins-ugly
 pkgname=('gstreamer0.10-ugly' 'gstreamer0.10-ugly-plugins')
 pkgver=0.10.19
-pkgrel=20
-arch=('i686' 'x86_64')
+pkgrel=21
+arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL')
 makedepends=('pkgconfig' 'gstreamer0.10-base>=0.10.36-8' 'libdvdread' 'lame' 'libmpeg2' 'a52dec' 'libmad' 'libsidplay' 'libcdio' 'libx264' 'x264' 'opencore-amr' 'git')
 url="http://gstreamer.freedesktop.org/"
