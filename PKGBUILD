@@ -48,12 +48,12 @@ source=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binari
         "jvisualvm32-$_jname.desktop"
         "policytool32-$_jname.desktop"
         'OTN-Early-Adopter-License-Terms.txt')
-md5sums=('7c117fff1d089f2322948389d744d103'
-         'cae82f6fd99d9b5e60dca0e48f71cc3f'
-         '766d4781f1610fbd2e5797709c373d2f'
-         'bf32df4a5c6a82dceb0249cb815efe18'
-         '05c7f59cdcec283bcccc63d1fdc40b72'
-         'f09947a67691a2d78d20a3885889981c')
+sha256sums=('c9ddcd8b8af75007b1b839952311e4d3f2b45886786f103f6d1ce5c93db5dd1c'
+            '4699009a941791cc82e6bcc85e80365b4c5b10f217e5f023a84f917abbe98ae1'
+            '082c7594570133117e06f2b3a74c9e40ecea89384ab874fa1ef111e1c998302e'
+            '653729575c23d7faaef6bb106fdc4889e9a2240723540ad92a74bf1972367faf'
+            'ff17209204c70e8b637b8386327486c98e0b70b9b715970fa7a73093d1ef3f91'
+            '5f00ffce28036cf79da41c7fe0e29801e3148597a164ecc69f49e718ae370370')
 
 package() {
     cd ${_pkgname}1.${_major}.0
