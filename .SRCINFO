@@ -1,0 +1,17 @@
+pkgbase = librethinkdbxx-git
+	pkgdesc = RethinkDB driver for C++
+	pkgver = r152.11e19e6
+	pkgrel = 1
+	url = https://github.com/AtnNn/librethinkdbxx
+	arch = i686
+	arch = x86_64
+	license = apache2
+	makedepends = git
+	makedepends = python
+	provides = librethinkdbxx
+	conflicts = librethinkdbxx
+	source = librethinkdbxx-git::git+https://github.com/AtnNn/librethinkdbxx.git
+	md5sums = SKIP
+
+pkgname = librethinkdbxx-git
+
