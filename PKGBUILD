@@ -4,10 +4,10 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=jhbuild
-pkgver=3.15.92
-pkgrel=4
+pkgver=3.15.92+1012+g88207c11
+pkgrel=1
 pkgdesc='Tool to build the whole GNOME desktop from sources'
-arch=('i686' 'x86_64')
+arch=('any')
 url='https://wiki.gnome.org/Projects/Jhbuild'
 license=('GPL')
 depends=(python2 git)
@@ -18,30 +18,34 @@ optdepends=('subversion: fetch subversion repositories'
             'mercurial: fetch Mercurial repositories'
             'darcs: fetch Darcs repositories')
 install=jhbuild.install
-source=("https://git.gnome.org/browse/jhbuild/snapshot/jhbuild-$pkgver.tar.xz"
-        "update-default-jhbuildrc-000f820.patch" "module_autogenargs.patch")
-sha256sums=('c1be78139ee9d566a042a7b4c1d61ad435bc70b75d3f1b84de0a1038fc59cab6'
-            'b39be32d3f16f58fc7da2e468cb75ad3e9abc59adbc1c26143ec11449f839c38'
+_commit=88207c11
+source=("$pkgname-$_commit::git+https://git.gnome.org/browse/jhbuild#commit=$_commit"
+        "module_autogenargs.patch")
+sha256sums=('SKIP'
             '273d53cb976642692eb9ed8536a02b0fe677c47662bbef8b50d1a8bcb292665f')
 
+pkgver() {
+  cd $pkgname-$_commit
+  git describe --tags | sed 's/-/+/g'
+}
+
 prepare() {
-    cd $pkgname-$pkgver
-    msg2 "Update to gnome-3.22 moduleset and other options" 
-    patch -p1 -i "$srcdir/update-default-jhbuildrc-000f820.patch"
-    msg2 "Set parameters known to be required for Arch Linux"
-    patch -p1 -i "$srcdir/module_autogenargs.patch"
+  cd $pkgname-$_commit
+  msg2 "Set parameters known to be required for Arch Linux"
+  patch -p1 -i "$srcdir/module_autogenargs.patch"
 }
 
 build() {
-    cd $pkgname-$pkgver
-    ./autogen.sh --prefix=/usr PYTHON=/usr/bin/python2
-    make
+  cd $pkgname-$_commit
+  ./autogen.sh --prefix=/usr PYTHON=/usr/bin/python2
+  make
 }
 
 package() {
-    cd $pkgname-$pkgver
-    make DESTDIR="$pkgdir" install
-    install -Dm644 examples/sample.jhbuildrc "$pkgdir/usr/share/jhbuild/examples/sample.jhbuildrc"
-    install -Dm644 examples/wayland.jhbuildrc "$pkgdir/usr/share/jhbuild/examples/wayland.jhbuildrc"
-    sed -i "s|$srcdir|$HOME/jhbuild|g" "${pkgdir}"/usr/bin/jhbuild
+  cd $pkgname-$_commit
+  make DESTDIR="$pkgdir" install
+  install -Dm644 examples/sample.jhbuildrc "$pkgdir/usr/share/jhbuild/examples/sample.jhbuildrc"
+  install -Dm644 examples/wayland.jhbuildrc "$pkgdir/usr/share/jhbuild/examples/wayland.jhbuildrc"
+  install -Dm644 contrib/jhbuild_completion.bash "$pkgdir/usr/share/bash-completion/completions/jhbuild"
+  sed -i "s|$srcdir|$HOME/jhbuild|g" "${pkgdir}"/usr/bin/jhbuild
 }
