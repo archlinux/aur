@@ -12,7 +12,9 @@ pkgbase = mingw-w64-dbh
 	options = !buildflags
 	options = !strip
 	source = https://sourceforge.net/projects/dbh/files/dbh/5.0.20/libdbh2-5.0.20.tar.gz/download
+	source = 0001-remove-lrt.patch
 	md5sums = b06b504b694e5182f855d642e7dd31af
+	md5sums = 71f85b3c840b9714366283dd6a87be64
 
 pkgname = mingw-w64-dbh
 
