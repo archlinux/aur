@@ -1,7 +1,7 @@
 pkgbase = butterfly
 	pkgdesc = A sleek web based terminal emulator
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/butterfly
 	arch = any
 	license = GPL
@@ -10,6 +10,7 @@ pkgbase = butterfly
 	depends = python-tornado
 	depends = python-pyopenssl
 	depends = tornado_systemd
+	optdepends = python-libsass: theming support
 	options = !emptydirs
 	source = https://pypi.python.org/packages/source/b/butterfly/butterfly-2.0.1.tar.gz
 	source = butterfly.service

@@ -1,7 +1,8 @@
 # Maintainer: Olivier Biesmans <olivier at biesmans dot fr>
+# Maintainer: Peter Cai <peter at typeblog dot net>
 pkgname=butterfly
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A sleek web based terminal emulator"
 arch=('any')
 url="https://pypi.python.org/pypi/butterfly"
@@ -9,6 +10,7 @@ license=('GPL')
 groups=()
 depends=('python' 'python-tornado' 'python-pyopenssl' 'tornado_systemd')
 makedepends=('python-setuptools')
+optdepends=('python-libsass: theming support')
 provides=()
 conflicts=()
 replaces=()
