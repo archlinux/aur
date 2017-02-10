@@ -1,0 +1,22 @@
+pkgbase = gclipboard-git
+	pkgdesc = A simple clipboard manager with a clean design approach.
+	pkgver = r41.2704588
+	pkgrel = 1
+	url = http://github.com/muesli/gclipboard
+	arch = x86_64
+	arch = i686
+	makedepends = git
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = make
+	makedepends = boost
+	makedepends = gettext
+	makedepends = glib2
+	makedepends = gtkmm3
+	depends = gtkmm3
+	provides = gclipboard
+	source = gclipboard-git::git://github.com/muesli4/gclipboard.git
+	md5sums = SKIP
+
+pkgname = gclipboard-git
+
