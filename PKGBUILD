@@ -27,8 +27,8 @@ source=(
   proxy.xml
 
   dkms.conf
-  vmware-workstation-server.service
   vmware-workstation-server-certificates.service
+  vmware-workstation-server.service
 
   vmblock.patch
   vmci.patch
@@ -48,8 +48,8 @@ sha1sums=(
   80c5626984ffcdea6fa655d248c731e7c9c657fa
 
   3f6f14f8047941c015e9067f62ae403acc7b563c
-  97dc28cbd868f9fbeb89b1719ca05ec916c37110
   fa9bc954e7ea595fd365f3d34fc7b89351e355d9
+  97dc28cbd868f9fbeb89b1719ca05ec916c37110
 
   bd8955b45f9ac3deed99aba93d2c82bc5424167e
   b4bd05f5d5a98f90fcbdd515b7bb7e6151951e11
