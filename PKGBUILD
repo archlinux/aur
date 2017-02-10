@@ -2,7 +2,7 @@
 
 pkgname=vmware-workstation
 pkgver=12.5.2_4638234
-pkgrel=2
+pkgrel=3
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -26,6 +26,7 @@ source=(
   environments.xml
   proxy.xml
 
+  vmware-usbarbitrator.service
   vmware-workstation-server-certificates.service
   vmware-workstation-server.service
 
@@ -47,8 +48,9 @@ sha1sums=(
   a7e4a6fe33dc6ca95b469ec6f88de21e5b16a95b
   80c5626984ffcdea6fa655d248c731e7c9c657fa
 
+  c1dbfbad3473d12e9c82b75c5f1faf795f3cc217
   fa9bc954e7ea595fd365f3d34fc7b89351e355d9
-  97dc28cbd868f9fbeb89b1719ca05ec916c37110
+  8121242dc9b402477e089f0ecb9c35519eb56186
 
   3f6f14f8047941c015e9067f62ae403acc7b563c
   bd8955b45f9ac3deed99aba93d2c82bc5424167e
@@ -97,6 +99,7 @@ package() {
     vmware-player-app/lib/* \
     vmware-vmx/lib/* \
     vmware-workstation-server/{bin,lib,hostd} \
+    vmware-usbarbitrator/bin \
     "$pkgdir/usr/lib/vmware"
 
   cp -r \
@@ -116,6 +119,10 @@ package() {
 
   install -Dm 644 vmware-vmx/extra/modules.xml "$pkgdir/usr/lib/vmware/modules/modules.xml"
   install -Dm 644 vmware-installer/bootstrap "$pkgdir/etc/vmware-installer/bootstrap"
+
+  install -Dm 644 \
+    "$srcdir/vmware-usbarbitrator.service" \
+    "$pkgdir/usr/lib/systemd/system/vmware-usbarbitrator.service"
 
   install -Dm 644 \
     "$srcdir/vmware-workstation-server.service" \
