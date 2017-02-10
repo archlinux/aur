@@ -16,6 +16,8 @@ sha512sums=('SKIP'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk3' 'sqlite3' 'dbus-glib')
 
+optdepends=('pulseaudio: audio/video playback')
+
 package() {
   install -d $pkgdir/{usr/{bin,share/{applications,pixmaps}},opt}
   cp -r firefox $pkgdir/opt/firefox-$_channel
