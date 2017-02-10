@@ -1,7 +1,7 @@
 # Maintainer: Maxim Kraev <maxim.kraev@gmail.com>
 
 pkgname=chef-dk
-pkgver=1.1.16
+pkgver=1.2.22
 pkgrel=1
 _ubuntuver=raring
 _ubunturel=4
@@ -12,7 +12,7 @@ license=('Apache')
 depends=()
 conflicts=( chef chef-solo )
 source=("https://packages.chef.io/stable/ubuntu/12.04/chefdk_${pkgver}-1_amd64.deb")
-sha512sums=('6838a489c18e7d5089f71dfceab36cc1142efccf59e608c2da94f35ca0c9dd0739f921712ae3a0d544075114c193612bd84090d1c12c2061d25050153f337669')
+sha512sums=('b4d874ea179bc8b6b9289c443931369aeeaaffbc4159413f7458ccb7bd5d3f7174e14963e2310529939c69fcea992bfc4625eb23bce32a0ab46118e38132ee60')
 
 package() {
   cd "$srcdir"
