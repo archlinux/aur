@@ -28,6 +28,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_SBINDIR=bin \
+    -DUDEV_RULES_INSTALL_DIR=/usr/lib/udev/rules.d \
     -DCSHARP_BINDINGS=OFF
   make
 }
