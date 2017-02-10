@@ -2,7 +2,7 @@
 # Contributor: joyfulgirl <joyfulgirl (at) archlinux.us>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=edbrowse-git
-pkgver=3.6.1.r15.g52babdc
+pkgver=3.6.2.r40.g9d868ba
 pkgrel=1
 pkgdesc="A line-oriented editor, browser and mail client."
 arch=('i686' 'x86_64')
