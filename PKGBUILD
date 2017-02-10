@@ -16,7 +16,7 @@ _language_vala_modern_ver=0.3.2
 _terminal_fusion_ver=2.4.3
 
 pkgname=${_pkgname}-editor-${_version}
-_pkgrel=0
+_pkgrel=1
 _pkgver=1.15.0
 pkgver="${_pkgver}.beta${_pkgrel}.m${_language_gfm2_ver}"
 _ver=$_pkgver-beta${_pkgrel}
