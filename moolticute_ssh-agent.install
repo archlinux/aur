@@ -1,0 +1,13 @@
+post_install() {
+    _systemd_service_usage
+}
+
+post_upgrade() {
+    _systemd_service_usage
+}
+
+# print an usage on how to use the agent started by systemd
+_systemd_service_usage() {
+    echo "In order to use moolticute_ssh-agent one had to export the environment variable"      \
+         'SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/moolticute-ssh-agent.socket"'
+}
