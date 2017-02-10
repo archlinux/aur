@@ -2,7 +2,7 @@
 
 _pkgname=opentoonz
 _version=git
-pkgver=1.0.3.635
+pkgver=1.1.2.877
 pkgname=${_pkgname}-${_version}
 pkgrel=1
 pkgdesc="2D Animation software."
