@@ -2,6 +2,7 @@
 post_install() {
 rm /usr/bin/lerta
 rm /usr/bin/aldonos
+echo "the executable is called estonta now :)"
 echo "Before using estonta, copy /etc/estonta.conf to ~/.config/ and edit it."
 } 
 #post_install
