@@ -2,14 +2,15 @@
 # Contributor: Zhu Jinxuan <zhujinxuan@gmail.com>
 # Contributor: tdy tdy@archlinux.info
 
-pkgname=utopia-documents3
+pkgname=utopia-documents
+pkgbase=3
 pkgver=3.0.0
 pkgrel=1
 pkgdesc="PDF reader that displays interactive annotations on scientific articles"
 arch=(i686 x86_64)
 url=http://utopiadocs.com
 license=(GPL)
-provides=('utopia-documents3')
+provides=('utopia-documents')
 conflicts=('utopia-documents')
 depends=(libqglviewer pcre qt5-svg qt5-webkit qt5-script poppler-qt5 python2-pyqt5)
 makedepends=(cmake boost swig glew)
