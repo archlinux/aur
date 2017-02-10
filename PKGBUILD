@@ -5,8 +5,8 @@ pkgbase=gstreamer0.10-good
 _pkgname=gst-plugins-good
 pkgname=('gstreamer0.10-good' 'gstreamer0.10-good-plugins')
 pkgver=0.10.31
-pkgrel=16
-arch=('i686' 'x86_64')
+pkgrel=17
+arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL')
 makedepends=('intltool' 'pkgconfig' 'gstreamer0.10-base>=0.10.36-3' 'libavc1394' 'libiec61883' 'aalib' 'libshout' 'libdv' 'flac' 'gconf' 'wavpack' 'taglib' 'libsoup-gnome' 'v4l-utils' 'libcaca' 'bzip2' 'gdk-pixbuf2' 'libpulse' 'jack' 'git' 'cairo' 'libgudev')
 url="http://gstreamer.freedesktop.org/"

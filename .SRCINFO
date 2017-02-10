@@ -1,9 +1,10 @@
 pkgbase = gstreamer0.10-good
 	pkgver = 0.10.31
-	pkgrel = 16
+	pkgrel = 17
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = LGPL
 	makedepends = intltool
 	makedepends = pkgconfig
