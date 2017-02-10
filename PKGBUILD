@@ -17,7 +17,6 @@ depends=('ttf-bitstream-vera' 'libxcursor' 'alsa-lib' 'libxml2')
 optdepends=('mesa-demos: glxinfo for "fully optimized graphics capabilities"') # without glxinfo, Mathematica outputs a warning to the terminal on startup
 source=("local://Mathematica_${pkgver}_LINUX.sh")
 md5sums=('444f096c9e058d8a4f8555c06ccc0233')
-install='mathematica.install'
 options=('!strip')
 
 PKGEXT=".pkg.tar"
