@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=dcrspy-git
-pkgver=20161127
+pkgver=20170209
 pkgrel=1
 pkgdesc="Decred data monitor"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ prepare() {
 build() {
   export GOPATH="$srcdir"
 
-  msg2 'Building dcrd and dependencies...'
+  msg2 'Building dcrspy and dependencies...'
   cd "$GOPATH/src/github.com/chappjc/dcrspy"
   glide install
   go install $(glide novendor)
