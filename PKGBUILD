@@ -1,17 +1,17 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=pgadmin4
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Comprehensive design and management interface for PostgreSQL"
 arch=(i686 x86_64)
 url="https://www.pgadmin.org/"
 license=(custom)
-depends=(qt5-webkit python postgresql-libs hicolor-icon-theme)
+depends=(qt5-webengine python postgresql-libs hicolor-icon-theme)
 makedepends=(python-setuptools python-sphinx imagemagick)
 source=(https://ftp.postgresql.org/pub/pgadmin3/pgadmin4/v$pkgver/source/$pkgname-$pkgver.tar.gz{,.sig}
         0001-Simplify-Server-s-python-setup.patch)
-sha256sums=('3c6a8bc6bf8db767786628d076c9ea89db8a76ed6ad0fb4e940d617d4476aba6'
+sha256sums=('07af259fc4a00882f2110bd670fd3c4043ab1af2efb72855391ef8ca22d39107'
             'SKIP'
             '5421053950ab0cb55cbf926bddbafa8005d8c8db87414d3a6aa27a0ba5d8bcba')
 validpgpkeys=('E0C4CEEB826B1FDA4FB468E024ADFAAF698F1519')
