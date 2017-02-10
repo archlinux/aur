@@ -13,8 +13,9 @@ pkgdesc="A computational software program used in scientific, engineering, and m
 arch=('i686' 'x86_64')
 url="http://www.wolfram.com/mathematica/"
 license=('proprietary')
-depends=('ttf-bitstream-vera' 'libxcursor' 'alsa-lib' 'libxml2')
-optdepends=('mesa-demos: glxinfo for "fully optimized graphics capabilities"') # without glxinfo, Mathematica outputs a warning to the terminal on startup
+depends=('libxml2')
+optdepends=('mesa-demos: for "fully optimized graphics capabilities"'
+            'alsa-lib: for sound support')
 source=("local://Mathematica_${pkgver}_LINUX.sh")
 md5sums=('444f096c9e058d8a4f8555c06ccc0233')
 options=('!strip')
