@@ -5,11 +5,11 @@ pkgname=mosh-sshagent-git
 pkgver=20170108
 pkgrel=1
 pkgdesc="Mobile shell with support for ssh-agent-forwarding and out-of-band"
-arch=('i686' 'x86_64' 'arm')
+arch=('i686' 'x86_64' 'arm' 'armv7h')
 url="http://mosh.mit.edu/"
 license=('GPL3')
 depends=('protobuf' 'ncurses' 'zlib' 'openssh' 'perl' 'perl-io-tty' 'libutempter')
-makedepends=('git')
+makedepends=('git' 'automake' 'autoconf')
 optdepends=('perl-io-socket-ip: for IPv6 support')
 conflicts=('mosh' 'mosh-git')
 source=('git+https://github.com/rinne/mosh.git#branch=agent-forwarding-merge-20151128')
