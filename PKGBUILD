@@ -3,8 +3,8 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=fife
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 _githubname=fifengine
 pkgdesc="Flexible Isometric Free Engine is a cross platform game creation framework"
 arch=(i686 x86_64)
@@ -14,8 +14,8 @@ depends=('boost' 'boost-libs' 'fifechan' 'libgl' 'libogg' 'libpng' 'libvorbis'
          'sdl2' 'sdl2_ttf' 'sdl2_image' 'openal' 'python2' 'tinyxml' 'zlib')
 makedepends=('cmake' 'mesa' 'swig')
 source=("https://github.com/${_githubname}/${_githubname}/archive/${pkgver}.tar.gz")
-md5sums=('d1bac8339f207b797a2e3dbd85383a66')
-sha256sums=('babd4c1c6e2f991d2cf61d5746f34a66ca18e1c95782599c95c4382949d3d8f1')
+md5sums=('6ce5533102c4993b44c3ba8347f4ca93')
+sha256sums=('bae3fc591cc2891f7d1b3a656a5d8ad700ecc2e297ad453bf4f1bcbbf82e8cb2')
 
 prepare() {
   # use python2
