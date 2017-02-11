@@ -1,19 +1,18 @@
 # Maintainer: Sébastien Luttringer
 
 pkgname=quagga
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='BGP/OSPF/ISIS/RIP/RIPNG routing daemon suite'
 arch=('i686' 'x86_64')
 url='http://www.quagga.net'
 license=('GPL2')
-depends=('libcap' 'libnl' 'net-snmp' 'readline' 'ncurses' 'perl')
+depends=('libcap' 'libnl' 'net-snmp' 'readline' 'ncurses' 'perl' 'c-ares')
 options=('!buildflags')
 validpgpkeys=('C1B5C3ED3000F2BFCD66F3B76FE57CA8C1A4AEA6') # Quagga Release Signing Key
 source=("https://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc}
         'quagga.sysusers'
         'quagga.tmpfiles'
-        'babeld.service'
         'bgpd.service'
         'isisd.service'
         'ospf6d.service'
@@ -22,11 +21,10 @@ source=("https://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.ta
         'ripd.service'
         'ripngd.service'
         'zebra.service')
-md5sums=('daa303871e07ea5856aae6fd79e89722'
+md5sums=('1b6b68cf1611c89d57d6df146d618710'
          'SKIP'
          '286c545efadcc7b463eb603c25473cb4'
          '9dfa2f649a2c83a2e52f5f89dec3b167'
-         '20a8e36ad851d4e06467aeb56a84b245'
          'cc90c234aac9098c5132d653037d5269'
          '67d0ada0f3000b9a86351798786c5256'
          '6e2569ef339838aa41375e913a8e19ce'
@@ -84,7 +82,7 @@ package() {
   # systemd
   cd "$srcdir"
   install -d -m 755 "$pkgdir"/usr/lib/{systemd/system,tmpfiles.d,sysusers.d}
-  for _d in zebra ripd ripngd bgpd ospfd ospf6d isisd babeld pimd; do
+  for _d in zebra ripd ripngd bgpd ospfd ospf6d isisd pimd; do
     install -D -m 644 $_d.service "$pkgdir/usr/lib/systemd/system/$_d.service"
   done
   install -D -m 644 $pkgname.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
