@@ -2,7 +2,7 @@
 
 pkgbase=linode-dynamic-dns
 pkgname='linode-dynamic-dns'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Update Linode DNS records to point to local IPv4 and IPv6 addresses."
 arch=('any')
