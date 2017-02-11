@@ -1,6 +1,6 @@
 # Maintainer: John Ramsden <streblo [at] ramsdenj [dot] ca>
 pkgname=znapzend
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="ZnapZend is a ZFS centric backup tool. It relies on snapshot, send and receive todo its work. It has the built-in ability to manage both local snapshots as well as remote copies by thining them out as time progresses."
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('perl' 'zfs')
 source=("https://github.com/oetiker/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 noextract=()
-md5sums=('9da2265e2446735b17441264f519030a')
+md5sums=('bf0ed9bb2ffea6cbcf4730e899e065fc')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
