@@ -4,18 +4,20 @@
 set -u
 _pkgname='wendy'
 pkgname="${_pkgname}-git"
-pkgver=1.0.r0.gf0a10e8
+pkgver=1.0.r2.g1cfef0a
 pkgrel=1
 pkgdesc='Watch a directory and execute a command on file creation/deletion/modification'
 arch=('i686' 'x86_64')
-url='http://git.z3bra.org/cgit.cgi/wendy'
+#url='http://git.z3bra.org/cgit.cgi/wendy'
+url='http://git.z3bra.org/wendy/file/README.html'
 license=('WTFPL')
 depends=('glibc')
 makedepends=('git')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 #_verwatch=("${url}" '/cgit.cgi/wendy/snapshot/wendy-\([0-9\.]\+\)\.tar\.gz' 'l')
-source=('git://phobos.z3bra.org/wendy')
+#source=('git://phobos.z3bra.org/wendy')
+source=('git://z3bra.org/wendy')
 sha256sums=('SKIP')
 
 pkgver() {
