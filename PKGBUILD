@@ -3,14 +3,14 @@
 
 pkgname=mugshot
 pkgver=0.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Program to update personal user details"
 arch=('any')
 url="https://launchpad.net/mugshot"
 license=('GPLv3')
 depends=( 'python-pexpect' 'python-dbus' 'python-cairo' 'python-gobject' )
 makedepends=( 'python-distutils-extra' )
-optdepends=( 'gstreamer0.10-good-plugins: webcam support'
+optdepends=( 'cheese: webcam support'
              'pidgin: update buddy icon'
              'libreoffice: update user details'
              'accountsservice: user image management without ~/.face'
