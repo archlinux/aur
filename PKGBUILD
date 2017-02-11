@@ -4,7 +4,7 @@
 pkgbase=riot
 pkgname=('riot-desktop' 'riot-web')
 pkgver=0.9.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A glossy Matrix collaboration client, web and desktop versions."
 arch=('any')
 url="https://riot.im"
@@ -14,16 +14,19 @@ makedepends=('npm' 'git' 'phantomjs')
 source=(${pkgbase}-${pkgver}.tar.gz::"${_url}/archive/v${pkgver}.tar.gz"
         ${pkgbase}-${pkgver}.tar.gz.asc::"${_url}/releases/download/v${pkgver}/v${pkgver}-src.tar.gz.asc"
         "${pkgbase}.desktop"
-        "${pkgbase}-desktop.sh")
+        "${pkgbase}-desktop.sh"
+        "remove-google-analytics.patch")
 sha256sums=('0cd4f4b4d2662846bf76ea5eb0642d6cf3dd7e29d791c1cfc409ae6ede23e285'
             'SKIP'
             '043fbaa29be96f52541143e1684fd7ba33585edb215c06d1ed4e59ddc48a9fa7'
-            'e2f3c320014f464aca13ec0d8422e4cd3febbaf462c31d470aeb66453bcd6a69')
+            'e2f3c320014f464aca13ec0d8422e4cd3febbaf462c31d470aeb66453bcd6a69'
+            'aaa06657a38688f6c104b6d49c8a8a89a391a58ce7bb978069ababce905803bd')
 validpgpkeys=('6FEB6F83D48B93547E7DFEDEE019645248E8F4A1') # riot.im (Package Signing key) <packages@riot.im>
 
 prepare() {
   cd ${pkgbase}-web-${pkgver}
   sed -i 's@https://riot.im/download/desktop/update/@null@g' electron/riot.im/config.json
+  patch -p1 -i ../remove-google-analytics.patch
 }
 
 build() {
@@ -52,7 +55,7 @@ package_riot-desktop() {
   backup=("etc/${pkgbase}/config.json")
   cd ${pkgbase}-web-${pkgver}
 
-  install -d "${pkgdir}"/{usr/lib/${pkgbase}/electron{,img},etc/${pkgbase}}
+  install -d "${pkgdir}"/usr/lib/${pkgbase}/electron
 
   install -Dm644 package.json -t "${pkgdir}"/usr/lib/${pkgbase}
   cp -r electron/src "${pkgdir}"/usr/lib/${pkgbase}/electron/

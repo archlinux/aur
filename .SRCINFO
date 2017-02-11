@@ -1,7 +1,7 @@
 pkgbase = riot
 	pkgdesc = A glossy Matrix collaboration client, web and desktop versions.
 	pkgver = 0.9.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://riot.im
 	arch = any
 	license = Apache
@@ -12,11 +12,13 @@ pkgbase = riot
 	source = riot-0.9.7.tar.gz.asc::https://github.com/vector-im/riot-web/releases/download/v0.9.7/v0.9.7-src.tar.gz.asc
 	source = riot.desktop
 	source = riot-desktop.sh
+	source = remove-google-analytics.patch
 	validpgpkeys = 6FEB6F83D48B93547E7DFEDEE019645248E8F4A1
 	sha256sums = 0cd4f4b4d2662846bf76ea5eb0642d6cf3dd7e29d791c1cfc409ae6ede23e285
 	sha256sums = SKIP
 	sha256sums = 043fbaa29be96f52541143e1684fd7ba33585edb215c06d1ed4e59ddc48a9fa7
 	sha256sums = e2f3c320014f464aca13ec0d8422e4cd3febbaf462c31d470aeb66453bcd6a69
+	sha256sums = aaa06657a38688f6c104b6d49c8a8a89a391a58ce7bb978069ababce905803bd
 
 pkgname = riot-desktop
 	pkgdesc = A glossy Matrix collaboration client for the desktop.
