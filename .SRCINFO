@@ -1,7 +1,7 @@
 pkgbase = dwarffortress-lnp-git
 	pkgdesc = Installer for the Lazy Newb Pack to run Dwarf Fortress. Includes vanilla dwarf fortress, dfhack and graphics
 	pkgver = 43.03
-	pkgrel = 7
+	pkgrel = 8
 	epoch = 0
 	install = dwarffortress-lnp-git.install
 	arch = x86_64
@@ -64,7 +64,6 @@ pkgbase = dwarffortress-lnp-git
 	source = DFAnnouncementFilter.zip::http://dffd.bay12games.com/download.php?id=7905&f=DFAnnouncementFilter.zip
 	source = dfhack-twbt.patch
 	source = dfhack-visualizers.patch
-	source = python-lnp-get-terminal-name.patch
 	source = lnp
 	source = dwarffortress-lnp-git.desktop
 	source = dwarffortress-lnp-git.install
@@ -89,7 +88,6 @@ pkgbase = dwarffortress-lnp-git
 	md5sums = affd6273731c321d364c55a8da314fea
 	md5sums = 856c54681faed3608cd951bf286d12d5
 	md5sums = 5cc79b5dc202d8faa02086293badfcee
-	md5sums = 5576ec011c3e332d148ccfba2ca69d5c
 	md5sums = 389e34b6937f843c8f635d5e7326c9fc
 	md5sums = bba8ab4d3f70cea8b812e78445fef1f0
 	md5sums = 6a87f6069f54645847b846833ff62d5a

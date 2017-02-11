@@ -7,7 +7,7 @@ pkgname=dwarffortress-lnp-git
 pkgver=43.03
 _pkgver=43_03
 _dfhack_pkgrel=r1
-pkgrel=7
+pkgrel=8
 epoch=0
 pkgdesc="Installer for the Lazy Newb Pack to run Dwarf Fortress. Includes vanilla dwarf fortress, dfhack and graphics"
 arch=(x86_64)
@@ -58,7 +58,6 @@ source=(git+"https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux"
         'DFAnnouncementFilter.zip'::'http://dffd.bay12games.com/download.php?id=7905&f=DFAnnouncementFilter.zip'
         "dfhack-twbt.patch"
         "dfhack-visualizers.patch"
-        "python-lnp-get-terminal-name.patch"
         "lnp"
         "${pkgname}.desktop"
         "${pkgname}.install"
@@ -87,7 +86,6 @@ md5sums=('SKIP'
          'affd6273731c321d364c55a8da314fea'
          '856c54681faed3608cd951bf286d12d5'
          '5cc79b5dc202d8faa02086293badfcee'
-         '5576ec011c3e332d148ccfba2ca69d5c'
          '389e34b6937f843c8f635d5e7326c9fc'
          'bba8ab4d3f70cea8b812e78445fef1f0'
          '6a87f6069f54645847b846833ff62d5a')
@@ -110,9 +108,6 @@ prepare() {
   cd $srcdir/dfhack
   git submodule init
   git submodule update
-
-  cd $srcdir/python-lnp/core
-  patch -uN terminal.py $srcdir/python-lnp-get-terminal-name.patch
 
   cd $srcdir/dfhack/plugins
   patch -uN CMakeLists.custom.txt $srcdir/dfhack-twbt.patch
