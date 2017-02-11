@@ -1,0 +1,52 @@
+diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
+index de9044c..f5d3e78 100644
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -133,13 +133,15 @@ linux_entry ()
+ 	echo	'$(echo "$message" | grub_quote)'
+ 	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ro ${args}
+ EOF
+-  if test -n "${initrd}" ; then
++  if test -n "${initrd}" -o -n "${initrd_extra}" ; then
+     # TRANSLATORS: ramdisk isn't identifier. Should be translated.
+     message="$(gettext_printf "Loading initial ramdisk ...")"
+-    sed "s/^/$submenu_indentation/" << EOF
+-	echo	'$(echo "$message" | grub_quote)'
+-	initrd	${rel_dirname}/${initrd}
+-EOF
++    printf '	%s\n' "echo	'$(echo "$message" | grub_quote)'" | sed "s/^/$submenu_indentation/"
++    printf '	%s ' 'initrd' | sed "s/^/$submenu_indentation/"
++    for i in ${initrd_extra} ${initrd}; do
++	printf ' %s/%s' "${rel_dirname}" "${i}"
++    done
++    printf '\n'
+   fi
+   sed "s/^/$submenu_indentation/" << EOF
+ }
+@@ -202,6 +204,12 @@ while [ "x$list" != "x" ] ; do
+       break
+     fi
+   done
++  initrd_extra=
++  for i in intel-ucode.img; do
++    if test -e "${dirname}/${i}" ; then
++      initrd_extra="${initrd_extra} ${i}"
++    fi
++  done
+ 
+   config=
+   for i in "${dirname}/config-${version}" "${dirname}/config-${alt_version}" "/etc/kernels/kernel-config-${version}" ; do
+@@ -216,8 +224,8 @@ while [ "x$list" != "x" ] ; do
+       initramfs=`grep CONFIG_INITRAMFS_SOURCE= "${config}" | cut -f2 -d= | tr -d \"`
+   fi
+ 
+-  if test -n "${initrd}" ; then
+-    gettext_printf "Found initrd image: %s\n" "${dirname}/${initrd}" >&2
++  if test -n "${initrd}" -o -n "${initrd_extra}" ; then
++    gettext_printf "Found initrd image(s) in %s:%s\n" "${dirname}" "${initrd_extra} ${initrd}" >&2
+   elif test -z "${initramfs}" ; then
+     # "UUID=" and "ZFS=" magic is parsed by initrd or initramfs.  Since there's
+     # no initrd or builtin initramfs, it can't work here.
+-- 
+2.9.2
+

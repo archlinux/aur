@@ -1,18 +1,8 @@
-From b470ffd22e43acc7c11231180187a720efd88de1 Mon Sep 17 00:00:00 2001
-From: Keshav Amburay <the.ridikulus.rat@gmail.com>
-Date: Sat, 5 Apr 2014 20:40:51 -0400
-Subject: [PATCH] 10_linux: Detect Arch Linux main and fallback initramfs
- images
-
----
- util/grub.d/10_linux.in | 16 +++++++++++++++-
- 1 file changed, 15 insertions(+), 1 deletion(-)
-
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 00d1931..7d4086b 100644
+index f5d3e78..ef59c8c 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
-@@ -81,6 +81,8 @@ linux_entry ()
+@@ -83,6 +83,8 @@ linux_entry ()
        case $type in
  	  recovery)
  	      title="$(gettext_printf "%s, with Linux %s (recovery mode)" "${os}" "${version}")" ;;
@@ -21,7 +11,7 @@ index 00d1931..7d4086b 100644
  	  *)
  	      title="$(gettext_printf "%s, with Linux %s" "${os}" "${version}")" ;;
        esac
-@@ -180,7 +182,7 @@ while [ "x$list" != "x" ] ; do
+@@ -186,7 +188,7 @@ while [ "x$list" != "x" ] ; do
    basename=`basename $linux`
    dirname=`dirname $linux`
    rel_dirname=`make_system_path_relative_to_its_root $dirname`
@@ -30,25 +20,25 @@ index 00d1931..7d4086b 100644
    alt_version=`echo $version | sed -e "s,\.old$,,g"`
    linux_root_device_thisversion="${LINUX_ROOT_DEVICE}"
  
-@@ -236,6 +238,18 @@ while [ "x$list" != "x" ] ; do
+@@ -248,6 +250,18 @@ while [ "x$list" != "x" ] ; do
  
    linux_entry "${OS}" "${version}" advanced \
                "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
-+  
++
 +  if test -e "${dirname}/initramfs-${version}-fallback.img" ; then
 +    initrd="initramfs-${version}-fallback.img"
-+    
++
 +    if test -n "${initrd}" ; then
-+      gettext_printf "Found fallback initramfs image: %s\n" "${dirname}/${initrd}" >&2
++      gettext_printf "Found fallback initrd image(s) in %s:%s\n" "${dirname}" "${initrd_extra} ${initrd}" >&2
 +    fi
-+    
++
 +    linux_entry "${OS}" "${version}" fallback \
-+    "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
++                "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
 +  fi
-+  
++
    if [ "x${GRUB_DISABLE_RECOVERY}" != "xtrue" ]; then
      linux_entry "${OS}" "${version}" recovery \
                  "single ${GRUB_CMDLINE_LINUX}"
 -- 
-1.9.1
+2.9.2
 

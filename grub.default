@@ -4,9 +4,6 @@ GRUB_DISTRIBUTOR="Arch"
 GRUB_CMDLINE_LINUX_DEFAULT="quiet"
 GRUB_CMDLINE_LINUX=""
 
-# Disable Sub-menu
-GRUB_DISABLE_SUBMENU=y
-
 # Preload both GPT and MBR modules so that they are not missed
 GRUB_PRELOAD_MODULES="part_gpt part_msdos"
 
