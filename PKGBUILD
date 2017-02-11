@@ -1,36 +1,32 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=singularityviewer-alpha
-pkgver=1.8.6.6695
-pkgrel=2
+pkgver=1.8.7.6919
+pkgrel=1
 pkgdesc="An exciting client for Second Life (secondlife) and OpenSim (opensimulator), which combines the look and feel of Viewer 1.23 with the latest and greatest of available technology. (alpha version)"
 url="http://www.singularityviewer.org/"
 license=('custom')
-arch=('i686' 'x86_64')
-depends=('apr-util' 'gtk2' 'libgl' 'libidn' 'libjpeg-turbo' 'mesa' 'nss' 'sdl' 'glu' 'pangox-compat' 'qtwebkit')
-optdepends=('libpulse: for PulseAudio support' 'alsa-lib: for ALSA support' 'nvidia-utils: for NVIDIA support' 'flashplugin: for inworld Flash support' 'gstreamer0.10: for video support, may need good, bad and ugly plugins' 'lib32-freealut: for OpenAL support')
+arch=('x86_64')
+depends=('apr-util' 'gtk2' 'libgl' 'libidn' 'mesa' 'sdl' 'glu' 'pangox-compat' 'gconf' 'libxss' 'libxrandr' 'libxcomposite' 'libgl' 'lib32-zlib' 'libcups' 'atk' 'lib32-util-linux' 'lib32-libidn' 'libxcursor' 'libxtst')
+optdepends=(
+	'libpulse: for PulseAudio support'
+	'alsa-lib: for ALSA support'
+	'lib32-alsa-lib: for ALSA support'
+	'nvidia-utils: for NVIDIA support' 
+	'flashplugin: for inworld Flash support' 
+	'gstreamer0.10: for video support, may need good, bad and ugly plugins'
+	'lib32-freealut: for OpenAL support'
+	'openal')
+
 conflicts=("singularityviewer")
 provides=("singularityviewer")
-source_i686=("http://sourceforge.net/projects/singularityview/files/alphas/SingularityAlpha-i686-$pkgver.tar.bz2"
+
+source=("http://sourceforge.net/projects/singularityview/files/alphas/SingularityAlpha-x86_64-$pkgver.tar.bz2"
 	"singularityviewer.desktop"
 	"singularityviewer.launcher")
-#source_i686=("http://files.streamgrid.net/singularity/SingularityAlpha-i686-$pkgver.tar.bz2"
-#	"singularityviewer.desktop"
-#	"singularityviewer.launcher")
-
-source_x86_64=("http://sourceforge.net/projects/singularityview/files/alphas/SingularityAlpha-x86_64-$pkgver.tar.bz2"
-	"singularityviewer.desktop"
-	"singularityviewer.launcher")
-#source_x86_64=("http://files.streamgrid.net/singularity/SingularityAlpha-x86_64-$pkgver.tar.bz2"
-#	"singularityviewer.desktop"
-#	"singularityviewer.launcher")
-md5sums_i686=('428dbaf9fe4859c617cfafa1d8060b3a'
-              'ff7aa34dcd7548e3acdb3c2d44ae6604'
-              'eb596f5cf7b6f2d0c55c0082fb99a905')
-md5sums_x86_64=('425e24c05eafe8075c34977194762634'
-                'ff7aa34dcd7548e3acdb3c2d44ae6604'
-                'eb596f5cf7b6f2d0c55c0082fb99a905')
-
+md5sums=('e14039660e04e6908ae3f03aa19d92e2'
+         'ff7aa34dcd7548e3acdb3c2d44ae6604'
+         'eb596f5cf7b6f2d0c55c0082fb99a905')
 package() {
 cd $srcdir
   
@@ -42,8 +38,8 @@ install -D -m644 $srcdir/singularityviewer.desktop \
   $pkgdir/usr/share/applications/singularityviewer.desktop
   
 # Install Icon File
-install -D -m644 $srcdir/singularityviewer/singularity_icon.png \
-  $pkgdir/usr/share/pixmaps/singularityviewer.png
+install -D -m644 $srcdir/singularityviewer/viewer_icon.png \
+  $pkgdir/usr/share/pixmaps/singularityviewer_icon.png
   
 # Install Launcher
 install -D -m755 $srcdir/singularityviewer.launcher \
