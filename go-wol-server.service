@@ -1,0 +1,9 @@
+[Unit]
+Description=Wake on Lan Service
+
+[Service]
+TimeoutStartSec=0
+ExecStart=/usr/sbin/go-wol-server -configFile=/etc/go-wol-server/config.toml -templateDir=/etc/go-wol-server/templates/ -listenPort=8080
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,4 @@
+[workstations]
+	[workstations.vaih-workstation-1]
+	MAC = "14:da:e9:de:d5:0b"
+	IP = "100.126.240.33"
