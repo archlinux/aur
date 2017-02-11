@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('moolticute')
 makedepends=('git'
              'go')
-url="https://github.com/bobsaintcool/${pkgname}"
+url="https://github.com/raoulh/${pkgname}"
 _gourl="${url##https://}"
 install="${pkgname}.install"
 
