@@ -1,0 +1,16 @@
+pkgbase = fin
+    pkgdesc = The command line personal finances manager
+    pkgver = 1.51
+    pkgrel = 1
+    url = https://github.com/bashrc/fin
+    arch = x86_64
+    license = GPL3
+    makedepends = sqlite
+    depends = sqlite
+    depends = gnuplot
+    source = https://freedombone.net/arch/fin/fin-1.51.tar.gz
+    source = https://freedombone.net/arch/fin/fin-1.51.tar.gz.asc
+    sha512sums = a7333e160617c4340d2af4ff12402d87483e6213b0ca510f8750bd7958d95bf544fac45cb7c16ec56eaba8a0cb8eff86e2e7a48f0593d32ede37c112d2dcf73b
+    sha512sums = SKIP
+
+pkgname = fin
