@@ -27,15 +27,3 @@ package() {
   install -D -m644 "$pkgdir/usr/lib/GNUstep/Applications/$_pkgname.app/Resources/$_pkgname.desktop" \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
-
-post_install() {
-  update-desktop-database -q
-}
-
-post_upgrade() {
-  post_install $1
-}
-
-post_remove() {
-  post_install $1
-}
