@@ -1,4 +1,4 @@
-# Maintainer: Radostin Stoyanov <rstoyanov1@gmail.com>
+# Maintainer: Radostin Stoyanov <rstoyanov1 at gmail dot com>
 pkgname=antconc
 pkgver=3.4.3
 _appname=AntConc
