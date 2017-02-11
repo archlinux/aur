@@ -1,13 +1,13 @@
 pkgbase = libsyscall
 	pkgdesc = A library providing all of the assembly code needed for a C standard library
-	pkgver = 0.1.0
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/celskeggs/libsyscall
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source = https://github.com/celskeggs/libsyscall/archive/v0.1.0.tar.gz
-	sha256sums = 3a08f42b3999bd68a87d2f3ce506e9f302dfcfb14444cefcf1e39e731a482604
+	source = https://github.com/celskeggs/libsyscall/archive/v0.1.3.tar.gz
+	sha256sums = 867dc1aa05ea79dc495524d2ac6cc4cec6ee105570360878d4b177ce640ae3c1
 
 pkgname = libsyscall
 
