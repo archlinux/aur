@@ -1,0 +1,8 @@
+# build files
+/src/
+/pkg/
+/dgsh/
+/*.pkg*
+
+# editor backup files
+*~
