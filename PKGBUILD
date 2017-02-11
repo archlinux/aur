@@ -23,7 +23,6 @@ pkgver() {
 build() {
 	cd $_pkgname
 	echo "ENABLE_DEBUG=0" >> config.tup
-	echo "ENABLE_STATIC=0" >> config.tup
 	tup init
 	tup upd
 }
@@ -32,6 +31,7 @@ package() {
 	cd $_pkgname
 	mkdir -p $pkgdir/usr/{include/wld,lib,share/licenses/$pkgname}
 	install -m 644 drm.h pixman.h wayland.h wld.h $pkgdir/usr/include/wld
+	install -m 644 libwld.a $pkgdir/usr/lib
 	install -m 755 libwld.so.0.0 $pkgdir/usr/lib
 	ln -sT libwld.so.0.0 $pkgdir/usr/lib/libwld.so.0
 	ln -sT libwld.so.0.0 $pkgdir/usr/lib/libwld.so
