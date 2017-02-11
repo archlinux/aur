@@ -5,7 +5,7 @@ _ver=1.1.0d
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('i686' 'x86_64')
 url='https://www.openssl.org'
@@ -62,11 +62,4 @@ package() {
 	cd $srcdir/$pkgname-$_ver
 	make DESTDIR=$pkgdir MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
 	install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-
-	# bootstrap hack
-	pushd $pkgdir/usr/lib
-	for lib in crypto ssl; do
-		ln -s lib${lib}.so.1.1 lib${lib}.so.1.0.0
-	done
-	popd
 }
