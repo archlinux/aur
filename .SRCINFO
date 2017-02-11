@@ -1,7 +1,7 @@
 pkgbase = gstreamer0.10-python
 	pkgdesc = Python bindings for GStreamer 0.10
 	pkgver = 0.10.22
-	pkgrel = 5
+	pkgrel = 6
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gstreamer0.10-python
 	makedepends = pkgconfig
 	depends = pygobject>=2.20.0
 	depends = gstreamer0.10-base>=0.10.36-3
-	source = http://gstreamer.freedesktop.org/src/gst-python/gst-python-0.10.22.tar.bz2
+	source = https://gstreamer.freedesktop.org/src/gst-python/gst-python-0.10.22.tar.bz2
 	md5sums = 937152fe896241f827689f4b53e79b22
 
 pkgname = gstreamer0.10-python
