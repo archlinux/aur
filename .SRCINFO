@@ -1,0 +1,16 @@
+pkgbase = broom
+	pkgdesc = A disk cleaning utility for developers.
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/nicoulaj/broom
+	changelog = Changelog
+	arch = any
+	license = MIT
+	depends = bash>=4
+	depends = ncurses
+	conflicts = broom-git
+	source = https://github.com/nicoulaj/broom/archive/1.6.0.tar.gz
+	md5sums = b82a814cea04afa4d7419f4def843a97
+
+pkgname = broom
+
