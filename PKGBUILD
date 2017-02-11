@@ -4,7 +4,7 @@
 
 pkgbase=afick
 pkgname=('afick' 'afick-gui')
-pkgver=3.5.2
+pkgver=3.5.3
 pkgrel=1
 pkgdesc="A security tool similar to tripwire"
 arch=('any')
@@ -12,8 +12,8 @@ url="http://afick.sourceforge.net/"
 license=('GPL')
 makedepends=('perl-tk')
 backup=('etc/afick.conf')
-source=(http://sourceforge.net/projects/afick/files/$pkgname/$pkgver/$pkgname-$pkgver.tgz)
-md5sums=('7a8bbeffcb6e602317d8d1e63e8999a9')
+source=(http://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.tgz)
+sha256sums=('20fae54794796586bdbd146ad3f9129558a8734e77fe98539c1db3904c67d347')
 
 build() {
   cd "${srcdir}"/$pkgbase-$pkgver
