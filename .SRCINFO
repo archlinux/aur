@@ -1,14 +1,14 @@
 pkgbase = cyclone-scheme
-	pkgdesc = An R7RS Scheme-to-C compiler using Cheney on the M.T.A with native threads
-	pkgver = 0.3.3
+	pkgdesc = A brand-new compiler that allows practical application development using R7RS Scheme
+	pkgver = 0.3.4.1
 	pkgrel = 1
 	url = https://github.com/justinethier/cyclone-bootstrap
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = libck
-	source = https://github.com/justinethier/cyclone-bootstrap/archive/v0.3.3.tar.gz
-	md5sums = c3a05931f5646526df961ab6b4c23109
+	source = https://github.com/justinethier/cyclone-bootstrap/archive/v0.3.4.1.tar.gz
+	md5sums = 6f9f60b73f195e9bd86552d68c8405da
 
 pkgname = cyclone-scheme
 
