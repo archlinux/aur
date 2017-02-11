@@ -7,13 +7,20 @@ pkgbase = gods
 	license = custom
 	makedepends = setconf
 	depends = java-runtime
-	optdepends = gods-extra-music: mp3 music pack
+	noextract = Gods_extra_music.zip
 	source = https://jotd.pagesperso-orange.fr/gods/GodsDeluxe-0_9.zip
+	source = http://jotd.free.fr/gods/Gods_extra_music.zip
 	source = gods.png::http://www.androidfreeware.net/software_images/gods.thumb.png
 	source = gods.desktop
 	sha256sums = 38fe593a9ed361c65e4a4c36dd4940cde8c847849f1d5e9f15eb940089428a9c
+	sha256sums = 0b92f6e8a056362af481343df2e31eb001b55e43065556e6f4c625b8933c9ca7
 	sha256sums = d40a00737cfcc82bb4b24110ac5d162da5dddf6041a5d83b94a2c0104ac3a2e3
 	sha256sums = 176170bb9642eaf3c37d9d393f122334ae5080c9f9a4b69eea27d49855aa41e0
 
 pkgname = gods
+	optdepends = gods-extra-music: mp3 music pack
+
+pkgname = gods-extra-music
+	pkgdesc = Gods Deluxe, mp3 music pack
+	depends = gods
 
