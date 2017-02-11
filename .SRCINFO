@@ -1,0 +1,16 @@
+pkgbase = rrun-ssh
+	pkgdesc = Remote run utility; runs a command in an SSHFS-mounted directory.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/clarcharr/rrun
+	arch = i686
+	arch = x86_64
+	license = CC0
+	makedepends = rust
+	conflicts = rrun
+	source = git+https://github.com/clarcharr/rrun#
+	validpgpkeys = 4BDA23A98EE4E049CBC3BA6C69DA5B388573EE35
+	sha256sums = SKIP
+
+pkgname = rrun-ssh
+
