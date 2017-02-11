@@ -5,7 +5,7 @@
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=0.4.5dev.r327.g6779ff1
+pkgver=0.4.5.r0.g2cb68b221
 pkgrel=1
 pkgdesc='global versioned p2p merkledag file system'
 url="https://github.com/ipfs/$_pkgname"
