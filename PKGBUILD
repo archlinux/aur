@@ -1,12 +1,12 @@
 # Contributor: bubla <matej.tyc@gmail.com>
 pkgname=mingw-w64-libtiff
 pkgver=4.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for manipulation of TIFF images (mingw-w64)"
 arch=(any)
 url="http://www.remotesensing.org/libtiff"
 license=("custom")
-depends=(mingw-w64-libjpeg-turbo mingw-w64-zlib mingw-w64-xz libtiff)
+depends=(mingw-w64-libjpeg-turbo mingw-w64-zlib mingw-w64-xz)
 makedepends=(mingw-w64-configure)
 options=(staticlibs !buildflags !strip)
 source=("http://download.osgeo.org/libtiff/tiff-${pkgver}.tar.gz")
@@ -37,6 +37,5 @@ package() {
     find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-    #rm -r "$pkgdir/usr/${_arch}/share"
   done
 }
