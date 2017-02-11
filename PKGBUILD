@@ -3,7 +3,7 @@
 pkgname=go-wol-server-git
 _pkgname=go-wol-server
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Wake on Lan server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -25,7 +25,7 @@ source=('go-wol-server.service'
         'config.toml'
         "${_gourl_pkgname}::git+https://${_gourl}/${_gourl_pkgname}.git")
 
-sha512sums=('59edc78dbde75d7bf6b364b27e7e2dea86b2a72ac85a3e756f380edd0d441a8c6f873e7e5fbf9cfc6644771406cd14725537cb17335d41ac1a6d49df3fdb8b09'
+sha512sums=('913520d8972d7d91d0f78d14b21e511f87c8e0f5a6860242f9ec01e5c1f3791a1c0b7b83a59b5c1c7846db58905e55846d08db9e3aa849fada7e45ea0ddad6fc'
             'beb090067f0f08371e049a940fe4c3f5de7aead3763366a25814a4424d761624558ffe3fc5447e9f9efbe5bde85b87a77c2fed1958f202adeaaee930f91d45d4'
             'SKIP')
 
@@ -46,7 +46,7 @@ build() {
 package() {
   install -D -m 0755 "${srcdir}/src/${_gourl}/${_gourl_pkgname}/${_gourl_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   
-  install -D -m 0600 "${srcdir}/src/${_gourl}/${_gourl_pkgname}/config.toml" "$pkgdir/etc/${_pkgname}/config.toml"
+  install -D -m 0600 "${srcdir}/config.toml" "$pkgdir/etc/${_pkgname}/config.toml"
   cp -r "${srcdir}/src/${_gourl}/${_gourl_pkgname}/templates" "${pkgdir}/etc/${_pkgname}/templates"
   
   install -D -m 0644 "${srcdir}/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
