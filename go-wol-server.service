@@ -3,7 +3,7 @@ Description=Wake on Lan Service
 
 [Service]
 TimeoutStartSec=0
-ExecStart=/usr/bin/go-wol-server -configFile=/etc/go-wol-server/config.toml -templateDir=/etc/go-wol-server/templates/ -remoteRoot=/ -listen=127.0.0.1:8080
+ExecStart=/usr/bin/go-wol-server -config=/etc/go-wol-server/config.toml
 
 [Install]
 WantedBy=multi-user.target

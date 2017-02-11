@@ -1,4 +1,13 @@
+[core]
+Address = "127.0.0.1:8080"
+ExternalURL = ""
+TemplateDir = "/usr/share/themes/go-wol-server/templates/default"
+
+[core.html]
+Title = "Go WakeOnLan server"
+
 [workstations]
-	[workstations.vaih-workstation-1]
-	MAC = "14:da:e9:de:d5:0b"
-	IP = "100.126.240.33"
+
+[workstations.vaih-workstation-1]
+MAC = "14:da:e9:de:d5:0b"
+IP = "100.126.240.33"
