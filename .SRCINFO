@@ -5,6 +5,7 @@ pkgbase = antconc
 	url = http://www.laurenceanthony.net/software/antconc/
 	arch = any
 	depends = lib32-libxft
+	depends = lib32-libxss
 	options = !strip
 	source = http://www.laurenceanthony.net/software/antconc/releases/AntConc343/AntConc.tar.gz
 	source = antconc.png
