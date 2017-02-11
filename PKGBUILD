@@ -1,21 +1,21 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=zcash
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://z.cash/'
 license=('MIT')
-depends=('bash' 'boost-libs' 'gmp' 'libsodium')
+depends=('boost-libs' 'zeromq')
 makedepends=('boost' 'wget')
-checkdepends=('python' 'python2')
+checkdepends=('python' 'python2' 'python2-pyzmq')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zcash/zcash/archive/v${pkgver}.tar.gz"
         "boost-no-mt-suffix.patch"
         "use-system-libraries.patch")
-sha256sums=('253f2c10f8242d783c52334452949d06139b9f141d1678a8ede259475df872aa'
-            '3476e5fc227ada40cfbd126fc2c4d85a0951163dc57d92c294b0716f6030b774'
-            '4a386d9f407b589fd2df9dd9ba0ddf99def2f9bb88fac4ec602fa29af317fc0d')
+sha256sums=('7073068e9501910534be25634ce0bf73258cd0bcdf244d555dbfd9450d556d8a'
+            '55ebbffa2daf4a59135dc7b58b9553da21456934e676d6c08d4930bd14817c06'
+            'ef8ab26635bb2608f03ddf991da3581060670161938171fa2e413758fa4bad3f')
 
 prepare() {
     cd ${pkgname}-${pkgver}
