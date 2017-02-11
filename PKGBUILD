@@ -13,11 +13,13 @@ depends=('python'
          'python-markdown'
          'python-beautifulsoup4'
          'python-gtkspellcheck'
+         'python-lxml'
          'webkitgtk'
          'wkhtmltopdf'
          'gtksourceview3'
          )
 makedepends=('python')
+optdepends=('python-lxml: export to HTML format support')
 options=('!emptydirs' '!strip')
 install="${pkgname}.install"
 source=("${pkgname}_${pkgver}_all.deb::http://remarkableapp.github.io/files/${pkgname}_${pkgver}_all.deb"
