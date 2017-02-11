@@ -280,6 +280,10 @@ package() {
       # https://bugreports.qt.nokia.com/browse/QTBUG-14467
       sed -i s@'$${QT_LIBINFIX}d'@'d$${QT_LIBINFIX}'@ "${pkgdir}"/usr/${_arch}/share/qt4/mkspecs/features/win32/windows.prf
       sed -i s@'$${QT_LIBINFIX}d'@'d$${QT_LIBINFIX}'@ "${pkgdir}"/usr/${_arch}/share/qt4/mkspecs/features/qt_functions.prf
+
+      # xmlpatterns.exe, xmlpatternsvalidator.exe conflict with qt5 ones
+      mv "${pkgdir}"/usr/${_arch}/bin/xmlpatterns.exe "${pkgdir}"/usr/${_arch}/bin/xmlpatterns4.exe
+      mv "${pkgdir}"/usr/${_arch}/bin/xmlpatternsvalidator.exe "${pkgdir}"/usr/${_arch}/bin/xmlpatternsvalidator4.exe
     fi
 
     if isDebug; then
