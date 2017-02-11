@@ -2,9 +2,9 @@
 
 pkgname=python-sense-hat
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Raspberry Pi Sense HAT Python library"
-arch=('armv7h')
+arch=('armv7h' 'armv6h')
 url="https://pythonhosted.org/sense-hat/"
 license=('BSD')
 depends=('python' 'python-pillow' 'python-setuptools' 'python-numpy' 'python-rtimulib' 'i2c-tools' 'lm_sensors')
