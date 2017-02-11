@@ -1,0 +1,13 @@
+pkgbase = gods-extra-music
+	pkgdesc = Gods Deluxe, mp3 music pack
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://jotd.pagesperso-orange.fr/gods/
+	arch = any
+	license = custom
+	depends = gods
+	source = http://jotd.free.fr/gods/Gods_extra_music.zip
+	sha256sums = 0b92f6e8a056362af481343df2e31eb001b55e43065556e6f4c625b8933c9ca7
+
+pkgname = gods-extra-music
+
