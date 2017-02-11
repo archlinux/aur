@@ -2,7 +2,7 @@
 # Previous maintainer: Renato Garcia <fgarcia.renato@gmail.com>
 
 pkgname=python-elpy
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc="Package to bring powerful Python editing to Emacs. Python library only."
 install="python-elpy.install"
@@ -16,7 +16,7 @@ optdepends=('python-autopep8: format code according to PEP8'
             'python-rope: refactory library support')
 options=(!emptydirs)
 source=("https://github.com/jorgenschaefer/elpy/archive/${pkgver}.tar.gz")
-md5sums=('7cbd49fa35780405c125f3bdf0b06a32')
+md5sums=('34ce218aa059b8e7a5653f26bb09bf13')
 
 package() {
   cd "${srcdir}/elpy-${pkgver}"
