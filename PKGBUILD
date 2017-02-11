@@ -2,8 +2,8 @@
 
 pkgname=go-wol-server-git
 _pkgname=go-wol-server
-pkgver=0.1
-pkgrel=6
+pkgver=0.2
+pkgrel=1
 epoch=1
 pkgdesc="Wake on Lan server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -19,7 +19,7 @@ backup=('etc/go-wol-server/config.toml'
         'etc/go-wol-server/templates/header.tmpl'
         'etc/go-wol-server/templates/index.tmpl')
 
-_gourl=github.com/qybl
+_gourl=github.com/fanningert
 _gourl_pkgname=wol-server
 source=('go-wol-server.service'
         'config.toml'
