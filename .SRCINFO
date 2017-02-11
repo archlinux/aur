@@ -1,8 +1,9 @@
 pkgbase = evelauncher
-	pkgdesc = Unofficial Eve Online Launcher. Simplify Installation
+	pkgdesc = Unofficial Eve Online Launcher brought to us by CCP Devs. It simplifies the installation of Eve Online on Linux
 	pkgver = 1104891
 	pkgrel = 1
-	url = https://binaries.eveonline.com/evelauncher-1104891.tar.gz
+	url = https://forums.eveonline.com/default.aspx?g=posts&t=482663
+	install = evelauncher.install
 	arch = any
 	license = custom
 	depends = wine
