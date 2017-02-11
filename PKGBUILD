@@ -1,7 +1,7 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl
-_ver=1.0.2k
+_ver=1.1.0d
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
@@ -12,28 +12,17 @@ url='https://www.openssl.org'
 license=('custom:BSD')
 depends=('perl')
 optdepends=('ca-certificates')
-options=('!makeflags')
 backup=('etc/ssl/openssl.cnf')
 source=("https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz"
         "https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz.asc"
-        'no-rpath.patch'
-        'ssl3-test-failure.patch'
         'ca-dir.patch')
-md5sums=('f965fc0bf01bf882b31314b61391ae65'
+md5sums=('711ce3cd5f53a99c0e12a7d5804f0f63'
          'SKIP'
-         'dc78d3d06baffc16217519242ce92478'
-         '62fc492252edd3283871632bb77fadbe'
-         '3bf51be3a1bbd262be46dc619f92aa90')
+         '02b53865fb70faef763e262b4971aa4b')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
 
 prepare() {
 	cd $srcdir/$pkgname-$_ver
-
-	# remove rpath: http://bugs.archlinux.org/task/14367
-	patch -p0 -i $srcdir/no-rpath.patch
-
-	# disable a test that fails when ssl3 is disabled
-	patch -p1 -i $srcdir/ssl3-test-failure.patch
 
 	# set ca dir to /etc/ssl by default
 	patch -p0 -i $srcdir/ca-dir.patch
@@ -71,6 +60,13 @@ check() {
 
 package() {
 	cd $srcdir/$pkgname-$_ver
-	make INSTALL_PREFIX=$pkgdir MANDIR=/usr/share/man MANSUFFIX=ssl install
+	make DESTDIR=$pkgdir MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
 	install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+
+	# bootstrap hack
+	pushd $pkgdir/usr/lib
+	for lib in crypto ssl; do
+		ln -s lib${lib}.so.1.1 lib${lib}.so.1.0.0
+	done
+	popd
 }
