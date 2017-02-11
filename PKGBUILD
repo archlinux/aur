@@ -3,8 +3,8 @@
 
 pkgname=php-codesniffer
 _pkgname=PHP_CodeSniffer
-pkgver=2.7.0
-pkgrel=2
+pkgver=2.8.0
+pkgrel=1
 pkgdesc="PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files to detect and fix violations of a defined set of coding standards."
 arch=('any')
 url="http://pear.php.net/package/PHP_CodeSniffer/"
@@ -14,8 +14,8 @@ source=("https://github.com/squizlabs/${_pkgname}/releases/download/${pkgver}/ph
         "https://github.com/squizlabs/${_pkgname}/releases/download/${pkgver}/phpcbf.phar"
         "https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/${pkgver}/licence.txt")
 
-sha256sums=('6b3c3f36a706323e952e7706b69e1d88ec12b609f1c44c1abd911b0743e281d0'
-            '6b1542b2fe5e0e6ca00bbd2fe9c6233d0c48b1638003ab0645536f5b24f64224'
+sha256sums=('668e6d442cc90faa81fd770b25b9ecf987de5d076ac12cd38567ac470c7c8590'
+            'dfaefd62aeabc23e6f247e1269d96d9abffb2a031bb58a14c038754e7957e79c'
             '821c1697ab88bb71a5d1637743024e455d87074b8a5d0732f85205bd40cba6c9')
 
 package() {
