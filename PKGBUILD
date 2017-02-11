@@ -1,20 +1,18 @@
-# $Id: PKGBUILD 134819 2015-06-05 05:13:15Z lcarlier $
-# Maintainer: Florian Pritz <flo@xssn.at>
+# Maintainer: Michał Lisowski <lisu@riseup.net>
+# Contributor: Florian Pritz <flo@xssn.at>
 
 _pkgbasename=libmng
 pkgname=lib32-$_pkgbasename
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of routines used to create and manipulate MNG format graphics files (32-bit)"
 arch=('x86_64')
 url="http://www.libmng.com/"
 license=('custom')
 depends=('lib32-lcms2' $_pkgbasename)
 makedepends=(gcc-multilib)
-source=(http://downloads.sourceforge.net/sourceforge/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.xz{,.asc})
-validpgpkeys=(8048643BA2C840F4F92A195FF54984BFA16C640F)
-sha1sums=('0f141482ffcef6f8cd4413f945a59310ac2e49af'
-          'SKIP')
+source=(http://downloads.sourceforge.net/sourceforge/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.xz)
+sha1sums=('0f141482ffcef6f8cd4413f945a59310ac2e49af')
 
 build() {
   export CC="gcc -m32"

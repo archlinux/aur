@@ -1,7 +1,7 @@
 pkgbase = lib32-libmng
 	pkgdesc = A collection of routines used to create and manipulate MNG format graphics files (32-bit)
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.libmng.com/
 	arch = x86_64
 	license = custom
@@ -9,10 +9,7 @@ pkgbase = lib32-libmng
 	depends = lib32-lcms2
 	depends = libmng
 	source = http://downloads.sourceforge.net/sourceforge/libmng/libmng-2.0.3.tar.xz
-	source = http://downloads.sourceforge.net/sourceforge/libmng/libmng-2.0.3.tar.xz.asc
-	validpgpkeys = 8048643BA2C840F4F92A195FF54984BFA16C640F
 	sha1sums = 0f141482ffcef6f8cd4413f945a59310ac2e49af
-	sha1sums = SKIP
 
 pkgname = lib32-libmng
 
