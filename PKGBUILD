@@ -2,8 +2,8 @@
 
 pkgname=wuzz-git
 _pkgname=wuzz
-pkgver=r42.982d64b
-pkgrel=2
+pkgver=v0.1.0.r5.g46994a8
+pkgrel=1
 pkgdesc="Interactive cli tool for HTTP inspection"
 arch=('x86_64' 'i686')
 url="https://github.com/asciimoo/wuzz"
@@ -17,11 +17,7 @@ sha256sums=("SKIP")
 
 pkgver() {
     cd "$SRCDEST/$_pkgname"
-    (
-        set -o pipefail
-        git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
