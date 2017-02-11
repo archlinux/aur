@@ -1,10 +1,10 @@
 pkgname=mingw-w64-libjpeg-turbo
 pkgver=1.5.1
-pkgrel=3
+pkgrel=4
 arch=(any)
 pkgdesc="JPEG image codec with accelerated baseline compression and decompression (mingw-w64)"
 license=("custom" "GPL")
-depends=(mingw-w64-crt libjpeg-turbo)
+depends=(mingw-w64-crt)
 makedepends=(nasm mingw-w64-configure)
 provides=(mingw-w64-libjpeg)
 conflicts=(mingw-w64-libjpeg mingw-w64-libjpeg6-turbo)
