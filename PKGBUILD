@@ -32,11 +32,16 @@ optdepends=('gpsbabel: GPS Tool plugin'
             'python2-psycopg2: Processing plugin'
             'python2-pyspatialite: Processing plugin'
             'python2-yaml: Processing plugin')
-source=("https://qgis.org/downloads/$pkgname-$pkgver.tar.bz2")
-md5sums=('2cda9698a20c5930d5a378ef94b9d971')
+source=("https://qgis.org/downloads/$pkgname-$pkgver.tar.bz2"
+        "sip.patch::https://github.com/qgis/QGIS/commit/718581ffb12b723f9a3c0ae01b7ec2d8aed9d4bb.patch")
+md5sums=('2cda9698a20c5930d5a378ef94b9d971'
+         'e2d3f75b7437ac2f2ae3b1bb815b711a')
 
 prepare() {
   cd $pkgname-$pkgver
+  
+  # fix build with sip 4.19
+  patch -p1 -i $srcdir/sip.patch
 
   # Fix references to "python"
   sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
