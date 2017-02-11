@@ -1,7 +1,7 @@
 # Maintainer: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
 
 pkgname=moolticute
-pkgver=0.5.5
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Easy companion for Mooltipass device"
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ depends=('libusb'
 makedepends=('make')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}-beta.tar.gz")
-sha256sums=('7ea66a6c38822020136bae7aaa841812f9532dbfef5334f06806a1c642958d5e')
+sha256sums=('2cf52d1d420964c3ba82906b006cbb43830beb7b4a22c8e6598232e6bef91fa5')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}-beta"
@@ -43,5 +43,6 @@ package() {
     make INSTALL_ROOT="${pkgdir}/" install
 
     # temporary remove udev rules until fully merged into mooltipass-udev
+    # this should be removed on the next moolticute release
     rm -rf "${pkgdir}/usr/lib/udev/"
 }
