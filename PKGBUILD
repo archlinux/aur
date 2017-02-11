@@ -1,7 +1,7 @@
 # Maintainer: vorpalblade77@gmail.com
 pkgname=python-libusb1
 _pkgname=libusb1
-pkgver=1.5.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="Pure python wrapper for libusb"
 arch=('any')
