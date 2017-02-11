@@ -6,7 +6,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=eagle
-pkgver=8.0.0
+pkgver=8.0.1
 pkgrel=1
 pkgdesc="Powerful suite for schematic capture and printed circuit board design (aka eaglecad)"
 arch=('x86_64')
@@ -27,11 +27,11 @@ depends=(
   'shared-mime-info'
 )
 options=(!emptydirs !strip)
-source=(http://trial2.autodesk.com/NET17SWDLD/2017/EGLPRM/ESD/Autodesk_EAGLE_${pkgver%.*}_English_Linux_64bit.tar.gz
-        http://download.autodesk.com/us/FY17/Suites/LSA/en-US/lsa.html
-        $pkgname.desktop
-        $pkgname.xml)
-sha256sums=('23fb24c521b2748bda15f2411195218bf1e0288b2a0a8066e64cbc85c59f4707'
+source=("http://trial2.autodesk.com/NET17SWDLD/2017/EGLPRM/ESD/Autodesk_EAGLE_8.0.1_English_Linux_64bit.tar.gz"
+        "http://download.autodesk.com/us/FY17/Suites/LSA/en-US/lsa.html"
+        "$pkgname.desktop"
+        "$pkgname.xml")
+sha256sums=('6527be010407a803ae799af5dfa19e9c0d12719260179e03679648569a448eb5'
             'eed1b33943b366f58480e7d57673e4278db215e9d3bdfcece937f3f74ea72cf9'
             '40e5a40cea787c0e823946271031744fdd9c755363da97d6dd4bea1eee7ee6b6'
             '293ef717030e171903ba555a5c698e581f056d2a33884868018ab2af96a94a06')
