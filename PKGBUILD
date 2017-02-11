@@ -5,8 +5,8 @@
 
 _pkgname=slic3r
 pkgname=${_pkgname}-prusa3d
-pkgver=1.31.6
-pkgrel=3
+pkgver=1.33.3
+pkgrel=1
 pkgdesc="Updated Slic3r by Prusa3D with many bugfixes and new features"
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url="http://www.prusa3d.com/"
@@ -25,18 +25,15 @@ provides=('slic3r')
 conflicts=('slic3r' 'slic3r-git' 'slic3r-xs' 'slic3r-xs-git')
 source=("git+https://github.com/prusa3d/Slic3r.git#tag=version_$pkgver"
         "Move-Slic3r-data-to-usr-share-slic3r.patch"
-        "https://patch-diff.githubusercontent.com/raw/alexrj/Slic3r/pull/3575.diff"
         'slic3r.desktop')
 md5sums=('SKIP'
          '03863b8db5dff40e194290ae07d6366f'
-         'a6933460fdabce17244e7543b09ee692'
          '7de264a96d4bcc1143b148ad8d854979')
 
         
 prepare() {
   cd "${srcdir}/Slic3r"
   patch -p1 -i "$srcdir/Move-Slic3r-data-to-usr-share-slic3r.patch"
-  patch -p1 -i "$srcdir/3575.diff"
   sed -i "s/#define SLIC3R_VERSION .*/#define SLIC3R_VERSION \"$pkgver\"/" xs/src/libslic3r/libslic3r.h
 }
 
