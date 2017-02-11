@@ -1,0 +1,24 @@
+pkgbase = green-recorder-git
+	pkgdesc = A simple yet functional desktop recorder for Linux systems.
+	pkgver = 1.1.r6.g43d5317
+	pkgrel = 1
+	url = https://github.com/green-project/green-recorder
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python2
+	depends = libappindicator-gtk3
+	depends = python2-gobject
+	depends = gtk3
+	depends = ffmpeg
+	depends = gawk
+	depends = python2-urllib3
+	depends = xorg-utils
+	provides = green-recorder
+	conflicts = green-recorder
+	options = !emptydirs
+	source = git://github.com/green-project/green-recorder.git
+	sha1sums = SKIP
+
+pkgname = green-recorder-git
+
