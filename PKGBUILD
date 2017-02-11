@@ -7,9 +7,9 @@
 # Contributor: Lubomir 'Kuci' Kucera <kuci24-at-gmail-dot-com>
 
 pkgname=android-studio-beta
-pkgver=2.3.0.5
+pkgver=2.3.0.6
 pkgrel=1
-_build=162.3671887
+_build=162.3715353
 pkgdesc="The Official Android IDE (Beta branch)"
 arch=('i686' 'x86_64')
 url="http://tools.android.com/"
@@ -21,7 +21,7 @@ optdepends=('gtk2: GTK+ look and feel'
 options=('!strip')
 source=("https://dl.google.com/dl/android/studio/ide-zips/$pkgver/android-studio-ide-$_build-linux.zip"
         "$pkgname.desktop")
-sha1sums=('110d01a2ba0325827a213cc6b6bf8d0cef2042e8'
+sha1sums=('220fefc2b9ced852ad4bef7237607d28f58be9f2'
           'b61f3bf3449f79f8b15aea93414398848e5a6614')
 
 if [ "$CARCH" = "i686" ]; then
