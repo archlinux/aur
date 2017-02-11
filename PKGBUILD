@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgbase=python-pydub
 pkgname=('python-pydub' 'python2-pydub')
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Manipulate audio with an simple and easy high level interface"
 url="http://pydub.com"
@@ -36,6 +36,6 @@ package_python2-pydub() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha1sums=('2d4884ed8cf994b85e8eb9b30919f6826dd1b7a4')
-sha256sums=('437e18c141ed0bebb1cf875f9b93bd8830a1e7772000a4cf0d61103169e1917f')
-sha512sums=('a834a1b8e18503d8026eb86afba87c61967fd1c5a98bff389d80656191df81b02145f91d14baaf1aa388a3f251b2720ead2e0eb64889c0b809c568dbe7e5d6eb')
+sha1sums=('15a098790940435ddef3faa40009576e7384f1c3')
+sha256sums=('d3ec8fe0474b26d5088a59888eda85b8267da21fb7d066485b1d77daf3b68ffb')
+sha512sums=('a39256b320a517d968d84eaf7e5666e362120e3be8ba97e8a08035900957334a2f8c13085175a01e2f2fa56336846557a4a5dcf23dc9a9e1abfb8688858e8477')
