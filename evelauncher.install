@@ -1,4 +1,4 @@
-post_install{
+post_install(){
 	echo "***********************************************************"
 	echo " On first install, I strongly recommend to run the program "
 	echo " from the terminal."
