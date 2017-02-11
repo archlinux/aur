@@ -1,6 +1,6 @@
 pkgbase = hue-plus-git
 	pkgdesc = A Linux driver in Python for the NZXT Hue+
-	pkgver = r49.87080b1
+	pkgver = r63.5a092af
 	pkgrel = 1
 	url = https://github.com/kusti8/hue-plus
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = hue-plus-git
 	makedepends = git
 	depends = python-pyserial
 	optdepends = zenity: gui support
+	optdepends = python-pyqt5: gui support
 	provides = hue-plus
 	source = git+https://github.com/kusti8/hue-plus.git
 	sha256sums = SKIP
