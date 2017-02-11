@@ -1,0 +1,13 @@
+# downloadable source
+/linux-4.*.tar.xz
+/linux-4.*.tar.sign
+/patch-4.*.xz
+/patch-4.*.sign
+# binary package
+/linux-pae-4.*-i686.pkg.tar*
+/linux-pae-headers-4.*-i686.pkg.tar*
+/linux-pae-docs-4.*-i686.pkg.tar*
+/linux.install.pkg
+# build directory
+/src
+/pkg
