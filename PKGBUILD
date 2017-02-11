@@ -1,12 +1,12 @@
 pkgname=p7gui
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI for p7."
 arch=("x86_32" "x86_64")
 url="https://github.com/intelligide/p7gui"
 license=('LGPL3')
 groups=()
-depends=('qt5-base' 'libp7>=2.0')
+depends=('qt5-base' 'libp7>=2.0' 'libp7<3.0')
 makedepends=()
 provides=()
 conflicts=()

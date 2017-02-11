@@ -1,13 +1,14 @@
 pkgbase = p7gui
 	pkgdesc = A GUI for p7.
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/intelligide/p7gui
 	arch = x86_32
 	arch = x86_64
 	license = LGPL3
 	depends = qt5-base
 	depends = libp7>=2.0
+	depends = libp7<3.0
 	source = https://github.com/intelligide/p7gui/archive/0.0.1.tar.gz
 	md5sums = SKIP
 
