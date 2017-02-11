@@ -9,4 +9,5 @@ post_install() {
 
 post_upgrade() {
   post_install $1
+  echo "WARNING! Name of the systemd-service changed from upmpcli.service to upmpdcli.service."
 }
