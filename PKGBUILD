@@ -2,7 +2,7 @@
 
 pkgname=cryfs-git
 _pkgname=cryfs
-pkgver=0.9.6.1.g6ad8a20
+pkgver=0.9.7.1.g4bcad821
 pkgrel=1
 pkgdesc="CryFS encrypts your files, so you can safely store them anywhere"
 arch=('i686' 'x86_64' 'armv7h')
