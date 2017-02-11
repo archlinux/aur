@@ -22,8 +22,10 @@ sha512sums=('50cbe8ee911080f586e77861c442348701bd02e2de0c090c54c34f82ac275ecfcd7
             '4f5603f1476b759c86d4784728fbdd212c59b30dc56d787c1834bf68a9cd83071fa22658d24e5a58beb94c0c656b0e4457d7da6e3048715dd36bd68380fc336e'
             'SKIP')
 validpgpkeys=(# Tom Stellard <tom@stellard.net> (.1 releases)
+              # https://pgp.mit.edu/pks/lookup?op=get&search=0x8F0871F202119294
               11E521D646982372EB577A1F8F0871F202119294
               # Hans Wennborg <hans@chromium.org> (.0 releases)
+              # http://releases.llvm.org/3.8.0/hans-gpg-key.asc
               B6C8F98282B944E3B0D5C2530FC3042E345AD05D)
  
 prepare() {
