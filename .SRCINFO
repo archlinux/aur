@@ -1,16 +1,14 @@
 pkgbase = mooltipass-udev
 	pkgdesc = Udev rules to connect Mooltipass devices
-	pkgver = 2017020702
+	pkgver = 2017021102
 	pkgrel = 1
-	url = https://git.bourgeois.eu/
+	url = https://github.com/bobsaintcool/mooltipass-udev
 	arch = any
 	license = GPL3
 	depends = libusb
 	depends = udev
-	source = mooltipass-udev-2017020702.tar.gz::https://git.bourgeois.eu//mooltipass-udev.git/snapshot/mooltipass-udev-2017020702.tar.gz
-	source = mooltipass-udev-2017020702.tar.gz.asc::https://git.bourgeois.eu//pub/mooltipass-udev/mooltipass-udev-2017020702.tar.gz.asc
+	source = mooltipass-udev-2017021102.tar.gz::https://github.com/bobsaintcool/mooltipass-udev/archive/2017021102.tar.gz
 	validpgpkeys = 3486CBAC7F116CA71351B0D7F7181B2010660E6F
-	sha256sums = 75d952478510e9c91ae5977cba791186ec9423f74b15af6740c11ce595990530
-	sha256sums = SKIP
+	sha256sums = 428c8284fd9bd52a0e0b38de2b3262158090038051b16210e9ebba2bc0859f8a
 
 pkgname = mooltipass-udev
