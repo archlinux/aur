@@ -1,0 +1,16 @@
+pkgbase = rainbow
+	pkgdesc = Colorize commands output or STDIN using patterns.
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/nicoulaj/rainbow
+	changelog = Changelog
+	arch = any
+	license = GPL3
+	depends = python
+	provides = rainbow-git
+	conflicts = rainbow-git
+	source = http://pypi.python.org/packages/source/r/rainbow/rainbow-2.5.0.tar.gz
+	md5sums = 0f88102768f2f3125a8a3313abcfa6ef
+
+pkgname = rainbow
+
