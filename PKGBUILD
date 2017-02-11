@@ -1,6 +1,6 @@
 # Maintainer: Kilian Köppchen <kiliankoeppchen at gmail dot com>
 pkgname=fifechan
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A C++ GUI library designed for games. It comes with a standard set of 'widgets'."
 arch=(any)
@@ -10,8 +10,7 @@ depends=('sdl2_image' 'allegro4' 'libgl' 'glut')
 makedepends=('cmake' 'make')
 provides=('fifechan')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fifengine/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('52e6c3fad7c4692527185b575a8360964f2aa20259fd5fc42b42791e126932c976fc2c90b01984e75355aafae72c82d69b4945133b434665b0e6e29249b541d8')
-
+sha512sums=('d52833c6c6fdb216f20dc572ad9427d868e1dff58ec1d7f5b0f4d12ea9baef4799399054cead0780fd7dee2eb8c5fdf2c9ccd25965c6522b8bdd12309919a13d')
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
 	mkdir -p build && cd build
