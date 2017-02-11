@@ -1,25 +1,26 @@
-# Maintainer: Antoine Lubineau <antoine@lubignon.info>
+# Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
+# Former maintainer: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=dnsperf
-pkgver=2.0.0.0
+pkgver=2.1.0.0
+_pkgsubver=1
 pkgrel=1
 pkgdesc="Tools that measure performance of authoritative Domain Name services"
 arch=('i686' 'x86_64')
 url="http://www.nominum.com/support/measurement-tools/"
 license=('GPL')
 depends=('bind')
-source=("ftp://ftp.nominum.com/pub/nominum/dnsperf/$pkgver/dnsperf-src-$pkgver-1.tar.gz")
-sha256sums=('23d486493f04554d11fca97552e860028f18c5ed6e35348e480a7448fa8cfaad')
+source=("ftp://ftp.nominum.com/pub/nominum/dnsperf/${pkgver}/dnsperf-src-${pkgver}-${_pkgsubver}.tar.gz")
+sha512sums=('5571bd0855aba4affcdf81724919e60ab6762d646f8d9a6abf177a2a588675c636842f2fb708bf648004b9c411e9c9b68789f7c6bbbd87afc24c8299a21aa6c9')
 
 build() {
-  cd "$srcdir/$pkgname-src-$pkgver-1"
+  cd "${srcdir}/${pkgname}-src-${pkgver}-${_pkgsubver}"
   ./configure --prefix=/usr --mandir=/usr/share/man
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-src-$pkgver-1"
-  make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${pkgname}-src-${pkgver}-${_pkgsubver}"
+  make DESTDIR="${pkgdir}" install
 }
 
-# vim:set ts=2 sw=2 et:
