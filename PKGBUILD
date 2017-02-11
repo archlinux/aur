@@ -1,17 +1,17 @@
 # Maintainer: Dave Blair <mail@dave-blair.de>
 # Contributor: Nick Bair <njbair at gmail dot com>
 pkgname=bubbleupnpserver
-pkgver=0.9.16
+pkgver=0.9.23
 pkgrel=1
 pkgdesc="Stream content to Android devices over the Internet – requires UPNP/DNLA backend e.g. Mediatomb"
 arch=('any')
 url="http://www.bubblesoftapps.com/bubbleupnpserver/"
 license=('custom:bubbleupnpserver')
-depends=('jre7-openjdk-headless' 'ffmpeg')
+depends=('java-runtime-headless-jre>=7' 'ffmpeg')
 makedepends=('unzip')
 install=${pkgname}.install
 source=("http://www.bubblesoftapps.com/bubbleupnpserver/BubbleUPnPServer-distrib.zip")
-md5sums=('SKIP')
+md5sums=('83e4df8da91f577a138143ceecd6d120')
 
 build() {
   cd ${srcdir}
