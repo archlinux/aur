@@ -13,7 +13,8 @@ license=('custom')
 options=('!strip')
 depends=(xdg-utils hicolor-icon-theme)
 optdepends=('pulseaudio: audio support/voice chatting'
-            'pavucontrol: volume adjustment')
+            'pavucontrol: volume adjustment'
+            'libao: microphone support')
 source=(http://download.skype.com/linux/$pkgname-$pkgver.tar.bz2 PERMISSION skype-wrapper)
 md5sums=('95db8f2072b9acd6f79ed42da3d6db79'
          '26e1772379d4d4df9471b6ed660a6d97'
@@ -21,11 +22,11 @@ md5sums=('95db8f2072b9acd6f79ed42da3d6db79'
 
 if [[ $CARCH == 'i686' ]]; then
   depends+=(libpulse qt4 libxss libxv libxcursor v4l-utils qtwebkit)
-  optdepends+=('libcanberra: XDG sound support'
-               'lib32-alsa-plugins: microphone support') 
+  optdepends+=('libcanberra: XDG sound support')
 else
   depends+=(lib32-{libpulse,qt4,libxss,libxv,libxcursor,v4l-utils})
-  optdepends+=('lib32-libcanberra: XDG sound support')
+  optdepends+=('lib32-libcanberra: XDG sound support'
+               'lib32-alsa-plugins: microphone support')
   source+=(https://archive.archlinux.org/packages/l/lib32-qt4/lib32-qt4-4.8.7-4-x86_64.pkg.tar.xz)
   md5sums+=('399f232b39602f42c318443471a258b6')
 fi
