@@ -1,0 +1,22 @@
+pkgbase = shenidam-git
+	pkgdesc = Lightweight audio mapping software for AV footage
+	pkgver = 1.0.r9.g08b029a
+	pkgrel = 1
+	url = https://stendardo.org/shenidam
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = git
+	depends = boost-libs
+	depends = fftw
+	depends = libsamplerate
+	depends = libsndfile
+	depends = python2-pyqt4
+	provides = shenidam
+	conflicts = shenidam
+	source = git+https://github.com/stendardo/shenidam
+	md5sums = SKIP
+
+pkgname = shenidam-git
+
