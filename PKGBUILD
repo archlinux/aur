@@ -1,7 +1,14 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
+# NOTE:
+# There is a restriction in pingo website that prevents makepkg from
+# from downloading the pingo.zip file. In order to download it outside
+# a web browser it is necessary to mimic browser headers using curl
+# header options. That's why the pingo.zip file is downloaded and
+# and validated in prepare() and not placed in the source array.
+
 pkgname=pingo
-pkgver=0.57b
+pkgver=0.59
 pkgrel=1
 pkgdesc="An experimental, visually lossless –or lossy and fast PNG/JPG optimizer (uses wine)"
 arch=('i686' 'x86_64')
@@ -9,13 +16,56 @@ url="http://css-ig.net/pingo/"
 license=('unknown')
 depends=('wine')
 options=('!strip')
-source=("${pkgname}-${pkgver}.zip"::"http://css-ig.net/downloads/${pkgname}.zip"
+source=( #"${pkgname}-${pkgver}.zip"::"http://css-ig.net/downloads/${pkgname}.zip"
         "https://raw.githubusercontent.com/bermond/shellutils/master/image/${pkgname}")
-noextract=("${pkgname}-${pkgver}.zip")
-sha256sums=('38237142101c121d418fb3d6a20479013f95bcac6f076a7f4d5ebf9ab6d86129'
-            '454d976b5b8fdf146f19228ddec5e532f22eabe68d825ac44a153584db2646e9')
+#noextract=("${pkgname}-${pkgver}.zip")
+sha256sums=('454d976b5b8fdf146f19228ddec5e532f22eabe68d825ac44a153584db2646e9')
+_expected_sha256sum="761ca457e537d2e923e4172fe7b8359589e8555ca78866409b1c63a271f2d30f"
 
 prepare() {
+	# check if pingo zip file was already downloaded
+	if ! [ -f "../${pkgname}-${pkgver}.zip" ] 
+	then
+	    # download pingo zip file from website
+	    msg2 "Downloading ${pkgname}-${pkgver}.zip from website..."
+	    curl \
+	        -o "../${pkgname}-${pkgver}.zip" \
+	        -H 'Host: css-ig.net' \
+	        -H 'Upgrade-Insecure-Requests: 1' \
+	        -H "User-Agent: Mozilla/5.0 (X11; Linux "$CARCH") \
+	                        AppleWebKit/537.36 (KHTML, like Gecko) \
+	                        Chrome/56.0.2924.87 \
+	                        Safari/537.36" \
+	        -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' \
+	        -H 'Referer: http://css-ig.net/pingo' \
+	        -H 'Accept-Language: en-US,en;q=0.8' \
+	        -H 'Cookie: startBAK=R3415744843; start=R1548479158' \
+	        --compressed "http://css-ig.net/downloads/${pkgname}.zip" || \
+	        {
+	            printf "%s\n" "error: failed to download ${pkgname}-${pkgver}.zip";
+	            exit 1;
+                }
+	else
+	    msg2 "Found ${pkgname}-${pkgver}.zip"
+	fi
+	
+	# check the pingo zip file integrity (file validation)
+	local _real_sha256sum="$(openssl dgst -sha256 "../${pkgname}-${pkgver}.zip")"
+	_real_sha256sum="${_real_sha256sum##* }"
+	msg2 "Validating ${pkgname}-${pkgver}.zip with sha256sum..."
+	printf "%s" "     ${pkgname}-${pkgver}.zip ... "
+	if [ "$_expected_sha256sum" = "$_real_sha256sum" ] 
+	then
+	    printf "%s\n" "Passed"
+	else
+	    printf "%s\n" "FAILED"
+	    exit 1
+	fi
+	
+	# create symbolic link of pingo zip file in $srcdir
+	ln -sf "../${pkgname}-${pkgver}.zip" "${srcdir}/${pkgname}-${pkgver}.zip"
+	
+	# extract pingo zip file
 	mkdir -p "${pkgname}-${pkgver}"
 	cd       "${pkgname}-${pkgver}"
 	bsdtar -x -f ../"${pkgname}-${pkgver}.zip"
