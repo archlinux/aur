@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Eve Online Launcher
+Exec=sh /opt/evelauncher/evelauncher.sh
+Icon=/opt/evelauncher/icon.png

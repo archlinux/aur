@@ -1,0 +1,17 @@
+pkgbase = evelauncher
+	pkgdesc = Unofficial Eve Online Launcher. Simplify Installation
+	pkgver = 1104891
+	pkgrel = 1
+	url = https://binaries.eveonline.com/evelauncher-1104891.tar.gz
+	arch = any
+	license = custom
+	depends = wine
+	source = https://binaries.eveonline.com/evelauncher-1104891.tar.gz
+	source = evelauncher.desktop
+	source = icon.png
+	md5sums = a99e75f1de68531f86f52b30ea4ee2cd
+	md5sums = d6d1437552264f74f64a745d9a3c9d3f
+	md5sums = 37c1b0799f8e671b298c288d900dd7f0
+
+pkgname = evelauncher
+
