@@ -1,4 +1,5 @@
 # Maintainer: Michael Goehler <somebody dot here at gmx dot de>
+# Contributor: MaryJaneInChain <gmail.com@maryjaneinchain>
 
 pkgname=remarkable
 pkgver=1.87
