@@ -1,16 +1,12 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Jeff Labonte jeff.labonte12@gmail.com
+# Maintainer: Jeff Labonte <jeff.labonte12@gmail.com>
 pkgname=evelauncher
 pkgver=1104891
 pkgrel=1
 epoch=
-pkgdesc="Unofficial Eve Online Launcher. Simplify Installation"
+pkgdesc="Unofficial Eve Online Launcher brought to us by CCP Devs. It simplifies the installation of Eve 
+Online on Linux "
 arch=('any')
-url="https://binaries.eveonline.com/evelauncher-1104891.tar.gz"
+url="https://forums.eveonline.com/default.aspx?g=posts&t=482663"
 license=('custom')
 groups=()
 depends=('wine')
