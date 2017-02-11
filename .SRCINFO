@@ -1,6 +1,6 @@
 pkgbase = xrootd-abi0
 	pkgdesc = A project that aims at giving high performance, scalable fault tolerant access to data repositories of many kinds.
-	pkgver = 4.5.0
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = http://xrootd.org/
 	arch = i686
@@ -13,8 +13,9 @@ pkgbase = xrootd-abi0
 	provides = xrootd
 	provides = xrootd-abi0
 	conflicts = xrootd
-	source = http://xrootd.org/download/v4.5.0/xrootd-4.5.0.tar.gz
-	sha256sums = 27a8e4ef1e6bb6bfe076fef50afe474870edd198699d43359ef01de2f446c670
+	options = !emptydirs
+	source = http://xrootd.org/download/v4.6.0/xrootd-4.6.0.tar.gz
+	sha256sums = b50f7c64ed2a4aead987de3fdf6fce7ee082407ba9297b6851cd917db72edd1d
 
 pkgname = xrootd-abi0
 
