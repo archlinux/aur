@@ -1,6 +1,6 @@
 pkgbase = gogs-master-git
 	pkgdesc = Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language.
-	pkgver = 0.9.128.0131.r0.412ba5b2a
+	pkgver = 0.9.140.0210.r7.0958fe5a4
 	pkgrel = 1
 	url = http://gogs.io/
 	install = gogs.install
@@ -11,7 +11,6 @@ pkgbase = gogs-master-git
 	license = MIT
 	makedepends = go
 	makedepends = git
-	makedepends = glide
 	makedepends = nodejs-less
 	depends = git
 	depends = sqlite

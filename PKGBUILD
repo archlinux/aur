@@ -1,7 +1,7 @@
 # Maintainer: surefire@cryptomile.net
 
 pkgname=gogs-master-git
-pkgver=0.9.128.0131.r0.412ba5b2a
+pkgver=0.9.140.0210.r7.0958fe5a4
 pkgrel=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -16,7 +16,7 @@ optdepends=('mariadb: MariaDB support'
             'redis: Redis support'
             'memcached: MemCached support'
             'openssh: GIT over SSH support')
-makedepends=('go' 'git' 'glide' 'nodejs-less')
+makedepends=('go' 'git' 'nodejs-less')
 source=('git+https://github.com/gogits/gogs.git#branch=master'
         'git+https://github.com/jteeuwen/go-bindata.git' #Because сommunity package is very outdated
         'gogs.service'
@@ -40,8 +40,6 @@ prepare() {
 
 	cd "$_gogsdir"
 
-	glide install
-
 	sed -r -i conf/app.ini \
 		-e '0,             /^\[/ s/^(RUN_USER)\W.*$/\1 = gogs/' \
 		-e '/^\[server\]/, /^\[/ s/^(STATIC_ROOT_PATH)\W.*$/\1 = \/usr\/share\/gogs/' \
@@ -64,6 +62,8 @@ pkgver() {
 }
 
 build() {
+	export GOPATH="$srcdir"
+
 	cd "$srcdir/src/github.com/jteeuwen/go-bindata/go-bindata"
 	go install -v
 
