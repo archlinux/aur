@@ -1,0 +1,9 @@
+post_install{
+	echo "***********************************************************"
+	echo " On first install, I strongly recommend to run the program "
+	echo " from the terminal."
+	echo " sh /opt/evelauncher/evelauncher.sh"
+	echo " Please report to me what package that are missing if there"
+	echo " is any packages missing for you"
+	echo "***********************************************************"
+}

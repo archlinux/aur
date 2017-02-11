@@ -18,7 +18,7 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=
+install="evelauncher.install"
 changelog=
 source=(
 	"https://binaries.eveonline.com/evelauncher-1104891.tar.gz"
