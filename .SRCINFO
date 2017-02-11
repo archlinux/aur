@@ -11,6 +11,7 @@ pkgbase = linux-max98090
 	makedepends = inetutils
 	makedepends = bc
 	makedepends = libelf
+	makedepends = patch
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.tar.sign
