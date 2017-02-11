@@ -6,7 +6,7 @@
 
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
-pkgver=3.2.2
+pkgver=3.2.4
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
@@ -58,7 +58,7 @@ source=(
 )
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 sha256sums=(
-      '0b129a56d1b8d06101b1fcbfaa9f4f5eee3182d1ad6e44f511a84c12113a366b'
+      'c0fa3593a2e9e96ace3c1757900094437ad96d1d6ca19f057c378b5f394496a4'
       'SKIP'
 )
 
