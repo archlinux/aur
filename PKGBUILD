@@ -3,7 +3,7 @@
 pkgname=go-wol-server-git
 _pkgname=go-wol-server
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="Wake on Lan server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
