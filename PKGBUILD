@@ -2,7 +2,7 @@
 
 pkgname=moolticute-git
 _pkgname="${pkgname%-git}"
-pkgver=0.5.5.r9.g3c6c740
+pkgver=0.6.0.r3.g5f3a560
 pkgrel=1
 pkgdesc="Easy companion for Mooltipass device"
 arch=('x86_64' 'i686')
@@ -14,10 +14,8 @@ depends=('libusb'
          'mooltipass-udev'
          'qt5-base'
          'qt5-websockets')
-
 makedepends=('git'
              'make')
-
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -51,7 +49,4 @@ package() {
     cd "${srcdir}/${_pkgname}/build/"
 
     make INSTALL_ROOT="${pkgdir}/" install
-
-    # temporary remove udev rules until fully merged into mooltipass-udev
-    rm -rf "${pkgdir}/usr/lib/udev/"
 }
