@@ -1,7 +1,7 @@
 pkgbase = wuzz-git
 	pkgdesc = Interactive cli tool for HTTP inspection
-	pkgver = v0.1.0.r6.gecab533
-	pkgrel = 2
+	pkgver = 0.1.0.r6.gecab533
+	pkgrel = 1
 	url = https://github.com/asciimoo/wuzz
 	arch = x86_64
 	arch = i686

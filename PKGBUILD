@@ -2,8 +2,8 @@
 
 pkgname=wuzz-git
 _pkgname=wuzz
-pkgver=v0.1.0.r6.gecab533
-pkgrel=2
+pkgver=0.1.0.r6.gecab533
+pkgrel=1
 pkgdesc="Interactive cli tool for HTTP inspection"
 arch=('x86_64' 'i686')
 url="https://github.com/asciimoo/wuzz"
@@ -18,7 +18,7 @@ _goname="github.com/asciimoo/wuzz"
 
 pkgver() {
     cd "$SRCDEST/$_pkgname"
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
