@@ -1,6 +1,6 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=bdash
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Simple business intelligence application'
 arch=('x86_64')
@@ -9,7 +9,6 @@ license=('MIT')
 depends=('gtk2' 'nss' 'alsa-lib' 'libxss' 'gconf' 'libxtst')
 makedepends=('python2' 'python' 'npm' 'yarn')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bdash-app/bdash/archive/$pkgver.tar.gz")
-sha512sums=('376a213a787f660d842d57f4fa6e6e7e24fd60b4adaa5c5fe8897f2f2a006021255b2d597246ea955f92f94212aec1f34147b2aa29a3f1f2dc4f8941fde3605b')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -26,7 +25,6 @@ build() {
   node_modules/.bin/electron-rebuild -p -m out/tmp -w sqlite3
   node_modules/.bin/electron-packager out/tmp Bdash \
     --asar=true \
-    --icon=assets/icon.icns \
     --platform=linux \
     --arch=x64 \
     --app-version=$pkgver \
@@ -45,3 +43,5 @@ package() {
 }
 
 # vim: set ft=sh:
+
+sha512sums=('e6d5a56bb4849d2c0a0bedbd95b8fe6725e1952a1cbb6d0f400d048580ddcfbe8e2bf815424b91c0c3f08c76047ed4991cbfa0b899613757dcaca4dc2e6ff7b1')

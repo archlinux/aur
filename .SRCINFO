@@ -1,6 +1,6 @@
 pkgbase = bdash
 	pkgdesc = Simple business intelligence application
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/bdash-app/bdash
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = bdash
 	depends = libxss
 	depends = gconf
 	depends = libxtst
-	source = bdash-1.0.0.tar.gz::https://github.com/bdash-app/bdash/archive/1.0.0.tar.gz
-	sha512sums = 376a213a787f660d842d57f4fa6e6e7e24fd60b4adaa5c5fe8897f2f2a006021255b2d597246ea955f92f94212aec1f34147b2aa29a3f1f2dc4f8941fde3605b
+	source = bdash-1.1.0.tar.gz::https://github.com/bdash-app/bdash/archive/1.1.0.tar.gz
+	sha512sums = e6d5a56bb4849d2c0a0bedbd95b8fe6725e1952a1cbb6d0f400d048580ddcfbe8e2bf815424b91c0c3f08c76047ed4991cbfa0b899613757dcaca4dc2e6ff7b1
 
 pkgname = bdash
 
