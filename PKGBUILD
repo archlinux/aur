@@ -3,7 +3,7 @@
 pkgname=go-wol-server-git
 _pkgname=go-wol-server
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Wake on Lan server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -44,7 +44,7 @@ build() {
 }
 
 package() {
-  install -D -m 0755 "${srcdir}/src/${_gourl}/${_gourl_pkgname}/${_gourl_pkgname}" "${pkgdir}/usr/share/${_pkgname}/${_pkgname}"
+  install -D -m 0755 "${srcdir}/src/${_gourl}/${_gourl_pkgname}/${_gourl_pkgname}" "${pkgdir}/usr/sbin/${_pkgname}"
   
   install -D -m 0600 "${srcdir}/src/${_gourl}/${_gourl_pkgname}/config.toml" "$pkgdir/etc/${_pkgname}/config.toml"
   cp -r "${srcdir}/src/${_gourl}/${_gourl_pkgname}/templates" "${pkgdir}/etc/${_pkgname}/templates"
