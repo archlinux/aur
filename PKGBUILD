@@ -1,5 +1,5 @@
 pkgname=pacaur-git
-pkgver=4.7.2
+pkgver=4.7.3
 pkgrel=1
 pkgdesc="An AUR helper that minimizes user interaction"
 arch=('any')
@@ -21,7 +21,8 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_gitname"
-  sed -i "s/version=\"[0-9].[0-9].[0-9]*\"/version=\"$pkgver\"/g" ./pacaur
+  _pkgver=$(git describe --always | sed 's/-/./g')
+  sed -i "s/version=\"[0-9].[0-9].[0-9]*\"/version=\"$_pkgver\"/g" ./pacaur
 }
 
 build() {
