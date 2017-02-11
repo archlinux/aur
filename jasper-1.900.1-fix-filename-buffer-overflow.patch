@@ -10,7 +10,7 @@ Bug-Debian: http://bugs.debian.org/645118
  
  #include <stdio.h>
 +#include <limits.h>
- #if defined(HAVE_FCNTL_H)
+ #if defined(JAS_HAVE_FCNTL_H)
  #include <fcntl.h>
  #endif
 @@ -99,6 +100,12 @@ extern "C" {
