@@ -48,18 +48,7 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}/build" || exit 1
 
-    # Change to whichever matches your CPU architecture
-    # Select between "SSE2", "SSSE3", "SSE4.1", "AVX"
-    _arch_support="SSSE3"
-
-    # Enable busy-wait-detection for better performance
-    _detect_wait_loops="ON"
-
-    cmake ..                                    \
-        -DCMAKE_BUILD_TYPE="Release"            \
-        -DCEN64_ARCH_SUPPORT="${_arch_support}" \
-        -DVR4300_BUSY_WAIT_DETECTION="${_detect_wait_loops}"
-
+    cmake ..
     make
 }
 
