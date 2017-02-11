@@ -1,10 +1,13 @@
 [Unit]
-Description=Open Source Real-Time Packet Analyzer
+Description=packetbeat
 Documentation=https://www.elastic.co/guide/en/beats/packetbeat/current
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/packetbeat -c /etc/packetbeat/packetbeat.yml
+ExecStart=/usr/bin/packetbeat -path.config /etc/packetbeat \
+                              -path.home /usr/share/packetbeat \
+                              -path.data /var/lib/packetbeat \
+                              -path.logs /var/log/packetbeat
 
 [Install]
 WantedBy=multi-user.target
