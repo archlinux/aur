@@ -3,7 +3,7 @@
 pkgname=ccid-morpho
 pkgver=1.4.3_1morpho
 _pkgver=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="A USB Chip/Smart Card Interface Device driver (SAFRAN MORPHO YpsID Token)"
 arch=('i686' 'x86_64')
 url="https://github.com/geyslan/morpho"

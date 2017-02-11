@@ -1,7 +1,7 @@
 pkgbase = ccid-morpho
 	pkgdesc = A USB Chip/Smart Card Interface Device driver (SAFRAN MORPHO YpsID Token)
 	pkgver = 1.4.3_1morpho
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/geyslan/morpho
 	install = ccid-morpho.install
 	arch = i686
