@@ -1,15 +1,15 @@
 pkgname=mingw-w64-aspell
 pkgver=0.60.6.1
 _pkgmajorver=0.60
-pkgrel=3
+pkgrel=4
 pkgdesc="A spell checker designed to eventually replace Ispell (mingw-w64)"
 arch=(any)
 url="http://aspell.net/"
 license=("LGPL")
-makedepends=(mingw-w64-gcc mingw-w64-pdcurses-win32a)
+makedepends=(mingw-w64-gcc mingw-w64-pdcurses)
 depends=(mingw-w64-gettext)
 options=(!strip !buildflags staticlibs)
-optdepends=(mingw-w64-pdcurses-win32a)
+optdepends=(mingw-w64-pdcurses)
 source=("ftp://ftp.gnu.org/gnu/aspell/aspell-${pkgver}.tar.gz"
 "0001-use-namespace.mingw.patch"
 "0002-printf.mingw.patch"
