@@ -1,0 +1,14 @@
+pkgbase = mxnet
+	pkgdesc = Flexible and Efficient Library for Deep Learning
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = http://mxnet.io/
+	arch = x86_64
+	license = Apache2
+	depends = cuda
+	depends = cudnn
+	source = mxnet::git+https://github.com/dmlc/mxnet
+	md5sums = SKIP
+
+pkgname = mxnet
+
