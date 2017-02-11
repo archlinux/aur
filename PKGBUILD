@@ -2,7 +2,7 @@
 # Contributors: Ner0
 
 pkgname=gtk-theme-elementary
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 pkgdesc="The official elementary GTK theme designed to be smooth, attractive, fast, and usable."
 arch=('any')
@@ -12,8 +12,8 @@ groups=('pantheon')
 depends=('gtk-engine-murrine')
 optdepends=('elementary-icon-theme: the elementary icon theme')
 conflicts=('elementary-gtk-theme' 'egtk-bzr')
-source=("$pkgname-$pkgver.tar.xz::https://launchpad.net/egtk/5.x/$pkgver/+download/elementary.tar.xz")
-sha256sums=('67429ef41f3ad9c2208267b7f24eb0282005b9e29ff682d26eb55416da63b7ae')
+source=("$pkgname-$pkgver.tar.xz::https://launchpad.net/egtk/5.x/$pkgver/+download/elementary-theme-$pkgver.tar.xz")
+sha256sums=('7a47fb30c4a0c72af31296feb51dba24801c16949a9bab34d97de78457638db0')
 
 package() {
   cd elementary
