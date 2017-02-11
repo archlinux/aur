@@ -1,0 +1,11 @@
+post_install() {
+	echo
+	echo "To use the efi fimware update executable, copy the"
+	echo "content of /usr/lib/fwupdate/EFI/ to your EFI partition,"
+	echo "usually /boot/EFI."
+	echo
+}
+
+post_upgrade() {
+	post_install
+}
