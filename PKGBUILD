@@ -1,11 +1,10 @@
 # Id: PKGBUILD 277473 2016-09-30 19:28:40Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
-# Maintainer: Tony Lambiris <tony@critialstack.com>
 
 pkgbase=linux-macbook
-_srcname=linux-4.8
-pkgver=4.8.17
+_srcname=linux-4.9
+pkgver=4.9.9
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -24,31 +23,30 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux-macbook.preset'
         # service file for suspend/resume events
         'macbook-wakeup.service'
-        'change-default-console-loglevel.patch'
+        # macbook specific patches
         'apple-gmux.patch'
         'macbook-suspend.patch'
         'poweroff-quirk-workaround.patch'
         'intel-pstate-backport.patch'
         'change-default-console-loglevel.patch'
-        net_handle_no_dst_on_skb_in_icmp6_send.patch
+        0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch
         )
 
-sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
+sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            '1e4be6f6a8eab3edcd0899db382fe1a9330320c603a9ad2c32ebb1dc6f53b3db'
+            'ec97e3bf8585865d409a804316b276a6b4e4939286de9757f99bfb41cf112078'
             'SKIP'
-            '1e72cd2e9e1fa8bf1478f7a7d9b9719d1fd2d1754dbe915a6b6d7e0d0a92da0a'
-            '8646ab1d39f1755de240a27dd1970be39b8b81b1f1caca0dd77c0a4b157292d9'
+            '49ec194851a7f96fbeedddb6125bf51d0e73e949f28026dca0d9ff36fc4ce5ff'
+            '36fa6355b46655570838351a6f4b2a4904d4e1c550ce0b7a21aa5ebe1bad2d2d'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '72f0b3ce04f33dfae305297bd045fba8cb5e5c8594ffd7a68a4d8ed293b1b1b5'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'bb8af32880059e681396a250d8e78f600f248da8ad4f0e76d7923badb5ee8b42'
-            '4d4a622733c2ba742256f369c32a1e98fc216966589f260c7457d299dbb55971'
-            '09189eb269a9fd16898cf90a477df23306236fb897791e8d04e5a75d5007bbff'
+            '896455ba219148e10c1fd19ec98f9871b384f9d0018598c1bb36ad7f3c8607c1'
+            '24f914e16f5efd13608e835ded81b4da731798737a88228fb8684f6db80f7d2c'
             'c0a25b413bc542472868c63318213dfe788beeece750d15f7ff1568aca8968ec'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'b595a1588bafb3d732841cd1b73633970706914f57f2d215c9f1494212d13989')
+            '3e955e0f1aae96bb6c1507236adc952640c9bd0a134b9995ab92106a33dc02d9')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -62,8 +60,10 @@ prepare() {
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
 
-  # https://bugzilla.kernel.org/show_bug.cgi?id=189851
-  patch --verbose -p1 -i "${srcdir}/net_handle_no_dst_on_skb_in_icmp6_send.patch"
+  # Revert a commit that causes memory corruption in i686 chroots on our
+  # build server ("valgrind bash" immediately crashes)
+  # https://bugzilla.kernel.org/show_bug.cgi?id=190061
+  patch -Rp1 -i "${srcdir}/0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -73,10 +73,13 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  patch -p1 -F3 -i "${srcdir}/apple-gmux.patch"
-  patch -p1 -F3 -i "${srcdir}/macbook-suspend.patch"
-  patch -p1 -F3 -i "${srcdir}/poweroff-quirk-workaround.patch"
-  patch -p1 -F3 -i "${srcdir}/intel-pstate-backport.patch"
+  # macbook specific patches
+  patch -p1 -F1 -i "${srcdir}/apple-gmux.patch"
+  # patch components below grabbed from https://patchwork.kernel.org/patch/9140867/
+  patch -p1 -F1 -i "${srcdir}/macbook-suspend.patch"
+  patch -p1 -F1 -i "${srcdir}/poweroff-quirk-workaround.patch"
+  # backported changes to the intel-pstate driver from master branch
+  #patch -p1 -F3 -i "${srcdir}/intel-pstate-backport.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -117,7 +120,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules (with brightness key and suspend patches)"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -169,14 +172,10 @@ _package() {
 
   # add vmlinux
   install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
-
-  # install macbook-wakeup.service
-  mkdir -p "${pkgdir}/usr/lib/systemd/system"
-  install -D -m644 "${srcdir}/macbook-wakeup.service" "${pkgdir}/usr/lib/systemd/system/macbook-wakeup.service"
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel (with brightness key and suspend patches)"
+  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -304,7 +303,7 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel (with brightness key and suspend patches)"
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
 
   cd "${srcdir}/${_srcname}"
 

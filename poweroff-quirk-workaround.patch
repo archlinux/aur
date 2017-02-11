@@ -1,32 +1,27 @@
-diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 37ff015..47b303a 100644
---- a/drivers/pci/quirks.c
-+++ b/drivers/pci/quirks.c
-@@ -2776,6 +2776,27 @@ static void quirk_hotplug_bridge(struct pci_dev *dev)
- DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_HINT, 0x0020, quirk_hotplug_bridge);
+--- linux-4.9/drivers/pci/quirks.c.orig	2017-02-09 21:22:48.317268656 -0500
++++ linux-4.9/drivers/pci/quirks.c	2017-02-09 21:27:32.370965329 -0500
+@@ -4551,6 +4551,24 @@
+ DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL, 0x443, quirk_intel_qat_vf_cap);
  
  /*
-+ * Apple: Avoid programming the memory/io aperture of 00:1c.0
-+ *
-+ * BIOS does not declare any resource for 00:1c.0, but with
-+ * hotplug flag set, thus OS allocate:
-+ * [mem 0x7fa00000 - 0x7fbfffff]
-+ * [mem 0x7fc00000-0x7fdfffff 64bit pref]
-+ * which is conflict with an unreported device, which
-+ * causes unpredictable result such as accessing io port.
-+ * So clear the hotplug flag to work around it.
++ * On Mac Pro 11, the allocation of pci bridge memory resource
++ * broke ACPI Sleep Type register region.
 + */
-+static void quirk_apple_mbp_poweroff(struct pci_dev *dev)
++static void quirk_mac_disable_mmio_bar(struct pci_dev *dev)
 +{
-+	if (dmi_match(DMI_BOARD_VENDOR, "Apple Inc.") &&
-+	    dmi_match(DMI_PRODUCT_NAME, "MacBookPro11,4") ||
-+	    dmi_match(DMI_PRODUCT_NAME, "MacBookPro11,5"))
-+		dev->is_hotplug_bridge = 0;
-+}
++	struct resource *b_res;
 +
-+DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_INTEL, 0x8c10, quirk_apple_mbp_poweroff);
++	dev_info(&dev->dev, "[Quirk] Disable mmio on Mac Pro 11\n");
++	if ((dev->class >> 8) != PCI_CLASS_BRIDGE_PCI)
++		return;
++
++	b_res = &dev->resource[PCI_BRIDGE_RESOURCES];
++	b_res[1].flags = 0;
++	b_res[2].flags = 0;
++}
++DECLARE_PCI_FIXUP_ASSIGN(PCI_VENDOR_ID_INTEL, 0x8c10, quirk_mac_disable_mmio_bar);
 +
 +/*
-  * This is a quirk for the Ricoh MMC controller found as a part of
-  * some mulifunction chips.
- 
+  * VMD-enabled root ports will change the source ID for all messages
+  * to the VMD device. Rather than doing device matching with the source
+  * ID, the AER driver should traverse the child device tree, reading

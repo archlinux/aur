@@ -3,16 +3,11 @@ cat <<-EOF
 
 	To get suspend working properly you must do the following:
 
-	Add disable_mode=1 to your kernel boot options.
-	In my case I use grub so I appended this to GRUB_CMDLINE_LINUX
-	in /etc/default/grub and then ran the following command as root:
-	grub-mkconfig -o /boot/grub/grub.cfg
+	Enable the macbook-wakeup service for suspend/resume on LID events:
+	systemctl enable --now macbook-wakeup.service
 
 	Optionally, include the kernel boot option processor.ignore_ppc=1
 	to allow frequency changing on battery power.
-
-	Enable the macbook-wakeup service for suspend/resume on LID events:
-	systemctl enable --now macbook-wakeup.service
 
 EOF
 }
