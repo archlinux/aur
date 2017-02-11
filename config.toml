@@ -1,7 +1,8 @@
 [core]
 Address = "127.0.0.1:8080"
 ExternalURL = ""
-TemplateDir = "/usr/share/themes/go-wol-server/templates/default"
+WebPrefix = "/"
+TemplateDir = "/usr/share/themes/go-wol-server/templates/default/"
 
 [core.html]
 Title = "Go WakeOnLan server"
