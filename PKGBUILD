@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 80785 2012-12-03 16:17:19Z bluewind $
-# Maintainer: Florian Pritz <flo@xssn.at>
+# Maintainer: Michał Lisowski <lisu@riseup.net>
+# Contributor: Florian Pritz <flo@xssn.at>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
