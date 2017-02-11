@@ -1,6 +1,7 @@
 pkg/
 src/
 *.bz2
+*.log
 *.sig
 *.tar
 *.xz
