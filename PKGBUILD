@@ -3,7 +3,7 @@
 pkgname=go-wol-server-git
 _pkgname=wol-server
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Wake on Lan server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -21,9 +21,11 @@ backup=('etc/go-wol-server/config.toml'
 
 _gourl=github.com/qybl
 source=('go-wol-server.service'
+        'config.toml'
         "${_pkgname}::git+https://${_gourl}/${_pkgname}.git")
 
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP')
 
 prepare() {
