@@ -1,4 +1,4 @@
-# Maintainer: Tercio Martins < echo dGVjbm90ZXJjaW8ge2F0fSB5YWhvbyB7ZG90fSBjb20ge2RvdH0gYnIK | base64 -d >
+# Maintainer: Tercio Martins <tecnotercio {at} yahoo {dot} com {dot} br>
 
 pkgname=shenidam-git
 _pkgname=shenidam
@@ -8,7 +8,7 @@ pkgdesc="Lightweight audio mapping software for AV footage"
 arch=('i686' 'x86_64')
 url="https://stendardo.org/shenidam"
 license=('GPL')
-depends=('boost-libs' 'fftw' 'libsamplerate' 'libsndfile' 'python2-pyqt4')
+depends=('boost-libs' 'ffmpeg' 'fftw' 'libsamplerate' 'libsndfile' 'python2-pyqt4')
 makedepends=('boost' 'git')
 provides=('shenidam')
 conflicts=('shenidam')
@@ -18,6 +18,19 @@ md5sums=('SKIP')
 pkgver() {
 	cd "${_pkgname}"
 	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	# Change references from libav to ffmpeg
+	cd "${srcdir}/${_pkgname}/python"
+	sed -i 's/AVCONV/FFmpeg/g' qshenidam.py
+	sed -i 's/avconv/ffmpeg/g' qshenidam.py
+	
+	sed -i 's/AVCONV/FFMPEG/g' shenidam_av.py
+	sed -i 's/avconv/ffmpeg/g' shenidam_av.py
+	
+	sed -i 's/AVCONV/FFmpeg/g' shenidam.py
+	sed -i 's/avconv/ffmpeg/g' shenidam.py
 }
 
 build() {

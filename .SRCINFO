@@ -9,6 +9,7 @@ pkgbase = shenidam-git
 	makedepends = boost
 	makedepends = git
 	depends = boost-libs
+	depends = ffmpeg
 	depends = fftw
 	depends = libsamplerate
 	depends = libsndfile
