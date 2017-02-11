@@ -1,6 +1,6 @@
 # Maintainer: Mario Ray Mahardhika <leledumbo_cool@yahoo.co.id>
 pkgname=zita-ajbridge-gui
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A simple GUI frontend for zita-ajbridge"
 arch=('i686' 'x86_64')
@@ -21,13 +21,13 @@ then
   if [ "$CARCH" == "i686" ]
   then
     source+=("zitaajbridgegui::https://bitbucket.org/leledumbo/zita-aj-bridge-gui/downloads/zitaajbridgegui-i386-qt")
-    md5sums+=('d548e37bee5ee741fb6b29a9e9725ffb')
+    md5sums+=('09ddecdc7f3ea5288d1b133972c343ab')
   fi
 
   if [ "$CARCH" == "x86_64" ]
   then
     source+=("zitaajbridgegui::https://bitbucket.org/leledumbo/zita-aj-bridge-gui/downloads/zitaajbridgegui-x86_64-qt")
-    md5sums+=('0d8663cdc307ac931aa88d38b503e7d2')
+    md5sums+=('ada9bff08e30b0b5259898d29e929b6c')
   fi
 else
   depends+=('gtk2')
@@ -35,13 +35,13 @@ else
   if [ "$CARCH" == "i686" ]
   then
     source+=("zitaajbridgegui::https://bitbucket.org/leledumbo/zita-aj-bridge-gui/downloads/zitaajbridgegui-i386-gtk2")
-    md5sums+=('b631af4aa255b52d79ef6adadb1b321e')
+    md5sums+=('3dd6857b95e672666943311ac3ca8be6')
   fi
 
   if [ "$CARCH" == "x86_64" ]
   then
     source+=("zitaajbridgegui::https://bitbucket.org/leledumbo/zita-aj-bridge-gui/downloads/zitaajbridgegui-x86_64-gtk2")
-    md5sums+=('6245f77bfdaf25d8b84940443d6f32ea')
+    md5sums+=('91c362085d9cc92ccd2b475ef4e0c053')
   fi
 fi
 
