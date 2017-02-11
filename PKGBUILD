@@ -4,21 +4,17 @@
 
 pkgname='minitube-aur'
 pkgver='2.6'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A youtube client that does not need flash'
 conflicts=('minitube')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://flavio.tordini.org/minitube'
 license=('gpl3')
 install=${pkgname}.install
 depends=('phonon-qt5'
 	 'qt5-declarative'
 	 'hicolor-icon-theme')
-if [[ $CARCH = 'i686' ]]; then
-  source=("http://flavio.tordini.org/files/minitube/minitube.deb")
-else
-  source=("http://flavio.tordini.org/files/minitube/minitube64.deb")
-fi
+source=("http://flavio.tordini.org/files/minitube/minitube.deb")
 md5sums=('SKIP')
 
 prepare() {
