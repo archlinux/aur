@@ -2,8 +2,9 @@
 
 pkgname=go-wol-server-git
 _pkgname=go-wol-server
+url="https://github.com/fanningert/wol-server"
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Wake on Lan server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
