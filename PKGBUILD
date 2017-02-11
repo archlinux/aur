@@ -3,7 +3,7 @@
 
 pkgname='goi3bar-git'
 pkgrel=1
-pkgver=06d402
+pkgver=87ac1f
 pkgdesc='A configurable, extensivle replacement for i3status written in Go'
 url='https://github.com/denbeigh2000/goi3bar'
 arch=('x86_64' 'i686')

@@ -1,6 +1,6 @@
 pkgbase = goi3bar-git
 	pkgdesc = A configurable, extensivle replacement for i3status written in Go
-	pkgver = 06d402
+	pkgver = 87ac1f
 	pkgrel = 1
 	url = https://github.com/denbeigh2000/goi3bar
 	arch = x86_64
