@@ -2,8 +2,8 @@
 
 pkgname=wuzz-git
 _pkgname=wuzz
-pkgver=v0.1.0.r5.g46994a8
-pkgrel=1
+pkgver=v0.1.0.r6.gecab533
+pkgrel=2
 pkgdesc="Interactive cli tool for HTTP inspection"
 arch=('x86_64' 'i686')
 url="https://github.com/asciimoo/wuzz"
@@ -14,6 +14,7 @@ conflicts=('wuzz')
 options=('!strip' '!emptydirs')
 source=("git+https://github.com/asciimoo/wuzz.git")
 sha256sums=("SKIP")
+_goname="github.com/asciimoo/wuzz"
 
 pkgver() {
     cd "$SRCDEST/$_pkgname"
@@ -22,9 +23,9 @@ pkgver() {
 
 build() {
     rm -rf gopath
-    mkdir -p gopath/src
-    mv "$srcdir/$_pkgname" gopath/src
-    cd "gopath/src/$_pkgname"
+    mkdir -p gopath/src/$_goname
+    mv "$srcdir/$_pkgname/"* "gopath/src/$_goname"
+    cd "gopath/src/$_goname"
     env GOPATH="$srcdir/gopath" go get -v
 }
 
