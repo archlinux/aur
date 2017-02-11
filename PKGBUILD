@@ -12,7 +12,7 @@ license=('MIT')
 depends=()
 optdepends=()
 provides=('go-wol-server')
-makedepends=('go>=1.2' 'git' 'patch')
+makedepends=('go>=1.2' 'git')
 conflicts=()
 options=('!strip' '!emptydirs')
 backup=('etc/go-wol-server/config.toml'
