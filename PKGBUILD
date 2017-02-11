@@ -1,7 +1,7 @@
 # Maintainer: Corentin Delcourt <aur@codl.fr>
 
 pkgname=autocutsel-git
-pkgver=0.10.0
+pkgver=0.10.0.r0.g35388eb
 pkgrel=1
 pkgdesc="Synchronizes the two copy/paste buffers mainly used by X applications"
 arch=(i686 x86_64)
@@ -19,7 +19,7 @@ md5sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    git describe --tags | sed -e 's:v::' -e 's/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
