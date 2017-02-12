@@ -1,23 +1,24 @@
 pkgbase = mongochef
 	pkgdesc = A free universal database tool for developers and database administrators
-	pkgver = 4.4.2
+	pkgver = 5.0.1
 	pkgrel = 1
-	url = http://3t.io/mongochef/
+	url = https://studio3t.com
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = unzip
 	depends = java-runtime-openjdk=8
 	depends = java-openjfx
+	depends = gtk2
 	provides = mongochef
 	source = mongochef.desktop
 	source = mongochef
 	sha256sums = a603fd54a34f8aa59a70580fd4321db24f439ceb746545f1cf6c0216f7f8169e
-	sha256sums = 3b03d036ccfa0e25b3f797a8f9fd6076b7b6dd131ab04879cb92d5aa130b8df1
-	source_i686 = mongochef-4.4.2-x86.tar.gz::https://cdn.3t.io/mongochef-core/linux/4.4.2/mongochef-linux-x86-dist.tar.gz
-	sha256sums_i686 = f2990943089f5f78631fca5e7f09766f3cdbc8650056942053728923318f67f8
-	source_x86_64 = mongochef-4.4.2-x64.tar.gz::https://cdn.3t.io/mongochef-core/linux/4.4.2/mongochef-linux-x64-dist.tar.gz
-	sha256sums_x86_64 = 6ead1d7bb7ab43b0b17e185b50b38d49e7a61fd4f2fcdcd41237dcd42c99e8d8
+	sha256sums = 9a4a23758dfa938dcd7b165306ba760025d558c13861e67be256e4b1c46ff965
+	source_i686 = mongochef-5.0.1-x86.tar.gz::https://download.studio3t.com/studio-3t/linux/5.0.1/studio-3t-linux-x86.tar.gz
+	sha256sums_i686 = b20fd9c43798f2ebdd6b5d04caab88dca2d9674c2c90f62c6d48d87a7b37b123
+	source_x86_64 = mongochef-5.0.1-x64.tar.gz::https://download.studio3t.com/studio-3t/linux/5.0.1/studio-3t-linux-x64.tar.gz
+	sha256sums_x86_64 = 72e6e8a695c908177fdb6aedd6b07d7516b6125fb2d0fad9cc1128150cfb7eb9
 
 pkgname = mongochef
 
