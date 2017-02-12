@@ -1,7 +1,7 @@
 pkgbase = e4rat-lite-git
 	pkgdesc = An improved version of e4rat, a toolset to accelerate the boot process and application startups.
 	pkgver = 2.7.r87.0881c2e
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ShyPixie/e4rat-lite
 	install = e4rat-lite-git.install
 	arch = i686
@@ -11,7 +11,6 @@ pkgbase = e4rat-lite-git
 	makedepends = cmake>=2.6
 	makedepends = boost
 	makedepends = perl
-	depends = linux>=2.6.31
 	depends = e2fsprogs>=1.41
 	depends = gettext>=0.18
 	depends = boost-libs>=1.41

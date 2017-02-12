@@ -5,11 +5,11 @@ _gitname=e4rat-lite
 pkgdesc="An improved version of e4rat, a toolset to accelerate the boot process and application startups."
 url=https://github.com/ShyPixie/$_gitname
 pkgver=2.7.r87.0881c2e
-pkgrel=3
+pkgrel=4
 
 arch=(i686 x86_64)
 license=('GPL3')
-depends=('linux>=2.6.31' 'e2fsprogs>=1.41' 'gettext>=0.18' 'boost-libs>=1.41' 'audit>=0.1.7')
+depends=('e2fsprogs>=1.41' 'gettext>=0.18' 'boost-libs>=1.41' 'audit>=0.1.7')
 makedepends=('git' 'cmake>=2.6' 'boost' 'perl')
 
 optdepends=('bootchart2: A "startup" graphing tool')
