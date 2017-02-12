@@ -8,7 +8,7 @@
 
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=20170212.3739d1318f
+pkgver=0.24.0.r0.g3739d1318f
 pkgrel=1
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
 arch=('x86_64')
