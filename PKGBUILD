@@ -13,19 +13,15 @@ arch=('armv7h'
 url="https://documentation.zarafa.com/zcp_python_zarafa/"
 license=('AGPL3')
 depends=('zarafa-server'
-	 'spamassassin')
+	 'spamassassin'
+	 'python2')
 makedepends=('git')
-source=("${pkgname}::git+https://github.com/zarafagroupware/python-zarafa.git")
-md5sums=('SKIP')
-
-prepare() {
-    return 0
-}
-
-build() {
-    cd ${srcdir}/${pkgname}
-    return 0
-}
+source=("${pkgname}::git+https://github.com/zarafagroupware/python-zarafa.git"
+	"zarafa-spamassassin.service"
+	"zarafa-spamassassin.timer")
+md5sums=('SKIP'
+	 'SKIP'
+	 'SKIP')
 
 function cfg_set() {
     # 1: field / 2: value / 3: file
@@ -37,5 +33,12 @@ function cfg_set() {
 
 package() {
     cd ${srcdir}/${pkgname}
-    return 0
+
+    mkdir -p ${pkgdir}/etc/${pkgname}
+    mkdir -p ${pkgdir}/usr/share/${pkgname}
+
+    cp zarafa-spamhandler.cfg ${pkgdir}/etc/${pkgname}/
+    ln -s /etc/${pkgname}/zarafa-spamhandler.cfg ${pkgdir}/usr/share/${pkgname}/
+
+    cp zarafa-spamhandler.py ${pkgdir}/usr/share/${pkgname}/
 }

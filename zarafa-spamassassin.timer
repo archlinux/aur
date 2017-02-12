@@ -1,0 +1,10 @@
+[Unit]
+Description=Run zarafa-spamassassin every time
+
+[Timer]
+OnBootSec=1days
+OnUnitActiveSec=1days
+Persistent=true
+
+[Install]
+WantedBy=timers.target
