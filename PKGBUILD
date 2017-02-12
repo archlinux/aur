@@ -2,7 +2,7 @@
 
 pkgname=beehive
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A flexible event and agent system with lots of bees"
 arch=('x86_64' 'i686')
 url="https://github.com/muesli/beehive"

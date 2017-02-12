@@ -3,7 +3,7 @@ Description=Beehive
 
 [Service]
 User=beehive
-ExecStart=/usr/bin/beehive -config /etc/beehive.conf
+ExecStart=/usr/bin/beehive -config /etc/beehive/beehive.conf
 
 [Install]
 WantedBy=multi-user.target
