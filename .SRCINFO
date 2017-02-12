@@ -9,7 +9,6 @@ pkgbase = dybuk-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = rust
-	depends = gcc-libs
 	provides = dybuk
 	conflicts = dybuk
 	source = git+https://github.com/Ticki/dybuk.git
