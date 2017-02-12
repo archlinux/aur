@@ -4,16 +4,15 @@
 
 pkgname=android-studio-dummy
 _pkgname=android-studio
-pkgver=2.2.0.12
+pkgver=2.2.3.0
 pkgrel=1
-pkgdesc='A new Android development environment based on IntelliJ IDEA, dummy package'
+pkgdesc='The official Android IDE, dummy package'
 arch=('i686' 'x86_64')
-url='http://developer.android.com/sdk/installing/studio.html'
+url='http://tools.android.com/'
 license=('APACHE')
-depends_i686=('java-environment' 'python' 'ttf-font' 'fontconfig' 'libxrender' 'mesa')
-depends_x86_64=('java-environment' 'python' 'ttf-font' 'lib32-fontconfig' 'lib32-libxrender'
-                'lib32-mesa')
-optdepends=('android-google-repository' 'android-platform' 'android-sdk' 'android-sdk-platform-tools' 'android-sdk-build-tools' 'android-source' 'android-support' 'android-support-repository' 'gtk2' 'libgl')
+depends=('alsa-lib' 'freetype2' 'java-environment' 'libxrender' 'libxtst')
+optdepends=('gtk2: GTK+ look and feel'
+            'libgl: emulator support')
 makedepends=('unzip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" 'android-studio-beta' 'android-studio-dev' 'android-studio-canary')
