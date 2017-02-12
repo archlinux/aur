@@ -1,0 +1,4 @@
+anki-git
+pkg
+*.pkg.tar*
+src
