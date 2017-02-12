@@ -6,4 +6,11 @@ post_install() {
 
 post_upgrade() {
 	openssl dhparam -out /etc/nginx/dhparam.pem 2048
+
+	# Mitigate CVE-2016-1247	
+	if (( $(vercmp $2 1.11.9-1) < 0)); then
+		chown -R root:root var/log/nginx
+		chmod -R 755 var/log/nginx
+	fi
 }
+
