@@ -1,7 +1,7 @@
 # Maintainer: substanceof <vk-cli.dev[at]ya[dot]ru>
 pkgname=vk-cli-git
-pkgver=r999.a8a1322
-pkgrel=2
+pkgver=r1008.816dcee
+pkgrel=1
 pkgdesc="A console (ncurses) client for vk.com written in D (git upstream)"
 arch=('x86_64' 'i686')
 url="https://github.com/vk-cli/vk"
@@ -12,7 +12,7 @@ optdepends=('mpv: for music playback')
 provides=('vk-cli')
 conflicts=('hardening-wrapper' 'vk-cli')
 
-source=("git+https://github.com/HaCk3Dq/vk.git")
+source=("git+https://github.com/vk-cli/vk.git")
 md5sums=('SKIP')
 
 _gitname=vk
