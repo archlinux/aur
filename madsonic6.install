@@ -3,7 +3,7 @@ post_install() {
   chown -R madsonic6:madsonic6 /var/madsonic6
   systemctl daemon-reload &> /dev/null
   echo "*************************************************"
-  echo "* Edit /etc/madsonic.conf to configure madsonic *"
+  echo "* Edit /var/madsonic6/madsonic.sh to configure madsonic *"
   echo "* Start with systemctl start madsonic6.service  *"
   echo "*************************************************"
 }
