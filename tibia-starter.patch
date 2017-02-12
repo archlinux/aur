@@ -1,5 +1,5 @@
---- a/tibia-11.04.4347/start-tibia.sh
-+++ b/tibia-11.04.4347/start-tibia.sh
+--- a/tibia-11.10.4445/start-tibia.sh
++++ b/tibia-11.10.4445/start-tibia.sh
 @@ -3,8 +3,6 @@
  # Adapts library load path to include Qt libraries found in the root folder of the client's binary file.
  # client shouldn't be called directly to prevent needed libraries not being found.

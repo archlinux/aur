@@ -1,7 +1,7 @@
 # Maintainer: Ricardo Cabral <ricardo.arturo.cabral@gmail.com>
 
 pkgname=tibia
-pkgver=11.04.4347
+pkgver=11.10.4445
 pkgrel=1
 pkgdesc="A fast-paced free massively multiplayer online role-playing game."
 arch=('x86_64')
@@ -11,16 +11,16 @@ depends=('glu' 'libgl' 'libice' 'libxext' 'pcre' 'qt5-base' 'qt5-declarative')
 makedepends=('gendesk' 'python-html2text')
 
 source=("${pkgname}-${pkgver}.tar.gz::http://static.tibia.com/download/tibia.x64.tar.gz"
-        'http://www.tibia.com/support/agreement.php'
+        "${pkgname}-agreement.php::http://www.tibia.com/support/agreement.php"
         "tibia-starter.patch")
 
-sha256sums=('6e2ef99bc264b9feff47db103d82ae1f9d6648d66ca1689b73a6d1fd58160f2f'
-            'fb192d96b893d012c0ecbf216885846c2826bdb72ae7824879959d3b01564f34'
-            '345547cf4fd388758d7d28638135f1861f33c1712bac3dc5870a1423b3d13f99')
+sha256sums=('62f4c59c8371e6b64c75b938092a3d59faa81a8f4a3652afcbbd32fde9b61d67'
+            'f3913f69f93254c6b35e75d95fb505b1cefa654bd1713bf57b457a4c767e16c0'
+            '123f9dc3d7ce4638edf6581ed9540317a318d1eadc36b96d3b348e0cf29131b9')
 
 prepare() {
   gendesk -f -n
-  html2text agreement.php > LICENSE
+  html2text "${pkgname}-agreement.php" > LICENSE
 
   # Adjust start-tibia.sh
   patch -Np1 -i "tibia-starter.patch"
@@ -39,4 +39,3 @@ package() {
   mkdir -p "${pkgdir}/usr/bin"
   install -Dm755 ${pkgname}-${pkgver}/start-tibia.sh "${pkgdir}/usr/bin/tibia"
 }
-
