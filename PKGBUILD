@@ -11,8 +11,8 @@ makedepends=('go')
 options=('!strip' '!emptydirs')
 source=("https://github.com/muesli/${pkgname}/archive/v${pkgver}.tar.gz" beehive.install beehive.service)
 sha256sums=('6d0f2587e3b9f1ff0ae75fec58a5f49c520497f8f4a16a96b1c1ad5e0e1466b5'
-            'e86b9b308f1b530ee1adb8e4b27df5a79dfe3fb7046288de41913648f0714c64'
-            '4172bcaf96b98bdc6e63fe631472d29d6589c73dae1930edadcd34f30430cd77')
+            '3a6725b9b51de4a8697c983844d742e499828af80d137f6ddc53523294111396'
+            '9497c6fa7b157942fc4d962c6728b1fe90affcbd6bba5f3407f90784fd4a5405')
 
 prepare() {
     cd "$pkgname-$pkgver"
