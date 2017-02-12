@@ -1,0 +1,14 @@
+pkgbase = btrbck
+	pkgdesc = Backup tool leveraging BTRFS for incremental backups.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/ruediste/btrbck
+	arch = any
+	license = GPL3
+	depends = java-environment
+	noextract = btrbck-cli-2.0.jar
+	source = https://github.com/ruediste/btrbck/releases/download/2.0/btrbck-cli-2.0.jar
+	sha1sums = ef0af5722e5868f150106ffea550bf91485bb52b
+
+pkgname = btrbck
+
