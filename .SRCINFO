@@ -1,6 +1,6 @@
 pkgbase = conky-lua-archers-git
 	pkgdesc = A free, light-weight system monitor for X with lua enabled for Arch based distros
-	pkgver = 3165.e84ca1f9
+	pkgver = 3166.a58a6d4e
 	pkgrel = 1
 	url = https://github.com/brndnmtthws/conky/
 	arch = i686
