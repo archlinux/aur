@@ -1,0 +1,16 @@
+pkgbase = zfs-linux-headers
+	pkgdesc = Kernel modules for the Zettabyte File System.
+	pkgver = 0.6.5.9_kernel_4.9
+	pkgrel = 1
+	url = http://zfsonlinux.org/
+	arch = x86_64
+	license = CDDL
+	makedepends = linux-headers>=4.9
+	makedepends = git
+	depends = linux>=4.9
+	depends = linux<4.10
+	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.6.5.9/zfs-0.6.5.9.tar.gz
+	sha256sums = b724b57dbddae59246fdc15f88f1224061c712945bb36412a2087e0c7760d77f
+
+pkgname = zfs-linux-headers
+
