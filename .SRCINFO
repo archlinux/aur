@@ -1,0 +1,15 @@
+pkgbase = ruby-json_pure-1.8.1
+	pkgdesc = JSON Implementation for Ruby
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = http://flori.github.com/json
+	arch = any
+	license = Ruby
+	depends = ruby
+	noextract = json_pure-1.8.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/json_pure-1.8.1.gem
+	sha1sums = 7b8f08852f734ef287468fe1676c1c4e7a9f678a
+
+pkgname = ruby-json_pure-1.8.1
+
