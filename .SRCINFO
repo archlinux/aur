@@ -1,0 +1,18 @@
+pkgbase = blender-plugin-syncaudio-git
+	pkgdesc = Synchronize audio strips in the Blender VSE
+	pkgver = r31.f14f96c
+	pkgrel = 1
+	url = https://github.com/Joeboy/blender-addons/tree/master/syncaudio
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	depends = blender
+	depends = shenidam
+	provides = blender-plugin-syncaudio
+	conflicts = blender-plugin-syncaudio
+	source = git+https://github.com/Joeboy/blender-addons/
+	md5sums = SKIP
+
+pkgname = blender-plugin-syncaudio-git
+
