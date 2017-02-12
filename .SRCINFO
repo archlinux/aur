@@ -1,0 +1,45 @@
+pkgbase = bmpx
+	pkgdesc = A media player and the successor to BMP
+	pkgver = 0.40.14
+	pkgrel = 1
+	url = http://www.beep-media-player.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = MIT
+	license = custom
+	depends = taglib>=1.4
+	depends = gtk2>=2.10.0
+	depends = gtkmm>=2.10.0
+	depends = cairo>=1.0.0
+	depends = cairomm>=0.6.0
+	depends = libglade>=2.5.1
+	depends = libglademm>=2.6.2
+	depends = libsexymm>=0.1.9
+	depends = librsvg>=2.14.0
+	depends = sqlite>=3.3.11
+	depends = libxml2>=2.6.1
+	depends = gettext
+	depends = dbus>=0.62
+	depends = boost>=1.33.1
+	depends = alsa-lib>=1.0.9
+	depends = libcdio>=0.70
+	depends = libcdio-paranoia>=0.70
+	depends = libsoup-2.2>=2.2.100
+	depends = gstreamer0.10>=0.10.14
+	depends = gstreamer0.10-base-plugins>=0.10.14
+	depends = gstreamer0.10-good-plugins>=0.10.14
+	depends = gstreamer0.10-ugly-plugins>=0.10.14
+	depends = startup-notification
+	depends = libofa>=0.9.3
+	optdepends = hal
+	optdepends = networkmanager
+	provides = bmpx
+	source = http://slackware.uk/slacky/slackware-12.1/multimedia/bmpx/0.40.14/src/bmpx-0.40.14.tar.bz2
+	source = update.patch
+	sha1sums = 3284843c45cab302f414663a5cb31eb4373d07c7
+	sha1sums = 2439478fdfcb42b97196ea748ba7fb4e5dc1c1a0
+
+pkgname = bmpx
+

@@ -1,0 +1,146 @@
+diff -Naur old/src/amazon.cc new/src/amazon.cc
+--- old/src/amazon.cc	2008-03-05 18:31:06.000000000 -0300
++++ new/src/amazon.cc	2008-03-05 18:31:06.000000000 -0300
+@@ -121,7 +121,7 @@
+       {
+         cover = RefPtr<Gdk::Pixbuf> (0);
+       }
+-      return cover;
++      return cover == RefPtr<Gdk::Pixbuf> (0);
+     }
+     
+     RefPtr<Gdk::Pixbuf>
+diff -Naur old/src/glib-inotify.cc new/src/glib-inotify.cc
+--- old/src/glib-inotify.cc	2008-03-05 18:31:06.000000000 -0300
++++ new/src/glib-inotify.cc	2008-03-05 18:31:06.000000000 -0300
+@@ -27,6 +27,7 @@
+ #endif //HAVE_CONFIG_H
+ 
+ #include <glibmm.h>
++#include <unistd.h>
+ #include "glib-inotify.hh"
+ 
+ namespace Bmp
+diff -Naur old/src/lastfm.cc new/src/lastfm.cc
+--- old/src/lastfm.cc	2008-04-05 19:44:37.000000000 -0400
++++ new/src/lastfm.cc	2008-04-05 19:44:37.000000000 -0400
+@@ -818,33 +818,33 @@
+ 
+           TrackQueueItem const& i (m_queue[n]);
+ 
+-          xmlNodePtr n = xmlNewChild (q, bmp, BAD_CAST N_LQM_TRACK, 0);
++          xmlNodePtr nd = xmlNewChild (q, bmp, BAD_CAST N_LQM_TRACK, 0);
+ 
+-          xmlSetProp (n, BAD_CAST "mbid",
++          xmlSetProp (nd, BAD_CAST "mbid",
+                          BAD_CAST i.mbid.c_str());
+ 
+-          xmlSetProp (n, BAD_CAST "artist",
++          xmlSetProp (nd, BAD_CAST "artist",
+                          BAD_CAST i.artist.c_str());
+ 
+-          xmlSetProp (n, BAD_CAST "track",
++          xmlSetProp (nd, BAD_CAST "track",
+                          BAD_CAST i.track.c_str());
+ 
+-          xmlSetProp (n, BAD_CAST "album",
++          xmlSetProp (nd, BAD_CAST "album",
+                          BAD_CAST i.album.c_str());
+ 
+-          xmlSetProp (n, BAD_CAST "date",
++          xmlSetProp (nd, BAD_CAST "date",
+                          BAD_CAST (uint64_f % i.date).str().c_str());
+ 
+-          xmlSetProp (n, BAD_CAST "length",
++          xmlSetProp (nd, BAD_CAST "length",
+                          BAD_CAST (uint_f % i.length).str().c_str());
+ 
+-          xmlSetProp (n, BAD_CAST "nr",
++          xmlSetProp (nd, BAD_CAST "nr",
+                          BAD_CAST (uint_f % i.nr).str().c_str());
+ 
+-          xmlSetProp (n, BAD_CAST "source",
++          xmlSetProp (nd, BAD_CAST "source",
+                          BAD_CAST i.source.c_str());
+ 
+-          xmlSetProp (n, BAD_CAST "rating",
++          xmlSetProp (nd, BAD_CAST "rating",
+                          BAD_CAST i.rating.c_str());
+       }
+ 
+diff -Naur old/src/library.cc new/src/library.cc
+--- old/src/library.cc	2008-03-05 18:31:06.000000000 -0300
++++ new/src/library.cc	2008-03-05 18:31:06.000000000 -0300
+@@ -530,7 +530,7 @@
+         gint64 length_in_nanoseconds;
+         gst_query_parse_duration (query, &format, &length_in_nanoseconds);
+         guint64 length = length_in_nanoseconds / GST_SECOND;
+-        ttuple->row->insert (std::make_pair (attrinfo[ATTRIBUTE_TIME].id, Variant (length)));
++        ttuple->row->insert (std::make_pair (attrinfo[ATTRIBUTE_TIME].id, Bmp::DB::Variant (length)));
+       }
+       gst_query_unref (query);
+       gst_element_set_state (GST_ELEMENT (element), GST_STATE_NULL);
+@@ -921,7 +921,7 @@
+       }
+ #endif //HAVE_HAL
+ 
+-      row.insert (std::make_pair ("insert_path", Variant (string (insert_path))));
++      row.insert (std::make_pair ("insert_path", DB::Variant (string (insert_path))));
+       row.insert (std::make_pair (attrinfo[ATTRIBUTE_NEW_ITEM].id, guint64 (1)));
+ 
+       struct stat fstat;
+diff -Naur old/src/playbacksource.cc new/src/playbacksource.cc
+--- old/src/playbacksource.cc	2008-03-05 18:31:06.000000000 -0300
++++ new/src/playbacksource.cc	2008-03-05 18:31:06.000000000 -0300
+@@ -26,7 +26,7 @@
+ #endif //HAVE_CONFIG_H
+ 
+ #include <exception>
+-#include <glib/ghash.h>
++#include <glib.h>
+ #include <glibmm/ustring.h>
+ #include <glibmm/i18n.h>
+ #include <sigc++/signal.h>
+diff -Naur old/src/ui-part-cdda.cc new/src/ui-part-cdda.cc
+--- old/src/ui-part-cdda.cc	2008-04-05 19:49:36.000000000 -0400
++++ new/src/ui-part-cdda.cc	2008-04-05 19:49:36.000000000 -0400
+@@ -79,7 +79,7 @@
+ #elif defined (HAVE_CDIO)
+   #define NEED_STRERROR_TR
+ 
+-  #include <cdio/cdda.h>
++  #include <cdio/paranoia/cdda.h>
+   #define IS_AUDIO(d, n) cdio_cddap_track_audiop(d, n+1)
+ #endif
+ 
+diff -Naur old/src/ui-part-cdda.hh new/src/ui-part-cdda.hh
+--- old/src/ui-part-cdda.hh	2008-03-05 18:31:06.000000000 -0300
++++ new/src/ui-part-cdda.hh	2008-03-05 18:31:06.000000000 -0300
+@@ -209,7 +209,7 @@
+ 
+         struct LabelT
+         {
+-          Gtk::Label  * Album,;
++          Gtk::Label  * Album;
+           Gtk::Label  * Artist;
+           Gtk::Label  * Date;
+         };
+diff -Naur old/src/util-file.cc new/src/util-file.cc
+--- old/src/util-file.cc	2008-03-05 18:31:06.000000000 -0300
++++ new/src/util-file.cc	2008-03-05 18:31:06.000000000 -0300
+@@ -270,12 +270,12 @@
+         if (!Audio::typefind (*i, type))
+           return false;
+ 
+-        Library::TaglibPluginsMap::const_iterator i (plugins.find (type));
++        Library::TaglibPluginsMap::const_iterator itr (plugins.find (type));
+ 
+-        if (i == plugins.end())
++        if (itr == plugins.end())
+           return false;
+ 
+-        if (!i->second->set)
++        if (!itr->second->set)
+           return false;
+       }
+       return true;
