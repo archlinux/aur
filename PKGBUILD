@@ -2,8 +2,8 @@
 # Contributor: lanrat
 
 pkgname='fortune-mod-bofh-excuses'
-pkgver=20121125.190600
-pkgrel=5
+pkgver=20151113.024512
+pkgrel=1
 pkgdesc='BOFH excuses fortune cookie files'
 arch=('any')
 url='http://www.cs.wisc.edu/~ballard/bofh/'
@@ -19,16 +19,13 @@ pkgver()
     # Make a HTTP HEAD request and use the Last-Modified header of the data file
     # to generate the pkgver. Thanks to djmattyg007 for the idea (and the hint that
     # the Debian package I used previously is somewhat outdated by now :-)!
-
-    msg2 "Determining data file's time of last modification..."
-    local lastmod=$(curl -fL -I "${_dlurl}" | tac | sed -n '/^Last-modified:[[:space:]]*/I { s///p; q }')
+    local lastmod=$(curl -sS -fL -I "${_dlurl}" | tac | sed -n '/^Last-modified:[[:space:]]*/I { s///p; q }')
 
     if [ -z "$lastmod" ]; then
-        warning "Could not determine time of last modification, not updating pkgver."
         return 1
     fi
 
-    date -ud "${lastmod}" '+%Y%m%d.%H%M%S' || { warning "Failed to generate pkgver, it will not be updated."; return 1; }
+    date -ud "${lastmod}" '+%Y%m%d.%H%M%S'
 }
 
 prepare()
