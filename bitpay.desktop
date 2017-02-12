@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=BitPay
+Comment=BitPay Bitcoin Wallet
+Path=/opt/bitpay
+Exec=/opt/bitpay/BitPay
+Icon=bitpay
+Type=Application
+Categories=Bitcoin;
