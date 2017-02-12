@@ -130,8 +130,8 @@ package_opencl-nvidia-full-beta-all() {
 package_nvidia-libgl-full-beta-all() {
   pkgdesc="NVIDIA driver library symlinks for 'nvidia-utils-full-beta-all'"
   depends=('nvidia-utils-full-beta-all')
-  provides=('libgl' 'nvidia-libgl')
-  conflicts=('libgl' 'nvidia-libgl' 'mesa<10.1.0-2')
+  provides=('nvidia-libgl' 'libgl' 'libegl' 'libgles')
+  conflicts=('nvidia-libgl' 'libgl' 'libegl' 'libgles')
   cd $_pkg
 
   # GLX extension for X (link)
@@ -403,9 +403,10 @@ package_lib32-opencl-nvidia-full-beta-all() {
 
 package_lib32-nvidia-libgl-full-beta-all() {
   pkgdesc="NVIDIA driver library symlinks for 'lib32-nvidia-utils-full-beta-all'"
-  depends=('lib32-nvidia-utils-full-beta-all' 'nvidia-libgl-full-beta-all')
-  provides=('lib32-libgl' 'lib32-libegl' 'lib32-libgles' 'lib32-nvidia-libgl')
-  conflicts=('lib32-libgl' 'lib32-libegl' 'lib32-libgles' 'lib32-nvidia-libgl')
+  depends=('lib32-nvidia-utils-beta' 'nvidia-libgl-beta')
+  provides=('lib32-nvidia-libgl' 'lib32-libgl' 'lib32-libegl' 'lib32-libgles')
+  conflicts=('lib32-nvidia-libgl' 'lib32-libgl' 'lib32-libegl' 'lib32-libgles')
+  replaces=('lib32-nvidia-utils<=313.26-1')
   cd $_pkg
 
   # libGL (link)
