@@ -74,8 +74,8 @@ package_opencl-nvidia-beta() {
 package_nvidia-libgl-beta() {
   pkgdesc="NVIDIA driver library symlinks for 'nvidia-utils-beta'"
   depends=('nvidia-utils-beta')
-  provides=('libgl' 'nvidia-libgl')
-  conflicts=('libgl' 'nvidia-libgl' 'mesa<10.1.0-2')
+  provides=('nvidia-libgl' 'libgl' 'libegl' 'libgles')
+  conflicts=('nvidia-libgl' 'libgl' 'libegl' 'libgles')
   cd $_pkg
 
   # GLX extension for X (link)
@@ -152,7 +152,7 @@ package_nvidia-utils-beta() {
   install -Dm755 libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/modules/extensions/libglx.so.$pkgver
   ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/modules/extensions/libglx.so
 
-  # OpenGL
+  # libGL & OpenGL
   install -Dm755 libGL.so.1.0.0 "$pkgdir"/usr/lib/nvidia/libGL.so.1.0.0
   install -Dm755 libGLdispatch.so.0 "$pkgdir"/usr/lib/libGLdispatch.so.0
   install -Dm755 libnvidia-glcore.so.$pkgver "$pkgdir"/usr/lib/libnvidia-glcore.so.$pkgver
