@@ -1,7 +1,7 @@
 # Maintainer: substanceof <vk-cli.dev[at]ya[dot]ru>
 pkgname=vk-cli
 pkgver=0.7.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A console (ncurses) client for vk.com written in D"
 arch=('x86_64' 'i686')
 url="https://github.com/vk-cli/vk"
@@ -9,10 +9,10 @@ license=('Apache')
 depends=('curl' 'openssl' 'ncurses>=5.7')
 makedepends=('dub' 'dmd>=2.071.0' 'git' 'dtools')
 optdepends=('mpv: for music playback')
-provides=("$pkgname")
+provides=("vk-cli")
 conflicts=('hardening-wrapper' 'vk-cli-git')
 
-source=("git+https://github.com/HaCk3Dq/vk.git#tag=${pkgver}")
+source=("git+https://github.com/vk-cli/vk.git#tag=${pkgver}")
 md5sums=('SKIP')
 
 _gitname=vk
