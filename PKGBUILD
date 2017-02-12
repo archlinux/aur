@@ -19,7 +19,7 @@ optdepends=('chuck: for documentation and command line interface')
 source=("http://audicle.cs.princeton.edu/mini/release/files/miniAudicle-$pkgver.tgz"
         'miniAudicle.desktop')
 sha512sums=('fb07741073638cd7d8557b3b1ffe0aa2eca81b13e375999ddb6db88aa5c9b47c70784945758fbef72a494b8af65ca8f3a19aef9320eb300374a467ada76217b5'
-            'ebf6d4e8dc18078dbe22db8d56cafe1664e12ab3a37d994c4aa51502c9c6688ad9fb25a06a0d4e8cb4db06348eccda2b28f204589aea7ddceed51269f6325e7d')
+            'ac5fa241ab3651f985f0cc9a1c50fee72ee1aa731dd7330824c8f98c77d6d0f12a62aa43fede2930720657b9a526659139c954eaa76a38a19b9b6848aec6318e')
 
 prepare() {
 	cd "miniAudicle-$pkgver"/src

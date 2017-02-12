@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=miniAudicle
-Icon=/usr/share/pixmaps/miniAudicle.png
-Exec=/usr/bin/miniAudicle %f
+Icon=miniAudicle
+Exec=/usr/bin/miniAudicle %F
 Comment=Integrated Development + Performance Environment for ChucK
 Categories=Audio;AudioVideo;
