@@ -1,0 +1,10 @@
+2013-02-13 Julien Nicoulaud <julien.nicoulaud@gmail.com>
+
+	* 1.0-2 :
+	Move to Python 3.
+
+2013-01-10 Julien Nicoulaud <julien.nicoulaud@gmail.com>
+
+	* 0.2-1 :
+	Initial release of the package.
+
