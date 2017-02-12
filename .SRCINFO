@@ -1,0 +1,25 @@
+pkgbase = studio-3t
+	pkgdesc = The world's favorite IDE for working with MongoDB, formerly known as MongoChef.
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = https://studio3t.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = java-runtime-openjdk=8
+	depends = java-openjfx
+	depends = gtk2
+	provides = studio-3t
+	replaces = mongochef
+	source = studio-3t.desktop
+	source = studio-3t
+	sha256sums = fa04aeeca55ea61163200b998d63fd73733860ff08fe58b734e4cf356f4a0786
+	sha256sums = c84a8462407ac2d300c34477c05c9545b7359cd1842879c2c321c88343b754f5
+	source_i686 = studio-3t-5.0.1-x86.tar.gz::https://download.studio3t.com/studio-3t/linux/5.0.1/studio-3t-linux-x86.tar.gz
+	sha256sums_i686 = b20fd9c43798f2ebdd6b5d04caab88dca2d9674c2c90f62c6d48d87a7b37b123
+	source_x86_64 = studio-3t-5.0.1-x64.tar.gz::https://download.studio3t.com/studio-3t/linux/5.0.1/studio-3t-linux-x64.tar.gz
+	sha256sums_x86_64 = 72e6e8a695c908177fdb6aedd6b07d7516b6125fb2d0fad9cc1128150cfb7eb9
+
+pkgname = studio-3t
+

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+## Get path to a JDK >= 8. If default JDK does not match, choose the first ##
+## match from "archlinux-java status" list ##
+java_default_version=`archlinux-java get | sed 's/[^0-9]//g'`
+if [ "$java_default_version" -ge 8 ]
+then
+    JDK_PATH="java"
+    ## echo "Using default JDK / JRE: "`archlinux-java get`
+else
+    java_versions=`archlinux-java status | grep -oe java-[8-9]*-[a-z]*`
+    JDK_PATH="/usr/lib/jvm/"`echo $java_versions | cut -f 1 -d " " | sed 's_/jre__g'`"/jre/bin/java"
+    echo "Default java version is smaller than 8."
+    echo "Consider changing the default java version to 8 with archlinux-java." 
+    echo "Using JDK / JRE 8 at "$JDK_PATH" for mongochef execution."
+fi  
+
+# JavaFX charts rendering requires this to be set.
+export SWT_GTK3=0
+
+# Launch the java program
+$JDK_PATH -Dprism.order=sw -jar /opt/studio-3t/data-man-mongodb-ent-*.jar
+

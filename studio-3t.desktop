@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=/usr/bin/studio-3t
+Type=Application
+Terminal=false
+Icon=mongochef
+Categories=Development;
+
+Name=MongoChef
+GenericName=MongoDB Administration Tool
