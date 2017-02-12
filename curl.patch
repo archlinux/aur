@@ -1,0 +1,13 @@
+diff --git a/loader.h b/loader.h
+index ee7f155..e185c2b 100644
+--- a/loader.h
++++ b/loader.h
+@@ -54,7 +54,7 @@
+ 
+ #define FTP_RETRY_NUM 3
+ 
+-using CURL = void;
++#include <curl/curl.h>
+ 
+ struct C_Element {
+     Coordinate coordinate; // coordinate * cubeEdgeLength = minimal coordinate in the cube; NOT center coordinate

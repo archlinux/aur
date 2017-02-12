@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=KNOSSOS 4
+Comment=3D image visualisation and annotation tool
+Categories=Qt;Science;
+Exec=/usr/bin/knossos4
+Icon=/usr/share/pixmaps/knossos4.png
+Terminal=false
