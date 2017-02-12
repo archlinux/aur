@@ -2,7 +2,7 @@
 
 _pkgname=mpd
 pkgname=${_pkgname}-minimal
-pkgver=0.20.2
+pkgver=0.20.4
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music. Minimal version with only flac playback through socket connection as user."
 url="https://www.musicpd.org/"
@@ -13,7 +13,7 @@ makedepends=('boost')
 provides=("${_pkgname}=$pkgver")
 conflicts=("${_pkgname}")
 source=("${url}/download/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('552a87d71c2981baeddf28c1856a7e071ea0236dd38bc75ec25d58529605ff77' 'SKIP')
+sha256sums=('712b25351c12616630c580204e1c3dcba3ae2993a56cff1c346c87e334d69728' 'SKIP')
 validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512') # Max Kellermann <max@musicpd.org>
 
 build() {
@@ -32,6 +32,7 @@ build() {
         --disable-largefile \
         --disable-nfs \
         --disable-smbclient \
+        --disable-webdav \
         --disable-aac \
         --disable-adplug \
         --disable-audiofile \
@@ -55,6 +56,7 @@ build() {
         --disable-ao \
         --enable-alsa \
         --enable-fifo \
+        --disable-haiku \
         --disable-httpd-output \
         --disable-jack \
         --disable-mms \
@@ -66,8 +68,10 @@ build() {
         --disable-recorder-output \
         --disable-roar \
         --disable-shout \
+        --disable-sndio \
         --disable-solaris-output \
         --disable-cdio-paranoia \
+        --disable-cue \
         --disable-curl \
         --disable-soundcloud \
         --disable-lame-encoder \
@@ -87,6 +91,7 @@ build() {
         --disable-inotify \
         --enable-libmpdclient \
         --enable-database \
+        --enable-daemon \
         --enable-sqlite \
         --enable-icu \
         --disable-systemd-daemon \
