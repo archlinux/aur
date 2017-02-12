@@ -30,6 +30,7 @@ depends=(
 'libcdio-paranoia>=0.70'
 'libsoup-2.2>=2.2.100'
 'gstreamer0.10>=0.10.14'
+'gstreamer0.10-bad-plugins>=0.10.14'
 'gstreamer0.10-base-plugins>=0.10.14'
 'gstreamer0.10-good-plugins>=0.10.14'
 'gstreamer0.10-ugly-plugins>=0.10.14'

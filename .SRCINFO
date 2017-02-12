@@ -28,6 +28,7 @@ pkgbase = bmpx
 	depends = libcdio-paranoia>=0.70
 	depends = libsoup-2.2>=2.2.100
 	depends = gstreamer0.10>=0.10.14
+	depends = gstreamer0.10-bad-plugins>=0.10.14
 	depends = gstreamer0.10-base-plugins>=0.10.14
 	depends = gstreamer0.10-good-plugins>=0.10.14
 	depends = gstreamer0.10-ugly-plugins>=0.10.14
