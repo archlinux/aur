@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-sharing
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Sharing plug for Switchboard'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('glib2' 'glibc' 'gnome-user-share' 'gtk3' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('cmake' 'vala')
 source=("https://launchpad.net/switchboard-plug-sharing/loki/${pkgver}/+download/switchboard-plug-sharing-${pkgver}.tar.xz")
-sha256sums=('9aed80dbeac25972f6011ffce414cf1309b70b9061d87f9000b18dc48113012f')
+sha256sums=('c317f6ff9f674325d561271ccb24a9c6bafc628f4ada8bee3abd49ca29e0e268')
 
 prepare() {
   cd switchboard-plug-sharing-${pkgver}
