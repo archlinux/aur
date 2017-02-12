@@ -2,7 +2,7 @@
 
 pkgname=dosbox-daum
 pkgver=20150125
-pkgrel=1
+pkgrel=2
 pkgdesc="Emulator with builtin DOS for running DOS Games (Daum version)"
 arch=('i686' 'x86_64')
 url="http://ykhwong.x-y.net/"
@@ -21,6 +21,7 @@ source=("source-${pkgver}.7z::http://ykhwong.x-y.net/downloads/dosbox/patch/sour
         '0004-fix-64bit-pointersize.patch'
         '0005-fix-MIN.patch'
         '0006-fix-std-pow.patch'
+        '0007-fix-wrong-return-value.patch'
 				'dosbox.png')
 sha256sums=('061336cd3971e37fa0d342c6644e19776a2ddfc20d8f197abca1f8ee27dabea6'
             'cbe78dab758c5ece5616b2456178fe3ebe1429e9796b4088902c6c0856475bf6'
@@ -29,6 +30,7 @@ sha256sums=('061336cd3971e37fa0d342c6644e19776a2ddfc20d8f197abca1f8ee27dabea6'
             '8125c7fb2f1428e25f4d50a48df16bb5b692286216bfe5a8ef463d15cef25831'
             '224bb0b5b45941baae9ad02cb4da7eef5186d4a05ead4e4b70d4e6b371f73c85'
             'b9165a8f814977ba26938214927c42073d5fcc5d226c1005d525c0eed43d7d32'
+            '30144bd197a8e78d68b591ef77cf712e9d96de12e186a06c9e454db9e91c3687'
 						'491c42d16fc5ef7ee2eca1b736f7801249d4ca8c0b236a001aec0d3e24504f3b')
 
 prepare(){
@@ -49,6 +51,7 @@ prepare(){
 
 	patch -p0 -i "$srcdir"/0005-fix-MIN.patch
 	patch -p1 -i "$srcdir"/0006-fix-std-pow.patch
+	patch -p1 -i "$srcdir"/0007-fix-wrong-return-value.patch
 
 	gendesk -f --pkgname "dosbox" --pkgdesc "$pkgdesc"
 
