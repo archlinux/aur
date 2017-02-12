@@ -4,4 +4,4 @@ Name=miniAudicle
 Icon=/usr/share/pixmaps/miniAudicle.png
 Exec=/usr/bin/miniAudicle %f
 Comment=Integrated Development + Performance Environment for ChucK
-Categories=Audio
+Categories=Audio;AudioVideo;
