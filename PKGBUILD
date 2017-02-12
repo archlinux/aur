@@ -4,7 +4,7 @@
 
 pkgname=qt5.6
 pkgver=5.6.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
@@ -31,30 +31,33 @@ source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/singl
 md5sums=('5175fba2f221fd4c91e94771a57a5557')
 
 prepare() {
-  cd ${_tarname}
+    cd ${_tarname}
 
-  find . -name '*.py' -exec sed -i \
-    's|#![ ]*/usr/bin/python$|&2|;s|#![ ]*/usr/bin/env python$|&2|' {} +
+    find . -name '*.py' -exec sed -i \
+        's|#![ ]*/usr/bin/python$|&2|;s|#![ ]*/usr/bin/env python$|&2|' {} +
 }
 
 build() {
-  cd ${_tarname}
+    cd ${_tarname}
+    local qt5_src="/opt/qt5.6"
 
-  PYTHON=/usr/bin/python2 ./configure -confirm-license -opensource \
-	-prefix /opt/qt5.6 \
+    PYTHON=/usr/bin/python2 ./configure -confirm-license -opensource \
+        -prefix /opt/qt5.6 \
+        -nomake examples \
+        -no-use-gold-linker \
         -plugin-sql-{psql,mysql,sqlite,odbc,ibase} \
-	-optimized-qmake \
-	-openssl-linked \
-	-system-sqlite \
-	-system-pcre \
-	-system-harfbuzz
+        -optimized-qmake \
+        -openssl-linked \
+        -system-sqlite \
+        -system-pcre \
+        -system-harfbuzz
   make
 }
 
 package() {
-  cd ${_tarname}
-  make INSTALL_ROOT="${pkgdir}" install
+    cd ${_tarname}
+    make INSTALL_ROOT="${pkgdir}" install
 
-  install -D -m644 LGPL_EXCEPTION.txt \
-    "${pkgdir}"/usr/share/licenses/${pkgname}/LGPL_EXCEPTION.txt
+    install -D -m644 LGPL_EXCEPTION.txt \
+        "${pkgdir}"/usr/share/licenses/${pkgname}/LGPL_EXCEPTION.txt
 }

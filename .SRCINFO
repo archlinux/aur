@@ -1,7 +1,7 @@
 pkgbase = qt5.6
 	pkgdesc = A cross-platform application and UI framework
 	pkgver = 5.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qt-project.org/
 	arch = i686
 	arch = x86_64
