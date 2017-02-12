@@ -9,7 +9,7 @@
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
 pkgver=0.24.0.r0.g0f1afc6ba2
-pkgrel=2
+pkgrel=3
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
 arch=('x86_64')
@@ -19,7 +19,7 @@ screenshot='http://i.imgur.com/6TacA5I.png'
 _undetected_depends=('desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
 depends=('pulseaudio' 'lcms2' 'libdvdread' 'libgl' 'libvdpau'
          'libxinerama' 'libxv' 'libxkbcommon' 'libva'  'libass' 'uchardet' 
-	 'wayland' 'v4l-utils' 'lua52' 'libdvdnav' 'libcdio-paranoia' 'libbluray' 'libxss'
+	 'wayland' 'v4l-utils' 'lua52' 'rsound' 'sndio' 'libdvdnav' 'libcdio-paranoia' 'libbluray' 'libxss'
          'enca' 'libguess' 'harfbuzz' 'libxrandr' 'rubberband' 'smbclient' "${_undetected_depends[@]}")
 
 depends_i686=(
@@ -37,8 +37,8 @@ optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
             'adobe-source-sans-pro-fonts: Font as shown in the conf'
             )
 
-makedepends=('mesa' 'python-docutils' 'ladspa' 'x264' 'x265' 'openal' 'rsound' 'sndio' 'jack'
-             'samba' 'acpitool' 'waf' 'inxi' 'git' 'vapoursynth' 'libvdpau' 'libva'
+makedepends=('mesa' 'python-docutils' 'ladspa' 'x264' 'x265' 'openal' 'jack'
+             'samba' 'acpitool' 'inxi' 'git' 'vapoursynth' 'libvdpau' 'libva'
               'livestreamer' 'youtube-dl')
 # check kind of graphic card
 if [ "$CARCH" = "x86_64" ] ; then
