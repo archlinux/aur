@@ -1,31 +1,25 @@
-# Maintainer : Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer: Michael Straube <straubem@gmx.de>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: TDY <tdy@gmx.com>
 # Contributor: shamrok <szamrok :: gmail.com>
 # Contributor: Inigo Serna <inigoserna :: gmail.com>
 # Contributor: aksr <aksr at t-com dot me>
+
 pkgname=lfm
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A powerful file manager for the UNIX console. Based on curses and written in Python."
 arch=('any')
-url="https://inigo.katxi.org/devel/lfm/"
+url="https://bitbucket.org/inigoserna/lfm3"
 license=('GPL3')
 depends=('ncurses' 'python')
-source=("https://inigo.katxi.org/devel/lfm/$pkgname-$pkgver.tar.gz")
-md5sums=('9c13c5fafcb1aecd43f51fa9b0278000')
-sha1sums=('a7ef8503c1a9b054ad64c2327173a02eb741389c')
-sha256sums=('dcb9c3dc3122ed41bfb72ed2f03e41afa917d17b23ee8459371e7f39e9b888e7')
+source=("https://bitbucket.org/inigoserna/lfm3/downloads/lfm-$pkgver.tar.gz")
+sha256sums=('01afadd56aded43887c40dec7c81394e5361ba390a3604bd510d69cafe36e3b8')
 
-# In order to prevent curl warning.
-DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
-
-build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py build
-}
+# In order to build in a clean chroot
+LC_CTYPE=en_US.UTF-8
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --prefix=/usr --root="$pkgdir"
+  cd $pkgname-$pkgver
+  python setup.py install --root="$pkgdir"
 }
-
