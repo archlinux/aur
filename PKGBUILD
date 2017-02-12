@@ -73,6 +73,7 @@ build() {
         --sysconfdir=/etc \
         --libexecdir=/usr/lib \
         --with-ipsecdir=/usr/lib/strongswan \
+        --with-nm-ca-dir=/etc/ssl/certs \
         --enable-sqlite \
         --enable-openssl --enable-curl \
         --enable-sql --enable-attr-sql \
