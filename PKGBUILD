@@ -3,7 +3,7 @@
 # Contributor:	flan_suse
 
 pkgname=xfce-theme-greybird
-pkgver=3.22.0
+pkgver=3.22.1
 pkgrel=1
 pkgdesc="A grey and blue Xfce theme."
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('elementary-xfce-icons: matching icon set; use the dark icon theme'
 	    'shimmer-wallpapers: contains the Greybird wallpaper, among others'
 	    'lib32-gtk-engine-murrine: required for multilib')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/shimmerproject/Greybird/archive/v$pkgver.tar.gz")
-sha256sums=('d03351d4f6f64e4c8f7dbacca0cb101bfa2cc25ada61d136a1558dbb993e6445')
+sha256sums=('bfcfecb8982546d27a67b6a498828654bfd293d2eb07c04631363a8bebcafb42')
 
 package() {
 	cd "$srcdir"
