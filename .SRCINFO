@@ -1,0 +1,16 @@
+pkgbase = chromium-app-mooltipass
+	pkgdesc = Mooltipass password manager client
+	pkgver = 2.0.61
+	pkgrel = 1
+	url = https://www.themooltipass.com/setup
+	arch = any
+	license = custom:MIT
+	depends = chromium
+	source = mooltipass-app.crx::https://clients2.google.com/service/update2/crx?response=redirect&prodversion=49.0&x=id%3Dcdifokahonpfaoldibbjmbkdhhelblpj%26installsource%3Dondemand%26uc
+	source = cdifokahonpfaoldibbjmbkdhhelblpj.json
+	source = LICENSE
+	sha256sums = 3ac647c3aa0dd549d3f731fbd6d955466967503f673a996b627f12ae9dcc5019
+	sha256sums = 5930a63d2f1b6a1357ebe728d3492aaec4ec1b38c4dc5d3761f0c09370a0741b
+	sha256sums = 2af680c39ef493fb82830356d1d3df1acb5a06033cba2dec7a19e21caa77a866
+
+pkgname = chromium-app-mooltipass
