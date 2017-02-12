@@ -1,0 +1,17 @@
+pkgbase = wejoy-git
+	pkgdesc = Tool to read physical joystick devices, create virtual joystick devices and output keyboard presses on a Linux system.
+	pkgver = r12.426cb1a
+	pkgrel = 1
+	url = https://github.com/Vantskruv/wejoy
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = lua52
+	depends = libx11
+	depends = libsystemd
+	provides = wejoy
+	source = git+https://github.com/Vantskruv/wejoy.git
+	md5sums = SKIP
+
+pkgname = wejoy-git
+
