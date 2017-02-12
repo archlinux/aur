@@ -1,0 +1,10 @@
+2017-02-12 Peter Sutton <foxxy(at)foxdogstudios(dot)com>
+
+	* 20170105-1:
+	Updated existing drum kits and added ForzeeStereo.
+
+2013-05-22 Daniele Paolella <danielepaolella(at)email(dot)it>
+
+	* 20100812-2:
+	use package() instead of build();
+	copy the wanted files only (thanks to burjui).
