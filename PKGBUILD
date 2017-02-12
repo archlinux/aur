@@ -8,7 +8,7 @@
 
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=20170129.954625c165
+pkgver=20170212.3739d1318f
 pkgrel=1
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
 arch=('x86_64')
@@ -99,6 +99,7 @@ CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
 	            --disable-html-build \
 	            --disable-pdf-build \
 	            \
+	            --enable-cplugins \
 	            --enable-vf-dlopen-filters \
 	            --enable-zsh-comp \
 	            --disable-test \
@@ -124,7 +125,7 @@ CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
 	            --enable-vapoursynth-lazy \
 	            --enable-libarchive \
 	            --enable-libavdevice \
-	            --lua=luajit \
+	            --lua=52arch \
 	            \
 	            --enable-sdl2 \
 	            --disable-sdl1 \
@@ -158,6 +159,7 @@ CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
 	            --disable-gl-win32 \
 	            --disable-gl-dxinterop \
 	            --disable-egl-angle \
+	            --disable-egl-angle-lib \
 	            --enable-vdpau \
 	            --enable-vdpau-gl-x11 \
 	            --enable-vaapi \
@@ -178,10 +180,18 @@ CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
 	            --enable-plain-gl \
 	            --disable-mali-fbdev \
 	            --enable-gl \
+	            \
 	            --enable-vaapi-hwaccel \
-                --disable-videotoolbox-hwaccel \
+	            --disable-vaapi-hwaccel-new \
+	            --disable-videotoolbox-hwaccel \
 	            --disable-videotoolbox-gl \
-                --disable-d3d-hwaccel \
+	            --enable-vdpau-hwaccel \
+	            --disable-d3d-hwaccel \
+	            --enable-tv \
+	            --enable-tv-v4l2 \
+	            --enable-libv4l2 \
+	            --enable-audio-input \
+	            --enable-dvbin \
 	            --disable-apple-remote
 	
 	./waf build
