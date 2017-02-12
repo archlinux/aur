@@ -1,0 +1,22 @@
+pkgbase = libao-git
+	pkgdesc = Cross-platform audio output library and plugins
+	pkgver = 1.2.2.r2.1f998f5
+	pkgrel = 1
+	url = http://xiph.org/ao/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libpulse
+	makedepends = git
+	depends = alsa-lib
+	provides = libao-pulse=1.2.2.r2.1f998f5-1
+	conflicts = libao-pulse
+	replaces = libao-pulse
+	backup = etc/libao.conf
+	source = git+https://github.com/xiph/libao.git
+	source = libao.conf
+	sha1sums = SKIP
+	sha1sums = 603f5e6715e7e50e1c8e8c1935c45a897c46e9af
+
+pkgname = libao-git
+
