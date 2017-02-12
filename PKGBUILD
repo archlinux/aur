@@ -15,8 +15,8 @@
 # archzfs github page.
 #
 pkgname="zfs-linux-headers"
-pkgver=0.6.5.9_kernel_4.9
-pkgrel=1
+pkgver=0.6.5.9_4.9
+pkgrel=2
 pkgdesc="Kernel modules for the Zettabyte File System."
 depends=("linux>=4.9" "linux<4.10")
 makedepends=("linux-headers>=4.9" "git")
