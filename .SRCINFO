@@ -1,0 +1,18 @@
+pkgbase = texlive-axodraw2
+	pkgdesc = A LaTeX package for drawing Feynman graphs
+	pkgver = 2.1.0b
+	pkgrel = 1
+	url = https://www.ctan.org/pkg/axodraw2
+	install = texlive-axodraw2.install
+	arch = any
+	license = GPL
+	makedepends = gcc
+	depends = texlive-core
+	depends = texlive-latexextra
+	source = http://mirrors.ctan.org/graphics/axodraw2/axodraw2.sty
+	source = http://mirrors.ctan.org/graphics/axodraw2/axohelp.c
+	sha256sums = f71dc57d3a5c0c3c7f8e4412c7fb7bb499a48fda643d44d6793178cb3eaa7b4b
+	sha256sums = a46a733b3fa1ada6bc58bcdbce3348d0cb12ff4664f09ade042d98fc01189f0b
+
+pkgname = texlive-axodraw2
+
