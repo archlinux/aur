@@ -55,16 +55,16 @@
 _bldtype=Release
 #_bldtype=Debug
 
-_mozcrev=2315f957d1785130c2ed196e141a330b0857b065
-_utdicver=20161017
-_zipcoderel=201609
+_mozcrev=280e38fe3d9db4df52f0713acf2ca65898cd697a
+_utdicver=20170116
+_zipcoderel=201612
 
-_fcitxver=2.17.2313.102.1
+_fcitxver=2.18.2612.102.1
 
 _pkgbase=mozc-ut2
 pkgname=fcitx-mozc-ut2
 pkgdesc="Mozc the Japanese Input Method with Mozc UT2 Dictionary (additional dictionary) and uim-mozc (optional)"
-pkgver=2.18.2612.102.20161017
+pkgver=2.20.2673.102.20170116
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc-ut2.html"
@@ -85,13 +85,13 @@ source=(
   http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
 )
 sha1sums=('SKIP'
-          '582971f92af75c86b056ca3507cae125ea060217'
-          '0ba7df55dfd05d43694c6de82c5b215e023f9024'
+          '7b552db7e81ff57483a3065267afeca01edea36a'
+          '3cbef322672c1327d2fbae13bf4366cbc607dba3'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
-          'c8085904b2326363667831131c0921b004a66bad'
-          '3d012569963b9359d2d267216f78c1a07a395065'
-          'd4cabe4be5ae956e81d0c7e2023070d622e512cf'
-          '31de8917e9369bfd638e5725d57469bfde6aeb84'
+          '50b52dffcc69bddee778ad609e635a66623837de'
+          '3672fe17f725be49972c9a374e0c7fdc6dc80ff7'
+          '16574ba571784ff037022ecdab7f62c9d5bb4ce6'
+          'afeef31bf3d640f9cc630c2187dbfd4507367d78'
           '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d')
 
 
