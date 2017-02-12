@@ -1,5 +1,4 @@
-# $Id: PKGBUILD 209603 2017-01-31 21:01:48Z arojas $
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: thacrazze <thacrazze|googlemail|com>
 
@@ -10,7 +9,7 @@ pkgdesc='A video downloader and converter for YouTube, Veoh, DailyMotion, MyVide
 arch=(i686 x86_64)
 url='http://clipgrab.org'
 license=(GPL3)
-depends=(qt5-webkit)
+depends=(qtwebkit)
 optdepends=('ffmpeg: for the conversion functionality')
 source=(https://download.clipgrab.org/$pkgname-$pkgver.tar.gz
         $pkgname.desktop)
@@ -20,7 +19,7 @@ md5sums=('0e7d9dd854eebbaf55d53e9243819125'
 build() {
   cd $pkgname-$pkgver
 
-  qmake clipgrab.pro
+  qmake-qt4 clipgrab.pro
   make
 }
 
