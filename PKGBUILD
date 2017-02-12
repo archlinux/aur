@@ -1,33 +1,40 @@
-# $Id: PKGBUILD 194930 2016-11-07 17:35:14Z jlichtblau $
-# Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
+# Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Roman Kyrylych <roman@archlinux.org>
 # Contributor: Johannes Sjolund <j.sjolund@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gnome-commander
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical two-pane filemanager for Gnome'
 arch=('i686' 'x86_64')
 url='http://gcmd.github.io/'
 license=('GPL')
-depends=('libgnomeui' 'gnome-vfs' 'gconf' 'python2' 'libsm' 'libunique')
+depends=('libgnomeui' 'python2' 'libunique' 'libgsf' 'exiv2' 'taglib' 'poppler-glib')
 makedepends=('perl-xml-parser' 'gnome-doc-utils' 'intltool')
 changelog=$pkgname.changelog
 source=(https://download.gnome.org/sources/gnome-commander/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
 sha256sums=('47840659c1308c363606c505f561fa101351b72a40567550715589e4cc963f78')
 
-build() {
+prepare() {
   cd "$pkgname-$pkgver"
-
   # Python 2 fix
   for f in doc/*/gnome-commander.xml; do
       sed -i 's:env python:env python2:' "$f"
   done
+}
 
-  ./configure --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc \
-              --localstatedir=/var --disable-scrollkeeper --enable-python
+build() {
+  cd "$pkgname-$pkgver"
+  PYTHON=python2 ./configure \
+	--prefix=/usr \
+	--libdir=/usr/lib \
+	--sysconfdir=/etc \
+	--localstatedir=/var \
+	--disable-scrollkeeper \
+	--enable-python
   make
 }
 
