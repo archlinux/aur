@@ -1,0 +1,15 @@
+pkgbase = ruby-highline-1.6.20
+	pkgdesc = HighLine is a high-level command-line IO library.
+	pkgver = 1.6.20
+	pkgrel = 1
+	url = http://highline.rubyforge.org
+	arch = any
+	license = Ruby
+	depends = ruby
+	noextract = highline-1.6.20.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/highline-1.6.20.gem
+	sha1sums = b6a0271c73c2a55b9541602183fc876f5dd917c0
+
+pkgname = ruby-highline-1.6.20
+
