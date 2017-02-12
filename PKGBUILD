@@ -3,7 +3,7 @@ _pkgname=koel-app
 pkgname="${_pkgname}-git"
 pkgver=r39.000bc57
 _dpkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The desktop application for Koel."
 arch=('x86_64')
 url="https://github.com/phanan/koel-app"
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd "${_pkgname}"
-    npm install
+    npm install --cache "${srcdir}/npm-cache"
     npm run release
     ar p "releases/${_pkgname}_${_dpkgver}_amd64.deb" "data.tar.xz" | tar xvJ -C "${srcdir}"
 }
