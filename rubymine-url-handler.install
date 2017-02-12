@@ -1,0 +1,7 @@
+post_install() {
+  update-desktop-database
+}
+
+post_upgrade() {
+  update-desktop-database
+}

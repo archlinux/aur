@@ -1,0 +1,18 @@
+pkgbase = rubymine-url-handler-git
+	pkgdesc = Open x-mine:// URLs in RubyMine.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/SanderVerkuil/rubymine-url-handler
+	install = rubymine-url-handler.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = desktop-file-utils
+	depends = rubymine
+	provides = rubymine-url-handler
+	conflicts = rubymine-url-handler
+	source = rubymine-url-handler::git+https://github.com/SanderVerkuil/rubymine-url-handler
+	sha512sums = SKIP
+
+pkgname = rubymine-url-handler-git
+
