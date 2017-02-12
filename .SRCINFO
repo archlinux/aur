@@ -1,0 +1,16 @@
+pkgbase = plasma5-applets-redshift-control
+	pkgdesc = Plasma applet for controlling redshift.
+	pkgver = 1.0.18
+	pkgrel = 1
+	url = https://github.com/kotelnik/plasma-applet-redshift-control
+	arch = any
+	license = GPL
+	makedepends = extra-cmake-modules
+	depends = plasma-workspace
+	depends = qt5-graphicaleffects
+	depends = redshift
+	source = plasma5-applets-redshift-control-1.0.18.tar.gz::https://github.com/kotelnik/plasma-applet-redshift-control/archive/v1.0.18.tar.gz
+	sha256sums = 9f6de46653d9467e155ab857c84ef02021509f96afe0a4a7db9555f2a1da8d46
+
+pkgname = plasma5-applets-redshift-control
+
