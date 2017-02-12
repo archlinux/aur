@@ -24,16 +24,11 @@ check() {
 }
 
 package() {
-  #cd "${srcdir}/Universal-G-Code-Sender-${pkgver}"
-  #install -Dm 755 universal-gcode-sender.sh -T $pkgdir/usr/bin/ugs
   mkdir -p "${pkgdir}/opt/${pkgname}"
   cp "${srcdir}/Universal-G-Code-Sender-${pkgver}/target/UniversalGcodeSender.jar" "${pkgdir}/opt/${pkgname}/."
   cp "${srcdir}/Universal-G-Code-Sender-${pkgver}/release_files/start.sh" "${pkgdir}/opt/${pkgname}/."
-  #install -Dm 644 target/UniversalGcodeSender.jar -t "${pkgdir}/opt/${pkgname}"
+  chmod +x "${pkgdir}/opt/${pkgname}/start.sh"
 
   mkdir -p "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/start.sh" "${pkgdir}/usr/bin/ugs"
-  #echo '#!/bin/sh' > "${pkgdir}/usr/bin/ugs"
-  #echo "java -jar -Xmx512m /opt/${pkgname}/UniversalGcodeSender.jar" >> "${pkgdir}/usr/bin/ugs"
-  #chmod +x "${pkgdir}/usr/bin/ugs"
 }
