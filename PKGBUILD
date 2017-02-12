@@ -35,18 +35,21 @@ sha256sums=(
 
 pkgver() {
 	cd "${srcdir}/${reponame}" || exit 1
+
 	printf "r%s.%s"                     \
-        "$(git rev-list --count HEAD)"	\
+        "$(git rev-list --count HEAD)"  \
         "$(git rev-parse --short HEAD)"
 }
 
 build() {
 	cd "${srcdir}/${reponame}" || exit 1
+
 	cargo build --release
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}" | exit 1
+	cd "${srcdir}/${_pkgname}" || exit 1
+
     install -m755 \
         -D "target/release/dybuk" "${pkgdir}/usr/bin/${_pkgname}"
     install	-m644 \
