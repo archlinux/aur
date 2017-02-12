@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Reuße <seb@wirrsal.net>
 pkgname=pixterm-git
 _gitname=pixterm
-pkgver=r9.0604f32
+pkgver=v1.1.1.r0.g0604f32
 pkgrel=1
 pkgdesc="Draw images in your ANSI terminal with true color"
 arch=(x86_64 i686)
@@ -16,10 +16,8 @@ md5sums=(SKIP)
 
 pkgver() {
     cd "$_gitname"
-    # No tagged commits. ヽ(´ー｀)ノ
-    commit=$(git rev-list --count master)
-    hash=$(git rev-parse --short HEAD)
-    echo "r$commit.$hash"
+    git describe --long --tags \
+        | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
