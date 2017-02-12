@@ -44,5 +44,12 @@ build() {
 
 package() {
 	cd "${srcdir}/${_pkgname}/build"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="${pkgdir}/" install
+	
+	install -Dm644 "${srcdir}/${_pkgname}/LICENSE.GPL2.txt" \
+		"${pkgdir}/usr/doc/${_pkgname}/LICENSE.GPL2.txt"
+	install -Dm644 "${srcdir}/${_pkgname}/LICENSE.GPL3.txt" \
+		"${pkgdir}/usr/doc/${_pkgname}/LICENSE.GPL3.txt"
+	install -Dm644 "${srcdir}/${_pkgname}/README.txt" \
+		"${pkgdir}/usr/doc/${_pkgname}/README.txt"
 }
