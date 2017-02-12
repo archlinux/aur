@@ -4,7 +4,7 @@ pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
 pkgver=0.84
 srcrel=2 # Incremented when there is a new release for the same version number
-pkgrel=2
+pkgrel=3
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
 url="http://www.xnview.com/en/xnviewmp/"
 
@@ -38,6 +38,11 @@ package() {
 
   # Remove the bundled framework libs (Qt and icu).
   rm "${pkgdir}/opt/${_pkgname}/lib/"lib*
+  # Since we are using system Qt libraries, we should also use the system Qt
+  # plugins. Remove the provided platform plugins and symlink the system ones
+  # instead.
+  rm -r "${pkgdir}/opt/${_pkgname}/lib/"platform{s,themes}
+  ln -s /usr/lib/qt/plugins/platform{s,themes} "${pkgdir}/opt/${_pkgname}/lib"
   # XnView MP does a weird font lookup with random results under certain
   # circumstances, when not using the bundled libs. It seems that forcing
   # QT_QPA_PLATFORMTHEME to be the shipped platform theme solves the issue.
