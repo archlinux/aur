@@ -1,0 +1,10 @@
+2012-01-17 Julien Nicoulaud <julien.nicoulaud@gmail.com>
+
+	* 0.7.0-2 :
+	Fix incorrect optdepends syntax.
+
+2011-11-26 Julien Nicoulaud <julien.nicoulaud@gmail.com>
+
+	* 0.7.0-1 :
+	Initial release of the package.
+
