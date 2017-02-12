@@ -1,0 +1,16 @@
+pkgbase = ignore
+	pkgdesc = Download .gitignore files for a given language.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/jarodl/ignore
+	changelog = Changelog
+	arch = any
+	license = MIT
+	depends = python2
+	depends = python2-distribute
+	conflicts = ignore-git
+	source = http://pypi.python.org/packages/source/i/ignore/ignore-0.1.4.tar.gz
+	md5sums = 4b3d9ddf4675aa827ed5d1f6867ee444
+
+pkgname = ignore
+
