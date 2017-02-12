@@ -1,0 +1,17 @@
+pkgbase = libsexy
+	pkgdesc = Doing naughty things to good widgets.
+	pkgver = 0.1.11
+	pkgrel = 5
+	url = http://chipx86.com/wiki/Libsexy
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = iso-codes
+	makedepends = pkgconfig
+	depends = gtk2
+	depends = libxml2
+	source = http://releases.chipx86.com/libsexy/libsexy/libsexy-0.1.11.tar.gz
+	md5sums = 33c079a253270ec8bfb9508e4bb30754
+
+pkgname = libsexy
+
