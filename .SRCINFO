@@ -1,0 +1,17 @@
+pkgbase = libsexymm
+	pkgdesc = C++ bindings for libsexy
+	pkgver = 0.1.9
+	pkgrel = 3
+	url = http://osiris.chipx86.com/projects/libsexy
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = gtkmm>=2.18.2
+	depends = libsexy>=0.1.11
+	options = !libtool
+	source = http://releases.chipx86.com/libsexy/libsexymm/libsexymm-0.1.9.tar.gz
+	md5sums = 77c8ae69084e478a6b090ec6e5ae26bf
+
+pkgname = libsexymm
+
