@@ -1,6 +1,6 @@
 pkgbase = st-ametisf-git
-	pkgdesc = Port of simple terminal to wayland - ametisf fork
-	pkgver = 981.0145274
+	pkgdesc = Port of simple terminal to wayland - ametisf fork, static, musl
+	pkgver = 982.2a71cc0
 	pkgrel = 1
 	epoch = 1
 	url = http://github.com/ametisf/st
@@ -11,6 +11,7 @@ pkgbase = st-ametisf-git
 	makedepends = libxext
 	makedepends = git
 	makedepends = tup
+	makedepends = musl
 	depends = libxft
 	provides = st
 	conflicts = st

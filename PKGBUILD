@@ -2,15 +2,15 @@
 
 pkgname=st-ametisf-git
 _pkgname=st
-pkgver=981.0145274
+pkgver=982.2a71cc0
 pkgrel=1
-pkgdesc='Port of simple terminal to wayland - ametisf fork'
+pkgdesc='Port of simple terminal to wayland - ametisf fork, static, musl'
 url='http://github.com/ametisf/st'
 arch=('i686' 'x86_64')
 license=('MIT')
 options=('zipman')
 depends=('libxft')
-makedepends=('ncurses' 'libxext' 'git' 'tup')
+makedepends=('ncurses' 'libxext' 'git' 'tup' 'musl')
 epoch=1
 # include config.h and any patches you want to have applied here
 source=('git+https://github.com/ametisf/st.git')
@@ -28,7 +28,7 @@ prepare() {
 	cd $_pkgname
 	cat >> config.tup << "EOF"
 ENABLE_DEBUG=0
-BUILD_STATIC=0
+BUILD_STATIC=1
 EOF
 }
 
