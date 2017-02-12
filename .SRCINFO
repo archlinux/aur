@@ -9,9 +9,8 @@ pkgbase = libao-git
 	makedepends = libpulse
 	makedepends = git
 	depends = alsa-lib
-	provides = libao-pulse=1.2.2.r2.1f998f5-1
-	conflicts = libao-pulse
-	replaces = libao-pulse
+	provides = libao=1.2.2.r2.1f998f5-1
+	conflicts = libao
 	backup = etc/libao.conf
 	source = git+https://github.com/xiph/libao.git
 	source = libao.conf

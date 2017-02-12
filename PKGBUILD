@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('alsa-lib')
 makedepends=('libpulse' 'git')
-provides=('libao')
+provides=("libao=${pkgver}-${pkgrel}")
 conflicts=('libao')
 backup=('etc/libao.conf')
 source=("git+https://github.com/xiph/libao.git"
@@ -19,9 +19,6 @@ source=("git+https://github.com/xiph/libao.git"
 sha1sums=('SKIP'
           '603f5e6715e7e50e1c8e8c1935c45a897c46e9af')
 
-conflicts=('libao-pulse')
-provides=("libao-pulse=${pkgver}-${pkgrel}")
-replaces=('libao-pulse')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
