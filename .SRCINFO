@@ -1,0 +1,16 @@
+pkgbase = chromium-extension-mooltipass
+	pkgdesc = Retrieve and store Mooltipass credentials easily from websites.
+	pkgver = 1.1.62
+	pkgrel = 1
+	url = https://www.themooltipass.com/setup
+	arch = any
+	license = custom:MIT
+	depends = chromium
+	source = mooltipass.crx::https://clients2.google.com/service/update2/crx?response=redirect&prodversion=49.0&x=id%3Dffemldjbbfhimggdkkckolidemlllklk%26installsource%3Dondemand%26uc
+	source = ffemldjbbfhimggdkkckolidemlllklk.json
+	source = LICENSE
+	sha256sums = 31e119a9b5f88f5081794b8da1152b470d0186085b5b7beffeb37d48fa944fc4
+	sha256sums = 3958de07cee049f6dcaef59983735119dcad4090fa7873191e4de8ed4d535dd5
+	sha256sums = 2af680c39ef493fb82830356d1d3df1acb5a06033cba2dec7a19e21caa77a866
+
+pkgname = chromium-extension-mooltipass
