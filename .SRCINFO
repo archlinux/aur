@@ -1,0 +1,15 @@
+pkgbase = ruby-smart_colored
+	pkgdesc = Color and formatting in terminal
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://github.com/toy/smart_colored
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = smart_colored-1.1.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/smart_colored-1.1.1.gem
+	sha1sums = ccfb7b5a8e35f09b65a20a3e516dcec01d48972c
+
+pkgname = ruby-smart_colored
+
