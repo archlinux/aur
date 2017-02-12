@@ -2,12 +2,12 @@
 
 pkgname=zcash
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://z.cash/'
 license=('MIT')
-depends=('boost-libs' 'zeromq')
+depends=('boost-libs' 'miniupnpc' 'zeromq')
 makedepends=('boost' 'wget')
 checkdepends=('python' 'python2' 'python2-pyzmq')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zcash/zcash/archive/v${pkgver}.tar.gz"
