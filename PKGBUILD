@@ -47,8 +47,6 @@ source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2"
 
 validpgpkeys=("948F158A4E76A27BF3D07532DF42C170B34DBA77")
 
-# md5 is broken. We use sha256 now. Alternatively, we could check the signature of the file, but that
-# doesn't yield any more security and just increases the work users initially have to invest.
 sha256sums=('720b301991f77bdedd8d551a956f52e2d11686a0ec18e832094f86cf2b842ab7'
             'SKIP'
             '003750d77fa501075f1fdb6f55926dc544407c5dd26e2fd8d5eb4917ddf0b3f7'
