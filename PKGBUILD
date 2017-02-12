@@ -3,12 +3,12 @@
 # Contributor: Asa Marco <marcoasa90[at]gmail[.]com>
 pkgname=kupfer
 pkgver=304
-pkgrel=1
+pkgrel=2
 pkgdesc="Launcher application written in python. Similar to Gnome-Do / Launchy"
 arch=('i686' 'x86_64')
 url="https://kupferlauncher.github.io"
 license=('GPL3')
-depends=('libkeybinder3' 'python-dbus' 'python' 'python-cairo' 'libwnck3' 'python-xdg')
+depends=('libkeybinder3' 'libwnck3' 'python' 'python-dbus' 'python-cairo' 'python-xdg' 'python-gobject')
 makedepends=('intltool')
 source=("https://github.com/kupferlauncher/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.xz")
 sha1sums=('a2f8d10ee6d8e4c9a2a7437e0e6dea39338ac78d')
