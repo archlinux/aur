@@ -1,6 +1,6 @@
 pkgbase = mvnsh
 	pkgdesc = Interactive CLI interface for Apache Maven.
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://shell.sonatype.org
 	changelog = Changelog
@@ -9,8 +9,8 @@ pkgbase = mvnsh
 	license = EPL
 	depends = java-environment>=5
 	depends = bash
-	source = http://search.maven.org/remotecontent?filepath=org/sonatype/maven/shell/dist/mvnsh-assembly/1.0.1/mvnsh-assembly-1.0.1-bin.tar.gz
-	md5sums = 5b0f47c8838aa7525f454f2bca9dbed9
+	source = https://repo1.maven.org/maven2/org/sonatype/maven/shell/dist/mvnsh-assembly/1.1.0/mvnsh-assembly-1.1.0-bin.tar.gz
+	md5sums = c78128e61aba90e4e34afb18b78931c9
 
 pkgname = mvnsh
 
