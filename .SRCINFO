@@ -1,0 +1,15 @@
+pkgbase = ruby-commander-4.1.5
+	pkgdesc = The complete solution for Ruby command-line executables
+	pkgver = 4.1.5
+	pkgrel = 1
+	url = http://visionmedia.github.com/commander
+	arch = any
+	depends = ruby
+	depends = ruby-highline-1.6
+	noextract = commander-4.1.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/commander-4.1.5.gem
+	sha1sums = d5506fd05de0c6e835926c9b1b38f1005e11803b
+
+pkgname = ruby-commander-4.1.5
+
