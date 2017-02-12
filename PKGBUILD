@@ -2,7 +2,7 @@
 pkgbase=libreoffice-breeze-icons
 pkgname=('libreoffice-breeze-icons')
 pkgver=2016.03.02
-pkgrel=2
+pkgrel=3
 pkgdesc="Breeze dark icons set for Libreoffice. You should select it under Tools->Options->View"
 arch=('any')
 url="https://github.com/DarkknightAK/breeze-icon-theme"
@@ -11,6 +11,7 @@ groups=()
 depends=()
 makedepends=()
 provides=()
+conflicts=('libreoffice-fresh>=5.3.0')
 
 source=("https://github.com/aitorpazos/archlinux-libreoffice-breeze-icons/releases/download/${pkgver}/libreoffice-breeze-icons-${pkgver}.tar.gz"
 		)
