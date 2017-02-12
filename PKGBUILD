@@ -4,7 +4,6 @@ pkgname="qomp"
 pkgver="1.1.1"
 pkgrel=1
 pkgdesc="Quick(Qt) Online Music Player - one player for different online music hostings."
-makedepends=("cmake","make","libcue",)
 arch=("any")
 url="https://sourceforge.net/projects/qomp/"
 license=("GPLv2")
