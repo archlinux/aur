@@ -1,13 +1,13 @@
 # Maintainer: Paul Weingardt <paulweingardt@web.de>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola-git
-pkgver=v2.8.38.g4aa46f4
+pkgver=v2.10.196.g575c885f
 pkgrel=1
 pkgdesc="A powerful GUI for Git"
 arch=('any')
 url="http://git-cola.github.com/"
 license=('GPL')
-depends=('git' 'python-pyqt4>=4.4' 'icu')
+depends=('git' 'python-pyqt5>=5.7' 'icu')
 makedepends=('asciidoc' 'docbook-xsl' 'rsync' 'xmlto' 'python-sphinx>=1.1.3')
 optdepends=('python-pyinotify>=0.7.1: for inotify support'
 'tk: to use the built-in ssh-askpass handler')
