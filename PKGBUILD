@@ -2,7 +2,7 @@
 
 _pkgname=mpv
 pkgname=${_pkgname}-light
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2, with selection of features."
 url="https://mpv.io"
@@ -15,7 +15,7 @@ options=('!emptydirs' '!buildflags')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(${_pkgname}-${pkgver}.tar.gz::"https://github.com/mpv-player/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('8aeefe5970587dfc454d2b89726b603f156bd7a9ae427654eef0d60c68d94998')
+sha256sums=('a41854fa0ac35b9c309ad692aaee67c8d4495c3546f11cb4cdd0a124195d3f15')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
@@ -33,32 +33,32 @@ build() {
     --enable-libmpv-shared \
     --enable-termios \
     --enable-shm \
-    --disable-encoding \
     --disable-libsmbclient \
+    --disable-encoding \
     --disable-libbluray \
     --disable-dvdread \
     --disable-dvdnav \
     --disable-cdda \
-    --enable-uchardet \
     --disable-rubberband \
     --disable-vapoursynth \
     --disable-vapoursynth-lazy \
-    --enable-libswresample \
-    --disable-libavresample \
-    --enable-libavdevice \
+    --disable-libarchive \
+    --disable-sdl2 \
+    --disable-sdl1 \
     --disable-oss-audio \
     --disable-rsound \
-    --disable-jack \
+    --disable-sndio \
     --disable-pulse \
+    --disable-jack \
+    --disable-openal \
+    --disable-opensles \
     --disable-xv \
     --disable-xinerama \
-    --enable-vdpau \
-    --enable-vdpau-gl-x11 \
     --disable-caca \
-    --enable-vdpau-hwaccel \
     --disable-tv \
     --disable-tv-v4l2 \
     --disable-libv4l2 \
+    --disable-audio-input \
     --disable-dvbin
 
   ./waf build
