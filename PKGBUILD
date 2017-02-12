@@ -3,7 +3,7 @@
 pkgname=go-wol-server-git
 _pkgname=go-wol-server
 url="https://github.com/fanningert/wol-server"
-pkgver=32.116509e
+pkgver=33.50613bb
 pkgrel=1
 epoch=1
 pkgdesc="Wake on Lan server"
