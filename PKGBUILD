@@ -8,7 +8,7 @@
 
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.24.0.r0.g3739d1318f
+pkgver=0.24.0.r0.g0f1afc6ba2
 pkgrel=1
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
 arch=('x86_64')
@@ -49,7 +49,7 @@ provides=('mpv')
 conflicts=('mpv' 'mpv-vapoursynth' 'mpv-ahjolinna-build-git' 'mpv-build-git' 'mpv-ahjolinna' )
 options=('!emptydirs')
 install=mpv.install
-source=('git+https://github.com/mpv-player/mpv'
+source=('git+https://github.com/mpv-player/mpv#branch=release/current'
         'find-deps.py'
          #"ftp://ftp.ritual.org/common/ColorManagement/BT.709_Profiles.zip"
 	 "https://raw.githubusercontent.com/ahjolinna/mpv-conf/master/PKGBUILD/BT.709_Profiles.zip"
@@ -92,7 +92,7 @@ msg2 "Running bootstrap. Please wait..."
 build() {
   cd "${srcdir}/$_gitname"
 CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
-./waf configure \
+ waf configure \
 	            --color=yes \
 	            --prefix=/usr \
 	            --confdir=/etc/mpv \
@@ -195,20 +195,18 @@ CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
 	            --disable-videotoolbox-gl \
 	            --enable-vdpau-hwaccel \
 	            --disable-d3d-hwaccel \
-	             "$_cuda" \
-	            \
-	            --enable-tv \
+              --enable-tv \
 	            --enable-tv-v4l2 \
 	            --enable-libv4l2 \
 	            --enable-audio-input \
 	            --enable-dvbin \
 	            --disable-apple-remote
 	
-	./waf build
+	waf build
 }
 package() {
   cd "$srcdir/$_gitname"
-  ./waf install --destdir="${pkgdir}" 
+  waf install --destdir="${pkgdir}" 
 
 
  # install the .desktop files
