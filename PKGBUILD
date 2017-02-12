@@ -1,6 +1,6 @@
 # Maintainer: Maxim Baz <cerebro@maximbaz.com>
 pkgname=cerebro
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc='Open-source productivity booster with a brain.'
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
 makedepends=('gendesk' 'npm')
 provides=('cerebro')
 source=("${pkgver}.tar.gz::https://github.com/KELiON/cerebro/archive/"$pkgver".tar.gz")
-sha256sums=('73a31526ac84d4cf412ddadc4f31c3f75bac3444d4c7a604621642a7f0dd074f')
+sha256sums=('0becadc20e50a3e83c58c7cb3e07443724189f7002368b59629befb654145c5b')
 
 prepare() {
   gendesk -f -n --name=Cerebro --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --exec="${pkgname}" --categories="System"
