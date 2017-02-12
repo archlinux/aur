@@ -1,212 +1,137 @@
-# vim:set ts=2 sw=2 et:
-# $Id$
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
-# Contributor: graysky <graysky AT archlinux DOT us>
-# Contributor: DonVla <donvla@users.sourceforge.net>
-# Contributor: Ulf Winkelvos <ulf [at] winkelvos [dot] de>
-# Contributor: Ralf Barth <archlinux dot org at haggy dot org>
-# Contributor: B & monty - Thanks for your hints :)
-# Contributor: marzoul
-# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Contributor: Brad Fanella <bradfanella@archlinux.us>
-# Contributor: [vEX] <niechift.dot.vex.at.gmail.dot.com>
-# Contributor: Zeqadious <zeqadious.at.gmail.dot.com>
-# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor: Maxime Gauduin <alucryd@gmail.com>
-#
-# Original credits go to Edgar Hucek <gimli at dark-green dot com>
-# for his xbmc-vdpau-vdr PKGBUILD at https://archvdr.svn.sourceforge.net/svnroot/archvdr/trunk/archvdr/xbmc-vdpau-vdr/PKGBUILD
+# Maintainer: Adrian Fedoreanu <adrian.fedoreanu@gmail.com>
+
+buildarch=8
+
+_prefix=/usr
 
 pkgbase=kodi-c2-x11
-pkgname=('kodi-c2-x11' 'kodi-c2-x11-eventclients' 'kodi-c2-x11-tools-texturepacker' 'kodi-c2-x11-dev')
+pkgname=('kodi-c2-x11' 'kodi-c2-x11-eventclients')
+_commit=a8a20945ee81446cc8453b09490cfb017027a711
 pkgver=17.0
-_codename=Krypton
-pkgrel=1
-arch=('i686' 'x86_64' 'aarch64')
+pkgrel=2
+arch=('aarch64')
 url="http://kodi.tv"
 license=('GPL2')
 makedepends=(
-  'afpfs-ng' 'bluez-libs' 'boost' 'cmake' 'curl' 'cwiid' 'doxygen' 'glew'
+  'afpfs-ng' 'bluez-libs' 'boost' 'cmake' 'curl' 'cwiid' 'doxygen' 'git' 'glew'
   'gperf' 'hicolor-icon-theme' 'jasper' 'java-runtime' 'libaacs' 'libass'
-  'libbluray' 'libcdio' 'libcec' 'odroid-c2-libgl-x11' 'aml-libs-c2' 'libmariadbclient' 'libmicrohttpd'
-  'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libssh' 'libva'
-  'libvdpau' 'libxrandr' 'libxslt' 'lzo' 'nasm' 'nss-mdns' 'python2-pillow'
-  'python2-pybluez' 'python2-simplejson' 'rtmpdump'
+  'libbluray' 'libcdio' 'odroid-c2-libgl-x11' 'odroid-c2-libgl-headers'
+  'libmariadbclient' 'libmicrohttpd' 'libmodplug' 'libmpeg2' 'libnfs'
+  'libplist' 'libpulse' 'libssh' 'libva' 'mesa' 'libcrossguid' 'libcec'
+  'libxslt' 'lzo' 'nasm' 'nss-mdns' 'python2-pillow' 'aml-libs-c2'
+  'python2-pybluez' 'python2-simplejson' 'rtmpdump' 'sdl2' 'sdl_image'
   'shairplay' 'smbclient' 'swig' 'taglib' 'tinyxml' 'unzip' 'upower' 'yajl' 'zip'
-  'mesa' 'libcrossguid'
 )
-source=(
-  "$pkgname-$pkgver-$_codename.tar.gz::https://github.com/xbmc/xbmc/archive/$pkgver-$_codename.tar.gz"
-  '10-odroid.rules'
-  'kodi_permissions.conf'
-)
-sha512sums=('ca0d812bcbcc58b74542872365244c5b937803c5618d2277e85a8cb805820ddb22886233d1417fa0e7532c9909749e632e276f8da51d86e1f5f060b2d1ad6a12'
-            'dcb23c9074a6f646c419957169642bfd565e004f221bd972ae6034bcc4ef6aa6f4f2bbda011c759fef769b682f7a686cc041a02e5326530bd1ad2011366d1529'
-            '1ca4d17f73a1421dac7b514b662a81ddb6ec2c25bf388c7a31e2e8ce99fa2413fc7133a1f6775b25f7e8cb2ae257c55a6bb142d07ffd19a8892c9bc1bb24d365')
+
+source=("https://github.com/phedoreanu/xbmc/archive/${_commit}.tar.gz"
+        'polkit.rules'
+        '99-odroid.rules')
+sha256sums=('ae8a3f1d76f73a478cf1f29679e9006e0ae96f1259bdd61de57832a8c8438074'
+            'c68ed2bd377f80b606b8815d78239b9132b479eafc1d19797cee5824debe1800'
+            '5ddf80329c9f5d054525b45f788b3405d199bfc6cf5b08c543ad29766ec27f6e')
 
 prepare() {
-  [[ -d kodi-build ]] && rm -rf kodi-build
-  mkdir kodi-build
+  cd xbmc-${_commit}
+
+  find -type f -name *.py -exec sed 's|^#!.*python$|#!/usr/bin/python2|' -i "{}" +
+  sed 's|^#!.*python$|#!/usr/bin/python2|' -i tools/depends/native/rpl-native/rpl
+  sed 's/python/python2/' -i tools/Linux/kodi.sh.in
 }
 
 build() {
-  cd kodi-build
-  
-  CFLAGS="$CFLAGS"
-  CXXFLAGS="$CFLAGS"
+  cd xbmc-${_commit}
+
+  # https://gcc.gnu.org/onlinedocs/gcc/AArch64-Options.html
+  CFLAGS=`echo "$CFLAGS -I/usr/include/{ump,umplock} -mcpu=cortex-a53+crc -mtune=cortex-a53 -mabi=lp64"` && CXXFLAGS="$CFLAGS"
   LDFLAGS+=" -L/usr/lib/mali-egl -L/usr/lib/aml_libs"
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-    -DENABLE_EVENTCLIENTS=ON \
-    -DLIRC_DEVICE=/run/lirc/lircd \
-    -DENABLE_AML=ON \
-    -DENABLE_VDPAU=OFF \
-    -DENABLE_VAAPI=OFF \
-    ../"xbmc-$pkgver-$_codename"/project/cmake
+  # Bootstrapping
+  MAKEFLAGS=-j`nproc` ./bootstrap
 
-  make
-  make preinstall
+  # Configuring XBMC
+  export PYTHON_VERSION=2  # external python v2
+  ./configure --prefix=$_prefix \
+    gl_cv_func_gettimeofday_clobber=no ac_cv_lib_bluetooth_hci_devid=no \
+    --disable-debug \
+    --enable-optimizations \
+    --enable-libbluray \
+    --disable-texturepacker \
+    --with-lirc-device=/run/lirc/lircd \
+    --disable-static --enable-shared \
+    --disable-vaapi \
+    --disable-vdpau \
+    --disable-openmax \
+    --disable-gl \
+    --enable-x11 \
+    --enable-gles \
+    --enable-codec=amcodec
+
+  # Now (finally) build
+  make -j`nproc`
 }
 
-# kodi
-# components: kodi, kodi-bin
-
 package_kodi-c2-x11() {
-  pkgdesc="A software media player and entertainment hub for digital media"
+  pkgdesc="A software media player and entertainment hub for digital media (ODROID-C2)"
+
+  # depends expected for kodi plugins:
+  # 'python2-pillow' 'python2-pybluez' 'python2-simplejson'
+  # depends expeced in FEH.py
+  # 'mesa-demos' 'xorg-xdpyinfo'
   depends=(
-    'python2-pillow' 'python2-pybluez' 'python2-simplejson' 'xorg-xdpyinfo'
-    'bluez-libs' 'fribidi' 'freetype2' 'glew' 'hicolor-icon-theme' 'libcdio'
+    'python2-pillow' 'python2-pybluez' 'python2-simplejson'
+    'mesa-demos' 'xorg-xdpyinfo'
+    'bluez-libs' 'fribidi' 'glew' 'hicolor-icon-theme' 'libcdio'
     'libjpeg-turbo' 'libmariadbclient' 'libmicrohttpd' 'libpulse' 'libssh'
-    'odroid-c2-libgl-x11' 'aml-libs-c2' 'libxrandr' 'libxslt' 'lzo' 'smbclient' 'taglib' 'tinyxml'
-    'yajl' 'mesa' 'desktop-file-utils'
+    'libva' 'libxrandr' 'libxslt' 'lzo' 'sdl2' 'smbclient' 'taglib' 'tinyxml'
+    'yajl' 'odroid-c2-libgl-x11' 'aml-libs-c2' 'mesa'
   )
   optdepends=(
     'afpfs-ng: Apple shares support'
     'bluez: Blutooth support'
-    'python2-pybluez: Bluetooth support'
     'libnfs: NFS shares support'
     'libplist: AirPlay support'
-    'libcec: Pulse-Eight USB-CEC adapter support'
     'lirc: Remote controller support'
-    'lsb-release: log distro information in crashlog'
     'pulseaudio: PulseAudio support'
     'shairplay: AirPlay support'
+    'udisks: Automount external drives'
     'unrar: Archives support'
     'unzip: Archives support'
     'upower: Display battery level'
+    'lsb-release: log distro information in crashlog'
   )
   install="kodi.install"
-  provides=('kodi-c2-x11')
-  conflicts=('xbmc' 'kodi' 'kodi-c2-x11' 'kodi-c2-fb')
-  replaces=('kodi-c2-x11')
+  provides=('xbmc' 'kodi')
+  conflicts=('xbmc' 'kodi' 'shairplay-git')
+  replaces=('xbmc')
 
-  _components=(
-  'kodi'
-  'kodi-bin'
-  )
-
-  cd kodi-build
-  # install eventclients
-  for _cmp in ${_components[@]}; do
-  DESTDIR="$pkgdir" /usr/bin/cmake \
-    -DCMAKE_INSTALL_COMPONENT="$_cmp" \
-     -P cmake_install.cmake
-  done
+  cd xbmc-${_commit}
+  # Running make install
+  make DESTDIR="$pkgdir" install
 
   # Licenses
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -dm755 ${pkgdir}${_prefix}/share/licenses/${pkgname}
   for licensef in LICENSE.GPL copying.txt; do
-    mv "$pkgdir/usr/share/doc/kodi/$licensef" \
-      "$pkgdir/usr/share/licenses/$pkgname"
+	mv ${pkgdir}${_prefix}/share/doc/kodi/${licensef} \
+		${pkgdir}${_prefix}/share/licenses/${pkgname}
   done
 
-  # python2 is being used
-  cd "$pkgdir"
-  grep -lR '#!.*python' * | while read file; do sed -s 's/\(#!.*python\)/\12/g' -i "$file"; done
+  install -Dm0644 $srcdir/polkit.rules $pkgdir/etc/polkit-1/rules.d/10-kodi.rules
 
-  install -Dm0644 $srcdir/kodi_permissions.conf $pkgdir/etc/tmpfiles.d/kodi_permissions.conf
-  install -Dm0644 $srcdir/10-odroid.rules $pkgdir/etc/udev/rules.d/10-odroid.rules
+  # fix permissions necessary for accelerated video playback
+  install -Dm0644 $srcdir/99-odroid.rules $pkgdir/etc/udev/rules.d/99-odroid.rules
 }
-
-# kodi-eventclients
-# components: kodi-eventclients-common kodi-eventclients-ps3 kodi-eventclients-wiiremote kodi-eventclients-xbmc-send
 
 package_kodi-c2-x11-eventclients() {
-  pkgdesc="Kodi Event Clients"
+  pkgdesc="Kodi Event Clients (ODROID-C2)"
+  provides=('kodi-eventclients')
   conflicts=('kodi-eventclients')
-
   depends=('cwiid')
 
-  _components=(
-    'kodi-eventclients-common'
-    'kodi-eventclients-ps3'
-    'kodi-eventclients-wiiremote'
-    'kodi-eventclients-xbmc-send'
-  )
+  cd ${srcdir}/xbmc-${_commit}
 
-  cd kodi-build
-  # install eventclients
-  for _cmp in ${_components[@]}; do
-    DESTDIR="$pkgdir" /usr/bin/cmake \
-      -DCMAKE_INSTALL_COMPONENT="$_cmp" \
-      -P cmake_install.cmake
-  done
+  make DESTDIR="$pkgdir" eventclients WII_EXTRA_OPTS=-DCWIID_OLD
 
-  # python2 is being used
-  cd "$pkgdir"
-  grep -lR '#!.*python' * | while read file; do sed -s 's/\(#!.*python\)/\12/g' -i "$file"; done
-}
-
-# kodi-tools-texturepacker
-# components: kodi-tools-texturepacker
-
-package_kodi-c2-x11-tools-texturepacker() {
-  pkgdesc="Kodi Texturepacker tool"
-  depends=('libpng' 'giflib' 'libjpeg-turbo' 'lzo')
-
-  _components=(
-    'kodi-tools-texturepacker'
-  )
-
-  cd kodi-build
-  # install eventclients
-  for _cmp in ${_components[@]}; do
-    DESTDIR="$pkgdir" /usr/bin/cmake \
-      -DCMAKE_INSTALL_COMPONENT="$_cmp" \
-      -P cmake_install.cmake
-  done
-}
-
-# kodi-dev
-# components: kodi-addon-dev kodi-audio-dev kodi-eventclients-dev kodi-game-dev kodi-inputstream-dev kodi-peripheral-dev kodi-pvr-dev kodi-screensaver-dev kodi-visualization-dev
-
-package_kodi-c2-x11-dev() {
-  pkgdesc="Kodi dev files"
-  depends=('kodi')
-
-  _components=(
-    'kodi-addon-dev'
-    'kodi-audio-dev'
-    'kodi-eventclients-dev'
-    'kodi-game-dev'
-    'kodi-inputstream-dev'
-    'kodi-peripheral-dev'
-    'kodi-pvr-dev'
-    'kodi-screensaver-dev'
-    'kodi-visualization-dev'
-  )
-
-  cd kodi-build
-  # install eventclients
-  for _cmp in ${_components[@]}; do
-    DESTDIR="$pkgdir" /usr/bin/cmake \
-      -DCMAKE_INSTALL_COMPONENT="$_cmp" \
-      -P cmake_install.cmake
-  done
-
-  # python2 is being used
-  cd "$pkgdir"
-  grep -lR '#!.*python' * | while read file; do sed -s 's/\(#!.*python\)/\12/g' -i "$file"; done
+  install -dm755 "$pkgdir/usr/lib/python2.7/$pkgbase"
+  mv "$pkgdir/kodi"/* "$pkgdir/usr/lib/python2.7/$pkgbase"
+  rmdir "$pkgdir/kodi"
 }
