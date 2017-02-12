@@ -10,6 +10,7 @@ pkgname=mpv-ahjolinna-git
 _gitname=mpv
 pkgver=0.24.0.r0.g0f1afc6ba2
 pkgrel=1
+epoch=1
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
 arch=('x86_64')
 license=('GPL3')
@@ -92,27 +93,23 @@ msg2 "Running bootstrap. Please wait..."
 build() {
   cd "${srcdir}/$_gitname"
 CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
- waf configure \
+ ./waf configure \
 	            --color=yes \
 	            --prefix=/usr \
 	            --confdir=/etc/mpv \
 	            --progress \
-	            \
 	            --enable-libmpv-shared \
 	            --disable-libmpv-static \
 	            --disable-static-build \
 	            --disable-debug-build \
-	            \
 	            --enable-manpage-build \
 	            --disable-html-build \
 	            --disable-pdf-build \
-	            \
 	            --enable-cplugins \
 	            --enable-vf-dlopen-filters \
 	            --enable-zsh-comp \
 	            --disable-test \
 	            --disable-clang-database \
-	            \
 	            --disable-win32-internal-pthreads \
 	            --enable-iconv \
 	            --enable-termios \
@@ -134,7 +131,6 @@ CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
 	            --enable-libarchive \
 	            --enable-libavdevice \
 	            --lua=52arch \
-	            \
 	            --enable-sdl2 \
 	            --disable-sdl1 \
 	            --enable-oss-audio \
@@ -148,7 +144,6 @@ CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
 	            --disable-coreaudio \
 	            --disable-audiounit \
 	            --disable-wasapi \
-	            \
 	            --disable-cocoa \
 	            --enable-drm \
 	            --enable-gbm \
@@ -188,7 +183,6 @@ CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
 	            --enable-plain-gl \
 	            --disable-mali-fbdev \
 	            --enable-gl \
-	            \
 	            --enable-vaapi-hwaccel \
 	            --enable-vaapi-hwaccel-new \
 	            --disable-videotoolbox-hwaccel \
@@ -202,11 +196,11 @@ CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
 	            --enable-dvbin \
 	            --disable-apple-remote
 	
-	waf build
+	./waf build
 }
 package() {
   cd "$srcdir/$_gitname"
-  waf install --destdir="${pkgdir}" 
+  ./waf install --destdir="${pkgdir}" 
 
 
  # install the .desktop files
