@@ -5,7 +5,7 @@
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
 pkgver=1.19.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
@@ -18,6 +18,7 @@ makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
              'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols')
 source=(https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2{,.sig}
+        bug99358.patch
         xvfb-run
         xvfb-run.1
         freedesktop-bug-865.patch)
@@ -26,12 +27,17 @@ validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
 sha256sums=('79ae2cf39d3f6c4a91201d8dad549d1d774b3420073c5a70d390040aa965a7fb'
             'SKIP'
+            'f46a9d1a5ac43c5359fbd8c57b6e64b0bd313116b5cb638527bfe3701e6c3904'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
             'dcd7ace95b29beab7b5f4f3f31a69f4f3c46d88d6b623243c7817b162f2fcdcb')
 
 prepare() {
   cd "xorg-server-${pkgver}"
+
+  # https://bugs.freedesktop.org/show_bug.cgi?id=99358
+  # https://bugs.archlinux.org/task/52808
+  patch -Np1 -i ../bug99358.patch
 
   # The patch for freedesktop bug 865
   patch -Np1 -i "${srcdir}/freedesktop-bug-865.patch"
