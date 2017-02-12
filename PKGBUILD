@@ -1,4 +1,5 @@
 # Maintainer: Sander Zuidema <archlinux at grunny dot demon dot nl>
+# Maintainer: Tilman Vatteroth <tilman.vatteroth@udo.edu>
 # Based on jre: https://aur.archlinux.org/packages/jre/
 
 pkgname=server-jre
@@ -6,18 +7,18 @@ _major=8
 _minor=121
 _build=b13
 pkgver=${_major}u${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc="Oracle Server Java Runtime Environment"
 arch=('x86_64')
 url=http://www.oracle.com/technetwork/java/javase/downloads/index.html
 license=('custom')
 depends=('ca-certificates-java' 'java-runtime-common')
-makedepends=('pacman>=4.2.0')
+makedepends=('pacman>=4.2.0' 'curl')
 provides=("java-runtime=$_major" "java-runtime-headless=$_major" 
           "java-runtime-jre=$_major" "java-runtime-headless-jre=$_major")
 
 # Variables
-DLAGENTS=('http::/usr/bin/curl -LC - -b oraclelicense=a -O')
+DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 _jname=${pkgname}${_major}
 _jvmdir=/usr/lib/jvm/java-$_major-$pkgname/jre
 
@@ -39,12 +40,12 @@ options=()
 install=$pkgname.install
 changelog=
 source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
-        "http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$pkgname-$pkgver-linux-x64.tar.gz")
+        "http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/e9e7ea248e2c4826b92b3f075a80e441/$pkgname-$pkgver-linux-x64.tar.gz")
 sha256sums=('f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
-            'd97f0f402bd65a9c26aa266246b0894c8d6762e82373377641ca779c46406299')
+            'c25a60d02475499109f2bd6aa483721462aa7bfbb86b23ca6ac59be472747e5d')
 
 package() {
-    cd jdk1.${_major}.0_${_minor}
+    cd ${srcdir}/jdk1.${_major}.0_${_minor}
 
     msg2 "Creating directory structure..."
     install -d "$pkgdir"/etc/.java/.systemPrefs
