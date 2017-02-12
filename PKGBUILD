@@ -31,7 +31,7 @@ source=("https://github.com/knossos-project/knossos/archive/v$pkgver.tar.gz"
 )
 md5sums=('c648b510bcec05a914540eea7f577bfa'
          '07e9b7ac1ed5ecd0185ae92e61e97bbb'
-         '1b91bbbcdc3e18e6686b5a61f0f587e4'
+         '67a3dfea8d64d8b9eb999f16096819ee'
          '10ac71de3331013293518da4be88cde6'
          'be06cd6e91c80b63b9bfe4184b537d7e')
 
