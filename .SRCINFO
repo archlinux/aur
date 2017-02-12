@@ -1,0 +1,21 @@
+pkgbase = ruby-bropages
+	pkgdesc = Bro
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://bropages.org
+	arch = any
+	depends = ruby
+	depends = ruby-json_pure-1.8.1
+	depends = ruby-commander-4.1.5
+	depends = ruby-rest-client
+	depends = ruby-smart_colored
+	depends = ruby-highline-1.6.20
+	depends = ruby-mime-types-1.19
+	depends = ruby-domain_name
+	noextract = bropages-0.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/bropages-0.1.0.gem
+	sha1sums = d5680a69a4aad93ff3156489f122ca6c2d00d999
+
+pkgname = ruby-bropages
+
