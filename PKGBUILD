@@ -1,7 +1,7 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=networkd-dispatcher
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="A dispatcher daemon for systemd-networkd events"
 arch=('i686' 'x86_64')
 url="https://github.com/craftyguy/networkd-dispatcher"
@@ -10,7 +10,7 @@ depends=('python' 'python-dbus' 'python-gobject' 'wireless_tools' 'dbus-glib')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://github.com/craftyguy/networkd-dispatcher/archive/${pkgver}.tar.gz")
-md5sums=('7f67b658f96d3e8f9d98828552c2ae9d')
+sha1sums=('a32f43a2785901ae6b5484a986dad9f7997979e6')
 prepare() {
         cd "$pkgname-$pkgver"
 }
