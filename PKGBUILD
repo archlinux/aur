@@ -19,7 +19,7 @@
 # for his xbmc-vdpau-vdr PKGBUILD at https://archvdr.svn.sourceforge.net/svnroot/archvdr/trunk/archvdr/xbmc-vdpau-vdr/PKGBUILD
 
 pkgbase=kodi-c2-x11
-pkgname=('kodi-c2-x11' 'kodi-eventclients' 'kodi-tools-texturepacker' 'kodi-dev')
+pkgname=('kodi-c2-x11' 'kodi-c2-x11-eventclients' 'kodi-c2-x11-tools-texturepacker' 'kodi-c2-x11-dev')
 pkgver=17.0
 _codename=Krypton
 pkgrel=1
@@ -133,7 +133,7 @@ package_kodi-c2-x11() {
 # kodi-eventclients
 # components: kodi-eventclients-common kodi-eventclients-ps3 kodi-eventclients-wiiremote kodi-eventclients-xbmc-send
 
-package_kodi-eventclients() {
+package_kodi-c2-x11-eventclients() {
   pkgdesc="Kodi Event Clients"
   conflicts=('kodi-eventclients')
 
@@ -162,7 +162,7 @@ package_kodi-eventclients() {
 # kodi-tools-texturepacker
 # components: kodi-tools-texturepacker
 
-package_kodi-tools-texturepacker() {
+package_kodi-c2-x11-tools-texturepacker() {
   pkgdesc="Kodi Texturepacker tool"
   depends=('libpng' 'giflib' 'libjpeg-turbo' 'lzo')
 
@@ -182,7 +182,7 @@ package_kodi-tools-texturepacker() {
 # kodi-dev
 # components: kodi-addon-dev kodi-audio-dev kodi-eventclients-dev kodi-game-dev kodi-inputstream-dev kodi-peripheral-dev kodi-pvr-dev kodi-screensaver-dev kodi-visualization-dev
 
-package_kodi-dev() {
+package_kodi-c2-x11-dev() {
   pkgdesc="Kodi dev files"
   depends=('kodi')
 

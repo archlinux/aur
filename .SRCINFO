@@ -111,19 +111,19 @@ pkgname = kodi-c2-x11
 	conflicts = kodi-c2-fb
 	replaces = kodi-c2-x11
 
-pkgname = kodi-eventclients
+pkgname = kodi-c2-x11-eventclients
 	pkgdesc = Kodi Event Clients
 	depends = cwiid
 	conflicts = kodi-eventclients
 
-pkgname = kodi-tools-texturepacker
+pkgname = kodi-c2-x11-tools-texturepacker
 	pkgdesc = Kodi Texturepacker tool
 	depends = libpng
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
 
-pkgname = kodi-dev
+pkgname = kodi-c2-x11-dev
 	pkgdesc = Kodi dev files
 	depends = kodi
 
