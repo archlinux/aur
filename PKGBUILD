@@ -5,7 +5,7 @@ _extension_id='ffemldjbbfhimggdkkckolidemlllklk'
 _store_base_url='https://clients2.google.com/service/update2/crx?response=redirect&prodversion=49.0&x=id%3D'
 pkgname="chromium-extension-${_extension_name}"
 pkgver=1.1.62
-pkgrel=1
+pkgrel=2
 pkgdesc='Retrieve and store Mooltipass credentials easily from websites.'
 license=('custom:MIT')
 arch=('any')
@@ -17,6 +17,11 @@ source=("${_extension_name}.crx::${_store_base_url}${_extension_id}%26installsou
 sha256sums=('31e119a9b5f88f5081794b8da1152b470d0186085b5b7beffeb37d48fa944fc4'
             '3958de07cee049f6dcaef59983735119dcad4090fa7873191e4de8ed4d535dd5'
             '2af680c39ef493fb82830356d1d3df1acb5a06033cba2dec7a19e21caa77a866')
+noextract=("${_extension_name}.crx")
+
+prepare() {
+    sed -i "s/\/usr\/lib\/x86_64-linux-gnu/\/usr\/lib\/${CARCH}-linux-gnu/" "${_extension_id}.json"
+}
 
 package() {
     cd "${srcdir}"
