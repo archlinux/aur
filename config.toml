@@ -3,6 +3,7 @@ Address = "127.0.0.1:8080"
 ExternalURL = ""
 WebPrefix = "/"
 TemplateDir = "/usr/share/themes/go-wol-server/templates/default/"
+Scheduler = 1m
 
 [core.html]
 Title = "Go WakeOnLan server"

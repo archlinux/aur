@@ -3,7 +3,7 @@
 pkgname=go-wol-server-git
 _pkgname=go-wol-server
 url="https://github.com/fanningert/wol-server"
-pkgver=33.50613bb
+pkgver=35.a34c863
 pkgrel=1
 epoch=1
 pkgdesc="Wake on Lan server"
@@ -24,7 +24,7 @@ source=('go-wol-server.service'
         "${_gourl_pkgname}::git+https://${_gourl}/${_gourl_pkgname}.git")
 
 sha512sums=('5df3bdc1cf04fd6a83fbe1bca6e8edfd9034f26214f79598eebb1f3bdbac79df53b5fa89e97705c5dd15030ea587a1d85072708ead08c84c61662fa71d2db91b'
-            '3331437c0485426d1eb29fe8c6db2dd9376e1077a63069a6b2fb76ba91251a31d0252c09b90b8d227ad818048cb307eb4eb7b5bd480fd942300c81613ca96913'
+            'a205bae9700053cfd326082a4a5d6fe21c82e8c7b2b94ef180e3c45f69889f66ec40d0a78e21e35f1d0bf26fb2e364d09d576e8b5c3463fba282d671b4bba884'
             'SKIP')
 
 pkgver(){
