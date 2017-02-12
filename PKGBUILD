@@ -13,12 +13,12 @@
 
 pkgname=qgis
 pkgver=2.18.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('qca-qt4' 'gdal' 'qwtpolar' 'spatialindex'
+depends=('qca-qt4' 'gdal' 'qtwebkit' 'qwtpolar' 'spatialindex'
          'python2-httplib2' 'python2-future' 'python2-qscintilla-qt4' 'python2-sip' 'python2-six')
 makedepends=('cmake' 'gsl' 'perl' 'txt2tags')
 optdepends=('gpsbabel: GPS Tool plugin'
@@ -33,15 +33,15 @@ optdepends=('gpsbabel: GPS Tool plugin'
             'python2-pyspatialite: Processing plugin'
             'python2-yaml: Processing plugin')
 source=("https://qgis.org/downloads/$pkgname-$pkgver.tar.bz2"
-        "sip.patch::https://github.com/qgis/QGIS/commit/718581ffb12b723f9a3c0ae01b7ec2d8aed9d4bb.patch")
+        "https://github.com/qgis/QGIS/commit/718581ffb12b723f9a3c0ae01b7ec2d8aed9d4bb.patch")
 md5sums=('2cda9698a20c5930d5a378ef94b9d971'
          'e2d3f75b7437ac2f2ae3b1bb815b711a')
 
 prepare() {
   cd $pkgname-$pkgver
-  
+
   # fix build with sip 4.19
-  patch -p1 -i $srcdir/sip.patch
+  patch -Np1 < ../718581ffb12b723f9a3c0ae01b7ec2d8aed9d4bb.patch
 
   # Fix references to "python"
   sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
