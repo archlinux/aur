@@ -1,6 +1,6 @@
 pkgname=lugaru
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="A third-person action game featuring a unique close-range combat system"
 url="https://osslugaru.gitlab.io"
 license=('GPL')
@@ -11,12 +11,12 @@ options=('!optipng')
 conflicts=('lugaru-hg' 'lugaruhd-hg' 'lugaro-git')
 source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/osslugaru/lugaru/repository/archive.tar.bz2?ref=${pkgver}"
         "${pkgname}.desktop")
-sha256sums=('4372ef81494365f7227a72051960f3940acf8418006dbdb05c83d12232f481e7'
+sha256sums=('a76d1b1fbc344ae73c5148dc0b0b8cd41720de74857e85b7302abf31cdcbea5b'
             'c97bbd82701c07692f35fd86d0a4b4fdb2d5380a5672dde75617ae15389bfd15')
 
             
 build() {
-    cd $srcdir/lugaru-1.1-53bbd7b11ba7558692b00d936d3103750fcb430b/
+    cd $srcdir/lugaru-1.2-c7b99378439735c60f84869b05c6ebde53083667/
     mkdir build || true
     cd build
     cmake -DSYSTEM_INSTALL=ON \
@@ -30,7 +30,7 @@ build() {
 }
 package() {
     install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    cd $srcdir/lugaru-1.1-53bbd7b11ba7558692b00d936d3103750fcb430b/build
+    cd $srcdir/lugaru-1.2-c7b99378439735c60f84869b05c6ebde53083667/build
     make DESTDIR="$pkgdir/" install
 
 }
