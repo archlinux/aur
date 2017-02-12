@@ -9,8 +9,8 @@ pkgbase = libsoup-2.2
 	provides = libsoup-2.2
 	source = http://ftp.gnome.org/pub/gnome/sources/libsoup/2.2/libsoup-2.2.105.tar.bz2
 	source = update.patch
-	sha1sums = SKIP
-	sha1sums = SKIP
+	sha1sums = 45756c61d48bc9ec3919d5375b06d952bb65bf58
+	sha1sums = 7f109d4ada0e6fbd9a995402b8e84a363f27cd4d
 
 pkgname = libsoup-2.2
 
