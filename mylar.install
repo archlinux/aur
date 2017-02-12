@@ -1,4 +1,9 @@
 post_install() {
+  systemd-sysusers mylar.conf
+
+  chown -R mylar: /var/lib/mylar
+  chown -R mylar /etc/mylar
+
   echo <<EOF
 mylar requires a ComicVine API key to really function
 Input the API key using the web interface

@@ -1,7 +1,10 @@
 [Unit]
 Description=Comic Book add-on for SABnzbd+
+After=network.target
 
 [Service]
+User=mylar
+Group=mylar
 ExecStart=/usr/bin/python2 /usr/share/mylar/Mylar.py --nolaunch --config /etc/mylar/config.ini --datadir /var/lib/mylar
 
 [Install]
