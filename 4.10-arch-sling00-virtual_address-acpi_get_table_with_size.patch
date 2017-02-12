@@ -1,0 +1,129 @@
+diff -uNr 17.2/common/lib/modules/fglrx/build_mod/firegl_public.c 17.2b/common/lib/modules/fglrx/build_mod/firegl_public.c
+--- 17.2/common/lib/modules/fglrx/build_mod/firegl_public.c	2017-02-12 19:41:19.000000000 +0100
++++ 17.2b/common/lib/modules/fglrx/build_mod/firegl_public.c	2017-02-12 20:27:36.924630194 +0100
+@@ -3225,7 +3225,9 @@
+     int ret;
+ 
+     down_read(&current->mm->mmap_sem);
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,9,0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,10,0)
++    ret = get_user_pages_remote(current, current->mm, vaddr, page_cnt, 1, (struct page **)page_list, NULL, NULL);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4,9,0)
+     ret = get_user_pages_remote(current, current->mm, vaddr, page_cnt, 1, (struct page **)page_list, NULL);
+ #elif LINUX_VERSION_CODE >= KERNEL_VERSION(4,6,0)
+     ret = get_user_pages_remote(current, current->mm, vaddr, page_cnt, 1, 0, (struct page **)page_list, NULL);
+@@ -3249,7 +3251,9 @@
+     int ret;
+ 
+     down_read(&current->mm->mmap_sem);
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,9,0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,10,0)
++    ret = get_user_pages_remote(current, current->mm, vaddr, page_cnt, 0, (struct page **)page_list, NULL, NULL);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4,9,0)
+     ret = get_user_pages_remote(current, current->mm, vaddr, page_cnt, 0, (struct page **)page_list, NULL);
+ #elif LINUX_VERSION_CODE >= KERNEL_VERSION(4,6,0)
+     ret = get_user_pages_remote(current, current->mm, vaddr, page_cnt, 0, 0, (struct page **)page_list, NULL);
+@@ -3626,7 +3630,9 @@
+     unsigned long vma_offset;
+     unsigned long pte_linear;
+     mem_map_t* pMmPage;
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,26)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,10,0)
++    unsigned long address = (unsigned long) (vmf->address);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,26)
+     unsigned long address = (unsigned long) (vmf->virtual_address);
+ #endif
+ 
+@@ -3701,7 +3707,9 @@
+ {
+     unsigned long kaddr;
+     mem_map_t* pMmPage;
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,26)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,10,0)
++    unsigned long address = (unsigned long) (vmf->address);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,26)
+     unsigned long address = (unsigned long) (vmf->virtual_address);
+ #endif
+ 
+@@ -3746,7 +3754,9 @@
+ {
+     unsigned long kaddr;
+     mem_map_t* pMmPage;
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,26)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,10,0)
++    unsigned long address = (unsigned long) (vmf->address);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,26)
+     unsigned long address = (unsigned long) (vmf->virtual_address);
+ #endif
+ 
+@@ -3809,7 +3819,9 @@
+     mem_map_t* pMmPage;
+     struct firegl_pcie_mem* pciemem;
+     unsigned long* pagelist;
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,26)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,10,0)
++    unsigned long address = (unsigned long) (vmf->address);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,26)
+     unsigned long address = (unsigned long) (vmf->virtual_address);
+ #endif
+     
+@@ -3871,7 +3883,9 @@
+ 
+     unsigned long offset;
+     struct page *page;
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,26)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,10,0)
++    unsigned long address = (unsigned long) (vmf->address);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,26)
+     unsigned long address = (unsigned long) (vmf->virtual_address);
+ #endif
+ 
+@@ -4166,12 +4180,21 @@
+ 
+ #else
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,10,0)
++#define TRACE_FAULT(_f, _v,_a)                                          \
++   int  ret;                                                            \
++   KCL_DEBUG_TRACEIN(FN_DRM_NOPAGE, (unsigned long)_a->address, NULL); \
++   ret = _f(_v,_a);                                                     \
++   KCL_DEBUG_TRACEOUT(FN_DRM_NOPAGE, ret, NULL);                                \
++   return ret;
++#else
+ #define TRACE_FAULT(_f, _v,_a)                                          \
+    int  ret;                                                            \
+    KCL_DEBUG_TRACEIN(FN_DRM_NOPAGE, (unsigned long)_a->virtual_address, NULL); \
+    ret = _f(_v,_a);                                                     \
+    KCL_DEBUG_TRACEOUT(FN_DRM_NOPAGE, ret, NULL);                                \
+    return ret;
++#endif
+ 
+ static int ip_vm_fault(struct vm_area_struct *vma, struct vm_fault *vmf)
+ {
+diff -uNr 17.2/common/lib/modules/fglrx/build_mod/kcl_acpi.c 17.2b/common/lib/modules/fglrx/build_mod/kcl_acpi.c
+--- 17.2/common/lib/modules/fglrx/build_mod/kcl_acpi.c	2017-02-12 19:41:19.000000000 +0100
++++ 17.2b/common/lib/modules/fglrx/build_mod/kcl_acpi.c	2017-02-12 20:40:04.632067465 +0100
+@@ -363,7 +363,10 @@
+ {
+     struct acpi_table_header *hdr;
+     acpi_size tbl_size ;
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,3)    
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,10,0)
++    tbl_size = hdr->length;
++    if (!ACPI_SUCCESS(acpi_get_table("VFCT", 1, &hdr)))
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,3)    
+     if (!ACPI_SUCCESS(acpi_get_table_with_size("VFCT", 1, &hdr, &tbl_size)))
+ #else
+     tbl_size = 0x7fffffff;
+@@ -1041,7 +1044,10 @@
+         return KCL_ACPI_ERROR; 
+     }
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,3)    
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,10,0)
++    tbl_size = hdr->length;
++    if (!ACPI_SUCCESS(acpi_get_table(id, 0, &hdr)))
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(3,6,3)
+     if (!ACPI_SUCCESS(acpi_get_table_with_size(id, 0, &hdr, &tbl_size)))
+ #else
+     tbl_size = 0x7fffffff;
