@@ -1,3 +1,4 @@
+# Maintainer: Ivan Wu <2967948168@qq.com>
 pkgname=deepin-boot-maker
 pkgver=1.2.0
 pkgrel=1
