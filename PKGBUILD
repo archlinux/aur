@@ -2,9 +2,9 @@
 # Contributor: b.klettbach@gmail.com
 
 pkgname=multimc5
-pkgver=0.5.0
-pkgrel=2
-__pkgver_libnbtplusplus=multimc-${pkgver}
+pkgver=0.5.1
+pkgrel=1
+__pkgver_libnbtplusplus=multimc-0.5.0
 __install_dir="/usr/lib/multimc5"
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=("https://github.com/MultiMC/MultiMC5/archive/${pkgver}.tar.gz"
   'multimc5.desktop'
   'cmake-patch.diff'
 )
-sha512sums=('290949b17acd008697e5752c201f3076f02c12719a8ee3d685564a276af12b990b49d1f0f7b28fa4db78d2e0af10bc503cfb48ccfb7c28bae0b80a13d9594d14'
+sha512sums=('c48b6abd5a9fc1721d55fc311f2b6f0c69a7a6d945c45cab9d7a9dffb839fa0d8e127c188955947ffa9e44b78acc53007a7dde700003830e5e60dbdecc827a95'
             '333aa110a399a5061aba306912b6e9af18f824920a778afeb6b5714d91af64cb6135e2801a6271a38896a36db733308cbfade79830ca08bfca8a9d79fef69e68'
             '6f891ba6b1d940297ffd1b6007f65ce64abe4f6c7bd8ce7d5204fe9886f006f5080c2cb26c7adfaf00e281f92342e5280f2c675b74c3e9b6f5a769169d56dd26'
             'a6712d0e84acc719ed1aff740717add44202f88cb42a0b7a3157108b73a1009ac7edd325f75d372e0a63617f40eb614d55fb4e24e5c1fb8957cd280486070675'
