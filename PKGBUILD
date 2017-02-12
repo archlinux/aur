@@ -1,9 +1,9 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=algernon
-pkgver=1.3.2
+pkgver=1.4
 pkgrel=1
-pkgdesc='Web/application server with built-in support for Lua and Markdown'
+pkgdesc='Web server with built-in support for Lua, Markdown and templates'
 arch=('x86_64' 'i686')
 url='http://algernon.roboticoverlords.org/'
 license=('MIT')
@@ -13,7 +13,7 @@ optdepends=('redis: For using the Redis database backend'
             'postgresql: For using the PostgreSQL database backend')
 backup=('etc/algernon/serverconf.lua'
         'usr/lib/systemd/system/algernon.service')
-source=("git://github.com/xyproto/algernon#tag=$pkgver")
+source=("git+https://github.com/xyproto/algernon#tag=$pkgver")
 md5sums=('SKIP')
 _gourl=github.com/xyproto/algernon
 
@@ -59,7 +59,7 @@ package() {
   install -Dm755 algernon "$pkgdir/usr/bin/algernon"
   install -Dm644 system/algernon_dev.service "$pkgdir/usr/lib/systemd/system/algernon.service"
   install -Dm644 system/logrotate "$pkgdir/etc/logrotate.d/algernon"
-  install -Dm644 system/serverconf.lua "$pkgdir/etc/algernon/server.lua"
+  install -Dm644 system/serverconf.lua "$pkgdir/etc/algernon/serverconf.lua"
   install -Dm644 desktop/algernon.desktop "$pkgdir/usr/share/desktop/algernon.desktop"
   install -Dm755 desktop/mdview "$pkgdir/usr/bin/mdview"
   install -Dm644 desktop/markdown.png "$pkgdir/usr/share/pixmaps/markdown.png"
