@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-keyboard
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Keyboard plug for Switchboard'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('cmake' 'vala')
 source=("https://launchpad.net/switchboard-plug-keyboard/loki/${pkgver}/+download/switchboard-plug-keyboard-${pkgver}.tar.xz")
-sha256sums=('d8c438df8cedb0921c34d66dc65379c4e30629e0c96e993b1bcba10fbfc0fc06')
+sha256sums=('c079fc650b566802c4d94df7535a387f25e55c1cd025b93801b50f60ef2728f4')
 
 prepare() {
   cd switchboard-plug-keyboard-${pkgver}
