@@ -3,13 +3,13 @@
 
 pkgname=docker-bin
 pkgver=1.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
 arch=('x86_64')
 url='https://www.docker.com/'
 license=('Apache')
 provides=('docker')
-conflicts=('docker-git')
+conflicts=('docker' 'docker-git')
 depends=('bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'systemd' 'libseccomp')
 makedepends=('go-md2man')
 optdepends=('btrfs-progs: btrfs backend support'

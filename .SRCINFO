@@ -1,7 +1,7 @@
 pkgbase = docker-bin
 	pkgdesc = Pack, ship and run any application as a lightweight container, using official binaries
 	pkgver = 1.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.docker.com/
 	install = docker-bin.install
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = docker-bin
 	optdepends = btrfs-progs: btrfs backend support
 	optdepends = lxc: lxc backend support
 	provides = docker
+	conflicts = docker
 	conflicts = docker-git
 	options = !strip
 	source = https://get.docker.com/builds/Linux/x86_64/docker-1.13.1.tgz
