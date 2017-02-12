@@ -1,7 +1,7 @@
 pkgbase = zfs-linux-headers
 	pkgdesc = Kernel modules for the Zettabyte File System.
-	pkgver = 0.6.5.9_kernel_4.9
-	pkgrel = 1
+	pkgver = 0.6.5.9_4.9
+	pkgrel = 2
 	url = http://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
