@@ -16,11 +16,16 @@ license=('GPL3')
 url='http://mpv.io'
 screenshot='http://i.imgur.com/6TacA5I.png'
 _undetected_depends=('desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
-depends=('pulseaudio' 'ffmpeg' 'lcms2' 'libdvdread' 'libgl' 'libvdpau'
+depends=('pulseaudio' 'lcms2' 'libdvdread' 'libgl' 'libvdpau'
          'libxinerama' 'libxv' 'libxkbcommon' 'libva'  'libass' 'uchardet' 
 	 'wayland' 'v4l-utils' 'lua52' 'libdvdnav' 'libcdio-paranoia' 'libbluray' 'libxss'
          'enca' 'libguess' 'harfbuzz' 'libxrandr' 'rubberband' 'smbclient' "${_undetected_depends[@]}")
 
+depends_i686=(
+  'libcdio-paranoia' 'libcaca' 'smbclient' 'rubberband' 'libass'
+  'libbluray' 'sdl2' 'openal' 'ffmpeg-full'
+)
+depends_x86_64=('ffmpeg-full-git')
 optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
             'zsh-completions: Additional completion definitions for Zsh users'
             'livestreamer: to watch live video streams (twitch.tv)'
@@ -69,9 +74,12 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "${srcdir}/$_gitname"
+	local _version="$(git tag | sort -Vr | head -n1 | sed 's/^v//')"
+	local _revision="$(git rev-list v${_version}..HEAD --count)"
+	local _shorthash="$(git rev-parse --short HEAD)"
 	
-  echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git log -1 --format="%h")"
-}
+	printf "%s.r%s.g%s" "$_version" "$_revision" "$_shorthash"
+  }
 
 
 prepare() {
@@ -182,11 +190,13 @@ CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
 	            --enable-gl \
 	            \
 	            --enable-vaapi-hwaccel \
-	            --disable-vaapi-hwaccel-new \
+	            --enable-vaapi-hwaccel-new \
 	            --disable-videotoolbox-hwaccel \
 	            --disable-videotoolbox-gl \
 	            --enable-vdpau-hwaccel \
 	            --disable-d3d-hwaccel \
+	             "$_cuda" \
+	            \
 	            --enable-tv \
 	            --enable-tv-v4l2 \
 	            --enable-libv4l2 \
