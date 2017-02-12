@@ -3,7 +3,7 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=unixcw
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="CW tutor & generator - program suite"
 arch=('i686' 'x86_64')
@@ -35,11 +35,11 @@ package() {
 	install -D -m644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 	install -D -m644 $pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
 }                                                  
-md5sums=('b33cf1be4e1d6c8144eab978f9346f36'
+md5sums=('f25cc9fbaf3445780fc440bec6e1e2c9'
          '3f6168a6c81c550dc78006202f959db3'
          'b07f06b4fc940ba1b853e2b23f686490'
          'f7f81dcf7a1bba55bf8cde70d59d8ed5')
-sha256sums=('82c455b67c6444165ec59f75bc29ad0665b79d70489bd09e3166fd1ccde718e6'
+sha256sums=('63b6253e29083e1e27c65150f580792aab912c989ae2d47c6df16e80cc79e07e'
             'f23fdc2c7346abd26b8acc8961eff599f08e6905a6cef2b0e402d86c6a9a1714'
             '69d3905c87200ddfda66275b72e73b8fda0636a0a600f5a6e7d8324caab0eee7'
             'be1d10724873ae84fec6f580792e5ce9fe2dbfc3e75e2bde14f6893391a63ff1')
