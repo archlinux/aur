@@ -1,5 +1,5 @@
 pkgname=ntfy-git
-pkgver=v2.4.0.r20.gbab1dc8
+pkgver=v2.4.2.r2.g18fa9f9
 pkgrel=1
 pkgdesc="A utility for sending push notifications to different backends (Pushover, Pushbullet, XMPP and various desktop notification systems)"
 url="https://github.com/dschep/ntfy"
