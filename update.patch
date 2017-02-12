@@ -1,0 +1,526 @@
+diff -Naur old/libsoup/soup-date.h new/libsoup/soup-date.h
+--- old/libsoup/soup-date.h	2017-02-10 01:35:49.989098347 -0300
++++ new/libsoup/soup-date.h	2017-02-10 01:57:25.820430907 -0300
+@@ -7,7 +7,7 @@
+ #define SOUP_DATE_H 1
+ 
+ #include <time.h>
+-#include <glib/gmacros.h>
++#include <glib.h>
+ 
+ G_BEGIN_DECLS
+ 
+diff -Naur old/libsoup/soup-gnutls.c new/libsoup/soup-gnutls.c
+--- old/libsoup/soup-gnutls.c	2017-02-10 01:35:50.009097801 -0300
++++ new/libsoup/soup-gnutls.c	2017-02-10 01:55:37.232919388 -0300
+@@ -31,7 +31,7 @@
+ #define DH_BITS 1024
+ 
+ struct SoupSSLCredentials {
+-	gnutls_certificate_credentials creds;
++	gnutls_certificate_credentials_t creds;
+ 	gboolean have_ca_file;
+ };
+ 
+@@ -39,7 +39,7 @@
+ 	GIOChannel channel;
+ 	int fd;
+ 	GIOChannel *real_sock;
+-	gnutls_session session;
++	gnutls_session_t session;
+ 	SoupSSLCredentials *creds;
+ 	char *hostname;
+ 	gboolean established;
+@@ -47,11 +47,15 @@
+ } SoupGNUTLSChannel;
+ 
+ static gboolean
+-verify_certificate (gnutls_session session, const char *hostname, GError **err)
++verify_certificate (gnutls_session_t session, const char *hostname, GError **err)
+ {
++	gnutls_typed_vdata_st dns_hostname_data;
+ 	int status;
+ 
+-	status = gnutls_certificate_verify_peers (session);
++	dns_hostname_data.type = GNUTLS_DT_DNS_HOSTNAME;
++	dns_hostname_data.data = hostname;
++	dns_hostname_data.size = sizeof(hostname);
++	gnutls_certificate_verify_peers (session, &dns_hostname_data, 1, &status);
+ 
+ 	if (status == GNUTLS_E_NO_CERTIFICATE_FOUND) {
+ 		g_set_error (err, SOUP_SSL_ERROR,
+@@ -97,7 +101,7 @@
+ 				     "Error initializing SSL certificate.");
+ 			return FALSE;
+ 		}
+-      
++
+ 		cert_list = gnutls_certificate_get_peers (
+ 			session, &cert_list_size);
+ 
+diff -Naur old/libsoup/soup-portability.h new/libsoup/soup-portability.h
+--- old/libsoup/soup-portability.h	2017-02-10 01:35:49.922433498 -0300
++++ new/libsoup/soup-portability.h	2017-02-10 00:36:13.098107354 -0300
+@@ -6,7 +6,7 @@
+ #ifndef SOUP_PORTABILITY_H
+ #define SOUP_PORTABILITY_H
+ 
+-#include <glibconfig.h>
++#include <glib.h>
+ 
+ #ifdef G_OS_WIN32
+ 
+diff -Naur old/libsoup/soup-types.h new/libsoup/soup-types.h
+--- old/libsoup/soup-types.h	2017-02-10 01:35:49.989098347 -0300
++++ new/libsoup/soup-types.h	2017-02-10 01:01:39.436418562 -0300
+@@ -6,7 +6,7 @@
+ #ifndef SOUP_TYPES_H
+ #define SOUP_TYPES_H 1
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ #include <glib-object.h>
+ 
+ #include <libsoup/soup-status.h>
+diff -Naur old/tests/context-test.c new/tests/context-test.c
+--- old/tests/context-test.c	2017-02-10 02:13:38.945262431 -0300
++++ new/tests/context-test.c	2017-02-10 02:13:20.739447586 -0300
+@@ -28,7 +28,7 @@
+ char *base_uri;
+ 
+ static void
+-dprintf (const char *format, ...)
++_dprintf (const char *format, ...)
+ {
+ 	va_list args;
+ 
+@@ -168,7 +168,7 @@
+ {
+ 	GMainLoop *loop;
+ 
+-	dprintf ("Test 1: blocking the main thread does not block other thread\n");
++	_dprintf ("Test 1: blocking the main thread does not block other thread\n");
+ 
+ 	test1_cond = g_cond_new ();
+ 	test1_mutex = g_mutex_new ();
+@@ -196,7 +196,7 @@
+ 	if (g_cond_timed_wait (test1_cond, test1_mutex, &time))
+ 		g_thread_join (thread);
+ 	else {
+-		dprintf ("  timeout!\n");
++		_dprintf ("  timeout!\n");
+ 		errors++;
+ 	}
+ 
+@@ -232,17 +232,17 @@
+ 
+ 	uri = g_build_filename (base_uri, "slow", NULL);
+ 
+-	dprintf ("  send_message\n");
++	_dprintf ("  send_message\n");
+ 	msg = soup_message_new ("GET", uri);
+ 	soup_session_send_message (session, msg);
+ 	if (msg->status_code != SOUP_STATUS_OK) {
+-		dprintf ("    unexpected status: %d %s\n",
++		_dprintf ("    unexpected status: %d %s\n",
+ 			 msg->status_code, msg->reason_phrase);
+ 		errors++;
+ 	}
+ 	g_object_unref (msg);
+ 
+-	dprintf ("  queue_message\n");
++	_dprintf ("  queue_message\n");
+ 	msg = soup_message_new ("GET", uri);
+ 	loop = g_main_loop_new (async_context, FALSE);
+ 	g_object_ref (msg);
+@@ -250,7 +250,7 @@
+ 	g_main_loop_run (loop);
+ 	g_main_loop_unref (loop);
+ 	if (msg->status_code != SOUP_STATUS_OK) {
+-		dprintf ("    unexpected status: %d %s\n",
++		_dprintf ("    unexpected status: %d %s\n",
+ 			 msg->status_code, msg->reason_phrase);
+ 		errors++;
+ 	}
+@@ -279,7 +279,7 @@
+ 	char *uri;
+ 	SoupMessage *msg;
+ 
+-	dprintf ("Test 2: a session with its own context is independent of the main loop.\n");
++	_dprintf ("Test 2: a session with its own context is independent of the main loop.\n");
+ 
+ 	idle = g_idle_add_full (G_PRIORITY_HIGH, idle_test2_fail, NULL, NULL);
+ 
+@@ -291,11 +291,11 @@
+ 
+ 	uri = g_build_filename (base_uri, "slow", NULL);
+ 
+-	dprintf ("  send_message\n");
++	_dprintf ("  send_message\n");
+ 	msg = soup_message_new ("GET", uri);
+ 	soup_session_send_message (session, msg);
+ 	if (msg->status_code != SOUP_STATUS_OK) {
+-		dprintf ("    unexpected status: %d %s\n",
++		_dprintf ("    unexpected status: %d %s\n",
+ 			 msg->status_code, msg->reason_phrase);
+ 		errors++;
+ 	}
+@@ -311,7 +311,7 @@
+ static gboolean
+ idle_test2_fail (gpointer user_data)
+ {
+-	dprintf ("  idle ran!\n");
++	_dprintf ("  idle ran!\n");
+ 	errors++;
+ 	return FALSE;
+ }
+@@ -356,7 +356,7 @@
+ 	g_free (base_uri);
+ 	g_main_context_unref (g_main_context_default ());
+ 
+-	dprintf ("\n");
++	_dprintf ("\n");
+ 	if (errors) {
+ 		printf ("context-test: %d error(s). Run with '-d' for details\n",
+ 			errors);
+diff -Naur old/tests/header-parsing.c new/tests/header-parsing.c
+--- old/tests/header-parsing.c	2017-02-10 02:13:38.871932506 -0300
++++ new/tests/header-parsing.c	2017-02-10 02:23:46.022468627 -0300
+@@ -10,7 +10,7 @@
+ gboolean debug = FALSE;
+ 
+ static void
+-dprintf (const char *format, ...)
++_dprintf (const char *format, ...)
+ {
+ 	va_list args;
+ 
+@@ -455,7 +455,7 @@
+ print_header (gpointer key, gpointer value, gpointer data)
+ {
+ 	GSList *values = value;
+-	dprintf ("              '%s': '%s'\n",
++	_dprintf ("              '%s': '%s'\n",
+ 		 (char *)key, (char*)values->data);
+ }
+ 
+@@ -480,11 +480,11 @@
+ 	SoupHttpVersion version;
+ 	GHashTable *headers;
+ 
+-	dprintf ("Request tests\n");
++	_dprintf ("Request tests\n");
+ 	for (i = 0; i < 1; i++) {
+ 		gboolean ok = TRUE;
+ 
+-		dprintf ("%2d. %s (%s): ", i + 1, reqtests[i].description,
++		_dprintf ("%2d. %s (%s): ", i + 1, reqtests[i].description,
+ 			 reqtests[i].method ? "should parse" : "should NOT parse");
+ 
+ 		headers = g_hash_table_new_full (g_str_hash, g_str_equal,
+@@ -519,34 +519,34 @@
+ 		}
+ 
+ 		if (ok)
+-			dprintf ("OK!\n");
++			_dprintf ("OK!\n");
+ 		else {
+-			dprintf ("BAD!\n");
++			_dprintf ("BAD!\n");
+ 			errors++;
+ 			if (reqtests[i].method) {
+-				dprintf ("    expected: '%s' '%s' 'HTTP/1.%d'\n",
++				_dprintf ("    expected: '%s' '%s' 'HTTP/1.%d'\n",
+ 					 reqtests[i].method, reqtests[i].path,
+ 					 reqtests[i].version);
+ 				for (h = 0; reqtests[i].headers[h].name; h++) {
+-					dprintf ("              '%s': '%s'\n",
++					_dprintf ("              '%s': '%s'\n",
+ 						 reqtests[i].headers[h].name,
+ 						 reqtests[i].headers[h].value);
+ 				}
+ 			} else
+-				dprintf ("    expected: parse error\n");
++				_dprintf ("    expected: parse error\n");
+ 			if (method) {
+-				dprintf ("         got: '%s' '%s' 'HTTP/1.%d'\n",
++				_dprintf ("         got: '%s' '%s' 'HTTP/1.%d'\n",
+ 					method, path, version);
+ 				g_hash_table_foreach (headers, print_header, NULL);
+ 			} else
+-				dprintf ("         got: parse error\n");
++				_dprintf ("         got: parse error\n");
+ 		}
+ 
+ 		g_free (method);
+ 		g_free (path);
+ 		g_hash_table_destroy (headers);
+ 	}
+-	dprintf ("\n");
++	_dprintf ("\n");
+ 
+ 	return errors;
+ }
+@@ -561,11 +561,11 @@
+ 	SoupHttpVersion version;
+ 	GHashTable *headers;
+ 
+-	dprintf ("Response tests\n");
++	_dprintf ("Response tests\n");
+ 	for (i = 0; i < num_resptests; i++) {
+ 		gboolean ok = TRUE;
+ 
+-		dprintf ("%2d. %s (%s): ", i + 1, resptests[i].description,
++		_dprintf ("%2d. %s (%s): ", i + 1, resptests[i].description,
+ 			 resptests[i].reason_phrase ? "should parse" : "should NOT parse");
+ 
+ 		headers = g_hash_table_new_full (g_str_hash, g_str_equal,
+@@ -600,34 +600,34 @@
+ 		}
+ 
+ 		if (ok)
+-			dprintf ("OK!\n");
++			_dprintf ("OK!\n");
+ 		else {
+-			dprintf ("BAD!\n");
++			_dprintf ("BAD!\n");
+ 			errors++;
+ 			if (resptests[i].reason_phrase) {
+-				dprintf ("    expected: 'HTTP/1.%d' '%03d' '%s'\n",
++				_dprintf ("    expected: 'HTTP/1.%d' '%03d' '%s'\n",
+ 					 resptests[i].version,
+ 					 resptests[i].status_code,
+ 					 resptests[i].reason_phrase);
+ 				for (h = 0; resptests[i].headers[h].name; h++) {
+-					dprintf ("              '%s': '%s'\n",
++					_dprintf ("              '%s': '%s'\n",
+ 						 resptests[i].headers[h].name,
+ 						 resptests[i].headers[h].value);
+ 				}
+ 			} else
+-				dprintf ("    expected: parse error\n");
++				_dprintf ("    expected: parse error\n");
+ 			if (reason_phrase) {
+-				dprintf ("         got: 'HTTP/1.%d' '%03d' '%s'\n",
++				_dprintf ("         got: 'HTTP/1.%d' '%03d' '%s'\n",
+ 					 version, status_code, reason_phrase);
+ 				g_hash_table_foreach (headers, print_header, NULL);
+ 			} else
+-				dprintf ("         got: parse error\n");
++				_dprintf ("         got: parse error\n");
+ 		}
+ 
+ 		g_free (reason_phrase);
+ 		g_hash_table_destroy (headers);
+ 	}
+-	dprintf ("\n");
++	_dprintf ("\n");
+ 
+ 	return errors;
+ }
+@@ -651,7 +651,7 @@
+ 	errors = do_request_tests ();
+ 	errors += do_response_tests ();
+ 
+-	dprintf ("\n");
++	_dprintf ("\n");
+ 	if (errors) {
+ 		printf ("header-parsing: %d error(s). Run with '-d' for details\n",
+ 			errors);
+diff -Naur old/tests/ntlm-test.c new/tests/ntlm-test.c
+--- old/tests/ntlm-test.c	2017-02-10 02:13:38.945262431 -0300
++++ new/tests/ntlm-test.c	2017-02-10 02:25:13.617865774 -0300
+@@ -29,7 +29,7 @@
+ gboolean debug = FALSE;
+ 
+ static void
+-dprintf (const char *format, ...)
++_dprintf (const char *format, ...)
+ {
+ 	va_list args;
+ 
+@@ -219,58 +219,58 @@
+ 			  G_CALLBACK (ntlm_response_check), &state);
+ 
+ 	soup_session_send_message (session, msg);
+-	dprintf ("  %-10s -> ", path);
++	_dprintf ("  %-10s -> ", path);
+ 
+ 	if (state.got_prompt) {
+-		dprintf (" PROMPT");
++		_dprintf (" PROMPT");
+ 		if (!get_prompt) {
+-			dprintf ("???");
++			_dprintf ("???");
+ 			errors++;
+ 		}
+ 	} else if (get_prompt) {
+-		dprintf (" no-prompt???");
++		_dprintf (" no-prompt???");
+ 		errors++;
+ 	}
+ 
+ 	if (state.sent_request) {
+-		dprintf (" REQUEST");
++		_dprintf (" REQUEST");
+ 		if (!do_ntlm) {
+-			dprintf ("???");
++			_dprintf ("???");
+ 			errors++;
+ 		}
+ 	} else if (do_ntlm) {
+-		dprintf (" no-request???");
++		_dprintf (" no-request???");
+ 		errors++;
+ 	}
+ 
+ 	if (state.got_challenge) {
+-		dprintf (" CHALLENGE");
++		_dprintf (" CHALLENGE");
+ 		if (!do_ntlm) {
+-			dprintf ("???");
++			_dprintf ("???");
+ 			errors++;
+ 		}
+ 	} else if (do_ntlm) {
+-		dprintf (" no-challenge???");
++		_dprintf (" no-challenge???");
+ 		errors++;
+ 	}
+ 
+ 	if (state.sent_response) {
+-		dprintf (" RESPONSE");
++		_dprintf (" RESPONSE");
+ 		if (!do_ntlm) {
+-			dprintf ("???");
++			_dprintf ("???");
+ 			errors++;
+ 		}
+ 	} else if (do_ntlm) {
+-		dprintf (" no-response???");
++		_dprintf (" no-response???");
+ 		errors++;
+ 	}
+ 
+-	dprintf (" -> %s", msg->reason_phrase);
++	_dprintf (" -> %s", msg->reason_phrase);
+ 	if (msg->status_code != status_code) {
+-		dprintf ("???");
++		_dprintf ("???");
+ 		errors++;
+ 	}
+-	dprintf ("\n");
++	_dprintf ("\n");
+ 
+ 	g_object_unref (msg);
+ 	return errors;
+@@ -327,11 +327,11 @@
+ {
+ 	int errors = 0;
+ 
+-	dprintf ("Round 1: Non-NTLM Connection\n");
++	_dprintf ("Round 1: Non-NTLM Connection\n");
+ 	errors += do_ntlm_round (base_uri, NULL);
+-	dprintf ("Round 2: NTLM Connection, user=alice\n");
++	_dprintf ("Round 2: NTLM Connection, user=alice\n");
+ 	errors += do_ntlm_round (base_uri, "alice");
+-	dprintf ("Round 3: NTLM Connection, user=bob\n");
++	_dprintf ("Round 3: NTLM Connection, user=bob\n");
+ 	errors += do_ntlm_round (base_uri, "bob");
+ 
+ 	return errors;
+@@ -397,7 +397,7 @@
+ 	g_hash_table_destroy (connections);
+ 	g_main_context_unref (g_main_context_default ());
+ 
+-	dprintf ("\n");
++	_dprintf ("\n");
+ 	if (errors) {
+ 		printf ("ntlm-test: %d error(s). Run with '-d' for details\n",
+ 			errors);
+diff -Naur old/tests/uri-parsing.c new/tests/uri-parsing.c
+--- old/tests/uri-parsing.c	2017-02-10 02:13:38.871932506 -0300
++++ new/tests/uri-parsing.c	2017-02-10 02:26:01.758934976 -0300
+@@ -10,7 +10,7 @@
+ gboolean debug = FALSE;
+ 
+ static void
+-dprintf (const char *format, ...)
++_dprintf (const char *format, ...)
+ {
+ 	va_list args;
+ 
+@@ -113,21 +113,21 @@
+ 	char *uri_string;
+ 
+ 	if (base_uri) {
+-		dprintf ("<%s> + <%s> = <%s>? ", base_str, in_uri,
++		_dprintf ("<%s> + <%s> = <%s>? ", base_str, in_uri,
+ 			 out_uri ? out_uri : "ERR");
+ 		uri = soup_uri_new_with_base (base_uri, in_uri);
+ 	} else {
+-		dprintf ("<%s> => <%s>? ", in_uri,
++		_dprintf ("<%s> => <%s>? ", in_uri,
+ 			 out_uri ? out_uri : "ERR");
+ 		uri = soup_uri_new (in_uri);
+ 	}
+ 
+ 	if (!uri) {
+ 		if (out_uri) {
+-			dprintf ("ERR\n  Could not parse %s\n", in_uri);
++			_dprintf ("ERR\n  Could not parse %s\n", in_uri);
+ 			return FALSE;
+ 		} else {
+-			dprintf ("OK\n");
++			_dprintf ("OK\n");
+ 			return TRUE;
+ 		}
+ 	}
+@@ -136,18 +136,18 @@
+ 	soup_uri_free (uri);
+ 
+ 	if (!out_uri) {
+-		dprintf ("ERR\n  Got %s\n", uri_string);
++		_dprintf ("ERR\n  Got %s\n", uri_string);
+ 		return FALSE;
+ 	}
+ 
+ 	if (strcmp (uri_string, out_uri) != 0) {
+-		dprintf ("NO\n  Unparses to <%s>\n", uri_string);
++		_dprintf ("NO\n  Unparses to <%s>\n", uri_string);
+ 		g_free (uri_string);
+ 		return FALSE;
+ 	}
+ 	g_free (uri_string);
+ 
+-	dprintf ("OK\n");
++	_dprintf ("OK\n");
+ 	return TRUE;
+ }
+ 
+@@ -169,14 +169,14 @@
+ 		}
+ 	}
+ 
+-	dprintf ("Absolute URI parsing\n");
++	_dprintf ("Absolute URI parsing\n");
+ 	for (i = 0; i < num_abs_tests; i++) {
+ 		if (!do_uri (NULL, NULL, abs_tests[i].uri_string,
+ 			     abs_tests[i].result))
+ 			errs++;
+ 	}
+ 
+-	dprintf ("\nRelative URI parsing\n");
++	_dprintf ("\nRelative URI parsing\n");
+ 	base_uri = soup_uri_new (base);
+ 	if (!base_uri) {
+ 		fprintf (stderr, "Could not parse %s!\n", base);
+@@ -198,7 +198,7 @@
+ 	}
+ 	soup_uri_free (base_uri);
+ 
+-	dprintf ("\n");
++	_dprintf ("\n");
+ 	if (errs) {
+ 		printf ("uri-parsing: %d error(s). Run with '-d' for details\n",
+ 			errs);

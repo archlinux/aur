@@ -1,0 +1,16 @@
+pkgbase = libsoup-2.2
+	pkgdesc = HTTP client/server library for GNOME
+	pkgver = 2.2.105
+	pkgrel = 1
+	url = https://wiki.gnome.org/LibSoup
+	arch = i686
+	arch = x86_64
+	license = GPL
+	provides = libsoup-2.2
+	source = http://ftp.gnome.org/pub/gnome/sources/libsoup/2.2/libsoup-2.2.105.tar.bz2
+	source = update.patch
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = libsoup-2.2
+
