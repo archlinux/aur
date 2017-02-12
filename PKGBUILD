@@ -2,7 +2,7 @@
 
 pkgname=gpmdp-git
 _name=Google-Play-Music-Desktop-Player-UNOFFICIAL-
-pkgver=4.0.0.2.g42ca5d1
+pkgver=4.1.1.39.g0598b95
 pkgrel=1
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music."
 arch=('i686' 'x86_64')
@@ -29,11 +29,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_name"
+  rm -rf node_modules
   npm install
-  npm uninstall ll-keyboard-hook-win -O
-  npm uninstall appdmg -O
-  npm update
-  npm run build
 
   if [ $CARCH = "x86_64" ]
   then
