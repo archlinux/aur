@@ -1,0 +1,16 @@
+pkgbase = ghp-import
+	pkgdesc = Copy your docs directly to the gh-pages branch.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = http://github.com/davisp/ghp-import
+	changelog = Changelog
+	arch = any
+	license = custom
+	makedepends = python2-distribute
+	depends = python2
+	conflicts = ghp-import-git
+	source = http://pypi.python.org/packages/source/g/ghp-import/ghp-import-0.3.2.tar.gz
+	md5sums = 67821089a324533d719eadf10cc31c1e
+
+pkgname = ghp-import
+

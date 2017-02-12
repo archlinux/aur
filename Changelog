@@ -1,0 +1,10 @@
+2011-08-19 Julien Nicoulaud <julien.nicoulaud@gmail.com>
+
+	* 0.1.8-2 :
+	Package is compatible with python 2 and not 3.
+
+2011-08-19 Julien Nicoulaud <julien.nicoulaud@gmail.com>
+
+	* 0.1.8-1 :
+	Initial release of the package.
+
