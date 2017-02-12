@@ -11,6 +11,8 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('alsa-lib')
 makedepends=('libpulse' 'git')
+provides=('libao')
+conflicts=('libao')
 backup=('etc/libao.conf')
 source=("git+https://github.com/xiph/libao.git"
         'libao.conf')
