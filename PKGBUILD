@@ -4,12 +4,15 @@
 
 pkgname=unixcw
 pkgver=3.5.1
-pkgrel=1
-pkgdesc="CW tutor & generator - program suite"
+pkgrel=2
+pkgdesc="CW tutor & generator - program suite - Ham Radio"
 arch=('i686' 'x86_64')
 url="http://unixcw.sourceforge.net"
-license=('GPL')
+license=('GPL3')
 depends=('qt5-base')
+optdepends=('hamradio-menus')
+provides=('unixcw')
+conflicts=('unixcw-git')
 source=(http://downloads.sourceforge.net/sourceforge/unixcw/$pkgname-$pkgver.tar.gz
         $pkgname
 	$pkgname.desktop
