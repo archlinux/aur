@@ -2,6 +2,7 @@
 Description=Beehive
 
 [Service]
+User=beehive
 ExecStart=/usr/bin/beehive -config /etc/beehive.conf
 
 [Install]

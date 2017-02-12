@@ -2,6 +2,8 @@ post_install() {
     if ! getent passwd beehive > /dev/null; then
         useradd -r beehive
     fi
+    mkdir -p /etc/beehive
+    chown -R beehive: /etc/beehive
 }
 
 pre_upgrade() {
