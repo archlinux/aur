@@ -29,7 +29,7 @@ conflicts=(
     'dybuk'
 )
 source=(
-    'git://github.com/Ticki/dybuk.git'
+    'git+https://github.com/Ticki/dybuk.git'
 )
 sha256sums=(
     'SKIP'
@@ -49,10 +49,8 @@ build() {
 
 package() {
 	cd "${srcdir}/${_pkgname}" | exit 1
-    install		\
-        -m755	\
+    install -m755 \
         -D "target/release/dybuk" "${pkgdir}/usr/bin/${_pkgname}"
-    install		\
-        -m644	\
+    install	-m644 \
         -D "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }

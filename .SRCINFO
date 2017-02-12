@@ -12,7 +12,7 @@ pkgbase = dybuk-git
 	depends = gcc-libs
 	provides = dybuk
 	conflicts = dybuk
-	source = git://github.com/Ticki/dybuk.git
+	source = git+https://github.com/Ticki/dybuk.git
 	sha256sums = SKIP
 
 pkgname = dybuk-git
