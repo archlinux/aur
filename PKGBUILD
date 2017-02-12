@@ -7,7 +7,7 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-nvenc
-pkgver=3.2.2
+pkgver=3.2.4
 pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video with Nvidia CUDA Hardware Acceleration'
