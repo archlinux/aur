@@ -10,7 +10,7 @@ pkgbase = courier-maildrop
 	depends = gamin
 	depends = pcre
 	depends = gdbm
-	depends = courier-unicode>=1.34
+	depends = courier-unicode>=1.4
 	conflicts = courier-mta
 	source = http://downloads.sourceforge.net/project/courier/maildrop/2.8.5/maildrop-2.8.5.tar.bz2
 	options = !libtool
