@@ -1,24 +1,24 @@
 # Maintainer: Immae <ismael.bouya@normalesup.org>
 
-pkgname=python-pybtex
-pkgver=0.21
-pkgrel=1
-pkgdesc="A BibTeX-compatible bibliography processor in Python"
-arch=('any')
-url="http://pybtex.org/"
-license=('GPL')
-depends=('python')
-makedepends=('python-setuptools')
-source=(https://pypi.python.org/packages/82/59/d46b4a84faacd7c419cfc9a442b7940d6d625d127b83d83666e2a8b203d8/pybtex-${pkgver}.tar.gz)
+pkgname="python-pybtex"
+_pkgname="pybtex"
+pkgver="0.21"
+pkgrel=2
+pkgdesc="Pybtex reads citation information from a file and produces a formatted bibliography."
+arch=("any")
+url="http://pybtex.sourceforge.net"
+license=("GPL")
+depends=("python" "python-yaml" "python-latexcodec")
+makedepends=("python-distribute")
+source=("https://pypi.io/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=('af8a6c7c74954ad305553b118d2757f68bc77c5dd5d5de2cc1fd16db90046000')
 
 build() {
-  cd "$srcdir/pybtex-${pkgver}"
+  cd "$srcdir/$_pkgname-$pkgver"
   python setup.py build
 }
 
-package(){
-  cd "$srcdir/pybtex-${pkgver}"
-  python setup.py install --root="${pkgdir}"
+package() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  python setup.py install --prefix="/usr" --root="${pkgdir}"
 }
-
-md5sums=('e7b320b2bcb34c664c4385533a2ea831')
