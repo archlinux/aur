@@ -1,0 +1,16 @@
+pkgbase = adblock2privoxy
+	pkgdesc = Convert adblock config files to privoxy format
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://projects.zubr.me/wiki/adblock2privoxy
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = stack
+	depends = zlib
+	depends = gmp
+	source = http://hackage.haskell.org/package/adblock2privoxy-1.4.2/adblock2privoxy-1.4.2.tar.gz
+	md5sums = eb04789e8fc785607f70658870c1b53d
+
+pkgname = adblock2privoxy
+
