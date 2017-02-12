@@ -1,18 +1,18 @@
 # Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 # Source: https://github.com/nicoulaj/archlinux-packages
 pkgname=ghp-import
-pkgver=0.3.2
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Copy your docs directly to the gh-pages branch."
 arch=(any)
 url="http://github.com/davisp/ghp-import"
 license=(custom)
-depends=(python2)
+depends=(python2 python2-pyflakes python2-markdown)
 makedepends=(python2-distribute)
 changelog=Changelog
 conflicts=(${pkgname}-git)
-source=("http://pypi.python.org/packages/source/g/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('67821089a324533d719eadf10cc31c1e')
+source=("https://pypi.python.org/packages/f5/cd/c780b2248dd364fdc77837a020bad3e176933d7ce5643217d9475465e871/${pkgname}-${pkgver}.tar.gz")
+md5sums=('70417075b2e44c3bee768a2d6eb1a441')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
