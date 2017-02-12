@@ -1,0 +1,8 @@
+[Unit]
+Description=Beehive
+
+[Service]
+ExecStart=/usr/bin/beehive -config /etc/beehive.conf
+
+[Install]
+WantedBy=multi-user.target

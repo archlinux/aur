@@ -1,0 +1,15 @@
+post_install() {
+    if ! getent passwd beehive > /dev/null; then
+        useradd -r beehive
+    fi
+}
+
+pre_upgrade() {
+    systemctl stop beehive.service
+}
+
+post_upgrade() {
+    systemctl start beehive.service
+}
+
+
