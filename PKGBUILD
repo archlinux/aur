@@ -2,7 +2,7 @@
 
 pkgname=st-ametisf-git
 _pkgname=st
-pkgver=.
+pkgver=981.0145274
 pkgrel=1
 pkgdesc='Port of simple terminal to wayland - ametisf fork'
 url='http://github.com/ametisf/st'
@@ -16,18 +16,26 @@ epoch=1
 source=('git+https://github.com/ametisf/st.git')
 sha1sums=('SKIP')
 
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=($_pkgname)
+conflicts=($_pkgname)
 
 pkgver() {
-	cd "${_pkgname}"
-    echo $(git rev-list --count wayland).$(git rev-parse --short wayland)
+	cd $_pkgname
+	echo $(git rev-list --count master).$(git rev-parse --short master)
+}
+
+prepare() {
+	cd $_pkgname
+	cat >> config.tup << "EOF"
+ENABLE_DEBUG=0
+BUILD_STATIC=0
+EOF
 }
 
 build() {
-	cd "${_pkgname}"
+	cd $_pkgname
 	tup init
-    tup upd
+	tup upd
 }
 
 package() {
