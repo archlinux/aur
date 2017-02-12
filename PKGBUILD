@@ -1,5 +1,5 @@
 pkgname=vtigercrm
-pkgver=6.4.0
+pkgver=6.5.0
 pkgrel=1
 pkgdesc="A free, full-featured, 100% Open Source CRM software ideal for small and medium businesses"
 arch=("any")
@@ -41,5 +41,5 @@ package() {
   chown -R 33:33 "${pkgdir}/usr/share/webapps/${pkgname}"
 }
 
-md5sums=('cb8d869e650f84c275a2c7a23c226e92')
-sha1sums=('fefa38589bbf90addd956227b37c01401edc08b3')
+md5sums=('9a1745f3e6411045a9f372684c8f6a6d')
+sha1sums=('2a62121e5f7de9938cf8e5339200b163ff7b028b')
