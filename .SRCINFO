@@ -1,0 +1,33 @@
+pkgbase = unixcw-git
+	pkgdesc = CW tutor & generator - program suite - Ham Radio - GIT version
+	pkgver = 3.5.0.r17.g0306399
+	pkgrel = 1
+	url = http://unixcw.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = gettext
+	makedepends = pkg-config
+	depends = qt5-base
+	optdepends = hamradio-menus
+	provides = unixcw
+	conflicts = unixcw
+	source = unixcw::git://git.code.sf.net/p/unixcw/code#branch=master
+	source = unixcw.1
+	source = unixcw.desktop
+	source = unixcw.png
+	md5sums = SKIP
+	md5sums = 3f6168a6c81c550dc78006202f959db3
+	md5sums = b07f06b4fc940ba1b853e2b23f686490
+	md5sums = f7f81dcf7a1bba55bf8cde70d59d8ed5
+	sha256sums = SKIP
+	sha256sums = f23fdc2c7346abd26b8acc8961eff599f08e6905a6cef2b0e402d86c6a9a1714
+	sha256sums = 69d3905c87200ddfda66275b72e73b8fda0636a0a600f5a6e7d8324caab0eee7
+	sha256sums = be1d10724873ae84fec6f580792e5ce9fe2dbfc3e75e2bde14f6893391a63ff1
+
+pkgname = unixcw-git
+
