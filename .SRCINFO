@@ -1,0 +1,19 @@
+pkgbase = koel-app-git
+	pkgdesc = The desktop application for Koel.
+	pkgver = r39.000bc57
+	pkgrel = 1
+	url = https://github.com/phanan/koel-app
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	depends = nss
+	depends = alsa-lib
+	depends = libnotify
+	depends = gtk3
+	depends = gconf
+	depends = libxtst
+	source = git+https://github.com/phanan/koel-app.git
+	md5sums = SKIP
+
+pkgname = koel-app-git
+
