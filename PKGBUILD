@@ -1,16 +1,16 @@
 # Maintainer: Timur Kiyivinski <timur@linux.com>
 
 pkgname=cpuminer-xzc-git
-pkgver=4.8212d77
+pkgver=2.d39de7c
 pkgrel=1
 pkgdesc='CPUMiner for ZCOIN (XZC)'
 arch=('any')
-url='https://github.com/ocminer/cpuminer-xzc'
+url='https://github.com/zcoinofficial/cpuminer-xzc'
 license=('GPL2')
 depends=('libcurl-gnutls' 'openssl' 'zlib')
 provides=('cpuminer')
 conflicts=('cpuminer')
-source=("$pkgname::git+https://github.com/ocminer/cpuminer-xzc.git"
+source=("$pkgname::git+https://github.com/zcoinofficial/cpuminer-xzc.git"
         "$pkgname.patch")
 md5sums=('SKIP'
          '834658714fab7b194ef491f1dfc904bd')
