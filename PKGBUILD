@@ -15,7 +15,7 @@ license=('BSD')
 arch=('any')
 makedepends=("python-pbr>=1.9" "python2-pbr>=1.9")
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('409a0a94800f05a1e8e078540eb5610e243586bd5ee9bc8cae8899cbb061898')
+sha256sums=('409a0a94800f05a1e8e078540eb5610e243586bd5ee9bc8cae8899cbbd061898')
 
 build() {
     cd "$_name-$pkgver"
