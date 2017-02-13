@@ -12,7 +12,7 @@ this group to be able to open lightsd's socket and pipe under /run/lightsd:
 Re-open your current desktop or ssh session for the change to take effect.
 Then use systemctl to start lightsd; you can start playing with lightsd with:
 
-  `lightsd --prefix`/share/doc/lightsd/examples/lightsc.py
+  $(lightsd --prefix)/share/lightsd/examples/lightsc.py
 
 EOF
 }
