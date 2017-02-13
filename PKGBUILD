@@ -1,42 +1,41 @@
-#!/bin/sh
-# Maintainer: jorge_barroso <jorge.barroso.11 at gmail dot com>
+# Maintainer: Deon Spengler <deon at spengler dot co dot za>
+# Contributor: jorge_barroso <jorge.barroso.11 at gmail dot com>
 
 pkgname=akari
-_basever=1.0.31
-_timestamp=20150112
-pkgver=${_basever}.${_timestamp}
-_kernver=$(uname -r)
-_ccstoolsver=1.8.3.20140601
+pkgver=1.0.35
+_timestamp=20161229
+_extramodules=extramodules-4.9-ARCH
+_ccstoolsver=1.8.5
 pkgrel=1
 pkgdesc='TOMOYO Linux 1.8.x Module for the Linux kernel'
-arch=('any')
+arch=('i686' 'x86_64')
 url='http://akari.sourceforge.jp/'
 license=('GPL')
-depends=("linux")
-makedepends=("linux-headers")
+makedepends=('linux' 'linux-headers>=4.9' 'linux-headers<4.10')
 optdepends=("ccs-tools>=${_ccstoolsver}")
 conflicts=("ccs-tools<${_ccstoolsver}")
 install=akari.install
-source=("http://sourceforge.jp/frs/redir.php?f=/akari/49272/akari-${_basever}-${_timestamp}.tar.gz")
-sha512sums=('e1f87f70149ae77d3bfbfb9aa358da4a02ba66b3337674d191e1c9770e3c0bc0c802672f218a3ab41568565d7835ab05c2740a04b782f86ca43891aa10b4429d')
-noextract=("akari-${_basever}-${_timestamp}.tar.gz")
+source=(http://sourceforge.jp/frs/redir.php?f=/akari/49272/${pkgname}-${pkgver}-${_timestamp}.tar.gz
+        activation_trigger.patch)
+sha256sums=('57630f2a3c342ad60b2dce4ab4846ac6a1f03d4bc343185fe5796dcb12a83665'
+            '55d86a0d602631129298887fa63c1396ed6c6229965efcdbdc549ee159a39702')
+noextract=("${pkgname}-${_pkgver}-${_timestamp}.tar.gz")
+
+prepare() {
+  _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+  cp -a "/usr/lib/modules/${_kernver}/build" "${srcdir}"
+  cd "${srcdir}/build"
+  tar -xf "${srcdir}/${pkgname}-${pkgver}-${_timestamp}.tar.gz"
+  patch -p2 -i "${srcdir}/activation_trigger.patch"
+}
 
 build() {
-  msg "Copying headers to source directory..."
-  cp -a "/usr/src/linux-${_kernver}/" "${srcdir}"
-
-  cd "${srcdir}/linux-${_kernver}/"
-
-  msg "Extracting akari into kernel headers..."
-  tar -xf "${srcdir}/akari-${_basever}-${_timestamp}.tar.gz"
-
-  msg "Building akari module..."
-  make SUBDIRS=akari SYSSRC=/lib/modules/${_kernver}/build modules
+  cd "${srcdir}/build/"
+  make SUBDIRS=akari SYSSRC=/usr/lib/modules/${_kernver}/build modules
 }
 
 package() {
-  install -D -m644 "${srcdir}/linux-${_kernver}/akari/akari.ko" \
-    "${pkgdir}/lib/modules/${_kernver}/kernel/extra/akari.ko"
-
-  sed -i -e "s/KERNEL_VERSION='.*'/KERNEL_VERSION='${_kernver}'/" "${startdir}/akari.install"
+  install -D -m644 "${srcdir}/build/akari/akari.ko" \
+    "${pkgdir}/usr/lib/modules/${_extramodules}/akari.ko"
+  gzip "${pkgdir}/usr/lib/modules/${_extramodules}/"*.ko
 }

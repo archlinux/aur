@@ -1,20 +1,14 @@
-#! /bin/bash
-
 post_install() {
-	KERNEL_VERSION=$(uname -r)
-	depmod $KERNEL_VERSION
-    echo
-    echo " * Append \"init=/sbin/ccs-init\" to the kernel boot options"
-    echo "   and reboot in order to activate AKARI."
-    echo
+    EXTRAMODULES='extramodules-4.9-ARCH'
+    depmod $(cat /usr/lib/modules/${EXTRAMODULES}/version)
+    echo "In order to use akari module append \"init=/sbin/ccs-init\""
+    echo "to the kernel boot options and reboot the system to activate"
 }
 
 post_upgrade() {
-	KERNEL_VERSION=$(uname -r)
-	depmod $KERNEL_VERSION
+    post_install
 }
 
 post_remove() {
-	KERNEL_VERSION=$(uname -r)
-	depmod $KERNEL_VERSION
+    post_install
 }
