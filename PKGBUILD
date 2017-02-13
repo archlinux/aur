@@ -1,15 +1,15 @@
 # Maintainer: JP-Ellis <josh@jpellis.me>
 
 pkgname=madgraph-pythia-pgs
-pkgver=2.4.4
-pkgrel=20160610
+pkgver=2.4.5
+pkgrel=1
 pkgdesc="Parton showering, hadronization and detector simulation."
 url="https://launchpad.net/pythia-pgs-for-mg"
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('madgraph' 'tcsh')
 source=("http://madgraph.hep.uiuc.edu/Downloads/pythia-pgs_V${pkgver}.tar.gz")
-sha256sums=('9d6cd804995b5fad0ed0bc5ad24f529bc533221279faa4d772421673fd51d775')
+sha256sums=('cbe24abc976027eba9675d90b8080a2a5231205d55b9f7fbef5092c9ad2c69db')
 
 prepare() {
     if [[ "$arch" -eq "i686" ]]; then
@@ -21,9 +21,6 @@ build () {
     cd "${srcdir}/pythia-pgs"
     make
     find . -type f -name "*.o" | xargs rm
-
-    echo "Patching paths"
-    find . -type f -print0 | xargs -0 sed -i "s|${srcdir}|/usr/share/madgraph|g"
 }
 
 package() {
