@@ -70,6 +70,9 @@ package() {
     cp -r "${srcdir}/CheckMATE-${pkgver}/tools" "${pkgdir}/usr/share/CheckMATE"
     cp -r "${srcdir}/CheckMATE-${pkgver}/data" "${pkgdir}/usr/share/CheckMATE/"
 
+    find "${pkgdir}" -type f -name "*.o" -delete
+
+    find "${pkgdir}" -type d -name ".libs" -empty -delete
 }
 
 # Local Variables:
