@@ -4,27 +4,27 @@
 # Maintainer: Andre Klitzing <aklitzing () gmail () com>
 
 pkgname=scl011
-pkgver=2.06
+pkgver=2.09
 pkgrel=1
 pkgdesc="Binary driver for the SCM SCL011 (nPA / German eID)"
 arch=('i686' 'x86_64')
-url="http://support.identive-group.com/downloads.php"
+url="http://support.identiv.com/scl010-scl011/"
 license=('custom')
 depends=('pcsclite' 'libusb-compat' 'scmccid')
 #backup=('usr/local/scm/ini/scmccid.ini')
 install=$pkgname.install
-
-source_i686=("http://support.identive-infrastructure.com/download/npa/${pkgname}_${pkgver}_linux_32bit.tar.gz")
-source_x86_64=("http://support.identive-infrastructure.com/download/npa/${pkgname}_${pkgver}_linux_64bit.tar.gz")
-
-sha256sums_i686=('136be4d6871320f8fe38e8a8c854f4246c00042fed3951fc776a32541cbaf24d')
-sha256sums_x86_64=('45e81a507ee0d5dfdb8df4bb20341398aaad2d1c8b52765367dd04661dac92f6')
+source=("http://files.identiv.com/products/smart-card-readers/contactless/scl010-011/Linux_Driver_Ver${pkgver}.zip")
+sha256sums=('82e4eea07b2df6d3629bb96245ef99a1f4ca7730ff20aa27bd583ffcba366246')
 
 package() {
+	cd "$srcdir/Linux Driver Ver${pkgver}"
+
 	if [ "$CARCH" = "x86_64" ]; then
-		cd "$srcdir/${pkgname}_${pkgver}_linux_64bit"
+		tar xf sclgeneric_${pkgver}_linux_64bit.tar.gz
+		cd "sclgeneric_${pkgver}_linux_64bit"
 	else
-		cd "$srcdir/${pkgname}_${pkgver}_linux_32bit"
+		tar xf sclgeneric_${pkgver}_linux_32bit.tar.gz
+		cd "sclgeneric_${pkgver}_linux_32bit"
 	fi
 
 	bundle_path=`pkg-config libpcsclite --variable=usbdropdir`
@@ -51,7 +51,7 @@ package() {
 
 	# Copy license to standard location
 	mkdir -p $pkgdir/usr/share/licenses/$pkgname
-	cp ./proprietary/license $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	cp ./proprietary/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
 	# Copy help to standard location
 	# Contains instructions to customize the scmccid.ini
