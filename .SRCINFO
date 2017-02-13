@@ -1,0 +1,27 @@
+pkgbase = mips-harvard-os161-gdb
+	pkgdesc = The GNU Debugger modified for mips-harvard-os161 arquitecture. This is part of toolset for the course os161 from Harvard.
+	pkgver = 7.8+os161_2.1
+	pkgrel = 1
+	url = http://os161.eecs.harvard.edu/
+	arch = i686
+	arch = x86_64
+	groups = mips-harvard-os161-toolchain
+	license = GPL
+	license = LGPL
+	makedepends = flex
+	makedepends = bison
+	depends = mips-harvard-os161-binutils>=2.24
+	depends = gmp
+	depends = mpfr
+	depends = libmpc
+	options = staticlibs
+	options = !libtool
+	options = !emptydirs
+	options = !strip
+	options = zipman
+	options = docs
+	source = http://os161.eecs.harvard.edu/download/gdb-7.8+os161-2.1.tar.gz
+	md5sums = 26295f3f67090e534e3d488a3edce5ae
+
+pkgname = mips-harvard-os161-gdb
+
