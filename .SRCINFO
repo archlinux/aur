@@ -1,5 +1,5 @@
 pkgbase = xorg-server-git
-	pkgver = 1.18.99.901.79.r15754.g9cf0bd4
+	pkgver = 1.19.0.99.r15877.g3f9507e
 	pkgrel = 1
 	url = http://cgit.freedesktop.org/xorg/xserver/
 	arch = i686
@@ -78,7 +78,7 @@ pkgname = xorg-server-git
 	depends = libxshmfence
 	depends = libgl
 	depends = xf86-input-driver
-	provides = X-ABI-VIDEODRV_VERSION=23.0
+	provides = X-ABI-VIDEODRV_VERSION=24.0
 	provides = X-ABI-XINPUT_VERSION=24.1
 	provides = X-ABI-EXTENSION_VERSION=10.0
 	provides = x-server

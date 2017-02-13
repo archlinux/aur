@@ -3,7 +3,7 @@
 # Based on xorg-server-dev: https://aur.archlinux.org/packages/xorg-server-dev/
 
 pkgname=('xorg-server-git' 'xorg-server-xephyr-git' 'xorg-server-xdmx-git' 'xorg-server-xvfb-git' 'xorg-server-xnest-git' 'xorg-server-xwayland-git' 'xorg-server-common-git' 'xorg-server-devel-git')
-pkgver=1.18.99.901.79.r15754.g9cf0bd4
+pkgver=1.19.0.99.r15877.g3f9507e
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom')
@@ -11,11 +11,11 @@ groups=('xorg')
 url="http://cgit.freedesktop.org/xorg/xserver/"
 makedepends=('pixman' 'libx11' 'mesa' 'libgl' 'xf86driproto' 'xcmiscproto' 'xtrans' 'bigreqsproto' 'randrproto' 
              'inputproto' 'fontsproto' 'videoproto' 'presentproto' 'compositeproto' 'recordproto' 'scrnsaverproto'
-             'resourceproto' 'xineramaproto' 'libxkbfile' 'libxfont' 'renderproto' 'libpciaccess' 'libxv'
+             'resourceproto' 'xineramaproto' 'libxkbfile' 'libxfont2' 'renderproto' 'libpciaccess' 'libxv'
              'xf86dgaproto' 'libxmu' 'libxrender' 'libxi' 'dmxproto' 'libxaw' 'libdmx' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'glproto' 'dri2proto' 'libgcrypt' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
-             'libxshmfence' 'libunwind' 'git' 'xfont2-git' 'wayland-protocols')
+             'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols' 'git')
 source=(git://anongit.freedesktop.org/xorg/xserver
         xvfb-run
         xvfb-run.1)
@@ -89,10 +89,9 @@ build() {
 
 package_xorg-server-common-git() {
   pkgdesc="Xorg server common files - Git"
-  depends=('xkeyboard-config' 'xorg-xkbcomp' 'xorg-setxkbmap' 'xorg-fonts-misc'
-           'libunwind')
-  provides=('xorg-server-common')
-  conflicts=('xorg-server-common')
+  depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap xorg-fonts-misc)
+  provides=(xorg-server-common)
+  conflicts=(xorg-server-common)
 
   cd xserver
   install -m755 -d "${pkgdir}/usr/share/licenses/xorg-server-common"
@@ -110,15 +109,15 @@ package_xorg-server-common-git() {
 
 package_xorg-server-git() {
   pkgdesc="Xorg X server - Git"
-  depends=(libepoxy libxdmcp libxfont libpciaccess libdrm pixman libgcrypt libxau xorg-server-common-git libxshmfence libgl xf86-input-driver)
+  depends=(libepoxy libpciaccess libxfont2 pixman xorg-server-common-git libunwind dbus libgl xf86-input-libinput)
 
   # see src/xserver/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel-git pkg
   for VAR in VIDEODRV XINPUT EXTENSION; do
     provides+=("X-ABI-${VAR}_VERSION=$(grep -Po "${VAR}_V.*\(\K[^)]*" xserver/hw/xfree86/common/xf86Module.h |& sed 's/, /./')")
   done
-  provides+=('x-server' 'xorg-server')
-  conflicts=('nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting' 'xorg-server')
+  provides+=('xorg-server' 'x-server')
+  conflicts=('xorg-server' 'nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting')
   replaces=('glamor-egl' 'xf86-video-modesetting')
   install=xorg-server-git.install
 
@@ -149,8 +148,8 @@ package_xorg-server-git() {
 
 package_xorg-server-xephyr-git() {
   pkgdesc="A nested X server that runs as an X application - Git"
-  depends=(libxfont libgl libepoxy libgcrypt libxv pixman xorg-server-common 'xcb-util-image'
-           'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms')
+  depends=(libxfont2 libgl libepoxy libunwind libsystemd libxv pixman xorg-server-common-git xcb-util-image
+           xcb-util-renderutil xcb-util-wm xcb-util-keysyms)
   provides=(xorg-server-xephyr)
   conflicts=(xorg-server-xephyr)
 
@@ -165,7 +164,7 @@ package_xorg-server-xephyr-git() {
 
 package_xorg-server-xvfb-git() {
   pkgdesc="Virtual framebuffer X server - Git"
-  depends=(libxfont libxdmcp libxau libgcrypt pixman xorg-server-common-git xorg-xauth libgl)
+  depends=(libxfont2 libunwind libsystemd pixman xorg-server-common-git xorg-xauth libgl)
   provides=(xorg-server-xvfb)
   conflicts=(xorg-server-xvfb)
 
@@ -183,7 +182,7 @@ package_xorg-server-xvfb-git() {
 
 package_xorg-server-xnest-git() {
   pkgdesc="A nested X server that runs as an X application - Git"
-  depends=(libxfont libxext libgcrypt pixman xorg-server-common-git libsystemd)
+  depends=(libxfont2 libxext libunwind pixman xorg-server-common-git libsystemd)
   provides=(xorg-server-xnest)
   conflicts=(xorg-server-xnest)
 
@@ -198,7 +197,7 @@ package_xorg-server-xnest-git() {
 
 package_xorg-server-xdmx-git() {
   pkgdesc="Distributed Multihead X Server and utilities - Git"
-  depends=(libxfont libxi libgcrypt libxaw libxrender libdmx libxfixes pixman xorg-server-common-git)
+  depends=(libxfont2 libxi libxaw libxrender libdmx libxfixes libunwind pixman xorg-server-common-git)
   provides=(xorg-server-xdmx)
   conflicts=(xorg-server-xdmx)
 
