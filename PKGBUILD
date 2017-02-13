@@ -31,10 +31,12 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
+  make
 }
 
 package() {
   cd "$srcdir/$_pkgname"
+  env PURPLE_PLUGIN_DIR="$pkgdir/usr/lib/purple-2" make -e install
 }
 
 # vim:set ts=2 sw=2 et:
