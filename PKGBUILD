@@ -7,10 +7,10 @@
 
 pkgname=packettracer61
 pkgver=6.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Network design and emulation software for Cisco's Networking Academy instructors and students."
-arch=( 'i686' 'x86_64' )
-depends_x86_64=('lib32-openssl' 'lib32-qt4' 'lib32-libpng') && makedepends=('gcc-multilib')
+arch=('i686' 'x86_64')
+depends_x86_64=('lib32-openssl' 'lib32-qt4' 'lib32-libpng') && makedepends_x86_64=('gcc-multilib')
 depends_i686=('qtwebkit' 'libpng')
 conflicts=('packettracer')
 replaces=('packettracer')
@@ -18,7 +18,7 @@ url="http://www.netacad.com/about-networking-academy/packet-tracer"
 license=('custom')
 
 # Requires Netacad Username/Password to download
-source=( 'http://Cisco Packet Tracer 6.1.1 for Linux - Ubuntu installation (no tutorials) - Student version.tar.gz' 'packettracer' 'linguist' )
+source=('local://Cisco Packet Tracer 6.1.1 for Linux - Ubuntu installation (no tutorials) - Student version.tar.gz' 'packettracer' 'linguist')
 sha512sums=('f450dadb4b1445139e92eaca6682883097398ba2ed1a7ab72d26c94c651b570788b90371522552cc1bf0607d6a6e5e7aef6918668fa616e5b0bb1146cd08c2fc' '0cf78b00428e5a795a29704eacaef1dbf2f93e0758b1e8341c79839ecb699022f0b9d2ba0b9bdbf196ed362fc708ec347624ba7b29033b18f865df0e93c858d3' '2fe30ef63d29903addbe3042aa505e9b1497ce2abc935855c062de1e2582a66425f10844ad38309ad099805a58ed89e47e78c2a943fc45a87d809eb0dfae39a3')
 
 # We don't want to strip anything from the static libraries
@@ -74,7 +74,7 @@ package() {
 
   # Desktop File
   install -D -m644 ./bin/Cisco-PacketTracer.desktop ${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop
-  sed 's/\/usr\/local\/PacketTracer6/\/opt\/pt/' -i ${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop 
+  sed 's/\/usr\/local\/PacketTracer6/\/opt\/pt/' -i ${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop
   rm ${pkgdir}/opt/pt/bin/Cisco-PacketTracer.desktop
 }
 
