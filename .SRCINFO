@@ -11,6 +11,7 @@ pkgbase = gplaycli
 	depends = python2-protobuf
 	depends = python2-androguard
 	depends = python2-clint
+	depends = python2-pyopenssl
 	optdepends = java-runtime: needed for autogeneration of a new AndroiID
 	source = gplaycli-0.2.1.tar.gz::https://github.com/matlink/gplaycli/archive/v0.2.1.tar.gz
 	source = gplaycli.install
