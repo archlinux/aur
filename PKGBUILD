@@ -6,18 +6,7 @@ pkgdesc="Scriba compiler for a powerful scripting language/API"
 arch=("x86_64")
 url="http://www.scriptbasic.org/"
 license=('unknown')
-groups=()
 depends=('postgresql-libs')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("http://www.scriptbasic.org/download/SB_${pkgver}_Linux.tar.gz"
         "scriptbasic_arch.patch")
 noextract=()
@@ -26,20 +15,18 @@ md5sums=('374a37fff435d26c08cfe2ed8d694a8e'
 validpgpkeys=()
 
 prepare() {
-	cd "scriptbasic"
-        patch -p1 -i "scriptbasic_arch.patch"
+        sudo chmod -R 755 "scriptbasic"
+#        cd "scriptbasic"
+        patch -p0 -i "scriptbasic_arch.patch"
 }
 
 build() {
 	cd "scriptbasic"
 	./setup
+        make clean
+        ./setup
         ./setup --install
 }
-
-#check() {
-#	cd "$pkgname-$pkgver"
-#	make -k check
-#}
 
 package() {
 	cd "scriptbasic"
