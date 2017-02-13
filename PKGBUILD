@@ -1,7 +1,7 @@
-# Maintainer: Elvis Angelaccio <elvis.angelaccio@kdemail.net>
+# Maintainer: Elvis Angelaccio <elvis.angelaccio@kde.org>
 
 pkgname=hashcat-utils
-pkgver=1.2
+pkgver=1.6
 pkgrel=1
 pkgdesc="A set of small utilities that are useful in advanced password cracking."
 arch=('i686' 'x86_64')
@@ -10,12 +10,12 @@ license=('MIT')
 depends=('perl')
 makedepends=('binutils' 'make')
 conflicts=('hashcat-utils-git')
-source=("https://codeload.github.com/hashcat/$pkgname/tar.gz/$pkgver")
-sha256sums=('2bf50b21ea72d087aa5795874ce1ca8c9e70f2ca429652a07bb6f90c088727f3')
+source=("https://github.com/hashcat/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('0867a5fae516a9e884b4c6bd4f30088e274c7de65b62a6e1f90236f8deac7ee3')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"/src
-    make linux
+    make
     strip *.bin
 }
 
