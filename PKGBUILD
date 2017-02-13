@@ -4,15 +4,14 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=linsmith
-pkgver=0.99.28
+pkgver=0.99.30
 pkgrel=1
 pkgdesc="A Smith Charting program, mainly designed for educational use"
 arch=('i686' 'x86_64')
 url="http://jcoppens.com/soft/linsmith/index.en.php"
 license=('GPL')
-depends=('tcl' 'libgnomeui' 'desktop-file-utils')
-makedepends=('intltool' 'pkg-config')
-install=$pkgname.install
+depends=('tcl' 'libgnomeui' 'hamradio-menus')
+makedepends=('intltool' 'pkg-config' 'gettext')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
         "$pkgname.desktop")
 
@@ -36,7 +35,7 @@ package() {
   install -Dm644 ../$pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 linsmith_icon.xpm "$pkgdir/usr/share/pixmaps/$pkgname.xpm"
 }
-md5sums=('45375788e636cae80ff53fc722c54ed2'
+md5sums=('a07f14ca8a3c1368d7594ec177f4b5d9'
          '2d0246a85ce1aebd359c5c3cabfed7b5')
-sha256sums=('22196edb6e4c72a45a3d0a794a0bb140ab5932a5e59a40e2e9ee143b53c4235d'
+sha256sums=('76739c0cdc13f193793842ea4ddd027a27143a6672994de485b9902c32a41aa3'
             'bc74c02dbedc8c80b552e276c770e9ee3f0b231e371ea08a3e0a6921812b1938')
