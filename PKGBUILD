@@ -2,7 +2,7 @@
 
 _name=chronojump
 pkgname=$_name-git
-pkgver=1.6.2.451.g00e63dd5
+pkgver=1.7.0.40.gd9f9425b
 pkgrel=1
 pkgdesc="Measurement, management and statistics of sport short-time tests"
 arch=('x86_64' 'i686')
@@ -10,8 +10,6 @@ url="http://chronojump.org/"
 license=('GPL')
 depends=('gstreamer0.10-base' 'python' 'gtk2')
 makedepends=('gtk-sharp-2' 'mono' 'intltool' 'git')
-checkdepends=()
-optdepends=()
 provides=($_name)
 conflicts=($_name)
 options=(!libtool)
