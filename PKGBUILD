@@ -12,13 +12,13 @@
 pkgbase=lib32-mesa-test-git
 pkgname=('lib32-mesa-test-git' 'lib32-mesa-test-libgl-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.1.0_devel.88759.106a51440d
-pkgrel=2
+pkgver=17.1.0_devel.88933.bd1c61261f
+pkgrel=1
 arch=('x86_64')
 makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'glproto' 'lib32-libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'lib32-libxshmfence' 'lib32-libxxf86vm'  'lib32-libxdamage' 'gcc-multilib' 'lib32-libvdpau' 'lib32-wayland' 'lib32-elfutils' 'lib32-llvm-svn'
               'git' 'lib32-libtxc_dxtn'
-             'lib32-libxvmc' 'lib32-libgcrypt' 'lib32-systemd')
+             'lib32-libgcrypt' 'lib32-systemd')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git+https://anongit.freedesktop.org/git/mesa/mesa.git'
@@ -75,7 +75,7 @@ build () {
 #                                   [PREFIX/etc]
 # --with-dri-driverdir=DIR          directory for the DRI drivers
 #                                   [${libdir}/dri]
-# --with-gallium-drivers[=DIRS...]  comma delimited Gallium drivers list, e.g. "i915,ilo,nouveau,r300,r600,radeonsi,freedreno,svga,swrast,vc4,virgl"
+# --with-gallium-drivers[=DIRS...]  comma delimited Gallium drivers list, e.g. "i915,nouveau,r300,r600,radeonsi,freedreno,svga,swrast,vc4,virgl"
 #                                   [default=r300,r600,svga,swrast]
 # --with-dri-drivers[=DIRS...]      comma delimited classic DRI drivers list, e.g. "swrast,i965,radeon"
 #                                   [default=auto]
@@ -91,7 +91,7 @@ build () {
 #                                   [default=disabled]
 # --enable-nine                     enable build of the nine Direct3D9 API
 #                                   [default=no]
-# --enable-xvmc                     enable xvmc library
+# --disable-xvmc                     enable xvmc library
 #                                   [default=auto]
 # --enable-vdpau                    enable vdpau library
 #                                    [default=auto]

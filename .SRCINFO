@@ -1,7 +1,7 @@
 pkgbase = lib32-mesa-test-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 17.1.0_devel.88759.106a51440d
-	pkgrel = 2
+	pkgver = 17.1.0_devel.88933.bd1c61261f
+	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
 	arch = x86_64
 	license = custom
@@ -23,7 +23,6 @@ pkgbase = lib32-mesa-test-git
 	makedepends = lib32-llvm-svn
 	makedepends = git
 	makedepends = lib32-libtxc_dxtn
-	makedepends = lib32-libxvmc
 	makedepends = lib32-libgcrypt
 	makedepends = lib32-systemd
 	source = mesa::git+https://anongit.freedesktop.org/git/mesa/mesa.git
