@@ -1,11 +1,14 @@
-# Maintainer: Yen Chi Hsuan <yan12125 at gmail.com>
+# Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Contributor: Jonas Heinrich <onny@project-insanity.org>
+# Contributor: Yen Chi Hsuan <yan12125 at gmail.com>
+
 _pkgname=nwjs
 pkgname=$_pkgname-bin
-pkgver=0.20.1
+pkgver=0.20.2
 pkgrel=1
 pkgdesc="node-webkit is an app runtime based on Chromium and node.js."
 arch=("i686" "x86_64")
-url="https://github.com/nwjs/nw.js"
+url="https://nwjs.io/"
 license=("MIT")
 depends=("alsa-lib" "gconf" "gtk2" "nss" "ttf-font" "libxtst" "libxss")
 optdepends=(
@@ -25,8 +28,8 @@ fi
 source_common="http://dl.nwjs.io/v$pkgver/$_pkgname-v$pkgver-linux"
 source_i686=("$source_common-ia32.tar.gz")
 source_x86_64=("$source_common-x64.tar.gz")
-sha512sums_i686=('3e486c3f4ce29cb20e1c721050a1e3928d7f29b0cc6b5cbdb036e020546b2077f912f897594ab4b2bbdd801cec2c6894782387e25187de363bb97a849df3faf6')
-sha512sums_x86_64=('ae4545367b7565d5c75e140ffadd7b9181a21f2e9afda6808e670a9b7da1457108e4138819d30222ede346a99c303e831115c13826f08bdfd9bebc7e3bfef18e')
+sha512sums_i686=('9232a079b8369d24777dd12e083867f35e3f4556bc6edf5817e3e3d8cdc36e12320bf8be7d093f4e84a751f42ca91c07bc69c521c673a0a059ec63d64d7267bd')
+sha512sums_x86_64=('8ab5268c5be3a9ca0bf38720d4c37ce2980104270b869fef78d7d066945c66dc2043159a268a5579136f84420a973f38b891569dd81b0172b6ee7cd40f8d9a81')
 
 package() {
   cd "$srcdir/$_pkgname-v$pkgver-linux-$_arch"
