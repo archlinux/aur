@@ -7,7 +7,7 @@
 
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless
-pkgver=3.2.3
+pkgver=3.2.4
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
@@ -30,7 +30,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg')
 replaces=('ffmpeg')
 source=(https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz)
-sha256sums=('54ce502aca10b7e6059f19220ea2f68fa0c9c4c4d255ae13e615f08f0c94dcc5')
+sha256sums=('6e38ff14f080c98b58cf5967573501b8cb586e3a173b591f3807d8f0660daf7a')
 
 build() {
   cd ${_pkgname}-${pkgver}
