@@ -2,7 +2,7 @@
 # Contributor: Hugo Osvaldo Barrera <hugo at osvaldobarrera dot com dot ar>
 
 pkgname=hybrid-encoder
-pkgver=170212
+pkgver=170212_2
 pkgrel=1
 pkgdesc="A very complete gui for video encoding"
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ if test "$CARCH" == x86_64; then
   source=(http://www.selur.de/sites/default/files/hybrid_downloads/Hybrid_${pkgver}_64bit_binary_qt521.zip
           hybrid.desktop
           Hybrid.png)
-  md5sums=('21898359432aa3875c4d7f34548747e5'
+  md5sums=('854b2d5515808e19859b0100e9e29642'
            'dd87c6eb6df85049de38c61dfe400347'
            '798dd936a3bc9bcd3b131d5dd6db96e6')
 fi
@@ -46,7 +46,7 @@ if test "$CARCH" == i686; then
   source=(http://www.selur.de/sites/default/files/hybrid_downloads/Hybrid_${pkgver}_32bit_binary_qt521.zip
           hybrid.desktop
           Hybrid.png)
-  md5sums=('688fcc78da5d000e31e31f5709eed234'
+  md5sums=('608af05d1df436b01378b32d7f45a912'
            'dd87c6eb6df85049de38c61dfe400347'
            '4e6fd38ed527ae69653081ed94ba099b')
 fi
