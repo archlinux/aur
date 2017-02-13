@@ -7,7 +7,7 @@
 pkgname=('ruby2.1')
 pkgver=2.1.10
 pkgdesc='An object-oriented language for quick and easy programming'
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='http://www.ruby-lang.org/en/'
 license=('BSD' 'custom')
