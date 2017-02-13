@@ -1,7 +1,7 @@
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
 pkgname=libmypaint-git
-pkgver=1.3.0
+pkgver=1.3.0.4.g4d5bf27
 pkgrel=1
 pkgdesc="a library for making brushstrokes which is used by MyPaint and other projects, with GEGL support"
 arch=('i686' 'x86_64')
