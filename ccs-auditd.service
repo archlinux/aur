@@ -3,8 +3,8 @@ Description=TOMOYO Linux Auditing Daemon
 
 [Service]
 Type=forking
-ExecStart=/usr/sbin/ccs-auditd
-ExecRestart=/bin/kill -HUP $MAINPID
+ExecStart=/usr/bin/ccs-auditd
+ExecRestart=/usr/bin/kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
