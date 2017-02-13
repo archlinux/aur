@@ -4,12 +4,12 @@
 
 pkgname=fdlog
 pkgver=152i
-pkgrel=3
+pkgrel=4
 pkgdesc="Ham Radio - Field Day Logger with networked nodes"
 arch=('any')
 url="http://www.fdlog.info"
 license=('GPL')
-depends=('python2' 'tk' 'epdfview' 'sqlite')
+depends=('python2' 'tk' 'epdfview' 'sqlite' 'hamradio-menus')
 source=(${url}/files/$pkgname$pkgver.zip
 	${url}/files/arrl_sect.txt
 	http://www.arrl.org/files/file/Field-Day/2016/2016%20Rules.pdf

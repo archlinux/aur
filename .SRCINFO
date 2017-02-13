@@ -1,7 +1,7 @@
 pkgbase = fdlog
 	pkgdesc = Ham Radio - Field Day Logger with networked nodes
 	pkgver = 152i
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.fdlog.info
 	arch = any
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = fdlog
 	depends = tk
 	depends = epdfview
 	depends = sqlite
+	depends = hamradio-menus
 	source = http://www.fdlog.info/files/fdlog152i.zip
 	source = http://www.fdlog.info/files/arrl_sect.txt
 	source = http://www.arrl.org/files/file/Field-Day/2016/2016%20Rules.pdf
