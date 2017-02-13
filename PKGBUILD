@@ -5,12 +5,12 @@
 
 pkgname=feedreader
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='simple feedreader client for web services like Tiny Tiny RSS and others in the future'
 arch=('i686' 'x86_64')
 url='http://jangernert.github.io/FeedReader/'
 license=('GPL3')
-depends=('sqlite3' 'gtk3' 'webkit2gtk' 'libnotify' 'libsoup' 'libgee' 'json-glib' 'libsecret' 'gnome-keyring' 'rest' 'gnome-online-accounts')
+depends=('sqlite3' 'gtk3' 'webkit2gtk' 'libnotify' 'libsoup' 'libgee' 'json-glib' 'libsecret' 'gnome-keyring' 'rest' 'gnome-online-accounts' 'libpeas' 'libxml2' 'curl' 'gstreamer' 'gst-plugins-base')
 makedepends=('vala' 'gobject-introspection' 'cmake')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
