@@ -2,12 +2,12 @@
 
 pkgname=osu-wine-git
 pkgver=6.04b1941
-pkgrel=1
+pkgrel=2
 pkgdesc="osu!"
 arch=('any')
 url="https://github.com/Nefelim4ag/osu-wine"
 license=('GPL3')
-depends=('wine' 'winetricks' 'bash')
+depends=('wine' 'winetricks' 'bash' 'lib32-gnutls')
 optdepends=('lib32-libpulse: for audio' 'wine-staging')
 #conflicts=()
 source=("$pkgname"::'git://github.com/Nefelim4ag/osu-wine.git#branch=master')
