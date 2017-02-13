@@ -10,9 +10,9 @@
 
 pkgname=lwks-beta
 lwksver=14.0.0.0
-lwksbuild=91873
+lwksbuild=92003
 pkgver=$lwksver.$lwksbuild
-pkgrel=2
+pkgrel=1
 pkgdesc="Lightworks is a professional video editing suite"
 arch=('x86_64')
 url="http://www.lwks.com/"
@@ -27,7 +27,7 @@ source=(
     )
 
 sha256sums=(
-    '17cc7063a7073a43b77e8bddfb142f96c6de982b5b2397ebd652202eee5027ca'
+    'd385dbc8445d8e199f9d5fe2f62ba558e5c9db3c86e4491bfc3cb2c926f1d7f2'
     '1c6722888cf4ab5cbf4bdfd6272b7d524f0ee547f443a98cf554d6fa8ae5c1ca'
     )
 
