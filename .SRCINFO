@@ -1,15 +1,14 @@
 pkgbase = ebook2cwgui
 	pkgdesc = Converts plain text files to Morse Code formatted as MP3 or OGG - GUI
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fkurz.net/ham/ebook2cw.html
-	install = ebook2cwgui.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = ebook2cw
 	depends = wxgtk2.8
-	depends = desktop-file-utils
+	depends = hamradio-menus
 	source = http://fkurz.net/ham/ebook2cw/ebook2cwgui-0.1.2.tar.gz
 	source = diff.Makefile
 	source = ebook2cwgui.png
@@ -17,11 +16,11 @@ pkgbase = ebook2cwgui
 	md5sums = 89632a392956a9f3fc66461dfa4e08c6
 	md5sums = dee85b87632c1cbf636f2b3b85d2fd0f
 	md5sums = b23814eeb1e021202b0cf5a5eed15102
-	md5sums = 948dbd30b84fcc7222e723a6ec05f7d6
+	md5sums = bf213eded4d679eb177421c7209a243a
 	sha256sums = 211c5593f65743d33c5fb3ce98b118592a7b15c8b807fde34a10660d6ff0812c
 	sha256sums = 8eaa197a372addf48a8327b0d05658480696483d796ea8967f9cb17af8b97b3d
 	sha256sums = d8990f54e315d9bdba11f4424734b668460f20f20d23f3539b34d5b6d8170125
-	sha256sums = d10ad0311df45cce7696025ac8bf91648f1090caf353707d01f39784ad03e240
+	sha256sums = 056c054e9b9039655371cd4483b3d821c51944007b5bab2c91efe20788bb675a
 
 pkgname = ebook2cwgui
 
