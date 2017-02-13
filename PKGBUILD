@@ -22,10 +22,10 @@ source=("https://pypi.python.org/packages/21/13/8d0981cee1c5b9dd7fa9f836ed7c3048
 sha512sums=('b9f49e0c23501926647c41dd386865d0bc79eae9bb4789b12a6d5ef74d57121f4953aef55a46d324d1be9d6d01f8f087f86bdf353137ac2e3027c81da81f1fb1'
             'SKIP')
 build() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-        python3 setup.py build || return 1
+        cd "${srcdir}/${_pkgname}/src"
+        make prefix=${pkgdir}/usr
 }
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	python3 setup.py install --root="${pkgdir}" --optimize=1 || return 1
+        install -D -m755 ${srcdir}/${_pkgname}/src/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
+        install -D -m644 ${srcdir}/${_pkgname}/docs/README.html.en ${pkgdir}/usr/share/doc/${_pkgname}/README.html
 }
