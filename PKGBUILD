@@ -4,18 +4,18 @@
 _pkgbase=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev' 'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
 pkgver=1.19.1 # http://lists.x.org/archives/xorg/2017-January/058559.html
-pkgrel=3 # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/xorg-server&id=fdb75aee720eedd503a7a0ce819e45a6e13a0705
+pkgrel=4 # https://git.archlinux.org/svntogit/packages.git/commit/trunk/PKGBUILD?h=packages/xorg-server&id=1314179c0418693b5f53d599e57101b7c2a5fe6a
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
 url="https://xorg.freedesktop.org"
 makedepends=('pixman' 'libx11' 'mesa' 'libgl' 'xf86driproto' 'xcmiscproto' 'xtrans' 'bigreqsproto' 'randrproto' 
              'inputproto' 'fontsproto' 'videoproto' 'presentproto' 'compositeproto' 'recordproto' 'scrnsaverproto'
-             'resourceproto' 'xineramaproto' 'libxkbfile' 'libxfont' 'renderproto' 'libpciaccess' 'libxv'
+             'resourceproto' 'xineramaproto' 'libxkbfile' 'libxfont2' 'renderproto' 'libpciaccess' 'libxv'
              'xf86dgaproto' 'libxmu' 'libxrender' 'libxi' 'dmxproto' 'libxaw' 'libdmx' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'glproto' 'dri2proto' 'libgcrypt' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
-             'libxshmfence' 'libunwind' 'xfont2-git' 'wayland-protocols')
+             'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols')
 source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
         bug99358.patch
         nvidia-add-modulepath-support.patch
@@ -96,10 +96,9 @@ build() {
 
 package_xorg-server-common-dev() {
   pkgdesc="Xorg server common files - Bleeding edge version"
-  depends=('xkeyboard-config' 'xorg-xkbcomp' 'xorg-setxkbmap' 'xorg-fonts-misc'
-           'libunwind')
-  provides=('xorg-server-common')
-  conflicts=('xorg-server-common')
+  depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap xorg-fonts-misc)
+  provides=(xorg-server-common)
+  conflicts=(xorg-server-common)
 
   cd "${_pkgbase}-${pkgver}"
   install -m755 -d "${pkgdir}/usr/share/licenses/xorg-server-common"
@@ -117,12 +116,12 @@ package_xorg-server-common-dev() {
 
 package_xorg-server-dev() {
   pkgdesc="Xorg X server - Bleeding edge version"
-  depends=(libepoxy libxdmcp libxfont libpciaccess libdrm pixman libgcrypt libxau xorg-server-common-dev libxshmfence libgl xf86-input-driver)
+  depends=(libepoxy libpciaccess libxfont2 pixman xorg-server-common-dev libunwind dbus libgl xf86-input-libinput)
 
   # see src/xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel-dev pkg
-  provides=('X-ABI-VIDEODRV_VERSION=23' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server' 'xorg-server')
-  conflicts=('nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting' 'xorg-server')
+  provides=('xorg-server' 'X-ABI-VIDEODRV_VERSION=23' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server')
+  conflicts=('xorg-server' 'nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting')
   replaces=('glamor-egl' 'xf86-video-modesetting')
   install=xorg-server-dev.install
 
@@ -133,7 +132,7 @@ package_xorg-server-dev() {
   
   # distro specific files must be installed in /usr/share/X11/xorg.conf.d
   install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d"
-
+  
   rm -rf "${pkgdir}/var"
 
   rm -f "${pkgdir}/usr/share/man/man1/Xserver.1"
@@ -149,8 +148,8 @@ package_xorg-server-dev() {
 
 package_xorg-server-xephyr-dev() {
   pkgdesc="A nested X server that runs as an X application - Bleeding edge version"
-  depends=(libxfont libgl libepoxy libgcrypt libxv pixman xorg-server-common 'xcb-util-image'
-           'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms')
+  depends=(libxfont2 libgl libepoxy libunwind libsystemd libxv pixman xorg-server-common-dev xcb-util-image
+           xcb-util-renderutil xcb-util-wm xcb-util-keysyms)
   provides=(xorg-server-xephyr)
   conflicts=(xorg-server-xephyr)
 
@@ -165,7 +164,7 @@ package_xorg-server-xephyr-dev() {
 
 package_xorg-server-xvfb-dev() {
   pkgdesc="Virtual framebuffer X server - Bleeding edge version"
-  depends=(libxfont libxdmcp libxau libgcrypt pixman xorg-server-common-dev xorg-xauth libgl)
+  depends=(libxfont2 libunwind libsystemd pixman xorg-server-common-dev xorg-xauth libgl)
   provides=(xorg-server-xvfb)
   conflicts=(xorg-server-xvfb)
 
@@ -183,7 +182,7 @@ package_xorg-server-xvfb-dev() {
 
 package_xorg-server-xnest-dev() {
   pkgdesc="A nested X server that runs as an X application - Bleeding edge version"
-  depends=(libxfont libxext libgcrypt pixman xorg-server-common-dev libsystemd)
+  depends=(libxfont2 libxext libunwind pixman xorg-server-common-dev libsystemd)
   provides=(xorg-server-xnest)
   conflicts=(xorg-server-xnest)
 
@@ -198,7 +197,7 @@ package_xorg-server-xnest-dev() {
 
 package_xorg-server-xdmx-dev() {
   pkgdesc="Distributed Multihead X Server and utilities - Bleeding edge version"
-  depends=(libxfont libxi libgcrypt libxaw libxrender libdmx libxfixes pixman xorg-server-common-dev)
+  depends=(libxfont2 libxi libxaw libxrender libdmx libxfixes libunwind pixman xorg-server-common-dev)
   provides=(xorg-server-xdmx)
   conflicts=(xorg-server-xdmx)
 
