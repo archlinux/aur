@@ -17,7 +17,7 @@ _pkgname=gcc
 pkgver=7.0.1.r152299.a718e363671
 _base_ver=7.0.1
 _pkgver=7
-_islver=0.16.1
+_islver=0.18
 pkgrel=1
 pkgdesc="The GNU Compiler Collection (developmental version)"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ options=('!emptydirs')
 source=(git+https://github.com/gcc-mirror/gcc
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
 md5sums=('SKIP'
-         'ac1f25a0677912952718a51f5bc20f32')
+         '11436d6b205e516635b666090b94ab32')
 
 _libdir="usr/lib/gcc/$CHOST/$_base_ver"
 
