@@ -1,28 +1,41 @@
 # $Id$
+# Original Core Repo
+# ==================
 # Maintainer: Allan McRae <allan@archlinux.org>
+#
+# Modifications to use Git Master Source
+# ======================================
+# Maintainer: James Harvey <jamespharvey20@gmail.com>
+#    * This PKGBUILD as closely as possible matches core's gcc 6.3.1-1
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
 
-pkgname=('gcc' 'gcc-libs' 'gcc-fortran' 'gcc-objc' 'gcc-ada' 'gcc-go')
-pkgver=6.3.1
-_pkgver=6
+pkgname=('gcc-git' 'gcc-libs-git' 'gcc-fortran-git' 'gcc-objc-git' 'gcc-ada-git' 'gcc-go-git')
+_pkgname=gcc
+pkgver=7.0.1.r152299.a718e363671
+_base_ver=7.0.1
+_pkgver=7
 _islver=0.16.1
 pkgrel=1
-_commit=4ca53f06ff7d346ef8021a23108f23a5406a0417
-pkgdesc="The GNU Compiler Collection"
+pkgdesc="The GNU Compiler Collection (developmental version)"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
 makedepends=('binutils>=2.26' 'libmpc' 'gcc-ada' 'doxygen' 'git')
 checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs')
-source=(git+https://gcc.gnu.org/git/gcc.git#commit=${_commit}
+source=(git+https://gcc.gnu.org/git/gcc.git
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
 md5sums=('SKIP'
          'ac1f25a0677912952718a51f5bc20f32')
 
-_libdir="usr/lib/gcc/$CHOST/$pkgver"
+_libdir="usr/lib/gcc/$CHOST/$_base_ver"
+
+pkgver() {
+  cd ${srcdir}/gcc
+  echo $(cat gcc/BASE-VER).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
 
 prepare() {
   cd ${srcdir}/gcc
@@ -97,11 +110,13 @@ check() {
 }
 
 
-package_gcc-libs()
+package_gcc-libs-git()
 {
-  pkgdesc="Runtime libraries shipped by GCC"
+  pkgdesc="Runtime libraries shipped by GCC (developmental version)"
   groups=('base')
   depends=('glibc>=2.24')
+  provides=('gcc-libs')
+  conflicts=('gcc-libs')
   options=('!emptydirs' '!strip')
 
   cd ${srcdir}/gcc-build
@@ -140,13 +155,15 @@ package_gcc-libs()
 
   # Install Runtime Library Exception
   install -Dm644 ${srcdir}/gcc/COPYING.RUNTIME \
-    ${pkgdir}/usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION
+    ${pkgdir}/usr/share/licenses/gcc-libs-git/RUNTIME.LIBRARY.EXCEPTION
 }
 
-package_gcc()
+package_gcc-git()
 {
-  pkgdesc="The GNU Compiler Collection - C and C++ frontends"
-  depends=("gcc-libs=$pkgver-$pkgrel" 'binutils>=2.26' 'libmpc')
+  pkgdesc="The GNU Compiler Collection - C and C++ frontends (developmental version)"
+  depends=("gcc-libs-git=$pkgver-$pkgrel" 'binutils>=2.26' 'libmpc')
+  provides=('gcc')
+  conflicts=('gcc')
   groups=('base-devel')
   options=('staticlibs')
 
@@ -177,7 +194,7 @@ package_gcc()
   
   make -C lto-plugin DESTDIR=${pkgdir} install
   install -dm755 ${pkgdir}/usr/lib/bfd-plugins/
-  ln -s /usr/lib/gcc/$CHOST/${pkgver}/liblto_plugin.so \
+  ln -s /usr/lib/gcc/$CHOST/${_base_ver}/liblto_plugin.so \
     ${pkgdir}/usr/lib/bfd-plugins/
 
   make -C $CHOST/libcilkrts DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS \
@@ -237,14 +254,16 @@ EOF
   make -C $CHOST/libstdc++-v3/doc DESTDIR=$pkgdir doc-install-man
 
   # Install Runtime Library Exception
-  install -d ${pkgdir}/usr/share/licenses/gcc/
-  ln -s ../gcc-libs/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/gcc/
+  install -d ${pkgdir}/usr/share/licenses/gcc-git/
+  ln -s ../gcc-libs/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/gcc-git/
 }
 
-package_gcc-fortran()
+package_gcc-fortran-git()
 {
-  pkgdesc="Fortran front-end for GCC"
-  depends=("gcc=$pkgver-$pkgrel")
+  pkgdesc="Fortran front-end for GCC (developmental version)"
+  depends=("gcc-git=$pkgver-$pkgrel" 'libmpc' 'zlib')
+  provides=('gcc-fortran')
+  conflicts=('gcc-fortran')
   options=('!emptydirs')
 
   cd ${srcdir}/gcc-build
@@ -257,14 +276,16 @@ package_gcc-fortran()
   ln -s gfortran ${pkgdir}/usr/bin/f95
 
   # Install Runtime Library Exception
-  install -d ${pkgdir}/usr/share/licenses/gcc-fortran/
-  ln -s ../gcc-libs/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/gcc-fortran/
+  install -d ${pkgdir}/usr/share/licenses/gcc-fortran-git/
+  ln -s ../gcc-libs/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/gcc-fortran-git/
 }
 
-package_gcc-objc()
+package_gcc-objc-git()
 {
-  pkgdesc="Objective-C front-end for GCC"
-  depends=("gcc=$pkgver-$pkgrel")
+  pkgdesc="Objective-C front-end for GCC (developmental version)"
+  depends=("gcc-git=$pkgver-$pkgrel" 'libmpc' 'zlib')
+  provides=('gcc-objc')
+  conflicts=('gcc-objc')
 
   cd ${srcdir}/gcc-build
   make DESTDIR=$pkgdir -C $CHOST/libobjc install-headers
@@ -272,14 +293,16 @@ package_gcc-objc()
   install -m755 gcc/cc1obj{,plus} $pkgdir/${_libdir}/
 
   # Install Runtime Library Exception
-  install -d ${pkgdir}/usr/share/licenses/gcc-objc/
-  ln -s ../gcc-libs/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/gcc-objc/
+  install -d ${pkgdir}/usr/share/licenses/gcc-objc-git/
+  ln -s ../gcc-libs/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/gcc-objc-git/
 }
 
-package_gcc-ada()
+package_gcc-ada-git()
 {
-  pkgdesc="Ada front-end for GCC (GNAT)"
-  depends=("gcc=$pkgver-$pkgrel")
+  pkgdesc="Ada front-end for GCC (GNAT) (developmental version)"
+  depends=("gcc-git=$pkgver-$pkgrel" 'libmpc' 'zlib')
+  provides=('gcc-ada')
+  conflicts=('gcc-ada')
   options=('staticlibs' '!emptydirs')
 
   cd ${srcdir}/gcc-build/gcc
@@ -295,15 +318,16 @@ package_gcc-ada()
   rm ${pkgdir}/${_libdir}/adalib/libgna{rl,t}.so
 
   # Install Runtime Library Exception
-  install -d ${pkgdir}/usr/share/licenses/gcc-ada/
-  ln -s ../gcc-libs/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/gcc-ada/
+  install -d ${pkgdir}/usr/share/licenses/gcc-ada-git/
+  ln -s ../gcc-libs/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/gcc-ada-git/
 }
 
-package_gcc-go()
+package_gcc-go-git()
 {
-  pkgdesc="Go front-end for GCC"
-  depends=("gcc=$pkgver-$pkgrel")
-  conflicts=('go')
+  pkgdesc="Go front-end for GCC (developmental version)"
+  depends=("gcc-git=$pkgver-$pkgrel" 'libmpc' 'zlib')
+  provides=('gcc-go')
+  conflicts=('go' 'gcc-go')
   options=('!emptydirs')
 
   cd ${srcdir}/gcc-build
@@ -315,6 +339,6 @@ package_gcc-go()
   make DESTDIR=${pkgdir} install-gotools
 
   # Install Runtime Library Exception
-  install -d ${pkgdir}/usr/share/licenses/gcc-go/
-  ln -s ../gcc-libs/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/gcc-go/
+  install -d ${pkgdir}/usr/share/licenses/gcc-go-git/
+  ln -s ../gcc-libs/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/gcc-go-git/
 }
