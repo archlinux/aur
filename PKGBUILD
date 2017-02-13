@@ -2,8 +2,8 @@
 
 pkgbase=gridcoinresearch
 pkgname=('gridcoinresearch-daemon' 'gridcoinresearch-qt')
-pkgver=3.5.8.4
-pkgrel=2
+pkgver=3.5.8.6
+pkgrel=1
 pkgdesc="GridCoin is a cryptocurrency that helps science via BOINC"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://gridcoin.us"
@@ -16,7 +16,7 @@ makedepends=('boost' 'qt5-base' 'qt5-tools' 'openssl' 'libzip' 'qrencode' 'db' '
 source=("gridcoinresearch-${pkgver}.tar.gz::https://github.com/gridcoin/Gridcoin-Research/archive/${pkgver}.tar.gz"
         'gridcoinresearch-qt.desktop')
 
-sha256sums=('6110f242acd2205e1e19c8e27a24cd49777cae47a8218b26daf1622203c19e6d'
+sha256sums=('d798ea60f87d4daf78c154dde650f0cb08cc28cc34fa8ee876c2e37948efb393'
           '1c547e531726d3172895683f9673379fc51639689989e49494aa0f40fc6cb053')
 
 prepare() {
