@@ -1,14 +1,14 @@
 pkgbase = eepbeacon
 	pkgdesc = Ham Radio HF Beacon Assistant
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hamsoftware.org/old_index.html
-	install = eepbeacon.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = qt4>=4.7
 	depends = qtwebkit
+	depends = hamradio-menus
 	source = http://www.hamsoftware.org/eepbeacon_v1.0.tgz
 	source = eepbeacon.desktop
 	md5sums = 4adcb63b575395e658731a25857a0799
