@@ -32,12 +32,14 @@ _kernelname=${pkgbase#linux}
 ## Change to no to use default config
 custom='y'
 ## Change to no to skip nconfig
-nconfig='y'
+nconfig='n'
+
+pkgver() {
+  cd "${srcdir}/${pkgbase}"
+  echo "$(git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+}
 
 prepare() {
-  # Clone kernel bcache-dev kernel repository.
-  #git clone -b bcache-dev "https://evilpiepirate.org/git/linux-bcache.git" "${srcdir}/${pkgbase}"
-
   cd "${srcdir}/${pkgbase}"
 
   # add upstream patch
@@ -77,7 +79,7 @@ prepare() {
   # ... or manually edit .config
   #make nconfig # new CLI menu for configuration
 
-  if [ "$nconfig" = y ]; then make nconfig; else gmake olddefconfig; fi
+  if [ "$nconfig" = y ]; then make nconfig; else make olddefconfig; fi
 
   # get kernel version
   make prepare
