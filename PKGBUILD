@@ -5,13 +5,13 @@
 
 _pkgname=slic3r
 pkgname=${_pkgname}-prusa3d-git
-pkgver=1.31.5
+pkgver=1.33.3.r4.gce8973b3
 pkgrel=1
 pkgdesc="Updated Slic3r by Prusa3D with many bugfixes and new features"
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url="http://www.prusa3d.com/"
 license=('AGPL3')
-depends=('boost-libs' 'perl' 'perl-class-accessor' 'perl-encode-locale'
+depends=('boost-libs' 'perl' 'perl-class-accessor' 'perl-libwww' 'perl-encode-locale'
          'perl-moo' 'perl-opengl' 'perl-wx-glcanvas')
 makedepends=('boost' 'git' 'perl-devel-checklib' 'perl-extutils-cppguess'
              'perl-extutils-typemaps-default' 'perl-module-build-withxspp')
@@ -38,11 +38,13 @@ pkgver() {
 prepare() {
   cd "${srcdir}/Slic3r"
   patch -p1 -i "$srcdir/Move-Slic3r-data-to-usr-share-slic3r.patch"
-  sed -i "s/#define SLIC3R_VERSION .*/#define SLIC3R_VERSION \"$pkgver\"/" xs/src/libslic3r/libslic3r.h
 }
 
 build() {
   cd "${srcdir}/Slic3r/xs"
+  
+  # Moved this here from prepare(). Because prepare() runs before pkgver() we always set the wrong version.
+  sed -i "s/#define SLIC3R_VERSION .*/#define SLIC3R_VERSION \"$pkgver\"/" xs/src/libslic3r/libslic3r.h
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
   /usr/bin/perl Build.PL
