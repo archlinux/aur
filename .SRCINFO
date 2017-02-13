@@ -1,18 +1,21 @@
 pkgbase = safeeyes
 	pkgdesc = A Linux alternative for EyeLeo
-	pkgver = 1.1.2
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/slgobinath/SafeEyes
 	arch = any
 	license = GPL3
-	depends = python2-xlib
-	depends = python2-gobject
-	depends = python2-dbus
 	depends = hicolor-icon-theme
-	depends = xorg-xprop
 	depends = libappindicator-gtk3
-	source = safeeyes-1.1.2.tar.gz::https://github.com/slgobinath/SafeEyes/releases/download/v1.1.2/safeeyes.tar.gz
-	sha1sums = d7b15ebafb20d09dda3b6d47763c31f7c4f82e58
+	depends = mpg123
+	depends = python2-babel
+	depends = python2-dbus
+	depends = python2-gobject
+	depends = python2-xlib
+	depends = xorg-xprop
+	depends = xprintidle
+	source = safeeyes-1.1.5.tar.gz::https://github.com/slgobinath/SafeEyes/releases/download/v1.1.5/safeeyes.tar.gz
+	sha1sums = 818d0a45c7469ce54aa66ad4667aaeed55cd1196
 
 pkgname = safeeyes
 
