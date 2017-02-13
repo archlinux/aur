@@ -2,7 +2,7 @@
 pkgname=osu-native-git
 pkgver=r1687.3136bbe
 pkgrel=1
-pkgdesc="rhythm is just a *click* away! (FLOSS version)"
+pkgdesc="rhythm is just a *click* away! (FLOSS version, not ready for general use)"
 arch=('i686' 'x86_64')
 url="https://github.com/ppy/osu"
 license=('MIT' 'CUSTOM:CC-BY-NC-4.0')
