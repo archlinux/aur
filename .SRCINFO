@@ -15,7 +15,7 @@ pkgbase = zotero-beta
 	conflicts = zotero
 	source = zotero-beta.tar.gz::https://www.zotero.org/download/standalone/dl?platform=linux-x86_64&channel=beta
 	source = zotero-beta.desktop
-	md5sums = a86d34da6a4d116be7a526e9ae2d4f26
+	md5sums = SKIP
 	md5sums = 3bfed397fb9d060af469eaacfe8add63
 
 pkgname = zotero-beta
