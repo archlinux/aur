@@ -22,7 +22,7 @@ source=("http://www.hepforge.org/archive/checkmate/CheckMATE-${pkgver}.tar.gz"
 sha256sums=('8e57c813f89299084783798e793e39276113b751751e866d6124706fba36926d'
             '9420c9b166261a67e2febe983c37638dcff85b3660b5fd4acf1733a52b0d9402'
             '55874c4a88f10b0307a1495028acfd7ad28f1fac6b170fcafbe3c01a5a0b0edb'
-            '1a32019b873acb0d5f9c9bf83291a4063e252a1ccf2e0d06d6d144d6c21d9697'
+            '1092f5bf843ec51f8cf1510673218dadd220bca26209bbd03787fb4257e6a804'
             '89cff18a1bf2bea50238d455010157bbafaf2b6671fd2db97443bb6d283c6a94')
 
 prepare() {
@@ -49,6 +49,7 @@ build() {
                 --with-delphes=/usr \
                 --with-madgraph=/usr/share/madgraph
     make
+    make AnalysisManager
 
     msg2 "Cleaning temporary build files"
     find . -type f -name "*.o" -o -name "*.lo" -print0 | xargs -0 rm -f
@@ -63,6 +64,7 @@ package() {
     #
     # If any file is missing, I welcome a patch
     install -Dm755 "${srcdir}/CheckMATE-${pkgver}/bin/CheckMATE" "${pkgdir}/usr/bin/CheckMATE"
+    install -Dm755 "${srcdir}/CheckMATE-${pkgver}/bin/AnalysisManager" "${pkgdir}/usr/bin/AnalysisManager"
 
     install -d "${pkgdir}/usr/share/CheckMATE"
     cp -r "${srcdir}/CheckMATE-${pkgver}/tools" "${pkgdir}/usr/share/CheckMATE"

@@ -23,3 +23,13 @@
  sys.path.append('ROOT_LIB_DIR')
  from checkmate_core import CheckMATE2
  from advprint import AdvPrint
+--- a/CheckMATE-2.0.3/tools/python/AnalysisManager.raw
++++ b/CheckMATE-2.0.3/tools/python/AnalysisManager.raw
+@@ -3,7 +3,7 @@
+ import os
+ import sys
+
+-sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), "tools", "python"))
++sys.path.append("/usr/share/CheckMATE/tools/python")
+
+ reload(sys)
