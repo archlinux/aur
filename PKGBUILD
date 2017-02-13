@@ -2,7 +2,7 @@
 
 pkgname=oomox
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical application for generating different color variations of Numix theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes.
 Have a hack for HiDPI in gtk2.'
 arch=('i686' 'x86_64')
