@@ -10,28 +10,20 @@
 pkgbase=oss
 pkgname=oss
 true && pkgname=(oss libflashsupport-oss)
-pkgver=4.2_2011
-pkgrel=6
+pkgver=4.2_2017
+pkgrel=1
 arch=(i686 x86_64)
 url="http://developer.opensound.com/"
 license=(GPL2)
 makedepends=(gtk2)
 source=("http://www.4front-tech.com/developer/sources/stable/gpl/oss-v${pkgver/_*}-build${pkgver/*_}-src-gpl.tar.bz2"
-	linux-4.0.patch::http://www.4front-tech.com/forum/download/file.php?id=164	
-	gcc-5.patch
-	linux-4.6.patch
-	linux-4.8-usercopy.patch
         oss.service
         remove-hal.patch
         rm-init-scripts.patch
         soundon.patch
         kmod-link.patch
         ossvermagic.patch)
-sha512sums=('2e48bf5fa14521feedb18bc3b4c96ba996c5ef9d54f00f1e39c9412152db65972438b7408cb8161e32609af2c56207251d14e1106668cde32a8f0b56a98311fb'
-            '504efe3af933af69e14408215a8a71d6b94d181e076f90be538f859f1d2c2ae6d2e8e49499c1e50ee3f074004e3f79c1da2b734c95cc666b98d566d404cfc7a5'
-            '762a8e84d3106ae26ee50e4022c62bee551d2a46923945b291975d3c1ff7a87876ad4a94408fe1718a5dd4613d279a0f7a8820f8fcb0479ca1f210bc711ea835'
-            '0186ee1d81cf6c64c4e51418434116cadcdf2a40bc4662de01ddfa1e014fe12ed7b135fc4f49e1d12113d826695047a1b64cef3c06befc56d03ec41453c77253'
-            '02917796e664e321270fd87fc20e27f045f7c0530109b9764999102605dbef980f0a0c60726cb628151a970e62d8eddbc5d9f48a204470c1d6b441b341e87056'
+sha512sums=('e9f2515267246b71650564d13655a9d0ea7d6aaf7bbd7f045507dc226c22aa1142e92222bd9730e43c7c16bd36aeac2183035706577d1e86ac0fe6c404410970'
             '355e1380432947c0e9caa21114b2c3debeb162fb5abcf845125ec281ce52b437ad1ee1db04d37e9b7a5ac79816c4dcbc21b4ed4cf8191f71218d99acd7bab70e'
             '6956e5e2e9323b568bb18e80bbee591b0e5ffd3d4612a50df09879941b2733c31d6b3178dc9a46c283bd1629f76b7ff5e2b54893a42a47f6379eaee4731fd9be'
             '64e6d9d8eb5320f737d3a0698a245da2b2d141b68cfb2f02e448144d1c610aa8b8a6c38b56fcca364d63171a49afe93161a00545cdb90086b5328997b3096690'
@@ -47,15 +39,7 @@ prepare() {
   rm -rf build
   mkdir build
 
-  # make OSS compile with current Linux kernels
-  patch -p1 < "$srcdir/linux-4.0.patch"
-  # patch -p0 < "$srcdir/linux-3.14.0.patch"
-  patch -p0 < "$srcdir/linux-4.6.patch"
-  patch -p0 < "$srcdir/linux-4.8-usercopy.patch"
   patch -p0 < "$srcdir/ossvermagic.patch"
-
-  # make OSS compile with gcc-5
-  patch -p0 < "$srcdir/gcc-5.patch"
 
   # remove outdated stuff
   cd setup/Linux
