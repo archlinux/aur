@@ -1,0 +1,17 @@
+pkgbase = hunspell-ie
+	pkgdesc = Interlingue hunspell dictionary
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://github.com/Carmina16/hunspell-ie
+	arch = any
+	license = Apache
+	optdepends = hunspell: the spell checking libraries and apps
+	source = https://github.com/Carmina16/hunspell-ie/archive/v0.6.tar.gz
+	md5sums = 94929cf2bdbed5ad5aaac932550d34ad
+
+pkgname = hunspell-ie
+
+pkgname = hyphen-ie
+	pkgdesc = Interlingue hyphenation rules
+	optdepends = hyphen: library for hyphenation and justification
+
