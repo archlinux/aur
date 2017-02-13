@@ -8,7 +8,7 @@
 
 pkgname=keepassx-daniellandau-git
 _gitname=keepassx
-pkgver=2.0.alpha6.r342.gfac6524
+pkgver=2.0.alpha6.r713.g18b9b3a
 pkgrel=1
 pkgdesc="A fork with more merged features of an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
 arch=('i686' 'x86_64')
@@ -40,6 +40,8 @@ build() {
         -DCMAKE_VERBOSE_MAKEFILE=OFF \
         -DCMAKE_VERBOSE_MAKEFILE=OFF \
         -DWITH_GUI_TESTS=ON \
+        -DWITH_XC_AUTOTYPE=ON \
+        -DWITH_XC_HTTP=ON \
         -DCMAKE_BUILD_TYPE=Release ..
     make
 }
