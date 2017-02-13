@@ -2,9 +2,9 @@
 # Contributor: <Eugeny Borisov flekst@gmail.com>
 # Based on [extra]'s xf86-input-evdev: https://projects.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/xf86-input-evdev
 
-_pkgname=xfont2
+_pkgname=libxfont2
 pkgname=$_pkgname-git
-pkgver=g33a98f2.r324.
+pkgver=gf8ff8d5.r326.
 pkgrel=1
 pkgdesc="X.org xfont2 - Git version"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('custom')
 groups=('xorg')
 depends=('glibc' 'systemd-tools' 'mtdev')
 makedepends=('xorg-server-devel' 'resourceproto' 'scrnsaverproto' 'git' 'xtrans')
-provides=("$_pkgname=$pkgver" 'xfont2')
+provides=("$_pkgname=$pkgver" 'libxfont2')
 conflicts=('xorg-server<1.18.0' "$_pkgname")
 options=('!libtool' '!makeflags')
 source=("git://anongit.freedesktop.org/xorg/lib/libXfont")
