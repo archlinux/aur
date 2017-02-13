@@ -1,0 +1,31 @@
+pkgbase = mips-harvard-os161-gcc48
+	pkgdesc = The GNU Compiler Collection - cross compiler for mips-harvard-os161 arquitecture. This is part of toolset for the course os161 from Harvard.
+	pkgver = 4.8.3+os161_2.1
+	pkgrel = 1
+	url = http://os161.eecs.harvard.edu/
+	arch = i686
+	arch = x86_64
+	groups = mips-harvard-os161-toolchain
+	license = GPL
+	license = LGPL
+	makedepends = flex
+	makedepends = bison
+	depends = mips-harvard-os161-binutils>=2.24
+	depends = gmp
+	depends = mpfr
+	depends = libmpc
+	provides = mips-harvard-os161-gcc
+	conflicts = mips-harvard-os161-gcc
+	options = staticlibs
+	options = !libtool
+	options = !emptydirs
+	options = !strip
+	options = zipman
+	options = docs
+	source = http://os161.eecs.harvard.edu/download/gcc-4.8.3+os161-2.1.tar.gz
+	source = gcc.patch
+	md5sums = a81f7f6fdfa319723efaf444088fd6d7
+	md5sums = SKIP
+
+pkgname = mips-harvard-os161-gcc48
+

@@ -1,0 +1,143 @@
+diff -rup gcc-4.8.3+os161-2.1/gcc/cp/cfns.gperf gcc-4.8.3+os161-2.1-new/gcc/cp/cfns.gperf
+--- gcc-4.8.3+os161-2.1/gcc/cp/cfns.gperf	2014-09-30 22:18:09.000000000 -0300
++++ gcc-4.8.3+os161-2.1-new/gcc/cp/cfns.gperf	2017-02-12 17:05:49.710320427 -0300
+@@ -1,3 +1,5 @@
++%language=C++
++%define class-name libc_name
+ %{
+ /* Copyright (C) 2000-2013 Free Software Foundation, Inc.
+ 
+@@ -16,14 +18,6 @@ for more details.
+ You should have received a copy of the GNU General Public License
+ along with GCC; see the file COPYING3.  If not see
+ <http://www.gnu.org/licenses/>.  */
+-#ifdef __GNUC__
+-__inline
+-#endif
+-static unsigned int hash (const char *, unsigned int);
+-#ifdef __GNUC__
+-__inline
+-#endif
+-const char * libc_name_p (const char *, unsigned int);
+ %}
+ %%
+ # The standard C library functions, for feeding to gperf; the result is used
+Sólo en gcc-4.8.3+os161-2.1-new/gcc/cp: cfns.gperf.orig
+diff -rup gcc-4.8.3+os161-2.1/gcc/cp/cfns.h gcc-4.8.3+os161-2.1-new/gcc/cp/cfns.h
+--- gcc-4.8.3+os161-2.1/gcc/cp/cfns.h	2014-09-30 22:18:09.000000000 -0300
++++ gcc-4.8.3+os161-2.1-new/gcc/cp/cfns.h	2017-02-12 17:05:49.716987094 -0300
+@@ -1,5 +1,5 @@
+-/* ANSI-C code produced by gperf version 3.0.3 */
+-/* Command-line: gperf -o -C -E -k '1-6,$' -j1 -D -N libc_name_p -L ANSI-C cfns.gperf  */
++/* C++ code produced by gperf version 3.0.4 */
++/* Command-line: gperf -o -C -E -k '1-6,$' -j1 -D -N libc_name_p -L C++ --output-file cfns.h cfns.gperf  */
+ 
+ #if !((' ' == 32) && ('!' == 33) && ('"' == 34) && ('#' == 35) \
+       && ('%' == 37) && ('&' == 38) && ('\'' == 39) && ('(' == 40) \
+@@ -28,7 +28,7 @@
+ #error "gperf generated tables don't work with this execution character set. Please report a bug to <bug-gnu-gperf@gnu.org>."
+ #endif
+ 
+-#line 1 "cfns.gperf"
++#line 3 "cfns.gperf"
+ 
+ /* Copyright (C) 2000-2013 Free Software Foundation, Inc.
+ 
+@@ -47,25 +47,18 @@ for more details.
+ You should have received a copy of the GNU General Public License
+ along with GCC; see the file COPYING3.  If not see
+ <http://www.gnu.org/licenses/>.  */
+-#ifdef __GNUC__
+-__inline
+-#endif
+-static unsigned int hash (const char *, unsigned int);
+-#ifdef __GNUC__
+-__inline
+-#endif
+-const char * libc_name_p (const char *, unsigned int);
+ /* maximum key range = 391, duplicates = 0 */
+ 
+-#ifdef __GNUC__
+-__inline
+-#else
+-#ifdef __cplusplus
+-inline
+-#endif
+-#endif
+-static unsigned int
+-hash (register const char *str, register unsigned int len)
++class libc_name
++{
++private:
++  static inline unsigned int hash (const char *str, unsigned int len);
++public:
++  static const char *libc_name_p (const char *str, unsigned int len);
++};
++
++inline unsigned int
++libc_name::hash (register const char *str, register unsigned int len)
+ {
+   static const unsigned short asso_values[] =
+     {
+@@ -122,14 +115,8 @@ hash (register const char *str, register
+   return hval + asso_values[(unsigned char)str[len - 1]];
+ }
+ 
+-#ifdef __GNUC__
+-__inline
+-#ifdef __GNUC_STDC_INLINE__
+-__attribute__ ((__gnu_inline__))
+-#endif
+-#endif
+ const char *
+-libc_name_p (register const char *str, register unsigned int len)
++libc_name::libc_name_p (register const char *str, register unsigned int len)
+ {
+   enum
+     {
+Sólo en gcc-4.8.3+os161-2.1-new/gcc/cp: cfns.h.orig
+diff -rup gcc-4.8.3+os161-2.1/gcc/cp/except.c gcc-4.8.3+os161-2.1-new/gcc/cp/except.c
+--- gcc-4.8.3+os161-2.1/gcc/cp/except.c	2014-09-30 22:18:09.000000000 -0300
++++ gcc-4.8.3+os161-2.1-new/gcc/cp/except.c	2017-02-12 17:05:49.723653761 -0300
+@@ -1025,7 +1025,8 @@ nothrow_libfn_p (const_tree fn)
+      unless the system headers are playing rename tricks, and if
+      they are, we don't want to be confused by them.  */
+   id = DECL_NAME (fn);
+-  return !!libc_name_p (IDENTIFIER_POINTER (id), IDENTIFIER_LENGTH (id));
++  return !!libc_name::libc_name_p (IDENTIFIER_POINTER (id),
++				   IDENTIFIER_LENGTH (id));
+ }
+ 
+ /* Returns nonzero if an exception of type FROM will be caught by a
+Sólo en gcc-4.8.3+os161-2.1-new/gcc/cp: except.c.orig
+diff -rup gcc-4.8.3+os161-2.1/gcc/cp/Make-lang.in gcc-4.8.3+os161-2.1-new/gcc/cp/Make-lang.in
+--- gcc-4.8.3+os161-2.1/gcc/cp/Make-lang.in	2014-09-30 22:18:09.000000000 -0300
++++ gcc-4.8.3+os161-2.1-new/gcc/cp/Make-lang.in	2017-02-12 17:05:49.703653761 -0300
+@@ -115,7 +115,7 @@ else
+ # deleting the $(srcdir)/cp/cfns.h file.
+ $(srcdir)/cp/cfns.h:
+ endif
+-	gperf -o -C -E -k '1-6,$$' -j1 -D -N 'libc_name_p' -L ANSI-C \
++	gperf -o -C -E -k '1-6,$$' -j1 -D -N 'libc_name_p' -L C++ \
+ 		$(srcdir)/cp/cfns.gperf --output-file $(srcdir)/cp/cfns.h
+ 
+ #
+Sólo en gcc-4.8.3+os161-2.1-new/gcc/cp: Make-lang.in.orig
+diff -rup gcc-4.8.3+os161-2.1/gcc/doc/gcc.texi gcc-4.8.3+os161-2.1-new/gcc/doc/gcc.texi
+--- gcc-4.8.3+os161-2.1/gcc/doc/gcc.texi	2014-09-30 22:18:11.000000000 -0300
++++ gcc-4.8.3+os161-2.1-new/gcc/doc/gcc.texi	2017-02-12 17:05:49.693653761 -0300
+@@ -83,11 +83,11 @@ This file documents the use of the GNU c
+ Published by:
+ @multitable @columnfractions 0.5 0.5
+ @item GNU Press
+-@tab Website: www.gnupress.org
++@tab Website: @uref{http://www.gnupress.org}
+ @item a division of the
+-@tab General: @tex press@@gnu.org @end tex
++@tab General: @email{press@@gnu.org}
+ @item Free Software Foundation
+-@tab Orders:  @tex sales@@gnu.org @end tex
++@tab Orders:  @email{sales@@gnu.org}
+ @item 51 Franklin Street, Fifth Floor
+ @tab Tel 617-542-5942
+ @item Boston, MA 02110-1301 USA
