@@ -1,6 +1,6 @@
 pkgbase = linux-bcache-git
-	pkgver = 4.7.0
-	pkgrel = 1.1
+	pkgver = r11.6928fef
+	pkgrel = 1.2
 	url = https://github.com/alyptik/linux-bcache-git
 	arch = i686
 	arch = x86_64
