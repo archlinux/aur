@@ -1,0 +1,17 @@
+pkgbase = plasma5-applets-thermal-monitor
+	pkgdesc = Plasma applet for monitoring temperatures of existing sensors including CPU, GPU and HDD.
+	pkgver = 1.2.7
+	pkgrel = 1
+	url = https://github.com/kotelnik/plasma-applet-thermal-monitor
+	arch = any
+	license = GPL
+	makedepends = extra-cmake-modules
+	depends = plasma-workspace
+	depends = qt5-graphicaleffects
+	source = plasma5-applets-thermal-monitor-1.2.7.tar.gz::https://github.com/kotelnik/plasma-applet-thermal-monitor/archive/v1.2.7.tar.gz
+	source = remove-spammer.patch
+	sha256sums = 09a66d02ddd658eee0b8aeea02fb8e305da3f057b436cfb6b8ad8454ebbd1ca2
+	sha256sums = aa411a4b53fa81815cc2bc17c6818e5ebcd7646eda87b51cc829f4e5fef37385
+
+pkgname = plasma5-applets-thermal-monitor
+

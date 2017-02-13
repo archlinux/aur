@@ -1,0 +1,21 @@
+From 7ceb9a2c09caca063aa938d2aea2775326be19e6 Mon Sep 17 00:00:00 2001
+From: Keziolio <keziolio123@gmail.com>
+Date: Tue, 2 Aug 2016 22:55:29 +0200
+Subject: [PATCH] remove spammer
+
+---
+ package/contents/code/temperature-utils.js | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/package/contents/code/temperature-utils.js b/package/contents/code/temperature-utils.js
+index 5bcea6e..70a8787 100644
+--- a/package/contents/code/temperature-utils.js
++++ b/package/contents/code/temperature-utils.js
+@@ -3,7 +3,6 @@ function toFahrenheit(celsia) {
+ }
+ 
+ function getTemperature(celsiaDouble, fahrenheitEnabled) {
+-    dbgprint('getTemperature: ' + celsiaDouble)
+     var fl = celsiaDouble
+     if (fahrenheitEnabled) {
+         fl = toFahrenheit(fl)
