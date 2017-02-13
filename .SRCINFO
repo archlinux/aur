@@ -1,0 +1,15 @@
+pkgbase = js2xbox-git
+	pkgdesc = Simple user space driver to create a virtual Xbox 360 joypad from an existing one
+	pkgver = 20170212.39de55d
+	pkgrel = 1
+	url = https://github.com/Emanem/js2xbox
+	arch = any
+	license = GPL3
+	makedepends = gcc
+	provides = js2xbox-git
+	conflicts = js2xbox
+	source = git+https://github.com/Emanem/js2xbox.git
+	sha1sums = SKIP
+
+pkgname = js2xbox-git
+
