@@ -6,7 +6,7 @@
 pkgname=slock-gruvbox
 pkgver=1.4
 pkgrel=2
-pkgdesc="A simple screen locker for X"
+pkgdesc="A simple screen locker for X, modified for the gruvbox colorscheme"
 arch=('any')
 url="http://tools.suckless.org/slock"
 license=('MIT')
