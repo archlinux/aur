@@ -1,15 +1,15 @@
 pkgbase = angular-cli
 	pkgdesc = CLI tool for Angular
-	pkgver = 1.0.0_beta.31
+	pkgver = 1.0.0_beta.28.3
 	pkgrel = 1
 	url = https://github.com/angular/angular-cli
 	arch = any
 	depends = nodejs
 	depends = npm
-	noextract = cli-1.0.0-beta.31.tgz
+	noextract = angular-cli-1.0.0-beta.28.3.tgz
 	options = !strip
-	source = http://registry.npmjs.org/@angular/cli/-/cli-1.0.0-beta.31.tgz
-	sha1sums = ba1234a2dcc5f4d4a58ac22568ac6fc518a0cfbf
+	source = http://registry.npmjs.org/angular-cli/-/angular-cli-1.0.0-beta.28.3.tgz
+	sha1sums = 9751d7414eaf8e0b714b2461a585bfda9713416f
 
 pkgname = angular-cli
 
