@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=dcrspy
-pkgver=0.7.4
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Decred data monitor"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/chappjc/dcrspy"
 license=('ISC')
 options=('!strip' '!emptydirs')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/chappjc/$pkgname/tar.gz/v$pkgver)
-sha256sums=('9d52f28e5a53fdda868d6910ca0ec7fda7e74c5a22bd0b5ed276fc8e64afab74')
+sha256sums=('0f74072844f56031f3d1dd4bd9b8a97521d532f1423b634c306958cb3765b9f4')
 
 prepare() {
   export GOPATH="$srcdir"
