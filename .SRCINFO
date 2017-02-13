@@ -16,6 +16,7 @@ pkgbase = firefox-dev
 	depends = gtk3
 	depends = sqlite3
 	depends = dbus-glib
+	depends = hunspell
 	source = https://archive.mozilla.org/pub/firefox/nightly/2017/02/2017-02-13-08-40-42-mozilla-aurora/firefox-53.0a2.en-US.linux-x86_64.tar.bz2
 	source = https://archive.mozilla.org/pub/firefox/nightly/2017/02/2017-02-13-08-40-42-mozilla-aurora/firefox-53.0a2.en-US.linux-x86_64.tar.bz2.asc
 	source = firefox-developer.desktop
