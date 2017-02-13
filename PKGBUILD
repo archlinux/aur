@@ -1,4 +1,4 @@
-# Maintainer: Arthur Borsboom
+# Maintainer: Arthur Borsboom <arthurborsboom@gmail.com>
 # Contributors: Prurigro, Keshav P R, atommix aka Aleks Lifey, Xavion, Ḷḷumex03
 # Contributors: Ananda Samaddar, Dan Serban, Xavier Devlamynck, David Zaragoza, Joris Steyn
 
@@ -7,7 +7,7 @@ _pkgname=jitsi
 # pkgvermajor needs manual increment
 _pkgvermajor=2.9
 # pkgver is determined automatically
-pkgver=2.9.20170131
+pkgver=2.9.20170213
 pkgrel=1
 pkgdesc="An audio/video SIP VoIP phone and instant messenger written in Java (formerly SIP-Communicator)"
 arch=('i686' 'x86_64')
