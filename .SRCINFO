@@ -1,0 +1,22 @@
+pkgbase = xfce4-terminal-gtk2
+	pkgdesc = A modern terminal emulator primarly for the Xfce desktop environment (Last GTK2 version)
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = http://www.xfce.org/
+	arch = i686
+	arch = x86_64
+	groups = xfce4
+	license = GPL2
+	makedepends = intltool
+	depends = libxfce4ui
+	depends = vte
+	depends = hicolor-icon-theme
+	provides = xfce4-terminal=0.6.3
+	conflicts = terminal
+	conflicts = xfce4-terminal
+	replaces = terminal
+	source = http://archive.xfce.org/src/apps/xfce4-terminal/0.6/xfce4-terminal-0.6.3.tar.bz2
+	sha256sums = 912f4716c2395a14a80620ef982b4af1e2a67a8df9a1ef0b802ecae826057e08
+
+pkgname = xfce4-terminal-gtk2
+
