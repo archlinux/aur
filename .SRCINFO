@@ -1,5 +1,5 @@
 pkgbase = slock-gruvbox
-	pkgdesc = A simple screen locker for X
+	pkgdesc = A simple screen locker for X, modified for the gruvbox colorscheme
 	pkgver = 1.4
 	pkgrel = 2
 	url = http://tools.suckless.org/slock
