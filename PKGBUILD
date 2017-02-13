@@ -3,18 +3,17 @@
 
 pkgname=xgridloc
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Ham Radio Maidenhead grid converter & bearing + distance calculator"
 arch=('i686' 'x86_64')
 url="http://www.qsl.net/5b4az/pkg/locator/xgridloc/xgridloc.html"
-license=(GPL)
-depends=('gtk2' 'desktop-file-utils')
-makedepends=('autoconf' 'automake' 'intltool'
+license=('GPL3')
+depends=('gtk2' 'hamradio-menus')
+makedepends=('autoconf' 'automake' 'intltool' 'gettext'
 # 'imagemagick'
  'pkg-config')
 optdepends=('xplanet: provides visual path on great circle map')
 #		^^^  see xgridloc's html (in the doc dir.) 4 instructions
-install=$pkgname.install
 source=("http://www.qsl.net/5b4az/pkg/locator/$pkgname/$pkgname-$pkgver.tar.bz2"
 	diff.autogen.sh
 	diff.Makefile.am
