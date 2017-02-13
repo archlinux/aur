@@ -1,0 +1,19 @@
+pkgbase = mips-harvard-os161-binutils
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for mips-harvard-os161 arquitecture. This is part of toolset for the course os161 from Harvard.
+	pkgver = 2.24+os161_2.1
+	pkgrel = 1
+	url = http://os161.eecs.harvard.edu/
+	arch = i686
+	arch = x86_64
+	groups = mips-harvard-os161-toolchain
+	license = GPL
+	depends = glibc>=2.24
+	depends = zlib
+	options = staticlibs
+	options = !distcc
+	options = !ccache
+	source = http://os161.eecs.harvard.edu/download/binutils-2.24+os161-2.1.tar.gz
+	md5sums = 89fb5251c8fac189551f30550e6c4d0b
+
+pkgname = mips-harvard-os161-binutils
+
