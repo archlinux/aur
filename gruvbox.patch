@@ -1,0 +1,16 @@
+diff -aur slock-1.4/config.def.h slock-1.4.new/config.def.h
+--- slock-1.4/config.def.h	2017-02-13 14:29:27.623338280 +0000
++++ slock-1.4.new/config.def.h	2017-02-13 14:30:44.959658697 +0000
+@@ -3,9 +3,9 @@
+ static const char *group = "nobody";
+ 
+ static const char *colorname[NUMCOLS] = {
+-	[INIT] =   "black",     /* after initialization */
+-	[INPUT] =  "#005577",   /* during input */
+-	[FAILED] = "#CC3333",   /* wrong password */
++	[INIT] =   "#282828",     /* after initialization */
++	[INPUT] =  "#458588",   /* during input */
++	[FAILED] = "#cc241d",   /* wrong password */
+ };
+ 
+ /* treat a cleared input like a wrong password (color) */
