@@ -1,7 +1,7 @@
 
 _project_name='resumable-urlretrieve'
 pkgname='python-resumable-urlretrieve'
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Small library to fetch files over HTTP and resuming their download"
 url="https://github.com/berdario/${_project_name}"
@@ -17,4 +17,4 @@ package() {
   python3 setup.py install --prefix=/usr --root="${pkgdir}"
 }
 
-md5sums=('c50d74066d5ef801cc76dee1fac4a57f')
+md5sums=('438bb4c65bbf7ceee025cd1228f4674a')
