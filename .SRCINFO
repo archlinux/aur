@@ -1,12 +1,13 @@
 pkgbase = eepkeyer
 	pkgdesc = Ham Radio Contest CW Keyer
 	pkgver = 1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://hamsoftware.org/old_index.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = qt4
+	depends = hamradio-menus
 	optdepends = xlog: logbook
 	optdepends = hamlib: rig interfacing
 	optdepends = cwdaemon: transmitting cw

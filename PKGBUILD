@@ -2,12 +2,12 @@
 
 pkgname=eepkeyer
 pkgver=1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Ham Radio Contest CW Keyer"
 arch=('i686' 'x86_64')
 url="http://hamsoftware.org/old_index.html"
 license=('GPL3')
-depends=('qt4')
+depends=('qt4' 'hamradio-menus')
 optdepends=('xlog: logbook'
 	    'hamlib: rig interfacing'
 	    'cwdaemon: transmitting cw'
