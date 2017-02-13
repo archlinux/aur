@@ -1,0 +1,15 @@
+## arg 1:  the new package version
+post_install() {
+	localedef --replace -f UTF-8 -i ie ie.UTF-8
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	localedef --replace -f UTF-8 -i ie ie.UTF-8
+}
+
+## arg 1:  the old package version
+pre_remove() {
+	localedef --delete-from-archive ie.utf8
+}

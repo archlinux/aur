@@ -1,0 +1,17 @@
+pkgbase = locale-ie
+	pkgdesc = Interlingue locale data
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://
+	install = locale-ie.install
+	arch = any
+	license = Apache
+	depends = glibc
+	source = locale-ie.tar.xz
+	source = locale-ie.tar.xz.asc
+	validpgpkeys = B8962B8D8C337D8E1F65CDD16CEA378170E3F079
+	md5sums = 9c58bfa4342f977b6e4777f8aae67311
+	md5sums = SKIP
+
+pkgname = locale-ie
+
