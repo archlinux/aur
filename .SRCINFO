@@ -1,12 +1,12 @@
 pkgbase = python2-pycallgraph
 	pkgdesc = Python module that creates call graph visualizations for Python applications.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pycallgraph.slowchop.com/
 	arch = any
 	license = GPLv2
-	depends = python
-	depends = python-setuptools
+	depends = python2
+	depends = python2-setuptools
 	depends = python2-pygraphviz
 	source = https://github.com/gak/pycallgraph/archive/1.0.1.tar.gz
 	md5sums = b74aa0bb84f53e5d241f5dc16a83f143
