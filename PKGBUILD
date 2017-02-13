@@ -3,13 +3,14 @@
 
 pkgname=fasttuna
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ham Radio - Elecraft K2 CLI-based Rig Control"
 arch=('i686' 'x86_64')
-url="http://www.qsl.net/ab6cv/"
+url="http://hamsoftware.org/old_index.html"
 license=('GPL')
 depends=('gcc-libs')
-source=(http://www.qsl.net/ab6cv/$pkgname.tgz
+source=(http://www.hamsoftware.org/$pkgname.tgz
+#http://www.qsl.net/ab6cv/$pkgname.tgz
 	diff.commport.cpp
 	diff.main.cpp)
 
