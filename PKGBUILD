@@ -1,4 +1,6 @@
-# Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
+# Maintainer: Ainola
+# Contributor: Vinícius dos Santos Oliveira
+
 pkgname=gnomato
 pkgver=1.1.0
 pkgrel=1
