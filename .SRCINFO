@@ -1,0 +1,16 @@
+pkgbase = gnome-backgrounds-bitday-git
+	pkgdesc = Retro dynamic pixel wallpaper
+	pkgver = r8.995171b
+	pkgrel = 1
+	url = https://github.com/ghisvail/gnome-backgrounds-bitday
+	arch = any
+	license = UNLICENSE
+	makedepends = git
+	makedepends = make
+	depends = gnome-backgrounds
+	provides = gnome-backgrounds-bitday
+	source = https://github.com/ghisvail/gnome-backgrounds-bitday/archive/master.zip
+	md5sums = SKIP
+
+pkgname = gnome-backgrounds-bitday-git
+
