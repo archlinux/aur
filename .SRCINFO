@@ -1,12 +1,12 @@
 pkgbase = graphscad
         pkgdesc = An OpenSCAD-based Nodal editor to create customizable objects for 3D printing
-        pkgver = 1.0.5
+        pkgver = 1.0.6
         pkgrel = 1
         url = http://graphscad.blogspot.com/
         arch = i686
         arch = x86_64
         license = GPL
         source = http://graphscad.free.fr/graphscad_ubu_v1.0.3.zip
-        sha256sums = d086c9661899ac0eccdb64202e10aeba3e91a051cec5eb3dcc1ad3f16a1a469f
+        sha256sums = 6c62c0213dbec4ee7f6d09a0e91bb8862f205e733f49415b600467e7de3b095c
  
 pkgname = graphscad
