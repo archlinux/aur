@@ -13,11 +13,11 @@ conflicts=('zotero')
 if [[ $CARCH == "x86_64" ]]
 then
   _arch=x86_64
-  md5sums=('a86d34da6a4d116be7a526e9ae2d4f26'
+  md5sums=('SKIP'
            '3bfed397fb9d060af469eaacfe8add63')
 else
   _arch=i686
-  md5sums=('1be77940fb35b5684ad6c84a168a0e34'
+  md5sums=('SKIP'
            '3bfed397fb9d060af469eaacfe8add63')
 fi
 install='zotero-beta.install'
