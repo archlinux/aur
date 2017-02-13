@@ -1,7 +1,7 @@
 pkgbase = feedreader
 	pkgdesc = simple feedreader client for web services like Tiny Tiny RSS and others in the future
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jangernert.github.io/FeedReader/
 	arch = i686
 	arch = x86_64
