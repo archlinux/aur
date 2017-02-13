@@ -1,0 +1,17 @@
+pkgbase = t-git
+	pkgdesc = A command-line todo list manager for people that want to finish tasks, not organize them.
+	pkgver = 8b5f5fe
+	pkgrel = 1
+	url = http://stevelosh.com/projects/t/
+	arch = any
+	license = X11
+	depends = python>=2.5
+	provides = t,
+	provides = t.py
+	conflicts = t,
+	conflicts = t.py
+	source = t-git::git+https://github.com/sjl/t.git
+	md5sums = SKIP
+
+pkgname = t-git
+
