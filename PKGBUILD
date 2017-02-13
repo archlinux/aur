@@ -2,11 +2,11 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 pkgname=revelation
 pkgver=0.4.14
-pkgrel=5
+pkgrel=6
 pkgdesc="A password manager for the GNOME desktop"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('pycrypto>=1.9' 'python2-crack' 'desktop-file-utils' 'python2' 'hicolor-icon-theme' 'pkg-config' 'python2-dbus')
+depends=('gnome-python>=2.10' 'pycrypto>=1.9' 'python2-crack' 'desktop-file-utils' 'python2' 'hicolor-icon-theme' 'pkg-config' 'python2-dbus')
 makedepends=('intltool')
 install=revelation.install
 url="http://revelation.olasagasti.info/"
