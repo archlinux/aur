@@ -5,7 +5,7 @@
 pkgname=remmina-appindicator
 epoch=1
 pkgver=1.2.0rcgit.17
-pkgrel=1
+pkgrel=2
 pkgdesc="remote desktop client written in GTK+ (compiled with appindicator)"
 arch=(i686 x86_64)
 url="http://www.remmina.org/"
@@ -30,7 +30,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/FreeRDP/Remmina/archive/v${
     "fix-git-rev.patch")
 sha256sums=('b4c7a8ee46b6ed323a2d70f6e8a3b6e2a9c9025eced85b57aacc00f484cadcb1'
             '70ada2cd680678ccaadf2c4e1e726e7d286550dc3cef19cf653f3e9908224a99'
-            '296d96337eded6179d1fbc4892afd89a60e6a691b4ee1bc56593e195be18c3e5')
+            '228758734568340ad2fa78f3cbdf72186830e963bd8855eb70558d4469767290')
 
 prepare() {
   cd "$srcdir"/Remmina-${pkgver/rc/-rc}/
