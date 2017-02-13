@@ -6,10 +6,10 @@ export ARTIFACTORY_HOME=/opt/artifactory
 export JAVA_HOME=/usr/lib/jvm/default
 
 export TOMCAT_HOME=$ARTIFACTORY_HOME/tomcat
-export ARTIFACTORY_PID=/opt/artifactory/run/artifactory.pid
+export ARTIFACTORY_PID=$ARTIFACTORY_HOME/run/artifactory.pid
 
-export JAVA_OPTIONS="-server -Xms512m -Xmx2g -Xss256k -XX:+UseG1GC"
-export JAVA_OPTIONS="$JAVA_OPTIONS -Djruby.compile.invokedynamic=false -Dfile.encoding=UTF8 -Dartdist=zip -Dorg.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH=true"
+export JAVA_OPTIONS='-server -Xms512m -Xmx2g -Xss256k -XX:+UseG1GC -XX:OnOutOfMemoryError="kill -9 %p"'
+export JAVA_OPTIONS="$JAVA_OPTIONS -Djruby.compile.invokedynamic=false -Dfile.encoding=UTF8 -Dartdist=zip -Dorg.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH=true -Djava.security.egd=file:/dev/urandom"
 
 # Timeout waiting for artifactory to start
 # START_TMO=60

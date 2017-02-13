@@ -1,25 +1,25 @@
 # Maintainer: Yegorius <yegorius@domic.us>
 
 pkgname=artifactory-oss
-pkgver=4.15.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc='Artifactory is an advanced Binary Repository Manager for use by build tools, dependency management tools and build servers'
 arch=('any')
-url="https://www.jfrog.com/open-source/"
+url="https://bintray.com/jfrog/product/JFrog-Artifactory-Oss/view"
 license=('GPLv3')
 depends=('java-runtime-headless' 'net-tools' 'bash')
 install="$pkgname.install"
 source=("jfrog-artifactory-oss-${pkgver}.zip::https://bintray.com/jfrog/artifactory/download_file?file_path=jfrog-artifactory-oss-${pkgver}.zip"
         'artifactory.service'
         'artifactory.default')
-sha256sums=('a8b26d78eb3622a484a6cb6d70cb2ee7d47a46e93af7646ed8878243e113e45e'
+sha256sums=('9bb0467e7e4cf5b58b0f35abdfd7f13bcbe652a9b06266ebf3de6daedb0665a5'
             '8ba1287f4d062f57a5cf9e5426d4affcfcc00ca2680cd603f41c603957a42c20'
-            '2b0ec5f2940498bfe72ecae5b66cd5ea5743df71ac0bf766fc7363bebf158883')
+            '54617cc75624db3a03dbed62898b2f438cb8145983a034d72f12ca259c8218a4')
 options=('!strip')
 PKGEXT='.pkg.tar'
 
 package() {
-  artDist="/opt/artifactory"
+  local artDist="/opt/artifactory"
   
   pushd "$pkgname-$pkgver"
   rm -f bin/*.{exe,bat}

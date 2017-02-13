@@ -1,7 +1,7 @@
 post_install() {
   echo "Creating user and group artifactory..."
-  getent group artifactory &>/dev/null || groupadd -r artifactory >/dev/null
-  getent passwd artifactory &>/dev/null || useradd -r -g artifactory -d /opt/artifactory artifactory >/dev/null
+  getent group artifactory &>/dev/null || groupadd -r artifactory &>/dev/null
+  getent passwd artifactory &>/dev/null || useradd -r -g artifactory -d /opt/artifactory artifactory &>/dev/null
   chown -R artifactory /opt/artifactory
 
   echo
@@ -22,16 +22,19 @@ post_install() {
 
 post_upgrade() {
   echo "Removing tomcat work directory"
-  if [ -d /opt/artifactory/tomcat/work ]; then
+  if [ -d /opt/artifactory/tomcat/work ]
+  then
     rm -rf /opt/artifactory/tomcat/work
   fi
 
-  if [ -d /opt/artifactory/tomcat/webapps/artifactory ]; then
+  if [ -d /opt/artifactory/tomcat/webapps/artifactory ]
+  then
     echo "Removing Artifactory's exploded WAR directory"
     rm -rf /opt/artifactory/tomcat/webapps/artifactory
   fi
 
-  if [ -f /opt/artifactory/run/artifactory.pid ]; then
+  if [ -f /opt/artifactory/run/artifactory.pid ]
+  then
     echo "Removing Artifactory's PID file"
     rm -f /opt/artifactory/run/artifactory.pid
   fi
@@ -40,6 +43,6 @@ post_upgrade() {
 post_remove() {
   post_upgrade
   echo "Removing artifactory user and group..."
-  getent passwd artifactory &>/dev/null && userdel artifactory >/dev/null
-  getent group artifactory &>/dev/null && groupdel artifactory >/dev/null
+  getent passwd artifactory &>/dev/null && userdel artifactory &>/dev/null
+  getent group artifactory &>/dev/null && groupdel artifactory &>/dev/null
 }
