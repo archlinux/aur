@@ -7,7 +7,9 @@ pkgbase = scriptbasic
 	license = unknown
 	depends = postgresql-libs
 	source = http://www.scriptbasic.org/download/SB_2.1_RC1_Linux.tar.gz
+	source = scriptbasic_arch.patch
 	md5sums = 374a37fff435d26c08cfe2ed8d694a8e
+	md5sums = f026797fd8e695a797e1eee2f04e264a
 
 pkgname = scriptbasic
 

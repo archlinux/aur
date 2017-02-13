@@ -1,0 +1,24 @@
+diff -Nur scriptbasic/extensions/bdb/interface.c scriptbasic_PATCHED/extensions/bdb/interface.c
+--- scriptbasic/extensions/bdb/interface.c	2009-09-12 22:37:24.000000000 +0200
++++ scriptbasic_PATCHED/extensions/bdb/interface.c	2017-02-13 19:58:19.427041356 +0100
+@@ -157,7 +157,7 @@
+   if( s=besCONFIG("bdb.limits.lg_max") )p->dbenv->set_lg_max(p->dbenv,atol(s));
+ #endif
+   X("bdb.limits.mp_mmapsize",mp_mmapsize)
+-  X("bdb.limits.mp_size"    ,mp_size)
++  X("bdb.limits.mp_size"    ,mp_bytes)
+   X("bdb.limits.tx_max"     ,tx_max)
+   X("bdb.limits.lk_max"     ,lk_max)
+ 
+diff -Nur scriptbasic/extensions/psql/interface.c scriptbasic_PATCHED/extensions/psql/interface.c
+--- scriptbasic/extensions/psql/interface.c	2009-09-12 22:37:24.000000000 +0200
++++ scriptbasic_PATCHED/extensions/psql/interface.c	2017-02-13 19:57:33.740674239 +0100
+@@ -24,7 +24,7 @@
+ #define PTS_MODULE "pgsqlinterf.c"
+ 
+ /* vvv Debian GNU/Linux: /usr/include/postgresql/libpq-fe.h */
+-#include <postgresql/libpq-fe.h>
++#include <libpq-fe.h>
+ #include "../../basext.h"
+ #include <stdio.h> /* simple debugging */
+ #include <string.h> /* memcmp() */

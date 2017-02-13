@@ -18,15 +18,17 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://www.scriptbasic.org/download/SB_${pkgver}_Linux.tar.gz")
+source=("http://www.scriptbasic.org/download/SB_${pkgver}_Linux.tar.gz"
+        "scriptbasic_arch.patch")
 noextract=()
-md5sums=('374a37fff435d26c08cfe2ed8d694a8e')
+md5sums=('374a37fff435d26c08cfe2ed8d694a8e'
+         'f026797fd8e695a797e1eee2f04e264a')
 validpgpkeys=()
 
-#prepare() {
-#	cd "$pkgname-$pkgver"
-#	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-#}
+prepare() {
+	cd "scriptbasic"
+        patch -p1 -i "scriptbasic_arch.patch"
+}
 
 #build() {
 #	cd "$pkgname-$pkgver"
