@@ -2,7 +2,7 @@
 # Contributor: Dean Galvin <deangalvin3@gmail.com>
 pkgname="home-assistant"
 pkgdesc='Home Assistant is an open-source home automation platform running on Python 3'
-pkgver=0.37.1
+pkgver=0.38.2
 pkgrel=1
 url="https://home-assistant.io/"
 license=('MIT')
@@ -16,7 +16,7 @@ optdepends=('git: install component requirements from github'
 conflicts=('python-home-assistant' 'python-home-assistant-git')
 source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
 "home-assistant.service")
-sha256sums=('c345ac2c409cacecb90dc064ede9af37815f4110080088e405a2925799647216'
+sha256sums=('d11727cc63af89cfa7d2f368bae24a8ed601e6a354a7de83e52c9074c0c4f6ab'
             'd5363dd4dc136182bef5d0e48d4e9674642025d83c55ca2ef48d4ac401c72a8c')
 backup=('var/lib/hass/configuration.yaml')
 install='hass.install'
@@ -27,6 +27,8 @@ prepare() {
 
   # typing package is a backport of standard library < 3.5
   replace 'typing>=3,<4' '' setup.py
+
+  replace 'aiohttp==1.3.1' 'aiohttp==1.2.0' setup.py
 }
 
 replace() {
