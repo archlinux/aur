@@ -3,8 +3,8 @@
 
 pkgbase=linux-bcache-git
 _srcname=linux-4.7.0
-pkgver=4.7.0
-pkgrel=1.1
+pkgver=r11.6928fef
+pkgrel=1.2
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-bcache-git"
 license=('GPL3')
@@ -35,8 +35,12 @@ custom='y'
 nconfig='n'
 
 pkgver() {
-  cd "${srcdir}/${pkgbase}"
-  echo "$(git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+  cd "${srcdir}/${pkgbase}/"
+  (set -o pipefail && git describe --long 2>/dev/null | \
+    sed "s/\([^-]*-g\)/r\1/;s/-/./g" || \
+    printf "r%s.%s\n" "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)")
+  #echo "$(git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 prepare() {
