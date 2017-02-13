@@ -30,18 +30,18 @@ prepare() {
         patch -p1 -i "scriptbasic_arch.patch"
 }
 
-#build() {
-#	cd "$pkgname-$pkgver"
-#	./configure --prefix=/usr
-#	make
-#}
+build() {
+	cd "scriptbasic"
+	./setup
+        ./setup --install
+}
 
 #check() {
 #	cd "$pkgname-$pkgver"
 #	make -k check
 #}
 
-#package() {
-#	cd "$pkgname-$pkgver"
-#	make DESTDIR="$pkgdir/" install
-#}
+package() {
+	cd "scriptbasic"
+        sudo ./install.sh
+}
