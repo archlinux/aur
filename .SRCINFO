@@ -1,7 +1,7 @@
 pkgbase = qgis-ltr
 	pkgdesc = Geographic Information System (GIS) that supports vector, raster & database formats; Long Term Release
 	pkgver = 2.14.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://qgis.org/
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = qgis-ltr
 	makedepends = txt2tags
 	depends = qca-qt4
 	depends = gdal
+	depends = qtwebkit
 	depends = qwtpolar
 	depends = spatialindex
 	depends = python2-httplib2
@@ -32,7 +33,9 @@ pkgbase = qgis-ltr
 	provides = qgis=2.14.11
 	conflicts = qgis
 	source = https://qgis.org/downloads/qgis-2.14.11.tar.bz2
+	source = https://github.com/qgis/QGIS/commit/70f51aeedac0013247457c9274fcef746447796c.patch
 	md5sums = a23566264a83b1a5689c5cc1710d0552
+	md5sums = 45077d8f4daef8fcad0be51fa5c361e6
 
 pkgname = qgis-ltr
 
