@@ -13,7 +13,7 @@ license=('GPL3' 'LGPL3')
 depends=('babl>=0.1.24' 'libspiro' 'json-glib')
 makedepends=('git' 'intltool' 'python2' 'ruby' 'lua'
              'libraw' 'openexr' 'ffmpeg' 'librsvg' 'jasper'
-             'libtiff' 'suitesparse')
+             'libtiff' 'suitesparse' 'gobject-introspection')
 optdepends=('openexr: for using the openexr plugin'
             'ffmpeg: for using the ffmpeg plugin'
             'librsvg: for using the svg plugin'
@@ -37,7 +37,8 @@ build() {
   ./autogen.sh
   ./configure --prefix=/usr --with-sdl --with-openexr --with-librsvg \
     --with-libavformat --with-jasper --disable-docs \
-    --enable-workshop
+    --enable-workshop \
+	--enable-introspection=yes
   make
 }
 
