@@ -8,9 +8,9 @@ _milestone=53.0a2
 
 _release_year=2017
 _release_month=02
-_release_day=12
-_release_time=$_release_year-$_release_month-$_release_day-08-40-47
-_buildid=20170212084047
+_release_day=13
+_release_time=$_release_year-$_release_month-$_release_day-08-40-42
+_buildid=20170213084042
 
 pkgname="${_name}-${_channel}"
 pkgver=53.0a2.$_buildid
