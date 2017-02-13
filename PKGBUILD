@@ -4,18 +4,18 @@
 # Contributor: Jan Lukas Gernert (JeanLuc) <https://launchpad.net/~eviltwin1>
 
 pkgname=feedreader
-pkgver=1.6.2
+pkgver=2.0
 pkgrel=1
 pkgdesc='simple feedreader client for web services like Tiny Tiny RSS and others in the future'
 arch=('i686' 'x86_64')
 url='http://jangernert.github.io/FeedReader/'
 license=('GPL3')
-depends=('sqlite3' 'gtk3' 'webkit2gtk' 'libnotify' 'libsoup' 'libgee' 'json-glib' 'libsecret' 'gnome-keyring')
+depends=('sqlite3' 'gtk3' 'webkit2gtk' 'libnotify' 'libsoup' 'libgee' 'json-glib' 'libsecret' 'gnome-keyring' 'rest' 'gnome-online-accounts')
 makedepends=('vala' 'gobject-introspection' 'cmake')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/jangernert/FeedReader/archive/v${pkgver}.tar.gz)
-sha256sums=('c9ddb59d14a2cb04d00db07fcd90f3de07f9ae1f2fb0f21783db8e9a242991ed')
+sha256sums=('eba631c2c1a644d815accb2234e72d161a9f45383c19d57c4fdda9ff1ee75135')
 
 build() {
   cd "${srcdir}"

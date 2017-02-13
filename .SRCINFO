@@ -1,6 +1,6 @@
 pkgbase = feedreader
 	pkgdesc = simple feedreader client for web services like Tiny Tiny RSS and others in the future
-	pkgver = 1.6.2
+	pkgver = 2.0
 	pkgrel = 1
 	url = http://jangernert.github.io/FeedReader/
 	arch = i686
@@ -18,10 +18,12 @@ pkgbase = feedreader
 	depends = json-glib
 	depends = libsecret
 	depends = gnome-keyring
+	depends = rest
+	depends = gnome-online-accounts
 	provides = feedreader
 	conflicts = feedreader
-	source = feedreader-1.6.2.tar.gz::https://github.com/jangernert/FeedReader/archive/v1.6.2.tar.gz
-	sha256sums = c9ddb59d14a2cb04d00db07fcd90f3de07f9ae1f2fb0f21783db8e9a242991ed
+	source = feedreader-2.0.tar.gz::https://github.com/jangernert/FeedReader/archive/v2.0.tar.gz
+	sha256sums = eba631c2c1a644d815accb2234e72d161a9f45383c19d57c4fdda9ff1ee75135
 
 pkgname = feedreader
 
