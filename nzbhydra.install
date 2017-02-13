@@ -1,11 +1,5 @@
 post_install() {
-    if grep -v -q "^nzbhydra" /etc/group &> /dev/null; then
-        groupadd -r nzbhydra &> /dev/null
-    fi
-
-    if grep -v -q "^nzbhydra" /etc/passwd &> /dev/null; then
-        useradd -r -s /bin/false -c "NZB Hydra" -d /var/lib/nzbhydra -g nzbhydra nzbhydra &> /dev/null
-    fi
+    systemd-sysusers nzbhydra.conf
 
     mkdir -p /var/lib/nzbhydra
     chown -R nzbhydra: /var/lib/nzbhydra

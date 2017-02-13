@@ -1,6 +1,6 @@
 # Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
 pkgname="nzbhydra"
-pkgver=0.2.200
+pkgver=0.2.201
 pkgrel=1
 pkgdesc="Meta search for NZB indexers"
 arch=('any')
@@ -12,14 +12,16 @@ conflicts=('nzbhydra-git')
 install='nzbhydra.install'
 provides=('nzbhydra')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/theotherp/nzbhydra/archive/$pkgver.tar.gz"
-        "nzbhydra.sh"
-        "nzbhydra.service"
-        "nzbhydra.install")
+        'nzbhydra.sh'
+        'nzbhydra.service'
+        'nzbhydra.install'
+        'nzbhydra.sysusers')
 
-sha256sums=('49633a6a1849428a2abbdbfd47bba5e380f824080c02462c1bb27935992fb146'
+sha256sums=('ce322cbba2b10c5bf2bffc33f28bd251a9528af3507e957523ca915e39b00108'
             '91552953d0d956101136cd3165f217de4d14eb65042b7dd3e9a09c8657319436'
             '9035c3c2a7d773ddadefb207cc0690629283f60903189ad595dd8de098c4457f'
-            '4419c7faed911a03ea0c9ccafa69607d2038cf49a508aa5595d9732146204649')
+            'f1d2028ef593ce367438fed6520d4387482da74e45aacafc72c028a2a0337614'
+            '0c901b44980cdfcfd62a49883ea2edd954e8f60711f10b49958f9a402a7ad2d0')
 
 package() {
     cd "${srcdir}"
@@ -48,4 +50,5 @@ package() {
     install -d -m 750 "${pkgdir}/etc/nzbhydra"
 
     install -D -m 644 "${srcdir}/nzbhydra.service" "${pkgdir}/usr/lib/systemd/system/nzbhydra.service"
+    install -D -m 644 "${srcdir}/nzbhydra.sysusers" "${pkgdir}/usr/lib/sysusers.d/nzbhydra.conf"
 }
