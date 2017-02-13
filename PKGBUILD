@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=dcrspy-git
-pkgver=20170209
+pkgver=20170210
 pkgrel=1
 pkgdesc="Decred data monitor"
 arch=('i686' 'x86_64')
