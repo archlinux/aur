@@ -3,14 +3,14 @@ _name="parsimonious"
 
 pkgbase="python-${_name}"
 pkgname=("python-${_name}" "python2-${_name}")
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 arch=('any')
 url="https://pypi.python.org/pypi/${_name}/${pkgver}"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('7a32835027927522be5ae2b523862a75')
+source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('396d424f64f834f9463e81ba79a331661507a21f1ed7b644f7f6a744006fd938')
 
 prepare() {
     cp -r "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
