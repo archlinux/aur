@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgbase=decred
-pkgname=('dcrd' 'dcrticketbuyer' 'dcrwallet')
-pkgver=0.7.0
+pkgname=('dcrd' 'dcrwallet')
+pkgver=0.8.0
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git' 'glide' 'go')
@@ -11,11 +11,9 @@ url="https://decred.org"
 license=('ISC')
 options=('!strip' '!emptydirs')
 source=(dcrd-$pkgver.tar.gz::https://codeload.github.com/decred/dcrd/tar.gz/v$pkgver
-        dcrticketbuyer-$pkgver.tar.gz::https://codeload.github.com/decred/dcrticketbuyer/tar.gz/v$pkgver
         dcrwallet-$pkgver.tar.gz::https://codeload.github.com/decred/dcrwallet/tar.gz/v$pkgver)
-sha256sums=('b4a308cb51cbeecbcf096109a0815c72d51d0963653dd3f2029dd5bdb6daa657'
-            '7540519615f035633b26c7b40f9b915f43d79eab4c4ad6fba45ea5b1dbb47580'
-            'b7987f0dfaab8f926cc3a80f5f4e66404e95024e34a703080e3cbf7f24eca65d')
+sha256sums=('1c8f671c64e44701f894a8330a469319dd2eb3e63c5c7d9e6fa9e17c0b793be4'
+            '443caa0318df0dca0e197ed365f62adb0ea315d463ba6b776116b618e3db5cea')
 
 prepare() {
   export GOPATH="$srcdir"
@@ -24,8 +22,6 @@ prepare() {
     "$GOPATH/src/github.com/decred/dcrd"
   cp -dpr --no-preserve=ownership "$srcdir/dcrwallet-$pkgver" \
     "$GOPATH/src/github.com/decred/dcrwallet"
-  cp -dpr --no-preserve=ownership "$srcdir/dcrticketbuyer-$pkgver" \
-    "$GOPATH/src/github.com/decred/dcrticketbuyer"
 }
 
 build() {
@@ -35,11 +31,6 @@ build() {
   cd "$GOPATH/src/github.com/decred/dcrd"
   glide install
   go install $(glide novendor)
-
-  msg2 'Building dcrticketbuyer and dependencies...'
-  cd "$GOPATH/src/github.com/decred/dcrticketbuyer"
-  glide install
-  go install
 
   msg2 'Building dcrwallet and dependencies...'
   cd "$GOPATH/src/github.com/decred/dcrwallet"
@@ -82,25 +73,6 @@ package_dcrd() {
               dcrgencerts; do
     install -Dm 755 "$srcdir/bin/$_bin" -t "$pkgdir/usr/bin"
   done
-}
-
-package_dcrticketbuyer() {
-  pkgdesc="Smart ticket purchasing bot for the automatic purchase of tickets from a Decred wallet"
-  provides=('dcrticketbuyer')
-  conflicts=('dcrticketbuyer')
-
-  msg2 'Installing dcrticketbuyer license...'
-  install -Dm 644 "$srcdir/src/github.com/decred/dcrticketbuyer/LICENSE" \
-          -t "$pkgdir/usr/share/licenses/dcrticketbuyer"
-
-  msg2 'Installing dcrticketbuyer docs...'
-  for _doc in README.md ticketbuyer-example.conf; do
-    install -Dm 644 "$srcdir/src/github.com/decred/dcrticketbuyer/$_doc" \
-            -t "$pkgdir/usr/share/doc/dcrticketbuyer"
-  done
-
-  msg2 'Installing dcrticketbuyer...'
-  install -Dm 755 "$srcdir/bin/dcrticketbuyer" -t "$pkgdir/usr/bin"
 }
 
 package_dcrwallet() {
