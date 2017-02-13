@@ -1,0 +1,14 @@
+post_install() {
+  echo 'To enable wd, add the following to your .zshrc file:'
+  echo
+  echo 'wd() {'
+  echo '  . /usr/share/wd/wd.sh'
+  echo '}'
+  echo
+}
+
+post_remove() {
+  echo
+  echo 'Remember to remove wd from your .zshrc file.'
+  echo
+}
