@@ -1,11 +1,13 @@
 post_install() {
-  echo "WARNING! Don't forget to install the appropriate kernel headers for your running kernel (eg linux-headers)! The folder /usr/lib/modules/$(uname -r)/build should exist after the installation of the kernel header package."
-
   getent group plugdev >/dev/null || groupadd -r plugdev
 
   echo -e "\e[31m********************************************"
   echo -e "\e[31m* To complete installation, please run:    *"
   echo -e "\e[31m* # sudo gpasswd -a <yourUsername> plugdev *"
+  echo -e "\e[31m*                                          *"
+  echo -e "\e[31m* Please not, that you have to have the    *"
+  echo -e "\e[31m* kernel headers for your current kernel   *"
+  echo -e "\e[31m* installed for dkms to work correctly!    *"
   echo -e "\e[31m********************************************"
   echo -e -n "\e[39m"
 }
