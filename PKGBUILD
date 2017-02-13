@@ -10,7 +10,7 @@ url="https://github.com/dherault/serverless-offline"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/dherault/${_pkgname}/archive/v${pkgver}.tar.gz")
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 package() {
