@@ -2,8 +2,7 @@
 # Co-maintainer: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname=dybuk-git
-reponame=dybuk
-execname=dybuk
+_pkgname=dybuk
 pkgver=r37.ef12906
 pkgrel=1
 pkgdesc='Prettify the ugly Rustc messages'
@@ -21,10 +20,10 @@ makedepends=(
     'rust'
 )
 provides=(
-    "${execname}"
+    "${_pkgname}"
 )
 conflicts=(
-    "${execname}"
+    "${_pkgname}"
 )
 source=(
     'git+https://github.com/Ticki/dybuk.git'
@@ -34,7 +33,7 @@ sha256sums=(
 )
 
 pkgver() {
-	cd "${srcdir}/${reponame}" || exit 1
+	cd "${srcdir}/${_pkgname}" || exit 1
 
     printf "r%s.%s"                     \
         "$(git rev-list --count HEAD)"  \
@@ -42,7 +41,7 @@ pkgver() {
 }
 
 build() {
-	cd "${srcdir}/${reponame}" || exit 1
+	cd "${srcdir}/${_pkgname}" || exit 1
 
 	cargo build --release
 }
