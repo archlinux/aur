@@ -2,16 +2,16 @@
 # Contributor: speps <speps dot archlinux dot org>
 
 pkgname=qxmledit
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="Simple XML editor and XSD viewer"
 arch=('x86_64')
 url="http://qxmledit.org/"
 license=('GPL3' 'LGPL3')
-depends=('qt5-svg' 'qt5-xmlpatterns' 'glu')
+depends=('qt5-svg' 'qt5-xmlpatterns' 'glu' 'qt5-scxml')
 makedepends=('freeglut')
-source=("http://downloads.sourceforge.net/project/qxmledit/QXmlEdit-0.9.5/qxmledit-0.9.5-src.tgz")
-sha256sums=('ac6341f1ceb004e64e070c6e99b5c3be3cfdf7d81a5556e79d99beb2f9eab43f')
+source=("http://downloads.sourceforge.net/project/qxmledit/QXmlEdit-$pkgver/qxmledit-$pkgver-src.tgz")
+sha256sums=('46928b059d9c00c96d98a5ab0bb6249abdd9225b2bbf280bbb8e0f54a894e964')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -21,8 +21,8 @@ prepare() {
 #      -e '/Encoding/d;/#/d' \
 #      -i install_scripts/environment/desktop/QXmlEdit.desktop
 
-    sed -i -e '/QMAKE_CXXFLAGS/s:-Werror::' \
-                src/{QXmlEdit,QXmlEditWidget,sessions/QXmlEditSessions}.pro
+#    sed -i -e '/QMAKE_CXXFLAGS/s:-Werror::' \
+#                src/{QXmlEdit,QXmlEditWidget,sessions/QXmlEditSessions}.pro
 
 }
 

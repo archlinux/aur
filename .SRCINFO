@@ -1,6 +1,6 @@
 pkgbase = qxmledit
 	pkgdesc = Simple XML editor and XSD viewer
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = http://qxmledit.org/
 	arch = x86_64
@@ -10,8 +10,9 @@ pkgbase = qxmledit
 	depends = qt5-svg
 	depends = qt5-xmlpatterns
 	depends = glu
-	source = http://downloads.sourceforge.net/project/qxmledit/QXmlEdit-0.9.5/qxmledit-0.9.5-src.tgz
-	sha256sums = ac6341f1ceb004e64e070c6e99b5c3be3cfdf7d81a5556e79d99beb2f9eab43f
+	depends = qt5-scxml
+	source = http://downloads.sourceforge.net/project/qxmledit/QXmlEdit-0.9.6/qxmledit-0.9.6-src.tgz
+	sha256sums = 46928b059d9c00c96d98a5ab0bb6249abdd9225b2bbf280bbb8e0f54a894e964
 
 pkgname = qxmledit
 
