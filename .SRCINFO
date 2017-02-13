@@ -1,6 +1,6 @@
 pkgbase = smtube-qt4
 	pkgdesc = Search, download and play videos from YouTube.
-	pkgver = 16.7.2
+	pkgver = 17.1.0
 	pkgrel = 1
 	url = http://smtube.sourceforge.net
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = smtube-qt4
 	optdepends = mpv: play media with mpv
 	provides = smtube
 	conflicts = smtube
-	source = https://sourceforge.net/projects/smtube/files/SMTube/16.7.2/smtube-16.7.2.tar.bz2
-	md5sums = 318369359ae36a2fce92939f56291f3e
+	source = https://sourceforge.net/projects/smtube/files/SMTube/17.1.0/smtube-17.1.0.tar.bz2
+	md5sums = baefe662fe60d78ecc313c5499f01495
 
 pkgname = smtube-qt4
 
