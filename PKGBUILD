@@ -2,7 +2,7 @@
 # Maintainer: Chrys <mail@chrys.de>
 
 pkgname='fenrir'
-pkgver=1.00
+pkgver=1.05
 pkgrel=1
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
@@ -18,11 +18,11 @@ optdepends=('brltty: For Braille support'
 makedepends=('unzip')
 provides=('fenrir')
 conflicts=('fenrir')
-backup=('etc/settings/settings.conf') 
+backup=('etc/fenrir/settings/settings.conf') 
 install="$pkgname".install
 source=("https://github.com/chrys87/${pkgname}/archive/${pkgver}.zip"
   'fenrir.install')
-md5sums=('0bafcb9e3af09799811b236e2116f4f1'
+md5sums=('d28fdb074dc731255c6af158f14ac9d6'
          '6e9e07056b744789e8d62fcf56b612ce') 
 
 package()
