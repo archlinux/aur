@@ -1,17 +1,17 @@
 pkgname=halcyon
-pkgver=0.9.30.6148
+pkgver=0.9.31.6242
 pkgrel=1
 pkgdesc="InWorldz Halcyon 3d virtual reality world simulator"
 arch=(any)
 url="https://github.com/InWorldz/$pkgname"
 license=("BSD")
-depends=(mono mariadb sqlite whip-server)
+depends=(mariadb mono sqlite whip-server)
 makedepends=(doxygen graphviz)
 provides=(opensimulator)
 source=("https://github.com/InWorldz/$pkgname/archive/v$pkgver.tar.gz"
 "$pkgname.sh"
 "hc-database.sh")
-md5sums=('979c43a100c533abfadb67bfc80cbbdd'
+md5sums=('17c080db2d3104e92d433cacc10a964f'
          '86977d028c882ee1e9615f4b8d1a68e6'
          'ee63724ab4ed7ba836ea6205689b0029')
 
@@ -41,6 +41,7 @@ package() {
 	cd "$pkgdir/srv/inworldz"
 	rm PhysX3*.dll
 	rm Prebuild.exe
+	rm aperture.example.cfg
 	rm aperture.exe
 	rm cg*.dll
 	rm cudart64_32_16.dll
@@ -56,6 +57,7 @@ package() {
 	rm msvc*.dll
 	rm openjpeg*.dll
 	rm sqlite3.dll
+	rm sqlite3.dll.version.txt
 	rm ssleay32.dll
 	rm zlib1.dll
 }
