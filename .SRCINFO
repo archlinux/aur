@@ -1,6 +1,6 @@
 pkgbase = pari-jupyter
 	pkgdesc = Jupyter kernel for PARI
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/jdemeyer/pari_jupyter
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = pari-jupyter
 	makedepends = cython2
 	depends = pari
 	depends = jupyter
-	source = https://pypi.io/packages/source/p/pari_jupyter/pari_jupyter-1.2.1.tar.bz2
-	md5sums = aabbc5a2dd80cb9e4cffead763ec479e
+	source = https://pypi.io/packages/source/p/pari_jupyter/pari_jupyter-1.2.2.tar.bz2
+	md5sums = ab0dc1d09303d33e861088155b82c965
 
 pkgname = pari-jupyter
 
