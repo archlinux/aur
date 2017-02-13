@@ -1,6 +1,6 @@
 # Maintainer: Sýlvan Heuser <sylvan.heuser@gmx.net>
 
-pkgname=libpurple-lurch
+pkgname=libpurple-lurch-git
 _pkgname=lurch
 pkgver=r31.3ac3915
 pkgrel=1
@@ -10,15 +10,15 @@ url="https://github.com/gkdr/lurch"
 license=('GPL')
 depends=('libpurple' 'mxml' 'libxml2' 'sqlite' 'libgcrypt')
 makedepends=()
-source=("$pkgname::git+https://github.com/gkdr/lurch.git"
-        "$pkgname.install"
+source=("$_pkgname::git+https://github.com/gkdr/lurch.git"
+        "$_pkgname.install"
         )
 sha256sums=('SKIP'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
-install="$pkgname.install"
+install="$_pkgname.install"
 
 pkgver () {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -26,15 +26,15 @@ pkgver () {
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
