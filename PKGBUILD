@@ -1,8 +1,8 @@
 # Maintainer: Will Price <will.price94+aur@gmail.com>
 _npmname=livedown
-_npmver=1.0.8
+_npmver=1.0.11
 pkgname=nodejs-livedown # All lowercase
-pkgver=1.0.8
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="Live Markdown previews for your favourite editor."
 arch=(any)
@@ -11,8 +11,8 @@ license=()
 depends=('nodejs' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
+md5sums=('8e812562fd84b991af3b992201133598')
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(811c08413db1ecaf38d6ac1767f141fe1af37739)
 
 package() {
   cd $srcdir
