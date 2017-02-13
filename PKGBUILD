@@ -4,13 +4,13 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=gegl-git
-pkgver=0.3.10.69
+pkgver=0.3.10.193
 pkgrel=1
 pkgdesc="Graph based image processing framework"
 arch=('i686' 'x86_64')
 url="http://www.gegl.org"
 license=('GPL3' 'LGPL3')
-depends=('babl>=0.1.14' 'libspiro' 'json-glib')
+depends=('babl>=0.1.24' 'libspiro' 'json-glib')
 makedepends=('git' 'intltool' 'python2' 'ruby' 'lua'
              'libraw' 'openexr' 'ffmpeg' 'librsvg' 'jasper'
              'libtiff' 'suitesparse')
