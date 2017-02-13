@@ -9,13 +9,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/gkdr/lurch"
 license=('GPL')
 depends=('libpurple' 'mxml' 'libxml2' 'sqlite' 'libgcrypt')
-makedepends=()
-source=("$_pkgname::git+https://github.com/gkdr/lurch.git"
-        "$_pkgname.install"
-        )
-sha256sums=('SKIP'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
-install="$_pkgname.install"
+source=("$_pkgname::git+https://github.com/gkdr/lurch.git")
+sha256sums=('SKIP')
 
 pkgver () {
   cd "$srcdir/$_pkgname"
