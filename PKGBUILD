@@ -9,7 +9,7 @@ _lib32=0
 
 pkgname=('nvidia-full-beta' 'nvidia-utils-full-beta' 'nvidia-egl-wayland-full-beta' 'nvidia-libgl-full-beta' 'opencl-nvidia-full-beta')
 pkgver=378.09
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -26,11 +26,13 @@ elif [[ $_lib32 = 1 ]] || pacman -Q lib32-nvidia-utils-full-beta &>/dev/null; th
 fi
 
 # Source
-source=('20-nvidia.conf')
+source=('20-nvidia.conf'
+        'nvidia-drm-outputclass.conf')
 #        'linux-4.8.patch')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run")
-md5sums=('2640eac092c220073f0668a7aaff61f7')
+md5sums=('2640eac092c220073f0668a7aaff61f7'
+         '4f5562ee8f3171769e4638b35396c55d')
 #         '96a37004a3394b01385d3ea9d8e8fa86')
 md5sums_i686=('a55ef673b805549cd72f2e9d5b7a844a')
 md5sums_x86_64=('6e3fe1150fb70c1dabd113e613186cfd')
@@ -124,42 +126,24 @@ package_nvidia-libgl-full-beta() {
   conflicts=('nvidia-libgl' 'libgl' 'libegl' 'libgles')
   cd $_pkg
 
-  # GLX extension for X (link)
-  install -d "$pkgdir"/usr/lib/xorg/modules/extensions/
-  ln -s /usr/lib/nvidia/xorg/modules/extensions/libglx.so.$pkgver \
-        "$pkgdir"/usr/lib/xorg/modules/extensions/libglx.so.$pkgver
-  ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/xorg/modules/extensions/libglx.so.1
-  ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/xorg/modules/extensions/libglx.so
+  mkdir -p "${pkgdir}/usr/lib/"
 
   # libGL (link)
-  ln -s /usr/lib/nvidia/libGL.so.1.0.0 "$pkgdir"/usr/lib/libGL.so.1.0.0
-  ln -s libGL.so.1.0.0 "$pkgdir"/usr/lib/libGL.so.1
-  ln -s libGL.so.1.0.0 "$pkgdir"/usr/lib/libGL.so
-
-  # GLX (link)
-  ln -s /usr/lib/nvidia/libGLX.so.0 "$pkgdir"/usr/lib/libGLX.so.0
-  ln -s libGLX.so.0 "$pkgdir"/usr/lib/libGLX.so.$pkgver
-  ln -s libGLX.so.0 "$pkgdir"/usr/lib/libGLX.so
-  ln -s libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib/libGLX_indirect.so.0
+  ln -s /usr/lib/nvidia/libGL.so.1.0.0 "$pkgdir"/usr/lib/libGL.so.1
+  ln -s libGL.so.1 "$pkgdir"/usr/lib/libGL.so
 
   # EGL (link)
   ln -s /usr/lib/nvidia/libEGL.so.1 "$pkgdir"/usr/lib/libEGL.so.1
-  ln -s libEGL.so.1 "$pkgdir"/usr/lib/libEGL.so.$pkgver
   ln -s libEGL.so.1 "$pkgdir"/usr/lib/libEGL.so
 
   # OpenGL ES 1 (link)
   ln -s /usr/lib/nvidia/libGLESv1_CM.so.1 "$pkgdir"/usr/lib/libGLESv1_CM.so.1
-  ln -s libGLESv1_CM.so.1 "$pkgdir"/usr/lib/libGLESv1_CM.so.$pkgver
   ln -s libGLESv1_CM.so.1 "$pkgdir"/usr/lib/libGLESv1_CM.so
 
   # OpenGL ES 2 (link)
   ln -s /usr/lib/nvidia/libGLESv2.so.2 "$pkgdir"/usr/lib/libGLESv2.so.2
-  ln -s libGLESv2.so.2 "$pkgdir"/usr/lib/libGLESv2.so.$pkgver
   ln -s libGLESv2.so.2 "$pkgdir"/usr/lib/libGLESv2.so
 
-  # VDPAU (link)
-  ln -s /usr/lib/vdpau/libvdpau_nvidia.so.$pkgver "$pkgdir"/usr/lib/libvdpau_nvidia.so
-  
   # License (link)
   install -d "$pkgdir"/usr/share/licenses/
   ln -s nvidia/ "$pkgdir"/usr/share/licenses/nvidia-libgl
@@ -179,14 +163,14 @@ package_nvidia-egl-wayland-full-beta() {
 
 package_nvidia-utils-full-beta() {
   pkgdesc="NVIDIA driver utilities and libraries for 'nvidia-full-beta'"
-  depends=('xorg-server')
+  depends=('xorg-server>=1.19.1-3')
   optdepends=('gtk2: nvidia-settings (GTK+ v2)'
               'gtk3: nvidia-settings (GTK+ v3)'
               'opencl-nvidia-full-beta: OpenCL support'
               'xorg-server-devel: nvidia-xconfig'
               'egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.0.0)')
   provides=("nvidia-utils=$pkgver" 'nvidia-settings' 'libglvnd' 'vulkan-driver')
-  conflicts=('nvidia-utils' 'nvidia-settings' 'libglvnd')
+  conflicts=('nvidia-utils' 'nvidia-settings' 'libglvnd' 'xorg-server<1.19.1-3')
   backup=('etc/X11/xorg.conf.d/20-nvidia.conf')
   install=$pkgname.install
   cd $_pkg
@@ -195,8 +179,9 @@ package_nvidia-utils-full-beta() {
   install -Dm755 nvidia_drv.so "$pkgdir"/usr/lib/xorg/modules/drivers/nvidia_drv.so
 
   # GLX extension for X
-  install -Dm755 libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/modules/extensions/libglx.so.$pkgver
-  ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/modules/extensions/libglx.so
+  install -Dm755 libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/libglx.so.$pkgver
+  ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/libglx.so.1   # X doesn't find glx otherwise
+  ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/libglx.so     # X doesn't find glx otherwise
 
   # libGL & OpenGL
   install -Dm755 libGL.so.1.0.0 "$pkgdir"/usr/lib/nvidia/libGL.so.1.0.0
@@ -205,8 +190,9 @@ package_nvidia-utils-full-beta() {
   install -Dm755 libOpenGL.so.0 "$pkgdir"/usr/lib/libOpenGL.so.0
 
   # GLX
-  install -Dm755 libGLX.so.0 "$pkgdir"/usr/lib/nvidia/libGLX.so.0
+  install -Dm755 libGLX.so.0 "$pkgdir"/usr/lib/libGLX.so.0
   install -Dm755 libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib/libGLX_nvidia.so.$pkgver
+  ln -s libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib/libGLX_indirect.so.0
 
   # EGL
   install -Dm755 libEGL.so.1 "$pkgdir"/usr/lib/nvidia/libEGL.so.1
@@ -326,7 +312,7 @@ package_nvidia-utils-full-beta() {
   install -Dm644 "$srcdir"/20-nvidia.conf "$pkgdir"/etc/X11/xorg.conf.d/20-nvidia.conf
 
   # Distro-specific files must be installed in /usr/share/X11/xorg.conf.d
-  install -Dm644 nvidia-drm-outputclass.conf "$pkgdir"/usr/share/X11/xorg.conf.d/nvidia-drm-outputclass.conf
+  install -Dm644 "$srcdir"/nvidia-drm-outputclass.conf "$pkgdir"/usr/share/X11/xorg.conf.d/nvidia-drm-outputclass.conf
 }
 
 package_nvidia-full-beta() {
