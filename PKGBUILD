@@ -1,6 +1,6 @@
 # Maintainer: Yamakaky <yamakaky@yamaworld_fr>
 pkgname=safeeyes
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="A Linux alternative for EyeLeo"
 arch=("any")
@@ -16,7 +16,7 @@ depends=("hicolor-icon-theme"
          "xorg-xprop"
          "xprintidle")
 source=(safeeyes-$pkgver.tar.gz::"https://github.com/slgobinath/SafeEyes/releases/download/v$pkgver/safeeyes.tar.gz")
-sha1sums=('818d0a45c7469ce54aa66ad4667aaeed55cd1196')
+sha1sums=('85cce5d31cbe6ec53c0d2125bdfa2c47fb5b63f3')
 
 package() {
     mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/lib"
