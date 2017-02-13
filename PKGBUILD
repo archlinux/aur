@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgbase=decred-git
-pkgname=('dcrd-git' 'dcrticketbuyer-git' 'dcrwallet-git')
-pkgver=20161226
+pkgname=('dcrd-git' 'dcrwallet-git')
+pkgver=20170213
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git' 'glide' 'go')
@@ -11,9 +11,8 @@ url="https://decred.org"
 license=('ISC')
 options=('!strip' '!emptydirs')
 source=(git+https://github.com/decred/dcrd
-        git+https://github.com/decred/dcrticketbuyer
         git+https://github.com/decred/dcrwallet)
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
   date +%Y%m%d
@@ -23,8 +22,6 @@ prepare() {
   export GOPATH="$srcdir"
   git clone "$srcdir/dcrd" "$GOPATH/src/github.com/decred/dcrd"
   git clone "$srcdir/dcrwallet" "$GOPATH/src/github.com/decred/dcrwallet"
-  git clone "$srcdir/dcrticketbuyer" \
-    "$GOPATH/src/github.com/decred/dcrticketbuyer"
 }
 
 build() {
@@ -34,11 +31,6 @@ build() {
   cd "$GOPATH/src/github.com/decred/dcrd"
   glide install
   go install $(glide novendor)
-
-  msg2 'Building dcrticketbuyer and dependencies...'
-  cd "$GOPATH/src/github.com/decred/dcrticketbuyer"
-  glide install
-  go install
 
   msg2 'Building dcrwallet and dependencies...'
   cd "$GOPATH/src/github.com/decred/dcrwallet"
@@ -81,25 +73,6 @@ package_dcrd-git() {
               dcrgencerts; do
     install -Dm 755 "$srcdir/bin/$_bin" -t "$pkgdir/usr/bin"
   done
-}
-
-package_dcrticketbuyer-git() {
-  pkgdesc="Smart ticket purchasing bot for the automatic purchase of tickets from a Decred wallet"
-  provides=('dcrticketbuyer')
-  conflicts=('dcrticketbuyer')
-
-  msg2 'Installing dcrticketbuyer license...'
-  install -Dm 644 "$srcdir/src/github.com/decred/dcrticketbuyer/LICENSE" \
-          -t "$pkgdir/usr/share/licenses/dcrticketbuyer"
-
-  msg2 'Installing dcrticketbuyer docs...'
-  for _doc in README.md ticketbuyer-example.conf; do
-    install -Dm 644 "$srcdir/src/github.com/decred/dcrticketbuyer/$_doc" \
-            -t "$pkgdir/usr/share/doc/dcrticketbuyer"
-  done
-
-  msg2 'Installing dcrticketbuyer...'
-  install -Dm 755 "$srcdir/bin/dcrticketbuyer" -t "$pkgdir/usr/bin"
 }
 
 package_dcrwallet-git() {
