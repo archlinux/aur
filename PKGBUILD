@@ -4,12 +4,12 @@
 
 pkgname=aldo
 pkgver=0.7.8
-pkgrel=1
-pkgdesc="Morse code tutor with a random number generator & skill level testing"
+pkgrel=2
+pkgdesc="Morse Code tutor with a random number generator & skill level testing"
 arch=('i686' 'x86_64')
 url="http://aldo.nongnu.org/"
-license=('GPL')
-depends=('libao' 'gcc-libs')
+license=('GPL3')
+depends=('libao' 'gcc-libs' 'hamradio-menus')
 makedepends=('git' 'autoconf' 'automake' 'libtool')
 source=("$pkgname::git+http://git.savannah.gnu.org/r/$pkgname.git#branch=master"
 #http://savannah.nongnu.org/download/$pkgname/$pkgname-$pkgver.tar.bz2

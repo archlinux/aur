@@ -1,17 +1,18 @@
 pkgbase = aldo
-	pkgdesc = Morse code tutor with a random number generator & skill level testing
+	pkgdesc = Morse Code tutor with a random number generator & skill level testing
 	pkgver = 0.7.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://aldo.nongnu.org/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	makedepends = git
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = libtool
 	depends = libao
 	depends = gcc-libs
+	depends = hamradio-menus
 	source = aldo::git+http://git.savannah.gnu.org/r/aldo.git#branch=master
 	source = aldo.desktop
 	source = hamradio.png
