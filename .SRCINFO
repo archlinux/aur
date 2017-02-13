@@ -1,13 +1,13 @@
 pkgbase = eepclock
 	pkgdesc = Ham Radio UTC/Local-time Clock
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hamsoftware.org/old_index.html
-	install = eepclock.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = qt4
+	depends = hamradio-menus
 	source = http://www.hamsoftware.org/eepclock_v1.1.tgz
 	source = eepclock.desktop
 	md5sums = 540e1555b4e7f1d306c94ff6c74093a1
