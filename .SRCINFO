@@ -1,5 +1,5 @@
 pkgbase = youtube-dl-mp3
-	pkgdesc = Short way to download best quality mp3 from youtube
+	pkgdesc = Downloads videos from YouTube and convert them to mp3. 
 	pkgver = 2017.02.11
 	pkgrel = 1
 	url = https://github.com/rst0git/youtube-dl-mp3
