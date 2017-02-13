@@ -1,15 +1,18 @@
 pkgbase = scriptbasic
 	pkgdesc = Scriba compiler for a powerful scripting language/API
 	pkgver = 2.1_RC1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.scriptbasic.org/
+	install = .install
 	arch = x86_64
 	license = unknown
 	depends = postgresql-libs
 	source = http://www.scriptbasic.org/download/SB_2.1_RC1_Linux.tar.gz
 	source = scriptbasic_arch.patch
+	source = configure.save
 	md5sums = 374a37fff435d26c08cfe2ed8d694a8e
 	md5sums = f026797fd8e695a797e1eee2f04e264a
+	md5sums = fc077e744f5000c5e508243b35f348f2
 
 pkgname = scriptbasic
 

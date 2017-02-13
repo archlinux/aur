@@ -1,0 +1,13 @@
+--install=1
+--install-bin=/usr/bin
+--install-cache=/var/cache/scriba/cache
+--install-configdir=/etc/scriba
+--install-docu=/usr/share/scriba/source
+--install-etc=/etc/init.d
+--install-hebtemp=/var/cache/scriba/hebtemp
+--install-include=/usr/share/scriba/include
+--install-lib=/usr/local/lib
+--install-log=/var/log/scriba
+--install-module=/usr/local/lib/scriba
+--install-source=/usr/share/scriba/source
+--unix=1
