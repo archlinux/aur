@@ -18,7 +18,7 @@ conflicts=('stumpwm')
 provides=('stumpwm')
 
 source=(${_pkgname}::git+https://github.com/stumpwm/stumpwm
-        ${_pkgname}-contrib::git+https://github.com/stumpwm/stumpwm-contrib)
+        ${_pkgname}-contrib-git::git+https://github.com/stumpwm/stumpwm-contrib)
 md5sums=('SKIP'
          'SKIP')
 

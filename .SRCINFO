@@ -23,7 +23,7 @@ pkgbase = stumpwm-git
 	conflicts = stumpwm
 	options = !strip
 	source = stumpwm::git+https://github.com/stumpwm/stumpwm
-	source = stumpwm-contrib::git+https://github.com/stumpwm/stumpwm-contrib
+	source = stumpwm-contrib-git::git+https://github.com/stumpwm/stumpwm-contrib
 	md5sums = SKIP
 	md5sums = SKIP
 
