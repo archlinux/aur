@@ -1,0 +1,21 @@
+diff -Naur Remmina-1.2.0-rcgit.17/CMakeLists.txt Remmina-1.2.0-rcgit.17.my/CMakeLists.txt
+--- Remmina-1.2.0-rcgit.17/CMakeLists.txt	2017-02-13 20:43:52.425135179 +0100
++++ Remmina-1.2.0-rcgit.17.my/CMakeLists.txt	2017-02-13 20:45:55.217469364 +0100
+@@ -116,16 +116,7 @@
+         set(REMMINA_VERSION "${REMMINA_VERSION}-${REMMINA_VERSION_SUFFIX}")
+ endif()
+ 
+-
+-include(GetGitRevisionDescription)
+-git_get_exact_tag(GIT_REVISION --tags --always)
+-if (${GIT_REVISION} STREQUAL "n/a")
+-        git_rev_parse(GIT_REVISION --short)
+-endif()
+-
+-if(NOT GIT_REVISION)
+-    set(GIT_REVISION ${REMMINA_VERSION_SUFFIX})
+-endif()
++set(GIT_REVISION, "n/a")
+ message(STATUS "Git Revision ${GIT_REVISION}")
+ 
+ if(NOT UNIQUE_APPNAME)

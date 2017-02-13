@@ -1,0 +1,20 @@
+diff -wbBur Remmina-1.2.0-rcgit.17/cmake/FindFREERDP.cmake Remmina-1.2.0-rcgit.17.my/cmake/FindFREERDP.cmake
+--- Remmina-1.2.0-rcgit.17/cmake/FindFREERDP.cmake	2016-12-22 11:59:08.000000000 +0300
++++ Remmina-1.2.0-rcgit.17.my/cmake/FindFREERDP.cmake	2017-02-01 18:28:39.771764112 +0300
+@@ -30,13 +30,13 @@
+ find_path(WINPR_INCLUDE_DIR NAMES winpr/winpr.h
+ 	HINTS ${PC_FREERDP_INCLUDEDIR} ${PC_FREERDP_INCLUDE_DIRS} ${CMAKE_PREFIX_PATH}/include/winpr2/)
+ 
+-find_library(FREERDP_LIBRARY NAMES freerdp
++find_library(FREERDP_LIBRARY NAMES freerdp2
+ 	HINTS ${PC_FREERDP_LIBDIR} ${PC_FREERDP_LIBRARY_DIRS})
+ 
+-find_library(FREERDP_CLIENT_LIBRARY NAMES freerdp-client
++find_library(FREERDP_CLIENT_LIBRARY NAMES freerdp-client2
+ 	HINTS ${PC_FREERDP_LIBDIR} ${PC_FREERDP_LIBRARY_DIRS})
+ 
+-find_library(FREERDP_WINPR_LIBRARY NAMES winpr
++find_library(FREERDP_WINPR_LIBRARY NAMES winpr2
+ 	HINTS ${PC_FREERDP_LIBDIR} ${PC_FREERDP_LIBRARY_DIRS})
+ 
+ include(FindPackageHandleStandardArgs)
