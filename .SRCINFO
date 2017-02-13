@@ -1,0 +1,13 @@
+pkgbase = adafruit-rpi-rgb-led-matrix-git
+	pkgdesc = rgbmatrix library to take advantage of Adafruit RPi Led Matrix HAT
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.adafruit.com/
+	arch = armv7h
+	license = GPL
+	optdepends = python2
+	source = git+https://github.com/adafruit/rpi-rgb-led-matrix.git
+	md5sums = SKIP
+
+pkgname = adafruit-rpi-rgb-led-matrix-git
+
