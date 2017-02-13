@@ -2,7 +2,7 @@
 
 pkgname=nodejs-serverless-git
 _pkgname=serverless
-pkgver=v1.6.1.36.g88c9dc88
+pkgver=1.6.1.36.g88c9dc88
 pkgrel=1
 pkgdesc="Serverless Framework - Build web, mobile and IoT applications with serverless architectures using AWS Lambda, Azure Functions, Google CloudFunctions & more"
 arch=('any')
@@ -18,6 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   local ver="$(git describe --tags)"
+  ver="${ver/v/}"
   printf "%s" "${ver//-/.}"
 }
 
