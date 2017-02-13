@@ -1,6 +1,6 @@
 _pkgbase=r8168
 pkgname=${_pkgbase}-dkms
-pkgver=8.043.02
+pkgver=8.044.02
 pkgrel=1
 pkgdesc="A kernel module for Realtek 8168 network cards"
 url="http://www.realtek.com.tw"
@@ -11,10 +11,11 @@ conflicts=("${_pkgbase}")
 optdepends=('linux-headers: Build the module for Arch kernel'
 		'linux-lts-headers: Build the module for LTS Arch kernel'
 		'linux-zen-headers: Build the module for ZEN Arch kernel')
-source=(https://github.com/mtorromeo/r8168/archive/$pkgver/r8168-$pkgver.tar.gz
+source=(r8168-$pkgver.tar.gz::http://12244.wpc.azureedge.net/8012244/drivers/rtdrivers/cn/nic/0009-r8168-8.044.02.tar.bz2 #http://12244.wpc.azureedge.net/8012244/drivers/rtdrivers/cn/nic/0009-r8168-8.044.02.tar.bz2
         'linux-4.5.patch'
         'dkms.conf')
-sha256sums=('ea22aa1dfda20615f5e114f982f7e61385f871f682eea0c154245760a439abc4'
+install=r8168-dkms.install
+sha256sums=('ad3cd1becb35efab52ed11e0326c1108806c55c62fd2b5e1cf7eaa749fb75027'
             '96f3367037a54fe699981a2d7a4b92754629bae7143b1241d787bf59d4a95ffa'
             '260d8142e944f3144cbc704534e662d427318d8b32dc7a2852a855be72e8d763')
 
