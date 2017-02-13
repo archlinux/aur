@@ -1,7 +1,7 @@
 pkgbase = slic3r-prusa3d
 	pkgdesc = Updated Slic3r by Prusa3D with many bugfixes and new features
 	pkgver = 1.33.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.prusa3d.com/
 	arch = i686
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = slic3r-prusa3d
 	depends = boost-libs
 	depends = perl
 	depends = perl-class-accessor
+	depends = perl-libwww
 	depends = perl-encode-locale
 	depends = perl-moo
 	depends = perl-opengl
