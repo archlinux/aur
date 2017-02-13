@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('2e5ea2c3b640c43a9f4a165fa443135b7286ddb0dbf21e4a18cbc010325b8492')
 
 package() {
   npm \
