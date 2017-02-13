@@ -1,6 +1,6 @@
 pkgbase = ddns-git
 	pkgdesc = Automatic provisioning of dynamic DNS
-	pkgver = 2.1.1.r0.g1395a93
+	pkgver = 2.1.2.r2.g22ebdce
 	pkgrel = 1
 	url = https://github.com/kcolford/ddns
 	arch = any
