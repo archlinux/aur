@@ -5,7 +5,7 @@ _depmod() {
 
 post_install() {
   cat << EOF
-==> Stuff about rebooting :)
+==> Theoretically everything should be working fine after a replug of your device(s). Otherwise please reboot.
 EOF
   _depmod
 }
