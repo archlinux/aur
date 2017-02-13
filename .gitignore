@@ -1,3 +1,4 @@
 pkg
 src
 undistract-me
+*.pkg.*
