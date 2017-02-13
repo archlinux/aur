@@ -5,7 +5,7 @@ _pypi_name=mypy
 pkgbase=python-${_pypi_name}
 #pkgname=(python-${_pypi_name} python2-${_pypi_name})
 pkgname=$pkgbase
-pkgver=0.470
+pkgver=0.471
 pkgrel=1
 pkgdesc='Optional static typing for Python 2 and 3'
 url="https://github.com/python/mypy"
@@ -26,4 +26,4 @@ package() {
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
     python setup.py install --root="${pkgdir}" --optimize=1
 }
-sha256sums=('e17506ff9d6b011896187dadd30cb5905bc3129737b5ef67e0a506f8655ce686')
+sha256sums=('e97042b125bd81b30577416f5ab1be4cc1db4793e00032f13fbc388d25132f6f')
