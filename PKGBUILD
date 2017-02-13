@@ -8,7 +8,7 @@
 
 pkgname=stumpwm
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tiling, keyboard-driven window manager written in common lisp"
 arch=('i686' 'x86_64')
 url="https://stumpwm.github.io"
@@ -36,7 +36,7 @@ options=(!strip)  # Thanks to sidereus for pointing this out
 build() {
   cd ${pkgname}-${pkgver}
   ./autogen.sh
-  ./configure  --prefix=/usr --with-module-dir=${_contribdest}
+  ./configure  --prefix=/usr --with-module-dir=/usr/share/stumpwm/contrib
   make
 } 
 
