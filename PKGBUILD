@@ -2,7 +2,7 @@
 
 _pkgbase=quodlibet
 pkgname=exfalso
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="GTK+ audio tag editor"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('intltool' 'gettext')
 #optdepends=('python2-musicbrainzngs: for "MusicBrainz Lookup" plugin')
 conflicts=("${pkgbase}")
 source=("https://bitbucket.org/lazka/${_pkgbase}-files/raw/default/releases/${_pkgbase}-${pkgver}.tar.gz"{,.sig})
-sha256sums=('f9297a9c3cb2d8afd3f766ea6b18deaa6234e858a4143984bee21082bff23b5b' 'SKIP')
+sha256sums=('ad92660aa10b7464d445a694224fb35b54ed7b800f7a54a5f27c63951d839417' 'SKIP')
 validpgpkeys=('0EBF782C5D53F7E5FB02A66746BD761F7A49B0EC') # Christoph Reiter
 
 build () {
