@@ -2,11 +2,11 @@
 
 pkgname=checkmate
 pkgver=2.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A program to compare theoretical models against many recent experimental analyses"
 url="http://checkmate.hepforge.org/"
 arch=('i686' 'x86_64')
-license=('GPLv3')
+license=('GPL3')
 depends=("delphes"
          "fastjet"
          "hepmc"
