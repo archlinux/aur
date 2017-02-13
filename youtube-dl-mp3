@@ -1,0 +1,2 @@
+#!/bin/bash
+youtube-dl --extract-audio --audio-format mp3 -f bestaudio --ignore-errors -o "%(title)s.%(ext)s" $@

@@ -1,0 +1,13 @@
+pkgbase = youtube-dl-mp3
+	pkgdesc = Short way to download best quality mp3 from youtube
+	pkgver = 2017.02.11
+	pkgrel = 1
+	url = https://github.com/rst0git/youtube-dl-mp3
+	arch = any
+	depends = youtube-dl
+	options = !strip
+	source = youtube-dl-mp3
+	md5sums = e372f4ae1c4288207639fa84885166a0
+
+pkgname = youtube-dl-mp3
+
