@@ -27,6 +27,8 @@ pkgver () {
 
 prepare() {
   cd "$srcdir/$_pkgname"
+  msg2 "Getting submodules"
+  git submodule update --init --recursive
 }
 
 build() {
