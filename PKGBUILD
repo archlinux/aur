@@ -4,7 +4,7 @@
 _pkgbase=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev' 'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
 pkgver=1.19.1 # http://lists.x.org/archives/xorg/2017-January/058559.html
-pkgrel=2 # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/xorg-server&id=63f2ddee51705b0055041fdf67895d7383cd07cc
+pkgrel=3 # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/xorg-server&id=fdb75aee720eedd503a7a0ce819e45a6e13a0705
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
@@ -18,6 +18,7 @@ makedepends=('pixman' 'libx11' 'mesa' 'libgl' 'xf86driproto' 'xcmiscproto' 'xtra
              'libxshmfence' 'libunwind' 'xfont2-git' 'wayland-protocols')
 source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
         bug99358.patch
+        nvidia-add-modulepath-support.patch
         xvfb-run
         xvfb-run.1)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
@@ -26,11 +27,15 @@ validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
 sha256sums=('79ae2cf39d3f6c4a91201d8dad549d1d774b3420073c5a70d390040aa965a7fb'
             'SKIP'
             'f46a9d1a5ac43c5359fbd8c57b6e64b0bd313116b5cb638527bfe3701e6c3904'
+            '914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
 
 prepare() {
   cd "${_pkgbase}-${pkgver}"
+
+  msg2 "merged upstream in trunk"
+  patch -Np1 -i ../nvidia-add-modulepath-support.patch
 
   msg2 "Fix: Bug 99358 - Xorg crashes with SIGSEGV in sna_set_cursor_position()"
   msg2 "https://bugs.freedesktop.org/show_bug.cgi?id=99358"
@@ -128,10 +133,6 @@ package_xorg-server-dev() {
   
   # distro specific files must be installed in /usr/share/X11/xorg.conf.d
   install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d"
-  
-  # Needed for non-mesa drivers, libgl will restore it
-  mv "${pkgdir}/usr/lib/xorg/modules/extensions/libglx.so" \
-     "${pkgdir}/usr/lib/xorg/modules/extensions/libglx.xorg"
 
   rm -rf "${pkgdir}/var"
 

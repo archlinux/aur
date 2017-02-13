@@ -1,6 +1,6 @@
 pkgbase = xorg-server-dev
 	pkgver = 1.19.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://xorg.freedesktop.org
 	arch = i686
 	arch = x86_64
@@ -58,11 +58,13 @@ pkgbase = xorg-server-dev
 	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.19.1.tar.bz2
 	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.19.1.tar.bz2.sig
 	source = bug99358.patch
+	source = nvidia-add-modulepath-support.patch
 	source = xvfb-run
 	source = xvfb-run.1
 	sha256sums = 79ae2cf39d3f6c4a91201d8dad549d1d774b3420073c5a70d390040aa965a7fb
 	sha256sums = SKIP
 	sha256sums = f46a9d1a5ac43c5359fbd8c57b6e64b0bd313116b5cb638527bfe3701e6c3904
+	sha256sums = 914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8
 	sha256sums = ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9
 	sha256sums = 2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776
 
