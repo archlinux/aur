@@ -5,7 +5,7 @@
 
 # Maintainer: Mario Steele <mario@ruby-im.net>
 pkgname=autovala
-pkgver=0.99.38
+pkgver=1.0.0
 pkgrel=1
 pkgdesc=""
 arch=('any')
@@ -30,7 +30,7 @@ makedepends=(
 provides=('autovala')
 install=autovala.install
 source=("http://github.com/rastersoft/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('03e366e34d8455a43942c20ff410f127')
+md5sums=('9b41984c957cb92aa025a1a133e09348')
 
 build() {
 	cd "$pkgname-$pkgver"
