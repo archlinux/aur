@@ -9,6 +9,8 @@ url="https://github.com/milohr/babe-qt"
 license=('GPL')
 depends=('hicolor-icon-theme' 'knotifications' 'ki18n' 'taglib')
 makedepends=('git')
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
 source=("git+${url}.git" 'Babe.desktop')
 sha256sums=('SKIP' '32c793f0acbd7c049258012b5d38cb6fbd5b597c5783c9a6ba3ecd06a6e3c27a')
  
