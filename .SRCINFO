@@ -1,0 +1,21 @@
+pkgbase = slock-gruvbox-lowcontrast
+	pkgdesc = A simple screen locker for X
+	pkgver = 1.4
+	pkgrel = 2
+	url = http://tools.suckless.org/slock
+	arch = any
+	license = MIT
+	depends = libxext
+	depends = libxrandr
+	provides = slock
+	conflicts = slock
+	conflicts = slock-git
+	conflicts = slock-extra-git
+	conflicts = slockd
+	source = http://dl.suckless.org/tools/slock-1.4.tar.gz
+	source = gruvbox.patch
+	md5sums = f91dd5ba50ce7bd1842caeca067086a3
+	md5sums = 74cb3d6aabedf7dabd2e099eaa1ac2e7
+
+pkgname = slock-gruvbox-lowcontrast
+
