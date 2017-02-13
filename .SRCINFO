@@ -1,6 +1,6 @@
 pkgbase = emby-server-beta
 	pkgdesc = Bring together your videos, music, photos, and live television
-	pkgver = 3.2.1.103
+	pkgver = 3.2.1.104
 	pkgrel = 1
 	url = http://emby.media
 	install = emby-server.install
@@ -18,7 +18,7 @@ pkgbase = emby-server-beta
 	conflicts = emby-server-dev-git
 	conflicts = emby-server-git
 	backup = etc/conf.d/emby-server
-	source = emby-server-3.2.1.103.tar.gz::https://github.com/MediaBrowser/Emby/archive/3.2.1.103.tar.gz
+	source = emby-server-3.2.1.104.tar.gz::https://github.com/MediaBrowser/Emby/archive/3.2.1.104.tar.gz
 	source = emby-server
 	source = emby-migrate-database
 	source = emby-server.conf
