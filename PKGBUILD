@@ -2,7 +2,7 @@
 
 pkgname='undistract-me-git'
 pkgver='r58.3c3054c'
-pkgrel=5
+pkgrel=6
 
 arch=('any')
 url="https://github.com/jml/undistract-me"
