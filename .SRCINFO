@@ -1,5 +1,5 @@
 pkgbase = autovala
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	install = autovala.install
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = autovala
 	depends = gtk3>=3.18.0
 	depends = bash-completion>=2.3
 	provides = autovala
-	source = http://github.com/rastersoft/autovala/archive/1.0.0.tar.gz
-	md5sums = 9b41984c957cb92aa025a1a133e09348
+	source = http://github.com/rastersoft/autovala/archive/1.1.0.tar.gz
+	md5sums = 2989d6e3039dd6fa1cd676eeca914f27
 
 pkgname = autovala
 
