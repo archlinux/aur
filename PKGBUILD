@@ -4,7 +4,7 @@
 
 pkgname=hplip-minimal
 pkgver=3.16.11
-pkgrel=1
+pkgrel=2
 pkgdesc="The HP printer drivers, and not much else"
 arch=('i686' 'x86_64' 'armv6h')
 url="http://hplipopensource.com"
@@ -39,8 +39,8 @@ build() {
 
   ./configure --prefix=/usr --disable-qt4 --disable-doc-build --disable-dbus-build --disable-network-build \
               --disable-scan-build --disable-fax-build --disable-foomatic-rip-hplip-install \
-              --enable-foomatic-ppd-install --enable-hpcups-only-build --enable-new-hpcups \
-              --disable-cups-drv-install --enable-cups-ppd-install --enable-pp-build
+              --enable-foomatic-ppd-install --enable-new-hpcups --disable-cups-drv-install \
+              --enable-cups-ppd-install --enable-pp-build
   make
 }
 

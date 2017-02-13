@@ -1,7 +1,7 @@
 pkgbase = hplip-minimal
 	pkgdesc = The HP printer drivers, and not much else
 	pkgver = 3.16.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hplipopensource.com
 	arch = i686
 	arch = x86_64
