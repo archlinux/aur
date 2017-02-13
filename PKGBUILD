@@ -4,7 +4,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=bdisk
 pkgver=3.01
-pkgrel=2
+pkgrel=3
 _pkgver=${pkgver}
 #_pkgver=${pkgver}-BETA
 pkgdesc="An easy liveCD creator built in python. Supports hybrid ISOs/USB, iPXE, and UEFI."
@@ -19,7 +19,7 @@ depends=('dosfstools'
 	'dosfstools'
 	'squashfs-tools'
 	'python'
-	'python-git'
+	'python-gitpython'
 	'python-humanize'
 	'python-jinja'
 	'python-psutil'
