@@ -1,4 +1,5 @@
 /src
 /pkg
+*.tar
 *.tar.*
 *.orig

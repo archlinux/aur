@@ -109,9 +109,9 @@ for ((i=0; i < ${#lines[@]}; i++)); do
             ;;
         pull)
             if $dryrun; then
-                cmd="git -C $path pull -n $remote $branch"
+                cmd="git -C $path pull --ff-only -n $remote $branch"
             else
-                cmd="git -C $path pull $remote $branch"
+                cmd="git -C $path pull --ff-only $remote $branch"
             fi
             ;;
         *)
