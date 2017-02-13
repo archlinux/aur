@@ -5,6 +5,9 @@ post_install() {
   if ! getent passwd upmpdcli >/dev/null; then
      useradd -g upmpdcli --system upmpdcli -s /bin/false -d / >/dev/null
   fi
+  if [[ ! "$(stat -c '%U:%G' /etc/upmpdcli.conf)" == "upmpdcli:upmpdcli" ]]; then
+     chown upmpdcli:upmpdcli /etc/upmpdcli.conf
+  fi
 }
 
 post_upgrade() {
