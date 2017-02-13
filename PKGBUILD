@@ -7,6 +7,7 @@
 # ======================================
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
 #    * This PKGBUILD as closely as possible matches core's gcc 6.3.1-1
+#       * The github mirror is much more reliable and faster than the official upstream git repo
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
@@ -25,7 +26,7 @@ url="http://gcc.gnu.org"
 makedepends=('binutils>=2.26' 'libmpc' 'gcc-ada' 'doxygen' 'git')
 checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs')
-source=(git+https://gcc.gnu.org/git/gcc.git
+source=(git+https://github.com/gcc-mirror/gcc
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
 md5sums=('SKIP'
          'ac1f25a0677912952718a51f5bc20f32')
