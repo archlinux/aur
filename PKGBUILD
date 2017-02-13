@@ -37,8 +37,8 @@ sha512sums=('SKIP'
 depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk3' 'sqlite3' 'dbus-glib' 'hunspell')
 
 prepare() {
- # remove the dictionaries included in the archive
- rm -rf firefox/dictionaries
+  # remove the dictionaries included in the archive
+  rm -rf firefox/dictionaries
 }
 
 package() {
@@ -55,5 +55,5 @@ package() {
   rm -rf "$pkgdir"/opt/firefox-$channel/{dictionaries,hyphenation}
   ln -s /usr/share/hunspell "$pkgdir/opt/firefox-$_channel/dictionaries"
   ln -s /usr/share/hyphen "$pkgdir/opt/firefox-$_channel/hyphenation"
- 
+
 }
