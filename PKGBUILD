@@ -8,6 +8,7 @@
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
 #    * This PKGBUILD as closely as possible matches core's gcc 6.3.1-1
 #       * The github mirror is much more reliable and faster than the official upstream git repo
+#       * _base_ver (in core, known as pkgver), _pkgver, and _libdir are parsed from gcc/BASE-VER.  Unfortunately, these can't be parsed in the global scope because the git source isn't even downloaded yet.  Setting to default value and updating in prepare() only makes chances within scope of that function.  So, they're parsed in each function that needs them.
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
@@ -15,8 +16,6 @@
 pkgname=('gcc-git' 'gcc-libs-git' 'gcc-fortran-git' 'gcc-objc-git' 'gcc-ada-git' 'gcc-go-git')
 _pkgname=gcc
 pkgver=7.0.1.r152299.a718e363671
-_base_ver=7.0.1
-_pkgver=7
 _islver=0.18
 pkgrel=1
 pkgdesc="The GNU Compiler Collection (developmental version)"
@@ -30,8 +29,6 @@ source=(git+https://github.com/gcc-mirror/gcc
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
 md5sums=('SKIP'
          '11436d6b205e516635b666090b94ab32')
-
-_libdir="usr/lib/gcc/$CHOST/$_base_ver"
 
 pkgver() {
   cd ${srcdir}/gcc
@@ -113,6 +110,10 @@ check() {
 
 package_gcc-libs-git()
 {
+  cd ${srcdir}/gcc
+  _base_ver=$(cat gcc/BASE-VER)
+  _libdir="usr/lib/gcc/$CHOST/$_base_ver"
+
   pkgdesc="Runtime libraries shipped by GCC (developmental version)"
   groups=('base')
   depends=('glibc>=2.24')
@@ -161,6 +162,10 @@ package_gcc-libs-git()
 
 package_gcc-git()
 {
+  cd ${srcdir}/gcc
+  _base_ver=$(cat gcc/BASE-VER)
+  _libdir="usr/lib/gcc/$CHOST/$_base_ver"
+
   pkgdesc="The GNU Compiler Collection - C and C++ frontends (developmental version)"
   depends=("gcc-libs-git=$pkgver-$pkgrel" 'binutils>=2.26' 'libmpc')
   provides=('gcc')
@@ -261,6 +266,10 @@ EOF
 
 package_gcc-fortran-git()
 {
+  cd ${srcdir}/gcc
+  _base_ver=$(cat gcc/BASE-VER)
+  _libdir="usr/lib/gcc/$CHOST/$_base_ver"
+
   pkgdesc="Fortran front-end for GCC (developmental version)"
   depends=("gcc-git=$pkgver-$pkgrel" 'libmpc' 'zlib')
   provides=('gcc-fortran')
@@ -283,6 +292,10 @@ package_gcc-fortran-git()
 
 package_gcc-objc-git()
 {
+  cd ${srcdir}/gcc
+  _base_ver=$(cat gcc/BASE-VER)
+  _libdir="usr/lib/gcc/$CHOST/$_base_ver"
+
   pkgdesc="Objective-C front-end for GCC (developmental version)"
   depends=("gcc-git=$pkgver-$pkgrel" 'libmpc' 'zlib')
   provides=('gcc-objc')
@@ -300,6 +313,11 @@ package_gcc-objc-git()
 
 package_gcc-ada-git()
 {
+  cd ${srcdir}/gcc
+  _base_ver=$(cat gcc/BASE-VER)
+  _libdir="usr/lib/gcc/$CHOST/$_base_ver"
+  _pkgver=$(cat gcc/BASE-VER | sed 's/\..*//g')
+
   pkgdesc="Ada front-end for GCC (GNAT) (developmental version)"
   depends=("gcc-git=$pkgver-$pkgrel" 'libmpc' 'zlib')
   provides=('gcc-ada')
@@ -325,6 +343,10 @@ package_gcc-ada-git()
 
 package_gcc-go-git()
 {
+  cd ${srcdir}/gcc
+  _base_ver=$(cat gcc/BASE-VER)
+  _libdir="usr/lib/gcc/$CHOST/$_base_ver"
+
   pkgdesc="Go front-end for GCC (developmental version)"
   depends=("gcc-git=$pkgver-$pkgrel" 'libmpc' 'zlib')
   provides=('gcc-go')
