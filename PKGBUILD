@@ -68,8 +68,6 @@ package() {
     cp -r "${srcdir}/CheckMATE-${pkgver}/tools" "${pkgdir}/usr/share/CheckMATE"
     cp -r "${srcdir}/CheckMATE-${pkgver}/data" "${pkgdir}/usr/share/CheckMATE/"
 
-    rm -rf "${pkgdir}/usr/share/CheckMATE/tools/analysis/src/" \
-           "${pkgdir}/usr/share/CheckMATE/tools/fritz/src/"
 }
 
 # Local Variables:
