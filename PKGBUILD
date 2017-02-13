@@ -1,7 +1,7 @@
 # Maintainer: Ricardo Vieira <ricardo.vieira@tecnico.ulisboa.pt>
 
 pkgname=budgie-desktop-git
-pkgver=v10.2.9.r31.g0b8e5fa
+pkgver=v10.2.9.r26.g7071987
 pkgrel=1
 pkgdesc="Simple GTK3 desktop experience"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=('gnome-backgrounds: Default background'
 provides=('budgie-desktop')
 conflicts=('budgie-desktop')
 install=budgie-desktop.install
-source=("$pkgname"::'git+https://github.com/solus-project/budgie-desktop.git#commit=0b8e5fa')
+source=("$pkgname"::'git+https://github.com/solus-project/budgie-desktop.git#commit=7071987')
 noextract=()
 md5sums=('SKIP')
 
