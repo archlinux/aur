@@ -1,12 +1,13 @@
 pkgbase = icetop-git
 	pkgdesc = Terminal top-like monitor for icecream/icecc
-	pkgver = r25.8f2a355
+	pkgver = r37.48482f3
 	pkgrel = 1
 	url = https://github.com/aperezdc/icetop
 	arch = x86_64
 	arch = i686
 	license = GPL2
-	makedepends = autoconf
+	makedepends = meson
+	makedepends = ninja
 	depends = icecream
 	depends = libdill
 	depends = libtickit-bzr
