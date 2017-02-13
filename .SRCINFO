@@ -1,13 +1,13 @@
 pkgbase = hamsolar
 	pkgdesc = Small desktop display of the current solar indices
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://hamsoftware.org/old_index.html
-	install = hamsolar.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = qtwebkit
+	depends = hamradio-menus
 	source = http://www.hamsoftware.org/hamsolar-1.0.tgz
 	source = hamsolar.desktop
 	source = hamsolar.png

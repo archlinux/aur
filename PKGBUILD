@@ -3,13 +3,12 @@
 
 pkgname=hamsolar
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Small desktop display of the current solar indices"
 arch=('i686' 'x86_64')
 url="http://hamsoftware.org/old_index.html"
 license=('GPL')
-depends=('qtwebkit')
-install=$pkgname.install
+depends=('qtwebkit' 'hamradio-menus')
 source=(http://www.hamsoftware.org/$pkgname-$pkgver.tgz
              $pkgname.desktop
              $pkgname.png)
