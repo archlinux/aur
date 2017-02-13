@@ -1,4 +1,6 @@
 post_install() {
+  echo "WARNING! Don't forget to install the appropriate kernel headers for your running kernel (eg linux-headers)! The folder /usr/lib/modules/$(uname -r)/build should exist after the installation of the kernel header package."
+
   getent group plugdev >/dev/null || groupadd -r plugdev
 
   echo -e "\e[31m********************************************"
