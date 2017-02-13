@@ -2,7 +2,7 @@
 
 pkgname=aegir
 pkgver=7.x_3.9
-pkgrel=4
+pkgrel=5
 pkgdesc="Configuration for a dedicated Aegir server to host Drupal sites."
 arch=('any')
 url='http://aegirproject.org'
@@ -40,9 +40,8 @@ md5sums=('81c8f6285f3f17184dc8655e2942f3fc'
          'd43026960060bc677549baa26a24c9ee'
          'e1bb28d05fc072f6cf86d18716cf1f97'
          '75535f9870f06c540f513262a9b7b1ab'
-         '0c24b1bcf407429dd874c4979e949d1b'
+         '0b805c7084f94f46590f4b6ca73ec902'
          'f9ae0c781a7ccefc63329daaf81fca36'
-         '0b53c23730e511946859d4e3c7fff982'
          '28c3fdc6242c022a2aa832f7b91564bc')
 
 package() {
