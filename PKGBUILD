@@ -1,6 +1,6 @@
 pkgname=xed-intel
 pkgver=20160202
-pkgrel=1
+pkgrel=2
 pkgdesc="Software library for encoding and decoding X86 instructions."
 url="https://software.intel.com/en-us/articles/xed-x86-encoder-decoder-software-library"
 arch=('x86_64' 'i686')
@@ -19,5 +19,7 @@ package() {
   cd "$srcdir/kits/xed-install-base-2016-02-02-lin-x86-64"
   mkdir -p "$pkgdir/usr"
   cp -r include "$pkgdir/usr/"
+  chmod 0644 $pkgdir/usr/include/*
   cp -r lib "$pkgdir/usr/"
+  chmod 0755 $pkgdir/usr/lib/*
 }

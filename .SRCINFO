@@ -1,7 +1,7 @@
 pkgbase = xed-intel
 	pkgdesc = Software library for encoding and decoding X86 instructions.
 	pkgver = 20160202
-	pkgrel = 1
+	pkgrel = 2
 	url = https://software.intel.com/en-us/articles/xed-x86-encoder-decoder-software-library
 	arch = x86_64
 	arch = i686
