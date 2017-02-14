@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/Elbullazul/Windows-10"
 license=('GPL')
 # depends
-source=("https://github.com/Elbullazul/Windows-10/releases/download/v0.9.9-AU/Windows.10.Icons.v0.5.tar.gz")
+source=("https://github.com/B00merang-Project/Windows-10/releases/download/v0.9.9-AU/Windows.10.Icons.v0.5.tar.gz")
 sha1sums=('0268015ec0f43d7944ee096b400bbf2a221c58ca')
 
 package()
