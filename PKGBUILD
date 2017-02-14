@@ -3,13 +3,13 @@
 
 _pkgname=onedrive
 pkgname=$_pkgname-git
-pkgver=1.1.r13.g7d700e1
+pkgver=1.1.r36.g203062f
 pkgrel=1
 pkgdesc='Free OneDrive client written in D'
 arch=('i686' 'x86_64')
 url='https://github.com/skilion/onedrive'
 license=('GPL3')
-depends=('curl' 'sqlite')
+depends=('curl' 'gcc-libs' 'glibc' 'sqlite')
 makedepends=('dmd')
 provides=("onedrive=$pkgver")
 conflicts=('onedrive')
