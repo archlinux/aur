@@ -44,6 +44,7 @@ depends=('jsoncpp'
 #          'protobuf'
 #          'libevent'
          'ffmpeg'
+#          'icu' # https://crbug.com/678661
          )
 makedepends=('libexif'
              'elfutils'
@@ -340,7 +341,7 @@ _use_system=(
   'ffmpeg'
   'flac'
   'harfbuzz-ng'
-#   'icu'
+#  'icu' # https://crbug.com/678661
 #   'libevent' # Get segfaults and other problems https://bugs.gentoo.org/593458
   'libjpeg'
   'libpng'
@@ -361,13 +362,14 @@ if [ "${_debug_mode}" = "1" ]; then
   )
 fi
 
+# https://crbug.com/678661
 if [ "${_build_nacl}" = "1" ]; then
   _keeplibs+=(
     'third_party/icu' # https://crbug.com/678661
   )
 elif [ "${_build_nacl}" = "0" ]; then
-  depends+=('icu')
-  _use_system+=('icu')
+   depends+=('icu')
+   _use_system+=('icu')
 fi
 
 ################################################
@@ -381,7 +383,7 @@ prepare() {
 
   # Set Python2 path.
   mkdir -p python-path
-  ln -s /usr/bin/python2 "${srcdir}/python-path/python"
+  ln -sf /usr/bin/python2 "${srcdir}/python-path/python"
   export PATH="${srcdir}/python-path:$PATH"
 
   cd "chromium-${pkgver}"
@@ -423,7 +425,7 @@ prepare() {
 
   # Setup nodejs dependency
   mkdir -p third_party/node/linux/node-linux-x64/bin/
-  ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/node
+  ln -sf /usr/bin/node third_party/node/linux/node-linux-x64/bin/node
 
   # Try to fix libpng errors.
   msg2 "Attempt for fix libpng errors"
@@ -460,7 +462,6 @@ prepare() {
 
   msg2 "Update libaddressinput strings."
   python2 third_party/libaddressinput/chromium/tools/update-strings.py
-
 
   if [ "${_build_nacl}" = "1" ]; then
     msg2 "Setup NaCl/PNaCl SDK: Download and install NaCl/PNaCl toolchains"
@@ -544,7 +545,7 @@ package() {
   install -Dm644 chrome.1 "${pkgdir}/usr/share/man/man1/chromium-dev.1"
   install -Dm4755 chrome_sandbox "${pkgdir}/usr/lib/chromium-dev/chrome-sandbox"
   install -Dm755 chromedriver "${pkgdir}/usr/lib/chromium-dev/chromedriver"
-  ln -s /usr/lib/chromium-dev/chromedriver "${pkgdir}/usr/bin/chromedriver-dev"
+  ln -sf /usr/lib/chromium-dev/chromedriver "${pkgdir}/usr/bin/chromedriver-dev"
 
   # Install libs.
   install -Dm755 libclearkeycdm.so "${pkgdir}/usr/lib/chromium-dev/libclearkeycdm.so"
