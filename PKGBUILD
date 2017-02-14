@@ -6,8 +6,8 @@
 # Maintainer: Rick <rick.2889@gmail.com>
 
 pkgname=pamac-pacaur
-pkgver=4.1.8
-_pkgver=4.1.8
+pkgver=4.2.0
+_pkgver=4.2.0
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm patched to work with pacaur"
 arch=('any')
@@ -28,7 +28,7 @@ options=(!emptydirs)
 install=pamac.install
 
 source=("pamac-$pkgver-$pkgrel.tar.gz::https://github.com/manjaro/pamac/archive/v$_pkgver.tar.gz")
-md5sums=('d1a131f58ee12fec6d53f31cfa32d21b')
+sha512sums=('77478f5df88c7277a668def58c0e45619382691c3094bc957f0311ef59938c485ea70f24b3a798aebe2138db279c360600cc826ed3640f4d78b832fd66b41964')
 
 prepare() {
   # adjust version string
