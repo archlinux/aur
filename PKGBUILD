@@ -3,9 +3,9 @@
 
 pkgname='dashcore'
 pkgver=0.12.1.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
-url="http://www.dashpay.io/"
+url="https://www.dash.org/"
 depends=('qt4' 'boost' 'boost-libs' 'miniupnpc' 'openssl' 'qrencode')
 makedepends=('autoconf' 'automake' 'binutils' 'gcc' 'libtool' 'make' 'pkg-config' 'automoc4' 'protobuf')
 license=('MIT')
