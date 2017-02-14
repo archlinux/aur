@@ -4,8 +4,8 @@
 _pkgname=asio
 pkgname="${_pkgname}-latest"
 pkgdesc="Cross-platform C++ library for ASynchronous network I/O (1.11 branch)"
-pkgver=1.11.0.r161.g14db637
-pkgrel=3
+pkgver=1.11.0.r161.g14db6371
+pkgrel=4
 arch=('any')
 url="https://think-async.com/Asio"
 license=('custom:boost')
