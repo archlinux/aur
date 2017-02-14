@@ -9,12 +9,12 @@ pkgbase=nvidia-grsec
 pkgname=(nvidia-grsec nvidia-grsec-dkms)
 pkgver=375.26
 _pkgver=375.20
-_extramodules=extramodules-4.8.17-grsec
-pkgrel=3
+_extramodules=extramodules-4.9.9-grsec
+pkgrel=4
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-headers>=4.8')
+makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-headers>=4.9')
 license=('custom')
 options=(!strip)
 # source=("https://www.grsecurity.net/~paxguy1/nvidia-drivers-${pkgver}-pax.patch")
@@ -49,7 +49,7 @@ DEST_MODULE_LOCATION[2]="/kernel/drivers/video"\
 BUILT_MODULE_NAME[3]="nvidia-drm"\
 DEST_MODULE_LOCATION[3]="/kernel/drivers/video"' dkms.conf
 echo -e "# Only build for scoped kernels." >> dkms.conf
-echo -e "BUILD_EXCLUSIVE_KERNEL=\0042^4.8.*grsec$\0042" >> dkms.conf
+echo -e "BUILD_EXCLUSIVE_KERNEL=\0042^4.9.*grsec$\0042" >> dkms.conf
 }
 
 build() {
@@ -60,7 +60,7 @@ build() {
 
 package_nvidia-grsec() {
     pkgdesc="NVIDIA drivers for linux-grsec kernel"
-    depends=('linux-grsec>=4.8' "nvidia-utils=${pkgver}" 'libgl')
+    depends=('linux-grsec>=4.9' "nvidia-utils=${pkgver}" 'libgl')
     install=nvidia-grsec.install
 
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \

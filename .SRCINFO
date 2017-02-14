@@ -1,7 +1,7 @@
 pkgbase = nvidia-grsec
 	pkgdesc = NVIDIA drivers for linux-grsec kernel
 	pkgver = 375.26
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.nvidia.com/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = nvidia-grsec
 	makedepends = nvidia-libgl
 	makedepends = nvidia-utils=375.26
 	makedepends = linux-grsec
-	makedepends = linux-grsec-headers>=4.8
+	makedepends = linux-grsec-headers>=4.9
 	options = !strip
 	source = https://www.grsecurity.net/~paxguy1/nvidia-drivers-375.20-pax.patch
 	sha512sums = 65ad102cc3c28c6e2d67c4f24c8fe6ca3b9b4b4f57eca6fdf437127ce9caccabebd3049af53b30ba808e68529b5627a7e3add31b42cffb09d648a69bedfa55d9
@@ -21,7 +21,7 @@ pkgbase = nvidia-grsec
 pkgname = nvidia-grsec
 	pkgdesc = NVIDIA drivers for linux-grsec kernel
 	install = nvidia-grsec.install
-	depends = linux-grsec>=4.8
+	depends = linux-grsec>=4.9
 	depends = nvidia-utils=375.26
 	depends = libgl
 
