@@ -77,8 +77,9 @@ pkgname = xorg-server-git
 	depends = libpciaccess
 	depends = libdrm
 	depends = libxshmfence
-	provides = 
-	provides = X-ABI-_VERSION=grep: xserver/hw/xfree86/common/xf86Module.h: No such file or directory
+	provides = X-ABI-VIDEODRV_VERSION=23
+	provides = X-ABI-XINPUT_VERSION=24.1
+	provides = X-ABI-EXTENSION_VERSION=10.0
 	provides = xorg-server
 	provides = x-server
 	conflicts = xorg-server
