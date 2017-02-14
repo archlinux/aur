@@ -4,14 +4,15 @@
 
 pkgname=proofgeneral
 pkgver=4.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Generic interface for proof assistants.'
 arch=('any')
 license=('GPL')
 url='https://proofgeneral.github.io/'
-depends=('emacs>=24.3')
+depends=('emacs') # >=24.3, but the version constraint causes issues with emacs-nox
 install="${pkgname}.install"
 source=("https://github.com/ProofGeneral/PG/archive/v${pkgver}.tar.gz")
+replaces=('proofgeneral-nox')
 
 md5sums=('4a80e31f88cb22d7caa6f28ba83dcc06')
 sha256sums=('1ba236d81768a87afa0287f49d4b2223097bc61d180468cbd997d46ab6132e7e')

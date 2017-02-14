@@ -1,12 +1,12 @@
 pkgbase = proofgeneral
 	pkgdesc = Generic interface for proof assistants.
 	pkgver = 4.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://proofgeneral.github.io/
 	install = proofgeneral.install
 	arch = any
 	license = GPL
-	depends = emacs>=24.3
+	depends = emacs
 	source = https://github.com/ProofGeneral/PG/archive/v4.4.tar.gz
 	md5sums = 4a80e31f88cb22d7caa6f28ba83dcc06
 	sha256sums = 1ba236d81768a87afa0287f49d4b2223097bc61d180468cbd997d46ab6132e7e
