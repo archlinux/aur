@@ -1,12 +1,12 @@
 # Maintainer: TJM <tommy.mairo@gmail.com>
 pkgname=libcorkipset-git
-pkgver=r221.4e09f31
-pkgrel=3
+pkgver=r222.5ad149f
+pkgrel=1
 pkgdesc="A small C helper library for storing sets of IPv4 and IPv6 addresses"
 arch=("x86_64" "x64")
 url="https://github.com/rogers0/libcorkipset"
 source=('git+https://github.com/rogers0/libcorkipset.git')
-license=('LLC')
+license=('BSD')
 depends=('r' 'pkg-config' 'libcork')
 makedepends=('git')
 provides=('libcorkipset')
@@ -43,6 +43,8 @@ prepare() {
       -e 's%#include "ipset%#include "libcorkipset%' \
       -i include/ipset/*.h */*/*/*.c */*/*/*.c.in */*/*.c */*.c
   mv include/{,libcork}ipset
+  git add -A
+  git commit -m "Update: apply patch."
 }
 
 
@@ -59,11 +61,16 @@ build() {
   cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   make
-  make test
+}
+
+check(){
+	cd "$srcdir/$_gitname-build/build"
+	make test
 }
 
 package() {
   cd "$srcdir/$_gitname-build/build"
   make DESTDIR="$pkgdir/" install
+  install -Dm644 "$srcdir"/$pkgname/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
 
