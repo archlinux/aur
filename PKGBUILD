@@ -6,15 +6,15 @@
 pkgbase='python-axolotl'
 pkgname=('python-axolotl' 'python2-axolotl')
 pkgver=0.1.35
-pkgrel=2
+pkgrel=3
 pkgdesc="Python port of libaxolotl"
 url="https://github.com/tgalal/python-axolotl"
 arch=('any')
 license=('GPL3')
 makedepends=('python2-setuptools' 'python2-dateutil' 'python2-protobuf' 'python2-crypto' 'python2-axolotl-curve25519'
              'python-setuptools' 'python-dateutil' 'python-protobuf' 'python-crypto' 'python-axolotl-curve25519')
-source=("https://pypi.python.org/packages/d5/6b/cc0256a10d11f8a8868e9c8673a0edcdba438c1e92c4b66e52c6b575ca6a/python-axolotl-0.1.35.tar.gz")
-md5sums=('34c54a41fe2271caade486fc92392541')
+source=("https://github.com/tgalal/python-axolotl/archive/$pkgver.tar.gz")
+md5sums=('3c2e0580c4dce21161a4ebdf18f4438d')
 
 prepare() {
 	cp -a "${pkgbase}-${pkgver}"{,-python2}
