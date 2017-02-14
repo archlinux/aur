@@ -8,11 +8,10 @@ arch=('x86_64')
 url="https://developer.nvidia.com/cuDNN"
 license=('proprietary')
 depends=('cuda')
-source=("file://cudnn-8.0-linux-x64-v5.1.tgz")
-sha256sums=("c10719b36f2dd6e9ddc63e3189affaa1a94d7d027e63b71c3f64d449ab0645ce")
+source=("http://developer.download.nvidia.com/compute/redist/cudnn/v5.1/cudnn-8.0-linux-x64-v5.1.tgz")
+sha256sums=('c10719b36f2dd6e9ddc63e3189affaa1a94d7d027e63b71c3f64d449ab0645ce')
 
 package() {
-  cd "${srcdir}"
   mkdir -p "${pkgdir}/opt"
   cp -r cuda "${pkgdir}/opt"
 }
