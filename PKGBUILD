@@ -2,7 +2,7 @@
 pkgname=graylog
 replaces=(graylog2-server graylog-web-interface)
 conflicts=(${replaces[*]})
-pkgver=2.1.3
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Graylog is an open source syslog implementation that stores your logs in ElasticSearch and MongoDB"
 arch=('any')
@@ -19,7 +19,7 @@ source=(
 	graylog-tmpfiles.conf
 	graylog.service
 )
-sha256sums=('eb66106d609d00c55e6d914d14b7ea881f8db9317fb443a8bbc66c55f924f94c'
+sha256sums=('1e3b77a1706245515581fb2db278fcf9ee0e7d1837af3f15e657878ca17e6b61'
             'SKIP'
             'SKIP')
 
