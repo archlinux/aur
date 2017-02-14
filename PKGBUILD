@@ -1,5 +1,5 @@
 pkgname=mingw-w64-kimageformats
-pkgver=5.30.0
+pkgver=5.31.0
 pkgrel=1
 arch=(any)
 pkgdesc="Image format plugins for Qt5 (mingw-w64)"
@@ -11,7 +11,7 @@ optdepends=("mingw-w64-karchive: plugin for Krita and OpenRaster images")
 options=(staticlibs !strip !buildflags)
 url="https://projects.kde.org/projects/frameworks/kimageformats"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kimageformats-${pkgver}.tar.xz")
-md5sums=('81d981285f5c41bd807ddacddf30cc34')
+md5sums=('99cbfa14df2fb11930090122b461bc6a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
