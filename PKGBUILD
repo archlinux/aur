@@ -2,17 +2,17 @@
 
 _gemname=winrm
 pkgname=ruby-$_gemname
-pkgver=1.3.6
-pkgrel=2
+pkgver=2.1.2
+pkgrel=1
 pkgdesc='Ruby library for Windows Remote Management'
 arch=(any)
 url='https://github.com/WinRb/WinRM'
 license=(Apache-2.0)
-depends=('ruby' 'ruby-builder>=2.1.2' 'ruby-gssapi>1.2' 'ruby-gyoku>1.0' 'ruby-httpclient>=2.2' 'ruby-logging>=1.6.1' 'ruby-nori>=2.0' 'ruby-rubyntlm_0.4.0' 'ruby-uuidtools>=2.1.2')
+depends=('ruby' 'ruby-builder>=2.1.2' 'ruby-erubis=2.7' 'ruby-gssapi>1.2' 'ruby-gyoku>1.0' 'ruby-httpclient>=2.2' 'ruby-logging>=1.6.1' 'ruby-nori>=2.0' 'ruby-rubyntlm_0.4.0')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('09459103f566b353eebeee64a7258e63573eb91f638cc1ac22c269e2c7d839ba209e8520d55235bbf786c1c0d4fd969f5a09090055823f9e025230ed4adeb388')
+sha512sums=('235145a0661f745612a362c29d279ed82e5c4e68cd6d758684a9fb1bc9384dc1e6600b120aff8f2fd1dc525ba677ea9aa163e1433dcf55021c0c1a577989a234')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
