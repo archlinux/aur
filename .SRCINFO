@@ -1,0 +1,13 @@
+pkgbase = xed-intel
+	pkgdesc = Software library for encoding and decoding X86 instructions.
+	pkgver = 20160202
+	pkgrel = 1
+	url = https://software.intel.com/en-us/articles/xed-x86-encoder-decoder-software-library
+	arch = x86_64
+	arch = i686
+	license = What If Pre-Release License Agreement
+	source = https://software.intel.com/system/files/managed/c2/2a/xed-install-base-2016-02-02-lin-x86-64.zip
+	sha256sums = 336920f08d2602dee8f076a095ec597f393f76a3cb6322a410be09ec4408caf1
+
+pkgname = xed-intel
+
