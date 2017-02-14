@@ -1,10 +1,9 @@
 # Contributor: Sherlock-Holo <sherlockya@gmail.com>
-# Contributor: Sherlock-Holo <sherlockya@gmail.com>
 
 pkgname=pvim
-pkgver=v0.2
+pkgver=v0.3.1
 pkgrel=1
-pkgdesc="a script helps you quickly upload the code to cfp-vim"
+pkgdesc="a script helps you quickly upload the codes or pictures to vim-cn"
 url="https://github.com/Sherlock-Holo/pvim"
 arch=('any')
 license=('MPL')
