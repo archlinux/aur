@@ -1,0 +1,50 @@
+pkgbase = python-saharaclient
+	pkgdesc = Python client library for Trove
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://docs.openstack.org/developer/python-saharaclient
+	arch = any
+	license = Apache
+	checkdepends = python-hacking
+	checkdepends = python2-hacking
+	checkdepends = python-coverage
+	checkdepends = python2-coverage
+	checkdepends = python-mock
+	checkdepends = python2-mock
+	checkdepends = python-oslotest
+	checkdepends = python2-oslotest
+	checkdepends = python-os-testr
+	checkdepends = python2-os-testr
+	checkdepends = python-requests-mock
+	checkdepends = python2-requests-mock
+	checkdepends = python-testrepository
+	checkdepends = python2-testrepository
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = git+https://git.openstack.org/openstack/python-saharaclient#tag=1.1.0
+	md5sums = SKIP
+
+pkgname = python-saharaclient
+	depends = python-pbr
+	depends = python-keystoneauth1
+	depends = python-osc-lib
+	depends = python-oslo-log
+	depends = python-oslo-serialization
+	depends = python-oslo-i18n
+	depends = python-oslo-utils
+	depends = python-openstackclient
+	depends = python-requests
+	depends = python-six
+
+pkgname = python2-saharaclient
+	depends = python2-pbr
+	depends = python2-keystoneauth1
+	depends = python2-osc-lib
+	depends = python2-oslo-log
+	depends = python2-oslo-serialization
+	depends = python2-oslo-i18n
+	depends = python2-oslo-utils
+	depends = python2-openstackclient
+	depends = python2-requests
+	depends = python2-six
+
