@@ -1,9 +1,9 @@
 # Maintainer: Ralf Mueller <stark.dreamdetective@gmail.com>
 # Contributor: Ralf Mueller <stark.dreamdetective@gmail.com>
 pkgname=cdo
-pkgver=1.7.2
-fileID=12760
-pkgrel=1
+pkgver=1.8.0
+fileID=13772
+pkgrel=0
 pkgdesc="Command line tool manipulate and analyse Climate model Data. Supported data formats are GRIB, netCDF, SERVICE, EXTRA and IEG. There are more than 400 operators available."
 url="https://code.zmaw.de/projects/cdo"
 license=('GPLv2')
@@ -16,7 +16,7 @@ arch=(i686 x86_64)
 backup=()
 install=
 source=(https://code.zmaw.de/attachments/download/${fileID}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('f08e4ce8739a4f2b63fc81a24db3ee31')
+md5sums=('42d4990a7c03159bc74335035273a59d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -32,7 +32,7 @@ build() {
     --with-magics=/usr \
     --with-libxml2=/usr \
     CFLAGS="-g -O3 -std=gnu99 -Wall -fopenmp -march=native " \
-    LIBS="-ljasper -lpng -lopenjpeg" \
+    LIBS="-lhdf5 -ljasper -lpng -lopenjpeg" \
     CPPFLAGS="-I/usr/include/magics -I/usr/include/libxml2"
   make -j12 || return 
 
