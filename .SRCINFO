@@ -1,7 +1,7 @@
 pkgbase = stumpwm-git
 	pkgdesc = A tiling, keyboard-driven window manager written in common lisp
 	pkgver = 1.0.0.r55.gff94372
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stumpwm.github.io
 	arch = i686
 	arch = x86_64

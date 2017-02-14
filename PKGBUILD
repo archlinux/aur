@@ -9,7 +9,7 @@
 pkgname=stumpwm-git
 _pkgname=stumpwm
 pkgver=1.0.0.r55.gff94372
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiling, keyboard-driven window manager written in common lisp"
 arch=('i686' 'x86_64')
 url="https://stumpwm.github.io"
@@ -63,7 +63,7 @@ package() {
 
   # contrib modules
   install -d ${pkgdir}${_contribdest}
-  cp -dr --no-preserve=ownership ${srcdir}/${_pkgname}-contrib/* \
+  cp -dr --no-preserve=ownership ${srcdir}/${_pkgname}-contrib-git/* \
      ${pkgdir}${_contribdest}
 
   # stumpish
