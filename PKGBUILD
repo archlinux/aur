@@ -9,6 +9,7 @@ arch=(any)
 url="https://github.com/zakkak/workspace-grid-gnome-shell-extension"
 license=('GPL3')
 depends=('gnome-shell')
+replaces=('gnome-shell-extension-workspace-grid')
 makedepends=('git')
 install=gnome-shell-extension-workspace-grid-git.install
 source=("$pkgname::git+https://github.com/zakkak/workspace-grid-gnome-shell-extension.git")
