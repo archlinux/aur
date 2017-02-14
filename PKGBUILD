@@ -1,7 +1,7 @@
 pkgname=whip-server
 pkgver=5.01
 _pkgsubver="-win64b"
-pkgrel=2
+pkgrel=3
 pkgdesc="The InWorldz WHIP distributed asset server"
 arch=(i686 x86_64)
 url="https://github.com/InWorldz/$pkgname"
@@ -13,7 +13,7 @@ makedepends=(cmake boost)
 depends=(boost-libs)
 options=(emptydirs)
 md5sums=('3174e8b1de0aabf08446ff7b8c6e2b06'
-         'd9a3fc990e7540839ada38ac42cf3e79')
+         '307310746d8ffa5830fa573b57a64abb')
 
 prepare() {
 	mkdir -p build
