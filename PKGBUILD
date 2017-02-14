@@ -2,14 +2,14 @@
 
 pkgname=gopenvpn-git
 pkgver=svn.migration.r12.gb4192eb
-pkgrel=5
+pkgrel=6
 pkgdesc='gopenvpn is a simple graphical front-end for OpenVPN, the open source VPN solution.'
 arch=('i686' 'x86_64')
 url='http://gopenvpn.sourceforge.net/'
 license=('GPL')
 depends=('libglade' 'libgnome-keyring' 'gtk2' 'openvpn')
 optdepends=('gnome-keyring: handle credentials')
-makedepends=('git')
+makedepends=('git' 'polkit')
 source=("$pkgname"::'git://gopenvpn.git.sourceforge.net/gitroot/gopenvpn/gopenvpn.git'
         'config.patch')
 sha256sums=('SKIP'
