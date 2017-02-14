@@ -2,8 +2,8 @@
 
 pkgbase=vis-standalone-git
 pkgname=(vis-standalone-git vis-single-git)
-pkgver=0.2.r725.gbd36b0b
-pkgrel=2
+pkgver=0.2.r763.g60f41f0
+pkgrel=1
 _pkgver_libmusl=1.1.16
 _pkgver_ncurses=6.0
 _pkgver_libtermkey=0.19
@@ -46,7 +46,8 @@ sha256sums=('SKIP'
 prepare() {
 	cd vis/
 
-	git config --file=.gitmodules submodule.git.url ../vis-test/
+	git config --file=.gitmodules submodule.test.url ../vis-test/
+	git update-index --assume-unchanged .gitmodules
 	git submodule init
 	git submodule update
 
