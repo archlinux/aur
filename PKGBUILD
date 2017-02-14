@@ -20,6 +20,6 @@ package() {
     cp -r "${srcdir}/usr/share/applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
     cp -r "${srcdir}/usr/share/icons" "${pkgdir}/usr/share/icons/"
     mkdir "${pkgdir}/usr/bin"
-    ln -s "${pkgdir}/opt/${fullpkgname}/${pkgname}" "${pkgdir}/usr/bin/"
+    ln -s "${pkgdir}/opt/${fullpkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     sed -i "s/\/opt\/${fullpkgname}\/${pkgname}/${pkgname}/g" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
