@@ -28,14 +28,14 @@ build() {
 }
 
 package_python-axolotl() {
-	depends=('python' 'python-dateutil' 'python-protobuf' 'python-crypto' 'python-axolotl-curve25519')
+	depends=('python-protobuf' 'python-crypto' 'python-axolotl-curve25519')
 
 	cd "${pkgbase}-${pkgver}"
 	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-axolotl() {
-	depends=('python2' 'python2-dateutil' 'python2-protobuf' 'python2-crypto' 'python2-axolotl-curve25519')
+	depends=('python2-protobuf' 'python2-crypto' 'python2-axolotl-curve25519')
 
 	cd "${pkgbase}-${pkgver}-python2"
 	python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
