@@ -42,7 +42,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${gitname}"
-  make USE_LUAJIT=1 PREFIX=/usr all
+  make PREFIX=/usr all
 }
 
 package() {
