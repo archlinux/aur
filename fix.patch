@@ -1,0 +1,97 @@
+diff --git a/trunk/test/ExRootLHCOlympicsConverter.cpp b/trunk/test/ExRootLHCOlympicsConverter.cpp
+index cb6ee65..c3ddf92 100644
+--- a/trunk/test/ExRootLHCOlympicsConverter.cpp
++++ b/trunk/test/ExRootLHCOlympicsConverter.cpp
+@@ -159,7 +159,7 @@ Long64_t LHCOlympicsConverter::GetNumberOfObjects(ifstream &inputFileStream)
+       fBufferStream.clear();
+       fBufferStream.str(fBuffer);
+       
+-      canReadNumber = (fBufferStream >> number);
++      canReadNumber = static_cast<bool>(fBufferStream >> number);
+     }
+     while(!canReadNumber);
+ 
+@@ -193,19 +193,19 @@ Bool_t LHCOlympicsConverter::ReadObject(ifstream &inputFileStream)
+ 
+     for(i = 0; canReadNumber && i < LHCOlympicsObject::maxIntParam; ++i)
+     {
+-      canReadNumber = (fBufferStream >> fCurrentObject.intParam[i]);
++      canReadNumber = static_cast<bool>(fBufferStream >> fCurrentObject.intParam[i]);
+     }
+     
+     if(canReadNumber && fCurrentObject.intParam[0] == 0)
+     {
+       fEventNumber = fCurrentObject.intParam[1];
+-      canReadNumber = (fBufferStream >> fTriggerWord);
++      canReadNumber = static_cast<bool>(fBufferStream >> fTriggerWord);
+     }
+     else
+     {
+       for(i = 0; canReadNumber && i < LHCOlympicsObject::maxDblParam; ++i)
+       {
+-        canReadNumber = (fBufferStream >> fCurrentObject.dblParam[i]);
++        canReadNumber = static_cast<bool>(fBufferStream >> fCurrentObject.dblParam[i]);
+       }
+     }
+   }
+diff --git a/trunk/test/LHEF.h b/trunk/test/LHEF.h
+index f58c764..e917629 100644
+--- a/trunk/test/LHEF.h
++++ b/trunk/test/LHEF.h
+@@ -534,7 +534,7 @@ protected:
+    * Used internally to read a single line from the stream.
+    */
+   bool getline() {
+-    return ( std::getline(file, currentLine) );
++    return static_cast<bool>( std::getline(file, currentLine) );
+   }
+ 
+ protected:
+diff --git a/trunk/test/MatchingSTDHEPConverter.cpp b/trunk/test/MatchingSTDHEPConverter.cpp
+index 06e9701..8a7d49d 100644
+--- a/trunk/test/MatchingSTDHEPConverter.cpp
++++ b/trunk/test/MatchingSTDHEPConverter.cpp
+@@ -129,7 +129,7 @@ int main(int argc, char *argv[])
+ 
+   ofstream outputTextFile(argv[3], ios::out);
+ 
+-  if(outputTextFile == 0)
++  if(! outputTextFile)
+   {
+     cerr << "** ERROR: Can't open '" << argv[3] << "' for ouput" << endl;
+     return 1;
+diff --git a/trunk/test/MatchingTreeConverter.cpp b/trunk/test/MatchingTreeConverter.cpp
+index 0cf7c90..af52316 100644
+--- a/trunk/test/MatchingTreeConverter.cpp
++++ b/trunk/test/MatchingTreeConverter.cpp
+@@ -110,7 +110,7 @@ Long64_t MatchingTreeConverter::GetNumberOfObjects(ifstream &inputFileStream)
+       fBufferStream.clear();
+       fBufferStream.str(fBuffer);
+       
+-      canReadNumber = (fBufferStream >> number);
++      canReadNumber = static_cast<bool>(fBufferStream >> number);
+     }
+     while(!canReadNumber);
+ 
+@@ -144,7 +144,7 @@ Bool_t MatchingTreeConverter::ReadObject(ifstream &inputFileStream)
+ 
+     for(i = 0; canReadNumber && i < MatchingTreeObject::maxDblParam; ++i)
+     {
+-      canReadNumber = (fBufferStream >> fCurrentObject.dblParam[i]);
++      canReadNumber = static_cast<bool>(fBufferStream >> fCurrentObject.dblParam[i]);
+     }
+   }
+   while(!canReadNumber);
+diff --git a/trunk/Makefile.orig b/trunk/Makefile
+index d836fe4..43c7fb4 100644
+--- a/trunk/Makefile
++++ b/trunk/Makefile
+@@ -7,7 +7,7 @@
+ # multi-platform configuration is taken from ROOT (root/test/Makefile.arch)
+ #
+ 
+-include $(ROOTSYS)/test/Makefile.arch
++include /etc/Makefile.arch
+ 
+ ifeq ($(ARCH),macosx64)
+ UNDEFOPT = dynamic_lookup
