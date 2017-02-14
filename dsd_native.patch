@@ -1,7 +1,7 @@
-From 9eee6e511a4b875069b6a7c42cd68ccc6a982311 Mon Sep 17 00:00:00 2001
+From 039471409687f1def50e96bdefc51d6325c3b47a Mon Sep 17 00:00:00 2001
 From: Jurgen Kramer <gtmkramer@xs4all.nl>
-Date: Sun, 31 Jul 2016 10:30:30 +0200
-Subject: [PATCH] This patch extends native DSD support for MPD 0.19.17
+Date: Fri, 16 Sep 2016 11:15:55 +0200
+Subject: [PATCH] This patch extends native DSD support for MPD 0.19.19
 
 Signed-off-by: Jurgen Kramer <gtmkramer@xs4all.nl>
 ---
@@ -30,10 +30,10 @@ Signed-off-by: Jurgen Kramer <gtmkramer@xs4all.nl>
  create mode 100644 src/pcm/PcmDsdNative.hxx
 
 diff --git a/Makefile.am b/Makefile.am
-index 7cd68f8..a57cbaa 100644
+index 744b966..53cb21f 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -496,7 +496,8 @@ PCM_LIBS = \
+@@ -498,7 +498,8 @@ PCM_LIBS = \
  if ENABLE_DSD
  libpcm_a_SOURCES += \
  	src/pcm/PcmDsd.cxx src/pcm/PcmDsd.hxx \
@@ -43,7 +43,7 @@ index 7cd68f8..a57cbaa 100644
  endif
  
  if HAVE_LIBSAMPLERATE
-@@ -2094,7 +2095,7 @@ endif
+@@ -2104,7 +2105,7 @@ endif
  #
  
  man_MANS = doc/mpd.1 doc/mpd.conf.5
@@ -110,14 +110,14 @@ index 0000000..d859472
 +
 +
 diff --git a/configure.ac b/configure.ac
-index b5d59c2..5d5c9c3 100644
+index e4764c9..1954708 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -1,6 +1,6 @@
  AC_PREREQ(2.60)
  
--AC_INIT(mpd, 0.19.17, musicpd-dev-team@lists.sourceforge.net)
-+AC_INIT(mpd, 0.19.17-dsd, gtmkramer@xs4all.nl)
+-AC_INIT(mpd, 0.19.19, musicpd-dev-team@lists.sourceforge.net)
++AC_INIT(mpd, 0.19.19-dsd, gtmkramer@xs4all.nl)
  
  VERSION_MAJOR=0
  VERSION_MINOR=19
@@ -470,12 +470,12 @@ index 8874e1b..5238e1c 100644
  
 diff --git a/src/pcm/PcmDsdNative.cxx b/src/pcm/PcmDsdNative.cxx
 new file mode 100644
-index 0000000..2e0e7a1
+index 0000000..3171123
 --- /dev/null
 +++ b/src/pcm/PcmDsdNative.cxx
 @@ -0,0 +1,69 @@
 +/*
-+ * Copyright (C) 2014-2015 Jurgen Kramer
++ * Copyright (C) 2014-2016 Jurgen Kramer
 + *
 + * This program is free software; you can redistribute it and/or modify
 + * it under the terms of the GNU General Public License as published by
@@ -545,12 +545,12 @@ index 0000000..2e0e7a1
 +}
 diff --git a/src/pcm/PcmDsdNative.hxx b/src/pcm/PcmDsdNative.hxx
 new file mode 100644
-index 0000000..e904949
+index 0000000..6dc54fa
 --- /dev/null
 +++ b/src/pcm/PcmDsdNative.hxx
 @@ -0,0 +1,38 @@
 +/*
-+ * Copyright (C) 2014-2015 Jurgen Kramer
++ * Copyright (C) 2014-2016 Jurgen Kramer
 + *
 + * This program is free software; you can redistribute it and/or modify
 + * it under the terms of the GNU General Public License as published by

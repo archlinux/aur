@@ -7,7 +7,7 @@
 # Contributor: Ben <ben@benmazer.net>
 
 pkgname=mpd-dsd
-pkgver=0.19.17
+pkgver=0.19.19
 pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music with DSD patches and Sox enabled'
 url='https://github.com/lintweaker/mpd-dsd-019'
@@ -23,7 +23,7 @@ validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512')
 source=("http://www.musicpd.org/download/mpd/${pkgver%.*}/mpd-${pkgver}.tar.xz"{,.sig}
         'tmpfiles.d'
         'conf'
-        '0001-This-patch-extends-native-DSD-support-for-MPD-0.19.1.patch')
+        'dsd_native.patch')
 sha1sums=('SKIP'
           'SKIP'
           'SKIP'
@@ -35,7 +35,7 @@ install=install
 
 prepare() {
 cd "${srcdir}/mpd-${pkgver}"
-  patch -Np1 -i "../0001-This-patch-extends-native-DSD-support-for-MPD-0.19.1.patch"
+  patch -Np1 -i "../dsd_native.patch"
 }
 
 build() {
