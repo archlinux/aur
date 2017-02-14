@@ -1,9 +1,8 @@
 pkgbase = quagga-git
 	pkgdesc = BGP/OSPF/ISIS/RIP/RIPNG routing daemon suite (FPM enabled) git version
 	pkgver = 1.1.0.r95.gc876b0b2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.quagga.net
-	install = quagga.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -13,13 +12,13 @@ pkgbase = quagga-git
 	depends = readline
 	depends = ncurses
 	depends = perl
-	provides = quagga=1.1.0.r95.gc876b0b2
+	depends = c-ares
+	provides = quagga=1.2.0
 	conflicts = quagga
 	options = !buildflags
 	source = quagga-git::git+https://github.com/Quagga/quagga.git
 	source = quagga.sysusers
 	source = quagga.tmpfiles
-	source = babeld.service
 	source = bgpd.service
 	source = isisd.service
 	source = ospf6d.service
@@ -31,7 +30,6 @@ pkgbase = quagga-git
 	md5sums = SKIP
 	md5sums = 286c545efadcc7b463eb603c25473cb4
 	md5sums = 9dfa2f649a2c83a2e52f5f89dec3b167
-	md5sums = 20a8e36ad851d4e06467aeb56a84b245
 	md5sums = cc90c234aac9098c5132d653037d5269
 	md5sums = 67d0ada0f3000b9a86351798786c5256
 	md5sums = 6e2569ef339838aa41375e913a8e19ce
