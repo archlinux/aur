@@ -7,7 +7,7 @@
 pkgname=luakit-git
 gitname=luakit
 pkgver=r2735.5f2a71b
-pkgrel=1
+pkgrel=2
 pkgdesc='Browser framework based on Webkit and Lua'
 arch=('x86_64' 'i686')
 url='https://github.com/luakit/luakit'
@@ -15,7 +15,7 @@ license=('GPL3')
 makedepends=('help2man' 'git')
 provides=('luakit')
 conflicts=('luakit')
-depends=('webkitgtk2' 'lua51-filesystem' 'libunique' 'luajit')
+depends=('webkit2gtk' 'lua51-filesystem' 'libunique' 'luajit')
 backup=('etc/xdg/luakit/binds.lua'
         'etc/xdg/luakit/globals.lua'
         'etc/xdg/luakit/modes.lua'
