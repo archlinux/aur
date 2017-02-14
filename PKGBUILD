@@ -8,7 +8,7 @@ pkgdesc='Notepad++-like editor for Linux'
 arch=('i686' 'x86_64')
 url='http://notepadqq.altervista.org/wp/'
 license=('GPL3')
-depends=('qt5-webkit' 'qt5-svg')
+depends=('gcc-libs' 'glibc' 'qt5-base' 'qt5-svg' 'qt5-webkit')
 makedepends=('git' 'qt5-tools')
 options=('!emptydirs')
 source=("git://github.com/notepadqq/notepadqq.git#tag=v$pkgver"

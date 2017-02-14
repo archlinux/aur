@@ -8,8 +8,11 @@ pkgbase = notepadqq-src
 	license = GPL3
 	makedepends = git
 	makedepends = qt5-tools
-	depends = qt5-webkit
+	depends = gcc-libs
+	depends = glibc
+	depends = qt5-base
 	depends = qt5-svg
+	depends = qt5-webkit
 	options = !emptydirs
 	source = git://github.com/notepadqq/notepadqq.git#tag=v1.0.1
 	source = git://github.com/notepadqq/CodeMirror.git
