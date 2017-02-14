@@ -2,8 +2,8 @@
 
 pkgname=algernon
 pkgver=1.4
-pkgrel=1
-pkgdesc='Web server with built-in support for Lua, Markdown and templates'
+pkgrel=2
+pkgdesc='Lightweight web server written in Go with support for HTTP/2, Markdown, Pongo2 and Lua'
 arch=('x86_64' 'i686')
 url='http://algernon.roboticoverlords.org/'
 license=('MIT')
@@ -60,7 +60,7 @@ package() {
   install -Dm644 system/algernon_dev.service "$pkgdir/usr/lib/systemd/system/algernon.service"
   install -Dm644 system/logrotate "$pkgdir/etc/logrotate.d/algernon"
   install -Dm644 system/serverconf.lua "$pkgdir/etc/algernon/serverconf.lua"
-  install -Dm644 desktop/algernon.desktop "$pkgdir/usr/share/desktop/algernon.desktop"
+  install -Dm644 desktop/algernon.desktop "$pkgdir/usr/share/applications/algernon.desktop"
   install -Dm755 desktop/mdview "$pkgdir/usr/bin/mdview"
   install -Dm644 desktop/markdown.png "$pkgdir/usr/share/pixmaps/markdown.png"
   install -d "$pkgdir/usr/share/doc/$pkgname/"
