@@ -1,7 +1,7 @@
 pkgbase = libcorkipset-git
 	pkgdesc = A small C helper library for storing sets of IPv4 and IPv6 addresses
 	pkgver = r221.4e09f31
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rogers0/libcorkipset
 	arch = x86_64
 	arch = x64
@@ -11,6 +11,7 @@ pkgbase = libcorkipset-git
 	depends = pkg-config
 	depends = libcork
 	provides = libcorkipset
+	conflicts = libcorkipset
 	source = git+https://github.com/rogers0/libcorkipset.git
 	sha256sums = SKIP
 
