@@ -26,6 +26,6 @@ package() {
   install -Dm 755 gui.py -t "${pkgdir}/usr/share/pbtk"
   chmod -R 755 extractors
   cp -r extractors utils views "${pkgdir}/usr/share/pbtk"
-  # install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  # install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/pbtk"
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/pbtk"
 }
