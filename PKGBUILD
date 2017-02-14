@@ -1,13 +1,13 @@
-# Maintainer: tri <trile7 at gmail dot com>
+# Maintainer: Jenya Sovetkin <edotsovetkinatgmaildotcom>
 pkgname=xmeasure
 pkgver=0.0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Pixel measurement (ruler) tool on linux"
 arch=('i686' 'x86_64')
-url="http://xmeasure.googlecode.com"
+url="https://code.google.com/archive/p/xmeasure"
 license=('GPL2')
 makedepends=('gcc')
-source=("$url/files/xmeasure.c")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/xmeasure/xmeasure.c")
 md5sums=('dff78ab95ffee6957d849caeb3c69576')
 
 build() {
