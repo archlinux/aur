@@ -9,7 +9,6 @@ url='https://fonts.google.com/specimen/Signika'
 license=('custom:SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git' 'ttf-signika-family-ib')
-install="${pkgname}.install"
 source=("Signika-Bold-${pkgver}.ttf::https://github.com/google/fonts/raw/883939708704a19a295e0652036369d22469e8dc/ofl/signika/Signika-Bold.ttf"
         "Signika-Light-${pkgver}.ttf::https://github.com/google/fonts/raw/883939708704a19a295e0652036369d22469e8dc/ofl/signika/Signika-Light.ttf"
         "Signika-Regular-${pkgver}.ttf::https://github.com/google/fonts/raw/883939708704a19a295e0652036369d22469e8dc/ofl/signika/Signika-Regular.ttf"
