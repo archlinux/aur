@@ -1,16 +1,13 @@
-# Maintainer: Vertoe <vertoe AT darkcoin DOT io>
-# Contributor: deusstultus <deusstultus AT gmail DOT com>
-# Contributor: Viliam Kubis <viliam DOT kubis AT gmail DOT com>
-# Contributor: GreenRaccoon23 <GreenRaccoon23 AT gmail DOT com>
+# Maintainer: GreenRaccoon23 <GreenRaccoon23 AT gmail DOT com>
 # Based on PKGBUILD from vertcoin-git maintained by Lothar_m <lothar_m AT riseup DOT net>
 
 pkgname='dashcore-git'
 _gitname='dash'
 _gitbranch='master'
-pkgver=9920.88f3370
+pkgver=13279.56971f8da
 pkgrel=1
 arch=('i686' 'x86_64')
-url="https://www.dashpay.io/"
+url="https://www.dash.org/"
 depends=('qt5-base' 'boost' 'boost-libs' 'miniupnpc' 'openssl')
 makedepends=('autoconf' 'automake' 'binutils' 'gcc' 'libtool' 'make' 'pkg-config' 'git' 'qrencode' 'automoc4' 'protobuf' 'qt5-tools')
 license=('MIT')
