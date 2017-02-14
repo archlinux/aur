@@ -1,0 +1,18 @@
+pkgbase = jpwdhash
+	pkgdesc = Command line implementation of PwdHash
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/pedronveloso/jPwdHash
+	arch = any
+	license = GPL3
+	depends = java-environment
+	noextract = jPwdHashFinal-all-0.1.jar
+	source = https://github.com/pedronveloso/jPwdHash/releases/download/0.1/jPwdHashFinal-all-0.1.jar
+	source = jpwdhash
+	source = LICENSE
+	sha256sums = a1d46221c633a63a7379ba6a6b0ad941d03254344dbbf5f5c7ae307810674caa
+	sha256sums = 5ce82a4db8a803ec356f91b617091b87192a97f617dc9cefad2a30fc034dcd5f
+	sha256sums = 589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2
+
+pkgname = jpwdhash
+
