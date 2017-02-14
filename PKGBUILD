@@ -23,7 +23,7 @@ EOF
 package() {
   cd pbtk
   install -Dm 755 ../pbtk.sh "${pkgdir}/usr/bin/pbtk"
-  install -Dm 755 gui.py extractors -t "${pkgdir}/usr/share/pbtk"
+  install -Ddm 755 gui.py extractors -t "${pkgdir}/usr/share/pbtk"
   cp -r utils views "${pkgdir}/usr/share/pbtk"
   # install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
