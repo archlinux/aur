@@ -3,14 +3,13 @@
 
 pkgname=marote
 pkgver=3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Rig conrol program for Elecraft K2 Transceiver"
 arch=('i686' 'x86_64')
 url="http://hamsoftware.org/old_index.html"
 license=('GPL')
-depends=('qt3' 'desktop-file-utils')
+depends=('qt3' 'hamradio-menus')
 optdepends=('xlog: logbook')
-install=$pkgname.install
 source=(http://www.hamsoftware.org/$pkgname-$pkgver.tgz
         $pkgname.desktop
         $pkgname.png)

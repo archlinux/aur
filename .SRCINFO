@@ -1,14 +1,13 @@
 pkgbase = marote
 	pkgdesc = Rig conrol program for Elecraft K2 Transceiver
 	pkgver = 3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://hamsoftware.org/old_index.html
-	install = marote.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = qt3
-	depends = desktop-file-utils
+	depends = hamradio-menus
 	optdepends = xlog: logbook
 	source = http://www.hamsoftware.org/marote-3.1.tgz
 	source = marote.desktop
