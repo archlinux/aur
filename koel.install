@@ -1,0 +1,3 @@
+post_install() {
+    printf "==> Edit the .env file at /usr/share/webapps/koel with your chosen\n==> database settings and add the details for your admin account\n==> then run 'php composer koel:init'.\n==> Remove your admin details afterward.\n==> Use 'php composer koel:sync' to update your library from the\n==> command line."
+}
