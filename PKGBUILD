@@ -4,9 +4,9 @@
 
 pkgname=proofgeneral
 pkgver=4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Generic interface for proof assistants.'
-arch=('i686' 'x86_64')
+arch=('any')
 license=('GPL')
 url='https://proofgeneral.github.io/'
 depends=('emacs>=24.3')
