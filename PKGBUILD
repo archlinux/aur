@@ -4,7 +4,7 @@
 
 pkgname=quagga-git
 _pkgname=quagga
-pkgver=1.1.0.r0.g258f3da
+pkgver=1.1.0.r95.gc876b0b2
 pkgrel=1
 pkgdesc='BGP/OSPF/ISIS/RIP/RIPNG routing daemon suite (FPM enabled) git version'
 arch=('i686' 'x86_64')
@@ -27,8 +27,7 @@ source=("$pkgname::git+https://github.com/Quagga/$_pkgname.git"
         'pimd.service'
         'ripd.service'
         'ripngd.service'
-        'zebra.service'
-        'nocomplain.patch')
+        'zebra.service')
 md5sums=('SKIP'
          '286c545efadcc7b463eb603c25473cb4'
          '9dfa2f649a2c83a2e52f5f89dec3b167'
@@ -40,8 +39,7 @@ md5sums=('SKIP'
          'af6571185d6a6a6e1f070c7be0e4333a'
          'b6e3549d780355914ae8edd43e15630a'
          '72dd63c49fdaea41729a4318d0fbac79'
-         '577f1e7caeea31d910f2dc29c28ada7d'
-         'f0164d52c986bf6be85aed4a7f78aefd')
+         '577f1e7caeea31d910f2dc29c28ada7d')
 
 pkgver() {
   cd $pkgname
