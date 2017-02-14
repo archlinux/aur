@@ -8,6 +8,7 @@ arch=('any')
 pkgdesc='A command scheduler for shells'
 license=('MIT')
 depends=('python-daemonize' 'python-terminaltables-git' 'python-colorclass-git')
+conflicts=('pueue')
 makedepends=('git' 'python-setuptools')
 provides=('pueue')
 url='https://github.com/nukesor/pueue'
