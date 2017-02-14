@@ -1,6 +1,6 @@
 pkgbase = python2-luigi
 	pkgdesc = Workflow mgmgt + task scheduling + dependency resolution
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/spotify/luigi
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = python2-luigi
 	depends = python2-daemon
 	depends = python2-tornado
 	optdepends = python2-mechanize: for debugging Hadoop jobs more easily
-	source = https://github.com/spotify/luigi/archive/2.5.0.tar.gz
-	md5sums = 5034f2db41f100d6dd12a59f70e19544
-	sha256sums = 6d4ecdadf36bff364e471e38fac619a8bbc7edf1f2167ffbdc0188494f1487e0
+	source = https://github.com/spotify/luigi/archive/2.6.0.tar.gz
+	md5sums = 49cfff8fc00a1764ec8b8f200846373f
+	sha256sums = f9ea68453b7f0895f8a609cf11cd4dfde8ecbbf464c3234b30ac1e3a3f9c886c
 
 pkgname = python2-luigi
 
