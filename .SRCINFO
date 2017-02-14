@@ -1,6 +1,6 @@
-pkgbase = python-hg
+pkgbase = python-git
 	pkgdesc = Next generation of the python high-level scripting language
-	pkgver = 3.7.0a0.r104865+.a6e59a2e880e+
+	pkgver = 3.7.0a0.r98657.e7ffb99f84
 	pkgrel = 1
 	url = http://www.python.org/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = python-hg
 	makedepends = sqlite
 	makedepends = valgrind
 	makedepends = bluez-libs
-	makedepends = mercurial
+	makedepends = git
 	depends = expat
 	depends = bzip2
 	depends = gdbm
@@ -22,8 +22,10 @@ pkgbase = python-hg
 	options = debug
 	options = !strip
 	options = !makeflags
-	source = hg+https://hg.python.org/cpython#branch=default
+	source = git+https://github.com/python/cpython#branch=master
+	source = boot-flag.patch
 	sha256sums = SKIP
+	sha256sums = 940202895732185da4548b6a1fb01ad080cd188c21a149359eb178fdcfb613f9
 
-pkgname = python-hg
+pkgname = python-git
 

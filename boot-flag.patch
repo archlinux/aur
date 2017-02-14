@@ -1,0 +1,89 @@
+diff --git a/Makefile.pre.in b/Makefile.pre.in
+index 8752a02031..a7c8c5ad1e 100644
+--- a/Makefile.pre.in
++++ b/Makefile.pre.in
+@@ -247,6 +247,10 @@ COVERAGE_INFO=	$(abs_builddir)/coverage.info
+ COVERAGE_REPORT=$(abs_builddir)/lcov-report
+ COVERAGE_REPORT_OPTIONS=--no-branch-coverage --title "CPython lcov report"
+ 
++# Run <make BOOT="#"> to avoid regenerating existing files, as an
++# alternative to the "make touch" rule.
++BOOT=
++
+ 
+ # === Definitions added by makesetup ===
+ 
+@@ -726,8 +730,7 @@ Python/importlib_external.h: @GENERATED_COMMENT@ $(srcdir)/Lib/importlib/_bootst
+ 	    $(srcdir)/Lib/importlib/_bootstrap_external.py Python/importlib_external.h
+ 
+ Python/importlib.h: @GENERATED_COMMENT@ $(srcdir)/Lib/importlib/_bootstrap.py Programs/_freeze_importlib Python/marshal.c
+-	./Programs/_freeze_importlib \
+-	    $(srcdir)/Lib/importlib/_bootstrap.py Python/importlib.h
++	$(BOOT)./Programs/_freeze_importlib $(srcdir)/Lib/importlib/_bootstrap.py Python/importlib.h
+ 
+ 
+ ############################################################################
+@@ -788,10 +791,10 @@ Python/sysmodule.o: $(srcdir)/Python/sysmodule.c Makefile
+ $(IO_OBJS): $(IO_H)
+ 
+ $(GRAMMAR_H): @GENERATED_COMMENT@ $(GRAMMAR_INPUT) $(PGEN)
+-	@$(MKDIR_P) Include
+-	$(PGEN) $(GRAMMAR_INPUT) $(GRAMMAR_H) $(GRAMMAR_C)
++	@$(BOOT)$(MKDIR_P) Include
++	$(BOOT)$(PGEN) $(GRAMMAR_INPUT) $(GRAMMAR_H) $(GRAMMAR_C)
+ $(GRAMMAR_C): @GENERATED_COMMENT@ $(GRAMMAR_H)
+-	touch $(GRAMMAR_C)
++	$(BOOT)touch $(GRAMMAR_C)
+ 
+ $(PGEN): $(PGENOBJS)
+ 		$(CC) $(OPT) $(PY_LDFLAGS) $(PGENOBJS) $(LIBS) -o $(PGEN)
+@@ -808,15 +811,15 @@ Parser/printgrammar.o: $(srcdir)/Parser/printgrammar.c
+ Parser/pgenmain.o:	$(srcdir)/Include/parsetok.h
+ 
+ $(AST_H): $(AST_ASDL) $(ASDLGEN_FILES)
+-	$(MKDIR_P) $(AST_H_DIR)
+-	$(ASDLGEN) -h $(AST_H_DIR) $(AST_ASDL)
++	$(BOOT)$(MKDIR_P) $(AST_H_DIR)
++	$(BOOT)$(ASDLGEN) -h $(AST_H_DIR) $(AST_ASDL)
+ 
+ $(AST_C): $(AST_H) $(AST_ASDL) $(ASDLGEN_FILES)
+-	$(MKDIR_P) $(AST_C_DIR)
+-	$(ASDLGEN) -c $(AST_C_DIR) $(AST_ASDL)
++	$(BOOT)$(MKDIR_P) $(AST_C_DIR)
++	$(BOOT)$(ASDLGEN) -c $(AST_C_DIR) $(AST_ASDL)
+ 
+ $(OPCODE_H): $(srcdir)/Lib/opcode.py $(OPCODE_H_SCRIPT)
+-	$(OPCODE_H_GEN)
++	$(BOOT)$(OPCODE_H_GEN)
+ 
+ Python/compile.o Python/symtable.o Python/ast.o: $(GRAMMAR_H) $(AST_H)
+ 
+@@ -869,7 +872,7 @@ Objects/dictobject.o: $(srcdir)/Objects/stringlib/eq.h $(srcdir)/Objects/dict-co
+ Objects/setobject.o: $(srcdir)/Objects/stringlib/eq.h
+ 
+ $(OPCODETARGETS_H): $(OPCODETARGETGEN_FILES)
+-	$(PYTHON_FOR_GEN) $(OPCODETARGETGEN) $(OPCODETARGETS_H)
++	$(BOOT)$(PYTHON_FOR_GEN) $(OPCODETARGETGEN) $(OPCODETARGETS_H)
+ 
+ Python/ceval.o: $(OPCODETARGETS_H) $(srcdir)/Python/ceval_gil.h
+ 
+@@ -889,7 +892,7 @@ Python/pydtrace.o: $(srcdir)/Include/pydtrace.d $(DTRACE_DEPS)
+ 
+ Objects/typeobject.o: Objects/typeslots.inc
+ Objects/typeslots.inc: $(srcdir)/Include/typeslots.h $(srcdir)/Objects/typeslots.py
+-	$(PYTHON_FOR_GEN) $(srcdir)/Objects/typeslots.py < $(srcdir)/Include/typeslots.h Objects/typeslots.inc
++	$(BOOT)$(PYTHON_FOR_GEN) $(srcdir)/Objects/typeslots.py < $(srcdir)/Include/typeslots.h Objects/typeslots.inc
+ 
+ ############################################################################
+ # Header files
+@@ -1566,8 +1569,8 @@ TAGS::
+ 
+ # This fixes up the mtimes of checked-in generated files, assuming that they
+ # only *appear* to be outdated because of checkout order.
+-# This is run while preparing a source release tarball, and can be run manually
+-# to avoid bootstrap issues.
++# This is run while preparing a source release tarball.  It can also be run
++# manually to avoid bootstrap issues, as an alternative to setting BOOT="#".
+ touch:
+ 	cd $(srcdir); \
+ 	hg --config extensions.touch=Tools/hg/hgtouch.py touch -v

@@ -1,7 +1,7 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
 
-pkgname=python-hg
-pkgver=3.7.0a0.r104865+.a6e59a2e880e+
+pkgname=python-git
+pkgver=3.7.0a0.r98657.e7ffb99f84
 pkgrel=1
 _pybasever=3.7
 _pkgname=cpython
@@ -10,19 +10,20 @@ arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.python.org/"
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
-makedepends=('tk>=8.6.0' 'sqlite' 'valgrind' 'bluez-libs' 'mercurial')
+makedepends=('tk>=8.6.0' 'sqlite' 'valgrind' 'bluez-libs' 'git')
 optdepends=('tk: for tkinter' 'sqlite')
 options=(debug !strip !makeflags)
-source=("hg+https://hg.python.org/cpython#branch=default")
-sha256sums=('SKIP')
+source=("git+https://github.com/python/cpython#branch=master"
+        'boot-flag.patch')
+sha256sums=('SKIP'
+            '940202895732185da4548b6a1fb01ad080cd188c21a149359eb178fdcfb613f9')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   printf "%s.r%s.%s" \
       "3.7.0a0" \
-      "$(hg identify -n)" \
-      "$(hg identify -i)"
-      #"$(hg tags | awk 'NR==2 {print $1}' | sed -E 's/^v//;s/([a-z])/.\1/')" \
+      "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -36,6 +37,9 @@ prepare() {
   rm -rf Modules/expat
   rm -rf Modules/zlib
   rm -rf Modules/_ctypes/{darwin,libffi}*
+
+  # http://bugs.python.org/issue23404
+  patch -p1 -i ../boot-flag.patch
 }
 
 build() {
@@ -52,15 +56,16 @@ build() {
               --with-system-ffi
 
   # http://bugs.python.org/issue26662
-  make touch
+  # `make touch` does not work with git clones: http://bugs.python.org/issue23404
+  # make touch
 
-  make
+  make BOOT='#'
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
   # altinstall: /usr/bin/pythonX.Y but not /usr/bin/python or /usr/bin/pythonX
-  make DESTDIR="${pkgdir}" altinstall maninstall
+  make BOOT='#' DESTDIR="${pkgdir}" altinstall maninstall
 
   # Work around a conflict with 3.4 the 'python' package.
   rm "${pkgdir}/usr/lib/libpython3.so"
