@@ -1,0 +1,16 @@
+pkgbase = python-pyvat
+	pkgdesc = VAT validation for Python
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = http://bruun.co/
+	arch = any
+	license = Apache
+	depends = python
+	depends = python-pycountry
+	depends = python-requests
+	options = !emptydirs
+	source = https://pypi.python.org/packages/e1/da/de3c33685f42cf9f6231b68a3650f942514b3168680dd77bd92dc23daba7/pyvat-1.3.1.tar.gz
+	md5sums = 2475b823c1e1f3180d435a79b4e978c9
+
+pkgname = python-pyvat
+
