@@ -1,0 +1,4 @@
+pre_remove() {
+	systemctl stop halcyon.service
+	systemctl disable halcyon.service
+}

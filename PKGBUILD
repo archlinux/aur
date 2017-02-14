@@ -1,6 +1,6 @@
 pkgname=halcyon
 pkgver=0.9.31.6242
-pkgrel=1
+pkgrel=2
 pkgdesc="InWorldz Halcyon 3d virtual reality world simulator"
 arch=(any)
 url="https://github.com/InWorldz/$pkgname"
@@ -8,12 +8,15 @@ license=("BSD")
 depends=(mariadb mono sqlite whip-server)
 makedepends=(doxygen graphviz)
 provides=(opensimulator)
+install=$pkgname.install
 source=("https://github.com/InWorldz/$pkgname/archive/v$pkgver.tar.gz"
 "$pkgname.sh"
-"hc-database.sh")
+"hc-database.sh"
+"$pkgname.service")
 md5sums=('17c080db2d3104e92d433cacc10a964f'
          '86977d028c882ee1e9615f4b8d1a68e6'
-         'ee63724ab4ed7ba836ea6205689b0029')
+         'ee63724ab4ed7ba836ea6205689b0029'
+         '5dc2dbf0f37060b7d921c7cf8f322abd')
 
 build() {
 	cd $pkgname-$pkgver
@@ -23,6 +26,7 @@ build() {
 }
 
 package() {
+	install -Dm644 $pkgname.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 	install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
 	install -m755 hc-database.sh "$pkgdir/usr/bin/hc-database"
 	cd $pkgname-$pkgver

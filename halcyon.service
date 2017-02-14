@@ -1,0 +1,15 @@
+[Unit]
+Description=Halcyon Server
+After=local-fs.target network.target mysqld.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/halcyon
+ExecReload=/usr/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+User=inworldz
+Group=inworldz
+
+[Install]
+WantedBy=multi-user.target
