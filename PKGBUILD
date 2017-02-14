@@ -116,7 +116,7 @@ package_xorg-server-common-dev() {
 
 package_xorg-server-dev() {
   pkgdesc="Xorg X server - Bleeding edge version"
-  depends=(libepoxy libxfont2 pixman xorg-server-common libunwind dbus libgl xf86-input-libinput
+  depends=(libepoxy libxfont2 pixman xorg-server-common-dev libunwind dbus libgl xf86-input-libinput
            libpciaccess libdrm libxshmfence) # FS#52949
 
   # see src/xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
