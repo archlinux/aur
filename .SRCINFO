@@ -11,6 +11,7 @@ pkgbase = webhttrack
 	depends = openssl
 	provides = httrack
 	conflicts = httrack
+	conflicts = webhttrack-git
 	source = https://github.com/xroche/httrack/archive/3.48.21.tar.gz
 	md5sums = 3f2e60f637697bf326856817fb8a015d
 
