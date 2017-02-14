@@ -1,0 +1,12 @@
+pkgbase = clx-truetype
+	pkgdesc = Use truetype fonts in common lisp
+	pkgver = 20160701
+	pkgrel = 1
+	url = http://filonenko-mikhail.github.io/clx-truetype/
+	arch = any
+	license = custom:unknown
+	source = git+https://github.com/filonenko-mikhail/clx-truetype.git#commit=c6e10a918d46632324d5863a8ed067a83fc26de8
+	md5sums = SKIP
+
+pkgname = clx-truetype
+
