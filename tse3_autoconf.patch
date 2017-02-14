@@ -1,0 +1,12 @@
+diff -Naur tse3-0.3.1.orig/src/tse3/Makefile.am tse3-0.3.1.new/src/tse3/Makefile.am
+--- tse3-0.3.1.orig/src/tse3/Makefile.am	2017-02-14 22:43:53.014547772 +0100
++++ tse3-0.3.1.new/src/tse3/Makefile.am	2017-02-14 22:49:48.796505347 +0100
+@@ -57,7 +57,7 @@
+ 
+ # McCabe .i file generation
+ 
+-tse3_i_FILES = $(patsubst %.cpp,i/%.i,$(libtse3_la_SOURCES))
++tse3_i_FILES = tse3_i_FILES = i/DisplayParams.i i/Error.i i/FileBlockParser.i i/Filter.i i/TSE2MDL.i i/FlagTrack.i i/KeySigTrack.i i/Metronome.i i/Midi.i i/MidiCommandFilter.i i/MidiData.i i/MidiEcho.i i/MidiFile.i i/MidiFilter.i i/MidiMapper.i i/MidiParams.i i/Mixer.i i/Mutex.i i/Notifier.i i/Panic.i i/Part.i i/Phrase.i i/PhraseEdit.i i/PhraseList.i i/Playable.i i/RepeatTrack.i i/MidiScheduler.i i/Serializable.i i/Song.i i/TempoTrack.i i/TimeSigTrack.i i/Track.i i/Transport.i i/TSE3.i i/TSE3MDL.i
+ 
+ tse3-i: $(tse3_i_FILES)
+ 	@echo "**** Built TSE3 .i files in 'i' dir ****"
