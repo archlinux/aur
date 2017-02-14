@@ -1,7 +1,7 @@
 pkgbase = nixnote-beta
 	pkgdesc = Formerly called nevernote, nixnote is a clone of Evernote designed to run on Linux
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.sourceforge.net/projects/nevernote
 	arch = x86_64
 	arch = i686
