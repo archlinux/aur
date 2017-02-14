@@ -1,0 +1,31 @@
+pkgbase = nixnote2
+	pkgdesc = Formerly called nevernote, nixnote is a clone of Evernote designed to run on Linux
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://www.sourceforge.net/projects/nevernote
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = mimetex
+	depends = opencv
+	depends = poppler-qt5
+	depends = qt5-base
+	depends = qt5-webkit
+	depends = sqlite
+	depends = tidyhtml
+	depends = qtwebkit
+	depends = libcurl-compat
+	provides = nixnote2
+	conflicts = nixnote
+	conflicts = nixnote2-git
+	conflicts = nixnote-beta
+	replaces = nixnote
+	source = nixnote2.desktop
+	sha256sums = 6c88cd5ae3f5c18e342fcf5165891b22d99818d3fe2ac2b124262b8ba23bb4d1
+	source_x86_64 = https://superb-sea2.dl.sourceforge.net/project/nevernote/NixNote2%20-%202.0/Linux/Qt5/nixnote2-2.0_amd64.tar.gz
+	sha256sums_x86_64 = 932055ac4e47e205b95642c19000e7c8fe06e688e536fa9d1ec49ecdaf86eab4
+	source_i686 = https://superb-sea2.dl.sourceforge.net/project/nevernote/NixNote2%20-%202.0/Linux/Qt5/nixnote2-2.0_i386.tar.gz
+	sha256sums_i686 = 9a829cd33ad7fbd6f1e83a0b3182aa3e6be2c56a9f5dbd6ed32cc320b0f9cec2
+
+pkgname = nixnote2
+
