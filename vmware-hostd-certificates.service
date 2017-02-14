@@ -1,5 +1,5 @@
 [Unit]
-Description=VMware Workstation Server Certificates Generation
+Description=VMware Host Daemon Certificates Generation
 ConditionPathExists=|!/etc/vmware/ssl/rui.key
 ConditionPathExists=|!/etc/vmware/ssl/rui.crt
 
