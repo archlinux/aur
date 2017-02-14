@@ -31,14 +31,14 @@ build() {
 package_python2-tzlocal() {
   depends=('python2-pytz')
   cd "${srcdir}/${_pyname}-${pkgver}-py2"
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+  python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm0644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python-tzlocal() {
   depends=('python-pytz')
   cd "${srcdir}/${_pyname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm0644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
