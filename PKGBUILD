@@ -1,7 +1,7 @@
 # Maintainer: TJM <tommy.mairo@gmail.com>
 pkgname=libcorkipset-git
 pkgver=r221.4e09f31
-pkgrel=1
+pkgrel=2
 pkgdesc="A small C helper library for storing sets of IPv4 and IPv6 addresses"
 arch=("x86_64" "x64")
 url="https://github.com/rogers0/libcorkipset"
@@ -9,7 +9,7 @@ source=('git+https://github.com/rogers0/libcorkipset.git')
 license=('LLC')
 depends=('r' 'pkg-config' 'libcork')
 makedepends=('git')
-provides=('libcrokipset')
+provides=('libcorkipset')
 sha256sums=('SKIP')
 
 _gitroot='https://github.com/rogers0/libcorkipset.git'
