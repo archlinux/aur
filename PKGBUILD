@@ -8,7 +8,7 @@ pkgdesc="Clean, friendly gtk-based serial terminal for the gnome desktop"
 arch=('i686' 'x86_64')
 url="http://live.gnome.org/moserial"
 license=('GPL3')
-depends=('gtk3')
+depends=('glib2' 'glibc' 'gtk3' 'pango')
 optdepends=('lrzsz: for xmodem, ymodem and zmodem file transfer protocols'
             'yelp: help browser')
 makedepends=('intltool' 'itstool')
