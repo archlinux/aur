@@ -3,7 +3,7 @@
 pkgname="gnome-backgrounds-bitday-git"
 _gitname="gnome-backgrounds-bitday-master"
 _pkgname="gnome-backgrounds-bitday"
-pkgver=r8.995171b
+pkgver=r3.3e18284
 pkgrel=1
 pkgdesc="Beautiful dynamic pixel wallpaper for GNOME"
 url="https://github.com/ghisvail/gnome-backgrounds-bitday"
