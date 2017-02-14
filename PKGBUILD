@@ -9,7 +9,6 @@ url='https://fonts.google.com/specimen/Merriweather+Sans'
 license=('custom:SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git' 'ttf-merriweather-sans-ib')
-install="${pkgname}.install"
 source=("MerriweatherSans-Bold-${pkgver}.ttf::https://github.com/google/fonts/raw/982e9355296882ebb55e6f39117bb106a6a82b17/ofl/merriweathersans/MerriweatherSans-Bold.ttf"
         "MerriweatherSans-BoldItalic-${pkgver}.ttf::https://github.com/google/fonts/raw/982e9355296882ebb55e6f39117bb106a6a82b17/ofl/merriweathersans/MerriweatherSans-BoldItalic.ttf"
         "MerriweatherSans-ExtraBold-${pkgver}.ttf::https://github.com/google/fonts/raw/982e9355296882ebb55e6f39117bb106a6a82b17/ofl/merriweathersans/MerriweatherSans-ExtraBold.ttf"
