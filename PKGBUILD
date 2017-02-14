@@ -1,8 +1,8 @@
 # Maintainer: Foivos S. Zakkak <foivos at zakkak dot net>
 # Contributor: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 
-pkgname=gnome-shell-extension-workspace-grid
-pkgver=1.3.8.15
+pkgname=gnome-shell-extension-workspace-grid-git
+pkgver=1.3.9.2
 pkgrel=1
 pkgdesc="Allows to configure your workspaces in a grid"
 arch=(any)
@@ -10,7 +10,7 @@ url="https://github.com/zakkak/workspace-grid-gnome-shell-extension"
 license=('GPL3')
 depends=('gnome-shell')
 makedepends=('git')
-install=gnome-shell-extension-workspace-grid.install
+install=gnome-shell-extension-workspace-grid-git.install
 source=("$pkgname::git+https://github.com/zakkak/workspace-grid-gnome-shell-extension.git")
 sha256sums=('SKIP')
 
