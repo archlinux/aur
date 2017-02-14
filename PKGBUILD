@@ -11,8 +11,7 @@ pkgdesc="Python port of libaxolotl"
 url="https://github.com/tgalal/python-axolotl"
 arch=('any')
 license=('GPL3')
-makedepends=('python2-setuptools' 'python2-dateutil' 'python2-protobuf' 'python2-crypto' 'python2-axolotl-curve25519'
-             'python-setuptools' 'python-dateutil' 'python-protobuf' 'python-crypto' 'python-axolotl-curve25519')
+makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/tgalal/python-axolotl/archive/$pkgver.tar.gz")
 md5sums=('3c2e0580c4dce21161a4ebdf18f4438d')
 
