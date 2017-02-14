@@ -5,8 +5,12 @@ pkgbase = mxnet
 	url = http://mxnet.io/
 	arch = x86_64
 	license = Apache2
-	depends = cuda
-	depends = cudnn
+	makedepends = git
+	optdepends = cuda: GPU support
+	optdepends = cudnn: GPU support
+	optdepends = intel-mkl: MKL support
+	optdepends = opencv: computer vision support
+	provides = libmxnet
 	source = mxnet::git+https://github.com/dmlc/mxnet
 	md5sums = SKIP
 
