@@ -1,6 +1,6 @@
 pkgbase = gnome-backgrounds-bitday-git
 	pkgdesc = Beautiful dynamic pixel wallpaper for GNOME
-	pkgver = r4.ebffe33
+	pkgver = r13.07526a1
 	pkgrel = 1
 	url = https://github.com/ghisvail/gnome-backgrounds-bitday
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = gnome-backgrounds-bitday-git
 	makedepends = git
 	makedepends = make
 	provides = gnome-backgrounds-bitday
-	source = https://github.com/ghisvail/gnome-backgrounds-bitday
+	source = git+https://github.com/ghisvail/gnome-backgrounds-bitday.git
 	md5sums = SKIP
 
 pkgname = gnome-backgrounds-bitday-git
