@@ -1,5 +1,5 @@
 pkgname=mingw-w64-netcdf-cxx
-pkgver=4.2
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="NetCDF c++ bindings (mingw-w64)"
 arch=("any")
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 license=('custom')
 source=("http://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-cxx4-${pkgver}.tar.gz")
-sha1sums=('59628c9f06c211a47517fc00d8b068da159ffa9d')
+sha1sums=('796d71c7aae8bc15e923d5c5b50a54bcc7538f0c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
