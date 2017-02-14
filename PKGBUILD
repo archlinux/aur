@@ -2,25 +2,43 @@
 
 pkgname=('python-troveclient' 'python2-troveclient')
 pkgver='2.7.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Python client library for Trove'
 arch=('any')
 url='http://docs.openstack.org/developer/python-troveclient'
 license=('Apache')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("git+https://git.openstack.org/openstack/python-troveclient#tag=$pkgver")
+checkdepends=('python-coverage' 'python2-coverage'
+              'python-fixtures' 'python2-fixtures'
+              'python-oslotest' 'python2-oslotest'
+              'python-requests-mock' 'python2-requests-mock'
+              'python-testrepository' 'python2-testrepository'
+              'python-testscenarios' 'python2-testscenarios'
+              'python-testtools' 'python2-testtools'
+              'python-mock' 'python2-mock'
+              'python-httplib2' 'python2-httplib2'
+              'python2-crypto')
+source=("git+https://git.openstack.org/openstack/${pkgname}#tag=${pkgver}")
 md5sums=('SKIP')
 
 prepare() {
-  cp -a python-troveclient{,-py2}
+  cp -a "${srcdir}/${pkgname}"{,-py2}
 }
 
 build() {
-  cd "$srcdir"/python-troveclient
+  cd "${srcdir}/${pkgname}"
   python setup.py build
 
-  cd "$srcdir"/python-troveclient-py2
+  cd "${srcdir}/${pkgname}"-py2
   python2 setup.py build
+}
+
+check() {
+  cd "${srcdir}/${pkgname}"
+  python setup.py testr
+
+  cd "${srcdir}/${pkgname}-py2"
+  PYTHON=python2 python2 setup.py testr
 }
 
 package_python-troveclient() {
