@@ -1,7 +1,7 @@
 pkgbase = avocode
 	pkgdesc = The bridge between designers and developers
 	pkgver = 2.12.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://avocode.com/
 	install = avocode.install
 	arch = i686

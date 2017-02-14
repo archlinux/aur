@@ -1,7 +1,7 @@
 # Maintainer: Tomas Rychlik <tom@avocode.com>
 
 pkgname=avocode
-pkgrel=1
+pkgrel=2
 pkgver=2.12.6
 pkgdesc="The bridge between designers and developers"
 url="http://avocode.com/"
