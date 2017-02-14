@@ -6,8 +6,8 @@
 
 pkgname=luakit-git
 gitname=luakit
-pkgver=r2735.5f2a71b
-pkgrel=4
+pkgver=r2736.6f1e8ba
+pkgrel=1
 pkgdesc='fork of luakit using webkit2'
 arch=('x86_64' 'i686' 'armv7h')
 url='https://github.com/luakit/luakit'
@@ -42,7 +42,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${gitname}"
-  make PREFIX=/usr all
+  make DEVELOPMENT_PATHS=0 PREFIX=/usr all
 }
 
 package() {
