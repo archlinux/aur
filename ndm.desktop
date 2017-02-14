@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=ndm
 Comment=npm desktop manager 
-Exec="/opt/ndm/ndm"
+Exec=ndm
 Icon=ndm
 Terminal=false
 Type=Application

@@ -2,7 +2,7 @@
 
 pkgname=ndm
 _pkgbase=ndm
-pkgrel=1
+pkgrel=2
 pkgver=1.0.0
 _pkgver=v$pkgver
 pkgdesc="npm desktop manager"
@@ -18,7 +18,7 @@ source=(
 
 source_x86_64+=("${url}/releases/download/${_pkgver}/${_pkgbase}-${pkgver}.zip")
 sha256sums=(
-        '5a4b301bb650531743da68dddf36ad2bb926970a0bdd1eb57d0f7980c080063f'
+        'c39a5951e9fe3c9156d3b01e03bdcce4717f9282a9879e8a0a1ad2b36605061e'
         'c00b94fcd27bdf4a4749114a68c0f439704ea46ca72f131e366efcf6f721cc77'
         '320664a794faa12ac1977772c479fb2a3628cb15e37e5d9b04e7b0acd210935b'
         '51122b1be8b8bf839c48f981651a2e9ef1879d7d27fbf8f82d2ce3066907c110'
@@ -35,9 +35,10 @@ sha256sums_x86_64=('8c944bfd10af742e0c5e25d5032ecd246986b795fea072c3be85bec86d59
 package() {
     install -dm755 "$pkgdir/usr/share/applications/"
     install -d "$pkgdir"/opt/${_pkgbase}/
-    install -Dm755 "$srcdir/linux-unpacked/$pkgbase" "$pkgdir/usr/bin/$pkgbase"
     mv "$srcdir/linux-unpacked/" "$srcdir/$pkgbase"
     cp -R "$srcdir/$pkgbase" $pkgdir/opt/
+    install -d "$pkgdir/usr/bin/"
+    ln -sf "$pkgdir/opt/$pkgbase/$pkgbase" "$pkgdir/usr/bin/$pkgbase"
     install -Dm755 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
     for icon_size in 16 32 48 64 128 256 512; do
         icon_dir="$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"

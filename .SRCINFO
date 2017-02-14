@@ -1,7 +1,7 @@
 pkgbase = ndm
 	pkgdesc = npm desktop manager
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/720kb/ndm
 	arch = x86_64
 	license = GPL3
@@ -17,7 +17,7 @@ pkgbase = ndm
 	source = ndm128.png
 	source = ndm256.png
 	source = ndm512.png
-	sha256sums = 5a4b301bb650531743da68dddf36ad2bb926970a0bdd1eb57d0f7980c080063f
+	sha256sums = c39a5951e9fe3c9156d3b01e03bdcce4717f9282a9879e8a0a1ad2b36605061e
 	sha256sums = c00b94fcd27bdf4a4749114a68c0f439704ea46ca72f131e366efcf6f721cc77
 	sha256sums = 320664a794faa12ac1977772c479fb2a3628cb15e37e5d9b04e7b0acd210935b
 	sha256sums = 51122b1be8b8bf839c48f981651a2e9ef1879d7d27fbf8f82d2ce3066907c110
