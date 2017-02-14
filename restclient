@@ -4,5 +4,5 @@ LAF=com.sun.java.swing.plaf.gtk.GTKLookAndFeel
 
 JAVA_OPTS="$JAVA_OPTS -Dswing.defaultlaf=$LAF"
 
-exec /usr/bin/java $JAVA_OPTS -jar /usr/share/java/restclient/restclient-ui.jar "$@"
+exec /usr/lib/jvm/java-8-openjdk/jre/bin/java $JAVA_OPTS -jar /usr/share/java/restclient/restclient-ui.jar "$@"
 exit $?
