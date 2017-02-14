@@ -71,6 +71,6 @@ check(){
 package() {
   cd "$srcdir/$_gitname-build/build"
   make DESTDIR="$pkgdir/" install
-  install -Dm644 "$srcdir"/$pkgname/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
+  install -Dm644 "$srcdir"/$_gitname/LICENSE.txt "$pkgdir"/usr/share/licenses/$_gitname/LICENSE.txt
 }
 
