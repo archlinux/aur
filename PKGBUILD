@@ -2,7 +2,7 @@
 
 pkgname=firefox-beta-zh-cn
 _pkgname=firefox-beta
-pkgver=52.0b5
+pkgver=52.0b6
 pkgrel=1
 pkgdesc="Chinese Simplified For Firefox Beta"
 arch=('i686' 'x86_64')
