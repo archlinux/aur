@@ -10,9 +10,7 @@ pkgdesc="Python wrapper for curve25519 library"
 url="https://github.com/tgalal/python-axolotl-curve25519"
 arch=('i686' 'x86_64')
 license=('GPL3')
-makedepends=('python-setuptools'
-             'python2-setuptools'
-             'git')
+makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://pypi.python.org/packages/69/e0/9605cac4c83c12d0bef5c2e9992f0bcbce4fae9a252899d545ccb7dc8717/python-axolotl-curve25519-0.1.tar.gz")
 md5sums=('f28d902df9044f0bf86a35a4bd2ec092')
 
