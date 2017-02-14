@@ -6,9 +6,9 @@
 
 pkgname=luakit
 pkgver=2016.08.30
-pkgrel=2
+pkgrel=3
 pkgdesc='Browser framework based on Webkit and Lua'
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'armv7h')
 url='https://github.com/luakit/luakit'
 license=('GPL3')
 makedepends=('help2man' 'git')
