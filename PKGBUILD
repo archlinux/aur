@@ -1,7 +1,7 @@
 # Maintainer: Herbert Knapp <herbert.knapp@edu.uni-graz.at>
 pkgname=waterfox-bin
 pkgver=51.0.1
-pkgrel=2
+pkgrel=1
 pkgdesc="64-Bit optimized Firefox, no data collection, allows unsigned extensions."
 arch=('x86_64')
 url="https://www.waterfoxproject.org/"

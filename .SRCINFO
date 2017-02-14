@@ -1,7 +1,7 @@
 pkgbase = waterfox-bin
 	pkgdesc = 64-Bit optimized Firefox, no data collection, allows unsigned extensions.
 	pkgver = 51.0.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://www.waterfoxproject.org/
 	arch = x86_64
 	license = GPL
