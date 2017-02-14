@@ -1,7 +1,7 @@
 # Maintainer: Ricardo Band <email@ricardo.band>
 pkgname=pac
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Small wrapper around pacaur to mimic yaourts search feature"
 arch=(any)
