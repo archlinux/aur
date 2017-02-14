@@ -2,7 +2,7 @@
 # Contributor: speps <spepser at aur dot archlinux dot org> 
 
 pkgname=python2-pyo
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="A Python module written in C to help digital signal processing script creation."
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ provides=("pyo=$pkgver" "python-pyo=$pkgver")
 conflicts=('pyo' 'python-pyo')
 source=("http://ajaxsoundstudio.com/downloads/pyo_$pkgver-src.tar.bz2"
 	"http://ajaxsoundstudio.com/downloads/pyo_$pkgver-doc.tar.bz2")
-md5sums=('96d3f6b2b5d7226c8f87f953a99ac6a5'
-         '0915081ff53d359fb8646f14deb8b2a5')
+md5sums=('7e3572c7bfac3f2610d53430bb1372f5'
+         '1960a1a83d1f567ac161d271e23919b7')
 
 build() {
   cd "$srcdir/pyo_$pkgver-src"
