@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Avocode
-Exec="avocode"
+Exec=avocode
 Icon=avocode-app-icon.png
 Terminal=false
 Type=Application

@@ -16,7 +16,7 @@ install=avocode.install
 source=("Avocode.desktop" "avocode-app-icon.png")
 source_i686=("https://media.avocode.com/download/avocode-app/${pkgver}/avocode-app-linux-ia32-${pkgver}.zip")
 source_x86_64=("https://media.avocode.com/download/avocode-app/${pkgver}/avocode-app-linux-${pkgver}.zip")
-md5sums=('e2c75eca26477c665c946beec421423a'
+md5sums=('f1a87052b2356b2d4eede22cfc1eb2af'
          '96c2dd65a4a3ac5bcdba7426ade1960e')
 md5sums_i686=('7b345aae106e92b9b812195a56e7a74e')
 md5sums_x86_64=('21eb8c7951759c7700755f2fa1100c0b')
