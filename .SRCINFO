@@ -1,4 +1,4 @@
-pkgbase = nixnote2
+pkgbase = nixnote-beta
 	pkgdesc = Formerly called nevernote, nixnote is a clone of Evernote designed to run on Linux
 	pkgver = 2.0
 	pkgrel = 1
@@ -26,5 +26,5 @@ pkgbase = nixnote2
 	source_i686 = https://superb-sea2.dl.sourceforge.net/project/nevernote/NixNote2%20-%202.0/Linux/Qt5/nixnote2-2.0_i386.tar.gz
 	sha256sums_i686 = 9a829cd33ad7fbd6f1e83a0b3182aa3e6be2c56a9f5dbd6ed32cc320b0f9cec2
 
-pkgname = nixnote2
+pkgname = nixnote-beta
 
