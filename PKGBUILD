@@ -4,7 +4,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=('python-gitpython' 'python2-gitpython')
 pkgver=2.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Python Git Library"
 arch=('i686' 'x86_64')
 url="https://pypi.python.org/pypi/GitPython"
@@ -25,13 +25,15 @@ sha512sums=('b9f49e0c23501926647c41dd386865d0bc79eae9bb4789b12a6d5ef74d57121f495
 package_python-gitpython() {
 	depends=('python' 'python-gitdb2')
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	python setup.py install --skip-build --root="${pkgdir}" --optimize=1
+	python3 setup.py build || return 1
+	python setup.py install --skip-build --root="${pkgdir}" --optimize=1 || return 1
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python2-gitpython() {
 	depends=('python2' 'python2-gitdb2')
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
+	python2 setup.py build || return 1
+	python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1 || return 1
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
