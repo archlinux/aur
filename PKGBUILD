@@ -1,7 +1,7 @@
 # Maintainer: ngld <ngld@tproxy.de>
-_pyname=knossos
+_name=knossos
 pkgname=fs2-knossos
-pkgver=0.3.2
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A simple mod manager for FreeSpace 2 Open"
 arch=('any')
@@ -12,15 +12,18 @@ depends=('python' 'python-six' 'python-requests' 'python-pyqt5' 'python-semantic
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=(
-    "https://pypi.python.org/packages/41/45/f89b77fb39ad44a728ae79e479f17a024e24deb567c4138abcb0cb5bb5de/knossos-0.3.2.tar.gz"
+    "https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
+    knossos
     knossos.desktop)
-md5sums=('7e3ba3dcceedd98b0b2c54faa99dc74b'
+md5sums=('2caf8e92b0a601a560045cf0442ddb30'
+         '541dfc75f3aecbe08b843eeec252e4b4'
          'afd34e2bf9b8f74c1fc5785662e1f04a')
 
 package() {
-    cd "$srcdir/${_pyname}-$pkgver"
+    cd "$srcdir/${_name}-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
 
+    install -Dm755 ../knossos "$pkgdir/usr/bin/knossos"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 NOTICE "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
     install -Dm644 ../knossos.desktop "$pkgdir/usr/share/applications/knossos.desktop"
