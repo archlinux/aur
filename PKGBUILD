@@ -8,7 +8,7 @@ pkgdesc='Koji is a system for building and tracking RPMS. This base package cont
 arch=('any')
 license=('GPL2' 'LGPL2.1')
 url="https://pagure.io/koji"
-depends=('python2-krbv' 'python2-pyopenssl' 'urlgrabber' 'rpm-org' 'yum')
+depends=('python2-dateutil' 'python2-krbv' 'python2-pyopenssl' 'urlgrabber' 'rpm-org' 'yum')
 makedepends=('python2')
 backup=('etc/httpd/conf.d/kojihub.conf'
         'etc/httpd/conf.d/kojiweb.conf'
