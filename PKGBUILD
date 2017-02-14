@@ -1,7 +1,7 @@
 # Maintainer: Alex Smith <azphreal19@protonmail.com
 pkgname=koel
 pkgver=3.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A personal music streaming server that works."
 arch=('any')
 url="http://koel.phanan.net/"
@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	mkdir -p "${pkgdir}/usr/share/webapps/${pkgname}"
-    cp -r * "${pkgdir}/usr/share/webapps/${pkgname}"
+	#cd "$pkgname-$pkgver"
+	mkdir -p "${pkgdir}/usr/share/webapps"
+    cp -r "${pkgname}-${pkgver}" "${pkgdir}/usr/share/webapps/${pkgname}"
 }
