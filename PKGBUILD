@@ -38,7 +38,7 @@ package() {
     mv "$srcdir/linux-unpacked/" "$srcdir/$pkgbase"
     cp -R "$srcdir/$pkgbase" $pkgdir/opt/
     install -d "$pkgdir/usr/bin/"
-    ln -sf "$pkgdir/opt/$pkgbase/$pkgbase" "$pkgdir/usr/bin/$pkgbase"
+    ln -sf "/opt/$pkgbase/$pkgbase" "$pkgdir/usr/bin/$pkgbase"
     install -Dm755 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
     for icon_size in 16 32 48 64 128 256 512; do
         icon_dir="$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
