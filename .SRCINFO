@@ -1,0 +1,15 @@
+pkgbase = solus-icon-theme-git
+	pkgdesc = Solus Icon Theme.
+	pkgver = 68.c3aa11b
+	pkgrel = 1
+	url = https://github.com/solus-project/solus-icon-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gtk-update-icon-cache
+	conflicts = solus-icon-theme
+	source = git://github.com/solus-project/solus-icon-theme.git
+	md5sums = SKIP
+
+pkgname = solus-icon-theme-git
+
