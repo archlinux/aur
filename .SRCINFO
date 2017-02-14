@@ -67,7 +67,6 @@ pkgname = xorg-server-git
 	pkgdesc = Xorg X server - Git
 	install = xorg-server-git.install
 	depends = libepoxy
-	depends = libpciaccess
 	depends = libxfont2
 	depends = pixman
 	depends = xorg-server-common-git
@@ -75,9 +74,11 @@ pkgname = xorg-server-git
 	depends = dbus
 	depends = libgl
 	depends = xf86-input-libinput
-	provides = X-ABI-VIDEODRV_VERSION=24.0
-	provides = X-ABI-XINPUT_VERSION=24.1
-	provides = X-ABI-EXTENSION_VERSION=10.0
+	depends = libpciaccess
+	depends = libdrm
+	depends = libxshmfence
+	provides = 
+	provides = X-ABI-_VERSION=grep: xserver/hw/xfree86/common/xf86Module.h: No such file or directory
 	provides = xorg-server
 	provides = x-server
 	conflicts = xorg-server
