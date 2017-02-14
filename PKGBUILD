@@ -1,7 +1,7 @@
 # Maintainer: Nissar Chababy <funilrys at outlook dot com>
 # Ex-Maintainer: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-client
-pkgver=2.0.36
+pkgver=2.1.13
 pkgrel=1
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
@@ -19,7 +19,7 @@ source=("https://www.urbackup.org/downloads/Client/${pkgver}/urbackup-client-${p
 	'lvm_create_filesystem_snapshot'
 	'lvm_remove_filesystem_snapshot')
 
-sha512sums=('55e5a550695e562ed2324e1f313f711ffdac2dd3c459f9a2ed03f2ce707baddd4bdf41d1dd5df8d9fcf6b05e55bf75ea0194da713b99ef7378e1c883c2b45e86'
+sha512sums=('5b373cb09ba829f8459fed7c80be7d0b8a86dbf2566ddb09ab4f8af47cffa0b418493bbd069198ca6d4a49e1535a1673ce7374754387175db3ed4f4323c33d68'
          '416fb8f5f3687a3c369cc2b199d4c8b4170494f0a119566a91ac6a0c2f202dc5049804c10508b66ba657011b39be5ddd055091cd531a665b4398899f404086ca'
          '860021ce5b8d92ff58e8286991162c7bab45493c3b9c87577a43764f6b416397448bb99b8fcb850c4c5853927cb0a8637792b75ff53ee7ee257da3f5d29ae3a7'
          'fde5912b589a495dc03a26d174d7673ff746eed34d6b1ed64758b2dc2ec2ec53e02e6a28b04734a7112f16687b31d25123e99dbc69e9dcab48773675382ec582'
@@ -29,7 +29,7 @@ sha512sums=('55e5a550695e562ed2324e1f313f711ffdac2dd3c459f9a2ed03f2ce707baddd4bd
          '9bdfefccdd9d6e37a77975324a7c417f3de2aa59e6da0bfde3c318b8c6f3d7f4629f3a41eebee548b9c572b8ed39640434cc08bd020d25362fddffc4426438de')
 
 CFLAGS="-march=native -O2 -pipe -fstack-protector-strong"
-CXXFLAGS="${CFLAGS} -ansi"
+CXXFLAGS="${CFLAGS} -ansi -std=gnu++11"
 MAKEFLAGS="-j$(nproc)"
 
 build() {
