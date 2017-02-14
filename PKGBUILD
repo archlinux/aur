@@ -22,9 +22,19 @@ pkgver(){
 }
 
 prepare() {
-  mkdir build
+  cd $srcdir
 
-  cd libcorkipset
+  msg "Connecting to GIT server...."
+
+  if [[ -d "$_gitname" ]]; then
+    cd "$_gitname" && git pull origin
+    msg "The local files are updated."
+  else
+    git clone "$_gitroot" "$_gitname"
+  fi
+
+  msg "GIT checkout done or server timeout"
+
   for p in debian/patches/*.patch; do
     patch -p1 -i "$p"
   done
@@ -38,22 +48,14 @@ prepare() {
 
 build() {
   cd "$srcdir"
-  msg "Connecting to GIT server...."
 
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
   msg "Starting build..."
 
   rm -rf "$srcdir/$_gitname-build"
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
 
+  mkdir build
   cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   make
