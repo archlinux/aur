@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-gmpz'
-pkgver='0.45'
+pkgver='0.46'
 pkgrel='1'
 pkgdesc="perl interface to the GMP library's integer (mpz) functions."
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=('perl>=5.10.1' 'gmp>=6.1.0')
 makedepends=()
 url='https://metacpan.org/release/Math-GMPz'
 source=("https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-GMPz-$pkgver.tar.gz")
-md5sums=('ddfe1c647fa8dc7d67e8d6ed162d4c09')
-sha512sums=('3d50fa71face5619b8dff810fd31fc4aab5223b96701989c6d26cf39b3d313d52c556f6b3e1a77b82971973fbd49f4c583573607792ff494912fd84ef4720eb0')
+md5sums=('0564ac01fcbbc7fcd744ffd2dec3462a')
+sha512sums=('3a448824e1589486f60d65801b4d1cfc1f5b18870ec22ae1a56ecc2a434fb727403940e5301712934c2fcaad645f619b4fe96751e607e2ad42ca76a669234c26')
 _distdir="Math-GMPz-$pkgver"
 
 build() {
