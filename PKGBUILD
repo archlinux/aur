@@ -1,7 +1,7 @@
 # Maintainer: mortzprk <mortz.prk@gmail.com>
 # Package Build Source: https://github.com/flaccid/archlinux-packages/blob/master/nixnote-beta/PKGBUILD
 
-pkgname=nixnote2
+pkgname=nixnote-beta
 _pkgname=nixnote2
 pkgver=2.0
 _pkgver="NixNote2%20-%202.0"
