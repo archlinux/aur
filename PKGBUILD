@@ -1,18 +1,18 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
  
 pkgname=babe-qt-git
-pkgver=r85.c57941b
+pkgver=r94.a3c9b4e
 pkgrel=1
 pkgdesc='Tiny Qt Babe Music Player'
 arch=('i686' 'x86_64')
 url="https://github.com/milohr/babe-qt"
-license=('GPL')
+license=('GPL3')
 depends=('hicolor-icon-theme' 'knotifications' 'ki18n' 'taglib')
-makedepends=('git')
+makedepends=('extra-cmake-modules' 'git')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("git+${url}.git" 'Babe.desktop')
-sha256sums=('SKIP' '32c793f0acbd7c049258012b5d38cb6fbd5b597c5783c9a6ba3ecd06a6e3c27a')
+source=("git+${url}.git" 'babe.desktop')
+sha256sums=('SKIP' '972e7d5c907a974ad2c444caaffacbed096bf7bd8d7d810b663ca33c6e16beea')
  
 pkgver() {
   cd babe-qt
@@ -21,14 +21,13 @@ pkgver() {
 
 build() {
   cd babe-qt
-  qmake-qt5
+  cmake .
   make
 }
  
 package() {
   cd babe-qt
-  install -Dm755 Babe "$pkgdir/usr/bin/Babe"
-  install -Dm755 data/babe_128.svg "$pkgdir/usr/share/pixmaps/Babe.svg"
-  install -Dm755 data/babe.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/Babe.svg"
-  install -Dm644 ../Babe.desktop "$pkgdir/usr/share/applications/Babe.desktop"
+  install -Dm755 babe "$pkgdir/usr/bin/babe"
+  install -Dm755 data/babe.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/babe.svg"
+  install -Dm644 ../babe.desktop "$pkgdir/usr/share/applications/babe.desktop"
 }
