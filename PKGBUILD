@@ -19,5 +19,7 @@ package() {
   cd "$srcdir/kits/xed-install-base-2016-02-02-lin-x86-64"
   mkdir -p "$pkgdir/usr"
   cp -r include "$pkgdir/usr/"
+  chmod 0644 $pkgdir/usr/include/*
   cp -r lib "$pkgdir/usr/"
+  chmod 0755 $pkgdir/usr/lib/*
 }
