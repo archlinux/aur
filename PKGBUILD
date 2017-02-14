@@ -2,7 +2,7 @@
 _pkgname=hangups
 pkgname=${_pkgname}-git
 pkgver=0.4.1.r44.gc2eea47
-pkgrel=1
+pkgrel=2
 epoch=1
 
 pkgdesc="The first third-party instant messaging client for Google Hangouts"
@@ -28,6 +28,7 @@ package() {
   sed -i 's/==/>=/g' setup.py
   sed -i 's/multidict<2,/multidict/' setup.py
   sed -i 's/protobuf>=3.1.0,<3.2.0/protobuf>=3.1.0/' setup.py
+  sed -i 's/aiohttp>=1.2,<1.3/aiohttp>=1.2/' setup.py
   
   python setup.py install --prefix=/usr --root="${pkgdir}"
   find "${pkgdir}/" -name '*.pyc' -delete
