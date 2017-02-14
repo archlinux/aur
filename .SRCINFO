@@ -23,7 +23,7 @@ pkgname = nvidia-utils-beta
 	optdepends = gtk3: nvidia-settings (GTK+ v3)
 	optdepends = opencl-nvidia-beta: OpenCL support
 	optdepends = xorg-server-devel: nvidia-xconfig
-	optdepends = egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.0.0)
+	optdepends = egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.0.1)
 	provides = nvidia-utils=378.13
 	provides = nvidia-settings
 	provides = libglvnd
@@ -34,7 +34,7 @@ pkgname = nvidia-utils-beta
 	backup = etc/X11/xorg.conf.d/20-nvidia.conf
 
 pkgname = nvidia-egl-wayland-beta
-	pkgdesc = NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.0.0) for 'nvidia-utils-beta'
+	pkgdesc = NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.0.1) for 'nvidia-utils-beta'
 	depends = nvidia-utils-beta
 	provides = egl-wayland
 	conflicts = egl-wayland
