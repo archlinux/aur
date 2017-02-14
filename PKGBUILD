@@ -10,7 +10,6 @@ url='https://sourceforge.net/projects/lib-ka/'
 license=('GPL2')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 conflicts=('ttf-liberastika-ib')
-install="${pkgname}.install"
 source=("https://downloads.sourceforge.net/project/lib-ka/liberastika-ttf-${pkgver}.tar.xz")
 sha256sums=('b95add839826cfa4a44146dfcc5ebffc31773b5137eddb525a00a2a6deeab8db')
 
