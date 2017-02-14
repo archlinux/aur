@@ -1,17 +1,20 @@
 pkgbase = photofilmstrip
 	pkgdesc = Create video clips from photos
-	pkgver = 2.1.0
-	pkgrel = 10
+	pkgver = 3.0.1
+	pkgrel = 1
 	url = http://www.photofilmstrip.org/1-0-Home.html
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = wxpython
 	depends = python2-pillow
-	depends = mencoder
-	depends = gstreamer0.10-python
-	source = https://sourceforge.net/projects/photostoryx/files/photofilmstrip/2.1.0/photofilmstrip-2.1.0.tar.gz
-	md5sums = 0488f7b9cf8f99cff5b161c1911d9588
+	depends = gst-python2
+	optdepends = gst-plugins-bad: additional rendering formats
+	optdepends = gst-plugins-good: additional rendering formats
+	optdepends = gst-plugins-ugly: additional rendering formats
+	optdepends = gst-libav: additional rendering formats
+	source = https://sourceforge.net/projects/photostoryx/files/photofilmstrip/3.0.1/photofilmstrip-3.0.1.tar.gz
+	md5sums = 611bb2051d8d6d40664c57181f949a78
 
 pkgname = photofilmstrip
 
