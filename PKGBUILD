@@ -8,8 +8,10 @@ license=("GPL")
 arch=('i686' 'x86_64')
 depends=('glibc' 'dkms')
 conflicts=("${_pkgbase}")
-makedepends=('linux-headers')
-source=(r8168-$pkgver.tar.gz::http://12244.wpc.azureedge.net/8012244/drivers/rtdrivers/cn/nic/0009-r8168-8.044.02.tar.bz2
+optdepends=('linux-headers: Needed for build the module for Arch kernel'
+	'linux-lts-headers: Needed for build the module for LTS Arch kernel'
+	'linux-zen-headers: Needed for build the module for ZEN Arch kernel')
+source=(https://github.com/mtorromeo/r8168/archive/$pkgver/r8168-$pkgver.tar.gz
         'dkms.conf')
 install=r8168-dkms.install
 
@@ -30,5 +32,5 @@ package() {
 	rm src/Makefile_linux24x
 	cp -dr --no-preserve='ownership' src "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/src"
 }
-sha256sums=('ad3cd1becb35efab52ed11e0326c1108806c55c62fd2b5e1cf7eaa749fb75027'
+sha256sums=('aad7bccc4f625c35abe0455b2a6271e9938b76b46e11b24b4f138eb5c95db6d3'
             '260d8142e944f3144cbc704534e662d427318d8b32dc7a2852a855be72e8d763')
