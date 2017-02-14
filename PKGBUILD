@@ -9,6 +9,7 @@ url='http://www.httrack.com/'
 arch=('any')
 provides=('httrack')
 conflicts=('httrack')
+depends=('bash' 'zlib' 'hicolor-icon-theme' 'openssl')
 source=("https://github.com/xroche/httrack/archive/${pkgver}.tar.gz")
 md5sums=('3f2e60f637697bf326856817fb8a015d')
 
