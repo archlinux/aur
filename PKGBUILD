@@ -17,7 +17,7 @@ sha1sums=('5b3a0392390e49d4f7f4e478dd336476436f5cfa')
 sha1sums_x86_64=('9184a39253edade7b2f9d92aae0a674cb976043f')
 
 package() {
-  depends=('qt5-base' 'qt5-svg' 'sane')
+  depends=('gcc-libs' 'glibc' 'libgl' 'qt5-base' 'qt5-svg' 'sane')
 
   install -d "$pkgdir"{/opt/,/usr/bin/,/usr/share/applications/}
   cp -a --no-preserve=ownership master-pdf-editor-${pkgver%%.*} "$pkgdir/opt/"

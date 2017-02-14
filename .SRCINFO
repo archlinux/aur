@@ -12,6 +12,9 @@ pkgbase = masterpdfeditor
 	sha1sums_x86_64 = 9184a39253edade7b2f9d92aae0a674cb976043f
 
 pkgname = masterpdfeditor
+	depends = gcc-libs
+	depends = glibc
+	depends = libgl
 	depends = qt5-base
 	depends = qt5-svg
 	depends = sane
