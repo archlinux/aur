@@ -9,9 +9,10 @@ pkgdesc='Geospatial data management and analysis, image processing, graphics/map
 arch=('i686' 'x86_64')
 url='http://grass.osgeo.org/'
 license=('GPL')
-depends=('fftw' 'gdal' 'glu' 'python2-pillow' 'subversion' 'wxpython')
+depends=('cairo' 'fftw' 'fontconfig' 'freetype2' 'gcc-libs' 'gdal' 'geos' 'glibc' 'glu' 'libpng' 'libtiff' 'libx11' 'libgl' 'netcdf' 'proj' 'python2-pillow' 'readline' 'subversion' 'wxpython' 'zlib')
 makedepends=('libxt')
-optdepends=('postgresql: PostgreSQL database interface')
+optdepends=('postgresql: PostgreSQL database interface'
+            'sqlite: SQLite database interface')
 source=("http://grass.osgeo.org/grass$_shortver/source/$pkgname-$pkgver.tar.gz")
 md5sums=('9ba295bbf2d8d84ad46fced1597814df')
 
