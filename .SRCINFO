@@ -1,7 +1,7 @@
 pkgbase = xpsk31
 	pkgdesc = Ham Radio PSK31 engine using X/GTK+
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.qsl.net/5b4az/pkg/psk31/xpsk31/xpsk31.html
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = xpsk31
 	makedepends = pkg-config
 	depends = gtk2
 	depends = alsa-lib
-	optdepends = hamradio-menus: XDG compliant menuing
+	depends = hamradio-menus
 	source = http://www.qsl.net/5b4az/pkg/psk31/xpsk31/xpsk31-3.2.tar.bz2
 	source = diff.Makefile.am
 	source = xpsk31.desktop

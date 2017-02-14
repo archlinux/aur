@@ -4,13 +4,12 @@
 
 pkgname=xpsk31
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Ham Radio PSK31 engine using X/GTK+"
 arch=('i686' 'x86_64')
 url="http://www.qsl.net/5b4az/pkg/psk31/xpsk31/xpsk31.html"
 license=(GPL)
-optdepends=('hamradio-menus: XDG compliant menuing')
-depends=('gtk2' 'alsa-lib')
+depends=('gtk2' 'alsa-lib' 'hamradio-menus')
 makedepends=('autoconf' 'automake' 'intltool' 'pkg-config')
 # 'imagemagick: used IF you want to convert icons/images')
 source=(http://www.qsl.net/5b4az/pkg/psk31/$pkgname/$pkgname-$pkgver.tar.bz2
