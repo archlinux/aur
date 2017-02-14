@@ -95,4 +95,12 @@ package() {
 
 	msg2 "Installing main directory..."
 	mv "${pkgname}_${pkgver}-${pkgrel}" "$pkgdir/opt/${pkgname}"
+	
+	# thanks seo.disparate
+	msg2 "Ensuring packaged files are owned by root..."
+	chown -R root:root "$pkgdir"
+
+	msg2 "Fixing chromium-sandbox name and permissions..."
+	mv "$pkgdir/opt/$pkgname/chrome_sandbox" "$pkgdir/opt/$pkgname/chrome-sandbox"
+	chmod 4755 "$pkgdir/opt/$pkgname/chrome-sandbox"
 }
