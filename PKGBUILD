@@ -19,7 +19,7 @@ sha1sums_i686=('70eaf1715befa84a7d24ff345310a1b6a717a280')
 sha1sums_x86_64=('71f76647a6a6266ec1c940a018a2abbe9ba21b31')
 
 package() {
-  depends=('qt4' 'sane')
+  depends=('gcc-libs' 'glibc' 'qt4' 'sane')
 
   install -d "$pkgdir"{/opt/,/usr/bin/,/usr/share/applications/}
   cp -a --no-preserve=ownership master-pdf-editor-${pkgver%%.*} "$pkgdir/opt/"
