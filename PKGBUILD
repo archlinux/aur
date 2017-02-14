@@ -5,7 +5,7 @@ pkgver=7.2.0
 _pkgmajver=7.2
 _pkgrev=${pkgver}-48204
 _libvmimever=0.9.2
-pkgrel=270
+pkgrel=271
 pkgdesc="A C++ class library for working with MIME messages"
 arch=('armv7h'
       'armv6h'
