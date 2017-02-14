@@ -1,53 +1,58 @@
-# Maintainer: Stephan Conrad <stephan@conrad.pics>
+# Maintainer: Alfredo Ramos <alfredo dot ramos at yandex dot com>
+# Contributor: Stephan Conrad <stephan@conrad.pics>
+
 pkgname=modsecurity
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
-epoch=
-pkgdesc=""
-arch=('x86_64' 'i386')
-url=""
-license=('ASLv2')
-groups=()
+pkgdesc='A cross platform web application firewall engine for Apache, IIS and Nginx'
+arch=('i686' 'x86_64')
+url='https://modsecurity.org/'
+license=('APACHE')
+
 depends=(
-	'apache'
-	'apr'
-	'apr-util'
-	'pcre'
-	'libxml2'
-	'lua'
-	'curl'
+	'apache' 'apr-util' 'pcre'
+	'libxml2' 'lua51' 'curl' 'yajl'
 )
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://www.modsecurity.org/tarball/2.9.0/$pkgname-$pkgver.tar.gz"
-		'lua_5.3.patch'
-        )
-noextract=()
-md5sums=('ecf42d21f26338443d7111891851628c'
-         'e932d70f975e6acccd0583a6e91818d1')
-validpgpkeys=()
+provides=("${pkgname}=${pkgver}")
+
+source=(
+	"https://github.com/SpiderLabs/ModSecurity/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc}
+)
+validpgpkeys=(
+	'190EFACCA1E9FA466A8ECD9CE6DFB08CE8B11277' # Felipe Zimmerle
+)
+sha256sums=(
+	'958cc5a7a7430f93fac0fd6f8b9aa92fc1801efce0cda797d6029d44080a9b24'
+	'SKIP' # GPG signature
+)
 
 prepare() {
-        cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/lua_5.3.patch"
+	# Create build directory
+	mkdir -p "${srcdir}"/build
+
+	cd "${srcdir}"/build
+	cp -a "${srcdir}"/${pkgname}-${pkgver}/* ./
+	./autogen.sh
 }
 
 build() {
-        cd "$pkgname-$pkgver"
-         ./configure --with-apxs=/usr/bin/apxs --enable-htaccess-config
-        make
+	# Build package
+	cd "${srcdir}"/build
+
+	./configure \
+		--prefix=/usr \
+		--enable-standalone-module \
+		--enable-htaccess-config
+
+	# Remove RPATH
+	# https://tracker.debian.org/media/packages/m/modsecurity-apache/rules-2.9.1-2
+	sed -ri 's|(hardcode_into_libs)=.*|\1=no|' libtool
+
+	make
 }
 
 package() {
-        cd "$pkgname-$pkgver"
-        make DESTDIR="$pkgdir/" install
+	# Install package
+	cd "${srcdir}"/build
+	make DESTDIR="${pkgdir}" install
 }
-
