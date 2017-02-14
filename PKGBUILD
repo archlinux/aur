@@ -7,7 +7,7 @@
 pkgname=luakit-git
 gitname=luakit
 pkgver=r2735.5f2a71b
-pkgrel=3
+pkgrel=4
 pkgdesc='fork of luakit using webkit2'
 arch=('x86_64' 'i686' 'armv7h')
 url='https://github.com/luakit/luakit'
