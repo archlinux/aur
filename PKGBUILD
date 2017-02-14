@@ -9,7 +9,6 @@ url='https://fonts.google.com/specimen/Merriweather'
 license=('custom:SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git' 'ttf-merriweather-ib')
-install="${pkgname}.install"
 source=("Merriweather-Black-${pkgver}.ttf::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/Merriweather-Black.ttf"
         "Merriweather-BlackItalic-${pkgver}.ttf::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/Merriweather-BlackItalic.ttf"
         "Merriweather-Bold-${pkgver}.ttf::https://github.com/google/fonts/raw/4f421f4cdb58fc933453ef5ae163f8310761cdc4/ofl/merriweather/Merriweather-Bold.ttf"
