@@ -1,0 +1,13 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 3b3c991..0cb6161 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -17,7 +17,7 @@ chrono = "0.2.17"
+ clap = "2.20.3"
+ diesel = { version = "0.10.0", default-features = false }
+ dotenv = "0.8.0"
+-diesel_infer_schema = { version = "0.1.0", default-features = false, path = "../diesel_infer_schema" }
++diesel_infer_schema = { version = "0.10.1", default-features = false, path = "../diesel_infer_schema" }
+ 
+ [dev-dependencies]
+ tempdir = "0.3.4"
