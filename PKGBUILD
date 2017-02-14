@@ -9,6 +9,21 @@
 #    * This PKGBUILD as closely as possible matches core's gcc 6.3.1-1
 #       * The github mirror is much more reliable and faster than the official upstream git repo
 #       * _base_ver (in core, known as pkgver), _pkgver, and _libdir are parsed from gcc/BASE-VER.  Unfortunately, these can't be parsed in the global scope because the git source isn't even downloaded yet.  Setting to default value and updating in prepare() only makes chances within scope of that function.  So, they're parsed in each function that needs them.
+#    * Namcap differences with core's gcc 6.3.1-1
+#       * gcc-git
+#          * Duplicate: Unused shared library
+#             * Ignored because: is a duplicate; and only indicates a possible upstream optimization
+#       * gcc-ada-git
+#          * Few missing: ELF file has executable stack
+#             * Ignored because this is an improvement over core
+#       * gcc-go-git
+#          * Extra: lacks RELRO, check LDFLAGS
+#             * Ignored because core has many similar messages
+#          * Referenced library 'libgo.so.11' is an uninstalled dependency
+#             * Ignored because this is provided within gcc-go-git, which is not installed in a chroot build because gcc-go is already installed, and it defaults to 'no' for the conflict
+#       * gcc-libs-git
+#          * Dependency gcc-libs detected and not included
+#             * Ignored because this is referencing itself, which is not installed in a chroot build because gcc-libs is already installed, and it defaults to 'no' for the conflict
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
