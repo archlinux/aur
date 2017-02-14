@@ -1,13 +1,14 @@
 pkgbase = haskell-doctest
 	pkgdesc = The doctest program checks examples in source code comments. It is modeled after doctest for Python
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hackage.haskell.org/package/doctest
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = ghc>=7.10.2
 	depends = haskell-base-compat>=0.4.2
+	depends = haskell-code-page>=0.1
 	depends = haskell-syb>=0.3
 	depends = haskell-ghc-paths>=0.1.0.9
 	depends = haskell-transformers-base>=0.4

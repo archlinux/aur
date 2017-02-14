@@ -3,12 +3,12 @@
 _hkgname=doctest
 pkgname=haskell-doctest
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The doctest program checks examples in source code comments. It is modeled after doctest for Python"
 url="https://hackage.haskell.org/package/${_hkgname}"
 arch=('i686' 'x86_64')
 license=("MIT")
-depends=("ghc>=7.10.2" "haskell-base-compat>=0.4.2" "haskell-syb>=0.3" "haskell-ghc-paths>=0.1.0.9" "haskell-transformers-base>=0.4")
+depends=("ghc>=7.10.2" "haskell-base-compat>=0.4.2" "haskell-code-page>=0.1" "haskell-syb>=0.3" "haskell-ghc-paths>=0.1.0.9" "haskell-transformers-base>=0.4")
 source=("http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 sha256sums=('5b6ab30f0bf4061707b7bb33445da4c8a00df3e8b3ed04cf7c86f18a6007ad2a')
 
