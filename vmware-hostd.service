@@ -4,6 +4,8 @@ Wants=vmware-hostd-certificates.service
 After=vmware-hostd-certificates.service
 
 [Service]
+ExecStartPre=/usr/bin/modprobe vmci
+ExecStartPre=/usr/bin/modprobe vmmon
 ExecStart=/usr/bin/vmware-hostd -a /etc/vmware/hostd/config.xml
 
 [Install]
