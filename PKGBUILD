@@ -1,44 +1,81 @@
-# Maintainer: Carl George < arch at cgtx dot us >
+# Maintainer: Daniel Milde <daniel@milde.cz>
 
-_name="GitPython"
-_module="git"
+pkgname=python-hg
+pkgver=3.7.0a0.r104865+.a6e59a2e880e+
+pkgrel=1
+_pybasever=3.7
+_pkgname=cpython
+pkgdesc="Next generation of the python high-level scripting language"
+arch=('i686' 'x86_64')
+license=('custom')
+url="http://www.python.org/"
+depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
+makedepends=('tk>=8.6.0' 'sqlite' 'valgrind' 'bluez-libs' 'mercurial')
+optdepends=('tk: for tkinter' 'sqlite')
+options=(debug !strip !makeflags)
+source=("hg+https://hg.python.org/cpython#branch=default")
+sha256sums=('SKIP')
 
-pkgname=("python-${_module}" "python2-${_module}")
-pkgver="2.1.1"
-pkgrel="2"
-pkgdesc="Python Git Library"
-arch=("any")
-url="https://github.com/gitpython-developers/${_name}"
-license=("BSD")
-makedepends=("python-setuptools" "python2-setuptools")
-source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('e96f8e953cf9fee0a7599fc587667591328760b6341a0081ef311a942fc96204')
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  printf "%s.r%s.%s" \
+      "3.7.0a0" \
+      "$(hg identify -n)" \
+      "$(hg identify -i)"
+      #"$(hg tags | awk 'NR==2 {print $1}' | sed -E 's/^v//;s/([a-z])/.\1/')" \
+}
 
 prepare() {
-    cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
+  cd "${srcdir}/${_pkgname}"
+
+  # FS#23997
+  sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
+
+  # Ensure that we are using the system copy of various libraries (expat, zlib and libffi),
+  # rather than copies shipped in the tarball
+  rm -rf Modules/expat
+  rm -rf Modules/zlib
+  rm -rf Modules/_ctypes/{darwin,libffi}*
 }
 
 build() {
-    cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py build
-    cd "${srcdir}/${_name}-${pkgver}-python2"
-    python2 setup.py build
+  cd "${srcdir}/${_pkgname}"
+
+  ./configure --prefix=/usr \
+              --enable-shared \
+              --with-threads \
+              --with-computed-gotos \
+              --enable-ipv6 \
+              --with-valgrind \
+              --with-system-expat \
+              --with-dbmliborder=gdbm:ndbm \
+              --with-system-ffi
+
+  # http://bugs.python.org/issue26662
+  make touch
+
+  make
 }
 
-package_python-git() {
-    depends=("git>=1.7" "python-gitdb2>=2.0.0")
-    provides=("python-gitpython=${pkgver}-${pkgrel}")
-    conflicts=("python-gitpython")
-    cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py install --skip-build --root="${pkgdir}" --optimize=1
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
+package() {
+  cd "${srcdir}/${_pkgname}"
+  # altinstall: /usr/bin/pythonX.Y but not /usr/bin/python or /usr/bin/pythonX
+  make DESTDIR="${pkgdir}" altinstall maninstall
 
-package_python2-git() {
-    depends=("git>=1.7" "python2-gitdb2>=2.0.0")
-    provides=("python2-gitpython=${pkgver}-${pkgrel}")
-    conflicts=("python2-gitpython")
-    cd "${srcdir}/${_name}-${pkgver}-python2"
-    python2 setup.py install --skip-build --root="${pkgdir}" --optimize=1
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # Work around a conflict with 3.4 the 'python' package.
+  rm "${pkgdir}/usr/lib/libpython3.so"
+  rm "${pkgdir}/usr/share/man/man1/python3.1"
+
+  # Fix FS#22552
+  ln -sf ../../libpython${_pybasever}m.so \
+    "${pkgdir}/usr/lib/python${_pybasever}/config-${_pybasever}m-${CARCH}-linux-gnu/libpython${_pybasever}m.so"
+
+  # Fix pycairo build
+  ln -sf python3.7m-config "${pkgdir}/usr/bin/python3.7-config"
+
+  # Clean-up reference to build directory
+  sed -i "s|$srcdir/${_pkgname}:||" "$pkgdir/usr/lib/python${_pybasever}/config-${_pybasever}m-${CARCH}-linux-gnu/Makefile"
+
+  # License
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
