@@ -14,7 +14,7 @@ license=('MIT')
 provides=('python-mypy-lang')
 conflicts=('python-mypy-lang')
 depends=('python-typed-ast')
-source=("https://github.com/python/mypy/archive/v${pkgver}.tar.gz")
+source=("$_pypi_name-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 
 build() {
     cd "${srcdir}/${_pypi_name}-${pkgver}"
