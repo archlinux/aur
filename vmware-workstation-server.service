@@ -4,6 +4,8 @@ Wants=vmware-workstation-server-certificates.service
 After=vmware-workstation-server-certificates.service
 Wants=vmware-usbarbitrator.service
 After=vmware-usbarbitrator.service
+Wants=vmware-networks.service
+After=vmware-networks.service
 
 [Service]
 ExecStart=/usr/bin/vmware-hostd -a /etc/vmware/hostd/config.xml

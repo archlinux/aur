@@ -2,7 +2,7 @@
 
 pkgname=vmware-workstation
 pkgver=12.5.2_4638234
-pkgrel=3
+pkgrel=4
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -26,6 +26,8 @@ source=(
   environments.xml
   proxy.xml
 
+  vmware-networks-configuration.service
+  vmware-networks.service
   vmware-usbarbitrator.service
   vmware-workstation-server-certificates.service
   vmware-workstation-server.service
@@ -48,9 +50,11 @@ sha1sums=(
   a7e4a6fe33dc6ca95b469ec6f88de21e5b16a95b
   80c5626984ffcdea6fa655d248c731e7c9c657fa
 
+  d90c687250c16fc5586938de5dc7539a58500adc
+  ba7e8fb23512fd87b986591ff52ee9f3f8b3cd4c
   c1dbfbad3473d12e9c82b75c5f1faf795f3cc217
   fa9bc954e7ea595fd365f3d34fc7b89351e355d9
-  8121242dc9b402477e089f0ecb9c35519eb56186
+  db659e4edbc6810a79eff3bdac151ef346ed41a2
 
   3f6f14f8047941c015e9067f62ae403acc7b563c
   bd8955b45f9ac3deed99aba93d2c82bc5424167e
@@ -120,20 +124,20 @@ package() {
   install -Dm 644 vmware-vmx/extra/modules.xml "$pkgdir/usr/lib/vmware/modules/modules.xml"
   install -Dm 644 vmware-installer/bootstrap "$pkgdir/etc/vmware-installer/bootstrap"
 
-  install -Dm 644 \
-    "$srcdir/vmware-usbarbitrator.service" \
-    "$pkgdir/usr/lib/systemd/system/vmware-usbarbitrator.service"
-
-  install -Dm 644 \
-    "$srcdir/vmware-workstation-server.service" \
-    "$pkgdir/usr/lib/systemd/system/vmware-workstation-server.service"
-
-  install -Dm 644 \
-    "$srcdir/vmware-workstation-server-certificates.service" \
-    "$pkgdir/usr/lib/systemd/system/vmware-workstation-server-certificates.service"
-
   for hostd_file in config datastores environments proxy; do
     install -Dm 644 "$srcdir/$hostd_file.xml" "$pkgdir/etc/vmware/hostd/$hostd_file.xml"
+  done
+
+  for service_file in \
+    vmware-networks-configuration.service \
+    vmware-networks.service \
+    vmware-usbarbitrator.service \
+    vmware-workstation-server-certificates.service \
+    vmware-workstation-server.service
+  do
+    install -Dm 644 \
+      "$srcdir/$service_file" \
+      "$pkgdir/usr/lib/systemd/system/$service_file"
   done
 
 
@@ -170,6 +174,8 @@ package() {
   do
     ln -s /usr/lib/vmware/bin/appLoader "$pkgdir/usr/lib/vmware/bin/$link"
   done
+
+  ln -s /usr/lib/vmware/icu "$pkgdir/etc/vmware/icu"
 
 
   # Replace placeholder "variables" with real paths.
