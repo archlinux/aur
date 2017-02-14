@@ -2,13 +2,14 @@
 
 pkgname=delphes
 pkgver=3.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A framework for fast simulation of a generic collider experiment"
 url="http://cp3.irmp.ucl.ac.be/projects/delphes"
 arch=('i686' 'x86_64')
-license=('GPLv3')
+license=('GPL3')
 depends=("cmake"
-         "root")
+         "root"
+         "exrootanalysis")
 source=("https://github.com/delphes/delphes/archive/${pkgver}.tar.gz"
         "0f5bf9d.patch"
         "7d83636.patch"
@@ -31,6 +32,10 @@ build() {
 
 package() {
     make install
+
+    # Remove ExRootAnalysis
+    rm -rf "${pkgdir}/usr/include/ExRootAnalysis"
+    rm "${pkgdir}/usr/lib/libExRootAnalysisDict_rdict.pcm"
 
     msg2 "Moving examples"
     mkdir -p "${pkgdir}/usr/share/Delphes"
