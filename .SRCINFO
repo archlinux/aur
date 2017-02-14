@@ -7,7 +7,6 @@ pkgbase = gnome-backgrounds-bitday-git
 	license = UNLICENSE
 	makedepends = git
 	makedepends = make
-	depends = gnome-backgrounds
 	provides = gnome-backgrounds-bitday
 	source = https://github.com/ghisvail/gnome-backgrounds-bitday/archive/master.zip
 	md5sums = SKIP

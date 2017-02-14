@@ -7,7 +7,6 @@ pkgver=r8.995171b
 pkgrel=1
 pkgdesc="Beautiful dynamic pixel wallpaper for GNOME"
 url="https://github.com/ghisvail/gnome-backgrounds-bitday"
-depends=("gnome-backgrounds")
 makedepends=("git" "make")
 provides=("gnome-backgrounds-bitday")
 license=("UNLICENSE")
