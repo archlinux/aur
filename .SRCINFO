@@ -1,17 +1,17 @@
 pkgbase = alduin
 	pkgdesc = Alduin is An RSS and Atom feed aggregator written in Electron
-	pkgver = 1.2.2
-	pkgrel = 1
+	pkgver = 1.3.0
+	pkgrel = 2
 	url = https://github.com/Xstoudi/alduin
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = electron
 	provides = alduin
-	source = https://github.com/Xstoudi/alduin/releases/download/1.2.2/alduin-1.2.2-linux.zip
+	source = https://github.com/Xstoudi/alduin/releases/download/1.3.0/alduin-1.3.0-linux.zip
 	source = alduin.desktop
 	source = alduin.png
-	md5sums = db1a31d3c4068bafb5a47f8060a7ea41
+	md5sums = 1d45c7fce09872d2c2043c002855c6b7
 	md5sums = 16f39375c22e73e8681524c1c2fc77c7
 	md5sums = 81054e3f38fd14e93ccdddba6024d88d
 

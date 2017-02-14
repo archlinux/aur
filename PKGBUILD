@@ -2,8 +2,8 @@
 
 pkgbase=alduin
 pkgname=alduin
-pkgrel=1
-pkgver=1.2.2
+pkgrel=2
+pkgver=1.3.0
 pkgdesc="Alduin is An RSS and Atom feed aggregator written in Electron"
 url="https://github.com/Xstoudi/alduin"
 provides=('alduin')
@@ -19,7 +19,7 @@ source=(
     "${pkgname}.png"
 )
 
-md5sums=('db1a31d3c4068bafb5a47f8060a7ea41'
+md5sums=('1d45c7fce09872d2c2043c002855c6b7'
 	 '16f39375c22e73e8681524c1c2fc77c7'
 	 '81054e3f38fd14e93ccdddba6024d88d')
 
