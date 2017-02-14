@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=vis-git
-pkgver=0.2.r725.gbd36b0b
+pkgver=0.2.r763.g60f41f0
 pkgrel=1
 pkgdesc='modern, legacy free, simple yet efficient vim-like editor - git checkout'
 arch=('i686' 'x86_64')
@@ -21,7 +21,8 @@ sha256sums=('SKIP'
 prepare() {
 	cd vis/
 
-	git config --file=.gitmodules submodule.git.url ../vis-test/
+	git config --file=.gitmodules submodule.test.url ../vis-test/
+	git update-index --assume-unchanged .gitmodules
 	git submodule init
 	git submodule update
 }
