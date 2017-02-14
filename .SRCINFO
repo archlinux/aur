@@ -1,7 +1,7 @@
 pkgbase = ring-kde
 	pkgdesc = KDE client for Ring (ring.cx)
 	pkgver = 2.3.0.r287.ga18fdff
-	pkgrel = 1
+	pkgrel = 2
 	url = https://commits.kde.org/ring-kde
 	arch = i686
 	arch = x86_64
