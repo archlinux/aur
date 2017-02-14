@@ -21,6 +21,21 @@ pkgver(){
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  mkdir build
+
+  cd libcorkipset
+  for p in debian/patches/*.patch; do
+    patch -p1 -i "$p"
+  done
+
+  sed -e 's%#include <ipset%#include <libcorkipset%' \
+      -e 's%#include "ipset%#include "libcorkipset%' \
+      -i include/ipset/*.h */*/*/*.c */*/*/*.c.in */*/*.c */*.c
+  mv include/{,libcork}ipset
+}
+
+
 build() {
   cd "$srcdir"
   msg "Connecting to GIT server...."
@@ -39,7 +54,6 @@ build() {
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
 
-  mkdir build
   cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   make
