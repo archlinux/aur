@@ -1,13 +1,13 @@
 # Maintainer: Andrea Venturini <andrea.ventutini@tiscali.it>
 
 pkgname=amule-adnza-daemon-svn
-pkgver=563
+pkgver=AdunanzA.2012.1
 pkgrel=1
 pkgdesc='aMule patched for Fastweb Network (Italy) by Adunanza forum. (Only Daemon, CLI tools and Webserver)'
 url='http://amule-adunanza.sourceforge.net/'
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
-depends=('wxbase-light'
+depends=('wxbase2.8-light'
          'crypto++'
          'libupnp'
          'libpng'
@@ -20,7 +20,7 @@ makedepends=('ccache'
 conflicts=('amule')
 provides=('amule')
 optdepends=('kamule: AmuleGUI for KDE')
-source=('svn+https://svn.code.sf.net/p/amule-adunanza/code/branches/MoonRiver/'
+source=('svn+https://svn.code.sf.net/p/amule-adunanza/code/tags/AdunanzA-2012.1/'
 	'amuled.service'
         'amuled@.service'
         'amuleweb.service'
@@ -36,28 +36,29 @@ sha1sums=('SKIP'
 install=amule-daemon.install
 
 prepare() {
-  rm -rf ../MoonRiver
-  cd "${srcdir}/MoonRiver"
+  rm -rf ../AdunanzA-2012.1
+  cd "${srcdir}/AdunanzA-2012.1"
 
   mkdir -p build
   ./autogen.sh
 }
 
 build() {
-  cd "${srcdir}/MoonRiver"
+  cd "${srcdir}/AdunanzA-2012.1"
 
   ./configure \
     --prefix=/usr \
     --disable-monolithic \
-    --enable-{alcc,amule-daemon,amulecmd,ccache,fileview,optimize,upnp,webserver,mmap} \
+    --enable-{alcc,amule-daemon,amulecmd,ccache,fileview,optimize,upnp,mmap} \
     --with-boost=/usr/include \
     --with-toolkit=base \
-    --with-wx-config=/usr/lib/wx/config/base-unicode-3.0
+    --with-wxversion=2.8 \
+    --with-wx-config=/usr/lib/wx/config/base-unicode-release-2.8
   make
 }
 
 package() {
-  cd "${srcdir}/MoonRiver"
+  cd "${srcdir}/AdunanzA-2012.1"
   make build DESTDIR="${pkgdir}" install
 
   install -Dm644 "${srcdir}/amuled.service" "${pkgdir}/usr/lib/systemd/system/amuled.service"
