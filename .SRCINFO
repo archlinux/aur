@@ -9,9 +9,11 @@ pkgbase = onedrive
 	license = GPL3
 	makedepends = dmd
 	depends = curl
+	depends = gcc-libs
+	depends = glibc
 	depends = sqlite
 	backup = etc/onedrive.conf
-	source = https://github.com/skilion/onedrive/archive/v1.1.tar.gz
+	source = onedrive-1.1.tar.gz::https://github.com/skilion/onedrive/archive/v1.1.tar.gz
 	sha256sums = c54fad2b452a6a84e009f8743efecdaaca37abcbfe046fc830d7e101cac3594d
 
 pkgname = onedrive
