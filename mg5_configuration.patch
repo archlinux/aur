@@ -1,0 +1,82 @@
+--- b/MG5_aMC_v2_5_2/input/mg5_configuration.txt
++++ a/MG5_aMC_v2_5_2/input/mg5_configuration.txt
+@@ -45,11 +45,11 @@
+ 
+ #! Prefered WebBrower
+ #! If None: try to find one available on the system
+-# web_browser = None
++web_browser = xdg-open
+ 
+ #! Prefered PS viewer
+ #!  If None: try to find one available on the system
+-# eps_viewer = None
++eps_viewer = xdg-open
+ 
+ #! Time allowed to answer question (if no answer takes default value)
+ #!  0: No time limit
+@@ -59,7 +59,7 @@
+ #!  Defines the path to the pythia8 installation directory (i.e. the
+ #!  on containing the lib, bin and include directories) .
+ #!  If using a relative path, that starts from the mg5 directory
+-# pythia8_path = ./HEPTools/pythia8
++pythia8_path = /usr
+ 
+ #! MG5aMC_PY8_interface path
+ #!  Defines the path of the C++ driver file that is used by MG5_aMC to
+@@ -75,14 +75,14 @@
+ #!  WARNING: if Herwig7 has been installed with the bootstrap script,
+ #!  then please set thepeg_path and hepmc_path to the same value as
+ #!  hwpp_path
+-# hwpp_path = 
+-# thepeg_path = 
+-# hepmc_path = 
++hwpp_path = /usr
++thepeg_path = /usr
++hepmc_path = /usr
+ 
+ #! Control when MG5 checks if he is up-to-date.
+ #! Enter the number of day between two check (0 means never)
+ #! A question is always asked before any update
+-# auto_update = 7
++auto_update = 0
+ 
+ ################################################################################
+ #  INFO FOR MADEVENT / aMC@NLO 
+@@ -140,15 +140,15 @@
+ 
+ #! Delphes Package
+ #!  relative path start from main directory
+-# delphes_path = ./Delphes
++delphes_path = /usr
+ 
+ #! MadAnalysis4 fortran-based package [for basic analysis]
+ #!  relative path start from main directory
+-# madanalysis_path = ./MadAnalysis
++madanalysis_path = /usr
+ 
+ #! MadAnalysis5 python-based Package [For advanced analysis]
+ #!  relative path start from main directory
+-# madanalysis5_path = ./HEPTools/madanalysis5/madanalysis5
++madanalysis5_path = /usr
+ 
+ #! ExRootAnalysis Package
+ #!  relative path start from main directory
+@@ -157,15 +157,15 @@
+ #! TOPDRAWER PATH
+ #!  Path to the directory containing td executables
+ #!  relative path start from main directory
+-# td_path = ./td
++td_path = td
+ 
+ #! lhapdf-config
+ #!  If None: try to find one available on the system
+-# lhapdf = lhapdf-config
++lhapdf = lhapdf-config
+ 
+ #! fastjet-config
+ #!  If None: try to find one available on the system
+-# fastjet = fastjet-config
++fastjet = fastjet-config
+ 
+ #! MCatNLO-utilities 
+ #!  relative path starting from main directory

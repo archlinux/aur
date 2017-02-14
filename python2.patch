@@ -1,0 +1,530 @@
+diff --git a/MG5_aMC_v2_5_2/MadSpin/decay.py b/MG5_aMC_v2_5_2/MadSpin/decay.py
+index 4416b16..b87415a 100755
+--- a/MG5_aMC_v2_5_2/MadSpin/decay.py
++++ b/MG5_aMC_v2_5_2/MadSpin/decay.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ from __future__ import division
+ 
+diff --git a/MG5_aMC_v2_5_2/MadSpin/madspin b/MG5_aMC_v2_5_2/MadSpin/madspin
+index 7e36857..b6becb4 100755
+--- a/MG5_aMC_v2_5_2/MadSpin/madspin
++++ b/MG5_aMC_v2_5_2/MadSpin/madspin
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ################################################################################
+ #
+diff --git a/MG5_aMC_v2_5_2/Template/LO/bin/generate_events b/MG5_aMC_v2_5_2/Template/LO/bin/generate_events
+index d01b4a7..925393e 100755
+--- a/MG5_aMC_v2_5_2/Template/LO/bin/generate_events
++++ b/MG5_aMC_v2_5_2/Template/LO/bin/generate_events
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2011 The MadGraph5_aMC@NLO Development team and Contributors
+diff --git a/MG5_aMC_v2_5_2/Template/LO/bin/internal/Gridpack/gridrun b/MG5_aMC_v2_5_2/Template/LO/bin/internal/Gridpack/gridrun
+index ff6b8c3..3ee293b 100755
+--- a/MG5_aMC_v2_5_2/Template/LO/bin/internal/Gridpack/gridrun
++++ b/MG5_aMC_v2_5_2/Template/LO/bin/internal/Gridpack/gridrun
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ################################################################################
+ #
+diff --git a/MG5_aMC_v2_5_2/Template/LO/bin/internal/addmasses_optional.py b/MG5_aMC_v2_5_2/Template/LO/bin/internal/addmasses_optional.py
+index 10e6f64..a2f3a16 100755
+--- a/MG5_aMC_v2_5_2/Template/LO/bin/internal/addmasses_optional.py
++++ b/MG5_aMC_v2_5_2/Template/LO/bin/internal/addmasses_optional.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python2
+ #
+ # doubleswitch.py
+ # Author: Stephen Mrenna
+diff --git a/MG5_aMC_v2_5_2/Template/LO/bin/madevent b/MG5_aMC_v2_5_2/Template/LO/bin/madevent
+index 14985c3..1296796 100755
+--- a/MG5_aMC_v2_5_2/Template/LO/bin/madevent
++++ b/MG5_aMC_v2_5_2/Template/LO/bin/madevent
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ################################################################################
+ #
+diff --git a/MG5_aMC_v2_5_2/Template/MadWeight/Python/Info.py b/MG5_aMC_v2_5_2/Template/MadWeight/Python/Info.py
+index 92b0e81..99f497f 100755
+--- a/MG5_aMC_v2_5_2/Template/MadWeight/Python/Info.py
++++ b/MG5_aMC_v2_5_2/Template/MadWeight/Python/Info.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ def giveInfo(class_):
+         if type(class_)!=str:
+diff --git a/MG5_aMC_v2_5_2/Template/MadWeight/Python/clean.py b/MG5_aMC_v2_5_2/Template/MadWeight/Python/clean.py
+index 64a4e35..59d1899 100755
+--- a/MG5_aMC_v2_5_2/Template/MadWeight/Python/clean.py
++++ b/MG5_aMC_v2_5_2/Template/MadWeight/Python/clean.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ ##########################################################################
+ ##                                                                      ##
+ ##                               MadWeight                              ##
+diff --git a/MG5_aMC_v2_5_2/Template/MadWeight/Python/expand_MadWeight.py b/MG5_aMC_v2_5_2/Template/MadWeight/Python/expand_MadWeight.py
+index abe4909..35ab543 100755
+--- a/MG5_aMC_v2_5_2/Template/MadWeight/Python/expand_MadWeight.py
++++ b/MG5_aMC_v2_5_2/Template/MadWeight/Python/expand_MadWeight.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # Module
+ import string
+diff --git a/MG5_aMC_v2_5_2/Template/MadWeight/Python/madweight.py b/MG5_aMC_v2_5_2/Template/MadWeight/Python/madweight.py
+index 953800d..4dcd048 100755
+--- a/MG5_aMC_v2_5_2/Template/MadWeight/Python/madweight.py
++++ b/MG5_aMC_v2_5_2/Template/MadWeight/Python/madweight.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # idea have 2 script
+ # madweight.py -> direct submission 
+diff --git a/MG5_aMC_v2_5_2/Template/MadWeight/Python/put_banner.py b/MG5_aMC_v2_5_2/Template/MadWeight/Python/put_banner.py
+index a6a06b8..b0f1ef8 100755
+--- a/MG5_aMC_v2_5_2/Template/MadWeight/Python/put_banner.py
++++ b/MG5_aMC_v2_5_2/Template/MadWeight/Python/put_banner.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ ##########################################################################
+ ##                                                                      ##
+ ##                               MG/ME/MW                               ##
+diff --git a/MG5_aMC_v2_5_2/Template/MadWeight/Python/splitbanner.py b/MG5_aMC_v2_5_2/Template/MadWeight/Python/splitbanner.py
+index a425a1a..f0e4c4e 100755
+--- a/MG5_aMC_v2_5_2/Template/MadWeight/Python/splitbanner.py
++++ b/MG5_aMC_v2_5_2/Template/MadWeight/Python/splitbanner.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ ##########################################################################
+ ##                                                                      ##
+ ##                               MadWeight                              ##
+diff --git a/MG5_aMC_v2_5_2/Template/MadWeight/Python/tests.py b/MG5_aMC_v2_5_2/Template/MadWeight/Python/tests.py
+index f5c4731..1154bc6 100755
+--- a/MG5_aMC_v2_5_2/Template/MadWeight/Python/tests.py
++++ b/MG5_aMC_v2_5_2/Template/MadWeight/Python/tests.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python 
++#!/usr/bin/env python2
+ ####################################################################################################
+ ####################################################################################################
+ ##                                                                                                ##
+diff --git a/MG5_aMC_v2_5_2/Template/MadWeight/bin/madweight.py b/MG5_aMC_v2_5_2/Template/MadWeight/bin/madweight.py
+index c8ac32a..c7247bb 100755
+--- a/MG5_aMC_v2_5_2/Template/MadWeight/bin/madweight.py
++++ b/MG5_aMC_v2_5_2/Template/MadWeight/bin/madweight.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2011 The MadGraph Development team and Contributors
+diff --git a/MG5_aMC_v2_5_2/Template/MadWeight/bin/mw_options b/MG5_aMC_v2_5_2/Template/MadWeight/bin/mw_options
+index 4a28be1..b98d018 100755
+--- a/MG5_aMC_v2_5_2/Template/MadWeight/bin/mw_options
++++ b/MG5_aMC_v2_5_2/Template/MadWeight/bin/mw_options
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ################################################################################
+ #
+diff --git a/MG5_aMC_v2_5_2/Template/MadWeight/mod_file/check_model.py b/MG5_aMC_v2_5_2/Template/MadWeight/mod_file/check_model.py
+index 8e80f6a..a8a2d26 100755
+--- a/MG5_aMC_v2_5_2/Template/MadWeight/mod_file/check_model.py
++++ b/MG5_aMC_v2_5_2/Template/MadWeight/mod_file/check_model.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ #test
+ 
+diff --git a/MG5_aMC_v2_5_2/Template/MadWeight/mod_file/mod_file.py b/MG5_aMC_v2_5_2/Template/MadWeight/mod_file/mod_file.py
+index d95cf20..444933a 100755
+--- a/MG5_aMC_v2_5_2/Template/MadWeight/mod_file/mod_file.py
++++ b/MG5_aMC_v2_5_2/Template/MadWeight/mod_file/mod_file.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ #Extension
+ import string
+diff --git a/MG5_aMC_v2_5_2/Template/NLO/Utilities/NLO_Born3.py b/MG5_aMC_v2_5_2/Template/NLO/Utilities/NLO_Born3.py
+index dbb8173..c5edaf1 100755
+--- a/MG5_aMC_v2_5_2/Template/NLO/Utilities/NLO_Born3.py
++++ b/MG5_aMC_v2_5_2/Template/NLO/Utilities/NLO_Born3.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ inp = open('./MADatNLO.top', 'r')
+ out = open('./MADatNLO_combined.top', 'w')
+diff --git a/MG5_aMC_v2_5_2/Template/NLO/Utilities/VetoPrefactors/resum_reweighter.py b/MG5_aMC_v2_5_2/Template/NLO/Utilities/VetoPrefactors/resum_reweighter.py
+index f7ba469..fb604a6 100755
+--- a/MG5_aMC_v2_5_2/Template/NLO/Utilities/VetoPrefactors/resum_reweighter.py
++++ b/MG5_aMC_v2_5_2/Template/NLO/Utilities/VetoPrefactors/resum_reweighter.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ################################################################################
+ #
+diff --git a/MG5_aMC_v2_5_2/Template/NLO/Utilities/VetoPrefactors/virt_reweighter.py b/MG5_aMC_v2_5_2/Template/NLO/Utilities/VetoPrefactors/virt_reweighter.py
+index 87a75fa..a5eaa77 100755
+--- a/MG5_aMC_v2_5_2/Template/NLO/Utilities/VetoPrefactors/virt_reweighter.py
++++ b/MG5_aMC_v2_5_2/Template/NLO/Utilities/VetoPrefactors/virt_reweighter.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ################################################################################
+ #
+diff --git a/MG5_aMC_v2_5_2/Template/NLO/bin/aMCatNLO b/MG5_aMC_v2_5_2/Template/NLO/bin/aMCatNLO
+index e1a347f..88fd730 100755
+--- a/MG5_aMC_v2_5_2/Template/NLO/bin/aMCatNLO
++++ b/MG5_aMC_v2_5_2/Template/NLO/bin/aMCatNLO
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ################################################################################
+ #
+diff --git a/MG5_aMC_v2_5_2/Template/NLO/bin/calculate_xsect b/MG5_aMC_v2_5_2/Template/NLO/bin/calculate_xsect
+index 5000f2a..2616864 100755
+--- a/MG5_aMC_v2_5_2/Template/NLO/bin/calculate_xsect
++++ b/MG5_aMC_v2_5_2/Template/NLO/bin/calculate_xsect
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2011 The MadGraph5_aMC@NLO Development team and Contributors
+diff --git a/MG5_aMC_v2_5_2/Template/NLO/bin/generate_events b/MG5_aMC_v2_5_2/Template/NLO/bin/generate_events
+index 7302c07..57f68b8 100755
+--- a/MG5_aMC_v2_5_2/Template/NLO/bin/generate_events
++++ b/MG5_aMC_v2_5_2/Template/NLO/bin/generate_events
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2011 The MadGraph5_aMC@NLO Development team and Contributors
+diff --git a/MG5_aMC_v2_5_2/Template/NLO/bin/internal/split_jobs.py b/MG5_aMC_v2_5_2/Template/NLO/bin/internal/split_jobs.py
+index 0b50e56..7af39a1 100755
+--- a/MG5_aMC_v2_5_2/Template/NLO/bin/internal/split_jobs.py
++++ b/MG5_aMC_v2_5_2/Template/NLO/bin/internal/split_jobs.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #  MZ, 2012-06-14
+ import os
+ import sys
+diff --git a/MG5_aMC_v2_5_2/Template/NLO/bin/shower b/MG5_aMC_v2_5_2/Template/NLO/bin/shower
+index 5bde455..065565b 100755
+--- a/MG5_aMC_v2_5_2/Template/NLO/bin/shower
++++ b/MG5_aMC_v2_5_2/Template/NLO/bin/shower
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2011 The MadGraph5_aMC@NLO Development team and Contributors
+diff --git a/MG5_aMC_v2_5_2/aloha/bin/aloha b/MG5_aMC_v2_5_2/aloha/bin/aloha
+index 2fe8b10..e3b177a 100755
+--- a/MG5_aMC_v2_5_2/aloha/bin/aloha
++++ b/MG5_aMC_v2_5_2/aloha/bin/aloha
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ 
+ import sys
+diff --git a/MG5_aMC_v2_5_2/bin/mg5 b/MG5_aMC_v2_5_2/bin/mg5
+index f31c620..f3891c9 100755
+--- a/MG5_aMC_v2_5_2/bin/mg5
++++ b/MG5_aMC_v2_5_2/bin/mg5
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ################################################################################
+ #
+diff --git a/MG5_aMC_v2_5_2/bin/mg5_aMC b/MG5_aMC_v2_5_2/bin/mg5_aMC
+index ca52873..2919edd 100755
+--- a/MG5_aMC_v2_5_2/bin/mg5_aMC
++++ b/MG5_aMC_v2_5_2/bin/mg5_aMC
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ################################################################################
+ #
+diff --git a/MG5_aMC_v2_5_2/madgraph/iolibs/gen_infohtml.py b/MG5_aMC_v2_5_2/madgraph/iolibs/gen_infohtml.py
+index 52acde6..2bdd639 100755
+--- a/MG5_aMC_v2_5_2/madgraph/iolibs/gen_infohtml.py
++++ b/MG5_aMC_v2_5_2/madgraph/iolibs/gen_infohtml.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2009 The MadGraph5_aMC@NLO Development team and Contributors
+diff --git a/MG5_aMC_v2_5_2/madgraph/iolibs/template_files/loop_optimized/check_sa.py.inc b/MG5_aMC_v2_5_2/madgraph/iolibs/template_files/loop_optimized/check_sa.py.inc
+index 3cfd62a..c94e924 100644
+--- a/MG5_aMC_v2_5_2/madgraph/iolibs/template_files/loop_optimized/check_sa.py.inc
++++ b/MG5_aMC_v2_5_2/madgraph/iolibs/template_files/loop_optimized/check_sa.py.inc
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # This is an example of how to run MadLoop from Python using the f2py compilation of the wrapper file 'f2py_wrapper.f'.
+ 
+diff --git a/MG5_aMC_v2_5_2/madgraph/madweight/Cards.py b/MG5_aMC_v2_5_2/madgraph/madweight/Cards.py
+index 1c949db..70605e4 100755
+--- a/MG5_aMC_v2_5_2/madgraph/madweight/Cards.py
++++ b/MG5_aMC_v2_5_2/madgraph/madweight/Cards.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ ##########################################################################
+ ##                                                                      ##
+ ##                               MadWeight                              ##
+diff --git a/MG5_aMC_v2_5_2/madgraph/madweight/MW_driver.py b/MG5_aMC_v2_5_2/madgraph/madweight/MW_driver.py
+index 0796670..664347d 100755
+--- a/MG5_aMC_v2_5_2/madgraph/madweight/MW_driver.py
++++ b/MG5_aMC_v2_5_2/madgraph/madweight/MW_driver.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ # Copyright (c) 2012 The MadGraph Development team and Contributors             
+ #
+diff --git a/MG5_aMC_v2_5_2/madgraph/madweight/MW_info.py b/MG5_aMC_v2_5_2/madgraph/madweight/MW_info.py
+index acaa43d..20592e6 100755
+--- a/MG5_aMC_v2_5_2/madgraph/madweight/MW_info.py
++++ b/MG5_aMC_v2_5_2/madgraph/madweight/MW_info.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ ##########################################################################
+ ##                                                                      ##
+ ##                               MadWeight                              ##
+diff --git a/MG5_aMC_v2_5_2/madgraph/madweight/blob_solution.py b/MG5_aMC_v2_5_2/madgraph/madweight/blob_solution.py
+index 571b420..660d778 100755
+--- a/MG5_aMC_v2_5_2/madgraph/madweight/blob_solution.py
++++ b/MG5_aMC_v2_5_2/madgraph/madweight/blob_solution.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ try:
+     import madgraph.madweight.particle_class as particle_class
+diff --git a/MG5_aMC_v2_5_2/madgraph/madweight/change_tf.py b/MG5_aMC_v2_5_2/madgraph/madweight/change_tf.py
+index 4717715..f1b6e7c 100755
+--- a/MG5_aMC_v2_5_2/madgraph/madweight/change_tf.py
++++ b/MG5_aMC_v2_5_2/madgraph/madweight/change_tf.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ #Extension
+ 
+diff --git a/MG5_aMC_v2_5_2/madgraph/madweight/create_param.py b/MG5_aMC_v2_5_2/madgraph/madweight/create_param.py
+index f8fbb43..b80a490 100755
+--- a/MG5_aMC_v2_5_2/madgraph/madweight/create_param.py
++++ b/MG5_aMC_v2_5_2/madgraph/madweight/create_param.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ ##########################################################################
+ ##                                                                      ##
+ ##                               MadWeight                              ##
+diff --git a/MG5_aMC_v2_5_2/madgraph/madweight/create_run.py b/MG5_aMC_v2_5_2/madgraph/madweight/create_run.py
+index 2fa5a6d..49b76ef 100755
+--- a/MG5_aMC_v2_5_2/madgraph/madweight/create_run.py
++++ b/MG5_aMC_v2_5_2/madgraph/madweight/create_run.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ #Extension
+ import string,os,sys,re,popen2,time,stat,filecmp
+diff --git a/MG5_aMC_v2_5_2/madgraph/madweight/diagram_class.py b/MG5_aMC_v2_5_2/madgraph/madweight/diagram_class.py
+index 1e35e71..96a45b1 100755
+--- a/MG5_aMC_v2_5_2/madgraph/madweight/diagram_class.py
++++ b/MG5_aMC_v2_5_2/madgraph/madweight/diagram_class.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import sys
+ import logging
+diff --git a/MG5_aMC_v2_5_2/madgraph/madweight/mod_file.py b/MG5_aMC_v2_5_2/madgraph/madweight/mod_file.py
+index 5b3242f..4fb0a0c 100755
+--- a/MG5_aMC_v2_5_2/madgraph/madweight/mod_file.py
++++ b/MG5_aMC_v2_5_2/madgraph/madweight/mod_file.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python 
++#!/usr/bin/env python2
+ ####################################################################################################
+ ####################################################################################################
+ ##                                                                                                ##
+diff --git a/MG5_aMC_v2_5_2/madgraph/madweight/substructure_class.py b/MG5_aMC_v2_5_2/madgraph/madweight/substructure_class.py
+index 370ee1f..3affadf 100755
+--- a/MG5_aMC_v2_5_2/madgraph/madweight/substructure_class.py
++++ b/MG5_aMC_v2_5_2/madgraph/madweight/substructure_class.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ 
+ try:
+diff --git a/MG5_aMC_v2_5_2/madgraph/madweight/verif_event.py b/MG5_aMC_v2_5_2/madgraph/madweight/verif_event.py
+index 0882a96..224d17a 100755
+--- a/MG5_aMC_v2_5_2/madgraph/madweight/verif_event.py
++++ b/MG5_aMC_v2_5_2/madgraph/madweight/verif_event.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ ##########################################################################
+ ##                                                                      ##
+ ##                               MadWeight                              ##
+diff --git a/MG5_aMC_v2_5_2/madgraph/madweight/write_MadWeight.py b/MG5_aMC_v2_5_2/madgraph/madweight/write_MadWeight.py
+index 9596b17..10f2feb 100755
+--- a/MG5_aMC_v2_5_2/madgraph/madweight/write_MadWeight.py
++++ b/MG5_aMC_v2_5_2/madgraph/madweight/write_MadWeight.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ ##### -*- coding: cp1252 -*-
+ 
+ #Extension
+diff --git a/MG5_aMC_v2_5_2/madgraph/various/combine_plots.py b/MG5_aMC_v2_5_2/madgraph/various/combine_plots.py
+index 34311e4..0e0ad7d 100755
+--- a/MG5_aMC_v2_5_2/madgraph/various/combine_plots.py
++++ b/MG5_aMC_v2_5_2/madgraph/various/combine_plots.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2013 The MadGraph5_aMC@NLO Development team and Contributors
+diff --git a/MG5_aMC_v2_5_2/madgraph/various/histograms.py b/MG5_aMC_v2_5_2/madgraph/various/histograms.py
+index ff61dd1..3e5748b 100755
+--- a/MG5_aMC_v2_5_2/madgraph/various/histograms.py
++++ b/MG5_aMC_v2_5_2/madgraph/various/histograms.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2010 The MadGraph5_aMC@NLO Development team and Contributors
+diff --git a/MG5_aMC_v2_5_2/madgraph/various/plot_djrs.py b/MG5_aMC_v2_5_2/madgraph/various/plot_djrs.py
+index c0fb743..30fcfbc 100644
+--- a/MG5_aMC_v2_5_2/madgraph/various/plot_djrs.py
++++ b/MG5_aMC_v2_5_2/madgraph/various/plot_djrs.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2010 The MadGraph5_aMC@NLO Development team and Contributors
+diff --git a/MG5_aMC_v2_5_2/madgraph/various/progressbar.py b/MG5_aMC_v2_5_2/madgraph/various/progressbar.py
+index 2f1bc4d..eaeae7d 100755
+--- a/MG5_aMC_v2_5_2/madgraph/various/progressbar.py
++++ b/MG5_aMC_v2_5_2/madgraph/various/progressbar.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python2
+ # -*- coding: iso-8859-1 -*-
+ #
+ # progressbar  - Text progressbar library for python.
+diff --git a/MG5_aMC_v2_5_2/tests/parallel_tests/loop_sample_script.py b/MG5_aMC_v2_5_2/tests/parallel_tests/loop_sample_script.py
+index 1ee58f4..4fc64b5 100755
+--- a/MG5_aMC_v2_5_2/tests/parallel_tests/loop_sample_script.py
++++ b/MG5_aMC_v2_5_2/tests/parallel_tests/loop_sample_script.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2009 The MadGraph5_aMC@NLO Development team and Contributors
+diff --git a/MG5_aMC_v2_5_2/tests/parallel_tests/sample_script.py b/MG5_aMC_v2_5_2/tests/parallel_tests/sample_script.py
+index 2be23d9..ff11bf9 100755
+--- a/MG5_aMC_v2_5_2/tests/parallel_tests/sample_script.py
++++ b/MG5_aMC_v2_5_2/tests/parallel_tests/sample_script.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2009 The MadGraph5_aMC@NLO Development team and Contributors
+diff --git a/MG5_aMC_v2_5_2/tests/test_manager.py b/MG5_aMC_v2_5_2/tests/test_manager.py
+index 7b46b85..dc62fc1 100755
+--- a/MG5_aMC_v2_5_2/tests/test_manager.py
++++ b/MG5_aMC_v2_5_2/tests/test_manager.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python 
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2009 The MadGraph5_aMC@NLO Development team and Contributors
+diff --git a/MG5_aMC_v2_5_2/vendor/IREGI/src/oneloop/create.py b/MG5_aMC_v2_5_2/vendor/IREGI/src/oneloop/create.py
+index d14ce98..fb4fab2 100755
+--- a/MG5_aMC_v2_5_2/vendor/IREGI/src/oneloop/create.py
++++ b/MG5_aMC_v2_5_2/vendor/IREGI/src/oneloop/create.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ import re,string,os,sys,subprocess
+ locdir,thisFile = os.path.split(os.path.abspath(sys.argv[0]))
+ srcdir = os.path.join(locdir,'src')
+diff --git a/MG5_aMC_v2_5_2/vendor/IREGI/src/oneloop/example_cpp/create.py b/MG5_aMC_v2_5_2/vendor/IREGI/src/oneloop/example_cpp/create.py
+index fca7438..820cce8 100755
+--- a/MG5_aMC_v2_5_2/vendor/IREGI/src/oneloop/example_cpp/create.py
++++ b/MG5_aMC_v2_5_2/vendor/IREGI/src/oneloop/example_cpp/create.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ import re,string,os,sys,subprocess
+ locdir,thisFile = os.path.split(os.path.abspath(sys.argv[0]))
+ srcdir = os.path.join(locdir,'src')
+diff --git a/MG5_aMC_v2_5_2/vendor/IREGI/src/oneloop/src/avh_olo.py b/MG5_aMC_v2_5_2/vendor/IREGI/src/oneloop/src/avh_olo.py
+index 438f55a..c3fbcbb 100755
+--- a/MG5_aMC_v2_5_2/vendor/IREGI/src/oneloop/src/avh_olo.py
++++ b/MG5_aMC_v2_5_2/vendor/IREGI/src/oneloop/src/avh_olo.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ import re,sys
+ import avh_pc_olo
+ 
+diff --git a/MG5_aMC_v2_5_2/vendor/IREGI/src/oneloop/src/avh_pc_exe.py b/MG5_aMC_v2_5_2/vendor/IREGI/src/oneloop/src/avh_pc_exe.py
+index 150e4c0..f372e43 100755
+--- a/MG5_aMC_v2_5_2/vendor/IREGI/src/oneloop/src/avh_pc_exe.py
++++ b/MG5_aMC_v2_5_2/vendor/IREGI/src/oneloop/src/avh_pc_exe.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import sys
+ import avh_pc
