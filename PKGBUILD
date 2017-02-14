@@ -8,9 +8,9 @@
 
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
-_commit=12e4e9d3fc73e4783fd74221b6cab77b6f1a14d9
+_commit=f9d0c687ff2ea7aabd85fb9a43129117c0ecf519
 arch=('i686' 'x86_64' 'armv7h')
 url='https://code.visualstudio.com/'
 license=('MIT')
@@ -21,7 +21,7 @@ provides=('vscode-oss')
 
 source=("${pkgver}-${pkgrel}.tar.gz::https://github.com/Microsoft/vscode/archive/${_commit}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('1636395fe89d198ef4e6ae72010fbe64a29d77dd1f751cbf5a0e77517d7f157b'
+sha256sums=('d0df0c454642077319f3487ae49fa9c9333fc301e705f13178bd074a66c53d85'
             '2ce2c6033667092c5e854036b676533fd433e9daf9ac8ce0f00606193420e72d')
 
 if (( VSCODE_NONFREE )); then
