@@ -1,0 +1,33 @@
+post_install() {
+	getent group inworldz
+	if [ $? -ne 0 ]; then
+		groupadd -r inworldz
+	fi
+	
+	getent passwd inworldz
+	if [ $? -ne 0 ]; then
+		useradd -r -g inworldz -d /srv/inworldz -M inworldz
+	fi
+	
+	chown -R inworldz:inworldz /srv/inworldz
+}
+
+post_upgrade() {
+	chown -R inworldz:inworldz /srv/inworldz
+}
+
+pre_remove() {
+	systemctl stop whip-server.service
+	systemctl disable whip-server.service
+}
+
+post_remove() {
+	[[ -d /srv/inworldz ]] && chown -R root:root /srv/inworldz
+	
+	if getent passwd inworldz; then
+		userdel inworldz
+	fi
+	if getent group inworldz; then
+		groupdel inworldz
+	fi
+}
