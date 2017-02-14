@@ -109,7 +109,8 @@ package_xorg-server-common-git() {
 
 package_xorg-server-git() {
   pkgdesc="Xorg X server - Git"
-  depends=(libepoxy libpciaccess libxfont2 pixman xorg-server-common-git libunwind dbus libgl xf86-input-libinput)
+  depends=(libepoxy libxfont2 pixman xorg-server-common-git libunwind dbus libgl xf86-input-libinput
+           libpciaccess libdrm libxshmfence) # FS#52949
 
   # see src/xserver/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel-git pkg
