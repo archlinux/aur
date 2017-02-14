@@ -2,7 +2,7 @@
 
 pkgname=vmware-workstation
 pkgver=12.5.2_4638234
-pkgrel=5
+pkgrel=6
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -63,7 +63,7 @@ sha1sums=(
   51d221c5bc7e3d566d5ce27d0ac603196c12aaf4
   15ecb9143dfa0135ced2e726eff4800448f3d369
 )
-options=(!strip)
+options=(!strip emptydirs)
 
 prepare() {
   extracted_dir="$srcdir/extracted"
@@ -79,6 +79,7 @@ package() {
 
   mkdir -p \
     "$pkgdir/usr"/{share,bin,doc,lib/vmware/setup} \
+    "$pkgdir/run/vmware" \
     "$pkgdir/var/lib/vmware/Shared VMs" \
     "$pkgdir/usr/lib/vmware-vix" \
     "$pkgdir/etc/vmware"
