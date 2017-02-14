@@ -48,7 +48,7 @@ static const Rule rules[] = {
 	{ NULL,                 "dwb",      NULL,                        1 << 1,       False,       False,        1 },
 	{ "Firefox",            NULL,       NULL,                        1 << 1,       False,       False,        1 },
 	{ "KeePass2",           NULL,       "Auto-Type Entry Selection", 1 << 1,       True,        True,         1 },
-	{ "Gajim",              NULL,       NULL,                        1 << 2,       True,        True,         1 },
+	{ "Pidgin",             NULL,       NULL,                        1 << 2,       True,        True,         1 },
 	{ "KeePass2",           NULL,       NULL,                        1 << 2,       True,        True,         1 },
 	{ "Corebird",           NULL,       NULL,                        1 << 2,       True,        True,         1 },
 	{ "Spotify",            NULL,       NULL,                        1 << 2,       True,        True,         1 },

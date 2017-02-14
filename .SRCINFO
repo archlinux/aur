@@ -23,7 +23,7 @@ pkgbase = dwm-uleenucks-git
 	source = dwm-6.1-center.diff
 	md5sums = SKIP
 	md5sums = fbfa9c221f239c45c422876a7d236200
-	md5sums = e7b776ca83ca06ab1124de5e9be3822e
+	md5sums = a604227c591b5bb06498316de684f91a
 	md5sums = 8d309c744a149e807b66139978301c9b
 	md5sums = 5f6f840c692f43f7e349bb87e895ff26
 
