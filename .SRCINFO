@@ -1,6 +1,6 @@
 pkgbase = xorg-server-dev
 	pkgver = 1.19.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://xorg.freedesktop.org
 	arch = i686
 	arch = x86_64
@@ -72,14 +72,16 @@ pkgname = xorg-server-dev
 	pkgdesc = Xorg X server - Bleeding edge version
 	install = xorg-server-dev.install
 	depends = libepoxy
-	depends = libpciaccess
 	depends = libxfont2
 	depends = pixman
-	depends = xorg-server-common-dev
+	depends = xorg-server-common
 	depends = libunwind
 	depends = dbus
 	depends = libgl
 	depends = xf86-input-libinput
+	depends = libpciaccess
+	depends = libdrm
+	depends = libxshmfence
 	provides = xorg-server
 	provides = X-ABI-VIDEODRV_VERSION=23
 	provides = X-ABI-XINPUT_VERSION=24.1

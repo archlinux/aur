@@ -4,7 +4,7 @@
 _pkgbase=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev' 'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
 pkgver=1.19.1 # http://lists.x.org/archives/xorg/2017-January/058559.html
-pkgrel=4 # https://git.archlinux.org/svntogit/packages.git/commit/trunk/PKGBUILD?h=packages/xorg-server&id=1314179c0418693b5f53d599e57101b7c2a5fe6a
+pkgrel=5 # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/xorg-server&id=ae1a2da73382be5ad3837a41cf4a20ae49bf7ef6
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
@@ -116,7 +116,8 @@ package_xorg-server-common-dev() {
 
 package_xorg-server-dev() {
   pkgdesc="Xorg X server - Bleeding edge version"
-  depends=(libepoxy libpciaccess libxfont2 pixman xorg-server-common-dev libunwind dbus libgl xf86-input-libinput)
+  depends=(libepoxy libxfont2 pixman xorg-server-common libunwind dbus libgl xf86-input-libinput
+           libpciaccess libdrm libxshmfence) # FS#52949
 
   # see src/xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel-dev pkg
