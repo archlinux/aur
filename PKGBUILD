@@ -4,7 +4,7 @@
 pkgname=nuvola-app-amazon-cloud-player
 pkgdesc='Amazon Cloud Player integration for Nuvola Player 3.0'
 pkgver=5.3
-pkgrel=1
+pkgrel=2
 
 license=('BSD')
 
@@ -24,7 +24,7 @@ prepare() {
 	pip install nuvolasdk
 
 	# Generate Makefile
-	./configure
+	./configure --prefix=/usr
 }
 
 build() {
@@ -37,7 +37,7 @@ build() {
 package() {
 	cd "${pkgname}-${pkgver}"
 
-	make install DESTDIR="${pkgdir}/usr/share/nuvolaplayer3/web_apps"
+	make install DESTDIR="${pkgdir}"
 
 	# Install all available licenses.
 	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE*
