@@ -2,7 +2,7 @@
 
 pkgname=ruby-cfpropertylist
 _gemname=CFPropertyList
-pkgver=2.3.2
+pkgver=2.3.5
 pkgrel=1
 pkgdesc="A module to read, write and manipulate property lists as defined by Apple."
 arch=('any')
@@ -10,7 +10,7 @@ url="http://github.com/ckruse/CFPropertyList/"
 license=('MIT')
 depends=('ruby' 'libxml-ruby')
 source=(http://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
-sha512sums=('64e7e75fc0828ecafa76ef7c63d2a1537121736e0371eea685997bd216bb5f9ab38505502976bbe60cf49271625af95f43bfbba7c3b477d5436e3327f291aa85')
+sha512sums=('5efb6441289f66f57069020bd86ba6ad4a469500bcab2f22c3785e43aae5c1c9f87d66ebdf6e96be90c839ce894362404fe1b9fffddec17e3047caad8908cc1b')
 noextract=(${_gemname}-${pkgver}.gem)
 
 package() {
