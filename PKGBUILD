@@ -1,8 +1,8 @@
-# Maintainer: Roman Titov <titovroman@gmail.com>
+# Maintainer: Marc Cousin (cousinmarc at gmail dot com)
 
 pkgname=pgmodeler
-pkgver=0.9.0_alpha
-pkgrel=2
+pkgver=0.9.0_alpha1
+pkgrel=1
 epoch=2
 pkgdesc="PostgreSQL Database Modeler: an open source CASE tool for modeling PostgreSQL databases"
 
@@ -22,13 +22,13 @@ source=("https://github.com/$pkgname/$pkgname/archive/v${pkgver//_/-}.tar.gz"
         'pgmodeler_dbm.png'
         'pgmodeler.desktop'
 	'patch_no_check_update.diff')
-sha1sums=('ed76df9689354e57254f70e6983aa8890a63a22a'
+sha1sums=('94dc07113e0ff1f5d59de24ab0dc561d8b6beeab'
           'dcdc83e561355b5e456d693d7fe52c4e68ffae2a'
           '8d5edba1b839a61afdc78c4b10df2b92158f4215'
           'c5bb090a1cbb784cd2ec9e1449cac02af2ba6538'
           '4c4e4260f4b2d2d4c154a8fb5cd7060a6585c83a'
           'b19e826b6fb64429df952780b8519100c65b8383'
-          '0aca3b8fd45695dff111a8b17595bb49619fc191')
+          '448e756999f5770680eb039f590dd61eb6225b34')
 install='pgmodeler.install'
 
 build() {

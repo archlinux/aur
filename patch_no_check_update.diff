@@ -1,11 +1,11 @@
-diff -r -c pgmodeler-0.8.2-beta-orig/conf/defaults/pgmodeler.conf pgmodeler-0.8.2-beta/conf/defaults/pgmodeler.conf
-*** pgmodeler-0.8.2-beta-orig/conf/defaults/pgmodeler.conf      2016-01-12 12:35:18.000000000 +0100
---- pgmodeler-0.8.2-beta/conf/defaults/pgmodeler.conf   2016-01-15 12:13:22.897592459 +0100
+diff -c -r pgmodeler-0.9.0-alpha1-orig/conf/defaults/pgmodeler.conf pgmodeler-0.9.0-alpha1/conf/defaults/pgmodeler.conf
+*** pgmodeler-0.9.0-alpha1-orig/conf/defaults/pgmodeler.conf	2017-02-14 16:29:17.431695027 +0100
+--- pgmodeler-0.9.0-alpha1/conf/defaults/pgmodeler.conf	2017-02-14 16:33:11.807849231 +0100
 ***************
 *** 19,25 ****
                  code-tab-width="4"
                  canvas-corner-move="true"
-                 invert-panning-rangesel="false"
+                 invert-rangesel-trigger="false"
 !                check-update="true"
                  save-last-position="true"
                  show-main-menu="false"
@@ -13,19 +13,19 @@ diff -r -c pgmodeler-0.8.2-beta-orig/conf/defaults/pgmodeler.conf pgmodeler-0.8.
 --- 19,25 ----
                  code-tab-width="4"
                  canvas-corner-move="true"
-                 invert-panning-rangesel="false"
+                 invert-rangesel-trigger="false"
 !                check-update="false"
                  save-last-position="true"
                  show-main-menu="false"
                  disable-smoothness="false"
-diff -r -c pgmodeler-0.8.2-beta-orig/conf/pgmodeler.conf pgmodeler-0.8.2-beta/conf/pgmodeler.conf
-*** pgmodeler-0.8.2-beta-orig/conf/pgmodeler.conf       2016-01-12 12:35:18.000000000 +0100
---- pgmodeler-0.8.2-beta/conf/pgmodeler.conf    2016-01-15 12:13:33.954103266 +0100
+diff -c -r pgmodeler-0.9.0-alpha1-orig/conf/pgmodeler.conf pgmodeler-0.9.0-alpha1/conf/pgmodeler.conf
+*** pgmodeler-0.9.0-alpha1-orig/conf/pgmodeler.conf	2017-02-14 16:29:17.431695027 +0100
+--- pgmodeler-0.9.0-alpha1/conf/pgmodeler.conf	2017-02-14 16:33:04.520989402 +0100
 ***************
 *** 19,25 ****
                  code-tab-width="4"
                  canvas-corner-move="true"
-                 invert-panning-rangesel="false"
+                 invert-rangesel-trigger="false"
 !                check-update="true"
                  save-last-position="true"
                  show-main-menu="false"
@@ -33,9 +33,8 @@ diff -r -c pgmodeler-0.8.2-beta-orig/conf/pgmodeler.conf pgmodeler-0.8.2-beta/co
 --- 19,25 ----
                  code-tab-width="4"
                  canvas-corner-move="true"
-                 invert-panning-rangesel="false"
+                 invert-rangesel-trigger="false"
 !                check-update="false"
                  save-last-position="true"
                  show-main-menu="false"
                  disable-smoothness="false"
-
