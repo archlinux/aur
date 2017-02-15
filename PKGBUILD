@@ -61,6 +61,7 @@ _backports=(
   'cfed63f60dd7412c199652825ed172c319b02b3c'  # nspawn: fix exit code for --help and --version (#4609)
   '3099caf2b5bb9498b1d0227c40926435ca81f26f'  # journal: make sure to initially populate the space info cache (#4807)
   '3d4cf7de48a74726694abbaa09f9804b845ff3ba'  # build-sys: check for lz4 in the old and new numbering scheme (#4717)
+  'c9f7b4d356a453a01aa77a6bb74ca7ef49732c08'  # build-sys: add check for gperf lookup function signature (#5055)
 )
 
 _validate_tag() {
