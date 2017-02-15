@@ -1,22 +1,24 @@
 # Maintainer: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=python2-coffin
-pkgver=0.3.8
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Jinja2 adapter for Django"
 arch=(any)
 url="https://pypi.python.org/pypi/Coffin"
-license=( 'BSD3' )
-depends=( 'python2' )
-source=( "coffin-$pkgver.tar.gz::https://pypi.python.org/packages/source/C/Coffin/Coffin-$pkgver.tar.gz" )
-md5sums=('107b9a62adbe15ce6330033a100b4f0b')
+license=('BSD')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("coffin-$pkgver.tar.gz::https://pypi.python.org/packages/source/C/Coffin/Coffin-$pkgver.tar.gz")
+sha256sums=('b1cfb44b1ef7daabc7c607a937f85e4b89b63bd9536ee3b817461747a476a65c')
 
 build() {
-  cd $srcdir/Coffin-$pkgver
+  cd Coffin-$pkgver
   python2 setup.py build
 }
 
 package() {
-  cd $srcdir/Coffin-$pkgver
-  python2 setup.py install --prefix=/usr --root="$pkgdir"
+  cd Coffin-$pkgver
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --skip-build
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

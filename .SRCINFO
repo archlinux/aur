@@ -1,13 +1,14 @@
 pkgbase = python2-coffin
 	pkgdesc = Jinja2 adapter for Django
-	pkgver = 0.3.8
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/Coffin
 	arch = any
-	license = BSD3
+	license = BSD
+	makedepends = python2-setuptools
 	depends = python2
-	source = coffin-0.3.8.tar.gz::https://pypi.python.org/packages/source/C/Coffin/Coffin-0.3.8.tar.gz
-	md5sums = 107b9a62adbe15ce6330033a100b4f0b
+	source = coffin-2.0.1.tar.gz::https://pypi.python.org/packages/source/C/Coffin/Coffin-2.0.1.tar.gz
+	sha256sums = b1cfb44b1ef7daabc7c607a937f85e4b89b63bd9536ee3b817461747a476a65c
 
 pkgname = python2-coffin
 
