@@ -1,4 +1,5 @@
-# Maintainer: James An <james@jamesan.ca>
+# Maintainer: Andrey Vihrov <andrey.vihrov at gmail.com>
+# Contributor: James An <james@jamesan.ca>
 # Contributor: Michael Fellinger <m.fellinger@gmail.com>
 
 pkgname='libtomcrypt'
