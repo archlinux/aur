@@ -13,10 +13,10 @@
 
 pkgname=atom-editor-beta-bin-mirror
 _pkgver=1.15.0
-_beta=2
-pkgver=${_pkgver}.beta${_beta}
+_pkgrel=2
+pkgver=${_pkgver}.beta${_pkgrel}
 pkgver() {
-  curl -sS https://npm.taobao.org/mirrors/atom | grep -Eo '>.*?beta'+${_beta} | sort -V | tail -n 1 | sed -e 's/>//' -e 's/-/./'
+  curl -sS https://npm.taobao.org/mirrors/atom | grep -Eo '>.*?beta'+${_pkgrel} | sort -V | tail -n 1 | sed -e 's/>//' -e 's/-/./'
 }
 get_version() {
    printf "%s" $(pkgver) | sed -e 's/\(.*\)\.beta/\1-beta/'
