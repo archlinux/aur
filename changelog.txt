@@ -1,3 +1,18 @@
+Version 2.9.0 - 13 Feb 2017
+- Make base_efiction_adapter honor keep_summary_html:true option.
+- Add author_avatar_cover option for base_xenforoforum.
+- Edge case fixes for errorcol and lastcheckedcol.
+- adapter_bloodshedversecom needs to be able to change storyId.
+- Tweak to adapter_whoficcom from GComyn.
+- New Site: asianfanfics.com - Thanks 444555!
+- Fixes for asianfanfics.com user/adult checks - Thanks 444555!
+- Fix for error column when not an error.
+- base_xenforoforum: Add more caching and page lookahead in reader mode.
+- Fix for adapter_adultfanfictionorg for site change.
+- adapter_asianfanficscom chapter URL update fix - Thanks 444555!
+- Fix for storiesonlinenet Daily Limit msg change, from GComyn.
+- Update translations
+
 Version 2.8.0 - 12 Jan 2017
 - Changes to adapter_wwwarea52hkhnet from GComyn.
 - Minor fix to adapter_squidgeorgpeja from GComyn.
@@ -36,30 +51,3 @@ Version 2.8.0 - 12 Jan 2017
   to always retry on update.
 - Generalize continue_on_chapter_error so all adapters can use it.
 - Update translations.
-
-Version 2.7.0 - 14 Dec 2016
-- New site: writing.whimsicalwanderings.net - Thanks GComyn!
-- New site: www.giantessworld.net - Thanks GComyn!
-- New site: www.looselugs.com - Thanks GComyn!
-- New site: www.tomparisdorm.com - Thanks GComyn!
-- New site: www.valentchamber.com - Thanks GComyn!
-- New site: www.gluttonyfiction.com - Thanks GComyn!
-- New site: www.lotrgfic.com - Thanks GComyn!
-- New site: www.sugarquill.net - Thanks GComyn!
-- New site: www.area52hkh.net - Thanks GComyn!
-- Change from GComyn for eFiction base story with internal <b> tags.
-- Additional URL normalization in base_xenforoforum_adapter.
-- Fixes for adapter_bdsmlibrarycom and adapter_sugarquillnet from GComyn.
-- Adding 'reader' mode for base_xenforoforum_adapter - only SV has it so far.
-- Fix for storiesonline.net site changes - Thanks, davidfor!
-- Comment out some debug output.
-- Replace post_process_apply_filename_safepattern with
-  post_process_safepattern so it can have its own pattern. (CLI only)
-- Remove adapter for fanfiction.csodaidok.hu. It's been broken for a while and
-  it's a difficult site in Hungarian language, which none of current devs can
-  read.
-- Add always_use_forumtags to valid options lists. (plugin ini editor only)
-- Comment out largish debug output in adapter_storiesonlinenet
-- Make QQ ask for user/pass if necessary instead of just fail.
-- Remove more script tags from squidge.org/peja metadata.
-- Update translations. (plugin only)
