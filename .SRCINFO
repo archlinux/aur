@@ -1,7 +1,7 @@
 pkgbase = dotnet-cli
 	pkgdesc = A command line utility for building, testing, packaging and running .NET Core applications and libraries
 	pkgver = 1.0.0_rc4_004771
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	license = MIT
@@ -17,6 +17,7 @@ pkgbase = dotnet-cli
 	depends = openssl
 	depends = curl
 	provides = dotnet
+	conflicts = dotnet-bin
 	noextract = dotnet-cli-1.0.0_rc4_004771.tar.gz
 	options = staticlibs
 	source = coreclr-1.1.0.tar.gz::https://github.com/dotnet/coreclr/archive/v1.1.0.tar.gz

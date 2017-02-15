@@ -4,7 +4,7 @@
 
 pkgname=dotnet-cli
 pkgver="1.0.0_rc4_004771"
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line utility for building, testing, packaging and running .NET Core applications and libraries"
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
@@ -90,6 +90,10 @@ package() {
   mkdir -p "${pkgdir}/usr/bin/"
   ln -s "/opt/dotnet/dotnet" "${pkgdir}/usr/bin/dotnet"
   chown -R 0:0 "${_outdir}"
+  find "${_outdir}" -name *.dll -exec chmod 644 {} \;
+  find "${_outdir}" -name *.exe -exec chmod 755 {} \;
+  
+
 }
 
 # vim:set ts=2 sw=2 et:
