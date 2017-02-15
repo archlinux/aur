@@ -1,0 +1,13 @@
+pkgbase = netctl-auto-resume
+	pkgdesc = netctl-auto-resume@ systemd service, to reconnect when the system resumes from suspend
+	pkgver = 1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Netctl
+	arch = any
+	license = MIT
+	depends = netctl
+	source = netctl-auto-resume@.service
+	md5sums = 4b0ac8a2bc46554b7108508bde854dd1
+
+pkgname = netctl-auto-resume
+

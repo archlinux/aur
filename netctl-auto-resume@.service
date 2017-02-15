@@ -1,0 +1,11 @@
+[Unit]
+Description=restart netctl-auto on resume.
+Requisite=netctl-auto@%i.service
+After=sleep.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl restart netctl-auto@%i.service
+
+[Install]
+WantedBy=sleep.target
