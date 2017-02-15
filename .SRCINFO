@@ -1,0 +1,29 @@
+pkgbase = sugar-toolkit-gtk2
+	pkgdesc = GTK2 based toolkit for Sugar (deprecated)
+	pkgver = 0.110.0
+	pkgrel = 1
+	url = https://sugarlabs.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	depends = hippo-canvas
+	depends = python2-gconf
+	depends = sugar-toolkit-gtk3
+	provides = sugar-toolkit
+	provides = sugar-base
+	conflicts = sugar-toolkit
+	conflicts = sugar-base
+	source = https://download.sugarlabs.org/sources/sucrose/glucose/sugar-toolkit/sugar-toolkit-0.110.0.tar.bz2
+	source = https://download.sugarlabs.org/sources/sucrose/glucose/sugar-base/sugar-base-0.98.0.tar.bz2
+	source = 0001-Use-profile.get_nickname-and-get_color-where-possibl.patch
+	source = 0001-Don-t-assume-all-connection-managers-support-Sugar.patch
+	source = drop-rsvg-dependency.patch
+	sha256sums = 14e76fac034f8801c2d63c9b562e6559817a31aac72b1853370bf0bc66779f25
+	sha256sums = cab4489eaec13a17ca036082d49e933ecd6462954040b086597cf33772f9e1cc
+	sha256sums = 022d041c0491332c5fb65c9d46232d60bd360b545443bb52b52a66063e239628
+	sha256sums = bb9405693fd3f6bb3303d97e839ae5ba466bbc0db93780949948dd4bb01568a6
+	sha256sums = 80f28c29f43c1cb2ccb7107e05d5ce60b5f2160298262afeba3f98172e2fdb1a
+
+pkgname = sugar-toolkit-gtk2
+

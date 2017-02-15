@@ -1,0 +1,38 @@
+From d93aa7626566eb3e4a5eb4dbdc29a31bfb611079 Mon Sep 17 00:00:00 2001
+From: Sam Parkinson <sam@sam.today>
+Date: Sun, 5 Jun 2016 20:04:34 +1000
+Subject: [PATCH] Don't assume all connection managers support Sugar
+
+If the user has a "random" telepathy connection manager
+installed and running on the system (eg. telepathy idle being
+active if they are chatting on irc with GNOME's Polari), activities
+will crash on startup.
+
+Steps to reproduce the crash:
+1. Run Polari (eg. via the Terminal activity)
+2. Join an irc channel in Polari (eg. #sugar on freenode)
+3. Try to open an activity from the home view
+    - notice that opening any sugar3 activity will crash
+---
+ src/sugar/presence/presenceservice.py | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/sugar/presence/presenceservice.py b/src/sugar/presence/presenceservice.py
+index b6c581ee..cf718e20 100644
+--- a/src/sugar/presence/presenceservice.py
++++ b/src/sugar/presence/presenceservice.py
+@@ -92,6 +92,11 @@ class PresenceService(gobject.GObject):
+                     if e.get_dbus_name() == name:
+                         logging.debug("There's no shared activity with the id "
+                                       "%s", activity_id)
++                    elif e.get_dbus_name() == \
++                         'org.freedesktop.DBus.Error.UnknownMethod':
++                        logging.warning(
++                            'Telepathy Account %r does not support '
++                            'Sugar collaboration', account_path)
+                     else:
+                         raise
+                 else:
+-- 
+2.11.1
+

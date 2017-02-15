@@ -1,0 +1,95 @@
+From 9f5a9228da8e0f8c378a665f7e1d9a3480617482 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=83=C2=B3=20Gy=C3=83=C2=B6rgy?= <ballogyor@gmail.com>
+Date: Wed, 15 Feb 2017 16:47:16 +0100
+Subject: [PATCH] Use profile.get_nickname and get_color where possible
+
+This is required to run activities when Sugar shell is not installed.
+
+Backported from: https://github.com/sugarlabs/sugar-toolkit-gtk3/commit/2f2b2d20d8ba8b6b94941dc0fed06a82c0f41a9f
+---
+ src/sugar/activity/activity.py   | 3 ++-
+ src/sugar/datastore/datastore.py | 3 ++-
+ src/sugar/presence/buddy.py      | 5 +++--
+ src/sugar/profile.py             | 4 ++--
+ 4 files changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/src/sugar/activity/activity.py b/src/sugar/activity/activity.py
+index db589767..a13c3b0f 100644
+--- a/src/sugar/activity/activity.py
++++ b/src/sugar/activity/activity.py
+@@ -71,6 +71,7 @@ from telepathy.constants import CONNECTION_HANDLE_TYPE_CONTACT
+ from telepathy.constants import CONNECTION_HANDLE_TYPE_ROOM
+ 
+ from sugar import util
++from sugar.profile import get_color
+ from sugar.presence import presenceservice
+ from sugar.activity import i18n
+ from sugar.activity.activityservice import ActivityService
+@@ -385,7 +386,7 @@ class Activity(Window, gtk.Container):
+     def _initialize_journal_object(self):
+         title = _('%s Activity') % get_bundle_name()
+         client = gconf.client_get_default()
+-        icon_color = client.get_string('/desktop/sugar/user/color')
++        icon_color = get_color().to_string()
+ 
+         jobject = datastore.create()
+         jobject.metadata['title'] = title
+diff --git a/src/sugar/datastore/datastore.py b/src/sugar/datastore/datastore.py
+index ed056347..9f496edc 100644
+--- a/src/sugar/datastore/datastore.py
++++ b/src/sugar/datastore/datastore.py
+@@ -34,6 +34,7 @@ import dbus.glib
+ from sugar import env
+ from sugar import mime
+ from sugar import dispatch
++from sugar.profile import get_color
+ 
+ DS_DBUS_SERVICE = 'org.laptop.sugar.DataStore'
+ DS_DBUS_INTERFACE = 'org.laptop.sugar.DataStore'
+@@ -234,7 +235,7 @@ class RawObject(object):
+                 'mime_type': gio.content_type_guess(filename=file_path),
+                 'activity': '',
+                 'activity_id': '',
+-                'icon-color': client.get_string('/desktop/sugar/user/color'),
++                'icon-color': get_color().to_string(),
+                 'description': file_path,
+                 }
+ 
+diff --git a/src/sugar/presence/buddy.py b/src/sugar/presence/buddy.py
+index eaba3e33..d27bfb8c 100644
+--- a/src/sugar/presence/buddy.py
++++ b/src/sugar/presence/buddy.py
+@@ -32,6 +32,7 @@ from telepathy.interfaces import CONNECTION, \
+ from telepathy.constants import HANDLE_TYPE_CONTACT
+ 
+ from sugar.presence.connectionmanager import get_connection_manager
++from sugar.profile import get_color, get_nick_name
+ 
+ ACCOUNT_MANAGER_SERVICE = 'org.freedesktop.Telepathy.AccountManager'
+ CONN_INTERFACE_BUDDY_INFO = 'org.laptop.Telepathy.BuddyInfo'
+@@ -244,5 +245,5 @@ class Owner(BaseBuddy):
+         BaseBuddy.__init__(self)
+ 
+         client = gconf.client_get_default()
+-        self.props.nick = client.get_string('/desktop/sugar/user/nick')
+-        self.props.color = client.get_string('/desktop/sugar/user/color')
++        self.props.nick = get_nick_name()
++        self.props.color = get_color().to_string()
+diff --git a/src/sugar/profile.py b/src/sugar/profile.py
+index c1dffd79..0e1ed5ba 100644
+--- a/src/sugar/profile.py
++++ b/src/sugar/profile.py
+@@ -69,8 +69,8 @@ class Profile(object):
+ 
+     def is_valid(self):
+         client = gconf.client_get_default()
+-        nick = client.get_string('/desktop/sugar/user/nick')
+-        color = client.get_string('/desktop/sugar/user/color')
++        nick = get_nick_name()
++        color = get_color()
+ 
+         return nick is not '' and \
+                color is not '' and \
+-- 
+2.11.1
+

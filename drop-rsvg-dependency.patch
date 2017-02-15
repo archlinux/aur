@@ -1,0 +1,134 @@
+diff -Naur sugar-toolkit-0.110.0.orig/src/sugar/graphics/icon.py sugar-toolkit-0.110.0/src/sugar/graphics/icon.py
+--- sugar-toolkit-0.110.0.orig/src/sugar/graphics/icon.py	2015-10-04 08:49:53.000000000 +0200
++++ sugar-toolkit-0.110.0/src/sugar/graphics/icon.py	2017-02-13 00:17:36.229025538 +0100
+@@ -37,35 +37,6 @@
+ _BADGE_SIZE = 0.45
+ 
+ 
+-class _SVGLoader(object):
+-
+-    def __init__(self):
+-        self._cache = LRU(50)
+-
+-    def load(self, file_name, entities, cache):
+-        if file_name in self._cache:
+-            icon = self._cache[file_name]
+-        else:
+-            icon_file = open(file_name, 'r')
+-            icon = icon_file.read()
+-            icon_file.close()
+-
+-            if cache:
+-                self._cache[file_name] = icon
+-
+-        for entity, value in entities.items():
+-            if isinstance(value, basestring):
+-                xml = '<!ENTITY %s "%s">' % (entity, value)
+-                icon = re.sub('<!ENTITY %s .*>' % entity, xml, icon)
+-            else:
+-                logging.error(
+-                    'Icon %s, entity %s is invalid.', file_name, entity)
+-
+-        # XXX this is very slow!  why?
+-        import rsvg
+-        return rsvg.Handle(data=icon)
+-
+-
+ class _IconInfo(object):
+ 
+     def __init__(self):
+@@ -86,7 +57,6 @@
+ class _IconBuffer(object):
+ 
+     _surface_cache = LRU(50)
+-    _loader = _SVGLoader()
+ 
+     def __init__(self):
+         self.icon_name = None
+@@ -111,15 +81,6 @@
+                 self.stroke_color, self.badge_name, self.width, self.height,
+                 color, sensitive)
+ 
+-    def _load_svg(self, file_name):
+-        entities = {}
+-        if self.fill_color:
+-            entities['fill_color'] = self.fill_color
+-        if self.stroke_color:
+-            entities['stroke_color'] = self.stroke_color
+-
+-        return self._loader.load(file_name, entities, self.cache)
+-
+     def _get_attach_points(self, info, size_request):
+         attach_points = info.get_attach_points()
+ 
+@@ -163,19 +124,10 @@
+         badge_info = theme.lookup_icon(self.badge_name, int(size), 0)
+         if badge_info:
+             badge_file_name = badge_info.get_filename()
+-            if badge_file_name.endswith('.svg'):
+-                handle = self._loader.load(badge_file_name, {}, self.cache)
+-
+-                dimensions = handle.get_dimension_data()
+-                icon_width = int(dimensions[0])
+-                icon_height = int(dimensions[1])
++            pixbuf = gtk.gdk.pixbuf_new_from_file(badge_file_name)
+ 
+-                pixbuf = handle.get_pixbuf()
+-            else:
+-                pixbuf = gtk.gdk.pixbuf_new_from_file(badge_file_name)
+-
+-                icon_width = pixbuf.get_width()
+-                icon_height = pixbuf.get_height()
++            icon_width = pixbuf.get_width()
++            icon_height = pixbuf.get_height()
+ 
+             context.scale(float(size) / icon_width,
+                           float(size) / icon_height)
+@@ -256,17 +208,9 @@
+         if icon_info.file_name is None:
+             return None
+ 
+-        is_svg = icon_info.file_name.endswith('.svg')
+-
+-        if is_svg:
+-            handle = self._load_svg(icon_info.file_name)
+-            dimensions = handle.get_dimension_data()
+-            icon_width = int(dimensions[0])
+-            icon_height = int(dimensions[1])
+-        else:
+-            pixbuf = gtk.gdk.pixbuf_new_from_file(icon_info.file_name)
+-            icon_width = pixbuf.get_width()
+-            icon_height = pixbuf.get_height()
++        pixbuf = gtk.gdk.pixbuf_new_from_file(icon_info.file_name)
++        icon_width = pixbuf.get_width()
++        icon_height = pixbuf.get_height()
+ 
+         badge_info = self._get_badge_info(icon_info, icon_width, icon_height)
+ 
+@@ -290,21 +234,11 @@
+         context.save()
+ 
+         context.translate(padding, padding)
+-        if is_svg:
+-            if sensitive:
+-                handle.render_cairo(context)
+-            else:
+-                pixbuf = handle.get_pixbuf()
+-                pixbuf = self._get_insensitive_pixbuf(pixbuf, widget)
+-                gdkcontext = gtk.gdk.CairoContext(context)
+-                gdkcontext.set_source_pixbuf(pixbuf, 0, 0)
+-                gdkcontext.paint()
+-        else:
+-            if not sensitive:
+-                pixbuf = self._get_insensitive_pixbuf(pixbuf, widget)
+-            gdkcontext = gtk.gdk.CairoContext(context)
+-            gdkcontext.set_source_pixbuf(pixbuf, 0, 0)
+-            gdkcontext.paint()
++        if not sensitive:
++            pixbuf = self._get_insensitive_pixbuf(pixbuf, widget)
++        gdkcontext = gtk.gdk.CairoContext(context)
++        gdkcontext.set_source_pixbuf(pixbuf, 0, 0)
++        gdkcontext.paint()
+ 
+         if self.badge_name:
+             context.restore()
