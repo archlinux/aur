@@ -1,7 +1,7 @@
 # Maintainer: Marius Knaust <marius.knaust@gmail.com>
 
 pkgname=spotlight
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Displays a new background image daily"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('curl'
 source=('spotlight.sh'
         'spotlight.service'
         'spotlight.timer')
-md5sums=('8c376b83e14ada6367a8775752d19f2e'
+md5sums=('20fac11105142cf83aa91e463a8eb4ec'
          '61f2ea773a24bf62185179499194fc69'
          '5cf181a3dd50993e0dfbf1835c9d2364')
 
