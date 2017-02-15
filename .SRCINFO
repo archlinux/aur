@@ -1,7 +1,7 @@
 pkgbase = pass-otp
 	pkgdesc = A pass extension for managing one-time-password (OTP) tokens.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tadfisher/pass-otp
 	arch = any
 	license = GPL3
