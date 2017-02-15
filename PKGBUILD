@@ -1,7 +1,7 @@
 # Maintainer: Jake <ja.ke@posteo.de>
 
 pkgname=hyperion.ng-git
-pkgver=r1380.33c91f7
+pkgver=r1478.7c336b05
 pkgrel=1
 pkgdesc="The reworked version (next generation) of Hyperion, ambient light software - PRE ALPHA"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -24,6 +24,8 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname%-git}"
   
+  sed -i "s/python/python2/g" CMakeLists.txt
+  
   mkdir build && cd build
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DPROTOBUF_PROTOC_EXECUTABLE=/usr/bin/protoc \
@@ -43,7 +45,7 @@ package() {
   
   install -Dm 644 config/hyperion.config.json.default "${pkgdir}/etc/hyperion/hyperion.config.json"
 
-  install -Dm 644 bin/service/hyperion.systemd.sh "${pkgdir}/usr/lib/systemd/system/hyperiond.service"
+  install -Dm 644 bin/service/hyperion.systemd "${pkgdir}/usr/lib/systemd/system/hyperiond.service"
 
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
