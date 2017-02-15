@@ -1,6 +1,6 @@
 pkgbase = webhttrack
 	pkgdesc = HTTrack is a free (GPL, libre/free software) and easy-to-use offline browser utility.
-	pkgver = 3.48.21
+	pkgver = 3.48.22
 	pkgrel = 1
 	url = http://www.httrack.com/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = webhttrack
 	provides = httrack
 	conflicts = httrack
 	conflicts = webhttrack-git
-	source = https://github.com/xroche/httrack/archive/3.48.21.tar.gz
-	md5sums = 3f2e60f637697bf326856817fb8a015d
+	source = http://download.httrack.com/cserv.php3?File=httrack.tar.gz
+	md5sums = 843ccd49bfef2309b195479cac07d618
 
 pkgname = webhttrack
 

@@ -1,7 +1,7 @@
 # Maintainer: <me at adambac dot com>
 
 pkgname='webhttrack'
-pkgver='3.48.21'
+pkgver='3.48.22'
 pkgrel=1
 pkgdesc='HTTrack is a free (GPL, libre/free software) and easy-to-use offline browser utility.'
 license=(GPL)
@@ -10,8 +10,8 @@ arch=('any')
 provides=('httrack')
 conflicts=('httrack' 'webhttrack-git')
 depends=('bash' 'zlib' 'hicolor-icon-theme' 'openssl')
-source=("https://github.com/xroche/httrack/archive/${pkgver}.tar.gz")
-md5sums=('3f2e60f637697bf326856817fb8a015d')
+source=("http://download.httrack.com/cserv.php3?File=httrack.tar.gz")
+md5sums=('843ccd49bfef2309b195479cac07d618')
 
 build() {
     cd "httrack-${pkgver}"
