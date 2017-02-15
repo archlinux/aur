@@ -2,8 +2,8 @@
 pkgname=cliqz
 _pkgname=browser-f
 _vendorname=CLIQZ
-pkgver=1.10.0
-pkgrel=2
+pkgver=1.11.0
+pkgrel=1
 pkgdesc="Firefox-based privacy aware web browser"
 arch=('i686' 'x86_64')
 url="https://cliqz.com/"
@@ -16,20 +16,17 @@ makedepends=('python2' 'zip' 'autoconf2.13' 'yasm' 'libidl2' 'linux-api-headers'
 conflicts=('cliqz-bin')
 source=("https://github.com/cliqz-oss/browser-f/archive/${pkgver}.tar.gz"
         "mozconfig"
-        "cliqz"
-        "firefox-50.1.0-configure-regexp.patch")
-sha256sums=('a9daa346c4317421b038ebf3e0d96a2bffac2c2886866133fb64439830c63674'
+        "cliqz")
+sha256sums=('ae35e3ac2ac6df6e53fdee30b0053bdf7c79c77f174632b58bdcfcbac99f5cf4'
             'ebb68a51d1289f53e1adb9501d4309db9a0cc73d6eb8da6dc86143f0879b6fc7'
-            'cd07bf42ad08a626250572890f1a038a85bc7715637371b23c11b39690ab9c7a'
-            'f746874e84217ce6a7ddf9f8aacdb2e70845db0ba7a5b54134fd0ed4221c7723')
+            'cd07bf42ad08a626250572890f1a038a85bc7715637371b23c11b39690ab9c7a')
+
 
 prepare() {
   cd $srcdir/$_pkgname-$pkgver/mozilla-release
   sed -i 's/ifeq ($(OS_ARCH), Linux)/ifeq ($(OS_ARCH), Nope)/' toolkit/mozapps/installer/upload-files.mk
   sed -i "s/@MOZ_APP_DISPLAYNAME@/$_vendorname/g" toolkit/mozapps/installer/linux/rpm/mozilla.desktop
   sed -i "s/@MOZ_APP_NAME@/$pkgname/g" toolkit/mozapps/installer/linux/rpm/mozilla.desktop
-
-  patch -Np1 -i ../../firefox-50.1.0-configure-regexp.patch
 
   cp ../../mozconfig .mozconfig
 }
