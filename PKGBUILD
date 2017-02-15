@@ -5,7 +5,7 @@
 
 pkgname=cubicsdr-git
 _pkgname=cubicsdr
-pkgver=r1209.7901701
+pkgver=r1316.e173eec
 pkgrel=1
 epoch=2
 pkgdesc="Cross-Platform Software-Defined Radio Application"
@@ -21,9 +21,11 @@ depends=(
 optdepends=(
   'fftw: FFTW support'
   'soapyrtlsdr-git: support for RTL-SDR (RTL2832U) dongles'
-  'soapyosmo-git: support for Airspy, Airspy Mini, MiriSDR and RFSpace'
+  'soapyairspy-git: support for Airspy R2 and Airspy Mini'
   'soapysdrplay-git: support for SDRplay RSP'
   'soapyhackrf-git: support for HackRF'
+  'soapylms7-git: support for LimeSDR'
+  'soapyosmo-git: support for MiriSDR and RFSpace'
   'soapyremote-git: use any SoapySDR device remotely over network'
   'hamlib: hamlib support'
 )
