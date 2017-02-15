@@ -1,12 +1,12 @@
 pkgbase = picard-plugins-git
 	pkgdesc = plugins from picard-plugins repository
-	pkgver = 1.3.r115.10f7471
+	pkgver = 1.4.r221.bcac3fe
 	pkgrel = 1
 	url = https://picard.musicbrainz.org/plugins/
 	arch = any
 	license = GPL
 	depends = picard
-	conflicts = picard<=1.3
+	conflicts = picard<=1.4
 	source = git+https://github.com/metabrainz/picard-plugins.git
 	md5sums = SKIP
 

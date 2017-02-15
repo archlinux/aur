@@ -1,8 +1,8 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 # Contributor: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 pkgname=picard-plugins-git
-pkgver=1.3.r115.10f7471
-_pkgver=1.3
+pkgver=1.4.r221.bcac3fe
+_pkgver=1.4
 pkgrel=1
 pkgdesc="plugins from picard-plugins repository"
 arch=('any')
