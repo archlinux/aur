@@ -3,7 +3,7 @@
 # Contributor: Jean-Pier Brochu <jeanpier.brochu@gmail.com>
 
 pkgname=gitkraken
-pkgrel=1
+pkgrel=2
 pkgver=2.1.0
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client."
 url="http://www.gitkraken.com/"
