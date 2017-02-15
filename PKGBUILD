@@ -33,3 +33,5 @@ package() {
 
   make -f makefile.shared DESTDIR="${pkgdir}" INSTALL_GROUP="root" install
 }
+
+# vim:set ts=2 sw=2 et:
