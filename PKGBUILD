@@ -1,15 +1,16 @@
 # Maintainer: not_anonymous <nmlibertarian@gmail.com>
 # Contributor: Maintainer: qs9rx <that nick at enjoys döt it>
+# Original Contributor: Bob Finch <w9ya@arrl.net>
 # Original author: Bennett Goble <nivardus at gmail dot com>
 
 pkgname=xdemorse
 pkgver=2.9
-pkgrel=4
+pkgrel=5
 pkgdesc="An X/GTK+ application - decodes Morse Code signals into text."
 arch=('i686' 'x86_64')
 url="http://www.qsl.net/5b4az/pkg/morse/xdemorse/xdemorse.html"
 license=(GPL)
-depends=('gtk2' 'alsa-lib')
+depends=('gtk2' 'alsa-lib' 'hamradio-menus')
 makedepends=('autoconf' 'automake' 'intltool' 'imagemagick' 'pkg-config')
 source=("http://www.qsl.net/5b4az/pkg/morse/$pkgname/$pkgname-$pkgver.tar.bz2"
 	diff.autogen.sh
