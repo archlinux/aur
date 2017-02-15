@@ -10,6 +10,7 @@ arch=(any)
 url="http://github.com/tdryer/hangups"
 license=('MIT')
 depends=('python' 'python-purplex' 'python-requests' 'python-urwid' 'python-appdirs' 'python-aiohttp' 'python-robobrowser' 'python-configargparse' 'python-werkzeug' 'python-reparser' 'python-readlike' 'python-protobuf' 'python-mechanicalsoup' 'python-multidict')
+makedepends=('git')
 source=('git+https://github.com/tdryer/hangups.git')
 md5sums=('SKIP')
 
@@ -22,7 +23,6 @@ pkgver() {
 package() {
   cd ${srcdir}/${_pkgname}
   #sed -i 's/^.*asyncio==.*$//' setup.py
-  #sed -i 's/^.*enum34.*$//' setup.py
   sed -i 's/^.*purplex==.*$//' setup.py
   sed -i 's/^.*hangups-urwid.*$//' setup.py
   sed -i 's/==/>=/g' setup.py
