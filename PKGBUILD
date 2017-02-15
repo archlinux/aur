@@ -24,7 +24,7 @@ pkgname=('qt51-base'
          'qt51-x11extras'
          'qt51-xmlpatterns')
 pkgver=5.1.1
-pkgrel=6
+pkgrel=7
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
@@ -36,7 +36,7 @@ makedepends=('libxcb' 'xcb-proto' 'xcb-util' 'xcb-util-image' 'xcb-util-wm' 'xcb
             'openal' 'gtk2' 'libxkbcommon')
 groups=('qt51')
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/5.1/${pkgver}/single/${_pkgfqn}.tar.xz"
+source=("https://download.qt.io/archive/qt/5.1/${pkgver}/single/${_pkgfqn}.tar.xz"
         'assistant-qt51.desktop'
         'designer-qt51.desktop'
         'linguist-qt51.desktop'
