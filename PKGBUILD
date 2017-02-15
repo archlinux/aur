@@ -5,19 +5,20 @@
 
 _pkgname=https-everywhere
 pkgname=firefox-extension-${_pkgname}
-pkgver=5.2.10
+pkgver=5.2.11
 pkgrel=1
-_file=578449
 pkgdesc="Plugin for firefox which ensures you are using https whenever it's possible."
 license=('GPL2')
 arch=('any')
 url="https://www.eff.org/https-everywhere"
 depends=("firefox")
 makedepends=("unzip")
-# Apparently, API endpoints are all the rage -- so this isn't actually a file...
-source=("${_pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/${_file}/")
+source=("${_pkgname}-${pkgver}.xpi::https://www.eff.org/files/https-everywhere-${pkgver}-eff.xpi"
+        "${_pkgname}-${pkgver}.xpi.sig::https://www.eff.org/files/https-everywhere-${pkgver}-eff.xpi.sig")
 noextract=("${_pkgname}-${pkgver}.xpi")
-sha256sums=('721f4bb48891ebb1a92d3a044a0b3513ed58e629d2e2671c6f8bdbbbf02e2ce9')
+sha256sums=('f535d79da305aa8a35f753788ae7f2768762dcabe47776e195d66fd9768dce4d'
+            'SKIP')
+validpgpkeys=('1073E74EB38BD6D19476CBF8EA9DBF9FB761A677') # William Budington
 
 prepare() {
   cd "$srcdir"
