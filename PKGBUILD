@@ -4,15 +4,16 @@
 
 pkgname=xlog
 pkgver=2.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Ham Radio general purpose logging program."
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/xlog/"
 license=('GPL3')
 depends=('gtk2>=2.12.0' 'hamlib')
-makedepends=('pkg-config>=0.9.0' 'libgnomeprint')
 optdepends=(	'cwdaemon: as external keyer'
-		'glabels: print log')
+		'glabels: print log'
+		'hamradio-menus: XDG compliant menuing')
+makedepends=('pkg-config>=0.9.0' 'libgnomeprint')
 source=(http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz)
 
 prepare() {

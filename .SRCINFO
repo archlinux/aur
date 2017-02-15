@@ -1,7 +1,7 @@
 pkgbase = xlog
 	pkgdesc = Ham Radio general purpose logging program.
 	pkgver = 2.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nongnu.org/xlog/
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = xlog
 	depends = hamlib
 	optdepends = cwdaemon: as external keyer
 	optdepends = glabels: print log
+	optdepends = hamradio-menus: XDG compliant menuing
 	source = http://download.savannah.gnu.org/releases/xlog/xlog-2.0.14.tar.gz
 	md5sums = 20284beeba3cee97e14d651121e1b900
 	sha256sums = 16407e016f9991cfe02d85e9841ced6112416e43800898be888a2cc44c368d58
