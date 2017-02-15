@@ -1,6 +1,6 @@
 pkgbase = babe-qt-git
 	pkgdesc = Tiny Qt Babe Music Player
-	pkgver = r94.a3c9b4e
+	pkgver = r103.78c1a5f
 	pkgrel = 1
 	url = https://github.com/milohr/babe-qt
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = babe-qt-git
 	depends = hicolor-icon-theme
 	depends = knotifications
 	depends = ki18n
+	depends = qjson
 	depends = taglib
 	provides = babe-qt
 	conflicts = babe-qt
