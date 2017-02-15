@@ -1,7 +1,7 @@
 pkgbase = owx
 	pkgdesc = A CLI tool for programming Wouxun (KG669V,UVD1-3,UV1A, et al) HTs.
 	pkgver = r21
-	pkgrel = 1
+	pkgrel = 2
 	url = http://owx.chmurka.net
 	arch = i686
 	arch = x86_64

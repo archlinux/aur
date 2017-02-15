@@ -5,7 +5,7 @@
 pkgname=owx
 pkgver=r21
 #.266923b
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI tool for programming Wouxun (KG669V,UVD1-3,UV1A, et al) HTs."
 arch=('i686' 'x86_64')
 url="http://owx.chmurka.net"
@@ -20,11 +20,8 @@ md5sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/$pkgname-git/"
-
-	( set -o pipefail
-	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" \
+		| sed "s/\..*//"
 }
 
 prepare() {
