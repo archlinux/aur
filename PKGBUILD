@@ -132,7 +132,7 @@ package_gcc-libs-git()
   pkgdesc="Runtime libraries shipped by GCC (developmental version)"
   groups=('base')
   depends=('glibc>=2.24')
-  provides=('gcc-libs')
+  provides=("gcc-libs=${_base_ver}")
   conflicts=('gcc-libs')
   options=('!emptydirs' '!strip')
 
@@ -183,7 +183,7 @@ package_gcc-git()
 
   pkgdesc="The GNU Compiler Collection - C and C++ frontends (developmental version)"
   depends=("gcc-libs-git=$pkgver-$pkgrel" 'binutils>=2.26' 'libmpc')
-  provides=('gcc')
+  provides=('gcc=${_base_ver}')
   conflicts=('gcc')
   groups=('base-devel')
   options=('staticlibs')
@@ -287,7 +287,7 @@ package_gcc-fortran-git()
 
   pkgdesc="Fortran front-end for GCC (developmental version)"
   depends=("gcc-git=$pkgver-$pkgrel" 'libmpc' 'zlib')
-  provides=('gcc-fortran')
+  provides=('gcc-fortran=${_base_ver}')
   conflicts=('gcc-fortran')
   options=('!emptydirs')
 
@@ -313,7 +313,7 @@ package_gcc-objc-git()
 
   pkgdesc="Objective-C front-end for GCC (developmental version)"
   depends=("gcc-git=$pkgver-$pkgrel" 'libmpc' 'zlib')
-  provides=('gcc-objc')
+  provides=('gcc-objc=${_base_ver}')
   conflicts=('gcc-objc')
 
   cd ${srcdir}/gcc-build
@@ -335,7 +335,7 @@ package_gcc-ada-git()
 
   pkgdesc="Ada front-end for GCC (GNAT) (developmental version)"
   depends=("gcc-git=$pkgver-$pkgrel" 'libmpc' 'zlib')
-  provides=('gcc-ada')
+  provides=('gcc-ada=${_base_ver}')
   conflicts=('gcc-ada')
   options=('staticlibs' '!emptydirs')
 
@@ -364,7 +364,7 @@ package_gcc-go-git()
 
   pkgdesc="Go front-end for GCC (developmental version)"
   depends=("gcc-git=$pkgver-$pkgrel" 'libmpc' 'zlib')
-  provides=('gcc-go')
+  provides=('gcc-go=${_base_ver}')
   conflicts=('go' 'gcc-go')
   options=('!emptydirs')
 
