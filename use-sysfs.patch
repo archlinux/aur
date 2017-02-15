@@ -1,0 +1,90 @@
+--- src/indicator-cpufreq/indicator_cpufreq/indicator.py	2016-10-23 20:53:24.066983494 +0900
++++ src/indicator-cpufreq/indicator_cpufreq/indicator.py	2017-02-16 01:09:11.625695652 +0900
+@@ -29,6 +29,7 @@
+ from gettext import gettext as _
+ #gettext.textdomain('indicator-cpufreq')
+ 
++import glob
+ 
+ def readable_throttle(t):
+         return t
+@@ -101,24 +103,26 @@
+ 
+         # frequency menu items
+         #freqs = cpufreq.get_available_frequencies(self.cpus[0])
+-        freqs = reversed(sorted(set(cpufreq.get_available_frequencies(self.cpus[0]))))
+-        freqmenu = Gtk.Menu()
+-        freqm = Gtk.MenuItem("CPU Frequency")
+-        freqm.set_submenu(freqmenu)
+-        for freq in freqs:
+-            menu_item = Gtk.RadioMenuItem.new_with_label(group, readable_frequency(freq))
+-            group = menu_item.get_group()
+-            freqmenu.append(menu_item)
+-            menu_item.connect("activate", self.select_activated, 'frequency', freq)
+-            self.select_items[freq] = menu_item
+-        menu.append(freqm)
++        #freqs = reversed(sorted(set(cpufreq.get_available_frequencies(self.cpus[0]))))
++        #freqmenu = Gtk.Menu()
++        #freqm = Gtk.MenuItem("CPU Frequency")
++        #freqm.set_submenu(freqmenu)
++        #for freq in freqs:
++        #    menu_item = Gtk.RadioMenuItem.new_with_label(group, readable_frequency(freq))
++        #    group = menu_item.get_group()
++        #    freqmenu.append(menu_item)
++        #    menu_item.connect("activate", self.select_activated, 'frequency', freq)
++        #    self.select_items[freq] = menu_item
++        #menu.append(freqm)
+ 
+         # governor menu items
+-        governors = cpufreq.get_available_governors(self.cpus[0])
++        govFile = open("/sys/devices/system/cpu/cpufreq/policy0/scaling_available_governors")
++        governors = govFile.readline().strip("\n")
++        govList = governors.split(" ")
+         govmenu = Gtk.Menu()
+         govm = Gtk.MenuItem("CPU Governor")
+         govm.set_submenu(govmenu)
+-        for governor in governors:
++        for governor in govList:
+             if governor == 'userspace':
+                 continue
+             menu_item = Gtk.RadioMenuItem.new_with_label(group, readable_governor(governor))
+@@ -127,6 +131,7 @@
+             menu_item.connect('activate', self.select_activated, 'governor', governor)
+             self.select_items[governor] = menu_item
+         menu.append(govm)
++        govFile.close
+ 
+         # p-state turbo menu items
+         psturbo = ['on', 'off']
+@@ -182,13 +187,29 @@
+         for i in self.select_items.values():
+             i.handler_block_by_func(self.select_activated)
+         
+-        fmin, fmax, governor = cpufreq.get_policy(self.cpus[0])
++        govFile = open("/sys/devices/system/cpu/cpufreq/policy0/scaling_governor", 'r')
++        governor = govFile.readline().strip("\n")
++        fmnFile = open("/sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq", 'r')
++        fmin = int(fmnFile.readline().strip("\n"))
++        fmxFile = open("/sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq", 'r')
++        fmax = int(fmxFile.readline().strip("\n"))
+         # use the highest freq among cores for display
+-        freq = max([cpufreq.get_freq_kernel(cpu) for cpu in self.cpus])
++        freq_list = glob.glob('/sys/devices/system/cpu/cpufreq/policy*/scaling_cur_freq')
++        freqs = []
++        for cur_freq in freq_list:
++            f = open(cur_freq, 'r')
++            freqs.append(int(f.readline().strip("\n")))
++            f.close
++
++        freq = max(freqs)
+         
+         ratio = min([25, 50, 75, 100], key=lambda x: abs((fmax - fmin) * x / 100.0 - (freq - fmin)))
+         if freq < fmax and ratio == 100:
+             ratio = 75
++
++        govFile.close
++        fmnFile.close
++        fmxFile.close
+         
+         #self.set_icon(get_data_file('media', 'indicator-cpufreq-%d.png' % ratio))
+         self.ind.set_icon('indicator-cpufreq-%d' % ratio)

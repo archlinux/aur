@@ -118,7 +118,7 @@
 +
 +
  </policyconfig>
---- indicator-cpufreq/indicator_cpufreq/indicator.py.orig	2015-09-10 14:46:45.814511000 +0900
+--- indicator-cpufreq/indicator_cpufreq/indicator.py	2015-09-10 14:46:45.814511000 +0900
 +++ indicator-cpufreq/indicator_cpufreq/indicator.py	2015-09-10 14:46:45.989929097 +0900
 @@ -29,6 +29,10 @@
  from gettext import gettext as _
