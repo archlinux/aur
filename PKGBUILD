@@ -3,16 +3,16 @@
 
 pkgname=lib32-assimp
 _basename=assimp
-pkgver=3.2
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Portable Open Source library to import various well-known 3D model formats in an uniform manner"
 url='http://assimp.sourceforge.net/index.html'
 arch=('x86_64')
 license=('BSD')
-depends=('lib32-gcc-libs' 'lib32-zlib')
+depends=('lib32-gcc-libs' 'lib32-zlib' 'lib32-minizip')
 makedepends=('cmake')
 source=("https://github.com/assimp/assimp/archive/v${pkgver}.tar.gz")
-md5sums=('bb0cfa1513c4e11cf7ba14ba66548072')
+md5sums=('fc57b024e80ebb13301bd0983826cad3')
 
 build()
 {
@@ -22,7 +22,6 @@ build()
 
   cmake \
     -D ASSIMP_BUILD_ASSIMP_TOOLS=OFF \
-    -D ASSIMP_ENABLE_BOOST_WORKAROUND=ON \
     -D ASSIMP_BUILD_SAMPLES=OFF \
     -D ASSIMP_BUILD_TESTS=OFF \
     -D CMAKE_INSTALL_PREFIX="/usr" \
