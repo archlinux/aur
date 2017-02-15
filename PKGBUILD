@@ -4,7 +4,7 @@
 
 pkgname=dotnet-cli
 pkgver="1.0.0_rc4_004771"
-pkgrel=2
+pkgrel=3
 pkgdesc="A command line utility for building, testing, packaging and running .NET Core applications and libraries"
 arch=(x86_64)
 url="https://www.microsoft.com/net/core"
@@ -63,6 +63,7 @@ _coreclr_files=(
 
 _corefx_files=(
   'System.Security.Cryptography.Native.OpenSsl.so'
+  'System.Net.Http.Native.so'
 )
 
 _copy_file() {
