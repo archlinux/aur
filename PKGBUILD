@@ -1,12 +1,12 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatroff-git
-pkgver=r442.ac60e4b
+pkgver=r443.2b1a13e
 pkgrel=1
 epoch=
 pkgdesc="An implementation of troff typesetting system in C programming language."
 arch=('i686' 'x86_64')
 url="http://litcave.rudi.ir/"
-license=('ISC')
+license=('ISC' 'Lucent Public License')
 groups=()
 depends=('neatmkfn-git')
 makedepends=('git')
@@ -23,7 +23,7 @@ options=()
 changelog=
 install=
 source=("$pkgname::git+git://repo.or.cz/neatroff.git"
-        "${pkgname%-*}_dir::git+git://repo.or.cz/neatroff.git#branch=dir"
+        "${pkgname%-*}-dir::git+git://repo.or.cz/neatroff.git#branch=dir"
         "git://repo.or.cz/neatroff_make.git"
         "http://litcave.rudi.ir/neatroff.pdf")
 noextract=()
@@ -46,7 +46,7 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   make all FDIR=$FDIR MDIR=$MDIR
-  cd "$srcdir/${pkgname%-*}_dir"
+  cd "$srcdir/${pkgname%-*}-dir"
   make all FDIR=$FDIR MDIR=$MDIR
 }
 
@@ -56,11 +56,12 @@ package() {
   install -Dm644 README $pkgdir/usr/share/doc/${pkgname%-*}/README
   install -Dm644 ../neatroff.pdf $pkgdir/usr/share/doc/${pkgname%-*}/neatroff.pdf
   install -Dm644 ../neatroff_make/tmac/NOTICE $pkgdir/usr/share/licenses/${pkgname%-*}/NOTICE
+  install -Dm644 ../neatroff_make/man/neatroff.1 $pkgdir/usr/share/man/man1/neatroff.1
   ## copy neatroff macros
   mkdir -p $pkgdir/usr/share/neatroff/tmac/
   cp -r ../neatroff_make/tmac/* $pkgdir/usr/share/neatroff/tmac/
   rm -f $pkgdir/usr/share/neatroff/tmac/NOTICE
-  cd "$srcdir/${pkgname%-*}_dir"
-  install -Dm755 roff $pkgdir/usr/bin/neatroff_dir
+  cd "$srcdir/${pkgname%-*}-dir"
+  install -Dm755 roff $pkgdir/usr/bin/neatroff-dir
 }
 
