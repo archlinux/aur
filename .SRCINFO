@@ -6,7 +6,7 @@ pkgbase = picard-plugins-git
 	arch = any
 	license = GPL
 	depends = picard
-	conflicts = picard-git<=1.3
+	conflicts = picard<=1.3
 	source = git+https://github.com/metabrainz/picard-plugins.git
 	md5sums = SKIP
 
