@@ -1,7 +1,7 @@
 # Maintainer: Carl Åkerlindh <carl.akerlindh at gmail dot com>
 pkgname=mxnet
 pkgver=0.9.3a
-pkgrel=1
+pkgrel=2
 pkgdesc="Flexible and Efficient Library for Deep Learning"
 arch=('x86_64')
 url="http://mxnet.io/"
@@ -56,6 +56,7 @@ build() {
 package() {
   cd "$pkgdir"
   install -D "$srcdir/$pkgname/lib/libmxnet.so" "$pkgdir/usr/lib/libmxnet.so"
-  install -D "$srcdir/mklml/lib/libmklml_intel.so" "$pkgdir/usr/lib/libmklml_intel.so"
-  install -D "$srcdir/mklml/lib/libiomp5.so" "$pkgdir/usr/lib/libiomp5.so"
+  install -D "$srcdir/mklml/lib/libmklml_gnu.so" "$pkgdir/usr/lib/libmklml_intel.so"
+  # install -D "$srcdir/mklml/lib/libmklml_intel.so" "$pkgdir/usr/lib/libmklml_intel.so"
+  # install -D "$srcdir/mklml/lib/libiomp5.so" "$pkgdir/usr/lib/libiomp5.so"
 }

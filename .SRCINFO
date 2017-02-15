@@ -1,7 +1,7 @@
 pkgbase = mxnet
 	pkgdesc = Flexible and Efficient Library for Deep Learning
 	pkgver = 0.9.3a
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mxnet.io/
 	arch = x86_64
 	license = Apache2
