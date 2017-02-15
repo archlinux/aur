@@ -26,6 +26,7 @@ pkgbase = rstudio-desktop-git
 	depends = mathjax
 	depends = pandoc
 	depends = qt5-webkit
+	depends = qt5-svg
 	depends = clang
 	optdepends = git: for git support
 	optdepends = subversion: for subversion suuport

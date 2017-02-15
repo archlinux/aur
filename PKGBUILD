@@ -2,7 +2,7 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=1.1.55
+pkgver=1.1.74
 _gwtver=2.7.0
 _ginver=1.5
 _clangver=3.8.0
@@ -11,7 +11,7 @@ pkgdesc="A powerful and productive integrated development environment (IDE) for 
 arch=('i686' 'x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
-depends=('boost-libs>=1.5' 'r>=2.11.1' 'hicolor-icon-theme' 'shared-mime-info' 'hunspell-en' 'mathjax' 'pandoc'  'qt5-webkit' 'clang')
+depends=('boost-libs>=1.5' 'r>=2.11.1' 'hicolor-icon-theme' 'shared-mime-info' 'hunspell-en' 'mathjax' 'pandoc'  'qt5-webkit' 'qt5-svg' 'clang')
 makedepends=('git' 'cmake>=2.8' 'boost>=1.5' 'java-runtime=8' 'apache-ant' 'unzip' 'openssl' 'pango' 'libcups' 'pam' 'wget')
 optdepends=('git: for git support'
 	    'subversion: for subversion suuport'
