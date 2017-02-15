@@ -10,7 +10,7 @@ arch=(x86_64)
 url="https://www.microsoft.com/net/core"
 license=('MIT')
 groups=()
-depends=('lldb' 'libunwind' 'icu' 'lttng-ust' 'openssl' 'curl')
+depends=('lldb' 'libunwind' 'icu52' 'lttng-ust' 'openssl' 'curl' 'libcurl-compat')
 makedepends=('cmake' 'make' 'clang' 'llvm' 'gettext')
 provides=('dotnet')
 conflicts=('dotnet-bin')
@@ -91,9 +91,7 @@ package() {
   ln -s "/opt/dotnet/dotnet" "${pkgdir}/usr/bin/dotnet"
   chown -R 0:0 "${_outdir}"
   find "${_outdir}" -name *.dll -exec chmod 644 {} \;
-  find "${_outdir}" -name *.exe -exec chmod 755 {} \;
-  
-
+  find "${_outdir}" -name *.exe -exec chmod 755 {} \; 
 }
 
 # vim:set ts=2 sw=2 et:
