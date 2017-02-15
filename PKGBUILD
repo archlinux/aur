@@ -35,7 +35,7 @@ source=(# Chrome
         #"lp4_$_ffver.xpi::$url/lp4.xpi"
         'profiles.ini')
 noextract=("lp4_$_ffver.xpi"
-          "lpchrome_linux_${_chromver_lib}.crx")
+           "lpchrome_linux_${_chromver_lib}.crx")
 md5sums=('5a9bb6e274c8d5102400fa03a3cab776'  # Universal
          '71dbe540dbb6ae41fe81c6e4f8dab50c'  # Chrome
          'bd7678de722909acd89ba768edf0d5d5'  # Chrome with Lib
@@ -60,8 +60,7 @@ _chrome_package() {
     install -Dm755 lplinux/nplastpass$_64 "$pkgdir"/etc/opt/chrome/native-messaging-hosts/nplastpass$_64
 
     # 64-bit?
-    sed "s|/nplastpass|/nplastpass$_64|" \
-        -i com.lastpass.nplastpass.json
+    sed -i "s|/nplastpass|/nplastpass$_64|" com.lastpass.nplastpass.json
 
     # JSONs
     for i in opt/chrome chromium chromium-dev; do
