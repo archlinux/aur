@@ -1,0 +1,18 @@
+pkgbase = sugar-activity-turtleblocks
+	pkgdesc = Logo-inspired graphical turtle for Sugar
+	pkgver = 213
+	pkgrel = 1
+	url = https://wiki.sugarlabs.org/go/Activities/Turtle_Art
+	arch = any
+	groups = sugar-fructose
+	license = MIT
+	makedepends = git
+	depends = gconf
+	depends = sugar-toolkit-gtk3
+	source = git+https://github.com/sugarlabs/activity-turtleart-gtk3#commit=2f5cb5a5348c552db898dd7de909b38312c71023
+	source = 0001-Port-more-parts-to-gtk3.patch
+	sha256sums = SKIP
+	sha256sums = 9dc1c4d9510184881d054e04470fe78c1de2889bec3adf03a9e2841e27f5431e
+
+pkgname = sugar-activity-turtleblocks
+

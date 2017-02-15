@@ -1,0 +1,221 @@
+From 8c22cd8ef27cb378df0cbfe301239490fe1971db Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=83=C2=B3=20Gy=C3=83=C2=B6rgy?= <ballogyor@gmail.com>
+Date: Wed, 15 Feb 2017 04:24:33 +0100
+Subject: [PATCH] Port more parts to gtk3
+
+This removes gtk2 dependency completely.
+---
+ TurtleArt/talogo.py                | 12 ++++++------
+ TurtleArt/tautils.py               |  4 ++--
+ TurtleArt/turtleblocks.py          |  2 +-
+ collaboration/activity.py          |  2 +-
+ collaboration/connectionmanager.py |  2 +-
+ collaboration/neighborhood.py      |  4 ++--
+ collaboration/presenceservice.py   |  8 ++++----
+ pysamples/copy_from_heap.py        |  4 ++--
+ pysamples/grecord.py               |  4 ++--
+ pysamples/paste_to_heap.py         |  4 ++--
+ 10 files changed, 23 insertions(+), 23 deletions(-)
+
+diff --git a/TurtleArt/talogo.py b/TurtleArt/talogo.py
+index 1f8875c..7af1d48 100644
+--- a/TurtleArt/talogo.py
++++ b/TurtleArt/talogo.py
+@@ -936,7 +936,7 @@ class LogoCode:
+         if self.tw.running_sugar:
+             # Is the object a dsobject?
+             if isinstance(obj, Media) and obj.value:
+-                from sugar.datastore import datastore
++                from sugar3.datastore import datastore
+                 try:
+                     dsobject = datastore.get(obj.value)
+                 except:
+@@ -971,9 +971,9 @@ class LogoCode:
+     def save_heap(self, obj):
+         """ save FILO to file """
+         if self.tw.running_sugar:
+-            from sugar import profile
+-            from sugar.datastore import datastore
+-            from sugar.activity import activity
++            from sugar3 import profile
++            from sugar3.datastore import datastore
++            from sugar3.activity import activity
+ 
+             # Save JSON-encoded heap to temporary file
+             heap_file = os.path.join(get_path(activity, 'instance'),
+@@ -1134,7 +1134,7 @@ class LogoCode:
+         elif user_path is not None and os.path.exists(user_path):
+             self.filepath = user_path
+         elif self.tw.running_sugar:  # datastore object
+-            from sugar.datastore import datastore
++            from sugar3.datastore import datastore
+             try:
+                 self.dsobject = datastore.get(obj.value)
+             except:
+@@ -1264,7 +1264,7 @@ class LogoCode:
+                     elif text_media_type(self.filepath):
+                         mediatype = 'text'
+             elif self.tw.running_sugar:
+-                from sugar.datastore import datastore
++                from sugar3.datastore import datastore
+                 try:
+                     self.dsobject = datastore.get(obj.value)
+                 except:
+diff --git a/TurtleArt/tautils.py b/TurtleArt/tautils.py
+index d820e23..b103b9c 100644
+--- a/TurtleArt/tautils.py
++++ b/TurtleArt/tautils.py
+@@ -283,7 +283,7 @@ def get_load_name(filefilter, load_save_folder=None):
+     dialog = Gtk.FileChooserDialog(
+         _('Load...'), None,
+         Gtk.FileChooserAction.OPEN, (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+-                                     Gtk.STOCK_OPEN, Gtk.Responsetype.OK))
++                                     Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
+     dialog.set_default_response(Gtk.ResponseType.OK)
+     return do_dialog(dialog, filefilter, load_save_folder)
+ 
+@@ -293,7 +293,7 @@ def get_save_name(filefilter, load_save_folder, save_file_name):
+     dialog = Gtk.FileChooserDialog(
+         _('Save...'), None,
+         Gtk.FileChooserAction.SAVE, (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+-                                     Gtk.STOCK_SAVE, Gtk.Responsetype.OK))
++                                     Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
+     dialog.set_default_response(Gtk.ResponseType.OK)
+     if filefilter in ['.png', '.svg', '.lg', '.py', '.odp']:
+         suffix = filefilter
+diff --git a/TurtleArt/turtleblocks.py b/TurtleArt/turtleblocks.py
+index 0d0d638..69ce513 100755
+--- a/TurtleArt/turtleblocks.py
++++ b/TurtleArt/turtleblocks.py
+@@ -574,7 +574,7 @@ return %s(self)" % (p, P, P)
+     def _show_save_dialog(self, add_cancel=False):
+         ''' Dialog for save project '''
+         dlg = Gtk.MessageDialog(parent=None, type=Gtk.MessageType.INFO,
+-                                buttons=ButtonsType.YES_NO,
++                                buttons=Gtk.ButtonsType.YES_NO,
+                                 message_format=_('You have unsaved work. \
+ Would you like to save before quitting?'))
+         dlg.set_default_response(Gtk.ResponseType.YES)
+diff --git a/collaboration/activity.py b/collaboration/activity.py
+index 107f060..35540ac 100644
+--- a/collaboration/activity.py
++++ b/collaboration/activity.py
+@@ -43,7 +43,7 @@ from gi.repository import GObject
+ CONN_INTERFACE_ACTIVITY_PROPERTIES = 'org.laptop.Telepathy.ActivityProperties'
+ CONN_INTERFACE_BUDDY_INFO = 'org.laptop.Telepathy.BuddyInfo'
+ 
+-_logger = logging.getLogger('sugar.presence.activity')
++_logger = logging.getLogger('sugar3.presence.activity')
+ 
+ 
+ class Activity(GObject.GObject):
+diff --git a/collaboration/connectionmanager.py b/collaboration/connectionmanager.py
+index 985cb39..d1b48ef 100644
+--- a/collaboration/connectionmanager.py
++++ b/collaboration/connectionmanager.py
+@@ -16,7 +16,7 @@
+ # Boston, MA 02111-1307, USA.
+ 
+ """
+-UNSTABLE. It should really be internal to the sugar.presence package.
++UNSTABLE. It should really be internal to the sugar3.presence package.
+ """
+ 
+ from functools import partial
+diff --git a/collaboration/neighborhood.py b/collaboration/neighborhood.py
+index ac0095d..58fa151 100755
+--- a/collaboration/neighborhood.py
++++ b/collaboration/neighborhood.py
+@@ -19,7 +19,7 @@
+ 
+ from functools import partial
+ 
+-import gconf
++from gi.repository import GConf
+ import dbus
+ from dbus import PROPERTIES_IFACE
+ from telepathy.interfaces import (ACCOUNT,
+@@ -723,7 +723,7 @@ class Neighborhood(GObject.GObject):
+ 
+         #print('Still dont have a Salut account, creating one')
+ 
+-        client = gconf.client_get_default()
++        client = GConf.Client.get_default()
+         nick = client.get_string('/desktop/sugar/user/nick')
+ 
+         params = {
+diff --git a/collaboration/presenceservice.py b/collaboration/presenceservice.py
+index 0d3aae1..39682cc 100644
+--- a/collaboration/presenceservice.py
++++ b/collaboration/presenceservice.py
+@@ -29,9 +29,9 @@ from dbus import PROPERTIES_IFACE
+ 
+ """ FIXME ... """
+ try:
+-    from sugar.presence.buddy import Buddy
+-    from sugar.presence.activity import Activity
+-    from sugar.presence.connectionmanager import get_connection_manager
++    from sugar3.presence.buddy import Buddy
++    from sugar3.presence.activity import Activity
++    from sugar3.presence.connectionmanager import get_connection_manager
+ except ImportError:
+     pass
+ 
+@@ -42,7 +42,7 @@ from telepathy.constants import HANDLE_TYPE_CONTACT
+ 
+ from gi.repository import GObject
+ 
+-_logger = logging.getLogger('sugar.presence.presenceservice')
++_logger = logging.getLogger('sugar3.presence.presenceservice')
+ 
+ ACCOUNT_MANAGER_SERVICE = 'org.freedesktop.Telepathy.AccountManager'
+ ACCOUNT_MANAGER_PATH = '/org/freedesktop/Telepathy/AccountManager'
+diff --git a/pysamples/copy_from_heap.py b/pysamples/copy_from_heap.py
+index 06e6242..467358e 100644
+--- a/pysamples/copy_from_heap.py
++++ b/pysamples/copy_from_heap.py
+@@ -10,7 +10,7 @@
+ def myblock(tw, x):  # second argument is ignored
+     ''' Copy heap to clipboard '''
+ 
+-    from gtk import Clipboard
++    from gi.repository import Gtk
+     from TurtleArt.tautils import data_to_string
+ 
+-    Clipboard().set_text(data_to_string(tw.lc.heap))
++    Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD).set_text(data_to_string(tw.lc.heap))
+diff --git a/pysamples/grecord.py b/pysamples/grecord.py
+index 134aae7..b142d87 100644
+--- a/pysamples/grecord.py
++++ b/pysamples/grecord.py
+@@ -20,8 +20,8 @@ def myblock(tw, args):
+ 
+     from TurtleArt.tautils import get_path
+     from TurtleArt.tagplay import play_audio_from_file
+-    from sugar.datastore import datastore
+-    from sugar import profile
++    from sugar3.datastore import datastore
++    from sugar3 import profile
+ 
+     from gettext import gettext as _
+ 
+diff --git a/pysamples/paste_to_heap.py b/pysamples/paste_to_heap.py
+index 3fc2f48..bb540b7 100644
+--- a/pysamples/paste_to_heap.py
++++ b/pysamples/paste_to_heap.py
+@@ -11,10 +11,10 @@
+ def myblock(tw, x):  # ignore second argument
+     ''' Paste from clipboard to heap '''
+ 
+-    from gtk import Clipboard
++    from gi.repository import Gtk
+     from tautils import data_from_string
+ 
+-    text = Clipboard().wait_for_text()
++    text = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD).wait_for_text()
+     if text is not None:
+         for val in data_from_string(text):
+             tw.lc.heap.append(val)
+-- 
+2.11.1
+
