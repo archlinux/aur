@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=oce
-pkgver=0.17.2
+pkgver=0.18
 pkgrel=1
 pkgdesc="Open CASCADE Community Edition: patches/improvements/experiments contributed by users over the official Open CASCADE library."
 url="https://github.com/tpaviot/oce"
@@ -10,7 +10,7 @@ license=('GPLv2.1')
 makedepends=('cmake')
 depends=('intel-tbb' 'gl2ps' 'freeimage' 'tk')
 source=(https://github.com/tpaviot/${pkgname}/archive/OCE-${pkgver}.tar.gz 99_oce.sh 99_oce.conf)
-md5sums=('bf2226be4cd192606af677cf178088e5'
+md5sums=('3f78b67d252449b5eb8155b491bcaabd'
          '606e400a97d9947459e4de2eca65f04c'
          '167a9f5c94a16d7855c3ac99e34a4506')
 
