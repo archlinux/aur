@@ -2,7 +2,7 @@
 
 pkgname=vmware-workstation
 pkgver=12.5.2_4638234
-pkgrel=7
+pkgrel=8
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -90,6 +90,7 @@ package() {
     vmware-workstation/share/* \
     vmware-workstation/doc \
     vmware-workstation/man \
+    vmware-network-editor-ui/share/* \
     "$pkgdir/usr/share"
 
   cp -r \
@@ -97,6 +98,7 @@ package() {
     vmware-vmx/bin/* \
     vmware-vix-core/bin/* \
     vmware-workstation-server/{vmware-hostd,vmware-vim-cmd,vmware-wssc-adminTool} \
+    vmware-network-editor-ui/bin/* \
     "$pkgdir/usr/bin"
 
   cp -r \
@@ -105,6 +107,7 @@ package() {
     vmware-vmx/lib/* \
     vmware-workstation-server/{bin,lib,hostd} \
     vmware-usbarbitrator/bin \
+    vmware-network-editor/lib \
     "$pkgdir/usr/lib/vmware"
 
   cp -r \
@@ -192,6 +195,7 @@ package() {
   done
 
   sed -i 's,@@BINARY@@,/usr/bin/vmware,' "$pkgdir/usr/share/applications/vmware-workstation.desktop"
+  sed -i 's,@@BINARY@@,/usr/bin/vmware-netcfg,' "$pkgdir/usr/share/applications/vmware-netcfg.desktop"
   sed -i 's,@@VMWARE_INSTALLER@@,/usr/bin/vmware,' "$pkgdir/usr/share/applications/vmware-workstation.desktop"
 
   sed -i 's,@@AUTHD_PORT@@,902,' "$pkgdir/usr/lib/vmware/hostd/docroot/client/clients.xml"
