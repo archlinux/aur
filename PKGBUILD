@@ -1,6 +1,6 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict [at] GMail [dot] com>
-# Contributor : Tobias Powalowski <tpowa [at] archlinux [dot] org>
-# Contributor : Ronald van Haren <ronald [at] archlinux [dot] org>
+# Contributor: Tobias Powalowski <tpowa [at] archlinux [dot] org>
+# Contributor: Ronald van Haren <ronald [at] archlinux [dot] org>
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 ## "1" to enable IA32-EFI build in Arch x86_64, "0" to disable
@@ -25,15 +25,16 @@ arch=('x86_64' 'i686')
 url="https://www.gnu.org/software/grub/"
 license=('GPL3')
 depends=('sh' 'xz' 'gettext' 'device-mapper')
-makedepends=('git' 'rsync' 'xz' 'freetype2' 'ttf-dejavu' 'python' 'autogen'
-             'texinfo' 'help2man' 'gettext' 'device-mapper' 'fuse2')
-optdepends=('freetype2: For grub-mkfont usage'
-            'fuse2: For grub-mount usage'
-            'dosfstools: For grub-mkrescue FAT FS and EFI support'
+makedepends=('autogen' 'device-mapper' 'freetype2' 'fuse2' 'gettext' 'git'
+             'help2man' 'python' 'rsync' 'ttf-dejavu' 'texinfo' 'xz')
+optdepends=('dosfstools: For grub-mkrescue FAT FS and EFI support'
             'efibootmgr: For grub-install EFI support'
+            'freetype2: For grub-mkfont usage'
+            'fuse2: For grub-mount usage'
             'libisoburn: Provides xorriso for generating grub rescue iso using grub-mkrescue'
+            'mtools: For grub-mkrescue FAT FS support'
             'os-prober: To detect other OSes when generating grub.cfg in BIOS systems'
-            'mtools: For grub-mkrescue FAT FS support')
+)
 
 if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
     makedepends+=('libusbx' 'sdl')
