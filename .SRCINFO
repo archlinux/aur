@@ -1,7 +1,7 @@
 pkgbase = wine-git
 	pkgdesc = A compatibility layer for running Windows programs. GIT version.
-	pkgver = 1.9.24.r105.g1d3b944
-	pkgrel = 4
+	pkgver = 2.1.r285.gd00f7315e0
+	pkgrel = 1
 	url = http://www.winehq.com
 	arch = i686
 	arch = x86_64
@@ -119,9 +119,9 @@ pkgbase = wine-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = bin32-wine=1.9.24.r105.g1d3b944
-	provides = wine=1.9.24.r105.g1d3b944
-	provides = wine-wow64=1.9.24.r105.g1d3b944
+	provides = bin32-wine=2.1.r285.gd00f7315e0
+	provides = wine=2.1.r285.gd00f7315e0
+	provides = wine-wow64=2.1.r285.gd00f7315e0
 	conflicts = bin32-wine
 	conflicts = wine
 	conflicts = wine-wow64
@@ -129,8 +129,10 @@ pkgbase = wine-git
 	options = staticlibs
 	source = wine-git::git://source.winehq.org/git/wine.git
 	source = 30-win32-aliases.conf
+	source = 0001-winhlp32-Workaround-a-bug-in-Flex.patch
 	md5sums = SKIP
 	md5sums = 1ff4e467f59409272088d92173a0f801
+	md5sums = 224fde0d5ed5160548db1d70bf9abb20
 
 pkgname = wine-git
 	depends = fontconfig

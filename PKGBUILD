@@ -4,17 +4,19 @@
 
 pkgname=wine-git
 _gitname="wine"
-pkgver=1.9.24.r105.g1d3b944
-pkgrel=4
+pkgver=2.1.r285.gd00f7315e0
+pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs. GIT version."
 url="http://www.winehq.com"
 arch=('i686' 'x86_64')
 options=(staticlibs)
 license=(LGPL)
 source=('wine-git::git://source.winehq.org/git/wine.git'
-        '30-win32-aliases.conf')
+        '30-win32-aliases.conf'
+	'0001-winhlp32-Workaround-a-bug-in-Flex.patch')
 md5sums=('SKIP'
-         '1ff4e467f59409272088d92173a0f801')
+         '1ff4e467f59409272088d92173a0f801'
+	 '224fde0d5ed5160548db1d70bf9abb20')
 
 _depends=(
   fontconfig      lib32-fontconfig
@@ -105,6 +107,9 @@ pkgver() {
 prepare() {
   # Allow ccache to work
   cd "$srcdir"
+  
+  # https://bugs.winehq.org/show_bug.cgi?id=42132
+  (cd $pkgname; patch -p1 -i ../0001-winhlp32-Workaround-a-bug-in-Flex.patch)
 
   sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i $pkgname/configure*
 
