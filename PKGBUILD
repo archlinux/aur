@@ -1,9 +1,9 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 # Contributor: Giulio Guzzinati <guzzinati.giulio at gmail>
 pkgname=imagej
-pkgver=1.50h
-_pkgver=149
-pkgrel=5
+pkgver=1.50
+_pkgver=${pkgver/./}
+pkgrel=6
 epoch=2
 pkgdesc="Image manipulation software for scientists"
 arch=('any')
@@ -12,14 +12,12 @@ license=('Public Domain')
 depends=('java-runtime')
 makedepends=('unzip')
 optdepends=('java-environment-common')
-source=("http://rsbweb.nih.gov/ij/download/zips/ij$_pkgver.zip"
-        "http://imagej.nih.gov/ij/upgrade/ij.jar"
+source=("http://wsr.imagej.net/distros/cross-platform/ij$_pkgver.zip"
         "imagej.sh"
         "imagej.desktop"
         "microscope.xpm")
 noextract=("ij$_pkgver.zip")
-md5sums=('a0998c0e6aec078a8f9681f5088c41f2'
-         '6309ce53eed93f22452d6f8ba75cda91'
+md5sums=('a2e52e97b1c683cb4f614b4d570fb972'
          '7dc3fd02120f699204b3d85a7e383082'
          '9d60878b6adad0e1895ce875bf299147'
          'e7a7cef1b44ad3a8752ba63885fd88fb')
@@ -31,7 +29,7 @@ package() {
 
     mkdir -p "$pkgdir"/usr/share
     mv ImageJ "$pkgdir"/usr/share/imagej
-    install -m644 "$srcdir"/ij.jar "$pkgdir"/usr/share/imagej/ij.jar
+#    install -m644 "$srcdir"/ij.jar "$pkgdir"/usr/share/imagej/ij.jar
 
     find "$pkgdir" -type d -exec chmod 755 {} \; -o -exec chmod 644 {} \;
 
