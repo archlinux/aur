@@ -8,7 +8,7 @@ arch=('any')
 url="https://picard.musicbrainz.org/plugins/"
 license=('GPL')
 depends=('picard')
-conflicts=('picard-git<=1.3')
+conflicts=("picard-git<=${_pkgver}")
 source=(git+https://github.com/metabrainz/picard-plugins.git)
 md5sums=('SKIP')
 
