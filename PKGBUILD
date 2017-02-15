@@ -1,50 +1,24 @@
 # Maintainer: Bjoern Franke <bjo@nord-west.org>
 
 pkgname=xnconvert
-pkgver=1.72
+pkgver=1.73
 pkgrel=1
 pkgdesc="A cross-platform batch image-converter and resizer with a powerful and ease of use experience."
 url="http://www.xnview.com/en/xnconvert/"
-
 arch=('x86_64' 'i686')
 license=('custom')
-depends=('glib2' 'expat' 'libpng12' 'desktop-file-utils')
-
-install='xnconvert.install'
-
-source=(${pkgname}-${pkgver}.tgz::"http://download.xnview.com/XnConvert-linux.tgz")
-md5sums=('c02bde2c1a8cf6ba93d4e4ec14e1b7f7')
-
-if [ "$CARCH" = 'x86_64' ]; then
-  source=(${pkgname}-${pkgver}.tgz::"http://download.xnview.com/XnConvert-linux-x64.tgz")
-md5sums=('00255779243321700f78681d277f7c13')
-
-fi
-
+depends=('glib2' 'expat' 'libpng12')
+source=('xnconvert.desktop')
+source_i686=("http://download.xnview.com/XnConvert-linux.tgz")
+source_x86_64=("http://download.xnview.com/XnConvert-linux-x64.tgz")
+sha256sums=('b163bca7039f6877239535b88b9aacb6fde78573dc141a52addb99cb85b35f82')
+sha256sums_x86_64=('fbaf9e284de0973b0338f88ecda525eb5ec4b02f7b6d1305f4dc472aad2778ad')
+sha256sums_i686=('4a75dadb22020ed58a7e08e9d522fc3aa8e9f52bd7a4e0bc384774d685d8b01e')
 
 package() {
-  install -d -m755 "${pkgdir}/opt/${pkgname}"
-  install -d -m755 "${pkgdir}/usr/bin"
-  install -d -m755 "${pkgdir}/usr/share/applications"
-
-  cp -R "${srcdir}/XnConvert"/* "${pkgdir}/opt/${pkgname}"
-  ln -s "/opt/${pkgname}/xnconvert.sh" "${pkgdir}/usr/bin/${pkgname}"
-
-  cat <<-_EOF_ > "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-[Desktop Entry]
-Encoding=UTF-8
-Terminal=0
-Exec=${pkgname}
-Icon=/opt/${pkgname}/xnconvert.png
-Type=Application
-Categories=Graphics;
-StartupNotify=true
-Name=XnConvert
-GenericName=XnConvert
-MimeType=image/bmp;image/gif;image/x-portable-bitmap;image/x-portable-pixmap;image/x-psd;image/x-tga;image/x-xbitmap;image/tiff;image/jpeg;image/x-psd;image/png;image/x-icon;image/x-xpixmap;image/svg+xml;
-_EOF_
-
-  install -D -m644 "${srcdir}/XnConvert/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -d "$pkgdir"/{opt/xnconvert,usr/bin}
+  cp -R XnConvert/* "$pkgdir"/opt/xnconvert
+  ln -s /opt/xnconvert/xnconvert.sh "$pkgdir"/usr/bin/xnconvert
+  install -Dm644 xnconvert.desktop "$pkgdir"/usr/share/applications/xnconvert.desktop
+  install -Dm644 XnConvert/license.txt "$pkgdir"/usr/share/licenses/$pkgname/license.txt
 }
-
-# vim:set ts=2 sw=2 et:

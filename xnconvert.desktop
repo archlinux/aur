@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Terminal=0
+Exec=xnconvert
+Icon=/opt/xnconvert/xnconvert.png
+Type=Application
+Categories=Graphics;
+StartupNotify=true
+Name=XnConvert
+GenericName=XnConvert
+MimeType=image/bmp;image/gif;image/x-portable-bitmap;image/x-portable-pixmap;image/x-psd;image/x-tga;image/x-xbitmap;image/tiff;image/jpeg;image/x-psd;image/png;image/x-icon;image/x-xpixmap;image/svg+xml;
