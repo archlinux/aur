@@ -1,0 +1,12 @@
+pkgbase = ctffind4
+	pkgdesc = Find CTFs of electron micrographs
+	pkgver = 4.1.5
+	pkgrel = 1
+	url = http://grigoriefflab.janelia.org/ctf
+	arch = x86_64
+	license = GPL
+	source = http://grigoriefflab.janelia.org/sites/all/modules/pubdnldcnt/pubdnldcnt.php?file=http://grigoriefflab.janelia.org/sites/default/files/ctffind-4.1.5-linux64.tar.gz
+	md5sums = 4e5ffbe72097819d12945f6392e22dcc
+
+pkgname = ctffind4
+
