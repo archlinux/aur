@@ -24,7 +24,7 @@ build() {
   cd "${pkgname}-${pkgver}"
 
   export CFLAGS+=" -DLTM_DESC -DGMP_DESC"
-  export EXTRALIBS="-ltommath -lgmp"
+  export EXTRALIBS="${LDFLAGS} -ltommath -lgmp"
   make -f makefile.shared
 }
 
