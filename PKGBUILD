@@ -201,16 +201,13 @@ package_llvm-svn() {
 
     # The runtime libraries get installed in llvm-libs-svn
     rm -f "${pkgdir}"/usr/lib/lib{LLVM,LTO}{,-*}.so{,.*}
-    mv -f "${pkgdir}"/usr/lib/{BugpointPasses,LLVMgold}.so "${srcdir}/"
+    mv -f "${pkgdir}"/usr/lib/{BugpointPasses,LLVMgold,LLVMHello}.so "${srcdir}/"
 
     # Clang libraries and OCaml bindings go to separate packages
     rm -rf "${srcdir}"/{clang,ocaml.{doc,lib}}
     mv "${pkgdir}/usr/lib/clang" "${srcdir}/clang"
     mv "${pkgdir}/usr/lib/ocaml" "${srcdir}/ocaml.lib"
     mv "${pkgdir}/usr/share/doc/llvm/ocaml-html" "${srcdir}/ocaml.doc"
-
-    # Get rid of example Hello transformation
-    rm -f "${pkgdir}"/usr/lib/*LLVMHello.*
 
     if [[ "${CARCH}" == "x86_64" ]]; then
         # Needed for multilib (https://bugs.archlinux.org/task/29951)
@@ -243,7 +240,7 @@ package_llvm-libs-svn() {
     make DESTDIR="${pkgdir}" install-{LLVM,LTO}
 
     # Moved from the llvm-svn package here
-    mv "${srcdir}"/{BugpointPasses,LLVMgold}.so "${pkgdir}/usr/lib/"
+    mv "${srcdir}"/{BugpointPasses,LLVMgold,LLVMHello}.so "${pkgdir}/usr/lib/"
 
     # Ref: http://llvm.org/docs/GoldPlugin.html
     install -m755 -d "${pkgdir}/usr/lib/bfd-plugins"
