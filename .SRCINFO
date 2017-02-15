@@ -8,6 +8,7 @@ pkgbase = babe-qt-git
 	license = GPL3
 	makedepends = extra-cmake-modules
 	makedepends = git
+	makedepends = python
 	depends = hicolor-icon-theme
 	depends = knotifications
 	depends = ki18n
