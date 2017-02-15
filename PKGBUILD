@@ -30,7 +30,7 @@
 
 pkgname=('gcc-git' 'gcc-libs-git' 'gcc-fortran-git' 'gcc-objc-git' 'gcc-ada-git' 'gcc-go-git')
 _pkgname=gcc
-pkgver=7.0.1.r152299.a718e363671
+pkgver=7.0.1.r152324.57eb019f9be
 _islver=0.18
 pkgrel=1
 pkgdesc="The GNU Compiler Collection (developmental version)"
