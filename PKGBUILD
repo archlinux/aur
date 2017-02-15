@@ -1,8 +1,8 @@
 # Maintainer: Emeric <emeric.grange@gmail.com>
 # Created: 12/12/2016
 pkgname=autopanovideopro-beta
-pkgver=2.6.0.301
-pkgrel=2
+pkgver=2.6.0.400
+pkgrel=1
 pkgdesc="Stitch and create 360° videos automatically with Autopano Video Pro BETA (trial version)."
 arch=('x86_64')
 url='http://www.kolor.com/autopano-video/'
@@ -17,15 +17,15 @@ source=("$_archivename::http://download.kolor.com/avp/beta/linux64tarxz/${pkgver
         "$pkgname"
         "$pkgname.desktop")
 
-sha256sums=('e44cd045d6f80474a3406b938149386d6df45c9673ac6061ac96a4ba35f392d6'
-            '01a9af96991be9060b249c28b7d3c95a0e0a496aee8d2b484558a26c0b64f368'
-            'a78bd15fa99766d63f4673b15c65546677eed8b982840fd5b7aa21f5342d044c')
+sha256sums=('398d8a2e5d87453d9629f4ae7a639b7a39900927b882d25ed5effd5ac30fb62f'
+            '7edfb228537cf3af07c1c622b49b671470d842447d59450e56dc151c7beb3454'
+            'fa33f467c326970ea9cbc45c697b1230adb3f24f5d6f50aca52e1faad74381e5')
 
 package() {
   cd "$srcdir/AutopanoVideoPro"
-  install -dm755 $pkgdir/{opt/,usr/share/licenses/$pkgname/}
-  cp -r $srcdir/AutopanoVideoPro $pkgdir/opt/$pkgname
-  #mv $pkgdir/opt/$pkgname/Copyright $pkgdir/usr/share/licenses/$pkgname/
+  install -dm755 $pkgdir/{opt/kolor,usr/share/licenses/$pkgname/}
+  cp -r $srcdir/AutopanoVideoPro $pkgdir/opt/kolor/$pkgname
+  #mv $pkgdir/opt/kolor/$pkgname/Copyright $pkgdir/usr/share/licenses/$pkgname/
   install -Dm755 $srcdir/$pkgname $pkgdir/usr/bin/$pkgname
   install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }

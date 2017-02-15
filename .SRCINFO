@@ -1,7 +1,7 @@
 pkgbase = autopanovideopro-beta
 	pkgdesc = Stitch and create 360° videos automatically with Autopano Video Pro BETA (trial version).
-	pkgver = 2.6.0.301
-	pkgrel = 2
+	pkgver = 2.6.0.400
+	pkgrel = 1
 	url = http://www.kolor.com/autopano-video/
 	install = autopanovideopro-beta.install
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = autopanovideopro-beta
 	optdepends = autopanogiga: Edit control points manually
 	optdepends = gopro-vr-player: 360 video player
 	provides = autopanovideopro
-	source = AutopanoVideoPro_Linux64_2.6.0.301.tar.xz::http://download.kolor.com/avp/beta/linux64tarxz/2.6.0.301
+	source = AutopanoVideoPro_Linux64_2.6.0.400.tar.xz::http://download.kolor.com/avp/beta/linux64tarxz/2.6.0.400
 	source = autopanovideopro-beta
 	source = autopanovideopro-beta.desktop
-	sha256sums = e44cd045d6f80474a3406b938149386d6df45c9673ac6061ac96a4ba35f392d6
+	sha256sums = 398d8a2e5d87453d9629f4ae7a639b7a39900927b882d25ed5effd5ac30fb62f
 	sha256sums = 01a9af96991be9060b249c28b7d3c95a0e0a496aee8d2b484558a26c0b64f368
 	sha256sums = a78bd15fa99766d63f4673b15c65546677eed8b982840fd5b7aa21f5342d044c
 

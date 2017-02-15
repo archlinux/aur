@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd /opt/autopanovideopro-beta/
+cd /opt/kolor/autopanovideopro-beta/
 ./AutopanoVideoPro.sh $@
