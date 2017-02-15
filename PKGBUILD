@@ -1,8 +1,8 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 
 pkgname=private-internet-access-vpn
-pkgver=3.3.1
-pkgrel=2
+pkgver=3.3.2
+pkgrel=1
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -13,9 +13,9 @@ optdepends=('networkmanager: Enables PIA for Network Manager'
             'connman: Enables PIA for Connman'
             'openvpn: Allows running configurations from command-line')
 			
-sha256sums=('c7c21e690a836fb42adae0addce45ea97a25d12ffd03d9fde04392933c33f36d'
-            '1f57eb735141b767f19d653ffa434ffa2d1108c2a5b74fe61c72542056360c77'
-            '9d28e1883d5f2e1b017789c051c6377b1e97ed86f72f84f3ca33b15a909947c7'
+sha256sums=('07639745ad1f790e7aaebfadfa4dd7a4b6eae176cc607803e0971d1411cfdec3'
+            '1ac34e3a4ade51dd726f1de8697f280f78433e1f3cd9c888751383dfdf7605b4'
+            '4897c3a8dd988e87c4c53db2dd1522a0a7112d58a0357425c09d1ce5f9f5a1b5'
             '4322a2a4bc3e206c6ab7e1df87a8805032b76c177c1ed9dd3501260ed32ccb30'
             '797dbdb6e3aadc86f97262e26d61cf4847caf85dda4b7a97cac59088cb912b27'
             '246fc4dc3218f56b4c70014df6801b10fc2a573d6545962b7fce05f16908c54e'
