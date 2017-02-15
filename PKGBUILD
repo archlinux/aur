@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=heekscad-git
 pkgver=1449.008d7b6f
-pkgrel=2
+pkgrel=3
 pkgdesc="HeeksCNC is an open source, 3D CAD/CAM software"
 arch=('x86_64')
 url="http://heeks.net"
@@ -17,11 +17,11 @@ pkgver() {
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-#prepare() {
-#  sed -i 's,#find OCE or OpenCASCADE,set( CMAKE_CXX_FLAGS "-std=c++11" )\n#find OCE or OpenCASCADE,g' "${srcdir}/heekscad/CMakeLists.txt"
-#
-#  sed -i 's,#find OCE or OpenCASCADE,set( CMAKE_CXX_FLAGS "-std=c++11" )\n#find OCE or OpenCASCADE,g' "${srcdir}/heekscad/src/CMakeLists.txt"
-#}
+prepare() {
+  sed -i 's,#find OCE or OpenCASCADE,set( CMAKE_CXX_FLAGS "-std=c++11" )\n#find OCE or OpenCASCADE,g' "${srcdir}/heekscad/CMakeLists.txt"
+
+  sed -i 's,#find OCE or OpenCASCADE,set( CMAKE_CXX_FLAGS "-std=c++11" )\n#find OCE or OpenCASCADE,g' "${srcdir}/heekscad/src/CMakeLists.txt"
+}
 
 build() {
   msg "Starting build..."
