@@ -1,7 +1,7 @@
 From 51834d5fbbf28ff6570630d35de3518b9bf2e87c Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
 Date: Sun, 23 Aug 2015 00:48:57 +0200
-Subject: [PATCH] Port to libpanel-applet 5 and gstreamer 1.0
+Subject: [PATCH 1/2] Port to libpanel-applet 5 and gstreamer 1.0
 
 ---
  configure.ac   |  6 +++---
@@ -110,5 +110,5 @@ index 89c5728..f6c39ed 100644
    panel_applet_set_flags(applet, PANEL_APPLET_EXPAND_MINOR);
    gtk_box_pack_start(GTK_BOX(hbox), state->label, FALSE, FALSE, 0);
 -- 
-2.5.0
+2.11.1
 
