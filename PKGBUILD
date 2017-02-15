@@ -1,19 +1,20 @@
 pkgname=perl-autodia
 pkgver=2.14
-pkgrel=1
+pkgrel=2
 _author="T/TE/TEEJAY"
 _perlmod="Autodia"
-pkgdesc="Autodia.pm - The configuration and Utility perl module for AutoDia"
+pkgdesc="The configuration and Utility perl module for AutoDia"
 arch=('any')
-url="http://search.cpan.org/dist/perl-autodia/"
+url="http://search.cpan.org/dist/Autodia/"
 license=('GPL' 'PerlArtistic')
-makedepends=(perl-xml-simple perl-template-toolkit perl-appconfig)
+makedepends=(perl-xml-simple perl-template-toolkit)
 optdepends=(
 'perl-graphviz: use graphviz to produce dot, gif, jpg or png output'
 'perl-springgraph: use springgraph to produce png output'
 'perl-vcg: use vcg to output postscript'
 )
 provides=(
+autodia
 perl-autodia-diagram
 perl-autodia-diagram-class
 perl-autodia-diagram-component
