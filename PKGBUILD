@@ -2,7 +2,7 @@
 
 pkgname=vmware-workstation
 pkgver=12.5.2_4638234
-pkgrel=8
+pkgrel=9
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -151,7 +151,8 @@ package() {
     "$pkgdir/usr/bin"/* \
     "$pkgdir/usr/lib/vmware/bin"/* \
     "$pkgdir/usr/lib/vmware/setup/vmware-config" \
-    "$pkgdir/usr/lib/vmware/lib/wrapper-gtk24.sh"
+    "$pkgdir/usr/lib/vmware/lib"/{wrapper-gtk24.sh,libgksu2.so.0/gksu-run-helper}
+
 
   chmod -R 600 "$pkgdir/etc/vmware/ssl"
   chmod +s "$pkgdir/usr/lib/vmware/bin/vmware-vmx"
