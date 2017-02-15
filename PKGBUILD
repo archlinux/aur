@@ -5,12 +5,12 @@
 
 pkgname=lilypond-git
 pkgver=2.19.55.1.5.g311355be32
-pkgrel=1
+pkgrel=2
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
 url="http://lilypond.org/"
 license=('GPL')
-depends=('guile=2.0.13' 'pango' 'python2')
+depends=('guile>=2.0.13' 'pango' 'python2')
 makedepends=('fontforge' 'git' 'gsfonts' 't1utils' 'ghostscript'
 	     'dblatex' 'texlive-langcyrillic' 'texi2html' 'netpbm')
 optdepends=('imagemagick: building HTML documentation'
