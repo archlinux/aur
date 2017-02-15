@@ -1,0 +1,13 @@
+pkgbase = sugar-activity-paint
+	pkgdesc = Sugar activity to create paintings or drawings
+	pkgver = 65
+	pkgrel = 1
+	url = https://wiki.sugarlabs.org/go/Activities/Paint
+	arch = any
+	license = GPL
+	depends = sugar-toolkit-gtk3
+	source = https://download.sugarlabs.org/sources/honey/Paint/Paint-65.tar.bz2
+	sha256sums = 9b53cf296fac1bfff691d2d2ec8f5db43771e41b9e3dffaf346f99f424132c67
+
+pkgname = sugar-activity-paint
+
