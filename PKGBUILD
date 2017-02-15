@@ -3,13 +3,12 @@
 
 pkgname=xfhell
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Ham Radio - GTK+ app - de/en-codes Hellschreiber signals."
 arch=('i686' 'x86_64')
 url="http://www.qsl.net/5b4az/pkg/xfhell/xfhell.html"
 license=(GPL3)
-depends=('gtk2' 'alsa-lib')
-optdepends=('hamradio-menus: XDG compliant menuing')
+depends=('gtk2' 'alsa-lib' 'hamradio-menus')
 makedepends=('autoconf' 'automake' 'intltool' 'pkg-config')
 # 'imagemagick: used IF you want to convert icons/images')
 options=('!emptydirs')
