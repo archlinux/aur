@@ -1,6 +1,8 @@
 #!/bin/sh
-mkdir -p $HOME/pydxcluster
+mkdir -p $HOME/pydxcluster/backup
 cd $HOME/pydxcluster
-cp -a pydxcluster.cfg pydxcluster.cfg.backup 
+cp -a *.cfg *.col backup/.
+cp -an backup/pydxcluster.cfg backup/pydxcluster.cfg.backup 
 cp -ua /usr/share/pydxcluster/* .
+cp -a backup/* .
 exec python2 pydxcluster.py
