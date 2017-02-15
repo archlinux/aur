@@ -24,3 +24,27 @@ pkgbase = translate-shell
 
 pkgname = translate-shell
 
+pkgbase = translate-shell
+	pkgdesc = Google Translate to serve as a command-line tool.
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = http://www.soimort.org/translate-shell
+	install = translate-shell.install
+	arch = any
+	license = Public Domain
+	makedepends = git
+	depends = gawk>=4.0
+	optdepends = zsh: for interpreting the wrapper script
+	optdepends = fribidi: for displaying right-to-left (RTL) languages
+	optdepends = mplayer: for the Text-to-Speech functionality
+	optdepends = mpv: for the Text-to-Speech functionality
+	optdepends = mpg123: for the Text-to-Speech functionality
+	optdepends = espeak: for the Text-to-Speech functionality
+	optdepends = rlwrap: needed for readline-style editing and history in the interactive mode
+	optdepends = emacs: for using the Emacs interface (with the -E flag)
+	source = https://github.com/soimort/translate-shell/archive/v0.9.5.tar.gz
+	md5sums = 90e2bf61074ff3c8079d72898d553046
+	sha256sums = 74bd84f48b0b2887949d954be4530c34faddf8605f936668f8e904bb3ab5712a
+
+pkgname = translate-shell
+
