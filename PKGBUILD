@@ -4,8 +4,8 @@
 
 pkgname=unixcw-git
 _pkgname=unixcw
-pkgver=3.5.0.r17.g0306399
-#.r17.g0306399
+pkgver=3.5.1.r0.g0306399
+#.r0.g0306399
 pkgrel=1
 pkgdesc="CW tutor & generator - program suite - Ham Radio - GIT version"
 arch=('i686' 'x86_64')
@@ -22,8 +22,9 @@ source=("$_pkgname::git://git.code.sf.net/p/$_pkgname/code#branch=master"
 	$_pkgname.png)
 
 pkgver() {
-	cd $_pkgname
-	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd $srcdir/$_pkgname
+
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

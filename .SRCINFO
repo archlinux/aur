@@ -1,6 +1,6 @@
 pkgbase = unixcw-git
 	pkgdesc = CW tutor & generator - program suite - Ham Radio - GIT version
-	pkgver = 3.5.0.r17.g0306399
+	pkgver = 3.5.1.r0.g0306399
 	pkgrel = 1
 	url = http://unixcw.sourceforge.net
 	arch = i686
