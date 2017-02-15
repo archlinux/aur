@@ -1,9 +1,12 @@
 _pypiname="delegator.py"
-pkgbase="python-$_pypiname"
-pkgname=("python-$_pypiname" "python2-$_pypiname")
+pkgbase="python-delegator"
+pkgname=("python-delegator" "python2-delegator")
+pkgdesc="Subprocesses for Humans 2.0"
+url="https://github.com/kennethreitz/delegator.py"
 pkgver=0.0.8
 pkgrel=1
 source=("https://github.com/kennethreitz/delegator.py/archive/v$pkgver.tar.gz")
+makedepends=('python-setuptools' 'python2-setuptools')
 license=("MIT")
 arch=("any")
 
@@ -14,13 +17,13 @@ build() {
     cp -r "$_pypiname-$pkgver" "$_pypiname-$pkgver-py2"
 }
 
-package_python-delegator.py() {
+package_python-delegator() {
     depends=("python" "python-pexpect")
     cd "$srcdir/$_pypiname-$pkgver"
     python setup.py install --prefix="/usr" --root="$pkgdir" -O1
 }
 
-package_python2-delegator.py() {
+package_python2-delegator() {
     depends=("python2" "python2-pexpect")
     cd "$srcdir/$_pypiname-$pkgver-py2"
     python2 setup.py install --prefix="/usr" --root="$pkgdir" -O1
