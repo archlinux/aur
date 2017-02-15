@@ -1,7 +1,7 @@
 pkgbase = vice-gtkglext
 	pkgdesc = A Versatile Commodore Emulator , with enabled gtkglext
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://vice-emu.sourceforge.net
 	install = vice-gtkglext.install
 	arch = i686

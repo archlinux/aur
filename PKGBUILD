@@ -3,7 +3,7 @@
 pkgname=vice-gtkglext
 _pkgname=vice
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Versatile Commodore Emulator , with enabled gtkglext"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -28,7 +28,7 @@ prepare() {
 build() {
   cd ${_pkgname}-${pkgver}
   ./configure --prefix=/usr --libdir=/usr/lib --enable-gnomeui \
-    --enable-ethernet
+    --enable-ethernet --disable-parsid
   make
 }
 
