@@ -2,7 +2,7 @@
 # * No namcap warnings or errors
 
 pkgname=dapl
-pkgver=2.1.9
+pkgver=2.1.10
 pkgrel=1
 pkgdesc='OpenFabrics Alliance direct access transport libraries for InfiniBand'
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ url='https://www.openfabrics.org/downloads/dapl/README.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('librdmacm')
 source=("https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('800359e1a9508a2b3005327de654fcc6')
+md5sums=('50df18f8011a37da88f4886514b9dd96')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
