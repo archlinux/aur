@@ -83,7 +83,7 @@ pkgname = xorg-server-git
 	provides = xorg-server
 	provides = x-server
 	conflicts = xorg-server
-	conflicts = nvidia-utils<=331.20
+	conflicts = nvidia-utils<375.26-3
 	conflicts = glamor-egl
 	conflicts = xf86-video-modesetting
 	replaces = glamor-egl

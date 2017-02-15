@@ -118,7 +118,7 @@ package_xorg-server-git() {
     provides+=("X-ABI-${VAR}_VERSION=$(grep -Po "${VAR}_V.*\(\K[^)]*" xserver/hw/xfree86/common/xf86Module.h |& sed 's/, /./')")
   done
   provides+=('xorg-server' 'x-server')
-  conflicts=('xorg-server' 'nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting')
+  conflicts=('xorg-server' 'nvidia-utils<375.26-3' 'glamor-egl' 'xf86-video-modesetting')
   replaces=('glamor-egl' 'xf86-video-modesetting')
   install=xorg-server-git.install
 
