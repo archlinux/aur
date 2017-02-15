@@ -13,7 +13,7 @@ makedepends=()
 provides=('plumed')
 #install=$pkgname.install
 source=( https://github.com/plumed/plumed2/archive/v${pkgver}.tar.gz)
-sha1sums=('4e79efea1ee8efb81f08d6a3e3ce8f6ce5b364fa')
+sha1sums=('e25c123cb9158443d341d92ebef7057c1d425f35')
 #options=(!buildflags)
 
 build() {
