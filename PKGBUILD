@@ -12,9 +12,11 @@
 # Upstream URL: https://github.com/atom/atom
 
 pkgname=atom-editor-beta-bin-mirror
-pkgver=1.15.0.beta2
+_pkgver=1.15.0
+_beta=2
+pkgver=${_pkgver}.beta${_beta}
 pkgver() {
-  curl -sS https://npm.taobao.org/mirrors/atom | grep -Eo '>.*?beta([0-9]+)' | sort -V | tail -n 1 | sed -e 's/>//' -e 's/-/./'
+  curl -sS https://npm.taobao.org/mirrors/atom | grep -Eo '>.*?beta'+${_beta} | sort -V | tail -n 1 | sed -e 's/>//' -e 's/-/./'
 }
 get_version() {
    printf "%s" $(pkgver) | sed -e 's/\(.*\)\.beta/\1-beta/'
