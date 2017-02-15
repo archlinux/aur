@@ -13,6 +13,13 @@ depends=('libtommath' 'gmp')
 source=("https://github.com/libtom/${pkgname}/releases/download/${pkgver}/${pkgname#libtom}-${pkgver}.tar.bz2")
 sha256sums=('e33b47d77a495091c8703175a25c8228aff043140b2554c08a3c3cd71f79d116')
 
+prepare() {
+  cd "${pkgname}-${pkgver}"
+
+  # Fix permissions on header files
+  sed -i -e '/$(HEADERS)/s/install/\0 -m 0644/' makefile.shared
+}
+
 build() {
   cd "${pkgname}-${pkgver}"
 
@@ -24,5 +31,5 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
 
-  make -f makefile.shared DESTDIR="${pkgdir}" install
+  make -f makefile.shared DESTDIR="${pkgdir}" INSTALL_GROUP="root" install
 }
