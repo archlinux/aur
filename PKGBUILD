@@ -5,7 +5,7 @@
 pkgname=nvidia-304xx-ck
 pkgver=304.134
 _extramodules=extramodules-4.9-ck
-pkgrel=5
+pkgrel=6
 _pkgdesc="NVIDIA drivers for linux-ck, 304xx legacy branch."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
