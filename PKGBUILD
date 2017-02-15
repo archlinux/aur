@@ -4,12 +4,12 @@
 pkgname=pacmanager-git
 _pkgname=${pkgname%-git}
 pkgver=4.5.5.8
-pkgrel=9
+pkgrel=10
 arch=('any')
 license=('GPL3')
 pkgdesc="Perl Auto Connector PAC Manager. GIT version with fixed FreeRDP interface."
 url="https://github.com/perseo22/pacmanager"
-depends=('gconf-perl' 'glade-perl' 'openssh' 'perl-crypt-blowfish' 'perl-gnome2-vte' 'perl-expect' 'perl-crypt-rijndael' 'perl-gtk2-ex-simple-list' 'perl-io-stty' 'perl-io-tty' 'perl-net-arp' 'perl-yaml' 'perl-crypt-cbc' 'perl-gtk2-unique' 'perl-socket6' 'uuid')
+depends=('perl-gnome2-gconf' 'glade-perl' 'openssh' 'perl-crypt-blowfish' 'perl-gnome2-vte' 'perl-expect' 'perl-crypt-rijndael' 'perl-gtk2-ex-simple-list' 'perl-io-stty' 'perl-io-tty' 'perl-net-arp' 'perl-yaml' 'perl-crypt-cbc' 'perl-gtk2-unique' 'perl-socket6' 'uuid')
 makedepends=('git')
 conflicts=(pacmanager-bin)
 source=("git+https://github.com/perseo22/pacmanager.git"

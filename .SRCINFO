@@ -1,12 +1,12 @@
 pkgbase = pacmanager-git
 	pkgdesc = Perl Auto Connector PAC Manager. GIT version with fixed FreeRDP interface.
 	pkgver = 4.5.5.8
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/perseo22/pacmanager
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = gconf-perl
+	depends = perl-gnome2-gconf
 	depends = glade-perl
 	depends = openssh
 	depends = perl-crypt-blowfish
