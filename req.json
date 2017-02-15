@@ -1,0 +1,14 @@
+{
+    "country": "us",
+    "platform": "Linux",
+    "product": {
+        "name": "Desktop Video SDK"
+    },
+    "firstname": "Arch",
+    "lastname": "Linux",
+    "email": "someone@archlinux.org",
+    "phone": "202-555-0194",
+    "city": "pacman",
+    "state": "AUR",
+    "terms": "agree"
+}
