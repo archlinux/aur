@@ -1,15 +1,15 @@
 # Maintainer: not_anonymous <nmlibertarian@gmail.com>
+# Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=qgrid
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ham Radio - Maidenhead grid squares calculator"
 arch=('i686' 'x86_64')
 url="http://users.telenet.be/on4qz/qgrid/index.html"
 license=('GPL3')
-depends=('qt4')
+depends=('qt4' 'hamradio-menus')
 makedepends=('imagemagick')
-install=$pkgname.install
 source=(http://users.telenet.be/on4qz/$pkgname/downloads/${pkgname}_$pkgver.tgz
 	$pkgname.desktop)
 

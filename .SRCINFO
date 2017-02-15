@@ -1,14 +1,14 @@
 pkgbase = qgrid
 	pkgdesc = Ham Radio - Maidenhead grid squares calculator
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://users.telenet.be/on4qz/qgrid/index.html
-	install = qgrid.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = imagemagick
 	depends = qt4
+	depends = hamradio-menus
 	source = http://users.telenet.be/on4qz/qgrid/downloads/qgrid_3.0.0.tgz
 	source = qgrid.desktop
 	md5sums = eaf8e11aa5bfdd11db6bf2928e0ae471
