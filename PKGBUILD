@@ -2,21 +2,19 @@
 # Contributor: James An <james@jamesan.ca>
 # Contributor: Michael Fellinger <m.fellinger@gmail.com>
 
-pkgname='libtomcrypt'
-_prjname='libtom'
-_pkgname=${pkgname#$_prjname}
+pkgname=libtomcrypt
 pkgver=1.17
 pkgrel=13
 pkgdesc="A fairly comprehensive, modular and portable cryptographic toolkit"
-url="http://$_prjname.net/?page=features&newsitems=5&whatfile=$_pkgname"
-license=('custom:Public Domain' 'custom:WTFPL')
 arch=('i686' 'x86_64')
-depends=('gmp' "${_prjname}math")
-source=("https://github.com/$_prjname/$pkgname/releases/download/$pkgver/$_pkgname-$pkgver.tar.bz2")
-md5sums=('cea7e5347979909f458fe7ebb5a44f85')
+url="http://www.libtom.net/LibTomCrypt/"
+license=('custom:Public Domain' 'custom:WTFPL')
+depends=('libtommath' 'gmp')
+source=("https://github.com/libtom/${pkgname}/releases/download/${pkgver}/${pkgname#libtom}-${pkgver}.tar.bz2")
+sha256sums=('e33b47d77a495091c8703175a25c8228aff043140b2554c08a3c3cd71f79d116')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
 
   export CFLAGS="-DLTM_DESC -DGMP_DESC"
   export EXTRALIBS="-ltommath -lgmp"
@@ -24,7 +22,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
 
-  make -f makefile.shared DESTDIR="$pkgdir" install
+  make -f makefile.shared DESTDIR="${pkgdir}" install
 }
