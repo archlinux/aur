@@ -1,4 +1,5 @@
 src/
 pkg/
 *.tar.xz
-heekscad-git
+*.tar.gz
+heekscad/
