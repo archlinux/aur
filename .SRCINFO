@@ -1,0 +1,23 @@
+pkgbase = remill-git
+	pkgdesc = Machine code to LLVM binary translator.
+	pkgver = 20170215
+	pkgrel = 1
+	url = https://github.com/trailofbits/remill
+	arch = x86_64
+	arch = i686
+	license = Apache License
+	makedepends = cmake
+	makedepends = clang
+	makedepends = llvm
+	depends = gtest
+	depends = protobuf
+	depends = gflags
+	depends = python
+	depends = python-protobuf
+	depends = python2-protobuf
+	depends = xed-intel
+	depends = google-glog-git
+	conflicts = remill
+
+pkgname = remill-git
+
