@@ -18,15 +18,16 @@ prepare() {
 
   # Fix permissions on header files
   sed -i -e '/$(HEADERS)/s/install/\0 -m 0644/' makefile.shared
-
   # Fix recursive make
   sed -i -e 's/make -f/$(MAKE) -f/' makefile.shared
+  # Pass CPPFLAGS for aes_enc.o
+  sed -i -e 's/-DENCRYPT_ONLY/$(CPPFLAGS) \0/' makefile.shared
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
 
-  CFLAGS+=" -DLTM_DESC -DGMP_DESC" \
+  CPPFLAGS+=" -DLTM_DESC -DGMP_DESC" \
   EXTRALIBS="${LDFLAGS} -ltommath -lgmp" \
   make -f makefile.shared IGNORE_SPEED=1
 }
@@ -34,7 +35,7 @@ build() {
 check() {
   cd "${pkgname}-${pkgver}"
 
-  CFLAGS+=" -DLTM_DESC -DUSE_LTM -I./testprof" \
+  CPPFLAGS+=" -DLTM_DESC -DUSE_LTM -I./testprof" \
   EXTRALIBS="${LDFLAGS} -L./.libs -L./testprof/.libs \
     '-Wl,--rpath,\$\${ORIGIN}/.libs:\$\${ORIGIN}/testprof/.libs'" \
   make -f makefile.shared test IGNORE_SPEED=1
