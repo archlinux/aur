@@ -37,7 +37,7 @@ prepare() {
   cd $srcdir/UnrealEngine
 
   # clean up old builds before building a new version
-  git clean -xdf
+  #git clean -xdf
 
   ./Setup.sh
   ./GenerateProjectFiles.sh
