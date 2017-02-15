@@ -1,6 +1,7 @@
 post_install() {
     usr/bin/systemd-tmpfiles --create graylog-server.conf
 
-	[[ $2 == 1.* ]] && echo 'graylog now includes graylog-web-interface. You might need to add elasticsearch_cluster_name to server.conf'
+	[[ $2 == 1.* ]] && echo 'Graylog now includes graylog-web-interface. You might need to add elasticsearch_cluster_name to server.conf'
+	[[ $1 == 2.2.0-* ]] && echo 'Backwards-compatibility symlinks have been removed; please verify correct path of *_dir in server.conf'
 EOF
 }

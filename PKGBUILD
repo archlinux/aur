@@ -3,7 +3,7 @@ pkgname=graylog
 replaces=(graylog2-server graylog-web-interface)
 conflicts=(${replaces[*]})
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Graylog is an open source syslog implementation that stores your logs in ElasticSearch and MongoDB"
 arch=('any')
 url="https://www.graylog.org/"
@@ -24,29 +24,36 @@ sha256sums=('1e3b77a1706245515581fb2db278fcf9ee0e7d1837af3f15e657878ca17e6b61'
             'SKIP')
 
 package() {
-	cd "$srcdir/$pkgname-${pkgver/_/-}"
+	cd "$pkgdir"
 
-	mkdir -p $pkgdir/var/lib/graylog/{spool,data/journal,log}
-	chown nobody: -R $pkgdir/var/lib/graylog/
+	install -d var/lib/graylog/spool
+	install -d var/lib/graylog/data/journal
+	chown nobody: -R var/lib/graylog/
 
-	mkdir -p $pkgdir/usr/lib/graylog/data/
-	for d in spool data/journal log; do
-		ln -s /var/lib/graylog/$d $pkgdir/usr/lib/graylog/$d
+	for f in "$srcdir/$pkgname-${pkgver/_/-}"/data/contentpacks/*; do
+		install -Dm 644 $f usr/lib/graylog/data/contentpacks/${f##*/}
 	done
 
-	mkdir -p $pkgdir/usr/lib/graylog/{data/contentpacks,plugin}
-	cp data/contentpacks/* $pkgdir/usr/lib/graylog/data/contentpacks/
-	cp plugin/* $pkgdir/usr/lib/graylog/plugin/
+	for f in "$srcdir/$pkgname-${pkgver/_/-}"/plugin/*; do
+		install -Dm 644 $f usr/lib/graylog/plugin/${f##*/}
+	done
 
-	install -Dm644 lib/sigar/sigar.jar "$pkgdir/usr/lib/graylog/lib/sigar/sigar.jar"
-	cp -p lib/sigar/libsigar-{amd64,x86}-linux.so "$pkgdir/usr/lib/graylog/lib/sigar/"
-	install -Dm644 graylog.jar "$pkgdir/usr/lib/graylog/server.jar"
-	install -Dm644 "$srcdir/graylog-tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/graylog-server.conf"
-	install -Dm644 "$srcdir/graylog.service" "$pkgdir/usr/lib/systemd/system/graylog.service"
+	for f in sigar.jar libsigar-{amd64,x86}-linux.so; do
+		install -Dm 644 "$srcdir/$pkgname-${pkgver/_/-}/lib/sigar/$f" usr/lib/graylog/lib/sigar/${f##*/}
+	done
 
-	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-	cp README.markdown COPYING "$pkgdir/usr/share/doc/$pkgname"
+	install -Dm644 "$srcdir/$pkgname-${pkgver/_/-}"/graylog.jar usr/lib/graylog/server.jar
+	install -Dm644 "$srcdir/graylog-tmpfiles.conf" usr/lib/tmpfiles.d/graylog-server.conf
+	install -Dm644 "$srcdir/graylog.service" usr/lib/systemd/system/graylog.service
 
-	install -Dm644 graylog.conf.example $pkgdir/etc/graylog/server/server.conf
-	sed -i 's/_dir = /_dir = \/usr\/lib\/graylog\//g' $pkgdir/etc/graylog/server/server.conf
+	for f in README.markdown COPYING; do
+		install -Dm644 "$srcdir/$pkgname-${pkgver/_/-}/$f" usr/share/doc/$pkgname/${f##*/}
+	done
+
+	install -Dm644 "$srcdir/$pkgname-${pkgver/_/-}"/graylog.conf.example $pkgdir/etc/graylog/server/server.conf
+
+	# make absolute just in case
+	sed -i 's~^\(plugin_dir =\) plugin$~\1 /usr/lib/graylog/plugin~g' $pkgdir/etc/graylog/server/server.conf
+	sed -i 's~^\(message_journal_dir =\) data/journal$~\1 = /var/lib/graylog/data/journal~g' $pkgdir/etc/graylog/server/server.conf
+	sed -i 's~^\(content_packs_dir =\) data/contentpacks$~\1 = /usr/lib/graylog/data/contentpacks~g' $pkgdir/etc/graylog/server/server.conf
 }
