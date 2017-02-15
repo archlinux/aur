@@ -9,7 +9,7 @@ depends=('python2-pyqt4' 'mutagen')
 optdepends=('python2-discid: CD-Lookup feature'
             'chromaprint: AcoustID integration')
 makedepends=('git')
-provides=('picard')
+provides=("picard=$pkgver")
 conflicts=('picard' 'picard-qt' 'picard-bzr')
 source=('git+https://github.com/metabrainz/picard.git')
 md5sums=('SKIP')
