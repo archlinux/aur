@@ -1,5 +1,5 @@
 pkgname=mingw-w64-agrum
-pkgver=0.10.3
+pkgver=0.10.4
 pkgrel=1
 pkgdesc="C++ Bayesian networks library (mingw-w64)"
 license=('GPL')
