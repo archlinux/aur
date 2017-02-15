@@ -20,7 +20,6 @@ source=(
   "git+ssh://git@github.com/EpicGames/UnrealEngine.git#tag=$pkgver-release"
   'UE4Editor.desktop'
   'remove-clang35-dependency.patch'
-  'IOS-Typo.patch'
   'ignore-return-value-error.patch'
 )
 
@@ -28,19 +27,17 @@ md5sums=(
   'SKIP'
   'c7fc35a7eb9e23c0a9b7c593f7f9878d'
   '271579e814358390d210d57c724a3b00'
-  '3f8fc7334eb41fbe0531f89c0ee2e207'
   '183ca1792f46a21461ed6f4c6d621a37'
 )
 
 prepare() {
   patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/Setup.sh" remove-clang35-dependency.patch
-  patch "$srcdir/UnrealEngine/Engine/Source/Developer/iOS/IOSPlatformEditor/Private/IOSTargetSettingsCustomization.cpp" IOS-Typo.patch  
   patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Linux/LinuxToolChain.cs" ignore-return-value-error.patch
 
   cd $srcdir/UnrealEngine
 
   # clean up old builds before building a new version
-  # git clean -xdf
+  git clean -xdf
 
   ./Setup.sh
   ./GenerateProjectFiles.sh
