@@ -1,6 +1,6 @@
 pkgbase = python-git
 	pkgdesc = Next generation of the python high-level scripting language
-	pkgver = 3.7.0a0.r98657.e7ffb99f84
+	pkgver = 3.7.0a0.r98682.f15fa87e5a
 	pkgrel = 1
 	url = http://www.python.org/
 	arch = i686
@@ -19,6 +19,8 @@ pkgbase = python-git
 	depends = zlib
 	optdepends = tk: for tkinter
 	optdepends = sqlite
+	conflicts = python-hg
+	replaces = python-hg
 	options = debug
 	options = !strip
 	options = !makeflags
