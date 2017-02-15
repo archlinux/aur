@@ -25,7 +25,7 @@ build() {
 
   export CFLAGS+=" -DLTM_DESC -DGMP_DESC"
   export EXTRALIBS="${LDFLAGS} -ltommath -lgmp"
-  make -f makefile.shared
+  make -f makefile.shared IGNORE_SPEED=1
 }
 
 package() {
