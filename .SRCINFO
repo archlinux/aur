@@ -1,7 +1,7 @@
 pkgbase = winkeyer-server
 	pkgdesc = Ham Radio - Winkey USB - UDP server
 	pkgver = 0.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.cqrlog.com/?q=node/149
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = winkeyer-server
 	makedepends = unzip
 	makedepends = lazarus
 	depends = gtk2
+	optdepends = hamradio-menus
 	provides = winkeydaemon
 	source = https://github.com/ok2cqr/winkeyer_server/archive/master.zip
 	source = winkeyer-server.desktop

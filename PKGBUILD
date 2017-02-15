@@ -4,13 +4,14 @@ pkgname=('winkeyer-server')
 _offname=winkeyer_server
 _authorname=ok2cqr
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Ham Radio - Winkey USB - UDP server'
 arch=('i686' 'x86_64')
 url='http://www.cqrlog.com/?q=node/149'
 license=('GPL')
 provides=('winkeydaemon')
 depends=('gtk2')
+optdepends=('hamradio-menus')
 makedepends=('unzip' 'lazarus')
 source=(https://github.com/${_authorname}/${_offname}/archive/master.zip
 	$pkgname.desktop
