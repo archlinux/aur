@@ -1,0 +1,15 @@
+{
+  "BindAddress": ":53",
+  "PrimaryDNSAddress": "114.114.114.114:53",
+  "PrimaryDNSProtocol": "udp",
+  "AlternativeDNSAddress": "8.8.8.8:53",
+  "AlternativeDNSProtocol": "tcp",
+  "Timeout": 6,
+  "RedirectIPv6Record": true,
+  "IPNetworkFilePath": "/etc/overture/china_ip_list.txt",
+  "DomainFilePath": "/etc/overture/gfwlist.txt",
+  "DomainBase64Decode": true,
+  "MinimumTTL": 0,
+  "EDNSClientSubnetPolicy": "disable",
+  "EDNSClientSubnetIP": ""
+}

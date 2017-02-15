@@ -1,0 +1,15 @@
+# ignore everything
+*
+!.gitignore
+
+# except PKGBUILD needed files
+!PKGBUILD
+!*.install
+!*.service
+!.SRCINFO
+
+# add files that don't have an online source
+!china_ip_list.txt
+!config.json
+!gfwlist.txt
+!hosts
