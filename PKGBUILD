@@ -16,8 +16,8 @@ sha256sums=('e33b47d77a495091c8703175a25c8228aff043140b2554c08a3c3cd71f79d116')
 prepare() {
   cd "${pkgname}-${pkgver}"
 
-  # Fix permissions on header files
-  sed -i -e '/$(HEADERS)/s/install/\0 -m 0644/' makefile.shared
+  # Fix permissions on header files and recursive make
+  sed -i -e '/$(HEADERS)/s/install/\0 -m 0644/;s/make -f/$(MAKE) -f/' makefile.shared
 }
 
 build() {
