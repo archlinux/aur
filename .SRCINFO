@@ -1,14 +1,14 @@
 pkgbase = python-spur
 	pkgdesc = Run commands and manipulate files locally or over SSH using the same interface
-	pkgver = 0.3.19
+	pkgver = 0.3.20
 	pkgrel = 1
-	url = https://github.com/saghul/aiodns
+	url = https://github.com/mwilliamson/spur.py
 	arch = any
 	license = BSD
 	depends = python
 	depends = python-paramiko
-	source = https://github.com/mwilliamson/spur.py/archive/0.3.19.tar.gz
-	md5sums = 220c7b2bc58b9d8046c1e108a077f05b
+	source = python-spur-0.3.20.tar.gz::https://github.com/mwilliamson/spur.py/archive/0.3.20.tar.gz
+	sha256sums = 26c18de85fbd2f8c6bc30ca272668a3541dd8f8b74c926b484217a9674de5c9c
 
 pkgname = python-spur
 
