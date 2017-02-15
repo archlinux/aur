@@ -88,7 +88,7 @@ pkgname = xorg-server-dev
 	provides = X-ABI-EXTENSION_VERSION=10.0
 	provides = x-server
 	conflicts = xorg-server
-	conflicts = nvidia-utils<=331.20
+	conflicts = nvidia-utils<375.26-3
 	conflicts = glamor-egl
 	conflicts = xf86-video-modesetting
 	replaces = glamor-egl
