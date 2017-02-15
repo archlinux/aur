@@ -10,7 +10,7 @@ url="http://www.gitkraken.com/"
 provides=('gitkraken')
 arch=('x86_64')
 license=('custom')
-depends=('gtk2' 'nss' 'libnotify' 'libxtst' 'libgnome-keyring' 'gconf' 'alsa-lib')
+depends=('gtk2' 'nss' 'libnotify' 'libxtst' 'libgnome-keyring' 'gconf' 'alsa-lib' 'libcurl-compat')
 makedepends=()
 backup=()
 install=''
@@ -21,7 +21,7 @@ source=(
     "eula.html"
 )
 md5sums=('075de0a5610f6dc488563fe769d731c6'
-         'cf2a1746a0cafe11793af0801c78afeb'
+         'ecef298bed1178d60cf0dd75c4700205'
          '04987b933d551d15c0813111d715bb9e'
          'e9ba6663e5f1f92cae31beb0074e8c6c')
 
