@@ -5,19 +5,20 @@ pkgname=cwdaemon
 _author=acerion
 pkgver=0.10.2
 #.r4.g44f36eb
-pkgrel=1
+pkgrel=2
 pkgdesc="Ham Radio Morse Code transmitter - text input is sent via udp port 6789."
 arch=('i686' 'x86_64')
 url="http://cwdaemon.sourceforge.net"
 license=('GPL')
-depends=('unixcw>=3.3.1' 'netcat')
+#depends=('unixcw>=3.3.1' 'netcat')
+depends=('unixcw' 'netcat')
 source=("$pkgname::git+https://github.com/$_author/$pkgname#branch=master"
 #http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz
 	diff.Makefile.am
 	diff.Makefile.am.example)
 
 pkgver() {
-	cd "$pkgname"
+	cd $srcdir/$pkgname
 
 	git describe --long | sed -r 's/-([0-9,a-g,A-G].*)//'
 #	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
