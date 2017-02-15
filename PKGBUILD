@@ -23,9 +23,19 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
 
-  export CFLAGS+=" -DLTM_DESC -DGMP_DESC"
-  export EXTRALIBS="${LDFLAGS} -ltommath -lgmp"
+  CFLAGS+=" -DLTM_DESC -DGMP_DESC" \
+  EXTRALIBS="${LDFLAGS} -ltommath -lgmp" \
   make -f makefile.shared IGNORE_SPEED=1
+}
+
+check() {
+  cd "${pkgname}-${pkgver}"
+
+  CFLAGS+=" -DLTM_DESC -DUSE_LTM -I./testprof" \
+  EXTRALIBS="${LDFLAGS} -L./.libs -L./testprof/.libs \
+    '-Wl,--rpath,\$\${ORIGIN}/.libs:\$\${ORIGIN}/testprof/.libs'" \
+  make -f makefile.shared test IGNORE_SPEED=1
+  ./test
 }
 
 package() {
