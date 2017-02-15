@@ -6,7 +6,7 @@ pkgbase=notepadqq
 pkgname=('notepadqq-bin' 'notepadqq-common')
 pkgver=1.0.1
 _pkgver=1.0.1-0~yakkety1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://notepadqq.altervista.org/wp/"
 optdepends=('notepadqq-gtk: enables GTK style on startup')
@@ -43,7 +43,7 @@ package_notepadqq-bin() {
 	   'notepadqq-common='${pkgver})
   depends_x86_64+=('gcc-libs-multilib')
   conflicts=('notepadqq-git' 'notepadqq')
-  provides=('notepadqq=${pkgver}')
+  provides=('notepadqq='${pkgver})
   options=('!strip')
   license=('GPL3')
   install=${pkgname}.install
