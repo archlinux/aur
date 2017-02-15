@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=epix
-pkgver=1.2.15
+pkgver=1.2.16
 pkgrel=1
 epoch=
 pkgdesc="ePiX - Utilities for creating mathematically accurate figures"
@@ -21,9 +21,9 @@ install=
 changelog=
 source=("http://mathcs.holycross.edu/~ahwang/$pkgname/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('0774f64cb51b1eeeb18aa29fb95ad087')
-sha1sums=('66d106b559af5ab21f4413a12e3fe799dc7d1277')
-sha256sums=('9170278aeeec444e0b13f3d47d072daa9d855e1bcb6d5ad2fe0dc624f2f536cf')
+md5sums=('08b37229f99d35e1e74ceb71cba48909')
+sha1sums=('83789be6c1fd746715c3daf7d66d49bb81f0b373')
+sha256sums=('641ad4cd04c9f9a18477b303ebb06c418fdb96c04fc81b3f06e6cb0ad81953ec')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
