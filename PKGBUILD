@@ -8,7 +8,7 @@ pkgrel=13
 pkgdesc="A fairly comprehensive, modular and portable cryptographic toolkit"
 arch=('i686' 'x86_64')
 url="http://www.libtom.net/LibTomCrypt/"
-license=('custom:Public Domain' 'custom:WTFPL')
+license=('custom:PublicDomain')
 depends=('libtommath' 'gmp')
 source=("https://github.com/libtom/${pkgname}/releases/download/${pkgver}/${pkgname#libtom}-${pkgver}.tar.bz2")
 sha256sums=('e33b47d77a495091c8703175a25c8228aff043140b2554c08a3c3cd71f79d116')
@@ -32,6 +32,8 @@ package() {
   cd "${pkgname}-${pkgver}"
 
   make -f makefile.shared DESTDIR="${pkgdir}" INSTALL_GROUP="root" install
+
+  install -D -m 0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
