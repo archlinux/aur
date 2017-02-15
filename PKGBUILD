@@ -16,7 +16,7 @@ sha256sums=('e33b47d77a495091c8703175a25c8228aff043140b2554c08a3c3cd71f79d116')
 build() {
   cd "${pkgname}-${pkgver}"
 
-  export CFLAGS="-DLTM_DESC -DGMP_DESC"
+  export CFLAGS+=" -DLTM_DESC -DGMP_DESC"
   export EXTRALIBS="-ltommath -lgmp"
   make -f makefile.shared
 }
