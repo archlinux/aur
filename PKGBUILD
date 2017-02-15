@@ -1,7 +1,7 @@
 # Maintainer: Emeric <emeric.grange@gmail.com>
 # Created: 12/12/2016
 pkgname=autopanovideopro
-pkgver=2.5.3
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Stitch and create 360° videos automatically with Autopano Video Pro (trial version)."
 arch=('x86_64')
@@ -11,21 +11,21 @@ optdepends=('autopanogiga: Edit control points manually'
             'gopro-vr-player: 360 video player')
 install="$pkgname.install"
 _archiveversion=400
-_archivename=AutopanoVideoPro_Linux64_${pkgver}.tar.gz
+_archivename=AutopanoVideoPro_Linux64_${pkgver}.tar.xz
 
-source=("$_archivename::http://download.kolor.com/avp/stable/linux64tar/${pkgver}.${_archiveversion}"
+source=("$_archivename::http://download.kolor.com/avp/stable/linux64tarxz/${pkgver}.${_archiveversion}"
         "$pkgname"
         "$pkgname.desktop")
 
-sha256sums=('d46623e5cb070f7d7f1a40b0c06d308e74f2c1e1b9a97a37e02b063b963c6637'
-            '94c14f17f3ea2ae9e2bf1c064d90e8e2d31e3cbcca350a66b556789f13cffa82'
-            '9636de580b00a33f992acbfa08b1a6252cf499e02ee2b59de0aedaefd38c76f8')
+sha256sums=('398d8a2e5d87453d9629f4ae7a639b7a39900927b882d25ed5effd5ac30fb62f'
+            'e8f01d2cd75a9e350d4e9b837dc342f2952f0b52125158f22f9e5b35ce71c885'
+            '1c09f2253abf940361dbf38c8ae44895f553244ed7c48c6e5cdf1895383cef27')
 
 package() {
   cd "$srcdir/AutopanoVideoPro"
-  install -dm755 $pkgdir/{opt/,usr/share/licenses/$pkgname/}
-  cp -r $srcdir/AutopanoVideoPro $pkgdir/opt/$pkgname
-  #mv $pkgdir/opt/$pkgname/Copyright $pkgdir/usr/share/licenses/$pkgname/
+  install -dm755 $pkgdir/{opt/kolor,usr/share/licenses/$pkgname/}
+  cp -r $srcdir/AutopanoVideoPro $pkgdir/opt/kolor/$pkgname
+  #mv $pkgdir/opt/kolor/$pkgname/Copyright $pkgdir/usr/share/licenses/$pkgname/
   install -Dm755 $srcdir/$pkgname $pkgdir/usr/bin/$pkgname
   install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
