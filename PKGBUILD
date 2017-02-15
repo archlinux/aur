@@ -1,12 +1,12 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatroff-suite-git
-pkgver=r442.ac60e4b
+pkgver=r443.2b1a13e
 pkgrel=1
 epoch=
 pkgdesc="A complete neatroff typesetting system (neatmkfn, neatroff, neatpost, neateqn and neatrefer)."
 arch=('i686' 'x86_64')
 url="http://litcave.rudi.ir/"
-license=('ISC, custom:BSD')
+license=('ISC' 'Lucent Public License')
 groups=()
 depends=('gsfonts')
 makedepends=('git')
