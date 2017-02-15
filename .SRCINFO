@@ -1,0 +1,18 @@
+pkgbase = deepin-screen-recorder
+	pkgdesc = This is default screen recorder application for Deepin.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/manateelazycat/deepin-screen-recorder
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = qt5-tools
+	depends = xcb-util
+	depends = xcb-util-image
+	depends = qt5-base
+	source = git+https://github.com/manateelazycat/deepin-screen-recorder.git
+	md5sums = SKIP
+
+pkgname = deepin-screen-recorder
+
