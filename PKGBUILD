@@ -4,7 +4,7 @@
 #pkgbase=linux-lts
 pkgbase=linux-lts-surface4
 _srcname=linux-4.4
-pkgver=4.4.38
+pkgver=4.4.48
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -29,7 +29,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '48ec169c7adda820973b3cb9c4c91c72bb69c86f530d149065491a20ef0c4057'
+            '201ca43221ee4f1951d86f8df695955b5ab7d70dba05535e3d7b4c132826ff65'
             'SKIP'
             'e8d200b125b4391020c2bc1f43bf8f3a372f0bbdaf9bad71b31574edab7f908f'
             '236fc805c543cb774785f630bf37c7fdc2ff7c9904bb240ff70e0b7213058de5'
