@@ -3,9 +3,9 @@
 
 pkgname=visit-build
 _pkgname=visit
-pkgver=2.12.0
+pkgver=2.12.1
 _pkgver=${pkgver//./_}
-pkgrel=2
+pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool (built with build_visit)."
 arch=('i686' 'x86_64')
 url="https://wci.llnl.gov/simulation/computer-codes/visit"
@@ -19,15 +19,13 @@ source=("https://portal.nersc.gov/svn/${_pkgname}/trunk/releases/${pkgver}/build
         "visit.sh"
         'no_install_qt5.patch'
         'no_extract_visit.patch'
-        "vtk_gcc6.patch"
         "xdmf_stdc++.patch"
         'qt5-qpa.patch')
-sha256sums=('8338f8512abe559e6cece231160b873a221c0d24c0fcc6a0a962cc6071cd6515'
-            '5b4e1b9d5a0e7edaa64c53bab300c9c1e3a1a13494180156a4f25a9c6d078dd4'
+sha256sums=('a853fd816846d1e8e5375c92cd8a1b1534aa409761ac3d5310feff48c484c849'
+            '484ef1ae3b1f97571f380abe4f1ef2512663d042453838314f4c0ea6be16ba19'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             '8ec6767c3943c3b93c9817ef0d051799c5ebfac75e73e58175befd08bfd320e0'
             '6dfdf3fdf6e64437106fc4f9facc79e80ab204de12bb480c6209c6b3fc5b4e07'
-            '77b1f762b05c660c2cb5f2b071533768fb6f905a2b7b14f4b4db29e0ada380bc'
             'a4633d62cb927d2860d2814fd1f8f965fdedd1479aeba8ae32810f1ff96e0068'
             'a523dd42c61ccd6743f23d35e63518c4dd33a465fa024e4431f002932464f26b')
 
@@ -54,9 +52,6 @@ prepare(){
 
   # Do not install qt5
   patch "${srcdir}/build_${_pkgname}${_pkgver}" no_install_qt5.patch
-
-  # Patch build_visit to apply patch that permits to build vtk with gcc6
-  patch "${srcdir}/build_${_pkgname}${_pkgver}" vtk_gcc6.patch
 
   # Change standard to build xdmf
   patch "${srcdir}/build_${_pkgname}${_pkgver}" xdmf_stdc++.patch
@@ -126,7 +121,6 @@ _build_command(){
     --cc gcc --cxx g++ --fortran \
     --cflag "${CFLAGS}" --cxxflag "${CXXFLAGS}" \
     --build-mode Release \
-    --hdf4 \
     --hdf5 \
     --icet \
     --java \
