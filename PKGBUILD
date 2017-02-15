@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Kalinin <lwinch2006.rss@protonmail.ch>
 pkgname=dotnet-cli-git
 pkgver=1.0.0_rc4_004823
-pkgrel=1
+pkgrel=2
 pkgdesc="The .NET Core command-line (CLI) tools, used for building .NET Core apps and libraries through your development flow (compiling, NuGet package management, running, testing, ...)"
 arch=(x86_64)
 url="https://github.com/dotnet/cli"
@@ -40,7 +40,12 @@ pkgver() {
   local _version="${_versionDetailsAsArray[1]}";
   _version="${_version//[$'\t\r\n']}";
   _version="${_version//-/_}";
-  mv "${srcdir}/${pkgname}-${pkgver}.tar.gz" "${srcdir}/${pkgname}-${_version}.tar.gz"
+
+  if [ "${_version}" != "${pkgver}" ]
+  then
+    mv "${srcdir}/${pkgname}-${pkgver}.tar.gz" "${srcdir}/${pkgname}-${_version}.tar.gz"
+  fi
+
   echo "${_version}"
 }
 

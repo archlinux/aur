@@ -1,7 +1,7 @@
 pkgbase = dotnet-cli-git
 	pkgdesc = The .NET Core command-line (CLI) tools, used for building .NET Core apps and libraries through your development flow (compiling, NuGet package management, running, testing, ...)
 	pkgver = 1.0.0_rc4_004823
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dotnet/cli
 	arch = x86_64
 	license = MIT
