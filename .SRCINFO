@@ -1,0 +1,25 @@
+pkgbase = networkmanager-openvpn-tls-crypt
+	pkgdesc = NetworkManager VPN plugin for OpenVPN (supports tls-crypt)
+	pkgver = 1.2.8
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/NetworkManager
+	install = networkmanager-openvpn.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libnm-gtk
+	makedepends = intltool
+	makedepends = python
+	makedepends = git
+	depends = libnm
+	depends = libsecret
+	depends = openvpn
+	conflicts = networkmanager-openvpn
+	replaces = networkmanager-openvpn
+	source = git+https://git.gnome.org/browse/network-manager-openvpn#commit=3b19f480395aadf50de531d0a3df9bb8d924fe62
+	source = networkmanager-openvpn-tls-crypt.patch
+	md5sums = SKIP
+	md5sums = 787f4f23e55e6b3b8a3e0921104c1bca
+
+pkgname = networkmanager-openvpn-tls-crypt
+

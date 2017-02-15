@@ -1,0 +1,114 @@
+From 555864020420d8b8b67bf3182059b632fb12a238 Mon Sep 17 00:00:00 2001
+From: Pau Espin Pedrol <pespin.shar@gmail.com>
+Date: Sun, 29 Jan 2017 04:15:10 +0100
+Subject: [PATCH] openvpn: Add support for tls-crypt
+
+Signed-off-by: Pau Espin Pedrol <pespin.shar@gmail.com>
+---
+ properties/import-export.c | 16 ++++++++++------
+ shared/utils.h             |  1 +
+ src/nm-openvpn-service.c   | 14 +++++++++-----
+ 3 files changed, 20 insertions(+), 11 deletions(-)
+
+diff --git a/properties/import-export.c b/properties/import-export.c
+index 1993026..eec662a 100644
+--- a/properties/import-export.c
++++ b/properties/import-export.c
+@@ -44,6 +44,7 @@
+ #define INLINE_BLOB_PKCS12              "pkcs12"
+ #define INLINE_BLOB_SECRET              "secret"
+ #define INLINE_BLOB_TLS_AUTH            "tls-auth"
++#define INLINE_BLOB_TLS_CRYPT           "tls-crypt"
+ 
+ const char *_nmovpn_test_temp_path = NULL;
+ 
+@@ -1155,7 +1156,8 @@ do_import (const char *path, const char *contents, gsize contents_len, GError **
+ 		                 NMV_OVPN_TAG_CERT,
+ 		                 NMV_OVPN_TAG_KEY,
+ 		                 NMV_OVPN_TAG_SECRET,
+-		                 NMV_OVPN_TAG_TLS_AUTH)) {
++		                 NMV_OVPN_TAG_TLS_AUTH,
++		                 NMV_OVPN_TAG_TLS_CRYPT)) {
+ 			const char *file;
+ 			gs_free char *file_free = NULL;
+ 			gboolean can_have_direction;
+@@ -1196,7 +1198,7 @@ do_import (const char *path, const char *contents, gsize contents_len, GError **
+ 				if (s_direction)
+ 					setting_vpn_add_data_item (s_vpn, NM_OPENVPN_KEY_STATIC_KEY_DIRECTION, s_direction);
+ 				have_sk = TRUE;
+-			} else if (NM_IN_STRSET (params[0], NMV_OVPN_TAG_TLS_AUTH)) {
++			} else if (NM_IN_STRSET (params[0], NMV_OVPN_TAG_TLS_AUTH, NMV_OVPN_TAG_TLS_CRYPT)) {
+ 				setting_vpn_add_data_item_path (s_vpn, NM_OPENVPN_KEY_TA, file);
+ 				if (s_direction)
+ 					setting_vpn_add_data_item (s_vpn, NM_OPENVPN_KEY_TA_DIR, s_direction);
+@@ -1401,6 +1403,8 @@ do_import (const char *path, const char *contents, gsize contents_len, GError **
+ 				key = NM_OPENVPN_KEY_KEY;
+ 			else if (nm_streq (token, INLINE_BLOB_PKCS12))
+ 				key = NULL;
++			else if (nm_streq (token, INLINE_BLOB_TLS_CRYPT))
++				key = NM_OPENVPN_KEY_TA;
+ 			else if (nm_streq (token, INLINE_BLOB_TLS_AUTH)) {
+ 				key = NM_OPENVPN_KEY_TA;
+ 				can_have_direction = TRUE;
+@@ -1948,11 +1952,12 @@ do_export_create (NMConnection *connection, const char *path, GError **error)
+ 		ta_key = nm_setting_vpn_get_data_item (s_vpn, NM_OPENVPN_KEY_TA);
+ 		if (_arg_is_set (ta_key)) {
+ 			gs_free char *s_free = NULL;
+-
++			const char *ta_dir = nm_setting_vpn_get_data_item (s_vpn, NM_OPENVPN_KEY_TA_DIR);
++			const char *tls_type = _arg_is_set (ta_dir) ? NMV_OVPN_TAG_TLS_AUTH : NMV_OVPN_TAG_TLS_CRYPT;
+ 			args_write_line (f,
+-			                 NMV_OVPN_TAG_TLS_AUTH,
++			                 tls_type,
+ 			                 nmv_utils_str_utf8safe_unescape_c (ta_key, &s_free),
+-			                 _arg_is_set (nm_setting_vpn_get_data_item (s_vpn, NM_OPENVPN_KEY_TA_DIR)));
++			                 _arg_is_set (ta_dir));
+ 		}
+ 	}
+ 
+@@ -2093,4 +2098,3 @@ do_export (const char *path, NMConnection *connection, GError **error)
+ 
+ 	return TRUE;
+ }
+-
+diff --git a/shared/utils.h b/shared/utils.h
+index 61b35b6..05b8076 100644
+--- a/shared/utils.h
++++ b/shared/utils.h
+@@ -67,6 +67,7 @@
+ #define NMV_OVPN_TAG_TLS_AUTH           "tls-auth"
+ #define NMV_OVPN_TAG_TLS_CIPHER         "tls-cipher"
+ #define NMV_OVPN_TAG_TLS_CLIENT         "tls-client"
++#define NMV_OVPN_TAG_TLS_CRYPT          "tls-crypt"
+ #define NMV_OVPN_TAG_TLS_REMOTE         "tls-remote"
+ #define NMV_OVPN_TAG_TOPOLOGY           "topology"
+ #define NMV_OVPN_TAG_TUN_IPV6           "tun-ipv6"
+diff --git a/src/nm-openvpn-service.c b/src/nm-openvpn-service.c
+index d7bd29f..fbb0473 100644
+--- a/src/nm-openvpn-service.c
++++ b/src/nm-openvpn-service.c
+@@ -1441,12 +1441,16 @@ nm_openvpn_start_openvpn_binary (NMOpenvpnPlugin *plugin,
+ 	/* TA */
+ 	tmp = nm_setting_vpn_get_data_item (s_vpn, NM_OPENVPN_KEY_TA);
+ 	if (tmp && strlen (tmp)) {
+-		add_openvpn_arg (args, "--tls-auth");
+-		add_openvpn_arg_utf8safe (args, tmp);
+ 
+-		tmp = nm_setting_vpn_get_data_item (s_vpn, NM_OPENVPN_KEY_TA_DIR);
+-		if (tmp && strlen (tmp))
+-			add_openvpn_arg (args, tmp);
++		tmp2 = nm_setting_vpn_get_data_item (s_vpn, NM_OPENVPN_KEY_TA_DIR);
++		if (tmp2 && strlen (tmp2)) {
++			add_openvpn_arg (args, "--tls-auth");
++			add_openvpn_arg_utf8safe (args, tmp);
++			add_openvpn_arg (args, tmp2);
++		} else {
++			add_openvpn_arg (args, "--tls-crypt");
++			add_openvpn_arg_utf8safe (args, tmp);
++		}
+ 	}
+ 
+ 	/* tls-remote */
+-- 
+2.11.0
+
