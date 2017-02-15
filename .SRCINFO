@@ -1,0 +1,14 @@
+pkgbase = sand-lxqt-theme
+	pkgdesc = Dark theme for the LXQt Desktop, color scheme for qterminal, lxqt-panel, mixed between breeze and ambiance
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/sandangel/sand-lxqt-theme
+	arch = any
+	license = custom:sand
+	makedepends = git
+	optdepends = breeze-icons: Breeze icon themes
+	source = https://github.com/sandangel/sand-lxqt-theme/raw/master/archive/sand-1.0.tar.xz
+	md5sums = 544c45ad7f2f9eedd8ef248a29d10168
+
+pkgname = sand-lxqt-theme
+
