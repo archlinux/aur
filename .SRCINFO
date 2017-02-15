@@ -1,0 +1,17 @@
+pkgbase = vim-pkgbuild
+	pkgdesc = Vim plugin to help editing and working with PKGBUILD files
+	pkgver = 0.1.20141125.ca8e436
+	pkgrel = 1
+	url = https://github.com/Firef0x/PKGBUILD.vim
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = GPL
+	makedepends = git
+	depends = vim
+	optdepends = pkgbuild-introspection: for generating .AURINFO files and PKGBUILD data extraction
+	source = vim-pkgbuild::git://github.com/Firef0x/PKGBUILD.vim.git
+	md5sums = SKIP
+
+pkgname = vim-pkgbuild
+
