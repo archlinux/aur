@@ -1,0 +1,15 @@
+pkgbase = yadm-git
+	pkgdesc = Yet Another Dotfiles Manager
+	pkgver = 1.07.r1.ga78fe20
+	pkgrel = 1
+	url = https://github.com/TheLocehiliosan/yadm
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = yadm
+	conflicts = yadm
+	source = yadm-git::git+https://github.com/TheLocehiliosan/yadm#branch=master
+	md5sums = SKIP
+
+pkgname = yadm-git
+
