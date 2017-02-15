@@ -1,4 +1,5 @@
 src/
 pkg/
 *.tar.xz
-heekscnc-git/
+*.tar.gz
+heekscnc/
