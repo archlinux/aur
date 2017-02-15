@@ -1,6 +1,6 @@
 # Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
 pkgname=cryptoverif
-pkgver=1.24
+pkgver=1.25
 pkgrel=1
 pkgdesc='Cryptographic protocol verifier in the computational model'
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ license=('custom:CeCILL-B')
 depends=('ocaml')
 optdepends=('ocaml-cryptokit: compiling extracted implementations')
 source=("http://prosecco.gforge.inria.fr/personal/bblanche/cryptoverif/cryptoverif$pkgver.tar.gz")
-sha1sums=('d73bbc8069eb739c4e2cc3b8d8c744f989f45a73')
-sha256sums=('363e296d25b278d0147ae023d28a6de1fd5d59f958ee78626196bf66986620d9')
+sha1sums=('d6ee54883ef5bb833abe7c006ff8f6e9f8a7e2ae')
+sha256sums=('eb8f8f94f44a97d89f02dd1d7b07783998a783337f32d26e3887c34721a975bc')
 
 build() {
   cd "$srcdir/cryptoverif$pkgver"
