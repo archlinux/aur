@@ -2,7 +2,7 @@
 # Wed Apr  1 16:32:36 UTC 2015
 pkgbase = jitsi-nightly
 	pkgdesc = An audio/video SIP VoIP phone and instant messenger written in Java (formerly SIP-Communicator)
-	pkgver = 2.11.20170213
+	pkgver = 2.11.20170215
 	pkgrel = 1
 	url = http://jitsi.org
 	install = jitsi-nightly.install
