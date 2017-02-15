@@ -1,10 +1,10 @@
 # Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
 
 pkgname=soapyosmo-git
-pkgver=r66.60b496d
+pkgver=r75.9b07c89
 pkgrel=1
 epoch=2
-pkgdesc="SoapySDR plugins for OsmoSDR devices (Airspy, Airspy Mini, MiriSDR, RFSpace)"
+pkgdesc="SoapySDR plugins for OsmoSDR devices (MiriSDR, RFSpace)"
 arch=('any')
 url="https://github.com/pothosware/SoapyOsmo"
 license=('GPLv3')
