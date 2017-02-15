@@ -1,0 +1,10 @@
+--- src/indicator-cpufreq/indicator_cpufreq/indicator.py	2016-10-23 20:53:24.000000000 +0900
++++ src/indicator-cpufreq/indicator_cpufreq/indicator.py	2017-02-15 21:58:39.846113600 +0900
+@@ -46,6 +46,7 @@
+     #'userspace': _("Userspace"),
+     'powersave': _("Powersave"),
+     'performance': _("Performance"),
++    'schedutil': _("Scheduler"),
+ }
+ 
+ def readable_governor(g):
