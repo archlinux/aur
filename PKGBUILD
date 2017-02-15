@@ -1,22 +1,21 @@
 # Maintainer: Chris Oelmueller <chris.oelmueller@gmail.com>
 
-pkgname=python-typed-ast
-pkgver=0.6.1
+pkgname=python-typed-ast-0.6.x
+pkgver=0.6.3
 _pythonname="typed-ast"
 _foldername="${_pythonname}-${pkgver}"
 pkgrel=1
 arch=('any')
 url='https://github.com/dropbox/typed_ast'
 license=('Apache')
-pkgdesc='Fork of Python 2 and 3 ast (Abstract Syntax Trees) modules with type comment support'
+pkgdesc='a fork of Python 2 and 3 ast modules with type comment support (0.6.x version, for use with mypy)'
 depends=('python')
-source=("https://pypi.io/packages/source/t/${_pythonname}/${_pythonname}-${pkgver}.tar.gz")
+conflicts=('python-typed-ast')
+source=("https://pypi.org/packages/source/t/${_pythonname}/${_pythonname}-${pkgver}.tar.gz")
 
 package() {
-  cd "$srcdir/${_foldername}"
-
-  python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
+    cd "$srcdir/${_foldername}"
+    python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('27577d8f436ea6a36715d412092baac4')
-sha256sums=('f3381db04d74676a803769173dbaac3d7ef7b8c66866f43ae19688672d86d633')
+sha256sums=('d41a1856c882a51e398ad9972c9a7964b2f5e210317088382a419b5183544a29')
