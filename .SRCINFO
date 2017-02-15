@@ -2,8 +2,8 @@
 # Sat Feb  4 20:04:47 UTC 2017
 pkgbase = goatee
 	pkgdesc = lightwieght gtk2 text/hex editor written on Go
-	pkgver = 1
-	pkgrel = 1
+	pkgver = 0.2
+	pkgrel = 2
 	url = https://github.com/sg3des/goatee
 	arch = i686
 	arch = x86_64

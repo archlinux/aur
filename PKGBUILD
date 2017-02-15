@@ -1,8 +1,8 @@
 # Contributor: sg3des <sg3des@gmail.com>
 
 pkgname=goatee
-pkgver=1
-pkgrel=1
+pkgver=0.9
+pkgrel=2
 pkgdesc='lightwieght gtk2 text/hex editor written on Go'
 arch=('i686' 'x86_64')
 url='https://github.com/sg3des/goatee'
