@@ -1,6 +1,6 @@
 pkgbase = mxnet
 	pkgdesc = Flexible and Efficient Library for Deep Learning
-	pkgver = 0.9.3
+	pkgver = 0.9.3a
 	pkgrel = 1
 	url = http://mxnet.io/
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = mxnet
 	makedepends = git
 	optdepends = cuda: GPU support
 	optdepends = cudnn: GPU support
-	optdepends = intel-mkl: MKL support
 	optdepends = opencv: computer vision support
 	provides = libmxnet
 	source = mxnet::git+https://github.com/dmlc/mxnet

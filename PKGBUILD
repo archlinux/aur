@@ -1,6 +1,6 @@
 # Maintainer: Carl Åkerlindh <carl.akerlindh at gmail dot com>
 pkgname=mxnet
-pkgver=0.9.3
+pkgver=0.9.3a
 pkgrel=1
 pkgdesc="Flexible and Efficient Library for Deep Learning"
 arch=('x86_64')
@@ -9,10 +9,9 @@ license=('Apache2')
 depends=()
 optdepends=('cuda: GPU support'
             'cudnn: GPU support'
-            'intel-mkl: MKL support'
+            # 'intel-mkl: MKL support'
             'opencv: computer vision support')
 makedepends=(git)
-# checkdepends=()
 provides=(libmxnet)
 source=("$pkgname::git+https://github.com/dmlc/mxnet")
 md5sums=('SKIP')
@@ -30,14 +29,17 @@ prepare() {
   else
     msg2 "CUDA support disabled"
   fi
-  if (pacman -Q intel-mkl &>/dev/null); then
-    msg2 "MKL support enabled"
-    echo "USE_BLAS=mkl" >>config.mk
-    echo "USE_INTEL_PATH=/opt/intel/composerxe/linux" >>config.mk
-    echo "USE_STATIC_MKL=1" >>config.mk
-  else
-    msg2 "MKL support disabled"
-  fi
+  echo "MKLML_ROOT=$srcdir/mklml" >>config.mk
+  echo "USE_MKL2017=1" >>config.mk
+  echo "USE_MKL2017_EXPERIMENTAL=1" >>config.mk
+  # if (pacman -Q intel-mkl &>/dev/null); then
+  #   msg2 "MKL support enabled"
+  #   echo "USE_BLAS=mkl" >>config.mk
+  #   echo "USE_INTEL_PATH=/opt/intel/composerxe/linux" >>config.mk
+  #   echo "USE_STATIC_MKL=1" >>config.mk
+  # else
+  #   msg2 "MKL support disabled"
+  # fi
   if (pacman -Q opencv &>/dev/null); then
     msg2 "OpenCV support enabled"
   else
@@ -54,4 +56,6 @@ build() {
 package() {
   cd "$pkgdir"
   install -D "$srcdir/$pkgname/lib/libmxnet.so" "$pkgdir/usr/lib/libmxnet.so"
+  install -D "$srcdir/mklml/lib/libmklml_intel.so" "$pkgdir/usr/lib/libmklml_intel.so"
+  install -D "$srcdir/mklml/lib/libiomp5.so" "$pkgdir/usr/lib/libiomp5.so"
 }
