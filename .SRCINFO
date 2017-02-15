@@ -1,8 +1,8 @@
-pkgbase = windowchef-git
-	pkgdesc = A stacking window manager that cooks windows with orders from the Waitron.
-	pkgver = 0.2.r0.g02d95a4
+pkgbase = ruler-git
+	pkgdesc = Program used to create window rules.
+	pkgver = 0.1.0.r0.gaaf9d5c
 	pkgrel = 1
-	url = https://github.com/tudurom/windowchef
+	url = https://github.com/tudurom/ruler
 	arch = i686
 	arch = x86_64
 	arch = armv7h
@@ -11,12 +11,10 @@ pkgbase = windowchef-git
 	makedepends = git
 	depends = libxcb
 	depends = xcb-util-wm
-	optdepends = sxhkd
 	optdepends = wmutils-git
-	optdepends = lemonbar
-	conflicts = windowchef
-	source = windowchef-git::git+https://github.com/tudurom/windowchef.git
+	conflicts = ruler
+	source = ruler-git::git+https://github.com/tudurom/ruler.git
 	md5sums = SKIP
 
-pkgname = windowchef-git
+pkgname = ruler-git
 

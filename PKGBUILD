@@ -1,17 +1,17 @@
 # Maintainer: Tudor Roman <tudurom@gmail.com>
 
-pkgname=windowchef-git
-pkgver=0.2.r0.g02d95a4
+pkgname=ruler-git
+pkgver=0.1.0.r0.gaaf9d5c
 pkgrel=1
-pkgdesc="A stacking window manager that cooks windows with orders from the Waitron."
+pkgdesc="Program used to create window rules."
 arch=("i686" "x86_64" "armv7h" "aarch64")
-url="https://github.com/tudurom/windowchef"
+url="https://github.com/tudurom/ruler"
 license=('ISC')
 depends=("libxcb" "xcb-util-wm")
 makedepends=("git")
-optdepends=("sxhkd" "wmutils-git" "lemonbar")
-conflicts=('windowchef')
-source=("$pkgname::git+https://github.com/tudurom/windowchef.git")
+optdepends=("wmutils-git")
+conflicts=('ruler')
+source=("$pkgname::git+https://github.com/tudurom/ruler.git")
 md5sums=("SKIP")
 
 pkgver() {
