@@ -3,7 +3,7 @@
 pkgbase=dcos-cli
 pkgname=(dcos-cli python-dcos)
 pkgver=0.4.15
-pkgrel=1
+pkgrel=2
 pkgdesc="DC/OS Command Line Interface"
 arch=(any)
 url="https://github.com/dcos/dcos-cli"
@@ -35,7 +35,7 @@ package_dcos-cli() {
 package_python-dcos() {
     depends=('python-jsonschema' 'python-pager' 'python-portalocker'
              'python-prettytable' 'python-pygments' 'python-pypng'
-             'python-pystache' 'python-requests' 'python-six' 'python-toml' 'python-git')
+             'python-pystache' 'python-requests' 'python-six' 'python-toml' 'python-gitpython')
     cd "$srcdir"/$pkgbase-$pkgver
     python setup.py install -O1 --skip-build --root="$pkgdir"
 }
