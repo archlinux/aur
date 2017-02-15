@@ -1,8 +1,8 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 
 pkgname=notepadqq-gtk
-pkgver=0.53.0
-_pkgver=0.53.0-0~wily1
+pkgver=1.0.1
+_pkgver=1.0.1-0~yakkety1
 pkgrel=1
 pkgdesc="A Linux clone of Notepad++  This package enables GTK style on startup. The application itself is still compiled against Qt5."
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 options=('!strip')
 depends=('bash' "notepadqq-common=${pkgver}" "notepadqq>=${pkgver}" )
 conflicts=('notepadqq-git')
-sha256sums=('3c85b75f33d28c09aea4242f3735e81f5ee12ae212237804eebf01941f29f5f7')
+sha256sums=('34b70256f96fdab3bb503d27eafe5c8f056820031b48ee7fff4ddd6e9597f495')
 
 source=("http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq-gtk_${_pkgver}_all.deb")
 
