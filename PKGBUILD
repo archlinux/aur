@@ -9,9 +9,9 @@ _lang=ru
 
 _release_year=2017
 _release_month=02
-_release_day=14
-_release_time=$_release_year-$_release_month-$_release_day-08-40-55
-_buildid=20170214084055
+_release_day=15
+_release_time=$_release_year-$_release_month-$_release_day-08-41-08
+_buildid=20170215084108
 
 pkgname="${_name}-${_channel}-${_lang}"
 _pkgname="${_name}-${_channel}"
