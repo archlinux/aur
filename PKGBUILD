@@ -4,7 +4,7 @@
 
 pkgname=libtomcrypt
 pkgver=1.17
-pkgrel=13
+pkgrel=14
 pkgdesc="A fairly comprehensive, modular and portable cryptographic toolkit"
 arch=('i686' 'x86_64')
 url="http://www.libtom.net/LibTomCrypt/"
