@@ -7,8 +7,8 @@ pkgname=infinipath-psm
 _pkgname=psm
 pkgver=3.3
 _pkgver_subver=22
-_pkgver_commit=g4abbc60
-pkgrel=1
+_pkgver_commit=g326b95a
+pkgrel=2
 pkgdesc='OpenFabrics Alliance Intel Performance Scaled Messaging library'
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
@@ -16,18 +16,14 @@ license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('glibc' 'libutil-linux')
 makedepends=('git')
 # Latest more-official release at "https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}-${_pkgver_subver}_${_pkgver_commit}_open.tar.gz" is broken
-source=("git+https://github.com/01org/${_pkgname}"
-        "fixMisleadingIndentation.patch")
-md5sums=('SKIP'
-         'fc55d52e252217c264098d590663f95d')
+source=("git+https://github.com/01org/${_pkgname}")
+md5sums=('SKIP')
 
 prepare() {
   cd "${srcdir}/psm"
   # Latest more-official release at "https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}-${_pkgver_subver}_${_pkgver_commit}_open.tar.gz" is broken
   # This isn't a -git AUR package, so grab the latest known and tested commit, as of the last updating of PKGBUILD 
-  git checkout 4abbc60
-  # Newer GCC catches an unpatched error upstream
-  git apply "${srcdir}/fixMisleadingIndentation.patch"
+  git checkout 326b95a
 }
 
 build() {
