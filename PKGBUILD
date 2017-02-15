@@ -15,7 +15,6 @@ source=("http://downloads.sourceforge.net/${_pkgname}/$_pkgname-$pkgver.tar.bz2"
         "qwtconfig-archlinux.pri")
 sha1sums=('90ec21bc42f7fae270482e1a0df3bc79cb10e5c7'
           '0b74241a5bc678ea95e801bf45f18ea4cd931567')
-provides=('qwt')
 conflicts=('qwt')
 
 build() {
