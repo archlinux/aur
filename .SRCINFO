@@ -22,12 +22,12 @@ pkgbase = lastpass
 	optdepends = opera: for Opera
 	optdepends = opera-beta: for Opera Beta (AUR)
 	optdepends = opera-developer: for Opera Developer (AUR)
-	noextract = lp4_4.1.35a-1.xpi
+	noextract = lp4_4.1.35a.xpi
 	source = lplinux_4.1.23.tar.bz2::https://lastpass.com/lplinux.tar.bz2
-	source = lpchrome_4.1.40-1.crx::https://clients2.google.com/service/update2/crx?response=redirect&prodversion=56.0.2924.87&x=id%3Dhdokiejnpimakedhajhdlcegeplioahd%26uc
+	source = lpchrome_linux_4.1.40-1.crx::https://clients2.google.com/service/update2/crx?response=redirect&prodversion=56.0.2924.87&x=id%3Dhdokiejnpimakedhajhdlcegeplioahd%26uc
 	source = com.lastpass.nplastpass.json
 	source = lastpass_policy.json
-	source = lp4_4.1.35a-1.xpi::https://addons.cdn.mozilla.net/user-media/addons/8542/lastpass_password_manager-4.1.35a-1-an+fx.xpi
+	source = lp4_4.1.35a.xpi::https://addons.cdn.mozilla.net/user-media/addons/8542/lastpass_password_manager-4.1.35a-an+fx.xpi
 	source = profiles.ini
 	md5sums = 5a9bb6e274c8d5102400fa03a3cab776
 	md5sums = 71dbe540dbb6ae41fe81c6e4f8dab50c

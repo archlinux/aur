@@ -4,7 +4,7 @@ pkgname=lastpass
 pkgver=4.1.23
 _universal=$pkgver    # Version of the universal installer: https://lastpass.com/misc_download2.php
 _chromver=4.1.40-1    # The actual extensions' versions
-_ffver=4.1.35a-1
+_ffver=4.1.35a
 pkgrel=2
 pkgdesc="The Universal LastPass installer for Firefox, Chrome, and Opera"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ optdepends=('chromium: for Chromium'
 install=$pkgname.install
 source=(# Chrome
         "lplinux_$_universal.tar.bz2::$url/lplinux.tar.bz2"
-        "lpchrome_$_chromver.crx::https://clients2.google.com/service/update2/crx?response=redirect&prodversion=56.0.2924.87&x=id%3Dhdokiejnpimakedhajhdlcegeplioahd%26uc"
+        "lpchrome_linux_$_chromver.crx::https://clients2.google.com/service/update2/crx?response=redirect&prodversion=56.0.2924.87&x=id%3Dhdokiejnpimakedhajhdlcegeplioahd%26uc"
         #"lpchrome_linux_${_chromver_linux}.crx::$url/lpchrome_linux.crx"
         'com.lastpass.nplastpass.json'
         'lastpass_policy.json'
@@ -54,7 +54,6 @@ prepare() {
 
 _chrome_package() {
     # Install to single place for linking
-    #install -Dm644 lpchrome_$_chromver.crx "$pkgdir"/usr/share/lastpass/lpchrome_$_chromver.crx
     install -Dm644 lpchrome_linux_$_chromver.crx "$pkgdir"/usr/share/lastpass/lpchrome_linux_$_chromver.crx
     install -Dm755 lplinux/nplastpass$_64 "$pkgdir"/etc/opt/chrome/native-messaging-hosts/nplastpass$_64
 
