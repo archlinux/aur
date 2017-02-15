@@ -3,17 +3,17 @@
 _pkgname=pacui
 pkgname=$_pkgname-git
 pkgver=1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple and interative Bash Frontend for Pacman/Pacaur/Yaourt"
 arch=(any)
 url="https://github.com/excalibur1234/pacui"
 license=('GPL3')
-depends=('pacman-mirrorlist' 'package-query' 'fzf')
+depends=('pacman-mirrorlist' 'package-query' 'wget' 'gawk' 'sudo' 'fzf')
 makedepends=('git')
-provides=('$_pkgname')
-conflicts=('$_pkgname' 'pacli-simple-git')
+conflicts=("$_pkgname" 'pacli-simple-git')
 replaces=('pacli-simple-git')
 optdepends=('pacaur: Needed for AUR support. If installed, it gets used by default over Yaourt.'
+        'pac: Strongly recommended for pacaur, if AUR support is desired.'
         'yaourt: Needed for AUR support.'
         'downgrade: Needed for hidded "downgrade" option.'
         'update-notifier: Automatically get notified when updates are available.')
