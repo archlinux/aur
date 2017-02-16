@@ -7,6 +7,8 @@ pkgbase = pdfbeads
 	license = GPL
 	makedepends = rubygems
 	depends = ruby
+	depends = ruby-iconv
+	depends = jbig2enc-git
 	depends = ruby-nokogiri>=1.5.10
 	depends = ruby-pdf-reader>=1.0.0
 	depends = ruby-rmagick>=2.13.0
