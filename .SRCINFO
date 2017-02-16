@@ -1,12 +1,14 @@
 pkgbase = cockroachdb-git
 	pkgdesc = A Scalable, Geo-Replicated, Transactional Datastore
-	pkgver = r9542.234e580
+	pkgver = r17033.g0ba52ff84
 	pkgrel = 1
 	url = https://github.com/cockroachdb/cockroach
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	depends = gcc-libs
+	depends = gcc-libs>=6.0
+	provides = cockroachdb
+	conflicts = cockroachdb
 	source = cockroachdb-git::git+https://github.com/cockroachdb/cockroach
 	sha512sums = SKIP
 
