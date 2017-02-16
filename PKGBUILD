@@ -1,4 +1,4 @@
-# Maintainer: Matthias Blaicher <matthias at blaicher dot com>
+# Maintainer: Zesen Qian <quartus at riaqn dot org>
 #
 # NOTE: If you plan on using the usbblaster make sure you are member of the plugdev group.
 # NOTE: Altera has dramatically changed their packing in regards to version 12. This
