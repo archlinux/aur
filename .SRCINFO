@@ -1,0 +1,25 @@
+pkgbase = lgeneral
+	pkgdesc = A turn-based strategy engine heavily inspired by Panzer General (pg-data and kukgen-data included)
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = http://lgames.sourceforge.net/LGeneral/
+	install = lgeneral.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = custom
+	license = CCPL
+	depends = sdl_mixer
+	depends = hicolor-icon-theme
+	provides = lgeneral-data
+	conflicts = lgeneral
+	conflicts = lgeneral-data
+	source = http://downloads.sourceforge.net/lgeneral/lgeneral-1.3.1.tar.gz
+	source = http://downloads.sourceforge.net/lgeneral/pg-data.tar.gz
+	source = http://downloads.sourceforge.net/lgeneral/kukgen-data-1.1.tar.gz
+	md5sums = 7605ccf7eac6ce7a8c36b6db0613ceb6
+	md5sums = 40c4be23f60d1dc732aabe13b58fc5e3
+	md5sums = 5a9755bdb2ae0a94910c093c5feafd61
+
+pkgname = lgeneral
+

@@ -1,0 +1,9 @@
+post_install() {
+    echo "Installing Panzer General data files (pg-data and kukgen-data)..."
+    lgc-pg -s /usr/share/lgeneral-data/pg-data
+    cp -npr /usr/share/lgeneral-data/kukgen-data-1.1/{campaigns,gfx,maps,nations,scenarios,sounds,units} /usr/share/lgeneral
+}
+
+post_upgrade() {
+  post_install
+}
