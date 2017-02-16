@@ -11,8 +11,8 @@ depends=('java-runtime' 'pcsclite' 'pcsc-tools' 'ccid')
 
 source=("autenticacao-gov-pt.install" "https://autenticacao.gov.pt/fa/ajuda/software/autenticacao.gov.pt.deb")
 
-md5sums=('39cdbfbed62be6f64f24ee9c79667a2a'
-         '1f1876082c2c1084eab9c45427751fda')
+sha1sums=('5ab9a56047d7c28f4797462d67d8c0045e74f7cd'
+          '8365b0f7c35a6e820eae0d752d9721a324ed80ec')
 
 install='autenticacao-gov-pt.install'
 
