@@ -7,7 +7,7 @@ provides=('networkmanager')
 replaces=('networkmanager')
 conflicts=('networkmanager')
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Network Management daemon with Wi-Fi scanning disabled when already connected (improves reliability of the connection in several Wireless
 cards)"
 arch=(i686 x86_64)
