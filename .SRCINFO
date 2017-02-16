@@ -1,0 +1,17 @@
+pkgbase = drcom-cauc
+	pkgdesc = 3rd Party Dr.COM Client for CAUC
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/carlsplace/drcom-cauc
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = make
+	makedepends = git
+	depends = python2
+	provides = drcom-cauc
+	source = drcom-cauc::git+https://github.com/carlsplace/drcom-cauc.git#branch=master
+	md5sums = SKIP
+
+pkgname = drcom-cauc
+
