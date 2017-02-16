@@ -3,7 +3,7 @@
 _gitname=gsl
 pkgname=microsoft-gsl-git
 pkgver=r401.3819df6
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft's Guidelines Support Library (GSL)"
 arch=('i686' 'x86_64')
 url='https://github.com/Microsoft/GSL'
@@ -19,5 +19,6 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_gitname"
+  install -d "$pkgdir/usr/include"
   cp -r include "$pkgdir/usr"
 }
