@@ -7,7 +7,9 @@ pkgdesc="A small utility written in Ruby which takes scanned page images and con
 arch=(any)
 url="http://rubygems.org/gems/pdfbeads"
 license=('GPL')
-depends=('ruby' 'ruby-nokogiri>=1.5.10' 'ruby-pdf-reader>=1.0.0' 'ruby-rmagick>=2.13.0' 'openjpeg2')
+depends=('ruby' 'ruby-iconv' 'jbig2enc-git' 'ruby-nokogiri>=1.5.10' 
+'ruby-pdf-reader>=1.0.0' 
+'ruby-rmagick>=2.13.0' 'openjpeg2')
 makedepends=(rubygems)
 source=(http://rubygems.org/downloads/$pkgname-$pkgver.gem)
 noextract=($pkgname-$pkgver.gem)
