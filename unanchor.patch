@@ -1,0 +1,20 @@
+diff -u emkatic-0.29-src-orig/main.lfm emkatic-0.29-src/main.lfm
+--- emkatic-0.29-src-orig/main.lfm	2017-01-29 14:47:11.000000000 +0100
++++ emkatic-0.29-src/main.lfm	2017-02-16 02:11:02.733631645 +0100
+@@ -5,7 +5,6 @@
+   Width = 341
+   AllowDropFiles = True
+   BorderIcons = [biSystemMenu, biMinimize]
+-  BorderStyle = bsSingle
+   Caption = 'MainForm'
+   ClientHeight = 381
+   ClientWidth = 341
+@@ -21,7 +20,7 @@
+   OnPaint = FormPaint
+   OnShow = FormShow
+   PopupMenu = ServiceMenu
+-  Position = poScreenCenter
++  Position = poDefault
+   LCLVersion = '1.6.2.0'
+   object AboutPanel: TPanel
+     Left = 120

@@ -1,0 +1,15 @@
+pkgbase = emkatic
+	pkgdesc = Emulator of modern Russian RPN programmable calculators MK-152, MK-161 series (the successor of MK-52,MK-61)
+	pkgver = 0.29
+	pkgrel = 1
+	url = https://sourceforge.net/projects/emkatic/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = lazarus
+	makedepends = fpc
+	source = https://sourceforge.net/projects/emkatic/files/eMKatic%20Source/emkatic-0.29-src.tar.gz
+	md5sums = b6d1c3926ac4847f56e85a327e501519
+
+pkgname = emkatic
+
