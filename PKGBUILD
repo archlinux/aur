@@ -152,7 +152,7 @@ package() {
   mv "$pkgdir"/usr/share/vala/vapi/* usr/share/vala/vapi
 
   rmdir -p --ignore-fail-on-non-empty \
-    "$pkgdir"/{run/NetworkManager,usr/include} \
+    "$pkgdir"/usr/include \
     "$pkgdir"/usr/lib/{girepository-1.0,pkgconfig} \
     "$pkgdir"/usr/share/{gir-1.0,vala/vapi}
 }
