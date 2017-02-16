@@ -7,7 +7,7 @@ pkgver=2.0.1
 pkgrel=2
 pkgdesc="Essentials offers about 100 commands useful on just about every server, initial kits, mob spawning, economy, warps along the map, houses, etc."
 arch=(any)
-url="http://dev.bukkit.org/bukkit-plugins/essentials"
+url="https://www.spigotmc.org/resources/essentialsx.9089/"
 license=("GPLv3")
 depends=("craftbukkit>=1.9")
 source=("https://ci.drtshock.net/job/EssentialsX/lastSuccessfulBuild/artifact/Essentials/target/EssentialsX-$pkgver.jar"
