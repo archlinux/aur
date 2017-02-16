@@ -2,11 +2,11 @@
 
 _pkgname=penguin-subtitle-player
 pkgname=${_pkgname}-git
-pkgver=v0.2.0.r7.262e8d4
+pkgver=v1.0.0.r7.1f61e87
 pkgrel=1
 pkgdesc="An open-source, cross-platform standalone subtitle player"
 arch=('i686' 'x86_64')
-url="https://sourceforge.net/projects/penguinsubtitleplayer/"
+url="https://github.com/carsonip/Penguin-Subtitle-Player/"
 license=('GPL3')
 depends=('qt5-base' 'libxkbcommon-x11' 'libsm') # qt5 and xcb plugin
 makedepends=('git' 'qt5-base') # git and qmake-qt5
@@ -19,7 +19,7 @@ pkgver() {
 	cd "$srcdir/${pkgname}"
 
 	# automatically update version from git
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')" # Git, tags available
+	printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')" # Git, tags available
 }
 
 build() {
