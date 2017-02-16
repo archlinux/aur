@@ -5,7 +5,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=grml-rescueboot
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="grub2 script to add grml iso images to the grub2 boot menu"
 url="http://wiki.grml.org/doku.php?id=rescueboot"
@@ -14,7 +14,7 @@ license=(GPL)
 depends=(grub)
 install="${pkgname}.install"
 source=("http://deb.grml.org/pool/main/g/${pkgname}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('5880a292a4f53116cb5da44f422b08a929889e3ea900858841c9448f33c01fca')
+sha256sums=('8b8ace20fc1294fcdedb9dd037ab9a9eb2a4a8e3df6d191bbd8c99b1781f5faa')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
