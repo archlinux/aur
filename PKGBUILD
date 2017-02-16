@@ -4,8 +4,8 @@
 
 pkgbase=linux-rc
 _srcname=linux-4.9
-_stable=4.9.9
-_patchver=4.9.10
+_stable=4.9.10
+_patchver=4.9.11
 pkgver=${_patchver}rc1
 _rcpatch=patch-${_patchver}-rc1
 pkgrel=1
@@ -32,9 +32,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'ec97e3bf8585865d409a804316b276a6b4e4939286de9757f99bfb41cf112078'
+            'd6350ace4757775a76f2b7f76ab1b16756587a2f6ab06182fee8125eb01dd3f4'
             'SKIP'
-            'f2846a2e7515b3d5fe8d1caff74b2c5f6524b7fcc3450b63bcbe3c87f9638438'
+            'ad7f98172a60c8755483bd0e6f73d05bc9e8aa46a6f4a12bff1544fb621a08ed'
             'SKIP'
             'b5c2a685667a884477904c9fb337d944667b6144720ac2a67d1116f711e70768'
             'ab6c0fab5b147fab9ccef90c62b963510e92fbd068a6a33b9619537243fedca4'
