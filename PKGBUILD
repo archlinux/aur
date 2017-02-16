@@ -1,7 +1,7 @@
 # Maintainer: Pavan Rikhi <pavan.rikhi@gmail.com>
 pkgname=lightdm-mini-greeter
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="A Minimal, Configurable, Single-User GTK3 LightDM Greeter"
 arch=('i686' 'x86_64')
 url="https://github.com/prikhi/lightdm-mini-greeter"
@@ -20,7 +20,7 @@ install=
 changelog=
 source=("https://github.com/prikhi/lightdm-mini-greeter/archive/$pkgver.zip")
 noextract=()
-sha256sums=('8c399f490023aa128ace35a22f6d200895db2fb3c75462c1a8db4788d4221e2c')
+sha256sums=('42703c8981c123b06b25a2891ed534c14805717f92a39e143d721719f9404a2f')
 validpgpkeys=()
 
 build() {
