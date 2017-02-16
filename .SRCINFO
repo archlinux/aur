@@ -1,7 +1,7 @@
 pkgbase = lightdm-mini-greeter
 	pkgdesc = A Minimal, Configurable, Single-User GTK3 LightDM Greeter
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prikhi/lightdm-mini-greeter
 	arch = i686
 	arch = x86_64
