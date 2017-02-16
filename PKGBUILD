@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=dcrdocs
-pkgver=20170209
+pkgver=20170216
 pkgrel=1
 pkgdesc="Documentation for Decred"
 arch=('any')
