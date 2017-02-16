@@ -27,15 +27,15 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
 
-  CPPFLAGS+=" -DLTM_DESC -DGMP_DESC" \
-  EXTRALIBS="${LDFLAGS} -ltommath -lgmp" \
+  export CPPFLAGS+=" -DLTM_DESC -DGMP_DESC"
+  export EXTRALIBS="${LDFLAGS} -ltommath -lgmp"
   make -f makefile.shared IGNORE_SPEED=1
 }
 
 check() {
   cd "${pkgname}-${pkgver}"
 
-  CPPFLAGS+=" -DLTM_DESC -DUSE_LTM -I./testprof" \
+  CPPFLAGS+=" -DUSE_LTM -I./testprof" \
   EXTRALIBS="${LDFLAGS} -L./.libs -L./testprof/.libs" \
   make -f makefile.shared test IGNORE_SPEED=1
   LD_LIBRARY_PATH="./.libs:./testprof/.libs" ./test
@@ -44,7 +44,7 @@ check() {
 package() {
   cd "${pkgname}-${pkgver}"
 
-  make -f makefile.shared DESTDIR="${pkgdir}" INSTALL_GROUP="root" install
+  make -f makefile.shared DESTDIR="${pkgdir}" INSTALL_GROUP="root" IGNORE_SPEED=1 install
 
   install -D -m 0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
