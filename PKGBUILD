@@ -6,8 +6,8 @@
 
 pkgname=luakit-git
 gitname=luakit
-pkgver=r2740.44e04aa
-pkgrel=2
+pkgver=r2741.306dc65
+pkgrel=1
 pkgdesc='fork of luakit using webkit2'
 arch=('x86_64' 'i686' 'armv7h')
 url='https://github.com/aidanholm/luakit'
@@ -48,6 +48,4 @@ build() {
 package() {
   cd "${srcdir}/${gitname}"
   make PREFIX=/usr DESTDIR="$pkgdir" install
-  chmod -x "$pkgdir/usr/share/pixmaps/luakit.png"
-  chmod -x "$pkgdir/usr/share/applications/luakit.desktop"
 }
