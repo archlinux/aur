@@ -2,20 +2,19 @@
 # Maintainer: hexchain <i@hexchain.org>
 
 _pypi_name=mypy
-pkgbase=python-${_pypi_name}
-pkgname=$pkgbase
+pkgname=${_pypi_name}
 pkgver=0.471
 pkgrel=3
 pkgdesc='Optional static typing for Python 2 and 3'
 url="https://github.com/python/mypy"
 arch=('any')
 license=('MIT')
-provides=('python-mypy-lang')
-conflicts=('python-mypy-lang')
+provides=('python-mypy-lang' 'python-mypy')
+conflicts=('python-mypy-lang' 'python-mypy')
 optdepends=('python-typed-ast-0.6.x: fast parser')
 source=(
     "$_pypi_name-$pkgver.tar.gz::https://pypi.org/packages/source/m/$_pypi_name/$_pypi_name-$pkgver.tar.gz"
-    "LICENSE::https://github.com/python/mypy/raw/v0.471/LICENSE")
+    "LICENSE::$url/raw/v0.471/LICENSE")
 
 package() {
     cd "$srcdir"
