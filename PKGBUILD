@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=bino-git
-pkgver=1.6.1.r8.gec826e6
+pkgver=1.6.5.r2.gd6ab95c
 pkgrel=1
 epoch=
 pkgdesc="Stereoscopic 3D video player with multi-display support."
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://bino3d.org/"
 license=('GPLv3')
 groups=()
-depends=('ffmpeg>=20110724' 'freealut' 'freeglut' 'glew' 'libass' 'qt5-base')
+depends=('ffmpeg' 'freealut' 'freeglut' 'glew' 'libass' 'qt5-base')
 makedepends=('git')
 optdepends=('lirc: for infrared remote control')
 checkdepends=()
