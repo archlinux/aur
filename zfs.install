@@ -12,7 +12,7 @@ post_upgrade() {
 
 check_initramfs() {
     echo ">>> Updating ZFS module dependencies"
-    depmod -a 4.4.48-1-lts
+    depmod -a 4.4.49-1-lts
     MK_CONF=$(grep -v '#' /etc/mkinitcpio.conf | grep zfs >/dev/null; echo $?);
     if [[ ${MK_CONF} == '0' ]]; then
         if [[ $1 == 'remove' ]]; then

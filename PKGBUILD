@@ -16,11 +16,11 @@
 #
 #
 pkgname="zfs-linux-lts"
-pkgver=0.6.5.9_4.4.48_1
+pkgver=0.6.5.9_4.4.49_1
 pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System."
-depends=("kmod" "spl-linux-lts" "zfs-utils-linux-lts" "linux-lts=4.4.48")
-makedepends=("linux-lts-headers=4.4.48")
+depends=("kmod" "spl-linux-lts" "zfs-utils-linux-lts" "linux-lts=4.4.49")
+makedepends=("linux-lts-headers=4.4.49")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.6.5.9/zfs-0.6.5.9.tar.gz")
@@ -37,8 +37,8 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
                 --libexecdir=/usr/lib/zfs-0.6.5.9 --with-config=kernel \
-                --with-linux=/usr/lib/modules/4.4.48-1-lts/build \
-                --with-linux-obj=/usr/lib/modules/4.4.48-1-lts/build
+                --with-linux=/usr/lib/modules/4.4.49-1-lts/build \
+                --with-linux-obj=/usr/lib/modules/4.4.49-1-lts/build
     make
 }
 
@@ -48,5 +48,5 @@ package() {
     cp -r "${pkgdir}"/{lib,usr}
     rm -r "${pkgdir}"/lib
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.4.48-1-lts/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/zfs-*/4.4.49-1-lts/Module.symvers
 }
