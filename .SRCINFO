@@ -1,13 +1,13 @@
 pkgbase = php-rql
 	pkgdesc = RethinkDB driver for PHP
-	pkgver = 2.0.1
+	pkgver = 2.3.0
 	pkgrel = 3
 	url = https://github.com/danielmewes/php-rql
 	arch = any
 	license = Apache License 2.0
 	depends = php
-	source = php-rql-2.0.1.tar.gz::https://github.com/danielmewes/php-rql/archive/2.0.1.tar.gz
-	sha512sums = 2e5fa5830ed95000435265f90780a97bdf810da0972656d6eddbb64ccfe9193eedc01183ba23e967cc78af3008dc1f2ff7b02f2ea5f69ad0f3eeb5e1084bf7c2
+	source = php-rql-2.3.0.tar.gz::https://github.com/danielmewes/php-rql/archive/2.3.0.tar.gz
+	sha512sums = a03baf1cff017703ca56ee2edb9a1525b2be7345b2eccceb5f1763aba57320e49b7794569142d62f241fce9aa444bea562dc270a11064ed51f4a025f8e9546a3
 
 pkgname = php-rql
 

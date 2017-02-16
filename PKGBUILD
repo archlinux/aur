@@ -1,7 +1,7 @@
 # Maintainer: Ruben Kelevra <ruben@freifunk-nrw.de>
 
 pkgname=php-rql
-pkgver=2.0.1
+pkgver=2.3.0
 pkgrel=3
 pkgdesc="RethinkDB driver for PHP"
 arch=(any)
@@ -10,7 +10,7 @@ _watch=('https://danielmewes.github.io/php-rql/','Documentation <small>v([\d.]*)
 license=('Apache License 2.0')
 depends=('php')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/danielmewes/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('2e5fa5830ed95000435265f90780a97bdf810da0972656d6eddbb64ccfe9193eedc01183ba23e967cc78af3008dc1f2ff7b02f2ea5f69ad0f3eeb5e1084bf7c2')
+sha512sums=('a03baf1cff017703ca56ee2edb9a1525b2be7345b2eccceb5f1763aba57320e49b7794569142d62f241fce9aa444bea562dc270a11064ed51f4a025f8e9546a3')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -24,8 +24,8 @@ package() {
     cd "$pkgname-$pkgver"
     echo 'cleaning up unneeded files...'
     rm composer.json README.md || true
-    rm -r tests docs src/pb4php || true
+    rm -r tests docs pb4php || true
     echo 'move files...'
     mkdir -p "${pkgdir}"/usr/include/php/
-    cp -a src/ "${pkgdir}"/usr/include/php/
+    cp -a rdb/ "${pkgdir}"/usr/include/php/
 }
