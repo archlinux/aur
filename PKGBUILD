@@ -1,12 +1,12 @@
 # Maintainer: Scott Hansen (firecat53) firecat4153 at gmail dot com
 _pkgname=networkmanager-dmenu
-_gitname=nmcli-dmenu
+_gitname=networkmanager-dmenu
 pkgname=$_pkgname-git
-pkgver=r9.0a6fa27
-pkgrel=4
+pkgver=r58.2770261
+pkgrel=1
 pkgdesc="Control NetworkManager via dmenu"
 arch=('any')
-url="https://github.com/firecat53/nmcli-dmenu"
+url="https://github.com/firecat53/networkmanager-dmenu"
 license=('MIT')
 depends=('python' 'networkmanager' 'python-gobject')
 makedepends=('git')
@@ -25,11 +25,11 @@ pkgver() {
 }
 
 package() {
-  install -Dm755 "$srcdir/$_pkgname/nmcli_dmenu" "$pkgdir/usr/bin/nmcli_dmenu"
+  install -Dm755 "$srcdir/$_pkgname/networkmanager_dmenu" "$pkgdir/usr/bin/networkmanager_dmenu"
   install -Dm644 "$srcdir/$_pkgname/LICENSE.txt" "$pkgdir/usr/share/license/$pkgname/LICENSE"
   install -Dm644 "$srcdir/$_pkgname/README.rst" "$pkgdir/usr/share/doc/$pkgname/README.rst"
   install -Dm644 "$srcdir/$_pkgname/config.ini.example" "$pkgdir/usr/share/doc/$pkgname/config.ini.example"
-  install -Dm644 "$srcdir/$_pkgname/nmcli_dmenu.desktop" "$pkgdir/usr/share/applications/nmcli_dmenu.desktop"
+  install -Dm644 "$srcdir/$_pkgname/networkmanager_dmenu.desktop" "$pkgdir/usr/share/applications/networkmanager_dmenu.desktop"
 }
 
 # vim:set ts=2 sw=2 et:
