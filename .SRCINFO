@@ -1,7 +1,7 @@
 pkgbase = networkmanager-dmenu-git
 	pkgdesc = Control NetworkManager via dmenu
-	pkgver = r9.0a6fa27
-	pkgrel = 5
+	pkgver = r58.2770261
+	pkgrel = 1
 	url = https://github.com/firecat53/networkmanager-dmenu
 	install = networkmanager-dmenu.install
 	arch = any
