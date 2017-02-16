@@ -11,7 +11,6 @@ makedepends=("yaourt"
 )
 depends=("rk-desktop"
 "handbrake"
-"btsync"
 "google-chrome"
 "tor-browser-en"
 "firefox"
@@ -19,16 +18,10 @@ depends=("rk-desktop"
 "google-earth"
 "acroread"
 "gimp"
-"libreoffice-writer"
-"libreoffice-impress"
-"libreoffice-gnome"
-"libreoffice-calc"
-"libreoffice-draw"
-
+"libreoffice-still"
 )
 conflicts=(
 "rk-server-basic"
 )
 optdepends=(
-"rk-desktop-favapps: Authors personal app-list"
 )
