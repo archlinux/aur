@@ -97,7 +97,7 @@ build() {
 package_xorg-server-common-dev() {
   pkgdesc="Xorg server common files - Bleeding edge version"
   depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap xorg-fonts-misc)
-  provides=(xorg-server-common)
+  provides=(xorg-server-common=$pkgver)
   conflicts=(xorg-server-common)
 
   cd "${_pkgbase}-${pkgver}"
@@ -121,7 +121,7 @@ package_xorg-server-dev() {
 
   # see src/xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel-dev pkg
-  provides=('xorg-server' 'X-ABI-VIDEODRV_VERSION=23' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server')
+  provides=("xorg-server=$pkgver" 'X-ABI-VIDEODRV_VERSION=23' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server')
   conflicts=('xorg-server' 'nvidia-utils<375.26-3' 'glamor-egl' 'xf86-video-modesetting')
   replaces=('glamor-egl' 'xf86-video-modesetting')
   install=xorg-server-dev.install
@@ -151,7 +151,7 @@ package_xorg-server-xephyr-dev() {
   pkgdesc="A nested X server that runs as an X application - Bleeding edge version"
   depends=(libxfont2 libgl libepoxy libunwind libsystemd libxv pixman xorg-server-common-dev xcb-util-image
            xcb-util-renderutil xcb-util-wm xcb-util-keysyms)
-  provides=(xorg-server-xephyr)
+  provides=(xorg-server-xephyr=$pkgver)
   conflicts=(xorg-server-xephyr)
 
   cd "${_pkgbase}-${pkgver}/hw/kdrive"
@@ -166,7 +166,7 @@ package_xorg-server-xephyr-dev() {
 package_xorg-server-xvfb-dev() {
   pkgdesc="Virtual framebuffer X server - Bleeding edge version"
   depends=(libxfont2 libunwind libsystemd pixman xorg-server-common-dev xorg-xauth libgl)
-  provides=(xorg-server-xvfb)
+  provides=(xorg-server-xvfb=$pkgver)
   conflicts=(xorg-server-xvfb)
 
   cd "${_pkgbase}-${pkgver}/hw/vfb"
@@ -184,7 +184,7 @@ package_xorg-server-xvfb-dev() {
 package_xorg-server-xnest-dev() {
   pkgdesc="A nested X server that runs as an X application - Bleeding edge version"
   depends=(libxfont2 libxext libunwind pixman xorg-server-common-dev libsystemd)
-  provides=(xorg-server-xnest)
+  provides=(xorg-server-xnest=$pkgver)
   conflicts=(xorg-server-xnest)
 
   cd "${_pkgbase}-${pkgver}/hw/xnest"
@@ -199,7 +199,7 @@ package_xorg-server-xnest-dev() {
 package_xorg-server-xdmx-dev() {
   pkgdesc="Distributed Multihead X Server and utilities - Bleeding edge version"
   depends=(libxfont2 libxi libxaw libxrender libdmx libxfixes libunwind pixman xorg-server-common-dev)
-  provides=(xorg-server-xdmx)
+  provides=(xorg-server-xdmx=$pkgver)
   conflicts=(xorg-server-xdmx)
 
   cd "${_pkgbase}-${pkgver}/hw/dmx"
@@ -214,7 +214,7 @@ package_xorg-server-xdmx-dev() {
 package_xorg-server-xwayland-dev() {
   pkgdesc="Run X clients under Wayland - Bleeding edge version"
   depends=(libxfont libepoxy libgl pixman xorg-server-common-dev)
-  provides=(xorg-server-xwayland)
+  provides=(xorg-server-xwayland=$pkgver)
   conflicts=(xorg-server-xwayland)
 
   cd "${_pkgbase}-${pkgver}/hw/xwayland"
@@ -235,7 +235,7 @@ package_xorg-server-devel-dev() {
            resourceproto scrnsaverproto presentproto
            # not technically required but almost every Xorg pkg needs it to build
            xorg-util-macros)
-  provides=(xorg-server-devel)
+  provides=(xorg-server-devel=$pkgver)
   conflicts=(xorg-server-devel)
 
   cd "${_pkgbase}-${pkgver}"
