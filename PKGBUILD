@@ -90,7 +90,7 @@ build() {
 package_xorg-server-common-git() {
   pkgdesc="Xorg server common files - Git"
   depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap xorg-fonts-misc)
-  provides=(xorg-server-common)
+  provides=(xorg-server-common=$pkgver)
   conflicts=(xorg-server-common)
 
   cd xserver
@@ -117,7 +117,7 @@ package_xorg-server-git() {
   for VAR in VIDEODRV XINPUT EXTENSION; do
     provides+=("X-ABI-${VAR}_VERSION=$(grep -Po "${VAR}_V.*\(\K[^)]*" xserver/hw/xfree86/common/xf86Module.h |& sed 's/, /./')")
   done
-  provides+=('xorg-server' 'x-server')
+  provides+=("xorg-server=$pkgver" 'x-server')
   conflicts=('xorg-server' 'nvidia-utils<375.26-3' 'glamor-egl' 'xf86-video-modesetting')
   replaces=('glamor-egl' 'xf86-video-modesetting')
   install=xorg-server-git.install
@@ -151,7 +151,7 @@ package_xorg-server-xephyr-git() {
   pkgdesc="A nested X server that runs as an X application - Git"
   depends=(libxfont2 libgl libepoxy libunwind libsystemd libxv pixman xorg-server-common-git xcb-util-image
            xcb-util-renderutil xcb-util-wm xcb-util-keysyms)
-  provides=(xorg-server-xephyr)
+  provides=(xorg-server-xephyr=$pkgver)
   conflicts=(xorg-server-xephyr)
 
   cd xserver/hw/kdrive
@@ -166,7 +166,7 @@ package_xorg-server-xephyr-git() {
 package_xorg-server-xvfb-git() {
   pkgdesc="Virtual framebuffer X server - Git"
   depends=(libxfont2 libunwind libsystemd pixman xorg-server-common-git xorg-xauth libgl)
-  provides=(xorg-server-xvfb)
+  provides=(xorg-server-xvfb=$pkgver)
   conflicts=(xorg-server-xvfb)
 
   cd xserver/hw/vfb
@@ -184,7 +184,7 @@ package_xorg-server-xvfb-git() {
 package_xorg-server-xnest-git() {
   pkgdesc="A nested X server that runs as an X application - Git"
   depends=(libxfont2 libxext libunwind pixman xorg-server-common-git libsystemd)
-  provides=(xorg-server-xnest)
+  provides=(xorg-server-xnest=$pkgver)
   conflicts=(xorg-server-xnest)
 
   cd xserver/hw/xnest
@@ -199,7 +199,7 @@ package_xorg-server-xnest-git() {
 package_xorg-server-xdmx-git() {
   pkgdesc="Distributed Multihead X Server and utilities - Git"
   depends=(libxfont2 libxi libxaw libxrender libdmx libxfixes libunwind pixman xorg-server-common-git)
-  provides=(xorg-server-xdmx)
+  provides=(xorg-server-xdmx=$pkgver)
   conflicts=(xorg-server-xdmx)
 
   cd xserver/hw/dmx
@@ -214,7 +214,7 @@ package_xorg-server-xdmx-git() {
 package_xorg-server-xwayland-git() {
   pkgdesc="Run X clients under Wayland - Git"
   depends=(libxfont libepoxy libgl pixman xorg-server-common-git)
-  provides=(xorg-server-xwayland)
+  provides=(xorg-server-xwayland=$pkgver)
   conflicts=(xorg-server-xwayland)
 
   cd xserver/hw/xwayland
@@ -235,7 +235,7 @@ package_xorg-server-devel-git() {
            resourceproto scrnsaverproto presentproto
            # not technically required but almost every Xorg pkg needs it to build
            xorg-util-macros)
-  provides=(xorg-server-devel)
+  provides=(xorg-server-devel=$pkgver)
   conflicts=(xorg-server-devel)
 
   cd xserver

@@ -77,10 +77,10 @@ pkgname = xorg-server-git
 	depends = libpciaccess
 	depends = libdrm
 	depends = libxshmfence
+	provides = xorg-server=1.19.0.99.r15877.g3f9507e
 	provides = X-ABI-VIDEODRV_VERSION=23
 	provides = X-ABI-XINPUT_VERSION=24.1
 	provides = X-ABI-EXTENSION_VERSION=10.0
-	provides = xorg-server
 	provides = x-server
 	conflicts = xorg-server
 	conflicts = nvidia-utils<375.26-3
@@ -103,7 +103,7 @@ pkgname = xorg-server-xephyr-git
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	depends = xcb-util-keysyms
-	provides = xorg-server-xephyr
+	provides = xorg-server-xephyr=1.19.0.99.r15877.g3f9507e
 	conflicts = xorg-server-xephyr
 
 pkgname = xorg-server-xdmx-git
@@ -117,7 +117,7 @@ pkgname = xorg-server-xdmx-git
 	depends = libunwind
 	depends = pixman
 	depends = xorg-server-common-git
-	provides = xorg-server-xdmx
+	provides = xorg-server-xdmx=1.19.0.99.r15877.g3f9507e
 	conflicts = xorg-server-xdmx
 
 pkgname = xorg-server-xvfb-git
@@ -129,7 +129,7 @@ pkgname = xorg-server-xvfb-git
 	depends = xorg-server-common-git
 	depends = xorg-xauth
 	depends = libgl
-	provides = xorg-server-xvfb
+	provides = xorg-server-xvfb=1.19.0.99.r15877.g3f9507e
 	conflicts = xorg-server-xvfb
 
 pkgname = xorg-server-xnest-git
@@ -140,7 +140,7 @@ pkgname = xorg-server-xnest-git
 	depends = pixman
 	depends = xorg-server-common-git
 	depends = libsystemd
-	provides = xorg-server-xnest
+	provides = xorg-server-xnest=1.19.0.99.r15877.g3f9507e
 	conflicts = xorg-server-xnest
 
 pkgname = xorg-server-xwayland-git
@@ -150,7 +150,7 @@ pkgname = xorg-server-xwayland-git
 	depends = libgl
 	depends = pixman
 	depends = xorg-server-common-git
-	provides = xorg-server-xwayland
+	provides = xorg-server-xwayland=1.19.0.99.r15877.g3f9507e
 	conflicts = xorg-server-xwayland
 
 pkgname = xorg-server-common-git
@@ -159,7 +159,7 @@ pkgname = xorg-server-common-git
 	depends = xorg-xkbcomp
 	depends = xorg-setxkbmap
 	depends = xorg-fonts-misc
-	provides = xorg-server-common
+	provides = xorg-server-common=1.19.0.99.r15877.g3f9507e
 	conflicts = xorg-server-common
 
 pkgname = xorg-server-devel-git
@@ -184,6 +184,6 @@ pkgname = xorg-server-devel-git
 	depends = scrnsaverproto
 	depends = presentproto
 	depends = xorg-util-macros
-	provides = xorg-server-devel
+	provides = xorg-server-devel=1.19.0.99.r15877.g3f9507e
 	conflicts = xorg-server-devel
 
