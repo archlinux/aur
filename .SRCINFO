@@ -25,7 +25,7 @@ pkgname = lib32-nvidia-libgl-beta
 	pkgdesc = NVIDIA driver library symlinks for 'lib32-nvidia-utils-beta'
 	depends = lib32-nvidia-utils-beta
 	depends = nvidia-libgl-beta
-	provides = lib32-nvidia-libgl
+	provides = lib32-nvidia-libgl=378.13
 	provides = lib32-libgl
 	provides = lib32-libegl
 	provides = lib32-libgles
@@ -40,7 +40,7 @@ pkgname = lib32-opencl-nvidia-beta
 	depends = lib32-zlib
 	depends = lib32-gcc-libs
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = lib32-opencl-nvidia
+	provides = lib32-opencl-nvidia=378.13
 	provides = lib32-opencl-driver
 	conflicts = lib32-opencl-nvidia
 
