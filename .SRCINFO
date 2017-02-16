@@ -164,7 +164,7 @@ pkgname = xorg-server-common-dev
 	depends = xorg-xkbcomp
 	depends = xorg-setxkbmap
 	depends = xorg-fonts-misc
-	provides = xorg-server-common=1.19.1
+	provides = xorg-server-common=1.19.1-5
 	conflicts = xorg-server-common
 
 pkgname = xorg-server-devel-dev
