@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Leclercq <nicolas.private@gmail.com>
 
 pkgname='telegraf'
-pkgver='1.2.0'
+pkgver='1.2.1'
 pkgrel='1'
 pkgdesc='Server-level metric gathering agent for InfluxDB'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -32,6 +32,9 @@ build()
   cd "$GOPATH/src/github.com/influxdata/telegraf"
 
   echo "Downloading dependencies"
+  # dirty fix for brocken gopkg
+  # https://github.com/niemeyer/gopkg/issues/50
+  git config --global http.https://gopkg.in.followRedirects true
   go get github.com/sparrc/gdm
   gdm restore
 
