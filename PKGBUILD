@@ -2,9 +2,9 @@
 # Contributor: Vladislav Odobesku <positivcheg94@gmail.com>
 
 pkgname=python-tensorflow
-pkgver=1.0.0rc1
+pkgver=1.0.0
 pkgrel=1
-_pkgver=1.0.0-rc1
+_pkgver=1.0.0
 
 pkgdesc="Computation using data flow graphs for scalable machine learning."
 url="https://tensorflow.org/"
@@ -20,7 +20,7 @@ optdepends=('cuda: GPU support' 'cudnn: GPU support')
 
 source=("https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.zip"
         'python-tensorflow.sh')
-md5sums=('4d229be8e533c28634b332e38283d3a1'
+md5sums=('8084c173dbba01382fef2d82b5bcf382'
          '0c9dae7ad2ef6ea234b6aa178a688d7b')
 
 build() {
@@ -44,7 +44,7 @@ build() {
   export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-5
 
   ./configure
-  bazel build -c opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
+  bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
   bazel-bin/tensorflow/tools/pip_package/build_pip_package $srcdir/tmp
   bazel shutdown
 }
