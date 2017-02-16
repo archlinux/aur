@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-lts-knock
 _pkgbasever=4.4-gnu
-_pkgver=4.4.47-gnu
+_pkgver=4.4.48-gnu
 _knockpatchver=4.2_2
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -67,7 +67,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
 sha512sums=('1fc096b3fad2e97a68f9406c4c9c83a98dd33b2fd1bafc8c637a405e871f16822bc769a928825f2335cf4a1eb69a063f82bbf0ad5e4ef7ceee308e87b07da47e'
             'SKIP'
-            'fe98d084282fb9be08b01c2e3bf8f8ea752dfe8c1604a0ca6ad1defbef5cfc6bf53add28271cb94d01221104af2fc086bc7f96d079885ec183a064d9f26be6b9'
+            'bfa7b93a86816907a17f34b6d2d6d7dfab3c07bd5b57fbc23605da466bdb06e74099a4cfa9e8affcea05bcd76853df8bc11b52964b0fd85f23d103bec7e1e990'
             'SKIP'
             '4c15ccd7d9fac7200a8d9ffbf95c230aa4e30b61affb82019d47b34a1f9d6a52ee4db326ba4367167b52aba00aea687cf9942efe2e0a9c19884f7598acad0864'
             'SKIP'
@@ -87,7 +87,7 @@ sha512sums=('1fc096b3fad2e97a68f9406c4c9c83a98dd33b2fd1bafc8c637a405e871f16822bc
             '71d113b43bf543963ec9c4b9ae44bd57196317d59010aa253fe3897a032584980958272fba07751deda700159832444c847c17c2c82eedab0e67f10d358448c4'
             'd7b612f3217e4b370eaa6bc928530fcf1cba9f6c5269273b5b5d198c63e128cbb44529fcaed2d732706de1a521a44b0f459f2a3b2695b25666cbfa7a9cb7f058'
             'fe62880ef520f2302577c6a76f832324b3a6d42f05d032058892dd4374662ad499727dd0366b45e1087bf650d08a5efa65089c13840b67abdc947fe033c8a275'
-            'e998f10407b7c881829ca6c480aa61d259298738e1f4a8cabac388ba1dadac9424fd0a73a7e10f5094e1a343320d4c257b8557abb5906b228fc7d29128b83b48'
+            '377e03cec0aea17acfa2fc2f4634c043a23486935f2aa2deb56b8093d76ce0262bd96cf27eec8b9bc00b50f336be64e3ce0a5b2b09c06f650e84a88febac147e'
             'SKIP'
             '835f3a288f85c553f908fd8d9f19614430dd83ade2a5dd1bb10686f38b0f823e5f079a9f014bbb3aa7af2f831af34b918124a826bce73d32a191c53deb37061a'
             '1ad04131f7b882ef405a73a3fc8ad21eaf9fa4dd7f160524bfd04f175f6f61379453f7968f34e3d567f6753d1ea74c4714febe70fe85cd37fcfc96f9b078e1ad'
