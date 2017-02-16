@@ -1,7 +1,7 @@
 pkgbase = nvidia-lqx
 	pkgdesc = NVIDIA drivers for linux-lqx.
-	pkgver = 375.26
-	pkgrel = 2
+	pkgver = 378.13
+	pkgrel = 1
 	url = http://www.nvidia.com/
 	install = nvidia-lqx.install
 	arch = i686
@@ -12,14 +12,14 @@ pkgbase = nvidia-lqx
 	depends = linux-lqx>=4.9
 	depends = linux-lqx<4.10
 	depends = nvidia-libgl
-	depends = nvidia-utils=375.26
+	depends = nvidia-utils=378.13
 	conflicts = nvidia-304xx-lqx
 	conflicts = nvidia-340xx-lqx
 	options = !strip
-	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/375.26/NVIDIA-Linux-x86-375.26.run
-	md5sums_i686 = b0706e88ad173f6b9c7bd2e5a838c163
-	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/375.26/NVIDIA-Linux-x86_64-375.26-no-compat32.run
-	md5sums_x86_64 = 5595fb385e41638c5118784114b03d9a
+	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/378.13/NVIDIA-Linux-x86-378.13.run
+	md5sums_i686 = dd1077750af9a067739ec291fb24175f
+	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/378.13/NVIDIA-Linux-x86_64-378.13-no-compat32.run
+	md5sums_x86_64 = fe4d25b19a780a690cafc8e3b7c0113f
 
 pkgname = nvidia-lqx
 
