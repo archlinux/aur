@@ -2,9 +2,9 @@
 # Maintainer: Maddie Zhan <maddie@emzee.be>
 
 pkgname=overture
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
-pkgdesc="A dns upstream switcher written in golang in order to purify dns records"
+pkgdesc="A DNS upstream switcher written in Go in order to purify DNS records"
 arch=("i686" "x86_64" "armv6h" "armv7h")
 url="https://github.com/holyshawn/overture"
 license=("MIT")
@@ -25,10 +25,10 @@ source=("git+https://github.com/holyshawn/${pkgname}.git#tag=$pkgver"
 
 sha256sums=("SKIP"
             "58e26e8037056729d27f37cd13852e13e9b9766146eaf0e736b6b0c00cdec279"
-            "2a0f448eb1fc19955ff96d4fcd3b3ec330b506a9299c337a98b90fffa2c1e4ec"
+            "20bae2de8a95e5699a4786483bcf519f640b4ca7e4225a88f5aecc895d4b9be9"
             "46c344510738143bd83057494273cf78095743070ad05d80a8d985098b2ff7ec"
             "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-            "ca67d84f95b598e73c1ea89e514c5efe987b92a7ea725dd91e16850c95901892")
+            "d352b84514e2a9d37f69a83d515d39f88b084198690ca615302dacf58fd06023")
 
 _goroot="/usr/lib/go"
 

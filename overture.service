@@ -1,5 +1,5 @@
 [Unit]
-Description=A dns upstream switcher written in golang in order to purify dns records
+Description=A DNS upstream switcher written in Go in order to purify DNS records
 After=network.target
 
 [Service]
