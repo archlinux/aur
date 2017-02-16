@@ -12,7 +12,7 @@ arch=('any')
 license=('MIT')
 provides=('python-mypy-lang')
 conflicts=('python-mypy-lang')
-depends=('python-typed-ast-0.6.x')
+optdepends=('python-typed-ast-0.6.x: fast parser')
 source=(
     "$_pypi_name-$pkgver.tar.gz::https://pypi.org/packages/source/m/$_pypi_name/$_pypi_name-$pkgver.tar.gz"
     "LICENSE::https://github.com/python/mypy/raw/v0.471/LICENSE")
