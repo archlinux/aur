@@ -1,6 +1,6 @@
 # Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
 pkgname="nzbhydra"
-pkgver=0.2.201
+pkgver=0.2.202
 pkgrel=1
 pkgdesc="Meta search for NZB indexers"
 arch=('any')
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/theotherp/nzbhydra/archive/
         'nzbhydra.install'
         'nzbhydra.sysusers')
 
-sha256sums=('ce322cbba2b10c5bf2bffc33f28bd251a9528af3507e957523ca915e39b00108'
+sha256sums=('082426dd4fb1d7df108201bbe549921abd0fa9dd460059106dadf9d36d7bba77'
             '91552953d0d956101136cd3165f217de4d14eb65042b7dd3e9a09c8657319436'
             '9035c3c2a7d773ddadefb207cc0690629283f60903189ad595dd8de098c4457f'
             'f1d2028ef593ce367438fed6520d4387482da74e45aacafc72c028a2a0337614'
