@@ -1,7 +1,7 @@
 pkgbase = shutter
 	pkgdesc = A featureful screenshot tool (formerly gscrot)
 	pkgver = 0.93.1
-	pkgrel = 9
+	pkgrel = 10
 	url = http://shutter-project.org/
 	arch = any
 	license = GPL3
@@ -36,6 +36,7 @@ pkgbase = shutter
 	optdepends = perl-gtk2-appindicator: AppIndicators support
 	optdepends = perl-path-class: Imgur and Dropbox upload support
 	optdepends = perl-lwp-protocol-https: Imgur and Dropbox upload support
+	optdepends = perö-net-oauth: Imgur and Dropbox upload support
 	optdepends = bc: 3D Rotate and 3D Reflection plugins support
 	source = http://shutter-project.org/wp-content/uploads/releases/tars/shutter-0.93.1.tar.gz
 	source = CVE-2015-0854.patch

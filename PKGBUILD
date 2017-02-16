@@ -8,7 +8,7 @@
 
 pkgname=shutter
 pkgver=0.93.1
-pkgrel=9
+pkgrel=10
 pkgdesc="A featureful screenshot tool (formerly gscrot)"
 arch=('any')
 url="http://shutter-project.org/"
@@ -25,6 +25,7 @@ optdepends=('gnome-web-photo: web screenshot support'
 		'perl-gtk2-appindicator: AppIndicators support'
 		'perl-path-class: Imgur and Dropbox upload support'
 		'perl-lwp-protocol-https: Imgur and Dropbox upload support'
+		'perö-net-oauth: Imgur and Dropbox upload support'
 		'bc: 3D Rotate and 3D Reflection plugins support')
 source=("http://shutter-project.org/wp-content/uploads/releases/tars/$pkgname-$pkgver.tar.gz"
         CVE-2015-0854.patch
