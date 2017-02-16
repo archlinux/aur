@@ -112,7 +112,7 @@ package_opencl-nvidia-full-beta-all() {
   pkgdesc="NVIDIA's OpenCL implemention for 'nvidia-utils-full-beta-all'"
   depends=('zlib')
   optdepends=('opencl-headers: headers necessary for OpenCL development')
-  provides=('opencl-nvidia' 'opencl-driver')
+  provides=("opencl-nvidia=$pkgver" 'opencl-driver')
   conflicts=('opencl-nvidia')
   cd $_pkg
 
@@ -132,7 +132,7 @@ package_opencl-nvidia-full-beta-all() {
 package_nvidia-libgl-full-beta-all() {
   pkgdesc="NVIDIA driver library symlinks for 'nvidia-utils-full-beta-all'"
   depends=('nvidia-utils-full-beta-all')
-  provides=('nvidia-libgl' 'libgl' 'libegl' 'libgles')
+  provides=("nvidia-libgl=$pkgver" 'libgl' 'libegl' 'libgles')
   conflicts=('nvidia-libgl' 'libgl' 'libegl' 'libgles')
   cd $_pkg
 
@@ -178,7 +178,7 @@ package_nvidia-utils-full-beta-all() {
               'opencl-nvidia-full-beta-all: OpenCL support'
               'xorg-server-devel: nvidia-xconfig'
               'egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.0.1)')
-  provides=("nvidia-utils=$pkgver" 'nvidia-settings' 'libglvnd' 'vulkan-driver')
+  provides=("nvidia-utils=$pkgver" "nvidia-settings=$pkgver" 'libglvnd' 'vulkan-driver')
   conflicts=('nvidia-utils' 'nvidia-settings' 'libglvnd' 'xorg-server<1.19.1-3')
   backup=('etc/X11/xorg.conf.d/20-nvidia.conf')
   install=$pkgname.install
@@ -327,7 +327,7 @@ package_nvidia-utils-full-beta-all() {
 package_nvidia-full-beta-all() {
   pkgdesc="Full NVIDIA drivers' package for all kernels on the system (drivers and shared utilities and libraries) (beta version)"
   depends=("nvidia-utils-full-beta-all>=$pkgver" 'libgl')
-  provides=('nvidia')
+  provides=("nvidia=$pkgver")
   conflicts=('nvidia-96xx' 'nvidia-173xx' 'nvidia')
   install=$pkgname.install
 
@@ -370,7 +370,7 @@ package_lib32-opencl-nvidia-full-beta-all() {
   pkgdesc="NVIDIA's OpenCL implemention for 'lib32-nvidia-utils-full-beta-all' "
   depends=('lib32-zlib' 'lib32-gcc-libs')
   optdepends=('opencl-headers: headers necessary for OpenCL development')
-  provides=('lib32-opencl-nvidia' 'lib32-opencl-driver')
+  provides=("lib32-opencl-nvidia=$pkgver" 'lib32-opencl-driver')
   conflicts=('lib32-opencl-nvidia')
   cd $_pkg
 
@@ -388,41 +388,29 @@ package_lib32-opencl-nvidia-full-beta-all() {
 
 package_lib32-nvidia-libgl-full-beta-all() {
   pkgdesc="NVIDIA driver library symlinks for 'lib32-nvidia-utils-full-beta-all'"
-  depends=('lib32-nvidia-utils-beta' 'nvidia-libgl-beta')
-  provides=('lib32-nvidia-libgl' 'lib32-libgl' 'lib32-libegl' 'lib32-libgles')
+  depends=('lib32-nvidia-utils-full-beta-all' 'nvidia-libgl-full-beta-all')
+  provides=("lib32-nvidia-libgl=$pkgver" 'lib32-libgl' 'lib32-libegl' 'lib32-libgles')
   conflicts=('lib32-nvidia-libgl' 'lib32-libgl' 'lib32-libegl' 'lib32-libgles')
   replaces=('lib32-nvidia-utils<=313.26-1')
   cd $_pkg
 
-  # libGL (link)
-  install -d "$pkgdir"/usr/lib32/
-  ln -s /usr/lib32/nvidia/libGL.so.1.0.0 "$pkgdir"/usr/lib32/libGL.so.1.0.0
-  ln -s libGL.so.1.0.0 "$pkgdir"/usr/lib32/libGL.so.1
-  ln -s libGL.so.1.0.0 "$pkgdir"/usr/lib32/libGL.so
+  mkdir -p "${pkgdir}/usr/lib/"
 
-  # GLX (link)
-  ln -s /usr/lib32/nvidia/libGLX.so.0 "$pkgdir"/usr/lib32/libGLX.so.0
-  ln -s libGLX.so.0 "$pkgdir"/usr/lib32/libGLX.so.$pkgver
-  ln -s libGLX.so.0 "$pkgdir"/usr/lib32/libGLX.so
-  ln -s libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libGLX_indirect.so.0
+  # libGL (link)
+  ln -s /usr/lib32/nvidia/libGL.so.1.0.0 "$pkgdir"/usr/lib32/libGL.so.1
+  ln -s libGL.so.1 "$pkgdir"/usr/lib32/libGL.so
 
   # EGL (link)	
   ln -s /usr/lib32/nvidia/libEGL.so.1 "$pkgdir"/usr/lib32/libEGL.so.1
-  ln -s libEGL.so.1 "$pkgdir"/usr/lib32/libEGL.so.$pkgver
   ln -s libEGL.so.1 "$pkgdir"/usr/lib32/libEGL.so
 
   # OpenGL ES 1 (link)
   ln -s /usr/lib32/nvidia/libGLESv1_CM.so.1 "$pkgdir"/usr/lib32/libGLESv1_CM.so.1
-  ln -s libGLESv1_CM.so.1 "$pkgdir"/usr/lib32/libGLESv1_CM.so.$pkgver
   ln -s libGLESv1_CM.so.1 "$pkgdir"/usr/lib32/libGLESv1_CM.so
 
   # OpenGL ES 2 (link)
   ln -s /usr/lib32/nvidia/libGLESv2.so.2 "$pkgdir"/usr/lib32/libGLESv2.so.2
-  ln -s libGLESv2.so.2 "$pkgdir"/usr/lib32/libGLESv2.so.$pkgver
   ln -s libGLESv2.so.2 "$pkgdir"/usr/lib32/libGLESv2.so
-
-  # VDPAU (link)
-  ln -s /usr/lib32/vdpau/libvdpau_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libvdpau_nvidia.so
 
   # License (link)
   install -d "$pkgdir"/usr/share/licenses/
@@ -444,8 +432,9 @@ package_lib32-nvidia-utils-full-beta-all() {
   install -Dm755 32/libOpenGL.so.0 "$pkgdir"/usr/lib32/libOpenGL.so.0
 
   # GLX
-  install -Dm755 32/libGLX.so.0 "$pkgdir"/usr/lib32/nvidia/libGLX.so.0
+  install -Dm755 32/libGLX.so.0 "$pkgdir"/usr/lib32/libGLX.so.0
   install -Dm755 32/libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libGLX_nvidia.so.$pkgver
+  ln -s libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libGLX_indirect.so.0
 
   # EGL
   install -Dm755 32/libEGL.so.1 "$pkgdir"/usr/lib32/nvidia/libEGL.so.1
