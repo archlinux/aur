@@ -6,7 +6,7 @@
  
 pkgname="osmc-installer-bin"
 pkgver="1.2.7"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="OSMC Installer allows you to install OSMC on a variety of devices."
 url="http://osmc.tv"
 arch=('i686' 'x86_64')
