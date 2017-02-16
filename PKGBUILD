@@ -1,12 +1,12 @@
 # Maintainer: Johannes Lange (<firstname>DOT<lastname>ATcern.ch>)
 pkgname=cernbox
 pkgver=2.1.1_1.1
-pkgrel=1
-pkgdesc="Synchronization client for CERN's CERNBox cloud service (based on ownCloud)"
+pkgrel=2
+pkgdesc="Synchronization client for CERN's CERNBox cloud service (based on ownCloud). Note: CERN IT does not provide official support for Arch Linux. Use at your own risk."
 arch=('x86_64')
 url="http://cernbox.web.cern.ch/"
 license=('GPL')
-depends=('neon' 'qtwebkit')
+depends=('neon' 'qt5-webkit')
 provides=('ocsync' 'cernboxsync')
 
 _repo='http://cernbox.cern.ch/cernbox/doc/Linux/repo/openSUSE_13.2/x86_64/'
