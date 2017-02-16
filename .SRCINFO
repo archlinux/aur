@@ -1,7 +1,7 @@
 pkgbase = graphscad
         pkgdesc = An OpenSCAD-based Nodal editor to create customizable objects for 3D printing
         pkgver = 1.0.7
-        pkgrel = 1
+        pkgrel = 2
         url = http://graphscad.blogspot.com/
         arch = i686
         arch = x86_64

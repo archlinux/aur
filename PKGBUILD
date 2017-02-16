@@ -1,7 +1,7 @@
 # Maintainer: David Pflug <david at pflug.email>
 pkgname=graphscad
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="An OpenSCAD-based Nodal editor to create customizable objects for 3D printing"
 arch=('i686' 'x86_64')
 url="http://graphscad.blogspot.com/"
@@ -16,7 +16,7 @@ package() {
   install -D -m755 graphscad "$pkgdir/opt/graphscad/graphscad"
   mkdir -p "$pkgdir/usr/bin"
   ln -s /opt/graphscad/graphscad "$pkgdir/usr/bin/graphscad"
-  cp -R display.scad examples_graphscad graphscadsettings icons plugins "$pkgdir/opt/graphscad/"
+  cp -R graphscadfiles graphscadsettings icons plugins "$pkgdir/opt/graphscad/"
 }
 
 # vim:set ts=2 sw=2 et:
