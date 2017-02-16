@@ -1,7 +1,7 @@
 # Maintainer: Shane "SajeOne" Brown <contact@shane-brown.ca>
 pkgname=python-colorthief
-pkgver=0.2
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="A Python module for grabbing the color palette from an image."
 arch=('any')
 url="https://github.com/fengsp/color-thief-py"
@@ -10,7 +10,7 @@ depends=('python' 'python-pillow')
 makedepends=('python-setuptools')
 provides=('python-colorthief')
 source=("https://github.com/fengsp/color-thief-py/archive/$pkgver.tar.gz")
-sha256sums=('7a7e00bb62ca4698b268b5aea0368d337443c4b10affd4e9f6b80b64a957eeff')
+sha256sums=('f2c47cad43809048adb9be1e4e63519d32e3b68532e8f0ab7bf46a58ddf7d099')
 _gitname=color-thief-py
 
 package() {
