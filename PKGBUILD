@@ -3,7 +3,7 @@
 pkgname=php55-xdebug
 _pkgbase="${pkgname#php55-}"
 _phpbase="${pkgname#-xdebug}"
-pkgver=2.4.1
+pkgver=2.5.0
 _PKGVER="$(echo "${pkgver}" | tr '[:lower:]' '[:upper:]')"
 pkgrel=1
 pkgdesc="php55 debugging extension"
@@ -16,7 +16,7 @@ backup=('etc/php55/conf.d/xdebug.ini')
 provides=("${_pkgbase}=${pkgver}-${pkgrel}" "php-${_pkgbase}=${pkgver}-${pkgrel}")
 source=("http://www.xdebug.org/files/${_pkgbase}-${pkgver}.tgz"
         "xdebug.ini")
-md5sums=('03f52af10108450942c9c0ac3b72637f'
+md5sums=('5306da5948e195c2e4585c9abd7741f9'
          '0e601dfb867b248f28d6a647611e4400')
 
 build() {
