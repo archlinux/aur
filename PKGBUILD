@@ -56,7 +56,7 @@ package_opencl-nvidia-beta() {
   pkgdesc="NVIDIA's OpenCL implemention for 'nvidia-utils-beta'"
   depends=('zlib')
   optdepends=('opencl-headers: headers necessary for OpenCL development')
-  provides=('opencl-nvidia' 'opencl-driver')
+  provides=("opencl-nvidia=$pkgver" 'opencl-driver')
   conflicts=('opencl-nvidia')
   cd $_pkg
 
@@ -76,7 +76,7 @@ package_opencl-nvidia-beta() {
 package_nvidia-libgl-beta() {
   pkgdesc="NVIDIA driver library symlinks for 'nvidia-utils-beta'"
   depends=('nvidia-utils-beta')
-  provides=('nvidia-libgl' 'libgl' 'libegl' 'libgles')
+  provides=("nvidia-libgl=$pkgver" 'libgl' 'libegl' 'libgles')
   conflicts=('nvidia-libgl' 'libgl' 'libegl' 'libgles')
   cd $_pkg
 
@@ -122,7 +122,7 @@ package_nvidia-utils-beta() {
               'opencl-nvidia-beta: OpenCL support'
               'xorg-server-devel: nvidia-xconfig'
               'egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.0.1)')
-  provides=("nvidia-utils=$pkgver" 'nvidia-settings' 'libglvnd' 'vulkan-driver')
+  provides=("nvidia-utils=$pkgver" "nvidia-settings=$pkgver" 'libglvnd' 'vulkan-driver')
   conflicts=('nvidia-utils' 'nvidia-settings' 'libglvnd')
   backup=('etc/X11/xorg.conf.d/20-nvidia.conf')
   install=$pkgname.install

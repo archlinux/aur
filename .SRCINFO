@@ -25,7 +25,7 @@ pkgname = nvidia-utils-beta
 	optdepends = xorg-server-devel: nvidia-xconfig
 	optdepends = egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.0.1)
 	provides = nvidia-utils=378.13
-	provides = nvidia-settings
+	provides = nvidia-settings=378.13
 	provides = libglvnd
 	provides = vulkan-driver
 	conflicts = nvidia-utils
@@ -42,7 +42,7 @@ pkgname = nvidia-egl-wayland-beta
 pkgname = nvidia-libgl-beta
 	pkgdesc = NVIDIA driver library symlinks for 'nvidia-utils-beta'
 	depends = nvidia-utils-beta
-	provides = nvidia-libgl
+	provides = nvidia-libgl=378.13
 	provides = libgl
 	provides = libegl
 	provides = libgles
@@ -55,7 +55,7 @@ pkgname = opencl-nvidia-beta
 	pkgdesc = NVIDIA's OpenCL implemention for 'nvidia-utils-beta'
 	depends = zlib
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = opencl-nvidia
+	provides = opencl-nvidia=378.13
 	provides = opencl-driver
 	conflicts = opencl-nvidia
 
