@@ -6,14 +6,14 @@
 #       is around 13GB.
 #
 pkgname=quartus-standard
-pkgver=16.1.0.196
+pkgver=16.1.2.203
+_oldver=16.1.0.196
 pkgrel=1
 pkgdesc="Quartus Prime Standard Edition design software for Altera FPGA's. Modular package"
 arch=('i686' 'x86_64')
 url="http://dl.altera.com/?edition=standard"
 license=('custom')
 
-_build_nr="${pkgver##*.}"
 _alteradir="/opt/altera"
 
 # According to the installer script, these dependencies are needed for the installer
@@ -40,17 +40,17 @@ then
    'lib32-libxtst')
 fi
 
-makedepends=('bash' 'upx')
-
-source=("http://download.altera.com/akdlm/software/acdsinst/${pkgver%.*.*}/${_build_nr}/ib_installers/QuartusSetup-${pkgver}-linux.run"
+source=("http://download.altera.com/akdlm/software/acdsinst/${_oldver%.*.*}/${_oldver##*.}/ib_installers/QuartusSetup-${_oldver}-linux.run"
+	"http://download.altera.com/akdlm/software/acdsinst/${pkgver%.*}/${pkgver##*.}/update/QuartusSetup-${pkgver}-linux.run"
 	"quartus.sh" "quartus.desktop" "51-usbblaster.rules" "quartus.install")
 md5sums=('0ff8c051c26f7b4c15bf5d203efae13e'
+         '32dd0d62ef5a93c16fc9e6a5846dbdcc'
          '067c444cae7fe31d3608245712b43ce8'
          '32b17cb8b992fc2dccd33d87f0dcd8ce'
          'f5744dc4820725b93917e3a24df13da9'
          'a331a81c44aed062a7af6d28542c3d82')
 
-options=('strip' 'upx') # Stripping and UPX will takes ages, I'd avoid it.
+options=(!strip !upx) # Stripping and UPX will takes ages, I'd avoid it.
 install='quartus.install'
 PKGEXT=".pkg.tar" # Do not compress
 
@@ -58,27 +58,27 @@ package() {
     cd "${srcdir}"
 
     # TODO: Make bogus $DISPLAY
+    chmod a+x "QuartusSetup-${_oldver}-linux.run"
     chmod a+x "QuartusSetup-${pkgver}-linux.run"
-    DISPLAY="" ./"QuartusSetup-${pkgver}-linux.run" --mode unattended --unattendedmodeui none --installdir "${pkgdir}/${_alteradir}"
+    echo "installing the base of ${_oldver}"
+    DISPLAY="" ./"QuartusSetup-${_oldver}-linux.run" --mode unattended --unattendedmodeui none --installdir "${pkgdir}/${_alteradir}"
+    cat <<EOF
+Due to some technical limits, the update has to be installed with manual intervention.
+In the following installation guide:
+- say no when asked of "Allow patches to be uninstalled", if ever asked
+- when asked of "the installation to update", use the following path: 
+
+${pkgdir}/${_alteradir}
+
+You should copy it elsewhere NOW as the installation will flush the console.
+EOF
+    read -p "Press enter to continue"
+    echo "launching the installer"
+    ./"QuartusSetup-${pkgver}-linux.run"
 
     # Remove uninstaller and install logs since we have a working package management
     rm -r "${pkgdir}${_alteradir}/uninstall"
     rm -r "${pkgdir}${_alteradir}/logs"
-
-    # Remove for now parts that are not needed for core quartus:
-    # TODO: Split instead of removing
-
-    # Nios2Eds - no comments on this abomination
-    rm -rf ${pkgdir}/${_alteradir}/nios2eds
-
-    # Altera IP cores - you probably don't want to use them anyway (see opencores)
-    rm -rf ${pkgdir}/${_alteradir}/ip
-
-    # HLS (HLD) - high level synthesis
-    rm -rf ${pkgdir}/${_alteradir}/hld
-
-    # Help (Nearly 1GiB)
-    #rm -rf ${pkgdir}/${_alteradir}/quartus/common/help
 
     # Replace altera directory in integration files
     sed -i.bak "s,_alteradir,$_alteradir,g" quartus.sh
