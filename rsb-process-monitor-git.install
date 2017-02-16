@@ -1,0 +1,10 @@
+post_install() {
+	post_upgrade
+    echo "NOTE: To run rsb-process-monitor network monitoring as normal user you have to add yourself into rsbprocmon group"
+}
+
+post_upgrade() {
+    getent group rsbprocmon >/dev/null 2>&1 ||  groupadd -g 777 rsbprocmon &>/dev/null
+
+    setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip CAP_DAC_OVERRIDE+eip' usr/bin/rsb-process-monitor2.0-net
+}

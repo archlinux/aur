@@ -1,8 +1,9 @@
 pkgbase = rsb-process-monitor-git
 	pkgdesc = RSB process monitoring
 	pkgver = 2.0.r7.g668403b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.cor-lab.org/projects/rsb-performance-monitor
+	install = rsb-process-monitor-git.install
 	arch = i686
 	arch = x86_64
 	license = LGPL3
