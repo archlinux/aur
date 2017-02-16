@@ -5,12 +5,12 @@
 #       PKGBUILD will install the full Altera suite now. Be aware that the space requirement
 #       is around 13GB.
 #
-pkgname=quartus-lite
-pkgver=16.0.0.211
+pkgname=quartus-standard
+pkgver=16.1.0.196
 pkgrel=1
-pkgdesc="Quartus Prime Lite Edition design software for Altera FPGA's. Modular package"
+pkgdesc="Quartus Prime Standard Edition design software for Altera FPGA's. Modular package"
 arch=('i686' 'x86_64')
-url="http://dl.altera.com/?edition=lite"
+url="http://dl.altera.com/?edition=standard"
 license=('custom')
 
 _build_nr="${pkgver##*.}"
@@ -42,18 +42,18 @@ fi
 
 makedepends=('bash' 'upx')
 
-optdepends=('quartus-lite-max: MAXII, MAXV device support'
-            'quartus-lite-max10: MAX10 device support'
-            'quartus-lite-cyclone: Cyclone IV device support'
-            'quartus-lite-cyclonev: Cyclone V device support'
-            'quartus-lite-arria: Arria II device support'
-            'quartus-lite-modelsim: ModelSim-Altera Edition'
+optdepends=('quartus-max: MAXII, MAXV device support'
+            'quartus-max10: MAX10 device support'
+            'quartus-cyclone: Cyclone IV device support'
+            'quartus-cyclonev: Cyclone V device support'
+            'quartus-arria: Arria II device support'
+            'quartus-modelsim: ModelSim-Altera Edition'
            )
            # Pkgnames are taken directly from altera downloads file names
 
-source=("http://download.altera.com/akdlm/software/acdsinst/${pkgver%.*.*}/${_build_nr}/ib_installers/QuartusLiteSetup-${pkgver}-linux.run"
+source=("http://download.altera.com/akdlm/software/acdsinst/${pkgver%.*.*}/${_build_nr}/ib_installers/QuartusSetup-${pkgver}-linux.run"
 	"quartus.sh" "quartus.desktop" "51-usbblaster.rules" "quartus.install")
-md5sums=('40e83bf5586ca027005728609214173a'
+md5sums=('0ff8c051c26f7b4c15bf5d203efae13e'
          '067c444cae7fe31d3608245712b43ce8'
          '32b17cb8b992fc2dccd33d87f0dcd8ce'
          'f5744dc4820725b93917e3a24df13da9'
@@ -67,8 +67,8 @@ package() {
     cd "${srcdir}"
 
     # TODO: Make bogus $DISPLAY
-    chmod a+x "QuartusLiteSetup-${pkgver}-linux.run"
-    DISPLAY="" ./"QuartusLiteSetup-${pkgver}-linux.run" --mode unattended --unattendedmodeui none --installdir "${pkgdir}/${_alteradir}"
+    chmod a+x "QuartusSetup-${pkgver}-linux.run"
+    DISPLAY="" ./"QuartusSetup-${pkgver}-linux.run" --mode unattended --unattendedmodeui none --installdir "${pkgdir}/${_alteradir}"
 
     # Remove uninstaller and install logs since we have a working package management
     rm -r "${pkgdir}${_alteradir}/uninstall"
