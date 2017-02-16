@@ -2,13 +2,14 @@
 
 pkgname=libpurple-lurch-git
 _pkgname=lurch
-pkgver=r31.3ac3915
-pkgrel=1
+pkgver=r37.fa0ceeb
+pkgrel=2
 pkgdesc='Plugin for libpurple (Pidgin, Adium, etc) implementing OMEMO (using axolotl)'
 arch=('i686' 'x86_64')
 url="https://github.com/gkdr/lurch"
 license=('GPL')
 depends=('libpurple' 'mxml' 'libxml2' 'sqlite' 'libgcrypt')
+makedepends=('git' 'cmake')
 source=("$_pkgname::git+https://github.com/gkdr/lurch.git")
 sha256sums=('SKIP')
 
