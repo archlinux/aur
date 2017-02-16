@@ -36,10 +36,9 @@ check() {
   cd "${pkgname}-${pkgver}"
 
   CPPFLAGS+=" -DLTM_DESC -DUSE_LTM -I./testprof" \
-  EXTRALIBS="${LDFLAGS} -L./.libs -L./testprof/.libs \
-    '-Wl,--rpath,\$\${ORIGIN}/.libs:\$\${ORIGIN}/testprof/.libs'" \
+  EXTRALIBS="${LDFLAGS} -L./.libs -L./testprof/.libs" \
   make -f makefile.shared test IGNORE_SPEED=1
-  ./test
+  LD_LIBRARY_PATH="./.libs:./testprof/.libs" ./test
 }
 
 package() {
