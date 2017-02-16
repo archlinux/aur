@@ -1,0 +1,15 @@
+post_install(){
+  echo "==> Running"
+  echo "      REGoth -g "path/to/gothic1or2" -w startworld.zen"
+  echo "    Additionally, for a list of possible commands, run REGoth --help."
+  echo "==> Examples"
+  echo "      Gothic 1 - Overworld:       REGoth -g "path/to/gothic1" -w world.zen"
+  echo "      Gothic 1 - Oldmine:         REGoth -g "path/to/gothic1" -w oldmine.zen"
+  echo "      Gothic 1 - Freemine:        REGoth -g "path/to/gothic1" -w freemine.zen"
+  echo "      Gothic 1 - Sleeper temple:  REGoth -g "path/to/gothic1" -w orctemple.zen"
+  echo "      Gothic 2 - Overworld:       REGoth -g "path/to/gothic2" -w newworld.zen"
+  echo "      Gothic 2 - Valley of mines: REGoth -g "path/to/gothic2" -w oldworld.zen"
+  echo "      Gothic 2 - Addonworld:      REGoth -g "path/to/gothic2" -w addonworld.zen"
+  echo "      Gothic 2 - Dragonisland:    REGoth -g "path/to/gothic2" -w dragonisland.zen"
+}
+
