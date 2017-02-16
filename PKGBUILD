@@ -4,7 +4,7 @@
 # Contributor: Adrian Hühn <adrian.huehn@web.de>
 
 pkgname=ccnet-server
-pkgver=6.0.7
+pkgver=6.0.8
 pkgrel=1
 pkgdesc="A framework for writing networked applications in C."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -14,7 +14,7 @@ depends=('libevent' 'libzdb' 'libsearpc' 'libldap' 'python2')
 makedepends=('vala' 'libmariadbclient')
 source=("${pkgname}-v${pkgver}-server.tar.gz::${url}/archive/v${pkgver}-server.tar.gz"
         "libccnet.pc.patch")
-sha256sums=('8e8fc38f8f8b3fc7aac7133c835b80df11fb219cf9b60b830cef9025a5daad64'
+sha256sums=('4a0569cc1b0a056f58a3cfb8023d7a1c35bf898d960250ebf67544d637ca9d45'
             '66c3b02c3981db6a80819e0ae103bedadf8dfdf81405a7f75a9cba714acf973f')
 
 prepare () {
