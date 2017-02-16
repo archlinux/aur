@@ -1,13 +1,14 @@
 # Maintainer: Yen Chi Hsuan <yan12125 at gmail.com>
 _pkgname=SimpleITK
 pkgname=simpleitk
-pkgver=0.10.0
+pkgver=1.0rc1
+_pypkgver=1.0.0rc1
 pkgrel=1
 pkgdesc="A simplified layer built on top of ITK, intended to facilitate its use in rapid prototyping, education, interpreted languages."
 arch=('i686' 'x86_64')
 url="http://www.simpleitk.org/"
 license=('Apache')
-depends=('gcc-libs' 'insight-toolkit')
+depends=('gcc-libs' 'insight-toolkit>=4.11.0')
 makedepends=('cmake' 'clang' 'git' 'lua51' 'mono' 'python' 'python-pip' 'python-virtualenv' 'python-numpy' 'r' 'ruby' 'swig' 'tcl' 'tk')
 optdepends=(
     'lua51: Lua bindings'
@@ -26,7 +27,7 @@ source=(
 )
 md5sums=('SKIP'
          '2888336abcbb122a49cb5817ac98f36c'
-         '9cde58e7639dadbca34e501234619ef3')
+         'a25fe3562664dbef433a3f2cc20d6c39')
 
 prepare() {
     cd "$_pkgname"
@@ -72,7 +73,7 @@ package() {
     make DESTDIR="$pkgdir/" install
 
     pip install --root="$pkgdir/" --ignore-installed \
-        "$_builddir/Wrapping/Python/dist/$_pkgname-$pkgver"*"-linux_$CARCH.whl"
+        "$_builddir/Wrapping/Python/dist/$_pkgname-$_pypkgver"*"-linux_$CARCH.whl"
 
     install -d -Dm755 "$pkgdir/usr/lib/lua/5.1/"
     install -Dm755 "$_builddir/Wrapping/Lua/lib/$_pkgname.so" "$pkgdir/usr/lib/lua/5.1/$_pkgname.so"

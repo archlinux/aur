@@ -44,6 +44,6 @@
 -if ( LUA_FOUND )
 +find_package ( Lua51 ${_QUIET} )
 +if ( LUA51_FOUND )
-   set( WRAP_LUA_DEFAULT ON )
+   set( WRAP_LUA_DEFAULT ${WRAP_DEFAULT} )
  else()
    set( WRAP_LUA_DEFAULT OFF )
