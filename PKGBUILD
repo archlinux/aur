@@ -1,7 +1,7 @@
 # Maintainer: Tyler Swagar <buttpickle69@shaw.ca>
 
 pkgname=ttf-oswald
-pkgver=4.001
+pkgver=4.002
 pkgrel=1
 pkgdesc='Sans-serif typeface from Google by Vernon Adams'
 arch=('any')
@@ -9,19 +9,19 @@ url='https://fonts.google.com/specimen/Oswald'
 license=('custom:SIL Open Font License v1.1')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 conflicts=('ttf-google-fonts-git' 'ttf-google-fonts-opinionated-git' 'otf-oswald-ib')
-source=("Oswald-Bold-${pkgver}.ttf::https://github.com/google/fonts/raw/1f813c20622b89489ad4c98fddf000ef9bce9420/ofl/oswald/Oswald-Bold.ttf"
-        "Oswald-ExtraLight-${pkgver}.ttf::https://github.com/google/fonts/raw/1f813c20622b89489ad4c98fddf000ef9bce9420/ofl/oswald/Oswald-ExtraLight.ttf"
-        "Oswald-Light-${pkgver}.ttf::https://github.com/google/fonts/raw/1f813c20622b89489ad4c98fddf000ef9bce9420/ofl/oswald/Oswald-Light.ttf"
-        "Oswald-Medium-${pkgver}.ttf::https://github.com/google/fonts/raw/1f813c20622b89489ad4c98fddf000ef9bce9420/ofl/oswald/Oswald-Medium.ttf"
-        "Oswald-Regular-${pkgver}.ttf::https://github.com/google/fonts/raw/1f813c20622b89489ad4c98fddf000ef9bce9420/ofl/oswald/Oswald-Regular.ttf"
-        "Oswald-SemiBold-${pkgver}.ttf::https://github.com/google/fonts/raw/1f813c20622b89489ad4c98fddf000ef9bce9420/ofl/oswald/Oswald-SemiBold.ttf"
-        "${pkgname}-${pkgver}-OFL.txt::https://github.com/google/fonts/raw/1f813c20622b89489ad4c98fddf000ef9bce9420/ofl/oswald/OFL.txt")
-sha256sums=('a132cf257ea787454a1cff60c482babb467ff1dce161b129300cd59b3ec64163'
-            'a1ed647ab58ddd2a747738bfd950a87123aa76e2769322a6224fc15dac3b20e8'
-            'b4f90c91fbf8da0a02842ccdffcf6a1a2434d2702bc74bf90407f364b0122695'
-            'b15009f650d552895bac690f6293495d4c8c1ad34e80901b1fc8901cc502a073'
-            '9580184a1c067b8956bde91a042c92b55ad5ea8dbeec264d5e500228c11de8ee'
-            '7b42f33c7b4aec067ec396d0294d21e5c39e7c1b6c47f246356b1a6f0424e2bd'
+source=("Oswald-Bold-${pkgver}.ttf::https://github.com/google/fonts/raw/5209d4cc57eca34da2e44737f95123604556e591/ofl/oswald/Oswald-Bold.ttf"
+        "Oswald-ExtraLight-${pkgver}.ttf::https://github.com/google/fonts/raw/5209d4cc57eca34da2e44737f95123604556e591/ofl/oswald/Oswald-ExtraLight.ttf"
+        "Oswald-Light-${pkgver}.ttf::https://github.com/google/fonts/raw/5209d4cc57eca34da2e44737f95123604556e591/ofl/oswald/Oswald-Light.ttf"
+        "Oswald-Medium-${pkgver}.ttf::https://github.com/google/fonts/raw/5209d4cc57eca34da2e44737f95123604556e591/ofl/oswald/Oswald-Medium.ttf"
+        "Oswald-Regular-${pkgver}.ttf::https://github.com/google/fonts/raw/5209d4cc57eca34da2e44737f95123604556e591/ofl/oswald/Oswald-Regular.ttf"
+        "Oswald-SemiBold-${pkgver}.ttf::https://github.com/google/fonts/raw/5209d4cc57eca34da2e44737f95123604556e591/ofl/oswald/Oswald-SemiBold.ttf"
+        "${pkgname}-${pkgver}-OFL.txt::https://github.com/google/fonts/raw/5209d4cc57eca34da2e44737f95123604556e591/ofl/oswald/OFL.txt")
+sha256sums=('28e94e414c2ea0d2737da6e84e365c32dcfd09f2bfbda462d423a1acc631bab7'
+            'b37a9470920d1ce7239bed62fcec385df35a8c6cdf9c599f378f9a06fcc2b638'
+            '29205b8c745a797c26668dd7dcb278e5b4229243f1f2c1e4a17d1e650436da07'
+            '5bea277ea02e090fe67391a4ebe8f0537e7c5392ccb56f3a3546b3492f4a7987'
+            'd680c432a29b6f5d3080d9028027cfc33406d07230030e81b89a42d2e6aea541'
+            '242aff7abe692ac637ec2fde70efe395f2a07c5b990f47741730f9230087ad02'
             'fac1ddc0a0264245b37fe869ffcd92befc93129633525c545dab06ae8e22aa99')
 
 package() {
