@@ -1,7 +1,7 @@
 # Maintainer: Andreas Schreiner <andreas.schreiner@sonnenmulde.at>
 
 pkgname=freedv-svn
-pkgver=2007
+pkgver=3036
 pkgrel=1
 pkgdesc="Digital Voice for Radio Amateurs"
 arch=('i686' 'x86_64')
@@ -9,9 +9,10 @@ license=('GPL2')
 url="http://freedv.org/"
 depends=('glibc' 'portaudio' 'hamlib' 'sox' 'wxgtk' 'codec2-svn')
 makedepends=('subversion' 'cmake')
-source=('svn+https://freetel.svn.sourceforge.net/svnroot/freetel/fdmdv2')
+conflicts=('freedv')
+source=("svn+https://svn.code.sf.net/p/freetel/code/freedv-dev/")
 md5sums=('SKIP')
-_svnmod=fdmdv2
+_svnmod=freedv-dev
 
 pkgver() {
   cd "$srcdir/$_svnmod"
@@ -24,7 +25,7 @@ build() {
   mkdir -p build_linux
   cd build_linux
   cmake ../ -DCMAKE_INSTALL_PREFIX=/usr
-  make 
+  make
 }
 
 package() {

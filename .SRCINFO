@@ -1,6 +1,6 @@
 pkgbase = freedv-svn
 	pkgdesc = Digital Voice for Radio Amateurs
-	pkgver = 2007
+	pkgver = 3036
 	pkgrel = 1
 	url = http://freedv.org/
 	arch = i686
@@ -14,7 +14,8 @@ pkgbase = freedv-svn
 	depends = sox
 	depends = wxgtk
 	depends = codec2-svn
-	source = svn+https://freetel.svn.sourceforge.net/svnroot/freetel/fdmdv2
+	conflicts = freedv
+	source = svn+https://svn.code.sf.net/p/freetel/code/freedv-dev/
 	md5sums = SKIP
 
 pkgname = freedv-svn
