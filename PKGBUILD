@@ -7,9 +7,9 @@ _gemname=rest-client
 pkgname=ruby-${_gemname}
 pkgver=1.8.0
 pkgrel=1
-pkgdesc=("Simple HTTP and REST client for Ruby, inspired by the Sinatra microframework style of specifying actions")
+pkgdesc="Simple HTTP and REST client for Ruby, inspired by the Sinatra microframework style of specifying actions"
 arch=("any")
-url=("https://github.com/rest-client/rest-client")
+url="https://github.com/rest-client/rest-client"
 license=('MIT')
 depends=('ruby>=1.9.2'
          'ruby-http-cookie>=1.0.2'
