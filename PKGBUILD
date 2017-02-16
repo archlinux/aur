@@ -2,7 +2,7 @@
 
 pkgname=private-internet-access-vpn
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
