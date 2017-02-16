@@ -1,12 +1,12 @@
 pkgbase = leao
 	pkgdesc = O Carnê-leão é o programa para a tributação do Imposto sobre a Renda das Pessoas Físicas, sob a forma do recolhimento mensal obrigatório, pelo contribuinte, pessoa física, residente no Brasil, que receber rendimentos de outra pessoa física ou do exterior.
 	pkgver = 2017.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.receita.fazenda.gov.br
 	install = leao.install
 	arch = any
 	license = custom
-	depends = java-runtime=8
+	depends = java-environment
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	optdepends = receitanet: Para envio do IRPF

@@ -3,7 +3,7 @@ DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
  
 pkgname=leao
 pkgver=2017.1.0
-pkgrel=1
+pkgrel=2
 license=('custom')
  
 arch=(any)
@@ -24,7 +24,7 @@ md5sums=('2c68ac1ad195f129c54ace1387a41829'
          'b0a5c911f4a3ce472699aa8b81d21b3d'
          'c5f9c5c6d9acd1d0db7effb401f4e685')
  
-depends=('java-runtime=8' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('java-environment' 'hicolor-icon-theme' 'desktop-file-utils')
 optdepends=('receitanet: Para envio do IRPF')
 install=$pkgname.install
  
