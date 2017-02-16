@@ -1,7 +1,7 @@
 # Maintainer: Pavan Rikhi <pavan.rikhi@gmail.com>
 pkgname=lightdm-mini-greeter
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Minimal, Configurable, Single-User GTK3 LightDM Greeter"
 arch=('i686' 'x86_64')
 url="https://github.com/prikhi/lightdm-mini-greeter"
@@ -26,7 +26,7 @@ validpgpkeys=()
 build() {
     cd "$pkgname-$pkgver"
     ./autogen.sh
-    ./configure --datadir=/usr/share --bindir=/bin --sysconfdir=/etc
+    ./configure --datadir=/usr/share --bindir=/usr/bin --sysconfdir=/etc
     make
 }
 
