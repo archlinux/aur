@@ -8,13 +8,13 @@ pkgname=keybase-git
 pkgdesc='the Keybase Go client, filesystem, and GUI'
 license=('BSD')
 url='https://keybase.io'
-pkgver=1.0.18+12408.700a5df
+pkgver=1.0.18+12447.3c2c98c
 pkgver() {
   "$srcdir/client/packaging/linux/arch/keybase_git_version.sh"
 }
 pkgrel=1
 arch=('i686' 'x86_64')
-depends=(fuse gconf)
+depends=(fuse gconf libxss)
 makedepends=(go yarn npm git rsync)
 # keybase-release is a deprecated AUR package
 conflicts=(keybase keybase-release keybase-bin)
