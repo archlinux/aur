@@ -1,0 +1,7 @@
+# Maintainer: Thomas Gläßle <t_glaessle@gmx.de>
+
+post_install() {
+  depmod -a
+}
+
+# vim:set ts=2 sw=2 et:
