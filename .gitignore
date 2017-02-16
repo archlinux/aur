@@ -2,4 +2,5 @@
 pkg/
 src/
 *.tar.gz
+*.tar.xz
 prepare_upload.sh
