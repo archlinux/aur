@@ -1,5 +1,4 @@
 # Maintainer: 0strodamus <0strodamus at cox dot net>
-# Contributor: Eric Vidal <eric@obarun.org>
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
@@ -8,7 +7,7 @@ pkgname=('xorg-server-nosystemd' 'xorg-server-xephyr-nosystemd' 'xorg-server-xdm
 		 'xorg-server-xnest-nosystemd' 'xorg-server-xwayland-nosystemd' 'xorg-server-common-nosystemd' 'xorg-server-devel-nosystemd')
 _pkgbase=xorg-server
 pkgver=1.19.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
@@ -22,6 +21,7 @@ makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 
              'libxshmfence' 'libunwind' 'wayland-protocols')
 source=(https://xorg.freedesktop.org/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
         bug99358.patch
+        nvidia-add-modulepath-support.patch
         xvfb-run
         xvfb-run.1)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
@@ -30,16 +30,20 @@ validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
 sha256sums=('79ae2cf39d3f6c4a91201d8dad549d1d774b3420073c5a70d390040aa965a7fb'
             'SKIP'
             'f46a9d1a5ac43c5359fbd8c57b6e64b0bd313116b5cb638527bfe3701e6c3904'
+            '914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
 
 prepare() {
   cd "${_pkgbase}-${pkgver}"
 
+  # merged upstream in trunk
+  patch -Np1 -i ../nvidia-add-modulepath-support.patch
+
   # https://bugs.freedesktop.org/show_bug.cgi?id=99358
   # https://bugs.archlinux.org/task/52808
   patch -Np1 -i ../bug99358.patch
-}
+  }
 
 build() {
   cd "${_pkgbase}-${pkgver}"
@@ -111,7 +115,8 @@ package_xorg-server-common-nosystemd() {
 
 package_xorg-server-nosystemd() {
   pkgdesc="Xorg X server"
-  depends=('libepoxy' 'libxfont2' 'pixman' 'xorg-server-common-nosystemd' 'libunwind' 'dbus-nosystemd' 'libgl' 'xf86-input-evdev')
+  depends=('libepoxy' 'libxfont2' 'pixman' 'xorg-server-common-nosystemd' 'libunwind' 'dbus-nosystemd' 'libgl' 'xf86-input-evdev'
+           libpciaccess libdrm libxshmfence) # FS#52949
   # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
   provides=('X-ABI-VIDEODRV_VERSION=23' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server' 'xorg-server')
@@ -124,10 +129,6 @@ package_xorg-server-nosystemd() {
 
   # distro specific files must be installed in /usr/share/X11/xorg.conf.d
   install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d"
-
-  # Needed for non-mesa drivers, libgl will restore it
-  mv "${pkgdir}/usr/lib/xorg/modules/extensions/libglx.so" \
-     "${pkgdir}/usr/lib/xorg/modules/extensions/libglx.xorg"
 
   rm -rf "${pkgdir}/var"
 
