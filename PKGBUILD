@@ -13,7 +13,7 @@ provides=('supercollider')
 url="http://supercollider.github.io/"
 license=('GPL3')
 depends=('jack' 'fftw' 'cwiid' 'qtwebkit')
-makedepends=('cmake' 'ruby' 'vim' 'emacs' 'git')
+makedepends=('cmake' 'ruby' 'vim' 'emacs' 'git' 'qt5-tools')
 optdepends=('emacs: emacs interface'
             'gedit: gedit interface'
             'vim: vim interface'
