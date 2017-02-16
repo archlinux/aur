@@ -2,7 +2,7 @@
 # Contributer: Christian Hesse <mail@eworm.de>
 
 pkgname=freecad-git
-pkgver=0.17pre.r1771.gf944ab3
+pkgver=0.17pre.r3401.g99fa203f3
 pkgrel=1
 epoch=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url='http://www.freecadweb.org/'
 license=('LGPL')
 depends=('boost-libs' 'curl' 'hicolor-icon-theme' 'libspnav' 'opencascade'
-         'med' 'xerces-c' 'python2-pivy' 'python2-pyside' 'qtwebkit'
+         'med' 'xerces-c' 'python2-pivy' 'python2-pyside'
 	 'libtheora' 'shared-mime-info' 'vtk-qt4' 'jsoncpp')
 makedepends=('git' 'boost' 'cmake' 'coin' 'python2-pyside-tools'
              'desktop-file-utils' 'eigen' 'gcc-fortran' 'swig' 'patch')
@@ -18,15 +18,12 @@ optdepends=('python2-matplotlib'
             'pycollada-git: Create, edit and load COLLADA documents.')
 provides=('freecad')
 conflicts=('freecad')
-install=freecad.install
 source=("$pkgname::git+https://github.com/FreeCAD/FreeCAD.git"
-	"freecad.install"
         "freecad.desktop"
 	"freecad.xml"
 	"fem-rpath.patch")
 md5sums=('SKIP'
-         '2fad48203f96f1e7cb97934ea20ed848'
-         '0a4d0635dbd97d9f594ac8e927284316'
+         '7e781d41e90a1c137930e47672996a52'
          'c2f4154c8e4678825411de8e7fa54c6b'
          '99a41687a9ba980eea86aee4345d9a1d')
 
@@ -69,6 +66,12 @@ package() {
 	ln -s "/opt/freecad/bin/FreeCADCmd" "$pkgdir/usr/bin/freecadcmd"
 
 	# Install pixmaps and desktop shortcut.
+	for i in 16 32 48 64; do
+		install -Dm644 "src/Gui/Icons/freecad-icon-${i}.png" \
+			"$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/freecad.png"
+	done
+	install -Dm644 "src/Gui/Icons/freecad.svg" \
+		"$pkgdir/usr/share/icons/hicolor/scalable/apps/freecad.svg"
 	desktop-file-install \
 	  --dir="$pkgdir/usr/share/applications" "$srcdir/freecad.desktop"
 
