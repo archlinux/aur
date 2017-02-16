@@ -1,0 +1,24 @@
+pkgbase = spacefm
+	pkgdesc = Multi-panel tabbed file manager
+	pkgver = 1.0.5
+	pkgrel = 2
+	url = http://ignorantguru.github.com/spacefm/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	makedepends = gettext
+	depends = gtk3
+	depends = desktop-file-utils
+	depends = startup-notification
+	depends = ffmpegthumbnailer
+	optdepends = lsof: device processes
+	optdepends = wget: plugin download
+	optdepends = gksu: perform as root functionality
+	optdepends = udevil: mount as non-root user and mount networks
+	optdepends = udisks2: mount as non-root user
+	source = spacefm-1.0.5.tar.gz::https://github.com/IgnorantGuru/spacefm/archive/1.0.5.tar.gz
+	md5sums = 634763f4d3886a00088e06a4295982b2
+
+pkgname = spacefm
+
