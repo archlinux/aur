@@ -1,28 +1,17 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 
 _plugin_name=tab_tree
-_plugin_version=1.4.8
-
 pkgname=firefox-extension-tab-tree
-pkgver=${_plugin_version}
-pkgrel=2
+pkgver=1.4.9
+pkgrel=1
 pkgdesc="Tab Tree shows your tabs in the form of a tree structure. And also makes the user interface compact (optionally) to allow more space for the Web."
 arch=('any')
 license=('GPL3')
 url="https://github.com/traxium/tabtree"
-makedepends=("unzip")
-depends=("firefox>=38")
-source=("https://addons.mozilla.org/firefox/downloads/file/420541/${_plugin_name}-${pkgver}-fx.xpi")
-sha256sums=('c5d3c1ebc40cc0d46fd3db1106cbdfdb45ebaf6118b0a6338c26cd26e99a35fb')
-
-prepare() {
-  cd "${srcdir}"
-  unzip -qqo "${_plugin_name}-${pkgver}-fx.xpi" -d "${_plugin_name}-${pkgver}"
-}
+depends=("firefox>=26")
+source=("https://addons.mozilla.org/firefox/downloads/file/420541/${_plugin_name}-${pkgver}-fx-linux.xpi")
+sha512sums=('1e52b1289509b8aecb776728d769772e3a963352ed34d1e64c7502c8fabb843d500ba8294694a30d414686815d2c5ed0f390b194dbbf79fd21113532997884e2')
 
 package() {
-  cd "${srcdir}"
-  _extension_id="$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' ${_plugin_name}-${pkgver}/install.rdf)"
-  _extension_dest="${pkgdir}/usr/lib/firefox/browser/extensions/${_extension_id}"
-  install -Dm644 ${_plugin_name}-${pkgver}-fx.xpi "${_extension_dest}.xpi"
+  install -Dm644 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/TabsTree@traxium.xpi
 }
