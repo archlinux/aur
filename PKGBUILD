@@ -1,8 +1,9 @@
 # Maintainer: Márcio Sousa Rocha <marciosr10@gmail.com>
 # Baseado no PKGBUILD feito por Lara Maia <lara@craft.net.br>
+DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
  
 pkgname=irpf
-pkgver=2016.1.2
+pkgver=2016.1.3
 pkgrel=1
 license=('custom')
  
@@ -11,8 +12,7 @@ pkgdesc='Programa Oficial da Receita para elaboração do IRPF'
 url='http://www.receita.fazenda.gov.br'
  
 
-source=(http://downloadirpf.receita.fazenda.gov.br/irpf/2016/IRPF2016-1.2.zip
-
+source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2016/IRPF2016-1.3.zip
         Copyright
         $pkgname.png
         $pkgname.desktop
@@ -20,14 +20,14 @@ source=(http://downloadirpf.receita.fazenda.gov.br/irpf/2016/IRPF2016-1.2.zip
 		$pkgname)
  
 
-md5sums=('3a9e76542970ca894df22bf535335089'
+md5sums=('0ed3dabd844cbb83f79b004527033402'
          '56a8372f7b4e1e1e51a6fff6255365d4'
          '43d8c9617118578f03b2c4eeb1c72c57'
          '5c3f364ed6e30e8aac69ad4394deabba'
          '268c8018f98be22e77d8ca711140292a'
-		 '1393bb1d170a8aeaccfe0c2ee2c818cf')
+         '1393bb1d170a8aeaccfe0c2ee2c818cf')
  
-depends=('java-runtime=8' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('java-environment' 'hicolor-icon-theme' 'desktop-file-utils')
 optdepends=('receitanet: Para envio do IRPF')
 install=$pkgname.install
  
