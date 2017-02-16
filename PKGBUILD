@@ -3,7 +3,7 @@
 
 pkgname=selfoss-git
 _gitname=selfoss
-pkgver=2.16.r1.g5f9d438
+pkgver=2.16.r108.ge930324
 pkgrel=1
 pkgdesc="The new multipurpose rss reader, live stream, mashup, aggregation web application"
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('apache: server, depedency if not using lighttpd or nginx'
             'php-sqlite: dependency if using sqlite'
             'wget: for automatic updating feeds with cron'
             'curl: for automatic updating feeds with cron')
-makedepends=('git')
+makedepends=('composer' 'git')
 provides=('selfoss')
 conflicts=('selfoss')
 backup=('etc/webapps/selfoss/config.ini'
@@ -34,19 +34,23 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}"/${_gitname}/data/fulltextrss/standard
+  cd "${srcdir}"/${_gitname}
+
+  composer install --no-dev
   git submodule update --init
 
   # Fix error with translating pathname to UTF-8
-  mv p*rotin.com.txt perotin.com.txt
+  mv data/fulltextrss/standard/p{*,e}rotin.com.txt
 }
 
 package() {
-  rm -rf "${srcdir}"/${_gitname}/{.git,.gitignore,_docs,README.md}
-  rm -rf "${srcdir}"/${_gitname}/data/fulltextrss/standard/.git*
+  cd "${srcdir}"/${_gitname}
+
+  rm -rf .git* _docs README.md composer* package.json gruntfile.js .travis.yml
+  rm -rf data/fulltextrss/standard/.git*
 
   install -d "${pkgdir}"/usr/share/webapps/${_gitname}
-  cp -af "${srcdir}"/${_gitname}/. "${pkgdir}"/usr/share/webapps/${_gitname}/
+  cp -af . "${pkgdir}"/usr/share/webapps/${_gitname}/
 
   # create config in /etc
   install -d "${pkgdir}"/etc/webapps/${_gitname}
