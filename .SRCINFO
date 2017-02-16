@@ -8,6 +8,7 @@ pkgbase = emkatic
 	license = GPL3
 	makedepends = lazarus
 	makedepends = fpc
+	depends = gtk2
 	source = https://sourceforge.net/projects/emkatic/files/eMKatic%20Source/emkatic-0.29-src.tar.gz
 	md5sums = b6d1c3926ac4847f56e85a327e501519
 
