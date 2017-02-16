@@ -1,42 +1,10 @@
-From db79126ed25fc254e83f8a96b164cb2dbf0d6204 Mon Sep 17 00:00:00 2001
-From: =?utf8?q?Cl=C3=A9ment=20DAVID?= <clement.david@scilab-enterprises.com>
-Date: Wed, 2 Dec 2015 15:09:07 +0100
-Subject: [PATCH] Update to JoGL 2.3.2
+commit db79126ed25fc254e83f8a96b164cb2dbf0d6204
+Author: Clément DAVID <clement.david@scilab-enterprises.com>
+Date:   Wed Dec 2 15:09:07 2015 +0100
 
-Change-Id: Ic188bb392d1dd8441d1a4132004f77b63a3353df
----
- scilab/configure                                   |   28 ++++++++++----------
- scilab/configure.ac                                |    6 ++---
- .../src/java/org/scilab/modules/gui/SwingView.java |    8 +++---
- .../scilab/modules/gui/bridge/ScilabBridge.java    |    2 +-
- .../gui/bridge/canvas/SwingScilabCanvas.java       |    4 +--
- .../gui/bridge/canvas/SwingScilabCanvasImpl.java   |   12 ++++-----
- .../java/org/scilab/modules/gui/canvas/Canvas.java |    2 +-
- .../scilab/modules/gui/canvas/ScilabCanvas.java    |    2 +-
- .../modules/gui/canvas/ScilabCanvasBridge.java     |    2 +-
- .../scilab/modules/gui/canvas/SimpleCanvas.java    |    2 +-
- .../scirenderer/scirenderer-libs.properties        |    4 +--
- .../implementation/jogl/JoGLCanvas.java            |   20 +++++++-------
- .../implementation/jogl/JoGLCanvasFactory.java     |    2 +-
- .../implementation/jogl/JoGLCapacity.java          |    2 +-
- .../implementation/jogl/JoGLDrawingTools.java      |    2 +-
- .../implementation/jogl/JoGLParameters.java        |    4 +--
- .../jogl/buffers/JoGLBuffersManager.java           |    2 +-
- .../jogl/buffers/JoGLDataBuffer.java               |    2 +-
- .../jogl/buffers/JoGLElementsBuffer.java           |    2 +-
- .../jogl/buffers/JoGLIndicesBuffer.java            |    2 +-
- .../jogl/clipping/JoGLClippingManager.java         |    2 +-
- .../jogl/clipping/JoGLClippingPlane.java           |    2 +-
- .../jogl/drawer/JoGLShapeDrawer.java               |    2 +-
- .../implementation/jogl/lightning/JoGLLight.java   |    2 +-
- .../jogl/lightning/JoGLLightManager.java           |    2 +-
- .../jogl/picking/GLPickingManager.java             |    2 +-
- .../jogl/picking/JoGLPickingTools.java             |    2 +-
- .../implementation/jogl/renderer/JoGLRenderer.java |    2 +-
- .../jogl/renderer/JoGLRendererManager.java         |    2 +-
- .../jogl/texture/JoGLTextureManager.java           |   10 +++----
- .../implementation/jogl/utils/GLShortCuts.java     |    2 +-
- 31 files changed, 70 insertions(+), 70 deletions(-)
+    Update to JoGL 2.3.2
+    
+    Change-Id: Ic188bb392d1dd8441d1a4132004f77b63a3353df
 
 diff --git a/scilab/configure b/scilab/configure
 index fd385a8..51e5ff2 100755
@@ -586,6 +554,3 @@ index 1d799e9..8a493fb 100644
  
  /**
   *
--- 
-1.7.9.5
-

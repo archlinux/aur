@@ -1,37 +1,41 @@
-# Maintainer: Victor Dmitriyev <mrvvitek@gmail.com>
+# Maintainer: eolianoe <eolianoe [at] gmail [DoT] com>
+# Contributor: Victor Dmitriyev <mrvvitek@gmail.com>
 
 _pkgname=scilab
 pkgname=scilab-git
-pkgver=6.0.0.beta.2.r240.g7703c347
+pkgver=6.0.0.beta.2.r789.g97b14661ee1
 pkgrel=1
 pkgdesc='A scientific software package for numerical computations'
 arch=('i686' 'x86_64')
 url="https://www.scilab.org/"
 license=('custom:CeCILL' 'BSD')
-makedepends=('apache-ant' 'git' 'ocaml' 'java-environment>=8' 'gcc-fortran')
 depends=('suitesparse>=4.4.1'  'arpack' 'fftw' 'eigen'
-         'libmatio' 'tk' 'curl'
          'hdf5'
+         'libmatio' 'tk' 'curl'
          'java-runtime>=8'
+         'apache-lucene>=6'
          'beanshell' 'eclipse-ecj' 'java-flexdock>=1.2.4' 'fop-hyph'
          'jeuclid-core' 'jgraphx>=2.0.0.1' 'javahelp2'
          'saxon-he' 'jlatexmath-fop>=1.0.3' 'jrosetta>=1.0.4' 'jgoodies-looks' 'java-qdox'
          'java-skinlf' 'java-testng' 'xalan-java' 'docbook-xsl'
          'jogl>=2.3.2' 'java-batik>=1.8')
+makedepends=('apache-ant' 'git' 'ocaml' 'java-environment>=8' 'gcc-fortran')
 provides=('scilab')
 conflicts=('scilab')
 source=("git://git.scilab.org/scilab"
-        "${pkgname}_strict-jar.patch"
-        "${pkgname}_jogl.patch::http://gitweb.scilab.org/?p=scilab.git;a=patch;h=db79126ed25fc254e83f8a96b164cb2dbf0d6204"
-        "${pkgname}-hdf5-1.8.10.patch"
-        "${pkgname}_LD_LIBRARY_PATH.patch"
-        "${pkgname}_java-default-dir.patch")
+        "${_pkgname}-jogl-2.3.2.patch"
+        "${_pkgname}-LD_LIBRARY_PATH.patch"
+        "${_pkgname}-strict-jar.patch"
+        "${_pkgname}-lucene-6.patch"
+        "${_pkgname}-hdf5-type.patch"
+        "${_pkgname}-hdf5-1.8.10.patch")
 sha256sums=('SKIP'
-            '38aa094951338fa1d267dc6f397552e175213b0f8ba7b35727c178607861f6dd'
-            '7777f0e5fedb3f71f8869a20c448f139501caab17537786db37b999d5c76e618'
-            '87e4c7b182755cf557a370820d880aaacfb4be2d3be6255f533668d8e677fd31'
+            'f19f173e989f72bd55bda35e271b3c180ecef4e29da964df3f230fce8b1330fc'
             '37f649fea0196b255e5a8576dd1e8c5fd219c6e8c600b703b35303fb90b6a7e0'
-            'a2eb7888bf52862fdba300e113667ad4d3f95512dbf1a99b661eb54b68038948')
+            '38aa094951338fa1d267dc6f397552e175213b0f8ba7b35727c178607861f6dd'
+            'ba7969fff7f839562120534222fbb6421e204f6a382654d80bbab19e0c7a2c66'
+            'c992a4f230dac60c3e217efee04b678c58d856f2aafa6173f742d4c5b050ab9d'
+            '2dee1346c240d09ce7870bbbeb3318e0ac5d78f249d855df313e9cb7a2ef7fc0')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}/${_pkgname}"
@@ -42,16 +46,18 @@ pkgver() {
 prepare(){
   cd "${srcdir}/${_pkgname}/${_pkgname}"
 
-  # https://codereview.scilab.org/#/c/17530/
-  patch -p2 < "${srcdir}"/${pkgname}_jogl.patch
-  # Linked to: https://codereview.scilab.org/#/c/18089/
-  patch < "${srcdir}"/${pkgname}_strict-jar.patch
-  # Fix path for Java
-  patch -p1 < "${srcdir}"/${pkgname}_java-default-dir.patch
   # http://bugzilla.scilab.org/show_bug.cgi?id=14539
-  patch -p1 < "${srcdir}"/${pkgname}-hdf5-1.8.10.patch
+  patch -p1 < "${srcdir}"/${_pkgname}-hdf5-1.8.10.patch
+  # https://codereview.scilab.org/#/c/17530/
+  patch -p2 < "${srcdir}"/${_pkgname}-jogl-2.3.2.patch
+  # Linked to: https://codereview.scilab.org/#/c/18089/
+  patch < "${srcdir}"/${_pkgname}-strict-jar.patch
+  # Fix to build with lucene >= 6
+  patch -p0 < "${srcdir}"/${_pkgname}-lucene-6.patch
+  # Fix hdf5 type
+  patch -p0 < "${srcdir}"/${_pkgname}-hdf5-type.patch
   # Fix for LD_LIBRARY_PATH
-  patch bin/scilab "${srcdir}"/${pkgname}_LD_LIBRARY_PATH.patch
+  patch bin/scilab "${srcdir}"/${_pkgname}-LD_LIBRARY_PATH.patch
 }
 
 build() {
@@ -61,7 +67,6 @@ build() {
     --prefix=/usr \
     --with-gcc \
     --with-gfortran \
-    --with-jdk=/usr/lib/jvm/java-8-openjdk \
     --with-mpi \
     --with-matio \
     --with-umfpack \
@@ -74,7 +79,7 @@ build() {
     --disable-static-system-lib
 
   make
-  make doc
+  #make doc
 }
 
 package() {
