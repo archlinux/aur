@@ -11,7 +11,7 @@ url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
 depends=("nvidia-utils-beta>=$pkgver" 'libgl')
 makedepends=('linux-headers')
-provides=('nvidia')
+provides=("nvidia=$pkgver")
 conflicts=('nvidia-96xx' 'nvidia-173xx' 'nvidia')
 options=('!strip')
 install=$pkgname.install

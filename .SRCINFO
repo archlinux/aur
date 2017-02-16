@@ -10,7 +10,7 @@ pkgbase = nvidia-beta-all
 	makedepends = linux-headers
 	depends = nvidia-utils-beta>=378.13
 	depends = libgl
-	provides = nvidia
+	provides = nvidia=378.13
 	conflicts = nvidia-96xx
 	conflicts = nvidia-173xx
 	conflicts = nvidia
