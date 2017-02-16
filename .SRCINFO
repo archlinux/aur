@@ -10,8 +10,6 @@ pkgbase = perl-gnome2-gconf
 	depends = gtk2-perl
 	depends = gconf
 	depends = glib-perl
-	depends = perl>=5.24
-	depends = perl<5.25
 	provides = gconf-perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/Gnome2-GConf-1.044.tar.gz
@@ -21,6 +19,4 @@ pkgname = perl-gnome2-gconf
 	depends = gtk2-perl
 	depends = gconf
 	depends = glib-perl
-	depends = perl>=5.24
-	depends = perl<5.25
 

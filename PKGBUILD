@@ -9,8 +9,8 @@ pkgdesc="Perl interface to the GConf configuration database"
 arch=('i686' 'x86_64')
 license=("GPL" "PerlArtistic")
 url="http://search.cpan.org/dist/Gnome2-GConf"
-depends=('gtk2-perl' 'gconf' 'glib-perl' 'perl>=5.24' 'perl<5.25')
-#makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig')
+depends=('gtk2-perl' 'gconf' 'glib-perl')
+makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig')
 options=('!emptydirs')
 provides=("gconf-perl")
 source=("http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/Gnome2-GConf-${pkgver}.tar.gz")
