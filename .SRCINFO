@@ -1,6 +1,6 @@
 pkgbase = rk-desktop-apps
 	pkgdesc = Metapackage that installs the most-used desktop apps.
-	pkgver = 2015.8.19
+	pkgver = 2017.02.16
 	pkgrel = 1
 	url = http://notyetthere.com
 	arch = i686

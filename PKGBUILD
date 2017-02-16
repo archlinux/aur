@@ -1,7 +1,7 @@
 # Maintainer: RubenKelevra <cyrond@gmail.com>
 
 pkgname=rk-desktop-apps
-pkgver=2015.8.19
+pkgver=2017.02.16
 pkgrel=1
 pkgdesc="Metapackage that installs the most-used desktop apps."
 url="http://notyetthere.com"
