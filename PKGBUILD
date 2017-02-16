@@ -42,15 +42,6 @@ fi
 
 makedepends=('bash' 'upx')
 
-optdepends=('quartus-max: MAXII, MAXV device support'
-            'quartus-max10: MAX10 device support'
-            'quartus-cyclone: Cyclone IV device support'
-            'quartus-cyclonev: Cyclone V device support'
-            'quartus-arria: Arria II device support'
-            'quartus-modelsim: ModelSim-Altera Edition'
-           )
-           # Pkgnames are taken directly from altera downloads file names
-
 source=("http://download.altera.com/akdlm/software/acdsinst/${pkgver%.*.*}/${_build_nr}/ib_installers/QuartusSetup-${pkgver}-linux.run"
 	"quartus.sh" "quartus.desktop" "51-usbblaster.rules" "quartus.install")
 md5sums=('0ff8c051c26f7b4c15bf5d203efae13e'
