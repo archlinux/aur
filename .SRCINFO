@@ -1,0 +1,14 @@
+pkgbase = songtext-git
+	pkgdesc = bash script for retrieving song lyrics.
+	pkgver = r7.0b4353b
+	pkgrel = 1
+	url = https://github.com/jonhoo/songtext
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = pup-git
+	source = git+https://github.com/jonhoo/songtext.git
+	md5sums = SKIP
+
+pkgname = songtext-git
+
