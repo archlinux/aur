@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=ocproxy-git
 _pkgname=ocproxy
-pkgver=r128.3070366
+pkgver=1.60.r8.g8f15425
 pkgrel=1
 epoch=
 pkgdesc="A user-level SOCKS and port forwarding proxy for OpenConnect based on lwIP"
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
