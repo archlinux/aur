@@ -1,0 +1,13 @@
+pkgbase = omi
+	pkgdesc = Open Management Infrastructure (OMI) is an open source project to further the development of a production quality implementation of the DMTF CIM/WBEM standards.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Microsoft/omi
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = https://github.com/Microsoft/omi/archive/v1.1.0-0.tar.gz
+	sha1sums = 267d77283c773b1da8cf0fed725191276ed0afc6
+
+pkgname = omi
+
