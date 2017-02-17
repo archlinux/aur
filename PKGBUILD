@@ -12,8 +12,8 @@
 pkgbase=mesa-test-git
 pkgname=('mesa-test-git' 'mesa-test-libgl-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.1.0_devel.88759.106a51440d
-pkgrel=2
+pkgver=17.1.0_devel.89094.a0ac118398
+pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'libdrm' 'glproto'
              'dri2proto' 'dri3proto' 'presentproto' 'libxml2' 'libx11' 'libxshmfence' 
@@ -137,9 +137,10 @@ package_mesa-test-libgl-git () {
   conflicts=('mesa-libgl' 'libgles' 'libegl')
 
   # See FS#26284
-  install -m755 -d "$pkgdir"/usr/lib/xorg/modules/extensions
-  ln -s libglx.xorg "$pkgdir"/usr/lib/xorg/modules/extensions/libglx.so
-
+#  install -m755 -d "$pkgdir"/usr/lib/xorg/modules/extensions
+#  ln -s libglx.xorg "$pkgdir"/usr/lib/xorg/modules/extensions/libglx.so
+  
+  install -m755 -d "$pkgdir"/usr/lib/
   ln -s /usr/lib/mesa/libGL.so.1.2.0 "$pkgdir"/usr/lib/libGL.so.1.2.0
   ln -s libGL.so.1.2.0               "$pkgdir"/usr/lib/libGL.so.1
   ln -s libGL.so.1.2.0               "$pkgdir"/usr/lib/libGL.so
