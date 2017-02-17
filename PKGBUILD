@@ -22,7 +22,6 @@ sha256sums=('SKIP'
 
 prepare() {
 	cd "${srcdir}/slimserver-public-${_gitver}"
-	rm -rf Bin/i86pc-solaris-thread-multi-64int
 	case $CARCH in
 	    x86_64) rm -rf Bin/{arm,armhf}-linux ;;
 	    i686) rm -rf Bin/{arm,armhf}-linux ;;
