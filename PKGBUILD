@@ -30,7 +30,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Installing license...'
-  install -Dm 644 COPYING "$pkgdir/usr/share/licenses/shtk/COPYING"
+  install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/shtk"
 
   msg2 'Installing...'
   make DESTDIR="$pkgdir" install
