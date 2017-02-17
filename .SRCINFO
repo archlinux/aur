@@ -1,0 +1,13 @@
+pkgbase = vimdoc
+	pkgdesc = Helpfile generation for vim plugins
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/google/vimdoc
+	arch = any
+	license = apachev2
+	makedepends = python>=3.6
+	source = https://github.com/google/vimdoc/archive/v0.6.0.tar.gz
+	sha256sums = 18cdec7202d8d6a8e8250a2ad0152473a2408d58c9222a659606a3a439a57c70
+
+pkgname = vimdoc
+
