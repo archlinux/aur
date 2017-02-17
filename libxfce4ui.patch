@@ -1,0 +1,151 @@
+diff -u -r xfce4-wmdock-plugin-0.6.0/configure xfce4-wmdock-plugin-0.6.0fixed/configure
+--- xfce4-wmdock-plugin-0.6.0/configure	2013-10-20 17:31:10.000000000 -0300
++++ xfce4-wmdock-plugin-0.6.0fixed/configure	2017-02-16 18:55:55.000000000 -0300
+@@ -13425,22 +13425,22 @@
+ 
+ 
+ 
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for libxfcegui4-1.0 >= 4.3.90.2" >&5
+-$as_echo_n "checking for libxfcegui4-1.0 >= 4.3.90.2... " >&6; }
+-  if $PKG_CONFIG "--atleast-version=4.3.90.2" "libxfcegui4-1.0" >/dev/null 2>&1; then
+-    LIBXFCEGUI4_VERSION=`$PKG_CONFIG --modversion "libxfcegui4-1.0"`
++  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for libxfce4ui-1 >= 4.3.90.2" >&5
++$as_echo_n "checking for libxfce4ui-1 >= 4.3.90.2... " >&6; }
++  if $PKG_CONFIG "--atleast-version=4.3.90.2" "libxfce4ui-1" >/dev/null 2>&1; then
++    LIBXFCEGUI4_VERSION=`$PKG_CONFIG --modversion "libxfce4ui-1"`
+     { $as_echo "$as_me:${as_lineno-$LINENO}: result: $LIBXFCEGUI4_VERSION" >&5
+ $as_echo "$LIBXFCEGUI4_VERSION" >&6; }
+ 
+     { $as_echo "$as_me:${as_lineno-$LINENO}: checking LIBXFCEGUI4_CFLAGS" >&5
+ $as_echo_n "checking LIBXFCEGUI4_CFLAGS... " >&6; }
+-    LIBXFCEGUI4_CFLAGS=`$PKG_CONFIG --cflags "libxfcegui4-1.0"`
++    LIBXFCEGUI4_CFLAGS=`$PKG_CONFIG --cflags "libxfce4ui-1"`
+     { $as_echo "$as_me:${as_lineno-$LINENO}: result: $LIBXFCEGUI4_CFLAGS" >&5
+ $as_echo "$LIBXFCEGUI4_CFLAGS" >&6; }
+ 
+     { $as_echo "$as_me:${as_lineno-$LINENO}: checking LIBXFCEGUI4_LIBS" >&5
+ $as_echo_n "checking LIBXFCEGUI4_LIBS... " >&6; }
+-    LIBXFCEGUI4_LIBS=`$PKG_CONFIG --libs "libxfcegui4-1.0"`
++    LIBXFCEGUI4_LIBS=`$PKG_CONFIG --libs "libxfce4ui-1"`
+     { $as_echo "$as_me:${as_lineno-$LINENO}: result: $LIBXFCEGUI4_LIBS" >&5
+ $as_echo "$LIBXFCEGUI4_LIBS" >&6; }
+ 
+@@ -13452,15 +13452,15 @@
+ 
+ 
+ 
+-  elif $PKG_CONFIG --exists "libxfcegui4-1.0" >/dev/null 2>&1; then
+-    xdt_cv_version=`$PKG_CONFIG --modversion "libxfcegui4-1.0"`
++  elif $PKG_CONFIG --exists "libxfce4ui-1" >/dev/null 2>&1; then
++    xdt_cv_version=`$PKG_CONFIG --modversion "libxfce4ui-1"`
+     { $as_echo "$as_me:${as_lineno-$LINENO}: result: found, but $xdt_cv_version" >&5
+ $as_echo "found, but $xdt_cv_version" >&6; }
+ 
+ 
+-      echo "*** The required package libxfcegui4-1.0 was found on your system,"
++      echo "*** The required package libxfce4ui-1 was found on your system,"
+       echo "*** but the installed version ($xdt_cv_version) is too old."
+-      echo "*** Please upgrade libxfcegui4-1.0 to atleast version 4.3.90.2, or adjust"
++      echo "*** Please upgrade libxfce4ui-1 to atleast version 4.3.90.2, or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you installed"
+       echo "*** the new version of the package in a nonstandard prefix so"
+       echo "*** pkg-config is able to find it."
+@@ -13471,8 +13471,8 @@
+ $as_echo "not found" >&6; }
+ 
+ 
+-      echo "*** The required package libxfcegui4-1.0 was not found on your system."
+-      echo "*** Please install libxfcegui4-1.0 (atleast version 4.3.90.2) or adjust"
++      echo "*** The required package libxfce4ui-1 was not found on your system."
++      echo "*** Please install libxfce4ui-1 (atleast version 4.3.90.2) or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you"
+       echo "*** installed the package in a nonstandard prefix so that"
+       echo "*** pkg-config is able to find it."
+diff -u -r xfce4-wmdock-plugin-0.6.0/configure.in xfce4-wmdock-plugin-0.6.0fixed/configure.in
+--- xfce4-wmdock-plugin-0.6.0/configure.in	2013-10-20 17:31:06.000000000 -0300
++++ xfce4-wmdock-plugin-0.6.0fixed/configure.in	2017-02-16 18:55:52.000000000 -0300
+@@ -41,7 +41,7 @@
+ dnl check for required packages
+ XDT_CHECK_PACKAGE([GTHREAD], [gthread-2.0], [2.6.0])
+ XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.6.0])
+-XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [4.3.90.2])
++XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfce4ui-1], [4.3.90.2])
+ XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.3.90.2])
+ XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-1.0], [4.3.99.1])
+ XDT_CHECK_PACKAGE([LIBWNCK], [libwnck-1.0], [2.8.1])
+diff -u -r xfce4-wmdock-plugin-0.6.0/panel-plugin/catchwindow.c xfce4-wmdock-plugin-0.6.0fixed/panel-plugin/catchwindow.c
+--- xfce4-wmdock-plugin-0.6.0/panel-plugin/catchwindow.c	2013-10-22 05:29:18.000000000 -0300
++++ xfce4-wmdock-plugin-0.6.0fixed/panel-plugin/catchwindow.c	2017-02-16 18:58:22.000000000 -0300
+@@ -33,7 +33,7 @@
+ 
+ #include <gtk/gtk.h>
+ #include <libxfce4util/libxfce4util.h>
+-#include <libxfcegui4/libxfcegui4.h>
++#include <libxfce4ui/libxfce4ui.h>
+ #include <libxfce4panel/libxfce4panel.h>
+ 
+ #include "extern.h"
+diff -u -r xfce4-wmdock-plugin-0.6.0/panel-plugin/dockapp.c xfce4-wmdock-plugin-0.6.0fixed/panel-plugin/dockapp.c
+--- xfce4-wmdock-plugin-0.6.0/panel-plugin/dockapp.c	2013-10-20 16:32:00.000000000 -0300
++++ xfce4-wmdock-plugin-0.6.0fixed/panel-plugin/dockapp.c	2017-02-16 19:06:19.000000000 -0300
+@@ -32,7 +32,7 @@
+ 
+ #include <gtk/gtk.h>
+ #include <libxfce4util/libxfce4util.h>
+-#include <libxfcegui4/libxfcegui4.h>
++#include <libxfce4ui/libxfce4ui.h>
+ #include <libxfce4panel/libxfce4panel.h>
+ 
+ #include "extern.h"
+@@ -559,7 +559,14 @@
+ 	gboolean ret;
+ 	GError *err = NULL;
+ 
+-	ret = xfce_exec(cmd, FALSE, FALSE, &err);
++	//ret = xfce_exec(cmd, FALSE, FALSE, &err);
++    ret = xfce_spawn_command_line_on_screen (
++        NULL, //default screen
++        cmd,
++        FALSE,
++        FALSE,
++        &err
++    );
+ 
+ 	/* Errors will be evaluate in a later version. */
+ 	if(err) g_clear_error (&err);
+diff -u -r xfce4-wmdock-plugin-0.6.0/panel-plugin/props.c xfce4-wmdock-plugin-0.6.0fixed/panel-plugin/props.c
+--- xfce4-wmdock-plugin-0.6.0/panel-plugin/props.c	2013-10-17 17:52:39.000000000 -0300
++++ xfce4-wmdock-plugin-0.6.0fixed/panel-plugin/props.c	2017-02-16 18:59:04.000000000 -0300
+@@ -27,7 +27,7 @@
+ 
+ #include <gtk/gtk.h>
+ #include <libxfce4util/libxfce4util.h>
+-#include <libxfcegui4/libxfcegui4.h>
++#include <libxfce4ui/libxfce4ui.h>
+ #include <libxfce4panel/libxfce4panel.h>
+ 
+ #include "extern.h"
+diff -u -r xfce4-wmdock-plugin-0.6.0/panel-plugin/rcfile.c xfce4-wmdock-plugin-0.6.0fixed/panel-plugin/rcfile.c
+--- xfce4-wmdock-plugin-0.6.0/panel-plugin/rcfile.c	2013-10-18 13:40:36.000000000 -0300
++++ xfce4-wmdock-plugin-0.6.0fixed/panel-plugin/rcfile.c	2017-02-16 18:59:22.000000000 -0300
+@@ -32,7 +32,7 @@
+ 
+ #include <gtk/gtk.h>
+ #include <libxfce4util/libxfce4util.h>
+-#include <libxfcegui4/libxfcegui4.h>
++#include <libxfce4ui/libxfce4ui.h>
+ #include <libxfce4panel/libxfce4panel.h>
+ 
+ #include "extern.h"
+diff -u -r xfce4-wmdock-plugin-0.6.0/panel-plugin/wmdock.c xfce4-wmdock-plugin-0.6.0fixed/panel-plugin/wmdock.c
+--- xfce4-wmdock-plugin-0.6.0/panel-plugin/wmdock.c	2013-10-18 12:35:53.000000000 -0300
++++ xfce4-wmdock-plugin-0.6.0fixed/panel-plugin/wmdock.c	2017-02-16 18:59:39.000000000 -0300
+@@ -31,7 +31,7 @@
+ 
+ #include <gtk/gtk.h>
+ #include <libxfce4util/libxfce4util.h>
+-#include <libxfcegui4/libxfcegui4.h>
++#include <libxfce4ui/libxfce4ui.h>
+ #include <libxfce4panel/libxfce4panel.h>
+ 
+ #include "wmdock.h"
