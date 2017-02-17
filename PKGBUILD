@@ -13,7 +13,7 @@
 
 pkgname=editix-free
 pkgver=2016
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="EditiX is a powerful and easy to use XML editor, Visual Schema Editor, XQuery Editor and XSLT debugger"
 arch=('any')
@@ -41,7 +41,7 @@ package() {
 
   # Create a symlink to /usr/bin
   install -dm755 "$pkgdir/usr/bin/"
-  ln -sf /opt/editix-${pkgver}/bin/run.sh "$pkgdir/usr/bin/$pkgname"
+  ln -sf /opt/editix-${pkgver}/bin/editix.sh "$pkgdir/usr/bin/$pkgname"
   chmod 755 "${pkgdir}/opt/editix${pkgver}/bin/editix.sh"
 
   # Fix the run script
