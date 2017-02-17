@@ -1,0 +1,19 @@
+pkgbase = hypopg-git
+	pkgdesc = postgresql background worker to capture data
+	pkgver = b78049e
+	pkgrel = 1
+	url = https://github.com/dalibo/hypopg
+	install = hypopg-git.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	makedepends = git
+	depends = postgresql
+	options = !emptydirs
+	options = !libtool
+	source = git://github.com/dalibo/hypopg.git
+	md5sums = SKIP
+
+pkgname = hypopg-git
+
