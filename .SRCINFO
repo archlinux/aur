@@ -1,6 +1,6 @@
 pkgbase = idos-timetable-data-chaps-trains-cz-latest
 	pkgdesc = Timetable data for the timetable search engines by CHAPS: Czech trains.
-	pkgver = 2017_1_26
+	pkgver = 2017_2_17
 	pkgrel = 1
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
@@ -12,10 +12,10 @@ pkgbase = idos-timetable-data-chaps-trains-cz-latest
 	optdepends = idos-timetable-tariff-trains-cz: For showing prices.
 	optdepends = idos-timetable-maps-trains-cz: For displaying routes on maps.
 	optdepends = idos-timetable-additionalinfo-trains-cz: For (links to) additional information about train composition and stations.
-	provides = idos-timetable-data-chaps-trains-cz=2017_1_26
-	provides = idos-timetable-data=2017_1_26
-	provides = idos-timetable-data-trains=2017_1_26
-	provides = idos-timetable-data-trains-cz=2017_1_26
+	provides = idos-timetable-data-chaps-trains-cz=2017_2_17
+	provides = idos-timetable-data=2017_2_17
+	provides = idos-timetable-data-trains=2017_2_17
+	provides = idos-timetable-data-trains-cz=2017_2_17
 	conflicts = idos-timetable-data-chaps-trains-cz
 	source = vlak17c.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK17C.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
