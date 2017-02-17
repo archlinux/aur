@@ -17,6 +17,7 @@ license=('MIT')
 depends=('git' 'sqlite' 'bash')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
+replaces=("gogs-git-dev")
 options=('!buildflags' '!strip')
 optdepends=(
 "mariadb: MariaDB support"
