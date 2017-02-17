@@ -1,15 +1,15 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=shtk
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
-pkgdesc="Collection of reusable modules written in sh that provide common functionality to simplify the implementation of complex shell scripts"
+pkgdesc="Application toolkit for programmers writing POSIX-compliant shell scripts"
 arch=('any')
 makedepends=('autoconf' 'automake' 'make')
 url="https://github.com/jmmv/shtk"
 license=('BSD')
 source=($pkgname-$pkgver.tar.gz::https://github.com/jmmv/$pkgname/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('2a3892ce6c624ae5d7a1d96b014fcff0ee6920a3f76ac0ab0b7d4ff16c7a7d0f')
+sha256sums=('9386b7dbf1a28361eaf56dd1712385abdbdf3a02f03e17ccbf5579bf22695e27')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
