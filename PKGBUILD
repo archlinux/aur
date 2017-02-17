@@ -1,5 +1,5 @@
 pkgname=mingw-w64-fpc
-pkgver=3.0.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Cross FPC for the MinGW-w64 cross compiler"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ makedepends=(fpc)
 depends=(ncurses expat zlib mingw-w64-binutils)
 options=(staticlibs !emptydirs !strip !buildflags)
 source=("ftp://ftp.freepascal.org/pub/fpc/dist/$pkgver/source/fpcbuild-$pkgver.tar.gz")
-sha256sums=('d5913b1d5d3d13190ae7ee72c305d5da49ac2ddc1b375b814751ef09ae5c80ec')
+sha256sums=('f261ed0a361f190169fff428d65b707df1507df317fc0ed101b0e63596541b75')
 
 build() {
   cd "$srcdir"/fpcbuild-$pkgver
