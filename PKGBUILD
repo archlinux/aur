@@ -2,14 +2,14 @@
 
 _plug=tcomb
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v1.0.1.gb47ef6a
+pkgver=v3.0.g48108a0
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=171124'
 license=('GPL2')
 depends=('vapoursynth')
-makedepends=('git' 'yasm')
+makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git")
@@ -27,7 +27,9 @@ prepare() {
 
 build() {
   cd "${_plug}"
-  ./configure --libdir=/usr/lib/vapoursynth
+  ./configure \
+    --prefix=/usr \
+    --libdir=/usr/lib/vapoursynth
   make
 }
 
