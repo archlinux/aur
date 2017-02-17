@@ -1,6 +1,6 @@
 pkgbase = xf86-video-intel-git
 	pkgdesc = X.org Intel i810/i830/i915/945G/G965+ video drivers
-	pkgver = 2.99.917+747+g028c946d
+	pkgver = 2.99.917+758+g860c3664
 	pkgrel = 1
 	epoch = 1
 	url = https://01.org/linuxgraphics
@@ -19,10 +19,11 @@ pkgbase = xf86-video-intel-git
 	makedepends = libxtst
 	makedepends = libxss
 	makedepends = git
-	depends = mesa-dri
+	depends = mesa
 	depends = libxvmc
 	depends = pixman
 	depends = xcb-util>=0.3.9
+	depends = libsystemd
 	optdepends = libxrandr: for intel-virtual-output
 	optdepends = libxinerama: for intel-virtual-output
 	optdepends = libxcursor: for intel-virtual-output
