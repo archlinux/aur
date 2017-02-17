@@ -6,18 +6,21 @@
 _pkgbasename=qt4
 pkgname=lib32-$_pkgbasename
 pkgver=4.8.7
-pkgrel=7
+pkgrel=8
 pkgdesc='A cross-platform application and UI framework (32-bit)'
 arch=('x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL')
-depends=(lib32-{fontconfig,sqlite,alsa-lib,glib2,dbus,openssl}
-         lib32-lib{png,tiff,mng,gl,sm,xrandr,xv,xi} $_pkgbasename)
+depends=('lib32-fontconfig' 'lib32-sqlite' 'lib32-alsa-lib' 'lib32-glib2'
+         'lib32-dbus' 'lib32-openssl' 'lib32-libpng' 'lib32-libtiff'
+         'lib32-libmng' 'lib32-libgl' 'lib32-libsm' 'lib32-libxrandr'
+         'lib32-libxv' 'lib32-libxi' $_pkgbasename)
 optdepends=('lib32-libxinerama: Xinerama support'
             'lib32-libxcursor: Xcursor support'
             'lib32-libxfixes: Xfixes support'
             'lib32-sni-qt: StatusNotifierItem (AppIndicators) support')
-makedepends=(cups gcc-multilib lib32-{mesa,libcups,libxfixes,gtk2} clang)
+makedepends=('cups' 'clang' 'gcc-multilib' 'lib32-mesa' 'lib32-libcups'
+             'lib32-libxfixes' 'lib32-gtk2')
 options=('staticlibs') # libQtUiTools builds as static only FS#36606
 replaces=('lib32-qt<=4.8.4')
 conflicts=(lib32-qt)
@@ -72,10 +75,11 @@ build() {
 
   ./configure -confirm-license -opensource -v -platform linux-g++-32 \
     -prefix /usr \
+    -bindir /usr/lib32/qt4/bin \
     -libdir /usr/lib32 \
-    -plugindir /usr/lib32/qt/plugins \
-	-headerdir /usr/include/qt4-32 \
-    -importdir /usr/lib32/qt/imports \
+    -plugindir /usr/lib32/qt4/plugins \
+    -headerdir /usr/include/qt4-32 \
+    -importdir /usr/lib32/qt4/imports \
     -datadir /usr/share/qt \
     -translationdir /usr/share/qt/translations \
     -sysconfdir /etc \
