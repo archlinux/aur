@@ -1,0 +1,14 @@
+pkgbase = ttf-material-design-icons
+	pkgdesc = Material Design icons by Google
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://google.github.io/material-design-icons/
+	arch = any
+	license = Apache
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://github.com/google/material-design-icons/archive/3.0.1.tar.gz
+	sha256sums = ea1996f82d39f56357754b2b3d9ad8b812065dc059ad488fb086233c360676a0
+
+pkgname = ttf-material-design-icons
+
