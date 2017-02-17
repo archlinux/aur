@@ -6,8 +6,8 @@
 
 pkgname=firehol-git
 _gitname=firehol
-pkgver=v3.1.0.r1.g1834342
-pkgrel=2
+pkgver=v3.1.3.r1.ga436004
+pkgrel=1
 epoch=1
 pkgdesc="The iptables stateful packet filtering firewall builder."
 url="http://firehol.org/"
@@ -57,14 +57,6 @@ package() {
 	chmod 600 "$pkgdir/etc/firehol/firehol.conf"
 	touch "$pkgdir/etc/firehol/fireqos.conf"
 	chmod 600 "$pkgdir/etc/firehol/fireqos.conf"
-
-	# https://github.com/firehol/firehol/issues/178
-	rm "$pkgdir/usr/bin/"{vnetbuild,update-ipsets,fireqos,link-balancer,firehol}
-	ln -s "/usr/lib/firehol/3.1.0/vnetbuild" "$pkgdir/usr/bin/vnetbuild"
-	ln -s "/usr/lib/firehol/3.1.0/update-ipsets" "$pkgdir/usr/bin/update-ipsets"
-	ln -s "/usr/lib/firehol/3.1.0/fireqos" "$pkgdir/usr/bin/fireqos"
-	ln -s "/usr/lib/firehol/3.1.0/link-balancer" "$pkgdir/usr/bin/link-balancer"
-	ln -s "/usr/lib/firehol/3.1.0/firehol" "$pkgdir/usr/bin/firehol"
 
 }
 
