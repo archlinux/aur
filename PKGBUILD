@@ -5,7 +5,7 @@
 _pkgname=idos-timetable-data-chaps-trains-odis
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2017_1_26
+pkgver=2017_2_17
 pkgrel=1
 pkgdesc="Timetable data for the timetable search engines by CHAPS: Trains in Ostrava public transport reagion (ODIS). Note that this timetable needs the purchased version of IDOS to run."
 arch=(any)
