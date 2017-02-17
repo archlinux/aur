@@ -2,13 +2,14 @@
 
 _plug=plum
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r9.9602bec
+pkgver=r48.2778b04
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=173775'
 license=('GPL')
-depends=('vapoursynth-plugin-knlmeanscl'
+depends=('vapoursynth'
+         'vapoursynth-plugin-knlmeanscl'
          'vapoursynth-plugin-fmtconv'
          'vapoursynth-plugin-nnedi3-git'
          'vapoursynth-plugin-vcfreq'
