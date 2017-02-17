@@ -4,7 +4,7 @@ set -u
 _pkgnick='FontLib'
 _pkgname='php-font-lib'
 pkgname="${_pkgname}"
-pkgver='0.4'
+pkgver='0.5'
 pkgrel='1'
 pkgdesc="${_pkgnick} :: A library to read, parse, export and make subsets of different types of font files."
 arch=('any')
@@ -14,11 +14,12 @@ depends=('php>=5.3')
 options=('!strip')
 _verwatch=("${url}/releases" "${url#*github.com}/archive/\(.*\)\.tar\.gz" 'l')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('c37b5ac553b039b8406f26911595310ecb5563add3b94dbc1dadaa073554becf')
+sha256sums=('cfc195c397d97a0a33251ef8281979fbfbdf3ffe426fac03acfdf40f6223c21c')
 
 prepare() {
   set -u
   cd "${_pkgname}-${pkgver}"
+  # Putting the maps in webapps like Debian did makes no sense. What other package will use this without conflict?
   sed -i -e 's:/\.\./maps/:/maps/:g' "src/${_pkgnick}/AdobeFontMetrics.php"
   set +u
 }
