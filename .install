@@ -1,0 +1,25 @@
+post_install() {
+    # Add swish user and group with a home directory (which will contain all 
+    # the packs).
+    getent group swish &>/dev/null || groupadd -r swish >/dev/null
+    getent passwd swish &>/dev/null || useradd -m -d /home/swish \
+-r -g swish swish >/dev/null
+
+    # Add swish user to the rserve group. If this is not done, access to the 
+    # socket will be forbidden.
+    gpasswd -a swish rserve >/dev/null
+
+    chown -R swish:swish /usr/share/swish-cplint
+
+    printf "\n\n%s\n\n" "To initialize and download all the necessary \
+components you must run: \
+sudo -u swish swish-cplint -i"
+    printf "%s\n\n" "You can then start and enable \
+swish-cplint.service to run the server."
+
+}
+
+post_remove() {
+    printf "\n\n%s\n" "You can remove /home/swish."
+    printf "%s\n\n" "You can also remove swish user and group."
+}

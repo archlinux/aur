@@ -1,0 +1,43 @@
+#
+# swish-cplint.service
+#
+# Copyright (C) 2016 frnmst (Franco Masotti) <franco.masotti@student.unife.it>
+#
+# This file is part of cplint-installer.
+#
+# cplint-installer is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# cplint-installer is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with cplint-installer.  If not, see <http://www.gnu.org/licenses/>.
+#
+#
+
+# To be placed in /usr/lib/systemd/system/swish-cplint.service
+
+[Unit]
+Description=Cplint on SWISH
+Documentation=http://github.com/friguzzi/cplint https://github.com/friguzzi/swish
+Requires=rserve-sandbox-docker.service
+After=rserve-sandbox-docker.service
+
+[Service]
+ExecStart=/usr/bin/swish-cplint -s
+ExecStop=/usr/bin/swish-cplint -k
+Type=forking
+PIDFile=/run/swish-cplint/swish-cplint.pid
+User=swish
+Group=swish
+RuntimeDirectory=swish-cplint
+
+[Install]
+Also=rserve-sandbox-docker.service
+WantedBy=default.target
+
