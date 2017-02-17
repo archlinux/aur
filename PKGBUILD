@@ -2,7 +2,7 @@
 
 pkgname=geoda
 pkgver=1.8.12
-pkgrel=3
+pkgrel=4
 pkgdesc='GeoDa is an Exploratory (Spatial) Data Analysis and Spatial Regression software, for spatial data analysis including spatial econometrics.'
 arch=('x86_64')
 license=('custom:free_for_non_commercial_use')
@@ -21,7 +21,6 @@ package()
       
   find . -type d -exec chmod 755 {} \;
   
-  mv usr/bin/run_geoda.sh usr/bin/geoda
   sed 's/$GEODA_HOME\/gdaldata/$HOME\/gdaldata/' <usr/bin/run_geoda.sh > usr/bin/geoda-2
   sed '/chmod/d' <usr/bin/geoda-2 > usr/bin/geoda
   rm usr/bin/run_geoda.sh
