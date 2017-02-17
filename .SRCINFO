@@ -1,5 +1,5 @@
 pkgbase = qemu-saren-git
-	pkgver = 2.8.0.r50101.ffe22bf510
+	pkgver = 2.8.0.r51295.ad584d37f2
 	pkgrel = 1
 	url = http://wiki.qemu.org/
 	arch = i686

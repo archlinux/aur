@@ -12,7 +12,7 @@ pkgname=('qemu-saren-git'
          'qemu-block-rbd-saren-git'
          'qemu-block-gluster-saren-git'
          'qemu-guest-agent-saren-git')
-pkgver=2.8.0.r50101.ffe22bf510
+pkgver=2.8.0.r51295.ad584d37f2
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -38,7 +38,7 @@ sha256sums=('SKIP'
             '57d87ba45340f9b7f4b70834fc35da25be72cf4092abcc5012e853aa7b37c83a')
 
 _extra_arches=(aarch64 alpha arm armeb cris lm32 m68k microblaze microblazeel mips
-mips64 mips64el mipsel mipsn32 mipsn32el or32 ppc ppc64 ppc64abi32 ppc64le s390x
+mips64 mips64el mipsel mipsn32 mipsn32el or1k ppc ppc64 ppc64abi32 ppc64le s390x
 sh4 sh4eb sparc sparc32plus sparc64 moxie ppcemb tricore unicore32 xtensa xtensaeb)
 _extra_blob=(QEMU,cgthree.bin QEMU,tcx.bin bamboo.dtb openbios-ppc
 openbios-sparc32 openbios-sparc64 palcode-clipper petalogix-ml605.dtb
