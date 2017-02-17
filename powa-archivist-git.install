@@ -1,0 +1,3 @@
+post_install(){
+	echo "You now have to follow the documentation here: http://powa.readthedocs.io/en/latest/"
+}
