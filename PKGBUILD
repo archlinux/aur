@@ -1,15 +1,15 @@
 # Maintainer: Simon Conseil <contact+aur at saimon dot org>
 pkgname=python2-pilkit
 _pkgname=pilkit
-pkgver=1.1.13
+pkgver=2.0
 pkgrel=1
 pkgdesc="A collection of utilities and processors for the Python Imaging Libary"
 arch=('any')
 url="https://github.com/matthewwithanm/pilkit/"
 license=('BSD')
 depends=('python2' 'python2-pillow')
-source=("http://pypi.python.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz")
-md5sums=('dc586362902dcc1110d487d7c8ffd5e4')
+source=("https://files.pythonhosted.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz")
+md5sums=('1b187cddbaaec56c4797679949de44ee')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
