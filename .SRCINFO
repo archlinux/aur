@@ -1,6 +1,6 @@
 pkgbase = powa-archivist-git
 	pkgdesc = postgresql background worker to capture data
-	pkgver = 74ead84
+	pkgver = 79e7870
 	pkgrel = 1
 	url = https://github.com/dalibo/powa-archivist
 	install = powa-archivist-git.install
