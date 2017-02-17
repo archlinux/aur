@@ -1,6 +1,6 @@
 pkgbase = idos-timetable-data-chaps-trains-idol-latest
 	pkgdesc = Timetable data for the timetable search engines by CHAPS: Trains in Liberec public transport reagion (IDOL). Note that this timetable needs the purchased version of IDOS to run.
-	pkgver = 2017_1_26
+	pkgver = 2017_2_17
 	pkgrel = 1
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
@@ -13,10 +13,10 @@ pkgbase = idos-timetable-data-chaps-trains-idol-latest
 	optdepends = idos-timetable-maps-mhd-idol: For displaying routes on maps.
 	optdepends = idos-timetable-additionalinfo-mhd-idol: For additional information.
 	optdepends = idos-timetable-browser-license: To use this timetable.
-	provides = idos-timetable-data-chaps-trains-idol=2017_1_26
-	provides = idos-timetable-data=2017_1_26
-	provides = idos-timetable-data-trains=2017_1_26
-	provides = idos-timetable-data-trains-idol=2017_1_26
+	provides = idos-timetable-data-chaps-trains-idol=2017_2_17
+	provides = idos-timetable-data=2017_2_17
+	provides = idos-timetable-data-trains=2017_2_17
+	provides = idos-timetable-data-trains-idol=2017_2_17
 	conflicts = idos-timetable-data-chaps-trains-idol
 	source = vlakidol17.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAKIDOL17.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
