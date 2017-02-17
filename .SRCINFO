@@ -1,6 +1,6 @@
 pkgbase = pogo-git
 	pkgdesc = Plays your music. Nothing else.
-	pkgver = 0.8.7.r44.gcced2a1
+	pkgver = 0.9.r0.ga2f1ffb
 	pkgrel = 1
 	url = https://github.com/jendrikseipp/pogo
 	arch = any
@@ -19,6 +19,7 @@ pkgbase = pogo-git
 	optdepends = gst-plugins-bad: additional codecs
 	optdepends = gst-plugins-ugly: additional codecs
 	optdepends = gst-libav: libav codec
+	provides = pogo
 	conflicts = pogo
 	source = git+https://github.com/jendrikseipp/pogo.git
 	md5sums = SKIP
