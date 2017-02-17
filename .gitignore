@@ -1,0 +1,4 @@
+Bedrock/
+src/
+pkg/
+*.pkg.tar.xz
