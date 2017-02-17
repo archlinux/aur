@@ -2,7 +2,7 @@
 
 pkgname=geoda
 pkgver=1.8.12
-pkgrel=2
+pkgrel=3
 pkgdesc='GeoDa is an Exploratory (Spatial) Data Analysis and Spatial Regression software, for spatial data analysis including spatial econometrics.'
 arch=('x86_64')
 license=('custom:free_for_non_commercial_use')

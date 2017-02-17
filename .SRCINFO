@@ -1,7 +1,7 @@
 pkgbase = geoda
 	pkgdesc = GeoDa is an Exploratory (Spatial) Data Analysis and Spatial Regression software, for spatial data analysis including spatial econometrics.
 	pkgver = 1.8.12
-	pkgrel = 2
+	pkgrel = 3
 	url = http://geodacenter.github.io/download_linux.html
 	install = geoda.install
 	arch = x86_64
