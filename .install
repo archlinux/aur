@@ -1,0 +1,35 @@
+post_install() {
+    # Add rserve user and group.
+    getent group rserve &>/dev/null || groupadd -g 32749 -r rserve >/dev/null
+    getent passwd rserve &>/dev/null || useradd -u 32749 -m -d /home/rserve \
+-s /bin/false -r -g rserve rserve >/dev/null    
+    # Exec the chmod just like in the Makefile.
+    chmod 750 /home/rserve
+
+    # Add rsd user and group.
+    getent group rsd &>/dev/null || groupadd -r rsd >/dev/null
+    getent passwd rsd &>/dev/null || useradd -s /bin/false \
+-r -g rsd rsd >/dev/null
+
+    # This is explained in the Arch Wiki. It seems that anyone belonging to the 
+    # docker group has root capablities, so creating a separate user to run 
+    # Docker is necessary in my opinion.
+    gpasswd -a rsd docker >/dev/null
+
+    chown -R rsd:rsd /usr/share/rserve-sandbox-docker
+
+    printf "\n\n%s\n\n" "Before starting the service \ 
+you must run \ 
+sudo -u rsd rserve-sandbox-docker -i"
+    printf "%s\n\n" "You can then start and enable \
+rserve-sandbox-docker.service to run the server."
+}
+
+post_remove() {
+    printf "\n\n%s\n" "To remove images and containters: \
+rm -rf /var/lib/docker \
+as described in \
+<https://docs.docker.com/engine/installation/linux/archlinux/#/uninstallation>"
+    printf "%s\n\n" "You can also remove /home/rserve \
+as well as rserve and rsd users and groups."
+}
