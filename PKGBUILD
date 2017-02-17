@@ -18,11 +18,11 @@ package()
 {
   cd "$srcdir/"
   dpkg -X ../GeoDa-1.8.12-Ubuntu-64bit.deb ./
+      
+  find . -type d -exec chmod 755 {} \;
   
   install -d $pkgdir/usr
   rsync -aPv usr/ $pkgdir/usr
-    
-  find $pkgdir/usr -type d -exec chmod 755 {} \;
 }
 
 sha512sums=('9bb5f266dc8005093e55f271cb3c0803df7b57e1b1889a1ad5d6c763c319f12f5a8736d88672d1cd17e1fcd6ec3b3e6f45b6f6eec421a02355c7df43b7a42e95')
