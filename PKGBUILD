@@ -22,8 +22,10 @@ package()
   find . -type d -exec chmod 755 {} \;
   
   mv usr/bin/run_geoda.sh usr/bin/geoda
-  sed 's/$GEODA_HOME\/gdaldata/$HOME\/gdaldata/' <usr/bin/geoda > usr/bin/geoda  
-  sed '/chmod/d' <usr/bin/geoda > usr/bin/geoda
+  sed 's/$GEODA_HOME\/gdaldata/$HOME\/gdaldata/' <usr/bin/run_geoda.sh > usr/bin/geoda-2
+  sed '/chmod/d' <usr/bin/geoda-2 > usr/bin/geoda
+  rm usr/bin/run_geoda.sh
+  rm usr/bin/geoda-2
   
   install -d $pkgdir/usr
   rsync -aPv usr/ $pkgdir/usr
