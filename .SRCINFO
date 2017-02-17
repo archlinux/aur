@@ -1,6 +1,6 @@
 pkgbase = idos-timetable-data-chaps-trains-pid-latest
 	pkgdesc = Timetable data for the timetable search engines by CHAPS: Trains in Praha public transport reagion (PID).
-	pkgver = 2017_1_26
+	pkgver = 2017_2_17
 	pkgrel = 1
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
@@ -12,10 +12,10 @@ pkgbase = idos-timetable-data-chaps-trains-pid-latest
 	optdepends = idos-timetable-tariff-mhd-pid: For showing prices.
 	optdepends = idos-timetable-maps-mhd-pid: For displaying routes on maps.
 	optdepends = idos-timetable-additionalinfo-mhd-pid: For additional information (photographs of some stops).
-	provides = idos-timetable-data-chaps-trains-pid=2017_1_26
-	provides = idos-timetable-data=2017_1_26
-	provides = idos-timetable-data-trains=2017_1_26
-	provides = idos-timetable-data-trains-pid=2017_1_26
+	provides = idos-timetable-data-chaps-trains-pid=2017_2_17
+	provides = idos-timetable-data=2017_2_17
+	provides = idos-timetable-data-trains=2017_2_17
+	provides = idos-timetable-data-trains-pid=2017_2_17
 	conflicts = idos-timetable-data-chaps-trains-pid
 	source = vlakpid17.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAKPID17.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
