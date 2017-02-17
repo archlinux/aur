@@ -7,7 +7,7 @@ pkgdesc="An educational programming language and IDE in Russian schools"
 url="http://lpm.org.ru/kumir"
 arch=('x86_64' 'i686')
 license=('GPL2')
-makedepends('git' 'cmake' 'python')
+makedepends=('git' 'cmake' 'python')
 depends=('qt4')
 replaces=("kumir")
 
