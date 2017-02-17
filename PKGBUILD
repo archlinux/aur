@@ -1,7 +1,7 @@
 # Maintainer: Adria Arrufat <adria.arrufat+AUR@protonmail.ch>
 # Contributor: Philipp Trommler <ph.trommler@gmail.com>
 pkgname=valum
-pkgver=0.3.3
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Web micro-framework written in Vala"
 arch=("i686" "x86_64")
@@ -12,14 +12,8 @@ optdepends=("libmemcached: For memcached cache storage."
             "memcached: For memcached cache storage."
             "luajit: For an embedded Lua VM.")
 makedepends=(git meson python-sphinx vala valadoc)
-_commit=35d1bcfe9bdc5307a1c263c5d9fa86dafef1b187
-source=("git://github.com/valum-framework/valum.git#commit=${_commit}")
-md5sums=("SKIP")
-
-pkgver() {
-  cd ${pkgname}
-  git describe --tags | sed 's/-/+/g;s/^v//'
-}
+source=("https://github.com/valum-framework/valum/archive/v${pkgver}.tar.gz")
+md5sums=('404468d53b6b0ec518012e721ea101e3')
 
 build() {
   cd ${pkgname}
@@ -27,11 +21,6 @@ build() {
   mkdir build && cd build
   meson --prefix=/usr ..
   ninja
-}
-
-check() {
-  cd ${pkgname}/build
-  ninja test
 }
 
 package() {
