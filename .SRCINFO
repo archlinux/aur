@@ -1,0 +1,18 @@
+pkgbase = linapple
+	pkgdesc = An Apple 2, 2e cross-platform emulator
+	pkgver = 2b
+	pkgrel = 1
+	url = http://http://linapple.sourceforge.net/index.html
+	arch = x86_64
+	license = GPL
+	makedepends = imagemagick
+	depends = sdl
+	depends = curl
+	depends = zlib
+	depends = libzip
+	conflicts = linapple-git
+	source = http://beotiger.com/download/linapple_src-2b
+	md5sums = 4f60543ff6e02eb3663182d215203f7c
+
+pkgname = linapple
+
