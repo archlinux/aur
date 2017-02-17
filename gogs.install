@@ -1,39 +1,80 @@
+_start_if_enabled() {
+    if systemctl -q is-enabled gogs.service ;then
+        echo "Starting gogs service"
+        systemctl start gogs.service
+    fi
+}
+
+_stop_if_active() {
+    if systemctl -q is-active gogs.service ;then
+        echo "Stoping gogs service"
+        systemctl stop gogs.service
+    fi
+}
+
+_disable_if_enabled() {
+    if systemctl -q is-enabled gogs.service 2>/dev/null ;then
+        echo "Disabling gogs service"
+        systemctl disable gogs.service
+    fi
+}
+
 pre_install() {
-  if ! getent group gogs >/dev/null; then
-    groupadd --system gogs
-  fi
-  if ! getent passwd gogs >/dev/null; then
-    useradd -m --system -c 'gogs daemon users' -g gogs -s /bin/false gogs
-  fi
-  chsh gogs -s /bin/bash
+    if ! getent group gogs >/dev/null; then
+        groupadd --system gogs
+    fi
+    if ! getent passwd gogs >/dev/null; then
+        useradd -r -c 'Gogs service user' -g gogs -d /srv/gogs -s /bin/bash gogs
+        passwd -l gogs
+    else
+        local _OldHome="$( getent passwd gogs | cut -d: -f6 )"
+        if [ ${_OldHome} != "/srv/gogs" ]; then
+            echo
+            echo "Setting gogs home directory to /srv/gogs"
+            _disable_if_enabled
+            echo "You must migrate from ${_OldHome}"
+            echo "before starting or re-enabling service"
+            echo
+        fi
+        usermod -c 'Gogs service user' -g gogs -d /srv/gogs -L -s /bin/bash gogs
+    fi
 }
 
 post_install(){
-	mkdir -p /var/log/gogs
-	chown -R gogs:gogs /var/log/gogs
-	chown -R gogs:gogs /srv/gogs
-
-	systemctl daemon-reload
+    systemctl daemon-reload
 }
 
-pre_upgrade(){
-	pre_install $1
+pre_upgrade() {
+    _stop_if_active
+    pre_install
 }
+
 
 post_upgrade() {
-	post_install $1
+    post_install
+    if ! [[ -f /etc/gogs/app.ini.pacnew ]] ; then
+        _start_if_enabled
+    else
+        echo
+        _disable_if_enabled
+        echo "/etc/gogs/app.ini{,.pacnew} needs merge"
+        echo "before starting or re-enabling service"
+        echo
+    fi
 }
 
 pre_remove() {
-	systemctl stop gogs.service
-	systemctl disable gogs.service
+    _stop_if_active
+    _disable_if_enabled
 }
 
 post_remove() {
-  if getent passwd gogs >/dev/null; then
-    userdel -r gogs
-  fi
-  if getent group gogs >/dev/null; then
-    groupdel gogs
-  fi
+    if getent passwd gogs >/dev/null; then
+        userdel gogs
+    fi
+    if getent group gogs >/dev/null; then
+        groupdel gogs
+    fi
+    systemctl daemon-reload
+    echo "You will need to delete the directory /srv/gogs manually"
 }

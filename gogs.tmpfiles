@@ -1,0 +1,2 @@
+d /srv/gogs 0750 gogs gogs -
+d /var/log/gogs 0750 gogs log  -
