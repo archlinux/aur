@@ -3,8 +3,8 @@
 # Contributer: auk
 
 pkgname=hyper
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.2.1
+pkgrel=1
 epoch=
 pkgdesc="A terminal built on web technologies"
 arch=('any')
@@ -29,7 +29,7 @@ source=(
     "Hyper.desktop"
 )
 noextract=()
-md5sums=('d66c265ce750a96d994da6b33d561d53'
+md5sums=('fa6caecbd1e8d561ac4c79fbd3a44360'
          'f3481e14cba331160339b3b5ab78872b'
          '74cb7ba38e37332aa8300e4b6ba9c61c')
 validpgpkeys=()
@@ -55,7 +55,7 @@ prepare() {
     # Also hacky but need to explicitly install webpack at the correct version
     # or the app won't run. See https://github.com/zeit/hyper/issues/1418.
     # Hopefully this can be removed asap
-    npm install webpack@2.2.0-rc.3
+    #npm install webpack@2.2.0-rc.3
 }
 
 build() {
