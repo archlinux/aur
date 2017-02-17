@@ -20,6 +20,7 @@ sha256sums=('6f4c91f7b7b867aac36366e63b28c6deb4d12e3d309f4332df42a4841a949e2b'
 
 prepare() {
     cd "${srcdir}/slimserver-${pkgver}"
+    rm -rf Bin/i86pc-solaris-thread-multi-64int
     case $CARCH in
         x86_64) rm -rf Bin/{arm,armhf}-linux ;;
         i686) rm -rf Bin/{arm,armhf}-linux ;;
