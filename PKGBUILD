@@ -8,7 +8,7 @@
 # Maintainer: Tech Guy Software <techguy100official at gmail dot com>
 pkgname=clevo-indicator-git
 pkgver=r19.c59790a
-pkgrel=5
+pkgrel=6
 #epoch=
 pkgdesc="Command-line and system tray fan control utility for Clevo laptops"
 arch=('x86_64')
@@ -16,8 +16,8 @@ url="https://github.com/taner1/clevo-indicator"
 license=('custom:Unlicense')
 #groups=()
 depends=()
-optdepends=('libappindicator-gtk3: tray icon support')
-makedepends=('git' 'gcc')
+optdepends=()
+makedepends=('git' 'gcc' 'libappindicator-gtk3')
 provides=('clevo-indicator')
 #conflicts=()
 #replaces=()
@@ -37,38 +37,28 @@ pkgver() {
 }
 
 package() {
-    # make from source and install built binary to fakeroot $pkgdir/usr/bin
-    echo "--> Compiling from source and adding to fakeroot \$pkgdir/usr/bin..."
+	# make from source and install built binary to fakeroot $pkgdir/usr/bin
 	cd "$srcdir"/"$pkgname"
-	
+
 	# We are not using the package's makefile for install, it uses sudo. Instead just compile using gcc,
-    # copy the clevo-indicator binary in $srcdir/$pkgname/bin/clevo-indicator and copy to $pkgdir/usr/bin/clevo-indicator using install command
-    mkdir -p bin
-    
-    # Fixes from: https://ubuntuforums.org/showthread.php?t=2053347 and https://stackoverflow.com/questions/10721623/echo-style-appending-but-to-the-beginning-of-a-file
-    # This fixes the issue with the tray indicator on GTK3 and KDE! (since libappindicator works with KDE)
-    # look into clevo-indicator.c file for correct gcc testing command
-    mkdir -p "$pkgdir/usr/bin"
-    gcc src/clevo-indicator.c -o bin/clevo-indicator `pkg-config --cflags --libs appindicator3-0.1` -lm
+	# copy the clevo-indicator binary in $srcdir/$pkgname/bin/clevo-indicator and copy to $pkgdir/usr/bin/clevo-indicator using install command
+	mkdir -p bin
+
+	# Fixes from: https://ubuntuforums.org/showthread.php?t=2053347 and https://stackoverflow.com/questions/10721623/echo-style-appending-but-to-the-beginning-of-a-file
+	# This fixes the issue with the tray indicator on GTK3 and KDE! (since libappindicator works with KDE)
+	# look into clevo-indicator.c file for correct gcc testing command
+	mkdir -p "$pkgdir/usr/bin"
+	gcc src/clevo-indicator.c -o bin/clevo-indicator `pkg-config --cflags --libs appindicator3-0.1` -lm
 	install -m 555 "bin/clevo-indicator" "$pkgdir/usr/bin/clevo-indicator"
 	
 	# copy Unlicense license to fakeroot /usr/share/licenses/clevo-indicator-git
-	echo "--> Installing license to fakeroot \$pkgdir/usr/share/licenses/clevo-indicator-git..."
 	mkdir -p "$pkgdir/usr/share/licenses/clevo-indicator-git"
 	cp LICENSE "$pkgdir/usr/share/licenses/clevo-indicator-git"
-	
+
 	# stickybit flags (sudo if user runs the command) - required for the tray icon to work - root will be the owner after install, so the stickybit will work
 	# https://unix.stackexchange.com/questions/79395/how-does-the-sticky-bit-work
 	chmod u+s $pkgdir/usr/bin/clevo-indicator
 	
-	# LEGACY - v1 to v2 (do not use package's makefile since it uses sudo!)
-	# the package's makefile installs to /usr/local/bin, we don't want that
-    # per the AUR package etiquette, /usr/bin is preferred
-	# ${DSTDIR}/bin/ in the Makefile -- make install to fakeroot /usr and the file will install to /usr/bin
-	#make DSTDIR="$pkgdir/usr" install
-	# change owner since makefile automatically runs as root
-	#chown $(whoami) $pkgdir/usr/bin/clevo-indicator
-	#chmod +wx $pkgdir/usr/bin/clevo-indicator
-	
+	# Post-install instructions
 	echo "--> Packaging successful! After install, run the fan control utility using the command \"clevo-indicator\" and a tray icon will appear."
 }

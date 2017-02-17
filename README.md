@@ -2,7 +2,7 @@
 This is an Arch Linux package forked from taner1's repository that lets you control the fan of Clevo laptops using reversed-engineering port information from ECView.
 
 ## Packages Used
-libappindicator-gtk3 to display the tray icon (works with all systems using GTK3)
+libappindicator-gtk3 to display the tray icon (works with all desktop environments using GTK3, may not work with GNOME due to the [deprecation of GtkStatusIcon](https://bugzilla.gnome.org/show_bug.cgi?id=758677))
 
 ## AUR link
 https://aur.archlinux.org/packages/clevo-indicator-git/
