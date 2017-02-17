@@ -1,8 +1,8 @@
 # Maintainer: Dmitry Kharitonov <darksab0r@gmail.com>
 # Contributor: Dave Blair <mail@dave-blair.de>
 pkgname=autokey-py3
-pkgver=0.93.9
-pkgrel=2
+pkgver=0.93.10
+pkgrel=1
 pkgdesc="Python 3 port of AutoKey, a desktop automation utility for Linux and X11 with new features."
 url="https://github.com/guoci/autokey-py3"
 depends=('python' 'wmctrl' 'hicolor-icon-theme' 'python-dbus' 'python-pyinotify' \
@@ -16,7 +16,7 @@ license=('GPL3')
 arch=('any')
 source=("https://github.com/autokey-py3/autokey/archive/v${pkgver}.tar.gz"
         "requires.patch")
-sha256sums=('f8a1c85ada996884e5537a2586e8088048d41fad6d86d4160bd9cb9ca31816cd'
+sha256sums=('ad2c7de897414095c2b3a1937d1d3196165809ef4067efc149f25894ab95d4b4'
             'a76bba7790299d9cfca1838450d0577223ec2837c8a4f65c2f8c076a83984855')
 install=$pkgname.install
 
