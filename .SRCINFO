@@ -1,6 +1,6 @@
 pkgbase = pbtk-git
 	pkgdesc = A toolset for reverse engineering and fuzzing Protobuf-based apps
-	pkgver = 1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/marin-m/pbtk
 	arch = any
