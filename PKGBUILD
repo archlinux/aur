@@ -3,7 +3,7 @@
 pkgname="xfce4-wmdock-plugin"
 pkgver="0.6.0"
 pkgrel=1
-pkgdecs="XFCE4 Panel plugin as a compatibility layer for running WindowMaker dockapps on the XFCE desktop."
+pkgdesc="XFCE4 Panel plugin as a compatibility layer for running WindowMaker dockapps on the XFCE desktop."
 arch=('i686' 'x86_64')
 url="http://goodies.xfce.org/projects/panel-plugins/xfce4-wmdock-plugin"
 license=("GPL2")
