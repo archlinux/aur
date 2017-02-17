@@ -2,13 +2,12 @@
 
 _pkgname=recipes
 pkgname=$_pkgname-git
-pkgver=0.6.0+17+g91e79b3
+pkgver=0.12.0+82+g9b0ebf4
 pkgrel=1
-install=$_pkgname.install
 pkgdesc="A GNOME recipes cooking book"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('glib2' 'gtk3' 'gnome-autoar' 'gspell' 'json-glib')
+depends=('glib2' 'gtk3' 'gnome-autoar' 'gspell')
 makedepends=('intltool' 'gnome-doc-utils' 'gnome-common' 'git' 'gobject-introspection')
 options=('!libtool' '!emptydirs')
 groups=('gnome')
@@ -18,10 +17,8 @@ provides=('recipes')
 conflicts=('recipes')
 source=("git://git.gnome.org/${_pkgname}"
 	"git://git.gnome.org/libgd"
-	"git://git.gnome.org/libglnx"
 )
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -33,7 +30,6 @@ prepare() {
   cd "$srcdir/$_pkgname"
   git submodule init
   git config libgd.url "${srcdir}/libgd"
-  git config libglnx.url "${srcdir}/lbglnx"
   git submodule update
 
   NOCONFIGURE=1 ./autogen.sh
