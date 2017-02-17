@@ -1,12 +1,13 @@
 # Maintainer: vtyulb <vtyulb@vtyulb.ru>
 
 pkgname=kumir2-git
-pkgver=30.09.2015
-pkgrel=2
+pkgver=17.02.2017
+pkgrel=1
 pkgdesc="An educational programming language and IDE in Russian schools"
 url="http://lpm.org.ru/kumir"
 arch=('x86_64' 'i686')
 license=('GPL2')
+makedepends('git' 'cmake' 'python')
 depends=('qt4')
 replaces=("kumir")
 
@@ -27,5 +28,5 @@ build() {
 package() {
   cd "${srcdir}/kumir2/build"
   make install  
-  mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"
+  mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib" | true
 }

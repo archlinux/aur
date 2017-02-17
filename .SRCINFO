@@ -1,7 +1,7 @@
 pkgbase = kumir2-git
 	pkgdesc = An educational programming language and IDE in Russian schools
-	pkgver = 19.03.2015
-	pkgrel = 2
+	pkgver = 17.02.2017
+	pkgrel = 1
 	url = http://lpm.org.ru/kumir
 	arch = x86_64
 	arch = i686
