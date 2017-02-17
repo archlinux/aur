@@ -1,8 +1,8 @@
 # Maintainer: Timo Sarawinski <t.sarawinski@gmail.com>
 pkgname=r8723bs-git
 _pkgname=r8723bs
-pkgver=b3def82d8cbd0e7011bfaa6b70cd74725863e833
-pkgrel=2
+pkgver=6b0aec21412f2b1616574ddd62d6287648c097c7
+pkgrel=3
 url="http://www.realtek.com.tw/"
 provides=('r8723bs')
 arch=('any')
