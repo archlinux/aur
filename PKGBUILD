@@ -4,6 +4,7 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="zsh plugin manager in ansi C."
 arch=(any)
+conflicts=(zpm)
 url="https://github.com/zpm-project/zpm-zsh"
 license=('GPL')
 source=(https://github.com/zpm-project/zpm-zsh/archive/v$pkgver.tar.gz)
