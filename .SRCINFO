@@ -1,0 +1,19 @@
+pkgbase = pg_qualstats-git
+	pkgdesc = postgresql background worker to capture data
+	pkgver = 05032a0
+	pkgrel = 1
+	url = https://github.com/dalibo/pg_qualstats
+	install = pg_qualstats-git.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	makedepends = git
+	depends = postgresql
+	options = !emptydirs
+	options = !libtool
+	source = git://github.com/dalibo/pg_qualstats.git
+	md5sums = SKIP
+
+pkgname = pg_qualstats-git
+
