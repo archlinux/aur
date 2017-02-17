@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
 makedepends=('extra-cmake-modules' 'libkipi' 'libksane' 'liblqr' 'opencv' 'boost'
-             'doxygen' 'lensfun' 'eigen' 'kdoctools' 'marble' 'kdesignerplugin'
+             'doxygen' 'lensfun' 'eigen' 'kdoctools' 'marble-common' 'kdesignerplugin'
              'kfilemetadata' 'akonadi-contacts' 'qtav' 'threadweaver' 'kcalcore'
              'knotifyconfig' 'libmediawiki' 'libkvkontakte')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${_pkgver}.tar.xz" digikam-find-qtav.patch)
@@ -47,7 +47,7 @@ build() {
 package_digikam() {
   pkgdesc="Digital photo management application for KDE"
   depends=('liblqr' 'libkipi' 'lensfun' 'opencv' 'akonadi-contacts'
-	'knotifyconfig' 'libksane' 'kfilemetadata' 'qtav' 'marble' 'threadweaver' 'kcalcore')
+	'knotifyconfig' 'libksane' 'kfilemetadata' 'qtav' 'marble-common' 'threadweaver' 'kcalcore')
   optdepends=('kipi-plugins: export to various online services'
               'hugin: panorama tool' 'qt5-imageformats: support for additional image formats (WEBP, TIFF)')
 
