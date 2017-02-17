@@ -1,6 +1,6 @@
 pkgbase = idos-timetable-data-chaps-trains-common-latest
 	pkgdesc = Common files needed for train timetable data for the timetable search engines by CHAPS.
-	pkgver = 2017_1_26
+	pkgver = 2017_2_17
 	pkgrel = 1
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
@@ -9,8 +9,8 @@ pkgbase = idos-timetable-data-chaps-trains-common-latest
 	license = custom
 	makedepends = wget
 	depends = idos-timetable-browser
-	provides = idos-timetable-data-chaps-trains-common=2017_1_26
-	provides = idos-timetable-data-trains-common=2017_1_26
+	provides = idos-timetable-data-chaps-trains-common=2017_2_17
+	provides = idos-timetable-data-trains-common=2017_2_17
 	conflicts = idos-timetable-data-chaps-trains-common
 	source = vlak17c.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK17C.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
