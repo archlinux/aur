@@ -3,8 +3,10 @@ pkgbase = zpm-zsh
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/zpm-project/zpm-zsh
-	arch = any
+	arch = x86_64
+	arch = x86
 	license = GPL
+	conflicts = zpm
 	source = https://github.com/zpm-project/zpm-zsh/archive/v0.1.0.tar.gz
 	md5sums = a63830a25b92e5714477d982c983dfd7
 
