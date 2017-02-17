@@ -1,0 +1,6 @@
+post_install() {
+    echo 'You can randomly browse through installed fortunes with "fortune houseofcards".'
+    echo ''
+    echo 'NOTE: The quotes contain spoilers up until season 4.'
+}
+
