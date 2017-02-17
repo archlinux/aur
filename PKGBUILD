@@ -8,8 +8,8 @@ arch=(i686 x86_64)
 url="http://www.kexi-project.org/"
 license=(GPL2)
 depends=(kproperty qt5-declarative)
-makedepends=(extra-cmake-modules python2 ki18n marble)
-optdepends=('marble: support for maps in reports')
+makedepends=(extra-cmake-modules python2 ki18n marble-common)
+optdepends=('marble-common: support for maps in reports')
 source=("http://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz"{,.sig})
 sha1sums=('7f76aa52952aff2b52d9d5f1e88686f5158a2fc3'
           'SKIP')
