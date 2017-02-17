@@ -9,6 +9,7 @@ pkgbase = kodi-addon-pvr-mythtv
 	license = GPL
 	makedepends = cmake
 	makedepends = kodi-platform
+	makedepends = git
 	depends = kodi
 	source = https://github.com/janbar/pvr.mythtv/archive/4.14.0.tar.gz
 	source = https://github.com/xbmc/xbmc/archive/17.0-Krypton.tar.gz
