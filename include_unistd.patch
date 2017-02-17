@@ -1,0 +1,10 @@
+--- openuru-moss/moss_serv.h	2017-02-15 13:02:13.478011579 -0500
++++ openuru-moss/moss_serv.h.foo	2017-02-15 13:15:37.459520711 -0500
+@@ -23,6 +23,7 @@
+  * The serv_main() function, declared at the end, is the main loop.
+  */
+ 
++#include <unistd.h>
+ //#include <pthread.h>
+ //#include <signal.h>
+ //

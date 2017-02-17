@@ -1,0 +1,17 @@
+pkgbase = openuru-moss
+	pkgdesc = MOSS is a UNIX-based server for the Myst Online: Uru Live client
+	pkgver = r41+.3e78d60a5282+
+	pkgrel = 1
+	url = openuru.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libpqxx
+	depends = postgresql
+	source = openuru-moss::hg+http://foundry.openuru.org/hg/MOSS
+	source = include_unistd.patch
+	md5sums = SKIP
+	md5sums = 923b06d8c25265679bd35e532118f2ff
+
+pkgname = openuru-moss
+
