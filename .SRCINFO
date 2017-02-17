@@ -1,0 +1,15 @@
+pkgbase = vimdoc-git
+	pkgdesc = Helpfile generation for vim plugins
+	pkgver = r104.00ae18b
+	pkgrel = 1
+	url = https://github.com/google/vimdoc
+	arch = any
+	license = apachev2
+	makedepends = git
+	makedepends = python>=3.6
+	conflicts = vimdoc
+	source = git+https://github.com/google/vimdoc.git
+	md5sums = SKIP
+
+pkgname = vimdoc-git
+
