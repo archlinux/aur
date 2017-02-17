@@ -2,7 +2,7 @@
 
 pkgname=minergate
 pkgver=6.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Cryptocurrency GUI miner and Mining Pool'
 arch=('x86_64')
 url='http://www.minergate.com/'

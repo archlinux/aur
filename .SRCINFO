@@ -1,7 +1,7 @@
 pkgbase = minergate
 	pkgdesc = Cryptocurrency GUI miner and Mining Pool
 	pkgver = 6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.minergate.com/
 	install = minergate.install
 	arch = x86_64
