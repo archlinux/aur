@@ -90,6 +90,9 @@ package() {
   # these folders needs to be writable, otherwise there is a segmentation fault when starting the editor
   chmod -R a+rwX "$pkgdir/opt/$pkgname/Engine"
 
+  # fix "could not chmod +x" warning when compiling c++ project
+  chmod a+x Engine/Binaries/DotNET/IOS/IPhonePackager.exe
+
   # content
   cp -r FeaturePacks "$pkgdir/opt/$pkgname/FeaturePacks"
   cp -r Samples "$pkgdir/opt/$pkgname/Samples"
