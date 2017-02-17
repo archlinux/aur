@@ -1,0 +1,18 @@
+pkgbase = powa-archivist-git
+	pkgdesc = postgresql background worker to capture data
+	pkgver = 521fdf4
+	pkgrel = 1
+	url = https://github.com/dalibo/powa-archivist
+	arch = i686
+	arch = x86_64
+	arch = armv7l
+	license = BSD
+	makedepends = git
+	depends = postgresql
+	options = !emptydirs
+	options = !libtool
+	source = git://github.com/dalibo/powa-archivist.git
+	md5sums = SKIP
+
+pkgname = powa-archivist-git
+
