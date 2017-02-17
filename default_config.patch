@@ -1,15 +1,5 @@
-diff --git a/config.ru b/config.ru
-index 8137b61079..0ba4f5d4fa 100644
---- a/config.ru
-+++ b/config.ru
-@@ -17,4 +17,5 @@
- # ---------------------
- 
- require ::File.expand_path('../config/environment',  __FILE__)
-+use Rack::Static, :urls => ["/assets"], :root => "public"
- run CartoDB::Application
 diff --git a/config/app_config.yml.sample b/config/app_config.yml.sample
-index 4dad079ad0..408d668aa9 100644
+index f82b087198..408d668aa9 100644
 --- a/config/app_config.yml.sample
 +++ b/config/app_config.yml.sample
 @@ -9,15 +9,15 @@ defaults: &defaults
@@ -104,7 +94,7 @@ index 4dad079ad0..408d668aa9 100644
          sql_port:           "80"
          sql_protocol:       "http"
          extra_params:       { cache_policy: 'persist' }
-@@ -283,12 +283,12 @@ defaults: &defaults
+@@ -283,7 +283,7 @@ defaults: &defaults
      #   max_size_in_bytes: 1048576 # Optional, default is 1 MB
      #   location: 'organization_assets' # Optional subdirectory for local assets, default is 'organization_assets'
    app_assets:
@@ -112,31 +102,7 @@ index 4dad079ad0..408d668aa9 100644
 +    # asset_host: "//cartodb-libs.global.ssl.fastly.net/cartodbui"
    avatars:
      gravatar_enabled: true
--    base_url: 'example.com/avatars'
--    kinds: ['stars', 'mountains']
--    colors: ['red', 'blue']
-+    base_url: '/assets/unversioned/images/avatars'
-+    kinds: ['ghost', 'heart', 'marker', 'mountain', 'pacman', 'planet', 'star']
-+    colors: ['green', 'orange', 'red', 'yellow']
-   dropbox_api_key: ""
-   gdrive:
-     api_key: ""
-@@ -535,6 +535,7 @@ defaults: &defaults
-     sqlserver:
-       enabled: false
-       max_rows: 500000
-+  enforce_non_empty_layer_css: false
- 
- development:
-   <<: *defaults
-@@ -547,7 +548,6 @@ development:
-     url_purge_command: 'url.purge'
-     retries: 5
-     timeout: 5
--  enforce_non_empty_layer_css: false
- 
- test:
-   <<: *defaults
+     base_url: '/assets/unversioned/images/avatars'
 @@ -557,7 +557,7 @@ test:
      port: 6335
    enforce_non_empty_layer_css: false
