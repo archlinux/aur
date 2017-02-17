@@ -1,7 +1,7 @@
 # Maintainer: Please see AUR package page for current maintainer(s) and contact information.
 
 pkgname=brave-bin
-pkgver=0.13.2
+pkgver=0.13.4
 pkgrel=1
 pkgdesc="A web browser that stops ads and trackers by default. Binary release."
 arch=('x86_64') # Upstream supports x86_64 only
@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver.tar.bz2::https://github.com/brave/browser-laptop/relea
         "brave"
         "brave.desktop")
 options=(!strip)
-sha512sums=('9f35113f40dd1eee8fcf014f05d5735800d1ef08c2f9167875add364be2809e9c5c44efb6abfe22395b2d41e6211320729d2877e0daa3eb87ab4a043153db480'
+sha512sums=('671b33eeba64559d97141e14c42ff217a499f4423369a00e15d8d87223102bcd338d91a2e73669dcf89940aa90fc8fd310e103ccd867402dfd2f87e3a4db8aea'
             'f5d0a906dd91f5da6af88d8c31098a4fe0e38baf27e52c2e77ba8cf7a2d41ebddad5dbc543b14766fc2684ae27e7e2e5faf8cd9036dcde0a7d4b05943599ed41'
             'c1e3a0c8f5267fb5c0b65733bda037c62d914ed989bee0f510d8196b1029eec00d40f415ce1514a4996d420ba02d856d04db0915b64573ef4a36033cc5efb94e'
             '658f45baee593b88694cbdd4b23d8ea6425a39a54a52363a63abf43951cbdc586086a3f90bbbcb658706676166db30f51339dc548cdfbb26b62f00a62e2a0313'
@@ -40,9 +40,9 @@ package() {
 
   install -Dm0644 "$srcdir"/brave.png "$pkgdir"/usr/share/pixmaps/brave.png
 
-  install -Dm0664 "$srcdir"/MPL2 "$pkgdir"/usr/share/licenses/brave-git/MPL2
+  install -Dm0664 "$srcdir"/MPL2 "$pkgdir"/usr/share/licenses/brave-bin/MPL2
 
-  mv "$pkgdir"/usr/lib/brave/{LICENSE,LICENSES.chromium.html} "$pkgdir"/usr/share/licenses/brave-git/
+  mv "$pkgdir"/usr/lib/brave/{LICENSE,LICENSES.chromium.html} "$pkgdir"/usr/share/licenses/brave-bin/
 
   ln -s /usr/lib/PepperFlash "$pkgdir"/usr/lib/pepperflashplugin-nonfree 
 }
