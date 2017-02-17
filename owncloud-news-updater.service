@@ -1,10 +1,20 @@
 [Unit]
+Description=Owncloud news updater service
 After=default.target
 
 [Service]
 Type=simple
 User=http
+Group=http
 ExecStart=/usr/bin/owncloud-news-updater -c /etc/webapps/owncloud/news/owncloud-news-updater.ini
+PrivateTmp=yes
+ProtectSystem=full
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+ReadWritePaths=/etc/webapps/owncloud /usr/share/webapps/owncloud
+ProtectHome=yes
+NoNewPrivileges=yes
 
 [Install]
 WantedBy=default.target
