@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-class-multimethods'
-pkgver='1.70'
+pkgver='1.701'
 pkgrel='1'
 pkgdesc="Support multimethods and function overloading in Perl"
 arch=('any')
@@ -12,9 +12,9 @@ depends=('perl')
 makedepends=()
 url='https://metacpan.org/release/Class-Multimethods'
 source=("https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/Class-Multimethods-$pkgver.tar.gz")
-md5sums=('5fdc79daa81b102b956b1a61531fd6a7')
-sha512sums=('41a6e40e7cebd1f4273a8d410dda0a7fda1d235ed86902a18505274c7b7d9170921a02b5a4328c0a0cb0820455a3376b8e78f453b38af13f184c2f8908253b44')
-_distdir="Class-Multimethods-$pkgver"
+md5sums=('84a93a1e59b64f6c90b68903c1bc0f94')
+sha512sums=('3a39d4bd8c16eb16317219dae4be62bbef6352bf9a0497e89da07ff784631ecaace0602c1d2bb5308bf339e5dd60ad64f3418c7b2ddadf8b71072eb040f494e1')
+_distdir="Class-Multimethods-1.700"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
