@@ -2,7 +2,7 @@
 
 pkgbase=vis-standalone-git
 pkgname=(vis-standalone-git vis-single-git)
-pkgver=0.2.r763.g60f41f0
+pkgver=0.2.r774.g6ef95bc
 pkgrel=1
 _pkgver_libmusl=1.1.16
 _pkgver_ncurses=6.0
@@ -91,7 +91,7 @@ build() {
 check() {
 	cd vis/
 
-	make -C test/
+	LANG='en_US.UTF-8' make -C test/
 }
 
 package_vis-standalone-git() {
