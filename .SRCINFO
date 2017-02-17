@@ -1,0 +1,14 @@
+pkgbase = cern-vdt
+	pkgdesc = A vectorised math library from CERN
+	pkgver = 0.3.9
+	pkgrel = 1
+	url = https://github.com/dpiparo/vdt
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = git
+	source = git+git://github.com/dpiparo/vdt.git#tag=v${pkgver}
+	md5sums = SKIP
+
+pkgname = cern-vdt
