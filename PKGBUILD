@@ -2,8 +2,8 @@
 # Contributor: Lukasz Kszonowski <archlinux at kszonek dot pl>
 
 pkgname=e-deklaracje
-pkgrel=1
-pkgver=9.0.3
+pkgrel=0
+pkgver=9.0.4
 pkgdesc="Application for submitting tax return in Poland"
 arch=('any')
 url="http://www.finanse.mf.gov.pl/systemy-informatyczne/e-deklaracje"
@@ -19,5 +19,5 @@ package() {
   install -D -m 644 "$srcdir/assets/icons/icon128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -D -m 644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
-md5sums=('fff73ea905397014934ae8b91011797a'
+md5sums=('21d9ae6632b10d0fc67d7fffbbe5210b'
          'f9532049b12814ffe6b84fa57bac52e4')
