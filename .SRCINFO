@@ -1,34 +1,34 @@
 pkgbase = nvidia-grsec
 	pkgdesc = NVIDIA drivers for linux-grsec kernel
-	pkgver = 375.26
-	pkgrel = 4
+	pkgver = 378.13
+	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = nvidia-libgl
-	makedepends = nvidia-utils=375.26
+	makedepends = nvidia-utils=378.13
 	makedepends = linux-grsec
 	makedepends = linux-grsec-headers>=4.9
 	options = !strip
 	source = https://www.grsecurity.net/~paxguy1/nvidia-drivers-375.20-pax.patch
 	sha512sums = 65ad102cc3c28c6e2d67c4f24c8fe6ca3b9b4b4f57eca6fdf437127ce9caccabebd3049af53b30ba808e68529b5627a7e3add31b42cffb09d648a69bedfa55d9
-	source_i686 = http://http.download.nvidia.com/XFree86/Linux-x86/375.26/NVIDIA-Linux-x86-375.26.run
-	sha512sums_i686 = 3bc859a95469a45f3c627018248d83e178d160385c3d17d9f890b0d142ecd1220fb21c442e4fe7755b831227a9c820736f447b162acd9699819c6e8145d6d841
-	source_x86_64 = http://http.download.nvidia.com/XFree86/Linux-x86_64/375.26/NVIDIA-Linux-x86_64-375.26-no-compat32.run
-	sha512sums_x86_64 = f52f6597daa1eaf4cbd934d785da6028ef23ecef98e14746143e3738504f8d65b73788abbcf9fd812317fc2c53cdf1c4d4839de57fafdea1930a08c6b21f1992
+	source_i686 = http://http.download.nvidia.com/XFree86/Linux-x86/378.13/NVIDIA-Linux-x86-378.13.run
+	sha512sums_i686 = b96d2558a1003a3c66cade3a1e16abd34d855c0e27cdebacdc0495e0ba3cd5c68bb84cc5f81bff1b9ddce36ac52e0dc125c56d868b77d7c8e2f606d559b13b4a
+	source_x86_64 = http://http.download.nvidia.com/XFree86/Linux-x86_64/378.13/NVIDIA-Linux-x86_64-378.13-no-compat32.run
+	sha512sums_x86_64 = b0ee6f1859d21e8f619e89fb75f2ace64bad5ba4852bc1b8a6148144fb2a917735a8272c0e528a8040b4d0db31a8203c6f698ea83c5cef41d8818d621d55eee3
 
 pkgname = nvidia-grsec
 	pkgdesc = NVIDIA drivers for linux-grsec kernel
 	install = nvidia-grsec.install
 	depends = linux-grsec>=4.9
-	depends = nvidia-utils=375.26
+	depends = nvidia-utils=378.13
 	depends = libgl
 
 pkgname = nvidia-grsec-dkms
 	pkgdesc = NVIDIA driver sources for linux-grsec kernel
 	depends = dkms
-	depends = nvidia-utils=375.26
+	depends = nvidia-utils=378.13
 	depends = libgl
 	optdepends = linux-grsec-headers: build modules against the grsec kernel
 	conflicts = 
