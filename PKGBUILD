@@ -66,7 +66,7 @@ package_lib32-nvidia-libgl-beta() {
   replaces=('lib32-nvidia-utils<=313.26-1')
   cd $_pkg
 
-  mkdir -p "${pkgdir}/usr/lib/"
+  mkdir -p "${pkgdir}/usr/lib32/"
 
   # libGL (link)
   ln -s /usr/lib32/nvidia/libGL.so.1.0.0 "$pkgdir"/usr/lib32/libGL.so.1
