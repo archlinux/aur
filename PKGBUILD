@@ -4,7 +4,7 @@
 
 pkgname=nextcloud-news-updater
 pkgver=9.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="This Python library is a parllel feed updater for the nextCloud News app"
 arch=('any')
 url="https://github.com/nextcloud/news-updater"
