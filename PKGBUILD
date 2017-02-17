@@ -7,7 +7,7 @@ pkgdesc='GeoDa is an Exploratory (Spatial) Data Analysis and Spatial Regression 
 arch=('x86_64')
 license=('custom:free_for_non_commercial_use')
 url="http://geodacenter.github.io/download_linux.html"
-depends=('bash')
+depends=('libcurl-gnutls')
 makedepends=('wget' 'dpkg' 'rsync')
 install=$pkgname.install
 source=(
@@ -20,6 +20,10 @@ package()
   dpkg -X ../GeoDa-1.8.12-Ubuntu-64bit.deb ./
       
   find . -type d -exec chmod 755 {} \;
+  
+  mv usr/bin/run_geoda.sh /usr/bin/geoda
+  sed s/$GEODA_HOME/$HOME/ <usr/bin/geoda > usr/bin/geoda  
+  sed '/chmod/d' <usr/bin/geoda > usr/bin/geoda
   
   install -d $pkgdir/usr
   rsync -aPv usr/ $pkgdir/usr
