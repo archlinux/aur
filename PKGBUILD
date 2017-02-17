@@ -1,7 +1,7 @@
 # Maintainer: Lorenzo Tomei <tomeil@tiscali.it>
 
 pkgname=j8-git
-pkgver=8.05.10.20161226
+pkgver=8.05.11.20170217
 pkgrel=1
 pkgdesc='J is a modern, high-level, general-purpose, high-performance programming language'
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ optdepends=('wget: for web/gethttp addon'
             'lapack: for math/lapack addon')
 source=('jsource.zip::https://github.com/jsoftware/jsource/archive/master.zip'
         'qtide.zip::https://github.com/jsoftware/qtide/archive/master.zip'
-        'jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j805_env_20161226.tar.gz')
-md5sums=('SKIP' 'SKIP' '80b7addbb1bc0b86ef3165c76fea9e9e')
+        'jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j805_env_20170217.tar.gz')
+md5sums=('SKIP' 'SKIP' 'fe0863d2727884272e480ffaaada77b4')
 install=j8-git.install
 if [ "${CARCH}" = x86_64 ]; then
 _xarch=x86_64
@@ -46,6 +46,13 @@ sed -i "s@cd ~@cd ${srcdir}/jsource-master@" make/build_libj.sh
 sed -i "s@cd ~@cd ${srcdir}/jsource-master@" make/domake.sh
 sed -i "s@else if(_isnan(@// else if(_isnan(@" jsrc/f2.c
 cp make/jvars.sh ./
+cd ${srcdir}/qtide-master
+sed -i 's@QString f=cfpath(tofoldername(editPage()->fname));@QString f=cfpath(tofoldername(editPage()->fname)), px="~";@' lib/base/menu.cpp
+sed -i 's@if ("~"==f.at(0))@if (px.at(0)==f.at(0))@' lib/base/menu.cpp
+sed -i 's@QString id=tofoldername(s);@QString id=tofoldername(s), px="~";@' lib/base/pnew.cpp
+sed -i 's@if ("~"==id.at(0))@if (px.at(0)==id.at(0))@' lib/base/pnew.cpp
+sed -i 's@QString s=cpath(f);@QString s=cpath(f), px="~";@' lib/base/utils.cpp
+sed -i 's@if ("~"==s.at(0))@if (px.at(0)==s.at(0))@' lib/base/utils.cpp
 }
 
 build() {
