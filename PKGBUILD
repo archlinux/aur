@@ -12,7 +12,7 @@
 _clang_completer=y
 
 pkgname=neovim-youcompleteme-core-git
-pkgver=r1997.f6867340
+pkgver=r2004.1d1a4f4c
 pkgrel=1
 pkgdesc='A code-completion engine for Vim'
 arch=(i686 x86_64)
@@ -88,4 +88,6 @@ package() {
 	fi
 
 	find "${pkgdir}" \( -name .git -or -name 'test*' -or -name 'run_tests.py' -or -name 'CMakeFiles' \) -exec rm -fr {} +
+
+	python -m compileall "$pkgdir"
 }
