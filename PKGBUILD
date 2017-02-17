@@ -1,7 +1,7 @@
 # Maintainer: wangjiezhe <wangjiezhe AT yandex DOT com>
 pkgname=baidupcs-git
 _pkgname=BaiduPCS
-pkgver=0.2.5.17.ge955cb1
+pkgver=0.2.5.34.g866333b
 pkgrel=1
 pkgdesc="The terminal utility for Baidu Network Disk"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  sed -i "s|http://|https://|g" pcs/pcs.c
+  sed -i "s|http://|https://|g;s|^inline|static inline|" pcs/pcs.c
 }
 
 build() {
