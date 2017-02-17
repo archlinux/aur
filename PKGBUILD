@@ -1,7 +1,7 @@
 # Maintainer: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgname=system76-driver
-pkgver=16.10.10
+pkgver=16.10.13
 pkgrel=1
 pkgdesc="System76 Driver provides drivers, restore, and regression support for System76 computers"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
 	'pulseaudio: To apply microphone fix')
 source=("https://launchpad.net/~system76-dev/+archive/stable/+files/${pkgname}_${pkgver}.tar.gz"
 	'system76.service' 'galu1.patch' 'grub.patch' 'gtk.patch' 'cli.patch')
-sha1sums=('4e31c8e4ebf99e551cee66a4c6e02c1906a7ed0d'
+sha1sums=('b3a057ebaf4557da51a40ce2b95e6f3eecdbd6db'
           'cf763432441c3da0563eee041145a02109f2bb3a'
           'ea8d53a80a26eb05b367f27996c8ce715aafba1e'
           'b60a6f1554d806340f1f24bd3543561f8b4abf57'
