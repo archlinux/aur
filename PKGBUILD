@@ -8,7 +8,7 @@ arch=('x86_64')
 license=('custom:free_for_non_commercial_use')
 url="http://geodacenter.github.io/download_linux.html"
 depends=('bash')
-makedepends=('wget' 'dpkg')
+makedepends=('wget' 'dpkg' 'rsync')
 install=$pkgname.install
 source=(
   "https://s3.amazonaws.com/geoda/software/GeoDa-1.8.12-Ubuntu-64bit.deb"
@@ -18,10 +18,9 @@ package()
 {
   cd "$srcdir/"
   dpkg -X ../GeoDa-1.8.12-Ubuntu-64bit.deb ./
-  install -d $pkgdir/usr/bin/
-  install -d $pkgdir/usr/local/geoda/
-  install -d $pkgdir/usr/share/applications/
-  install -d $pkgdir/usr/share/icons/
+  
+  install -d $pkgdir/usr
+  rsync -aPv usr/ $pkgdir/usr
 }
 
 sha512sums=('9bb5f266dc8005093e55f271cb3c0803df7b57e1b1889a1ad5d6c763c319f12f5a8736d88672d1cd17e1fcd6ec3b3e6f45b6f6eec421a02355c7df43b7a42e95')
