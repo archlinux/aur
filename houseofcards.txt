@@ -3,7 +3,7 @@ CLAIRE UNDERWOOD: My husband doesn't apologize, even to me.
     - House of Cards, Chapter 1
 %
 ZOE BARNES:      Wait. We're in a very gray area. Ethically. Legally. Which I'm okay with --
-FRANK UNDERWOOD: I just love this painting, don't you? We're in the same boat now, Zoe. Take care not to tip it over. I can only save one of us from drowning. 
+FRANK UNDERWOOD: I just love this painting, don't you? We're in the same boat now, Zoe. Take care not to tip it over. I can only save one of us from drowning.
 
     - House of Cards, Chapter 1
 %
@@ -13,20 +13,30 @@ FRANK UNDERWOOD: Such a waste of talent. He chose money over power - in this tow
 %
 FRANK UNDERWOOD: You know the difference between you and me, Marty?
 MARTY SPINELLA:  What?
-FRANK UNDERWOOD: I'm a white-trash cracker from a white-trash town that no one would even bother to piss on. But here's the difference — I've made something of myself. I have the keys to the capitol. People respect me. But you, you're still nothing. You're just an uppity dago in an expensive suit turning tricks for the unions. Nobody respects the unions anymore, Marty. They're dying. And no one respects you. The most you'll ever make of yourself is blowing men like me. Men with real power. Yes. I can smell the cock on your breath from here.
+FRANK UNDERWOOD: I'm a white-trash cracker from a white-trash town that no one
+                 would even bother to piss on. But here's the difference — I've
+                 made something of myself. I have the keys to the capitol. People
+                 respect me. But you, you're still nothing. You're just an uppity
+                 dago in an expensive suit turning tricks for the unions. Nobody
+                 respects the unions anymore, Marty. They're dying. And no one
+                 respects you. The most you'll ever make of yourself is blowing
+                 men like me. Men with real power. Yes. I can smell the cock on
+                 your breath from here.
 MARTY SPINELLA:  You think you can get under my skin?
-FRANK UNDERWOOD: I know I can. 
+FRANK UNDERWOOD: I know I can.
 
     - House of Cards, Chapter 6
 %
-RAYMOND TUSK: Decisions based on emotion aren't decisions, at all. They're instincts. Which can be of value. The rational and the irrational complement each other. Individually they're far less powerful. 
+RAYMOND TUSK: Decisions based on emotion aren't decisions, at all. They're instincts.
+              Which can be of value. The rational and the irrational complement each
+              other. Individually they're far less powerful.
 
     - House of Cards, Chapter 12
 %
 RAYMOND TUSK:    Fact, I have something that you want. You have something that I want.
 [Frank chuckles]
 RAYMOND TUSK:    Have I said something amusing?
-FRANK UNDERWOOD: I've sat too many times on your side of the table not to enjoy the irony of finding myself on this side of it. 
+FRANK UNDERWOOD: I've sat too many times on your side of the table not to enjoy the irony of finding myself on this side of it.
 
     - House of Cards, Chapter 12
 %
@@ -38,7 +48,9 @@ FRANK UNDERWOOD: Of all the things I hold in high regards, rules are not one of 
 
     - House of Cards, Chapter 13
 %
-JANINE SKORSKY: My entire career, I have always chosen the tough stories. I have been fearless. But, you know what? I’m really fucking scared this time. He’s got power; he’s got a lot to lose; and, right now, he is winning. 
+JANINE SKORSKY: My entire career, I have always chosen the tough stories. I have been fearless.
+                But, you know what? I’m really fucking scared this time. He’s got power; he’s got
+                a lot to lose; and, right now, he is winning.
 
     - House of Cards, Chapter 14
 %
@@ -51,7 +63,9 @@ FRANK UNDERWOOD: If we never did anything we shouldn't do, we'd never feel good 
     - House of Cards, Chapter 16
 %
 XANDER FENG:     Mr. Tusk and I have great resources at our disposal.
-FRANK UNDERWOOD: Add up all your billions and you get the GDP of Slovakia. I have the federal government of the United States of America. Your money doesn't intimidate me. The most that you buy is influence, but I wield Constitutional authority.
+FRANK UNDERWOOD: Add up all your billions and you get the GDP of Slovakia. I have the federal government
+                 of the United States of America. Your money doesn't intimidate me. The most that you buy
+                 is influence, but I wield Constitutional authority.
 XANDER FENG:     The strongest army doesn't always win. Mao started out with only a few thousand men. They took over half a continent.
 FRANK UNDERWOOD: Mao is dead, and so is his China.
 
@@ -61,7 +75,10 @@ FRANK UNDERWOOD: You may have all the money, Raymond, but I have all the men wit
 
     - House of Cards, Chapter 19
 %
-DANIEL LANIGAN: You know what I like about money? I can stack it on a table, like this one. I can measure it with a yardstick. I can see it, smell it, buy things with it - houses, cars, clothes. Things that are real. You're going to have to show up with more than beads. 
+DANIEL LANIGAN: You know what I like about money? I can stack it on a table, like this one. I can measure it
+                ith a yardstick. I can see it, smell it, buy things with it - houses, cars, clothes.
+                Things that are real. You're going to have to show up with more than beads.
+
     - House of Cards, Chapter 20
 %
 FREDDY HAYES: I ain't one for lookin' back. Eyes ahead.
@@ -72,7 +89,7 @@ FRANK UNDERWOOD: I've always loathed the necessity of sleep. Like death, it puts
 
     - House of Cards, Chapter 23
 %
-FRANK UNDERWOOD: The only thing more satisfying than convincing someone to do what I want is failing to persuade them on purpose. It's like a do not enter sign. It just begs you to walk in the door. 
+FRANK UNDERWOOD: The only thing more satisfying than convincing someone to do what I want is failing to persuade them on purpose. It's like a do not enter sign. It just begs you to walk in the door.
 
     - House of Cards, Chapter 23
 %
@@ -83,15 +100,15 @@ MEGAN HENNESSY:   Do you ever wonder why so many people hate Washington? It's be
 %
 [Frank has just asked Jackie to help him get Walker impeached]
 JACKIE SHARP:    Mr. Vice President, what you are asking is just shy of treason.
-FRANK UNDERWOOD: Just shy, which is politics. 
+FRANK UNDERWOOD: Just shy, which is politics.
 
     - House of Cards, Chapter 25
 %
-RAYMOND TUSK: [To Frank] When they put you in that box barely bigger than a coffin remember how beautiful the music was tonight. It might give you some small degree of comfort. 
+RAYMOND TUSK: [To Frank] When they put you in that box barely bigger than a coffin remember how beautiful the music was tonight. It might give you some small degree of comfort.
 
     - House of Cards, Chapter 26
 %
-FRANK UNDERWOOD: [about Dunbar] She sees me as the bank robber who made it to the county line, but she's smart enough to leave her badge at the door. 
+FRANK UNDERWOOD: [about Dunbar] She sees me as the bank robber who made it to the county line, but she's smart enough to leave her badge at the door.
 
     - House of Cards, Chapter 28
 %
@@ -113,7 +130,7 @@ FRANK UNDERWOOD: I understand the Old Testament God, whose power was absolute, w
     - House of Cards, Chapter 30
 %
 FRANK UNDERWOOD: There won't be a revolution because you freed one man.
-VIKTOR PETROV:   Revolutions sneak up on you, one small step at a time. I can't ignore the smallest step. 
+VIKTOR PETROV:   Revolutions sneak up on you, one small step at a time. I can't ignore the smallest step.
 
     - House of Cards, Chapter 32
 %
@@ -125,23 +142,23 @@ EDWARD MEECHUM: The part about being foolish.
 TOM YATES:      Were you eavesdropping?
 EDWARD MEECHUM: He's not foolish.
 TOM YATES:      That wasn't my point.
-EDWARD MEECHUM: I wouldn't take a bullet for a man who was. 
+EDWARD MEECHUM: I wouldn't take a bullet for a man who was.
 
     - House of Cards, Chapter 34
 %
-FRANK UNDERWOOD: I never tried to swim to Fort Sumter. Thomas probably knows that I made it up, but he wrote about it anyway because he understands the greater truth: Imagination is its own form of courage. 
+FRANK UNDERWOOD: I never tried to swim to Fort Sumter. Thomas probably knows that I made it up, but he wrote about it anyway because he understands the greater truth: Imagination is its own form of courage.
 
     - House of Cards, Chapter 34
 %
 FRANK UNDERWOOD: Claire is the First Lady of the United States, and you still think she made the wrong choice.
 ELIZABETH HALE:  Reduced to tabloid gossip? She might as well be living in that trailer park you come from.
 FRANK UNDERWOOD: Well, it was a peach farm. But you're right, I am still white trash. I just happen to be white trash that lives in the White House.
-ELIZABETH HALE:  Not even being president could give you any class. 
+ELIZABETH HALE:  Not even being president could give you any class.
 
     - House of Cards, Chapter 40
 %
 REMY DANTON:      Sorry about Frank.
-CLAIRE UNDERWOOD: Oh, please, don't bother. I've had enough people say "I'm sorry", and I know you don't mean it. 
+CLAIRE UNDERWOOD: Oh, please, don't bother. I've had enough people say "I'm sorry", and I know you don't mean it.
 
     - House of Cards, Chapter 44
 %
@@ -149,22 +166,24 @@ FRANK UNDERWOOD: Do you what separates politicians from the rest of the species?
 
     - House of Cards, Chapter 48
 %
-WILL CONWAY: Oh, I always wear protection when I'm getting my dick sucked by the democrats. 
+WILL CONWAY: Oh, I always wear protection when I'm getting my dick sucked by the democrats.
 
     - House of Cards, Chapter 48
 %
 HANNAH CONWAY:    Do you regret it, not having children? Oh, I'm sorry. That's too personal.
-CLAIRE UNDERWOOD: Do you ever regret having them? 
+CLAIRE UNDERWOOD: Do you ever regret having them?
 
     - House of Cards, Chapter 51
 %
-IBRAHIM HALABI: The moment bigotry becomes a form of patriotism, America is no longer America. 
+IBRAHIM HALABI: The moment bigotry becomes a form of patriotism, America is no longer America.
 
     - House of Cards, Chapter 51
 %
-CLAIRE UNDERWOOD: We expel the Ba'athists, and you go from bureaucrat to extremist. But you're a well-educated man, Yusuf, and you don't care about Islam or the caliphate. You're just using that to radicalize soldiers.
+CLAIRE UNDERWOOD: We expel the Ba'athists, and you go from bureaucrat to extremist.
+                  But you're a well-educated man, Yusuf, and you don't care about Islam
+                  or the caliphate. You're just using that to radicalize soldiers.
 YUSUF AL AHMADI:  Just as you use democracy and freedom.
-CLAIRE UNDERWOOD: So now we understand each other. 
+CLAIRE UNDERWOOD: [Smiles] So now we understand each other.
 
     - House of Cards, Chapter 52
 %
