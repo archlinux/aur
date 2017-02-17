@@ -7,7 +7,7 @@
 
 pkgname=('roccat-tools-full')
 _pkgbase=roccat-tools
-pkgver=5.5.0
+pkgver=5.6.0
 pkgrel=1
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ conflicts=('roccat-tools-common')
 replaces=('roccat-tools-common')
 source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2")
 install=roccat-tools.install
-sha1sums=('706af01f553ad3585dc579ce6e1a7edecbc1962e')
+sha1sums=('438f9d5c57aabb9820b0df7fab89bfc2d9cfed5f')
 
 build() {
   cd "$srcdir/$_pkgbase-$pkgver"
