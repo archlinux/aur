@@ -1,0 +1,18 @@
+pkgbase = quazip
+	pkgdesc = C++ wrapper for the Gilles Vollant's ZIP/UNZIP C package
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = http://sourceforge.net/projects/quazip/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	depends = qt5-base
+	provides = quazip-qt5
+	conflicts = quazip-qt5
+	replaces = quazip-qt5
+	source = http://downloads.sourceforge.net/quazip/quazip-0.7.3.tar.gz
+	md5sums = 2ba7dd8b1d6dd588374c9fab5c46e76e
+
+pkgname = quazip
+
