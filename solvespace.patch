@@ -1,5 +1,5 @@
---- CMakeLists.txt.orig	2016-11-03 16:42:23.761974771 +0100
-+++ CMakeLists.txt	2016-11-03 16:42:48.721429811 +0100
+--- a/CMakeLists.txt	2016-12-24 03:09:48.000000000 +0100
++++ b/CMakeLists.txt	2017-02-17 15:34:14.631074337 +0100
 @@ -20,9 +20,9 @@
  # NOTE TO PACKAGERS: The embedded git commit hash is critical for rapid bug triage when the builds
  # can come from a variety of sources. If you are mirroring the sources or otherwise build when
@@ -8,7 +8,7 @@
 +#include(GetGitCommitHash)
  # and instead uncomment the following, adding the complete git hash of the checkout you are using:
 -# set(GIT_COMMIT_HASH 0000000000000000000000000000000000000000)
-+set(GIT_COMMIT_HASH c4ad073d1b3d3fcd81b34cbe5f2352547b14213f)
++set(GIT_COMMIT_HASH 3475a9bf811afddde7d0638fbcc2b0200d542b07)
  
  project(solvespace)
  set(solvespace_VERSION_MAJOR 2)
