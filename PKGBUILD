@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname='rsbag-tools-cl-git'
-pkgver=0.16.g44dfe04
+pkgver=0.16.g56cd6b0
 pkgrel=1
 pkgdesc='RSBag common lisp tools'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ source=("rsbag-tools-cl::git+https://code.cor-lab.org/git/rsbag.git.tools-cl"
         "rsbag-cl::git+https://code.cor-lab.org/git/rsbag.git.cl"
         "rsb-tools-cl::git+https://code.cor-lab.org/git/rsb.git.tools-cl"
         "rsb-cl::git+https://code.cor-lab.org/git/rsb.git.cl"
-        "cl-protobuf.tar.gz::https://github.com/scymtym/cl-protobuf/archive/release-0.1.tar.gz"
+        "cl-protobuf.tar.gz::https://github.com/scymtym/cl-protobuf/archive/release-0.1.1.tar.gz"
         "network.spread.tar.gz::https://github.com/scymtym/network.spread/archive/release-0.3.1.tar.gz"
         "architecture.builder-protocol.tar.gz::https://github.com/scymtym/architecture.builder-protocol/archive/release-0.5.tar.gz"
         "iterate-sequence::git+https://github.com/scymtym/iterate-sequence")
@@ -21,7 +21,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         'c5934f42b3f923564ea2debc207a5a3e'
+         '701a2e598687ee881709dad4c8402967'
          '4f548d04ab6a1e86832f266d7276ed4f'
          '8a0bca93913ee772fc9267485659552b'
          'SKIP')
