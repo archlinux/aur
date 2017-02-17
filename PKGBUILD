@@ -1,9 +1,9 @@
 # Maintainer: kitsunyan <kitsunyan@inbox.ru>
 
 pkgname=systemd-boot-password
-pkgver=0.9.3.232
+pkgver=0.9.4.232
 pkgrel=1
-_commit=6280a386f70d1b21fdbcba1a57e2d6a654c7f46d
+_commit=a7dc69ee5ad9abfe6fb84e119a9d49ccbe9205a5
 pkgdesc='systemd-boot with password-protected editor'
 arch=('i686' 'x86_64')
 url="https://github.com/kitsunyan/systemd-boot-password"
