@@ -2,17 +2,18 @@
 # new version (without -$pkgrel): ${2%%-*}
 
 post_install() {
-    dkms install dev-horo-git/${1%%-*}
+    depmod -a
+    modprobe horok
 }
 
 pre_upgrade() {
-    pre_remove ${2%%-*}
+    modprobe -r horok
 }
 
 post_upgrade() {
-    post_install ${1%%-*}
+    post_install
 }
 
 pre_remove() {
-    dkms remove dev-horo-git/${1%%-*} --all
+    pre_remove
 }
