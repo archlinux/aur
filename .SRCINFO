@@ -8,7 +8,8 @@ pkgbase = cern-vdt
 	license = LGPL3
 	makedepends = cmake
 	makedepends = git
-	source = git+git://github.com/dpiparo/vdt.git#tag=v${pkgver}
+	source = git+git://github.com/dpiparo/vdt.git#tag=v0.3.9
 	md5sums = SKIP
 
 pkgname = cern-vdt
+

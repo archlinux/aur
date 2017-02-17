@@ -1,6 +1,6 @@
 # Maintainer: Raphael Isemann <teemperor@gmail.com>
 
-pkgname=vdt
+pkgname=cern-vdt
 pkgver=0.3.9
 pkgrel=1
 pkgdesc='A vectorised math library from CERN'
