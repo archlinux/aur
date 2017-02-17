@@ -1,0 +1,3 @@
+post_install(){
+	echo "http://powa.readthedocs.io/en/latest/stats_extensions/pg_qualstats.html"
+}

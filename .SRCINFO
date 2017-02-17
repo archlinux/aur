@@ -1,0 +1,19 @@
+pkgbase = pg_stat_kcache-git
+	pkgdesc = postgresql background worker to capture data
+	pkgver = ec62dd8
+	pkgrel = 1
+	url = https://github.com/dalibo/pg_stat_kcache
+	install = pg_stat_kcache-git.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	makedepends = git
+	depends = postgresql
+	options = !emptydirs
+	options = !libtool
+	source = git://github.com/dalibo/pg_stat_kcache.git
+	md5sums = SKIP
+
+pkgname = pg_stat_kcache-git
+
