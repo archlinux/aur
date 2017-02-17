@@ -1,8 +1,8 @@
 # Maintainer: Timo Sarawinski <t.sarawinski@gmail.com>
 pkgname=8723bs-git
 _pkgname=8723bs
-pkgver=9ea0240
-pkgrel=1
+pkgver=6b0aec21412f2b1616574ddd62d6287648c097c7
+pkgrel=2
 pkgdesc="RTL8723BS WIFI driver working on baytrail tablets"
 url="http://www.realtek.com.tw/"
 provides=('8723bs')
