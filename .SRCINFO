@@ -1,6 +1,6 @@
 pkgbase = velox-ametisf-git
 	pkgdesc = Ametisf's fork of velox.
-	pkgver = 0.0.2.r306.ge533638
+	pkgver = 462.e533638
 	pkgrel = 1
 	url = https://github.com/ametisf/velox
 	arch = i686
