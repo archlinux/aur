@@ -6,7 +6,7 @@ After=default.target
 Type=simple
 User=http
 Group=http
-Environment=NEXTCLOUD_CONFIG_DIR=/etc/webapps/nextcloud
+Environment=NEXTCLOUD_CONFIG_DIR=/etc/webapps/nextcloud/config
 ExecStart=/usr/bin/owncloud-news-updater -c /etc/webapps/nextcloud/news/nextcloud-news-updater.ini
 PrivateTmp=yes
 ProtectSystem=full
