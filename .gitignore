@@ -1,0 +1,6 @@
+pkg/
+SFML/
+src/
+*.log
+*.tar
+*.xz
