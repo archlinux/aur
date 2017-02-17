@@ -10,20 +10,19 @@
 
 _pkgname=keepassxc
 pkgname=keepassxc-keepasshttp
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="keepassxc with keepasshttp feature enabled"
 arch=('i686' 'x86_64')
 url="https://keepassxc.org"
 license=('GPL2')
-depends=('libxtst' 'shared-mime-info' 'qt5-x11extras' 'hicolor-icon-theme' 'desktop-file-utils' 'libmicrohttpd')
+depends=('libxtst' 'shared-mime-info' 'qt5-x11extras' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('intltool' 'cmake' 'qt5-base' 'qt5-tools' 'zlib' 'libgcrypt')
 conflicts=('keepassxc')
 provides=('keepassxc')
-source=("https://github.com/keepassxreboot/keepassxc/releases/download/${pkgver}/${_pkgname}-${pkgver}-src.tar.xz"{,.sig})
-sha256sums=('5609063f1edfc4790e8aa93e6445c77ba75ac9b1841a30706d6373f686804880'
-            'SKIP')
-validpgpkeys=('BF5A669F2272CF4324C1FDA8CFB4C2166397D0D2') # KeePassXC Release <release@keepassxc.org>
+source=("https://github.com/keepassxreboot/keepassxc/archive/${pkgver}.tar.gz")
+sha256sums=('8cd94a401910ff67cadeed3d7d1b285f1e5d82ac8622a05b5c7eae60f28f1710')
+#validpgpkeys=('BF5A669F2272CF4324C1FDA8CFB4C2166397D0D2') # KeePassXC Release <release@keepassxc.org>
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
