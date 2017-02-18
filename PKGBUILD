@@ -2,8 +2,8 @@
 
 pkgname=sshsocksvpn
 provides=('sshsocksvpn')
-pkgrel=3
-pkgver=0.1
+pkgrel=1
+pkgver=0.2
 arch=('any')
 license=('GPL2')
 pkgdesc="Have an easy way to manage socks tunnels created via SSH and manage a tun2socks on top of it."
@@ -12,7 +12,7 @@ depends=('python' 'python-psutil' 'openssh' 'badvpn')
 makedepends=('python-distribute' 'git')
 
 source=("https://github.com/grimpy/sshsocksvpn/archive/v${pkgver}.tar.gz")
-md5sums=('90c544297516eff662df3f4eeb51abcf')
+md5sums=('ab7c247eef6ca8684452160422040509')
 
 build() {
     cd
