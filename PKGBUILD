@@ -1,5 +1,5 @@
 #Maintainer: m4sk1n <m4sk1n@vivaldi.net>
-# Contributor: Christian Hesse <mail@eworm.de>
+#Contributor: Christian Hesse <mail@eworm.de>
 
 pkgname=otter-browser-git
 pkgver=0.9.12.r345.gcf8c9ce7
@@ -10,10 +10,10 @@ url='http://otter-browser.org/'
 license=('GPL3')
 provides=('otter-browser')
 conflicts=('otter-browser')
-depends=( 'qt5-script>=5.4' 'qt5-webkit>=5.4' 'qt5-multimedia>=5.4' 'qt5-xmlpatterns>=5.4')
+depends=( 'qt5-script>=5.4' 'qt5-webkit' 'qt5-multimedia>=5.4' 'qt5-xmlpatterns>=5.4')
 makedepends=('cmake' 'git')
-optdepends=('hunspell>= 1.3.3: for spell checking'
-            'qt5-webengine>=5.4: for experimental backend using the Chromium browser project')
+optdepends=('hunspell: for spell checking'
+            'qt5-webengine: for experimental backend using the Chromium browser project')
 source=('git://github.com/OtterBrowser/otter-browser.git')
 sha256sums=('SKIP')
 
