@@ -23,6 +23,7 @@ prepare() {
     cd $pkgname-$pkgver/
     patch -p1 -i ../${pkgname}_$pkgver-11.diff
     sed -i '/MAKE/ s/install-data-am//' Makefile.in
+    sed -i 's|$(top_builddir)/doc/texi2html|/usr/bin/texi2html|' doc/Makefile.in
 }
 
 build() {
