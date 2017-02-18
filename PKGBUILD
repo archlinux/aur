@@ -1,7 +1,7 @@
 # Maintainer: Marin M <https://github.com/marin-m>
 
 pkgname=pbtk-git
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='A toolset for reverse engineering and fuzzing Protobuf-based apps'
 url='https://github.com/marin-m/pbtk'
