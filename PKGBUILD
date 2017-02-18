@@ -6,9 +6,9 @@
 
 pkgname=nss-mdns-domainless
 pkgver=0.10
-pkgrel=6
+pkgrel=7
 pkgdesc="glibc plugin providing host name resolution via mDNS (domainless allowed for .local)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="http://0pointer.de/lennart/projects/nss-mdns/"
 license=('LGPL')
 depends=('glibc')
