@@ -8,17 +8,14 @@ pkgname=dev-horo-git
 _pkgname=dev.horo
 _HOROK="horok.conf"
 pkgver=0.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Horo in your Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/VOID001/dev.horo"
 license=("GPL3")
 depends=('dkms')
 makedepends=('git' 'go')
-source=("git+https://github.com/VOID001/${_pkgname}.git"
-        "${_HOROK}"
-)
-install=$_pkgname.install
+source=("git+https://github.com/VOID001/${_pkgname}.git")
 
 _MODULE_NAME="horok.ko"
 _HOROPROXY="horoproxy"
@@ -31,8 +28,8 @@ build() {
 package() {
         cd "$srcdir/$_pkgname"
         install -Dm755 ${_HOROPROXY}/${_HOROPROXY} "$pkgdir/usr/bin/${_HOROPROXY}"
-        cd "$srcdir"
-        install -Dm644 ${_HOROK} "${pkgdir}/usr/share/horo/${_HOROK}"
+        #cd "$srcdir"
+        #install -Dm644 ${_HOROK} "${pkgdir}/usr/share/horo/${_HOROK}"
 
         sed -e "10s/^/#/g" -i "${srcdir}/${_pkgname}/Makefile"
 
@@ -45,5 +42,4 @@ package() {
 }
 
 
-md5sums=('SKIP'
-         '781de64b680a4c780af3cae37088b75e')
+md5sums=('SKIP')
