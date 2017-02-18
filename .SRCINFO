@@ -1,0 +1,16 @@
+pkgbase = ugtrain-git
+	pkgdesc = The Universal Elite Game Trainer for CLI
+	pkgver = v0.3.r45.d9519a1
+	pkgrel = 1
+	url = https://github.com/ugtrain/ugtrain
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = gcc-libs
+	provides = ugtrain
+	source = git://github.com/ugtrain/ugtrain.git
+	md5sums = SKIP
+
+pkgname = ugtrain-git
+
