@@ -9,7 +9,7 @@ url="https://github.com/mattanger/ckb-next"
 license=('GPL2')
 depends=('qt5-base' 'hicolor-icon-theme')
 makedepends=('git')
-conflicts=('ckb-next-git', 'ckb-git', 'ckb-latest-git')
+conflicts=('ckb-git' 'ckb-latest-git' 'ckb-next-git')
 install=ckb-next-latest-git.install
 source=('ckb-next-latest-git::git+https://github.com/mattanger/ckb-next.git#branch=testing')
 md5sums=('SKIP')
