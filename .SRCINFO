@@ -1,6 +1,6 @@
 pkgbase = libretro-mupen64plus-git
-	pkgdesc = libretro implementation of mupen64plus with dynarec (even for rpi)
-	pkgver = 4407.bdb19214
+	pkgdesc = libretro port of Mupen64 Plus
+	pkgver = 599.1149992
 	pkgrel = 1
 	url = https://github.com/libretro/mupen64plus-libretro
 	arch = i686
