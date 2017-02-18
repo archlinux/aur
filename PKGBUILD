@@ -1,9 +1,9 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgname=am335x-pru-git
-pkgver=20140124
-pkgrel=2
+pkgver=20170212
+pkgrel=1
 pkgdesc="The PASM assembler and prussdrv library for the BBB (beaglebone black) PRU."
-arch=('i686' 'x86_64' 'armv7h')
+arch=('armv7h')
 url="http://processors.wiki.ti.com/index.php/Category:PRU"
 license=('copyright')
 depends=()
@@ -40,7 +40,7 @@ build() {
     msg "Hacking python stuff..."
     pushd pru_sw/app_loader/python/prussdrv
     sed -i "2i import sys" __init__.py
-    sed -i "3i sys.path.append('/usr/lib/python3.3/site-packages/prussdrv')" __init__.py
+    sed -i "3i sys.path.append('/usr/lib/python3.6/site-packages/prussdrv')" __init__.py
     #sed -i 's/^import /&prussdrv./' *.py
     #sed -i 's/^from /&prussdrv./' *.py
     #sed -i 's/prussdrv.ctypes/ctypes/' *.py
@@ -64,8 +64,8 @@ package() {
     popd
 
     pushd pru_sw/app_loader/python/prussdrv
-    install -d "$pkgdir/usr/lib/python3.3/site-packages/prussdrv"
-    cp *.py    "$pkgdir/usr/lib/python3.3/site-packages/prussdrv"
+    install -d "$pkgdir/usr/lib/python3.6/site-packages/prussdrv"
+    cp *.py    "$pkgdir/usr/lib/python3.6/site-packages/prussdrv"
     popd
 
     pushd pru_sw
