@@ -1,0 +1,1149 @@
+diff -Naur src/desktop-0.4.1-5/package.json src/desktop-0.4.1-5/package.json
+--- src/desktop-0.4.1-5/package.json
++++ src/desktop-0.4.1-5/package.json
+@@ -7,7 +7,7 @@
+     "url": "https://github.com/PopcornTimeCommunity/desktop.git"
+   },
+   "license": "GPL-3.0",
+-  "main": "app://host/src/app/index.html",
++  "main": "src/app/index.html",
+   "version": "0.4.1-5",
+   "node-remote": "*://*",
+   "releaseName": "New Year's Eve in front of the door",
+diff -Naur src/desktop-0.4.1-5/src/app/lib/providers/trakttv.js src/desktop-0.4.1-5/src/app/lib/providers/trakttv.js
+--- src/desktop-0.4.1-5/src/app/lib/providers/trakttv.js
++++ src/desktop-0.4.1-5/src/app/lib/providers/trakttv.js
+@@ -1,4 +1,4 @@
+-(function (App) {
++(function(App) {
+     'use strict';
+ 
+     var request = require('request'),
+@@ -7,7 +7,7 @@
+         _ = require('underscore'),
+         inherits = require('util').inherits;
+ 
+-    var API_ENDPOINT = URI('https://api-v2launch.trakt.tv'),
++    var API_ENDPOINT = URI('https://api.trakt.tv'),
+         CLIENT_ID = 'c7e20abc718e46fc75399dd6688afca9ac83cd4519c9cb1fba862b37b8640e89',
+         CLIENT_SECRET = '476cf15ed52542c2c8dc502821280aa5f61a012db57f1ed1f479aaf88ab385cb',
+         REDIRECT_URI = 'urn:ietf:wg:oauth:2.0:oob';
+@@ -19,35 +19,35 @@
+ 
+         var self = this;
+         // Bind all "sub" method calls to TraktTv
+-        _.each(this.calendars, function (method, key) {
++        _.each(this.calendars, function(method, key) {
+             self.calendars[key] = method.bind(self);
+         });
+-        _.each(this.movies, function (method, key) {
++        _.each(this.movies, function(method, key) {
+             self.movies[key] = method.bind(self);
+         });
+-        _.each(this.recommendations, function (method, key) {
++        _.each(this.recommendations, function(method, key) {
+             self.recommendations[key] = method.bind(self);
+         });
+-        _.each(this.shows, function (method, key) {
++        _.each(this.shows, function(method, key) {
+             self.shows[key] = method.bind(self);
+         });
+-        _.each(this.episodes, function (method, key) {
++        _.each(this.episodes, function(method, key) {
+             self.episodes[key] = method.bind(self);
+         });
+-        _.each(this.sync, function (method, key) {
++        _.each(this.sync, function(method, key) {
+             self.sync[key] = method.bind(self);
+         });
+ 
+         // Bind all custom functions to TraktTv
+-        _.each(this.oauth, function (method, key) {
++        _.each(this.oauth, function(method, key) {
+             self.oauth[key] = method.bind(self);
+         });
+-        _.each(this.syncTrakt, function (method, key) {
++        _.each(this.syncTrakt, function(method, key) {
+             self.syncTrakt[key] = method.bind(self);
+         });
+ 
+         // Refresh token on startup if needed
+-        setTimeout(function () {
++        setTimeout(function() {
+             self.oauth.checkToken();
+         }, 500);
+     }
+@@ -59,14 +59,14 @@
+     inherits(TraktTv, App.Providers.CacheProviderV2);
+ 
+     function MergePromises(promises) {
+-        return Q.all(promises).then(function (results) {
++        return Q.all(promises).then(function(results) {
+             return _.unique(_.flatten(results));
+         });
+     }
+ 
+-    TraktTv.prototype.cache = function (key, ids, func) {
++    TraktTv.prototype.cache = function(key, ids, func) {
+         var self = this;
+-        return this.fetch(ids).then(function (items) {
++        return this.fetch(ids).then(function(items) {
+             var nonCachedIds = _.difference(ids, _.pluck(items, key));
+             return MergePromises([
+                 Q(items),
+@@ -80,7 +80,7 @@
+      * METHODS (http://docs.trakt.apiary.io/)
+      */
+ 
+-    TraktTv.prototype.get = function (endpoint, getVariables) {
++    TraktTv.prototype.get = function(endpoint, getVariables) {
+         var defer = Q.defer();
+ 
+         getVariables = getVariables || {};
+@@ -99,7 +99,7 @@
+                 'trakt-api-version': '2',
+                 'trakt-api-key': CLIENT_ID
+             }
+-        }, function (error, response, body) {
++        }, function(error, response, body) {
+             if (error || !body) {
+                 defer.reject(error);
+             } else if (response.statusCode >= 400) {
+@@ -113,7 +113,7 @@
+         return defer.promise;
+     };
+ 
+-    TraktTv.prototype.post = function (endpoint, postVariables) {
++    TraktTv.prototype.post = function(endpoint, postVariables) {
+         var defer = Q.defer();
+ 
+         postVariables = postVariables || {};
+@@ -131,7 +131,7 @@
+                 'trakt-api-key': CLIENT_ID
+             },
+             body: JSON.stringify(postVariables)
+-        }, function (error, response, body) {
++        }, function(error, response, body) {
+             if (error || !body) {
+                 defer.reject(error);
+             } else if (response.statusCode >= 400) {
+@@ -145,7 +145,7 @@
+     };
+ 
+     TraktTv.prototype.calendars = {
+-        myShows: function (startDate, days) {
++        myShows: function(startDate, days) {
+             var endpoint = 'calendars/my/shows';
+ 
+             if (startDate && days) {
+@@ -153,7 +153,7 @@
+             }
+ 
+             return this.get(endpoint)
+-                .then(function (item) {
++                .then(function(item) {
+                     var calendar = [];
+                     for (var i in item) {
+                         calendar.push({
+@@ -171,41 +171,41 @@
+     };
+ 
+     TraktTv.prototype.movies = {
+-        summary: function (id) {
++        summary: function(id) {
+             return this.get('movies/' + id, {
+                 extended: 'full,images'
+             });
+         },
+-        aliases: function (id) {
++        aliases: function(id) {
+             return this.get('movies/' + id + '/aliases');
+         },
+-        translations: function (id, lang) {
++        translations: function(id, lang) {
+             return this.get('movies/' + id + '/translations/' + lang);
+         },
+-        comments: function (id) {
++        comments: function(id) {
+             return this.get('movies/' + id + '/comments');
+         },
+-        related: function (id) {
++        related: function(id) {
+             return this.get('movies/' + id + '/related');
+         }
+     };
+ 
+     TraktTv.prototype.recommendations = {
+-        movies: function () {
++        movies: function() {
+             return this.get('recommendations/movies')
+-                .then(function (data) {
++                .then(function(data) {
+                     return data;
+                 });
+         },
+-        shows: function () {
++        shows: function() {
+             return this.get('recommendations/shows')
+-                .then(function (data) {
++                .then(function(data) {
+                     return data;
+                 });
+         }
+     };
+ 
+-    TraktTv.prototype.scrobble = function (action, type, id, progress) {
++    TraktTv.prototype.scrobble = function(action, type, id, progress) {
+         if (!isValid(id)) {
+             return;
+         }
+@@ -231,7 +231,7 @@
+         }
+     };
+ 
+-    TraktTv.prototype.search = function (query, type, year) {
++    TraktTv.prototype.search = function(query, type, year) {
+         return this.get('search', {
+             query: query,
+             type: type,
+@@ -240,40 +240,40 @@
+     };
+ 
+     TraktTv.prototype.shows = {
+-        summary: function (id) {
++        summary: function(id) {
+             return this.get('shows/' + id);
+         },
+-        aliases: function (id) {
++        aliases: function(id) {
+             return this.get('shows/' + id + '/aliases');
+         },
+-        translations: function (id, lang) {
++        translations: function(id, lang) {
+             return this.get('shows/' + id + '/translations/' + lang);
+         },
+-        comments: function (id) {
++        comments: function(id) {
+             return this.get('shows/' + id + '/comments');
+         },
+-        watchedProgress: function (id) {
++        watchedProgress: function(id) {
+             if (!id) {
+                 return Q();
+             }
+             return this.get('shows/' + id + '/progress/watched')
+-                .then(function (data) {
++                .then(function(data) {
+                     return data;
+                 });
+         },
+-        updates: function (startDate) {
++        updates: function(startDate) {
+             return this.get('shows/updates/' + startDate)
+-                .then(function (data) {
++                .then(function(data) {
+                     return data;
+                 });
+         },
+-        related: function (id) {
++        related: function(id) {
+             return this.get('shows/' + id + '/related');
+         }
+     };
+ 
+     TraktTv.prototype.episodes = {
+-        summary: function (id, season, episode) {
++        summary: function(id, season, episode) {
+             return this.get('shows/' + id + '/seasons/' + season + '/episodes/' + episode, {
+                 extended: 'full,images'
+             });
+@@ -281,27 +281,27 @@
+     };
+ 
+     TraktTv.prototype.sync = {
+-        lastActivities: function () {
++        lastActivities: function() {
+             var defer = Q.defer();
+             this.get('sync/last_activities')
+-                .then(function (data) {
++                .then(function(data) {
+                     defer.resolve(data);
+                 });
+             return defer.promise;
+         },
+-        playback: function (type, id) {
++        playback: function(type, id) {
+             var defer = Q.defer();
+ 
+             if (type === 'movie') {
+                 this.get('sync/playback/movies', {
+                     limit: 50
+-                }).then(function (results) {
+-                    results.forEach(function (result) {
++                }).then(function(results) {
++                    results.forEach(function(result) {
+                         if (result.movie.ids.imdb.toString() === id) {
+                             defer.resolve(result.progress);
+                         }
+                     });
+-                }).catch(function (err) {
++                }).catch(function(err) {
+                     defer.reject(err);
+                 });
+             }
+@@ -309,34 +309,34 @@
+             if (type === 'episode') {
+                 this.get('sync/playback/episodes', {
+                     limit: 50
+-                }).then(function (results) {
+-                    results.forEach(function (result) {
++                }).then(function(results) {
++                    results.forEach(function(result) {
+                         if (result.episode.ids.tvdb.toString() === id) {
+                             defer.resolve(result.progress);
+                         }
+                     });
+-                }).catch(function (err) {
++                }).catch(function(err) {
+                     defer.reject(err);
+                 });
+             }
+ 
+             return defer.promise;
+         },
+-        getWatched: function (type) {
++        getWatched: function(type) {
+             if (type === 'movies') {
+                 return this.get('sync/watched/movies')
+-                    .then(function (data) {
++                    .then(function(data) {
+                         return data;
+                     });
+             }
+             if (type === 'shows') {
+                 return this.get('sync/watched/shows')
+-                    .then(function (data) {
++                    .then(function(data) {
+                         return data;
+                     });
+             }
+         },
+-        addToHistory: function (type, id) {
++        addToHistory: function(type, id) {
+             if (!isValid(id)) {
+                 return;
+             }
+@@ -359,7 +359,7 @@
+                 });
+             }
+         },
+-        removeFromHistory: function (type, id) {
++        removeFromHistory: function(type, id) {
+             if (!isValid(id)) {
+                 return;
+             }
+@@ -390,19 +390,21 @@
+      */
+ 
+     TraktTv.prototype.oauth = {
+-        authenticate: function () {
++        authenticate: function() {
++            win.debug("Trakt authenticate started");
+             var defer = Q.defer();
+             var self = this;
+ 
+             this.oauth.authorize()
+-                .then(function (token) {
++                .then(function(token) {
++                    win.debug("Trakt authorize token: " + token);
+                     self.post('oauth/token', {
+                         code: token,
+                         client_id: CLIENT_ID,
+                         client_secret: CLIENT_SECRET,
+                         redirect_uri: REDIRECT_URI,
+                         grant_type: 'authorization_code'
+-                    }).then(function (data) {
++                    }).then(function(data) {
+                         if (data.access_token && data.expires_in && data.refresh_token) {
+                             Settings.traktToken = data.access_token;
+                             AdvSettings.set('traktToken', data.access_token);
+@@ -412,6 +414,7 @@
+                             App.vent.trigger('system:traktAuthenticated');
+                             defer.resolve(true);
+                         } else {
++                            win.debug("trakt authenicate No Data returned.");
+                             AdvSettings.set('traktToken', '');
+                             AdvSettings.set('traktTokenTTL', '');
+                             AdvSettings.set('traktTokenRefresh', '');
+@@ -419,61 +422,67 @@
+                         }
+                     });
+                 })
+-                .catch(function (err) {
++                .catch(function(err) {
+                     defer.reject(err);
+                 });
+             return defer.promise;
+         },
+-        authorize: function () {
++        authorize: function() {
++            win.debug("trakt authorize started");
+             var defer = Q.defer();
+             var url = false;
++            var loginWindow;
+ 
+-            var API_URI = 'https://trakt.tv';
++            var API_URI = 'https://api.trakt.tv';
+             var OAUTH_URI = API_URI + '/oauth/authorize?response_type=code&client_id=' + CLIENT_ID;
+ 
+             var gui = require('nw.gui');
++            win.debug("trakt:OAUTH: " + OAUTH_URI + '&redirect_uri=' + encodeURIComponent(REDIRECT_URI));
+             gui.App.addOriginAccessWhitelistEntry(API_URI, 'app', 'host', true);
+             window.loginWindow = gui.Window.open(OAUTH_URI + '&redirect_uri=' + encodeURIComponent(REDIRECT_URI), {
+-                position: 'center',
+-                focus: true,
+-                title: 'Trakt.tv',
+-                icon: 'src/app/images/icon.png',
+-                toolbar: false,
+-                resizable: false,
+-                width: 600,
+-                height: 600
+-            });
+-
+-            window.loginWindow.on('loaded', function () {
+-                url = window.loginWindow.window.document.URL;
+-
+-                if (url.indexOf('&') === -1 && url.indexOf('auth/signin') === -1) {
+-                    if (url.indexOf('oauth/authorize/') !== -1) {
+-                        url = url.split('/');
+-                        url = url[url.length - 1];
+-                    } else {
+-                        gui.Shell.openExternal(url);
+-                    }
+-                    this.close(true);
+-                } else {
+-                    url = false;
+-                }
+-            });
+-
+-            window.loginWindow.on('closed', function () {
+-                if (url) {
+-                    defer.resolve(url);
+-                } else {
+-                    AdvSettings.set('traktToken', '');
+-                    AdvSettings.set('traktTokenTTL', '');
+-                    AdvSettings.set('traktTokenRefresh', '');
+-                    defer.reject('Trakt window closed without exchange token');
++                    position: 'center',
++                    focus: true,
++                    title: 'Trakt.tv',
++                    icon: 'src/app/images/icon.png',
++                    resizable: false,
++                    width: 600,
++                    height: 600
++                },
++                function(new_win) {
++                    // And listeners to new window's focus event
++                    new_win.on('loaded', function() {
++                        url = this.window.document.URL;
++                        win.debug("Trakt Loaded URL:" + url);
++
++                        if (url.indexOf('&') === -1 && url.indexOf('auth/signin') === -1) {
++                            if (url.indexOf('oauth/authorize/') !== -1) {
++                                url = url.split('/');
++                                url = url[url.length - 1];
++                                new_win.close();
++                            } else {
++                                new_win.close();
++                            }
++                        } else {
++                            url = false;
++                        }
++                        win.debug("Trakt Authorize Code:" + url);
++                    });
++                    new_win.on('closed', function() {
++                        if (url) {
++                            defer.resolve(url);
++                        } else {
++                            AdvSettings.set('traktToken', '');
++                            AdvSettings.set('traktTokenTTL', '');
++                            AdvSettings.set('traktTokenRefresh', '');
++                            defer.reject('Trakt window closed without exchange token');
++                        }
++                        this.close(true);
++                    });
+                 }
+-            });
+-
++            );
+             return defer.promise;
+         },
+-        checkToken: function () {
++        checkToken: function() {
+             var self = this;
+             if (Settings.traktTokenTTL <= new Date().valueOf() && Settings.traktTokenRefresh !== '') {
+                 win.info('Trakt: refreshing access token');
+@@ -482,7 +491,7 @@
+                     client_id: CLIENT_ID,
+                     client_secret: CLIENT_SECRET,
+                     grant_type: 'refresh_token'
+-                }).then(function (data) {
++                }).then(function(data) {
+                     if (data.access_token && data.expires_in && data.refresh_token) {
+                         Settings.traktToken = data.access_token;
+                         AdvSettings.set('traktToken', data.access_token);
+@@ -502,21 +511,54 @@
+                 this.authenticated = true;
+                 App.vent.trigger('system:traktAuthenticated');
+             }
++        },
++        revokeAccess: function() {
++            win.debug("Trakt Revoke Access Token");
++
++            var defer = Q.defer();
++            var postVariables = "token=" + Settings.traktToken;
++
++            var requestUri = API_ENDPOINT.clone()
++                .segment("oauth/revoke");
++
++            request({
++                method: 'POST',
++                url: requestUri.toString(),
++                headers: {
++                    'Content-Type': 'application/x-www-form-urlencode',
++                    'Authorization': 'Bearer ' + Settings.traktToken,
++                    'trakt-api-version': '2',
++                    'trakt-api-key': CLIENT_ID
++                },
++                body: JSON.stringify(postVariables)
++            }, function(error, response, body) {
++                //win.debug('Status:', response.statusCode);
++                //win.debug('Headers:', JSON.stringify(response.headers));
++                //win.debug('Response:', body);
++                if (error || !body) {
++                    defer.reject(error);
++                } else if (response.statusCode >= 400) {
++                    defer.resolve({});
++                } else {
++                    defer.resolve(Common.sanitize(JSON.parse(body)));
++                }
++            });
++            return defer.promise;
+         }
+     };
+ 
+     TraktTv.prototype.syncTrakt = {
+-        isSyncing: function () {
++        isSyncing: function() {
+             return this.syncing && this.syncing.isPending();
+         },
+-        all: function () {
++        all: function() {
+             var self = this;
+             AdvSettings.set('traktLastSync', new Date().valueOf());
+             return this.syncing = Q.all([self.syncTrakt.movies(), self.syncTrakt.shows()]);
+         },
+-        movies: function () {
++        movies: function() {
+             return this.sync.getWatched('movies')
+-                .then(function (data) {
++                .then(function(data) {
+                     var watched = [];
+ 
+                     if (data) {
+@@ -537,14 +579,14 @@
+ 
+                     return watched;
+                 })
+-                .then(function (traktWatched) {
++                .then(function(traktWatched) {
+                     win.debug('Trakt: marked %s movie(s) as watched', traktWatched.length);
+                     return Database.markMoviesWatched(traktWatched);
+                 });
+         },
+-        shows: function () {
++        shows: function() {
+             return this.sync.getWatched('shows')
+-                .then(function (data) {
++                .then(function(data) {
+                     // Format them for insertion
+                     var watched = [];
+ 
+@@ -576,7 +618,7 @@
+ 
+                     return watched;
+                 })
+-                .then(function (traktWatched) {
++                .then(function(traktWatched) {
+                     // Insert them locally
+                     win.debug('Trakt: marked %s episode(s) as watched', traktWatched.length);
+                     return Database.markEpisodesWatched(traktWatched);
+@@ -584,8 +626,9 @@
+         }
+     };
+ 
+-    TraktTv.prototype.resizeImage = function (imageUrl, size) {
++    TraktTv.prototype.resizeImage = function(imageUrl, size) {
+         if (imageUrl === undefined || imageUrl === null) {
++            win.warn("Trakt: No ImageURL available " + imageUrl);
+             return 'images/posterholder.png'.toString();
+         }
+ 
+@@ -639,69 +682,69 @@
+     function onShowWatched(show, channel) {
+         win.debug('Mark Episode as watched on channel:', channel);
+         switch (channel) {
+-        case 'database':
+-            break;
+-        case 'seen':
+-            /* falls through */
+-        default:
+-            App.Trakt.sync.addToHistory('episode', show.episode_id);
+-            break;
++            case 'database':
++                break;
++            case 'seen':
++                /* falls through */
++            default:
++                App.Trakt.sync.addToHistory('episode', show.episode_id);
++                break;
+         }
+     }
+ 
+     function onShowUnWatched(show, channel) {
+         win.debug('Mark Episode as unwatched on channel:', channel);
+         switch (channel) {
+-        case 'database':
+-            break;
+-        case 'seen':
+-            /* falls through */
+-        default:
+-            App.Trakt.sync.removeFromHistory('episode', show.episode_id);
+-            break;
++            case 'database':
++                break;
++            case 'seen':
++                /* falls through */
++            default:
++                App.Trakt.sync.removeFromHistory('episode', show.episode_id);
++                break;
+         }
+     }
+ 
+     function onMoviesWatched(movie, channel) {
+         win.debug('Mark Movie as watched on channel:', channel);
+         switch (channel) {
+-        case 'database':
+-            try {
+-                switch (Settings.watchedCovers) {
+-                case 'fade':
+-                    $('li[data-imdb-id="' + App.MovieDetailView.model.get('imdb_id') + '"] .actions-watched').addClass('selected');
+-                    $('li[data-imdb-id="' + App.MovieDetailView.model.get('imdb_id') + '"]').addClass('watched');
+-                    break;
+-                case 'hide':
+-                    $('li[data-imdb-id="' + App.MovieDetailView.model.get('imdb_id') + '"]').remove();
+-                    break;
+-                }
+-                $('.watched-toggle').addClass('selected').text(i18n.__('Seen'));
+-                App.MovieDetailView.model.set('watched', true);
+-            } catch (e) {}
+-            break;
+-        case 'seen':
+-            /* falls through */
+-        default:
+-            App.Trakt.sync.addToHistory('movie', movie.imdb_id);
+-            break;
++            case 'database':
++                try {
++                    switch (Settings.watchedCovers) {
++                        case 'fade':
++                            $('li[data-imdb-id="' + App.MovieDetailView.model.get('imdb_id') + '"] .actions-watched').addClass('selected');
++                            $('li[data-imdb-id="' + App.MovieDetailView.model.get('imdb_id') + '"]').addClass('watched');
++                            break;
++                        case 'hide':
++                            $('li[data-imdb-id="' + App.MovieDetailView.model.get('imdb_id') + '"]').remove();
++                            break;
++                    }
++                    $('.watched-toggle').addClass('selected').text(i18n.__('Seen'));
++                    App.MovieDetailView.model.set('watched', true);
++                } catch (e) {}
++                break;
++            case 'seen':
++                /* falls through */
++            default:
++                App.Trakt.sync.addToHistory('movie', movie.imdb_id);
++                break;
+         }
+     }
+ 
+     function onMoviesUnWatched(movie, channel) {
+         win.debug('Mark Movie as unwatched on channel:', channel);
+         switch (channel) {
+-        case 'database':
+-            break;
+-        case 'seen':
+-            /* falls through */
+-        default:
+-            App.Trakt.sync.removeFromHistory('movie', movie.imdb_id);
+-            break;
++            case 'database':
++                break;
++            case 'seen':
++                /* falls through */
++            default:
++                App.Trakt.sync.removeFromHistory('movie', movie.imdb_id);
++                break;
+         }
+     }
+ 
+-    var isValid = function (id) {
++    var isValid = function(id) {
+         if (!id || id.toString().indexOf('mal') > -1 || id.toString().indexOf('-') > -1) {
+             return false;
+         } else {
+@@ -715,4 +758,4 @@
+     App.vent.on('movie:unwatched', onMoviesUnWatched);
+ 
+     App.Providers.Trakttv = TraktTv;
+-})(window.App);
++})(window.App);
+\ No newline at end of file
+diff -Naur src/desktop-0.4.1-5/src/app/lib/views/plugins.js src/desktop-0.4.1-5/src/app/lib/views/plugins.js
+--- src/desktop-0.4.1-5/src/app/lib/views/plugins.js
++++ src/desktop-0.4.1-5/src/app/lib/views/plugins.js
+@@ -1,4 +1,4 @@
+-(function (App) {
++(function(App) {
+     'use strict';
+     var that;
+ 
+@@ -10,17 +10,17 @@
+             success_alert: '.success_alert'
+         },
+ 
+-		events: {
++        events: {
+             'click .close-icon': 'closePlugins',
+             'change select,input': 'saveSetting',
+-			'click #authTrakt': 'connectTrakt',
++            'click #authTrakt': 'connectTrakt',
+             'click #unauthTrakt': 'disconnectTrakt',
+             'click #connect-with-tvst': 'connectWithTvst',
+             'click #disconnect-tvst': 'disconnectTvst',
+             'click #syncTrakt': 'syncTrakt'
+         },
+ 
+- 		onShow: function () {
++        onShow: function() {
+             that = this;
+ 
+             $('.filter-bar').hide();
+@@ -33,23 +33,23 @@
+                 }
+             });
+ 
+-            Mousetrap.bind('backspace', function (e) {
++            Mousetrap.bind('backspace', function(e) {
+                 App.vent.trigger('plugins:close');
+             });
+         },
+ 
+-        onDestroy: function () {
++        onDestroy: function() {
+             Mousetrap.unbind(['esc', 'backspace']);
+             $('.filter-bar').show();
+             $('#header').removeClass('header-shadow');
+             $('#movie-detail').show();
+         },
+ 
+-        closePlugins: function () {
++        closePlugins: function() {
+             App.vent.trigger('plugins:close');
+         },
+ 
+-        saveSetting: function (e) {
++        saveSetting: function(e) {
+             var value = false,
+                 apiDataChanged = false,
+                 tmpLocationChanged = false,
+@@ -57,33 +57,33 @@
+                 data = {};
+ 
+             switch (field.attr('name')) {
+-            case 'activateWatchlist':
+-            case 'pluginRARBGsearch':
+-				value = field.is(':checked');
+-				if(value)
+-		            AdvSettings.set('onlineSearchEngine', 'RARBG');
+-				else
+-		            AdvSettings.set('onlineSearchEngine', 'KAT');
+-                break;
+-            case 'pluginKATsearch':
+-				value = field.is(':checked');
+-				if(value)
+-		            AdvSettings.set('onlineSearchEngine', 'KAT');
+-				else
+-		            AdvSettings.set('onlineSearchEngine', 'RARBG');
+-                break;
+-            case 'pluginGoogleDrive':
+-			case 'pluginVLC':
+-            case 'pluginFakeSkan':
+-            case 'pluginHTML5':
+-				value = field.is(':checked');
+-				if(value)
+-					AdvSettings.set('chosenPlayer', 'html5');
+-				else
+-					AdvSettings.set('chosenPlayer', 'local');
+-                break;
+-            default:
+-                win.warn('Setting not defined: ' + field.attr('name'));
++                case 'activateWatchlist':
++                case 'pluginRARBGsearch':
++                    value = field.is(':checked');
++                    if (value)
++                        AdvSettings.set('onlineSearchEngine', 'RARBG');
++                    else
++                        AdvSettings.set('onlineSearchEngine', 'KAT');
++                    break;
++                case 'pluginKATsearch':
++                    value = field.is(':checked');
++                    if (value)
++                        AdvSettings.set('onlineSearchEngine', 'KAT');
++                    else
++                        AdvSettings.set('onlineSearchEngine', 'RARBG');
++                    break;
++                case 'pluginGoogleDrive':
++                case 'pluginVLC':
++                case 'pluginFakeSkan':
++                case 'pluginHTML5':
++                    value = field.is(':checked');
++                    if (value)
++                        AdvSettings.set('chosenPlayer', 'html5');
++                    else
++                        AdvSettings.set('chosenPlayer', 'local');
++                    break;
++                default:
++                    win.warn('Setting not defined: ' + field.attr('name'));
+             }
+             win.info('Setting changed: ' + field.attr('name') + ' - ' + value);
+ 
+@@ -104,32 +104,32 @@
+             App.db.writeSetting({
+                 key: field.attr('name'),
+                 value: value
+-            }).then(function () {
++            }).then(function() {
+                 that.ui.success_alert.show().delay(3000).fadeOut(400);
+             });
+ 
+             that.syncSetting(field.attr('name'), value);
+         },
+ 
+-        syncSetting: function (setting, value) {
++        syncSetting: function(setting, value) {
+             switch (setting) {
+-	   		case 'pluginRARBGsearch':
+-                App.vent.trigger('plugins:show');
+-				that.alertMessageSuccess(true);
+-                break;	   		
+-			case 'pluginKATsearch':
+-                App.vent.trigger('plugins:show');
+-				that.alertMessageSuccess(true);
+-                break;			
+-			case 'activateWatchlist':
+-                App.vent.trigger('plugins:show');
+-				that.alertMessageSuccess(true);
+-                break;
+-            default:
++                case 'pluginRARBGsearch':
++                    App.vent.trigger('plugins:show');
++                    that.alertMessageSuccess(true);
++                    break;
++                case 'pluginKATsearch':
++                    App.vent.trigger('plugins:show');
++                    that.alertMessageSuccess(true);
++                    break;
++                case 'activateWatchlist':
++                    App.vent.trigger('plugins:show');
++                    that.alertMessageSuccess(true);
++                    break;
++                default:
+             }
+         },
+ 
+-        connectTrakt: function (e) {
++        connectTrakt: function(e) {
+             if (AdvSettings.get('traktTokenRefresh') !== '') {
+                 return;
+             }
+@@ -138,7 +138,7 @@
+             $('.loading-spinner').show();
+ 
+             App.Trakt.oauth.authenticate()
+-                .then(function (valid) {
++                .then(function(valid) {
+                     if (valid) {
+                         $('.loading-spinner').hide();
+                         that.render();
+@@ -146,54 +146,59 @@
+                         $('.loading-spinner').hide();
+                         $('#authTrakt > i').css('visibility', 'visible');
+                     }
+-                }).catch(function (err) {
++                }).catch(function(err) {
+                     win.debug('Trakt', err);
+                     $('#authTrakt > i').css('visibility', 'visible');
+                     $('.loading-spinner').hide();
+                 });
+         },
+ 
+-        disconnectTrakt: function (e) {
+-            App.settings['traktToken'] = '';
+-            App.settings['traktTokenRefresh'] = '';
+-            App.settings['traktTokenTTL'] = '';
+-            App.Trakt.authenticated = false;
++        disconnectTrakt: function(e) {
++            win.debug("Trakt Disconnect Account - Plugins");
++            App.Trakt.oauth.revokeAccess()
++                .then(function(value) {
++                    App.settings['traktToken'] = '';
++                    App.settings['traktTokenRefresh'] = '';
++                    App.settings['traktTokenTTL'] = '';
++
++                    App.Trakt.authenticated = false;
++
++                    App.db.writeSetting({
++                        key: 'traktToken',
++                        value: ''
++                    }).then(function() {
++                        return App.db.writeSetting({
++                            key: 'traktTokenRefresh',
++                            value: ''
++                        });
++                    }).then(function() {
++                        return App.db.writeSetting({
++                            key: 'traktTokenTTL',
++                            value: ''
++                        });
++                    }).then(function() {
++                        that.ui.success_alert.show().delay(3000).fadeOut(400);
++                    });
+ 
+-            App.db.writeSetting({
+-                key: 'traktToken',
+-                value: ''
+-            }).then(function () {
+-                return App.db.writeSetting({
+-                    key: 'traktTokenRefresh',
+-                    value: ''
+-                });
+-            }).then(function () {
+-                return App.db.writeSetting({
+-                    key: 'traktTokenTTL',
+-                    value: ''
++                    _.defer(function() {
++                        App.Trakt = App.Providers.get('Trakttv');
++                        that.render();
++                    });
+                 });
+-            }).then(function () {
+-                that.ui.success_alert.show().delay(3000).fadeOut(400);
+-            });
+-
+-            _.defer(function () {
+-                App.Trakt = App.Providers.get('Trakttv');
+-                that.render();
+-            });
+         },
+ 
+-        connectWithTvst: function () {
++        connectWithTvst: function() {
+             var self = this;
+ 
+             $('#connect-with-tvst > i').css('visibility', 'hidden');
+             $('.tvst-loading-spinner').show();
+ 
+-            App.vent.on('system:tvstAuthenticated', function () {
++            App.vent.on('system:tvstAuthenticated', function() {
+                 window.loginWindow.close();
+                 $('.tvst-loading-spinner').hide();
+                 self.render();
+             });
+-            App.TVShowTime.authenticate(function (activateUri) {
++            App.TVShowTime.authenticate(function(activateUri) {
+                 var gui = require('nw.gui');
+                 gui.App.addOriginAccessWhitelistEntry(activateUri, 'app', 'host', true);
+                 window.loginWindow = gui.Window.open(activateUri, {
+@@ -207,7 +212,7 @@
+                     height: 600
+                 });
+ 
+-                window.loginWindow.on('closed', function () {
++                window.loginWindow.on('closed', function() {
+                     $('.tvst-loading-spinner').hide();
+                     $('#connect-with-tvst > i').css('visibility', 'visible');
+                 });
+@@ -215,14 +220,14 @@
+             });
+         },
+ 
+-        disconnectTvst: function () {
++        disconnectTvst: function() {
+             var self = this;
+-            App.TVShowTime.disconnect(function () {
++            App.TVShowTime.disconnect(function() {
+                 self.render();
+             });
+         },
+ 
+-        syncTrakt: function () {
++        syncTrakt: function() {
+             var oldHTML = document.getElementById('syncTrakt').innerHTML;
+             $('#syncTrakt')
+                 .text(i18n.__('Syncing...'))
+@@ -232,16 +237,16 @@
+             Database.deleteWatched(); // Reset before sync
+ 
+             App.Trakt.syncTrakt.all()
+-                .then(function () {
++                .then(function() {
+                     App.Providers.get('Watchlist').fetchWatchlist();
+                 })
+-                .then(function () {
++                .then(function() {
+                     $('#syncTrakt')
+                         .text(i18n.__('Done'))
+                         .removeClass('disabled')
+                         .addClass('ok')
+                         .delay(3000)
+-                        .queue(function () {
++                        .queue(function() {
+                             $('#syncTrakt')
+                                 .removeClass('ok')
+                                 .prop('disabled', false);
+@@ -249,14 +254,14 @@
+                             $('#syncTrakt').dequeue();
+                         });
+                 })
+-                .catch(function (err) {
++                .catch(function(err) {
+                     win.error('App.Trakt.syncTrakt.all()', err);
+                     $('#syncTrakt')
+                         .text(i18n.__('Error'))
+                         .removeClass('disabled')
+                         .addClass('warning')
+                         .delay(3000)
+-                        .queue(function () {
++                        .queue(function() {
+                             $('#syncTrakt')
+                                 .removeClass('warning')
+                                 .prop('disabled', false);
+@@ -266,7 +271,7 @@
+                 });
+         },
+ 
+-        alertMessageSuccess: function (btnRestart, btn, btnText, successDesc) {
++        alertMessageSuccess: function(btnRestart, btn, btnText, successDesc) {
+             var notificationModel = new App.Model.Notification({
+                 title: i18n.__('Success'),
+                 body: successDesc,
+@@ -278,7 +283,7 @@
+                 notificationModel.set('body', i18n.__('Please restart your application'));
+             } else {
+                 // Hide notification after 3 seconds
+-                setTimeout(function () {
++                setTimeout(function() {
+                     btn.text(btnText).removeClass('confirm warning disabled').prop('disabled', false);
+                     App.vent.trigger('notification:close');
+                 }, 3000);
+@@ -291,7 +296,7 @@
+ 
+ 
+ 
+-	});
++    });
+ 
+     App.View.Plugins = Plugins;
+-})(window.App);
++})(window.App);
+\ No newline at end of file
+diff -Naur src/desktop-0.4.1-5/src/app/templates/about.tpl src/desktop-0.4.1-5/src/app/templates/about.tpl
+--- src/desktop-0.4.1-5/src/app/templates/about.tpl
++++ src/desktop-0.4.1-5/src/app/templates/about.tpl
+@@ -2,7 +2,7 @@
+     <div class="fa fa-times close-icon"></div>
+     <div class="overlay-content"></div>
+     <div class="margintop"></div>
+-    <img class="icon-title" src="/src/app/images/popcorn-time-logo.svg">
++    <img class="icon-title" src="images/popcorn-time-logo.svg">
+     <div class="content">
+ 
+         <div class="title-version">
+@@ -42,6 +42,6 @@
+     </div>
+     <div class="changelog-overlay">
+         <div class="title"><%=i18n.__("Changelog")%></div>
+-        <div class="changelog-text"></div>    
++        <div class="changelog-text"></div>
+     </div>
+ </div>
+diff -Naur src/desktop-0.4.1-5/src/app/templates/disclaimer.tpl src/desktop-0.4.1-5/src/app/templates/disclaimer.tpl
+--- src/desktop-0.4.1-5/src/app/templates/disclaimer.tpl
++++ src/desktop-0.4.1-5/src/app/templates/disclaimer.tpl
+@@ -1,6 +1,6 @@
+ <div class="loading-background"></div>
+ <div class="disclaimer-loading"></div>
+-<img class="icon-disclaimer" src="/src/app/images/icon.png">
++<img class="icon-disclaimer" src="images/icon.png">
+ <div class="disclaimer-state">
+     <div class="disclaimer-content">
+         <h1><%= i18n.__("Terms of Service") %></h1>
+@@ -12,23 +12,23 @@
+             <h2>Privacy Policy.</h2>
+ 
+             <p>You understand that by using 'POPCORN TIME' you may encounter material that you may deem to be offensive, indecent, or objectionable, and that such content may or may not be identified as having explicit material. 'POPCORN TIME' will have no liability to you for such material – you agree that your use of 'POPCORN TIME' is at your sole risk.<br><br></p>
+-            
++
+             <h2>DISCLAIMERS</h2>
+-            
++
+             <p>YOU EXPRESSLY AGREE THAT YOUR USE OF 'POPCORN TIME' IS AT YOUR SOLE RISK. 'POPCORN TIME' AND ALL PRODUCTS ARE PROVIDED TO YOU “AS IS” WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. 'POPCORN TIME' MAKES ABSOLUTELY NO WARRANTIES WHATSOEVER, EXPRESS OR IMPLIED. TO THE FULLEST EXTENT POSSIBLE UNDER APPLICABLE LAWS, YIFY DISCLAIMS ALL WARRANTIES, EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR OTHER VIOLATIONS OF RIGHTS.<br><br></p>
+-            
++
+             <h2>LIMITATION OF LIABILITY</h2>
+ 
+             <p>'POPCORN TIME' IS NOT RESPONSIBLE FOR ANY PROBLEMS OR TECHNICAL MALFUNCTION OF ANY WEBSITE, NETWORK, COMPUTER SYSTEMS, SERVERS, PROVIDERS, COMPUTER EQUIPMENT, OR SOFTWARE, OR FOR ANY FAILURE DUE TO TECHNICAL PROBLEMS OR TRAFFIC CONGESTION ON THE INTERNET OR 'POPCORN TIME' OR COMBINATION THEREOF, INCLUDING ANY INJURY OR DAMAGE TO USERS OR TO ANY COMPUTER OR OTHER DEVICE ON OR THROUGH WHICH 'POPCORN TIME' IS PROVIDED. UNDER NO CIRCUMSTANCES WILL 'POPCORN TIME' BE LIABLE FOR ANY LOSS OR DAMAGE, INCLUDING PERSONAL INJURY OR DEATH, RESULTING FROM YOUR USE OF 'POPCORN TIME'.<br><br></p>
+-            
++
+             <h2>SOURCE MATERIAL</h2>
+ 
+             <p>ALL MOVIES ARE NOT HOSTED ON ANY SERVER AND ARE STREAMED USING THE P2P BIT TORRENT PROTOCOL. ALL MOVIES ARE PULLED IN FROM OPEN PUBLIC APIS. BY WATCHING A MOVIE WITH THIS APPLICATION YOU MIGHT BE COMMITTING COPYRIGHT VIOLATIONS DEPENDING ON YOUR COUNTRY´S LAWS. WE DO NOT TAKE ANY RESPONSIBILITIES.<br><br></p>
+-            
++
+             <h2>Ability to Accept Terms of Service</h2>
+ 
+             <p>By using 'POPCORN TIME' or accessing this site you affirm that you are either more than 18 years of age, or an emancipated minor, or possess legal parental or guardian consent, and are fully able and competent to enter into the terms, conditions, obligations, affirmations, representations, and warranties set forth in these Terms of Service, and to abide by and comply with these Terms of Service. In any case, you affirm that you are over the age of 13, as the Service is not intended for children under 13. If you are under 13 years of age, then please do not use the Service. There are lots of other great web sites for you. Talk to your parents about what sites are appropriate for you.</p>
+         </div>
+         <a class="btn-accept"><%= i18n.__("I Accept") %></a> <a class="btn-close"><%= i18n.__("Leave") %></a>
+     </div>
+-</div>
+\ No newline at end of file
++</div>
+diff -Naur src/desktop-0.4.1-5/src/app/templates/initializing.tpl src/desktop-0.4.1-5/src/app/templates/initializing.tpl
+--- src/desktop-0.4.1-5/src/app/templates/initializing.tpl
++++ src/desktop-0.4.1-5/src/app/templates/initializing.tpl
+@@ -1,5 +1,5 @@
+-<img class="icon-begin" src="/src/app/images/icon.png">
+-<img class="init-icon-title" src="/src/app/images/popcorn-time-logo.svg">
++<img class="icon-begin" src="images/icon.png">
++<img class="init-icon-title" src="images/popcorn-time-logo.svg">
+ <div class="init-geek-line">
+     <%= i18n.__("Made with") %> <span style="color:#e74c3c;">&#10084;</span> <%= i18n.__("by a bunch of geeks from All Around The World") %>
+ </div>
+@@ -18,4 +18,4 @@
+ 
+ <p id='waiting-block'>
+     <a href='#' class='fixApp'><%= i18n.__("Loading stuck ? Click here !") %></a>
+-</p>
+\ No newline at end of file
++</p>
