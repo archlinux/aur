@@ -1,7 +1,7 @@
 pkgbase = ckb-next-git
 	pkgdesc = Corsair Keyboard and Mouse Input Driver
 	pkgver = v0.2.7.beta.b729569
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mattanger/ckb-next
 	install = ckb-next-git.install
 	arch = i686
@@ -11,7 +11,8 @@ pkgbase = ckb-next-git
 	depends = qt5-base
 	depends = hicolor-icon-theme
 	conflicts = ckb-git-latest,
-	conflicts = ckb-git
+	conflicts = ckb-git,
+	conflicts = ckb-next-latest-git
 	source = ckb-next-git::git+https://github.com/mattanger/ckb-next.git
 	md5sums = SKIP
 
