@@ -1,6 +1,6 @@
 _pkgname=hue-plus
 pkgname=hue-plus-git
-pkgver=r63.5a092af
+pkgver=r66.23d127e
 pkgrel=1
 pkgdesc="A Linux driver in Python for the NZXT Hue+"
 arch=('any')
@@ -29,6 +29,8 @@ package() {
 	install -Dm755 hue.py "${pkgdir}/opt/${_pkgname}/hue.py"
 	install -Dm755 picker.py "${pkgdir}/opt/${_pkgname}/picker.py"
 	install -Dm755 hue-ui.py "${pkgdir}/opt/${_pkgname}/hue-ui.py"
+	install -Dm755 hue-gui.ui "${pkgdir}/opt/${_pkgname}/hue-gui.ui"
+	install -Dm755 hue_gui.py "${pkgdir}/opt/${_pkgname}/hue_gui.py"
 	install -Dm755 previous.py "${pkgdir}/opt/${_pkgname}/previous.py"
 	install -Dm755 previous.p "${pkgdir}/var/lib/${_pkgname}/previous.p"
 
