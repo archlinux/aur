@@ -10,9 +10,9 @@ pkgbase = ckb-next-latest-git
 	makedepends = git
 	depends = qt5-base
 	depends = hicolor-icon-theme
-	conflicts = ckb-next-git,
-	conflicts = ckb-git,
+	conflicts = ckb-git
 	conflicts = ckb-latest-git
+	conflicts = ckb-next-git
 	source = ckb-next-latest-git::git+https://github.com/mattanger/ckb-next.git#branch=testing
 	md5sums = SKIP
 
