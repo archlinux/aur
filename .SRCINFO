@@ -14,7 +14,7 @@ pkgbase = notepadqq-src
 	depends = qt5-svg
 	depends = qt5-webkit
 	options = !emptydirs
-	source = git://github.com/notepadqq/notepadqq.git#tag=v1.0.1
+	source = git://github.com/notepadqq/notepadqq.git#commit=695b38b975e4c88e4f132feb466c03f3f8e7fa7c
 	source = git://github.com/notepadqq/CodeMirror.git
 	sha256sums = SKIP
 	sha256sums = SKIP
