@@ -2,7 +2,7 @@
 
 pkgname=copyq
 _realname=CopyQ
-pkgver=2.8.2
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Clipboard manager with searchable and editable history."
 url="https://github.com/hluk/CopyQ"
@@ -12,7 +12,7 @@ makedepends=('cmake' 'qt5-tools' 'qt5-svg')
 license=('GPL3')
 arch=('i686' 'x86_64')
 source=("https://github.com/hluk/${_realname}/archive/v${pkgver}.tar.gz")
-md5sums=('0448456c802a6202f19e7e63d9da899a')
+md5sums=('59eda6cb45e6942d6c7134f37cb659ab')
 install=copyq.install
 
 build() {
