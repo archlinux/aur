@@ -1,5 +1,5 @@
 post_install() {
-    EXTRAMODULES='extramodules-4.9.9-grsec'
+    EXTRAMODULES='extramodules-4.9.10-grsec'
     depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
     echo 'In order to use nvidia module, reboot the system.'
 }
