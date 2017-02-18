@@ -1,6 +1,6 @@
 # Maintainer: Jguer <joaogg3@gmail.com>
 pkgname=yay
-pkgver=1.95
+pkgver=1.101
 pkgrel=1
 pkgdesc="Yet another yogurt. Pacman wrapper and AUR helper written in go."
 arch=('i686' 'x86_64' 'arm')
@@ -57,11 +57,8 @@ build() {
 
 package() {
   #install executable
-	find "$srcdir/.go/bin/" -type f -executable | while read filename; do
-		install -DT "$filename" "$pkgdir/usr/bin/$(basename $filename)"
-	done
-
-	cd "$srcdir/.go/src/github.com/jguer/$pkgname"
+  install -DT "${srcdir}/.go/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	cd "${srcdir}/.go/src/github.com/jguer/${pkgname}" || exit
 
   # Install GLP v3
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
