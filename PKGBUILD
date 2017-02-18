@@ -5,7 +5,7 @@
 
 pkgname=flexget
 _pkgname=Flexget
-pkgver=2.9.15
+pkgver=2.10.1
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -61,7 +61,7 @@ source=("https://github.com/Flexget/Flexget/archive/${pkgver}.tar.gz"
 
 changelog=ChangeLog
 
-sha256sums=('edb04e2f25e285583d4c8f418a26dc2537f457f1d4bea3cdc9eddbea9e61709e'
+sha256sums=('bc862b70751e115c07f997cade10cbd306dde7c8987abbb72415c46864fbce1a'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
 
