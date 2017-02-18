@@ -3,18 +3,17 @@
 
 pkgname=ifuse-git
 epoch=2
-pkgver=1.1.3.r2.g988161f
+pkgver=1.1.3.r4.gdf048a1
 pkgrel=1
 pkgdesc='A fuse filesystem to access the contents of an iPhone or iPod Touch'
 url='http://libimobiledevice.org/'
 arch=('i686' 'x86_64')
-license=('GPL')
-depends=('libimobiledevice-git' 'gnutls' 'libusb' 'fuse' 'glib2' 'libxml2' 'libxml++')
-makedepends=('gcc' 'git' 'automake' 'autoconf' 'fakeroot' 'make' 'pkgconfig')
+license=('LGPL2.1')
+depends=('libimobiledevice-git' 'libplist-git' 'fuse')
+makedepends=('git')
 provides=('ifuse')
 conflicts=('ifuse')
-
-source=("git://git.sukimashita.com/ifuse.git")
+source=("git+https://git.libimobiledevice.org/ifuse.git")
 md5sums=('SKIP')
 
 pkgver() {
