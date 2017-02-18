@@ -1,12 +1,12 @@
 # Maintainer: Thibaud Hulin <thibaud.hulin.cl.atgmail.com>
 pkgname=visp
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="A modular library for visual tracking and visual servoing"
 arch=('i686' 'x86_64')
 url="http://www.irisa.fr/lagadic/visp/"
 license=('GPL2' 'custom:ViSP Professional Edition License')
-depends=('libdmtx' 'opencv>=2.2.0' 'gsl' 'coin' 'lapack' 'zbar')
+depends=('gsl')
 makedepends=('cmake')
 optdepends=(
 	'xorg-server: used for the image display'
@@ -24,24 +24,30 @@ optdepends=(
 	'libjpeg-turbo: to convert jpeg files'
 	'libpng: to convert png files'
 	'doxygen: for documentation'
-	'biclops: used for motion control device of Traclabs')
-#	'zbar: used to read bar codes and QR codes'
-#	'coin: used for simulation or augmented reality capabilities'
+	'biclops: used for motion control device of Traclabs'
+	'zbar: used to read bar codes and QR codes'
+	'coin: used for simulation or augmented reality capabilities'
 #	'gsl: used for the SVD and LU decompositions'
-#	'lapack: provides routines for solving systems of simultaneous linear equations'
-#	'opencv: provides image converters, a renderer, a feature point tracker and point matching classes'
-#	'libdmtx: used to read Data Matrix bar codes'
+	'lapack: provides routines for solving systems of simultaneous linear equations'
+	'opencv>=2.2.0: provides image converters, a renderer, a feature point tracker and point matching classes'
+	'libdmtx: used to read Data Matrix bar codes')
 source=("http://gforge.inria.fr/frs/download.php/latestfile/475/${pkgname}-$pkgver.tar.gz")
-md5sums=('0d27f8d8dcafb40064cf421b2f788c5d')
+md5sums=('c5894c6304f45d2c8f9d3b513bee59b4')
 
 build() {
 	cd "${srcdir}/${pkgname}-$pkgver"
+	# TEMP FIX: remove $srcdir usage by adding a flag NO_BUILD_ROOT in CMakesList.txt
+	sed -i.bak -e '/^set(VISP_ROOT_DIR_DATA_CONFIGCMAKE/ i\
+	if(NO_BUILD_ROOT)' -e '/^set(VISP_ROBOT_ARMS_DIR \${VISP_ROOT_DIR_DATA_CONFIGCMAKE}\/data\/robot-simulator)$/ a\
+	endif()' CMakeLists.txt
+
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \
 		-DCMAKE_INSTALL_LIBDIR="lib"\
 		-DBUILD_EXAMPLES=OFF \
 		-DBUILD_TUTORIALS=OFF \
 		-DBUILD_TESTS=OFF \
-		-DBUILD_DEMOS=OFF .
+		-DBUILD_DEMOS=OFF \
+		-DNO_BUILD_ROOT=OFF .
 	make -j4
 	cat << 'EOF' > ./COPYING
 
