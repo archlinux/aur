@@ -1,13 +1,13 @@
 # Maintainer: roger rogerduran at gmail
 
 pkgname=qtile
-pkgver=0.10.6
+pkgver=0.10.7
 pkgrel=1
 pkgdesc="A full-featured, pure-Python tiling window manager."
 arch=('any')
 url="http://www.qtile.org"
 license=('MIT')
-depends=('python' 'pango' 'python-xcffib>=0.4.1' 'python-cairocffi>=0.7.2')
+depends=('python' 'pango' 'python-xcffib>=0.5.1' 'python-cairocffi>=0.8.0')
 makedepends=('python-distribute')
 optdepends=('python-setproctitle: change the process name to qtile')
 conflicts=('qtile-git')

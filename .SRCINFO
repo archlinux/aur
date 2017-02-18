@@ -1,6 +1,6 @@
 pkgbase = qtile
 	pkgdesc = A full-featured, pure-Python tiling window manager.
-	pkgver = 0.10.6
+	pkgver = 0.10.7
 	pkgrel = 1
 	url = http://www.qtile.org
 	install = qtile.install
@@ -9,11 +9,11 @@ pkgbase = qtile
 	makedepends = python-distribute
 	depends = python
 	depends = pango
-	depends = python-xcffib>=0.4.1
-	depends = python-cairocffi>=0.7.2
+	depends = python-xcffib>=0.5.1
+	depends = python-cairocffi>=0.8.0
 	optdepends = python-setproctitle: change the process name to qtile
 	conflicts = qtile-git
-	source = https://github.com/qtile/qtile/archive/v0.10.6.tar.gz
+	source = https://github.com/qtile/qtile/archive/v0.10.7.tar.gz
 	md5sums = c0c42fb746f21f6f9d6b549595f6e16e
 
 pkgname = qtile
