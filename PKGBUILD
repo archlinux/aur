@@ -34,6 +34,7 @@ build() {
         --without-x \
         --without-motif \
         --without-xbae
+    make || true
     make
 }
 
