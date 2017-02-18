@@ -1,17 +1,16 @@
-# $Id: PKGBUILD 134819 2015-06-05 05:13:15Z lcarlier $
-# Maintainer: Florian Pritz <flo@xssn.at>
+# Contributor: Llewelyn Trahaearn <woefulderelict [at] gmail [dot] com>
+# Contributor: Florian Pritz <flo [at] xssn [dot] at>
 
-_pkgbasename=libmng
-pkgname=lib32-$_pkgbasename
+pkgname=lib32-libmng
 pkgver=2.0.3
-pkgrel=3
+pkgrel=1
 pkgdesc="A collection of routines used to create and manipulate MNG format graphics files (32-bit)"
 arch=('x86_64')
 url="http://www.libmng.com/"
 license=('custom')
-depends=('lib32-lcms2' $_pkgbasename)
-makedepends=(gcc-multilib)
-source=(http://downloads.sourceforge.net/sourceforge/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.xz{,.asc})
+depends=('lib32-lcms2' "${pkgname#lib32-}" )
+makedepends=('gcc-multilib')
+source=(http://downloads.sourceforge.net/sourceforge/${pkgname#lib32-}/${pkgname#lib32-}-${pkgver}.tar.xz{,.asc})
 validpgpkeys=(8048643BA2C840F4F92A195FF54984BFA16C640F)
 sha1sums=('0f141482ffcef6f8cd4413f945a59310ac2e49af'
           'SKIP')
@@ -19,19 +18,16 @@ sha1sums=('0f141482ffcef6f8cd4413f945a59310ac2e49af'
 build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
 
-  cd $_pkgbasename-$pkgver
+  cd ${pkgname#lib32-}-${pkgver}
   ./configure --prefix=/usr --libdir=/usr/lib32
   make
 }
 
 package() {
-  cd $_pkgbasename-$pkgver
-
-  make DESTDIR=$pkgdir install
-
+  cd ${pkgname#lib32-}-${pkgver}
+  make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/{include,share,bin}
-  mkdir -p "$pkgdir/usr/share/licenses"
-  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgname"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
