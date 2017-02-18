@@ -7,7 +7,7 @@ After=network.target
 Type=simple
 User=gogs
 Group=gogs
-Environment="GOGS_WORK_DIR=/srv/gogs USER=gogs HOME=/srv/gogs"
+Environment=GOGS_WORK_DIR=/srv/gogs USER=gogs HOME=/srv/gogs
 ExecStart=/usr/bin/gogs web --config /etc/gogs/app.ini
 WorkingDirectory=/srv/gogs
 Restart=always
