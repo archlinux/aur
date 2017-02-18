@@ -3,11 +3,11 @@
 _pkgname=pass_python_keyring
 pkgname=${_pkgname}-git
 pkgver=r12.cbaae67
-pkgrel=1
+pkgrel=2
 pkgdesc="A pass-powered backend for Python Keyring Lib"
 url="https://github.com/notandy/pass_python_keyring"
 arch=("any")
-depends=('python' 'python-gnupg')
+depends=('python' 'python-keyring')
 makedepends=('python-setuptools')
 source=("git+https://github.com/notandy/${_pkgname}.git")
 sha256sums=('SKIP')

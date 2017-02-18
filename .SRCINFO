@@ -1,12 +1,12 @@
 pkgbase = pass_python_keyring-git
-	pkgdesc = a python library for GPG-based challenge/response 2-factor authentication in web applications
+	pkgdesc = A pass-powered backend for Python Keyring Lib
 	pkgver = r12.cbaae67
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/notandy/pass_python_keyring
 	arch = any
 	makedepends = python-setuptools
 	depends = python
-	depends = python-gnupg
+	depends = python-keyring
 	source = git+https://github.com/notandy/pass_python_keyring.git
 	sha256sums = SKIP
 
