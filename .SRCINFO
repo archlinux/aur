@@ -1,0 +1,18 @@
+pkgbase = htdig
+	pkgdesc = Scripts and HTML code needed for using ht://Dig as a web search engine
+	pkgver = 3.2.0b6
+	pkgrel = 11
+	url = http://www.htdig.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = openssl
+	source = http://downloads.sourceforge.net/htdig/htdig-3.2.0b6.tar.bz2
+	source = gcc4.3.patch
+	source = CVE-2007-6110.patch
+	md5sums = 8b9b9587a411ac7dd278fa5413428960
+	md5sums = 2aeda683f95b58efc0978d7fe951de59
+	md5sums = 0d9099d3b5a32d322a8e0240f85a3578
+
+pkgname = htdig
+
