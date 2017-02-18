@@ -1,6 +1,6 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail.com>
 pkgname=flyby-git
-pkgver=r467.0017eff
+pkgver=r472.138d2e3
 pkgrel=1
 pkgdesc="A satellite tracking program"
 arch=('i686' 'x86_64' 'arm')
@@ -12,7 +12,7 @@ provides=('flyby')
 replaces=('flyby')
 install=
 
-_gitroot=git@github.com:la1k/flyby.git
+_gitroot=https://github.com/la1k/flyby.git
 _gitname=flyby
 
 pkgver() {
