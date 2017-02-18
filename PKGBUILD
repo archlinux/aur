@@ -2,17 +2,17 @@
 
 
 pkgname='dbninja'
-pkgver=3.2.6
-pkgrel=2
+pkgver=3.2.7
+pkgrel=1
 pkgdesc="Advanced web-based application for MySQL database administration and development"
 arch=("any")
 url="http://www.dbninja.com/"
 license=("custom: EULA")
 depends=("php")
-source=('http://www.dbninja.com/download/dbninja.tar.gz'
+source=("dbninja-${pkgver}.tar.gz::http://www.dbninja.com/download/dbninja.tar.gz"
 		"service")
-md5sums=("81df97958467776051507f82a680efde"
-         "aff1d2120e5e753b160ae8deeb333978")
+md5sums=('e6ca2716b529e5a874f151a694a83e12'
+         'aff1d2120e5e753b160ae8deeb333978')
 
 install="install"
 
