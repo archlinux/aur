@@ -1,8 +1,8 @@
 pkgbase = libretro-parallel-git
-	pkgdesc = Mupen64plus with dynarec and vulkan powered rdp lle
-	pkgver = 4422.b486bcaa
+	pkgdesc = Optimized/rewritten Nintendo 64 emulator made specifically for Libretro. Originally based on Mupen64 Plus.
+	pkgver = 4440.9333709c
 	pkgrel = 1
-	url = https://github.com/libretro/mupen64plus-libretro
+	url = https://github.com/libretro/parallel-n64
 	arch = i686
 	arch = x86_64
 	groups = libretro
@@ -11,12 +11,11 @@ pkgbase = libretro-parallel-git
 	license = LGPL
 	makedepends = git
 	makedepends = vulkan-headers
-	makedepends = llvm
 	depends = libglvnd
 	depends = vulkan-icd-loader
 	depends = clang
-	source = mupen64plus-libretro::git://github.com/libretro/mupen64plus-libretro.git
-	source = https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/parallel_libretro.info
+	source = parallel-n64::git://github.com/libretro/parallel-n64.git
+	source = https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/parallel_n64_libretro.info
 	md5sums = SKIP
 	md5sums = SKIP
 
