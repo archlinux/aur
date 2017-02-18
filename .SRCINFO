@@ -1,0 +1,15 @@
+pkgbase = elementary-kde-theme-git
+	pkgdesc = Elementary theme for KDE
+	pkgver = r27.5e8d20e
+	pkgrel = 1
+	url = https://github.com/darkknightak/elementary-kde
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = elementary-kde
+	conflicts = elementary-kde
+	source = elementary-kde-theme-git::git://github.com/darkknightak/elementary-kde.git
+	md5sums = SKIP
+
+pkgname = elementary-kde-theme-git
+
