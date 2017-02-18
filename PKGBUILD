@@ -1,6 +1,6 @@
 pkgname=systemtap
-pkgver=3.0
-pkgrel=3
+pkgver=3.1
+pkgrel=1
 pkgdesc="SystemTap provides free software (GPL) infrastructure to simplify the gathering of information about the running Linux system."
 url="http://sourceware.org/systemtap/"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -9,7 +9,7 @@ depends=('elfutils' 'nss' 'python2' 'texlive-fontsextra' 'texlive-latexextra' 'l
 makedepends=('gcc')
 optdepends=('sqlite3')
 source=(http://sourceware.org/systemtap/ftp/releases/$pkgname-$pkgver.tar.gz)
-sha1sums=('5ef3a2d9945b0f6bae0061e33811e25e5138f5b7')
+sha1sums=('2927ee7e780b45e47d770798f80dfd5be62e095d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
