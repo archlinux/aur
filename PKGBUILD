@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=radium
-pkgver=4.4.4
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -40,13 +40,13 @@ source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
         "fix-X11_keyboard-compilation.patch"
         "use-system-libxcb.patch"
         "use-system-vstsdk.patch")
-md5sums=('800c54b418a4247a105a7ceb89e62015'
+md5sums=('e2bddd56d0e9dc3a9cdf89249a3915ef'
          'df250d13d5826b35c9139e6d436ebac9'
          '77c202bc0a36562eb7b805ad6b7a85b3'
          '1ca36c75ce4b3fed28c22753b8dc045a'
          '24e927620d8aeb09c83b903a92dacf9f'
          '60e99f9362d08726877d14ea2cdfd5c6'
-         'b8ae40ee614d56931f4f8f463912f3c4')
+         '5c78211475528b588cabced5f024eb54')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
