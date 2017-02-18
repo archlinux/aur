@@ -15,9 +15,9 @@ pkgbase = varstack-git
 	provides = varstack
 	conflicts = varstack
 	options = zipman
-	backup = etc/varstack/varstack.yml
+	backup = etc/varstack/varstack.yaml
 	source = git://github.com/conversis/varstack.git
-	source = varstack.yml
+	source = varstack.yaml
 	md5sums = SKIP
 	md5sums = af2b2b0e0e3e172c6b8c84380d0ebd49
 

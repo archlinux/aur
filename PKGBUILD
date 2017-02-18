@@ -8,14 +8,14 @@ arch=('i686' 'x86_64')
 url="https://github.com/conversis/varstack"
 license=("MIT")
 depends=('python2' 'python2-yaml' 'python2-simplejson' 'python2-argparse')
-backup=('etc/varstack/varstack.yml')
+backup=('etc/varstack/varstack.yaml')
 makedepends=('git')
 optdepends=('python2-gnupg')
 options=('zipman')
 conflicts=('varstack')
 provides=('varstack')
 
-source=("git://github.com/conversis/varstack.git" 'varstack.yml')
+source=("git://github.com/conversis/varstack.git" 'varstack.yaml')
 
 # because the sources are not static, skip checksums
 md5sums=('SKIP'
@@ -36,7 +36,7 @@ package() {
 
   #create default dir
   mkdir -p $pkgdir/etc/varstack/stack
-  install -Dm644 ${srcdir}/varstack.yml ${pkgdir}/etc/varstack/varstack.yml
+  install -Dm644 ${srcdir}/varstack.yaml ${pkgdir}/etc/varstack/varstack.yaml
   
   #examples are usefull
   mkdir -p $pkgdir/usr/share/doc/${_gitname}/examples
