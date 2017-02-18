@@ -15,7 +15,7 @@ install='domoticz-git.install'
 source=('git+https://github.com/domoticz/domoticz.git'
          'domoticz.service')
 sha256sums=('SKIP'
-             '8627b3a82db83a0d94c830c007c09ffd38366505fced9c724a7c29414837f3ad')
+             'f45f382e5ae0d54f1b1f147b89f5ac5f62719c83a8eb280e20121f8dfc7b2697')
 
 pkgver() {
   cd $_gitname

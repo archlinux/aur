@@ -4,7 +4,11 @@ After=network.target
 
 [Service]
 User=http
-ExecStart=/opt/domoticz/domoticz -www 8080 -daemon
+Group=http
+PermissionsStartOnly=true
+ExecStartPre=/usr/bin/install -d -m 0700 -o http -g http /var/run/domoticz
+ExecStart=/opt/domoticz/domoticz -www 8080 -pidfile /var/run/domoticz/domoticz.pid -daemon
+PIDFile=/var/run/domoticz/domoticz.pid
 WorkingDirectory=/opt/domoticz
 RestartSec=5
 Restart=on-failure
