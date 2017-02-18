@@ -1,0 +1,4 @@
+post_install() {
+        echo "You can copy /usr/share/horo/horok.conf to /etc/modules-load.d/horok.conf"
+        echo "to load the modules after reboot"
+}
