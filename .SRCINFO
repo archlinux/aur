@@ -1,0 +1,19 @@
+pkgbase = uqm-sound
+	pkgdesc = Optional sound package for Ur-Quan Masters (uqm). Includes voices and 3do music.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://sc2.sf.net/
+	arch = any
+	license = GPL
+	depends = uqm>=0.7.0
+	provides = uqm-3domusic
+	provides = uqm-voice
+	conflicts = uqm-3domusic
+	conflicts = uqm-voice
+	source = http://downloads.sourceforge.net/sourceforge/sc2/uqm-0.7.0-voice.uqm
+	source = http://downloads.sourceforge.net/sourceforge/sc2/uqm-0.7.0-3domusic.uqm
+	md5sums = b78e0606325810f9f2e9ec786191c01b
+	md5sums = 86a5e376d9b76888add1d10818f0ab9f
+
+pkgname = uqm-sound
+
