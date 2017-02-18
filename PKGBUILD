@@ -2,7 +2,7 @@
 # Maintainer: Sean V Kelley <seanvk@posteo.de>
 
 pkgname=libyami-utils
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Intel VA-API Media Applications and Scripts for libyami"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ options=('!emptydirs')
 changelog=
 #source=($url/archive/libyami-$pkgver.tar.gz -> $pkgname-$pkgver.tar.gz)
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=('a5826a5ade885dc33e1a7d23f5f261522f88661ee486d3b8bbff6bdfaacf2495')
+sha256sums=('66865408b63d09a80f1305828898c9cb5e7d57585b944b08148c92d774ba8dcd')
 
 build() {
 	export LD_RUN_PATH='$ORIGIN/lib/'
