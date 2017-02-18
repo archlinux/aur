@@ -1,4 +1,5 @@
 # Maintainer: LA-MJ <4mr.minj+aur [at] g-mail>
+
 _npmname=addons-linter
 pkgname=nodejs-$_npmname # All lowercase
 pkgver=0.15.15
