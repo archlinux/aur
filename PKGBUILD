@@ -3,7 +3,7 @@
 
 _pkgname=libdc1394
 pkgname=lib32-${_pkgname}
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 pkgdesc="High level programming interface to control IEEE 1394 based cameras (32 bit)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('lib32-libraw1394' 'lib32-libusb' "${_pkgname}")
 makedepends=('gcc-multilib')
 options=('!emptydirs')
 source=("http://downloads.sourceforge.net/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('620eb745d64b714c6009f3e6f2ba33ec')
+md5sums=('01acfcde2cc85863b0acb90dcffa1659')
 
 build() {
 export CC='gcc -m32'
