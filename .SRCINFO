@@ -1,0 +1,17 @@
+pkgbase = libretro-melonds-git
+	pkgdesc = libretro port of MelonDS, new Nintendo DS emulator
+	pkgver = 106.ebe336b
+	pkgrel = 1
+	url = https://github.com/libretro/melonDS
+	arch = i686
+	arch = x86_64
+	groups = libretro
+	license = GPLv2
+	makedepends = git
+	source = melonds::git://github.com/libretro/melonds.git
+	source = https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/melonds_libretro.info
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libretro-melonds-git
+
