@@ -43,7 +43,7 @@ package() {
   install -d $pkgdir/usr/share/texmf/tex/generic
   install -d $pkgdir/usr/lib/noweb/
   install -d $pkgdir/usr/share/emacs/site-lisp
-  ./awkname gawk
+  ./awkname nawk
   make MyDestdir=$pkgdir LIBSRC=icon ICONC=icont install
   find $pkgdir -type f -exec sed -i "s+${pkgdir}+/+g" '{}' ';'
 }
