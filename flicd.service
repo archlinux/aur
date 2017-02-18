@@ -1,0 +1,12 @@
+[Unit]
+Description=flicd
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=3
+ExecStart=/usr/bin/flicd -f /etc/flicd/db -s 0.0.0.0 -p 5551
+
+[Install]
+WantedBy=multi-user.target

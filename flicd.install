@@ -1,0 +1,6 @@
+post_install() {
+    echo "To get started start the flicd.service"
+    echo "NOTE: The flicd service listens on all interfaces by default (port 5551)"
+    echo
+    echo "To test: \$ flic-simpleclient localhost"
+}
