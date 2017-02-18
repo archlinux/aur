@@ -1,7 +1,7 @@
 # Author: Julian Xhokaxhiu <info@julianxhokaxhiu.com>
 pkgname=chromium-fullscreen
 pkgver=1
-pkgrel=6
+pkgrel=7
 pkgdesc="A script in order to run Chromium in fullscreen mode under the chromium user"
 url=""
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -13,7 +13,7 @@ source=('chromium-fullscreen.sysuser'
         'disable-x-frame-option-background.js'
         'disable-x-frame-option-manifest.json')
 md5sums=('9e979fbdd1e4a5a04fd0e91ce6a9a7be'
-         '1a2b2cd4bd67769948edcdaabb5592eb'
+         'b5fee3c827d9b9bd3a954dd1213c1525'
          'c700c36f4ea3e353c6d49df823561fc4'
          'f543ec018edbaf5533e6bddd5068ff54')
 

@@ -19,6 +19,9 @@ xset s noblank     # don't blank the video device
 # Hide mouse cursor
 unclutter -display :0.0 -noevents -grab -root -reset &
 
+# Clear cache and config before starting the process
+rm -Rf .cache .config
+
 # Autostart Chromium in Fullscreen mode
 exec /usr/bin/chromium --disable \
     --no-first-run \
