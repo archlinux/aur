@@ -1,0 +1,36 @@
+pkgbase = gcc-python-plugin
+	pkgdesc = GCC plugin that embeds CPython inside the compiler
+	pkgver = 0.15
+	pkgrel = 1
+	url = https://gcc-python-plugin.readthedocs.io/en/latest/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python-lxml
+	makedepends = python-pygments
+	makedepends = python-six
+	makedepends = python-sphinx
+	makedepends = python2-lxml
+	makedepends = python2-pygments
+	makedepends = python2-six
+	source = gcc-python-plugin-0.15.tar.gz::https://github.com/davidmalcolm/gcc-python-plugin/archive/v0.15.tar.gz
+	sha256sums = fcb7596616fcb07f611b992f7603ca80f85181b23692693d1097977913419e74
+
+pkgname = gcc-python-plugin
+	depends = python-lxml
+	depends = python-pygments
+	depends = python-six
+	depends = gcc-python-plugin-c-api
+	optdepends = graphviz: for examples
+
+pkgname = gcc-python2-plugin
+	depends = python2-lxml
+	depends = python2-pygments
+	depends = python2-six
+	depends = gcc-python-plugin-c-api
+	optdepends = graphviz: for examples
+
+pkgname = gcc-python-plugin-c-api
+
+pkgname = gcc-python-plugin-doc
+
