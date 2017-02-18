@@ -1,7 +1,7 @@
 pkgbase = climate
 	pkgdesc = Climate is the ultimate command line tool for Linux
-	pkgver = 0.2
-	pkgrel = 1
+	pkgver = 0.3
+	pkgrel = 2
 	url = https://github.com/adtac/climate
 	install = climate.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = climate
 	optdepends = unzip: extracting zip files
 	optdepends = wget: retrieving files
 	optdepends = curl: making http requests
-	optdepends = dig: dns support
+	optdepends = dnsutils: provides dig command
 	optdepends = git: git support
 	optdepends = rar: extacting rar files
 	optdepends = python: running python scripts
@@ -17,9 +17,12 @@ pkgbase = climate
 	optdepends = node: running node scripts
 	optdepends = fdupes: de-deplicating files
 	optdepends = sshfs: ssh filesystem support
-	optdepends = 7z: extracting 7z files
-	source = https://github.com/adtac/climate/archive/v0.2.tar.gz
-	sha256sums = 781f42f4d59374e90f9c3efba271209d8b5e985279696bdd93bcd2f826f0177e
+	optdepends = lm_sensors: read cpu temperatures, voltage, fans
+	optdepends = speedtest-cli: check networking speed
+	optdepends = gawk: gawk suport
+	optdepends = p7zip: extracting 7z files
+	source = https://github.com/adtac/climate/archive/v0.3.tar.gz
+	sha256sums = 3724f10e1cf5d900f0e2611e7377e212311031d810d93a6784ac8e2de7c1f866
 
 pkgname = climate
 

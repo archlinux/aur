@@ -1,8 +1,8 @@
 # Maintainer: Ian Ker-Seymer <i.kerseymer@gmail.com>
 
 pkgname=climate
-pkgver=0.2
-pkgrel=1
+pkgver=0.3
+pkgrel=2
 pkgdesc="Climate is the ultimate command line tool for Linux"
 url="https://github.com/adtac/climate"
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=('unzip: extracting zip files'
             'p7zip: extracting 7z files')
 install="${pkgname}.install"
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('781f42f4d59374e90f9c3efba271209d8b5e985279696bdd93bcd2f826f0177e')
+sha256sums=('3724f10e1cf5d900f0e2611e7377e212311031d810d93a6784ac8e2de7c1f866')
 
 build() {
   cd "${pkgname}-${pkgver}"
