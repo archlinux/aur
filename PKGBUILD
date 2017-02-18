@@ -5,7 +5,7 @@
 
 pkgname=mutter-hide-legacy-decorations
 _pkgname=mutter
-pkgver=3.22.1
+pkgver=3.22.3
 pkgrel=1
 pkgdesc="A window manager for GNOME (with a little hack to hide the window decorations on maximized legacy applications)"
 url="https://git.gnome.org/browse/mutter"
@@ -21,12 +21,13 @@ provides=("mutter=${pkgver}")
 groups=(gnome)
 options=(!emptydirs)
 
-
-_commit=f63bb024fa72887b845c8cfb6c06d5338f35f4dd  # tags/3.22.1^0
+_commit=afb4165262ac7b51229663fdf859aee2dcc4b4e8  # tags/3.22.3^0
 source=("git://git.gnome.org/mutter#commit=$_commit"
+        "startup-notification.patch"
         "hideTitlebar.patch")
 
 sha256sums=('SKIP'
+            '5a35ca4794fc361219658d9fae24a3ca21a365f2cb1901702961ac869c759366'
             'ec1a0f5f98213c340e907761e72fc3e22cb9c8ff503c6c234a4a41aac4ec7ac4')
 
 pkgver() {
@@ -36,6 +37,10 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
+
+  # https://bugs.archlinux.org/task/51940
+  patch -Np1 -i ../startup-notification.patch
+
   NOCONFIGURE=1 ./autogen.sh
 }
 
