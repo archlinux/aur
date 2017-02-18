@@ -5,7 +5,7 @@
 pkgname=dunst-git
 _gitname=dunst
 pkgver=1.1.0.173.g6288fab.778
-pkgrel=1
+pkgrel=2
 pkgdesc="a lightweight notification-daemon - git version"
 arch=('i686' 'x86_64')
 url="https://dunst-project.org/"
@@ -34,6 +34,7 @@ prepare() {
     cp ${srcdir}/config.h .
     touch config.h
   fi
+  sed  's+##PREFIX##+/usr+' contrib/dunst.systemd.service.in > contrib/dunst.systemd.service
 }
 
 build() {
@@ -54,8 +55,8 @@ package() {
   else
     make DESTDIR="${pkgdir}" PREFIX=/usr install
   fi
-
-  install -Dm755 dunstify "${pkgdir}/usr/bin/dunstify"
-
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 dunstify "${pkgdir}"/usr/bin/dunstify
+  install -Dm755 contrib/dunst_espeak.sh "${pkgdir}"/usr/bin/dunst_espeak.sh
+  install -Dm644 contrib/dunst.systemd.service "${pkgdir}"/usr/lib/systemd/system/dunst.systemd.service.in
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
