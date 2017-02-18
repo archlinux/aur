@@ -1,7 +1,0 @@
-post_install() {
-  [[ -L /usr/bin/nawk ]] || ln -s /bin/gawk /usr/bin/nawk
-}
-
-post_remove() {  
-  [[ -L /usr/bin/nawk ]] && rm /usr/bin/nawk
-}

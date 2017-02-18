@@ -4,15 +4,14 @@
 
 pkgname=noweb
 pkgver=2.11b
-pkgrel=16
+pkgrel=17
 pkgdesc="A Simple, Extensible Tool for Literate Programming build \
 against ICON libs and texlive"
 url="http://www.cs.tufts.edu/~nr/noweb/"
-depends=('bash' 'texlive-core' 'gawk' 'icon')
+depends=('bash' 'texlive-core' 'nawk' 'icon')
 source=(http://ftp.de.debian.org/debian/pool/main/n/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz)
 md5sums=('1df580723497b2f2efde07646abf764c')
 arch=('i686' 'x86_64')
-install=noweb.install
 license=('custom')
 
 prepare() {
