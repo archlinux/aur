@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=coffee-script-git
-pkgver=1.12.3.7.gd84c94dc
+pkgver=1.12.4
 pkgrel=1
 pkgdesc='Language that compiles into JavaScript'
 arch=('any')
@@ -22,14 +22,8 @@ pkgver() {
 
 package() {
   cd $_gitname
-  export NODE_PATH=/usr/share/underscorejs:$NODE_PATH
-  install -d $pkgdir/usr/lib/node_modules
-  bin/cake --prefix "$pkgdir/usr/" install
-  cp -r $pkgdir/usr/lib/coffee-script $pkgdir/usr/lib/node_modules/
-  rm -rf $pkgdir/usr/lib/coffee-script
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
-  rm -rf $pkgdir/usr/bin/cake $pkgdir/usr/bin/coffee &&
-  ln -s /usr/lib/node_modules/coffee-script/bin/coffee $pkgdir/usr/bin/coffee &&
-  ln -s /usr/lib/node_modules/coffee-script/bin/cake $pkgdir/usr/bin/cake
+  npm install -g --user root --prefix "$pkgdir"/usr
+  rm -r "$pkgdir"/usr/etc
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "../../../lib/node_modules/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
