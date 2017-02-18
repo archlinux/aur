@@ -21,8 +21,7 @@ optdepends=('ebtables: required for default NAT networking'
 	    'openbsd-netcat: for remote management over ssh'
 	    'qemu'
 	    'radvd'
-	    'dmidecode'
-	    'pm-utils: host power management')
+	    'dmidecode')
 options=('emptydirs')
 backup=('etc/conf.d/libvirt-guests'
 	'etc/conf.d/libvirtd'
