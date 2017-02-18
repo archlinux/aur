@@ -3,6 +3,8 @@ Description=Ubiquiti UniFi Video Server
 After=network.target
 
 [Service]
+User=unifi-video
+Group=unifi-video
 Type=simple
 WorkingDirectory=/usr/lib/unifi-video
 TimeoutStartSec=300
