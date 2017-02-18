@@ -3,7 +3,7 @@
 pkgname="popcorntime-ce-git"
 _pkgname="popcorntime-ce"
 _device="desktop"
-pkgver="r209.36fb825"
+pkgver="r306.a576c24"
 pkgrel=1
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch. Repos of the original community edition."
 arch=("x86_64" "i686")
@@ -60,13 +60,11 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/${_pkgname}"
 	install -dm755 "${pkgdir}/usr/bin"
 
-	# Program
-	install -Dm755 "${srcdir}/${_bindir}/${_execname}" "${pkgdir}/usr/share/${_pkgname}/"
-	install -Dm644 "${srcdir}/${_device}/"{CHANGELOG.md,LICENSE.txt,package.json,README.md} "${pkgdir}/usr/share/${_pkgname}/"
-	install -Dm644 "${srcdir}/${_bindir}/"{icudtl.dat,libffmpegsumo.so,nw.pak} "${pkgdir}/usr/share/${_pkgname}/"
-
-	# Directories
+	# Application
+	cp -r "${srcdir}/${_bindir}/"* "${pkgdir}/usr/share/${_pkgname}/"
 	cp -a "${srcdir}/${_device}/"{node_modules,src} "${pkgdir}/usr/share/${_pkgname}/"
+	chmod -R go=u-w "${pkgdir}/usr/share/${_pkgname}/"
+	install -Dm644 "${srcdir}/${_device}/"{CHANGELOG.md,LICENSE.txt,package.json,README.md} "${pkgdir}/usr/share/${_pkgname}/"
 
 	# Link to program
 	ln -s "/usr/share/${_pkgname}/${_execname}" "${pkgdir}/usr/bin/${_pkgname}"

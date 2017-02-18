@@ -1,6 +1,6 @@
 pkgbase = popcorntime-ce-git
 	pkgdesc = Stream movies from torrents. Skip the downloads. Launch, click, watch. Repos of the original community edition.
-	pkgver = r209.36fb825
+	pkgver = r306.a576c24
 	pkgrel = 1
 	url = http://popcorntime.ag/
 	install = popcorntime-ce.install
