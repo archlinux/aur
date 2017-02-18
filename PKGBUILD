@@ -12,13 +12,13 @@ url="http://www.sourceforge.net/projects/nevernote"
 arch=('x86_64' 'i686')
 license=('GPL2')
 provides=('nixnote2')
-conflicts=('nixnote' 'nixnote2-git')
+conflicts=('nixnote' 'nixnote2-git' 'nixnote2')
 replaces=('nixnote')
-source=("nixnote2.desktop")
+source=("nixnote2.desktop" "nixnote2.sh")
 
 # QT5 Version.
 depends=('mimetex' 'opencv' 'poppler-qt5' 'qt5-base' 'qt5-webkit' 'sqlite' 'tidyhtml' 'qtwebkit' 'libcurl-compat')
-sha256sums=('6c88cd5ae3f5c18e342fcf5165891b22d99818d3fe2ac2b124262b8ba23bb4d1')
+sha256sums=('6c88cd5ae3f5c18e342fcf5165891b22d99818d3fe2ac2b124262b8ba23bb4d1' '2622af966b844ad7fdfc282a5a8bcff1eb44269a148b2f5759fa8f1de8188370')
 source_x86_64=("https://netix.dl.sourceforge.net/project/nevernote/${_pkgver}/Linux/Qt5/${_pkgname}-2.0-${_beta_release}_amd64.tar.gz")
 sha256sums_x86_64=('39eb933160054abda2d3cb5b1b73a0113b7d96335b50b8c13f2375b1dff04e18')
 source_i686=("https://netix.dl.sourceforge.net/project/nevernote/${_pkgver}/Linux/Qt5/${_pkgname}-2.0-${_beta_release}_i386.tar.gz")
@@ -27,4 +27,6 @@ sha256sums_i686=('998ca65d53e1495be03ba25f90a6956239ec64cab72c699e5be21b0074ebd8
 package() {
     cp -R "${srcdir}/nixnote2/usr" "${pkgdir}/"
     install -D -m644 nixnote2.desktop ${pkgdir}/usr/share/applications/nixnote2.desktop
+    sudo cp nixnote2.sh /usr/local/bin/nixnote2
+    sudo chmod +x /usr/local/bin/nixnote2
 }
