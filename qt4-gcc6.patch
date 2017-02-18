@@ -19,7 +19,8 @@ diff -up qt-everywhere-opensource-src-4.8.7/configure.gcc6 qt-everywhere-opensou
          COMPILER_VERSION="4"
          ;;
      *)
-diff -up qt-everywhere-opensource-src-4.8.7/src/xmlpatterns/api/qcoloroutput_p.h.gcc6 qt-everywhere-opensource-src-4.8.7/src/xmlpatterns/api/qcoloroutput_p.h
+diff -up qt-everywhere-opensource-src-4.8.7/src/xmlpatterns/api/qcoloroutput_p.h.gcc6 
+qt-everywhere-opensource-src-4.8.7/src/xmlpatterns/api/qcoloroutput_p.h
 --- qt-everywhere-opensource-src-4.8.7/src/xmlpatterns/api/qcoloroutput_p.h.gcc6	2015-05-07 09:14:48.000000000 -0500
 +++ qt-everywhere-opensource-src-4.8.7/src/xmlpatterns/api/qcoloroutput_p.h	2016-04-15 07:04:19.431268227 -0500
 @@ -70,8 +70,8 @@ namespace QPatternist
