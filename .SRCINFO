@@ -1,6 +1,6 @@
 pkgbase = domoticz-git
 	pkgdesc = Web based home automation
-	pkgver = r5051
+	pkgver = r6749
 	pkgrel = 1
 	url = http://www.domoticz.com
 	install = domoticz-git.install
