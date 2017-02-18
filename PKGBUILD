@@ -2,7 +2,7 @@
 
 pkgname=pyflowchart-git
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Application to help manage curriculum flowcharts at CalPoly"
 arch=('any')
 url="https://github.com/steelcowboy/PyFlowChart"
