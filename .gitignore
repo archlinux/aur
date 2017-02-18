@@ -1,0 +1,4 @@
+pass_python_keyring
+*.pkg.*
+src
+pkg
