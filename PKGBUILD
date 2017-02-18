@@ -1,13 +1,13 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
  
 pkgname=babe-qt-git
-pkgver=r103.78c1a5f
+pkgver=r129.1377e59
 pkgrel=1
 pkgdesc='Tiny Qt Babe Music Player'
 arch=('i686' 'x86_64')
 url="https://github.com/milohr/babe-qt"
 license=('GPL3')
-depends=('hicolor-icon-theme' 'knotifications' 'ki18n' 'qjson' 'taglib')
+depends=('hicolor-icon-theme' 'knotifications' 'ki18n' 'taglib')
 makedepends=('extra-cmake-modules' 'git' 'python')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
