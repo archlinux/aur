@@ -1,7 +1,7 @@
 # Maintainer: XavierCLL
 
 pkgname=python2-pympler
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Measure, monitor and analyze the memory behavior of Python objects'
 arch=('any')
@@ -9,7 +9,7 @@ url='http://pypi.python.org/pypi/pympler/'
 license=('Apache')
 depends=('python2')
 source=("http://pypi.python.org/packages/source/P/Pympler/Pympler-$pkgver.tar.gz")
-md5sums=('6bdfd913ad4c94036e8a2b358e49abd7')
+md5sums=('bbb4239126e9c99e2effc83b02bf8755')
 
 build() {
   cd "$srcdir/Pympler-$pkgver"
