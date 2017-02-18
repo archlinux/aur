@@ -1,0 +1,25 @@
+pkgbase = varstack-git
+	pkgdesc = A tool to create stacked configuration structures
+	pkgver = c9e6e5e
+	pkgrel = 1
+	url = https://github.com/conversis/varstack
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = python2
+	depends = python2-yaml
+	depends = python2-simplejson
+	depends = python2-argparse
+	optdepends = python2-gnupg
+	provides = varstack
+	conflicts = varstack
+	options = zipman
+	backup = etc/varstack/varstack.yml
+	source = git://github.com/conversis/varstack.git
+	source = varstack.yml
+	md5sums = SKIP
+	md5sums = af2b2b0e0e3e172c6b8c84380d0ebd49
+
+pkgname = varstack-git
+

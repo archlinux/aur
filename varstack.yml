@@ -1,0 +1,5 @@
+datadir: /etc/varstack/stack
+stack:
+  - defaults
+  - environments/%{env}
+  - nodes/%{fqdn}
