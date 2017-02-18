@@ -2,7 +2,7 @@
 
 pkgname=climate
 pkgver=0.3
-pkgrel=2
+pkgrel=1
 pkgdesc="Climate is the ultimate command line tool for Linux"
 url="https://github.com/adtac/climate"
 arch=('any')

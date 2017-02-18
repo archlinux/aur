@@ -1,7 +1,7 @@
 pkgbase = climate
 	pkgdesc = Climate is the ultimate command line tool for Linux
 	pkgver = 0.3
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/adtac/climate
 	install = climate.install
 	arch = any
