@@ -1,8 +1,8 @@
 # Maintainer: KNOSSOS-Team <knossos-team ät mpimf-heidelberg.mpg.de>
 
 pkgname="qt5-python27-git"
-_qtver=5.7.0
-pkgver=3.1+105.gfd8413c
+_qtver=5.8.0
+pkgver=3.1+115.gb06f864
 pkgrel=1
 arch=("x86_64")
 pkgdesc="PythonQt fork featuring Qt 5.x and Python 3.x support and improved CMake build system (Qt5 and Python2.7 version)"
@@ -21,10 +21,8 @@ depends=("python2"
 )
 provides=("qt5-python27")
 replaces=("qt5-python26") # conflicting older versions is the idea
-source=("git+https://github.com/knossos-project/PythonQt.git"
-  "qmetaobjectbuilder_p.h::http://code.qt.io/cgit/qt/qtbase.git/plain/src/corelib/kernel/qmetaobjectbuilder_p.h?h=v$_qtver")
-md5sums=('SKIP'
-         'cee8d4c63cf37186a6076465a1b40e70')
+source=("git+https://github.com/knossos-project/PythonQt.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd "PythonQt"
@@ -33,7 +31,6 @@ pkgver() {
 
 prepare() {
   mkdir -p PythonQt/src/private
-  cp qmetaobjectbuilder_p.h PythonQt/src/private/qmetaobjectbuilder_p.h
 }
 
 build() {
