@@ -1,13 +1,13 @@
 pkgbase = galois
 	pkgdesc = A computer game of the "falling blocks" type, but with unique features
 	pkgver = 0.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.nongnu.org/galois
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = gtkmm
-	depends = libxml++
+	depends = libxml++2.6
 	source = https://download.savannah.gnu.org/releases/galois/source/galois-0.4.tar.gz
 	source = galois.patch
 	sha256sums = a168ae6514da1eda5afd761fa4eeaf510d79988d450a716a0c41ce978d99e447
