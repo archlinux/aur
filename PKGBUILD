@@ -9,7 +9,7 @@ url="http://www.nordvpn.com"
 license=('MIT')
 depends=('openvpn' 'systemd')
 optdepends=('iputils: run ping and rank functions')
-makedepends=('unzip' 'parallel' 'coreutils')
+makedepends=('unzip' 'coreutils')
 provides=('nordvpn')
 source=('https://nordvpn.com/api/files/zip')
 noextract=(zip)
@@ -22,7 +22,9 @@ prepare() {
 }
 
 build() {
-    find conf -name '*.ovpn' | parallel -j4 sed \'s/^auth-user-pass.*$/auth-user-pass \\/etc\\/openvpn\\/client\\/nordvpn\\/credentials.conf/g\' -i {}
+    for f in $(find conf -name '*udp1194.ovpn'); do
+        sed 's/^auth-user-pass.*$/auth-user-pass \/etc\/openvpn\/client\/nordvpn\/credentials.conf/g' -i $f
+    done
 }
 
 package() {
