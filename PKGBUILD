@@ -2,7 +2,7 @@
 # Maintainer: Maddie Zhan <maddie@emzee.be>
 
 pkgname=overture
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A DNS upstream switcher written in Go in order to purify DNS records"
 arch=("i686" "x86_64" "armv6h" "armv7h")
@@ -28,7 +28,7 @@ sha256sums=("SKIP"
             "20bae2de8a95e5699a4786483bcf519f640b4ca7e4225a88f5aecc895d4b9be9"
             "46c344510738143bd83057494273cf78095743070ad05d80a8d985098b2ff7ec"
             "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-            "d352b84514e2a9d37f69a83d515d39f88b084198690ca615302dacf58fd06023")
+            "89f0e6577a42ed913ed010366695b12f51923d8e503d7eed107c0e2f13268ac1")
 
 _goroot="/usr/lib/go"
 

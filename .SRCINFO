@@ -1,6 +1,6 @@
 pkgbase = overture
 	pkgdesc = A DNS upstream switcher written in Go in order to purify DNS records
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/holyshawn/overture
 	install = overture.install
@@ -13,7 +13,7 @@ pkgbase = overture
 	optdepends = dnsmasq: advanced DNS configuration
 	provides = overture
 	backup = etc/overture/config.json
-	source = git+https://github.com/holyshawn/overture.git#tag=1.3.0
+	source = git+https://github.com/holyshawn/overture.git#tag=1.3.1
 	source = china_ip_list.txt
 	source = config.json
 	source = gfwlist.txt
@@ -24,7 +24,7 @@ pkgbase = overture
 	sha256sums = 20bae2de8a95e5699a4786483bcf519f640b4ca7e4225a88f5aecc895d4b9be9
 	sha256sums = 46c344510738143bd83057494273cf78095743070ad05d80a8d985098b2ff7ec
 	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-	sha256sums = d352b84514e2a9d37f69a83d515d39f88b084198690ca615302dacf58fd06023
+	sha256sums = 89f0e6577a42ed913ed010366695b12f51923d8e503d7eed107c0e2f13268ac1
 
 pkgname = overture
 
