@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/stanfieldr/ghetto-skype
 pkgname=ghetto-skype
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Web Skype + Tray Icon + Notifications'
 arch=('x86_64')
 url='https://github.com/stanfieldr/ghetto-skype'
@@ -16,9 +16,7 @@ sha256sums=('597ba70f48ee34a1e256aef04ce2403e8bb696e85e6ac15f192ac10c4388325c')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
-
-    sed -i src/assets/skype.desktop -e '/Exec/d'
-    echo 'Exec=/usr/bin/ghetto-skype' >> src/assets/skype.desktop
+    sed -i src/assets/skype.desktop -e '/^Exec=/ c \Exec=/usr/bin/ghetto-skype'
 }
 
 build() {
@@ -37,5 +35,5 @@ package() {
 
     mkdir -p "${pkgdir}/usr/bin"
     echo -e "#!/bin/bash\n/usr/bin/electron /opt/ghetto-skype" >> "${pkgdir}/usr/bin/ghetto-skype"
-    chmod 777 "${pkgdir}/usr/bin/ghetto-skype"
+    chmod 755 "${pkgdir}/usr/bin/ghetto-skype"
 }

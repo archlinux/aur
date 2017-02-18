@@ -1,7 +1,7 @@
 pkgbase = ghetto-skype
 	pkgdesc = Web Skype + Tray Icon + Notifications
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stanfieldr/ghetto-skype
 	install = ghetto-skype.install
 	arch = x86_64
