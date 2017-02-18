@@ -2,7 +2,7 @@
 # Maintainer: Sean V Kelley <seanvk@posteo.de>
 
 pkgname=libyami
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Yet Another Media Infrastructure: Intel VA-API Media codecs with hardware acceleration"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=('libva-intel-driver: Hardware Video Acceleration on Intel x86 GPU')
 options=('!emptydirs')
 changelog=
 source=($url/archive/$pkgname-$pkgver.tar.gz)
-sha256sums=('1051d3e3366a933c4fbfb883b3900e81a8c0e4e1cd4d5a08b9c7d4e1bf7cec34')
+sha256sums=('08acb7857a1a85c1d3341862d6b523c0eb1603adee454469cda765b6bf04f614')
 
 build() {
 	export LD_RUN_PATH='$ORIGIN/lib/'
@@ -31,7 +31,8 @@ build() {
 	--enable-h265enc \
 	--enable-h264enc \
 	--enable-jpegenc \
-	--enable-vp8enc
+	--enable-vp8dec \
+	--enable-vp9enc
 	# https://bugzilla.gnome.org/show_bug.cgi?id=655517
 	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 	make
