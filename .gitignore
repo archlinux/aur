@@ -1,4 +1,6 @@
 /docker/
+/runc/
+/containerd/
 /pkg/
 /src/
 *.pkg.tar.xz

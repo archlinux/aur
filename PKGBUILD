@@ -1,4 +1,5 @@
-# $Id: bfc54885f6617a81b35939f12f0a9f02199bb6d8 $
+# $Id$
+
 # Maintainer: Ido Rosen <ido@kernel.org>
 # Co-maintainer: Chris Fordham <chris [at] fordham-nagy [dot] [id] [dot] [au]> aka flaccid
 # Contributor: Sébastien "Seblu" Luttringer
@@ -17,28 +18,29 @@
 
 pkgname=docker-git
 _pkgname=docker
-pkgver=1.14.0.dev.30820.40dbbd3f9b
+pkgver=17.04.0.dev.31005.cf449cf69c
 pkgrel=1
 epoch=1
 pkgdesc='Pack, ship and run any application as a lightweight container.'
 arch=('i686' 'x86_64')
 url="https://github.com/docker/docker"
 license=('Apache License Version 2.0')
-depends=('runc-git' 'containerd-git' 'bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'systemd')
-makedepends=('git' 'go' 'btrfs-progs' 'go-md2man')
+depends=('bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'systemd')
+makedepends=('glibc' 'git' 'go' 'btrfs-progs' 'go-md2man')
 provides=('docker')
-conflicts=('docker')
+conflicts=('docker' 'containerd' 'containerd-git' 'runc' 'runc-git')
+replaces=('docker' 'containerd' 'containerd-git' 'runc' 'runc-git')
+install='docker.install'
 # don't strip binaries! A sha1 is used to check binary consistency.
 options=('!strip')
-source=("git+https://github.com/docker/docker.git"
-        'docker.install'
-        )
+source=('docker::git+https://github.com/docker/docker.git'
+        'containerd::git+https://github.com/docker/containerd.git#commit=78fb8f45890a601e0fd9051cf9f9f74923e950fd'
+        'runc::git+https://github.com/docker/runc.git#commit=51371867a01c467f08af739783b8beafc154c4d7'
+        'docker.install')
 md5sums=('SKIP'
-         '1a8e60447794b3c4f87a2272cc9f144f'
-        )
-install='docker.install'
-# magic harcoded path
-#_magic=src/github.com/dotcloud
+         'SKIP'
+         'SKIP'
+         '1a8e60447794b3c4f87a2272cc9f144f')
 
 pkgver() {
   cd "${srcdir}/docker"
@@ -47,31 +49,78 @@ pkgver() {
 }
 
 prepare() {
-  #mkdir -p "$_magic"
-  #ln -sfn "../../../docker" "$_magic/docker"
-  #cd "$_magic/docker"
-  cd docker
+  mkdir -p "$srcdir/go/src/github.com/docker"
+  export GOPATH="$srcdir/go"
+
+  # update specific commits used
+  # https://github.com/docker/docker/blob/master/hack/dockerfile/binaries-commits
+  . "$srcdir/docker/hack/dockerfile/binaries-commits"
+  pushd "$srcdir/runc"
+    git checkout -q "$RUNC_COMMIT"
+  popd
+  pushd "$srcdir/containerd"
+    git checkout -q "$CONTAINERD_COMMIT"
+  popd
+
+  # apply any patches for runc
+  pushd "$srcdir/runc"
+    # apply patch from the source array (should be a pacman feature)
+    local filename
+    for filename in "${source[@]}"; do
+      if [[ "$filename" =~ \.patch$ ]]; then
+        msg2 "Applying patch ${filename##*/}"
+        patch -p1 -N -i "$srcdir/${filename##*/}"
+      fi
+    done
+    :
+  popd
 }
 
 build() {
-  #cd "$_magic/docker"
-  #export GOPATH="$srcdir:$srcdir/$_magic/docker/vendor"
-  cd docker
-  export AUTO_GOPATH=1
-  ./hack/make.sh dynbinary
-  for i in man/*.md; do
-    go-md2man -in "$i" -out "${i%.md}"
-  done
+  # runc
+  ln -svf "$srcdir/runc" "$GOPATH/src/github.com/docker/"
+  pushd "$GOPATH/src/github.com/docker/runc"
+    make BUILDTAGS=""
+    man/md2man-all.sh 2>/dev/null
+  popd
+
+  # containerd
+  ln -svf "$srcdir/containerd" "$GOPATH/src/github.com/docker/"
+  pushd "$GOPATH/src/github.com/docker/containerd"
+    LDFLAGS= make
+  popd
+
+  # docker
+  pushd docker
+    export AUTO_GOPATH=1
+    ./hack/make.sh dynbinary
+    for i in man/*.md; do
+      go-md2man -in "$i" -out "${i%.md}"
+    done
+  popd
 }
 
-#check() {
-  #cd "$_magic/docker"
-  # Will be added upstream soon
-  #./hack/make.sh dyntest
-#}
+# TODO: complete tests for all
+# check() {
+#   cd runc
+#   make test
+# }
 
 package() {
-  #cd "$_magic/docker"
+  # runc binary and man pages
+  pushd "$GOPATH/src/github.com/docker/runc"
+    install -Dm755 runc "$pkgdir/usr/bin/runc"
+    install -dm755 "$pkgdir/usr/share/man"
+    mv man/man*/ "$pkgdir/usr/share/man"
+  popd
+
+  # containerd binaries
+  pushd "$GOPATH/src/github.com/docker/containerd/bin"
+    for file in $(find . -type f -print); do
+      install -Dm755 "$file" "$pkgdir/usr/bin/$file"
+    done
+  popd
+
   cd docker
   _dockerver="$(cat VERSION)"
   install -Dm755 "bundles/$_dockerver/dynbinary-client/docker-$_dockerver" "$pkgdir/usr/bin/docker"
