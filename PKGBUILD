@@ -2,9 +2,9 @@
 # GitHub: https://github.com/pschmitt/aur-flicd
 pkgname=flicd
 pkgver=0.4
-pkgrel=1
-pkgdesc=""
-arch=('any')
+pkgrel=2
+pkgdesc="Flic SDK for Linux"
+arch=('i386' 'x86_64' 'armv6l' 'armv7l')
 url="https://github.com/50ButtonsEach/fliclib-linux-hci"
 license=('unknown')
 source=("git+https://github.com/50ButtonsEach/fliclib-linux-hci#tag=0.4"
