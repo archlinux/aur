@@ -2,14 +2,14 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='frr'
-pkgver=2.0_rc1.5113.1b4ae82d
+pkgver=2.0_rc1.5171.e2ff97b9
 pkgrel=1
 pkgdesc='FreeRangeRouting (quagga fork) supports BGP4/OSPF/RIP/PIM-SM/MSDP and LDP as well as very early support for IS-IS.'
 arch=('any')
 url="https://github.com/freerangerouting/${pkgname}"
 license=('GPL2')
 depends=('libcap' 'libnl' 'readline' 'ncurses' 'perl' 'json-c' 'net-snmp')
-makedepends=('git' 'patch' 'gcc' 'grep' 'net-snmp' 'json-c')
+makedepends=('git' 'patch' 'gcc' 'grep' 'net-snmp' 'json-c' 'python-pytest')
 conflicts=("quagga" "quagga_cumulus")
 provides=("quagga" "quagga_cumulus")
 source=("${pkgname}::git+${url}"
@@ -44,7 +44,7 @@ prepare() {
     --enable-exampledir="/usr/share/doc/${pkgname}/examples" \
     --enable-ldpd \
     --disable-watchfrr \
-    --enable-snmp \
+    --enable-snmp="agentx" \
     --enable-tcp-zebra \
     --enable-multipath=256 \
     --enable-user="${pkgname}" \
@@ -66,6 +66,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
   make DESTDIR="${pkgdir}" install
+  install -Dm0644 "zebra/GNOME-PRODUCT-ZEBRA-MIB" "${pkgdir}/usr/share/snmp/mibs/GNOME-PRODUCT-ZEBRA-MIB"
 
   cd "redhat"
   sed -ri 's|/var/run/frr|/run/frr|g' "${pkgname}.logrotate"
