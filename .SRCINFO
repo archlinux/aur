@@ -1,6 +1,6 @@
 pkgbase = ndless-luna-git
 	pkgdesc = Pack Lua programs and XML problems as TNS files for use on the TI-Nspire calculator series
-	pkgver = 1.0.1.r6.ged91f13
+	pkgver = 2.0.r0.g2a253d5
 	pkgrel = 1
 	url = https://github.com/ndless-nspire/Luna
 	arch = i686

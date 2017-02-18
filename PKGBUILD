@@ -2,7 +2,7 @@
 
 _pkgname=ndless-luna
 pkgname=ndless-luna-git
-pkgver=1.0.1.r6.ged91f13
+pkgver=2.0.r0.g2a253d5
 pkgrel=1
 pkgdesc="Pack Lua programs and XML problems as TNS files for use on the TI-Nspire calculator series"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
