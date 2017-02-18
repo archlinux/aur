@@ -1,7 +1,7 @@
-# Maintainers:
+# Maintainer: Charlie Li <vishwin at vishwin point info>
+# Former Maintainers
 #	Claire Farron <diesal3@googlemail.com>
 #	Andes Ho <mxah002@live.rhul.ac.uk> (Secondary Package Tester)
-# Former Maintainer
 #	V3n3RiX <venerix@gmail.com> (Original Submitter)
 # Contributors of the linux PKGBUILD
 #	Tobias Powalowski <tpowa@archlinux.org>
@@ -76,7 +76,7 @@ _NUMAdisable=	# Disable NUMA in kernel config
 pkgname=(linux-lts-ck linux-lts-ck-headers)
 _kernelname=-lts-ck
 _srcname=linux-4.4
-pkgver=4.4.21
+pkgver=4.4.50
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -107,7 +107,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '278c4ea17ef539e81cb597f0e7e84750649d0f7fddcb27d99abfcb46da9db737'
+            'c5756a4b7290092d875967c310b684dbd91cb57438a25a3603bce6b1d0f19b36'
             'SKIP'
             '85a1a38ee265eaf2965ca49000a950061b0fadf69f01ddcd50a91a98f6d04b2d'
             'd4a2a40eb860f3a7cf692ff7196fedb20fac27b6839aaa788df468b26190aea7'
@@ -115,7 +115,7 @@ sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
             'a800a076e7f9ab07e8baee33919f8731087f876000f8ab6a327521a7a772838f'
-            'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
+            'c26b4b76ca3b3dc864e1470001b46f65e007252e984e9b3c6cc8e90a18b7317f'
             'd1cf14cc696b0f716454fe8eb9746383700889d5d22ad829611f0433cc77b4ce'
             'b17c3fb18c5b8c20a45a38198f293679ca6aef08d16f12cd816a5cfafac4b2c4'
             '69a21bc286a628128cfc4723558829cb6ff6c2d7c4dfd4468457898674187b25')
