@@ -1,7 +1,7 @@
 pkgbase = k3d
 	pkgdesc = A free 3D modelling and animation software
-	pkgver = 0.8.0.5
-	pkgrel = 4
+	pkgver = 0.8.0.6
+	pkgrel = 2
 	url = http://www.k-3d.org
 	arch = x86_64
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = k3d
 	makedepends = graphviz
 	makedepends = libxslt
 	depends = cgal
+	depends = collada-dom
 	depends = ftgl
 	depends = glew
 	depends = gnome-vfs
@@ -27,12 +28,10 @@ pkgbase = k3d
 	depends = ode
 	depends = openexr
 	optdepends = aqsis
-	source = git+https://github.com/K-3D/k3d.git#tag=k3d-0.8.0.5
-	source = cmake_paths_and_defs_fixes.patch
-	source = glew.patch
-	sha256sums = SKIP
-	sha256sums = fc8b7be14382b6b49fa908ff43773df5ec4e7b3401cc22629f6e2f6f7c4ee704
-	sha256sums = dbfb367e1a55b40e6e1c6a91f3d30d762e321128779e7fcf0557dbdf825b3b99
+	source = https://github.com/K-3D/k3d/archive/k3d-0.8.0.6.tar.gz
+	source = gtkmm_inclues.patch
+	sha256sums = c884667715c13543354d1e3e8edca9557a20d5ad3aa6bc35762394916655e817
+	sha256sums = 701865e74d57c93688a463d19df98afbe2f7b9030ce4201515abd7fdbd98da85
 
 pkgname = k3d
 

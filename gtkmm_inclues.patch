@@ -1,0 +1,13 @@
+diff -crB k3d-k3d-0.8.0.6-pristine/k3dsdk/ngui/utility.cpp k3d-k3d-0.8.0.6/k3dsdk/ngui/utility.cpp
+*** k3d-k3d-0.8.0.6-pristine/k3dsdk/ngui/utility.cpp	2016-09-18 23:40:35.000000000 +0200
+--- k3d-k3d-0.8.0.6/k3dsdk/ngui/utility.cpp	2017-02-19 14:11:38.981744005 +0100
+***************
+*** 27,32 ****
+--- 27,33 ----
+  
+  #include <gdkmm/pixbuf.h>
+  #include <gtkmm/main.h>
++ #include <glibmm/main.h>
+  
+  namespace k3d
+  {
