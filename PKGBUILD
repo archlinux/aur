@@ -3,7 +3,7 @@
 pkgname=aegir-hostmaster
 _pkgname=${pkgname#aegir-}
 pkgver=7.x_3.9
-pkgrel=2
+pkgrel=3
 pkgdesc="mass Drupal hosting system - frontend"
 arch=('any')
 url='http://aegirproject.org'
@@ -33,6 +33,7 @@ prepare() {
 
 package() {
   install -d $pkgdir/{var/lib,usr/share/webapps}/$_pkgname
+  install -d "$pkgdir/var/lib/$_pkgname/sites/all/modules/hosting_https/submodules/letsencrypt/drush/bin/letsencrypt/$_pkgname"
 
   cp -a drupal-7.53/* "$pkgdir/usr/share/webapps/$_pkgname"
   cp -a $_pkgname "$pkgdir/usr/share/webapps/$_pkgname/profiles/$_pkgname"
