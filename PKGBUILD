@@ -3,8 +3,8 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=micropython-git
-pkgver=1.8.7.108.g0390bc97e
-pkgrel=2
+pkgver=1.8.7.292.g3d739eb39
+pkgrel=1
 epoch=1
 pkgdesc="A Python 3 implementation for microcontrollers and constrained environments (Unix version)."
 arch=('i686' 'x86_64')
@@ -34,7 +34,7 @@ prepare() {
 build() {
   cd "${srcdir}/micropython/unix"
   make CWARN="-Wall -Werror -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=unused-const-variable" axtls
-  make CFLAGS_EXTRA="-Wa,--noexecstack"
+  make
 }
 
 package() {
