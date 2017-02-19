@@ -2,7 +2,7 @@
 # Contributor: xantares <xantares09 at hotmail dot com>
 
 pkgname=mingw-w64-libusb
-pkgver=1.0.20
+pkgver=1.0.21
 pkgrel=1
 pkgdesc="Library that provides generic access to USB devices (mingw-w64)"
 arch=(any)
@@ -14,7 +14,7 @@ conflicts=('mingw-w64-libusbx')
 replaces=('mingw-w64-libusbx')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("http://downloads.sourceforge.net/project/libusb/libusb-1.0/libusb-${pkgver}/libusb-${pkgver}.tar.bz2")
-sha256sums=('cb057190ba0a961768224e4dc6883104c6f945b2bf2ef90d7da39e7c1834f7ff')
+sha256sums=('7dce9cce9a81194b7065ee912bcd55eeffebab694ea403ffb91b67db66b1824b')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
