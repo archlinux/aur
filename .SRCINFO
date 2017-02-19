@@ -1,0 +1,23 @@
+pkgbase = npapi-vlc-gtk3
+	pkgdesc = The modern VLC Epiphany (NPAPI) plugin (GTK3 version)
+	pkgver = 2.2.5
+	pkgrel = 1
+	url = https://code.videolan.org/videolan/npapi-vlc
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = npapi-sdk
+	depends = gtk3
+	depends = vlc
+	provides = npapi-vlc
+	conflicts = npapi-vlc
+	source = git+https://code.videolan.org/videolan/npapi-vlc.git#tag=2.2.5
+	source = git+https://code.videolan.org/videolan/libvlcpp.git
+	source = gtk3-port.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 31278df3a741294806b04ba21cfa13b7
+
+pkgname = npapi-vlc-gtk3
+

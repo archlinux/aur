@@ -1,0 +1,49 @@
+diff -Naur npapi-vlc.orig/configure.ac npapi-vlc/configure.ac
+--- npapi-vlc.orig/configure.ac	2017-02-19 21:44:15.033366000 +0100
++++ npapi-vlc/configure.ac	2017-02-19 23:35:06.944545510 +0100
+@@ -266,7 +266,7 @@
+   ])
+   AS_IF([ test "x$with_gtk" != "xno" ],
+     [
+-       PKG_CHECK_MODULES(GTK, [gtk+-2.0], [gtk_found=yes])
++       PKG_CHECK_MODULES(GTK, [gtk+-3.0], [gtk_found=yes])
+     ])
+ ])
+ AS_IF([ test "x$gtk_found" = "xyes" ],
+diff -Naur npapi-vlc.orig/npapi/Makefile.am npapi-vlc/npapi/Makefile.am
+--- npapi-vlc.orig/npapi/Makefile.am	2017-02-19 21:44:15.033366000 +0100
++++ npapi-vlc/npapi/Makefile.am	2017-02-19 23:34:52.350909959 +0100
+@@ -11,7 +11,7 @@
+ 	npapi-sdk/npruntime.h \
+ 	npapi-sdk/nptypes.h
+ 
+-npvlcdir = $(libdir)/mozilla/plugins
++npvlcdir = $(libdir)/epiphany/plugins
+ 
+ AM_CPPFLAGS = $(LIBVLC_CFLAGS) -Inpapi-sdk $(MOZILLA_CFLAGS) -I$(top_srcdir)/vlcpp
+ 
+diff -Naur npapi-vlc.orig/npapi/vlcplugin_gtk.cpp npapi-vlc/npapi/vlcplugin_gtk.cpp
+--- npapi-vlc.orig/npapi/vlcplugin_gtk.cpp	2017-02-19 21:44:15.040033000 +0100
++++ npapi-vlc/npapi/vlcplugin_gtk.cpp	2017-02-19 23:35:05.074506668 +0100
+@@ -32,8 +32,8 @@
+ 
+ static uint32_t get_xid(GtkWidget *widget)
+ {
+-    GdkDrawable *video_drawable = gtk_widget_get_window(widget);
+-    return (uint32_t)gdk_x11_drawable_get_xid(video_drawable);
++    GdkWindow *video_drawable = gtk_widget_get_window(widget);
++    return (uint32_t)gdk_x11_window_get_xid(video_drawable);
+ }
+ 
+ VlcPluginGtk::VlcPluginGtk(NPP instance, NPuint16_t mode) :
+diff -Naur npapi-vlc.orig/npapi/vlcplugin_gtk.h npapi-vlc/npapi/vlcplugin_gtk.h
+--- npapi-vlc.orig/npapi/vlcplugin_gtk.h	2017-02-19 21:44:15.040033000 +0100
++++ npapi-vlc/npapi/vlcplugin_gtk.h	2017-02-19 23:35:03.274469313 +0100
+@@ -27,6 +27,7 @@
+ #include "vlcplugin_base.h"
+ 
+ #include <gtk/gtk.h>
++#include <gtk/gtkx.h>
+ #include <mutex>
+ #include <X11/Xlib.h>
+ 
