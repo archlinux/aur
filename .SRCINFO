@@ -1,7 +1,7 @@
 pkgbase = catalyst-firepro
 	pkgdesc = AMD/ATI drivers for FirePro/GL/MV brand cards. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport.
 	pkgver = 15.302.2301
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.amd.com
 	install = catalyst-firepro.install
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = catalyst-firepro
 	license = custom
 	depends = dkms
 	depends = linux>=3.0
-	depends = linux<4.10
+	depends = linux<4.11
 	depends = linux-headers
 	depends = xorg-server>=1.7.0
 	depends = xorg-server<1.18.0
@@ -23,7 +23,7 @@ pkgbase = catalyst-firepro
 	depends = make
 	depends = patch
 	depends = libxinerama
-	depends = mesa>=10.1.0-4
+	depends = mesa
 	optdepends = qt4: to run ATi Catalyst Control Center (amdcccle)
 	optdepends = libxxf86vm: to run ATi Catalyst Control Center (amdcccle)
 	optdepends = opencl-headers: headers necessary for OpenCL development
@@ -42,6 +42,8 @@ pkgbase = catalyst-firepro
 	provides = mesa-libgl
 	provides = mesa-libgl-git
 	provides = opencl-driver
+	provides = libgles
+	provides = libegl
 	conflicts = libgl
 	conflicts = catalyst
 	conflicts = catalyst-daemon
@@ -51,6 +53,9 @@ pkgbase = catalyst-firepro
 	conflicts = catalyst-dkms
 	conflicts = mesa-libgl
 	conflicts = mesa-libgl-git
+	conflicts = libgles
+	conflicts = libegl
+	conflicts = opencl-amd
 	options = staticlibs
 	options = libtool
 	options = !strip
@@ -82,6 +87,7 @@ pkgbase = catalyst-firepro
 	source = makesh-dont-check-gcc-version.patch
 	source = 4.7-arch-cpu_has_pge-v2.patch
 	source = 4.9_over_4.6-arch-get_user_pages_remote.patch
+	source = 4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch
 	md5sums = 211a7e52d032bc60806012a13407ba87
 	md5sums = af7fb8ee4fc96fd54c5b483e33dc71c4
 	md5sums = bdafe749e046bfddee2d1c5e90eabd83
@@ -109,6 +115,7 @@ pkgbase = catalyst-firepro
 	md5sums = 10829e3b992b3e80a6e78c8e27748703
 	md5sums = 37eef5103a11d8136979463e7bc31091
 	md5sums = 194cb44e9e2ab0e65b6267aca66d0400
+	md5sums = 05f6364db877d9c4bdf1592deda905b7
 
 pkgname = catalyst-firepro
 
