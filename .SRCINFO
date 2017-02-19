@@ -1,0 +1,20 @@
+pkgbase = qdmenu
+	pkgdesc = A QML launcher similar to dmenu
+	pkgver = v1.0.10.g6211799
+	pkgrel = 1
+	url = https://github.com/bayi/qdmenu
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-svg
+	provides = qdmenu
+	conflicts = qdmenu
+	source = qdmenu::git+https://github.com/bayi/qdmenu.git
+	md5sums = SKIP
+
+pkgname = qdmenu
+
