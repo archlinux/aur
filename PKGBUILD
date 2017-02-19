@@ -1,7 +1,7 @@
 # Maintainer: ngld <ngld@tproxy.de>
 _name=knossos
 pkgname=fs2-knossos
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="A simple mod manager for FreeSpace 2 Open"
 arch=('any')
@@ -15,7 +15,7 @@ source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
     knossos
     knossos.desktop)
-md5sums=('c82c485cbef1586da3636a2b47e87881'
+md5sums=('505158ddce172e13791b7ed140efbd67'
          '541dfc75f3aecbe08b843eeec252e4b4'
          'afd34e2bf9b8f74c1fc5785662e1f04a')
 
