@@ -1,0 +1,18 @@
+pkgbase = pam-gnupg-git
+	pkgdesc = Unlock GnuPG keys on login
+	pkgver = r15.17f0305
+	pkgrel = 1
+	url = https://github.com/cruegge/pam-gnupg
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = pam
+	depends = gnupg
+	provides = pam-gnupg
+	conflicts = pam-gnupg
+	source = git+https://github.com/cruegge/pam-gnupg.git
+	md5sums = SKIP
+
+pkgname = pam-gnupg-git
+
