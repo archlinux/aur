@@ -11,7 +11,7 @@ license=('GPL')
 depends=("gajim" "python2-cryptography")
 provides=('gajim-plugin-httpupload')
 source=("${_pkgname}-${pkgver}.zip::https://ftp.gajim.org/plugins_0.16_zip/${_pkgname}.zip")
-sha256sums=('d857fed0246e7aa12068a0234463f67cd25bd80d14b6f2abeac0f6f708ccb25e')
+sha256sums=('f0550f1dececb1e79211ea07ee378b97ce1cd8848514d900b2468dbfca2a42bf')
 
 package() {
   cd ${srcdir}/${_pkgname}
