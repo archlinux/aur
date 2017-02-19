@@ -1,7 +1,7 @@
 # Maintainer: Timo Sarawinski <t.sarawinski@gmail.com>
 
 pkgbase=linux-baytrail48 
-_srcname=linux-4.8.8-baytrail
+_srcname=linux-baytrail48
 _gitver=c5fa6f195258fb15fc2491800b74cdff60aa151a
 pkgver=4.8.17
 pkgrel=1
