@@ -12,7 +12,7 @@ makedepends=('make' 'git')
 optdepends=()
 provides=('drcom-cauc')
 conflicts=()
-# install=drcom.install
+install=drcom.install
 source=("$pkgname"::'git+https://github.com/carlsplace/drcom-cauc.git#branch=master')
 noextract=()
 md5sums=('SKIP')

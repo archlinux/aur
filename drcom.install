@@ -1,0 +1,9 @@
+post_install() {
+    echo "填写用户名密码，请修改/opt/drcom/cauc.py"
+    echo "详细使用方法参见https://github.com/carlsplace/drcom-cauc"
+}
+
+post_upgrade() {
+    echo "填写用户名密码，请修改/opt/drcom/cauc.py"
+    echo "详细使用方法参见https://github.com/carlsplace/drcom-cauc"
+}
