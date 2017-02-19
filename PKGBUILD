@@ -3,31 +3,34 @@
 # Contributor: antzek9 <antze.k9 at googlemail dot com>
 
 set -u
-_pkgbase='littler'
-pkgname="${_pkgbase}-git"
-pkgver=0.2.3.r10.g9b56ee2
+_pkgname='littler'
+pkgname="${_pkgname}-git"
+pkgver=0.3.2.r1.g8975a6a
 pkgrel=1
-pkgdesc='A hash-bang and simple command line pipe front end for GNU R'
+pkgdesc='a hash-bang and simple command line pipe front end for GNU R'
 arch=('i686' 'x86_64')
 #url="http://code.google.com/p/littler"
 url='http://dirk.eddelbuettel.com/code/littler.html'
 license=('GPL')
 #groups=('science')
 makedepends=('make' 'r' 'sh')
-source=("http://dirk.eddelbuettel.com/code/littler/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('a67abbac4c67b4d8c7dc493f21638da9f7f7ca813811cc36c8c8478b75088655')
+#_giturl="https://github.com/eddelbuettel/${_pkgname}"
+#source=("${_pkgname}-${pkgver}.tar.gz::${_giturl}/archive/${pkgver}.tar.gz")
+source=("http://dirk.eddelbuettel.com/code/littler/${pkgname}_${pkgver}.tar.gz")
+#source=("http://http.debian.net/debian/pool/main/l/littler/littler_0.2.3.orig.tar.gz")
+sha256sums=('32e13e9cd0bab43a330e8b48180e0a7c2e3c337dc6ddb118cbaf0b247da7dc2a')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
-  _srcdir="${_pkgbase}"
+  _srcdir="${_pkgname}"
   makedepends+=('git')
   _vcsprovides=("${pkgname%-git}=${pkgver%%.r*}")
   _vcsconflicts=("${pkgname%-git}")
-  url="https://github.com/eddelbuettel/${_pkgbase}"
+  url="https://github.com/eddelbuettel/${_pkgname}"
   _verwatch=("${url}/releases" "${url#*github.com}/archive/\(.*\)\.tar\.gz" 'l')
   source=("${_srcdir}::${url//https:/git:}.git")
   :;sha256sums=('SKIP')
-  provides=("${_pkgbase}=${pkgver%%.r*}")
-  conflicts=("${_pkgbase}")
+  provides=("${_pkgname}=${pkgver%%.r*}")
+  conflicts=("${_pkgname}")
 pkgver() {
   set -u
   cd "${_srcdir}"
@@ -35,16 +38,17 @@ pkgver() {
   set +u
 }
 else
-  _srcdir="${pkgname}-${pkgver}"
-  _verwatch=("${url%.html}/" "${pkgname}-\(.*\)\.tar\.gz" 'l')
+  _srcdir="${pkgname}"
+  _verwatch=("${url%.html}/" "${pkgname}[-_]\(.*\)\.tar\.gz" 'l')
 fi
 
 prepare() {
+#false
   set -u
   cd "${_srcdir}"
   # The non git release forgot to run bootstrap so we must run bootstrap.
   # bootstrap requires the git info which doesn't come with the release version.
-  if [ "${pkgver}" = '0.2.3' ]; then
+  if [ "${pkgver}" = '0.2.3' ] && [ ! -s 'gitversion.h' ]; then
     sed -i -e 's:^\(\s\+gitrevision\)=.*$:\1="d0313e5":g' \
            -e 's,^\(\s\+gitdate\)=.*$,\1="Sat Mar 14 08:07:19 2015 -0500",g' \
       'bootstrap'
@@ -60,7 +64,7 @@ prepare() {
 build() {
   set -u
   cd "${_srcdir}"
-  make # -s -j "$(nproc)"
+  make -j1 -C 'src' -f 'Makevars'
   set +u
 }
 
@@ -68,7 +72,9 @@ package() {
   set -u
   depends=('r' 'sh')
   cd "${_srcdir}"
-  make DESTDIR="${pkgdir}" install
+  #make DESTDIR="${pkgdir}" install
+  install -Dpm755 'inst/bin/r' -t "${pkgdir}/usr/bin/"
+  install -Dpm644 'inst/man-page/r.1' -t "${pkgdir}/usr/share/man/man1/"
   set +u
 }
 set +u
