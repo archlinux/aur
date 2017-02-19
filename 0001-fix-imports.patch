@@ -1,0 +1,25 @@
+From d8ecd156a206dd10f6d0458eb2cf33cca2bfafc1 Mon Sep 17 00:00:00 2001
+From: Carl George <carl.george@rackspace.com>
+Date: Sun, 19 Feb 2017 05:44:34 -0600
+Subject: [PATCH] fix imports
+
+---
+ sickbeard/rssfeeds.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sickbeard/rssfeeds.py b/sickbeard/rssfeeds.py
+index a10ffee9..04226f12 100644
+--- a/sickbeard/rssfeeds.py
++++ b/sickbeard/rssfeeds.py
+@@ -3,7 +3,7 @@
+ # This file is part of SickGear.
+ #
+ 
+-from feedparser import feedparser
++import feedparser
+ 
+ from sickbeard import helpers, logger
+ from sickbeard.exceptions import ex
+-- 
+2.11.1
+
