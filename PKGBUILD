@@ -1,4 +1,5 @@
-# Maintainer: Dan Ziemba <zman0900@gmail.com>
+# Maintainer: Andrei Gherzan <andrei@gherzan.com>
+# Contributor: Dan Ziemba <zman0900@gmail.com>
 # Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: Christoph Vigano <mail at cvigano dot de>
@@ -8,7 +9,7 @@
 
 _pkgbasename=gnutls
 pkgname=${_pkgbasename}28
-pkgver=3.3.24
+pkgver=3.5.9
 pkgrel=1
 pkgdesc="A library which provides a secure layer over a reliable transport layer (legacy version)"
 arch=('i686' 'x86_64')
@@ -19,20 +20,20 @@ makedepends=('net-tools')
 provides=('libgnutls28')
 conflicts=('libgnutls28')
 # Upstream
-_mirror="ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3"
+_mirror="ftp://ftp.gnutls.org/gcrypt/gnutls/v3.5"
 # Mirror: Sweden
-#_mirror="https://mirror.se.partyvan.eu/pub/ftp.gnupg.org/gcrypt/gnutls/v3.3"
+#_mirror="https://mirror.se.partyvan.eu/pub/ftp.gnupg.org/gcrypt/gnutls/v3.5"
 # Mirror: Denmark
-#_mirror="http://mirrors.dotsrc.org/gcrypt/gnutls/v3.3"
+#_mirror="http://mirrors.dotsrc.org/gcrypt/gnutls/v3.5"
 # Mirror: Hungary
-#_mirror="ftp://ftp.crysys.hu/pub/gnupg/gnutls/v3.3"
+#_mirror="ftp://ftp.crysys.hu/pub/gnupg/gnutls/v3.5"
 _downloadUrl="${_mirror}/${_pkgbasename}-${pkgver}.tar.xz"
 source=(
     "${_downloadUrl}"
     "${_downloadUrl}.sig"
 )
 sha256sums=(
-    '5b65fe2a91c8dfa32bedc78acffcb152e5426cd3349e2afc43cccc9bdaf18aa5'
+    '82b10f0c4ef18f4e64ad8cef5dbaf14be732f5095a41cf366b4ecb4050382951'
     'SKIP'
 )
 validpgpkeys=(1F42418905D8206AA754CCDC29EE58B996865171)
