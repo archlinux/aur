@@ -1,22 +1,16 @@
 # Maintainer: Brandon Milton <brandon.milton21@gmail.com>
 pkgname=download-sweeper
-pkgver=1.0
-pkgrel=6
+pkgver=1.1
+pkgrel=0
 pkgdesc="A stale file archive and removal tool"
 arch=('any')
 url="https://github.com/brandonio21/download-sweeper"
 license=('GPL')
-depends=('python>=3' 'systemd' 'python-virtualenv')
-makedepends=('python-pip')
+depends=('python>=3' 'python-yaml')
 source=("https://github.com/brandonio21/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('e54f13dc3d220295b1cd6ff17834dcfc')
-
-build() {
-	cd "$pkgname-$pkgver"
-	make
-}
+sha256sums=('87b93555a6f6b2bdf62c611c9336466bb3da134f8d95f9fb60048121d52fa4dc')
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" install
+  install download_sweeper.py usr/bin/
 }
