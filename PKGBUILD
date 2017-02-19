@@ -1,128 +1,120 @@
 # Maintainer: Vi0L0 <vi0l093@gmail.com>
-#                (maintainer of main "catalyst" package(s), which this is
-#                 largely based upon)
-# Old maintainer: Maxqia <contrib@maxqia.com>
-# Old maintainer: Gerad Munsch <gmunsch@unforgivendevelopment.com>
-# Old maintainer: Jameson Pugh <imntreal@gmail.com>
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
-# Contributor: wonder, Eduardo "kensai" Romero
-# Contributor: aidanlinz, Rip-Rip, OvsInc, Sebastian Siebert
-# Other contributors: Any contributors mentioned in the main "catalyst" package
-#                     as provided by Vi0L0 at http://goo.gl/fAKzx)
+# Contributor: aidanlinz
+# Contributor: cyberpatrol
+# Contributor: Rip-Rip
+# Contributor: nob
+# Contributor: lano1106 (patch to fix support of intel's iommu and to remove dependency of kernel's CONFIG_AGP option)
+# Contributor: lano1106 (patch to remove dependency of kernel's CONFIG_AGP option)
+# Contributor: lano1106 (patch to improve jacob's patch)
+# Contributor: zoopp
+# Contributor: kolasa (part of 4.3 kernel patches)
+# Contributor: gentoo (part of 4.3 kernel patches)
+# Contributor: Philip Muller @ Manjaro (4.4 kernel patch)
+# Contributor: runnytu
+# Contributor: sling00 (4.10 kernel patch)
 
-# grab kernel version
-_kernver=`uname -r`
 
 pkgname=catalyst-dkms
 pkgver=15.9
-pkgrel=3
+pkgrel=15
 _amdver=15.201.1151
-pkgdesc="AMD Catalyst (proprietary GPU driver) kernel driver (DKMS version) [NOTE: Radeon HD 5xxx+ ONLY]"
+pkgdesc="AMD/ATI drivers AKA Crimson. Sources to build fglrx module on DKMS."
 arch=('i686' 'x86_64')
-url="http://support.amd.com/en-us/download/desktop?os=Linux+x86"
+url="http://www.amd.com"
 license=('custom')
-options=('staticlibs' 'libtool' '!upx' '!strip')
-depends=('dkms')
-makedepends=('gcc-libs' 'gcc>4.0.0')
-optdepends=('linux-headers<4.8: build the module against Arch kernel (requires at least one set of kernel headers)'
-            'linux-lts-headers<4.8: build the module against LTS Arch kernel (requires at least one set of kernel headers)')
-
-# try to ensure that this package cannot be installed concurrently with any of
-# the other 'catalyst'-series packages
-conflicts=('catalyst'
-           'catalyst-daemon'
-           'catalyst-hook'
-           'catalyst-test'
-           'catalyst-total'
-           'catalyst-total-pxp')
+options=('staticlibs' 'libtool' '!strip' '!upx')
+depends=('dkms' 'catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux>=3.0' 'linux<4.11' 'linux-headers')
+optdepends=('linux-lts-headers: to build the fglrx module for the linux-lts kernel')
+conflicts=('catalyst-test' 'catalyst-hook' 'catalyst-daemon' 'catalyst' 'catalyst-generator')
 provides=("catalyst=${pkgver}")
+
+url_ref="http://support.amd.com/en-us/download/desktop?os=Linux+x86"
+DLAGENTS="http::/usr/bin/curl --referer ${url_ref} -o %o %u"
 
 source=(
     http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver}-linux-installer-${_amdver}-x86.x86_64.zip
-    dkms.conf
     makefile_compat.patch
     lano1106_fglrx_intel_iommu.patch
     lano1106_kcl_agp_13_4.patch
     fglrx_gpl_symbol.patch
+    4.2-amd-from_crimson_15.11.patch
     4.3-kolasa-seq_printf.patch
     4.3-gentoo-mtrr.patch
-    4.2-amd-from_crimson_15.11.patch
     crimson_i686_xg.patch
     4.4-manjaro-xstate.patch
     grsec_arch.patch
     4.6-arch-get_user_pages-page_cache_release.patch
-    4.7-arch-cpu_has_pge-v2.patch)
+    dkms.conf
+    makesh-dont-check-gcc-version.patch
+    4.7-arch-cpu_has_pge-v2.patch
+    4.9_over_4.6-arch-get_user_pages_remote.patch
+    4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch)
 
-sha384sums=('a5de57abfe23dd4210e220ee1f7b2b5dc2862272632b8fccfbcbf1f30285de580546910015a4918e8d80866ad8757bd4'
-            '754eee837fdb46bfbb5e19c632961cf0de59f908998ad486a987829ab72d663c66e810e19ef454bf3cfa0a9cf441c19c'
-            'b131483a05e5d610f8cf4a1c769f9afc73e38e21388f7d3bb26b4b2b78796c6f2b62419e2e7c8878534fd5ebf4c53f3f'
-            'f3b754f5d2edb5f0950ce49dcdcf19b1d7db6618c267623d7c4b7c365f14de8726dbd780e00599cd656d431af4f7fc78'
-            '0dbd2f121237e4246434770e5f53a249a2e1a05ee5dd43e3757e0d3192eb0f89a9c3ed097f67962f5e0a6bb96554710c'
-            '8d9406874bc67dc282d0e4e61f3bcdc9c43623940f4955a62e8f82917fc50277e776d2eaa4af9bebe1666b071989e7d9'
-            '5dd9b4ee33f1a4aa1cc9bb04a9d8c27f0d61dd2c50040d68a161605a3fd7d31348910917e3dc67509b4bd1873ed3e309'
-            '462dd1a6acde15f2f0ab4b04de793efaabc6741eedee31372c12e7511cac142353336eeec27697f8a648b474f57c86bd'
-            'f8b6c8fb36611755dcbe8cd8aa5b628eb536bc6900a34f88d06fbb988370a1bec48e63e95f94a7c7ed9fdd54fcd7c711'
-            '6d344cf6aefacb5737376f50dbdfc438a299089532052f8acee6878282261f329ffab72d897d11e9e6eefc5d3fd03067'
-            'f33b4c27a45de8e5bf3c0c6cd88b8a1daafe75639e969c0137039bf4a017104b9259692e1436374ddf3524a344c228b8'
-            '7f747586a8a87388f6a969846363956c159eaa583a054b59cfa55b8ff73c33c7751c1b6e30aeff3a056ce150d0593ea2'
-            'b78d8192012778fe8afe6af65c19c1cf8ee2eae161bd4302b04589fb2c532edf151461eff228abea99d6ff59676509ed'
-            '44257760262a3edcc806c5b57bf237d8ae78cf77ccf0d054ec1c06d97e7381c7f8c8a3d495de5ad46f75b85e7444f9cf')
+md5sums=('d2de2df6946b452c266a3c892e6e46ff'
+	 '3e1b82bd69774ea808da69c983d6a43b'
+	 '5184b94a2a40216a67996999481dd9ee'
+	 'c5156eddf81c8a1719b160d05a2e8d67'
+	 'ef97fc080ce7e5a275fe0c372bc2a418'
+	 'fd2851026228ca72124972d1ea0335ea'
+	 '0e0666e95d1d590a7a83192805679485'
+	 '98828e3eeaec2b3795e584883cc1b746'
+	 '6cdbaf5f71d867d225721a0369413616'
+	 'd9bea135ae3e1b3ca87c5bbe6dcf8e72'
+	 '8941e91fc58cb44ce21ab9bda135754e'
+	 '11b7c2e0dc4794801005d66b0e7608a3'
+	 '23d569abfdd7de433d76e003e4b3ccf9'
+	 '10829e3b992b3e80a6e78c8e27748703'
+	 '37eef5103a11d8136979463e7bc31091'
+	 '194cb44e9e2ab0e65b6267aca66d0400'
+	 '05f6364db877d9c4bdf1592deda905b7')
 
 
-# AMD changed the way we need to download our package, we now have to pass a referer.
-url_ref="http://support.amd.com/en-us/download/desktop?os=Linux+x86"
-DLAGENTS="http::/usr/bin/curl --referer ${url_ref} -o %o %u"
+build() {
+     /bin/sh ./AMD-Catalyst-${pkgver}-Linux-installer-${_amdver}-x86.x86_64.run --extract archive_files
+}
 
 package() {
-  depends=(${depends[@]} "catalyst-utils=${pkgver}")
+    # License
+      install -m755 -d ${pkgdir}/usr/share/licenses/${pkgname}
+      install -m644 ${srcdir}/archive_files/LICENSE.TXT ${pkgdir}/usr/share/licenses/${pkgname}
 
-  cd ${srcdir}
+      cd ${srcdir}/archive_files
 
-  # determine architecture
-  if [ "${CARCH}" = "x86_64" ]; then
-    _archdir=x86_64
-  else
-    _archdir=x86
-  fi
+    # Patching
+      patch -Np1 -i ../makefile_compat.patch
+      patch -Np1 -i ../lano1106_fglrx_intel_iommu.patch
+      patch -Np1 -i ../lano1106_kcl_agp_13_4.patch
+      patch -Np1 -i ../4.2-amd-from_crimson_15.11.patch
+      patch -Np1 -i ../4.3-kolasa-seq_printf.patch
+      patch -Np1 -i ../4.3-gentoo-mtrr.patch
+      patch -Np1 -i ../fglrx_gpl_symbol.patch
+      test "${CARCH}" = "i686" && patch -Np1 -i ../crimson_i686_xg.patch
+      patch -Np1 -i ../4.4-manjaro-xstate.patch
+      patch -Np1 -i ../grsec_arch.patch
+      patch -Np1 -i ../4.6-arch-get_user_pages-page_cache_release.patch
+      patch -Np1 -i ../makesh-dont-check-gcc-version.patch
+      patch -Np1 -i ../4.7-arch-cpu_has_pge-v2.patch
+      patch -Np1 -i ../4.9_over_4.6-arch-get_user_pages_remote.patch
+      patch -Np1 -i ../4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch
 
-  # extract files from installer
-  /bin/sh ./AMD-Catalyst-${pkgver}-Linux-installer-${_amdver}-x86.x86_64.run --extract archive_files
-  cd archive_files
+    # Prepare modules source files
+      install -dm755 ${pkgdir}/usr/src/fglrx-${pkgver}/2.6.x
+      _archdir=x86_64
+      test "${CARCH}" = "i686" && _archdir=x86
+      install -m755 -d ${pkgdir}/usr/src/fglrx-${pkgver}
+      install -m644 common/lib/modules/fglrx/build_mod/*.c \
+                ${pkgdir}/usr/src/fglrx-${pkgver}
+      install -m644 common/lib/modules/fglrx/build_mod/*.h \
+                ${pkgdir}/usr/src/fglrx-${pkgver}
+      install -m644 common/lib/modules/fglrx/build_mod/2.6.x/Makefile \
+                ${pkgdir}/usr/src/fglrx-${pkgver}/2.6.x
+      install -m644 common/lib/modules/fglrx/build_mod/make.sh \
+                ${pkgdir}/usr/src/fglrx-${pkgver}
+      install -m644 arch/${_archdir}/lib/modules/fglrx/build_mod/libfglrx_ip.a \
+                ${pkgdir}/usr/src/fglrx-${pkgver}
 
-  # patch sources
-  patch -Np1 -i ../makefile_compat.patch
-  patch -Np1 -i ../lano1106_fglrx_intel_iommu.patch
-  patch -Np1 -i ../lano1106_kcl_agp_13_4.patch
-  patch -Np1 -i ../4.2-amd-from_crimson_15.11.patch
-  patch -Np1 -i ../4.3-kolasa-seq_printf.patch
-  patch -Np1 -i ../4.3-gentoo-mtrr.patch
-  patch -Np1 -i ../fglrx_gpl_symbol.patch
-  test "${CARCH}" = "i686" && patch -Np1 -i ../crimson_i686_xg.patch
-  patch -Np1 -i ../4.4-manjaro-xstate.patch
-  patch -Np1 -i ../grsec_arch.patch
-  patch -Np1 -i ../4.6-arch-get_user_pages-page_cache_release.patch
-  patch -Np1 -i ../4.7-arch-cpu_has_pge-v2.patch
-
-  cd ${srcdir}/archive_files/common/lib/modules/fglrx/build_mod
-  cp ${srcdir}/archive_files/arch/${_archdir}/lib/modules/fglrx/build_mod/libfglrx_ip.a .
-  cp 2.6.x/Makefile .
-  cd ${srcdir}/archive_files
-
-  # install some directories
-  install -dm755 "${pkgdir}/usr/lib/modprobe.d"
-  install -dm755 "${pkgdir}/usr/src/fglrx-${pkgver}"
-
-  # copy sources
-  cp -r common/lib/modules/fglrx/build_mod/* "${pkgdir}/usr/src/fglrx-${pkgver}/"
-  cp "arch/${_archdir}/lib/modules/fglrx/build_mod/libfglrx_ip.a" "${pkgdir}/usr/src/fglrx-${pkgver}/"
-
-  # copy dkms.conf and set version
-  cp ${srcdir}/dkms.conf "${pkgdir}/usr/src/fglrx-${pkgver}/"
-  sed -i -e "s/@VERSION@/${pkgver}/" "${pkgdir}/usr/src/fglrx-${pkgver}/dkms.conf"
-
-  # blacklist open-source radeon module from loading
-  echo "blacklist radeon" >> "${pkgdir}/usr/lib/modprobe.d/catalyst.conf"
-
-  # install license
-  install -Dm644 "common/usr/share/doc/fglrx/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.TXT"
+    # copy dkms.conf and set version
+    cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/fglrx-${pkgver}/
+    sed -i -e "s/@VERSION@/${pkgver}/" "${pkgdir}/usr/src/fglrx-${pkgver}/dkms.conf"
 }

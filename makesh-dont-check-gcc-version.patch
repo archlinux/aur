@@ -1,0 +1,11 @@
+--- 16.5/common/lib/modules/fglrx/build_mod/make.sh	2015-12-18 19:47:41.000000000 +0100
++++ 16.5b/common/lib/modules/fglrx/build_mod/make.sh	2016-05-11 22:04:56.681353509 +0200
+@@ -57,7 +57,7 @@
+ 
+ if [ -z "${CC}" ]; then 
+ 	CC=gcc
+-	set_GCC_version
++# 	set_GCC_version
+ fi
+ 
+ # ==============================================================
