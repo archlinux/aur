@@ -1,6 +1,6 @@
 # Maintainer: Ali Ukani <ali.ukani@gmail.com>
 pkgname=voltra
-pkgver=2.0.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Voltra music player'
 arch=('x86_64')
@@ -10,10 +10,10 @@ depends=('desktop-file-utils')
 install=${pkgname}.install
 provides=('voltra')
 source=(
-  'https://s3.amazonaws.com/download.voltra.co/voltra64.tar.gz'
+  'https://s3.amazonaws.com/download.voltra.co/Voltra.tar.gz'
   'voltra.desktop'
 )
-md5sums=('5ec489e08e730eabe004a34a89a35c90'
+md5sums=('a639c1c28b3f2d4568acf84c4ad7b7e8'
          '6e717f224da771bea3670d2658843946')
 
 
@@ -28,6 +28,9 @@ package() {
   install -dm755 "${pkgdir}"/usr/bin
   ln -s /opt/voltra.co/voltra/voltra "${pkgdir}"/usr/bin/voltra
   install -Dm644 "${srcdir}"/resources/app/static/icon.png "${pkgdir}"/usr/share/pixmaps/voltra.png
+
+  install -dm755 "${pkgdir}"/usr/share
+  ln -s /opt/voltra.co/voltra "${pkgdir}"/usr/share/voltra
 
   cd ..
   install -Dm644 voltra.desktop "${pkgdir}"/usr/share/applications/voltra.desktop
