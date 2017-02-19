@@ -1,0 +1,19 @@
+pkgbase = ignition-tools
+	pkgdesc = Ignition entry point for using all the suite of ignition tools.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = http://ignitionrobotics.org/
+	arch = i686
+	arch = x86_64
+	groups = development
+	license = Apache
+	makedepends = cmake
+	makedepends = ruby-ronn
+	makedepends = ruby
+	provides = ignition-tools
+	replaces = ignition-tools
+	source = https://bitbucket.org/ignitionrobotics/ign-tools/get/tip.tar.bz2
+	sha256sums = SKIP
+
+pkgname = ignition-tools
+
