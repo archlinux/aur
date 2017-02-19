@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=vis-git
-pkgver=0.2.r774.g6ef95bc
+pkgver=0.2.r781.gc22d020
 pkgrel=1
 pkgdesc='modern, legacy free, simple yet efficient vim-like editor - git checkout'
 arch=('i686' 'x86_64')
@@ -54,7 +54,7 @@ build() {
 check() {
 	cd vis/
 
-	LANG='en_US.UTF-8' make -C test/
+	make -C test/
 }
 
 package() {
