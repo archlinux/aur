@@ -1,4 +1,4 @@
-# Maintainer: Moritz Lipp <mail@mlq.me>
+# Maintainer: Elimpfor <aur@s403.33mail.com>
 pkgname=opmsg-git
 pkgver=r131.ce12dc8
 pkgrel=1
