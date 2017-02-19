@@ -7,6 +7,7 @@ MimeType=inode/directory;application/octet-stream;
 Actions=setArg1;diff;_SEPARATOR_;selected;
 X-KDE-Priority=TopLevel
 X-KDE-Submenu=Kompare menu
+X-KDE-Submenu[pl]=Kompare
 X-KDE-Submenu[de]=Kompare Menü
 X-KDE-Submenu[es]=Kompare menú
 
@@ -14,6 +15,7 @@ X-KDE-Submenu[es]=Kompare menú
 Icon=kompare
 Exec=echo "%U" > /tmp/kompare-menu-arg1
 Name=Set file/folder
+Name[pl]=Wybierz pierwszy plik/folder do porównania
 Name[de]=Setze Datei/Ordner
 Name[es]=Marcar archivo/carpeta
 
@@ -21,6 +23,7 @@ Name[es]=Marcar archivo/carpeta
 Icon=kompare
 Exec=ARG1=$(cat /tmp/kompare-menu-arg1);kompare "$ARG1" %U;
 Name=Compare with file/folder
+Name[pl]=Wybierz drugi plik/folder i porównaj
 Name[de]=Vergleiche mit Datei/Ordner
 Name[es]=Comparar con el archivo/carpeta marcado
 
@@ -28,5 +31,6 @@ Name[es]=Comparar con el archivo/carpeta marcado
 Icon=kompare
 Exec=kompare %U;
 Name=Compare selected files/folder
+Name[pl]=Porównaj zaznaczone pliki/foldery
 Name[de]=Vergleiche ausgewählte Dateien/Ordner
 Name[es]=Comparar los archivos/carpetas seleccionadas 

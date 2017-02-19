@@ -1,17 +1,17 @@
-# Maintainer: Narthana Epa <narthana.epa+aur@gmail.com>
+# Maintainer: FadeMind <fademind@gmail.com>
+# Contributor: Narthana Epa <narthana.epa+aur@gmail.com>
 
 pkgname=kde-servicemenus-komparemenu
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A KDE service menu for comparing selected files/folders with kompare"
-url='http://example.com'
+url='https://www.kde.org/applications/development/kompare/'
 arch=('any')
 license=('GPL')
-depends=('kdebase-dolphin' 'kompare')
+depends=('dolphin' 'kompare')
 source=(komparemenu.desktop)
-md5sums=('a45e7bed1c479d8e28c1c91e1b0affae')
+sha256sums=('58f97ff0ad14028fb285ac1eb53367cef156afed202046cce9724385b62f359a')
 
 package() {
-	install -d ${pkgdir}/usr/share/kde4/services/ServiceMenus
-	install ${srcdir}/komparemenu.desktop -t ${pkgdir}/usr/share/kde4/services/ServiceMenus
+    install -Dm644 -t "${pkgdir}/usr/share/kservices5/ServiceMenus/"    ${srcdir}/komparemenu.desktop
 }
