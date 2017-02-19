@@ -2,7 +2,7 @@
 # Contributor: Auguste Pop <auguste [at] gmail [dot] com>
 
 pkgname=xboard-git
-pkgver=4.9.1.r7.gd887d64f
+pkgver=4.9.1.r8.g7fa90c36
 pkgrel=1
 pkgdesc="Graphical user interfaces for chess"
 arch=('i686' 'x86_64')
@@ -10,7 +10,8 @@ url="http://www.gnu.org/software/xboard/"
 license=('GPL3')
 depends=('gnuchess' 'gtk2')
 makedepends=('git')
-conflicts=("xboard")
+conflicts=('xboard')
+provides=('xboard')
 #backup=("etc/xboard.conf")
 source=("git+http://git.savannah.gnu.org/r/xboard.git")
 md5sums=('SKIP')

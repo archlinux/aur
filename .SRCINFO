@@ -1,6 +1,6 @@
 pkgbase = xboard-git
 	pkgdesc = Graphical user interfaces for chess
-	pkgver = 4.9.1.r7.gd887d64f
+	pkgver = 4.9.1.r8.g7fa90c36
 	pkgrel = 1
 	url = http://www.gnu.org/software/xboard/
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = xboard-git
 	makedepends = git
 	depends = gnuchess
 	depends = gtk2
+	provides = xboard
 	conflicts = xboard
 	source = git+http://git.savannah.gnu.org/r/xboard.git
 	md5sums = SKIP
