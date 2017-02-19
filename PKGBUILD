@@ -36,7 +36,7 @@ conflicts=(
     'ags'
 )
 source=(
-    'git://github.com/adventuregamestudio/ags.git'
+    'git+https://github.com/adventuregamestudio/ags.git'
 )
 sha256sums=(
     'SKIP'

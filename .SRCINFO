@@ -14,7 +14,7 @@ pkgbase = ags-git
 	depends = libvorbis
 	optdepends = wine: For non-native games
 	conflicts = ags
-	source = git://github.com/adventuregamestudio/ags.git
+	source = git+https://github.com/adventuregamestudio/ags.git
 	sha256sums = SKIP
 
 pkgname = ags-git
