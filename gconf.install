@@ -1,0 +1,11 @@
+post_install() {
+  ldconfig -r .
+  chmod 755 etc/gconf/gconf.xml.system
+}
+
+post_upgrade() {
+  ldconfig -r .
+  chmod 755 etc/gconf/gconf.xml.system
+
+  pkill /usr/lib/GConf/gconfd-2 || return 0
+}
