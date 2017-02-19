@@ -37,8 +37,8 @@ package() {
     msg2 "Moving /usr/sbin -> /usr/bin..."
     mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
 
-    msg2 "Making unifi-video executable..."
-    chmod +x "${pkgdir}/usr/bin/unifi-video"
+    msg2 "Making files executable..."
+    chmod +x ${pkgdir}/usr/bin/unifi-video ${pkgdir}/usr/lib/unifi-video/bin/ubnt.* ${pkgdir}/usr/lib/unifi-video/bin/evo*
 
     msg2 "Patching out ulimit..."
     cd "${pkgdir}/usr/bin"
