@@ -1,5 +1,5 @@
 pkgbase = vlc-qt5
-	pkgdesc = A multi-platform MPEG, VCD/DVD, and DivX player
+	pkgdesc = A multi-platform MPEG, VCD/DVD, and DivX player (Qt5 version)
 	pkgver = 2.2.4
 	pkgrel = 1
 	url = http://www.videolan.org/vlc/
