@@ -5,7 +5,7 @@
 pkgname=dunst-git
 _gitname=dunst
 pkgver=1.1.0.173.g6288fab.778
-pkgrel=2
+pkgrel=3
 pkgdesc="a lightweight notification-daemon - git version"
 arch=('i686' 'x86_64')
 url="https://dunst-project.org/"
@@ -41,10 +41,10 @@ build() {
   cd ${srcdir}/${_gitname}
   if [ -e ${SRCDEST}/config.h ]; then
     CFLAGS=-DSTATIC_CONFIG make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
-	CFLAGS=-DSTATIC_CONFIG make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 dunstify
+    CFLAGS=-DSTATIC_CONFIG make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 dunstify
   else
     make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
-	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 dunstify
+    make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 dunstify
   fi
 }
 
@@ -57,6 +57,7 @@ package() {
   fi
   install -Dm755 dunstify "${pkgdir}"/usr/bin/dunstify
   install -Dm755 contrib/dunst_espeak.sh "${pkgdir}"/usr/bin/dunst_espeak.sh
-  install -Dm644 contrib/dunst.systemd.service "${pkgdir}"/usr/lib/systemd/system/dunst.systemd.service.in
+  install -Dm644 contrib/dunst.systemd.service \
+	  "${pkgdir}"/usr/lib/systemd/user/dunst.systemd.service.in
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
