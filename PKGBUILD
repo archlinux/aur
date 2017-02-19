@@ -3,7 +3,7 @@
 # Contributor: pressh <pressh funnysymbol gmail dot com>
 
 pkgname=convertall
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Unit conversion program (Qt)"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('python-pyqt5' 'desktop-file-utils')
 source=("http://download.sourceforge.net/project/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz" 
         'convertall.desktop')
-sha256sums=('7e002bbeba7e3aeeaa3deba20707bffd2aa93057ea1c43df7406873a22c1b9e3'
+sha256sums=('da0f275bd24582f972934a2a8d7979b040e8f9aea493b2633f68785e9ec39bd5'
             '4f7ac9402580e866b360e07e07bfe1d05311f64f996dcf647094db6de9455212')
 
 package() {
