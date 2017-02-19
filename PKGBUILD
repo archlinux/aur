@@ -7,7 +7,7 @@
 
 _pkgname=thg
 pkgname=tortoisehg-hg
-pkgver=4.0.18125
+pkgver=4.0.2.18140
 pkgrel=1
 pkgdesc="Mercurial GUI front end"
 arch=('i686' 'x86_64')
