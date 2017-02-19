@@ -5,7 +5,7 @@
 # Source: https://github.com/zancarius/archlinux-pkgbuilds
 
 pkgname=django-openid-auth
-pkgver=0.5
+pkgver=0.13
 pkgrel=1
 pkgdesc="OpenID integration for django.contrib.auth."
 arch=(any)
@@ -13,10 +13,8 @@ url="https://launchpad.net/django-openid-auth"
 license=(BSD)
 depends=('python2' 'python2-openid')
 makedepends=('python2-setuptools')
-source=("http://pypi.python.org/packages/source/d/django-openid-auth/django-openid-auth-${pkgver}.tar.gz")
-md5sums=(
-    '75277ad166be391fbc4ca87666bf64d1'
-)
+source=("http://launchpad.net/${pkgname}/trunk/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz")
+md5sums=('b80677349c5c0cf1f1106398ea8ff102')
 
 package () {
 
