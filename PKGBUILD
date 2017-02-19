@@ -41,7 +41,8 @@ makedepends=('icu'
              'lynx'
              )
           # OpenPegasus site don't like wget/curl. :/
-DLAGENTS=('https::/usr/bin/lynx -accept_all_cookies -cmd_script=lynx_script_for_download_pegasus %u')
+DLAGENTS=('https::/usr/bin/lynx -accept_all_cookies -cmd_script=lynx_script_for_download_pegasus %u'
+          'http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -o %o %u')
 source=('lynx_script_for_download_pegasus' #IMPORTANT for download pegasus zip. please don't move to other place
         'https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz'
         'msm_profile.sh'
