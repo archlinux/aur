@@ -13,7 +13,7 @@ pkgbase=catalyst-utils
 pkgname=('catalyst-utils' 'catalyst-libgl' 'opencl-catalyst')
 
 pkgver=15.9
-pkgrel=5
+pkgrel=7
 _amdver=15.201.1151
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
@@ -56,9 +56,9 @@ build() {
 
 package_catalyst-libgl() {
       pkgdesc="AMD/ATI drivers. Catalyst drivers libraries symlinks + experimental powerXpress support."
-      depends=('catalyst-utils' 'mesa>=10.1.0-4')
-      conflicts=('libgl' 'mesa-libgl' 'mesa-libgl-git')
-      provides=('libgl' 'mesa-libgl' 'mesa-libgl-git')
+      depends=('catalyst-utils' 'mesa')
+      conflicts=('libgl' 'mesa-libgl' 'mesa-libgl-git' 'libgles' 'libegl')
+      provides=('libgl' 'mesa-libgl' 'mesa-libgl-git' 'libgles' 'libegl')
       install=catalyst-libgl.install
 
       install -m755 -d ${pkgdir}/usr/lib/xorg/modules/extensions
@@ -105,6 +105,7 @@ package_opencl-catalyst() {
       depends=('gcc-libs')
       optdepends=('opencl-headers: headers necessary for OpenCL development'
                 'opencl-icd-loader: OpenCL ICD Bindings')
+      conflicts=('opencl-amd')
 
 
       if [ "${CARCH}" = "i686" ]; then
