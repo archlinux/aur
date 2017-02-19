@@ -1,6 +1,6 @@
 pkgbase = cpuminer
 	pkgdesc = pooler's Litecoin cpuminer
-	pkgver = 2.4.2
+	pkgver = 2.4.5
 	pkgrel = 1
 	url = https://github.com/pooler/cpuminer
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = cpuminer
 	license = GPL
 	depends = curl
 	depends = jansson
-	source = cpuminer-2.4.2.zip::https://github.com/pooler/cpuminer/archive/v2.4.2.zip
+	source = cpuminer-2.4.5.zip::https://github.com/pooler/cpuminer/archive/v2.4.5.zip
 	source = libcurl.m4
-	md5sums = 63fcadfe26b4a1fe408e1b44e4152bec
+	md5sums = c572ac32730261fc3ba4dcf4d73f82d1
 	md5sums = 5e22a13d29fa628c83c267cf9b4f3218
 
 pkgname = cpuminer
