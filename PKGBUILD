@@ -6,7 +6,7 @@
 pkgname=liri-files
 pkgver=0.1.0
 pkgrel=2
-pkgdesc="The file manager for Papyros"
+pkgdesc="The file manager for Liri"
 arch=("i686" "x86_64")
 url="https://github.com/lirios/files"
 license=("GPL")
