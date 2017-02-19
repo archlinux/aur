@@ -9,8 +9,10 @@ pkgbase = exact-image
 	depends = agg
 	source = http://dl.exactcode.de/oss/exact-image/exact-image-0.9.2.tar.bz2
 	source = exact-image-c-98.patch
+	source = exact-image-syntax.patch
 	md5sums = bb9c8be82a4b5126be0224529ea7c4c7
 	md5sums = 6d006542aad588c07fd88030c556470d
+	md5sums = c169fcbfb3cbe5778cff4522f5ce0d83
 
 pkgname = exact-image
 
