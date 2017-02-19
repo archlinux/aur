@@ -1,13 +1,17 @@
 pkgbase = voltra
 	pkgdesc = Voltra music player
-	pkgver = 1.11.0_1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://voltra.co
 	install = voltra.install
 	arch = x86_64
 	license = custom
-	source = https://s3.amazonaws.com/download.voltra.co/voltra.deb
-	md5sums = 52cbfe64f2799fe58a4094fb6881f74e
+	depends = desktop-file-utils
+	provides = voltra
+	source = https://s3.amazonaws.com/download.voltra.co/Voltra.tar.gz
+	source = voltra.desktop
+	md5sums = a639c1c28b3f2d4568acf84c4ad7b7e8
+	md5sums = 6e717f224da771bea3670d2658843946
 
 pkgname = voltra
 
