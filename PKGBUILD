@@ -14,7 +14,7 @@ arch=('any')
 url="http://midkar.com/soundfonts/"
 license=('custom')
 source=('LICENSE')
-md5sums=('3fd3aa3e20d7ea437293b8e13723aae1')
+md5sums=('d16e886620799516141446e3bd06050b')
 
 _local_src=("Timbres Of Heaven GM_GS_XG_SFX V ${pkgver[0]} $_relstage.7z")
 _local_md5sums=('a2a2f85380f0e5eb5b06635306fbc8a9')
