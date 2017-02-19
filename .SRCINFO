@@ -1,0 +1,18 @@
+pkgbase = img-archive
+	pkgdesc = Tool to maintain a picture archive. Images are checked and a checksum is calculated for later checks.
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = custom
+	depends = perl-image-exiftool
+	depends = jpeginfo
+	depends = openssl
+	source = https://raw.githubusercontent.com/MoserMichael/cstuff/master/img-archive/img-archive.pl
+	source = https://raw.githubusercontent.com/MoserMichael/cstuff/master/LICENSE.txt
+	source = img-archive.1
+	md5sums = a8ffa0b1ae8d9f64da0a6af451ed5411
+	md5sums = c0b9f41ba2afac75fcfe40673b4838c5
+	md5sums = b7b5abbfe382e8aa5c9c69c91fe2489b
+
+pkgname = img-archive
+

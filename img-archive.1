@@ -1,0 +1,81 @@
+.\" Man page for img-archive
+.\" This manual was not wirtten by the author of the perl script
+.\" but uses the description by the original author from 
+.\" http://mosermichael.github.io/cstuff/all/projects/2014/06/17/imgarchive.html
+.\"
+.\" Sun Feb 19 13:49:00 GMT 2017 Vladimir Anderer (openproject.va@gmail.com)
+\."
+.TH img-archive 1 "17 February 2017" "" ""
+.SH NAME
+img-archive \- mangages picture archives
+.SH SYNOPSIS
+.SY img-archive
+.B -i
+.BI -s \ dir 
+.OP -s dir2
+.RB ... \ -d
+.I destination
+.OP --noprogress
+.YS
+.sp -1
+.SY img-archive
+.B --import 
+.BI --source \ dir 
+.OP --source dir2 
+.RB ... \ --dest
+.I destination 
+.OP --noprogress
+.YS
+.BI img-archive\ -m\ -s \ dir \ \fR[\fP-s \ dir\fR]\ ...\ [\fP --noprogress \fR]\fP 
+.br
+\fBimg-archive\fP \fB--merge\fP \fB--source\fP \fIdir\fP [\fB--source\fP \fIdir2\fP] ... [\fB--noprogress\fP]
+.br
+\fBimg-archive\fP \fB-c -s\fP \fIdir\fP [\fB-s\fP \fIdir2\fP] ... [\fB--noprogress\fP]
+.br
+\fBimg-archive\fP \fB--check --source\fP \fIdir\fR [\fB--source\fP \fBdir2\fP] ... [\fB--noprogress\fP]
+.\"
+.\"
+.SH DESCRIPTION
+.SY img-archive
+.BI -i\ -s \ dir 
+.OP -s dir2
+.RB ... \ -d
+.I destination 
+.OP --noprogress
+.YS
+.sp -1
+.SY img-archive
+.B --import 
+.B --source 
+.I dir 
+.OP --source dir2
+.RB ... \ -dest
+.I destination
+.OP --noprogress
+.SY
+.sp -1
+.RS 7 
+Import images from source directory (specified by \fB-s\fP \fIdir\fP) to archive (specified  by \fB-d\fP \fIdir\fP)
+Multiple source directories can be specified by repeating option \fB-s\fP
+Images are ordered into a directory hierarchy:
+<year the picture was taken</>month picture was taken</<day picture was taken>/<file name>
+The date of picture taken is extracted from the image file (where possible) - 
+this is enabled by the ExifTool, written by Phil Harvey.
+The script checks if the picture already exists in the destination directory;
+The option \fB--noprogress\fP suppresses display of progress indicator during copying.
+.RE
+.P
+.TP
+\fBimg-archive -m -s\fR  \fIdir\fR [\fB-s\fR \fIdir\fR] ... [ \fB--noprogress\fR] 
+.TQ
+\fBimg-archive\fP \fB--merge\fP \fB--source\fP \fIdir\fP [\fB--source\fP \fIdir2\fP] ... [\fB--noprogress\fP]
+Merge a number of archives; after merging every archive should have the same set of data;
+However the file names may differ.
+.P
+.TP
+\fBimg-archive\fP \fB-c -s\fP <dir> [\fB-s\fP \fIdir2\fP] ... [\fB--noprogress\fP]
+.TQ
+\fBimg-archive\fP \fB--check --source\fP \fIdir\fR [\fB--source\fP \fIdir2\fR] ... [\fB--noprogress\fR]
+Checks an existing archive for consistency.
+.SH AUTHOR
+Script written by Michael Moser.
