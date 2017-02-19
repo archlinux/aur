@@ -6,8 +6,8 @@
 
 _pkgname=vim
 pkgname="gvim-git"
-pkgver=7.4.1967
-pkgrel=2
+pkgver=8.0.0342
+pkgrel=1
 pkgdesc='Vim the editor. CLI version and GTK2 GUI providing majority of features.'
 arch=('i686' 'x86_64')
 url='http://www.vim.org'
@@ -18,10 +18,8 @@ optdepends=('lua: Lua interpreter' 'perl: Perl interpreter' 'python: Python 3 in
 makedepends=('git' 'lua' 'python' 'python2' 'ruby')
 provides=('gvim' 'xxd')
 conflicts=("vim-minimal"{,-git} "vim"{,-git} 'vim-python3' "gvim"{,-python3})
-source=("git+https://github.com/$_pkgname/$_pkgname.git"
-        "gvim.desktop")
-sha256sums=("SKIP"
-            "97e94c3ca5825d6ab50096eb8449adf1b05c88ad13e60e6a99be8daacc797eac")
+source=("git+https://github.com/$_pkgname/$_pkgname.git")
+sha256sums=("SKIP")
 
 pkgver() {
     cd $_pkgname
@@ -61,11 +59,9 @@ package() {
     cd $_pkgname
     make DESTDIR=$pkgdir install
 
-    # desktop entry file and corresponding icon
-    install -D -m644 ../gvim.desktop      $pkgdir/usr/share/applications/gvim.desktop
-    install -D -m644 runtime/vim48x48.png $pkgdir/usr/share/icons/hicolor/48x48/apps/gvim.png
+    # remove components provided by other packages
 
-    # remove ex/view and man pages (normally provided by package 'vi' on Arch Linux)
+    # ex/view and man pages (normally provided by package 'vi' on Arch Linux)
     cd $pkgdir/usr/bin ; rm ex view
     find $pkgdir/usr/share/man -type d -name 'man1' 2>/dev/null | \
       while read _mandir; do
@@ -73,9 +69,9 @@ package() {
         rm -f ex.1 view.1
       done
 
-    # remove components provided by vim-runtime-git
+    # components provided by vim-runtime-git
     cd $pkgdir
-    rm -R usr/share/vim
+    rm -R usr/share/{icons,vim} usr/share/applications/vim.desktop
 
     # add license
     install -D -m644 $srcdir/$_pkgname/runtime/doc/uganda.txt \
