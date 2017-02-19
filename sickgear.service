@@ -1,0 +1,11 @@
+[Unit]
+Description=SickGear
+After=network.target
+
+[Service]
+User=sickgear
+Group=sickgear
+ExecStart=/usr/bin/python2 /usr/share/sickgear/SickBeard.py --systemd --datadir /var/lib/sickgear
+
+[Install]
+WantedBy=multi-user.target

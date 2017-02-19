@@ -1,0 +1,18 @@
+post_install() {
+    systemctl --quiet preset sickgear.service
+}
+
+post_upgrade() {
+    systemctl --quiet daemon-reload
+    systemctl --quiet try-restart sickgear.service
+}
+
+pre_remove() {
+    systemctl --quiet --no-reload disable sickgear.service
+    systemctl --quiet stop sickgear.service
+}
+
+post_remove() {
+    systemctl --quiet daemon-reload
+    rmdir /var/lib/sickgear &> /dev/null || echo -e "\n==> SickGear data directory (/var/lib/sickgear) requires manual deletion.\n"
+}
