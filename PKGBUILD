@@ -2,7 +2,7 @@
 
 _pkgname=vim
 pkgname="$_pkgname-minimal-git"
-pkgver=7.4.824
+pkgver=8.0.0342
 pkgrel=1
 pkgdesc="Vim the editor. CLI version providing small subset of available features."
 arch=("i686" "x86_64")
@@ -52,7 +52,9 @@ package() {
     cd $_pkgname
     make DESTDIR=$pkgdir install
 
-    # remove ex/view and man pages (normally provided by package 'vi' on Arch Linux) as
+    # remove components provided by other packages
+
+    # ex/view and man pages (normally provided by package 'vi' on Arch Linux) as
     # well as man evim (not needed in a package providing CLI tools only)
     cd $pkgdir/usr/bin ; rm ex view
     find $pkgdir/usr/share/man -type d -name 'man1' 2>/dev/null | \
@@ -62,9 +64,9 @@ package() {
         rm -f evim.1
       done
 
-    # remove components provided by vim-runtime-git
+    # components provided by vim-runtime-git
     cd $pkgdir
-    rm -R usr/share/vim
+    rm -R usr/share/{icons,vim} usr/share/applications/gvim.desktop
 
     # add license
     install -D -m644 $srcdir/$_pkgname/runtime/doc/uganda.txt \
