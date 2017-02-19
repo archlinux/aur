@@ -1,8 +1,8 @@
 # Maintainer: Luke R. <g4jc@openmailbox.org> GPG: rsa4096/3EAE8697
 
 pkgname=xdgmenumaker
-pkgver=1.3
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc="xdgmenumaker creates generating menus using xdg information for blackbox, compizboxmenu, fluxbox, icewm, jwm, pekwm and windowmaker."
 url="https://github.com/gapan/$pkgname"
 arch=('any')
@@ -10,8 +10,8 @@ license=('GPLv3')
 depends=('pygtk' 'pygobject-devel' 'gobject-introspection' 'python-gobject' 'python-xdg')
 optdepends=('txt2tags: for manpages')
 source=("https://github.com/gapan/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('9583ddcf9e0bc66d762d829d6d33b995306847f403f1139bcfa596250858cb525fab89f0a9f9bf13fc24565266fb09569c227414ebb840e437cf8733236a4687')
-whirlpoolsums=('78c1d094568e9e8dc846f7096421c5ce2ebd2b2be5068a19180e80b4923827d8119179fa4963ff2cb215fcd0b62f68942e72e15ab6d0a6631ffe869f7d8e8966')
+sha512sums=('d62c80aeb40de0b41401a13f31a2b733cf2ab673221adbd1b0103425aa4abdd342affc8ef986ef5c0d0ac6091a22f3dba1a03770f934c9396bc4d8be2ba22458')
+whirlpoolsums=('9fc50035f74aaf4f4345668004921c2fa38ac7fe439bff7d20987f10efc2a9c672c2c24603ee59481fab811f5fcc75d5f3cc3f1456f646062f8b3519540d5bb9')
 
 build() {
 	cd "$pkgname-$pkgver"
