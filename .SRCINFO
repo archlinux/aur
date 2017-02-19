@@ -1,0 +1,17 @@
+pkgbase = opmsg-git
+	pkgdesc = opmsg message encryption
+	pkgver = r131.ce12dc8
+	pkgrel = 1
+	url = https://github.com/stealth/opmsg
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	depends = openssl
+	conflicts = opmsg
+	source = opmsg-git::git+git://github.com/stealth/opmsg.git
+	md5sums = SKIP
+
+pkgname = opmsg-git
+
