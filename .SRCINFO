@@ -1,7 +1,7 @@
 pkgbase = mandelbulber2-git
 	pkgdesc = 3D application designed to render 3D fractals such as the Mandelbulb, Mandelbox, BulbBox, JuliaBulb, Menger Sponge, and Iterated Function Systems. Git version.
 	pkgver = 20161205
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/buddhi1980/mandelbulber2
 	arch = any
 	license = GPL3
@@ -11,6 +11,7 @@ pkgbase = mandelbulber2-git
 	depends = libpng12
 	depends = gsl
 	depends = openmpi
+	depends = qt5-multimedia
 	provides = mandelbulber2
 	conflicts = mandelbulber2
 	source = mandelbulber2::git+https://github.com/buddhi1980/mandelbulber2

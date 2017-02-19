@@ -3,12 +3,12 @@
 pkgname=mandelbulber2-git
 _pkgname=mandelbulber2
 pkgver=20161205
-pkgrel=1
+pkgrel=2
 pkgdesc="3D application designed to render 3D fractals such as the Mandelbulb, Mandelbox, BulbBox, JuliaBulb, Menger Sponge, and Iterated Function Systems. Git version."
 arch=('any')
 url="https://github.com/buddhi1980/mandelbulber2"
 license=('GPL3')
-depends=('qt5-tools' 'libjpeg-turbo' 'libpng12' 'gsl' 'openmpi')
+depends=('qt5-tools' 'libjpeg-turbo' 'libpng12' 'gsl' 'openmpi' 'qt5-multimedia')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
