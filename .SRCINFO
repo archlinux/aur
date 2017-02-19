@@ -1,7 +1,7 @@
 pkgbase = nvidia-340xx-lqx
 	pkgdesc = NVIDIA 340xx drivers for linux-lqx.
-	pkgver = 340.101
-	pkgrel = 2
+	pkgver = 340.102
+	pkgrel = 1
 	url = http://www.nvidia.com/
 	install = nvidia-340xx-lqx.install
 	arch = i686
@@ -12,14 +12,14 @@ pkgbase = nvidia-340xx-lqx
 	depends = linux-lqx>=4.9
 	depends = linux-lqx<4.10
 	depends = nvidia-340xx-libgl
-	depends = nvidia-340xx-utils=340.101
+	depends = nvidia-340xx-utils=340.102
 	conflicts = nvidia-lqx
 	conflicts = nvidia-304xx-lqx
 	options = !strip
-	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/340.101/NVIDIA-Linux-x86-340.101.run
-	md5sums_i686 = b2b33b50cf375ccba7d3b959b9f509ec
-	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/340.101/NVIDIA-Linux-x86_64-340.101-no-compat32.run
-	md5sums_x86_64 = dd1a25ab34b7855d533474f3e8f3e868
+	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/340.102/NVIDIA-Linux-x86-340.102.run
+	md5sums_i686 = 61aad6a98238bc61466e6a9e392cfd08
+	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/340.102/NVIDIA-Linux-x86_64-340.102-no-compat32.run
+	md5sums_x86_64 = 81e720487caa2823586b32659da9acc1
 
 pkgname = nvidia-340xx-lqx
 
