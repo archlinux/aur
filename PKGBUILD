@@ -2,10 +2,10 @@
 
 _name=firefox
 _channel=aurora
-_milestone=50.0a2
+_milestone=53.0a2
 _lang=zh-tw
 pkgname="${_name}-${_channel}-${_lang}"
-pkgver=50.0a2.20160816004012
+pkgver=53.0a2.20170218084110
 pkgrel=1
 pkgdesc="Chinese Traditional For Firefox Developer (Aurora-l10n)"
 url="http://www.mozilla.org/zh-TW/${_name}/${_channel}/"
@@ -22,11 +22,14 @@ _filename="${_name}-${_milestone}.zh-TW.linux-${CARCH}"
 _sha512sum="$(curl -vs "${_baseurl}/${_filename}.checksums" 2>&1 | grep "${_filename}.tar.bz2" | grep sha512 | cut -d " " -f1)"
 source=("${pkgname}.desktop"
 	"${pkgname}-safe.desktop"
-	"${_baseurl}/${_filename}.tar.bz2")
+	"${_baseurl}/${_filename}.tar.bz2"
+       )
 
 sha512sums=('4c1284e97f26c7ad7b8e39f32bb82c015ac3c7dbaf3b96192dc40d95994a5602cf4c449fd4becfaed75f6e00e0af3db226d318625e95030ae9d9ddcc86ee45f7'
             '53756ab2a009a96585fd7b2131bb7fddaef112da9af84da4513ed7f3cf507cee5571ccbba7efa3ef1c027c06d5c6d5f16612f7ec536791e828d68098a1413fcb'
-            "${_sha512sum}")
+            # "${_sha512sum}"
+            'SKIP'
+            )
 pkgver() {
        cd "${_name}"
           echo "${_milestone}.$(cat platform.ini|grep BuildID|cut -d "=" -f2 )"
