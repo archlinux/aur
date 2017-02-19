@@ -8,7 +8,7 @@ _pkgname=gogs
 _team=github.com/gogits
 _gogsdir="src/${_team}/${_pkgname}"
 pkgname=${_pkgname}-dev-git
-pkgver=0.9.158.0218+5+c6990032
+pkgver=0.9.159.0218+0+0a2f87f9
 pkgrel=1
 pkgdesc="Self Hosted Git Service in the Go Programming Language. This is the current git version from branch ${_branch}."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -98,5 +98,5 @@ package() {
 
 sha512sums=('SKIP'
             'SKIP'
-            '288c99fc05c88bc6f8b3c87565510a1320be1dbc0410a4ef441cf5e38fe99049913836257439870a3acfbbea5e84e28eb6b02268dbb61f84f903aac9449082c7'
+            'ae93c18970125e21e502d4833dbfb6867a55157ab8cc2dace120fb5ea5d86cea583f01b88dac2c56d9f059631c95e953df99f92e0def718946b348481ce2371f'
             '658935dc129d41b4bfc205ea8e9c225122862431f8b96932942ec345bc23cc7b55644247a8844c1f66bfd16ee35fc9da766f62f07603cbe6d573102edb4222f8')
