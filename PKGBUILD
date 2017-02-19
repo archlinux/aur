@@ -5,9 +5,9 @@
 set -u
 _pkgname='littler'
 pkgname="${_pkgname}"
-pkgver=0.2.3
+pkgver=0.3.2
 pkgrel=1
-pkgdesc='A hash-bang and simple command line pipe front end for GNU R'
+pkgdesc='a hash-bang and simple command line pipe front end for GNU R'
 arch=('i686' 'x86_64')
 #url="http://code.google.com/p/littler"
 url='http://dirk.eddelbuettel.com/code/littler.html'
@@ -16,9 +16,9 @@ license=('GPL')
 makedepends=('make' 'r' 'sh')
 #_giturl="https://github.com/eddelbuettel/${_pkgname}"
 #source=("${_pkgname}-${pkgver}.tar.gz::${_giturl}/archive/${pkgver}.tar.gz")
-source=("http://dirk.eddelbuettel.com/code/littler/${pkgname}-${pkgver}.tar.gz")
+source=("http://dirk.eddelbuettel.com/code/littler/${pkgname}_${pkgver}.tar.gz")
 #source=("http://http.debian.net/debian/pool/main/l/littler/littler_0.2.3.orig.tar.gz")
-sha256sums=('98cd741c68a5c8f65b06c96d2f56d3b44979b3990335e7869b002c005ef80ba7')
+sha256sums=('32e13e9cd0bab43a330e8b48180e0a7c2e3c337dc6ddb118cbaf0b247da7dc2a')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pkgname}"
@@ -38,11 +38,12 @@ pkgver() {
   set +u
 }
 else
-  _srcdir="${pkgname}-${pkgver}"
-  _verwatch=("${url%.html}/" "${pkgname}-\(.*\)\.tar\.gz" 'l')
+  _srcdir="${pkgname}"
+  _verwatch=("${url%.html}/" "${pkgname}[-_]\(.*\)\.tar\.gz" 'l')
 fi
 
 prepare() {
+#false
   set -u
   cd "${_srcdir}"
   # The non git release forgot to run bootstrap so we must run bootstrap.
@@ -63,7 +64,7 @@ prepare() {
 build() {
   set -u
   cd "${_srcdir}"
-  make # -s -j "$(nproc)"
+  make -j1 -C 'src' -f 'Makevars'
   set +u
 }
 
@@ -71,7 +72,9 @@ package() {
   set -u
   depends=('r' 'sh')
   cd "${_srcdir}"
-  make DESTDIR="${pkgdir}" install
+  #make DESTDIR="${pkgdir}" install
+  install -Dpm755 'inst/bin/r' -t "${pkgdir}/usr/bin/"
+  install -Dpm644 'inst/man-page/r.1' -t "${pkgdir}/usr/share/man/man1/"
   set +u
 }
 set +u
