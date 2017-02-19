@@ -1,6 +1,6 @@
 pkgbase = qdmenu
 	pkgdesc = A QML launcher similar to dmenu
-	pkgver = v1.0.10.g6211799
+	pkgver = v1.0.14.gbd8265e
 	pkgrel = 1
 	url = https://github.com/bayi/qdmenu
 	arch = i686
