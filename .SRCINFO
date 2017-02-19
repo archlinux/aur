@@ -1,0 +1,20 @@
+pkgbase = ignition-msgs
+	pkgdesc = Ignition Message protobuf messages and functions for robot applications
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://ignitionrobotics.org
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = pkg-config>=0.28
+	makedepends = ruby-ronn
+	depends = protobuf
+	depends = protobuf-c
+	depends = ignition-math>=3
+	source = https://bitbucket.org/ignitionrobotics/ign-msgs/get/ignition-msgs_0.7.0.tar.bz2
+	sha256sums = b62b1fc22592d45fd189c13ef6696c22a34c5755f3ff2fb1a62488adaf361a0d
+
+pkgname = ignition-msgs
+
