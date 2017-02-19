@@ -1,23 +1,23 @@
 # Maintainer: Timo Sarawinski <t.sarawinski@gmail.com>
 
 pkgbase=linux-baytrail48 
-_srcname=linux-4.8.7-baytrail
-_gitver=8749cde02a01703b404599ec0a032d6462416362
-pkgver=4.8.7
+_srcname=linux-4.8.8-baytrail
+_gitver=c5fa6f195258fb15fc2491800b74cdff60aa151a
+pkgver=4.8.17
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=("${_srcname}.tar.gz::https://github.com/muhviehstah/linux-4.8-7-baytrail/archive/${_gitver}.tar.gz"
+source=("git+https://github.com/muhviehstah/linux-baytrail48#tag=4.8.17"
         'config' 'config.x86_64'
         'linux-baytrail48.preset'
         )
 
-sha256sums=('2d75ff7c4b7b83e98a6604daf28cebd2c120f29433d68866ac5a822d3b58c7c2'
+sha256sums=('SKIP'
             '60921720cdcd2ff3fc754eebbba795af52b61d681a0541ad492a606bed309f58'
-            '1a957010987f586492a10b358966b37844b50c3788493bb8466e20aceabbe36a'
+            '8d6c3f830301355e6732595f56c63b73b4275fe70f76b321c663297dc8e2c798'
             'fea475f6e265059438342e9f0f5b32639030436ebe592e88d0c574fc50dc6034')
 
 _kernelname=${pkgbase#linux}
@@ -26,7 +26,7 @@ prepare() {
 
   cd "${srcdir}"
 
-  mv linux-4.8-7-baytrail-"${_gitver}" "${_srcname}-${_gitver}"
+  mv linux-baytrail48 "${_srcname}-${_gitver}"
 
   cd "${srcdir}/${_srcname}-${_gitver}"
 
