@@ -1,6 +1,6 @@
 pkgbase = caret-bin
 	pkgdesc = Premium Markdown Editor http://caret.io
-	pkgver = 1.14.1
+	pkgver = 1.14.2
 	pkgrel = 1
 	url = https://github.com/careteditor/caret
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = caret-bin
 	depends = alsa-lib
 	depends = libxtst
 	depends = gtk2
-	source = https://github.com/careteditor/caret/releases/download/1.14.1/Caret.deb
-	md5sums = 2f6359d53529785779b04423697dd1fb
+	source = https://github.com/careteditor/caret/releases/download/1.14.2/Caret.deb
+	md5sums = 2e9c5782afd6b9ffcd61d2543f3bebed
 
 pkgname = caret-bin
 
