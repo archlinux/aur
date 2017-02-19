@@ -1,7 +1,7 @@
 pkgbase = dunst-git
 	pkgdesc = a lightweight notification-daemon - git version
 	pkgver = 1.1.0.173.g6288fab.778
-	pkgrel = 3
+	pkgrel = 4
 	url = https://dunst-project.org/
 	arch = i686
 	arch = x86_64

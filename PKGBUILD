@@ -5,7 +5,7 @@
 pkgname=dunst-git
 _gitname=dunst
 pkgver=1.1.0.173.g6288fab.778
-pkgrel=3
+pkgrel=4
 pkgdesc="a lightweight notification-daemon - git version"
 arch=('i686' 'x86_64')
 url="https://dunst-project.org/"
@@ -58,6 +58,6 @@ package() {
   install -Dm755 dunstify "${pkgdir}"/usr/bin/dunstify
   install -Dm755 contrib/dunst_espeak.sh "${pkgdir}"/usr/bin/dunst_espeak.sh
   install -Dm644 contrib/dunst.systemd.service \
-	  "${pkgdir}"/usr/lib/systemd/user/dunst.systemd.service.in
+	  "${pkgdir}"/usr/lib/systemd/user/dunst.systemd.service
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
