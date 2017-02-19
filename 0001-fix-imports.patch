@@ -1,12 +1,54 @@
-From d8ecd156a206dd10f6d0458eb2cf33cca2bfafc1 Mon Sep 17 00:00:00 2001
+From a818ab76c7251b24e95857762a46e861f45a32fb Mon Sep 17 00:00:00 2001
 From: Carl George <carl.george@rackspace.com>
 Date: Sun, 19 Feb 2017 05:44:34 -0600
 Subject: [PATCH] fix imports
 
 ---
- sickbeard/rssfeeds.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ lib/tmdb_api/tmdb_api.py     | 2 +-
+ sickbeard/clients/deluge.py  | 2 +-
+ sickbeard/clients/generic.py | 2 +-
+ sickbeard/rssfeeds.py        | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
 
+diff --git a/lib/tmdb_api/tmdb_api.py b/lib/tmdb_api/tmdb_api.py
+index a7eab0da..404b23e4 100644
+--- a/lib/tmdb_api/tmdb_api.py
++++ b/lib/tmdb_api/tmdb_api.py
+@@ -7,7 +7,7 @@ Created by Celia Oakley on 2013-10-31.
+ """
+ 
+ import json
+-import lib.requests as requests
++import requests
+ 
+ class TMDB:
+     def __init__(self, api_key, version=3):
+diff --git a/sickbeard/clients/deluge.py b/sickbeard/clients/deluge.py
+index 1db6f868..dd6ce1d8 100644
+--- a/sickbeard/clients/deluge.py
++++ b/sickbeard/clients/deluge.py
+@@ -22,7 +22,7 @@ from base64 import b64encode
+ import sickbeard
+ from sickbeard import logger
+ from sickbeard.clients.generic import GenericClient
+-from lib.requests.exceptions import RequestException
++from requests.exceptions import RequestException
+ 
+ 
+ class DelugeAPI(GenericClient):
+diff --git a/sickbeard/clients/generic.py b/sickbeard/clients/generic.py
+index 222f3b9a..07d94249 100644
+--- a/sickbeard/clients/generic.py
++++ b/sickbeard/clients/generic.py
+@@ -8,7 +8,7 @@ from sickbeard import logger
+ from sickbeard.exceptions import ex
+ from sickbeard.clients import http_error_code
+ from lib.bencode import bencode, bdecode
+-from lib import requests
++import requests
+ 
+ 
+ class GenericClient(object):
 diff --git a/sickbeard/rssfeeds.py b/sickbeard/rssfeeds.py
 index a10ffee9..04226f12 100644
 --- a/sickbeard/rssfeeds.py
