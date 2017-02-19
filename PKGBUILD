@@ -7,7 +7,7 @@ pkgbase=linux-aufs_friendly  # Build kernel with a different name
 # In this case, also uncomment this horrendous hack to complete the 'provides' array for aufs3
 #depmod() { provides+=('aufs_friendly'); unset depmod; depmod "$@"; }
 
-pkgver=4.9.8
+pkgver=4.9.9
 
 #Use the base branch:
 [[ "$pkgver" = *.*.* ]] && _kernel="${pkgver%.*}" || _kernel="${pkgver}"

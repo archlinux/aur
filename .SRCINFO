@@ -1,6 +1,6 @@
 pkgbase = linux-aufs_friendly
 	pkgdesc = The aufs-compatible linux kernel and modules
-	pkgver = 4.9.8
+	pkgver = 4.9.9
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
