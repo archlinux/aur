@@ -31,12 +31,13 @@ pre_install() {
         if [ ${_OldHome} != "/srv/gogs" ]; then
             echo
             echo "Setting gogs home directory to /srv/gogs"
-            _disable_if_enabled
+            usermod -c 'Gogs service user' -g gogs -d /srv/gogs -L -s /bin/bash gogs
+            echo
             echo "You must migrate from ${_OldHome}"
             echo "before starting or re-enabling service"
             echo
+            _disable_if_enabled
         fi
-        usermod -c 'Gogs service user' -g gogs -d /srv/gogs -L -s /bin/bash gogs
     fi
 }
 
@@ -52,15 +53,23 @@ pre_upgrade() {
 
 post_upgrade() {
     post_install
-    if ! [[ -f /etc/gogs/app.ini.pacnew ]] ; then
-        _start_if_enabled
-    else
+
+    local _CustConf=/srv/gogs/custom/conf/app.ini
+    local _OldConf=/etc/gogs/app.ini
+
+    if  [[ -f ${_OldConf}.pacsave ]] && [[ ! -f ${_CustConf} ]] ; then
+        install -Dm0750 -d -o gogs -g gogs /srv/gogs
+        install -Dm0750 -d -o gogs -g gogs /srv/gogs/custom
+        install -Dm0750 -d -o gogs -g gogs /srv/gogs/custom/conf
+        install -Dm0640 -T -o gogs -g gogs ${_OldConf}.pacsave ${_CustConf}
         echo
-        _disable_if_enabled
-        echo "/etc/gogs/app.ini{,.pacnew} needs merge"
-        echo "before starting or re-enabling service"
+        echo "${_OldConf} moved to"
+        echo "${_CustConf}."
+        echo "You may need to manually delete"
+        echo "an old config dir /etc/gogs"
         echo
     fi
+    _start_if_enabled
 }
 
 pre_remove() {
@@ -76,5 +85,7 @@ post_remove() {
         groupdel gogs
     fi
     systemctl daemon-reload
-    echo "You will need to delete the directory /srv/gogs manually"
+    echo
+    echo "You may need to manually delete an old workdir /srv/gogs"
+    echo
 }
