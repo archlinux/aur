@@ -8,7 +8,7 @@ pkgdesc="Airspeed is a powerful and easy-to-use templating engine for Python tha
 pkgver="0.5.4"
 pkgrel=3
 url="https://github.com/purcell/airspeed"
-license=('BSD')
+license=('BSD-2-Clause')
 arch=('any')
 makedepends=("python-pbr>=1.9" "python2-pbr>=1.9")
 source=("https://github.com/purcell/airspeed/archive/$pkgver.tar.gz")
