@@ -1,6 +1,6 @@
 pkgbase = atom-editor-beta-mirror
 	pkgdesc = Hackable text editor atom-editor-beta use source mirror in China.
-	pkgver = 1.15.0.beta2.m0.92.2
+	pkgver = 1.15.0.beta3.m0.92.2
 	pkgrel = 1
 	url = https://npm.taobao.org/mirrors/atom
 	install = atom.install
@@ -23,9 +23,9 @@ pkgbase = atom-editor-beta-mirror
 	conflicts = atom-editor-beta-arch
 	conflicts = atom-editor-beta
 	conflicts = atom-editor-beta-bin-mirror
-	source = atom-1.15.0-beta2.tar.gz::https://npm.taobao.org/mirrors/atom/1.15.0-beta2/v1.15.0-beta2.tar.gz
+	source = atom-1.15.0-beta3.tar.gz::https://npm.taobao.org/mirrors/atom/1.15.0-beta3/v1.15.0-beta3.tar.gz
 	source = atom-beta.desktop
-	sha256sums = 9da596707a9784e05c5e7c5c088b589188be560c7d27077aa1fc9f7d7027e230
+	sha256sums = 772d68a26f8571b688891300dfebd5ef43d620981a9aed9437969f11de295a07
 	sha256sums = c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6
 
 pkgname = atom-editor-beta-mirror
