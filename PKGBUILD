@@ -15,6 +15,7 @@ source=("$pkgname::git+https://github.com/jepler/cropgui")
 md5sums=('SKIP')
 
 pkgver() {
+  cd "$srcdir/$pkgname" 
   git describe --always | sed -e 's|-|.|g' -e '1s|^.||'
 }
 
