@@ -17,6 +17,7 @@ sha256sums=('1738320b3eb1f0fdf4bf144e5e34af248d1163c089147367263af04b3562328e')
 install=${pkgname}.install
 
 prepare() {
+    test -d conf && rm -rf conf
     mkdir conf
     unzip -q zip -d conf
 }
