@@ -1,0 +1,18 @@
+pkgbase = bindinator-git
+	pkgdesc = Generate a binding project for mono
+	pkgver = r176.d6176d0
+	pkgrel = 1
+	url = https://github.com/shana/bindinator
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gobject-introspection
+	depends = gtk-sharp-3
+	depends = libxslt
+	provides = bindinator
+	conflicts = bindinator
+	source = git+https://github.com/shana/bindinator.git
+	sha256sums = SKIP
+
+pkgname = bindinator-git
+
