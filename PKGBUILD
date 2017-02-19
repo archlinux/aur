@@ -1,6 +1,6 @@
 # Maintainer: Ali Ukani <ali.ukani@gmail.com>
 pkgname=voltra
-pkgver=2.2.0
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='Voltra music player'
 arch=('x86_64')
@@ -10,28 +10,23 @@ depends=('desktop-file-utils')
 install=${pkgname}.install
 provides=('voltra')
 source=(
-  'https://s3.amazonaws.com/download.voltra.co/Voltra.tar.gz'
-  'voltra.desktop'
+  'https://s3.amazonaws.com/download.voltra.co/Voltra.deb'
 )
-md5sums=('a639c1c28b3f2d4568acf84c4ad7b7e8'
-         '6e717f224da771bea3670d2658843946')
+md5sums=('b6ae8c5c646b78b5158558c53ddbbbce')
 
+prepare() {
+  cd "${srcdir}"
+  tar xzf control.tar.gz
+}
 
 pkgver() {
-  grep -i "version" resources/app/package.json | cut -d ':' -f 2 | sed -e 's/[^0-9\.]//g'
+  grep -i "Version" "${srcdir}"/control | cut -d ' ' -f 2
 }
 
 package() {
   cd "${srcdir}"
-  install -dm755 "${pkgdir}"/opt/voltra.co/voltra
-  cp -r . "${pkgdir}"/opt/voltra.co/voltra
+  tar xJvf data.tar.xz
+  cp -r usr opt "${pkgdir}"
   install -dm755 "${pkgdir}"/usr/bin
-  ln -s /opt/voltra.co/voltra/voltra "${pkgdir}"/usr/bin/voltra
-  install -Dm644 "${srcdir}"/resources/app/static/icon.png "${pkgdir}"/usr/share/pixmaps/voltra.png
-
-  install -dm755 "${pkgdir}"/usr/share
-  ln -s /opt/voltra.co/voltra "${pkgdir}"/usr/share/voltra
-
-  cd ..
-  install -Dm644 voltra.desktop "${pkgdir}"/usr/share/applications/voltra.desktop
+  ln -s /opt/Voltra/voltra "${pkgdir}"/usr/bin/voltra
 }
