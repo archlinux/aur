@@ -1,6 +1,6 @@
 pkgbase = gazebo
 	pkgdesc = A multi-robot simulator for outdoor environments
-	pkgver = 7.4.0
+	pkgver = 8.0.0
 	pkgrel = 1
 	url = http://gazebosim.org/
 	install = gazebo.install
@@ -23,11 +23,12 @@ pkgbase = gazebo
 	depends = protobuf>=2.3.0
 	depends = qt4
 	depends = qtwebkit
-	depends = sdformat>=4.2.0
-	depends = ignition-math>=2
-	depends = ignition-transport
+	depends = sdformat>=5.0.0
+	depends = ignition-math>=3
+	depends = ignition-transport>=3
 	depends = tinyxml>=2.6.2
 	depends = tinyxml2
+	depends = qwt
 	optdepends = bullet>=2.82: Bullet support
 	optdepends = cegui>=0.8.3: Design custom graphical interfaces
 	optdepends = ffmpeg: Playback movies on textured surfaces
@@ -38,8 +39,8 @@ pkgbase = gazebo
 	optdepends = ruby-ronn: Generate manpages
 	optdepends = simbody>=3.3: Simbody support
 	optdepends = urdfdom: Load URDF files
-	source = http://osrf-distributions.s3.amazonaws.com/gazebo/releases/gazebo-7.4.0.tar.bz2
-	sha256sums = a033b2273383f16e5dd5b5bfe597551dc3618b98e64abecfa8a41bdddd6542f7
+	source = http://osrf-distributions.s3.amazonaws.com/gazebo/releases/gazebo-8.0.0.tar.bz2
+	sha256sums = ea733be6946ac5c538bf207ba01f3a6d6afa456d0b70455f7066b19d722f0d12
 
 pkgname = gazebo
 
