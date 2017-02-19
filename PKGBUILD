@@ -1,6 +1,6 @@
 # Maintainer: Adrián Laviós <adrian@lavios.eu>
 pkgname=mtm-git
-pkgver=7432d00
+pkgver=r52.7432d00
 pkgrel=1
 pkgdesc="Perhaps the smallest useful terminal multiplexer in the world."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/mtm"
-  git rev-parse --short HEAD
+  echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
