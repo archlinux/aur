@@ -1,7 +1,7 @@
 pkgbase = catalyst-hook
 	pkgdesc = AMD/ATI drivers. Auto re-compile fglrx module while shutdown/reboot.
 	pkgver = 15.9
-	pkgrel = 14
+	pkgrel = 15
 	url = http://www.amd.com
 	install = catalyst-hook.install
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = catalyst-hook
 	depends = make
 	depends = patch
 	depends = linux>=3.0
-	depends = linux<4.10
+	depends = linux<4.11
 	depends = linux-headers
 	optdepends = linux-lts-headers: to build the fglrx module for the linux-lts kernel
 	provides = catalyst=15.9
@@ -44,6 +44,7 @@ pkgbase = catalyst-hook
 	source = 4.6-arch-get_user_pages-page_cache_release.patch
 	source = 4.7-arch-cpu_has_pge-v2.patch
 	source = 4.9_over_4.6-arch-get_user_pages_remote.patch
+	source = 4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch
 	md5sums = d2de2df6946b452c266a3c892e6e46ff
 	md5sums = 9126e1ef0c724f8b57d3ac0fe77efe2f
 	md5sums = 601d9c756571dd79d26944e54827631e
@@ -62,6 +63,7 @@ pkgbase = catalyst-hook
 	md5sums = 11b7c2e0dc4794801005d66b0e7608a3
 	md5sums = 37eef5103a11d8136979463e7bc31091
 	md5sums = 194cb44e9e2ab0e65b6267aca66d0400
+	md5sums = 05f6364db877d9c4bdf1592deda905b7
 
 pkgname = catalyst-hook
 
