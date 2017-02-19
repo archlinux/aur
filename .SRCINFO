@@ -1,7 +1,7 @@
 pkgbase = sdformat
 	pkgdesc = SDF Converter for gazebo
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sdformat.org/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,8 @@ pkgbase = sdformat
 	makedepends = ruby>=1.9.1
 	depends = boost
 	depends = tinyxml
-	depends = ignition-math>=2
+	depends = ignition-math>=3,
+	depends = python-psutil
 	source = http://osrf-distributions.s3.amazonaws.com/sdformat/releases/sdformat-5.0.0.tar.bz2
 	sha256sums = d3fb29392a0b9878eaaf7c9aec144f5ca65bba4649bda15bd5d4603d7bb58f10
 
