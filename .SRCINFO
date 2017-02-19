@@ -1,7 +1,7 @@
 pkgbase = download-sweeper
 	pkgdesc = A stale file archive and removal tool
 	pkgver = 1.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/brandonio21/download-sweeper
 	arch = any
 	license = GPL
