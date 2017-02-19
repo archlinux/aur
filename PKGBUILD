@@ -2,11 +2,12 @@
 
 # Due to the license's distribution condition,
 # you need to download the archive below and put it in PKGBUILD directory.
-# http://www.mediafire.com/download/klclifq2g91o2tq/Timbres+Of+Heaven+GM_GS_XG_SFX+V+3.2+Final.7z
+# https://drive.google.com/file/d/0B2NEzl-56UFHd054VnJETzJOZjg/view?usp=sharing
 # For latest versions, see <http://midkar.com/soundfonts/> and inform the AUR package maintainer.
 
 pkgname=soundfont-toh
-pkgver=('3.2' 'Final')
+pkgver=3.4
+_relstage="Final"
 pkgrel=1
 pkgdesc="Don Allen's Timbres of Heaven soundfont"
 arch=('any')
@@ -15,8 +16,8 @@ license=('custom')
 source=('LICENSE')
 md5sums=('3fd3aa3e20d7ea437293b8e13723aae1')
 
-_local_src=("Timbres Of Heaven GM_GS_XG_SFX V ${pkgver[0]} ${pkgver[1]}.7z")
-_local_md5sums=('92bca630ea3939c1e19646e09299dd1d')
+_local_src=("Timbres Of Heaven GM_GS_XG_SFX V ${pkgver[0]} $_relstage.7z")
+_local_md5sums=('a2a2f85380f0e5eb5b06635306fbc8a9')
 
 prepare() {
 	cd "${srcdir%/*}/"
