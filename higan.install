@@ -1,0 +1,11 @@
+post_install() {
+	echo "==> Please copy the config files in /usr/share/higan to ~/.config/higan"
+	echo "==> Higan needs these files to run correctly."
+	echo "==> Create a config directory for ananke in ~/.config/ananke"
+}
+
+post_upgrade() {
+	echo "==> Please copy the config files in /usr/share/higan to ~/.config/higan"
+	echo "==> Higan needs these files to run correctly."
+	echo "==> Create a config directory for ananke in ~/.config/ananke"
+}

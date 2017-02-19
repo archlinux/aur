@@ -1,0 +1,11 @@
+--- src/higan/sfc/chip/superfx/superfx.hpp~	2015-05-09 22:37:08.287693019 +0900
++++ src/higan/sfc/chip/superfx/superfx.hpp	2015-05-09 23:08:25.110062072 +0900
+@@ -19,7 +19,7 @@
+   void serialize(serializer&);
+ 
+ privileged:
+-  unsigned clockmode = 0;  //0 = selectable, 1 = force 10.74mhz, 2 = force 21.48mhz
++  unsigned clockmode = 2;  //0 = selectable, 1 = force 10.74mhz, 2 = force 21.48mhz
+   unsigned instruction_counter;
+ };
+ 

@@ -1,0 +1,185 @@
+diff -ru higan_v094-source/sfc/cpu/timing/timing.cpp bsneshle094/sfc/cpu/timing/timing.cpp
+--- higan_v094-source/sfc/cpu/timing/timing.cpp	2010-12-26 16:16:47.000000000 +0100
++++ bsneshle094/sfc/cpu/timing/timing.cpp	2014-05-26 23:52:03.147625704 +0200
+@@ -8,6 +8,7 @@ unsigned CPU::dma_counter() {
+ }
+
+ void CPU::add_clocks(unsigned clocks) {
++again:
+   status.irq_lock = false;
+   unsigned ticks = clocks >> 1;
+   while(ticks--) {
+@@ -25,7 +26,8 @@ void CPU::add_clocks(unsigned clocks) {
+
+   if(status.dram_refreshed == false && hcounter() >= status.dram_refresh_position) {
+     status.dram_refreshed = true;
+-    add_clocks(40);
++    clocks = 40;
++    goto again;
+   }
+
+   #if defined(DEBUGGER)
+diff -ru higan_v094-source/emulator/emulator.hpp bsneshle094/emulator/emulator.hpp
+--- higan_v094-source/emulator/emulator.hpp	2014-01-20 07:36:22.000000000 +0100
++++ bsneshle094/emulator/emulator.hpp	2014-04-26 16:20:16.498065832 +0200
+@@ -143,7 +143,7 @@
+ typedef uint30_t uint30;
+ typedef uint31_t uint31;
+ typedef uint32_t uint32;
+-typedef uint_t<33> uint33;
++typedef nall::uint_t<33> uint33;
+ typedef uint64_t uint64;
+ 
+ typedef varuint_t<unsigned> varuint;
+diff -ru higan_v094-source/sfc/cpu/timing/timing.hpp bsneshle094/sfc/cpu/timing/timing.hpp
+--- higan_v094-source/sfc/cpu/timing/timing.hpp	2010-12-26 16:16:47.000000000 +0100
++++ bsneshle094/sfc/cpu/timing/timing.hpp	2014-05-26 23:52:03.147625704 +0200
+@@ -1,7 +1,7 @@
+ //timing.cpp
+ unsigned dma_counter();
+ 
+-void add_clocks(unsigned clocks);
++alwaysinline void add_clocks(unsigned clocks);
+ void scanline();
+ 
+ alwaysinline void alu_edge();
+diff -ru higan_v094-source/sfc/ppu/background/background.hpp bsneshle094/sfc/ppu/background/background.hpp
+--- higan_v094-source/sfc/ppu/background/background.hpp	2013-05-05 09:31:28.000000000 +0200
++++ bsneshle094/sfc/ppu/background/background.hpp	2014-05-03 23:18:53.731330831 +0200
+@@ -60,21 +60,21 @@
+     uint8 data[8];
+   };
+ 
+-  void frame();
+-  void scanline();
+-  void begin();
+-  void run(bool screen);
+-  void reset();
++  inline void frame();
++  inline void scanline();
++  inline void begin();
++  inline void run(bool screen);
++  inline void reset();
+ 
+-  void get_tile();
+-  unsigned get_tile_color();
+-  unsigned get_tile(unsigned x, unsigned y);
+-  signed clip(signed n);
+-  void begin_mode7();
+-  void run_mode7();
++  inline void get_tile();
++  inline unsigned get_tile_color();
++  inline unsigned get_tile(unsigned x, unsigned y);
++  inline signed clip(signed n);
++  inline void begin_mode7();
++  inline void run_mode7();
+ 
+-  void serialize(serializer&);
+-  Background(PPU& self, unsigned id);
++  inline void serialize(serializer&);
++  inline Background(PPU& self, unsigned id);
+ 
+   PPU& self;
+   friend class PPU;
+diff -ru higan_v094-source/sfc/ppu/screen/screen.hpp bsneshle094/sfc/ppu/screen/screen.hpp
+--- higan_v094-source/sfc/ppu/screen/screen.hpp	2013-05-05 09:36:42.000000000 +0200
++++ bsneshle094/sfc/ppu/screen/screen.hpp	2014-05-03 23:19:20.659331336 +0200
+@@ -29,19 +29,19 @@
+     bool color_halve;
+   } math;
+ 
+-  void scanline();
+-  void run();
+-  void reset();
++  inline void scanline();
++  inline void run();
++  inline void reset();
+ 
+-  uint16 get_pixel_sub(bool hires);
+-  uint16 get_pixel_main();
+-  uint16 addsub(unsigned x, unsigned y);
+-  uint16 get_color(unsigned palette);
+-  uint16 get_direct_color(unsigned palette, unsigned tile);
+-  uint16 fixed_color() const;
++  inline uint16 get_pixel_sub(bool hires);
++  inline uint16 get_pixel_main();
++  inline uint16 addsub(unsigned x, unsigned y);
++  inline uint16 get_color(unsigned palette);
++  inline uint16 get_direct_color(unsigned palette, unsigned tile);
++  inline uint16 fixed_color() const;
+ 
+-  void serialize(serializer&);
+-  Screen(PPU& self);
++  inline void serialize(serializer&);
++  inline Screen(PPU& self);
+ 
+   PPU& self;
+   friend class PPU;
+diff -ru higan_v094-source/sfc/ppu/sprite/sprite.hpp bsneshle094/sfc/ppu/sprite/sprite.hpp
+--- higan_v094-source/sfc/ppu/sprite/sprite.hpp	2013-05-05 09:37:44.000000000 +0200
++++ bsneshle094/sfc/ppu/sprite/sprite.hpp	2014-05-03 23:18:08.691329985 +0200
+@@ -60,22 +60,22 @@
+   } output;
+ 
+   //list.cpp
+-  void update(unsigned addr, uint8 data);
+-  void synchronize();
++  inline void update(unsigned addr, uint8 data);
++  inline void synchronize();
+ 
+   //sprite.cpp
+-  void address_reset();
+-  void set_first_sprite();
+-  void frame();
+-  void scanline();
+-  void run();
+-  void tilefetch();
+-  void reset();
++  inline void address_reset();
++  inline void set_first_sprite();
++  inline void frame();
++  inline void scanline();
++  inline void run();
++  inline void tilefetch();
++  inline void reset();
+ 
+-  bool on_scanline(SpriteItem&);
++  inline bool on_scanline(SpriteItem&);
+ 
+-  void serialize(serializer&);
+-  Sprite(PPU& self);
++  inline void serialize(serializer&);
++  inline Sprite(PPU& self);
+ 
+   PPU& self;
+   friend class PPU;
+diff -ru higan_v094-source/sfc/ppu/window/window.hpp bsneshle094/sfc/ppu/window/window.hpp
+--- higan_v094-source/sfc/ppu/window/window.hpp	2013-05-05 09:40:42.000000000 +0200
++++ bsneshle094/sfc/ppu/window/window.hpp	2014-05-03 23:19:37.315331649 +0200
+@@ -69,19 +69,19 @@
+     bool two;
+   };
+ 
+-  void scanline();
+-  void run();
+-  void reset();
++  inline void scanline();
++  inline void run();
++  inline void reset();
+ 
+-  void test(
++  inline void test(
+     bool& main, bool& sub,
+     bool one_enable, bool one_invert,
+     bool two_enable, bool two_invert,
+     uint8 mask, bool main_enable, bool sub_enable
+   );
+ 
+-  void serialize(serializer&);
+-  Window(PPU& self);
++  inline void serialize(serializer&);
++  inline Window(PPU& self);
+ 
+   PPU& self;
+   friend class PPU;
+

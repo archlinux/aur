@@ -1,0 +1,32 @@
+pkgbase = higan-qq
+	pkgdesc = A Nintendo multi-system emulator with quequotion's customizations
+	pkgver = 094.8d4b3cfa
+	pkgrel = 1
+	url = http://byuu.org/higan/
+	install = higan.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	replaces = higan-qq-git
+	source = higan::git+https://github.com/quequotion/higan-qq.git
+	source = profilebatch
+	source = super-fx-hax.patch
+	source = mercury.patch
+	md5sums = SKIP
+	md5sums = 42cf726affe08829b13e843b8d8ae682
+	md5sums = 480577daf0602cd5eabac698a4a2e310
+	md5sums = 6ce8b7fef6432184d50124e26991a374
+
+pkgname = higan-qq
+	depends = openal
+	depends = libgl
+	optdepends = alsa
+	optdepends = pulseaudio
+	optdepends = sdl
+	provides = higan
+	provides = higan-qq
+	conflicts = higan
+	conflicts = bsnes
+
+pkgname = libananke
+
