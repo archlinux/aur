@@ -5,7 +5,7 @@ _proj=rarfile
 #_python=python2 _pyver=2
 _python=python _pyver=""
 pkgname="$_python-$_proj"
-pkgver=2.8
+pkgver=3.0
 pkgrel=1
 pkgdesc="Rar archive reader for Python"
 arch=(any)
@@ -26,11 +26,12 @@ provides=("python-$_proj")
 source=(
   "https://pypi.io/packages/source/r/$_proj/$_proj-$pkgver.tar.gz"
 )
-md5sums=('98942f9c51468ca044738fe2e96fdd2d')
+md5sums=('d7e9a8b429f5604730400b4db3362038')
 
 build() {
   cd "$srcdir/$_proj-$pkgver"
   "$_python" setup.py build
+  cd doc
   make html SPHINXBUILD="sphinx-build$_pyver" BUILDDIR="_build-$pkgname"
 }
 
@@ -38,6 +39,6 @@ package() {
   cd "$srcdir/$_proj-$pkgver"
   "$_python" setup.py install --root="$pkgdir" --optimize=1
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -D -m644 README.html "$pkgdir/usr/share/doc/$pkgname/README.html"
+  install -d -m755 "$pkgdir/usr/share/doc/$pkgname"
   cp -a "doc/_build-$pkgname/html" "$pkgdir/usr/share/doc/$pkgname/"
 }
