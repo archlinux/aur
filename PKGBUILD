@@ -12,5 +12,5 @@ makedepends=(python-pip)
 md5sums=()
 
 package() {
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps btrfs
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps btrfs=="${pkgver}"
 }
