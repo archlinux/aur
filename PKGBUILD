@@ -32,7 +32,7 @@ pkgdesc="The open-source project behind Google Chrome, an attempt at creating a 
 arch=('i686' 'x86_64')
 url="https://www.chromium.org/Home"
 license=('BSD')
-depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libexif' 'libgcrypt'
+depends=('gtk3' 'libcups' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libexif' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'perl' 'perl-file-basedir'
          'pciutils' 'desktop-file-utils' 'hicolor-icon-theme')
 depends+=(${_system_libs[@]})
@@ -189,7 +189,7 @@ package() {
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png"
   done
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/chromium/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:

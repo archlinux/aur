@@ -15,6 +15,7 @@ pkgbase = chromium-gtk3
 	makedepends = ninja
 	makedepends = git
 	depends = gtk3
+	depends = libcups
 	depends = nss
 	depends = alsa-lib
 	depends = xdg-utils
