@@ -1,0 +1,15 @@
+pkgbase = recipes
+	pkgdesc = Recipe management application for GNOME
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Recipes
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = gnome-autoar
+	depends = gspell
+	source = https://download.gnome.org/sources/recipes/0.12/recipes-0.12.0.tar.xz
+	sha256sums = 2807c6887ede60bca11fb82dab273ad4393fd2131df5c1564ef95508b891735e
+
+pkgname = recipes
+
