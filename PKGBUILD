@@ -8,7 +8,7 @@ _pkgname=gogs
 _team=github.com/gogits
 _gogsdir="src/${_team}/${_pkgname}"
 pkgname=${_pkgname}-dev-git
-pkgver=0.9.158.0218+3+5d766bc4
+pkgver=0.9.158.0218+5+c6990032
 pkgrel=1
 pkgdesc="Self Hosted Git Service in the Go Programming Language. This is the current git version from branch ${_branch}."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -27,7 +27,6 @@ optdepends=(
 "openssh: GIT over SSH support"
 )
 makedepends=('go' 'git' 'nodejs-less')
-backup=("etc/${_pkgname}/app.ini")
 install=${_pkgname}.install
 
 source=(
@@ -94,7 +93,6 @@ package() {
     install -Dm0644 -t "$pkgdir/usr/lib/systemd/system"  "$srcdir/${_pkgname}.service"
 
     install -Dm0644 "$srcdir/${_pkgname}.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/${_pkgname}.conf"
-    install -Dm064  -t "$pkgdir/etc/${_pkgname}" ./conf/app.ini
 
 }
 
