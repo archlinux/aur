@@ -1,6 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=WhatPulse
+GenericName=Usage Statistics Tracker & Sharer
 Exec=whatpulse
 Icon=whatpulse
 StartupNotify=true

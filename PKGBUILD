@@ -5,7 +5,7 @@
 
 pkgname=whatpulse
 pkgver=2.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Measures your keyboard, mouse and application usage, network traffic and uptime."
 arch=('i686' 'x86_64')
 url=http://www.whatpulse.org
@@ -15,13 +15,12 @@ changelog="$pkgname.changelog"
 install="$pkgname.install"
 depends=(qt4)
 optdepends=(
-    'systray: any systray, like gnome-panel'
     'libpcap: for capturing network statistics'
 )
 source=('whatpulse.desktop')
 source_i686=("http://static.whatpulse.org/files/whatpulse-linux-32bit-$pkgver.tar.gz")
 source_x86_64=("http://static.whatpulse.org/files/whatpulse-linux-64bit-$pkgver.tar.gz")
-sha256sums=('9ad42960f0a8b538f1d98fea1ced9b2a97ef59aadca50d0382efdb71434572b7')
+sha256sums=('aba7e6b28ccebdb6115245dae1a7ca8e88afa2ecb1619037b66f65090a284363')
 sha256sums_i686=('1662da8504d03bc14e7195087f5989e6657ad3de2a226f9e0248e0bb49bc83d5')
 sha256sums_x86_64=('c7e9090866e115486b56a2dc47f920be40354fe6680af0646f3355d9cd8167d2')
 
