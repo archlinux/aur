@@ -11,7 +11,7 @@ pkgbase=lib32-$_pkgbasename
 pkgname=('lib32-catalyst-utils' 'lib32-catalyst-libgl' 'lib32-opencl-catalyst')
 
 pkgver=15.9
-pkgrel=5
+pkgrel=7
 _amdver=15.201.1151
 url="http://www.amd.com"
 arch=(x86_64)
@@ -31,9 +31,9 @@ build() {
 
 package_lib32-catalyst-libgl() {
       pkgdesc="AMD/ATI drivers. Catalyst drivers libraries symlinks (32-bit)"
-      depends=('lib32-catalyst-utils' 'lib32-mesa>=10.1.0-4')
-      conflicts=('lib32-libgl' 'lib32-mesa-libgl' 'lib32-mesa-libgl-git')
-      provides=('lib32-libgl' 'lib32-mesa-libgl' 'lib32-mesa-libgl-git')
+      depends=('lib32-catalyst-utils' 'lib32-mesa')
+      conflicts=('lib32-libgl' 'lib32-mesa-libgl' 'lib32-mesa-libgl-git' 'lib32-libgles' 'lib32-libegl')
+      provides=('lib32-libgl' 'lib32-mesa-libgl' 'lib32-mesa-libgl-git' 'lib32-libgles' 'lib32-libegl')
       install=lib32-catalyst-libgl.install
 
       install -dm755 ${pkgdir}/usr/lib32/fglrx
@@ -70,6 +70,7 @@ package_lib32-opencl-catalyst() {
       optdepends=('opencl-headers: headers necessary for OpenCL development'
                 'lib32-opencl-icd-loader: OpenCL ICD Bindings (32-bit)')
       provides=('lib32-opencl-driver')
+      conflicts=('lib32-opencl-amd')
 
       install -m755 -d ${pkgdir}/etc/OpenCL/vendors
       install -m644 ${srcdir}/archive_files/arch/x86/etc/OpenCL/vendors/amdocl32.icd ${pkgdir}/etc/OpenCL/vendors
