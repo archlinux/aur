@@ -1,16 +1,17 @@
 pkgbase = aegir-hostmaster
 	pkgdesc = mass Drupal hosting system - frontend
 	pkgver = 7.x_3.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://aegirproject.org
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = drush>=7
+	optdepends = dehydrated
 	source = https://ftp.drupal.org/files/projects/hostmaster-7.x-3.9-no-core.tar.gz
 	source = https://ftp.drupal.org/files/projects/devel_debug_log-7.x-1.2.tar.gz
 	source = https://ftp.drupal.org/files/projects/devel-7.x-1.5.tar.gz
 	source = https://ftp.drupal.org/files/projects/drupal-7.53.tar.gz
-	source = https://github.com/lukas2511/dehydrated/archive/master.tar.gz
 	source = hosting_https::git+https://gitlab.com/aegir/hosting_https.git
 	source = hosting_https-pkg-info.patch
 	source = hosting-hook_hosting_TASK_OBJECT_context_options-2846897-2.patch
@@ -18,7 +19,6 @@ pkgbase = aegir-hostmaster
 	md5sums = 19561aa1a0f2e549acf5c44a8cad8e14
 	md5sums = f06c912eb4edbd48fbcc2867516726a3
 	md5sums = 4230279ecca4f0cde652a219e10327e7
-	md5sums = 62f0351d36f900884705207922d5c7d5
 	md5sums = SKIP
 	md5sums = da16dba10759dfa59c7d760419f3f042
 	md5sums = faa872c26a49c62d841574ae10a43a20
