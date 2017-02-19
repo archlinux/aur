@@ -1,0 +1,12 @@
+[auth]
+email: email@address.xyz
+password: very_secure
+deviceid: random_characters
+
+[colour]
+enable: no
+background: #abc123
+foreground: #abc123
+highlight: #abc123
+content1: #abc123
+content2: #abc123
