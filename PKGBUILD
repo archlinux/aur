@@ -2,7 +2,7 @@
 # Contributer: Benjamin Colard <benjamin at colard dot be>
 
 pkgname=darkmod
-pkgver=2.04
+pkgver=2.05
 pkgrel=1
 pkgdesc="DOOM III standalone mod based on the Thief series by Looking Glass Studios"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ build() {
 
   # If you know which mirrors are closest to you, edit the
   # tdm_mirrors.txt file and uncomment the keep mirrors argument
-  xterm -e $srcdir/darkmod/tdm_update.linux #--keep-mirrors	
+  xterm -e $srcdir/darkmod/tdm_update.linux --noselfupdate #--keep-mirrors	
   rm -f $srcdir/darkmod/{TheDarkMod.exe,tdm_update.exe,tdm_update.linux,tdm_mirrors.txt,ca-bundle.crt,crc_info.txt,tdm_update.log}
 }
 

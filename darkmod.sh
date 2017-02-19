@@ -12,6 +12,20 @@ function link_file() {
     fi
 }
 
+# Not only was the saintlucia mission renamed to stlucia, but these symlinks
+# break saving games and prevent mission info from showing in the menu
+# The replacement links later fix this
+
+if [ -L "$(eval echo ~$USER)/.local/share/darkmod/fms/saintlucia" ]; then
+    echo -e "Removing symlink to old Saint Lucia mission"
+    rm "$(eval echo ~$USER)/.local/share/darkmod/fms/saintlucia"
+fi
+
+if [ -L "$(eval echo ~$USER)/.local/share/darkmod/fms/training_mission" ]; then
+    echo -e "Removing symlink to old Training Mission"
+    rm "$(eval echo ~$USER)/.local/share/darkmod/fms/training_mission"
+fi
+
 link_file "tdm_ai_humanoid_nobles01.pk4"
 link_file "tdm_models01.pk4"
 link_file "tdm_sound_vocals06.pk4"
@@ -41,13 +55,20 @@ link_file "tdm_sound_ambient02.pk4"
 link_file "tdm_textures_decals01.pk4"
 link_file "tdm_textures_window01.pk4"
 
-if [ ! -d "$(eval echo ~$USER)/.local/share/darkmod/fms/saintlucia" ]; then
-    echo -e "Linking missing game file fms/saintlucia\n"
-    ln -s "/opt/darkmod/fms/saintlucia" "$(eval echo ~$USER)/.local/share/darkmod/fms/saintlucia"
+if [ ! -d "$(eval echo ~$USER)/.local/share/darkmod/fms/stlucia" ]; then
+    echo -e "Linking missing game file fms/stlucia\n"
+    mkdir "$(eval echo ~$USER)/.local/share/darkmod/fms/stlucia"
+    ln -s "/opt/darkmod/fms/stlucia/stlucia.pk4" "$(eval echo ~$USER)/.local/share/darkmod/fms/stlucia/stlucia.pk4"
+fi
+if [ ! -d "$(eval echo ~$USER)/.local/share/darkmod/fms/newjob" ]; then
+    echo -e "Linking missing game file fms/newjob\n"
+    mkdir "$(eval echo ~$USER)/.local/share/darkmod/fms/newjob"
+    ln -s "/opt/darkmod/fms/newjob/newjob.pk4" "$(eval echo ~$USER)/.local/share/darkmod/fms/newjob/newjob.pk4"
 fi
 if [ ! -d "$(eval echo ~$USER)/.local/share/darkmod/fms/training_mission" ]; then
     echo -e "Linking missing game file fms/training_mission\n"
-    ln -s "/opt/darkmod/fms/training_mission" "$(eval echo ~$USER)/.local/share/darkmod/fms/training_mission"
+    mkdir "$(eval echo ~$USER)/.local/share/darkmod/fms/training_mission"
+    ln -s "/opt/darkmod/fms/training_mission/training_mission.pk4" "$(eval echo ~$USER)/.local/share/darkmod/fms/training_mission/training_mission.pk4"
 fi
 
 link_file "tdm_defs01.pk4"

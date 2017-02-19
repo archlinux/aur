@@ -1,6 +1,6 @@
 pkgbase = darkmod
 	pkgdesc = DOOM III standalone mod based on the Thief series by Looking Glass Studios
-	pkgver = 2.04
+	pkgver = 2.05
 	pkgrel = 1
 	url = http://www.thedarkmod.com/
 	arch = i686
