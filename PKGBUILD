@@ -1,7 +1,7 @@
 # Maintainer: duffydack <duffydack73 {at] gmail {dot} com>
 pkgbase=linux-max98090
 _srcname=linux-4.9
-pkgver=4.9.8
+pkgver=4.9.9
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -25,7 +25,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'd53bb9fb309193cbbf88faa28f4cecfc312dbddaa4c2cbf089f2a7ecd56889c0'
+            'ec97e3bf8585865d409a804316b276a6b4e4939286de9757f99bfb41cf112078'
             'SKIP'
             'a352a3461a8794d09e6a147a81b62a022d2422d887edb3c74d6747a48d9bdd09'
             '3422b1397cc6e69360fc587b638033b8c02e0f8647181266a68869699bb6160a'
@@ -103,7 +103,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The Archlinux kernel and modules with patches for byt-max98090 sound, like chromebooks"
+  pkgdesc="The Archlinux kernel and modules with a fix for baytrail max98090 sound"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
