@@ -1,14 +1,14 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=python-btrfs-heatmap
-pkgver=v5
+pkgver=5
 pkgrel=1
 pkgdesc="Python Btrfs HeatMap"
 arch=('any')
 url="https://github.com/knorrie/btrfs-heatmap"
 license=('GPL3')
 depends=('python-btrfs')
-source=("$pkgname"::"git://github.com/knorrie/btrfs-heatmap.git#tag=${pkgver}")
+source=("$pkgname"::"git://github.com/knorrie/btrfs-heatmap.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
 package() {
