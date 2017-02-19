@@ -1,7 +1,7 @@
 pkgbase = cl-alexandria
-	pkgdesc = A tiling, keyboard-driven window manager written in common lisp
+	pkgdesc = A set of common-lisp help functions
 	pkgver = 20161123
-	pkgrel = 1
+	pkgrel = 2
 	url = https://common-lisp.net/project/alexandria/
 	arch = any
 	license = custom

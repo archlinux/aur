@@ -3,8 +3,8 @@
 pkgname=cl-alexandria
 _pkgname=${pkgname#cl-}
 pkgver=20161123
-pkgrel=1
-pkgdesc="A tiling, keyboard-driven window manager written in common lisp"
+pkgrel=2
+pkgdesc="A set of common-lisp help functions"
 arch=('any')
 url="https://common-lisp.net/project/alexandria/"
 license=('custom')
