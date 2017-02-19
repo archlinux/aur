@@ -2,16 +2,17 @@
 # Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 pkgname=mingw-w64-glib2
-pkgver=2.50.2
-pkgrel=2
+pkgver=2.50.3
+pkgrel=1
+_commit=9da3e7226d20715962f679812ce7632513b7e06c
 arch=(any)
 pkgdesc="Low level core library (mingw-w64)"
-depends=(mingw-w64-gettext mingw-w64-zlib mingw-w64-libffi mingw-w64-pcre mingw-w64-freetype2)
-makedepends=(mingw-w64-configure python)
+depends=(mingw-w64-libffi mingw-w64-pcre)
+makedepends=(mingw-w64-configure python mingw-w64-gettext shared-mime-info mingw-w64-zlib git)
 license=("LGPL")
 options=(!strip !buildflags staticlibs !emptydirs)
 url="http://www.gtk.org/"
-source=("http://ftp.gnome.org/pub/GNOME/sources/glib/${pkgver%.*}/glib-$pkgver.tar.xz"
+source=("git+https://git.gnome.org/browse/glib#commit=$_commit"
 "0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch"
 "0004-glib-prefer-constructors-over-DllMain.patch"
 "0017-GSocket-Fix-race-conditions-on-Win32-if-multiple-thr.patch"
@@ -19,7 +20,7 @@ source=("http://ftp.gnome.org/pub/GNOME/sources/glib/${pkgver%.*}/glib-$pkgver.t
 "0028-inode_directory.patch"
 "revert-warn-glib-compile-schemas.patch"
 "use-pkgconfig-file-for-intl.patch")
-sha256sums=('be68737c1f268c05493e503b3b654d2b7f43d7d0b8c5556f7e4651b870acfbf5'
+sha256sums=('SKIP'
             'ef81e82e15fb3a71bad770be17fe4fea3f4d9cdee238d6caa39807eeea5da3e3'
             '7b099af0c562f397458542482d6d1debe437f220762aa2ed94b2e6c4d43dd8a6'
             '8e8ee4011e39900febc8f6177dfbaeef4f73f56c34abd09f76fe023447005946'
@@ -30,8 +31,13 @@ sha256sums=('be68737c1f268c05493e503b3b654d2b7f43d7d0b8c5556f7e4651b870acfbf5'
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+pkgver() {
+  cd glib
+  git describe --tags | sed 's/-/+/g'
+}
+
 prepare() {
-  cd glib-$pkgver
+  cd glib
   patch -Np1 -i .."/0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch"
   patch -Np1 -i ../0004-glib-prefer-constructors-over-DllMain.patch
   patch -p1 -i ../0017-GSocket-Fix-race-conditions-on-Win32-if-multiple-thr.patch
@@ -44,7 +50,7 @@ prepare() {
 
 
 build() {
-  cd glib-$pkgver
+  cd glib
   conf="--with-pcre=system --with-threads=win32 --disable-fam"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
@@ -63,9 +69,9 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "$srcdir/glib-$pkgver/build-${_arch}-shared"
+    cd "$srcdir/glib/build-${_arch}-shared"
     make DESTDIR="$pkgdir" install
-    make -C "$srcdir/glib-$pkgver/build-${_arch}-static" DESTDIR="$pkgdir/static" install
+    make -C "$srcdir/glib/build-${_arch}-static" DESTDIR="$pkgdir/static" install
     mv "$pkgdir/static/usr/${_arch}/lib/"*.a "$pkgdir/usr/${_arch}/lib/"
 		find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
 		find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
