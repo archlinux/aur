@@ -23,35 +23,36 @@
 # Contributor: Philip Muller @ Manjaro (4.4 kernel patch)
 # Contributor: aslmaswd (acpi main script)
 # Contributor: npfeiler (libcl/opencl-icd-loader cleaning)
+# Contributor: sling00 (4.10 kernel patch)
 
 
 pkgname=catalyst-total
 pkgver=15.9
-pkgrel=16
+pkgrel=17
 _amdver=15.201.1151
 pkgdesc="AMD/ATI Catalyst drivers for linux. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('dkms' 'linux>=3.0' 'linux<4.10' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
+depends=('dkms' 'linux>=3.0' 'linux<4.11' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
 	    'acpid: acpi event support  / atieventsd'
 	    'procps-ng: brings pgrep used in acpi event support'
 	    'opencl-icd-loader: OpenCL ICD Bindings')
-conflicts=('libgl' 'catalyst' 'catalyst-daemon' 'catalyst-generator' 'catalyst-hook' 'catalyst-utils' 'catalyst-dkms' 'mesa-libgl' 'mesa-libgl-git')
-provides=('libgl' "libatical=${pkgver}" "catalyst=${pkgver}" "catalyst-utils=${pkgver}" "catalyst-hook=${pkgver}" "catalyst-libgl=${pkgver}" "opencl-catalyst=${pkgver}" 'dri' 'libtxc_dxtn' 'mesa-libgl' 'mesa-libgl-git' 'opencl-driver')
+conflicts=('libgl' 'catalyst' 'catalyst-daemon' 'catalyst-generator' 'catalyst-hook' 'catalyst-utils' 'catalyst-dkms' 'mesa-libgl' 'mesa-libgl-git' 'libgles' 'libegl' 'opencl-amd')
+provides=('libgl' "libatical=${pkgver}" "catalyst=${pkgver}" "catalyst-utils=${pkgver}" "catalyst-hook=${pkgver}" "catalyst-libgl=${pkgver}" "opencl-catalyst=${pkgver}" 'dri' 'libtxc_dxtn' 'mesa-libgl' 'mesa-libgl-git' 'opencl-driver' 'libgles' 'libegl')
 
 if [ "${CARCH}" = "x86_64" ]; then
  warning "x86_64 system detected"
  warning "[multilib] repository must be uncommented in /etc/pacman.conf to add lib32-catalyst-utils into the package"
   if [[ `cat /etc/pacman.conf | grep -c "#\[multilib]"` = 0 ]]; then
     warning "OK, lib32-catalyst-utils will be added to the package"
-    depends+=('lib32-libxext' 'lib32-libdrm' 'lib32-libxinerama' 'lib32-mesa>=10.1.0-4')
-    conflicts+=('lib32-libgl' 'lib32-catalyst-utils' 'lib32-mesa-libgl' 'lib32-mesa-libgl-git')
-    provides+=('lib32-libgl' "lib32-catalyst-utils=${pkgver}" "lib32-catalyst-libgl=${pkgver}" "lib32-opencl-catalyst=${pkgver}" 'lib32-dri' 'lib32-libtxc_dxtn' 'lib32-mesa-libgl' 'lib32-mesa-libgl-git' 'lib32-opencl-driver')
+    depends+=('lib32-libxext' 'lib32-libdrm' 'lib32-libxinerama' 'lib32-mesa')
+    conflicts+=('lib32-libgl' 'lib32-catalyst-utils' 'lib32-mesa-libgl' 'lib32-mesa-libgl-git' 'lib32-libgles' 'lib32-libegl' 'lib32-opencl-amd')
+    provides+=('lib32-libgl' "lib32-catalyst-utils=${pkgver}" "lib32-catalyst-libgl=${pkgver}" "lib32-opencl-catalyst=${pkgver}" 'lib32-dri' 'lib32-libtxc_dxtn' 'lib32-mesa-libgl' 'lib32-mesa-libgl-git' 'lib32-opencl-driver' 'lib32-libgles' 'lib32-libegl')
     optdepends+=('lib32-opencl-icd-loader: OpenCL ICD Bindings (32-bit)')
       else
 	warning "lib32-catalyst-utils will NOT be added to the package"
@@ -96,7 +97,8 @@ source=(
     dkms.conf
     makesh-dont-check-gcc-version.patch
     4.7-arch-cpu_has_pge-v2.patch
-    4.9_over_4.6-arch-get_user_pages_remote.patch)
+    4.9_over_4.6-arch-get_user_pages_remote.patch
+    4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch)
 
 md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
@@ -125,7 +127,8 @@ md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 '23d569abfdd7de433d76e003e4b3ccf9'
 	 '10829e3b992b3e80a6e78c8e27748703'
 	 '37eef5103a11d8136979463e7bc31091'
-	 '194cb44e9e2ab0e65b6267aca66d0400')
+	 '194cb44e9e2ab0e65b6267aca66d0400'
+	 '05f6364db877d9c4bdf1592deda905b7')
 
 
 build() {
@@ -317,6 +320,7 @@ package() {
       patch -Np1 -i ../makesh-dont-check-gcc-version.patch
       patch -Np1 -i ../4.7-arch-cpu_has_pge-v2.patch
       patch -Np1 -i ../4.9_over_4.6-arch-get_user_pages_remote.patch
+      patch -Np1 -i ../4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch
 
     # Prepare modules source files
       install -dm755 ${pkgdir}/usr/src/fglrx-${pkgver}/2.6.x
