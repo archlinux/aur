@@ -6,7 +6,7 @@
 
 _pkgname=vim
 pkgname=$_pkgname-runtime-git
-pkgver=7.4.824
+pkgver=8.0.0342
 pkgrel=1
 pkgdesc="Vim the editor. Components used by vim-minimal-git and gvim-git."
 arch=("i686" "x86_64")
@@ -56,10 +56,9 @@ package() {
     cd $_pkgname
     make DESTDIR=$pkgdir install
 
-    # move components provided by vim-minimal-git and gvim-git out of the way
+    # remove components provided by vim-minimal-git and gvim-git
     cd $pkgdir
-    rm -R usr/bin
-    rm -R usr/share/man
+    rm -R usr/bin usr/share/{applications,man}
 
     # add license
     install -D -m644 $srcdir/$_pkgname/runtime/doc/uganda.txt \
