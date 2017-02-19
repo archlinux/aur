@@ -22,7 +22,7 @@ source=(http://www.fidcal.com/darkuser/tdm_update_linux.zip
 md5sums=('3e39c23cc754f2ac55e05b5a5b56023c'
          'bc6537224b60c4ccfd04a51d80e340c1'
          '5309e528ce22f28ecc0e9781e43379e0'
-         'a7a6ca33f20bb920ba0688cb8c36874c')
+         '7230f47d04072a7473f823d6925af947')
 
 build() {
   cd "$srcdir"
