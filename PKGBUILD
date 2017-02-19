@@ -1,7 +1,7 @@
 # Maintainer: Mikołaj Baranowski <mikolajb@gmail.com>
 
 pkgname=dbxcli
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='A command line client for Dropbox built using the Go SDK'
 license=('Apache')
@@ -11,7 +11,7 @@ depends=()
 makedepends=('go')
 
 source=("https://github.com/dropbox/dbxcli/archive/v${pkgver}.zip")
-md5sums=('dd809780a007ddad50ac5b9e6c313aaa')
+md5sums=('eed40a3d763f0390bd67d96d90681e50')
 
 build() {
   msg2 'Compiling...'
