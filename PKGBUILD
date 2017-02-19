@@ -2,7 +2,7 @@
 # https://github.com/ValHue/AUR-PKGBUILDs
 
 pkgname="thunar-megasync"
-pkgver="2.9.2"
+pkgver="3.0.1.0"
 pkgrel="1"
 pkgdesc="Upload your files to your Mega account from Thunar."
 arch=('i686' 'x86_64')
@@ -11,17 +11,17 @@ license=('custom:The Clarified Artistic License')
 depends=('megasync' 'thunar')
 provides=("${pkgname}")
 
-source=("https://github.com/meganz/MEGAsync/archive/master.zip")
-sha256sums=('2208cd8cb8a6908843ec38b7510858cabed4c0b54f9fd7cac8c65e7652ed316d')
+source=("https://github.com/meganz/MEGAsync/archive/v${pkgver}_Linux.zip")
+sha256sums=('88d5cd14cb4157f4593b005cb7ce37022d1f1d3b5d79eb5362f210ece7031fb8')
 
 build() {
-	cd "MEGAsync-master/src/MEGAShellExtThunar"
+	cd "MEGAsync-${pkgver}_Linux/src/MEGAShellExtThunar"
     qmake-qt4 MEGAShellExtThunar.pro
     make
 }
 
 package() {
-	cd "MEGAsync-master/src/MEGAShellExtThunar"
+	cd "MEGAsync-${pkgver}_Linux/src/MEGAShellExtThunar"
 	install -dm 755 ${pkgdir}/usr/lib/thunarx-2/
 	install -m 644 libMEGAShellExtThunar.so.1.0.0 ${pkgdir}/usr/lib/thunarx-2/
 	
