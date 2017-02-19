@@ -1,11 +1,3 @@
-From d8d034f24154d08dfe558feccddfbed312d727d4 Mon Sep 17 00:00:00 2001
-From: Alexey Korop <avkorop@i.ua>
-Date: Sat, 24 Oct 2015 11:55:30 +0300
-Subject: Mouse transparency fix
-
-
-diff --git a/src/conky.cc b/src/conky.cc
-index b48fd7c..025ed20 100644
 --- a/src/conky.cc
 +++ b/src/conky.cc
 @@ -60,6 +60,9 @@
@@ -16,14 +8,16 @@ index b48fd7c..025ed20 100644
 +#include <X11/extensions/shape.h>
 +#endif /* BUILD_XSHAPE */
  #endif /* BUILD_X11 */
- #include <sys/types.h>
- #include <sys/stat.h>
-@@ -2042,6 +2045,21 @@ static void main_loop(void)
- 	sigaddset(&newmask, SIGUSR1);
+ #ifdef BUILD_NCURSES
+ #include <ncurses.h>
+@@ -2046,6 +2049,25 @@
+ int inotify_fd = -1;
  #endif
  
 +#ifdef BUILD_XSHAPE
++static bool need_null_shape = true;
 +	/* allow only decorated windows to be given mouse input */
++void set_null_shape(void){
 +	int major_version, minor_version;
 +	if (!XShapeQueryVersion(display, &major_version, &minor_version)) {
 +		NORM_ERR("Input shapes are not supported");
@@ -35,50 +29,50 @@ index b48fd7c..025ed20 100644
 +			   NULL, 0, ShapeSet, Unsorted);
 +		}
 +	}
++}
 +#endif /* BUILD_XSHAPE */
 +
- 	last_update_time = 0.0;
- 	next_update_time = get_time();
- 	info.looped = 0;
-diff --git a/src/x11.cc b/src/x11.cc
-index 48f5197..15db872 100644
---- a/src/x11.cc
-+++ b/src/x11.cc
-@@ -47,10 +47,6 @@
- #ifdef BUILD_XFT
- #include <X11/Xft/Xft.h>
++
+ static void main_loop(void)
+ {
+ 	int terminate = 0;
+@@ -2067,6 +2089,10 @@
+ 	sigaddset(&newmask, SIGTERM);
+ 	sigaddset(&newmask, SIGUSR1);
  #endif
--#ifdef BUILD_XSHAPE
--#include <X11/extensions/shape.h>
--#include <X11/extensions/shapeconst.h>
--#endif
- #ifdef BUILD_XINERAMA
- #include <X11/extensions/Xinerama.h>
- #endif
-@@ -716,26 +712,6 @@ static void init_window(lua::state &l __attribute__((unused)), bool own)
++
++#ifdef BUILD_XSHAPE
++	set_null_shape();
++#endif /* BUILD_XSHAPE */
  
- 			wmHint.flags = InputHint | StateHint;
- 			/* allow decorated windows to be given input focus by WM */
--			wmHint.input =
--				TEST_HINT(hints, HINT_UNDECORATED) ? False : True;
--#ifdef BUILD_XSHAPE
--			if (!wmHint.input) {
--				int event_base, error_base;
--				if (XShapeQueryExtension(display, &event_base, &error_base)) {
--					int major_version = 0, minor_version = 0;
--					XShapeQueryVersion(display, &major_version, &minor_version);
--					if ((major_version > 1) || ((major_version == 1) && (minor_version >=1))) {
--						Region empty_region = XCreateRegion();
--						XShapeCombineRegion(display, window.window, ShapeInput, 0, 0, empty_region, ShapeSet);
--						XDestroyRegion(empty_region);
--					} else {
--						NORM_ERR("Input shapes are not supported");
--					}
--				} else {
--					NORM_ERR("No shape extension found");
--				}
--			}
--#endif
- 			if (own_window_type.get(l) == TYPE_DOCK || own_window_type.get(l) == TYPE_PANEL) {
- 				wmHint.initial_state = WithdrawnState;
- 			} else {
+ 	last_update_time = 0.0;
+ 	next_update_time = get_time() - fmod(get_time(), active_update_interval());
+@@ -2335,7 +2361,12 @@
+ 									own_window_type.get(*state) == TYPE_DESKTOP) {
+ 								/* allow conky to hold input focus. */
+ 								break;
+-							} else {
++							}
++#ifdef BUILD_XSHAPE
++						else if (need_null_shape)
++							set_null_shape();
++#endif /* BUILD_XSHAPE */
++						else {
+ 								/* forward the click to the desktop window */
+ 								XUngrabPointer(display, ev.xbutton.time);
+ 								ev.xbutton.window = window.desktop;
+@@ -2356,7 +2387,12 @@
+ 									not TEST_HINT(own_window_hints.get(*state), HINT_UNDECORATED)) {
+ 								/* allow conky to hold input focus. */
+ 								break;
+-							} else {
++							}
++#ifdef BUILD_XSHAPE
++						else if (need_null_shape)
++							set_null_shape();
++#endif /* BUILD_XSHAPE */
++						else {
+ 								/* forward the release to the desktop window */
+ 								ev.xbutton.window = window.desktop;
+ 								ev.xbutton.x = ev.xbutton.x_root;
+

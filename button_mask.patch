@@ -1,0 +1,12 @@
+--- a/src/x11.cc
++++ b/src/x11.cc
+@@ -974,7 +974,7 @@
+ 
+ 	XSelectInput(display, window.window, ExposureMask | PropertyChangeMask
+ #ifdef OWN_WINDOW
+-			| (own_window.get(l) ? (StructureNotifyMask |
++			| (own ? (StructureNotifyMask |
+ 					ButtonPressMask | ButtonReleaseMask) : 0)
+ #endif
+ 			);
+
