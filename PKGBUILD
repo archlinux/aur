@@ -9,7 +9,6 @@ url='http://www.amd.com'
 license=('custom:AMD')
 makedepends=('wget')
 depends=('ocl-icd')
-optdepends=('linux-cik: amdgpu support for CIK cards (Bonaire/Hawaii series)')
 conflicts=('amdgpocl')
 
 DLAGENTS='https::/usr/bin/wget --referer https://support.amd.com/en-us/kb-articles/Pages/AMDGPU-PRO-Driver-for-Linux-Release-Notes.aspx -N %u'
