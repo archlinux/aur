@@ -22,8 +22,8 @@ md5sums=(
 )
 
 _package_subarch() {
-  arch_tag=${1%h}
-  depends+=("x-tools-$arch_tag-bin")
+  arch_tag=arm$1
+  depends+=("x-tools-${arch_tag%h}-bin")
 
   config_file_path="etc/conf.d/distccd-$arch_tag"
 
@@ -31,7 +31,7 @@ _package_subarch() {
   backup=("$config_file_path")
 
   # install corresponding services
-  installed_service_path="${pkgdir}/usr/lib/systemd/system/distccd-$1.service"
+  installed_service_path="${pkgdir}/usr/lib/systemd/system/distccd-$arch_tag.service"
   install -Dm0644 "${srcdir}/distccd.service" $installed_service_path
   echo "/\(EnvironmentFile=.*\)/\1-$arch_tag/" 
   # Append for armv* in Description
@@ -42,7 +42,7 @@ _package_subarch() {
   # install config
   installed_config_path="${pkgdir}/$config_file_path"
   install -Dm0644 "${srcdir}/distccd.conf.d" "$installed_config_path"
-  echo "PATH=/usr/x-tools/x-tools${1##armv}/arm-unknown-linux-gnueabihf/bin:\$PATH" \
+  echo "PATH=/usr/x-tools/x-tools${arch_tag##armv}/arm-unknown-linux-gnueabihf/bin:\$PATH" \
     >> "$installed_config_path"
 }
 
