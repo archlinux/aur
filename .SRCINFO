@@ -1,6 +1,6 @@
 pkgbase = pacaur-git
 	pkgdesc = An AUR helper that minimizes user interaction
-	pkgver = 4.7.3
+	pkgver = 4.7.4
 	pkgrel = 1
 	url = https://github.com/rmarquis/pacaur
 	arch = any
