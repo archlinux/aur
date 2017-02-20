@@ -1,15 +1,15 @@
 # Maintainer: spider-mario <spidermario@free.fr>
-pkgname=('cinnxp' 'cinnxp-royale')
+pkgname=('cinnxp' 'cinnxp-icons' 'cinnxp-royale' 'cinnxp-metallic')
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="XP-like theme for Cinnamon"
 arch=('any')
 url="https://github.com/petrucci4prez/CinnXP"
 license=('unknown')
 makedepends=('git' 'ruby-bundler' 'ruby-sass' 'xorg-xcursorgen')
-optdepends=('gtk2' 'gtk3' 'cinnamon' 'metacity')
+optdepends=('gtk2' 'gtk3' 'cinnamon' 'metacity' 'cinnxp-icons')
 options=('!strip')
-source=('cinnxp::git+https://github.com/petrucci4prez/CinnXP.git#commit=a1b1a3182fa21f2b4d376b4f071c9c839a8d5a9d')
+source=('cinnxp::git+https://github.com/petrucci4prez/CinnXP.git#commit=93708aed2dfe6eb539999614e249f5e50d868ea3')
 sha512sums=('SKIP')
 
 build() {
@@ -17,26 +17,40 @@ build() {
 
 	rm -fr pkg{,-royale}
 	./compile-theme
-	./compile-theme -r -n pkg-royale
+	./compile-theme -f royale -n pkg-royale
+	./compile-theme -f metallic -n pkg-metallic
 
-	find pkg{,-royale} -type d -exec chmod 755 '{}' +
-	find pkg{,-royale} -type f -exec chmod 644 '{}' +
-
-	cd pkg-royale/usr/share
-	for subdir in *; do
-		mv "$subdir"/CinnXP{,-Royale}
-	done
-	perl -pe 's/(?<=CinnXP)/-Royale/' -i icons/CinnXP-Royale/cursor.theme
+	find pkg{,-royale,-metallic} -type d -exec chmod 755 '{}' +
+	find pkg{,-royale,-metallic} -type f -exec chmod 644 '{}' +
 }
 
 package_cinnxp() {
 	cd "$pkgdir"
-	cp -aR "$srcdir"/cinnxp/pkg/usr .
+	cp -a "$srcdir"/cinnxp/pkg/usr .
+	rm -fr usr/share/icons
+}
+
+package_cinnxp-icons() {
+	pkgdesc="XP-like theme for Cinnamon (Cursors)"
+	optdepends=()
+
+	cd "$pkgdir"
+	cp -a "$srcdir"/cinnxp/pkg/usr .
+	rm -fr usr/share/themes
 }
 
 package_cinnxp-royale() {
 	pkgdesc="XP-like theme for Cinnamon (Royale variant)"
 
 	cd "$pkgdir"
-	cp -aR "$srcdir"/cinnxp/pkg-royale/usr .
+	cp -a "$srcdir"/cinnxp/pkg-royale/usr .
+	rm -fr usr/share/icons
+}
+
+package_cinnxp-metallic() {
+	pkgdesc="XP-like theme for Cinnamon (Metallic variant)"
+
+	cd "$pkgdir"
+	cp -a "$srcdir"/cinnxp/pkg-metallic/usr .
+	rm -fr usr/share/icons
 }
