@@ -2,7 +2,7 @@
 
 pkgname=geoda
 pkgver=1.8.12
-pkgrel=9
+pkgrel=10
 pkgdesc='GeoDa is an Exploratory (Spatial) Data Analysis and Spatial Regression software, for spatial data analysis including spatial econometrics.'
 arch=('x86_64')
 license=('custom:free_for_non_commercial_use')
@@ -11,31 +11,24 @@ depends=('libcurl-gnutls')
 makedepends=('wget' 'dpkg' 'rsync')
 install=$pkgname.install
 source=(
-  "https://s3.amazonaws.com/geoda/software/GeoDa-1.8.12-Ubuntu-64bit.deb"
+	"https://s3.amazonaws.com/geoda/software/GeoDa-1.8.12-Ubuntu-64bit.deb"
 )
 
 package()
 {
-  cd "$srcdir/"
-  dpkg -X ../GeoDa-1.8.12-Ubuntu-64bit.deb ./
-      
-  find . -type d -exec chmod 755 {} \;
-  
-  sed 's/usr\/local/usr/' <usr/bin/run_geoda.sh > usr/bin/geoda-3
-  sed 's/$GEODA_HOME\/gdaldata/$HOME\/gdaldata/' <usr/bin/geoda-3 > usr/bin/geoda-2
-  sed '/chmod/d' <usr/bin/geoda-2 > usr/bin/geoda
-  chmod +x usr/bin/geoda
-  rm usr/bin/run_geoda.sh
-  rm usr/bin/geoda-2
-
-  mv usr/local/geoda usr/geoda
-  
-  install -d $pkgdir/usr
-  rsync -aPv usr/ $pkgdir/usr
-	chmod -R 644 $pkgdir/usr
-	chmod 777 $pkgdir/usr/bin/geoda
-	chmod 777 $pkgdir/usr/geoda/GeoDa
-	chmod 777 $pkgdir/usr/geoda/run.sh
+	cd "$srcdir/"
+	dpkg -X ../GeoDa-1.8.12-Ubuntu-64bit.deb ./
+			
+	find . -type d -exec chmod 755 {} \;
+	
+	sed 's/$GEODA_HOME\/gdaldata/$HOME\/gdaldata/' <usr/bin/run_geoda.sh > usr/bin/geoda-2
+	sed '/chmod/d' <usr/bin/geoda-2 > usr/bin/geoda
+	chmod +x usr/bin/geoda
+	rm usr/bin/run_geoda.sh
+	rm usr/bin/geoda-2
+	
+	install -d $pkgdir/usr
+	rsync -aPv usr/ $pkgdir/usr
 	chmod 666 $pkgdir/usr/geoda/cache.sqlite
 }
 
