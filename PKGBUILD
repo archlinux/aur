@@ -7,7 +7,7 @@
 pkgname=flite1
 _pkgname=flite
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A lighweight version of festival speech synthesis (version 1)"
 arch=('i686' 'x86_64')
 url="http://www.speech.cs.cmu.edu/flite/"
@@ -22,6 +22,7 @@ md5sums=('b7c3523b3bbc6f29ce61e6650cd9a428'
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}-release"
   patch -p1 -i ../${pkgname}.patch
+  sed -i 's/BUILDDIR/_FLITE1_BUILDPATH/g' config/common_make_rules
 }
 
 build() {
