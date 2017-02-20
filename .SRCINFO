@@ -1,23 +1,35 @@
 pkgbase = colord-nopolkit
-	pkgdesc = Color daemon widthout polkit
-	pkgver = 1.0.1
+	pkgdesc = System daemon for managing color devices, without polkit, logind and bach-completion dependancy.
+	pkgver = 1.3.4
 	pkgrel = 1
-	url = http://www.freedesktop.org/software/colord
+	url = https://www.freedesktop.org/software/colord
+	install = colord.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = intltool
 	makedepends = gobject-introspection
-	makedepends = vala
-	makedepends = docbook2x
+	makedepends = argyllcms
+	makedepends = gnome-common
+	makedepends = git
+	makedepends = docbook-utils
+	makedepends = docbook-sgml
+	makedepends = perl-sgmls
 	depends = lcms2
-	depends = sqlite3
-	depends = udev
+	depends = libgusb
+	depends = sqlite
+	depends = systemd
+	depends = dconf
+	depends = dbus
+	depends = libgudev
+	optdepends = sane: scanner support
+	optdepends = argyllcms: color profiling
 	provides = colord
-	conflicts = colord
-	options = !libtool
-	source = http://www.freedesktop.org/software/colord/releases/colord-1.0.1.tar.xz
-	sha256sums = 053f028aba6071068064ca7fe949bb3f74fb5ad16af2d7ec5bba10dea00cb785
+	conflicts = polkit
+	replaces = shared-color-profiles
+	source = git+https://github.com/hughsie/colord#commit=b4329ab9e5dfe87ac46db9df82bc014d658ee26a
+	validpgpkeys = 163EB50119225DB3DF8F49EA17ACBA8DFA970E17
+	sha1sums = SKIP
 
 pkgname = colord-nopolkit
 
