@@ -1,5 +1,5 @@
-#! /bin/bash
-# Maintainer: Jorge Barroso <jorge.barroso.11 at gmail dot com>
+# Maintainer: Bernhard Landauer <oberon@manjaro.org>
+# Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: Michal Malek <michalm@jabster.pl>
 
 pkgname=fontmatrix
@@ -8,12 +8,11 @@ pkgrel=6
 pkgdesc="Font manager for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgname/$pkgname"
-_git=557e621aa1cde741c2485b04550b51fe2d51d563
 license=('GPL')
 depends=('qtwebkit')
 makedepends=('cmake' 'git' 'mesa') 
-source=($pkgname::$url/archive/$_git.tar.gz)
-sha256sums=('2c5f4eb9b6d2a7ae32f1918a9bc157d2f9c21bc4aa6dfc1e80025f98c9a24b34')
+source=("$url/archive/v$pkgver.tar.gz")
+sha256sums=('fa3ca2b189115c24c628f15334e0b506298d7a16e294bcc21bde79cba9c44a84')
 
 build() {
   cd $pkgname-$_git
