@@ -1,7 +1,7 @@
 pkgbase = mackup
 	pkgdesc = a small Python utitlity to keep your application settings in sync.
-	pkgver = 0.8.15
-	pkgrel = 5
+	pkgver = 0.8.16
+	pkgrel = 1
 	url = https://github.com/lra/mackup
 	arch = any
 	license = GPL3
@@ -9,9 +9,9 @@ pkgbase = mackup
 	makedepends = python-docopt
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/lra/mackup/archive/0.8.15.tar.gz
+	source = https://github.com/lra/mackup/archive/0.8.16.tar.gz
 	source = mackup.patch
-	sha256sums = 52eb2c8be8f3c615c6c158aa4e042db5172dec379f88b8108c5f4959f80ff0da
+	sha256sums = d50a19be1c6a5b6a777ddfb4abbc6c76a361b3edce266f1618947ad38a100331
 	sha256sums = ff7ccb9ce630718a4257743c4583cba46fe0864cdddbf3ac3bc9a3d2f39d8331
 
 pkgname = mackup
