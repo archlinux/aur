@@ -1,7 +1,7 @@
 pkgbase = vmware-workstation
 	pkgdesc = The industry standard for running multiple operating systems as virtual machines on a single Linux PC.
 	pkgver = 12.5.2_4638234
-	pkgrel = 10
+	pkgrel = 11
 	url = https://www.vmware.com/products/workstation-for-linux.html
 	arch = x86_64
 	license = custom

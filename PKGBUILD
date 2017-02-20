@@ -2,7 +2,7 @@
 
 pkgname=vmware-workstation
 pkgver=12.5.2_4638234
-pkgrel=10
+pkgrel=11
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -124,6 +124,20 @@ package() {
     vmware-vix-lib-Workstation1200/lib/Workstation-12.0.0 \
     vmware-vix-core/vixwrapper-config.txt \
     "$pkgdir/usr/lib/vmware-vix"
+
+  for isoimage in \
+    freebsd \
+    linux \
+    netware \
+    solaris \
+    winPre2k \
+    windows
+  do
+    install -Dm 644 "vmware-tools-$isoimage/$isoimage.iso" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso"
+    install -Dm 644 "vmware-tools-$isoimage/$isoimage.iso.sig" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso.sig"
+  done
+
+  install -Dm 644 vmware-player-app/lib/isoimages/tools-key.pub "$pkgdir/usr/lib/vmware/isoimages/tools-key.pub"
 
   install -Dm 644 vmware-vmx/extra/modules.xml "$pkgdir/usr/lib/vmware/modules/modules.xml"
   install -Dm 644 vmware-installer/bootstrap "$pkgdir/etc/vmware-installer/bootstrap"
