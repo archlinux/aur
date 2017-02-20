@@ -53,4 +53,8 @@ package() {
   install -Dm755 share/flickpapr/flickr-icon-64.png    $pkgdir/usr/share/flickpapr/flickr-icon-64.png
   install -d -Dm755 $pkgdir/usr/share/flickpapr/
   install -Dm755 share/flickpapr/flickr-icon-bw-64.png $pkgdir/usr/share/flickpapr/flickr-icon-bw-64.png
+  install -Dm644 flickpapr.service $pkgdir/usr/lib/systemd/user/flickpapr.service
+  echo "You can start/enable the daemon by running:"
+  echo '  systemctl --user start|enable flickpaper'
+  # install systemd user unit
 }
