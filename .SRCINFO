@@ -1,7 +1,7 @@
 pkgbase = tomoyo-tools
 	pkgdesc = TOMOYO Linux userspace tools for Linux kernels >=3.2
-	pkgver = 2.5.0.20140601
-	pkgrel = 3
+	pkgver = 2.5.0.20170102
+	pkgrel = 1
 	url = http://tomoyo.osdn.jp
 	install = tomoyo-tools.install
 	arch = i686
@@ -9,11 +9,12 @@ pkgbase = tomoyo-tools
 	license = GPL
 	depends = ncurses>=6.0
 	depends = linux-tomoyo
-	source = http://osdn.jp/frs/redir.php?f=/tomoyo/53357/tomoyo-tools-2.5.0-20140601.tar.gz
-	source = http://osdn.jp/frs/redir.php?f=/tomoyo/53357/tomoyo-tools-2.5.0-20140601.tar.gz.asc
+	source = http://osdn.jp/frs/redir.php?f=/tomoyo/53357/tomoyo-tools-2.5.0-20170102.tar.gz
+	source = http://osdn.jp/frs/redir.php?f=/tomoyo/53357/tomoyo-tools-2.5.0-20170102.tar.gz.asc
 	source = tomoyo-tools.install
 	source = tomoyo-auditd.service
-	sha256sums = 118ef6ba1fbf7c0b83018c3a0d4d5485dfb9b5b7f647f37ce9f63841a3133c2a
+	validpgpkeys = 43C83369623D7AD3A96C2FC7425F128D0C64F52A
+	sha256sums = 00fedfac5e514321250bbe69eaccc732c8a8158596f77a785c2e3ae9f9968283
 	sha256sums = SKIP
 	sha256sums = 8236b6f3f268e3991d1f677dbf0ae5f520b900540f44f23ad547f6a1c75254f5
 	sha256sums = 7c3c01a8ba34af9dc3601d470afdd0d3a2b01a1ca1951e3479cfd1fb4dfdafa3

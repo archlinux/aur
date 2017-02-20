@@ -5,9 +5,9 @@
 pkgname=tomoyo-tools
 _file=53357
 _basever=2.5.0
-_timestamp=20140601
+_timestamp=20170102
 pkgver=${_basever}.${_timestamp}
-pkgrel=3
+pkgrel=1
 pkgdesc='TOMOYO Linux userspace tools for Linux kernels >=3.2'
 arch=('i686' 'x86_64')
 url='http://tomoyo.osdn.jp'
@@ -16,7 +16,7 @@ license=('GPL')
 depends=('ncurses>=6.0' 'linux-tomoyo')
 install=tomoyo-tools.install
 source=("http://osdn.jp/frs/redir.php?f=/tomoyo/${_file}/${pkgname}-${_basever}-${_timestamp}.tar.gz"{,.asc} 'tomoyo-tools.install' 'tomoyo-auditd.service')
-sha256sums=('118ef6ba1fbf7c0b83018c3a0d4d5485dfb9b5b7f647f37ce9f63841a3133c2a'
+sha256sums=('00fedfac5e514321250bbe69eaccc732c8a8158596f77a785c2e3ae9f9968283'
             'SKIP'
             '8236b6f3f268e3991d1f677dbf0ae5f520b900540f44f23ad547f6a1c75254f5'
             '7c3c01a8ba34af9dc3601d470afdd0d3a2b01a1ca1951e3479cfd1fb4dfdafa3')
