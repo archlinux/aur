@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=heekscnc-git
 pkgver=1143.8c70474
-pkgrel=3
+pkgrel=4
 pkgdesc="CAM add-on for HeeksCAD"
 arch=('x86_64')
 url="http://heeks.net"
@@ -35,4 +35,7 @@ build() {
 package() {
   cd "$srcdir/heekscnc/build"
   make DESTDIR="$pkgdir/" install
+
+  mkdir -p "${pkgdir}/usr/share/licenses"
+  cp "${srcdir}/heekscnc/COPYING" "${pkgdir}/usr/share/licenses/$pkgname"
 }
