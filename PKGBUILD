@@ -2,7 +2,7 @@
 
 pkgname=('python-troveclient' 'python2-troveclient')
 pkgver='2.7.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Python client library for Trove'
 arch=('any')
 url='http://docs.openstack.org/developer/python-troveclient'
@@ -17,7 +17,7 @@ checkdepends=('python-coverage' 'python2-coverage'
               'python-testtools' 'python2-testtools'
               'python-mock' 'python2-mock'
               'python-httplib2' 'python2-httplib2'
-              'python2-crypto')
+              'python-crypto' 'python2-crypto')
 source=("git+https://git.openstack.org/openstack/${pkgname}#tag=${pkgver}")
 md5sums=('SKIP')
 
