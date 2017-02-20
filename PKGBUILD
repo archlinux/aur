@@ -3,7 +3,7 @@
 pkgbase=cutelyst
 pkgname=('cutelyst' 'cutelyst-docs')
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Web Framework built on top of Qt, using the simple approach of Catalyst (Perl) framework."
 arch=('i686' 'x86_64')
 url="http://cutelyst.org"
