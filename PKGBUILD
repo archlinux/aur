@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://cutelyst.org"
 license=('LGPL2.1')
 depends=('qt5-base' 'uwsgi')
-makedepends=('cmake' 'doxygen' 'graphviz')
+makedepends=('cmake' 'doxygen' 'graphviz' 'grantlee')
 source=("https://github.com/cutelyst/cutelyst/archive/r${pkgver}.tar.gz")
 md5sums=('327a9cb263ad5a41e5d920b660e508b3')
 

@@ -9,6 +9,7 @@ pkgbase = cutelyst
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = graphviz
+	makedepends = grantlee
 	depends = qt5-base
 	depends = uwsgi
 	source = https://github.com/cutelyst/cutelyst/archive/r1.4.0.tar.gz
