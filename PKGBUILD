@@ -6,7 +6,7 @@
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
 pkgver=3.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 arch=('i686' 'x86_64')
 url='https://wiki.gnome.org/Apps/Terminal'
@@ -30,12 +30,10 @@ source=(
 	"${_fpatchfile2}::${_frepourl}/plain/${_fpatchfile2}?h=${_frepobranch}"
 	"${_fgsoverridefile}::${_frepourl}/plain/${_fgsoverridefile}?h=${_frepobranch}"
 )
-sha256sums=(
-	'b00752336eb22d6d9f10c863c166ac73dcbb2ce4b280abdc0c78337e261bb0d4'
-	'83c42ed513e374c181b23da4f9fce39e197c1e09ae328147b2b2bcdfbc4c99d7'
-	'3b35e56a397aca2d92f49ae8cdcfbee8d73024c2c3342fb74a70c50fcee0a999'
-	'5409b35d1940443d29d810de0560d3303eb74c009e661e8fbfa1030e5ffde92e'
-)
+sha256sums=('b00752336eb22d6d9f10c863c166ac73dcbb2ce4b280abdc0c78337e261bb0d4'
+            '83c42ed513e374c181b23da4f9fce39e197c1e09ae328147b2b2bcdfbc4c99d7'
+            'da84d49aecd4ddfe1c23b8bb7496c4d74d49f811117f251b82c3d5bed098e112'
+            '5409b35d1940443d29d810de0560d3303eb74c009e661e8fbfa1030e5ffde92e')
 
 prepare () {
 	cd "${_pkgname}-${pkgver}"
