@@ -1,6 +1,6 @@
 pkgbase = latex-beamer-ctan
 	pkgdesc = A LaTeX class for creating slides for presentations. CTAN package
-	pkgver = 3.36
+	pkgver = 3.41
 	pkgrel = 1
 	url = http://bitbucket.org/rivanvx/beamer/wiki/Home
 	install = latex-beamer-ctan.install
@@ -9,7 +9,7 @@ pkgbase = latex-beamer-ctan
 	depends = texlive-core
 	conflicts = latex-beamer,latex-beamer-hg
 	source = http://mirror.ctan.org/macros/latex/contrib/beamer.zip
-	md5sums = dcaecc8caa113ba7ccfd7eee48c264a6
+	md5sums = 41f0c90c23f5c807a585fb94ad3c223d
 
 pkgname = latex-beamer-ctan
 
