@@ -18,7 +18,6 @@ Audio playback:
 
     - libpulse (RECOMMENDED)
     - alsa-lib
-    - openal
     - jack
     - qt5-multimedia
 

@@ -2,7 +2,7 @@
 
 pkgrealname=webcamoid
 pkgname=webcamoid-git
-pkgver=7.2.1.r185.g60b373b7
+pkgver=7.2.1.r191.g1c67c9de
 pkgrel=1
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://webcamoid.github.io/'
@@ -19,7 +19,6 @@ optdepends=('v4l2loopback-dkms: Virtual camera support'
             'gst-plugins-ugly: Video playing/recording/conversion'
             'libpulse: Audio playback (Recommended)'
             'alsa-lib: Audio playback'
-            'openal: Audio playback'
             'jack: Audio playback'
             'qt5-multimedia: Audio playback'
             'libuvc-git: Camera capture')
