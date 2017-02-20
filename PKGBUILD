@@ -1,7 +1,7 @@
 # Contributor: Darko82 <darko 82 (hat) gmail dotcom>
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=photoflow-git
-pkgver=r1411.6014bb9
+pkgver=r1414.93dc9cb
 pkgrel=1
 pkgdesc="Non-destructive, layer-based photo retouching including RAW image development"
 arch=('i686' 'x86_64')
