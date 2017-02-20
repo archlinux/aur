@@ -10,7 +10,7 @@
 
 _name=vlc
 pkgname=vlc-git
-pkgver=3.0.0.r10950.gfaa5a38a4c
+pkgver=3.0.0.r11224.g4e080f7ae4
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
 arch=('i686' 'x86_64')
@@ -19,13 +19,14 @@ license=('LGPLv2.1' 'GPLv3')
 depends=('a52dec' 'faad2' 'ffmpeg' 'libdca' 'libdvbpsi'
          'libdvdnav' 'libmad' 'libmatroska' 'libmpcdec' 'libmpeg2'
          'libproxy' 'libshout' 'libtar' 'libtiger' 'libupnp'
-         'libxinerama' 'libxpm' 'lua' 'sdl_image'
-         'taglib' 'xcb-util-keysyms' 'zvbi')
+         'libxinerama' 'libxpm' 'lua' 'sdl_image' 'mesa' 'wayland' 'wayland-protocols'
+         'taglib' 'xcb-util-keysyms' 'zvbi' 'libsecret' 'libarchive' 'qt5-base' 'libglvnd'
+         'hicolor-icon-theme' 'qt5-x11extras')
 makedepends=('aalib' 'flac' 'git'
              'libavc1394' 'libbluray' 'libcaca' 'libdc1394' 'libdvdcss'
              'libgme' 'libgoom2' 'libmtp' 'libnotify' 'librsvg'
-             'libssh2' 'lirc' 'live-media' 'mesa' 'opus'
-             'portaudio' 'projectm' 'twolame' 'vcdimager' 'xosd' 'qt5-base' 'smbclient')
+             'libssh2' 'lirc' 'live-media'  'opus'
+             'portaudio' 'projectm' 'twolame' 'vcdimager' 'xosd' 'smbclient')
 optdepends=('aalib: for ASCII art plugin'
             'avahi: for service discovery using bonjour protocol'
             'flac: for Free Lossless Audio Codec plugin'
@@ -57,8 +58,6 @@ optdepends=('aalib: for ASCII art plugin'
             'vcdimager: navigate VCD with libvcdinfo')
 conflicts=("${_name}" 'vlc-dev' 'vlc-plugin' 'vlc-stable-git')
 provides=("${_name}=${pkgver}")
-backup=('usr/share/vlc/lua/http/.hosts'
-        'usr/share/vlc/lua/http/dialogs/.hosts')
 options=('!emptydirs')
 install="${_name}.install"
 source=('git://git.videolan.org/vlc.git'
