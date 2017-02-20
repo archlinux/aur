@@ -1,6 +1,6 @@
 pkgbase = lastpass-cli-git
 	pkgdesc = LastPass command line interface tool (git version)
-	pkgver = 1.1.2.r0.gc9fa3a5
+	pkgver = 1.1.2.r6.g1c6f8f6
 	pkgrel = 1
 	url = https://lastpass.com/
 	arch = i686
