@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=heekscad-git
 pkgver=1449.008d7b6f
-pkgrel=5
+pkgrel=6
 pkgdesc="HeeksCNC is an open source, 3D CAD/CAM software"
 arch=('x86_64')
 url="http://heeks.net"
@@ -36,4 +36,7 @@ build() {
 package() {
   cd "$srcdir/heekscad/build"
   make DESTDIR="$pkgdir/" install
+
+  mkdir -p "${pkgdir}/usr/share/licenses"
+  cp "${srcdir}/heekscad/COPYING" "${pkgdir}/usr/share/licenses/$pkgname"
 }
