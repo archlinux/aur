@@ -1,0 +1,18 @@
+pkgbase = shup-git
+	pkgdesc = File sharing (images, code snippets, movies...) made easy. GIT version
+	pkgver = v0.1.0.rc0.g1b581aa
+	pkgrel = 1
+	url = https://github.com/Naam/shup
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-paramiko
+	depends = python-progressbar2
+	provides = shup-git
+	conflicts = shup-git
+	source = shup-git::git+https://github.com/Naam/shup.git
+	sha256sums = SKIP
+
+pkgname = shup-git
+
