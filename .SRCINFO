@@ -9,7 +9,7 @@ pkgbase = python-pypssl
 	makedepends = python2
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = pypssl-2.1::https://pypi.python.org/packages/source/p/pypssl/pypssl-2.1.tar.gz
+	source = pypssl-2.1.tar.gz::https://pypi.python.org/packages/source/p/pypssl/pypssl-2.1.tar.gz
 	sha512sums = eca60c76dbe62ac9333c4eb693fe0842c4c31f1a637e102c5a079bd3f29623fb014533bd177788942b9142a35d980e4eb625188887afe05b79999e513aa31fd2
 
 pkgname = python-pypssl

@@ -9,7 +9,7 @@ pkgdesc="Python API for PSSL."
 arch=('any')
 url="https://pypi.python.org/pypi/pypssl"
 license=('BSD2')
-source=("${_pyname}-${pkgver}::https://pypi.python.org/packages/source/p/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+source=("${_pyname}-${pkgver}.tar.gz::https://pypi.python.org/packages/source/p/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 sha512sums=('eca60c76dbe62ac9333c4eb693fe0842c4c31f1a637e102c5a079bd3f29623fb014533bd177788942b9142a35d980e4eb625188887afe05b79999e513aa31fd2')
 
 package_python-pypssl() {
