@@ -63,14 +63,14 @@ build(){
         # Profile Guided Optimization build
         #
         # Build with profile generation
-        #make pgo=instrument compiler=g++ platform=linux target=higan profile=${_profile} name=higan-${_profile}
+        make pgo=instrument compiler=g++ platform=linux target=higan profile=${_profile} name=higan-${_profile}
         #
         # Run all cores and SFC special chips (except the new (famicom variant) nSide systems (Playchoice 10, VS System))
-        #"${srcdir}/profilebatch" "out/higan-${_profile}" "/path/to/your/higan/library"
+        "${srcdir}/profilebatch" "out/higan-${_profile}" "/path/to/your/higan/library"
         #
         # Build with profile analysis
-        #make clean
-        #make pgo=optimize compiler=g++ platform=linux target=higan profile=${_profile} name=higan-${_profile}
+        make clean
+        make pgo=optimize compiler=g++ platform=linux target=higan profile=${_profile} name=higan-${_profile}
 }
 
 package_libananke(){
