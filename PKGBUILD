@@ -3,7 +3,7 @@
 pkgname=avocode
 pkgrel=2
 pkgver=2.12.6
-pkgdesc="The bridge between designers and developers"
+pkgdesc="Export code, specs and images from PSD & Sketch designs"
 url="http://avocode.com/"
 provides=('avocode')
 arch=('i686' 'x86_64')
