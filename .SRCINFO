@@ -1,0 +1,29 @@
+pkgbase = openconnect-palo-git
+	pkgdesc = VPN client for Palo Alto GlobalProtect VPN
+	pkgver = 7.08.r84.g91025a3
+	pkgrel = 1
+	url = http://www.infradead.org/openconnect.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = python2
+	makedepends = git
+	depends = libxml2
+	depends = gnutls
+	depends = libproxy
+	depends = vpnc
+	depends = krb5
+	depends = lz4
+	depends = pcsclite
+	depends = trousers
+	depends = stoken
+	depends = oath-toolkit
+	provides = openconnect
+	conflicts = openconnect
+	options = !emptydirs
+	source = openconnect-palo-git::git+https://github.com/dlenski/openconnect.git/
+	md5sums = SKIP
+
+pkgname = openconnect-palo-git
+
