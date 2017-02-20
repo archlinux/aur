@@ -1,0 +1,18 @@
+pkgbase = qtvkbd
+	pkgdesc = A virtual keyboard
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/Alexander-r/qtvkbd
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = libxtst
+	source = qtvkbd::git+https://github.com/Alexander-r/qtvkbd.git#tag=v0.8
+	md5sums = SKIP
+
+pkgname = qtvkbd
+
