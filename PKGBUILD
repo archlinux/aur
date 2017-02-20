@@ -6,13 +6,12 @@
 
 pkgname=ophcrack
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Windows password cracker based on rainbow tables"
 arch=('i686' 'x86_64')
 url="http://ophcrack.sourceforge.net"
 license=('GPL')
 depends=('qt4')
-optdepends=('qwt: enable graph')
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2
         ophcrack.desktop)
 md5sums=('f05e41f4261c488d7da1015374b5725b'
