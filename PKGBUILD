@@ -1,6 +1,6 @@
 # Maintainer: Thomas Gläßle <t_glaessle@gmx.de>
 pkgname=scsi_debug
-pkgver=4.9.8
+pkgver=4.9.9
 pkgrel=1
 pkgdesc="Kernel module for emulating SCSI devices"
 arch=('any')
