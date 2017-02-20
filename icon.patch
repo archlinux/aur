@@ -1,0 +1,20 @@
+54,70c54
+< Icon[cs]=com.gexperts.Terminix
+< Icon[de]=com.gexperts.Terminix
+< Icon[el]=com.gexperts.Terminix
+< Icon[es]=com.gexperts.Terminix
+< Icon[fr]=com.gexperts.Terminix
+< Icon[he]=com.gexperts.Terminix
+< Icon[it]=com.gexperts.Terminix
+< Icon[ja]=com.gexperts.Terminix
+< Icon[nl]=com.gexperts.Terminix
+< Icon[pl]=com.gexperts.Terminix
+< Icon[pt_BR]=com.gexperts.Terminix
+< Icon[pt_PT]=com.gexperts.Terminix
+< Icon[ru]=com.gexperts.Terminix
+< Icon[sv]=com.gexperts.Terminix
+< Icon[uk]=com.gexperts.Terminix
+< Icon[zh_CN]=com.gexperts.Terminix
+< Icon=com.gexperts.Terminix
+---
+> Icon=utilities-terminal
