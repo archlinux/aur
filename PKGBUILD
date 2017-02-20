@@ -1,7 +1,7 @@
 # Maintainer: Micah Elliott <mde at micahelliott dot com>
 pkgname=flickpapr
 # pkgver=r24.86adcc7
-pkgver=r27.0a1e152
+pkgver=r28.8d8c4fa
 pkgrel=1
 pkgdesc='randomly choose an “interesting” flickr photo for desktop wallpaper'
 arch=('any')
