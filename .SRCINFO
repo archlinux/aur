@@ -1,7 +1,7 @@
 pkgbase = ann
 	pkgdesc = Approximate nearest neighbor library.
 	pkgver = 1.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.cs.umd.edu/~mount/ANN/
 	arch = i686
 	arch = x86_64

@@ -1,11 +1,11 @@
 # Contributor: Dmitriy Morozov <archlinux@foxcub.org>
 pkgname=ann
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Approximate nearest neighbor library."
 url="http://www.cs.umd.edu/~mount/ANN/"
 arch=('i686' 'x86_64')
-license="LGPL"
+license=('LGPL')
 depends=()
 source=(http://www.cs.umd.edu/~mount/ANN/Files/$pkgver/${pkgname}_$pkgver.tar.gz
         shared-libs.patch parallel.patch)
