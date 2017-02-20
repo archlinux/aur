@@ -2,32 +2,39 @@
 # Contibutor: Justin Dray <justin@dray.be>
 
 
-# In case of upgrade errors:
+#########################################################################################################
+# If upgrade fails with:
 #     error: failed to commit transaction (conflicting files)
 #     sickrage-git: /opt/sickrage/... exists in filesystem
-# Remove the conflicting files manually. The following will remove all or most of the conflicting files:
-#     # rm -rf /opt/sickrage/{contrib/,contributing.md,COPYING.txt,gui/,lib/,runscripts/,sickbeard/,SickBeard.py,sickrage/,tests/}
-# Use at your own risk!
+#
+# Then remove the conflicting files manually. The following removes all of the conflicting files as root:
+#     rm -r $(ls -1d /opt/sickrage/* | grep -Ev "/backup.*|/cache.*|/config.ini.*|/Log*.*|/.*\.db.*")
+#
+# Use at your own risk! Stop sickrage.service and backup /opt/sickrage first.
+#########################################################################################################
 
 
 _pkgname=sickrage
 pkgname=$_pkgname-git
-pkgver=4.1.0.2.r370.g4da36fb
+pkgver=8.8.4.r41.g10d0371b3
 pkgrel=1
 pkgdesc="A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage, torrents and anime support."
 arch=('any')
 url="https://github.com/SiCKRAGETV/SickRage"
 license=('GPL3')
-#unrar
 makedepends=('git')
-depends=('python2-mako' 'python2-cheetah')
+depends=('python2-apscheduler'
+         'python2-cheetah'
+         'python2-mako'
+         'python2-notify'
+         'python2-tornado'
+         'python2-tzlocal')
 #            'deluge: supported torrent client'
 #            'qbittorrent: supported torrent client'
 #            'rtorrent: supported torrent client'
 #            'sabnzbd: supported NZB downloader'
 #            'transmission-cli: supported torrent client'
-optdepends=('python2-notify: desktop notifications'
-            'python2-pyopenssl: enable SSL'
+optdepends=('python2-pyopenssl: enable SSL'
             'unrar: RAR archives')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -35,32 +42,37 @@ options=('!strip')
 install=$pkgname.install
 source=("$pkgname::git://github.com/SiCKRAGETV/SickRage.git"
         'sickrage.service'
+        'sickrage.sysusers'
         'sickrage.tmpfile')
 md5sums=('SKIP'
-         '6b19af092794f3d65a4651ef1a9c7e2e'
+         '33532fd9a661c6dd38afdabb45695980'
+         '6a7db7e14e74072d29e482b06b41dfa7'
          'f7a12df978d649da4e77d88e03f50252')
 
 pkgver() {
   cd $pkgname
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-#prepare() {
-#  cd $pkgname
-#  sed -i 's/UnRAR2/unrar2/g' lib/unrar2/test_UnRAR2.py
-#}
-#
+build() {
+  cd $pkgname
+  python2 setup.py build
+}
+
 #check() {
-#  cd $pkgname/lib/unrar2
-#  PYTHONPATH="$(pwd)/..:$PYTHONPATH" python2 test_UnRAR2.py
+#  cd $pkgname
+#  python2 setup.py test
 #}
 
 package() {
-  # The sickrage "SOURCE" install type does not have the .git folder (git repository files)
+  install -Dm644 sickrage.service "$pkgdir/usr/lib/systemd/system/sickrage.service"
+  install -Dm644 sickrage.sysusers "$pkgdir/usr/lib/sysusers.d/sickrage.conf"
+  install -Dm644 sickrage.tmpfile "$pkgdir/usr/lib/tmpfiles.d/sickrage.conf"
+
+  # The install type is "source": .git folder is not included
+  #cd $pkgname
+  #python2 setup.py install --prefix=/opt/sickrage --install-lib=/opt/sickrage --root="$pkgdir" --optimize=1
   install -dm755 "$pkgdir/opt/sickrage"
   cp -rp $pkgname/* "$pkgdir/opt/sickrage"
- 
-  install -Dm644 sickrage.service "$pkgdir/usr/lib/systemd/system/sickrage.service"
-  install -Dm644 sickrage.tmpfile "$pkgdir/usr/lib/tmpfiles.d/sickrage.conf"
 }
 

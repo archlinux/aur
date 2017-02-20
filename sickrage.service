@@ -9,8 +9,8 @@ Group=sickrage
 
 #Type=forking
 #PIDFile=/run/sickrage/sickrage.pid
-#ExecStart=/usr/bin/env python2 /opt/sickrage/SickBeard.py --quiet --daemon --nolaunch --pidfile=/run/sickrage/sickrage.pid --config /opt/sickrage/config.ini --datadir /opt/sickrage
-ExecStart=/usr/bin/env python2 /opt/sickrage/SickBeard.py --quiet --config /opt/sickrage/config.ini --datadir /opt/sickrage
+#ExecStart=/usr/bin/env python2 /opt/sickrage/SickBeard.py -q --daemon --nolaunch --config /opt/sickrage/config.ini --datadir /opt/sickrage --pidfile=/run/sickrage/sickrage.pid
+ExecStart=/usr/bin/env python2 /opt/sickrage/SickBeard.py -q --nolaunch --config /opt/sickrage/config.ini --datadir /opt/sickrage
 
 [Install]
 WantedBy=multi-user.target

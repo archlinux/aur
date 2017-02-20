@@ -1,19 +1,11 @@
 post_install() {
-  SR_DATA=/opt/sickrage
-
-  # Create or repair SickRage user/group.
-  if grep -q "^sickrage" /etc/group &> /dev/null ; then
-    groupmod -n sickrage sickrage &> /dev/null
-  else
-    groupadd -r sickrage &> /dev/null
-  fi
-  if grep -q "^sickrage:" /etc/passwd 2> /dev/null ; then
-    usermod -s /bin/false -c "SickRage daemon user" -d $SR_DATA -g sickrage sickrage &> /dev/null
-  else
-    useradd -s /bin/false -c "SickRage daemon user" -d $SR_DATA -g sickrage -r sickrage &> /dev/null
-  fi
-
+  systemd-sysusers sickrage.conf
+  systemd-tmpfiles --create sickgear.conf
   chown -R sickrage:sickrage /opt/sickrage
+  echo "==> Start and enable sickrage.service. Then visit http://localhost:8081/"
+  echo
+  echo "==> If an upgrade fails with \"error: failed to commit transaction (conflicting files)\","
+  echo "==> then remove the conflicting files manually. See comments in the PKGBUILD file."
 }
 
 post_upgrade() {
@@ -21,10 +13,10 @@ post_upgrade() {
 }
 
 post_remove() {
-  echo "==> Some files in /opt/sickrage may not have been removed."
+  echo -e "\n==> Some files in /opt/sickrage may not have been removed.\n"
 
   # Do not delete the 'sickrage' user automatically. It may still own files.
-  # If 'sickrage' is the only user in group 'sickrage', then the group will also be deleted.
+  # If 'sickrage' is the only user in group 'sickrage', then userdel will also delete the group.
   echo "==> To delete the 'sickrage' user, run as root: userdel --force sickrage"
 }
 
