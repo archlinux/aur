@@ -4,7 +4,7 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=frescobaldi
-pkgver=2.19.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
@@ -14,10 +14,11 @@ depends=(
   'hyphen'
   'poppler'
   'python>=3.2'
-  'python-ly>=0.9.4'
-  'python-poppler-qt4'
-  'python-pyqt4>=4.8.3'
-  'qt4>=4.7'
+  'python-ly>=0.9.5'
+  'python-poppler-qt5'
+  'python-pyqt5>=5.4'
+  'qt5-base>=5.4'
+  'hicolor-icon-theme'
   'tango-icon-theme'
 )
 optdepends=(
@@ -36,7 +37,7 @@ optdepends=(
   'hyphen-ro: Romanian hyphenation rules'
 )
 source=(https://github.com/wbsoft/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('e5ff8cdbec7b83601afb576c94e7aecb')
+md5sums=('dacc4cc23e4de5acef163001d18dfa8c')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
