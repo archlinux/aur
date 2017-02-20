@@ -2,7 +2,7 @@
 
 pkgname=ipe
 _dirver=7.2
-pkgver=7.2.6
+pkgver=7.2.7
 pkgrel=1
 pkgdesc="The extensible drawing editor"
 url="http://tclab.kaist.ac.kr/ipe/"
@@ -53,7 +53,7 @@ package() {
 }
 
 # vim: ft=sh syn=sh et ts=2 sw=2
-md5sums=('e59bc60229eb076b95b6eb2b0ece37d6'
+md5sums=('0898173099e7f623cf6fa130abdb1273'
          '95158c047f0a9b0916b688af1faed779'
          '694f0d5402655901be385647e5d8d6e3'
          'd4e289bce01302a8b76a0df294c7de40')
