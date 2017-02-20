@@ -3,12 +3,12 @@
 
 pkgname=brightside
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to set up hotcorners regardless of the WM or DE in use"
 arch=('i686' 'x86_64')
 url="http://linux.softpedia.com/get/Desktop-Environment/Tools/Brightside-3672.shtml"
 license=('GPL2')
-depends=('alsa-lib' 'gconf' 'libglade' 'libgnomeui' 'libwnck' 'popt')
+depends=('alsa-lib' 'gconf' 'libglade' 'libgnomeui' 'libwnck' 'popt' 'gnome-vfs-nosmb')
 makedepends=('intltool')
 install=$pkgname.install
 source=('http://pkgs.fedoraproject.org/repo/pkgs/brightside/brightside-1.4.0.tar.bz2/df6dfe0ffbf110036fa1a5549b21e9c3/brightside-1.4.0.tar.bz2'
