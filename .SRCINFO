@@ -1,0 +1,17 @@
+pkgbase = brscan-ds
+	pkgdesc = SANE drivers from Brother for DS Series USB scanners
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = sane
+	depends = libusb-compat
+	source = http://www.brother.com/pub/bsc/linux/dlf/libsane-dsseries-1.0.5-1.x86_64.rpm
+	source = scanner-license.txt
+	md5sums = 905610438d279cacf50de973a5f270cf
+	md5sums = 1bd5f896f3e97fe6d53a85b4d5a4ea79
+
+pkgname = brscan-ds
+
