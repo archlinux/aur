@@ -4,7 +4,7 @@
 
 pkgname=flirc-bin
 _pkgname=flirc
-_pkgver=2.3.0-1
+_pkgver=2.3.1-1
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="CLI and GUI application to program your Flirc device"
@@ -17,8 +17,8 @@ conflicts=('flirc')
 replaces=('flirc')
 source_i686+=("http://apt.flirc.tv/arch/i386/binary/${_pkgname}_${_pkgver}_i386.deb")
 source_x86_64+=("http://apt.flirc.tv/arch/x86_64/binary/${_pkgname}_${_pkgver}_amd64.deb")
-md5sums_i686=('17b6c83cb0cf7ddb1f62a9c1256ea4a4')
-md5sums_x86_64=('2ac6c8bd32a327aadcc4ec64e04b6ecf')
+md5sums_i686=('8e7d010087ab917d9bdef04be49000eb')
+md5sums_x86_64=('9c8737581290362daf7c24f4a1b8629d')
 
 package() {
   tar -xf data.tar.xz -C "$pkgdir"
