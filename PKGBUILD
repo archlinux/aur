@@ -4,7 +4,7 @@
 
 pkgname=('lib32-nvidia-utils-beta' 'lib32-nvidia-libgl-beta' 'lib32-opencl-nvidia-beta')
 pkgver=378.13
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 makedepends=('nvidia-libgl-beta')  # To avoid conflict during installation in the build chroot
@@ -104,7 +104,7 @@ package_lib32-nvidia-utils-beta() {
   install -Dm755 libOpenGL.so.0 "$pkgdir"/usr/lib32/libOpenGL.so.0
 
   # GLX
-  install -Dm755 libGLX.so.0 "$pkgdir"/usr/lib32/nvidia/libGLX.so.0
+  install -Dm755 libGLX.so.0 "$pkgdir"/usr/lib32/libGLX.so.0
   install -Dm755 libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libGLX_nvidia.so.$pkgver
   ln -s libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libGLX_indirect.so.0
 
