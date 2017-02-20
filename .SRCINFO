@@ -1,7 +1,7 @@
 pkgbase = razercommander-git
-	pkgdesc = A simple GTK control center for managing razer peripherals on Linux.
-	pkgver = 1.0.3
-	pkgrel = 13
+	pkgdesc = Razer device manager for Linux
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/gabmus/razercommander
 	arch = any
 	license = GPLv3
@@ -9,7 +9,7 @@ pkgbase = razercommander-git
 	depends = razer-driver-dkms
 	depends = razer-daemon
 	depends = python-razer
-	depends = gtk3>=3.20
+	depends = gtk3>=3.14
 	depends = python
 	source = razercommander::git+git://github.com/gabmus/razercommander
 	md5sums = SKIP
