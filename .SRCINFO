@@ -14,7 +14,7 @@ pkgbase = qtile
 	optdepends = python-setproctitle: change the process name to qtile
 	conflicts = qtile-git
 	source = https://github.com/qtile/qtile/archive/v0.10.7.tar.gz
-	md5sums = c0c42fb746f21f6f9d6b549595f6e16e
+	sha256sums = cbde17f5afdf2af7c80dd47c0f0ed5f8d716e3c87082c091b38e0d241ba39753
 
 pkgname = qtile
 
