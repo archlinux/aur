@@ -8,7 +8,7 @@ url="openuru.org"
 license=('GPL')
 depends=('libpqxx'
          'postgresql')
-makedepends=()
+makedepends=('mercurial')
 backup=()
 source=("$pkgname::hg+http://foundry.openuru.org/hg/MOSS"
         "include_unistd.patch")

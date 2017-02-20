@@ -6,6 +6,7 @@ pkgbase = openuru-moss
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = mercurial
 	depends = libpqxx
 	depends = postgresql
 	source = openuru-moss::hg+http://foundry.openuru.org/hg/MOSS
