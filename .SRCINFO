@@ -1,0 +1,12 @@
+pkgbase = tng-git
+	pkgdesc = Gromacs tng
+	pkgver = 1.7.6.r14.g81ca615
+	pkgrel = 1
+	url = http://www.gromacs.org/Downloads
+	arch = x86_64
+	license = BSD3
+	source = git+https://github.com/gromacs/tng
+	md5sums = SKIP
+
+pkgname = tng-git
+

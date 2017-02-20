@@ -1,0 +1,5 @@
+/pkg/
+/src/
+/tng-*.tar.gz
+/tng-*.pkg.tar*
+/tng/
