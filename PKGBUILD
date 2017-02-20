@@ -1,12 +1,12 @@
-# Maintainer: Pedro Gabriel (pedrogabriel@dcc.ufmg.br)
-# Special Thanks: FadeMind (fademind@gmail.com)
+# Maintainer: Pedro Gabriel <pedrogabriel@dcc.ufmg.br>
+# Maintainer: FadeMind <fademind@gmail.com>
 
 _fwname=aic94xx
 pkgname=${_fwname}-firmware
 pkgver=30
 pkgrel=9
 pkgdesc="Adaptec SAS 44300, 48300, 58300 Sequencer Firmware for AIC94xx driver"
-url="https://www.adaptec.com/en-us/speed/scsi/linux/${_fwname}-seq-${pkgver}-1_tar_gz.php"
+url="https://storage.microsemi.com/en-us/speed/scsi/linux/${_fwname}-seq-${pkgver}-1_tar_gz.php"
 license=('custom')
 arch=('any')
 source=("${_fwname}-seq-${pkgver}-1.tar.gz::http://download.adaptec.com/scsi/linux/${_fwname}-seq-${pkgver}-1.tar.gz"
