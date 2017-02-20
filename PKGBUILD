@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 build() {
 	cd cinnxp
 
-	rm -fr pkg{,-royale}
+	rm -fr pkg{,-royale,-metallic}
 	./compile-theme
 	./compile-theme -f royale -n pkg-royale
 	./compile-theme -f metallic -n pkg-metallic
