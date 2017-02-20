@@ -2,7 +2,7 @@
 
 pkgname=geoda
 pkgver=1.8.12
-pkgrel=10
+pkgrel=11
 pkgdesc='GeoDa is an Exploratory (Spatial) Data Analysis and Spatial Regression software, for spatial data analysis including spatial econometrics.'
 arch=('x86_64')
 license=('custom:free_for_non_commercial_use')
@@ -29,7 +29,7 @@ package()
 	
 	install -d $pkgdir/usr
 	rsync -aPv usr/ $pkgdir/usr
-	chmod 666 $pkgdir/usr/geoda/cache.sqlite
+	chmod 666 $pkgdir/usr/local/geoda/cache.sqlite
 }
 
 sha512sums=('9bb5f266dc8005093e55f271cb3c0803df7b57e1b1889a1ad5d6c763c319f12f5a8736d88672d1cd17e1fcd6ec3b3e6f45b6f6eec421a02355c7df43b7a42e95')
