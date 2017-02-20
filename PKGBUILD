@@ -1,8 +1,8 @@
 # Maintainer: Giancarlo Razzolinit <grazzolini@gmail.com>
 
 pkgname=keepass-plugin-keeagent-beta
-pkgver=0.7.12
-pkgrel=3
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="SSH Agent Plugin for KeePass - Beta Version"
 license=('GPL')
 depends=('keepass')
@@ -13,8 +13,8 @@ arch=('any')
 url="http://lechnology.com/software/keeagent/"
 DLAGENTS='http::/usr/bin/curl -fLC - --user-agent Firefox --retry 3 --retry-delay 3 -o %o %u'
 install=$pkgname.install
-source=("${pkgname}-${pkgver}.zip::http://lechnology.com/wp-content/uploads/2016/03/KeeAgent_Beta_v0.7.12.zip")
-sha512sums=('feb61b941f2a7754e5f6912fb8deb71ad5642407fd925d1f6392eb0e2747e93c8d6443344e5fc492ef7e5075a23ff59cd2a8a172dde54c67b180713bc53b0883')
+source=("${pkgname}-${pkgver}.zip::http://lechnology.com/wp-content/uploads/2017/01/KeeAgent_Beta_v0.9.0.zip")
+sha512sums=('a7f41fb3867d474b0c4b3d2f9d58e05c783006c4a41ac148b77d55837ab9349de16c62e30455affd9a95ad5729b20388998e17964f950713bcf9d93fe5ff1299')
 
 package() {
     install -Dm644 KeeAgent.plgx -t "$pkgdir/usr/share/keepass/plugins/"
