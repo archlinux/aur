@@ -1,7 +1,7 @@
 pkgbase = python-troveclient
 	pkgdesc = Python client library for Trove
 	pkgver = 2.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://docs.openstack.org/developer/python-troveclient
 	arch = any
 	license = Apache
