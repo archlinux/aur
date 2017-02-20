@@ -2,9 +2,9 @@
 # Maintainer: Jacky Ren <i@jacky.ren>
 # Maintainer: Jingbei Li <i@jingbei.li>
 
-_subarchs=(armv6h armv7h armv8h)
 pkgbase='distccd-arm'
-pkgname=("${_subarchs[@]/#/$pkgbase-}")
+_subarchs=(v6h v7h v8)
+pkgname=("${_subarchs[@]/#/$pkgbase}")
 pkgver=1.0
 pkgrel=1
 pkgdesc="Distcc services package for ARM"
@@ -48,7 +48,7 @@ _package_subarch() {
 
 # Loop over all supporting subarchs to make pakcages
 for i in "${!_subarchs[@]}"; do   
-   eval 'package_distccd-arm-'${_subarchs[i]}'() {
+   eval "package_$pkgbase"${_subarchs[i]}'() {
      _package_subarch '${_subarchs[i]}'
    }'
 done
