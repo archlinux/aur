@@ -5,7 +5,7 @@
 
 pkgbase=linux-pae
 _srcname=linux-4.9
-pkgver=4.9.8
+pkgver=4.9.9
 pkgrel=1
 arch=('i686')
 url="http://www.kernel.org/"
@@ -28,9 +28,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'd53bb9fb309193cbbf88faa28f4cecfc312dbddaa4c2cbf089f2a7ecd56889c0'
+            'ec97e3bf8585865d409a804316b276a6b4e4939286de9757f99bfb41cf112078'
             'SKIP'
-            'f81d634f3c878ab41ece45f75a9d9f08faddeb8a9d82d599d31e235b5a93dfc2'
+            'db899d4afe53d57b9ad4926135aa953335c3bbc4bac252330d090c79aa44309b'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
