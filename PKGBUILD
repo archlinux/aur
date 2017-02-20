@@ -37,9 +37,9 @@ package() {
   install -Dm644 bin/FreeDoko.desktop \
     "$pkgdir"/usr/share/applications/freedoko.desktop
 
-  cp -r manual "$pkgdir"/usr/share/doc/freedoko/
-  find "$pkgdir"/usr/share/doc -type f -exec chmod 644 {} \;
+  tar -c --exclude={*.sh,Makefile} manual |
+    tar -x -C "$pkgdir"/usr/share/doc/freedoko
 
-  find "$pkgdir"/usr/share/doc -type f \( -name Makefile -o -name *.sh \
-    -o -name Windows -o -name SuSE -o -name hpux* \) -delete
+  find "$pkgdir"/usr/share/doc/freedoko/manual -type f -exec chmod 644 {} \;
+  rm "$pkgdir"/usr/share/doc/freedoko/{de/Windows,de/SuSE,en/Windows,hpux*}
 }
