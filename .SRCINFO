@@ -1,13 +1,13 @@
 pkgbase = trolcommander
 	pkgdesc = Lightweight, cross-platform file manager written in Java
-	pkgver = 0.9.8
+	pkgver = 0.9.9
 	pkgrel = 1
 	url = https://github.com/trol73/mucommander
 	arch = any
 	license = GPL3
 	depends = java-runtime>=8
 	provides = trolcommander
-	source = https://github.com/trol73/mucommander/releases/download/v0.9.8/trolcommander_0.9.8_all.deb
-	sha256sums = 43901c1df4756a05533f9278330bbe77f4041a97f34c47327b811ad8a0fc90ad
+	source = https://github.com/trol73/mucommander/releases/download/v0.9.9/trolcommander_0.9.9_all.deb
+	sha256sums = 82a7917913c9b72768723da1cef19eee633ccc65468d4c118295e05433b8b497
 
 pkgname = trolcommander
