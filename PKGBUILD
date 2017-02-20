@@ -1,6 +1,6 @@
 # Maintainer: Corentin Peuvrel <corentin.peuvrel at gmail dot com>
 pkgname=pysnmp
-pkgver=4.3.2
+pkgver=4.3.3
 pkgrel=1
 pkgdesc="A cross-platform, pure-Python SNMP engine implementation"
 arch=(any)
@@ -9,8 +9,8 @@ license=('BSD')
 depends=('python' 'python-pyasn1')
 optdepends=('pycrypto: SNMPv3 support')
 provides=('python-pysnmp')
-source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('9a4d23c4c1edea1c77faed72c469d8e8')
+source=(https://github.com/etingof/$pkgname/archive/v$pkgver.tar.gz)
+md5sums=('25257decf8c15924e6d02d66dd1b7f1c')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
