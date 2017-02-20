@@ -1,11 +1,11 @@
 pkgname=mupen64plus-qt
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A basic launcher for Mupen64Plus"
 arch=('i686' 'x86_64')
 url="https://github.com/dh4/mupen64plus-qt"
 license=('BSD')
-depends=('quazip-qt5' 'mupen64plus' 'hicolor-icon-theme')
+depends=('quazip' 'mupen64plus' 'hicolor-icon-theme')
 install=mupen64plus-qt.install
 source=(https://github.com/dh4/${pkgname}/archive/${pkgver}.tar.gz)
 sha256sums=('526fa06e481ba4db84024a72535fc0c40dc06332bdb2985e90023948cbabac83')
