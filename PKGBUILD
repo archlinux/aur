@@ -9,7 +9,7 @@ url="https://github.com/gabrielelana/awesome-terminal-fonts"
 license=('MIT')
 depends=('fontconfig')
 install="${_pkgname}.install"
-source=("${_pkgname}-${pkgver}::https://github.com/gabrielelana/awesome-terminal-fonts/archive/v${pkgver}.tar.gz")
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/gabrielelana/awesome-terminal-fonts/archive/v${pkgver}.tar.gz")
 sha512sums=('ec3a7dde0b2421fe3af8a793ca24d839e5db57193e2ac3287501621e3504b7ff8d9da17688ab7fd0e7577d28a1cfb8eead110d0d80a721461450ae4cd54a8f58')
 
 
