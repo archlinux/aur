@@ -2,7 +2,7 @@
 
 pkgname=perl6-grammar-debugger
 pkgver=0.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Simple tracing and debugging support for Perl 6 grammars"
 arch=('any')
 depends=('perl6' 'perl6-terminal-ansicolor')
@@ -41,5 +41,7 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   rm -f "$pkgdir/usr/share/perl6/vendor/version"
-  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
+  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' +
+  find "$pkgdir" -type f -print0 -exec \
+    sed -i -e "s,$pkgdir,,g" -e "s,$srcdir,,g" '{}' +
 }
