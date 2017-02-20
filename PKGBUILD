@@ -18,10 +18,6 @@ checkdepends=('python-pytest' 'python-freezegun' 'vdirsyncer')
 source=("https://lostpackets.de/khal/downloads/khal-${pkgver}.tar.gz")
 sha256sums=('97eb94f345dd7a93f2b983d43e74b3cf86bf679f35e942f17d8823400e2bd0e7')
 
-prepare(){
-  cd "$srcdir/$pkgname-$pkgver"
-}
-
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py build
