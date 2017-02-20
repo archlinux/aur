@@ -1,6 +1,6 @@
 _pkgname=smplayer
 pkgname=$_pkgname-qt4
-pkgver=16.11.0
+pkgver=17.2.0
 pkgrel=1
 pkgdesc="Complete front-end for MPlayer/MPV (Qt4)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ provides=('smplayer')
 conflicts=('smplayer')
 install=smplayer.install
 source=(https://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver.tar.bz2)
-sha512sums=('13776ff134c4c91747fa9432080a4ea876d5d5a134b91dde48d0f0e75c280ef6d19067906e4e850da3b1b2287214914528743495cccf7cbda310bc51682b478c')
+sha512sums=('dbe22c5bf7da4d4635b0d47837d3e03c12cea40ec4fbca58009567995547c4a065d35feb149d7ff3f799604f3107527ce4e1f564d860161ada84b499cb42d9c8')
 
 build() {
   cd "smplayer-$pkgver"
