@@ -21,45 +21,32 @@ _localmodcfg=
 
 pkgbase=linux-nvme               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.9
-pkgver=4.9.11
+_srcname=linux-4.10
+pkgver=4.10
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # pacman hook for initramfs regeneration
         '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
 	'APST.patch'
-	'pm_qos1.patch'
-        'pm_qos2.patch'
-        'pm_qos3.patch'
-        'nvme.patch'
 )
-sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
-            'SKIP'
-            '23e773a670f3cac11a92c4e442405dea6d2c28fea0f914ea2ba4bea313c26541'
-            'SKIP'
+sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
             '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
             '41b9a64542befd2fea170776e8ec22a7d158dd3273633afc9b91662c448cd90a'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '8ba7d5596b65c7705958836ab93ac714dbccdcd7e806be49f667ed427eff3e83'
-            '88893fcd9612ddda60133670a83153dc44b4b13a8a05f7a4e2173ffbc6973164'
-            '945de39f2f52c78b4a500ff55c8e062d501cce3b3b739ea14ce76c6c77dc668d'
-            'e5b6308dd489f7000a7d418bfdad32c850cd5d193ce9ca97b83515f3ae815413'
-            '14191cd53057be7de90d5d1abb1e86c4a6022f5d8520f6fd30021a587d5ce565')
+            '8ba7d5596b65c7705958836ab93ac714dbccdcd7e806be49f667ed427eff3e83')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -72,7 +59,7 @@ prepare() {
 
   # mainline: not needed
   # add upstream patch
-   patch -p1 -i "${srcdir}/patch-${pkgver}"
+  # patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # mainline: add patch
   # patch -p1 -i "${srcdir}/${_patchname}" || true
@@ -83,14 +70,10 @@ prepare() {
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+  #patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   # Added APST NVME patch here
   patch -p1 -i "${srcdir}/APST.patch"
-  patch -p1 -i "${srcdir}/pm_qos1.patch"
-  patch -p1 -i "${srcdir}/pm_qos2.patch"
-  patch -p1 -i "${srcdir}/pm_qos3.patch"
-  patch -p1 -i "${srcdir}/nvme.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
