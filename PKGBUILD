@@ -1,7 +1,7 @@
 # Maintainer: Micah Elliott <mde at micahelliott dot com>
 pkgname=flickpapr
 # pkgver=r24.86adcc7
-pkgver=r28.8d8c4fa
+pkgver=r29.768edc4
 pkgrel=1
 pkgdesc='randomly choose an “interesting” flickr photo for desktop wallpaper'
 arch=('any')
@@ -50,6 +50,7 @@ package() {
   install -Dm755 bin/flickpapr $pkgdir/usr/bin/flickpapr
   install -Dm755 bin/flickloop $pkgdir/usr/bin/flickloop
   install -Dm755 bin/flickd    $pkgdir/usr/bin/flickd
+  install -Dm755 bin/flickill  $pkgdir/usr/bin/flickill
   install -Dm755 share/flickpapr/flickr-icon-64.png    $pkgdir/usr/share/flickpapr/flickr-icon-64.png
   install -d -Dm755 $pkgdir/usr/share/flickpapr/
   install -Dm755 share/flickpapr/flickr-icon-bw-64.png $pkgdir/usr/share/flickpapr/flickr-icon-bw-64.png
