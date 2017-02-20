@@ -1,5 +1,6 @@
 pkg/
 src/
+zeal/
 
 *.tar.gz
 *.tar.xz
