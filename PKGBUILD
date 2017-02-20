@@ -2,8 +2,8 @@
 
 pkgname=python-mysqlclient
 _libname=${pkgname/python-/}
-pkgver=1.3.9
-pkgrel=2
+pkgver=1.3.10
+pkgrel=1
 pkgdesc="Fork of MySQL-python with support for Python 3"
 arch=('i686' 'x86_64')
 url="https://github.com/PyMySQL/mysqlclient-python"
@@ -22,4 +22,4 @@ package() {
     python setup.py install -O1 --skip-build --root="$pkgdir"
 }
 
-sha256sums=('990ccf1e1f15b9a291b811c993dc1c216566714bc14e6581b38665bd61c28c99')
+sha256sums=('452aaf9d2ba1a4fb85c134c88f9b1857852deed63b3b13255d7a65d2c1297262')
