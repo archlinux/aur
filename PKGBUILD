@@ -1,6 +1,6 @@
 # Maintainer: Cobra <najahannah [at] archlinux [dot] info>
 pkgname=portfolio
-pkgver=0.26.2
+pkgver=0.26.3
 pkgrel=1
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ _DEST="/usr/share/portfolio"
 [ "$CARCH" = "x86_64" ] && _platform="x86_64"
 
 source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz")
-sha1sums=("7ff606513bc47b8237444786bbca67a87eca7f78")
+sha1sums=("aff4001151e9952601956004c6fbe354a8558289")
 
 build() {
     export MAVEN_OPTS="-Xmx1g"
