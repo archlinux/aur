@@ -1,34 +1,36 @@
-# Maintainer: Oleg Shparber <trollixx+aur@gmail.com>
-# Contributor: Whyme Lyu <callme5long@gmail.com>
-# URL: https://github.com/trollixx/aur-packages
+# Maintainer: Oleg Shparber <oleg@zealdocs.org>
 
-pkgname=zeal-git
 _appname=zeal
-pkgver=0.3.1.4.g042b0bb
+
+pkgname=${_appname}-git
+pkgver=0.3.1.47.g89b9d91
 pkgrel=1
-pkgdesc="An offline API documentation browser"
+pkgdesc="A simple documentation browser"
 arch=('i686' 'x86_64')
 url="https://zealdocs.org/"
 license=('GPL3')
-depends=('libarchive' 'qt5-webkit' 'qt5-imageformats' 'qt5-x11extras'
+depends=('libarchive' 'qt5-imageformats' 'qt5-webkit' 'qt5-x11extras'
          'xcb-util-keysyms' 'xdg-utils')
-makedepends=('git')
-conflicts=('zeal')
-source=("git+https://github.com/zealdocs/$_appname")
+makedepends=('cmake' 'extra-cmake-modules' 'git')
+conflicts=(${_appname})
+source=("${_appname}::git+https://github.com/zealdocs/${_appname}")
 sha1sums=('SKIP')
 
 pkgver() {
-	cd ${srcdir}/${_appname}
-	git describe | sed 's/^v//;s/-/./g'
+	cd ${_appname}
+    # TODO: Use on next version update.
+    # git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/\1/;s/-/./g'
 }
 
 build() {
-	cd ${srcdir}/${_appname}
-	qmake-qt5 "CONFIG+=force_debug_info" "QMAKE_LFLAGS+=-rdynamic"
+	mkdir -p build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ${srcdir}/${_appname}
 	make
 }
 
 package() {
-	cd ${srcdir}/${_appname}
-	make INSTALL_ROOT="$pkgdir" install
+	cd build
+	make DESTDIR=${pkgdir} install
 }
