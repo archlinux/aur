@@ -2,7 +2,7 @@
 
 pkgname=perl6-debugger-ui-commandline
 pkgver=0.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Command-line debugger frontend for Rakudo"
 arch=('any')
 depends=('perl6' 'perl6-terminal-ansicolor')
@@ -33,5 +33,7 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   rm -f "$pkgdir/usr/share/perl6/vendor/version"
-  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
+  find "$pkgdir" -type f -name "*.lock" -exec rm '{}' +
+  find "$pkgdir" -type f -print0 -exec \
+    sed -i -e "s,$pkgdir,,g" -e "s,$srcdir,,g" '{}' +
 }
