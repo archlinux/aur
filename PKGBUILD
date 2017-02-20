@@ -4,9 +4,9 @@
 # Contributor: Nathan Owe <ndowens04 at gmail>
 
 pkgname=filebot
-pkgver=4.7.7
-pkgrel=5
-_jnaver=4.2.2
+pkgver=4.7.8
+pkgrel=1
+_jnaver=4.3.0
 pkgdesc="The ultimate tool to rename TV/anime shows, download subtitles, and validate checksums."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://filebot.sourceforge.net/"
@@ -25,9 +25,9 @@ source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/FileBot_$pkgv
         https://github.com/java-native-access/jna/archive/$_jnaver.tar.gz
         $pkgname-arch.sh $pkgname.svg $pkgname.desktop)
 
-md5sums=('58d35910d5d164454c7840122a17dace'
-         '51d0359bcdb999ec0a655c68d399f304'
-         '3b51756c50a54447a5e6fb6c052e3453'
+md5sums=('3828ca9ef0fd1b711d555ec0ac60222c'
+         '2de8ba99fc91809935e6c2ab02f49a82'
+         'd94b4245dd3b226872f05fd2bf75bd1c'
          '04f46be047049448dba3f0de29fe192d'
          'f37edd0bba7570904d28ab1681c7a7f3')
 
