@@ -1,5 +1,5 @@
 # Maintainer: Micah Elliott <mde at micahelliott dot com>
-pkgname=flickpapr-git
+pkgname=flickpapr
 # pkgver=r24.86adcc7
 pkgver=r27.0a1e152
 pkgrel=1

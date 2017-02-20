@@ -1,4 +1,4 @@
-pkgbase = flickpapr-git
+pkgbase = flickpapr
 	pkgdesc = randomly choose an “interesting” flickr photo for desktop wallpaper
 	pkgver = r27.0a1e152
 	pkgrel = 1
@@ -19,5 +19,5 @@ pkgbase = flickpapr-git
 	source = git+https://github.com/MicahElliott/flickpapr.git
 	md5sums = SKIP
 
-pkgname = flickpapr-git
+pkgname = flickpapr
 
