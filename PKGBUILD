@@ -1,16 +1,17 @@
 # $Id$
 # Upstream Maintainer:  Jan de Groot <jan@archlinux.org>
-# Maintainer: Stefan Mark <mark at unserver dot de>
+# Maintainer: Stefan Mark (nullmark) <mark at unserver dot de>
 
 pkgname=gconf-nopolkit
 pkgver=3.2.6
 pkgrel=5
-pkgdesc="A configuration database system without polkit dependency"
+pkgdesc="A configuration database system, without polkit dependency."
 arch=(i686 x86_64)
 license=('LGPL')
 depends=('libxml2' 'libldap' 'dbus-glib')
 makedepends=('intltool' 'gtk-doc' 'gobject-introspection')
 conflicts=('polkit')
+provides=('gconf')
 install=gconf.install
 url="http://www.gnome.org"
 source=(https://download.gnome.org/sources/GConf/3.2/GConf-$pkgver.tar.xz
