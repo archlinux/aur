@@ -1,10 +1,10 @@
-pkgbase = flickpapr
+pkgbase = flickpapr-git
 	pkgdesc = randomly choose an “interesting” flickr photo for desktop wallpaper
-	pkgver = r23.83f6ae9
+	pkgver = r27.0a1e152
 	pkgrel = 1
 	url = https://github.com/MicahElliott/flickpapr
 	arch = any
-	license = WTFPL
+	license = GPL
 	makedepends = git
 	depends = zsh
 	depends = ruby
@@ -14,9 +14,10 @@ pkgbase = flickpapr
 	depends = imagemagick
 	depends = daemonize
 	depends = dunst
-	provides = flickpapr=r23.83f6ae9
-	source = git://github.com/MicahElliott/flickpapr.git
+	provides = flickpapr
+	conflicts = flickpapr
+	source = git+https://github.com/MicahElliott/flickpapr.git
 	md5sums = SKIP
 
-pkgname = flickpapr
+pkgname = flickpapr-git
 
