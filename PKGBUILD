@@ -1,10 +1,11 @@
 # Id: PKGBUILD 277473 2016-09-30 19:28:40Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: Tony Lambiris <tony@critialstack.com>
 
 pkgbase=linux-macbook
 _srcname=linux-4.9
-pkgver=4.9.9
+pkgver=4.9.11
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -34,7 +35,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'ec97e3bf8585865d409a804316b276a6b4e4939286de9757f99bfb41cf112078'
+            '23e773a670f3cac11a92c4e442405dea6d2c28fea0f914ea2ba4bea313c26541'
             'SKIP'
             '49ec194851a7f96fbeedddb6125bf51d0e73e949f28026dca0d9ff36fc4ce5ff'
             '36fa6355b46655570838351a6f4b2a4904d4e1c550ce0b7a21aa5ebe1bad2d2d'
