@@ -1,6 +1,6 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=python2-fafclient
-pkgver=0.12.1
+pkgver=0.12.2
 pkgrel=1
 epoch=0
 pkgdesc="Forged Alliance Forever - Lobby Client. Community-driven client system for Supreme Commander: Forged Alliance."
@@ -19,8 +19,8 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/FAForever/client/archive/0.12.1.tar.gz" 'FAForever.desktop')
-sha256sums=('977739658485eb229076ab90b77068497554de9787ec0c7395292eedca328576'
+source=("https://github.com/FAForever/client/archive/$pkgver.tar.gz" 'FAForever.desktop')
+sha256sums=('2df132e68e59c197f2f85e4f405d61a672f9f44148fe32f35976d089d242ce7a'
             'f503475daa227d4ce1fa66063b065db7375ce3c0d161d77e3c2bd19c65468cbc')
 noextract=()
 validpgpkeys=()
