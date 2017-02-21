@@ -26,6 +26,6 @@ pkgver() {
 
 package() {
   install -D "$_pkgname/telegramircd.py" "$pkgdir/usr/bin/telegramircd"
-  install -Dm644 "$_pkgname/config" -t "$pkgdir/etc/wechatircd/"
+  install -Dm644 "$_pkgname/config" -t "$pkgdir/etc/telegramircd/"
   install -Dm644 "$_pkgname/telegramircd.service" -t "$pkgdir/usr/lib/systemd/system/"
 }
