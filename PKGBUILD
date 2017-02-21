@@ -1,21 +1,21 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
 
 pkgname=python-pipenv
-pkgver=3.3.6
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="An experimental project that aims to bring the best of all packaging worlds to the Python world."
 url="https://github.com/kennethreitz/pipenv"
 license=('MIT')
 depends=('python' 'python-blindspin' 'python-click'
          'python-click-completion' 'python-crayons' 
-         'python-delegator.py' 'python-parse' 'python-pexpect' 
-         'python-pip' 'python-pipfile' 'python-pew' 
+         'python-delegator' 'python-parse' 'python-pexpect' 
+         'python-pip' 'python-pipfile' 'python-pew' 'python-psutil'
          'python-requests' 'python-requirements-parser' 
          'python-toml' 'python-virtualenv')
 
 makedepends=('python-setuptools')
 source=("https://github.com/kennethreitz/pipenv/archive/v${pkgver}.tar.gz")
-md5sums=('9f74dbb4e0a4f383c9dfd610dd65fc7f')
+md5sums=('119bc4c352d44b0ab02d0c13c7d8d4b0')
 arch=('any')
 
 package() {
