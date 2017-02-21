@@ -1,0 +1,53 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Name=DDRoom
+Comment=Digital photo processing application
+Exec=ddroom %U
+TryExec=ddroom
+Icon=ddroom
+Terminal=false
+StartupNotify=false
+Categories=Application;
+
+Keywords=graphics;photography;raw;
+Keywords[ca]=graphics;photography;raw;
+Keywords[cs]=grafika;fotografie;raw;
+Keywords[da]=grafik;fotografi;raw;
+Keywords[de]=Graphik;Grafik;Photographie;Fotografie;Raw;
+Keywords[el]=graphics;photography;raw;
+Keywords[es]=gráficos;fotografía;raw;
+Keywords[fr]=graphisme;photographie;raw;
+Keywords[he]=גרפיקה;צילום;raw;
+Keywords[hu]=grafika;fénykép;fotó;raw;
+Keywords[it]=grafica;fotografia;raw;
+Keywords[ja]=graphics;photography;raw;
+Keywords[nl]=grafische vormgeving;fotografie;raw;
+Keywords[pt_BR]=gráfico;fotografia;raw;
+Keywords[ru]=graphics;photography;raw;
+Keywords[sk]=grafika;fotografovanie;fotografie;raw;surový;
+Keywords[sl]=grafika;fotografije;surove;
+Keywords[sq]=graphics;photography;raw;
+Keywords[sv]=grafik;fotografi;rå;
+
+GenericName=Raw image converter
+GenericName[ca]=Convertidor d'imatges Raw
+GenericName[cs]=Konvertor raw snímků
+GenericName[da]=Råbilledbehandler
+GenericName[de]=Konverter für Raw-Bilder
+GenericName[es]=Conversor de imágenes raw
+GenericName[fr]=Convertisseur d'image RAW
+GenericName[it]=Convertitore per immagini Raw
+GenericName[ko]=Raw 이미지 변환기
+GenericName[nb]=Raw-bildebehandler
+GenericName[nl]=Camera Raw Conversie
+GenericName[pl]=Konwerter zdjęć RAW
+GenericName[pt]=Conversor de imagens cruas
+GenericName[ru]=Проявитель цифровых негативов
+GenericName[sr]=Преводилац Raw слика
+GenericName[sr@latin]=Prevodilac Raw slika
+GenericName[zh_CN]=Raw 图像转换器
+GenericName[zh_TW]=Raw 影像轉換器
+
+Categories=Graphics;Photography;2DGraphics;
