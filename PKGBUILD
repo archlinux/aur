@@ -5,7 +5,7 @@ pkgver=1.4.0
 pkgrel=1
 pkgdesc="pull issues from issue trackers into taskwarrior (GitHub, GitLab, Bitbucket, etc.)"
 arch=(any)
-url="https://bugwarrior.readthedocs.io/en/latest/getting.html"
+url="https://bugwarrior.readthedocs.io"
 license=('GPL3')
 depends=('python2')
 
