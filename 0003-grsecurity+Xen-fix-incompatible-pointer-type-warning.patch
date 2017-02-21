@@ -1,0 +1,29 @@
+diff --git a/arch/x86/xen/xen-asm_32.S b/arch/x86/xen/xen-asm_32.S
+index c8fd8e7b4..4292c1918 100644
+--- a/arch/x86/xen/xen-asm_32.S
++++ b/arch/x86/xen/xen-asm_32.S
+@@ -15,6 +15,7 @@
+ #include <asm/processor-flags.h>
+ #include <asm/segment.h>
+ #include <asm/asm.h>
++#include <asm/alternative-asm.h>
+ 
+ #include <xen/interface/xen.h>
+ 
+diff --git a/arch/x86/xen/xen-ops.h b/arch/x86/xen/xen-ops.h
+index f1221bcab..c58120be8 100644
+--- a/arch/x86/xen/xen-ops.h
++++ b/arch/x86/xen/xen-ops.h
+@@ -131,9 +131,9 @@ static inline void __init xen_efi_init(void)
+ 	extern char name##_end[] __visible;	\
+ 	extern char name##_reloc[] __visible
+ 
+-DECL_ASM(void, xen_irq_enable_direct, void);
+-DECL_ASM(void, xen_irq_disable_direct, void);
+-DECL_ASM(unsigned long, xen_save_fl_direct, void);
++DECL_ASM(asmlinkage void, xen_irq_enable_direct, void);
++DECL_ASM(asmlinkage void, xen_irq_disable_direct, void);
++DECL_ASM(asmlinkage unsigned long, xen_save_fl_direct, void);
+ DECL_ASM(void, xen_restore_fl_direct, unsigned long);
+ 
+ /* These are not functions, and cannot be called normally */

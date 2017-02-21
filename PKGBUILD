@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-grsec-xen
 _pkgbasever=4.9-gnu
-_pkgver=4.9.9-gnu
+_pkgver=4.9.11-gnu
 _grsecver=3.1
-_timestamp=201702122044
+_timestamp=201702181444
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -51,6 +51,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         'change-default-console-loglevel.patch'
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch'
+        '0003-grsecurity+Xen-fix-incompatible-pointer-type-warning.patch'
         # armv7h patches
         "https://repo.parabola.nu/other/rcn-libre-grsec/patches/${_pkgver%-*}/rcn-libre-grsec-${_pkgver%-*}-${rcnrel}.patch"
         "https://repo.parabola.nu/other/rcn-libre-grsec/patches/${_pkgver%-*}/rcn-libre-grsec-${_pkgver%-*}-${rcnrel}.patch.sig"
@@ -66,9 +67,9 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP'
-            '87917dc46c4f26506e69b23972660841302327cd2c93e6f3a19ae9d118705e7a2de9efc6433fbfd92c4b71f5a83976e6def82d9c39423d774d763d9c5c608d00'
+            'b2fe1d938a1d1e80bba980d5aec3b38e7d508851d4abcc7b33716bbf9c41acb9bb572e4456dcd88257cf9b616db0b9ddaaeb571a14a9863555ff575f21d2a24a'
             'SKIP'
-            '09d5bbfccdc4876ca9834e3231adeda7255fda106de76a6685c1815f6f3dbff4533c1756025b75d7439642f7826549cee86a81ce2932e574403dbc3eb0ebd4aa'
+            '7ad6389d316e8fe75fdceb1dea88749d187ce37cd6d578e9ca568c19a5dcde97c82cf86e467b970b48d71c594ae84d4b37e74e975537f0a8da6418188d206b33'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -84,7 +85,8 @@ sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca4
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '025815cc1e4631e8d7e50bd212f6cfef97cce42a4049f10e845ef64b8e523ace808bb1ef95ea03f29cb9380ec3afe0a4d3aff5b9abc7cdfc81336f38cf4689ab'
+            'd019d1d2913c6c37f7c23d4928cb343317380651ed81d2cde8200fc99d6d6330e3659e3483a06b1b2ac612a1887a4d2f4e2897d8d37342b9d68f5da129759d47'
+            'ac7b3bdf2e2b0e534a40cb6b8357b17fdc072b9cf80abb86e8be153da4e42377aac4ac9baff80d286b824a03b27019e5c7d61940e25c16389468aa67ad5e63ca'
             'SKIP'
             'e04da62f138b24a489daf6ea12759ecb545b77be4dd585983d3abb764f4ac3aa4a9bf4179adddc73032b81e4fa54cbf5dbf173b25dfb1723e7379583b57aa426'
             '5d3a5440b3612fb85759b34d9b455118da342928e585b11545a0dcc9d11f16f0924e1b6018e08ed0507e53d1aabab7000c9b4405bc8881a7bda775456d81df2a'
@@ -169,6 +171,11 @@ prepare() {
   # https://labs.parabola.nu/issues/877
   # http://www.fsfla.org/pipermail/linux-libre/2015-November/003202.html
   patch -p1 -i "${srcdir}/0002-fix-Atmel-maXTouch-touchscreen-support.patch"
+
+  if [ "${CARCH}" = "i686" ]; then
+    # https://forums.grsecurity.net/viewtopic.php?f=3&t=4677&sid=e5d9701a43b2571dd89d00e0d99b71ec
+    patch -p1 -i "${srcdir}/0003-grsecurity+Xen-fix-incompatible-pointer-type-warning.patch"
+  fi
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
