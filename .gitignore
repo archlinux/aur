@@ -5,3 +5,4 @@ pkg
 *.pkg*
 *.part
 *.tar.gz
+*.zip
