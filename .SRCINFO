@@ -1,13 +1,13 @@
 pkgbase = arc-kde
 	pkgdesc = Arc theme for KDE Plasma 5
-	pkgver = 20170116
+	pkgver = 20170218
 	pkgrel = 1
 	url = https://github.com/PapirusDevelopmentTeam/arc-kde
 	arch = any
 	license = GPL3
 	options = !strip
-	source = arc-kde-20170116.tar.gz::https://github.com/PapirusDevelopmentTeam/arc-kde/archive/20170116.tar.gz
-	sha256sums = cb907143183e9a088bb274d90f9d2c29b4a732e64fa687c0acebd734b91b6391
+	source = arc-kde-20170218.tar.gz::https://github.com/PapirusDevelopmentTeam/arc-kde/archive/20170218.tar.gz
+	sha256sums = 5c7dbe80f06b027527ada72b43934d116aed0c2a5717a3103946c7c45a5d74d7
 
 pkgname = arc-kde
 

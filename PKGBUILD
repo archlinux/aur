@@ -1,7 +1,7 @@
 # Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
 
 pkgname=arc-kde
-pkgver=20170116
+pkgver=20170218
 pkgrel=1
 pkgdesc="Arc theme for KDE Plasma 5"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/PapirusDevelopmentTeam/${pkgname}"
 license=('GPL3')
 options=('!strip')
 source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/${pkgver}.tar.gz")
-sha256sums=('cb907143183e9a088bb274d90f9d2c29b4a732e64fa687c0acebd734b91b6391')
+sha256sums=('5c7dbe80f06b027527ada72b43934d116aed0c2a5717a3103946c7c45a5d74d7')
 
 package() {
     cd ${pkgname}-${pkgver}
