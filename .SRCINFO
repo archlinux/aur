@@ -6,6 +6,7 @@ pkgbase = tomatoes
 	arch = i686
 	arch = x86_64
 	license = ZLIB
+	makedepends = gendesk
 	depends = sdl_image
 	depends = sdl_mixer
 	depends = glu
@@ -14,13 +15,11 @@ pkgbase = tomatoes
 	source = 0001-tomatoes-1.55-makefile-Append-to-compile-flags.patch
 	source = 0002-tomatoes-1.55-Quell-const-char-conversion-warnings.patch
 	source = 0003-tomatoes-1.55-config-hiscore-file-saving-loading.patch
-	source = tomatoes.desktop
 	sha256sums = 126d001532ee5b81cc95e1a86a274d11669b8c8f65c8235ae2e9b8fbdfab4a60
 	sha256sums = 69a3af1994cb58409be9b469e1aa4bdb91c405d99071c7431526640ec53d1300
 	sha256sums = 49b2944b268efcfc660da682dfbc2404558e52ba034cc39d310e8c74ed89646c
 	sha256sums = 4f9e72fcb3d4427ec633d9ce6f3bb73179cfac1dba55f1ff7f68725f63f1d55d
 	sha256sums = 0dcab19428d4904d1d5ab0099b23f6d9f3f53399303166ad3cea6e743efcd9bf
-	sha256sums = 15588e33cd9cd532857bb54310d6cd31a75a3f1f0de5b524a0b701c6a317fec7
 
 pkgname = tomatoes
 

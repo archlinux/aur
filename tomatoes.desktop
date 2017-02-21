@@ -1,9 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Version=1.0
-Name=Tomatoes
-Type=Application
-Comment=I Have No Tomatoes
-Exec=/usr/bin/tomatoes
-Icon=tomatoes
-Categories=Application;Game;ArcadeGame;
