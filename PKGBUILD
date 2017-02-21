@@ -1,32 +1,25 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
-_pkgname=MycroftPlasmoid
+_pkgname=plasma-mycroft
 pkgname=plasma5-applets-mycroft-git
-pkgver=r10.c3a46f6
+pkgver=r3.cead38b
 pkgrel=1
 pkgdesc="Mycroft Ai Plasmoid / Widget for KDE Plasma 5 Desktop"
 arch=("x86_64" "i686")
 url="https://github.com/AIIX/MycroftPlasmoid"
 license=('GPL3')
-depends=('qt5-websockets' 'qt5-quickcontrols2') # 'mycroft-core')
+depends=('qt5-websockets' 'qt5-quickcontrols2')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'plasma-framework' 'python')
 provides=("plasma5-applets-mycroft")
 conflicts=("plasma5-applets-mycroft")
 install=$pkgname.install
-source=('git+https://github.com/AIIX/MycroftPlasmoid.git'
-        'mycroft-location.patch')
-sha512sums=('SKIP'
-            '42076d6fb29c002dcda804263ce40fa621a3de4487fecd433bc4acb42564c46138cc409c58e450ef962bb720e98f7ad73eefd1176e0d0b7c68bb7161da24e6de')
+source=('git+https://anongit.kde.org/plasma-mycroft.git')
+sha512sums=('SKIP')
 
 pkgver() {
   cd $srcdir/$_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
-#prepare() {
-#  cd $srcdir/$_pkgname
-#  patch -p1 < $srcdir/mycroft-location.patch
-#}
 
 build() {
   cd $srcdir/$_pkgname
@@ -35,15 +28,8 @@ build() {
   make
 }
 
-#check() {
-#	cd "$srcdir/${pkgname%-VCS}"
-#	make -k check
-#}
-
 package() {
   cd $srcdir/$_pkgname/build
   make DESTDIR="$pkgdir/" install
-  chmod +x $pkgdir/usr/share/plasma/plasmoids/org.kde.plasma.projectmycroftplasmoid/contents/code/{startservice,stopservice}.sh
-  sed -i 's:cd /home/$USER/mycroft-core*/:/usr/share/mycroft-core/:' $pkgdir/usr/share/plasma/plasmoids/org.kde.plasma.projectmycroftplasmoid/contents/code/startservice.sh
-  sed -i 's:cd /home/$USER/mycroft-core*/:/usr/share/mycroft-core/:' $pkgdir/usr/share/plasma/plasmoids/org.kde.plasma.projectmycroftplasmoid/contents/code/stopservice.sh
+  chmod +x $pkgdir/usr/share/plasma/plasmoids/org.kde.plasma.mycroftplasmoid/contents/code/{startservice,stopservice,pkgstartservice,pkgstopservice}.sh
 }
