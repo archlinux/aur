@@ -5,7 +5,7 @@
 
 pkgname=murmur-ice
 pkgver=1.2.19
-pkgrel=1
+pkgrel=2
 pkgdesc="The voice chat application server for Mumble"
 arch=('i686' 'x86_64')
 url="https://github.com/mumble-voip/mumble"
