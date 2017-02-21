@@ -1,0 +1,23 @@
+diff -Naur plotnetcfg-0.4.1.raw/Makefile plotnetcfg-0.4.1/Makefile
+--- plotnetcfg-0.4.1/Makefile	2015-07-27 11:07:56.000000000 +0200
++++ plotnetcfg-0.4.1.patched/Makefile	2017-01-28 13:32:02.860196078 +0100
+@@ -4,7 +4,7 @@
+ libs=$(jansson)/src/.libs/libjansson.a
+ INCLUDE=-I$(jansson)/src
+ endif
+-CFLAGS=-W -Wall $(INCLUDE)
++CFLAGS+=$(INCLUDE)
+ 
+ all: check-libs plotnetcfg
+ 
+@@ -46,8 +46,8 @@
+ 	rm -f version.h *.o frontends/*.o handlers/*.o plotnetcfg
+ 
+ install: plotnetcfg
+-	install -d $(DESTDIR)/usr/sbin/
+-	install plotnetcfg $(DESTDIR)/usr/sbin/
++	install -d $(DESTDIR)/usr/bin/
++	install plotnetcfg $(DESTDIR)/usr/bin/
+ 	install -d $(DESTDIR)/usr/share/man/man8/
+ 	install -d $(DESTDIR)/usr/share/man/man5/
+ 	install -m 644 plotnetcfg.8 $(DESTDIR)/usr/share/man/man8/

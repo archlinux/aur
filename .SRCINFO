@@ -1,0 +1,17 @@
+pkgbase = plotnetcfg
+	pkgdesc = A tool to dump and visualize complex network configuration.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/jbenc/plotnetcfg
+	arch = x86
+	arch = x86_64
+	license = GPL
+	depends = jansson>=2.3
+	optdepends = graphviz: to actually draw the diagrams
+	source = https://github.com/jbenc/plotnetcfg/archive/v0.4.1.tar.gz
+	source = plotnetcfg-v0.4.1.patch
+	sha1sums = eb5da7dfb954cf5733c9eb546fe14f063d66c0a3
+	sha1sums = 6e4c9cdc516e75a9c316452319551991c4d6229e
+
+pkgname = plotnetcfg
+
