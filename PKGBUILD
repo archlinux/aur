@@ -1,8 +1,8 @@
 # Maintainer: Abdó Roig-Maranges <abdo.roig@gmail.com>
 
 pkgname=git-spindle-git
-pkgver=3.3.r15.g4758500
-pkgrel=1
+pkgver=3.3.r16.g6b55b7f
+pkgrel=2
 pkgdesc="Git subcommands for integrating with central services like github, gitlab and bitbucket"
 arch=('any')
 url="http://github.com/seveas/git-spindle"
@@ -32,7 +32,7 @@ build() {
   python setup.py build
 
   cd "$srcdir/git-spindle/docs"
-  make man
+  LANG=en_US.UTF-8 make man
 }
 
 package() {

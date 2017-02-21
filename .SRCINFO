@@ -1,7 +1,7 @@
 pkgbase = git-spindle-git
 	pkgdesc = Git subcommands for integrating with central services like github, gitlab and bitbucket
-	pkgver = 3.3.r15.g4758500
-	pkgrel = 1
+	pkgver = 3.3.r16.g6b55b7f
+	pkgrel = 2
 	url = http://github.com/seveas/git-spindle
 	arch = any
 	license = GPL3
