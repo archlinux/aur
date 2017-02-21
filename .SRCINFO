@@ -3,7 +3,7 @@
 pkgbase = python2-lzo
 	pkgdesc = UBI reader
 	pkgver = 1.08
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/python-lzo
 	arch = i686
 	arch = x86_64
