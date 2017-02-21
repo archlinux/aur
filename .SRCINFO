@@ -1,8 +1,9 @@
 pkgbase = hunspell-ie
 	pkgdesc = Interlingue hunspell dictionary
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/Carmina16/hunspell-ie
+	changelog = ChangeLog
 	arch = any
 	license = Apache
 	optdepends = hunspell: the spell checking libraries and apps
