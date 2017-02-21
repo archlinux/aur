@@ -4,3 +4,7 @@ Exec=/usr/bin/etcher
 Comment=Burn images to SD cards & USB drives, safe & easy
 Icon=/usr/share/etcher/etcher.png
 Type=Application
+Categories=System;Utility;Archiving;
+GenericName=Etcher
+Version=1.0
+Keywords=iso;disk;usb;dvd;
