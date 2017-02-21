@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='A scientific software package for numerical computations.'
 arch=('i686' 'x86_64')
 url='https://www.scilab.org'
-license=('BSD' 'custom:CeCILL')
+license=('BSD' 'custom:CeCILL' 'GPL2')
 depends=('suitesparse>=4.4.1'  'arpack' 'fftw' 'eigen'
          'hdf5'
          'libmatio' 'tk' 'curl'
