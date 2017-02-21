@@ -1,6 +1,6 @@
 # Maintainer: Jacob Thomas Eerrington <archlinux@mail.jerrington.me>
 pkgname=haskell-tpb-git
-pkgver=0.1.0.0.r0.ece01b1
+pkgver=0.1.1.0.r3.0904ce7
 pkgrel=1
 pkgdesc="Command-line tools for interacting with the Pushbullet API"
 arch=('x86_64')
@@ -27,19 +27,13 @@ pkgver() {
 build() {
     cd "$srcdir/${pkgname%-git}"
     cabal update
-    cabal sandbox init
-    cabal install --only-dependencies --enable-tests
-    cabal build
-}
-
-check() {
-    cd "$srcdir/${pkgname%-git}"
-    cabal test
+    cabal new-configure
+    cabal new-build
 }
 
 package() {
     cd "$srcdir/${pkgname%-git}"
     mkdir -p "$pkgdir/usr/bin"
-    install -t "$pkgdir/usr/bin" dist/build/{pb-notify/pb-notify,tpb/tpb}
+    install -t "$pkgdir/usr/bin" dist-newstyle/build/*/build/{pb-notify/pb-notify,tpb/tpb}
     install -t "$pkgdir/usr/bin" scripts/sms
 }
