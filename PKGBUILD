@@ -5,7 +5,7 @@
 # Maintainer: Nikos Skalkotos <skalkoto (at) Gmail.com>
 
 pkgname=libguestfs
-pkgver=1.34.3
+pkgver=1.34.4
 pkgver_short=${pkgver%.*}
 pkgrel=1
 pkgdesc="Access and modify virtual machine disk image"
@@ -43,7 +43,7 @@ makedepends=("qemu"
 	     "perl-module-build"
 #             "lua"
 #             "ghc"
-             "ruby"
+#             "ruby"
 #             "erlang"
 #             "gjs"
 #             "php"
@@ -64,7 +64,7 @@ provides=("guestfish=${pkgver}")
 options=()
 source=("http://libguestfs.org/download/${pkgver_short}-stable/${pkgname}-${pkgver}.tar.gz"
         "update-libguestfs-appliance")
-sha512sums=('92245d6310851750206c0e186b4223f76222c8c8e05ecf8092166a9c4f9bd5ceef5e1905c207ebe03769ff0627d8215b7425c04e33bd25c6bb70d6703e2ebc17'
+sha512sums=('44a0d0f3c5b1d860474eca5e2f5e9411c42606472ebda4ff5f414e78001b9a365304156b64a25806442c4c1c693bfd26606ce9c826d9fb0e1c448e83cdc677a8'
             '987f75b4bd7ecd860a92feb9d3270808973dcebda9ad7cac419c28e9c536a0af841dd0e606033686fc05b9b3939a59796620c549af72a7d22965ff1860ea24c3')
 
 check() {
