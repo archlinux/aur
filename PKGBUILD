@@ -4,8 +4,8 @@
 
 pkgbase=python-boto
 pkgname=(python-boto python2-boto)
-pkgver=2.45.0
-pkgrel=2
+pkgver=2.46.1
+pkgrel=1
 pkgdesc='A Python interface to Amazon Web Services (AWS)'
 arch=('any')
 url='https://github.com/boto/boto'
