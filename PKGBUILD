@@ -3,7 +3,7 @@
 
 pkgname=zotero-beta
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Zotero Standalone. Is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources."
 arch=('i686' 'x86_64')
 url="http://www.zotero.org/download"
