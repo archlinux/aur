@@ -1,0 +1,17 @@
+pkgbase = haskell-tpb-git
+	pkgdesc = Command-line tools for interacting with the Pushbullet API
+	pkgver = 0.1.0.0.r0.ece01b1
+	pkgrel = 1
+	url = https://github.com/tsani/tpb
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cabal-install
+	depends = ghc
+	provides = haskell-tpb
+	conflicts = haskell-tpb
+	source = haskell-tpb::git+https://github.com/tsani/tpb#branch=master
+	md5sums = SKIP
+
+pkgname = haskell-tpb-git
+
