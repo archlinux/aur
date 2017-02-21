@@ -1,0 +1,40 @@
+--- linapple_src-2b/src/Makefile	2015-06-26 10:19:00.000000000 -0500
++++ linapple_src-2b/src/Makefile	2017-02-18 13:27:27.000000000 -0600
+@@ -19,8 +19,8 @@
+ 
+ # Define executable and installing directory
+ EXE = linapple
+-INSTDIR = /usr/local/$(EXE)
+-STARTUP = /usr/local/bin/$(EXE)
++INSTDIR = /usr/share/$(EXE)
++STARTUP = /usr/bin/$(EXE)
+ DATA = ../charset40.bmp ../font.bmp ../icon.bmp ../splash.bmp ../Master.dsk ../linapple.installed.conf
+ 
+ .PHONY: all clean install uninstall
+@@ -54,16 +54,21 @@
+ 	cp $(EXE) $(DATA) "$(INSTDIR)"
+ 
+ 	@echo " o Preparing configuration file 'linapple.conf'"
+-	mv "$(INSTDIR)/linapple.installed.conf" "$(INSTDIR)/linapple.conf"
+-	chmod -R 777 "$(INSTDIR)/"
+-
++#	mv "$(INSTDIR)/linapple.installed.conf" "$(INSTDIR)/linapple.conf"
++#	mv "$(INSTDIR)/linapple.installed.conf" "/etc/linapple/linapple.conf"
++#	ln -s "/etc/linapple/linapple.conf" "$(INSTDIR)/linapple.conf"
++	chmod -R 755 "$(INSTDIR)/"
++	
++	
+ 	@echo " o Creating startup script $(STARTUP)"
+-	echo "cd \"$(INSTDIR)\"; ./$(EXE); cd -" >"$(STARTUP)"
++#	This is the code from the original offer, I had to alter it for the sake of the PKGBUILD	
++#	echo "cd \"$(INSTDIR)\"; ./$(EXE); cd -" >"$(STARTUP)"
++	echo "cd /usr/share/$(EXE); ./$(EXE); cd -" >"$(STARTUP)"
+ 	chmod 755 "$(STARTUP)"
+ 	
+ 	@echo ""
+ 	@echo "Type $(EXE) to start the beast!"
+-	@echo "To change some settings edit \"$(INSTDIR)/linapple.conf\""
++	@echo "To change some settings edit /etc/linapple.conf"
+   
+ uninstall:
+ 	@echo " o Removing ALL data from $(INSTDIR)"

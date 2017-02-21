@@ -1,0 +1,53 @@
+--- linapple_src-2b/linapple.installed.conf	2015-06-26 10:18:32.000000000 -0500
++++ linapple_src-2b/linapple.installed.conf	2017-02-18 12:03:22.000000000 -0600
+@@ -162,7 +162,7 @@
+ # HDV Starting Directory is the starting directory for choose HDV disk images
+ # Default: your home directory (if not set)
+ 
+-	HDV Starting Directory =	/usr/local/linapple/images
++	HDV Starting Directory =	/usr/share/linapple/images
+ 
+ # And you may also predefine hard disk images here, for 1 and 2 correspondingly.
+ # Please, use Shift+F3 and Shift+F4 in emulator for change them in real time.
+@@ -179,7 +179,7 @@
+ #
+ # Default: your home directory (if not set)
+ 
+-	Slot 6 Directory =	/usr/local/linapple/images
++	Slot 6 Directory =	/usr/share/linapple/images
+ 
+ # You may also provide images to be inserted in 1 and 2 drive (D1 or D2) of Slot 6 at startup
+ # Default: do not use, starting with image named Master.dsk in current directory
+@@ -199,12 +199,12 @@
+ # Save State Filename - file name for saving/loading state with keys F11 and F12 in emulator.
+ # Default is none. Note: you can choose it at runtime by pressing F11 (for saving)  or F12 (for loading)
+ 
+-	Save State Filename =	/usr/local/linapple/images/SaveState1.aws
++	Save State Filename =	/usr/share/linapple/images/SaveState1.aws
+ 
+ # SaveSate Directory is a directory where current states will be saved by using F11,F12 (or ALT+F11, ALT+F12 keys, or Ctrl+0..9, Ctrl+Shift+0..9)
+ #Default is none, which means your home directory
+ 
+-	Save State Directory =	/usr/local/linapple/images
++	Save State Directory =	/usr/share/linapple/images
+ 
+ # Define if you wish to save state on exit and restore it at startup by the next parameter:
+ # Possible values are 0 - off, and 1 - on. When On, save state will be saved in Save State Filename at exit,
+@@ -232,7 +232,7 @@
+ #
+ # FTP Server - full path to default FTP server with Apple2 disk images
+ # FTP UserPass - user:password for accessing this server
+-# FTP Local Dir - path on local disk to store downloaded ftp files, 
++# FTP Local Dir - path on disk to store downloaded ftp files, 
+ 
+ # !!! Warning: FTP Local Dir should be existing directory with write access either FTP won't work
+ # Note : FTP Server MUST end with '/' sign either it won't work! FTP Local Dir should not end with '/'
+@@ -242,7 +242,7 @@
+ 	FTP Server =	ftp://ftp.apple.asimov.net/pub/apple_II/images/games/
+ 	FTP ServerHDD =	ftp://ftp.apple.asimov.net/pub/apple_II/images/
+ 	FTP UserPass  =	anonymous:my-mail@mail.com
+-	FTP Local Dir = /usr/local/linapple/ftp
++	FTP Local Dir = /usr/share/linapple/ftp
+ 
+ ##########################################################################
+ #

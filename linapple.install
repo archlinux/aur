@@ -1,0 +1,11 @@
+ 
+post_install() {
+
+  echo "$(tput setaf 6)You can make changes to the application configuration at /etc/linapple/linapple.conf$(tput sgr0)"
+  echo "$(tput setaf 6)You can start the application from the graphical menu or by typing linapple in the terminal$(tput sgr0)"
+  echo "$(tput setaf 1)!!! Be aware the /etc/linapple/linapple.conf file has 777 permission! The application !!!$(tput sgr0)"
+  echo "$(tput setaf 1)!!! will not run without the conf file being writable for some reason.                !!!$(tput sgr0)"
+  echo "$(tput setaf 1)!!! I am quite sure this is a poor security practice so install and use this          !!!$(tput sgr0)"
+  echo "$(tput setaf 1)!!! application at your own risk!                                                     !!!$(tput sgr0)"
+  
+}
