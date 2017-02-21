@@ -4,22 +4,21 @@ _bc_group=bitcoin
 post_install() {
   _mkuser
   _dir="/var/lib/bitcoind"
+  _cnf="/etc/bitcoin"
   if test -d "$_dir"; then
     # disable Copy-On-Write (btrfs directories only)
     # This avoids lots of known db-corruption issues
     _is_btrfs "$_dir" && chattr +C "$_dir"
   else
-    mkdir "$_dir"
-    chown -R $_bc_user:$_bc_group "$_dir"
-    chmod 750 "$_dir"
+    mkdir -m 750 "$_dir"
   fi
-  chown -R $_bc_user:$_bc_group "$_dir"
+  chown -R $_bc_user:$_bc_group "$_dir" "$_cnf"
+  chmod 775 "$_cnf"
   printf "%b\n" "$bitcoin"
 }
 
 post_upgrade() {
   _mkuser
-  chown -R $_bc_user:$_bc_group /etc/bitcoin
   printf "%b\n" "$bitcoin"
 }
 

@@ -48,7 +48,7 @@ package() {
   install -Dm644 "contrib/debian/manpages/bitcoin.conf.5"\
         -t "$pkgdir/usr/share/man/man5"
 
-  install -Dm 644 "$srcdir/bitcoin.conf" "share/rpcuser/rpcuser.py" -t "$pkgdir/etc/bitcoin"
+  install -Dm 664 "$srcdir/bitcoin.conf" "share/rpcuser/rpcuser.py" -t "$pkgdir/etc/bitcoin"
   install -Dm 644 "contrib/init/bitcoind.service" -t "$pkgdir/usr/lib/systemd/system"
   install -Dm 644 "$srcdir/bitcoin.logrotate" "$pkgdir/etc/logrotate.d/bitcoin"
 
