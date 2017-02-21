@@ -12,5 +12,5 @@ post_upgrade() {
 
 run_depmod() {
     echo ">>> Updating SPL module dependencies"
-    depmod -a 4.9.8-1-ARCH
+    depmod -a 4.9.9-1-ARCH
 }
