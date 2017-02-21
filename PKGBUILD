@@ -4,7 +4,7 @@
 # Contributor: shild <shildv@gmail.com>
 
 pkgname=xmonad-git
-pkgver=v0.12.r25.g2b103ed
+pkgver=v0.13.r0.g76f4a16
 pkgrel=1
 pkgdesc="Lightweight X11 tiled window manager written in Haskell"
 arch=('i686' 'x86_64')
@@ -13,12 +13,12 @@ license=('BSD')
 depends=('ghc'
          'sh'
          'gmp'
-         'haskell-x11>=1.7' 'haskell-x11<1.8'
+         'haskell-x11>=1.8' 'haskell-x11<1.9'
          'haskell-mtl'
          'haskell-utf8-string>=0.3' 'haskell-utf8-string<1.1'
          'haskell-extensible-exceptions'
          'haskell-setlocale')
-makedepends=('gendesk')
+makedepends=('gendesk' 'git')
 optdepends=('xorg-xmessage: for displaying visual error messages')
 conflicts=('xmonad')
 provides=('xmonad')
