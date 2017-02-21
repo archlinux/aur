@@ -2,53 +2,32 @@
 # Contributor: Philippe Miron <tuxication@gmail.com>
 
 pkgname=cryptocat
-pkgver=3.2.07
+pkgver=3.2.08
 pkgrel=1
-epoch=0
 pkgdesc="Free software with a simple mission: everyone should be able to chat with their friends in privacy"
-arch=("x86_64")
+arch=('x86_64')
 url="https://crypto.cat"
-license=("GPL")
-groups=()
-depends=()
+license=('GPL3')
+depends=('glib2' 'fuse2')
 makedepends=('gendesk' 'gnupg')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://download.crypto.cat/client/Cryptocat-linux-x64.zip") 
-noextract=()
-md5sums=('3b8c6d1a852f763d12a0b5c4807cf284')
-validpgpkeys=()
+options=('!strip')
+source=("https://download.crypto.cat/client/Cryptocat-linux-x64.zip")
+sha256sums=('3761847a2a4a96c8a706d67705af3d0fab230478dbea4ed652da84a773dfe880')
+
+# In order to make the GPG verification work, import the following PGP key
+# FA21CD536312FADF9B5DD804AB266CB76091B1F8  Nadim Kobeissi <nadim@nadim.computer>
 
 prepare() {
-	unzip $srcdir/Cryptocat.zip -d $pkgname
-	cp -R $srcdir/$pkgname/Cryptocat-linux-x64/* $pkgname
-	rm -R $srcdir/$pkgname/Cryptocat-linux-x64
-#	gpg2 --verify Cryptocat.zip.asc Cryptocat.zip
-	gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
-}
-
-build() {
-	msg "The package $pkgname is already compiled."
+  gpg --verify Cryptocat.AppImage.asc Cryptocat.AppImage
+  gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
+  bsdtar --to-stdout -xf Cryptocat.AppImage \
+    usr/share/icons/default/64x64/apps/cryptocat.png > cryptocat.png
 }
 
 package() {
-	# Install the main app
-	install -dm755 "$pkgdir/opt/"
-  cp -r $pkgname $pkgdir/opt
-	
-	# desktop file
-	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-	install -Dm644 "$pkgname/logo.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-
-	# Create a symlink to /usr/bin
-  install -d "$pkgdir/usr/bin/"
-  ln -sf /opt/${pkgname}/Cryptocat "$pkgdir/usr/bin/$pkgname"
-  chmod 755 "${pkgdir}/opt/${pkgname}/Cryptocat"
+  install -d "$pkgdir"/usr/{bin,lib/cryptocat}
+  install -Dm755 Cryptocat.AppImage "$pkgdir/usr/lib/cryptocat/Cryptocat.AppImage"
+  install -Dm644 cryptocat.desktop "$pkgdir/usr/share/applications/cryptocat.desktop"
+  install -Dm644 cryptocat.png "$pkgdir/usr/share/pixmaps/cryptocat.png"
+  ln -s /usr/lib/cryptocat/Cryptocat.AppImage "$pkgdir/usr/bin/cryptocat"
 }

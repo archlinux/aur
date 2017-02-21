@@ -1,15 +1,17 @@
 pkgbase = cryptocat
 	pkgdesc = Free software with a simple mission: everyone should be able to chat with their friends in privacy
-	pkgver = 3.2.07
+	pkgver = 3.2.08
 	pkgrel = 1
-	epoch = 0
 	url = https://crypto.cat
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	makedepends = gendesk
 	makedepends = gnupg
+	depends = glib2
+	depends = fuse2
+	options = !strip
 	source = https://download.crypto.cat/client/Cryptocat-linux-x64.zip
-	md5sums = 3b8c6d1a852f763d12a0b5c4807cf284
+	sha256sums = 3761847a2a4a96c8a706d67705af3d0fab230478dbea4ed652da84a773dfe880
 
 pkgname = cryptocat
 
