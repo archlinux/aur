@@ -1,5 +1,4 @@
-# Contributor: Gerald Nunn <gerald dot b dot nunn at gmail dot com>
-# Maintainer: Davi da Silva Böger <dsboger at gmail dot com>
+# Maintainer: Marcel Kleinfeller <marcel.kleinfeller at t-online dot de>
 
 pkgname=terminix-better-icon
 pkgver=1.5.0
