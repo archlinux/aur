@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=mapollage
+Exec=/usr/bin/mapollage
+Icon=mapollage
+Categories=Graphics;Java;Photography
+Keywords=organize;photo;map;kml

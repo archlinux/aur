@@ -1,0 +1,7 @@
+*
+!PKGBUILD
+.SRCINFO
+!.gitignore
+!mapollage.desktop
+!mapollage.sh
+
