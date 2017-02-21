@@ -12,15 +12,15 @@ depends=('sdl')
 makedepends=('git')
 source=("git+https://github.com/Attnam/ivan.git#tag=v${_vertag}")
 sha1sums=("SKIP")
-
+options=(!strip)
 build() {
     cd "${srcdir}/${pkgname}"
-    cmake .
+    cmake . -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -DCMAKE_BUILD_TYPE=Debug
     make
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
-    make DESTDIR="$pkgdir/" install
+    make install
 }
 
