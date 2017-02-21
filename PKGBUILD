@@ -3,20 +3,38 @@
 pkgname=flrig-docs
 _pkgname=flrig
 __pkgname=FLRig
-pkgver=1.3
+_author=fldigi
+pkgver=1.3.28
 pkgrel=1
 pkgdesc="Documentation/help when using FLRIG w/out i-net access"
 arch=('any')
-url="http://www.w1hkj.com/flrig-help/index.htm"
+url="http://www.w1hkj.com/flrig-help"
 license=('GPL')
 optdepends=('flrig' 'epdfview')
-source=(http://w1hkj.com/${_pkgname}-help/${__pkgname}_Users_Manual.pdf)
+makedepends=('git' 'doxygen' 'texlive-latexextra')
+source=("$_pkgname::git://git.code.sf.net/p/$_author/$_pkgname#branch=master")
+#http://w1hkj.com/${_pkgname}-help/${__pkgname}_Users_Manual.pdf
 #http://www.w1hkj.com/flrig-help/FLRig_Users_Manual.pdf
 
-package() {
-	cd $srcdir
+pkgver() {
+	cd $_pkgname
 
-	install -Dm644 ${__pkgname}_Users_Manual.pdf $pkgdir/usr/share/${_pkgname}/docs/${_pkgname}.pdf
+	git describe --tags | sed 's/^v//g'
 }
-md5sums=('ba340a636213058db85e4cf4e40929f5')
-sha256sums=('c8f1c39269f8c3e3692dbf78f93519a330e3c482d721f5d2ca4faabeec298aa4')
+
+build() {
+	cd $srcdir/$_pkgname/doxygen
+
+	./make_docs.sh 		 # <- Use this for ONLY User's Manual
+#	./make_docs.sh prog user # <- Use to add Programmer's Ref. Manual
+}
+
+package() {
+	cd $srcdir/$_pkgname/doc
+
+	mkdir -p $pkgdir/usr/share/doc/$_pkgname
+	install -Dm644 compressed_html/* $pkgdir/usr/share/doc/$_pkgname
+	install -Dm644 pdf/* $pkgdir/usr/share/doc/$_pkgname
+}
+md5sums=('SKIP')
+sha256sums=('SKIP')
