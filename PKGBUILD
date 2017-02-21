@@ -2,7 +2,7 @@
 
 _gemname=jekyll-feed
 pkgname=ruby-${_gemname}
-pkgver=0.7.1
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A Jekyll plugin to generate an Atom (RSS-like) feed of your Jekyll posts"
 arch=('any')
@@ -15,7 +15,7 @@ source=(
 	"https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
 )
 sha256sums=(
-	'1c5b46eb5bc75904684a62b16d0d02df36dbd7c861490e90fbc783627d46c0db'
+	'5e6d8cca482d3a09d7e00d6351dbbc4bdff0e602b0c43ac0b1736a19fc1346b6'
 )
 
 package() {
