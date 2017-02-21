@@ -66,7 +66,7 @@ build(){
         make pgo=instrument compiler=g++ platform=linux target=higan profile=${_profile} name=higan-${_profile}
         #
         # Run all cores and SFC special chips (except the new (famicom variant) nSide systems (Playchoice 10, VS System))
-        "${srcdir}/profilebatch" "out/higan-${_profile}" "/home/zombie/ROMS/higan/"
+        "${srcdir}/profilebatch" "out/higan-${_profile}" "/home/${USER}/Emulation/"
         #
         # Build with profile analysis
         make clean
