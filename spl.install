@@ -12,5 +12,5 @@ post_upgrade() {
 
 run_depmod() {
     echo ">>> Updating SPL module dependencies"
-    depmod -a 4.4.49-1-lts
+    depmod -a 4.4.50-1-lts
 }
