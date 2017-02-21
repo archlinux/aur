@@ -1,13 +1,13 @@
 # Maintainer: Thomas Gläßle <t_glaessle@gmx.de>
 pkgname=scsi_debug
 pkgver=4.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module for emulating SCSI devices"
 arch=('any')
 url="https://www.kernel.org/"
 license=('GPL2')
 provides=($pkgname)
-depends=("linux=${pkgver}")
+depends=()
 makedepends=(linux-headers)
 install=${pkgname}.install
 
