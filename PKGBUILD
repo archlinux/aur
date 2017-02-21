@@ -15,11 +15,11 @@
 # archzfs github page.
 #
 pkgname="spl-linux"
-pkgver=0.6.5.9_4.9.9_1
+pkgver=0.6.5.9_4.9.11_1
 pkgrel=1
 pkgdesc="Solaris Porting Layer kernel modules."
-depends=("spl-utils-linux" "kmod" "linux=4.9.9-1")
-makedepends=("linux-headers=4.9.9-1")
+depends=("spl-utils-linux" "kmod" "linux=4.9.11-1")
+makedepends=("linux-headers=4.9.11-1")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-0.6.5.9/spl-0.6.5.9.tar.gz")
@@ -35,8 +35,8 @@ build() {
     cd "${srcdir}/spl-0.6.5.9"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.9.9-1-ARCH/build \
-                --with-linux-obj=/usr/lib/modules/4.9.9-1-ARCH/build \
+                --with-linux=/usr/lib/modules/4.9.11-1-ARCH/build \
+                --with-linux-obj=/usr/lib/modules/4.9.11-1-ARCH/build \
                 --with-config=kernel
     make
 }
@@ -46,5 +46,5 @@ package() {
     make DESTDIR="${pkgdir}" install
     mv "${pkgdir}/lib" "${pkgdir}/usr/"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.9.9-1-ARCH/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.9.11-1-ARCH/Module.symvers
 }
