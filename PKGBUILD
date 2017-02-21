@@ -13,7 +13,7 @@ source=(
 	"plotnetcfg-v0.4.1.patch"
 )
 sha1sums=('eb5da7dfb954cf5733c9eb546fe14f063d66c0a3'
-          '6e4c9cdc516e75a9c316452319551991c4d6229e')
+          '0c7ddfb7d068bdd09483cd006f02a707eea01158')
 BUILDENV+=('!check')
 
 prepare() {
