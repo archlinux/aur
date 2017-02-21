@@ -5,7 +5,7 @@
 
 _pkgname=slic3r-prusa3d
 pkgname=${_pkgname}
-pkgver=1.33.7
+pkgver=1.33.8
 pkgrel=1
 pkgdesc="Updated Slic3r by Prusa3D with many bugfixes and new features"
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')

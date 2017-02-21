@@ -1,6 +1,6 @@
 pkgbase = slic3r-prusa3d
 	pkgdesc = Updated Slic3r by Prusa3D with many bugfixes and new features
-	pkgver = 1.33.7
+	pkgver = 1.33.8
 	pkgrel = 1
 	url = http://www.prusa3d.com/
 	arch = i686
@@ -30,7 +30,7 @@ pkgbase = slic3r-prusa3d
 	optdepends = perl-xml-sax: Additive Manufacturing File Format (AMF) support
 	optdepends = perl-net-bonjour: support for autodiscovery of printers on network (octoprint)
 	optdepends = perl-class-xsaccessor: creating faster accessor methods
-	source = git+https://github.com/prusa3d/Slic3r.git#tag=version_1.33.7
+	source = git+https://github.com/prusa3d/Slic3r.git#tag=version_1.33.8
 	source = Move-Slic3r-data-to-usr-share-slic3r.patch
 	source = slic3r.desktop
 	md5sums = SKIP
