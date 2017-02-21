@@ -2,15 +2,15 @@
 # Contributor: Matthew Longley <randomticktock@gmail.com>
 
 pkgname=javacc
-pkgver=6.1.3
-pkgrel=3
+pkgver=7.0.2
+pkgrel=1
 pkgdesc="Parser/scanner generator for Java"
 arch=('any')
 url="http://javacc.org/"
 license=('BSD')
 depends=('java-environment' 'apache-ant')
 makedepends=('git')
-source=("git+https://github.com/javacc/javacc.git#tag=release_6_1_3")
+source=("git+https://github.com/javacc/javacc.git#tag=release_7_0_2")
 sha256sums=('SKIP')
 
 build() {
