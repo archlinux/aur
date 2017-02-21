@@ -5,7 +5,7 @@
 
 pkgname=telegram-desktop-systemqt
 pkgver=1.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Experimental build of Telegram Desktop (using system Qt)'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
@@ -70,8 +70,8 @@ package() {
     install -d "$pkgdir/usr/share/applications"
     install -m644 "$srcdir/telegramdesktop.desktop" "$pkgdir/usr/share/applications/telegramdesktop.desktop"
 
-    install -d "$pkgdir/usr/share/kde4/services"
-    install -m644 "$srcdir/tg.protocol" "$pkgdir/usr/share/kde4/services/tg.protocol"
+    install -d "$pkgdir/usr/share/kservices5"
+    install -m644 "$srcdir/tg.protocol" "$pkgdir/usr/share/kservices5/tg.protocol"
 
     local icon_size icon_dir
     for icon_size in 16 32 48 64 128 256 512; do
