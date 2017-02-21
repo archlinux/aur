@@ -1,0 +1,20 @@
+pkgbase = wallpaperdownloader
+	pkgdesc = Download, manage and change automatically your favorite wallpapers from the Internet
+	pkgver = 2.6
+	pkgrel = 1
+	url = https://bitbucket.org/eloy_garcia_pca/wallpaperdownloader
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = maven
+	depends = java-runtime>=8
+	depends = xdg-utils
+	provides = wallpaperdownloader
+	conflicts = wallpaperdownloader
+	replaces = wallpaperdownloader
+	source = git+https://bitbucket.org/eloy_garcia_pca/wallpaperdownloader.git#branch=master
+	md5sums = SKIP
+
+pkgname = wallpaperdownloader
+
