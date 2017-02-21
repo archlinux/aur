@@ -1,0 +1,20 @@
+pkgbase = gnome-shell-extension-panel-osd-git
+	pkgdesc = Place gnome-shell notifications under the panel instead of above the message-tray. (git version)
+	pkgver = r113.c33034a
+	pkgrel = 1
+	url = https://github.com/jenslody/gnome-shell-extension-panel-osd
+	arch = any
+	license = GPL3
+	makedepends = gnome-common
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = intltool
+	makedepends = pkg-config
+	depends = gnome-shell
+	provides = gnome-shell-extension-panel-osd
+	conflicts = gnome-shell-extension-panel-osd
+	source = git+https://github.com/jenslody/gnome-shell-extension-panel-osd.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-panel-osd-git
+
