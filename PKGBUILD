@@ -11,6 +11,20 @@ options=('!emptydirs')
 depends=('glibc>=2.24' 'perl>=5.6.2' 'perl-bytes-random-secure>=0.23')
 optdepends=('perl-math-prime-util-gmp: the GMP backend for Math::Prime::Util (highly recommended)')
 makedepends=()
+provides=(
+    'perl-math-prime-util'
+    'perl-math-prime-util-ecaffinepoint'
+    'perl-math-prime-util-ecprojectivepoint'
+    'perl-math-prime-util-memfree'
+    'perl-math-prime-util-pp'
+    'perl-math-prime-util-ppfe'
+    'perl-math-prime-util-primalityproving'
+    'perl-math-prime-util-primearray'
+    'perl-math-prime-util-primeiterator'
+    'perl-math-prime-util-randomprimes'
+    'perl-math-prime-util-zetabigfloat'
+    'perl-ntheory'
+)
 url='https://metacpan.org/release/Math-Prime-Util'
 source=("https://cpan.metacpan.org/authors/id/D/DA/DANAJ/Math-Prime-Util-$pkgver.tar.gz")
 md5sums=('82eac034fb8d207485d35afcecbe6dd8')
