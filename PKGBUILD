@@ -2,7 +2,7 @@
 
 pkgname=yegonesh
 pkgver=20151102
-pkgrel=2
+pkgrel=3
 pkgdesc="Yeganesh-like dmenu wrapper written in Go"
 arch=('x86_64' 'i686')
 url="http://github.com/klowner/yegonesh"
@@ -18,11 +18,11 @@ sha256sums=(
 )
 
 build() {
-  go build -o "main.go"
+  go build -o "yegonesh"
 }
 
 package() {
-  install -Dm755 "main.go" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "yegonesh" "$pkgdir/usr/bin/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
