@@ -1,7 +1,7 @@
 pkgbase=higan-qq
 pkgname=('higan-qq' 'libananke')
 pkgver=094.8d4b3cfa
-pkgrel=1
+pkgrel=2
 pkgdesc="A Nintendo multi-system emulator with quequotion's customizations"
 arch=('i686' 'x86_64')
 url=http://byuu.org/higan/
@@ -66,7 +66,7 @@ build(){
         make pgo=instrument compiler=g++ platform=linux target=higan profile=${_profile} name=higan-${_profile}
         #
         # Run all cores and SFC special chips (except the new (famicom variant) nSide systems (Playchoice 10, VS System))
-        "${srcdir}/profilebatch" "out/higan-${_profile}" "/path/to/your/higan/library"
+        "${srcdir}/profilebatch" "out/higan-${_profile}" "/home/zombie/ROMS/higan/"
         #
         # Build with profile analysis
         make clean
