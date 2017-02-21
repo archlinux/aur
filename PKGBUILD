@@ -3,11 +3,11 @@
 pkgname=filmic-blender-git
 pkgver=20170218
 blenderver=$(blender -v | grep Blender | grep -o '[0-9]\.[0-9][0-9]')
-pkgrel=1
+pkgrel=2
 pkgdesc="Filmic View and Look Transformations for Blender"
 arch=('any')
 url="https://sobotka.github.io/filmic-blender/"
-license=('GPL3')
+license=('custom')
 depends=('blender')
 provides=('filmic-blender')
 source=("git+https://github.com/sobotka/filmic-blender.git"
