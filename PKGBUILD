@@ -1,17 +1,18 @@
 # Maintainer: awe00 < awe00 AT hotmail DOT fr>
-
+# Contributor: Ondřej Hlavatý <ohlavaty at redhat dot com>
 pkgname=plotnetcfg-git
-pkgver=v0.4.1.r54.g2bbca33
+pkgver=v0.4.1.r65.gbb4e154
 pkgrel=1
 pkgdesc="A tool that scans networking configuration on the machine and plots a diagram of the configuration hierarchy"
 arch=('i686' 'x86_64')
 url="https://github.com/jbenc/plotnetcfg"
 license=('GPL2')
-depends=('jansson')
+depends=('jansson>=2.3')
 makedepends=('git')
 provides=('plotnetcfg')
-source=("git+https://github.com/jbenc/plotnetcfg")
-md5sums=('SKIP')
+conflicts=('plotnetcfg')
+source=("git+https://github.com/jbenc/plotnetcfg" "plotnetcfg-git.patch")
+md5sums=('SKIP' '54a548645f6d46633e5c3b19a608de36')
 _gitrepo=plotnetcfg
 
 pkgver() {
@@ -19,17 +20,17 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+	cd "$_gitrepo"
+	patch -p1 <../plotnetcfg-git.patch
+}
+
 build() {
   cd "$_gitrepo"
-  make
+  make CC=gcc
 }
 
 package() {
   cd "$_gitrepo"
-
-  install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/usr/share/man/man5/" "${pkgdir}/usr/share/man/man8/"
-  install -t "${pkgdir}/usr/bin" plotnetcfg
-  install -m 644 -t "${pkgdir}/usr/share/man/man8/" plotnetcfg.8
-  install -m 644 -t "${pkgdir}/usr/share/man/man5/" plotnetcfg-json.5
+  make DESTDIR="$pkgdir/" install
 }

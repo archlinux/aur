@@ -1,16 +1,19 @@
 pkgbase = plotnetcfg-git
 	pkgdesc = A tool that scans networking configuration on the machine and plots a diagram of the configuration hierarchy
-	pkgver = v0.4.1.r54.g2bbca33
+	pkgver = v0.4.1.r65.gbb4e154
 	pkgrel = 1
 	url = https://github.com/jbenc/plotnetcfg
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	depends = jansson
+	depends = jansson>=2.3
 	provides = plotnetcfg
+	conflicts = plotnetcfg
 	source = git+https://github.com/jbenc/plotnetcfg
+	source = plotnetcfg-git.patch
 	md5sums = SKIP
+	md5sums = 54a548645f6d46633e5c3b19a608de36
 
 pkgname = plotnetcfg-git
 

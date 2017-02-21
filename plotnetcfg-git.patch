@@ -1,0 +1,12 @@
+diff --git a/Makefile b/Makefile
+index 07fca8c..904ee0d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -8 +8 @@ endif
+-CFLAGS=-std=c99 -D_GNU_SOURCE -W -Wall $(INCLUDE) $(EXTRA_CFLAGS)
++CFLAGS+=-std=c99 -D_GNU_SOURCE -W -Wall $(INCLUDE)
+@@ -34,2 +34,2 @@ install: plotnetcfg
+-	install -d $(DESTDIR)/usr/sbin/
+-	install plotnetcfg $(DESTDIR)/usr/sbin/
++	install -d $(DESTDIR)/usr/bin/
++	install plotnetcfg $(DESTDIR)/usr/bin/
