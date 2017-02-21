@@ -8,7 +8,7 @@ pkgbase=('qemu-minimal-git')
 _gitname=qemu
 pkgname=('qemu-minimal-git')
 pkgver=2.8.0.r51391.796b288f7b
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 url='http://wiki.qemu.org/'
@@ -55,7 +55,7 @@ build() {
               --localstatedir=/var \
               --enable-tpm --enable-curl \
               --enable-modules --enable-curl --disable-werror \
-              --target-list=x86_64-softmmu --disable-libiscsi --disable-bluez --audio-drv-list=alsa,pa
+              --target-list=x86_64-softmmu --disable-libiscsi --disable-bluez --audio-drv-list=alsa
   make V=99
 }
 
