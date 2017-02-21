@@ -1,6 +1,6 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=teeuniverse
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Enhanced map editor for DDNet, Teeworlds, and similar games"
 arch=('i686' 'x86_64')
@@ -8,8 +8,8 @@ url="https://teeuniverse.net/"
 license=('AGPL' 'custom')
 depends=('harfbuzz-icu' 'sdl2' 'glu' 'desktop-file-utils')
 makedepends=('cmake' 'gendesk' 'imagemagick')
-source=("https://github.com/teeuniverse/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('1f1c3f22e15d31ca4fb919e779375df8')
+source=("$pkgname-$pkgver::https://github.com/teeuniverse/$pkgname/archive/v$pkgver.tar.gz")
+md5sums=('a8a3a85899504e15512e38e4953eec8e')
 
 prepare() {
   gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
