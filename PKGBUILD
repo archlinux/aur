@@ -1,7 +1,7 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=black-screen
-pkgver=0.2.125
+pkgver=0.2.127
 pkgrel=1
 pkgdesc='A terminal emulator for the 21st century'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('apm' 'npm' 'typescript')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         'black-screen.desktop'
         'black-screen.js')
-sha256sums=('4a65876b901ec4306e9e6a846c8778ccd08d4f12d0c0c8b7fdd66eb7a758d096'
+sha256sums=('4e9ab76567c6be4c2883f8a2aa192215dc51b4144035d94860c79cc7c44bdf19'
             'd23e2d0254139efb0dfdd14814cee758bf7345834c5cc92dfd740c0fae0b586e'
             'd13c04e3a0c9855fd00faaf4a7ec1cef39a276744ff49a3c9b6cbbf0f83513fb')
 
