@@ -11,7 +11,7 @@ depends=('php' 'php-intl' 'php-gd')
 conflicts=('moodle-plus')
 options=('!strip')
 source=("https://download.moodle.org/${_pkgver}/moodle-${pkgver}.tgz")
-sha256sums=('c12afd72faf7505bdbe22a8bd056afc615517acea5c97ef8415357b25226fbed')
+sha256sums=('a9315cd4d615af9b55541bbcaf65104c6167c7c92f5bed5c7ea29876d6534d7e')
 
 package() {
     cd "$pkgdir"
