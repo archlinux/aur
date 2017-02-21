@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
 
 pkgname=vim-puppet
-pkgver=4.6.1
+pkgver=4.9.2
 pkgrel=1
 epoch=1
 pkgdesc="Puppet language syntax highlighting for vim."
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('vim')
 conflicts=('puppet')
 source=("https://github.com/puppetlabs/puppet/archive/${pkgver}.tar.gz")
-sha256sums=('246eb58f4cc98de41a272f91234ce6a1c56a94afeaec0ed7358706baa7151dd7')
+sha256sums=('ba23154d7f04242f7c7487b36b583822ce3210cd21b5e933f3c9788c3a499427')
 
 package() {
     cd "${srcdir}/puppet-${pkgver}/ext/vim"
