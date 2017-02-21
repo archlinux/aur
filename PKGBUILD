@@ -4,7 +4,7 @@
 # TODO: create a flow-examples package and add as an optdepend
 
 pkgname=flow-bin
-pkgver=0.38.0
+pkgver=0.39.0
 pkgrel=1
 epoch=
 pkgdesc="Adds static typing to JavaScript to improve developer productivity and code quality"
@@ -28,7 +28,7 @@ source=(
 	"https://raw.githubusercontent.com/facebook/flow/v${pkgver}/LICENSE"
 )
 sha256sums=(
-	'c587d6a929fdf260a086bf9e1f7370f199bd84e17ce34d3f611794cf3792bc1c'
+	'0f81d8721534aa890bb4367a48fce153dd9dfd058afed90a24c50348c65b9424'
 	'7e143b7118d0d0d294ecac71a0dcf24275f3f9cc7a74a157a121ea18ec085114'
 )
 
