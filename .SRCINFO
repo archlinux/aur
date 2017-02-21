@@ -1,0 +1,17 @@
+pkgbase = qwtpolar-qt4
+	pkgdesc = Qwt library that contains classes for displaying values on a polar coordinate system - Qt4 version
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://qwtpolar.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = glibc
+	depends = qt4
+	depends = qwt-qt4
+	source = https://sourceforge.net/projects/qwtpolar/files/qwtpolar/1.1.1/qwtpolar-1.1.1.tar.bz2
+	sha1sums = 38edf5220c971eef0e88fcc6db7c718e6198ccac
+
+pkgname = qwtpolar-qt4
+
