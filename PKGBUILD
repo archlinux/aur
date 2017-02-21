@@ -3,7 +3,7 @@
 
 pkgname=lila-hd
 _gitname=Lila-HD-icon-theme
-pkgver=r37.e1c57e0
+pkgver=r66.d8dd052
 pkgrel=1
 pkgdesc="Lila HD icon theme for Gnu-Linux and Unix-like O.S"
 arch=(any)
