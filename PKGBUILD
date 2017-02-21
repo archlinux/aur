@@ -1,12 +1,13 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=frescobaldi-git
-pkgver=v3.0.0.r1.g67e87431
+pkgver=3.0.0.r1.g67e87431
 pkgrel=2
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
 url="http://www.frescobaldi.org/"
 license=('GPL')
+makedepends=('git')
 depends=(
   'hyphen'
   'poppler'
@@ -35,14 +36,14 @@ optdepends=(
   'hyphen-nl: Dutch hyphenation rules'
   'hyphen-ro: Romanian hyphenation rules'
 )
-conflicts=('frescobaldi')
-provides=('frescobaldi')
+provides=("${pkgname%-git}=$pkgver-$pkgrel")
+conflicts=("${pkgname%-git}")
 source=("${pkgname}"::'git://github.com/wbsoft/frescobaldi.git')
 md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
