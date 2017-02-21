@@ -2,26 +2,25 @@
 # Contributor: Philipp 'TamCore' B. <philipp at tamcore dot eu>
 
 pkgname=stressapptest
-_githash="14355fcf95e3089f20cfd36dbd457343f7b2b740"
-pkgver=1.0.7
-pkgrel=2
+pkgver=1.0.8
+_pkgver=v${pkgver}
+pkgrel=1
 pkgdesc="Stressful Application Test (or stressapptest, its unix name)"
 url="https://github.com/stressapptest/stressapptest"
 license=('APACHE')
 arch=('i686' 'x86_64')
 depends=('gcc-libs' 'libaio')
 makedepends=()
-source=("https://github.com/${pkgname}/${pkgname}/archive/${_githash}.zip")
-md5sums=('bc2ee67c8100e2ed8bb15b61a200422b')
+source=("https://github.com/${pkgname}/${pkgname}/archive/${_pkgver}.tar.gz")
+md5sums=('f1c266b6aa657273a36d9e68c5c5d052')
 
 build() {
-  cd "${srcdir}"/"${pkgname}-${_githash}"
+  cd "${srcdir}"/"${pkgname}-${pkgver}"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}"/"${pkgname}-${_githash}"
+  cd "${srcdir}"/"${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
-
