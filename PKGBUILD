@@ -2,7 +2,7 @@
 
 pkgname=froggix
 pkgver=0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A clone of the classic arcade game Frogger"
 arch=('any')
 license=('GPL3' 'custom')
@@ -14,7 +14,7 @@ source=("https://downloads.sourceforge.net/froggix/Froggix.tar.gz"
         "froggix.sh")
 sha256sums=('7d5426e6c64fbd44255b40ba33f39baf823f9fb4e85ad771e20c7bac0d7c6eb3'
             'a3635b29f144a580fa3b08d55234de37e61c4fbb0ae584c345ed2f65b08ef2a3'
-            '7e6c380cedbc20ffd338b508afecd7617252dd137ae3cd5139b095b73f819276')
+            '8f09f17d54a8ab0db27ef1b1cce48b90021fb204a32eb9789b8d93d648b7d59a')
 
 prepare() {
   cd $pkgname
