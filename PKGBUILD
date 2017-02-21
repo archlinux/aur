@@ -5,7 +5,7 @@
 # Contributor: Link Dupont <link@subpop.net>
 #
 pkgname=dbus-nosystemd
-pkgver=1.10.14
+pkgver=1.10.16
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
@@ -22,14 +22,22 @@ provides=('dbus-core' "dbus=${pkgver}" "libdbus=${pkgver}")
 conflicts=('dbus-core' 'dbus' 'libdbus' 'dbus-eudev' 'dbus-x11')
 replaces=('dbus-core' 'dbus' 'libdbus' 'dbus-eudev' 'dbus-x11')
 install=dbus-nosystemd.install
-source=(http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz #{,.asc}
-	30-dbus.sh dbus)
-md5sums=('3f7b013ce8f641cd4c897acda0ef3467'
+_commit=8b582cb10d7cf00af7a70496aec48af24edc542b  # tags/dbus-1.10.16^0
+source=("git+https://anongit.freedesktop.org/git/dbus/dbus#commit=$_commit"
+	30-dbus.sh dbus.rc)
+md5sums=('SKIP'
          '6683a05bd749929ef9442816c22c3268'
          '6f116e46adcbe99326ee67e597598d29')
 
+prepare() {
+  cd dbus
+
+  NOCONFIGURE=1 ./autogen.sh
+}
+
 build() {
-  cd dbus-$pkgver
+  cd dbus
+
   ./configure \
       --prefix=/usr \
       --sysconfdir=/etc \
@@ -54,14 +62,14 @@ build() {
 }
 
 package(){
-  cd dbus-$pkgver
+  cd dbus
 
   make DESTDIR="$pkgdir" install
 
-  rm -rf "${pkgdir}/var/run"
-  rm -rf "${pkgdir}/usr/share/doc"
+  rm -rf "$pkgdir/var/run"
+  rm -rf "$pkgdir/usr/share/doc"
 
-  install -Dm755 ../dbus "$pkgdir/etc/rc.d/dbus"
+  install -Dm755 ../dbus.rc "$pkgdir/etc/rc.d/dbus"
   install -Dm755 ../30-dbus.sh "$pkgdir/etc/X11/xinit/xinitrc.d/30-dbus.sh"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/dbus/COPYING"
 }
