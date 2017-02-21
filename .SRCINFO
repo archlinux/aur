@@ -1,7 +1,7 @@
 pkgbase = cleanupdate-git
 	pkgdesc = A simple script to speed up updating and cleaning your system
 	pkgver = 0.6
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/cubanpit/cleanupdate
 	arch = any
 	license = GPL3
