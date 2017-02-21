@@ -2,13 +2,13 @@
 # Contributors: Bidossessi Sodonon, Dan Serban, Herve Cauwelier, Tocer Deng
 pkgname=openerp-client
 pkgver=6.1_1
-pkgrel=4
+pkgrel=5
 pkgdesc="OpenERP GTK client"
 url="http://openerp.com/"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('glade' 'gts' 'graphviz' 'hippo-canvas' 'python2' 'python2-dateutil' 'python2-egenix-mx-base' 'python2-lxml' 'python2-matplotlib' 'python2-pydot' 'python2-pyparsing' 'python2-pytz' 'python2-setuptools')
-source=("http://nightly.openerp.com/6.1/releases/${pkgname}-6.1-1.tar.gz"
+source=("https://nightly.odoo.com/old/openerp-6.1/6.1.0/${pkgname}-6.1-1.tar.gz"
         "openerp-client.desktop")
 install="${pkgname}.install"
 md5sums=('f0d349bfa0f1d8979b36a64bd5204b0c'
