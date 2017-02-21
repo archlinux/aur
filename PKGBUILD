@@ -55,7 +55,7 @@ build() {
               --localstatedir=/var \
               --enable-tpm --enable-curl \
               --enable-modules --enable-curl --disable-werror \
-              --target-list=x86_64-softmmu --disable-libiscsi --disable-bluez --audio-drv-list=alsa
+              --target-list=x86_64-softmmu --disable-libiscsi --disable-bluez --audio-drv-list=alsa,pa
   make V=99
 }
 
