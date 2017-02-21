@@ -8,7 +8,7 @@ url="https://teeuniverse.net/"
 license=('AGPL' 'custom')
 depends=('harfbuzz-icu' 'sdl2' 'glu' 'desktop-file-utils')
 makedepends=('cmake' 'gendesk' 'imagemagick')
-source=("$pkgname-$pkgver::https://github.com/teeuniverse/$pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/teeuniverse/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('a8a3a85899504e15512e38e4953eec8e')
 
 prepare() {
