@@ -1,7 +1,7 @@
 pkgbase = google-breakpad-git
 	pkgdesc = An open-source multi-platform crash reporting system
-	pkgver = r1538.1388868
-	pkgrel = 2
+	pkgver = r1595.4e82b6fa
+	pkgrel = 1
 	url = https://chromium.googlesource.com/breakpad/breakpad/
 	arch = i686
 	arch = x86_64
