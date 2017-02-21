@@ -1,26 +1,23 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=tcl-nothreading
-pkgver=8.6.5
-pkgrel=2
+pkgver=8.6.6
+pkgrel=1
 pkgdesc="The Tcl scripting language with threading disabled"
 arch=('i686' 'x86_64')
 url="http://tcl.sourceforge.net/"
 license=('custom')
 depends=('zlib')
-provides=('tcl=8.6.5')
+provides=('tcl=8.6.6')
 conflicts=('tcl')
 options=('staticlibs')
-source=(http://downloads.sourceforge.net/sourceforge/tcl/tcl${pkgver}-src.tar.gz tcl-fix-segv.patch)
-sha1sums=('c3a50ea58dac00a3c7e83cb4a4651c40d0f55160'
-          '1ec4fd9d159b920c15655936b1418034387114f0')
+source=(http://downloads.sourceforge.net/sourceforge/tcl/tcl${pkgver}-src.tar.gz)
+sha1sums=('169dd1589cad62c9fac4257c113db245da502cd0')
 
 prepare() {
   cd tcl${pkgver}
   # we build the tcl sqlite interface in sqlite-tcl package
   rm -rf pkgs/sqlite3*
-  # fix SEGV if cpu supports HLE/RTM http://core.tcl.tk/tcl/info/d3071887dbc7aeac
-  patch -p1 -i ../tcl-fix-segv.patch
 }
 
 build() {
@@ -49,7 +46,7 @@ package() {
       -e "s#${srcdir}/tcl${pkgver}/pkgs/$tdbcver#/usr/include#" \
       -i "${pkgdir}/usr/lib/$tdbcver/tdbcConfig.sh"
 
-  itclver=itcl4.0.4
+  itclver=itcl4.0.5
   sed -e "s#${srcdir}/tcl${pkgver}/unix/pkgs/$itclver#/usr/lib/$itclver#" \
       -e "s#${srcdir}/tcl${pkgver}/pkgs/$itclver/generic#/usr/include#" \
       -e "s#${srcdir}/tcl${pkgver}/pkgs/$itclver#/usr/include#" \
