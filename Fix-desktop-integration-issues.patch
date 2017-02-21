@@ -2,19 +2,6 @@ Description: Fix some problems with desktop integration which relate to names of
 Author: Nicholas Guriev <guriev-ns@ya.ru>
 Last-Update: 2017-01-26
 
-diff --git a/Telegram/SourceFiles/historywidget.cpp b/Telegram/SourceFiles/historywidget.cpp
-index 52c9add..78af10a 100644
---- a/Telegram/SourceFiles/historywidget.cpp
-+++ b/Telegram/SourceFiles/historywidget.cpp
-@@ -189,7 +189,7 @@ namespace {
- // is applied once for blocks list in a history and once for items list in the found block
- template <bool TopToBottom, typename T>
- int binarySearchBlocksOrItems(const T &list, int edge) {
--	auto start = 0, end = list.size();
-+	size_t start = 0, end = list.size();
- 	while (end - start > 1) {
- 		auto middle = (start + end) / 2;
- 		auto top = list[middle]->y;
 diff --git a/Telegram/SourceFiles/pspecific_linux.cpp b/Telegram/SourceFiles/pspecific_linux.cpp
 index 8b21afe..258b5bd 100644
 --- a/Telegram/SourceFiles/pspecific_linux.cpp

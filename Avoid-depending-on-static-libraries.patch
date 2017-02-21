@@ -146,12 +146,12 @@ diff --git a/Telegram/gyp/Telegram.gyp b/Telegram/gyp/Telegram.gyp
 index 2503f1e..92415ea 100644
 --- a/Telegram/gyp/Telegram.gyp
 +++ b/Telegram/gyp/Telegram.gyp
-@@ -79,20 +79,16 @@
+@@ -79,20 +80,16 @@
      ],
  
      'defines': [
 -      'AL_LIBTYPE_STATIC',
-       '<!@(python -c "for s in \'<(travis_defines)\'.split(\',\'): print(s)")',
+       '<!@(python -c "for s in \'<(build_defines)\'.split(\',\'): print(s)")',
 +      'TDESKTOP_DISABLE_AUTOUPDATE',
 +      'TDESKTOP_DISABLE_CRASH_REPORTS',
 +      'TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME',
