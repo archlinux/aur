@@ -9,7 +9,7 @@
 
 pkgbase=linux-libre-pae
 _pkgbasever=4.9-gnu
-_pkgver=4.9.9-gnu
+_pkgver=4.9.11-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -41,12 +41,12 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch'
+        '0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch'
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch')
 sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP'
-            '87917dc46c4f26506e69b23972660841302327cd2c93e6f3a19ae9d118705e7a2de9efc6433fbfd92c4b71f5a83976e6def82d9c39423d774d763d9c5c608d00'
+            'b2fe1d938a1d1e80bba980d5aec3b38e7d508851d4abcc7b33716bbf9c41acb9bb572e4456dcd88257cf9b616db0b9ddaaeb571a14a9863555ff575f21d2a24a'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -58,7 +58,7 @@ sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca4
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
-            '002d5e0ccfa5824c1750912a6400ff722672d6587b74ba66b1127cf1228048f604bba107617cf4f4477884039af4d4d196cf1b74cefe43b0bddc82270f11940d'
+            'cddd1349c0a7f7ffcd7615f31c8107144eb086326c09121cc9071e95d04d2a30ee8d7a3f5d1fe76e6377803dbf2fcb1791e482e0974b8474155419ad94c0fd2b'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168')
 validpgpkeys=(
@@ -85,10 +85,8 @@ prepare() {
   install -m644 -t drivers/video/logo \
     "${srcdir}/logo_linux_"{clut224.ppm,vga16.ppm,mono.pbm}
 
-  # Revert a commit that causes memory corruption in i686 chroots
-  # ("valgrind bash" immediately crashes)
-  # https://bugzilla.kernel.org/show_bug.cgi?id=190061
-  patch -Rp1 -i "${srcdir}/0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch"
+  # https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-6074
+  patch -p1 -i "${srcdir}/0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
