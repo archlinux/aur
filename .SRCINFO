@@ -1,11 +1,12 @@
 pkgbase = deadbeef-opus-git
 	pkgdesc = opus plugin for the DeaDBeeF music player
-	pkgver = 80.330e3a3
+	pkgver = 0.6.r2.g330e3a3
 	pkgrel = 1
 	url = https://bitbucket.org/Lithopsian/deadbeef-opus
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	depends = deadbeef
 	depends = opusfile
 	provides = deadbeef-opus
