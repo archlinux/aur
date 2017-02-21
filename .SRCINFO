@@ -1,7 +1,7 @@
 pkgbase = genymotion
 	pkgdesc = Complete set of tools that provides a virtual environment for Android.
 	pkgver = 2.8.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.genymotion.com/
 	install = genymotion.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = genymotion
 	depends = libpng
 	depends = net-tools
 	depends = protobuf
-	depends = qca
+	depends = qca-qt5
 	depends = qt5-script
 	depends = qt5-webkit
 	depends = virtualbox
