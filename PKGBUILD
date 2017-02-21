@@ -2,7 +2,7 @@
 
 pkgname=simplicitystudio
 pkgver=4
-pkgrel=2
+pkgrel=3
 pkgdesc='Design tools, documentation, software and support resources for EFM32™, EFM8™, 8051, Wireless MCUs and Wireless SoCs.'
 arch=(i686 x86_64)
 url='https://www.silabs.com/products/mcu/Pages/simplicity-studio.aspx'
@@ -16,7 +16,7 @@ options=('!strip')
 source=(http://www.silabs.com/Support%20Documents/Software/SimplicityStudio-v4.tgz
         simplicitystudio.patch
         simplicitystudio)
-sha256sums=('4cebaee53fad103e55f75d02530d37f8a5121a554705d5358ccda6c53654bbb4'
+sha256sums=('68a3435165e6ab3f1ff935204cbf0c08a169ed544b97efda1ca310401311493b'
             '0ccc9c084c82d99174980f299dc0f8a10249170060640ea19bec309a775f83c8'
             'ad55e8352d5d3d9cba50553086ca6d8b1d5072dc87b2763a79f34210f7bc2b5d')
 
