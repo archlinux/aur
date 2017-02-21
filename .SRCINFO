@@ -1,0 +1,14 @@
+pkgbase = hunspell-ia
+	pkgdesc = Interlingua hunspell dictionary
+	pkgver = 20140530
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-us/firefox/addon/dict-ia
+	arch = any
+	license = GPL3
+	optdepends = hunspell: the spell checking libraries and apps
+	source = hunspell-ia-20140530.zip::https://addons.mozilla.org/firefox/downloads/file/260974/interlingua_sownik_ortograficzny-2014.05.30-tb+fx.xpi
+	md5sums = b3a9affc95e781443a414ed93ad205ac
+	sha1sums = 24b54c9b6b36b96f11828ae386d2b7828fbcb93d
+
+pkgname = hunspell-ia
+
