@@ -8,8 +8,8 @@
 
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.24.0.r0.g0f1afc6ba2
-pkgrel=3
+pkgver=0.24.0.r60.ge85d06baad
+pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
 arch=('x86_64')
@@ -50,7 +50,7 @@ provides=('mpv')
 conflicts=('mpv' 'mpv-vapoursynth' 'mpv-ahjolinna-build-git' 'mpv-build-git' 'mpv-ahjolinna' )
 options=('!emptydirs')
 install=mpv.install
-source=('git+https://github.com/mpv-player/mpv#branch=release/current'
+source=('git+https://github.com/mpv-player/mpv'
         'find-deps.py'
          #"ftp://ftp.ritual.org/common/ColorManagement/BT.709_Profiles.zip"
 	 "https://raw.githubusercontent.com/ahjolinna/mpv-conf/master/PKGBUILD/BT.709_Profiles.zip"
