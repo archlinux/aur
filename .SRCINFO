@@ -1,6 +1,6 @@
 pkgbase = glcapsviewer-git
 	pkgdesc = OpenGL Hardware Capability Viewer
-	pkgver = r112.6dfe549
+	pkgver = r118.fb53d2c
 	pkgrel = 1
 	url = http://www.saschawillems.de/?page_id=771/
 	arch = i686
@@ -13,11 +13,13 @@ pkgbase = glcapsviewer-git
 	depends = glfw
 	depends = qt5-base
 	source = git+https://github.com/SaschaWillems/glCapsViewer
+	source = https://github.com/SaschaWillems/glCapsViewer/pull/15.patch
 	source = add_x11_library.patch
 	source = glcapsviewer.desktop
 	source = glcapsviewer
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 1bbc59c259e18a550d788688be7a731e1f379ee08902759cf3e802123b745493
+	sha256sums = 0d622a96a3bf458726e94cb7a3125dd97db9edd7665a1c4277904f350d3335e4
 	sha256sums = 3ff750cda95917ff93388dd373437b12129427bc33e52343247bf69bf1d24c02
 	sha256sums = 139ceb073a34bea5450ca2b6d7f50523f8986d9f5a6b069d36cf05d03609f352
 

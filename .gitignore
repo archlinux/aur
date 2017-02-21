@@ -1,4 +1,4 @@
-*.xz
+*.tar*
 src
 pkg
 glCapsViewer
