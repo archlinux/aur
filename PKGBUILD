@@ -15,12 +15,12 @@ sha1sums=("SKIP")
 options=(!strip)
 build() {
     cd "${srcdir}/${pkgname}"
-    cmake . -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -DCMAKE_BUILD_TYPE=Debug
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug
     make
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
-    make install
+    make install DESTDIR="$pkgdir"
 }
 
