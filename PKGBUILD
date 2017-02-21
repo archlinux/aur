@@ -3,7 +3,7 @@
 pkgname=aegir-hostmaster
 _pkgname=${pkgname#aegir-}
 pkgver=7.x_3.9
-pkgrel=3
+pkgrel=4
 pkgdesc="mass Drupal hosting system - frontend"
 arch=('any')
 url='http://aegirproject.org'
@@ -33,14 +33,15 @@ prepare() {
 
 package() {
   install -d $pkgdir/{var/lib,usr/share/webapps}/$_pkgname
+  install -d "$pkgdir/var/lib/$_pkgname/sites/all/modules"
   install -d "$pkgdir/var/lib/$_pkgname/sites/all/modules/hosting_https/submodules/letsencrypt/drush/bin/letsencrypt/$_pkgname"
 
   cp -a drupal-7.53/* "$pkgdir/usr/share/webapps/$_pkgname"
   cp -a $_pkgname "$pkgdir/usr/share/webapps/$_pkgname/profiles/$_pkgname"
+  [ -d "$pkgdir/var/lib/$_pkgname" ] && rm --recursive "$pkgdir/var/lib/$_pkgname/sites"
   mv "$pkgdir/usr/share/webapps/$_pkgname/sites" "$pkgdir/var/lib/$_pkgname"
   ln -s "/var/lib/$_pkgname/sites" "$pkgdir/usr/share/webapps/$_pkgname"
-  cp -a devel devel_debug_log "$pkgdir/var/lib/$_pkgname/sites/all/modules"
-  cp -aT hosting_https "$pkgdir/var/lib/$_pkgname/sites/all/modules/hosting_https"
+  cp -a devel devel_debug_log hosting_https "$pkgdir/var/lib/$_pkgname/sites/all/modules"
   ln -s /usr/bin/dehydrated "$pkgdir/var/lib/$_pkgname/sites/all/modules/hosting_https/submodules/letsencrypt/drush/bin/letsencrypt"
 
   install -D <( ) "$pkgdir/var/lib/$_pkgname/sites/all/drush/drushrc.php"
