@@ -1,16 +1,15 @@
 # Maintainer: Oleh Prypin <aur@blaxpirit.com>
 pkgname=sixcells
-pkgver=2.4.1
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="Level editor for Hexcells"
-arch=('any')
-url='https://github.com/BlaXpirit/sixcells'
-license=('GPL3')
-depends=('python' 'python-pyside')
-optdepends=('python-pulp: Required for solving puzzles'
-            'glpk: Faster solver for PuLP')
-source=("https://github.com/BlaXpirit/sixcells/archive/v${pkgver}.tar.gz")
-sha256sums=('b1071b41113967d2349cc40e41b6112d0b991293a30af94f8ced8d09730d2819')
+arch=(any)
+url='https://github.com/oprypin/sixcells'
+license=(GPL3)
+depends=('python' 'python-pyqt5' 'python-pulp')
+optdepends=('glpk: Faster solver for PuLP')
+source=("https://github.com/oprypin/sixcells/archive/v${pkgver}.tar.gz")
+sha256sums=('f5854fe623286a80def76a8e51fd48a73774ce2a66039a2311670ad7e77ec05e')
 
 package() {
   cd "$pkgdir"
