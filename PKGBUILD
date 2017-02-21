@@ -11,8 +11,9 @@ depends=('boost-libs' 'libevent' 'desktop-file-utils' 'qt5-base' 'protobuf' 'ope
 makedepends=('boost' 'qt5-tools')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
+backup=("etc/bitcoin/bitcoin.conf")
 install=bitcoin.install
-source=("git+https://github.com/bitcoinclassic/bitcoinclassic.git#branch=develop"
+source=("git+https://github.com/bitcoinclassic/bitcoinclassic.git#branch=master"
     "bitcoin.logrotate"
     "bitcoin.conf")
 
@@ -53,8 +54,7 @@ package() {
   install -Dm644 "contrib/debian/manpages/bitcoin.conf.5"\
         -t "$pkgdir/usr/share/man/man5"
 
-  install -Dm 644 "$srcdir/bitcoin.conf" "$pkgdir/etc/bitcoin/bitcoin.conf.dist"
-  install -Dm 644 "share/rpcuser/rpcuser.py" -t "$pkgdir/etc/bitcoin"
+  install -Dm 644 "$srcdir/bitcoin.conf" "share/rpcuser/rpcuser.py" -t "$pkgdir/etc/bitcoin"
   install -Dm 644 "contrib/init/bitcoind.service" -t "$pkgdir/usr/lib/systemd/system"
   install -Dm 644 "$srcdir/bitcoin.logrotate" "$pkgdir/etc/logrotate.d/bitcoin"
 
