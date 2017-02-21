@@ -5,7 +5,7 @@
 pkgname=python2-lzo
 pkgver=1.11
 pkgrel=1
-pkgdesc="UBI reader"
+pkgdesc="Python bindings for the LZO data compression library"
 arch=('i686' 'x86_64')
 url="https://pypi.python.org/pypi/python-lzo"
 license=('GPL2')
