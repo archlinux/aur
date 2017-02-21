@@ -1,0 +1,14 @@
+pkgbase = run_scaled-git
+	pkgdesc = Run an X application scaled via xpra. Useful on hidpi screens
+	pkgver = r5.0e9a656
+	pkgrel = 1
+	url = https://github.com/kaueraal/run_scaled.git
+	arch = any
+	license = BSD
+	depends = xpra-winswitch
+	depends = xorg-xrandr
+	source = run_scaled::git://github.com/kaueraal/run_scaled.git
+	md5sums = SKIP
+
+pkgname = run_scaled-git
+
