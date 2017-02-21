@@ -1,6 +1,6 @@
 pkgbase = jgmenu
 	pkgdesc = Small X11 menu intended to be used with openbox and tint2
-	pkgver = 0.4.5
+	pkgver = 0.5
 	pkgrel = 1
 	url = http://www.github.com/johanmalm/jgmenu
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = jgmenu
 	depends = libxinerama
 	depends = librsvg
 	depends = libxml2
-	source = http://www.github.com/johanmalm/jgmenu/archive/v0.4.5.tar.gz
+	source = http://www.github.com/johanmalm/jgmenu/archive/v0.5.tar.gz
 	md5sums = SKIP
 
 pkgname = jgmenu
