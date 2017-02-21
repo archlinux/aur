@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://teeuniverse.net/"
 license=('AGPL' 'custom')
 depends=('harfbuzz-icu' 'sdl2' 'glu' 'desktop-file-utils')
-makedepends=('cmake' 'gendesk' 'imagemagick')
+makedepends=('cmake' 'gendesk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/teeuniverse/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('a8a3a85899504e15512e38e4953eec8e')
 
