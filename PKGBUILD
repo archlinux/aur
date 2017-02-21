@@ -7,15 +7,13 @@
 
 pkgname=vmware-vsphere-web-client-plugin
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox and Chromium plugin, to access virtual machines console from vSphere Web Client. For make package, place VMware-ClientIntegrationPlugin-6.0.0.{your_arch}.bundle to PKGBUILD directory."
 arch=('i686' 'x86_64')
 url="http://www.vmware.com/"
 license=('custom:vmware')
 depends=(mozilla-common)
 optdepends=(
-'chromium-npapi: for Chromium support'
-'chromium-pepper-flash: for Chromium PPAPI based Flash Player support'
 'pipelight: for Mozilla Firefox Wine based Flash Player support'
 'freshplayerplugin-git: for Mozilla Firefox PPAPI based Flash Player support'
 'flash'
