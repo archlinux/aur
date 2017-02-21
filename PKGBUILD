@@ -1,11 +1,12 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
 
-pkgname=python-pipenv
+pkgname=pipenv
 pkgver=3.4.2
 pkgrel=1
 pkgdesc="An experimental project that aims to bring the best of all packaging worlds to the Python world."
 url="https://github.com/kennethreitz/pipenv"
 license=('MIT')
+conflicts=('python-pipenv')
 depends=('python' 'python-blindspin' 'python-click'
          'python-click-completion' 'python-crayons' 
          'python-delegator' 'python-parse' 'python-pexpect' 
