@@ -7,7 +7,7 @@ pkgdesc="pull issues from issue trackers into taskwarrior (GitHub, GitLab, Bitbu
 arch=(any)
 url="https://bugwarrior.readthedocs.io"
 license=('GPL3')
-depends=('python2')
+depends=('python2-bugzilla' 'python2-click' 'python2-dateutil' 'python2-dogpile.cache' 'python2-future' 'python2-keyring' 'python2-lockfile' 'python2-offtrac' 'python2-pytz' 'python2-requests' 'python2-taskw' 'python2-twiggy' 'python2-xdg')
 
 conflicts=(bugwarrior)
 provides=(bugwarrior)
