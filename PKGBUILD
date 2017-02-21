@@ -1,7 +1,7 @@
 # Maintainer: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
 
 _npmname=browser-sync
-_npmver=2.18.5
+_npmver=2.18.8
 pkgname=nodejs-$_npmname
 pkgver=$_npmver
 pkgrel=1
@@ -12,7 +12,7 @@ license=('Apache')
 depends=('nodejs' 'npm')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
 noextract=('${_npmname}-${_npmver}.tgz')
-sha1sums=('c04b10037289df5157a363d42100069d77e744e9')
+sha1sums=('2fb4de253798d7cfb839afb9c2f801968490cec2')
 
 package() {
   cd "${srcdir}"
