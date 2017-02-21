@@ -2,7 +2,7 @@
 
 _gemname=jekyll-last-modified-at
 pkgname=ruby-${_gemname}
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A liquid tag for Jekyll to indicate the last time a file was modified."
 arch=('any')
@@ -16,7 +16,7 @@ source=(
 	'LICENSE'
 )
 sha256sums=(
-	'901f69cd3440eda30d0ee403881789b854f47f7f3071119dd8537218d4436820'
+	'54a2719588f5c40a38152199644f4f545b01119b1c5e3030e46b74a5b55da1c8'
 	'eaa1755ff0203e4bbd36f46ed146ea4d1b2dc3348cd1cbd2ab0b2c4bf5fc502d'
 )
 
