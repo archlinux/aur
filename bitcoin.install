@@ -3,25 +3,24 @@ _bc_group=bitcoin
 
 post_install() {
   _mkuser
-  # disable Copy-On-Write (btrfs directories only)
   _dir="/var/lib/bitcoind"
-  mkdir -p "$_dir"
-  _is_btrfs "$_dir" && _disable_cow "$_dir"
-  if test ! -f /etc/bitcoin/bitcoin.conf; then
-     cp /etc/bitcoin/bitcoin.conf.dist /etc/bitcoin/bitcoin.conf
+  if test -d "$_dir"; then
+    # disable Copy-On-Write (btrfs directories only)
+    # This avoids lots of known db-corruption issues
+    _is_btrfs "$_dir" && chattr +C "$_dir"
+  else
+    mkdir "$_dir"
+    chown -R $_bc_user:$_bc_group "$_dir"
+    chmod 750 "$_dir"
   fi
-  chown -R $_bc_user:$_bc_group /etc/bitcoin "$_dir"
+  chown -R $_bc_user:$_bc_group "$_dir"
   printf "%b\n" "$bitcoin"
 }
 
 post_upgrade() {
   _mkuser
-  chown -R $_bc_user:$_bc_group /etc/bitcoin "/var/lib/bitcoind"
+  chown -R $_bc_user:$_bc_group /etc/bitcoin
   printf "%b\n" "$bitcoin"
-}
-
-post_remove() {
-  _rmuser
 }
 
 
@@ -38,13 +37,6 @@ _mkuser() {
   }
 }
 
-_rmuser() {
-  echo -n "Removing bitcoin user... "
-  userdel $_bc_user 2>/dev/null
-  echo "done"
-}
-
-
 # ------------------------------------------------------------------------------
 # helper functions for disabling btrfs Copy-On-Write (CoW)
 # https://wiki.archlinux.org/index.php/Btrfs#Copy-On-Write_.28CoW.29
@@ -58,56 +50,3 @@ _is_btrfs() {
     return 1
   fi
 }
-
-# disable btrfs CoW
-_chattrify() {
-  # original dir, with trailing slash stripped if it exists
-  _orig_dir=$( echo "$1" | sed 's@/$@@' )
-
-  # if original dir exists, back it up
-  [[ -d "$1" ]] && mv "$1" "${_orig_dir}"_old
-
-  # re-make original dir
-  mkdir -p "$1"
-
-  # set permissions on re-made dir
-  chmod "$2" "$1"
-
-  # disable btrfs CoW on re-made dir
-  chattr +C "$1"
-
-  # recursive copy to restore backed up dir while maintaining disabled CoW
-  [[ -d "${_orig_dir}"_old ]] \
-    && find "${_orig_dir}"_old -mindepth 1 -maxdepth 1 -exec cp -R '{}' "$1" \;
-
-  # set ownership on re-made dir
-  chown -R $3:$4 "$1"
-
-  # purge backed up dir
-  [[ -d "${_orig_dir}"_old ]] && rm -rf "${_orig_dir}"_old
-}
-
-_disable_cow() {
-  _chattrify "$1" "750" "$_bc_user" "$_bc_group"
-}
-
-
-read -d '' bitcoin <<'EOF'
-############################################################
-#                                                          #
-#  Bitcoin Classic                                         #
-#  ____________                                            #
-#                                                          #
-#  To start bitcoin-classic:                               #
-#                                                          #
-#      # systemctl start bitcoind                          #
-#                                                          #
-#  To communicate with bitcoin-classic as a normal user:   #
-#                                                          #
-#      $ bitcoin-cli help                                  #
-#                                                          #
-#  Config:        /etc/bitcoin/bitcoin.conf                #
-#  Blockchain:    /var/lib/bitcoind                        #
-#                                                          #
-############################################################
-EOF
