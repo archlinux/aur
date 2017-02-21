@@ -1,6 +1,6 @@
 pkgbase = gnutls28
 	pkgdesc = A library which provides a secure layer over a reliable transport layer (legacy version)
-	pkgver = 3.5.9
+	pkgver = 3.3.26
 	pkgrel = 1
 	url = http://gnutls.org/
 	arch = i686
@@ -15,10 +15,10 @@ pkgbase = gnutls28
 	depends = libidn
 	provides = libgnutls28
 	conflicts = libgnutls28
-	source = ftp://ftp.gnutls.org/gcrypt/gnutls/v3.5/gnutls-3.5.9.tar.xz
-	source = ftp://ftp.gnutls.org/gcrypt/gnutls/v3.5/gnutls-3.5.9.tar.xz.sig
+	source = ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3/gnutls-3.3.26.tar.xz
+	source = ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3/gnutls-3.3.26.tar.xz.sig
 	validpgpkeys = 1F42418905D8206AA754CCDC29EE58B996865171
-	sha256sums = 82b10f0c4ef18f4e64ad8cef5dbaf14be732f5095a41cf366b4ecb4050382951
+	sha256sums = 6a7d882b6b581d684883fde195abf930dab37dfbe6aaea88ab164252bec720d9
 	sha256sums = SKIP
 
 pkgname = gnutls28
