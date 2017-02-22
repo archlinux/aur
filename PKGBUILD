@@ -1,11 +1,10 @@
-# PKGBUILD: 18-Jun-2015
-# Maintainer:  dysphr <>
-
+# PKGBUILD: 22-Fev-2017
+# Maintainer:  dysphoria <>
 # Contributor: Jonathan Schaeffer <Joschaeffer@gmail.com>
 
 pkgname=cgoban3
-pkgver=3.5.20
-pkgrel=3
+pkgver=3.5.22
+pkgrel=1
 pkgdesc="Kiseido Go and SGF client"
 url="http://gokgs.com/"
 arch=('any')
@@ -17,11 +16,11 @@ source=("http://files.gokgs.com/javaBin/cgoban.jar"
         'cgoban3.png'
         'cgoban3.desktop'
         'cgoban3-edit.desktop')
-sha256sums=('fcc158cbb9cf1c7e3b70fda21ff3f58980fec2be2e7a4e3440cf529b36c928a6'
+sha256sums=('459d71018e3fd5d9bbd9e34433a03d8bf32e35f5e0e0da12d7380a172a73f686'
             'f4ad321e3aed07002581b70686c5f5298190c647f63dd4b3fa848a9756fb6f98'
             'a87ecc7d285cf19ab176a437dfb22ab8841eff2f64348cc432557d879347d510'
-            'f333aac0bfef3243390c5d989e5d7e674eb1d65ebd3a7bb84d391bdfd0fa869f'
-            '929d48903510bd346f27522b1273be4f18bf36be23077611a3afb1d45d354c69')
+            '8f53df2158eb96c434312b901563b4879fcea36c461f2ca99cb5cabff38ec04f'
+            'a6b770b7727aae6e0699d0dce7cec84057a83670512bb17edc24753c030df55d')
 noextract=('cgoban.jar')
 
 package() {
