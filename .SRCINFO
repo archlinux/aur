@@ -1,6 +1,6 @@
 pkgbase = timelineproject-hg
 	pkgdesc = Aims to create a free, cross-platform application for displaying and navigating events on a timeline.
-	pkgver = 1.12.0.r5037+
+	pkgver = 1.13.0.r5056+
 	pkgrel = 1
 	url = http://thetimelineproj.sourceforge.net/
 	arch = any
