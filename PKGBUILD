@@ -3,7 +3,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=fbthrift-git
-pkgver=2017.01.30.00.r15.g340f6393
+pkgver=2017.01.30.00.r36.g9fd749e3
 pkgrel=1
 pkgdesc='Facebook branch of Apache Thrift, including a new C++ server.'
 arch=(i686 x86_64)
@@ -33,7 +33,7 @@ build() {
   cd fbthrift/thrift
 	autoreconf -ivf
 	# it builds to /lib by default, however we use /usr/lib
-	PY_PREFIX="$pkgdir/usr" PYTHON=/usr/bin/python2 ./configure --prefix=/usr
+	PY_PREFIX="/usr" PYTHON=/usr/bin/python2 ./configure --prefix=/usr
   make
 }
 
