@@ -1,11 +1,12 @@
-# Maintainer:  Kamran Mackey <kamranm1200@gmail.com>
+# Maintainer:  epitron <chris@ill-logic.com>
+# Contributor: Kamran Mackey <kamranm1200@gmail.com>
 # Contributor: richteer <richteer at lastprime.net>
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
-pkgname=ffmpeg-git
-pkgver=3.2.r80954.gd4c8e93
+pkgname=ffmpeg-qsv-git
+pkgver=3.3.r83607.gc9e3952b82
 pkgrel=1
-pkgdesc="Complete solution to record, convert and stream audio and video (git version)"
+pkgdesc="Complete solution to record, convert and stream audio and video (git version, with Intel Quick Sync Video hardware acceleration)"
 arch=('i686' 'x86_64')
 license=('GPL3' 'Non-free')
 url="http://ffmpeg.org/"
@@ -14,12 +15,13 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gmp' 'gnutls' 'gsm' 'lame'
          'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
          'netcdf' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
          'v4l-utils' 'xvidcore' 'zlib'  'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so'
-         'libvpx.so' 'libx264.so' 'libx265.so' 'libfdk-aac')
+         'libvpx.so' 'libx264.so' 'libx265.so' 'libfdk-aac'
+         'intel-media-sdk')
 makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm' 'git')
 optdepends=('ladspa: LADSPA filters')
 provides=('ffmpeg' 'libavcodec.so' 'libavdevice.so' 'libavfilter.so'
           'libavformat.so' 'libavresample.so' 'libavutil.so' 'libpostproc.so'
-	  'libswresample.so' 'libswscale.so')
+          'libswresample.so' 'libswscale.so')
 conflicts=('ffmpeg' 'ffmpeg-full-git')
 source=("$pkgname"::'git://source.ffmpeg.org/ffmpeg.git')
 md5sums=('SKIP')
@@ -35,10 +37,12 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
 
+  PKG_CONFIG_PATH=/opt/intel/mediasdk/lib/pkgconfig/ \
   ./configure --prefix=/usr \
 	      --disable-debug \
 	      --disable-static \
-	      --enable-avisynth \
+	      --enable-libmfx \
+        --enable-avisynth \
 	      --enable-avresample \
 	      --enable-fontconfig \
 	      --enable-gnutls \
