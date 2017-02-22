@@ -5,7 +5,7 @@
 
 pkgname=sphinxbase
 pkgver=5prealpha
-pkgrel=7
+pkgrel=8
 pkgdesc='Common library for sphinx speech recognition.'
 url='http://cmusphinx.sourceforge.net/'
 arch=('i686' 'x86_64')
@@ -13,10 +13,8 @@ license=('BSD')
 makedepends=('bison' 'swig')
 depends=('python2' 'python' 'lapack' 'libpulse') # not sure if libsamplerate is needed 'libsamplerate'
 source=("http://downloads.sourceforge.net/project/cmusphinx/${pkgname}/${pkgver}/$pkgname-$pkgver.tar.gz"
-        "https://raw.githubusercontent.com/cmusphinx/sphinxbase/master/LICENSE"
         "timing-fix.patch")
 sha256sums=('f72bdb59e50b558bed47cc2105777200d2b246a0f328e913de16a9b22f9a246f'
-            '8b4bc30d2a57839cba678bb84472a9b0b4c84725ed04b37508e5ed3476f03c19'
             '5e8b2bac5d9f84a1c7b7fd774ef2b3f8f6cfc9dcb415b10a66ef439f91f3d4c5')
 options=('!libtool')
 
@@ -60,8 +58,8 @@ package() {
   cd "../$pkgname-$pkgver-py3/swig"
   make DESTDIR="$pkgdir/" install
 
-  install -d "$pkgdir/usr/share/licenses/$pkgname"
-  install -m644 "${srcdir}/LICENSE" \
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
                 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   libtool --finish "$pkgdir/usr/lib"
