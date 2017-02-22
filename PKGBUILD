@@ -2,19 +2,20 @@
 # Contributor: Mariusz Libera <mariusz.libera@gmail.com>
 # Contributor: Juergen Graefe <jg72@gmx.de>
 pkgname=colormake
+_pkgname=Colormake
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple wrapper around make to make it's output more readable."
 arch=('any')
 url="http://bre.klaki.net/programs/colormake/"
 license=('GPL2')
 conflicts=('colormake-git')
 depends=('bash' 'perl')
-source=("${url}${pkgname}-${pkgver}.tar.gz")
-sha256sums=('000c629c84342c1224764e99e97ae9814ec6a7b9be0bc5922f2433db0d09c57e')
+source=($pkgname-$pkgver.tar.gz::https://github.com/pagekite/Colormake/archive/$pkgver.tar.gz)
+
 
 prepare() {
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/$_pkgname-$pkgver
 
 	# adjust scripts to colormake.pl path
 	sed -i 's#colormake.pl#/usr/share/colormake/colormake.pl#g' \
@@ -22,7 +23,7 @@ prepare() {
 }
 
 package() { 
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/$_pkgname-$pkgver
 
 	# executables
 	install -dm755 $pkgdir/usr/bin
@@ -43,3 +44,4 @@ package() {
 		$pkgdir/usr/share/doc/$pkgname
 }
 
+md5sums=('61b3e5a844cfca19675b6f79d70ca3d3')
