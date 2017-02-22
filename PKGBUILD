@@ -2,7 +2,7 @@
 
 pkgname=vive-udev
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="Udev rule for the Vive for the group \"plugdev\""
 arch=('any')
 url="https://github.com/lubosz/OSVR-Vive-Libre/"
