@@ -18,7 +18,7 @@ _UNIFONT_VER="9.0.06"
 [[ "${CARCH}" == "i686" ]] && _EMU_ARCH="i386"
 
 pkgname="grub-git"
-pkgver=2.02.rc1.r4.g2fb8cd26a
+pkgver=2.02.rc1.r5.g512bb31cb
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader (2)"
 arch=('x86_64' 'i686')
