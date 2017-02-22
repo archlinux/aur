@@ -1,7 +1,7 @@
 # Moritz Bunkus <moritz@bunkus.org>
 
 pkgname='perl-config-any'
-pkgver='0.27'
+pkgver='0.28'
 pkgrel='1'
 pkgdesc="Load configuration from different file formats, transparently"
 arch=('any')
@@ -10,8 +10,8 @@ options=('!emptydirs')
 depends=('perl-module-pluggable')
 makedepends=('perl-xml-libxml')
 url='http://search.cpan.org/dist/Config-Any'
-source=("https://cpan.metacpan.org/authors/id/B/BR/BRICAS/Config-Any-${pkgver}.tar.gz")
-sha512sums=('3987ab9521e5dc00f12b20f2cf3fb3ddb2fe1275903009064c6d5a29b1e5acfedde1238b9a60f0266a38c70a010fe26b4d29e4e8bccd11a01a19f28fa63625d2')
+source=("https://cpan.metacpan.org/authors/id/H/HA/HAARG/Config-Any-${pkgver}.tar.gz")
+sha512sums=('fd2d65a12e826802231ea8f9b0cfd0b55b5da02fea385b5a5d190338617fc076d9bc36a85408088a9cc9394f61c4d02bfbc0ae2b002610ad9e764b402322cf42')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
