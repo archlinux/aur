@@ -1,0 +1,12 @@
+diff -Naur a/LUAHandler.h b/LUAHandler.h
+--- a/LUAHandler.h	2017-02-22 14:18:12.000000000 +0800
++++ b/LUAHandler.h	2017-02-22 14:19:04.074271940 +0800
+@@ -24,7 +24,7 @@
+ #if !defined(__LUA_HANDLER_H__) && defined(USE_LUA)
+ #define __LUA_HANDLER_H__
+ 
+-#include <lua.hpp>
++#include <lua5.1/lua.hpp>
+ 
+ class ONScripter;
+ class ScriptHandler;
