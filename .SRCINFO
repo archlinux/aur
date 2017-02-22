@@ -7,6 +7,7 @@ pkgbase = cloud-buster-git
 	license = GPL3
 	makedepends = git
 	depends = python
+	optdepends = python-dnspython
 	provides = cloud-buster
 	conflicts = cloud-buster
 	source = git+https://github.com/SageHack/cloud-buster.git

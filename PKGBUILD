@@ -9,6 +9,7 @@ url="https://github.com/SageHack/cloud-buster"
 license=('GPL3')
 makedepends=('git')
 depends=('python')
+optdepends=('python-dnspython')
 provides=('cloud-buster')
 conflicts=('cloud-buster')
 source=('git+https://github.com/SageHack/cloud-buster.git' 'cloud-buster.sh')
