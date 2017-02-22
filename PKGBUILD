@@ -72,7 +72,7 @@ _BATCH_MODE=n
 pkgname=('linux-pf')
 true && pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://pf.natalenko.name/"
 license=('GPL2')
@@ -86,6 +86,7 @@ source=("ftp://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekernel}
         "uksm-4.9.patch"::"http://kerneldedup.org/download/uksm/0.1.2.5/uksm-0.1.2.5-for-4.9.1+.patch"
         "99-linux-pf.hook"
         '0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch'
+        'fix_dccp_freeing_skb_too_early.patch'
        )
 # 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'     
 
@@ -132,6 +133,7 @@ prepare() {
   # https://bugzilla.kernel.org/show_bug.cgi?id=190061
   patch -Rp1 -i "${srcdir}/0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch"
 
+  patch -Rp1 -i "$srcdir"/'fix_dccp_freeing_skb_too_early.patch'
   # end linux-ARCH patches
 
 
@@ -716,4 +718,5 @@ sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
             'SKIP'
             '91ae8ac0cd2086067e0ccac28d360d9ed0b3e845f584ff9af8e21e098db7bd72'
             'df07e00e8581fe282a5b92be9ee9bb37910eae3d2cc43eeb41df736b9f531f02'
-            '3e955e0f1aae96bb6c1507236adc952640c9bd0a134b9995ab92106a33dc02d9')
+            '3e955e0f1aae96bb6c1507236adc952640c9bd0a134b9995ab92106a33dc02d9'
+            'f307c35625c0543d351d4f56bed1ec6726fd90b92b9c74b5bfd40ee77fd1946e')
