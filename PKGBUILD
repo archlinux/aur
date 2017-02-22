@@ -7,7 +7,7 @@
 pkgname=dev-horo-git
 _pkgname=dev.horo
 _HOROK="horok.conf"
-pkgver=GIT
+pkgver=0.0.1.f6f27db
 _pkgver=0.0.1
 pkgrel=1
 pkgdesc="Horo in your Linux"
