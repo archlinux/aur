@@ -1,7 +1,7 @@
 # Maintainer: surefire@cryptomile.net
 pkgname=gogs-git
 epoch=2
-pkgver=0.9.145.0213+7+1381f0f2
+pkgver=0.9.165.0221+0.10RC+1+d21dc0da
 pkgrel=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -10,6 +10,7 @@ license=('MIT')
 depends=('git' 'sqlite')
 conflicts=('gogs')
 provides=('gogs')
+replaces=('gogs-master-git')
 options=('!buildflags')
 optdepends=('mariadb: MariaDB support'
             'postgresql: PostgreSQL support'
@@ -55,7 +56,7 @@ prepare() {
 pkgver() {
 	cd "$_gogsdir"
 	printf '%s+%s+%s' \
-		$(<templates/.VERSION) \
+		$(sed -e 's,/,+,g; s, ,,g' templates/.VERSION) \
 		$(git rev-list --count HEAD...$(git log --pretty=format:%H -n 1 -- templates/.VERSION)) \
 		$(git rev-parse --short HEAD) \
 	;

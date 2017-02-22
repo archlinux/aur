@@ -1,6 +1,6 @@
 pkgbase = gogs-git
 	pkgdesc = Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language.
-	pkgver = 0.9.145.0213+7+1381f0f2
+	pkgver = 0.9.165.0221+0.10RC+1+d21dc0da
 	pkgrel = 1
 	epoch = 2
 	url = http://gogs.io/
@@ -22,6 +22,7 @@ pkgbase = gogs-git
 	optdepends = openssh: GIT over SSH support
 	provides = gogs
 	conflicts = gogs
+	replaces = gogs-master-git
 	options = !buildflags
 	source = git+https://github.com/gogits/gogs.git#branch=master
 	source = git+https://github.com/jteeuwen/go-bindata.git
