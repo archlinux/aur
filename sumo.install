@@ -1,3 +1,0 @@
-post_remove() {
-  sed -i '/SUMO_HOME=\/usr\/lib\/sumo/d' /etc/environment
-}
