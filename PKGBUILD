@@ -1,6 +1,6 @@
 # Maintainer: nroi <nroi@mailbox.org>
 pkgname=cpcache-git
-pkgver=r117.2420311
+pkgver=r120.cc2331a
 pkgrel=1
 pkgdesc="central pacman cache"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
