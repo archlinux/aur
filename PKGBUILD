@@ -20,7 +20,7 @@ source=("git://github.com/brave/browser-laptop.git"
         'brave')
 sha384sums=('SKIP'
             'f950675fb4a3f9e48374f8a2667e7a45889206a3062c8182e474143607fc26bd17e852a1ef494607dbd3ff4de325e05f'
-            '59cfb17410b5a0b7265327543531fb6b81baf7f5fe829f8a46707a98a16e38fa1fd160bd2cf01bdc1e23d63f5677c1f9')
+            'f35c8ecba3fbda22e72c8935ee2126e14df7bd30830d8a983bbc267cdd7694e2a42ad4c7fed21b78c69f56b95ef4c965')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
