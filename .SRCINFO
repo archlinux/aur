@@ -10,9 +10,6 @@ pkgbase = wallpaperdownloader
 	makedepends = maven
 	depends = java-runtime>=8
 	depends = xdg-utils
-	provides = wallpaperdownloader
-	conflicts = wallpaperdownloader
-	replaces = wallpaperdownloader
 	source = git+https://bitbucket.org/eloy_garcia_pca/wallpaperdownloader.git#branch=master
 	md5sums = SKIP
 
