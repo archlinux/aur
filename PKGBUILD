@@ -2,7 +2,7 @@
 _pkgname=awesome-terminal-fonts
 pkgname="${_pkgname}"
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="fonts/icons for powerlines"
 arch=('any')
 url="https://github.com/gabrielelana/awesome-terminal-fonts"
@@ -16,9 +16,12 @@ sha512sums=('ec3a7dde0b2421fe3af8a793ca24d839e5db57193e2ac3287501621e3504b7ff8d9
 package() {
   install -d "${pkgdir}/usr/share/fonts/${_pkgname}"
   install -d "${pkgdir}/etc/fonts/conf.avail"
+  install -d -m 0644 "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -m 0644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/doc/${_pkgname}/LICENSE"
+  install -m 0644 "${srcdir}/${_pkgname}-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   cd "${srcdir}/${_pkgname}-${pkgver}/build"
-  install -p -m 0644 * "${pkgdir}/usr/share/fonts/${_pkgname}/"
-  install -p -m 0644 "${srcdir}/${_pkgname}-${pkgver}/config/10-symbols.conf" "${pkgdir}/etc/fonts/conf.avail"
+  install -m 0644 * "${pkgdir}/usr/share/fonts/${_pkgname}/"
+  install -m 0644 "${srcdir}/${_pkgname}-${pkgver}/config/10-symbols.conf" "${pkgdir}/etc/fonts/conf.avail"
 }
 
 # vim:set et sw=2 ts=2 tw=79:
