@@ -6,17 +6,16 @@
 # Contributor: Christian Berendt <christian@thorlin.de>
 
 pkgname=cfengine
-pkgver=3.7.4
+pkgver=3.10.0
 pkgrel=1
 pkgdesc='Automated suite of programs for configuring and maintaining Unix-like computers.'
 url='http://www.cfengine.org'
 license=('GPL3')
 arch=('i686' 'x86_64')
-depends=('lmdb' 'openssl' 'pcre' 'libxml2' 'pam')
+depends=('lmdb' 'pcre' 'libxml2' 'pam' 'libyaml' 'curl')
 makedepends=('which')
 optdepends=('libvirt' 'postgresql-libs' 'libmariadbclient' 'acl')
 install=${pkgname}.install
-#https://cfengine-package-repos.s3.amazonaws.com/tarballs/cfengine-3.7.4.tar.gz
 source=("${pkgname}-${pkgver}.tar.gz::https://cfengine-package-repos.s3.amazonaws.com/tarballs/${pkgname}-${pkgver}.tar.gz"
         "cfengine-masterfiles-${pkgver}.tar.gz::https://cfengine-package-repos.s3.amazonaws.com/tarballs/cfengine-masterfiles-${pkgver}.tar.gz"
         'cf-execd.service'
@@ -24,8 +23,8 @@ source=("${pkgname}-${pkgver}.tar.gz::https://cfengine-package-repos.s3.amazonaw
         'cf-serverd.service'
 	'cfengine3.service')
 
-md5sums=('7322acc96a693bda2726030365c90bcc'
-         'c52543997cc3921213c56f4579d68fdc'
+md5sums=('6ea3ad2cd2adb972ccbd2eb7d8c95bbb'
+         '4a465dd9dec3fc68c8548953f58cf9c2'
          '6edac71eaac0a19fc5b8129f17d82bb2'
          '199a7867b60a3e4013da4ac42343e22e'
          'f8783637895f6f3dd19a6ba689181d41'
