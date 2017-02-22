@@ -24,7 +24,7 @@ package() {
   python setup.py install --optimize=1 --root="${pkgdir}"
 
   cd ../
-  # Install License
-  # MIT/X11 license
+
+  # Install MIT License
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
