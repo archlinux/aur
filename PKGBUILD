@@ -4,7 +4,7 @@
 # Contributor: Bruno Vieira <mail@bmpvieira.com>
 
 pkgname=ugene
-pkgver=1.26.0
+pkgver=1.26.1
 pkgrel=1
 pkgdesc="A free cross-platform genome analysis suite"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('qt5-script' 'qt5-svg' 'qt5-webkit' 'glu' 'procps-ng' 'python')
 makedepends=('qt5-tools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ugeneunipro/ugene/archive/$pkgver.tar.gz")
-sha256sums=('2807a1ef5fb24a0d1c382686c388dce438c7d175442a608d2dca21eb8db0fb24')
+sha256sums=('04b7d8fb3fe357fb7663399ba61cd47fef7a19549bc57f6fa6132035bf1e7af7')
 
 build() {
   cd $pkgname-$pkgver
