@@ -4,13 +4,15 @@
 # Maintainer: ximeg <ximeg@tomcity.net>
 # Maintainer: desperat <c2h5ohzh2@o2.pl>
 # Maintainer: Mihai Coman <mihai@m1x.ro>
-# http://smath.info/file/yNr4Q/SMathStudioDesktop.0_98_6179.Mono.tar.gz
+# Credits to: Jake <> for solving the server download definitions
+# http://smath.info/file/PwQc8/SMathStudioDesktop.0_98_6179.Mono.tar.gz
 # http://smath.info/?file=739152 
 
 pkgname=smath
 pkgver=0_98_6179
-pkgrel=1
+pkgrel=2
 pkgdesc="A mathematical program with many features and paper-like interface, similar to Mathcad"
+_pkgcode=PwQc8
 arch=('i686' 'x86_64')
 url="http://smath.info"
 license=('CCPL')
@@ -18,12 +20,14 @@ groups=('math')
 depends=('mono')
 install=smath.install
 backup=(opt/$pkgname/settings.inf)
-source=("https://dl.dropboxusercontent.com/u/24193509/SMathStudioDesktop.0_98_6179.Mono.tar.gz" 
-	"smath.desktop" 
-	"https://dl.dropboxusercontent.com/u/24193509/SMathStudioLogo256.png")
-md5sums=('4931c118ee1d23b406aaf717a740b613'
-         'af70c1bfb5bcdaab7f952339ebb2435e'
-         'ed3720462decbcfa63df5c9d04fb03f9')
+source=("http://smath.info/file/${_pkgcode}/SMathStudioDesktop.${pkgver}.mono.tar.gz")
+#	"smath.desktop" 
+#	"https://dl.dropboxusercontent.com/u/24193509/SMathStudioLogo256.png")
+md5sums=('4931c118ee1d23b406aaf717a740b613')
+#         'af70c1bfb5bcdaab7f952339ebb2435e'
+#         'ed3720462decbcfa63df5c9d04fb03f9')
+
+DLAGENTS=("http::/usr/bin/wget --post-data RefMem=&PostBack=${_pkgcode} %u")
 
 package() {
   cd "$srcdir"
