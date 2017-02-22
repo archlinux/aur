@@ -1,4 +1,4 @@
-pkgbase = double-conversion
+pkgbase = double-conversion-git
 	pkgdesc = Efficient binary-decimal and decimal-binary conversion routines for IEEE doubles.
 	pkgver = 2.0.1.r68.gd8d4e66
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = double-conversion
 	source = git+https://github.com/google/double-conversion.git
 	md5sums = SKIP
 
-pkgname = double-conversion
+pkgname = double-conversion-git
 
