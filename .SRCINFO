@@ -1,6 +1,6 @@
 pkgbase = cpcache-git
 	pkgdesc = central pacman cache
-	pkgver = r105.d7283e2
+	pkgver = r117.2420311
 	pkgrel = 1
 	url = https://github.com/nroi/cpcache
 	install = cpcache.install
