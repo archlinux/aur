@@ -1,7 +1,7 @@
 pkgbase = gitkraken
 	pkgdesc = The intuitive, fast, and beautiful cross-platform Git client.
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gitkraken.com/
 	arch = x86_64
 	license = custom
