@@ -1,0 +1,17 @@
+pkgbase = python-django18
+	pkgdesc = A high-level Python Web framework that encourages rapid development and clean design
+	pkgver = 1.8.17
+	pkgrel = 1
+	url = http://www.djangoproject.com/
+	arch = any
+	license = BSD
+	makedepends = python
+	makedepends = python-setuptools
+	optdepends = python-psycopg2: for PostgreSQL backend
+	conflicts = python-django
+	source = Django-1.8.17.tar.gz::https://www.djangoproject.com/download/1.8.17/tarball/
+	md5sums = e76842cdfbcb31286bd44f51e087a04c
+	sha256sums = 021bd648fcf454027063187e63a1ab4136c6929430ef5dfbe36235f60015eb07
+
+pkgname = python-django18
+
