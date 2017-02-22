@@ -1,6 +1,6 @@
 # Maintainer: Fabio Di Matteo <pobfdm@gmail.com>
 pkgname=pobvnc
-pkgver=0.1
+pkgver=git
 pkgrel=1
 epoch=
 pkgdesc="Pobvnc is an application that enables you to help other people behind a firewall."
