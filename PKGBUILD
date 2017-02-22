@@ -29,12 +29,12 @@ optdepends=(
             'gnome-icon-theme: for icons in menus'
             )
 
-source=("https://github.com/trizen/$_pkgname/archive/$pkgver.tar.gz")
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/trizen/$_pkgname/archive/$pkgver.tar.gz")
 sha256sums=('306199649972137e7181fac4efccb295b5c3aedc3f103975cca533db3be1f53b')
 
 package() {
     cd "$_pkgname-$pkgver"
-    /usr/bin/perl Build.PL --destdir "$pkgdir" --installdirs vendor --gtk-youtube-viewer
+    /usr/bin/perl Build.PL --destdir "$pkgdir" --installdirs vendor --gtk
     ./Build
     ./Build test
     ./Build install --install_path script=/usr/bin
