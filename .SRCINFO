@@ -1,12 +1,13 @@
 pkgbase = dsp-git
 	pkgdesc = An audio processing program with an interactive mode
-	pkgver = 241.6d1aa67
+	pkgver = 242.af2f290
 	pkgrel = 1
 	url = https://github.com/bmc0/dsp
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = ISC
 	license = GPL2
 	license = LGPL2.1

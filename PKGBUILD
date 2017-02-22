@@ -4,10 +4,10 @@
 
 pkgname=dsp-git
 _pkgname=dsp
-pkgver=241.6d1aa67
+pkgver=242.af2f290
 pkgrel=1
 pkgdesc="An audio processing program with an interactive mode"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/bmc0/${_pkgname}"
 license=('ISC' 'GPL2' 'LGPL2.1')
 makedepends=('git')
