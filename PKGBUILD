@@ -1,16 +1,16 @@
-# Maintainer: Mariusz Libera <mariusz.libera@gmail.com>
+# Maintainer: Sean Enck <enckse@gmail.com>
+# Contributor: Mariusz Libera <mariusz.libera@gmail.com>
 _pkgname=python-feedparser
 pkgname=python-feedparser-doc
-pkgver=5.1.3
-pkgrel=2
+pkgver=5.2.1
+pkgrel=1
 pkgdesc="Parse RSS and Atom feeds in Python. Documentation."
 arch=('any')
-url="http://code.google.com/p/feedparser/"
+url="https://github.com/kurtmckee/feedparser"
 license=('custom')
-changelog=ChangeLog
 makedepends=('python-sphinx')
-source=("http://feedparser.googlecode.com/files/feedparser-${pkgver}.tar.bz2")
-sha1sums=('dfe654e4babd258b1402b89e889d78330206d78c')
+source=("https://github.com/kurtmckee/feedparser/archive/${pkgver}.tar.gz")
+sha1sums=('13c9a17f821e46ba9a34d8777e0ae47a6eb86de4')
 
 package() {
     sphinx-build -b html feedparser-$pkgver/docs/ $pkgdir/usr/share/doc/$_pkgname
