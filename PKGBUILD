@@ -1,17 +1,17 @@
 # Maintainer: SY Zhang <lastavengers@archlinuxcn.org>
 
 pkgname=srain-dev
-pkgver=0.378.c8f8f12
+pkgver=0.416.22b1733
 pkgrel=1
 pkgdesc="It does not look like a irc client, develop branch"
 arch=('i686' 'x86_64')
 license=('GPL')
-url="https://github.com/LastAvenger/srain"
+url="https://github.com/SilverRainZ/srain"
 depends=('gtk3' 'python' 'libircclient' 'curl')
 makedepends=('git' 'make' 'gcc' 'pkg-config' 'gettext' 'imagemagick')
 conflicts=('srain')
 provides=('srain')
-source=("git+https://github.com/LastAvenger/srain.git#branch=dev")
+source=("git+https://github.com/SilverRainZ/srain.git#branch=dev")
 sha256sums=('SKIP')
 
 pkgver() {
