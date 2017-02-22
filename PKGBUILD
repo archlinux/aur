@@ -7,21 +7,20 @@ arch=('i686' 'x86_64')
 url="https://github.com/steffenfritz/pacaudit"
 license=('GPL3')
 depends=('glibc')
-makedepends=('go>=1.6')
+makedepends=('go')
 options=('!strip')
-source=("https://github.com/steffenfritz/pacaudit/archive/master.zip" "https://fritz.wtf/master.zip.asc")
+
+validpgpkeys=('7328F6E376924E4EE266381D3D9C808E038A615C')
+sha256sums=('c1e4725db43542d240c25a47a55a2f4586a0a49da12e7956368d40e9454f3816'
+'f2911b7c218bfc4c0f4509983f887fc851bf21cbe0f7ffdf6a9f1061d66559cf')
+
+source=("https://github.com/steffenfritz/pacaudit/archive/v$pkgver.tar.gz" "https://fritz.wtf/v$pkgver.tar.gz.asc")
 
 build() {
-    cd pacaudit-master
+    cd pacaudit-$pkgver
     go build -o pacaudit -ldflags "-s -w"
 }
 
 package() {
-    mkdir -p $pkgdir/usr/bin
-    cd pacaudit-master
-    install -m744 $srcdir/pacaudit-master/pacaudit $pkgdir/usr/bin/pacaudit
-
+    install -Dm755 "$srcdir"/pacaudit-$pkgver/pacaudit "$pkgdir"/usr/bin/pacaudit
 }
-validpgpkeys=('7328F6E376924E4EE266381D3D9C808E038A615C')
-sha256sums=('bd6aa2105e34b602ba82a17d0ccff51e8bb65132684b4f8e3c6ab055f4a3ea01'
-'78823ee5ea2b87f8f5548f44e8fec85384ab142cb69814ea653beb60cfcb24d3')

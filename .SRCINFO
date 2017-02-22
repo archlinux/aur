@@ -6,14 +6,14 @@ pkgbase = pacaudit
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = go>=1.6
+	makedepends = go
 	depends = glibc
 	options = !strip
-	source = https://github.com/steffenfritz/pacaudit/archive/master.zip
-	source = https://fritz.wtf/master.zip.asc
+	source = https://github.com/steffenfritz/pacaudit/archive/v0.1.tar.gz
+	source = https://fritz.wtf/v0.1.tar.gz.asc
 	validpgpkeys = 7328F6E376924E4EE266381D3D9C808E038A615C
-	sha256sums = bd6aa2105e34b602ba82a17d0ccff51e8bb65132684b4f8e3c6ab055f4a3ea01
-	sha256sums = 78823ee5ea2b87f8f5548f44e8fec85384ab142cb69814ea653beb60cfcb24d3
+	sha256sums = c1e4725db43542d240c25a47a55a2f4586a0a49da12e7956368d40e9454f3816
+	sha256sums = f2911b7c218bfc4c0f4509983f887fc851bf21cbe0f7ffdf6a9f1061d66559cf
 
 pkgname = pacaudit
 
