@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=shadergen
 _realpkgname=ShaderGen
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Automatically generates OpenGL Shading Language shaders that duplicate fixed function OpenGL behavior"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/mojocorp/ShaderGen"
 license=('BSD')
 depends=('glew' 'qt4')
 source=("https://github.com/mojocorp/${_realpkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('22b9cd75d5299cb561f51b536494a9f8')
+md5sums=('07528cd57b6f1e3efbc8788042361ef8')
 
 prepare() {
   cd "${_realpkgname}-${pkgver}"
