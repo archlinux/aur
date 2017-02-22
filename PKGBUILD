@@ -7,8 +7,9 @@
 pkgname=dev-horo-git
 _pkgname=dev.horo
 _HOROK="horok.conf"
-pkgver=0.0.1
-pkgrel=7
+pkgver=GIT
+_pkgver=0.0.1
+pkgrel=1
 pkgdesc="Horo in your Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/VOID001/dev.horo"
@@ -19,6 +20,12 @@ source=("git+https://github.com/VOID001/${_pkgname}.git")
 
 _MODULE_NAME="horok.ko"
 _HOROPROXY="horoproxy"
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  printf "${_pkgver}.%s"  "$(git rev-parse --short HEAD)"
+}
+
 
 build() {
         cd "$srcdir/$_pkgname/$_HOROPROXY"
