@@ -1,7 +1,7 @@
-# Maintainer: M0Rf30 <morf3089@gmail.com>
+# Maintainer: Radek Podgorny <radek@podgorny.cz>
 
 pkgname=opengts
-pkgver=2.6.0
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="A full featured web-based GPS tracking system for your fleet of vehicles"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ package() {
   # install profile.d script
   install -dm755 ${pkgdir}/etc/profile.d
   install -m755 "${srcdir}"/${pkgname}.{csh,sh} ${pkgdir}/etc/profile.d/
-  
+
   # remove .bat files
   rm $pkgdir/opt/opengts/bin/*.bat
 
@@ -35,7 +35,7 @@ package() {
   cp OpenGTS_Config.pdf ${pkgdir}/opt/opengts/
 }
 
-md5sums=('19afade1f331ae5b6510b7a8202a4a34'
+md5sums=('19ba4d99791a613a8af9aa284640f2d7'
          'eaa24afc6598fad65c0aed030ebf37c8'
          '841e957e78f0a617fe89e7c9bb66132d'
          '9e8981a8ad668801e8fa07405fa281f0')
