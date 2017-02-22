@@ -2,8 +2,8 @@
 # Maintainer: Isaac Curtis <isaaccurtis1@gmail.com>
 
 pkgname=zotero-beta
-pkgver=5.0
-pkgrel=2
+pkgver="5.0_beta.147%2B1ff1fab"
+pkgrel=1
 pkgdesc="Zotero Standalone. Is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources."
 arch=('i686' 'x86_64')
 url="http://www.zotero.org/download"
@@ -21,7 +21,7 @@ else
            '3bfed397fb9d060af469eaacfe8add63')
 fi
 install='zotero-beta.install'
-source=("zotero-beta.tar.gz::https://www.zotero.org/download/standalone/dl?platform=linux-${_arch}&channel=beta"
+source=("https://download.zotero.org/standalone/beta/${pkgver//_/-}/Zotero-${pkgver//_/-}_linux-${_arch}.tar.bz2"
         "zotero-beta.desktop")
 
 package() {
