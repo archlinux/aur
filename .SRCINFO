@@ -1,7 +1,7 @@
 pkgbase = wire-desktop
 	pkgdesc = Modern, private messenger. Based on Electron.
 	pkgver = 2.11.2717
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wire.com/
 	arch = x86_64
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = wire-desktop
 	makedepends = grunt-cli
 	makedepends = npm
 	makedepends = python2
+	makedepends = git
 	depends = alsa-lib
 	depends = gconf
 	depends = gtk2
