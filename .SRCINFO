@@ -1,7 +1,7 @@
 pkgbase = python-pythonz-bd
 	pkgdesc = Python installation manager supporting CPython, Stackless, PyPy and Jython (berdario branch)
 	pkgver = 1.10.2
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/berdario/pythonz
 	arch = any
 	license = MIT
