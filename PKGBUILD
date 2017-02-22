@@ -1,10 +1,10 @@
 # Maintainer : Bjoern Bidar - theodorstormgrade@gmail.com
      
 pkgname=nvidia-pf
-pkgver=375.26
-pkgrel=6
-_goodkver=4.9
-_badkver=4.10
+pkgver=378.13
+pkgrel=1
+_goodkver=4.10
+_badkver=4.11
 _modver=${_goodkver}-pf
 _extramodules=extramodules-$_modver
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
@@ -24,8 +24,8 @@ install=nvidia.install
 options=(!strip)
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums_i686=('b0706e88ad173f6b9c7bd2e5a838c163')
-md5sums_x86_64=('5595fb385e41638c5118784114b03d9a')
+
+
 
 
 
@@ -69,3 +69,5 @@ package() {
   echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-pf.conf"
 }
 
+md5sums_i686=('dd1077750af9a067739ec291fb24175f')
+md5sums_x86_64=('fe4d25b19a780a690cafc8e3b7c0113f')
