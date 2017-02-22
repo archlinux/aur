@@ -2,17 +2,20 @@
 
 _plug=fixtelecinedfades
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.2.gd43ff7c
+pkgver=r5.28.g36c3423
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=174151'
 license=('GPL2')
 depends=('vapoursynth')
-makedepends=('git')
+makedepends=('git'
+             'meson'
+             'yasm'
+             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/IFeelBloated/Fix-Telecined-Fades")
+source=("${_plug}::git+https://github.com/IFeelBloated/Fix-Telecined-Fades.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,20 +26,26 @@ pkgver() {
 prepare() {
   cd "${_plug}"
 
-  rm -fr src/VapourSynth.h src/VSHelper.h
+  rm -fr VapourSynth.h VSHelper.h
 
-  echo "all:
-	  g++ -c -std=c++14 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o ${_plug}.o Source.cpp
-	  g++ -shared -fPIC ${LDFLAGS} -o libvs${_plug}.so ${_plug}.o"> Makefile
+  sed -e 's|"VapourSynth.h"|<VapourSynth.h>|g' \
+      -e 's|"VSHelper.h"|<VSHelper.h>|g' \
+      -i Shared.hpp
 
+  mkdir build
+  cd build
+  meson .. \
+   --prefix="${EPREFIX}/usr" \
+   --buildtype=plain
 }
 
 build() {
-  cd "${_plug}"
+  cd "${_plug}/build"
 
-  make
+  ninja -v
 }
 
 package(){
-  install -Dm755 "${_plug}/libvs${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/libvs${_plug}.so"
+  cd "${_plug}/build"
+  DESTDIR="${pkgdir}" ninja install
 }
