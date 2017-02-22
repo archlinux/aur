@@ -48,21 +48,6 @@ pkgver() {
 }
 
 package() {
-  # Use VERIFY_GPG=1 to enable GnuPG signature verification.
-  # You'll need Firefox's GnuPG release key.
-  # Their current fingerprint is
-  # 2B90 598A 745E 992F 315E  22C5 8AB1 3296 3A06 537A
-  # shortid 0x15A0A4BC
-  if [[ $VERIFY_GPG -eq 1 ]]; then
-    msg "Verifying GnuPG signature..."
-    _sums="${_file}.checksums"
-    curl -OR "${_srcurl}/${_sums}"
-    curl -OR "${_srcurl}/${_sums}.asc"
-    gpg --verify "${sums}.asc"
-  fi
-
-  #  uncomment this line to remove these
-  #  rm -rf firefox/{extensions,plugins,searchplugins}
   install -d "${pkgdir}"/{usr/{bin,share/{applications,pixmaps}},opt}
   cp -r firefox "${pkgdir}/opt/firefox-nightly"
 
