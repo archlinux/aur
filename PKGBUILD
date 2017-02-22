@@ -10,7 +10,7 @@ pkgname=firefox-always-nightly
 pkgdesc='Standalone web browser from mozilla.org, nightly build, always updating'
 url='https://blog.nightly.mozilla.org/'
 pkgver=99.0a1
-pkgrel=11
+pkgrel=12
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 _srcurl="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central"
@@ -18,8 +18,8 @@ _version="$(curl -s "${_srcurl}/" | grep -Eo firefox-.+tar.bz2 | cut -d- -f2 | c
 _file="firefox-${_version}.en-US.linux-${CARCH}"
 
 curl -so {,${_srcurl}/}${_file}.checksums
-_sumbz2="$(grep -E sha512.+${_file}\.tar\.bz2 ${_file}.checksums | cut -d\  -f1)"
-_sumtxt="$(grep -E sha512.+${_file}\.txt ${_file}.checksums | cut -d\  -f1)"
+_sumbz2="$(grep -E sha512.+${_file}\.tar\.bz2\$ ${_file}.checksums | cut -d\  -f1)"
+_sumtxt="$(grep -E sha512.+${_file}\.txt\$ ${_file}.checksums | cut -d\  -f1)"
 
 _nametoday="${pkgname}-${pkgver}-$(date +%FT%T)"
 source=("${_nametoday}.tar.bz2::${_srcurl}/${_file}.tar.bz2"
