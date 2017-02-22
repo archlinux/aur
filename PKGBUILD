@@ -18,11 +18,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
-  cmake ..
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   make DESTDIR="${pkgdir}" install
+  mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
 }
