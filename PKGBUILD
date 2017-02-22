@@ -2,15 +2,15 @@
 
 pkgname=(freedm freedoom1 freedoom2)
 pkgbase=freedoom
-pkgver=0.11
-pkgrel=2
+pkgver=0.11.1
+pkgrel=1
 pkgdesc="Free game based on the Doom engine"
 arch=('any')
 url="https://freedoom.github.io/"
 license=('BSD')
 makedepends=('asciidoc' 'deutex-devel' 'imagemagick' 'python' 'ttf-liberation')
 source=(https://github.com/$pkgbase/$pkgbase/archive/v$pkgver.tar.gz)
-sha256sums=('76b6b9cfb52a78fe8afc89c7f607ff99398755578867c7cf8c18605087b437e3')
+sha256sums=('fb4e10d3f00c68981c3fc6aa6ef0528c6a25359d0231c37d3a20bad4eec50d18')
 
 build() {
   cd "$pkgbase-$pkgver"
@@ -22,13 +22,13 @@ build() {
 package_freedm() {
   cd "$pkgbase-$pkgver"
   make prefix=/usr DESTDIR="$pkgdir" install-freedm
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 COPYING.adoc "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
 package_freedoom1() {
   cd "$pkgbase-$pkgver"
   make prefix=/usr DESTDIR="$pkgdir" install-freedoom1
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 COPYING.adoc "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
 package_freedoom2() {
@@ -36,5 +36,5 @@ package_freedoom2() {
 
   cd "$pkgbase-$pkgver"
   make prefix=/usr DESTDIR="$pkgdir" install-freedoom2
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 COPYING.adoc "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
