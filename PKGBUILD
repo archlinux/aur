@@ -1,5 +1,6 @@
 # $Id$
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Quentin Retornaz <quentin dot retornaz at yahoo dot fr>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
 # Contributor: Dale Blount <dale@archlinux.org>
@@ -49,7 +50,7 @@ prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
 
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
   patch -Np1 -i ../thunderbird-install-dir.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
