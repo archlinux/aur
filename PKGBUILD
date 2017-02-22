@@ -3,7 +3,7 @@
 pkgname=aegir-hostmaster
 _pkgname=${pkgname#aegir-}
 pkgver=7.x_3.9
-pkgrel=4
+pkgrel=5
 pkgdesc="mass Drupal hosting system - frontend"
 arch=('any')
 url='http://aegirproject.org'
@@ -29,6 +29,22 @@ md5sums=('6d27c8b0de71db7c6e2b041da25c5fef'
 prepare() {
   patch --directory=hosting_https --strip=1 < hosting_https-pkg-info.patch
   patch --directory="$_pkgname/modules/aegir/hosting" --strip=1 < hosting-hook_hosting_TASK_OBJECT_context_options-2846897-2.patch
+
+  local -A expr=(
+    [nginx_stub]='/\/etc\/init.d\/nginx/c \    return "sudo /usr/bin/systemctl try-reload-or-restart httpd.service";''/\/etc\/init.d\/nginx/c \    return "sudo /usr/bin/systemctl try-reload-or-restart httpd.service";'
+    [apache_apachectl]='/\/usr\/sbin\/apachectl/,/return/c \    return "sudo /usr/bin/systemctl try-reload-or-restart httpd.service";'
+    [apache_apache2ctl]='/\/usr\/sbin\/apache2ctl/,/return/c \    return "sudo /usr/bin/systemctl try-reload-or-restart httpd.service";'
+  )
+  local -A path=(
+    [nginx_stub]="$_pkgname/modules/aegir/hosting/web_server/nginx/hosting_nginx.service.inc $_pkgname/modules/aegir/hosting/web_server/nginx/ssl/hosting_nginx_ssl.service.inc hosting_https/submodules/nginx_https/hosting_nginx_https.service.inc"
+    [apache_apachectl]="$_pkgname/modules/aegir/hosting/web_server/ssl/hosting_ssl.service.inc hosting_https/submodules/apache_https/hosting_apache_https.service.inc"
+    [apache_apache2ctl]="$_pkgname/modules/aegir/hosting/web_server/hosting_web_server.service.inc"
+  )
+
+  for index in "${!expr[@]}"; do
+    # Apply word splitting to path string as its a space-separated list of files.
+    sed --in-place "${expr[$index]}" ${path[$index]}
+  done
 }
 
 package() {
