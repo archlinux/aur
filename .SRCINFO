@@ -1,6 +1,6 @@
 pkgbase = busysteg-git
 	pkgdesc = Steganography tool to hide information content into busy areas of images, optimally
-	pkgver = r7.1ce6422
+	pkgver = r10.6857c59
 	pkgrel = 1
 	url = https://github.com/jaybosamiya/busysteg
 	arch = x86_64
