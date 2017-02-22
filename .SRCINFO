@@ -1,6 +1,6 @@
 pkgbase = python2-cfscrape
 	pkgdesc = A simple Python module to bypass Cloudflare's anti-bot page, using Requests
-	pkgver = 1.6.8
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/Anorov/cloudflare-scrape
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = python2-cfscrape
 	makedepends = python2-setuptools
 	depends = python2-requests
 	depends = python2-js2py
-	source = https://files.pythonhosted.org/packages/source/c/cfscrape/cfscrape-1.6.8.tar.gz
+	source = https://files.pythonhosted.org/packages/source/c/cfscrape/cfscrape-1.7.0.tar.gz
 	source = https://raw.githubusercontent.com/Anorov/cloudflare-scrape/master/LICENSE
-	md5sums = 481c7c386904cd75e1cb43decc1b662f
+	md5sums = 7376565bca5bc82f151e95d78c4d5e77
 	md5sums = 93d4804f061e05530be1a85b24185408
 
 pkgname = python2-cfscrape
