@@ -1,6 +1,6 @@
 pkgbase = mkpdf
 	pkgdesc = A simple wrapper around pandoc and latexmk
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ber532k/mkpdf
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = mkpdf
 	depends = texlive-core
 	depends = biber
 	depends = pandoc
-	source = https://github.com/ber532k/mkpdf/archive/v0.1.0.tar.gz
-	md5sums = 6a94850578a210b2c21da576b382f694
+	source = https://github.com/ber532k/mkpdf/archive/v0.2.0.tar.gz
+	md5sums = f2739272ded67ea85095d336ea2cd16a
 
 pkgname = mkpdf
 
