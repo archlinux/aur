@@ -6,6 +6,7 @@ pkgbase = cloud-buster
 	arch = any
 	license = GPL3
 	depends = python
+	optdepends = python-dnspython
 	source = cloud-buster-1.0.tar.gz::https://github.com/SageHack/cloud-buster/archive/v1.0.tar.gz
 	source = cloud-buster.sh
 	sha512sums = 7705e4af78eb3e372ede8a299a89c0353b76cddc33f9a2e3136d7fa16ef238153fb654fcd18597efe95e08dc293c77c946b2b63b911bd6212a37b0fd7dd578a1
