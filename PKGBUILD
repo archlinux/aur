@@ -10,7 +10,7 @@
 
 pkgname=smath
 pkgver=0_98_6179
-pkgrel=2
+pkgrel=3
 pkgdesc="A mathematical program with many features and paper-like interface, similar to Mathcad"
 _pkgcode=PwQc8
 arch=('i686' 'x86_64')
@@ -52,7 +52,7 @@ mono SMathStudio_Desktop.exe \"$@\"
 
   # install launcher
   install -Dm755 ../$pkgname.sh "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 "${srcdir}/smath.desktop" "${pkgdir}/usr/share/applications/smath.desktop"
-  install -Dm644 "${srcdir}/SMathStudioLogo256.png" "${pkgdir}/usr/share/pixmaps/smath.png"
+  install -Dm644 "../smath.desktop" "${pkgdir}/usr/share/applications/smath.desktop"
+  install -Dm644 "../SMathStudioLogo256.png" "${pkgdir}/usr/share/pixmaps/smath.png"
 
 }
