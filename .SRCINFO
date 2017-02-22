@@ -9,6 +9,8 @@ pkgbase = razercommander-git
 	depends = python-razer
 	depends = gtk3>=3.14
 	depends = python
+	provides = razercommander
+	conflicts = razercommander
 	source = razercommander::git+https://github.com/gabmus/razercommander
 	sha256sums = SKIP
 

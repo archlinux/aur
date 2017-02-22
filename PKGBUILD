@@ -10,6 +10,8 @@ url='https://github.com/gabmus/razercommander'
 license=('GPL3')
 depends=('python-razer' 'gtk3>=3.14' 'python')
 makedepends=('git')
+provides=('razercommander')
+conflicts=('razercommander')
 source=("razercommander::git+https://github.com/gabmus/razercommander")
 sha256sums=('SKIP')
 
