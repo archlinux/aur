@@ -8,10 +8,10 @@ pkgdesc="A Gtk2 application for searching and streaming videos from YouTube."
 arch=('any')
 url="https://github.com/trizen/youtube-viewer"
 license=('Artistic2.0')
-makedepends=('git' 'perl-module-build')
+makedepends=('perl-module-build')
 
 provides=('youtube-viewer')
-conflicts=('youtube-viewer')
+conflicts=('youtube-viewer' 'youtube-viewer-git')
 
 depends=('perl>=5.16.0' 'perl-data-dump' 'perl-json' 'perl-lwp-protocol-https' 'perl-libwww' 'gtk2-perl' 'perl-file-sharedir')
 
@@ -29,16 +29,11 @@ optdepends=(
             'gnome-icon-theme: for icons in menus'
             )
 
-source=('git://github.com/trizen/youtube-viewer.git')
-md5sums=('SKIP')
-
-pkgver() {
-    cd $_pkgname
-    git describe --always | sed -e 's|-|.|g'
-}
+source=("https://github.com/trizen/$_pkgname/archive/$pkgver.tar.gz")
+sha256sums=('306199649972137e7181fac4efccb295b5c3aedc3f103975cca533db3be1f53b')
 
 package() {
-    cd $_pkgname
+    cd "$_pkgname-$pkgver"
     /usr/bin/perl Build.PL --destdir "$pkgdir" --installdirs vendor --gtk-youtube-viewer
     ./Build
     ./Build test
