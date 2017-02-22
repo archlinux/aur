@@ -1,0 +1,163 @@
+# $Id$
+# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Alexander Baldeck <alexander@archlinux.org>
+# Contributor: Dale Blount <dale@archlinux.org>
+# Contributor: Anders Bostrom <anders.bostrom@home.se>
+
+pkgname=thunderbird-gtk2
+_pkgname=thunderbird
+pkgver=45.7.1
+pkgrel=2
+pkgdesc="Standalone mail and news reader from mozilla.org"
+arch=(i686 x86_64)
+license=(MPL GPL LGPL)
+url="https://www.mozilla.org/thunderbird/"
+depends=(gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib
+         libvpx libevent nss hunspell sqlite ttf-font icu)
+makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils)
+optdepends=('libcanberra: for sound support')
+options=(!emptydirs !makeflags)
+provides=("thunderbird=${pkgver}-${pkgrel}")
+conflicts=("thunderbird")
+source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
+        thunderbird.desktop
+        thunderbird-install-dir.patch fix-wifi-scanner.diff
+        firefox-gcc-6.0.patch mozilla-1228540.patch mozilla-1228540-1.patch)
+sha256sums=('5fc7a39c6a1baacfa37d6a52c9384f70c171dd0bb581576d370bdb29c84b9ffb'
+            '3fba13d88aeb003ab0811ef739463858172ce0662a1c7d62835df3d83ddbb8fb'
+            '24599eab8862476744fe1619a9a53a5b8cdcab30b3fc5767512f31d3529bd05d'
+            '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
+            '4d1e1ddabc9e975ed39f49e134559a29e01cd49439e358233f1ede43bf5a52bf'
+            '3a3e84c702ee31450a3e84698441aceb11cf44e64c9fedcaddb8cb50db759417'
+            'd1ccbaf0973615c57f7893355e5cd3a89efb4e91071d0ec376e429b50cf6ed19')
+
+# Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
+# Note: These are for Arch Linux use ONLY. For your own distribution, please
+# get your own set of keys. Feel free to contact foutrelis@archlinux.org for
+# more information.
+_google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
+
+# Mozilla API keys (see https://location.services.mozilla.com/api)
+# Note: These are for Arch Linux use ONLY. For your own distribution, please
+# get your own set of keys. Feel free to contact heftig@archlinux.org for
+# more information.
+_mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
+
+
+prepare() {
+  mkdir path
+  ln -s /usr/bin/python2 path/python
+
+  cd $pkgname-$pkgver
+  patch -Np1 -i ../thunderbird-install-dir.patch
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
+  patch -d mozilla -Np1 < ../fix-wifi-scanner.diff
+
+  # Required for GCC 6
+  patch -d mozilla -Np1 < ../firefox-gcc-6.0.patch
+  patch -d mozilla -Np1 < ../mozilla-1228540.patch
+  patch -d mozilla -Np1 < ../mozilla-1228540-1.patch
+
+  echo -n "$_google_api_key" >google-api-key
+  echo -n "$_mozilla_api_key" >mozilla-api-key
+
+  cat >.mozconfig <<END
+ac_add_options --enable-application=mail
+
+ac_add_options --prefix=/usr
+ac_add_options --enable-release
+ac_add_options --enable-gold
+ac_add_options --enable-pie
+
+# Branding
+ac_add_options --enable-official-branding
+
+# Keys
+ac_add_options --with-google-api-keyfile=${PWD@Q}/google-api-key
+ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
+
+# System libraries
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+ac_add_options --with-system-icu
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-zlib
+ac_add_options --with-system-bz2
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
+ac_add_options --enable-system-hunspell
+ac_add_options --enable-system-sqlite
+ac_add_options --enable-system-ffi
+ac_add_options --enable-system-pixman
+
+# Features
+ac_add_options --enable-default-toolkit=cairo-gtk2
+ac_add_options --enable-startup-notification
+ac_add_options --disable-gstreamer
+ac_add_options --disable-crashreporter
+ac_add_options --disable-updater
+
+STRIP_FLAGS="--strip-debug"
+END
+}
+
+build() {
+  cd $_pkgname-$pkgver
+
+  # _FORTIFY_SOURCE causes configure failures
+  CPPFLAGS+=" -O2"
+
+  # Hardening
+  LDFLAGS+=" -Wl,-z,now"
+
+  # GCC 6
+  CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
+
+  export PATH="$srcdir/path:$PATH"
+
+  make -f client.mk build
+}
+
+package() {
+  cd $_pkgname-$pkgver
+  make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
+
+  _vendorjs="$pkgdir/usr/lib/thunderbird/defaults/preferences/vendor.js"
+  install -Dm644 /dev/stdin "$_vendorjs" <<END
+// Use LANG environment variable to choose locale
+pref("intl.locale.matchOS", true);
+
+// Disable default mailer checking.
+pref("mail.shell.checkDefaultMail", false);
+
+// Don't disable our bundled extensions in the application directory
+pref("extensions.autoDisableScopes", 11);
+pref("extensions.shownSelectionUI", true);
+END
+
+  for i in 16 22 24 32 48 256; do
+    install -Dm644 other-licenses/branding/thunderbird/mailicon$i.png \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/thunderbird.png"
+  done
+
+  install -Dm644 ../thunderbird.desktop \
+    "$pkgdir/usr/share/applications/thunderbird.desktop"
+
+  # Use system-provided dictionaries
+  rm -r "$pkgdir"/usr/lib/thunderbird/dictionaries
+  ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/thunderbird/dictionaries"
+  ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/thunderbird/hyphenation"
+
+  # Install a wrapper to avoid confusion about binary path
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/thunderbird" <<END
+#!/bin/sh
+exec /usr/lib/thunderbird/thunderbird "\$@"
+END
+
+  # Replace duplicate binary with wrapper
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
+  ln -srf "$pkgdir/usr/bin/thunderbird" \
+    "$pkgdir/usr/lib/thunderbird/thunderbird-bin"
+}
