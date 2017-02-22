@@ -1,11 +1,13 @@
+# Maintainer: hexchain <i@hexchain.org>
 
 _pypiname=requirements-parser
 pkgbase=python-$_pypiname
 pkgname=(python-$_pypiname python2-$_pypiname)
-license=('custom')
-pkgver=0.1.0
-pkgrel=1
 pkgdesc="A Pip requirements file parser"
+pkgver=0.1.0
+pkgrel=2
+license=('BSD')
+makedepends=(python-setuptools python2-setuptools)
 source=("https://github.com/davidfischer/requirements-parser/archive/v$pkgver.tar.gz")
 arch=(any)
 
