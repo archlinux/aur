@@ -13,7 +13,7 @@ sha512sums=('92face388179ed019b874f2d909c71ed5bbef6690fa0a1f3280e1bfb6574ba154ee
 build() {
   cd "${pkgname}-${pkgver}"
   autoreconf -v -i
-  ./configure --prefix=/usr 
+  ./configure --prefix=/usr
   make
 }
 
