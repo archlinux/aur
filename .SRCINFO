@@ -1,6 +1,6 @@
 pkgbase = pobvnc
 	pkgdesc = Pobvnc is an application that enables you to help other people behind a firewall.
-	pkgver = 0.1
+	pkgver = git
 	pkgrel = 1
 	url = http://www.freemedialab.org/pobvnc/
 	arch = i686
