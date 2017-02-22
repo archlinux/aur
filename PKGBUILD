@@ -2,7 +2,7 @@
 
 _pkgname=gitsync
 pkgname=$_pkgname-git
-pkgver=20160916.r37.c51c77f
+pkgver=20170221.r37.e2f08a5
 pkgrel=1
 pkgdesc='Git repository syncronisation daemon'
 url='https://github.com/raybejjani/gitsync'
