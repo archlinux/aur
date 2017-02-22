@@ -11,8 +11,8 @@
 
 pkgbase=linux-xanmod
 _srcname=linux
-_tag=4.9.9-xanmod14
-pkgver=4.9.9
+_tag=4.10.0-xanmod1_2
+pkgver=4.10.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.xanmod.org/"
