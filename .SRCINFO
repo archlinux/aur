@@ -1,0 +1,23 @@
+pkgbase = ttf-y14.5m
+	pkgdesc = Mechanical engineering fonts with regards to the ASME Y14.5 standard.
+	pkgver = 1
+	pkgrel = 1
+	url = https://cstools.asme.org/csconnect/CommitteePages.cfm?Committee=C64000000&Action=40068
+	arch = any
+	license = custom:copyright
+	source = http://www.fontspace.com/download/9006/862de5cd3f6f417f9e56e9d12fa58f5d/micronus_y145m-2009.zip
+	source = http://www.fontspace.com/download/6341/b1f81ad37c364d9e8122079657d70035/micronus_y145m.zip
+	source = http://www.fontspace.com/download/9007/dc81ff928cab49bfaedfef825b5c8762/micronus_weldsymbols.zip
+	source = local://COPYRIGHT
+	md5sums = 81178ab98fe87ccdc9a0926521f9bde1
+	md5sums = 9974425c007a3b8cc83c5f4a38143cac
+	md5sums = 1d765e5f492606fd729e0d307ccec636
+	md5sums = bdfa36bc4ecf87278f63e64dfee002c6
+
+pkgname = ttf-y14.5m
+	provides = ttf-y14.5m
+
+pkgname = ttf-y14.5m-docs
+	pkgdesc = Mechanical engineering fonts with regards to the ASME Y14.5 standard. (docs)
+	depends = ttf-y14.5m
+
