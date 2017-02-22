@@ -1,6 +1,6 @@
 # Maintainer: Elimpfor <aur@s403.33mail.com>
 pkgname=busysteg-git
-pkgver=r7.1ce6422
+pkgver=r10.6857c59
 pkgrel=1
 epoch=
 pkgdesc="Steganography tool to hide information content into busy areas of images, optimally"
