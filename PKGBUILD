@@ -8,7 +8,7 @@
 # Contributor: Paweł Tomak <pawel@tomak.eu>
 
 pkgname=pike
-pkgver=8.0.388
+pkgver=8.0.404
 pkgrel=1
 pkgdesc='Dynamic programming language with a syntax similar to Java and C'
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ depends=('gtksourceview2' 'sane' 'libzip' 'libmysqlclient' 'gtkglarea' 'nettle')
 makdepends=('nettle')
 source=("http://pike.lysator.liu.se/pub/pike/all/$pkgver/Pike-v$pkgver.tar.gz"
         "pike-disable_libdir_reset-0.patch")
-sha256sums=('3496db4e0bdae9d219c982a5c6c27b72cc660415afbfae91faf8cc1849097bc5'
+sha256sums=('cb523d04f6942d1406479b2e7d6c38d0241d20afe9bde1838a977c8dce1b0d8b'
             '311916764ab9485899c603bbe51ef7b8d9b453c7e0f160ec5bcedcacf8a0ce3d')
 
 prepare() {
