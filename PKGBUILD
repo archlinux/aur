@@ -2,26 +2,27 @@
 # Upstream URL: https://github.com/gabmus/razercommander
 
 pkgname=razercommander-git
-pkgver=1.1.0
+pkgver=1.1.0.r3.g17407d6
 pkgrel=1
 pkgdesc='Razer device manager for Linux'
 arch=('any')
 url='https://github.com/gabmus/razercommander'
-license=('GPLv3')
-depends=('razer-driver-dkms' 'razer-daemon' 'python-razer' 'gtk3>=3.14' 'python')
+license=('GPL3')
+depends=('python-razer' 'gtk3>=3.14' 'python')
 makedepends=('git')
-source=("razercommander::git+git://github.com/gabmus/razercommander")
-md5sums=('SKIP')
+source=("razercommander::git+https://github.com/gabmus/razercommander")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/razercommander"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
-  cd "$srcdir"
-  mkdir -p $pkgdir/usr/share/applications
+  cd "$srcdir/razercommander"
   mkdir -p $pkgdir/usr/bin
-  cp razercommander/razercommander.desktop.in $pkgdir/usr/share/applications/razercommander.desktop
-  cp -r razercommander $pkgdir/usr/share/razercommander
-  cat << EOF > $pkgdir/usr/bin/razercommander
-#!/bin/sh
-python3 /usr/share/razercommander/main.py
-EOF
-  chmod +x $pkgdir/usr/bin/razercommander
+  mkdir -p $pkgdir/usr/share/razercommander
+  install -Dm644 razercommander.desktop.in $pkgdir/usr/share/applications/razercommander.desktop
+  cp -r ./* $pkgdir/usr/share/razercommander/
+  ln -s /usr/share/razercommander/main.py $pkgdir/usr/bin/razercommander
 }
