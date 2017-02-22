@@ -1,0 +1,14 @@
+pkgbase = crazydiskinfo
+	pkgdesc = An interactive TUI S.M.A.R.T viewer
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/otakuto/crazydiskinfo
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = libatasmart
+	source = https://github.com/otakuto/crazydiskinfo/archive/1.0.2.tar.gz
+	sha256sums = 828165463a566b1736c5d94cfe8e0036085b99cefee65191fcba770156d9a2bd
+
+pkgname = crazydiskinfo
+
