@@ -1,10 +1,10 @@
 # Maintainer: Matthew McGinn <mamcgi@gmail.com>
 pkgname=ptpd
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The PTP daemon (PTPd) implements the Precision Time protocol (PTP) as defined by the relevant IEEE 1588 standard. PTP Version 2 implements IEEE-1588-2008. PTP was developed to provide very precise time coordination of LAN connected computers."
 arch=('any')
-url="http://ptpd.sourceforge.net/"
+url="https://github.com/ptpd/ptpd"
 license=('BSD')
 depends=('libpcap')
 provides=('ptpd')
