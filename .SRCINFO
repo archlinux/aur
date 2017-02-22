@@ -7,8 +7,8 @@ pkgbase = binnavi
 	license = Apache
 	makedepends = maven
 	makedepends = apache-ant
-	makedepends = java-environment=8
-	depends = java-runtime=8
+	makedepends = java-environment>=8
+	depends = java-runtime>=8
 	depends = postgresql
 	source = binnavi-6.1.0.tar.gz::https://github.com/google/binnavi/archive/v6.1.0.tar.gz
 	source = binnavi
