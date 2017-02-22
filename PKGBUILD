@@ -29,15 +29,12 @@ build() {
 }
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/java/binnavi"
-  mkdir -p "${pkgdir}/usr/share/licenses/binnavi"
-  mkdir -p "${pkgdir}/usr/share/binnavi"
   cd "${srcdir}/${_pkgname}/"
-  mv README.md "${pkgdir}/usr/share/binnavi/"
-  mv LICENSE "${pkgdir}/usr/share/licenses/binnavi"
+  install -Dm0644 README.md "${pkgdir}/usr/share/binnavi/README.md"
+  install -Dm0644  LICENSE "${pkgdir}/usr/share/licenses/binnavi/LICENSE"
   cd "${srcdir}/${_pkgname}/target/"
-  mv binnavi-all.jar "${pkgdir}/usr/share/java/binnavi/"
-  install -D -m755 "${srcdir}/binnavi.sh" "${pkgdir}/usr/bin/binnavi"
+  install -Dm0755  binnavi-all.jar "${pkgdir}/usr/share/java/binnavi/binnavi-all.jar"
+  install -D -m0755 "${srcdir}/binnavi.sh" "${pkgdir}/usr/bin/binnavi"
 }
 
 # vim:set et sw=2 ts=2 tw=79:
