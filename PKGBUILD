@@ -4,13 +4,13 @@
 # Some lines from  kernel26-bfs and kernel26-ck
 # Credits to respective maintainers
 _major=4
-_minor=9
+_minor=10
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=5
+_pfrel=1
 _kernelname=-pf
 _pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
 _pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
@@ -81,10 +81,9 @@ makedepends=('git' 'xmlto' 'docbook-xsl' 'xz' 'bc' 'kmod' 'elfutils')
 source=("ftp://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekernel}.tar.xz"
 	'config' 'config.x86_64'		# the main kernel config files
 	'linux.preset'			        # standard config files for mkinitcpio ramdisk
-	'change-default-console-loglevel.patch'
 	"${_pfpatchhome}${_pfpatchname}.xz"	# the -pf patchset
-        "git+$_aufs3#branch=aufs$_major.$_minor"
-        "uksm-$_major.$_minor.patch"::"http://kerneldedup.org/download/uksm/0.1.2.5/uksm-0.1.2.5-for-v$_major.$_minor.1+.patch"
+        "git+$_aufs3#branch=aufs4.x-rcN"
+        "uksm-4.9.patch"::"http://kerneldedup.org/download/uksm/0.1.2.5/uksm-0.1.2.5-for-4.9.1+.patch"
         "99-linux-pf.hook"
         '0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch'
        )
@@ -128,11 +127,6 @@ prepare() {
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
   
   
-  # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
-  # remove this when a Kconfig knob is made available by upstream
-  # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
-  
   # Revert a commit that causes memory corruption in i686 chroots on our
   # build server ("valgrind bash" immediately crashes)
   # https://bugzilla.kernel.org/show_bug.cgi?id=190061
@@ -148,7 +142,7 @@ prepare() {
   #patch -Rp1 -i "${srcdir}/cx23885_move_CI_AC_registration_to_a_separate_function.patch" || true
 
   # since linux-pf-4.6 uksm is seperate
-  patch -Np1 -i "$srcdir"/uksm-$_major.$_minor.patch
+  patch -Np1 -i "$srcdir"/uksm-4.9.patch
   
   if [ "$CARCH" = "x86_64" ]; then
 	cat "${startdir}/config.x86_64" >| .config
@@ -714,12 +708,11 @@ package_linux-pf-preset-default()
 pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ], uksm and aufs3"
 
 # makepkg -g >>PKGBUILD
-sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
-            '733b092bbcbb2d07dd891c77eb257104c04f21794ccec07af20b962ff81999af'
-            '377dd6e6675ec34a81bad6f3d651e23dd06b459e09320d6e6bbf4ac5507359c2'
+sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
+            'c5f788e83efcef4f0eb26e8aa3eceac1c2db9ca047e34cc37251fc4f0be63784'
+            'e15ef66afbe1448539aa9df56cca906c45abe514521ab80da06bffa45b2d365d'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '6fd13e956b0cce64b6a4d9426db1fdb78e295b62d1daed49ca27b742b641b7ab'
+            '9853580e534d6e3627b3161d7ee19d8f6548129eb937e2ba3329555fcb6087bb'
             'SKIP'
             '91ae8ac0cd2086067e0ccac28d360d9ed0b3e845f584ff9af8e21e098db7bd72'
             'df07e00e8581fe282a5b92be9ee9bb37910eae3d2cc43eeb41df736b9f531f02'
