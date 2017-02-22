@@ -1,6 +1,6 @@
 # Maintainer: Andrew Stubbs <andrew.stubbs@gmail.com>
 pkgname=mimic-git
-pkgver=r167.0513650
+pkgver=1.2.0.r0.eb4613e
 pkgrel=1
 pkgdesc="Text-to-speech voice synthesis from the Mycroft project."
 arch=(x86_64 i686)
@@ -8,7 +8,7 @@ url="https://mimic.mycroft.ai/"
 license=('custom')
 groups=()
 depends=(alsa-lib)
-makedepends=('git')
+makedepends=('git' 'libtool' 'autoconf' 'automake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -26,10 +26,10 @@ pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
 # Git, tags available
-#	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 
 # Git, no tags available
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -38,15 +38,18 @@ build() {
 	unset BUILDDIR
 
 	cd "$srcdir/${pkgname%-git}"
-	#./configure --prefix=/usr --with-audio=pulseaudio
-	./configure --prefix=/usr --with-audio=alsa
-	make
+	./autogen.sh
+	./configure --prefix=/usr
+
+	#make
+	# Temporary workaround for https://github.com/MycroftAI/mimic/issues/95
+	make CFLAGS='-D_DEFAULT_SOURCE -O2'
 }
 
-#check() {
-#	cd "$srcdir/${pkgname%-git}"
-#	make -k test
-#}
+check() {
+	cd "$srcdir/${pkgname%-git}"
+	make -k check
+}
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
