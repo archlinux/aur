@@ -3,7 +3,7 @@
 pkgname=aegir-provision
 _pkgname=${pkgname##*-}
 pkgver=7.x_3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="mass Drupal hosting system - backend"
 arch=('any')
 url='http://aegirproject.org'
@@ -18,12 +18,20 @@ package() {
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     install --directory "$pkgdir/usr/share/webapps/drush/commands/$_pkgname"
-    cp --archive * "$pkgdir/usr/share/webapps/drush/commands/$_pkgname"
+    cp --archive --target-directory="$pkgdir/usr/share/webapps/drush/commands/$_pkgname" \
+      db http platform Provision Symfony \
+      provision.{api.php,{,{context,drush,file,service}.}inc,info} \
+      {install,migrate,uninstall}.hostmaster.inc parse.backend.inc
 
-    msg2 'Moving doc files to /usr/share/doc'
-    install --directory "$pkgdir/usr/share/doc/$_pkgname"
-    for file in example.drushrc.php example.sudoers README.md upgrade.sh.txt; do
-      mv $pkgdir/usr/share/{webapps/drush/commands,doc}/$_pkgname/$file
-      ln --relative --symbolic $pkgdir/usr/share/{doc,webapps/drush/commands}/$_pkgname/$file
+    install --directory "$pkgdir/usr/share/doc/$pkgname"
+    for file in example.drushrc.php example.sudoers README.md; do
+      cp --archive --target-directory="$pkgdir/usr/share/doc/$pkgname" $file
+      ln --relative --symbolic $pkgdir/usr/share/{doc/$pkgname,webapps/drush/commands/$_pkgname}/$file
+    done
+
+    install --directory "$pkgdir/usr/share/$pkgname"
+    for file in aegir{,-{dev,release}}.make provision-tests scripts upgrade.sh.txt Vagrantfile; do
+      cp --archive --target-directory="$pkgdir/usr/share/$pkgname" $file
+      ln --relative --symbolic $pkgdir/usr/share/{$pkgname,webapps/drush/commands/$_pkgname}/$file
     done
 }
