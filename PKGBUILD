@@ -6,8 +6,8 @@
 pkgname=emacs-pretest
 _pkgname=emacs
 pkgver=25.2
-_pkgver=25.2-rc1
-pkgrel=0.1
+_pkgver=25.2-rc2
+pkgrel=0.2
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -16,7 +16,7 @@ depends=('librsvg' 'gpm' 'giflib' 'libxpm' 'libotf' 'm17n-lib' 'gtk3' 'hicolor-i
 provides=('emacs')
 conflicts=('emacs')
 source=(ftp://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig})
-sha512sums=('717cd9b058e4e9d6d8abe7d78a7538745c9a2e29f7f61fa58f3502584a755bb6d4b2d74ce912878e3730f5a72eabf63be1ce1cbb8fa99e1372763ec77df09384'
+sha512sums=('95e1b127beec5a6c8c5b54545b489e28d8c31051d82d6603ec8907b3cdfddd8a16a3b00287932bf8d69babfce44aa464236593bcb4e20864c823830f32f7be49'
             'SKIP')
 validpgpkeys=('B29426DEFB07724C3C35E5D36592E9A3A0B0F199' '28D3BED851FDF3AB57FEF93C233587A47C207910')
 
