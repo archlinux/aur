@@ -1,7 +1,7 @@
 # Maintainer: Alexander Görtz <aur@nyloc.de>
 
 pkgname=quassel-webserver-git
-pkgver=2.1.2.r1.g8b99e23
+pkgver=2.2.8.r1.g4d8031e
 pkgrel=1
 pkgdesc="A web client for Quassel (requires a running quasselcore)"
 arch=('i686' 'x86_64')
@@ -37,6 +37,6 @@ package() {
         cp -dpr --no-preserve=ownership $_directory "$pkgdir/usr/share/webapps/${pkgname%-git}/$_directory"
     done
 
-    install -Dm644 app.js settings.js -t "$pkgdir/usr/share/webapps/${pkgname%-git}"
+    install -Dm644 app.js settings.js package.json snapcraft.yaml -t "$pkgdir/usr/share/webapps/${pkgname%-git}"
     install -Dm644 settings.js "$pkgdir/usr/share/webapps/${pkgname%-git}/settings-user.js"
 }

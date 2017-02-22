@@ -1,6 +1,6 @@
 pkgbase = quassel-webserver-git
 	pkgdesc = A web client for Quassel (requires a running quasselcore)
-	pkgver = 2.1.2.r1.g8b99e23
+	pkgver = 2.2.8.r1.g4d8031e
 	pkgrel = 1
 	url = https://github.com/magne4000/quassel-webserver
 	install = quassel-webserver-git.install
