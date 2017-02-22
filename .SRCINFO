@@ -1,0 +1,17 @@
+pkgbase = scanpy-git
+	pkgver = 0.1_104.0f1981e
+	pkgrel = 1
+	url = https://github.com/theislab/scanpy
+	arch = any
+	license = GPL3
+	depends = python-matplotlib
+	depends = python-pandas
+	depends = python-scipy
+	depends = python-xlrd
+	depends = python-h5py
+	depends = python-scikit-learn
+	source = scanpy::git://github.com/theislab/scanpy.git
+	md5sums = SKIP
+
+pkgname = scanpy-git
+
