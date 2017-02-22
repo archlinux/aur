@@ -33,8 +33,7 @@ optdepends=('dosfstools: For grub-mkrescue FAT FS and EFI support'
             'fuse2: For grub-mount usage'
             'libisoburn: Provides xorriso for generating grub rescue iso using grub-mkrescue'
             'mtools: For grub-mkrescue FAT FS support'
-            'os-prober: To detect other OSes when generating grub.cfg in BIOS systems'
-)
+            'os-prober: To detect other OSes when generating grub.cfg in BIOS systems')
 
 if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
     makedepends+=('libusbx' 'sdl')
