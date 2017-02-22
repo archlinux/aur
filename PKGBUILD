@@ -1,13 +1,13 @@
 # Maintainer: Arthur Vuillard <arthur@hashbang.fr>
 pkgname=postgresql-multicorn
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Wrapper for Postgresql 9.2+ Foreign Data Wrapper"
 url="http://multicorn.org/"
 arch=('x86_64' 'i686')
 license=('Postgresql')
-depends=('postgresql>=9.5')
-makedepends=()
+depends=('postgresql>=9.5' 'python')
+makedepends=('python-setuptools')
 
 _github_name="Multicorn"
 _github_tag="v${pkgver}"
