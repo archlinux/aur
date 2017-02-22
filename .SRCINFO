@@ -1,0 +1,18 @@
+pkgbase = busysteg-git
+	pkgdesc = Steganography tool to hide information content into busy areas of images, optimally
+	pkgver = r7.1ce6422
+	pkgrel = 1
+	url = https://github.com/jaybosamiya/busysteg
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = opencv
+	source = busysteg-git::git+git://github.com/jaybosamiya/busysteg.git
+	source = https://jay.mit-license.org/license.txt
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = busysteg-git
+
