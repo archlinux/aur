@@ -9,7 +9,7 @@ url="https://github.com/trizen/$pkgname"
 license=('GPL3')
 depends=('perl>=5.14.0' 'fluxbox' 'perl-data-dump' 'perl-linux-desktopfiles>=0.08')
 
-source=("https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('b519bae614b80d1ccd66ede3cab2ab1ed891dfc582c56e37447e0a221b11f40a')
 
 package() {
