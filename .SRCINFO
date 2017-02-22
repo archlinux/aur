@@ -9,6 +9,9 @@ pkgbase = double-conversion-git
 	makedepends = git
 	makedepends = scons
 	makedepends = cmake
+	provides = double-conversion
+	conflicts = double-conversion
+	replaces = double-conversion
 	source = git+https://github.com/google/double-conversion.git
 	md5sums = SKIP
 
