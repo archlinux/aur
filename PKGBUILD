@@ -8,7 +8,7 @@ pkgname=dev-horo-git
 _pkgname=dev.horo
 _HOROK="horok.conf"
 pkgver=0.0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Horo in your Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/VOID001/dev.horo"
@@ -28,8 +28,6 @@ build() {
 package() {
         cd "$srcdir/$_pkgname"
         install -Dm755 ${_HOROPROXY}/${_HOROPROXY} "$pkgdir/usr/bin/${_HOROPROXY}"
-        #cd "$srcdir"
-        #install -Dm644 ${_HOROK} "${pkgdir}/usr/share/horo/${_HOROK}"
 
         sed -e "10s/^/#/g" -i "${srcdir}/${_pkgname}/Makefile"
 
