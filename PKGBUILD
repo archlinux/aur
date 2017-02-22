@@ -15,7 +15,7 @@ prepare() {
 				;;
 		i686) _source_bin=("aisdeco2_"$CARCH"_20150415.tgz")
 				;;
-		x86_64) _source_bin=("aisdeco2_"$CARCH"_20150415.tar.gz")
+		x86_64) _source_bin=("aisdeco2_"$CARCH"_20161112.tgz")
 				;;
 	esac
 	curl -sL "https://github.com/xginn8/aisdeco/blob/master/$_source_bin?raw=true" | tar xz
