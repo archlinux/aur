@@ -1,6 +1,6 @@
 # Maintainer: Matthew McGinn <mamcgi@gmail.com>
 pkgname=aisdeco2
-pkgver=20150415
+pkgver=20161112
 pkgrel=1
 pkgdesc="Cross-Platform Console Software-defined radio (SDR) receiver/decoder for marine Automatic Information System (AIS) signals"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
