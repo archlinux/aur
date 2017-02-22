@@ -9,7 +9,7 @@ url="https://github.com/trizen/smart-units"
 license=('GPL3')
 depends=('sidef')
 
-source=("https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('07c262014d32863a4f292505df334705476084427bdb861acd58a391117230ca')
 
 package() {
