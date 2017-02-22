@@ -19,6 +19,7 @@ package() {
   cd "${_gitname}"
   git submodule update --init --recursive
 
+  cd client
   # Install
   python setup.py install --optimize=1 --root="${pkgdir}"
 
