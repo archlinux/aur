@@ -1,7 +1,7 @@
 pkgbase = gitkraken
 	pkgdesc = The intuitive, fast, and beautiful cross-platform Git client.
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gitkraken.com/
 	arch = x86_64
 	license = custom
@@ -12,13 +12,14 @@ pkgbase = gitkraken
 	depends = libgnome-keyring
 	depends = gconf
 	depends = alsa-lib
+	depends = libcurl-compat
 	provides = gitkraken
 	source = https://release.gitkraken.com/linux/v2.1.0.tar.gz
 	source = GitKraken.desktop
 	source = gitkraken.png
 	source = eula.html
 	md5sums = 075de0a5610f6dc488563fe769d731c6
-	md5sums = cf2a1746a0cafe11793af0801c78afeb
+	md5sums = ecef298bed1178d60cf0dd75c4700205
 	md5sums = 04987b933d551d15c0813111d715bb9e
 	md5sums = e9ba6663e5f1f92cae31beb0074e8c6c
 
