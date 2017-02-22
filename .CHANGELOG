@@ -1,0 +1,62 @@
+* commit 9c8a828c0f8a744771ca4518c7840ca8d1ad187f
+| Author: Rohit Nirmal <rohitnirmal9@gmail.com>
+| Date:   Thu Jun 2 12:47:23 2016 -0500
+| 
+|     That's just embarrassing.
+| 
+* commit c6d82f7dda436a65532ac8348bd8c49242c81c95
+| Author: Rohit Nirmal <rohitnirmal9@gmail.com>
+| Date:   Tue May 17 13:21:26 2016 -0500
+| 
+|     Add gun2clone, and instructions on how to use it.
+| 
+* commit 2535ab7ee1d60def7926cdfa43f44625de15f3f0
+| Author: Rohit Nirmal <rohitnirmal9@gmail.com>
+| Date:   Mon Jan 18 11:11:52 2016 -0600
+| 
+|     Some people may want to compile with logging.
+| 
+* commit f2ce5a515639755902651c66721bacf61d8ad821
+| Author: Rohit Nirmal <rohitnirmal9@gmail.com>
+| Date:   Fri Jan 1 12:41:12 2016 -0600
+| 
+|     Faster punching!!
+| 
+* commit e28710585cba36a729271ef36574bffa7eea19ce
+| Author: Rohit Nirmal <rohitnirmal9@gmail.com>
+| Date:   Thu Dec 31 14:15:16 2015 -0600
+| 
+|     Add note about custom music in Modding.txt.
+| 
+* commit fe8574ee869a9362382f2c6baa4a7dfe14864ffd
+| Author: Rohit Nirmal <rohitnirmal9@gmail.com>
+| Date:   Wed Dec 30 19:49:00 2015 -0600
+| 
+|     - Add new map2.tmx.
+|     - Fix map4.tmx being potentially impossible.
+|     - Adjust guard starting direction/position in map3.tmx.
+|     - Also, deal with stuff added with new Tiled version.
+| 
+* commit c9d4fa0b8b60d46d64a86b3483edd7c626836b2a
+| Author: Rohit Nirmal <rohitnirmal9@gmail.com>
+| Date:   Sun Dec 27 16:48:14 2015 -0600
+| 
+|     Config variables for easier map testing.
+| 
+* commit 210d3e313b87b26d60ba56859577c63d10d481f1
+| Author: Rohit Nirmal <rohitnirmal9@gmail.com>
+| Date:   Sun Dec 27 16:29:22 2015 -0600
+| 
+|     Add another tutorial mark.
+| 
+* commit ec4895d2b7419ae7ec06f4b8df9b66cb8a0a6c27
+| Author: Rohit Nirmal <rohitnirmal9@gmail.com>
+| Date:   Sat Dec 26 11:17:59 2015 -0600
+| 
+|     Play low pass filter of music while in crosslink.
+| 
+* commit 37def83baa7f6351dcf8166d27a5d20b2d56c078
+| Author: Rohit Nirmal <rohitnirmal9@gmail.com>
+| Date:   Thu Dec 24 00:35:30 2015 -0600
+| 
+|     Finishing a map transitions to load map state.
