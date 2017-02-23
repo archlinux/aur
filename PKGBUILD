@@ -11,7 +11,7 @@ options=(!emptydirs)
 conflicts=(chirp)
 provides=(chirp)
 install=
-sha1sums=("cb523d5819efc223226e30097bd89590c4507cfd")
+sha1sums=("f5dbf80df8afbed357285a3d5ab860199dba6931")
 source=("http://trac.chirp.danplanet.com/chirp_daily/daily-20170222/chirp-daily-20170222.tar.gz")
 
 build() {
