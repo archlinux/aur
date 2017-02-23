@@ -1,0 +1,18 @@
+pkgbase = ctmg
+	pkgdesc = Simple wrapper around cryptsetup for encrypted containers
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://git.zx2c4.com/ctmg/
+	arch = any
+	license = ISC
+	depends = cryptsetup
+	depends = e2fsprogs
+	depends = sudo
+	depends = coreutils
+	source = https://git.zx2c4.com/ctmg/snapshot/ctmg-1.2.tar.xz
+	source = ctmg.1
+	md5sums = ed4c016d905137eb28fe79217df7de04
+	md5sums = 80932e66d0a999f61f26749df1548fb3
+
+pkgname = ctmg
+

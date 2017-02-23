@@ -1,0 +1,60 @@
+.\" -*- mode: nroff; coding: UTF-8 -*-
+.TH ctmg 1 "March 2016" "User Commands"
+.SH NAME
+ctmg \- Simple wrapper around cryptsetup for encrypted containers
+.SH SYNOPSIS
+.B ctmg
+[ \fI\,new\/\fR | \fI\,delete\/\fR | \fI\,open\/\fR | \fI\,close\/\fR |
+\fI\,list\/\fR ] [\fI\,arguments...\/\fR]
+.SH DESCRIPTION
+.PP
+ctmg is an encrypted container manager for GNU/Linux using cryptsetup and
+various standard file system utilities. Containers have the extension
+\[char46]ct and are mounted at a directory of the same name, but without the
+extension. Superuser permissions are required to run this command.
+.TP
+.B new \fI\,filename size\/\fR
+creates a new container file. Both parameters are mandatory.
+.TP
+.B delete \fI\,filename\/\fR
+deletes a container file as well as the mounted directory.
+.TP
+.B open \fI\,filename\/\fR
+opens a container file and mounts it temporarily in a new directory of the same
+name.
+.TP
+.B close \fI\,filename\/\fR
+deletes the temporary directory. Its contents are stored in the container file.
+.TP
+.B list
+list all existing mounting directories.
+.SH PARAMETERS
+.TP
+\fIfilename\fR
+sets the path and file name for the container.
+.TP
+\fIsize\fR
+.br
+sets the maximum size for the container, the size value must be indicated in the
+form 'units_suffix'.
+.SH EXAMPLES
+.PP
+Create a 100MiB encrypted container called 'foo':
+.IP
+$ ctmg create foo 100MiB
+.PP
+Open a container:
+.IP
+$ ctmg open foo
+.PP
+Close a container:
+.IP
+$ ctmg close foo
+.SH AUTHOR
+Written by Iván Ruvalcaba.
+.SH COPYRIGHT
+Copyright \(co 2015, Jason A. Donenfeld <Jason@zx2c4.com>
+.PP
+Permission to use, copy, modify, and distribute this software for any purpose
+with or without fee is hereby granted, provided that the above copyright notice
+and this permission notice appear in all copies.
