@@ -4,7 +4,7 @@ pkgname=mycroft-core
 # _pkgcommit=eb0a37c # Used only when the latest tag is not working
 # pkgver=0.7.20.${_pkgcommit}
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Mycroft Core, the Mycroft Artificial Intelligence platform. Contribute to this package at: https://gitlab.com/rafamanzo/aur-mycroft-core"
 arch=('i686' 'x86_64')
 url='https://github.com/MycroftAI/mycroft-core'
@@ -27,7 +27,7 @@ depends=('git'
          'mpg123'
          'flac'
          'curl'
-         'mimic-git'
+         'mimic'
          'alsa-utils')
 makedepends=('sudo')
 optdepends=()
