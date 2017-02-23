@@ -1,13 +1,13 @@
-# Maintainer: nickbtr <nick.blais@thinkrf.com>
+# Maintainer: Nick Blais <nick.blais@thinkrf.com>
 pkgname=pyrf-git
 pkgver=r1794.ae859eb
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="python API for RF receivers including ThinkRF WSA5000"
 arch=('any')
 url="https://github.com/pyrf/"
 license=('custom')
-depends=('python2' 'python2-numpy' 'python2-scipy' 'python2-pyside' 'python2-pyqtgraph' 'python2-zope-interface' 'python2-twisted' 'python2-netifaces' 'python2-setuptools' 'python2-qt4reactor')
+depends=('python2' 'python2-numpy' 'python2-scipy' 'python2-pyside' 'python2-pyqtgraph' 'python2-zope-interface' 'python2-twisted' 'python2-netifaces' 'python2-setuptools' 'tk' 'python2-qt4reactor')
 makedepends=('git' 'python2-pip')
 source=("${pkgname}::git+git://github.com/pyrf/pyrf.git")
 md5sums=('SKIP')

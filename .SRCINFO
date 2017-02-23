@@ -1,7 +1,7 @@
 pkgbase = pyrf-git
 	pkgdesc = python API for RF receivers including ThinkRF WSA5000
 	pkgver = r1794.ae859eb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyrf/
 	arch = any
 	license = custom
@@ -16,6 +16,7 @@ pkgbase = pyrf-git
 	depends = python2-twisted
 	depends = python2-netifaces
 	depends = python2-setuptools
+	depends = tk
 	depends = python2-qt4reactor
 	source = pyrf-git::git+git://github.com/pyrf/pyrf.git
 	md5sums = SKIP
