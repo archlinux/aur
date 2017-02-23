@@ -1,0 +1,15 @@
+pkgbase = ecity
+	pkgdesc = Virtual City Environment for Engineering Problem Based Learning
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = http://ecity-project.eu
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://ecity-project.eu/ecity-1.5.1-linux.zip
+	source = ecity.desktop
+	md5sums = 140ba9db9ac7042a8312c9b449a40d5b
+	md5sums = b22d47c4787a9e15e96c9fcf1b733848
+
+pkgname = ecity
+

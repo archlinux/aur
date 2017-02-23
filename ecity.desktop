@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ecity
+Comment=Virtual City Environment for Engineering Problem Based Learning
+Exec=ecity %U
+Icon=/opt/ecity/ecity.png
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Game;
+Name[en_US]=ecity
