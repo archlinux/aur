@@ -49,7 +49,8 @@ package() {
         -t "$pkgdir/usr/share/man/man5"
 
   install -Dm 664 "$srcdir/bitcoin.conf" -t "$pkgdir/etc/bitcoin"
-  install -Dm 755 "share/rpcuser/rpcuser.py" -t "$pkgdir/etc/bitcoin"
+  sed 's/python2/python/' <share/rpcuser/rpcuser.py >rpcuser.py
+  install -Dm 755 rpcuser.py -t "$pkgdir/etc/bitcoin"
   install -Dm 644 "contrib/init/bitcoind.service" -t "$pkgdir/usr/lib/systemd/system"
   install -Dm 644 "$srcdir/bitcoin.logrotate" "$pkgdir/etc/logrotate.d/bitcoin"
 
