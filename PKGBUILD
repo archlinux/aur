@@ -1,39 +1,31 @@
-# Maintainer: Daniel Micay <danielmicay@gmail.com>
-# Contributor: Dave Reisner <dreisner@archlinux.org>
-# Contributor: Hervé Cauwelier <herve ¤ oursours.net>
+# Maintainer: Alberto Fanjul <albertofanjul@gmail.com>
 
-_gitname=libgit2
 pkgname=libgit2-git
-pkgver=0.21.0.r65.g9b87998
-epoch=2
+pkgver=0.25.1
 pkgrel=1
+epoch=1
 pkgdesc='A linkable library for Git'
 arch=('i686' 'x86_64')
-url="http://libgit2.github.com/"
+url='https://libgit2.github.com/'
+depends=(zlib openssl libssh2 curl)
+makedepends=(cmake python)
 license=('GPL2')
-depends=(zlib openssl libssh2)
-makedepends=(cmake python2 git)
-provides=('libgit2')
-conflicts=('libgit2')
-source=(git://github.com/libgit2/libgit2.git)
-md5sums=(SKIP)
-
-pkgver() {
-  cd $_gitname
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//'
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/libgit2/libgit2/archive/v${pkgver}.tar.gz")
+sha1sums=('SKIP')
 
 build() {
-  cd $_gitname
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
-    -DTHREADSAFE=ON -DPYTHON_EXECUTABLE=/usr/bin/python2
+  cd "$pkgname-$pkgver"
+  export LANG=en_US.UTF-8
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DTHREADSAFE=ON
   make
 }
 
 check() {
-  make -C $_gitname test
+  cd "$pkgname-$pkgver"
+  make test
 }
 
 package() {
-  make -C $_gitname DESTDIR="$pkgdir" install
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
 }
