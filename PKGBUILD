@@ -4,7 +4,7 @@
 _pkgname=libsamplerate
 pkgname=mingw-w64-libsamplerate
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Secret Rabbit Code - aka Sample Rate Converter for audio (mingw-w64)"
 arch=('any')
 url="http://www.mega-nerd.com/SRC/index.html"
@@ -14,8 +14,8 @@ makedepends=('mingw-w64-configure')
 options=('!strip' '!buildflags' '!staticlibs')
 source=(http://www.mega-nerd.com/SRC/libsamplerate-${pkgver}.tar.gz
         no-examples-or-tests.patch)
-sha1sums=('ed60f957a4ff87aa15cbb1f3dbd886fa7e5e9566'
-          'e789d29476e3f1548d6cc939423e4a1d20d90fbf')
+sha256sums=('0a7eb168e2f21353fb6d84da152e4512126f7dc48ccb0be80578c565413444c1'
+            '6a0936d24874b5f7b0afdacf192a443c81a6bd9a94155deba6c7a4e844d8a41a')
 validpgpkeys=('73571E85C19F4281D8C97AA86CA41A7743B8D6C8')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
