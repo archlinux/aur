@@ -1,8 +1,8 @@
 # Maintainer: Grey Christoforo <my first name [at] my last name [dot] net>
 
 pkgname=cura
-pkgver=2.3.1
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="A software solution for 3D printing aimed at RepRaps and the Ultimaker."
 depends=('qt5-svg' 'python-scipy' 'python-pyserial' 'python-numpy' 'uranium' 'curaengine' 'cura-binary-data')
 makedepends=('qt5-tools' 'cmake')
@@ -11,7 +11,7 @@ url="https://ultimaker.com/en/products/cura-software"
 license=('AGPLv3')
 arch=('i686' 'x86_64')
 source=(https://github.com/Ultimaker/Cura/archive/${pkgver}.tar.gz)
-sha1sums=('3b0fc277e5c871aeb1d75263c861e5bd1afa6188')
+sha1sums=('8f21748b27ef7e6fd7b07c2c6f81695f073a6840')
 
 install=cura.install
 

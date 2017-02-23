@@ -1,4 +1,4 @@
 *.tar*
-pkg
-src
+pkg/
+src/
 *.log
