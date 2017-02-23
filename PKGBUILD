@@ -4,12 +4,12 @@
 
 pkgname=perl-gnome2-wnck
 pkgver=0.16
-pkgrel=11
+pkgrel=12
 pkgdesc="Perl interface to the Window Navigator Construction Kit"
 arch=('i686' 'x86_64')
 license=("GPL" "PerlArtistic")
 url="http://search.cpan.org/dist/Gnome2-Wnck"
-depends=('gtk2-perl' 'libwnck')
+depends=('gtk2-perl' 'libwnck' 'perl')
 makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/Gnome2-Wnck-${pkgver}.tar.gz")
