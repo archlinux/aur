@@ -2,9 +2,9 @@
 
 pkgbase=python-case
 pkgname=('python-case' 'python2-case')
-pkgver=1.5.2
-_commit=d2eb04d9ef1ee2f1d3bca37cd9fb6b0ff8cc7405
-pkgrel=2
+pkgver=1.5.3
+_commit=54341e0c8f2e41f0fcaa9d5dc325c33d4746168d
+pkgrel=1
 pkgdesc="Python unittest Utilities"
 arch=('any')
 license=('BSD')
