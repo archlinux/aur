@@ -1,6 +1,6 @@
 pkgbase = spotio
 	pkgdesc = A proof-of-concept Rdio-inspired skin for Spotify. Temp. using Owlinated's repo for player theme fix.
-	pkgver = 1.0.2_1.0.49.125.g72ee7853.
+	pkgver = 1.0.2_1.0.49.125.g72ee7853
 	pkgrel = 3
 	url = http://spotio.devinhalladay.com/
 	arch = x86_64
