@@ -1,18 +1,18 @@
 # Maintainer: Hans Gaiser <hansg91@gmail.com>
 
 pkgname=multitask-network-cascades-dr-git
-pkgver=0.r61.79282fa
+pkgver=0.r62.341df23
 pkgrel=1
 pkgdesc='A framework containing Caffe layers for running the Multitask-Network-Cascades algorithm.'
 arch=(x86_64)
-url='ssh://git@github.com/delftrobotics/MNC'
+url='github.com/delftrobotics/MNC'
 license=('BSD')
 
 depends=(
 	'caffe'
 )
 
-source=('git+ssh://git@github.com/delftrobotics-forks/MNC.git')
+source=('git+https://github.com/delftrobotics-forks/MNC.git')
 makedepends=('git')
 provides=('multitask-network-cascades-git')
 conflicts=('multitask-network-cascades-git')
