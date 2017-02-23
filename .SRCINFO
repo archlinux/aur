@@ -1,0 +1,16 @@
+pkgbase = fsharp-forge
+	pkgdesc = F# project management tool
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://forge.run/
+	arch = any
+	license = custom:unlicense
+	depends = fsharp
+	noextract = https://github.com/fsharp-editing/Forge/releases/download/1.4.0/forge.zip
+	source = https://github.com/fsharp-editing/Forge/releases/download/1.4.0/forge.zip
+	source = https://raw.githubusercontent.com/fsharp-editing/Forge/master/LICENSE.txt
+	sha256sums = 439108f05afaf49d250167de746901e5135d7180cfc6ab5fd7ff0350e01b9c79
+	sha256sums = 7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c
+
+pkgname = fsharp-forge
+
