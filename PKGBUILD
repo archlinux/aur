@@ -9,7 +9,7 @@ url="https://github.com/trizen/asciiplanes"
 license=('GPL3')
 depends=('sidef>=2.30' 'perl-text-asciitable')
 
-source=("https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-$pkgver.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('0fbe6376ffea6737ffd1e21832957dcf06225b73ab749242013ef147f5706a5c')
 
 package() {
