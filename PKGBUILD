@@ -18,7 +18,7 @@
 pkgbase=kodi-pre-release
 _suffix=pre-release
 pkgname=("kodi-$_suffix" "kodi-eventclients-$_suffix" "kodi-tools-texturepacker-$_suffix" "kodi-dev-$_suffix")
-pkgver=17.0
+pkgver=17.1rc1
 _codename=Krypton
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ makedepends=(
 source=(
   "kodi-$pkgver-$_codename.tar.gz::https://github.com/xbmc/xbmc/archive/$pkgver-$_codename.tar.gz"
 )
-sha256sums=('4bfffa2493973ae15ab1d922632c09a2583908d6140bc4f58ec8f9314e4f6545')
+sha256sums=('a614128c065d561fccd4167f25eddbad3875328f1e81f627ffe3d0b17958aa07')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
@@ -51,7 +51,7 @@ build() {
     -DENABLE_EVENTCLIENTS=ON \
     -DLIRC_DEVICE=/run/lirc/lircd \
     ../"xbmc-$pkgver-$_codename"/project/cmake
-  make VERBOSE=1
+  make
   make preinstall
 }
 
@@ -61,12 +61,10 @@ build() {
 package_kodi-pre-release() {
   pkgdesc="Beta or RC versions of a media player and entertainment hub for digital media."
   depends=(
-    'python2-pillow'                       'python2-simplejson'
-                  'xorg-xdpyinfo'
-    'bluez-libs' 'fribidi' 'freetype2' 'glew' 'hicolor-icon-theme' 'libcdio'
-    'libjpeg-turbo' 'libmariadbclient' 'libmicrohttpd' 'libpulse' 'libssh'
-    'libva' 'libvdpau' 'libxrandr' 'libxslt' 'lzo' 'smbclient' 'taglib' 'tinyxml'
-    'yajl' 'mesa' 'desktop-file-utils'
+    'python2-pillow' 'python2-simplejson' 'xorg-xdpyinfo' 'bluez-libs' 'fribidi'
+    'freetype2' 'glew' 'hicolor-icon-theme' 'libcdio' 'libjpeg-turbo' 'libmariadbclient'
+    'libmicrohttpd' 'libpulse' 'libssh' 'libva' 'libvdpau' 'libxrandr' 'libxslt' 'lzo'
+    'smbclient' 'taglib' 'tinyxml' 'yajl' 'mesa' 'desktop-file-utils'
   )
   optdepends=(
     'afpfs-ng: Apple shares support'
