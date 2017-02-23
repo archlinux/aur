@@ -1,6 +1,6 @@
 --- xorg-server-1.19.1/xkb/xkbActions.c.orig	2017-01-12 18:34:23.435568903 +0300
-+++ xorg-server-1.19.1/xkb/xkbActions.c	2017-02-23 11:37:52.119502755 +0300
-@@ -351,26 +351,82 @@
++++ xorg-server-1.19.1/xkb/xkbActions.c	2017-02-23 12:58:00.719948700 +0300
+@@ -351,26 +351,83 @@
      return 1;
  }
  
@@ -15,7 +15,8 @@
 +    XkbGroupAction ga = pAction->group;
 +    if (ga.flags&XkbSA_GroupAbsolute)
 +       xkbi->state.locked_group= XkbSAGroup(&ga);
-+    else xkbi->state.locked_group+= XkbSAGroup(&ga);
++    else
++       xkbi->state.locked_group+= XkbSAGroup(&ga);
 +}
 +
 +static XkbFilterPtr _XkbNextFreeFilter(XkbSrvInfoPtr xkbi);
@@ -92,12 +93,12 @@
          filter->upAction = *pAction;
          if (!(filter->upAction.mods.flags & XkbSA_LockNoLock))
              xkbi->state.locked_mods |= pAction->mods.mask;
-@@ -1244,9 +1300,12 @@
+@@ -1244,9 +1301,12 @@
          *sendEvent = _XkbFilterLatchState(xkbi, filter, key, act);
          break;
      case XkbSA_LockMods:
 +        filter = _XkbNextFreeFilter(xkbi);
-+        sendEvent=_XkbFilterLockMods(xkbi, filter, key, act);
++        *sendEvent = _XkbFilterLockMods(xkbi, filter, key, act);
 +        break;
      case XkbSA_LockGroup:
          filter = _XkbNextFreeFilter(xkbi);
