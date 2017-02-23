@@ -1,7 +1,7 @@
 pkgbase = gstm
 	pkgdesc = Gnome front-end to ssh tunneling
 	pkgver = 1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/gstm/
 	arch = i686
 	arch = x86_64
