@@ -1,15 +1,15 @@
 pkgbase = multitask-network-cascades-dr-git
 	pkgdesc = A framework containing Caffe layers for running the Multitask-Network-Cascades algorithm.
-	pkgver = 0.r61.79282fa
+	pkgver = 0.r62.341df23
 	pkgrel = 1
-	url = ssh://git@github.com/delftrobotics/MNC
+	url = github.com/delftrobotics/MNC
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	depends = caffe
 	provides = multitask-network-cascades-git
 	conflicts = multitask-network-cascades-git
-	source = git+ssh://git@github.com/delftrobotics-forks/MNC.git
+	source = git+https://github.com/delftrobotics-forks/MNC.git
 	sha256sums = SKIP
 
 pkgname = multitask-network-cascades-dr-git
