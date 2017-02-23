@@ -3,7 +3,7 @@
 pkgbase = bitcoin-classic
 	pkgdesc = Bitcoin Classic with bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitcoinclassic.com/
 	install = bitcoin.install
 	arch = i686
