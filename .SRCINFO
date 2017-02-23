@@ -1,6 +1,6 @@
 pkgbase = nodejs-lts-boron-bin
 	pkgdesc = Evented I/O for V8 javascript
-	pkgver = 6.9.5
+	pkgver = 6.10.0
 	pkgrel = 1
 	url = http://nodejs.org/
 	arch = i686
@@ -16,16 +16,16 @@ pkgbase = nodejs-lts-boron-bin
 	optdepends = npm: nodejs package manager
 	provides = nodejs
 	conflicts = nodejs
-	source_i686 = https://nodejs.org/dist/v6.9.5/node-v6.9.5-linux-x86.tar.xz
-	sha256sums_i686 = a31a9612b5b11d9cf4aad05c406388760bde7b2bf0969a0e580b52cfbbf0bc09
-	source_x86_64 = https://nodejs.org/dist/v6.9.5/node-v6.9.5-linux-x64.tar.xz
-	sha256sums_x86_64 = 4831ba1a9f678f91dd7e2516eaa781341651b91ac908121db902f5355f0211d8
-	source_armv6h = https://nodejs.org/dist/v6.9.5/node-v6.9.5-linux-armv6l.tar.xz
-	sha256sums_armv6h = b500cef8ce9d861894d4699f7ee11480333a7ad432cbd0bac1c4d33a4bba18f3
-	source_armv7h = https://nodejs.org/dist/v6.9.5/node-v6.9.5-linux-armv7l.tar.xz
-	sha256sums_armv7h = e3c8f027be7c0b9469b8a38e3e05a7a069881001aa8dac88650a2b6499a1c8ca
-	source_aarch64 = https://nodejs.org/dist/v6.9.5/node-v6.9.5-linux-arm64.tar.xz
-	sha256sums_aarch64 = b5f1099845ec434b728f0fef5d13970a7e49f5f4dcc4dcf3f96eb6fb94ed576f
+	source_i686 = https://nodejs.org/dist/v6.10.0/node-v6.10.0-linux-x86.tar.xz
+	sha256sums_i686 = 684b1121730af2d1373c157608329c5234decd57f2f335051ad734c250b28f6f
+	source_x86_64 = https://nodejs.org/dist/v6.10.0/node-v6.10.0-linux-x64.tar.xz
+	sha256sums_x86_64 = 0f28bef128ef8ce2d9b39b9e46d2ebaeaa8a301f57726f2eba46da194471f224
+	source_armv6h = https://nodejs.org/dist/v6.10.0/node-v6.10.0-linux-armv6l.tar.xz
+	sha256sums_armv6h = 41f5c6c106e8f3da4e139364739fcbbbc21012984533e2b6b33a61b234a40b3f
+	source_armv7h = https://nodejs.org/dist/v6.10.0/node-v6.10.0-linux-armv7l.tar.xz
+	sha256sums_armv7h = 95efb476886df15cc6586dd26ecc50834a768e347cf95e861461853cfb40fc78
+	source_aarch64 = https://nodejs.org/dist/v6.10.0/node-v6.10.0-linux-arm64.tar.xz
+	sha256sums_aarch64 = fc020ac1c3e6d3148ff353dd3b2b11017e556cabf405e385392f599ce34cdf16
 
 pkgname = nodejs-lts-boron-bin
 
