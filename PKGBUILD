@@ -1,7 +1,7 @@
 # Maintainer: DeedleFake <deedlefake at users dot noreply dot github dot com>
 pkgname=upspin-git
-pkgver=r1433.0d288a48
-pkgrel=1
+pkgver=r1449.2b715455
+pkgrel=2
 pkgdesc="A global name system of sorts."
 arch=(i686 x86_64)
 url="https://upspin.io"
@@ -25,7 +25,7 @@ pkgver() {
 build() {
 	cd "$srcdir"
 
-	GOPATH="$srcdir/gopath"
+	export GOPATH="$srcdir/gopath"
 	mkdir -p "$GOPATH/src"
 	mv "$srcdir/${pkgname%-git}" "$GOPATH/src/upspin.io"
 

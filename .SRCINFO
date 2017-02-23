@@ -1,7 +1,7 @@
 pkgbase = upspin-git
 	pkgdesc = A global name system of sorts.
-	pkgver = r1433.0d288a48
-	pkgrel = 1
+	pkgver = r1449.2b715455
+	pkgrel = 2
 	url = https://upspin.io
 	arch = i686
 	arch = x86_64
