@@ -1,0 +1,16 @@
+pkgbase = httplab
+	pkgdesc = An interactive web server
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://github.com/gchaincl/httplab
+	arch = any
+	license = MIT
+	makedepends = go>=1.7
+	provides = httplab=$pkgver
+	conflicts = httplab
+	replaces = httplab
+	source = httplab::git+https://github.com/gchaincl/httplab.git
+	md5sums = SKIP
+
+pkgname = httplab
+
