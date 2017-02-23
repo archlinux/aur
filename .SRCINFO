@@ -11,7 +11,8 @@ pkgbase = perl-gtk2-unique
 	makedepends = perl-extutils-depends
 	makedepends = perl-extutils-pkgconfig
 	depends = gtk2-perl
-	depends = libunique
+	depends = libunique,
+	depends = perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/P/PO/POTYL/Gtk2-Unique-0.05.tar.gz
 	source = perl-gtk2-unique.patch
@@ -20,7 +21,8 @@ pkgbase = perl-gtk2-unique
 
 pkgname = perl-gtk2-unique
 	depends = gtk2-perl
-	depends = libunique
+	depends = libunique,
+	depends = perl
 	depends = perl>=
 	depends = perl<
 
