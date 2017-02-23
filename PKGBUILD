@@ -106,6 +106,10 @@ package(){
 
   # Install script to set path
   install -Dm755 "${srcdir}/visit.sh" "${pkgdir}/etc/profile.d/visit.sh"
+
+  # Add link for the current version as in visit-bin
+  cd "${pkgdir}/opt/${_pkgname}"
+  ln -s ${pkgver} current
 }
 
 _build_command(){
