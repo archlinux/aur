@@ -1,7 +1,7 @@
 # Maintainer: Ricardo Band <email@ricardo.band>
 pkgname=storageexplorer
 pkgver=0.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Azure Storage Explorer (Preview) is a standalone app from Microsoft that allows you to easily work with Azure Storage data on Windows, macOS and Linux."
 arch=(x86_64)
 url="http://storageexplorer.com/"
