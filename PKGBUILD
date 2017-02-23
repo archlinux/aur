@@ -138,6 +138,10 @@ package(){
   # Install script to set path
   install -Dm755 "${srcdir}/visit.sh" \
     "${pkgdir}/etc/profile.d/visit.sh"
+
+  # Add link for the current version as in visit-bin
+  cd "${pkgdir}/opt/${pkgname}"
+  ln -s ${pkgver} current
 }
 
 # vim:set ts=2 sw=2 et:
