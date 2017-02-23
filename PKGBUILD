@@ -3,7 +3,7 @@
 pkgname=cockroachdb-bin
 conflicts=('cockroachdb')
 provides=('cockroachdb')
-pkgver=20170216
+pkgver=20170223
 pkgrel=1
 pkgdesc="An open source, survivable, strongly consistent, scale-out SQL database"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://www.cockroachlabs.com/"
 license=('Apache')
 depends=('gcc-libs')
 source=("https://binaries.cockroachdb.com/cockroach-beta-${pkgver}.linux-amd64.tgz")
-sha256sums=('aac7aa2606ee4c93174453a6e22ccab3f5ea5545df96bb6b40e877ef762610bc')
+sha256sums=('91851dc2aaf90d23cd4c6a100177376f47a1a0e567ea237002378e2d1d0b7dbc')
 
 package() {
   cd $srcdir/cockroach-beta-${pkgver}.linux-amd64/
