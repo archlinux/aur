@@ -13,7 +13,7 @@ makedepends=('unzip' 'coreutils')
 provides=('nordvpn')
 source=('https://nordvpn.com/api/files/zip')
 noextract=(zip)
-sha256sums=('1738320b3eb1f0fdf4bf144e5e34af248d1163c089147367263af04b3562328e')
+sha256sums=('f1368271d191e3f89a9d07ce341cf24cd681d2f5019098475a542f853265e5b0')
 install=${pkgname}.install
 
 prepare() {
