@@ -1,4 +1,4 @@
-pkgbase = nvidia-utils-vulkan-beta
+pkgbase = nvidia-utils-vulkan-developer-beta
 	pkgver = 375.27.10
 	pkgrel = 1
 	url = http://www.nvidia.com/
@@ -13,13 +13,13 @@ pkgbase = nvidia-utils-vulkan-beta
 	source_x86_64 = https://developer.nvidia.com/linux-375271064bit
 	md5sums_x86_64 = da18fc734f4008dbc868c7eccbd8216b
 
-pkgname = nvidia-utils-vulkan-beta
+pkgname = nvidia-utils-vulkan-developer-beta
 	pkgdesc = NVIDIA driver utilities and libraries (vulkan developer beta version)
-	install = nvidia-utils-vulkan-beta.install
+	install = nvidia-utils-vulkan-developer-beta.install
 	depends = xorg-server
 	optdepends = gtk2: nvidia-settings (GTK+ v2)
 	optdepends = gtk3: nvidia-settings (GTK+ v3)
-	optdepends = opencl-nvidia-vulkan-beta: OpenCL support
+	optdepends = opencl-nvidia-vulkan-developer-beta: OpenCL support
 	optdepends = xorg-server-devel: nvidia-xconfig
 	provides = nvidia-utils=375.27.10
 	provides = nvidia-settings
@@ -30,17 +30,17 @@ pkgname = nvidia-utils-vulkan-beta
 	conflicts = libglvnd
 	backup = etc/X11/xorg.conf.d/20-nvidia.conf
 
-pkgname = nvidia-libgl-vulkan-beta
-	pkgdesc = NVIDIA driver library symlinks for 'nvidia-utils-vulkan-beta'
-	depends = nvidia-utils-vulkan-beta
+pkgname = nvidia-libgl-vulkan-developer-beta
+	pkgdesc = NVIDIA driver library symlinks for 'nvidia-utils-vulkan-developer-beta'
+	depends = nvidia-utils-vulkan-developer-beta
 	provides = libgl
 	provides = nvidia-libgl
 	conflicts = libgl
 	conflicts = nvidia-libgl
 	conflicts = mesa<10.1.0-2
 
-pkgname = opencl-nvidia-vulkan-beta
-	pkgdesc = NVIDIA's OpenCL implemention for 'nvidia-utils-vulkan-beta'
+pkgname = opencl-nvidia-vulkan-developer-beta
+	pkgdesc = NVIDIA's OpenCL implemention for 'nvidia-utils-vulkan-developer-beta'
 	depends = zlib
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = opencl-nvidia

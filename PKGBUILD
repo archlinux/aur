@@ -3,7 +3,7 @@
 # Based on [aur]'s nvidia-utils-beta: https://aur.archlinux.org/packages/nvidia-utils-beta/
 # Base for this PKGBUILD is not the latest AUR package, but the package from 2016-12-14 for nvidia version 375.26
 
-pkgname=('nvidia-utils-vulkan-beta' 'nvidia-libgl-vulkan-beta' 'opencl-nvidia-vulkan-beta')
+pkgname=('nvidia-utils-vulkan-developer-beta' 'nvidia-libgl-vulkan-developer-beta' 'opencl-nvidia-vulkan-developer-beta')
 pkgver=375.27.10
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -51,8 +51,8 @@ prepare() {
   bsdtar -xf nvidia-persistenced-init.tar.bz2
 }
 
-package_opencl-nvidia-vulkan-beta() {
-  pkgdesc="NVIDIA's OpenCL implemention for 'nvidia-utils-vulkan-beta'"
+package_opencl-nvidia-vulkan-developer-beta() {
+  pkgdesc="NVIDIA's OpenCL implemention for 'nvidia-utils-vulkan-developer-beta'"
   depends=('zlib')
   optdepends=('opencl-headers: headers necessary for OpenCL development')
   provides=('opencl-nvidia' 'opencl-driver')
@@ -72,9 +72,9 @@ package_opencl-nvidia-vulkan-beta() {
   ln -s nvidia/ "$pkgdir"/usr/share/licenses/opencl-nvidia
 }
 
-package_nvidia-libgl-vulkan-beta() {
-  pkgdesc="NVIDIA driver library symlinks for 'nvidia-utils-vulkan-beta'"
-  depends=('nvidia-utils-vulkan-beta')
+package_nvidia-libgl-vulkan-developer-beta() {
+  pkgdesc="NVIDIA driver library symlinks for 'nvidia-utils-vulkan-developer-beta'"
+  depends=('nvidia-utils-vulkan-developer-beta')
   provides=('libgl' 'nvidia-libgl')
   conflicts=('libgl' 'nvidia-libgl' 'mesa<10.1.0-2')
   cd $_pkg_dir
@@ -120,12 +120,12 @@ package_nvidia-libgl-vulkan-beta() {
   ln -s nvidia/ "$pkgdir"/usr/share/licenses/nvidia-libgl
 }
 
-package_nvidia-utils-vulkan-beta() {
+package_nvidia-utils-vulkan-developer-beta() {
   pkgdesc="NVIDIA driver utilities and libraries (vulkan developer beta version)"
   depends=('xorg-server')
   optdepends=('gtk2: nvidia-settings (GTK+ v2)'
               'gtk3: nvidia-settings (GTK+ v3)'
-              'opencl-nvidia-vulkan-beta: OpenCL support'
+              'opencl-nvidia-vulkan-developer-beta: OpenCL support'
               'xorg-server-devel: nvidia-xconfig')
   provides=("nvidia-utils=$pkgver" 'nvidia-settings' 'libglvnd' 'vulkan-driver')
   conflicts=('nvidia-utils' 'nvidia-settings' 'libglvnd')
