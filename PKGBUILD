@@ -2,7 +2,7 @@
 # Contributor: Garrett <floft.net/contact>
 
 pkgname=openlp-bzr
-pkgver=r2654
+pkgver=r2721
 pkgrel=1
 pkgdesc="Church presentation software."
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPLv2')
 provides=('openlp')
 conflicts=('openlp')
 makedepends=('qt5-tools' 'bzr')
-depends=('python' 'python-pyqt5' 'phonon'
+depends=('python' 'python-pyqt5' 'phonon-qt5'
          'python-chardet' 'python-lxml' 'python-six'
          'python-beautifulsoup4' 'python-pyenchant'
          'python-alembic' 'mediainfo' 'qt5-multimedia'
@@ -42,7 +42,7 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
   mv "$pkgdir/usr/bin/openlp"{.py,}
 
-  echo "$pkgver" > "$pkgdir/usr/lib/python3.5/site-packages/openlp/.version"
+  echo "$pkgver" > "$pkgdir/usr/lib/python3.6/site-packages/openlp/.version"
 
   install -Dm0755 "$srcdir/openlp.sh" "$pkgdir/etc/profile.d/openlp.sh"
   install -Dm0644 "resources/openlp.desktop" "$pkgdir/usr/share/applications/openlp.desktop"
