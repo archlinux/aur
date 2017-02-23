@@ -4,7 +4,7 @@ post_install() {
     need the packages specified in optdepends.
     Check out http://wiki.archlinux.org/index.php/Ampache and
     https://github.com/ampache/ampache/wiki/Transcoding for more info.
-==> Please enable curl, iconv and pdo_mysql modules in php.ini.
+==> Please enable curl, iconv, gd, gettext and pdo_mysql modules in php.ini.
 ==> Database will be upgraded automatically in case of update from 3.7.
     Check out https://github.com/ampache/ampache/wiki/Installation for
     more info about installation process.
@@ -21,7 +21,7 @@ EOF
 }
 
 post_upgrade() {
-    if [ $(vercmp $2 3.8.2-2) -lt 0 ]; then
+    if [ "$(vercmp "$2" 3.8.2-2)" -lt 0 ]; then
         cat << EOF
 ==> Warning : Path has been updated to fit Archlinux Packaging Guidelines
     From : /srv/http/ampache
