@@ -2,7 +2,7 @@
 # Contributor: bjoern lindig bjoern dot lindig at googlemail dot com
 
 pkgname=pd-pure
-pkgver=0.23
+pkgver=0.24
 pkgrel=1
 pkgdesc="Loader plugin for the Pure programming language which lets you write external Pd objects in Pure"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('pd' 'pure')
 license=('BSD')
 groups=(pure-complete pure-multimedia)
 source=(https://bitbucket.org/purelang/pure-lang/downloads/$pkgname-$pkgver.tar.gz)
-md5sums=('cd0e24d02ee4520d1646ce66cf829a3b')
+md5sums=('6d1742ea78f329c4625d037926593275')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
