@@ -47,10 +47,12 @@ source=(
     'clang::svn+http://llvm.org/svn/llvm-project/cfe/trunk'
     'clang-tools-extra::svn+http://llvm.org/svn/llvm-project/clang-tools-extra/trunk'
     'compiler-rt::svn+http://llvm.org/svn/llvm-project/compiler-rt/trunk'
+    'lld::svn+http://llvm.org/svn/llvm-project/lld/trunk'
     'llvm-Config-llvm-config.h'
 )
 
 sha256sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -145,6 +147,7 @@ prepare() {
     svn export --force "${srcdir}/clang" tools/clang
     svn export --force "${srcdir}/clang-tools-extra" tools/clang/tools/extra
     svn export --force "${srcdir}/compiler-rt" projects/compiler-rt
+    svn export --force "${srcdir}/lld" tools/lld
 
     mkdir -p "${srcdir}/build"
 }
