@@ -1,4 +1,5 @@
-# Maintainer: Jeff Henson <jeff at henson dot io>
+# Maintainer: Josef Vybihal <josef dot vybihal at gmail dot com>
+# Old Maintainer: Jeff Henson <jeff at henson dot io>
 # Old Maintainer: cuihao <cuihao dot leo at gmail dot com>
 # Original PKGBUILD (community/gstm):
 # Contributor: Roman Kyrylych <Roman.Kyrylych@gmail.com>
@@ -7,7 +8,7 @@
 
 pkgname=gstm
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Gnome front-end to ssh tunneling"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/gstm/"
