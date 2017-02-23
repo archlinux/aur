@@ -11,7 +11,7 @@ arch=('any')
 license=('GPL3')
 
 depends=('perl>=5.14.0' 'perl-data-dump' 'perl-linux-desktopfiles>=0.08' 'perl-file-mimeinfo')
-source=("https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('b674bb27e5c03078bddd015c1b9fe7bf0d4848c48ba451c8cb26f6e89eab0172')
 
 package() {
