@@ -6,4 +6,5 @@ src
 *.gz
 *.checksums
 *.checksums.asc
+*.asc
 

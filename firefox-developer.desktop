@@ -1,4 +1,5 @@
 [Desktop Entry]
+Version=1.0
 Name=Firefox Developer
 GenericName=Web Browser
 Icon=firefox-developer-icon
@@ -10,3 +11,13 @@ Exec=firefox-developer --class=firefox-developer %u
 Terminal=false
 MultipleArgs=false
 StartupNotify=true
+Actions=new-window;new-private-window;
+
+[Desktop Action new-window]
+Name=Neues Fenster
+Exec=firefox-developer --new-window %u
+
+[Desktop Action new-private-window]
+Name=Neues privates Fenster
+Exec=firefox-developer --private-window %u
+
