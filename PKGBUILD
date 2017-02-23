@@ -1,7 +1,7 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-gui-git
-pkgver=v0.13.1.r1.g2e2388a
+pkgver=v0.14.0rc1.r9.g9d3f9d2a5
 pkgrel=1
 pkgdesc='Most recent stable branch, UPNP disabled, w/ Bitcoin binaries, dev tools, GUI, and wallet'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=('db4.8: Wallet portability/compatibility w/official binaries')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin-qt.install
-source=('git+https://github.com/bitcoin/bitcoin.git#branch=0.13'
+source=('git+https://github.com/bitcoin/bitcoin.git#branch=0.14'
 				'bitcoin-qt.install')
 sha256sums=('SKIP'
             'ebf7090ca1202e2c2ccd1aa5bb03e6ac911c458141a1cedda9b41f9c26c2602c')
@@ -44,8 +44,4 @@ package() {
 	desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "bitcoin.desktop"
   install -Dm644 "$srcdir/bitcoin/contrib/debian/examples/bitcoin.conf"\
 								 "$pkgdir/usr/share/doc/$pkgname/examples/bitcoin.conf"
-  install -Dm644 "$srcdir/bitcoin/contrib/debian/manpages/bitcoind.1"\
-								 "$pkgdir/usr/share/man/man1/bitcoind.1"
-  install -Dm644 "$srcdir/bitcoin/contrib/debian/manpages/bitcoin.conf.5"\
-								 "$pkgdir/usr/share/man/man5/bitcoin.conf.5"
 }
