@@ -1,15 +1,15 @@
 # Maintainer: Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=ncregrid
-pkgver=1.4b
-pkgrel=4
+pkgver=1.5b
+pkgrel=1
 pkgdesc="Tool (written in FORTRAN-90) for data transfer of gridded 2- and 3-dimensional (spatial) geophysical/geochemical scalar fields between grids of different resolutions."
 arch=(i686 x86_64)
 url="http://www.pa.op.dlr.de/~PatrickJoeckel/ncregrid/index.html"
 license=('GPL')
 depends=(netcdf-fortran)
 makedepends=(gcc-fortran)
-source=(http://www.pa.op.dlr.de/~PatrickJoeckel/ncregrid/ncregrid.tar.Z)
-md5sums=('175569cc11c5646f36893d3dfccea83a')
+source=(http://www.pa.op.dlr.de/~PatrickJoeckel/ncregrid/ncregrid.tar.gz)
+md5sums=('7f5399aec42c42b79cbe63cfc1e2b2c5')
 
 build() {
   cd ${srcdir}/${pkgname}
@@ -34,7 +34,6 @@ package() {
   find ${pkgdir}/usr/share/${pkgname}/examples -type d -exec chmod 755 {} \;
   find ${pkgdir}/usr/share/${pkgname}/examples -type f -exec chmod 644 {} \;
   rmdir ${pkgdir}/usr/share/${pkgname}/examples/namelist/output
-  rm ${pkgdir}/usr/share/ncregrid/examples/tools/*~
 }
 
 # vim:set ts=2 sw=2 et:
