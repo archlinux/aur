@@ -1,7 +1,7 @@
 pkgbase = perl-gtk2-unique
 	pkgdesc = Perl bindings for the C library libunique
 	pkgver = 0.05
-	pkgrel = 13
+	pkgrel = 15
 	url = https://metacpan.org/release/Gtk2-Unique
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = perl-gtk2-unique
 	makedepends = perl-extutils-depends
 	makedepends = perl-extutils-pkgconfig
 	depends = gtk2-perl
-	depends = libunique,
+	depends = libunique
 	depends = perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/P/PO/POTYL/Gtk2-Unique-0.05.tar.gz
@@ -21,7 +21,7 @@ pkgbase = perl-gtk2-unique
 
 pkgname = perl-gtk2-unique
 	depends = gtk2-perl
-	depends = libunique,
+	depends = libunique
 	depends = perl
 	depends = perl>=
 	depends = perl<
