@@ -13,7 +13,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
 source=("git+https://github.com/gabrielelana/awesome-terminal-fonts")
-sha512sums=('SKIP') 
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
@@ -23,9 +23,8 @@ pkgver() {
 package() {
   install -d "${pkgdir}/usr/share/fonts/${_pkgname}"
   install -d "${pkgdir}/etc/fonts/conf.avail"
-  install -d -m 0644 "${pkgdir}/usr/share/doc/${_pkgname}"
-  install -m 0644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/doc/${_pkgname}/LICENSE"
-  install -m 0644 "${srcdir}/${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm 0644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm 0644 "${srcdir}/${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   cd "${srcdir}/${_pkgname}/build"
   install -p -m 0644 * "${pkgdir}/usr/share/fonts/${_pkgname}/"
   install -p -m 0644 "${srcdir}/${_pkgname}/config/10-symbols.conf" "${pkgdir}/etc/fonts/conf.avail"
