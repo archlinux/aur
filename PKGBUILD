@@ -14,7 +14,7 @@ depends=(
 optdepends=(
     'scrot: for taking screenshots.'
     )
-source=("https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('043efcda81e3173e5ef960d6660b4fc533fc42aadc4faebb484ff9109d71f077')
 
 package() {
