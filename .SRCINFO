@@ -1,15 +1,15 @@
 pkgbase = codec2
 	pkgdesc = an open source codec designed for communications quality speech below 5000 bit/s
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
-	url = http://codec2.org/
+	url = http://rowetel.com/codec2.html
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
 	depends = glibc
-	source = https://files.freedv.org/codec2/codec2-0.5.tar.xz
-	sha1sums = 9865802c9e7496f228eacc97549f9684ff8e77ca
+	source = https://files.freedv.org/codec2/codec2-0.6.tar.xz
+	sha1sums = cec0be415d3292b692596f537aefe11cac4e780c
 
 pkgname = codec2
 
