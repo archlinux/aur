@@ -7,7 +7,8 @@ url="https://github.com/OSVR/SteamVR-OSVR"
 #license=('GPL')
 install=osvr-steamvr.install
 makedepends=('git' 'cmake')
-depends=('osvr-core-git' 'openvr-git' 'osvr-display-git') #TODO: add more deps
+depends=('osvr-core-git' 'openvr-git' 'osvr-rendermanager-git') #TODO: add more deps
+conflicts=('osvr-display-git')
 source=("osvr-steamvr::git+https://github.com/OSVR/SteamVR-OSVR.git" #TODO: remove when it is merged
     "Findjsoncpp.cmake")
 
@@ -22,6 +23,11 @@ pkgver() {
 prepare() {
   cd osvr-steamvr
   git submodule update --init --recursive
+
+#https://github.com/OSVR/SteamVR-OSVR/pull/108
+sed 's!osvr/display/Display.h!osvr/Display/Display.h!g' -i src/OSVRDisplay.h
+sed 's!osvr/display/Display.h!osvr/Display/Display.h!g' -i src/OSVRDisplay.cpp
+sed 's!osvr/display/DisplayIO.h!osvr/Display/DisplayIO.h!g' -i src/OSVRDisplay.cpp
 
   mkdir -p "$srcdir/osvr-steamvr-build"
   cp "$srcdir/Findjsoncpp.cmake" "$srcdir/osvr-steamvr/cmake"
