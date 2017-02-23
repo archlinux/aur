@@ -2,16 +2,17 @@
 # Former maintainer: Robert Knauer <robert@privatdemail.net>
 
 pkgname=fhem
-pkgver=5.7
+pkgver=5.8
 pkgrel=1
 pkgdesc="A perl server for house automation"
 arch=('any')
 url='http://fhem.de'
 license=('GPL')
-depends=('perl' 'perl-io-socket-ssl' 'perl-json' 'perl-libwww' 'perl-xml-simple' 'perl-xml-libxml')
+depends=('perl-io-socket-ssl' 'perl-json' 'perl-libwww' 'perl-xml-simple' 'perl-xml-libxml')
 optdepends=('perl-device-serialport: Communication through serial port'
             'perl-net-telnet: Telnet support'
-            'perl-net-snmp: SNMP support')
+            'perl-net-snmp: SNMP support'
+            'python2: DoorPi support')
 backup=('etc/fhem.cfg')
 install="${pkgname}.install"
 source=(
@@ -21,7 +22,7 @@ source=(
   'tmpfiles.conf'
   'fix-makefile-paths.patch'
 )
-sha256sums=('179fd251edb0bc7dbd775d7d6597fcfe7df88c2f7b39c5bbecf17defaa6b9539'
+sha256sums=('879133025dbbb803d5a59a0deaef1441ba6bf11d67c9961bc353e2df5501746c'
             '7adaffd1036198c8f942a7cbcdc187ba59557eccdfcd19aa28ed5f578810ce14'
             '564796d24351c6c1ebeb5995551ec670170b1c451b5efa12ea77f764f1ee7202'
             '216cbb566c38b893f7036e8e32997a3595c1cf618688be00371d9d49f715a2bd'
@@ -31,6 +32,7 @@ prepare() {
   cd "${pkgname}-${pkgver}"
 
   patch -p1 -i ../fix-makefile-paths.patch
+  sed -i 's|^#!/usr/bin/env python$|#!/usr/bin/env python2|' contrib/DoorPi/*.py
 }
 
 package() {
