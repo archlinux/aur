@@ -3,7 +3,7 @@
 # Contributor: Lucas Saliés Brum <lucas@archlinux.com.br>
  
 pkgname=audio-recorder
-pkgver=1.9.4
+pkgver=1.9.7
 pkgrel=1
 pkgdesc="Free audio-recorder for Linux"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=('pulseaudio: for extended recording capabilities'
             'gst-plugins-bad: for AAC encoding'
             'gst-plugins-ugly: for MP3 encoding')
 source=("https://launchpad.net/~${pkgname}/+archive/ubuntu/ppa/+files/${pkgname}_${pkgver}~zesty.tar.gz")
-md5sums=('4fc0824726fa097b11c73a8abc6a2bdc')
+md5sums=('36c3b73f9ae0d4d40f241221223194d9')
  
 build() {
   cd "${srcdir}/trunk"
