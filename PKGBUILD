@@ -2,7 +2,7 @@
 
 _pkgname=openssl
 pkgname=$_pkgname-pre
-_ver=1.1.0c
+_ver=1.1.0e
 # use a pacman compatible version scheme
 pkgver=${_ver/-/.}
 #pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
@@ -20,7 +20,7 @@ source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"
         "https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz.asc"
         'no-rpath.patch'
         'ca-dir.patch')
-md5sums=('601e8191f72b18192a937ecf1a800f3f'
+md5sums=('51c42d152122e474754aea96f66928c6'
          'SKIP'
          'dc78d3d06baffc16217519242ce92478'
          '381ecca640ea989c8deb57e8a2505c8c')
