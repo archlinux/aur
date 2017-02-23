@@ -1,7 +1,7 @@
 pkgbase = nvidia-bfq-340xx
 	pkgdesc = NVIDIA 340xx drivers for linux-bfq.
 	pkgver = 340.102
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	install = nvidia-bfq-340xx.install
 	arch = i686
@@ -16,10 +16,12 @@ pkgbase = nvidia-bfq-340xx
 	conflicts = nvidia-bfq
 	conflicts = nvidia-bfq-304xx
 	options = !strip
+	source = fs52243.patch
+	sha512sums = de4f697d64f8e73c4aadec1a407884a6bc459c0020d4bfd19740fe4177a60bb801fe8a74ef6f7fa2e89c6cd648ea4daf152799ae344a145c06480a6eef0c5bca
 	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/340.102/NVIDIA-Linux-x86-340.102.run
-	md5sums_i686 = 61aad6a98238bc61466e6a9e392cfd08
+	sha512sums_i686 = bea700c925a6044fcded40324bb389c5fa1aadc40831f685a76e7b0ded11161f492960950c201467e564d157dcbe0c330d13a2014f51d0073002c5a262a6f0ca
 	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/340.102/NVIDIA-Linux-x86_64-340.102-no-compat32.run
-	md5sums_x86_64 = 81e720487caa2823586b32659da9acc1
+	sha512sums_x86_64 = 2a29e6418244ea384e4237d74057bd8e56247b1c503cf623dea34a3b1065d8783879aa7e6a802dd31f0a10cf81cfcab2a1b1a8269b97996f15fa1838c0a3a44b
 
 pkgname = nvidia-bfq-340xx
 
