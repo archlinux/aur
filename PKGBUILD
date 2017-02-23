@@ -5,13 +5,13 @@
 pkgname=perl-gtk2-unique
 _realname=Gtk2-Unique
 pkgver=0.05
-pkgrel=14
+pkgrel=15
 pkgdesc="Perl bindings for the C library libunique"
 arch=('i686' 'x86_64')
 url="https://metacpan.org/release/${_realname}"
 license=('LGPL' 'PerlArtistic')
 makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig')
-depends=('gtk2-perl' 'libunique', 'perl')
+depends=('gtk2-perl' 'libunique' 'perl')
 checkdepends=('xorg-server-xvfb')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/P/PO/POTYL/${_realname}-${pkgver}.tar.gz"
