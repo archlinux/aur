@@ -17,8 +17,10 @@ pkgbase = python-virustotal-api
 pkgname = python-virustotal-api
 	depends = python
 	depends = python-future
+	depends = python-requests
 
 pkgname = python2-virustotal-api
 	depends = python2
 	depends = python2-future
+	depends = python2-requests
 
