@@ -1,4 +1,4 @@
-# Maintainer: David McIlwraith <archaios at archaios dot net>
+# Maintainer: Thermi <noel at familie - kuntze dot de>
 pkgname=libqcow
 pkgver=20170222
 pkgrel=1
@@ -17,7 +17,8 @@ sha256sums=('8b4a3f97b3091cb8dc4990a03a1c9c42385e37d876eba6e6513b1e9104e9512d'
 
 build(){
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	./configure --prefix=/usr --enable-python --enable-verbose-output --enable-debug-output --enable-wide-character-type
+	./configure --prefix=/usr --enable-python2 --enable-python3\
+	  --enable-verbose-output --enable-debug-output --enable-wide-character-type
 	make
 }
 
