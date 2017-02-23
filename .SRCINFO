@@ -3,7 +3,7 @@
 pkgbase = unity-gtk-module-standalone-bzr
 	pkgdesc = Unity GTK+ Module (Hacked for work with normal gtk2)
 	pkgver = r335
-	pkgrel = 6
+	pkgrel = 7
 	url = https://launchpad.net/unity-gtk-module
 	install = unity-gtk-module.install
 	arch = i686
