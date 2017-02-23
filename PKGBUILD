@@ -2,7 +2,6 @@
 pkgname=pac
 pkgver=1.3.2
 pkgrel=1
-epoch=1
 pkgdesc="Small wrapper around pacaur to mimic yaourts search feature"
 arch=(any)
 url="https://github.com/XenGi/pac"
