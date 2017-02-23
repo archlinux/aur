@@ -1,0 +1,15 @@
+pkgbase = unit-convert
+	pkgdesc = Qt Unit Conversion Tool
+	pkgver = 2.0.7
+	pkgrel = 1
+	url = https://github.com/simonaw/unit-convert/
+	arch = x86_64
+	arch = i686
+	license = LGPL2
+	depends = qt5-base
+	depends = qt5-script
+	source = https://github.com/simonaw/unit-convert/archive/2.0.7.tar.gz
+	md5sums = 50135c71d5a93b2c61022451c453fc78
+
+pkgname = unit-convert
+
