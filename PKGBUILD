@@ -2,10 +2,10 @@
 
 pkgname=graphwalker
 pkgver=3.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Model-Based testing tool built in Java"
 arch=('any')
-url="http://graphwalker.org/"
+url="http://graphwalker.github.io/"
 license=('MIT')
 depends=('java-environment-common')
 optdepends=('maven')
