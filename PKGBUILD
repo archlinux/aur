@@ -4,7 +4,7 @@
 
 _name=kupfer
 pkgname=$_name-git
-pkgver=v309.r1.gec2a47e0
+pkgver=v311.r4.gd8a469d4
 pkgrel=1
 pkgdesc="An interface for quick and convenient access to applications and their documents."
 arch=(any)
@@ -13,7 +13,8 @@ license=('GPL')
 depends=('libkeybinder3' 'python-dbus' 'python-cairo' 'libwnck3' 'python-xdg' 'python-gobject')
 makedepends=('intltool')
 optdepends=('gnome-python-desktop: enables all plugins and gnome integration'
-            'xautomation: enables the Send Keys plugin')
+            'xautomation: enables the Send Keys plugin'
+	    'gvfs: enables the Trash plugin')
 makedepends=('intltool' 'git')
 provides=("$_name")
 conflicts=("$_name")
