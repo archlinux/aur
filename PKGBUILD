@@ -2,7 +2,7 @@
 
 pkgname='texlive-vub'
 pkgver="1.4.0"
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides a titlepage, a beamer template and other style elements for the Vrije Universiteit Brussel.'
 url='https://gitlab.com/rubdos/texlive-vub/'
 license=(
@@ -34,7 +34,7 @@ options=(
 package() {
  dir=$srcdir/texlive-vub-v${pkgver}*
  mkdir -p $pkgdir/usr/share/texmf/tex/latex/vub
- cp $dir/vub_logo_cmyk.pdf $dir/*.sty $pkgdir/usr/share/texmf/tex/latex/vub
+ cp $dir/vub_logo_cmyk.pdf $dir/ulb_logo_3lp.eps $dir/bruface.png $dir/*.sty $pkgdir/usr/share/texmf/tex/latex/vub
 }
 
 post_install() {
