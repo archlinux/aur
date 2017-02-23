@@ -1,7 +1,7 @@
 pkgbase = nvidia-bfq-304xx
 	pkgdesc = NVIDIA 304xx drivers for linux-bfq.
-	pkgver = 304.134
-	pkgrel = 2
+	pkgver = 304.135
+	pkgrel = 1
 	url = http://www.nvidia.com/
 	install = nvidia-bfq-304xx.install
 	arch = i686
@@ -12,16 +12,18 @@ pkgbase = nvidia-bfq-304xx
 	depends = linux-bfq>=4.9
 	depends = linux-bfq<4.10
 	depends = nvidia-304xx-libgl
-	depends = nvidia-304xx-utils=304.134
+	depends = nvidia-304xx-utils=304.135
 	conflicts = nvidia-bfq
 	conflicts = nvidia-bfq-340xx
 	options = !strip
 	source = disable-mtrr.patch
+	source = drm-driver-legacy.patch
 	md5sums = c4becf1145a139cc0121be9ad340bcd8
-	source_i686 = ftp://download.nvidia.com/XFree86/Linux-x86/304.134/NVIDIA-Linux-x86-304.134.run
-	md5sums_i686 = 9abd7e9272382bd0e6939c3a367cc1a6
-	source_x86_64 = ftp://download.nvidia.com/XFree86/Linux-x86_64/304.134/NVIDIA-Linux-x86_64-304.134-no-compat32.run
-	md5sums_x86_64 = 2ecfa6bd145f673264f7977e0366e259
+	md5sums = a5328715e210e36e5d9bbed0f9e55223
+	source_i686 = ftp://download.nvidia.com/XFree86/Linux-x86/304.135/NVIDIA-Linux-x86-304.135.run
+	md5sums_i686 = 0e2082ae8490b135eb306befe6db56e1
+	source_x86_64 = ftp://download.nvidia.com/XFree86/Linux-x86_64/304.135/NVIDIA-Linux-x86_64-304.135-no-compat32.run
+	md5sums_x86_64 = 8ee9bd0b020508bca9953181811422fa
 
 pkgname = nvidia-bfq-304xx
 

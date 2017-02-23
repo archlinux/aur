@@ -3,9 +3,9 @@
 # Contributor: Felix Yan <felixonmars@gmail.com>
  
 pkgname=nvidia-bfq-304xx
-pkgver=304.134
+pkgver=304.135
 _extramodules=extramodules-4.9-bfq
-pkgrel=2
+pkgrel=1
 _pkgdesc="NVIDIA 304xx drivers for linux-bfq."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
@@ -16,12 +16,14 @@ conflicts=('nvidia-bfq' 'nvidia-bfq-340xx')
 license=('custom')
 install=nvidia-bfq-304xx.install
 options=(!strip)
-source=('disable-mtrr.patch')
+source=('disable-mtrr.patch'
+         'drm-driver-legacy.patch')
 source_i686=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums=('c4becf1145a139cc0121be9ad340bcd8')
-md5sums_i686=('9abd7e9272382bd0e6939c3a367cc1a6')
-md5sums_x86_64=('2ecfa6bd145f673264f7977e0366e259')
+md5sums=('c4becf1145a139cc0121be9ad340bcd8'
+         'a5328715e210e36e5d9bbed0f9e55223')
+md5sums_i686=('0e2082ae8490b135eb306befe6db56e1')
+md5sums_x86_64=('8ee9bd0b020508bca9953181811422fa')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
@@ -33,10 +35,10 @@ prepare() {
     # patches here
 
     # FS#47092
-    (cd kernel; patch -p1 --no-backup-if-mismatch -i "$srcdir"/disable-mtrr.patch)
+    #(cd kernel; patch -p1 --no-backup-if-mismatch -i "$srcdir"/disable-mtrr.patch)
+    (cd kernel; patch -p1 --no-backup-if-mismatch -i "$srcdir"/drm-driver-legacy.patch)
 
 }
-
 
 build() {
 	_kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
