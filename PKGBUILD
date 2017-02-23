@@ -14,13 +14,11 @@ depends=('ldc' 'lib32-curl' 'lib32-gcc-libs')
 makedepends=('git' 'llvm' 'libconfig' 'cmake')
 provides=("d-runtime" "d-stdlib")
 replaces=("lib32-liblphobos-devel")
-source=("git+$url#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=("$url/releases/download/v${pkgver}/ldc-${pkgver}-src.tar.gz")
+sha256sums=('3b95216cd664e140dca321a6364c2238c442c972d6ccca8b9a65cb02d2e47112')
 
 build() {
-  cd ldc
-
-  git submodule update --init --recursive
+  cd ldc-$pkgver-src
 
   [ -d build ] || mkdir build
   cd build
@@ -34,16 +32,18 @@ build() {
     -DBUILD_SHARED_LIBS=ON \
     ..
 
-  make -j 4
+  make
 }
 
 package() {
+  cd ldc-$pkgver-src/build
+
   # Libraries
-  install -D -m644 $srcdir/ldc/build/lib32/libphobos2-ldc.so $pkgdir/usr/lib32/liblphobos2.so
-  install -D -m644 $srcdir/ldc/build/lib32/libdruntime-ldc.so $pkgdir/usr/lib32/libldruntime.so
-  install -D -m644 $srcdir/ldc/build/lib32/libphobos2-ldc-debug.so $pkgdir/usr/lib32/liblphobos2-debug.so
-  install -D -m644 $srcdir/ldc/build/lib32/libdruntime-ldc-debug.so $pkgdir/usr/lib32/libldruntime-debug.so
+  install -D -m644 ./lib32/libphobos2-ldc.so $pkgdir/usr/lib32/liblphobos2.so
+  install -D -m644 ./lib32/libdruntime-ldc.so $pkgdir/usr/lib32/libldruntime.so
+  install -D -m644 ./lib32/libphobos2-ldc-debug.so $pkgdir/usr/lib32/liblphobos2-debug.so
+  install -D -m644 ./lib32/libdruntime-ldc-debug.so $pkgdir/usr/lib32/libldruntime-debug.so
 
   # License
-  install -D -m644 "${srcdir}/ldc/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
