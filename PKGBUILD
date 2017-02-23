@@ -28,8 +28,8 @@ build() {
         echo "" >> $f
         echo "# This updates the resolvconf with dns settings" >> $f
         echo "script-security 2" >> $f
-        echo "up /etc/openvpn/update-resolv-conf.sh" >> $f
-        echo "down /etc/openvpn/update-resolv-conf.sh" >> $f
+        echo "up /etc/openvpn/update-resolv-conf" >> $f
+        echo "down /etc/openvpn/update-resolv-conf" >> $f
     done
 }
 
