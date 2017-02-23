@@ -2,25 +2,26 @@
 # Contributor: Alex Forenchich <alex@alexforencich.com>
 
 pkgname=('linux-gpib')
-pkgver=4.0.3
-pkgrel=3
+pkgver=4.0.4rc2
+_pkgver=4.0.4
+pkgrel=1
 pkgdesc='A support package for GPIB (IEEE 488) hardware.'
 arch=('i686' 'x86_64')
 url='http://linux-gpib.sourceforge.net/'
 license=('GPL')
-depends=('bash' 'linux>=4.8' 'linux<4.9')
+depends=('bash' 'linux>=4.9' 'linux<4.10')
 makedepends=('perl' 'linux-headers' 'bison')
 optdepends=('fxload: firmware upload support for NI USB-B, Keithley KUSB-488 and Agilent 82357')
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}%20for%203.x.x%20and%202.6.x%20kernels/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}%20for%203.x.x%20and%202.6.x%20kernels/${_pkgver}/${pkgname}-${pkgver}.tar.gz"
         'gpib_build.patch')
 install='linux-gpib.install'
 backup=('etc/gpib.conf')
 
-_kernver=4.5
+_kernver=4.9
 _extramodules=/usr/lib/modules/extramodules-${_kernver}-ARCH
 
-md5sums=('2d97191e538a57ba7350fcc011ee2596'
-         'f6efe56c98febd2618c120000d1c31aa')
+md5sums=('281274e45825f34e69876d38ae008b44'
+         '15f3bfbf7a79ddacdd0d66db5e749648')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"

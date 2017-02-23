@@ -1,11 +1,12 @@
 diff -Naur old/bootstrap new/bootstrap
 --- old/bootstrap	2015-12-08 12:16:11.562375841 +0200
 +++ new/bootstrap	2015-12-08 13:08:16.983676563 +0200
-@@ -3,11 +3,6 @@
+@@ -3,12 +3,6 @@
  if [ ! -f NEWS ] ; then
  	touch NEWS
  fi
--if which svnversion > /dev/null 2>&1;  then
+-
+-if [ `svn info . 2> /dev/null | wc -l` -ne 0 ] && which svnversion > /dev/null 2>&1 ;  then
 -	svnversion -n . >util/.scm_version.tmp
 -else
 - 	rm -f util/.scm_version.tmp
