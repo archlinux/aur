@@ -2,7 +2,7 @@
 
 pkgname=run_scaled-git
 _gitdir=run_scaled
-pkgver=r5.0e9a656
+pkgver=r6.837b88c
 pkgrel=1
 pkgdesc='Run an X application scaled via xpra. Useful on hidpi screens'
 arch=('any')
