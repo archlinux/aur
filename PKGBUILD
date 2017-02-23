@@ -3,10 +3,10 @@
 
 pkgname=websploit
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source project for, social engineering works, scanning, crawling and analysis, automatic exploiter, and network attacks"
 arch=('any')
-url=('http://code.google.com/p/websploit/')
+url='http://code.google.com/p/websploit/'
 license=('Unknown')
 source=("http://sourceforge.net/projects/websploit/files/WebSploit%20Framework%20V.3.0.0/WebSploit-Framework-${pkgver}.tar.gz")
 depends=('python2' 'scapy')
