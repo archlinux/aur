@@ -1,0 +1,15 @@
+pkgbase = python2-qt4reactor
+	pkgdesc = Twisted Qt Integration
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://github.com/ghtdak/qtreactor
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://files.pythonhosted.org/packages/source/q/qt4reactor/qt4reactor-1.6.tar.gz
+	md5sums = 0a1531e265a5b7a524852b712b89ba1d
+
+pkgname = python2-qt4reactor
+	depends = python2
+
