@@ -13,9 +13,9 @@ _log_path="/var/log/${_pkgname}"
 
 
 pkgname=nginx-libressl
-pkgver=1.10.2
+pkgver=1.10.3
 pkgrel=1
-librever=2.5.0
+librever=2.5.1
 pkgdesc="lightweight HTTP server, statically linked against LibreSSL."
 arch=('i686' 'x86_64')
 
@@ -105,5 +105,5 @@ package() {
 sha256sums=('8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1'
             'adcf6507abb2d4edbc50bd92f498ba297927eed0460d71633df94f79637aa786'
             '225228970d779e1403ba4314e3cd8d0d7d16f8c6d48d7a22f8384db040eb0bdf'
-            '1045ac4987a396e2fa5d0011daf8987b612dd2f05181b67507da68cbe7d765c2'
-            '8652bf6b55ab51fb37b686a3f604a2643e0e8fde2c56e6a936027d12afda6eae')
+            '75020f1364cac459cb733c4e1caed2d00376e40ea05588fb8793076a4c69dd90'
+            'f71ae0a824b78fb1a47ffa23c9c26e9d96c5c9b29234eacedce6b4c7740287cd')
