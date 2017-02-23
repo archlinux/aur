@@ -4,8 +4,8 @@
 # Contributor: Alex 'AdUser' Z
 pkgname=fusioninventory-agent
 _pkgname="FusionInventory-Agent"
-pkgver=2.3.18
-pkgrel=2
+pkgver=2.3.19
+pkgrel=1
 pkgdesc="An application for keeping track of the hardware and software"
 arch=(any)
 url="http://fusioninventory.org"
@@ -25,8 +25,7 @@ depends=(
 makedepends=(
   'perl-http-proxy'
   'perl-http-server-simple'
-  # FIXME: not in AUR
-  # 'perl-http-server-simple-authen'
+  'perl-http-server-simple-authen'
   'perl-io-socket-ssl'
   # Provides IO::Capture::Stderr
   'perl-io-captureoutput'
@@ -35,17 +34,14 @@ makedepends=(
   'perl-test-deep'
   'perl-test-exception'
   'perl-test-mockmodule'
-  # FIXME: not in AUR
+  # Provided by 'perl-test-most'
   # 'perl-test-more>=0.93'
+  'perl-test-most'
   'perl-test-nowarnings'
   'perl-lwp-protocol-https'
   'perl-test-mockobject'
-  'perl-json'
+  'perl-json-pp'
   'perl-net-snmp'
-# Deploy
-  # FIXME: not in AUR
-  # 'perl-test-http-server-simple'
-  'perl-poe-component-client-ping'
 )
 
 optdepends=(
@@ -59,10 +55,9 @@ optdepends=(
 
 # Inventory
   'perl-parse-edid: Inventory EDID data parsing'
-  # Doesn't build ATM
-  # 'perl-net-cups>=0.60: Inventory printers detection'
-  # let's use patched version
-  'perl-net-cups-cups16>=0.60: Inventory printers detection'
+  # FIXME: Doesn't build ATM
+  'perl-net-cups>=0.60: Inventory printers detection'
+  'perl-datetime'
   'dmidecode: Inventory DMI data retrieval'
   # Provides lspci
   'pciutils: Inventory PCI bus scanning (lspci)'
@@ -76,16 +71,17 @@ optdepends=(
   # Provided by Perl
   # 'perl-digest-sha: Deploy'
   'perl-file-copy-recursive: Deploy'
-  'perl-json: Deploy'
+  'perl-json-pp: Deploy'
   # Provided by perl-uri
   # 'perl-uri-escape: Deploy'
   'perl-uri: Deploy'
-  'perl-poe-component-client-ping: Deploy'
+  'perl-net-ping: Deploy'
+  'perl-parallel-forkmanager: Deploy'
 
 # Network
   'perl-net-snmp: Network inventory'
   # FIXME: not in AUR
-  # 'perl-net-nbname:Network'
+  # 'perl-net-nbname: Network'
   # provided by perl
   # 'perl-thread-queue>=2.0.1'
   'perl-crypt-des: Network inventory SNMPv3 support'
@@ -96,10 +92,34 @@ optdepends=(
   # 'perl-net-write-layer2: Wake on Lan'
   'perl-net-write: Wake on Lan ethernet method support'
 )
+checkdepends=(
+    'perl-http-proxy'
+    'perl-http-server-simple'
+    # TESTME: is it provided by perl-http-server-simple?
+    # 'perl-http-server-simple-authen'
+    'perl-io-socket-ssl'
+    # Provided by perl-io-captureoutput
+    #'perl-io-capture-sderr'
+    'perl-io-captureoutput'
+    'perl-ipc-run'
+    'perl-test-compile'
+    'perl-test-deep'
+    'perl-test-exception'
+    'perl-test-mockmodule'
+    # Provided by perl-test-most
+    # 'perl-test-more'
+    'perl-test-most'
+    'perl-test-nowarnings'
+    'perl-lwp-protocol-https'
+    'perl-test-mockobject'
+    'perl-json-pp'
+    'perl-net-snmp'
+    'perl-parallel-forkmanager'
+)
 source=("https://github.com/fusioninventory/fusioninventory-agent/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
   'fusioninventory-agent.service'
   'fusioninventory-agent.config')
-md5sums=('caffff2fe695b2262529aa7541f1b94a'
+md5sums=('4119c8a83604898447c127c7f1a51470'
          'cd0d59b266a41977f51d9e99ecca8cd5'
          '7cce12647a737aadcdd79dee4575aff3')
 
@@ -114,14 +134,11 @@ build() {
   make
 }
 
-# FIXME :
-# needs at least HTTP::Server::Simple:Authen
-# and certainly Test::More and Test::HTTP::Server::Simple
-#check() {
-#  cd "${srcdir}/${_pkgname}-${pkgver}"
-#
-#  make test
-#}
+check() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+
+  make test
+}
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
