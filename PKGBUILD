@@ -5,7 +5,7 @@ pkgver=0.rc3.r393.g3c1c4f36
 pkgrel=1
 pkgdesc='A fast framework for deep learning built in C++ for speed with a Python 3 interface'
 arch=(x86_64)
-url='ssh://git@github.com/delftrobotics-forks/caffe'
+url='https://github.com/delftrobotics-forks/caffe'
 license=('BSD')
 
 depends=(
