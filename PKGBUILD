@@ -12,7 +12,7 @@ license=('GPL3')
 
 depends=('perl>=5.14.0' 'gtk2-perl' 'perl-data-dump' 'perl-linux-desktopfiles>=0.08')
 optdepends=('perl-gtk3: for Gtk3 support (--gtk3)')
-source=("https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('99cd610b37f7465070033b8c56392661be8681f7055a910638fa248dc8c92cee')
 install='readme.install'
 
