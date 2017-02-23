@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=0.5.0
+Name=net2plan
+Comment="Java tool for planning, optimizing and evaluating communication networks."
+Path=/usr/bin
+Exec=net2plan
+Icon=net2plan
+Terminal=false
+Categories=Education;Java;
