@@ -1,15 +1,14 @@
 pkgbase = zasm
 	pkgdesc = A 2-pass assembler for the Zilog 8-bit Z80 CPU
-	pkgver = 3.0.22
+	pkgver = 4.0.17
 	pkgrel = 1
 	url = http://k1.spdns.de/Develop/Projects/zasm/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
-	source = http://k1.spdns.de/Develop/Projects/zasm/Distributions/zasm-3.0.22-source-2014-02-12.zip
-	source = Makefile.aur
-	sha1sums = 74951569c783006cb2624b6bf8f1960e9be62cee
-	sha1sums = 10cda25f330fc20d91db3532cbc30322b183f494
+	source = zasm.tar.gz::https://k1.spdns.de/Git/zasm-4.0.git/snapshot/zasm-4.0-bc345236210d0a2a0bb0415e08968efca881617d.tar.gz,
+	source = libraries.tar.gz::http://k1.spdns.de/Git/Libraries.git/snapshot/Libraries-1c6fea1a5538dfaf1ece20a53db50de00897b6f0.tar.gz
+	sha256sums = f451e43ca725d10f1c1d6b47480df4b5dfb06f81ad123d9c68637351f00ed45c
+	sha256sums = ede9c539873d21f65da27849d28ea81ea39ea897947b66aff1f2710c3cec52f9
 
 pkgname = zasm
 
