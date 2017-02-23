@@ -1,0 +1,46 @@
+pkgbase = caffe-dr-git
+	pkgdesc = A fast framework for deep learning built in C++ for speed with a Python 3 interface
+	pkgver = 0.rc3.r393.g3c1c4f36
+	pkgrel = 1
+	url = ssh://git@github.com/delftrobotics-forks/caffe
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = gcc-fortran
+	makedepends = cmake
+	depends = cuda
+	depends = cudnn
+	depends = leveldb
+	depends = protobuf
+	depends = opencv
+	depends = openblas-lapack
+	depends = google-glog
+	depends = gflags
+	depends = lmdb
+	depends = cython
+	depends = ipython
+	depends = python-pillow
+	depends = python-numpy
+	depends = python-yaml
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-scikit-image
+	depends = python-scikit-learn
+	depends = python-matplotlib
+	depends = python-networkx
+	depends = python-nose
+	depends = python-dateutil
+	depends = python-protobuf
+	depends = boost
+	depends = boost-libs
+	provides = caffe
+	provides = pycaffe
+	provides = python-pycaffe
+	conflicts = caffe
+	conflicts = pycaffe
+	conflicts = python-pycaffe
+	source = git+ssh://git@github.com/delftrobotics/caffe.git#branch=layer-modules
+	sha256sums = SKIP
+
+pkgname = caffe-dr-git
+
