@@ -12,7 +12,7 @@ options=('!emptydirs')
 makedepends=()
 depends=('perl>=5.22.0' 'perl-data-dump' 'perl-math-gmpq>=0.41' 'perl-math-gmpz>=0.39' 'perl-math-mpfr>=3.29' 'perl-math-mpc' 'perl-math-prime-util-gmp>=0.41')
 
-source=("https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
 
 md5sums=('51da9f82b56de8a7c47e28019bbd5903')
 sha512sums=('e37d1e581d4efe5f3f234c71a39596609a03a86032141fc85b83231eee20e98402e779d88b101181bd4b4b1280a4120dd1984b93bc3fa8754be575b139396705')
