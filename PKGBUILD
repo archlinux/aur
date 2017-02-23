@@ -9,8 +9,10 @@ license=('unknown')
 depends=()
 provides=('storageexplorer')
 changelog=
-source=("StorageExplorer-linux-x64.tar.gz::https://go.microsoft.com/fwlink/?LinkId=722418")
-sha256sums=('84ad34d711567cfa69e71eb6fb55bf9587f6055bc6940dc51cdcab30f1268fc9')
+source=("StorageExplorer-linux-x64.tar.gz::https://go.microsoft.com/fwlink/?LinkId=722418"
+        "storageexplorer.desktop")
+sha256sums=('84ad34d711567cfa69e71eb6fb55bf9587f6055bc6940dc51cdcab30f1268fc9'
+            '67e74fc6752c2b88ed74310d04f074fc75ed0035a7c3db39da35877b12b12a58')
 
 package() {
 	#cd "$pkgname-$pkgver"
@@ -34,5 +36,8 @@ package() {
 
 	install -dm 755 "${pkgdir}/usr/bin"
     ln -s "/opt/StorageExplorer/StorageExplorer" "${pkgdir}/usr/bin/StorageExplorer"
+
+    install -dm 755 "${pkgdir}/usr/share/applications"
+    install -m 644 "storageexplorer.desktop" "${pkgdir}/usr/share/applications/"
 }
 
