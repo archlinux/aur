@@ -85,3 +85,7 @@ sha1sums=('fc28f956a7a9695473312d0ed35dc24a7ef9d7f6'
           'SKIP'
           '1ed328854983b3f9df0a143aa7c77920916a13c1'
           '73c7e31c299fdb6d720fe0d0401b427f4cbd069c')
+sha1sums=('9e578675f6938359a3036d7886b91d48c0403a40'
+          'SKIP'
+          '1ed328854983b3f9df0a143aa7c77920916a13c1'
+          '35ac8bcaa03fa4d102e236adcfa519c8c992dbca')
