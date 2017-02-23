@@ -1,6 +1,6 @@
 pkgbase = libretro-mednafen-psx-git
 	pkgdesc = libretro implementation of Mednafen PSX
-	pkgver = 1402.f8569b2
+	pkgver = 1436.99747d4
 	pkgrel = 1
 	url = https://github.com/libretro/beetle-psx-libretro
 	arch = i686
@@ -8,8 +8,10 @@ pkgbase = libretro-mednafen-psx-git
 	groups = libretro
 	license = GPLv2
 	makedepends = git
-	source = beetle-psx-libretro::git://github.com/libretro/beetle-psx-libretro.git
-	source = beetle-psx-libretro.info::https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/beetle_psx_libretro.info
+	source = git://github.com/libretro/beetle-psx-libretro.git
+	source = https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/mednafen_psx_libretro.info
+	source = https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/mednafen_psx_hw_libretro.info
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 
@@ -20,4 +22,6 @@ pkgname = libretro-mednafen-psx-git
 pkgname = libretro-mednafen-psx-hw-git
 	depends = libgl
 	depends = vulkan-driver
+	provides = libretro-mednafen-psx-hw
+	conflicts = libretro-mednafen-psx-hw
 
