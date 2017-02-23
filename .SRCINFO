@@ -11,6 +11,7 @@ pkgbase = unity-gtk-module-standalone-bzr
 	groups = unity
 	license = GPL
 	makedepends = gtk-doc
+	makedepends = bzr
 	depends = gtk2
 	depends = gtk3
 	provides = appmenu-gtk2
