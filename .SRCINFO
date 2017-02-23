@@ -1,0 +1,31 @@
+pkgbase = nodejs-lts-argon-bin
+	pkgdesc = Evented I/O for V8 javascript
+	pkgver = 4.8.0
+	pkgrel = 1
+	url = http://nodejs.org/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	depends = openssl
+	depends = zlib
+	depends = python2
+	depends = icu
+	optdepends = npm: nodejs package manager
+	provides = nodejs
+	conflicts = nodejs
+	source_i686 = https://nodejs.org/dist/v4.8.0/node-v4.8.0-linux-x86.tar.xz
+	sha256sums_i686 = cd5e5e35398dc0fb347fbfefbf167b653d2b304bbd6d33b634bbe96b1c381f94
+	source_x86_64 = https://nodejs.org/dist/v4.8.0/node-v4.8.0-linux-x64.tar.xz
+	sha256sums_x86_64 = 4597861fbbcfc120be608ec6ba18a61c5951d4093cf149bf98097972a4927a80
+	source_armv6h = https://nodejs.org/dist/v4.8.0/node-v4.8.0-linux-armv6l.tar.xz
+	sha256sums_armv6h = 1c828dbd59a2b5e226c5cce772cd6c4a01aaaa06f9c19ef06d9666b53fd54b5b
+	source_armv7h = https://nodejs.org/dist/v4.8.0/node-v4.8.0-linux-armv7l.tar.xz
+	sha256sums_armv7h = ad05bf930ecbcda934628b33fa4f8dda909cbd30a9577d0b70f18ecb3774900d
+	source_aarch64 = https://nodejs.org/dist/v4.8.0/node-v4.8.0-linux-arm64.tar.xz
+	sha256sums_aarch64 = e0f5f7a2458c715c60ecb3966ee29bcdae95acceb2a611bd920ce1c649174732
+
+pkgname = nodejs-lts-argon-bin
+
