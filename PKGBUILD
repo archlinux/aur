@@ -15,7 +15,7 @@
 pkgname=plex-media-server-plexpass
 pkgver=1.4.2.3400
 _pkgsum=ab906953b
-pkgrel=1
+pkgrel=2
 pkgdesc='Plex Media Server (PlexPass version)'
 arch=('armv7h' 'i686' 'x86_64')
 url='https://plex.tv/'
@@ -39,8 +39,8 @@ sha256sums=('7ab1ee8da9012d257b7f473fb79d76b201ca592cbe3722f977a43b58bfad180e'
             '7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a')
 
 sha256sums_armv7h=('538a9bd933498f10304554d1f7cf7df067fc5c710970ddb026270407fe1a8ec9')
-sha256sums_i686=('5cb4b88c0f00aee89a562633fce584fc2dca11dc7b9aad9b2bf21453569f7bac')
-sha256sums_x86_64=('7085d6dd324c9709b116e1ce04f0d45dcbb18e85b4e2101a784bf23e3950de8f')
+sha256sums_i686=('37d9d31b490ba3286c93729bd69b7a162b07766a24363b6466b7b3062bf142e3')
+sha256sums_x86_64=('1606f08ccb122d3aee9e593014e9be102c6802868c33fb6481be3f5a224db8f3')
 
 prepare() {
   if [[ $CARCH =~ arm* ]]; then
