@@ -4,21 +4,22 @@
 # Contributor: Olivier Biesmans <olivier at biesmans dot fr>
 
 pkgname=mitmproxy
-pkgver=1.0.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="SSL-capable man-in-the-middle HTTP proxy"
 arch=('any')
 url="http://mitmproxy.org/"
 license=('GPL')
 depends=('python-blinker' 'python-brotlipy' 'python-click' 'python-construct' 'python-cryptography'
-         'python-cssutils' 'python-flask' 'python-h2' 'python-html2text' 'python-hyperframe'
-         'python-jsbeautifier' 'python-pillow' 'python-passlib' 'python-pyasn1' 'python-pyopenssl'
-         'python-pyparsing' 'python-pyperclip' 'python-ruamel-yaml' 'python-sortedcontainers'
-         'python-requests' 'python-tornado' 'python-urwid' 'python-watchdog')
-optdepends=('python-protobuf: Contentviews - Extended content decoding')
+         'python-cssutils' 'python-h2' 'python-html2text' 'python-hyperframe' 'python-jsbeautifier'
+         'python-kaitaistruct' 'python-passlib' 'python-pyasn1' 'python-pyopenssl'
+         'python-pyparsing' 'python-pyperclip' 'python-requests' 'python-ruamel-yaml'
+         'python-setuptools' 'python-sortedcontainers' 'python-tornado' 'python-urwid'
+         'python-watchdog')
+optdepends=('protobuf: Contentviews - Extended content decoding')
 makedepends=('git')
-checkdepends=('python-beautifulsoup4' 'python-mock' 'python-pytest-runner' 'python-pytest-timeout'
-              'python-pytz')
+checkdepends=('python-beautifulsoup4' 'python-flask' 'python-pytz' 'python-pytest-runner'
+              'protobuf')
 provides=('pathod')
 conflicts=('pathod')
 replaces=('pathod')
@@ -28,7 +29,7 @@ sha256sums=('SKIP')
 prepare() {
   cd mitmproxy
 
-  # Let's remove all the upper bounds, use system certificate store and ssl.match_hostname
+  # Let's remove all the upper bounds and use system certificate store
   sed -e '/certifi/d' \
       -e 's/, *<[0-9=.]*//' \
       -i setup.py
@@ -39,9 +40,9 @@ prepare() {
 
 check() {
   cd mitmproxy
-  LC_CTYPE=en_US.UTF-8 python setup.py ptr
+  LC_CTYPE=en_US.UTF-8 python setup.py pytest
 }
- 
+
 package() {
   cd mitmproxy
   python setup.py install --root="$pkgdir" -O1
