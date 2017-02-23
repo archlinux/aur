@@ -3,12 +3,12 @@
 # Based on [aur]'s lib32-nvidia-utils-beta: https://aur.archlinux.org/packages/lib32-nvidia-utils-beta/
 # Base for this PKGBUILD is not the latest AUR package, but the package from 2016-12-14 for nvidia version 375.26
 
-pkgname=('lib32-nvidia-utils-vulkan-beta' 'lib32-nvidia-libgl-vulkan-beta' 'lib32-opencl-nvidia-vulkan-beta')
+pkgname=('lib32-nvidia-utils-vulkan-developer-beta' 'lib32-nvidia-libgl-vulkan-developer-beta' 'lib32-opencl-nvidia-vulkan-developer-beta')
 pkgver=375.27.10
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
-makedepends=('nvidia-libgl-vulkan-beta')  # To avoid conflict during installation in the build chroot
+makedepends=('nvidia-libgl-vulkan-developer-beta')  # To avoid conflict during installation in the build chroot
 license=('custom:NVIDIA')
 options=('!strip')
 _pkg="linux-3752710-32-bit"
@@ -40,8 +40,8 @@ prepare() {
   sh $_pkg -x
 }
 
-package_lib32-opencl-nvidia-vulkan-beta() {
-  pkgdesc="NVIDIA's OpenCL implemention for 'lib32-nvidia-utils-vulkan-beta' "
+package_lib32-opencl-nvidia-vulkan-developer-beta() {
+  pkgdesc="NVIDIA's OpenCL implemention for 'lib32-nvidia-utils-vulkan-developer-beta' "
   depends=('lib32-zlib' 'lib32-gcc-libs')
   optdepends=('opencl-headers: headers necessary for OpenCL development')
   provides=('lib32-opencl-nvidia' 'lib32-opencl-driver')
@@ -60,9 +60,9 @@ package_lib32-opencl-nvidia-vulkan-beta() {
   ln -s nvidia-utils/ "$pkgdir"/usr/share/licenses/lib32-opencl-nvidia
 }
 
-package_lib32-nvidia-libgl-vulkan-beta() {
-  pkgdesc="NVIDIA driver library symlinks for 'lib32-nvidia-utils-vulkan-beta'"
-  depends=('lib32-nvidia-utils-vulkan-beta' 'nvidia-libgl-vulkan-beta')
+package_lib32-nvidia-libgl-vulkan-developer-beta() {
+  pkgdesc="NVIDIA driver library symlinks for 'lib32-nvidia-utils-vulkan-developer-beta'"
+  depends=('lib32-nvidia-utils-vulkan-developer-beta' 'nvidia-libgl-vulkan-developer-beta')
   provides=('lib32-libgl' 'lib32-libegl' 'lib32-libgles' 'lib32-nvidia-libgl')
   conflicts=('lib32-libgl' 'lib32-libegl' 'lib32-libgles' 'lib32-nvidia-libgl')
   cd $_pkg_dir
@@ -102,10 +102,10 @@ package_lib32-nvidia-libgl-vulkan-beta() {
   ln -s nvidia-utils/ "$pkgdir"/usr/share/licenses/lib32-nvidia-libgl
 }
 
-package_lib32-nvidia-utils-vulkan-beta() {
+package_lib32-nvidia-utils-vulkan-developer-beta() {
   pkgdesc="NVIDIA driver utilities and libraries (vulkan developer beta version) (32-bit)"
-  depends=('lib32-zlib' 'lib32-gcc-libs' 'nvidia-utils-vulkan-beta')
-  optdepends=('lib32-opencl-nvidia-vulkan-beta: OpenCL support')
+  depends=('lib32-zlib' 'lib32-gcc-libs' 'nvidia-utils-vulkan-developer-beta')
+  optdepends=('lib32-opencl-nvidia-vulkan-developer-beta: OpenCL support')
   provides=("lib32-nvidia-utils=$pkgver" 'lib32-libglvnd' 'lib32-vulkan-driver')
   conflicts=('lib32-nvidia-utils' 'lib32-libglvnd')
   cd $_pkg_dir
