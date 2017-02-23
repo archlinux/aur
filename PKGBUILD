@@ -3,32 +3,25 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 # Contributor: George Amanakis <g_amanakis@yahoo.com>
 
-pkgname=iproute2-cake
-pkgver=4.9.0
-pkgrel=3
+pkgbase=iproute2-cake
+pkgname=(iproute2-cake iproute2-cake-doc)
+pkgver=4.10.0
+pkgrel=1
 pkgdesc="IP Routing Utilities"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2"
 #950 patch: https://raw.githubusercontent.com/lede-project/source/master/package/network/utils/iproute2/patches/950-add-cake-to-tc.patch
 #modified according to github.com/dtaht/tc-adv repository
-depends=('glibc' 'iptables')
-makedepends=('linux-atm')
-optdepends=('linux-atm: ATM support')
-groups=('base')
-provides=('iproute' 'iproute2')
-conflicts=('iproute' 'iproute2')
-replaces=('iproute')
+makedepends=('iptables' 'linux-atm' 'linuxdoc-tools' 'texlive-bin' 'texlive-core' 'texlive-latexextra')
 options=('staticlibs' '!makeflags')
-backup=('etc/iproute2/ematch_map' 'etc/iproute2/rt_dsfield' 'etc/iproute2/rt_protos' \
-	'etc/iproute2/rt_realms' 'etc/iproute2/rt_scopes' 'etc/iproute2/rt_tables')
 validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E') # Stephen Hemminger
-source=("http://www.kernel.org/pub/linux/utils/net/${pkgname/-cake}/${pkgname/-cake}-${pkgver}.tar."{xz,sign}
+source=("https://www.kernel.org/pub/linux/utils/net/${pkgbase/-cake}/${pkgbase/-cake}-${pkgver}.tar."{xz,sign}
         '0001-make-iproute2-fhs-compliant.patch'
 	'950b-add-cake-to-tc.patch'
 	)
 prepare() {
-  cd "${srcdir}/${pkgname/-cake}-${pkgver}"
+  cd "${srcdir}/${pkgbase/-cake}-${pkgver}"
 
   # set correct fhs structure
   patch -Np1 -i "${srcdir}/950b-add-cake-to-tc.patch"
@@ -40,26 +33,54 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname/-cake}-${pkgver}"
+  cd "${srcdir}/${pkgbase/-cake}-${pkgver}"
 
   ./configure
   make
+
+  cd "${srcdir}/${pkgbase/-cake}-${pkgver}/doc/"
+
+  make html pdf
 }
 
-package() {
-  cd "${srcdir}/${pkgname/-cake}-${pkgver}"
+package_iproute2-cake() {
+  depends=('glibc' 'iptables')
+  optdepends=('linux-atm: ATM support')
+  groups=('base')
+  provides=('iproute' 'iproute2' 'iproute2-doc')
+  conflicts=('iproute' 'iproute2' 'iproute2-doc')
+  replaces=('iproute')
+  backup=('etc/iproute2/ematch_map' 'etc/iproute2/rt_dsfield' 'etc/iproute2/rt_protos' \
+    'etc/iproute2/rt_realms' 'etc/iproute2/rt_scopes' 'etc/iproute2/rt_tables')
+
+  cd "${srcdir}/${pkgbase/-cake}-${pkgver}"
+
+  make DESTDIR="${pkgdir}" SBINDIR="/usr/bin" install
+
+  # remove documentation
+  rm -rf "${pkgdir}/usr/share/doc/"
+
+  # libnetlink isn't installed, install it FS#19385
+  install -Dm0644 include/libnetlink.h "${pkgdir}/usr/include/libnetlink.h"
+  install -Dm0644 lib/libnetlink.a "${pkgdir}/usr/lib/libnetlink.a"
+}
+
+package_iproute2-cake-doc() {
+  pkgdesc='IP Routing Utilities documentation'
+
+  cd "${srcdir}/${pkgbase/-cake}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
 
-  # libnetlink isn't installed, install it FS#19385
-  install -Dm644 include/libnetlink.h "${pkgdir}/usr/include/libnetlink.h"
-  install -Dm644 lib/libnetlink.a "${pkgdir}/usr/lib/libnetlink.a"
+  # documentation is included in default install target... So clean up here.
+  find "${pkgdir}/" ! -type d ! -regex '.*examples.*' -delete
+  find "${pkgdir}/" -empty -delete
+  find "${pkgdir}/" -name '*.sgml' -delete
+  find "${pkgdir}/" -name '*.tex' -delete
 
-  # move binaries
-  cd "${pkgdir}"
-  mv sbin usr/bin
-
+  install -m0644 doc/*.html doc/*.pdf "${pkgdir}/usr/share/doc/iproute2/"
 }
+
 sha1sums=('fc28f956a7a9695473312d0ed35dc24a7ef9d7f6'
           'SKIP'
           '1ed328854983b3f9df0a143aa7c77920916a13c1'
