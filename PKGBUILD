@@ -3,8 +3,8 @@
 # Contributor: Christopher Krooß <didi2002@web.de>
 
 pkgname=greyhole
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.10.2
+pkgrel=1
 pkgdesc='Application that uses Samba to create a storage pool of all your available hard drives and allows you to create redundant copies of the files you store, in order to prevent data loss when part of your hardware fails.'
 arch=('x86_64')
 url="https://www.greyhole.net/"
@@ -14,7 +14,7 @@ backup=('etc/greyhole.conf')
 install='greyhole.install'
 source=("https://greyhole.net/releases/$pkgname-$pkgver.tar.gz"
         "greyhole.service")
-sha256sums=('bd158d58d9ccdb953ec6dd09c2f2f26d6983d1c0ac36d9eb4228cd1db374d663'
+sha256sums=('a7ce33121f2b2e1b1a2a10c240b1db97dbd5bb3052a852a64d119ed4ad6d0648'
             'f09cc153424934f2e7e0d8b66cdb47bd5f331640388202917533115d53962ef9')
 
 package() {
