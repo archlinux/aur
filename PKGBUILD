@@ -1,8 +1,8 @@
 # Maintainer: Andreas Schreiner <andreas.schreiner@sonnenmulde.at>
 
 pkgname=freedv
-pkgver="1.1"
-pkgrel=2
+pkgver="1.2"
+pkgrel=1
 pkgdesc="Digital Voice for Radio Amateurs"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -11,7 +11,7 @@ depends=('glibc' 'portaudio' 'hamlib' 'sox' 'wxgtk' 'codec2' 'speex' 'libao')
 #depends=('glibc' 'portaudio' 'hamlib' 'wxgtk' 'codec2' 'speex')
 makedepends=('cmake')
 source=("https://files.freedv.org/$pkgname/$pkgname-$pkgver.tar.xz")
-sha512sums=('bd149f74ceae9c63b23c37d2e6d876238b9c1759d8bd1213675d3d0d2f817863e952129306ca37da9f41297b17a9f74d57cb807689ef051b3d94a8f8b52b5727')
+sha512sums=('6f368ba3517ac57cdb581a21bf3a87f50b168bf3de51666b99f09469ed12e45a368740ee8a7f83adf6f6b59341ea7a14b3ba30a597f7ad96ba2091ecd9b89661')
 
 
 build() {
