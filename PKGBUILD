@@ -4,13 +4,13 @@ pkgname=qtgrace
 pkgver=0.2.6
 _pkgver=026
 _pkgdirname=qtgrace_v026_src
-pkgrel=1
+pkgrel=2
 pkgdesc="A program to display or plot data, analyze data and prepare it for printing, Qt version of the Grace"
 arch=('i686' 'x86_64')
 url="http://plasma-gate.weizmann.ac.il/Grace/"
 #url="http://sourceforge.net/projects/qtgrace/"
 license=('GPL')
-#depends=('qtwebkit')
+depends=('qt4')
 optdepends=('fftw: for better fourier-transformation'
             'libharu: for pdf-output')
 source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_v${_pkgver}_src.zip $pkgname.png $pkgname.desktop $pkgname-mimetypes qtgrace)
@@ -26,9 +26,9 @@ sha256sums=('e52fdb04f45c992610be37b1cc4ea1366cce255d9a24f19b9521b8e68808c4b1'
             '7ee2c36f058bbac902fd52b88b2129e43b39c34828281d45342d1b09ac262d79')
 
 build() {
-  cd "$srcdir/${_pkgdirname}/src"
+  cd "$srcdir/${_pkgdirname}"
 
-  DESTDIR="${pkgdir}" PREFIX="/usr" qmake-qt4 src.pro
+  DESTDIR="${pkgdir}" PREFIX="/usr" qmake-qt4 ./src/src.pro
   make
 }
 
@@ -36,18 +36,20 @@ package() {
   cd "${srcdir}"
 
   install -d -m755 "${pkgdir}/usr/share/${pkgname}"
-  cp -r "${_pkgdirname}/bin" "${pkgdir}/usr/share/${pkgname}"
+  cp  "${_pkgdirname}/gracerc" "${pkgdir}/usr/share/${pkgname}/gracerc"
+  cp  "${_pkgdirname}/gracerc.user" "${pkgdir}/usr/share/${pkgname}/gracerc.user"
   cp -r "${_pkgdirname}/fonts" "${pkgdir}/usr/share/${pkgname}"
   cp -r "${_pkgdirname}/examples" "${pkgdir}/usr/share/${pkgname}"
+  cp -r "${_pkgdirname}/templates" "${pkgdir}/usr/share/${pkgname}"
   cp -r "${_pkgdirname}/doc" "${pkgdir}/usr/share/${pkgname}"
   find "${pkgdir}/usr/share/${pkgname}/" \( -type d -exec chmod 755 {} \; \) -o \( -type f -exec chmod 644 {} \; \)
-  chmod 755 "${pkgdir}/usr/share/${pkgname}/bin/${pkgname}"
 
-  install -D -m755 qtgrace "$pkgdir/usr/bin/qtgrace"
+  install -D -m755 "bin/${pkgname}" "${pkgdir}/usr/share/${pkgname}/bin/${pkgname}"
+  install -D -m755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
   # Desktop integration
-  install -D -m644 "$srcdir/$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  install -D -m644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -D -m644 "$srcdir/$pkgname-mimetypes" "$pkgdir/usr/share/mime/packages/$pkgname.xml"
+  install -D -m644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -D -m644 "${srcdir}/${pkgname}-mimetypes" "${pkgdir}/usr/share/mime/packages/${pkgname}.xml"
 }
 
