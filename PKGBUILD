@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=wire-desktop
 _pkgname=wire
-pkgver=2.11.2718
+pkgver=2.11.2721
 pkgrel=1
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ makedepends=('gendesk' 'grunt-cli' 'npm' 'python2' 'git')
 optdepends=('hunspell-en: for English spellcheck support')
 provides=('wire-desktop')
 source=("${pkgver}.tar.gz::https://github.com/wireapp/wire-desktop/archive/release/"$pkgver".tar.gz")        
-sha256sums=('491687413ded21342615877c19677fb2e9009396107b390c0bb57a72c8dbfeb6')
+sha256sums=('421c2753b727865673bf58b429b80f06e0e4cb94c895297ab8670c03b41459a7')
 
 prepare() {
   gendesk -f -n --name=Wire --pkgname="${_pkgname}" --pkgdesc="${pkgdesc}" --exec="${_pkgname}" --categories="Network"
