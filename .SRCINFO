@@ -1,0 +1,13 @@
+pkgbase = cutelyst-tutorial-git
+	pkgdesc = The Wiki tutorial from Github as a local copy
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://cutelyst.org
+	arch = any
+	license = LGPL2.1
+	makedepends = python2
+	source = git+https://github.com/cutelyst/cutelyst.wiki.git
+	md5sums = SKIP
+
+pkgname = cutelyst-tutorial-git
+
