@@ -72,7 +72,7 @@ _BATCH_MODE=n
 pkgname=('linux-pf')
 true && pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_pfrel}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://pf.natalenko.name/"
 license=('GPL2')
@@ -83,9 +83,8 @@ source=("ftp://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekernel}
 	'linux.preset'			        # standard config files for mkinitcpio ramdisk
 	"${_pfpatchhome}${_pfpatchname}.xz"	# the -pf patchset
         "git+$_aufs3#branch=aufs4.x-rcN"
-        "uksm-4.9.patch"::"http://kerneldedup.org/download/uksm/0.1.2.5/uksm-0.1.2.5-for-4.9.1+.patch"
+        "uksm-$_major.$_minor.patch"
         "99-linux-pf.hook"
-        '0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch'
         'fix_dccp_freeing_skb_too_early.patch'
        )
 # 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'     
@@ -128,10 +127,6 @@ prepare() {
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
   
   
-  # Revert a commit that causes memory corruption in i686 chroots on our
-  # build server ("valgrind bash" immediately crashes)
-  # https://bugzilla.kernel.org/show_bug.cgi?id=190061
-  patch -Rp1 -i "${srcdir}/0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch"
 
   patch -Rp1 -i "$srcdir"/'fix_dccp_freeing_skb_too_early.patch'
   # end linux-ARCH patches
@@ -144,7 +139,7 @@ prepare() {
   #patch -Rp1 -i "${srcdir}/cx23885_move_CI_AC_registration_to_a_separate_function.patch" || true
 
   # since linux-pf-4.6 uksm is seperate
-  patch -Np1 -i "$srcdir"/uksm-4.9.patch
+  patch -Np1 -i "$srcdir"/uksm-$_major.$_minor.patch
   
   if [ "$CARCH" = "x86_64" ]; then
 	cat "${startdir}/config.x86_64" >| .config
@@ -716,7 +711,6 @@ sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
             '9853580e534d6e3627b3161d7ee19d8f6548129eb937e2ba3329555fcb6087bb'
             'SKIP'
-            '91ae8ac0cd2086067e0ccac28d360d9ed0b3e845f584ff9af8e21e098db7bd72'
+            '8d4213bec36cbc35148a738f302da478049a70fefbfa01ba2a9bc4518a72c8a8'
             'df07e00e8581fe282a5b92be9ee9bb37910eae3d2cc43eeb41df736b9f531f02'
-            '3e955e0f1aae96bb6c1507236adc952640c9bd0a134b9995ab92106a33dc02d9'
             'f307c35625c0543d351d4f56bed1ec6726fd90b92b9c74b5bfd40ee77fd1946e')
