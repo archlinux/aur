@@ -1,7 +1,7 @@
 pkgbase = scriptbasic
 	pkgdesc = Scriba compiler for a powerful scripting language/API
 	pkgver = 2.1_RC1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.scriptbasic.org/
 	install = .install
 	arch = x86_64

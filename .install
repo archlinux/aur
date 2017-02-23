@@ -1,3 +1,7 @@
-post_remove() {
-	sudo rm -rf /usr/share/scriba/ /usr/local/lib/scriba/ /usr/bin/scriba /etc/scriba/
+pre_install() {
+	sudo rm -rf /var/cache/scriba/
+}
+
+pre_upgrade() {
+	sudo rm -rf /var/cache/scriba/
 }
