@@ -5,7 +5,7 @@
 
 pkgname=jhbuild
 pkgver=3.15.92+1012+g88207c11
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to build the whole GNOME desktop from sources'
 arch=('any')
 url='https://wiki.gnome.org/Projects/Jhbuild'
@@ -17,7 +17,6 @@ optdepends=('subversion: fetch subversion repositories'
             'bzr: fetch Bazaar repositories'
             'mercurial: fetch Mercurial repositories'
             'darcs: fetch Darcs repositories')
-install=jhbuild.install
 _commit=88207c11
 source=("$pkgname-$_commit::git+https://git.gnome.org/browse/jhbuild#commit=$_commit"
         "module_autogenargs.patch")
@@ -49,3 +48,6 @@ package() {
   install -Dm644 contrib/jhbuild_completion.bash "$pkgdir/usr/share/bash-completion/completions/jhbuild"
   sed -i "s|$srcdir|$HOME/jhbuild|g" "${pkgdir}"/usr/bin/jhbuild
 }
+
+# list of dependencies reported by 'jhbuild sysdeps'
+depends+=(anthy argyllcms caribou cmake cups docbook-utils docbook-xsl dotconf doxygen espeak exempi git gmime gperf gtkspell3 hyphen intltool itstool kyotocabinet libatasmart libcanberra libdmapsharing libdvdread libgexiv2 libgphoto2 libhangul libical libmusicbrainz5 libndp liboauth libpwquality libraw libvirt libvpx meson mpc openldap opus plymouth poppler-glib ppp python-cairo ragel ruby smbclient startup-notification taglib v4l-utils vala wavpack wget wireless_tools xf86-input-wacom xmlto xorg-server-xwayland xorg-util-macros xtrans)
