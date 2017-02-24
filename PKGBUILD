@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=asus-nb-wmi-reload-git
-pkgver=20170122
+pkgver=20170224
 pkgrel=1
 pkgdesc="Systemd service for reload Asus Notebooks WMI Hotkey Driver after resume for restoring light on WLAN LED"
 arch=('any')
