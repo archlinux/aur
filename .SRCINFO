@@ -1,5 +1,5 @@
 pkgbase = luftikus
-	pkgdesc = distrho port of EQ plugin (LV2/VST). digital adaptation of an analog EQ with fixed half-octave bands and additional high frequency boost
+	pkgdesc = distrho port of EQ plugin (VST). digital adaptation of an analog EQ with fixed half-octave bands and additional high frequency boost
 	pkgver = 20140826
 	pkgrel = 1
 	url = http://distrho.sourceforge.net
