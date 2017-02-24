@@ -1,18 +1,18 @@
 # Maintainer: Tomasz Zok <tomasz.zok [at] gmail.com>
 pkgname=orchent
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Orchestrator Command Line Client"
 arch=(x86 x86_64)
 url="https://github.com/indigo-dc/orchent"
 license=('Apache')
 depends=('go>=1.5')
-source=(https://github.com/indigo-dc/$pkgname/archive/v$pkgver.tar.gz)
-md5sums=('c6ee304e51e5efc6afefad218f2af1b4')
+source=(https://github.com/indigo-dc/$pkgname/archive/$pkgver.tar.gz)
+md5sums=('f147ec790de3e59a766b5e18663ef842')
 
 build() {
 	cd "$pkgname-$pkgver"
-	make
+    utils/compile.sh
 }
 
 package() {
