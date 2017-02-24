@@ -1,0 +1,14 @@
+post_upgrade() {
+	if [[ $(vercmp $2 3.3.8-3) = -1 ]]; then
+		cat <<EOF
+
+==> The file /etc/sysctl.conf has been removed from this
+==> package, as all its settings are now kernel defaults.
+
+==> If you had customized it, you need to rename it as
+==> /etc/sysctl.d/99-sysctl.conf since from version 207 on
+==> systemd only applies settings from /etc/sysctl.d/* .
+
+EOF
+	fi
+}
