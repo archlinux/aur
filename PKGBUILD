@@ -9,9 +9,13 @@ license=('GPL3')
 depends=('cryptsetup')
 optdepends=('mkinitcpio-dropbear: Allow the encryptssh hook to unlock a root container remotely using dropbear'
             'mkinitcpio-tinyssh: Allow the encryptssh hook to unlock a root container remotely using tinyssh')
-url="https://github.com/moparisthebest/cryptsetup-multidisk-ssh"
-source=("https://codeload.github.com/moparisthebest/cryptsetup-multidisk-ssh/tar.gz/v$pkgver")
-sha256sums=('a886feb187c398048f49e15b4ead113caa5dfb568ed842e9bbdc556f9bdff079')
+
+author='moparisthebest'
+url="https://github.com/$author/$pkgname"
+source=("https://github.com/$author/$pkgname/archive/v$pkgver.tar.gz" "https://github.com/$author/$pkgname/releases/download/v$pkgver/v$pkgver.tar.gz.asc")
+validpgpkeys=('81F1C22DD41109D4A9C0A7B5B070F8D97D1A0BBA') # moparisthebest <admin AT moparisthebest.com>
+sha256sums=('a886feb187c398048f49e15b4ead113caa5dfb568ed842e9bbdc556f9bdff079'
+            'SKIP')
 
 package() {
 	cd "${pkgname}-$pkgver"
