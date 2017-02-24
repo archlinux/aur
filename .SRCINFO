@@ -1,0 +1,16 @@
+pkgbase = rewrite-git
+	pkgdesc = Utility that allows for the in-place rewrite of a file's contents
+	pkgver = 0.1.r6.40477cd
+	pkgrel = 1
+	url = https://github.com/neosmart/rewrite
+	arch = x86
+	arch = x86_64
+	makedepends = git
+	makedepends = cargo
+	provides = rewrite
+	conflicts = rewrite
+	source = rewrite::git+https://github.com/neosmart/rewrite.git
+	sha1sums = SKIP
+
+pkgname = rewrite-git
+
