@@ -10,22 +10,23 @@ url='https://libgit2.github.com/'
 depends=(zlib openssl libssh2 curl)
 makedepends=(cmake python)
 license=('GPL2')
+replaces=(libgit2)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/libgit2/libgit2/archive/v${pkgver}.tar.gz")
 sha1sums=('SKIP')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "libgit2-$pkgver"
   export LANG=en_US.UTF-8
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DTHREADSAFE=ON
   make
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "libgit2-$pkgver"
   make test
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "libgit2-$pkgver"
   make DESTDIR="$pkgdir" install
 }
