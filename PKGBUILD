@@ -3,10 +3,10 @@
 
 pkgname=natron
 pkgver=2.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
 arch=("i686" "x86_64")
-url="http://natron.fr/"
+url="https://github.com/triceratops1/natron-arch"
 license=("GPL")
 depends=('fontconfig' 'qt4' 'python2-pyside' 'python2-shiboken' 'boost-libs' 'pixman' 'glfw-x11' 'cairo' 'openfx-io' 'openfx-misc')
 makedepends=('git' 'expat' 'boost')
