@@ -17,7 +17,7 @@ sha512sums=('138771e19c144829bed7d2ec4ed35befaae77781cf7ac47cce970887096ce33df95
 
 package_gogland-eap() {
   optdepends=('gogland-eap-jre: JetBrains custom Java Runtime (Recommended)'
-              'java-runtime>=8: JRE - Required if clion-jre is not installed')
+              'java-runtime>=8: JRE - Required if gogland-eap-jre is not installed')
 
   install -d -m 755 ${pkgdir}/opt/
   install -d -m 755 ${pkgdir}/usr/bin/
