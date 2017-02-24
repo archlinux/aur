@@ -2,7 +2,7 @@
 
 pkgname=guile-git
 _gitname=guile
-pkgver=2.1.7.4.g5333642b7
+pkgver=2.1.7.10.gf261eaf03
 pkgrel=1
 pkgdesc="A portable, embeddable Scheme implementation (Git snapshot)"
 arch=('i686' 'x86_64')
