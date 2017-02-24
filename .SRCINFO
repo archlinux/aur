@@ -1,5 +1,5 @@
 pkgbase = linux-lts-ck
-	pkgver = 4.4.50
+	pkgver = 4.4.51
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = linux-lts-ck
 	options = !strip
 	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.4.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.4.tar.sign
-	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.4.50.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.4.50.sign
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.4.51.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.4.51.sign
 	source = config.x86_64
 	source = config
 	source = linux-lts-ck.preset
@@ -50,13 +50,13 @@ pkgname = linux-lts-ck
 	optdepends = nvidia-dkms: nVidia drivers for linux-lts-ck
 	optdepends = nvidia-340xx-dkms: nVidia drivers for linux-lts-ck
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
-	provides = linux-lts-ck=4.4.50
+	provides = linux-lts-ck=4.4.51
 	replaces = kernel26-lts-ck
 	backup = etc/mkinitcpio.d/linux-lts-ck.preset
 
 pkgname = linux-lts-ck-headers
 	pkgdesc = Header files and scripts to build modules for linux-lts-ck.
 	depends = linux-lts-ck
-	provides = linux-lts-ck-headers=4.4.50
-	provides = linux-headers=4.4.50
+	provides = linux-lts-ck-headers=4.4.51
+	provides = linux-headers=4.4.51
 
