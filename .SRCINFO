@@ -1,8 +1,8 @@
 pkgbase = cin-bin
-	pkgdesc = Cinelerra (5.1) (20170131)
+	pkgdesc = Cinelerra (5.1) (201731)
 	pkgver = 5.1
-	pkgrel = 20170131
-	url = http://www.cinelerra-cv.org/five
+	pkgrel = 201731
+	url = https://github.com/triceratops1/Arch-cinelerra
 	arch = x86_64
 	license = GPL
 	makedepends = yasm
