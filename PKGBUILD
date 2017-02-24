@@ -10,7 +10,7 @@ pkgrel=2
 #epoch=
 pkgdesc="GUI frontend for encfs. Create, mount, umount and delete your encrypted fs."
 arch=('i686' 'x86_64')
-url="http://kde-apps.org/content/show.php/KEncFS?content=134003"
+url="https://www.linux-apps.com/p/1127802/"
 license=('(L)GPL')
 #groups=()
 depends=('encfs>=1.7.4-8' 'fuse>=2.9.2-1' 'kdelibs')
