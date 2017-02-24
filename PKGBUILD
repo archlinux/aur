@@ -3,20 +3,17 @@
 _pkgname=androidscreencast
 pkgname=${_pkgname}-bin
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop app to control an android device remotely using mouse and keyboard'
 url='https://code.google.com/archive/p/androidscreencast'
 license=('Apache')
 arch=('any')
 depends=('icedtea-web')
-source=(
-  "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${_pkgname}/${_pkgname}-${pkgver//./_}.jnlp"
-  'androidscreencast'
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${_pkgname}/${_pkgname}-${pkgver//./_}.jnlp"
+        'androidscreencast'
 )
-md5sums=(
-  '7a2c2f22d6e96b8266718b39f48d7dc5'
-  'ddbde6521d02a59f71c13d47d85a32d4'
-)
+sha256sums=('bf5a26b0341fc9890c2d4dcc37d9e68249889631301e671e80643a472de0cb37'
+            '563d9196f7758ac2099c8863d53f5c0566b558a8934ae9d98cecfe5b71b33a2d')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/usr/local/lib/java"
