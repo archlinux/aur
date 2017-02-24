@@ -1,7 +1,7 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=lastwake-git
-pkgver=0.8.1828084
+pkgver=0.37.2d0f43a
 pkgrel=1
 pkgdesc="Wake/suspend time systemd journal analyzer"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python-systemd')
 makedepends=('git')
 source=("${pkgname}::git+${url}.git#branch=master")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver () {
   cd "${srcdir}/${pkgname}"
