@@ -2,7 +2,7 @@
 
 pkgname=cura-binary-data
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary data (firmwares and such) for cura"
 depends=()
 url="https://github.com/Ultimaker/${pkgname}"
@@ -15,6 +15,9 @@ sha1sums=('cbe03b3f0a3353d011dbfa09680dd12f677823b7')
 package(){
   mkdir -p "${pkgdir}/usr/share"
   cp -r "${srcdir}/${pkgname}-${pkgver}/cura/" "${pkgdir}/usr/share/."
+  
+  # see https://github.com/Ultimaker/cura-binary-data/issues/6
+  rm -rf "${pkgdir}/usr/share/cura/resources/i18n" 
 }
 
 
