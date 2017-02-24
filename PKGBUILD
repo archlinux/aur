@@ -3,14 +3,14 @@
 pkgname=dextra
 pkgver=1.30.88
 _filever=017
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for DEX and OAT dumping, decompilation, and fuzzing'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://newandroidbook.com/tools/dextra.html'
 license=('unknown')
 
 source=("http://newandroidbook.com/files/${pkgname}.tar")
-md5sums=('82a8139d9b31d38cdffe76cc5cd23949')
+sha256sums=('1a40cdf47525865552147ebb9c93f88213e54e15f8d3a32a828734c1f5b01e8f')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
