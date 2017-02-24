@@ -14,6 +14,7 @@ arch=('x86_64' 'i686')
 license=('Commercial')
 url='https://www.jetbrains.com/phpstorm/'
 options=('!strip')
+makedepends=('rsync')
 source=(https://download.jetbrains.com/webide/PhpStorm-${pkgver}.tar.gz
         jetbrains-phpstorm.desktop)
 sha512sums=('4fe6c53b3f10b74e45e639543b139fbb284f2e5a30d6c4503e73cc097acd833b79a5736eb9d6fd50368fa5c9d54c1f3b79752c56362167f9a7de813e71912c46'
