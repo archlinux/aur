@@ -3,7 +3,7 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-beta
-pkgver=3.2.1.115
+pkgver=3.2.1.116
 pkgrel=1
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('i686' 'x86_64')
