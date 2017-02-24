@@ -61,6 +61,7 @@ build() {
       # Search paths for host standard library (/usr/lib) and for Qt5Bootstrap (/usr/$_arch/lib) are not set correctly by qmake
       # hence we need insert those paths manually
       make qmake_all
+      find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5QmlDevTools -lQt5Bootstrap|-L/usr/lib /usr/$_arch/lib/libQt5QmlDevTools.so /usr/$_arch/lib/libQt5Bootstrap.so|g" {} \;
       find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5QmlDevTools|-L/usr/lib /usr/$_arch/lib/libQt5QmlDevTools.so|g" {} \;
       find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5Bootstrap|-L/usr/lib /usr/$_arch/lib/libQt5Bootstrap.so|g" {} \;
 
@@ -108,5 +109,8 @@ package() {
     for exe_file in "${pkgdir}/usr/${_arch}/bin/"*.exe; do
       [[ -f $exe_file ]] && mv "${exe_file}" "${exe_file%.exe}-qt5.exe"
     done
+    # Fix the path to executables in cmake config files
+    sed -i "s|lib/qt/bin/qcollectiongenerator|bin/qcollectiongenerator-qt5.exe|g" "${pkgdir}"/usr/${_arch}/lib/cmake/Qt5Help/Qt5HelpConfigExtras.cmake
+    sed -i "s|lib/qt/bin/qhelpgenerator|bin/qhelpgenerator-qt5.exe|g" "${pkgdir}"/usr/${_arch}/lib/cmake/Qt5Help/Qt5HelpConfigExtras.cmake
   done
 }
