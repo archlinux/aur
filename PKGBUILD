@@ -2,15 +2,15 @@
 
 pkgname=intel-joule-setup-tool
 pkgver=2016.4.008
-pkgrel=1
+pkgrel=2
 pkgdesc='Configuration tool for Intel Joule module'
 arch=('x86_64')
 url='https://software.intel.com/en-us/node/705675'
 license=('custom')
 source=("https://downloadmirror.intel.com/26472/eng/Intel_Joule_Setup_Lin_$pkgver.tar.gz"
         "${pkgname}")
-sha1sums=('82abb76e05bf9f627088203beb60449cb32e8a50'
-          '251a92c7a349398d9cf39c5b42352d9666b99a56')
+sha256sums=('4b4da85e1f7cd9d3efd74739926e901f13bb562c19c28cd0c4bf05abd92c95fc'
+            '273630070144266f46c5d5342c8b55d26a40ee13c1a4becda06810c140a61a12')
 
 package() {
   cd "${srcdir}/Intel_Joule_Setup_Lin_$pkgver"
