@@ -1,0 +1,18 @@
+--- a/LHAPDF-6.1.6/lhapdf.in
++++ b/LHAPDF-6.1.6/lhapdf.in
+@@ -297,10 +297,13 @@
+
+     else: # URL
+         url = source
+-        import urllib2 as urllib
++        try:
++            import urllib.request as urllib
++        except ImportError:
++            import urllib2 as urllib
+         try:
+             u = urllib.urlopen(url)
+-            file_size = int(u.info().getheaders('Content-Length')[0])
++            file_size = int(u.info().get('Content-Length')[0])
+         except urllib.URLError:
+             e = sys.exc_info()[1]
+             logging.error('Unable to download %s' % url)
