@@ -2,7 +2,7 @@
 
 pkgname=glacier-hash
 pkgver=1
-pkgrel=0
+pkgrel=1
 pkgdesc='Computes the SHA256 tree hash of a file'
 arch=('any')
 license=('custom')
@@ -12,15 +12,11 @@ depends=('java-runtime')
 
 _class=TreeHash
 
-source=(
-  "glacier-hash"
-  "${_class}.java"
-)
+source=("glacier-hash"
+        "${_class}.java")
 
-md5sums=(
-  'dff070b256b9d7d936e657ab5263d131'
-  '1308e53e009bbcf507556505e13beac4'
-)
+sha256sums=('9d8417046b9852e26b06dd8deaa5be09aee4e5f20489377de5d1814ec513758d'
+            '22e854749897eafc972e31e486ddfe4f76032d51fec4355af946c64f97f57c49')
 
 build() {
   cd "${srcdir}"
