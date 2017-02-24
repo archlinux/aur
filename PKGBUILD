@@ -7,8 +7,9 @@ pkgdesc="Diagnostic and recovery tool for block devices (near to replace MHDD fo
 arch=('i686' 'x86_64')
 url="https://github.com/whdd/whdd"
 license=('GPL')
-depends=('ncurses' 'smartmontools' 'dialog')
-makedepends=('cmake')
+depends=('ncurses' 'dialog')
+optdepends=('smartmontools: for reading SMART attributes')
+# makedepends=('cmake')
 source=(https://github.com/whdd/whdd/archive/${pkgver}.tar.gz)
 md5sums=('f8a52f3be562d8210c2f33ad098b7b31')
 
@@ -25,5 +26,4 @@ package() {
   # make install DESTDIR="${pkgdir}"/usr/bin/
   install -D -m 755 "${pkgname}" "${pkgdir}"/usr/bin/"${pkgname}"
 }
-
 
