@@ -32,10 +32,10 @@ _use_32bit_pae="no"	# "yes": Use the PAE config for 32-bit
 
 pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
 __basekernel=4.9
-_minor=11
+_minor=12
 pkgver=${__basekernel}.${_minor}
-pkgrel=3
-lqxrel=3
+pkgrel=1
+lqxrel=1
 pkgbase=linux-lqx
 # pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
 _lqxpatchname="${pkgver}-${lqxrel}.patch"
@@ -62,10 +62,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.
 
 sha512sums=('bf67ff812cc3cb7e5059e82cc5db0d9a7c5637f7ed9a42e4730c715bf7047c81ed3a571225f92a33ef0b6d65f35595bc32d773356646df2627da55e9bc7f1f1a'
             'SKIP'
-            'da7cc17604256802db5dd6f207f84efc30d91da7fe3784e2f7c39167fa84d3fcbe8e7babf3194cd454b5907ec2a9a912735d543f0a3264585a47275318423028'
-            '35ec9f2c81ea2cd182bc0d23515f1194a640e43e784e1d3f60e97e4615b7405791f835ad2d7ce683c5395693c64a67d33c5eed835bf4daf48d47d5cdb7d5cea6'
-            '409d94ecf2f5c7be478fd2ce72688a14aed2067f5bd124d74ad7333660bfa94d4948cd12e8fe15392def1464cb91efad46f377f3d5012acc01647564f7197e4d'
-            '687d41c578a2cd413b809b84d7444f1cc7a8622b8e105c21e5b28ceea15db625d5a0787d48715688858f47b518ebd22a52a363fc627f31c26df400a72ec0a3f9'
+            '7e310310f28cc3073dcbc80001d9eada4092bfef42d2a9de1d8baf0e00a65c605ce30868249d914582b407974319ddb8a814857c813211f2afd2e6df6fc97e4f'
+            '2b63f1c885f204a6bd1c52b1bd349c76de691b910bd248ecbbf5ba9f3bd60f2bfb8c056df4d08b42dfb87af8fc9abc056cdf687becfb64c0f5099b581e4c80dd'
+            'a0b5986a9c3a0846ad1c999a76a77b204153b31f515f81f1e1e446a8b406d92d225c2c06637c953c46ae9f6586e08aba6d316c919b0afe1fa1e2b0df26ab94a8'
+            'b81addc8c4b299968bee336d8ab705ad240becd9bdd5a9703ba1c96fb6077c93a56b49ab12a74a8c730bf60d0f1bcb53b0fa7b57918548f9ae1ccc314beeb9e9'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22')
             
