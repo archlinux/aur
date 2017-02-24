@@ -8,9 +8,9 @@ _milestone=53.0a2
 
 _release_year=2017
 _release_month=02
-_release_day=23
-_release_time=$_release_year-$_release_month-$_release_day-08-41-36
-_buildid=20170223084136
+_release_day=24
+_release_time=$_release_year-$_release_month-$_release_day-08-41-06
+_buildid=20170224084106
 
 pkgname="${_name}-${_channel}"
 pkgver=53.0a2.$_buildid
@@ -34,8 +34,8 @@ source_i686=("$_base_url/firefox-53.0a2.en-US.linux-i686.tar.bz2")
 sha512sums=('c3ed6811fcc6b2b3697420acb258b1bb37a54b24d48914e40ef03b044f0e2a14b9501d2e788af6622704410b74720f4bc585fe2bc29d9d487c8347aa4d408529'
             '06db4df1dd25c78d59f84831d1a48278a85d9ddbe7e2a494340dc0ef9e192f7c67eff57e2962eb084c55eda6bf9e5e3f09dd962dce56878e4ae3583c2f219389')
 
-sha512sums_i686=('be156a45baaa250241d0f6788116086536f229fe93577533acb7d507ef1eb612867bec9b1b8241e000c6cc4db2245afa6d02ad0b53633a3c272b507940033e7b')
-sha512sums_x86_64=('65565ff7e1b485e7c5729a6e6d4ed982c05135b98217e9fd0d5aea29c7ffcc6d0e4a1f90ebf0647f1a3ad9bfbfa344dd10bfab672d97383467d82a07b2414322')
+sha512sums_i686=('fd2e7aed9e65be958aa66f2139280b063a3695c19743504f5dace13107a38813f2174b198eb0530fe7f9fbbfa7d4a4b1b0ac1174fd916c26e6e62f278cd3368a')
+sha512sums_x86_64=('656495a6cb515133c31b0ddb0c109052868ec79cc43684e0c29bb2c798d5fd1fd4a39af33baf16369949fa77b5942cd0465f71fe6a14110d6b6b12f1fa657f67')
 
 pkgver() {
        cd "${_name}"
