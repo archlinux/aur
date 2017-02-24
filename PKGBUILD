@@ -3,7 +3,7 @@
 
 pkgname=sha3sum-git
 pkgver=0.233.1.0.2.g297f992
-pkgrel=1
+pkgrel=2
 pkgdesc="Checksum utility for Keccak and its close derivatives SHA-3, SHAKE and RawSHAKE"
 url="https://github.com/maandree/sha3sum"
 license=("AGPL3")
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 makedepends=('auto-auto-complete' 'texman' 'texlive-plainextra')
 depends=('argparser' 'libkeccak')
 source=('git+https://github.com/maandree/sha3sum')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/sha3sum"
