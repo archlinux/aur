@@ -5,11 +5,11 @@ pkgbase=gstreamer0.10-ugly
 _pkgname=gst-plugins-ugly
 pkgname=('gstreamer0.10-ugly' 'gstreamer0.10-ugly-plugins')
 pkgver=0.10.19
-pkgrel=21
+pkgrel=27
 arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL')
 makedepends=('pkgconfig' 'gstreamer0.10-base>=0.10.36-8' 'libdvdread' 'lame' 'libmpeg2' 'a52dec' 'libmad' 'libsidplay' 'libcdio' 'libx264' 'x264' 'opencore-amr' 'git')
-url="http://gstreamer.freedesktop.org/"
+url="https://github.com/triceratops1/gstreamer0"
 source=("git+https://gitlab.com/gstreamer-sdk/$_pkgname.git#commit=d637756a8e569753e9869c2c0728288f5dbc5089"
         opencore-amr.patch
         cdio-cd-text-api.patch)

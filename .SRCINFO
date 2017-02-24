@@ -1,7 +1,7 @@
 pkgbase = gstreamer0.10-ugly
 	pkgver = 0.10.19
-	pkgrel = 21
-	url = http://gstreamer.freedesktop.org/
+	pkgrel = 27
+	url = https://github.com/triceratops1/gstreamer0
 	arch = i686
 	arch = x86_64
 	arch = armv7h
