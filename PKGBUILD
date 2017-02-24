@@ -5,20 +5,20 @@
 # https://github.com/jkl1337/packages-archlinux.git
 
 pkgname=balsamiqmockups
-pkgver=2.2.28
+pkgver=2.2.29
 license=('custom')
 pkgrel=5
 arch=('any')
 pkgdesc="The Adobe Air based Mockup client. Not free or open source, there is a 7 day free trial."
-url=('http://balsamiq.com/products/mockups')
+url='http://balsamiq.com/products/mockups'
 source=("https://build_archives.s3.amazonaws.com/mockups-desktop/2.2/MockupsForDesktop2.2.28-2015.08.24.air"
         "http://media.balsamiq.com/files/BalsamiqEula.pdf"
         'fix-filetype-mime.patch'
         'balsamiqmockups.desktop'
         'vnd.balsamiq.bmml+xml.xml')
 sha1sums=('4c541244c7214ede9e1e4aa498bf1b8c2df597fd'
-          '162bafada1637d037dab066e1fff118591f5285f'
-          '279e15c0c1bcffeabc97d9af3882c849735b5aa9'
+          '47d7519e1ee4348797af75df2f15c1c4b0b1714e'
+	  '279e15c0c1bcffeabc97d9af3882c849735b5aa9'
           'cfe7240b7403ff47d63e9f8264581a40112607ff'
           '6f28b1fcc5758cb46c5f149d7896b53bdd027293')
 noextract=("MockupsForDesktop2.2.28-2015.08.24.air")
