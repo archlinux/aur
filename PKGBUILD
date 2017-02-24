@@ -4,9 +4,9 @@
 pkgname=spotify
 pkgver=1.0.49.125
 _anotherpkgver=.g72ee7853
-_amd64_pkgrel=83
-_i386_pkgrel=21
-pkgrel=1
+_amd64_pkgrel=111
+_i386_pkgrel=22
+pkgrel=2
 pkgdesc="A proprietary music streaming service"
 arch=('x86_64' 'i686')
 license=('custom:"Copyright (c) 2006-2010 Spotify Ltd"')
@@ -19,8 +19,8 @@ source=('spotify'
 sha256sums=('989920e9360cadc1a8103b8c04acf0c87cb7911eb9a09dddb0cf4708d6249d34'
             'af54f3b90cac46fa100b3f919a9225d10d847617d24aa9af3d832e7689f482c3'
             '4e8bea31ca27e16cac9c9dcd8f6ec27e1f82b45de86d6fee7a1e77e23f884b92')
-sha256sums_x86_64=('2fc10858f972f8c1e6ddc0c2090390f03c1441ec266f77cf227e80227d3a11eb')
-sha256sums_i686=('723100d7df9220efe96159d30b900b042f12422a81cc7910e21457d7cdd05866')
+sha256sums_x86_64=('1d6d1cccfb7f996b835f21c8dbabc16ca4bd214878e06738dba7886640470050')
+sha256sums_i686=('96c02fdc77991feb0797089d701744c2de4584322f966a1c070b559df27f9b04')
 
 source_x86_64=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}${_anotherpkgver}-${_amd64_pkgrel}_amd64.deb")
 
