@@ -1,0 +1,15 @@
+Description: Add back a typecast that's needed for C++
+ Fix for https://bugs.winehq.org/show_bug.cgi?id=42511
+Author: Alexandre Julliard <julliard_winehq_org>
+
+--- a/airwave/src/host/winnt.h
++++ b/airwave/src/host/winnt.h
+@@ -5438,7 +5438,7 @@ typedef enum _CM_ERROR_CONTROL_TYPE
+ 
+ static FORCEINLINE void *RtlSecureZeroMemory(void *buffer, SIZE_T length)
+ {
+-    volatile char *ptr = buffer;
++    volatile char *ptr = (volatile char *)buffer;
+ 
+     while (length--) *ptr++ = 0;
+     return buffer;
