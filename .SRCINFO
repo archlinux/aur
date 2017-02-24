@@ -1,0 +1,18 @@
+pkgbase = ttf-conkyweather
+	pkgdesc = ConkyWeather font - weather icons
+	pkgver = 20170224.3f71158
+	pkgrel = 1
+	url = https://github.com/altinukshini/conky_blue
+	install = install
+	arch = any
+	license = GPL
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = git://github.com/altinukshini/conky_blue
+	source = install
+	md5sums = SKIP
+	md5sums = b9b03309f730947d472a63b0e5ca3bb1
+
+pkgname = ttf-conkyweather
+
