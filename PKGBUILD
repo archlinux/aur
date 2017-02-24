@@ -7,7 +7,7 @@ pkgdesc="MiracleCast provides software to connect external monitors to your syst
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/albfan/miraclecast"
 license=('GPL')
-depends=(git "systemd>=221" "python3" "glib2")
+depends=(git-core "systemd>=221" "python3" "glib2")
 provides=("miraclecast")
 backup=(etc/dbus-1/system.d/org.freedesktop.miracle.conf)
 source=("$_name::git+https://github.com/albfan/miraclecast.git#branch=master")
