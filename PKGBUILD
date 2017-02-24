@@ -5,10 +5,10 @@
 
 pkgname=firejail-extras
 pkgver=0.9.44
-pkgrel=15
+pkgrel=18
 pkgdesc="Extra profiles for firejail"
 arch=('any')
-url="https://github.com/chiraag-nataraj/firejail-profiles"
+url="https://github.com/triceratops1/fe"
 license=('GPL2')
 source=("git+https://github.com/chiraag-nataraj/firejail-profiles.git"
         "git+https://github.com/triceratops1/fe.git"
