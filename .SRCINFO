@@ -1,0 +1,16 @@
+pkgbase = fstrm
+	pkgdesc = A C implementation of the Frame Streams data transport protocol
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/farsightsec/fstrm
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = pkg-config
+	makedepends = libevent
+	depends = libevent
+	source = https://github.com/farsightsec/fstrm/archive/v0.3.1.tar.gz
+	sha256sums = a61ec0bb88b1e7bab05a6c854219deb451137c4de15800fc1ee2bee4b9b0d22a
+
+pkgname = fstrm
+
