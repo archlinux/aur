@@ -17,13 +17,11 @@ md5sums=('41278f54f26ad17d4b28228fa6f7b74f'
          'e319eee0a3ccb4d60dd24b7ed1ea34b3'
          '3767e4066491b2ade46b37179285fd80')
 build() {
-	cd "$srcdir/$pkgname"
 	./configure --prefix=/usr --enable-alsa
 	make
 }
 
 package() {
-	cd "$srcdir/$pkgname"
 	make DESTDIR="$pkgdir/" install
 	install -Dm644 $srcdir/sndiod.conf $pkgdir/etc/conf.d/sndiod
 	install -Dm644 $srcdir/sndiod.service $pkgdir/usr/lib/systemd/system/sndiod.service
