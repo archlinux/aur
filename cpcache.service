@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 # Shutdown can be somewhat sluggish on low-end devices like the RPi.
-TimeoutSec=30
+TimeoutSec=90
 SuccessExitStatus=143
 KillMode=process
 User=cpcache
