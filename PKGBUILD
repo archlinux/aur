@@ -6,7 +6,7 @@
 #Maintainer: Felice Murolo <linuxboy@fel.hopto.org>
 pkgname=kencfs
 pkgver=1.6.4
-pkgrel=2
+pkgrel=3
 #epoch=
 pkgdesc="GUI frontend for encfs. Create, mount, umount and delete your encrypted fs."
 arch=('i686' 'x86_64')
