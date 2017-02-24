@@ -11,7 +11,7 @@ makedepends=(coreutils git qt5-base gcc)
 source=(git+"https://github.com/nahwar/webmc.git")
 md5sums=('SKIP')
 
-prepare() {
+build() {
   cd $srcdir/webmc/build
   make
 }
