@@ -1,6 +1,6 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=uenv-git
-pkgver=0.8.3.r0.ge6df431
+pkgver=0.8.4.r0.g0b471f3
 _basename=uenv
 pkgrel=1
 pkgdesc="Useful scripts, systemd timer/service units and their configuration"
@@ -11,6 +11,7 @@ groups=()
 depends=()
 makedepends=('git')
 optdepends=(
+  'arch-audit: For updating MOTD with security info'\
   'autossh: For autotunnel (SSH tunnel)'\
   'compton: For compton user service'\
   'conky: For conky user service'\
@@ -22,6 +23,7 @@ optdepends=(
   'linux-rt: For cpupower and JACK services'\
   'mpd: For mpd user service connecting to server profiles'\
   'openssh: For ssh-agent as systemd user service'\
+  'python-lolcat: For colorful output of MOTD'\
   'rtorrent: For rtorrent user and system service'\
   'tmux: For monitoring, rtorrent and tmux user services'\
   'weechat: For weechat in a separate tmux environment'
