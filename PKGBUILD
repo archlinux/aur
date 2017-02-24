@@ -6,7 +6,7 @@ pkgname=cervisia
 pkgver=16.12.2
 pkgrel=1
 pkgdesc='CVS Frontend'
-url='http://kde.org/applications/development/cervisia/'
+url='https://kde.org/applications/development/cervisia/'
 arch=(i686 x86_64)
 license=(GPL LGPL FDL)
 groups=(kde-applications kdesdk)
@@ -14,7 +14,7 @@ depends=(kdesu kparts hicolor-icon-theme)
 makedepends=(extra-cmake-modules python kdoctools)
 conflicts=(kdesdk-cervisia)
 replaces=(kdesdk-cervisia)
-source=("http://download.kde.org/stable/applications/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig})
+source=("https://download.kde.org/stable/applications/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig})
 sha1sums=('e428e386459a314ae8d7ffdd5159235c2f6130b9'
           'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7) # Albert Astals Cid <aacid@kde.org>
