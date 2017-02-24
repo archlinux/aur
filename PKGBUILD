@@ -13,7 +13,7 @@ depends=('knewstuff' 'libksysguard' 'lm_sensors' 'hicolor-icon-theme')
 makedepends=('extra-cmake-modules' 'kdoctools' 'python')
 conflicts=('kdebase-workspace')
 groups=('plasma')
-source=("http://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz"{,.sig})
+source=("https://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz"{,.sig})
 sha256sums=('664763f003d863df6d8477cacd76f17e70767ee5ce1730886bc4ab8b7faa8c36'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
