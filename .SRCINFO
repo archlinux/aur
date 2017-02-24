@@ -1,7 +1,7 @@
 pkgbase = python-pymisp
 	pkgdesc = API for MISP.
-	pkgver = 2.4.53
-	pkgrel = 2
+	pkgver = 2.4.65
+	pkgrel = 1
 	url = https://github.com/MISP/PyMISP/
 	arch = any
 	license = BSD2
@@ -9,12 +9,20 @@ pkgbase = python-pymisp
 	makedepends = python2
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = PyMISP-2.4.53.tar.gz::https://github.com/MISP/PyMISP/archive/v2.4.53.tar.gz
-	sha512sums = fbdd28c337dc05ce8169a15dcc817b6f70a35217113a5f0f277d03ef66a351c41e5b0083257c187aebade3e0ecae82c6acffb032e687c754770518a44c063b65
+	optdepends = python-pyme
+	optdepends = python2-pyme
+	source = PyMISP-2.4.65.tar.gz::https://github.com/MISP/PyMISP/archive/v2.4.65.tar.gz
+	sha512sums = b69882ccbd4adae839633a81e175c54910f13a84d5ce73f46385c75b4d11bde91586673a46a543f47808177bb427b828c5161f89c4792a13df28f1eaba59da64
 
 pkgname = python-pymisp
 	depends = python
+	depends = python-jsonschema
+	depends = python-requests
+	depends = python-dateutil
 
 pkgname = python2-pymisp
 	depends = python2
+	depends = python2-jsonschema
+	depends = python2-requests
+	depends = python2-dateutil
 
