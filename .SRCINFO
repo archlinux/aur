@@ -1,7 +1,7 @@
 pkgbase = tor-browser-bin
 	pkgdesc = Tor Browser is +1 for privacy and -1 for mass surveillance
 	pkgver = 6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.torproject.org/projects/torbrowser.html.en
 	arch = i686
 	arch = x86_64

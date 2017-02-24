@@ -5,10 +5,10 @@
 pkgname=tor-browser-bin
 pkgver=6.5
 _language='en-US'
-pkgrel=1
+pkgrel=2
 pkgdesc="Tor Browser is +1 for privacy and -1 for mass surveillance"
 arch=('i686' 'x86_64')
-url="https://www.torproject.org/projects/torbrowser.html.en"
+url="https://github.com/triceratops1/TBB4Arch"
 license=('GPL')
 depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
