@@ -1,6 +1,6 @@
 pkgbase = slurm-llnl-dev
 	pkgdesc = Simple Linux Utility for Resource Management (development version)
-	pkgver = 17.02.0_0rc1
+	pkgver = 17.02.0
 	pkgrel = 1
 	url = https://www.schedmd.com
 	install = slurm-llnl-dev.install
@@ -24,7 +24,7 @@ pkgbase = slurm-llnl-dev
 	optdepends = numactl: NUMA support in the task/affinity plugin
 	optdepends = ncurses: adds the smap command
 	optdepends = gtk2: enables the sview command, a simple graphical frontend
-	provides = slurm-llnl=17.02.0_0rc1
+	provides = slurm-llnl=17.02.0
 	conflicts = slurm-llnl
 	backup = etc/default/slurm-llnl
 	source = slurm-tmpfiles.conf
@@ -32,12 +32,12 @@ pkgbase = slurm-llnl-dev
 	source = slurmctld.service
 	source = slurmd.service
 	source = slurmdbd.service
-	source = https://www.schedmd.com/download/total/slurm-17.02.0-0rc1.tar.bz2
+	source = https://www.schedmd.com/download/total/slurm-17.02.0.tar.bz2
 	sha512sums = 61f07699353d607ec43bab2a4fe29b4a380dab10108619e67ca2737193ab044a6e263179f7def932660acefd34c790c9d2b301cd6a49d92b8b80deeb1c7b8011
 	sha512sums = f74dacaaffa35fa11a62bb9efa492bb4ef9b197748f28c15210f362382da27ec1dd88a57a48fc6807029c93c9033c82e11545ea36622c683ae7bd09970ef8710
 	sha512sums = a1c2478a049dc1c024d773a73f363da6c9106d9533137f919394e8213376cb9167c8fcca7b038d1c45c441a1adce4524ccb68b6dd269a1000aba11b84b5352d5
 	sha512sums = ae2d0275bc9e0aac15d0d1dd4913b70ed4d4032e76c9c6ffdeae345c55834219f6495429d1d1c9129779221d6d08bada1228ccdb1c671b05d4a92ed6088bf55c
 	sha512sums = 56459e20d7f2624a8e8dd2982693b257e65df22c3609d991afdc1b2f79adaefc0586a76fd5fdd7dc2bdd39b3af0c91f38ddc4b1139081968903450bc28aca304
-	sha512sums = eaa47b19042dcf71c5676e9a743bf56da2c86344a9c4c61895ad5b8a5d2a08bbf5a1853891011b9ebbc22aab04b136b14fc03ee07515b04e162c88910d36f1bd
+	sha512sums = 64399509f3cb0c6471f94938154c443aa85f71b517af4157cdbc6ccffd934c85a25c61ceef48db4673c5c5104e72b9416d4b1b202320fa4072590a84aa74c724
 
 pkgname = slurm-llnl-dev
