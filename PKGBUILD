@@ -2,7 +2,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-io
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 arch=("i686" "x86_64")
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
@@ -11,6 +11,7 @@ license=("GPL2")
 depends=("seexpr1" "openimageio" "ffmpeg") 
 #depends=("opencolorio" "openexr" "openimageio" "ffmpeg" "boost-libs")
 makedepends=("git" "expat" "boost")
+optdepends=("openfx-gmic-bin" "natron-plugins")
 source=("$pkgname::git+https://github.com/MrKepzie/openfx-io.git#tag=Natron-$pkgver"
         'git+https://github.com/devernay/openfx.git'
         'git+https://github.com/MrKepzie/SequenceParsing'
