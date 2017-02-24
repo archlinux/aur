@@ -2,7 +2,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-misc
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 arch=("i686" "x86_64")
 pkgdesc="Miscellaneous OpenFX plugins"
@@ -11,6 +11,7 @@ license=("GPL2")
 makedepends=("git")
 depends=("libgl")
 depends_x86_64=("gcc-libs-multilib")
+optdepends=("openfx-gmic-bin" "natron-plugins")
 source=("$pkgname::git+https://github.com/devernay/openfx-misc.git#tag=Natron-$pkgver"
         "git+https://github.com/devernay/openfx.git"
         "git+https://github.com/devernay/openfx-supportext.git")
