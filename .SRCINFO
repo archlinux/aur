@@ -8,8 +8,11 @@ pkgbase = pkgsync
 	backup = etc/pkgsync/pkg_blacklist.list
 	backup = etc/pkgsync/pkg_exclude.list
 	backup = etc/default/pkgsync
-	source = https://codeload.github.com/moparisthebest/pkgsync/tar.gz/v1.01
+	source = https://github.com/moparisthebest/pkgsync/archive/v1.01.tar.gz
+	source = https://github.com/moparisthebest/pkgsync/releases/download/v1.01/v1.01.tar.gz.asc
+	validpgpkeys = 81F1C22DD41109D4A9C0A7B5B070F8D97D1A0BBA
 	sha256sums = 0d04af19ed5ffad2814b2845849a46ce2d606b4ef8e93e0dffb3b0f0ed8e760d
+	sha256sums = SKIP
 
 pkgname = pkgsync
 
