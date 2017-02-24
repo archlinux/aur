@@ -4,7 +4,7 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=rider-eap
-_buildver=171.3085.362
+_buildver=171.3085.726
 _pkgver=1.0
 _eap="True"
 pkgver="${_pkgver}.${_buildver}"
