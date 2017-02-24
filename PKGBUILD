@@ -1,6 +1,6 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=uenv-git
-pkgver=0.8.4.r0.g0b471f3
+pkgver=0.8.4.r1.g6aa1a65
 _basename=uenv
 pkgrel=1
 pkgdesc="Useful scripts, systemd timer/service units and their configuration"
