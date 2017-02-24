@@ -1,7 +1,7 @@
 pkgbase = openfx-arena
 	pkgdesc = Extra OpenFX plugins for Natron
 	pkgver = 2.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/olear/openfx-arena
 	arch = i686
 	arch = x86_64

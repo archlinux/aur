@@ -3,7 +3,7 @@
 
 pkgname=openfx-arena
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 arch=("i686" "x86_64")
 pkgdesc="Extra OpenFX plugins for Natron"
 url="https://github.com/olear/openfx-arena"
