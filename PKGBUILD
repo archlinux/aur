@@ -1,4 +1,5 @@
 # Maintainer: François Garillot <francois[@]garillot.net>
+# Contributor: rpodgomy
 
 pkgname=drip-git
 pkgver=20151019
@@ -12,33 +13,16 @@ conflicts=('drip')
 depends=('java-runtime')
 makedepends=('git')
 options=(!libtool)
-
-_gitroot="git://github.com/ninjudd/drip.git"
-_gitname="drip"
+source=(${pkgname%-git}::git+https://github.com/ninjudd/drip.git)
+md5sums=('SKIP')
 
 build() {
-        cd $srcdir
-        msg "Connecting to the GIT server...."
-
-        if [[ -d $srcdir/$_gitname ]] ; then
-                cd $_gitname
-                git pull origin
-                msg "The local files are updated."
-        else
-                git clone $_gitroot $_gitname
-        fi
-
-        msg "GIT checkout done"
-        msg "Starting make..."
-        rm -rf $srcdir/$pkgname-build
-        git clone $srcdir/$_gitname $srcdir/$pkgname-build
-        cd $srcdir/$pkgname-build
+        cd ${pkgname%-git}
         make all
 }
 
 package() {
-        cd $srcdir/$pkgname-build
+        cd ${pkgname%-git}
         install -dm755 "$pkgdir/usr/bin"
-        install -Dm755 "$srcdir/$pkgname-build/bin/drip" "$srcdir/$pkgname-build/bin/drip_daemon" "$srcdir/$pkgname-build/bin/drip_proxy" "$pkgdir/usr/bin"
-        rm -rf $srcdir/$pkgname-build
+        install -Dm755 "bin/drip" "bin/drip_daemon" "bin/drip_proxy" "$pkgdir/usr/bin"
 }
