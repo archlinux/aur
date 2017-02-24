@@ -1,7 +1,7 @@
 # Maintainer: naelstrof <naelstrof@gmail.com>
 pkgname=maim-git
 _realname=maim
-pkgver=v3.4.47.r0.gafc2724
+pkgver=v4.4.50.r0.g129bf5b
 pkgrel=1
 provides=( 'maim' )
 conflicts=( 'maim' )
@@ -9,9 +9,8 @@ pkgdesc="maim (make image) makes an image out of the given area on the given X s
 arch=( 'i686' 'x86_64' )
 url="https://github.com/naelstrof/$_realname"
 license=( 'GPL3' )
-depends=( 'bzip2' 'freetype2' 'glibc' 'imlib2' 'libx11' 'libxext' 'zlib' )
-optdepends=( 'slop-git: for selection support' )
-makedepends=( 'make' 'gcc' 'cmake' )
+depends=( 'slop-git' 'bzip2' 'freetype2' 'glibc' 'libpng' 'libjpeg-turbo' 'libx11' 'libxext' 'zlib' )
+makedepends=( 'cmake' 'glm' )
 source=( "maim::git+https://github.com/naelstrof/maim.git" )
 md5sums=('SKIP')
 
@@ -22,12 +21,11 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_realname"
-    cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" ./
+    cmake -DCMAKE_INSTALL_PREFIX=/usr ./
     make
 }
 
 package() {
     cd "$srcdir/$_realname"
-
-    make install
+    make DESTDIR="$pkgdir" install
 }
