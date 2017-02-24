@@ -1,7 +1,7 @@
 # Maintainer: <me at adambac dot com>
 
 pkgname='webhttrack-git'
-pkgver='3.48.21.51.gdb336d2'
+pkgver='3.48.21.55.g68efe9e'
 pkgrel=1
 pkgdesc='HTTrack is a free (GPL, libre/free software) and easy-to-use offline browser utility.'
 license=(GPL)
