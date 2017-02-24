@@ -1,7 +1,7 @@
 # Maintainer: Jim Turner <jturner314 @t gmail dot com>
 
 pkgname=thinkpad-scripts
-pkgver=4.8.1
+pkgver=4.9.0
 pkgrel=1
 pkgdesc="Scripts for ThinkPad X220 & X230 Tablet rotation, docking, etc."
 arch=('any')
@@ -13,13 +13,14 @@ makedepends=('python-sphinx')
 optdepends=('glib2: for rotating subpixel anti-aliasing'
             'kvkbd: for virtual keyboard'
             'libpulse: for volume control when docking'
+            'lsusb: for docking detection with a USB device'
             'networkmanager: for managing connections when docking'
             'xf86-input-wacom: for Wacom device rotation'
             'xorg-xbacklight: for backlight control when docking')
 conflicts=('think-rotate')
 install="$pkgname.install"
 source=("https://github.com/martin-ueding/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('272ba5f9217d16b7bd9e3dc75bdbebd374093e45497d076b969f05415ca7b5d4')
+sha256sums=('7328650562c7618aa3ea0d11c54d6b1d9a4595e7c17bf9bdcd880e54a70e9411')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
