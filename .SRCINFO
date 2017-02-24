@@ -1,7 +1,7 @@
 pkgbase = php-dio
 	pkgdesc = POSIX direct I/O functions for PHP
-	pkgver = 0.0.7
-	pkgrel = 2
+	pkgver = 0.0.9
+	pkgrel = 1
 	url = http://pecl.php.net/package/dio
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = php-dio
 	makedepends = autoconf
 	depends = php
 	depends = php-pear
-	source = http://pecl.php.net/get/dio-0.0.7.tgz
-	md5sums = a1a4df428a17dbe1ab4277b492dfa052
+	source = http://pecl.php.net/get/dio-0.0.9.tgz
+	sha512sums = 7bca34a50a1c6cc1f28f47e62392d5a71bccf2783e12f510cc0101949c68d753650e19dbf9ef8172ba23c02680d30959791738353d89762f806ac7ae72a20058
 
 pkgname = php-dio
 
