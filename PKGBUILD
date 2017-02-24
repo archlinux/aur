@@ -1,7 +1,7 @@
 # Maintainer: t3kk3n <corp [at] hush [dot] ai>
 
 pkgname=fatx
-pkgver=1.13
+pkgver=1.14
 pkgrel=1
 pkgdesc="XBox filesystem support for linux"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 provides=($pkgname)
 depends=('fuse' 'boost' 'boost-libs')
 source=("http://downloads.sourceforge.net/project/fatx/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('2a09a84d7d074412a68c73cb2b6a89ebe24451378e99cac97420aff6c7329a8e')
+sha256sums=('7fc2a877267218eaabc4a16318371774e85dfdc2c8d2962ce984c87146e81a4e')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
