@@ -5,7 +5,7 @@
 
 pkgname=dropbox-gtk2
 pkgver=2.10.52
-pkgrel=2
+pkgrel=3
 pkgdesc='A free service that lets you bring your photos, docs, and videos anywhere and share them easily (GTK2 version)'
 arch=('i686' 'x86_64')
 url='https://www.dropbox.com/'
@@ -15,29 +15,26 @@ provides=('dropbox')
 conflicts=('dropbox' 'dropbox-experimental')
 options=('!strip' '!upx')
 
-source=(
-  'dropbox.png'
-  'dropbox.desktop'
-  'dropbox.service'
-  'dropbox@.service'
-  'TERMS'
+source=('dropbox.png'
+        'dropbox.desktop'
+        'dropbox.service'
+        'dropbox@.service'
+        'TERMS'
 )
-
-sha1sums=(
-  '64073af76a2bbc7dba4a6886b82af0bb3e71a2a0'
-  'd5ad720762b9052a4fd6af839038318b37d5fd39'
-  'fde4a0eb9738a78f74b033dc30d15128563c1311'
-  '59872dcac4cd48a65060df11a86b7d776548fe2a'
-  '46ba3146324c0ca0209ac76eaaddd74d9fec94ac'
+sha256sums=('e7d245f5d1a3d5322614b61400ae2913a8caef44bc86717ff7d8197a15dd7f01'
+            'dd8fdb362c0bba8d789010594f021671ff00e535fc75e13da855f43bc7a4b3aa'
+            'f2b873c420d8250d2d48c537ad0d041fb83e900bcad68541fa63321f81f8811b'
+            '09ebf566b31a4d314ddabc3cdee57b83d544061141ee75101f96be268b1d1b17'
+            '17769784393bac9ad056bdb6830e633b4b1f1b3e0ebe0d96cef4cea8f92bb939'
 )
 
 _arch='x86_64'
 
 if [ "${CARCH}" == 'i686' ]; then
   _arch='x86'
-  sha1sums+=('8a600f3a1171d00ce15cbbf5ab1c35a2a8bd18eb')
+  sha256sums+=('a9d65a745cf8651f6dd3557f002d888ed5309d1b1d6d44be7af88fb2ae9ea5e6')
 else
-  sha1sums+=('0811b6f344e308a68b3c36421dc27f5db8948e15')
+  sha256sums+=('e61ef14cdf8bd4801ff2794c1178b2cac5c097ebffb3b24d061738006e76c23a')
 fi
 
 source+=("https://dl.dropboxusercontent.com/u/17/dropbox-lnx.${_arch}-${pkgver}.tar.gz")
