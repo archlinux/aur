@@ -2,7 +2,7 @@
 # Contributor: skydrome <skydrome@i2pmail.org>
 
 pkgname='rutorrent-git'
-pkgver=r1787.b727523
+pkgver=r1880.0811db4b
 pkgrel=1
 pkgdesc="Web frontend to rTorrent in PHP designed to resemble uTorrent"
 url="https://github.com/Novik/ruTorrent"
@@ -41,7 +41,7 @@ source=("plugins.ini"
         "extra::git+https://github.com/nelu/rutorrent-thirdparty-plugins.git")
 
 md5sums=('a3efa833b362ac7f3ff69ddaa720de81'
-         '020b0c3fc1220d490992473a75485add'
+         '3e0002fe9ce69f43513152c515944559'
          'SKIP'
          'SKIP'
          'SKIP')
