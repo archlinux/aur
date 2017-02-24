@@ -1,0 +1,23 @@
+server:
+  use-syslog: yes
+  username: "unbound"
+  directory: "/etc/unbound"
+  trust-anchor-file: trusted-key.key
+
+dnstap:
+  dnstap-enabled: no
+  dnstap-socket-path: "/var/run/unbound/dnstap.sock"
+  dnstap-send-identity: yes
+  dnstap-send-version: yes
+  dnstap-log-client-query-messages: yes
+  dnstap-log-client-response-messages: yes
+  dnstap-log-resolver-query-messages: yes
+  dnstap-log-resolver-response-messages: yes
+  dnstap-log-auth-query-messages: yes
+  dnstap-log-auth-response-messages: yes
+  dnstap-log-forwarder-query-messages: yes
+  dnstap-log-forwarder-response-messages: yes
+  dnstap-log-stub-query-messages: yes
+  dnstap-log-stub-response-messages: yes
+  dnstap-log-tool-query-messages: yes
+  dnstap-log-tool-response-messages: yes
