@@ -1,10 +1,11 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=check_pacman-git
-pkgver=1.1.0.r0.g5f20592
+pkgver=1.1.1.r1.g3a5db3e
 pkgrel=1
 pkgdesc="Nagios monitoring plugin for checking for available Pacman package updates"
 arch=('i686' 'x86_64')
+depends=('gmp' 'libffi')
 makedepends=('git' 'stack' 'ghc')
 url="https://github.com/dmp1ce/check_pacman"
 license=('custom:Unlicense')
@@ -24,8 +25,9 @@ package() {
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/check_pacman"
 
   msg2 'Installing...'
-  mkdir -p "$pkgdir/usr/bin"
-  stack --local-bin-path "$pkgdir/usr/bin" install
+  mkdir -p "$pkgdir/usr/lib/monitoring-plugins/"
+  mkdir -p "$srcdir/stack-home"
+  HOME="$srcdir/stack-home" stack --system-ghc --local-bin-path "$pkgdir/usr/lib/monitoring-plugins" install
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
