@@ -2,7 +2,7 @@
 
 pkgname=gnome-system-monitor-gtk2
 pkgver=2.28.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A system monitor for GNOME (GTK2 version)"
 arch=('i686' 'x86_64')
 url='https://help.gnome.org/users/gnome-system-monitor/'
@@ -13,7 +13,7 @@ provides=('gnome-system-monitor')
 conflicts=('gnome-system-monitor')
 install=gnome-system-monitor.install
 source=("ftp://ftp.gnome.org/pub/gnome/sources/${pkgname%-*}/${pkgver%.*}/${pkgname%-*}-${pkgver}.tar.bz2")
-md5sums=('3f0bca9b0ebc7a365466851cd580d167')
+sha256sums=('b628edfd39e3a6b374ce133f367d3568475eb4e981a367f4f9d62a9784e5ae59')
 
 build() {
   cd "${srcdir}/${pkgname%-*}-${pkgver}"
