@@ -10,8 +10,11 @@ pkgbase = sendxmpp-py
 	depends = python
 	provides = sendxmpp
 	conflicts = sendxmpp
-	source = https://codeload.github.com/moparisthebest/sendxmpp-py/tar.gz/v1.0
+	source = https://github.com/moparisthebest/sendxmpp-py/archive/v1.0.tar.gz
+	source = https://github.com/moparisthebest/sendxmpp-py/releases/download/v1.0/v1.0.tar.gz.asc
+	validpgpkeys = 81F1C22DD41109D4A9C0A7B5B070F8D97D1A0BBA
 	sha256sums = 50fa7fdb38291aa2d49e330f4fb627ae1bb671572fbc1682b8b82593d34c45e2
+	sha256sums = SKIP
 
 pkgname = sendxmpp-py
 
