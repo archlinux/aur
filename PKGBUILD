@@ -4,14 +4,14 @@
 pkgname=fatelf-utils
 _pkgname=fatelf
 pkgver=111.5e7e594b70fa
-pkgrel=1
+pkgrel=2
 pkgdesc='Utils for FatELF - Universal Binaries for Linux'
 arch=('i686' 'x86_64')
 url='https://www.icculus.org/fatelf/'
 license=('GPL2')
 makedepends=('cmake')
 source=('hg+https://hg.icculus.org/icculus/fatelf')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
