@@ -2,14 +2,14 @@
 
 pkgname=otf-vegur
 pkgver=0.701
-pkgrel=2
+pkgrel=3
 pkgdesc='Humanist sans-serif font used for the LibreOffice logo'
 arch=('i686' 'x86_64')
 license=('custom:CC0')
 url='http://dotcolon.net/font/?id=vegur'
 depends=('fontconfig' 'xorg-font-utils')
 source=('http://dotcolon.net/DL/font/vegur.zip')
-md5sums=('230bd8b9e28aeadb1113cdd508b69c2b')
+sha256sums=('cfb06f0860aae4a6ed0ffaba4ab749a7c09c7f482e68a284a6f832c8382669ed')
 
 package() {
 	install -d $pkgdir/usr/share/fonts/OTF/
