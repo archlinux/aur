@@ -3,15 +3,15 @@
 
 pkgname=maitreya
 _pkgname=maitreya8
-pkgver=8.0.alpha1
-pkgrel=2
+pkgver=8.0.beta2
+pkgrel=1
 pkgdesc='A free software for Vedic and western astrology'
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.saravali.de/maitreya.html"
 depends=('wxgtk')
-source=("https://github.com/martin-pe/maitreya8/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('306e55bd915ddd6591908653bc661901')
+source=("https://github.com/martin-pe/maitreya8/releases/download/v${pkgver}a/${_pkgname}-${pkgver}.tar.bz2")
+md5sums=('a09087f7819f27bd800513a49f369243')
 
 build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
