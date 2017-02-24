@@ -1,11 +1,12 @@
 pkgbase = sw4stm32
 	pkgdesc = SystemWorkbench for STM32
 	pkgver = v1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openstm32.org/System+Workbench+for+STM32
 	arch = x86_64
 	license = unknown
-	depends = desktop-file-utils
+	depends = java-environment
+	depends = lib32-ncurses5-compat-libs
 	noextract = install_sw4stm32_linux_64bits-v1.8.run
 	source = http://www.ac6-tools.com/downloads/SW4STM32/install_sw4stm32_linux_64bits-v1.8.run
 	source = sw4stm32
