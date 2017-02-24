@@ -1,3 +1,5 @@
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=guile-reader
 _gitname=guile-reader
 pkgver=0.6.1.5.ga4d3e18
@@ -25,12 +27,13 @@ prepare() {
 build() {
   cd $_gitname
   # avoid autoreconf failure
-  mkdir -p build-aux
+  [[ -d  build-aux ]] || mkdir -p build-aux
   touch build-aux/config.rpath
   # recreate configure and make files
   autoreconf -i --force --verbose
   # configure
-  CFLAGS= CPPFLAGS= LDFLAGS= GUILE_SITE=/usr/share/guile/site ./configure --prefix=/usr --with-guilemoduledir=/usr/share/guile/site
+  CFLAGS= CPPFLAGS= LDFLAGS= GUILE_SITE=/usr/share/guile/site ./configure \
+	--prefix=/usr --with-guilemoduledir=/usr/share/guile/site
   # compile
   make
 }
