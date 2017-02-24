@@ -6,7 +6,7 @@
 # Maintainer: Matěj Týč <matej.tyc@gmail.com>
 pkgname=argbash
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Bash argument parsing code generator"
 arch=(any)
