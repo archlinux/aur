@@ -2,7 +2,7 @@
 
 pkgname="sndio"
 pkgver="20161106"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Small audio and MIDI framework part of the OpenBSD project"
 arch=("i686" "x86_64" "armv6h" "armv7h")
 url="http://www.sndio.org/"
