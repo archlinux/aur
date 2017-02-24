@@ -1,10 +1,10 @@
 # Full 64 bit ET:Legacy clients can only connect to ET:Legacy servers running mods providing a 64 bit version.
 # If you want to connect to existing 32 bit only mods, install the cross-compiled "etlegacy32-git" package instead.
-# Other optional deps: 'openal' 'ncurses' 'jansson'
+# Other optional deps: 'ncurses' 'jansson'
 
 pkgbase=etlegacy-git
 pkgname=('etlegacy-git' 'etlegacy-mod-git')
-pkgver=2.75.73.gf585645
+pkgver=2.75.529.gefdfbdd1
 pkgrel=1
 arch=('x86_64')
 url="http://etlegacy.com/"
@@ -22,11 +22,10 @@ pkgver() {
 
 prepare() {
     # cleanup
+    [[ -e "$HOME/.etlegacy/legacy" ]] && cd $HOME/.etlegacy/legacy && rm -f *.so && rm -f *.dat
     cd "$srcdir/$_gitname"
     git clean -df
     git clean -dfX
-
-    git submodule update --init --recursive
 }
 
 build() {
@@ -48,46 +47,8 @@ build() {
     )
     # options
     cmakeopts+=(
-        "-D BUILD_SERVER=1"
-        "-D BUILD_CLIENT=1"
-        "-D BUILD_MOD=1"
-    )
-    # packing
-    cmakeopts+=(
-        "-D BUILD_MOD_PK3=1"
-        "-D BUILD_PAK3_PK3=1"
-    )
-    # bundled libs
-    cmakeopts+=(
         "-D BUNDLED_LIBS=0"
-    )
-    # features
-    cmakeopts+=(
-        "-D FEATURE_CURL=1"
-        "-D FEATURE_OGG_VORBIS=1"
-        "-D FEATURE_THEORA=1"
-        "-D FEATURE_OPENAL=1"
-        "-D FEATURE_FREETYPE=1"
-        "-D FEATURE_TRACKER=0"
-        "-D FEATURE_LUA=1"
-        "-D FEATURE_MULTIVIEW=0"
-        "-D FEATURE_ANTICHEAT=1"
-        "-D FEATURE_CURSES=0"
         "-D FEATURE_AUTOUPDATE=0"
-        "-D FEATURE_RENDERER2=0"
-        "-D FEATURE_RENDERER_GLES=0"
-        "-D FEATURE_IPV6=0"
-        "-D FEATURE_IRC_CLIENT=0"
-        "-D RENDERER_DYNAMIC=0"
-        "-D FEATURE_WINDOWS_CONSOLE=1"
-        "-D FEATURE_GETTEXT=1"
-        "-D FEATURE_JANSSON=0"
-        "-D FEATURE_SERVERMDX=1"
-        "-D FEATURE_LIVEAUTH=1"
-        "-D FEATURE_DBMS=1"
-    )
-    # omnibot
-    cmakeopts+=(
         "-D FEATURE_OMNIBOT=1"
         "-D INSTALL_OMNIBOT=0"
     )
