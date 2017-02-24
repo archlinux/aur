@@ -1,6 +1,6 @@
 pkgbase = cerebro-git
 	pkgdesc = Open-source productivity booster with a brain.
-	pkgver = 0.2.3.r11.g58cd0a7
+	pkgver = 0.2.6.r16.g5b49175
 	pkgrel = 1
 	url = https://cerebroapp.com/
 	arch = x86_64
