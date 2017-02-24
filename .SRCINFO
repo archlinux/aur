@@ -1,13 +1,16 @@
 pkgbase = pylon
 	pkgdesc = Basler camera Software suite
 	pkgver = 5.0.5.9000.rc8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.baslerweb.com/en/products/software
 	arch = x86_64
 	license = custom
+	makedepends = patchelf
 	depends = qt4
 	source = http://s.baslerweb.com/media/documents/pylon-5.0.5.9000--RC8-x86_64.tar.gz
+	source = 69-basler-cameras.rules
 	sha512sums = 9554890441a371142d034392df22b6e1daea835fc677b39a0119247dc8245fc0fddd3398a851700bc2179659963d49ecb9955013fa92968f1a22f4144e0edfad
+	sha512sums = a3348a3fb03228b031be9ff805663fc8ee164ff69869a88f466689645135757a6cb6b823d1a2a01f4da3bb0f06ec2555d90d3d1e1cdcdc275f6604940f24d500
 
 pkgname = pylon
 

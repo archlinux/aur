@@ -1,0 +1,2 @@
+# Enable user access to all basler cameras
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="2676", TAG+="uaccess"
