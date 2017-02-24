@@ -1,0 +1,15 @@
+pkgbase = freetts
+	pkgdesc = Sun's rewrite of filte for java
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = http://freetts.sourceforge.net/
+	arch = any
+	license = custom
+	makedepends = junit
+	makedepends = apache-ant
+	makedepends = java-runtime-common
+	source = http://http.debian.net/debian/pool/main/f/freetts/freetts_1.2.2.orig.tar.gz
+	md5sums = 89c9a6b15dcd53d1e62469f95d9fc93f
+
+pkgname = freetts
+
