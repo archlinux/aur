@@ -8,6 +8,7 @@ pkgbase = umr-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = cmake
 	provides = umr
 	conflicts = umr
 	source = git://anongit.freedesktop.org/amd/umr
