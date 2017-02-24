@@ -1,23 +1,21 @@
 # Maintainer: 
 
 pkgname=whdd
-pkgver=2.2
+pkgver=3.0
 pkgrel=1
 pkgdesc="Diagnostic and recovery tool for block devices (near to replace MHDD for Linux)"
 arch=('i686' 'x86_64')
-url="http://whdd.org"
+url="https://github.com/whdd/whdd"
 license=('GPL')
 depends=('ncurses' 'smartmontools' 'dialog')
 makedepends=('cmake')
-source=(http://github.com/krieger-od/${pkgname}/tarball/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('4c121c35f242e7770bda12b46dc47192')
+source=(https://github.com/whdd/whdd/archive/${pkgver}.tar.gz)
+md5sums=('f8a52f3be562d8210c2f33ad098b7b31')
 
 build() {
-  mv krieger-od-${pkgname}-* ${pkgname}-${pkgver}
   cd ${pkgname}-${pkgver}
 
-
-  cmake .
+  # cmake .
   make
 }
 
@@ -26,5 +24,6 @@ package() {
 
   # make install DESTDIR="${pkgdir}"/usr/bin/
   install -D -m 755 "${pkgname}" "${pkgdir}"/usr/bin/"${pkgname}"
-
 }
+
+
