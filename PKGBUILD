@@ -1,7 +1,7 @@
 # Maintainer: Sergio de la Cruz <sergiodlc+arch@gmail.com>
 
 pkgname=cmarked
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A multi platform CommonMark (Markdown) editor"
 arch=('any')
