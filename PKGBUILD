@@ -1,14 +1,14 @@
 # Maintainer: naelstrof <naelstrof@gmail.com>
 pkgname=slop-git
 _realname=slop
-pkgver=v4.3.20.r0.ga0356fb
+pkgver=v5.3.27.r0.g38d4f6c
 pkgrel=1
 conflicts=( 'slop' )
 pkgdesc="slop (Select Operation) is an application that queries for a selection from the user and prints the region to stdout."
 arch=( 'i686' 'x86_64' )
 url="https://github.com/naelstrof/$_realname"
 license=( 'GPL3' )
-depends=( 'libxext' 'libx11' 'imlib2' 'mesa' 'glew' 'libxrender' )
+depends=( 'libxext' 'libx11' 'mesa' 'libxrender' )
 makedepends=( 'make' 'cmake' 'glm' )
 source=( "slop::git+https://github.com/naelstrof/slop.git" )
 md5sums=('SKIP')
@@ -20,12 +20,11 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_realname"
-    cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -DINSTALL_PREFIX="/usr" -DCMAKE_OPENGL_SUPPORT=true ./
+    cmake -DCMAKE_INSTALL_PREFIX=/usr ./
     make
 }
 
 package() {
     cd "$srcdir/$_realname"
-
-    make install
+    make DESTDIR="$pkgdir" install
 }
