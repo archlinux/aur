@@ -1,6 +1,6 @@
 pkgbase = cmarked
 	pkgdesc = A multi platform CommonMark (Markdown) editor
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/sergiodlc/cmarked
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = cmarked
 	makedepends = python-setuptools
 	depends = python-pyside
 	depends = cmark
-	source = cmarked::git+https://github.com/sergiodlc/cmarked.git#tag=0.1.0
+	source = cmarked::git+https://github.com/sergiodlc/cmarked.git#tag=v0.2.0
 	sha256sums = SKIP
 
 pkgname = cmarked
