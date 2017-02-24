@@ -38,6 +38,7 @@ static const Rule rules[] = {
 	{ "Remmina",            NULL,       NULL,                        1 << 1,       True,        True,         0 },
 	{ "calibre-gui",        NULL,       NULL,                        1 << 1,       True,        True,         0 },
 	{ "VirtualBox",         NULL,       NULL,                        1 << 1,       True,        True,         0 },
+	{ "xfreerdp",           NULL,       NULL,                        1 << 2,       True,        True,         0 },
 	{ "LibreOffice",        NULL,       NULL,                        1 << 3,       False,       False,        0 },
 	{ "Abiword",            NULL,       NULL,                        1 << 3,       False,       False,        0 },
 	{ "Gnumeric",           NULL,       NULL,                        1 << 3,       False,       False,        0 },
