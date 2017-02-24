@@ -4,7 +4,7 @@
 _pkgname=setBfree
 pkgname=${_pkgname,,}
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A DSP tonewheel organ emulator"
 arch=('i686' 'x86_64')
 url="http://setbfree.org/"
@@ -14,18 +14,19 @@ makedepends=('lv2')
 conflicts=("${pkgname}-git")
 source=("$pkgname::git+https://github.com/pantherb/${_pkgname}#tag=v${pkgver}")
 sha256sums=('SKIP')
+_font=$(fc-list "Bitstream Vera Sans:style=Bold")
+font_file=${_font%%:*}
 
 build() {
   cd $pkgname
-  make PREFIX=/usr ENABLE_ALSA=yes
+  make ENABLE_ALSA=yes FONTFILE=${font_file} PREFIX=/usr 
 }
 
 package() {
   cd $pkgname
 
-  _font=$(fc-list "Bitstream Vera Sans:style=Bold")
-  make install ENABLE_ALSA=yes PREFIX=/usr DESTDIR=${pkgdir} \
-    FONTFILE=${_font%%:*}
+  make install ENABLE_ALSA=yes FONTFILE=${font_file} PREFIX=/usr \
+    DESTDIR=${pkgdir}
 
   # desktop files
   install -Dm644 -t ${pkgdir}/usr/share/applications \
