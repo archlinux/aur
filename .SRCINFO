@@ -1,6 +1,6 @@
 pkgbase = fastlane
 	pkgdesc = The easiest way to automate beta deployments and releases for your iOS and Android apps
-	pkgver = 2.14.2
+	pkgver = 2.18.3
 	pkgrel = 1
 	url = https://fastlane.tools
 	arch = any
@@ -47,6 +47,8 @@ pkgbase = fastlane
 	depends = ruby-terminal-notifier>=1.6.2
 	depends = ruby-terminal-table<2
 	depends = ruby-terminal-table>=1.4.5
+	depends = ruby-tty-screen>=0.5
+	depends = ruby-tty-screen<0.6
 	depends = ruby-word_wrap<1.1
 	depends = ruby-word_wrap>=1
 	depends = ruby-xcodeproj<2
@@ -55,10 +57,10 @@ pkgbase = fastlane
 	depends = ruby-xcpretty>=0.2.4
 	depends = ruby-xcpretty-travis-formatter>=0.0.3
 	depends = ruby-domain_name
-	noextract = fastlane-2.14.2.gem
+	noextract = fastlane-2.18.3.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fastlane-2.14.2.gem
-	sha1sums = 1e8af5a98e0a0373251753eb6976eba1f71210f3
+	source = https://rubygems.org/downloads/fastlane-2.18.3.gem
+	sha1sums = 8d2b15c697634bfae692a17128c3fc7277352609
 
 pkgname = fastlane
 
