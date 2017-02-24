@@ -4,25 +4,30 @@
 
 pkgbase=('monero')
 pkgname=('monero' 'libmonero-wallet')
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Monero: the secure, private, untraceable currency - release version (includes deaemon, wallet and miner)"
 license=('custom:Cryptonote')
 arch=('x86_64' 'i686' 'armv7h')
 url="https://getmonero.org/"
 depends=('boost-libs>=1.58' 'unbound>=1.4.16' 'miniupnpc>=1.6' 'libunwind' 'openssl')
-makedepends=('git' 'cmake' 'boost') #'gtest'  # TODO(anonimal): Uncomment when tests are fixed
+makedepends=('git' 'cmake' 'boost' 'gtest')
 provides=('monero' 'libmonero-wallet')
 conflicts=('bitmonero-git' 'libmonero-wallet-git')
 
-# TODO(anonimal): Uncomment when tests are fixed
+# Uncomment if tests are broken/problematic upstream.
+# NOTE:
+#   Our latest issue appears makepkg related:
+#     "file not found "tests/unit_tests/../../../../tests/data/wallet_9svHk1.keys"
+#   As noted in #monero-dev:
+#     2017-02-24 anonimal        Not to defend Arch or this strange makepkg issue, but for a unit-test like that, IMHO I think the stream should be decoupled from file handling so that the unit-test can process the stream directly. Then, wallet*.keys can be put into hex form within the unit file.
 BUILDENV+=('!check')
 
 source=("https://github.com/monero-project/monero/archive/v${pkgver}.tar.gz"
         "monerod.service"
         "monerod.conf")
 
-sha256sums+=('7fec47217c5515d5fe943dc04854cd3157f09da64e98d3ccdf3c19c7da5cf8d1'
+sha256sums+=('6faa4ab54a01a24b91ccaa6a98dc0536e6b14962472ea7b881af395015b76aaa'
          '0b66160a5448dedd8e84c38ba2243187217b214b1552f504b05de120b671f121'
          '829445fe9acc00681f94f7b9ca6ce39713e377970b0a3d6f88c37991e1aa61b2')
 
@@ -39,7 +44,7 @@ build() {
   fi
   CMAKE_FLAGS+=" -DCMAKE_BUILD_TYPE=$_build_type "
   CMAKE_FLAGS+=" -DCMAKE_INSTALL_PREFIX=/usr "
-  #CMAKE_FLAGS+=" -DBUILD_TESTS=ON "  # TODO(anonimal): Uncomment when tests are fixed
+  CMAKE_FLAGS+=" -DBUILD_TESTS=ON "
   CMAKE_FLAGS+=" -DBUILD_GUI_DEPS=ON "
   CMAKE_FLAGS+=" -Wno-dev " # silence warnings for devs
   CMAKE_FLAGS+=" -DCMAKE_LINKER=/usr/bin/ld.gold " # #974 ld segfault on ARM
@@ -76,10 +81,11 @@ package_monero() {
   # Uncomment for a debug build
   # options=(!strip debug)
 
-  install -Dm755 "${srcdir}/${_monero}/build/bin/monerod" "${pkgdir}/usr/bin/monerod"
-  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-wallet-cli" "${pkgdir}/usr/bin/monero-wallet-cli"
-  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-import" "${pkgdir}/usr/bin/monero-blockchain-import"
   install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-export" "${pkgdir}/usr/bin/monero-blockchain-export"
+  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-blockchain-import" "${pkgdir}/usr/bin/monero-blockchain-import"
+  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-utils-deserialize" "${pkgdir}/usr/bin/monero-utils-deserialize"
+  install -Dm755 "${srcdir}/${_monero}/build/bin/monero-wallet-cli" "${pkgdir}/usr/bin/monero-wallet-cli"
+  install -Dm755 "${srcdir}/${_monero}/build/bin/monerod" "${pkgdir}/usr/bin/monerod"
 
   install -Dm644 "${srcdir}/${_monero}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
