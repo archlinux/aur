@@ -2,7 +2,7 @@
 
 pkgname=thinkpad-scripts
 pkgver=4.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scripts for ThinkPad X220 & X230 Tablet rotation, docking, etc."
 arch=('any')
 url="https://thinkpad-scripts.readthedocs.org/en/latest/"
@@ -13,7 +13,7 @@ makedepends=('python-sphinx')
 optdepends=('glib2: for rotating subpixel anti-aliasing'
             'kvkbd: for virtual keyboard'
             'libpulse: for volume control when docking'
-            'lsusb: for docking detection with a USB device'
+            'usbutils: for docking detection with a USB device'
             'networkmanager: for managing connections when docking'
             'xf86-input-wacom: for Wacom device rotation'
             'xorg-xbacklight: for backlight control when docking')

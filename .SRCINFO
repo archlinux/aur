@@ -1,7 +1,7 @@
 pkgbase = thinkpad-scripts
 	pkgdesc = Scripts for ThinkPad X220 & X230 Tablet rotation, docking, etc.
 	pkgver = 4.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://thinkpad-scripts.readthedocs.org/en/latest/
 	install = thinkpad-scripts.install
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = thinkpad-scripts
 	optdepends = glib2: for rotating subpixel anti-aliasing
 	optdepends = kvkbd: for virtual keyboard
 	optdepends = libpulse: for volume control when docking
-	optdepends = lsusb: for docking detection with a USB device
+	optdepends = usbutils: for docking detection with a USB device
 	optdepends = networkmanager: for managing connections when docking
 	optdepends = xf86-input-wacom: for Wacom device rotation
 	optdepends = xorg-xbacklight: for backlight control when docking
