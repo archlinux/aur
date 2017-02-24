@@ -9,7 +9,7 @@ url="https://community.kde.org/KDE_PIM"
 license=(LGPL)
 depends=(kmime)
 makedepends=(extra-cmake-modules python akonadi boost)
-source=("http://download.kde.org/stable/applications/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig})
+source=("https://download.kde.org/stable/applications/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig})
 md5sums=('064588e3f889eba4019aeacffb655bdd'
          'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7) # Albert Astals Cid <aacid@kde.org>
