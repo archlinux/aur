@@ -6,9 +6,12 @@ pkgrel=1
 pkgdesc='Handle multiple encrypted root devices'
 arch=('any')
 license=('GPL3')
-url="https://github.com/moparisthebest/archlinux_encrypthook"
-source=("https://codeload.github.com/moparisthebest/archlinux_encrypthook/tar.gz/v$pkgver")
-sha256sums=('e38eed40eadfa7dadd697cbe6d06845edad35fcc37f910e5323d5b89fce5ef67')
+author='moparisthebest'
+url="https://github.com/$author/archlinux_encrypthook"
+source=("https://github.com/$author/archlinux_encrypthook/archive/v$pkgver.tar.gz" "https://github.com/$author/archlinux_encrypthook/releases/download/v$pkgver/v$pkgver.tar.gz.asc")
+validpgpkeys=('81F1C22DD41109D4A9C0A7B5B070F8D97D1A0BBA') # moparisthebest <admin AT moparisthebest.com>
+sha256sums=('e38eed40eadfa7dadd697cbe6d06845edad35fcc37f910e5323d5b89fce5ef67'
+            'SKIP')
 
 package() {
 	cd "archlinux_encrypthook-$pkgver"

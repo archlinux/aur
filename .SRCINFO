@@ -5,8 +5,11 @@ pkgbase = cryptsetup-multidisk
 	url = https://github.com/moparisthebest/archlinux_encrypthook
 	arch = any
 	license = GPL3
-	source = https://codeload.github.com/moparisthebest/archlinux_encrypthook/tar.gz/v1.0
+	source = https://github.com/moparisthebest/archlinux_encrypthook/archive/v1.0.tar.gz
+	source = https://github.com/moparisthebest/archlinux_encrypthook/releases/download/v1.0/v1.0.tar.gz.asc
+	validpgpkeys = 81F1C22DD41109D4A9C0A7B5B070F8D97D1A0BBA
 	sha256sums = e38eed40eadfa7dadd697cbe6d06845edad35fcc37f910e5323d5b89fce5ef67
+	sha256sums = SKIP
 
 pkgname = cryptsetup-multidisk
 
