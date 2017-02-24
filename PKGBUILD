@@ -2,35 +2,34 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=triceratops-lv2
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Polyphonic synthesizer LV2 plugin"
 arch=(i686 x86_64)
-url="http://deliriumdecrypted.blogspot.com/"
+url="https://sourceforge.net/projects/triceratops/"
 license=('GPL3')
 groups=('lv2-plugins')
 depends=('gtkmm' 'lv2')
 makedepends=('python2')
-source=("http://downloads.sourceforge.net/project/triceratops/$pkgname-v$pkgver.tar.gz"
-        "$pkgname-read-presets.patch")
-md5sums=('0946acd2bcab02bf8f8d6e4ea4b0e2ab'
-         '907c1d032eb888a2a69d0963720d6016')
+source=("http://downloads.sourceforge.net/project/triceratops/$pkgname-v$pkgver.tar.gz")
+noextract=("$pkgname-v$pkgver.tar.gz")
+md5sums=('cdd3e94b05247061820e17d7c3d900e4')
 
 prepare() {
-  cd $pkgname-v$pkgver
-
-  # let inner presets being discovered
-  patch -p1 -i ../${source[1]}
+    cd "$srcdir"
+    rm -rf "$pkgname-$pkgver"
+    mkdir "$pkgname-$pkgver"
+    tar -xzf "$srcdir/$pkgname-v$pkgver.tar.gz" -C "$pkgname-$pkgver"
 }
 
 build() {
-  cd $pkgname-v$pkgver
+  cd "$srcdir/$pkgname-$pkgver"
   python2 waf configure --prefix=/usr
   python2 waf
 }
 
 package() {
-  cd $pkgname-v$pkgver
+  cd "$srcdir/$pkgname-$pkgver"
   python2 waf install --destdir="$pkgdir/"
 }
 
