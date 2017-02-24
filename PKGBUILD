@@ -22,7 +22,7 @@ sha256sums=('4eabb0194240fc5d0021d0702d96fc940db8e9b18316a8305719c39a96a9de4e')
 sha384sums=('f1fb3e26559886ea9ec296411249c10c4962252d4287ebd23ff58c96e253f43316ffe73069714b71aa2269a3bef6e650')
 sha512sums=('144d5433b8fc56096c87c2a4e8e07df4f0d61e4e44c6044f8d8efab2a022a96a7b8a5d4608fa79ff635cce8f5705fdb21fcbdbaba97b4f6b5684123247af769e')
 package() {
-tar xJvf ${srcdir}/cin-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz -C ${pkgdir}/
+tar xJvf ${srcdir}/cin-${pkgver}-20170131-${arch}.pkg.tar.xz -C ${pkgdir}/
 }
 
 # vim:set ts=2 sw=2 et:
