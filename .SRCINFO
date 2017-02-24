@@ -24,7 +24,10 @@ pkgbase = puppetserver
 	backup = etc/puppetlabs/puppetserver/logback.xml
 	backup = etc/puppetlabs/puppetserver/request-logging.xml
 	source = puppetserver-2.7.2.tar.gz::http://downloads.puppetlabs.com/puppet/puppetserver-2.7.2.tar.gz
+	source = puppetserver-2.7.2.tar.gz.asc::http://downloads.puppetlabs.com/puppet/puppetserver-2.7.2.tar.gz.asc
+	validpgpkeys = 6F6B15509CF8E59E6E469F327F438280EF8D349F
 	sha512sums = 9f7586ce0b32a41ec47431ba0f8b1c2ddbcb79dc6efb220c1c6328eb747a4baf3e252c9717027f029e13df9e2dc4d2eea45977e1b1d42db4aed0690bf5c9c51c
+	sha512sums = SKIP
 
 pkgname = puppetserver
 

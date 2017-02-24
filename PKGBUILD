@@ -22,8 +22,11 @@ backup=('etc/default/puppetserver'
         'etc/puppetlabs/puppetserver/logback.xml'
         'etc/puppetlabs/puppetserver/request-logging.xml')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::http://downloads.puppetlabs.com/puppet/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('9f7586ce0b32a41ec47431ba0f8b1c2ddbcb79dc6efb220c1c6328eb747a4baf3e252c9717027f029e13df9e2dc4d2eea45977e1b1d42db4aed0690bf5c9c51c')
+source=("${pkgname}-${pkgver}.tar.gz::http://downloads.puppetlabs.com/puppet/${pkgname}-${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}.tar.gz.asc::http://downloads.puppetlabs.com/puppet/${pkgname}-${pkgver}.tar.gz.asc")
+sha512sums=('9f7586ce0b32a41ec47431ba0f8b1c2ddbcb79dc6efb220c1c6328eb747a4baf3e252c9717027f029e13df9e2dc4d2eea45977e1b1d42db4aed0690bf5c9c51c'
+            'SKIP')
+validpgpkeys=('6F6B15509CF8E59E6E469F327F438280EF8D349F')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
