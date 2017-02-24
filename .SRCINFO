@@ -1,0 +1,15 @@
+pkgbase = ultrastardx-utility
+	pkgdesc = Manage UltraStar Deluxe songs.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/daniel-j/usdx-linux-utility
+	arch = any
+	license = GPL
+	depends = zenity
+	optdepends = ultrastardx: UltraStar Deluxe
+	optdepends = imagemagick: Thumbnail generator
+	source = https://github.com/daniel-j/usdx-linux-utility/archive/v0.1.tar.gz
+	sha1sums = 9c46dc8ba9eca86bc976b69d510b98b0065eafe5
+
+pkgname = ultrastardx-utility
+
