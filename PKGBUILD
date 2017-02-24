@@ -3,7 +3,7 @@
 _pkgname="nginx"
 _uesr="nginx"
 _group="nginx"
-_sysconf_path="/etc"
+_sysconf_path="etc"
 _conf_path="${_sysconf_path}/${_pkgname}"
 _tmp_path="/var/lib/${_pkgname}"
 _pid_path="/run"
@@ -23,16 +23,16 @@ url="http://nginx.org"
 license=('custom')
 conflicts=('nginx' 'nginx-unstable' 'nginx-svn' 'nginx-devel' 'nginx-custom-dev' 'nginx-full') 
 provides=('nginx')
-#backup=("${_conf_path}/nginx.conf"
-#   "${_conf_path}/koi-win"
-# 	"${_conf_path}/koi-utf"
-#	"${_conf_path}/win-utf"
-#	"${_conf_path}/mime.types"
-#	"${_conf_path}/fastcgi.conf"
-#	"${_conf_path}/fastcgi_params"
-#	"${_conf_path}/scgi_params"
-#	"${_conf_path}/uwsgi_params"
-#	"etc/logrotate.d/nginx")
+backup=("${_conf_path}/nginx.conf"
+    "${_conf_path}/koi-win"
+    "${_conf_path}/koi-utf"
+    "${_conf_path}/win-utf"
+    "${_conf_path}/mime.types"
+    "${_conf_path}/fastcgi.conf"
+    "${_conf_path}/fastcgi_params"
+    "${_conf_path}/scgi_params"
+    "${_conf_path}/uwsgi_params"
+    "etc/logrotate.d/nginx")
 source=("nginx.conf"
 		"nginx.service"
 		"http://nginx.org/download/nginx-$pkgver.tar.gz"
@@ -43,8 +43,8 @@ build() {
     cd $_src_dir
     tar xzf ../openssl-$opensslver.tar.gz
     ./configure \
-        --prefix=${_conf_path}   \
-        --conf-path=${_conf_path}/nginx.conf \
+        --prefix=/${_conf_path}   \
+        --conf-path=/${_conf_path}/nginx.conf \
         --sbin-path=/usr/bin/${_pkgname}  \
         --pid-path=${_pid_path}/${_pkgname}.pid   \
         --lock-path=${_lock_path}/${_pkgname}.lock \
