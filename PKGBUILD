@@ -18,13 +18,14 @@ prepare() {
   cp -r virustotal-api-"${pkgver}" virustotal-api2-"${pkgver}"
 }
 
-check() {
-  cd "${srcdir}/virustotal-api-${pkgver}"
-  python setup.py check
-
-  cd "${srcdir}/virustotal-api2-${pkgver}"
-  python2 setup.py check
-}
+# currently disabled because of missing files
+#check() {
+#  cd "${srcdir}/virustotal-api-${pkgver}"
+#  python setup.py test
+#
+#  cd "${srcdir}/virustotal-api2-${pkgver}"
+#  python2 setup.py test
+#}
 
 package_python-virustotal-api() {
   depends=('python' 'python-future' 'python-requests')
