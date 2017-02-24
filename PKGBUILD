@@ -5,11 +5,12 @@ pkgrel=1
 epoch=1
 pkgdesc='MarkDown Less is a Markdown displayer'
 arch=('x86' 'x86_64')
-url='http://github.com/dopsi/mdl'
+url='https://github.com/dopsi/mdl'
 license=('MIT')
 provides=('mdl')
 conflicts=('MDL')
 depends=('boost-libs')
+makedepends=('cmake' 'boost')
 source=("http://github.com/dopsi/${pkgname}/archive/v${pkgver}.tar.gz")
 sha1sums=('SKIP')
 
