@@ -2,12 +2,12 @@
 
 pkgname=openvpn-nordvpn
 pkgver=17.2.24
-pkgrel=5
+pkgrel=6
 pkgdesc="OpenVPN configuration files and helper for nordvpn.com"
 arch=(any)
 url="http://www.nordvpn.com"
 license=('MIT')
-depends=('openvpn' 'systemd' 'openvpn-update-resolv-conf')
+depends=('openvpn' 'systemd' 'openvpn-update-resolv-conf-git')
 optdepends=('iputils: run ping and rank functions')
 makedepends=('unzip' 'coreutils')
 provides=('nordvpn')
