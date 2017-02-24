@@ -22,7 +22,7 @@ package() {
   cd ${pkgname%-git}
 
   msg2 'Installing license...'
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/check_pacman"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/check_pacman-git"
 
   msg2 'Installing...'
   mkdir -p "$pkgdir/usr/lib/monitoring-plugins/"
