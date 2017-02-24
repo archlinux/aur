@@ -1,8 +1,8 @@
 pkgbase = gstreamer0.10
 	pkgdesc = GStreamer Multimedia Framework
 	pkgver = 0.10.36
-	pkgrel = 12
-	url = https://gstreamer.freedesktop.org/
+	pkgrel = 16
+	url = https://github.com/triceratops1/gstreamer0
 	arch = i686
 	arch = x86_64
 	arch = armv7h
