@@ -1,6 +1,6 @@
 pkgbase = bpkg-git
 	pkgdesc = Lightweight bash package manager
-	pkgver = 0.2.8.21.gc1f0cd3
+	pkgver = 0.2.8.22.g0617f26
 	pkgrel = 1
 	url = https://bpkg.io
 	arch = any
