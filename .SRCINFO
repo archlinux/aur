@@ -1,0 +1,18 @@
+pkgbase = webmc
+	pkgdesc = ffmpeg client for quick webms convertions
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/nahwar/webmc
+	arch = x86_64
+	license = GPL
+	makedepends = coreutils
+	makedepends = git
+	makedepends = qt5-base
+	makedepends = gcc
+	depends = ffmpeg
+	depends = qt5-base
+	source = git+https://github.com/nahwar/webmc.git
+	md5sums = SKIP
+
+pkgname = webmc
+
