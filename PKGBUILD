@@ -3,9 +3,9 @@
 pkgname=jackcpp-git
 _basename=jackcpp
 pkgver=r23.488554c
-pkgrel=3
+pkgrel=4
 pkgdesc="Some c++ classes which wrap the Jack audio io api and lock-free ring buffer."
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://github.com/x37v/jackcpp"
 depends=('jack' 'swig' 'doxygen')
 makedepends=('git')
