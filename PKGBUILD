@@ -4,7 +4,7 @@
 
 pkgbase=linux-lts316
 _srcname=linux-3.16
-pkgver=3.16.39
+pkgver=3.16.40
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -20,7 +20,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         )
 sha256sums=('4813ad7927a7d92e5339a873ab16201b242b2748934f12cb5df9ba2cfe1d77a0'
-            'fc3d19e5b3628aac93ca662082fb2e2461288fef57f27171ab80167d72787762'
+            'e729a2e5f276a7fd94e01ba8883fc063c81fbdc57d0ef0fe272d2ae2c8c49661'
             '3bce3e9adce8ae3f826eebab75e9784ca92a914e526ae352de61c1da93aab8d3'
             '41ecf5fd8de0bc3dc4d5e20b1e0a28517dc77f96fc5ebdbf227126d85c503588'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
