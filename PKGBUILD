@@ -2,14 +2,14 @@
 
 pkgname=platformflashtoollite
 pkgver=5.5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Flashes firmware and OS images onto Intel-based devices'
 arch=('x86_64')
 url='https://01.org/android-ia/downloads/intel-platform-flash-tool-lite'
 license=('custom')
 depends=('libusb-compat' 'libudev0')
 source=("https://download.01.org/android-ia/tools/platformflashtool-lite/${pkgver}/${pkgname}_${pkgver}_linux_x86_64.deb")
-md5sums=('67e13456df4ad2b2a5fe6afc1dca660a')
+sha256sums=('276349d9b76e3437dd472d40eecf381dae863da14bb952dcebd2ecfdc2338580')
 
 package() {
   cd "${srcdir}"
