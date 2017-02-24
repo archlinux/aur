@@ -28,7 +28,7 @@ prepare() {
   cd "${srcdir}/data/fulltextrss/standard"
 
   # Fix error with translating pathname to UTF-8
-  mv p*rotin.com.txt perotin.com.txt
+  mv pérotin.com.txt perotin.com.txt
 }
 
 package() {
