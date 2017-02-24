@@ -1,7 +1,7 @@
 # Maintainer: Maxim Baz <cerebro@maximbaz.com>
 pkgname=cerebro-git
 _pkgname=cerebro
-pkgver=0.2.3.r11.g58cd0a7
+pkgver=0.2.6.r16.g5b49175
 pkgrel=1
 pkgdesc='Open-source productivity booster with a brain.'
 arch=('x86_64' 'i686')
@@ -9,7 +9,7 @@ url='https://cerebroapp.com/'
 license=('MIT')
 conflicts=('cerebro')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
-makedepends=('gendesk' 'npm')
+makedepends=('gendesk' 'yarn')
 provides=('cerebro')
 source=('git://github.com/KELiON/cerebro.git')
 sha256sums=('SKIP')
@@ -26,8 +26,8 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  npm install && cd ./app && npm install && cd ../
-  npm run build
+  yarn && cd ./app && yarn && cd ../
+  yarn run build
 
   if [ $CARCH == 'x86_64' ]; then
     node_modules/.bin/build --linux --x64 --dir
