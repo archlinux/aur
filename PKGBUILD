@@ -12,6 +12,7 @@ arch=('x86_64' 'i686')
 license=('Commercial')
 url='https://www.jetbrains.com/webstorm/'
 options=('!strip')
+makedepends=('rsync')
 source=(https://download.jetbrains.com/webstorm/WebStorm-${pkgver}.tar.gz
         jetbrains-webstorm.desktop)
 sha512sums=('5b48d63f81dcfda947c5208bf16a3114a2100bce3028790e9048099e9b056535b7277eea3fbc1eb64f168c1776bc96147e3f712d4c0f88b65f5f8dc87dbe5ee3'
