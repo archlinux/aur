@@ -4,7 +4,7 @@
 
 pkgbase=('monero')
 pkgname=('monero' 'libmonero-wallet')
-pkgver=0.10.2
+pkgver=0.10.2.1
 pkgrel=1
 pkgdesc="Monero: the secure, private, untraceable currency - release version (includes deaemon, wallet and miner)"
 license=('custom:Cryptonote')
@@ -27,7 +27,7 @@ source=("https://github.com/monero-project/monero/archive/v${pkgver}.tar.gz"
         "monerod.service"
         "monerod.conf")
 
-sha256sums+=('6faa4ab54a01a24b91ccaa6a98dc0536e6b14962472ea7b881af395015b76aaa'
+sha256sums+=('e825c059867036acac28b6c76beee28beadef8006677d32113c28c85e5b0f11d'
          '0b66160a5448dedd8e84c38ba2243187217b214b1552f504b05de120b671f121'
          '829445fe9acc00681f94f7b9ca6ce39713e377970b0a3d6f88c37991e1aa61b2')
 
