@@ -24,7 +24,6 @@ pkgver() {
 prepare() {
   msg2 "Adding submodules"
   cd $srcdir/aseba
-  git rm tests/externals/Catch/ #Fix to start init
   git submodule init
   git config submodule.blockly.url $srcdir/blockly
   git submodule update
