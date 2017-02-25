@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Digital Bitbox
+Comment=A QT based application for the Digital Bitbox hardware wallet
+Exec=dbb-app
+Terminal=false
+Type=Application
+Icon=digitalbitbox
+Categories=Finance;
