@@ -3,7 +3,7 @@
 pkgname=emacs-editorconfig-git
 _gitproj="editorconfig"
 _gitrepo="editorconfig-emacs"
-pkgver=0.7.8
+pkgver=0.7.9
 pkgrel=1
 pkgdesc="EditorConfig Emacs Plugin"
 arch=('any')
