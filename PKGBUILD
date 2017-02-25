@@ -1,15 +1,15 @@
 # Maintainer: Sergei Marochkin <me@ziggi.org>
 
 pkgname='yandex-disk-indicator'
-pkgver=1.9.6
-pkgrel=2
+pkgver=1.9.7
+pkgrel=1
 pkgdesc='Panel indicator (GUI) for YandexDisk CLI client for Linux.'
 arch=('i686' 'x86_64')
 url='https://github.com/slytomcat/yandex-disk-indicator'
 license=('GPL3')
 depends=('yandex-disk' 'python' 'python-pyinotify' 'pygobject-devel' 'python-gobject' 'libappindicator-gtk3' 'xclip' 'zenity')
 source=("https://github.com/slytomcat/yandex-disk-indicator/archive/${pkgver}.tar.gz")
-sha512sums=('c39d0da1f33c6cb14fdbeb1a1b2ca4b1a0dd7dfb3f2f7a658fd1ec49015da3a0068fc972a38301068344dbe151a67cfc0e9439786ec9b8846d2f4822493acddd')
+sha512sums=('86e952f418626191c47c0f3f5a901eea73e696936ef39969ee6e267606e91423c6f1980fe522356c246b1cc817297bcafc561871de4ec9418d923647d4d41a60')
 
 package() {
     cd $srcdir
