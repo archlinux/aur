@@ -1,7 +1,7 @@
 pkgbase = unbound-dnstap
 	pkgdesc = Validating, recursive, and caching DNS resolver (with dnstap support)
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://unbound.net/
 	install = install
 	arch = i686
@@ -32,7 +32,7 @@ pkgbase = unbound-dnstap
 	sha1sums = SKIP
 	sha1sums = b543ae6f8b87423bec095fca6b335a9ee43739a8
 	sha1sums = 098d680a06e730330e3ccbdd58234d07ad1837dc
-	sha1sums = 45cb90673d4afabf8afb821df81521a35db18add
+	sha1sums = 4ab099f2ea779f91021b6c76acfdd7e2647a6fac
 
 pkgname = unbound-dnstap
 
