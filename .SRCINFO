@@ -1,15 +1,15 @@
 pkgbase = undistract-me-git
 	pkgdesc = Notifies you when long-running terminal commands complete
 	pkgver = r58.3c3054c
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/jml/undistract-me
 	install = undistract-me.install
 	arch = any
-	license = custom,https://raw.githubusercontent.com/jml/undistract-me/master/LICENSE
-	depends = bash
-	optdepends = zsh
+	license = MIT
+	depends = libnotify
+	depends = xorg-xprop
 	conflicts = undistract-me
-	source = git+https://github.com/jml/undistract-me.git
+	source = git://github.com/jml/undistract-me.git
 	md5sums = SKIP
 
 pkgname = undistract-me-git
