@@ -1,7 +1,7 @@
 # Maintainer: Samuel Mesa <samuelmesa@linuxmail.org>
 
 pkgname=gpstk-bin
-pkgver=2.5
+pkgver=2.8
 pkgrel=1
 
 pkgdesc="Algorithms and frameworks supporting the development of processing and analysis applications in navigation and global positioning."
@@ -13,14 +13,15 @@ optdepends=()
 provides=('gpstk')
 conflicts=('gpstk')
 arch=('x86_64')
-source=(http://ufpr.dl.sourceforge.net/project/gpstk/gpstk/${pkgver}/gpstk-${pkgver}.linux.x86_64.tar.gz)
-md5sums=('083706d792aaaf3d84ba85ff841f7f54')
+source=(https://github.com/SGL-UT/GPSTk/releases/download/v${pkgver}/GPSTK-${pkgver}.0-Debian.tar.gz)
+md5sums=('60a5d11b748707e90d58a3ce6b1226f5')
 
 package() {
-  cd $srcdir/gpstk-${pkgver}.linux.$CARCH
+  cd $srcdir/
   mkdir -p $pkgdir/usr
 
-  cp -r $srcdir/gpstk-${pkgver}.linux.$CARCH/bin $pkgdir/usr
-  cp -r $srcdir/gpstk-${pkgver}.linux.$CARCH/include $pkgdir/usr
-  cp -r $srcdir/gpstk-${pkgver}.linux.$CARCH/lib $pkgdir/usr
+  cp -r $srcdir/bin $pkgdir/usr
+  cp -r $srcdir/include $pkgdir/usr
+  cp -r $srcdir/lib $pkgdir/usr
+  cp -r $srcdir/share $pkgdir/usr
 }
