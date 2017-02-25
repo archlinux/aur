@@ -1,13 +1,13 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=ja2-stracciatella-git
-pkgver=8188.a517757
+pkgver=8296.9202397c2
 pkgrel=1
 pkgdesc="Jagged Alliance 2 Stracciatella project with a goal of improving JA2"
 arch=('i686' 'x86_64')
 url="https://github.com/ja2-stracciatella/ja2-stracciatella"
 license=('custom')
 depends=('boost-libs' 'sdl2')
-makedepends=('git' 'cmake' 'boost')
+makedepends=('git' 'cargo' 'cmake' 'boost')
 source=('git+https://github.com/ja2-stracciatella/ja2-stracciatella.git')
 md5sums=('SKIP')
 
