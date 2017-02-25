@@ -1,7 +1,7 @@
 pkgbase = qgis-ltr
 	pkgdesc = Geographic Information System (GIS) that supports vector, raster & database formats; Long Term Release
-	pkgver = 2.14.11
-	pkgrel = 2
+	pkgver = 2.14.12
+	pkgrel = 1
 	url = http://qgis.org/
 	arch = i686
 	arch = x86_64
@@ -10,11 +10,27 @@ pkgbase = qgis-ltr
 	makedepends = gsl
 	makedepends = perl
 	makedepends = txt2tags
-	depends = qca-qt4
+	makedepends = sip<4.19.1
+	makedepends = python2-sip<4.19.1
+	makedepends = pyqt4-common<4.12-4
+	makedepends = python2-pyqt4<4.12-4
+	depends = expat
+	depends = gcc-libs
 	depends = gdal
+	depends = geos
+	depends = glibc
+	depends = libspatialite
+	depends = postgresql-libs
+	depends = proj
+	depends = qca-qt4
+	depends = qscintilla-qt4
+	depends = qt4
 	depends = qtwebkit
+	depends = qwt
 	depends = qwtpolar
 	depends = spatialindex
+	depends = sqlite
+	depends = python2
 	depends = python2-httplib2
 	depends = python2-qscintilla-qt4
 	depends = python2-sip
@@ -30,12 +46,10 @@ pkgbase = qgis-ltr
 	optdepends = python2-psycopg2: Processing plugin
 	optdepends = python2-pyspatialite: Processing plugin
 	optdepends = python2-yaml: Processing plugin
-	provides = qgis=2.14.11
+	provides = qgis=2.14.12
 	conflicts = qgis
-	source = https://qgis.org/downloads/qgis-2.14.11.tar.bz2
-	source = https://github.com/qgis/QGIS/commit/70f51aeedac0013247457c9274fcef746447796c.patch
-	md5sums = a23566264a83b1a5689c5cc1710d0552
-	md5sums = 45077d8f4daef8fcad0be51fa5c361e6
+	source = https://qgis.org/downloads/qgis-2.14.12.tar.bz2
+	md5sums = b1e7709497d6229381d694fa8f3f43a3
 
 pkgname = qgis-ltr
 
