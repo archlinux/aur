@@ -17,8 +17,8 @@ options=('!strip')
 source=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/jdk-${_pkgver}_doc-api-spec.tar.gz"
         "http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/javafx-${_pkgver}_doc.zip"
         'LICENSE')
-sha256sums=('17f3e38c33500d32c03761150ea2ebed4d742d4d7e5a476e326aec09d28a9fd8'
-            'c31114f28b98294619d90d1b4610ef82c5517eeb0342379af34467ef92600ea8'
+sha256sums=('995c66b20c8b917e2ff0fbfeaf00ab90abaafb1bddac5a40b3b7378b420bd8df'
+            '71f1ad66d28b5138d498cd18c4e5ac7b911de6183f2e333c97dec45441450fa3'
             '5f00ffce28036cf79da41c7fe0e29801e3148597a164ecc69f49e718ae370370')
 
 package_jdk-devel-docs() {
