@@ -2,14 +2,12 @@
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
-#
-# last Meld GTK2 version
 
 pkgname=meld-gtk2
 _pkgname=meld
 pkgver=1.8.6
 pkgrel=1
-pkgdesc='Visual diff and merge tool'
+pkgdesc='Visual diff and merge tool (last GTK2 version)'
 url='http://meldmerge.org/'
 license=('GPL')
 arch=('any')
@@ -22,7 +20,6 @@ provides=('meld')
 conflicts=('meld')
 replaces=('meld')
 options=('!emptydirs')
-install=meld.install
 source=("http://ftp.gnome.org/pub/gnome/sources/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz")
 sha1sums=('33e23f2e56b27f2ac5cd21032c7eefe9dd469480')
 
