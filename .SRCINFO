@@ -1,8 +1,8 @@
 pkgbase = natron-plugins
 	pkgdesc = Extra OpenFX plugins for Natron
-	pkgver = 358
+	pkgver = 437
 	pkgrel = 1
-	url = https://github.com/NatronVFX/natron-plugins
+	url = https://github.com/triceratops1/NatronVFX
 	arch = i686
 	arch = x86_64
 	license = GPL2
