@@ -1,0 +1,13 @@
+--- ./stage/libstage/world.cc	2016-05-22 17:32:56.876610943 +0300
++++ ./stage/libstage/world.cc	2016-05-22 17:31:35.593280198 +0300
+@@ -803,8 +803,8 @@
+   // Graphics Gems IV  
+   const int32_t sx(sgn(dx));  
+   const int32_t sy(sgn(dy));  
+-  const int32_t ax(abs(dx)); 
+-  const int32_t ay(abs(dy));  
++  const int32_t ax(abs((int32_t)dx)); 
++  const int32_t ay(abs((int32_t)dy));  
+   const int32_t bx(2*ax);	
+   const int32_t by(2*ay);	
+   int32_t exy(ay-ax); // difference between x and y distances

@@ -29,8 +29,14 @@ depends=(${ros_depends[@]}
 
 _tag=release/indigo/stage/${pkgver}-${_pkgver_patch}
 _dir=stage
-source=("${_dir}"::"git+https://github.com/ros-gbp/stage-release.git"#tag=${_tag})
-md5sums=('SKIP')
+source=("${_dir}"::"git+https://github.com/ros-gbp/stage-release.git"#tag=${_tag}
+  'file://./ros-indigo-stage.patch')
+md5sums=('SKIP' 'SKIP')
+
+prepare() {
+sed -i 's/\("[^"]*"\)m\("[^"]*"\)/\1 m \2/' stage/libstage/stage.hh
+patch -p1 < ros-indigo-stage.patch
+}
 
 build() {
   # Use ROS environment variables

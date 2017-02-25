@@ -20,6 +20,8 @@ pkgbase = ros-indigo-stage
 	depends = fltk
 	depends = gtk2
 	source = stage::git+https://github.com/ros-gbp/stage-release.git#tag=release/indigo/stage/4.1.1-8
+	source = file://./ros-indigo-stage.patch
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = ros-indigo-stage
