@@ -2,13 +2,14 @@
 
 pkgname=flif-git
 _pkgname=FLIF
-pkgver=r656.a65c669
+pkgver=r707.0fd6246
 pkgrel=1
 pkgdesc="Free Lossless Image Format"
 arch=("i686" "x86_64")
 url="https://github.com/FLIF-hub/FLIF"
 license=('GPL3')
 conflicts=('flif')
+provides=('flif')
 depends=('zlib' 'libpng' 'sdl2')
 makedepends=('git')
 source=('git+https://github.com/FLIF-hub/FLIF.git')
