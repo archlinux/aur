@@ -2,11 +2,17 @@
 
 # ImageMagick compiled with all features and delegate libraries.
 # Using quantum depth 32 (Q32) and HDRI.
-# NOTE: DPS (Display PostScript) feature is obsolete and thus not enabled.
+
+# AUR dependencies
+# ----------------
+# pstoedit-nomagick autotrace-nomagick flif libfpx libraqm
+
+# NOTE (1):
+# DPS (Display PostScript) feature is obsolete and thus not enabled.
 # For more information about DPS being obsolete please visit:
 # http://www.x.org/releases/X11R7.7/doc/xorg-docs/graphics/dps.html
 
-# NOTE:
+# NOTE 2):
 # Change font directories bellow to match yours.
 # DeJaVu and GhostScript font directories provided bellow are the default ones.
 # Windows font directory provided bellow is set according to the example in Arch Linux Wiki.
@@ -31,7 +37,7 @@ _srcver="$(curl -s "$_digest" | grep -o "${_srcname}-7[0-9\.-]*\.tar\.xz" | \
 _srcverregex="$(echo "$_srcver" | sed 's/\./\\\./g')" # translate to a regular expression
 pkgname=imagemagick-full
 pkgver="$(echo "$_srcver"| tr '-' '.')"
-pkgrel=3
+pkgrel=4
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
