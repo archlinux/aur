@@ -5,7 +5,7 @@
 
 pkgname=unbound-dnstap
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Validating, recursive, and caching DNS resolver (with dnstap support)'
 url='https://unbound.net/'
 license=('custom:BSD')
