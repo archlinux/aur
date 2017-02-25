@@ -1,17 +1,16 @@
 pkgbase = python-pyqtgraph
 	pkgdesc = Scientific Graphics and GUI Library for Python
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.pyqtgraph.org/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	depends = python
 	depends = python-pyqt4
 	depends = python-numpy
 	optdepends = python-opengl
-	source = https://github.com/pyqtgraph/pyqtgraph/archive/pyqtgraph-0.10.0.tar.gz
-	md5sums = d97a5681687b9cbbf2ad9674192eb5a6
+	source = http://www.pyqtgraph.org/downloads/0.10.0/pyqtgraph-0.10.0.tar.gz
+	md5sums = 3f191f724a3f9d829094af6237f1db5a
 
 pkgname = python-pyqtgraph
 
