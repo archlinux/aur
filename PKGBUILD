@@ -1,10 +1,13 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
+
+# Maintainer: Yuxiang Li <li.yuxiang.nj at gmail dot com>
+
 pkgdesc="ROS - Integration test suite based on roslaunch that is compatible with xUnit frameworks."
 url='http://ros.org/wiki/rostest'
 
 pkgname='ros-indigo-rostest'
-pkgver='1.11.19'
+pkgver='1.11.20'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +36,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-rostest-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rostest/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2e390dd30acb1546e4838979560dfbb276e60d3b7e2dba0f1d873e5d7076670f')
+sha256sums=('34fab79f782bf3e13ff0eebced7793b5308d203785cb3e581067ad5ffc12140e')
 
 build() {
   # Use ROS environment variables
