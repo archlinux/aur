@@ -16,12 +16,14 @@ validpgpkeys=('03300E11FED16F59715F9996C29D97ED198D22A3'  # Samuli Seppänen <sa
 source=("https://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.xz"{,.asc}
         '0001-Clean-up-plugin-path-handling.patch'
         '0002-do-not-race-on-RuntimeDirectory.patch'
-        '0003-systemd-Move-the-READY-1-signalling-to-an-earlier-po.patch')
+        '0003-systemd-Move-the-READY-1-signalling-to-an-earlier-po.patch'
+        '0004-openssl-1-1-0.patch')
 sha256sums=('6f23ba49a1dbeb658f49c7ae17d9ea979de6d92c7357de3d55cd4525e1b2f87e'
             'SKIP'
             '162a21f78fc83071643341fb4198092d7d81b8196573d53ce43548424d757be2'
             '58ee9d2f4d8a74c3dec037265b84963171f76f9fb6689a529728cdc76fac30dd'
-            'ae8fd591c05c04ad4b500494c55df242f3a2309f2af579b45820ce9959f1df06')
+            'ae8fd591c05c04ad4b500494c55df242f3a2309f2af579b45820ce9959f1df06'
+            '89df81500b1891fbc7797723ee6e54f82e656059f6238884591113ed00e679db')
 
 prepare() {
   cd "${srcdir}"/${pkgname}-${pkgver}
@@ -34,6 +36,9 @@ prepare() {
 
   # systemd: Move the READY=1 signalling to an earlier point
   patch -Np1 < "${srcdir}"/0003-systemd-Move-the-READY-1-signalling-to-an-earlier-po.patch
+
+  # allow to build against openssl 1.1.0
+  patch -Np1 < "${srcdir}"/0004-openssl-1-1-0.patch
 
   # regenerate configure script
   autoreconf -fi
