@@ -2,7 +2,7 @@
 
 pkgname=beehive
 pkgver=0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A flexible event and agent system with lots of bees"
 arch=('x86_64' 'i686')
 url="https://github.com/muesli/beehive"
@@ -43,6 +43,7 @@ package() {
     install -Dm644 beehive.service "$pkgdir/usr/lib/systemd/system/beehive.service"
 
     # Copy webinterface files
+    install -dm755 "$pkgdir/usr/share/webapps/beehive/config"
     cp -r beehive-admin-dist-e9e9a1124cf2d936e022be2371c6a5dd31f3a294/* "$pkgdir/usr/share/webapps/beehive/config"
 }
 
