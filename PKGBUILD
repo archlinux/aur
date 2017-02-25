@@ -1,8 +1,8 @@
-# Maintainer: Marco Pompili <aur@emarcs.org>
+# Maintainer: Marco Pompili <aur(at)emarcs.org>
 
 pkgname=nightcode
 _name=Nightcode
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A simple IDE for Clojure and ClojureScript."
 arch=('any')
@@ -10,18 +10,18 @@ url="https://sekao.net/nightcode/"
 license=('custom')
 depends=('java-runtime>7' 'java-openjfx')
 conflicts=('nightcode-git')
-source=("https://github.com/oakes/Nightcode/archive/$pkgver.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/oakes/Nightcode/archive/${pkgver}.tar.gz"
         "https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh"
         "nightcode.desktop")
-sha256sums=('b32c0d9b12cff7d3b9cc5d7cc9d78b54567d484ac7321789c2c7bd356f0e16b1'
+sha256sums=('bbb96f95f529a45b9687b5cd2b10f149de331be6231baf9e71529c796406183e'
             '895def8ef37f4b78bb37a26566ce970dc24219e880154a18ef7ade5a778d3a2f'
             '8fb613946bb9cb3dc636933ff2f0c7de8c61d2b43e49b9d6baf380b07377eaa1')
 noextract=('boot.sh')
 
 build() {
-	cd "$_name-$pkgver"
+	cd "${_name}-${pkgver}"
 	msg2 "Building nightcode..."
-	bash $srcdir/boot.sh build
+	bash ${srcdir}/boot.sh build
 }
 
 package() {
