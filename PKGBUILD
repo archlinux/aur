@@ -1,10 +1,13 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
+
+# Maintainer: Yuxiang Li <li.yuxiang.nj at gmail dot com>
+
 pkgdesc="ROS - rosgraph contains the rosgraph command-line tool, which prints information about the ROS Computation Graph."
 url='http://ros.org/wiki/rosgraph'
 
 pkgname='ros-indigo-rosgraph'
-pkgver='1.11.19'
+pkgver='1.11.20'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +31,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-rosgraph-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rosgraph/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6d0c18684013eae4597c5cbbf49432bf27c48007b3f55a8b2f077e310dccecd1')
+sha256sums=('108b867696d3e4ea3fe3fa61c7b986a859be7c1c6704420e350fd82071911a45')
 
 build() {
   # Use ROS environment variables
