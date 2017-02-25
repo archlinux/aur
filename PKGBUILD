@@ -1,4 +1,4 @@
-# Maintainer: Kyle <kyle@gmx.ca>
+# Maintainer: Kyle <kyle@free2.ml>
 pkgname=opus-git
 _gitname=opus
 pkgver=1.1.1.rc.74.ge40df01 # automatically determined from git origin
