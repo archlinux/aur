@@ -1,12 +1,12 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=heekscad-git
 pkgver=1449.008d7b6f
-pkgrel=6
+pkgrel=7
 pkgdesc="HeeksCNC is an open source, 3D CAD/CAM software"
 arch=('x86_64')
 url="http://heeks.net"
 license=('custom:BSD3')
-depends=('python2' 'oce' 'wxgtk' 'libarea-git')
+depends=('python2' 'oce' 'wxgtk2.8' 'libarea-git')
 optdepends=('heekscnc-git')
 makedepends=('cmake')
 provides=('heekscad')
@@ -31,7 +31,7 @@ build() {
   mkdir -p build
   cd build
   export OCE_DIR="/opt/oce/lib/oce-0.18"
-  cmake -DPYTHON_EXECUTABLE="/usr/bin/python2" -DPYTHON_LIBRARY="/usr/lib/libpython2.7.so" -DPYTHON_INCLUDE_DIR="/usr/include/python2.7" -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DwxWidgets_CONFIG_EXECUTABLE="/usr/bin/wx-config-2.8" -DPYTHON_EXECUTABLE="/usr/bin/python2" -DPYTHON_LIBRARY="/usr/lib/libpython2.7.so" -DPYTHON_INCLUDE_DIR="/usr/include/python2.7" -DCMAKE_INSTALL_PREFIX=/usr ..
 }
 
 package() {
