@@ -1,6 +1,6 @@
 # Maintainer: alex korobtsov <korobcoff@gmail.com>
 # Maintainer: Alexander Bantyev <balsoft@yandex.ru>
-pkgname=qomp-qt5-git
+pkgname=qomp
 pkgver=0.7.5
 pkgrel=1
 pkgdesc="Quick(Qt) Online Music Player"
@@ -12,7 +12,6 @@ depends=( 'taglib' 'qt5-base' 'qt5-tools' 'qt5-multimedia'
 'gstreamer0.10-base-plugins' 'gstreamer0.10-ffmpeg'
 'gstreamer0.10-good-plugins' 'gstreamer0.10-ugly-plugins' )
 makedepends=('git')
-conflicts=(qomp)
 source=(git+https://github.com/qomp/qomp)
 md5sums=('SKIP') 
 

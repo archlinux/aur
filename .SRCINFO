@@ -1,4 +1,4 @@
-pkgbase = qomp-qt5-git
+pkgbase = qomp
 	pkgdesc = Quick(Qt) Online Music Player
 	pkgver = 0.7.5
 	pkgrel = 1
@@ -17,9 +17,8 @@ pkgbase = qomp-qt5-git
 	depends = gstreamer0.10-ffmpeg
 	depends = gstreamer0.10-good-plugins
 	depends = gstreamer0.10-ugly-plugins
-	conflicts = qomp
 	source = git+https://github.com/qomp/qomp
 	md5sums = SKIP
 
-pkgname = qomp-qt5-git
+pkgname = qomp
 
