@@ -5,7 +5,7 @@
 
 pkgname=mingw-w64-readline
 _basever=7.0
-_patchlevel=001
+_patchlevel=003
 pkgver=$_basever.$_patchlevel
 pkgrel=1
 pkgdesc="MinGW port of readline for editing typed command lines (mingw-w64)"
@@ -27,6 +27,10 @@ md5sums=('205b03a87fc83dab653b628c59b9fc91'
          'SKIP'
          'e1564909905d0670fca91da3dc4053f7'
          'e299384458a4cbefaaac3f30e9cc2bba'
+         'SKIP'
+         'f9071a353e2fd52a91d32667b23715d6'
+         'SKIP'
+         '03595464cf0283286a6e07f4f01c4a70'
          'SKIP')
 validpgpkeys=(7C0135FB088AAF6C66C650B9BB5869F064EA74AB)
 
