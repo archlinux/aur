@@ -5,7 +5,7 @@
 
 pkgname=syslog-ng-nosystemd
 pkgver=3.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -45,7 +45,7 @@ build() {
     --libexecdir=/usr/lib \
     --sbindir=/usr/bin \
     --localstatedir=/var/lib/syslog-ng \
-    --datadir=/usr/share/syslog-ng \
+    --datadir=/usr/share \
     --with-pidfile-dir=/run \
     --disable-spoof-source \
     --enable-ipv6 \
@@ -66,4 +66,7 @@ package() {
   install -Dm644 "$srcdir/syslog-ng.logrotate" "$pkgdir/etc/logrotate.d/syslog-ng"
   install -Dm755 "$srcdir/syslog-ng.rc" "$pkgdir/etc/rc.d/syslog-ng"
   install -Dm644 "$srcdir/syslog-ng.conf.d" "$pkgdir/etc/conf.d/initscripts/syslog-ng"
+
+  # See http://lists.balabit.hu/pipermail/syslog-ng/2016-February/022667.html
+  rm -r "$pkgdir/usr/share/syslog-ng/include/scl/cim"
 }
