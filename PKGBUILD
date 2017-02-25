@@ -14,26 +14,26 @@ install=openvpn.install
 validpgpkeys=('03300E11FED16F59715F9996C29D97ED198D22A3'  # Samuli Seppänen <samuli.seppanen@gmail.com>
               '7ACD56B74144925C6214329757DB9DAB613B8DA1') # David Sommerseth (OpenVPN Technologies, Inc) <davids@openvpn.net>
 source=("https://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.xz"{,.asc}
-        '0001-plugin.patch'
+        '0001-Clean-up-plugin-path-handling.patch'
         '0002-do-not-race-on-RuntimeDirectory.patch'
-        '0003-fix-timeout-in-non-TLS-mode-with-systemd.patch')
+        '0003-systemd-Move-the-READY-1-signalling-to-an-earlier-po.patch')
 sha256sums=('6f23ba49a1dbeb658f49c7ae17d9ea979de6d92c7357de3d55cd4525e1b2f87e'
             'SKIP'
-            'b8254067b4ef5d157d87267a76938d86f101972303c7ff20131cc9f28659a30c'
-            'a87b081f998db99190e8b9e185cd7aade5bd6dfb5c03777c82b75d28cd3b375c'
-            '1b0ff78390dd5e79ce6966fd7fee54d42f6f3622cf8078d8b0f9998046e6b73b')
+            '162a21f78fc83071643341fb4198092d7d81b8196573d53ce43548424d757be2'
+            '58ee9d2f4d8a74c3dec037265b84963171f76f9fb6689a529728cdc76fac30dd'
+            'ae8fd591c05c04ad4b500494c55df242f3a2309f2af579b45820ce9959f1df06')
 
 prepare() {
   cd "${srcdir}"/${pkgname}-${pkgver}
 
-  # plugin path
-  patch -Np1 < "${srcdir}"/0001-plugin.patch
+  # Clean up plugin path handling
+  patch -Np1 < "${srcdir}"/0001-Clean-up-plugin-path-handling.patch
 
   # do not race on RuntimeDirectory
   patch -Np1 < "${srcdir}"/0002-do-not-race-on-RuntimeDirectory.patch
 
-  # fix timeout in non-TLS mode with systemd
-  patch -Np1 < "${srcdir}"/0003-fix-timeout-in-non-TLS-mode-with-systemd.patch
+  # systemd: Move the READY=1 signalling to an earlier point
+  patch -Np1 < "${srcdir}"/0003-systemd-Move-the-READY-1-signalling-to-an-earlier-po.patch
 
   # regenerate configure script
   autoreconf -fi
@@ -83,11 +83,5 @@ package() {
       *) install -D -m0644 "${FILE}" "${pkgdir}/usr/share/openvpn/${FILE}" ;;
     esac
   done
-
-  # Install systemd files
-  install -d -m0755 "${pkgdir}"/usr/lib/systemd/system/
-  install -m0644 distro/systemd/openvpn-{client,server}@.service "${pkgdir}"/usr/lib/systemd/system/
-  install -D -m0644 distro/systemd/openvpn.conf "${pkgdir}"/usr/lib/tmpfiles.d/openvpn.conf
-  install -d -m0710 "${pkgdir}"/run/openvpn-{client,server}
 }
 
