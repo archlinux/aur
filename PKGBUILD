@@ -26,7 +26,7 @@ source=("https://unbound.net/downloads/unbound-${pkgver}.tar.gz"{,.asc}
 sha1sums=('41369fcfd37844b02b7293b37ec78e69f0db34c7' 'SKIP'
           'b543ae6f8b87423bec095fca6b335a9ee43739a8'
           '098d680a06e730330e3ccbdd58234d07ad1837dc'
-	  "45cb90673d4afabf8afb821df81521a35db18add")
+	  "4ab099f2ea779f91021b6c76acfdd7e2647a6fac")
 
 install=install
 
