@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-smclib
 	pkgdesc = ROS - The State Machine Compiler (SMC) from http://smc.sourceforge.net/ converts a language-independent description of a state machine into the source code to support that state machine.
-	pkgver = 1.7.16
+	pkgver = 1.7.18
 	pkgrel = 1
 	url = http://smc.sourceforge.net/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = ros-indigo-smclib
 	makedepends = git
 	makedepends = ros-build-tools
 	makedepends = ros-indigo-catkin
-	source = smclib::git+https://github.com/ros-gbp/bond_core-release.git#tag=release/indigo/smclib/1.7.16-0
+	source = smclib::git+https://github.com/ros-gbp/bond_core-release.git#tag=release/indigo/smclib/1.7.18-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-smclib

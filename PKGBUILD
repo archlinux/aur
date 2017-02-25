@@ -4,7 +4,7 @@ pkgdesc="ROS - The State Machine Compiler (SMC) from http://smc.sourceforge.net/
 url='http://smc.sourceforge.net/'
 
 pkgname='ros-indigo-smclib'
-pkgver='1.7.16'
+pkgver='1.7.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
