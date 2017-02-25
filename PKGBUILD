@@ -2,7 +2,7 @@
 
 pkgname=beehive
 pkgver=0.2
-pkgrel=7
+pkgrel=8
 pkgdesc="A flexible event and agent system with lots of bees"
 arch=('x86_64' 'i686')
 url="https://github.com/muesli/beehive"
@@ -15,8 +15,8 @@ source=("https://github.com/muesli/${pkgname}/archive/v${pkgver}.tar.gz"
         "beehive.service")
 sha256sums=('6d0f2587e3b9f1ff0ae75fec58a5f49c520497f8f4a16a96b1c1ad5e0e1466b5'
             '7a87f6960d2deab3475cf7c96646bcd83126b40abe3381aa49505b92b8036666'
-            '3a6725b9b51de4a8697c983844d742e499828af80d137f6ddc53523294111396'
-            '8123c8f031ff32a6cf1e6986d5b96ab961a24515beedc52a02ba1c11e9b60506')
+            '3c52c9a1f3115493b78958ba03fd5385c5e2fa6c8caad88318794755426330ee'
+            'de07cc5b1fda921dd6ad4422651f5b81aa6393bc77c1760002e39ccd0b40c50f')
 
 prepare() {
     cd "$pkgname-$pkgver"
