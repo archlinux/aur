@@ -1,47 +1,38 @@
-# Maintainer: WB2FKO <mph at sportscliche dot com>
+# Maintainer: not_anonymous <nmlibertarian@gmail.com>
+# Contributor: Lucjan SQ5FGB <lucck at boff dot pl>
+# Contributor: WB2FKO <mph at sportscliche dot com>
+# Original Submission: Bob Finch <w9ya@qrparci.net>
+
 pkgname=linpsk
-pkgver=1.2
+pkgver=1.3.5
 pkgrel=1
-pkgdesc="PSK31 for Linux"
+pkgdesc="Ham Radio PSK31/63 engine"
 arch=(i686 x86_64)
 url="http://sourceforge.net/projects/linpsk/"
 license=('GPL')
-depends=('fftw' 'qt4' 'alsa-lib')
-install=linpsk.install
-source=(http://sourceforge.net/projects/linpsk/files/linpsk/$pkgname-$pkgver/$pkgname-$pkgver.tgz
-              $pkgname.desktop 
-              )
-md5sums=( '674c783fd772a532a7b8a107ae69ec1e'
-          '88dcc2a61895c89c63e4f900d2f9481c' )
+depends=('fftw' 'qt5-multimedia' 'hamradio-menus')
+optdepends=('hamlib: for rig control')
+makedepends=('pkg-config')
+source=(http://sourceforge.net/projects/linpsk/files/linpsk/$pkgname-$pkgver.tar.gz)
 
 build() {
-  #patch -p3 -d $srcdir/$pkgname < linpsk-1.1-compile-fix.patch
-  cd "$srcdir/$pkgname-$pkgver"
-  qmake-qt4 linpsk.pro
-  make
-}
+	cd $srcdir/$pkgname-$pkgver
 
-check() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make -k check
+	qmake-qt5 linpsk.pro
+	make
 }
 
 package() {
-  mkdir -p $pkgdir/usr/share/$pkgname
-  mkdir -p $pkgdir/usr/share/$pkgname/doc
-  cd "$srcdir/$pkgname-$pkgver/bin"
-  install -Dm755 linpsk $pkgdir/usr/bin/linpsk
-  cd "$srcdir/$pkgname-$pkgver"
-  install -m 0644 asoundrc $pkgdir/usr/share/$pkgname/doc/
-  install -m 0644 COPYING $pkgdir/usr/share/$pkgname/doc/
-  install -m 0644 README $pkgdir/usr/share/$pkgname/doc/
+	cd $srcdir/$pkgname-$pkgver
 
-  mkdir -p $pkgdir/usr/share/pixmaps
-  mkdir -p $pkgdir/usr/share/applications
-  cd $srcdir
-  install -Dm644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-  cd "$srcdir/$pkgname-$pkgver/images"
-  install -Dm644  $pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
+	install -Dm755 linpsk $pkgdir/usr/bin/linpsk
+
+	mkdir -p $pkgdir/usr/share/$pkgname/doc
+	install -m 0644 asoundrc $pkgdir/usr/share/$pkgname/doc/
+	install -m 0644 README $pkgdir/usr/share/$pkgname/doc/
+
+	install -Dm644 data/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+	install -Dm644 images/$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
 }
-
-# vim:set ts=2 sw=2 et:
+md5sums=('f0ec386f2e06d800c278e4ee28fd5eba')
+sha256sums=('64bf5c699611dd3fad2e28df2eebd2bf60f6b3b48ce51f84efa92f250ab3cf4a')
