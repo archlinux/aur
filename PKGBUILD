@@ -9,7 +9,7 @@ depends=('electron')
 makedepends=('npm')
 url="https://eme.moe/"
 license=('MIT')
-source=("https://github.com/egoist/eme/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/egoist/eme/archive/v${pkgver}.tar.gz"
         "eme"
         "eme.desktop")
 sha256sums=('97edbcd37016cd1460041d398278b717005a51a4bfabb5588592505d6870372f'
