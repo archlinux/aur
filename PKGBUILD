@@ -1,10 +1,13 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
+
+# Maintainer: Yuxiang Li <li.yuxiang.nj at gmail dot com>
+
 pkgdesc="ROS - rosparam contains the rosparam command-line tool for getting and setting ROS Parameters on the Parameter Server using YAML-encoded files."
 url='http://ros.org/wiki/rosparam'
 
 pkgname='ros-indigo-rosparam'
-pkgver='1.11.19'
+pkgver='1.11.20'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +30,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-rosparam-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rosparam/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6bd1f42b2c1d1cdd2458d8348fed8ab9e55652f0655c8a643b9cfd18e5183fe4')
+sha256sums=('43b47357b74d7e9cd61dbb815f437ff683afe95a42330bcf49e151d7852333c9')
 
 build() {
   # Use ROS environment variables
