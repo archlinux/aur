@@ -4,7 +4,7 @@ pkgdesc="ROS - Python implementation of bond, a mechanism for checking when anot
 url='http://www.ros.org/wiki/bondpy'
 
 pkgname='ros-indigo-bondpy'
-pkgver='1.7.16'
+pkgver='1.7.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
