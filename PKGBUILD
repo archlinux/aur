@@ -1,6 +1,6 @@
 # Maintainer: THS <mail@thson.de>
 pkgname=aseba-git
-pkgver=1.5.3.r125.ga376fa6b
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="A set of tools which allow beginners to program robots easily and efficiently."
 arch=('x86_64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "${srcdir}/aseba"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git for-each-ref --format="%(refname:short)" --sort=-authordate --count=1 refs/tags
 }
 
 prepare() {
