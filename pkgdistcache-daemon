@@ -132,7 +132,8 @@ def main(args):
 	httpd = HTTPServerV6(('', port), handler)
 
 	try:
-		httpd.serve_forever()
+		# Disable useless polling since we never call shutdown
+		httpd.serve_forever(poll_interval=None)
 	except KeyboardInterrupt:
 		avahi_service.unpublish()
 

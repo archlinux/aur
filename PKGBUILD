@@ -3,7 +3,7 @@
 
 pkgname=pkgdistcache
 pkgver=0.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A distributed local-network cache for pacman packages'
 arch=('any')
 url='http://venator.ath.cx/dw/doku.php?id=linux:pkgdistcache'
@@ -15,7 +15,7 @@ source=('pkgdistcache-client'
         'pkgdistcache.conf'
         'pkgdistcached.service')
 sha256sums=('d53ba7417b6d6db3c36876f7ef92933553ce27597b94ce727deeef8c6edac1f8'
-            'e12d6d6db8b13895245694966d9ab076ffbe8eae3a3e0070cb376861d3ed0452'
+            'b0e40b5d51b34c7613ce28656e450ecaf664d5ec8fc5d1c5179dd0a4d9f19881'
             'd77ac418aa651bc622cd91204d6907554c6cdb4bb989e484cc54da32342faa51'
             'fdfa58e652230725a232de41c87627ed8c9a4fd9d081c8a3d261ea75cf91a81a')
 
