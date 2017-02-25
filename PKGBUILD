@@ -12,7 +12,7 @@
 # For more information about DPS being obsolete please visit:
 # http://www.x.org/releases/X11R7.7/doc/xorg-docs/graphics/dps.html
 
-# NOTE 2):
+# NOTE (2):
 # Change font directories bellow to match yours.
 # DeJaVu and GhostScript font directories provided bellow are the default ones.
 # Windows font directory provided bellow is set according to the example in Arch Linux Wiki.
@@ -37,7 +37,7 @@ _srcver="$(curl -s "$_digest" | grep -o "${_srcname}-7[0-9\.-]*\.tar\.xz" | \
 _srcverregex="$(echo "$_srcver" | sed 's/\./\\\./g')" # translate to a regular expression
 pkgname=imagemagick-full
 pkgver="$(echo "$_srcver"| tr '-' '.')"
-pkgrel=4
+pkgrel=5
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
