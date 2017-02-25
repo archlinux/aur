@@ -1,10 +1,13 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
+
+# Maintainer: Yuxiang Li <li.yuxiang.nj at gmail dot com>
+
 pkgdesc="ROS - System-wide logging mechanism for messages sent to the /rosout topic."
 url='http://ros.org/wiki/rosout'
 
 pkgname='ros-indigo-rosout'
-pkgver='1.11.19'
+pkgver='1.11.20'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-rosout-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rosout/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('70e0bc4b8f826a033089a463c0944d6a1d885cddce8078db0a15a1907e088dff')
+sha256sums=('dd01e75532ad032704a01848d7bdceb8a02154d0ea02a2af4eb8853649f3b2b4')
 
 build() {
   # Use ROS environment variables
