@@ -5,12 +5,12 @@
 pkgname=eclipse-platform
 pkgver=4.6.2
 _pkgbuild=201611241400
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimal installation suitable for complete per-user customization with the built-in Eclipse package manager"
 url="https://www.eclipse.org"
 arch=("i686" "x86_64")
 license=("EPL")
-depends=("java-environment>=8" "unzip" "webkitgtk2" "libxtst" "hicolor-icon-theme")
+depends=("java-environment>=8" "unzip" "webkit2gtk" "libxtst" "hicolor-icon-theme")
 optdepends=()
 conflicts=("eclipse")
 provides=("eclipse=$pkgver")
