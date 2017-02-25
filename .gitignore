@@ -1,0 +1,6 @@
+src/
+pkg/
+
+dbb-app/
+
+*.pkg.tar.xz
