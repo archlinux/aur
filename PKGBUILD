@@ -1,6 +1,6 @@
 # Maintainer: gileri <twiked at gmail d(0)t com>
 pkgname=pyosmium-git
-pkgver=v2.6.0.r2.gc7604fd
+pkgver=v2.11.0.r2.g1dd5880
 pkgrel=1
 pkgdesc="Python bindings for libosmium"
 url="http://osmcode.org/pyosmium"
@@ -25,7 +25,6 @@ build() {
 
 package() {
   cd "${srcdir}/pyosmium"
-  python setup.py install --prefix="${pkgdir}/usr/"
-  ls
+  python setup.py install --prefix="/usr/" --root="$pkgdir/" --optimize=1
   install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
