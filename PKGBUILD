@@ -1,6 +1,6 @@
 # Maintainer: gileri <twiked at gmail d(0)t com>
 pkgname=pyosmium-git
-pkgver=v2.11.0.r2.g1dd5880
+pkgver=2.11.0.r2.g1dd5880
 pkgrel=1
 pkgdesc="Python bindings for libosmium"
 url="http://osmcode.org/pyosmium"
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd pyosmium
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
