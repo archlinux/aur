@@ -1,10 +1,13 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
+
+# Maintainer: Yuxiang Li <li.yuxiang.nj at gmail dot com>
+
 pkgdesc="ROS - roslaunch is a tool for easily launching multiple ROS nodes locally and remotely via SSH, as well as setting parameters on the Parameter Server."
 url='http://ros.org/wiki/roslaunch'
 
 pkgname='ros-indigo-roslaunch'
-pkgver='1.11.19'
+pkgver='1.11.20'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,7 +38,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-roslaunch-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/roslaunch/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5772f67dadff192582b254c22fdd0225574446cbaf48a0040245e03c44cce858')
+sha256sums=('d6e8c231b8148687d34c43910413f83d536a8f66af073a2d39f54b0afc78a1a5')
 
 build() {
   # Use ROS environment variables
