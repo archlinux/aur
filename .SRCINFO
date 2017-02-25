@@ -1,0 +1,11 @@
+pkgbase = ecs-cli
+	pkgver = 0.4.6
+	pkgrel = 1
+	arch = x86_64
+	provides = ecs-cli
+	noextract = ecs-cli-linux-amd64-latest
+	source = https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest
+	md5sums = ccd6a54f8e76e105f0025fb629d0a7ba
+
+pkgname = ecs-cli
+
