@@ -2,7 +2,7 @@
 
 pkgname=cura
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A software solution for 3D printing aimed at RepRaps and the Ultimaker."
 depends=('python-pyqt5-hotfix' 'qt5-svg' 'python-scipy' 'python-pyserial' 'python-numpy' 'uranium' 'curaengine' 'cura-binary-data')
 makedepends=('qt5-tools' 'cmake')
