@@ -1,10 +1,13 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
+
+# Maintainer: Yuxiang Li <li.yuxiang.nj at gmail dot com>
+
 pkgdesc="ROS - rospy is a pure Python client library for ROS."
 url='http://ros.org/wiki/rospy'
 
 pkgname='ros-indigo-rospy'
-pkgver='1.11.19'
+pkgver='1.11.20'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +37,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-rospy-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rospy/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('70d3380a2875574c3b0761fbff5370e901183e55b28d2e2eb7efe436c0a7275b')
+sha256sums=('8a67d5ebfca3e9b55c8e56bc04c81d4ddaafbc3279be5276cf8c56e56a7e4e73')
 
 build() {
   # Use ROS environment variables
