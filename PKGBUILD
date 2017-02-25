@@ -4,7 +4,7 @@
 
 pkgname=csound
 pkgver=6.08.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A programming language for sound rendering and signal processing."
 arch=('i686' 'x86_64')
 url="http://csound.github.io"
