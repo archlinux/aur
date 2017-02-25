@@ -1,0 +1,23 @@
+From 9a601bb958bf5c5a810bede9fdcf6aa1436a35b0 Mon Sep 17 00:00:00 2001
+From: Lubosz Sarnecki <lubosz.sarnecki@collabora.co.uk>
+Date: Thu, 16 Feb 2017 21:54:57 +0100
+Subject: [PATCH] hack to fix build on Arch.
+
+---
+ CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7030dd5..4a1154d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,4 +2,6 @@ cmake_minimum_required (VERSION 2.8.11)
+ 
+ project (ktxutils)
+ 
++set(GLFW3_LIBRARY glfw)
++
+ add_subdirectory (src)
+-- 
+2.11.1
+
