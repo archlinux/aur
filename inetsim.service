@@ -1,6 +1,6 @@
 [Unit]
 Description=Inetsim - Internet Services Simulation Suite
-After=syslog.target 
+After=syslog.target
 
 [Service]
 Type=simple

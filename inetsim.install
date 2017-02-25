@@ -1,7 +1,7 @@
 post_install() {
   # add inetsim group
-  if [ ! `grep inetsim /etc/group` ]; then
-    groupadd -g 16 inetsim &>/dev/null
+  if [ ! `getent passwd inetsim` ]; then
+    groupadd -g 101 inetsim &>/dev/null
   fi
 
   # run inetsim setup script
@@ -11,6 +11,9 @@ post_install() {
 }
 
 post_upgrade() {
-  post_install $1
+  if (( $(vercmp $2 1.2.6-4) <= 0 )); then
+    groupmod -g 101 inetsim
+    chgrp -R inetsim /opt/inetsim
+  fi
 }
 

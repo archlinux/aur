@@ -1,7 +1,7 @@
 pkgbase = inetsim
 	pkgdesc = Internet Services Simulation Suite
 	pkgver = 1.2.6
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.inetsim.org
 	install = inetsim.install
 	arch = any
@@ -11,11 +11,13 @@ pkgbase = inetsim
 	depends = perl-ipc-shareable
 	depends = perl-digest-sha1
 	depends = perl-io-socket-ssl
-	optdepends = perlipq: Support for IP-based connection redirection
 	source = inetsim-1.2.6.tar.gz::http://www.inetsim.org/downloads/inetsim-1.2.6.tar.gz
 	source = inetsim.service
+	source = inetsim-1.2.6.tar.gz.asc::http://www.inetsim.org/downloads/inetsim-1.2.6.tar.gz.sig
+	validpgpkeys = 5ADF5239D9AAAD3C455094916881B9A7E9F601C8
 	sha512sums = d8460deda14fc8d110307ec025348855982abf2bfc0c19efe2b07a93fdfb54d7245a9750087344fa9b4816f412eb7c8ac93d040dbeb5642a93bf07207e3365f1
-	sha512sums = f08b4f7ae13cb7c1dc380101dcc117502cc5979be0b1a23ec26aecf708ddaecd3dd4257fae505e3a338dd921f83c24b5b9f1d75d2d6bf2ea38397e255fc883bb
+	sha512sums = b0b5561ec915985545b6a9343cff530b022694d7bf7a06d4a2e55edb4f089e9f339ac491c6db741ca076683758d7bf294a1587236c45f80e76ae7a727663cad4
+	sha512sums = SKIP
 
 pkgname = inetsim
 
