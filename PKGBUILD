@@ -19,7 +19,7 @@ source=("https://ftp.gnu.org/gnu/readline/readline-${_basever}.tar.gz"{,.sig}
         "readline-1.patch")
 if [ $_patchlevel -gt 00 ]; then
     for (( p=1; p<=$((10#${_patchlevel})); p++ )); do
-        source=(${source[@]} http://ftp.gnu.org/gnu/readline/readline-$_basever-patches/readline${_basever//./}-$(printf "%03d" $p){,.sig})
+        source=(${source[@]} https://ftp.gnu.org/gnu/readline/readline-$_basever-patches/readline${_basever//./}-$(printf "%03d" $p){,.sig})
     done
 fi
 
