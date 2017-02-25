@@ -31,13 +31,13 @@ _srcver="$(curl -s "$_digest" | grep -o "${_srcname}-7[0-9\.-]*\.tar\.xz" | \
 _srcverregex="$(echo "$_srcver" | sed 's/\./\\\./g')" # translate to a regular expression
 pkgname=imagemagick-full
 pkgver="$(echo "$_srcver"| tr '-' '.')"
-pkgrel=2
+pkgrel=3
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
 license=('custom')
 depends=('jemalloc' 'bzip2' 'libx11' 'libxext' 'libxt' 'libsm' 'zlib'
-         'autotrace-nomagick' 'fftw' 'flif-git' 'libfpx' 'djvulibre'
+         'autotrace-nomagick' 'fftw' 'flif' 'libfpx' 'djvulibre'
          'ttf-dejavu' 'fontconfig' 'freetype2' 'libraqm' 'ghostscript'
          'gsfonts' 'graphviz' 'jbigkit' 'libjpeg-turbo' 'lcms' 'lcms2'
          'openjpeg2' 'liblqr' 'xz' 'glu' 'openexr' 'pango' 'libpng'
