@@ -1,6 +1,10 @@
 post_install() {
-  systemd-sysusers gitea.conf
-  systemd-tmpfiles --create gitea.conf
+  if ! getent group gitea >/dev/null; then
+    groupadd --system gitea
+  fi
+  if ! getent passwd gitea >/dev/null; then
+    useradd --system -c 'Gitea' -g gitea -m -d /home/gitea -s /bin/bash gitea
+  fi
   chown -R gitea:gitea /var/log/gitea
   chown -R gitea:gitea /var/lib/gitea
   systemctl daemon-reload
