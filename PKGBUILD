@@ -1,17 +1,18 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=heekscnc-git
 pkgver=1143.8c70474
-pkgrel=6
+pkgrel=7
 pkgdesc="CAM add-on for HeeksCAD"
 arch=('x86_64')
 url="http://heeks.net"
 license=('custom:BSD3')
 depends=('heekscad-git')
 makedepends=('cmake')
-source=('git://github.com/Heeks/heekscnc.git')
+source=('git://github.com/Heeks/heekscnc.git' grbl.py)
 provides=('heekscnc')
 conflicts=('heekscnc')
-md5sums=('SKIP')
+md5sums=('SKIP'
+         '05033d96056948b45059df301216a42d')
 
 pkgver() {
   cd "${srcdir}/heekscnc"
@@ -21,6 +22,12 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/heekscnc"
+
+  # add grbl support
+  cp ../grbl.py nc/.
+  echo '<Machine post="grbl" reader="iso_read" suffix=".ngc" description="GRBL"/>' >> nc/machines.xml
+
+  # fix hardcoded call to python
   sed -i 's,Execute(wxString(_T("python \\"")) + path + wxString(_T("backplot\.py\\" \\"")) + m_program->m_machine\.reader + wxString(_T("\\" \\"")) + m_filename + wxString(_T("\\"")) );,Execute(wxString(_T("python2 \\"")) + path + wxString(_T("backplot\.py\\" \\"")) + m_program->m_machine\.reader + wxString(_T("\\" \\"")) + m_filename + wxString(_T("\\"")) );,g' src/PythonStuff.cpp
   sed -i 's,wxString post_path = wxString(_T("python ")) + path.GetFullPath();,wxString post_path = wxString(_T("python2 ")) + path.GetFullPath();,g' src/PythonStuff.cpp
 }
