@@ -1,0 +1,9 @@
+[Unit]
+Description=Collect battery statistics
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/battery-stats-collector -1
+
+[Install]
+WantedBy=multi-user.target
