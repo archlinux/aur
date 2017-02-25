@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=heekscnc-git
 pkgver=1143.8c70474
-pkgrel=5
+pkgrel=6
 pkgdesc="CAM add-on for HeeksCAD"
 arch=('x86_64')
 url="http://heeks.net"
@@ -31,7 +31,7 @@ build() {
   mkdir -p build
   cd build
   export OCE_DIR="/opt/oce/lib/oce-0.18"
-  cmake -DPYTHON_EXECUTABLE="/usr/bin/python2" -DPYTHON_LIBRARY="/usr/lib/libpython2.7.so" -DPYTHON_INCLUDE_DIR="/usr/include/python2.7" -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DwxWidgets_CONFIG_EXECUTABLE="/usr/bin/wx-config-2.8" -DPYTHON_EXECUTABLE="/usr/bin/python2" -DPYTHON_LIBRARY="/usr/lib/libpython2.7.so" -DPYTHON_INCLUDE_DIR="/usr/include/python2.7" -DCMAKE_INSTALL_PREFIX=/usr ..
 }
 
 package() {
