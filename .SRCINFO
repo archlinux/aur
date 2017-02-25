@@ -1,7 +1,7 @@
 pkgbase = brother-dcpl2540dw-cups
 	pkgdesc = Brother DCP-L2540DW CUPS drivers.
 	pkgver = 3.2.0_1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://support.brother.com/g/b/downloadend.aspx?c=us&lang=en&prod=dcpl2540dw_us_as&os=127&dlid=dlf101716_000&flang=4&type3=560
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = brother-dcpl2540dw-cups
 	depends = brother-dcpl2540dw-lpr
 	depends = cups
 	optdepends = brscan4: scanner support.
-	noextract = dcpl2540dwcupswrapper-3.2.0-1.i386.rpm
 	source = http://download.brother.com/welcome/dlf101716/dcpl2540dwcupswrapper-3.2.0-1.i386.rpm
 	md5sums = 5c91a139bc92684c7a454fb6bce010cd
 
