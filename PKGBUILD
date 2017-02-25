@@ -2,8 +2,8 @@
 # Contributor: Brandon Andrews <bsa@bsa.isa-geek.com>
 # Contributor: Mael Kerbiriou <mael.kerbiriouATfreeDOTfr>
 pkgname=pfstools
-pkgver=2.0.4
-pkgrel=2
+pkgver=2.0.5
+pkgrel=1
 pkgdesc="Set of command line programs for reading, writing and manipulating high-dynamic range (HDR) images"
 arch=('i686' 'x86_64')
 url="http://pfstools.sourceforge.net/"
@@ -20,7 +20,7 @@ optdepends=('freeglut: OpenGL image viewer' 'glu: OpenGL image viewer' \
 makedepends=('cmake' 'openexr' 'imagemagick' 'libtiff' 'freeglut' 'glu' 'netpbm' 'qt4')
 options=(!libtool)
 source=(http://downloads.sourceforge.net/pfstools/$pkgname-$pkgver.tgz)
-md5sums=('f17e2834798cda75d32b2fcd11826d82')
+md5sums=('3ebe0b0bc1e8e6d412374bcb9f695c3c')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
