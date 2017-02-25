@@ -15,7 +15,7 @@ makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 license=('GPL')
 url="https://cnswww.cns.cwru.edu/php/chet/readline/rltop.html"
-source=("http://ftp.gnu.org/gnu/readline/readline-${_basever}.tar.gz"{,.sig}
+source=("https://ftp.gnu.org/gnu/readline/readline-${_basever}.tar.gz"{,.sig}
         "readline-1.patch")
 if [ $_patchlevel -gt 00 ]; then
     for (( p=1; p<=$((10#${_patchlevel})); p++ )); do
@@ -23,15 +23,15 @@ if [ $_patchlevel -gt 00 ]; then
     done
 fi
 
-md5sums=('205b03a87fc83dab653b628c59b9fc91'
-         'SKIP'
-         'e1564909905d0670fca91da3dc4053f7'
-         'e299384458a4cbefaaac3f30e9cc2bba'
-         'SKIP'
-         'f9071a353e2fd52a91d32667b23715d6'
-         'SKIP'
-         '03595464cf0283286a6e07f4f01c4a70'
-         'SKIP')
+sha256sums=('750d437185286f40a369e1e4f4764eda932b9459b5ec9a731628393dd3d32334'
+            'SKIP'
+            'c0005ee37f2cddf36692a533753653de8786f9da4df4225520550a565b197c05'
+            '9ac1b3ac2ec7b1bf0709af047f2d7d2a34ccde353684e57c6b47ebca77d7a376'
+            'SKIP'
+            '8747c92c35d5db32eae99af66f17b384abaca961653e185677f9c9a571ed2d58'
+            'SKIP'
+            '9e43aa93378c7e9f7001d8174b1beb948deefa6799b6f581673f465b7d9d4780'
+            'SKIP')
 validpgpkeys=(7C0135FB088AAF6C66C650B9BB5869F064EA74AB)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
