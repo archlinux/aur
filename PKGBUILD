@@ -3,7 +3,7 @@
 pkgname=rvi-git
 _pkgname=rvi
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A 'vi' like editor for rust, written in rust."
 url="https://github.com/cedenday/rvi"
 arch=('i686' 'x86_64')
@@ -17,6 +17,7 @@ sha256sums=('SKIP')
 build() {
   cd "$_pkgname"
   cargo build --release
+  strip -s target/release/$_pkgname
   target/release/$_pkgname --completions bash > $_pkgname.bash-completion
 }
 
