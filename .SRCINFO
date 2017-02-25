@@ -12,6 +12,7 @@ pkgbase = urh
 	depends = python-pyqt5
 	depends = python-numpy
 	depends = python-psutil
+	depends = python-pyzmq
 	optdepends = hackrf: for native hackrf backend
 	optdepends = gnuradio: for USRP gnuradio backend
 	optdepends = gnuradio-osmosdr: for more gnuradio device backends (HackRF, FunCubeDongle, RTL-SDR)
