@@ -2,12 +2,12 @@
 
 _pkgname=neomutt
 pkgname=neomutt-git
-pkgver=neomutt.20161126.r1.g7d69f2a
+pkgver=neomutt.20170225.r1.gb0997a4c
 pkgrel=1
 pkgdesc='The New Mutt: powerful text-based mail client with all the best feature patches'
 url='http://www.neomutt.org/'
 license=('GPL')
-source=('git+https://github.com/neomutt/neomutt.git#branch=neomutt')
+source=('git+https://github.com/neomutt/neomutt.git#branch=master')
 sha256sums=('SKIP')
 arch=('i686' 'x86_64')
 depends=('openssl' 'gdbm' 'mime-types' 'libsasl' 'gnupg' 'gpgme' 'libidn' 'krb5' 'notmuch-runtime')
