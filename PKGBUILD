@@ -34,6 +34,8 @@ package() {
     make DESTDIR="${pkgdir}" install
 
     install -Dm0644 src/qt/res/dbb.png "${pkgdir}/usr/share/pixmaps/digitalbitbox.png"
+    install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
     install -Dm0644 "${srcdir}/digitalbitbox.desktop" "${pkgdir}/usr/share/applications/digitalbitbox.desktop"
     install -Dm0644 "${srcdir}/51-hid-digitalbitbox.rules" "${pkgdir}/usr/lib/udev/rules.d/51-hid-digitalbitbox.rules"
 }
