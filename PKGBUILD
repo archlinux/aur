@@ -6,7 +6,7 @@ pkgdesc="HeeksCNC is an open source, 3D CAD/CAM software"
 arch=('x86_64')
 url="http://heeks.net"
 license=('custom:BSD3')
-depends=('python' 'opencascade' 'wxgtk' 'libarea-git')
+depends=('python2' 'oce' 'wxgtk' 'libarea-git')
 optdepends=('heekscnc-git')
 makedepends=('cmake')
 provides=('heekscad')
@@ -20,17 +20,18 @@ pkgver() {
 }
 
 prepare() {
+  # fix the hardcoded calls to python
   sed -i 's,#find OCE or OpenCASCADE,set( CMAKE_CXX_FLAGS "-std=c++11" )\n#find OCE or OpenCASCADE,g' "${srcdir}/heekscad/CMakeLists.txt"
   sed -i 's,#find OCE or OpenCASCADE,set( CMAKE_CXX_FLAGS "-std=c++11" )\n#find OCE or OpenCASCADE,g' "${srcdir}/heekscad/src/CMakeLists.txt"
 }
 
 build() {
   msg "Starting build..."
-  export CASROOT=/opt/opencascade
   cd "${srcdir}/heekscad"
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  export OCE_DIR="/opt/oce/lib/oce-0.18"
+  cmake -DPYTHON_EXECUTABLE="/usr/bin/python2" -DPYTHON_LIBRARY="/usr/lib/libpython2.7.so" -DPYTHON_INCLUDE_DIR="/usr/include/python2.7" -DCMAKE_INSTALL_PREFIX=/usr ..
 }
 
 package() {
