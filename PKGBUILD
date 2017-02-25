@@ -9,7 +9,7 @@ url='http://openslide.org/'
 license=('LGPL')
 depends=('glibc')
 source=("https://github.com/openslide/openslide/releases/download/v3.4.1/openslide-3.4.1.tar.xz")
-md5sums=('ad9fa84775ed6b505d6f50bf6420c6bf')
+sha256sums=('9938034dba7f48fadc90a2cdf8cfe94c5613b04098d1348a5ff19da95b990564')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
