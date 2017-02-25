@@ -1,15 +1,15 @@
 pkgbase = ttf-inziu-iosevka
 	pkgdesc = A composite of Iosevka, M+ and Source Han Sans. It is fully hinted and optimized for screen display on every device, and every resolution.
-	pkgver = 1.11.0
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = http://be5invis.github.io/Iosevka/inziu.html
 	install = inziu-iosevka.install
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
-	source = http://7xpdnl.dl1.z0.glb.clouddn.com/inziu-iosevka-1.11.0.7z
+	source = http://7xpdnl.dl1.z0.glb.clouddn.com/inziu-iosevka-1.11.1.7z
 	source = https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
-	md5sums = fe49caa42fc337f74f82ad6321b1788b
+	md5sums = 819bb53480a912a1c902fdd656bcda51
 	md5sums = b640361b29fdcbfb32ced03c7a095460
 
 pkgname = ttf-inziu-iosevka
