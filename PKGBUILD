@@ -4,8 +4,8 @@
 
 pkgname=vvvvvv
 pkgver=2.2
-_pkgver=06182014
-pkgrel=2
+_pkgver=10202016
+pkgrel=3
 pkgdesc='A retro-styled 2D platformer (game sold separately)'
 arch=('i686' 'x86_64')
 url='http://thelettervsixtim.es/'
@@ -15,7 +15,7 @@ depends=('sh' 'sdl2_mixer')
 _gamepkg="${pkgname}-${_pkgver}-bin"
 source=("hib://${_gamepkg}" "${pkgname}.desktop" "${pkgname}.sh")
 md5sums=(
-    '65312dd3b51c700927b1086ba045ece1'
+    '2a67882173f36c685f532e3cce0607af'
     'f3f06f16bf7f3280279e2d3da425a5d2'
     '6d1c555a18bcd5cba8c55a62cf0964ac')
 noextract=("${_gamepkg}")
@@ -31,7 +31,7 @@ noextract=("${_gamepkg}")
 # DLAGENTS=('hib::/usr/bin/find /path/to/downloads -name $(echo %u | cut -c 7-) -exec ln -s \{\} %o \; -quit')
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Download manually to \"$(pwd)\" or setup hib:// DLAGENT in /etc/makepkg.conf."; echo "Read this PKGBUILD for more info."; exit 1')
 
-build() {
+prepare() {
   cd "${srcdir}"
 
   mkdir -p "${pkgname}-${pkgver}"
