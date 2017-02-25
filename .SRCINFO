@@ -1,0 +1,18 @@
+pkgbase = crikey
+	pkgdesc = A little program that simulates key events.
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = http://www.shallowsky.com/software/crikey/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = gcc
+	makedepends = make
+	depends = libx11
+	depends = libxt
+	depends = libxtst
+	source = http://www.shallowsky.com/software/crikey/crikey-0.8.3.tar.gz
+	sha256sums = 1be847543ff246b7634a4a0100075a94ffa2a11ce095efa2cb976ac7d9ef78f8
+
+pkgname = crikey
+
