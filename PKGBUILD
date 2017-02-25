@@ -11,18 +11,13 @@ depends=('python')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-_commit='8069f7a9ad395eb61db1cd9098db47ab2f3b6936'
-source=("git+https://github.com/tldr-pages/${pkgname}.git#commit=${_commit}"
-		'https://github.com/tldr-pages/tldr-python-client/pull/32.patch')
-md5sums=('SKIP'
-		'617fa4da21aefb6b5688d97d5fb12955')
+_commit='2e6d55f938909c3bd754887b094c4f6951d656a9'
+source=("git+https://github.com/tldr-pages/${pkgname}.git#commit=${_commit}")
+md5sums=('SKIP')
 
 
 build() {
 	cd "${srcdir}/${pkgname}"
-
-	# https://github.com/tldr-pages/tldr-python-client/pull/32
-	patch -Np1 -i ../32.patch
 
 	python setup.py build
 }
