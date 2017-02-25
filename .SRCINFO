@@ -1,23 +1,23 @@
 pkgbase = monero-bin
 	pkgdesc = Monero: the secure, private, untraceable currency - release version (includes deaemon, wallet and miner)
-	pkgver = 0.10.1
+	pkgver = 0.10.2.1
 	pkgrel = 1
 	url = https://getmonero.org/
 	arch = x86_64
 	arch = i686
 	license = BSD
-	provides = monerod=0.10.1
-	provides = monero-blockchain-export=0.10.1
-	provides = monero-blockchain-import=0.10.1
-	provides = monero-utils-deserialize=0.10.1
-	provides = monero-wallet-cli=0.10.1
-	provides = monero-wallet-rpc=0.10.1
+	provides = monerod=0.10.2.1
+	provides = monero-blockchain-export=0.10.2.1
+	provides = monero-blockchain-import=0.10.2.1
+	provides = monero-utils-deserialize=0.10.2.1
+	provides = monero-wallet-cli=0.10.2.1
+	provides = monero-wallet-rpc=0.10.2.1
 	conflicts = monero
 	backup = etc/monerod.conf
-	source = https://github.com/monero-project/monero/releases/download/v0.10.1/monero.linux.x64.v0-10-1-0.tar.bz2
+	source = https://github.com/monero-project/monero/releases/download/v0.10.2.1/monero-linux-x64-v0.10.2.1.tar.bz2
 	source = monerod.conf
 	source = monerod.service
-	sha256sums = bf09eea27c957e7e2bdd62dac250888b301d4d25abe18d4a5b930fa7477708c7
+	sha256sums = 9edba6ca91c35c6c2eb6816f9342931c88648de5beb471943ea63d0b16c9a2e4
 	sha256sums = 829445fe9acc00681f94f7b9ca6ce39713e377970b0a3d6f88c37991e1aa61b2
 	sha256sums = 0b66160a5448dedd8e84c38ba2243187217b214b1552f504b05de120b671f121
 
