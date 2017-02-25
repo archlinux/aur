@@ -1,4 +1,4 @@
-# Maintainer: Alex O'Neill <oneill.alexander.b@gmail.com>
+# Maintainer: Alex O'Neill <me@aoneill.me>
 _pkgname=spice-gtk
 pkgname=${_pkgname}2
 pkgver=0.31
