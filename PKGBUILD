@@ -3,12 +3,12 @@
 
 pkgname=pkgdistcache
 pkgver=0.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc='A distributed local-network cache for pacman packages'
 arch=('any')
 url='http://venator.ath.cx/dw/doku.php?id=linux:pkgdistcache'
 license=('GPL')
-depends=('avahi' 'python2-dbus' 'python2-gobject2' 'curl')
+depends=('avahi' 'python2-dbus' 'dbus-glib' 'python2-gobject2' 'curl')
 install="${pkgname}.install"
 source=('pkgdistcache-client'
         'pkgdistcache-daemon'
