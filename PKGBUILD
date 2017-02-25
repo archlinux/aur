@@ -1,6 +1,6 @@
 # Maintainer: Silvio Knizek <killermoehre@gmx.net>
 pkgname=reflector-timer
-pkgver=6
+pkgver=7
 pkgrel=1
 pkgdesc='A service and timer for the reflector mirrorlist upgrade.'
 arch=('any')
@@ -11,7 +11,7 @@ backup=('etc/conf.d/reflector.conf')
 source=('reflector.service'
         'reflector.timer'
         'reflector.conf')
-md5sums=('c3232b590af265131dad65b0110ccd6b'
+md5sums=('a7c75b59e15235725183f348c62577f0'
          '3d73c16ef89e6defb15f23787fd35808'
          '59bbdabd80e9c4dc3c17e0c7a1304bcd')
 
