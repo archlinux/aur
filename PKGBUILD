@@ -4,7 +4,7 @@ pkgdesc="ROS - A bond allows two processes, A and B, to know when the other has 
 url='http://www.ros.org/wiki/bond_core'
 
 pkgname='ros-indigo-bond-core'
-pkgver='1.7.16'
+pkgver='1.7.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1

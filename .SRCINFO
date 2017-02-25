@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-bond-core
 	pkgdesc = ROS - A bond allows two processes, A and B, to know when the other has terminated, either cleanly or by crashing.
-	pkgver = 1.7.16
+	pkgver = 1.7.18
 	pkgrel = 1
 	url = http://www.ros.org/wiki/bond_core
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ros-indigo-bond-core
 	depends = ros-indigo-smclib
 	depends = ros-indigo-bondcpp
 	depends = ros-indigo-bondpy
-	source = bond_core::git+https://github.com/ros-gbp/bond_core-release.git#tag=release/indigo/bond_core/1.7.16-0
+	source = bond_core::git+https://github.com/ros-gbp/bond_core-release.git#tag=release/indigo/bond_core/1.7.18-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-bond-core
