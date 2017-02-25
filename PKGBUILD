@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS Master implementation."
 url='http://ros.org/wiki/rosmaster'
 
 pkgname='ros-indigo-rosmaster'
-pkgver='1.11.19'
+pkgver='1.11.20'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -26,7 +26,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-rosmaster-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rosmaster/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('60efa549efbc15fae888875af90a7383f061cf045913ba3345020e9123a69015')
+sha256sums=('c926ead32e695e9a0171321863b3c45ee7e0a5d1273fb29f62e3a2d1bbb28b23')
 
 build() {
   # Use ROS environment variables
