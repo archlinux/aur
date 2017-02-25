@@ -1,6 +1,6 @@
-diff -ruN dlib-19.2/dlib/CMakeLists.txt dlib-19.2-patched/dlib/CMakeLists.txt
---- dlib-19.2/dlib/CMakeLists.txt	2016-10-11 07:36:19.000000000 +0800
-+++ dlib-19.2-patched/dlib/CMakeLists.txt	2016-10-30 10:36:04.000000000 +0800
+diff -ruN dlib-19.3/dlib/CMakeLists.txt dlib-19.3-patched/dlib/CMakeLists.txt
+--- dlib-19.3/dlib/CMakeLists.txt	2016-10-11 07:36:19.000000000 +0800
++++ dlib-19.3-patched/dlib/CMakeLists.txt	2016-10-30 10:36:04.000000000 +0800
 @@ -308,6 +308,7 @@
           if (PNG_FOUND AND LIBPNG_IS_GOOD)
              include_directories(${PNG_INCLUDE_DIR})
@@ -9,9 +9,9 @@ diff -ruN dlib-19.2/dlib/CMakeLists.txt dlib-19.2-patched/dlib/CMakeLists.txt
              set(REQUIRES_LIBS " libpng")
           else()
              # If we can't find libpng then statically compile it in.
-diff -ruN dlib-19.2/dlib/cmake_utils/cmake_find_blas.txt dlib-19.2-patched/dlib/cmake_utils/cmake_find_blas.txt
---- dlib-19.2/dlib/cmake_utils/cmake_find_blas.txt	2016-10-11 07:36:19.000000000 +0800
-+++ dlib-19.2-patched/dlib/cmake_utils/cmake_find_blas.txt	2016-10-30 10:36:04.000000000 +0800
+diff -ruN dlib-19.3/dlib/cmake_utils/cmake_find_blas.txt dlib-19.3-patched/dlib/cmake_utils/cmake_find_blas.txt
+--- dlib-19.3/dlib/cmake_utils/cmake_find_blas.txt	2016-10-11 07:36:19.000000000 +0800
++++ dlib-19.3-patched/dlib/cmake_utils/cmake_find_blas.txt	2016-10-30 10:36:04.000000000 +0800
 @@ -314,6 +314,116 @@
      endif()
  
