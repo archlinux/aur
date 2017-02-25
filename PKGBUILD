@@ -1,13 +1,16 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
+
+# Maintainer: Yuxiang Li <li.yuxiang.nj at gmail dot com>
+
 pkgdesc="ROS - C++ implementation of bond, a mechanism for checking when another process has terminated."
 url='http://www.ros.org/wiki/bondcpp'
 
 pkgname='ros-indigo-bondcpp'
-pkgver='1.7.16'
+pkgver='1.7.18'
 _pkgver_patch=0
 arch=('any')
-pkgrel=5
+pkgrel=0
 license=('BSD')
 
 ros_makedepends=(ros-indigo-bond

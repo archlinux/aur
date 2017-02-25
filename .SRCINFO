@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-bondcpp
 	pkgdesc = ROS - C++ implementation of bond, a mechanism for checking when another process has terminated.
-	pkgver = 1.7.16
-	pkgrel = 5
+	pkgver = 1.7.18
+	pkgrel = 0
 	url = http://www.ros.org/wiki/bondcpp
 	arch = any
 	license = BSD
@@ -20,7 +20,7 @@ pkgbase = ros-indigo-bondcpp
 	depends = ros-indigo-roscpp
 	depends = util-linux
 	depends = boost
-	source = bondcpp::git+https://github.com/ros-gbp/bond_core-release.git#tag=release/indigo/bondcpp/1.7.16-0
+	source = bondcpp::git+https://github.com/ros-gbp/bond_core-release.git#tag=release/indigo/bondcpp/1.7.18-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-bondcpp
