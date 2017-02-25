@@ -1,10 +1,13 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
+
+# Maintainer: Yuxiang Li <li.yuxiang.nj at gmail dot com>
+
 pkgdesc="ROS - roslang is a common package that all ROS client libraries depend on."
 url='http://ros.org/wiki/roslang'
 
 pkgname='ros-indigo-roslang'
-pkgver='1.11.12'
+pkgver='1.11.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +30,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros-release-release-indigo-roslang-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/indigo/roslang/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ad65109c7bbba369edef15432b8933e0d4ec33d9780489c1402de81e35ff2285')
+sha256sums=('77add06661d2619eab2bc83b950c1ddf0b2f4f1bef3f9a13dbf3481dd023e320')
 
 build() {
   # Use ROS environment variables
