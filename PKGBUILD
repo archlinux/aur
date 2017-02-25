@@ -27,7 +27,7 @@ build() {
     hg pull -u || true
     msg "The local files are updated."
   else
-    hg clone -r stable-2.0 $_hgroot $_hgrepo || true
+    hg clone -b default $_hgroot $_hgrepo || true
   fi
 
   msg "Mercurial checkout done or server timeout"
