@@ -1,13 +1,13 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=libarea-git
 pkgver=120.f1986ac
-pkgrel=5
+pkgrel=6
 pkgdesc="Library and python module for pocketing and profiling operations"
 arch=('x86_64')
 provides=('libarea')
 url="https://github.com/Heeks/libarea"
 license=('custom:BSD3')
-depends=('python' 'opencascade' 'boost')
+depends=('python' 'oce' 'boost')
 makedepends=('git' 'cmake')
 source=('git://github.com/Heeks/libarea.git')
 md5sums=('SKIP')
@@ -27,11 +27,11 @@ prepare() {
 
 build() {
   msg "Starting build..."
-  export CASROOT=/opt/opencascade
   cd libarea
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
+  export OCE_DIR="/opt/oce/lib/oce-0.18"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 }
 
 package() {
