@@ -2,7 +2,7 @@
 
 pkgname='undistract-me-git'
 pkgver=r58.3c3054c
-pkgrel=7
+pkgrel=8
 arch=('any')
 url="https://github.com/jml/undistract-me"
 depends=('libnotify' 'xorg-xprop')
