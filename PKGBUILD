@@ -24,7 +24,7 @@ pkgver() {
   build() {
   cd $_gitname
 ./autogen.sh
-  ./configure --prefix=/usr --enable-custom-modes --disable-static
+  ./configure --prefix=/usr --enable-custom-modes
   make
 }
 
