@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 pkgname=heekscnc-git
 pkgver=1143.8c70474
-pkgrel=4
+pkgrel=5
 pkgdesc="CAM add-on for HeeksCAD"
 arch=('x86_64')
 url="http://heeks.net"
@@ -21,15 +21,17 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/heekscnc"
+  sed -i 's,Execute(wxString(_T("python \\"")) + path + wxString(_T("backplot\.py\\" \\"")) + m_program->m_machine\.reader + wxString(_T("\\" \\"")) + m_filename + wxString(_T("\\"")) );,Execute(wxString(_T("python2 \\"")) + path + wxString(_T("backplot\.py\\" \\"")) + m_program->m_machine\.reader + wxString(_T("\\" \\"")) + m_filename + wxString(_T("\\"")) );,g' src/PythonStuff.cpp
+  sed -i 's,wxString post_path = wxString(_T("python ")) + path.GetFullPath();,wxString post_path = wxString(_T("python2 ")) + path.GetFullPath();,g' src/PythonStuff.cpp
 }
 
 build() {
   msg "Starting build..."
-  export CASROOT=/opt/opencascade
   cd "${srcdir}/heekscnc"
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  export OCE_DIR="/opt/oce/lib/oce-0.18"
+  cmake -DPYTHON_EXECUTABLE="/usr/bin/python2" -DPYTHON_LIBRARY="/usr/lib/libpython2.7.so" -DPYTHON_INCLUDE_DIR="/usr/include/python2.7" -DCMAKE_INSTALL_PREFIX=/usr ..
 }
 
 package() {
