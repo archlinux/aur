@@ -3,7 +3,7 @@
 
 pkgname=nand2tetris
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Software suite accompanying Nand2Tetris course."
 arch=('any')
 url="http://www.nand2tetris.org/"
@@ -21,16 +21,16 @@ source=(http://www.nand2tetris.org/software/nand2tetris.zip
         n2tHardwareSimulator.desktop
         n2tAssembler.desktop
 )
-md5sums=('701cdefa71d59b2d03c02c65e9af151e'
-         '9c06f1ca0a0323638a7523f0d4dd85a3'
-         '99d421df02cb61b735c998e524889ca6'
-         'f2d16dd061e09dcc128e944ba74da237'
-         '19d7f3c833d2e689c122729151ba2e02'
-         '06a58b051ef4cf27372ae92f1540a6f5'
-         '3170c0923d01e8f70378d668ac8a2eed'
-         'be9557bc67ba66c63f565bfcf35f2550'
-         'fa26bd9b1d54bf67c357d560b0b545bc'
-         'abf1c846bf3e9216bfaaea0acc0478f1')
+sha256sums=('f4ea1e104c9296f98d5b3ebd30acc283a876fedcf289f7679ad80885902bebe4'
+            'f93e4c08ed6af6a687f8d144598f998a19ac544d9fe6da05c162932d00f6a592'
+            'f05fbcd9d86e7151c2e16682792586fd51086fa4864695ff8600256c15eb83d4'
+            '838dda39a97694ef1635ebbb0f6aa850623e281f70ef1e699930ee72e4934361'
+            '38884a770a7535e35363ffffb8918a13ff83f67281c71e42b488f645608564cc'
+            '02c0ae49624ac9cbc22724edbcbe2a27dfa676bc108d5edffcd4fe70ed8e1433'
+            '4d7f229975ae964012e61f2f6cd30a0b2f014b7fc81d7bc8b7eed869a1e2313c'
+            '22ae5ab8f278d5f1a6084f2a4bf21702795d8e4d2e24dea4fc92dd1c3df8681f'
+            '054d1883e9eeaef754d9c4f15868d3722c08672a34a8d7dcdb242620ed22ba51'
+            '2cd1b2c93dd68de97b7c3d9504dc850f4b60774065a70aa8496ba82c7889dc89')
 
 package() {
   cd ${srcdir}/${pkgname}
