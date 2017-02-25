@@ -1,13 +1,13 @@
 pkgbase = cloud66-toolbelt
 	pkgdesc = Cloud66 Toolbelt
-	pkgver = 0.1.45
+	pkgver = 0.1.50
 	pkgrel = 1
-	url = https://help.cloud66.com/category/toolbelt
+	url = https://help.cloud66.com/toolbelt/toolbelt-introduction
 	arch = x86_64
 	license = unknown
-	source = http://downloads.cloud66.com/cx/cx_0.1.45_linux_amd64.tar.gz
-	md5sums = 67d6444b36c5eea45061f0800eb9639d
-	sha256sums = b6adcdbdf04c0eda73692d5852f0c28399f554b15c426bd78b7801fcf5688090
+	source = http://downloads.cloud66.com/cx/cx_0.1.50_linux_amd64.tar.gz
+	md5sums = 55388fee262fba58e39eff5c7a30f1cc
+	sha256sums = 8d0461c15afb771a0759d11d84181098f169d08dcfd7001fbdfc3f81de33ccc8
 
 pkgname = cloud66-toolbelt
 
