@@ -1,10 +1,13 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
+
+# Maintainer: Yuxiang Li <li.yuxiang.nj at gmail dot com>
+
 pkgdesc="ROS - A bond allows two processes, A and B, to know when the other has terminated, either cleanly or by crashing."
 url='http://www.ros.org/wiki/bond'
 
 pkgname='ros-indigo-bond'
-pkgver='1.7.16'
+pkgver='1.7.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
