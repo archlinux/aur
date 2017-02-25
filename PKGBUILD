@@ -19,8 +19,8 @@ url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('expat' 'gcc-libs' 'gdal' 'geos' 'glibc' 'libspatialite' 'postgresql-libs' 'proj'
-         'qca-qt4' 'qscintilla-qt4' 'qt4' 'qwt' 'qwtpolar' 'spatialindex' 'sqlite'
-         'python2' 'python2-httplib2' 'python2-future' 'python2-qscintilla-qt4' 'python2-sip' 'python2-six')
+         'qca-qt4' 'qscintilla-qt4<2.10' 'qt4' 'qwt' 'qwtpolar' 'spatialindex' 'sqlite'
+         'python2' 'python2-httplib2' 'python2-future' 'python2-qscintilla-qt4<2.10' 'python2-sip' 'python2-six' 'python-qscintilla-qt4-common<2.10')
 makedepends=('cmake' 'gsl' 'perl' 'txt2tags' 'sip<4.19.1' 'python2-sip<4.19.1')
 optdepends=('gpsbabel: GPS Tool plugin'
             'gsl: Georeferencer plugin'
