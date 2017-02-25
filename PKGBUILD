@@ -13,7 +13,7 @@ license=('GPL')
 url='http://www.cypherpunks.ca/otr/'
 depends=('libotr>=4.0.2' 'pidgin' 'perl-xml-parser')
 makedepends=('intltool')
-source=("http://www.cypherpunks.ca/otr/${pkgname}-${pkgver}.tar.gz"{,.asc})
+source=("https://www.cypherpunks.ca/otr/${pkgname}-${pkgver}.tar.gz"{,.asc})
 md5sums=('7ef14e1334a4bc80e5d530f9a3cfc626'
          'SKIP')
 validpgpkeys=(22DF3305DF56667CE15784FCF24DE08F42C2ABAD) # OTR Dev Team
