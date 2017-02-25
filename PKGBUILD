@@ -2,13 +2,13 @@
 # Contributor: raimar <navitconfigurator@web.de>
 
 pkgname=navitconfigurator-git
-pkgver=16.20130127
-pkgrel=3
+pkgver=19.20170225
+pkgrel=1
 pkgdesc="NavitConfigurator is an editor for configuring the open source navigation program Navit. It supports Android devices to test the result directly."
 arch=('i686' 'x86_64')
 url='https://sourceforge.net/projects/navitconfigurat/'
 license=('LGPL3')
-depends=('qt4' 'qtwebkit')
+depends=('qt5-webkit')
 makedepends=('git')
 provides=('navitconfigurator')
 conflicts=('navitconfigurator')
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
 	cd $_gitroot
-	qmake-qt4
+	qmake
 	make
 }
 
