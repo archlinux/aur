@@ -29,7 +29,7 @@ build() {
 package() {
     cd "${srcdir}/${gitname}"
 
-    make DESTDIR="${pkgdir}" install-recursive
+    make DESTDIR="${pkgdir}" install
 
-    install -Dm0644 "${srcdir}/51-hid-digitalbitbox.rules" "${pkgdir}/usr/lib/udev/rules.d/51-digitalbitbox.rules"
+    install -Dm0644 "${srcdir}/51-hid-digitalbitbox.rules" "${pkgdir}/usr/lib/udev/rules.d/51-hid-digitalbitbox.rules"
 }
