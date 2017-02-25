@@ -1,6 +1,6 @@
 pkgbase = qtbitcointrader
 	pkgdesc = Secure Trading Client for most popular Bitcoin exchanges
-	pkgver = 1.30.03
+	pkgver = 1.30.04
 	pkgrel = 1
 	url = http://centrabit.com/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = qtbitcointrader
 	license = GPL3
 	depends = qt5-multimedia
 	depends = qt5-script
-	source = https://downloads.sourceforge.net/project/bitcointrader/SRC/QtBitcoinTrader-1.30.03.tar.gz
-	sha256sums = d401e5dbb0ef38d3449d161bd9d470a3605daceeae843c731a854e75e6467bca
+	source = https://downloads.sourceforge.net/project/bitcointrader/SRC/QtBitcoinTrader-1.30.04.tar.gz
+	sha256sums = 378bbdf7679ce25a0212b96a55949b14f17e2225cf059d8de18975da9822006d
 
 pkgname = qtbitcointrader
 
