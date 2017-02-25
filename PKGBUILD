@@ -1,0 +1,121 @@
+# $Id$
+# Maintainer: Grey Christoforo <first name at last name dot net>
+
+pkgbase=pyqt5-hotfix
+pkgname=('pyqt5-common-hotfix' 'python-pyqt5-hotfix' 'python2-pyqt5-hotfix')
+pkgver=5.8
+_pkgver=$pkgver
+pkgrel=1
+arch=('i686' 'x86_64')
+url="http://riverbankcomputing.co.uk/software/pyqt/intro"
+license=('GPL')
+makedepends=('python-sip' 'python2-sip' 'python-opengl' 'python2-opengl'
+             'python2-dbus' 'python-dbus' 'qt5-connectivity'
+             'qt5-multimedia' 'qt5-tools' 'qt5-serialport' 'qt5-svg'
+             'qt5-webengine' 'qt5-webkit' 'qt5-websockets' 'qt5-x11extras')
+source=("http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-$pkgver/PyQt5_gpl-$pkgver.tar.gz" hotfix.patch)
+md5sums=('ac04c0bfc1f05f5a1c2a1edd2640235c'
+         'de7b2781874ff0c7c0d710f718cfa01a')
+
+prepare() {
+  pushd PyQt5_gpl-${_pkgver}
+  # Support Qt 5.8
+  patch -p1 -i ../hotfix.patch
+  popd
+
+  # The additional include path was removed due to this line, I don't really know why they are doing this...
+  sed -i '/target_config.dbus_inc_dirs = \[\]/d' PyQt5_gpl-${_pkgver}/configure.py
+
+  cp -a PyQt5_gpl-${_pkgver}{,-py2}
+}
+
+build() {
+  cd "$srcdir"/PyQt5_gpl-${_pkgver}
+  python configure.py \
+    --confirm-license \
+    --no-sip-files \
+    --qsci-api \
+    -q /usr/bin/qmake-qt5
+
+  # Thanks Gerardo for the rpath fix
+  find -name 'Makefile' | xargs sed -i 's|-Wl,-rpath,/usr/lib||g;s|-Wl,-rpath,.* ||g'
+
+  make
+
+  cd "$srcdir"/PyQt5_gpl-${_pkgver}-py2
+  python2 configure.py \
+    --confirm-license \
+    --no-sip-files \
+    --qsci-api \
+    -q /usr/bin/qmake-qt5
+
+  # Thanks Gerardo for the rpath fix
+  find -name 'Makefile' | xargs sed -i 's|-Wl,-rpath,/usr/lib||g;s|-Wl,-rpath,.* ||g'
+
+  make
+}
+
+package_pyqt5-common-hotfix(){
+  pkgdesc="Common PyQt files shared between python-pyqt5 and python2-pyqt5"
+  depends=('qt5-base')
+  provides=('pyqt5-common')
+  conflicts=('pyqt5-common')
+
+  cd PyQt5_gpl-${_pkgver}
+  install -Dm644 PyQt5.api "${pkgdir}"/usr/share/qt/qsci/api/python/PyQt5.api
+
+  install -d "${pkgdir}"/usr/share/sip/PyQt5
+  cp -a sip/* "${pkgdir}"/usr/share/sip/PyQt5
+}
+
+package_python-pyqt5-hotfix(){
+  pkgdesc="A set of Python 3.x bindings for the Qt5 toolkit"
+  depends=('python-sip' 'pyqt5-common')
+  optdepends=('python-opengl: enable OpenGL 3D graphics in PyQt applications'
+              'python-dbus: for python-dbus mainloop support'
+              'qt5-multimedia: QtMultimedia, QtMultimediaWidgets'
+              'qt5-tools: QtHelp, QtDesigner'
+              'qt5-svg: QtSvg'
+              'qt5-webkit: QtWebKit, QtWebKitWidgets'
+              'qt5-xmlpatterns: QtXmlPatterns'
+              'qt5-declarative: QtQml, qmlplugin'
+              'qt5-serialport: QtSerialPort')
+  provides=('python-pyqt5')
+  conflicts=('python-pyqt5')
+
+  cd PyQt5_gpl-${_pkgver}
+  # INSTALL_ROOT is needed for the QtDesigner module, the other Makefiles use DESTDIR
+  make DESTDIR="${pkgdir}" INSTALL_ROOT="${pkgdir}" install
+
+  # Provided by pyqt-common
+  rm "${pkgdir}"/usr/share/qt/qsci/api/python/PyQt5.api
+}
+
+package_python2-pyqt5-hotfix(){
+  pkgdesc="A set of Python 2.x bindings for the Qt5 toolkit"
+  depends=('python2-sip' 'pyqt5-common')
+  optdepends=('python2-opengl: enable OpenGL 3D graphics in PyQt applications'
+              'python-dbus: for python-dbus mainloop support'
+              'qt5-multimedia: QtMultimedia, QtMultimediaWidgets'
+              'qt5-tools: QtHelp, QtDesigner'
+              'qt5-svg: QtSvg'
+              'qt5-webkit: QtWebKit, QtWebKitWidgets'
+              'qt5-xmlpatterns: QtXmlPatterns'
+              'qt5-declarative: QtQml, qmlplugin'
+              'qt5-serialport: QtSerialPort')
+  provides=('python2-pyqt5')
+  conflicts=('python2-pyqt5')
+
+  cd PyQt5_gpl-${_pkgver}-py2
+  # INSTALL_ROOT is needed for the QtDesigner module, the other Makefiles use DESTDIR
+  make DESTDIR="${pkgdir}" INSTALL_ROOT="${pkgdir}" install
+
+  # Fix conflicts with python-pyqt5
+  mv "${pkgdir}"/usr/bin/{,python2-}pyuic5
+  mv "${pkgdir}"/usr/bin/{,python2-}pylupdate5
+  mv "${pkgdir}"/usr/bin/{,python2-}pyrcc5
+
+  rm "${pkgdir}"/usr/lib/qt/plugins/designer/libpyqt5.so
+  rm "${pkgdir}"/usr/lib/qt/plugins/PyQt5/libpyqt5qmlplugin.so
+  rm "${pkgdir}"/usr/share/qt/qsci/api/python/PyQt5.api
+}
