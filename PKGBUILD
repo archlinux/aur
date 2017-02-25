@@ -7,7 +7,7 @@ arch=(x86_64)
 url="https://github.com/nahwar/webmc"
 license=('GPL')
 depends=(ffmpeg qt5-base xterm)
-makedepends=(coreutils git qt5-base gcc)
+makedepends=(coreutils git gcc)
 source=(git+"https://github.com/nahwar/webmc.git")
 md5sums=('SKIP')
 

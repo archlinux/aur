@@ -9,7 +9,6 @@ pkgbase = webmc
 	license = GPL
 	makedepends = coreutils
 	makedepends = git
-	makedepends = qt5-base
 	makedepends = gcc
 	depends = ffmpeg
 	depends = qt5-base
