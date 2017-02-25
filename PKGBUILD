@@ -1,10 +1,13 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
+
+# Maintainer: Yuxiang Li <li.yuxiang.nj at gmail dot com>
+
 pkgdesc="ROS - rosclean: cleanup filesystem resources (e.g."
 url='http://ros.org/wiki/rosclean'
 
 pkgname='ros-indigo-rosclean'
-pkgver='1.11.12'
+pkgver='1.11.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +30,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros-release-release-indigo-rosclean-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/indigo/rosclean/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('35740867a800d84c3606ac435e42ea7669c21374d7cac5d10b4a872feb716bba')
+sha256sums=('02189ed1a1128443caced922e9af8e3a299c82cf3feec15b1a822a8d45e2e1e1')
 
 build() {
   # Use ROS environment variables
