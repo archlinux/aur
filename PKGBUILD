@@ -1,6 +1,6 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=qt5-jsonserializer
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A library to perform generic seralization and deserialization of QObjects"
 arch=('i686' 'x86_64')
@@ -21,12 +21,12 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-
-  make module
+  
   make INSTALL_ROOT="$pkgdir" install
-  install -D -m644 module/mkspecs/modules/qt_lib_jsonserializer.pri "$pkgdir/usr/lib/qt/mkspecs/modules/qt_lib_jsonserializer.pri"
-  install -d "$pkgdir/usr/include/qt/QtJsonSerializer/"
-  install -D -m644 module/include/QtJsonSerializer/* "$pkgdir/usr/include/qt/QtJsonSerializer/"
+  
+  FILE=$pkgdir/usr/lib/libQt5JsonSerializer.prl
+  tail -n +2 "$FILE" > "$FILE.tmp"
+  mv "$FILE.tmp" "$FILE"
   
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
