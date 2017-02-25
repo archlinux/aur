@@ -3,6 +3,7 @@ Description=Beehive
 
 [Service]
 User=beehive
+WorkingDirectory=/usr/share/webapps/beehive
 ExecStart=/usr/share/webapps/beehive/beehive -config /etc/beehive/beehive.conf
 
 [Install]
