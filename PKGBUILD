@@ -2,13 +2,14 @@
 
 pkgname=vmware-workstation
 pkgver=12.5.2_4638234
-pkgrel=11
+pkgrel=12
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
 license=(custom)
 conflicts=(
   vmware-modules-dkms
+  vmware-ovftool
   vmware-systemd-services
 )
 depends=(
@@ -78,10 +79,10 @@ package() {
   # Make directories and copy files.
 
   mkdir -p \
-    "$pkgdir/usr"/{share,bin,doc,lib/vmware/setup} \
+    "$pkgdir/usr"/{share,bin,doc} \
+    "$pkgdir/usr/lib"/{vmware-vix,vmware-ovftool} \
+    "$pkgdir/usr/lib/vmware"/{'Shared VMs',setup} \
     "$pkgdir/run/vmware" \
-    "$pkgdir/var/lib/vmware/Shared VMs" \
-    "$pkgdir/usr/lib/vmware-vix" \
     "$pkgdir/etc/vmware"
 
   cd "$srcdir/extracted"
@@ -125,6 +126,10 @@ package() {
     vmware-vix-core/vixwrapper-config.txt \
     "$pkgdir/usr/lib/vmware-vix"
 
+  cp -r \
+    vmware-ovftool/* \
+    "$pkgdir/usr/lib/vmware-ovftool"
+
   for isoimage in \
     freebsd \
     linux \
@@ -165,8 +170,8 @@ package() {
     "$pkgdir/usr/bin"/* \
     "$pkgdir/usr/lib/vmware/bin"/* \
     "$pkgdir/usr/lib/vmware/setup/vmware-config" \
-    "$pkgdir/usr/lib/vmware/lib"/{wrapper-gtk24.sh,libgksu2.so.0/gksu-run-helper}
-
+    "$pkgdir/usr/lib/vmware/lib"/{wrapper-gtk24.sh,libgksu2.so.0/gksu-run-helper} \
+    "$pkgdir/usr/lib/vmware-ovftool"/{ovftool,ovftool.bin}
 
   chmod -R 600 "$pkgdir/etc/vmware/ssl"
   chmod +s "$pkgdir/usr/lib/vmware/bin/vmware-vmx"
@@ -195,6 +200,7 @@ package() {
   done
 
   ln -s /usr/lib/vmware/icu "$pkgdir/etc/vmware/icu"
+  ln -s /usr/lib/vmware-ovftool/ovftool "$pkgdir/usr/bin/ovftool"
 
 
   # Replace placeholder "variables" with real paths.
