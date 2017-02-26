@@ -9,7 +9,7 @@
 
 _pkgname=bleachbit
 pkgname=bleachbit-git
-pkgver=r3751.87065211
+pkgver=r3879.f3876be9
 pkgrel=1
 pkgdesc='Deletes unneeded files to free disk space and maintain privacy.'
 url='https://www.bleachbit.org/'
@@ -18,7 +18,8 @@ source=('git://github.com/bleachbit/bleachbit.git')
 sha256sums=('SKIP')
 arch=('any')
 depends=('python2' 'gtk2' 'pygtk' 'desktop-file-utils' 'gtk-update-icon-cache' 'hicolor-icon-theme')
-optdepends=('cleanerml-git: Bonus pack')
+optdepends=('cleanerml-git: Bonus cleaner pack')
+makedepends=('git')
 conflicts=('bleachbit')
 provides=('bleachbit')
 
