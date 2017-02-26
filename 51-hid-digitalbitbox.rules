@@ -1,1 +1,2 @@
 SUBSYSTEM=="usb", TAG+="uaccess", SYMLINK+="dbb%n", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2402"
+SUBSYSTEM=="hidraw", TAG+="uaccess", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2402"
