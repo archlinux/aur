@@ -40,3 +40,22 @@
 
 	* fez-1:20140624-1
 		- Binary name changed; still same file and package, therefore no pkgver/pkgrel increase ( fez-1409159048-bin )
+
+2016-02-25 | Eric Anderson <ejona86@gmail.com>
+
+  * fez-1:20161128-1
+    - Updated to fez-11282016-bin. This is also known as version 1.12
+
+    - New version now depends on libogg, libvorbis
+
+    - Swapped to bsdtar; unzip is no longer a makedep
+
+    - .desktop icon now supports theming
+
+    - .desktop no longer depends on PATH
+
+    - Swap to simplified shell script for execution that uses exec, supports
+      sh, and has no conditionals; Bash dependency removed
+
+    - Reworked build file into standard steps (prepare, build, package). This
+      makes makepkg flags like -R useful

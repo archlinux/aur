@@ -1,9 +1,9 @@
-# Maintainer: J0k3r <moebius282 at gmail dot com>
+# Contributor: J0k3r <moebius282 at gmail dot com>
+# Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=fez
-_datever="1409159048"
-# _binver="1379017964"
-pkgver="20140624"
+_datever="11282016"
+pkgver="20161128"
 pkgrel=1
 epoch=1
 pkgdesc="A game where you play as Gomez, a 2D creature living in what he believes is a 2D world"
@@ -11,19 +11,18 @@ url="http://fezgame.com/"
 license=('unknown')
 arch=('i686' 'x86_64')
 groups=("games")
-depends=('gcc-libs' 'bash' 'sdl2' 'openal')
-makedepends=('unzip' 'imagemagick')
+depends=('gcc-libs' 'sdl2' 'openal' 'libvorbis' 'libogg')
+makedepends=('imagemagick')
 changelog="${pkgname}.changelog"
-_purgelibs=('libopenal.so.1' 'libSDL2-2.0.so.0')
-# _archivename="fez-${_datever}-${_binver}-bin"
+_keeplibs=('libmojoshader.so' 'libMonoPosixHelper.so')
 _archivename="fez-${_datever}-bin"
 source=("hib://${_archivename}"
         "${pkgname}.desktop"
-        "${pkgname}.changelog")
+        "${pkgname}.sh")
 noextract=("${_archivename}")
-sha256sums=('1c29de47db568c1e0abc9997ccaa41ce490857db18dd9c3aaad79a5367330895'
-            'f2dc00693860653ee62da751e1004c7240a9ac454ece8e72b354fdda259b047d'
-            '9560decb9387cc9b85c43ca4c04fd79c9521c7f2eecc8acdf5ae9acb075ecc75')
+sha256sums=('cc929f84ab5ee00a8dd1400a9c4809710817fbf03da8f72ea364854b15936288'
+            'c8f8a983d2fff58e77287a5e132bb06e84f17d0ac67c44b5fb9fe1e13ef006c0'
+            '3d26540f0f48462f4669b094f1963caffa817361ee357bcb5f5aeb8f5a0ce518')
 PKGEXT=".pkg.tar"
 
 
@@ -39,50 +38,48 @@ PKGEXT=".pkg.tar"
 # DLAGENTS=('hib::/usr/bin/find /path/to/downloads -name $(echo %u | cut -c 7-) -exec ln -s \{\} %o \; -quit')
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Download manually to \"$(pwd)\" or setup hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
 
+prepare()
+{
+  mkdir -p "${pkgname}-${pkgver}"
+  bsdtar -x -C "${pkgname}-${pkgver}" -f "${_archivename}"
+}
+
+build()
+{
+  cd "${pkgname}-${pkgver}"
+
+  # The Icon Theme Specification only supports png, svg, and xpm
+  convert "data/${pkgname^^}.bmp" "${pkgname}.png"
+}
 
 package()
 {
-  mkdir -p "${pkgdir}/opt/${pkgname}/"
+  cd "${pkgname}-${pkgver}"
 
-# unzip is stupid..
-  unzip -qq "${srcdir}/${_archivename}" -d "${pkgdir}/opt/tmp/" 'data/*' || true
-
-  mv "${pkgdir}/opt/tmp/data/"* "${pkgdir}/opt/${pkgname}/"
-  rm -r "${pkgdir}/opt/tmp/"
-
+  install -d "${pkgdir}/opt"
+  cp -a "data/" "${pkgdir}/opt/${pkgname}/"
+  rm -r "${pkgdir}/opt/${pkgname}/"{lib,lib64,FEZ.bin.*,FEZ}
 
   if [[ "$CARCH" == "x86_64" ]]; then
-
-    rm -r "${pkgdir}/opt/${pkgname}/lib/"
-    rm "${pkgdir}/opt/${pkgname}/${pkgname^^}.bin.x86"
-    for i in "${_purgelibs[@]}"; do
-      rm "${pkgdir}/opt/${pkgname}/lib64/${i}"
-    done
-
+    install -m755 "data/${pkgname^^}.bin.x86_64" \
+        "${pkgdir}/opt/${pkgname}/"
+    _libdir=lib64
   else
-
-    rm -r "${pkgdir}/opt/${pkgname}/lib64/"
-    rm "${pkgdir}/opt/${pkgname}/${pkgname^^}.bin.x86_64"
-    for i in "${_purgelibs[@]}"; do
-      rm "${pkgdir}/opt/${pkgname}/lib/${i}"
-    done
-
+    install -m755 "data/${pkgname^^}.bin.x86" \
+        "${pkgdir}/opt/${pkgname}/"
+    _libdir=lib
   fi
 
-# patching the included startup script so it supports being symlinked
-# removing the steam bits out of the lib search path; i don't know why it contains a steam dir in the non-steam version..
-  sed -i \
-  -e 's|`dirname "$0"`|$(dirname \"$(readlink -f \"$0\")\")|' \
-  "${pkgdir}/opt/${pkgname}/${pkgname^^}"
+  install -d "${pkgdir}/opt/${pkgname}/${_libdir}"
+  for i in "${_keeplibs[@]}"; do
+    install -m755 "data/${_libdir}/${i}" \
+        "${pkgdir}/opt/${pkgname}/${_libdir}/${i}"
+  done
 
-  mkdir -p "${pkgdir}/usr/bin/"
-  ln -s "/opt/${pkgname}/${pkgname^^}" "${pkgdir}/usr/bin/${pkgname}"
+  install -D -m755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
-# the spec only specifies png, svg and xpm..
-
-  convert "${pkgdir}/opt/${pkgname}/${pkgname^^}.bmp" "${pkgdir}/opt/${pkgname}/${pkgname}.png"
-
-
-  install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -D -m644 "${pkgdir}/opt/${pkgname}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -D -m644 "${srcdir}/${pkgname}.desktop" \
+      "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -D -m644 "${pkgname}.png" \
+      "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
