@@ -1,4 +1,4 @@
-# Maintainer: Alireza Savand <alireza.savand@gmail.com>
+# Maintainer: Evert Prants <imsonotsleepy@gmail.com>
 # Contributors:
 #	* olive
 #	* mirrr
