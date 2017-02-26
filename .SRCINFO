@@ -1,0 +1,18 @@
+pkgbase = openvpn-protonvpn
+	pkgdesc = OpenVPN configuration files and helper for protonvpn.com
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://protonvpn.com/
+	arch = any
+	license = MIT
+	makedepends = unzip
+	makedepends = coreutils
+	depends = openvpn
+	depends = systemd
+	provides = protonvpn
+	noextract = zip
+	source = https://protonvpn.com/download/ProtonVPN_config.zip
+	sha256sums = 0ba91f4da8b54833afd9bd69204afb0075cdb170afa88947e4d55be4e090eb84
+
+pkgname = openvpn-protonvpn
+
