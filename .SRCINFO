@@ -1,13 +1,12 @@
 pkgbase = brother-dcpj315w
 	pkgdesc = Driver for the Brother DCP-J315W wifi multifuncional printer
 	pkgver = 1.1.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://solutions.brother.com/linux/en_us/index.html
 	install = brother-dcpj315w.install
 	arch = i686
 	arch = x86_64
 	license = custom:brother
-	makedepends = rpmextract
 	depends = a2ps
 	depends = cups
 	source = fix_lp.patch
