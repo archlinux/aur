@@ -2,7 +2,7 @@
 
 pkgname=pythonqt-svn
 pkgver=3.1.r445
-pkgrel=2
+pkgrel=3
 pkgdesc='A dynamic Python binding for the Qt framework (SVN version)'
 arch=('i686' 'x86_64')
 url='http://pythonqt.sourceforge.net/'
@@ -43,5 +43,5 @@ package() {
 	install -D -m644 src/*.h                       "${pkgdir}"/usr/include/PythonQt
 	install -D -m644 src/gui/*.h                   "${pkgdir}"/usr/include/PythonQt/gui
 	install -D -m644 extensions/PythonQt_QtAll/*.h "${pkgdir}"/usr/include/PythonQt/extensions/PythonQt_QtAll
-	install -D -m644 lib/*.so*                     "${pkgdir}"/usr/lib
+	cp      -a       lib/*.so*                     "${pkgdir}"/usr/lib
 }
