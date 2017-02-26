@@ -2,7 +2,7 @@
 # Contributor: surefire@cryptomile.net
 
 pkgname=gnome-shell-extension-topicons-plus-git
-pkgver=19.r0.g7cd6989
+pkgver=20+3+g679e5ca
 pkgrel=1
 pkgdesc="Shows legacy tray icons on top."
 arch=('any')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd TopIcons
-	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --tags --long | sed 's/^v//; s/-/+/g'
 }
 
 build() {
