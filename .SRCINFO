@@ -1,7 +1,7 @@
 pkgbase = dir2pdf
 	pkgdesc = Creates a pdf including all pictures of a given directory
 	pkgver = 20091018
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = LPPL
 	depends = texlive-core

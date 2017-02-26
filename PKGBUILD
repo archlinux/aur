@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=dir2pdf 
 pkgver=20091018
-pkgrel=1
+pkgrel=2
 pkgdesc="Creates a pdf including all pictures of a given directory"
 url=""
 arch=('any')
@@ -17,7 +17,7 @@ prepare() {
 }
 
 build() {
-  install -d bin share/man/man1
+  install -d bind
   texlua $srcdir/arch-install-dir2pdf
 }
 
