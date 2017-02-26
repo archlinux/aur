@@ -2,11 +2,12 @@
 
 pkgname=libumem-git
 pkgver=1.0.r15.g3fc772c
-pkgrel=1
+pkgrel=2
 pkgdesc="A port of the Solaris libumem memory allocator"
 arch=('i686' 'x86_64')
 url="https://github.com/omniti-labs/portableumem"
 license=('custom')
+makedepends=('git')
 provides=('umem' 'libumem' 'libumem.so')
 source=("libumem-git"::'git+https://github.com/omniti-labs/portableumem.git'
         'portableumem-various-cleanups.diff')
