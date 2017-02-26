@@ -34,10 +34,6 @@ prepare() {
 	mkdir -p $GOBIN
 
 	go env
-
-	gopkgFR="$(git config --global http.https://gopkg.in.followRedirects || true)"
-
-	git config --global http.https://gopkg.in.followRedirects true
 }
 
 pkgver(){
@@ -47,11 +43,6 @@ pkgver(){
 
 build() {
 	go get -v go.universe.tf/netboot/cmd/pixiecore
-
-	case "${gopkgFR}" in
-		   "" ) git config --global --unset http.https://gopkg.in.followRedirects;;
-		    * ) git config --global http.https://gopkg.in.followRedirects "${gopkgFR}";;
-	esac
 }
 
 
