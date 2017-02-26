@@ -1,8 +1,8 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=cereal
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 pkgdesc='A C++11 library for serialization'
 arch=('i686' 'x86_64')
 url='https://github.com/USCiLab/cereal'
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('')
 makedepends=('boost' 'cmake' 'gcc-multilib')
 source=("cereal-${pkgver}.tar.gz::https://github.com/USCiLab/cereal/archive/v${pkgver}.tar.gz")
-sha256sums=('7d321c22ea1280b47ddb06f3e9702fcdbb2910ff2f3df0a2554804210714434e')
+sha256sums=('1921f26d2e1daf9132da3c432e2fd02093ecaedf846e65d7679ddf868c7289c4')
 
 prepare() {
   cd cereal-${pkgver}
