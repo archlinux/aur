@@ -3,16 +3,16 @@
 # Contributor: sonic414 <kevinjf at live dot in>
 		
 pkgname=delaycut
-pkgver=1.4.3.8
-pkgrel=2
+pkgver=1.4.3.9
+pkgrel=1
 pkgdesc="Corrects delay, cuts audio files coded in ac3, dts, mpa and wav, fixes CRC errors in ac3 and mpa files."
 arch=('i686' 'x86_64')
 url='https://github.com/darealshinji/delaycut'
 license=(GPL3)
 depends=('qt5-base')
 provides=('delaycut')
-source=(https://github.com/darealshinji/delaycut/archive/v1.4.3.8.tar.gz)
-sha256sums=('692b28d4a3031d89bacae2f38cf5bfffe84bac7585d29772d75c2fa1f4e02af5')
+source=(https://github.com/darealshinji/delaycut/archive/v${pkgver}.tar.gz)
+sha256sums=('3e215c906efc9680a7254b250f9c2fbd9f3f0a5f8b56481f2268b30c03c715e4')
 
 build() {
   cd "${srcdir}"/delaycut-${pkgver}
@@ -24,6 +24,6 @@ build() {
 package () {
   cd "${srcdir}"/delaycut-${pkgver}
   install -Dm755 delaycut "${pkgdir}"/usr/bin/delaycut
-  install -Dm644 extra/delaycut.desktop "${pkgdir}"/usr/share/applications/delaycut.desktop
-  install -Dm644 extra/delaycut.xpm "${pkgdir}"/usr/share/pixmaps/delaycut.xpm  
+  install -Dm644 misc/delaycut.desktop "${pkgdir}"/usr/share/applications/delaycut.desktop
+  install -Dm644 src/icon.png "${pkgdir}"/usr/share/pixmaps/delaycut.png  
 }
