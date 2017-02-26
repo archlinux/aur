@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-chess-git  
-pkgver=839.e21d9a3
+pkgver=841.372309e
 pkgrel=1
 pkgdesc="Chess client written entirely in Emacs Lisp"
 arch=('any')
