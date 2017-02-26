@@ -1,4 +1,5 @@
-# Maintainer: Rafael Reggiani Manzo <rr.manzo#protonmail.com>
+# Maintainer; Chris Loyen <thisischrys@gmail.com>
+# Contributor: Rafael Reggiani Manzo <rr.manzo#protonmail.com>
 
 pkgname=blossoms-pokemon-go-manager
 pkgver=0.1.7
@@ -12,7 +13,7 @@ makedepends=('unzip')
 install=bpgm.install
 source=("https://github.com/Wolfsblvt/BlossomsPokemonGoManager/releases/download/v${pkgver}/BPGM_v${pkgver}.zip"
         'bpgm')
-sha512sums=('ssh://aur@aur.archlinux.org/blossoms-pokemon-go-manager.git'
+sha512sums=('6d43626d0b7edb756d0a36b8114782ea78bd87fe1f4bdcd78c8d724961ad1635042ab8e0e7f489c5c5cf8b09fa14788c701a14eb5bdce1cf21ed95c3e97fa90a'
             '5b72b358a1f0c3e8dde715e48231b4c0eef0d647370effbf95d723e254a9c999971424e02ae444ad019c28c3ccbfba0d5ecf27752cfcea80b3ed793731ac0da1')
 
 prepare() {
