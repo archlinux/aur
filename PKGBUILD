@@ -1,16 +1,17 @@
-# Maintainer: Anton Bazhenov <anton.bazhenov at gmail>
+# Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Nathan Owe <ndowens.aur at gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=amberfish
 pkgver=1.6.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A general purpose text retrieval software"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/amberfish/"
 license=('GPL2')
 depends=('xerces-c')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('8eb3f1e26da9d0317719822539c3b932')
+sha256sums=('155ac6e6b9b76fb7cbd94952548f718ab6add72c3b4fd2482d89abb39d96ce76')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
