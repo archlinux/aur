@@ -11,7 +11,7 @@
 
 _pkgname=playonlinux5
 pkgname=${_pkgname}-git
-pkgver=r1609.55ea8a9f
+pkgver=r1631.9ffbb41e
 pkgrel=1
 epoch=2
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
@@ -82,5 +82,8 @@ package() {
   install -Dm644 "$srcdir/${_pkgname}/phoenicis-library/src/main/resources/org/phoenicis/library/phoenicis.png" \
                  "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
   install -Dm644 PlayOnLinux5.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+  # Fix permissions on pkg lib dir
+  chmod -R 755 "${pkgdir}/opt/${_pkgname}/lib"
 
 }
