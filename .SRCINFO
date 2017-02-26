@@ -1,8 +1,8 @@
 pkgbase = a2pdf
 	pkgdesc = Converts ASCII text to PDF format, with optional page/line numbering
 	pkgver = 1.13
-	pkgrel = 5
-	url = http://search.cpan.org/~jonallen/a2pdf-1.13/
+	pkgrel = 6
+	url = http://search.cpan.org/~jonallen/a2pdf-1.13
 	arch = any
 	license = PerlArtistic
 	depends = perl-switch
