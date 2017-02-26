@@ -1,7 +1,7 @@
 # Maintainer: Alex Mekkering <amekkering at gmail dot com>
 
 pkgname=horepg
-pkgver=r61.77c04a8
+pkgver=r66.f85e46c
 pkgrel=1
 pkgdesc="Parses EPG data from the service at horizon.tv for usage in TVHeadend."
 arch=('any')
@@ -12,12 +12,17 @@ makedepends=('python-setuptools')
 
 ###################################
 # Use a specific commit for stability reasons
-source=('git+https://github.com/beralt/horepg.git#commit=77c04a8')
+source=('git+https://github.com/beralt/horepg.git#commit=f85e46c')
 ###################################
 # Enable the following line (& disable the previous one) to build using the most recent commit
-# source=('git+https://github.com/beralt/horepg.git')
+#source=('git+https://github.com/beralt/horepg.git')
 
 install=horepg.install
+
+prepare() {
+    cd ${srcdir}/${pkgname}
+    patch -p1 -i ../../horepg-disable-radio.patch
+}
 
 pkgver() {
     cd "${pkgname}"

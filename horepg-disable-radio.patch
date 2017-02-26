@@ -1,0 +1,13 @@
+diff --git a/dist/systemd/horepgd.service b/dist/systemd/horepgd.service
+index 6c1cec6..b4c442d 100644
+--- a/dist/systemd/horepgd.service
++++ b/dist/systemd/horepgd.service
+@@ -6,7 +6,7 @@ Requires=tvheadend.service
+ [Service]
+ Type=oneshot
+ Nice=19
+-ExecStart=/usr/bin/horepgd.py -u hts -g video -R -1
++ExecStart=/usr/bin/horepgd.py -u hts -g video -1
+ 
+ [Install]
+ WantedBy=multi-user.target

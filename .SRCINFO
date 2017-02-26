@@ -1,6 +1,6 @@
 pkgbase = horepg
 	pkgdesc = Parses EPG data from the service at horizon.tv for usage in TVHeadend.
-	pkgver = r61.77c04a8
+	pkgver = r66.f85e46c
 	pkgrel = 1
 	url = https://github.com/beralt/horepg
 	install = horepg.install
@@ -9,7 +9,7 @@ pkgbase = horepg
 	makedepends = python-setuptools
 	depends = python-requests
 	depends = tvheadend
-	source = git+https://github.com/beralt/horepg.git#commit=77c04a8
+	source = git+https://github.com/beralt/horepg.git#commit=f85e46c
 	md5sums = SKIP
 
 pkgname = horepg
