@@ -1,21 +1,19 @@
 # Maintainer: katoh <katoh_at_mikage.ne.jp>
 
 pkgname=azpainter
-pkgver=1.0.7
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Painting software"
 arch=('i686' 'x86_64')
 url="http://azsky2.html.xdomain.jp/"
 license=('GPL3')
-depends=('fontconfig' 'freetype2' 'libjpeg-turbo' 'libx11' 'libxext' 'libxft' 'libxi' 'zlib')
-source=("http://osdn.jp/frs/redir.php?m=iij&f=/azpainter/64397/azpainter-1.0.7.tar.bz2")
-sha1sums=("30ca4c025b8d43bdbc1e8442aaae942f92f4e491")
+depends=('fontconfig' 'freetype2' 'libjpeg-turbo' 'libx11' 'libxext' 'libxi' 'zlib' 'hicolor-icon-theme')
+source=("https://osdn.net/frs/redir.php?m=jaist&f=%2Fazpainter%2F67130%2Fazpainter-2.0.2.tar.bz2")
+sha256sums=("24ee7cb15bb313a395d35094fe41cd9fc21bad67d2fffbbf7cce41d8c6b5a589")
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
-	sed -i 's/\/local$/\nifdef DESTDIR\n\tprefix=$(DESTDIR)\/usr\nendif/' Makefile
-	sed -i 's/axt/axt .\/README .\/NEWS/' Makefile
-	sed -i '/-gtk-update-icon-cache/d' Makefile
+	./configure --prefix /usr
 	make -j1
 }
 
