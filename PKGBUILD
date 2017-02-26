@@ -1,7 +1,7 @@
 # Maintainer: Rafael Reggiani Manzo <rr.manzo#protonmail.com>
 
 pkgname=blossoms-pokemon-go-manager
-pkgver=0.1.4
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="BlossomsPokemonGoManager is a tool created for managing your game. It allows you to sort your Pokémon by several values, to rename, transfer, evolve or to power-up one or several of them. (NOTE: Read the PKGBUILD!)"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('unzip')
 install=bpgm.install
 source=("https://github.com/Wolfsblvt/BlossomsPokemonGoManager/releases/download/v${pkgver}/BPGM_v${pkgver}.zip"
         'bpgm')
-sha512sums=('0fe21b4146d125d281f1aacd405dbc0370d6c5c043e82d4c964ca7df14ac0130459bf4d943268b6efd58a99ef05ca0d22dbf392ecb3853ab32e87fdb074209fa'
+sha512sums=('ssh://aur@aur.archlinux.org/blossoms-pokemon-go-manager.git'
             '5b72b358a1f0c3e8dde715e48231b4c0eef0d647370effbf95d723e254a9c999971424e02ae444ad019c28c3ccbfba0d5ecf27752cfcea80b3ed793731ac0da1')
 
 prepare() {
