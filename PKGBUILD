@@ -20,5 +20,5 @@ package() {
     cd "$pkgname-$pkgver"
     install -D -m 755 ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
     install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m 644 config "{pkgdir}/usr/share/doc/${pkgname}/config"
+    install -D -m 644 config "${pkgdir}/usr/share/doc/${pkgname}/config"
 }
