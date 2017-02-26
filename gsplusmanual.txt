@@ -1,0 +1,199 @@
+﻿GSplus gsp_icon_512.png 
+Modern cross-platform Apple IIgs emulator and tools,
+based on KEGS & GSPort
+
+________________
+ Screenshot.png Manual Revisions: 
+Beta Release: 2017-01-22
+Alpha Release: 2016-11-02
+Alpha Draft: 2016-10-27
+Initial Draft: 2016-05-01
+
+
+Downloads: 
+Latest downloads always available at https://apple2.gs/plus
+________________
+Overview & Purpose
+This project is an attempt to build a better Apple IIgs emulator by modernizing the KEGS/GSport emulator family and extending it into a platform for gamers, enthusiasts and developers. 
+The first steps were a release of a new SDL2 driver.  SDL or "Simple DirectMedia Layer" enables the writing of one cross-platform driver to handle input and output (video, mouse, keyboard, audio, joystick).  This helps the goal of providing first-class support for all of the major platforms supported by SDL, including Mac OSX, Windows and Linux.
+Part of this effort has also led to the development of an automated build and packaging pipeline using Gitlab CI.  This helps our team of one continue to develop on primarily a single platform, while still ensuring that it works across many operating systems
+Currently, the main supported platforms are Linux, OSX and Windows.  
+Getting started
+1. Download the emulator package from https://apple2.gs/plus and put it in a folder. 
+2. Download the Apple IIgs Firmware ROMs, for either a ROM01 or ROM03 machine.
+ (If you have a real IIgs, there are ways to save it from your machine too.)
+Try: ftp://ftp.apple.asimov.net/pub/apple_II/emulators/rom_images/
+   1. Put the ROM image in the same folder where you run the emulator from. 
+It will search for:  "ROM", "ROM.01", "ROM.03"
+If your ROM file has some other name, launch gsplus and hit F4 to go to the config menu to choose your ROM under "ROM File Selection"
+    ... or ...
+      1. Edit your config:
+You can manually edit the config.txt file (or use the F4 menu.)
+         1. You can set disks using a slot/number syntax like:
+        s5d1 = images/ArkanoidII.po
+        s6d1 = images/ProDOS_2_4_1.dsk
+        s7d1 = images/gsos.2mg
+         2. You can also manually set your ROM path like:
+        g_cfg_rom_path = ../roms/gsrom03
+            1. Download some Apple IIgs software.
+ I recommend the excellent Apple IIgs dedicated site:
+   http://www.whatisthe2gs.apple2.org.za/
+ If you have a real IIgs, you can transfer your disks using ADTPro
+   http://adtpro.sourceforge.net/
+            2. Boot the Apple IIgs by running the emulator
+ Windows:                gsplus32.exe
+ Mac*/Ubuntu:        ./gsplus
+
+* Yes, you can drag it into your Applications folder on a Mac, but be aware that it is still meant to be launched from a command line.  If you put it in Applications, you should be able to run it with the terminal command:
+   /Applications/GSplus.app/Contents/MacOS/gsplus
+
+If the config file can’t be found, it will try to create a config.txt file for you, with all of the defaults.
+               1. Note: You can also specify a config file.  This is very useful as you can have specific disks/setting pre-set in a config file and launch directly into your favorite game with that config.  They can be named anything you want, though the officially recognized extensions are .txt and .gsp. 
+
+Examples:
+ Windows:                gsplus32.exe -config arkanoid.gsp
+ Mac/Ubuntu:        ./gsplus -config choplifter_config.txt
+
+
+________________
+
+
+Emulator Hot-Keys
+There are several keys used to interact with the emulator while it is running.  Here’s a quick list of the main hot-keys and what they do.
+F4                 - configuration menu - set lots of options here!
+F5                 - paste from host OS into emulator
+F6                 - toggle system speed  (1, 2.8, 8, ∞ MHz )
+F7                 - toggle fast disk emulation
+F9                 - invert paddles
+F10                 - toggle a2vid_palette (?)
+F11                 - toggle fullscreen mode *
+F12                 - hit RESET (e.g. - to do “Ctrl-Reset” on an Apple II, you hit “Ctrl-F12”)
+Shift-F5         - take a screenshot *
+Shift-F10         - toggle status line *
+Shift-F11         - toggle simulated scanlines *
+* not available on all platforms
+Other Input/Output
+                  1. Mouse and keyboard should automatically work
+                  2. Joystick with SDL2 driver is known to be working.  It simply uses the “first” joystick and the first analog pad on that stick plus the first two buttons.  The axes and buttons are not yet configurable.  Better info forthcoming.
+                  3. There are drivers for serial controller, ImageWriter (II?) printer, and networking.  I may have broken some of this functionality to get builds working.  I’m not currently familiar with the state of these drivers or their usage.  More info will be added as I take time to research more of the modules. 
+                  4. You can also drag-and-drop disk images onto the emulator window and it will try to automount the disk!  (SDL versions)
+Configuration Menu
+Configuration options are loaded from, and saved to, a configuration text file.  The default configuration file is config.txt.  If you are just starting out, it’s recommended to use the configuration menu versus editing the file yourself.
+Enter the configuration menu at any time while running GSplus by hitting <F4>.
+ Screen Shot 2016-05-01 at 9.10.00 AM.png 
+
+Most important options are:
+Disk Configuration menu - options to “mount” and “eject” disks images
+ROM File Selection menu - if you don’t have it correctly pointing to a valid ROM 1 or ROM 3 image, it will not boot
+________________
+Command-line Options
+This is from source, some are experimental and not all may be built on your system.
+-badrd                        Halt on bad reads
+-noignbadacc        Don’t ignore bad memory accesses
+-noignhalt                Don’t ignore code red halts
+-test                        Allow testing
+-hpdev                 Use /dev/audio (HP/UX?)
+-alib                         Use Aserver audio server
+-24                         Use 24-bit display depth
+-16                         Use 16-bit display depth
+-15                         Use 15-bit display depth
+-bw                        Force B/W modes
+-joystick                Ignore joystick option
+-noshm                Don’t use X shared memory
+-dhr140                Use simple double-hires color map
+-mem value                Set memory size to value
+-skip value                Set skip_amt to value
+-audio value                  Set audio enable to value
+-arate value                Set preferred audio rate to value
+-v value                 Set verbose flags to value
+-display value                Set X-Windows DISPLAY=value
+-enet value                Set ethernet to value
+-config value                Set config file to value
+-debugport value        Set debugport to value
+-ssdir value                Set screenshot save directory to value
+-scanline                Enable scanline simulator
+-noscanline                Disable scanline simulator (default)
+Note: The final argument, if not a flag, will be tried as a mountable device.
+
+
+Debugger Commands  - BROKEN!!!
+Sorry, the debugger is currently broken due to a change in debugging frameworks.
+The documentation below is accurate, but does not currently work.
+Enter from the debugger prompt (Shift-F6)
+GSplus CLI Debugger help (courtesy Fredric Devernay)
+General command syntax: [bank]/[address][command]  
+e.g. 'e1/0010B' to set a breakpoint at the interrupt jump pt
+Enter all addresses using lower-case.  As with the IIgs monitor, you can omit the bank number after having set it: 'e1/0010B' followed by '14B' will set breakpoints at e1/0010 and e1/0014
+g                                       Go
+[bank]/[addr]g             Go from [bank]/[address]
+s                                       Step one instruction
+[bank]/[addr]s               Step one instr at [bank]/[address]
+[bank]/[addr]B                   Set breakpoint at [bank]/[address]
+B                                      Show all breakpoints
+[bank]/[addr]D            Delete breakpoint at [bank]/[address]
+[bank]/[addr1].[addr2]         View memory
+[bank]/[addr]L              Disassemble memory
+P                                       Dump the trace to 'pc_log_out'
+Z                                       Dump SCC state
+I                                       Dump IWM state
+[drive].[track]I                Dump IWM state
+E                                       Dump Ensoniq state
+[osc]E                                 Dump oscillator [osc] state
+R                                       Dump dtime array and events
+T                                       Show toolbox log
+[bank]/[addr]T                  Dump tools using ptr [bank]/[addr] as 'tool_set_info'
+[mode]V                         XOR verbose with 1=DISK, 2=IRQ,4=CLK,8=SHADOW,10=IWM,20=DOC,
+                                40=ABD,80=SCC, 100=TEST, 200=VIDEO
+[mode]H                         XOR halt_on with 1=SCAN_INT,2=IRQ, 4=SHADOW_REG, 8=C70D_WRITES
+r                                       Reset
+[0/1]=m                         Changes m bit for l listings
+[0/1]=x                                Changes x bit for l listings
+[t]=z                                   Stops at absolute time t (obsolete)
+S                                       show_bankptr_bank0 & smartport errs
+P                                       show_pmhz
+A                                       show_a2_line_stuff show_adb_log
+Ctrl-e                                  Dump registers
+[bank]/[addr1].[addr2]us[file]          Save mem area to [file]
+[bank]/[addr1].[addr2]ul[file]          Load mem area from [file]
+v                        Show video information
+q                                       Exit Debugger (and GSplus)
+________________
+Project Info
+Homepage and Downloads
+This project has a homepage at http://apple2.gs/plus/
+The homepage hosts the latest build for a variety of OSes. 
+
+
+Development Repository
+Main page and full source code repository: https://github.com/digarok/gsplus
+  
+
+Release Changelog
+Version 0.13 - Jan. 22 2017
+Scanline simulator
+Drag-and-drop disk images and it will try to automount
+Fixes and improvements to logging
+Win32 icon parity with other versions
+Experimental host FST support
+Various bug fixes
+
+
+Version 0.12s - Nov. 12, 2016
+First official alpha release with packages
+“S” in version is because it introduces new Socket Debugger, large effort
+
+
+Version 0.11 - 2015 - 2016
+Not publicly released
+Features first major contribution - SDL2 driver supporting displays, sound and joysticks
+
+
+________________
+
+
+
+
+Credits & Thanks
+Thanks to Kent Dickey who originally wrote the open source KEGS, “Kent’s Emulated GS”
+Thanks to the GSPort developers which is the fork used to create GSplus. 
+Thanks to the other GSplus contributors, especially Kelvin Sherlock who has added quite a few of the latest features.

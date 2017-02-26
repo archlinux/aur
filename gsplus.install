@@ -1,0 +1,16 @@
+ 
+post_install() {
+
+  echo "$(tput setaf 6)You can make changes to the application configuration at /etc/gsplus/config.txt$(tput sgr0)"
+  echo "$(tput setaf 6)You can start the application from the graphical menu or by typing gsplus in the terminal$(tput sgr0)"
+  echo "$(tput setaf 6)Please review /usr/share/gsplus/README.txt as additional configuration is required$(tput sgr0)"
+  echo "$(tput setaf 6)to get the application to run.  You will have to place some files in /usr/share/gsplus/$(tput sgr0)"
+  echo "$(tput setaf 6)In addition to get sound to work you will have to run the following:$(tput sgr0)"
+  echo "$(tput setaf 6)modprobe snd-seq-oss && modprobe snd-pcm-oss && modprobe snd-mixer-oss$(tput sgr0)"
+  echo "$(tput setaf 6) $(tput sgr0)"
+  echo "$(tput setaf 1)!!! Be aware the /etc/gsplus/config.txt file has 777 permission! The application      !!!$(tput sgr0)"
+  echo "$(tput setaf 1)!!! will not run without the config file being writable.                              !!!$(tput sgr0)"
+  echo "$(tput setaf 1)!!! I am quite sure this is a poor security practice so install and use this          !!!$(tput sgr0)"
+  echo "$(tput setaf 1)!!! application at your own risk!                                                     !!!$(tput sgr0)"
+  
+}
