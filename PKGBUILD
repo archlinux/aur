@@ -1,6 +1,8 @@
+# Contributor: BluePeril <blueperil (at) blueperil _dot_ de>
+
 pkgname=jcloisterzone
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Java version of the Carcassonne board game."
 arch=('any')
 url="http://jcloisterzone.com/en/"
@@ -21,6 +23,8 @@ package() {
     find $pkgdir -type d -exec chmod 755 {} \;
     find $pkgdir -type f -exec chmod 644 {} \;
     install -D -m755 "$srcdir/${pkgname}.sh" "$pkgdir/usr/bin/${pkgname}"
-    install -D -m755 "$srcdir/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
-    install -D -m755 "$srcdir/ico.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
+    install -D -m644 "$srcdir/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
+    install -D -m644 "$srcdir/ico.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
 }
+
+# vim:set ts=2 sw=2 et:
