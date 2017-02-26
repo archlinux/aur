@@ -16,30 +16,26 @@ options=(!emptydirs)
 install=
 source=("https://cpan.metacpan.org/authors/id/D/DA/DAVIDO/ExtUtils-CppGuess-${pkgver}.tar.gz")
 md5sums=('799715985e7257dc07cc42a9402170d7')
+_src_dir='$srcdir/ExtUtils-CppGuess-$pkgver'
 
-prepare() {
-  export _src_dir="$srcdir/ExtUtils-CppGuess-$pkgver"
-  # Setting these env variables overwrites any command-line-options we don't want...
+build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
     PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
     PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
     MODULEBUILDRC=/dev/null
-}
-
-build() {
-  cd "$_src_dir"
-sed -i  "135i    \$self->{guess}{extra_cflags} .= ' -DPERL_IMPLICIT_SYS' if \$Config::Config{ccflags} =~ /-DPERL_IMPLICIT_SYS/;" lib/ExtUtils/CppGuess.pm
+  eval cd "$_src_dir"
+  sed -i  "135i    \$self->{guess}{extra_cflags} .= ' -DPERL_IMPLICIT_SYS' if \$Config::Config{ccflags} =~ /-DPERL_IMPLICIT_SYS/;" lib/ExtUtils/CppGuess.pm
   /usr/bin/perl Makefile.PL
   make
 }
 
 check () {
-  cd "$_src_dir"
+  eval cd "$_src_dir"
   make test
 }
 
 package () {
-  cd "$_src_dir"
+  eval cd "$_src_dir"
   make install
 
   # remove perllocal.pod and .packlist
