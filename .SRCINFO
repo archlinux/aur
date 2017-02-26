@@ -1,7 +1,7 @@
 pkgbase = tvheadend
 	pkgdesc = TV streaming server for Linux
 	pkgver = 4.0.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://tvheadend.org/projects/tvheadend
 	install = tvheadend.install
 	arch = i686

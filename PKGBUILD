@@ -4,7 +4,7 @@
 pkgname=tvheadend
 
 pkgver=4.0.9
-pkgrel=3
+pkgrel=4
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://tvheadend.org/projects/tvheadend"
