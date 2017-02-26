@@ -11,18 +11,12 @@ depends=("cmake"
          "root"
          "exrootanalysis")
 source=("https://github.com/delphes/delphes/archive/${pkgver}.tar.gz"
-        "0f5bf9d.patch"
-        "7d83636.patch"
-        "781e311.patch")
+        "cmake.patch")
 sha256sums=('35a11e7c027a4f0523827babce7b496ff660dfabb2e8b94fd8be1da7468ad197'
-            '502ba71464610b4a76708941cb528bfb30829ebaff6a6b8509304086d13cefea'
-            '550ed21c707ba71c8df702291b914b00835c44b56118cdc074c31d9a43e7ae6d'
-            'c48fab60b712d7ac3841ebeba4feb8201da3daf73ebcc7103790f088543d39ea')
+            'bfed1d16f3ca1068f60dd38f9b21958331adb7a66af1f8e2bbafb0f842c9203d')
 
 prepare() {
-    patch -p 1 < 0f5bf9d.patch
-    patch -p 1 < 781e311.patch
-    patch -p 1 < 7d83636.patch
+    patch -p 1 < cmake.patch
 }
 
 build() {
@@ -37,9 +31,9 @@ package() {
     rm -rf "${pkgdir}/usr/include/ExRootAnalysis"
     rm "${pkgdir}/usr/lib/libExRootAnalysisDict_rdict.pcm"
 
-    msg2 "Moving examples"
+    msg2 "Moving examples and cards"
     mkdir -p "${pkgdir}/usr/share/Delphes"
-    mv "${pkgdir}/usr/examples" "${pkgdir}/usr/share/Delphes/"
+    mv "${pkgdir}/usr/examples" "${pkgdir}/usr/cards" "${pkgdir}/usr/share/Delphes/"
 }
 
 # Local Variables:
