@@ -1,6 +1,6 @@
 pkgbase = ansible-docs-git
 	pkgdesc = Ansible HTML documentation
-	pkgver = 20150107
+	pkgver = 20170225
 	pkgrel = 1
 	url = https://github.com/ansible/ansible
 	arch = any
