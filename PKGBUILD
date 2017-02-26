@@ -5,7 +5,7 @@
 # Colaborator: Jonhoo
 
 pkgname=ghost
-pkgver=0.11.4
+pkgver=0.11.5
 pkgrel=1
 pkgdesc="Free, open, simple blogging platform"
 arch=('any')
@@ -21,7 +21,7 @@ source=(https://github.com/TryGhost/Ghost/releases/download/$pkgver/Ghost-$pkgve
         ghost.config.js
        )
 noextract=('Ghost-$pkgver.zip')
-sha512sums=('4328879259b635f3ac6e5377229a6c4e2e86a9bd5c2e7a13f923d012fdd2842bda350bb4f09e22f362a9b5a4dd15ebf97aa0023779da321db5c6432e9b92c2e7'
+sha512sums=('4d04250a3d044b6b58eeae2ee63f131dc8eb3c04b2422b506bb74ac4d8dd11334efe9f35f7f871a920de6f073d900ef28b2890262579938f6c54af0a144da44f'
             'b051b0aa53009d8fd1f4cbf8835a1c9e4ae63a3233e839c99066f7d230a53702ed2b9373452667f901940f734e490ffbfc58810a550eaba331c9d10578805acf'
             '749bf64dcea81e2586daa865e4684f681d5eb5689636b08d6a694dc1be55cd134dd963b5922ef6e84c992ab7d83f730b2a9a97b624b3a68ecd8cfe69a2b380c4'
             '7ea7c0dbaa01c15b69db48f6b802a2e0a5ebaf9ad59dc120e9530f72e294faa23492c338f7a84fa8ab946767041c43b4a4bb313e7f4d7bc4165059195b14a26e')
