@@ -3,7 +3,7 @@
 
 pkgname=kwakd
 pkgver=0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A web server serving blank html pages"
 
 url="https://code.google.com/p/kwakd/"
@@ -14,7 +14,7 @@ depends=( 'bash' )
 makedepends=(
   'git'
 )
-
+conflicts=('kwakd-git')
 source=(
   "$pkgname::https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/$pkgname/$pkgname-$pkgver.tar.gz"
   "$pkgname.service"
