@@ -48,9 +48,9 @@ pkgbase = jdk-devel
 	sha256sums = e9735a8bb202e64a9e9a949d202932e7e92587b4354f768cd29ba8f322dbd013
 	sha256sums = 5f00ffce28036cf79da41c7fe0e29801e3148597a164ecc69f49e718ae370370
 	source_i686 = http://www.java.net/download/java/jdk9/archive/158/binaries/jdk-9-ea+158_linux-x86_bin.tar.gz
-	sha256sums_i686 = 18eb8c572b8ae77e6e5d60a82118c424de2ea9bda0ae34c41a9439d4fa28f94a
+	sha256sums_i686 = 09b12ca89191b659c4452bda956bfe69fc49aa5c430c3daa01d6c7d280486b7e
 	source_x86_64 = http://www.java.net/download/java/jdk9/archive/158/binaries/jdk-9-ea+158_linux-x64_bin.tar.gz
-	sha256sums_x86_64 = c52306f4c28859fe01c38c071ce84a0a28028f7aa80d1f7e1a06f294d212f811
+	sha256sums_x86_64 = e3c4c6cc2e8278b347c575d4a4ed1ed0ae128608fc87df51c065dfdad54a8033
 
 pkgname = jdk-devel
 
