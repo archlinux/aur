@@ -1,0 +1,46 @@
+## Throttle - Runtime management udev rules.
+## Whitelisted Actions
+ACTION!="add", GOTO="runtime_pm_rules_end"
+
+## Blacklisted Devices (USB Keyboard/Mouse, etc.)
+# Logitec Unifying Reciever (occasionally disabled ?)
+ATTR{idVendor}=="046d", ATTR{idProduct}=="c52b", GOTO="runtime_pm_rules_end"
+# Standard Microsystems Corp. 2 Port Hub (doesn't charge with runtime pm ?)
+ATTR{idVendor}=="0424", ATTR{idProduct}=="a700", GOTO="runtime_pm_rules_end"
+# Charge Sixaxis/Dualshock 3 (disconnect or charge too slowly with runtime pm ?)
+ATTR{idVendor}=="054c", ATTR{idProduct}=="0268", GOTO="runtime_pm_rules_end"
+
+# Asynchronous power transitions
+SUBSYSTEMS=="*" ATTR{power/async}=="disabled", ATTR{power/async}="enabled"
+
+# Backlight
+SUBSYSTEM=="backlight", TEST=="brightness", ATTR{brightness}="0"
+
+# Hard disk power saving
+SUBSYSTEM=="scsi_host", KERNEL=="host*", ATTR{link_power_management_policy}="min_power"
+KERNEL=="[hs]d[a-z]", ATTR{queue/rotational}=="1", RUN+="/usr/bin/hdparm -B 1 -M 128 /dev/%k"
+
+# Various subsystems runtime power management
+SUBSYSTEMS=="*", ATTR{power/control}=="on", ATTR{power/control}="auto"
+
+# USB autosuspend devices after 1 sec (may disable some old devices!)
+SUBSYSTEM=="usb", TEST=="power/autosuspend", ATTR{power/autosuspend}="1"
+SUBSYSTEM=="usb", TEST=="power/autosuspend_delay_ms", ATTR{power/autosuspend_delay_ms}="1"
+
+# Various subsystems power saving
+SUBSYSTEMS=="*", TEST=="parameters/power_save", ATTR{parameters/power_save}="1"
+SUBSYSTEMS=="*", ATTR{parameters/power_save_controller}=="N", ATTR{parameters/power_save_controller}="Y"
+
+# Universally enable D3 Cold
+DRIVER=="*", ATTR{d3cold_allowed}=="0", ATTR{d3cold_allowed}="1"
+
+# Network Powersaving
+SUBSYSTEM=="net", KERNEL=="wl*", RUN+="/usr/bin/iw dev %k set power_save on"
+SUBSYSTEM=="net", KERNEL=="e*", RUN+="/usr/sbin/ethtool -s %k wol d"
+SUBSYSTEM=="net", TEST=="device/power/wakeup", ATTR{device/power/wakeup}="disabled"
+
+# Reduce LED Brightness
+SUBSYSTEM=="leds", TEST=="brightness", ATTR{brightness}="0"
+
+# Exit
+LABEL="runtime_pm_rules_end"
