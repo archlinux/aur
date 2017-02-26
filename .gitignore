@@ -1,0 +1,11 @@
+*~
+*.xz
+*.tar
+*.tgz
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+src
+pkg
+*.ttf
+
