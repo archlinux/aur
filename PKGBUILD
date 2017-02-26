@@ -11,7 +11,7 @@ makedepends=('cmake' 'flex' 'bison')
 depends=('gl2ps' 'freeimage' 'tk' 'ftgl' 'libxmu' 'vtk' 'mesa')
 optdepends=('intel-tbb')
 source=(opencascade-${pkgver}.tar.gz::"http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V${pkgver//./_};sf=tgz")
-md5sums=('a53fda9a1cf9260dbfcbb1a94b49c44d')
+md5sums=('22e26a40989e196d0455acf5a9302bde')
 
 prepare(){
   cd opencascade-${pkgver}
