@@ -15,8 +15,7 @@ sha512sums=('f41c96fd17e9c352e2a2324cba4084bc0bc13df678a7852490d0c6cb89adcd6b385
 
 check() {
     cd "$_pkgname-$pkgver"
-    # FIXME temporary test exclusion; waiting for upstream fix
-    python -m nose --exclude=test_error_dispatch
+    python -m nose
 }
 
 package() {
