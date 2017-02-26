@@ -3,7 +3,7 @@
 
 _pkgbase=r8101
 pkgname=r8101-dkms
-pkgver=1.030.02
+pkgver=1.031.02
 pkgrel=1
 pkgdesc="r8101 realtek lan drivers (DKMS)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('ethtool: device configuration')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 
-source=("http://12244.wpc.azureedge.net/8012244/drivers/rtdrivers/cn/nic/0006-${_pkgbase}-${pkgver}.tar.bz2"
+source=("http://12244.wpc.azureedge.net/8012244/drivers/rtdrivers/cn/nic/0007-${_pkgbase}-${pkgver}.tar.bz2"
         'dkms.conf')
 
 package() {
@@ -31,5 +31,5 @@ package() {
   cp -r ${_pkgbase}-${pkgver}/src ${_pkgbase}-${pkgver}/Makefile \
         "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
 }
-sha256sums=('970bb30153bcaed220ec5ff6e8a537294beb7cd31fb4f6b0b69d91e720ee9203'
+sha256sums=('00d292b0a4147b0686878e6281ec98e197dc45bbf71e1e1bbc2ae67b048a14de'
             '2846e89fe3fd68c64c71a0f1150873a061571acc63e65cca6d825df7985ad7b5')
