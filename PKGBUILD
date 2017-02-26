@@ -1,8 +1,8 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=opencascade7
-pkgver=7.0.0
-pkgrel=4
+pkgver=7.1.0
+pkgrel=1
 pkgdesc="Open CASCADE Technology, 3D modeling & numerical simulation, version 7"
 url="http://www.opencascade.org"
 arch=('i686' 'x86_64')
@@ -10,10 +10,8 @@ license=('custom')
 makedepends=('cmake' 'flex' 'bison')
 depends=('gl2ps' 'freeimage' 'tk' 'ftgl' 'libxmu' 'vtk' 'mesa')
 optdepends=('intel-tbb')
-_short_commit_hash=1d505bb
-#source=("http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=${_short_commit_hash};sf=tgz")
-source=("https://sources.archlinux.org/other/community/opencascade/opencascade-$pkgver.tgz")
-md5sums=('fa1458aba1ce96c85d7876b35a04af6c')
+source=(opencascade-${pkgver}.tar.gz::"http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V${pkgver//./_};sf=tgz")
+md5sums=('a53fda9a1cf9260dbfcbb1a94b49c44d')
 
 prepare(){
   cd opencascade-${pkgver}
