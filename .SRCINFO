@@ -1,14 +1,14 @@
 pkgbase = kwakd
 	pkgdesc = A web server serving blank html pages
 	pkgver = 0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://code.google.com/p/kwakd/
 	install = kwakd.install
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = bash
-	source = kwakd::http://kwakd.googlecode.com/files/kwakd-0.5.tar.gz
+	source = kwakd::https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/kwakd/kwakd-0.5.tar.gz
 	source = kwakd.service
 	sha256sums = ee87691c4ea971273a3c8926ee6f0cc754094567e27f165f890f2ce306f2afa4
 	sha256sums = 5ae20e1ef81436ba5452447c32c46db4d343f08f5abe0aa41076425a9cee4715

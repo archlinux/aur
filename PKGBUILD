@@ -3,7 +3,7 @@
 
 pkgname=kwakd
 pkgver=0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A web server serving blank html pages"
 
 url="https://code.google.com/p/kwakd/"
@@ -16,7 +16,7 @@ makedepends=(
 )
 
 source=(
-  "$pkgname::http://kwakd.googlecode.com/files/$pkgname-$pkgver.tar.gz"
+  "$pkgname::https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/$pkgname/$pkgname-$pkgver.tar.gz"
   "$pkgname.service"
 )
 install="$pkgname.install"
