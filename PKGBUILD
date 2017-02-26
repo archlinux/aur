@@ -14,7 +14,7 @@ source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz
 sha256sums=('155ac6e6b9b76fb7cbd94952548f718ab6add72c3b4fd2482d89abb39d96ce76')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \
               LDFLAGS=''
@@ -22,6 +22,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
 }
