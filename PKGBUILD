@@ -11,6 +11,7 @@ source=('git://github.com/az0/cleanerml.git')
 sha256sums=('SKIP')
 arch=('any')
 depends=('bleachbit')
+makedepends=('git')
 conflicts=('cleanerml')
 provides=('cleanerml')
 

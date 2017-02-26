@@ -5,6 +5,7 @@ pkgbase = cleanerml-git
 	url = https://github.com/az0/cleanerml
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = bleachbit
 	provides = cleanerml
 	conflicts = cleanerml
