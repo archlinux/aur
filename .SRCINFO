@@ -1,6 +1,6 @@
 pkgbase = pogo
 	pkgdesc = Plays your music. Nothing else.
-	pkgver = 0.9
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/jendrikseipp/pogo
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = pogo
 	optdepends = gst-plugins-bad: additional codecs
 	optdepends = gst-plugins-ugly: additional codecs
 	optdepends = gst-libav: libav codec
-	source = pogo-0.9.tar.gz::https://github.com/jendrikseipp/pogo/archive/v0.9.tar.gz
-	sha256sums = 1a0ea47d4bd6ee674dee7825d7adbe91c4d62c0c260c49ba33fd10c12b9c3fb4
+	source = pogo-0.9.1.tar.gz::https://github.com/jendrikseipp/pogo/archive/v0.9.1.tar.gz
+	sha256sums = 21cd395f466570060c20e83b37b23983f2495b9b5fa4c9c00974640c8c3db811
 
 pkgname = pogo
 

@@ -1,7 +1,7 @@
 # Maintainer: Michael Straube <straubem@gmx.de>
 
 pkgname=pogo
-pkgver=0.9
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Plays your music. Nothing else.'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('libnotify: desktop notifications'
             'gst-plugins-ugly: additional codecs'
             'gst-libav: libav codec')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jendrikseipp/pogo/archive/v$pkgver.tar.gz")
-sha256sums=('1a0ea47d4bd6ee674dee7825d7adbe91c4d62c0c260c49ba33fd10c12b9c3fb4')
+sha256sums=('21cd395f466570060c20e83b37b23983f2495b9b5fa4c9c00974640c8c3db811')
 
 package() {
   cd $pkgname-$pkgver
