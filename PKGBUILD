@@ -2,16 +2,16 @@
 # Contributor: Kevin Ott <supercodingmonkey at gmail dot com>
 
 pkgname=lib32-sfml
-pkgver=2.4.0
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='A simple, fast, cross-platform, and object-oriented multimedia API (32-bit)'
 arch=('x86_64')
 url='http://www.sfml-dev.org'
 license=('zlib')
-depends=('lib32-libsndfile' 'lib32-libxrandr' 'lib32-libjpeg' 'lib32-openal' 'lib32-glew' 'lib32-freetype2' 'lib32-xcb-util-image' 'sfml')
+depends=('lib32-libsndfile' 'lib32-libxrandr' 'lib32-libjpeg' 'lib32-openal' 'lib32-glew' 'lib32-freetype2' 'lib32-libx11' 'sfml')
 makedepends=('gcc-multilib' 'cmake')
 source=("$url/files/SFML-$pkgver-sources.zip")
-md5sums=('c15e4169b8cfeb2ab8bbc004a90c159a')
+md5sums=('0c04d339aee57c08097ba45a66b870ed')
 
 build() {
   cd "$srcdir/SFML-$pkgver"
