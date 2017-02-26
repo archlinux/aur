@@ -10,8 +10,8 @@ url="https://dev.gajim.org/gajim/gajim-plugins/wikis/HttpUploadPlugin"
 license=('GPL')
 depends=("gajim" "python2-cryptography")
 provides=('gajim-plugin-httpupload')
-source=("${_pkgname}-${pkgver}.zip::https://ftp.gajim.org/plugins_0.16_zip/${_pkgname}.zip")
-sha256sums=('f0550f1dececb1e79211ea07ee378b97ce1cd8848514d900b2468dbfca2a42bf')
+source=("${pkgname}-${pkgver}.zip::https://ftp.gajim.org/plugins_0.16_zip/${_pkgname}.zip")
+sha256sums=('SKIP') # upstream checksum changes without the content being any different
 
 package() {
   cd ${srcdir}/${_pkgname}
