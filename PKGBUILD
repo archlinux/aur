@@ -1,4 +1,4 @@
-# Maintainer: Saleem Rashid <devsaleemrashid.com>
+# Maintainer: Saleem Rashid <dev@saleemrashid.com>
 _pkgname='dbb-app'
 pkgname="${_pkgname}"
 gitname="${_pkgname}"
