@@ -47,7 +47,7 @@ build() {
                 --with-python=/usr/bin/python2 \
                 --with-rootsys=/usr \
                 --with-delphes=/usr \
-                --with-madgraph=/usr/share/madgraph
+                --with-madgraph=/opt/madgraph
     make
     make AnalysisManager
 
