@@ -1,0 +1,40 @@
+pkgbase = cnijfilter-mp250
+	pkgdesc = Canon IJ Printer Driver (MP250 series)
+	pkgver = 3.40.1
+	pkgrel = 5.1
+	url = http://support-au.canon.com.au/contents/AU/EN/0100302002.html
+	install = cnijfilter-mp250.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = autoconf>=2.13
+	makedepends = automake>=1.6
+	makedepends = tar
+	makedepends = make
+	makedepends = gcc
+	depends = libcups
+	depends = cups
+	depends = popt
+	depends = ghostscript
+	depends = gsfonts
+	depends = atk>=1.9.0
+	depends = gtk2>=2.8.0
+	depends = pango>=1.12.3
+	depends = libpng>=1.2.8
+	depends = libtiff
+	depends = cairo>=1.0.2
+	depends = libxml2>=2.6.24
+	depends = fontconfig>=2.3.0
+	depends = libxinerama
+	conflicts = cnijfilter-common
+	source = http://gdlp01.c-wss.com/gds/0/0100003020/01/cnijfilter-source-3.40-1.tar.gz
+	source = fix.patch
+	source = libpng.patch
+	source = automake_fix.patch
+	md5sums = 609975a05d6050fcca88f312d3f35c6a
+	md5sums = ba9c7ec49e76bf74cc50702e362aba7b
+	md5sums = 15e417cd427a920c83e4f28e225e428e
+	md5sums = 07f698d8987632d9bb427d3f4a42a29a
+
+pkgname = cnijfilter-mp250
+
