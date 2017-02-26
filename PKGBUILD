@@ -31,7 +31,7 @@ sha256sums=('8dfa07e224d691c3c58a5e354b9ed4bdfb8fc982fdbed47e07da3feb660f49cd')
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   local additional_args=
-  [[ $_enable_kio_plugin ]] || additional_args+=NO_FILE_ITEM_ACTION_PLUGIN=ON
+  [[ $_enable_kio_plugin ]] || additional_args+=-DNO_FILE_ITEM_ACTION_PLUGIN=ON
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
