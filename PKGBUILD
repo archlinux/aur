@@ -13,7 +13,7 @@ depends=('qt5-base>=5.3.0'
         'qt5-declarative>=5.3.0'
         'qt5-quickcontrols>=5.3.0'
         'qt5-svg>=5.3.0')
-source=("$url/archive/release-$pkgver.tar.gz")
+source=("$_pkgname-$pkgver::$url/archive/release-$pkgver.tar.gz")
 md5sums=('1f527b6452836ca1b6db75af6dc9e223')
 
 build() {
