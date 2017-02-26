@@ -1,6 +1,6 @@
 pkgname=mingw-w64-jasper
 pkgver=2.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard (mingw-w64)"
 arch=(any)
 url="http://www.ece.uvic.ca/~mdadams/jasper"
@@ -18,6 +18,10 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
   cd "$srcdir/jasper-version-$pkgver"
   patch -p1 -i "${srcdir}/jasper-1.900.1-fix-filename-buffer-overflow.patch"
+  # fix library name liblibjapser -> libjasper
+  sed -i "165iset_target_properties(libjasper PROPERTIES OUTPUT_NAME jasper)" src/libjasper/CMakeLists.txt
+  # disable doc
+  sed -i "s|add_subdirectory(doc)||g" CMakeLists.txt
 }
 
 build() {
