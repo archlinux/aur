@@ -1,8 +1,8 @@
-# Maintainer: 10sr <8slashes+arch [at] gmail [dot] com>
+# Maintainer: juliosueiras <juliosueiras [at] gmail [dot] com>
 
 pkgname=ansible-docs-git
 pkgdesc="Ansible HTML documentation"
-pkgver=20150107
+pkgver=20170225
 pkgrel=1
 arch=('any')
 url="https://github.com/ansible/ansible"
@@ -27,5 +27,5 @@ build(){
 
 package() {
     install -dm755 "$pkgdir/usr/share/doc/ansible/html"
-    cp -r "$srcdir"/ansible/docsite/htmlout/* "$pkgdir/usr/share/doc/ansible/html/"
+    cp -r "$srcdir"/ansible/docs/docsite/_build/html/* "$pkgdir/usr/share/doc/ansible/html/"
 }
