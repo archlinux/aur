@@ -2,7 +2,7 @@
 # Contributor: Matthias Maennich <arch@maennich.net>
 
 pkgname=command-not-found
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="In case a command could not be found this utility searches for packages containing this or a similar command (bash,zsh)."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('boost-libs'
 makedepends=('boost'
              'cmake'
              'git')
-md5sums=('e991b83a0f0a65b4180683cd04c845e5')
+md5sums=('d828f5c974f2b3b6009de725ac4fdbc2')
 install=$pkgname.install
 source=("$url/archive/v$pkgver.zip")
 
