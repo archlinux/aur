@@ -8,7 +8,7 @@ pkgdesc='A flat and light theme with a modern look using Arch Linux colors (GNOM
 arch=('any')
 url='http://numixproject.org/'
 license=('GPL3')
-depends=('glib2 gdk-pixbuf2')
+depends=('glib2' 'gdk-pixbuf2')
 makedepends=('git' 'ruby-sass>=3.4')
 provides=('numix-themes-archblue')
 conflicts=('numix-themes-archblue')
