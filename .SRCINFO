@@ -1,14 +1,14 @@
 pkgbase = a2png
 	pkgdesc = Converts text into bitmap images such as PNG.
 	pkgver = 0.1.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://sourceforge.net/projects/a2png/files/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = cairo
-	source = http://downloads.sourceforge.net/project/a2png/a2png/0.1.5/a2png-0.1.5.tar.gz
-	md5sums = 2ccf851a8f0ac611a7bc83b35de0a727
+	source = http://downloads.sourceforge.net/project/a2png/a2png/0.1.5/a2png-0.1.5.tar.bz2
+	sha512sums = a3f3c994e9bc2161c6946a0f17b0d327b80067c4171b09f5d696004329eabf862c26220e9e4f48b4e16af59890f54c7c43191adf387fd3d8b4468355ab1789ce
 
 pkgname = a2png
 
