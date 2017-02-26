@@ -9,7 +9,7 @@ _webview_provider=none
 _reponame=syncthingtray
 pkgname=mingw-w64-syncthingtray
 _name=${pkgname#mingw-w64-}
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 arch=('any')
 pkgdesc='Tray application for Syncthing (mingw-w64)'
@@ -21,7 +21,7 @@ depends=('mingw-w64-crt' 'mingw-w64-qt5-svg' 'mingw-w64-qtutilities' 'mingw-w64-
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('d7b14d80e64137c3adb5707dc61731c07aeffec805c7f0bd0960b54a41db6bc5')
+sha256sums=('8dfa07e224d691c3c58a5e354b9ed4bdfb8fc982fdbed47e07da3feb660f49cd')
 options=(!buildflags staticlibs !strip !emptydirs)
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] ||
@@ -39,6 +39,7 @@ build() {
       -DCMAKE_INSTALL_PREFIX="/usr/${_arch}" \
       -DWEBVIEW_PROVIDER="${_webview_provider}" \
       -DSYSTEMD_SUPPORT=OFF \
+      -DNO_FILE_ITEM_ACTION_PLUGIN=ON \
       ${_configurations} \
       ../
     make
