@@ -3,13 +3,13 @@
 
 pkgname=graphite-api
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphite-web, without the interface. Just the rendering HTTP API."
 url="https://github.com/brutasse/graphite-api"
 license=('Apache')
 depends=('python' 'python-pytz' 'python-six' 'python-flask' 'python-structlog'
          'python-yaml' 'python-tzlocal' 'python-cairocffi' 'python-pyparsing'
-         'gunicorn')
+         'python-xcffib' 'gunicorn')
 makedepends=('python-setuptools' 'python-mock')
 optdepends=('python-flask-cache: For caching'
             'python-raven: For sentry support'
