@@ -41,6 +41,7 @@ package_dbb-app() {
 }
 
 package_dbb-cli() {
+    pkgdesc='A command line application for the Digital Bitbox hardware wallet'
     depends=('hidapi')
 
     cd "${srcdir}/${gitname}"
