@@ -2,6 +2,7 @@
 pkgname=cropgui-git
 pkgver=349125
 pkgrel=1
+epoch=1
 pkgdesc="A GTK GUI for lossless JPEG cropping (and rotating)"
 arch=('any')
 url="https://emergent.unpythonic.net/01248401946"
@@ -16,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname" 
-  git describe --always | sed -e 's|-|.|g' -e '1s|^.||'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
