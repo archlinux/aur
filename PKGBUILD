@@ -7,7 +7,7 @@
 _pkgname=gitea
 _gourl="code.gitea.io"
 pkgname=gitea-git
-pkgver=r4990.80f900eb
+pkgver=r4995.5bd22a2f
 pkgrel=1
 pkgdesc='A painless self-hosted Git service.'
 url='https://gitea.io/'
@@ -18,7 +18,7 @@ source=('git://github.com/go-gitea/gitea.git'
 sha256sums=('SKIP'
             'f7b570315bd98a4e2d1c82ebdc2e78d76f6df49286ca4ac59cfb2b3f9985d1f9'
             '6ec975577a54e68d05a9292230c1aee19358459366688819cec4445e8d3c5210')
-arch=('x86_64' 'i686' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 depends=('go')
 makedepends=('patch' 'git' 'go-bindata')
 optdepends=('mariadb: MariaDB database support'
@@ -26,7 +26,8 @@ optdepends=('mariadb: MariaDB database support'
             'sqlite: SQLite database support'
             'redis: Redis session support'
             'memcached: MemCached session support'
-            'openssh: Git over SSH support')
+            'openssh: Git over SSH support'
+            'pam: Authentication via PAM support')
 install=gitea.install
 backup=("var/lib/gitea/custom/conf/app.ini")
 conflicts=('gitea')
