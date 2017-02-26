@@ -2,14 +2,14 @@
 # Contributor: Nikita Sivakov <cryptomaniac.512@gmail.com>
 
 pkgname=numix-themes-archblue-git
-pkgver=2.6.4.r2.5a0ec95
-pkgrel=2
+pkgver=2.6.6.r18.f25d7e0
+pkgrel=1
 pkgdesc='A flat and light theme with a modern look using Arch Linux colors (GNOME, Openbox, Unity, Xfce)'
 arch=('any')
 url='http://numixproject.org/'
 license=('GPL3')
-depends=('gtk-engine-murrine')
-makedepends=('git' 'ruby-sass')
+depends=('glib2 gdk-pixbuf2')
+makedepends=('git' 'ruby-sass>=3.4')
 provides=('numix-themes-archblue')
 conflicts=('numix-themes-archblue')
 source=("git+https://github.com/shimmerproject/Numix.git")
