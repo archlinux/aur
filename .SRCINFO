@@ -1,7 +1,7 @@
 pkgbase = opentx-companion
 	pkgdesc = EEPROM Editor for OpenTX RC transmitter firmwares
 	pkgver = 2.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.open-tx.org/
 	arch = x86_64
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = opentx-companion
 	makedepends = avr-gcc
 	makedepends = avr-libc
 	makedepends = sed
-	depends = phonon
+	depends = phonon-qt4
 	depends = qt4
 	depends = sdl
 	provides = companion
