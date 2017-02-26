@@ -1,21 +1,21 @@
 # Maintainer: Patrik Karlsson <pata.karlsson@gmail.com>
 
 pkgname=mapollage
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
-pkgdesc="a tool that creates a KML with your geotagged photos"
+pkgdesc="mapollage puts your geotagged photos on the map by producing a photo kml file for use in Google Earth"
 arch=('any')
-url="http://trixon.se/mapollage/"
+url="https://trixon.se/mapollage/"
 license=('Apache')
 depends=('java-runtime=8')
 makedepends=('desktop-file-utils')
 source=(
-	"http://trixon.se/files/$pkgname-$pkgver-bin.zip"
+	"https://trixon.se/files/$pkgname-$pkgver-bin.zip"
 	'mapollage.sh'
 	'mapollage.desktop'
 )
 sha256sums=(
-	'46180cd402d6f4714afbbb966701bce56962aef2d16bde0b1fc7a5f16373e445'
+	'50bb8a96b42864d47702309f7c279e1c206bfbfd90c3400880da307188e8b78c'
 	'9f7c96ef813c3cfda38abc83db1143abff6857b79cd75074abdce224a70d9ab4'
 	'7f908c214693692d259108df6239b0ac86b5c8b56381f9cce13ef5d9f2e5f930'
 )
