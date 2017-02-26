@@ -4,7 +4,7 @@
 
 pkgname=nrpe
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Nagios Remote Plugin Executor"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -46,6 +46,9 @@ package() {
   install -Dm644 README.SSL.md "$pkgdir"/usr/share/doc/$pkgname/README.SSL.md
   install -Dm644 SECURITY.md "$pkgdir"/usr/share/doc/$pkgname/SECURITY.md
   install -Dm644 LEGAL "$pkgdir"/usr/share/licenses/$pkgname/LEGAL
+
+  # FS#52873
+  sed -i 's/=31$/=nrpe/g' "$pkgdir"/etc/nrpe/nrpe.cfg
 
   # Tidy up
   chmod 755 "$pkgdir"/usr/lib/monitoring-plugins
