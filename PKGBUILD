@@ -1,14 +1,14 @@
-# Maintainer: Carlos Franke <carlos_Franke at lemtank dot de>
+# Contributor: Carlos Franke <carlos_Franke at lemtank dot de>
 _pkgname=azulejo
 pkgname=$_pkgname-git
-pkgver=r67.f7059ae
+pkgver=r68.4c6c8e8
 pkgrel=1
 pkgdesc="Window resizing and tiling utility"
 arch=('any')
 url=""
 license=('custom')
 groups=()
-depends=('python2' 'gtk3' 'libkeybinder3' 'python2-xlib' 'python2-notify2')
+depends=('python2' 'gtk3' 'libkeybinder3' 'python2-xlib' 'python2-notify2' 'python2-gobject')
 makedepends=('git' 'python2-setuptools')
 provides=('azulejo')
 conflicts=('azulejo')

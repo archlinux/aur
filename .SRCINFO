@@ -1,6 +1,6 @@
 pkgbase = azulejo-git
 	pkgdesc = Window resizing and tiling utility
-	pkgver = r67.f7059ae
+	pkgver = r68.4c6c8e8
 	pkgrel = 1
 	arch = any
 	license = custom
@@ -11,6 +11,7 @@ pkgbase = azulejo-git
 	depends = libkeybinder3
 	depends = python2-xlib
 	depends = python2-notify2
+	depends = python2-gobject
 	provides = azulejo
 	conflicts = azulejo
 	options = !emptydirs
