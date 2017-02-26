@@ -54,6 +54,10 @@ package() {
 
   # Make doc dir
   mkdir -p $pkgdir/usr/share/doc/vkquake/
+  mkdir -p $pkgdir/usr/share/games/vkquake/
+
+  # pak files
+  install -Dm644 "$srcdir/$pkgname/Misc/vq_pak/vkquake.pak" "$pkgdir/usr/share/games/vkquake/vkquake.pak" 
 
   # supplemental files
   install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/vkquake.desktop"
