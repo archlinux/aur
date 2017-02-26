@@ -1,7 +1,7 @@
 # Maintainer: Michael Straube <straubem@gmx.de>
 
 pkgname=pogo-git
-pkgver=0.9.r0.ga2f1ffb
+pkgver=0.9.1.r0.g9fd11eb
 pkgrel=1
 pkgdesc='Plays your music. Nothing else.'
 arch=('any')
