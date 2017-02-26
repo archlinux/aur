@@ -1,6 +1,6 @@
 pkgbase = yspave
 	pkgdesc = Simple scrypt-based CLI password manager
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://dev.yaki-syndicate.de
 	arch = any
@@ -13,11 +13,12 @@ pkgbase = yspave
 	depends = python-xdg
 	optdepends = xsel: access to X selection
 	optdepends = words: Random word generator as per XKCD 936
-	source = yspave-0.1.1.tar.gz::https://github.com/creshal/yspave/archive/0.1.1.tar.gz
-	source = yspave-0.1.1.tar.gz.asc::https://github.com/creshal/yspave/releases/download/0.1.1/0.1.1.tar.gz.asc
+	source = yspave-0.1.2.tar.gz::https://github.com/creshal/yspave/archive/0.1.2.tar.gz
+	source = https://github.com/creshal/yspave/releases/download/0.1.2/yspave-0.1.2.tar.gz.asc
 	validpgpkeys = 6992814F5117E21BB52A6C14D828F2B98DE7B0D6
-	sha512sums = b3798231a8a5bbb8187f7b14b42c5e075d3c93cc0c77d3344ba8ffcb6516cc489e5715e5d38e8fc07d836c70391ec12d9a7b4df1db22ba63ce9c4e16912161f1
-	sha512sums = 4fb4d6b71f9795e661418cf8dcb2d080ff657548d9a9f23e39c3e9e9a1af2439fd272be727ca69e7a1574ca3130fcc6e1afe6d82df43b684df230d20d02062c6
+	validpgpkeys = C24FF235C918C314536DFE12C49D7AC06138A8E4
+	sha512sums = 60b9beca9dc603526f6b2bcf3b8f3552694040a93e4f5819cd06a323a68d44e8489db97699db528c2809b39cb2df83fa176ec5e5074bafb3e1d512ff2a6b8070
+	sha512sums = 67161f913d274f1681b52e548e8df92430fbcc537f0600df753d42eb5d06bc8bdbf6704cd3f32f2eeafd2f0e7c415bec2173cda04fbdeccb6483e27c433824d0
 
 pkgname = yspave
 
