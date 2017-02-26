@@ -3,7 +3,7 @@
 
 pkgname=vkquake-git
 _gitname=vkquake
-pkgver=0.94.r2.g75acd70
+pkgver=0.94.r10.g3a40e31
 pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support (git-latest)."
 arch=('i686' 'x86_64')
@@ -59,6 +59,9 @@ package() {
 
   # Install main binary
   install -Dm755 Quake/vkquake "$pkgdir"/usr/bin/vkquake
+
+  # pak files
+  install -Dm644 "$srcdir/$_gitname/Misc/vq_pak/vkquake.pak" "$pkgdir/usr/share/games/vkquake/vkquake.pak"
 
   # Make doc dir
   mkdir -p $pkgdir/usr/share/doc/vkquake/
