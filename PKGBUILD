@@ -13,7 +13,7 @@ depends=('python')
 provides=('xorg-xbacklight')
 conflicts=('xorg-xbacklight')
 source=(${pkgname}-${pkgver}.zip::https://github.com/wavexx/acpilight/archive/${_sha_}.zip)
-md5sums=('41eeeb7494176d4ffa4455c1a0deb934')
+sha512sums=('28bcf83d06fcb7574e1317342ff273fc24870d3c94ea5ae2778a2970a34bcfaee25764eb6390ce4b4a486e0f54f6a4a8c2d51cf427b249d7befac2eccd770e76')
 
 package() {
     local realdir=$(ls -d ${srcdir}/${pkgname}-${_sha_}*)
