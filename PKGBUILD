@@ -11,7 +11,7 @@ depends=( 'taglib' 'qt5-base' 'qt5-tools' 'qt5-multimedia'
 'qt5-xmlpatterns' 'gstreamer0.10-bad-plugins'
 'gstreamer0.10-base-plugins' 'gstreamer0.10-ffmpeg'
 'gstreamer0.10-good-plugins' 'gstreamer0.10-ugly-plugins' )
-makedepends=('git')
+makedepends=('git' 'make' 'cmake' 'libcue')
 source=(git+https://github.com/qomp/qomp)
 md5sums=('SKIP') 
 
