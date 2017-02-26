@@ -2,7 +2,7 @@
 
 pkgname=pythonqt-svn
 pkgver=3.1.r445
-pkgrel=1
+pkgrel=2
 pkgdesc='A dynamic Python binding for the Qt framework (SVN version)'
 arch=('i686' 'x86_64')
 url='http://pythonqt.sourceforge.net/'
@@ -11,7 +11,7 @@ license=('LGPL2.1')
 depends=('python' 'qt5-webkit' 'qt5-svg' 'qt5-multimedia')
 makedepends=('subversion' 'qt5-tools')
 provides=('pythonqt')
-conflicts=('pythonqt''qt5-python27-git')
+conflicts=('pythonqt' 'qt5-python27-git')
 source=("$pkgname"::'svn://svn.code.sf.net/p/pythonqt/code/trunk')
 sha256sums=('SKIP')
 
