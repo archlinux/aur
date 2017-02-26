@@ -1,0 +1,11 @@
+[Unit]
+Description=Web server serving blank html
+
+[Service]
+Type=simple 
+User=kwakd
+ExecStart=/usr/bin/kwakd -p 80 
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

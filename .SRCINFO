@@ -1,0 +1,18 @@
+pkgbase = kwakd-git
+	pkgdesc = A web server serving blank html pages
+	pkgver = r12.acdf0e1
+	pkgrel = 1
+	url = https://github.com/fetchinson/kwakd
+	install = kwakd.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	conflicts = kwakd
+	source = git://github.com/fetchinson/kwakd.git
+	source = kwakd.service
+	sha256sums = SKIP
+	sha256sums = 5ae20e1ef81436ba5452447c32c46db4d343f08f5abe0aa41076425a9cee4715
+
+pkgname = kwakd-git
+
