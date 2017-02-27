@@ -1,16 +1,16 @@
 pkgbase = presto-cli
 	pkgdesc = Distributed SQL Query Engine for Big Data - Client
-	pkgver = 0.164
+	pkgver = 0.167
 	pkgrel = 1
 	url = https://prestodb.io/
 	arch = any
 	license = custom:Apache 2
 	depends = java-runtime>=8
 	depends = sh
-	noextract = presto-cli-0.164-executable.jar
-	source = https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/0.164/presto-cli-0.164-executable.jar
+	noextract = presto-cli-0.167-executable.jar
+	source = https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/0.167/presto-cli-0.167-executable.jar
 	source = https://raw.githubusercontent.com/prestodb/presto/master/LICENSE
-	sha256sums = 65fb413d9ba970d97450afc81abfb76a229124f564bc69ea00faa7dbd54792ac
+	sha256sums = bcbe8681416726a4ef88636f7d80ad70c5110a11f4b5b4fd0e1c8bda6e0bf582
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
 
 pkgname = presto-cli
