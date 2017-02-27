@@ -1,73 +1,85 @@
-# Maintainer: Jon Gjengset <jon@thesquareplanet.com>
+# Maintainer: Jingbei Li <i@jingbei.li>
 # Original author: David McInnis<davidm@eagles.ewu.edu>
 
 pkgbase="python-theano-git"
 pkgname=("python-theano-git" "python2-theano-git")
-pkgver=0.7.1a1.r1364.33c9760
+_pkgname="Theano"
+pkgver=0.9.0rc1.r59.183b5f1a4
 pkgrel=1
 pkgdesc='Definition and optimized evaluation of mathematical expressions on Numpy arrays.'
 arch=('any')
 url='http://www.deeplearning.net/software/theano/'
 license=('BSD')
-conflicts=('python-theano' 'python2-theano')
-provides=('python-theano' 'python2-theano')
-depends=('python'  'python-numpy' 'python-six'
-         'python2' 'python2-numpy' 'python2-six')
+depends=('python'  'python-numpy'
+	'python2' 'python2-numpy')
 makedepends=('python-distribute' 'python2-distribute')
-checkdepends=('python-nose'      'python2-nose')
-optdepends=('python-pycuda' 'python-pydot'
-            'python2-pycuda' 'python2-pydot')
-source=("python-theano::git+https://github.com/Theano/Theano.git")
+checkdepends=('python-nose' 'python-nose-parameterized' 'python2-nose' 'python2-nose-parameterized')
+optdepends=('python-sympy: Recommended'
+	'python-scipy: Recommended'
+	'python-pycuda:'
+	'python-pydot-ng: Preferred over python-pydot'
+	'python-pydot'
+	'python-pygpu'
+	'python-scikit-sparse'
+	'python-mpi4py: minimal support for opencl'
+	'python2-sympy'
+	'python2-scipy'
+	'python2-pycuda'
+	'python2-pydot-ng'
+	'python2-pydot'
+	'python2-mpi4py')
+source=("git+https://github.com/Theano/Theano.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgbase%-git}"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^rel\.//')"
-
+	cd "$srcdir/${_pkgname}"
+	git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^rel\.//'
 }
 
 prepare() {
-  cd "$srcdir/"
-  cp -a "${pkgbase%-git}" "${pkgbase%-git}-py2"
-  cd "${pkgbase%-git}-py2"
-  sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
-      -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
-      -e "s|#![ ]*/bin/env python$|#!/usr/bin/env python2|" \
-      -i $(find . -name '*.py')
+	cd "$srcdir/"
+	cp -a "${_pkgname}" "${_pkgname}-py2"
 }
 
 build() {
-  msg "Building Python 2"
-  cd "$srcdir/${pkgbase%-git}-py2"
-  python2 setup.py build
-  cp -f build/scripts-2*/* bin/
+	msg "Building Python 2"
+	cd "$srcdir/${_pkgname}-py2"
+	python2 setup.py build
 
 
-  msg "Building Python 3"
-  cd "$srcdir/${pkgbase%-git}"
-  python setup.py build
-  cp -f build/scripts-3*/* bin/
+	msg "Building Python 3"
+	cd "$srcdir/${_pkgname}"
+	python setup.py build
 }
 
+# Test takes 4+ hours & over 10Gb of RAM/SWAP
+# CPU-only tests always pass on my machine
+# My Nvidia 9600GT is old & requires cuda65 to work
+# many tests utilizing the GPU fail on my machine.
+#-------------------------------------------------
+#check() {
+#  msg "Checking Python 2"
+#  cd "$srcdir/${_pkgname}-py2"/build/lib/theano/
+#  THEANO_FLAGS=exception_verbosity=high nosetests2 -v -d
+#
+#  msg "Checking Python 3"
+#  cd "$srcdir/${_pkgname}"/build/lib/theano/
+#  THEANO_FLAGS=exception_verbosity=high nosetests3 -v -d
+#}
+
 package_python2-theano-git() {
-  depends=('python2' 'python2-numpy' 'python2-six')
-  optdepends=('python2-pycuda' 'python2-pydot')
-  provides=('python2-theano')
-  conflicts=('python2-theano')
-  cd "$srcdir/${pkgbase%-git}-py2"
-  python2 setup.py install --root="$pkgdir"/ --optimize=1
-  mv "${pkgdir}/usr/bin/theano-cache" "${pkgdir}/usr/bin/theano2-cache"
-  mv "${pkgdir}/usr/bin/theano-nose" "${pkgdir}/usr/bin/theano2-nose"
-  mv "${pkgdir}/usr/bin/theano-test" "${pkgdir}/usr/bin/theano2-test"
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python2-theano"
+	depends=('python2' 'python2-numpy')
+	cd "$srcdir/${_pkgname}-py2"
+	python2 setup.py install --root="$pkgdir"/ --optimize=1
+	mv "${pkgdir}/usr/bin/theano-cache" "${pkgdir}/usr/bin/theano2-cache"
+	mv "${pkgdir}/usr/bin/theano-nose" "${pkgdir}/usr/bin/theano2-nose"
+	mv "${pkgdir}/usr/bin/theano-test" "${pkgdir}/usr/bin/theano2-test"
+	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python2-theano/LICENSE.txt"
 }
 
 package_python-theano-git() {
-  depends=('python' 'python-numpy' 'python-six')
-  optdepends=('python-pycuda' 'python-pydot')
-  provides=('python-theano')
-  conflicts=('python-theano')
-  cd "$srcdir/${pkgbase%-git}"
-  python setup.py install --root="$pkgdir"/ --optimize=1
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python-theano"
+	depends=('python' 'python-numpy')
+	cd "$srcdir/${_pkgname}"
+	python setup.py install --root="$pkgdir"/ --optimize=1
+	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python-theano/LICENSE.txt"
 }
