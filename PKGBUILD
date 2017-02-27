@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   autoreconf -f -i
-  ./configure --disable-meanwhile --disable-tk --enable-gnutls=yes
+  ./configure --disable-meanwhile --disable-tk --enable-gnutls=yes --prefix=/usr
   make
 }
 
