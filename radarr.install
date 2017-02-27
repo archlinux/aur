@@ -1,20 +1,11 @@
 post_install() {
-    if grep -q "^radarr" /etc/group &> /dev/null ; then
-        groupmod -n radarr radarr &> /dev/null                                                 
-    else
-        groupadd -r radarr &> /dev/null
-    fi
-    if grep -q "^radarr:" /etc/passwd 2> /dev/null ; then
-        usermod -s /bin/false -c "Radarr daemon" -d /var/lib/radarr -g radarr radarr &> /dev/null
-    else
-        useradd -s /bin/false -c "Radarr daemon user" -d /var/lib/radarr -g radarr -r radarr &> /dev/null
-    fi
+  systemd-sysusers radarr.conf
 
-    mkdir -p /var/lib/radarr
-    chown -R radarr: /var/lib/radarr
+  mkdir -p /var/lib/radarr
+  chown -R radarr:radarr /var/lib/radarr
 }
 
 post_upgrade() {
-    post_install $1
+  post_install $1
 }
 

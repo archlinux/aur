@@ -18,28 +18,33 @@ install='radarr.install'
 provides=('radarr')
 source=("https://github.com/galli-leo/Radarr/releases/download/v${pkgver}/Radarr.develop.${pkgver}.linux.tar.gz"
         "radarr.sh"
-        "radarr.service")
+        "radarr.service"
+        "radarr.sysusers")
 noextract=()
 
 sha512sums=('111366a6a1bb03d028b965587ea2e69190e2e7c2719ff87887edaa5e16345e69cfd12b0df5d7be8433628092f80defd5340460f67deaa9912962f2c4410e0c7d'
             '17c0a54de94ab6e4523ab5f3f65bd40b592cc6723acaf123db8bbf0d2c6200e4b5877878c542fe849c09b9748ab8c8887cbd94365ba431cf71fc1256f24b43ec'
-            '58260b3d1e0638aa2269fb81a077686c203ae638d6d93712eb0552e93b8b5f517f6d104464b119d5d38ea521e130e3ee80579113526433337f0578576917b7e1')
+            '58260b3d1e0638aa2269fb81a077686c203ae638d6d93712eb0552e93b8b5f517f6d104464b119d5d38ea521e130e3ee80579113526433337f0578576917b7e1'
+            'c1ee3925eced182ea7fffa55a6dc2a4e099ccf18636fc237ef0a2fc9517a38cfc2a819ae5a7bc546b63e383506f9f47e89454a71e34106c579d7454d71b2299e')
 
 package() {
-    cd "$srcdir"
+  cd "$srcdir"
 
-    install -d -m 755 "${pkgdir}/var/lib/radarr"
+  install -d -m 755 "${pkgdir}/var/lib/radarr"
 
-    msg2 "Install Radarr in /usr/lib"
-    install -d -m 755 "${pkgdir}/usr/lib/radarr"
-    cp -dpr --no-preserve=ownership "${srcdir}/Radarr/"* "${pkgdir}/usr/lib/radarr"
+  msg2 "Install Radarr in /usr/lib"
+  install -d -m 755 "${pkgdir}/usr/lib/radarr"
+  cp -dpr --no-preserve=ownership "${srcdir}/Radarr/"* "${pkgdir}/usr/lib/radarr"
 
-    msg2 "Fixing permissions in /usr/lib/radarr/"
-    find "${pkgdir}/usr/lib/radarr" -type f -exec chmod 644 '{}' ';'
+  msg2 "Fixing permissions in /usr/lib/radarr/"
+  find "${pkgdir}/usr/lib/radarr" -type f -exec chmod 644 '{}' ';'
 
-    msg2 "Install executable into /usr/bin"
-    install -D -m755 "${srcdir}/radarr.sh" "${pkgdir}/usr/bin/radarr"
+  msg2 "Install executable into /usr/bin"
+  install -D -m755 "${srcdir}/radarr.sh" "${pkgdir}/usr/bin/radarr"
 
-    msg2 "Install radarr.service"
-    install -D -m 644 "${srcdir}/radarr.service" "${pkgdir}/usr/lib/systemd/system/radarr.service"
+  msg2 "Install radarr.service"
+  install -D -m 644 "${srcdir}/radarr.service" "${pkgdir}/usr/lib/systemd/system/radarr.service"
+
+  msg2 "Install radarr sysusers.d"
+  install -Dm644 "$srcdir/radarr.sysusers" "$pkgdir/usr/lib/sysusers.d/radarr.conf"
 }
