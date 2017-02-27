@@ -3,14 +3,13 @@
 pkgname=singularityviewer
 pkgver=1.8.7.6866
 _pkgver=1_8_7_6866
-pkgrel=2
+pkgrel=3
+_harfbuzzver=1.3.4-1
 pkgdesc="A Second Life (secondlife) protocol compatible client application, used to access its service as well as a number of other such as those based upon OpenSim platform"
 url="http://www.singularityviewer.org/"
 license=('custom')
 arch=('x86_64')
 depends=('apr-util' 'gtk2' 'libgl' 'libidn' 'mesa' 'nss' 'sdl' 'libxss' 'lib32-libidn' 'lib32-libsndfile' 'lib32-zlib' 'gconf' 'lib32-util-linux')
-
-
 optdepends=('libpulse: for PulseAudio support' 'alsa-lib: for ALSA support'
 	'nvidia-utils: for NVIDIA support'
 	'flashplugin: for inworld Flash support'
@@ -18,22 +17,16 @@ optdepends=('libpulse: for PulseAudio support' 'alsa-lib: for ALSA support'
 	'lib32-freealut: for OpenAL support'
 	'openal'
 	'libxtst')
-#source_i686=("http://bitbucket.org/SingularityViewer/singularityviewer/downloads/Singularity-i686-$pkgver.tar.bz2"
-#	"singularityviewer.desktop"
-#	"singularityviewer.launcher")
-
-#source_x86_64=("http://bitbucket.org/SingularityViewer/singularityviewer/downloads/Singularity-x86_64-$pkgver.tar.bz2"
-#	"singularityviewer.desktop"
-#	"singularityviewer.launcher")
-
-source_x86_64=("http://67.170.30.149/Singularity_${_pkgver}_$CARCH.tar.xz"
+source=("http://67.170.30.149/Singularity_${_pkgver}_$CARCH.tar.xz"
 	"singularityviewer.desktop"
 	"singularityviewer.launcher"
-        "http://dl.dropboxusercontent.com/u/4361965/singularityviewer.png")
-md5sums_x86_64=('26239218a3ca9a6343039906e5374f79'
-                '3b6c5641f35a099af35ff4065733049f'
-                'eb596f5cf7b6f2d0c55c0082fb99a905'
-                '0c825fe422dadd0cac9010e7ff152cfa')
+        "http://dl.dropboxusercontent.com/u/4361965/singularityviewer.png"
+	"http://archive.archlinux.org/repos/2016/12/06/extra/os/x86_64/harfbuzz-1.3.4-1-x86_64.pkg.tar.xz")
+md5sums=('26239218a3ca9a6343039906e5374f79'
+         '3b6c5641f35a099af35ff4065733049f'
+         'eb596f5cf7b6f2d0c55c0082fb99a905'
+         '0c825fe422dadd0cac9010e7ff152cfa'
+         '0a3e4654c3009d740a6be09e58a2d451')
 
 package() {
 cd $srcdir
@@ -70,5 +63,9 @@ chmod g+x $pkgdir/opt/singularityviewer/singularity
  
 # Do not re-register the application with the desktop system at every launch, saves from locally installed desktop files.
 sed -i 's|./refresh_desktop_app_entry.sh|#./refresh_desktop_app_entry.sh|' $pkgdir/opt/singularityviewer/singularity
+
+# Install harfbuzz binaries
+cd $srcdir/usr/lib/
+cp *harfbuzz.so* $pkgdir/opt/singularityviewer/lib64/
     
 }
