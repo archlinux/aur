@@ -1,7 +1,7 @@
 pkgbase = beancount-hg
 	pkgdesc = Double-Entry Accounting from Text Input
 	pkgver = r4148.397e821a48c5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://furius.ca/beancount/
 	arch = i686
 	arch = x86_64
@@ -19,6 +19,8 @@ pkgbase = beancount-hg
 	depends = python-bottle
 	depends = python-lxml
 	depends = python-google-api-python-client
+	provides = ledgerhub-hg
+	replaces = ledgerhub-hg
 	source = beancount-hg::hg+https://bitbucket.org/blais/beancount/
 	sha1sums = SKIP
 
