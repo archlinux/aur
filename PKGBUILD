@@ -7,7 +7,7 @@
 # Based on community/clementine PKGBUILD
 
 pkgname=clementine-git
-pkgver=1.3.1.r245.g5e7dd00
+pkgver=1.3.1.r287.g652f38ac8
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 url='http://www.clementine-player.org/'
@@ -38,6 +38,7 @@ build() {
     
     cmake "$srcdir/Clementine" \
         -DCMAKE_BUILD_TYPE=Release \
+        -DBUILD_WERROR=off \
         -DCMAKE_INSTALL_PREFIX="/usr"
     make
 }
