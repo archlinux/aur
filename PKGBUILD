@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 207902 2017-01-18 18:02:20Z pierre $
 #
 # Maintainer: Michael Rynn <michael.rynn@parracan.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
@@ -10,7 +9,7 @@
 php_suffix="70" # This mutation
 php_ext="xdebug"
 pkgname="php${php_suffix}-${php_ext}"
-pkgver="2.5.0"
+pkgver="2.5.1"
 pkgrel=1
 
 
@@ -24,8 +23,9 @@ pkg_src="${php_ext}-${pkgver}"
 
 source=("https://www.xdebug.org/files/${pkg_src}.tgz"  'xdebug.ini')
 
-sha256sums=('8bd6ad1e64948308e3e3a7437292f154b11e25acaf31b0d59d83bda18af0890d'
-            '7c66883dc2ade69069ef84e30188b25630748aa9c8b0dd123727c00505421205')
+sha256sums=(
+  '7fda9020fd5a2c549ae5a692fcabbb00f74e39dda81d53d25e622bdab4880ec2'
+  '7c66883dc2ade69069ef84e30188b25630748aa9c8b0dd123727c00505421205')
 
 
 # locate php-config[suffix], get options
