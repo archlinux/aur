@@ -5,7 +5,7 @@ pkgname=orfeo-toolbox
 pkgver=5.10.0
 _pkgver=5.10
 minorver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org/otb/"
@@ -75,7 +75,11 @@ cmake ../OTB-release-$_pkgver \
 -DOTB_USE_OPENGL=ON \
 -DOTB_USE_GLUT=ON \
 -DOTB_DATA_USE_LARGEINPUT=ON \
--DOTB_BUILD_ALL_MODULES_FOR_TESTS=ON
+-DOTB_BUILD_ALL_MODULES_FOR_TESTS=ON \
+-DOTB_USE_GLEW=ON \
+-DOTB_USE_QWT=ON \
+-DQWT_INCLUDE_DIR=/usr/include/qwt5 \
+-DQWT_LIBRARY=/usr/lib64/libqwt5.so 
 
 make 
 
