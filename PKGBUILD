@@ -47,7 +47,7 @@ _use_current=
 
 pkgbase=linux-ck-fbcondecor
 _srcname=linux-4.9
-pkgver=4.9.6
+pkgver=4.9.13
 pkgrel=1
 _ckpatchversion=1
 arch=('i686' 'x86_64')
@@ -58,11 +58,11 @@ options=('!strip')
 _ckpatchname="patch-4.9-ck${_ckpatchversion}"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-	"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-	"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-	"http://ck.kolivas.org/patches/4.0/4.9/4.9-ck${_ckpatchversion}/${_ckpatchname}.xz"
-	"http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
+        "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        "http://ck.kolivas.org/patches/4.0/4.9/4.9-ck${_ckpatchversion}/${_ckpatchname}.xz"
+        "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         # the main kernel config files
         'config' 'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -70,20 +70,18 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch'
 	'fbcondecor-4.9.patch')
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            'cd0d5ea27c487a7d1354ba3e80f85af4924b77ad1180f1fbfaf6844ae03c8728'
+            '87a0f07dd393e2d08850f0536417d091684535ff0c8ab8f8d9aeab1db38589bf'
             'SKIP'
             '5b9d8f4ef73f87e8595de66ccc38bad86e290fd9453bd536b9cc950f5344b82d'
             'c26b4b76ca3b3dc864e1470001b46f65e007252e984e9b3c6cc8e90a18b7317f'
-            '5bf061a3717879de87205858d8aea75f8a9612ccc8bbba0767a8230091d3a734'
-            '0e2bd5840560ab98becd9254cd16f6c501a09a4957fb0a8ca8580ef3dfeb640e'
+            '89956a8d1e516d906245357317aad8ca65d215a69e03f87ceb9ba93708a2da84'
+            '55fef3e4c798d36e806ab0aff35da2804934215aa1ae4a214aa4a0a61ba7422a'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '3e955e0f1aae96bb6c1507236adc952640c9bd0a134b9995ab92106a33dc02d9'
             '0671b52ba9498ba2027fa643ba0e3b524696b358fe983fbad1c586f9446a17a6')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -91,17 +89,13 @@ validpgpkeys=(
              )
 
 _kernelname=${pkgbase#linux}
+
 prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
-
-  # Revert a commit that causes memory corruption in i686 chroots on our
-  # build server ("valgrind bash" immediately crashes)
-  # https://bugzilla.kernel.org/show_bug.cgi?id=190061
-  patch -Rp1 -i "${srcdir}/0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch"
-
+  
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
