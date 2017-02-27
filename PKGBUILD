@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=7.6.beta3.r0.gbf876cbd5a
+pkgver=7.6.beta5.r0.g36bcfa606a
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -34,7 +34,7 @@ makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhom
 source=("git://git.sagemath.org/sage.git#branch=develop" 
         env.patch skip-check.patch cython-sys-path.patch is-package-installed.patch package.patch
         jupyter-path.patch test-optional.patch ecm-7.patch increase-rtol.patch r-no-readline.patch
-        sagemath-planarity3.patch fes02.patch)
+        sagemath-planarity3.patch fes02.patch sagemath-singular-4.1.0.p2.patch)
 sha256sums=('SKIP'
             '9dba04ff13626a7b6c338a8b18a6c27d343f68a547a218533cf773af3dae6635'
             '178074c0a22da4a8129ec299a6845aaae8cf3ef1da6f62b34f2ec0ed50c1e6a2'
@@ -47,7 +47,8 @@ sha256sums=('SKIP'
             '1c068c524a2926ba222b36b0f4229a45c6f00c2225ffde0b0555e4e9659342d5'
             'ef9f401fa84fe1772af9efee6816643534f2896da4c23b809937b19771bdfbbf'
             'a1c562ebe4538d672404ca3ac2e954a3c955afeb7463f7b4fe6eaa6fa74fe5c7'
-            'a39da083c038ada797ffc5bedc9ba47455a3f77057d42f86484ae877ef9172ea')
+            'a39da083c038ada797ffc5bedc9ba47455a3f77057d42f86484ae877ef9172ea'
+            'e1912afec58b834fac3b9161c2d5a1794bb618126c6bd7a4be85c834231360e7')
 
 pkgver() {
   cd sage
@@ -78,6 +79,8 @@ prepare(){
   patch -p1 -i ../r-no-readline.patch
 # fix build with planarity 3 (Debian)
   patch -p2 -i ../sagemath-planarity3.patch
+# fix build with Singular 4.1.0-p2
+  patch -p0 -i ../sagemath-singular-4.1.0.p2.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
@@ -121,8 +124,8 @@ package_sagemath-git() {
   mkdir -p "$pkgdir"/usr/bin
   cp bin/sage "$pkgdir"/usr/bin
   for _i in arch-env banner cachegrind callgrind cleaner coverage coverageall cython env eval grep grepdoc inline-fortran ipython \
-    massif maxima.lisp native-execute notebook num-threads.py omega open preparse python rst2sws rst2txt run run-cython runtests startuptime.py \
-    sws2rst valgrind version.sh
+    massif maxima.lisp native-execute notebook num-threads.py omega open preparse python rst2ipynb rst2sws rst2txt run run-cython \
+    runtests startuptime.py sws2rst valgrind version.sh
   do
     cp bin/sage-$_i "$pkgdir"/usr/bin
   done

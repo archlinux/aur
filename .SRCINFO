@@ -1,6 +1,6 @@
 pkgbase = sagemath-git
 	pkgdesc = Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab
-	pkgver = 7.6.beta3.r0.gbf876cbd5a
+	pkgver = 7.6.beta5.r0.g36bcfa606a
 	pkgrel = 1
 	url = http://www.sagemath.org
 	arch = i686
@@ -101,6 +101,7 @@ pkgbase = sagemath-git
 	source = r-no-readline.patch
 	source = sagemath-planarity3.patch
 	source = fes02.patch
+	source = sagemath-singular-4.1.0.p2.patch
 	sha256sums = SKIP
 	sha256sums = 9dba04ff13626a7b6c338a8b18a6c27d343f68a547a218533cf773af3dae6635
 	sha256sums = 178074c0a22da4a8129ec299a6845aaae8cf3ef1da6f62b34f2ec0ed50c1e6a2
@@ -114,6 +115,7 @@ pkgbase = sagemath-git
 	sha256sums = ef9f401fa84fe1772af9efee6816643534f2896da4c23b809937b19771bdfbbf
 	sha256sums = a1c562ebe4538d672404ca3ac2e954a3c955afeb7463f7b4fe6eaa6fa74fe5c7
 	sha256sums = a39da083c038ada797ffc5bedc9ba47455a3f77057d42f86484ae877ef9172ea
+	sha256sums = e1912afec58b834fac3b9161c2d5a1794bb618126c6bd7a4be85c834231360e7
 
 pkgname = sagemath-git
 	optdepends = cython2: to compile cython code
