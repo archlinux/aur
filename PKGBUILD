@@ -2,7 +2,7 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-allegro
-pkgver=5.2.1.1
+pkgver=5.2.2
 pkgrel=1
 pkgdesc='Portable library mainly aimed at video game and multimedia programming (32 bit)'
 arch=('x86_64')
@@ -10,10 +10,10 @@ url='http://liballeg.org'
 license=('custom')
 depends=('lib32-jack' 'lib32-libxpm' 'lib32-libxxf86dga' 'lib32-libgl' 'lib32-physfs'
          'lib32-gtk2' 'lib32-libpulse' 'lib32-alsa-lib' 'lib32-libtheora'
-         "${pkgname#*-}")
+         'lib32-opusfile' "${pkgname#*-}")
 makedepends=('cmake' 'gcc-multilib' 'lib32-mesa' 'lib32-glu')
 source=("http://download.gna.org/allegro/allegro/$pkgver/allegro-$pkgver.tar.gz")
-sha256sums=('b5d9df303bc6d72d54260c24505889acd995049b75463b46344e797a58a44a71')
+sha256sums=('e285b9e12a7b33488c0e7e139326903b9df10e8fa9adbfcfe2e1105b69ce94fc')
 
 prepare() {
   # reset build folder
@@ -28,7 +28,7 @@ build() {
 
   cd build
 
-  cmake ../${pkgname#*-}-$pkgver \
+  cmake ../${pkgname#*-}-$pkgver.0 \
     -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_SUFFIX="32" -DCMAKE_LIBRARY_PATH=/usr/lib32 \
     -DWANT_PHYSFS=ON -DWANT_OPENAL=OFF \
