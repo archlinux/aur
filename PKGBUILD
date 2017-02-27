@@ -2,7 +2,7 @@
 
 pkgname=exponent-xde
 pkgdesc="Exponent mobile app development environment"
-pkgver=2.14.3
+pkgver=2.15.1
 pkgrel=1
 url="https://github.com/exponent/xde"
 license=("MIT")
@@ -10,7 +10,7 @@ arch=("x86_64" "i686")
 depends=('electron>=1.4.0')
 makedepends=('gulp' 'yarn' 'asar')
 source=("https://github.com/exponent/xde/archive/v${pkgver}.tar.gz" "exponent-xde.sh" "exponent-xde.desktop")
-sha256sums=('dc76fa0c6fb8cf2a939cfc08cf0866d88842579a00d5dbda212e65b23ab7c97f' '4c805aaccb13588a5f57eb0b2b1da7378658c9202c5b1ca72315299be25d4f3e' '2ee241c2c267cbd5aa67318d4ea1f3c059fba9d4887e2ded60c8d04ca6ec402e')
+sha256sums=('878d77af63d4c6eaa0d9d19c561383202b0bb8a2ac953be7e7ee305042a67ab2' '4c805aaccb13588a5f57eb0b2b1da7378658c9202c5b1ca72315299be25d4f3e' '2ee241c2c267cbd5aa67318d4ea1f3c059fba9d4887e2ded60c8d04ca6ec402e')
 
 build() {
   cd $srcdir/xde-${pkgver}/
