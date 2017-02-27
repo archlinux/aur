@@ -2,7 +2,7 @@
 
 pkgname=pidgin-mam-git
 pkgver=2.11.0.1.r1.g3f338ce
-pkgrel=1
+pkgrel=2
 pkgdesc="Pidgin with Message Archive Management support"
 arch=(i686 x86_64)
 url="https://github.com/CkNoSFeRaTU/pidgin"
