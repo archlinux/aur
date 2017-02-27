@@ -1,0 +1,20 @@
+pkgbase = orcsome
+	pkgdesc = A scripting extension for NETWM compliant window managers
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/baverman/orcsome
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = python2-cffi
+	makedepends = libev
+	makedepends = libx11
+	makedepends = libxss
+	makedepends = libxext
+	makedepends = kbproto
+	depends = python2
+	source = https://github.com/baverman/orcsome/archive/0.6.tar.gz
+	md5sums = 7f36cd3aad2f41691c689aee08ccb775
+
+pkgname = orcsome
+
