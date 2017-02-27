@@ -2,20 +2,26 @@
 # Contributor: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=nuvola-app-spotify
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="Spotify for Nuvola Player 3"
 arch=(any)
 url=https://github.com/tiliado/$pkgname
 license=(BSD)
 depends=(nuvolaplayer flashplayer gst-plugins-ugly gst-plugins-good)
-makedepends=(scour)
+makedepends=(python-nuvolasdk scour)
 conflicts=($pkgname-git)
 source=(https://github.com/tiliado/$pkgname/archive/$pkgver.tar.gz)
-sha256sums=(ba719eaa61f01bf5a77e3be915b4f50b261e329743ff89c96596d993fb75bdb7)
+sha256sums=(1f287a8685addd39974478359f483c1f96c6e7ac3755974857d1302f15669ddc)
+
+build() {
+  cd $pkgname-$pkgver
+  ./configure --prefix=/usr
+  make all
+}
 
 package() {
   cd $pkgname-$pkgver
-  make DEST="$pkgdir"/usr/share/nuvolaplayer3/web_apps install
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  make DESTDIR="$pkgdir" install
+  install LICENSE -m 644 -Dt "$pkgdir"/usr/share/licenses/$pkgname/
 }

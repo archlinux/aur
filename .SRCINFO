@@ -1,18 +1,19 @@
 pkgbase = nuvola-app-spotify
 	pkgdesc = Spotify for Nuvola Player 3
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/tiliado/nuvola-app-spotify
 	arch = any
 	license = BSD
+	makedepends = python-nuvolasdk
 	makedepends = scour
 	depends = nuvolaplayer
 	depends = flashplayer
 	depends = gst-plugins-ugly
 	depends = gst-plugins-good
 	conflicts = nuvola-app-spotify-git
-	source = https://github.com/tiliado/nuvola-app-spotify/archive/2.2.tar.gz
-	sha256sums = ba719eaa61f01bf5a77e3be915b4f50b261e329743ff89c96596d993fb75bdb7
+	source = https://github.com/tiliado/nuvola-app-spotify/archive/2.3.tar.gz
+	sha256sums = 1f287a8685addd39974478359f483c1f96c6e7ac3755974857d1302f15669ddc
 
 pkgname = nuvola-app-spotify
 
