@@ -23,7 +23,7 @@ pkgbase=linux-nvme               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.10
 pkgver=4.10.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -43,8 +43,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 )
 sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
             'da560125aa350f76f0e4a5b9373a0d0a1c27ccefe3b7bd9231724f3a3c4ebb9e'
-            '2ac8818414beb7dbacbd3ad450c516e6ada804827132a7132f63b8189e5f5151'
-            '41b9a64542befd2fea170776e8ec22a7d158dd3273633afc9b91662c448cd90a'
+            '6456c9be229a83090fc19e8a38db75f2fa99c98959d5989062be585f159c9acd'
+            '83aae2804d582b0e9f8b92491eaee08ae3080270e3e7d40c5387e4fcf09b8154'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '8ba7d5596b65c7705958836ab93ac714dbccdcd7e806be49f667ed427eff3e83')
@@ -71,7 +71,7 @@ prepare() {
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  #patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+  # patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   # Added APST NVME patch here
   patch -p1 -i "${srcdir}/APST.patch"
