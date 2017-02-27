@@ -1,13 +1,13 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=titania-git
-pkgver=3363
-pkgrel=1
+pkgver=3741
+pkgrel=2
 pkgdesc="Use Titania to create standard complient X3D/VRML worlds for publishing on the World Wide Web and for creating stand alone applications"
 arch=('i686' 'x86_64')
 url="http://titania.create3000.de"
 license=('GPL3')
 groups=()
-depends=('gtkmm3' 'gtksourceviewmm' 'glu' 'glew' 'mesa' 'mesa-libgl' 'js185' 'fontconfig' 'imagemagick' 'curl' 'openssl' 'sqlite' 'gstreamermm' 'zlib' 'libgtop' 'gettext' 'perl' 'perl-xml-libxml' 'glib-perl' 'perl-switch' 'cgal' 'gmp' 'mpfr' 'ttf-ubuntu-font-family')
+depends=('gtkmm3' 'gtksourceviewmm' 'glu' 'glew' 'mesa' 'libgl' 'js185' 'fontconfig' 'imagemagick' 'curl' 'openssl' 'sqlite' 'gstreamermm' 'zlib' 'libgtop' 'gettext' 'perl' 'perl-xml-libxml' 'glib-perl' 'perl-switch' 'cgal' 'gmp' 'mpfr' 'ttf-ubuntu-font-family' 'libxml++2.6')
 makedepends=('make' 'gstreamer' 'gst-plugins-base' 'intltool' 'libtool')
 optdepends=()
 provides=()
@@ -35,5 +35,5 @@ build() {
 
 package() {
   cd titania
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" run
 }
