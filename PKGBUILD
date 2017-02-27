@@ -3,14 +3,14 @@ _npmname=geojsonhint
 _npmver=2.0.1
 pkgname=nodejs-geojsonhint # All lowercase
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Validate and sanity-check geojson files (geojsonlint)"
 arch=(any)
 url="https://github.com/mapbox/geojsonhint#readme"
 license=()
 depends=('nodejs' 'npm' )
 optdepends=()
-source=(http://registry.npmjs.org/@_npmprefix/$_npmname/-/$_npmname-$_npmver.tgz)
+source=(http://registry.npmjs.org/$_npmprefix/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
 
 package() {
