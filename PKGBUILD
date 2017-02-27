@@ -1,7 +1,7 @@
 # Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=klog
-pkgver=0.9.2.3
+pkgver=0.9.2.5
 pkgrel=1
 pkgdesc="Ham radio logging"
 url="http://jaime.robles.es/"
@@ -11,7 +11,7 @@ depends=('kdebase-runtime' 'hamlib')
 makedepends=('automoc4' 'cmake')
 conflicts=()
 source=("http://download-mirror.savannah.gnu.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('992973b15270782e92d5aa4e42d966ed240ff3f44dba49bb3274ae6d4ae67cb6')
+sha256sums=('8875205454eca23f733e750bb274681d6ae517dd5ed67e55a94a2a9e6e004b48')
 
 build() {
     cd "${srcdir}"/${pkgname}-${pkgver}
