@@ -4,7 +4,7 @@
 
 pkgname=nvidia-beta
 pkgver=378.13
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA driver for Arch's official 'linux' package (beta version)"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -23,10 +23,10 @@ case "$CARCH" in
 esac
 
 # Source
-#source=('linux-4.8.patch')
+source=('linux-4.10.patch')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
-#md5sums=('96a37004a3394b01385d3ea9d8e8fa86')
+md5sums=('e81769b830b7a1e60c635e3bbe559f59')
 md5sums_i686=('dd1077750af9a067739ec291fb24175f')
 md5sums_x86_64=('fe4d25b19a780a690cafc8e3b7c0113f')
 
