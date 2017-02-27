@@ -4,13 +4,13 @@
 pkgbase=(virtualbox-ck-modules)
 pkgname=(virtualbox-ck-host-modules virtualbox-ck-guest-modules)
 pkgver=5.1.14
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
 makedepends=('linux-ck-headers' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
 
-_extramodules=extramodules-4.9-ck
+_extramodules=extramodules-4.10-ck
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
 build() {
@@ -30,7 +30,7 @@ package_virtualbox-ck-host-modules() {
 	#pkgdesc="${_Hpkgdesc}"
 	pkgdesc='Host kernel modules for VirtualBox running under Linux-ck.'
 	provides=("VIRTUALBOX-HOST-MODULES")
-	depends=('linux-ck>=4.9' 'linux-ck<4.10')
+	depends=('linux-ck>=4.10' 'linux-ck<4.11')
 	#replaces=('virtualbox-ck-host-modules-corex')
 	#groups=('ck-generic')
 	install=host.install
@@ -55,7 +55,7 @@ package_virtualbox-ck-guest-modules() {
 	pkgdesc='Guest kernel modules for VirtualBox running under Linux-ck.'
 	license=('GPL')
 	provides=("VIRTUALBOX-GUEST-MODULES")
-	depends=('linux-ck>=4.9' 'linux-ck<4.10')
+	depends=('linux-ck>=4.10' 'linux-ck<4.11')
 	#replaces=('virtualbox-ck-guest-modules-corex')
 	#groups=('ck-generic')
 	install=guest.install
@@ -73,3 +73,4 @@ package_virtualbox-ck-guest-modules() {
   printf "vboxguest\nvboxsf\nvboxvideo\n" >  \
 		"$pkgdir/usr/lib/modules-load.d/virtualbox-guest-modules-ck.conf"
 }
+
