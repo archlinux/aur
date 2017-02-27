@@ -2,7 +2,7 @@
 # Maintainer: Grey Christoforo <grey@christoforo.net>
 
 _gemname=useragent
-pkgname=ruby-$_gemname-0.14
+pkgname=ruby-$_gemname
 pkgver=0.14.0
 pkgrel=1
 pkgdesc='HTTP User Agent parser'
