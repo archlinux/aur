@@ -1,16 +1,16 @@
-# Maintainer: Sergio Correia <sergio@correia.cc>
+# Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 
 pkgname='powershell-git'
 _pkgname='powershell'
-pkgver=6.0.0.alpha.14.7.g3938cdb
+pkgver=6.0.0.alpha.16.25.ge3b59e0f
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url="https://github.com/PowerShell/PowerShell"
 license=('MIT')
-makedepends=('git' 'cmake' 'proot' 'dotnet')
+makedepends=('git' 'cmake' 'proot' 'dotnet-bin')
 depends=('bash' 'icu55')
-conflicts=('powershell' 'powershell-bin')
+conflicts=('powershell')
 provides=('powershell')
 source=($_pkgname::'git+https://github.com/PowerShell/PowerShell.git'
         'pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop'
