@@ -2,7 +2,7 @@
 pkgname=heekscad-git
 pkgver=1449.008d7b6f
 pkgrel=7
-pkgdesc="HeeksCNC is an open source, 3D CAD/CAM software"
+pkgdesc="HeeksCNC is an open source 3D CAD/CAM software"
 arch=('x86_64')
 url="http://heeks.net"
 license=('custom:BSD3')
