@@ -1,6 +1,6 @@
 pkgbase = clipgrab-qt5
 	pkgdesc = Fork of ClipGrab to make it compatible with Qt5
-	pkgver = 3.6.3.r9.52d924a.r9.52d924a
+	pkgver = 3.6.3
 	pkgrel = 1
 	url = https://github.com/OpenHelios/clipgrab-qt5
 	arch = i686
