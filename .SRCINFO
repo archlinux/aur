@@ -1,7 +1,7 @@
 pkgbase = sudx
 	pkgdesc = Run bash shell as another user with D-Bus enabled, useful for running GUI/X applications that need D-Bus.
-	pkgver = 2.28.2
-	pkgrel = 5
+	pkgver = 2.29.2
+	pkgrel = 1
 	url = https://github.com/yadieet/sudx
 	arch = i686
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = sudx
 	makedepends = python
 	depends = bash
 	depends = dbus
-	depends = util-linux=2.28.2
+	depends = util-linux=2.29.2
 	options = strip
-	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.28/util-linux-2.28.2.tar.xz
-	source = sudx-2.28.2-5.c::https://raw.githubusercontent.com/yadieet/sudx/319ac198ba5338b37fc5bb36a0c81ae214859c07/sudx.c
-	md5sums = 46a232a37bce45371a86d19300edc47a
-	md5sums = 42b298d1fbb4218ce693a46db6bf48ee
+	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.29/util-linux-2.29.2.tar.xz
+	source = sudx-2.29.2-1.c::https://raw.githubusercontent.com/yadieet/sudx/7d82bc93255f9192760162ecc3d04ac6e79f91d1/sudx.c
+	md5sums = 63c40c2068fcbb7e1d5c1d281115d973
+	md5sums = 7b1578ae9add076c5301acd4085c6f23
 
 pkgname = sudx
 
