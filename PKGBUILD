@@ -2,7 +2,7 @@
 
 pkgname=madgraph-madanalysis
 pkgver=1.1.8
-pkgrel=20160929
+pkgrel=20170225
 pkgdesc="Parton showering, hadronization and detector simulation."
 url="http://madgraph.hep.uiuc.edu/"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('madgraph' 'tcsh' 'perl')
 optdepends=('topdrawer')
 makedepends=('gcc-fortran')
 source=("http://madgraph.hep.uiuc.edu/Downloads/MadAnalysis_V${pkgver}.tar.gz")
-sha256sums=('248bd3493f9dc4f566dd85c033754b3e7b631107ac2ad55f4793f0015bb31669')
+sha256sums=('de49e15deb634f22a7dc9d2423418e5ba243c1f1c41f9095f448494ad678943c')
 
 build () {
     cd "${srcdir}/MadAnalysis"
@@ -19,9 +19,19 @@ build () {
 }
 
 package() {
-    mkdir -p "${pkgdir}/usr/share/madgraph/MadAnalysis"
-    for f in "plot_events" "ma_card.dat" "MAVersion.txt" "README"; do
-        cp -a "${srcdir}/MadAnalysis/$f" "${pkgdir}/usr/share/madgraph/MadAnalysis/$f"
+    files=("combine-pl"
+           "epstosmth"
+           "ma_card.dat"
+           "makefile"
+           "MAVersion.txt"
+           "plot_events"
+           "README"
+           "restorelinks.sh"
+           "script")
+
+    mkdir -p "${pkgdir}/opt/madgraph/MadAnalysis"
+    for f in "${files[@]}"; do
+        cp -a "${srcdir}/MadAnalysis/$f" "${pkgdir}/opt/madgraph/MadAnalysis/$f"
     done
 }
 
