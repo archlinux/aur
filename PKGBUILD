@@ -4,7 +4,7 @@
 
 pkgname=virtualbox-headless
 pkgver=5.1.14
-pkgrel=2
+pkgrel=3
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use. Headless build (no GUI, no Java).'
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
@@ -37,6 +37,7 @@ source=("http://download.virtualbox.org/virtualbox/$pkgver/VirtualBox-$pkgver.ta
         '006-rdesktop-vrdp-keymap-path.patch'
         '007-python2-path.patch'
         '008-no-vboxvideo.patch'
+        '009-linux-4-10.patch'
         )
 md5sums=('21eaec9f21477d555559a63761779880'
          '984412a63aa9c07ddc3cfd970381d5df'
@@ -52,7 +53,9 @@ md5sums=('21eaec9f21477d555559a63761779880'
          'e8a0b47e61ddcffdeed71086585a1ef3'
          'd82a6f19be739341ed7f1cf4ee8070ca'
          '188ea65918309f737ce28216c2b07c3b'
-         '8e369367001e2ed3c1e3d23ac474fa33')
+         '8e369367001e2ed3c1e3d23ac474fa33'
+         '22ac21e608eed91463309edf47be4982'
+         )
 
 prepare() {
     cd "VirtualBox-$pkgver"
