@@ -1,9 +1,9 @@
 # Maintainer: Edison Ibañez <edison@opmbx.org>
 pkgname=sqlectron-gui
-pkgver=1.19.0
-pkgrel=2
+pkgver=1.20.2
+pkgrel=1
 pkgdesc="A simple and lightweight SQL client desktop with cross database and platform support."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://sqlectron.github.io/"
 license=("MIT")
 
@@ -19,7 +19,6 @@ source=("Sqlectron.sh"
         "Sqlectron-256x256.png"
         "Sqlectron-512x512.png")
 source_x86_64=("https://github.com/sqlectron/$pkgname/releases/download/v$pkgver/Sqlectron-$pkgver.tar.gz")
-source_i686=("https://github.com/sqlectron/$pkgname/releases/download/v$pkgver/Sqlectron-$pkgver-ia32.tar.gz")
 md5sums=('58802570c7d263582272aab558f9ce47'
          '59f6894e35ab7ce3da5ee594fad41ed4'
          '85d6ce586470159c1fc3722c0df19fa7'
@@ -31,8 +30,7 @@ md5sums=('58802570c7d263582272aab558f9ce47'
          'b3e2568f1044efaa5113f1b14c51f377'
          'e1d936527e73ada838cd97b144c87174'
          'd68539a49b186bfdb4c461b0ee52442b')
-md5sums_i686=('e9f7ce56455421f2a392316e33006676')
-md5sums_x86_64=('e3563b5b9d0b78969a80607d08c968b6')
+md5sums_x86_64=('489ea209a2c1905f6de1593a04b55f69')
 
 depends=('libnotify')
 
@@ -53,5 +51,3 @@ package() {
   install -Dm 644 "$srcdir/Sqlectron-256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/Sqlectron.png"
   install -Dm 644 "$srcdir/Sqlectron-512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/Sqlectron.png"
 }
-
-# vim:set ts=2 sw=2 et:
