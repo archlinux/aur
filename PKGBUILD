@@ -4,13 +4,13 @@
 
 pkgname=crosstool-ng
 pkgver=1.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Versatile (cross-)toolchain generator'
 arch=('i686' 'x86_64')
 url='http://crosstool-ng.org/'
 license=('GPL')
 depends=('make' 'gperf' 'wget')
-makedepends=('help2man')
+makedepends=('help2man' 'bison' 'flex' 'patch')
 options=('!makeflags')
 source=(http://crosstool-ng.org/download/$pkgname/$pkgname-$pkgver.tar.bz2)
 md5sums=('23d5de6b95f86ad2674bcf6859b9664f')
