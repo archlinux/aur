@@ -52,12 +52,12 @@
  #! MadAnalysis4 fortran-based package [for basic analysis]
  #!  relative path start from main directory
 -# madanalysis_path = ./MadAnalysis
-+madanalysis_path = /usr
++madanalysis_path = ./MadAnalysis
  
  #! MadAnalysis5 python-based Package [For advanced analysis]
  #!  relative path start from main directory
 -# madanalysis5_path = ./HEPTools/madanalysis5/madanalysis5
-+madanalysis5_path = /usr
++madanalysis5_path = /opt/madanalysis5
  
  #! ExRootAnalysis Package
  #!  relative path start from main directory

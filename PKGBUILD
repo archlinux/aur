@@ -3,7 +3,7 @@
 pkgname=madgraph
 pkgver=2.5.2
 _dirname="MG5_aMC_v${pkgver//./_}"
-pkgrel=2
+pkgrel=3
 pkgdesc="MadGraph5_aMC@NLO is a framework that aims at providing all the elements necessary for SM and BSM phenomenology"
 url="http://madgraph.hep.uiuc.edu/"
 arch=('i686' 'x86_64')
@@ -17,10 +17,10 @@ depends=(
 )
 optdepends=(
     'delphes'
-    'exrootanalysis'
     'fastjet'
     'hepmc'
     'lhapdf'
+    'madanalysis5'
     'madgraph-pythia-pgs'
     'pythia8'
 )
@@ -29,7 +29,7 @@ source=("https://launchpad.net/mg5amcnlo/${pkgver%%.*}.0/${pkgver%.*}.x/+downloa
         "mg5_configuration.patch")
 sha256sums=('7968f6d0543b3af2649ba497d17c3a23b089cc6f5ba352e0fd7fa106aa07a512'
             'b16bcfebae4d50eb145436c97a06daf706691bbef4e7f45cde1c6116d2869720'
-            '3a7065d9b8273f0c0e5530d85510a13c9b8241f9961a0d3a836786c8e3e151b4')
+            '253c66568c16bf4f118c200a76a91f0cca2bf441d880719c8bf583db770cbc28')
 options=("!strip")
 
 prepare() {
