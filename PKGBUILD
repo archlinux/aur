@@ -32,6 +32,7 @@ package() {
   cp dbms/src/Server/config.xml dbms/src/Server/users.xml $pkgdir/etc/clickhouse-server/
   cp dbms/src/Server/clickhouse $pkgdir/usr/bin/clickhouse-client
   cp dbms/src/Client/config.xml $pkgdir/etc/clickhouse-client/
+  cp dbms/libclickhouse.so.$pkgver $pkgdir/usr/lib/
   sed -e 's:/opt/clickhouse:/var/lib/clickhouse:g' -i $pkgdir/etc/clickhouse-server/config.xml
   sed -e '/listen_host/s%::%::1%' -i $pkgdir/etc/clickhouse-server/config.xml
   cp $startdir/clickhouse-server.service $pkgdir/usr/lib/systemd/system
