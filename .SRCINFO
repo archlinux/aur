@@ -1,0 +1,15 @@
+pkgbase = fuse_xattrs
+	pkgdesc = A filesystem that provides xattr support using sidecar files.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/fbarriga/fuse_xattrs
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = fuse2
+	source = git+https://github.com/fbarriga/fuse_xattrs.git#tag=v0.2
+	md5sums = SKIP
+
+pkgname = fuse_xattrs
+
