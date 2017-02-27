@@ -1,0 +1,25 @@
+pkgbase = pidgin-mam-git
+	pkgdesc = Pidgin with Message Archive Management support
+	pkgver = 2.11.0.1.r1.g3f338ce
+	pkgrel = 1
+	url = https://github.com/CkNoSFeRaTU/pidgin
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libpurple
+	depends = startup-notification
+	depends = gtkspell
+	depends = libxss
+	depends = libsm
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = hicolor-icon-theme
+	optdepends = aspell: for spelling correction
+	provides = pidgin
+	conflicts = pidgin
+	source = pidgin-mam-git::git+https://github.com/CkNoSFeRaTU/pidgin
+	md5sums = SKIP
+
+pkgname = pidgin-mam-git
+
