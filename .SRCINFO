@@ -1,7 +1,7 @@
 pkgbase = libopenmpt
 	pkgdesc = A cross-platform C++ and C library to decode tracked music files (modules) into a raw PCM audio stream.
 	pkgver = 0.2.7561.beta20.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lib.openmpt.org/
 	arch = i686
 	arch = x86_64
@@ -35,4 +35,11 @@ pkgname = openmpt123-minimal
 	depends = libopenmpt=0.2.7561.beta20.5
 	depends = sdl2
 	conflicts = openmpt123
+
+pkgname = libopenmpt-modplug
+	pkgdesc = libmodplug compat layer/bridge to libopenmpt
+	install = libopenmpt-modplug.install
+	depends = libopenmpt=0.2.7561.beta20.5
+	provides = libmodplug
+	conflicts = libmodplug
 

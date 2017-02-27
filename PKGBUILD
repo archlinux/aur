@@ -1,10 +1,10 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgbase=libopenmpt
-pkgname=(libopenmpt openmpt123 openmpt123-minimal)
+pkgname=(libopenmpt openmpt123 openmpt123-minimal libopenmpt-modplug)
 _pkgver=0.2.7561-beta20.5
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform C++ and C library to decode tracked music files (modules) into a raw PCM audio stream.'
 arch=('i686' 'x86_64')
 url='http://lib.openmpt.org/'
@@ -27,6 +27,12 @@ build() {
   cp bin/openmpt123.norpath bin/openmpt123_minimal
 }
 
+check() {
+  cd $pkgbase-${_pkgver%-*}
+
+  make test
+}
+
 package_libopenmpt() {
   cd $pkgbase-${_pkgver%-*}
 
@@ -34,6 +40,26 @@ package_libopenmpt() {
 
   # license
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}
+
+package_libopenmpt-modplug() {
+  pkgdesc='libmodplug compat layer/bridge to libopenmpt'
+  depends=("libopenmpt=$pkgver")
+  conflicts=('libmodplug')
+  provides=('libmodplug')
+  install='libopenmpt-modplug.install'
+
+  cd $pkgbase-${_pkgver%-*}
+  make PREFIX=/usr DESTDIR="$pkgdir" TEST=0 install-modplug
+
+  # fix soname to match libmodplug
+  rm -f "$pkgdir"/usr/lib/libmodplug.so.*
+  ln -s libmodplug.so "$pkgdir"/usr/lib/libmodplug.so.1
+  ln -s libmodplug.so.1 "$pkgdir"/usr/lib/libmodplug.so.1.0.0
+
+  # link license
+  install -d "$pkgdir"/usr/share/licenses
+  ln -s $pkgbase "$pkgdir"/usr/share/licenses/$pkgname
 }
 
 package_openmpt123() {
