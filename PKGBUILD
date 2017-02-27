@@ -1,7 +1,7 @@
 # Maintainer: Felipe Barriga Richards < felipe at felipebarriga DOT cl >
 pkgname=fuse_xattrs
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A filesystem that provides xattr support using sidecar files.'
 arch=('i686' 'x86_64')
 url='https://github.com/fbarriga/fuse_xattrs'
@@ -15,7 +15,7 @@ build() {
   cd "$srcdir/fuse_xattrs"
   mkdir build
   cd build
-  cmake ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 

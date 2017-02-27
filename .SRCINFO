@@ -1,7 +1,7 @@
 pkgbase = fuse_xattrs
 	pkgdesc = A filesystem that provides xattr support using sidecar files.
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fbarriga/fuse_xattrs
 	arch = i686
 	arch = x86_64
