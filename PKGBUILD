@@ -3,7 +3,7 @@
 
 pkgname=clickhouse
 pkgver=1.1.54165
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('i686' 'x86_64')
 url='https://clickhouse.yandex/'
