@@ -1,0 +1,15 @@
+[Desktop Entry]
+_Name=topinambour
+_Comment=Use the command line
+_Keywords=shell;prompt;command;commandline;cmd;
+TryExec=topinambour
+Exec=topinambour
+Icon=utilities-terminal
+Type=Application
+Categories=GNOME;GTK;System;TerminalEmulator;Utility;
+StartupNotify=true
+[NewWindow Shortcut Group]
+Name=Open a New Window
+Exec=topinambour
+
+

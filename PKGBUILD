@@ -1,14 +1,15 @@
 pkgname=topinambour-git
 pkgver=1.0.11.r35.g28d83dc
-pkgrel=1
+pkgrel=2
 pkgdesc="vte terminal based on the ruby-gtk3 bindings"
 arch=('i686' 'x86_64')
 url="https://github.com/cedlemo/topinambour"
 license=('GPL')
 depends=('fish' 'ruby' 'ruby-gtk3' 'ruby-vte3')
 makedepends=('git')
-source=('git://github.com/cedlemo/topinambour')
-md5sums=('SKIP')
+source=('git://github.com/cedlemo/topinambour' 'topinambour-git.desktop')
+md5sums=('SKIP'
+         '22c3f5dacc5d3d9d657b29b6fcb6fcef')
 
 pkgver() {
   cd "topinambour"
@@ -30,4 +31,5 @@ package() {
     -n "${pkgdir}/usr/bin" \
     topinambour-*.gem
 install -Dm644 "data/topinambour.gschema.xml" "$pkgdir/usr/share/glib-2.0/schemas/topinambour.gschema.xml"
+install -Dm644 "../$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
