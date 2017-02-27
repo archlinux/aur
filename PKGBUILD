@@ -1,7 +1,7 @@
 # Maintainer: Perry Hung <perry@leaflabs.com>
 
 pkgname=decklink
-_dvver=10.8.4a4 # DesktopVideo
+_dvver=10.8.5a4 # DesktopVideo
 _mever=3.5.3a1 # MediaExpress
 pkgver=${_dvver}
 pkgrel=1
@@ -17,9 +17,9 @@ install='decklink.install'
 [ "$CARCH" = "i686" ] && _arch='i386'
 [ "$CARCH" = "x86_64" ] && _arch='x86_64'
 
-pkgsrc_url="https://www.blackmagicdesign.com/api/register/en/download/c04651ff48f84019b3fa151494e98df3"
+pkgsrc_url="https://www.blackmagicdesign.com/api/register/en/download/55714dd0990b40e386325a0487955082"
 pkgsrc_file=$pkgname-${_dvver}.tar.gz
-pkgsrc_sha256sum="fab3955b44a8ad845a2c65d8410c05ecb94e9822377feb5fbd0bab769857a048"
+pkgsrc_sha256sum="db20a571f10a98664aaa1375f26b2a4ca74fe74bb865c371018dd2698fd65e03"
 
 prepare() {
   temp_url=`curl --data '{country":"us","platform":"Linux"}' $pkgsrc_url`
@@ -33,7 +33,7 @@ package() {
 	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
 	ln -s /usr/share/doc/desktopvideo/License.txt "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
-	cd "$srcdir/Blackmagic_Desktop_Video_Linux_${pkgver%a*}/other/${_arch}"
+	cd "$srcdir/Blackmagic_Desktop_Video_Linux_${pkgver}/other/${_arch}"
 
 	tar xf "desktopvideo-${_dvver}-${_arch}.tar.gz"
 	cp -a "desktopvideo-${_dvver}-${_arch}/"* "$pkgdir"
@@ -43,4 +43,3 @@ package() {
 	tar xf "mediaexpress-${_mever}-${_arch}.tar.gz"
 	cp -a "mediaexpress-${_mever}-${_arch}/"* "$pkgdir"
 }
-
