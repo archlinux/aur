@@ -9,7 +9,6 @@ pkgbase = pidgin-mam-git
 	makedepends = git
 	makedepends = intltool
 	makedepends = tcl
-	depends = libpurple
 	depends = startup-notification
 	depends = gtkspell
 	depends = libxss
