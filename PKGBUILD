@@ -3,7 +3,7 @@
 _pkgbase=ncpfs
 pkgname=ncpfs-module-dkms
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="The NCPFS kernel module (DKMS)"
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
