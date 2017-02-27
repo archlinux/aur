@@ -4,12 +4,12 @@
 _gemname=nokogumbo
 pkgname=ruby-$_gemname
 pkgver=1.4.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Nokogiri interface to the Gumbo HTML5 parser'
 arch=(i686 x86_64)
 url='https://github.com/rubys/nokogumbo/#readme'
 license=(Apache-2.0)
-depends=(ruby ruby-nokogiri)
+depends=(ruby ruby-nokogiri-1.7)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
