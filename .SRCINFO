@@ -1,0 +1,25 @@
+pkgbase = heaptrack
+	pkgdesc = A heap memory profiler for Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://milianw.de/tag/heaptrack
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = boost
+	makedepends = python
+	makedepends = sparsehash
+	depends = kdiagram
+	depends = threadweaver
+	depends = kitemmodels
+	depends = kio
+	depends = boost-libs
+	source = http://download.kde.org/stable/heaptrack/1.0.0/src/heaptrack-1.0.0.tar.xz
+	source = http://download.kde.org/stable/heaptrack/1.0.0/src/heaptrack-1.0.0.tar.xz.sig
+	validpgpkeys = 3D8568869097C65C98F8D2760C0EB212CD1D1393
+	md5sums = 6fe8c891b8b8f7af7672072ef80889ff
+	md5sums = SKIP
+
+pkgname = heaptrack
+
