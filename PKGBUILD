@@ -8,8 +8,8 @@ url="https://github.com/hardpixel/devdocs-desktop"
 license=("GPL")
 depends=("python" "python-gobject" "webkitgtk")
 provides=("devdocs-desktop")
-source=("https://github.com/hardpixel/devdocs-desktop/archive/v"$pkgver".tar.gz")
-md5sums=("d91f67ccc9615728155ecd72b0dfd44d")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v"$pkgver".tar.gz")
+md5sums=("8152e9bd73776075531a1d1692d03e28")
 
 package() {
   mkdir -p "$pkgdir/opt"
