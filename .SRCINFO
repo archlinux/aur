@@ -1,7 +1,7 @@
 pkgbase = ncpfs-module-dkms
 	pkgdesc = The NCPFS kernel module (DKMS)
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	install = ncpfs-module-dkms.install
 	arch = i686
