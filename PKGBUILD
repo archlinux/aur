@@ -3,30 +3,31 @@
 # Contributor: Splex
 
 pkgname=kokua-secondlife
-pkgver=4.1.2.40000
-_pkgver=4_1_2_40000
-_pkgprever=4.1.2
+pkgver=5.0.0.40327
+_pkgver=5_0_0_40327
+_pkgprever=5.0.0
 pkgrel=1
 pkgdesc="An Open Source third party viewer for Second Life® (secondlife), only."
 url="http://www.kokuaviewer.org"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('apr-util' 'gtk2' 'libgl' 'libidn' 'libjpeg-turbo' 'mesa' 'nss' 'sdl' 'glu' 'pangox-compat')
-optdepends=('libpulse: for PulseAudio support' 'alsa-lib: for ALSA support' 'nvidia-utils: for NVIDIA support' 'pepper-flash: for inworld Flash support' 'gstreamer0.10: for video support, may need good, bad and ugly plugins' 'lib32-freealut: for OpenAL support')
+depends=('apr-util' 'glib2>=2.32' 'libgl' 'libidn' 'mesa' 'sdl' 'glu' 'pangox-compat' 'gconf' 'libxss' 'libxrandr' 'libxcomposite' 'libgl' 'lib32-zlib' 'libcups' 'atk' 'lib32-util-linux' 'lib32-libidn' 'libxcursor' 'libxtst')
+optdepends=('libpulse: for PulseAudio support' 'alsa-lib: for ALSA support'
+	'nvidia-utils: for NVIDIA support' 'pepper-flash: for inworld Flash support'
+	'gstreamer0.10: for video support, may need good, bad and ugly plugins'
+	'lib32-freealut: for OpenAL support')
 conflicts=('kokua-opensim')
 
 source_i686=("http://downloads.sourceforge.net/project/kokua.team-purple.p/KokuaSL-${_pkgprever}/Kokua_${_pkgver}_i686.tar.txz"
              'kokua-secondlife.desktop'
              'kokua-secondlife.launcher')
-        
 source_x86_64=("http://downloads.sourceforge.net/project/kokua.team-purple.p/KokuaSL-${_pkgprever}/Kokua_64_${_pkgver}_x86_64.tar.txz"
 		'kokua-secondlife.desktop'
 		'kokua-secondlife.launcher')
-
-md5sums_i686=('77d7f904efca87043c199eaa4afb5af9'
+md5sums_i686=('adf13b667e78211079fef1cd37b6c977'
               '3893a2c8ae9cb8e2adb4d7c47750029b'
               'e12fd7bd333f4f810dec66f1be17c71c')
-md5sums_x86_64=('a5bc4786bfa7e21ab8573574b6a4decd'
+md5sums_x86_64=('084de698922826a76162bf0d08e3d5f8'
                 '3893a2c8ae9cb8e2adb4d7c47750029b'
                 'e12fd7bd333f4f810dec66f1be17c71c')
 
