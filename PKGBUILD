@@ -14,7 +14,7 @@ conflicts=('ttf-dejavu' 't1-dejavu-ib')
 provides=('ttf-font' 'ttf-dejavu' 'dejavu-ib')
 replaces=('ttf-dejavu')
 license=('custom')
-source=('https://superb-sea2.dl.sourceforge.net/project/dejavu/dejavu/2.37/dejavu-fonts-ttf-2.37.tar.bz2'
+source=('https://cytranet.dl.sourceforge.net/project/dejavu/dejavu/2.37/dejavu-fonts-ttf-2.37.tar.bz2'
         '45-dejavu.conf'
         '90-tt-dejavu.conf')
 sha512sums=('bafa39321021097432777f0825d700190c23f917d754a4504722cd8946716c22c083836294dab7f3ae7cf20af63c4d0944f3423bf4aa25dbca562d1f30e00654'
