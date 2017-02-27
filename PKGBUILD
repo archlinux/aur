@@ -3,19 +3,19 @@
 pkgname=(chocolate-{doom,heretic,hexen,strife,common}-git)
 _pkgname=${pkgname[0]/-git/}
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
-pkgver=2.3.0.r0.939cbfeb
+pkgver=3.0.0beta1.r16.64ad6083
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
-depends=('libpng' 'libsamplerate' 'sdl_mixer')
+depends=('libpng' 'libsamplerate' 'sdl2_mixer' 'sdl2_net')
 makedepends=('git' 'python')
-source=(git+https://github.com/chocolate-doom/chocolate-doom.git)
-sha256sums=('SKIP')
+source=(git+https://github.com/chocolate-doom/chocolate-doom.git#branch=sdl2-branch)
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  local version="$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  local version="$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/\.beta/beta/g')"
   printf %s "${version##chocolate.doom.}"
 }
 
@@ -28,7 +28,6 @@ build() {
 
 package_chocolate-common-git() {
   pkgdesc="Files shared in common with Chocolate Doom-based games."
-  depends=('sdl_net')
   conflicts=(chocolate-common)
   install=chocolate-doom.install
 
