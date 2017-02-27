@@ -1,0 +1,18 @@
+pkgbase = pothos-git
+	pkgdesc = Pothos SDR development environment
+	pkgver = r324.3587629
+	pkgrel = 1
+	url = https://github.com/pothosware/Pothos
+	arch = any
+	license = Boost Software License
+	makedepends = git
+	depends = python
+	depends = poco
+	depends = soapysdr-git
+	depends = portaudio
+	provides = pothos-git
+	source = pothos-git::git+https://github.com/pothosware/Pothos.git
+	sha256sums = SKIP
+
+pkgname = pothos-git
+
