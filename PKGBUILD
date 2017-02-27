@@ -14,7 +14,7 @@ source=(opencascade-${pkgver}.tar.gz::"http://git.dev.opencascade.org/gitweb/?p=
 md5sums=('SKIP') # i don't know, the md5sum is not stable...
 
 prepare(){
-  cd opencascade-${pkgver}
+  cd "occt-V${pkgver//./_}"
   #cd occt-${_short_commit_hash}
   mkdir -p build
   cd build
@@ -50,13 +50,13 @@ prepare(){
 }
 
 build() {
-  cd opencascade-${pkgver}/build
+  cd "occt-V${pkgver//./_}/build"
   #cd occt-${_short_commit_hash}/build
   make
 }
 
 package() {
-  cd opencascade-${pkgver}/build
+  cd "occt-V${pkgver//./_}"
   #cd occt-${_short_commit_hash}/build
   make DESTDIR="${pkgdir}" install
   install -Dm644 ../LICENSE_LGPL_21.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
