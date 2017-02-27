@@ -1,6 +1,6 @@
 pkgbase = lilypond-devel
 	pkgdesc = An automated music engraving system (development version)
-	pkgver = 2.19.55
+	pkgver = 2.19.56
 	pkgrel = 1
 	url = http://lilypond.org/
 	arch = i686
@@ -23,12 +23,12 @@ pkgbase = lilypond-devel
 	optdepends = ttf-kochi-substitute: building HTML documentation
 	optdepends = texi2html>=1.82: building HTML documentation
 	optdepends = rsync: installing HTML documentation
-	provides = lilypond=2.19.55
+	provides = lilypond=2.19.56
 	conflicts = lilypond
 	conflicts = lilypond-git
-	source = http://download.linuxaudio.org/lilypond/sources/v2.19/lilypond-2.19.55.tar.gz
+	source = http://download.linuxaudio.org/lilypond/sources/v2.19/lilypond-2.19.56.tar.gz
 	source = no_fontforge-versioncheck.patch
-	sha256sums = fe39c2ce7ff5c1945e4bf96deffdf17fe962d681aa9aeb585e5691e301acb31b
+	sha256sums = 71e53cb4a7c1fe33f383be1af186b40a9b42d81784f6fb5e605c29be5359265c
 	sha256sums = e74391f718babb984c5f637397162cf096c4716f5b9a21346ec76035cfc80817
 
 pkgname = lilypond-devel
