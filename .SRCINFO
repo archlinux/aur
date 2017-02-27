@@ -1,0 +1,16 @@
+pkgbase = glewmx
+	pkgdesc = The OpenGL Extension Wrangler MX
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = http://launchpad.net/ubuntu/+source/glewmx
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxmu
+	depends = libxi
+	depends = glu
+	source = http://launchpad.net/ubuntu/+archive/primary/+files/glewmx_1.13.0.orig.tar.gz
+	sha1sums = d5b1c499f429aa91c466193b4e8ea94a84019e37
+
+pkgname = glewmx
+
