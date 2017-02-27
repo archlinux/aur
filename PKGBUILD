@@ -2,7 +2,7 @@
 
 pkgname='pass-tomb'
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A pass extension allowing you to put and manage your password repository in a tomb.'
 arch=('any')
 url='https://github.com/roddhjav/pass-tomb'
