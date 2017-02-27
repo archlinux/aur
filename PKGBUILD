@@ -5,7 +5,7 @@
 
 pkgname=zathura-pdf-mupdf
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc="PDF support for Zathura (MuPDF backend)"
 url="https://pwmt.org/projects/zathura-pdf-mupdf/"
