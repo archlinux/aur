@@ -1,15 +1,44 @@
-From a818ab76c7251b24e95857762a46e861f45a32fb Mon Sep 17 00:00:00 2001
+From 20591aa2b437eb09a1918c343b589c986bb76ee8 Mon Sep 17 00:00:00 2001
 From: Carl George <carl.george@rackspace.com>
 Date: Sun, 19 Feb 2017 05:44:34 -0600
 Subject: [PATCH] fix imports
 
 ---
- lib/tmdb_api/tmdb_api.py     | 2 +-
- sickbeard/clients/deluge.py  | 2 +-
- sickbeard/clients/generic.py | 2 +-
- sickbeard/rssfeeds.py        | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
+ SickBeard.py                    | 4 ++--
+ lib/tmdb_api/tmdb_api.py        | 2 +-
+ sickbeard/__init__.py           | 2 +-
+ sickbeard/clients/deluge.py     | 2 +-
+ sickbeard/clients/generic.py    | 2 +-
+ sickbeard/event_queue.py        | 2 +-
+ sickbeard/network_timezones.py  | 2 +-
+ sickbeard/notifiers/prowl.py    | 2 +-
+ sickbeard/notifiers/pushalot.py | 2 +-
+ sickbeard/nzbget.py             | 2 +-
+ sickbeard/rssfeeds.py           | 2 +-
+ 11 files changed, 12 insertions(+), 12 deletions(-)
 
+diff --git a/SickBeard.py b/SickBeard.py
+index 5d6276d3..e55b11b6 100755
+--- a/SickBeard.py
++++ b/SickBeard.py
+@@ -51,7 +51,7 @@ except:
+     sys.exit(1)
+ 
+ sys.path.insert(1, os.path.abspath(os.path.join(os.path.dirname(__file__), 'lib')))
+-from lib.six import moves
++from six import moves
+ 
+ # We only need this for compiling an EXE and I will just always do that on 2.6+
+ if sys.hexversion >= 0x020600F0:
+@@ -64,7 +64,7 @@ from sickbeard.webserveInit import WebServer
+ from sickbeard.databases.mainDB import MIN_DB_VERSION, MAX_DB_VERSION
+ from sickbeard.event_queue import Events
+ from sickbeard.exceptions import ex
+-from lib.configobj import ConfigObj
++from configobj import ConfigObj
+ 
+ throwaway = datetime.datetime.strptime('20110101', '%Y%m%d')
+ 
 diff --git a/lib/tmdb_api/tmdb_api.py b/lib/tmdb_api/tmdb_api.py
 index a7eab0da..404b23e4 100644
 --- a/lib/tmdb_api/tmdb_api.py
@@ -23,6 +52,19 @@ index a7eab0da..404b23e4 100644
  
  class TMDB:
      def __init__(self, api_key, version=3):
+diff --git a/sickbeard/__init__.py b/sickbeard/__init__.py
+index 14a102cc..76dc3bd8 100755
+--- a/sickbeard/__init__.py
++++ b/sickbeard/__init__.py
+@@ -48,7 +48,7 @@ from indexers.indexer_api import indexerApi
+ from indexers.indexer_exceptions import indexer_shownotfound, indexer_exception, indexer_error, \
+     indexer_episodenotfound, indexer_attributenotfound, indexer_seasonnotfound, indexer_userabort, indexerExcepts
+ from lib.adba.aniDBerrors import (AniDBError, AniDBBannedError)
+-from lib.configobj import ConfigObj
++from configobj import ConfigObj
+ from lib.libtrakt import TraktAPI
+ import trakt_helpers
+ import threading
 diff --git a/sickbeard/clients/deluge.py b/sickbeard/clients/deluge.py
 index 1db6f868..dd6ce1d8 100644
 --- a/sickbeard/clients/deluge.py
@@ -49,6 +91,68 @@ index 222f3b9a..07d94249 100644
  
  
  class GenericClient(object):
+diff --git a/sickbeard/event_queue.py b/sickbeard/event_queue.py
+index fe246b3e..88daf104 100644
+--- a/sickbeard/event_queue.py
++++ b/sickbeard/event_queue.py
+@@ -1,4 +1,4 @@
+-from lib.six import moves
++from six import moves
+ 
+ import threading
+ 
+diff --git a/sickbeard/network_timezones.py b/sickbeard/network_timezones.py
+index 60acd15d..4f97c1af 100644
+--- a/sickbeard/network_timezones.py
++++ b/sickbeard/network_timezones.py
+@@ -16,7 +16,7 @@
+ # You should have received a copy of the GNU General Public License
+ # along with SickGear.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-from lib.six import iteritems
++from six import iteritems
+ 
+ from lib.dateutil import tz, zoneinfo
+ from lib.tzlocal import get_localzone
+diff --git a/sickbeard/notifiers/prowl.py b/sickbeard/notifiers/prowl.py
+index 8f3bb114..52deef15 100644
+--- a/sickbeard/notifiers/prowl.py
++++ b/sickbeard/notifiers/prowl.py
+@@ -16,7 +16,7 @@
+ # You should have received a copy of the GNU General Public License
+ # along with SickGear.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-from lib.six import moves
++from six import moves
+ 
+ import socket
+ from urllib import urlencode
+diff --git a/sickbeard/notifiers/pushalot.py b/sickbeard/notifiers/pushalot.py
+index 16ab0b21..4a4602fe 100644
+--- a/sickbeard/notifiers/pushalot.py
++++ b/sickbeard/notifiers/pushalot.py
+@@ -17,7 +17,7 @@
+ # You should have received a copy of the GNU General Public License
+ # along with SickGear.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-from lib.six import moves
++from six import moves
+ 
+ import socket
+ from urllib import urlencode
+diff --git a/sickbeard/nzbget.py b/sickbeard/nzbget.py
+index de232028..8749cf4c 100644
+--- a/sickbeard/nzbget.py
++++ b/sickbeard/nzbget.py
+@@ -19,7 +19,7 @@ import re
+ 
+ import sickbeard
+ import config
+-from lib.six import moves
++from six import moves
+ from base64 import standard_b64encode
+ from common import Quality
+ from sickbeard import logger
 diff --git a/sickbeard/rssfeeds.py b/sickbeard/rssfeeds.py
 index a10ffee9..04226f12 100644
 --- a/sickbeard/rssfeeds.py
