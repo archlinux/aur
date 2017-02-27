@@ -3,7 +3,7 @@
 _gemname=nokogiri
 pkgname="ruby-${_gemname}"
 pkgver=1.7.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='HTML, XML, SAX, and Reader parser'
 arch=('any')
 url='http://nokogiri.org'
@@ -19,6 +19,4 @@ package() {
 	local _gemdir="$(ruby -e'puts Gem.default_dir')"
 	NOKOGIRI_USE_SYSTEM_LIBRARIES=1 gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
 	rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
-	rm -rf "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/ports"
-	rm -rf "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/ext"
 }
