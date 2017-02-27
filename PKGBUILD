@@ -3,7 +3,7 @@
  
 pkgname=gadmin-openvpn-server
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A GTK+ graphical user interface for OpenVPN (server)'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -24,6 +24,6 @@ build() {
  
 package() {
         cd $srcdir/$pkgname-$pkgver
-        make DESTDIR=$pkgdir install
+        make DESTDIR=${pkgdir} install sbindir=/usr/bin
         install -m644 -D $srcdir/gadmin-openvpn-server.desktop $pkgdir/usr/share/applications/gadmin-openvpn-server.desktop
 }
