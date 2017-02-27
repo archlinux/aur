@@ -2,15 +2,17 @@
 
 _name="sanic"
 pkgname="python-$_name"
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A microframework based on uvloop, httptools, and learnings of flask"
 arch=("any")
 url="https://github.com/channelcat/sanic"
 license=("MIT")
 makedepends=("python-setuptools")
-source=("https://github.com/channelcat/sanic/archive/$pkgver.tar.gz")
-sha256sums=('c8abb954c4e1bef749bf683f4502357cd65c5ae9eec91f92d84fe9d177728067')
+source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"
+        "https://raw.githubusercontent.com/channelcat/sanic/$pkgver/LICENSE")
+sha256sums=('fdfd31ff44441e04ba32e38503ec430996d45f18cf2dbeb0e15fec9cdfd09991'
+            'a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde')
 
 build() {
     cd "$_name-$pkgver"
@@ -24,5 +26,5 @@ package() {
              "python-aiofiles>=0.3.0")
     cd "$_name-$pkgver"
     python setup.py install --skip-build --root="$pkgdir" --optimize=1
-    install -D --mode 644 --target-directory "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+    install -D --mode 644 --target-directory "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/LICENSE"
 }
