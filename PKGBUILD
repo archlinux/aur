@@ -41,7 +41,7 @@ prepare() {
   cd assets
   rm -f *.png
   SVG="all-assets.svg"
-  for FILE in $(inkscape --query-all "${SVG}" | grep -Po '(?<=^EXP-).+?(?=,)')
+  for FILE in $(cat all-assets.txt)
   do
     inkscape "${SVG}" -i "EXP-${FILE}" -e "${FILE}.png"
     inkscape "${SVG}" -i "EXP-${FILE}" -d 192 -e "${FILE}@2.png"
