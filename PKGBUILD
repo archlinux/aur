@@ -2,7 +2,7 @@
 #Contributor: Christian Hesse <mail@eworm.de>
 
 pkgname=otter-browser-git
-pkgver=0.9.12.r361.gcc25b158
+pkgver=0.9.12.r411.g2d874a47
 pkgrel=1
 pkgdesc='Otter Browser, project aiming to recreate classic Opera (12.x) UI using Qt5 - git checkout'
 arch=('x86_64' 'i686')
