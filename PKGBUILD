@@ -7,7 +7,7 @@ pkgdesc='A pass extension allowing you to put and manage your password repositor
 arch=('any')
 url='https://github.com/roddhjav/pass-tomb'
 license=('GPL3')
-depends=('pass-git'
+depends=('pass'
          'tomb-git')
 source=(https://github.com/roddhjav/pass-tomb/archive/v${pkgver}.tar.gz)
 sha512sums=('0348079227c39bc4a5ee73071b408e4e57ab67be6e118528eede49d514c07efcbdce3033691007ff8aefcaf46c208940f937ac43af930178b52561d74eba835f')
