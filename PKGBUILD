@@ -51,10 +51,10 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _srcname=linux-4.9
-_pkgver=4.9.11
-_rtpatchver=rt9
+_pkgver=4.9.13
+_rtpatchver=rt10
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -85,7 +85,6 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '99-linux.hook'
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        '0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch'
         # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
         '0005-BFQ-update-to-v8r8.patch')
         
@@ -112,10 +111,6 @@ prepare() {
     # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
         msg "Patching set DEFAULT_CONSOLE_LOGLEVEL to 4"
         patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-    
-    ### Fix https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-6074
-        msg "Fix CVE-2017-6074"
-        patch -p1 -i "${srcdir}/0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch"    
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
@@ -463,9 +458,9 @@ done
 
 sha512sums=('bf67ff812cc3cb7e5059e82cc5db0d9a7c5637f7ed9a42e4730c715bf7047c81ed3a571225f92a33ef0b6d65f35595bc32d773356646df2627da55e9bc7f1f1a'
             'SKIP'
-            '7683628b011fa1462b5838301ebabc3eebaefcd50f65600be55bcf0102578ca07589c7683ef84b8d5300bd05795655fb21e1c145f5663d30593fc1801c163bc3'
+            'd7956cc8a4ab11514789af4f1f7023268e4b003216766c153f0f09aac659aabda5de634b363d53f8daeddfcf5820619c5bca31ff5f9aeb187c1df016c05f68d5'
             'SKIP'
-            'f2f4c060f3db6cf4ac3e184728b9682f96d128da0d42845a4b4584c24103cb56e18b66e2ffa771efc32774601cd080224ccc569600b8966e8278975edbb1edc1'
+            'a3cc159c3e442d76b3bfd8c90c47562de46a8037069f14f969d6ee5bb5aa67e73d2f4e4de99b00475cc48d7b598ca9384eec9ca11817d4ab85563ec0de763e69'
             'SKIP'
             '5709ec16030f372309c06020ab0cc23940cad320204ce12426b8b10b3bdbd9be25c8a7bae247ce341429e8a33d0097700a88149d54b29ff44a61d1d4aff66763'
             '953566f2b74415cd5113882352c8518234c399e0e0a6cc118ddfa259c65d6fc30de00f25b605489d53e0b1f948bc7b3ebf8f20b970538f5bf7de5a7f33a0f641'
@@ -478,7 +473,6 @@ sha512sums=('bf67ff812cc3cb7e5059e82cc5db0d9a7c5637f7ed9a42e4730c715bf7047c81ed3
             '7a0a6eb4a2f0c4a981104ff4d09ff1a4ad75c9dc47d27276e0971b9fa16aeb208cb2c4158c491e8d067bf5f7f6c33ebd6826e18ad0d6203cac5711be453da93a'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'cddd1349c0a7f7ffcd7615f31c8107144eb086326c09121cc9071e95d04d2a30ee8d7a3f5d1fe76e6377803dbf2fcb1791e482e0974b8474155419ad94c0fd2b'
             'dab3dba300e276dd552cb86c903af5cac9f7c7954b938ac9c300745a175198c553d84cd3a5e58c350d83160f33b07f6dd20a570da4afdce178464c402ac7829b')
 
 validpgpkeys=(
