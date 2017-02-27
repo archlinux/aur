@@ -3,7 +3,7 @@
 # Contributor: bjoern lindig bjoern dot lindig at googlemail dot com
 
 pkgname=gnumeric-pure-git
-pkgver=r5652.82501d5
+pkgver=r5715.cb474657
 pkgrel=1
 pkgdesc="Gnumeric plugin for the Pure programming language"
 arch=('i686' 'x86_64')
