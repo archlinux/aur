@@ -3,9 +3,9 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-rc
-_srcname=linux-4.9
-_stable=4.9.12
-_patchver=4.9.13
+_srcname=linux-4.10
+_stable=4.10
+_patchver=4.10.1
 pkgver=${_patchver}rc1
 _rcpatch=patch-${_patchver}-rc1
 pkgrel=1
@@ -21,25 +21,23 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/stable-review/$_rcpatch.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/stable-review/$_rcpatch.sign"
         # the main kernel config files
-        'config' 'config.x86_64'
+        'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
         '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
         )
 
-sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
+sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
             'SKIP'
-            'afd1995f7415cd85f55d7118c1a994973a77a83ae84ac1810fed774b3c126373'
+            '1ac90b29c7502d581cb4ece7fa4239ed4c21670df1691d66f142fbcc75c070ac'
             'SKIP'
-            '2f353a5e5066799a8c140c64f97cb91556e00d47e6bcae127151601feffe9a93'
+            '81923cd1a818818a93ae0cc937925150b90cacf0f947b9abac25b63ed13753d3'
             'SKIP'
-            'b5c2a685667a884477904c9fb337d944667b6144720ac2a67d1116f711e70768'
-            'ab6c0fab5b147fab9ccef90c62b963510e92fbd068a6a33b9619537243fedca4'
+            '386051f19482672c871e7865fc62f5e2c8010d857729134ba13044734962e42c'
+            '12a87284e2935cd17e2846a207cc76f1728531416523735d66ef8a0ae690884c'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -52,7 +50,7 @@ prepare() {
 
   # add upstream patch
   # comment out for initial rc (ie 4.8 --> 4.8.1rc1
-  patch -p1 -i "${srcdir}/patch-${_stable}"
+  #patch -p1 -i "${srcdir}/patch-${_stable}"
 
   # add rc patch
   patch -p1 -i "${srcdir}/$_rcpatch"
@@ -60,16 +58,7 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
-  # remove this when a Kconfig knob is made available by upstream
-  # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  if [ "${CARCH}" = "x86_64" ]; then
-    cat "${srcdir}/config.x86_64" > ./.config
-  else
-    cat "${srcdir}/config" > ./.config
-  fi
+  cat "${srcdir}/config.${CARCH}" > ./.config
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
