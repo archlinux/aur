@@ -17,9 +17,9 @@ license=('custom')
 source=('https://superb-sea2.dl.sourceforge.net/project/dejavu/dejavu/2.37/dejavu-fonts-ttf-2.37.tar.bz2'
         '45-dejavu.conf'
         '90-tt-dejavu.conf')
-sha1sums=('7fa15e7b9676fc3915338c41e76ad454c344fff5'
-          '4072385eb6d18754f932bda5634da259ab875a1b'
-          'a6332f56d9d95636e9ac99643b3a241ba08f3499')
+sha512sums=('bafa39321021097432777f0825d700190c23f917d754a4504722cd8946716c22c083836294dab7f3ae7cf20af63c4d0944f3423bf4aa25dbca562d1f30e00654'
+            'df82fea7ad6c58edcc20c960fd2de9d49c70e23f9e63180b063c848a6f0d5592e2ce31dc0dc4a0b5abc8e682393c827c96b4a9da9203974672ebd3a77e5b9fc3'
+            'bc12705369050739143eda6a2dadaada954112ea262bd297a4823b31861f3da0f61e17ad6fb61226caea16323c3bc9cd88e8b0e60f61b2af6d245af885a4399c')
 
 package() {
   cd "${srcdir}"/dejavu-fonts-ttf-${pkgver}
