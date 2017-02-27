@@ -1,5 +1,9 @@
+2017-02-27 Janne Heß
+	* 4.8.0-3
+	Apply XSA patches: 207 208 209 210
+
 2017-01-12 Janne Heß
-	* 4.8.0-4
+	* 4.8.0-2
 	Xen 4.8.0
 	Update all downloaded packages
 	Remove all obsolete patches

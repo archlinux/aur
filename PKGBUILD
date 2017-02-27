@@ -48,7 +48,7 @@ fi
 
 pkgname=xen
 pkgver="${_xen_version}"
-pkgrel=2
+pkgrel=3
 pkgdesc='Virtual Machine Hypervisor & Tools'
 url='http://www.xenproject.org/'
 license=('GPL2')
@@ -136,6 +136,13 @@ source=(
 	# XSA patches
 	'https://xenbits.xen.org/xsa/xsa203-4.8.patch'
 	'https://xenbits.xen.org/xsa/xsa204-4.8.patch'
+	'https://xenbits.xen.org/xsa/xsa207.patch'
+	'https://xenbits.xen.org/xsa/xsa208-qemut.patch'
+	'https://xenbits.xen.org/xsa/xsa208-qemuu.patch'
+	'https://xenbits.xen.org/xsa/xsa209-qemut.patch'
+	'https://xenbits.xen.org/xsa/xsa209-qemuu/0001-display-cirrus-ignore-source-pitch-value-as-needed-i.patch'
+	'https://xenbits.xen.org/xsa/xsa209-qemuu/0002-cirrus-add-blit_is_unsafe-call-to-cirrus_bitblt_cput.patch'
+	'https://xenbits.xen.org/xsa/xsa210.patch'
 
 	# Files
 	'grub-mkconfig-helper'
@@ -172,6 +179,13 @@ sha256sums=(
 	# XSA patches
 	'4218fcfff11ec4788462a3ea9dddecb25b9d9fb1beaad17ca0f723b07b6675e4'
 	'fa2a69682868104b6263655abbfc6b326f76deebdac3273b4b65da6673f5d977'
+	'e9bcf807b3785ac4d78b621fba4a9395cd713d6e57cdaa66559bccf95ded1cd9'
+	'afde3e9d4bf5225f92c36dec9ff673b0b1b0bad4452d406f0c12edc85e2fec72'
+	'e492d528141be5899d46c2ac0bcd0c40ca9d9bfc40906a8e7a565361f17ce38d'
+	'167af9ed7163fa7cf4abb52f865290ced3163c7684151bdc1324eb5e534faf13'
+	'e698b73d8de24af0fe33968a43561e5e1d094f4caf2443caa447b552677d2683'
+	'50c60e45151ef2265cce4f92b204e9fd75f8bc8952f097e77ab4fe1c1446bc98'
+	'10e26c017c916dcac261c6a3c92656831f0ad037f792940e6faf6905c6e23861'
 	# PKGBUILD files
 	'06c9f6140f7ef4ccfc4b1a7d9732a673313e269733180f53afcd9e43bf6c26bb'
 	'ceaff798a92a7aef1465a0a0b27b1817aedd2c857332b456aaa6dd78dc72438f'
@@ -226,6 +240,19 @@ prepare() {
 	msg2 'Applying XSA Patches...'
 	patch -Np1 -i "${srcdir}/xsa203-4.8.patch"
 	patch -Np1 -i "${srcdir}/xsa204-4.8.patch"
+	patch -Np1 -i "${srcdir}/xsa207.patch"
+	patch -Np1 -i "${srcdir}/xsa210.patch"
+	# qemu-xen-traditional
+	pushd 'tools/qemu-xen-traditional'
+	patch -Np1 -i "${srcdir}/xsa208-qemut.patch"
+	patch -Np1 -i "${srcdir}/xsa209-qemut.patch"
+	popd
+	# qemu-xen upstream
+	pushd 'tools/qemu-xen'
+	patch -Np1 -i "${srcdir}/xsa208-qemuu.patch"
+	patch -Np1 -i "${srcdir}/0001-display-cirrus-ignore-source-pitch-value-as-needed-i.patch"
+	patch -Np1 -i "${srcdir}/0002-cirrus-add-blit_is_unsafe-call-to-cirrus_bitblt_cput.patch"
+	popd
 
 	# Patch EFI binary build with mingw
 	if [ "${_binutils_efi}" != true ]; then
