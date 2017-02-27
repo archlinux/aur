@@ -1,0 +1,19 @@
+pkgbase = arduino-mk-git
+	pkgdesc = A Makefile for Arduino Sketches
+	pkgver = 1.5.2.r6.g08b4f44
+	pkgrel = 1
+	url = https://github.com/sudar/Arduino-Makefile
+	arch = any
+	license = LGPL2.1
+	depends = arduino
+	depends = make
+	depends = python-pyserial
+	optdepends = screen: monitor support
+	optdepends = picocom: monitor support
+	provides = arduino-mk
+	conflicts = arduino-mk
+	source = git://github.com/sudar/Arduino-Makefile
+	md5sums = SKIP
+
+pkgname = arduino-mk-git
+
