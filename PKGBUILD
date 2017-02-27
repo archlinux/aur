@@ -1,8 +1,8 @@
 # Contributor: Connor Behan <connor.behan@gmail.com>
 
 pkgname=thunar-extended
-pkgver=1.6.10
-pkgrel=6
+pkgver=1.6.11
+pkgrel=1
 pkgdesc="Thunar with split view, cursor audio preview and extra options for trash, desktop files and user actions"
 arch=(i686 x86_64)
 license=('GPL2' 'LGPL2.1')
@@ -10,7 +10,7 @@ url="http://thunar.xfce.org"
 groups=('xfce4')
 conflicts=('thunar')
 replaces=('thunar')
-provides=('thunar=1.6.10')
+provides=('thunar=1.6.11')
 depends=('desktop-file-utils' 'libexif' 'hicolor-icon-theme' 'libnotify' 'udev' \
          'gtk2' 'exo' 'libxfce4util' 'libxfce4ui' 'libpng' 'gstreamer')
 makedepends=('intltool' 'pkgconfig' 'xfce4-panel' 'xfce4-dev-tools')
@@ -27,8 +27,7 @@ source=(http://archive.xfce.org/src/xfce/thunar/1.6/Thunar-${pkgver}.tar.bz2
 	notrash.patch
 	uca_num_files.patch
 	preview.patch
-	split_pane.patch
-	bug11983.patch)
+	split_pane.patch)
 
 build() {
   cd "${srcdir}"/Thunar-${pkgver}
@@ -40,7 +39,6 @@ build() {
   patch -Np1 -i ../split_pane.patch
   # Upstream ones
   patch -Np1 -i ../0001-Deactivate-SEND_MOVED-code-paths.patch
-  patch -Np1 -i ../bug11983.patch
 
   mkdir m4
   sed -i -e 's/Thunar_CFLAGS/thunar_CFLAGS/' -e 's/Thunar_LDADD/thunar_LDADD/' thunar/Makefile.am
@@ -60,10 +58,9 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-md5sums=('3089e1dca6e408641b07cd9c759dea5e'
+md5sums=('9749be8247cb19ed0fd36e4118c6236a'
          '9f52b207f090b280ac25ceafe3032137'
          'd87f154a5fbd3709511ded0c9b9b0317'
          '69aa416e8694b8b608f767769b6dcd98'
          '60d3bb7fc185f5f881b5884bd7f28c87'
-         'ce443cf896934131427b7789da130097'
-         '053c83b6d88d2e01d1aa7fe7b5dd8a6e')
+         'ce443cf896934131427b7789da130097')
