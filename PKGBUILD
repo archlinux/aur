@@ -12,11 +12,12 @@ sha256sums=('fda4089fd22568d197049d8aa8789ec62db035e6b990f498bc922a6c1c767a2b')
 
 prepare() {
   cd "$srcdir/kalliope-${pkgver}"
-  sed -i "s|requests==2.12.4|requests|g" setup.py
-  sed -i "s|flask==0.11.1|flask|g" setup.py
-  sed -i "s|ipaddress==1.0.17|ipaddress|g" setup.py
-  sed -i "s|jinja2==2.8|jinja2|g" setup.py
-  sed -i "s|ansible==2.2.0.0|ansible|g" setup.py
+  # https://github.com/kalliope-project/kalliope/pull/220
+  sed -i "s|requests==2.12.4|requests>=2.12.4|g" setup.py
+  sed -i "s|flask==0.11.1|flask>=0.11.1|g" setup.py
+  sed -i "s|ipaddress==1.0.17|ipaddress>=1.0.17|g" setup.py
+  sed -i "s|jinja2==2.8|jinja2>=2.8|g" setup.py
+  sed -i "s|ansible==2.2.0.0|ansible>=2.2.0.0|g" setup.py
 }
 
 build()
