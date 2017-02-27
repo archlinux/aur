@@ -21,9 +21,16 @@ replaces=("dropbox")
 provides=("dropbox")
 options=('!strip' '!upx')
 
+msg "Checking latest version from https://www.dropbox.com"
 _url_x86=$(wget -nv --spider "https://www.dropbox.com/download?plat=lnx.x86" 2>&1 | grep URL | awk '{print $4}')
 _url_x86_64=$(wget -nv --spider "https://www.dropbox.com/download?plat=lnx.x86_64" 2>&1 | grep URL | awk '{print $4}')
 _pkgver=$(echo $_url_x86_64 | awk -F"dropbox-lnx.x86_64-" '{print $2}' | awk -F".tar.gz" '{print $1}')
+
+if [[ $_pkgver > $pkgver ]]; then
+	msg2 "New version found!"
+else
+	msg2 "Your local package is up-to-date. Building it again..."
+fi
 
 source=("dropbox.png" "dropbox.desktop" "terms.txt" "dropbox.service" "dropbox@.service")
 source_i686=("${_url_x86}")
