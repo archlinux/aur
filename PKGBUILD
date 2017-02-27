@@ -11,7 +11,7 @@ license=('custom')
 optdepends=()
 source=("https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run")
 
-sha1sums=('NONE')
+sha1sums=('SKIP')
 
 prepare() {
   # Validate signature
