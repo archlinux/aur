@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Rogue Legacy
+Comment=A genealogical "roguelite" where anyone can be a hero
+Exec=gog-rogue-legacy
+Icon=gog-rogue-legacy
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8

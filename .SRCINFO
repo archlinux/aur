@@ -1,0 +1,18 @@
+pkgbase = gog-rogue-legacy
+	pkgdesc = A genealogical "roguelite" where anyone can be a hero
+	pkgver = 2.0.0.2
+	pkgrel = 1
+	url = http://www.cellardoorgames.com/roguelegacy
+	arch = i686
+	arch = x86_64
+	license = custom
+	optdepends = firejail: Automatically sandbox this application from your OS
+	source = gog://gog_rogue_legacy_2.0.0.2.sh
+	source = gog-rogue-legacy.desktop
+	source = gog-rogue-legacy
+	sha256sums = ebf34ce765194a33c8923c127276a65774baf714cddcfb8dcf5bf9e2c707a413
+	sha256sums = e59c63da334add041e2f8206e61fd916e00c25aea17d2492eb1102a60ad59087
+	sha256sums = 34f01b60634a6c1c2eb130cfec70257e9586619580c733d0376a8df677f20bec
+
+pkgname = gog-rogue-legacy
+
