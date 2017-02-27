@@ -1,0 +1,40 @@
+diff --git a/madanalysis5/bin/ma5 b/madanalysis5/bin/ma5
+index d91883c..9a565ea 100755
+--- a/madanalysis5/bin/ma5
++++ b/madanalysis5/bin/ma5
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ################################################################################
+ #  
+diff --git a/madanalysis5/madanalysis/interpreter/ma5_interpreter.py b/madanalysis5/madanalysis/interpreter/ma5_interpreter.py
+index 9a7e6af..81e8991 100644
+--- a/madanalysis5/madanalysis/interpreter/ma5_interpreter.py
++++ b/madanalysis5/madanalysis/interpreter/ma5_interpreter.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ################################################################################
+ #  
+diff --git a/madanalysis5/madanalysis/misc/freeze_environment.py b/madanalysis5/madanalysis/misc/freeze_environment.py
+index 4e1024c..22a3665 100644
+--- a/madanalysis5/madanalysis/misc/freeze_environment.py
++++ b/madanalysis5/madanalysis/misc/freeze_environment.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ################################################################################
+ #  
+diff --git a/madanalysis5/tools/SampleAnalyzer/newAnalyzer.py b/madanalysis5/tools/SampleAnalyzer/newAnalyzer.py
+index 53e1f39..b94c2e0 100755
+--- a/madanalysis5/tools/SampleAnalyzer/newAnalyzer.py
++++ b/madanalysis5/tools/SampleAnalyzer/newAnalyzer.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ################################################################################
+ #  

@@ -1,0 +1,20 @@
+set timeout -1
+spawn ./madanalysis5/bin/ma5
+# Number of cores, use default (max)
+expect -ex "   Answer: "
+send -- "\n"
+# Install delphes
+expect -ex "ma5>"
+send -- "install delphes\n"
+# Number of cores, use default (max)
+expect -ex "   => Answer: "
+send -- "\n"
+# Restart MA5
+expect -ex "Answer: "
+send -- "y\n"
+# Number of cores, use default (max)
+expect -ex "   Answer: "
+send -- "\n"
+# Exit
+expect -ex "ma5>"
+send -- "exit\n"

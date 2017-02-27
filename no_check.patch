@@ -1,0 +1,30 @@
+diff --git a/madanalysis5/madanalysis/core/launcher.py b/madanalysis5/madanalysis/core/launcher.py
+index 953474a..311ab14 100644
+--- a/madanalysis5/madanalysis/core/launcher.py
++++ b/madanalysis5/madanalysis/core/launcher.py
+@@ -250,8 +250,8 @@ def MainSession(mode,arglist,ma5dir,version,date):
+         sys.exit()
+ 
+     # Building (if necesserary) the SampleAnalyzer library
+-    if not main.BuildLibrary(forced=mode.build):
+-        sys.exit()	
++    # if not main.BuildLibrary(forced=mode.build):
++    #     sys.exit()
+ 
+     logging.getLogger('MA5').info("*************************************************************")
+ 
+diff --git a/madanalysis5/madanalysis/core/main.py b/madanalysis5/madanalysis/core/main.py
+index 1f2a48e..d288a77 100644
+--- a/madanalysis5/madanalysis/core/main.py
++++ b/madanalysis5/madanalysis/core/main.py
+@@ -437,8 +437,8 @@ class Main():
+         self.AutoSetGraphicalRenderer()
+ #        if not checkup.CheckGraphicalPackages():
+ #            return False
+-        if not checkup.SetFolder():
+-            return False
++        # if not checkup.SetFolder():
++        #     return False
+         return True
+ 
+ 
