@@ -28,7 +28,7 @@ _windows_font_dir="/usr/share/fonts/WindowsFonts"
 _1st_apple_font_dir="/usr/share/fonts/TTF"
 _2nd_apple_font_dir="/usr/share/fonts/Type1"
 pkgname=imagemagick-full-git
-pkgver=7.0.5.1.r11697.ga815864fb
+pkgver=7.0.5.1.r11698.gc48b5e5dc
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features, Git version)"
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ license=('custom')
 depends=('jemalloc' 'bzip2' 'libx11' 'libxext' 'libxt' 'libsm' 'zlib' 'autotrace-nomagick' 'fftw' 'flif'
          'libfpx' 'djvulibre' 'ttf-dejavu' 'fontconfig' 'freetype2' 'libraqm' 'ghostscript' 'gsfonts'
          'graphviz' 'jbigkit' 'libjpeg-turbo' 'lcms' 'lcms2' 'openjpeg2' 'liblqr' 'xz' 'glu' 'openexr' 'pango'
-         'libpng' 'librsvg' 'libtiff' 'libwebp' 'libwmf' 'libxml2' 'libmpeg2' 'opencl-icd-loader')
+         'libpng' 'librsvg' 'libtiff' 'libwebp' 'libwmf' 'libxml2' 'libmpeg2' 'opencl-icd-loader' 'libumem-git')
 optdepends=('ttf-mac-fonts: for Apple fonts support')
 makedepends=('git' 'opencl-headers')
 provides=("imagemagick" "imagemagick-full" "imagemagick-git" "imagemagick-fftw"
