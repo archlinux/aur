@@ -1,6 +1,6 @@
 pkgname=topinambour-git
-pkgver=1.0.11.r25.gf763f66
-pkgrel=2
+pkgver=1.0.11.r35.g28d83dc
+pkgrel=1
 pkgdesc="vte terminal based on the ruby-gtk3 bindings"
 arch=('i686' 'x86_64')
 url="https://github.com/cedlemo/topinambour"
