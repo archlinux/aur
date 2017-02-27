@@ -13,7 +13,7 @@ pkgbase = otter-browser-git
 	depends = qt5-multimedia>=5.4
 	depends = qt5-xmlpatterns>=5.4
 	optdepends = qt5-webengine: for experimental backend using the Chromium browser project
-	depends = hunspell: for spell checking
+	optdepends = hunspell: for spell checking
 	provides = otter-browser
 	conflicts = otter-browser
 	source = git://github.com/OtterBrowser/otter-browser.git
