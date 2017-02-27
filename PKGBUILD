@@ -2,7 +2,7 @@
 
 pkgname=madgraph-pythia-pgs
 pkgver=2.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Parton showering, hadronization and detector simulation."
 url="https://launchpad.net/pythia-pgs-for-mg"
 arch=('i686' 'x86_64')
@@ -24,8 +24,8 @@ build () {
 }
 
 package() {
-    mkdir -p "${pkgdir}/usr/share/madgraph/pythia-pgs"
-    cp -a "${srcdir}/pythia-pgs/." "${pkgdir}/usr/share/madgraph/pythia-pgs"
+    mkdir -p "${pkgdir}/opt/madgraph/pythia-pgs"
+    cp -a "${srcdir}/pythia-pgs/." "${pkgdir}/opt/madgraph/pythia-pgs"
 }
 
 # Local Variables:
