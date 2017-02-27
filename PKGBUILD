@@ -4,14 +4,14 @@ pkgname=(chocolate-{doom,heretic,hexen,strife,common})
 pkgbase=${pkgname[0]}
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
-depends=('libpng' 'libsamplerate' 'sdl_mixer')
+depends=('libpng' 'libsamplerate' 'sdl_mixer' 'sdl_net')
 makedepends=('python')
 source=(http://chocolate-doom.org/downloads/${pkgver}/${pkgbase}-${pkgver}.tar.gz{,.asc})
-sha256sums=('3e6d1a82ac5c8b025a9695ce1e47d0dc6ed142ebb1129b1e4a70e2740f79150c'
+sha512sums=('43353875f76432123336ac7f8a37d00c447286f5bf17c2a12f6307568fe2533370ca8e5e0f76fa475e353f20dfdea79e3948c47ea8b079ef5dd9d0a53c305bfc'
             'SKIP')
 validpgpkeys=('6D2C117E0310664497AA9546F6C2EE9C23354344')
 
@@ -36,7 +36,6 @@ build() {
 
 package_chocolate-common() {
   pkgdesc="Files shared in common with Chocolate Doom-based games."
-  depends=('sdl_net')
   install=chocolate-doom.install
 
   cd "${pkgbase}-${pkgver}"
