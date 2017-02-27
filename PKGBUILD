@@ -17,12 +17,12 @@ case "$CARCH" in
 esac
 
 # Source
-source=('20-nvidia.conf'
-        'nvidia-drm-outputclass.conf')
+source=('10-nvidia-drm-outputclass.conf'
+        '20-nvidia.conf')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
-md5sums=('2640eac092c220073f0668a7aaff61f7'
-         '4f5562ee8f3171769e4638b35396c55d')
+md5sums=('4f5562ee8f3171769e4638b35396c55d'
+         '2640eac092c220073f0668a7aaff61f7')
 md5sums_i686=('dd1077750af9a067739ec291fb24175f')
 md5sums_x86_64=('fe4d25b19a780a690cafc8e3b7c0113f')
 
@@ -265,5 +265,5 @@ package_nvidia-utils-beta() {
   install -Dm644 "$srcdir"/20-nvidia.conf "$pkgdir"/etc/X11/xorg.conf.d/20-nvidia.conf
 
   # Distro-specific files must be installed in /usr/share/X11/xorg.conf.d
-  install -Dm644 "$srcdir"/nvidia-drm-outputclass.conf "$pkgdir"/usr/share/X11/xorg.conf.d/nvidia-drm-outputclass.conf
+  install -Dm644 "$srcdir"/10-nvidia-drm-outputclass.conf "$pkgdir"/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
 }
