@@ -1,0 +1,18 @@
+pkgbase = clipgrab-qt5
+	pkgdesc = Fork of ClipGrab to make it compatible with Qt5
+	pkgver = 3.6.3.r9.52d924a.r9.52d924a
+	pkgrel = 1
+	url = https://github.com/OpenHelios/clipgrab-qt5
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-webkit
+	optdepends = ffmpeg: for the conversion functionality
+	source = clipgrab-qt5::git+https://github.com/OpenHelios/clipgrab-qt5.git
+	source = clipgrab-qt5.desktop
+	md5sums = SKIP
+	md5sums = 86ec4e7907a20dcae2c0cf6ad2438632
+
+pkgname = clipgrab-qt5
+
