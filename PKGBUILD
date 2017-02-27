@@ -3,9 +3,9 @@
 pkgname=php-imagick
 _extname=imagick
 pkgver=3.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP extension for IMagick"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://pecl.php.net/package/${_extname}"
 license=('PHP')
 depends=('php>=5.4.0' 'imagemagick>=6.5.3')
