@@ -1,5 +1,5 @@
 pkgname=kalliope
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Modular always-on voice controlled personal assistant designed for home automation"
@@ -7,12 +7,11 @@ depends=(portaudio python2-speechrecognition python2-markupsafe python2-pyaudio 
 license=('MIT')
 url="https://github.com/kalliope-project/kalliope"
 source=("https://github.com/kalliope-project/kalliope/archive/v${pkgver}.tar.gz")
-sha256sums=('84bbe6ac62a0f9cd057d531ac076061d34727bda23b267a961aa1404c2675b52')
+sha256sums=('fda4089fd22568d197049d8aa8789ec62db035e6b990f498bc922a6c1c767a2b')
+
 
 prepare() {
   cd "$srcdir/kalliope-${pkgver}"
-  # https://github.com/kalliope-project/kalliope/pull/147
-  sed -i "s|requests==2.12.1|requests==2.12.4|g" setup.py
 }
 
 build()
