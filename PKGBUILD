@@ -2,8 +2,8 @@
 # Contributors: Keshav P R, atommix aka Aleks Lifey, Xavion, Ananda Samaddar, Dan Serban, Xyne
 
 pkgname=jitsi
-pkgver=2.8.5426
-pkgrel=3
+pkgver=2.10.5550
+pkgrel=1
 pkgdesc="An audio/video SIP VoIP phone and instant messenger written in Java (formerly SIP-Communicator)"
 arch=('i686' 'x86_64')
 url="http://jitsi.org"
@@ -14,7 +14,7 @@ options=(!strip !emptydirs zipman !libtool docs)
 source=("http://download.jitsi.org/jitsi/src/jitsi-src-${pkgver}.zip"
 		jitsi.desktop
 		jitsi.sh)
-sha256sums=('e649867e186cf195c4b1bb159d7ffe0a38c4dc60659e5c55f9a74461a309f36c'
+sha256sums=('cdfc6f038d1b877c42d26dba1864ac7c6b554dd55c18767a29f2db3618647287'
             '61e3bec3470790fa067f87d978016ec4452a6fd3dfba2c9afa5245b58d3cb19d'
             '529722efc3bae6cb8923680363a4d778ccf78db9caf20bee90a110d34181d9f5')
 
