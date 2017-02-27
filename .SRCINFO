@@ -19,7 +19,9 @@ pkgbase = pidgin-mam-git
 	depends = hicolor-icon-theme
 	optdepends = aspell: for spelling correction
 	provides = pidgin
+	provides = libpurple
 	conflicts = pidgin
+	conflicts = libpurple
 	source = pidgin-mam-git::git+https://github.com/CkNoSFeRaTU/pidgin
 	md5sums = SKIP
 
