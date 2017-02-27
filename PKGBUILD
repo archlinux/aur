@@ -7,7 +7,7 @@
 pkgbase=iproute2-selinux
 pkgname=(iproute2-selinux iproute2-selinux-doc)
 pkgver=4.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='IP Routing Utilities with SELinux support'
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -45,7 +45,7 @@ build() {
 }
 
 package_iproute2-selinux() {
-  depends=('glibc' 'iptables' 'libselinux')
+  depends=('glibc' 'iptables' 'libelf' 'libselinux')
   optdepends=('linux-atm: ATM support')
   provides=('iproute' "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   conflicts=('iproute' "${pkgname/-selinux}")
