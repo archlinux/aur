@@ -3,7 +3,7 @@
 
 pkgname=otter-browser-git
 pkgver=0.9.12.r411.g2d874a47
-pkgrel=1
+pkgrel=2
 pkgdesc='Otter Browser, project aiming to recreate classic Opera (12.x) UI using Qt5 - git checkout'
 arch=('x86_64' 'i686')
 url='http://otter-browser.org/'
