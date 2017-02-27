@@ -5,11 +5,11 @@ pkgname=hunspell-da
 pkgver=2.3
 pkgrel=1
 pkgdesc="Danish hunspell dictionaries"
-arch="any"
+arch=('any')
 url="http://www.stavekontrolden.dk/"
 license=('GPL2' 'LGPL2.1' 'MPL')
 optdepends=('hunspell:	the spell checking libraries and apps')
-source=(http://extensions.libreoffice.org/extension-center/stavekontrolden-danish-dictionary/pscreleasefolder.2011-09-30.0280139318/$pkgver/dict-da-${pkgver/./-}.oxt)
+source=("https://extensions.libreoffice.org/extensions/stavekontrolden-danish-dictionary/${pkgver}/@@download/file/dict-da-${pkgver/./-}.oxt")
 sha256sums=('ecc4cb145d0a14403d5ec39b9fd398307fa66b3d6329b979a39de3edaeac5d15')
 
 package() {
