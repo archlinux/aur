@@ -4,7 +4,7 @@
 pkgbase=rust-nightly
 pkgname=('rust-nightly' 'rust-nightly-doc')
 pkgver=1.17.0.2017.02.26
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc='A safe, concurrent, practical language'
 url='http://www.rust-lang.org/'
@@ -18,7 +18,7 @@ provides=('rust')
 
 build() {
   cd rustc-nightly-src
-   ./configure --prefix=/usr --disable-rpath --disable-compiler-docs 
+   ./configure --prefix=/usr --disable-rpath --enable-compiler-docs 
   make
  }
 
