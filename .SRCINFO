@@ -1,0 +1,26 @@
+pkgbase = cainteoir-engine
+	pkgdesc = The Cainteoir Text-To-Speach Engine
+	pkgver = 0.12.2
+	pkgrel = 1
+	url = https://github.com/rhdunn/cainteoir-engine
+	arch = x86_64
+	license = GPL
+	makedepends = python2-yaml
+	optdepends = pulseaudio
+	optdepends = alsa-lib
+	optdepends = libvorbis
+	optdepends = espeak
+	optdepends = svox-pico-bin
+	optdepends = poppler
+	optdepends = ffmpeg
+	optdepends = libavutil
+	optdepends = libavcodec
+	optdepends = libavformat
+	optdepends = libavresample
+	source = https://github.com/rhdunn/cainteoir-engine/archive/cainteoir-engine-0.12.2.tar.gz
+	source = https://github.com/rhdunn/ucd-tools/archive/8.0.0.tar.gz
+	md5sums = 063666a9f045d4b48572d887ed9f1264
+	md5sums = f137401908b77c3175696feef2608abb
+
+pkgname = cainteoir-engine
+
