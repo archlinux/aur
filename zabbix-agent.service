@@ -9,7 +9,6 @@ ExecStart=/usr/bin/zabbix_agentd
 #GuessMainPID=no
 PIDFile=/run/zabbix/zabbix_agentd.pid
 Restart=on-abnormal
-PrivateTmp=yes
 ProtectSystem=full
 ProtectHome=yes
 
