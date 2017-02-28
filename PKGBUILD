@@ -2,7 +2,7 @@
 
 _name=teeworlds-ddnet
 pkgname=${_name}-git
-pkgver=10.3.5.r6830.465b61fe9
+pkgver=10.4.1.r6871.45c27e8b1
 pkgrel=1
 pkgdesc="A customized version by DDRaceNetwork of this 2D shooting game"
 arch=('i686' 'x86_64')
