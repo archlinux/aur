@@ -1,0 +1,197 @@
+#!/bin/bash
+
+# Copyright 2017 Corey Hinshaw <coreyhinshaw@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+usage () {
+  cat <<EOF
+Usage: luks-tpm [OPTION]... DEVICE ACTION
+Manage the LUKS TPM keys on DEVICE
+
+Actions:
+  temp     Set a temporary LUKS passphrase
+  reset    Reset the LUKS TPM key
+
+Options:
+  -h         Print this help text
+  -m PATH    Mount point for the tmpfs file system used to store TPM keyfiles
+             Default: /root/keyfs
+  -k PATH    Sealed TPM keyfile path
+             Default: /boot/keyfile.enc
+  -t NUMBER  LUKS slot number for the TPM keyfile
+             Default: 1
+  -r NUMBER  LUKS slot number for temporary reset passphrase
+             Default: 2
+  -p NUMBER  PCRs used to seal LUKS keyfile. May be specified more than once
+             Default: 0-7
+  -z         Use the TPM SRK well-known password
+EOF
+}
+
+add_temp_key() {
+  return_code=0
+  create_tmpfs
+  tpm_unsealdata -i "$SEALED_KEYFILE" -o "$KEYFILE" $WELL_KNOWN
+
+  echo "Preparing to set a temporary LUKS passphrase..."
+  cryptsetup luksAddKey --key-slot $RESET_KEY_SLOT --key-file "$KEYFILE" $ROOT_DEVICE < /dev/tty
+
+  if [ $? -eq 0 ]; then
+    echo "After booting into the current kernel, run"
+    echo "  luks-tpm $(echo $ORIGINAL_ARGS | sed 's/temp$/reset/')"
+    echo "to generate a new TPM keyfile and remove this temporary key"
+  else
+    echo "A temporary passphrase was not set" >&2
+    return_code=5
+  fi
+
+  destroy_tmpfs
+  exit $return_code
+}
+
+reset_tpm_key() {
+  return_code=0
+  read -s -p "Enter any existing LUKS passphrase: " PASSPHRASE
+  echo
+
+  echo "Generating new LUKS key..."
+  create_tmpfs
+  dd bs=512 count=4 if=/dev/urandom of="$KEYFILE" > /dev/null 2>&1
+
+  echo "Removing current TPM key from slot $TPM_KEY_SLOT..."
+  echo $PASSPHRASE | cryptsetup luksKillSlot $ROOT_DEVICE $TPM_KEY_SLOT
+
+  echo "Adding new key to slot $TPM_KEY_SLOT..."
+  echo $PASSPHRASE | cryptsetup luksAddKey $ROOT_DEVICE "$KEYFILE" --key-slot $TPM_KEY_SLOT
+  addkey=$?
+
+  echo "Sealing keyfile with the TPM..."
+  tpm_sealdata $PCRS -i "$KEYFILE" -o "$SEALED_KEYFILE" $WELL_KNOWN
+  seal=$?
+
+  if [ $addkey -eq 0 ] && [ $seal -eq 0 ]; then
+    echo "Removing temporary passphrase from slot $RESET_KEY_SLOT..."
+    cryptsetup luksKillSlot --key-file "$KEYFILE" $ROOT_DEVICE $RESET_KEY_SLOT
+  else
+    echo "There was an error resetting the TPM key in slot $TPM_KEY_SLOT!" >&2
+    echo "The temporary reset ket in slot $RESET_KEY_SLOT has not been removed." >&2
+    return_code=4
+  fi
+
+  destroy_tmpfs
+  exit $return_code
+}
+
+create_tmpfs() {
+  mkdir -p "$TMPFS_MOUNT"
+  mount tmpfs "$TMPFS_MOUNT" -t tmpfs -o size=1m
+  if [ $? -ne 0 ]; then
+    echo "Could not create tmpfs. Aborting..." >&2
+    exit 3
+  fi
+  chmod 700 "$TMPFS_MOUNT"
+}
+
+destroy_tmpfs() {
+  umount "$TMPFS_MOUNT"
+}
+
+ORIGINAL_ARGS="$@"
+TMPFS_MOUNT=/root/keyfs
+SEALED_KEYFILE=/boot/keyfile.enc
+TPM_KEY_SLOT=1
+RESET_KEY_SLOT=2
+PCRS="-p 0 -p 1 -p 2 -p 3 -p 4 -p 5 -p 6 -p 7"
+WELL_KNOWN=""
+
+while getopts ":hm:k:t:r:p:z" opt; do
+  case $opt in
+    h)
+      usage
+      exit 0
+      ;;
+    m)
+      TMPFS_MOUNT="$OPTARG"
+      ;;
+    k)
+      SEALED_KEYFILE="$OPTARG"
+      ;;
+    t)
+      if [[ ! $OPTARG =~ ^-?[0-9]+$ ]] || [ $OPTARG -lt 0 ] || [ $OPTARG -gt 7 ]; then
+        echo "Invalid TPM key slot: $OPTARG" >&2
+	exit 1
+      fi
+      TPM_KEY_SLOT=$OPTARG
+      ;;
+    r)
+      if [[ ! $OPTARG =~ ^-?[0-9]+$ ]] || [ $OPTARG -lt 0 ] || [ $OPTARG -gt 7 ]; then
+        echo "Invalid reset key slot: $OPTARG" >&2
+	exit 1
+      fi
+      RESET_KEY_SLOT=$OPTARG
+      ;;
+    p)
+      if [[ ! $OPTARG =~ ^-?[0-9]+$ ]] || [ $OPTARG -lt 0 ] || [ $OPTARG -gt 23 ]; then
+        echo "Invalid PCR: $OPTARG" >&2
+	exit 1
+      fi
+
+      if [ -z $pcr_option ]; then
+        PCRS="-p $OPTARG"
+      else
+        PCRS="$PCRS -p $OPTARG"
+      fi
+      pcr_option=1
+      ;;
+    z)
+      WELL_KNOWN="-z"
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      usage >2&
+      exit 1
+      ;;
+    :)
+      echo "Option -$OPTARG requires an argument." >&2
+      exit 1
+      ;;
+  esac
+done
+
+shift $((OPTIND-1))
+
+ROOT_DEVICE="$1"
+KEYFILE="$TMPFS_MOUNT/keyfile"
+
+if [ -z $ROOT_DEVICE ]; then
+  echo "Device not specified!" >&2
+  usage >&2
+  exit 1
+fi
+
+if [ $EUID -ne 0 ]; then
+  echo "Must be run as root" >&2
+  exit 2
+fi
+
+if [ "$2" = "temp" ]; then
+  add_temp_key
+elif [ "$2" = "reset" ]; then
+  reset_tpm_key
+else
+  echo "Invalid action!" >&2
+  usage >&2
+  exit 1
+fi
