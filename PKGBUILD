@@ -1,7 +1,7 @@
 # Maintainer: Chan Beom Park <cbpark@gmail.com>
 
 pkgname=gm2calc
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A C++ program which calculates the anomalous magnetic moment of the muon in the MSSM at 1-loop and leading 2-loop order."
 arch=("i686" "x86_64")
@@ -9,11 +9,11 @@ url="http://gm2calc.hepforge.org"
 license=('GPL3')
 depends=("boost>=1.37.0" "eigen>=3.1")
 source=("http://www.hepforge.org/archive/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('10988aebfd857241d234aad0cdca4f128245aed5e26fd733358a7d7b0d1412ea')
+sha256sums=('93c3f53ce2e0e147c21c7b097ae08090a22492c5bb282eaeacccb5df05847591')
 
 build() {
   cd "$pkgname-$pkgver"
-  make
+  make ${MAKEFLAGS}
 }
 
 package() {
