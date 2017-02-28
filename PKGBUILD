@@ -4,17 +4,17 @@
 # Base for this PKGBUILD is not the latest AUR package, but the package from 2016-12-14 for nvidia version 375.26
 
 pkgname=('lib32-nvidia-utils-vulkan-developer-beta' 'lib32-nvidia-libgl-vulkan-developer-beta' 'lib32-opencl-nvidia-vulkan-developer-beta')
-pkgver=375.27.10
+pkgver=375.27.13
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
 makedepends=('nvidia-libgl-vulkan-developer-beta')  # To avoid conflict during installation in the build chroot
 license=('custom:NVIDIA')
 options=('!strip')
-_pkg="linux-3752710-32-bit"
+_pkg="linux-3752713-32-bit"
 _pkg_dir="NVIDIA-Linux-x86-$pkgver"
-source=("https://developer.nvidia.com/linux-3752710-32-bit")
-md5sums=('5889c55ff363fa4d7873c505fc0a7a3b')
+source=("https://developer.nvidia.com/linux-3752713-32-bit")
+md5sums=('e1f0620ef6cae6a4158dce72b1e67db7')
 
 _create_links() {
   # create missing soname links
