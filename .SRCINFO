@@ -1,11 +1,14 @@
 pkgbase = mxnet
 	pkgdesc = Flexible and Efficient Library for Deep Learning
 	pkgver = 0.9.3a
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mxnet.io/
 	arch = x86_64
-	license = Apache2
+	license = Apache-2.0
+	license = BSD-3-Clause
 	makedepends = git
+	makedepends = wget
+	depends = cblas
 	optdepends = cuda: GPU support
 	optdepends = cudnn: GPU support
 	optdepends = opencv: computer vision support
