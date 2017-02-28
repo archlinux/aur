@@ -1,0 +1,12 @@
+pkgbase = cl-store
+	pkgdesc = A Common Lisp Serialization Package
+	pkgver = 0.8.11
+	pkgrel = 1
+	url = https://common-lisp.net/project/cl-store/
+	arch = any
+	license = MIT
+	source = git+https://github.com/skypher/cl-store#commit=30c55f389b71f2527c5de7477860ee087ac60718
+	md5sums = SKIP
+
+pkgname = cl-store
+
