@@ -7,13 +7,13 @@
      
 pkgname=med
 pkgver=3.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - MED is code-aster exchange module linked to hdf5"
 url="http://www.code-aster.org/outils/med/"
 license=('LGPL')
-depends=('hdf5-cpp-fortran' 'openmpi' 'swig')
-makedepends=('gcc-fortran' 'coreutils')
-optdepends=('tk' 'python2')
+depends=('hdf5' 'openmpi' 'swig')
+makedepends=('gcc-fortran' 'coreutils' 'python2')
+optdepends=('tk')
 provides=()
 conflicts=('med_fichier')
 replaces=('med_fichier')
