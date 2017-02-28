@@ -2,7 +2,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=zynaddsubfx-git
-pkgver=3.0.1.r12.gd1d8a4ae
+pkgver=3.0.1.r15.gf671cf5b
 pkgrel=1
 pkgdesc="A powerful realtime, multi-timbral software synthesizer."
 arch=('i686' 'x86_64')
