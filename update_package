@@ -1,4 +1,9 @@
 #!/bin/bash
+
+function commit_all(){
+	latest_version=$1
+
+}
 set -e
 current_package=$(cat PKGBUILD  | grep pkgname= | cut -d'=' -f2)
 curl_line=$(curl -qL http://ppa.launchpad.net/zorinos/stable/ubuntu/pool/main/g/$current_package  | grep .deb)
@@ -15,3 +20,14 @@ echo $md5s
 sed -i "s/pkgver=.*/pkgver=$latest_version/g" PKGBUILD
 sed -i "s,source=.*,source=(\'$deb_url\'),g" PKGBUILD
 sed -i "s/md5sums=.*/md5sums=(\'$md5s\')/g" PKGBUILD
+mksrcinfo
+
+cat PKGBUILD
+git status
+echo "Do you wish to commit?"
+read -r answer
+if echo "$answer" | grep -iq "^y" ;then
+	git add -vA
+	git commit -vm "Update to $latest_version"
+	git -v push origin master
+fi
