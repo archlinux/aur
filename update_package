@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+current_package=$(cat PKGBUILD  | grep pkgname= | cut -d'=' -f2)
+curl_line=$(curl -qL http://ppa.launchpad.net/zorinos/stable/ubuntu/pool/main/g/$current_package  | grep .deb)
+latest_version=$(echo "$curl_line" | grep -o -P '(?<=_).*(?=.deb")')
+deb_url=$(echo "http://ppa.launchpad.net/zorinos/stable/ubuntu/pool/main/g/$current_package/${current_package}_${latest_version}.deb")
+wget $deb_url
+md5s=$(md5sum "${current_package}_${latest_version}.deb")
+md5s="${md5s%% *}"
+rm -v "${current_package}_${latest_version}.deb"
+echo $deb_url
+echo $md5s
+
+# Update
+sed -i "s/pkgver=.*/pkgver=$latest_version/g" PKGBUILD
+sed -i "s,source=.*,source=(\'$deb_url\'),g" PKGBUILD
+sed -i "s/md5sums=.*/md5sums=(\'$md5s\')/g" PKGBUILD
