@@ -1,0 +1,17 @@
+pkgbase = ccdille-git
+	pkgdesc = A French precompiler
+	pkgver = v0.1.0.r1.db620b9
+	pkgrel = 1
+	url = https://git.saucisseroyale.fr.cr/DiestVanMaitre_culain/ccdille
+	arch = any
+	license = Unlicense
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	provides = ccdille
+	conflicts = ccdille
+	source = git+https://git.saucisseroyale.fr.cr/DiestVanMaitre_culain/ccdille.git
+	md5sums = SKIP
+
+pkgname = ccdille-git
+
