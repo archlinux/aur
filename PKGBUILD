@@ -48,7 +48,6 @@ backup=('etc/conf.d/libvirt-guests'
 	'etc/libvirt/nwfilter/qemu-announce-self.xml'
 	'etc/libvirt/qemu-lockd.conf'
 	'etc/libvirt/qemu.conf'
-	'etc/libvirt/qemu/networks/autostart/default.xml'
 	'etc/libvirt/qemu/networks/default.xml'
 	'etc/libvirt/virt-login-shell.conf'
 	'etc/libvirt/virtlockd.conf'
@@ -125,4 +124,6 @@ package() {
 	"$pkgdir"/var/run \
 	"$pkgdir"/etc/sysconfig \
 	"$pkgdir"/etc/rc.d
+
+  rm -f "$pkgdir"/etc/libvirt/qemu/networks/autostart/default.xml
 }
