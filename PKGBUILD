@@ -21,8 +21,6 @@ build() {
 package() {
 	mkdir --parents "$pkgdir/usr/share/xlode"
 	cp --preserve=all --recursive --no-target-directory "xlode-master" "$pkgdir/usr/share/xlode"
-	mkdir --parents "$pkgdir/usr/bin"
-	cp "$srcdir/xlode.sh" "$pkgdir/usr/bin/xlode"
-	mkdir --parents "$pkgdir/usr/share/applications"
-	cp "xlode.desktop" "$pkgdir/usr/share/applications"
+	install -Dm0755 "$srcdir/xlode.sh" "$pkgdir/usr/bin/xlode"
+	install -Dm0644 "$srcdir/xlode.desktop" "$pkgdir/usr/share/applications/xlode.desktop"
 }
