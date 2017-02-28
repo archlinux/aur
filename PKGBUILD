@@ -1,6 +1,6 @@
 pkgname=gupnp-tools
 pkgver=0.8.13
-pkgrel=1
+pkgrel=2
 pkgdesc="GUPnP Tools are free replacements of Intel UPnP tools that use GUPnP"
 arch=('i686' 'x86_64')
 url="http://www.gupnp.org/"
