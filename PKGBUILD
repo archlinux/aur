@@ -3,7 +3,7 @@ pkgname=urh
 license=('Apache')
 pkgver=1.5.2
 pkgrel=1
-pkgdesc="Universal Radio Hacker - Hacking wireless protocols made easy"
+pkgdesc="Universal Radio Hacker: investigate wireless protocols like a boss"
 arch=('i686' 'x86_64')
 url="https://github.com/jopohl/urh"
 depends=('python>=3.4' 'python-pyqt5' 'python-numpy' 'python-psutil' 'python-pyzmq')
