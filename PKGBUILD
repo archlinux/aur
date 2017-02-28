@@ -2,7 +2,7 @@
 
 pkgname=osquery-git
 pkgver=2.3.3.r13.g3c3d649b
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
 arch=(x86_64)
@@ -15,7 +15,7 @@ makedepends=('asio' 'audit' 'aws-sdk-cpp-git' 'git' 'clang' 'benchmark'
 			 'llvm' 'lsb-release' 'beecrypt' 'python-jinja' 'python-pip'
 			 'sleuthkit' 'snappy' 'yara' 'thrift' 'magic' 'cpp-netlib'
 			 'python-jinja' 'python-psutil' 'python-pexpect' 'rocksdb-lite'
-			 'boost' 'boost-libs')
+			 'augeas' 'boost' 'boost-libs')
 checkdepends=()
 optdepends=()
 provides=()

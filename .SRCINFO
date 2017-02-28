@@ -1,7 +1,7 @@
 pkgbase = osquery-git
 	pkgdesc = SQL powered operating system instrumentation, monitoring, and analytics.
 	pkgver = 2.3.3.r13.g3c3d649b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osquery.io
 	install = osquery.install
 	arch = x86_64
@@ -33,6 +33,7 @@ pkgbase = osquery-git
 	makedepends = python-psutil
 	makedepends = python-pexpect
 	makedepends = rocksdb-lite
+	makedepends = augeas
 	makedepends = boost
 	makedepends = boost-libs
 	depends = wget
