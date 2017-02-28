@@ -2,7 +2,7 @@
 # Contributor: rostov <imn@pochta.ru>
 
 pkgname=projectlibre
-pkgver=1.6.2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="ProjectLibre is an open source project management software"
 arch=('any')
@@ -11,12 +11,12 @@ url="http://www.projectlibre.org"
 license=('CPAL')
 depends=('java-runtime')
 install=projectlibre.install
-source=("http://downloads.sourceforge.net/project/${pkgname}/ProjectLibre/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+source=("https://svwh.dl.sourceforge.net/project/${pkgname}/ProjectLibre/${pkgver%.*}/${pkgname}-${pkgver}.tar.gz"
 		"projectlibre.png"
 		"projectlibre.desktop"
 		"projectlibre.patch"
 		"projectlibre.xml")
-md5sums=('d2a29965d3ed06c54fa247c7ee7aafc2'
+md5sums=('25ffc7f110bbd83e50c19dca1f0f0e08'
          'cbeee50a6324b473c17899616f3effbd'
          'e93fab66e95915aaf9ef204d914b6e9f'
          '0f6c0fb279ae47302ca220c93cd17d35'
