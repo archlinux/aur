@@ -1,7 +1,7 @@
 # Maintainer: Luis Sarmiento < Luis.Sarmiento-ala-nuclear.lu.se >
 pkgname='geant4'
-pkgver=10.3
-_pkgver=10.03
+pkgver=10.3.1
+_pkgver=10.03.p01
 pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions."
 depends=('cmake>=2.8.2'
@@ -45,7 +45,7 @@ options=('!emptydirs')
 install="${pkgname}.install"
 source=("http://geant4.cern.ch/support/source/${pkgname}.${_pkgver}.tar.gz"
   "${pkgname}.install")
-md5sums=('3abe0c530158630b2b650bfde383466c'
+md5sums=('6da9fdff93437913cf4f548b5590bc29'
          'bfe6791027de966cad240d8584c6b657')
 
 ## Remove this if you want to keep an even smaller package
