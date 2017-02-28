@@ -6,7 +6,7 @@
 
 pkgname=slic3r-git
 pkgver=a
-pkgrel=16
+pkgrel=17
 pkgdesc="Slic3r is an STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge."
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url="http://slic3r.org/"
@@ -34,7 +34,8 @@ md5sums=('SKIP'
 
 _gitname="Slic3r"
 #TODO: derrive this from pkgbuild "fragment", skip checkout/reset if fragment is set in source (no need for doing this twice)
-_gitfragment="stable"
+#_gitfragment="stable"
+_gitfragment="master"
 _src_dir='$srcdir/$_gitname'
 
 countdown() {
@@ -87,9 +88,9 @@ prepare() {
       case $select_mode in
         "branch/commit")
           eval cd "$_src_dir"
-          # Pick a branch - default is stable… for now
+          # Pick a branch - default is master… for now
           # TODO: derrive actual current state of selection (commit/branch from fragment)
-          branches=( $(git ls-remote --heads origin  | sed 's?.*refs/heads/??' | awk '{printf $1; if ($1 == "stable") printf " on ";else printf " off "}') )
+          branches=( $(git ls-remote --heads origin  | sed 's?.*refs/heads/??' | awk '{printf $1; if ($1 == "master") printf " on ";else printf " off "}') )
           branch=$(dialog --keep-tite --backtitle "$pkgname" --no-items --radiolist 'Pick branch' 0 0 0 ${branches[*]} 2>&1 >/dev/tty)
           unset branches
           msg2 "Chosen \"${branch}\" branch "
