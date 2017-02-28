@@ -1,0 +1,12 @@
+diff -Naur ospray-1.2.0/cmake/configure_embree.cmake ospray-1.2.0_modified/cmake/configure_embree.cmake
+--- ospray-1.2.0/cmake/configure_embree.cmake	2017-02-08 21:47:00.000000000 +0100
++++ ospray-1.2.0_modified/cmake/configure_embree.cmake	2017-02-28 09:57:52.830269111 +0100
+@@ -65,6 +65,8 @@
+   
+   IF (${EMBREE_MAX_ISA} STREQUAL "SSE4.1")
+     SET(EMBREE_ISA_SUPPORTS_SSE4 TRUE)
++  ELSEIF (${EMBREE_MAX_ISA} STREQUAL "SSE4.2")
++    SET(EMBREE_ISA_SUPPORTS_SSE4 TRUE)
+   ELSEIF (${EMBREE_MAX_ISA} STREQUAL "AVX")
+     SET(EMBREE_ISA_SUPPORTS_SSE4 TRUE)
+     SET(EMBREE_ISA_SUPPORTS_AVX  TRUE)
