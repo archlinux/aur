@@ -9,16 +9,16 @@
 # Contributor: Steven Nance <steven@devtrw.com>
 
 pkgname=vagrant
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
 url="http://vagrantup.com"
 license=('MIT')
 options=('!emptydirs')
-depends=('vagrant-substrate')
+depends=('vagrant-substrate' 'libyaml')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz)
-md5sums=('60963e73bf32d44bc3bcf0365a0bd4f8')
+md5sums=('1d2da0186bf40c5bbebc8952ae712254')
 
 build() {
   cd $pkgname-$pkgver
