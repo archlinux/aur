@@ -44,7 +44,7 @@ check() {
 package() {
 	dir="$pkgdir/opt/$pkgname"
   mkdir -p "$dir"
-  cp "$pkgname/$pkgname" "$dir"
+  cp "$pkgname/nanotts" "$dir/$pkgname"
   cp -R "$pkgname/lang" "$dir" 
   mkdir -p "$pkgdir/usr/bin"
   cd "$pkgdir/usr/bin"
