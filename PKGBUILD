@@ -2,13 +2,13 @@
 # Contributor: nfnty <arch at nfnty dot se>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=ranger-git
-pkgver=1.7.2.344.g4fb579e
+pkgver=1.9.0b5.3.g3b30c5ee
 pkgrel=1
 pkgdesc="A simple, vim-like file manager."
 arch=('any')
 url="http://savannah.nongnu.org/projects/ranger"
 license=('GPL')
-depends=('python')
+depends=('python') #python(>=2.6 or >=3.1)
 makedepends=('git')
 optdepends=('atool: for previews of archives'
             'file: for determining file types'
@@ -34,5 +34,6 @@ pkgver() {
 package() {
   cd "$srcdir/$pkgname"
   python setup.py -q install --root="$pkgdir" --optimize=1
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
 
