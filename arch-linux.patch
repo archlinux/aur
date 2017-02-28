@@ -39,40 +39,92 @@ index 3acf0c5..bd7612b 100644
  ])
  implementation("system/windows/services@genServices")
  examples([
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 64b1bd8a..dd7b924f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -360,7 +360,7 @@ elseif(OSQUERY_BUILD_PLATFORM STREQUAL "windows")
+   LOG_PLATFORM("Windows")
+ endif()
+
+-if("${OSQUERY_BUILD_DISTRO}" MATCHES "^(centos|rhel|scientific|oracle)7$")
++if("${OSQUERY_BUILD_DISTRO}" MATCHES "^(centos|rhel|scientific|oracle)7$|arch")
+   # Useful for libudev version detection.
+   set(SYSTEMD TRUE)
+ endif()
+diff --git a/osquery/extensions/CMakeLists.txt b/osquery/extensions/CMakeLists.txt
+index 5147c1a9..1c072e4c 100644
+--- a/osquery/extensions/CMakeLists.txt
++++ b/osquery/extensions/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ # Generate the thrift intermediate/interface code.
+ add_custom_command(
+   COMMAND
+-    ${THRIFT_COMPILER} --gen cpp:dense --gen py:dense "${CMAKE_SOURCE_DIR}/osquery.thrift"
++    ${THRIFT_COMPILER} --gen cpp --gen py "${CMAKE_SOURCE_DIR}/osquery.thrift"
+   DEPENDS "${CMAKE_SOURCE_DIR}/osquery.thrift"
+   WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/generated"
+   OUTPUT ${OSQUERY_THRIFT_GENERATED_FILES}
+diff --git a/include/osquery/core.h b/include/osquery/core.h
+index a367f913..c522d558 100644
+--- a/include/osquery/core.h
++++ b/include/osquery/core.h
+@@ -15,8 +15,9 @@
+ #include <string>
+ #include <vector>
+
+-#if defined(__APPLE__) || defined(__FreeBSD__)
++#if defined(__APPLE__) || defined(__FreeBSD__) || defined(__linux__)
+ #include <boost/thread/shared_mutex.hpp>
++#include <boost/thread/recursive_mutex.hpp>
+ #else
+ #include <shared_mutex>
+ #endif
+@@ -182,7 +183,7 @@ inline bool isPlatform(PlatformType a, const PlatformType& t = kPlatformType) {
+   return (static_cast<int>(t) & static_cast<int>(a)) != 0;
+ }
+
+-#if defined(__APPLE__) || defined(__FreeBSD__)
++#if defined(__APPLE__) || defined(__FreeBSD__) || defined(__linux__)
+ #define MUTEX_IMPL boost
+ #else
+ #define MUTEX_IMPL std
+@@ -198,8 +199,8 @@ using WriteLock = MUTEX_IMPL::unique_lock<Mutex>;
+ using ReadLock = MUTEX_IMPL::shared_lock<Mutex>;
+
+ /// Helper alias for defining recursive mutexes.
+-using RecursiveMutex = std::recursive_mutex;
++using RecursiveMutex = MUTEX_IMPL::recursive_mutex;
+
+ /// Helper alias for write locking a recursive mutex.
+-using RecursiveLock = std::lock_guard<std::recursive_mutex>;
++using RecursiveLock = MUTEX_IMPL::lock_guard<MUTEX_IMPL::recursive_mutex>;
+ }
 diff --git a/osquery/CMakeLists.txt b/osquery/CMakeLists.txt
-index c6c9a84..097f91c 100644
+index 4c8ac8ca..195450da 100644
 --- a/osquery/CMakeLists.txt
 +++ b/osquery/CMakeLists.txt
-@@ -55,8 +55,8 @@ if(WINDOWS)
+@@ -55,7 +55,7 @@ if(WINDOWS)
+   ADD_OSQUERY_LINK_CORE("ssleay32")
+   ADD_OSQUERY_LINK_CORE("eay32")
+   ADD_OSQUERY_LINK_CORE("zlibstatic")
+-
++
+   # Enable control flow guard
+   ADD_OSQUERY_LINK_CORE("-guard:cf")
  else()
-   ADD_OSQUERY_LINK_CORE("libpthread")
-   ADD_OSQUERY_LINK_CORE("libz")
+@@ -69,10 +69,11 @@ endif()
+
+ if(APPLE OR LINUX)
+   ADD_OSQUERY_LINK_CORE("libdl")
 -  ADD_OSQUERY_LINK_CORE("boost_system-mt")
 -  ADD_OSQUERY_LINK_CORE("boost_filesystem-mt")
 +  ADD_OSQUERY_LINK_CORE("boost_system")
 +  ADD_OSQUERY_LINK_CORE("boost_filesystem")
-   ADD_OSQUERY_LINK_CORE("gflags")
-   ADD_OSQUERY_LINK_CORE("thrift")
-   ADD_OSQUERY_LINK_CORE("lz4")
-@@ -79,7 +79,7 @@ ADD_OSQUERY_LINK_ADDITIONAL("cppnetlib-uri")
- ADD_OSQUERY_LINK_ADDITIONAL("cppnetlib-client-connections")
-
- if(NOT WINDOWS)
++  ADD_OSQUERY_LINK_CORE("boost_thread")
+   ADD_OSQUERY_LINK_ADDITIONAL("rocksdb_lite")
 -  ADD_OSQUERY_LINK_ADDITIONAL("boost_regex-mt")
 +  ADD_OSQUERY_LINK_ADDITIONAL("boost_regex")
-   ADD_OSQUERY_LINK_ADDITIONAL("rocksdb_lite")
-   ADD_OSQUERY_LINK_ADDITIONAL("snappy")
-   ADD_OSQUERY_LINK_ADDITIONAL("ssl")
-diff --git a/osquery/devtools/shell.cpp b/osquery/devtools/shell.cpp
-index eda12da..bb03f5a 100644
---- a/osquery/devtools/shell.cpp
-+++ b/osquery/devtools/shell.cpp
-@@ -29,7 +29,7 @@
- #include <readline/readline.h>
- #endif
-
--#include <linenoise.h>
-+#include "linenoise.h"
- #include <sqlite3.h>
-
- #include <boost/algorithm/string/predicate.hpp>
+ elseif(FREEBSD)
+   ADD_OSQUERY_LINK_CORE("icuuc")
+   ADD_OSQUERY_LINK_CORE("boost_system")

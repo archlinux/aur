@@ -1,20 +1,21 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=osquery-git
-pkgver=2.1.2.r8.g0b62245
+pkgver=2.3.3.r13.g3c3d649b
 pkgrel=1
 epoch=
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
-arch=(any)
+arch=(x86_64)
 url="https://osquery.io"
 license=('BSD')
 groups=()
-depends=('asio' 'audit' 'aws-sdk-cpp-git' 'boost' 'boost-libs' 'clang'
-		 'cmake' 'doxygen' 'gflags' 'git' 'google-glog' 'linenoise'
-		 'lsb-release' 'make' 'python' 'python-jinja' 'python-pip'
-		 'sleuthkit' 'snappy' 'thrift' 'yara')
-makedepends=('python-jinja' 'python-psutil' 'python-pexpect' 'rocksdb-lite'
-			 'benchmark' 'cpp-netlib' 'magic' 'unzip' 'wget')
+depends=('wget' 'unzip')
+makedepends=('asio' 'audit' 'aws-sdk-cpp-git' 'git' 'clang' 'benchmark'
+			 'make' 'cmake' 'doxygen' 'gflags' 'google-glog' 'linenoise'
+			 'llvm' 'lsb-release' 'beecrypt' 'python-jinja' 'python-pip'
+			 'sleuthkit' 'snappy' 'yara' 'thrift' 'magic' 'cpp-netlib'
+			 'python-jinja' 'python-psutil' 'python-pexpect' 'rocksdb-lite'
+			 'boost' 'boost-libs')
 checkdepends=()
 optdepends=()
 provides=()
@@ -22,21 +23,22 @@ conflicts=()
 replaces=()
 backup=('etc/osquery/osquery.conf')
 options=()
-install=
+install=osquery.install
 changelog=
-_gitcommit="0b62245848992f2d670b794970b31352fbb15121"
+_gitcommit="3c3d649b1ed80362e6653409876110f254cfc719"
+#source=("${pkgname}::git+https://github.com/facebook/osquery"
 source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit}"
 		"osqueryd.conf.d"
 		"osqueryd.service"
-		"linenoise.h"
-		"arch-linux.patch")
+		"arch-linux.patch"
+		"osquery.install")
 noextract=()
 validpgpkeys=()
 sha256sums=('SKIP'
             '3aea1799571f6ddab8d4c9820686fb64e7989e8121a98747a65326cd9f62f7e1'
             '7b1082c9a74e11b02fa6d8410e987db64be2e097f84fcd346e7feef8c1e8a104'
-            'ffbd01592bd82771e23b4a85b827df6c1f832bca516389837f4892593c55b105'
-            '3331551b1cf61036d0eb5d2867cda3f3f7be3ff86666685e40595d8c63626a21')
+            '8d0559218e22f770aa0833fc7a327f720c2b1f91a98725a54c5bf6524b381c75'
+            '70e036d8f6362c92ef8dcb122fd62f30970b2543d75384225f49692f5f67085b')
 
 _gitname=${pkgname}
 
@@ -52,7 +54,6 @@ prepare() {
 	git reset HEAD --hard
 	git submodule update --init
 
-	cp -fv "${srcdir}/linenoise.h" "osquery/devtools/linenoise.h"
 	patch -p1 -F3 -i "${srcdir}/arch-linux.patch"
 
 	find . -type f -name '*apt_sources*' -delete
@@ -73,10 +74,12 @@ build() {
 	#SQLITE_DEBUG=True # Enable SQLite query debugging (very verbose!)
 	#export SKIP_TESTS=True SKIP_BENCHMARKS=True
 
-	export PACKAGE=1
-	cmake -Wno-dev \
+	[[ -z $DEBUG ]] || unset DEBUG
+	PACKAGE=1 cmake -Wno-dev \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_VERBOSE_MAKEFILE=OFF \
+		-DCMAKE_CXX_FLAGS="-I/usr/include/libxml2" \
+		-DCMAKE_EXE_LINKER_FLAGS="-shared" \
+		-DCMAKE_VERBOSE_MAKEFILE=ON \
 		-DOSQUERY_BUILD_RELEASE=ON
 
 	make -j $(nproc) all
