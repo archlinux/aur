@@ -16,29 +16,26 @@ options=(!emptydirs)
 install=
 source=("http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/Module-Build-WithXSpp-${pkgver}.tar.gz")
 md5sums=('f3d6ad08127f62eed9baef131870f450')
+_src_dir='$srcdir/Module-Build-WithXSpp-$pkgver'
 
-prepare() {
-  export _src_dir="$srcdir/Module-Build-WithXSpp-$pkgver"
+build() {
   # Setting these env variables overwrites any command-line-options we don't want...
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
     PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
     PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
     MODULEBUILDRC=/dev/null
-}
-
-build() {
-  cd "$_src_dir"
+  eval cd "$_src_dir"
   /usr/bin/perl Build.PL
   ./Build
 }
 
 check () {
-  cd "$_src_dir"
+  eval cd "$_src_dir"
   ./Build test
 }
 
 package () {
-  cd "$_src_dir"
+  eval cd "$_src_dir"
   ./Build install
   perl Build.PL installdirs=vendor destdir="$pkgdir/"
   perl Build
