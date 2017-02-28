@@ -67,6 +67,7 @@ package_iproute2-selinux() {
 
 package_iproute2-selinux-doc() {
   pkgdesc='IP Routing Utilities documentation'
+  conflicts=("${pkgname/-selinux}")
 
   cd "${srcdir}/${pkgbase/-selinux}-${pkgver}"
 

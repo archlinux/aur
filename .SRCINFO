@@ -43,4 +43,5 @@ pkgname = iproute2-selinux
 
 pkgname = iproute2-selinux-doc
 	pkgdesc = IP Routing Utilities documentation
+	conflicts = iproute2-doc
 
