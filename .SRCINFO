@@ -1,6 +1,6 @@
 pkgbase = bunnysay-git
 	pkgdesc = Fullwidth bunny signs for terminal and Twitter/webforms
-	pkgver = v1.0.r6.a8fce4b
+	pkgver = v1.1
 	pkgrel = 1
 	url = https://github.com/co60ca/stella
 	arch = i686
