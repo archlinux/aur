@@ -1,0 +1,14 @@
+post_install() {
+    echo -e "Installing systemd service file..."
+    graylog-collector-sidecar -service install
+    echo -e "\nMake sure you edit your /etc/graylog/collector-sidecar/collector_sidecar.yml file as needed."
+    echo -e "After making your changes, enable and start the collector-sidecar service with systemctl\n"
+}
+
+pre_remove() {
+    echo -e "Stopping collector-sidecar service..."
+    graylog-collector-sidecar -service stop
+    echo -e "Removing systemd service file..."
+    graylog-collector-sidecar -service uninstall
+    echo -e "DONE"
+}
