@@ -1,0 +1,12 @@
+pkgbase = nanotts-git
+	pkgdesc = The Cainteoir Text-To-Speach Engine (from git)
+	pkgver = r46.2370600
+	pkgrel = 1
+	url = https://github.com/gmn/nanotts
+	arch = x86_64
+	license = GPL
+	source = nanotts-git::git+https://github.com/gmn/nanotts.git#branch=master
+	md5sums = SKIP
+
+pkgname = nanotts-git
+
