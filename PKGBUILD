@@ -15,16 +15,12 @@ source=("https://cpan.metacpan.org/authors/id/C/CH/CHM/OpenGL-${pkgver}.tar.gz")
 md5sums=('8b651500162e9b999347a06dc0664ab6')
 _distdir="OpenGL-$pkgver"
 
-prepare() {
+build() {
   # Setting these env variables overwrites any command-line-options we don't want...
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
     PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
     PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
     MODULEBUILDRC=/dev/null
-  #cd "$srcdir/$_distdir"
-}
-
-build() {
   cd "$srcdir/$_distdir"
   if [ -z "$DISPLAY" ]; then
     warning "Empty \$DISPLAY - falling back to xvfb-run (xorg-server-xvfb)"
