@@ -5,7 +5,7 @@
 # Contributor: Fabio Zanini <iosonofabio@gmail.com>
 
 pkgname=modeller
-pkgver=9.17
+pkgver=9.18
 pkgrel=1
 pkgdesc="3D Structure Homology Modeller"
 arch=('i686' 'x86_64')
@@ -17,12 +17,9 @@ optdepends=('python: python support'
 backup=("etc/$pkgname/config.py")
 source=("http://www.salilab.org/modeller/$pkgver/$pkgname-$pkgver.tar.gz"{,.sign}
         "LICENSE")
-md5sums=('623e0c02fb09ade3eee3fc9101d5eb86'
-         'SKIP'
-         '241257feba9f2242ff445a18acab391f')
-sha512sums=('d126bd069e8342683282c472db797c874b8058bcc9a3b482f06831e58ba484b43270c53bdd498d55f9f8daf6220764ad9cd44ad6d0233fe19800e662b316aa8e'
+sha256sums=('0df243c4da08214414edd303986393bc45ee2f2e4107d62335a6538ac715f3e0'
             'SKIP'
-            '5ac8aeb58148a5ad387d3f2730036bd91a8e5bd6cb921dd2d2601df533fd7d6b5355f4fdc172926e76036f845873ad0d0718d1b5d13db50ade2ee5707df00c7a')
+            '7d1fb18e362298bc606d6d99852479dc107ad336e1bcd33362fdeef18cf207fe')
 validpgpkeys=('9F7FF1477E5A2463732EC9781CC7D059745E6093')
 
 package() {
@@ -78,12 +75,12 @@ package() {
     echo "/usr/lib/$pkgname/lib/$_EXECUTABLE_TYPE" > "$pkgdir/etc/ld.so.conf.d/$pkgname.conf"
 
     # install python modules
-    for _pyver in 2.7 3.5; do
+    for _pyver in 2.7 3.6; do
       install -dm755 "$pkgdir/usr/lib/python$_pyver/site-packages"
       ln -s "$_MODINSTALL/modlib/modeller" "$pkgdir/usr/lib/python$_pyver/site-packages/modeller"
     done
     ln -s "$_MODINSTALL/lib/$_EXECUTABLE_TYPE/python2.5/_modeller.so" "$pkgdir/usr/lib/python2.7/site-packages/_modeller.so"
-    ln -s "$_MODINSTALL/lib/$_EXECUTABLE_TYPE/python3.3/_modeller.so" "$pkgdir/usr/lib/python3.5/site-packages/_modeller.so"
+    ln -s "$_MODINSTALL/lib/$_EXECUTABLE_TYPE/python3.3/_modeller.so" "$pkgdir/usr/lib/python3.6/site-packages/_modeller.so"
 
     # add profile.d file
     install -dm755 "$pkgdir/etc/profile.d"
