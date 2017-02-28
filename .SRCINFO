@@ -1,0 +1,15 @@
+pkgbase = cl-fad
+	pkgdesc = A portable pathname library for Common Lisp
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = http://weitz.de/cl-fad/
+	arch = any
+	license = custom:bsd-style
+	depends = sbcl
+	depends = cl-bordeaux-threads
+	depends = cl-alexandria
+	source = git+https://github.com/edicl/cl-fad.git#commit=56b0909150d54b2e3aaf2660735702b35558445d
+	md5sums = SKIP
+
+pkgname = cl-fad
+
