@@ -6,7 +6,7 @@ arch=('i686' 'x86_64')
 url="http://www.gupnp.org/"
 license=('GPL')
 groups=('gupnp')
-depends=('gupnp-av>=0.5.5' 'gtk3' 'gnome-icon-theme>=2.20' 'desktop-file-utils' 'gssdp>=0.13.3' 'gupnp>=0.20.14' 'intltool')
+depends=('gupnp-av>=0.5.5' 'gtksourceview3')
 makedepends=('gtk-doc' 'pkgconfig')
 options=('!libtool')
 source=("https://download.gnome.org/sources/gupnp-tools/0.8/gupnp-tools-$pkgver.tar.xz")

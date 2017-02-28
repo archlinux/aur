@@ -10,12 +10,7 @@ pkgbase = gupnp-tools
 	makedepends = gtk-doc
 	makedepends = pkgconfig
 	depends = gupnp-av>=0.5.5
-	depends = gtk3
-	depends = gnome-icon-theme>=2.20
-	depends = desktop-file-utils
-	depends = gssdp>=0.13.3
-	depends = gupnp>=0.20.14
-	depends = intltool
+	depends = gtksourceview3
 	options = !libtool
 	source = https://download.gnome.org/sources/gupnp-tools/0.8/gupnp-tools-0.8.13.tar.xz
 	md5sums = 212d85ebce89b32468b59e1164050d40
