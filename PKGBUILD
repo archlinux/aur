@@ -2,17 +2,17 @@
 # Contributor: Niels Martignène <niels.martignene@gmail.com>
 
 pkgname=arduino-mk
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='A Makefile for Arduino Sketches'
 arch=(any)
 url='https://github.com/sudar/Arduino-Makefile'
 license=('LGPL2.1')
-depends=('arduino' 'make' 'python-pyserial')
+depends=('arduino-avr-core' 'make' 'python-pyserial')
 optdepends=('screen: monitor support'
             'picocom: monitor support')
 source=("https://github.com/sudar/Arduino-Makefile/archive/${pkgver}.tar.gz")
-sha256sums=('91a41838685f1f52bf3a7da770f633a76be4b0dd71aea94a484b9827c56315bf')
+sha256sums=('4473d25a658397affa56cd76283b42fad1700f49dcd120bef2d7e36813401958')
 
 prepare() {
   cd "${srcdir}/Arduino-Makefile-${pkgver}"
