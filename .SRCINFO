@@ -9,7 +9,6 @@ pkgbase = find-the-command
 	depends = pacman>=5.0
 	optdepends = zsh: cool interactive shell with plenty of features
 	optdepends = sudo: for root access (needed for packages installation)
-	optdepends = su: alternative option for root access
 	backup = usr/lib/systemd/system/pacman-files.service
 	backup = usr/lib/systemd/system/pacman-files.timer
 	source = https://github.com/agur4ik/find-the-command/archive/1.1.1.tar.gz

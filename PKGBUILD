@@ -8,8 +8,7 @@ url="https://github.com/agur4ik/find-the-command"
 license=('custom:WTFPL')
 depends=('pacman>=5.0')
 optdepends=('zsh: cool interactive shell with plenty of features'
-            'sudo: for root access (needed for packages installation)'
-            'su: alternative option for root access')
+            'sudo: for root access (needed for packages installation)')
 backup=('usr/lib/systemd/system/pacman-files.service'
         'usr/lib/systemd/system/pacman-files.timer')
 install=find-the-command.install
