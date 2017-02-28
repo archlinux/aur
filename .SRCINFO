@@ -1,6 +1,6 @@
 pkgbase = deepin-boot-maker
 	pkgdesc = Deepin Boot Maker is a tool that helps user to create a bootable usb stick quick and easy.
-	pkgver = 1.2.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/deepin-boot-maker
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = deepin-boot-maker
 	depends = p7zip
 	depends = syslinux
 	depends = mtools
-	source = https://github.com/linuxdeepin/deepin-boot-maker/archive/1.2.0.tar.gz
-	md5sums = 48582a1dc28ebb568a64080ab0583020
+	source = https://github.com/linuxdeepin/deepin-boot-maker/archive/1.9.0.tar.gz
+	md5sums = 43b516dc6d90dc2864383d91b1378009
 
 pkgname = deepin-boot-maker
 
