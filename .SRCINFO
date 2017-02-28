@@ -1,5 +1,5 @@
 pkgbase = qemu-saren-git
-	pkgver = 2.8.0.r51295.ad584d37f2
+	pkgver = 2.8.0.r51657.9514f2648c
 	pkgrel = 1
 	url = http://wiki.qemu.org/
 	arch = i686
@@ -49,12 +49,14 @@ pkgbase = qemu-saren-git
 	source = 65-kvm.rules
 	source = qemu.install
 	source = https://launchpadlibrarian.net/282321876/pulseaudio-microphone-workaround.patch
+	source = qemu-devel-msg431844.patch
 	sha256sums = SKIP
 	sha256sums = dd43e2ef062b071a0b9d0d5ea54737f41600ca8a84a8aefbebb1ff09f978acfb
 	sha256sums = 0b4f3283973bb3bc876735f051d8eaab68f0065502a3a5012141fad193538ea1
 	sha256sums = 60dcde5002c7c0b983952746e6fb2cf06d6c5b425d64f340f819356e561e7fc7
 	sha256sums = 0df69a77645c9a05f98635773666b6212084525d7801ef8382242b06baebe5aa
 	sha256sums = 57d87ba45340f9b7f4b70834fc35da25be72cf4092abcc5012e853aa7b37c83a
+	sha256sums = 07d60426021d096983c6af2c72cc465259c059f2adc5e76ac4f98a00978b838a
 
 pkgname = qemu-saren-git
 	pkgdesc = A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation. Git version. GTK support, Spice support and Pulseaudio microphone input delay workaround patch included.

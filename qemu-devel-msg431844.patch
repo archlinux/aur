@@ -1,0 +1,12 @@
+diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
+index 23483c7..e487e36 100644
+--- a/hw/virtio/virtio.c
++++ b/hw/virtio/virtio.c
+@@ -2291,7 +2291,7 @@ static bool virtio_queue_host_notifier_aio_poll(void *opaque)
+     VirtQueue *vq = container_of(n, VirtQueue, host_notifier);
+     bool progress;
+ 
+-    if (virtio_queue_empty(vq)) {
++    if (!vq->vring.desc || virtio_queue_empty(vq)) {
+         return false;
+     }
