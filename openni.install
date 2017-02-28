@@ -5,7 +5,7 @@ post_install() {
 		/usr/bin/niReg /usr/lib/$module
 	done
 	
-	echo "Don't forget to install a hardware driver such as sensorkinect-git"
+	echo "Don't forget to install a hardware driver such as openni-primesense-sensor or sensorkinect"
 }
 
 pre_remove() {
