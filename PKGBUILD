@@ -2,11 +2,12 @@
 
 pkgname=clx-truetype
 pkgver=20160701
-pkgrel=1
+pkgrel=2
 pkgdesc="Use truetype fonts in common lisp"
 arch=('any')
 url="http://filonenko-mikhail.github.io/clx-truetype/"
 license=('custom:unknown')
+depends=('common-lisp' 'cl-zpb-ttf')
 source=("git+https://github.com/filonenko-mikhail/clx-truetype.git#commit=c6e10a918d46632324d5863a8ed067a83fc26de8")
 md5sums=('SKIP')
 
