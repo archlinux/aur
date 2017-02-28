@@ -16,29 +16,26 @@ options=(!emptydirs)
 install=
 source=("http://search.cpan.org/CPAN/authors/id/A/AA/AAR/Boost-Geometry-Utils-${pkgver}.tar.gz")
 md5sums=('14d705f8efda8db81e118aa8c8a21bed')
+_src_dir='$srcdir/Boost-Geometry-Utils-$pkgver'
 
-prepare() {
-  export _src_dir="$srcdir/Boost-Geometry-Utils-$pkgver"
+build() {
   # Setting these env variables overwrites any command-line-options we don't want...
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
     PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
     PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
     MODULEBUILDRC=/dev/null
-}
-
-build() {
-  cd "$_src_dir"
+  eval cd "$_src_dir"
   /usr/bin/perl Build.PL
   ./Build
 }
 
 check () {
-  cd "$_src_dir"
+  eval cd "$_src_dir"
   ./Build test
 }
 
 package () {
-  cd "$_src_dir"
+  eval cd "$_src_dir"
   ./Build install
 
   # remove perllocal.pod and .packlist
