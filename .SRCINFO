@@ -1,0 +1,19 @@
+pkgbase = ftw-git
+	pkgdesc = A configurable power saving script with udev rules.
+	pkgver = 20140131.15
+	pkgrel = 1
+	url = https://github.com/supplantr/ftw
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = udev
+	depends = hdparm
+	depends = iw
+	provides = ftw
+	conflicts = ftw
+	backup = etc/conf.d/ftw
+	source = ftw::git://github.com/supplantr/ftw.git
+	md5sums = SKIP
+
+pkgname = ftw-git
+
