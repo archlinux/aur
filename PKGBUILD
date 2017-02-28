@@ -4,9 +4,9 @@ pkgname=linux-mainline-usermode
 true && pkgname=(linux-mainline-usermode linux-mainline-usermode-modules)
 pkgbase=linux-mainline-usermode
 _kernelname=${pkgbase#linux}
-_srcname=linux-4.10-rc6
+_srcname=linux-4.10.1
 #_patchname=patch-4.10-rc4
-pkgver=4.10rc6
+pkgver=4.10.1
 pkgrel=1
 pkgdesc="User mode Linux-mainline kernel and modules"
 arch=('i686' 'x86_64')
@@ -15,15 +15,15 @@ url="http://user-mode-linux.sourceforge.net/"
 depends=('coreutils')
 makedepends=('bc' 'inetutils' 'vde2-static' 'vde2')
 source=(
-	"https://cdn.kernel.org/pub/linux/kernel/v4.x/testing/${_srcname}.tar.xz"
-#	"https://mirrors.ustc.edu.cn/kernel.org/linux/kernel/v4.x/${_srcname}.tar.xz"
+#	"https://cdn.kernel.org/pub/linux/kernel/v4.x/testing/${_srcname}.tar.xz"
+	"https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 #	"https://cdn.kernel.org/pub/linux/kernel/v4.x/testing/${_patchname}.xz"
 #	"https://mirrors.ustc.edu.cn/kernel.org/linux/kernel/v4.x/testing/${_patchname}.xz"
 	"config-i686" "config-x86_64"
     )
-sha256sums=('3bee15b3b1c644da44c36522e62895d6062bb418e4b1bee3796e91501bb0beac'
+sha256sums=('6ca06bb5faf5f83600d7388bb623dae41df2a257de85ad5d1792e03302bc3543'
             'f001a5860c927c14e12eb6c4c09ad22e57834a0f44d71c9516bc2c2f6f1a290f'
-            '2a786756a47a52b77ae4bffb31eadd60a7a717c2e3544a315f1cfe9ba9091f30')
+            '933ef232766ecdd92aafff4b1687caf5a0db172bc0f26cd20f8475eef2402770')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -52,13 +52,13 @@ build() {
   # Edit configuration
   # Configure the kernel. Replace the line below with one of your choice.
   #make defconfig ARCH=um # default configuration
-  make defconfig ARCH=um
   #make menuconfig ARCH=um # CLI menu for configuration
   #make nconfig ARCH=um # new CLI menu for configuration
   #make xconfig ARCH=um # X-based configuration
+  make olddefconfig ARCH=um
   # ... or manually edit .config
 
-  make ARCH=um vmlinux modules KCFLAGS=-fPIC
+  make ARCH=um vmlinux modules KCFLAGS=-fPIC -j2
 
 }
 
