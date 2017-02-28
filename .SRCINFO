@@ -1,14 +1,14 @@
 pkgbase = cargo-watch
 	pkgdesc = Watches over your Cargo project's source
-	pkgver = 3.1.1
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://github.com/passcod/cargo-watch
 	arch = i686
 	arch = x86_64
 	license = CC0-1.0
 	depends = cargo
-	source = https://github.com/passcod/cargo-watch/archive/v3.1.1/cargo-watch-3.1.1.tar.gz
-	sha256sums = 396fc7c188c66bec245e01ae3689cbd164eebe9946b7bd8f16f3606651e5fc0a
+	source = https://github.com/passcod/cargo-watch/archive/v3.1.2/cargo-watch-3.1.2.tar.gz
+	sha256sums = 3692824d3ea3822d29425ffcc8f169914e93c2da08cd3c027d579815af6d1795
 
 pkgname = cargo-watch
 
