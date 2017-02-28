@@ -2,12 +2,13 @@
 
 pkgname=ldoce5viewer
 pkgver=2013.04.24
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, free viewer for the Longman Dictionary of Contemporary English 5th Edition"
 url="http://hakidame.net/ldoce5viewer/"
 license=(GPL3)
 arch=('any')
-depends=(pyqt python-lxml gstreamer0.10-python gstreamer0.10-good gstreamer0.10-ugly-plugins)
+depends=('pyqt4-common<=4.12.3' 'python-lxml' 'gstreamer0.10-python' 'gstreamer0.10-good' 'gstreamer0.10-ugly-plugins')
+conflicts=(ldoce5viewer-git ldoce5viewer-pyqt5-git)
 install=ldoce5viewer.install
 source=(http://hakidame.net/ldoce5viewer/static/packages/$pkgname-$pkgver.tar.gz)
 md5sums=('086b5de509c669bb220c8ba6464bb7a6')
