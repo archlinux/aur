@@ -1,8 +1,8 @@
-From e08b0882b29ce39ef67742a1caa53af4b6bb18bd Mon Sep 17 00:00:00 2001
+From d89c874ea121b6855c7bdf2e757fa13d0b04661f Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
 Date: Tue, 1 Mar 2016 22:19:14 +0100
-Subject: [PATCH 10/12] compositor-drm: Gracefully handle vblank and flip
- invalid timestamps
+Subject: [PATCH 4/7] compositor-drm: Gracefully handle vblank and flip invalid
+ timestamps
 X-NVConfidentiality: public
 
 Instant query for vblank timestamp may always fail, resulting in
@@ -22,7 +22,7 @@ Reviewed-by: Andy Ritger <aritger@nvidia.com>
  1 file changed, 25 insertions(+), 3 deletions(-)
 
 diff --git a/libweston/compositor-drm.c b/libweston/compositor-drm.c
-index df357c3c809b..044633f7c740 100644
+index 1d38f051..12c1b8b5 100644
 --- a/libweston/compositor-drm.c
 +++ b/libweston/compositor-drm.c
 @@ -1,6 +1,7 @@
@@ -33,7 +33,7 @@ index df357c3c809b..044633f7c740 100644
   *
   * Permission is hereby granted, free of charge, to any person obtaining
   * a copy of this software and associated documentation files (the
-@@ -799,8 +800,16 @@ drm_output_start_repaint_loop(struct weston_output *output_base)
+@@ -825,8 +826,16 @@ drm_output_start_repaint_loop(struct weston_output *output_base)
  	vbl.request.type |= drm_waitvblank_pipe(output);
  	ret = drmWaitVBlank(backend->drm.fd, &vbl);
  
@@ -52,7 +52,7 @@ index df357c3c809b..044633f7c740 100644
  		ts.tv_sec = vbl.reply.tval_sec;
  		ts.tv_nsec = vbl.reply.tval_usec * 1000;
  
-@@ -821,7 +830,7 @@ drm_output_start_repaint_loop(struct weston_output *output_base)
+@@ -847,7 +856,7 @@ drm_output_start_repaint_loop(struct weston_output *output_base)
  		}
  	}
  
@@ -61,7 +61,7 @@ index df357c3c809b..044633f7c740 100644
  	 * Use pageflip fallback.
  	 */
  	fb_id = output->current->fb_id;
-@@ -907,6 +916,19 @@ page_flip_handler(int fd, unsigned int frame,
+@@ -935,6 +944,19 @@ page_flip_handler(int fd, unsigned int frame,
  	else if (!output->vblank_pending) {
  		ts.tv_sec = sec;
  		ts.tv_nsec = usec * 1000;
@@ -82,5 +82,5 @@ index df357c3c809b..044633f7c740 100644
  
  		/* We can't call this from frame_notify, because the output's
 -- 
-2.10.2
+2.11.1
 

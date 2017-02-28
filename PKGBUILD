@@ -1,60 +1,49 @@
 # Maintainer: Aaron Plattner <aplattner@nvidia.com>
+# Maintainer: Miguel A. Vico <mvicomoya@nvidia.com>
 # Contributor: Sébastien Luttringer
 # Contributor: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=weston-eglstream
-pkgver=1.12.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='Reference implementation of a Wayland compositor with EGLStream support'
 arch=('i686' 'x86_64')
-url='http://wayland.freedesktop.org'
+url='https://wayland.freedesktop.org/'
 license=('MIT')
-depends=('wayland' 'libxkbcommon' 'libinput' 'libunwind' 'poppler-glib' 'mtdev' 'libxcursor' 'glu' 'pango' 'colord')
+depends=('glibc' 'wayland' 'libxkbcommon' 'libinput' 'libunwind' 'pixman'
+         'libdrm' 'pam' 'libsystemd' 'cairo' 'libpng' 'libjpeg-turbo' 'libwebp'
+         'libegl' 'libgles' 'glib2' 'pango' 'lcms2' 'mtdev' 'libx11'
+         'libxcb' 'dbus' 'libva' 'libxcursor' 'colord')
 makedepends=('wayland-protocols')
 provides=('weston')
 conflicts=('weston')
-source=("http://wayland.freedesktop.org/releases/weston-$pkgver.tar.xz"
-          '0001-gl-renderer-Rename-gl_renderer_create-to-gl_renderer.patch'
-          '0002-gl-renderer-Rename-gl_renderer-output_create-to-outp.patch'
-          '0003-gl-renderer-Rename-attribs-param-of-gl_renderer-to-c.patch'
-          '0004-gl-renderer-Add-platform_attribs-param-to-gl_rendere.patch'
-          '0005-gl-renderer-Accept-non-NULL-empty-visual_id-arrays.patch'
-          '0006-gl-renderer-Refactor-gl_renderer_output_window_creat.patch'
-          '0007-gl-renderer-Add-EGLDevice-enumeration-support.patch'
-          '0008-gl-renderer-Add-support-for-EGLDevice-composited-fra.patch'
-          '0009-gl-renderer-Add-EGL-client-support-for-EGLStream-fra.patch'
-          '0010-compositor-drm-Gracefully-handle-vblank-and-flip-inv.patch'
-          '0011-compositor-drm-Add-support-for-EGLDevice-EGLOutput.patch'
-          '0012-Add-nvidia-release-notes-file.patch')
-sha256sums=('ac7ac2a32e3b9f50131fccded5d2326bd36b2226712d90b61999118a09af5033'
-            'dc51d39b460385eff7694f11aa3096896a58246f0d0ffdcd77ac9d07bf4781d7'
-            'e9088f7fa816d8c04bfa0abfcbb0c33b436cea157efce03663202131bcf8a053'
-            '2abc0c12a7c3465c2289e6940f538cf6cb46f4f9c57eff1884b15134a460ef2e'
-            '9e9cb4ee001d62c09753994225d944b3eb90788d29b69b1d3ffead38c09c8934'
-            '7492e7d6b3d4d8a95433cbc845117746e48047794422c28b37c16fe60078a6f8'
-            'd7ae91ed894a17d578371be877ebd0ab2204522f5f17388ea3ef0714afe85bba'
-            '1a703d7743b55ccbe934389b1c4430f4f4535f4864439b86097b80d1b42e7e2c'
-            'd5a8fddd8ddae650a283915478e8d41669a1dcc953df4317b5d178e14221fa4a'
-            'fb759e98bffb406904366b735f7f50f2726a2a1c6700a9cf544d4c763f46bbfa'
-            '8b6ef50772bf02adb951266ad5d973a701dd147fc168d8d6fa7cbafe0900dbda'
-            '7838e7de7ac5b7fe4e98392235907333d4977939a487ff4cf2a2bd8756fc49cb'
-            'f916ded74db76cfe3566654b5dc5a90b214a1572ffd7c15aa5e577ceabc22ab4')
+source=("https://wayland.freedesktop.org/releases/weston-$pkgver.tar.xz"
+          '0001-gl-renderer-Add-EGLDevice-enumeration-support.patch'
+          '0002-gl-renderer-Add-support-for-EGLDevice-composited-fra.patch'
+          '0003-gl-renderer-Add-EGL-client-support-for-EGLStream-fra.patch'
+          '0004-compositor-drm-Gracefully-handle-vblank-and-flip-inv.patch'
+          '0005-compositor-drm-Add-support-for-EGLDevice-EGLOutput.patch'
+          '0006-simple-egl-Do-not-set-EGL-up-until-XDG-setup-is-comp.patch'
+          '0007-Add-nvidia-release-notes-file.patch')
+sha256sums=('b4e446ac27f118196f1609dab89bb3cb3e81652d981414ad860e733b355365d8'
+            'c81d07f0a2b26e772faa02e4b088ff979206216652a4c30beb9aa24631d9d648'
+            'c32048c7b1e57c24ca7fa665c9e70bc3c12dec338aea3643b637bf8d30188335'
+            'fabb4ca507b0a5978ebc7f635989637ccfbdeee9b84119bc6588028342913856'
+            'db56a9f0d09441af58d530130e5f04f7066d11a32cdd99522e39a19ee4ee9f46'
+            '8087849a01853e5c69fad7c9821e2202fd78ffe904626fe2f9ff51e83816ed02'
+            '3bb9b0a354aa07fb3eb89ad9b7e425b1ce980b1bd0b90166a41795a80acc78ca'
+            '47fc9f44083096299e1502cf15c93d9f8670e1a4e4784870d7a843d4de09d502')
 
 prepare() {
 	cd weston-$pkgver
 
-	patch -Np1 -i "${srcdir}/0001-gl-renderer-Rename-gl_renderer_create-to-gl_renderer.patch"
-	patch -Np1 -i "${srcdir}/0002-gl-renderer-Rename-gl_renderer-output_create-to-outp.patch"
-	patch -Np1 -i "${srcdir}/0003-gl-renderer-Rename-attribs-param-of-gl_renderer-to-c.patch"
-	patch -Np1 -i "${srcdir}/0004-gl-renderer-Add-platform_attribs-param-to-gl_rendere.patch"
-	patch -Np1 -i "${srcdir}/0005-gl-renderer-Accept-non-NULL-empty-visual_id-arrays.patch"
-	patch -Np1 -i "${srcdir}/0006-gl-renderer-Refactor-gl_renderer_output_window_creat.patch"
-	patch -Np1 -i "${srcdir}/0007-gl-renderer-Add-EGLDevice-enumeration-support.patch"
-	patch -Np1 -i "${srcdir}/0008-gl-renderer-Add-support-for-EGLDevice-composited-fra.patch"
-	patch -Np1 -i "${srcdir}/0009-gl-renderer-Add-EGL-client-support-for-EGLStream-fra.patch"
-	patch -Np1 -i "${srcdir}/0010-compositor-drm-Gracefully-handle-vblank-and-flip-inv.patch"
-	patch -Np1 -i "${srcdir}/0011-compositor-drm-Add-support-for-EGLDevice-EGLOutput.patch"
-	patch -Np1 -i "${srcdir}/0012-Add-nvidia-release-notes-file.patch"
+	patch -Np1 -i "${srcdir}/0001-gl-renderer-Add-EGLDevice-enumeration-support.patch"
+	patch -Np1 -i "${srcdir}/0002-gl-renderer-Add-support-for-EGLDevice-composited-fra.patch"
+	patch -Np1 -i "${srcdir}/0003-gl-renderer-Add-EGL-client-support-for-EGLStream-fra.patch"
+	patch -Np1 -i "${srcdir}/0004-compositor-drm-Gracefully-handle-vblank-and-flip-inv.patch"
+	patch -Np1 -i "${srcdir}/0005-compositor-drm-Add-support-for-EGLDevice-EGLOutput.patch"
+	patch -Np1 -i "${srcdir}/0006-simple-egl-Do-not-set-EGL-up-until-XDG-setup-is-comp.patch"
+	patch -Np1 -i "${srcdir}/0007-Add-nvidia-release-notes-file.patch"
 }
 
 build() {
@@ -63,6 +52,9 @@ build() {
 		--prefix=/usr \
 		--libexecdir=/usr/lib/weston \
 		--enable-libinput-backend \
+		--enable-systemd-login \
+		--enable-systemd-notify \
+		--enable-xwayland \
 		--enable-demo-clients-install
 	make
 }
