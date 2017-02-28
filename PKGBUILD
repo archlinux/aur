@@ -30,7 +30,7 @@ source=('10-nvidia-drm-outputclass.conf'
         '20-nvidia.conf'
         'linux-4.10.patch')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
-source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
+source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run")
 md5sums=('4f5562ee8f3171769e4638b35396c55d'
          '2640eac092c220073f0668a7aaff61f7'
          'e81769b830b7a1e60c635e3bbe559f59')
