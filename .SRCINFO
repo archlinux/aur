@@ -1,0 +1,24 @@
+pkgbase = pascalcoin
+	pkgdesc = PascalCoin Wallet and Daemon
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/PascalCoin/PascalCoin
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = lazarus
+	makedepends = lazarus-qt
+	makedepends = fpc
+	depends = qt4
+	depends = qt4pas
+	source = git+https://github.com/PascalCoin/PascalCoin.git
+	source = https://www.openssl.org/source/openssl-1.1.0e.tar.gz
+	source = UTime.patch
+	source = pascalcoinwallet.desktop
+	sha256sums = SKIP
+	sha256sums = 57be8618979d80c910728cfc99369bf97b2a1abd8f366ab6ebdee8975ad3874c
+	sha256sums = d51a3983e0141c9fe09050df03f060bd3570a6b1fd87415163d02956ebb76d9c
+	sha256sums = 547801a11497ee52220e4dc6cb6d2c43aeb6e94d989697cb0a54d26e4a4cad58
+
+pkgname = pascalcoin
+

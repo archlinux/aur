@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=PascalCoin Wallet
+Path=/opt/pascalcoin
+Exec=PascalCoinWalletLazarus
+Terminal=false
+
