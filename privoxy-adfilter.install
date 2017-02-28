@@ -1,0 +1,7 @@
+post_install() {
+  echo -e "In order to use adfilter, you have to execute following commands:\n\n    echo actionsfile adfilter.action >> /etc/privoxy/config\n    echo filterfile  adfilter.filter >> /etc/privoxy/config"
+}
+
+post_remove () {
+  echo "Please remove adfilter.action and adfilter.filter in /etc/privoxy/config to avoid errors."
+}
