@@ -12,7 +12,7 @@ makedepends=('gettext' 'python2-pycurl' 'python2-setuptools' 'desktop-file-utils
 optdepends=('python2-btchip: BTChip hardware wallet support'
             'python2-matplotlib: plot transaction history in graphical mode'
             'zbar: QR code reading support')
-url="https://maza.club/encompass"
+url="https://github.com/mazaclub/encompass/"
 license=('GPL3')
 source=("https://github.com/mazaclub/encompass/releases/download/v{$pkgver}/${pkgname^}-${pkgver}.tar.gz")
 provides=('encompass')
