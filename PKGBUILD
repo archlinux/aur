@@ -3,8 +3,8 @@
 #
 _pkgname="Snap4Arduino_desktop-gnu"
 pkgname="snap4arduino"
-pkgver="1.2.1"
-pkgrel="2"
+pkgver="1.2.2"
+pkgrel="1"
 pkgdesc="A modification of the Snap! visual programming language that lets you seamlessly interact with almost all versions of the Arduino board."
 arch=('i686' 'x86_64')
 url="http://snap4arduino.org/"
@@ -15,8 +15,8 @@ provides=("${pkgname}")
 source_i686=("http://${pkgname}.org/downloads/${pkgver}/Snap4Arduino_desktop-gnu-32_${pkgver}.tar.gz")
 source_x86_64=("http://${pkgname}.org/downloads/${pkgver}/Snap4Arduino_desktop-gnu-64_${pkgver}.tar.gz")
 
-sha256sums_i686=('ece65ce5b901b29d70e54494f757aa46e439911a7192f3c861b36a8cb9f9f580')
-sha256sums_x86_64=('3192a572384e28d49c6549fd038d5e47e9739c0a6e4b2b4e1b853c72630413bd')
+sha256sums_i686=('790360217abc32cb4f996cf4d700d96a2667f9ccfd7a6cba8d1f8dd90f857b15')
+sha256sums_x86_64=('3fd4a56d4396c9946f26615a35189bde128180fa8b904eade9b5779ceb5ef75c')
 
 if [[ $CARCH == i686 ]]; then
     _dir="32";
