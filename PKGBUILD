@@ -1,15 +1,16 @@
 # Maintainer: Simon Brulhart <simon@brulhart.me>
 # Contributor: Suhaimi Ghazali <serdotlinecho@gmail.com>
+# Contributor: Patrick Griffis <tingping@tingping.se>
 
 pkgname=gnome-mpv-git
-pkgver=0.11.r0.g71c553c
+pkgver=0.11.r59.g1b0bce9
 pkgrel=1
 pkgdesc="GNOME frontend for MPV"
 arch=('i686' 'x86_64')
 url="https://github.com/gnome-mpv/gnome-mpv"
 license=('GPL3')
 depends=('gtk3' 'mpv')
-makedepends=('git' 'intltool' 'autoconf-archive' 'appstream-glib')
+makedepends=('git' 'meson')
 optdepends=('youtube-dl: for video-sharing websites playback')
 conflicts=('gnome-mpv')
 provides=('gnome-mpv')
@@ -23,11 +24,12 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    ./autogen.sh --prefix=/usr
-    make
+    rm -rf _build
+    /usr/bin/meson _build --buildtype=release --prefix=/usr
+    ninja -C _build
 }
 
 package() {
     cd "$pkgname"
-    make DESTDIR="$pkgdir" install
+    env DESTDIR="$pkgdir" ninja -C _build install
 }
