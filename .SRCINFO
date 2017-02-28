@@ -1,0 +1,24 @@
+pkgbase = nanotts
+	pkgdesc = The Cainteoir Text-To-Speach Engine
+	pkgver = r46.2370600
+	pkgrel = 1
+	url = https://github.com/rhdunn/cainteoir-engine
+	arch = x86_64
+	license = GPL
+	makedepends = python2-yaml
+	optdepends = pulseaudio
+	optdepends = alsa-lib
+	optdepends = libvorbis
+	optdepends = espeak
+	optdepends = svox-pico-bin
+	optdepends = poppler
+	optdepends = ffmpeg
+	optdepends = libavutil
+	optdepends = libavcodec
+	optdepends = libavformat
+	optdepends = libavresample
+	source = nanotts::git+https://github.com/gmn/nanotts.git#branch=master
+	md5sums = SKIP
+
+pkgname = nanotts
+
