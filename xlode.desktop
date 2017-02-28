@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=xlode
+Comment=Lode Runner clone Xlode
+Categories=Game;ArcadeGame
+Exec=xlode
+Terminal=false
+Icon=/usr/share/xlode/640/title.bmp
+Type=Application
+
