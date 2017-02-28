@@ -2,13 +2,13 @@
 
 pkgname=system76-driver
 pkgver=16.10.13
-pkgrel=1
+pkgrel=2
 pkgdesc="System76 Driver provides drivers, restore, and regression support for System76 computers"
 arch=('any')
 url="https://launchpad.net/system76-driver"
 license=('GPL')
 install="${pkgname}.install"
-depends=('python>=3.6' 'python-gobject' 'python-dbus' 'dmidecode')
+depends=('python>=3.6' 'python-gobject' 'python-dbus' 'python-evdev' 'dmidecode')
 makepdepends=('patch')
 optdepends=(
 	'pm-utils: For powermanagement features'
