@@ -1,0 +1,19 @@
+pkgbase = xnots-git
+	pkgdesc = A desktop post-it/sticky note system for the unix geek
+	pkgver = r34.3f3e8d1
+	pkgrel = 1
+	url = https://github.com/thePalindrome/xnots
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = xorg-server
+	depends = xorg-xrandr
+	depends = pango
+	provides = xnots
+	conflicts = xnots
+	source = git://github.com/thePalindrome/xnots.git
+	sha256sums = SKIP
+
+pkgname = xnots-git
+
