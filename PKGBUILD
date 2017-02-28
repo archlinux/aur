@@ -10,7 +10,7 @@ url="https://gitlab.com/hobarrera/totp-cli"
 license=('MIT')
 depends=("python-onetimepass")
 source=("https://pypi.io/packages/source/t/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('5135d4f518b203dbb3c6d693c2acafdd')
+md5sums=('e8ee5375a130c1341788cb54127c78ae')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
