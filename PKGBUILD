@@ -1,7 +1,7 @@
 # Maintainer: surefire@cryptomile.net
 pkgname=gogs-git
 epoch=2
-pkgver=0.9.165.0221+0.10RC+1+d21dc0da
+pkgver=0.10.0.0227+0+b3757e42
 pkgrel=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
