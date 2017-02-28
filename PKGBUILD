@@ -30,6 +30,7 @@ validpgpkeys=()
 
 prepare() {
 	cd "$pkgname"
+  sed -i "s#/usr/share/pico/lang#/usr/share/$pkgname/lang#" Makefile
 }
 
 build() {
@@ -44,8 +45,8 @@ check() {
 package() {
   mkdir -p "$pkgdir/usr/bin"
   cp "$pkgname/nanotts" "$pkgdir/usr/bin/$pkgname"
-  mkdir -p "$pkgdir/usr/share/pico"
-  cp -R "$pkgname/lang" "$pkgdir/usr/share/pico" 
+  mkdir -p "$pkgdir/usr/share/$pkgname"
+  cp -R "$pkgname/lang" "$pkgdir/usr/share/$pkgname" 
 }
 
 pkgver() {
