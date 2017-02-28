@@ -1,6 +1,6 @@
 pkgbase = nix
 	pkgdesc = A purely functional package manager
-	pkgver = 1.11.6
+	pkgver = 1.11.7
 	pkgrel = 1
 	url = https://nixos.org/nix
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = nix
 	depends = perl-dbd-sqlite
 	depends = gc
 	depends = libsodium
-	source = https://nixos.org/releases/nix/nix-1.11.6/nix-1.11.6.tar.xz
-	sha256sums = e729d55a9276756108a56bc1cbe2e182ee2e4be2b59b1c77d5f0e3edd879b2a3
+	source = https://nixos.org/releases/nix/nix-1.11.7/nix-1.11.7.tar.xz
+	sha256sums = 1a6fd2a23f5fde614c3937c0d51eff46d28dd30d245a66d34d59b15fd9bb8f2d
 
 pkgname = nix
 
