@@ -1,0 +1,12 @@
+pkgbase = cl-vectors
+	pkgdesc = Pure Common Lisp anti-aliasing rasterizer
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = http://projects.tuxee.net/cl-vectors/
+	arch = any
+	license = MIT
+	source = git+https://github.com/fjolliton/cl-vectors.git#commit=0fda45f84b5cc35fb15e387f20a6b66fa8941a02
+	md5sums = SKIP
+
+pkgname = cl-vectors
+
