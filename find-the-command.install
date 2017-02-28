@@ -8,15 +8,15 @@ post_install() {
 	>> for zsh:
 	source /usr/share/doc/find-the-command/ftc.zsh
 	>> You can also append 'su' option to use su instead of sudo
-	>> for root access or 'noprompt' to disable inatallation
-	>> prompt at all. I.e.:
+	>> for root access or 'noprompt' to disable installation
+	>> prompt at all, e.g.:
 	source /usr/share/doc/find-the-command/ftc.zsh noprompt
 
 	>> It is necessary to create pacman files database, run
-	sudo pacman -Fy
+	# pacman -Fy
 	>> You may also want to enable timer for regular
 	>> pacman files database update:
-	sudo systemctl enable pacman-files.timer
+	# systemctl enable pacman-files.timer
 EOF
 }
 
