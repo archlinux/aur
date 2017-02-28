@@ -5,7 +5,7 @@
 
 pkgname=unbound-dnstap
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Validating, recursive, and caching DNS resolver (with dnstap support)'
 url='https://unbound.net/'
 license=('custom:BSD')
@@ -49,7 +49,7 @@ build() {
 		--with-pidfile=/run/unbound.pid \
 		--with-rootkey-file=/etc/trusted-key.key \
 		--with-libevent \
-		--with-dnstap \
+		--enable-dnstap \
 
 	make
 }
