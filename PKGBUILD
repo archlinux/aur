@@ -1,16 +1,17 @@
 # Maintainer: Albert Mikaelyan <tahvok at gmail dot com>
 
-pkgname=('gridcoinresearch-qt')
+pkgname=gridcoinresearch-qt
 pkgver=3.5.8.6
-pkgrel=3
-pkgdesc="GridCoin is a cryptocurrency that helps science via BOINC"
+pkgrel=4
+pkgdesc="GridCoin is a cryptocurrency that helps science via BOINC - Qt"
+depends=('boost-libs' 'qrencode' 'qt5-base' 'libzip' 'miniupnpc' 'curl' 'boinc')
+makedepends=('boost' 'qt5-tools' 'qrencode' 'db')
+
 arch=('i686' 'x86_64' 'armv7h')
 url="http://gridcoin.us"
 license=('custom:gridcoin')
 
 _sourcename="Gridcoin-Research-$pkgver"
-
-makedepends=('boost' 'qt5-base' 'qt5-tools' 'openssl' 'libzip' 'qrencode' 'db' 'curl' 'miniupnpc')
 
 source=("gridcoinresearch-${pkgver}.tar.gz::https://github.com/gridcoin/Gridcoin-Research/archive/${pkgver}.tar.gz"
         'gridcoinresearch-qt.desktop')
@@ -21,22 +22,16 @@ sha256sums=('d798ea60f87d4daf78c154dde650f0cb08cc28cc34fa8ee876c2e37948efb393'
 build() {
   cd "$srcdir/$_sourcename"
 
-  qmake "USE_QRCODE=1" "USE_UPNP=1" "NO_UPGRADE=1"
-  make ${MAKEFLAGS}
+  qmake USE_QRCODE=1 USE_UPNP=1 NO_UPGRADE=1
+  make
 }
 
-package_gridcoinresearch-qt() {
-  pkgdesc="GridCoin is a cryptocurrency that helps science via BOINC - Qt"
-  depends=('boost-libs' 'qrencode' 'qt5-base' 'libzip' 'miniupnpc' 'curl' 'boinc')
-  install=gridcoin.install
-
+package() {
   cd "$srcdir/$_sourcename"
+
   install -Dm755 gridcoinresearch "$pkgdir/usr/bin/gridcoinresearch"
-
   install -Dm644 "${srcdir}/gridcoinresearch-qt.desktop" "$pkgdir/usr/share/applications/gridcoinresearch-qt.desktop"
-
   install -Dm644 share/pixmaps/grc-small.png "$pkgdir/usr/share/pixmaps/grc-small.png"
-
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
