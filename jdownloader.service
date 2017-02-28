@@ -3,10 +3,13 @@ Description=JDownload Headless
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/JDownloaderHeadless
-ExecStop=
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/opt/JDownloaderScripts/JDownloaderHeadlessCtl start
+ExecStop=/opt/JDownloaderScripts/JDownloaderHeadlessCtl stop
 User=jdownloader
 Group=jdownloader
-Restart=on-success
+
+
 [Install]
 WantedBy=multi-user.target

@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
+set -u
 THIS_PATH="$(dirname "$(readlink -f "$0")")"
-source "$THIS_PATH/changeUser"
+source "$THIS_PATH/functions.sh"
 
+changeUser
+changePath
+downloadJDownloader
 
 function showFailure(){
   local FAILURE="$1"
@@ -14,6 +18,11 @@ function showFailure(){
     exit 2
   fi
 }
+AS_DAEMON=2
+if [ "${1:-}" == "--daemon" ]; then
+  AS_DAEMON=0
+  shift
+fi
 
 #check for config
 if [ ! -f "cfg/org.jdownloader.api.myjdownloader.MyJDownloaderSettings.json" ]; then
@@ -32,7 +41,7 @@ if [ $? -ne 0 ]; then
 fi
 
 LOGFILE="JDownloader.service.log"
-if [ -t 0 ] ; then
+if [ -t 0 -a "${AS_DAEMON}" -eq 2 ] ; then
   exec java -Djava.awt.headless=true -jar JDownloader.jar -norestart "$@"
 else
   if [ -f "$LOGFILE" ]; then
@@ -40,5 +49,10 @@ else
     mv "${LOGFILE}" "${LOGFILE}.old"
   fi 
   echo "All output is redirected to \"$(readlink -f "${LOGFILE}")\"" 
-  exec java -Djava.awt.headless=true -jar JDownloader.jar -norestart "$@" >"${LOGFILE}" 2>&1
+  if [ "${AS_DAEMON}" -eq 0 ]; then
+    nohup java -Djava.awt.headless=true -jar JDownloader.jar "$@" >"${LOGFILE}" 2>&1 &
+  else
+    exec java -Djava.awt.headless=true -jar JDownloader.jar "$@" >"${LOGFILE}" 2>&1 
+  fi
 fi
+sleep 5

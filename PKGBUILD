@@ -1,7 +1,7 @@
 # Maintainer: Holodoc
 pkgname=jdownloader2
 pkgver=latest
-pkgrel=10
+pkgrel=12
 pkgdesc='Download manager, written in Java, for one-click hosting sites like Rapidshare and Megaupload. Uses its own updater.'
 arch=('any')
 conflicts=('jdownloader')
@@ -13,7 +13,8 @@ optdepends=('phantomjs: needed for some remote capture solving')
 install='jdownloader.install'
 source=('JDownloader'
         'JDownloaderHeadless'
-        'changeUser'
+        'JDownloaderHeadlessCtl'
+        'functions.sh'
         'JDownloaderHeadlessCleanLogin'
         'jdownloader.xml'
         'jdownloader.desktop'
@@ -31,10 +32,11 @@ source=('JDownloader'
         'jdownloader48.png'
         'jdownloader256.png'
         'jdownloader.service' )
-sha256sums=('42796e98aa678e69e6c08d37302dac1f922b113371406ef0a8d5db45fa66d1ee'
-            '79c383f7e875c3c3e4781a58e2244b5cb5458cc70f0664f5a26e20979326a7d7'
-            '6a44f5719a2c9898ef901b2fde3ec026c268c60e6514b83737a07355f9285e7e'
-            'd572f8c2be60e013bc8a18c1179f22766ee6885bf02dbdb9c9095371ac31c408'
+sha256sums=('cab5904f226028fdc9384f407ceca34b4305885176fad29b08a2e8b83653a345'
+            'd555c78d8110e536aee67de765ee5134d872fbb48354050f7b2f14ff5499120a'
+            'dca392fad29c70eff609ec25abaefd33343c8a6c98088e0719c6746759ed0aa5'
+            '70f4a5cd95532c70ae20a357e655d01ac23fe92bb71feac45973e2b53d024cff'
+            '1c9949bfeaf3595783eec9501e600cb8c4443e04f72d57c095560fb66dcd53d1'
             
             'c4301592694b3273ed44814debcc03bf1e4fc85882954f5c03e55508c53c4491'
             '44a499df472328f9034f9972aad02df0fc27a45ef1bb3e9314576d2fa9fdfcbe'
@@ -51,12 +53,13 @@ sha256sums=('42796e98aa678e69e6c08d37302dac1f922b113371406ef0a8d5db45fa66d1ee'
             'cb63ab195ff1b876b668dbe518f4572971e5e0fe239a627ef67486933fcaed07'
             'b5540647f8120f723fb14747473a96e3ee031ffbc0f097e66c6cfd3431bf4e56'
             '6c7a28ec72c8627e9bf06a58d7f6bfed075632a6743e1c8087dc0fa065261504'
-            '639bac9f10edfbedd1bff9d624e2bd2bafc62fc2a85089c296dd1ef39b25c83c')
+            '8d170fd301b37302a4f64cec759bdb5c879cb30c8b8e94120f3f985df1d31b7f')
 package() {
   install -d -m755 "$pkgdir/opt/JDownloaderScripts"
   install -D -m755 "$srcdir/JDownloader" "$pkgdir/opt/JDownloaderScripts/JDownloader"
 	install -D -m755 "$srcdir/JDownloaderHeadless" "$pkgdir/opt/JDownloaderScripts/JDownloaderHeadless"
-  install -D -m755 "$srcdir/changeUser" "$pkgdir/opt/JDownloaderScripts/changeUser"
+  install -D -m755 "$srcdir/JDownloaderHeadlessCtl" "$pkgdir/opt/JDownloaderScripts/JDownloaderHeadlessCtl"
+  install -D -m755 "$srcdir/functions.sh" "$pkgdir/opt/JDownloaderScripts/functions.sh"
 	install -D -m755 "$srcdir/JDownloaderHeadlessCleanLogin" "$pkgdir/opt/JDownloaderScripts/JDownloaderHeadlessCleanLogin"
 	
   
@@ -83,6 +86,6 @@ package() {
   ln -s "/opt/JDownloaderScripts/JDownloader"  "${pkgdir}/usr/bin/JDownloader"
 	ln -s "/opt/JDownloaderScripts/JDownloader" "${pkgdir}/usr/bin/jdownloader"
   ln -s "/opt/JDownloaderScripts/JDownloaderHeadless" "${pkgdir}/usr/bin/JDownloaderHeadless" 
-  
+  ln -s "/opt/JDownloaderScripts/JDownloaderHeadlessCtl" "${pkgdir}/usr/bin/JDownloaderHeadlessCtl"
   ln -s "/opt/JDownloaderScripts/JDownloaderHeadlessCleanLogin" "${pkgdir}/usr/bin/JDownloaderHeadlessCleanLogin" 
 }

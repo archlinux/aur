@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 THIS_PATH="$(dirname "$(readlink -f "$0")")"
-source "$THIS_PATH/changeUser"
+source "$THIS_PATH/functions.sh"
+changeUser
+changePath
 
 LOGFILE="JDownloader.service.log"
 
