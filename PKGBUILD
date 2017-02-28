@@ -2,8 +2,8 @@
 # Contributor: Daniel Micay <danielmicay [at] gmail [dot] com>
 # Contributor: MThinkCpp <mtc [dot] maintainer [at] outlook [dot] com>
 
-pkgbase=('libc++')
-pkgname=("${pkgbase}" "${pkgbase}abi" "${pkgbase}experimental")
+pkgbase=libc++
+pkgname=(${pkgbase}{,abi,experimental})
 pkgver=3.9.1
 pkgrel=1
 url="http://libcxx.llvm.org/"
