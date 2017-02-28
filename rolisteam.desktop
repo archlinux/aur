@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Rolisteam
+Comment=Virtual tabletop software. It helps you to manage tabletop role playing games with remote friends/players.
+Exec=rolisteam
+Terminal=false
+Type=Application
+Icon=/usr/share/icons/hicolor/256x256/apps/rolisteam.png
+Categories=Game

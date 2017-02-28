@@ -10,8 +10,9 @@ url="http://www.rolisteam.org"
 license=(GPL)
 depends=('qt5-base' 'zlib')
 makedepends=('qt5-tools' 'gcc' 'git')
-source=("git+https://github.com/Rolisteam/rolisteam.git#tag=v1.8.0")
-sha256sums=('SKIP')
+source=("git+https://github.com/Rolisteam/rolisteam.git#tag=v${pkgver}"
+        "rolisteam.desktop")
+sha256sums=('SKIP' 'ec7a7cf3b02899f3a4f6af80010d369a54faf8b03c24726bebc370bc3d36e660')
 
 build()
 {
@@ -19,26 +20,19 @@ build()
   git submodule init
   git submodule update
   lrelease translations/*.ts
-  qmake-qt5
+  qmake-qt5 "PREFIX=/usr/bin"
   make
 }
 
 package()
 {
-  cd "${srcdir}/${_pkgname}"
-  INSTALL_ROOT="${pkgdir}" make install
   mkdir -p "${pkgdir}"/usr/share/applications
   mkdir -p "${pkgdir}"/usr/share/icons/hicolor/256x256/apps
+  install -Dm644 "rolisteam.desktop" "${pkgdir}/usr/share/applications/rolisteam.desktop"
+  cd "${srcdir}/${_pkgname}"
+  INSTALL_ROOT="${pkgdir}" make install
   cp resources/logo/256-icone.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/rolisteam.png
-  DESKTOPFILE="${pkgdir}"/usr/share/applications/"${_pkgname}".desktop
-  echo "[Desktop Entry]" > "${DESKTOPFILE}"
-  echo "Name=Rolisteam" >> "${DESKTOPFILE}"
-  echo "Comment=${pkgdesc}" >> "${DESKTOPFILE}"
-  echo "Exec=${_pkgname}" >> "${DESKTOPFILE}"
-  echo "Terminal=false" >> "${DESKTOPFILE}"
-  echo "Type=Application" >> "${DESKTOPFILE}"
-  echo "Icon="${pkgdir}"/usr/share/icons/hicolor/256x256/apps/rolisteam.png" >> "${DESKTOPFILE}"
-  echo "Categories=Game;" >> "${DESKTOPFILE}"
+  chmod -R g-w "${pkgdir}"/usr
 }
 
 
