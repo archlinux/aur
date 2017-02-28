@@ -5,7 +5,7 @@ pkgver=0.rc3.r227.g3bb50fb2
 pkgrel=1
 pkgdesc='A fast framework for deep learning built in C++ for speed with a Python 3 interface'
 arch=(x86_64)
-url='ssh://git@github.com/delftrobotics/caffe'
+url='ssh://git@github.com/delftrobotics-forks/caffe'
 license=('BSD')
 
 depends=(
@@ -34,6 +34,7 @@ depends=(
 	'python-protobuf'
 	'boost'
 	'boost-libs'
+	'hdf5'
 )
 
 source=('git+ssh://git@github.com/delftrobotics/caffe.git#branch=mnc')
