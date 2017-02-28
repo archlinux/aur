@@ -1,0 +1,1338 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xml:lang="en" lang="en">
+  <head>
+    <title>AUR (en) - Search Criteria: Det</title>
+	<link rel='stylesheet' type='text/css' href='/css/archweb.css' />
+	<link rel='stylesheet' type='text/css' href='/css/aurweb.css' />
+	<link rel='shortcut icon' href='/images/favicon.ico' />
+	<link rel='alternate' type='application/rss+xml' title='Newest Packages RSS' href='/rss/' />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+	<body>
+		<div id="archnavbar" class="anb-aur">
+			<div id="archnavbarlogo"><h1><a href="/" title="Return to the main page">Arch Linux User Repository</a></h1></div>
+			<div id="archnavbarmenu">
+				<ul id="archnavbarlist">
+					<li id="anb-home"><a href="https://www.archlinux.org/" title="Arch news, packages, projects and more">Home</a></li>
+					<li id="anb-packages"><a href="https://www.archlinux.org/packages/" title="Arch Package Database">Packages</a></li>
+					<li id="anb-forums"><a href="https://bbs.archlinux.org/" title="Community forums">Forums</a></li>
+					<li id="anb-wiki"><a href="https://wiki.archlinux.org/" title="Community documentation">Wiki</a></li>
+					<li id="anb-bugs"><a href="https://bugs.archlinux.org/" title="Report and track bugs">Bugs</a></li>
+					<li id="anb-security"><a href="https://security.archlinux.org/" title="Arch Linux Security Tracker">Security</a></li>
+					<li id="anb-aur"><a href="/" title="Arch Linux User Repository">AUR</a></li>
+					<li id="anb-download"><a href="https://www.archlinux.org/download/" title="Get Arch Linux">Download</a></li>
+				</ul>
+			</div>
+		</div><!-- #archnavbar -->
+
+		<div id="content">
+			<div id="lang_sub">
+				<form method="post" action="/packages/?SeB=m&amp;K=Det&amp;PP=250">
+					<fieldset>
+						<div>
+							<select name="setlang" id="id_setlang">
+		<option value="ar">العربية</option>
+<option value="ast">Asturianu</option>
+<option value="ca">Català</option>
+<option value="cs">Český</option>
+<option value="da">Dansk</option>
+<option value="de">Deutsch</option>
+<option value="en" selected="selected">English</option>
+<option value="el">Ελληνικά</option>
+<option value="es">Español</option>
+<option value="es_419">Español (Latinoamérica)</option>
+<option value="fi">Finnish</option>
+<option value="fr">Français</option>
+<option value="he">עברית</option>
+<option value="hr">Hrvatski</option>
+<option value="hu">Magyar</option>
+<option value="it">Italiano</option>
+<option value="ja">日本語</option>
+<option value="nb">Norsk</option>
+<option value="nl">Nederlands</option>
+<option value="pl">Polski</option>
+<option value="pt_BR">Português (Brasil)</option>
+<option value="pt_PT">Português (Portugal)</option>
+<option value="ro">Română</option>
+<option value="ru">Русский</option>
+<option value="sk">Slovenčina</option>
+<option value="sr">Srpski</option>
+<option value="tr">Türkçe</option>
+<option value="uk">Українська</option>
+<option value="zh_CN">简体中文</option>
+<option value="zh_TW">正體中文</option>
+							</select>
+							<input type="submit" value="Go" />
+						</div>
+					</fieldset>
+				</form>
+			</div>
+			<div id="archdev-navbar">
+				<ul>
+											<li><a href="/">AUR Home</a></li>
+						<li><a href="/packages/">Packages</a></li>
+						<li><a href="/register/">Register</a></li>
+												<li><a href="/login/">Login</a></li>
+															</ul>
+			</div><!-- #archdev-navbar -->
+			<!-- Start of main content -->
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript">
+function collapseDependsList(list) {
+	list = $(list);
+	// Hide everything past a given limit. Don't do anything if we don't have
+	// enough items, or the link already exists.
+	var limit = 20,
+		linkid = list.attr('id') + 'link',
+		items = list.find('li').slice(limit);
+	if (items.length <= 1 || $('#' + linkid).length > 0) {
+		return;
+	}
+	items.hide();
+	list.after('<p><a id="' + linkid + '" href="#">Show More…</a></p>');
+
+	// add link and wire it up to show the hidden items
+	$('#' + linkid).click(function(event) {
+		event.preventDefault();
+		list.find('li').show();
+		// remove the full <p/> node from the DOM
+		$(this).parent().remove();
+	});
+}
+
+$(document).ready(function() {
+	collapseDependsList("#pkgdepslist");
+	collapseDependsList("#pkgreqslist");
+	collapseDependsList("#pkgsrcslist");
+});
+</script>
+
+
+<div id="pkglist-search" class="box filter-criteria">
+<h2>Search Criteria</h2>
+
+<form action='/packages/' method='get'>
+	<p><input type='hidden' name='O' value='0' /></p>
+
+	<fieldset>
+		<legend>Enter search criteria</legend>
+		<div>
+			<label for="id_method">Search by</label>
+			<select name='SeB'>
+												<option value="nd">Name, Description</option>
+																<option value="n">Name Only</option>
+																<option value="b">Package Base</option>
+																<option value="N">Exact Name</option>
+																<option value="B">Exact Package Base</option>
+																<option value="k">Keywords</option>
+																<option value="m" selected="selected">Maintainer</option>
+																<option value="c">Co-maintainer</option>
+																<option value="M">Maintainer, Co-maintainer</option>
+																<option value="s">Submitter</option>
+											</select>
+		</div>
+		<div>
+			<label for="id_q">Keywords</label>
+			<input type='text' name='K' size='30' value="Det" maxlength='35'  />
+		</div>
+		<div>
+			<label for="id_out_of_date">Out of Date</label>
+			<select name='outdated'>
+												<option value=''>All</option>
+																<option value='on'>Flagged</option>
+																<option value='off'>Not Flagged</option>
+											</select>
+		</div>
+		<div>
+			<label for="id_sort_by">Sort by</label>
+			<select name='SB'>
+												<option value='n'>Name</option>
+																<option value='v'>Votes</option>
+																<option value='p'>Popularity</option>
+																<option value='w'>Voted</option>
+																<option value='o'>Notify</option>
+																<option value='m'>Maintainer</option>
+																<option value='l'>Last modified</option>
+											</select>
+		</div>
+		<div>
+			<label for="id_order_by">Sort order</label>
+			<select name='SO'>
+												<option value='a'>Ascending</option>
+																<option value='d'>Descending</option>
+											</select>
+		</div>
+		<div>
+			<label for="id_per_page">Per page</label>
+			<select name='PP'>
+												<option value="50">50</option>
+																<option value="100">100</option>
+																<option value="250" selected="selected">250</option>
+											</select>
+		</div>
+		<div>
+			<label>&nbsp;</label>
+			<input type='submit' class='button' name='do_Search' value='Go' />
+			<input type='submit' class='button' name='do_Orphans' value='Orphans' />
+		</div>
+	</fieldset>
+</form>
+</div>
+<div id="pkglist-results" class="box">		<div class="pkglist-stats">
+		<p>
+			112 packages found.			Page 1 of 1.		</p>
+			</div>
+	
+	<form id="pkglist-results-form" method="post" action="/pkgbase/?SeB=m&amp;K=Det&amp;PP=250">
+		<table class="results">
+		<thead>
+			<tr>
+								<th><a href="?SeB=m&amp;K=Det&amp;PP=250&amp;SB=n&amp;SO+=+d">Name</a></th>				<th>Version</th>				<th><a href="?SeB=m&amp;K=Det&amp;PP=250&amp;SB=v&amp;SO+=+d">Votes</a></th>				<th><a href="?SeB=m&amp;K=Det&amp;PP=250&amp;SB=p&amp;SO+=+d">Popularity</a><span title="Popularity is calculated as the sum of all votes with each vote being weighted with a factor of 0.98 per day since its creation." class="hover-help"><sup>?</sup></span></th>								<th>Description</th>				<th><a href="?SeB=m&amp;K=Det&amp;PP=250&amp;SB=m&amp;SO+=+d">Maintainer</a></th>			</tr>
+		</thead>
+		<tbody>
+
+			<tr class="odd">
+				<td><a href="/packages/bigreqsproto-git/">bigreqsproto-git</a></td>
+		<td>1.1.2.4.r57.g869dca1-1</td>
+		<td>0</td>
+		<td>0.00</td>
+				<td class="wrap">X11 Big Requests extension wire protocol - Git version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/bin32-jdk/">bin32-jdk</a></td>
+		<td>8u121-1</td>
+		<td>14</td>
+		<td>0.66</td>
+				<td class="wrap">Oracle Java Development Kit (32-bit)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/bin32-jdk-devel/">bin32-jdk-devel</a></td>
+		<td>9b158-1</td>
+		<td>1</td>
+		<td>0.12</td>
+				<td class="wrap">Oracle Java 9 Development Kit Snapshot (32-bit)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/bin32-jdk6/">bin32-jdk6</a></td>
+		<td>6u45-5</td>
+		<td>3</td>
+		<td>0.12</td>
+				<td class="wrap">Oracle Java 6 Development Kit (32-bit) (public release - end of support)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/bin32-jdk7/">bin32-jdk7</a></td>
+		<td>7u79-3</td>
+		<td>7</td>
+		<td>0.30</td>
+				<td class="wrap">Oracle Java 7 Development Kit (32-bit) (public release - end of support)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/bin32-jre/">bin32-jre</a></td>
+		<td>8u121-1</td>
+		<td>121</td>
+		<td>0.06</td>
+				<td class="wrap">Oracle Java Runtime Enviroment (32-bit)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/bin32-jre-devel/">bin32-jre-devel</a></td>
+		<td>9b158-1</td>
+		<td>0</td>
+		<td>0.00</td>
+				<td class="wrap">Oracle Java 9 Runtime Environment Snapshot (32-bit)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/bin32-jre6/">bin32-jre6</a></td>
+		<td>6u45-5</td>
+		<td>9</td>
+		<td>0.03</td>
+				<td class="wrap">Oracle Java 6 Runtime Environment (32-bit) (public release - end of support)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/bin32-jre7/">bin32-jre7</a></td>
+		<td>7u79-3</td>
+		<td>7</td>
+		<td>0.04</td>
+				<td class="wrap">Oracle Java 7 Runtime Environment (32-bit) (public release - end of support)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/chromium-snapshot-bin/">chromium-snapshot-bin</a></td>
+		<td>58.0.3001.0.r447745-1</td>
+		<td>494</td>
+		<td>1.60</td>
+				<td class="wrap">The open-source project behind Google Chrome (Latest Snapshot)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/compositeproto-git/">compositeproto-git</a></td>
+		<td>0.4.2.4.r52.gef261dc-1</td>
+		<td>0</td>
+		<td>0.00</td>
+				<td class="wrap">X11 Composite extension wire protocol - Git version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/egl-wayland-git/">egl-wayland-git</a></td>
+		<td>r1.743d702-1</td>
+		<td>0</td>
+		<td>0.00</td>
+				<td class="wrap">A work-in-progress implementation of a EGL External Platform library to add client-side Wayland support - Git</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/eglexternalplatform-git/">eglexternalplatform-git</a></td>
+		<td>r1.53bf47c-1</td>
+		<td>0</td>
+		<td>0.00</td>
+				<td class="wrap">A work-in-progress specification of the EGL External Platform interface for modern window systems - Git</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/firefox-beta-bin/">firefox-beta-bin</a></td>
+		<td>52.0b9-1</td>
+		<td>320</td>
+		<td>3.39</td>
+				<td class="wrap">Standalone web browser from mozilla.org - Beta</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/fontconfig-ubuntu/">fontconfig-ubuntu</a></td>
+		<td>2.11.94-2</td>
+		<td>353</td>
+		<td>0.70</td>
+				<td class="wrap">Library for configuring and customizing font access - with Ubuntu&#039;s patches</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/fontsproto-git/">fontsproto-git</a></td>
+		<td>2.1.3.0.r94.gdf8c05f-1</td>
+		<td>2</td>
+		<td>0.00</td>
+				<td class="wrap">X11 font extension wire protocol - Git version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/google-chrome/">google-chrome</a></td>
+		<td>56.0.2924.87-1</td>
+		<td>1482</td>
+		<td>38.98</td>
+				<td class="wrap">An attempt at creating a safer, faster, and more stable browser (Stable Channel)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/google-chrome-beta/">google-chrome-beta</a></td>
+		<td>57.0.2987.74-1</td>
+		<td>330</td>
+		<td>0.79</td>
+				<td class="wrap">An attempt at creating a safer, faster, and more stable browser (Beta Channel)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/google-chrome-dev/">google-chrome-dev</a></td>
+		<td>58.0.3018.3-1</td>
+		<td>605</td>
+		<td>2.19</td>
+				<td class="wrap">An attempt at creating a safer, faster, and more stable browser (Dev Channel)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/google-earth/">google-earth</a></td>
+		<td>7.1.8.3036-1</td>
+		<td>998</td>
+		<td>5.92</td>
+				<td class="wrap">A 3D interface to view satellite images of Earth and other objects</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/google-earth-pro/">google-earth-pro</a></td>
+		<td>7.1.8.3036-1</td>
+		<td>9</td>
+		<td>5.75</td>
+				<td class="wrap">A 3D interface to view satellite images of Earth and other objects - Pro</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/google-earth6/">google-earth6</a></td>
+		<td>6.2.2.6613-2</td>
+		<td>51</td>
+		<td>0.99</td>
+				<td class="wrap">A legacy 3D interface to view satellite images of Earth and other objects</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/inputproto-git/">inputproto-git</a></td>
+		<td>2.3.1.2.r393.g7c7c2c1-1</td>
+		<td>5</td>
+		<td>0.00</td>
+				<td class="wrap">X11 Input extension wire protocol - Git version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/java32-environment-common/">java32-environment-common</a></td>
+		<td>2-2</td>
+		<td>34</td>
+		<td>0.72</td>
+				<td class="wrap">Common files for 32-bit Java Development Kits</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/java32-runtime-common/">java32-runtime-common</a></td>
+		<td>2-2</td>
+		<td>34</td>
+		<td>0.72</td>
+				<td class="wrap">Common files for 32-bit Java Runtime Environments</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/javafx-devel-docs/">javafx-devel-docs</a></td>
+		<td>9b158-1</td>
+		<td>3</td>
+		<td>0.59</td>
+				<td class="wrap">Documentation for Oracle JavaFX 9 Development Kit Snapshot</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/javafx-devel-samples/">javafx-devel-samples</a></td>
+		<td>9b158-1</td>
+		<td>1</td>
+		<td>0.02</td>
+				<td class="wrap">Demos and samples for Oracle JavaFX 9 Development Kit Snapshot</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/javafx-docs/">javafx-docs</a></td>
+		<td>8u121-1</td>
+		<td>49</td>
+		<td>1.33</td>
+				<td class="wrap">Documentation for Oracle Java Development Kit</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/jdk/">jdk</a></td>
+		<td>8u121-1</td>
+		<td>737</td>
+		<td>9.52</td>
+				<td class="wrap">Oracle Java Development Kit</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/jdk-demos/">jdk-demos</a></td>
+		<td>8u121-1</td>
+		<td>8</td>
+		<td>0.32</td>
+				<td class="wrap">Demos and samples of common tasks and new functionality in Oracle Java 8 Development Kit</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/jdk-devel/">jdk-devel</a></td>
+		<td>9b158-1</td>
+		<td>30</td>
+		<td>3.55</td>
+				<td class="wrap">Oracle Java 9 Development Kit Snapshot</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/jdk-devel-docs/">jdk-devel-docs</a></td>
+		<td>9b158-1</td>
+		<td>3</td>
+		<td>0.59</td>
+				<td class="wrap">Documentation for Oracle Java 9 Development Kit Snapshot</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/jdk-docs/">jdk-docs</a></td>
+		<td>8u121-1</td>
+		<td>49</td>
+		<td>1.33</td>
+				<td class="wrap">Documentation for Oracle Java Development Kit</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/jdk6-docs/">jdk6-docs</a></td>
+		<td>6u30-1</td>
+		<td>2</td>
+		<td>0.00</td>
+				<td class="wrap">Documentation for Oracle Java 6 Development Kit</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/jdk7/">jdk7</a></td>
+		<td>7u79-4</td>
+		<td>135</td>
+		<td>1.20</td>
+				<td class="wrap">Oracle Java 7 Development Kit (public release - end of support)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/jre/">jre</a></td>
+		<td>8u121-1</td>
+		<td>557</td>
+		<td>2.70</td>
+				<td class="wrap">Oracle Java Runtime Environment</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/jre-devel/">jre-devel</a></td>
+		<td>9b158-1</td>
+		<td>8</td>
+		<td>0.02</td>
+				<td class="wrap">Oracle Java 9 Runtime Environment Snapshot</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/jre6/">jre6</a></td>
+		<td>6u45-4</td>
+		<td>15</td>
+		<td>0.03</td>
+				<td class="wrap">Oracle Java 6 Runtime Environment (public release - end of support)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/jre7/">jre7</a></td>
+		<td>7u79-3</td>
+		<td>36</td>
+		<td>0.37</td>
+				<td class="wrap">Oracle Java 7 Runtime Environment (public release - end of support)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/kbproto-git/">kbproto-git</a></td>
+		<td>1.0.6.7.r68.g5e40da7-1</td>
+		<td>3</td>
+		<td>0.00</td>
+				<td class="wrap">X11 XKB extension wire protocol - Git version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/lastpass/">lastpass</a></td>
+		<td>4.1.23-4</td>
+		<td>75</td>
+		<td>0.51</td>
+				<td class="wrap">The Universal LastPass installer for Firefox, Chrome, and Opera</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/ld-lsb/">ld-lsb</a></td>
+		<td>3-7</td>
+		<td>545</td>
+		<td>2.25</td>
+				<td class="wrap">Faking a Linux Standard Base runtime</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/lib32-nvidia-libgl-beta/">lib32-nvidia-libgl-beta</a></td>
+		<td>378.13-2</td>
+		<td>138</td>
+		<td>1.66</td>
+				<td class="wrap">NVIDIA driver library symlinks for &#039;lib32-nvidia-utils-beta&#039;</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/lib32-nvidia-libgl-full-beta/">lib32-nvidia-libgl-full-beta</a></td>
+		<td>378.13-2</td>
+		<td>14</td>
+		<td>0.01</td>
+				<td class="wrap">NVIDIA driver library symlinks for &#039;lib32-nvidia-utils-full-beta&#039;</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/lib32-nvidia-libgl-full-beta-all/">lib32-nvidia-libgl-full-beta-all</a></td>
+		<td>378.13-2</td>
+		<td>20</td>
+		<td>1.11</td>
+				<td class="wrap">NVIDIA driver library symlinks for &#039;lib32-nvidia-utils-full-beta-all&#039;</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/lib32-nvidia-utils-beta/">lib32-nvidia-utils-beta</a></td>
+		<td>378.13-2</td>
+		<td>138</td>
+		<td>1.66</td>
+				<td class="wrap">NVIDIA driver utilities and libraries (beta version) (32-bit)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/lib32-nvidia-utils-full-beta/">lib32-nvidia-utils-full-beta</a></td>
+		<td>378.13-2</td>
+		<td>14</td>
+		<td>0.01</td>
+				<td class="wrap">NVIDIA driver utilities and libraries for &#039;nvidia-full-beta&#039; (32-bit)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/lib32-nvidia-utils-full-beta-all/">lib32-nvidia-utils-full-beta-all</a></td>
+		<td>378.13-2</td>
+		<td>20</td>
+		<td>1.11</td>
+				<td class="wrap">NVIDIA driver utilities and libraries for &#039;nvidia-full-beta-all&#039; (32-bit)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/lib32-opencl-nvidia-beta/">lib32-opencl-nvidia-beta</a></td>
+		<td>378.13-2</td>
+		<td>138</td>
+		<td>1.66</td>
+				<td class="wrap">NVIDIA&#039;s OpenCL implemention for &#039;lib32-nvidia-utils-beta&#039;</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/lib32-opencl-nvidia-full-beta/">lib32-opencl-nvidia-full-beta</a></td>
+		<td>378.13-2</td>
+		<td>14</td>
+		<td>0.01</td>
+				<td class="wrap">NVIDIA&#039;s OpenCL implemention for &#039;lib32-nvidia-utils-full-beta&#039;</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/lib32-opencl-nvidia-full-beta-all/">lib32-opencl-nvidia-full-beta-all</a></td>
+		<td>378.13-2</td>
+		<td>20</td>
+		<td>1.11</td>
+				<td class="wrap">NVIDIA&#039;s OpenCL implemention for &#039;lib32-nvidia-utils-full-beta-all&#039;</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/libpciaccess-git/">libpciaccess-git</a></td>
+		<td>0.13.2.9.r277.g9b1bf11-1</td>
+		<td>7</td>
+		<td>0.00</td>
+				<td class="wrap">X11 PCI access library - Git version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/libx264-10bit-git/">libx264-10bit-git</a></td>
+		<td>148.20151011.r2638-1</td>
+		<td>244</td>
+		<td>0.03</td>
+				<td class="wrap">Library for encoding H264/AVC video streams - 10bit-depth (Git)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/libx264-git/">libx264-git</a></td>
+		<td>148.20151011.r2638-1</td>
+		<td>244</td>
+		<td>0.03</td>
+				<td class="wrap">Library for encoding H264/AVC video streams (Git)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/npapi-vlc-git/">npapi-vlc-git</a></td>
+		<td>2.2.1.95.r1444.gd5accd8-1</td>
+		<td>153</td>
+		<td>0.01</td>
+				<td class="wrap">The modern VLC Mozilla (NPAPI) plugin - Git version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/nvidia-beta/">nvidia-beta</a></td>
+		<td>378.13-2</td>
+		<td>326</td>
+		<td>0.71</td>
+				<td class="wrap">NVIDIA driver for Arch&#039;s official &#039;linux&#039; package (beta version)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/nvidia-beta-all/">nvidia-beta-all</a></td>
+		<td>378.13-2</td>
+		<td>48</td>
+		<td>0.52</td>
+				<td class="wrap">NVIDIA drivers for all kernels on the system (beta)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/nvidia-egl-wayland-beta/">nvidia-egl-wayland-beta</a></td>
+		<td>378.13-1</td>
+		<td>331</td>
+		<td>2.18</td>
+				<td class="wrap">NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.0.1) for &#039;nvidia-utils-beta&#039;</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/nvidia-egl-wayland-full-beta/">nvidia-egl-wayland-full-beta</a></td>
+		<td>378.13-2</td>
+		<td>14</td>
+		<td>0.01</td>
+				<td class="wrap">NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.0.1) for &#039;nvidia-utils-full-beta&#039;</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/nvidia-egl-wayland-full-beta-all/">nvidia-egl-wayland-full-beta-all</a></td>
+		<td>378.13-2</td>
+		<td>20</td>
+		<td>1.11</td>
+				<td class="wrap">NVIDIA EGL Wayland library (libnvidia-egl-wayland.so.1.0.1) for &#039;nvidia-utils-full-beta-all&#039;</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/nvidia-full-beta/">nvidia-full-beta</a></td>
+		<td>378.13-2</td>
+		<td>14</td>
+		<td>0.01</td>
+				<td class="wrap">Full NVIDIA driver package for Arch&#039;s official &#039;linux&#039; package (driver, utilities, and libraries) (beta version)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/nvidia-full-beta-all/">nvidia-full-beta-all</a></td>
+		<td>378.13-2</td>
+		<td>20</td>
+		<td>1.11</td>
+				<td class="wrap">Full NVIDIA drivers&#039; package for all kernels on the system (drivers and shared utilities and libraries) (beta version)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/nvidia-libgl-beta/">nvidia-libgl-beta</a></td>
+		<td>378.13-1</td>
+		<td>331</td>
+		<td>2.18</td>
+				<td class="wrap">NVIDIA driver library symlinks for &#039;nvidia-utils-beta&#039;</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/nvidia-libgl-full-beta/">nvidia-libgl-full-beta</a></td>
+		<td>378.13-2</td>
+		<td>14</td>
+		<td>0.01</td>
+				<td class="wrap">NVIDIA driver library symlinks for &#039;nvidia-utils-full-beta&#039;</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/nvidia-libgl-full-beta-all/">nvidia-libgl-full-beta-all</a></td>
+		<td>378.13-2</td>
+		<td>20</td>
+		<td>1.11</td>
+				<td class="wrap">NVIDIA driver library symlinks for &#039;nvidia-utils-full-beta-all&#039;</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/nvidia-utils-beta/">nvidia-utils-beta</a></td>
+		<td>378.13-1</td>
+		<td>331</td>
+		<td>2.18</td>
+				<td class="wrap">NVIDIA driver utilities and libraries (beta version)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/nvidia-utils-full-beta/">nvidia-utils-full-beta</a></td>
+		<td>378.13-2</td>
+		<td>14</td>
+		<td>0.01</td>
+				<td class="wrap">NVIDIA driver utilities and libraries for &#039;nvidia-full-beta&#039;</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/nvidia-utils-full-beta-all/">nvidia-utils-full-beta-all</a></td>
+		<td>378.13-2</td>
+		<td>20</td>
+		<td>1.11</td>
+				<td class="wrap">NVIDIA driver utilities and libraries for &#039;nvidia-full-beta-all&#039;</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/opencl-nvidia-beta/">opencl-nvidia-beta</a></td>
+		<td>378.13-1</td>
+		<td>331</td>
+		<td>2.18</td>
+				<td class="wrap">NVIDIA&#039;s OpenCL implemention for &#039;nvidia-utils-beta&#039;</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/opencl-nvidia-full-beta/">opencl-nvidia-full-beta</a></td>
+		<td>378.13-2</td>
+		<td>14</td>
+		<td>0.01</td>
+				<td class="wrap">NVIDIA&#039;s OpenCL implemention for &#039;nvidia-utils-full-beta&#039;</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/opencl-nvidia-full-beta-all/">opencl-nvidia-full-beta-all</a></td>
+		<td>378.13-2</td>
+		<td>20</td>
+		<td>1.11</td>
+				<td class="wrap">NVIDIA&#039;s OpenCL implemention for &#039;nvidia-utils-full-beta-all&#039;</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/pidgin-nudge-svn/">pidgin-nudge-svn</a></td>
+		<td>r9-1</td>
+		<td>8</td>
+		<td>0.00</td>
+				<td class="wrap">A Pidgin plugin for shaking the conversation window on nudges/buzzes (SVN)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/randrproto-git/">randrproto-git</a></td>
+		<td>1.5.0.r159.g98da0d6-1</td>
+		<td>4</td>
+		<td>0.00</td>
+				<td class="wrap">X11 RandR extension wire protocol - Git version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/recordproto-git/">recordproto-git</a></td>
+		<td>1.14.2.3.r56.gc414387-1</td>
+		<td>3</td>
+		<td>0.00</td>
+				<td class="wrap">X11 Record extension wire protocol - Git version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/renderproto-git/">renderproto-git</a></td>
+		<td>0.11.1.4.r68.g9c2a896-1</td>
+		<td>0</td>
+		<td>0.00</td>
+				<td class="wrap">X11 Render extension wire protocol - Git version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/resourceproto-git/">resourceproto-git</a></td>
+		<td>1.2.0.2.r42.gada91f5-1</td>
+		<td>0</td>
+		<td>0.00</td>
+				<td class="wrap">X11 Resource extension wire protocol - Git version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/scrnsaverproto-git/">scrnsaverproto-git</a></td>
+		<td>1.2.2.3.r58.g5cf9455-1</td>
+		<td>0</td>
+		<td>0.00</td>
+				<td class="wrap">X11 Screen Saver extension wire protocol - Git version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/thunderbird-beta/">thunderbird-beta</a></td>
+		<td>52.0b4-1</td>
+		<td>12</td>
+		<td>0.00</td>
+				<td class="wrap">Standalone Mail/News reader - Bleeding edge version with optional PGO</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/thunderbird-beta-bin/">thunderbird-beta-bin</a></td>
+		<td>52.0b4-1</td>
+		<td>37</td>
+		<td>0.41</td>
+				<td class="wrap">Standalone Mail/News reader - Bleeding edge binary version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/thunderbird-hg/">thunderbird-hg</a></td>
+		<td class="flagged">41.0a1.r18019.c352d4695e28-1</td>
+		<td>1</td>
+		<td>0.00</td>
+				<td class="wrap">Standalone Mail/News reader - Mercurial version with optional PGO</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/utorrent/">utorrent</a></td>
+		<td>3.4.9.43295-1</td>
+		<td>108</td>
+		<td>1.04</td>
+				<td class="wrap">The world&#039;s most popular BitTorrent client (Wine version)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/videoproto-git/">videoproto-git</a></td>
+		<td>2.3.2.1.r47.g3841508-1</td>
+		<td>0</td>
+		<td>0.00</td>
+				<td class="wrap">X11 Video extension wire protocol - Git version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/vmware-patch/">vmware-patch</a></td>
+		<td class="flagged">12.0.0-4</td>
+		<td>188</td>
+		<td>1.69</td>
+				<td class="wrap">A post-install configuration solution for VMware Workstation (Pro) and Player (Plus and Pro)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/vuze/">vuze</a></td>
+		<td>5.7.4.0-1</td>
+		<td>120</td>
+		<td>1.83</td>
+				<td class="wrap">A feature-rich Java-based BitTorrent client (previously called &#039;Azureus&#039;)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/vuze-dev/">vuze-dev</a></td>
+		<td>5.7.4.1_B25-1</td>
+		<td>0</td>
+		<td>0.00</td>
+				<td class="wrap">A feature-rich Java-based BitTorrent client (previously called &#039;Azureus&#039;) - Bleeding edge version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/vuze-extreme-mod/">vuze-extreme-mod</a></td>
+		<td>5.7.4.1-3</td>
+		<td>15</td>
+		<td>0.07</td>
+				<td class="wrap">A modded version of the Vuze BitTorrent client with multiple spoofing capabilities</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/vuze-plugin-countrylocator/">vuze-plugin-countrylocator</a></td>
+		<td>1.8.9-1</td>
+		<td>6</td>
+		<td>0.25</td>
+				<td class="wrap">A plugin to include country flags in the &quot;Peers&quot; tab</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/vuze-plugin-mldht/">vuze-plugin-mldht</a></td>
+		<td>1.5.9-1</td>
+		<td>16</td>
+		<td>0.54</td>
+				<td class="wrap">A plugin for the alternative Distributed Hash Table implementation (DHT) used by µTorrent</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/x264-git/">x264-git</a></td>
+		<td>148.20151011.r2638-1</td>
+		<td>244</td>
+		<td>0.03</td>
+				<td class="wrap">CLI tools for encoding H264/AVC video streams (Git)</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/xcmiscproto-git/">xcmiscproto-git</a></td>
+		<td>1.2.2.3.r53.gc27c825-1</td>
+		<td>0</td>
+		<td>0.00</td>
+				<td class="wrap">X11 XC-Miscellaneous extension wire protocol - Git version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/xextproto-git/">xextproto-git</a></td>
+		<td>7.3.0.0.r138.g66afec3-1</td>
+		<td>5</td>
+		<td>0.00</td>
+				<td class="wrap">X11 various extension wire protocol - Git version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/xf86-input-evdev-git/">xf86-input-evdev-git</a></td>
+		<td>2.10.4.1.r672.g7251e42-1</td>
+		<td>9</td>
+		<td>0.05</td>
+				<td class="wrap">X.org evdev input driver - Git version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/xf86-input-libinput-git/">xf86-input-libinput-git</a></td>
+		<td>0.22.0.6.r200.ga61e156-3</td>
+		<td>2</td>
+		<td>0.26</td>
+				<td class="wrap">Generic input driver for the X.Org server based on libinput - Git version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/xf86dgaproto-git/">xf86dgaproto-git</a></td>
+		<td>2.1.12.r45.g199f7ae-1</td>
+		<td>1</td>
+		<td>0.00</td>
+				<td class="wrap">X11 Direct Graphics Access extension wire protocol - Git version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/xineramaproto-git/">xineramaproto-git</a></td>
+		<td>1.2.1.4.r48.g441b8d8-1</td>
+		<td>0</td>
+		<td>0.00</td>
+				<td class="wrap">X11 Xinerama extension wire protocol - Git version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/xorg-server-common-dev/">xorg-server-common-dev</a></td>
+		<td>1.19.1-5</td>
+		<td>18</td>
+		<td>0.19</td>
+				<td class="wrap">Xorg server common files - Bleeding edge version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/xorg-server-common-git/">xorg-server-common-git</a></td>
+		<td>1.19.0.99.r15877.g3f9507e-1</td>
+		<td>40</td>
+		<td>0.00</td>
+				<td class="wrap">Xorg server common files - Git</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/xorg-server-dev/">xorg-server-dev</a></td>
+		<td>1.19.1-5</td>
+		<td>18</td>
+		<td>0.19</td>
+				<td class="wrap">Xorg X server - Bleeding edge version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/xorg-server-devel-dev/">xorg-server-devel-dev</a></td>
+		<td>1.19.1-5</td>
+		<td>18</td>
+		<td>0.19</td>
+				<td class="wrap">Development files for the X.Org X server - Bleeding edge version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/xorg-server-devel-git/">xorg-server-devel-git</a></td>
+		<td>1.19.0.99.r15877.g3f9507e-1</td>
+		<td>40</td>
+		<td>0.00</td>
+				<td class="wrap">Development files for the X.Org X server - Git</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/xorg-server-git/">xorg-server-git</a></td>
+		<td>1.19.0.99.r15877.g3f9507e-1</td>
+		<td>40</td>
+		<td>0.00</td>
+				<td class="wrap">Xorg X server - Git</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/xorg-server-xdmx-dev/">xorg-server-xdmx-dev</a></td>
+		<td>1.19.1-5</td>
+		<td>18</td>
+		<td>0.19</td>
+				<td class="wrap">Distributed Multihead X Server and utilities - Bleeding edge version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/xorg-server-xdmx-git/">xorg-server-xdmx-git</a></td>
+		<td>1.19.0.99.r15877.g3f9507e-1</td>
+		<td>40</td>
+		<td>0.00</td>
+				<td class="wrap">Distributed Multihead X Server and utilities - Git</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/xorg-server-xephyr-dev/">xorg-server-xephyr-dev</a></td>
+		<td>1.19.1-5</td>
+		<td>18</td>
+		<td>0.19</td>
+				<td class="wrap">A nested X server that runs as an X application - Bleeding edge version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/xorg-server-xephyr-git/">xorg-server-xephyr-git</a></td>
+		<td>1.19.0.99.r15877.g3f9507e-1</td>
+		<td>40</td>
+		<td>0.00</td>
+				<td class="wrap">A nested X server that runs as an X application - Git</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/xorg-server-xnest-dev/">xorg-server-xnest-dev</a></td>
+		<td>1.19.1-5</td>
+		<td>18</td>
+		<td>0.19</td>
+				<td class="wrap">A nested X server that runs as an X application - Bleeding edge version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/xorg-server-xnest-git/">xorg-server-xnest-git</a></td>
+		<td>1.19.0.99.r15877.g3f9507e-1</td>
+		<td>40</td>
+		<td>0.00</td>
+				<td class="wrap">A nested X server that runs as an X application - Git</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/xorg-server-xvfb-dev/">xorg-server-xvfb-dev</a></td>
+		<td>1.19.1-5</td>
+		<td>18</td>
+		<td>0.19</td>
+				<td class="wrap">Virtual framebuffer X server - Bleeding edge version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/xorg-server-xvfb-git/">xorg-server-xvfb-git</a></td>
+		<td>1.19.0.99.r15877.g3f9507e-1</td>
+		<td>40</td>
+		<td>0.00</td>
+				<td class="wrap">Virtual framebuffer X server - Git</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/xorg-server-xwayland-dev/">xorg-server-xwayland-dev</a></td>
+		<td>1.19.1-5</td>
+		<td>18</td>
+		<td>0.19</td>
+				<td class="wrap">Run X clients under Wayland - Bleeding edge version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="odd">
+				<td><a href="/packages/xorg-server-xwayland-git/">xorg-server-xwayland-git</a></td>
+		<td>1.19.0.99.r15877.g3f9507e-1</td>
+		<td>40</td>
+		<td>0.00</td>
+				<td class="wrap">Run X clients under Wayland - Git</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+			<tr class="even">
+				<td><a href="/packages/xproto-git/">xproto-git</a></td>
+		<td>7.0.27.1.r246.g70cf8ac-1</td>
+		<td>9</td>
+		<td>0.00</td>
+				<td class="wrap">X11 core wire protocol and auxiliary headers - Git version</td>
+		<td>
+						<a href="/packages/?K=Det&amp;SeB=m">Det</a>
+						</td>
+	</tr>
+	
+		</tbody>
+		</table>
+
+				<div class="pkglist-stats">
+			<p>
+				112 packages found.				Page 1 of 1.			</p>
+					</div>
+
+					</form>
+</div>
+			<!-- End of main content -->
+
+			<div id="footer">
+								<p>aurweb <a href="https://git.archlinux.org/aurweb.git/log/?h=v4.5.0">v4.5.0</a></p>
+								<p>Copyright &copy; 2004-2017 aurweb Development Team.</p>
+				<p>AUR packages are user produced content. Any use of the provided files is at your own risk.</p>
+			</div>
+		</div>
+	</body>
+</html>
