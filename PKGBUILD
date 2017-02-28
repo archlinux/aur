@@ -42,13 +42,10 @@ check() {
 }
 
 package() {
-	dir="$pkgdir/opt/$pkgname"
-  mkdir -p "$dir"
-  cp "$pkgname/nanotts" "$dir/$pkgname"
-  cp -R "$pkgname/lang" "$dir" 
   mkdir -p "$pkgdir/usr/bin"
-  cd "$pkgdir/usr/bin"
-  ln -s "../../opt/$pkgname/$pkgname"
+  cp "$pkgname/nanotts" "$pkgdir/usr/bin/$pkgname"
+  mkdir -p "$pkgdir/usr/share/pico"
+  cp -R "$pkgname/lang" "$pkgdir/usr/share/pico" 
 }
 
 pkgver() {
