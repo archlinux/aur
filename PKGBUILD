@@ -12,7 +12,8 @@ depends=('notmuch' 'boost' 'boost-libs' 'gmime' 'gtkmm3' 'webkitgtk' 'libsass' '
 makedepends=('scons' 'git' 'pkg-config' 'python-gobject')
 checkdepends=('notmuch-runtime')
 optdepends=('gvim: default editor'
-            'emacs: can be used as editor')
+            'emacs: can be used as editor'
+            'vte3: for drop-down terminal')
 provides=('astroid')
 conflicts=()
 replaces=()
