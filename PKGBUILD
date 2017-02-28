@@ -17,29 +17,26 @@ options=(!emptydirs)
 install=
 source=("http://search.cpan.org/CPAN/authors/id/M/MB/MBARBON/Wx-GLCanvas-${pkgver}.tar.gz")
 md5sums=('4f6475010bd6e4231e2dbb3fb52bc642')
+_src_dir='$srcdir/Wx-GLCanvas-$pkgver'
 
-prepare() {
-  export _src_dir="$srcdir/Wx-GLCanvas-$pkgver"
+build() {
   # Setting these env variables overwrites any command-line-options we don't want...
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
     PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
     PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
     MODULEBUILDRC=/dev/null
-}
-
-build() {
   #TODO: how to reload PATH?
   if [[ "$PATH" != *"vendor_perl"* ]]; then
     warning "Fresh installation of perl detected, please relogin/reboot"
     source /etc/profile.d/perlbin.sh
   fi
-  cd "$_src_dir"
+  eval cd "$_src_dir"
   /usr/bin/perl Makefile.PL || true
   make
 }
 
 check () {
-  cd "$_src_dir"
+  eval cd "$_src_dir"
   warning "If tests do fail - uninstall this package before compiling"
   if [ -z "$DISPLAY" ]; then
     warning "Empty \$DISPLAY - falling back to xvfb-run (xorg-server-xvfb)"
@@ -50,8 +47,8 @@ check () {
 }
 
 package () {
-  cd "$_src_dir"
-  echo "$_src_dir"
+  eval cd "$_src_dir"
+  pwd
   make install
 
   # remove perllocal.pod and .packlist
