@@ -1,18 +1,17 @@
-# Maintainer: David Roheim <david dot roheim at gmail dot com>
-# Contributor: Dave Reisner <d@falconindy.com>
+# Maintainer: Severus <severus@theslinux.org>
 
 pkgname=jmeter
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 arch=('any')
 pkgdesc="A Java desktop application designed to load test functional behavior and measure performance"
-url="http://jakarta.apache.org/jmeter/"
+url="http://jmeter.apache.org/"
 license=("apache")
 depends=("java-environment>=6")
 options=('!strip')
 
 source=("http://www.us.apache.org/dist//jmeter/binaries/apache-${pkgname}-${pkgver}.tgz"{,.asc})
-sha256sums=('f5350a02c2abb0fd2273c9913d851719100be83a7e67a46efbe951f7764fdf03'
+sha256sums=('SKIP'
             'SKIP')
 validpgpkeys=('C4923F9ABFB2F1A06F08E88BAC214CAA0612B399')
 build() {
