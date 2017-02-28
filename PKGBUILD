@@ -1,10 +1,10 @@
 # Maintainer: Brad Kennedy <bk@co60.ca>
 pkgname=bunnysay-git 
-pkgver=v1.0.r6.a8fce4b
+pkgver=v1.1.r0.248f58e
 pkgrel=1
 pkgdesc='Fullwidth bunny signs for terminal and Twitter/webforms'
 arch=('i686' 'x86_64')
-url='https://github.com/co60ca/stella'
+url='https://github.com/co60ca/bunnysay'
 license=('GPL3')
 groups=()
 depends=()
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "bunnysay"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
