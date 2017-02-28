@@ -90,7 +90,7 @@ package() {
     # install license
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    # Adjust directory permisssions and ownership
+    # Adjust directory permissions and ownership
     find "$pkgdir" -type d -exec chmod 755 {} +
     find "$pkgdir" -exec chown --no-dereference 0:0 {} +
 }
