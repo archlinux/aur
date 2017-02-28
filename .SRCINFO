@@ -1,0 +1,15 @@
+pkgbase = cainteoir-gtk
+	pkgdesc = The Cainteoir Text-To-Speach Engine, GTK Frontend and ebook reader
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/rhdunn/cainteoir-gtk
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = gtk3
+	depends = caintenoir-engine
+	source = https://github.com/rhdunn/cainteoir-gtk/archive/cainteoir-gtk-0.9.tar.gz
+	md5sums = 4f409585591ad5ae5128f540de6070e8
+
+pkgname = cainteoir-gtk
+
