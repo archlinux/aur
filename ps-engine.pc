@@ -1,0 +1,12 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+sysconfdir=${prefix}/etc/primesense
+
+Name: openni-primesense-sensor
+Description: PrimeSense Sensor Module for OpenNI
+Version: 5.1.6.6
+Requires: openni
+
+Libs: -L${libdir} -lXnCore -lXnDDK -lXnFormats
