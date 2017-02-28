@@ -35,6 +35,7 @@ md5sums=('SKIP'
 _gitname="Slic3r"
 #TODO: derrive this from pkgbuild "fragment", skip checkout/reset if fragment is set in source (no need for doing this twice)
 _gitfragment="stable"
+_src_dir='$srcdir/$_gitname'
 
 countdown() {
   local i
@@ -46,8 +47,7 @@ countdown() {
 }
 
 pkgver() {
-  export _src_dir="$srcdir/$_gitname"
-  cd "$_src_dir"
+  eval cd "$_src_dir"
   #
   ### Now figure out PKGVER
   #
@@ -63,9 +63,8 @@ pkgver() {
 }
 
 prepare() {
-  export _src_dir="$srcdir/$_gitname"
 # Disable detached head warning
-  ( cd ${_src_dir} ; git config advice.detachedHead false )
+  ( eval cd ${_src_dir} ; git config advice.detachedHead false )
 # TODO: After all done ramp up pkgver++
 # TODO: Remind user about stable branch and others
 # TODO: ASK for disabling checks in case of failure (or even press something to ignore for N seconds)
@@ -87,7 +86,7 @@ prepare() {
       select_mode=$(dialog --keep-tite --backtitle "$pkgname" --noitem --radiolist 'Specify revision based on:' 0 0 0 branch/commit on tag off  2>&1 >/dev/tty)
       case $select_mode in
         "branch/commit")
-          cd "$_src_dir"
+          eval cd "$_src_dir"
           # Pick a branch - default is stable… for now
           # TODO: derrive actual current state of selection (commit/branch from fragment)
           branches=( $(git ls-remote --heads origin  | sed 's?.*refs/heads/??' | awk '{printf $1; if ($1 == "stable") printf " on ";else printf " off "}') )
@@ -111,7 +110,7 @@ prepare() {
           git checkout  $commit -f
           ;;
         "tag")
-          cd "$_src_dir"
+          eval cd "$_src_dir"
           tags=( $(git tag -l | tac | awk '{printf $1; if ($1 == "1.0.0RC1") printf " on ";else printf " off "}') )
           tag=$(dialog --keep-tite --backtitle "$pkgname" --no-items --radiolist 'Pick tag' 0 0 0 ${tags[*]} 2>&1 >/dev/tty)
           msg2 "Picked \"${tag}\" tag"
@@ -122,20 +121,13 @@ prepare() {
           ;;
       esac
     else
-      cd "$_src_dir"
+      eval cd "$_src_dir"
       git checkout "${_gitfragment}" -f
     fi
   } 1>&2
 
 ### OLD PREPARE
-  # Setting these env variables overwrites any command-line-options we don't want...
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
-  export SLIC3R_NO_AUTO="true"
-
-  cd "$_src_dir"
+  eval cd "$_src_dir"
   # Nasty fix for useless Growl dependency ... please post in comments/upstream real fix, if u know one ;)
   sed -i '/Growl/d' Build.PL
 
@@ -145,16 +137,23 @@ prepare() {
   # Nasty fix for local::lib use
   find . -iregex '.*\.\(pl\|pm\|t\)' -print0 |  xargs -0 -l sed -i -e '/use local::lib/d'
 
+}
+
+build() {
+  # Setting these env variables overwrites any command-line-options we don't want...
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
+    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
+    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+    MODULEBUILDRC=/dev/null
+  export SLIC3R_NO_AUTO="true"
+  eval cd "$_src_dir/xs"
   # Dependency check - intended of package maintainer only, for now
   #TODO: make sure that this if actually works when !check inside makepkg.conf and check inside pkgbuild... find last check and check if it has ! in front?. Is check default?
   if [[ " ${BUILDENV[*]} " != *" !check "* ]] || [[ " ${BUILDENV[*]} " == *" !check"*" check "* ]]; then
     msg2 "Checking prerequisites"
     /usr/bin/perl Build.PL --gui || true #TODO: make enough seds so true is not needed
   fi
-}
 
-build() {
-  cd "$_src_dir/xs"
   warning " ⚠  DO NOT respond to any question with 'yes'. Report a bug in comment instead.\n"
   # Cuz cpan will install fixes to $HOME ... which is not the point of this package
 
@@ -168,7 +167,7 @@ build() {
 }
 
 check () {
-  cd "$_src_dir"
+  eval cd "$_src_dir"
 
   msg2 "Testing Slic3r::XS - (2/3)"
   prove -Ixs/blib/arch -Ixs/blib/lib/ xs/t/
@@ -178,7 +177,7 @@ check () {
 }
 
 package () {
-  cd "$_src_dir"
+  eval cd "$_src_dir"
   install -d $pkgdir/usr/share/perl5/vendor_perl/
   cp -R $srcdir/$_gitname/lib/* $pkgdir/usr/share/perl5/vendor_perl/
 
@@ -205,7 +204,7 @@ package () {
   install -m 755 $srcdir/slic3r.pl $pkgdir/usr/bin/slic3r.pl
 
   ### SLIC3R-XS MERGE
-  cd "$_src_dir/xs"
+  eval cd "$_src_dir/xs"
   ./Build install
 }
 
