@@ -23,8 +23,7 @@ build() {
   ln -s `pwd` "$GOPATH/src/github.com/spf13/hugo"
 
   cd "$GOPATH/src/github.com/spf13/hugo"
-  go get -u -v github.com/kardianos/govendor || printf "go get govendor failed"
-  "$GOPATH/bin/govendor" sync -v || printf "govendor failed"
+  govendor sync -v || printf "govendor failed"
   make no-git-info || printf "make no-git-info failed"
 }
 
