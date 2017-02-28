@@ -2,7 +2,7 @@
 # Contributor: carstene1ns <url/mail: arch carsten-teibes de>
 
 pkgname=trackma-git
-pkgver=0.7.r5.ge7c5fc0
+pkgver=0.7.1.r0.g5e3c45c
 pkgrel=1
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 arch=('any')
@@ -29,9 +29,9 @@ source=(${pkgname}::"git+https://github.com/z411/${pkgname%-git}.git"
     "${pkgname%-git}-qt.desktop")
 
 sha256sums=('SKIP'
-    'dfa7486230a44625406309437741cf31ab386fbb0d94907ed15aaa0b942e248a'
-    '87fdf7251a244fd8a482f46e5b2dfd5fd1460d1fb38b47fff95478fe688cbdbd'
-    '54281a11092b1d2737b6bca21c692ea9a63d7a2b85969124fd25e88170866799')
+            'dfa7486230a44625406309437741cf31ab386fbb0d94907ed15aaa0b942e248a'
+            '87fdf7251a244fd8a482f46e5b2dfd5fd1460d1fb38b47fff95478fe688cbdbd'
+            '54281a11092b1d2737b6bca21c692ea9a63d7a2b85969124fd25e88170866799')
 
 #old package name.
 conflicts=('wmal-git')
