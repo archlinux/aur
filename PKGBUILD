@@ -34,7 +34,7 @@ prepare() {
     cp ${srcdir}/config.h .
     touch config.h
   fi
-  sed  's+##PREFIX##+/usr+' contrib/dunst.systemd.service.in > contrib/dunst.systemd.service
+  sed  's+##PREFIX##+/usr+' contrib/dunst.systemd.service.in > contrib/dunst.service
 }
 
 build() {
@@ -57,7 +57,7 @@ package() {
   fi
   install -Dm755 dunstify "${pkgdir}"/usr/bin/dunstify
   install -Dm755 contrib/dunst_espeak.sh "${pkgdir}"/usr/bin/dunst_espeak.sh
-  install -Dm644 contrib/dunst.systemd.service \
-	  "${pkgdir}"/usr/lib/systemd/user/dunst.systemd.service
+  install -Dm644 contrib/dunst.service \
+	  "${pkgdir}"/usr/lib/systemd/user/dunst.service
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
