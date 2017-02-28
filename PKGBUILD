@@ -34,6 +34,7 @@ depends=(
 	'python-protobuf'
 	'boost'
 	'boost-libs'
+	'hdf5-cpp-fortran'
 )
 
 source=('git+ssh://git@github.com/delftrobotics/caffe.git#branch=layer-modules')
