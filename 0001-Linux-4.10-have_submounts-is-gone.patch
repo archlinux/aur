@@ -1,0 +1,99 @@
+From 20fd9eadba0b46033571debc8927f29fc1b6c246 Mon Sep 17 00:00:00 2001
+From: Mark Vitale <mvitale@sinenomine.net>
+Date: Wed, 7 Dec 2016 11:11:45 -0500
+Subject: [PATCH] Linux 4.10: have_submounts is gone
+
+Linux commit f74e7b33c37e vfs: remove unused have_submounts() function
+(v4.10-rc2) removes have_submounts from the tree after providing a
+replacement (path_has_submounts) for its last in-tree caller, autofs.
+
+However, it turns out that OpenAFS is better off not using the new
+path_has_submounts.  Instead, OpenAFS could/should have stopped using
+have_submounts() much earlier, back in Linux v3.18 when d_invalidate
+became void.  At that time, most in-tree callers of have_submounts had
+already been converted to use check_submounts_and_drop back in v3.12.
+At v3.18, a series of commits modified check_submounts_and_drop to
+automatically remove child submounts (instead of returning -EBUSY if a
+submount was detected), then subsumed it into d_invalidate.  The end
+result was that VFS now implicitly handles much of the housekeeping
+previously called explicitly by the various filesystem d_revalidate
+routines:
+- shrink_dcache_parent
+- check_submounts_and_drop
+- d_drop
+- d_invalidate
+All in-tree filesystem d_revalidate routines were updated to take
+advantage of this new VFS support.
+
+Modify afs_linux_dentry_revalidate to no longer perform any special
+handling for invalid dentries when D_INVALIDATE_IS_VOID.  Instead, allow
+our VFS caller to properly clean up any invalid dentry when we return 0.
+
+Reviewed-on: https://gerrit.openafs.org/12506
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 789319bf0f2b26ad67995f8cbe88cee87a1bbdc0)
+
+Change-Id: I7ed22338e7896f69a204be78ed0a4f6136a3dab8
+---
+ src/afs/LINUX/osi_vnodeops.c | 27 ++++++++++++++++++++-------
+ 1 file changed, 20 insertions(+), 7 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index 4a8f0e9dc..816cdddd9 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -1318,6 +1318,24 @@ afs_linux_dentry_revalidate(struct dentry *dp, int flags)
+ 
+   good_dentry:
+     valid = 1;
++    goto done;
++
++  bad_dentry:
++    valid = 0;
++#ifndef D_INVALIDATE_IS_VOID
++    /* When (v3.18) d_invalidate was converted to void, it also started
++     * being called automatically from revalidate, and automatically
++     * handled:
++     *  - shrink_dcache_parent
++     *  - automatic detach of submounts
++     *  - d_drop
++     * Therefore, after that point, OpenAFS revalidate logic no longer needs
++     * to do any of those things itself for invalid dentry structs.  We only need
++     * to tell VFS it's invalid (by returning 0), and VFS will handle the rest.
++     */
++    if (have_submounts(dp))
++	valid = 1;
++#endif
+ 
+   done:
+     /* Clean up */
+@@ -1328,6 +1346,7 @@ afs_linux_dentry_revalidate(struct dentry *dp, int flags)
+     if (credp)
+ 	crfree(credp);
+ 
++#ifndef D_INVALIDATE_IS_VOID
+     if (!valid) {
+ 	/*
+ 	 * If we had a negative lookup for the name we want to forcibly
+@@ -1340,15 +1359,9 @@ afs_linux_dentry_revalidate(struct dentry *dp, int flags)
+ 	} else
+ 	    d_invalidate(dp);
+     }
+-
++#endif
+     return valid;
+ 
+-  bad_dentry:
+-    if (have_submounts(dp))
+-	valid = 1;
+-    else
+-	valid = 0;
+-    goto done;
+ }
+ 
+ static void
+-- 
+2.12.0
+

@@ -6,7 +6,7 @@
 pkgname=openafs-modules
 _srcname=openafs
 pkgver=1.6.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module for OpenAFS"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -15,9 +15,11 @@ depends=('openafs')
 makedepends=('linux-headers')
 conflicts=('openafs-features-libafs' 'openafs<1.6.6-2')
 options=(!emptydirs)
-source=(http://openafs.org/dl/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2)
+source=(http://openafs.org/dl/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
+        0001-Linux-4.10-have_submounts-is-gone.patch)
 install=openafs-modules.install
-sha256sums=('dc869eecf6c81949d3dd2021eaf87118ef9b90ec5012a35f64836a02a58a8826')
+sha256sums=('dc869eecf6c81949d3dd2021eaf87118ef9b90ec5012a35f64836a02a58a8826'
+            '48efa08f0c384df84ce114f418a2db8607ab3e4f32bbcfd60ef54b8c1bae2e94')
 
 # Heuristic to determine version of installed kernel
 # You can modify this if the heuristic fails
@@ -26,6 +28,9 @@ _kernelver=$(cat ${_extramodules}/version)
 
 prepare() {
   cd ${srcdir}/${_srcname}-${pkgver}
+
+  # add upstream patch for kernel 4.10
+  patch -p1 -i "${srcdir}"/0001-Linux-4.10-have_submounts-is-gone.patch
 
   # Only needed when changes to configure were made
   # ./regen.sh -q
