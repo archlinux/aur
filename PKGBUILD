@@ -1,7 +1,7 @@
 # Maintainer: Haruue Icymoon <haruue@caoyue.com.cn>
 
 pkgname=firebird-nspire-git
-pkgver=r708.c771637
+pkgver=1.2.r11.gb025aab
 pkgrel=1
 pkgdesc='Community emulator of TI-Nspire calculators.'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
