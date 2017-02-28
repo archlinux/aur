@@ -1,0 +1,65 @@
+=== modified file 'madanalysis/IOinterface/madgraph_interface.py'
+--- madanalysis/IOinterface/madgraph_interface.py	2016-12-16 13:00:22 +0000
++++ madanalysis/IOinterface/madgraph_interface.py	2017-02-07 23:58:49 +0000
+@@ -232,7 +232,8 @@
+                 self.card.append('plot MT_MET(b[' + str(i)+ ']) 40 0 500 [logY]')
+                 all_particles.append('b['+str(i)+']')
+ 
+-        self.card.append('# basic properties of the leptons')
++        if (ne+nmu+ntau)>0:
++            self.card.append('# basic properties of the leptons')
+         for i in range(1,ne+1):
+             self.card.append('plot PT(e['+str(i)+']) 40 0 500 [logY]')
+             self.card.append('plot ETA(e['+str(i)+']) 40 -10 10 [logY]')
+@@ -249,7 +250,8 @@
+             self.card.append('plot MT_MET(ta[' + str(i)+ ']) 40 0 500 [logY]')
+             all_particles.append('ta['+str(i)+']')
+ 
+-        self.card.append('# basic properties of the photons')
++        if na>0:
++            self.card.append('# basic properties of the photons')
+         for i in range(1,na+1):
+             self.card.append('plot PT(a['+str(i)+']) 40 0 500 [logY]')
+             self.card.append('plot ETA(a['+str(i)+']) 40 -10 10 [logY]')
+@@ -431,7 +433,7 @@
+                 return myprt['antiname']
+         else:
+             for key, value in self.multiparticles.iteritems():
+-                self.logger.debug('new multiparticles ' + key + ' = ' + str(value))
++                self.logger.debug('new multiparticle ' + key + ' = ' + str(value))
+                 if sorted(value)==sorted(pdg):
+                     return key
+         self.logger.error('  ** Cannot find the name associated with the pdg code list' + str(pdg))
+
+=== modified file 'madanalysis/core/expert_mode.py'
+--- madanalysis/core/expert_mode.py	2016-12-08 10:28:55 +0000
++++ madanalysis/core/expert_mode.py	2017-02-07 23:58:49 +0000
+@@ -50,7 +50,10 @@
+           name  =answer.replace('-','_');
+         self.path = os.path.expanduser(name)
+         if not self.path.startswith('/'):
+-            self.path = self.main.currentdir+'/'+self.path
++            if name in ['PAD', 'PADForMA5tune']:
++                self.path = self.main.archi_info.ma5dir+'/'+self.path
++            else:
++                self.path = self.main.currentdir+'/'+self.path
+         self.path = os.path.normpath(self.path)
+ 
+         # Checking folder
+
+=== modified file 'madanalysis/interpreter/ma5_interpreter.py'
+--- madanalysis/interpreter/ma5_interpreter.py	2016-12-08 10:28:55 +0000
++++ madanalysis/interpreter/ma5_interpreter.py	2017-02-07 23:58:49 +0000
+@@ -175,7 +175,10 @@
+ 
+     @freeze_environment
+     def load(self, *args, **opts):
+-        Interpreter.load(self,*args,**opts)
++        from madanalysis.core.script_stack import ScriptStack
++        ScriptStack.stack.append(['',args[0]])
++        Interpreter.load(self)
++#        Interpreter.load(self,*args,**opts)
+ 
+     @freeze_environment
+     def setLogLevel(self,level):
+

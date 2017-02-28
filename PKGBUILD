@@ -19,10 +19,12 @@ makedepends=("expect")
 source=("https://launchpad.net/madanalysis5/trunk/v${pkgver%%_*}/+download/MA5_v${pkgver}.tgz"
         "python2.patch"
         "no_check.patch"
+        "mg5-ma5-fix.patch"
         "ma5.exp")
 sha256sums=('8db144d9d14ca8dfe549ad2419e45c9cf4dcf638a84f99d1dcda6cf57fa1c88d'
             'bd2dec07df0a6fb21b7a420d0d769ebd397a2b2a286a44b4b92dac6700c5d8db'
             '3676bb6ca83b98f00cc3d423690736c107f1c84bdced25420938e046ce0cbaac'
+            '2ade85747136f13b32b2ba09db90d6281c95b76d08e1189a8735b469dc5d6ac0'
             '53e89bfc493faf732ab51d57d4d1268ddd65bcaec73fc71a08e8c42f11ef2571')
 
 prepare() {
@@ -30,6 +32,9 @@ prepare() {
 
     msg2 "Fixing python references for python2"
     patch -p 1 < python2.patch
+
+    msg2 "Bringing forward fix for MadGraph-MadAnalysis interface bug"
+    patch -d ${pkgname} -p 0 < mg5-ma5-fix.patch
 }
 
 build() {
