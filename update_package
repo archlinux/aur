@@ -28,6 +28,6 @@ echo "Do you wish to commit?"
 read -r answer
 if echo "$answer" | grep -iq "^y" ;then
 	git add -vA
-	git commit -vm "Update to $latest_version"
-	git -v push origin master
+	git commit -m "Update to $latest_version"
+	git push origin master
 fi
