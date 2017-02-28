@@ -73,6 +73,7 @@ package_dbus-selinux() {
 package_dbus-docs-selinux() {
   pkgdesc+=" (documentation)"
   depends=(dbus-selinux)
+  conflicts=("${pkgname/-selinux}")
 
   install -d "$pkgdir/usr/share/licenses"
   ln -s dbus-selinux "$pkgdir/usr/share/licenses/dbus-docs-selinux"

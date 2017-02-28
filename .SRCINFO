@@ -39,4 +39,5 @@ pkgname = dbus-selinux
 pkgname = dbus-docs-selinux
 	pkgdesc = Freedesktop.org message bus system with SELinux support (documentation)
 	depends = dbus-selinux
+	conflicts = dbus-docs
 
