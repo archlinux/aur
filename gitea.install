@@ -3,4 +3,7 @@ post_install() {
   printf "==> To use gitea with openssh:\n"
   printf "    You may want to\n"
   printf "    usermod -d /var/lib/gitea/repos git\n"
+  printf "==> To use gitea as SSH server on 22:\n"
+  printf "    You may want to\n"
+  printf "    setcap CAP_NET_BIND_SERVICE=+eip /usr/bin/gitea\n"
 }
