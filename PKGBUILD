@@ -2,7 +2,7 @@
 
 pkgname=totp-cli
 _pkgname=totp
-pkgver=0.2.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Cli application to generate OTP tokens for two-factor authentication."
 arch=(any)
