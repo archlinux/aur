@@ -1,30 +1,47 @@
-diff --git a/madanalysis5/madanalysis/core/launcher.py b/madanalysis5/madanalysis/core/launcher.py
-index 953474a..311ab14 100644
---- a/madanalysis5/madanalysis/core/launcher.py
-+++ b/madanalysis5/madanalysis/core/launcher.py
-@@ -250,8 +250,8 @@ def MainSession(mode,arglist,ma5dir,version,date):
-         sys.exit()
- 
-     # Building (if necesserary) the SampleAnalyzer library
--    if not main.BuildLibrary(forced=mode.build):
--        sys.exit()	
-+    # if not main.BuildLibrary(forced=mode.build):
-+    #     sys.exit()
- 
-     logging.getLogger('MA5').info("*************************************************************")
- 
-diff --git a/madanalysis5/madanalysis/core/main.py b/madanalysis5/madanalysis/core/main.py
-index 1f2a48e..d288a77 100644
---- a/madanalysis5/madanalysis/core/main.py
+diff --git a/madanalysis5.orig/madanalysis/core/library_builder.py b/madanalysis5/madanalysis/core/library_builder.py
+index b8f011c..fdea649 100644
+--- a/madanalysis5.orig/madanalysis/core/library_builder.py
++++ b/madanalysis5/madanalysis/core/library_builder.py
+@@ -97,5 +97,6 @@ class LibraryBuilder:
+     
+         
+     def compare(self):
++        self.archi_info = self.archi_info_stored
+         return self.archi_info.Compare(self.archi_info_stored)
+         
+diff --git a/madanalysis5.orig/madanalysis/core/main.py b/madanalysis5/madanalysis/core/main.py
+index 1f2a48e..18c1dc1 100644
+--- a/madanalysis5.orig/madanalysis/core/main.py
 +++ b/madanalysis5/madanalysis/core/main.py
-@@ -437,8 +437,8 @@ class Main():
-         self.AutoSetGraphicalRenderer()
- #        if not checkup.CheckGraphicalPackages():
- #            return False
--        if not checkup.SetFolder():
--            return False
-+        # if not checkup.SetFolder():
-+        #     return False
-         return True
+@@ -443,6 +443,7 @@ class Main():
  
  
+     def BuildLibrary(self,forced=False):
++        return True
+         builder = LibraryBuilder(self.archi_info)
+         UpdateNeed=False
+         FirstUse, Missing = builder.checkMA5()
+diff --git a/madanalysis5.orig/madanalysis/system/architecture_info.py b/madanalysis5/madanalysis/system/architecture_info.py
+index c3e6bdb..0c48b02 100644
+--- a/madanalysis5.orig/madanalysis/system/architecture_info.py
++++ b/madanalysis5/madanalysis/system/architecture_info.py
+@@ -127,6 +127,7 @@ class ArchitectureInfo:
+         return not self.__eq__(other)
+ 
+     def save(self,filename):
++        return True
+ 
+         # Open the file
+         try:
+diff --git a/madanalysis5.orig/madanalysis/system/checkup.py b/madanalysis5/madanalysis/system/checkup.py
+index 9d87376..83a9eba 100644
+--- a/madanalysis5.orig/madanalysis/system/checkup.py
++++ b/madanalysis5/madanalysis/system/checkup.py
+@@ -327,6 +327,7 @@ class CheckUp():
+ 
+ 
+     def CreateSymLink(self,source,destination):
++        return True
+ 
+         # Is it a good source
+         if source=='':

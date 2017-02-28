@@ -2,7 +2,7 @@
 
 pkgname=madanalysis5
 pkgver=1.5_patch1
-pkgrel=1
+pkgrel=2
 pkgdesc="MadAnalysis 5 is a framework for phenomenological investigations at particle colliders"
 url="https://launchpad.net/madanalysis5"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ source=("https://launchpad.net/madanalysis5/trunk/v${pkgver%%_*}/+download/MA5_v
         "ma5.exp")
 sha256sums=('8db144d9d14ca8dfe549ad2419e45c9cf4dcf638a84f99d1dcda6cf57fa1c88d'
             'bd2dec07df0a6fb21b7a420d0d769ebd397a2b2a286a44b4b92dac6700c5d8db'
-            'c82e97f9c6c2f531ef92afd329acfa3f77c62528ee7e46b6abcdb09c26c6030a'
+            '3676bb6ca83b98f00cc3d423690736c107f1c84bdced25420938e046ce0cbaac'
             '53e89bfc493faf732ab51d57d4d1268ddd65bcaec73fc71a08e8c42f11ef2571')
 
 prepare() {
@@ -37,8 +37,18 @@ build() {
     expect -f ma5.exp
     printf '\n'
 
-    # Fix paths
-    find . -type f -print0 | xargs -0 sed -i "s#${srcdir}/${pkgname}#/opt/${pkgname}#g"
+    # Fix paths in certain files
+    files=(
+        tools/architecture.ma5
+        tools/SampleAnalyzer/setup.sh
+        tools/SampleAnalyzer/setup.csh
+        tools/delphes/doc/Makefile.arch
+        tools/SampleAnalyzer/Interfaces/Makefile_delphes
+        tools/delphes/examples/ExternalFastJet/Makefile
+    )
+    for f in "${files[@]}"; do
+        sed -i "s#${srcdir}/${pkgname}#/opt/${pkgname}#g" "${pkgname}/$f"
+    done
 
     # Prevent MA5 from checking for new builds as they are built on first install
     patch -p 1 < no_check.patch
