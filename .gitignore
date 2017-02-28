@@ -1,4 +1,6 @@
+pango/
 pkg/
 src/
+*.log
 *.tar
 *.xz
