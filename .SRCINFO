@@ -1,8 +1,8 @@
 pkgbase = emacs-d-mode
 	pkgdesc = Emacs major mode for the D programming language
 	pkgver = 2.0.9
-	pkgrel = 1
-	url = http://www.wikiservice.at/d/wiki.cgi?EditorSupport/EmacsEditor
+	pkgrel = 2
+	url = https://github.com/Emacs-D-Mode-Maintainers/Emacs-D-Mode
 	install = emacs-d-mode.install
 	arch = any
 	license = GPL2
