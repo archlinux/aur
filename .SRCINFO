@@ -1,15 +1,15 @@
 pkgbase = rls
 	pkgdesc = Rust Language Server
-	pkgver = alpha
+	pkgver = alpha2
 	pkgrel = 1
-	url = https://github.com/jonathandturner/rls
+	url = https://github.com/rust-lang-nursery/rls
 	arch = i686
 	arch = x86_64
 	license = Apache
 	license = MIT
 	makedepends = rust-nightly-bin
-	source = https://github.com/jonathandturner/rls/archive/alpha/rls-alpha.tar.gz
-	sha256sums = 7d04fac5b6218a8e98c380d74012d5c2daf0fe941385c4ae5d3d93a76d882b95
+	source = https://github.com/rust-lang-nursery/rls/archive/alpha-2/rls-alpha2.tar.gz
+	sha256sums = ceec4b8b6672732512db45436adb69ebe43f261c73bfef82c494b5d3cf0df6ea
 
 pkgname = rls
 
