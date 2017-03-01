@@ -5,7 +5,7 @@ pkgver=1.0.3
 pkgrel=1
 pkgdesc="Use truetype fonts in common lisp"
 arch=('any')
-url=""
+url="http://xach.com/lisp/spb-ttf/"
 license=('custom:unknown')
 source=("git+https://github.com/xach/zpb-ttf.git#commit=6c791440ea9eae584f3f98caeda0ea011fdde132")
 md5sums=('SKIP')
