@@ -2,8 +2,8 @@ pkgname=linux-usermode
 true && pkgname=(linux-usermode linux-usermode-modules)
 pkgbase=linux-usermode
 _kernelname=-usermodelinux
-_srcname=linux-4.8
-pkgver=4.8.4
+_srcname=linux-4.10
+pkgver=4.10.1
 pkgrel=1
 pkgdesc="User mode Linux kernel and modules"
 arch=('i686' 'x86_64')
@@ -15,10 +15,10 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 	config-i686
 	config-x86_64)
-md5sums=('c1af0afbd3df35c1ccdc7a5118cd2d07'
-         '4d85e2c59ec33dd7766e18d079e75114'
-         '27523cd2017f599a97fb7aeca7873b5b'
-         '01ea55240d283decc4a15d5c90ea8dba')
+sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
+            'da560125aa350f76f0e4a5b9373a0d0a1c27ccefe3b7bd9231724f3a3c4ebb9e'
+            'f001a5860c927c14e12eb6c4c09ad22e57834a0f44d71c9516bc2c2f6f1a290f'
+            '2a786756a47a52b77ae4bffb31eadd60a7a717c2e3544a315f1cfe9ba9091f30')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
