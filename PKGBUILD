@@ -1,11 +1,8 @@
-# Maintainer: Evgeny Kurnevsky <kurnevsky@gmail.com>
-# Maintainer: Bob Mottram (4096 bits) <bob@robotics.uk.to>
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
-# Maintainer: klexx <klexx@mailbox.bz>
+# Maintainer: TheLugal <thelugal@gmail.com>
 
 pkgname=pybitmessage
 _realname=PyBitmessage
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Decentralized and trustless P2P communications protocol for sending encrypted messages to another person or to many subscribers"
 arch=('any')
@@ -16,9 +13,9 @@ url="https://github.com/Bitmessage/PyBitmessage"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://github.com/Bitmessage/$_realname/archive/v$pkgver.tar.gz
         pybitmessage.sh)
-md5sums=('3b353e344cb70649c764b553ef04f9c4'
+md5sums=('fd54c80e65e472c707a1d463887cdcad'
          '0dfcad65e76e7403ae17ceeb6764d2b8')
-sha256sums=('ceb6585c816bbcafc63cf3ea55b709ddf1dc1d48012509ef3c47dcdb553ed2b9'
+sha256sums=('bc209725ef7c1b913ec8560557e3e862a11f664bd8c5fd2eea5adcd915acc2c6'
             'dad3783438c7328468eb0117da04b26c4f6d5f897ed3b44a333b22355c938a4b')
 provides=('pybitmessage')
 conflicts=('pybitmessage-git')
@@ -51,3 +48,4 @@ package() {
   mkdir -p "$pkgdir/usr/share/man/man1"
   install -m644 man/pybitmessage.1.gz "$pkgdir/usr/share/man/man1"
 }
+
