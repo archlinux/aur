@@ -3,7 +3,7 @@
 pkgname=skypeforlinux-bin
 pkgver=5.0.0.5
 pkgrel=1
-pkgdesc="Skype for Linux WebRTC Alpha"
+pkgdesc="Skype for Linux WebRTC Beta"
 arch=('x86_64')
 url="http://www.skype.com"
 license=('custom')
