@@ -1,4 +1,4 @@
-pkgbase = archtorify-git
+pkgbase = archtorify
 	pkgdesc = Program for simplify the configuration of transparent proxy trough Tor Network
 	pkgver = 1.8.1
 	pkgrel = 1
@@ -9,5 +9,5 @@ pkgbase = archtorify-git
 	depends = curl
 	md5sums = SKIP
 
-pkgname = archtorify-git
+pkgname = archtorify
 

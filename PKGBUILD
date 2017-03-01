@@ -1,7 +1,7 @@
 # Maintainer: Brainfuck
 # http://github.com/brainfucksec
 
-pkgname=archtorify-git
+pkgname=archtorify
 pkgver=1.8.1
 pkgrel=1
 pkgdesc="Program for simplify the configuration of transparent proxy trough Tor Network"
