@@ -1,13 +1,13 @@
 pkgbase = eprover
 	pkgdesc = E is theorem prover for full first-order logic with equality.
-	pkgver = 1.9
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = http://wwwlehre.dhbw-stuttgart.de/~sschulz/E/E.html
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	source = http://wwwlehre.dhbw-stuttgart.de/~sschulz/WORK/E_DOWNLOAD/V_1.9/E.tgz
-	sha256sums = c4365661a6a4519b21b895fafe60c6b39b8acadf77a3c42e4d638027f155376e
+	source = http://wwwlehre.dhbw-stuttgart.de/~sschulz/WORK/E_DOWNLOAD/V_1.9.1/E.tgz
+	sha256sums = 1c5b5c8fdc3f7c83e6974de15c1861f4636b12225c81542a01d262d7ea3929ee
 
 pkgname = eprover
 
