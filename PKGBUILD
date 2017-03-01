@@ -1,6 +1,6 @@
 # Maintainer: Abdulhaq Emhemmed <el.ingeniero09@gmail.com>
 pkgname=green-recorder
-pkgver=1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A simple yet functional desktop recorder for Linux systems."
 arch=('i686' 'x86_64')
