@@ -1,0 +1,17 @@
+pkgbase = kvmtool-git
+	pkgdesc = A lightweight (~5kloc) KVM-based virtual machine which can host Linux guests only
+	pkgver = 1573.3fea89a
+	pkgrel = 1
+	url = https://git.kernel.org/cgit/linux/kernel/git/will/kvmtool.git/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = binutils
+	source = kvmtool-git::git+https://git.kernel.org/pub/scm/linux/kernel/git/will/kvmtool.git
+	source = http://wiki.qemu.org/download/linux-0.2.img.bz2
+	sha256sums = SKIP
+	sha256sums = 41c222db3c669724dd202d2f0fe655ad88f847d8c263ed08bb90219082e7b423
+
+pkgname = kvmtool-git
+
