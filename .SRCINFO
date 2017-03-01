@@ -1,0 +1,19 @@
+pkgbase = webman-git
+	pkgdesc = A web interface for the Arch Linux package manager (pacman)
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/flipflop97/WebMan
+	arch = any
+	license = GPL-3.0
+	depends = python
+	depends = python-flask
+	depends = python-urllib3
+	depends = python-certifi
+	depends = python-beautifulsoup4
+	depends = python-editdistance
+	provides = webman
+	source = webman-git::git+https://github.com/flipflop97/WebMan.git
+	sha256sums = SKIP
+
+pkgname = webman-git
+
