@@ -1,7 +1,7 @@
 pkgbase = chessx
 	pkgdesc = Chess Database and PGN viewer
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.4.4
+	pkgrel = 1
 	url = http://chessx.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = chessx
 	depends = qt5-svg
 	optdepends = stockfish: For a chess engine
 	conflicts = chessx-svn
-	source = https://sourceforge.net/projects/chessx/files/chessx/1.4.0/chessx-1.4.0.tgz
-	sha256sums = e4287235904810a0a1b2cdec3dc33fbc30aa0657c7b7343bd2130bd9626220f4
+	source = https://sourceforge.net/projects/chessx/files/chessx/1.4.4/chessx-1.4.4.tgz
+	sha256sums = 66f6cd9711d21b636caa213d8aeca06e13a13d225f2b163411535ae7956e3396
 
 pkgname = chessx
 
