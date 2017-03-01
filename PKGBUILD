@@ -2,14 +2,14 @@
 # Contributor: Techlive Zheng <techlivezheng at gmail.com>
 
 pkgname=libiconv
-pkgver=1.14
+pkgver=1.15
 pkgrel=1
 pkgdesc='Provides libiconv.so and libcharset.so'
 arch=('i686' 'x86_64')
 url='http://www.gnu.org/software/libiconv/'
 license=('LGPL')
 source=("http://ftp.gnu.org/pub/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('e34509b1623cec449dfeb73d7ce9c6c6')
+md5sums=('ace8b5f2db42f7b3b3057585e80d9808')
 options=(!libtool)
 
 build() {
