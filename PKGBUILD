@@ -1,9 +1,9 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=steam-wine-git
-pkgver=2.672e32c
+pkgver=3.463a8bf
 pkgrel=1
-pkgdesc="osu!"
+pkgdesc="Steam with simple wine wrapper"
 arch=('any')
 url="https://github.com/Nefelim4ag/steam-wine"
 license=('GPL3')
