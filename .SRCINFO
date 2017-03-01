@@ -1,6 +1,6 @@
 pkgbase = ardour5
 	pkgdesc = A multichannel hard disk recorder and digital audio workstation
-	pkgver = 5.5
+	pkgver = 5.8
 	pkgrel = 1
 	url = http://ardour.org/
 	arch = i686
@@ -19,18 +19,18 @@ pkgbase = ardour5
 	depends = gtkmm
 	depends = liblo
 	depends = liblrdf
-	depends = libltc
 	depends = lilv
 	depends = suil
 	depends = rubberband
 	depends = taglib
-	depends = fluidsynth
+	optdepends = xjadeo: video monitoring
+	optdepends = harvid: video timeline
 	provides = ardour
 	conflicts = ardour
-	source = ardour-5.5::git://github.com/Ardour/ardour.git#tag=5.5
+	source = ardour-5.8::git://github.com/Ardour/ardour.git#tag=5.8
 	source = ardour.desktop
 	md5sums = SKIP
-	md5sums = e481a2e720770162784563fa5241b7cb
+	md5sums = 347a69827fd57c4c71a9adc326541256
 
 pkgname = ardour5
 
