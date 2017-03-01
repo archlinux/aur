@@ -1,0 +1,25 @@
+From 332e61a1df65e58c2b2991aebc2ad52799a67936 Mon Sep 17 00:00:00 2001
+From: xantares <xantares09@hotmail.com>
+Date: Wed, 1 Mar 2017 10:06:30 -0500
+Subject: [PATCH] Do not use extern templates for mingw as suggested in https://gitlab.kitware.com/vtk/vtk/issues/16916
+
+---
+ Common/Core/vtkConfigure.h.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Common/Core/vtkConfigure.h.in b/Common/Core/vtkConfigure.h.in
+index dad3005..c2f58e0 100644
+--- a/Common/Core/vtkConfigure.h.in
++++ b/Common/Core/vtkConfigure.h.in
+@@ -169,7 +169,7 @@
+ 
+ /** extern template declarations for C++11
+  */
+-#if __cplusplus >= 201103L || (defined(_MSC_VER) && _MSC_VER >= 1700)
++#if ((__cplusplus >= 201103L) || (defined(_MSC_VER) && _MSC_VER >= 1700)) && !defined(__MINGW32__)
+ #define VTK_USE_EXTERN_TEMPLATE
+ #endif
+ 
+--
+libgit2 0.24.0
+
