@@ -1,7 +1,7 @@
 pkgbase = python2-sipsimple
 	pkgdesc = Python SDK for development of SIP end-points
-	pkgver = 3.0.0
-	pkgrel = 5
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = http://download.ag-projects.com/SipClient
 	arch = i686
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = python2-sipsimple
 	depends = python2-otr-git
 	depends = ffmpeg
 	options = !makeflags
-	source = http://download.ag-projects.com/SipClient/python-sipsimple-3.0.0.tar.gz
-	md5sums = e14cbb693ecef8fd5f719f8bb5df99be
+	source = https://github.com/AGProjects/python-sipsimple/archive/release-3.1.0/python-sipsimple-3.1.0.tar.gz
+	sha256sums = 4cc33f5373f40148d0c07db6c43f6c9ec973593fada6a6082fea42d8326711c3
 
 pkgname = python2-sipsimple
 
