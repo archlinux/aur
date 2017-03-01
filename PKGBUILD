@@ -5,7 +5,7 @@
 
 # AUR dependencies
 # ----------------
-# pstoedit-nomagick autotrace-nomagick flif libfpx libraqm
+# pstoedit-nomagick autotrace-nomagick flif libfpx libraqm libumem-git
 
 # NOTE (1):
 # DPS (Display PostScript) feature is obsolete and thus not enabled.
@@ -28,7 +28,7 @@ _windows_font_dir="/usr/share/fonts/WindowsFonts"
 _1st_apple_font_dir="/usr/share/fonts/TTF"
 _2nd_apple_font_dir="/usr/share/fonts/Type1"
 pkgname=imagemagick-full-git
-pkgver=7.0.5.1.r11698.gc48b5e5dc
+pkgver=7.0.5.1.r11704.gf2b75a87a
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features, Git version)"
 arch=('i686' 'x86_64')
