@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Chusovitin <dchusovitin@gmail.com>
 
 pkgname=gpgpwd
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='A command-line password manager based around GnuPG'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=(
     'xclip: copy passwords to the clipboard'
 )
 source=(http://files.zerodogg.org/$pkgname/$pkgname-$pkgver.tar.bz2{,.sig})
-md5sums=('aa9fd7fb796a4a94b2d0f53ad7258628'
+md5sums=('f5c19f63401ee9e75c97213fd3011b93'
          'SKIP')
 validpgpkeys=('4455CC0B4399C855F7143716D76A12A07374A722')
 
