@@ -1,0 +1,25 @@
+From 0c749dee4b7a84fdbf0e0dfc9323cadd4cfc8fc1 Mon Sep 17 00:00:00 2001
+From: wangjiezhe <wangjiezhe@gmail.com>
+Date: Tue, 28 Feb 2017 11:54:36 +0800
+Subject: [PATCH 3/3] Fix typo
+
+---
+ TeXmacs/progs/link/link-edit.scm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/TeXmacs/progs/link/link-edit.scm b/TeXmacs/progs/link/link-edit.scm
+index b36563d55..c78503907 100644
+--- a/TeXmacs/progs/link/link-edit.scm
++++ b/TeXmacs/progs/link/link-edit.scm
+@@ -154,7 +154,7 @@
+ (define (link-remove-participant nr)
+   (with p (ahash-ref link-participants nr)
+     (ahash-remove! link-participants nr)
+-    (when (oberver? p)
++    (when (observer? p)
+       (tree-pointer-detach p))))
+ 
+ (define (link-clean nr)
+-- 
+2.12.0
+

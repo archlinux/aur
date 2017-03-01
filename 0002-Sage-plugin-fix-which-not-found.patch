@@ -1,7 +1,7 @@
-From 279abf2c8d4f3cf1032dab47457194095cc92b0e Mon Sep 17 00:00:00 2001
+From 913cec746a0e7edb5e0280a385af2069fd32f6db Mon Sep 17 00:00:00 2001
 From: wangjiezhe <wangjiezhe@gmail.com>
 Date: Wed, 8 Jun 2016 11:20:42 +0800
-Subject: [PATCH 2/2] Sage plugin: fix `which` not found
+Subject: [PATCH 2/3] Sage plugin: fix `which` not found
 
 ---
  plugins/sage/progs/init-sage.scm | 8 +++++++-
@@ -30,5 +30,5 @@ index f3fb9224e..b18bf07c9 100644
    (:session "Sage")
    (:scripts "Sage"))
 -- 
-2.11.0
+2.12.0
 
