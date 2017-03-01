@@ -1,7 +1,7 @@
 # Maintainer: Nahuel Alonso <blizzard.nna@gmail.com>
 pkgname=webmc
 pkgver="0.5"
-pkgrel=4
+pkgrel=5
 pkgdesc="ffmpeg gtk client for quick webms convertions"
 arch=(x86_64)
 url="https://github.com/nahwar/webmc"
