@@ -1,7 +1,7 @@
 # Maintainer: Nahuel Alonso <blizzard.nna@gmail.com>
 pkgname=webmc
 pkgver="0.5"
-pkgrel=2
+pkgrel=3
 pkgdesc="ffmpeg gtk client for quick webms convertions"
 arch=(x86_64)
 url="https://github.com/nahwar/webmc"
@@ -20,5 +20,5 @@ package() {
 	install -Dm755 "$srcdir/webmc/webmc" "$pkgdir/opt/$pkgname/"
 	install -Dm755 "$srcdir/webmc/glade.glade" "$pkgdir/opt/$pkgname/"
 	ln -s "$pkgdir/opt/$pkgname/webmc" "$pkgdir/opt/$pkgname/ln/"
-	install -Dm755 "$pkgdir/opt/$pkgname/ln/webmc" "$pkgdir/usr/bin"
+	install -Dm755 "$pkgdir/opt/$pkgname/ln/webmc" "$pkgdir/usr/bin/webmc"
 }
