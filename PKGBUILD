@@ -3,17 +3,18 @@
 # Original Maintainer::  	Jonathan Hudson <jh+arch@daria.co.uk>
 
 pkgname=mapserver
-pkgver=7.0.1
+pkgver=7.0.4
 pkgrel=1
 pkgdesc="Platform for publishing spatial data and interactive mapping applications to the web"
 arch=(i686 x86_64)
 license=('MIT')
 url="http://www.mapserver.org"
-depends=('libpng' 'freetype2' 'v8' 'zlib' 'gdal' 'proj' 'libjpeg-turbo' 'libxml2' 'libpqxx' 'pdflib-lite' 'geos' 'agg' 'apache' 'fcgi' 'mod_fastcgi' 'python2' 'php' 'php-apache' 'swig' 'libsvg-cairo' 'php-pear' )
+depends=('libpng' 'freetype2' 'zlib' 'gdal' 'proj' 'libjpeg-turbo' 'libxml2' 'libpqxx' 'pdflib-lite' 'geos' 'agg' 'apache' 'fcgi' 'mod_fcgid' 'python2' 'swig' 'libsvg-cairo' )
+## For v8 support require v8-3.20; for PHP mapscript require php, php-pear, php-apache
 makedepends=('cfitsio')
 options=()
 source=("http://download.osgeo.org/mapserver/mapserver-${pkgver}.tar.gz")
-md5sums=('9dddee855006686dd9b3b1402651f283')
+md5sums=('90a2dd2b888722586049da32ecef46d7')
 
 build() {
   cd ${startdir}/src/${pkgname}-${pkgver}
@@ -48,7 +49,7 @@ build() {
 	-DWITH_ICONV=ON \
 	-DWITH_JAVA=OFF \
 	-DWITH_KML=ON \
-	-DWITH_V8=ON \
+	-DWITH_V8=OFF \
 	-DWITH_LIBXML2=ON \
 	-DWITH_MSSQL2008=OFF \
 	-DWITH_MYSQL=OFF \
@@ -73,7 +74,7 @@ build() {
 	-DFREETYPE_INCLUDE_DIR=/usr/include/freetype2 \
     
   make clean
-  make -j5
+  make -j2
   
 }
 
