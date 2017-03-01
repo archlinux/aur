@@ -1,3 +1,4 @@
 #!/bin/sh
 
-mono /opt/armsimsharp/ARMSim.exe "$@"
+
+mono /opt/armsimsharp/ARMSim.exe "${@}"
