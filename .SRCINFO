@@ -1,0 +1,13 @@
+pkgbase = archtorify-git
+	pkgdesc = Program for simplify the configuration of transparent proxy trough Tor Network
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/brainfucksec/archtorify/
+	arch = any
+	license = GPL3
+	depends = tor>=0.2.9
+	depends = curl
+	md5sums = SKIP
+
+pkgname = archtorify-git
+
