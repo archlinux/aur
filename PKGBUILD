@@ -1,7 +1,7 @@
 # Maintainer: Holodoc
 pkgname=jdownloader2
 pkgver=latest
-pkgrel=12
+pkgrel=13
 pkgdesc='Download manager, written in Java, for one-click hosting sites like Rapidshare and Megaupload. Uses its own updater.'
 arch=('any')
 conflicts=('jdownloader')
@@ -79,7 +79,7 @@ package() {
 	install -D -m644 "$srcdir/jdownloader48.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/jdownloader.png"
 	install -D -m644 "$srcdir/jdownloader256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/jdownloader.png"
 	install -D -m644 "$srcdir/jdownloader.service" "$pkgdir/usr/lib/systemd/system/jdownloader.service"
-	install -d -m755 "$pkgdir/opt/JDownloader"
+	install -d -m775 "$pkgdir/opt/JDownloader"
   
   mkdir -p "$pkgdir/usr/bin"
   
