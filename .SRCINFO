@@ -1,0 +1,15 @@
+pkgbase = python-pypugjs
+	pkgdesc = PugJS syntax template adapter for Django, Jinja2, Mako and Tornado templates - copy of PyJade with the name changed
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://github.com/matannoam/pypugjs
+	arch = any
+	license = MIT
+	makedepends = python3
+	depends = python
+	depends = python-six
+	source = https://pypi.python.org/packages/12/11/e57392b68f6cb6776c5306d6e9e23291a9e3f4e88225a6570355a71575e8/pypugjs-4.2.0.tar.gz
+	md5sums = 55520d17a2454404afe4b4426b185ad3
+
+pkgname = python-pypugjs
+
