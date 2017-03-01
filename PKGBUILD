@@ -1,6 +1,6 @@
 # Maintainer: Leonard de Ruijter <dev@systeemdenker.nl>
 pkgname=('teamtalk')
-pkgver=5.1.3
+pkgver=5.2.1
 pkgrel=1
         pkgdesc='a software conferencing system server which enables a group of people to collaborate and share information using voice and video'
 arch=('x86_64')
@@ -9,14 +9,14 @@ arch=('x86_64')
 backup=("etc/${pkgname}/tt5srv.xml")
 license=('custom')
 url='http://www.bearware.dk'
-source=("http://bearware.dk/${pkgname}/v${pkgver}/${pkgname}-v${pkgver}-centos7-${arch}.tgz"
+source=("http://bearware.dk/${pkgname}/v${pkgver}/${pkgname}-v${pkgver}-debian7-${arch}.tgz"
         "${pkgname}.install")
-sha256sums=('eed36880ec4c44e721de9ccf71dffcdef0d1b5d62a3ce8a9ef65ad9bb23e59e0'
+sha256sums=('4926548da8937f9f618fb97494ab41644406d03f6a9a33ae6abfdf83a0dbdf78'
             '621938e7a6b07988ff05a032ba098e5d7e8a10040c6dac3c1f3255ac89938a6e')
 
 package() {
 
-        install -D -m644 ${srcdir}/${pkgname}-v${pkgver}-centos7-${arch}/License.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-        install -D -m755 ${srcdir}/${pkgname}-v${pkgver}-centos7-${arch}/server/tt5srv ${pkgdir}/usr/bin/tt5srv
-        install -D -m644 ${srcdir}/${pkgname}-v${pkgver}-centos7-${arch}/server/systemd/tt5server.service ${pkgdir}/usr/lib/systemd/system/tt5srv.service
+        install -D -m644 ${srcdir}/${pkgname}-v${pkgver}-debian7-${arch}/License.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+        install -D -m755 ${srcdir}/${pkgname}-v${pkgver}-debian7-${arch}/server/tt5srv ${pkgdir}/usr/bin/tt5srv
+        install -D -m644 ${srcdir}/${pkgname}-v${pkgver}-debian7-${arch}/server/systemd/tt5server.service ${pkgdir}/usr/lib/systemd/system/tt5srv.service
 }
