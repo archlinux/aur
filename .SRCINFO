@@ -7,7 +7,6 @@ pkgbase = java-repl-git
 	arch = i686
 	license = apache
 	makedepends = git
-	makedepends = apache-ant
 	makedepends = gradle
 	depends = java-environment>=6
 	options = !strip

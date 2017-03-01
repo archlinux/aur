@@ -8,7 +8,7 @@ arch=('x86_64' 'i686')
 url="http://www.javarepl.com/term.html"
 license=('apache')
 depends=('java-environment>=6')
-makedepends=('git' 'apache-ant' 'gradle')
+makedepends=('git' 'gradle')
 options=('!strip' '!emptydirs')
 source=('javarepl' 'java-repl-git::git+https://github.com/albertlatacz/java-repl')
 md5sums=('56204df104d62cd15de230911ca4685a' 'SKIP')
