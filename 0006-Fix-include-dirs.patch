@@ -1,0 +1,35 @@
+From: Jochen Sprickerhof <jochen@sprickerhof.de>
+Date: Tue, 6 Nov 2012 23:49:55 +0100
+Subject: Fix include dirs
+
+---
+ Platform/Linux/Build/EngineLibMakefile        | 2 +-
+ Platform/Linux/Build/Utils/EngineUtilMakefile | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Platform/Linux/Build/EngineLibMakefile b/Platform/Linux/Build/EngineLibMakefile
+index 56b274f..34da6c2 100644
+--- a/Platform/Linux/Build/EngineLibMakefile
++++ b/Platform/Linux/Build/EngineLibMakefile
+@@ -14,7 +14,7 @@
+ #############################################################################
+ 
+ INC_DIRS += \
+-	=/usr/include/ni \
++	/usr/include/ni \
+ 	../../../../Include \
+ 	../../../../Source \
+ 	../../../../Source/XnCommon
+diff --git a/Platform/Linux/Build/Utils/EngineUtilMakefile b/Platform/Linux/Build/Utils/EngineUtilMakefile
+index 9f57574..fa5597b 100644
+--- a/Platform/Linux/Build/Utils/EngineUtilMakefile
++++ b/Platform/Linux/Build/Utils/EngineUtilMakefile
+@@ -14,7 +14,7 @@
+ #############################################################################
+ 
+ INC_DIRS += \
+-	=/usr/include/ni \
++	/usr/include/ni \
+ 	../../../../../Include \
+ 	../../../../../Source \
+ 	../../../../../Source/XnCommon

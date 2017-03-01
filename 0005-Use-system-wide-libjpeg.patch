@@ -1,0 +1,45 @@
+From: Jochen Sprickerhof <jochen@sprickerhof.de>
+Date: Tue, 6 Nov 2012 20:47:04 +0100
+Subject: Use system wide libjpeg
+
+---
+ Platform/Linux/Build/XnFormats/Makefile | 11 ++++++++---
+ Source/XnFormats/XnStreamCompression.h  |  2 +-
+ 2 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/Platform/Linux/Build/XnFormats/Makefile b/Platform/Linux/Build/XnFormats/Makefile
+index 4a04486..09b2812 100644
+--- a/Platform/Linux/Build/XnFormats/Makefile
++++ b/Platform/Linux/Build/XnFormats/Makefile
+@@ -1,10 +1,15 @@
+ SRC_FILES = \
+-			../../../../Source/XnFormats/*.cpp \
+-			../../../../Source/External/LibJPEG/*.c
++			../../../../Source/XnFormats/*.cpp
+ 
+ LIB_NAME = XnFormats
+ USED_LIBS = XnCore OpenNI
+ DEFINES = XN_FORMATS_EXPORTS
+-INC_DIRS = ../../../../Source/External/LibJPEG
++
++ifeq ($(shell ld -ljpeg -o /dev/null 1>&2 2> /dev/null; echo $$?), 0)
++  USED_LIBS += jpeg
++else
++  INC_DIRS  += ../../../../Source/External/LibJPEG
++  SRC_FILES += ../../../../Source/External/LibJPEG/*.c
++endif
+ 
+ include ../EngineLibMakefile
+diff --git a/Source/XnFormats/XnStreamCompression.h b/Source/XnFormats/XnStreamCompression.h
+index d49723c..a15c0ec 100644
+--- a/Source/XnFormats/XnStreamCompression.h
++++ b/Source/XnFormats/XnStreamCompression.h
+@@ -27,7 +27,7 @@
+ //---------------------------------------------------------------------------
+ #include "XnFormats.h"
+ #include <XnOS.h>
+-#include <External/LibJPEG/jpeglib.h>
++#include <jpeglib.h>
+ #include <setjmp.h>
+ 
+ //---------------------------------------------------------------------------
