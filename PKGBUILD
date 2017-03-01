@@ -2,7 +2,7 @@
 
 pkgname=terminix-git
 _pkgname=terminix
-pkgver=1.5.0.r0.0f77086
+pkgver=1.5.1.1.0.0.r0.9219d33
 pkgrel=1
 epoch=2 # We need this because of changes in the upstream version numbering
 pkgdesc="A tiling terminal emulator based on GTK+ 3 (git master)"
