@@ -7,6 +7,7 @@ pkgrel=1
 url="http://tboudet.free.fr/hexdiff/"
 pkgdesc="Visual hexadecimal difference editor"
 arch=('i686' 'x86_64')
+depends=('ncurses')
 source=('http://tboudet.free.fr/hexdiff/hexdiff.tar.gz')
 md5sums=('68dbf4c610f4fd1817401bcf6c671b71')
 build() {
