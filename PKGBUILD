@@ -4,7 +4,7 @@
 _icon="default"
 
 pkgname=vuze-dev
-pkgver=5.7.4.1_B26
+pkgver=5.7.5.1_B01
 pkgrel=1
 pkgdesc="A feature-rich Java-based BitTorrent client (previously called 'Azureus') - Bleeding edge version"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ source=("http://downloads.sourceforge.net/azureus/vuze/Vuze_${_stable_ver_flat}/
         "http://cf1.vuze.com/torrent/files/Azureus${_dev_ver_flat}-B${_dev_build}.jar"
          {blue,gray}_{16,32,64,128}.png)
 noextract=($(basename ${source[1]}))
-md5sums=('be264f74dc37f728a5025f502f69c093'
+md5sums=('fb8f224700331de86caa8648418fb41b'
          'SKIP'
          '5eba696cfcc430504706f476e13b2ade'
          'a4cae0c46a6ac56322753f96f52b8f74'
