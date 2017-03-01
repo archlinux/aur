@@ -2,7 +2,7 @@ post_install() {
   systemd-sysusers radarr.conf
 
   mkdir -p /var/lib/radarr
-  chown -R radarr:radarr /var/lib/radarr
+  chown -R radarr:radarr /var/lib/radarr /usr/lib/radarr
 }
 
 post_upgrade() {
