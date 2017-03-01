@@ -50,8 +50,8 @@ _use_current=
 
 pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
-_srcname=linux-4.9
-pkgver=4.9.13
+_srcname=linux-4.10
+pkgver=4.10.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
@@ -59,29 +59,28 @@ license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc')
 _bfqrel=v7r11
-_bfqver=v8r7
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.9.0-${_bfqver}"
-_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.9.0-${_bfqver}"
+_bfqver=v8r8
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.10.0-${_bfqver}"
+#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.10.0-${_bfqver}"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.5.0.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.5.0.patch"
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqrel}-4.10..patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqrel}-I-O-sched-for-4.10.0.patch"
         "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqrel}-for.patch"
-        "${_bfqpath}/0004-Turn-into-BFQ-${_bfqver}-for-4.9.0.patch"
+        "${_bfqpath}/0004-Turn-BFQ-${_bfqrel}-for-4.10.0-into-BFQ-${_bfqver}-for-4.10.0.patch"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
-        'change-default-console-loglevel.patch'
          # the main kernel config files
-        'config' 'config.x86_64'
+        'config.i686' 'config.x86_64'
          # pacman hook for initramfs regeneration
         '99-linux.hook'
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
-        '0005-BFQ-update-to-v8r8.patch')
+        )
 
 _kernelname=${pkgbase#linux} 
 
@@ -91,16 +90,10 @@ prepare() {
     ### Add upstream patch
         msg "Add upstream patch"
         patch -Np1 -i "${srcdir}/patch-${pkgver}" 
-         
-    ### set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
-    # remove this when a Kconfig knob is made available by upstream
-    # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-        msg "Patching set DEFAULT_CONSOLE_LOGLEVEL to 4"
-        patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
-        for p in "${srcdir}"/000{1,2,3,4,5}-*BFQ*.patch; do
+        for p in "${srcdir}"/000{1,2,3,4}-*BFQ*.patch; do
         msg " $p"
         patch -Np1 -i "$p"
         done
@@ -109,16 +102,11 @@ prepare() {
         msg "Patching source with gcc patch to enable more cpus types"
 	patch -Np1 -i "${srcdir}/${_gcc_patch}"
 
-	
     ### Clean tree and copy ARCH config over
 	msg "Running make mrproper to clean source tree"
 	make mrproper
 
-	if [ "${CARCH}" = "x86_64" ]; then
-		cat "${srcdir}/config.x86_64" > ./.config
-	else
-		cat "${srcdir}/config" > ./.config
-	fi
+	cat "${srcdir}/config.${CARCH}" > ./.config
       
     ### Optionally set tickrate to 1000 
 	if [ -n "$_1k_HZ_ticks" ]; then
@@ -166,13 +154,13 @@ prepare() {
 		fi
 	fi
 
-	# set extraversion to pkgrel
+	### Set extraversion to pkgrel
 	sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
 
-	# don't run depmod on 'make install'. We'll do this ourselves in packaging
+	### Don't run depmod on 'make install'. We'll do this ourselves in packaging
 	sed -i '2iexit 0' scripts/depmod.sh
 
-	# get kernel version
+	### Get kernel version
 	msg "Running make prepare for you to enable patched options of your choosing"
 	make prepare
 
@@ -190,35 +178,27 @@ prepare() {
 		make localmodconfig
 	fi
 
-	if [ -n "$_makenconfig" ]; then
-		msg "Running make nconfig"
-		make nconfig
-	fi
+	### Running make nconfig
 	
-	if [ -n "$_makemenuconfig" ]; then
-		msg "Running make menuconfig"
-		make menuconfig
-	fi
+	[[ -z "$_makenconfig" ]] ||  make nconfig
 	
-	if [ -n "$_makexconfig" ]; then
-		msg "Running make xconfig"
-		make xconfig
-	fi
+	### Running make menuconfig
 	
-	if [ -n "$_makegconfig" ]; then
-		msg "Running make gconfig"
-		make gconfig
-	fi
-
-	# rewrite configuration
+	[[ -z "$_makemenuconfig" ]] || make menuconfig
+	
+	### Running make xconfig
+	
+	[[ -z "$_makexconfig" ]] || make xconfig
+	
+	### Running make gconfig
+	
+	[[ -z "$_makegconfig" ]] || make gconfig
+	
+	### Rewrite configuration
 	yes "" | make config >/dev/null
 
-	# save configuration for later reuse
-	if [ "${CARCH}" = "x86_64" ]; then
-		cat .config > "${startdir}/config.x86_64.last"
-	else
-		cat .config > "${startdir}/config.last"
-	fi
+	### Save configuration for later reuse
+	cat .config > "${startdir}/config.${CARCH}.last"
 }
 
 build() {
@@ -443,21 +423,19 @@ for _p in ${pkgname[@]}; do
   }"
 done
 
-sha512sums=('bf67ff812cc3cb7e5059e82cc5db0d9a7c5637f7ed9a42e4730c715bf7047c81ed3a571225f92a33ef0b6d65f35595bc32d773356646df2627da55e9bc7f1f1a'
+sha512sums=('c3690125a8402df638095bd98a613fcf1a257b81de7611c84711d315cd11e2634ab4636302b3742aedf1e3ba9ce0fea53fe8c7d48e37865d8ee5db3565220d90'
             'SKIP'
-            'd7956cc8a4ab11514789af4f1f7023268e4b003216766c153f0f09aac659aabda5de634b363d53f8daeddfcf5820619c5bca31ff5f9aeb187c1df016c05f68d5'
+            '7d36d210eade03df91dd3bbaa9cb9bdad0a2c60e21a7b6c1be36f7610d4329b6b517517ba8d971458a2e1bc219e639dacccc8ffe6b12b8954c3ba19bf527f239'
             'SKIP'
-            '5709ec16030f372309c06020ab0cc23940cad320204ce12426b8b10b3bdbd9be25c8a7bae247ce341429e8a33d0097700a88149d54b29ff44a61d1d4aff66763'
-            '953566f2b74415cd5113882352c8518234c399e0e0a6cc118ddfa259c65d6fc30de00f25b605489d53e0b1f948bc7b3ebf8f20b970538f5bf7de5a7f33a0f641'
-            '8fed8499a52d685e81a1cffac7e6764a3720a923c3a3e4ccec33a4b0145dc84c24172363ff5574608d80c10462a4e824ef1b5ad3e5e5187f816e16adab774700'
-            '93338e0ae23d2832e4dc75b1b4dc6d2ba34d621a71c7951f1e70ddd483d091211b2aa429683b21a7f9cf2152e2d974b6a1a8cc7b0d6549a7f639870b07f5295e'
+            '03f4d45c0b3ac20baea9eaa92591e1749499e084cbca104f55a3ec4cfeda0e6c7fe6766b0eea0bb5bb4cf7f2371992e7a6002aaec09a08386fe2431c9cf0a3a8'
+            'c4161e2ff79647b8e8212681c0294b6f160c135728f48adfe61b1089d6242f925584afe4d2ebf0ef9cb650ae45c057d5c7119ce0264d3aeda008bb359b2b2582'
+            '3147c29a542342eb2b60c4247edbffce0a35356e3b67a5471ed0e7555d3b9ec1b985e1090dc0b646bab129306962d094d7632e82b72fdbec3582b7461818e664'
+            '704170c1fbfbd638fb0b8633c954be11e6423a60df0f896b6f5cf5d3b19502c117a952859265de689d29d06de66065d3e356350f2f371a2c43d97937d5666d95'
             'ab781ca0315316043d2074ad925288616ff4935e0c91b09090cd2a2cc392845eddf1c93b5dadda0eb434050459b51a4e2587e5099e6a9204d0d13b7f427d399c'
-            'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
-            '40432a00d83e1b9b94c24fda458015e378b4f0b9574b229ffd04a0679837b8c868e94655e47f464bb1650f0b91d443895b7ba45f4d60bf7f4f25689237bb61ab'
-            '9284561c94b2d9e528404946ace32823da6d6c62af216dfba00ec9782acd4026cc4c87ab1264ad2af3970c4d5b33338c229db74e1a4d4ac30f449115f3be3776'
+            '1f0a8695b7c106d7946d67eaa8ebcf4e0bccd2cae01b0cd5621af04aa42f7e9a1b379764fb9bd9917f85ff719ec28e081eeb7c143a682f6d179e2bd1d7d15d7e'
+            '6afb164bc7a38fea08a49c70690afafb209d1245588e1ecf57998926f5b43fe85d39a1ab1a133900b82bc1d3d97538330bf5c646b62e782653d69b6139d72200'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
-            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'dab3dba300e276dd552cb86c903af5cac9f7c7954b938ac9c300745a175198c553d84cd3a5e58c350d83160f33b07f6dd20a570da4afdce178464c402ac7829b')
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
