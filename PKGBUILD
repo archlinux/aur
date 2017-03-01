@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=libvpx-full-git
-pkgver=1.6.1.r262.g47d6f16a04
+pkgver=1.6.1.r273.g8697d14ec8
 pkgrel=1
 pkgdesc="VP8 and VP9 video codecs (Git version with all possible options)"
 arch=('i686' 'x86_64')
@@ -55,7 +55,7 @@ build() {
 	      --enable-install-libs \
 	      --disable-install-srcs \
 	      --enable-libs \
-	      --disable-examples \
+	      --enable-examples \
 	      --disable-docs \
 	      --disable-unit-tests \
 	      --disable-decode-perf-tests \
