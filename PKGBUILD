@@ -2,7 +2,7 @@
 
 pkgname='blink'
 _reponame='blink-qt'
-pkgver='3.0.1'
+pkgver='3.0.3'
 pkgrel='1'
 pkgdesc='A state of the art, easy to use SIP client'
 arch=('any')
@@ -21,7 +21,7 @@ depends=('icu'
          'qt5-svg')
 
 source=("https://github.com/AGProjects/${_reponame}/archive/release-${pkgver}/${_reponame}-${pkgver}.tar.gz")
-sha256sums=('187bf7467c32c553f1f82660aeb8572cd9ff2bdbdf9ee7c83f731a78f76856df')
+sha256sums=('26bf454c1db3407c4f6c16e0edece31d2cbbbd4e45d61fd11eb319c695f8b277')
 
 build() {
   cd ${srcdir}/${_reponame}-release-${pkgver}
