@@ -1,8 +1,8 @@
 # Maintainer: Ricardo Band <email@ricardo.band>
 
 pkgname=hedera-icon-theme-git
-pkgver=0.r295.f9a8c237
-pkgrel=2
+pkgver=0.r1.4f933d6
+pkgrel=1
 pkgdesc='A classic icon theme in the spirit of Tango!.'
 arch=('any')
 url='https://github.com/sixsixfive/Hedera/'
@@ -24,7 +24,7 @@ sha256sums=('SKIP')
 pkgver()
 {
   cd Hedera/
-  echo "0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package()
