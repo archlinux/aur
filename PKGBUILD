@@ -3,7 +3,7 @@
 # Contributor: Maarten de Vries <maarten@de-vri.es>
 
 pkgname=cloudabi-utils
-pkgver=0.21
+pkgver=0.22
 pkgrel=1
 pkgdesc="a number of libraries and utilities that can be used to easily start CloudABI programs"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('glibc' 'libyaml')
 makedepends=('cloudabi' 'cmake')
 source=("https://github.com/NuxiNL/cloudabi-utils/archive/v$pkgver.tar.gz")
-sha512sums=('26ecfa59d4a48a84f8373ec4f0139be6f4e1bd13107415bd35984d9bce623e7b3878749ef38cac3402f3994dfbda0af250bdbde37eb3f3afc9894a535fb32f9d')
+sha512sums=('595e215e8fc34bc2da436a7eb10dfd11dde8b15ba27a9db6c8e7ceee093d5aa84a1f8f35a6c2250cd1f92266b6573c3d964d532f36f38f78b9da5bf18a1a856c')
 
 prepare() {
 	mkdir -p "$srcdir/build"
