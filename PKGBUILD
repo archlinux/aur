@@ -16,7 +16,9 @@ build() {
 	g++ simple.cc -o webmc `pkg-config gtkmm-3.0 --libs --cflags`
 }
 package() {
+	mkdir -p "$pkgdir/opt/$pkgname/ln"
 	install -Dm755 "$srcdir/webmc/webmc" "$pkgdir/opt/$pkgname/"
 	install -Dm755 "$srcdir/webmc/glade.glade" "$pkgdir/opt/$pkgname/"
-	ln -s "$pkgdir/opt/$pkgname/webmc" "$pkgdir/usr/bin/webmc"
+	ln -s "$pkgdir/opt/$pkgname/webmc" "$pkgdir/opt/$pkgname/ln/"
+	install -Dm755 "$pkgdir/opt/$pkgname/ln/webmc" "$pkgdir/usr/bin"
 }
