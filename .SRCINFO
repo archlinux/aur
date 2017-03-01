@@ -1,0 +1,17 @@
+pkgbase = python-flask-socketio-git
+	pkgdesc = Socket.IO integration for Flask applications
+	pkgver = 2.8.4
+	pkgrel = 1
+	url = http://github.com/miguelgrinberg/Flask-SocketIO/
+	arch = any
+	license = MIT
+	makedepends = python3
+	depends = python
+	depends = python-flask
+	depends = python-socketio
+	depends = python-engineio
+	source = https://pypi.python.org/packages/7c/29/0007c686427e9eec4586b6a6ad87532092662e28dc204525f9838393a3b4/Flask-SocketIO-2.8.4.tar.gz
+	md5sums = bbc6f080f2c985331f2e69fbb7de856d
+
+pkgname = python-flask-socketio-git
+
