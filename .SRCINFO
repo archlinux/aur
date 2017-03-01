@@ -1,0 +1,15 @@
+pkgbase = segemehl
+	pkgdesc = A sequence aligner based on short read mapping with gaps
+	pkgver = v0.2
+	pkgrel = 1
+	url = http://www.bioinf.uni-leipzig.de/Software/segemehl/
+	arch = i686
+	arch = x86_64
+	license = Unknown
+	makedepends = wget
+	makedepends = gcc
+	source = http://www.bioinf.uni-leipzig.de/Software/segemehl/segemehl_0_2_0.tar.gz
+	md5sums = fef4db00ed2742a2bf4131eed674bb08
+
+pkgname = segemehl
+
