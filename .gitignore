@@ -1,0 +1,4 @@
+/knot-resolver*.tar.*
+/src/
+/pkg/
+*~
