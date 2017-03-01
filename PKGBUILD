@@ -3,7 +3,7 @@
 
 pkgname=xonsh
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python-ish, BASHwards-compatible shell"
 url="http://xon.sh/"
 arch=('any')
@@ -19,6 +19,4 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root=$pkgdir
   install -D -m644 license "$pkgdir/usr/share/licenses/$pkgname/license"
-  site_packages=$(python -c "import site; print(site.__file__.rsplit('/', 2)[-2])")
-  install -D -m644 xonsh/parser_table.py "$pkgdir/usr/lib/$site_packages/site-packages/xonsh"
 }
