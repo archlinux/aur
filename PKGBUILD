@@ -9,7 +9,7 @@ arch=("x86_64")
 url="https://github.com/sidneys/${pkgname}"
 license=("MIT")
 source=("https://github.com/sidneys/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.pacman")
-md5sums=("879530725ACF33D20F4212635B0C1063")
+md5sums=("6D4BF707E3331C8E63B5A79CD14D3E73")
 replace_str="\/opt\/${fullpkgname}\/${pkgname}"
 
 package() {
