@@ -1,0 +1,113 @@
+# Maintainer : Daniel Bermond < yahoo-com: danielbermond >
+
+pkgname=openni2-git
+pkgver=2.2.beta.r25.g1fce8ed
+pkgrel=1
+pkgdesc="Framework for sensor-based 'Natural Interaction' (Git version)"
+arch=('i686' 'x86_64')
+url="https://github.com/occipital/OpenNI2/"
+license=('APACHE')
+depends=('freeglut' 'glu' 'libusb' 'java-environment' 'libjpeg-turbo')
+makedepends=('git' 'python' 'doxygen' 'graphviz')
+provides=('openni2')
+conflicts=('openni2' 'openni2-libfreenect')
+source=('openni2-git'::'git+https://github.com/occipital/OpenNI2.git'
+        '0002-Change-path-of-config-files-to-etc-openni2.patch'
+        '0003-Use-system-wide-libjpeg.patch'
+        '0005-change-default-ni-drivers-path.patch'
+        '0013-Fix-GCC6-compilation.patch'
+        'libopenni2.pc')
+sha256sums=('SKIP'
+            '368c0b41a26a65377359ce22a914cb8b6f4020e2972f67f151f2b9bdbf1a5a50'
+            '1ca20e60ac10a193cbf0ca4759230ba7930479baa7d237476583359e7b62f604'
+            '635c762230a2dc57977c7f42cc7d1c25438d3864baca7632360466e8c031e3b5'
+            '0fd53b2c41a48cb4b28e67c6cfcedf4d17ffbe675bd2eb21793a683bbb0d85bb'
+            '57c9236c77133437a533d3cac6775da4749a070dd468e88e29b07d7a83aaaab1')
+
+prepare() {
+    cd "${srcdir}/${pkgname}"
+    
+    # fix building documentation with java 8
+    # https://github.com/OpenNI/OpenNI2/issues/87
+    local _javaver="$(archlinux-java get | grep -o '^[^-]*.[0-9]*')"
+    if [ "$(vercmp "$_javaver" "java-8")" -ge "0" ] 
+    then
+        sed -i "s/cmd = \[javaDocExe, '-d', 'java'\]/cmd = [javaDocExe, '-d', 'java', '-Xdoclint:none']/" Source/Documentation/Runme.py
+    fi
+    
+    # apply patches
+    patch -Np1 -i "${srcdir}/0002-Change-path-of-config-files-to-etc-openni2.patch"
+    patch -Np1 -i "${srcdir}/0003-Use-system-wide-libjpeg.patch"
+    patch -Np1 -i "${srcdir}/0005-change-default-ni-drivers-path.patch"
+    patch -Np1 -i "${srcdir}/0013-Fix-GCC6-compilation.patch"
+}
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    
+    # Git, tags availabe
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+    cd "${srcdir}/${pkgname}"
+    make
+    make doc
+}
+
+package() {
+    if [ "${CARCH}" = "x86_64" ] 
+    then
+        _architecture="x64"
+    elif [ "${CARCH}" = "i686" ] 
+    then
+        _architecture="x86"
+    fi
+    
+    # directories creation
+    mkdir -p "${pkgdir}/usr/"{bin,include/openni2/{Linux-Arm,Linux-x86}}
+    mkdir -p "${pkgdir}/usr/lib/"{OpenNI2/Drivers,pkgconfig}
+    mkdir -p "${pkgdir}/usr/share/"{doc/"${pkgname}",licenses/"${pkgname}"}
+    mkdir -p "${pkgdir}/usr/lib/udev/rules.d" # usb rules (udev rules)
+    mkdir -p "${pkgdir}/etc/openni2/Drivers"  # config
+    
+    # binaries and libraries
+    cd "${srcdir}/${pkgname}/Bin/${_architecture}-Release"
+    install    -m755 NiViewer             "${pkgdir}/usr/bin/NiViewer2"
+    install -D -m755 ClosestPointViewer   "${pkgdir}/usr/bin"
+    install -D -m755 EventBasedRead       "${pkgdir}/usr/bin"
+    install -D -m755 Multi*               "${pkgdir}/usr/bin"
+    install -D -m755 MWClosestPointApp    "${pkgdir}/usr/bin"
+    install -D -m755 PS*                  "${pkgdir}/usr/bin"
+    install -D -m755 Simple*              "${pkgdir}/usr/bin"
+    install -D -m755 *.so                 "${pkgdir}/usr/lib"
+    install -D -m755 OpenNI2/Drivers/*.so "${pkgdir}/usr/lib/OpenNI2/Drivers"
+    
+    # includes
+    cd "${srcdir}/${pkgname}/Include"
+    install -D -m644 *.h         "${pkgdir}/usr/include/openni2"
+    install -D -m644 Linux-Arm/* "${pkgdir}/usr/include/openni2/Linux-Arm"
+    install -D -m644 Linux-x86/* "${pkgdir}/usr/include/openni2/Linux-x86"
+    
+    # udev rules
+    cd "${srcdir}/${pkgname}/Packaging/Linux"
+    install -m644 primesense-usb.rules "${pkgdir}/usr/lib/udev/rules.d/60-openni2-usb.rules"
+    
+    # config
+    cd "${srcdir}/${pkgname}/Config"
+    install -D -m644 *.ini             "${pkgdir}/etc/openni2"
+    install -D -m644 OpenNI2/Drivers/* "${pkgdir}/etc/openni2/Drivers"
+    
+    # documentation
+    cd "${srcdir}/${pkgname}/Source/Documentation/html"
+    install -D -m644 * "${pkgdir}/usr/share/doc/${pkgname}"
+    
+    # pkg-config file
+    cd "$srcdir"
+    install -D -m644 "${srcdir}/libopenni2.pc" "${pkgdir}/usr/lib/pkgconfig"
+    
+    # license
+    cd "${srcdir}/${pkgname}"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}"
+}
