@@ -4,6 +4,8 @@ post_install() {
     if [ -d "/opt/JDownloader/" ]; then
         chown -R jdownloader:jdownloader /opt/JDownloader/
         chmod -R 0775 /opt/JDownloader/
+        chmod g+s "/opt/JDownloader"
+        setfacl -d -m u::rwx,g::rwx,o::rx "/opt/JDownloader"
     fi
     xdg-icon-resource forceupdate --theme hicolor &>/dev/null
     update-desktop-database -q

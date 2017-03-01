@@ -80,7 +80,6 @@ package() {
 	install -D -m644 "$srcdir/jdownloader256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/jdownloader.png"
 	install -D -m644 "$srcdir/jdownloader.service" "$pkgdir/usr/lib/systemd/system/jdownloader.service"
 	install -d -m775 "$pkgdir/opt/JDownloader"
-  
   mkdir -p "$pkgdir/usr/bin"
   
   ln -s "/opt/JDownloaderScripts/JDownloader"  "${pkgdir}/usr/bin/JDownloader"
