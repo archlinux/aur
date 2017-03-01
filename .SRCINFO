@@ -1,19 +1,20 @@
 pkgbase = java-repl-git
 	pkgdesc = Read Eval Print Loop for Java
-	pkgver = r309.484e629
+	pkgver = r452.304c924
 	pkgrel = 1
-	url = http://www.javarepl.com/console.html
+	url = http://www.javarepl.com/term.html
 	arch = x86_64
 	arch = i686
 	license = apache
 	makedepends = git
 	makedepends = apache-ant
+	makedepends = gradle
 	depends = java-environment>=6
 	options = !strip
 	options = !emptydirs
 	source = javarepl
 	source = java-repl-git::git+https://github.com/albertlatacz/java-repl
-	md5sums = d6767a5470966f68fb4b238308c60be6
+	md5sums = 56204df104d62cd15de230911ca4685a
 	md5sums = SKIP
 
 pkgname = java-repl-git
