@@ -2,9 +2,9 @@
 # Maintainer: Isaac Curtis <isaaccurtis1@gmail.com>
 
 pkgname=zotero-beta
-pkgver="5.0_beta.147%2B1ff1fab"
+pkgver="5.0_beta.157%2B82b789e"
 pkgrel=1
-pkgdesc="Zotero Standalone. Is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources."
+pkgdesc="Zotero Standalone. A free, easy-to-use tool to help you collect, organize, cite, and share your research sources."
 arch=('i686' 'x86_64')
 url="http://www.zotero.org/download"
 license=('GPL3')
@@ -13,12 +13,10 @@ conflicts=('zotero')
 if [[ $CARCH == "x86_64" ]]
 then
   _arch=x86_64
-  md5sums=('SKIP'
-           '3bfed397fb9d060af469eaacfe8add63')
+md5sums=('d4717fc73c1492386a030a8d5b4c7a3f'
+         '3bfed397fb9d060af469eaacfe8add63')
 else
   _arch=i686
-  md5sums=('SKIP'
-           '3bfed397fb9d060af469eaacfe8add63')
 fi
 install='zotero-beta.install'
 source=("https://download.zotero.org/standalone/beta/${pkgver//_/-}/Zotero-${pkgver//_/-}_linux-${_arch}.tar.bz2"
