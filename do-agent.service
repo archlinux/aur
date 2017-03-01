@@ -6,7 +6,7 @@ Wants=network-online.target
 [Service]
 User=nobody
 Group=nobody
-ExecStart=/opt/digitalocean/bin/do-agent
+ExecStart=/usr/bin/do-agent
 
 [Install]
 WantedBy=multi-user.target
