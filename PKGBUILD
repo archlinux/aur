@@ -6,16 +6,19 @@
 # Contributor: TuxSpirit <tuxspirit@archlinux.fr>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
+# All my PKGBUILDs are managed at https://github.com/tmn505/AUR
+
 pkgname=p7zip-gui
 pkgver=16.02
-pkgrel=2
+pkgrel=3
 pkgdesc='Graphic user interface (alpha quality) for the 7zip file archiver'
 url='http://p7zip.sourceforge.net/'
 license=('custom:unRAR' 'LGPL')
 arch=('i686' 'x86_64')
 depends=('p7zip' 'wxgtk')
-optdepends=('desktop-file-utils: desktop entries')
-makedepends=('python' 'webkitgtk2')
+optdepends=('desktop-file-utils: desktop entries'
+            'kservice: entries in kde context menu')
+makedepends=('python')
 makedepends_i686=('nasm')
 makedepends_x86_64=('yasm')
 options=(!makeflags)
@@ -41,7 +44,7 @@ prepare() {
 
 build() {
 	cd ${srcdir}/p7zip_${pkgver}
-	make 7zFM 7zG OPTFLAGS="${CFLAGS}"
+	make 7zFM 7zG OPTFLAGS="${CXXFLAGS}"
 }
 
 package() {
@@ -57,12 +60,14 @@ package() {
 
 	install -Dm644 GUI/p7zip_32.png ${pkgdir}/usr/share/icons/hicolor/32x32/apps/p7zip.png
 	install -dm755 ${pkgdir}/usr/share/{applications,kde4/services/ServiceMenus}
-	cp GUI/kde4/* ${pkgdir}/usr/share/kde4/services/ServiceMenus
+	cp GUI/kde4/*.desktop ${pkgdir}/usr/share/kde4/services/ServiceMenus
 	install -dm755 ${pkgdir}/usr/share/kservices5/ServiceMenus
-	cp GUI/kde4/* ${pkgdir}/usr/share/kservices5/ServiceMenus
+	cp GUI/kde4/*.desktop ${pkgdir}/usr/share/kservices5/ServiceMenus
 	cp ../7zFM.desktop ${pkgdir}/usr/share/applications
 	ln -s 7zCon.sfx ${pkgdir}/usr/lib/p7zip/7z.sfx
 	install -dm755 ${pkgdir}/usr/share/doc/p7zip/DOC/MANUAL
 	cp -r DOC/MANUAL/fm ${pkgdir}/usr/share/doc/p7zip/DOC/MANUAL
+	chmod -R a+r,u+w,a+X ${pkgdir}/usr/share/doc/p7zip/DOC/MANUAL/fm
+	ln -s /usr/share/doc/p7zip/DOC/MANUAL ${pkgdir}/usr/lib/p7zip/help
 	chmod +x ${pkgdir}/usr/bin/p7zipForFilemanager
 }
