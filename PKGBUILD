@@ -2,11 +2,11 @@
 # Maintainer: Maddie Zhan <maddie@emzee.be>
 
 pkgname=overture
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A DNS upstream switcher written in Go in order to purify DNS records"
 arch=("i686" "x86_64" "armv6h" "armv7h")
-url="https://github.com/holyshawn/overture"
+url="https://github.com/shawn1m/overture"
 license=("MIT")
 provides=("overture")
 optdepends=("dnsmasq: advanced DNS configuration")
@@ -15,8 +15,8 @@ backup=("etc/overture/config.json")
 
 install=${pkgname}.install
 
-_gourl=github.com/holyshawn/${pkgname}
-source=("git+https://github.com/holyshawn/${pkgname}.git#tag=$pkgver"
+_gourl=github.com/shawn1m/${pkgname}
+source=("git+https://github.com/shawn1m/${pkgname}.git#tag=$pkgver"
         "china_ip_list.txt"
         "config.json"
         "gfwlist.txt"
@@ -54,7 +54,7 @@ prepare() {
   export GOROOT="$srcdir/build/go"
   export GOPATH="$srcdir/build"
 
-  mkdir -p "$GOPATH/src/github.com/holyshawn"
+  mkdir -p "$GOPATH/src/github.com/shawn1m"
 
   mv "$srcdir/$pkgname" $GOPATH/src/${_gourl}
 }
