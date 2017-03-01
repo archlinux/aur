@@ -1,6 +1,6 @@
 [Desktop Entry]
 _Name=Topinambour
-_Comment=Use the command line
+_Comment=vte terminal based on the ruby-gnome2 bindings
 _Keywords=shell;prompt;command;commandline;cmd;
 TryExec=topinambour
 Exec=topinambour
