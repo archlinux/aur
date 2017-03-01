@@ -2,7 +2,7 @@
 
 pkgname=notepadqq-git
 _pkgname=notepadqq
-pkgver=0.53.0.r31.g810c539
+pkgver=1.0.1.r23.g82d223c
 pkgrel=1
 pkgdesc="A Linux clone of Notepad++"
 arch=('i686' 'x86_64')
@@ -38,9 +38,9 @@ prepare() {
 build() {
 	cd "${_pkgname}"
 	
-	 qmake-qt5 PREFIX=/usr notepadqq.pro
+	qmake-qt5 PREFIX=/usr LRELEASE=/usr/bin/lrelease notepadqq.pro
 
-	 make
+	make
 	
 }
 
