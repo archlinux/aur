@@ -1,31 +1,39 @@
 # Author: Kyle Manna <kyle at kylemanna dot com>
 
 pkgname=do-agent
-pkgver=0.4.6
-pkgrel=2
+pkgver=0.4.7
+pkgrel=1
 pkgdesc='DigitalOcean Agent for Enhanced Droplet Graphs'
-url='https://agent.digitalocean.com/install.sh'
+url='https://github.com/digitalocean/do-agent'
 arch=('x86_64')
+makedepends=('go')
+depends=()
+_gourl='github.com/digitalocean/do-agent'
 
-# License in Debian pkg metadata is "Unknown"
-license=('unknown')
+license=('apache')
 
-source=("https://repos.sonar.digitalocean.com/apt/pool/main/d/${pkgname}/${pkgname}_${pkgver}_amd64.deb"
+source=("https://github.com/digitalocean/${pkgname}/archive/${pkgver}.tar.gz"
         "do-agent.service")
 
-sha256sums=('a720363eed91b41ae465ee35e0658e9debbc3ecc7f9ded8746d5c046828cc638'
-            'dfa9c58a18985bedb2e971b68e015b52baaf08079358f23a7128a791843d4e53')
+sha512sums=('64147e6e2e7b78bb696c942b337440eb682628252d650a1a3cc7d42f3502a64f7ec58040e45f1cc887982332103a19bdb2beb10ee4afd4f1cd33f5d80cd97d9b'
+            '9c926ce72e5e37c59f4ceb05db91b10da24d2c9d757395549ce8d01531adae10a18b76952f66044fd7f551198119b8750adac8ab45650d2646ae60f64364d8e2')
+
+prepare() {
+	cd "$srcdir"
+	# make temporary GOPATH for govendor and link git checkout into here
+	mkdir -p go/{bin,src}
+	mkdir -p go/src/github.com/digitalocean
+	ln -s "$srcdir/$pkgname-$pkgver" "$srcdir/go/src/github.com/digitalocean/$pkgname"
+}
+
+build() {
+	cd "$srcdir/go/src/github.com/digitalocean/$pkgname"
+	PATH="$srcdir/go/bin:$PATH" GOPATH="$srcdir/go" make build
+}
 
 package() {
-    cd "$srcdir"
-    bsdtar --to-stdout -xf "${pkgname}_${pkgver}_amd64.deb" data.tar.gz | bsdtar -xf - -C "${pkgdir}"
-
-    # /lib is a symlink on Arch
-    mv "${pkgdir}/lib" "${pkgdir}/usr/"
-
-    # Copy working systemd service over top
-    cp do-agent.service "${pkgdir}/usr/lib/systemd/system/do-agent.service"
-
-    # Ain't nobody got time for old init systems
-    rm "${pkgdir}/etc/init/do-agent.conf"
+	cd "$srcdir/$pkgname-$pkgver"
+	install -d $pkgdir/usr/{bin,lib/systemd/system}
+	install -Dm755 do-agent $pkgdir/usr/bin/do-agent
+	install -Dm644 "$srcdir/do-agent.service" $pkgdir/usr/lib/systemd/system/do-agent.service
 }
