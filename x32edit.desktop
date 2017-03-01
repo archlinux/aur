@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=X32 Edit
+Comment=Behringer X32 Scene Editor
+Exec=x32edit
+Icon=x32edit
+Terminal=false
+Type=Application
+X-MultipleArgs=false
+Categories=GTK;Audio;AudioVideo;
