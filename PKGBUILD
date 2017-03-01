@@ -5,7 +5,7 @@
 
 # AUR dependencies
 # ----------------
-# pstoedit-nomagick autotrace-nomagick flif libfpx libraqm
+# pstoedit-nomagick autotrace-nomagick flif libfpx libraqm libumem-git
 
 # NOTE (1):
 # DPS (Display PostScript) feature is obsolete and thus not enabled.
@@ -37,7 +37,7 @@ _srcver="$(curl -s "$_digest" | grep -o "${_srcname}-7[0-9\.-]*\.tar\.xz" | \
 _srcverregex="$(echo "$_srcver" | sed 's/\./\\\./g')" # translate to a regular expression
 pkgname=imagemagick-full
 pkgver="$(echo "$_srcver"| tr '-' '.')"
-pkgrel=6
+pkgrel=7
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
