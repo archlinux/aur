@@ -18,7 +18,7 @@ MRuby::Build.new do |conf|
   conf.gem github: 'iij/mruby-iijson', checksum_hash: '2472d063fce158249862b43bf51a84aec63336c7' # Latest
   conf.gem github: 'iij/mruby-io', checksum_hash: '86d58a2d3727f556e6e6ce10d170b6170911a263' # Specified by mitamae
   conf.gem github: 'mattn/mruby-onig-regexp', checksum_hash: '12f573cb327aa50834c3a549f62995f44edd3172' # Latest
-  conf.gem github: 'k0kubun/mruby-open3', checksum_hash: '211550775492e68ba217526808cf1df9deb7fa5a' # Specified by mitamae
+  conf.gem github: 'k0kubun/mruby-open3', checksum_hash: 'b7480b6300a81d0e5fac469a36a383518e3dfc78' # Specified by mitamae
   conf.gem github: 'fastly/mruby-optparse', checksum_hash: 'e6397a090d1efe04d5dab57c63897f0d79bbad89' # Latest
   conf.gem github: 'iij/mruby-pack', checksum_hash: '88a7fedea413568a1ff0410e109ff55a03b63a5f' # Latest
   conf.gem github: 'iij/mruby-process', checksum_hash: '7308e8f4737cb33e3a3d92e60169983a6ebddd08' # Latest

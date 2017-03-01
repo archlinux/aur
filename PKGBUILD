@@ -1,6 +1,6 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=mitamae
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Configuration management tool embedding mruby"
 arch=('i686' 'x86_64')
@@ -38,6 +38,6 @@ package() {
   install -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-sha512sums=('cc54dbbfff2e6164e6e44bb54b0511743ef7e11c45201cd3dacc8b4d8bb4f0d9407bf907cece74df511242fa6f5b6ab0e74b2652e6b8a69159456e14c1bc61bb'
+sha512sums=('b1e98ce9ee2efedc6e835eb8b8de3f09c2282d26506313ea15e3fe8c07e0a3bc0e8ba06f958b5a9726c52d34e18571255ba9d21d810d67b2a9bb1f28a1d4484f'
             '7423af432f366a9c1d7c5ca0c54ca7cb1afebeecf3d979df4f1fff53ce11d611332dbe578cea5a7f4362d183c1a6c8d431d6fd262fdc4d0fe298c1eb7d4757e9'
-            'c4efd756f90cc35b462ab5be5fcd3bf34b7aef6286ae23669c36937660ea9d46c3d7df95957683a1a39342477c093c51a373aea5d96d062dc0617c0617317250')
+            '4005781c5e79d6aee5f76f5544cfea1b1c73e296ed612fda17c5cd0e465970039e16c1295172fd66f6dc05a6752fced5ba353ec763f7e2d04f2c6912711e9e24')
