@@ -7,8 +7,8 @@ pkgdesc="A lightweight (~5kloc) KVM-based virtual machine which can host Linux g
 license=('GPL2')
 url="https://git.kernel.org/cgit/linux/kernel/git/will/kvmtool.git/"
 
-arch=('i686' 'x86_64') # add ARM support!
-depends=('binutils')
+arch=('i686' 'x86_64') # TODO: add ARM support!
+depends=('binutils')   # TODO: create an AUR package that builds a lightweight, stripped-down lkvm kernel, and transfer the qemu boot image over to it
 makedepends=('git')
 
 source=(
