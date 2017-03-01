@@ -1,21 +1,21 @@
 # Maintainer: Alexandre Bury <alexandre.bury@gmail.com>
 
 pkgname=java-repl-git
-pkgver=r309.484e629
+pkgver=r452.304c924
 pkgrel=1
 pkgdesc="Read Eval Print Loop for Java"
 arch=('x86_64' 'i686')
-url="http://www.javarepl.com/console.html"
+url="http://www.javarepl.com/term.html"
 license=('apache')
 depends=('java-environment>=6')
-makedepends=('git' 'apache-ant')
+makedepends=('git' 'apache-ant' 'gradle')
 options=('!strip' '!emptydirs')
 source=('javarepl' 'java-repl-git::git+https://github.com/albertlatacz/java-repl')
-md5sums=('d6767a5470966f68fb4b238308c60be6' 'SKIP')
+md5sums=('56204df104d62cd15de230911ca4685a' 'SKIP')
 
 build() {
 	cd "$pkgname"
-	ant
+	gradle shadowJar
 }
 
 pkgver() {
@@ -31,5 +31,5 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 
 	install -Dm755 javarepl "$pkgdir/usr/bin/javarepl"
-	install -Dm644 "$srcdir/$pkgname/build/artifacts/javarepl-dev.build.jar" "$pkgdir/usr/share/java/java-repl/"
+	install -Dm644 "$srcdir/$pkgname/build/libs/javarepl-dev.jar" "$pkgdir/usr/share/java/java-repl/"
 }
