@@ -2,7 +2,7 @@
 
 pkgname="desktop-dimmer"
 fullpkgname="Desktop Dimmer"
-pkgver=2.5.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="Enables darker-than-dark Desktop dimming for your displays."
 arch=("x86_64")
