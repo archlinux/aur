@@ -4,7 +4,7 @@ DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
  
 pkgname=irpf
 pkgver=2017.1.0
-pkgrel=1
+pkgrel=2
 license=('custom')
  
 arch=(any)
@@ -28,7 +28,6 @@ md5sums=('ff83ccab6dcbeeba006872e42ef612ff'
          '1393bb1d170a8aeaccfe0c2ee2c818cf')
  
 depends=('java-environment' 'hicolor-icon-theme' 'desktop-file-utils')
-optdepends=('receitanet: Para envio do IRPF')
 install=$pkgname.install
  
  
