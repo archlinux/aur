@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/theotherp/nzbhydra/archive/
 
 sha256sums=('ba553591c50c668e47f645b7edf1a819fcc203f99d1795171b473e6982e3b25f'
             '91552953d0d956101136cd3165f217de4d14eb65042b7dd3e9a09c8657319436'
-            '9035c3c2a7d773ddadefb207cc0690629283f60903189ad595dd8de098c4457f'
+            'fa1000f4bdabef4c9cb730d4f903218eac05ea181ccac06b9f4344a4440f0c10'
             'f1d2028ef593ce367438fed6520d4387482da74e45aacafc72c028a2a0337614'
             '0c901b44980cdfcfd62a49883ea2edd954e8f60711f10b49958f9a402a7ad2d0')
 
