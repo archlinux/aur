@@ -1,11 +1,8 @@
 # Maintainer:  TEL.RED LLC <ask_at_tel_d0t_red>
-# Contributor: Jameson Pugh <imntreal@gmail.com>
-# Contributor: stef312 <stef312_at_gmail_dot_com>
-# Contributor: Gaspar de Elías <caspercba_at_hotmail_dot_com>
-# Contributor: Artem Sheremet <dot_doom_at_gmail_dot_com>
+
 pkgname=sky
-pkgver=2.1.6566_1
-pkgrel=1
+pkgver=2.1.6571
+pkgrel=201703010958
 pkgdesc="Lync and Skype for Business client on Linux"
 
 arch=(
@@ -17,18 +14,21 @@ fi
 
 url="http://tel.red"
 
-license=('custom: Copyright © 2015-2016 TEL.RED LLC')
-options=('!strip')
+license=('custom: Copyright © 2015-2017 TEL.RED LLC')
+options=()
 install="${pkgname}.install"
 
 depends=(
+	'curl'
 	'ffmpeg2.8'
-	'libcurl-compat>=7.38'
-	'libjpeg6-turbo'
-	'libxss'
+	'libxcursor'
+	'libxinerama'
+	'libxkbfile'
 	'libxrandr'
+	'libxss'
+	'libxv'
 	'qt5-base>=5.6'
-	'qt5-base<5.8.0'
+	'qt5-base<5.9.0'
 )
 makedepends=(
 	'binutils'
@@ -36,37 +36,17 @@ makedepends=(
 	'xz'
 )
 
-source_x86_64=("https://tel.red/repos/debian/pool/non-free/sky_${pkgver//_/-}debian+jessie_amd64.deb")
-sha256sums_x86_64=('972d2edb46da19b61952bdad6189ef99adab5a4994e6c1b56e292381f619b84e')
+source_x86_64=("https://tel.red/linux/sky-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz")
+sha256sums_x86_64=('d98bcb8708f892f80e9af51ee632695d3c5f2e28d24ee587d6a338ec28e0d227')
 
 package() {
 	local _sky_libdir="/usr/lib/sky/lib64"
 	local _sky_bindir="/usr/lib/sky"
 	local _sky_datadir=( "${_sky_bindir}/sounds" )
 
-	cd "${srcdir}"
-	ar x "sky_${pkgver//_/-}debian+jessie_amd64.deb" >/dev/null
-	tar -Jxf data.tar.xz
-
-	install -dm 0755 "${srcdir}${_sky_libdir}" "${pkgdir}${_sky_libdir}"
-	find "${srcdir}${_sky_libdir}" -maxdepth 1 \( -type f -o -type l \) -a \( ! -name 'libQt5*' \) -exec install -m 0755 {} "${pkgdir}${_sky_libdir}/" \;
-	ln -s "/usr/lib64/libcurl.so.3" "${pkgdir}${_sky_libdir}/libcurl.so.4"
-
-	install -dm 0755 "${srcdir}${_sky_bindir}" "${pkgdir}${_sky_libdir}"
-	find "${srcdir}${_sky_bindir}" -maxdepth 1 -type f -perm /0111 -exec install -m 0755 {} "${pkgdir}${_sky_bindir}/" \;
-	install -dm 0755 "${pkgdir}/usr/bin"
-	ln -s "../..${_sky_bindir}/sky" "${pkgdir}/usr/bin/sky"
-
-	for dd in ${_sky_datadir[@]} ; do
-		install -dm 0755 "${srcdir}${dd}" "${pkgdir}${dd}"
-		cp -arT "${srcdir}${dd}" "${pkgdir}${dd}"
-	done
-
-	install -Dm 0644 ${srcdir}/usr/share/doc/sky/copyright ${pkgdir}/usr/share/licenses/sky/LICENSE
-	install -Dm 0644 ${srcdir}/usr/share/applications/sky.desktop ${pkgdir}/usr/share/applications/sky.desktop
-	for icon in 'sky.png' 'sky.svg'; do
-		install -Dm 0644 ${srcdir}/usr/share/pixmaps/${icon} ${pkgdir}/usr/share/pixmaps/${icon}
-	done
+	cd "${pkgdir}"
+	tar -Jxf "${srcdir}/sky-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz"
+	find "${pkgdir}" -maxdepth 1 -type f -delete
 }
 
 # vim: set ts=2 sw=2 ft=sh noet:
