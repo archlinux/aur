@@ -1,0 +1,97 @@
+From da4c132cca2c6df81243c9660b7348268a848f88 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Mon, 13 Feb 2017 11:09:13 +0900
+Subject: [PATCH 1/1] scd: Fix use case of PC/SC.
+
+* scd/apdu.c (apdu_open_reader): Add an argument APP_EMPTY.
+When CCID driver fails to open, try PC/SC if APP is nothing.
+* scd/app.c (select_application): Supply arg if APP is nothing.
+
+--
+
+After scanning available card readers by CCID driver, scdaemon should
+try PC/SC service if no APP is registered yet.  Also, when the slot
+is allocated for PC/SC (ccid.handle==NULL), it should not call
+ccid_compare_BAI, otherwise scdaemon crashes.
+
+Debian-bug-id: 852702, 854005, 854595, 854616
+
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+---
+ scd/apdu.c | 14 +++++++++++---
+ scd/apdu.h |  2 +-
+ scd/app.c  |  2 +-
+ 3 files changed, 13 insertions(+), 5 deletions(-)
+
+diff --git a/scd/apdu.c b/scd/apdu.c
+index 6fc62aa..82d53b1 100644
+--- a/scd/apdu.c
++++ b/scd/apdu.c
+@@ -3127,7 +3127,7 @@ apdu_open_one_reader (const char *portstr)
+ }
+ 
+ int
+-apdu_open_reader (struct dev_list *dl)
++apdu_open_reader (struct dev_list *dl, int app_empty)
+ {
+   int slot;
+ 
+@@ -3177,6 +3177,7 @@ apdu_open_reader (struct dev_list *dl)
+           /* Check identity by BAI against already opened HANDLEs.  */
+           for (slot = 0; slot < MAX_READER; slot++)
+             if (reader_table[slot].used
++                && reader_table[slot].ccid.handle
+                 && ccid_compare_BAI (reader_table[slot].ccid.handle, bai))
+               break;
+ 
+@@ -3201,12 +3202,19 @@ apdu_open_reader (struct dev_list *dl)
+             dl->idx++;
+         }
+ 
+-      slot = -1;
++      /* Not found.  Try one for PC/SC, only when it's the initial scan.  */
++      if (app_empty && dl->idx == dl->idx_max)
++        {
++          dl->idx++;
++          slot = apdu_open_one_reader (dl->portstr);
++        }
++      else
++        slot = -1;
+     }
+   else
+ #endif
+     { /* PC/SC readers.  */
+-      if (dl->idx == 0)
++      if (app_empty && dl->idx == 0)
+         {
+           dl->idx++;
+           slot = apdu_open_one_reader (dl->portstr);
+diff --git a/scd/apdu.h b/scd/apdu.h
+index 473def5..6751e8c 100644
+--- a/scd/apdu.h
++++ b/scd/apdu.h
+@@ -91,7 +91,7 @@ gpg_error_t apdu_dev_list_start (const char *portstr, struct dev_list **l_p);
+ void apdu_dev_list_finish (struct dev_list *l);
+ 
+ /* Note, that apdu_open_reader returns no status word but -1 on error. */
+-int apdu_open_reader (struct dev_list *l);
++int apdu_open_reader (struct dev_list *l, int app_empty);
+ int apdu_open_remote_reader (const char *portstr,
+                              const unsigned char *cookie, size_t length,
+                              int (*readfnc) (void *opaque,
+diff --git a/scd/app.c b/scd/app.c
+index 5b8da1c..7e72870 100644
+--- a/scd/app.c
++++ b/scd/app.c
+@@ -343,7 +343,7 @@ select_application (ctrl_t ctrl, const char *name, app_t *r_app,
+           int slot;
+           int periodical_check_needed_this;
+ 
+-          slot = apdu_open_reader (l);
++          slot = apdu_open_reader (l, !app_top);
+           if (slot < 0)
+             break;
+ 
+-- 
+2.8.0.rc3
+
