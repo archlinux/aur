@@ -59,7 +59,7 @@ prepare() {
     # Check version
     if (( $(vercmp $_kernel $_major_patch) >= 0 )); then
       msg2 "Applying $_patch..."
-      patch -p0 -i "$_patch"
+      patch -p1 -i "$_patch"
     fi
   done
 }
