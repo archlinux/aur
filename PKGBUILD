@@ -44,17 +44,10 @@ md5sums=('05ac7b137cbb7b12f442776e4c12dcc2'
          '78f3754e0d3df172a9d48d31ea9afb15'
          '316ca184f98c7dca37660f63db16fb6c'
          '8853bb4e7e8a5d3debd59a65c4fbbd1c')
+_src_dir='$srcdir/Slic3r-$pkgver'
 
 prepare() {
-  export _src_dir="$srcdir/Slic3r-$pkgver"
-  # Setting these env variables overwrites any command-line-options we don't want...
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
-  export SLIC3R_NO_AUTO="true"
-
-	cd "$_src_dir"
+	eval cd "$_src_dir"
   # Nasty fix for useless Growl dependency ... please post in comment real fix, if u know one ;)
 #  sed -i "s/        'Growl/\#&/" Build.PL
   sed -i '/Growl/d' Build.PL
@@ -70,7 +63,14 @@ prepare() {
 }
 
 build() {
-  cd "$_src_dir/xs"
+  # Setting these env variables overwrites any command-line-options we don't want...
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
+    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
+    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+    MODULEBUILDRC=/dev/null
+  export SLIC3R_NO_AUTO="true"
+
+  eval cd "$_src_dir/xs"
   warning " ⚠  DO NOT respond to any question with 'yes'. Report a bug in comment instead.\n"
   warning "Running Slic3r under Perl >= 5.16 is not supported nor recommended\nIn case of related to this issues please use ARM repository to get older perl package\n"
   # Cuz cpan will install fixes to $HOME ... which is not the point of this package
@@ -83,7 +83,7 @@ build() {
 }
 
 check () {
-  cd "$_src_dir"
+  eval cd "$_src_dir"
 
   msg2 "Testing Slic3r::XS - (2/3)"
   prove -Ixs/blib/arch -Ixs/blib/lib/ xs/t/
@@ -93,7 +93,7 @@ check () {
 }
 
 package () {
-  cd "$_src_dir"
+  eval cd "$_src_dir"
   install -d $pkgdir/usr/share/perl5/vendor_perl/
   cp -R $srcdir/Slic3r-$pkgver/lib/* $pkgdir/usr/share/perl5/vendor_perl/
 
@@ -117,7 +117,7 @@ package () {
   install -m 644 $srcdir/slic3r.desktop $pkgdir/usr/share/applications/
 
   ### SLIC3R-XS MERGE
-  cd "$_src_dir/xs"
+  eval cd "$_src_dir/xs"
   ./Build install
 
   # Just to have a more sane bin name also, and automagically fix perl LANG
