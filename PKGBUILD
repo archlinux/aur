@@ -1,28 +1,26 @@
-# $Id$
 # Contributor: Sérgio Martins <iamsergio@gmail.com>
+# Contributor: Ainola
 # Maintainer: kaptoxic
 
 pkgname=flow-pomodoro
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="A sticky task manager and pomodoro that blocks distractions."
+pkgdesc="A pomodoro app that blocks distractions while you work."
 arch=('i686' 'x86_64')
 url="https://github.com/iamsergio/flow-pomodoro"
-license=('GPL')
-depends=('qt5-base>=5.4.0' 'qt5-declarative>=5.4.0' 'qt5-quickcontrols>=5.4.0')
-makedepends=('qt5-base>=5.4.0' 'qt5-declarative>=5.4.0' 'qt5-quickcontrols>=5.4.0')
-
-source=(https://github.com/iamsergio/flow-pomodoro/archive/v${pkgver}.zip)
-sha1sums=('29805798ee6c9575113fa33783b5c1c206c3582d')
+license=('GPL2')
+depends=('qt5-declarative')
+source=("https://github.com/iamsergio/flow-pomodoro/archive/v$pkgver.zip")
+sha256sums=('91598e73fe4302658620bc00427161b91ef5450046e316751a1a399d0530998e')
 
 build() {
-  mkdir -p ${pkgname}-${pkgver}/build
-  cd ${pkgname}-${pkgver}/build
+  mkdir -p "${pkgname}-${pkgver}/build"
+  cd "${pkgname}-${pkgver}/build"
   qmake ../flow.pro
   make
 }
 
 package() {
-  cd ${pkgname}-${pkgver}/build
-  make INSTALL_ROOT=$pkgdir/usr/ install
+  cd "${pkgname}-${pkgver}/build"
+  make INSTALL_ROOT="$pkgdir/usr/" install
 }
