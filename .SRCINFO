@@ -1,6 +1,6 @@
 pkgbase = pybitmessage
 	pkgdesc = Decentralized and trustless P2P communications protocol for sending encrypted messages to another person or to many subscribers
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/Bitmessage/PyBitmessage
 	arch = any
@@ -14,11 +14,11 @@ pkgbase = pybitmessage
 	optdepends = alsa-utils: WAV sounds support
 	provides = pybitmessage
 	conflicts = pybitmessage-git
-	source = pybitmessage-0.6.1.tar.gz::https://github.com/Bitmessage/PyBitmessage/archive/v0.6.1.tar.gz
+	source = pybitmessage-0.6.2.tar.gz::https://github.com/Bitmessage/PyBitmessage/archive/v0.6.2.tar.gz
 	source = pybitmessage.sh
-	md5sums = 3b353e344cb70649c764b553ef04f9c4
+	md5sums = fd54c80e65e472c707a1d463887cdcad
 	md5sums = 0dfcad65e76e7403ae17ceeb6764d2b8
-	sha256sums = ceb6585c816bbcafc63cf3ea55b709ddf1dc1d48012509ef3c47dcdb553ed2b9
+	sha256sums = bc209725ef7c1b913ec8560557e3e862a11f664bd8c5fd2eea5adcd915acc2c6
 	sha256sums = dad3783438c7328468eb0117da04b26c4f6d5f897ed3b44a333b22355c938a4b
 
 pkgname = pybitmessage
