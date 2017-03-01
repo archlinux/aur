@@ -1,0 +1,17 @@
+pkgbase = mplugd-git
+	pkgdesc = Daemon that listens on events (e.g. xrandr or pulseaudio) and executes user-defined actions on certain events
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/anyc/mplugd
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = python2-setuptools
+	optdepends = python2-dbus: For pulseaudio support
+	optdepends = python2-xlib: For Xorg events
+	optdepends = python2-pyudev: For udev support
+	provides = mplugd
+	conflicts = mplugd
+
+pkgname = mplugd-git
+
