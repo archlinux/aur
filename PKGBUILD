@@ -4,7 +4,7 @@
 
 pkgname=flow-pomodoro
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A pomodoro app that blocks distractions while you work."
 arch=('i686' 'x86_64')
 url="https://github.com/iamsergio/flow-pomodoro"
@@ -23,4 +23,7 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}/build"
   make INSTALL_ROOT="$pkgdir/usr/" install
+  mkdir -p "$pkgdir/usr/share/applications"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/flow.desktop" \
+                 "$pkgdir/usr/share/applications/flow.desktop"
 }
