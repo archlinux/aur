@@ -9,7 +9,6 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gcc-libs')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2 eof.diff)
-install=libbinio.install
 md5sums=('517ded8c7ce9b3de0f84b1db74a2ebda'
          '457b5d73e4934adfecf5b75b5f16a227')
 
