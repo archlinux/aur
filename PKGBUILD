@@ -3,7 +3,7 @@
 _python2_ver_major=$(pacman -Qi python2|gawk '$1~/Version/{split($3,v,".");print v[1] "." v[2]}')
 pkgname=mesos
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cluster manager that simplifies the complexity of running applications on a shared pool of servers"
 arch=('i686' 'x86_64')
 url=http://mesos.apache.org/
@@ -68,7 +68,8 @@ package() {
   install -m644 ./src/java/target/*.jar $pkgdir/usr/share/java/$pkgname/
   mkdir -p -m755 $pkgdir/usr/lib/systemd/system
   install -m644 $srcdir/$pkgname-{master,slave}.service $pkgdir/usr/lib/systemd/system
-
+  mkdir -p -m755 $pkgdir/usr/share/mesos/python-eggs
+  cp ./src/python/dist/mesos*.egg $pkgdir/usr/share/mesos/python-eggs
 # python
   pushd src/python
   python2 setup.py install --root="$pkgdir" --optimize=1
