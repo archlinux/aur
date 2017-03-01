@@ -1,0 +1,21 @@
+diff --git vmmon-only/linux/hostif.c vmmon-only/linux/hostif.c
+index 7053a83..614e181 100644
+--- vmmon-only/linux/hostif.c
++++ vmmon-only/linux/hostif.c
+@@ -1162,12 +1162,16 @@ HostIFGetUserPages(void *uvAddr,          // IN
+    int retval;
+ 
+    down_read(&current->mm->mmap_sem);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
++   retval = get_user_pages((unsigned long)uvAddr, numPages, 0, ppages, NULL);
++#else
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
+    retval = get_user_pages((unsigned long)uvAddr, numPages, 0, 0, ppages, NULL);
+ #else
+    retval = get_user_pages(current, current->mm, (unsigned long)uvAddr,
+                            numPages, 0, 0, ppages, NULL);
+ #endif
++#endif
+    up_read(&current->mm->mmap_sem);
+ 
+    return retval != numPages;
