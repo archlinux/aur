@@ -3,7 +3,7 @@
 
 pkgname=fancontrol-common
 _srcname=fancontrol-gui
-pkgver=v0.4.1
+pkgver=v0.5
 pkgrel=2
 pkgdesc="Common resources used by fancontrol-gui and fancontrol-kcm"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/Maldela/Fancontrol-GUI"
 license=('GPL2')
 depends=('qt5-declarative' 'qt5-quickcontrols' 'hicolor-icon-theme' 'lm_sensors' 'kauth' 'kpackage')
 makedepends=('git' 'extra-cmake-modules')
-source=('fancontrol-gui::git+https://github.com/Maldela/fancontrol-gui.git#branch=0.4')
+source=('fancontrol-gui::git+https://github.com/Maldela/fancontrol-gui.git#branch=0.5')
 md5sums=('SKIP')
 
 
