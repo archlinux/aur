@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="http://adplug.sf.net/"
 license=('LGPL')
 depends=('libbinio')
-source=(http://downloads.sourceforge.net/adplug/adplug-$pkgver.tar.bz2)
+source=(https://github.com/adplug/adplug/releases/download/adplug-$pkgver/adplug-$pkgver.tar.bz2)
 md5sums=('8f815fd5d254de0fe5df818df9d1d8af')
 
 build() {
