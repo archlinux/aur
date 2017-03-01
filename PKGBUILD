@@ -1,20 +1,23 @@
-# Maintainer: Jose Riha <jose1711 gmail com>
+# Maintainer: Tobias Göbel <kubax1983.at.gmail.dot.com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 # Contributor: Cedric Brancourt <cedric.brancourt at gmail dot com>
 
-pkgname=imagemagick-no-hdri
-pkgver=6.9.0.6
-pkgrel=2
+
+pkgname=('imagemagick-no-hdri')
+pkgver=6.9.7.9
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
 license=('custom')
-makedepends=('libltdl' 'lcms2' 'libxt' 'fontconfig' 'libxext' 'ghostscript' \
-             'openexr' 'libwmf' 'librsvg' 'libxml2' 'jasper' 'liblqr' \
-             'opencl-headers' 'libcl' 'libwebp')
-
-#source=(http://www.imagemagick.org/download/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz)
-source=(http://ftp.lfs-matrix.net/pub/blfs/conglomeration/ImageMagick/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz )
-sha1sums=('0233275c2e35264da6c90c163c5436c928352478')
+makedepends=('libltdl' 'lcms2' 'libxt' 'fontconfig' 'libxext' 'ghostscript'
+             'openexr' 'libwmf' 'librsvg' 'libxml2' 'liblqr' 'openjpeg2'
+             'opencl-headers' 'opencl-icd-loader' 'libwebp' 'subversion' 'glu')
+source=(http://www.imagemagick.org/download/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz{,.asc}
+        perlmagick.rpath.patch)
+sha1sums=('3252058951b4e9eec3aef10120906336a5652672'
+          'SKIP'
+          'e143cf9d530fabf3b58023899b5cc544ba93daec')
+validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')
 
 provides=('imagemagick')
 conflicts=('imagemagick')
@@ -23,35 +26,39 @@ prepare() {
   cd ImageMagick-${pkgver%.*}-${pkgver##*.}
   sed '/AC_PATH_XTRA/d' -i configure.ac
   autoreconf --force --install
+  patch -p0 -i "${srcdir}/perlmagick.rpath.patch"
 }
 
 build() {
   cd ImageMagick-${pkgver%.*}-${pkgver##*.}
-  ./configure --prefix=/usr --sysconfdir=/etc --with-modules --disable-static \
-    --with-wmf --with-openexr --with-xml --with-lcms2 --with-jp2 \
+  [[ $CARCH = "i686" ]] && EXTRAOPTS="--with-gcc-arch=i686"
+  [[ $CARCH = "x86_64" ]] && EXTRAOPTS="--with-gcc-arch=x86-64"
+
+  ./configure --prefix=/usr --sysconfdir=/etc --with-modules \
+    --with-wmf --with-openexr --with-xml \
     --with-webp --with-gslib --with-gs-font-dir=/usr/share/fonts/Type1 \
     --with-perl --with-perl-options="INSTALLDIRS=vendor" --with-lqr --with-rsvg \
-    --enable-opencl --without-gvc --without-djvu --without-autotrace \
-    --without-jbig --without-fpx --without-dps --without-fftw 
- make
+    --enable-opencl --with-openjp2 --without-gvc --without-djvu --without-autotrace \
+    --without-jbig --without-fpx --without-dps --without-fftw $EXTRAOPTS
+  make
 }
 
 check() {
   cd ImageMagick-${pkgver%.*}-${pkgver##*.}
-  # checks realy takes a long time
-  # make check
+#  make check
 }
 
 package() {
   pkgdesc="An image viewing/manipulation program"
-  depends=('perl' 'libltdl' 'lcms2' 'libxt' 'fontconfig' 'libxext' 'liblqr' 'libcl')
-  optdepends=('ghostscript: for Ghostscript support' 
-              'openexr: for OpenEXR support' 
-              'libwmf: for WMF support' 
-              'librsvg: for SVG support' 
-              'libxml2: for XML support' 
-              'jasper: for JPEG-2000 support' 
-              'libpng: for PNG support' 
+  depends=('libltdl' 'lcms2' 'libxt' 'fontconfig' 'libxext' 'liblqr' 'opencl-icd-loader')
+  optdepends=('imagemagick-doc: for additional information'
+              'ghostscript: for Ghostscript support'
+              'openexr: for OpenEXR support'
+	      'openjpeg2: for JP2 support'
+              'libwmf: for WMF support'
+              'librsvg: for SVG support'
+              'libxml2: for XML support'
+              'libpng: for PNG support'
 	      'libwebp: for WEBP support')
   backup=("etc/ImageMagick-${pkgver%%.*}/coder.xml"
           "etc/ImageMagick-${pkgver%%.*}/colors.xml"
@@ -75,4 +82,13 @@ package() {
 
 #Cleaning
   rm -f "${pkgdir}"/usr/lib/*.la
+
+# template start; name=perl-binary-module-dependency; version=1;
+if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
+	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
+	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
+	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
+fi
+# template end;
 }
+
