@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=claws-mail-git
-pkgver=3.14.0.r2.ge48b739
+pkgver=3.14.1.r208.gb68be74a3
 pkgrel=1
 pkgdesc='A GTK+ based e-mail client - git checkout'
 arch=('i686' 'x86_64')
@@ -11,7 +11,9 @@ depends=('gtk2' 'gnutls' 'startup-notification' 'enchant' 'gpgme' 'libetpan' 'co
 	'libsm' 'dbus-glib' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('git' 'spamassassin' 'bogofilter' 'valgrind'
 	# dependencies for plugins
-	'libsoup' 'libgdata' 'webkitgtk2' 'libnotify' 'libcanberra' 'poppler-glib' 'pygtk')
+	'libgdata' 'libnotify' 'libcanberra' 'poppler-glib' 'pygtk' 'dillo'
+	# deps to build the docs
+	'docbook-utils' 'texlive-core')
 optdepends=('python2:           needed for some tools and python plugin'
 	'perl:              needed for some tools and perl plugin'
 	'spamassassin:      adds support for spamfiltering'
@@ -19,15 +21,14 @@ optdepends=('python2:           needed for some tools and python plugin'
 	'libnotify:         for notification plugin'
 	'libcanberra:       for notification plugin'
 	'dbus:              for notification plugin'
-	'libxml2:           for gtkhtml2_viewer and rssyl plugins'
-	'curl:              for gtkhtml2_viewer, vcalendar, rssyl and spamreport plugins'
+	'libxml2:           for rssyl plugins'
+	'curl:              for vcalendar, rssyl and spamreport plugins'
 	'libarchive:        for archive plugin and various other plugins'
 	'libytnef:          for tnef_parse plugin'
-	'webkitgtk2:        for the fancy webkit html plugin'
-	'libsoup:           for the fancy webkit html plugin'
 	'libgdata:          for gdata plugin'
 	'poppler-glib:      for pdf viewer plugin'
-	'ghostscript:       for pdf viewer plugin')
+	'ghostscript:       for pdf viewer plugin'
+	'dillo:             for html viewer plugin')
 replaces=('sylpheed-claws' 'claws-mail-extra-plugins')
 conflicts=('claws-mail-extra-plugins' 'claws-mail')
 provides=('claws' 'claws-mail')
@@ -82,18 +83,20 @@ build() {
 	# add --enable-alternate-addressbook to the options to use the
 	# new/alternate address book
 	# do not forget to add claws-contacts to the dependencies then
-	./configure --disable-maintainer-mode \
+	./configure \
 		--prefix=/usr \
-		--disable-static \
-		--enable-silent-rules \
 		--disable-jpilot \
+		--disable-maintainer-mode \
+		--disable-manual \
+		--disable-static \
+		--enable-bogofilter-plugin \
+		--enable-crash-dialog \
 		--enable-enchant \
 		--enable-gnutls \
 		--enable-ldap \
-		--enable-crash-dialog \
 		--enable-pgpmime-plugin \
-		--enable-spamassassin-plugin \
-		--enable-bogofilter-plugin
+		--enable-silent-rules \
+		--enable-spamassassin-plugin
 		#--help
 	make
 
