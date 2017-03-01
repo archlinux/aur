@@ -6,7 +6,7 @@
 pkgname=libqglviewer
 _pkgname=libQGLViewer
 pkgver=2.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ library based on Qt that eases the creation of OpenGL 3D viewers"
 url="http://www.libqglviewer.com/"
 depends=('qt5-base' 'glu' 'mesa' 'qt5-tools')
@@ -23,7 +23,7 @@ options=(!makeflags)
 build()
 {
   cd ${_pkgname}-${pkgver}
-  qmake PREFIX=/usr/local -o Makefile ${_pkgname}-${pkgver}.pro || return 1
+  qmake PREFIX=/usr -o Makefile ${_pkgname}-${pkgver}.pro || return 1
   make \
     CFLAGS="-pipe ${CFLAGS} -D_REENTRANT -Wall -W -fPIC \$(DEFINES)" \
     CXXLIBS=" ${CXXLIBS} " \
