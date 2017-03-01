@@ -1,8 +1,8 @@
 # Maintainer: Ian Denhardt <ian@zenhack.net>
 
 pkgname=keyringer
-pkgver=0.3.8
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Encrypted and distributed secret sharing software"
 arch=(any)
 url="https://keyringer.pw"
@@ -14,4 +14,4 @@ package() {
     cd "$srcdir/$pkgname-$pkgver"
     make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-md5sums=('ebda1afd538184fd510dcbafc11dc08a')
+md5sums=('1bc62b934f3160ae27948932755e4cbf')
