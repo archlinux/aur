@@ -1,2 +1,7 @@
 #!/usr/bin/env bash
-python3 /usr/lib/webman/webman.py
+if [[ $1 == 'debug' ]]; then
+    /usr/lib/webman/webman.py
+else
+    nohup /usr/lib/webman/webman.py >>/dev/null 2>/dev/null &
+    xdg-open 'http://localhost:1436/'
+fi

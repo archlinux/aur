@@ -1,7 +1,7 @@
 pkgbase = webman-git
 	pkgdesc = A web interface for the Arch Linux package manager (pacman)
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flipflop97/WebMan
 	arch = any
 	license = GPL-3.0

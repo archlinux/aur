@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=WebMan
+Comment=A web interface for the Arch Linux package manager (pacman)
+Exec=webman
+Icon=webman
+Terminal=false
+Type=Application
+Categories=Utility;
