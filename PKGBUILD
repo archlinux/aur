@@ -6,7 +6,7 @@
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
 pkgver=3.22.1
-pkgrel=2
+pkgrel=3
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 arch=('i686' 'x86_64')
 url='https://wiki.gnome.org/Apps/Terminal'
@@ -32,7 +32,7 @@ source=(
 )
 sha256sums=('b00752336eb22d6d9f10c863c166ac73dcbb2ce4b280abdc0c78337e261bb0d4'
             '83c42ed513e374c181b23da4f9fce39e197c1e09ae328147b2b2bcdfbc4c99d7'
-            'da84d49aecd4ddfe1c23b8bb7496c4d74d49f811117f251b82c3d5bed098e112'
+            '46710c0fc909165e79ebd3f13495f73b09fa3eebac38ea5806d4844765644b94'
             '5409b35d1940443d29d810de0560d3303eb74c009e661e8fbfa1030e5ffde92e')
 
 prepare () {
