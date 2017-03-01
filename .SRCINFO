@@ -11,7 +11,7 @@ pkgbase = ldoce5viewer-pyqt5-git
 	depends = python-lxml
 	depends = python-whoosh
 	conflicts = ldoce5viewer-git
-	conflicts = ldoce5viewer-pyqt5-git
+	conflicts = ldoce5viewer
 	source = git://github.com/purboo/ldoce5viewer-pyqt5.git
 	md5sums = SKIP
 
