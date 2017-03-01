@@ -5,7 +5,7 @@
 
 pkgname='gtkd'
 pkgver='3.5.1'
-pkgrel=2
+pkgrel=3
 pkgdesc='D bindings for GTK+ and related libraries.'
 arch=('x86_64' 'i686')
 url='http://gtkd.org/'
