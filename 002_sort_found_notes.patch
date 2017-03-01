@@ -1,11 +1,67 @@
---- a/urwid_ui.py	2016-03-14 02:56:30.348210225 +0100
-+++ b/urwid_ui.py	2016-03-14 02:56:38.421447101 +0100
-@@ -409,7 +409,7 @@
+diff --git a/bin/terminal_velocity b/bin/terminal_velocity
+index db2eb05..bb77dc6 100755
+--- a/bin/terminal_velocity
++++ b/bin/terminal_velocity
+@@ -75,6 +75,10 @@ the default default will be used"""
+         default=defaults.get("log_file", "~/.tvlog"),
+         help="the file to log to (default: %(default)s)")
+ 
++    parser.add_argument("-s", "--sort", dest="sort", action="store",
++        default=defaults.get("sort", "date"),
++        help="the note sorting rules. Possible values: date, title (default: %(default)s)")
++
+     parser.add_argument("-p", "--print-config", dest="print_config",
+             action="store_true", default=False,
+             help="print your configuration settings then exit")
+@@ -120,7 +124,7 @@ the default default will be used"""
+     try:
+         urwid_ui.launch(notes_dir=args.notes_dir, editor=args.editor,
+                 extension=args.extension, extensions=args.extensions,
+-                exclude=args.exclude)
++                exclude=args.exclude, sort=args.sort)
+     except KeyboardInterrupt:
+         # Silence KeyboardInterrupt tracebacks on ctrl-c.
+         sys.exit()
+diff --git a/terminal_velocity/urwid_ui.py b/terminal_velocity/urwid_ui.py
+index 34cf4f6..caebcb9 100644
+--- a/terminal_velocity/urwid_ui.py
++++ b/terminal_velocity/urwid_ui.py
+@@ -237,11 +237,12 @@ class NoteFilterListBox(urwid.ListBox):
+ class MainFrame(urwid.Frame):
+     """The topmost urwid widget."""
+ 
+-    def __init__(self, notes_dir, editor, extension, extensions, exclude=None):
++    def __init__(self, notes_dir, editor, extension, extensions, exclude=None, sort="date"):
+ 
+         self.editor = editor
+         self.notebook = notebook.PlainTextNoteBook(notes_dir, extension,
+                 extensions, exclude=exclude)
++        self.sort = sort
+ 
+         # Don't filter the note list when the text in the search box changes.
+         self.suppress_filter = False
+@@ -408,7 +409,10 @@ class MainFrame(urwid.Frame):
  
          # Sort the notes.
          # TODO: Support different sort orderings.
 -        matching_notes.sort(key=lambda x: x.mtime, reverse=True)
-+        matching_notes.sort(key=lambda x: x.title)
++        if self.sort == "title":
++            matching_notes.sort(key=lambda x: x.title)
++        else:
++            matching_notes.sort(key=lambda x: x.mtime, reverse=True)
  
          # Tell the list box to show only the matching notes.
          self.list_box.filter(matching_notes)
+@@ -433,10 +437,10 @@ class MainFrame(urwid.Frame):
+         self.selected_note = note
+ 
+ 
+-def launch(notes_dir, editor, extension, extensions, exclude=None):
++def launch(notes_dir, editor, extension, extensions, exclude=None, sort="date"):
+     """Launch the user interface."""
+ 
+-    frame = MainFrame(notes_dir, editor, extension, extensions, exclude=exclude)
++    frame = MainFrame(notes_dir, editor, extension, extensions, exclude=exclude, sort=sort)
+     loop = urwid.MainLoop(frame, palette)
+     frame.loop = loop
+     loop.run()
