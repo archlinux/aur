@@ -1,6 +1,6 @@
 pkgbase = xonsh-git
 	pkgdesc = A Python-ish, BASHwards-compatible shell
-	pkgver = 0.4.4.r217.g8155802
+	pkgver = 0.5.6.r152.gf35ac0fb
 	pkgrel = 1
 	url = http://github.com/scopatz/xonsh
 	install = xonsh.install
