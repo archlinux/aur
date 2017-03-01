@@ -1,0 +1,12 @@
+[Unit]
+Description=MOSS is a UNIX-based server for the Myst Online: Uru Live client
+Requires=postgresql.service
+After=postgresql.service
+Before=moss.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/moss_backend -c /etc/moss/moss_backend.cfg
+
+[Install]
+WantedBy=multi-user.target

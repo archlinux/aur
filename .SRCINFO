@@ -9,10 +9,16 @@ pkgbase = openuru-moss
 	makedepends = mercurial
 	depends = libpqxx
 	depends = postgresql
+	backup = etc/moss/moss.cfg
+	backup = etc/moss/moss_backend.cfg
 	source = openuru-moss::hg+http://foundry.openuru.org/hg/MOSS
 	source = include_unistd.patch
+	source = moss.service
+	source = moss_backend.service
 	md5sums = SKIP
 	md5sums = 923b06d8c25265679bd35e532118f2ff
+	md5sums = d526247b757050c81679b9a7c5a6fae9
+	md5sums = fceb9167b73375048e95f55458388d47
 
 pkgname = openuru-moss
 

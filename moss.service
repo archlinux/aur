@@ -1,0 +1,9 @@
+[Unit]
+Description=MOSS is a UNIX-based server for the Myst Online: Uru Live client
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/moss -c /etc/moss/moss.cfg
+
+[Install]
+WantedBy=multi-user.target
