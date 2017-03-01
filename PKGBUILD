@@ -6,7 +6,7 @@
 
 pkgname=saga-gis
 _pkgname=saga
-pkgver=3.0.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="A Geographic Information System (GIS) software with immense capabilities for geodata processing and analysis."
 url="http://www.saga-gis.org"
@@ -24,8 +24,8 @@ optdepends=('opencv'
             'vigra'
             'liblas'
             'libharu')
-source=("http://nchc.dl.sourceforge.net/project/saga-gis/SAGA%20-%203/SAGA%20-%203.0.0//saga_${pkgver}.tar.gz")
-md5sums=('a56394a8f07f8e156f8d34ea47477ea8')
+source=("http://downloads.sourceforge.net/project/saga-gis/SAGA - 4/SAGA - ${pkgver}/saga_${pkgver}.tar.gz")
+md5sums=('64ccbabfdb1ba1c98ab22b4a2a1cb548')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -33,7 +33,6 @@ build() {
   autoreconf -i
 
   ./configure --prefix=/usr \
-              --enable-debug \
               --enable-shared \
               --enable-python PYTHON_VERSION=2.7 PYTHON=/usr/bin/python2 \
               --with-postgresql=/usr/bin/pg_config \
@@ -41,7 +40,7 @@ build() {
               LIBS="`wx-config --version=3.0 --libs`"
 
   msg "Start compiling ..."
-  make
+  make -j2
 }
 
 package () {
