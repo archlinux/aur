@@ -1,0 +1,38 @@
+From: Jochen Sprickerhof <jochen@sprickerhof.de>
+Date: Fri, 6 Jul 2012 09:52:58 +0200
+Subject: Use system wide libjpeg
+
+---
+ Platform/Linux/Build/Modules/nimCodecs/Makefile |   13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/Platform/Linux/Build/Modules/nimCodecs/Makefile b/Platform/Linux/Build/Modules/nimCodecs/Makefile
+index 1089d96..9d69531 100644
+--- a/Platform/Linux/Build/Modules/nimCodecs/Makefile
++++ b/Platform/Linux/Build/Modules/nimCodecs/Makefile
+@@ -2,16 +2,21 @@ BIN_DIR = ../../../Bin
+ 
+ INC_DIRS = \
+ 	../../../../../Include \
+-	../../../../../Source \
+-	../../../../../Externals/LibJPEG
++	../../../../../Source
+ 
+ SRC_FILES = \
+-	../../../../../Source/Modules/nimCodecs/*.cpp \
+-	../../../../../Externals/LibJPEG/*.c
++	../../../../../Source/Modules/nimCodecs/*.cpp
+ 
+ LIB_NAME = nimCodecs
+ USED_LIBS = OpenNI
+ 
++ifeq ($(shell ld -ljpeg -o /dev/null 1>&2 2> /dev/null; echo $$?), 0)
++  USED_LIBS += jpeg
++else
++  INC_DIRS  += ../../../../../Source/External/LibJPEG
++  SRC_FILES += ../../../../../Source/External/LibJPEG/*.c
++endif
++
+ include ../../Common/CommonCppMakefile
+ 
+ 

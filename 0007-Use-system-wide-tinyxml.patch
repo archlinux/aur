@@ -1,0 +1,42 @@
+From: Jochen Sprickerhof <jochen@sprickerhof.de>
+Date: Fri, 6 Jul 2012 10:01:46 +0200
+Subject: Use system wide tinyxml
+
+---
+ Platform/Linux/Build/OpenNI/Makefile |   13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/Platform/Linux/Build/OpenNI/Makefile b/Platform/Linux/Build/OpenNI/Makefile
+index c4645f5..8c0a74d 100644
+--- a/Platform/Linux/Build/OpenNI/Makefile
++++ b/Platform/Linux/Build/OpenNI/Makefile
+@@ -4,13 +4,11 @@ BIN_DIR = ../../Bin
+ 
+ INC_DIRS = \
+ 	../../../../Include \
+-	../../../../Source \
+-	../../../../Externals/TinyXml
++	../../../../Source
+ 
+ SRC_FILES = \
+ 	../../../../Source/OpenNI/*.cpp \
+-	../../../../Source/OpenNI/Linux/*.cpp \
+-	../../../../Externals/TinyXml/*.cpp
++	../../../../Source/OpenNI/Linux/*.cpp
+ 
+ ifeq ("$(OSTYPE)","Darwin")
+ 	INC_DIRS += /opt/local/include
+@@ -25,6 +23,13 @@ ifneq ("$(OSTYPE)","Darwin")
+ endif
+ DEFINES = XN_EXPORTS
+ 
++ifeq ($(shell ld -ltinyxml -o /dev/null 1>&2 2> /dev/null; echo $$?), 0)
++  USED_LIBS += tinyxml
++else
++  INC_DIRS  += ../../../../Source/External/TinyXml
++  SRC_FILES += ../../../../Source/External/TinyXml/*.cpp
++endif
++
+ include ../Common/CommonCppMakefile
+ 
+ 
