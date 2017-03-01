@@ -1,0 +1,36 @@
+pkgbase = okular-light
+	pkgdesc = KDE document viewer, without Mobi/ePub/CHM and Text-to-Speech
+	pkgver = 16.12.2
+	pkgrel = 1
+	url = https://kde.org/applications/graphics/okular/
+	arch = i686
+	arch = x86_64
+	groups = kde-applications
+	groups = kdegraphics
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = khtml
+	makedepends = python
+	depends = djvulibre
+	depends = libspectre
+	depends = libkexiv2
+	depends = poppler-qt5
+	depends = qca-qt5
+	depends = kpty
+	depends = kactivities
+	depends = threadweaver
+	depends = kjs
+	depends = kparts
+	provides = okular
+	conflicts = okular
+	source = https://download.kde.org/stable/applications/16.12.2/src/okular-16.12.2.tar.xz
+	source = https://download.kde.org/stable/applications/16.12.2/src/okular-16.12.2.tar.xz.sig
+	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
+	sha256sums = 6c8aa4eb80ff27dee18a49b71f7a336bc4ab19b69fa234e431e046e629371f08
+	sha256sums = SKIP
+
+pkgname = okular-light
+
