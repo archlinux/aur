@@ -13,7 +13,7 @@
 
 pkgname=atom-editor-beta-bin-mirror
 _pkgver=1.15.0
-_pkgrel=3
+_pkgrel=4
 pkgver=${_pkgver}.beta${_pkgrel}
 pkgver() {
   curl -sS https://npm.taobao.org/mirrors/atom | grep -Eo '>.*?beta'+${_pkgrel} | sort -V | tail -n 1 | sed -e 's/>//' -e 's/-/./'
@@ -32,7 +32,7 @@ optdepends=('gvfs')
 conflicts=('atom-editor-beta', 'atom-editor-beta-bin')
 install=$pkgname.install
 
-md5sums=('f4bc05d107f2c2facdb9902ed68ebffe'
+md5sums=('da40ad8d5f9a4ca30bb16e8dd52c5581' 
          '501719c940fcd9c3d82fb8edebdaae09'
          'b05aef80afa76162ff9a1992cef3f0f9')
 source=("atom-amd64-$(get_version).deb::https://npm.taobao.org/mirrors/atom/$(get_version)/atom-amd64.deb"
