@@ -10,6 +10,7 @@ url="https://github.com/brainfucksec/archtorify/"
 license=('GPL3')
 depends=('tor>=0.2.9' 'curl')
 md5sums=('SKIP')
+source=("https://github.com/brainfucksec/archtorify")
 
 package() {
 	cd "$pkgname"
