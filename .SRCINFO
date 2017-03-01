@@ -9,7 +9,7 @@ pkgbase = python-gdbgui
 	depends = python
 	depends = python-eventlet
 	depends = python-flask
-	depends = python-flask-socketio>=2.8.3
+	depends = python-flask-socketio-git
 	depends = python-pygdbmi
 	depends = python-pypugjs
 	source = https://pypi.python.org/packages/14/7d/9a7507c2188fcf2496916a27c9260768b47c6965eb01e77666ce8132d0cd/gdbgui-0.7.4.0.tar.gz

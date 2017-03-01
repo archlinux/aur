@@ -5,7 +5,7 @@ pkgver=0.7.4.0
 pkgrel=1
 pkgdesc="browser-based gdb frontend using Flask and JavaScript to visually debug C, C++, Go, or Rust"
 url="https://github.com/cs01/gdbgui"
-depends=('python' 'python-eventlet' 'python-flask' 'python-flask-socketio>=2.8.3' 'python-pygdbmi' 'python-pypugjs')
+depends=('python' 'python-eventlet' 'python-flask' 'python-flask-socketio-git' 'python-pygdbmi' 'python-pypugjs')
 makedepends=('python3' )
 license=('CUSTOM')
 arch=('any')
