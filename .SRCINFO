@@ -1,0 +1,16 @@
+pkgbase = do-agent-git
+	pkgdesc = Collects system metrics from DigitalOcean Droplets
+	pkgver = 0.4.7.r0.77576fd
+	pkgrel = 1
+	url = https://github.com/digitalocean/do-agent
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	source = do-agent::git+https://github.com/digitalocean/do-agent.git
+	source = do-agent.service
+	sha512sums = SKIP
+	sha512sums = 777cd31a2c770d5e51af0381becc3b1affa6070a005aa5c2617c09d7a974d599602c0b8a80cd167fc4a87d15c15d1ca48c780caf08155948b3e8c6afa466117e
+
+pkgname = do-agent-git
+

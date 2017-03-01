@@ -1,0 +1,12 @@
+[Unit]
+Description=DigitalOcean agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=nobody
+Group=nobody
+ExecStart=/usr/bin/do-agent -log_syslog
+
+[Install]
+WantedBy=multi-user.target
