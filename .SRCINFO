@@ -7,7 +7,7 @@ pkgbase = acid-gtk-theme
 	groups = xfce
 	license = GPL
 	depends = bash
-	source = acid_by_sixsixfive-d4n8fji.7z::http://localizator.googlecode.com/files/acid_by_sixsixfive-d4n8fji.7z
+	source = acid_by_sixsixfive-d4n8fji.7z::http://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/localizator/acid_by_sixsixfive-d4n8fji.7z
 	md5sums = aea71393deeaec6068c3e6bdd9fe175a
 
 pkgname = acid-gtk-theme
