@@ -27,7 +27,7 @@ source=("http://www.sonatype.org/downloads/nexus-${pkgver}-${patchver}-bundle.ta
         'nexus'
         'nexus.service')	
 
-md5sums=('589d0794eea14500cd8bd3fefa1dbe7b'
+md5sums=('a366e94c738d5132e09353814310162d'
          '8c1e180aba2b3991bcf107e899a96cbd'
          'fee6289e0ee48ee5705da54660f7595d'
          'ac7c0c60bb3c77ff67965ec160ef2517')
