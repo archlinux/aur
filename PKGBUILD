@@ -3,7 +3,7 @@
 
 pkgname=python-pywavelets
 _pkgname=pywt
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Discrete Wavelet Transforms in Python"
 arch=('any')
@@ -11,21 +11,13 @@ url="https://github.com/PyWavelets/pywt"
 license=('MIT')
 depends=('python' 'python-numpy')
 makedepends=('python-setuptools' 'cython')
-checkdepends=('python-nose')
 source=(https://github.com/PyWavelets/pywt/archive/v$pkgver.tar.gz)
-sha256sums=('4d0b852a8bb953f2fc3d735b191191c225d5bf0c825294cea130b2366f2a38ad')
+sha256sums=('99157c11df6c8fb37ca159ce644190a0b9d0c62c830f8a0e2dbe948819c093f3')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py build
 }
-
-check() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python -u runtests.py -g -m full --coverage
-  #nosetests3
-}
-
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
