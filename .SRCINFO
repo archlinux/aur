@@ -9,7 +9,7 @@ pkgbase = nss-hg
 	license = GPL
 	makedepends = perl
 	makedepends = python2
-	depends = nspr>=4.12
+	depends = nspr>=4.13
 	depends = sqlite
 	depends = zlib
 	depends = sh
