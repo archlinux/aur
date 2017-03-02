@@ -1,0 +1,28 @@
+pkgbase = mrpt
+	pkgdesc = Provides an extensive set of libraries, algorithms, and applications employed in a number of mobile robotics research areas.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://www.mrpt.org
+	install = mrpt.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = subversion
+	makedepends = cmake
+	makedepends = git
+	depends = opencv
+	depends = wxgtk
+	depends = desktop-file-utils
+	optdepends = ffmpeg: Video Support
+	optdepends = freeglut
+	optdepends = zlib
+	optdepends = libftdi
+	optdepends = libdc1394
+	optdepends = libusb: Kinect support
+	optdepends = pcl
+	optdepends = assimp
+	source = mrpt-1.5.0::git+https://github.com/MRPT/mrpt.git
+	md5sums = SKIP
+
+pkgname = mrpt
+
