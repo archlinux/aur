@@ -2,7 +2,7 @@
 
 pkgname=dbeaver
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A free universal database tool for developers and database administrators"
 arch=('i686' 'x86_64')
 url="http://dbeaver.jkiss.org/"
@@ -11,7 +11,7 @@ depends=('java-runtime>=8' 'gtk2' 'gtk-update-icon-cache')
 makedepends=('maven' 'java-environment>=8')
 source=("https://github.com/serge-rider/dbeaver/archive/${pkgver}.tar.gz"
         'dbeaver.desktop')
-sha256sums=('b3a7c08e78f04d8f7afc04d55c4a909f8f7cd18ece091329f7550b6d1b2301b3'
+sha256sums=('2c2596a8804cbcee8ace9159f12167c0e18527e38aab825180b59de23b16c906'
             'd6890b86f1ece47d2bc6f039f89a90eba985376ccb117d832fcddd9a103f6689')
 
 build() {
