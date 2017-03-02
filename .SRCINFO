@@ -1,7 +1,7 @@
 pkgbase = apache-aurora
 	pkgdesc = Aurora scheduler for mesos
 	pkgver = 0.17.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://aurora.apache.org/
 	arch = x86_64
 	groups = science
@@ -26,7 +26,7 @@ pkgbase = apache-aurora
 	sha512sums = ac99a7ab12a6c92ea7ad325c462ff6abd74be1ad6996d997f9e69cd2435c839c731efebda8895b770c1a2316343a01e0851c5f1e6176b4eb7897e8e1fbece096
 	sha512sums = 56a24cc5a4144deb4ce4ee9c5fa65a299dfc7c941aa3a155abdc22f1563d488b9ee4997e13f97b7f9e5b512fc7a391f0901279a4b1f4ec814aa39dfc5287a7f8
 	sha512sums = 8553d5bde35c706e03c209963b3348a4b0e049e35d646079b7284f43b76de8db535ecd1be632726bc27f24e410fcf1962301de3798ef8958659ae4389d2f4113
-	sha512sums = 9ebd9f9679bf133e22b00546dc6527d351d8a64ef578dd75dbf557530be88a27ba71580bef6bd7f6c731e9eee8545d89ad085531e90a9e78d24118d2be191702
+	sha512sums = 861ce88a1261864e8b56130268cf73003ccb2bac1e1bc7ed699b30caee671775b5eef68e014068921e667091ad2e81c8369c6a9ded1c6bbfe2247fd071741138
 
 pkgname = apache-aurora
 
