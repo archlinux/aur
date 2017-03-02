@@ -1,0 +1,22 @@
+pkgbase = ros-kinetic-rosauth
+	pkgdesc = ROS - Server Side tools for Authorization and Authentication of ROS Clients.
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = http://ros.org/wiki/rosauth
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-message-generation
+	makedepends = ros-kinetic-rostest
+	makedepends = ros-kinetic-roscpp
+	makedepends = ros-kinetic-catkin
+	makedepends = openssl
+	depends = ros-kinetic-message-runtime
+	depends = ros-kinetic-roscpp
+	source = rosauth::git+https://github.com/wpi-rail-release/rosauth-release.git#tag=release/kinetic/rosauth/0.1.7-0
+	md5sums = SKIP
+
+pkgname = ros-kinetic-rosauth
+
