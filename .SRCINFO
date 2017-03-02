@@ -1,0 +1,26 @@
+pkgbase = ros-kinetic-stage
+	pkgdesc = ROS - Mobile robot simulator http://rtv.github.com/Stage.
+	pkgver = 4.1.1
+	pkgrel = 9
+	url = http://rtv.github.com/Stage
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = fltk
+	makedepends = libjpeg-turbo
+	makedepends = gtk2
+	makedepends = libtool
+	makedepends = mesa
+	makedepends = pkg-config
+	depends = ros-kinetic-catkin
+	depends = libjpeg-turbo
+	depends = mesa
+	depends = fltk
+	depends = gtk2
+	source = stage::git+https://github.com/majorx234/stage.git
+	md5sums = SKIP
+
+pkgname = ros-kinetic-stage
+
