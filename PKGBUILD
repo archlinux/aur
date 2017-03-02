@@ -10,6 +10,7 @@ depends=('python>=3.4' 'python-pyqt5' 'python-numpy' 'python-psutil' 'python-pyz
 makedepends=('gcc' 'python-setuptools')
 optdepends=(
   'hackrf: for native hackrf backend'
+  'rtl-sdr: for native RTL-SDR backend'
   'gnuradio: for USRP gnuradio backend'
   'gnuradio-osmosdr: for more gnuradio device backends (HackRF, FunCubeDongle, RTL-SDR)'
 )
