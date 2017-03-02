@@ -1,6 +1,6 @@
 pkgbase = wmail-bin
 	pkgdesc = The missing desktop client for Gmail & Google Inbox
-	pkgver = 2.2.1
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/Thomas101/wmail
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = wmail-bin
 	options = !strip
 	source = wmail.desktop
 	sha512sums = 3072b76eb4285ca4330b459ade2b37057dfea632e0be3336e4e89d41f3baf1081040dc7e0292616e3e24b839c5c891ea167a52597ae949f4b412e1512f8f4e37
-	source_x86_64 = WMail_2_2_1_x64.tar.gz::https://github.com/Thomas101/wmail/releases/download/v2.2.1/WMail_2_2_1_prerelease_linux_x86_64.tar.gz
-	sha512sums_x86_64 = d97eea71ddb8abce13625c712f4713fa850287e745400ebe1dd6eab40d95e6efd1d1065c888a3e41c424308e70033bc4b727070794df4f17ee3666dd3a914ff6
-	source_i686 = WMail_2_2_1_ia32.tar.gz::https://github.com/Thomas101/wmail/releases/download/v2.2.1/WMail_2_2_1_prerelease_linux_ia32.tar.gz
-	sha512sums_i686 = efc19dddd6d21b23c1570bba907e6dc0dffe1072b1006265d535c0b391a5558c4a1bbfa9c24cf4defaffe12d01d14fa51845e4da8cd197738efc17d2fa2b54f2
+	source_x86_64 = WMail_2_3_1_x64.tar.gz::https://github.com/Thomas101/wmail/releases/download/v2.3.1/WMail_2_3_1_prerelease_linux_x86_64.tar.gz
+	sha512sums_x86_64 = a13f85f758498fab33c3a891653188799c159d9041042ab5aa14e30df8c7b400fc60e0ae4e6b29c0bb7fc761b7d32ba5f5b40b2fdd829f23f4a3de19b0da1e27
+	source_i686 = WMail_2_3_1_ia32.tar.gz::https://github.com/Thomas101/wmail/releases/download/v2.3.1/WMail_2_3_1_prerelease_linux_ia32.tar.gz
+	sha512sums_i686 = 99e0c78244969bce5faae3aa8fed8a0f2a33249276228259325276ca7c1af04837ad73448151c70a18ebf9c9340a9e43c6060c09f401c35881aed50553834070
 
 pkgname = wmail-bin
 
