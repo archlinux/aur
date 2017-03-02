@@ -3,15 +3,13 @@
 _pkgname=xlunch
 pkgname=xlunch-git
 pkgver=2.4.1.r1.g0468acc
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical app launcher for X with little dependencies"
 arch=('i686' 'x86_64')
 url="http://xlunch.org/"
 license=('GPL3')
 depends=('sh' 'libx11' 'imlib2')
-makedepends=()
-checkdepends=()
-optdepends=()
+makedepends=('git' 'gcc' 'make')
 provides=('xlunch')
 conflicts=('xlunch')
 source=('git+https://github.com/Tomas-M/xlunch.git'
