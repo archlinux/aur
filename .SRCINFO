@@ -1,0 +1,23 @@
+pkgbase = ros-kinetic-rosapi
+	pkgdesc = ROS - Provides service calls for getting ros meta-information, like list of topics, services, params, etc.
+	pkgver = 0.7.17
+	pkgrel = 1
+	url = http://ros.org/wiki/rosapi
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-message-generation
+	makedepends = ros-kinetic-rospy
+	makedepends = ros-kinetic-catkin
+	depends = ros-kinetic-rosbridge-library
+	depends = ros-kinetic-rosnode
+	depends = ros-kinetic-rosgraph
+	depends = ros-kinetic-message-runtime
+	depends = ros-kinetic-rospy
+	source = rosapi::git+https://github.com/RobotWebTools-release/rosbridge_suite-release.git#tag=release/kinetic/rosapi/0.7.17-0
+	md5sums = SKIP
+
+pkgname = ros-kinetic-rosapi
+
