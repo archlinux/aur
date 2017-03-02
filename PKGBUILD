@@ -5,7 +5,7 @@
 pkgname=dkms-sorted
 pkgver=2.3
 pkgrel=1
-pkgdesc='Dynamic Kernel Modules Systemi (modified alpm hook to handle dependencies)'
+pkgdesc='Dynamic Kernel Modules System (modified alpm hook to handle dependencies)'
 arch=('any')
 url='https://github.com/dell/dkms'
 license=('GPL2')
