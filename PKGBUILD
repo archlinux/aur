@@ -4,8 +4,8 @@ set -u
 _pybase='blessed'
 _pyver="python"
 pkgname="${_pyver}-${_pybase}"
-pkgver='1.9.5'
-pkgrel='2'
+pkgver='1.14.1'
+pkgrel='1'
 pkgdesc='A thin, practical wrapper around terminal capabilities in Python'
 arch=('any')
 #url="https://pypi.python.org/pypi/${_pybase}/"
@@ -16,7 +16,7 @@ makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 _verwatch=("https://pypi.python.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
 source=("http://pypi.python.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('b93b5c7600814638c0913c8325608327a24e3731977d9a4f003ecf37b08ca6e5')
+sha256sums=('58a289d833299944dc2f7b02aae522e3ed53ec0d43fbbfca5d9eeb9486b2c073')
 
 build() {
   set -u
