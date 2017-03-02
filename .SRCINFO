@@ -1,0 +1,28 @@
+pkgbase = ros-kinetic-mrpt-bridge
+	pkgdesc = ROS - MRPT - Bridge
+	pkgver = 0.1.18
+	pkgrel = 0
+	url = http://wiki.ros.org/mrpt_bridge
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = mrpt
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-geometry-msgs
+	makedepends = ros-kinetic-message-generation
+	makedepends = ros-kinetic-message-runtime
+	makedepends = ros-kinetic-mrpt-msgs
+	makedepends = ros-kinetic-nav-msgs
+	makedepends = ros-kinetic-pcl-conversions
+	makedepends = ros-kinetic-roscpp
+	makedepends = ros-kinetic-rospy
+	makedepends = ros-kinetic-sensor-msgs
+	makedepends = ros-kinetic-std-msgs
+	makedepends = ros-kinetic-tf
+	source = mrpt_bridge::git+https://github.com/mrpt-ros-pkg/mrpt_navigation.git#tag=master
+	md5sums = SKIP
+
+pkgname = ros-kinetic-mrpt-bridge
+
