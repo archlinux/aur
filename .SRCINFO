@@ -1,6 +1,6 @@
 pkgbase = vlmcsd-svn
 	pkgdesc = KMS activation using vlmcs.
-	pkgver = svn1107
+	pkgver = svn1108
 	pkgrel = 1
 	url = http://forums.mydigitallife.info/threads/50234-Emulated-KMS-Servers-on-non-Windows-platforms
 	install = vlmcsd.install
