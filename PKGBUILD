@@ -7,38 +7,30 @@ pkgver=trunk
 pkgrel=1
 pkgdesc="Mozilla Network Security Services"
 arch=(i686 x86_64)
-url="http://www.mozilla.org/projects/security/pki/nss/"
+url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 license=('MPL' 'GPL')
-_nsprver=4.12
+_nsprver=4.13
 depends=("nspr>=${_nsprver}" 'sqlite' 'zlib' 'sh' 'p11-kit')
 makedepends=('perl' 'python2')
 options=('!strip' '!makeflags' 'staticlibs')
 source=("hg+https://hg.mozilla.org/projects/nss")
 sha256sums=('SKIP')
-replaces=('nss')
+conflicts=('nss')
 provides=('nss')
 
-prepare() {
-  # Respect LDFLAGS
-  sed -e 's/\$(MKSHLIB) -o/\$(MKSHLIB) \$(LDFLAGS) -o/' \
-      -i nss/coreconf/rules.mk
+pkgver() {
+  cd nss
+  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
+prepare() {
+  cd nss
+  hg up system-sqlite-build
+}
 
 build() {
   cd nss
-  export BUILD_OPT=1
-  export NSS_USE_SYSTEM_SQLITE=1
-  export NSS_ENABLE_ECC=1
-  export NSPR_INCLUDE_DIR="`nspr-config --includedir`"
-  export NSPR_LIB_DIR="`nspr-config --libdir`"
-  export XCFLAGS="${CFLAGS}"
-
-  [ "$CARCH" = "x86_64" ] && export USE_64=1
-
-  make -C coreconf
-  make -C lib/dbm
-  make
+  ./build.sh --opt --system-sqlite --system-nspr=/usr/include/nspr:/usr/lib
 }
 
 package() {
@@ -69,7 +61,7 @@ package() {
     > "$pkgdir/usr/bin/nss-config"
   chmod 755 "$pkgdir/usr/bin/nss-config"
 
-  cd dist/*.OBJ/bin
+  cd dist/Release/bin
   install -t "$pkgdir/usr/bin" *util shlibsign signtool signver ssltap
 
   cd ../lib
