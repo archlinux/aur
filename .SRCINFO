@@ -1,0 +1,23 @@
+pkgbase = ros-kinetic-rosbridge-server
+	pkgdesc = ROS - A WebSocket interface to rosbridge.
+	pkgver = 0.7.17
+	pkgrel = 1
+	url = http://ros.org/wiki/rosbridge_server
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-rosbridge-library
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-rosapi
+	makedepends = ros-kinetic-rospy
+	depends = ros-kinetic-rosbridge-library
+	depends = ros-kinetic-rosauth
+	depends = ros-kinetic-rosapi
+	depends = ros-kinetic-rospy
+	source = rosbridge_server::git+https://github.com/RobotWebTools-release/rosbridge_suite-release.git#tag=release/kinetic/rosbridge_server/0.7.17-0
+	md5sums = SKIP
+
+pkgname = ros-kinetic-rosbridge-server
+
