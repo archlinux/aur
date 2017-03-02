@@ -1,0 +1,21 @@
+pkgbase = ros-kinetic-visualization-tutorials
+	pkgdesc = ROS - Metapackage referencing tutorials related to rviz and visualization.
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = http://ros.org/wiki/visualization_tutorials
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-catkin
+	depends = ros-kinetic-interactive-marker-tutorials
+	depends = ros-kinetic-rviz-python-tutorial
+	depends = ros-kinetic-visualization-marker-tutorials
+	depends = ros-kinetic-librviz-tutorial
+	depends = ros-kinetic-rviz-plugin-tutorials
+	source = visualization_tutorials::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/kinetic/visualization_tutorials/0.10.1-0
+	md5sums = SKIP
+
+pkgname = ros-kinetic-visualization-tutorials
+
