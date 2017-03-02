@@ -8,7 +8,7 @@ arch=('any')
 license=('GPL')
 url=""
 install=spotlight.install
-depends=('curl'
+depends=('wget'
          'perl'
          'gnome-settings-daemon'
          'libsystemd')
