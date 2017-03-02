@@ -11,7 +11,6 @@ pkgbase = powershell
 	makedepends = dotnet
 	depends = bash
 	depends = icu55
-	provides = powershell
 	conflicts = powershell-git
 	source = powershell::git+https://github.com/PowerShell/PowerShell.git#tag=v6.0.0-alpha.16
 	source = pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop
