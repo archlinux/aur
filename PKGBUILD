@@ -1,7 +1,7 @@
 # Maintainer: Christian Schwarz <me@cschwarz.com>
 pkgname=artisan-roaster-scope
-pkgver=0.9.9
-pkgrel=1
+pkgver=1.0.0
+pkgrel=0
 pkgdesc="Artisan is a software that helps coffee roasters record, analyze, and control roast profiles."
 arch=("any")
 url="https://github.com/artisan-roaster-scope/artisan"
@@ -22,11 +22,12 @@ depends=( "python2"
           "python2-phidgets"
           "python2-pymodbus"
           "python2-yoctopuce"
+          "python2-unidecode"
 )
 makedepends=('git')
 source=("https://github.com/artisan-roaster-scope/artisan/archive/v${pkgver}.tar.gz"
 )
-md5sums=('69b84003b1062dc58015842ad2d74926')
+md5sums=('191b6e23b908d4bb1558b022de37722f')
 #generate with 'makepkg -g'
 
 install="$pkgname.install"
