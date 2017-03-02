@@ -14,7 +14,7 @@ optdepends=('chromaprint: fingerprinting'
             'python2-discid: cd lookup')
 makedepends=('python2-discid')
 source=("http://ftp.musicbrainz.org/pub/musicbrainz/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('030f54e2136781645075e82a1002e9c8e7545057')
+sha256sums=('069266ce0b0e25cc4eacfd9cc1c78e1b19d4341a3ca2ce50b0e731796070273e')
 
 build() {
 	cd "${srcdir}/picard-release-${pkgver}"
