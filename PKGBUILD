@@ -21,7 +21,7 @@ conflicts=('gcc-arm-none-eabi'
 	  'arm-none-eabi-newlib'
     )
 url="https://developer.arm.com/open-source/gnu-toolchain/gnu-rm"
-source=("https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/6-2017q1/gcc-arm-none-eabi-6-2017-q1-update-linux.tar.bz2")
+source=("https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/6_1-2017q1/gcc-arm-none-eabi-6-2017-q1-update-linux.tar.bz2")
 license=('custom')
 options=(!strip staticlibs)
 sha256sums=('e7aad2579f02e3b095c6d7899ca5e6a70cfa9b8a8cbd6abd868da849d416c2eb')
