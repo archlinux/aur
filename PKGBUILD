@@ -12,7 +12,8 @@ swa swe syr tam tel tgk tgl tha tir tur uig ukr urd uzb uzb_cyrl vie yid)
 
 pkgbase=tesseract-data
 pkgname=($(for l in ${_langs[@]}; do echo tesseract-data-${l}; done))
-pkgver=4.00
+epoch=1
+pkgver=3.04.00
 pkgrel=1
 pkgdesc="An OCR programm"
 arch=(any)
@@ -20,7 +21,7 @@ url="https://github.com/tesseract-ocr/tessdata"
 license=("APACHE")
 depends=()
 source=($pkgbase-$pkgver.tar.gz::https://github.com/tesseract-ocr/tessdata/archive/$pkgver.tar.gz)
-sha256sums=('35909b14d735ba21457eb1b81c19167f9cba94e062a04af34afc1ee1e8a65361')
+sha256sums=('5dcb37198336b6953843b461ee535df1401b41008d550fc9e43d0edabca7adb1')
 
 build() {
   true
