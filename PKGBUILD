@@ -9,7 +9,7 @@ url="http://sixsixfive.deviantart.com/art/ACID-280889262"
 license=('GPL')
 groups=('xfce')
 depends=('bash')
-source=("acid_by_sixsixfive-d4n8fji.7z::http://localizator.googlecode.com/files/acid_by_sixsixfive-d4n8fji.7z")
+source=("acid_by_sixsixfive-d4n8fji.7z::http://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/localizator/acid_by_sixsixfive-d4n8fji.7z")
 md5sums=('aea71393deeaec6068c3e6bdd9fe175a')
 
 package() {
