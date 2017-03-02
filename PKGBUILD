@@ -23,11 +23,6 @@ pkgver() {
   printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
-prepare() {
-  cd nss
-  hg up system-sqlite-build
-}
-
 build() {
   cd nss
   ./build.sh --opt --system-sqlite --system-nspr=/usr/include/nspr:/usr/lib
