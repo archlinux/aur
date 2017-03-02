@@ -1,3 +1,18 @@
+2017-03-02 Lucas Werkmeister <mail@lucaswerkmeister.de>
+
+	* 4.012-1 :
+	update release:
+	               - rename “Medium” to “Semibold”, “Semibold” to “Bold” and “Bold” to “Black”
+	               - add small caps
+	               - add Cyrillic and Italic Cyrillics
+	               - add localization variants for Polish, Dutch, Bulgarian, and Serbian
+	               - add Greek
+	               - add figure styles Tabular Oldstyle, Small Caps, Inferior and Superior
+	               - add/improve uppercase accents
+	               - add traditional footnotes
+	               - add currency symbols
+	               - add mathematical symbols
+
 2016-02-11 jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
         * 3.005-1 : change to the PKGBUILD only, url should not be an array
