@@ -1,7 +1,8 @@
 # Maintainer: lithm <lithm at posteo dot de>
 pkgname=xwrited-hg
-pkgver=2.r18.4a5330979433.r18.4a5330979433
-pkgrel=1
+pkgver=2.r18.4a5330979433
+_pkgver=2
+pkgrel=2
 pkgdesc="Display write and wall messages as desktop notifications."
 arch=('i686' 'x86_64')
 url="https://code.guido-berhoerster.org/projects/xwrited/"
@@ -15,7 +16,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    printf "%s.r%s.%s" ${pkgver} "$(hg identify -n)" "$(hg identify -i)"
+    printf "%s.r%s.%s" ${_pkgver} "$(hg identify -n)" "$(hg identify -i)"
 }
 
 build() {
