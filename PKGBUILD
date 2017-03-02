@@ -1,24 +1,25 @@
-# Maintainer: Benoit Favre <benoit.favre@gmail.com>
+# Maintainer: Wilson E. Alvarez <wilson.e.alvarez1@gmail.com>
+# Contributor: Benoit Favre <benoit.favre@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite
-pkgver=1.1.11
-pkgrel=3
+pkgver=1.1.13
+pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
-url='http://www.aseprite.org/'
+url="http://www.aseprite.org/"
 license=('custom')
 depends=('pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype2' 'libwebp')
 makedepends=('cmake' 'git')
-conflicts=('aseprite-git' 'aseprite-gpl')
-source=("git+https://github.com/aseprite/aseprite.git#tag=v${pkgver}"
-        "aseprite.desktop")
-sha256sums=('SKIP'
+conflicts=("aseprite-git" "aseprite-gpl")
+source=("https://github.com/${pkgname}/${pkgname}/releases/download/v1.1.13/Aseprite-v1.1.13-Source.zip"
+        "${pkgname}.desktop")
+sha256sums=( 'f4f306ce6642ecf2aa13161786b0b1797a2bedfc2c537bd910445e1b73dea56a'
         '4faeb782805e3427eedb04d7485e3e2d4eac6680509515b521a9f64ef5d79490')
 
 build() {
-  cd "$pkgname"
+  cd "$srcdir"
 
   if [ -z "$ASEPRITE_ACCEPT_EULA" ]; then
     less EULA.txt
@@ -43,11 +44,11 @@ build() {
     -DUSE_SHARED_FREETYPE=ON \
     -DFREETYPE_INCLUDE_DIR=/usr/include/freetype2 \
     -DCMAKE_INSTALL_PREFIX:STRING=/usr ..
-  make 
+  make $MAKEFLAGS
 }
 
 package() {
-  cd "$pkgname"/build
+  cd "$srcdir"/build
 
   make DESTDIR="$pkgdir/" install
   install -Dm644 "$srcdir/$pkgname.desktop" \
