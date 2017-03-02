@@ -1,30 +1,54 @@
-# $Id: PKGBUILD 248262 2015-10-02 13:15:34Z foutrelis $
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
-# Contributor: Stéphane Gaudreault <stephane@archlinux.org>
-# Contributor: SleepyDog
+####### ORIGINALLY CLONED FROM ARCHLINUX GLEW PKGBUILD
+## $Id: PKGBUILD 248262 2015-10-02 13:15:34Z foutrelis $
+## Maintainer: Andreas Radke <andyrtr@archlinux.org>
+## Contributor: Stéphane Gaudreault <stephane@archlinux.org>
+## Contributor: SleepyDog
+##########################################################
+# Maintainer: mnovick1988
+# 
+# glew-git -
+#
+# PLEASE inform me of any changes or required patches to 
+# this file. I will fix promptly. ~ mnovick1988
+#
+##########################################################
+#
+# Changes:
+# 
+# 20170302 - Added changes recommended by User "haagch"
+#           (fix PKGVER, added python Specific vesion)
+#
+##########################################################
 
 pkgname=glew-git
 _pkgname=glew
-pkgver=1.13.9ef6bfb
+pkgver=glew.2.0.0.r26.g6ee72f2
 pkgrel=1
 pkgdesc="The OpenGL Extension Wrangler Library"
 arch=('i686' 'x86_64')
 url="http://glew.sourceforge.net"
 license=('BSD' 'MIT' 'GPL')
 depends=('libxmu' 'libxi' 'glu')
+makedepends=('python2')
 provides=('glew' 'glew-git')
 conflicts=('glew')
 source=(git://github.com/nigels-com/glew.git)
 sha1sums=('SKIP')
 
+pkgver() {
+cd "glew"
+git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
   cd ${_pkgname}
   
-  cd auto 
-  make
+  cd auto
+  make PYTHON=python2
   cd ../
   cmake build/cmake/.
   make
+  
 }
 
 package() {
