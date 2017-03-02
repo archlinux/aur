@@ -1,7 +1,7 @@
 # Maintainer: nic96 <jeromyreimer at gmail dot com>
 
 pkgname=filmic-blender-git
-pkgver=20170218
+pkgver=20170301
 blenderver=$(blender -v | grep Blender | grep -o '[0-9]\.[0-9][0-9]')
 pkgrel=2
 pkgdesc="Filmic View and Look Transformations for Blender"
