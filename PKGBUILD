@@ -1,6 +1,7 @@
 # Maintainer: Gaute Hope <eg@gaute.vetsj.com>
-pkgname=astroid-git
-pkgver=v0.7.r0.g10a1f7a
+_pkgname=astroid
+pkgname=$_pkgname-git
+pkgver=v0.7.r56.ge4c070d
 pkgrel=1
 epoch=
 pkgdesc="a graphical threads-with-tags style, lightweight and fast, email client for notmuch, inspired by sup and others"
@@ -19,7 +20,7 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=
+install=$_pkgname.install
 changelog=
 source=(astroid::git+https://github.com/astroidmail/astroid.git)
 noextract=()
