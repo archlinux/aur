@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Day of the Tentacle Remastered
+Comment=A mind-bending, time travel, cartoon puzzle adventure game.
+Exec=Dott
+Icon=day-of-the-tentacle
+Terminal=false
+StartupNotify=false
+Categories=Application;Game;;

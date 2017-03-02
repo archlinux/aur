@@ -1,0 +1,21 @@
+pkgbase = day-of-the-tentacle-hib
+	pkgdesc = A mind-bending, time travel, cartoon puzzle adventure game. (Humble Bundle)
+	pkgver = 1.4.1+h20160426
+	pkgrel = 1
+	url = http://dott.doublefine.com
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = lib32-mesa
+	provides = day-of-the-tentacle
+	conflicts = day-of-the-tentacle
+	source = hib://DayOfTheTentacle_Linux_NoSteam_v1.4.1.tar.gz
+	source = day-of-the-tentacle-hib.png::https://humblebundle-a.akamaihd.net/misc/files/hashed/e4deb24a1de8e77c6227d86a23024460345f73cf.png
+	source = local://day-of-the-tentacle-hib.desktop
+	md5sums = 667b2a8a082702832242321515e55e70
+	md5sums = 194ec818316a9d1ce44b79c39844627e
+	md5sums = b5f9c9bc9380fe2f263b6ed7bced8faf
+	depends_i686 = mesa
+
+pkgname = day-of-the-tentacle-hib
+
