@@ -9,8 +9,8 @@ Group=sickrage
 
 #Type=forking
 #PIDFile=/run/sickrage/sickrage.pid
-#ExecStart=/opt/sickrage/bin/sickrage -q --nolaunch --daemon --config /opt/sickrage/config.ini --datadir /opt/sickrage --pidfile=/run/sickrage/sickrage.pid
-ExecStart=/opt/sickrage/bin/sickrage -q --nolaunch --config /opt/sickrage/config.ini --datadir /opt/sickrage
+#ExecStart=/opt/sickrage/app/bin/sickrage -q --nolaunch --daemon --datadir /opt/sickrage/data --pidfile=/run/sickrage/sickrage.pid
+ExecStart=/opt/sickrage/app/bin/sickrage -q --nolaunch --datadir /opt/sickrage/data
 
 [Install]
 WantedBy=multi-user.target

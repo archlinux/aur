@@ -1,6 +1,6 @@
 pkgbase = sickrage-pip
 	pkgdesc = A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage, torrents and anime support.
-	pkgver = 8.9.2.r0
+	pkgver = 8.9.4.r0
 	pkgrel = 1
 	url = https://github.com/SiCKRAGETV/SickRage
 	install = sickrage-pip.install
@@ -14,7 +14,7 @@ pkgbase = sickrage-pip
 	source = sickrage.service
 	source = sickrage.sysusers
 	source = sickrage.tmpfile
-	md5sums = 3d67651fa77e6f2a0c37a995ad20bc2f
+	md5sums = eb76e8676e0a2169364cb0041b0fb6f4
 	md5sums = 6a7db7e14e74072d29e482b06b41dfa7
 	md5sums = f7a12df978d649da4e77d88e03f50252
 

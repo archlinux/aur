@@ -1,40 +1,47 @@
 _patch_pip_path() {
-  find /opt/sickrage/lib/python*/site-packages/sickrage -name "*.py" -exec \
-      sed -i "s|\('pip_path'.*\)'pip'|\1'/opt/sickrage/bin/pip2'|" '{}' \;
+  find /opt/sickrage/app/lib/python*/site-packages/sickrage -name "*.py" -exec \
+      sed -i "s|\('pip_path'.*\)'pip'|\1'/opt/sickrage/app/bin/pip2'|" '{}' \;
 }
 
 post_install() {
   systemd-sysusers sickrage.conf
-  systemd-tmpfiles --create sickgear.conf
-  mkdir /opt/sickrage
+  systemd-tmpfiles --create sickrage.conf
   chown -R sickrage:sickrage /opt/sickrage
-  sudo -u sickrage virtualenv2 /opt/sickrage
-  sudo -u sickrage /opt/sickrage/bin/pip2 install --isolated sickrage lxml pyopenssl
+
+  su -s /bin/bash sickrage -c "virtualenv2 /opt/sickrage/app"
+  su -s /bin/bash sickrage -c "/opt/sickrage/app/bin/pip2 install --isolated sickrage lxml pyopenssl"
   _patch_pip_path
+
+  echo
+  echo "==> Configuration files have moved to /opt/sickrage/data. To migrate, run the following commands as root:"
+  echo "        systemctl stop sickrage.service"
+  echo "        pacman -Rn sickrage-pip"
+  echo "        cp -a /opt/sickrage{,.bak}"
+  echo '        rm -r $(ls -1d /opt/sickrage/* | grep -Ev "/backup.*|/cache.*|/config.ini.*|/Log.*|/.*\.db.*")'
+  echo "        mv /opt/sickrage/* /opt/sickrage/data/"
   echo "==> Start and enable sickrage.service. Then visit http://localhost:8081/"
 }
 
 post_upgrade() {
-  if [ ! -d /opt/sickrage ]; then
+  if [ ! -d /opt/sickrage/app ]; then
     post_install $1
   else
-    sudo -u sickrage /opt/sickrage/bin/pip2 install --isolated --upgrade sickrage lxml pyopenssl
+    su -s /bin/bash sickrage -c "/opt/sickrage/app/bin/pip2 install --isolated --upgrade sickrage lxml pyopenssl"
     _patch_pip_path
   fi
 }
 
-post_remove() {
-  sudo -u sickrage /opt/sickrage/bin/pip2 uninstall --isolated --yes $(/opt/sickrage/bin/pip2 list --isolated | awk '{ print $1 }')
-  systemctl --quiet is-active sickrage.service
-  if [ $? -eq 0 ]; then
-    systemctl stop sickrage.service
-  fi
-  sudo -u sickrage virtualenv2 --no-wheel --no-setuptools --no-pip --clear --no-download /opt/sickrage
+pre_remove() {
+  systemctl stop sickrage.service
+}
 
-  echo -e "\n==> Some files in /opt/sickrage may not have been removed.\n"
+post_remove() {
+  rm -rf /opt/sickrage/app
+
+  echo "==> To delete the configuration files, run as root: rm -rf /opt/sickrage/data"
 
   # Do not delete the 'sickrage' user automatically. It may still own files.
-  # If 'sickrage' is the only user in group 'sickrage', then the group will also be deleted.
-  echo "==> To delete the 'sickrage' user, run as root: userdel --force sickrage"
+  # If 'sickrage' is the only user in group 'sickrage', then userdel will also delete the group.
+  echo "==> To delete the \"sickrage\" user, run as root: userdel --force sickrage"
 }
 
