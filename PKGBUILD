@@ -1,6 +1,6 @@
 pkgname=stacer
 _gitname=Stacer
-pkgver=v1.0.1.r44.ga13ef59
+pkgver=v1.0.4.r2.gb54bc50
 pkgrel=1
 pkgdesc="Ubuntu System Optimizer"
 url="https://github.com/oguzhaninan/Stacer"
