@@ -1,7 +1,7 @@
 
 _project_name='aioftp'
 pkgname='python-aioftp'
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="ftp client/server for asyncio"
 url="http://pohmelie.github.io/aioftp/"
@@ -17,4 +17,4 @@ package() {
   python3 setup.py install --prefix=/usr --root="${pkgdir}"
 }
 
-md5sums=('45a91662fcd60f8c5dbb70299d248eeb')
+md5sums=('f873e77f82192ab8c80020bb65862fa9')
