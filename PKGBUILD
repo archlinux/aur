@@ -1,5 +1,6 @@
 # $Id: PKGBUILD 194152 2016-10-31 13:48:24Z spupykin $
-# Maintainer Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Crotok <crotok [at] mailbox [dot] org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Alessio 'mOLOk' Bolognino <themolok@gmail.com>
 
 pkgname=perl-gnome2-wnck
@@ -9,7 +10,7 @@ pkgdesc="Perl interface to the Window Navigator Construction Kit"
 arch=('i686' 'x86_64')
 license=("GPL" "PerlArtistic")
 url="http://search.cpan.org/dist/Gnome2-Wnck"
-depends=('gtk2-perl' 'libwnck' 'perl')
+depends=('perl' 'gtk2-perl' 'libwnck')
 makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/Gnome2-Wnck-${pkgver}.tar.gz")

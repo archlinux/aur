@@ -9,17 +9,14 @@ pkgbase = perl-gnome2-wnck
 	license = PerlArtistic
 	makedepends = perl-extutils-depends
 	makedepends = perl-extutils-pkgconfig
+	depends = perl
 	depends = gtk2-perl
 	depends = libwnck
-	depends = perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/T/TS/TSCH/Gnome2-Wnck-0.16.tar.gz
 	md5sums = 439f4569ffd7af96ef1d3feaab23760e
 
 pkgname = perl-gnome2-wnck
+	depends = perl
 	depends = gtk2-perl
 	depends = libwnck
-	depends = perl
-	depends = perl>=
-	depends = perl<
-
