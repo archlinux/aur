@@ -1,0 +1,39 @@
+pkgbase = ros-kinetic-navfn
+	pkgdesc = ROS - navfn provides a fast interpolated navigation function that can be used to create plans for a mobile base.
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = http://wiki.ros.org/navfn
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-nav-core
+	makedepends = ros-kinetic-pcl-ros
+	makedepends = ros-kinetic-roscpp
+	makedepends = ros-kinetic-geometry-msgs
+	makedepends = ros-kinetic-costmap-2d
+	makedepends = ros-kinetic-rosconsole
+	makedepends = ros-kinetic-pcl-conversions
+	makedepends = ros-kinetic-visualization-msgs
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-cmake-modules
+	makedepends = ros-kinetic-tf
+	makedepends = ros-kinetic-nav-msgs
+	makedepends = ros-kinetic-pluginlib
+	makedepends = netpbm
+	depends = ros-kinetic-nav-core
+	depends = ros-kinetic-pcl-ros
+	depends = ros-kinetic-roscpp
+	depends = ros-kinetic-geometry-msgs
+	depends = ros-kinetic-costmap-2d
+	depends = ros-kinetic-rosconsole
+	depends = ros-kinetic-pcl-conversions
+	depends = ros-kinetic-visualization-msgs
+	depends = ros-kinetic-tf
+	depends = ros-kinetic-nav-msgs
+	depends = ros-kinetic-pluginlib
+	source = ros-kinetic-navfn::git+https://github.com/ros-gbp/navigation-release.git#tag=release/kinetic/navfn/1.14.0-0
+	sha256sums = SKIP
+
+pkgname = ros-kinetic-navfn
+
