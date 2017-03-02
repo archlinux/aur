@@ -1,0 +1,25 @@
+pkgbase = ros-kinetic-gmapping
+	pkgdesc = ROS - This package contains a ROS wrapper for OpenSlams Gmapping.
+	pkgver = 1.3.8
+	pkgrel = 1
+	url = http://ros.org/wiki/gmapping
+	arch = any
+	license = CreativeCommons-by-nc-sa-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-roscpp
+	makedepends = ros-kinetic-rostest
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-openslam-gmapping
+	makedepends = ros-kinetic-tf
+	makedepends = ros-kinetic-nav-msgs
+	depends = ros-kinetic-tf
+	depends = ros-kinetic-nav-msgs
+	depends = ros-kinetic-roscpp
+	depends = ros-kinetic-openslam-gmapping
+	source = gmapping::git+https://github.com/ros-gbp/slam_gmapping-release.git#tag=release/kinetic/gmapping/1.3.8-0
+	md5sums = SKIP
+
+pkgname = ros-kinetic-gmapping
+
