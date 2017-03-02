@@ -1,0 +1,27 @@
+pkgbase = ros-kinetic-map-server
+	pkgdesc = ROS - map_server provides the map_server ROS Node, which offers map data as a ROS Service.
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = http://wiki.ros.org/map_server
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-rostest
+	makedepends = ros-kinetic-tf
+	makedepends = ros-kinetic-nav-msgs
+	makedepends = ros-kinetic-roscpp
+	makedepends = ros-kinetic-catkin
+	makedepends = sdl_image
+	makedepends = yaml-cpp
+	depends = ros-kinetic-rostest
+	depends = ros-kinetic-tf
+	depends = ros-kinetic-nav-msgs
+	depends = ros-kinetic-roscpp
+	depends = sdl_image
+	depends = yaml-cpp
+	source = ros-kinetic-map-server::git+https://github.com/ros-gbp/navigation-release.git#tag=release/kinetic/map_server/1.14.0-0
+	sha256sums = SKIP
+
+pkgname = ros-kinetic-map-server
+
