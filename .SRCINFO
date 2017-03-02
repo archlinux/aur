@@ -1,14 +1,18 @@
 pkgbase = rainbow-git
 	pkgdesc = Colorize commands output or STDIN using patterns.
-	pkgver = 20111119
+	pkgver = 2.5.0.183.eb715b6
 	pkgrel = 1
 	url = https://github.com/nicoulaj/rainbow
 	changelog = Changelog
 	arch = any
 	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	provides = rainbow
 	conflicts = rainbow
+	source = rainbow-git::git+https://github.com/nicoulaj/rainbow#branch=develop
+	sha256sums = SKIP
 
 pkgname = rainbow-git
 

@@ -1,31 +1,33 @@
 # Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 # Source: https://github.com/nicoulaj/archlinux-packages
 pkgname=rainbow-git
-pkgver=20111119
+pkgver=2.5.0.183.eb715b6
 pkgrel=1
 pkgdesc="Colorize commands output or STDIN using patterns."
 arch=(any)
 url="https://github.com/nicoulaj/rainbow"
 license=(GPL3)
 depends=(python)
+makedepends=('git' 'python-setuptools')
 changelog=Changelog
 provides=(rainbow)
 conflicts=(rainbow)
+source=("${pkgname}::git+https://github.com/nicoulaj/rainbow#branch=develop")
+sha256sums=('SKIP')
 
-_gitroot=git://github.com/nicoulaj/rainbow.git
-_gitname=${pkgname}
+pkgver() {
+  cd ${pkgbase}
+  printf "%s.%s.%s" "$(git describe --tags --abbrev=0|cut -dv -f2|cut -d- -f1)" \
+                    "$(git rev-list --count HEAD)" \
+                    "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  msg2 "Connecting to GIT server...."
-  if [ -d "${srcdir}/${_gitname}" ] ; then
-    ( cd "${srcdir}/${_gitname}" && git pull origin )
-    msg2 "The local files are updated."
-  else
-    git clone $_gitroot "${srcdir}/${_gitname}"
-  fi
+  cd ${pkgbase}
+  python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd ${pkgbase}
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
