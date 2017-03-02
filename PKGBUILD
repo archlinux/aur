@@ -5,7 +5,7 @@
 pkgname=nvidia-304xx-ck
 pkgver=304.135
 _extramodules=extramodules-4.10-ck
-pkgrel=2
+pkgrel=3
 _pkgdesc="NVIDIA drivers for linux-ck, 304xx legacy branch."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
@@ -18,10 +18,12 @@ conflicts=('nvidia-340xx-ck' 'nvidia-ck')
 license=('custom')
 install=readme.install
 options=(!strip)
-source=('kernel_4.10.patch')
+source=('drm-driver-legacy.patch'
+'kernel_4.10.patch')
 source_i686+=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64+=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-sha256sums=('7d35792528cade28232a2a0f582d36975c271de6fe99a6f3a4046b9637b9739a')
+sha256sums=('f52406b17d2e0dc1c20a61b62bb734ee7f2a3b8f71d0608cbef35aa301654729'
+            '7d35792528cade28232a2a0f582d36975c271de6fe99a6f3a4046b9637b9739a')
 sha256sums_i686=('5cb0a191ddca7b4c72b3c26cd57b7d719878ce628d24b5b026a0e5c8d3a00d93')
 sha256sums_x86_64=('352f4a4d5ef692b26383e2cf9ec866f6973f905d53eb6bc9f2161b6ba2afae5a')
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
@@ -33,6 +35,8 @@ prepare() {
   
   # patches here
   patch -Np1 --no-backup-if-mismatch -i ../kernel_4.10.patch
+  # FS#47092
+  (cd kernel; patch -p1 --no-backup-if-mismatch -i "$srcdir"/drm-driver-legacy.patch)
 }
 
 build() {
