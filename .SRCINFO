@@ -1,0 +1,35 @@
+pkgbase = ros-kinetic-stage-ros
+	pkgdesc = ROS - This package provides ROS specific hooks for stage.
+	pkgver = 1.7.5
+	pkgrel = 2
+	url = http://ros.org/wiki/stage_ros
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-roscpp
+	makedepends = ros-kinetic-stage
+	makedepends = ros-kinetic-geometry-msgs
+	makedepends = ros-kinetic-std-msgs
+	makedepends = ros-kinetic-rostest
+	makedepends = ros-kinetic-std-srvs
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-sensor-msgs
+	makedepends = ros-kinetic-tf
+	makedepends = ros-kinetic-nav-msgs
+	makedepends = boost
+	depends = ros-kinetic-roscpp
+	depends = ros-kinetic-stage
+	depends = ros-kinetic-geometry-msgs
+	depends = ros-kinetic-std-msgs
+	depends = ros-kinetic-std-srvs
+	depends = ros-kinetic-sensor-msgs
+	depends = ros-kinetic-tf
+	depends = ros-kinetic-nav-msgs
+	depends = boost
+	source = stage_ros::git+https://github.com/ros-simulation/stage_ros
+	md5sums = SKIP
+
+pkgname = ros-kinetic-stage-ros
+
