@@ -1,18 +1,18 @@
 diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index db5a7e7..b12df2c 100755
+index d5efb6c..340830d 100755
 --- a/include/ClientGUI.py
 +++ b/include/ClientGUI.py
-@@ -383,7 +383,7 @@ class FrameGUI( ClientGUITopLevelWindows.FrameThatResizes ):
+@@ -394,7 +394,7 @@ class FrameGUI( ClientGUITopLevelWindows.FrameThatResizes ):
                              python_executable = python_executable.replace( 'pythonw', 'python' )
                              
                          
--                        subprocess.Popen( [ python_executable, os.path.join( HC.BASE_DIR, 'server.py' ) ] )
-+                        subprocess.Popen( [ python_executable, '/opt/hydrus/server.py' ] )
+-                        subprocess.Popen( [ python_executable, os.path.join( HC.BASE_DIR, 'server.py' ), db_dir ] )
++                        subprocess.Popen( [ python_executable, '/opt/hydrus/server.py', db_dir ] )
                          
                      
                      time_waited = 0
 diff --git a/include/HydrusConstants.py b/include/HydrusConstants.py
-index 2cbc4b0..13038df 100755
+index 7565ea3..74fe741 100755
 --- a/include/HydrusConstants.py
 +++ b/include/HydrusConstants.py
 @@ -3,30 +3,15 @@ import sys
