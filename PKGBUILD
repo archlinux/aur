@@ -2,7 +2,7 @@
 # Contributor: TDY <tdy.aur@gmail.com>
 
 pkgname=ceylon
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A powerful statically typed language for writing large programs in groups"
 arch=("any")
@@ -12,7 +12,7 @@ install="${pkgname}.install"
 depends=("java-environment>=7" "bash")
 optdepends=("nodejs: for JavaScript interoperability")
 source=("https://downloads.ceylon-lang.org/cli/$pkgname-$pkgver.zip")
-sha256sums=("3bbc58fd00ead7cc43bb49d54d11a95db9d6ead4799aecab108e290c3b890159")
+sha256sums=("ec9a3f05a9a361eb1bb5817c5c3930417e8dcf0c46114dca841a5459af2f9c46")
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
