@@ -4,17 +4,16 @@
 _author="Daniel P. Berrange"
 _perlmod="sys-virt"
 pkgname=perl-${_perlmod}
-pkgver=1.2.14
-pkgrel=3
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Represent and manage a libvirt hypervisor connection"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Sys-Virt/"
 license=('GPL' 'PerlArtistic')
-depends=('perl>=5.10.0')
-makedepends=('perl-test-pod-coverage' 'perl-xml-xpath' 'libvirt')
-options=(!emptydirs)
+depends=('libvirt')
+makedepends=('perl-test-pod-coverage' 'perl-xml-xpath')
 source=("http://www.cpan.org/authors/id/D/DA/DANBERR/Sys-Virt-${pkgver}.tar.gz")
-md5sums=('092f7156ad2435d61869003b0d43adf6')
+md5sums=('2d5673dd8929957513f951a63a0ae2b1')
 
 build() {
   cd "${srcdir}/Sys-Virt-${pkgver}"
@@ -35,6 +34,7 @@ package() {
   make install DESTDIR="${pkgdir}/"
 
   # From Fedora RPM spec file - remove empty '.packlist' and '*.bs' files
-  find "${pkgdir}" -type f \( -name .packlist -o -name '*.bs' -empty \) | xargs rm -vf
+  find "${pkgdir}" -type f \( -name .packlist -o -name '*.bs' -o -name perllocal.pod -empty \) | xargs rm -vf
+  rm -fr "${pkgdir}/usr/lib/perl5/core_perl"
 }
 

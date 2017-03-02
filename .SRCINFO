@@ -1,7 +1,7 @@
 pkgbase = perl-sys-virt
 	pkgdesc = Represent and manage a libvirt hypervisor connection
-	pkgver = 1.2.14
-	pkgrel = 3
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = http://search.cpan.org/dist/Sys-Virt/
 	arch = i686
 	arch = x86_64
@@ -9,11 +9,9 @@ pkgbase = perl-sys-virt
 	license = PerlArtistic
 	makedepends = perl-test-pod-coverage
 	makedepends = perl-xml-xpath
-	makedepends = libvirt
-	depends = perl>=5.10.0
-	options = !emptydirs
-	source = http://www.cpan.org/authors/id/D/DA/DANBERR/Sys-Virt-1.2.14.tar.gz
-	md5sums = 092f7156ad2435d61869003b0d43adf6
+	depends = libvirt
+	source = http://www.cpan.org/authors/id/D/DA/DANBERR/Sys-Virt-3.0.0.tar.gz
+	md5sums = 2d5673dd8929957513f951a63a0ae2b1
 
 pkgname = perl-sys-virt
 
