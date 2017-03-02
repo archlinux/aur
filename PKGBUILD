@@ -38,7 +38,7 @@ makedepends=(
 )
 provides=("sssd=$pkgver")
 conflicts=('sssd')
-source=('git://git.fedorahosted.org/git/sssd.git'
+source=('git+https://pagure.io/SSSD/sssd.git'
         'sssd.service')
 sha1sums=('SKIP'
           '2d10db3d6f54a58bbf8d1f27328e68555256e0ce')
