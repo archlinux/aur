@@ -1,12 +1,11 @@
 # Maintainer: Davor Balder <dbalder@ozemail.com.au>
 # Contributor: Jiyunatori <tori_LEAVETHISOUT_@0xc29.net>
 # Contributor: mdev
-# adopted by domanov <domanov_LEAVETHISOUT_@__gmail__com>
 
 pkgname=emacs-org-mode
 _srcname=org
-pkgver=9.0
-pkgrel=1
+pkgver=9.0.5
+pkgrel=0
 pkgdesc="Emacs Org Mode"
 arch=('any')
 url="http://orgmode.org/"
@@ -14,7 +13,7 @@ depends=('emacs')
 license=('GPL')
 install=emacs-org-mode.install
 source=("http://orgmode.org/$_srcname-$pkgver.tar.gz")
-sha256sums=('a97c22963a54edf9976b5fd13de2bac1a7246549956c13eaaf8cb3a9d8a48cac')
+sha256sums=('e5bb3476190a5d42795c170c894c9dcb475587855bd535200cd7a2751e6e9869')
 
 build() {
   cd "$_srcname-$pkgver"
