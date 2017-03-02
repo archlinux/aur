@@ -2,14 +2,14 @@
 _pkgname=moony.lv2
 pkgname=moony-lv2
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Realtime Lua as programmable glue in LV2"
 arch=('i686' 'x86_64')
 url='http://open-music-kontrollers.ch/lv2/moony'
 license=('Artistic2.0')
 groups=('lv2-plugins')
 depends=('libxext' 'libgl' 'cairo')
-makedepends=('cmake' 'lv2' 'libxslt')
+makedepends=('cmake' 'lv2' 'libxslt' 'sord')
 provides=()
 conflicts=()
 replaces=()
