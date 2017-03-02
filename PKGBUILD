@@ -5,11 +5,11 @@
 
 _pkgname=qtox
 pkgname=qtox-git
-pkgver=1.8.1.r93.gffd7d0e9
+pkgver=1.8.1.r94.gceae4eca
 pkgrel=1
 pkgdesc='Powerful Tox client written in C++/Qt that follows the Tox design guidelines.'
 arch=('i686' 'x86_64')
-url='https://github.com/tux3/qTox'
+url='https://github.com/qTox/qTox'
 license=('GPL3')
 depends=('desktop-file-utils'
          'libxss'
@@ -23,7 +23,7 @@ depends=('desktop-file-utils'
 makedepends=('git' 'cmake' 'qt5-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/qTox/qTox.git")
+source=("$_pkgname::git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {
