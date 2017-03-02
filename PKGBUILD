@@ -2,8 +2,8 @@
 
 pkgname=libpurple-lurch-git
 _pkgname=lurch
-pkgver=r37.fa0ceeb
-pkgrel=2
+pkgver=r43.eac7db0
+pkgrel=1
 pkgdesc='Plugin for libpurple (Pidgin, Adium, etc) implementing OMEMO (using axolotl)'
 arch=('i686' 'x86_64')
 url="https://github.com/gkdr/lurch"
@@ -34,7 +34,7 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  env PURPLE_PLUGIN_DIR="$pkgdir/usr/lib/purple-2" make -e install
+  make DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
