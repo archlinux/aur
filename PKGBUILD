@@ -4,7 +4,7 @@
 _pkgname=sickrage
 pkgname=$_pkgname-git
 pkgver=8.8.4.r41.g10d0371b3
-pkgrel=1
+pkgrel=2
 pkgdesc="A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage, torrents and anime support."
 arch=('any')
 url="https://github.com/SiCKRAGETV/SickRage"
