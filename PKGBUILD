@@ -7,20 +7,18 @@
 
 pkgbase=python-pyside2-git
 pkgname=(pyside2-common-git python2-pyside2-git python-pyside2-git)
-pkgver=2.0.0.r2067.ccfa8440
+pkgver=2.0.0.r2080.ab092d79
 _upver=2.0.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('LGPL')
 url="http://qt-project.org/wiki/PySide"
 makedepends=('python' 'python2' "qt5.6" "python"{,2}"-shiboken2-git"
-             'cmake' 'qt5.6-webkit' 'phonon')
+             'cmake' 'qt5.6-webkit' 'phonon-qt5')
 source=("$pkgbase::git+https://code.qt.io/pyside/pyside.git"
-        "sphinx-build2.patch"
-        "disable-qwebengine.patch")
+        "sphinx-build2.patch")
 md5sums=('SKIP'
-         '0431767d635147c638063c71a2a138b3'
-         '8ce66a738fe9f9f87f7178e507b0d774')
+         '0431767d635147c638063c71a2a138b3')
 
 pkgver() {
     cd "$srcdir/$pkgbase"
@@ -30,7 +28,6 @@ pkgver() {
 prepare() {
     cd "$srcdir/$pkgbase"
     patch -Np1 -i "$srcdir/sphinx-build2.patch"
-    patch -Np1 -i "$srcdir/disable-qwebengine.patch"
 }
 
 build(){
