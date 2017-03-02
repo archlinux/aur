@@ -10,7 +10,7 @@ url="https://github.com/PowerShell/PowerShell"
 license=('MIT')
 makedepends=('git' 'cmake' 'proot' 'dotnet')
 depends=('bash' 'icu55')
-conflicts=('powershell')
+conflicts=('powershell-git')
 provides=('powershell')
 source=($pkgname::git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver
         pester::git+https://github.com/PowerShell/psl-pester.git#branch=develop
