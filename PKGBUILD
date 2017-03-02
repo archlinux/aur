@@ -3,7 +3,7 @@
 
 pkgbase=rust-nightly
 pkgname=('rust-nightly' 'rust-nightly-doc')
-pkgver=1.17.0.2017.02.28
+pkgver=1.17.0.2017.03.01
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A safe, concurrent, practical language'
@@ -11,7 +11,7 @@ url='http://www.rust-lang.org/'
 license=('MIT' 'Apache')
 makedepends=('libffi' 'perl' 'python2' 'curl')
 source=("http://static.rust-lang.org/dist/rustc-nightly-src.tar.gz")
-md5sums=('717b8942e7b0b0341a0c2c019bb6757e')
+md5sums=('a09c3f1083f9acf3b5b2ba671e57cd35')
 options=('!makeflags' 'staticlibs' '!strip' '!emptydirs')
 conflicts=('rust')
 provides=('rust')
@@ -34,7 +34,7 @@ package_rust-nightly() {
 
 	rm -f "$pkgdir"/usr/lib/rustlib/{components,manifest-rustc,manifest-rust-docs,rust-installer-version,install.log,uninstall.sh}
 
-	install --directory "$pkgdir"/usr/share/licenses/rust-nightly/
+	install -d "$pkgdir"/usr/share/licenses/rust-nightly/
         install -m644 COPYRIGHT LICENSE-* "$pkgdir"/usr/share/licenses/rust-nightly/
 }
 
@@ -47,7 +47,7 @@ package_rust-nightly-doc() {
 
        cd rustc-nightly-src/src
        _docdir="$pkgdir"/usr/share/doc/rust
-       install --directory "$_docdir"
+       install -d "$_docdir"
        cp -r doc/* "$_docdir"/ || true
 
        chmod -R 644 "$_docdir"
@@ -55,7 +55,7 @@ package_rust-nightly-doc() {
        for ext in aux out log toc; do
                rm -f "$_docdir"/*."$ext"
        done
-
-      install --directory "$pkgdir"/usr/share/licenses/rust-nightly-doc/
-      install -m644 COPYRIGHT LICENSE-* "$pkgdir"/usr/share/licenses/rust-nightly-doc/
+       cd ..
+       install -d "$pkgdir"/usr/share/licenses/rust-nightly-doc/
+       install -m644 COPYRIGHT LICENSE-* "$pkgdir"/usr/share/licenses/rust-nightly-doc/
 }
