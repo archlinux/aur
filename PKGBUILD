@@ -3,7 +3,7 @@
 
 pkgname=python-dask
 _pkgname=dask
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Minimal task scheduling abstraction"
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('python' 'python-numpy' 'python-scipy' 'python-dill' 'python-pandas' 'python-toolz' 'python-psutil' 'python-pyzmq' 'python-bcolz' 'python-cloudpickle' 'python-partd' )
 makedepends=('python-setuptools')
 source=(https://github.com/dask/dask/archive/$pkgver.zip)
-sha256sums=('54c855d28c228f689762f9f416148023b07bcfac9e9f64f4c8814c91c223753b')
+sha256sums=('2aa999e8bc56c542198e0ebc2fb50b07061e47b70f5c907545eb0a5077d40dd5')
 
 
 package(){
