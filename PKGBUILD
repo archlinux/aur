@@ -1,5 +1,6 @@
 # $Id: PKGBUILD 174748 2016-05-11 04:31:41Z fyan $
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Crotok <crotok [at] mailbox [dot] org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=perl-gtk2-unique
@@ -11,7 +12,7 @@ arch=('i686' 'x86_64')
 url="https://metacpan.org/release/${_realname}"
 license=('LGPL' 'PerlArtistic')
 makedepends=('perl-extutils-depends' 'perl-extutils-pkgconfig')
-depends=('gtk2-perl' 'libunique' 'perl')
+depends=('perl' 'gtk2-perl' 'libunique')
 checkdepends=('xorg-server-xvfb')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/P/PO/POTYL/${_realname}-${pkgver}.tar.gz"
