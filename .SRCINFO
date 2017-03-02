@@ -1,10 +1,11 @@
 pkgbase = python-pyside2-tools-git
-	pkgver = 2.0.0.r106.a3f2949
-	pkgrel = 1
+	pkgver = 2.0.0.r107.d16479e
+	pkgrel = 2
 	url = https://qt-project.org/wiki/PySide
 	arch = i686
 	arch = x86_64
 	license = LGPL
+	makedepends = git
 	makedepends = cmake
 	makedepends = python
 	makedepends = python2
