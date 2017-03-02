@@ -54,14 +54,14 @@ build() {
               --disable-gtk --enable-linux-aio --enable-seccomp \
               --localstatedir=/var \
               --enable-tpm --enable-curl \
-              --enable-modules --enable-curl --disable-werror \
+              --enable-modules --enable-curl --disable-werror --enable-jemalloc \
               --target-list=x86_64-softmmu --disable-libiscsi --disable-bluez
   make V=99
 }
 
 package() {
   pkgdesc='A generic and open source processor emulator. This is a stripped-down version for running on a headless server. Contains x86_64 emulator only.'
-  depends=('gnutls' 'dtc' 'usbredir' 'lzo')
+  depends=('gnutls' 'dtc' 'usbredir' 'lzo' 'jemalloc')
   optdepends=('ovmf: Tianocore UEFI firmware for qemu'
               'samba: SMB/CIFS server support'
               'qemu-arch-extra-git: extra architectures support'
