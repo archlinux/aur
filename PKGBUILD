@@ -1,10 +1,10 @@
 # Maintainer James W. Barnett <jbarnet4 at tulane dot edu>
 pkgname=sway-dmenu-desktop
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="i3-dmenu-desktop patched for sway"
 arch=('i686' 'x86_64')
-url="https://github.com/choderalab/pymbar"
+url=""
 license=('none')
 depends=('i3-wm')
 source=('sway-dmenu-desktop.patch')
