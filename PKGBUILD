@@ -2,8 +2,8 @@
 # Contributor: Jan Was <janek dot jan at gmail dot com>
 
 pkgname=mattermost-desktop
-pkgver=3.5.0
-pkgrel=3
+pkgver=3.6.0
+pkgrel=1
 pkgdesc="Mattermost Desktop application for Linux (Beta)"
 arch=('i686' 'x86_64')
 
@@ -15,7 +15,7 @@ depends=('gtk2' 'libxtst' 'libxss' 'gconf' 'nss' 'nspr' 'alsa-lib')
 optdepends=()
 
 source=("https://github.com/mattermost/desktop/archive/v${pkgver}.tar.gz")
-sha512sums=('06924e4ce18cbe8fd50c0742a74b0a2ec732c7a419bb741c6991097a0a7be01afdfc4ce43125856508aa06750e35d12ce34d06a1e5d6eb6ddd14e81a0a6dffba')
+sha512sums=('ef781d4d9823642b767705c4182a38414e457978f775c3042ab72a9cf71c82c7c557193e333d18bdfc69cdcc647c39d0a52a666d72aabfbb848940af2d400710')
 
 prepare() {
     cd "${srcdir}/desktop-${pkgver}"
