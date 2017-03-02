@@ -1,7 +1,7 @@
 # Maintainer: lithm <lithm at posteo dot de>
 pkgname=cute3dscapture-git
 _binname=Cute3DSCapture
-pkgver=v1.3.r18.g33c9a78
+pkgver=1.3.r18.g33c9a78
 pkgrel=1
 pkgdesc="A 3DS capture software"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
