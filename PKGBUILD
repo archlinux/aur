@@ -1,7 +1,7 @@
 # Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
 
 pkgname='sidef'
-pkgver='2.35'
+pkgver='2.36'
 pkgrel='1'
 pkgdesc="A modern object-oriented programming language."
 arch=('any')
@@ -10,12 +10,12 @@ license=('Artistic2.0')
 
 options=('!emptydirs')
 makedepends=()
-depends=('perl>=5.22.0' 'perl-data-dump' 'perl-math-gmpq>=0.41' 'perl-math-gmpz>=0.39' 'perl-math-mpfr>=3.29' 'perl-math-mpc' 'perl-math-prime-util-gmp>=0.41')
+depends=('perl>=5.22.0' 'perl-data-dump' 'perl-math-gmpq>=0.41' 'perl-math-gmpz>=0.39' 'perl-math-mpfr>=3.29' 'perl-math-mpc' 'perl-math-prime-util-gmp>=0.42')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
 
-md5sums=('51da9f82b56de8a7c47e28019bbd5903')
-sha512sums=('e37d1e581d4efe5f3f234c71a39596609a03a86032141fc85b83231eee20e98402e779d88b101181bd4b4b1280a4120dd1984b93bc3fa8754be575b139396705')
+md5sums=('e3db94f4aaccf6aae3582182f98bfaaa')
+sha512sums=('f94451a290c7032b94f946f975908542d48358c796a8798c255a4f93168b8e1961a82360bdb2314da45f73feb80739069bdbf4a1429df50cf03f396c9ccbc87a')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                                          \
