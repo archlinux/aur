@@ -1,0 +1,64 @@
+From 6541e9c7662d3987baded0ea90de80937fa23d7a Mon Sep 17 00:00:00 2001
+From: Steven Hahn <hahnse@ornl.gov>
+Date: Tue, 14 Feb 2017 13:30:12 -0500
+Subject: [PATCH] Fix compilation errors when building with HDF5 1.10.0
+
+---
+ ThirdParty/netcdf/vtknetcdf/libsrc4/nc4internal.h |  2 +-
+ ThirdParty/xdmf2/vtkxdmf2/libsrc/XdmfH5Driver.cxx | 12 +++++++++++-
+ 2 files changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/ThirdParty/netcdf/vtknetcdf/libsrc4/nc4internal.h b/ThirdParty/netcdf/vtknetcdf/libsrc4/nc4internal.h
+index 628d0c9..e023f38 100644
+--- a/ThirdParty/netcdf/vtknetcdf/libsrc4/nc4internal.h
++++ b/ThirdParty/netcdf/vtknetcdf/libsrc4/nc4internal.h
+@@ -367,7 +367,7 @@ NC_FILE_INFO_T *nc4_find_nc_file(int ncid);
+ int nc4_find_dim(NC_GRP_INFO_T *grp, int dimid, NC_DIM_INFO_T **dim, NC_GRP_INFO_T **dim_grp);
+ int nc4_find_dim_len(NC_GRP_INFO_T *grp, int dimid, size_t **len);
+ int nc4_find_type(NC_HDF5_FILE_INFO_T *h5, int typeid, NC_TYPE_INFO_T **type);
+-NC_TYPE_INFO_T *nc4_rec_find_nc_type(NC_GRP_INFO_T *start_grp, hid_t target_nc_typeid);
++NC_TYPE_INFO_T *nc4_rec_find_nc_type(NC_GRP_INFO_T *start_grp, nc_type target_nc_typeid);
+ NC_TYPE_INFO_T *nc4_rec_find_hdf_type(NC_GRP_INFO_T *start_grp, hid_t target_hdf_typeid);
+ NC_TYPE_INFO_T *nc4_rec_find_named_type(NC_GRP_INFO_T *start_grp, char *name);
+ NC_TYPE_INFO_T *nc4_rec_find_equal_type(NC_GRP_INFO_T *start_grp, int ncid1, NC_TYPE_INFO_T *type);
+diff --git a/ThirdParty/xdmf2/vtkxdmf2/libsrc/XdmfH5Driver.cxx b/ThirdParty/xdmf2/vtkxdmf2/libsrc/XdmfH5Driver.cxx
+index 48a7753..5db2620 100644
+--- a/ThirdParty/xdmf2/vtkxdmf2/libsrc/XdmfH5Driver.cxx
++++ b/ThirdParty/xdmf2/vtkxdmf2/libsrc/XdmfH5Driver.cxx
+@@ -139,7 +139,11 @@ static int H5FD_dsm_cmp(const H5FD_t *_f1, const H5FD_t *_f2);
+ #if (H5_VERS_MAJOR>1)||((H5_VERS_MAJOR==1)&&(H5_VERS_MINOR>=8))
+ static haddr_t H5FD_dsm_get_eoa(const H5FD_t *_file, H5FD_mem_t type);
+ static herr_t H5FD_dsm_set_eoa(H5FD_t *_file, H5FD_mem_t type, haddr_t addr);
++#if (H5_VERS_MAJOR>1)||((H5_VERS_MAJOR==1)&&(H5_VERS_MINOR>=10))
++static haddr_t H5FD_dsm_get_eof(const H5FD_t *_file, H5FD_mem_t type);
++#else
+ static haddr_t H5FD_dsm_get_eof(const H5FD_t *_file);
++#endif
+ #else
+ static haddr_t H5FD_dsm_get_eoa(H5FD_t *_file);
+ static herr_t H5FD_dsm_set_eoa(H5FD_t *_file, haddr_t addr);
+@@ -155,6 +159,9 @@ static const H5FD_class_t H5FD_dsm_g = {
+     "dsm",                      /*name          */
+     MAXADDR,                    /*maxaddr       */
+     H5F_CLOSE_WEAK,             /*fc_degree     */
++#if (H5_VERS_MAJOR>1)||((H5_VERS_MAJOR==1)&&(H5_VERS_MINOR>=10))
++    NULL,                       /*terminate     */
++#endif
+     NULL,                       /*sb_size       */
+     NULL,                       /*sb_encode     */
+     NULL,                       /*sb_decode     */
+@@ -687,7 +694,10 @@ H5FD_dsm_set_eoa(H5FD_t *_file, haddr_t addr)
+  *-------------------------------------------------------------------------
+  */
+ static haddr_t
+-#if (H5_VERS_MAJOR>1)||((H5_VERS_MAJOR==1)&&(H5_VERS_MINOR>=8))
++
++#if (H5_VERS_MAJOR>1)||((H5_VERS_MAJOR==1)&&(H5_VERS_MINOR>=10))
++H5FD_dsm_get_eof(const H5FD_t *_file, H5FD_mem_t type)
++#elif ((H5_VERS_MAJOR==1)&&(H5_VERS_MINOR>=8))
+ H5FD_dsm_get_eof(const H5FD_t *_file)
+ #else
+ H5FD_dsm_get_eof(H5FD_t *_file)
+--
+libgit2 0.24.0
+
