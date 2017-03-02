@@ -9,6 +9,7 @@ license=('GPL')
 url=""
 install=spotlight.install
 depends=('wget'
+         'jq'
          'perl'
          'gnome-settings-daemon'
          'libsystemd')
