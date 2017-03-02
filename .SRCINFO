@@ -1,0 +1,32 @@
+pkgbase = apache-aurora
+	pkgdesc = Aurora scheduler for mesos
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = http://aurora.apache.org/
+	arch = x86_64
+	groups = science
+	license = Apache
+	makedepends = mesos>=1.1.0-2
+	makedepends = patch
+	makedepends = python2
+	makedepends = java-environment
+	depends = mesos>=1.1.0-2
+	depends = python2
+	depends = java-environment
+	source = http://www.apache.org/dist/aurora/0.17.0/apache-aurora-0.17.0.tar.gz
+	source = aurora.service
+	source = thermos.service
+	source = aurora-env.sh
+	source = aurora-startup.sh
+	source = thermos-env.sh
+	source = thermos-startup.sh
+	sha512sums = 1fb01dbd8c66fd99fc151ea5d265fd518b5807014099567ab6440553d66f344830a4a30d4ab8d00e13189fa83d38260abea6ada82acf4d490b72afa9e71b5c94
+	sha512sums = 7f7978d979cddd87bd1c494f4e452ff5388b51d9f2bb7a7aa100ab14ac10ca3639e2f52b930680c9cd70e4f9dc34a82c84ce765ee3a8fbd3ee8f32804c6ec4f2
+	sha512sums = 81e042940d9b6269b2a2a1258e32c6c7d3216c3174dfa3210a27b075b96f5dedfd2a06cd5e91bd8cc658985605d392283adde79d96aab8ae8c593aa20be7db75
+	sha512sums = ac99a7ab12a6c92ea7ad325c462ff6abd74be1ad6996d997f9e69cd2435c839c731efebda8895b770c1a2316343a01e0851c5f1e6176b4eb7897e8e1fbece096
+	sha512sums = a4aa8abb820e2158c6e9a343ddf59dd38cd64c2c6a087a2ab2fa8fec828f5574d031e649eb1934a645c533624c64f6c9fc4c8d173d9aa8f9aaee32ef94b54698
+	sha512sums = 8553d5bde35c706e03c209963b3348a4b0e049e35d646079b7284f43b76de8db535ecd1be632726bc27f24e410fcf1962301de3798ef8958659ae4389d2f4113
+	sha512sums = 9ebd9f9679bf133e22b00546dc6527d351d8a64ef578dd75dbf557530be88a27ba71580bef6bd7f6c731e9eee8545d89ad085531e90a9e78d24118d2be191702
+
+pkgname = apache-aurora
+

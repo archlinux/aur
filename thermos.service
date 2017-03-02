@@ -1,0 +1,16 @@
+[Unit]
+Description=Thermos Observer
+After=network.target
+Wants=network.target
+
+[Service]
+ExecStart=/usr/bin/thermos-startup.sh
+#User=root
+#Group=root
+LimitNOFILE=16384
+Restart=always
+RestartSec=20
+LimitNOFILE=16384
+
+[Install]
+WantedBy=multi-user.target

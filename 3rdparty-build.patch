@@ -1,0 +1,11 @@
+--- BUILD	2017-02-01 08:16:11.000000000 +0000
++++ BUILD_new	2017-03-01 19:23:04.089109757 +0000
+@@ -30,7 +30,7 @@
+       # This native executor egg must currently be fetched out-of-band.
+       # See build-support/packer/build.sh which fetches to third_party/ and uses mesos.executor to
+       # enable a running cluster inside the root Vagrant machine.
+-      repository = '%s/third_party' % get_buildroot(),
++      repository = '/usr/share/mesos/python-eggs/',
+     )
+   ]
+ )
