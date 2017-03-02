@@ -1,0 +1,17 @@
+pkgbase = ros-kinetic-csm
+	pkgdesc = ROS - ROS-ified version of C(anonical) Scan Matcher (CSM)
+	pkgver = 1.0.2
+	pkgrel = 2
+	url = http://openslam.org/gmapping
+	arch = any
+	license = CreativeCommons-by-nc-sa-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = gsl
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-catkin
+	source = git://github.com/AndreaCensi/csm.git#tag=1.0.2
+	md5sums = SKIP
+
+pkgname = ros-kinetic-csm
+
