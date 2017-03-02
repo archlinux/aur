@@ -1,7 +1,7 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 # Contributor: bender02 at archlinux dot us
 pkgname=aescrypt
-pkgver=3.10
+pkgver=3.12
 pkgrel=1
 pkgdesc="Use AES256 (CBC mode, password SHA256 hashed) to encrypt files"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ optdepends=('perl: for aescrypt-gui'
             'zenity: for aescrypt-gui'
             'kdialog: for aescrypt-gui')
 source=(https://www.aescrypt.com/download/v3/linux/${pkgname}-${pkgver}.tgz)
-sha256sums=('153da7971cc3084610943dba44e0284848af72c06d019a3c913656f8c0ad48f1')
+sha256sums=('4e88335b335c3c7e5374d13b527b8ef8940bbe87b48a2734c600fd56b5ef1e23')
 
 build() {
 	cd $srcdir/${pkgname}-${pkgver}/src
