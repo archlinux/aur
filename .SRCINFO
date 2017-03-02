@@ -1,0 +1,24 @@
+pkgbase = ros-kinetic-interactive-marker-tutorials
+	pkgdesc = ROS - The interactive_marker_tutorials package.
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = http://ros.org/wiki/interactive_marker_tutorials
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-visualization-msgs
+	makedepends = ros-kinetic-roscpp
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-interactive-markers
+	makedepends = ros-kinetic-tf
+	depends = ros-kinetic-visualization-msgs
+	depends = ros-kinetic-roscpp
+	depends = ros-kinetic-interactive-markers
+	depends = ros-kinetic-tf
+	source = interactive_marker_tutorials::git+https://github.com/ros-gbp/visualization_tutorials-release.git#tag=release/kinetic/interactive_marker_tutorials/0.10.1-0
+	md5sums = SKIP
+
+pkgname = ros-kinetic-interactive-marker-tutorials
+
