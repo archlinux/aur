@@ -1,7 +1,7 @@
 
 pkgname=r10k
 pkgver=2.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="R10K provides a general purpose toolset for deploying Puppet environments and modules."
 arch=('i686' 'x86_64')
 url="https://github.com/puppetlabs/r10k"
