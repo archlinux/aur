@@ -13,11 +13,12 @@ post_install() {
   _patch_pip_path
 
   echo
-  echo "==> Configuration files have moved to /opt/sickrage/data. To migrate, run the following commands as root:"
+  echo "==> Configuration files have moved to /opt/sickrage/data. To migrate, run the following commands as root and then reinstall:"
   echo "        systemctl stop sickrage.service"
   echo "        pacman -Rn sickrage-pip"
   echo "        cp -a /opt/sickrage{,.bak}"
   echo '        rm -r $(ls -1d /opt/sickrage/* | grep -Ev "/backup.*|/cache.*|/config.ini.*|/Log.*|/.*\.db.*")'
+  echo "        mkdir -p /opt/sickrage/data"
   echo "        mv /opt/sickrage/* /opt/sickrage/data/"
   echo "==> Start and enable sickrage.service. Then visit http://localhost:8081/"
 }
