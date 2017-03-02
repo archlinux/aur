@@ -1,0 +1,13 @@
+Index: crosstool-ng/kconfig/zconf.gperf
+===================================================================
+--- crosstool-ng.orig/kconfig/zconf.gperf
++++ crosstool-ng/kconfig/zconf.gperf
+@@ -9,7 +9,7 @@
+ 
+ struct kconf_id;
+ 
+-static const struct kconf_id *kconf_id_lookup(register const char *str, register unsigned int len);
++static const struct kconf_id *kconf_id_lookup(register const char *str, register size_t len);
+ 
+ %%
+ mainmenu,	T_MAINMENU,	TF_COMMAND
