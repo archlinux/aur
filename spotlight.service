@@ -1,5 +1,6 @@
 [Unit]
 Description=Spotlight
+After=network-online.target
 
 [Service]
 Type=simple
