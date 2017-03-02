@@ -2,8 +2,8 @@
 
 _name=netbox
 pkgname=${_name}
-pkgver=1.8.4
-pkgrel=2
+pkgver=1.9.0
+pkgrel=0
 pkgdesc="IP address management (IPAM) and data center infrastructure management (DCIM) tool."
 arch=('any')
 url="https://github.com/digitalocean/${_name}"
@@ -18,6 +18,7 @@ depends=('python'
          'python-django'
          'python-django-debug-toolbar-git'
          'python-django-filter'
+         'python-django-mptt'
          'python-django-rest-framework'
          'python-django-rest-swagger0.3.10'
          'python-django-tables2'
@@ -42,7 +43,7 @@ source=("${url}/archive/v${pkgver}.tar.gz"
         "${_name}.tmpfile"
 				"debug_toolbar_middleware.patch"
 				"gunicorn_config.py")
-sha256sums=('f59d46affde19cb2c0f84d535293d5068c0b4aaa3bffd1a01ad4b272afb1e1cb'
+sha256sums=('fab3c4ef172065cfb9dc03ccea8ed790b5a6c86381242f3e28ea9da7fdbb19e0'
             'dc83de37ff9151de3d309fd43c6eff3b30886882012b81fd3ff2f3a5a706bea6'
             '1028bac96ddcd18c10646dff26027b4891fcab4381436e2b6ea3302887a5586f'
             '2d6d55cad836eca187a7dfe40227f994e9b2f565e71fd39e296bc8bb73bf259a'
