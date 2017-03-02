@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libiconv
-pkgver=1.14
-pkgrel=9
+pkgver=1.15
+pkgrel=1
 arch=(any)
 pkgdesc="Provides GNU libiconv.so and libcharset.so (mingw-w64)"
 depends=(mingw-w64-crt)
@@ -8,30 +8,11 @@ makedepends=(mingw-w64-configure)
 options=(!strip !buildflags staticlibs)
 license=("LGPL")
 url="http://www.gnu.org/software/libiconv/"
-source=("http://ftp.gnu.org/pub/gnu/libiconv/libiconv-$pkgver.tar.gz"
-         "00-wchar-libiconv-1.14.patch"
-         "01-reloc-libiconv-1.14.patch"
-         "02-reloc-libiconv-1.14.patch"
-         "03-cygwin-libiconv-1.14.patch"
-         "libiconv-1.14-2-mingw.patch")
-md5sums=('e34509b1623cec449dfeb73d7ce9c6c6'
-         '7fe4ced6aa978f0a05b91d85daafce96'
-         'da8ba76125096d1dc2a3fa7ded113131'
-         '77ba031f3e19ea74f18608711499ba2b'
-         '5fa6a6a676d849afc7c01d9ffdd60c5f'
-         '9da5e832f3843d6687768be068c2da1b')
+source=("http://ftp.gnu.org/pub/gnu/libiconv/libiconv-$pkgver.tar.gz")
+md5sums=('ace8b5f2db42f7b3b3057585e80d9808')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-
-prepare() {
-  cd "$srcdir/libiconv-$pkgver"
-  patch -p2 -i ../00-wchar-libiconv-1.14.patch
-  patch -p2 -i ../01-reloc-libiconv-1.14.patch
-  patch -p2 -i ../02-reloc-libiconv-1.14.patch
-  patch -p2 -i ../03-cygwin-libiconv-1.14.patch
-  patch -p2 -i ../libiconv-1.14-2-mingw.patch
-}
 
 build() {
   cd "$srcdir/libiconv-$pkgver"
