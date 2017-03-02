@@ -9,7 +9,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/witchard/mog"
 license=('MIT')
 depends=(python python-setuptools)
-optdepends=('mediainfo: Used to display image information')
+optdepends=('mediainfo: Used to display image information'
+            'poppler: Used to display pdf text')
 makedepends=('git')
 provides=('mog')
 conflicts=('mog')

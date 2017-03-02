@@ -10,6 +10,7 @@ pkgbase = mog-git
 	depends = python
 	depends = python-setuptools
 	optdepends = mediainfo: Used to display image information
+	optdepends = poppler: Used to display pdf text
 	provides = mog
 	conflicts = mog
 	source = git+https://github.com/witchard/mog.git
