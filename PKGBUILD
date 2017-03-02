@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <dcelasun[at]gmail[dot]com>
 
 pkgname=visual-studio-code
-pkgver=1.10
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Editor for building and debugging modern web and cloud applications (official binary version)"
 arch=('x86_64' 'i686')
@@ -15,9 +15,9 @@ source_x86_64=(code_x64_${pkgver}.tar.gz::https://vscode-update.azurewebsites.ne
 source_i686=(code_ia32_${pkgver}.tar.gz::https://vscode-update.azurewebsites.net/latest/linux-ia32/stable
               ${pkgname}.desktop
               )
-md5sums_x86_64=('f62b1b3ba3d927a78d3363ce8b184bb5'
+md5sums_x86_64=('c74237b2bb22cc09716a297581ab87f0'
                 'b5d0d40f5f22b4efb0b3d05c287f8704')
-md5sums_i686=('ca2fe6adddc0674fe2dffdec9cea49e6'
+md5sums_i686=('d5b0217f3a764987499d83f2abf24036'
               'b5d0d40f5f22b4efb0b3d05c287f8704')
 package() {
   _pkg=VSCode-linux-x64
