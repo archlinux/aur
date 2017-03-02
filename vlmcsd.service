@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/vlmcsd -f -p /var/lib/vlmcsd/vlmcsd.pid
+ExecStart=/usr/bin/vlmcsd -D -p /var/lib/vlmcsd/vlmcsd.pid
 Restart=on-abort
 KillSignal=SIGTERM
 PIDFile=/var/lib/vlmcsd/vlmcsd.pid

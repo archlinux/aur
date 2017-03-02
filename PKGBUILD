@@ -1,6 +1,6 @@
 # Maintainer: Sonic-Y3k <sonic.y3k@googlemail.com>
 pkgname='vlmcsd-svn'
-pkgver=svn1107
+pkgver=svn1108
 pkgrel=1
 pkgdesc="KMS activation using vlmcs."
 arch=('any')
@@ -10,16 +10,16 @@ depends=('glibc')
 makedepends=('p7zip')
 replaces=('vlmcsd')
 conflicts=('vlmcsd')
-source=('vlmcsd.7z::http://polariton.ad-file.net/download/899VxBTxb/96f186a4a09898a5ae25c561def369ef61180893/96f186a4a09898a5ae25c561def369ef61180893/vlmcsd-1107-2016-12-12-Hotbird64-source-only.7z'
+source=('vlmcsd.7z::http://meson.ad-file.net/download/8z9BVlkVC/2d37e948339d0478b9f86ec87c154715e6fa8fe5/b0df743fdaaf9eb3284787dea3e83967f5160645/vlmcsd-1108-2017-01-19-Hotbird64-source-only.7z'
         'vlmcsd.service')
 install='vlmcsd.install'
-sha256sums=("c71a5ed0c5066f6021532b9a7a6219565c486d721878d3a23a87611a6886a29d"
-            "d6e0eafab2223e83a265ac9879217189e5a17a79ccf7323f21c9d8916cc10a82")
+sha256sums=("fffa42d56e9b1d793895d4e481cdcf3541885b5d6f176b6934cea74f3c2650c3"
+            "c145194521ebf5eadc858d89b77a468f878c9a6e1699130ff9822e133ba6917f")
 noextract=('vlmcsd.7z')
 
 prepare() {
   cd "${srcdir}"
-  7z x -p2016 "${srcdir}/vlmcsd.7z" -y -o"${srcdir}/vlmcsd" > /dev/null
+  7z x -p2017 "${srcdir}/vlmcsd.7z" -y -o"${srcdir}/vlmcsd" > /dev/null
 }
 
 build() {
