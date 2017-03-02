@@ -1,44 +1,31 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=osquery-git
-pkgver=2.3.3.r13.g3c3d649b
-pkgrel=2
-epoch=
+pkgver=2.3.4.r3.ga57e409b
+pkgrel=1
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
-arch=(x86_64)
+arch=('i686' 'x86_64')
 url="https://osquery.io"
 license=('BSD')
-groups=()
 depends=('wget' 'unzip')
 makedepends=('asio' 'audit' 'aws-sdk-cpp-git' 'git' 'clang' 'benchmark'
 			 'make' 'cmake' 'doxygen' 'gflags' 'google-glog' 'linenoise'
 			 'llvm' 'lsb-release' 'beecrypt' 'python-jinja' 'python-pip'
 			 'sleuthkit' 'snappy' 'yara' 'thrift' 'magic' 'cpp-netlib'
 			 'python-jinja' 'python-psutil' 'python-pexpect' 'rocksdb-lite'
-			 'augeas' 'boost' 'boost-libs')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
+			 'augeas' 'boost' 'boost-libs' 'lldpd' 'apt' 'dpkg' 'rpm-org')
 backup=('etc/osquery/osquery.conf')
-options=()
-install=osquery.install
-changelog=
-_gitcommit="3c3d649b1ed80362e6653409876110f254cfc719"
+options=(!strip)
+_gitcommit="a57e409bea3a81875dc3bfa6700ac2983e442163"
 #source=("${pkgname}::git+https://github.com/facebook/osquery"
 source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit}"
 		"osqueryd.conf.d"
 		"osqueryd.service"
-		"arch-linux.patch"
-		"osquery.install")
-noextract=()
-validpgpkeys=()
+		"arch-linux.patch")
 sha256sums=('SKIP'
             '3aea1799571f6ddab8d4c9820686fb64e7989e8121a98747a65326cd9f62f7e1'
             '7b1082c9a74e11b02fa6d8410e987db64be2e097f84fcd346e7feef8c1e8a104'
-            '8d0559218e22f770aa0833fc7a327f720c2b1f91a98725a54c5bf6524b381c75'
-            '70e036d8f6362c92ef8dcb122fd62f30970b2543d75384225f49692f5f67085b')
+            '4d058c84ab14b6057a261b39709f8755bb28bb402ddd0c25c11aa993c11a9a60')
 
 _gitname=${pkgname}
 
@@ -60,7 +47,7 @@ prepare() {
 	find . -type f -name '*deb_package*' -delete
 	find . -type f -name '*rpm_package*' -delete
 
-	make deps
+	make format_master
 }
 
 build() {
@@ -75,12 +62,12 @@ build() {
 	#export SKIP_TESTS=True SKIP_BENCHMARKS=True
 
 	[[ -z $DEBUG ]] || unset DEBUG
-	PACKAGE=1 cmake -Wno-dev \
+	cmake -Wno-dev \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_CXX_FLAGS="-I/usr/include/libxml2" \
-		-DCMAKE_EXE_LINKER_FLAGS="-shared" \
-		-DCMAKE_VERBOSE_MAKEFILE=ON \
-		-DOSQUERY_BUILD_RELEASE=ON
+		-DCMAKE_VERBOSE_MAKEFILE=ON
+
+	find . -type f -name link.txt -exec sed -i -re 's/Bstatic -lgflags/Bdynamic	-lgflags/g' "{}" \;
 
 	make -j $(nproc) all
 }

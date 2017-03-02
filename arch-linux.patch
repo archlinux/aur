@@ -11,21 +11,6 @@ index c363196..31019ff 100755
    # The dependency directory (DEPS_DIR) will contain our legacy runtime glibc
    # and various compilers/library dependencies.
    if [[ ! -d "$DEPS_DIR" ]]; then
-diff --git a/osquery/tables/CMakeLists.txt b/osquery/tables/CMakeLists.txt
-index bda94a8..d4631f3 100644
---- a/osquery/tables/CMakeLists.txt
-+++ b/osquery/tables/CMakeLists.txt
-@@ -76,8 +76,8 @@ else()
-   ADD_OSQUERY_LINK_ADDITIONAL("magic")
-   ADD_OSQUERY_LINK_ADDITIONAL("tsk")
-
--  ADD_OSQUERY_LINK_ADDITIONAL("apt-pkg dpkg lzma lz4 bz2")
--  ADD_OSQUERY_LINK_ADDITIONAL("rpm rpmio beecrypt popt db")
-+  #ADD_OSQUERY_LINK_ADDITIONAL("apt-pkg dpkg lzma lz4 bz2")
-+  #ADD_OSQUERY_LINK_ADDITIONAL("rpm rpmio beecrypt popt db")
- endif()
-
- if(APPLE OR LINUX)
 diff --git a/specs/windows/services.table b/specs/windows/services.table
 index 3acf0c5..bd7612b 100644
 --- a/specs/windows/services.table
@@ -39,19 +24,6 @@ index 3acf0c5..bd7612b 100644
  ])
  implementation("system/windows/services@genServices")
  examples([
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 64b1bd8a..dd7b924f 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -360,7 +360,7 @@ elseif(OSQUERY_BUILD_PLATFORM STREQUAL "windows")
-   LOG_PLATFORM("Windows")
- endif()
-
--if("${OSQUERY_BUILD_DISTRO}" MATCHES "^(centos|rhel|scientific|oracle)7$")
-+if("${OSQUERY_BUILD_DISTRO}" MATCHES "^(centos|rhel|scientific|oracle)7$|arch")
-   # Useful for libudev version detection.
-   set(SYSTEMD TRUE)
- endif()
 diff --git a/osquery/extensions/CMakeLists.txt b/osquery/extensions/CMakeLists.txt
 index 5147c1a9..1c072e4c 100644
 --- a/osquery/extensions/CMakeLists.txt
@@ -128,3 +100,29 @@ index 4c8ac8ca..195450da 100644
  elseif(FREEBSD)
    ADD_OSQUERY_LINK_CORE("icuuc")
    ADD_OSQUERY_LINK_CORE("boost_system")
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index dfb9ccd7..6d9e257e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -392,7 +392,7 @@ elseif(OSQUERY_BUILD_PLATFORM STREQUAL "windows")
+   LOG_PLATFORM("Windows")
+ endif()
+
+-if("${OSQUERY_BUILD_DISTRO}" MATCHES "^(centos|rhel|scientific|oracle)7$")
++if("${OSQUERY_BUILD_DISTRO}" MATCHES "^(centos|rhel|scientific|oracle)7$|arch")
+   # Useful for libudev version detection.
+   set(SYSTEMD TRUE)
+ endif()
+diff --git a/Makefile b/Makefile
+index 2e2bd13c..c5ae915a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -32,7 +32,7 @@ endif
+ PATH_SET := PATH="$(DEPS_DIR)/bin:/usr/local/bin:$(PATH)"
+ CMAKE := $(PATH_SET) CXXFLAGS="-L$(DEPS_DIR)/lib" cmake ../../
+ CTEST := $(PATH_SET) ctest ../../
+-FORMAT_COMMAND := python tools/formatting/git-clang-format.py \
++FORMAT_COMMAND := python2 tools/formatting/git-clang-format.py \
+        "--commit" "master" "-f" "--style=file"
+
+ ANALYSIS := ${SOURCE_DIR}/tools/analysis
