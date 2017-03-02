@@ -1,0 +1,14 @@
+pkgbase = ttf-au
+	pkgdesc = The official fonts for Aarhus University: AU Passata, AU Peto and AU Logo
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://medarbejdere.au.dk/en/administration/communication/design/msofficetemplates/downloadfonts/
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://medarbejdere.au.dk/fileadmin/www.designmanual.au.dk/hent_filer/hent_skrifttyper/fonte.zip
+	md5sums = 506dc390bf03f29404a5cf5f2a1c34ec
+
+pkgname = ttf-au
+
