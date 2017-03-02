@@ -4,12 +4,12 @@
 
 pkgname=ted
 pkgver=2.23
-pkgrel=7
+pkgrel=8
 pkgdesc="Lightweight RTF text processor"
 arch=('i686' 'x86_64')
 url="http://www.nllgg.nl/Ted/"
+depends=('freetype2' 'desktop-file-utils' 'ghostscript' 'gtk2' 'libjpeg' 'libpaper' 'libpng' 'libtiff' 'libxpm' 'pcre' 'zlib')
 makedepends=('lsb-release')
-depends=('freetype2' 'desktop-file-utils' 'gtk2' 'libjpeg' 'libpaper' 'libpng' 'libtiff' 'libxpm' 'pcre' 'zlib')
 license=('GPL')
 install=$pkgname.install
 source=(http://ftp.nluug.nl/pub/editors/$pkgname/$pkgname-$pkgver.src.tar.gz
@@ -77,8 +77,8 @@ package() {
   DESTDIR="$pkgdir" make install
 
   cd "$pkgdir"
-  for i in "$srcdir/"ted_*_*.tar.gz; do
-    tar xzf "$i"
+  for _file in "$srcdir/"ted_*_*.tar.gz; do
+    tar xzf "$_file"
   done
 }
 
