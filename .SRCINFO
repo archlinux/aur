@@ -1,0 +1,21 @@
+pkgbase = ros-kinetic-mrpt-msgs
+	pkgdesc = ROS - This package defines messages for MRPT
+	pkgver = 0.1.18
+	pkgrel = 1
+	url = http://wiki.ros.org/mrpt_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-message-generation
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-std-msgs
+	makedepends = ros-kinetic-geometry-msgs
+	depends = ros-kinetic-std-msgs
+	depends = ros-kinetic-message-runtime
+	depends = ros-kinetic-geometry-msgs
+	source = mrpt_msgs::git+https://github.com/mrpt-ros-pkg/mrpt_navigation.git#tag=master
+	sha256sums = SKIP
+
+pkgname = ros-kinetic-mrpt-msgs
+
