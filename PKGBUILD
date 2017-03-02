@@ -3,7 +3,7 @@
 _pkgname=sickrage2
 pkgname=$_pkgname-git
 pkgver=2017.03.01.1.r7.g26da4a8fc
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic video library manager for TV shows"
 arch=('any')
 url="https://github.com/SickRage/SickRage"
