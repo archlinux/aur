@@ -20,7 +20,7 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
 options=('!makeflags')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=$pkgver")
-source=(http://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2 linux.gpl)
+source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2 linux.gpl)
 sha256sums=('c13ac540fd0bd566d7bdd404afe8a04ec0cb1e547788995cd4e8b218c1057b8a'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
 
