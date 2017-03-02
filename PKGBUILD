@@ -1,28 +1,52 @@
 # Contributor: Sebastian Wolf <fatmike303@gmail.com>
 pkgname=advancemame
-pkgver=3.0
+pkgver=3.3
 pkgrel=1
-pkgdesc="AdvanceMAME allows you to play Arcade games with video hardware like TVs, Arcade monitors, PC monitors and LCD screens. Also includes AdvanceMENU frontend."
+pkgdesc="Unofficial MAME/MESS version with an advanced video support for use with TVs, Arcade monitors, PC monitors and LCD screens. Also includes AdvanceMENU frontend."
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.advancemame.it"
-depends=('sdl' 'alsa-lib' 'expat' 'freetype2' 'slang')
-conflicts=('advancemenu')
+depends=('alsa-lib' 'freetype2' 'slang')
+depends_i686=('sdl2')
+depends_x86_64=('sdl2')
+makedepends=('imagemagick')
+conflicts=('advancemenu' 'advancemess')
+provides=('advancemenu' 'advancemess')
 license=('GPL')
-source=("https://github.com/amadvance/advancemame/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('19077f55ab636ac8e996d87775a1eb86c2ced381cbcd57c1e0c0bf410f4b4101')
+source=(
+  "https://github.com/amadvance/advancemame/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+  "http://www.advancemame.it/favicon.ico"
+  "${pkgname}.desktop"
+)
+sha256sums=(
+  '707f7fc51e10d01fcd73f1d82f54a444244ee0c95d82a1f3d8ac9e4b8315a4aa'
+  '42c33684c5c6e44269c7102dc404652721e4802bb19a495c264127bfee52a9d0'
+  '6633a06a972f69142af5c3ee538b80e0705ef79eed9f5f4097811015be1cfb41'
+)
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  ./configure --prefix=/usr || return 1
+  cd ${srcdir}/${pkgname}-${pkgver}
+  if [ "$CARCH" == 'armv7h' ]; then # Do not link SDL into Raspberry Pi build
+    ./configure CFLAGS="-O2 -fno-strict-aliasing -fno-strict-overflow -fsigned-char" --prefix=/usr --disable-sdl --disable-sdl2
+  else
+    ./configure CFLAGS="-O2 -fno-strict-aliasing -fno-strict-overflow -fsigned-char" --prefix=/usr
+  fi
   make || return 1
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd ${srcdir}/${pkgname}-${pkgver}
+
+  # Install built files
   make bindir="${pkgdir}/usr/bin/" \
        datadir="${pkgdir}/usr/share/" \
        mandir="${pkgdir}/usr/share/man/" \
        pkgdocdir="${pkgdir}/usr/share/doc/${pkgname}/" \
        install
+
+  # Install menu entry
+  cd ..
+  convert favicon.ico ${pkgname}.png
+  install -Dm644 ${pkgname}.png "$pkgdir/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 ${pkgname}.desktop "$pkgdir/usr/share/applications/${pkgname}.desktop"
 }
 

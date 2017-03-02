@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=AdvanceMAME
+Comment=Play Arcade games
+Exec=advmenu
+Terminal=false
+Type=Application
+Icon=advancemame
+Categories=Game;
+StartupNotify=false
