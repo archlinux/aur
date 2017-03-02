@@ -9,6 +9,7 @@ url='https://libots.sourceforge.net/'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libxml2' 'glib2' 'popt')
+# disappeared from sourceforge as of 2017-03-01, unclear what new upstream should be
 source=("https://downloads.sourceforge.net/sourceforge/${pkgname}/ots-${pkgver}.tar.gz")
 sha1sums=('4468bc06470734848c2369a37c84f76ca4ac3f9a')
 
