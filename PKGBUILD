@@ -1,12 +1,12 @@
 
 pkgname=r10k
 pkgver=2.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="R10K provides a general purpose toolset for deploying Puppet environments and modules."
 arch=('i686' 'x86_64')
 url="https://github.com/puppetlabs/r10k"
 license=('Apache')
-depends=('ruby' 'ruby-colored' 'ruby-cri' 'ruby-gettext-setup' 'ruby-log4r' 'ruby-minitar' 'ruby-multi_json')
+depends=('ruby' 'ruby-colored' 'ruby-cri' 'ruby-gettext-setup' 'ruby-log4r' 'ruby-minitar' 'ruby-multi_json' 'ruby-puppet_forge' 'ruby-semantic_puppet')
 makedepends=('rubygems')
 source=(https://rubygems.org/downloads/$pkgname-$pkgver.gem)
 noextract=($pkgname-$pkgver.gem)
