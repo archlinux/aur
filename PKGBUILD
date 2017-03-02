@@ -3,7 +3,7 @@
 pkgname=powershell
 _pkgver=6.0.0-alpha.16
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url="https://github.com/PowerShell/PowerShell"
