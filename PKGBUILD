@@ -1,4 +1,5 @@
 # Maintainer: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
+# Contributor: Thibault Lorrain (fredszaq) <fredszaq@gmail.com>
 
 pkgname=tensorflow
 pkgver=1.0.0
@@ -72,7 +73,25 @@ build() {
 
 package() {
   cd ${srcdir}/tensorflow
+
+  msg2 "Generating pkgconfig file: tensorflow.pc"
+  # pkgconfig generation
+  cat << EOF > tensorflow.pc
+prefix=/usr
+exec_prefix=\${prefix}
+libdir=\${exec_prefix}/lib
+includedir=\${prefix}/include
+modules=1
+
+Name: $pkgname
+Version: $pkgver
+Description: $pkgdesc
+Requires:
+Libs: -L\${libdir} -ltensorflow -lstdc++
+Cflags: -I\${includedir}/tensorflow
+EOF
   install -Dm644 libtensorflow_c.so ${pkgdir}/usr/lib/lib${pkgname}.so
+  install -Dm644 tensorflow.pc ${pkgdir}/usr/lib/pkgconfig/tensorflow.pc
   install -Dm644 tensorflow/c/c_api.h ${pkgdir}/usr/include/${pkgname}/c_api.h
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
