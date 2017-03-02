@@ -3,7 +3,7 @@
 
 pkgbase=nss-hg
 pkgname=nss-hg
-pkgver=trunk
+pkgver=r13176.146aaa22cf55
 pkgrel=1
 pkgdesc="Mozilla Network Security Services"
 arch=(i686 x86_64)
@@ -21,6 +21,11 @@ provides=('nss')
 pkgver() {
   cd nss
   printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+}
+
+prepare() {
+  cd nss
+  hg up default
 }
 
 build() {
