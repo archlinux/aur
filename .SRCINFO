@@ -1,0 +1,28 @@
+pkgbase = ros-kinetic-clear-costmap-recovery
+	pkgdesc = ROS - This package provides a recovery behavior for the navigation stack that attempts to clear space by reverting the costmaps used by the navigation stack to the static map outside of a given area.
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = http://wiki.ros.org/clear_costmap_recovery
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-nav-core
+	makedepends = ros-kinetic-roscpp
+	makedepends = ros-kinetic-costmap-2d
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-cmake-modules
+	makedepends = ros-kinetic-tf
+	makedepends = ros-kinetic-pluginlib
+	makedepends = eigen3
+	depends = ros-kinetic-nav-core
+	depends = ros-kinetic-tf
+	depends = ros-kinetic-pluginlib
+	depends = ros-kinetic-roscpp
+	depends = ros-kinetic-costmap-2d
+	depends = eigen3
+	source = ros-kinetic-clear-costmap-recovery::git+https://github.com/ros-gbp/navigation-release.git#tag=release/kinetic/clear_costmap_recovery/1.14.0-1
+	sha256sums = SKIP
+
+pkgname = ros-kinetic-clear-costmap-recovery
+
