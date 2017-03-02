@@ -2,7 +2,7 @@
 
 _pkgname=ddcutil
 pkgname=ddcutil-git
-pkgver=v0.6.0.r0.g917e7a8
+pkgver=v0.7.2.r0.g02a0433
 pkgrel=1
 pkgdesc='Query and change Linux monitor settings using DDC/CI and USB (development version).'
 url='http://ddcutil.com/'
@@ -24,7 +24,7 @@ build() {
   # Generate the build configuration.
   ./autogen.sh
   # Configure the build.
- ./configure
+  ./configure --prefix=/usr
 
   # Build it!
   make
@@ -35,10 +35,6 @@ package() {
 
   # Install the program.
   make DESTDIR="${pkgdir}" install
-
-  # Keep man files in the standard location.
-  mkdir -p "${pkgdir}/usr/share"
-  mv "${pkgdir}/usr/local/share/man" "${pkgdir}/usr/share/man"
 }
 
 # vim: ft=sh ts=2 sw=2 et
