@@ -13,6 +13,7 @@ pkgbase = python-pyside2-git
 	makedepends = cmake
 	makedepends = qt5.6-webkit
 	makedepends = phonon-qt5
+	makedepends = git
 	source = python-pyside2-git::git+https://code.qt.io/pyside/pyside.git
 	source = sphinx-build2.patch
 	md5sums = SKIP

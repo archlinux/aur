@@ -14,7 +14,7 @@ arch=('i686' 'x86_64')
 license=('LGPL')
 url="http://qt-project.org/wiki/PySide"
 makedepends=('python' 'python2' "qt5.6" "python"{,2}"-shiboken2-git"
-             'cmake' 'qt5.6-webkit' 'phonon-qt5')
+             'cmake' 'qt5.6-webkit' 'phonon-qt5' 'git')
 source=("$pkgbase::git+https://code.qt.io/pyside/pyside.git"
         "sphinx-build2.patch")
 md5sums=('SKIP'
