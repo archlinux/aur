@@ -1,15 +1,15 @@
 # Maintainer: Mike Javorski
 # Contributor: Sébastien "Seblu" Luttringer
 
-pkgname=docker-ce-bin
+pkgname=docker-ce-stable-bin
 pkgver=17.03.0
 pkgrel=1
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
 arch=('x86_64')
 url='https://www.docker.com/'
 license=('Apache')
-provides=('docker' 'docker-bin')
-conflicts=('docker' 'docker-bin' 'docker-git')
+provides=('docker')
+conflicts=('docker' 'docker-bin' 'docker-git' 'docker-ce' 'docker-ce-bin')
 depends=('bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'systemd' 'libseccomp')
 makedepends=('go-md2man')
 optdepends=('btrfs-progs: btrfs backend support'
