@@ -5,12 +5,12 @@ pkgrel=1
 lprver="1.1.3-0"
 cwver="1.1.4-0"
 _revision=1
-pkgdesc="LPR and CUPS driver for the Brother MFC-9332CDW"
+pkgdesc="LPR, scanner and CUPS drivers for the Brother MFC-9332CDW"
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
 arch=('i686' 'x86_64')
 license=('unknown')
 install="brother-mfc-${model}.install"
-depends=('tcsh' 'perl' 'a2ps' 'lib32-libcups')
+depends=('tcsh' 'perl' 'a2ps' 'lib32-libcups' 'brscan4')
 source=("http://download.brother.com/welcome/dlf101620/mfc${model}lpr-${lprver}.i386.deb"
         "http://download.brother.com/welcome/dlf101621/mfc${model}cupswrapper-${cwver}.i386.deb")
 sha512sums=('78c84b107333457afaa3b12b8e3c89067c68150ca6d0d6e5df6414c56e55faca99038bf8b6937213ce925aade2d3142b738efea784893ff0e1ab1d1d7d9c1021'
