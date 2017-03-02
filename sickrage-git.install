@@ -1,22 +1,32 @@
 post_install() {
   systemd-sysusers sickrage.conf
-  systemd-tmpfiles --create sickgear.conf
+  systemd-tmpfiles --create sickrage.conf
   chown -R sickrage:sickrage /opt/sickrage
+  echo "==> Configuration files have moved to /opt/sickrage/data. To migrate, run the following commands as root:"
+  echo "        systemctl stop sickrage.service"
+  echo "        pacman -Rn sickrage-git"
+  echo "        cp -a /opt/sickrage{,.bak}"
+  echo '        rm -r $(ls -1d /opt/sickrage/* | grep -Ev "/backup.*|/cache.*|/config.ini.*|/Log.*|/.*\.db.*")'
+  echo "        mv /opt/sickrage/* /opt/sickrage/data/"
   echo "==> Start and enable sickrage.service. Then visit http://localhost:8081/"
-  echo
-  echo "==> If an upgrade fails with \"error: failed to commit transaction (conflicting files)\","
-  echo "==> then remove the conflicting files manually. See comments in the PKGBUILD file."
+  echo "==> If an upgrade fails with \"error: failed to commit transaction (conflicting files)\", then uninstall first."
 }
 
 post_upgrade() {
   post_install $1
 }
 
+pre_remove() {
+  systemctl stop sickrage.service
+}
+
 post_remove() {
-  echo -e "\n==> Some files in /opt/sickrage may not have been removed.\n"
+  rm -rf /opt/sickrage/app
+
+  echo "==> To delete the configuration files, run as root: rm -rf /opt/sickrage/data"
 
   # Do not delete the 'sickrage' user automatically. It may still own files.
   # If 'sickrage' is the only user in group 'sickrage', then userdel will also delete the group.
-  echo "==> To delete the 'sickrage' user, run as root: userdel --force sickrage"
+  echo "==> To delete the \"sickrage\" user, run as root: userdel --force sickrage"
 }
 

@@ -23,7 +23,7 @@ pkgbase = sickrage-git
 	source = sickrage.sysusers
 	source = sickrage.tmpfile
 	md5sums = SKIP
-	md5sums = 33532fd9a661c6dd38afdabb45695980
+	md5sums = eb4e1f9ca758af1adc3c7d93ad4b264f
 	md5sums = 6a7db7e14e74072d29e482b06b41dfa7
 	md5sums = f7a12df978d649da4e77d88e03f50252
 
