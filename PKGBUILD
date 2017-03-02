@@ -2,8 +2,8 @@
 #Maintainer:  Yahya Mohajer <yaya_2013 {AT} yahoo {DOT} com >
 
 pkgname=nexus
-pkgver=2.14.1
-patchver=01
+pkgver=2.14.3
+patchver=02
 pkgrel=1
 pkgdesc="A Maven Repository Manager. Nexus 2"
 url="http://nexus.sonatype.org"
