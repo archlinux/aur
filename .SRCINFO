@@ -1,0 +1,26 @@
+pkgbase = ros-kinetic-amcl
+	pkgdesc = ROS - amcl is a probabilistic localization system for a robot moving in 2D.
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = http://wiki.ros.org/amcl
+	arch = any
+	license = LGPL
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-tf
+	makedepends = ros-kinetic-roscpp
+	makedepends = ros-kinetic-rostest
+	makedepends = ros-kinetic-std-srvs
+	makedepends = ros-kinetic-nav-msgs
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-dynamic-reconfigure
+	makedepends = ros-kinetic-message-filters
+	depends = ros-kinetic-dynamic-reconfigure
+	depends = ros-kinetic-tf
+	depends = ros-kinetic-roscpp
+	depends = ros-kinetic-nav-msgs
+	source = ros-kinetic-amcl::git+https://github.com/ros-gbp/navigation-release.git#tag=release/kinetic/amcl/1.14.0-1
+	sha256sums = SKIP
+
+pkgname = ros-kinetic-amcl
+
