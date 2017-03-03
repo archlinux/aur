@@ -2,7 +2,7 @@
 pkgname=python-pymesh-git
 pkgdesc='Geometry Processing Library for Python'
 pkgver=20170223
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='https://github.com/qnzhou/PyMesh'
 license=('MPL')
@@ -13,6 +13,7 @@ source=('git+https://github.com/qnzhou/PyMesh.git#branch=master')
 md5sums=('SKIP')
 
 #export PYMESH_PATH="${srcdir}/PyMesh"
+export CGAL_PATH='/usr'
 
 pkgver() {
 	cd PyMesh
@@ -49,7 +50,6 @@ build() {
 	cd build
 
 	cmake .. \
-		-DCGAL_DIR='/usr' \
 		-DCMAKE_CXX_FLAGS='-w' \
 		-DCMAKE_INSTALL_PREFIX="/usr" \
 		-DCMAKE_SKIP_BUILD_RPATH=TRUE \
