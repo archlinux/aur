@@ -1,0 +1,25 @@
+pkgbase = recap-git
+	pkgdesc = System status reporting
+	pkgver = 0.9.14.r21.gfb2109b
+	pkgrel = 1
+	url = https://github.com/rackerlabs/recap
+	arch = any
+	license = GPL2
+	depends = bash
+	depends = bc
+	depends = coreutils
+	depends = gawk
+	depends = grep
+	depends = iotop
+	depends = procps-ng
+	depends = sysstat
+	depends = net-tools
+	optdepends = apache: apachectl
+	optdepends = lynx: apachectl status
+	provides = recap-git
+	conflicts = recap
+	source = recap-git::git+https://github.com/rackerlabs/recap
+	sha256sums = SKIP
+
+pkgname = recap-git
+
