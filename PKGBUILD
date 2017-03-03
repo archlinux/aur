@@ -88,7 +88,7 @@ _find_pkgpath_from_dir() {
 }
 
 _find_pkgpath_from_input() {
-    read -p "Please provide the path to the directory containing ${_gamepkg} (e.g. /home/joe). Leave blank to download from https://factorio.org: " pkgpath
+    read -p "Please provide the path to the directory containing ${_gamepkg} (e.g. /home/joe). Leave blank to download from https://factorio.com: " pkgpath
 }
 
 _find_pkgpath_from_download() {
