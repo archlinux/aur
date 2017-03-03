@@ -1,7 +1,7 @@
 # Maintainer: Stunts <f.pinamartins@gmail.com>
 
 pkgname=fastqt
-pkgver=0.2
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="FastQC port to Qt5: A quality control tool for high throughput sequence data."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 url="https://github.com/labsquare/fastQt"
 depends=('qt5-charts' 'karchive' 'hicolor-icon-theme' 'qt5-svg')
 source=(https://github.com/labsquare/fastQt/archive/${pkgver}.tar.gz)
-sha256sums=('25f69561be2d381bce1403b9964bccadfbf825af550a89b83cdfcb50db1cffd0')
+sha256sums=('5de44833ad3db38eefe94f0be56a527f4292bb949ef1b5e66fef09cad179348e')
 
 prepare() {
   cd "${srcdir}/fastQt-${pkgver}"
