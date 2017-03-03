@@ -4,7 +4,7 @@ pkgdesc="ROS - cpp_common contains C++ code for doing things that are not necess
 url='http://www.ros.org/wiki/cpp_common'
 
 pkgname='ros-kinetic-cpp-common'
-pkgver='0.6.1'
+pkgver='0.6.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="roscpp_core-release-release-kinetic-cpp_common-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/kinetic/cpp_common/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('eab01d565565fd837339821455583d57db5cb754310e2026a08ad9bfde80ac3d')
+sha256sums=('b8b436d4ce9d085713d53faa865048cb3976cd879d34ee193368cbdff36122b2')
 
 build() {
   # Use ROS environment variables
