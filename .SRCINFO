@@ -10,8 +10,7 @@ pkgbase = menu-calc-git
 	depends = bc
 	depends = xclip
 	optdepends = rofi: calculator search support,
-	optdepends = dmenu: calculator search support,
-	optdepends = dmenu2: calculator search support
+	optdepends = dmenu: calculator search support
 	provides = =
 	source = git+https://github.com/jessemillar/menu-calc
 	md5sums = SKIP

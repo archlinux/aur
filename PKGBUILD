@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/jessemillar/menu-calc"
 license=('MIT')
 depends=(bc xclip)
-optdepends=('rofi: calculator search support', 'dmenu: calculator search support', 'dmenu2: calculator search support')
+optdepends=('rofi: calculator search support', 'dmenu: calculator search support')
 makedepends=('git')
 provides=('=')
 source=("git+https://github.com/jessemillar/menu-calc")
