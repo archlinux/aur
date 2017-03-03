@@ -2,14 +2,14 @@
 
 _pkgname=featherpad
 pkgname=$_pkgname-git
-pkgver=r33.a89933d
+pkgver=r110.e54a5c6
 pkgrel=1
 pkgdesc='Lightweight Qt5 plain text editor for Linux'
 arch=('i686' 'x86_64')
 url='https://github.com/tsujan/FeatherPad'
 license=('GPL3')
 depends=('qt5-svg' 'qt5-x11extras' 'desktop-file-utils' 'gtk-update-icon-cache')
-makedepends=('git')
+makedepends=('git' 'qt5-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/tsujan/FeatherPad.git")
