@@ -1,12 +1,13 @@
 pkgbase = sickrage2-git
 	pkgdesc = Automatic video library manager for TV shows
-	pkgver = 2017.03.01.1.r7.g26da4a8fc
-	pkgrel = 2
+	pkgver = 2017.03.02.1.r1.g66babc76d
+	pkgrel = 1
 	url = https://github.com/SickRage/SickRage
 	install = sickrage2-git.install
 	arch = any
 	license = GPL3
 	makedepends = git
+	depends = python2-babel
 	depends = python2-mako
 	depends = python2-cheetah
 	depends = python2-notify
