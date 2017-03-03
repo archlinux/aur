@@ -7,14 +7,14 @@
 pkgname=geany-plugins-nowebkitgtk
 _downloadname=geany-plugins
 pkgver=1.29
-pkgrel=1
+pkgrel=2
 pkgdesc='Geany plugins, minus geanypy'
 arch=('x86_64' 'i686')
 url='http://plugins.geany.org/'
 license=('GPL')
 depends=("geany>=$pkgver" 'gtkspell' 'ctpl' 'gpgme' 'vte' 'libsoup'
          'desktop-file-utils' 'gtk-update-icon-cache' 'lua51' 'libgit2')
-makedepends=('intltool' 'vala' 'gdb' 'cppcheck' 'libgit2')
+makedepends=('intltool' 'vala' 'gdb' 'cppcheck' 'libgit2' 'perl-xml-parser')
 optdepends=('hspell: hebrew spell checker')
 provides=('geany-plugins')
 replaces=('geany-plugins')
