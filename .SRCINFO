@@ -1,0 +1,13 @@
+pkgbase = dns-dodo-bin
+	pkgdesc = Dynamic DNS sub-domain updater for Digital Ocean.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/lummie/dns-dodo
+	arch = x86_64
+	license = GPL
+	provides = dns-dodo
+	source = https://github.com/lummie/dns-dodo/releases/download/v1.2/dns-dodo-v1.2-linux-amd64.tar.gz
+	sha256sums = 1179ae162df1bf174280c4c1ba04dfd1b55154dce7c71772741fd4b1d5dea000
+
+pkgname = dns-dodo-bin
+
