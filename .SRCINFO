@@ -1,0 +1,17 @@
+pkgbase = python-ng-numpy-randomstate
+	pkgdesc = Numpy compatible random number generators.
+	pkgver = 1.12
+	pkgrel = 1
+	url = https://bashtage.github.io/ng-numpy-randomstate
+	arch = i686
+	arch = x86_64
+	license = custom:University of Illinois/NCSA Open Source License
+	makedepends = cython
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	source = https://github.com/bashtage/ng-numpy-randomstate/archive/1.12.tar.gz
+	sha256sums = f814c1263e663c018c414b8d50943db0
+
+pkgname = python-ng-numpy-randomstate
+
