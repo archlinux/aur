@@ -1,0 +1,20 @@
+pkgbase = ubuntu-indicator-weather
+	pkgdesc = A very simple weather indicator
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/kasramp/UbuntuIndicatorWeather
+	arch = any
+	license = GPL
+	depends = python>=2.7.0
+	depends = python2-urllib3
+	depends = pygtk
+	depends = libappindicator-gtk2
+	depends = python2-gobject
+	depends = hicolor-icon-theme
+	source = https://github.com/kasramp/UbuntuIndicatorWeather/archive/v0.9.tar.gz
+	source = indicator-weather.patch
+	sha256sums = b28ab8151da980b6622b4cc06bbc94316683cd4b58d2950c9c71979062a5e7c9
+	sha256sums = 58a302906716e74879452fe5204a21cf19715edd05bcfd3be4fd0e03b7f040fc
+
+pkgname = ubuntu-indicator-weather
+

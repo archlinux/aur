@@ -1,0 +1,11 @@
+diff --git a/indicator-weather b/indicator-weather1
+index d7f2a9c..65e4ca6 100755
+--- a/indicator-weather
++++ b/indicator-weather1
+@@ -1,5 +1,4 @@
+-
+-#! /bin/sh
++#! /bin/python2
+ """:"
+ exec python $0 ${1+"$@"}
+ """
