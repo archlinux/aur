@@ -4,18 +4,19 @@
 
 pkgname=fontmatrix
 pkgver=0.6.0
-pkgrel=6
+pkgrel=7
+_commit=557e621aa1cde741c2485b04550b51fe2d51d563
 pkgdesc="Font manager for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgname/$pkgname"
 license=('GPL')
 depends=('qtwebkit')
 makedepends=('cmake' 'git' 'mesa') 
-source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('fa3ca2b189115c24c628f15334e0b506298d7a16e294bcc21bde79cba9c44a84')
+source=("git+$url.git#commit=$_commit")
+sha256sums=('SKIP')
 
 build() {
-  cd $pkgname-$_git
+  cd $pkgname
   [[ $CARCH == 'i686' ]] && _bits='32'
   [[ $CARCH == 'x86_64' ]] && _bits='64'
   export QTDIR=/usr
@@ -26,6 +27,6 @@ build() {
 }
 
 package() {
-  cd $pkgname-$_git/build
+  cd $pkgname/build
   make DESTDIR="$pkgdir" install
 }
