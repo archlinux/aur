@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/django-compressor/django-appconf"
 license=('BSD')
 options=(!emptydirs)
-source=("https://github.com/django-compressor/django-appconf/archive/v${pkgver}.tar.gz")
+source=("$_pkgbase-$pkgver.tar.gz::https://github.com/django-compressor/django-appconf/archive/v${pkgver}.tar.gz")
 sha256sums=('7ed2a219b0195d13c7f7e82d77710c3a3478c997049a3749aaf16a319a084933')
 makedepends=('python-setuptools' 'python2-setuptools')
 
