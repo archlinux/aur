@@ -4,7 +4,7 @@ pkgdesc="ROS - roscpp_serialization contains the code for serialization as descr
 url='http://ros.org/wiki/roscpp_serialization'
 
 pkgname='ros-kinetic-roscpp-serialization'
-pkgver='0.6.1'
+pkgver='0.6.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="roscpp_core-release-release-kinetic-roscpp_serialization-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/kinetic/roscpp_serialization/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ed648dd62d24392f31a6225c1533f014e0c51ea3e26e4fd98f998656c6621913')
+sha256sums=('5190aaf89a8985b562b15a86b9ca5645fcfc57d2112a11126935c944d66fda73')
 
 build() {
   # Use ROS environment variables
