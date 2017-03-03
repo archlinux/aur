@@ -1,6 +1,6 @@
 pkgbase = spotlight
 	pkgdesc = Displays a new background image daily
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	install = spotlight.install
 	arch = any
@@ -13,9 +13,11 @@ pkgbase = spotlight
 	source = spotlight.sh
 	source = spotlight.service
 	source = spotlight.timer
-	md5sums = efc8c0612da69f6faec5ffb4132ac809
+	source = spotlight.desktop
+	md5sums = 3513346c4a6be5c3aad07bd4b3e64489
 	md5sums = 3f71203246d7003af3f05b1891ccfd5f
 	md5sums = 5cf181a3dd50993e0dfbf1835c9d2364
+	md5sums = 30fbf3665eca3ea98d00d38c5829c1ad
 
 pkgname = spotlight
 

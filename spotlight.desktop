@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Spotlight
+Comment=Displays a new background image
+Keywords=background;wallpaper;
+Exec=spotlight.sh
+Icon=preferences-desktop-wallpaper
+Terminal=false
+Type=Application
+StartupNotify=false
+X-GNOME-UsesNotifications=true
