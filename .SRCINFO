@@ -1,0 +1,14 @@
+pkgbase = argdata
+	pkgdesc = binary serialisation format inspired by YAML, MessagePack and nvlists
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/NuxiNL/cloudabi-utils
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	makedepends = cmake
+	source = argdata-0.2.tar.gz::https://github.com/NuxiNL/argdata/archive/v0.2.tar.gz
+	sha512sums = fc233953a7012b8e2c7eebe7ec3f8262e66bd603719cf3a701dfe5558859e4a08266a768544a729fa3e4e8ea76b2f9e62a47e7b12d9e1427becd06e3ae0cbfcd
+
+pkgname = argdata
+
