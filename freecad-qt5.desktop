@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=FreeCAD-Qt5
+Comment=A general purpose 3D CAD modeler
+GenericName=CAD Application
+Exec=/usr/bin/freecad-qt5 %F
+Path=/opt/freecad-qt5/lib
+Terminal=false
+Type=Application
+Icon=/opt/freecad-qt5/data/freecad.xpm
+Categories=Application;Science;Math;Education;
+StartupNotify=true
+MimeType=application/x-extension-fcstd;
