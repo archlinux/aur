@@ -20,13 +20,13 @@ _COMPILER="GCC49"
 ################
 
 ################
-_OPENSSL_VERSION="1.0.2j"
+_OPENSSL_VERSION="1.0.2k"
 ################
 
 _pkgname="ovmf"
 pkgname="${_pkgname}-git"
 
-pkgver=18726.edddb94
+pkgver=21242.f1bbd4e3cc
 pkgrel=1
 pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - GIT Version"
 url="https://tianocore.github.io/ovmf/"
@@ -46,7 +46,7 @@ source=("${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=master
         "https://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz")
 
 sha1sums=('SKIP'
-          'bdfbdb416942f666865fa48fe13c2d0e588df54f')
+          '5f26a624479c51847ebd2f22bb9f84b3b44dcb44')
 
 noextract=("openssl-${_OPENSSL_VERSION}.tar.gz")
 
