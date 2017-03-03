@@ -17,6 +17,7 @@
 # 
 # 20170302 - Added changes recommended by User "haagch"
 #           (fix PKGVER, added python Specific vesion)
+#	    (note: added libGLEW.so.2 Symbolic Link)
 #
 ##########################################################
 
