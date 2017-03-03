@@ -11,12 +11,14 @@
 set -u
 _opt_Debug=0
 # 0 = standard build
-# 1 = debug build. This requires sudo to change a system setting.
+# 1 = debug build.
 # 2 = debug build with slow compile to make compile errors easy to see
+# Debug builds must be launched from the command line to allow
+# sudo to change a system setting.
 
 _pkgname='dosemu2'
 pkgname="${_pkgname}-git"
-pkgver=2.0pre6.1.dev.290.g5424865e
+pkgver=2.0pre6.1.dev.330.g4c2304a4
 pkgrel=1
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
 arch=('i686' 'x86_64')
@@ -89,9 +91,9 @@ prepare() {
     ./autogen.sh
     local _opts=()
     if [ "${_opt_Debug}" -ne 0 ]; then
-      sed -i -e '# Temp fix for debug xbacktrace' \
-             -e 's:^#include <string\.h>:#include "config.h"\n&:g' \
-        'src/arch/linux/async/backtrace-symbols.c'
+      #sed -i -e '# Temp fix for debug xbacktrace' \
+      #       -e 's:^#include <string\.h>:#include "config.h"\n&:g' \
+      #  'src/arch/linux/async/backtrace-symbols.c'
       _opts+=('-d')
       #_opts+=('-d' '--disable-xbacktrace')
     fi
@@ -118,17 +120,19 @@ package() {
   set -u
   cd 'dosemu2'
   make DESTDIR="${pkgdir}" install
-  install -Dm644 <(cat << EOF
+  if [ "${_opt_Debug}" -eq 0 ]; then # sudo in the launcher crashes cinnamon
+    install -Dm644 <(cat << EOF
 [Desktop Entry]
 Name=DOSEMU
-Exec=dosemu -X
+Exec=dosemu
 Icon=dosemu
 Terminal=false
 Type=Application
 Categories=Emulator;System;
 GenericName=DOS Emulator
 EOF
-  ) "${pkgdir}/usr/share/applications/xdosemu.desktop"
+    ) "${pkgdir}/usr/share/applications/xdosemu.desktop"
+  fi
   install -Dpm644 'etc/dosemu.xpm' -t "${pkgdir}/usr/share/icons/"
   install -Dpm644 'COPYING' 'COPYING.DOSEMU' -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
   # Add the gnu tools to prevent compatibility problems
