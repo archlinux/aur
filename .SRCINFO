@@ -1,0 +1,15 @@
+pkgbase = c-list
+	pkgdesc = Circular Double Linked List Implementation in Standard ISO-C11
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/c-util/c-list
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = meson
+	depends = glibc
+	source = c-list.tar.gz::https://github.com/c-util/c-list/archive/v1.tar.gz
+	sha256sums = 0da914cc1257ec2d00e02860852bdd6c3688ac1fad0c5c630be3c417a652c03f
+
+pkgname = c-list
+
