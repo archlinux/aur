@@ -1,8 +1,8 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 
 pkgname=opencamlib-git
-pkgver=11.10.64.g89c21a2
-pkgrel=2
+pkgver=11.10.73.g30ed446
+pkgrel=1
 pkgdesc="Multi-Purpose CNC Toolpath Library"
 arch=('i686' 'x86_64')
 url="https://github.com/aewallin/opencamlib"
@@ -12,7 +12,7 @@ depends=('python2' 'boost')
 provides=('opencamlib')
 conflicts=('opencamlib')
 source=("git+https://github.com/aewallin/opencamlib.git" 'CMakeLists.txt.patch')
-md5sums=('SKIP' 'de846404725c26eaeafe91c1ffa98422')
+md5sums=('SKIP' '84af9224f4e3929afe447e843094b103')
 
 pkgver() {
   cd opencamlib

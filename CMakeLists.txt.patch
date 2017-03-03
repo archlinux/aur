@@ -1,15 +1,6 @@
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -27,7 +27,7 @@ endif(NOT BUILD_DOC)
- # figure out the gcc version
- INCLUDE(gcc_version.cmake)
- 
--find_package (PythonLibs REQUIRED)
-+find_package (PythonLibs 2.7 REQUIRED)
- include_directories(${PYTHON_INCLUDE_DIRS} )
- 
- #
-@@ -228,13 +228,13 @@ include_directories( ${OpenCamLib_SOURCE_DIR} )
+@@ -235,13 +235,13 @@ include_directories( ${OpenCamLib_SOURCE_DIR} )
  #
  
  execute_process(
@@ -25,7 +16,7 @@
      OUTPUT_VARIABLE Python_arch_packages
      OUTPUT_STRIP_TRAILING_WHITESPACE
  )
-@@ -421,8 +421,6 @@ IF (DOXYGEN_FOUND)
+@@ -428,8 +428,6 @@ IF (DOXYGEN_FOUND)
  ENDIF(DOXYGEN_FOUND)
  endif (BUILD_DOC)
  
