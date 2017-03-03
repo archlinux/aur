@@ -1,6 +1,6 @@
 pkgbase = python2-dopy
 	pkgdesc = Digital Ocean API Python wrapper
-	pkgver = 0.3.6
+	pkgver = 0.3.7a
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/dopy
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python2-dopy
 	makedepends = python2-distribute
 	depends = python2
 	depends = python2-requests
-	source = https://pypi.python.org/packages/source/d/dopy/dopy-0.3.6.tar.gz
-	md5sums = 85d7ab553b6a3117295fe164e905cf50
+	source = https://pypi.python.org/packages/source/d/dopy/dopy-0.3.7a.tar.gz
+	md5sums = cf5c95287af0aca2e320be1569e197bd
 
 pkgname = python2-dopy
 

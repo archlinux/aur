@@ -2,7 +2,7 @@
 # Cotributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-dopy
-pkgver=0.3.6
+pkgver=0.3.7a
 pkgrel=1
 pkgdesc="Digital Ocean API Python wrapper"
 arch=('any')
@@ -33,4 +33,4 @@ package() {
   msg 'Installing...'
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
-md5sums=('85d7ab553b6a3117295fe164e905cf50')
+md5sums=('cf5c95287af0aca2e320be1569e197bd')
