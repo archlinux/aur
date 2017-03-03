@@ -7,7 +7,6 @@ url="https://bitbucket.org/prologin/camisole"
 license=('GPL')
 depends=('esotope-bfc-git'    # handle Brainfuck sources
          'fpc'                # handle Pascal sources
-         'fsharp'             # handle FSharp sources
          'gambit-c'           # handle Scheme sources
          'gcc'                # handle C, CXX sources
          'gcc-ada'            # handle Ada sources
@@ -19,5 +18,6 @@ depends=('esotope-bfc-git'    # handle Brainfuck sources
          'nodejs'             # handle Javascript sources
          'ocaml'              # handle OCaml sources
          'perl'               # handle Perl sources
-         'php')               # handle PHP sources
+         'php'                # handle PHP sources
+         'ruby')              # handle Ruby sources
 
