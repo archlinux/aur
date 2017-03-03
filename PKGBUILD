@@ -4,7 +4,7 @@
 
 pkgname=pantheon-workarounds
 pkgver=4
-pkgrel=1
+pkgrel=2
 pkgdesc='Workarounds for modular and minimal Pantheon Desktop Environments'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/gala'
@@ -13,6 +13,7 @@ depends=('gconf' gnome-{keyring,settings-daemon{,-compat},session}
          'polkit-gnome' 'xdg-user-dirs-gtk' 'libgala')
 makedepends=('bzr' 'intltool')
 conflicts=(pantheon-session{,-bzr})
+provides=(pantheon-session{,-bzr})
 install='gala.install'
 source=("pantheon-session::bzr+lp:~elementary-os/elementaryos/pantheon-xsession-settings"
         'pantheon-session.sh'
