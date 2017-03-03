@@ -22,7 +22,7 @@
 
 pkgname=glew-git
 _pkgname=glew
-pkgver=glew.2.0.0.r26.g6ee72f2
+pkgver=2.0.0.r26.g6ee72f2
 pkgrel=1
 pkgdesc="The OpenGL Extension Wrangler Library"
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ sha1sums=('SKIP')
 
 pkgver() {
 cd "glew"
-git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/glew.//g'
 }
 
 build() {
