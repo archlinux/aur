@@ -9,7 +9,7 @@ license=('custom')
 depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-boost' 'mingw-w64-glew' 'mingw-w64-expat'  'mingw-w64-freetype2'  'mingw-w64-libjpeg'  'mingw-w64-libxml2' 'mingw-w64-libtheora' 'mingw-w64-libpng' 'mingw-w64-libtiff' 'mingw-w64-zlib' 'mingw-w64-jsoncpp' 'mingw-w64-pugixml' 'mingw-w64-hdf5' 'mingw-w64-lz4')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("http://paraview.org/files/v${pkgver}/ParaView-v${pkgver}.tar.gz"
+source=("http://paraview.org/files/v${_majordotminor}/ParaView-v${pkgver}.tar.gz"
         'vtk_hdf5_internal.patch' 332e61a.patch 6541e9c.patch)
 sha1sums=('c578cdad44673cd3311bd5c5fec52075ea923701'
           'cbadaa87cd775d1edb1dbc1db4dedb9f3cdc4fd5' SKIP SKIP)
