@@ -33,7 +33,7 @@ prepare() {
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd brasero-$pkgver
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --disable-caches --disable-schemas-compile --enable-compile-warnings=minimum
   make
