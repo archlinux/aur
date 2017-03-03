@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=go-kbdgrab
-pkgver=r2.3e6676f
-pkgrel=2
+pkgver=r8.a3bbb70
+pkgrel=1
 pkgdesc='Key grabber written in golang for cleaning your keyboard'
 arch=(i686 x86_64)
 url='https://github.com/tonylambiris/go-kbdgrab'
