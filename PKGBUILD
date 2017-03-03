@@ -24,7 +24,7 @@ groups=(gnome-extra)
 source=(https://download.gnome.org/sources/brasero/${pkgver:0:4}/brasero-$pkgver.tar.xz
         'dvdcss-nocheck.patch')
 sha256sums=('9a5eea53e57b66de3c7c8c2393ac21a58d5afa81c6cfb16b3c7f010a3d147127'
-            '98745ff68f16811bf9268799da33b9d94a50b37bb340c6c12af84186aa69b01c')
+            'c6d7cbe8e1d1d77c7d6292f38d9feda75400b81a242897a3011d044a41acc009')
 
 prepare() {
   cd brasero-$pkgver
