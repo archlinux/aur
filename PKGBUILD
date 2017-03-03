@@ -8,14 +8,14 @@
 # Contributor: Dan Guzek <dguzek@gmail.com>
 pkgname=stepmania-git
 _shortname=stepmania
-pkgver=5.1.0a3+72+g70ed6ac
+pkgver=5.1.0a3+83+gffe7ba244a
 pkgrel=1
 pkgdesc="Advanced cross-platform rhythm game designed for home and arcade use"
 arch=('i686' 'x86_64')
 url="http://www.stepmania.com/"
 license=('MIT')
 depends=('gtk2' 'libmad' 'jack' 'libpulse' 'libva')
-makedepends=('git' 'cmake' 'yasm')
+makedepends=('git' 'cmake' 'yasm' 'glew')
 provides=('stepmania=5.1')
 conflicts=('stepmania')
 replaces=('sm-ssc-hg')
