@@ -4,7 +4,7 @@ pkgdesc="ROS - Standard ROS Messages including common message types representing
 url='http://www.ros.org/wiki/std_msgs'
 
 pkgname='ros-kinetic-std-msgs'
-pkgver='0.5.10'
+pkgver='0.5.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="std_msgs-release-release-kinetic-std_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/std_msgs-release/archive/release/kinetic/std_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('707a2fcead437957c8165ac2f497ed84987d4d960738427d097e8f0e61329cc5')
+sha256sums=('64d894cdc86fba346136f61ee98b638f1cbc92eb8a58dadb74ee15bea21b9d70')
 
 build() {
   # Use ROS environment variables
