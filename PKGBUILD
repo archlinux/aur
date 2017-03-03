@@ -3,8 +3,8 @@
 
 _pkgbase=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev' 'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
-pkgver=1.19.1 # http://lists.x.org/archives/xorg/2017-January/058559.html
-pkgrel=5 # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/xorg-server&id=ae1a2da73382be5ad3837a41cf4a20ae49bf7ef6
+pkgver=1.19.2 # http://lists.x.org/archives/xorg/2017-March/058628.html
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
@@ -24,7 +24,7 @@ source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
-sha256sums=('79ae2cf39d3f6c4a91201d8dad549d1d774b3420073c5a70d390040aa965a7fb'
+sha256sums=('191d91d02c059c66747635e145c30bc1004e703fe3b74439e26c0d05d5c4d28b'
             'SKIP'
             'f46a9d1a5ac43c5359fbd8c57b6e64b0bd313116b5cb638527bfe3701e6c3904'
             '914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8'
