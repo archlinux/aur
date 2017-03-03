@@ -1,20 +1,19 @@
 pkgbase = vidcutter-git
-	pkgdesc = FFmpeg based video cutter & joiner with a modern PyQt5 GUI
-	pkgver = 3.0.0a.r0.gb9f344e
+	pkgdesc = the simple & fast video cutter & joiner with the help of mpv + FFmpeg
+	pkgver = 3.0.0.r1.g8b6497f
 	pkgrel = 1
 	url = http://vidcutter.ozmartians.com
 	install = vidcutter-git.install
 	arch = any
 	license = GPL3
-	makedepends = git
-	makedepends = sed
 	makedepends = python-setuptools
 	depends = python-pyqt5
 	depends = mpv
 	depends = ffmpeg
+	depends = mediainfo
 	provides = vidcutter-git
 	conflicts = vidcutter
-	source = https://github.com/ozmartian/vidcutter/archive/mpv.tar.gz
+	source = vidcutter-git::git+https://github.com/ozmartian/vidcutter.git
 	md5sums = SKIP
 
 pkgname = vidcutter-git
