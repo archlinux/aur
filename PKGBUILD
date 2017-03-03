@@ -2,7 +2,7 @@
 # Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: kachelaqa <kachelaqa at gmail dot com>
 
-pkgbase='python-pyside2-tools-git'
+pkgbase='pyside2-tools-git'
 pkgname=('python2-pyside2-tools-git' 'python-pyside2-tools-git' 'pyside2-tools-common-git')
 pkgver=2.0.0.r107.d16479e
 _upver=2.0.0

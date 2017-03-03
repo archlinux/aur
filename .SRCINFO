@@ -1,4 +1,4 @@
-pkgbase = python-pyside2-tools-git
+pkgbase = pyside2-tools-git
 	pkgver = 2.0.0.r107.d16479e
 	pkgrel = 2
 	url = https://qt-project.org/wiki/PySide
@@ -13,7 +13,7 @@ pkgbase = python-pyside2-tools-git
 	makedepends = shiboken2-git
 	makedepends = python-pyside2-git
 	makedepends = python2-pyside2-git
-	source = python-pyside2-tools-git::git+https://code.qt.io/pyside/pyside-tools.git
+	source = pyside2-tools-git::git+https://code.qt.io/pyside/pyside-tools.git
 	md5sums = SKIP
 
 pkgname = python2-pyside2-tools-git
