@@ -1,6 +1,6 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 pkgname=aws-sdk-cpp-git
-pkgver=1.0.71.r0.gb8323bbc1
+pkgver=1.0.76.r0.gcb9ae04ec
 pkgrel=1
 epoch=
 pkgdesc="AWS SDK for C++"
@@ -28,6 +28,7 @@ _gitname=${pkgname}-${pkgver}
 
 #pkgver() {
 #	cd $_gitname
+#
 #	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 #}
 
@@ -40,7 +41,7 @@ build() {
                -DMINIMIZE_SIZE=ON -DBUILD_SHARED_LIBS=OFF"
     cmake $CMAKE_FLAGS .
 
-	make
+	make -j $(nproc)
 }
 
 package() {
