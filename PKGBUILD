@@ -37,7 +37,6 @@ build() {
   cd $srcdir/$_pkgbase
   XDG_CACHE_HOME="$srcdir/cache" composer install \
     --no-interaction --no-dev --no-suggest
-  rm -rf "$srcdir/cache"
 }
 
 package() {
