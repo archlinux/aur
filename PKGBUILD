@@ -1,6 +1,6 @@
 # Maintainer: Adrià Arrufat <adria.arrufat+AUR AT protonmail DOT ch>
 pkgname=coax-git
-pkgver=0.0.0+20170227+34+ge2979a1
+pkgver=0.0.0+20170303+48+gd00254a
 pkgrel=1
 pkgdesc="A (barely working) native Wire client for Unix"
 arch=('i686' 'x86_64')
@@ -22,12 +22,12 @@ pkgver() {
 
 build() {
   cd "coax/coax-gtk"
-  cargo build --release
+  cargo build --release --features=prod
 }
 
 package() {
   cd "coax/coax-gtk"
-  cargo install --force --features=prod --root=$pkgdir/usr
+  cargo install --root=$pkgdir/usr
   install -Dm644 src/gtk/coax.desktop $pkgdir/usr/share/applications/coax.desktop
   sed -i $pkgdir/usr/share/applications/coax.desktop -e 's/@bindir@/\/usr\/bin/'
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/coax/COPYING"
