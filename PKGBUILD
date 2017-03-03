@@ -1,13 +1,13 @@
 # Maintainer: schaap137 <dojo86@gmail.com>
 pkgname=chugins-git
 pkgver=1.3.5.2.r86.g9ed524f
-pkgrel=6
+pkgrel=7
 pkgdesc="Repository for ChuGins (to use with chuck)"
 arch=('i686' 'x86_64')
 url="https://github.com/ccrma/chugins"
 license=('GPL')
 depends=('chuck')
-makedepends=('cpio' 'git')
+makedepends=('git')
 source=("$pkgname"::"git://github.com/ccrma/chugins.git")
 sha256sums=('SKIP')
 
@@ -34,5 +34,5 @@ package() {
   mkdir -p "$pkgdir"/usr/lib/chuck
   install -Dm755 **/*.chug "$pkgdir"/usr/lib/chuck/
   mkdir -p "$pkgdir"/usr/share/doc/chuck/examples/chugins
-  find . -type f -regex '.*\.\(md\|wav\|ck\)' | cpio -p -d -v -u "$pkgdir"/usr/share/doc/chuck/examples/chugins/
+  while read -r file; do install -Dm644 "$file" "$pkgdir/usr/share/doc/chuck/examples/chugins/$file"; done < <(find . -type f -regex '.*\.\(md\|wav\|ck\)')
 }
