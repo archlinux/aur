@@ -1,0 +1,11 @@
+--- src/brasero-3.12.1/plugins/dvdcss/burn-dvdcss.c	2014-03-06 22:59:54.000000000 +0900
++++ src/brasero-3.12.1/plugins/dvdcss/burn-dvdcss.c	2016-10-30 01:08:13.067160544 +0900
+@@ -95,8 +95,6 @@
+ 	if (!module)
+ 		goto error_doesnt_exist;
+ 
+-	if (!g_module_symbol (module, "dvdcss_interface_2", &address))
+-		goto error_version;
+ 
+ 	if (!g_module_symbol (module, "dvdcss_open", &address))
+ 		goto error_version;
