@@ -10,7 +10,7 @@
 PKGEXT=.pkg.tar
 
 pkgname=hon
-pkgver=4.0
+pkgver=4.0.4.1
 pkgrel=1
 pkgdesc="Heroes of Newerth is a Real Time Strategy game heavily influcenced by DotA"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ source=('hon.desktop' 'license' "http://dl.heroesofnewerth.com/installers/linux/
 noextract=("HoNClient.sh")
 md5sums=('25fb5ab8c49be0f1269c79520ccee789'
          'dd2c8cd0f5bcafa25cfb583a92e21aec'
-         'd03e975286ae270d6bb77ae88b6ed3b4')
+         '06034eeafc436b3a63202e85c995077a')
 
 package() {    
     #mv HoNClient-${pkgver}-${pkgrel}.sh HoNClient-${pkgver}.sh
