@@ -1,0 +1,18 @@
+pkgbase = xmpp-console-git
+	pkgdesc = XMPP console
+	pkgver = r2127.3375777
+	pkgrel = 1
+	url = https://github.com/node-xmpp/node-xmpp/tree/master/packages/console
+	arch = any
+	license = ISC
+	makedepends = git
+	makedepends = npm
+	makedepends = yarn
+	depends = nodejs
+	provides = xmpp-console
+	conflicts = xmpp-console
+	source = xmpp-console::git+https://github.com/node-xmpp/node-xmpp
+	md5sums = SKIP
+
+pkgname = xmpp-console-git
+
