@@ -4,7 +4,7 @@
 
 pkgname=texmacs-svn
 _pkgname=texmacs
-pkgver=20170301.10612
+pkgver=20170303.10620
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('i686' 'x86_64')
@@ -21,12 +21,10 @@ makedepends=('ghostscript')
 source=("${_pkgname}::svn://svn.savannah.gnu.org/texmacs/trunk/src"
         "0001-R-plugin-fix-preprocessor.patch"
         "0002-Sage-plugin-fix-which-not-found.patch"
-        "0003-Fix-typo.patch"
         )
 sha1sums=('SKIP'
-          '289165f7e1256c3fd703372351b2376fafdf8d01'
-          '03acb07214f7eba2fce17600a6a7b64bc642fab6'
-          '86cfc8b7de70911943143e46cf1bf093406a58f9')
+          '57cef50905776f39c26fd7fd9c9ad45cf630233c'
+          'c755cb0c3f002129ed64df21c0dffbae49a317f0')
 options=('!emptydirs' '!ccache')
 provides=('texmacs')
 conflicts=('texmacs')
@@ -44,7 +42,6 @@ prepare() {
 
   patch -Np1 -i ../0001-R-plugin-fix-preprocessor.patch
   patch -Np1 -i ../0002-Sage-plugin-fix-which-not-found.patch
-  patch -Np1 -i ../0003-Fix-typo.patch
 
   autoreconf
 
