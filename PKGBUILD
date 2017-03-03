@@ -5,13 +5,13 @@
 
 pkgname=aseprite
 pkgver=1.1.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url="http://www.aseprite.org/"
 license=('custom')
 depends=('pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype2' 'libwebp')
-makedepends=('cmake' 'git')
+makedepends=('cmake')
 conflicts=("aseprite-git" "aseprite-gpl")
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/v1.1.13/Aseprite-v1.1.13-Source.zip"
         "${pkgname}.desktop")
@@ -29,7 +29,6 @@ build() {
   fi
 
   mkdir -p build && cd build
-  git submodule update --init --recursive
   cmake -DUSE_SHARED_PIXMAN=ON \
     -DWITH_WEBP_SUPPORT=ON \
     -DUSE_SHARED_LIBWEBP=ON \
