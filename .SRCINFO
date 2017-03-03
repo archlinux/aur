@@ -8,7 +8,6 @@ pkgbase = deen-git
 	makedepends = git
 	depends = python
 	depends = python-pip
-	depends = python-pyqt5
 	optdepends = python-pyopenssl
 	provides = deen
 	conflicts = deen
