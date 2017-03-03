@@ -2,8 +2,8 @@
 
 pkgname=python2-gmusicapi
 _pkgname=gmusicapi
-pkgver=10.1.0
-pkgrel=2
+pkgver=10.1.1
+pkgrel=1
 pkgdesc="An unofficial client library for Google Music"
 arch=('any')
 url="https://github.com/simon-weber/gmusicapi"
@@ -13,7 +13,7 @@ depends=('python2-validictory>=0.8.0' 'python2-decorator>=3.3.1' 'mutagen>=1.34'
          'python2-appdirs>=1.1.0' 'python2-gpsoauth>=0.2.0' 'python2-mechanicalsoup>=0.4.0' 'python2-six>=1.9.0' 'python2-future')
 makedepends=('python2-setuptools')
 source=("https://github.com/simon-weber/$_pkgname/archive/$pkgver.tar.gz")
-md5sums=('ad7ae83b48e9107b0c1b1f9e378dcc5f')
+md5sums=('a88e314420de9128d41ce72fcc6f359f')
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
