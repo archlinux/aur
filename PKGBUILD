@@ -16,13 +16,16 @@ source=("${pkgbase}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 md5sums=('90c534ffe03736623e4d976a2e378615')
 sha256sums=('e660f4aa9a7e3ec9da525a51ab9d654c651f7a2b16f297f18eeba9117db4625e')
 
-package_python-ovs() {
+build() {
       cd "$srcdir/ovs-${pkgver}"
       ./boot.sh
       ./configure --prefix="$pkgdir/usr" --localstatedir="$pkgdir/var" --sysconfdir="$pkgdir/etc"
       make python/ovs/version.py
+}
 
+package() {
       cd "$srcdir/ovs-${pkgver}/python"
       python setup.py install --root="$pkgdir/" --optimize=1
-    }
+}
+
 # vim:set ts=2 sw=2 et:
