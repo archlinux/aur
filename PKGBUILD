@@ -3,7 +3,7 @@
 
 pkgbase=rust-nightly
 pkgname=('rust-nightly' 'rust-nightly-doc')
-pkgver=1.17.0.2017.03.01
+pkgver=1.17.0.2017.03.02
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A safe, concurrent, practical language'
@@ -11,7 +11,7 @@ url='http://www.rust-lang.org/'
 license=('MIT' 'Apache')
 makedepends=('libffi' 'perl' 'python2' 'curl')
 source=("http://static.rust-lang.org/dist/rustc-nightly-src.tar.gz")
-md5sums=('a09c3f1083f9acf3b5b2ba671e57cd35')
+md5sums=('17965bbbf0e6221f516e977307f9e41d')
 options=('!makeflags' 'staticlibs' '!strip' '!emptydirs')
 conflicts=('rust')
 provides=('rust')
@@ -31,7 +31,7 @@ package_rust-nightly() {
 
 	make DESTDIR="$pkgdir" install
 	rm -fr "$pkgdir"/usr/share/doc/rust/html
-
+	rm "$pkgdir"/usr/share/doc/rust/README.md
 	rm -f "$pkgdir"/usr/lib/rustlib/{components,manifest-rustc,manifest-rust-docs,rust-installer-version,install.log,uninstall.sh}
 
 	install -d "$pkgdir"/usr/share/licenses/rust-nightly/
