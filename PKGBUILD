@@ -9,7 +9,8 @@ url="https://github.com/zhangboyang/${_pkgname}"
 license=('MIT')
 depends=('xulrunner')
 source=("git+${url}.git"
-		"${pkgname}.desktop")
+		"${pkgname}.desktop"
+		"${pkgname}.png")
 
 pkgver() {
 	cd "${srcdir}"
@@ -23,7 +24,9 @@ package() {
 		install -Dm644 "$f" "${pkgdir}/usr/share/${pkgname}/$f"
 	done
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/${pkgname}.png" -t "${pkgdir}/usr/share/${pkgname}/"
 }
 
 md5sums=('SKIP'
-         'e64af1767c655ec6f9fc5839a7a64432')
+         'a2ac186a3c95bba5436bc6b05d6a3efa'
+         '6799f23eb1e2ff88870d1b5a45837a45')

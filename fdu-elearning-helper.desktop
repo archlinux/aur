@@ -5,4 +5,5 @@ Comment=Fudan Elearning Helper
 Exec=xulrunner /usr/share/fdu-elearning-helper/xul/application.ini -no-remote
 Categories=Network;WebBrowser;Study;
 Terminal=false
+Icon=/usr/share/applications/fdu-elearning-helper.png
 StartupNotify=true
