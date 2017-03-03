@@ -1,0 +1,18 @@
+pkgbase = c-list-git
+	pkgdesc = Circular Double Linked List Implementation in Standard ISO-C11
+	pkgver = r13.208f4a2
+	pkgrel = 1
+	url = https://github.com/c-util/c-list
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = meson
+	depends = glibc
+	provides = c-list
+	conflicts = c-list
+	source = c-list-git::git+https://github.com/c-util/c-list
+	sha256sums = SKIP
+
+pkgname = c-list-git
+
