@@ -5,7 +5,7 @@
 
 pkgname=aseprite
 pkgver=1.1.13
-pkgrel=2
+pkgrel=3
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url="http://www.aseprite.org/"
@@ -14,9 +14,9 @@ depends=('pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'fre
 makedepends=('cmake')
 conflicts=("aseprite-git" "aseprite-gpl")
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/v1.1.13/Aseprite-v1.1.13-Source.zip"
-        "${pkgname}.desktop")
+"${pkgname}.desktop")
 sha256sums=( 'f4f306ce6642ecf2aa13161786b0b1797a2bedfc2c537bd910445e1b73dea56a'
-        '4faeb782805e3427eedb04d7485e3e2d4eac6680509515b521a9f64ef5d79490')
+'c258fa38a0e0bd575f0bd744c4c3b60cf8d59d596c7572f84bd392e1c5e49b4f')
 
 build() {
   cd "$srcdir"
