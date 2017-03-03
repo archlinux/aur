@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Kalinin <lwinch2006.rss@protonmail.ch>
 pkgname=dotnet-cli-git
-pkgver=1.0.0_rc4_004823
-pkgrel=2
+pkgver=2.0.0_alpha_005165
+pkgrel=1
 pkgdesc="The .NET Core command-line (CLI) tools, used for building .NET Core apps and libraries through your development flow (compiling, NuGet package management, running, testing, ...)"
 arch=(x86_64)
 url="https://github.com/dotnet/cli"
@@ -24,7 +24,7 @@ _corefxver="1.1.0"
 source=(
   "${_coreclrname}-${_coreclrver}.tar.gz::https://github.com/dotnet/coreclr/archive/v1.1.0.tar.gz"
   "${_corefxname}-${_corefxver}.tar.gz::https://github.com/dotnet/corefx/archive/v1.1.0.tar.gz"
-  "${pkgname}-${pkgver}.tar.gz::https://dotnetcli.blob.core.windows.net/dotnet/Sdk/rel-1.0.0/dotnet-dev-debian-x64.latest.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://dotnetcli.blob.core.windows.net/dotnet/Sdk/master/dotnet-dev-debian-x64.latest.tar.gz"
   'llvm-39-github-pull-8311.patch'
   'llvm-39-move.patch')
 noextract=("${pkgname}-${pkgver}.tar.gz")
@@ -35,7 +35,7 @@ sha256sums=('edc1e416f07a71e2b3f70c1f1412e45a7396b3f0daac5bcb267d5f779b9d7444'
             '84a0e56d00fd2f3f9f82b7d017652f03d4e7f80c6968d7fa1274f6e46af0ff3d')
 
 pkgver() {
-  local _versionDetailsAsString=$(curl https://dotnetcli.blob.core.windows.net/dotnet/Sdk/rel-1.0.0/latest.version);
+  local _versionDetailsAsString=$(curl https://dotnetcli.blob.core.windows.net/dotnet/Sdk/master/latest.version);
   readarray -t _versionDetailsAsArray <<< "${_versionDetailsAsString}";
   local _version="${_versionDetailsAsArray[1]}";
   _version="${_version//[$'\t\r\n']}";
@@ -64,11 +64,12 @@ build() {
 }
 
 _coreclr_files=(
-  'System.Globalization.Native.so'
+
 )
 
 _corefx_files=(
   'System.Security.Cryptography.Native.OpenSsl.so'
+  'System.Net.Http.Native.so'
 )
 
 _copy_file() {
