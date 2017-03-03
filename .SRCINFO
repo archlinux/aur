@@ -1,6 +1,6 @@
 pkgbase = osquery-git
 	pkgdesc = SQL powered operating system instrumentation, monitoring, and analytics.
-	pkgver = 2.3.4.r3.ga57e409b
+	pkgver = 2.3.4.r4.g02dcbaf1
 	pkgrel = 1
 	url = https://osquery.io
 	arch = i686
@@ -44,7 +44,7 @@ pkgbase = osquery-git
 	depends = unzip
 	options = !strip
 	backup = etc/osquery/osquery.conf
-	source = osquery-git::git+https://github.com/facebook/osquery#commit=a57e409bea3a81875dc3bfa6700ac2983e442163
+	source = osquery-git::git+https://github.com/facebook/osquery#commit=02dcbaf1beeb61f6c72f41db99de69482f894738
 	source = osqueryd.conf.d
 	source = osqueryd.service
 	source = arch-linux.patch
