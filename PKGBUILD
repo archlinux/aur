@@ -9,14 +9,14 @@ _pkgname=dev.horo
 _HOROK="horok.conf"
 pkgver=0.0.1.f6f27db
 _pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Horo in your Linux"
 arch=('i686' 'x86_64')
-url="https://github.com/VOID001/dev.horo"
+url="https://gitlab.com/VOID001/dev.horo.git"
 license=("GPL3")
 depends=('dkms')
 makedepends=('git' 'go')
-source=("git+https://github.com/VOID001/${_pkgname}.git")
+source=("git+https://gitlab.com/VOID001/${_pkgname}.git")
 
 _MODULE_NAME="horok.ko"
 _HOROPROXY="horoproxy"
