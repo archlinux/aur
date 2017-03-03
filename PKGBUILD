@@ -15,7 +15,7 @@ makedepends=('git' 'meson')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+https://github.com/$_pkgorg/$_pkgname")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
@@ -26,13 +26,11 @@ pkgver() {
 build() {
   rm -Rf "build"
   meson --prefix=/usr --buildtype=release "$pkgname" "build"
-  ninja -C "build"
+  ninja -v -C "build"
 }
 
 check() {
-  # XXX: Skipping tests is only supported with meson-0.37
-  # ninja -v -C "build" test
-  :
+  ninja -v -C "build" test
 }
 
 package() {
