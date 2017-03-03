@@ -1,0 +1,20 @@
+pkgbase = python-pymesh-git
+	pkgdesc = Geometry Processing Library for Python
+	pkgver = 20170223
+	pkgrel = 1
+	url = https://github.com/qnzhou/PyMesh
+	arch = i686
+	arch = x86_64
+	license = Unlicensed
+	makedepends = git
+	makedepends = swig
+	depends = python-scipy
+	depends = eigen
+	depends = cgal
+	depends = sparsehash
+	options = !emptydirs
+	source = git+https://github.com/qnzhou/PyMesh.git#branch=master
+	md5sums = SKIP
+
+pkgname = python-pymesh-git
+
