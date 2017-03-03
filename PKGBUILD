@@ -68,5 +68,6 @@ package() {
   cd ${pkgdir}/usr/lib/
   ln -s libGLEW.so libGLEW.so.13
   ln -s libGLEW.so.13 libGLEW.so.13.9 
-  
+  ln -s libGLEW.so libGLEW.so.2  
+ 
 }
