@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=('python-glmnet')
-pkgver=1.0.0.r18.g1e63abd
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A Python port of the glmnet package."
 url="https://github.com/civisanalytics/python-glmnet"
@@ -10,21 +10,16 @@ makedepends=(
     'python-numpy')
 license=('GPL2' 'BSD')
 arch=('i686' 'x86_64')
-source=("git+https://github.com/civisanalytics/python-glmnet.git")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd "$pkgname"
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+source=("https://github.com/civisanalytics/python-glmnet/archive/v$pkgver.tar.gz")
+sha256sums=('49a4f9e8cba978ea8f482ef70ca5dff6a3617ef8a9ceae139533251370ac9ded')
 
 build() {
     export LDFLAGS="$LDFLAGS -shared"
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
