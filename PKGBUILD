@@ -4,7 +4,7 @@
 _pkgbase='movim'
 pkgname=movim-git
 pkgver=r5307.5705ffc9
-pkgrel=1
+pkgrel=2
 pkgdesc="Movim is a decentralized social network, written in PHP and HTML5 and based on the XMPP standard protocol."
 arch=('any')
 url='https://movim.eu'
@@ -23,8 +23,8 @@ source=("$_pkgbase::git://github.com/movim/movim"
         movim.service)
 install=movim.install
 sha256sums=('SKIP'
-            '5c36a52a410a61f9af9daf9cd12e63b1ef7bab10dab9541b5d3cc8aa4805880c'
-            'f7d88cd405c06cdd65174763e3cf503067d5cb26742a9961fb3368596b84208b')
+            '5dfff91dd4a54f3d3713530e204370a96d37898b670a61123d8cad42f92da306'
+            'd90b407dc62540980e001c9d65e4e70a74f72f2bd8503855efb4828ee2e33fa4')
 backup=("etc/webapps/$_pkgbase/db.inc.php"
         "etc/default/movim")
 

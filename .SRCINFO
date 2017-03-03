@@ -23,8 +23,8 @@ pkgbase = movim-git
 	source = movim.env
 	source = movim.service
 	sha256sums = SKIP
-	sha256sums = 5c36a52a410a61f9af9daf9cd12e63b1ef7bab10dab9541b5d3cc8aa4805880c
-	sha256sums = f7d88cd405c06cdd65174763e3cf503067d5cb26742a9961fb3368596b84208b
+	sha256sums = 5dfff91dd4a54f3d3713530e204370a96d37898b670a61123d8cad42f92da306
+	sha256sums = d90b407dc62540980e001c9d65e4e70a74f72f2bd8503855efb4828ee2e33fa4
 
 pkgname = movim-git
 
