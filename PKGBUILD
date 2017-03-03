@@ -2,10 +2,10 @@
 pkgname=python-pymesh-git
 pkgdesc='Geometry Processing Library for Python'
 pkgver=20170223
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='https://github.com/qnzhou/PyMesh'
-license=('Unlicensed')
+license=('MPL')
 depends=('python-scipy' 'eigen' 'cgal' 'sparsehash')
 makedepends=('git' 'swig')
 options=(!emptydirs)
@@ -27,26 +27,36 @@ prepare() {
 
 build() {
 	cd PyMesh
+	sed -i '55,59d' Settings.cmake
 
 	cd third_party
 	[ -d build ] && rm -rf build
 	mkdir build
 	cd build
 
-	cmake ..
+	cmake .. \
+		-DCMAKE_CXX_FLAGS='-w' \
+		-DCMAKE_SKIP_BUILD_RPATH=TRUE \
+		-DCMAKE_SKIP_RPATH=TRUE
 
 	make
 	make install
+	#DESTDIR="${pkgdir}"
 
 	cd ../..
 	[ -d build ] && rm -rf build
 	mkdir build
 	cd build
 
-	cmake -DCGAL_DIR='/usr' ..
+	cmake .. \
+		-DCGAL_DIR='/usr' \
+		-DCMAKE_CXX_FLAGS='-w' \
+		-DCMAKE_INSTALL_PREFIX="/usr" \
+		-DCMAKE_SKIP_BUILD_RPATH=TRUE \
+		-DCMAKE_SKIP_RPATH=TRUE
 
 	make
-	make src_tests
+	#make src_tests
 	#make tools
 	#make tools_tests
 }
