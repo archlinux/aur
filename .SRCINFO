@@ -1,0 +1,15 @@
+pkgbase = python2-ovs
+	pkgdesc = zip archive generator for streaming purposes
+	pkgver = 2.7.0
+	pkgrel = 0
+	url = https://github.com/openvswitch/ovs
+	arch = any
+	license = Apache2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python2-ovs.tar.gz::https://github.com/openvswitch/ovs/archive/v2.7.0.tar.gz
+	md5sums = 90c534ffe03736623e4d976a2e378615
+	sha256sums = e660f4aa9a7e3ec9da525a51ab9d654c651f7a2b16f297f18eeba9117db4625e
+
+pkgname = python2-ovs
+
