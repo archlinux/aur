@@ -10,7 +10,7 @@ export LG2=en
 ###########################################################
 
 pkgname=i2p
-pkgver=0.9.28
+pkgver=0.9.29
 pkgrel=1
 pkgdesc="A distributed anonymous network"
 url="https://geti2p.net"
@@ -36,7 +36,7 @@ source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
             'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 }
 
-sha256sums=('7bb27444bd1074a0f670276ad07e0b5b2a7a29ed6d25d93e6f95646981cd0aaf'
+sha256sums=('67da4ce224fef2b190ffeed5dba102a3b7724f061b1c168255625c028a97c3a7'
             'SKIP'
             '9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
@@ -44,8 +44,7 @@ sha256sums=('7bb27444bd1074a0f670276ad07e0b5b2a7a29ed6d25d93e6f95646981cd0aaf'
             '1527afbadcf849ef551b3b7b68d1a29eec316ee620f5320f2933f73ee9924978')
 
 # https://geti2p.net/en/get-involved/develop/release-signing-key
-validpgpkeys=('2D3D2D03910C6504C1210C65EE60C0C8EE7256A8'
-              '2253E2A1EEB40E2A3D22EB1D0EC51FCDA94FB53E')
+validpgpkeys=('2D3D2D03910C6504C1210C65EE60C0C8EE7256A8')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
