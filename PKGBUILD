@@ -17,8 +17,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	config-x86_64)
 sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
             'da560125aa350f76f0e4a5b9373a0d0a1c27ccefe3b7bd9231724f3a3c4ebb9e'
-            'f001a5860c927c14e12eb6c4c09ad22e57834a0f44d71c9516bc2c2f6f1a290f'
-            '2a786756a47a52b77ae4bffb31eadd60a7a717c2e3544a315f1cfe9ba9091f30')
+            'cec43aedc7ba8af326b06ee9397dd7b7206dc3c65356c94cfabbbcf5e372b781'
+            '1b426acfe6ec77be45687d76f684c7aa9318d89e1c767513c9d6cee13d4a524a')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
