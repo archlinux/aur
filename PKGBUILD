@@ -1,7 +1,7 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=mini-audicle
-pkgver=1.3.3
-pkgrel=2
+pkgver=1.3.5.1
+pkgrel=1
 pkgdesc='Integrated Development + Performance Environment for ChucK'
 arch=('i686' 'x86_64')
 url="http://audicle.cs.princeton.edu/mini/"
@@ -18,12 +18,13 @@ depends=('qscintilla-qt4' 'libsndfile'
 optdepends=('chuck: for documentation and command line interface')
 source=("http://audicle.cs.princeton.edu/mini/release/files/miniAudicle-$pkgver.tgz"
         'miniAudicle.desktop')
-sha512sums=('fb07741073638cd7d8557b3b1ffe0aa2eca81b13e375999ddb6db88aa5c9b47c70784945758fbef72a494b8af65ca8f3a19aef9320eb300374a467ada76217b5'
+sha512sums=('1b376fd542462e6d430d6782dc162625deef24aa8f42b485a11fb6eab5cb9c32b501fc2a9bc909803003fb05875b943642dd147e9a56196776455e16e47b883f'
             'ac5fa241ab3651f985f0cc9a1c50fee72ee1aa731dd7330824c8f98c77d6d0f12a62aa43fede2930720657b9a526659139c954eaa76a38a19b9b6848aec6318e')
 
 prepare() {
 	cd "miniAudicle-$pkgver"/src
 	sed -e '/GIT_REVISION/,+2 d' -i miniAudicle.pro
+	perl -pe 's/(?<=-lqscintilla2)\b/_qt4/' -i miniAudicle.pro
 }
 
 build() {
