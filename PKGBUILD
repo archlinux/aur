@@ -2,10 +2,10 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=2.12.1
-pkgrel=2
+pkgver=2.13
+pkgrel=1
 _wwwpkgname=AdminLTE
-_wwwpkgver=2.4
+_wwwpkgver=2.5
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
 license=('GPL2')
@@ -31,13 +31,13 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	blacklist.txt
 	mimic_setupVars.conf.sh)
 
-md5sums=('fe6c7e1c3ae51f688574c2f3816b9e0f'
-         '6c05d58230a115c7facfa506e4611697'
+md5sums=('f0887a4604bd56842e70b9d825f81a1d'
+         '5af7cb8865df49943314f92defc01260'
          '3acf27ca01d931db363634dbfc95a061'
          '3f1aeea43af0b192edb36b9e5484ff87'
          'f39fa3e607ff7346e93febfa2d0e565e'
          '2d10140f19f54015e6ab2807267e8aaf'
-         '27ee227bc8143addb6e80f194fc97719'
+         '9aa8a5c34b02d8d77b1d436b54695d2e'
          '990b8abd0bfbba23a7ce82c59f2e3d64'
          '047f13d4ac97877f724f87b002aaee63'
          'd42a864f88299998f8233c0bc0dd093d'
@@ -53,7 +53,7 @@ prepare() {
   # setting up and securing pihole wrapper script
   sed -n "/debugFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 1" && return 1 ; fi
-  sed -i '/debugFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -i '/debugFunc() {/,+16d' "$srcdir"/$_pkgname-$pkgver/pihole
 
   sed -n "/updatePiholeFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 2" && return 1 ; fi
@@ -67,16 +67,20 @@ prepare() {
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 5" && return 1 ; fi
   sed -i '/uninstallFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
 
-  sed -n "/:::  \-[d,u]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -n "/:::  \-[u,s]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 6" && return 1 ; fi
-  sed -i '/:::  \-[d,u,s]/d' "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -i '/:::  \-[u,s]/d' "$srcdir"/$_pkgname-$pkgver/pihole
 
-  sed -n "/\"\-[d,u,r]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -n "/:::  \-d/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 7" && return 1 ; fi
+  sed -i '/:::  \-d/,+3d' "$srcdir"/$_pkgname-$pkgver/pihole
+
+  sed -n "/\"\-[d,u,r,s]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 8" && return 1 ; fi
   sed -i '/\"\-[d,u,r,s]/d' "$srcdir"/$_pkgname-$pkgver/pihole
 
   sed -n "/uninstall/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 8" && return 1 ; fi
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 9" && return 1 ; fi
   sed -i '/uninstall/d' "$srcdir"/$_pkgname-$pkgver/pihole
 
 # -----------------
@@ -114,6 +118,13 @@ prepare() {
   # change log location to chronometer.sh
   sed -i "s|/var/log/pihole.log|/run/log/pihole/pihole.log|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log location to chronometer.sh" && return 1 ; fi
+
+# -----------------
+
+  # no debug for us, right now
+  sed -n "/\-\- Generate debug log \-\-/w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/header.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: no debug for us, right now 1" && return 1 ; fi
+  sed -i '/\-\- Generate debug log \-\-/,+5d' "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/header.php
 
 # -----------------
 
