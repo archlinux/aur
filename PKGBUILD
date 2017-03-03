@@ -4,7 +4,7 @@ pkgdesc="ROS - Javascript ROS message and service generators."
 url='http://www.ros.org/'
 
 pkgname='ros-kinetic-gennodejs'
-pkgver='1.0.3'
+pkgver='2.0.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="gennodejs-release-release-kinetic-gennodejs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/RethinkRobotics-release/gennodejs-release/archive/release/kinetic/gennodejs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e1e564468d4aa9c6724926519fbdd46f633e294fa997990588ec4911286c6603')
+sha256sums=('5a17bc95869c18c3e5a951a694621addbf3f1d81c916e9ae873e9821c320c3f1')
 
 build() {
   # Use ROS environment variables
