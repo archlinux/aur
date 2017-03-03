@@ -20,7 +20,7 @@ md5sums=('fd5f7b521e73e35786927a17f90c70e7')
 build() {
   cd "$srcdir"/"$_pkgname-$pkgver"/
   ./autogen.sh
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --enable-intraday --enable-openmp --disable-static
   make -j`nproc`
 }
 
