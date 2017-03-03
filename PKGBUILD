@@ -1,11 +1,12 @@
-# Maintainer: Justin Dray <justin@dray.be>
+# Maintainer: Michael DeGuzis
+# Contributor: Justin Dray <justin@dray.be>
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
 # Contributor: K. Hampf <khampf@users.sourceforge.net>
 # Contributor: Skunnyk <skunnyk@archlinux.fr>
 
 _pkgname=playonlinux4
 pkgname=$_pkgname-git
-pkgver=4.2.9.r1.g1157b14
+pkgver=4.2.10.r38.g36e5b281
 pkgrel=1
 epoch=1
 pkgdesc="GUI for managing Windows programs under linux"
@@ -14,8 +15,8 @@ license=('GPL')
 depends=('wine' 'imagemagick' 'xterm' 'wxpython2.8' 'cabextract' 'unzip' 'mesa-demos' 'gnupg'
          'icoutils' 'xdg-user-dirs' 'libxmu' 'netcat' 'wget' 'p7zip')
 arch=('any')
-provides='playonlinux'
-conflicts='playonlinux'
+provides=('playonlinux')
+conflicts=('playonlinux')
 source=("$_pkgname::git://github.com/PlayOnLinux/POL-POM-4.git")
 options=(!strip)
 md5sums=('SKIP')
@@ -34,7 +35,7 @@ package() {
 	rm -rf "$pkgdir/usr/share/$_pkgname/.git"
 
 	echo '#!/bin/bash' > "$pkgdir/usr/bin/$_pkgname"
-	echo "/usr/share/$_pkgname/$_pkgname \"\$@\"" >> "$pkgdir/usr/bin/$_pkgname"
+	echo "/usr/share/$_pkgname/playonlinux \"\$@\"" >> "$pkgdir/usr/bin/$_pkgname"
 	chmod +x "$pkgdir/usr/bin/$_pkgname"
 
 	# Needed for wxpython2.8 support, wxpython 3.0 is buggy with POL
