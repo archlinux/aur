@@ -7,7 +7,7 @@ license=(GPL3)
 conflicts=(ldoce5viewer-git ldoce5viewer)
 arch=('i686' 'x86_64')
 url='https://github.com/purboo/ldoce5viewer-pyqt5'
-depends=(python-pyqt5 pyqt5-common python-lxml python-whoosh)
+depends=(python-pyqt5 pyqt5-common python-lxml python-whoosh qt5-webkit qt5-multimedia gst-plugins-good gst-plugins-ugly)
 source=("git://github.com/purboo/ldoce5viewer-pyqt5.git")
 md5sums=('SKIP')
 
