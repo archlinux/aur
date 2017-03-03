@@ -20,4 +20,4 @@ export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${LIBPATH}/native"
 
 cd "${SCDIR}"
 
-exec "${COMMAND[@]}" "$@"
+exec ${COMMAND} $*
