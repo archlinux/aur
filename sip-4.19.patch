@@ -1,0 +1,39 @@
+diff -Naur GUI_SRC.orig/src/SALOME_PYQT/SALOME_PYQT_GUILight/SALOME_PYQT_PyModule.cxx GUI_SRC/src/SALOME_PYQT/SALOME_PYQT_GUILight/SALOME_PYQT_PyModule.cxx
+--- GUI_SRC.orig/src/SALOME_PYQT/SALOME_PYQT_GUILight/SALOME_PYQT_PyModule.cxx	2017-03-03 19:31:57.004880382 +0100
++++ GUI_SRC/src/SALOME_PYQT/SALOME_PYQT_GUILight/SALOME_PYQT_PyModule.cxx	2017-03-03 19:35:09.131684278 +0100
+@@ -1813,7 +1813,7 @@
+ #if SIP_VERSION < 0x040800
+   PyObjWrapper pyws( sipBuildResult( 0, "M", aWorkspace, sipClass_QWidget) );
+ #else
+-  PyObjWrapper pyws( sipBuildResult( 0, "D", aWorkspace, sipType_QWidget , NULL) );
++  PyObjWrapper pyws( sipBuildResult( 0, "D", aWorkspace, sipFindType("QWidget") , NULL) );
+ #endif
+   // ... and finally call Python module's setWorkSpace() method (obsolete)
+   if ( PyObject_HasAttrString( myPyModule, (char*)"setWorkSpace" ) ) {
+@@ -2264,7 +2264,7 @@
+ #if SIP_VERSION < 0x040800
+   PyObjWrapper sipPopup( sipBuildResult( 0, "M", menu, sipClass_QMenu ) );
+ #else
+-  PyObjWrapper sipPopup( sipBuildResult( 0, "D", menu, sipType_QMenu, NULL ) );
++  PyObjWrapper sipPopup( sipBuildResult( 0, "D", menu, sipFindType("QMenu"), NULL ) );
+ #endif
+ 
+   // then call Python module's createPopupMenu() method (for new modules)
+@@ -2475,7 +2475,7 @@
+ #if SIP_VERSION < 0x040800
+   PyObjWrapper sipList( sipBuildResult( 0, "M", theList, sipClass_QStringList ) );
+ #else
+-  PyObjWrapper sipList( sipBuildResult( 0, "D", theList, sipType_QStringList, NULL ) );
++  PyObjWrapper sipList( sipBuildResult( 0, "D", theList, sipFindType("QStringList"), NULL ) );
+ #endif
+   if ( PyObject_HasAttrString(myPyModule , (char*)"openFiles") ) {
+     PyObjWrapper res( PyObject_CallMethod( myPyModule, (char*)"openFiles",
+@@ -2629,7 +2629,7 @@
+ #if SIP_VERSION < 0x040800
+   PyObjWrapper sipList( sipBuildResult( 0, "M", theList, sipClass_QStringList) );
+ #else
+-  PyObjWrapper sipList( sipBuildResult( 0, "D", theList, sipType_QStringList, NULL) );
++  PyObjWrapper sipList( sipBuildResult( 0, "D", theList, sipFindType("QStringList"), NULL) );
+ #endif
+   if ( PyObject_HasAttrString(myPyModule, (char*)"dropObjects") ) {
+       PyObjWrapper res( PyObject_CallMethod( myPyModule, (char*)"dropObjects", (char*)"Osii",
