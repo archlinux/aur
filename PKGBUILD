@@ -1,7 +1,8 @@
-# Maintainer: Mariusz Libera <mariusz.libera@gmail.com>
+# Maintainer: Christian Kohlstedde <christian+aur@kohlsted.de>
+# Contributor: Mariusz Libera <mariusz.libera@gmail.com>
 # Contributor: Alex 'AdUser' Z <ad_user@mail.ru>
 pkgname=rdfind
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc='Redundant data find - a program that finds duplicate files.'
 arch=('i686' 'x86_64')
@@ -10,7 +11,7 @@ license=('GPL2')
 depends=('nettle')
 changelog=Changelog
 source=("${url}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('a5f0b3f72093d927b93898c993479b35682cccb47f7393fb72bd4803212fcc7d')
+sha256sums=('c36e0a1ea35b06ddf1d3d499de4c2e4287984ae47c44a8512d384ecea970c344')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
