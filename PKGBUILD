@@ -2,7 +2,7 @@
 
 pkgname=icon-requests
 _gitname=Icon-Requests
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A Gtk application to report missing icons to your theme repository'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('gnome-common' 'meson' 'ninja' 'intltool' 'itstool' 'python' 'yelp-
 options=('!emptydirs')
 install=icon-requests.install
 source=("https://github.com/bil-elmoussaoui/${_gitname}/archive/v${pkgver}.tar.gz")
-md5sums=('ab88a358cab92865b813aa14bc764160')
+sha256sums=('1a15eac922c3dc2f2a36f877b35cc7dd4b503c749b26ca1f254b85986a4323cb')
 provides=("icon-requests=$pkgver")
 
 prepare(){
