@@ -7,7 +7,7 @@
 pkgname=gnupg-large-rsa
 _pkgname=gnupg
 pkgver=2.1.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete and free implementation of the OpenPGP standard - with fixes to make large RSA keys really work (and even bigger keys)'
 url='http://www.gnupg.org/'
 license=('GPL')
@@ -24,9 +24,11 @@ validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'
 source=("ftp://ftp.gnupg.org/gcrypt/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"{,.sig} 
         "${pkgname}.patch"
         "scd.patch")
-sha1sums=('b698012cc2d77c2652afd168a15e679d1394fa89' 'SKIP' 
-          '9c04e22929c83f46ba04cccde39b00d36af231ce'
-          '568f48e1048f1dac721dd4055447a93485f6b2b1')
+sha256sums=('d04c6fab7e5562ce4b915b22020e34d4c1a256847690cf149842264fc7cef994'
+            'SKIP'
+            'e943ba54f7ac510b633624ad84cd93a3ab54cb13e7547ac0d54abe3bf3aa3a0a'
+            'e1c5c9bf78231518339792195be52df8f8f65638196611726a7e053dbac0ccb6'
+           ) 
 
 install=install
 

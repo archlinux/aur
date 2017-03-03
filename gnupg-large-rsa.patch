@@ -39,7 +39,7 @@ diff -ru a/g10/keygen.c b/g10/keygen.c
    char *keyparms;
    char nbitsstr[35];
 -  const unsigned maxsize = (opt.flags.large_rsa ? 8192 : 4096);
-+  const unsigned maxsize = (opt.flags.large_rsa ? 14336 : 4096);
++  const unsigned maxsize = (opt.flags.large_rsa ? 16384 : 4096);
  
    log_assert (is_RSA(algo));
  
@@ -50,7 +50,7 @@ diff -ru a/g10/keygen.c b/g10/keygen.c
 +
 +    case PUBKEY_ALGO_RSA:
 +      *min = opt.compliance == CO_DE_VS ? 2048 : 1024;
-+      *max = (opt.flags.large_rsa?14336:4096);
++      *max = (opt.flags.large_rsa?16384:4096);
 +      def = 2048;
 +      break;
      }
