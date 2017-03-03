@@ -5,7 +5,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Jan-Erik Meyer-Luetgens <nyan at meyer-luetgens dot de>
 
-pkgbase=python-pyside2-git
+pkgbase=pyside2-git
 pkgname=(pyside2-common-git python2-pyside2-git python-pyside2-git)
 pkgver=2.0.0.r2080.ab092d79
 _upver=2.0.0

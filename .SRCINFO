@@ -1,4 +1,4 @@
-pkgbase = python-pyside2-git
+pkgbase = pyside2-git
 	pkgver = 2.0.0.r2080.ab092d79
 	pkgrel = 2
 	url = http://qt-project.org/wiki/PySide
@@ -14,7 +14,7 @@ pkgbase = python-pyside2-git
 	makedepends = qt5.6-webkit
 	makedepends = phonon-qt5
 	makedepends = git
-	source = python-pyside2-git::git+https://code.qt.io/pyside/pyside.git
+	source = pyside2-git::git+https://code.qt.io/pyside/pyside.git
 	source = sphinx-build2.patch
 	md5sums = SKIP
 	md5sums = 0431767d635147c638063c71a2a138b3
