@@ -1,13 +1,13 @@
 # Maintainer: schaap137 <dojo86@gmail.com>
 pkgname=chugins-git
 pkgver=1.3.5.2.r86.g9ed524f
-pkgrel=5
+pkgrel=6
 pkgdesc="Repository for ChuGins (to use with chuck)"
 arch=('i686' 'x86_64')
 url="https://github.com/ccrma/chugins"
 license=('GPL')
 depends=('chuck')
-makedepends=('cpio' 'findutils' 'git')
+makedepends=('cpio' 'git')
 source=("$pkgname"::"git://github.com/ccrma/chugins.git")
 sha256sums=('SKIP')
 
