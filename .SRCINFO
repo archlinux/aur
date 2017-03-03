@@ -1,0 +1,18 @@
+pkgbase = deen-git
+	pkgdesc = Generic data encoding/decoding application built with PyQt5
+	pkgver = 0.7.8.de5cb55
+	pkgrel = 1
+	url = https://github.com/takeshixx/deen
+	arch = any
+	license = Apache 2.0
+	makedepends = git
+	depends = python
+	depends = python-pip
+	optdepends = python-openssl
+	provides = deen
+	conflicts = deen
+	source = deen::git://github.com/takeshixx/deen.git
+	sha512sums = SKIP
+
+pkgname = deen-git
+
