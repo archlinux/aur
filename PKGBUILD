@@ -28,5 +28,5 @@ package() {
 }
 
 md5sums=('SKIP'
-         'a2ac186a3c95bba5436bc6b05d6a3efa'
+         '8ca59c4dba621be6c9a4265b149a173b'
          '6799f23eb1e2ff88870d1b5a45837a45')
