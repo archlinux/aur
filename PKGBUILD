@@ -1,12 +1,12 @@
 # Maintainer: schaap137 <dojo86@gmail.com>
 pkgname=chugins-git
 pkgver=1.3.5.2.r86.g9ed524f
-pkgrel=1
+pkgrel=2
 pkgdesc="Repository for ChuGins (to use with chuck)"
 arch=('i686' 'x86_64')
 url="https://github.com/ccrma/chugins"
 license=('GPL')
-  depends=('chuck')
+depends=('chuck')
 makedepends=('git')
 source=("$pkgname"::"git://github.com/ccrma/chugins.git")
 sha256sums=('SKIP')
@@ -19,11 +19,9 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  # Change JACK to PULSE if you use chuck-pulse
-  # or comment out the next line if you use chuck-alsa
+  # Change JACK to PULSE if you use chuck-pulse, or comment out the next line if you use chuck-alsa
   sed -e 's/__LINUX_ALSA__/__LINUX_JACK__/g' -i **/makefile.linux
-  sed -e 's/\/usr\/local\/lib/\/usr\/lib/g' -i **/makefile.linux
-  sed -e 's/\/usr\/local\/lib/\/usr\/lib/g' -i makefile
+  sed -e 's/\/usr\/local\/lib/\/usr\/lib/g' -i **/makefile.linux makefile
 }
 
 build() {
