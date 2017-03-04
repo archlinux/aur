@@ -17,9 +17,11 @@ provides=(mingw-w64-wxmsw2.9 mingw-w64-wxmsw-static)
 source=(
   "http://downloads.sourceforge.net/wxwindows/wxWidgets-${pkgver}.tar.bz2"
   'PR222.patch' # https://github.com/wxWidgets/wxWidgets/pull/222
+  'wxWidgets-3.0.2-msw-dc-orientation-fix.patch'
 )
 sha256sums=('346879dc554f3ab8d6da2704f651ecb504a22e9d31c17ef5449b129ed711585d'
-            'aa13c5ce05e9cadea464d09c7a49de51f66db6c3f1871edc533230a51948ee0f')
+            'aa13c5ce05e9cadea464d09c7a49de51f66db6c3f1871edc533230a51948ee0f'
+            '12f9f474aceb39e5e978e5abbd4288a0ab62d1bcd2ea4a1899c0641fbee8abe1')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -28,6 +30,9 @@ prepare() {
 
   # fix errors with GCC 6
   patch -p1 -i "${srcdir}/PR222.patch"
+
+  # fix wxDC orientation (#16908)
+  patch -p1 -i "${srcdir}/wxWidgets-3.0.2-msw-dc-orientation-fix.patch"
 }
 
 build() {
@@ -80,7 +85,7 @@ package() {
 
     ln -s "/usr/${_arch}/lib/wx/config/${_arch}-msw-unicode-${pkgver%.*}" \
        "$pkgdir/usr/bin/${_arch}-wx-config"
-    
+
     # rm "${pkgdir}/usr/${_arch}/bin/"*.exe
     # rm "$pkgdir/usr/${_arch}/bin/wxrc-3.0"
     # rm -r "$pkgdir/usr/${_arch}/share"
