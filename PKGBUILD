@@ -91,7 +91,7 @@ package() {
 
   msg2 "Installing Extreme Mod..."
   bsdtar -xf "$srcdir"/$(basename ${source[1]})
-  mv "$srcdir"/VPEM_*/* "$pkgdir"/opt/vuze-extreme-mod/
+  mv "$srcdir"/vuze/VPEM_*/* "$pkgdir"/opt/vuze-extreme-mod/
 
   # Different icons for menus and systray
   if [[ $_icon = blue ]] || [[ $_icon = gray ]]; then
