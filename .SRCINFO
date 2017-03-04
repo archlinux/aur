@@ -1,0 +1,12 @@
+pkgbase = selfie-git
+	pkgdesc = An educational software system of a tiny self-compiling C compiler, a tiny self-executing MIPS emulator, and a tiny self-hosting MIPS hypervisor
+	pkgver = 2017.03.04.66ad6bc2eccde377231876c3d6a539fac57a0230
+	pkgrel = 1
+	arch = any
+	license = BSD
+	depends = gcc-multilib
+	source = git+https://github.com/cksystemsteaching/selfie
+	sha256sums = SKIP
+
+pkgname = selfie-git
+
