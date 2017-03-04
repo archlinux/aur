@@ -1,0 +1,23 @@
+From: Roland Stigge <stigge@antcom.de>
+Date: Fri, 22 Jan 2016 12:12:56 +0100
+Subject: fix obsolete LIBPNG_LDFLAGS
+
+Remove @LIBPNG_LDFLAGS@ from pc file
+
+This substitution is obsoleted from configure.ac but still present in the pc
+file. This patch fixes this by removing there also
+---
+ config/pstoedit.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config/pstoedit.pc.in b/config/pstoedit.pc.in
+index 3131ac5..ffda220 100644
+--- a/config/pstoedit.pc.in
++++ b/config/pstoedit.pc.in
+@@ -7,5 +7,5 @@ Name: pstoedit
+ Description: converts PostScript(TM) and PDF files to other vector graphic formats
+ Version: @VERSION@.0
+ Requires: 
+-Libs: -L@libdir@ -lpstoedit @LIBPNG_LDFLAGS@ @CXX_STD_LIB@ @CXX_RUNTIME_LIB@ @LIBLD_LDFLAGS@
++Libs: -L@libdir@ -lpstoedit @CXX_STD_LIB@ @CXX_RUNTIME_LIB@ @LIBLD_LDFLAGS@
+ Cflags: -I@includedir@

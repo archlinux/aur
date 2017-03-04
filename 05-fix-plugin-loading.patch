@@ -1,0 +1,34 @@
+From: James Cowgill <jcowgill@debian.org>
+Date: Mon, 9 May 2016 22:31:45 +0100
+Subject: fix plugin loading
+
+Disable broken if-check in plugin load code so that plugins  can be successfully loaded from PSTOEDITLIBDIR.
+
+The plugin load code was checking pluginsloaded before trying to load plugins from PSTOEDITLIBDIR
+Unfortunately code further up in the method sets pluginsloaded even if no plugins were found in
+previous places. This patch restores the old 3.62 behaviour of not checking pluginsloaded before
+searching for plugins in PSTOEDITLIBDIR.
+
+Bug-Debian: http://bugs.debian.org/813316
+---
+ src/pstoedit.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/pstoedit.cpp b/src/pstoedit.cpp
+index 33a297a..833abf2 100644
+--- a/src/pstoedit.cpp
++++ b/src/pstoedit.cpp
+@@ -282,11 +282,11 @@ static void loadpstoeditplugins(const char *progname, ostream & errstream, bool
+ 	}
+ 
+ #ifdef PSTOEDITLIBDIR
+-	if (!pluginsloaded) {
++	//if (!pluginsloaded) {
+   	  // also try to load drivers from the PSTOEDITLIBDIR
+ 	  loadPlugInDrivers(PSTOEDITLIBDIR, errstream,verbose);
+ 	  pluginsloaded = true;
+-	}
++	//}
+ #endif
+ 
+ 	// delete[]plugindir;
