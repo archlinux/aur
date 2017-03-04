@@ -3,6 +3,7 @@
 # Contributor: Armin K. <krejzi at email dot com>
 # Contributor: Christian Babeux <christian.babeux@0x80.ca>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
+# Contributor: Hesiod (https://github.com/hesiod)
 # Contributor: Roberto Alsina <ralsina@kde.org>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: Tomas Lindquist Olsen <tomas@famolsen.dk>
@@ -241,7 +242,7 @@ package_llvm-svn() {
     fi
 
     # Clean up documentation
-    rm -rf "${pkgdir}/usr/share/doc/llvm/html/_sources"
+    rm -rf "${pkgdir}/usr/share/doc/"{llvm,lld}"/html/_sources"
 
     _install_python_bindings "${srcdir}/llvm/bindings/python/llvm"
 
