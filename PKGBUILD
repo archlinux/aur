@@ -3,18 +3,17 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-3d
-pkgver=2
-pkgrel=4
+pkgver=3
+pkgrel=1
 pkgdesc='Pantheon 3d Session (replaces Gala with Compiz)'
 arch=('i686' 'x86_64')
 url='https://bbs.archlinux.org/viewtopic.php?pid=1401967#p1401967'
 license=('GPL3')
+groups=('pantheon-qq')
 depends=('dconf' 'compiz' 'pantheon-workarounds' 
          gnome-{settings-daemon{,-compat},session}
-         'plank' 'cerbere' 'wingpanel-bzr')
-optdepends=("indicator-powersave: On the fly power savings and performance toggles"
-            wingpanel-indicator-{ayatana,bluetooth,datetime,network,power,slingshot,sound}-bzr": Tray applet"
-            "xscreensaver-dbus-screenlock: xscreensaver locker for gnome-derivative desktops")
+         'plank' 'cerbere' 'wingpanel-standalone-bzr')
+optdepends=("xscreensaver-dbus-screenlock: xscreensaver locker for gnome-derivative desktops")
 provides=("pantheon-3d")
 conflicts=()
 source=(pantheon-compiz.{desktop,session})
