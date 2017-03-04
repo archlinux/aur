@@ -1,0 +1,16 @@
+--- a/Makefile	2014-08-11 21:13:12.000000000 +0200
++++ b/Makefile	2017-03-04 04:20:00.000000000 +0100
+@@ -1,8 +1,11 @@
++# CONFIGURE: the directory that will form the prefix for the next two path variables
++DESTDIR?=	/usr/local
++
+ # CONFIGURE: the directory where you want the executables installed.
+-BINDIR =	/usr/local/bin
++BINDIR =	$(DESTDIR)/bin
+ 
+ # CONFIGURE: the directory tree where you want the man pages installed.
+-MANDIR =	/usr/local/man
++MANDIR =	$(DESTDIR)/man
+ 
+ # CONFIGURE: your favorite C compiler.
+ CC =		cc
