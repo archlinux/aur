@@ -2,9 +2,10 @@
 
 pkgname=selfie-git
 pkgver=2017.03.04.66ad6bc2eccde377231876c3d6a539fac57a0230
-pkgrel=1
-pkgdesc="An educational software system of a tiny self-compiling C compiler, a tiny self-executing MIPS emulator, and a tiny self-hosting MIPS hypervisor"
+pkgrel=2
+pkgdesc="An educational tiny self-compiling C compiler/self-executing MIPS emulator/self-hosting MIPS hypervisor"
 arch=('any')
+url="http://selfie.cs.uni-salzburg.at/"
 license=('BSD')
 depends=('gcc-multilib')
 source=("git+https://github.com/cksystemsteaching/selfie")
