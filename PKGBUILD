@@ -6,7 +6,7 @@
 
 pkgname=btrfs-progs-git
 _gitname=${pkgname%-git}-unstable
-pkgver=4.9_r33_g2a471100
+pkgver=3442_4.10_rc1_r0_g48d57d53
 pkgrel=1
 pkgdesc="Btrfs filesystem utilities"
 arch=("i686" "x86_64")
@@ -31,11 +31,12 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$_gitname"
+  _totalcommits="$(git rev-list --count HEAD)"
   _curtag="$(git rev-list --tags --max-count=1)"
   _tagver="$(git describe --tags $_curtag | sed 's:^v::')"
   _commits="$(git log v${_tagver}..HEAD --oneline | wc -l)"
   _sha="$(git rev-parse --short HEAD)"
-  printf "%s_r%s_g%s" $_tagver $_commits $_sha | sed 's:-:_:g'
+  printf "%s_%s_r%s_g%s" $_totalcommits $_tagver $_commits $_sha | sed 's:-:_:g'
 }
 
 prepare() {
@@ -74,6 +75,8 @@ check() {
   rm -rf tests/fsck-tests/013-extent-tree-rebuild
   # And #24...
   rm -rf tests/fsck-tests/024-clear-space-cache
+  # And #25..
+  rm -rf tests/fsck-tests/025-file-extents
 
   make test-fsck
 
