@@ -3,7 +3,7 @@
 
 pkgname=freecad-git
 pkgver=0.17pre.r3401.g99fa203f3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('i686' 'x86_64')
@@ -46,6 +46,8 @@ build() {
 	      -DOCC_LIBRARY_DIR:PATH=/opt/opencascade/lib \
 	      -DVTK_DIR:PATH=/opt/vtk-qt4/lib/cmake/vtk-7.0 \
 	      -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2 \
+	      -DPYTHON_SUFFIX=-python2.7 \
+	      -DPYTHON_BASENAME=-python2.7 \
 	      -DPYSIDEUIC4BINARY:FILEPATH=/usr/bin/python2-pyside-uic
 
 	make
