@@ -1,3 +1,24 @@
+2017-03-04 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.2.3.2-1:
+    [!] ASF is now smart enough to automatically choose proper appID for "Series" (video) apps with trading cards in them. Previously it'd be stuck farming wrong game (ref: #473).
+    From now on running ASF will prevent Windows OS from going to sleep (ref: #457) [1].
+    Added extra logic for handling locked/disabled accounts (ref: #469).
+    Added KeepMissingGames to RedeemingPreferences bot config property (ref: #470).
+    Added back metadata publishing to all WCF bindings (ref: #448).
+    Added !input command (ref: #476).
+    DismissInventoryNotifications is now false by default.
+    AcceptDonations can now be used together with DontAcceptBotTrades in TradingPreferences.
+    Fixed ASF crash on invalid IdentitySecret/SharedSecret in ASF 2FA.
+    Fixed SendTradePeriod not working properly.
+    Fixed NLog issue that could lead to ASF crash when run via Mono in systemd environment without custom NLog.config (ref: #292).
+    Fixed WCF refusing to handle too large !api responses.
+    Updated statistics and privacy policy (ref: #450) [2].
+    Updated internal SteamKit2 code, this results in some misc changes of !redeem statuses. I took the opportunity and documented them in the FAQ while I was at it.
+    Further unified ASF commands by adding bot identifier to all of them (ref: #468).
+    Removed AcceptConfirmationsPeriod [3].
+    Removed default entries in Blacklist global config property, since they're defined in hardcoded ASF GlobalBlacklist already.
+    ASF will no longer accept SteamTradeMatcher trades without MatchEverything, if we can't fetch our inventory during parsing the trade.
+    Major code improvements, optimizations and bugfixes.
 2017-02-05 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.2.2.4-1:
     Added back overall ASF status to !status ASF (it was accidentally removed during rewrite).
