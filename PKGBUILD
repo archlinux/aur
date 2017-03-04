@@ -3,18 +3,17 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-lite
-pkgver=2
-pkgrel=3
+pkgver=3
+pkgrel=1
 pkgdesc='Pantheon Lite Session (replaces Gala with Openbox & Compton)'
 arch=('i686' 'x86_64')
 url='https://bbs.archlinux.org/viewtopic.php?pid=1402016#p1402016'
 license=('GPL3')
+groups=('pantheon-qq')
 depends=('openbox' 'compton' 'pantheon-workarounds'
          gnome-{settings-daemon{,-compat},session}
-         'plank' 'cerbere' 'wingpanel-bzr')
+         'plank' 'cerbere' 'wingpanel-standalone-bzr')
 optdepends=("obconf: openbox configuration utility"
-            "indicator-powersave: On the fly power savings and performance toggles"
-            wingpanel-indicator-{ayatana,bluetooth,datetime,network,power,slingshot,sound}-bzr": Tray applet"
             "xscreensaver-dbus-screenlock: xscreensaver locker for gnome-derivative desktops"
             "elementary-os-openbox: Elementary theme for Openbox")
 provides=("pantheon-lite")
