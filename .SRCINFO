@@ -1,0 +1,15 @@
+pkgbase = openmp-svn
+	pkgdesc = LLVM OpenMP Runtime Library
+	pkgver = 5.0.r296962
+	pkgrel = 1
+	url = http://openmp.llvm.org/
+	arch = i686
+	arch = x86_64
+	license = custom:University of Illinois/NCSA Open Source License
+	makedepends = cmake
+	depends = glibc
+	source = openmp::svn+https://llvm.org/svn/llvm-project/openmp/trunk
+	sha512sums = SKIP
+
+pkgname = openmp-svn
+

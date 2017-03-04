@@ -1,0 +1,4 @@
+openmp
+src
+pkg
+*.pkg.*
