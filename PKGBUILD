@@ -2,7 +2,7 @@
 # Contributor: Vladimir Navrat <vn158 at seznam dot cz>
 
 pkgname=winscp
-pkgver=5.5.6
+pkgver=5.9.4
 pkgrel=1
 pkgdesc="Free SFTP, SCP and FTP client for Wine"
 arch=(any)
@@ -10,7 +10,7 @@ url="http://winscp.net/"
 license=('GPL')
 depends=(wine hicolor-icon-theme gtk-update-icon-cache desktop-file-utils)
 makedepends=(unzip)
-source=("http://downloads.sourceforge.net/project/winscp/WinSCP/${pkgver}/${pkgname}${pkgver//./}.zip"
+source=("http://downloads.sourceforge.net/project/winscp/WinSCP/${pkgver}/WinSCP-${pkgver}-Portable.zip"
         "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}-16.png"
@@ -21,7 +21,7 @@ source=("http://downloads.sourceforge.net/project/winscp/WinSCP/${pkgver}/${pkgn
         "${pkgname}-128.png"
         "${pkgname}-256.png"
         "${pkgname}_default_configuration.ini")
-sha256sums=('82eed5e338b7125b91c36bf80210b002c7d344a04ea004f9efcdad37767be811'
+sha256sums=('b0f96fd43a6f5ac22767b32d805a4a16f86d6eda443081c9cb99fbb67f5daf05'
             '322f3f8d4a29a2e5a40c057ffadf6566ff21233b5f8367a749618e5b4d845fc9'
             '67eba469b8f34ccc2342ea54b14601f13a245af5e0d4ea574786efdd33fc285c'
             '0c28369a4b35713ade79a158b4ee0e28576561c7ba0b8766dbbc0f63d0748ea2'
