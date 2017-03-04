@@ -1,0 +1,18 @@
+pkgbase = gog-torment-tides-of-numenera
+	pkgdesc = An RPG and the spiritual successor to Planescape: Torment
+	pkgver = 2.0.0.1
+	pkgrel = 1
+	url = https://torment.inxile-entertainment.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = sdl2
+	source = gog://gog_torment_tides_of_numenera_2.0.0.1.sh
+	source = gog-torment-tides-of-numenera
+	source = gog-torment-tides-of-numenera.desktop
+	sha256sums = 2842af82dc6e7885fb4b104b1e13c4df1ffe5f21ca21d60a6d07e3f8508ee015
+	sha256sums = daa3eef865d94af6ce116ff176074feae94c5b84fba0b60ec17186bd57dd3758
+	sha256sums = 72b4a6024869b2e83a1a9371b1219d9f54ffaaf7f9a097c784cfc351ed64333e
+
+pkgname = gog-torment-tides-of-numenera
+

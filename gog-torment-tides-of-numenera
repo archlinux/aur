@@ -1,0 +1,4 @@
+#!/bin/sh
+
+gogdir="/opt/gog-torment-tides-of-numenera"
+"${gogdir}/start.sh"

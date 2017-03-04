@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Torment: Tides of Numenera
+GenericName=Torment: Tides of Numenera
+Comment=An RPG and the spiritual successor to Planescape: Torment
+Icon=/opt/gog-torment-tides-of-numenera/support/icon.png
+Exec=/opt/gog-torment-tides-of-numenera/start.sh
+Categories=Game;
+Path=/opt/gog-torment-tides-of-numenera
+
