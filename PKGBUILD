@@ -31,5 +31,5 @@ package() {
   mkdir -p "${pkgdir}/usr/bin/"
   mkdir -p "${pkgdir}/usr/lib/${_pkgname}"
   cp -r "${srcdir}/${_pkgname}/packages/"* "${pkgdir}/usr/lib/${_pkgname}/"
-  ln -s "${srcdir}/${_pkgname}/packages/console/app.js" "${pkgdir}/usr/bin/${_pkgname}"
+  ln -s "/usr/lib/${_pkgname}/console/app.js" "${pkgdir}/usr/bin/${_pkgname}"
 }
