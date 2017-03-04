@@ -6,14 +6,14 @@
 # Contributor: Berseker <berseker86 at gmail dot com>
 
 pkgname=exo-git
-pkgver=0.11.1.r1771.e1357f8
+pkgver=0.11.2.r1806.0cf234f
 pkgrel=1
 pkgdesc="Extensions to Xfce originally developed by os-cillation."
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 url="http://git.xfce.org/xfce/exo/tree/README"
 groups=('xfce4-git')
-provides=("exo=$pkgver")
+provides=("exo=${pkgver}")
 depends=('libxfce4util' 'gtk3>=3.20' 'glib2>=2.22.4' 'gtk2' 'hicolor-icon-theme' 'libxfce4ui-devel' 'libsm')
 makedepends=('xfce4-dev-tools' 'git' 'pkgconfig' 'libnotify' 'perl-uri' 'pygtk>=2.13')
 optdepends=('libnotify: enables notification support'
