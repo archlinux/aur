@@ -1,7 +1,7 @@
 # Maintainer: Martin Tournoij <martin@arp242.net>
 
 pkgname=pqiv
-pkgver=2.7.4
+pkgver=2.8.3
 pkgrel=1
 pkgdesc="Modern rewrite of Quick Image Viewer"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ optdepends=(
 )
 install=
 source=($pkgname-$pkgver.tar.gz::https://github.com/phillipberndt/pqiv/archive/$pkgver.tar.gz)
-sha256sums=('2c6acd9c031de3afdd231d71223566e229dafbb1bce1a88a6b11e91b9c3a817d')
+sha256sums=('b90c45d829eb180459dcfbf1420b8feb670dc9bb542fe307adbc4ff201445bbd')
 
 build() {
 	cd $pkgname-$pkgver
