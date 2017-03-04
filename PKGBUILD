@@ -7,7 +7,7 @@
 
 pkgname=lib32-qt4
 pkgver=4.8.7
-pkgrel=8
+pkgrel=9
 pkgdesc='A cross-platform application and UI framework (32-bit)'
 arch=('x86_64')
 url='http://qt-project.org/'
@@ -96,7 +96,8 @@ build() {
   export QT4DIR=${srcdir}/${_pkgfqn}
   export LD_LIBRARY_PATH=${QT4DIR}/lib:${LD_LIBRARY_PATH}
   export CXXFLAGS+=" -std=gnu++98" # Fix build with GCC 6
-  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
+  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+#  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
   
   ./configure -confirm-license -opensource -platform linux-g++-32 \
     -prefix /usr \
