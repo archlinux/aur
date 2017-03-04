@@ -1,7 +1,7 @@
 # Maintainer: bartus szczepaniak <aur@bartus.33mail.com>
 pkgname=mve-git
-pkgver=r1082.84d6298
-pkgrel=3
+pkgver=r1110.94f47f0
+pkgrel=4
 pkgdesc="Image-based geometry reconstruction pipeline, structure-from-motion, (shading-aware) multi-view-stereo, surface-reconstruction, texturing,"
 arch=('i686' 'x86_64')
 url="http://www.gcc.tu-darmstadt.de/home/proj/mve/"
@@ -20,7 +20,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         '549ab99ac2b0c95bf29e88900d03ddd2')
+         '7e7d7c62d2a191fd4d27dde052035fcf')
 _binar="apps/sfmrecon/sfmrecon
 apps/meshconvert/meshconvert
 apps/meshalign/meshalign
