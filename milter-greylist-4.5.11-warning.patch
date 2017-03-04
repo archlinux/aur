@@ -1,0 +1,33 @@
+Warning about _BSD_SOURCE being deprecated in favor of _DEFAULT_SOURCE
+breaks build with -Werror -Wall
+
+--- configure.ac
++++ configure.ac
+@@ -1240,9 +1240,12 @@
+ 		CFLAGS=$CFLAGS$efl
+ 		AC_MSG_CHECKING([if DNS resolver is re-entrant])
+ 		AC_COMPILE_IFELSE([AC_LANG_PROGRAM([
++				#pragma GCC diagnostic push
++				# pragma GCC diagnostic warning "-Wcpp"
+ 				#define _BSD_SOURCE
+ 
+ 				#include <sys/types.h>
++				#pragma GCC diagnostic pop
+ 				#include <netinet/in.h>
+ 				#include <arpa/inet.h>
+ 				#include <arpa/nameser.h>
+--- configure
++++ configure
+@@ -8390,9 +8390,12 @@
+ 		cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++				#pragma GCC diagnostic push
++				# pragma GCC diagnostic warning "-Wcpp"
+ 				#define _BSD_SOURCE
+ 
+ 				#include <sys/types.h>
++				#pragma GCC diagnostic pop
+ 				#include <netinet/in.h>
+ 				#include <arpa/inet.h>
+ 				#include <arpa/nameser.h>
