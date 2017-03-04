@@ -3,13 +3,13 @@
 
 pkgname=bombono-dvd
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="DVD authoring program with nice and clean GUI"
 arch=('i686' 'x86_64')
 url="http://www.bombono.org"
 license=('GPL')
 depends=('gtk2' 'gtkmm' 'mjpegtools' 'ffmpeg' 'libdvdread' 'dvdauthor' \
-         'dvd+rw-tools' 'twolame' 'libxml++' 'boost' 'enca' 'cdrkit')
+         'dvd+rw-tools' 'twolame' 'libxml++2.6' 'boost' 'enca' 'cdrkit')
 makedepends=('scons')
 optdepends=('gvfs: web browser integration')
 conflicts=('bombono-dvd-git')
