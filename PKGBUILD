@@ -1,14 +1,16 @@
-#Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
+# Contributor: Benjamin Chretien <chretien at lirmm dot fr>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=ampl-mp
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source library for mathematical programming"
 arch=('i686' 'x86_64')
 url="http://ampl.github.io"
 license=('custom')
 makedepends=('cmake')
 options=('!emptydirs')
-source=("https://github.com/ampl/mp/archive/${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ampl/mp/archive/${pkgver}.tar.gz")
 sha256sums=('587c1a88f4c8f57bef95b58a8586956145417c8039f59b1758365ccc5a309ae9')
 
 _modules=""
