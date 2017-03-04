@@ -1,0 +1,11 @@
+--- src/wingpanel/src/Services/PopoverManager.vala	2016-11-15 07:39:04.620620000 +0900
++++ src/wingpanel/src/Services/PopoverManager.vala.new	2017-03-04 23:28:24.941257149 +0900
+@@ -187,7 +187,7 @@
+         });
+ 
+         widg.enter_notify_event.connect ((w, e) => {
+-            owner.set_expanded (true);
++            //owner.set_expanded (true);
+ 
+             if (mousing) {
+                 return Gdk.EVENT_PROPAGATE;

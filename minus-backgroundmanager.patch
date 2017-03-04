@@ -1,0 +1,73 @@
+--- src/wingpanel/src/PanelWindow.vala	2016-10-21 23:51:49.434036000 +0900
++++ src/wingpanel/src/PanelWindow.vala.new	2016-10-22 00:21:00.991151961 +0900
+@@ -86,7 +86,7 @@
+     private void on_realize () {
+         update_panel_dimensions ();
+ 
+-        Services.BackgroundManager.get_default ().initialize (this.monitor_number, panel_height);
++        //Services.BackgroundManager.get_default ().initialize (this.monitor_number, panel_height);
+ 
+         Timeout.add (300 / panel_height, animation_step);
+     }
+@@ -152,7 +152,7 @@
+ 
+     public void set_expanded (bool expanded) {
+         if (expand && !this.expanded) {
+-            Services.BackgroundManager.get_default ().remember_window ();
++            //Services.BackgroundManager.get_default ().remember_window ();
+ 
+             this.expanded = true;
+ 
+@@ -163,7 +163,7 @@
+ 
+             this.set_size_request (monitor_width, monitor_height);
+         } else if (!expand) {
+-            Services.BackgroundManager.get_default ().restore_window ();
++            //Services.BackgroundManager.get_default ().restore_window ();
+ 
+             this.expanded = false;
+ 
+--- src/wingpanel/src/Widgets/Panel.vala	2016-10-22 00:14:45.485792472 +0900
++++ src/wingpanel/src/Widgets/Panel.vala.new	2016-10-22 00:15:13.386112571 +0900
+@@ -60,7 +60,7 @@
+ 
+         style_context = this.get_style_context ();
+ 
+-        Services.BackgroundManager.get_default ().background_state_changed.connect (update_background);
++        //Services.BackgroundManager.get_default ().background_state_changed.connect (update_background);
+     }
+ 
+     private void add_indicator (Indicator indicator) {
+@@ -102,7 +102,7 @@
+         }
+     }
+ 
+-    private void update_background (Services.BackgroundState state, uint animation_duration) {
++    /* private void update_background (Services.BackgroundState state, uint animation_duration) {
+         if (style_provider == null) {
+             style_provider = new Gtk.CssProvider ();
+             style_context.add_provider (style_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+@@ -146,5 +146,5 @@
+                 style_context.remove_class ("maximized");
+                 break;
+         }
+-    }
++    } */
+ }
+--- src/wingpanel/src/Services/BackgroundManager.vala	2016-10-21 23:51:49.434036000 +0900
++++ src/wingpanel/src/Services/BackgroundManager.vala.new	2016-10-22 00:05:37.809131283 +0900
+@@ -17,7 +17,7 @@
+  * Boston, MA 02111-1307, USA.
+  */
+ 
+-namespace Wingpanel.Services {
++/* namespace Wingpanel.Services {
+     public enum BackgroundState {
+         LIGHT,
+         DARK,
+@@ -114,4 +114,4 @@
+             return instance;
+         }
+     }
+-}
++} */

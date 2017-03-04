@@ -1,0 +1,150 @@
+--- src/wingpanel/wingpanel-interface/BackgroundManager.vala	2016-10-21 23:51:49.434036000 +0900
++++ src/wingpanel/wingpanel-interface/BackgroundManager.vala.new	2016-10-22 00:31:35.323418157 +0900
+@@ -17,7 +17,7 @@
+  * Boston, MA 02111-1307, USA.
+  */
+ 
+-public enum BackgroundState {
++/* public enum BackgroundState {
+     LIGHT,
+     DARK,
+     MAXIMIZED,
+@@ -152,7 +152,7 @@
+      *  - If the background is too bright, it should be DARK;
+      *  - Else it should be LIGHT.
+      */
+-    private void check_for_state_change (uint animation_duration) {
++    /*private void check_for_state_change (uint animation_duration) {
+         bool has_maximized_window = false;
+ 
+         foreach (Meta.Window window in current_workspace.list_windows ()) {
+@@ -184,4 +184,4 @@
+             state_changed (current_state = new_state, animation_duration);
+         }
+     }
+-}
++} */
+--- src/wingpanel/wingpanel-interface/DBusServer.vala	2016-10-22 00:31:41.667214839 +0900
++++ src/wingpanel/wingpanel-interface/DBusServer.vala.new	2016-10-22 00:31:51.473900535 +0900
+@@ -17,7 +17,7 @@
+  * Boston, MA 02111-1307, USA.
+  */
+ 
+-[DBus (name = "org.pantheon.gala.WingpanelInterface")]
++/* [DBus (name = "org.pantheon.gala.WingpanelInterface")]
+ public class WingpanelInterface.DBusServer : Object {
+     private BackgroundManager background_manager;
+ 
+@@ -37,4 +37,4 @@
+     public void restore_focused_window () {
+         FocusManager.get_default ().restore_focused_window ();
+     }
+-}
++} */
+--- src/wingpanel/wingpanel-interface/FocusManager.vala	2016-10-21 23:51:49.434036000 +0900
++++ src/wingpanel/wingpanel-interface/FocusManager.vala.new	2016-10-22 00:32:26.189787894 +0900
+@@ -17,7 +17,7 @@
+  * Boston, MA 02111-1307, USA.
+  */
+ 
+-public class WingpanelInterface.FocusManager : Object {
++/* public class WingpanelInterface.FocusManager : Object {
+     private static FocusManager? instance = null;
+ 
+     private Meta.Workspace? current_workspace = null;
+@@ -69,4 +69,4 @@
+ 
+         return instance;
+     }
+-}
+\ No newline at end of file
++} */
+--- src/wingpanel/wingpanel-interface/Main.vala	2016-10-21 23:51:49.434036000 +0900
++++ src/wingpanel/wingpanel-interface/Main.vala.new	2016-10-22 00:33:13.987255987 +0900
+@@ -22,7 +22,7 @@
+  *   about windows and workspaces for the panel.
+  */
+ 
+-public class WingpanelInterface.Main : Gala.Plugin {
++/* public class WingpanelInterface.Main : Gala.Plugin {
+     private const string DBUS_NAME = "org.pantheon.gala.WingpanelInterface";
+     private const string DBUS_PATH = "/org/pantheon/gala/WingpanelInterface";
+ 
+@@ -80,4 +80,4 @@
+                Gala.PluginFunction.ADDITION,
+                Gala.LoadPriority.IMMEDIATE
+     };
+-}
+\ No newline at end of file
++} */
+--- src/wingpanel/wingpanel-interface/Settings.vala	2016-10-21 23:51:49.434036000 +0900
++++ src/wingpanel/wingpanel-interface/Settings.vala.new	2016-10-22 00:33:49.443163806 +0900
+@@ -17,7 +17,7 @@
+  * Boston, MA 02111-1307, USA.
+  */
+ 
+-public class WingpanelInterface.AnimationSettings : Granite.Services.Settings {
++/* public class WingpanelInterface.AnimationSettings : Granite.Services.Settings {
+     public bool enable_animations { get; set; }
+     public int open_duration { get; set; }
+     public int snap_duration { get; set; }
+@@ -39,4 +39,4 @@
+ 
+         return instance;
+     }
+-}
+\ No newline at end of file
++} */
+--- src/wingpanel/wingpanel-interface/Utils.vala	2016-10-21 23:51:49.434036000 +0900
++++ src/wingpanel/wingpanel-interface/Utils.vala.new	2016-10-22 00:34:59.172928972 +0900
+@@ -22,7 +22,7 @@
+  *   related to it are copied from Gala.DBus.
+  */
+ 
+-namespace WingpanelInterface.Utils {
++/* namespace WingpanelInterface.Utils {
+     private const double SATURATION_WEIGHT = 1.5;
+     private const double WEIGHT_THRESHOLD = 1.0;
+ 
+@@ -92,7 +92,7 @@
+              * plank's lib/Drawing/DrawingService.vala average_color()
+              * http://bazaar.launchpad.net/~docky-core/plank/trunk/view/head:/lib/Drawing/DrawingService.vala
+              */
+-            for (int y = y_start; y < height; y++) {
++            /* for (int y = y_start; y < height; y++) {
+                 for (int x = x_start; x < width; x++) {
+                     int i = y * width * 4 + x * 4;
+ 
+@@ -110,7 +110,7 @@
+                     delta = max - min;
+ 
+                     /* prefer colored pixels over shades of grey */
+-                    score = SATURATION_WEIGHT * (delta == 0 ? 0.0 : delta / max);
++                    /*score = SATURATION_WEIGHT * (delta == 0 ? 0.0 : delta / max);
+ 
+                     rTotal += score * r;
+                     gTotal += score * g;
+@@ -161,7 +161,7 @@
+              * if saturation isn't reasonable enough
+              * s = 0.0 -> f = 0.0 ; s = WEIGHT_THRESHOLD -> f = 1.0
+              */
+-            if (scoreTotal <= WEIGHT_THRESHOLD) {
++            /* if (scoreTotal <= WEIGHT_THRESHOLD) {
+                 var f = 1.0 / WEIGHT_THRESHOLD * scoreTotal;
+                 var rf = 1.0 - f;
+ 
+@@ -171,7 +171,7 @@
+             }
+ 
+             /* there shouldn't be values larger then 1.0 */
+-            var max_val = double.max (rTotal, double.max (gTotal, bTotal));
++            /* var max_val = double.max (rTotal, double.max (gTotal, bTotal));
+ 
+             if (max_val > 1.0) {
+                 bTotal /= max_val;
+@@ -196,4 +196,4 @@
+         return { rTotal, gTotal, bTotal, mean, variance, mean_acutance };
+     }
+ 
+-}
++} */
