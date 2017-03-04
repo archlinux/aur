@@ -1,0 +1,19 @@
+pkgbase = libpurple-carbon-git
+	pkgdesc = Exerimental XEP-0280: Message Carbons plugin for libpurple
+	pkgver = v0.1.0.r0.ge7735e5
+	pkgrel = 1
+	url = https://github.com/justintime4tea/carbons.git
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = glib2
+	makedepends = gcc
+	makedepends = pkg-config
+	makedepends = libxml2
+	depends = libpurple
+	provides = libpurple-carbons
+	source = libpurple-carbons-git::git+https://github.com/justintime4tea/carbons.git
+	md5sums = SKIP
+
+pkgname = libpurple-carbon-git
+
