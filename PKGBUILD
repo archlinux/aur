@@ -2,7 +2,7 @@
 
 _pkgname=xmpp-console
 pkgname="$_pkgname-git"
-pkgver=r2127.3375777
+pkgver=r2130.db9eb0d
 pkgrel=1
 pkgdesc='XMPP console'
 arch=('any')
@@ -20,10 +20,16 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
+build() {
   cd "$_pkgname"
   yarn
   cd packages/console/
   make
-  npm install --user root -g --prefix="$pkgdir/usr"
+}
+
+package() {
+  mkdir -p "${pkgdir}/usr/bin/"
+  mkdir -p "${pkgdir}/usr/lib/${_pkgname}"
+  cp -r "${srcdir}/${_pkgname}/packages/"* "${pkgdir}/usr/lib/${_pkgname}/"
+  ln -s "${srcdir}/${_pkgname}/packages/console/app.js" "${pkgdir}/usr/bin/${_pkgname}"
 }
