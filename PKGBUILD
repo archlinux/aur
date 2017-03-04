@@ -3,14 +3,16 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-workarounds
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc='Workarounds for modular and minimal Pantheon Desktop Environments'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/gala'
 license=('GPL3')
+groups=('pantheon-qq')
 depends=('gconf' gnome-{keyring,settings-daemon{,-compat},session}
-         'polkit-gnome' 'xdg-user-dirs-gtk' 'libgala')
+         'polkit-gnome' 'xdg-user-dirs-gtk')
+optdepends=("pantheon-default-settings: Pantheon configuration and themeing")
 makedepends=('bzr' 'intltool')
 conflicts=(pantheon-session{,-bzr})
 install='gala.install'
@@ -26,7 +28,7 @@ sha512sums=('SKIP'
             'c06e3b8c59681ebe64fa0dd724eea1d40a579956372ce0851f30ededdda3ac41d329d40e5463bd779daba0d55853faec357203b042a4de3d601eafc8b09c350e')
 
 prepare() {
-  sed 's|policykit-1|polkit|' -i pantheon-session/autostart/polkit-gnome-authentication-agent-1-pantheon.desktop
+  #sed 's|policykit-1|polkit|' -i pantheon-session/autostart/polkit-gnome-authentication-agent-1-pantheon.desktop
 
   cd "pantheon-session"
   export pkgverpantheonsession="$(printf "r%s" "$(bzr revno)")"
@@ -35,6 +37,8 @@ prepare() {
 
   # This space reserved for pantheon-default-settings(-bzr)
 }
+
+provides=(pantheon-session{,-bzr}=${pkgverpantheonsession})
 
 package() {
   cd "${srcdir}"/pantheon-session
