@@ -5,7 +5,7 @@
 pkgname=slingshot-launcher-standalone-bzr
 pkgver=r752
 pkgrel=1
-pkgdesc='The Pantheon Application Launcher'
+pkgdesc='The Pantheon Application Launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/slingshot'
 license=('GPL3')
