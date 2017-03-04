@@ -13,7 +13,7 @@ sha512sums=('46158782534a1e1efab2ca5cba33489cc80aa1a9137af31c9f1ead83b4562aac9d2
 
 prepare() {
 	cd "$srcdir"/"$pkgname"
-	patch -p1 -i "$srcdir/$pkgname-makefile-destdir.patch"
+	patch -p1 -i "$srcdir"/"$pkgname"-makefile-destdir.patch
 }
 
 build() {
