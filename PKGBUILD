@@ -1,19 +1,21 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Que Quotion <quequotion@bugmenot.org>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 # Contributor: flamelab <panosfilip@gmail.com>
 
 pkgname=wingpanel-standalone-bzr
 pkgver=r172
 pkgrel=1
-epoch=1
 pkgdesc='The Pantheon Panel (without Gala dependencies)'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/wingpanel'
 license=('GPL3')
-groups=('pantheon-unstable')
+groups=('pantheon-qq')
 depends=('clutter' 'cogl' 'glib2' 'glibc' 'gtk3' 'libgee' 'mutter'
-         'libgranite.so')
+         'libgranite.so' 'slingshot-launcher-standalone-bzr')
 makedepends=('bzr' 'cmake' 'vala')
+optdepends=("indicator-powersave: On the fly power savings and performance toggles"
+            wingpanel-indicator-{ayatana,bluetooth,datetime,network,power,sound}-bzr": Tray applet")
 provides=(wingpanel{,-bzr} 'libwingpanel-2.0.so')
 conflicts=(wingpanel{,-bzr})
 install='wingpanel.install'
@@ -43,6 +45,8 @@ prepare() {
   #Standalone patches
   patch -Np2 < ../minus-backgroundmanager.patch
   patch -Np2 < ../minus-galaplugin.patch
+
+  #fix focus stealing
   patch -Np2 < ../disable-expanded.patch
 }
 
