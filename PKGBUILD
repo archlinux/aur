@@ -10,7 +10,7 @@ url="http://otter-browser.org"
 license=('GPL3')
 depends=( 'qt5-script>=5.4' 'qt5-webkit' 'qt5-multimedia>=5.4' 'qt5-xmlpatterns>=5.4')
 makedepends=('cmake' 'qt5-declarative>=5.4')
-optdepends=('hunspell: for spell checking'
+optdepends=('hunspell>=1.3.0: for spell checking'
             'qt5-webengine: for experimental backend using the Chromium browser project')
 conflicts=('otter-browser-git' 'otter-browser')
 source=(otter-browser-$pkgver.tar.bz2::http://tenet.dl.sourceforge.net/project/otter-browser/otter-browser-weekly165/otter-browser-0.9.91-dev165.tar.bz2)
