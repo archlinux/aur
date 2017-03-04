@@ -1,14 +1,3 @@
-post_upgrade() {
-  gtk-update-icon-cache -q -f -t /usr/share/icons/hicolor
-  update-desktop-database -q
-}
-
 post_install() {
-  post_upgrade
+  echo 'Set GTK_CSD=1 for enabling client side decorations for Midori'
 }
-
-post_remove() {
-  post_upgrade
-}
-
-# vim:set ts=2 sw=2 et:
