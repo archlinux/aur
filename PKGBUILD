@@ -95,10 +95,30 @@ _install_python_bindings() {
     _compile_python_files "${pkgdir}${_py_sitepkg_dir}/${1##*/}"
 }
 
-# Install the license file for a package
-# Arguments: NONE
-_install_license() {
-    install -D -m 0644 "${srcdir}/${_pkgname}/LICENSE.TXT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+# Install the license files for a package
+# Arguments: source_directory_to_install_from
+# Notes: We prune some directories that are inserted into the tree in prepare() 
+#        in order to eliminate possible duplicates. We also use NULL-terminated
+#        strings, just in case we have paths including spaces. Finally, we opt
+#        for a flat directory structure, so all license files in subdirectories
+#        get their names from the relative path with '/'s replaced by dashes.
+#        Not the most elegant solution, but should be working well enough.
+_install_licenses() {
+    find "${1}" \
+        \( \
+            -path "${srcdir}/${_pkgname}/tools/clang" -o \
+            -path "${srcdir}/${_pkgname}/projects/compiler-rt" \
+        \) -prune -o \
+        \( \
+            -iname 'license*' -o \
+            -iname 'credits*' -o \
+            -iname 'copyright*' \
+        \) -printf '%P\0' \
+        | while read -d $'\0' license_file; do
+            install -D -m 0644 \
+                "${1}/${license_file}" \
+                "${pkgdir}/usr/share/licenses/${pkgname}/${license_file//\//-}"
+        done
 }
 
 #
@@ -121,6 +141,7 @@ pkgver() {
 prepare() {
     cd "${srcdir}/${_pkgname}"
 
+    # Anything added here should also be pruned in _install_licenses() above.
     svn export --force "${srcdir}/clang" tools/clang
     svn export --force "${srcdir}/clang-tools-extra" tools/clang/tools/extra
     svn export --force "${srcdir}/compiler-rt" projects/compiler-rt
@@ -221,7 +242,7 @@ package_llvm-svn() {
 
     _install_python_bindings "${srcdir}/llvm/bindings/python/llvm"
 
-    _install_license
+    _install_licenses "${srcdir}/llvm"
 }
 
 package_llvm-libs-svn() {
@@ -257,7 +278,7 @@ package_llvm-libs-svn() {
     # libLLVM-3.8.0svn-r123456.so
     ln -s "libLLVM-${_sover}.so" "${pkgdir}/usr/lib/libLLVM-$(echo ${pkgver} | tr _ -).so"
 
-    _install_license
+    _install_licenses "${srcdir}/llvm"
 }
 
 package_llvm-ocaml-svn() {
@@ -278,7 +299,7 @@ package_llvm-ocaml-svn() {
     cp -a "${srcdir}/ocaml.lib" "${pkgdir}/usr/lib/ocaml"
     cp -a "${srcdir}/ocaml.doc" "${pkgdir}/usr/share/doc/llvm/ocaml-html"
 
-    _install_license
+    _install_licenses "${srcdir}/llvm"
 }
 
 package_clang-svn() {
@@ -361,7 +382,7 @@ package_clang-svn() {
 
     _install_python_bindings "${srcdir}/llvm/tools/clang/bindings/python/clang"
 
-    _install_license
+    _install_licenses "${srcdir}/clang"
 }
 
 package_clang-analyzer-svn() {
@@ -388,7 +409,7 @@ package_clang-analyzer-svn() {
 
     _compile_python_files "${pkgdir}/usr/share/scan-view"
 
-    _install_license
+    _install_licenses "${srcdir}/clang"
 }
 
 package_clang-compiler-rt-svn() {
@@ -406,7 +427,7 @@ package_clang-compiler-rt-svn() {
 
     make DESTDIR="${pkgdir}" install
 
-    _install_license
+    _install_licenses "${srcdir}/compiler-rt"
 }
 
 package_clang-tools-extra-svn() {
@@ -424,7 +445,7 @@ package_clang-tools-extra-svn() {
 
     make DESTDIR="${pkgdir}" install
 
-    _install_license
+    _install_licenses "${srcdir}/clang-tools-extra"
 }
 
 # vim:set ts=4 sts=4 sw=4 et:
