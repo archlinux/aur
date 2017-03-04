@@ -1,6 +1,6 @@
 pkgbase = toilet-git
 	pkgdesc = free replacement for the FIGlet utility.
-	pkgver = 0.3
+	pkgver = r155.3eb9d58
 	pkgrel = 1
 	url = https://github.com/cacalabs/toilet
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = toilet-git
 	makedepends = git
 	depends = libcaca
 	provides = toilet
+	conflicts = toilet
 	source = git+https://github.com/cacalabs/toilet
 	md5sums = SKIP
 
