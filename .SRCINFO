@@ -23,5 +23,5 @@ pkgbase = ulauncher-git
 	source = https://github.com/Ulauncher/Ulauncher/releases/download/2.0.28/ulauncher_2.0.28.tar.gz
 	sha256sums = SKIP
 
-pkgname = ulauncher
+pkgname = ulauncher-git
 
