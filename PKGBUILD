@@ -2,7 +2,7 @@
 
 pkgname=freecad-netgen-git
 pkgver=0.17pre.r1769.g40c79f1
-pkgrel=2
+pkgrel=3
 pkgdesc='A general purpose 3D CAD modeler'
 arch=('i686' 'x86_64')
 url='http://www.freecadweb.org/'
@@ -44,6 +44,8 @@ build() {
 	      -DOCC_LIBRARY_DIR:PATH=/opt/opencascade/lib \
 	      -DVTK_DIR:PATH=/opt/vtk-qt4/lib/cmake/vtk-7.0 \
 	      -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2 \
+	      -DPYTHON_SUFFIX=-python2.7 \
+	      -DPYTHON_BASENAME=-python2.7 \
 	      -DPYSIDEUIC4BINARY:FILEPATH=/usr/bin/python2-pyside-uic \
 	      -DBUILD_FEM_NETGEN=1
 
