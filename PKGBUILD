@@ -6,10 +6,10 @@
 
 pkgname=gkrellm
 pkgver=2.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="System monitor package for GTK2"
 arch=('x86_64' 'i686')
-url="https://gkrellm.srcbox.net/"
+url="http://gkrellm.srcbox.net/"
 license=('GPL3')
 depends=('gtk2' 'libsm' 'lm_sensors')
 makedepends=('gettext')
