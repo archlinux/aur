@@ -1,6 +1,6 @@
 pkgbase = monetdb
 	pkgdesc = MonetDB: an open source database system
-	pkgver = 11.25.5
+	pkgver = 11.25.9
 	pkgrel = 1
 	url = http://www.monetdb.org/Home
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = monetdb
 	license = custom
 	makedepends = python
 	makedepends = apache-ant
-	source = http://dev.monetdb.org/downloads/sources/Latest/MonetDB-11.25.5.tar.xz
-	sha256sums = faf18100b82b7bcc78785692dfe3e2d64808df92e69d3add60a2cc80ec7619ed
+	source = http://dev.monetdb.org/downloads/sources/Latest/MonetDB-$pkgver.tar.xz
+	sha256sums = 45bacc0c674060eb1d2ec3dff2a36520d3f42b6c2461d2dd06a19f239a05ab6e
 
 pkgname = monetdb
 
