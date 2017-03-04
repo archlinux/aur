@@ -25,7 +25,9 @@ package() {
     # Place systemd user service
     install -Dm644 "utils/${pkgname}.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
 
+    # Install zsh completions file
+    install -Dm644 "utils/_pueue" "${pkgdir}/usr/share/zsh/site-functions/_pueue"
+
     # Install License
-    # MIT/X11 license
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
