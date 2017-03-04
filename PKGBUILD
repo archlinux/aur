@@ -4,7 +4,7 @@ pkgname=jwm-session-git
 _pkgname=jwm-session
 pkgver=0.3
 _pkgver=r03
-pkgrel=2
+pkgrel=3
 pkgdesc="JWM XSession file, exec file and configuration files."
 arch=('any')
 url="https://github.com/BlackCodec/jwm-session/tree/master"
@@ -17,7 +17,7 @@ md5sums=('abd970accfcbe2c344a2c1dc85ffaddd')
 
 package() {
    install -Dm 755 "$srcdir/$_pkgname-$_pkgver/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-   install -D "$srcdir/$_pkgname-$_pkgver/jwm.desktop" "$pkgdir/usr/share/xsessions/jwmsession.desktop"
+   install -D "$srcdir/$_pkgname-$_pkgver/jwmsession.desktop" "$pkgdir/usr/share/xsessions/jwmsession.desktop"
    install -D "$srcdir/$_pkgname-$_pkgver/config/autostartrc" "$pkgdir/usr/share/jwm/autostartrc"
    install -D "$srcdir/$_pkgname-$_pkgver/config/grouprc" "$pkgdir/usr/share/jwm/grouprc"
    install -D "$srcdir/$_pkgname-$_pkgver/config/jwmrc" "$pkgdir/usr/share/jwm/jwmrc"
