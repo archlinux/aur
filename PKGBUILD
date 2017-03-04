@@ -2,9 +2,9 @@
 
 _pkgname=xmpp-console
 pkgname="$_pkgname-git"
-pkgver=r2130.db9eb0d
+pkgver=r2132.bb925ff
 pkgrel=1
-pkgdesc='XMPP console'
+pkgdesc='XMPP terminal and Web console'
 arch=('any')
 url='https://github.com/node-xmpp/node-xmpp/tree/master/packages/console'
 license=('ISC')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  yarn
+  make
   cd packages/console/
   make
 }
