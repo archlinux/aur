@@ -1,0 +1,15 @@
+pkgbase = vim-nord-git
+	pkgdesc = A arctic, north-bluish clean and elegant Vim theme.
+	pkgver = r51.05d536f
+	pkgrel = 1
+	url = https://github.com/arcticicestudio/nord-vim
+	arch = any
+	groups = vim-plugins
+	license = Apache
+	makedepends = git
+	depends = vim
+	source = vim-nord-git::git+https://github.com/arcticicestudio/nord-vim.git
+	md5sums = SKIP
+
+pkgname = vim-nord-git
+
