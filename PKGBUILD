@@ -1,7 +1,7 @@
 # Maintainer: Frederick Gnodtke <fgnodtke at cronosx dot de>
 
 pkgname=mopidy-subidy
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Mopidy extension for playing music from Subsonic servers"
 arch=('any')
@@ -11,11 +11,11 @@ depends=(
     'mopidy>=2'
     'python2-pykka>=1.1'
     'python2-setuptools'
-    'python2-pysonic>=0.5.1')
+    'python2-pysonic>=0.6.1')
 makedepends=('python2')
 provides=('mopidy-subidy')
 source=("https://github.com/prior99/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('d220a08eaeb5f28b66591f25888748c4df2360a147fe74a145e8350576b8d803')
+sha256sums=('771cf58a6f36872f6a9c45866b2a4d27459cf2ea460a84d34257818bfe815c77')
 
 
 package() {
