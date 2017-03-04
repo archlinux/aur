@@ -1,5 +1,5 @@
 pkgbase = otter-browser-weekly
-	pkgdesc = Browser aiming to recreate classic Opera (12.x) UI using Qt5 - weekly.
+	pkgdesc = Browser aiming to recreate the best aspects of the classic Opera (12.x) UI using Qt5 - weekly.
 	pkgver = 0.9.91.dev165
 	pkgrel = 1
 	url = http://otter-browser.org
@@ -7,7 +7,7 @@ pkgbase = otter-browser-weekly
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	makedepends = qt5-tools
+	makedepends = qt5-declarative>=5.4
 	depends = qt5-script>=5.4
 	depends = qt5-webkit
 	depends = qt5-multimedia>=5.4
