@@ -1,0 +1,15 @@
+pkgbase = mwget
+	pkgdesc = Multi-thread Downloading Tool
+	pkgver = 0.1.0
+	pkgrel = 1.0
+	url = https://sourceforge.net/projects/kmphpfm/files/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = intltool
+	makedepends = pkg-config
+	source = http://jaist.dl.sourceforge.net/project/kmphpfm/mwget/0.1/mwget_0.1.0.orig.tar.bz2
+	md5sums = 05349195bcb289ef3a880c1b059f9854
+
+pkgname = mwget
+
