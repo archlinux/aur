@@ -2,22 +2,24 @@
 
 pkgname=docfetcher
 _name=DocFetcher
-pkgver=1.1.18
+pkgver=1.1.19
 pkgrel=1
+_gtkver=gtk3 # variable that controls whether GTK2 or 3(default) is to be used.
 pkgdesc="A java open source desktop search application"
 arch=('i686' 'x86_64')
 url="http://${pkgname}.sourceforge.net/"
 license=('EPL')
 depends=('java-runtime>=1.6')
 makedepends=('unzip')
+optdepends=('gtk2: GTK2-based interface' 'gtk3: GTK3-based interface')
 source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/docfetcher-${pkgver}-portable.zip"
   'docfetcher'
   'swt.patch'
   'docfetcher.desktop')
-md5sums=('b039751b4359b4159e7183e26930ffd7'
-         '6a798b893868bf6b5e78093143654b39'
-         '046e05ecfec4c0a2f6733c558317417f'
-         '363fdc2fa2e4e8f090fdc16b86939cb3')
+sha256sums=('4471c48619ea319f45b431c98028b407e6e25de4040f84bd060fc9e6651076dc'
+         'd49d1c1327b72345040c76ae510a3eaa520c82dd5c43f2a6e597f1c984b55c50'
+         'edc2d63e3644eafe69229df44986c310a17eeecb06ce62818c24f55c9409ab54'
+         '125dc909d4b59aaa7e044d7f544c8a38359d950fdb698095f70c32b099127731')
 
 prepare() {
   cd "${srcdir}"
@@ -51,4 +53,14 @@ package() {
   done
   find "${prefix}" -type d -exec chmod 0755 {} \;
   find "${prefix}" -type f -exec chmod 0644 {} \;
+  
+  # make start scripts executable
+  chmod +x ${prefix}/DocFetcher-GTK*.sh
+  
+  # symlink one or other of the startup scripts for GTK2 or GTK3(default)
+  if [ $_gtkver == 'gtk3' ]; then
+    ln -s "${prefix}/DocFetcher-GTK3.sh" "${prefix}/DocFetcher.sh"
+  elif [ $_gtkver == 'gtk2' ]; then
+    ln -s "${prefix}/DocFetcher-GTK2.sh" "${prefix}/DocFetcher.sh"
+  fi
 }
