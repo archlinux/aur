@@ -1,13 +1,12 @@
 pkgbase = ruby-xcpretty
 	pkgdesc = xcodebuild formatter done right
 	pkgver = 0.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/supermarin/xcpretty
 	arch = any
 	license = MIT
 	depends = ruby
-	depends = ruby-rouge<2
-	depends = ruby-rouge>=1.8
+	depends = ruby-rouge-1
 	noextract = xcpretty-0.2.4.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/xcpretty-0.2.4.gem

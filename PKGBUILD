@@ -4,14 +4,15 @@
 _gemname=xcpretty
 pkgname=ruby-$_gemname
 pkgver=0.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc='xcodebuild formatter done right'
 arch=(any)
 url='https://github.com/supermarin/xcpretty'
 license=(MIT)
 depends=(
   ruby
-  'ruby-rouge<2' 'ruby-rouge>=1.8'
+  #'ruby-rouge<2' 'ruby-rouge>=1.8'
+  'ruby-rouge-1'
 )
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
