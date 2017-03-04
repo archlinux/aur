@@ -1,7 +1,7 @@
 # Maintainer: Marcel Huber <marcelhuberfoo@gmail.com>
 
 pkgname=nvidia-docker
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Build and run Docker containers leveraging NVIDIA GPUs"
 license=('custom')
@@ -11,7 +11,7 @@ makedepends=(libarchive)
 optdepends=(cuda nvidia opencl-nvidia)
 install=${pkgname}.install
 source_x86_64=(https://github.com/NVIDIA/nvidia-docker/releases/download/v${pkgver}/nvidia-docker-${pkgver}-1.${arch}.rpm)
-sha256sums_x86_64=('6669686952a190557ceccb272c97e9fc11f744d8e949e78c3a5854517a39e958')
+sha256sums_x86_64=('f05dfe7fe655ed39c399db0d6362e351b059f2708c3e6da17f590a000237ec3a')
 
 build() {
   cd $srcdir

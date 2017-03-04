@@ -1,6 +1,6 @@
 pkgbase = nvidia-docker
 	pkgdesc = Build and run Docker containers leveraging NVIDIA GPUs
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/NVIDIA/nvidia-docker
 	install = nvidia-docker.install
@@ -10,8 +10,8 @@ pkgbase = nvidia-docker
 	optdepends = cuda
 	optdepends = nvidia
 	optdepends = opencl-nvidia
-	source_x86_64 = https://github.com/NVIDIA/nvidia-docker/releases/download/v1.0.0/nvidia-docker-1.0.0-1.x86_64.rpm
-	sha256sums_x86_64 = 6669686952a190557ceccb272c97e9fc11f744d8e949e78c3a5854517a39e958
+	source_x86_64 = https://github.com/NVIDIA/nvidia-docker/releases/download/v1.0.1/nvidia-docker-1.0.1-1.x86_64.rpm
+	sha256sums_x86_64 = f05dfe7fe655ed39c399db0d6362e351b059f2708c3e6da17f590a000237ec3a
 
 pkgname = nvidia-docker
 
