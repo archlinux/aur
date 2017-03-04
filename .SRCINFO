@@ -1,0 +1,13 @@
+pkgbase = rebol3_binary
+	pkgdesc = Rebol 3: Most software systems have become needlessly complex. We rebel against that complexity, fighting it with the most powerful tool available, language itself.
+	pkgver = gbf237fc.static
+	pkgrel = 1
+	url = http://rebolsource.net/
+	arch = x86_64
+	groups = devel
+	provides = rebol
+	source = r3::http://rebolsource.net/downloads/experimental/r3-linux-x64-gbf237fc-static
+	md5sums = SKIP
+
+pkgname = rebol3_binary
+
