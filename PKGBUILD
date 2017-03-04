@@ -4,18 +4,17 @@
 # Contributor: Sebastien Piccand <sebcactus gmail com>
 
 pkgname=('handbrake-fdkaac' 'handbrake-cli-fdkaac')
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
-makedepends=('intltool' 'python2' 'yasm' 'wget' 'bzip2' 'gcc-libs' 'libnotify'
-             'gst-plugins-base' 'gtk3' 'dbus-glib' 'fribidi' 'libass' 'lame'
-             'fontconfig' 'freetype2' 'libxml2' 'libogg' 'libvorbis' 'cmake'
-             'libtheora' 'libsamplerate' 'x264' 'libx264' 'jansson' 'librsvg'
-             'libgudev')
+makedepends=('intltool' 'python2' 'yasm' 'wget' 'cmake' 'bzip2' 'gcc-libs' 'libnotify'
+             'zlib' 'libnotify' 'gst-plugins-base' 'gtk3' 'dbus-glib' 'libass'
+             'lame' 'libxml2' 'opus' 'libvorbis' 'libtheora' 'libsamplerate'
+             'jansson' 'librsvg' 'libgudev')
 source=(https://handbrake.fr/mirror/HandBrake-$pkgver.tar.bz2)
-sha256sums=('18e4563cc150309df03f7e73462b823ba2eca61644a7a536c9930611f3f9aa1e')
+sha256sums=('591fb489edd6146136f0a92f895c2098365f612ad308d5ff9dc83223ad73ed27')
 
 build() {
   cd "$srcdir/HandBrake-$pkgver"
@@ -30,12 +29,14 @@ build() {
 package_handbrake-fdkaac() {
   pkgdesc="Multithreaded video transcoder"
   conflicts=('handbrake')
-  depends=('bzip2' 'gcc-libs' 'gst-plugins-base' 'libnotify' 'dbus-glib'
-           'fribidi' 'libass' 'lame' 'gtk3' 'fontconfig' 'freetype2' 'libxml2'
-           'libogg' 'libvorbis' 'libtheora' 'libsamplerate' 'libx264' 'jansson'
-           'librsvg' 'libgudev' 'desktop-file-utils' 'hicolor-icon-theme')
+  depends=('bzip2' 'gcc-libs' 'zlib' 'gst-plugins-base' 'libnotify' 'dbus-glib'
+           'gtk3' 'libass' 'lame' 'libxml2' 'opus' 'libvorbis' 'libtheora'
+           'libsamplerate' 'jansson' 'librsvg' 'libgudev'
+           'desktop-file-utils' 'hicolor-icon-theme')
   optdepends=('gst-plugins-good: for video previews'
-              'gst-libav: for video previews')
+              'gst-libav: for video previews'
+              'libdvdcss: for decoding encrypted DVDs')
+
 
   cd "$srcdir/HandBrake-$pkgver/build"
 
@@ -46,8 +47,9 @@ package_handbrake-fdkaac() {
 package_handbrake-cli-fdkaac() {
   pkgdesc="Multithreaded video transcoder (CLI)"
   conflicts=('handbrake-cli')
-  depends=('bzip2' 'gcc-libs' 'zlib' 'fribidi' 'libass' 'lame' 'libxml2'
-           'libtheora' 'libsamplerate' 'libx264' 'jansson')
+  depends=('bzip2' 'gcc-libs' 'zlib' 'libass' 'lame' 'libxml2' 'opus'
+           'libvorbis' 'libtheora' 'libsamplerate' 'libx264' 'jansson')
+  optdepends=('libdvdcss: for decoding encrypted DVDs')
 
   cd "$srcdir/HandBrake-$pkgver/build"
   install -D HandBrakeCLI "$pkgdir/usr/bin/HandBrakeCLI"
