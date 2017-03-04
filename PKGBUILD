@@ -4,7 +4,7 @@
 
 pkgname=ttf-dejavu-ib
 pkgver=2.37
-pkgrel=1
+pkgrel=2
 pkgdesc="Font family based on the Bitstream Vera Fonts with a wider range of characters. Re-packed for infinality-bundle-fonts. TrueType version."
 url="http://dejavu-fonts.org/wiki/Main_Page"
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=('ttf-dejavu' 't1-dejavu-ib')
 provides=('ttf-font' 'ttf-dejavu' 'dejavu-ib')
 replaces=('ttf-dejavu')
 license=('custom')
-source=('https://cytranet.dl.sourceforge.net/project/dejavu/dejavu/2.37/dejavu-fonts-ttf-2.37.tar.bz2'
+source=('https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_2_37/dejavu-fonts-ttf-2.37.tar.bz2'
         '45-dejavu.conf'
         '90-tt-dejavu.conf')
 sha512sums=('bafa39321021097432777f0825d700190c23f917d754a4504722cd8946716c22c083836294dab7f3ae7cf20af63c4d0944f3423bf4aa25dbca562d1f30e00654'
