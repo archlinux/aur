@@ -7,437 +7,440 @@ pkgbase = libreoffice-dev-langpack-bin
 	arch = x86_64
 	license = LGPL3
 	depends = libreoffice-dev-bin>=5.3.0.3
+
+pkgname = libreoffice-dev-af-bin
+
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_af.tar.gz
 	sha256sums_i686 = 28c2ecea6aba8722e4d5bf80300bad5ba47298f671efa9570ab7d50a2e0085a5
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_af.tar.gz
 	sha256sums_x86_64 = 5f4da43fef71447fee0539dec17001b9f0fb02cc082b571035335d71f22cf1c3
 
-pkgname = libreoffice-dev-af-bin
+pkgname = libreoffice-dev-ar-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_ar.tar.gz
 	sha256sums_i686 = 8af53652ddb55c19198d0fe1429747ceab74ba5769a66bde533af0acb4f46626
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_ar.tar.gz
 	sha256sums_x86_64 = 6b47c87d1dfa932ab65c929d72622c753782acbd6a2c0e593a3f7ee5923178e7
 
-pkgname = libreoffice-dev-ar-bin
+pkgname = libreoffice-dev-as-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_as.tar.gz
 	sha256sums_i686 = e7f9dff18d851cb52ea4db8bf8dc6a5293c524d651b723731133f42bf7f46988
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_as.tar.gz
 	sha256sums_x86_64 = 42550db46d84827d8ffb250b9ad96af4e87e5fc0fff316a00e43d5b52c806cbc
 
-pkgname = libreoffice-dev-as-bin
+pkgname = libreoffice-dev-ast-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_ast.tar.gz
 	sha256sums_i686 = 00d72e4e9c876870a1b32dff5d5750366b8ad165a76db3d873f57bf2b0e02821
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_ast.tar.gz
 	sha256sums_x86_64 = 2acc3be38826b0dfb75072c2486b84c60a06b722a10097869b906351f43b544e
 
-pkgname = libreoffice-dev-ast-bin
+pkgname = libreoffice-dev-bg-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_bg.tar.gz
 	sha256sums_i686 = d023fd801ea90fd03fc93b2f2eaa1a09e54a2b36ec4a9e0e49cf58d43eace9a6
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_bg.tar.gz
 	sha256sums_x86_64 = 4c64cde6abd5aeb932b28a917eac3d5ef6ede97bd005f2a6bc4faf217e85f065
 
-pkgname = libreoffice-dev-bg-bin
+pkgname = libreoffice-dev-br-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_br.tar.gz
 	sha256sums_i686 = effabc0ed351365b82328528de5d3a9f0e5a795ea05cc55b181c874d527c0971
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_br.tar.gz
 	sha256sums_x86_64 = 837296d43c670b88fc2a2ad2c87ba33348ddd74072e27ed20736abef72d0a693
 
-pkgname = libreoffice-dev-br-bin
+pkgname = libreoffice-dev-bs-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_bs.tar.gz
 	sha256sums_i686 = f164bcdbfeedfefe7a0495c6e38ebfc781f0da3c6b6c7f3f99cdbff5b97dc746
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_bs.tar.gz
 	sha256sums_x86_64 = ede8448331159c3094a06c4d0d503f6903be36a1d7bfff8f40074aff69a5b337
 
-pkgname = libreoffice-dev-bs-bin
+pkgname = libreoffice-dev-ca-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_ca.tar.gz
 	sha256sums_i686 = f7f5fd49f288386f43501d94bccb8637fa7f8825d7fe53a0ac1956f22fafaf94
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_ca.tar.gz
 	sha256sums_x86_64 = b1efbd72b2961ac8bc5cde4c4d01c557b108531a7a9a6750f7839883f9b81ecd
 
-pkgname = libreoffice-dev-ca-bin
+pkgname = libreoffice-dev-cs-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_cs.tar.gz
 	sha256sums_i686 = f0a33d866c5174147eaa377336475dac5bf57e86f472e89ebd0a71c4bf88eb02
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_cs.tar.gz
 	sha256sums_x86_64 = 6ba084c1de59ddda6380aa1bc4037f5001473ceed1845b2ac41c56800eaf1796
 
-pkgname = libreoffice-dev-cs-bin
+pkgname = libreoffice-dev-cy-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_cy.tar.gz
 	sha256sums_i686 = f44f223cd58eace4336d0b045de670f437607a9041b5c7a55b5fb9eb3f556978
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_cy.tar.gz
 	sha256sums_x86_64 = 2c39f985cd57a52a0f9efb131c8742f3a30d6c130cff9d0fcf118fc9ec0403ca
 
-pkgname = libreoffice-dev-cy-bin
+pkgname = libreoffice-dev-da-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_da.tar.gz
 	sha256sums_i686 = ff449a2979eefcfda215f031c473b4b35074e78367a7c8338134f81d0f7c5c13
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_da.tar.gz
 	sha256sums_x86_64 = 46dc59cc037c66a42e454ed4fdf33f353e4d26a718c1c99049d74982574625a5
 
-pkgname = libreoffice-dev-da-bin
+pkgname = libreoffice-dev-de-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_de.tar.gz
 	sha256sums_i686 = 9dfda466bee0ce2a65158e346923766324373fd33dc515fafc47764951656284
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_de.tar.gz
 	sha256sums_x86_64 = 8e976e3dadcffcf0dcac2fafe0e32ead341718199dfcd56e0d6f3120d17a3d73
 
-pkgname = libreoffice-dev-de-bin
+pkgname = libreoffice-dev-el-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_el.tar.gz
 	sha256sums_i686 = 770346b9fe7a0c7f0a0b35ba42b3e64c782f58ec383307d18c80d8ce4feee57d
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_el.tar.gz
 	sha256sums_x86_64 = d0dd928dde71630547c55e6d5e6b7d64865cb08d00871e74e0ed155cef79182b
 
-pkgname = libreoffice-dev-el-bin
+pkgname = libreoffice-dev-en-gb-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_en-GB.tar.gz
 	sha256sums_i686 = 229b9484ee3f000ba6ff9d163c558d0c22a45b41dc6ccad582b7da7b638c08c9
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_en-GB.tar.gz
 	sha256sums_x86_64 = 92b1fb9a3784348c49faed65535ea742c9c0269f8d8ec83923c648770cfb9e38
 
-pkgname = libreoffice-dev-en-gb-bin
+pkgname = libreoffice-dev-en-za-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_en-ZA.tar.gz
 	sha256sums_i686 = 665ec1ad9d0fdac4aafb7fe611c1d5a5db61e2da21cd7cfa54d0fed67dbe888d
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_en-ZA.tar.gz
 	sha256sums_x86_64 = feff3377f52b0300500c030658e6a330279272d8e70bf2504de105d6784d723b
 
-pkgname = libreoffice-dev-en-za-bin
+pkgname = libreoffice-dev-eo-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_eo.tar.gz
 	sha256sums_i686 = 8ec76392343ab436401fb2482608ab4fea63171577790657ad3cff63ebf1c687
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_eo.tar.gz
 	sha256sums_x86_64 = 562cea263d42399267211d26d1f49bda9cfee54f2a337841781240a19f5468e3
 
-pkgname = libreoffice-dev-eo-bin
+pkgname = libreoffice-dev-es-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_es.tar.gz
 	sha256sums_i686 = 0de990bca14bdbd15f4d4382c134bc245d00e7b6fe149718f6269ae9e86d9bac
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_es.tar.gz
 	sha256sums_x86_64 = ec44b1bd5a8b1155048859bb40fdf96e948932ff7e2fc7d186dcabdca019c02c
 
-pkgname = libreoffice-dev-es-bin
+pkgname = libreoffice-dev-et-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_et.tar.gz
 	sha256sums_i686 = 9b2f0646196efa6e4f54b3625dbde45ecd03aa2616d3836b1cba2bec5fa7a735
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_et.tar.gz
 	sha256sums_x86_64 = 11e3e2d19a0afbe77234185283f0d10c019a3d1f8358bac2351f4505b3ce8a39
 
-pkgname = libreoffice-dev-et-bin
+pkgname = libreoffice-dev-eu-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_eu.tar.gz
 	sha256sums_i686 = c53fe3c3d2fcfaa7d840e3a0e8e583425a948378d8ca7919efba923dfe82a060
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_eu.tar.gz
 	sha256sums_x86_64 = de77b5df30d11cbb7136dcbfceceb51085954e3c0eaa51078b8878b5af9d880b
 
-pkgname = libreoffice-dev-eu-bin
+pkgname = libreoffice-dev-fa-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_fa.tar.gz
 	sha256sums_i686 = b43945719caa63fbb9951970f8b1e6c49950b2bbb7080740855fe39145e02339
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_fa.tar.gz
 	sha256sums_x86_64 = 1e87d112e801b1831e34a9c7ba8147f8c25642f21e43c6c6ba0d36ca4ab61816
 
-pkgname = libreoffice-dev-fa-bin
+pkgname = libreoffice-dev-fi-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_fi.tar.gz
 	sha256sums_i686 = 3c92debd88550481f4fdcfd14c2ab18e48c4fb8dac0b9fff62103f3a4d46a606
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_fi.tar.gz
 	sha256sums_x86_64 = d2024b7e7edd2aace15352eb3cad827212f21b48ad5cc16e881fe2196f8770fc
 
-pkgname = libreoffice-dev-fi-bin
+pkgname = libreoffice-dev-fr-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_fr.tar.gz
 	sha256sums_i686 = d4f203352a46d8416cca5c353a16f174d555a2a563de43a5f571ed7452200ba1
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_fr.tar.gz
 	sha256sums_x86_64 = 8b1f423ec2c5eba9ade9f5d168f9febeae1d39f39aa40c2e7268cd3355ffb2d8
 
-pkgname = libreoffice-dev-fr-bin
+pkgname = libreoffice-dev-gd-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_gd.tar.gz
 	sha256sums_i686 = 5547924823e762496393959bf22d4143ad9eb7de8283bbcf67829dfa4f809f6a
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_gd.tar.gz
 	sha256sums_x86_64 = 3753d8fedc10bdd85426cb5ba94c01dda4094aab6f898ab35ed69f1081a07c10
 
-pkgname = libreoffice-dev-gd-bin
+pkgname = libreoffice-dev-gl-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_gl.tar.gz
 	sha256sums_i686 = 2be3bb1c0a959f4749470b3188f342e78e5d3c6721bc731d414509c4b6828087
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_gl.tar.gz
 	sha256sums_x86_64 = 0faef4fdbe3c0a731f612da3651d77dc96b4fc2d61ea665af5f009f20ea6b376
 
-pkgname = libreoffice-dev-gl-bin
+pkgname = libreoffice-dev-he-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_he.tar.gz
 	sha256sums_i686 = 3f9ae0eddf2817159196ec884c03b6ed0a89313a997b346611c88c9937a51540
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_he.tar.gz
 	sha256sums_x86_64 = c4eb90b67e49da18db09d87d64326bbf00a21250eeb3a19b666f7ec7dc9b5857
 
-pkgname = libreoffice-dev-he-bin
+pkgname = libreoffice-dev-hr-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_hr.tar.gz
 	sha256sums_i686 = 43fdce32ff7adcdb0a545b756457c304b5f5550d9c71b01ae9cc4a79b09cdd2f
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_hr.tar.gz
 	sha256sums_x86_64 = 8430fe88c873da99cff31a53efe726d6d14baad7d2ba08a937401d8ff3197670
 
-pkgname = libreoffice-dev-hr-bin
+pkgname = libreoffice-dev-hu-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_hu.tar.gz
 	sha256sums_i686 = d08c7170e87757a0990b7bc51f996569b1b90afe4894fa5c0c1a16d426b9b43a
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_hu.tar.gz
 	sha256sums_x86_64 = 6afa50b1845a93b2b9cabceb94c76af79a8d517708fd54b59363d5e6c99d5df0
 
-pkgname = libreoffice-dev-hu-bin
+pkgname = libreoffice-dev-id-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_id.tar.gz
 	sha256sums_i686 = 2b5a57da978a01241018d8873d95b6363bedd52880915d74548ca7261ea9eeae
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_id.tar.gz
 	sha256sums_x86_64 = 4c1815d5e7b22144ded425a1297dc27ff1ee7e4a752051a75ecd347c802796f5
 
-pkgname = libreoffice-dev-id-bin
+pkgname = libreoffice-dev-is-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_is.tar.gz
 	sha256sums_i686 = 5f768ff5298517db0e29c5fff5a480ca8a91419d7a3c4619d9bc6edfb2bc9a53
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_is.tar.gz
 	sha256sums_x86_64 = b7743a0b534fc2b40f229bffcd389e3988b6680b9a6fd97a1b2694da23d177ca
 
-pkgname = libreoffice-dev-is-bin
+pkgname = libreoffice-dev-it-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_it.tar.gz
 	sha256sums_i686 = 0eda312d9b633d9fc4fac5b326d1f7201f1edf4d94a306e7f633797044799aee
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_it.tar.gz
 	sha256sums_x86_64 = 51266d4c991f61d2a946bd2add28b0ba403b98cf289b872182acd4792a6ef610
 
-pkgname = libreoffice-dev-it-bin
+pkgname = libreoffice-dev-ja-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_ja.tar.gz
 	sha256sums_i686 = cdd961efc7444e603b31796e574842f11badca7929299ac11487643ae3bb6b00
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_ja.tar.gz
 	sha256sums_x86_64 = ea216a2c29270697033bd4ed435c04087aa0ceb737a76fc9ff899addbd12e62c
 
-pkgname = libreoffice-dev-ja-bin
+pkgname = libreoffice-dev-kk-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_kk.tar.gz
 	sha256sums_i686 = 666746816422bdfc6f572da93504dfe08239c5b6056f9881d5a6e5ab83ab8f90
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_kk.tar.gz
 	sha256sums_x86_64 = ff5d862ad16dc0f9a9cd84fb74f80deec7d35732ccdf090248f8c1a8b0fff5ef
 
-pkgname = libreoffice-dev-kk-bin
+pkgname = libreoffice-dev-km-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_km.tar.gz	
 	sha256sums_i686 = 0af0d4496b5f8240d54eb367c4e3c1a8dfc215bba8e2a5aed684662c11fea9fb
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_km.tar.gz
 	sha256sums_x86_64 = 8ceab50b6939f0c596c7f6ffe92a295876ec32fc857a5900a4c4eb1443f3d1f2
 
-pkgname = libreoffice-dev-km-bin
+pkgname = libreoffice-dev-kn-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_kn.tar.gz
 	sha256sums_i686 = 4ba0fe6ea6864dccdf7f6376966275051e88c4cba88b3eb9a29935082f0ca036
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_kn.tar.gz
 	sha256sums_x86_64 = 4912238baa88feda8701fd751ab91e1af110d007f1e23d2c7b07d5ad03f9faf1
 
-pkgname = libreoffice-dev-kn-bin
+pkgname = libreoffice-dev-ko-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_ko.tar.gz
 	sha256sums_i686 = 872b08db5946d2bdb5f6d38fc82f7316e3ee42fb19e2762a2ca0a994ee432356
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_ko.tar.gz
 	sha256sums_x86_64 = b1ef4c1a64ed3e4cc83a1966a32d22176d4446c902f229448e85db85129f2eff
 
-pkgname = libreoffice-dev-ko-bin
+pkgname = libreoffice-dev-lt-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_lt.tar.gz
 	sha256sums_i686 = 9f3e4b444dc0515f28bc9bbd8271d0dba8e2fb4e40e699d44fc6d5baf6bb648a
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_lt.tar.gz
 	sha256sums_x86_64 = 04a90eae57b546de675e36bc4009677aa9d46019dff68191de4316e338cac717
 
-pkgname = libreoffice-dev-lt-bin
+pkgname = libreoffice-dev-lv-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_lv.tar.gz
 	sha256sums_i686 = a77e9cc55dc7e95a77659eca2ed557f24317374e76f07c7a249c694f054d4ec0
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_lv.tar.gz
 	sha256sums_x86_64 = 0b55f7c76aa31cf1f17446df382e3654291a182dab4673d1a7397c739f305bc7
 
-pkgname = libreoffice-dev-lv-bin
+pkgname = libreoffice-dev-mai-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_mai.tar.gz
 	sha256sums_i686 = 389b1e26bd229877d9c63449917a8207d56b0757bda57b1c50f20b866cf02b33
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_mai.tar.gz
 	sha256sums_x86_64 = 4148d8ffb0691ee49d136ddbc3a406ae8f9efd6ad947c35cbff80870fed482c8
 
-pkgname = libreoffice-dev-mai-bin
+pkgname = libreoffice-dev-mk-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_mk.tar.gz
 	sha256sums_i686 = 0877159f59409f00471d87606558e217c5a6a488fc0f8ff21c68d022ae7710d9
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_mk.tar.gz
 	sha256sums_x86_64 = a1f0f6c1a32fe190b87c4a4695fef565753eaa9ef9443bdf4c871601aff27bfc
 
-pkgname = libreoffice-dev-mk-bin
+pkgname = libreoffice-dev-ml-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_ml.tar.gz
 	sha256sums_i686 = 3ca2d8d01a28957fea4bf498ba0f01925b3af5b590d70fdeada7162b54c76b7d
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_ml.tar.gz
 	sha256sums_x86_64 = d925c26b5c6bfb4eb67c61116c6e678dc05b03fe8448702eb1ae67b98092b3b3
 
-pkgname = libreoffice-dev-ml-bin
+pkgname = libreoffice-dev-mr-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_mr.tar.gz
 	sha256sums_i686 = e2598d030e9a2d5c39c57f59b19d62810da8e344765fa2d0e634f26815af5f40
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_mr.tar.gz
 	sha256sums_x86_64 = 0925ccf1505ff535f85a50df41c9dd42dea75c89ad5f0dd4c3c62d57c5ad344a
 
-pkgname = libreoffice-dev-mr-bin
+pkgname = libreoffice-dev-nl-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_nl.tar.gz
 	sha256sums_i686 = 5593fa5c04a539d30c03a8aba4a1eaa025576e19fdc28af5873592182abbdc49
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_nl.tar.gz
 	sha256sums_x86_64 = 91c77b8e53552b96f2a615d3eb3cfa452ee77d64bd173935dc5d1fa06bc11dd3
 
-pkgname = libreoffice-dev-nl-bin
+pkgname = libreoffice-dev-or-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_or.tar.gz
 	sha256sums_i686 = f55bfeabcf37c129062705c50a248acd02aecc5b9ce47234c9cf030cf9df4316
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_or.tar.gz
 	sha256sums_x86_64 = a22a53070519f8fb7bbb0aa91d61c6880064b5ff55924b076c50a0366c848aa5
 
-pkgname = libreoffice-dev-or-bin
+pkgname = libreoffice-dev-pa-in-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_pa-IN.tar.gz
 	sha256sums_i686 = bb5e51708beda15af45cb348cccf75224b4654d88adc810f8c6e323a155c2430
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_pa-IN.tar.gz
 	sha256sums_x86_64 = 407dcfd00fa2f48b0831edaff971c25b34b86c2f6631b5fc4e4c86963756a5cb
 
-pkgname = libreoffice-dev-pa-in-bin
+pkgname = libreoffice-dev-pl-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_pl.tar.gz
 	sha256sums_i686 = d223bb8f436658e29a7eb9b10735f598c6e0151b5fef2375a3cc86d79ada06bc
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_pl.tar.gz
 	sha256sums_x86_64 = bf1d49197d962feb2c425941056bb2b21506c01864d2108d2337c30aeb5ccf0f
 
-pkgname = libreoffice-dev-pl-bin
+pkgname = libreoffice-dev-pt-br-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_pt-BR.tar.gz
 	sha256sums_i686 = b09caa741a5f7f506742cb5db35158563483300683f91ae0006e8d70208b3114
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_pt-BR.tar.gz
 	sha256sums_x86_64 = 73b2ab1395df5ce6d0a908fc0c9cf58a5a7a3a5b423005478dff1a2e47a5a95d
 
-pkgname = libreoffice-dev-pt-br-bin
+pkgname = libreoffice-dev-pt-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_pt.tar.gz
 	sha256sums_i686 = 28f30fb3d761b9d9a1481838e4e230a26fcd60f37af563285158a903ed6a02e8
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_pt.tar.gz
 	sha256sums_x86_64 = c04292f4e7ba747e3e901d47a1edb63908b2d187664cf8201368daad8f47eaea
 
-pkgname = libreoffice-dev-pt-bin
+pkgname = libreoffice-dev-ro-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_ro.tar.gz
 	sha256sums_i686 = 556c1e585eefad9cf9648034943370cc36ca318dcd669e309158753019c2fad1
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_ro.tar.gz
 	sha256sums_x86_64 = 1ef8ccf6d280d30829b97ef7a69459c5315270b98f464ffdd62c1c88e7d390f3
 
-pkgname = libreoffice-dev-ro-bin
+pkgname = libreoffice-dev-ru-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_ru.tar.gz
 	sha256sums_i686 = 70c883eb49385effa66246f5e069b0abb8dda598614723baedc9069627b84453
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_ru.tar.gz
 	sha256sums_x86_64 = 034c7eca0b84f4b252b53919987745772568ceb80514d89459f9bd7ec8c730fd
 
-pkgname = libreoffice-dev-ru-bin
+pkgname = libreoffice-dev-si-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_si.tar.gz
 	sha256sums_i686 = c1ef0a6833e30ec706eb022d158ac93842fa85c11109fe5c98dbb0b185dbead3
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_si.tar.gz
 	sha256sums_x86_64 = 28546b171d424927df52e9cd3a075e8e8a93b4af1e5fc98f8a67ac063f091c7b
 
-pkgname = libreoffice-dev-si-bin
+pkgname = libreoffice-dev-sk-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_sk.tar.gz
 	sha256sums_i686 = f1a4933cb6f83b264c6715a326a7f36adc2f60524262283601b3ea6e795155e7
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_sk.tar.gz
 	sha256sums_x86_64 = 8d5be2b1d33b288e1a5b7f9900fbde8e386decda4daf5c6735bb5ef9905933a3
 
-pkgname = libreoffice-dev-sk-bin
+pkgname = libreoffice-dev-sl-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_sl.tar.gz
 	sha256sums_i686 = bd7bec790a8c5b99d7a2ba74ba3c858b8b145c5bc42e93afa37cd07422bbab11
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_sl.tar.gz
 	sha256sums_x86_64 = 023982d70c2b0836157076550dee6c8581e863e1973d539740535e1e2056d0fd
 
-pkgname = libreoffice-dev-sl-bin
+pkgname = libreoffice-dev-sq-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_sq.tar.gz
 	sha256sums_i686 = 154ed52c7019e2681b6f6291032c55cba82760968560d3be6f904a9f62dd1c15
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_sq.tar.gz
 	sha256sums_x86_64 = 14f1508bda6a26575456c8f11ad7a54c8e95de20bdf7d137cac01713ede1db6b
 
-pkgname = libreoffice-dev-sq-bin
+pkgname = libreoffice-dev-sr-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_sr.tar.gz
 	sha256sums_i686 = 633160c29ca89dca5fd0ca7ab714bccd8dfbc024c4d2bba9dfb3a1289c8f0170
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_sr.tar.gz
 	sha256sums_x86_64 = a4232781bfd60b4a9ec9267992a58c98205623f05f43d41d1fa3cf36dbb69759
 
-pkgname = libreoffice-dev-sr-bin
+pkgname = libreoffice-dev-ta-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_ta.tar.gz
 	sha256sums_i686 = 1abfa827007683fa620ee24a8682856ac063a72b1d3099d71acac8f42afebfcf
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_ta.tar.gz
 	sha256sums_x86_64 = 8173c83bfeb5599110b518a9a8d17beeea07b4db8a370dd94493f8390485acee
 
-pkgname = libreoffice-dev-ta-bin
+pkgname = libreoffice-dev-te-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_te.tar.gz
 	sha256sums_i686 = 1b277cff2d625c33cd50f37872df8c5a13e3f1a7e2d824b3b49c70b0758d75c4
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_te.tar.gz
 	sha256sums_x86_64 = 115c8df1509f1eee041b4ce6783b85577145f8a8078945f3e559c87f110ddc68
 
-pkgname = libreoffice-dev-te-bin
+pkgname = libreoffice-dev-th-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_th.tar.gz
 	sha256sums_i686 = e57737af87755dbbd3e0f03322d99a69f68b4803f37053cd297590dcf5a395a3
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_th.tar.gz
 	sha256sums_x86_64 = 057c9ccb1056b4af5f00cfa0f0251a3f38f3500d8af32c8a62036ef63e362786
 
-pkgname = libreoffice-dev-th-bin
+pkgname = libreoffice-dev-tr-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_tr.tar.gz
 	sha256sums_i686 = 9e8dd8e277483498f5d2240ecece51c77d95853b1bc9883df4b62e4f58a89b0e
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_tr.tar.gz
 	sha256sums_x86_64 = 5797c25be3d9a5fd0b12f032db48c1d06541a55a5c43b131e3d9c5c15422205b
 
-pkgname = libreoffice-dev-tr-bin
+pkgname = libreoffice-dev-uk-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_uk.tar.gz
 	sha256sums_i686 = 890d45a40147a5aa7e8c12f7a8156e43cafb2ea8aa051b585e87c9345d511536
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_uk.tar.gz
 	sha256sums_x86_64 = 4301eb89555af63afe15e56bbfdb0c78514197ecfbe45fe0e940f6b8de71ba94
 
-pkgname = libreoffice-dev-uk-bin
+pkgname = libreoffice-dev-uz-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_uz.tar.gz
 	sha256sums_i686 = 03b24010a4279f287612d747e7c9ac3127915d61d7e99dbd1a4d0f687a3ac99a
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_uz.tar.gz
 	sha256sums_x86_64 = ceb63a3410a61da5f1553775f34cf9dd602e24035f2451255f354436e7dafacc
 
-pkgname = libreoffice-dev-uz-bin
+pkgname = libreoffice-dev-vi-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_vi.tar.gz
 	sha256sums_i686 = a31a1b9dacf134d6ad4baf8c6ddffdd6d6924bbe014f4643122736b415251f46
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_vi.tar.gz
 	sha256sums_x86_64 = 01680a7ba51032605d5884b6030bba86aec31a1ceb4fc2ebfd016bb2398b979f
 
-pkgname = libreoffice-dev-vi-bin
+pkgname = libreoffice-dev-xh-bin
 
 	source_i686 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86/LibreOffice_5.3.0.3_Linux_x86_rpm_langpack_xh.tar.gz
 	sha256sums_i686 = 37ddad22eb02eb5f28225bccd81e9903beaa59fde79bfa928cfdc533d3ff2be5
 	source_x86_64 = http://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOffice_5.3.0.3_Linux_x86-64_rpm_langpack_xh.tar.gz
 	sha256sums_x86_64 = 5769967f9739d817208990c675094e74215a3861c6ee21a425b468889b5a55e2
 
-pkgname = libreoffice-dev-xh-bin
+
 
