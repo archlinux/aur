@@ -1,7 +1,7 @@
 # Maintainer: heliary <rydesun@gmail.com>
 
 pkgname=fcitx-table-flypy
-pkgver=0.1.0
+pkgver=r3.a50884f
 pkgrel=1
 pkgdesc='XiaoHe shuangpin table for fcitx, also known as flypy or xhup.'
 arch=('any')
@@ -17,7 +17,8 @@ pkgver() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
+  mkdir -p "$pkgdir/usr/share/fcitx/table"
   install -Dm644 flypy.conf flypy.mb "$pkgdir/usr/share/fcitx/table"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
