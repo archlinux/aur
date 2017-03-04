@@ -45,7 +45,11 @@ build() {
     	--with-libxpm=builtin \
     	--with-libjpeg=sys \
     	--with-libtiff=sys"
-  
+
+  # Fix for current libuuid.a issues
+  # see: https://github.com/Alexpux/MINGW-packages/issues/1761
+  _build_flags="${_build_flags} LDFLAGS=-Wl,--allow-multiple-definition"
+
   cd "${srcdir}/wxWidgets-${pkgver}"
   for _arch in ${_architectures}; do
     # shared build
