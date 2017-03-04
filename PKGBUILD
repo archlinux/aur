@@ -144,7 +144,7 @@ pkgver() {
 prepare() {
     cd "${srcdir}/${_pkgname}"
 
-    # Anything added here should also be pruned in _install_licenses() above.
+    # Anything added here and packaged separately should be pruned in _install_licenses() above.
     svn export --force "${srcdir}/clang" tools/clang
     svn export --force "${srcdir}/clang-tools-extra" tools/clang/tools/extra
     svn export --force "${srcdir}/compiler-rt" projects/compiler-rt
