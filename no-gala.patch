@@ -1,0 +1,92 @@
+--- src/slingshot-launcher/src/Settings.vala	2016-10-22 01:14:50.852071000 +0900
++++ src/slingshot-launcher/src/Settings.vala.new	2016-10-22 01:38:34.730649444 +0900
+@@ -18,14 +18,14 @@
+ 
+ public class Slingshot.Settings : Granite.Services.Settings {
+ 
+-    protected class GalaSettings : Granite.Services.Settings {
++    /* protected class GalaSettings : Granite.Services.Settings {
+ 
+         public string hotcorner_topleft { get; set; }
+ 
+         public GalaSettings () {
+             base ("org.pantheon.desktop.gala.behavior");
+         }
+-    }
++    } */
+ 
+     public int columns { get; set; }
+     public int rows { get; set; }
+@@ -33,11 +33,11 @@
+     public bool show_category_filter { get; set; }
+     public bool use_category { get; set; }
+     public string screen_resolution { get; set; }
+-    public GalaSettings gala_settings;
++    //public GalaSettings gala_settings;
+ 
+     public Settings () {
+         base ("org.pantheon.desktop.slingshot");
+-        gala_settings = new GalaSettings ();
++        //gala_settings = new GalaSettings ();
+     }
+ 
+ }
+--- src/slingshot-launcher/src/SlingshotView.vala	2016-10-22 01:14:50.852071000 +0900
++++ src/slingshot-launcher/src/SlingshotView.vala.new	2016-10-22 01:45:08.158106647 +0900
+@@ -51,7 +51,7 @@
+         public Gee.HashMap<string, Gee.ArrayList<Backend.App>> apps;
+ 
+         private Modality modality;
+-        private bool can_trigger_hotcorner = true;
++        //private bool can_trigger_hotcorner = true;
+ 
+         private Backend.SynapseSearch synapse;
+ 
+@@ -216,7 +216,7 @@
+             debug ("Ui setup completed");
+         }
+ 
+-        private bool hotcorner_trigger (Gdk.EventMotion event) {
++        /* private bool hotcorner_trigger (Gdk.EventMotion event) {
+             if (can_trigger_hotcorner && event.x_root <= 0 && event.y_root <= 0) {
+                 Gdk.Display.get_default ().get_device_manager ().get_client_pointer ().ungrab (event.time);
+                 can_trigger_hotcorner = false;
+@@ -224,7 +224,7 @@
+                 can_trigger_hotcorner = true;
+             }
+             return false;
+-        }
++        } */
+ 
+         private void connect_signals () {
+             this.focus_in_event.connect (() => {
+@@ -278,11 +278,11 @@
+             });
+ 
+             // check for change in gala settings
+-            Slingshot.settings.gala_settings.changed.connect (gala_settings_changed);
++            /* Slingshot.settings.gala_settings.changed.connect (gala_settings_changed);
+             gala_settings_changed ();
+ 
+             // hotcorner management
+-            motion_notify_event.connect (hotcorner_trigger);
++            motion_notify_event.connect (hotcorner_trigger); */
+         }
+ 
+ #if HAS_PLANK_0_11
+@@ -318,13 +318,13 @@
+         }
+ #endif
+ 
+-        private void gala_settings_changed () {
++        /* private void gala_settings_changed () {
+             if (Slingshot.settings.gala_settings.hotcorner_topleft == "open-launcher") {
+                 can_trigger_hotcorner = true;
+             } else {
+                 can_trigger_hotcorner = false;
+             }
+-        }
++        } */
+ 
+         private void change_view_mode (string key) {
+             switch (key) {
