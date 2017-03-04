@@ -2,8 +2,8 @@
 # Contributor: Bastien Dejean <nihilhill@gmail.com>
 
 pkgname=owlman
-pkgver=0.7
-pkgrel=5
+pkgver=0.8
+pkgrel=1
 pkgdesc='A pacman and cower wrapper focused on simplicity'
 arch=('any')
 url="https://github.com/baskerville/${pkgname}"
@@ -12,8 +12,8 @@ depends=('cower' 'expac')
 optdepends=('abs: for the *abs* action')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("https://github.com/baskerville/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('def17a2c59c076402b2dd66e4c9c9c92')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/baskerville/${pkgname}/archive/${pkgver}.tar.gz")
+md5sums=('4836766bd3d6e20b7fdfa3c1a092e530')
 
 package() {
     cd "${pkgname}-${pkgver}"
