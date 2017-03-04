@@ -3,7 +3,6 @@
 pkgname=poi
 _pkgname=poi
 pkgver=7.4.1.0.gf6a1fc73
-_pkgver=7.4.1
 pkgrel=1
 pkgdesc="Scalable KanColle browser and tool"
 arch=('any')
@@ -13,12 +12,17 @@ depends=('electron' 'sh')
 makedepends=('git' 'npm' 'coreutils' 'findutils' 'sed' 'imagemagick' 'tar' 'zlib' 'unzip' 'gulp')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+https://github.com/poooi/poi.git#tag=v${_pkgver}"
+source=("git+https://github.com/poooi/poi.git"
         "${_pkgname}.desktop"
         "${_pkgname}.sh")
 sha1sums=('SKIP'
           '0578634a64fbb2de2fd35555471a761231a3dc94'
           '321cecdb8f68fb087dfcaa1233ae5ce784095029')
+
+prepare() {
+    cd ${srcdir}/${pkgname}
+    git checkout -f $(git describe --tags $(git rev-list --tags --max-count=1))
+}
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
