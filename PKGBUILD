@@ -18,8 +18,8 @@ source=(
   "http://downloads.sourceforge.net/wxwindows/wxWidgets-${pkgver}.tar.bz2"
   'PR222.patch' # https://github.com/wxWidgets/wxWidgets/pull/222
 )
-sha1sums=('6461eab4428c0a8b9e41781b8787510484dea800'
-          '118ca9fb5c299a118e0c87a0cc18a98e5030077b')
+sha256sums=('346879dc554f3ab8d6da2704f651ecb504a22e9d31c17ef5449b129ed711585d'
+            'aa13c5ce05e9cadea464d09c7a49de51f66db6c3f1871edc533230a51948ee0f')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
