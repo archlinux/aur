@@ -1,6 +1,6 @@
 pkgbase = xmpp-console-git
 	pkgdesc = XMPP console
-	pkgver = r2127.3375777
+	pkgver = r2130.db9eb0d
 	pkgrel = 1
 	url = https://github.com/node-xmpp/node-xmpp/tree/master/packages/console
 	arch = any
