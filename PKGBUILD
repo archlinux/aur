@@ -4,7 +4,7 @@
 set -u
 _pkgname='libgxps'
 pkgname='libgxps-git'
-pkgver=0.2.4.r0.ga4ef10a
+pkgver=0.2.5.r0.gac54305
 pkgrel=1
 pkgdesc='An XPS Documents library'
 arch=('i686' 'x86_64')
