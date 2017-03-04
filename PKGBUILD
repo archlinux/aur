@@ -2,7 +2,7 @@
 
 # To install, run `makepkg -is`
 
-pkgname=ulauncher
+pkgname=ulauncher-git
 pkgver=2.0.28
 pkgrel=1
 pkgdesc='Application launcher for Linux'
