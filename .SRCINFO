@@ -1,6 +1,6 @@
 pkgbase = fcitx-table-flypy
 	pkgdesc = XiaoHe shuangpin table for fcitx, also known as flypy or xhup.
-	pkgver = r3.a50884f
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = http://www.flypy.com
 	arch = any
