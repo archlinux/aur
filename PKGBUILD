@@ -1,24 +1,24 @@
-pkgbase=('python-fastentrypoints')
-pkgname=('python-fastentrypoints')
-_module='fastentrypoints'
-pkgver='0.4'
+pkgbase=('pyfil')
+pkgname=('pyfil')
+_module='pyfil'
+pkgver='0.9'
 pkgrel=1
-pkgdesc="Makes entry_points specified in setup.py load more quickly"
-url="https://github.com/ninjaaron/fast-entry_points"
+pkgdesc="Python one-liners in the shell in the spirit of Perl and AWK"
+url="https://github.com/ninjaaron/pyfil"
 depends=('python')
 makedepends=('python-pip' 'python-wheel')
 license=('BSD')
 arch=('any')
-source=("https://pypi.python.org/packages/d1/88/e43cabf42ba4916e9cf13eaed5011350a028810cf8ce19bb7e87fa611694/fastentrypoints-0.4.tar.gz")
-md5sums=('08d34e22d5134b9af2e7a74f105e7957')
+source=("https://pypi.python.org/packages/22/db/99542e145c97161c25759f0cd2d575189e2ca8e959ba2914c09ff1d528c7/pyfil-1.3.tar.gz")
+md5sums=('c7051f70d1c9b707d5ad824dd0a9d68a')
 
 build() {
-    cd "${srcdir}/fastentrypoints-0.4"
+    cd "${srcdir}/pyfil-1.3"
     pip3 wheel .
 }
 
 package() {
     depends+=()
-    cd "${srcdir}/fastentrypoints-0.4"
-    pip3 install --ignore-installed --root="${pkgdir}" "fastentrypoints"*.whl
+    cd "${srcdir}/pyfil-1.3"
+    pip3 install --ignore-installed --root="${pkgdir}" "pyfil"*.whl
 }
