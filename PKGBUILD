@@ -21,8 +21,7 @@ arch=('i686' 'x86_64')
 depends=('expat' 'gcc-libs' 'gdal' 'geos' 'glibc' 'libspatialite' 'postgresql-libs' 'proj'
          'qca-qt4' 'qscintilla-qt4' 'qt4' 'qtwebkit' 'qwt' 'qwtpolar' 'spatialindex' 'sqlite'
          'python2' 'python2-httplib2' 'python2-qscintilla-qt4' 'python2-sip' 'python2-six')
-makedepends=('cmake' 'gsl' 'perl' 'txt2tags'
-             'sip<4.19.1' 'python2-sip<4.19.1' 'pyqt4-common<4.12-4' 'python2-pyqt4<4.12-4')
+makedepends=('cmake' 'gsl' 'perl' 'txt2tags')
 optdepends=('gpsbabel: GPS Tool plugin'
             'gsl: Georeferencer plugin'
             'python2-jinja: MetaSearch plugin'
@@ -36,11 +35,21 @@ optdepends=('gpsbabel: GPS Tool plugin'
             'python2-yaml: Processing plugin')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2")
-md5sums=('b1e7709497d6229381d694fa8f3f43a3')
+source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
+        "https://github.com/qgis/QGIS/commit/2efb2a38f10a5f6c4f46266dbc86a302f2e5d373.patch"
+        "https://github.com/qgis/QGIS/commit/beb55d19b17427eda275fb980530eedb35818d3f.patch")
+md5sums=('b1e7709497d6229381d694fa8f3f43a3'
+         '7e8b670f389360e648be3784d312160b'
+         'fc2153de4ed6a93a1bf1a1d80f278030')
 
 prepare() {
   cd $_pkgname-$pkgver
+
+  # Fix build with sip 4.19.1
+  patch -Np1 < ../2efb2a38f10a5f6c4f46266dbc86a302f2e5d373.patch
+
+  # Find new QScintilla lib name
+  patch -Np1 < ../beb55d19b17427eda275fb980530eedb35818d3f.patch
 
   # Fix references to "python"
   sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")

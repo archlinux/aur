@@ -10,10 +10,6 @@ pkgbase = qgis-ltr
 	makedepends = gsl
 	makedepends = perl
 	makedepends = txt2tags
-	makedepends = sip<4.19.1
-	makedepends = python2-sip<4.19.1
-	makedepends = pyqt4-common<4.12-4
-	makedepends = python2-pyqt4<4.12-4
 	depends = expat
 	depends = gcc-libs
 	depends = gdal
@@ -49,7 +45,11 @@ pkgbase = qgis-ltr
 	provides = qgis=2.14.12
 	conflicts = qgis
 	source = https://qgis.org/downloads/qgis-2.14.12.tar.bz2
+	source = https://github.com/qgis/QGIS/commit/2efb2a38f10a5f6c4f46266dbc86a302f2e5d373.patch
+	source = https://github.com/qgis/QGIS/commit/beb55d19b17427eda275fb980530eedb35818d3f.patch
 	md5sums = b1e7709497d6229381d694fa8f3f43a3
+	md5sums = 7e8b670f389360e648be3784d312160b
+	md5sums = fc2153de4ed6a93a1bf1a1d80f278030
 
 pkgname = qgis-ltr
 
