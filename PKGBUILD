@@ -16,20 +16,20 @@ source=("git+https://github.com/nukesor/pueue.git")
 sha256sums=('SKIP')
 
 package() {
-  cd "${_gitname}"
+    cd "${_gitname}"
 
-  # We don't need anything related to git in the package
-  rm -rf .git*
+    # We don't need anything related to git in the package
+    rm -rf .git*
 
-  # Install
-  python setup.py install --optimize=1 --root="${pkgdir}"
+    # Install
+    python setup.py install --optimize=1 --root="${pkgdir}"
 
-  # Place systemd user service
-  install -Dm644 "utils/${_gitname}.service" "${pkgdir}/usr/lib/systemd/user/${_gitname}.service"
+    # Place systemd user service
+    install -Dm644 "utils/${_gitname}.service" "${pkgdir}/usr/lib/systemd/user/${_gitname}.service"
 
-  # Install zsh completions file
-  install -Dm644 "utils/_pueue" "${pkgdir}/usr/share/zsh/site-functions/_pueue"
+    # Install zsh completions file
+    install -Dm644 "utils/_pueue" "${pkgdir}/usr/share/zsh/site-functions/_pueue"
 
-  # Install License
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # Install License
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
