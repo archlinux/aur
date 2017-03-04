@@ -1,0 +1,33 @@
+--- autotrace-0.31.1.orig/configure.in
++++ autotrace-0.31.1/configure.in
+@@ -282,8 +300,12 @@ AC_CHECK_LIB(dl,main,[LIBLD_LDFLAGS=-ldl
+ if test "x${LIBLD_LDFLAGS}" != x; then
+    LIBPSTOEDIT_EXTRA_LIBS="${LIBPSTOEDIT_EXTRA_LIBS} ${LIBLD_LDFLAGS}"
+ fi
+-
+-echo '*** Checking pstoedit existence TWICE(if needed) ***'
++        
++echo '*** Checking pstoedit existence THRICE(if needed)***'
++echo '*** This is the 0th check                        ***'
++PKG_CHECK_MODULES(LIBPSTOEDIT,[pstoedit >= 3.32.1],HAVE_LIBPSTOEDIT_321=yes)
++if test ${HAVE_LIBPSTOEDIT_321} != yes; then
++   echo '*** The 0th check failed                         ***'
+ echo '*** This is the 1st check                        ***'
+ AM_PATH_PSTOEDIT(3.32.1,HAVE_LIBPSTOEDIT_321=yes)
+ if test ${HAVE_LIBPSTOEDIT_321} != yes; then
+@@ -310,6 +332,15 @@ else
+ 	LIBPSTOEDIT_LIBS="${PSTOEDIT_LIBS} ${LIBPSTOEDIT_EXTRA_LIBS}"	
+ 	LIBPSTOEDIT_CFLAGS="${PSTOEDIT_CFLAGS}"
+ fi
++else
++        echo '*** The 0th check is passed.                     ***'
++	HAVE_LIBPSTOEDIT=yes
++
++       # Workaround for https://bugzilla.redhat.com/show_bug.cgi?id=1415258
++       LIBPSTOEDIT_LIBS="${LIBPSTOEDIT_LIBS/@LIBPNG_LDFLAGS@/-lpng}"
++
++	AC_DEFINE(HAVE_LIBPSTOEDIT)
++fi
+ 
+ if test ${HAVE_LIBPSTOEDIT} = yes; then
+ 	AC_CHECK_FUNCS([mkstemp])
