@@ -1,0 +1,22 @@
+pkgbase = gtypist-single-space
+	pkgdesc = universal typing tutor with single spaces after sentences in lessons.
+	pkgver = 2.9.5
+	pkgrel = 3
+	url = https://github.com/inaimathi/gtypist-single-space
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = emacs
+	depends = ncurses
+	depends = perl
+	provides = gtypist
+	conflicts = gtypist
+	source = ftp://ftp.gnu.org/gnu/gtypist/gtypist-2.9.5.tar.gz
+	source = https://github.com/inaimathi/gtypist-single-space/archive/f3b67b6d229a1d8c7bf0b3151eba51a885a25185.zip
+	source = ncurses.patch
+	md5sums = 6098c32890f2437384b5efe4e993fb32
+	md5sums = 492c92eb0917ec3b39567c2a9cb87514
+	md5sums = a836141e70941b7e0d3477bc8ecdecdf
+
+pkgname = gtypist-single-space
+
