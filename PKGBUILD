@@ -4,7 +4,7 @@
 
 pkgname=sunvox
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Small, fast and powerful modular synthesizer with pattern-based sequencer (tracker)."
 arch=('i686' 'x86_64')
 url="http://warmplace.ru/soft/sunvox/"
@@ -38,5 +38,6 @@ package() {
 
 	cp -a "${srcdir}/sunvox/examples" "${pkgdir}/opt/${pkgname}/examples"
 	cp -a "${srcdir}/sunvox/instruments" "${pkgdir}/opt/${pkgname}/instruments"
+	cp -a "${srcdir}/sunvox/effects" "${pkgdir}/opt/${pkgname}/effects"
 	install -Dm644 "${srcdir}/sunvox/docs/license.txt"  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
