@@ -63,9 +63,9 @@ build() {
       find ./src/qmldevtools -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5Bootstrap|-L/usr/lib /usr/$_arch/lib/libQt5Bootstrap.so|g" {} \;
       find . -type f -iname 'Makefile' -exec sed -i "s|-L$PWD/lib -L/usr/$_arch/lib -lQt5Bootstrap|-L/usr/lib -L$PWD/lib /usr/$_arch/lib/libQt5Bootstrap.so|g" {} \;
       find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5Bootstrap|-L/usr/lib /usr/$_arch/lib/libQt5Bootstrap.so|g" {} \;
-      find . -type f -iname 'Makefile' -exec sed -i "s|-L$PWD/lib -lQt5QmlDevTools|-L/usr/lib -L$PWD/lib /usr/$_arch/lib/libQt5QmlDevTools.so|g" {} \;
-      find . -type f -iname 'Makefile' -exec sed -i "s|-lQt5QmlDevTools|-L/usr/lib /usr/$_arch/lib/libQt5QmlDevTools.so|g" {} \;
-
+      [ ${_config##*=} == 'shared' ] && local _ext='so' || local _ext='a'
+      find . -type f -iname 'Makefile' -exec sed -i "s|-L$PWD/lib -lQt5QmlDevTools|-L/usr/lib -L$PWD/lib ${srcdir}/${_pkgfqn}/build-${_arch}-${_config##*=}/lib/libQt5QmlDevTools.${_ext}|g" {} \;
+      find . -type f -iname 'Makefile' -exec sed -i "s|-lQt5QmlDevTools|-L/usr/lib ${srcdir}/${_pkgfqn}/build-${_arch}-${_config##*=}/lib/libQt5QmlDevTools.${_ext}|g" {} \;
       make
       popd
     done
