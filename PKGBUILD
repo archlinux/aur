@@ -3,7 +3,7 @@ _npmname=vault-pki-client
 _npmver=1.0.2
 pkgname=vault-pki-client # All lowercase
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Tool to manage a keypair provided by HashiCorp Vault"
 arch=(any)
 url="https://github.com/issacg/vault-pki-client#readme"
@@ -17,7 +17,7 @@ sha1sums=(84e411e7b1fbcd2bd320b6a2b8d8d4b39394251b)
 package() {
   cd $srcdir
   local _npmdir="$pkgdir/usr/lib/node_modules/"
-  export NPM_CONFIG_PREFIX="/usr"
+  local HOME=$pkgdir
   mkdir -p $_npmdir
   cd $_npmdir
   npm install -g --user root --prefix "$pkgdir/usr" $_npmname@$_npmver
