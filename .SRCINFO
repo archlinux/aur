@@ -1,0 +1,13 @@
+pkgbase = bsa-analytics-git
+	pkgdesc = PRAO BSA telescope data viewer, pulsar searching & analytics software
+	pkgver = 20170304
+	pkgrel = 1
+	url = https://github.com/vtyulb/BSA-Analytics
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt5-base
+
+pkgname = bsa-analytics-git
+
