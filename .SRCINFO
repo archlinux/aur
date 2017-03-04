@@ -1,0 +1,17 @@
+pkgbase = vim-airline-nord-git
+	pkgdesc = A arctic, north-bluish clean and elegant Vim airline theme.
+	pkgver = r51.05d536f
+	pkgrel = 1
+	url = https://github.com/arcticicestudio/nord-vim
+	arch = any
+	groups = vim-plugins
+	license = Apache
+	makedepends = git
+	depends = vim
+	depends = vim-airline
+	provides = vim-airline-nord-git
+	source = vim-airline-nord-git::git+https://github.com/arcticicestudio/nord-vim.git
+	md5sums = SKIP
+
+pkgname = vim-airline-nord-git
+
