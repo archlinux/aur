@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=zcash
-pkgver=1.0.6
-pkgrel=2
+pkgver=1.0.7
+pkgrel=1
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://z.cash/'
@@ -13,8 +13,8 @@ checkdepends=('python' 'python2' 'python2-pyzmq')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zcash/zcash/archive/v${pkgver}.tar.gz"
         "boost-no-mt-suffix.patch"
         "use-system-libraries.patch")
-sha256sums=('7073068e9501910534be25634ce0bf73258cd0bcdf244d555dbfd9450d556d8a'
-            '55ebbffa2daf4a59135dc7b58b9553da21456934e676d6c08d4930bd14817c06'
+sha256sums=('6254709ed0df4b635759158c46313206ab1d3ba6f96db0de94883223063c6ce4'
+            '19c1a2f5f6623977c740322b0eb104766c72c5690fcf2bfefab956c81e80e583'
             'ef8ab26635bb2608f03ddf991da3581060670161938171fa2e413758fa4bad3f')
 
 prepare() {
