@@ -1,7 +1,7 @@
 pkgbase = catalyst-total-hd234k
 	pkgdesc = AMD/ATI legacy drivers. catalyst-dkms+ catalyst-utils + lib32-catalyst-utils
 	pkgver = 13.1
-	pkgrel = 39
+	pkgrel = 40
 	url = http://www.amd.com
 	install = catalyst-total-hd234k.install
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = catalyst-total-hd234k
 	license = custom
 	depends = dkms
 	depends = linux>=3.0
-	depends = linux<4.9
+	depends = linux<4.11
 	depends = linux-headers
 	depends = xorg-server>=1.7.0
 	depends = xorg-server<1.13.0
@@ -23,7 +23,7 @@ pkgbase = catalyst-total-hd234k
 	depends = make
 	depends = patch
 	depends = libxinerama
-	depends = mesa>=10.1.0-4
+	depends = mesa
 	optdepends = qt4: to run ATi Catalyst Control Center (amdcccle)
 	optdepends = libxxf86vm: to run ATi Catalyst Control Center (amdcccle)
 	optdepends = opencl-headers: headers necessary for OpenCL development
@@ -40,6 +40,8 @@ pkgbase = catalyst-total-hd234k
 	provides = dri
 	provides = libtxc_dxtn
 	provides = opencl-driver
+	provides = libgles
+	provides = libegl
 	conflicts = libgl
 	conflicts = xf86-video-ati
 	conflicts = xf86-video-radeonhd
@@ -51,6 +53,11 @@ pkgbase = catalyst-total-hd234k
 	conflicts = catalyst-generator
 	conflicts = catalyst-dkms
 	conflicts = catalyst-utils
+	conflicts = mesa-libgl
+	conflicts = mesa-libgl-git
+	conflicts = libgles
+	conflicts = libegl
+	conflicts = opencl-amd
 	options = staticlibs
 	options = libtool
 	options = !strip
@@ -88,6 +95,8 @@ pkgbase = catalyst-total-hd234k
 	source = makesh-dont-check-gcc-version.patch
 	source = makesh-src_file.patch
 	source = 4.7-cpu_has_pge-hd234k.patch
+	source = 4.9_over_4.6-arch-get_user_pages_remote-hd234k.patch
+	source = 4.10-arch-sling00-virtual_address-acpi_get_table_with_size-hd234k.patch
 	md5sums = c07fd1332abe4c742a9a0d0e0d0a90de
 	md5sums = af7fb8ee4fc96fd54c5b483e33dc71c4
 	md5sums = bdafe749e046bfddee2d1c5e90eabd83
@@ -121,6 +130,8 @@ pkgbase = catalyst-total-hd234k
 	md5sums = 10829e3b992b3e80a6e78c8e27748703
 	md5sums = 6cdc15206cc61e3de456416a9011db07
 	md5sums = 1e56499f8589d81a1a5eba98bad9912c
+	md5sums = 29f82a5a60a1c28411e0d4b67f26fbf9
+	md5sums = 7b18613d2872192fb5afee699bb1f8fe
 
 pkgname = catalyst-total-hd234k
 

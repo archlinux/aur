@@ -22,35 +22,36 @@
 # Contributor: gentoo (patch for 3.10 + part of 4.3 kernel patches)
 # Contributor: aslmaswd (acpi main script)
 # Contributor: npfeiler (libcl/opencl-icd-loader cleaning)
+# Contributor: sling00 (4.10 kernel patch)
 
 
 
 pkgname=catalyst-total-hd234k
 pkgver=13.1
-pkgrel=39
+pkgrel=40
 pkgdesc="AMD/ATI legacy drivers. catalyst-dkms+ catalyst-utils + lib32-catalyst-utils"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('dkms' 'linux>=3.0' 'linux<4.9' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.13.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
+depends=('dkms' 'linux>=3.0' 'linux<4.11' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.13.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
 	    'acpid: acpi event support  / atieventsd'
 	    'linux-lts-headers: to build the fglrx module for the linux-lts kernel'
 	    'opencl-icd-loader: OpenCL ICD Bindings')
-conflicts=('libgl' 'xf86-video-ati' 'xf86-video-radeonhd' 'catalyst-test' 'nvidia-utils' 'nvidia' 'catalyst' 'catalyst-daemon' 'catalyst-generator' 'catalyst-dkms' 'catalyst-utils')
-provides=('libgl' "libatical=${pkgver}" "catalyst=${pkgver}" "catalyst-utils=${pkgver}" "catalyst-dkms=${pkgver}" "catalyst-libgl=${pkgver}" "opencl-catalyst=${pkgver}" 'dri' 'libtxc_dxtn' 'opencl-driver')
+conflicts=('libgl' 'xf86-video-ati' 'xf86-video-radeonhd' 'catalyst-test' 'nvidia-utils' 'nvidia' 'catalyst' 'catalyst-daemon' 'catalyst-generator' 'catalyst-dkms' 'catalyst-utils' 'mesa-libgl' 'mesa-libgl-git' 'libgles' 'libegl' 'opencl-amd')
+provides=('libgl' "libatical=${pkgver}" "catalyst=${pkgver}" "catalyst-utils=${pkgver}" "catalyst-dkms=${pkgver}" "catalyst-libgl=${pkgver}" "opencl-catalyst=${pkgver}" 'dri' 'libtxc_dxtn' 'opencl-driver' 'libgles' 'libegl')
 
 if [ "${CARCH}" = "x86_64" ]; then
  warning "x86_64 system detected"
  warning "[multilib] repository must be uncommented in /etc/pacman.conf to add lib32-catalyst-utils into the package"
   if [[ `cat /etc/pacman.conf | grep -c "#\[multilib]"` = 0 ]]; then
     warning "OK, lib32-catalyst-utils will be added to the package"
-    depends+=('lib32-libxext' 'lib32-libdrm' 'lib32-libxinerama' 'lib32-mesa>=10.1.0-4')
-    conflicts+=('lib32-libgl' 'lib32-nvidia-utils' 'lib32-catalyst-utils')
-    provides+=('lib32-libgl' "lib32-catalyst-utils=${pkgver}" "lib32-catalyst-libgl=${pkgver}" "lib32-opencl-catalyst=${pkgver}" 'lib32-dri' 'lib32-libtxc_dxtn' 'lib32-opencl-driver')
+    depends+=('lib32-libxext' 'lib32-libdrm' 'lib32-libxinerama' 'lib32-mesa')
+    conflicts+=('lib32-libgl' 'lib32-nvidia-utils' 'lib32-catalyst-utils' 'lib32-libgles' 'lib32-libegl')
+    provides+=('lib32-libgl' "lib32-catalyst-utils=${pkgver}" "lib32-catalyst-libgl=${pkgver}" "lib32-opencl-catalyst=${pkgver}" 'lib32-dri' 'lib32-libtxc_dxtn' 'lib32-opencl-driver' 'lib32-libgles' 'lib32-libegl')
     optdepends+=('lib32-opencl-icd-loader: OpenCL ICD Bindings (32-bit)')
       else
 	warning "lib32-catalyst-utils will NOT be added to the package"
@@ -101,7 +102,9 @@ source=(
     makesh-dont-check-gcc-version.patch
     makesh-src_file.patch
     
-    4.7-cpu_has_pge-hd234k.patch)
+    4.7-cpu_has_pge-hd234k.patch
+    4.9_over_4.6-arch-get_user_pages_remote-hd234k.patch
+    4.10-arch-sling00-virtual_address-acpi_get_table_with_size-hd234k.patch)
 
 md5sums=('c07fd1332abe4c742a9a0d0e0d0a90de'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
@@ -141,7 +144,9 @@ md5sums=('c07fd1332abe4c742a9a0d0e0d0a90de'
 	 '10829e3b992b3e80a6e78c8e27748703'
 	 '6cdc15206cc61e3de456416a9011db07'
 	 
-	 '1e56499f8589d81a1a5eba98bad9912c')
+	 '1e56499f8589d81a1a5eba98bad9912c'
+	 '29f82a5a60a1c28411e0d4b67f26fbf9'
+	 '7b18613d2872192fb5afee699bb1f8fe')
 
 
 build() {
@@ -323,6 +328,8 @@ package() {
       patch -Np1 -i ../makesh-dont-check-gcc-version.patch
       patch -Np1 -i ../makesh-src_file.patch
       patch -Np1 -i ../4.7-cpu_has_pge-hd234k.patch
+      patch -Np1 -i ../4.9_over_4.6-arch-get_user_pages_remote.patch
+      patch -Np1 -i ../4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch
 
 
     # Prepare modules source files
