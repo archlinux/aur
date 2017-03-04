@@ -3,13 +3,13 @@
 
 pkgname=juffed
 pkgver=0.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple tabbed text editor with syntax highlighting, based on Qt4"
 arch=('i686' 'x86_64')
 url="https://github.com/Mezomish/juffed"
 license=('GPL2')
 makedepends=('cmake')
-depends=('qscintilla' 'enca')
+depends=('qscintilla-qt4' 'enca')
 conflicts=('juffed-git' 'juffed-qt5-git')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-1054.tar.bz2
         $pkgname-build-without-error.patch::$url/commit/054bf0c0adf19a0bf5be58cf54049379f50b9211.patch
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DLIB_INSTALL_DIR=/usr/lib -DCMAKE_BUILD_TYPE=release
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DLIB_INSTALL_DIR=/usr/lib -DQSCINTILLA_NAMES=qscintilla2_qt4 -DCMAKE_BUILD_TYPE=release
   make
 }
 
