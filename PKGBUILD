@@ -1,35 +1,30 @@
-# Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
+# Maintainer: Aleksandr Gornostal <ulauncher.app@gmail.com>
 
-pkgname=ulauncher-git
-pkgver=2.0.14.r0.gbdf867f
+# To install, run `makepkg -is`
+
+pkgname=ulauncher
+pkgver=2.0.28
 pkgrel=1
-pkgdesc='Convenient and fast way to launch your desktop applications.'
+pkgdesc='Application launcher for Linux'
 arch=('any')
 url="http://ulauncher.io"
 license=('GPL3')
 depends=('gobject-introspection-runtime' 'libappindicator-gtk3' 'libkeybinder3' 'webkit2gtk'
          "python2-"{dbus,gobject,pyinotify,pysqlite,levenshtein,xdg})
-makedepends=('git' 'npm' "python2-"{distutils-extra,setuptools})
+makedepends=('python2-distutils-extra')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("ulauncher::git+https://github.com/Ulauncher/Ulauncher.git")
+source=("https://github.com/Ulauncher/Ulauncher/releases/download/2.0.28/ulauncher_2.0.28.tar.gz")
 sha256sums=('SKIP')
- 
-pkgver() {
-  cd ulauncher
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
 
 prepare() {
   cd ulauncher
-  sed -i "s/%VERSION%/${pkgver%.*.*}/g" setup.py
   find -iname "*.py" | xargs sed -i 's=\(^#! */usr/bin.*\)python *$=\1python2='
 }
 
 build() {
   cd ulauncher
   python2 setup.py build
-  sh build-utils/build-preferences.sh
 }
 
 package() {
