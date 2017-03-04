@@ -4,7 +4,7 @@
 
 pkgbase=gunicorn
 pkgname=(gunicorn gunicorn-python2)
-pkgver=19.6.0
+pkgver=19.7.0
 pkgrel=1
 pkgdesc='WSGI HTTP Server for UNIX'
 arch=(any)
@@ -12,7 +12,7 @@ url='http://gunicorn.org/'
 license=(MIT)
 makedepends=(python-distribute python2-distribute)
 source=("https://github.com/benoitc/${pkgbase}/archive/${pkgver}.tar.gz")
-sha256sums=('1e0de4957bea60bfcff5215664bdfc3cf02c78e2aae9586766a9b4b437aebbb0')
+sha256sums=('ded14b8b6c24a92006ef4131a6a8bfc0b9c858ba48a7cc5247caee56bd735d65')
 
 package_gunicorn() {
   depends=(python)
@@ -23,7 +23,7 @@ package_gunicorn() {
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
   python setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1
-  rm -r "${pkgdir}/usr/bin/gunicorn_django" "${pkgdir}/usr/bin/gunicorn_paster"
+  rm -r "${pkgdir}/usr/bin/gunicorn_paster"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
@@ -38,7 +38,7 @@ package_gunicorn-python2() {
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
   python2 setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1
-  rm -r "${pkgdir}/usr/bin/gunicorn_django" "${pkgdir}/usr/bin/gunicorn_paster"
+  rm -r "${pkgdir}/usr/bin/gunicorn_paster"
   mv "${pkgdir}/usr/bin/gunicorn" "${pkgdir}/usr/bin/gunicorn-python2"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
