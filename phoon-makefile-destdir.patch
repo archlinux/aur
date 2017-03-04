@@ -1,0 +1,13 @@
+--- a/Makefile	2014-08-11 21:14:07.000000000 +0200
++++ b/Makefile	2017-03-04 04:20:00.000000000 +0100
+@@ -1,7 +1,8 @@
+ # Makefile for phoon
+ 
+-BINDIR =	/usr/local/bin
+-MANDIR =	/usr/local/man/man1
++DESTDIR?=	/usr/local
++BINDIR =	$(DESTDIR)/bin
++MANDIR =	$(DESTDIR)/man/man1
+ 
+ DEFINES =	-DOS_BSD
+ #DEFINES =	-DOS_SYSV
