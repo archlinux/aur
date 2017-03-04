@@ -1,4 +1,4 @@
-pkgbase = bsa-analytics-git
+pkgbase = bsa-analytics
 	pkgdesc = PRAO BSA telescope data viewer, pulsar searching & analytics software
 	pkgver = 20170304
 	pkgrel = 1
