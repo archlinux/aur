@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Convex Decomposition Tool for Robot Model."
-url='http://www.ros.org/wiki/convex_decomposition'
+url='http://codesuppository.blogspot.com'
 
 pkgname='ros-kinetic-convex-decomposition'
 pkgver='0.1.11'
