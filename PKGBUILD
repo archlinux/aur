@@ -5,7 +5,7 @@
 # Maintainer: Albert Graef <aggraef@gmail.com>
 
 pkgname=pure
-pkgver=0.65
+pkgver=0.66
 pkgrel=1
 pkgdesc="Pure is a modern-style functional programming language based on term rewriting."
 arch=("i686" "x86_64")
@@ -21,7 +21,7 @@ optdepends=("clang35: needed for inlining C/C++ code"
             "texmacs-pure: embedding Pure sessions in TeXmacs")
 groups=(pure-complete pure-base)
 source=("https://bitbucket.org/purelang/pure-lang/downloads/$pkgname-$pkgver.tar.gz")
-md5sums=('fe1c21bfb75a66ead19b68d8bbea9080')
+md5sums=('7ebecf7f90d963a0f6ae3c66694656a6')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
