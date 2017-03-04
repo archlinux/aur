@@ -2,7 +2,7 @@
 
 pkgname=stagit-git
 _pkgname=stagit
-pkgver=0.3.1.0.g0328079
+pkgver=0.5.0.g82aefe6
 pkgrel=1
 pkgdesc="static git page generator"
 arch=('x86_64' 'i686')

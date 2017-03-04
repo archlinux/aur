@@ -1,6 +1,6 @@
 pkgbase = stagit-git
 	pkgdesc = static git page generator
-	pkgver = 0.3.1.0.g0328079
+	pkgver = 0.5.0.g82aefe6
 	pkgrel = 1
 	url = http://git.2f30.org/stagit
 	arch = x86_64
