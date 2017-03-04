@@ -4,7 +4,7 @@
 pkgbase=python-pefile
 pkgname=('python-pefile' 'python2-pefile')
 pkgver=2016.3.28
-pkgrel=3
+pkgrel=4
 pkgdesc="Python PE parsing module"
 arch=('any')
 url="https://github.com/erocarrera/pefile"

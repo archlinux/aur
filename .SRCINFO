@@ -1,7 +1,7 @@
 pkgbase = python-pefile
 	pkgdesc = Python PE parsing module
 	pkgver = 2016.3.28
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/erocarrera/pefile
 	arch = any
 	license = MIT
