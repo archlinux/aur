@@ -1,6 +1,6 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=rmdupes
-pkgver=2017.3
+pkgver=2017.3.4.1
 pkgrel=1
 pkgdesc='Command-line tool to find and remove duplicate files.'
 arch=(any)
@@ -8,16 +8,16 @@ license=(GPL)
 url="http://xyne.archlinux.ca/projects/rmdupes"
 depends=(python3)
 source=(
-  http://xyne.archlinux.ca/projects/rmdupes/src/rmdupes-2017.3.tar.xz
-  http://xyne.archlinux.ca/projects/rmdupes/src/rmdupes-2017.3.tar.xz.sig
+  http://xyne.archlinux.ca/projects/rmdupes/src/rmdupes-2017.3.4.1.tar.xz
+  http://xyne.archlinux.ca/projects/rmdupes/src/rmdupes-2017.3.4.1.tar.xz.sig
 )
 sha512sums=(
-  4a8f3fe86a821a363a4fea0d456b37e1f53a05af236c84421f377ae6d423c130ca19aea3ea943d77ae72b01a8e3f79ddfdd0f04a3b130d72383ae8b1b90eb099
-  ba142562ff425deddb83597137190208b344496edbefcc64d9cbb51bef28777a405518236414dfdfc3a0397abd17090e8a793e34646078d86c7d9c489ff34897
+  a480ff64ad020860969b0d3062dfea19462ebe7302e480c5e64fcbb60c40f0d573ae4b4e36de3b6ede721e415ba5203a66475f98a01a70556f08a00663119b33
+  13d53ebce9beb4757458a9db7bf1eb836b76a852f0feedfe78f604b4fc0d23e4c4a5de4d76c65e083c1897b5930be4f411600bb060cdd8a0a4cc47871130c515
 )
 md5sums=(
-  16d457683d9728b36bcbf0952f709136
-  8bb8df6a3c5d42724397a9d10a8d6788
+  297064f16df32f97e9e452998a5e3f04
+  8b20a5d235c1638b39c6ba9ff58b83d5
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
