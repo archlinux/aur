@@ -1,0 +1,27 @@
+pkgbase = xfce4-panel-git
+	pkgdesc = Panel for the Xfce desktop environment - git checkout
+	pkgver = 4.12.1.r139.g80687bd6
+	pkgrel = 1
+	url = http://www.xfce.org/
+	arch = i686
+	arch = x86_64
+	groups = xfce4-git
+	license = GPL2
+	makedepends = intltool
+	makedepends = gtk-doc>=1.9
+	makedepends = git
+	depends = cairo>=1.0.0
+	depends = exo>=0.11.0
+	depends = garcon>=0.5.0
+	depends = libxfce4ui>=4.13.0
+	depends = libxfce4util>=4.9.0
+	depends = libwnck>=3.0
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	provides = xfce4-panel=4.12.1
+	conflicts = xfce4-panel
+	source = xfce4-panel-git::git://git.xfce.org/xfce/xfce4-panel
+	sha256sums = SKIP
+
+pkgname = xfce4-panel-git
+
