@@ -3,7 +3,7 @@
 
 pkgname=mwget
 pkgver=0.1.0
-pkgrel=1.0
+pkgrel=1
 pkgdesc="Multi-thread Downloading Tool"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/kmphpfm/files/"
@@ -20,7 +20,7 @@ md5sums=("05349195bcb289ef3a880c1b059f9854")
 
 build() {
     cd ${srcdir}/${pkgname}_${pkgver}.orig
-    ./configure
+    ./configure --prefix=/usr
     make
 }
 

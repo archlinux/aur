@@ -1,7 +1,7 @@
 pkgbase = mwget
 	pkgdesc = Multi-thread Downloading Tool
 	pkgver = 0.1.0
-	pkgrel = 1.0
+	pkgrel = 1
 	url = https://sourceforge.net/projects/kmphpfm/files/
 	arch = i686
 	arch = x86_64
