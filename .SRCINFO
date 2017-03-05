@@ -5,7 +5,6 @@ pkgbase = privoxy-adfilter
 	url = https://github.com/qwIvan/privoxy-adfilter
 	install = privoxy-adfilter.install
 	arch = any
-	depends = dnsmasq
 	source = git+https://github.com/qwIvan/privoxy-adfilter.git
 	md5sums = SKIP
 
