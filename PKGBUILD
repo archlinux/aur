@@ -2,10 +2,10 @@
 # Maintainer: Sean Greenslade <aur AT seangreenslade.com>
 pkgname=cvblob
 pkgver=0.10.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A computer vision library to detect connected regions in binary digital images."
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/cvblob/"
+url="https://github.com/harshjv/cvblob"
 license=('LGPL')
 groups=()
 depends=('opencv')
@@ -18,9 +18,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://cvblob.googlecode.com/files/$pkgname-$pkgver-src.tgz")
+source=('git+https://github.com/harshjv/cvblob#tag=0.10.4')
 noextract=()
-md5sums=('9d5e360c6de6fce36e95f5d64b67b9b1')
+sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname"
