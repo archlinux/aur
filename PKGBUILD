@@ -3,7 +3,7 @@
 pkgname=pamac-gaura-git
 pkgver=4.3.0
 _pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Gtk3 frontend for libalpm with some additions from gaurapanasenko"
 arch=('any')
 url="https://github.com/gaurapanasenko/pamac"
