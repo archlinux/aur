@@ -1,0 +1,39 @@
+pkgbase = lapack-tmg
+	pkgdesc = Linear Algebra PACKage with TMG lib
+	pkgver = 3.7.0
+	pkgrel = 1
+	url = http://www.netlib.org/lapack
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = gcc-fortran
+	makedepends = cmake
+	makedepends = python
+	source = http://www.netlib.org/lapack/lapack-3.7.0.tgz
+	source = LICENSE.blas
+	sha1sums = 27dbd06bedc76619150f8e28de6412f7df0c649a
+	sha1sums = 2491a151a37f0162b25fc4e4e9a8ac444b574a76
+
+pkgname = lapack-tmg
+	depends = blas-tmg
+	provides = lapack
+	conflicts = lapack
+
+pkgname = blas-tmg
+	pkgdesc = Basic Linear Algebra Subprograms
+	depends = gcc-libs
+	provides = blas
+	conflicts = blas
+
+pkgname = cblas-tmg
+	pkgdesc = C interface to BLAS
+	depends = blas-tmg
+	provides = cblas
+	conflicts = cblas
+
+pkgname = lapacke-tmg
+	pkgdesc = C interface to LAPACK
+	depends = lapack-tmg
+	provides = lapacke
+	conflicts = lapacke
+
