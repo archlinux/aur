@@ -16,9 +16,7 @@ sha256sums=('d39fcac7175d701398e4eb209f7e92a5b30a78358d4a0c0fcc23db23c11ba104'
 	'08febcacb706694f7461d6496047bc57048187aa3f77ee000cec2626c19e15c1')
 
 prepare() {
-	pwd
 	cd "$pkgname-$pkgver"
-	pwd
 	patch -p0 -i ../sundials-link-libs.patch
 }
 
