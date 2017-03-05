@@ -1,7 +1,7 @@
 # Maintainer: Alexander Ryapolov <srwork@gmail.com>
 
 pkgname=qtvkbd
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A virtual keyboard"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/Alexander-r/qtvkbd"
 license=('GPL3')
 depends=('qt5-base' 'qt5-x11extras' 'libxtst')
 makedepends=('cmake' 'git')
-source=("$pkgname::git+https://github.com/Alexander-r/qtvkbd.git#tag=v0.8")
+source=("$pkgname::git+https://github.com/Alexander-r/qtvkbd.git#tag=v0.8.1")
 md5sums=('SKIP')
 
 prepare() {
