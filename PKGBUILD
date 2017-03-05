@@ -38,17 +38,17 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
+  # Link Python2
+  mkdir -p path
+  ln -sf /usr/bin/python2 path/python
+
   cd $_hgrepo
 
   # Sync local copy
   msg2 "Syncing local copy..."
   python2 client.py checkout
 
-  # 
-  mkdir -p path
-  ln -sf /usr/bin/python2 path/python
-
-  
+  # API keys
   echo -n "$_google_api_key" > google-api-key
   echo -n "$_mozilla_api_key" > mozilla-api-key
 
@@ -151,9 +151,15 @@ package() {
   # ln -sf /opt/$pkgname-r$pkgver/thunderbird "$pkgdir"/usr/bin/$pkgname
   
   cd $_hgrepo
+  
+  # Install
+  msg2 "Running make client.mk install.."
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
+
+  # Rename dir
   mv "$pkgdir"/opt/thunderbird/ "$pkgdir"/opt/thunderbird-hg/
 
+  # vendor.js
   _vendorjs="$pkgdir/opt/thunderbird-hg/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$_vendorjs" <<END
 // Use LANG environment variable to choose locale
@@ -167,11 +173,13 @@ pref("extensions.autoDisableScopes", 11);
 pref("extensions.shownSelectionUI", true);
 END
 
+  # Icons
   for i in 16 22 24 32 48 256; do
     install -Dm644 other-licenses/branding/thunderbird/mailicon$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/thunderbird-hg.png"
   done
 
+  # Desktop
   install -Dm644 ../thunderbird-hg.desktop \
     "$pkgdir/usr/share/applications/thunderbird-hg.desktop"
 
