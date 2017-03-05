@@ -1,11 +1,11 @@
 # Maintainer: Jose Riha < jose 1711 gmail com >
 
 pkgname=pycom-firmware-updater
-pkgver=1.0.0b2
+pkgver=1.1.1b1
 pkgrel=1
 pkgdesc="Pycom firmware updater for WiPy and LoPy IOT boards"
 url="https://www.pycom.io/"
-license=('unknown')
+license=('GPL-3')
 arch=('any')
 depends=('dialog' 'python2')
 optdepends=('python2-qscintilla-qt4: gui'
@@ -15,7 +15,7 @@ optdepends=('python2-qscintilla-qt4: gui'
 source=('https://software.pycom.io/findupgrade?product=pycom-firmware-updater&type=all&platform=unix&redirect=true'
         'lopyupdate.sh'
 	'lopyupdate.desktop')
-md5sums=('dba756d3e78ee8ccb8478f2808189984'
+md5sums=('468dddfda01786323989299899e4dcdf'
          '268d38fbb3f7d8ee962760abb6169505'
          '6af9152e7aa93baa74b59cbc0af2ba71')
 
