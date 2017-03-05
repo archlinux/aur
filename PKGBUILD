@@ -2,7 +2,7 @@
 
 pkgname=kube
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern groupware client based on QtQuick and Sink"
 arch=(i686 x86_64)
 url="https://community.kde.org/KDE_PIM"
