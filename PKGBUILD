@@ -14,7 +14,7 @@ PKGEXT=".pkg.tar"
 install=mspgcc-ti.install
 _installer=msp430-gcc-full-linux-installer-5.0.0.25.run
 source=("http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/5_00_00_00/exports/$_installer" "${pkgname}.sh")
-sha1sums=('04f8b95f3908978b9f048f7ef2d05d410ba59774'
+sha1sums=('551f11fd8e4469cf8c279e0db4b7ba23d30facb3'
     'a4a81f1b041bf39c3f9c75d94c22d149d1ceee9e')
 _install_dir=/opt/ti/mspgcc
 
