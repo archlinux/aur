@@ -13,7 +13,7 @@ pkgbase = lib32-libvdpau-va-gl
 	depends = lib32-glu
 	depends = lib32-ffmpeg
 	source = https://github.com/i-rinat/libvdpau-va-gl/archive/v0.4.2.tar.gz
-	md5sums = 638244652a702d0262039890904f37ce
+	sha512sums = 074f06a0684a28dfd2690d7f878d1e1c1a6a61cb4fba00b54c4b01e9da7baa627333fb59715de0dfb757637afb269c1a62caa3955d53cea75f4a9513c4286680
 
 pkgname = lib32-libvdpau-va-gl
 

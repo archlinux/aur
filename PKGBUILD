@@ -12,7 +12,7 @@ license=('LGPL3')
 depends=('lib32-libvdpau' 'lib32-libva' 'lib32-libgl' 'lib32-glu' 'lib32-ffmpeg')
 makedepends=('cmake' 'gcc-multilib')
 source=($url/archive/v$pkgver.tar.gz)
-md5sums=('638244652a702d0262039890904f37ce')
+sha512sums=('074f06a0684a28dfd2690d7f878d1e1c1a6a61cb4fba00b54c4b01e9da7baa627333fb59715de0dfb757637afb269c1a62caa3955d53cea75f4a9513c4286680')
 
 build() {
   export CC="gcc -m32"
