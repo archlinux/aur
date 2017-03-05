@@ -1,7 +1,7 @@
 # Maintainer: Jim Heald <james.r.heald@gmail.com>
 
 pkgname=pyflowchart-git
-pkgver=0.9.3
+pkgver=0.9.3.1
 pkgrel=1
 pkgdesc="Application to help manage curriculum flowcharts at CalPoly"
 arch=('any')
