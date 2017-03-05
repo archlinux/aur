@@ -3,15 +3,15 @@
 # Contributor: Malkov Fyodor aka krox <iksut@yandex.ru>
 
 pkgname=djvusmooth
-pkgver=0.2.17
-pkgrel=2
+pkgver=0.2.18
+pkgrel=1
 pkgdesc='A graphical editor for DjVu documents'
 arch=('any')
 url='http://jwilk.net/software/djvusmooth'
 license=('GPL2')
 depends=('python2-djvulibre' 'python2-xdg' 'wxpython')
 source=(https://github.com/jwilk/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('80e6d805a85cee9b98cdae0acded1158')
+md5sums=('3f3a36cc175773246e577eebef7e5b8f')
 
 build() {
 	cd $pkgname-$pkgver
