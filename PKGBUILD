@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=polychromatic-git
-pkgver=0.3.6.1.r0.gf324b50
+pkgver=0.3.6.1.r44.gd13b00e
 pkgrel=1
 pkgdesc='A graphical front end for managing Razer peripherals under GNU/Linux.'
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL2')
 source=("git+https://github.com/lah7/polychromatic.git")
 url='https://github.com/lah7/polychromatic'
 makedepends=('git' 'rsync')
-depends=('python' 'hicolor-icon-theme' 'python-razer' 'webkit2gtk')
+depends=('python' 'hicolor-icon-theme' 'python-razer' 'webkit2gtk' 'libappindicator-gtk3')
 provides=('polychromatic')
 conflicts=('polychromatic')
 md5sums=('SKIP')
