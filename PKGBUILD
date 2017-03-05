@@ -1,7 +1,7 @@
 # Maintainer: Peter Ivanov <ivanovp@gmail.com>
 
 pkgname=mphidflash
-pkgver=r24
+pkgver=20150703
 pkgrel=1
 pkgdesc="Flash utility for Microchip PIC microcontrollers with USB HID-Bootloader"
 arch=("i686" "x86_64")
@@ -10,17 +10,16 @@ license=("GPL3")
 depends=()
 makedepends=(svn gcc)
 #options=('!strip')
-source=("svn+http://mphidflash.googlecode.com/svn/trunk/")
+source=("$pkgname::git+https://github.com/ApertureLabsLtd/mphidflash")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/trunk"
-  local ver="$(svnversion)"
-  printf "r%s" "${ver//[[:alpha:]]}"
+  cd "$srcdir/$_gitname"
+  git log -1 --format="%cd" --date=short | tr -d '-'
 }
 
 build() {
-  cd "$srcdir/trunk"
+  cd "$srcdir/$pkgname"
   if [ $CARCH = i686 ]; then
     make mphidflash32
   else
@@ -29,7 +28,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/trunk/binaries"
+  cd "$srcdir/$pkgname/binaries"
   if [ $CARCH = i686 ]; then
     install -D mphidflash-1.6-linux-32 $pkgdir/usr/bin/mphidflash
   else
