@@ -1,8 +1,8 @@
 # Maintainer: Emil Lundberg <emil@emlun.se>
 
 pkgname=sddm-theme-gracilis-git
-pkgver=3.0.0
-pkgrel=1
+pkgver=latest
+pkgrel=2
 pkgdesc="Gracilis Theme for SDDM by mikkeloscar"
 arch=('any')
 url="https://github.com/mikkeloscar/sddm-gracilis-theme"

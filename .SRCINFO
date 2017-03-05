@@ -1,7 +1,7 @@
 pkgbase = sddm-theme-gracilis-git
 	pkgdesc = Gracilis Theme for SDDM by mikkeloscar
-	pkgver = 3.0.0
-	pkgrel = 1
+	pkgver = latest
+	pkgrel = 2
 	url = https://github.com/mikkeloscar/sddm-gracilis-theme
 	arch = any
 	license = CCPL:cc-by-sa
