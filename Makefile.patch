@@ -1,0 +1,26 @@
+diff -ur qdecoder-r12.0.6/src/Makefile.in qdecoder-new/src/Makefile.in
+--- qdecoder-r12.0.6/src/Makefile.in	2017-01-23 12:53:48.000000000 -0500
++++ qdecoder-new/src/Makefile.in	2017-03-05 07:23:26.076652016 -0500
+@@ -84,14 +84,14 @@
+ 	${LN_S} -f ${SLIBREALNAME} ${SLIBNAME}
+ 
+ install: all
+-	${MKDIR} -p ${HEADERDIR}
+-	${MKDIR} -p ${LIBDIR}
+-	${MKDIR} -p ${PKGCONFIGDIR}
+-	${INSTALL_DATA} qdecoder.h ${HEADERDIR}/qdecoder.h
+-	${INSTALL_DATA} ${LIBNAME} ${LIBDIR}/${LIBNAME}
+-	${INSTALL_DATA} ${SLIBREALNAME} ${LIBDIR}/${SLIBREALNAME}
+-	${INSTALL_DATA} ${PKGCONFIGNAME} ${PKGCONFIGDIR}/${PKGCONFIGNAME}
+-	( cd ${LIBDIR}; ${LN_S} -f ${SLIBREALNAME} ${SLIBNAME} )
++	${MKDIR} -p ${DESTDIR}${HEADERDIR}
++	${MKDIR} -p ${DESTDIR}${LIBDIR}
++	${MKDIR} -p ${DESTDIR}${PKGCONFIGDIR}
++	${INSTALL_DATA} qdecoder.h ${DESTDIR}${HEADERDIR}/qdecoder.h
++	${INSTALL_DATA} ${LIBNAME} ${DESTDIR}${LIBDIR}/${LIBNAME}
++	${INSTALL_DATA} ${SLIBREALNAME} ${DESTDIR}${LIBDIR}/${SLIBREALNAME}
++	${INSTALL_DATA} ${PKGCONFIGNAME} ${DESTDIR}${PKGCONFIGDIR}/${PKGCONFIGNAME}
++	( cd ${DESTDIR}${LIBDIR}; ${LN_S} -f ${SLIBREALNAME} ${SLIBNAME} )
+ 
+ deinstall: uninstall
+ uninstall:
