@@ -1,7 +1,7 @@
 pkgbase = scribus-devel
 	pkgdesc = Desktop publishing software
 	pkgver = 1.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.scribus.net/
 	arch = i686
 	arch = x86_64
