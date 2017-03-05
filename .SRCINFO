@@ -1,0 +1,35 @@
+pkgbase = pamac-gaura-git
+	pkgdesc = A Gtk3 frontend for libalpm with some additions from gaurapanasenko
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = https://github.com/gaurapanasenko/pamac
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gettext
+	makedepends = itstool
+	makedepends = vala>=0.28
+	depends = glib2>=2.42
+	depends = json-glib
+	depends = libsoup
+	depends = dbus-glib
+	depends = polkit
+	depends = vte3>=0.38
+	depends = gtk3>=3.18
+	depends = libnotify
+	depends = desktop-file-utils
+	depends = pacman>=5.0
+	depends = gnutls>=3.4
+	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
+	optdepends = lxsession: needed for authentification in Xfce, LXDE etc.
+	optdepends = yaourt: needed for AUR support
+	optdepends = pamac-tray-appindicator: tray icon for KDE
+	provides = pamac
+	conflicts = pamac
+	options = !emptydirs
+	backup = etc/pamac.conf
+	source = git://github.com/gaurapanasenko/pamac.git
+	sha256sums = SKIP
+
+pkgname = pamac-gaura-git
+
