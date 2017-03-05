@@ -3,23 +3,23 @@
 
 pkgbase=python-ptrace
 pkgname=('python-ptrace' 'python2-ptrace')
-pkgver=0.8.1
+pkgver=0.9
 pkgrel=1
 pkgdesc="Python binding of ptrace library to trace processes and syscalls."
-url="http://bitbucket.org/haypo/python-ptrace"
+url="https://github.com/haypo/python-ptrace"
 arch=('any')
 license=('GPL2')
 makedepends=('python' 'python2')
-source=("http://pypi.python.org/packages/source/p/${pkgbase}/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('779e04c7bdc00150b739e7d49c9c61b7f36f17afd26355f91b10cd0e7d55d19f')
+source=("https://github.com/haypo/${pkgbase}/archive/${pkgbase}-${pkgver}.tar.gz")
+sha256sums=('b3e7e081ecb1d532098e2cd5019a3412c8fdbf46c660550a696a75f314db3d62')
 
 prepare(){
-  cp -dpr --no-preserve=owner "${pkgbase}-${pkgver}" "python2-ptrace-${pkgver}"
+  cp -dpr --no-preserve=owner "${pkgbase}-${pkgbase}-${pkgver}" "python2-ptrace-${pkgver}"
 }
 
 build() {
   # Build Python 3.x module
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgbase}-${pkgver}"
   python setup.py build
   # Build Python 2.x module
   cd "${srcdir}/python2-ptrace-${pkgver}"
@@ -28,13 +28,13 @@ build() {
 
 package_python-ptrace() {
   depends=('python')
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgname}-${pkgver}"
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 }
 
 package_python2-ptrace() {
   depends=('python2')
-  cd "${srcdir}/python2-ptrace-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
   # Rename gdb and strace scripts to avoid names conflict
   mv "${pkgdir}/usr/bin/gdb.py" "${pkgdir}/usr/bin/gdb2.py"
