@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="A graphical user interface to see APK file details & icon"
 arch=('any')
 license=('GPL3')
-depends=( 'python' 'python-requests' ,'python-gobject')
+depends=( 'python' 'python-requests' 'python-gobject')
 makedepends=('git')
 provides=("${pkgname}" "apk-preview")
 conflicts=("${pkgname}" "apk-preview")
@@ -18,10 +18,10 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${pkgname}"
-    mkdir /opt/apk-preview
+
 }
 package() {
 	cd "${srcdir}/${pkgname}"
-	cp -a ./*   ${pkgdir}/opt/apk-preview/
+	cp -a ./*   ${pkgdir}/usr/bin/
 }
 
