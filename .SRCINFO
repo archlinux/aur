@@ -1,7 +1,7 @@
 pkgbase = miniflux-git
 	pkgdesc = Minimalist web RSS reader (Git version)
 	pkgver = r1081.9056c8d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://miniflux.net/
 	install = miniflux.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = miniflux-git
 	depends = php
 	depends = php-sqlite
 	optdepends = postgresql: for non-sqlite db
-	optdepends = php-pgsel: for non-sqlite db
+	optdepends = php-pgsql: for non-sqlite db
 	provides = miniflux
 	conflicts = miniflux
 	options = !strip
