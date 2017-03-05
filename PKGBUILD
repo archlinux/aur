@@ -1,7 +1,7 @@
 # Maintainer: Bian Jiaping <ssbianjp [AT] gmail.com>
 
 pkgname=besttrace
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="IPIP.net 开发的加强版 traceroute，附带链路可视化"
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ else
 fi
 
 source=("https://cdn.ipip.net/17mon/besttrace4linux.zip")
-md5sums=("81f5c81dab44a8f3c34812c41ad5af2e")
+md5sums=("417abdac373a8a334d311f072c1ca635")
 
 package(){
     mkdir -p "$pkgdir"/usr/bin/
