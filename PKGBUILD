@@ -6,13 +6,13 @@
 
 set -u
 pkgname='codeblocks-svn'
-pkgver=10982
+pkgver=11023
 pkgrel=1
 pkgdesc='An open source and cross-platform C/C++ IDE'
 arch=('i686' 'x86_64')
 url='http://www.codeblocks.org'
 license=('GPL')
-depends=('wxgtk' 'valgrind' 'bzip2' 'hicolor-icon-theme' 'gamin' 'hunspell')
+depends=('wxgtk' 'valgrind' 'bzip2' 'hicolor-icon-theme' 'gamin' 'hunspell' 'webkitgtk2')
 makedepends=('boost' 'subversion' 'zip')
 provides=("codeblocks=${pkgver}")
 conflicts=('codeblocks' 'codeblocks-svn-noplugins')
@@ -31,9 +31,13 @@ pkgver() {
 build() {
   set -u
   cd 'codeblocks-svn'
-  ./bootstrap
-  WX_CONFIG_PATH='/usr/bin/wx-config' \
-  ./configure --prefix='/usr' --with-contrib-plugins='all'
+  if [ ! -s 'configure' ]; then # compatible with makepkg -e
+    ./bootstrap
+  fi
+  if [ ! -s 'Makefile' ]; then
+    WX_CONFIG_PATH='/usr/bin/wx-config' \
+    ./configure --prefix='/usr' --with-contrib-plugins='all'
+  fi
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   make -s -j"${_nproc}"
   set +u
