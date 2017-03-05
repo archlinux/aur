@@ -1,18 +1,18 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=black-screen
-pkgver=0.2.127
+pkgver=0.2.128
 pkgrel=1
 pkgdesc='A terminal emulator for the 21st century'
 arch=('i686' 'x86_64')
 url='https://github.com/shockone/black-screen'
 license=('MIT')
 depends=('electron')
-makedepends=('apm' 'npm' 'typescript')
+makedepends=('apm' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         'black-screen.desktop'
         'black-screen.js')
-sha256sums=('4e9ab76567c6be4c2883f8a2aa192215dc51b4144035d94860c79cc7c44bdf19'
+sha256sums=('15942c13990a7fcf1cbcf96049789593939a238c82f8bfdf49dcbfc795e250e3'
             'd23e2d0254139efb0dfdd14814cee758bf7345834c5cc92dfd740c0fae0b586e'
             'd13c04e3a0c9855fd00faaf4a7ec1cef39a276744ff49a3c9b6cbbf0f83513fb')
 
@@ -28,7 +28,9 @@ build() {
     ATOM_HOME="${PWD}" apm install --production
     rmdir packages
 
+    npm install typescript
     npm run compile
+    npm uninstall typescript
 }
 
 package() {
