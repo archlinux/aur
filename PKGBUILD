@@ -3,7 +3,7 @@
 
 pkgbase=python-ptrace
 pkgname=('python-ptrace' 'python2-ptrace')
-pkgver=0.9
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Python binding of ptrace library to trace processes and syscalls."
 url="https://github.com/haypo/python-ptrace"
@@ -11,7 +11,7 @@ arch=('any')
 license=('GPL2')
 makedepends=('python' 'python2')
 source=("https://github.com/haypo/${pkgbase}/archive/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('b3e7e081ecb1d532098e2cd5019a3412c8fdbf46c660550a696a75f314db3d62')
+sha256sums=('f9c6ef64d0b0016a971d991895a0da78cc2e6da8a87577a1ae06a28726d664e4')
 
 prepare(){
   cp -dpr --no-preserve=owner "${pkgbase}-${pkgbase}-${pkgver}" "python2-ptrace-${pkgver}"
