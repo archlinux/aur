@@ -1,6 +1,6 @@
 pkgname=systemtap
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="SystemTap provides free software (GPL) infrastructure to simplify the gathering of information about the running Linux system."
 url="http://sourceware.org/systemtap/"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -20,8 +20,6 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  echo enable python2...
-  sed -i 's/python/python2/g' ${pkgdir}/usr/bin/dtrace
 }
 
 # vim:set ts=2 sw=2 et:
