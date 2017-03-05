@@ -1,7 +1,7 @@
 # Maintainer: Peter Cai <peter at typeblog dot net>
 
 pkgname=yarmd
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Yet Another Recursive Multi-thread Downloader (A wrapper script around aria2, Nginx autoindex required)'
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=(
 source=(
   "https://github.com/PeterCxy/yarmd/archive/${pkgver}.tar.gz"
 )
-md5sums=('e01a60c1f53edd81cf50b6e55e146078')
+md5sums=('5a031b470680166c42e5c372684e1205')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
