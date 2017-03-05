@@ -3,12 +3,12 @@
 _pkgname=bullet-train-oh-my-zsh-theme
 pkgname=$_pkgname-git
 pkgver=a
-pkgrel=1
+pkgrel=2
 pkgdesc='An oh-my-zsh shell theme based on the Powerline Vim plugin'
 arch=('any')
 url='https://github.com/caiogondim/bullet-train-oh-my-zsh-theme'
 license=('MIT')
-depends=('zsh' 'oh-my-zsh-git')
+depends=('zsh' 'oh-my-zsh-git' 'nodejs')
 source=('git+https://github.com/caiogondim/bullet-train-oh-my-zsh-theme.git')
 sha256sums=('SKIP')
 makedepends=('git')
