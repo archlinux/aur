@@ -4,13 +4,13 @@
 
 pkgname=djvusmooth
 pkgver=0.2.17
-pkgrel=1
+pkgrel=2
 pkgdesc='A graphical editor for DjVu documents'
 arch=('any')
 url='http://jwilk.net/software/djvusmooth'
 license=('GPL2')
 depends=('python2-djvulibre' 'python2-xdg' 'wxpython')
-source=(https://pypi.io/packages/source/d/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(https://github.com/jwilk/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
 md5sums=('80e6d805a85cee9b98cdae0acded1158')
 
 build() {
