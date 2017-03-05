@@ -1,6 +1,6 @@
 # Maintainer: Stephen Zhang <zsrkmyn at gmail dot com>
 pkgname='torch7-lmdb-git'
-pkgdes='LMDB for Torch'
+pkgdesc='LMDB for Torch'
 pkgver=r33.814a4f7
 pkgrel=1
 makedepends=('cmake' 'git')
