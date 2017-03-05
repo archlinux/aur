@@ -2,9 +2,9 @@
 
 pkgname=libpam-google-authenticator
 pkgver=1.03
-pkgrel=1
+pkgrel=2
 pkgdesc='PAM module for google authenticator app'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/google/google-authenticator-libpam"
 license=('Apache')
 depends=('pam')
