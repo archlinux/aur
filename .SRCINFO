@@ -1,0 +1,24 @@
+pkgbase = libxfce4ui-git
+	pkgdesc = Commonly used Xfce widgets among Xfce applications
+	pkgver = 4.13.1.r35.g5ee0ea4
+	pkgrel = 1
+	url = http://www.xfce.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	makedepends = gtk-doc
+	depends = libxfce4util>=4.12.0
+	depends = gtk2>=2.24.0
+	depends = xfconf>=4.12.0
+	depends = libsm
+	depends = hicolor-icon-theme
+	optdepends = gtk3>=3.2.0: GTK+ 3 support
+	optdepends = startup-notification>=0.4: startup notification library
+	provides = libxfce4ui=4.13.1.r35.g5ee0ea4
+	conflicts = libxfce4ui
+	source = libxfce4ui-git::git://git.xfce.org/xfce/libxfce4ui
+	sha256sums = SKIP
+
+pkgname = libxfce4ui-git
+
