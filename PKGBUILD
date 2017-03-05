@@ -2,11 +2,11 @@
 # Former maintainer: Andrew Lewis <nerf@judo.za.org>
 pkgname=rspamd
 pkgver=1.5.1
-pkgrel=6
+pkgrel=7
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
 arch=('x86_64' 'i686' 'mips64el')
-url="http://rspamd.com"
+url="https://rspamd.com"
 license=('BSD')
 depends=('libevent' 'glib2' 'gmime' 'lua' 'sqlite' 'lua-lpeg' 'libfann' 'gd')
 makedepends=('cmake' 'pkgconfig' 'ragel')
