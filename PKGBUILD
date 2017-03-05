@@ -6,7 +6,7 @@
 pkgname=('mysql55' 'libmysqlclient55' 'mysql-clients55')
 _pkgname=mysql
 pkgbase=mysql55
-pkgver=5.5.53
+pkgver=5.5.54
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition v5.5"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("https://dev.mysql.com/get/Downloads/MySQL-5.5/${_pkgname}-${pkgver}.tar
         "mysqld-post.sh"
         "mysqld-tmpfile.conf"
         "mysqld.service")
-sha256sums=('a7a86dd42524e698c9dd8dab2520e6e75377cde077ed71eaf5a3b5a3d1f7d6ea'
+sha256sums=('273bcbcf8cc84061eb07c359308563b2029eb3f70f78b558905bc1b5c5791ab8'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
             '50212165bdb09855b97b15a917464ba34f82edf30a0c43f9a0c93a27071df556')
