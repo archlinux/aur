@@ -11,10 +11,10 @@ depends=('bash' 'sed' 'python')
 makedepends=('make')
 options=(!strip)
 install=dingoo-sdk.install
-source=(http://dingoo-sdk.googlecode.com/files/dingoo_sdk_r324.zip
-        http://dingoo-sdk.googlecode.com/files/linux_x86_elf2app.tar.bz2
-        http://dingoo-sdk.googlecode.com/files/mipsel-4.1.2-nopic.tar.bz2
-        dingoo-sdk.sh)
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/dingoo-sdk/dingoo_sdk_r324.zip"
+        "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/dingoo-sdk/linux_x86_elf2app.tar.bz2"
+        "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/dingoo-sdk/mipsel-4.1.2-nopic.tar.bz2"
+        "dingoo-sdk.sh")
 
 #_gitroot="http://dingoo-sdk.googlecode.com/svn/trunk/ dingoo-sdk-read-only"
 #_gitname=dingoo-sdk
