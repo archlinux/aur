@@ -3,7 +3,7 @@
 
 pkgname=cryfs
 pkgver=0.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Cryptographic filesystem for the cloud"
 arch=('armv7h' 'i686' 'x86_64')
 depends=('boost'
@@ -18,7 +18,7 @@ url="https://www.cryfs.org"
 license=('LGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/cryfs/$pkgname/tar.gz/$pkgver
         git+https://github.com/cryfs/cryfs.wiki)
-sha256sums=('4d65c462fa988f698090f00052cbb236cfc7e7524b872f96409187bc5285eedd'
+sha256sums=('4a5745bc3a04c934c931f8a578f08f7e19e59c2e2cb42d8f940e5154e0b5ba53'
             'SKIP')
 
 build() {
