@@ -1,5 +1,5 @@
 pkgbase = twitch-curses
-	pkgdesc = Terminal-based twitch.tv browser / livestreamer frontend
+	pkgdesc = Terminal-based twitch.tv browser / streamlink frontend
 	pkgver = 1.2
 	pkgrel = 1
 	url = https://gitlab.com/corbie/twitch-curses
