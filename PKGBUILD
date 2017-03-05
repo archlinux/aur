@@ -2,7 +2,7 @@
 
 pkgname=fzf-extras-git
 pkgver=20170208
-pkgrel=1
+pkgrel=2
 pkgdesc="Extra keybindings for fzf"
 arch=('any')
 depends=('fzf')
@@ -10,7 +10,6 @@ makedepends=('git')
 optdepends=('ctags: select tags'
             'git: git checkout fuzzy commits, branches'
             'mlocate: locate files'
-            'vim-fzf: fzf.vim'
             'xdg-utils: open files'
             'zsh: zsh keybindings')
 url="https://github.com/atweiden/fzf-extras"
