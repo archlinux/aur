@@ -2,7 +2,7 @@
 # Old Maintainer: onestone at gmail dot com
 
 pkgname=ttf-input
-pkgver=20170228
+pkgver=20170305
 pkgrel=1
 pkgdesc='Fonts for Code, from Font Bureau'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=()
 conflicts=()
 url_long="${url}build/?fontSelection=whole&a=0&g=0&i=0&l=0&zero=0&asterisk=0&braces=0&preset=default&line-height=1.2&accept=I+do&email="
 source=("Input-Font.zip::${url_long}")
-sha256sums=('dfb7cb3b3f81691d2c00a2db68e301ce06ac10c1c1f9d2ff7d8f816c09e42343')
+sha256sums=('be93f43ee012968a07d28de117c95854e7188c43340ee6811311c5168041f7b1')
 install=${pkgname}.install
 
 package() {
