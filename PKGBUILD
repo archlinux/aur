@@ -1,5 +1,5 @@
 pkgname=reaper
-pkgver=5.34
+pkgver=5.35
 pkgrel=1
 pkgdesc="digital audio workstation"
 arch=('x86_64')
@@ -7,9 +7,9 @@ url="http://www.reaper.fm"
 license=('custom')
 depends=('gdk-pixbuf2' 'gtk3' 'jack')
 makedepends=('git' 'gcc' 'make' 'lsb-release')
-source=("http://www.landoleet.org/dev/${pkgname}_534_developer_linux_x86_64.tar.xz"
+source=("http://www.landoleet.org/dev/${pkgname}_${pkgver//.}_developer_linux_x86_64.tar.xz"
 	"git+http://www-dev.cockos.com/wdl/WDL.git")
-md5sums=('5c95e410d3c4b2f55c129fbf0cf3367c'
+md5sums=('258cd292d6caf119ce3f08a2cf4ed5f9'
          'SKIP')
 
 build() {
