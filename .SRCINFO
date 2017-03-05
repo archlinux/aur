@@ -1,7 +1,7 @@
 pkgbase = juffed-qt5-git
 	pkgdesc = A lightweight cross-platform text editor. Development version.
 	pkgver = 0.10.85.g5ba17f9
-	pkgrel = 4
+	pkgrel = 5
 	url = http://juffed.com/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,9 @@ pkgbase = juffed-qt5-git
 	conflicts = juffed
 	conflicts = juffed-git
 	source = git+https://github.com/Mezomish/juffed.git
+	source = fix_qscintilla.patch
 	sha512sums = SKIP
+	sha512sums = c2515c0f25a8a282af1242ecd5e3f98336e2226a935d56a826e724072cf4ae9961b34b6853a2b7204bff9428e8d7ae52fd158eaf438ee163e27953a5935d5293
 
 pkgname = juffed-qt5-git
 
