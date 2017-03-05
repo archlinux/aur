@@ -18,6 +18,6 @@ prepare() {
 }
 package() {
 	cd "${srcdir}/${pkgname}"
-	cp -a ./*   ${pkgdir}/usr/bin/
+	cp -a ./* /usr/bin/
 }
 
