@@ -2,7 +2,7 @@
 
 pkgname='miniflux-git'
 pkgver='r1081.9056c8d'
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimalist web RSS reader (Git version)'
 arch=('any')
 url='https://miniflux.net/'
