@@ -12,7 +12,7 @@ depends=('php'
 conflicts=('miniflux')
 provides=('miniflux')
 optdepends=('postgresql: for non-sqlite db'
-            'php-pgsel: for non-sqlite db')
+            'php-pgsql: for non-sqlite db')
 makedepends=('git')
 options=('!strip')
 install=miniflux.install
