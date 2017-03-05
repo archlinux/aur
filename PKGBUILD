@@ -14,11 +14,12 @@ md5sums=('SKIP')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
-    install -d ${pkgdir}/usr
-    install -d ${pkgdir}/usr/bin
+
 }
 package() {
 	cd "${srcdir}/${pkgname}"
+        install -d ${pkgdir}/usr    
+        install -d ${pkgdir}/usr/bin
 	cp -a ./* ${pkgdir}/usr/bin/
 }
 
