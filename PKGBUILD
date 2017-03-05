@@ -19,7 +19,7 @@
 
 pkgname=trilinos-git
 _pkgname=Trilinos
-pkgver=r72712.5ed03bf9ef
+pkgver=r73423.32d771b900
 pkgrel=1
 pkgdesc="An effort to develop algorithms and enabling technologies within an object-oriented software framework for the solution of large-scale, complex multi-physics engineering and scientific problems."
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ url="https://github.com/trilinos/Trilinos"
 license=('LGPL3')
 depends=('lapack' 'openmpi' 'python2' 'boost')
 provides=('trilinos')
-conflicts=('trilinos' 'gtest')
+conflicts=('trilinos')
 source=(git+${url}.git)
 makedepends=('git' 'python2' 'python2-numpy' 'swig' 'gcc' 'gcc-fortran' 'openmpi' 'perl' 'blas' 'lapack' 'cmake' 'libmatio' 'netcdf')
 # gcc-fortran gcc-fortran-multilib
@@ -45,9 +45,6 @@ build() {
   find ${srcdir}/${_pkgname} -name "*" -type f -exec \
       sed -i 's#\(/usr/bin/env \|/usr/bin/\)python[2-3]*#\1python2#' {} \;
 
-  sed -i 's#SWIG_VERSION_CEILING 2.0.8#SWIG_VERSION_CEILING 3.0.2#' \
-      ${srcdir}/${_pkgname}/packages/PyTrilinos/CMakeLists.txt
-
   [[ -e build ]] && rm -rf build
   mkdir build
   cd build
@@ -62,6 +59,7 @@ build() {
       -DTrilinos_ENABLE_OpenMP:BOOL=ON \
       -DTPL_ENABLE_MPI:BOOL=ON \
       -DTrilinos_ENABLE_PyTrilinos:BOOL=ON \
+      -DPyTrilinos_DOCSTRINGS:BOOL=OFF \
       -DPYTHON_EXECUTABLE:PATH=/usr/bin/python2 \
       -DCMAKE_INSTALL_PREFIX:PATH=/opt/trilinos \
       -DTPL_ENABLE_Netcdf=ON          \
