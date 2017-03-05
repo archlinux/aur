@@ -1,0 +1,230 @@
+diff -Naupr ipt-netflow-2.2/compat.h ipt-netflow/compat.h
+--- ipt-netflow-2.2/compat.h	2016-02-21 20:24:29.000000000 +0600
++++ ipt-netflow/compat.h	2017-03-05 16:10:09.131706347 +0700
+@@ -589,13 +589,40 @@ out:
+ # define vlan_tx_tag_present skb_vlan_tag_present
+ #endif
+ 
+-/* NF_HOOK is 'define' in old code, but it's function in new code,
+- * also, it's function in, supposedly older, kernel version of Centos 7.[01],
+- * due to backporing. */
+-#if defined(NF_HOOK) || (defined(RHEL_MAJOR) && RHEL_MAJOR == 7 && RHEL_MINOR < 2)
+-# define NF_HOOK_COMPAT(a,b,c,d,e,f,g) NF_HOOK(a,b,  d,e,f,g)
+-#else /* new kernels */
+-# define NF_HOOK_COMPAT NF_HOOK
++#ifndef SPEED_UNKNOWN
++# define SPEED_UNKNOWN		-1
++#endif
++
++#if !defined __GNUC_PREREQ && defined __GNUC__ && defined __GNUC_MINOR__
++# define __GNUC_PREREQ(maj, min) \
++	((__GNUC__ << 16) + __GNUC_MINOR__ >= ((maj) << 16) + (min))
++#else
++# define __GNUC_PREREQ(maj, min) 0
++#endif
++
++/* ktime is not union anymore, since 2456e855354415bfaeb7badaa14e11b3e02c8466 */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,10,0)
++# define first_tv64	first.tv64
++# define last_tv64	last.tv64
++#else
++# define first_tv64	first
++# define last_tv64	last
++#endif
++
++/* Offset changes made in 613dbd95723aee7abd16860745691b6c7bda20dc */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,28) && LINUX_VERSION_CODE < KERNEL_VERSION(4,10,0)
++static inline u_int8_t xt_family(const struct xt_action_param *par)
++{
++	return par->family;
++}
++static inline const struct net_device *xt_in(const struct xt_action_param *par)
++{
++	return par->in;
++}
++static inline const struct net_device *xt_out(const struct xt_action_param *par)
++{
++	return par->out;
++}
+ #endif
+ 
+ #endif /* COMPAT_NETFLOW_H */
+diff -Naupr ipt-netflow-2.2/configure ipt-netflow/configure
+--- ipt-netflow-2.2/configure	2016-02-21 20:24:29.000000000 +0600
++++ ipt-netflow/configure	2017-03-05 16:10:09.131706347 +0700
+@@ -152,6 +152,34 @@ iptables_find_version() {
+   fi
+ }
+ 
++compiler_presence_test() {
++  echo -n "Check for working gcc: "
++  gcc -v >/dev/null 2>&1
++  if [ $? = 0 ]; then
++    echo Yes
++  else
++    echo No
++
++    echo "! You need gcc to install module from source"
++    if [ -s /etc/debian_version ]; then
++      NAME=Debian
++      if [ -e /etc/os-release ]; then
++	. /etc/os-release >/dev/null 2>&1
++      fi
++      echo "! "
++      echo "! Under $NAME try to run this:"
++      echo "!   root# apt-get install gcc"
++      echo "! "
++    elif [ -s /etc/redhat-release ]; then
++      echo "! "
++      echo "! Under Centos try to run this:"
++      echo "!   root# yum install gcc"
++      echo "! "
++    fi
++    exit 1
++  fi
++}
++
+ compile_libitp_test() {
+   local FLAGS
+   local MSG
+@@ -211,6 +239,7 @@ iptables_try_pkgconfig() {
+     # and if not, then it's older who need it.
+     IPTCFLAGS="-I$KDIR/include -DIPTABLES_VERSION=\\\\\"$IPTVER\\\\\""
+   fi
++  compiler_presence_test
+   if compile_libitp_test xtables.h; then
+     IPTCFLAGS="-DXTABLES $IPTCFLAGS"
+   elif ! compile_libitp_test iptables.h; then
+@@ -312,7 +341,7 @@ do
+     --disable-snmp-a*)   SKIPSNMP=1 ;;
+     --disable-net-snmp*) SKIPSNMP=1 ;;
+     --disable-dkms*)     SKIPDKMS=1 ;;
+-    --from-dkms-conf) ;;
++    --from-dkms-conf*) ;;
+     --make) echo called from make; CARGS=`echo $CARGS | sed s/--make//g` ;;
+     -Werror) KOPTS="$KOPTS -Werror" ;;
+     --help|-h) show_help ;;
+diff -Naupr ipt-netflow-2.2/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
+--- ipt-netflow-2.2/ipt_NETFLOW.c	2017-03-05 16:13:47.389314906 +0700
++++ ipt-netflow/ipt_NETFLOW.c	2017-03-05 16:10:09.131706347 +0700
+@@ -1219,11 +1219,14 @@ static int promisc4_rcv(struct sk_buff *
+ 	memset(IPCB(skb), 0, sizeof(struct inet_skb_parm));
+ 	skb_orphan(skb);
+ 
+-	return NF_HOOK_COMPAT(NFPROTO_IPV4, NF_INET_PRE_ROUTING,
++	return NF_HOOK(NFPROTO_IPV4, NF_INET_PRE_ROUTING,
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4,4,0)
+ 	    dev_net(dev),
+ #endif
+-	    NULL, skb, dev, NULL, promisc_finish);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,1,0) || (defined(RHEL_MAJOR) && RHEL_MAJOR == 7 && RHEL_MINOR > 1)
++	    NULL,
++#endif
++	    skb, dev, NULL, promisc_finish);
+ drop:
+ 	NETFLOW_STAT_INC(pkt_promisc_drop);
+ 	kfree_skb(skb);
+@@ -1291,11 +1294,14 @@ static int promisc6_rcv(struct sk_buff *
+ 	rcu_read_unlock();
+ 	skb_orphan(skb);
+ 
+-	return NF_HOOK_COMPAT(NFPROTO_IPV6, NF_INET_PRE_ROUTING,
++	return NF_HOOK(NFPROTO_IPV6, NF_INET_PRE_ROUTING,
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4,4,0)
+ 	    dev_net(dev),
+ #endif
+-	    NULL, skb, dev, NULL, promisc_finish);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,1,0) || (defined(RHEL_MAJOR) && RHEL_MAJOR == 7 && RHEL_MINOR > 1)
++	    NULL,
++#endif
++	    skb, dev, NULL, promisc_finish);
+ drop:
+ 	rcu_read_unlock();
+ 	NETFLOW_STAT_INC(pkt_promisc_drop);
+@@ -3466,8 +3472,10 @@ static inline void add_tpl_field(__u8 *p
+ 	case sourceMacAddress:	    memcpy(ptr, &nf->tuple.h_src, ETH_ALEN); break;
+ #endif
+ #ifdef MPLS_DEPTH
+-# pragma GCC diagnostic push
+-# pragma GCC diagnostic ignored "-Warray-bounds"
++# if __GNUC_PREREQ(4,6)
++#  pragma GCC diagnostic push
++#  pragma GCC diagnostic ignored "-Warray-bounds"
++# endif
+ 	case MPLS_LABEL_1:    memcpy(ptr, &nf->tuple.mpls[0], 3); break;
+ 	case MPLS_LABEL_2:    memcpy(ptr, &nf->tuple.mpls[1], 3); break;
+ 	case MPLS_LABEL_3:    memcpy(ptr, &nf->tuple.mpls[2], 3); break;
+@@ -3480,7 +3488,9 @@ static inline void add_tpl_field(__u8 *p
+ 	case MPLS_LABEL_9:    memcpy(ptr, &nf->tuple.mpls[8], 3); break;
+ 	case MPLS_LABEL_10:   memcpy(ptr, &nf->tuple.mpls[9], 3); break;
+ # endif
+-# pragma GCC diagnostic pop
++# if __GNUC_PREREQ(4,6)
++#  pragma GCC diagnostic pop
++# endif
+ 	case mplsTopLabelTTL: *ptr = ntohl(nf->tuple.mpls[0]); break;
+ #endif
+ #ifdef ENABLE_DIRECTION
+@@ -3853,10 +3863,10 @@ static void netflow_export_stats(void)
+ 		t.pkts_selected	+= st->pkts_selected;
+ 		t.pkts_observed	+= st->pkts_observed;
+ #endif
+-		t.drop.first.tv64 = min_not_zero(t.drop.first.tv64, st->drop.first.tv64);
+-		t.drop.last.tv64  = max(t.drop.last.tv64, st->drop.last.tv64);
+-		t.lost.first.tv64 = min_not_zero(t.lost.first.tv64, st->lost.first.tv64);
+-		t.lost.last.tv64  = max(t.lost.last.tv64, st->lost.last.tv64);
++		t.drop.first_tv64 = min_not_zero(t.drop.first_tv64, st->drop.first_tv64);
++		t.drop.last_tv64  = max(t.drop.last_tv64, st->drop.last_tv64);
++		t.lost.first_tv64 = min_not_zero(t.lost.first_tv64, st->lost.first_tv64);
++		t.lost.last_tv64  = max(t.lost.last_tv64, st->lost.last_tv64);
+ 	}
+ 
+ 	export_stat_st(OTPL_MPSTAT, &t);
+@@ -4771,8 +4781,8 @@ static unsigned int netflow_target(
+ 			   const void *targinfo
+ # endif
+ #else /* since 2.6.28 */
+-# define if_in  par->in
+-# define if_out par->out
++# define if_in  xt_in(par)
++# define if_out xt_out(par)
+ # if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,35)
+ 			   const struct xt_target_param *par
+ # else
+@@ -4799,7 +4809,7 @@ static unsigned int netflow_target(
+ #ifdef ENABLE_DIRECTION
+ 	const int hooknum = par->hooknum;
+ #endif
+-	const int family = par->family;
++	const int family = xt_family(par);
+ #endif
+ 	struct ipt_netflow_tuple tuple;
+ 	struct ipt_netflow *nf;
+diff -Naupr ipt-netflow-2.2/ipt_NETFLOW.h ipt-netflow/ipt_NETFLOW.h
+--- ipt-netflow-2.2/ipt_NETFLOW.h	2016-02-21 20:24:29.000000000 +0600
++++ ipt-netflow/ipt_NETFLOW.h	2017-03-05 16:10:09.131706347 +0700
+@@ -414,7 +414,7 @@ struct netflow_aggr_p {
+ #define NETFLOW_STAT_TS(count)							 \
+ 	do {									 \
+ 		ktime_t kts = ktime_get_real();					 \
+-		if (!(__get_cpu_var(ipt_netflow_stat)).count.first.tv64)	 \
++		if (!(__get_cpu_var(ipt_netflow_stat)).count.first_tv64)	 \
+ 			__get_cpu_var(ipt_netflow_stat).count.first = kts;	 \
+ 		__get_cpu_var(ipt_netflow_stat).count.last = kts;		 \
+ 	} while (0);
+diff -Naupr ipt-netflow-2.2/Makefile.in ipt-netflow/Makefile.in
+--- ipt-netflow-2.2/Makefile.in	2016-02-21 20:24:29.000000000 +0600
++++ ipt-netflow/Makefile.in	2017-03-05 16:10:09.131706347 +0700
+@@ -64,10 +64,10 @@ sinstall: | snmp_NETFLOW.so IPT-NETFLOW-
+ 	fi
+ 
+ %_sh.o: libipt_NETFLOW.c
+-	gcc -O2 -Wall -Wunused $(IPTABLES_CFLAGS) -fPIC -o $@ -c libipt_NETFLOW.c
++	$(CC) $(CFLAGS) -O2 -Wall -Wunused $(IPTABLES_CFLAGS) -fPIC -o $@ -c libipt_NETFLOW.c
+ 
+ %.so: %_sh.o
+-	gcc -shared -o $@ $<
++	$(CC) -shared -o $@ $<
+ 
+ version.h: ipt_NETFLOW.c ipt_NETFLOW.h compat.h Makefile
+ 	@./version.sh --define > version.h
