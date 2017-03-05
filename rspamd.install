@@ -1,20 +1,12 @@
 ## arg 1:  the new package version
 post_install() {
-  if ! getent passwd _rspamd >/dev/null; then
-    useradd -k /dev/null -r -m -c 'rspam daemon' -d /var/lib/rspamd -s /sbin/nologin _rspamd
-    passwd -l _rspamd >/dev/null
-  fi
-  mkdir -p /var/log/rspamd
-  mkdir -p /run/rspamd
-  chown _rspamd:_rspamd /var/log/rspamd
-  chown _rspamd:_rspamd /run/rspamd
+	systemd-sysusers rspamd.conf
+	systemd-tmpfiles --create rspamd.conf
 }
 
 ## arg 1:  the old package version
 post_remove() {
-  if getent passwd _rspamd >/dev/null; then
-    userdel _rspamd
-  fi
+	true
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: set tabstop=4:softtabstop=4:shiftwidth=4:noexpandtab

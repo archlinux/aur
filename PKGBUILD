@@ -2,7 +2,7 @@
 # Former maintainer: Andrew Lewis <nerf@judo.za.org>
 pkgname=rspamd
 pkgver=1.5.1
-pkgrel=4
+pkgrel=6
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
 arch=('x86_64' 'i686' 'mips64el')
@@ -56,11 +56,16 @@ backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/worker-fuzzy.inc'
 		'etc/rspamd/worker-normal.inc')
 
-install=rspamd.install
+install="rspamd.install"
 
-source=("https://www.rspamd.com/downloads/${pkgname}-${pkgver}.tar.xz")
+source=("https://www.rspamd.com/downloads/${pkgname}-${pkgver}.tar.xz"
+		"${pkgname}.tmpfile"
+		"${pkgname}.sysuser"
+		)
 
-sha256sums=('18e0f15d0121c3971cd11e7db1e15c0634289b1493b88656088fed0db92bc220')
+sha256sums=('18e0f15d0121c3971cd11e7db1e15c0634289b1493b88656088fed0db92bc220'
+            'f89edae5436a3c14e58210fb5c1d5bdd2f8a6f98c03dbc150ea9ff1a3fcfe441'
+            '59646874a5036f3f26cac2898a2f60713fe6147b3c60ee964494f07b6acc313f')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -76,13 +81,16 @@ build() {
 		-DWANT_SYSTEMD_UNITS=ON \
 		.
 
-	make -j1
+	make -j$(nproc)
 }
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}/" install
 
-	install -Dm0644 'LICENSE' "${pkgdir}/usr/share/${pkgname}/LICENSE"
+	install -Dm0644 "LICENSE" "${pkgdir}/usr/share/${pkgname}/LICENSE"
+	install -Dm0644 "../${pkgname}.tmpfile" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+	install -Dm0644 "../${pkgname}.sysuser" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 }
 
+# vim: set tabstop=4:softtabstop=4:shiftwidth=4:noexpandtab

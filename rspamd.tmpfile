@@ -1,0 +1,2 @@
+d /run/rspamd 0755 _rspamd _rspamd -
+d /var/log/rspamd 0755 _rspamd _rspamd -
