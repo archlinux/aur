@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=zef
-pkgver=0.0.1
-pkgrel=4
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Perl6 Module Management"
 arch=('any')
 depends=('perl6')
