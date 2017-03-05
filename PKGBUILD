@@ -20,7 +20,7 @@ conflicts=('pamac')
 provides=('pamac')
 options=(!emptydirs)
 
-source=("git://github.com/gaurapanasenko/pamac.git")
+source=("git://github.com/gaurapanasenko/pamac.git#branch=switchinstallreason")
 sha256sums=('SKIP')
   
 #prepare() {

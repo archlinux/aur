@@ -28,7 +28,7 @@ pkgbase = pamac-gaura-git
 	conflicts = pamac
 	options = !emptydirs
 	backup = etc/pamac.conf
-	source = git://github.com/gaurapanasenko/pamac.git
+	source = git://github.com/gaurapanasenko/pamac.git#branch=switchinstallreason
 	sha256sums = SKIP
 
 pkgname = pamac-gaura-git
