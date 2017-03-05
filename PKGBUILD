@@ -5,9 +5,9 @@
 pkgname=libxfce4ui-git
 pkgver=4.13.1.r35.g5ee0ea4
 pkgrel=1
-pkgdesc="Commonly used Xfce widgets among Xfce applications"
+pkgdesc="Commonly used Xfce widgets among Xfce applications - git checkout"
 arch=('i686' 'x86_64')
-url="http://www.xfce.org/"
+url="https://git.xfce.org/xfce/libxfce4ui/tree/README"
 license=('GPL2')
 depends=('libxfce4util>=4.12.0' 'gtk2>=2.24.0' 'xfconf>=4.12.0' 'libsm' 'hicolor-icon-theme')
 makedepends=('intltool' 'gtk-doc')

@@ -1,8 +1,8 @@
 pkgbase = libxfce4ui-git
-	pkgdesc = Commonly used Xfce widgets among Xfce applications
+	pkgdesc = Commonly used Xfce widgets among Xfce applications - git checkout
 	pkgver = 4.13.1.r35.g5ee0ea4
 	pkgrel = 1
-	url = http://www.xfce.org/
+	url = https://git.xfce.org/xfce/libxfce4ui/tree/README
 	arch = i686
 	arch = x86_64
 	license = GPL2
