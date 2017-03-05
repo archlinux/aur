@@ -122,7 +122,7 @@ build() {
   fi
   
   # Build
-  msg2 "Running make client.mk.."
+  msg2 "Running make -f client.mk build.."
   # make -f client.mk profiledbuild
   make -f client.mk build
 
@@ -153,7 +153,7 @@ package() {
   cd $_hgrepo
   
   # Install
-  msg2 "Running make client.mk install.."
+  msg2 "Running make -f client.mk install.."
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
 
   # Rename dir
