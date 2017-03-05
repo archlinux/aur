@@ -23,6 +23,16 @@ pkgver () {
 	)
 }
 
+prepare() {
+	cd "${pkgname}"
+	sed -i -e '24s#cmake#cmake/${PROJECT_NAME}#' cmake/QtLuaPaths.cmake
+	sed -i \
+		-e '7iSET(QTLUA_LIB_DIR "@CMAKE_INSTALL_PREFIX@/@QtLua_INSTALL_LIB_SUBDIR@")' \
+		-e '9iINCLUDE_DIRECTORIES(${QTLUA_INCLUDE_DIR})\nLINK_DIRECTORIES(${QTLUA_LIB_DIR})' \
+		-e '2d' qtlua/QtLuaConfig.cmake.in
+	sed -i -e '57s#)# @ONLY)#' qtlua/CMakeLists.txt
+}
+
 build () {
 	cd "${pkgname}"
 	[ ! -d build ] && mkdir build
@@ -34,9 +44,9 @@ build () {
 		-DLUA_LIBDIR=/usr/lib/lua/5.1 \
 		-DLUA=luajit \
 		-DLUA_BINDIR=/usr/bin \
-		-DLUADIR=/usr/share/lua/5.1/ \
+		-DLUADIR=/usr/share/lua/5.1 \
 		-DLIBDIR=/usr/lib/lua/5.1 \
-		-DCONFDIR=/usr/share/
+		-DCONFDIR=/usr/share
 	make
 }
 
