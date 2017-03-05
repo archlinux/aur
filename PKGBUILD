@@ -1,6 +1,6 @@
 # Maintainer: Szilveszter Székely <szekelyszilv at gmail dot com>
 pkgname=jutoh
-pkgver=2.57
+pkgver=2.58
 pkgrel=1
 pkgdesc="An ebook creation tool"
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ source_i686=(http://www.jutoh.com/Jutoh-${pkgver}-i386.tar.gz)
 source_x86_64=(http://www.jutoh.com/Jutoh-${pkgver}-x86_64.tar.gz)
 
 sha512sums=('620b4f443129c87dab2a49669d466a2e78979a52a4068e61f2b8f2c318100d2c453261b80250fe78be144c11aa2a41f91a178fb70281ac138727c096e67727fd')
-sha512sums_i686=('e5339a409756821a05f60b228d4f6886e2a312d3b54a15628185dc79471202128060c0def00f9cb97dff415d3cb1599ba94e238a19a38077880dab576a833ab3')
-sha512sums_x86_64=('8c21e51645a04f5f08b200cb6ad16930af264764e9c683d0112772567fdad849ae172d4b91c38e585e476c0bd431c20f6dd804307df5d13ace09a986ebe4e2b9')
+sha512sums_i686=('f9c18615c612745d4c221da920957def955530f91210df8985eadbc00c85b5dfa4e2640cde2ac792c5b71cc5fa288c71a40018392c70887bd939a8c4dda8bdfe')
+sha512sums_x86_64=('38e3eaffc181221a25c62d63110c76784f6b45155c3f4144bb6fa202f01648e91f6ac1c2d6fd6824339a0335170c9c54351680a630f6165d543c5acdaa6b8108')
 
 prepare() {
   mkdir ${srcdir}/jutoh-data
