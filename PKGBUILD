@@ -2,7 +2,7 @@
 
 pkgname=thonny
 pkgver=2.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Python IDE for beginners."
 arch=('any')
 url="http://thonny.cs.ut.ee/"
@@ -17,6 +17,8 @@ package() {
 	
 	# Patch version number for python3.6
 	sed -i 's|python3.5|python3.6|' "$pkgname/bin/thonny"
+	sed -i 's|python3.5|python3.6|' "$pkgname/templates/Thonny.desktop"
+	
 	install -Dm 755 "$pkgname/bin/thonny" "$pkgdir/usr/bin/thonny"
 		
 	sed -i 's|$target_dir|/usr|' "$pkgname/templates/Thonny.desktop"
@@ -25,6 +27,8 @@ package() {
 	
 	install -Dm 644 "$pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	
+	# Install.py currently does not allow for setting root for creating a package
+	# Files must by copied manually for now in section below.	
 	install -d  644 "$pkgdir/usr/lib/python3.6/site-packages/thonny"
 	cp -dr --no-preserve=ownership "$pkgname/lib/python3.5/site-packages/thonny" \
 		"$pkgdir/usr/lib/python3.6/site-packages"
