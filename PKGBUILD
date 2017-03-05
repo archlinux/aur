@@ -1,128 +1,176 @@
 # Maintainer: Det <nimetonmaili g-mail>
-# Based on [extra]'s thunderbird
-
-# NOTE: Enable PGO on x86_64?: http://en.wikipedia.org/wiki/Profile-guided_optimization
-_pgo=0  # "1" to enable
+# Based on [extra]'s thunderbird: https://git.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/thunderbird
 
 pkgname=thunderbird-beta
 pkgver=52.0b4
-_major=${pkgver/rc*}
+_major=${pkgver/[br]*}
 _build=${pkgver/*rc}
 pkgrel=1
-pkgdesc="Standalone Mail/News reader - Bleeding edge version with optional PGO"
-arch=('i686' 'x86_64')
-url="https://www.mozilla.org/thunderbird"
-license=('GPL' 'LGPL' 'MPL')
-depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'alsa-lib' 'libvpx' 'libevent' 'nss' 'hunspell'
-         'sqlite' 'ttf-font' 'icu')
-makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'gconf'
-             'libpulse' 'inetutils')
+pkgdesc="Standalone mail and news reader from mozilla.org - Bleeding edge version"
+arch=(i686 x86_64)
+license=(MPL GPL LGPL)
+url="https://www.mozilla.org/thunderbird/"
+depends=(gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib
+         libvpx libevent nss hunspell sqlite ttf-font icu)
+makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils
+             autoconf2.13) ###
 optdepends=('libcanberra: for sound support')
-[[ $_pgo = 1 ]] && makedepends+=('imake' 'xorg-server-xvfb')
-provides=("thunderbird=$pkgver")
+options=(!emptydirs !makeflags)
 install=$pkgname.install
-options=('!emptydirs' '!makeflags')
-source=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz"
-        'mozconfig'
-        'mozconfig-pgo'
-        "$pkgname.desktop"
-        "$pkgname-safe.desktop"
-        'vendor.js')
-sha512sums=(''
-            '317f268a97639fce06b368973ddee4af23494c4717eeb820bfd866ee72559f60fc515d2796fe230ee225819ee7c064f4d833ccc1ae32059972931a004fd8c777'
-            'e834b0758e57d1bdccb178a45538e4ff8797eb9ecebc2965e78f08c6aaaf515bb9210d572aa1c6584db2e8bf89bce7ac97c8ca2f4561510fb1ac729ee5a487f7'
-            'fc83c23f67cc5d399bc655d2486936db3ab500bafe399a905a17a0b0f63ad9befb782fc9c07d467a65a80a00e3ce984700ec3cf60e4cb3e1b29b20954c6fa775'
-            '3cf4194575041bbe344d6cd17e473eb78caf7e2e1aa8b1309151f7e4677c33571014ba6d7aba267398c3ba69c825c64363272b82b15f7dbb8ae5e3e825f439b7'
-            'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
+source=(https://launchpad.net/~mozillateam/+archive/ubuntu/thunderbird-next/+files/thunderbird_52.0~b4+build1.orig.tar.bz2
+# source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
+        thunderbird-beta.desktop
+        fix-wifi-scanner.diff
+        firefox-gcc-6.0.patch)
+sha512sums=('5003e4f79bba891b7ad30ce30ca592289703ee174b8c5322975ef2078b48e4c4148454246649e98825f3d75d14dcd154ea467aec062590e8c82172a4e06b0e5e'
+            '057513bc1b2573f31986916dc905f2e1a165e7500fea51ce7cba1f9f600c0a74396d0d39283ec5ee76fb401133bc614ebcf803b5d15fadac46728d55e30353ea'
+            '1bd2804bea1fe8c85b602f8c5f8777f4ba470c9e767ad284cb3d0287c6d6e1b126e760738d7c671f38933ee3ec6b8931186df8e978995b5109797ae86dfdd85a'
+            '1bb8887cfc12457a83045db559bbd13954a177100309b4f6c82a5f733675e83751bfecf501f505345f81fd2688fc5b02e113962cf0a0df27b29790f40cb9406b')
 # RC
 if [[ $_build = ? ]]; then
   source[0]="https://ftp.mozilla.org/pub/thunderbird/candidates/$_major-candidates/build$_build/source/thunderbird-$_major.source.tar.xz"
 fi
 
+# Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
+# Note: These are for Arch Linux use ONLY. For your own distribution, please
+# get your own set of keys. Feel free to contact foutrelis@archlinux.org for
+# more information.
+_google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
+
+# Mozilla API keys (see https://location.services.mozilla.com/api)
+# Note: These are for Arch Linux use ONLY. For your own distribution, please
+# get your own set of keys. Feel free to contact heftig@archlinux.org for
+# more information.
+_mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
+
 prepare() {
-  cd thunderbird-$pkgver
+  # Link Python2
+  mkdir -p path
+  ln -sf /usr/bin/python2 path/python
 
-  # Create directories
-  msg2 "Creating directory structure..."
-  install -d "$pkgdir"/usr/bin
-  install -d "$pkgdir"/usr/share/applications
-  install -d "$pkgdir"/opt
+  cd thunderbird-52.0~b4+build1
+#   cd thunderbird-$pkgver
 
-  # PGO?
-  if [[ $CARCH = x86_64 ]] && [[ $_pgo = 1 ]]; then
-    cp "$srcdir"/mozconfig-pgo .mozconfig
-  else
-    cp "$srcdir"/mozconfig .mozconfig
-  fi
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
+  msg2 "fix-wifi-scanner.diff"
+  patch -d mozilla -Np1 < ../fix-wifi-scanner.diff
 
-  # configure script misdetects the preprocessor without an optimization level
-  # https://bugs.archlinux.org/task/34644
-  sed -i '/ac_cpp=/s/$CPPFLAGS/& -O2/' mozilla/configure
+  # Required for GCC 6
+  msg2 "firefox-gcc-6.0.patch"
+  patch -d mozilla -Np1 < ../firefox-gcc-6.0.patch
+
+  # API keys
+  echo -n "$_google_api_key" > google-api-key
+  echo -n "$_mozilla_api_key" > mozilla-api-key
+
+  # mozconfig
+  cat > .mozconfig <<END
+ac_add_options --enable-application=mail
+
+ac_add_options --prefix=/usr
+ac_add_options --libdir=/opt/
+ac_add_options --enable-release
+ac_add_options --enable-gold
+ac_add_options --enable-pie
+
+# Branding
+ac_add_options --enable-official-branding
+
+# Keys
+ac_add_options --with-google-api-keyfile=${PWD@Q}/google-api-key
+ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
+
+# System libraries
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+ac_add_options --with-system-icu
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-zlib
+ac_add_options --with-system-bz2
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
+ac_add_options --enable-system-hunspell
+ac_add_options --enable-system-sqlite
+ac_add_options --enable-system-ffi
+ac_add_options --enable-system-pixman
+
+# Features
+ac_add_options --enable-startup-notification
+ac_add_options --disable-crashreporter
+ac_add_options --disable-updater
+ac_add_options --disable-tests ###
+ac_add_options --disable-debug-symbols ###
+
+STRIP_FLAGS="--strip-debug"
+END
 }
 
 build() {
-  cd thunderbird-$pkgver
+  cd thunderbird-52.0~b4+build1
+#   cd thunderbird-$pkgver
 
-  # Build flags
-  export LDFLAGS="$LDFLAGS -Wl,-rpath,/opt/$pkgname"
-  export PYTHON="/usr/bin/python2"
+  # _FORTIFY_SOURCE causes configure failures
+  CPPFLAGS+=" -O2"
 
-  if [[ $CARCH = x86_64 ]] && [[ $_pgo = 1 ]]; then
-    # Set up PGO
-    msg2 "Running Xvfb.."
-    export DISPLAY=:99
-    Xvfb -nolisten tcp -extension GLX -screen 0 1280x1024x24 $DISPLAY &
+  # Hardening
+  LDFLAGS+=" -Wl,-z,now"
 
-    # Build
-    msg2 "Running make.."
-    if ! make -f client.mk build MOZ_MAKE_FLAGS="$MAKEFLAGS" MOZ_PGO=1; then
-      kill $!
-      return 1
-    fi
+  # GCC 6
+  CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
 
-    # Kill leftovers
-    kill $! || true
-  else
-    msg2 "Running make.."
-    make -f client.mk build MOZ_MAKE_FLAGS="$MAKEFLAGS"
-  fi
+  # Export build path
+  export PATH="$srcdir/path:$PATH"
+
+  # Build
+  msg2 "Running make -f client.mk build.."
+  make -f client.mk build
 }
 
 package() {
-  cd thunderbird-$pkgver
-
-  # Create directories
-  install -d "$pkgdir"/usr/bin
-  install -d "$pkgdir"/usr/share/applications
-  install -d "$pkgdir"/opt
-
-  # Put together
-  msg2 "Running make install.."
-  make -f client.mk DESTDIR="$pkgdir" install
+  cd thunderbird-52.0~b4+build1
+#   cd thunderbird-$pkgver
 
   # Install
-  msg2 "Moving stuff in place..."
-  cd obj-$CARCH-unknown-linux-gnu/dist
-  cp -r thunderbird/ "$pkgdir"/opt/$pkgname
-  
-  # /usr/bin symlink
-  ln -sf /opt/$pkgname/thunderbird "$pkgdir"/usr/bin/$pkgname
+  msg2 "Running make -f client.mk install.."
+  make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
 
   # vendor.js
-  install -Dm644 "$srcdir"/vendor.js "$pkgdir"/opt/$pkgname/defaults/preferences/vendor.js
+  _vendorjs="$pkgdir/opt/thunderbird-$_major/defaults/preferences/vendor.js"
+  install -Dm644 /dev/stdin "$_vendorjs" <<END
+// Use LANG environment variable to choose locale
+pref("intl.locale.matchOS", true);
+
+// Disable default mailer checking.
+pref("mail.shell.checkDefaultMail", false);
+
+// Don't disable our bundled extensions in the application directory
+pref("extensions.autoDisableScopes", 11);
+pref("extensions.shownSelectionUI", true);
+END
 
   # Icons
-  for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
-    install -Dm644 "$srcdir"/thunderbird-$pkgver/other-licenses/branding/thunderbird/mailicon${i/x*}.png \
-                   "$pkgdir"/usr/share/icons/hicolor/$i/apps/$pkgname.png
+  for i in 16 22 24 32 48 256; do
+    install -Dm644 other-licenses/branding/thunderbird/mailicon$i.png \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/thunderbird-beta.png"
   done
 
   # Desktop
-  install -m644 "$srcdir"/*.desktop "$pkgdir"/usr/share/applications/
+  install -Dm644 ../thunderbird-beta.desktop \
+    "$pkgdir/usr/share/applications/thunderbird-beta.desktop"
 
-  # Dictionaries/hyphenation
-  rm -rf "$pkgdir"/opt/$pkgname/{dictionaries,hyphenation}
-  ln -sf /usr/share/hunspell "$pkgdir"/opt/$pkgname/dictionaries
-  ln -sf /usr/share/hyphen "$pkgdir"/opt/$pkgname/hyphenation
+  # Use system-provided dictionaries
+  rm -r "$pkgdir"/opt/thunderbird-$_major/dictionaries
+  ln -Ts /usr/share/hunspell "$pkgdir/opt/thunderbird-$_major/dictionaries"
+  ln -Ts /usr/share/hyphen "$pkgdir/opt/thunderbird-$_major/hyphenation"
+
+  # Install a wrapper to avoid confusion about binary path
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/thunderbird-beta" <<END
+#!/bin/sh
+exec /opt/thunderbird-$_major/thunderbird "\$@"
+END
+
+  # Replace duplicate binary with wrapper
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
+  ln -srf "$pkgdir/usr/bin/thunderbird-beta" \
+    "$pkgdir/opt/thunderbird-$_major/thunderbird-bin"
 }
