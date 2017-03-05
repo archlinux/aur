@@ -1,0 +1,14 @@
+pkgbase = sddm-theme-deepin-git
+	pkgdesc = Deepin Theme for SDDM by Match-Yang
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/Match-Yang/sddm-deepin
+	arch = any
+	license = CCPL:cc-by-sa
+	depends = sddm
+	depends = qt5-graphicaleffects
+	source = git+https://github.com/Match-Yang/sddm-deepin.git#branch=master
+	md5sums = SKIP
+
+pkgname = sddm-theme-deepin-git
+
