@@ -1,0 +1,17 @@
+APP_PATH="/usr/share/webapps/miniflux"
+DATA_PATH="/var/lib/miniflux"
+
+post_install() {
+    cat << EOF
+
+If using nginx don't forget to lock down $APP_PATH/data/db.sqlite!
+EOF
+post_upgrade
+}
+
+post_upgrade() {
+    chown -R http:http "${APP_PATH}"
+    chown -R http:http "${DATA_PATH}"
+
+    ln -s "${DATA_PATH}" "${APP_PATH}/data"
+}
