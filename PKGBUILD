@@ -3,14 +3,14 @@
 
 pkgname=xfdashboard-git
 pkgver=r1254.111a6cd
-pkgrel=1
+pkgrel=2
 pkgdesc="Maybe a Gnome shell like dashboard for Xfce"
 conflicts=('xfdashboard')
 provides=('xfdashboard')
 arch=('i686' 'x86_64')
 url="http://xfdashboard.froevel.de/"
 license=('GPL')
-depends=('clutter>=1.12' 'dbus-glib>=0.98' 'garcon>=0.2.0' 'glib2>=2.30.3' 'libwnck>=2.30' 'xfconf>=4.10.0')
+depends=('clutter>=1.12' 'dbus-glib>=0.98' 'garcon>=0.2.0' 'glib2>=2.32' 'libwnck3>=3.0' 'xfconf>=4.10.0')
 makedepends=('xfce4-dev-tools' 'git')
 source=("git://github.com/gmc-holle/xfdashboard.git")
 sha1sums=('SKIP')
