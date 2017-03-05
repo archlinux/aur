@@ -5,7 +5,6 @@ pkgrel=1
 pkgdesc="Privoxy rule to filter web advertisement."
 arch=('any')
 url="https://github.com/qwIvan/privoxy-adfilter"
-depends=('dnsmasq')
 source=("git+https://github.com/qwIvan/$pkgname.git")
 md5sums=('SKIP')
 install='privoxy-adfilter.install'
