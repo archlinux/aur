@@ -9,7 +9,7 @@
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
 _pkgmajor=2.29
-pkgver=${_pkgmajor}.1
+pkgver=${_pkgmajor}.2
 pkgrel=1
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
@@ -27,7 +27,7 @@ validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${pkgbase/-selinux}-$pkgver.tar."{xz,sign}
         pam-{login,common,su}
         '0001-sfdisk-support-empty-label-use-case.patch')
-md5sums=('0cbb6d16ab9c5736e5649ef1264bee6e'
+md5sums=('63c40c2068fcbb7e1d5c1d281115d973'
          'SKIP'
          '4368b3f98abd8a32662e094c54e7f9b1'
          'a31374fef2cba0ca34dfc7078e2969e4'
