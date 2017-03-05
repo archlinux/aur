@@ -74,7 +74,7 @@ package_cblas-tmg() {
 }
 
 package_lapacke-tmg() {
-  pkgdesc="C interface to LAPACK"
+  pkgdesc="C interface to LAPACK with TMG lib"
   depends=("lapack-tmg")
   conflicts=("lapacke")
   provides=("lapacke")
