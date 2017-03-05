@@ -1,20 +1,19 @@
 # Maintainer: Steffen Fritz <aur AT fritz DOT wtf>
 pkgname=pacaudit
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="This package audits installed packages against known vulnerabilities. Use after pacman -Syu."
 arch=('i686' 'x86_64')
 url="https://github.com/steffenfritz/pacaudit"
 license=('GPL3')
-depends=('glibc')
 makedepends=('go')
 options=('!strip')
 
 validpgpkeys=('7328F6E376924E4EE266381D3D9C808E038A615C')
-sha256sums=('35ed29090930a2e9db27cb1dfa146f5e2b791170e9bb1e702a12f9ddd5f88ba8'
-'9d005fd61f1340e7b7c03dc6e01e6c3202e28ad1b00be793b39b2bbcda9530c8')
+sha256sums=('977ff963384360cf1646e26e2e0777312613edeaea622dd4e184791c4bdb3f0e'
+'214484bdf4bab2e5be27bf8889cd9196838334cc8b5cadbdc7d6c5a918440692')
 
-source=("https://github.com/steffenfritz/pacaudit/archive/v0.3.0.tar.gz" "https://fritz.wtf/v$pkgver.tar.gz.asc")
+source=("https://github.com/steffenfritz/pacaudit/archive/v$pkgver.tar.gz" "https://fritz.wtf/v$pkgver.tar.gz.asc")
 
 build() {
     cd pacaudit-$pkgver
