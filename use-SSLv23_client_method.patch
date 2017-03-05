@@ -1,0 +1,13 @@
+diff -uprb httperf-0.9.0.orig/src/httperf.c httperf-0.9.0/src/httperf.c
+--- httperf-0.9.0.orig/src/httperf.c	2007-04-07 10:01:56.000000000 +0300
++++ httperf-0.9.0/src/httperf.c	2016-03-02 21:09:57.376029451 +0200
+@@ -808,7 +808,8 @@ main (int argc, char **argv)
+       SSLeay_add_ssl_algorithms ();
+ 
+       /* for some strange reason, SSLv23_client_method () doesn't work here */
+-      ssl_ctx = SSL_CTX_new (SSLv3_client_method ());
++      /* hopefully the above comment is a lie */
++      ssl_ctx = SSL_CTX_new (SSLv23_client_method ());
+       if (!ssl_ctx)
+ 	{
+ 	  ERR_print_errors_fp (stderr);
