@@ -1,7 +1,7 @@
 # Maintainer: Gui||aume <michaudg@gmail.com>
 
 pkgname=rocketchat-client
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="The Ultimate Open Source Web Chat Platform"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://rocket.chat"
 options=()
 
 source_x86_64=("https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${pkgver}/rocketchat_${pkgver}_amd64.deb")
-md5sums_x86_64=('93caeda73553021e04a2807eae94479b')
+md5sums_x86_64=('203ce2da73f7ad34a8b64b3484a05653')
 
 depends=('libnotify' 'gconf')
 optdepends=()
