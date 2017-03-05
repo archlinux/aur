@@ -14,10 +14,11 @@ md5sums=('SKIP')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
-
+    mkdir ${pkgdir}/usr
+    mkdir ${pkgdir}/usr/bin
 }
 package() {
 	cd "${srcdir}/${pkgname}"
-	cp -a ./* /usr/bin/
+	cp -a ./* ${pkgdir}/usr/bin/
 }
 
