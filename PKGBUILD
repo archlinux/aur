@@ -3,7 +3,7 @@
 
 pkgname=mdm-display-manager
 _pkgname=mdm
-pkgver=2.0.16
+pkgver=2.0.17
 pkgrel=1
 pkgdesc="The MDM Display Manager"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ source=("https://github.com/linuxmint/${_pkgname}/archive/${pkgver}.tar.gz"
     	'defaults.conf'
     	'org.cinnamon.pkexec.mdmsetup.policy'
     	'mdm-plymouth.service')
-sha256sums=('57435464c180496a8c083173d4e8da7ad1856b6579e50ff6b04c123247e22faf'
+sha256sums=('60a6e5b82be42320dda06c397f61d3768f599d344c2c5f357c4a8066e91c4f49'
             '8663192f02fbbcaf9b84a37a44d47af7381c18d4327c576ca7924baca2cc163b'
             'd3dd582eb25bb31f012167069c869d3ce89c1dbd9b5aa7396350d8cf609994a5'
             '479e8fd4d5ef353fec5af776ad05e4f414a92d6f374f9b8f5deef77b9e301bc7'
