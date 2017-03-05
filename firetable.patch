@@ -1,0 +1,14 @@
+--- src/firetable.orig	2016-02-01 05:56:51.000000000 -0400
++++ src/firetable	2017-03-05 02:57:38.438899000 -0400
+@@ -805,9 +805,9 @@
+ 
+ 			foreach ($interfaces as $interface) {
+ 				if ($this->ip_version == 4) {
+-					$this->server = trim(exec("ip addr list ".$interface." | grep 'inet ' | sed 's/^ *//' | cut -d' ' -f2 | cut -d/ -f1"));
++					$this->server = trim(exec("ip addr list ".$interface." | grep 'inet ' | sed 's/^ *//' | cut -d' ' -f2 | cut -d/ -f1 | head -n 1"));
+ 				} else {
+-					$this->server = trim(exec("ip addr list ".$interface." | grep 'scope global' | grep inet6 | sed 's/^ *//' | cut -d' ' -f2 | cut -d/ -f1"));
++					$this->server = trim(exec("ip addr list ".$interface." | grep inet6 | sed 's/^ *//' | cut -d' ' -f2 | cut -d/ -f1 | head -n 1"));
+ 				}
+ 
+ 				if ($this->server == "") {

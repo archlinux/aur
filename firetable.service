@@ -2,9 +2,10 @@
 Description=Firetable firewall daemon
 
 [Service]
-Type=forking
-ExecStart=/usr/bin/firetable-start
+Type=oneshot
+ExecStart=/usr/bin/firetable start
 ExecStop=/usr/bin/firetable stop
+RemainAfterExit=true
 
 [Install]
 WantedBy=network.target
