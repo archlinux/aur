@@ -1,0 +1,7 @@
+post_install() {
+    usr/bin/udevadm control --reload-rules
+}
+
+post_upgrade() {
+    usr/bin/udevadm control --reload-rules
+}
