@@ -4,7 +4,7 @@
 # Contributor: maus25 <mirko378@gmail.com>
 
 pkgname=gnome-shell-pomodoro
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc='A time management utility for GNOME based on the pomodoro technique'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('gnome-desktop' 'libcanberra' 'gstreamer' 'gobject-introspection' 'libp
 makedepends=('intltool' 'vala' 'gnome-common' 'docbook2x' 'perl-xml-sax-expat')
 changelog='NEWS'
 source=("https://github.com/codito/gnome-pomodoro/archive/$pkgver.tar.gz")
-sha256sums=('e9f923ee2680861a6753cbb4e1fb8375f211049c5d9ef0ad182976a97a62c975')
+sha256sums=('52b27f2cef1e06eb5ab51a1fb06ac29c88bbfd825d809fc5c81d482897123318')
 
 prepare() {
   cd "$srcdir/gnome-pomodoro-$pkgver"
