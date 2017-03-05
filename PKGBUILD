@@ -1,8 +1,8 @@
 # Maintainer: Emil Lundberg <emil@emlun.se>
 
 pkgname=sddm-theme-abstractdark-git
-pkgver=1.0.0
-pkgrel=1
+pkgver=latest
+pkgrel=2
 pkgdesc="Abstract Dark theme for SDDM by 3ximus"
 arch=('any')
 url="https://github.com/3ximus/abstractdark-sddm-theme"

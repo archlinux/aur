@@ -1,7 +1,7 @@
 pkgbase = sddm-theme-abstractdark-git
 	pkgdesc = Abstract Dark theme for SDDM by 3ximus
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgver = latest
+	pkgrel = 2
 	url = https://github.com/3ximus/abstractdark-sddm-theme
 	arch = any
 	license = CCPL:cc-by-sa
