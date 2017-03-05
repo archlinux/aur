@@ -1,0 +1,19 @@
+pkgbase = apk-preview
+	pkgdesc = A graphical user interface to see APK file details & icon
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-requests
+	depends = ,python-gobject
+	provides = apk-preview
+	provides = apk-preview
+	conflicts = apk-preview
+	conflicts = apk-preview
+	source = apk-preview::git+https://github.com/alireza6677/apk-preview.git
+	md5sums = SKIP
+
+pkgname = apk-preview
+

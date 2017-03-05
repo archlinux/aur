@@ -1,0 +1,89 @@
+#!/usr/bin/python3
+
+import gi , os , sys , subprocess
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk , GdkPixbuf
+
+class ListBoxRowWithData(Gtk.ListBoxRow):
+    def __init__(self, data):
+        super(Gtk.ListBoxRow, self).__init__()
+        self.data = data
+        self.label = Gtk.Label(data)
+        self.label.set_alignment(0,0.5)
+        self.label.set_size_request(25,25)
+        self.add(self.label)
+
+class Test (object):
+
+    def __init__(self):
+        self.builder = Gtk.Builder()
+        path = os.path.dirname(os.path.realpath(__file__))
+        #path="/usr/share/apk-preview"
+        self.builder.add_from_file(path+"/apk-preview-ui.glade") 
+        self.builder.connect_signals(self)
+
+    def run(self, *args):
+        self.window = self.builder.get_object("window1")
+        self.name = self.builder.get_object("name")
+        self.name.set_alignment(0,0.5)
+        self.name.set_text(appname)
+        self.ver = self.builder.get_object("ver")
+        self.ver.set_alignment(0,0.5)
+        self.vc = self.builder.get_object("vc")
+        self.vc.set_alignment(0,0.5)
+        self.min = self.builder.get_object("min")
+        self.min.set_alignment(0,0.5)
+        self.pkg = self.builder.get_object("package")
+        self.pkg.set_alignment(0,0.5)
+        self.ver.set_text("Version: " + version)
+        self.vc.set_text("Version code : " + versioncode)
+        self.min.set_text("Min sdk: " + minsdk)
+        self.pkg.set_text(package);
+        self.window.show()
+        self.window.connect("delete-event", self.quit)
+    #     self.btn = self.builder.get_object('btn')
+    #   self.btn.connect("clicked" , self.quit)
+    
+        self.list = self.builder.get_object("list")
+        for p in perms:
+            self.list.add(ListBoxRowWithData(p))
+        def filter_func(row, data, notify_destroy):
+            return False if row.data == "" or row.data == " " else True
+        
+        self.list.set_filter_func(filter_func, None, False)
+        self.list.show_all()
+        
+        self.img = self.builder.get_object("icon")
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(icontmp, width=96, height=96,
+                                                 preserve_aspect_ratio=False)
+        self.img.set_from_pixbuf(pixbuf)
+        
+        Gtk.main()
+
+    def quit(self, *args):
+        os.remove(icontmp)
+        self.window.hide()
+        Gtk.main_quit()
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2 :
+        print("You must specify an apk file");
+        exit(1)
+    apkFile=sys.argv[1]
+    
+#    print(apkFile)
+    perms=os.popen('aapt d badging "' + apkFile +'" | grep uses-permission | sed "s/.*://" | sed "s/.*=//" | sed "s/\'//g" ').read()  
+    perms=perms.split('\n')
+#    print(perms)
+    appname=os.popen('aapt d badging "' + apkFile + '"  | grep application-label | head -1 | sed -e "s/.*://g" -e "s/\'//g" ').read().replace('\n' , "")
+    version=os.popen('aapt d badging "' + apkFile + '"  | grep versionName | sed -e "s/.*=//g" -e "s/\'//g" ' ).read()
+    versioncode=os.popen('aapt d badging "' + apkFile + '" | grep versionCode | sed -e "s/.*versionCode=//g" -e "s/versionName=.*//g" -e "s/\'//g"').read()
+    minsdk=os.popen('aapt d badging "' + apkFile +'" | grep sdkVersion | sed -e "s/sdkVersion://" -e "s/\'//g"').read()
+    package=os.popen('aapt d badging  "' + apkFile +'"  | grep package | cut -d" "  -f2 | sed -e "s/.*=//" -e "s/\'//g" ').read()
+    
+    icon=os.popen('aapt d badging "' + apkFile +'"  | grep application-icon | tail -1 | sed -e "s/.*://" -e "s/\'//g"').read().replace('\n' , "")
+    iconp=os.popen('aapt d badging "' + apkFile +'"  | grep application-icon | tail -1 | sed -e "s/.*://" -e "s/\'//g" -e "s/.*\///g" ').read().replace('\n' , "")
+    icontmp=os.popen('mktemp -t XXXXXXX.png').read().replace('\n' , "")
+#    print(icontmp)
+    os.system('unzip -j "' + apkFile + '" ' + icon + ' -d /tmp/ && mv /tmp/' +iconp + " " + icontmp)
+    Test().run()
