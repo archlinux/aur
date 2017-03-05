@@ -1,39 +1,38 @@
-# Maintainer: Jon Gjengset <jon@thesquareplanet.com>
+# Maintainer:  VirtualTam   <virtualtam@flibidi.net>
+# Contributor: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=libgpuarray-git
-pkgver=r1226.2d21cc2
+_gitname=libgpuarray
+pkgver=0.6.1.4.g56b2df4
 pkgrel=1
 pkgdesc="Library to manipulate tensors on the GPU"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/Theano/libgpuarray"
 license=('MIT')
-depends=()
+depends=('glibc')
 makedepends=('git' 'cmake')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=('git+https://github.com/Theano/libgpuarray.git')
+provides=("${_gitname}")
+source=("git+https://github.com/Theano/${_gitname}.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${_gitname}
+  git describe --always --tags | sed -e 's/-/./g' -e 's/v//g'
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
-	rm -rf Build
-	mkdir Build
-	cd Build
-	cmake .. -DCMAKE_BUILD_TYPE=Release "-DCMAKE_INSTALL_PREFIX=$pkgdir/usr"
+  cd ${_gitname}
+  rm -rf _build
+  mkdir _build
+  cd _build
+  cmake .. -DCMAKE_BUILD_TYPE=Release "-DCMAKE_INSTALL_PREFIX=${pkgdir}/usr"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	cd Build
-	make
+  cd ${_gitname}/_build
+  make
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	cd Build
-	make install
+  cd ${_gitname}/_build
+  make install
 }
