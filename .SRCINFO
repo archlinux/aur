@@ -1,6 +1,6 @@
 pkgbase = yarmd
 	pkgdesc = Yet Another Recursive Multi-thread Downloader (A wrapper script around aria2, Nginx autoindex required)
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/PeterCxy/yarmd
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = yarmd
 	makedepends = npm
 	depends = nodejs
 	depends = aria2
-	source = https://github.com/PeterCxy/yarmd/archive/1.0.2.tar.gz
-	md5sums = 5a031b470680166c42e5c372684e1205
+	source = https://github.com/PeterCxy/yarmd/archive/1.0.3.tar.gz
+	md5sums = ccc780aded41218c8b9dd95551b002ca
 
 pkgname = yarmd
 
