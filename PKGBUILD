@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/Toblerity/Shapely"
 groups=('descartes')
 depends=('python2-shapely')
+makedepends=('mercurial')
 source=('hg+https://bitbucket.org/sgillies/descartes')
 md5sums=('SKIP')
 

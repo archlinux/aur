@@ -5,6 +5,7 @@ pkgbase = descartes
 	url = https://github.com/Toblerity/Shapely
 	arch = x86_64
 	groups = descartes
+	makedepends = mercurial
 	depends = python2-shapely
 	source = hg+https://bitbucket.org/sgillies/descartes
 	md5sums = SKIP
