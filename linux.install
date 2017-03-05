@@ -4,19 +4,10 @@
 KERNEL_NAME=
 KERNEL_VERSION=
 
-note() {
-    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
-}
-
 post_install () {
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
   depmod ${KERNEL_VERSION}
-  echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
-  mkinitcpio -p linux${KERNEL_NAME}
-
-  note "If you saw an error above you can try adding this to your mkinitcpio.conf"
-  note "    _addedmodules["dm_cache_smq"]=1"
 }
 
 post_upgrade() {
@@ -27,8 +18,6 @@ post_upgrade() {
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
   depmod ${KERNEL_VERSION}
-  echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
-  mkinitcpio -p linux${KERNEL_NAME}
 }
 
 post_remove() {
