@@ -18,7 +18,7 @@ build() {
   cd "$srcdir/MonetDB-$pkgver"
  ./bootstrap
  ./configure --libdir=/usr/lib --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-      --disable-assert --disable-testing --enable-optimize
+      --disable-assert --disable-testing --enable-optimize --enable-rintegration
  make
 }
 
