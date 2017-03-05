@@ -4,7 +4,7 @@
 # Contributor: dsr <dsr@archlinux.us>
 
 pkgname=aoi
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="A 3D modeling and rendering studio (Art of Illusion)"
 arch=('any')
@@ -14,10 +14,10 @@ depends=('java-environment')
 optdepends=('jmf:  QuickTime animation support'
             'jogl: OpenGL rendering support')
 makedepends=('gendesk')
-source=(http://sourceforge.net/projects/aoi/files/ArtOfIllusion/${pkgver}/aoi${pkgver//./}.zip
+source=(http://sourceforge.net/projects/aoi/files/ArtOfIllusion/${pkgver}/ArtOfIllusion${pkgver//./}-Linux.zip
         aoi.sh)
-md5sums=('a1847a0c330dcb6ff207acfcf19cd74a'
-         'b2c2de959cf1112a729da857bc15111c')
+md5sums=('7e2392a28bc3fcfb0618c0395b1fc3fd'
+         '061e5a5fe148e29dbac63fc027c26de0')
 
 build() {
   cd "$srcdir"
@@ -29,8 +29,7 @@ build() {
 
 package() {
   install -dm755 "$pkgdir/usr/share/java"
-  cp -r ArtOfIllusion${pkgver//./} "$pkgdir/usr/share/java/aoi"
+  cp -r . "$pkgdir/usr/share/java/aoi"
   install -Dm755 aoi.sh "$pkgdir/usr/bin/aoi"
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "ArtOfIllusion${pkgver//./}/Icons/64x64.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
