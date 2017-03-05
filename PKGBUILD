@@ -46,8 +46,8 @@ _use_current=
 ### Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-fbcondecor
-_srcname=linux-4.9
-pkgver=4.9.13
+_srcname=linux-4.10
+pkgver=4.10.1
 pkgrel=1
 _ckpatchversion=1
 arch=('i686' 'x86_64')
@@ -55,33 +55,31 @@ url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-_ckpatchname="patch-4.9-ck${_ckpatchversion}"
+_ckpatchname="patch-4.10-ck${_ckpatchversion}"
 _gcc_patch='enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch'
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        "http://ck.kolivas.org/patches/4.0/4.9/4.9-ck${_ckpatchversion}/${_ckpatchname}.xz"
+        "http://ck.kolivas.org/patches/4.0/4.10/4.10-ck${_ckpatchversion}/${_ckpatchname}.xz"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         # the main kernel config files
-        'config' 'config.x86_64'
+        'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
         '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
-	'fbcondecor-4.9.patch')
-sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
+	'fbcondecor-4.10.patch')
+sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
             'SKIP'
-            '87a0f07dd393e2d08850f0536417d091684535ff0c8ab8f8d9aeab1db38589bf'
+            'da560125aa350f76f0e4a5b9373a0d0a1c27ccefe3b7bd9231724f3a3c4ebb9e'
             'SKIP'
-            '5b9d8f4ef73f87e8595de66ccc38bad86e290fd9453bd536b9cc950f5344b82d'
+            '1913eeb921bbef3733b53f4004a3013289fa85a26409610bb14fcff3bbd7ef72'
             'c26b4b76ca3b3dc864e1470001b46f65e007252e984e9b3c6cc8e90a18b7317f'
-            '89956a8d1e516d906245357317aad8ca65d215a69e03f87ceb9ba93708a2da84'
+            '97386dde2c628a89bcdb231a9acda4ff9b4cf4144258e87d211415f7550e93a3'
             '55fef3e4c798d36e806ab0aff35da2804934215aa1ae4a214aa4a0a61ba7422a'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0671b52ba9498ba2027fa643ba0e3b524696b358fe983fbad1c586f9446a17a6')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -96,11 +94,6 @@ prepare() {
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
   
-  # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
-  # remove this when a Kconfig knob is made available by upstream
-  # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
 
@@ -113,16 +106,12 @@ prepare() {
 
   # Patch source to enable frame buffer decorations.
   msg "Patching source with fbcondecor patch."
-  patch -Np1 -i "${srcdir}/fbcondecor-4.9.patch"
+  patch -Np1 -i "${srcdir}/fbcondecor-4.10.patch"
 
   # Clean tree and copy ARCH config over
   make mrproper
 
-  if [ "${CARCH}" = "x86_64" ]; then
-    cat "${srcdir}/config.x86_64" > ./.config
-  else
-    cat "${srcdir}/config" > ./.config
-  fi
+  cat "${srcdir}/config.${CARCH}" > ./.config
 
   ### Optionally disable NUMA for 64-bit kernels only
   # (x86 kernels do not support NUMA)
@@ -192,25 +181,15 @@ prepare() {
     make localmodconfig
   fi
 
-  if [ -n "$_makenconfig" ]; then
-    msg "Running make nconfig"
-    make nconfig
-  fi
+  [[ -z "$_makenconfig" ]] || make nconfig
 
-  if [ -n "$_makemenuconfig" ]; then
-  	msg "Running make menuconfig"
-  	make menuconfig
-  fi
+  [[ -z "$_makemenuconfig" ]] || make menuconfig
 
   # rewrite configuration
   yes "" | make config >/dev/null
 
   # save configuration for later reuse
-  if [ "${CARCH}" = "x86_64" ]; then
-    cat .config > "${startdir}/config.x86_64.last"
-  else
-    cat .config > "${startdir}/config.last"
-  fi
+  cat .config > "${startdir}/config.${CARCH}.last"
 }
 
 build() {
@@ -220,8 +199,8 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.150 and the fbcondecor framebuffer decoration support."
-  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.150 and the fbcondecor framebuffer decoration support."
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.152 and the fbcondecor framebuffer decoration support."
+  #_Kpkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler v0.152 and the fbcondecor framebuffer decoration support."
   #pkgdesc="${_Kpkgdesc}"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
