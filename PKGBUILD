@@ -11,10 +11,6 @@ conflicts=("${pkgname}" "apk-preview")
 source=("${pkgname}::git+https://github.com/alireza6677/apk-preview.git")
 md5sums=('SKIP')
 
-pkgver() {
-	cd "$srcdir/${pkgname}"
-
-}
 
 prepare() {
     cd "${srcdir}/${pkgname}"
