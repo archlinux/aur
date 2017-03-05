@@ -2,22 +2,17 @@
 # Contributor: 3ED_0 <krzysztof1987 at gmail>
 
 pkgname=valentina-studio
-pkgver=7.0.1
+pkgver=7.0.3
 pkgrel=1
 pkgdesc="Create, administer, query and explore Valentina DB, MySQL, MariaDB, Postgre and SQLite databases"
 arch=('i686' 'x86_64')
 url="http://www.valentina-db.com"
 license=('custom')
-makedepends=('rpmextract')
+makedepends=('')
 source_i686=("${pkgname}-${pkgver}-${CARCH}.rpm::http://www.valentina-db.com/en/studio/download/current/vstudio_lin_32_rpm?format=raw")
 source_x86_64=("${pkgname}-${pkgver}-${CARCH}.rpm::http://www.valentina-db.com/en/studio/download/current/vstudio_x64_lin-rpm?format=raw")
-noextract=("${pkgname}-${pkgver}-${CARCH}.rpm")
-sha256sums_i686=('bb0a696b06e38559373ae6e0a65f1709e47321cc165641a2e71311ffbb745293')
-sha256sums_x86_64=('2cd72931bc950dd87aaea7192cecdec0fc996d4c84ccf53f3f5fd5d214d758d6')
-
-prepare() {
-	rpmextract.sh "${pkgname}-${pkgver}-${CARCH}.rpm"
-}
+sha256sums_i686=('0719a661145c77b94e578cfc432eb121cd9ce344e409594e57a2ac5f6e7d4ae0')
+sha256sums_x86_64=('9ce5f3358abd6a7e5462493ebd9e32f22a70eed855e2ffd98a6bc2873f396bed')
 
 package() {
 	install -d "${pkgdir}"/opt/VStudio
