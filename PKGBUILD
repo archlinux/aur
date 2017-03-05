@@ -1,4 +1,4 @@
-# Maintainer: Olivier Churlaud <olivier@churlaud.com>
+# Maintainer: Christoph Reiter <reiter.christoph@gmail.com>
 
 pkgname=quodlibet-git
 _srcname=quodlibet
