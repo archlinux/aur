@@ -1,0 +1,8 @@
+/pkg/
+/src/
+/*.src.tar.gz
+/*.src.tar.gz.sig
+/*.tar.xz
+/*.tar.xz.sig
+
+/sddm-gracilis-theme/
