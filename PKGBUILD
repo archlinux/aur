@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libgpg-error
-pkgver=1.26
+pkgver=1.27
 pkgrel=1
 pkgdesc="Support library for libgcrypt (mingw-w64)"
 arch=(any)
@@ -12,7 +12,7 @@ source=("ftp://ftp.gnupg.org/gcrypt/libgpg-error/libgpg-error-${pkgver}.tar.bz2"
 "01-mingw32-fix-potomo.mingw.patch"
 "02-fix-symbollist-on.mingw.patch"
 "05-w32-gen.all.patch")
-sha1sums=('9a926e7ee6309e539313443555535d49a2a5c9f1'
+sha1sums=('a428758999ff573e62d06892e3d2c0b0f335787c'
           'SKIP'
           'b32a305f593835132a610272aeb219165dc354c4'
           'a7bbc4637aba322cd43aa7c5a6d99faa8f801133'
