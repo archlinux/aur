@@ -4,8 +4,8 @@
 
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
-pkgver=1.19.1
-pkgrel=5
+pkgver=1.19.2
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
@@ -18,7 +18,6 @@ makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
              'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols')
 source=(https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2{,.sig}
-        bug99358.patch
         nvidia-add-modulepath-support.patch
         xvfb-run
         xvfb-run.1
@@ -26,9 +25,8 @@ source=(https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${p
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
-sha256sums=('79ae2cf39d3f6c4a91201d8dad549d1d774b3420073c5a70d390040aa965a7fb'
+sha256sums=('4f8ab9f4a1a885fe7550080555381b34b82858582559e8e3c4da96e3a85884bb'
             'SKIP'
-            'f46a9d1a5ac43c5359fbd8c57b6e64b0bd313116b5cb638527bfe3701e6c3904'
             '914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
@@ -40,13 +38,10 @@ prepare() {
   # merged upstream in trunk
   patch -Np1 -i ../nvidia-add-modulepath-support.patch
 
-  # https://bugs.freedesktop.org/show_bug.cgi?id=99358
-  # https://bugs.archlinux.org/task/52808
-  patch -Np1 -i ../bug99358.patch
-
   # The patch for freedesktop bug 865
   patch -Np1 -i "${srcdir}/freedesktop-bug-865.patch"
 
+  autoreconf -vfi
 }
 
 build() {
@@ -103,7 +98,7 @@ package_xorg-server-bug865() {
            libpciaccess libdrm libxshmfence) # FS#52949
   # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
-  provides=('X-ABI-VIDEODRV_VERSION=23' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server' 'xorg-server=1.19.1')
+  provides=('X-ABI-VIDEODRV_VERSION=23' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server' 'xorg-server=1.19.2')
   conflicts=('nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting' 'xorg-server')
   replaces=('glamor-egl' 'xf86-video-modesetting')
   install=xorg-server.install
