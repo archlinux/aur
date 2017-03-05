@@ -1,6 +1,6 @@
 # Maintainer: krrr <guogaishiwo@gmail.com>
 pkgname=hazama
-pkgver=1.0.0
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Diary application"
 arch=('any')
@@ -20,4 +20,4 @@ package() {
     # --skip-build avoid building again when --root specified
     ./setup.py install --root "$pkgdir/" --skip-build
 }
-md5sums=('2a8883fe5ccc2e3734c1ac3035e9ccbd')
+md5sums=('d6f0342caedfcb86d9df0ea836ede158')
