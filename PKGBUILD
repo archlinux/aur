@@ -1,127 +1,193 @@
 # Maintainer: Det <nimetonmaili g-mail>
 # Based on [extra]'s thunderbird
 
-# NOTE: Enable PGO on x86_64?: http://en.wikipedia.org/wiki/Profile-guided_optimization
-_pgo=0  # "1" to enable
-
 pkgname=thunderbird-hg
-pkgver=41.0a1.r18019.c352d4695e28
+pkgver=54.0a1.r21260.cbc772c7b1b4
 pkgrel=1
-pkgdesc="Standalone Mail/News reader - Mercurial version with optional PGO"
-arch=('i686' 'x86_64')
-license=('GPL' 'LGPL' 'MPL')
-url="https://www.mozilla.org/thunderbird"
-depends=('alsa-lib' 'dbus-glib' 'desktop-file-utils' 'fontconfig' 'freetype2' 'gtk-update-icon-cache' 'gtk2'
-         'hicolor-icon-theme' 'hunspell' 'libjpeg' 'libnotify' 'libpng' 'libvpx' 'libxt' 'mime-types'
-         'mozilla-common' 'nspr' 'nss' 'pixman' 'sqlite' 'startup-notification')
-makedepends=('autoconf2.13' 'mercurial' 'mesa' 'python2' 'unzip' 'wireless_tools' 'yasm' 'zip')
-[[ $_pgo = 1 ]] && makedepends+=('imake' 'xorg-server-xvfb')
+pkgdesc="Standalone mail and news reader from mozilla.org - Mercurial version"
+arch=(i686 x86_64)
+license=(MPL GPL LGPL)
+url="https://www.mozilla.org/thunderbird/"
+depends=(gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib
+         libvpx libevent 'nss>=3.30' hunspell sqlite ttf-font icu gtk3 gst-libav
+         gst-plugins-base-libs gst-plugins-good networkmanager)
+makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils
+             mercurial rustup python2-appdirs python2-packaging python2-pyparsing
+             python2-six autoconf2.13 python2-setuptools gst-libav xorg-server-xvfb
+             uuid)
 optdepends=('libcanberra: for sound support')
-provides=("thunderbird=$pkgver")
+options=(!emptydirs !makeflags)
 install=$pkgname.install
 options=('!emptydirs' '!makeflags')
-source=('hg+https://hg.mozilla.org/comm-central'
-        'mozconfig'
-        'mozconfig-pgo'
-        "$pkgname.desktop"
-        "$pkgname-safe.desktop"
-        'vendor.js')
-md5sums=('SKIP'
-         '0c5dbb39b27bb72f837921b88a9e48c8'
-         '7b0cf4656fa25e75187aac4a44376ab9'
-         '5699093fbb0bb8d29b15a892ce1cbd52'
-         '603059a0e97ee8b89b71ec4760225b64'
-         '5a53179d14ae9631b7afe5e4d0fc0b25')
+source=(hg+http://hg.mozilla.org/comm-central
+        thunderbird-hg.desktop)
+sha256sums=('SKIP'
+            'e4613036e6073ddc508eeb6386ae4cb2170304ff0bb0dafbbdccf1953b6a3b7c')
 _hgrepo="comm-central"
 
-pkgver() {
-  cd $_hgrepo
-  echo $(cat mail/config/version.txt).r$(hg identify -n).$(hg identify -i)
-}
+# Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
+# Note: These are for Arch Linux use ONLY. For your own distribution, please
+# get your own set of keys. Feel free to contact foutrelis@archlinux.org for
+# more information.
+_google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
+
+# Mozilla API keys (see https://location.services.mozilla.com/api)
+# Note: These are for Arch Linux use ONLY. For your own distribution, please
+# get your own set of keys. Feel free to contact heftig@archlinux.org for
+# more information.
+_mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
   cd $_hgrepo
 
-  # Create directories
-  msg2 "Creating directory structure..."
-  install -d "$pkgdir"/usr/bin
-  install -d "$pkgdir"/usr/share/applications
-  install -d "$pkgdir"/opt
-
-  # Update local copy
-  msg2 "Updating local copy..."
+  # Sync local copy
+  msg2 "Syncing local copy..."
   python2 client.py checkout
 
-  # PGO?
-  if [[ $CARCH = x86_64 ]] && [[ $_pgo = 1 ]]; then
-    cp "$srcdir"/mozconfig-pgo .mozconfig
-  else
-    cp "$srcdir"/mozconfig .mozconfig
-  fi
+  # 
+  mkdir -p path
+  ln -sf /usr/bin/python2 path/python
 
-  # configure script misdetects the preprocessor without an optimization level
-  # https://bugs.archlinux.org/task/34644
-  sed -i '/ac_cpp=/s/$CPPFLAGS/& -O2/' mozilla/configure
+  
+  echo -n "$_google_api_key" > google-api-key
+  echo -n "$_mozilla_api_key" > mozilla-api-key
+
+  # mozconfig
+  cat >.mozconfig <<END
+ac_add_options --enable-application=mail
+
+ac_add_options --prefix=/usr
+ac_add_options --libdir=/opt/
+ac_add_options --enable-release
+ac_add_options --enable-gold
+ac_add_options --enable-pie
+
+# Branding
+ac_add_options --enable-official-branding
+
+# Keys
+ac_add_options --with-google-api-keyfile=${PWD@Q}/google-api-key
+ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
+
+# System libraries
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+ac_add_options --with-system-icu
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-zlib
+ac_add_options --with-system-bz2
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
+ac_add_options --enable-system-hunspell
+ac_add_options --enable-system-sqlite
+ac_add_options --enable-system-ffi
+ac_add_options --enable-system-pixman
+
+# Features
+ac_add_options --enable-startup-notification
+ac_add_options --disable-crashreporter
+ac_add_options --disable-updater
+ac_add_options --disable-tests ###
+ac_add_options --disable-debug-symbols ###
+
+STRIP_FLAGS="--strip-debug"
+END
+}
+
+pkgver() {
+  cd $_hgrepo
+  
+  echo $(cat mail/config/version.txt).r$(hg identify -n).$(hg identify -i)
 }
 
 build() {
   cd $_hgrepo
 
-  # Build flags
-  export LDFLAGS="$LDFLAGS -Wl,-rpath,/opt/$pkgname-r$pkgver"
-  export PYTHON="/usr/bin/python2"
+  # _FORTIFY_SOURCE causes configure failures
+  CPPFLAGS+=" -O2"
 
-  if [[ $CARCH = x86_64 ]] && [[ $_pgo = 1 ]]; then
-    # Set up PGO
-    msg2 "Running Xvfb..."
-    export DISPLAY=:99
-    Xvfb -nolisten tcp -extension GLX -screen 0 1280x1024x24 $DISPLAY &
+  # Hardening
+  LDFLAGS+=" -Wl,-z,now"
 
-    # Build
-    msg2 "Running make..."
-    if ! make -f client.mk build MOZ_MAKE_FLAGS="$MAKEFLAGS" MOZ_PGO=1; then
-      kill $!
-      return 1
-    fi
+  # GCC 6
+  CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
 
-    # Kill leftovers
-    kill $! || true
-  else
-    msg2 "Running make..."
-    make -f client.mk build MOZ_MAKE_FLAGS="$MAKEFLAGS"
+  # Export build path
+  export PATH="$srcdir/path:$PATH"
+
+  # Set up Rust
+  if [[ $(rustup show) =~ "no active toolchain" ]]; then
+    msg2 "Setting default Rust Toolchain (stable)"
+    rustup default stable
   fi
+  
+  # Build
+  msg2 "Running make client.mk.."
+  # make -f client.mk profiledbuild
+  make -f client.mk build
+
+#   msg2 "Running mach bootstrap.."
+#   mozilla/mach bootstrap
+# 
+#   msg2 "Running mach build.."
+#   mozilla/mach build
+  #obj-.../dist/bin/thunderbird
 }
 
 package() {
-  cd $_hgrepo/obj-*
+  # cd $_hgrepo/obj-*
 
-  # Put together
-  msg2 "Running make install.."
-  make package
+  # # Put together
+  # msg2 "Running make package.."
+  # make package
 
-  # Install
-  msg2 "Moving stuff in place..."
-  cd dist
-  tar -xf thunderbird-*.tar.bz2
-  cp -r thunderbird/ "$pkgdir"/opt/$pkgname-r$pkgver/
+  # # Install
+  # msg2 "Moving stuff in place..."
+  # cd dist
+  # tar -xf thunderbird-*.tar.bz2
+  # cp -r thunderbird/ "$pkgdir"/opt/$pkgname-r$pkgver/
   
-  # /usr/bin symlink
-  ln -sf /opt/$pkgname-r$pkgver/thunderbird "$pkgdir"/usr/bin/$pkgname
+  # # /usr/bin symlink
+  # ln -sf /opt/$pkgname-r$pkgver/thunderbird "$pkgdir"/usr/bin/$pkgname
+  
+  cd $_hgrepo
+  make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
+  mv "$pkgdir"/opt/thunderbird/ "$pkgdir"/opt/thunderbird-hg/
 
-  # vendor.js
-  install -Dm644 "$srcdir"/vendor.js "$pkgdir"/opt/$pkgname-r$pkgver/defaults/preferences/vendor.js
+  _vendorjs="$pkgdir/opt/thunderbird-hg/defaults/preferences/vendor.js"
+  install -Dm644 /dev/stdin "$_vendorjs" <<END
+// Use LANG environment variable to choose locale
+pref("intl.locale.matchOS", true);
 
-  # Icons
-  for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
-    install -Dm644 "$srcdir"/$_hgrepo/other-licenses/branding/thunderbird/mailicon${i/x*/}.png \
-                   "$pkgdir"/usr/share/icons/hicolor/$i/apps/$pkgname.png
+// Disable default mailer checking.
+pref("mail.shell.checkDefaultMail", false);
+
+// Don't disable our bundled extensions in the application directory
+pref("extensions.autoDisableScopes", 11);
+pref("extensions.shownSelectionUI", true);
+END
+
+  for i in 16 22 24 32 48 256; do
+    install -Dm644 other-licenses/branding/thunderbird/mailicon$i.png \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/thunderbird-hg.png"
   done
 
-  # Desktop
-  install -m644 "$srcdir"/*.desktop "$pkgdir"/usr/share/applications/
+  install -Dm644 ../thunderbird-hg.desktop \
+    "$pkgdir/usr/share/applications/thunderbird-hg.desktop"
 
-  # Dictionaries/hyphenation
-  rm -rf "$pkgdir"/opt/$pkgname-r$pkgver/{dictionaries,hyphenation}
-  ln -sf /usr/share/hunspell "$pkgdir"/opt/$pkgname-r$pkgver/dictionaries
-  ln -sf /usr/share/hyphen "$pkgdir"/opt/$pkgname-r$pkgver/hyphenation
+  # Use system-provided dictionaries
+  rm -r "$pkgdir"/opt/thunderbird-hg/dictionaries
+  ln -Ts /usr/share/hunspell "$pkgdir/opt/thunderbird-hg/dictionaries"
+  ln -Ts /usr/share/hyphen "$pkgdir/opt/thunderbird-hg/hyphenation"
+
+  # Install a wrapper to avoid confusion about binary path
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/thunderbird-hg" <<END
+#!/bin/sh
+exec /opt/thunderbird-hg/thunderbird "\$@"
+END
+
+  # Replace duplicate binary with wrapper
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
+  ln -srf "$pkgdir/usr/bin/thunderbird-hg" \
+    "$pkgdir/opt/thunderbird-hg/thunderbird-bin"
 }
