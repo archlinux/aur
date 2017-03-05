@@ -2,7 +2,7 @@
 
 pkgname=dingoo-sdk
 pkgver=20130707
-pkgrel=2
+pkgrel=3
 pkgdesc="Dingoo A320 Native SDK"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/dingoo-sdk/"
