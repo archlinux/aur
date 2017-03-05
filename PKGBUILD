@@ -1,7 +1,7 @@
 _npmname=lerna
-_npmver=2.0.0-beta.37
+_npmver=2.0.0-beta.38
 pkgname=lerna # All lowercase
-pkgver=2.0.0beta.37
+pkgver=2.0.0beta.38
 pkgrel=1
 pkgdesc="Tool for managing JavaScript projects with multiple packages"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_npmname}/${_npmname}/archive/v${_npmver}.tar.gz")
 noextract=(${_npmname}-${_npmver}.tgz)
-sha1sums=('94bde9af9cc54765667b5d7ac87ec871e4baf2a8')
+sha1sums=('734c30f16a0b2c111c2983f3aaaf1179d11905a4')
 
 package() {
   cd ${srcdir}
