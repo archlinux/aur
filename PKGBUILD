@@ -14,8 +14,8 @@ md5sums=('SKIP')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
-    mkdir ${pkgdir}/usr
-    mkdir ${pkgdir}/usr/bin
+    install -d ${pkgdir}/usr
+    install -d ${pkgdir}/usr/bin
 }
 package() {
 	cd "${srcdir}/${pkgname}"
