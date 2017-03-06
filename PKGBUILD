@@ -8,7 +8,7 @@
 pkgname=fail2ban-git
 pkgver=r4023.a4ec017d
 pkgrel=1
-pkgdesc='Bans IPs after too many failed authentication attempts'
+pkgdesc='Bans IPs after too many failed authentication attempts (git version)'
 url='http://www.fail2ban.org/'
 license=('GPL')
 arch=('any')
