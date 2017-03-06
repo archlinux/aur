@@ -1,6 +1,6 @@
 # Maintainer: n17ikh <n17ikh@gmail.com>
 pkgname=coolkey
-pkgver=1.1.0_31
+pkgver=1.1.0_32
 pkgrel=1
 pkgdesc="Provides PKCS11 module support for smart-card readers, now with 144k smartcard/CAC support and downstream Fedora patches."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ install=
 changelog=
 rpmname=("$pkgname-${pkgver//_/-}.fc26.src.rpm")
 source=("https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/c/$rpmname")
-sha512sums=('58a5a4ca4765d2845e618c3c8d55f14772230b7a44afc980ba702b957756ec9ce9d77310773810512e96d456d032db92c5752211e5532527d7a16f06c06b1707')
+sha512sums=('bfbe401700099fed61add4cc6a93328685e9a17b234bba1276bbe1d304ac15ed9ae371f5c9979f4e7e83ee7418e5952da9ff7d33ad2a7944e96f5eeda5f9de68')
 
 build() {
   cd $srcdir
