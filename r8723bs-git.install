@@ -4,7 +4,7 @@ pre_install() {
 	# unload 8723bs if loaded
 	modprobe -r 8723bs
 	# trash old module versions 
-	find /lib/modules/$(uname -r) -name r8723bs*ko* -exec rm -f {} \; 
+	find /usr/lib/modules/$(uname -r) -name r8723bs*ko* -exec rm -f {} \; 
 }
 
 
@@ -18,8 +18,8 @@ post_install() {
 
 post_remove() {
 	# delete old module dir
-	find /lib/modules/$(uname -r) -name r8723bs -type d -exec rm -rf {} \;
-	rm -f /lib/firmware/rtlwifi/rtl8723bs_nic.bin
-	rm -f /lib/firmware/rtlwifi/rtl8723bs_wowlan.bin
+	find /usr/lib/modules/$(uname -r) -name r8723bs -type d -exec rm -rf {} \;
+	rm -f /usr/lib/firmware/rtlwifi/rtl8723bs_nic.bin
+	rm -f /usr/lib/firmware/rtlwifi/rtl8723bs_wowlan.bin
 
 }
