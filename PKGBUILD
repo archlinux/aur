@@ -12,7 +12,7 @@ pkgname=('qemu-saren-git'
          'qemu-block-rbd-saren-git'
          'qemu-block-gluster-saren-git'
          'qemu-guest-agent-saren-git')
-pkgver=2.8.0.r51657.9514f2648c
+pkgver=2.8.0.r52013.56b51708e9
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -29,15 +29,13 @@ source=(git://git.qemu.org/qemu.git
         qemu-ga.service
         65-kvm.rules
         qemu.install
-        https://launchpadlibrarian.net/282321876/pulseaudio-microphone-workaround.patch
-        qemu-devel-msg431844.patch)
+        https://launchpadlibrarian.net/282321876/pulseaudio-microphone-workaround.patch)
 sha256sums=('SKIP'
             'dd43e2ef062b071a0b9d0d5ea54737f41600ca8a84a8aefbebb1ff09f978acfb'
             '0b4f3283973bb3bc876735f051d8eaab68f0065502a3a5012141fad193538ea1'
             '60dcde5002c7c0b983952746e6fb2cf06d6c5b425d64f340f819356e561e7fc7'
             '0df69a77645c9a05f98635773666b6212084525d7801ef8382242b06baebe5aa'
-            '57d87ba45340f9b7f4b70834fc35da25be72cf4092abcc5012e853aa7b37c83a'
-            '07d60426021d096983c6af2c72cc465259c059f2adc5e76ac4f98a00978b838a')
+            '57d87ba45340f9b7f4b70834fc35da25be72cf4092abcc5012e853aa7b37c83a')
 _extra_arches=(aarch64 alpha arm armeb cris lm32 m68k microblaze microblazeel mips
 mips64 mips64el mipsel mipsn32 mipsn32el or1k ppc ppc64 ppc64abi32 ppc64le s390x
 sh4 sh4eb sparc sparc32plus sparc64 moxie ppcemb tricore unicore32 xtensa xtensaeb)
@@ -54,7 +52,6 @@ pkgver() {
 build() {
   cd $_gitname
   patch -p1 < ../pulseaudio-microphone-workaround.patch
-  patch -p1 < ../qemu-devel-msg431844.patch
   # qemu vs. make 4 == bad
   export ARFLAGS="rv"
   # http://permalink.gmane.org/gmane.comp.emulators.qemu/238740
