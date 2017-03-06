@@ -6,7 +6,6 @@ pkgbase = apk-preview
 	license = GPL3
 	makedepends = git
 	depends = python
-	depends = python-requests
 	depends = python-gobject
 	provides = apk-preview
 	provides = apk-preview
