@@ -1,4 +1,5 @@
 # Maintainer: Andrew Dunai <andrew@dun.ai>
+# Co-maintainer: Damien Flament <damien.flament@gmx.com>
 pkgname=voxelshop
 _pkgname_upper=VoxelShop
 pkgver=1.8.02
@@ -27,11 +28,17 @@ sha256sums=('69ff1076bf585855c81862b06bf50bd67621ac435d0c0f4a2ac3d19aa31317aa'
 arch=('any')
 
 package() {
-  install -D ${pkgname} ${pkgdir}/usr/bin/${pkgname}
-  ln -s ${pkgname} ${pkgdir}/usr/bin/${_pkgname_upper}
+  # Install the package startup script
+  install -D "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-  cd ${srcdir}/${_pkgname_upper}
+  # Add a symlink to the startup script using the camel-cased package name
+  ln -s "${pkgname}" "${pkgdir}/usr/bin/${_pkgname_upper}"
+  
+  # Install the distributed files in /opt
+  cd "${srcdir}/${_pkgname_upper}"
   install -Dt "${pkgdir}/opt/${pkgname}" start-linux.sh
   cp -R data "${pkgdir}/opt/${pkgname}"
+
+  # Install the license file
   install -D License.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
