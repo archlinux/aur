@@ -1,6 +1,6 @@
 # Maintainer: Phil Schaf <flying-sheep@web.de>
 pkgname=jupyter_latex_envs
-pkgver=1.3.5.7
+pkgver=1.3.7.2
 pkgrel=1
 pkgdesc='Jupyter notebook extension which supports (some) LaTeX environments within markdown cells'
 arch=(any)
