@@ -14,7 +14,7 @@ pkgdesc="Painting software"
 arch=('i686' 'x86_64')
 url="http://azsky2.html.xdomain.jp/linux/azpainter/index.html"
 license=('GPL3')
-depends=('fontconfig' 'freetype2' 'libjpeg-turbo' 'libx11' 'libxext' 'libxft' 'libxi' 'zlib')
+depends=('hicolor-icon-theme' 'fontconfig' 'libjpeg-turbo' 'libxi')
 source=("https://osdn.net/dl/${pkgname}/${pkgname}-${pkgver}.tar.bz2" "ru.mtr" "en.mtr" "uk.mtr")
 sha256sums=('a6b0247dd98b6275edeeb1154623e590e5bfc8baffcde7a9ab0cef7ace27ebd3'
             '8ade7f82d5be6189ba7d3e74b7eb831ca4bf5b834b49ccd3a1428eddcd1f2dac'
