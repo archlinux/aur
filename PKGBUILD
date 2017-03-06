@@ -5,7 +5,7 @@ pkgver=1.8.02
 pkgrel=1
 pkgdesc='VoxelShop is an extremely intuitive and powerful cross-platform software to modify and create voxel objects was designed from the ground up in close collaboration with artists.'
 url=http://blackflux.com/node/11
-license=('Apache')
+license=('custom')
 groups=()
 depends=('java-runtime-common')
 makedepends=()
@@ -33,4 +33,7 @@ package() {
   chown -R $USER:users ${pkgdir}/opt/${pkgname}
   install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
   ln -s ${pkgname} ${pkgdir}/usr/bin/${_pkgname_upper}
+
+  cd ${srcdir}/${_pkgname_upper}
+  install -D License.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
