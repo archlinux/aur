@@ -8,6 +8,7 @@ pkgbase = apk-preview
 	makedepends = git
 	depends = python
 	depends = python-gobject
+	depends = unzip
 	provides = apk-preview
 	source = apk-preview::git+https://github.com/alireza6677/apk-preview.git
 	md5sums = SKIP
