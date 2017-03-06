@@ -3,7 +3,7 @@
 
 pkgname=burg-themes-extras
 pkgver=2
-pkgrel=4
+pkgrel=5
 pkgdesc="Extra Themes for Burg Bootloader"
 arch=('any')
 url="https://launchpad.net/burg"
@@ -11,10 +11,10 @@ license=('GPL')
 depends=('burg-bzr')
 backup=('boot/burg/gui.cfg' 'boot/burg/burgenv')
 
-source=('http://dl.dropbox.com/u/10014823/burg/168681d1282146464-need-somebody-test-my-burg-theme-fortune-burg-v03.tar.gz'
-        'http://dl.dropbox.com/u/10014823/burg/Autumn-Refined.tar.gz'
+source=('http://fdbox.tk/burg-themes-extras/168681d1282146464-need-somebody-test-my-burg-theme-fortune-burg-v03.tar.gz'
+        'http://fdbox.tk/burg-themes-extras/Autumn-Refined.tar.gz'
         'https://www.ppload.com/api/files/download?id=1465382471'
-        'http://dl.dropbox.com/u/10014823/burg/minimal_burg_theme_by_sir_nimaj-d2xhk79.zip'
+        'http://fdbox.tk/burg-themes-extras/minimal_burg_theme_by_sir_nimaj-d2xhk79.zip'
         'https://www.ppload.com/api/files/download?id=1465390934'
        )
 sha256sums=('b6cc96fdb58bffebb11e28fd52b1555486323cfacc6a5153258986825dfdc391' # fortune
