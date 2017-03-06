@@ -12,8 +12,8 @@
 pkgbase=mesa-git
 pkgname=('mesa-git' 'mesa-libgl-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.1.0_devel.89365.010fecb853
-pkgrel=1
+pkgver=17.1.0_devel.89559.f3dc318464
+pkgrel=2
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'libdrm' 'glproto'
              'dri2proto' 'dri3proto' 'presentproto' 'libxml2' 'libx11' 'libxshmfence' 
@@ -53,7 +53,7 @@ build () {
                --with-egl-platforms=x11,drm,wayland \
                --with-vulkan-drivers=intel,radeon \
                --enable-texture-float \
-               --enable-osmesa \
+               --enable-gallium-osmesa \
                --enable-xa \
                --enable-nine \
                --disable-xvmc \
@@ -81,7 +81,7 @@ build () {
 #                                   [default=no]
 # --enable-texture-float            enable floating-point textures and renderbuffers 
 #                                   [default=disabled]
-# --enable-osmesa                   enable OSMesa library
+# --enable-gallium-osmesa           enable Gallium implementation of the OSMesa library
 #                                   [default=disabled]
 # --enable-xa                       enable build of the XA X Acceleration API
 #                                   [default=disabled]
