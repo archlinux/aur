@@ -2,7 +2,7 @@
 
 _target=msp430-elf
 pkgname=${_target}-binutils #-git
-_pkgver=2.27
+_pkgver=2.28
 pkgver=${_pkgver}
 #pkgver=2.25.r84308.c576455
 pkgrel=1
@@ -22,7 +22,7 @@ depends=('zlib' 'flex')
 
 # build from source
 source=(ftp://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2)
-sha256sums=('369737ce51587f92466041a97ab7d2358c6d9e1b6490b3940eb09fb0a9a6ac88')
+sha256sums=('6297433ee120b11b4b0a1c8f3512d7d73501753142ab9e2daa13c5a3edd32a72')
 
 # pkgver() {
 #   cd "${srcdir}/binutils-${_pkgver}"
