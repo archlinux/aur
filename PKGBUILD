@@ -1,6 +1,6 @@
 pkgname=rippled
 pkgrel=1
-pkgver=0.50.0
+pkgver=0.50.2
 pkgdesc="Ripple peer-to-peer network daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/ripple/rippled"
