@@ -1,6 +1,6 @@
 
 pkgname=xcm-git
-pkgver=0.5.3.5.gac82a70
+pkgver=0.5.4.2.g54d9b4e
 pkgrel=1
 pkgdesc="libXcm based tools. (GIT version)"
 arch=('i686' 'x86_64')
@@ -27,5 +27,5 @@ build() {
 
 package() {
   make -C xcm DESTDIR="$pkgdir" install
-  install -Dm644 xcm/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 xcm/docs/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
