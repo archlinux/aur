@@ -18,8 +18,8 @@ license=('custom')
 conflicts=('teighafileconverter-qt4')
 depends=('qt5-base' 'libxfixes' 'libgl' 'bash' 'gtk-update-icon-cache' 'desktop-file-utils')
 source=('license')
-source_i686=(https://download.opendesign.com/guestfiles/TeighaFileConverter/TeighaFileConverter_QT5_lnxX86_4.7dll.deb)
-source_x86_64=(https://download.opendesign.com/guestfiles/TeighaFileConverter/TeighaFileConverter_QT5_lnxX64_4.7dll.deb)
+source_i686=(${pkgname}-i686-${_version}.deb::https://download.opendesign.com/guestfiles/TeighaFileConverter/TeighaFileConverter_QT5_lnxX86_4.7dll.deb)
+source_x86_64=(${pkgname}-x86_64-${_version}.deb::https://download.opendesign.com/guestfiles/TeighaFileConverter/TeighaFileConverter_QT5_lnxX64_4.7dll.deb)
 md5sums=('62b5539acd57c50855e29d1157c10697')
 md5sums_i686=('7017b9142ac8574051b84d9f1fb51ccd')
 md5sums_x86_64=('0df326137505e00afe2ca1e4846aedfe')
@@ -40,9 +40,9 @@ package() {
   
     # binary
   install -Dm755 usr/bin/TeighaFileConverter \
-    "${pkgdir}/usr/bin/${pkgname}"
-  sed -e "s#usr/bin/TeighaFileConverter_${version}#usr/lib/${pkgname}#" \
-    -i "${pkgdir}/usr/bin/${pkgname}"
+    "${pkgdir}/usr/bin/${_altname}"
+  sed -e "s#usr/bin/TeighaFileConverter_${_version}#usr/lib/${pkgname}#" \
+    -i "${pkgdir}/usr/bin/${_altname}"
   
     # desktop item
   install -Dm644 usr/share/applications/TeighaFileConverter_${_version}.desktop \
