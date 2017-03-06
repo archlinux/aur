@@ -2,15 +2,13 @@ pkgbase = apk-preview
 	pkgdesc = A graphical user interface to see APK file details & icon
 	pkgver = 1.0
 	pkgrel = 1
+	url = https://github.com/alireza6677/apk-preview
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = python
 	depends = python-gobject
 	provides = apk-preview
-	provides = apk-preview
-	conflicts = apk-preview
-	conflicts = apk-preview
 	source = apk-preview::git+https://github.com/alireza6677/apk-preview.git
 	md5sums = SKIP
 
