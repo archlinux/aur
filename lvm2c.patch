@@ -1,0 +1,52 @@
+diff -up src/mkinitcpio-lvm2c/lvm2c_hook.orig src/mkinitcpio-lvm2c/lvm2c_hook
+diff -up src/mkinitcpio-lvm2c/lvm2c_install.orig src/mkinitcpio-lvm2c/lvm2c_install
+--- src/mkinitcpio-lvm2c/lvm2c_install.orig	2017-03-06 00:08:57.000000000 -0700
++++ src/mkinitcpio-lvm2c/lvm2c_install	2017-03-06 00:09:51.000000000 -0700
+@@ -3,8 +3,20 @@
+ build() {
+     local mod
+     local symlink
++    local major
++    local minor
++    local dm_cache_smq
+ 
+-    for mod in dm-mod dm-snapshot dm-mirror dm-cache dm-cache-smq dm-thin-pool; do
++    major=$(echo $KERNELVERSION|awk 'BEGIN{FS="."}{print$1}')
++    minor=$(echo $KERNELVERSION|awk 'BEGIN{FS="."}{print$2}')
++
++    if [ $major -lt 4 -o \( $major -eq 4 -a $minor -lt 4 \) ]; then
++        dm_cache_smq='dm-cache-mq'
++    else
++        dm_cache_smq='dm-cache-smq'
++    fi
++
++    for mod in dm-mod dm-snapshot dm-mirror dm-cache $dm_cache_smq dm-thin-pool; do
+         add_module "$mod"
+     done
+ 
+diff -up src/mkinitcpio-lvm2c/sd-lvm2c_install.orig src/mkinitcpio-lvm2c/sd-lvm2c_install
+--- src/mkinitcpio-lvm2c/sd-lvm2c_install.orig	2017-03-06 00:09:09.000000000 -0700
++++ src/mkinitcpio-lvm2c/sd-lvm2c_install	2017-03-06 00:11:03.000000000 -0700
+@@ -3,8 +3,21 @@
+ build() {
+     local mod
+     local symlink
++    local major
++    local minor
++    local dm_cache_smq
+ 
+-    for mod in dm-mod dm-snapshot dm-mirror dm-cache dm-cache-smq dm-thin-pool; do
++    major=$(echo $KERNELVERSION|awk 'BEGIN{FS="."}{print$1}')
++    minor=$(echo $KERNELVERSION|awk 'BEGIN{FS="."}{print$2}')
++
++    if [ $major -lt 4 -o \( $major -eq 4 -a $minor -lt 4 \) ]; then
++        dm_cache_smq='dm-cache-mq'
++    else
++        dm_cache_smq='dm-cache-smq'
++    fi
++
++
++    for mod in dm-mod dm-snapshot dm-mirror dm-cache $dm_cache_smq dm-thin-pool; do
+         add_module "$mod"
+     done
+ 
