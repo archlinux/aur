@@ -13,7 +13,8 @@ url='https://community.ubnt.com/unifi'
 # https://mailman.archlinux.org/mailman/private/arch-dev/2014-August/015690.html
 license=('custom')
 depends=('mongodb' 'java-runtime-headless' 'fontconfig')
-conflicts=('tomcat-native')
+conflicts=('tomcat-native' 'unifi' 'unifi-beta')
+provides=('unifi')
 source=("UniFi-$pkgver.zip::https://www.ubnt.com/downloads/unifi/$_pkgver/UniFi.unix.zip"
         'unifi.service'
         'unifi.sysusers'
