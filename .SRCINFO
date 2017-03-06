@@ -1,0 +1,22 @@
+pkgbase = prads-git
+	pkgdesc = A Passive Real-time Asset Detection System
+	pkgver = 0.3.3.r16.gdabcaa2
+	pkgrel = 1
+	url = http://gamelinux.github.io/prads/
+	arch = i686
+	arch = x86_64
+	license = custom:Perl
+	makedepends = git
+	makedepends = python-docutils
+	makedepends = fakeroot
+	makedepends = binutils
+	makedepends = make
+	makedepends = gcc
+	depends = bash
+	depends = libpcap
+	backup = etc/prads/prads.conf
+	source = prads-git::git://github.com/gamelinux/prads.git
+	md5sums = SKIP
+
+pkgname = prads-git
+
