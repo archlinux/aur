@@ -2,10 +2,10 @@
 pkgname=ruby-w3c_validators
 _pkgname=w3c_validators
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Ruby wrapper for the World Wide Web Consortium's online validation services."
 arch=(any)
-url='http://code.dunae.ca/w3c_validators/'
+url='https://github.com/w3c-validators/w3c_validators'
 license=(GPL)
 depends=(ruby-json ruby-nokogiri ruby-pkg-config)
 source=("https://rubygems.org/downloads/${_pkgname}-${pkgver}.gem")
