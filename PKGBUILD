@@ -1,5 +1,5 @@
 pkgname=osx-arc-white
-pkgver=1.3.7
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="OSX-Arc-White Theme for GTK 3.x"
 arch=(any)
