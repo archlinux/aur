@@ -3,7 +3,7 @@
 _srcname=soledad
 pkgbase=python2-leap_$_srcname
 pkgname=("python2-leap_${_srcname}_common" "python2-leap_${_srcname}_client")
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc='Synchronization Of Locally Encrypted Data Among Devices.'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
 #)
 source=("https://github.com/leapcode/$_srcname/archive/$pkgver.tar.gz")
 validpgpkeys=('BE23FB4A0E9DB36ECB9AB8BE23638BF72C593BC1')
-sha512sums=('9148523716bf1eb9b35fa15e37e0c04ec9a4688ca3845e2d49d13041ede755804530ea442173f0e46cae0ab43e4a493958e2049586a19ca9ca331510e03d1ae8')
+sha512sums=('b9fab8ea4748939801303bd8882d0705f09c05d16fc3dbd4ad76ba1aae36cfd29cfedff263a45b584f268697266a2ec2ecf1bf5fd01060e15693b813b23f6ec7')
 
 build() {
   # Common
