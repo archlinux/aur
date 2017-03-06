@@ -2,7 +2,7 @@
 
 _pkgname=packer
 pkgname=packer-io
-pkgver=0.12.2
+pkgver=0.12.3
 pkgrel=1
 pkgdesc="Packer is a tool for creating identical machine images for multiple platforms from a single source configuration."
 url="http://www.packer.io"
@@ -15,7 +15,7 @@ source=(
   'https://raw.githubusercontent.com/mitchellh/packer/master/contrib/zsh-completion/_packer'
 )
 sha256sums=(
-  '458e63a74104e3e550181f5cf2a20f29d79e326c518bcb5723399d4e56ff3f20'
+  '096b8762ff0dd7b95736ba690617b02c34576915fa1a4b60d99af9ed9f3a1006'
   '070675905e14b839420282b280a15a7a72ed34c78ad403532ecd3ed5d9768459'
 )
 else
@@ -24,7 +24,7 @@ source=(
   'https://raw.githubusercontent.com/mitchellh/packer/master/contrib/zsh-completion/_packer'
 )
 sha256sums=(
-  '035d0ea1fe785ab6b673bc2a79399125d4014f29151e106635fa818bb726bebf'
+  'd11c7ff78f546abaced4fcc7828f59ba1346e88276326d234b7afed32c9578fe'
   '070675905e14b839420282b280a15a7a72ed34c78ad403532ecd3ed5d9768459'
 )
 fi
