@@ -1,6 +1,6 @@
 pkgbase = python2-flask-restplus
 	pkgdesc = custom actions for flask to help manage your application
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/Flask-Restplus/
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = python2-flask-restplus
 	depends = python2-jsonschema
 	depends = python2-pytz
 	depends = python2-aniso8601>=0.82
-	source = https://pypi.io/packages/source/f/flask-restplus/flask-restplus-0.10.0.tar.gz
-	sha1sums = d354c16789d9a04bf26f5c68072131c2e61e95f9
+	source = https://pypi.io/packages/source/f/flask-restplus/flask-restplus-0.10.1.tar.gz
+	sha1sums = d6162efccd7e7c794f435252adcf78a262cfa969
 
 pkgname = python2-flask-restplus
 
