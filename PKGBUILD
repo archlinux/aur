@@ -3,7 +3,7 @@
 
 _target="powerpc-wrs-vxworks"
 pkgname=${_target}-binutils
-pkgver=2.27
+pkgver=2.28
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=('binutils-powerpc-wrs-vxworks')
 provides=('binutils-powerpc-wrs-vxworks')
 options=('!strip' '!libtool' '!zipman' '!buildflags' 'staticlibs')
 source=(http://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2)
-sha512sums=('cf276f84935312361a2ca077e04d0b469d23a3aed979d8ba5d92ea590904ffb2c2e7ed12cc842822bfc402836be86f479660cef3791aa62f3753d8a1a6f564cb')
+sha512sums=('ede2e4e59a800260eea8c14eafbaee94e30abadafd5c419a3370f9f62213cf027d6400a1d4970b6958bd4d220e675dcd483a708107016e7abd5c99d7392ba8fd')
 
 build() {
   cd "$srcdir/binutils-${pkgver}"
