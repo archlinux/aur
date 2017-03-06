@@ -1,0 +1,16 @@
+pkgbase = mrun-git
+	pkgdesc = Mini Run Program
+	pkgver = r1.8d85c12
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = vala
+	depends = gtk3
+	provides = mrun
+	conflicts = mrun
+	source = git://github.com/gaurapanasenko/mrun.git
+	md5sums = SKIP
+
+pkgname = mrun-git
+
