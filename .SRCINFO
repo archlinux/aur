@@ -1,7 +1,7 @@
 pkgbase = moserial
 	pkgdesc = Clean, friendly gtk-based serial terminal for the gnome desktop
-	pkgver = 3.0.10
-	pkgrel = 2
+	pkgver = 3.0.11
+	pkgrel = 1
 	url = http://live.gnome.org/moserial
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = moserial
 	depends = pango
 	optdepends = lrzsz: for xmodem, ymodem and zmodem file transfer protocols
 	optdepends = yelp: help browser
-	source = http://ftp.gnome.org/pub/GNOME/sources/moserial/3.0/moserial-3.0.10.tar.xz
-	sha256sums = 3d7107a0fc69a58ee139241214351373d35ead5ac07c751854479d2c30442980
+	source = http://ftp.gnome.org/pub/GNOME/sources/moserial/3.0/moserial-3.0.11.tar.xz
+	sha256sums = 84136f4f31c56c3f8b693ab7e40124af43cf78a027877616fd1176f8d48e37f6
 
 pkgname = moserial
 
