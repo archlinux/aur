@@ -2,12 +2,13 @@
 
 pkgname=mkinitcpio-lvm2c
 pkgver=2.02.168
-pkgrel=1
+pkgrel=2
 pkgdesc='Provide lvm2 hook compatible with older kernels'
 arch=('any')
 url='https://aur.archlinux.org/packages/mkinitcpio-lvm2c'
 depends=('lvm2' 'mkinitcpio')
 license=('GPL')
+install=$pkgname.install
 source=(lvm2c.patch)
 md5sums=('859531ebdfb19d080f7045d815820aed')
 
@@ -16,7 +17,7 @@ pkgver() {
 }
 
 build() {
-  mkdir $pkgname
+  mkdir -p $pkgname
   cd $pkgname
   cp /usr/lib/initcpio/hooks/lvm2 lvm2c_hook
   cp /usr/lib/initcpio/install/lvm2 lvm2c_install

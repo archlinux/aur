@@ -1,0 +1,9 @@
+#!/bin/sh
+
+post_install() {
+	sed -i "/^HOOKS=/s/lvm2/lvm2c/" /etc/mkinitcpio.conf
+}
+
+post_remove() {
+	sed -i "/^HOOKS=/s/lvm2c/lvm2/" /etc/mkinitcpio.conf
+}
