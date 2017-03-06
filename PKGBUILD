@@ -1,7 +1,7 @@
 # Maintainer: Andrew Dunai <andrew@dun.ai>
 pkgname=voxelshop
 _pkgname_upper=VoxelShop
-pkgver=1.7.01
+pkgver=1.8.02
 pkgrel=1
 pkgdesc='VoxelShop is an extremely intuitive and powerful cross-platform software to modify and create voxel objects was designed from the ground up in close collaboration with artists.'
 url=http://blackflux.com/node/11
@@ -19,7 +19,7 @@ install=
 changelog=
 source=(
   'voxelshop'
-  'VoxelShop.zip::http://blackflux.com/software/vs/download/?file=VoxelShop.zip'
+  'https://github.com/simlu/voxelshop/releases/download/1.8.02/VoxelShop-java-all-os-fast.zip'
 )
 noextract=()
 sha256sums=('69ff1076bf585855c81862b06bf50bd67621ac435d0c0f4a2ac3d19aa31317aa'
