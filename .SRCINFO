@@ -1,7 +1,7 @@
 pkgbase = intel-parallel-studio-xe
 	pkgdesc = Intel C++ C and FORTRAN compiler - Intel Parallel Studio XE - Cluster Edition - icc icpc ifort ipp mkl
-	pkgver = 2017.17.0.1.1.132
-	pkgrel = 4
+	pkgver = 2017.17.0.1.2.174
+	pkgrel = 1
 	url = http://software.intel.com/en-us/articles/non-commercial-software-download/
 	arch = x86_64
 	license = custom
@@ -14,7 +14,7 @@ pkgbase = intel-parallel-studio-xe
 	options = strip
 	options = libtool
 	options = staticlibs
-	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/10973/parallel_studio_xe_2017_update1.tgz
+	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/11298/parallel_studio_xe_2017_update2.tgz
 	source = intel_compilers.sh
 	source = intel_vtune-amplifier-xe.sh
 	source = intel_advisor.sh
@@ -32,7 +32,7 @@ pkgbase = intel-parallel-studio-xe
 	source = intel-mkl-th.conf
 	source = intel-tbb.install
 	source = EULA.txt
-	sha256sums = c808be744c98f7471c61258144859e8e8fc92771934281a16135803e941fd9b0
+	sha256sums = 83a655f0c2969409758488d70d6719fb5ea81a84b6da3feb641ce67bb240bc8a
 	sha256sums = 75fcdfc246949341afddcf51b2037f606f25612a04c199ac1a743247aa7c4ea5
 	sha256sums = 278f9545d14c1fbec737bbfbcafb1b9090d35aab0dfeddc99d4c6e296b56057b
 	sha256sums = e3103fb1c5e2ec9f0cc4090abb7e273563e735d88e185f527c66b2aebd52e733
@@ -77,14 +77,14 @@ pkgname = intel-tbb_psxe
 	install = intel-tbb.install
 
 pkgname = intel-vtune-amplifier-xe
-	pkgdesc = Performance profiler for serial and parallel performance analysis 17.1.486011
+	pkgdesc = Performance profiler for serial and parallel performance analysis 2.0.499904
 	depends = pangox-compat
 
 pkgname = intel-inspector
-	pkgdesc = Memory and thread debugger 17.1.484836
+	pkgdesc = Memory and thread debugger 1.2.497970
 	conflicts = intel-inspector-xe
 
 pkgname = intel-advisor
-	pkgdesc = Threading design and prototyping tool for software architects 17.1.486553
+	pkgdesc = Threading design and prototyping tool for software architects 1.2.501009
 	conflicts = intel-advisor-xe
 

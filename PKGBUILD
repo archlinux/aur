@@ -35,7 +35,7 @@
 pkgbase="intel-parallel-studio-xe"
 pkgname=('intel-compiler-base' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-mpi' 'intel-tbb_psxe' 'intel-vtune-amplifier-xe' 'intel-inspector' 'intel-advisor' )
 PKGEXT='.pkg.tar.lzo'
-packager="Alexander Phinikarides"
+packager="Ignat Harczuk"
 
 ########################################
 #OPTIONS begin
@@ -52,13 +52,13 @@ _remove_static_objects_ipp=false
 ########################################
 
 _year='2017'
-_v_a='1'
-_v_b='132'
+_v_a='2'
+_v_b='174'
 # year, version a and version b found in /opt/intel/compilers_and_libraries_YEAR_A_B
 
-_update='1'
+_update='2'
 
-pkgrel=4
+pkgrel=1
 #http://registrationcenter-download.intel.com/akdlm/irc_nas/9651/parallel_studio_xe_2017_update1.tgz
 
 _sp=''
@@ -74,19 +74,19 @@ _mpi_ver='5.1.3' # intel-mpi-${_v_b}-${_ipp_ver}.${arch}.rpm
 _mkl_ver="11.3.3" # intel-mkl-cluster-${_v_b}-${_mkl_ver}.${arch}.rpm
 
 _tbb_ver='4.4.3' # intel-tbb-${_v_b_}-${_tbb_ver}.noarch.rpm
-_vtune_ver='17.1.486011' # intel-vtune-amplifier-xe-${year}-*-${_vtune_ver}.${arch}.rpm
-_inspector_ver='17.1.484836' # intel-inspector-${year}-*-${_inspector_ver}.${arch}.rpm
-_advisor_ver='17.1.486553' # intel-advisor-${year}-*-${_advisor_ver}.${arch}.rpm
+_vtune_ver='2.0.499904' # intel-vtune-amplifier-xe-${year}-*-${_vtune_ver}.${arch}.rpm
+_inspector_ver='1.2.497970' # intel-inspector-${year}-*-${_inspector_ver}.${arch}.rpm
+_advisor_ver='1.2.501009' # intel-advisor-${year}-*-${_advisor_ver}.${arch}.rpm
 
 # Different version for docs
-_vtune_man_ver='1.0.486011'
-_inspector_man_ver='1.1.484836'
-_advisor_man_ver='1.1.486553'
+_vtune_man_ver='2.0.499904'
+_inspector_man_ver='1.2.497970'
+_advisor_man_ver='1.2.501009'
 
 
 pkgver=${_year}.${_icc_ver}.${_v_a}.${_v_b}
 
-_dir_nr='10973'
+_dir_nr='11298'
 
 options=(strip libtool staticlibs)
 
@@ -119,7 +119,7 @@ source=(
 )
 
 
-sha256sums=('c808be744c98f7471c61258144859e8e8fc92771934281a16135803e941fd9b0'
+sha256sums=('83a655f0c2969409758488d70d6719fb5ea81a84b6da3feb641ce67bb240bc8a'
             '75fcdfc246949341afddcf51b2037f606f25612a04c199ac1a743247aa7c4ea5'
             '278f9545d14c1fbec737bbfbcafb1b9090d35aab0dfeddc99d4c6e296b56057b'
             'e3103fb1c5e2ec9f0cc4090abb7e273563e735d88e185f527c66b2aebd52e733'
