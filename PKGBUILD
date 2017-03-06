@@ -1,8 +1,8 @@
 # Maintainer: psykar <aur@psykar.com>
 
 pkgname='cinnamon-applet-icingtaskmanager-git'
-pkgver=r119.ca0e435
-pkgrel=1
+pkgver=r372.6a38931
+pkgrel=2
 pkgdesc='Cinnamon applet. Window List with App Grouping and Window Thumbnails for Cinnamon.'
 arch=('any')
 url='https://github.com/jaszhix/icingtaskmanager'
@@ -13,6 +13,7 @@ source=("${pkgname}::git+https://github.com/jaszhix/icingtaskmanager.git#branch=
 md5sums=(SKIP)
 _appletname='IcingTaskManager@json'
 _appletdir="usr/share/cinnamon/applets/${_appletname}"
+_langs=( bg de es fr he hr ru zh_CN pl )
 
 pkgver() {
   cd "${pkgname}"
@@ -26,9 +27,10 @@ package() {
   install -dm0755 "${pkgdir}/${_appletdir}"
   find ${_appletname} -maxdepth 1 -type f -exec install -m0644 '{}' "${pkgdir}/${_appletdir}" \;
     
-  for mo in "${_appletname}/locale/mo/"*.mo; do
-    local lang=$(basename "$mo" .mo)
+  echo ${srcdir}
+  for lang in "${_langs[@]}"
+  do
     install -dm0755 "${pkgdir}/usr/share/locale/${lang}/LC_MESSAGES"
-    install -m0644 "$mo" "${pkgdir}/usr/share/locale/${lang}/LC_MESSAGES/${_appletname}.mo"
+    msgfmt -cv -o "${pkgdir}/usr/share/locale/${lang}/LC_MESSAGES/${_appletname}.mo" "${srcdir}/${pkgname}/src/po/${lang}.po"
   done
 }
