@@ -4,7 +4,7 @@ _target="msp430-elf"
 pkgname=${_target}-gcc
 pkgver=6.3.0
 _islver=0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection for the ${_target} target."
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
@@ -16,15 +16,20 @@ replaces=("${_target}-gcc-stage1")
 provides=("${_target}-gcc-stage1")
 source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
-        fix-insn-delay_cycles_32x.patch)
+        fix-insn-delay_cycles_32x.patch
+        sync-devicelist.patch)
 sha256sums=('f06ae7f3f790fbf0f018f6d40e844451e6bc3b7bc96e128e63b09825c1f8b29f'
             '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
-            '0cd87771d1fd8ec5d0c413ae8c18b9b2599f2c66a0fa8b5fd4aa2f01ac1b5f86')
+            '0cd87771d1fd8ec5d0c413ae8c18b9b2599f2c66a0fa8b5fd4aa2f01ac1b5f86'
+            'c9fdb1ac5f86dcbde673c0aed448a5e61d706fc4cbfa417f91be95e292cb5c26')
 
 prepare() {
   cd "${srcdir}/gcc-${pkgver}"
   [[ -L isl ]] && rm -f isl
   ln -s ../isl-${_islver} isl
+
+  # synchronize device list with binutils
+  patch -p1 < ../sync-devicelist.patch
 
   # this did not make it into 6.3.0
   patch -p1 < ../fix-insn-delay_cycles_32x.patch
