@@ -1,5 +1,5 @@
-# Contributor: Egor Panasenko <gaura.panasenko@gmail.com>
-# Maintainer: Egor Panasenko <gaura.panasenko@gmail.com>
+# Contributor: Zeph <zeph33@gmail.com>
+# Maintainer: Zeph <zeph33@gmail.com>
 pkgname=pamac-gaura-git
 pkgver=4.3.0
 _pkgver=4.3.0
