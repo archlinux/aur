@@ -3,12 +3,12 @@
 
 pkgname=uswsusp-git
 pkgver=0.r501.g668c5f7
-pkgrel=7
+pkgrel=8
 pkgdesc='Userspace software suspend - git checkout'
 arch=('i686' 'x86_64')
 url='http://suspend.sourceforge.net/'
 license=('GPL')
-depends=('libx86' 'lzo2' 'pciutils')
+depends=('libx86' 'lzo' 'pciutils')
 makedepends=('git')
 provides=('uswsusp')
 conflicts=('uswsusp')
