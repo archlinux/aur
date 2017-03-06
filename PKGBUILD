@@ -3,7 +3,7 @@
 pkgname=voxelshop
 _pkgname_upper=VoxelShop
 pkgver=1.8.02
-pkgrel=1
+pkgrel=2
 pkgdesc='An extremely intuitive and powerful cross-platform software to modify and create voxel objects which was designed from the ground up in close collaboration with artists.'
 url=http://blackflux.com/node/11
 license=('Apache')
