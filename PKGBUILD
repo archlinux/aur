@@ -1,14 +1,14 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=openhsr-connect-git
-pkgver=r104.adc7c2f
+pkgver=r172.4d341fb
 pkgrel=1
 pkgdesc="An open alternative to HSR Mapper for HSR students"
 arch=(any)
 url="https://github.com/openhsr/connect"
 license=('GPL3')
 depends=('python' 'python-setuptools' 'python-pysmb' 'python-click'
-         'python-yaml' 'python-keyring' 'python-jsonschema')
+         'python-ruamel-yaml' 'python-keyring' 'python-jsonschema')
 optdepends=('python-keyrings-alt: To use connect without a system keyring')
 source=("git+https://github.com/openhsr/connect.git")
 sha1sums=('SKIP')
