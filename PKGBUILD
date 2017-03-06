@@ -1,8 +1,8 @@
 # Contributor: Zeph <zeph33@gmail.com>
 # Maintainer: Zeph <zeph33@gmail.com>
 pkgname=pamac-aur
-pkgver=4.2.11
-_pkgver=a00d5ca83c24b09eb3f2e5480e42a5358417e88c
+pkgver=4.3.0
+_pkgver=4.3.0
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm"
 arch=('any')
@@ -21,13 +21,13 @@ provides=('pamac')
 options=(!emptydirs)
 install=pamac.install
 
-source=("pamac-$pkgver-$pkgrel.tar.gz::https://github.com/manjaro/pamac/archive/$_pkgver.tar.gz")
-sha256sums=('916b8f3168019a4e22c1391790f817cdfdb2fc36a77fd73ceec9b78e26f6900f')
+source=("pamac-$pkgver-$pkgrel.tar.gz::https://github.com/manjaro/pamac/archive/v$_pkgver.tar.gz")
+sha256sums=('e4f5bc91cdfe9e07026339baa31c9ed3f792be7203ca494057c08b1f68c4598a')
   
 prepare() {
   # adjust version string
   cd "$srcdir/pamac-$_pkgver"
-  sed -i -e "s|\"$pkgver\"|\"$pkgver-$pkgrel\"|g" src/transaction.vala
+  sed -i -e "s|\"$_pkgver\"|\"$pkgver-$pkgrel\"|g" src/transaction.vala
   # patches here
 }
 
