@@ -1,9 +1,10 @@
 # Maintainer: Ivan Wu <2967948168@qq.com>
 pkgname=privoxy-adfilter
-pkgver=42.d44f53d
+pkgver=44.e8c7fa6
 pkgrel=1
 pkgdesc="Privoxy rule to filter web advertisement."
 arch=('any')
+optdepends=('privoxy')
 url="https://github.com/qwIvan/privoxy-adfilter"
 source=("git+https://github.com/qwIvan/$pkgname.git")
 md5sums=('SKIP')
