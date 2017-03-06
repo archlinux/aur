@@ -1,7 +1,7 @@
 pkgname=pyf9-git
 _pkgname=PyF9
-pkgver=r8.b6cfafa
-pkgrel=2
+pkgver=r10.db59753
+pkgrel=1
 pkgdesc="Chinese IME in testing. No copyright infringing materials included."
 arch=('i686' 'x86_64')
 url="https://github.com/Saren-Arterius/PyF9"
@@ -21,8 +21,9 @@ build() {
   after_p=$(printf "\x$(printf %x 113)")
   arr=$(seq 0 9); arr+=(s)
   for i in ${arr[@]}; do
-    wget -q "https://web.archive.org/web/20151031013114/https://hk.dictionary.yahoo.com/static/MasterView/assets/${after_p}9/grx/${after_p}9_${i}.png" -O f9_${i}.png
+    wget -q "https://web.archive.org/web/20151031013114/https://hk.dictionary.yahoo.com/static/MasterView/assets/${after_p}9/grx/${after_p}9_${i}.png" -O f9_${i}.png &
   done
+  wait
   rm please_grab_shit_from_their_website.sha1sum
   cd ../../
 
