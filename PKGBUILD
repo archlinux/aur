@@ -35,5 +35,5 @@ package() {
 	rm "${pkgdir}/usr/share/${pkgname}/tr/en.mtr"
 	install -m644 "${srcdir}/en.mtr" "${pkgdir}/usr/share/${pkgname}/tr/en.mtr"
 	install -m644 "${srcdir}/ru.mtr" "${pkgdir}/usr/share/${pkgname}/tr/ru.mtr"
-	install -m644 "${srcdir}/ru.mtr" "${pkgdir}/usr/share/${pkgname}/tr/uk.mtr"
+	install -m644 "${srcdir}/uk.mtr" "${pkgdir}/usr/share/${pkgname}/tr/uk.mtr"
 }
