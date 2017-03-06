@@ -3,7 +3,7 @@
 pkgname=qgis-git
 _pkgname=qgis
 pkgver=2.99
-pkgrel=5
+pkgrel=6
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Development master'
 url='http://qgis.org/'
 license=('GPL')
@@ -78,13 +78,10 @@ package() {
   ln -s /opt/$pkgname/bin/qgis "$pkgdir/usr/bin/qgis-git"
 
   # install desktop files and icons
-  install -Dm644 debian/{qgis,qbrowser}.desktop -t "$pkgdir/usr/share/applications/"
-  for icon in qgis-icon{,-16x16,-60x60} qbrowser-icon{,-60x60}; do
+  install -Dm644 debian/qgis.desktop -t "$pkgdir/usr/share/applications/"
+  for icon in qgis-icon{,-16x16,-60x60}; do
     local _resolution="${icon##*-}"; [[ "$_resolution" == "icon" ]] && _resolution="512x512"
     install -Dm644 images/icons/$icon.png "$pkgdir/usr/share/icons/hicolor/$_resolution/apps/${icon%%-*}.png"
-  done
-  for icon in {qgis,qbrowser}_icon; do
-    install -Dm644 images/icons/$icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/${icon%%_*}.svg"
   done
 
   # install mime information and icon
