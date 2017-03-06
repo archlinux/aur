@@ -2,7 +2,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust2-git
-pkgver=8175.5bc7bda8e
+pkgver=8417.199b2a5e2
 pkgrel=1
 pkgdesc="The latest development version of Faust featuring additional backends for LLVM, C, Java, JavaScript etc."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ depends=('llvm-libs'
 	 'libmicrohttpd' 'openssl')
 # We need xxd at build time, which is provided by 'gvim', 'vim' and 'xxd'
 # (AUR).
-makedepends=('llvm' 'clang' 'git' 'xxd')
+makedepends=('llvm' 'git' 'xxd')
 optdepends=('clang: needed for sound2reader'
 	    'python2: needed for faust2md'
 	    'ruby: needed for faust2sc and scbuilder')
