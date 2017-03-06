@@ -20,8 +20,8 @@ source=("UniFi-$pkgver.zip::https://www.ubnt.com/downloads/unifi/$_pkgver/UniFi.
         'unifi.sysusers'
         'LICENSE')
 md5sums=('67de221639a2a49b39c0dc12c53b2db1'
-         'e56cc70aec3e8158225cd202e3f32a72'
-         '9eb74112678d868a4a840395edecd34a'
+         '79998cabf110d9a96ba4d3367101c94c'
+         'a92291a0074a5dcf414da4dfe812bc2a'
          '2c5d961c64e9309baf12f83e401ff2a4')
 
 package() {
