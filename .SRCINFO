@@ -1,7 +1,7 @@
 pkgbase = pascalcoin
 	pkgdesc = PascalCoin Wallet and Daemon
-	pkgver = 1.5.1
-	pkgrel = 1
+	pkgver = 1.5.3
+	pkgrel = 2
 	url = https://github.com/PascalCoin/PascalCoin
 	arch = i686
 	arch = x86_64

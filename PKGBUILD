@@ -1,8 +1,8 @@
 # Maintainer: Jeff Keyte <jeff@keyte.me>
 
 pkgname=pascalcoin
-pkgver=1.5.1
-pkgrel=1
+pkgver=1.5.3
+pkgrel=2
 pkgdesc='PascalCoin Wallet and Daemon'
 arch=('i686' 'x86_64')
 url='https://github.com/PascalCoin/PascalCoin'
