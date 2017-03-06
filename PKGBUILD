@@ -40,10 +40,11 @@ build () {
 	cmake .. \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DLUA_INCDIR=/usr/include/lua5.1 \
+		-DLUA_INCDIR=/usr/include/luajit-2.0 \
 		-DLUA_LIBDIR=/usr/lib/lua/5.1 \
 		-DLUA=luajit \
 		-DLUA_BINDIR=/usr/bin \
+		-DLUALIB=/usr/lib/libluajit-5.1.so \
 		-DLUADIR=/usr/share/lua/5.1 \
 		-DLIBDIR=/usr/lib/lua/5.1 \
 		-DCONFDIR=/usr/share
