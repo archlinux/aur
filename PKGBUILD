@@ -2,8 +2,9 @@
 
 _pkgname=qstlink2
 pkgname="${_pkgname}-git"
-pkgver=1.3.0.r228.8e30cfa
+pkgver=1.2.4.r244.24a687a
 pkgrel=1
+epoch=1
 pkgdesc="A ST-Link V2 (Debugger/Programmer) client graphical user interface"
 arch=('i686' 'x86_64' 'arm')
 url="https://github.com/fpoussin/QStlink2"
