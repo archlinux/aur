@@ -3,7 +3,7 @@
 pkgname=pamac-gaura-git
 pkgver=4.3.0
 _pkgver=4.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Gtk3 frontend for libalpm with some additions from gaurapanasenko"
 arch=('any')
 url="https://github.com/gaurapanasenko/pamac"
@@ -20,12 +20,15 @@ conflicts=('pamac')
 provides=('pamac')
 options=(!emptydirs)
 
-source=("git://github.com/gaurapanasenko/pamac.git#branch=switchinstallreason")
-sha256sums=('SKIP')
-  
-#prepare() {
-  # patches here
-#}
+source=("git://github.com/gaurapanasenko/pamac.git#branch=switchinstallreason"
+	"pamac-orphans-disable-optional.patch")
+sha256sums=('SKIP'
+	    '08cdfa1f3b834bec7bd550b43ab43ab216dd24a302465519a42bc857de4e6dce')
+
+prepare() {
+  cd "$srcdir/pamac"
+  patch -Np1 -i "${srcdir}/pamac-orphans-disable-optional.patch"
+}
 
 build() {
   cd "$srcdir/pamac"

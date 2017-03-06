@@ -1,0 +1,21 @@
+diff -ura pamac.bak/src/daemon.vala pamac/src/daemon.vala
+--- pamac.bak/src/daemon.vala	2017-03-06 02:31:08.000000000 +0200
++++ pamac/src/daemon.vala	2017-03-06 02:23:56.000000000 +0200
+@@ -627,12 +627,12 @@
+ 				if (alpm_pkg.reason == Alpm.Package.Reason.DEPEND) {
+ 					Alpm.List<string> requiredby = alpm_pkg.compute_requiredby ();
+ 					if (requiredby.length == 0) {
+-						Alpm.List<string> optionalfor = alpm_pkg.compute_optionalfor ();
+-						if (optionalfor.length == 0) {
++//~						Alpm.List<string> optionalfor = alpm_pkg.compute_optionalfor ();
++//~						if (optionalfor.length == 0) {
+ 							pkgs += initialise_pkg_struct (alpm_pkg);
+-						} else {
+-							optionalfor.free_inner (GLib.free);
+-						}
++//~						} else {
++//~							optionalfor.free_inner (GLib.free);
++//~						}
+ 					} else {
+ 						requiredby.free_inner (GLib.free);
+ 					}
