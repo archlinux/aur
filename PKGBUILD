@@ -3,7 +3,7 @@
 
 pkgname=charles
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Web debugging proxy application"
 arch=(any)
 url="http://www.charlesproxy.com"
@@ -31,6 +31,8 @@ package() {
     install -D -m644 ${srcdir}/${pkgname}/icon/charles_icon${dim}.png \
       ${pkgdir}/usr/share/icons/hicolor/${dim}x${dim}/apps/charles.png
   done
+  install -D -m644 ${srcdir}/${pkgname}/icon/charles_icon128.png \
+    ${pkgdir}/usr/share/icons/charles128.png
 
   install -D -m644 ${srcdir}/${pkgname}/icon/charles_icon.svg \
     ${pkgdir}/usr/share/icons/hicolor/scalable/apps/charles.svg
