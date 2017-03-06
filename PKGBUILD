@@ -7,8 +7,8 @@ else
 _arch="x86"
 fi
 
-_major="10.1.4"
-_minor=17456
+_major="10.2.0"
+_minor=17657
 
 pkgname="komodo-edit"
 _bigname="Komodo-Edit"
