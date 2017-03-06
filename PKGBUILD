@@ -1,7 +1,7 @@
 # Maintainer: Patrick Wozniak <hello@patwoz.de>
 
 pkgname=openbox-arc-git
-pkgver=20160330.r10.b39574d
+pkgver=20170306.r18.d6bfa0e
 pkgrel=1
 pkgdesc="An attempt to create Openbox themes to fit with the rest of the Arc theme. (git)"
 
@@ -11,7 +11,6 @@ license=('GPL3')
 
 depends=(
   'openbox'
-  'gtk-engine-murrine'
 )
 makedepends=(
   'git'
