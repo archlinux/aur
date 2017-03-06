@@ -6,7 +6,7 @@
 #  Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt-zfs
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc) with ZFS support enabled"
 arch=('i686' 'x86_64')
@@ -73,7 +73,7 @@ source=("git+git://libvirt.org/libvirt.git#tag=v$pkgver"
 md5sums=('SKIP'
 	 '5e31269067dbd12ca871234450bb66bb'
 	 '384fff96c6248d4f020f6fa66c32b357'
-	 '020971887442ebbf1b6949e031c8dd3f')	 
+	 '020971887442ebbf1b6949e031c8dd3f')
 
 prepare() {
   cd "$srcdir/${pkgname/-zfs/}"
@@ -105,7 +105,7 @@ build() {
   export RADVD=/usr/bin/radvd
   NOCONFIGURE=1 ./autogen.sh
   sed -i 's|libsystemd-daemon|libsystemd|g' configure
-  
+
   [ -f Makefile ] || ./configure --prefix=/usr --libexec=/usr/lib/"${pkgname/-zfs/}" --sbindir=/usr/bin \
 	--with-storage-lvm --with-udev --without-hal --disable-static \
 	--with-init-script=systemd \
