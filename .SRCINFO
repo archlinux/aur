@@ -1,0 +1,14 @@
+pkgbase = twemperf
+	pkgdesc = twemperf/mcperf memcached benchmark
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/twitter/twemperf
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	source = https://github.com/twitter/twemperf/archive/v0.1.1.tar.gz
+	md5sums = 1f1b869fd1df4de4f8011812e5dd73ad
+
+pkgname = twemperf
+
