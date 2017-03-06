@@ -24,7 +24,7 @@ source=(
 noextract=()
 sha256sums=('69ff1076bf585855c81862b06bf50bd67621ac435d0c0f4a2ac3d19aa31317aa'
             '86c1fd50ef32b17be92df37d6a5c2206e456d99bc7abe4da80a44f49d2a377d3')
-arch=('i686' 'x86_64')
+arch=('any')
 
 package() {
   mkdir -p ${pkgdir}/opt/
