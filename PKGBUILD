@@ -2,26 +2,26 @@
 # Maintainer: ehs2013
 
 pkgbase=linux-ruisu
-pkgver='3.16.0_43'
+pkgver='4.4.0_47'
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=(tar)
 options=(!strip)
-_ubuntu_ver='3.16.0-43-generic'
-_ubuntu_buildver='3.16.0-43.58~14.04.1'
+_ubuntu_ver='4.4.0-47-generic'
+_ubuntu_buildver='4.4.0-47.68'
 _mirror='https://mirrors.kernel.org/ubuntu'
-source=("${_mirror}/pool/main/l/linux-lts-utopic/linux-image-${_ubuntu_ver}_${_ubuntu_buildver}_amd64.deb"
-        "${_mirror}/pool/main/l/linux-lts-utopic/linux-image-extra-${_ubuntu_ver}_${_ubuntu_buildver}_amd64.deb"
-        "${_mirror}/pool/main/l/linux-lts-utopic/linux-headers-${_ubuntu_ver}_${_ubuntu_buildver}_amd64.deb"
+source=("${_mirror}/pool/main/l/linux/linux-image-${_ubuntu_ver}_${_ubuntu_buildver}_amd64.deb"
+        "${_mirror}/pool/main/l/linux/linux-image-extra-${_ubuntu_ver}_${_ubuntu_buildver}_amd64.deb"
+        "${_mirror}/pool/main/l/linux/linux-headers-${_ubuntu_ver}_${_ubuntu_buildver}_amd64.deb"
         "linux-ruisu.preset"
         "blacklist.conf")
-md5sums=('952bd1c63fa0f220eaad7554adc842aa'
-         '9bab067d05b2805c7f61ff374640a710'
-         '9dca52bf9b319626e75587b45afbacab'
-         'SKIP'
-         'SKIP')
+md5sums=('15ccfe224802de420913f7fb3f8075b4'
+         '7da88764623fb9eef0e47a17abc378dc'
+         '26c713f3d9666475ff49ada48984a8c6'
+         '81318c55b71ee7be180066742688febd'
+         'bc6754fa320733c6d239a4bb0148ffd7')
 noextract=("${source[@]##*/}")
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 package_linux-ruisu() {
