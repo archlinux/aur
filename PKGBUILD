@@ -27,13 +27,11 @@ sha256sums=('69ff1076bf585855c81862b06bf50bd67621ac435d0c0f4a2ac3d19aa31317aa'
 arch=('any')
 
 package() {
-  mkdir -p ${pkgdir}/opt/
-  chmod 755 ${srcdir}/${_pkgname_upper}/*.sh
-  cp -r ${srcdir}/${_pkgname_upper} ${pkgdir}/opt/${pkgname}
-  chown -R $USER:users ${pkgdir}/opt/${pkgname}
-  install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
+  install -D ${pkgname} ${pkgdir}/usr/bin/${pkgname}
   ln -s ${pkgname} ${pkgdir}/usr/bin/${_pkgname_upper}
 
   cd ${srcdir}/${_pkgname_upper}
+  install -Dt "${pkgdir}/opt/${pkgname}" start-linux.sh
+  cp -R data "${pkgdir}/opt/${pkgname}"
   install -D License.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
