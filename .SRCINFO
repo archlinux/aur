@@ -1,12 +1,12 @@
 pkgbase = tinc-pre-git
 	pkgdesc = Virtual Private Network daemon (prerelease)
-	pkgver = 1.1pre14.23.g979acc4
+	pkgver = 1.1pre14.31.g7a54fe5e
 	pkgrel = 1
 	url = http://www.tinc-vpn.org/
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = lzo2
+	depends = lzo
 	depends = openssl
 	optdepends = python2
 	optdepends = wxpython: gui support

@@ -4,13 +4,13 @@
 # OPTIONS+=(debug !strip)
 
 pkgname=tinc-pre-git
-pkgver=1.1pre14.23.g979acc4
+pkgver=1.1pre14.31.g7a54fe5e
 pkgrel=1
 pkgdesc="Virtual Private Network daemon (prerelease)"
 arch=('any')
 url="http://www.tinc-vpn.org/"
 license=('GPL')
-depends=('lzo2' 'openssl')
+depends=('lzo' 'openssl')
 makedepends=('git')
 optdepends=('python2' 'wxpython: gui support')
 provides=('tinc-pre')
