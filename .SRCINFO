@@ -9,7 +9,6 @@ pkgbase = evince-light
 	makedepends = itstool
 	makedepends = intltool
 	makedepends = python
-	depends = gnome-icon-theme
 	depends = gtk3
 	depends = libsm
 	depends = poppler-glib

@@ -22,7 +22,7 @@ pkgdesc="GNOME document viewer, built with minimal dependencies by default but c
 url="https://wiki.gnome.org/Apps/Evince"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('gnome-icon-theme' 'gtk3' 'libsm')
+depends=('gtk3' 'libsm')
 
 [[ "${_pdf}"        == "yes" ]] && depends+=('poppler-glib')
 [[ "${_multimedia}" == "yes" ]] && depends+=('gst-plugins-base-libs')
