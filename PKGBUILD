@@ -2,7 +2,7 @@
 _lang=spa-eng
 _pkgname=dict-freedict-${_lang}
 pkgname=${_pkgname}-svn
-pkgver=r1487
+pkgver=r1629
 pkgrel=1
 pkgdesc="Spanish -> English dictionary for dictd et al. from Freedict.org"
 arch=('any')
@@ -23,15 +23,10 @@ pkgver()
 	printf "r%s" "${_ver//[[:alpha:]]}"
 }
 
-prepare()
-{
-	ln -s /usr/lib/freedict-tools/{tools,shared} .
-}
-
 build()
 {
 	cd ${_lang}
-	make
+	make FREEDICT_TOOLS=/usr/lib/freedict-tools
 }
 
 package()
@@ -40,9 +35,9 @@ package()
 	cp ${_lang}/${_lang}.{dict.dz,index} "$pkgdir/usr/share/dictd/"
 
 	mkdir -p "${pkgdir}/usr/share/doc/freedict/${_lang}"
-	for file in ${_lang}/{AUTHORS,README,NEWS,INSTALL,ChangeLog}
+	for file in ${_lang}/{AUTHORS,README,NEWS,ChangeLog}
 	do
 		test -f ${file} && \
-			cp -d ${file} "${pkgdir}/usr/share/doc/freedict/${_lang}/"
+			cp ${file} "${pkgdir}/usr/share/doc/freedict/${_lang}/"
 	done
 }
