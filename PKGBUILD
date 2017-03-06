@@ -2,13 +2,13 @@
 
 _gitname=deen
 pkgname="${_gitname}-git"
-pkgver=0.7.9.3760359
+pkgver=0.7.9.0a44bc7
 pkgrel=1
 pkgdesc='Generic data encoding/decoding application built with PyQt5'
 url='https://github.com/takeshixx/deen'
 arch=('any')
 license=('Apache 2.0')
-depends=('python' 'python-pip' 'python-pyqt5')
+depends=('python' 'python-setuptools' 'python-pyqt5')
 optdepends=('python-pyopenssl')
 makedepends=('git')
 provides=('deen')
@@ -24,8 +24,7 @@ pkgver() {
 
 package() {
   cd ${_gitname}
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .
-  python -O -m compileall .
+  python3 setup.py install --root="$pkgdir/" --optimize=1
 }
 
 # vim: ts=2 sw=2
