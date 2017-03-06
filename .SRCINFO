@@ -1,6 +1,6 @@
 pkgbase = irssi-xmpp-git
 	pkgdesc = irssi plugin to connect to the Jabber network (cdidier version)
-	pkgver = v0.53.1.gb12ca69
+	pkgver = v0.53.3.g6155e0f
 	pkgrel = 1
 	url = https://github.com/cdidier/irssi-xmpp
 	arch = arm
@@ -15,9 +15,7 @@ pkgbase = irssi-xmpp-git
 	conflicts = irssi-xmpp-cvs
 	conflicts = irssi-xmpp
 	source = irssi-xmpp-git::git+https://github.com/cdidier/irssi-xmpp
-	source = use_tls.patch
 	sha512sums = SKIP
-	sha512sums = 87fa715cdc438f2f5a7c1cbe64e168b624547b5ac4f5114687737cb65bc5f9c1016634dee05a7a0e2c831b18e5a415eea5c8f87caa50591e3977d873f76601d6
 
 pkgname = irssi-xmpp-git
 
