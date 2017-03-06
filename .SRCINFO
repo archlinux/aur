@@ -1,27 +1,22 @@
 pkgbase = ocaml-oasis
 	pkgdesc = Architecture for building OCaml libraries and applications.
-	pkgver = 0.4.5
+	pkgver = 0.4.8
 	pkgrel = 1
 	url = http://oasis.forge.ocamlcore.org
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = ocaml
-	makedepends = ocaml-batteries
+	makedepends = ocamlbuild
 	makedepends = ocaml-fileutils>=0.4.2
 	makedepends = ocaml-findlib
-	makedepends = ocaml-ocamlgraph
 	makedepends = ocaml-ocamlify
-	makedepends = ocaml-odn>=0.0.11
-	makedepends = ocaml-ounit
 	makedepends = ocaml-ocamlmod
-	makedepends = ocaml-pcre
-	makedepends = ocaml-expect>=0.0.3
 	depends = glibc
 	depends = pcre
 	options = !strip
-	source = http://forge.ocamlcore.org/frs/download.php/1475/oasis-0.4.5.tar.gz
-	sha512sums = 97d5401762ffda6bf4d7a239d9c77f8647d58da1728925e6de6e8fdfded6f8e7bb69652a838b86ab7203cd68436b06f76921c76840b97db56a94bb87d74450d7
+	source = http://forge.ocamlcore.org/frs/download.php/1669/oasis-0.4.8.tar.gz
+	sha512sums = e0baf0f048647c25eac5472db0d2a22d0fcaf85fe61ebd88ec5a101c20d4916ecfa9d10fae069ba4479abb22b90c44f18312b9252727a8c7c7de4aa2d8d72663
 
 pkgname = ocaml-oasis
 
