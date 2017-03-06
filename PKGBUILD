@@ -1,7 +1,7 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 
 pkgname=no-more-secrets-git
-pkgver=0.1.0.r16.g3bd7512
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A tool set to recreate the famous 'decrypting text' effect as seen in the 1992 movie Sneakers, aka nms."
 url="https://github.com/bartobri/no-more-secrets"
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd $_gitname
-  make
+  make all
 }
 
 package() {
