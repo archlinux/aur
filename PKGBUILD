@@ -12,7 +12,7 @@
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-git' 'lib32-mesa-libgl-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.1.0_devel.89365.010fecb853
+pkgver=17.1.0_devel.89569.c416d8a3bc
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'glproto' 'lib32-libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
@@ -59,7 +59,7 @@ build () {
                --with-egl-platforms=x11,drm,wayland \
                --with-vulkan-drivers=intel,radeon \
                --enable-texture-float \
-               --enable-osmesa \
+               --enable-gallium-osmesa \
                --enable-xa \
                --enable-nine \
                --disable-xvmc \
