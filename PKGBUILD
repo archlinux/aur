@@ -1,12 +1,13 @@
+# Maintainer:  Marcin Wieczorek <marcin@marcin.co>
+# Contributor: Larry Hajali <larryhaja[at]gmail[dot]com>
 # Contributor: Jachym Barvinek <jachymb@gmail.com>
 # Contributor: Laurie Clark-Michalek <bluepeppers@archlinux.us>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
-# Maintainer: Larry Hajali <larryhaja[at]gmail[dot]com>
 
 pkgname=xvst
 _pkgname=xVideoServiceThief
 pkgver=2.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='GUI tool for downloading videos from sites like YouTube, GoogleVideo etc.'
 url='http://xviservicethief.sourceforge.net'
 license=('GPL3')
@@ -15,8 +16,8 @@ depends=('ffmpeg' 'qt5-webkit' 'qt5-script')
 makedepends=('sed' 'qt5-tools')
 optdepends=('flvstreamer: for downloading flv files.')
 source=("https://github.com/xVST/xVideoServiceThief/archive/${pkgver}.tar.gz"
-				"https://patch-diff.githubusercontent.com/raw/xVST/xVideoServiceThief/pull/14.patch"
-				'xvst.desktop'
+        'qdatastream.patch::https://github.com/xVST/xVideoServiceThief/commit/86abff9767e7fed9b8a78681a40ad688fea393d6.patch'
+        'xvst.desktop'
         'beeg.patch'
         'chilloutzone.patch'
         'disable_update.patch'
@@ -25,7 +26,7 @@ source=("https://github.com/xVST/xVideoServiceThief/archive/${pkgver}.tar.gz"
         'sunporno.patch'
         'wat.tv.patch')
 md5sums=('917d32b75585eec0e0ff5245253f33ed'
-         '3cf071f9d97c6c3ed32103b67866b668'
+         'b879f911cc6d9d0e22b1f0b4d9b5cafc'
          '9d4d4d4841b497fe64705d36e7955174'
          '417c1a8cec359835e25ba8ed89cb86c6'
          'd9bf2659bba5c99f885e9febdb3d4d2e'
