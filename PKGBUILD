@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=mpd-notification
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='Notify about tracks played by mpd'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('systemd' 'markdown')
 license=('GPL')
 validpgpkeys=('BD84DE71F493DF6814B0167254EDC91609BC9183')
 source=("http://www.eworm.de/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
-sha256sums=('67c0af066033d058f2d6a6740186179856aeaa243c5308fac2a28cf45fc6507a'
+sha256sums=('2a16130f12f1b3360881f712df3ff2891b09502ee1d4b30248ad991a76abb7c6'
             'SKIP')
 
 build() {
