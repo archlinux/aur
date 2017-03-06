@@ -35,7 +35,7 @@ build()
 {
   cd $pkgname-gpl-$pkgver-src
 
-  PREFIX=/usr  make -j3 -f Makefile.archy all
+  PREFIX=/usr  make -j1 -f Makefile.archy all
 }
 
 
@@ -43,6 +43,6 @@ package()
 {
   cd $pkgname-gpl-$pkgver-src
 
-  DESTDIR=$pkgdir  PREFIX=/usr  make  -f Makefile.archy  prefix="/usr"  install
+  DESTDIR=$pkgdir  PREFIX=/usr  make  -f Makefile.archy  install
 }
 
