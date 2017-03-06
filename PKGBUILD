@@ -2,18 +2,19 @@
 # Contributor: Ciarán Coffey <ciaran@ccoffey.ie>
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 pkgname=icaclient
-pkgver=13.4
+pkgver=13.5
 pkgrel=1
 pkgdesc="Citrix Receiver for x86_64 (64bit) Linux (ICAClient)"
 arch=('x86_64' 'i686')
 url="http://www.citrix.com/English/ps2/products/product.asp?contentID=1689163&ntref=prod_top"
 license=('custom:Citrix')
 depends=('alsa-lib' 'libvorbis' 'curl' 'gtk2' 'libpng12' 'libxml2' 'libxaw' 'libxext' 'libxft'
-  'libxinerama' 'libxmu' 'libxp' 'libxpm' 'libxt' 'ca-certificates' 'gstreamer0.10-good-plugins')
+  'libxinerama' 'libxmu' 'libxp' 'libxpm' 'libxt' 'ca-certificates')
 makedepends=('automake' 'autoconf' 'wget')
 optdepends=(
   'xerces-c: gtk2 configuration manager'
-  'webkitgtk2: gtk2 selfservice/storefront ui')
+  'webkitgtk2: gtk2 selfservice/storefront ui'
+  'gstreamer0.10-good-plugins: needed for media applications')  # optional since huge build and not everyone needs it
 conflicts=('bin32-citrix-client' 'citrix-client')
 options=(!strip)
 backup=("opt/Citrix/ICAClient/config/appsrv.ini" "opt/Citrix/ICAClient/config/wfclient.ini" "opt/Citrix/ICAClient/config/module.ini")
@@ -28,8 +29,8 @@ md5sums=('71aca6257f259996ac59729604f32978'
          '1f214f6f456f59afd1a3275580f4240e'
          '59f8e50cc0e0c399d47eb7ace1df5a32'
          'dca5a1f51449ef35f1441b900d622276')
-md5sums_x86_64=('e3fd715e0f8cd72715a51d8593394b19')
-md5sums_i686=('486dc36b74adf0a017bddc42a01a2db3')
+md5sums_x86_64=('ea1fd28fde956d5cda03bed74a578b4c')
+md5sums_i686=('aad1c99baed2821921188cc49700466e')
 install=citrix-client.install
 
 package() {
