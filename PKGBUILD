@@ -1,6 +1,6 @@
 # Maintainer: Adrià Arrufat <adria.arrufat+AUR AT protonmail DOT ch>
 pkgname=coax-git
-pkgver=0.0.0+20170305+50+g7f8abe3
+pkgver=0+53+gb5e7536
 pkgrel=1
 pkgdesc="A (barely working) native Wire client for Unix"
 arch=('i686' 'x86_64')
@@ -14,10 +14,9 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd coax
-  _date=$(git show --format="%cd" --date=format:"%Y%m%d" --no-patch)
   _count=$(git rev-list --count HEAD)
   _commit=$(git rev-parse --short HEAD)
-  echo 0.0.0+$_date+$_count+g$_commit
+  echo 0+$_count+g$_commit
 }
 
 build() {
