@@ -7,7 +7,7 @@
 
 pkgname=erlang-nox
 pkgver=19.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='General-purpose concurrent functional programming language developed by Ericsson (headless version)'
 arch=('x86_64' 'i686')
 url='http://www.erlang.org/'
@@ -40,7 +40,7 @@ prepare() {
 build() {
   cd otp
 
-  ./configure --prefix=/usr --enable-smp-support --with-odbc
+  ./configure --prefix=/usr --enable-smp-support --with-odbc --enable-builtin-zlib
   make
 }
 
