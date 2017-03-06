@@ -1,5 +1,4 @@
-# Maintainer: Matt Harrison <matt@mistbyte.com>
-# This PKGBUILD is maintained at https://github.com/matt-h/aur-pkgbuilds/tree/master/mediaelch
+# Maintainer: Matt Harrison <matt@harrison.us.com>
 
 pkgname=mediaelch
 pkgver=2.4.2
