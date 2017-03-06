@@ -1,0 +1,11 @@
+--- a/src/klfbackend/klfbackend.cpp	2017-03-06 09:53:20.615968858 +0800
++++ b/src/klfbackend/klfbackend.cpp	2017-03-06 08:58:48.620180000 +0800
+@@ -193,7 +193,7 @@
+   // if v is just ascii, no need to encode it in unicode
+   bool isascii = true;
+   for (i = 0; i < v.length(); ++i) {
+-    if (v[i] < 0 || v[i] > 126) {
++    if (v[i].unicode() < 0 || v[i].unicode() > 126) {
+       isascii = false;
+       break;
+     }
