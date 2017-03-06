@@ -772,9 +772,9 @@ index 789ad08..0c55d78 100644
  	)
  
  	CFLAGS="${saved_CFLAGS}"
-From 79d89580db6fd92c059dabc4f5f4d83b72bb9d3d Mon Sep 17 00:00:00 2001
+From 09776c5b52df13121504e07894a26d5cd1883317 Mon Sep 17 00:00:00 2001
 From: Emmanuel Deloget <logout@free.fr>
-Date: Fri, 17 Feb 2017 12:56:23 +0100
+Date: Thu, 23 Feb 2017 15:35:56 +0100
 Subject: [PATCH 10/20] OpenSSL: don't use direct access to the internal of
  RSA_METHOD
 
@@ -786,6 +786,10 @@ Compatibility with OpenSSL 1.0 is kept by defining the corresponding
 functions when they are not found in the library.
 
 Signed-off-by: Emmanuel Deloget <logout@free.fr>
+Acked-by: Steffan Karger <steffan.karger@fox-it.com>
+Message-Id: <79d89580db6fd92c059dabc4f5f4d83b72bb9d3d.1487859361.git.logout@free.fr>
+URL: https://www.mail-archive.com/openvpn-devel@lists.sourceforge.net/msg14175.html
+Signed-off-by: Gert Doering <gert@greenie.muc.de>
 Signed-off-by: Christian Hesse <mail@eworm.de>
 ---
  configure.ac                 |   9 ++
@@ -2494,9 +2498,9 @@ index 86450fe..03dc80f 100644
      secure_memzero(A1, sizeof(A1));
  
      dmsg(D_SHOW_KEY_SOURCE, "tls1_P_hash out: %s", format_hex(out_orig, olen_orig, 0, &gc));
-From 7f94ece5cb4b3f0ab53e026662dc22937e10743a Mon Sep 17 00:00:00 2001
+From c828ffc648eebda20e2f9087248944fa0f52a582 Mon Sep 17 00:00:00 2001
 From: Emmanuel Deloget <logout@free.fr>
-Date: Fri, 17 Feb 2017 14:18:33 +0100
+Date: Fri, 17 Feb 2017 23:00:52 +0100
 Subject: [PATCH 18/20] OpenSSL: SSLeay symbols are no longer available in
  OpenSSL 1.1
 
@@ -2504,6 +2508,10 @@ The old symbols do not exist anymore but the library gained new
 equivalent symbols (OSSL). Use them instead of the old ones
 
 Signed-off-by: Emmanuel Deloget <logout@free.fr>
+Acked-by: Steffan Karger <steffan.karger@fox-it.com>
+Message-Id: <9ce17efda7b1ed100e73554b1916c0bfa687d9d1.1487368114.git.logout@free.fr>
+URL: https://www.mail-archive.com/openvpn-devel@lists.sourceforge.net/msg14089.html
+Signed-off-by: Gert Doering <gert@greenie.muc.de>
 Signed-off-by: Christian Hesse <mail@eworm.de>
 ---
  src/openvpn/openssl_compat.h | 5 +++++
@@ -2511,10 +2519,10 @@ Signed-off-by: Christian Hesse <mail@eworm.de>
  2 files changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/src/openvpn/openssl_compat.h b/src/openvpn/openssl_compat.h
-index 8792710..3c93bfa 100644
+index e98e8df..92f014d 100644
 --- a/src/openvpn/openssl_compat.h
 +++ b/src/openvpn/openssl_compat.h
-@@ -619,4 +619,9 @@ RSA_meth_set0_app_data(RSA_METHOD *meth, void *app_data)
+@@ -307,4 +307,9 @@ RSA_meth_set0_app_data(RSA_METHOD *meth, void *app_data)
  }
  #endif
  
@@ -2525,7 +2533,7 @@ index 8792710..3c93bfa 100644
 +
  #endif /* OPENSSL_COMPAT_H_ */
 diff --git a/src/openvpn/ssl_openssl.c b/src/openvpn/ssl_openssl.c
-index 2f3211f..5a8fd1e 100644
+index f011e06..d7cc2ba 100644
 --- a/src/openvpn/ssl_openssl.c
 +++ b/src/openvpn/ssl_openssl.c
 @@ -995,7 +995,7 @@ rsa_priv_enc(int flen, const unsigned char *from, unsigned char *to, RSA *rsa, i
@@ -2574,9 +2582,9 @@ index 5a8fd1e..5c91e48 100644
      if (!ret)
      {
          crypto_msg(M_FATAL, "Error creating %s BIO", desc);
-From 5045e449cb40223a759fa07976c9c37e939b2d9e Mon Sep 17 00:00:00 2001
+From 8d00afae88b626c9cf14170a943b33a7ed378070 Mon Sep 17 00:00:00 2001
 From: Emmanuel Deloget <logout@free.fr>
-Date: Mon, 20 Feb 2017 14:45:22 +0100
+Date: Mon, 20 Feb 2017 15:32:34 +0100
 Subject: [PATCH 20/20] OpenSSL: use EVP_CipherInit_ex() instead of
  EVP_CipherInit()
 
@@ -2591,16 +2599,20 @@ the change allows us to get the old behavior back instead of relying
 on dirty tricks.
 
 Signed-off-by: Emmanuel Deloget <logout@free.fr>
+Acked-by: Steffan Karger <steffan.karger@fox-it.com>
+Message-Id: <2faff7647151d7fe362c1c5db9f97e520444d09b.1487600539.git.logout@free.fr>
+URL: https://www.mail-archive.com/openvpn-devel@lists.sourceforge.net/msg14120.html
+Signed-off-by: Gert Doering <gert@greenie.muc.de>
 Signed-off-by: Christian Hesse <mail@eworm.de>
 ---
  src/openvpn/crypto_openssl.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/src/openvpn/crypto_openssl.c b/src/openvpn/crypto_openssl.c
-index 23de175..2bca88b 100644
+index a66ee71..5549d70 100644
 --- a/src/openvpn/crypto_openssl.c
 +++ b/src/openvpn/crypto_openssl.c
-@@ -683,7 +683,7 @@ cipher_ctx_init(EVP_CIPHER_CTX *ctx, uint8_t *key, int key_len,
+@@ -671,7 +671,7 @@ cipher_ctx_init(EVP_CIPHER_CTX *ctx, uint8_t *key, int key_len,
          crypto_msg(M_FATAL, "EVP set key size");
      }
  #endif
@@ -2609,7 +2621,7 @@ index 23de175..2bca88b 100644
      {
          crypto_msg(M_FATAL, "EVP cipher init #2");
      }
-@@ -736,7 +736,7 @@ cipher_ctx_get_cipher_kt(const cipher_ctx_t *ctx)
+@@ -724,7 +724,7 @@ cipher_ctx_get_cipher_kt(const cipher_ctx_t *ctx)
  int
  cipher_ctx_reset(EVP_CIPHER_CTX *ctx, uint8_t *iv_buf)
  {
