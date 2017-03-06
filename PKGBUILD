@@ -10,9 +10,8 @@ depends=('oyranos-git')
 makedepends=('git')
 provides=('xcm')
 conflicts=('xcm')
-source=("git+https://github.com/oyranos-cms/xcm.git")
+source=('git+https://github.com/oyranos-cms/xcm.git')
 md5sums=('SKIP')
-_gitname="xcm"
 
 pkgver() {
   cd xcm
@@ -21,7 +20,9 @@ pkgver() {
 
 build() {
   cd xcm
-  ./configure --prefix=/usr --with-udev-dir=/usr/lib/udev/rules.d
+  ./configure \
+    --prefix=/usr \
+    --with-udev-dir=/usr/lib/udev/rules.d
   make
 }
 
