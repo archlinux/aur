@@ -8,7 +8,7 @@
 
 _pkgname=gitlab
 pkgname=${_pkgname}-ee
-pkgver=8.16.4
+pkgver=8.17.2
 pkgrel=1
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/gitlab-org/gitlab-ee/r
         nginx-ssl.conf.example
         lighttpd.conf.example)
 install='gitlab.install'
-sha512sums=('7ea28084430e9b83bfc386a542a4a97b37eb926fe75a0de562a09a56578d0d6d24e18f006005e630b0aebcb2968420b1c0a46b8f985c474ef36dbe5f6b59921e'
+sha512sums=('e5acef0a3658205d9aeef84381fda842e0512e6561cdab425e3892f1dc88312789f2249ab9e2da9c160f5a1f5381a6261fd9fb11a53f6bb62c51dd23319de7b4'
             '56cce150645ef74fa42a6100c8bc7689c4012579e1f3ba237c06c367b121246b39e968044615fa21c4757bc8e9d06f37f8ac8d39aa8b808c758e716857553f66'
             '52651e4a5dd2d632e31b7275283f9b8ab2c32c4d56b63d17bd843f300e273e382e339e5aed66222b1b2279273357cbb73aa38119f04784fe380d1550346f1ff3'
             '79cfb8ee740ab30f970c3113659b8349128abeae5e32cc81bb905f89a6db9941b7778040a094b884262daf020f66a1aee49a12d34fbb94efce6ade946bb4625b'
@@ -65,7 +65,7 @@ _datadir="/usr/share/webapps/${_pkgname}"
 _etcdir="/etc/webapps/${_pkgname}"
 _homedir="/var/lib/${_pkgname}"
 _logdir="/var/log/${_pkgname}"
-_srcdir="${_pkgname}-ee-v${pkgver}-ee-"
+_srcdir="${pkgname}-v${pkgver}-ee-"
 
 prepare() {
   cd "${srcdir}/${_srcdir}"*
@@ -118,7 +118,7 @@ build() {
   # Gems will be installed into vendor/bundle
 
   bundle-2.3 config build.nokogiri --use-system-libraries
-  bundle-2.3 install -j$(nproc) --no-cache --deployment --without development test aws
+  bundle-2.3 install -j$(nproc) --no-cache --deployment --without development test
 
   # We'll temporarily stick this in here so we can build the assets
   cp config/database.yml.postgresql.orig config/database.yml
