@@ -1,0 +1,16 @@
+pkgbase = jupyter_highlight_selected_word
+	pkgdesc = Jupyter notebook extension that enables highlighting every instance of the current word in the notebook
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/ipython-contrib/
+	arch = any
+	license = BSD
+	depends = python
+	depends = jupyter
+	depends = jupyter-notebook
+	noextract = jupyter_highlight_selected_word-0.0.8-py2.py3-none-any.whl
+	source = jupyter_highlight_selected_word-0.0.8-py2.py3-none-any.whl::https://files.pythonhosted.org/packages/py2.py3/j/jupyter_highlight_selected_word/jupyter_highlight_selected_word-0.0.8-py2.py3-none-any.whl
+	md5sums = 10655fb33701f5d02eac2c7cf03bb1f2
+
+pkgname = jupyter_highlight_selected_word
+
