@@ -1,14 +1,14 @@
 pkgbase = dict-freedict-fra-deu
 	pkgdesc = French -> German dictionary for dictd et al. from Freedict.org
-	pkgver = 2016_09_23
+	pkgver = 2016_11_20
 	pkgrel = 1
 	url = http://www.freedict.org/
 	install = dict-freedict-fra-deu.install
 	arch = any
 	license = GPL
 	optdepends = dictd: dict client and server
-	source = https://sourceforge.net/projects/freedict/files/French%20-%20German/2016-09-23/freedict-fra-deu-2016-09-23.tar.bz2
-	md5sums = 0c3488c6842f38e9c946a6c6593e07f6
+	source = https://sourceforge.net/projects/freedict/files/French%20-%20German/2016-11-20/freedict-fra-deu-2016-11-20.tar.bz2
+	sha512sums = 0b3081d820572c9b4164afed72b28164182078f07ab3c71ce0da4c5ff2fb4cb7c8c67b1118c6009e5480e3666971860aa4c50267d38d7322a340fb7bc4e5b2aa
 
 pkgname = dict-freedict-fra-deu
 
