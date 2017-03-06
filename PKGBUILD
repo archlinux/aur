@@ -11,15 +11,6 @@ makedepends=('git')
 source=("$pkgname::git+https://github.com/rusio/VokabelTrainer")
 md5sums=('SKIP')
 
-prepare() {
-	cd $pkgname
-	cp vokabeltrainer.groovy vokabeltrainer.bak
-	echo '#!/usr/bin/env groovy' > vokabeltrainer.groovy
-	echo >> vokabeltrainer.groovy
-	cat vokabeltrainer.bak >> vokabeltrainer.groovy
-	cd ..
-}
-
 package() {
 	mkdir -p $pkgdir/usr/bin
 	install -m755 $pkgname/vokabeltrainer.groovy $pkgdir/usr/bin/vokabeltrainer
