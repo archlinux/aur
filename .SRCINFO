@@ -1,0 +1,30 @@
+pkgbase = glise-bin
+	pkgdesc = A subdivision surfaces 3D modeler featuring a complete Python API.
+	pkgver = 1.7.1_1
+	pkgrel = 1
+	url = http://www.twistednormal.com/
+	arch = x86_64
+	license = custom
+	depends = aarch64-linux-gnu-gcc
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = intel-tbb
+	depends = libpng12
+	depends = libx11
+	depends = libxau
+	depends = libxcb
+	depends = libxcursor
+	depends = libxdmcp
+	depends = libxext
+	depends = libxfixes
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxrender
+	depends = libxxf86vm
+	depends = vagrant-substrate
+	source = http://www.twistednormal.com/download/glise_1.7.1_amd64.deb
+	md5sums = eb0453d1708e9113e24f333a6b5e4553
+
+pkgname = glise-bin
+
