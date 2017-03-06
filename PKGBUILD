@@ -1,7 +1,7 @@
 # Contributor: Michael Groh <schnitzelkuchen@googlemail.com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=fusecompress-git
-pkgver=2.1.r146.ged259df
+pkgver=2.1.r152.gd3fe3f8
 pkgrel=1
 epoch=
 pkgdesc="Transparent (using fuse) compressing filesystem."
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://github.com/tex/fusecompress/"
 license=('GPL')
 groups=()
-depends=('fuse' 'file' 'boost-libs' 'xz' 'lzo2')
+depends=('fuse' 'file' 'boost-libs' 'xz' 'lzo')
 makedepends=('git' 'boost')
 optdepends=()
 checkdepends=()
