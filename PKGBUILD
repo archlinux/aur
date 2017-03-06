@@ -1,18 +1,31 @@
 # Maintainer: Tomasz Zok <tomasz.zok [at] gmail.com>
 pkgname=x3dna
 _pkgver=2.3
-pkgver=${_pkgver}_20161214
+pkgver=${_pkgver}_20170208
 pkgrel=1
 pkgdesc="3DNA is a versatile, integrated software system for the analysis, rebuilding and visualization of three-dimensional nucleic-acid-containing structures. Please see: http://forum.x3dna.org/site-announcements/download-instructions/"
 arch=('x86_64')
 url="http://x3dna.org/"
 license=('custom')
 depends=('ruby')
-source=("http://x3dna.bio.columbia.edu/downloads/v${_pkgver}/${pkgname}-v${_pkgver}-linux-64bit.tar.gz")
-md5sums=('184fd7da4338cfc41e0feb055563cf64')
+source=("${pkgname}.md5")
+md5sums=('38c78f0d94749ffaa1b55a0bee6a90b8')
 
 package() {
+    archive=${pkgname}-v${_pkgver}-linux-64bit.tar.gz
+    if [[ ! -r "../${archive}" ]]; then
+        echo "You must download ${archive} on your own from the project webpage"
+        echo 'See: http://forum.x3dna.org/site-announcements/download-instructions/'
+        return 1
+    fi
+    if ! md5sum --quiet --check "${pkgname}.md5"; then
+        echo 'Invalid checksum!'
+        return 1
+    fi
+
+    bsdtar xfz ../${archive}
     cd ${pkgname}-v${_pkgver}/
+
     install -d ${pkgdir}/etc/profile.d/
     install -d ${pkgdir}/opt/${pkgname}-v${_pkgver}/
     install -d ${pkgdir}/usr/bin/
