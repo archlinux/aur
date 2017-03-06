@@ -1,6 +1,6 @@
 pkgbase = jupyter_contrib_nbextensions
 	pkgdesc = A collection of Jupyter nbextensions
-	pkgver = 0.2.0
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/ipython-contrib/jupyter_contrib_nbextensions
 	arch = any
@@ -12,15 +12,17 @@ pkgbase = jupyter_contrib_nbextensions
 	depends = jupyter-nbconvert
 	depends = jupyter_contrib_core
 	depends = jupyter_nbextensions_configurator
+	depends = jupyter_highlight_selected_word
+	depends = jupyter_latex_envs
 	depends = python-yaml
 	depends = python-psutil
 	conflicts = jupyter-nbextensions
 	conflicts = python-jupyter-nbextensions
 	replaces = jupyter-nbextensions-git
 	replaces = jupyter-nbextensions
-	noextract = jupyter_contrib_nbextensions-0.2.0-py2.py3-none-any.whl
-	source = jupyter_contrib_nbextensions-0.2.0-py2.py3-none-any.whl::https://files.pythonhosted.org/packages/py2.py3/j/jupyter_contrib_nbextensions/jupyter_contrib_nbextensions-0.2.0-py2.py3-none-any.whl
-	md5sums = 9c3432387326138cc1a809d4fec14aad
+	noextract = jupyter_contrib_nbextensions-0.2.4-py2.py3-none-any.whl
+	source = jupyter_contrib_nbextensions-0.2.4-py2.py3-none-any.whl::https://files.pythonhosted.org/packages/py2.py3/j/jupyter_contrib_nbextensions/jupyter_contrib_nbextensions-0.2.4-py2.py3-none-any.whl
+	md5sums = e95ca3640fc386aac94dcdaccb2d8e64
 
 pkgname = jupyter_contrib_nbextensions
 

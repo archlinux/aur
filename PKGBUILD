@@ -1,6 +1,6 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=jupyter_contrib_nbextensions
-pkgver=0.2.0
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='A collection of Jupyter nbextensions'
 arch=(any)
@@ -8,11 +8,11 @@ url="https://github.com/ipython-contrib/$pkgname"
 license=(BSD)
 replaces=(jupyter-nbextensions-git jupyter-nbextensions)
 conflicts=(jupyter-nbextensions python-jupyter-nbextensions)
-depends=(python jupyter jupyter-notebook jupyter-nbconvert jupyter_contrib_core jupyter_nbextensions_configurator python-yaml python-psutil)
+depends=(python jupyter jupyter-notebook jupyter-nbconvert jupyter_contrib_core jupyter_nbextensions_configurator jupyter_highlight_selected_word jupyter_latex_envs python-yaml python-psutil)
 makedepends=(python-pip)
 _wheel="$pkgname-$pkgver-py2.py3-none-any.whl"
 source=("$_wheel::https://files.pythonhosted.org/packages/py2.py3/${pkgname::1}/$pkgname/$_wheel")
-md5sums=('9c3432387326138cc1a809d4fec14aad')
+md5sums=('e95ca3640fc386aac94dcdaccb2d8e64')
 noextract=("$_wheel")
 
 package() {
