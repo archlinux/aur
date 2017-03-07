@@ -3,7 +3,7 @@
 pkgname=dbvis
 pkgver=9.5.6
 __pkgver_underscore=9_5_6
-pkgrel=1
+pkgrel=2
 pkgdesc="DbVisualizer free - The Universal Database Tool"
 url="http://www.dbvis.com/"
 license=('custom')
@@ -87,6 +87,7 @@ package() {
   echo "Icon="$pkgname >> $pkgdir/$__dbvis_desktop
   echo "Terminal=false" >> $pkgdir/$__dbvis_desktop
   echo "Categories=Development" >> $pkgdir/$__dbvis_desktop
+  echo "StartupWMClass=com-onseven-dbvis-DbVisualizerGUI" >> $pkgdir/$__dbvis_desktop
 
   #Fix error [DEBUG ExecutorRunner-pool-1-thread-1 J.ā] Could not load profile mysql from /usr/share/java/dbvis/resources/profiles/mysql.xml. File not found
   mkdir -p $pkgdir/$__dbvis_lib/resources
