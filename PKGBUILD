@@ -7,7 +7,7 @@ pkgrel=1
 
 depends=('python-pyqt4' 'python-sh' 'xdg-utils')
 optdepends=('inxi: Show system information'
-		'xorg: Show Xorg log'
+		'xorg-server: Show Xorg log'
 		'systemd: Show systemd log'
 		'mhwd: Show driver information using mhwd from Manjaro Linux' )
 makedepends=('git')
