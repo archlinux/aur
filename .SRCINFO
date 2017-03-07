@@ -1,0 +1,14 @@
+pkgbase = cfdl
+	pkgdesc = Downloads files behind cloudflare's anti-bot page
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/Caesim404/clouddl
+	arch = any
+	license = MIT
+	depends = python-cfscrape
+	optdepends = wget: wget support
+	source = https://github.com/Caesim404/cfdl/archive/0.2.1.tar.gz
+	sha256sums = 59125c676fea599081a51bed1d62e4c10b6bfde2201bc989dad1f263a88a9b5a
+
+pkgname = cfdl
+
