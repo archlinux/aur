@@ -2,8 +2,8 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='nextcloud-client'
-pkgver='2.2.4'
-pkgrel='5'
+pkgver='2.3.0'
+pkgrel='1'
 pkgdesc='Nextcloud desktop client'
 arch=('i686' 'x86_64')
 url='https://nextcloud.com/'
