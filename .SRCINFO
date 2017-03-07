@@ -1,6 +1,6 @@
 pkgbase = python-datecond
 	pkgdesc = Parser for date range conditionals.
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/Kwpolska/datecond
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-datecond
 	makedepends = python-dateutil
 	makedepends = python2-dateutil
 	options = !emptydirs
-	source = https://pypi.io/packages/source/d/datecond/datecond-0.1.4.tar.gz
-	md5sums = 09626fe4f48a11900814d4942b5ec20a
+	source = https://pypi.io/packages/source/d/datecond/datecond-0.1.5.tar.gz
+	md5sums = d569aede195295ffd688461d188a80c2
 
 pkgname = python-datecond
 	depends = python

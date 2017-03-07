@@ -2,7 +2,7 @@
 pkgbase=python-datecond
 pkgname=('python-datecond' 'python2-datecond')
 _pyname=datecond
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Parser for date range conditionals.'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools'
              'python-dateutil' 'python2-dateutil')
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('09626fe4f48a11900814d4942b5ec20a')
+md5sums=('d569aede195295ffd688461d188a80c2')
 
 prepare() {
   cd "${srcdir}/${_pyname}-${pkgver}"
