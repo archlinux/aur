@@ -4,12 +4,13 @@
 
 pkgname=firefox-extension-omnisidebar-git
 pkgver=1.6.15
-pkgrel=1
+pkgrel=2
 pkgdesc='A firefox add-on designed to provide more control over the behavior of the sidebar.'
 url='https://github.com/Quicksaver/OmniSidebar'
 arch=('any')
 license=('MPLv2')
 depends=('firefox')
+install=discontinuation-notice.install
 
 makedepends+=('git')
 source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
