@@ -8,7 +8,7 @@ pkgname=nvidia-pae
 pkgver=378.13
 _extramodules=extramodules-4.10-pae
 pkgrel=3
-pkgdesc="NVIDIA drivers for linux"
+pkgdesc="NVIDIA drivers for linux-pae"
 arch=('i686')
 url="http://www.nvidia.com/"
 makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-pae' 'linux-pae-headers>=4.10' 'linux-pae-headers<4.11')
@@ -47,7 +47,6 @@ build() {
 }
 
 package() {
-    pkgdesc="NVIDIA drivers for linux"
     depends=('linux-pae>=4.10' 'linux-pae<4.11' "nvidia-utils=${pkgver}" 'libgl')
     install=nvidia.install
 

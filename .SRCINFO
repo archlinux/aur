@@ -1,5 +1,5 @@
 pkgbase = nvidia-pae
-	pkgdesc = NVIDIA drivers for linux
+	pkgdesc = NVIDIA drivers for linux-pae
 	pkgver = 378.13
 	pkgrel = 3
 	url = http://www.nvidia.com/
@@ -17,7 +17,6 @@ pkgbase = nvidia-pae
 	md5sums = dd1077750af9a067739ec291fb24175f
 
 pkgname = nvidia-pae
-	pkgdesc = NVIDIA drivers for linux
 	install = nvidia.install
 	depends = linux-pae>=4.10
 	depends = linux-pae<4.11
