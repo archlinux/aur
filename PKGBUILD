@@ -10,10 +10,10 @@ pkgdesc="Kernel headers sanitized for use in userspace"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/libc"
 license=('GPL2')
-source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-${_basever}.tar.xz
-        http://www.kernel.org/pub/linux/kernel/v4.x/linux-${_basever}.tar.sign
-        http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz
-        http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign)
+source=(https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_basever}.tar.xz
+        https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_basever}.tar.sign
+        https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz
+        https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign)
 md5sums=('b5e7f6b9b2fe1b6cc7bc56a3a0bfc090'
          'SKIP'
          'd4ab54e17b686d1dbb1d28238fd0b081'
