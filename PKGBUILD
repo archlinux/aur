@@ -1,7 +1,7 @@
 # Maintainer: cth451 <cth451@gmail.com>
 pkgname=flatplat-theme
 epoch=1
-_date=20161227
+_date=20170307
 _gnomever=3.22
 pkgver=${_gnomever}.${_date}
 pkgrel=3
@@ -14,8 +14,8 @@ optdepends=()
 provides=('flatplat-theme' 'flatplat-theme-laptop')
 conflicts=('flatplat-theme-git' 'flatplat-theme-laptop')
 replaces=()
-source=("https://github.com/nana-4/Flat-Plat/archive/v${_date}.zip")
-sha256sums=('c057beedbedd48698a36bf884c0ab1253a17c91f359b8e3546d6999b7fd8041e')
+source=(Flat-Plat-${_date}.tar.gz::"https://github.com/nana-4/Flat-Plat/archive/v${_date}.tar.gz")
+sha256sums=('f9d356a7933c5e67fa436c573fc7ca0b8aab933d320626565f4cfb2a0e544aa6')
 
 package() {
   cd "${srcdir}/Flat-Plat-${_date}"
