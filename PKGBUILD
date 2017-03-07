@@ -1,6 +1,6 @@
 # Maintainer: Pete Alexandrou <pete@ozmartians.com>
 pkgname=vidcutter-git
-pkgver=3.0.0.r1.g8b6497f
+pkgver=3.0.0.r38.gdebe0ed
 pkgrel=1
 pkgdesc="the simple & fast video cutter & joiner with the help of mpv + FFmpeg"
 arch=('any')
@@ -32,9 +32,4 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}"
     python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-
-    # -- desktop + icon files currently taken care of as setuptools data_files --
-    #    
-    # install -Dm644 "data/desktop/vidcutter.desktop" "${pkgdir}/usr/share/applications/vidcutter.desktop"
-    # install -Dm644 "data/icons/vidcutter.png" "${pkgdir}/usr/share/pixmaps/vidcutter.png"
 }

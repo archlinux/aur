@@ -1,6 +1,6 @@
 pkgbase = vidcutter-git
 	pkgdesc = the simple & fast video cutter & joiner with the help of mpv + FFmpeg
-	pkgver = 3.0.0.r1.g8b6497f
+	pkgver = 3.0.0.r38.gdebe0ed
 	pkgrel = 1
 	url = http://vidcutter.ozmartians.com
 	install = vidcutter-git.install
