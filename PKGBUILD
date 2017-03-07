@@ -1,41 +1,29 @@
-# Contributor: nisc <rirae@gmx.net>
-# Maintainer: Arthur Zamarin <arthurzam@gmail.com>
+# Maintainer: Eric Ozwigh <ozwigh at gmail dot com>
 
 pkgname=dargui
-pkgver=0.7.2
-pkgrel=2
-pkgdesc="GUI for the backup tool dar (disk archiver)."
-arch=('i686')
-url="http://dargui.sourceforge.net/"
-license=("GPL")
-depends=('vte' 'gtk2' 'dar' 'xterm' 'at')
-source=("http://downloads.sourceforge.net/$pkgname/${pkgname}-${pkgver}-bin.tar.gz")
-sha256sums=('a699d5df7e7c6aa151c1c3cbdea54f54e03ccce3f33b622f14c7471795f1559b')
+pkgver=1.0
+pkgrel=1
+pkgdesc="Graphical frontend for dar"
+url="http://dargui.sourceforge.net"
+arch=('x86_64')
+license=('GPL')
+depends=('dar')
+source=("http://downloads.sourceforge.net/project/dargui/dargui/${pkgver}/dargui-${pkgver}-64bit.tar.gz")
+sha1sums=('467fcee36620fc3dd92f707713b0eb7e99d4d4d4')
 
 package() {
-  cd $srcdir/$pkgname-$pkgver/
-
-  mkdir -p ../../pkg/usr/share/doc/dargui
-  mkdir -p ../../pkg/usr/share/man/man1
-  mkdir -p ../../pkg/usr/share/dargui/locales
-  mkdir    ../../pkg/usr/share/menu
-  mkdir    ../../pkg/usr/share/applications
-  mkdir    ../../pkg/usr/share/pixmaps
-  mkdir    ../../pkg/usr/bin
-
-  cp -vR doc/* ../../pkg/usr/share/doc/dargui/
-  cp -v doc/copyright ../../pkg/usr/share/doc/dargui/
-  cp -v man/dargui.1.gz ../../pkg/usr/share/man/man1/
-
-  cp -v menu/* ../../pkg/usr/share/menu/
-  chmod 644 ../../pkg/usr/share/menu/dargui
-  cp -v applications/* ../../pkg/usr/share/applications/
-  chmod 644 ../../pkg/usr/share/applications/dargui.desktop
-  cp -v pixmaps/* ../../pkg/usr/share/pixmaps/
-
-  cp -v scripts/* ../../pkg/usr/share/dargui/
-  cp -v darlogger ../../pkg/usr/share/dargui/
-
-  cp -v locales/* ../../pkg/usr/share/dargui/locales/
-  cp -v dargui ../../pkg/usr/bin/
+	cd "$srcdir/$pkgname-$pkgver"
+	install -d -m 755 "$pkgdir/usr/share/dargui/locales"
+	install -d -m 755 "$pkgdir/usr/share/doc/dargui"
+	cp -R doc/* "$pkgdir/usr/share/doc/dargui"
+	find "$pkgdir/usr/share/doc/dargui" -type d -exec chmod 755 {} \;
+	find "$pkgdir/usr/share/doc/dargui" -type f -exec chmod 644 {} \;
+	install -D -m644 "man/dargui.1.gz" "$pkgdir/usr/share/man/man1/dargui.1.gz"
+	install -D -m644 "menu/dargui" "$pkgdir/usr/share/menu/dargui"
+	install -D -m644 "applications/dargui.desktop" "$pkgdir/usr/share/applications/dargui.desktop"
+	install -D -m644 "pixmaps/dargui.png" "$pkgdir/usr/share/pixmaps/dargui.png"
+	install -m755 scripts/* "$pkgdir/usr/share/dargui"
+	install -m644 locales/* "$pkgdir/usr/share/dargui/locales"
+	install -D -m644 "README" "$pkgdir/usr/share/doc/dargui/README"
+	install -D -m755 "dargui" "$pkgdir/usr/bin/dargui"
 }
