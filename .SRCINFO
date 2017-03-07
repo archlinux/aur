@@ -1,0 +1,17 @@
+pkgbase = python-azlyrics-git
+	pkgdesc = api & cli app for azlyrics.com
+	pkgver = 604c720
+	pkgrel = 1
+	url = https://github.com/ffmarcos/python-azlyrics
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-beautifulsoup4
+	provides = python-azlyrics
+	conflicts = python-azlyrics
+	source = git+https://github.com/ffmarcos/python-azlyrics
+	md5sums = SKIP
+
+pkgname = python-azlyrics-git
+
