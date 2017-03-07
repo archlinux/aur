@@ -2,7 +2,7 @@
 
 pkgname=fortune-mod-houseofcards
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Fortune quotes from "House of Cards".'
 arch=('any')
 license=('custom:PublicDomain')
@@ -12,7 +12,7 @@ depends=('fortune-mod')
 groups=('fortune-mods')
 _name='houseofcards'
 source=("$_name.txt")
-sha256sums=('d91d8566aec2db8365e372e75ffd8c647453dea8d077eeebe734d2592814525e')
+sha256sums=('56059cf4a9d14084e9826e4968958b1c3bd47ee464d5d6c209872df1e264ade1')
 
 build() {
     cd "$srcdir"
