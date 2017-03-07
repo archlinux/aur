@@ -2,7 +2,7 @@
 
 pkgname=mytetra
 pkgver=1.42.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Personal manager for data memorization and structuring notes"
 arch=('x86_64')
 url="https://github.com/xintrea/mytetra_dev"
@@ -18,8 +18,22 @@ build(){
     make
 }
 
-package(){
+prepare(){
     cd ${pkgname}_dev-v.${pkgver}
-    install -D bin/mytetra "${pkgdir}/usr/bin/mytetra" 
+
+    echo '#!/bin/sh' > bin/mytetra.run
+    echo 'LD_LIBRARY_PATH=lib:${LD_LIBRARY_PATH:+":$LD_LIBRARY_PATH"}' >> bin/mytetra.run
+    echo 'export LD_LIBRARY_PATH' >> bin/mytetra.run
+    echo '/opt/mytetra/mytetra' >> bin/mytetra.run
 }
 
+package(){
+    cd ${pkgname}_dev-v.${pkgver}
+
+    # install -D bin/mytetra "${pkgdir}/usr/bin/mytetra" 
+    install -D -m755 bin/mytetra "${pkgdir}/opt/mytetra/mytetra"
+    install -D -m755 bin/mytetra.run "${pkgdir}/opt/mytetra/mytetra.run" 
+
+    mkdir -p "${pkgdir}/usr/bin/"
+    ln -s /opt/mytetra/mytetra.run "${pkgdir}/usr/bin/mytetra" 
+}
