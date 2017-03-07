@@ -5,9 +5,9 @@ pkgname=('zarafa-server')
 groups=('zarafa'
 	'kopano')
 replaces=('zarafa-server-arm')
-pkgver=7.2.4.29
+pkgver=7.2.5.106
 _pkgmajver=7.2
-pkgrel=181
+pkgrel=1
 pkgdesc="Open Source Groupware Solution"
 arch=('armv7h'
       'armv6h'
@@ -84,6 +84,9 @@ depends=(
          
          # presence
          'ejabberd'
+         
+         # search
+         'libxslt'
          )
 
 # compile gcc from https://git.pietma.com/pietma-aur/gcc
@@ -137,7 +140,7 @@ source=("https://download.zarafa.com/community/final/${_pkgmajver}/${pkgver}/zcp
 	'ECDatabaseMySQL.cpp'
 	'ECDatabaseUpdate.h'
 	'ECDatabaseUpdate.cpp')
-md5sums=('0790d8314fa4aef9788e5020be832535'
+md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -177,7 +180,7 @@ build() {
   make
 }
 
-function zarafa_cfg_set() {
+function cfg_set() {
     # 1: field / 2: value / 3: file
     # Replaces optional comments and spaces
     # "# name = value" => "name = newvalue"
@@ -216,67 +219,176 @@ package() {
 
   # PREPARE SETTINGS
   rm ${pkgdir}/etc/zarafa/*.cfg
-  
-  # *.cfg
-  for cfg in ${pkgdir}/usr/share/doc/zarafa/example-config/*.cfg; do
-   zarafa_cfg_set "run_as_user" "zarafa" ${cfg}
-   zarafa_cfg_set "run_as_group" "zarafa" ${cfg}   
-   zarafa_cfg_set "running_path" "/var/lib/zarafa" ${cfg}   
-   zarafa_cfg_set "log_method" "syslog" ${cfg}  
-   zarafa_cfg_set "log_file" "-" ${cfg}
-   zarafa_cfg_set "log_level" "3" ${cfg}   
-   # => ssl security
-   zarafa_cfg_set "ssl_prefer_server_ciphers" "yes" ${cfg}   
-   zarafa_cfg_set "ssl_protocols" "TLSv1 TLSv1\.1 TLSv1\.2" ${cfg}
-   zarafa_cfg_set "ssl_ciphers" "AES256\+EECDH:AES256\+EDH:\!aNULL" ${cfg}
-   zarafa_cfg_set "ssl_private_key_file" "/etc/ssl/private/zarafa.key" ${cfg}   
-   zarafa_cfg_set "ssl_certificate_file" "/etc/ssl/private/zarafa.crt" ${cfg}   
-   # => socket connections only
-   zarafa_cfg_set "server_bind" "127.0.0.1" ${cfg}
-   zarafa_cfg_set "server_socket" "file:///var/run/zarafad/server.sock" ${cfg}
-  done
- 
- 
+
+  # General
+  cfg_path="/usr/share/doc/zarafa/example-config"
+  run_as_user="zarafa"
+  run_as_group="zarafa"
+  running_path="/var/lib/zarafa"
+  server_socket="/var/run/zarafad/server.sock"
+  search_socket="/var/run/zarafad/search.sock"
+  ssl_protocols="TLSv1 TLSv1\.1 TLSv1\.2"
+  ssl_ciphers="AES256\+EECDH:AES256\+EDH:\!aNULL"
+  ssl_privatekey="/etc/ssl/private/zarafa.key"
+  ssl_certificate="/etc/ssl/private/zarafa.crt"
+
+
   # server.cfg
-  cfg="${pkgdir}/usr/share/doc/zarafa/example-config/server.cfg"
-  zarafa_cfg_set "mysql_socket" "/run/mysqld/mysqld.sock" ${cfg}
-  zarafa_cfg_set "mysql_user" "zarafa" ${cfg}
-  zarafa_cfg_set "mysql_password" "zarafa" ${cfg}
-  zarafa_cfg_set "sync_log_all_changes" "no" ${cfg}
-  zarafa_cfg_set "hide_everyone" "yes" ${cfg}   
-  zarafa_cfg_set "attachment_compression" "0" ${cfg}
-  zarafa_cfg_set "search_enabled" "no" ${cfg}
-  zarafa_cfg_set "disabled_features" "" ${cfg}  
-  # => ssl security
-  zarafa_cfg_set "server_tcp_enabled" "no" ${cfg}   
-  zarafa_cfg_set "server_ssl_prefer_server_ciphers" "yes" ${cfg}   
-  zarafa_cfg_set "server_ssl_protocols" "TLSv1 TLSv1\.1 TLSv1\.2" ${cfg}
-  zarafa_cfg_set "server_ssl_ciphers" "AES256\+EECDH:AES256\+EDH:\!aNULL" ${cfg}
-  zarafa_cfg_set "server_ssl_key_file" "/etc/ssl/private/zarafa.key" ${cfg}
-  zarafa_cfg_set "server_ssl_key_pass" "" ${cfg}
-  zarafa_cfg_set "server_ssl_ca_file" "/etc/ssl/private/zarafa.crt" ${cfg}
-  zarafa_cfg_set "server_ssl_ca_path" "/etc/ssl/certs" ${cfg}
-  # => socket connection only
-  zarafa_cfg_set "server_pipe_name" "/var/run/zarafad/server.sock" ${cfg}
+  cfg="${pkgdir}${cfg_path}/server.cfg"
+  cfg_set "attachment_compression" "0" ${cfg}
+  cfg_set "disabled_features" "" ${cfg}
+  cfg_set "hide_everyone" "yes" ${cfg}
+  cfg_set "search_enabled" "yes" "${cfg}"
+  cfg_set "search_socket" "file://${search_socket}" "${cfg}"
+  cfg_set "sync_log_all_changes" "no" ${cfg}
+  cfg_set "mysql_socket" "/run/mysqld/mysqld.sock" ${cfg}
+  cfg_set "mysql_user" "zarafa" ${cfg}
+  cfg_set "mysql_password" "zarafa" ${cfg}
+  #=> service
+  cfg_set "run_as_user" "${run_as_user}" ${cfg}
+  cfg_set "run_as_group" "${run_as_group}" ${cfg}
+  cfg_set "running_path" "${running_path}" ${cfg}
+  cfg_set "log_method" "syslog" ${cfg}  
+  cfg_set "log_file" "-" ${cfg}
+  cfg_set "log_level" "3" ${cfg}
+  #=> server-connection (socket only)
+  cfg_set "server_pipe_name" "${server_socket}" ${cfg}
+  cfg_set "server_tcp_enabled" "no" ${cfg}
+  cfg_set "server_bind" "127.0.0.1" ${cfg}
+  cfg_set "server_ssl_enable" "no" ${cfg}
+  cfg_set "server_ssl_prefer_server_ciphers" "yes" ${cfg}
+  cfg_set "server_ssl_protocols" "${ssl_protocols}" ${cfg}
+  cfg_set "server_ssl_ciphers" "${ssl_ciphers}" ${cfg}
+  cfg_set "server_ssl_key_file" "${ssl_privatekey}" ${cfg}
+  cfg_set "server_ssl_key_pass" "" ${cfg}
+  cfg_set "server_ssl_ca_file" "${ssl_certificate}" ${cfg}
+  cfg_set "server_ssl_ca_path" "/etc/ssl/certs" ${cfg}
 
-  # spooler.cfg
-  zarafa_cfg_set "allow_send_to_everyone" "no" "${pkgdir}/usr/share/doc/zarafa/example-config/spooler.cfg"
+  # archiver.cfg
+  cfg="${pkgdir}${cfg_path}/archiver.cfg"
+  #=> service
+  cfg_set "log_method" "syslog" ${cfg}  
+  cfg_set "log_file" "-" ${cfg}
+  cfg_set "log_level" "3" ${cfg}
+  #=> server-connection
+  cfg_set "server_socket" "file://${server_socket}" ${cfg}
 
-  # presence.cfg
-  zarafa_cfg_set "plugins" "xmpp" "${pkgdir}/usr/share/doc/zarafa/example-config/presence.cfg"  
+  # backup-plus.cfg
+  cfg="${pkgdir}${cfg_path}/backup-plus.cfg"
+  #=> service
+  cfg_set "log_method" "syslog" ${cfg}  
+  cfg_set "log_file" "-" ${cfg}
+  cfg_set "log_level" "3" ${cfg}
+  #=> server-connection
+  cfg_set "server_socket" "file://${server_socket}" ${cfg}
+
+  # dagent.cfg
+  cfg="${pkgdir}${cfg_path}/dagent.cfg"
+  #=> service
+  cfg_set "run_as_user" "${run_as_user}" ${cfg}
+  cfg_set "run_as_group" "${run_as_group}" ${cfg}
+  cfg_set "running_path" "${running_path}" ${cfg}
+  cfg_set "log_method" "syslog" ${cfg}  
+  cfg_set "log_file" "-" ${cfg}
+  cfg_set "log_level" "3" ${cfg}
+  #=> server-connection
+  cfg_set "server_bind" "127.0.0.1" ${cfg}
+  cfg_set "server_socket" "file://${server_socket}" ${cfg}
 
   # gateway.cfg
-  cfg="${pkgdir}/usr/share/doc/zarafa/example-config/gateway.cfg"
-  zarafa_cfg_set "imap_generate_utf8" "no" "${cfg}"  
-  zarafa_cfg_set "imap_public_folders" "yes" "${cfg}"  
-  zarafa_cfg_set "run_as_user" "nobody" "${cfg}"
-  zarafa_cfg_set "run_as_group" "nobody" "${cfg}"
+  cfg="${pkgdir}${cfg_path}/gateway.cfg"
+  cfg_set "imap_generate_utf8" "no" "${cfg}"
+  cfg_set "imap_public_folders" "yes" "${cfg}"
+  #=> service (avoid requests to be upgraded to admin privileges)
+  cfg_set "run_as_user" "nobody" ${cfg}
+  cfg_set "run_as_group" "nobody" ${cfg}
+  cfg_set "running_path" "${running_path}" ${cfg}
+  cfg_set "log_method" "syslog" ${cfg}  
+  cfg_set "log_file" "-" ${cfg}
+  cfg_set "log_level" "3" ${cfg}
+  #=> server-connection
+  cfg_set "server_bind" "127.0.0.1" ${cfg}
+  cfg_set "server_socket" "file://${server_socket}" ${cfg}
+  cfg_set "ssl_prefer_server_ciphers" "yes" ${cfg}   
+  cfg_set "ssl_protocols" "${ssl_protocols}" ${cfg}
+  cfg_set "ssl_ciphers" "${ssl_ciphers}" ${cfg}
+  cfg_set "ssl_private_key_file" "${ssl_privatekey}" ${cfg}   
+  cfg_set "ssl_certificate_file" "${ssl_certificate}" ${cfg}   
 
   # ical.cfg
-  cfg="${pkgdir}/usr/share/doc/zarafa/example-config/ical.cfg"
-  zarafa_cfg_set "run_as_user" "nobody" "${cfg}"
-  zarafa_cfg_set "run_as_group" "nobody" "${cfg}"
-  
+  cfg="${pkgdir}${cfg_path}/ical.cfg"
+  #=> service (avoid requests to be upgraded to zarafa-admin)
+  cfg_set "run_as_user" "nobody" ${cfg}
+  cfg_set "run_as_group" "nobody" ${cfg}
+  cfg_set "running_path" "${running_path}" ${cfg}
+  cfg_set "log_method" "syslog" ${cfg}  
+  cfg_set "log_file" "-" ${cfg}
+  cfg_set "log_level" "3" ${cfg}
+  #=> server-connection
+  cfg_set "server_bind" "127.0.0.1" ${cfg}
+  cfg_set "server_socket" "file://${server_socket}" ${cfg}
+  cfg_set "ssl_prefer_server_ciphers" "yes" ${cfg}
+  cfg_set "ssl_protocols" "${ssl_protocols}" ${cfg}
+  cfg_set "ssl_ciphers" "${ssl_ciphers}" ${cfg}
+  cfg_set "ssl_private_key_file" "${ssl_privatekey}" ${cfg}   
+  cfg_set "ssl_certificate_file" "${ssl_certificate}" ${cfg}   
+
+  # monitor.cfg
+  cfg="${pkgdir}${cfg_path}/monitor.cfg"
+  #=> service
+  cfg_set "run_as_user" "${run_as_user}" ${cfg}
+  cfg_set "run_as_group" "${run_as_group}" ${cfg}
+  cfg_set "running_path" "${running_path}" ${cfg}
+  cfg_set "log_method" "syslog" ${cfg}
+  cfg_set "log_file" "-" ${cfg}
+  cfg_set "log_level" "3" ${cfg}
+  #=> server-connection
+  cfg_set "server_socket" "file://${server_socket}" ${cfg}
+
+  # presence.cfg
+  cfg="${pkgdir}${cfg_path}/presence.cfg"
+  cfg_set "plugins" "xmpp" "${cfg}"
+  cfg_set "server_bind" "127.0.0.1" ${cfg}
+  #=> service
+  cfg_set "run_as_user" "${run_as_user}" ${cfg}
+  cfg_set "run_as_group" "${run_as_group}" ${cfg}
+  cfg_set "running_path" "${running_path}" ${cfg}
+  cfg_set "log_method" "syslog" ${cfg}  
+  cfg_set "log_file" "-" ${cfg}
+  cfg_set "log_level" "3" ${cfg}
+
+  # unix.cfg
+
+  # search.cfg
+  cfg="${pkgdir}${cfg_path}/search.cfg"
+  cfg_set "index_attachements" "yes" "${cfg}"
+  cfg_set "server_bind_name" "file://${search_socket}" "${cfg}"
+  cfg_set "ssl_private_key_file" "${ssl_privatekey}" ${cfg}   
+  cfg_set "ssl_certificate_file" "${ssl_certificate}" ${cfg}   
+  #=> service
+  cfg_set "run_as_user" "${run_as_user}" ${cfg}
+  cfg_set "run_as_group" "${run_as_group}" ${cfg}
+  cfg_set "running_path" "${running_path}" ${cfg}
+  cfg_set "log_method" "syslog" ${cfg}  
+  cfg_set "log_file" "-" ${cfg}
+  cfg_set "log_level" "3" ${cfg}
+  #=> server-connection
+  cfg_set "server_socket" "file://${server_socket}" ${cfg}
+
+  # spooler.cfg
+  cfg="${pkgdir}${cfg_path}/spooler.cfg" 
+  cfg_set "allow_send_to_everyone" "no" "${cfg}"
+  #=> service
+  cfg_set "run_as_user" "${run_as_user}" ${cfg}
+  cfg_set "run_as_group" "${run_as_group}" ${cfg}
+  cfg_set "running_path" "${running_path}" ${cfg}
+  cfg_set "log_method" "syslog" ${cfg}  
+  cfg_set "log_file" "-" ${cfg}
+  cfg_set "log_level" "3" ${cfg}
+  #=> server-connection
+  cfg_set "server_socket" "file://${server_socket}" ${cfg}
+
+
   # PIETMA
   ###
   cd ${srcdir}/zarafa-pietma
