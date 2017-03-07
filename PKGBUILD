@@ -1,10 +1,14 @@
+# Maintainer: Paul Bienkowski <aur@opatut.de>
+# Contributor: Patrick J. Pereira (patrickelectric)
+# Contributor: bchretien
+
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - ROS console output library."
 url='http://www.ros.org/wiki/rosconsole'
 
 pkgname='ros-jade-rosconsole'
-pkgver='1.11.19'
+pkgver='1.11.21'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -38,7 +42,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-jade-rosconsole-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/jade/rosconsole/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0f7aa17e02235e58592df59dc3738d6a06c06a4f2fb277cbfa654b705d4a4df9')
+sha256sums=('02a4637596affe6be6fd343531efdb582a99bafe94d559dece248aec0dbbde64')
 
 build() {
   # Use ROS environment variables
