@@ -1,7 +1,7 @@
 pkgbase = vidcutter
 	pkgdesc = the simple & fast video cutter & joiner with the help of mpv + FFmpeg
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://vidcutter.ozmartians.com
 	install = vidcutter.install
 	arch = any
