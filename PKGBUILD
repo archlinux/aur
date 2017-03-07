@@ -2,7 +2,7 @@
 
 pkgname=plover
 pkgdesc="Free and open source real-time stenography engine."
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 arch=('any')
 license=('GPL2')
@@ -27,7 +27,7 @@ provides=('plover')
 conflicts=('plover-git')
 url="http://www.openstenoproject.org/plover/"
 source=(https://github.com/openstenoproject/plover/releases/download/v$pkgver/plover-$pkgver.tar.gz)
-sha1sums=(20dc0391db86d2661f93298b350f36ecf8042f8e)
+sha1sums=(e391a61f7c4082ae74042cb7415fef52c1cd4498)
 
 check() {
   cd "$pkgname-$pkgver"
