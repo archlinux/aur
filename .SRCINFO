@@ -1,0 +1,20 @@
+pkgbase = logsgui-git
+	pkgdesc = Simple GUI to show log files in a graphical editor, git version
+	pkgver = r90.d5287e2
+	pkgrel = 1
+	url = https://github.com/AlManja/logs.py
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-pyqt4
+	depends = python-sh
+	depends = xdg-utils
+	optdepends = inxi: Show system information
+	optdepends = xorg: Show Xorg log
+	optdepends = systemd: Show systemd log
+	optdepends = mhwd: Show driver information using mhwd from Manjaro Linux
+	source = git+https://github.com/AlManja/logs.py.git
+	md5sums = SKIP
+
+pkgname = logsgui-git
+
