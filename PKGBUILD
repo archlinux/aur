@@ -6,8 +6,8 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-dash-to-dock
-pkgver=55
-pkgrel=2
+pkgver=56
+pkgrel=1
 pkgdesc="move the dash out of the overview transforming it in a dock"
 arch=('any')
 url="https://micheleg.github.io/dash-to-dock/"
