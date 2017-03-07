@@ -4,18 +4,18 @@
 
 _name=firefox
 _channel=aurora
-_milestone=53.0a2
+_milestone=.0a2
 _lang=ru
 
 _release_year=2017
 _release_month=03
 _release_day=06
-_release_time=$_release_year-$_release_month-$_release_day-08-41-13
-_buildid=20170306084113
+_release_time=$_release_year-$_release_month-$_release_day-15-03-46
+_buildid=20170306150346
 
 pkgname="${_name}-${_channel}-${_lang}"
 _pkgname="${_name}-${_channel}"
-pkgver=53.0a2.$_buildid
+pkgver=.0a2.$_buildid
 pkgrel=1
 
 pkgdesc="Firefox Aurora channel - Nightly build"
@@ -35,14 +35,14 @@ source=("${_pkgname}.desktop"
         "${_pkgname}-safe.desktop")
 
 _base_url="http://ftp.mozilla.org/pub/firefox/nightly/$_release_year/$_release_month/$_release_time-mozilla-aurora-l10n"
-source_x86_64=("$_base_url/firefox-53.0a2.$_lang.linux-x86_64.tar.bz2")
-source_i686=("$_base_url/firefox-53.0a2.$_lang.linux-i686.tar.bz2")
+source_x86_64=("$_base_url/firefox-.0a2.$_lang.linux-x86_64.tar.bz2")
+source_i686=("$_base_url/firefox-.0a2.$_lang.linux-i686.tar.bz2")
 
 sha512sums=('1c0eef1129625ecfb70809dbb9ab764054d1680f05b7807f503145b5889bc42babb268cb4e2b7b102f90c50cc249114f773d91992e9ac41b5a6966e3b5c95675'
             '749bc9bb180909c7319a1576e9df1e4cb06488b33b8dd61b8f1a63e4df9208cb9bb6d0c4ecef3fbe388f78368aef4562ae1dbfda1dbbfa649aa9d247c4903610')
 
-sha512sums_i686=('c2e408f4fbce1a8b825efc88ae1709513e47f7668a1a031792a14d34393cb47ead0e7b5d1e21d11e83a905e446e5a500ecca5b09a3d880adbc8ff87e85c4540b')
-sha512sums_x86_64=('c4b4993ff0cf97d0f85c856dccc1fe1e1cbb542fff775db9171fc5e96235510d9b1bb034c7edcd1e6c5b9c76a755285d387bdaaf396628ea8c5e6c785ad7d18c')
+sha512sums_i686=('SKIP')
+sha512sums_x86_64=('SKIP')
 
 pkgver() {
   cd "${_name}"
