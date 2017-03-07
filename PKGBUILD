@@ -7,7 +7,7 @@
 # Contributor: Christoph Stahl <christoph.stahl@uni-dortmund.de>
 
 pkgname=prosody-hg-stable
-pkgrel=2
+pkgrel=3
 pkgver=0.10.r7232+.4e9b307c30dd+
 pkgver() {
   cd "$srcdir/prosody-hg"
