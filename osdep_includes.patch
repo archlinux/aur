@@ -1,0 +1,27 @@
+From ec6b57203e665a7e56cdfa8be205fd2ae3e30e08 Mon Sep 17 00:00:00 2001
+From: Icenowy Zheng <icenowy@aosc.xyz>
+Date: Mon, 6 Mar 2017 08:54:19 +0800
+Subject: [PATCH 1/2] os_dep: include <linux/signal.h>
+
+<linux/signal.h> is now not implicitly included in kernel.
+
+Manually include it.
+
+Signed-off-by: Icenowy Zheng <icenowy@aosc.xyz>
+---
+ include/osdep_service_linux.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/osdep_service_linux.h b/include/osdep_service_linux.h
+index 486e818..6c667fb 100644
+--- a/include/osdep_service_linux.h
++++ b/include/osdep_service_linux.h
+@@ -44,6 +44,11 @@
+ 	#include <linux/kthread.h>
+ 	#include <linux/list.h>
+ 	#include <linux/vmalloc.h>
++	#include <linux/signal.h>
++	#include <linux/version.h>
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0))
++	#include <linux/sched/signal.h>
++#endif
