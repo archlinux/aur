@@ -1,0 +1,19 @@
+pkgbase = lua52-lgi
+	pkgdesc = Lua 5.2 bindings for gnome/gobject using gobject-introspection library
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/pavouk/lgi
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	makedepends = gobject-introspection
+	depends = glibc
+	depends = glib2
+	depends = libffi
+	depends = lua52
+	depends = gobject-introspection-runtime
+	source = lgi-0.9.1.tar.gz::https://github.com/pavouk/lgi/archive/0.9.1.tar.gz
+	md5sums = 0c85f177e4b8192bd849b4e508c8bdf0
+
+pkgname = lua52-lgi
+
