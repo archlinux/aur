@@ -1,7 +1,7 @@
 # Maintainer: Florian Jacob <projects+arch AT florianjacob )DOT( de>
 pkgname=earlyoom
-pkgver=0.10
-pkgrel=5
+pkgver=0.11
+pkgrel=1
 pkgdesc="Early OOM Daemon for Linux"
 arch=('any')
 url="https://github.com/rfjakob/earlyoom"
@@ -9,7 +9,7 @@ license=('MIT')
 source=(
 	"https://github.com/rfjakob/$pkgname/archive/v$pkgver.tar.gz"
 )
-md5sums=('e5119cc19ad66c24bb3754e5487d79d0')
+sha256sums=('167a8cd194df5d1c5bd5327efd7bcad824a99381c02a2969f9e2684b7c5317d7')
 
 build() {
 	cd "$pkgname-$pkgver"
