@@ -6,13 +6,13 @@
 pkgbase=deluge-split
 _pkgbase=deluge
 pkgname=("${_pkgbase}-common" "${_pkgbase}-daemon" "${_pkgbase}-gtk" "${_pkgbase}-web" "${_pkgbase}-console")
-pkgver=1.3.13+11+g48cedf635
-pkgrel=2
+pkgver=1.3.14
+pkgrel=1
 arch=('any')
 url="http://deluge-torrent.org/"
 license=('GPL3')
 makedepends=('intltool' 'pygtk' 'librsvg' 'python2-mako' 'git')
-_commit=48cedf635feb01b81d927e7e84d13067931381d7  # 1.3-stable
+_commit=9bec5142c72a386a3cb40d3b3169b1ad68a1d969  # tags/deluge-1.3.14^0
 source=("git://git.deluge-torrent.org/deluge.git#commit=$_commit"
         untag-build.patch
         deluged.service deluge-web.service)
@@ -91,7 +91,7 @@ package_deluge-gtk() {
   rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/{i18n,data,core,plugins}
   rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/*.{py,pyc,pyo}
   rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/{web,console}
-  rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge-1.3.13-py2.7.egg-info/
+  rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge-$pkgver-py2.7.egg-info/
 }
 
 package_deluge-web() {
@@ -109,7 +109,7 @@ package_deluge-web() {
   rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/{i18n,data,core,plugins}
   rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/{gtkui,console}
   rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/*.{py,pyc,pyo}
-  rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge-1.3.13-py2.7.egg-info/
+  rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge-$pkgver-py2.7.egg-info/
   rm -rf "$pkgdir"/usr/share/{icons,pixmaps,applications}
 
   install -Dm644 ../deluge-web.service "$pkgdir/usr/lib/systemd/system/deluge-web.service"
@@ -130,7 +130,7 @@ package_deluge-console() {
   rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/{i18n,data,core,plugins}
   rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/{gtkui,web}
   rm -f  "$pkgdir"/usr/lib/python2.7/site-packages/deluge/ui/*.{py,pyc,pyo}
-  rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge-1.3.13-py2.7.egg-info/
+  rm -rf "$pkgdir"/usr/lib/python2.7/site-packages/deluge-$pkgver-py2.7.egg-info/
   rm -rf "$pkgdir"/usr/share/{icons,pixmaps,applications}
 }
 
