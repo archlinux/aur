@@ -7,8 +7,8 @@
 # Contributor: Christoph Stahl <christoph.stahl@uni-dortmund.de>
 
 pkgname=prosody-hg-stable
-pkgrel=3
-pkgver=0.10.r7232+.4e9b307c30dd+
+pkgrel=1
+pkgver=0.10.r7235+.30309fd01d76+
 pkgver() {
   cd "$srcdir/prosody-hg"
   printf "0.10.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
