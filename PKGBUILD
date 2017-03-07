@@ -1,7 +1,7 @@
 # Maintainer: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=debug_assert-git
-pkgver=1.1.r0.geff721c
+pkgver=1.2.r0.g0e61b7f
 pkgrel=1
 pkgdesc="Simple, flexible and modular assertion macro"
 arch=('any')
