@@ -1,31 +1,29 @@
-# $Id: PKGBUILD 264861 2016-04-14 05:06:52Z tpowa $
+# Contributor: Cyano Hao <c@cyano.cn>
+# $Id: PKGBUILD 289584 2017-02-26 22:41:48Z heftig $
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=nvidia-pae
-pkgname=(nvidia-pae nvidia-pae-dkms)
-pkgver=367.35
-_extramodules=extramodules-4.7-pae
-pkgrel=1
+pkgname=nvidia-pae
+pkgver=378.13
+_extramodules=extramodules-4.10-pae
+pkgrel=3
 pkgdesc="NVIDIA drivers for linux"
 arch=('i686')
 url="http://www.nvidia.com/"
-makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-pae' 'linux-pae-headers>=4.7' 'linux-pae-headers<4.8')
+makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-pae' 'linux-pae-headers>=4.10' 'linux-pae-headers<4.11')
 license=('custom')
 options=('!strip')
-# See nvidia-utils
-source=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run" 0001-linux-4.7-i686.patch)
-md5sums=('42db6f6485c3c337c7c756380ec64b7a'
-         '0ceb49f5c537ae60743fdf7177eb996e')
+source=('kernel_4.10.patch' "http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
+md5sums=('e81769b830b7a1e60c635e3bbe559f59' 'dd1077750af9a067739ec291fb24175f')
 
 _pkg="NVIDIA-Linux-x86-${pkgver}"
 
-prepare() { 
+prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
-    # patches here
-    patch -Np1 -d kernel < ../0001-linux-4.7-i686.patch
+
+    patch -Np1 --no-backup-if-mismatch -i ../kernel_4.10.patch
 
     cp -a kernel kernel-dkms
     cd kernel-dkms
@@ -48,9 +46,9 @@ build() {
     make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
 }
 
-package_nvidia-pae() {
+package() {
     pkgdesc="NVIDIA drivers for linux"
-    depends=('linux-pae>=4.7' 'linux-pae<4.8' "nvidia-utils=${pkgver}" 'libgl')
+    depends=('linux-pae>=4.10' 'linux-pae<4.11' "nvidia-utils=${pkgver}" 'libgl')
     install=nvidia.install
 
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
@@ -63,18 +61,5 @@ package_nvidia-pae() {
     gzip "${pkgdir}/usr/lib/modules/${_extramodules}/"*.ko
     install -d -m755 "${pkgdir}/usr/lib/modprobe.d"
 
-    echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia.conf"
-}
-
-package_nvidia-pae-dkms() {
-    pkgdesc="NVIDIA driver sources for linux"
-    depends=('dkms' "nvidia-utils=$pkgver" 'libgl')
-    optdepends=('linux-pae-headers: Build the module for Arch PAE kernel'
-                'linux-lts-headers: Build the module for LTS Arch kernel')
-    conflicts+=('nvidia')
-
-    cd ${_pkg}
-    install -dm 755 "${pkgdir}"/usr/{lib/modprobe.d,src}
-    cp -dr --no-preserve='ownership' kernel-dkms "${pkgdir}/usr/src/nvidia-${pkgver}"
-    echo 'blacklist nouveau' > "${pkgdir}/usr/lib/modprobe.d/nvidia.conf"
+    echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-pae.conf"
 }
