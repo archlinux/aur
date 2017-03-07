@@ -2,7 +2,7 @@
 
 pkgname='artifact'
 pkgver="0.6.4"
-pkgrel=0
+pkgrel=1
 pkgdesc='The design doc tool made for developers'
 url='http://vitiral.github.io/artifact/'
 license=(
@@ -24,14 +24,26 @@ depends=(
  'gcc-libs'
 )
 # Currently, this package needs serde_derive v0.9.9, which needs nightly rust.
+# A big big warning will be displayed when rustup is not used.
+# We currently cannot depend on rust-nightly, because community/rustup
+# does not provide rust-nightly
 makedepends=(
- 'rust-nightly'
+ 'rust'
  'cargo'
 )
 
 build() {
  pushd "artifact-${pkgver}"
- cargo build --release
+ if [[ $(command -v rustup) ]]; then
+   rustup run nightly cargo build --release
+ else
+   echo "WARNING: It seems like you are not running rustup.\nKeep in mind that `artifact` needs a recent version of rust nightly!"
+   echo "Currently, this package needs serde_derive v0.9.9, which needs nightly rust."
+   echo "We currently cannot depend on rust-nightly, because community/rustup"
+   echo "does not `provide` rust-nightly, while it can actually provide it"
+   cargo build --release
+ fi
+ popd
 }
 
 package() {
