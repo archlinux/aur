@@ -1,0 +1,3 @@
+post_install() {
+  echo "==> You have to enable the uchromad service with 'systemctl --user enable --now uchromad.service'!"
+}
