@@ -22,10 +22,6 @@ conflicts=('khard')
 arch=('any')
 options=(!emptydirs)
 
-build() {
-	cd "$srcdir/$pkgname-$pkgver"
-}
-
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 
