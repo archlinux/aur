@@ -1,7 +1,7 @@
 pkgbase = miniflux-git
 	pkgdesc = Minimalist web RSS reader (Git version)
-	pkgver = r1081.9056c8d
-	pkgrel = 2
+	pkgver = r1088.6e8d175
+	pkgrel = 1
 	url = https://miniflux.net/
 	install = miniflux.install
 	arch = any

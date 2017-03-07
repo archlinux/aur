@@ -1,8 +1,8 @@
 # Maintainer: Vincent Nascone <vincent@arch.nascone.net>
 
 pkgname='miniflux-git'
-pkgver='r1081.9056c8d'
-pkgrel=2
+pkgver=r1088.6e8d175
+pkgrel=1
 pkgdesc='Minimalist web RSS reader (Git version)'
 arch=('any')
 url='https://miniflux.net/'
@@ -28,8 +28,8 @@ package() {
   cd miniflux
   _instdir="$pkgdir"/usr/share/webapps/miniflux
 
-  install -o http -g http -d "$_instdir"
-  install -o http -g http -d "$pkgdir"/var/lib/miniflux
+  install -d "$_instdir"
+  install -d "$pkgdir"/var/lib/miniflux
 
   cp -ra * "$_instdir/"
 
