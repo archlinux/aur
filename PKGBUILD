@@ -4,13 +4,14 @@
 
 pkgname=firefox-extension-beyond-australis-git
 pkgver=1.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A Firefox add-on to improve the feeling of using the new Australis theme.'
 url='https://github.com/Quicksaver/The-Fox--Only-Better'
 arch=('any')
 license=('MPLv2')
 depends=('firefox')
 replaces=('firefox-extension-the-fox-only-better')
+install=discontinuation-notice.install
 
 makedepends+=('git')
 source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
