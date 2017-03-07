@@ -4,12 +4,12 @@
 pkgname=vtun
 pkgver=3.0.3.2013.d
 _pkgver=3.0.3
-pkgrel=7
+pkgrel=8
 pkgdesc="The easiest way to create Virtual Tunnels over TCP/IP networks with traffic shaping, compression, encryption and IPv6 support."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="http://vtun.sourceforge.net/"
 license=('GPL')
-depends=('openssl' 'zlib' 'lzo2')
+depends=('openssl' 'zlib' 'lzo')
 backup=('etc/vtund.conf' 'etc/tun-cfg.conf')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${_pkgver}/${pkgname}-${_pkgver}.tar.gz"
 "https://gist.githubusercontent.com/Mic92/f2d0980682a3ad2247b7/raw/9c2045facaa1f82420b84c581aeeef9ba96fd0c7/0001-fix-bison-compile-error.patch"
