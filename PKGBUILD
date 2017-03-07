@@ -2,14 +2,14 @@
 # vim: set ts=2 sw=2 et ft=sh:
 
 pkgname=qutebrowser-git
-pkgver=r10978.a10a6bdfa
+pkgver=r11411.3cc4f6912
 pkgrel=1
 pkgdesc="A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit"
 arch=(any)
 url="http://www.qutebrowser.org/"
 license=('GPL')
 depends=('python>=3.4' 'python-setuptools' 'python-pyqt5>=5.2' 'qt5-base>=5.2'
-         'qt5-webkit>=5.2' 'qt5-declarative' 'libxkbcommon-x11' 'python-pypeg2'
+         'qt5-webkit' 'qt5-declarative' 'libxkbcommon-x11' 'python-pypeg2'
          'python-jinja' 'python-pygments' 'xdg-utils' 'desktop-file-utils'
          'python-yaml' 'hicolor-icon-theme')
 makedepends=('asciidoc' 'source-highlight' 'git')
@@ -26,7 +26,7 @@ optdepends=(
 options=(!emptydirs)
 conflicts=('qutebrowser')
 provides=('qutebrowser')
-source=('git+https://github.com/The-Compiler/qutebrowser.git')
+source=('git+https://github.com/qutebrowser/qutebrowser.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -54,4 +54,7 @@ package() {
 	done
   install -Dm644 icons/qutebrowser.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/qutebrowser.svg"
+
+  install -dm755 "$pkgdir/usr/share/qutebrowser/userscripts"
+  find misc/userscripts -type f -exec install -m755 {} "$pkgdir/usr/share/qutebrowser/userscripts" \;
 }
