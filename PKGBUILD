@@ -2,19 +2,19 @@
 
 _pkgname=dcmtk
 pkgname=$_pkgname-snapshot
-pkgver=3.6.1_20161102
-pkgrel=2
+pkgver=3.6.1_20170228
+pkgrel=1
 pkgdesc='Collection of libraries and applications implementing large parts the DICOM standard'
 arch=('i686' 'x86_64')
 url='http://dicom.offis.de/dcmtk'
 license=('custom')
 depends=('libxml2' 'libwrap' 'libjpeg-turbo' 'libpng' 'libtiff')
-makedepends=('git' 'cmake' 'libsndfile' 'doxygen')
+makedepends=('cmake' 'libsndfile' 'doxygen')
 provides=("$_pkgname")
 conflicts=("$_pkgname"{,-git})
 backup=("etc/dcmtk/"{dcmpstat,dcmqrscp,filelog,logger,printers,storescp,storescu}.cfg)
 source=("http://dicom.offis.de/download/dcmtk/snapshot/dcmtk-$pkgver.tar.gz")
-sha256sums=('657adb3811e0c5c08d8f143a6d878afcd92fac7dcf0d3c89860eecffd5a1a873')
+sha256sums=('8de2f2ae70f71455288ec85c96a2579391300c7462f69a4a6398e9ec51779c11')
 
 build() {
   # man pages are copied only when compiling inside the source tree
