@@ -3,11 +3,16 @@ CLAIRE UNDERWOOD: My husband doesn't apologize, even to me.
     - House of Cards, Chapter 1
 %
 ZOE BARNES:      Wait. We're in a very gray area. Ethically. Legally. Which I'm okay with --
-FRANK UNDERWOOD: I just love this painting, don't you? We're in the same boat now, Zoe. Take care not to tip it over. I can only save one of us from drowning.
+FRANK UNDERWOOD: I just love this painting, don't you? We're in the same boat now, Zoe. Take
+                 care not to tip it over. I can only save one of us from drowning.
 
     - House of Cards, Chapter 1
 %
-FRANK UNDERWOOD: Such a waste of talent. He chose money over power - in this town, a mistake nearly everyone makes. Money is the McMansion in Sarasota that starts falling apart after 10 years. Power is the old stone building that stands for centuries. I cannot respect someone who does not see the difference.
+FRANK UNDERWOOD: Such a waste of talent. He chose money over power - in this town,
+                 a mistake nearly everyone makes. Money is the McMansion in Sarasota
+                 that starts falling apart after 10 years. Power is the old stone
+                 building that stands for centuries. I cannot respect someone who does
+                 not see the difference.
 
     - House of Cards, Chapter 2
 %
@@ -27,16 +32,11 @@ FRANK UNDERWOOD: I know I can.
 
     - House of Cards, Chapter 6
 %
-RAYMOND TUSK: Decisions based on emotion aren't decisions, at all. They're instincts.
-              Which can be of value. The rational and the irrational complement each
-              other. Individually they're far less powerful.
-
-    - House of Cards, Chapter 12
-%
 RAYMOND TUSK:    Fact, I have something that you want. You have something that I want.
 [Frank chuckles]
 RAYMOND TUSK:    Have I said something amusing?
-FRANK UNDERWOOD: I've sat too many times on your side of the table not to enjoy the irony of finding myself on this side of it.
+FRANK UNDERWOOD: I've sat too many times on your side of the table not to enjoy the
+                 irony of finding myself on this side of it.
 
     - House of Cards, Chapter 12
 %
@@ -89,11 +89,14 @@ FREDDY HAYES: I ain't one for lookin' back. Eyes ahead.
 
     - House of Cards, Chapter 21
 %
-FRANK UNDERWOOD: I've always loathed the necessity of sleep. Like death, it puts even the most powerful of men on their backs.
+FRANK UNDERWOOD: I've always loathed the necessity of sleep. Like death, it puts
+                 even the most powerful of men on their backs.
 
     - House of Cards, Chapter 23
 %
-FRANK UNDERWOOD: The only thing more satisfying than convincing someone to do what I want is failing to persuade them on purpose. It's like a do not enter sign. It just begs you to walk in the door.
+FRANK UNDERWOOD: The only thing more satisfying than convincing someone to do what
+                 I want is failing to persuade them on purpose. It's like a do not
+                 enter sign. It just begs you to walk in the door.
 
     - House of Cards, Chapter 23
 %
@@ -108,15 +111,22 @@ FRANK UNDERWOOD: Just shy, which is politics.
 
     - House of Cards, Chapter 25
 %
-RAYMOND TUSK: [To Frank] When they put you in that box barely bigger than a coffin remember how beautiful the music was tonight. It might give you some small degree of comfort.
+RAYMOND TUSK: [to Frank] When they put you in that box barely bigger than a coffin remember how beautiful the music was tonight. It might give you some small degree of comfort.
 
     - House of Cards, Chapter 26
 %
-FRANK UNDERWOOD: [about Dunbar] She sees me as the bank robber who made it to the county line, but she's smart enough to leave her badge at the door.
+FRANK UNDERWOOD: [about his father] Nobody showed up to his funeral, except me, not even my mother.
+                 [to the tombstone] But I'll tell you this though, pop. When they bury me, it won't
+                 be in my backyard, and when they come to pay their respects, they'll have to wait
+                 in line.
+%
+FRANK UNDERWOOD: [about Dunbar] She sees me as the bank robber who made it to the county line, but
+                 she's smart enough to leave her badge at the door.
 
     - House of Cards, Chapter 28
 %
-FRANK UNDERWOOD: I've always said that power is more important than money. But when it comes to elections, money gives power... well, a run for its money.
+FRANK UNDERWOOD: I've always said that power is more important than money. But when it comes to
+                 elections, money gives power... well, a run for its money.
 
     - House of Cards, Chapter 28
 %
@@ -125,11 +135,13 @@ FRANK UNDERWOOD: You can't turn a no to a yes without a maybe in between.
     - House of Cards, Chapter 29
 %
 FRANK UNDERWOOD: I have a duty to this nation, Mr. Mahmoud. I swore an oath.
-MAHMOUD:         There's a fine line between duty and murder. Only you have to power to stop what happened to me. The next time you wield it, I hope you'll think twice.
+MAHMOUD:         There's a fine line between duty and murder. Only you have to power to stop what
+                 happened to me. The next time you wield it, I hope you'll think twice.
 
     - House of Cards, Chapter 30
 %
-FRANK UNDERWOOD: I understand the Old Testament God, whose power was absolute, who ruled through fear. [points to the Cross] But Him?
+FRANK UNDERWOOD: I understand the Old Testament God, whose power was absolute, who ruled through fear.
+                 [points to the Cross] But Him?
 
     - House of Cards, Chapter 30
 %
@@ -150,7 +162,9 @@ EDWARD MEECHUM: I wouldn't take a bullet for a man who was.
 
     - House of Cards, Chapter 34
 %
-FRANK UNDERWOOD: I never tried to swim to Fort Sumter. Thomas probably knows that I made it up, but he wrote about it anyway because he understands the greater truth: Imagination is its own form of courage.
+FRANK UNDERWOOD: I never tried to swim to Fort Sumter. Thomas probably knows that
+                 I made it up, but he wrote about it anyway because he understands
+                 the greater truth: Imagination is its own form of courage.
 
     - House of Cards, Chapter 34
 %

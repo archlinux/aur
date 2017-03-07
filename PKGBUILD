@@ -1,18 +1,18 @@
 # Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
 
 pkgname=fortune-mod-houseofcards
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='Fortune quotes from "House of Cards".'
 arch=('any')
-license=('unknown')
+license=('custom:PublicDomain')
 install="$pkgname.install"
 makedepends=('bsd-games') # for rot13
 depends=('fortune-mod')
 groups=('fortune-mods')
 _name='houseofcards'
 source=("$_name.txt")
-sha256sums=('191049e11b0dad126b45b193e679d93adec33810ff537b3cfbf050cb899a04db')
+sha256sums=('d91d8566aec2db8365e372e75ffd8c647453dea8d077eeebe734d2592814525e')
 
 build() {
     cd "$srcdir"
