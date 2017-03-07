@@ -3,7 +3,7 @@ pkgbase=openss7-git
 _pkgbase=openss7
 pkgname=('openss7-git' 'openss7-modules-git' 'openss7-modules-lts-git' 'openss7-java-git')
 pkgver=1.1.8.52.g91121217c
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenSS7 Fast-STREAMS and Protocol Suites"
 arch=('x86_64' 'i686')
 url="http://www.openss7.org"
@@ -46,6 +46,12 @@ build() {
   _kvr="$(pacman -Qi linux-lts|awk '/^Version/{print$3}')-lts"
 
   ./configure \
+      CPPFLAGS="$CPPFLAGS" \
+      CFLAGS="$CFLAGS" \
+      CXXFLAGS="$CXXFLAGS" \
+      LDFLAGS="$LDFLAGS" \
+      DEBUG_CFLAGS="$DEBUG_CFLAGS" \
+      DEBUG_CXXFLAGS="$DEBUG_CXXFLAGS" \
       syslibdir=/usr/lib \
       sysbindir=/usr/bin \
       syssbindir=/usr/bin \
@@ -79,6 +85,12 @@ build() {
   _cache_file=../$CARCH-$_kvr-config.cache
 
   ./configure \
+      CPPFLAGS="$CPPFLAGS" \
+      CFLAGS="$CFLAGS" \
+      CXXFLAGS="$CXXFLAGS" \
+      LDFLAGS="$LDFLAGS" \
+      DEBUG_CFLAGS="$DEBUG_CFLAGS" \
+      DEBUG_CXXFLAGS="$DEBUG_CXXFLAGS" \
       syslibdir=/usr/lib \
       sysbindir=/usr/bin \
       syssbindir=/usr/bin \
@@ -103,7 +115,7 @@ build() {
       --with-gnu-ld \
       --disable-docs \
       --disable-tools
-  make V=1
+  make
 
   cd "$srcdir/openss7-modules-git"
 
@@ -114,6 +126,12 @@ build() {
   _cache_file=../$CARCH-$_kvr-config.cache
 
   ./configure \
+      CPPFLAGS="$CPPFLAGS" \
+      CFLAGS="$CFLAGS" \
+      CXXFLAGS="$CXXFLAGS" \
+      LDFLAGS="$LDFLAGS" \
+      DEBUG_CFLAGS="$DEBUG_CFLAGS" \
+      DEBUG_CXXFLAGS="$DEBUG_CXXFLAGS" \
       syslibdir=/usr/lib \
       sysbindir=/usr/bin \
       syssbindir=/usr/bin \
