@@ -1,4 +1,4 @@
-# Maintniner: urain39 <hexiedeshijie@gmail.com>
+# Maintainer: urain39 <hexiedeshijie@gmail.com>
 # Contributor: xiao_suo <xiao_suo@hotmail.com>
 
 pkgname=mwget
