@@ -1,5 +1,5 @@
 pkgname=aurutils-git
-pkgver=1.3.6.r168.gec7f759
+pkgver=1.5.0.r0.g4655b49
 pkgrel=1
 pkgdesc='helper tools for the arch user repository'
 arch=('any')
@@ -9,14 +9,15 @@ source=("git+$url")
 md5sums=('SKIP')
 conflicts=('aurutils')
 provides=('aurutils')
-depends=('pacman>=5.0' 'git' 'expac' 'jq' 'pacutils' 'repose')
+depends=('pacman>=5.0' 'git' 'jq' 'pacutils')
 checkdepends=('shellcheck')
 makedepends=('git')
 optdepends=('devtools: systemd-nspawn support'
 	'vifm: build file interaction'
-	'parallel: alternative downloader'
-	'aria2: alternative downloader'
-	'datamash: check tsort input')
+	'aria2: threaded downloads'
+	'parallel: threaded downloads'
+	'expac: aursift script'
+	'repose: repo-add alternative')
 
 pkgver() {
   cd aurutils
