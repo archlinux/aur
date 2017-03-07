@@ -1,0 +1,442 @@
+{
+  "desktop_platforms": [
+    "X11; Fedora; Linux x86_64", 
+    "Windows NT 6.1; WOW64", 
+    "Windows NT 10.0; Win64; x64", 
+    "Windows NT 6.3; Win64; x64", 
+    "Windows NT 10.0; WOW64", 
+    "X11; Ubuntu; Linux x86_64", 
+    "Macintosh; Intel Mac OS X 10_10_5", 
+    "Windows NT 6.3; WOW64", 
+    "Windows NT 10.0", 
+    "Macintosh; Intel Mac OS X 10_12_1", 
+    "Macintosh; Intel Mac OS X 10_12_0", 
+    "Macintosh; Intel Mac OS X 10_12_3", 
+    "Macintosh; Intel Mac OS X 10_12_2", 
+    "Macintosh; Intel Mac OS X 10.11", 
+    "Macintosh; Intel Mac OS X 10.10", 
+    "Macintosh; Intel Mac OS X 10.12", 
+    "Windows NT 6.1; Win64; x64", 
+    "Macintosh; Intel Mac OS X 10_11_6", 
+    "X11; Linux x86_64", 
+    "Windows NT 5.1", 
+    "Windows NT 6.1", 
+    "Macintosh; Intel Mac OS X 10_11_5"
+  ], 
+  "common_user_agents": [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36", 
+    "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36", 
+    "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36", 
+    "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8", 
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36", 
+    "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0", 
+    "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36", 
+    "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36", 
+    "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36", 
+    "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:51.0) Gecko/20100101 Firefox/51.0", 
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36", 
+    "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:51.0) Gecko/20100101 Firefox/51.0", 
+    "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36", 
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393", 
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36", 
+    "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36", 
+    "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/602.3.12 (KHTML, like Gecko) Version/10.0.2 Safari/602.3.12", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:51.0) Gecko/20100101 Firefox/51.0", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36", 
+    "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36", 
+    "Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0", 
+    "Mozilla/5.0 (X11; Linux x86_64; rv:51.0) Gecko/20100101 Firefox/51.0", 
+    "Mozilla/5.0 (Windows NT 6.3; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36", 
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36", 
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:51.0) Gecko/20100101 Firefox/51.0", 
+    "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko", 
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/55.0.2883.87 Chrome/55.0.2883.87 Safari/537.36", 
+    "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36", 
+    "Mozilla/5.0 (Windows NT 6.1; rv:51.0) Gecko/20100101 Firefox/51.0", 
+    "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36", 
+    "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0", 
+    "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0", 
+    "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8", 
+    "Mozilla/5.0 (Windows NT 6.1; Trident/7.0; rv:11.0) like Gecko", 
+    "Mozilla/5.0 (Windows NT 5.1; rv:51.0) Gecko/20100101 Firefox/51.0", 
+    "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:51.0) Gecko/20100101 Firefox/51.0", 
+    "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:51.0) Gecko/20100101 Firefox/51.0", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36", 
+    "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36", 
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36", 
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586", 
+    "Mozilla/5.0 (iPad; CPU OS 10_2_1 like Mac OS X) AppleWebKit/602.4.6 (KHTML, like Gecko) Version/10.0 Mobile/14D27 Safari/602.1", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/602.2.14 (KHTML, like Gecko) Version/10.0.1 Safari/602.2.14", 
+    "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36", 
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.75 Safari/537.36", 
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 10_2_1 like Mac OS X) AppleWebKit/602.4.6 (KHTML, like Gecko) Version/10.0 Mobile/14D27 Safari/602.1", 
+    "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36", 
+    "Mozilla/5.0 (X11; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/602.3.12 (KHTML, like Gecko) Version/10.0.2 Safari/602.3.12", 
+    "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0;  Trident/5.0)", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Safari/602.1.50", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36", 
+    "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36", 
+    "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0;  Trident/5.0)", 
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 10_2_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.79 Mobile/14D27 Safari/602.1", 
+    "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:51.0) Gecko/20100101 Firefox/51.0", 
+    "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36 OPR/43.0.2442.806", 
+    "Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko", 
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/600.5.17 (KHTML, like Gecko) Version/8.0.5 Safari/600.5.17", 
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.100 Safari/537.36", 
+    "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0", 
+    "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36 OPR/34.0.2036.25"
+  ], 
+  "chrome_versions": [
+    {
+      "date": "2017-01-25", 
+      "chrome_version": "56.0.2924", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2016-12-01", 
+      "chrome_version": "55.0.2883", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2016-10-12", 
+      "chrome_version": "54.0.2840", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2016-08-31", 
+      "chrome_version": "53.0.2785", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2016-07-20", 
+      "chrome_version": "52.0.2743", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2016-05-25", 
+      "chrome_version": "51.0.2704", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2016-04-13", 
+      "chrome_version": "50.0.2661", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2016-03-02", 
+      "chrome_version": "49.0.2623", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2016-01-20", 
+      "chrome_version": "48.0.2564", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2015-12-01", 
+      "chrome_version": "47.0.2526", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2015-10-13", 
+      "chrome_version": "46.0.2490", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2015-09-01", 
+      "chrome_version": "45.0.2454", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2015-07-21", 
+      "chrome_version": "44.0.2403", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2015-05-19", 
+      "chrome_version": "43.0.2357", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2015-04-14", 
+      "chrome_version": "42.0.2311", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2015-03-03", 
+      "chrome_version": "41.0.2272", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2015-01-20", 
+      "chrome_version": "40.0.2214", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2014-11-12", 
+      "chrome_version": "39.0.2171", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2014-10-07", 
+      "chrome_version": "38.0.2125", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2014-08-26", 
+      "chrome_version": "37.0.2062", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2014-07-15", 
+      "chrome_version": "36.0.1985", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2014-05-20", 
+      "chrome_version": "35.0.1916", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2014-04-02", 
+      "chrome_version": "34.0.1847", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2014-02-18", 
+      "chrome_version": "33.0.1750", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2014-01-14", 
+      "chrome_version": "32.0.1700", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2013-11-12", 
+      "chrome_version": "31.0.1650", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2013-09-18", 
+      "chrome_version": "30.0.1599", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2013-08-20", 
+      "chrome_version": "29.0.1547", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2013-05-21", 
+      "chrome_version": "27.0.1453", 
+      "webkit_version": "537.36"
+    }, 
+    {
+      "date": "2013-03-26", 
+      "chrome_version": "26.0.1410", 
+      "webkit_version": "537.31"
+    }, 
+    {
+      "date": "2013-02-21", 
+      "chrome_version": "25.0.1364", 
+      "webkit_version": "537.22"
+    }, 
+    {
+      "date": "2013-01-10", 
+      "chrome_version": "24.0.1312", 
+      "webkit_version": "537.17"
+    }, 
+    {
+      "date": "2012-11-06", 
+      "chrome_version": "23.0.1271", 
+      "webkit_version": "537.11"
+    }, 
+    {
+      "date": "2012-09-25", 
+      "chrome_version": "22.0.1229", 
+      "webkit_version": "537.4"
+    }, 
+    {
+      "date": "2012-07-31", 
+      "chrome_version": "21.0.1180", 
+      "webkit_version": "537.1"
+    }, 
+    {
+      "date": "2012-06-26", 
+      "chrome_version": "20.0.1132", 
+      "webkit_version": "536.10"
+    }, 
+    {
+      "date": "2012-05-15", 
+      "chrome_version": "19.0.1084", 
+      "webkit_version": "536.5"
+    }, 
+    {
+      "date": "2012-03-28", 
+      "chrome_version": "18.0.1025", 
+      "webkit_version": "535.19"
+    }, 
+    {
+      "date": "2012-02-08", 
+      "chrome_version": "17.0.963", 
+      "webkit_version": "535.11"
+    }, 
+    {
+      "date": "2011-12-13", 
+      "chrome_version": "16.0.912", 
+      "webkit_version": "535.7"
+    }, 
+    {
+      "date": "2011-10-25", 
+      "chrome_version": "15.0.874", 
+      "webkit_version": "535.2"
+    }, 
+    {
+      "date": "2011-08-02", 
+      "chrome_version": "13.0.782", 
+      "webkit_version": "535.1"
+    }, 
+    {
+      "date": "2011-06-07", 
+      "chrome_version": "12.0.742", 
+      "webkit_version": "534.30"
+    }, 
+    {
+      "date": "2011-04-27", 
+      "chrome_version": "11.0.696", 
+      "webkit_version": "534.24"
+    }, 
+    {
+      "date": "2011-03-08", 
+      "chrome_version": "10.0.648", 
+      "webkit_version": "534.16"
+    }, 
+    {
+      "date": "2011-02-03", 
+      "chrome_version": "9.0.597", 
+      "webkit_version": "534.13"
+    }, 
+    {
+      "date": "2010-12-02", 
+      "chrome_version": "8.0.552", 
+      "webkit_version": "534.10"
+    }, 
+    {
+      "date": "2010-10-21", 
+      "chrome_version": "7.0.517", 
+      "webkit_version": "534.7"
+    }, 
+    {
+      "date": "2010-09-02", 
+      "chrome_version": "6.0.472", 
+      "webkit_version": "534.3"
+    }, 
+    {
+      "date": "2010-05-21", 
+      "chrome_version": "5.0.375", 
+      "webkit_version": "533"
+    }, 
+    {
+      "date": "2010-01-25", 
+      "chrome_version": "4.0.249", 
+      "webkit_version": "532.5"
+    }, 
+    {
+      "date": "2009-10-12", 
+      "chrome_version": "3.0.195", 
+      "webkit_version": "532"
+    }, 
+    {
+      "date": "2009-05-24", 
+      "chrome_version": "2.0.172", 
+      "webkit_version": "530"
+    }, 
+    {
+      "date": "2008-12-11", 
+      "chrome_version": "1.0.154", 
+      "webkit_version": "528"
+    }, 
+    {
+      "date": "2008-11-24", 
+      "chrome_version": "0.4.154", 
+      "webkit_version": "525"
+    }
+  ], 
+  "firefox_versions": [
+    "51.0", 
+    "50.0", 
+    "49.0", 
+    "48.0", 
+    "47.0", 
+    "46.0", 
+    "45.0", 
+    "44.0", 
+    "43.0", 
+    "42.0", 
+    "41.0", 
+    "40.0", 
+    "39.0", 
+    "38.0", 
+    "37.0", 
+    "36.0", 
+    "35.0", 
+    "34.0", 
+    "33.1", 
+    "33.0", 
+    "32.0", 
+    "31.0", 
+    "30.0", 
+    "29.0", 
+    "28.0", 
+    "27.0", 
+    "26.0", 
+    "25.0", 
+    "24.0", 
+    "23.0", 
+    "22.0", 
+    "21.0", 
+    "20.0", 
+    "19.0", 
+    "18.0", 
+    "17.0", 
+    "16.0", 
+    "15.0", 
+    "14.0.1", 
+    "13.0", 
+    "12.0", 
+    "11.0", 
+    "10.0", 
+    "9.0", 
+    "8.0", 
+    "7.0", 
+    "6.0", 
+    "5.0", 
+    "4.0", 
+    "3.6", 
+    "3.5", 
+    "3.0", 
+    "2.0", 
+    "1.5", 
+    "1.0", 
+    "0.1"
+  ]
+}

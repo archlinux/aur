@@ -9,7 +9,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=calibre-git
-pkgver=2.78.0.r3.g1e7f04d391
+pkgver=2.80.0.r85.gdbfe5c1427
 pkgrel=1
 _mathjax_commit=c493143c02f5809b1112af6c5a2c8eab31050118
 pkgdesc="Ebook management application, from git"
@@ -29,11 +29,11 @@ conflicts=("${pkgname%-git}")
 source=("git+https://github.com/kovidgoyal/${pkgname%-git}.git"
         "git+https://github.com/kovidgoyal/${pkgname%-git}-translations.git"
         "MathJax-${_mathjax_commit}.tar.gz::https://github.com/kovidgoyal/MathJax/archive/${_mathjax_commit}.tar.gz"
-        "common-user-agents.txt")
+        "user-agent-data.json")
 sha256sums=('SKIP'
             'SKIP'
             '27c66730302a589063faa0b47d55e97011d858c12428bdf9e308948be87f29c6'
-            '1ecd7d651229b93077fa10832ae2a081f2310b20bf28087894b26144c957e96a')
+            '6e556d641df670fd74947776001d970216bf24f26389c1575bc11a10a92ee96d')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
@@ -70,10 +70,10 @@ build() {
   LANG='en_US.UTF-8' python2 setup.py translations
   LANG='en_US.UTF-8' python2 setup.py gui
   LANG='en_US.UTF-8' python2 setup.py resources
-  # This tries to download a new copy, so instead provide a recently-generated
-  # one to allow offline builds.
-  # LANG='en_US.UTF-8' python2 setup.py recent_uas
-  cp ../common-user-agents.txt resources/
+  # This tries to download new user-agent data, so pre-seed a
+  # recently-generated copy to allow offline builds.
+  cp ../user-agent-data.json resources/
+  LANG='en_US.UTF-8' python2 setup.py recent_uas || true
   LANG='en_US.UTF-8' python2 setup.py mathjax --path-to-mathjax="${srcdir}/MathJax-${_mathjax_commit}"
 }
 
