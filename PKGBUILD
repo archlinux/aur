@@ -2,7 +2,7 @@
 pkgname=gravity-lang-git
 pkgdesc="Gravity Programming Language."
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://marcobambini.github.io/gravity/"
 license=('MIT')
@@ -16,7 +16,7 @@ _repo_name=gravity
 
 build() {
   cd "$srcdir/$_repo_name"
-  make
+  make gravity
 }
 
 package() {
