@@ -1,3 +1,4 @@
 *.deb
 *.tar.xz
 src
+pkg
