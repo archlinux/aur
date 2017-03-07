@@ -5,7 +5,7 @@ post_install() {
     chown prosody:jabber var/lib/prosody
     [ -d var/log/prosody ] && chown prosody:jabber var/log/prosody
 
-    echo ">> Documentation: http://wiki.archlinux.org/index.php/Prosody"
+    echo ">> Documentation: https://wiki.archlinux.org/index.php/Prosody"
 }
 
 post_upgrade() {
