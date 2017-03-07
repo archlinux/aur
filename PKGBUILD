@@ -6,16 +6,16 @@ _build_feedreader=true
 _build_voip=true
 
 # Set this to 'true' to enable auto login
-_autologin=
+#_autologin='true'
 
 # set this to 'true' to use clang for compiling (experimental)
-_clang=
+#_clang='true'
 
 ### Nothing to be changed below this line ###
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=0.6.1.r426.g31b1583
+pkgver=v0.6.2.RC1.r48.ge6cf628fb
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -65,6 +65,7 @@ build() {
 	cd ../..
 
 	qmake   CONFIG-=debug CONFIG+=release \
+		CONFIG+=rs_nodeprecatedwarning \
 		${_optAutol} ${_optClang} \
 		QMAKE_CFLAGS_RELEASE="${CFLAGS}"\
 		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"\
