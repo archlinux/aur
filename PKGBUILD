@@ -7,7 +7,7 @@
 # Contributor: Christoph Stahl <christoph.stahl@uni-dortmund.de>
 
 pkgname=prosody-hg-stable
-pkgrel=1
+pkgrel=2
 pkgver=0.10.r7232+.4e9b307c30dd+
 pkgver() {
   cd "$srcdir/prosody-hg"
@@ -62,7 +62,8 @@ build() {
     --datadir=/var/lib/prosody --with-lua-include=/usr/include/lua5.1 \
     --cflags="${CFLAGS} -fPIC -Wall -Wextra -D_GNU_SOURCE" \
     --ldflags="${LDFLAGS} -shared" --no-example-certs \
-    --runwith=lua5.1
+    --runwith=lua5.1 \
+    --lua-version=5.1 
   make
 }
 
