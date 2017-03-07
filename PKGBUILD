@@ -1,25 +1,56 @@
 # Maintainer: not_anonymous <nmlibertarian@gmail.com>
+# Contributor: Erez Raviv (erezraviv@gmail.com)
+# Contributor: Mathew Hiles (matthew.hiles@gmail.com)
+# Contributor: David Thurstenson thurstylark@gmail.com
 # Contributor: Nicholas Tryon (KC2YTG) <dhraak at gmail dot com>
 
 pkgname=chirp
-pkgver=0.4.1
-pkgrel=2
-pkgdesc="GUI tool for programming ham radios; supports a large number of makes and models"
+pkgver=20170306
+pkgrel=1
+pkgdesc="GUI tool for programming Ham Radios - COMPLETE version"
 arch=('any')
 url="http://chirp.danplanet.com/"
 license=('GPL3')
-depends=('python2-lxml' 'python2-pyserial' 'desktop-file-utils' 'pygtk' 'hamradio-menus')
+depends=('python2-lxml' 'python2-pyserial' 'pygtk' 'hamradio-menus')
+makedepends=('mercurial')
+options=('!emptydirs')
 provides=('chirp')
-conflicts=('chirp-daily')
-options=(!emptydirs)
+conflicts=('chirp-daily' 'chirp-hg')
 install=$pkgname.install
-source=("http://chirp.danplanet.com/download/$pkgver/$pkgname-$pkgver.tar.gz")
+source=("$pkgname::hg+http://d-rats.com/hg/$pkgname.hg")
+
+pkgver() {
+	cd $srcdir/$pkgname
+
+	date +%Y%m%d 
+}
+
+prepare() {
+	cd $srcdir/$pkgname
+
+	sed -i -e 's|/usr/sbin|/usr/bin|g' setup.py
+
+	date +%Y%m%d > build/version
+	export VERSION=$(cat build/version)
+	sed -i -e 's/^CHIRP_VERSION.*$/CHIRP_VERSION=\"'$VERSION'-arch-dev\"/' chirp/__init__.py
+}
+
+build() {
+	cd $srcdir/$pkgname
+
+	python2 setup.py build
+}
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd $srcdir/$pkgname
+
 	python2 setup.py install --root="$pkgdir/" --optimize=1
 
-	rm -rf $pkgdir/usr/share/doc
+	install -m755 chirpc $pkgdir/usr/bin
+
+	rm -rf $pkgdir/usr/share/doc/$pkgname/COPYING
+	install -m644 README.chirpc $pkgdir/usr/share/doc/$pkgname
+	install -m644 README.rpttool $pkgdir/usr/share/doc/$pkgname
 }
-md5sums=('a86efa2bb05c33419b36cc9969327c86')
-sha256sums=('8c9d652dc89dbab9e2a1a75c07aa7179ce403de078a4d02814365f89e183319e')
+md5sums=('SKIP')
+sha256sums=('SKIP')
