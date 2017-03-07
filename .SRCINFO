@@ -1,0 +1,15 @@
+pkgbase = docker-credential-secretservice
+	pkgdesc = program to use secretservice to keep Docker credentials safe
+	pkgver = 0.4.2
+	pkgrel = 2
+	url = https://github.com/docker/docker-credential-helpers
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = libsecret
+	noextract = docker-credential-helpers-0.4.2.tar.gz
+	source = docker-credential-helpers-0.4.2.tar.gz::https://github.com/docker/docker-credential-helpers/archive/v0.4.2.tar.gz
+	sha512sums = bc9ab4f4f047d32a5783c992d5f73fb05c9f096ef7994d14db117340dd3fd1931ff2c17f48b02a994b6ac5778fdfd4eec5d04856d0c74f4422ba5340ebb4cefc
+
+pkgname = docker-credential-secretservice
+
