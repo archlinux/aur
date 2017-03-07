@@ -1,0 +1,14 @@
+pkgbase = palette-rs
+	pkgdesc = A cli ansi color palette written in rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/pierrechevalier83/palette
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = palette-rs-0.1.0.tar.gz::https://crates.io/api/v1/crates/palette-rs/0.1.0/download
+	sha256sums = bb4fd341fb8d72eadab28d30272b85ce06e66fbeda497e4435f5a3bafbc790b1
+
+pkgname = palette-rs
+
