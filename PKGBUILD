@@ -14,11 +14,6 @@ provides=('vidcutter')
 conflicts=('vidcutter-git')
 md5sums=('SKIP')
 
-pkgver() {
-    cd "${pkgname}"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     sed -i "s/pypi/arch/" "${pkgname}/__init__.py"
