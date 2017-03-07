@@ -2,26 +2,26 @@
 # Contributor: Dan Sagunov <danilka.pro@gmail.com>
 _gitname="manaplus"
 pkgname="${_gitname}-git"
-pkgver=8335.ba2ad81
+pkgver=1.7.3.4.r21.g65d1cadca
 pkgrel=1
 pkgdesc="ManaPlus GIT version."
 url="http://manaplus.evolonline.org"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('libxml2' 'physfs' 'sdl_image' 'sdl_mixer' 'sdl_net' 'sdl_ttf' 'sdl_gfx' 'mesa' 'curl')
+depends=('libxml2' 'sdl2_image' 'sdl2_mixer' 'sdl2_net' 'sdl2_ttf' 'sdl2_gfx' 'curl')
 conflicts=('manaplus')
 source=("${_gitname}::git://github.com/ManaPlus/ManaPlus.git")
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "${_gitname}"
-	echo "$(git rev-list --count HEAD).$(git describe --always)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
 	cd "${_gitname}"
 	autoreconf -i
-	./configure --prefix=/usr
+	./configure --prefix=/usr --with-sdl2
 	make
 }
 
