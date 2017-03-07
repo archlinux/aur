@@ -88,6 +88,7 @@ package() {
   for _FILE in `find -L ${pkgdir}${_installdir} -iname *.py`
   do
     sed -i -e "s|${pkgdir}||" ${_FILE}
+    sed -i -e "s|${srcdir}||" ${_FILE}
   done
   
   # install profile
