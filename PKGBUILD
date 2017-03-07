@@ -1,7 +1,7 @@
 # Maintainer: TOSH <tosh@t0x0sh.org>
 
 pkgname=perl-keystone
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A Perl binding for the keystone-engine library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/t00sh/perl-keystone"
 license=('GPL3')
 depends=('keystone' 'perl')
 source=("https://github.com/t00sh/perl-keystone/archive/v$pkgver.tar.gz")
-sha256sums=('b333a598fee4e348a72027724ef09206b8acc4eb022ec807e2e6be23e5fa0418')
+sha256sums=('5d81f289cdbc381a9980454117ed11497461763f26b90c4e9d12149dbbedb748')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
