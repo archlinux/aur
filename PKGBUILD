@@ -25,11 +25,11 @@ optdepends=('zenity: simple dialog boxes'
             'libnotify: Gnome dialog boxes')
 install="${pkgname}.install"
 validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
-source=("https://github.com/TheTorProject/gettorbrowser/releases/download/v${pkgver}/tor-browser-linux64-${pkgver}_${_language}.tar.xz"{,.asc}
+source=("https://dist.torproject.org/torbrowser/${pkgver}/tor-browser-linux64-${pkgver}_${_language}.tar.xz"{,.asc}
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}.sh")
-sha512sums=('d5cc5fdfcdf639655d764eb8f99b11a99eda1b8f2439be06ed5a200dcb37f4997a47764c1fe8bceecc5ce53a665b1ed4f41fc8c26ee239ac903556844510a1da' 'SKIP'
+sha512sums=('32e26f6d2cac8a8741c44501bd9ea91e577878c37a82f3b256c8da6a3997170534a137243270947c696a995e00dd3f5bb049f475534b85a5b2db9fed53534b2c' 'SKIP'
             'ea785893bfec7e5d0c5caf6f73a119950f12751cec39186bb2335f410f30e207f43f7bc0bb9bac583d811d21e91157fd76dbdd6c6256ff680c065f477b8bb486'
             '0a68a0a8cfeea630a91036d86b167cf640ab378e64e0d8ab55e9f99cde3c9d6a2d762ea0f5528f8a8e1579600fcc59eaa72ba499d95daeb4334e81ab644bfb02'
             '87ceaa0fc03e43bd5cd591514ca9f5ad583982a80607180c8e3633ceb76de8a39e49fe37eb7f407e1e4c24ac4e6954b328699cbd714884bd80b6a0ef243e0946')
