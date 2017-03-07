@@ -1,8 +1,9 @@
 pkgbase = firefox-extension-beyond-australis
 	pkgdesc = Australis was the code name for the current Firefox theme, it aimed to make a great browser look awesome. Now you can go one step further and also make it feel awesome to use!
 	pkgver = 1.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://addons.mozilla.org/firefox/addon/the-fox-only-better/
+	install = discontinuation-notice.install
 	arch = any
 	license = MPLv2
 	makedepends = unzip

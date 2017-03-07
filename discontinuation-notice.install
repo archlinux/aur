@@ -1,0 +1,10 @@
+post_install() {
+  echo "Changes in the Firefox extension API will make Beyond Australis cease"
+  echo "working by November 2017 with Firefox 57. Development is discontinued."
+}
+
+post_upgrade() {
+  post_install
+}
+
+# vim: ts=2 sw=2 et:
