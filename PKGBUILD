@@ -2,28 +2,28 @@
 
 pkgname=plover-git
 pkgdesc="Free and open source real-time stenography engine."
-pkgver=4.0.0.dev0.44.gdcf0425
-pkgrel=2
+pkgver=4.0.0.dev0.144.gded92d7
+pkgrel=1
 arch=('any')
 license=('GPL2')
 depends=(
-  'python2'
-  'python2-appdirs'
-  'python2-dbus'
-  'python2-hidapi'
-  'python2-pyqt5'
-  'python2-pyserial'
-  'python2-setuptools'
-  'python2-six'
-  'python2-xlib'
+  'python'
+  'python-appdirs'
+  'python-dbus'
+  'python-hidapi'
+  'python-pyqt5'
+  'python-pyserial'
+  'python-setuptools'
+  'python-six'
+  'python-xlib'
   'wmctrl'
 )
 makedepends=(
   'git'
-  'python2-babel'
-  'python2-mock'
-  'python2-pytest'
-  'python2-setuptools-scm'
+  'python-babel'
+  'python-mock'
+  'python-pytest'
+  'python-setuptools-scm'
 )
 provides=('plover')
 conflicts=('plover-git')
@@ -33,27 +33,26 @@ sha1sums=(SKIP)
 
 pkgver() {
   cd "$pkgname"
-  python2 setup.py patch_version | sed -n '/^patching version to /{s///;s/+/./;p;Q0};${Q1}'
+  python setup.py patch_version | sed -n '/^patching version to /{s///;s/+/./;p;Q0};${Q1}'
 }
 
 prepare() {
   cd "$pkgname"
-  sed -e 's/"py\(rcc\|uic\)5"/"python2-py\15"/' -i pyuic.json
 }
 
 build() {
   cd "$pkgname"
-  PYTHONPATH="$(echo -n .eggs/pyqt_distutils-*.egg)" python2 setup.py build
+  PYTHONPATH="$(echo -n .eggs/pyqt_distutils-*.egg)" python setup.py build
 }
 
 check() {
   cd "$pkgname"
-  python2 setup.py test
+  python setup.py test
 }
 
 package() {
   cd "$pkgname"
-  python2 setup.py install --root="$pkgdir"
+  python setup.py install --root="$pkgdir"
   chmod og+rX -R "$pkgdir"
 }
 
