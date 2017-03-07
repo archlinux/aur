@@ -2,7 +2,7 @@
 
 pkgname=descartes
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Use Shapely or GeoJSON-like geometric objects as matplotlib paths and patches."
 arch=('x86_64')
 url="https://github.com/Toblerity/Shapely"
