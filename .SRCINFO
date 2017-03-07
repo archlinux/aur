@@ -1,0 +1,17 @@
+pkgbase = multipass
+	pkgdesc = Broadcast X11 key events to multiple windows
+	pkgver = 17.03
+	pkgrel = 1
+	url = https://github.com/vain/multipass
+	arch = any
+	license = custom:THE PIZZA-WARE LICENSE
+	makedepends = git
+	depends = libx11
+	depends = libxft
+	source = https://github.com/vain/multipass/archive/v17.03.tar.gz
+	source = https://raw.githubusercontent.com/vain/multipass/master/LICENSE
+	sha256sums = fb183e39a3fb0e08ec79a57ceb9f5534ebd122d25c607eb04e56f62da403e295
+	sha256sums = 6e228076a81b8d23d885a2831cc04b30277d7eaea69cf792902c51a92c72f57b
+
+pkgname = multipass
+
