@@ -1,7 +1,7 @@
 pkgbase = python-pymesh-git
 	pkgdesc = Geometry Processing Library for Python
 	pkgver = 20170223
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/qnzhou/PyMesh
 	arch = i686
 	arch = x86_64
