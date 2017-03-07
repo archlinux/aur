@@ -1,6 +1,6 @@
 pkgbase = btrfs-progs-git
 	pkgdesc = Btrfs filesystem utilities
-	pkgver = 3442_4.10_rc1_r0_g48d57d53
+	pkgver = 3442_4.10_rc1_r120_gd6c70457
 	pkgrel = 1
 	url = http://btrfs.wiki.kernel.org/index.php/Main_Page
 	install = btrfs-progs-git.install
@@ -12,7 +12,7 @@ pkgbase = btrfs-progs-git
 	makedepends = xmlto
 	depends = glibc
 	depends = e2fsprogs
-	depends = lzo2
+	depends = lzo
 	depends = zlib
 	provides = btrfs-progs
 	conflicts = btrfs-progs
