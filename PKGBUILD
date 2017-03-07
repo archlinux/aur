@@ -7,7 +7,7 @@
 pkgname=med-salome
 _pkgname=med
 pkgver=3.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - This version is built to be linked against salome-med on x86_64"
 url="http://www.code-aster.org/outils/med/"
 license=('LGPL')
@@ -38,14 +38,20 @@ _sharedir=${_installdir}/share/${pkgname}
 prepare() {
   cd "${srcdir}"
 
-  if [ -d build ]; then
-    rm -rf build
-  fi
+#  uncomment if using cmake
+#  if [ -d build ]; then
+#    rm -rf build
+#  fi
 
   cd ${srcdir}/${_pkgname}-${pkgver}
 
-  sed -e "s|\${CMAKE_INSTALL_PREFIX}/\${PYFILELOC}/\${inputname}|\\\\\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/\${PYFILELOC}/\${inputname}|" \
-      -i config/cmake_files/medMacros.cmake
+#  uncomment if using cmake
+#  sed -e "s|\${CMAKE_INSTALL_PREFIX}/\${PYFILELOC}/\${inputname}|\\\\\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/\${PYFILELOC}/\${inputname}|" \
+#      -i config/cmake_files/medMacros.cmake
+
+#  comment if using cmake
+  sed -e "s|\$hdf5home/include|\$hdf5home/include/hdf5_18|" -i configure
+  sed -e "s|\$hdf5home/lib|\$hdf5home/lib/hdf5_18|" -i configure
 
   # patch H5public_extract.h.in
   sed -i -e '/^#typedef/ s/#/\/\//' ./include/H5public_extract.h.in
@@ -64,40 +70,44 @@ build() {
   export FC=gfortran
   export PYTHON="$(which python2)"
 
-  mkdir "${srcdir}/build"
-  cd "${srcdir}/build"
+#  comment if using cmake
+  cd ${srcdir}/${_pkgname}-${pkgver}
+  ./configure --with-f90=gfortran --prefix=${_installdir} --with-med_int=int --datadir=${_sharedir} --with-swig=yes --with-hdf5=/usr
 
-  # ./configure --with-f90=gfortran --prefix=${_installdir} --with-med_int=int --datadir=${_sharedir} --with-swig=yes
-
-  local python_version=2.7
-  local cmake_options=""
-  cmake_options+=" -DCMAKE_INSTALL_PREFIX=/usr"
-  cmake_options+=" -DCMAKE_BUILD_TYPE=Release"
-  cmake_options+=" -DMEDFILE_BUILD_SHARED_LIBS=ON"
-  cmake_options+=" -DMEDFILE_BUILD_TESTS=OFF"
-  cmake_options+=" -DMEDFILE_INSTALL_DOC=ON"
-  cmake_options+=" -DMEDFILE_BUILD_PYTHON=ON"
-  cmake_options+=" -DPYTHON_INCLUDE_DIR=/usr/include/python${python_version}"
-  cmake_options+=" -DPYTHON_LIBRARY=/usr/lib/python${python_version}/config/libpython${python_version}.so"
-
-  # hdf5-1.8
-  cmake_options+=" -DHDF5_INCLUDE_DIRS:PATH=/usr/include/hdf5_18/"
-  cmake_options+=" -DHDF5_LIBRARY_DIRS:PATH=/usr/lib/hdf5_18/"
-  cmake_options+=" -DHDF5_C_COMPILER_EXECUTABLE:FILEPATH=/usr/bin/h5cc_18"
-  cmake_options+=" -DHDF5_C_LIBRARY_hdf5:FILEPATH=/usr/lib/hdf5_18/libhdf5.so"
-  cmake_options+=" -DHDF5_DIFF_EXECUTABLE:FILEPATH=/usr/bin/h5diff_18"
-
-  # swig2
-  cmake_options+=" -DSWIG_EXECUTABLE=/usr/bin/swig-2"
-
-  cmake ${cmake_options} \
-  	../${_pkgname}-${pkgver}
+#  uncomment if using cmake
+#  mkdir "${srcdir}/build"
+#  cd "${srcdir}/build"
+#  local python_version=2.7
+#  local cmake_options=""
+#  cmake_options+=" -DCMAKE_INSTALL_PREFIX=/usr"
+#  cmake_options+=" -DCMAKE_BUILD_TYPE=Release"
+#  cmake_options+=" -DMEDFILE_BUILD_SHARED_LIBS=ON"
+#  cmake_options+=" -DMEDFILE_BUILD_STATIC_LIBS=OFF"
+#  cmake_options+=" -DMEDFILE_BUILD_TESTS=OFF"
+#  cmake_options+=" -DMEDFILE_INSTALL_DOC=ON"
+#  cmake_options+=" -DMEDFILE_BUILD_PYTHON=ON"
+#  cmake_options+=" -DPYTHON_INCLUDE_DIR=/usr/include/python${python_version}"
+#  cmake_options+=" -DPYTHON_LIBRARY=/usr/lib/python${python_version}/config/libpython${python_version}.so"
+#  # hdf5-1.8
+#  cmake_options+=" -DHDF5_INCLUDE_DIRS:PATH=/usr/include/hdf5_18/"
+#  cmake_options+=" -DHDF5_LIBRARY_DIRS:PATH=/usr/lib/hdf5_18/"
+#  cmake_options+=" -DHDF5_C_COMPILER_EXECUTABLE:FILEPATH=/usr/bin/h5cc_18"
+#  cmake_options+=" -DHDF5_C_LIBRARY_hdf5:FILEPATH=/usr/lib/hdf5_18/libhdf5.so"
+#  cmake_options+=" -DHDF5_DIFF_EXECUTABLE:FILEPATH=/usr/bin/h5diff_18"
+#  # swig2
+#  cmake_options+=" -DSWIG_EXECUTABLE=/usr/bin/swig-2"
+#  cmake ${cmake_options} \
+#  ../${_pkgname}-${pkgver}
 
   make
 }
  
 package() {
-  cd "${srcdir}/build"
+#  uncomment if using cmake
+#  cd "${srcdir}/build"
+
+#  comment if using cmake
+  cd ${srcdir}/${_pkgname}-${pkgver}
 
   make DESTDIR=${pkgdir} install
 }
