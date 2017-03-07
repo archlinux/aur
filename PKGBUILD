@@ -4,12 +4,13 @@
 
 pkgname=firefox-extension-omnisidebar
 pkgver=1.6.15
-pkgrel=1
+pkgrel=2
 pkgdesc='A firefox add-on designed to provide more control over the behavior of the sidebar.'
 arch=('any')
 license=('MPLv2')
 depends=('firefox')
 md5sums=('fb26a5c64c6ccdf3cee77fb01b6cbe1c')
+install=discontinuation-notice.install
 
 [ "$arch" ] || arch=('any')
 
