@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Panteleev <arch-pkg at thecybershadow.net>
 
 pkgname=hax11-git
-pkgver=r84.cfa2b2a
+pkgver=r90.eb122a1
 pkgrel=1
 pkgdesc="Hackbrary to Hook and Augment X11 protocol calls"
 arch=('i686' 'x86_64')
