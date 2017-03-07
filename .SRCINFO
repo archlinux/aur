@@ -1,6 +1,6 @@
 pkgbase = vidcutter
 	pkgdesc = the simple & fast video cutter & joiner with the help of mpv + FFmpeg
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = http://vidcutter.ozmartians.com
 	install = vidcutter.install
@@ -13,7 +13,7 @@ pkgbase = vidcutter
 	depends = mediainfo
 	provides = vidcutter
 	conflicts = vidcutter-git
-	source = https://github.com/ozmartian/vidcutter/archive/3.0.0.tar.gz
+	source = https://github.com/ozmartian/vidcutter/archive/3.0.1.tar.gz
 	md5sums = SKIP
 
 pkgname = vidcutter
