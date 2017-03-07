@@ -2,7 +2,7 @@
 
 pkgname=openvpn-protonvpn
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenVPN configuration files and helper for protonvpn.com"
 arch=(any)
 url="https://protonvpn.com/"
@@ -22,11 +22,14 @@ prepare() {
 }
 
 package() {
-    for f in $(find conf -type f -name '*.ovpn'); do
-        install -D -m 444 $f $pkgdir/etc/openvpn/client/protonvpn/$(basename $f)
-    done
+    # Generate TCP config files
     for f in $(find conf -type f -name '*udp1194.ovpn'); do
-        ln -s /etc/openvpn/client/protonvpn/$(basename $f) $pkgdir/etc/openvpn/client/protonvpn_$(echo $(basename $f) | cut -d '.' -f 1).conf
+        basename=$(echo $(basename $f) | sed -e s/udp1194/tcp443/)
+        sed -e 's/proto udp/proto tcp/' -E -e 's/remote ([^ ]+) 1194/remote \1 443/' $f > conf/$basename
     done
-    chmod 750 $pkgdir/etc/openvpn/client
+    for f in $(find conf -type f -name '*.ovpn'); do
+        id=$(echo $(basename $f) | cut -d '.' -f 1,4)
+        install -D -m 644 $f $pkgdir/etc/openvpn/client/protonvpn.${id}.conf
+    done
+    chmod 755 $pkgdir/etc/openvpn/client
 }

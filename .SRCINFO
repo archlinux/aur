@@ -1,7 +1,7 @@
 pkgbase = openvpn-protonvpn
 	pkgdesc = OpenVPN configuration files and helper for protonvpn.com
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://protonvpn.com/
 	arch = any
 	license = MIT
