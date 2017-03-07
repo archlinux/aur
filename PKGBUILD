@@ -2,7 +2,7 @@
 pkgbase=openss7-git
 _pkgbase=openss7
 pkgname=('openss7-git' 'openss7-modules-git' 'openss7-modules-lts-git' 'openss7-java-git')
-pkgver=1.1.8.7.ge3ccfa1
+pkgver=1.1.8.52.g91121217c
 pkgrel=1
 pkgdesc="OpenSS7 Fast-STREAMS and Protocol Suites"
 arch=('x86_64' 'i686')
@@ -43,6 +43,8 @@ build() {
   _mpost_file=../$CARCH-modpost.cache
   _cache_file=../$CARCH-config.cache
 
+  _kvr="$(pacman -Qi linux-lts|awk '/^Version/{print$3}')-lts"
+
   ./configure \
       syslibdir=/usr/lib \
       sysbindir=/usr/bin \
@@ -61,15 +63,16 @@ build() {
       --disable-k-weak-symbols \
       --enable-k-weak-modules \
       --disable-specfs-lock \
+      --with-k-release=$_kvr \
       --with-k-optimize=speed \
       --with-optimize=speed \
       --with-gnu-ld \
       --disable-modules
   make
 
-  cd "$srcdir/openss7-modules-git"
+  cd "$srcdir/openss7-modules-lts-git"
 
-  _kvr="$(pacman -Qi linux|awk '/^Version/{print$3}')-ARCH"
+  _kvr="$(pacman -Qi linux-lts|awk '/^Version/{print$3}')-lts"
 
   _csite_file=../$CARCH-config.site
   _mpost_file=../$CARCH-$_kvr-modpost.cache
@@ -100,11 +103,11 @@ build() {
       --with-gnu-ld \
       --disable-docs \
       --disable-tools
-  make
+  make V=1
 
-  cd "$srcdir/openss7-modules-lts-git"
+  cd "$srcdir/openss7-modules-git"
 
-  _kvr="$(pacman -Qi linux-lts|awk '/^Version/{print$3}')-lts"
+  _kvr="$(pacman -Qi linux|awk '/^Version/{print$3}')-ARCH"
 
   _csite_file=../$CARCH-config.site
   _mpost_file=../$CARCH-$_kvr-modpost.cache
