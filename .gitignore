@@ -2,5 +2,5 @@ pkg/
 src/
 *.zip
 *.tar.gz
-*.pkg.tar.xz
+*.pkg.*
 _packer
