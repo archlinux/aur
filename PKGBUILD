@@ -1,5 +1,4 @@
 # Maintainer: urain39 <hexiedeshijie@gmail.com>
-# Contributor: xiao_suo <xiao_suo@hotmail.com>
 
 pkgname=mwget
 pkgver=0.1.0
@@ -28,3 +27,5 @@ package() {
     cd ${srcdir}/${pkgname}_${pkgver}.orig
     make DESTDIR=${pkgdir} install
 }
+
+# vim:set ts=4 et:
