@@ -5,11 +5,11 @@
 
 pkgname=mma
 pkgver=16.06
-pkgrel=1
+pkgrel=2
 pkgdesc="Musical MIDI Accompaniment (MMA) is an accompaniment generator"
 url="http://www.mellowood.ca/mma/"
 depends=('python2>=2.5.0')
-optdepends=('timidty++: Synthesize MIDI files')
+optdepends=('timidity++: Synthesize MIDI files')
 license=('GPL')
 arch=('any')
 install=mma.install
