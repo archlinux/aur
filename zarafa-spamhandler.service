@@ -1,0 +1,15 @@
+[Unit]
+Description=zarafa-spamhandler
+Wants=zarafa-server.service
+After=zarafa-server.service
+
+[Service]
+Type=simple
+Environment=LC_ALL=C PYTHONIOENCODING=utf-8 LANG=en_US.UTF-8
+ExecStart=/bin/sh -c "cd /usr/share/zarafa-spamhandler ; /usr/bin/python zarafa-spamhandler.py"
+ExecReload=/bin/kill -HUP $MAINPID
+User=zarafa
+Group=zarafa
+
+[Install]
+WantedBy=multi-user.target
