@@ -1,0 +1,39 @@
+pkgbase = linux-baytrail411
+	pkgver = 4.11.rc1
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	options = !strip
+	source = git+https://github.com/muhviehstah/linux-baytrail411.git#tag=4.11.rc1
+	source = config
+	source = config.x86_64
+	source = linux-baytrail411.preset
+	sha256sums = SKIP
+	sha256sums = 60921720cdcd2ff3fc754eebbba795af52b61d681a0541ad492a606bed309f58
+	sha256sums = 7921236724871fc5a53cb685b67d66be961dfe2bdced76a16be2785bb5f81a33
+	sha256sums = 68c7c52dea706afa73d1add2e9c2cb0a92ab86443f03428614f2f7fbbbb4943b
+
+pkgname = linux-baytrail411
+	pkgdesc = The Linux-baytrail411 with baytrail freeze fixes and integrated RTL8723BS WIFI driver + kernel and modules
+	install = linux-baytrail411.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-baytrail411.preset
+
+pkgname = linux-baytrail411-headers
+	pkgdesc = Header files and scripts for building modules for Linux-baytrail411 kernel with baytrail freeze fixes
+
+pkgname = linux-baytrail411-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-baytrail411 kernel with baytrail freeze fixes
+
