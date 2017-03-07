@@ -3,13 +3,13 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=firefox-extension-omnisidebar
-pkgver=1.6.13
-pkgrel=2
+pkgver=1.6.14
+pkgrel=1
 pkgdesc='A firefox add-on designed to provide more control over the behavior of the sidebar.'
 arch=('any')
 license=('MPLv2')
 depends=('firefox')
-md5sums=('759ecbfb13ebd0575ce6c9eeb08a278d')
+md5sums=('1b3a8d58535f453e9c7b44be1256d1c3')
 
 [ "$arch" ] || arch=('any')
 
