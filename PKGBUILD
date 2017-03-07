@@ -29,8 +29,8 @@ source=(http://www.twistednormal.com/download/glise_1.7.1_amd64.deb)
 md5sums=('eb0453d1708e9113e24f333a6b5e4553')
 package() {
     tar -xf data.tar.xz -C "${pkgdir}"
-    install -D -m644 "/opt/glise/COPYRIGHTS.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 "/opt/glise/EULA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
+    install -D -m644 "${pkgdir}/opt/glise/COPYRIGHTS.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 "${pkgdir}/opt/glise/EULA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
     ln -s "/usr/lib/x86_64-linux-gnu/libembree.so" "${pkgdir}/usr/lib/libembree.so"
     ln -s "/usr/lib/x86_64-linux-gnu/libembree.so.2" "${pkgdir}/usr/lib/libembree.so.2"
     ln -s "/usr/lib/x86_64-linux-gnu/libembree.so.2.13.0" "${pkgdir}/usr/lib/libembree.so.2.13.0"
