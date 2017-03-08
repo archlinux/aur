@@ -1,7 +1,0 @@
-[Unit]
-Description=Spotlight
-After=network-online.target
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/spotlight.sh
