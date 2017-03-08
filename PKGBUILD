@@ -8,13 +8,15 @@ _category_icons=false
 pkgname=mylaunchpad-git
 _pkgname_simple=mylaunchpad
 pkgdesc="Eyecandy Full Screen launcher script for openbox and other stand-alone window managers"
-pkgrel=1
+pkgrel=2
 pkgver=r93.7bb98be
 
 arch=('any')
 url="https://github.com/gaboelnuevo/mylaunchpad"
 license=('GPL')
-depends=('python2-lxml' 'pygtk' 'cairo' 'python2-cairo' 'python2-imaging' 'gnome-menus2' 'python2-distutils-extra')
+depends=('python2-lxml' 'pygtk' 'cairo' 'python2-cairo' 'python2-imaging' 'gnome-menus2'
+'python2-distutils-extra')
+optdepends=('gtk-engine-murrine: murrine engine')
 makedepends=('git')
 provides=('mylaunchpad')
 conflicts=('mylaunchpad')
