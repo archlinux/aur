@@ -1,6 +1,6 @@
 _name=vlc
 pkgname=vlc-clang-git
-pkgver=3.0.r65396.g0ad565d
+pkgver=3.0.r69166.g4ae3d6f4e9
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player. Development GIT Version."
 arch=('i686' 'x86_64')
@@ -26,7 +26,6 @@ optdepends=('ncurses: for ncurses interface support'
             'lirc-utils: for lirc plugin'
             'libavc1394: for devices using the 1394ta AV/C'
             'libdc1394: for IEEE 1394 plugin'
-            'kdelibs: KDE Solid hardware integration'
             'libva-vdpau-driver: vdpau back-end for nvidia'
             'libva-intel-driver: back-end for intel cards'
             'libbluray: for Blu-Ray support'
@@ -48,9 +47,12 @@ provides=("${_name}=${pkgver}")
 backup=('usr/share/vlc/lua/http/.hosts'
         'usr/share/vlc/lua/http/dialogs/.hosts')
 options=('!emptydirs')
-install="${pkgname}.install"
-source=('git://git.videolan.org/vlc.git')
-sha1sums=('SKIP')
+source=('git://git.videolan.org/vlc.git' 
+         'update-vlc-plugin-cache.hook'
+         'lua53_compat.patch::https://aur.archlinux.org/cgit/aur.git/plain/lua53_compat.patch?h=vlc-qt5')
+sha256sums=('SKIP'
+            'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
+            'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa')
 
 pkgver() {
   cd "${srcdir}/${_name}"
@@ -60,7 +62,9 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_name}"
+  patch -p1 < "${srcdir}/lua53_compat.patch"
   sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
+  sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype/freetype.c
 }
 
 build() {
@@ -69,18 +73,25 @@ build() {
   ./bootstrap
   msg 'Done. Configuring VLC...'
 
-
+   CFLAGS+=" -I/usr/include/samba-4.0" CPPFLAGS+=" -I/usr/include/samba-4.0" CXXFLAGS+=" -std=gnu++11" \
   CC=clang CXX=clang++ ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --disable-rpath \
+              --enable-bluray \
               --enable-faad \
+              --enable-wayland \
+              --enable-archive \
               --enable-nls \
+              --disable-sndio \
+              --enable-libtar \
               --enable-lirc \
               --enable-ncurses \
               --enable-realrtsp \
               --enable-aa \
               --enable-vcdx \
               --enable-upnp \
+              --disable-matroska \
+              --enable-gst-decode \
               --enable-opus \
               --enable-sftp \
               --disable-atmo \
@@ -88,6 +99,7 @@ build() {
               --disable-caca \
               --disable-coverage \
               --disable-cprof \
+              --disable-gprof \
               --disable-dbus \
               --disable-dbus-control \
               --disable-dca \
@@ -101,10 +113,8 @@ build() {
               --disable-fbosd \
               --disable-fribidi \
               --disable-gme \
-              --disable-gnomevfs \
               --disable-gnutls \
               --disable-goom \
-              --disable-gprof \
               --disable-growl \
               --disable-jack \
               --disable-kate \
@@ -123,7 +133,7 @@ build() {
               --disable-opencv \
               --disable-oss \
               --disable-portaudio \
-              --disable-postproc \
+              --enable-postproc \
               --enable-pulse \
               --disable-pvr \
               --disable-quicktime \
@@ -132,11 +142,11 @@ build() {
               --disable-shine \
               --disable-shout \
               --disable-sid \
-              --disable-skins2 \
+              --enable-skins2 \
               --disable-smb \
               --disable-sqlite \
               --disable-switcher \
-              --disable-taglib \
+              --enable-taglib \
               --disable-telepathy \
               --disable-telx \
               --disable-tiger \
@@ -149,7 +159,10 @@ build() {
               --enable-xosd \
               --enable-zvbi \
 							--enable-projectm \
-              LUAC=/usr/bin/luac  LUA_LIBS="`pkg-config --libs lua`" \
+              --enable-fdkaac \
+              --enable-merge-ffmpeg \
+              --enable-dvbpsi \
+              LUAC=/usr/bin/luac5.2  LUA_LIBS="`pkg-config --libs lua`" \
               RCC=/usr/bin/rcc-qt5
 
   msg 'Done. Starting make...'
@@ -159,4 +172,5 @@ build() {
 package() {
   cd "${srcdir}/${_name}"
   make DESTDIR="${pkgdir}" install
+  install -Dm644 "$srcdir"/update-vlc-plugin-cache.hook "$pkgdir"/usr/share/libalpm/hooks/update-vlc-plugin-cache.hook
 }
