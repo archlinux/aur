@@ -1,6 +1,6 @@
 pkgbase = photofilmstrip
 	pkgdesc = Create video clips from photos
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = http://www.photofilmstrip.org/1-0-Home.html
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = photofilmstrip
 	optdepends = gst-plugins-good: additional rendering formats
 	optdepends = gst-plugins-ugly: additional rendering formats
 	optdepends = gst-libav: additional rendering formats
-	source = https://sourceforge.net/projects/photostoryx/files/photofilmstrip/3.0.1/photofilmstrip-3.0.1.tar.gz
-	md5sums = 611bb2051d8d6d40664c57181f949a78
+	source = https://sourceforge.net/projects/photostoryx/files/photofilmstrip/3.0.2/photofilmstrip-3.0.2.tar.gz
+	md5sums = 792795a1b3b90d186523a00c5f89866d
 
 pkgname = photofilmstrip
 
