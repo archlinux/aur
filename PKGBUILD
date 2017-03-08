@@ -18,7 +18,7 @@ _opt_Debug=0
 
 _pkgname='dosemu2'
 pkgname="${_pkgname}-git"
-pkgver=2.0pre6.1.dev.330.g4c2304a4
+pkgver=2.0pre6.1.dev.357.g10ac6c7f
 pkgrel=1
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
 arch=('i686' 'x86_64')
@@ -34,9 +34,9 @@ optdepends=(
   'slang: console display'
   'sdl2: graphical display'
   'fluidsynth: MIDI support'
-  'vde2: networking support'
+  'vde2-dosemu2: networking support'
 )
-makedepends=('git' 'flex' 'bison' 'binutils' 'sed' 'perl')
+makedepends=('git' 'flex' 'bison' 'binutils' 'sed' 'perl' 'bash')
 provides=('dosemu=2.0' "${_pkgname}=2.0")
 conflicts=('dosemu' "${_pkgname}")
 backup=(
