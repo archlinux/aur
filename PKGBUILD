@@ -2,7 +2,7 @@
 
 pkgname=mendeleydesktop-dev
 pkgshortname=mendeleydesktop
-pkgver=1.17.8 #_dev6
+pkgver=1.17.9_dev2
 pkgrel=1
 pkgdesc="Academic software for managing and sharing research papers (desktop client)"
 url=https://www.mendeley.com/release-notes/development/
@@ -15,19 +15,17 @@ sha256sums=('' '4603511767b23ba44820b1742e82043a667822146bcd3ebc8e9bdcfdb87ed050
 
 if [[ $CARCH = i686 ]];then
   _arch=i486
-  sha256sums[0]='88230740bd9656c40bf2257bbf713e8938d950113c937ff3400005d195acd0d8'
+  sha256sums[0]='6a160729618f7fc44465eb780a8cb53c87b4e7e3c66a6327cd3252dd04e01657'
 
 else
   _arch=$CARCH
-  sha256sums[0]='0e7f5770096b5475a45de84f1d7c631d1b064ca414bb9ea28dac45fb4299e9ae'
+  sha256sums[0]='e7d762b2c69699cfd3acd0a78318de9e47317677cc9077123a68864ce6e7188e'
 fi
 
 if which gconftool-2 &>/dev/null;then
   depends=(${depends[@]} gconf)
 fi
 
-#http://desktop-download.mendeley.com/download/linux/mendeleydesktop-1.14.1-dev5-linux-i486.tar.bz2
-#http://desktop-download.mendeley.com/download/linux/mendeleydesktop-1.14.1-dev5-linux-x86_64.tar.bz2
 source=("http://desktop-download.mendeley.com/download/linux/$pkgshortname-${pkgver//_/-}-linux-$_arch.tar.bz2"
         'mendeleydesktop.install')
 
@@ -58,7 +56,7 @@ package() {
 #make sure you remove any old versions of ".desktop" file of mendeley in #~/.local/share/applications/,
 #because mendeley will automatically create one there.
 #__EOF__
-    #rm -rf "$pkgdir"/opt/"$pkgshortname"/lib/qt
+    rm -rf "$pkgdir"/opt/"$pkgshortname"/lib/qt
 
     #Remove unneeded lines if gconf is not installed.
     if ! which gconftool-2 &>/dev/null;then
