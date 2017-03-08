@@ -3,10 +3,10 @@
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=weston-git
-pkgver=1.9.90.5002.cd9bb71
+pkgver=2.0.90.5742.11ae2a30
 pkgrel=1
 pkgdesc='Reference implementation of a Wayland compositor'
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64')
 url='http://wayland.freedesktop.org'
 license=('MIT')
 makedepends=('git')
