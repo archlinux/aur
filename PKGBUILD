@@ -1,4 +1,5 @@
-# Maintainer: eolianoe <eolianoe At GoogleMAIL DoT com>
+# Maintainer: mortzprk <mortz.prk@gmail.com>
+# Contributor: eolianoe <eolianoe At GoogleMAIL DoT com>
 # Contributor: Frikilinux <frikilinux at frikilinux.com.ar>
 
 pkgname=gtk-theme-equinox
@@ -11,7 +12,7 @@ arch=('any')
 depends=('gtk-engine-equinox')
 optdepends=('faenza-icon-theme: icons designed for this theme'
             'lib32-gtk-engine-equinox: for 32 bits applications')
-source=("http://gnome-look.org/CONTENT/content-files/140449-equinox-themes-${pkgver}.tar.gz")
+source=("https://dl.opendesktop.org/api/files/download/id/1460966672/140449-equinox-themes-${pkgver}.tar.gz")
 sha256sums=('32b3cedfbc27e466289aa8a0b6d1f3f964a553956d94bf267bd42c749691823c')
 noextract=("140449-equinox-themes-${pkgver}.tar.gz")
 
