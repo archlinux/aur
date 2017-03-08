@@ -13,7 +13,7 @@ conflicts=(chirp)
 provides=(chirp)
 install=
 sha1sums=("ef50ed5bca0658aed5369b72a34ca153c3ff7bef")
-source=("http://trac.chirp.danplanet.com/chirp_daily/daily-20170222/chirp-daily-20170222.tar.gz")
+source=("http://trac.chirp.danplanet.com/chirp_daily/daily-20170307/chirp-daily-20170307.tar.gz")
 
 build() {
   tar zxvf $pkgname-$pkgver.tar.gz
