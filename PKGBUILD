@@ -4,12 +4,11 @@
 pkgname=papirus-libreoffice-theme
 _commit=b06f038
 pkgver=20170228
-pkgrel=1
+pkgrel=2
 pkgdesc="Papirus theme for LibreOffice"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname}"
 arch=('any')
 license=('GPL')
-depends=('plasma-desktop')
 makedepends=('git' 'make')
 conflicts=('papirus-libreoffice-theme-git' 'libreoffice-papirus-theme' 'libreoffice-papirus-theme-git')
 optdepends=('libreoffice' 'libreoffice-fresh-rpm')
