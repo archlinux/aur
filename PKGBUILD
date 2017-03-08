@@ -7,7 +7,7 @@
 
 pkgname=erlang-nox
 pkgver=19.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='General-purpose concurrent functional programming language developed by Ericsson (headless version)'
 arch=('x86_64' 'i686')
 url='http://www.erlang.org/'
