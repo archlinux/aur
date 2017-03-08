@@ -1,0 +1,17 @@
+pkgbase = siv-git
+	pkgdesc = A command-line control program for Zif (git version)
+	pkgver = 66369be
+	pkgrel = 1
+	url = https://gitlab.com/PoroCYon/siv
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = stack
+	makedepends = ghc
+	depends = libffi
+	depends = gmp
+	source = git+https://gitlab.com/PoroCYon/siv
+	sha512sums = SKIP
+
+pkgname = siv-git
+
