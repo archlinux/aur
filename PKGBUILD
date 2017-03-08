@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-explorer
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Command Line Tool"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -45,9 +45,15 @@ build() {
     --sharedstatedir=/usr/share/libbitcoin-explorer \
     --localstatedir=/var/lib/libbitcoin-explorer \
     --with-bash-completiondir=/usr/share/bash-completion/completions \
-    --with-gnu-ld \
-    --without-tests
+    --with-gnu-ld
   make -j$(($(nproc)/2))
+}
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  msg2 'Testing...'
+  make -j$(($(nproc)/2)) check
 }
 
 package() {
