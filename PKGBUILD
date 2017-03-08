@@ -1,17 +1,17 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-explorer-git
-pkgver=20160619
+pkgver=20170307
 pkgrel=1
 pkgdesc="Bitcoin Command Line Tool"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
          'icu'
-         'libbitcoin'
          'libbitcoin-client'
          'libbitcoin-network'
          'libbitcoin-protocol'
+         'libbitcoin-system'
          'libpng'
          'libsecp256k1'
          'qrencode'
