@@ -1,18 +1,16 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-client
-pkgver=2.2.0
-pkgrel=3
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Bitcoin Client Protocol Library"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
-         'czmq-git'
-         'czmqpp-git'
          'icu'
-         'libbitcoin'
+         'libbitcoin-protocol'
+         'libbitcoin-system'
          'libsecp256k1'
-         'libsodium'
          'zeromq')
 makedepends=('autoconf'
              'automake'
@@ -25,7 +23,7 @@ groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-client"
 license=('AGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver)
-sha256sums=('a350e55b16af8e53ec46071fe552b0ec1dd95e233005bc4f55adb82a0d85e9bc')
+sha256sums=('0c4b7ebc10ecd6350ec18d0588df7b1e68f73078c1183b36fd55ae3c83453720')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -40,8 +38,9 @@ build() {
     --sharedstatedir=/usr/share/libbitcoin-client \
     --localstatedir=/var/lib/libbitcoin-client \
     --with-gnu-ld \
+    --without-examples \
     --without-tests
-  make
+  make -j$(($(nproc)/2))
 }
 
 package() {
