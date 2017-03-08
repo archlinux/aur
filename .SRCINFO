@@ -1,7 +1,7 @@
 pkgbase = audacity-extras
 	pkgdesc = All nyquist plugins for audacity
 	pkgver = 1.0.01
-	pkgrel = 1
+	pkgrel = 2
 	url = localhost:43110
 	arch = any
 	license = GPL2
