@@ -3,7 +3,7 @@
 
 pkgname=tor-browser-hardened
 pkgver=7.0a2
-pkgrel=1
+pkgrel=2
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor (Hardened)'
 url='https://www.torproject.org/projects/torbrowser.html.en'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('zenity: simple dialog boxes'
 		'gst-libav: h.264 video'
 		'libpulse: PulseAudio audio driver'
 		'libnotify: Gnome dialog boxes')
-		install="${pkgname}.install"
+install="${pkgname}.install"
 
 validpgpkeys=('8738A680B84B3031A630F2DB416F061063FEE659'
 		'EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
