@@ -1,4 +1,5 @@
-# Maintainer: Jan-Tarek Butt <tarek AT ring0 DOT de>
+# Maintainer: Victor <victor@xirion.net>
+# Contributor: Jan-Tarek Butt <tarek AT ring0 DOT de>
 # Contributor: Erik Beran <eberan AT gmail DOT com>
 # Contributor: Thor K. H. <thor at roht dot no>
 # Contributor: Babken Vardanyan <483ken 4tgma1l
@@ -30,7 +31,7 @@ _completer="ON"
 ###########################################################################################################
 
 pkgname=vim-youcompleteme-git
-pkgver=1963.194ff334
+pkgver=2017.cb2f6d79
 pkgver() {
   cd "YouCompleteMe" || exit
   echo "$(git rev-list --count master).$(git rev-parse --short master)"
@@ -153,7 +154,7 @@ package() {
 
   cp -r "$srcdir/YouCompleteMe/"{autoload,doc,plugin,python} \
     "$pkgdir/usr/share/vim/vimfiles"
-  cp -r "$srcdir/YouCompleteMe/third_party/"{pythonfutures,requests-futures,retries} \
+  cp -r "$srcdir/YouCompleteMe/third_party/"{pythonfutures,requests-futures} \
     "$pkgdir/usr/share/vim/vimfiles/third_party"
   cp -r "$srcdir/YouCompleteMe/third_party/ycmd/"{ycmd,ycm_core.so,CORE_VERSION,cpp,clang_includes} \
     "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd"
