@@ -2,15 +2,15 @@
 # Contributor: Scimmia
 
 pkgname=wayland-git
-pkgver=1.9.90.1804.d5f22d2
+pkgver=1.13.90.2010.9b78be6
 pkgrel=1
 pkgdesc='A computer display server protocol.'
 arch=(i686 x86_64)
 url='http://wayland.freedesktop.org'
 provides=("wayland=${pkgver}")
 license=('MIT')
-depends=('libffi')
-makedepends=('git' 'expat')
+depends=('libffi' 'libxml2' 'expat')
+makedepends=('git')
 conflicts=('wayland')
 source=(git://anongit.freedesktop.org/wayland/wayland)
 sha1sums=('SKIP')
