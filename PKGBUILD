@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-server-git
 pkgver=20170307
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -77,9 +77,15 @@ build() {
     --sharedstatedir=/usr/share/libbitcoin-server \
     --localstatedir=/var/lib/libbitcoin-server \
     --with-bash-completiondir=/usr/share/bash-completion/completions \
-    --with-gnu-ld \
-    --without-tests
+    --with-gnu-ld
   make -j$(($(nproc)/2))
+}
+
+check() {
+  cd ${pkgname%-git}
+
+  msg2 'Testing...'
+  make -j$(($(nproc)/2)) check
 }
 
 package() {
