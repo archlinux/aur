@@ -1,7 +1,7 @@
 # Maintainer: Ricardo Cabral <ricardo.arturo.cabral@gmail.com>
 
 pkgname=tibia
-pkgver=11.10.4445
+pkgver=11.11.4603
 pkgrel=1
 pkgdesc="A fast-paced free massively multiplayer online role-playing game."
 arch=('x86_64')
