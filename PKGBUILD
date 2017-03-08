@@ -8,7 +8,7 @@
 # without X, or at the login screen. Contrib is welcome.
 
 pkgname=coolmaster-keyboard
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc="Control the backlight for Coolmaster Dominator keyboards"
 url="http://aur.archlinux.org"

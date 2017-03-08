@@ -10,7 +10,7 @@ declare FLAGS
 # toggle normally. It will only toggle with the LEDs set with xset.
 FLAGS=$(xset -q | awk 'NR==2{print $10}')
 case $FLAGS in
-  0000000?)
+  0000?00?)
     xset led on
     exit $?
     ;;
