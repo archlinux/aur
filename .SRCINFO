@@ -1,13 +1,14 @@
 pkgbase = cerebro
 	pkgdesc = Open-source productivity booster with a brain.
 	pkgver = 0.2.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cerebroapp.com/
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = gendesk
 	makedepends = yarn
+	makedepends = npm
 	depends = alsa-lib
 	depends = gconf
 	depends = gtk2
