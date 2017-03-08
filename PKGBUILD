@@ -24,7 +24,7 @@ optdepends=('yelp: Viewing help manuals' \
 source=(http://download.savannah.gnu.org/releases/gchemutils/${_majorver}/${pkgname}-${pkgver}.tar.bz2)
 options=(!libtool)
 install=gnome-chemistry-utils.install
-md5sums=('b630da183c7b8e754d62503a58cec4ed')
+md5sums=('e7885d7846ef0b99bb6d22abea1add36')
 
 build() {
 
