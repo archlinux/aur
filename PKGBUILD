@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 url='http://sourceforge.net/projects/vde/'
 license=('GPL' 'LGPL' 'custom')
 depends=('bash' 'libpcap' 'openssl')
-makedepends=('python' 'git')
+makedepends=('python')
 provides=("vde2=${pkgver}")
 conflicts=('vde2')
 options=('!makeflags')
@@ -25,22 +25,24 @@ source=(
   'iptables.rules.sample'
   'vde-config.sample'
   'vde-connection.sample'
-  "git+https://github.com/stsp/dosemu2.git"
+  "https://github.com/stsp/dosemu2/archive/dosemu2-2.0pre6.tar.gz" # the patches don't change very often
 )
 sha256sums=('cbea9b7e03097f87a6b5e98b07890d2275848f1fe4b9fcda77b8994148bc9542'
             'da0e2766dc63069da929c28126831ad5fdddcc4a04105a21217d78832c7ca1bc'
             '99076d7466cd99673dbe91ef83865187e7868177959b38e125df63eea957f83e'
             '5727c215646333c37b26388146cd3e6b3814b88d60d54051d7da99e00c0aef87'
             '5139110ed6d5d1174bf12971512dac5196d9d07df46dd393d7b1cd083118fe9b'
-            'SKIP')
+            'bebe81ec0bfca80ed34a7a53237bb4729246a6605a0e365e84c15243b3d2f569')
 
 prepare() {
   set -u
-  cd "${_srcdir}"
-  patch -d 'src/slirpvde/' -b -p2 -i "${srcdir}/dosemu2/src/plugin/vde/patches/0001-slirp-Forward-ICMP-echo-requests-via-unprivileged-so.patch"
+  cd dosemu2*/
+  local _dosemu2="${PWD}"
+  cd "${srcdir}/${_srcdir}"
+  patch -d 'src/slirpvde/' -b -p2 -i "${_dosemu2}/src/plugin/vde/patches/0001-slirp-Forward-ICMP-echo-requests-via-unprivileged-so.patch"
   local _ptf
   for _ptf in 'atty.diff' 'flags.diff' 'msg.diff'; do
-    patch -b -p0 -i "${srcdir}/dosemu2/src/plugin/vde/patches/${_ptf}"
+    patch -b -p0 -i "${_dosemu2}/src/plugin/vde/patches/${_ptf}"
   done
   CFLAGS="${CFLAGS} -Wno-unused-result" \
   ./configure --prefix='/usr' --sbindir='/usr/bin' --sysconfdir='/etc' --libexecdir='/usr/lib/vde2' \
