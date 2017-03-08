@@ -1,21 +1,21 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-server
-pkgver=2.4.0
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
-         'czmq-git'
-         'czmqpp-git'
          'icu'
-         'libbitcoin'
          'libbitcoin-blockchain'
          'libbitcoin-consensus'
+         'libbitcoin-database'
+         'libbitcoin-network'
          'libbitcoin-node'
+         'libbitcoin-protocol'
+         'libbitcoin-system'
          'libsecp256k1'
-         'libsodium'
          'zeromq')
 makedepends=('autoconf'
              'automake'
@@ -34,7 +34,7 @@ source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname
         bs.logrotate
         bs.service
         bsinit.service)
-sha256sums=('984c979683de042603a49f2f1c88cd897683c00ec8bbb7be3e93a831fc7d9328'
+sha256sums=('bb97de5100b7a49b2c55817cf9431777535d0f95f90a80238356a5bcb86c1203'
             'SKIP'
             '09ea3d2bf7cb87a0760c2a73893d62d1868d232c9e925cabf6140b1b031efee3'
             '564112d0860f1523049bd89779e1b1bfc189a3d143d2cc808441981ed793658a'
@@ -49,10 +49,11 @@ prepare() {
   msg2 'Configuring...'
   cp -dpr --no-preserve=ownership data/bs.cfg data/bs.cfg.in
   sed -i \
-    -e 's@^database_path.*@database_path = /srv/blockchain/db@' \
+    -e 's@^directory.*@directory = /srv/bs/db@' \
     -e 's@^debug_file.*@debug_file = /var/log/bs/debug.log@' \
     -e 's@^error_file.*@error_file = /var/log/bs/error.log@' \
     -e 's@^hosts_file.*@hosts_file = /etc/bs/hosts.cache@' \
+    -e 's@^archive_directory.*@archive_directory = /var/log/bs@' \
     data/bs.cfg.in
 }
 
@@ -69,8 +70,9 @@ build() {
     --sharedstatedir=/usr/share/libbitcoin-server \
     --localstatedir=/var/lib/libbitcoin-server \
     --with-bash-completiondir=/usr/share/bash-completion/completions \
-    --with-gnu-ld
-  make
+    --with-gnu-ld \
+    --without-tests
+  make -j$(($(nproc)/2))
 }
 
 package() {
@@ -81,7 +83,7 @@ package() {
 
   msg2 'Installing...'
   install -dm 700 "$pkgdir/etc/bs"
-  install -dm 755 "$pkgdir/srv/blockchain"
+  install -dm 755 "$pkgdir/srv/bs"
   make DESTDIR="$pkgdir" install
 
   msg2 'Installing documentation...'
@@ -101,4 +103,5 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
+  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
