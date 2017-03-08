@@ -1,8 +1,8 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-smplayer-theme-git
-pkgver=20170119
-pkgrel=2
+pkgver=20170206
+pkgrel=1
 pkgdesc="Papirus theme for SMPlayer (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
 arch=('any')
