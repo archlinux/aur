@@ -2,8 +2,8 @@
 
 _pkgname=papirus-libreoffice-theme-git
 pkgname=papirus-libreoffice-fresh-rpm-theme-git
-pkgver=20170119
-pkgrel=2
+pkgver=20170228
+pkgrel=1
 pkgdesc="Papirus theme for LibreOffice-Fresh RPM (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${_pkgname%-git}"
 arch=('any')
@@ -22,7 +22,7 @@ pkgver() {
 
 package() {
   cd ${_pkgname}
-  mkdir -p ${pkgdir}/opt/libreoffice5.2/share/config
+  mkdir -p ${pkgdir}/opt/libreoffice5.3/share/config
   cp --no-preserve=mode,ownership -r \
     images_papirus.zip \
     images_papirus_dark.zip  \
