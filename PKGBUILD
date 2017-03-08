@@ -17,14 +17,12 @@ optdepends=('sabnzbd: an NZB downloader'
 install='radarr.install'
 provides=('radarr')
 source=("https://github.com/galli-leo/Radarr/releases/download/v${pkgver}/Radarr.develop.${pkgver}.linux.tar.gz"
-        "radarr.sh"
         "radarr.service"
         "radarr.sysusers")
 noextract=()
 
 sha512sums=('f9284e54b56d4ed9182d2535da93563110b5bc4b0ea7f1dcb1556a5d83b176eb19659ba5cb6a0595136ddaee5fae31cf43666dadeb3e132f20021cb5e6989f73'
-            '17c0a54de94ab6e4523ab5f3f65bd40b592cc6723acaf123db8bbf0d2c6200e4b5877878c542fe849c09b9748ab8c8887cbd94365ba431cf71fc1256f24b43ec'
-            '58260b3d1e0638aa2269fb81a077686c203ae638d6d93712eb0552e93b8b5f517f6d104464b119d5d38ea521e130e3ee80579113526433337f0578576917b7e1'
+            '89b4f791a33341cebbcee35dbbaa232dc2a3e0398d3d4f9b13eb26bd13c0a07573ddf9936074c1236537dd64d174c69c0fbaa7209f8cdf9f8575e342e7801014'
             'c1ee3925eced182ea7fffa55a6dc2a4e099ccf18636fc237ef0a2fc9517a38cfc2a819ae5a7bc546b63e383506f9f47e89454a71e34106c579d7454d71b2299e')
 
 package() {
@@ -38,9 +36,6 @@ package() {
 
   msg2 "Fixing permissions in /usr/lib/radarr/"
   find "${pkgdir}/usr/lib/radarr" -type f -exec chmod 644 '{}' ';'
-
-  msg2 "Install executable into /usr/bin"
-  install -D -m755 "${srcdir}/radarr.sh" "${pkgdir}/usr/bin/radarr"
 
   msg2 "Install radarr.service"
   install -D -m 644 "${srcdir}/radarr.service" "${pkgdir}/usr/lib/systemd/system/radarr.service"
