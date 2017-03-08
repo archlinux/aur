@@ -1,7 +1,7 @@
 # Maintainer: Pete Alexandrou <pete@ozmartians.com>
 pkgname=vidcutter
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="the simple & fast video cutter & joiner with the help of mpv + FFmpeg"
 arch=('any')
 license=('GPL3')
