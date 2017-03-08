@@ -1,6 +1,6 @@
 _pkgname=labots
 pkgname=${_pkgname}-git
-pkgver=0.44.a497412
+pkgver=0.50.fc7d0c0
 pkgrel=1
 pkgdesc='Flexible IRC bot framework'
 arch=('any')
