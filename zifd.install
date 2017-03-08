@@ -1,0 +1,9 @@
+
+post_install() {
+    useradd -c "Zif: Decentralised BitTorrent index" -r -s /usr/bin/nologin zif
+
+    chown -R zif /etc/zif /var/lib/zif
+    chmod 700 /etc/zif /etc/zif/tor /var/lib/zif
+    chmod 600 /etc/zif/tor/*
+}
+

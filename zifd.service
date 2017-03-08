@@ -1,0 +1,15 @@
+[Unit]
+Description=Zif daemon
+After=network-online.target
+
+[Service]
+User=zif
+Type=simple
+LimitNPROC=4
+NonBlocking=false
+ExecStart=/usr/bin/zif
+WorkingDirectory=/var/lib/zif
+
+[Install]
+WantedBy=multi-user.target
+
