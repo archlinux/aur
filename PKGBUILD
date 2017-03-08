@@ -8,8 +8,7 @@ pkgrel=1
 depends=('python-pyqt4' 'python-sh' 'xdg-utils')
 optdepends=('inxi: Show system information'
 		'xorg-server: Show Xorg log'
-		'systemd: Show systemd log'
-		'mhwd: Show driver information using mhwd from Manjaro Linux' )
+		'systemd: Show systemd log')
 makedepends=('git')
 
 source=("git+https://github.com/AlManja/logs.py.git")
