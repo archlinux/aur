@@ -1,11 +1,11 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-atari800-git
-pkgver=15.6e1883b
-pkgrel=2
+pkgver=27.ee20fb8
+pkgrel=1
 pkgdesc="libretro implementation of Atari800 v3.1.0 (Atari 5200/400/800/XL/XE) (WIP)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
-url="https://github.com/r-type/libretro-atari800.git"
+url="https://github.com/libretro/libretro-atari800"
 license=('GPL2')
 groups=('libretro')
 depends=('zlib')
@@ -13,7 +13,7 @@ makedepends=('git')
 
 _libname=atari800_libretro
 _gitname=libretro-atari800
-source=("git+https://github.com/r-type/${_gitname}.git"
+source=("git+https://github.com/libretro/${_gitname}.git"
 	"${_libname}.info"
 	"cfg.patch"
 	"joycfg.patch")
@@ -37,5 +37,5 @@ build() {
 
 package() {
   install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
-  install -Dm644 "${_libname}.info" "${pkgdir}/usr/lib/libretro/${_libname}.info"
+  install -Dm644 "${_libname}.info" "${pkgdir}/usr/share/libretro/info/${_libname}.info"
 }
