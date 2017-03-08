@@ -1,6 +1,6 @@
 _name=vlc
 pkgname=vlc-clang-git
-pkgver=3.0.r69166.g4ae3d6f4e9
+pkgver=3.0.r69168.gf28e383a9a
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player. Development GIT Version."
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="http://www.videolan.org/vlc/"
 license=('LGPL2.1' 'GPL2')
 
 
-depends=('directfb' 'xosd' 'zvbi' 'a52dec' 'libdvbpsi' 'libxpm' 'qt5-base'
+depends=('directfb' 'libfdk-aac' 'xosd' 'zvbi' 'a52dec' 'libdvbpsi' 'libxpm' 'qt5-base'
          'sdl_image' 'libdvdnav' 'lua' 'libmatroska'
          'libmpcdec' 'ffmpeg' 'faad2' 'libupnp'
          'libmad' 'libmpeg2' 'xcb-util-keysyms'
@@ -125,8 +125,6 @@ build() {
               --disable-linsys \
               --disable-live555 \
               --disable-loader \
-              --disable-macosx \
-              --disable-macosx-audio \
               --disable-mod \
               --disable-mtp \
               --disable-notify \
@@ -162,7 +160,7 @@ build() {
               --enable-fdkaac \
               --enable-merge-ffmpeg \
               --enable-dvbpsi \
-              LUAC=/usr/bin/luac5.2  LUA_LIBS="`pkg-config --libs lua`" \
+              LUAC=/usr/bin/luac  LUA_LIBS="`pkg-config --libs lua`" \
               RCC=/usr/bin/rcc-qt5
 
   msg 'Done. Starting make...'
