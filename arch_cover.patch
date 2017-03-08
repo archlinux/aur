@@ -1,0 +1,13 @@
+*** covermodes_orig.py	2017-03-08 21:02:31.348718017 +0100
+--- pulseaudio_dlna/covermodes.py	2017-03-08 20:59:27.636324915 +0100
+***************
+*** 106,111 ****
+--- 106,113 ----
+              dist_icon = 'opensuse'
+          elif dist_name == 'gentoo':
+              dist_icon = 'gentoo'
++         elif dist_name == 'arch':
++             dist_icon = 'arch'
+          else:
+              dist_icon = 'unknown'
+          try:

@@ -1,0 +1,10 @@
+[Unit]
+Description=PulseAudio DLNA
+Requires=sound.target pulseaudio.service
+After=sound.target pulseaudio.service
+
+[Service]
+ExecStart=/usr/bin/pulseaudio-dlna --port=8080 --cover-mode=distribution
+
+[Install]
+WantedBy=default.target

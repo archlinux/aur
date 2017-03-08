@@ -3,7 +3,7 @@
 
 pkgname=pulseaudio-dlna-git
 pkgver=0.5.2.r8a39674
-pkgrel=1
+pkgrel=2
 pkgdesc="A small DLNA server which brings DLNA/UPnP support to PulseAudio (development version)"
 arch=('i686' 'x86_64')
 url="https://github.com/masmu/pulseaudio-dlna"
@@ -25,11 +25,15 @@ optdepends=('lame: MP3 transcoding support'
 			'vorbis-tools: OGG transcoding support')
 source=(
 	"${pkgname}::git+https://github.com/masmu/pulseaudio-dlna.git"
-	"pulseaudio-dlna.service::https://gist.githubusercontent.com/freijon/64066155a46083eb3c06acd9ad40821f/raw/1a1557df4e398197aa89c973d20117ebabf03aa2/pulseaudio-dlna.service"
+	"pulseaudio-dlna.service"
+	"arch_cover.patch"
+	"distribution-arch.png"
 )
 sha256sums=(
 	'SKIP'
-	'457cde9539f8e603d031429e22c6543ba7f5ad79b85a1f3108604ce80039c8f0'
+	'8e05d76654424b51f47dee6962d618d1ad6514fa29affc17dfcf764cc955bd23'
+	'ce8f1651d3da51a6d336190b0f64b3f0d931a3ee6a338ce07033d9d9ba66157b'
+	'cd8a0dde2b1ac32fdcedb28c87cca3a4d956a4e4fee8ec41f8211c41d43e5e95'
 )
 
 pkgver() {
@@ -41,9 +45,11 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$pkgname"
+	patch -p0 -i $startdir/arch_cover.patch
 	python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 
-	install -Dpv $startdir/pulseaudio-dlna.service $pkgdir/usr/lib/systemd/user/pulseaudio-dlna.service
+	install -Dpv --mode=-x $startdir/pulseaudio-dlna.service $pkgdir/usr/lib/systemd/user/pulseaudio-dlna.service
+	install -Dpv --mode=-x $startdir/distribution-arch.png $pkgdir/usr/lib/python2.7/site-packages/pulseaudio_dlna/images
 }
 
 post_install() { systemctl --user daemon-reload; }
