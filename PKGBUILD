@@ -2,7 +2,7 @@
 
 pkgname=pidgin-embeddedvideo
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Watch videos directly into your Pidgin conversation"
 arch=('i686' 'x86_64')
 url="https://github.com/stefanistrate/pidgin-embeddedvideo/"
