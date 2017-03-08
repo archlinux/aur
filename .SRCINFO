@@ -1,0 +1,18 @@
+pkgbase = trello-bin
+	pkgdesc = Unofficial Trello Desktop app
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/danielchatfield/trello-desktop
+	arch = any
+	license = MIT
+	provides = trello
+	conflicts = trello
+	source = https://github.com/danielchatfield/trello-desktop/releases/download/v0.1.1/Trello-linux-0.1.1.zip
+	source = trello.desktop
+	source = trello.png
+	md5sums = 11df848759cf7fe8fae9f87b07538750
+	md5sums = c636a75cff12fb5f706c96fcf00d0ae9
+	md5sums = ddf0e16e77fce510e2a67d6bdd16c433
+
+pkgname = trello-bin
+
