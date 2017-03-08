@@ -1,0 +1,18 @@
+pkgbase = owo-cli
+	pkgdesc = A bash based file uploader and URL shortener for owo.whats-th.is
+	pkgver = 0.0.17
+	pkgrel = 1
+	url = https://whats-th.is
+	arch = x86_64
+	license = MIT
+	depends = curl
+	depends = xclip
+	depends = maim
+	depends = slop
+	depends = grep
+	source = https://github.com/whats-this/owo.sh/raw/master/owo-cli-0.0.17.tar.gz
+	validpgpkeys = E7C0305DCEED5E9988AE9E5ADE754D221AD4051A
+	sha256sums = 0e03bf7c729929110c48be404c279903f2b441cc0a2efb19813af763e8370e01
+
+pkgname = owo-cli
+
