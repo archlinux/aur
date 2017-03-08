@@ -1,17 +1,18 @@
 # Maintainer: Sebastian Reuße <seb@wirrsal.net>
-pkgname=resolve-trivial-conflicts-git
-_gitname=resolve-trivial-conflicts
-pkgver=r70.84d10f2
+pkgname=git-mediate-git
+_gitname=git-mediate
+pkgver=r94.07b1a7b
 pkgrel=1
 pkgdesc="Resolve trivial conflicts automatically when merging branches in git repositories."
 arch=(i686 x86_64)
-url="https://github.com/ElastiLotem/resolve-trivial-conflicts"
+url="https://github.com/Peaker/git-mediate"
 license=(GPL)
-provides=(resolve-trivial-conflicts)
-conflicts=(resolve-trivial-conflicts)
+provides=(git-mediate)
+conflicts=(git-mediate resolve-trivial-conflicts)
+replaces=(resolve-trivial-conflicts resolve-trivial-conflicts-git)
 makedepends=(git cabal-install chrpath)
 depends=(gmp)
-source=(git+https://github.com/ElastiLotem/resolve-trivial-conflicts)
+source=(git+https://github.com/Peaker/git-mediate)
 md5sums=(SKIP)
 
 pkgver() {
@@ -38,6 +39,6 @@ package() {
     # RPATH, we kill them manually until Cabal 1.23 is released.
     find dist -type f -perm -+x -exec chrpath -d {} \;
     cabal copy --destdir "$pkgdir"
-    install -m644 -D README.md "$pkgdir"/usr/share/doc/resolve-trivial-conflicts/README.md
+    install -m644 -D README.md "$pkgdir"/usr/share/doc/git-mediate/README.md
 }
 
