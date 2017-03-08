@@ -1,7 +1,7 @@
 # Maintainer: Johannes Pohl <johannes.pohl90@gmail.com>
 pkgname=urh
 license=('Apache')
-pkgver=1.5.5
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="Universal Radio Hacker: investigate wireless protocols like a boss"
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ optdepends=(
 )
 
 source=($pkgname-$pkgver.tar.gz::https://github.com/jopohl/urh/tarball/v$pkgver)
-md5sums=('b5dcf4f5a406b606ca904b4f2ed78d3b')
-sha256sums=('51fd8a022f2bb8b35310e83c46684cc36be7c652b0660dce8bb18bf832a04ce4')
+md5sums=('07f9dbb9dbff32dc2cd3d55ec2ceb00c')
+sha256sums=('346baa73a39607747e463fc8980819a164e50b03b1333495f323e88f12eb9030')
 
 build() {
   cd "$srcdir"
