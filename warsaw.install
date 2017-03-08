@@ -1,0 +1,8 @@
+post_install() {
+  echo "To use Warsaw, start its service using:"
+  echo "# systemctl start warsaw"
+}
+
+pre_remove() {
+    systemctl stop warsaw  
+}

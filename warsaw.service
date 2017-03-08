@@ -1,0 +1,13 @@
+[Unit]
+Description=Warsaw Technology (core)
+After=remote-fs.service
+After=syslog.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStartPre=/usr/bin/warsaw/wscertmgr
+ExecStart=/usr/bin/warsaw/core
+
+[Install]
+WantedBy=multi-user.target
