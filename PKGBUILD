@@ -3,7 +3,7 @@
 
 pkgname=audacity-git
 _pkgname=audacity
-pkgver=2.1.2.r1637.ge47a2ec3
+pkgver=2.1.2.r1719.g0efe931d
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=('i686' 'x86_64')
@@ -21,6 +21,7 @@ depends=('desktop-file-utils'
          'vamp-plugin-sdk'
          'webkitgtk2'
          'wxgtk')
+optdepends=('audacity-extras: nyquist plugins for audacity')
 makedepends=('cmake' 'python2' 'twolame')
 options=('!makeflags')
 provides=('audacity')
