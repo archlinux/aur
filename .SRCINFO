@@ -1,5 +1,5 @@
 pkgbase = fpc-svn
-	pkgver = 3.1.1.r35258
+	pkgver = 3.1.1.r35541
 	pkgrel = 1
 	url = http://www.freepascal.org/
 	arch = i686

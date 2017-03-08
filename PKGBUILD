@@ -8,12 +8,12 @@
 # See http://bbs.archlinux.org/viewtopic.php?t=9318&highlight=fpc
 
 # Build docs
-_build_docs=true
+_build_docs=1
 
 pkgbase='fpc-svn'
 pkgname=('fpc-svn' 'fpc-src-svn')
 [[ $_build_docs ]] && pkgname+=('fpc-docs-svn')
-pkgver=3.1.1.r35258
+pkgver=3.1.1.r35541
 _pkgver=${pkgver%.r*}
 pkgrel=1
 arch=('i686' 'x86_64')
