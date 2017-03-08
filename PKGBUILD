@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-blockchain
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Blockchain Library"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -37,10 +37,15 @@ build() {
     --sysconfdir=/etc \
     --sharedstatedir=/usr/share/libbitcoin-blockchain \
     --localstatedir=/var/lib/libbitcoin-blockchain \
-    --with-gnu-ld \
-    --without-tests \
-    --without-tools
+    --with-gnu-ld
   make -j$(($(nproc)/2))
+}
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  msg2 'Testing...'
+  make -j$(($(nproc)/2)) check
 }
 
 package() {
