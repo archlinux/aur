@@ -2,7 +2,7 @@
 # Contributor: Michael Kanis <mkanis@gmx.de>
 
 pkgname=libchamplain
-pkgver=0.12.14+2+ge1f6e59
+pkgver=0.12.15
 pkgrel=1
 pkgdesc="A map widget"
 url="https://wiki.gnome.org/Projects/libchamplain"
@@ -10,8 +10,8 @@ license=(LGPL)
 arch=(i686 x86_64)
 depends=(clutter-gtk libsoup cairo sqlite)
 makedepends=(gobject-introspection gtk-doc vala gnome-common git)
-_commit=e1f6e591ca752f20bb29cbe46b7f2e4e41468a56
-source=("git://git.gnome.org/libchamplain#commit=$_commit")
+_commit=d5f50d3932e2fabae8f3f10df522d7716e5bed7b  # tags/LIBCHAMPLAIN_0_12_15^0
+source=("git+https://git.gnome.org/browse/libchamplain#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
