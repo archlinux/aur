@@ -1,7 +1,7 @@
 # Maintainer: Marcus Behrendt <marcus dot behrendt dot eightysix(in numbers) at bigbrothergoogle dot com
 
 pkgname=arc-kde-git
-pkgver=20170112
+pkgver=20170306
 pkgrel=1
 pkgdesc='Arc customization mainly for Plasma 5 (git version)'
 arch=('any')
@@ -26,21 +26,11 @@ sha256sums=('SKIP')
 install=${pkgname}.install
 
 pkgver(){
-    cd ${pkgbase}
+    cd ${pkgname}
     git log -1 --format="%cd" --date=short | tr -d '-'
 }
 
 package() {
-  cd ${srcdir}/${pkgbase}
-  mkdir -p ${pkgdir}/usr/share
-
-  cp --no-preserve=mode,ownership -r plasma ${pkgdir}/usr/share
-  cp --no-preserve=mode,ownership -r aurorae ${pkgdir}/usr/share
-  cp --no-preserve=mode,ownership -r Kvantum ${pkgdir}/usr/share
-  cp --no-preserve=mode,ownership -r color-schemes ${pkgdir}/usr/share
-  cp --no-preserve=mode,ownership -r konsole ${pkgdir}/usr/share
-  cp --no-preserve=mode,ownership -r konversation ${pkgdir}/usr/share
-  cp --no-preserve=mode,ownership -r wallpapers ${pkgdir}/usr/share
-  cp --no-preserve=mode,ownership -r yakuake ${pkgdir}/usr/share
-  mv ${pkgdir}/usr/share/yakuake/{kns_skins,skins}
+    cd "${pkgname}"
+    make DESTDIR="${pkgdir}" install
 }
