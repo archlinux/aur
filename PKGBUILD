@@ -1,18 +1,18 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-node-git
-pkgver=20160723
+pkgver=20170307
 pkgrel=1
 pkgdesc="Bitcoin Full Node Library"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
          'icu'
-         'libbitcoin'
          'libbitcoin-blockchain'
          'libbitcoin-consensus'
          'libbitcoin-database'
          'libbitcoin-network'
+         'libbitcoin-system'
          'libsecp256k1')
 makedepends=('autoconf'
              'automake'
@@ -33,6 +33,20 @@ conflicts=('libbitcoin-node')
 pkgver() {
   cd ${pkgname%-git}
   git log -1 --format="%cd" --date=short | sed "s|-||g"
+}
+
+prepare() {
+  cd ${pkgname%-git}
+
+  msg2 'Configuring...'
+  cp -dpr --no-preserve=ownership data/bn.cfg data/bn.cfg.in
+  sed -i \
+    -e 's@^directory.*@directory = /srv/bn/db@' \
+    -e 's@^debug_file.*@debug_file = /var/log/bn/debug.log@' \
+    -e 's@^error_file.*@error_file = /var/log/bn/error.log@' \
+    -e 's@^hosts_file.*@hosts_file = /etc/bn/hosts.cache@' \
+    -e 's@^archive_directory.*@archive_directory = /var/log/bn@' \
+    data/bn.cfg.in
 }
 
 build() {
@@ -60,9 +74,11 @@ package() {
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/libbitcoin-node"
 
   msg2 'Installing...'
+  install -dm 700 "$pkgdir/etc/bn"
+  install -dm 755 "$pkgdir/srv/bn"
+  install -dm 755 "$pkgdir/var/log/bn"
   make DESTDIR="$pkgdir" install
 
-  msg2 'Cleaning up pkgdir...'
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
-  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
+  msg2 'Installing conf...'
+  install -Dm 600 data/bn.cfg.in "$pkgdir/etc/bn/bn.cfg"
 }
