@@ -73,7 +73,7 @@ package() {
   install -d -m755 $pkgdir/usr/bin
   ln -s /opt/$pkgname/bin/qgis "$pkgdir/usr/bin/qgis-git"
 
-  nonres='384x384|60x60'
+  nonres='1024x1024|384x384|60x60'
   
   # install desktop files and icons
   install -Dm644 debian/qgis.desktop -t "$pkgdir/usr/share/applications/"
