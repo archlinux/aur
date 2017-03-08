@@ -1,7 +1,7 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 # Contributor: Stefan J. Betz <info@stefan-betz.net>
 pkgname='pius'
-pkgver='2.2.3'
+pkgver='2.2.4'
 pkgrel=1
 pkgdesc='PGP Individual UID Signer (PIUS)'
 arch=('any')
@@ -13,8 +13,8 @@ optdepends=('python2-pexpect: interactive mode support')
 source=("https://github.com/jaymzh/pius/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2"
         "https://github.com/jaymzh/pius/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2.asc")
 validpgpkeys=('121BDA2D4ACB63616B367A0E58E11BB1E414D9AD')
-sha256sums=('666a5975df63080fbba4e65581ef71429544d81c612431f7856953a3ab7dc047'
-         'SKIP')
+sha256sums=('96500c7e2ae47a41b97209b0e709f71dedc54fb01375f54dc00bbbc66f04ec51'
+            'SKIP')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
