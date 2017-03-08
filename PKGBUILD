@@ -1,7 +1,7 @@
 # Maintainer: shimi <shimi.chen@gmail.com>
 # Contributor: Marios Abatis <marios.archlinux@gmail.com>
 pkgname=gnome-chemistry-utils
-pkgver=0.14.12
+pkgver=0.14.16
 _majorver=$(echo ${pkgver}|cut -c1-4)
 pkgrel=1
 pkgdesc="Gnome Chemistry Utilities (gcu). Includes gchempaint, a tool to draw molecules."
