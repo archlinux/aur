@@ -1,7 +1,7 @@
 # Maintainer: Peter Ivanov <ivanovp@gmail.com>
 
 pkgname=mphidflash
-pkgver=20150703
+pkgver=20160616
 pkgrel=1
 pkgdesc="Flash utility for Microchip PIC microcontrollers with USB HID-Bootloader"
 arch=("i686" "x86_64")
@@ -14,7 +14,7 @@ source=("$pkgname::git+https://github.com/ApertureLabsLtd/mphidflash")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$pkgname"
   git log -1 --format="%cd" --date=short | tr -d '-'
 }
 
