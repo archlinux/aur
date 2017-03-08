@@ -5,7 +5,6 @@ pkgbase = trello-bin
 	url = https://github.com/danielchatfield/trello-desktop
 	arch = any
 	license = MIT
-	depends = electron
 	provides = trello
 	conflicts = trello
 	noextract = trello.zip

@@ -6,10 +6,10 @@ pkgdesc="Unofficial Trello Desktop app"
 arch=(any)
 url="https://github.com/danielchatfield/trello-desktop"
 license=('MIT')
-depends=("electron")
+depends=()
 makedepends=()
-provides=("trello")
-conflicts=("trello")
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}.zip::https://github.com/danielchatfield/${pkgname%-bin}-desktop/releases/download/v${pkgver}/Trello-linux-${pkgver}.zip"
 		"${pkgname%-bin}.desktop"
 		"${pkgname%-bin}.png")
@@ -21,12 +21,12 @@ noextract=("${pkgname%-bin}.zip")
 package() {
 	cd "${srcdir}"
 
-	install -m755 -d "${pkgdir}/opt/trello/"
-	unzip "${srcdir}/${pkgname%-bin}.zip" -d "${pkgdir}/opt/trello/"
+	install -m755 -d "${pkgdir}/opt/${pkgname%-bin}/"
+	unzip "${srcdir}/${pkgname%-bin}.zip" -d "${pkgdir}/opt/${pkgname%-bin}/"
 	install -m755 -d "${pkgdir}/usr/bin/"
-	ln -s "/opt/trello/Trello" "${pkgdir}/usr/bin/trello"
+	ln -s "/opt/${pkgname%-bin}/Trello" "${pkgdir}/usr/bin/${pkgname%-bin}"
 	install -m755 -d "${pkgdir}/usr/share/licenses/"
-	ln -s "/opt/trello/LICENSE" "${pkgdir}/usr/share/licenses/LICENSE"
+	ln -s "/opt/${pkgname%-bin}/LICENSE" "${pkgdir}/usr/share/licenses/LICENSE"
 	install -Dm0644 "${srcdir}/${pkgname%-bin}.desktop"	"${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 	#convert "${srcdir}/resources/app/static/Icon.ico" "${srcdir}/../${pkgname%-bin}.png"
 	install -Dm0644 "${srcdir}/${pkgname%-bin}.png"		"${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
