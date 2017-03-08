@@ -5,24 +5,21 @@
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 
-# build from head of release branch as bug fix releases are rare
-
 # Modifications to Use Git Master Source
 # ======================================
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
-#    * This PKGFILE as closely as possible matches core's binutils 2.25.1-3
-#    * Core's binutils 2.25.1-3 binutils-e9c1bdad.patch is omitted
-#       * It is git commit e9c1bdad
+#    * This PKGFILE as closely as possible matches core's binutils 2.27-1
 #    * All namcap warnings and errors are identical, other than:
 #       * Warning zlib is no longer a dependency
 #          * Siding with caution, leaving it as a dependency
 #       * Warning libraries libopcodes and libbfd are uninstalled dependencies
-#          * It's hardcoded to look for a version in format 2.25.51.20150705.so, rather than 2.25.r842222.533edc1
+#          * This is referencing itself, and the -git version is not installed in a chroot build because binutils is already installed, and it defaults to 'no' for the conflict
+#          * It's hardcoded to look for a version in format 2.28.51.20170308.so, rather than 2.28.r89832.15c22686d0
 #             * .51 is binutils' designation for their post-release development branch
 
 pkgname=binutils-git
 _pkgname=binutils-gdb
-pkgver=2.26.r87884.50c1cbe
+pkgver=2.28.r89832.15c22686d0
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (git master developmental version)"
 arch=('i686' 'x86_64')
@@ -30,7 +27,7 @@ url="http://www.gnu.org/software/binutils/"
 license=('GPL')
 provides='binutils=${pkgver}'
 groups=('base-devel')
-depends=('glibc>=2.23' 'zlib')
+depends=('glibc>=2.24' 'zlib')
 makedepends=('git')
 checkdepends=('dejagnu' 'bc')
 provides=('binutils')
@@ -57,13 +54,19 @@ prepare() {
 build() {
   cd ${srcdir}/binutils-build
 
-  ${srcdir}/binutils-gdb/configure --prefix=/usr \
+  ${srcdir}/binutils-gdb/configure \
+    --prefix=/usr \
     --with-lib-path=/usr/lib:/usr/local/lib \
     --with-bugurl=https://bugs.archlinux.org/ \
-    --enable-threads --enable-shared --with-pic \
-    --enable-ld=default --enable-gold --enable-plugins \
+    --enable-threads \
+    --enable-shared \
+    --with-pic \
+    --enable-ld=default \
+    --enable-gold \
+    --enable-plugins \
     --enable-deterministic-archives \
-    --disable-werror --disable-gdb
+    --disable-werror \
+    --disable-gdb
 
   # check the host environment and makes sure all the necessary tools are available
   make configure-host
