@@ -11,22 +11,21 @@
 
 pkgbase=linux-xanmod
 _srcname=linux
-_tag=4.10.0-xanmod2
-pkgver=4.10.0
-pkgrel=2
-arch=('i686' 'x86_64')
+_tag=4.10.1-xanmod3
+pkgver=4.10.1
+pkgrel=3
+arch=('x86_64')
 url="http://www.xanmod.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
 source=("git+https://github.com/xanmod/linux.git#tag=$_tag"
         # the main kernel config files
-        'config' 'config.x86_64'
+        'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'
-            'becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc'
-            '513fc2ffb2bb77b469fa1941b08f60bdd356853e33b6276064fe7c171e7ac2f5'
+            '965f77959483e21a04d51c94d0336873d3c46cb74d52b93964d611d49a8909f1'
             '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7')
 
 _kernelname=${pkgbase#linux}
