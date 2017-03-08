@@ -48,8 +48,8 @@ package() {
 	patch -p0 -i $startdir/arch_cover.patch
 	python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 
-	install -Dpv --mode=-x $startdir/pulseaudio-dlna.service $pkgdir/usr/lib/systemd/user/pulseaudio-dlna.service
-	install -Dpv --mode=-x $startdir/distribution-arch.png $pkgdir/usr/lib/python2.7/site-packages/pulseaudio_dlna/images
+	install -Dpv --mode=644 $startdir/pulseaudio-dlna.service $pkgdir/usr/lib/systemd/user/pulseaudio-dlna.service
+	install -Dpv --mode=644 $startdir/distribution-arch.png $pkgdir/usr/lib/python2.7/site-packages/pulseaudio_dlna/images
 }
 
 post_install() { systemctl --user daemon-reload; }
