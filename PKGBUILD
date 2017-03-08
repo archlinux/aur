@@ -2,7 +2,7 @@
 # vim: set ts=2 sw=2 et ft=sh:
 
 pkgname=qutebrowser-git
-pkgver=r11411.3cc4f6912
+pkgver=0.10.1.r74.gdfb4374ae
 pkgrel=1
 pkgdesc="A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit"
 arch=(any)
@@ -31,7 +31,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/qutebrowser"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # Minor releases are not part of the master branch
+  _tag=$(git tag --sort=v:refname | tail -n1)
+  printf '%s.r%s.g%s' "${_tag#v}" "$(git rev-list "$_tag"..HEAD --count)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
