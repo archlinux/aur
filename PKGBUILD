@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-node-git
 pkgver=20170307
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Full Node Library"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -62,9 +62,15 @@ build() {
     --sharedstatedir=/usr/share/libbitcoin-node \
     --localstatedir=/var/lib/libbitcoin-node \
     --with-bash-completiondir=/usr/share/bash-completion/completions \
-    --with-gnu-ld \
-    --without-tests
+    --with-gnu-ld
   make -j$(($(nproc)/2))
+}
+
+check() {
+  cd ${pkgname%-git}
+
+  msg2 'Testing...'
+  make -j$(($(nproc)/2)) check
 }
 
 package() {
