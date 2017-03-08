@@ -1,6 +1,6 @@
 pkgbase = lutris
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.4.4.1
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://lutris.net/
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = lutris
 	depends = xdg-user-dirs
 	optdepends = python-evdev: Detecting connected joypads.
 	optdepends = python-pyinotify: Enhanced Steam integration.
-	source = https://lutris.net/releases/lutris_0.4.4.1.tar.xz
-	sha256sums = 203d24fdbb2f40e02e95e8f7b9c27701b8bfd9d25909ea149d702a18477b8485
+	source = https://lutris.net/releases/lutris_0.4.5.tar.xz
+	sha256sums = e8e25a3cb6d74a6571a402fdca03add18f5024f3bcc353d17772c009108a66d8
 
 pkgname = lutris
 
