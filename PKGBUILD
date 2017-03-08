@@ -4,7 +4,7 @@
 
 pkgname=i2pd-git
 _pkgname=i2pd
-pkgver=2.11.0.r209.g040585bf
+pkgver=2.12.0.r49.ga8196d1f
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64' 'armv7h')
