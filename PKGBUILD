@@ -4,10 +4,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=3.0.0v20170221
+pkgver=3.0.0v20170307
 _pkgver=3.0.0
-_snapshot_=20170221
-_snapver_=0236
+_snapshot_=20170307
+_snapver_=0243
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot"
@@ -76,10 +76,9 @@ build() {
   sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype/freetype.c
 	# Config
 	[ ${CARCH} = 'x86_64' ] && CXXFLAGS="$CXXFLAGS -fPIC"
-  CFLAGS+=" -I/usr/include/samba-4.0" CPPFLAGS+=" -I/usr/include/samba-4.0" CXXFLAGS+=" -std=gnu++98" \
+  CFLAGS+=" -I/usr/include/samba-4.0" CPPFLAGS+=" -I/usr/include/samba-4.0" CXXFLAGS+=" -std=gnu++11" \
 	./configure --prefix=/usr \
 				--sysconfdir=/etc \
-        --enable-qt \
 				--disable-rpath \
 				--enable-faad \
 				--enable-nls \
@@ -92,7 +91,11 @@ build() {
 				--enable-vcdx \
 				--enable-upnp \
 				--enable-opus \
-				--enable-sftp
+				--enable-sftp \
+        --enable-fdkaac \
+        --enable-merge-ffmpeg \
+
+
 
 	make -i
 }
@@ -110,6 +113,6 @@ package() {
   install -Dm644 "$srcdir"/update-vlc-plugin-cache.hook "$pkgdir"/usr/share/libalpm/hooks/update-vlc-plugin-cache.hook
 }
 
-sha1sums=('26c93b44f2cd6acb4eb8beded3e35c6729ac7681'
-          'c3a35ba4dbd6c8e4e5b032664f50b9f0dcf579ee'
-          '5d7dba23756ff577a90b8631b187fbeac1f94e17')
+sha256sums=('1774d1d22d89b0d6fb13cc67c231a85a279841d5788f5edbbc3e8f6719c8c22e'
+            'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
+            'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa')
