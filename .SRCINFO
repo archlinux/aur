@@ -1,0 +1,36 @@
+pkgbase = dotnet
+	pkgdesc = Provides the .NET core shared framework, i.e. coreclr and corefx.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://www.microsoft.com/net/core
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	makedepends = clang
+	makedepends = llvm
+	makedepends = gettext
+	depends = lldb
+	depends = libunwind
+	depends = icu
+	depends = lttng-ust
+	depends = openssl
+	depends = curl
+	provides = dotnet=1.1.1
+	conflicts = dotnet-bin
+	options = staticlibs
+	source = coreclr-1.1.1.tar.gz::https://github.com/dotnet/coreclr/archive/v1.1.1.tar.gz
+	source = corefx-1.1.1.tar.gz::https://github.com/dotnet/corefx/archive/v1.1.1.tar.gz
+	source = dotnet-1.1.1.tar.gz::https://go.microsoft.com/fwlink/?LinkID=843446
+	source = llvm-39-github-pull-8311.patch
+	source = llvm-39-move.patch
+	source = lttng-uts-40.patch
+	sha256sums = 450ffcc9a68eef2e157419d4cc354deb618f80d3f1816fd0c8c99460718dbd85
+	sha256sums = 83c37233ebe4d37f7c7ff5c7a91c8242704a6526c27c4c59a4967ad67e634c2e
+	sha256sums = 828af612b3e691f27d93153c3c7fd561e041535e907e9823f206ccab51030ecf
+	sha256sums = 581d6484626bbae820feb19d0613955fea333c025fb06d43a731a3db776686f7
+	sha256sums = 84a0e56d00fd2f3f9f82b7d017652f03d4e7f80c6968d7fa1274f6e46af0ff3d
+	sha256sums = d7c6bbc24e8464dcfb4fd86cb76fa3a55f4822f5e8196e41a2c39650432aa401
+
+pkgname = dotnet
+

@@ -1,0 +1,180 @@
+From 9f4bf341ad236df7d16bbdba0c4111393ea141d2 Mon Sep 17 00:00:00 2001
+From: Jan Vorlicek <janvorli@microsoft.com>
+Date: Sun, 27 Nov 2016 05:34:03 +0100
+Subject: [PATCH] Fix building CoreCLR with Clang 3.9 (#8311)
+
+There were few constructs that Clang 3.9 didn't like due to its strict
+C++ standard conformance rules.
+---
+ src/debug/daccess/dacdbiimpl.cpp              | 2 +-
+ src/debug/di/rsmain.cpp                       | 2 ++
+ src/debug/di/rspriv.h                         | 2 +-
+ src/debug/ee/debugger.cpp                     | 3 +++
+ src/debug/ee/debugger.h                       | 4 ++--
+ src/debug/ildbsymlib/symwrite.h               | 3 ++-
+ src/debug/inc/dacdbiinterface.h               | 2 +-
+ src/pal/src/exception/seh.cpp                 | 2 +-
+ tests/src/Common/Platform/platformdefines.cpp | 2 +-
+ tests/src/Common/Platform/platformdefines.h   | 2 +-
+ tests/src/Interop/common/types.h              | 4 ++--
+ 11 files changed, 17 insertions(+), 11 deletions(-)
+
+diff --git a/src/debug/daccess/dacdbiimpl.cpp b/src/debug/daccess/dacdbiimpl.cpp
+index 26e3d6c..ae266e8 100644
+--- a/src/debug/daccess/dacdbiimpl.cpp
++++ b/src/debug/daccess/dacdbiimpl.cpp
+@@ -90,7 +90,7 @@ IDacDbiInterface::IAllocator * g_pAllocator = NULL;
+ //
+ 
+ // Need a class to serve as a tag that we can use to overload New/Delete.
+-#define forDbi (*(forDbiWorker *)NULL)
++forDbiWorker forDbi;
+ 
+ void * operator new(size_t lenBytes, const forDbiWorker &)
+ {
+diff --git a/src/debug/di/rsmain.cpp b/src/debug/di/rsmain.cpp
+index b568575..0f57787 100644
+--- a/src/debug/di/rsmain.cpp
++++ b/src/debug/di/rsmain.cpp
+@@ -40,6 +40,8 @@
+ RSDebuggingInfo g_RSDebuggingInfo_OutOfProc = {0 }; // set to NULL
+ RSDebuggingInfo * g_pRSDebuggingInfo = &g_RSDebuggingInfo_OutOfProc;
+ 
++// The following instances are used for invoking overloaded new/delete
++forDbiWorker forDbi;
+ 
+ #ifdef _DEBUG
+ // For logs, we can print the string name for the debug codes.
+diff --git a/src/debug/di/rspriv.h b/src/debug/di/rspriv.h
+index bc0ea59..18920ad 100644
+--- a/src/debug/di/rspriv.h
++++ b/src/debug/di/rspriv.h
+@@ -177,7 +177,7 @@ private:
+     USHORT m_usPort;
+ };
+ 
+-#define forDbi (*(forDbiWorker *)NULL)
++extern forDbiWorker forDbi;
+ 
+ // for dbi we just default to new, but we need to have these defined for both dac and dbi
+ inline void * operator new(size_t lenBytes, const forDbiWorker &)
+diff --git a/src/debug/ee/debugger.cpp b/src/debug/ee/debugger.cpp
+index a06811c..d67cb41 100644
+--- a/src/debug/ee/debugger.cpp
++++ b/src/debug/ee/debugger.cpp
+@@ -75,6 +75,9 @@ SVAL_IMPL_INIT(BOOL, Debugger, s_fCanChangeNgenFlags, TRUE);
+ 
+ bool g_EnableSIS = false;
+ 
++// The following instances are used for invoking overloaded new/delete
++InteropSafe interopsafe;
++InteropSafeExecutable interopsafeEXEC;
+ 
+ #ifndef DACCESS_COMPILE
+ 
+diff --git a/src/debug/ee/debugger.h b/src/debug/ee/debugger.h
+index 6368647..9cdf546 100644
+--- a/src/debug/ee/debugger.h
++++ b/src/debug/ee/debugger.h
+@@ -3512,10 +3512,10 @@ public:
+  * ------------------------------------------------------------------------ */
+ 
+ class InteropSafe {};
+-#define interopsafe (*(InteropSafe*)NULL)
++extern InteropSafe interopsafe;
+ 
+ class InteropSafeExecutable {};
+-#define interopsafeEXEC (*(InteropSafeExecutable*)NULL)
++extern InteropSafeExecutable interopsafeEXEC;
+ 
+ #ifndef DACCESS_COMPILE
+ inline void * __cdecl operator new(size_t n, const InteropSafe&)
+diff --git a/src/debug/ildbsymlib/symwrite.h b/src/debug/ildbsymlib/symwrite.h
+index 055b8ec..54ab11a 100644
+--- a/src/debug/ildbsymlib/symwrite.h
++++ b/src/debug/ildbsymlib/symwrite.h
+@@ -839,7 +839,8 @@ public:
+         {
+             // Help mitigate the impact of buffer overflow
+             // Fail fast with a null-reference AV
+-            return *(static_cast<T*>(0)) ;
++            volatile char* nullPointer = nullptr;
++            *nullPointer;
+         }
+         return m_array[ i ];
+     }
+diff --git a/src/debug/inc/dacdbiinterface.h b/src/debug/inc/dacdbiinterface.h
+index e61e240..569ccba 100644
+--- a/src/debug/inc/dacdbiinterface.h
++++ b/src/debug/inc/dacdbiinterface.h
+@@ -32,7 +32,7 @@
+ template<class T> void DeleteDbiMemory(T *p);
+ // Need a class to serve as a tag that we can use to overload New/Delete.
+ class forDbiWorker {};
+-#define forDbi (*(forDbiWorker *)NULL)
++extern forDbiWorker forDbi;
+ extern void * operator new(size_t lenBytes, const forDbiWorker &);
+ extern void * operator new[](size_t lenBytes, const forDbiWorker &);
+ extern void operator delete(void *p, const forDbiWorker &);
+diff --git a/src/pal/src/exception/seh.cpp b/src/pal/src/exception/seh.cpp
+index 473c490..ad09e02 100644
+--- a/src/pal/src/exception/seh.cpp
++++ b/src/pal/src/exception/seh.cpp
+@@ -274,7 +274,7 @@ SEHProcessException(PAL_SEHException* exception)
+                     {
+                         // The exception happened in the page right below the stack limit,
+                         // so it is a stack overflow
+-                        write(STDERR_FILENO, StackOverflowMessage, sizeof(StackOverflowMessage) - 1);
++                        (void)write(STDERR_FILENO, StackOverflowMessage, sizeof(StackOverflowMessage) - 1);
+                         PROCAbort();
+                     }
+                 }
+diff --git a/tests/src/Common/Platform/platformdefines.cpp b/tests/src/Common/Platform/platformdefines.cpp
+index 4bef170..82061ac 100644
+--- a/tests/src/Common/Platform/platformdefines.cpp
++++ b/tests/src/Common/Platform/platformdefines.cpp
+@@ -277,7 +277,7 @@ DWORD TP_GetFullPathName(LPWSTR fileName, DWORD nBufferLength, LPWSTR lpBuffer)
+ 	return GetFullPathNameW(fileName, nBufferLength, lpBuffer, NULL);
+ #else
+ 	char nativeFullPath[MAX_PATH];
+-	realpath(HackyConvertToSTR(fileName), nativeFullPath);
++	(void)realpath(HackyConvertToSTR(fileName), nativeFullPath);
+ 	LPWSTR fullPathForCLR = HackyConvertToWSTR(nativeFullPath);
+ 	wcscpy_s(lpBuffer, MAX_PATH, fullPathForCLR);
+ 	return wcslen(lpBuffer);
+diff --git a/tests/src/Common/Platform/platformdefines.h b/tests/src/Common/Platform/platformdefines.h
+index 49e8f88..c196b0c 100644
+--- a/tests/src/Common/Platform/platformdefines.h
++++ b/tests/src/Common/Platform/platformdefines.h
+@@ -87,7 +87,7 @@ typedef void* HMODULE;
+ typedef void* ULONG_PTR;
+ typedef unsigned error_t;
+ typedef void* LPVOID;
+-typedef char BYTE;
++typedef unsigned char BYTE;
+ typedef WCHAR OLECHAR;
+ #endif
+ 
+diff --git a/tests/src/Interop/common/types.h b/tests/src/Interop/common/types.h
+index 7d7f776..cb59c42 100755
+--- a/tests/src/Interop/common/types.h
++++ b/tests/src/Interop/common/types.h
+@@ -28,7 +28,7 @@ typedef void* HMODULE;
+ typedef void* ULONG_PTR;
+ typedef unsigned error_t;
+ typedef void* LPVOID;
+-typedef char BYTE;
++typedef unsigned char BYTE;
+ typedef WCHAR OLECHAR;
+ 
+ typedef unsigned int UINT_PTR;
+@@ -54,4 +54,4 @@ typedef int*  DWORD_PTR;
+ #define FALSE 0
+ #endif
+ 
+-#endif //_INTEROP_TYPES__H
+\ No newline at end of file
++#endif //_INTEROP_TYPES__H
+-- 
+2.10.2
+
