@@ -1,15 +1,15 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-client-git
-pkgver=20160723
+pkgver=20170306
 pkgrel=1
 pkgdesc="Bitcoin Client Protocol Library"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
          'icu'
-         'libbitcoin'
          'libbitcoin-protocol'
+         'libbitcoin-system'
          'libsecp256k1'
          'zeromq')
 makedepends=('autoconf'
@@ -59,8 +59,4 @@ package() {
 
   msg2 'Installing...'
   make DESTDIR="$pkgdir" install
-
-  msg2 'Cleaning up pkgdir...'
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
-  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
