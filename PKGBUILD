@@ -1,18 +1,17 @@
-# Maintainer: archtux <antonio dot arias99999 at gmail dot com>
+# Maintainer: shimi <shimi dot chen at gmail dot com>
 
 pkgname=sopcast-player
 pkgver=0.8.5
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI front-end for p2p TV sopcast"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/sopcast-player/"
+url="https://github.com/sopcast-player/sopcast-player"
 license=('GPL2')
 depends=('gtk2' 'hicolor-icon-theme' 'pygtk' 'sopcast' 'vlc')
 #options=('!makeflags')
 install=$pkgname.install
-source=(http://sopcast-player.googlecode.com/files/$pkgname-$pkgver.tar.gz)
+source=(https://github.com/sopcast-player/sopcast-player/files/465627/$pkgname-$pkgver.tar.gz)
 md5sums=('731e2f2a9c9af4ec4c92321fae9a2fea')
-
 prepare() {
   cd $srcdir/$pkgname
   # Python2 fix
