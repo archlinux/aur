@@ -11,7 +11,7 @@ arch=(i686 x86_64)
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 license=('MPL' 'GPL')
 _nsprver=4.13
-depends=("nspr>=${_nsprver}" 'sqlite' 'zlib' 'sh' 'p11-kit' 'nspr')
+depends=("nspr>=${_nsprver}" 'sqlite' 'zlib' 'sh' 'p11-kit')
 makedepends=('perl' 'python2' 'ninja' 'git' 'python2' 'mercurial' 'python2-setuptools' 'python2-virtualenv')
 options=('!strip' '!makeflags' 'staticlibs')
 source=("hg+https://hg.mozilla.org/projects/nss")
@@ -36,7 +36,7 @@ prepare() {
 build() {
   ln -s /usr/bin/python2 python
   cd nss
-  PATH=$PATH:$PWD/../python-env/bin/:$PWD/../ ./build.sh --opt --system-sqlite --system-nspr -v
+  PATH=$PATH:$PWD/../python-env/bin/:$PWD/../ ./build.sh --opt --system-sqlite --system-nspr
 }
 
 package() {

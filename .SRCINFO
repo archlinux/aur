@@ -20,7 +20,6 @@ pkgbase = nss-hg
 	depends = zlib
 	depends = sh
 	depends = p11-kit
-	depends = nspr
 	provides = nss
 	conflicts = nss
 	options = !strip
