@@ -1,7 +1,7 @@
 pkgbase = purevpn-openvpn
 	pkgdesc = OpenVPN hackery to add PureVPN to NetworkManager
-	pkgver = 2016.12.27
-	pkgrel = 3
+	pkgver = 2017.12.27
+	pkgrel = 4
 	url = https://www.purevpn.com/
 	install = purevpn-openvpn.install
 	arch = any

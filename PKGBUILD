@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=purevpn-openvpn
-pkgver=2016.12.27
-pkgrel=3
+pkgver=2017.12.27
+pkgrel=4
 pkgdesc='OpenVPN hackery to add PureVPN to NetworkManager'
 arch=('any')
 url='https://www.purevpn.com/'
@@ -63,7 +63,7 @@ package() {
 
   cd "${srcdir}"
 
-  install -dm755 "${pkgdir}"/etc/NetworkManager/system-connections
+  install -dm700 "${pkgdir}"/etc/NetworkManager/system-connections
   install -D -m 600 vpn-configs/system-connections/* "${pkgdir}"/etc/NetworkManager/system-connections
 
   install -dm755 "${pkgdir}"/etc/openvpn
