@@ -1,4 +1,6 @@
-# Maintainer: katoh <katoh_at_mikage.ne.jp>
+# Submitter: katoh <katoh_at_mikage.ne.jp>
+#
+#
 # translation
 # -------------------
 #
@@ -9,7 +11,7 @@
 
 pkgname=azpainter
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Painting software"
 arch=('i686' 'x86_64')
 url="http://azsky2.html.xdomain.jp/linux/azpainter/index.html"
@@ -17,9 +19,9 @@ license=('GPL3')
 depends=('hicolor-icon-theme' 'fontconfig' 'libjpeg-turbo' 'libxi')
 source=("https://osdn.net/dl/${pkgname}/${pkgname}-${pkgver}.tar.bz2" "ru.mtr" "en.mtr" "uk.mtr")
 sha256sums=('a6b0247dd98b6275edeeb1154623e590e5bfc8baffcde7a9ab0cef7ace27ebd3'
-            '8ade7f82d5be6189ba7d3e74b7eb831ca4bf5b834b49ccd3a1428eddcd1f2dac'
+            'f4e09e5de5fae7b94e9446b3a4ccb48e328ccc08ed4f22416d1bdb54d0111e8b'
             '3a58db606cc202dda10f85631cd365bd957d3e5bae2d34b740872ecb0cee30e9'
-            '3002eb71c2d78318982f8f539fffacbda06650756f3dd9fcf056a656ed63aa50')
+            '49ff02ab8eef82d93dd2d8a185080aba722bb34f9f46699268f286ecd97976b2')
 
 build() {
 	cd ${pkgname}-${pkgver}
