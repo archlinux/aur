@@ -1,17 +1,18 @@
 # $Id$
 # Maintainer: Franziskus Kiefer <arch@franziskuskiefer.de>
+# Contributor:
 
-pkgbase=nss-hg
+_pkgname=nss
 pkgname=nss-hg
-pkgver=r13176.146aaa22cf55
+pkgver=r13193.4b721b25ba05
 pkgrel=1
 pkgdesc="Mozilla Network Security Services"
 arch=(i686 x86_64)
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 license=('MPL' 'GPL')
 _nsprver=4.13
-depends=("nspr>=${_nsprver}" 'sqlite' 'zlib' 'sh' 'p11-kit')
-makedepends=('perl' 'python2')
+depends=("nspr>=${_nsprver}" 'sqlite' 'zlib' 'sh' 'p11-kit' 'nspr')
+makedepends=('perl' 'python2' 'ninja' 'git' 'python2' 'mercurial' 'python2-setuptools' 'python2-virtualenv')
 options=('!strip' '!makeflags' 'staticlibs')
 source=("hg+https://hg.mozilla.org/projects/nss")
 sha256sums=('SKIP')
@@ -24,13 +25,18 @@ pkgver() {
 }
 
 prepare() {
-  cd nss
+  git clone https://chromium.googlesource.com/external/gyp
+  python2 -m virtualenv python-env
+  cd gyp
+  ../python-env/bin/python setup.py install
+  cd ../nss
   hg up default
 }
 
 build() {
+  ln -s /usr/bin/python2 python
   cd nss
-  ./build.sh --opt --system-sqlite --system-nspr=/usr/include/nspr:/usr/lib
+  PATH=$PATH:$PWD/../python-env/bin/:$PWD/../ ./build.sh --opt --system-sqlite --system-nspr -v
 }
 
 package() {
@@ -66,7 +72,7 @@ package() {
 
   cd ../lib
   install -t "$pkgdir/usr/lib" *.so
-  install -t "$pkgdir/usr/lib" -m644 libcrmf.a *.chk
+  install -t "$pkgdir/usr/lib" -m644 *.chk
 
   cd ../../public/nss
   install -t "$pkgdir/usr/include/nss" -m644 *.h
