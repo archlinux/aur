@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core
-pkgver=0.13.2
-pkgrel=2
+pkgver=0.14.0
+pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('i686' 'x86_64')
 url="https://bitcoin.org"
@@ -23,7 +23,7 @@ source=(https://bitcoin.org/bin/bitcoin-core-$pkgver/bitcoin-$pkgver.tar.gz
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service)
-sha256sums=('621201189c0409cb17a5073278872dcdcfff1ea147ead6958b55e94416b896d7'
+sha256sums=('d743d4866a0d4c1457f81530c45258a8b6383d1cafc458eedcba8d01728a641e'
             'f581e8b24cb2b5d848b6a5e14b3f00f7b9efb5df66aaea8df05bbfb21665959a'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '5e45f2ceaeb7bfa60aeb66ca4167068191eb4358af03f95ac70fd96d9b006349'
@@ -59,10 +59,8 @@ package() {
   msg2 'Installing license...'
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%-core}"
 
-  # code commented out is missing from 0.13.2 release
-
-  # msg2 'Installing man pages...'
-  # install -Dm 644 doc/man/*.1 -t "$pkgdir/usr/share/man/man1"
+  msg2 'Installing man pages...'
+  install -Dm 644 doc/man/*.1 -t "$pkgdir/usr/share/man/man1"
 
   msg2 'Installing documentation...'
   install -dm 755 "$pkgdir/usr/share/doc/bitcoin"
@@ -87,9 +85,9 @@ package() {
   msg2 'Installing bitcoin.logrotate...'
   install -Dm 644 "$srcdir/bitcoin.logrotate" "$pkgdir/etc/logrotate.d/bitcoin"
 
-  # msg2 'Installing bash completion...'
-  # for _compl in bitcoin-cli bitcoin-tx bitcoind; do
-  #   install -Dm 644 "contrib/${_compl}.bash-completion" \
-  #     "$pkgdir/usr/share/bash-completion/completions/$_compl"
-  # done
+  msg2 'Installing bash completion...'
+  for _compl in bitcoin-cli bitcoin-tx bitcoind; do
+    install -Dm 644 "contrib/${_compl}.bash-completion" \
+      "$pkgdir/usr/share/bash-completion/completions/$_compl"
+  done
 }
