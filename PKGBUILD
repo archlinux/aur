@@ -3,7 +3,7 @@
 pkgname=qgis-git
 _pkgname=qgis
 pkgver=2.99
-pkgrel=6
+pkgrel=7
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Development master'
 url='http://qgis.org/'
 license=('GPL')
@@ -24,9 +24,12 @@ conflicts=('qgis')
 
 prepare() {
   cd $_pkgname
-
-  # Fixing shebang for .py files
-  # sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
+  
+  # Fix desktop file for /usr/bin/qgis-github
+  
+  sed -e 's/\/usr\/bin\/qgis/\/usr\/bin\/qgis-git/g' \
+  		-e 's/Icon=qgis/Icon=qgis-git/g' \
+  		-i debian/qgis.desktop
 
   # Remove mime types already defined by freedesktop.org
   sed -e '/type="image\/tiff"/,/<\/mime-type>/d' \
@@ -34,14 +37,6 @@ prepare() {
       -e '/type="image\/jp2"/,/<\/mime-type>/d' \
       -e '/type="application\/x-adobe-mif"/,/<\/mime-type>/d' \
       -i debian/qgis.xml
-
-  # Fix console.py for new pyqt build system
-  #sed -e '/from PyQt4.QtCore/ s/$/, QT_VERSION/' \
-  #    -e '/import pyqtconfig/d' \
-  #    -e 's/pyqtconfig.*qt_version/QT_VERSION/' \
-  #    -i python/console/console.py
-  
-  #sed -i 's/QWT_LIBRARY_NAMES qwt-qt5 qwt6-qt5/QWT_LIBRARY_NAMES qwt qwt-qt5 qwt6-qt5/'  cmake/FindQwt.cmake
 
   [[ -d build ]] || mkdir build
 }
@@ -77,16 +72,31 @@ package() {
   install -d -m755 $pkgdir/usr/bin
   ln -s /opt/$pkgname/bin/qgis "$pkgdir/usr/bin/qgis-git"
 
+  nonres='384x384|60x60'
+  
   # install desktop files and icons
   install -Dm644 debian/qgis.desktop -t "$pkgdir/usr/share/applications/"
-  for icon in qgis-icon{,-16x16,-60x60}; do
-    local _resolution="${icon##*-}"; [[ "$_resolution" == "icon" ]] && _resolution="512x512"
-    install -Dm644 images/icons/$icon.png "$pkgdir/usr/share/icons/hicolor/$_resolution/apps/${icon%%-*}.png"
+  for resolution in `ls /usr/share/icons/hicolor/|egrep '[0-9]'|egrep -ve $nonres`; do
+    install -Dm644 debian/icons/qgis-icon${resolution}.png "$pkgdir/usr/share/icons/hicolor/${resolution}/apps/$pkgname.png"
   done
-
+	install -Dm644 images/icons/qgis_icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
+	
   # install mime information and icon
+  
   install -Dm644 debian/qgis.xml "$pkgdir/usr/share/mime/packages/qgis.xml"
-  install -Dm644 images/icons/qgis-mime-icon.png "$pkgdir/usr/share/icons/hicolor/128x128/mimetypes/qgis-mime.png"
+  for resolution in `ls /usr/share/icons/hicolor/|egrep '[0-9]'|egrep -ve $nonres`; do
+	  install -Dm644 debian/icons/qgis-mime-icon${resolution}.png "$pkgdir/usr/share/icons/hicolor/${resolution}/mimetypes/qgis-mime.png"
+	done
+	install -Dm644 images/icons/qgis_mime_icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/mimetypes/qgis-mime.svg"
+	  
+	for type in qgs qlr qml qpt; do
+		for resolution in `ls /usr/share/icons/hicolor/|egrep '[0-9]'|egrep -ve $nonres`; do
+	  	install -Dm644 debian/icons/qgis-${type}${resolution}.png "$pkgdir/usr/share/icons/hicolor/${resolution}/mimetypes/qgis-$type.png"
+		done
+	done
+	for type in asc ddf dem dt0 dxf gml img mime mldata qgs qlr qml qpt shp sqlite; do
+    install -Dm644 images/icons/qgis_${type}_icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/mimetypes/qgis-$type.svg"
+  done
 
   # compile python files, since the cmake option doesn't seem to account for DESTDIR
   python -m compileall -q "$pkgdir"
