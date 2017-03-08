@@ -1,0 +1,22 @@
+pkgbase = trello-git
+	pkgdesc = Unofficial Trello Desktop app
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/danielchatfield/trello-desktop
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = asar
+	makedepends = npm
+	depends = electron
+	provides = trello-git
+	conflicts = trello-git
+	source = trello::git+https://github.com/danielchatfield/trello-desktop.git
+	source = trello.desktop
+	source = trello.sh
+	md5sums = SKIP
+	md5sums = c636a75cff12fb5f706c96fcf00d0ae9
+	md5sums = 9137be0a6adff89a3e545341f2bfc37c
+
+pkgname = trello-git
+
