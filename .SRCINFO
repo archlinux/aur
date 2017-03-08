@@ -1,10 +1,10 @@
 pkgbase = python-gdbgui
 	pkgdesc = browser-based gdb frontend using Flask and JavaScript to visually debug C, C++, Go, or Rust
-	pkgver = 0.7.4.4
+	pkgver = 0.7.4.5
 	pkgrel = 1
 	url = https://github.com/cs01/gdbgui
 	arch = any
-	license = unknown
+	license = custom
 	makedepends = python-setuptools
 	depends = python
 	depends = python
@@ -14,10 +14,11 @@ pkgbase = python-gdbgui
 	depends = python-pygdbmi
 	depends = python-pypugjs
 	depends = python-enum-compat
-	source = https://files.pythonhosted.org/packages/source/g/gdbgui/gdbgui-0.7.4.4.tar.gz
-	md5sums = d3f6a8aecb792152399372b8c264975b
+	source = https://files.pythonhosted.org/packages/source/g/gdbgui/gdbgui-0.7.4.5.tar.gz
+	md5sums = 43944d93c843117b3f9414d0e895a364
 
 pkgname = python-gdbgui
+	license = custom
 	depends = python
 	depends = python
 	depends = python-eventlet
