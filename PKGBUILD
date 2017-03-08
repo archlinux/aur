@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-client-git
 pkgver=20170306
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Client Protocol Library"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -46,9 +46,15 @@ build() {
     --sharedstatedir=/usr/share/libbitcoin-client \
     --localstatedir=/var/lib/libbitcoin-client \
     --with-gnu-ld \
-    --without-examples \
-    --without-tests
+    --without-examples
   make -j$(($(nproc)/2))
+}
+
+check() {
+  cd ${pkgname%-git}
+
+  msg2 'Testing...'
+  make -j$(($(nproc)/2)) check
 }
 
 package() {
