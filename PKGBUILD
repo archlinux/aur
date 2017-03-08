@@ -6,7 +6,7 @@
 _name=firefox
 _channel=developer
 pkgname="${_name}-${_channel}-fr"
-pkgver=53.0a2
+pkgver=54.0a2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, developer build - French"
 url="http://www.mozilla.org/firefox/developer"
@@ -16,7 +16,7 @@ _file="${_name}-${pkgver}.fr.linux-${CARCH}"
 _srcurl="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-aurora-l10n"
 source=("${_srcurl}/${_file}.tar.bz2" "firefox-$_channel.desktop" "vendor.js")
 sha512sums=('SKIP'
-            '627c98b91e4f11ead1f742e2fda73664ec2b3e4a97b5560b2531ed6730765ab656f9084ad4eb8915fe31d56b6294059339fd9158ef3377aa317404134a770f77'
+            '46d1965a486bec2a533b4642c5190245abf1d58649aba246917ef68abe76b3b789c5aec8df77687dc2bfdaeb146b2ae81d42bfd0b4dacf3b5d6912e92a5948e4'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
 depends=('gtk3' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib'
 	 'alsa-lib' 'dbus-glib' 'libnotify' 'desktop-file-utils' 'hicolor-icon-theme'
@@ -33,4 +33,3 @@ package() {
   install -m644 $srcdir/firefox/browser/icons/mozicon128.png $pkgdir/usr/share/pixmaps/${_name}-${_channel}-icon.png
   install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
 }
- 
