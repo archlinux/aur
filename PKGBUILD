@@ -11,7 +11,7 @@ makedepends=('cmake' 'kodi-platform' 'git')
 depends=("kodi")
 source=("https://github.com/janbar/pvr.mythtv/archive/${pkgver}.tar.gz"
         "https://github.com/xbmc/xbmc/archive/17.0-Krypton.tar.gz")
-sha256sums=('240f37c5a7b6c3e97580464e3a212b175ef116eddbadb1ea792aab6705b067ce'
+sha256sums=('30b6a20f846f0f0cc14c2347efbf3b72162c876daed53a3731d3f975d370765e'
             '4bfffa2493973ae15ab1d922632c09a2583908d6140bc4f58ec8f9314e4f6545')
 
 build() {
