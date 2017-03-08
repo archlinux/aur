@@ -1,0 +1,42 @@
+pkgbase = dotnet-lts
+	pkgdesc = Provides the Long Term Service (LTS) versions of .NET core shared framework, i.e. coreclr and corefx.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://www.microsoft.com/net/core
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	makedepends = clang
+	makedepends = llvm
+	makedepends = gettext
+	depends = lldb
+	depends = libunwind
+	depends = icu
+	depends = lttng-ust
+	depends = openssl
+	depends = curl
+	provides = dotnet=1.0.4
+	conflicts = dotnet-bin
+	options = staticlibs
+	source = coreclr-1.0.4.tar.gz::https://github.com/dotnet/coreclr/archive/v1.0.4.tar.gz
+	source = corefx-1.0.4.tar.gz::https://github.com/dotnet/corefx/archive/v1.0.4.tar.gz
+	source = dotnet-lts-1.0.4.tar.gz::https://go.microsoft.com/fwlink/?LinkID=843462
+	source = llvm-39-github-pull-8311.patch
+	source = llvm-39-move.patch
+	source = lttng-uts-40.patch
+	source = no-libstdcpp-wrappers-for-stdlib.patch
+	source = fix-dtor-call.patch
+	source = fix-readdir-on-glibc-2.24.patch
+	sha256sums = b49ba545fe632dfd5426669ca3300009a5ffd1ccf3c1cf82303dcf44044db33d
+	sha256sums = 4af6af035840072916c081976222a9f1780a0e797959a6478cefb4f7f837db5c
+	sha256sums = 4a59413a0b2ba8914ceecb4a505dae4f93ede10cae4246d714178b11cbe32a2f
+	sha256sums = 581d6484626bbae820feb19d0613955fea333c025fb06d43a731a3db776686f7
+	sha256sums = 84a0e56d00fd2f3f9f82b7d017652f03d4e7f80c6968d7fa1274f6e46af0ff3d
+	sha256sums = d7c6bbc24e8464dcfb4fd86cb76fa3a55f4822f5e8196e41a2c39650432aa401
+	sha256sums = 8e97cb867f958170fe3613921965ef1c56d282e22c5ba8ff6687ed52b9fabf01
+	sha256sums = 987d68c4ca5c5839773df292c76e2e044bc628118b96f1c80fcca55122cea1cb
+	sha256sums = 48005c5afda97770db17265285348cc059d414fff58354b690a4827fa755fc73
+
+pkgname = dotnet-lts
+
