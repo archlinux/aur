@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=chrome-token-signing
 pkgver=1.0.4.464
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Estonian ID Card signing for Chrome. Chrome extension and native messaging client."
 arch=('x86_64' 'i686')
@@ -26,12 +26,15 @@ package() {
 	
 	mkdir -p $pkgdir/etc/{opt/chrome,chrome,chromium,chromium-browser}/native-messaging-hosts
 	mkdir -p $pkgdir/usr/share/{chrome,google-chrome,chromium,chromium-browser}/extensions/
+	mkdir -p $pkgdir/usr/lib/mozilla/native-messaging-hosts/
 	
 	ln -sf "/usr/share/$pkgname/ee.ria.esteid.json" "$pkgdir/etc/chrome/native-messaging-hosts/ee.ria.esteid.json"
 	ln -sf "/usr/share/$pkgname/ee.ria.esteid.json" "$pkgdir/etc/chromium/native-messaging-hosts/ee.ria.esteid.json"
 	ln -sf "/usr/share/$pkgname/ee.ria.esteid.json" "$pkgdir/etc/chromium-browser/native-messaging-hosts/ee.ria.esteid.json"
 	ln -sf "/usr/share/$pkgname/ee.ria.esteid.json" "$pkgdir/etc/opt/chrome/native-messaging-hosts/ee.ria.esteid.json"
-	
+	#firefox
+	ln -sf "/usr/share/$pkgname/ee.ria.esteid.json" "$pkgdir/usr/lib/mozilla/native-messaging-hosts/ee.ria.esteid.json"
+	install -Dm644 "{443830f0-1fff-4f9a-aa1e-444bafbc7319}.xpi" "$pkgdir/usr/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/{443830f0-1fff-4f9a-aa1e-444bafbc7319}.xpi"
 	ln -sf "/usr/share/$pkgname/ckjefchnfjhjfedoccjbhjpbncimppeg.json" $pkgdir/usr/share/chrome/extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json
 	ln -sf "/usr/share/$pkgname/ckjefchnfjhjfedoccjbhjpbncimppeg.json" $pkgdir/usr/share/google-chrome/extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json
 	ln -sf "/usr/share/$pkgname/ckjefchnfjhjfedoccjbhjpbncimppeg.json" $pkgdir/usr/share/chromium/extensions/ckjefchnfjhjfedoccjbhjpbncimppeg.json
