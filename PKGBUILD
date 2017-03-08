@@ -2,7 +2,7 @@
 
 pkgname=sedutil
 pkgver=1.12
-pkgrel=3
+pkgrel=4
 pkgdesc="TCG OPAL 2.00 SED Management Program"
 arch=('i686' 'x86_64')
 url="https://github.com/Drive-Trust-Alliance/sedutil"
@@ -45,19 +45,25 @@ prepare() {
 }
 
 build() {
+    _release="Release_$CARCH"
     cd "${srcdir}/"
     gcc -Wall -o getpasswd getpasswd.c
+
     cd "${srcdir}/${pkgname}-${pkgver}/linux/CLI/"
-    make CONF=Release_$CARCH build
+    make CONF="${_release}" build
+
+    [[ "$CARCH" == "i686" ]] && _release="Release"
     cd "${srcdir}/${pkgname}-${pkgver}/LinuxPBA/"
-    make CONF=Release_$CARCH build
+    make CONF="${_release}" build
 }
 
 package() {
+    _release="Release_$CARCH"
     cd "${srcdir}/${pkgname}-${pkgver}/"
-    install -Dm755 "linux/CLI/dist/Release_$CARCH/GNU-Linux/sedutil-cli" "${pkgdir}/usr/bin/sedutil-cli"
+    install -Dm755 "linux/CLI/dist/${_release}/GNU-Linux/sedutil-cli" "${pkgdir}/usr/bin/sedutil-cli"
     install -Dm644 "linux/PSIDRevert_LINUX.txt" "${pkgdir}/usr/share/doc/${pkgname}/PSIDRevert.txt"
-    install -Dm755 "LinuxPBA/dist/Release_$CARCH/GNU-Linux/linuxpba" "${pkgdir}/usr/bin/linuxpba"
+    [[ "$CARCH" == "i686" ]] && _release="Release"
+    install -Dm755 "LinuxPBA/dist/${_release}/GNU-Linux/linuxpba" "${pkgdir}/usr/bin/linuxpba"
     install -Dm755 "${srcdir}/mklinuxpba-initramfs" "${pkgdir}/usr/bin/mklinuxpba-initramfs"
     install -Dm755 "${srcdir}/mklinuxpba-diskimg" "${pkgdir}/usr/bin/mklinuxpba-diskimg"
     install -Dm755 "${srcdir}/linuxpba-arch" "${pkgdir}/usr/bin/linuxpba-arch"
