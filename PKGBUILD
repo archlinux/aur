@@ -18,8 +18,7 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'upower: Battery API')
 provides=("firefox=$pkgver")
 install=$pkgname.install
-source=("$pkgname.desktop"
-        "$pkgname-safe.desktop")
+source=("$pkgname.desktop")
 source_i686=("https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-i686/en-US/firefox-$pkgver.tar.bz2")
 source_x86_64=("https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-x86_64/en-US/firefox-$pkgver.tar.bz2")
 # RC
