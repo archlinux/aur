@@ -12,7 +12,6 @@
 _use_clang=0     # Use clang compiler (downloaded binaries from google). Results in faster build and smaller chromium.
 _use_ccache=0    # Use ccache when build.
 _use_pax=0       # Set 1 to change PaX permisions in executables NOTE: only use if use PaX environment.
-_use_gtk3=1      # If set 1, then build with GTK3 support, if set 0, then build with GTK2.
 _debug_mode=0    # Build in debug mode.
 _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some graphic cards, for example, NVIDIA
 
@@ -20,7 +19,7 @@ _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some grap
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=58.0.3013.3
+pkgver=58.0.3029.6
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -45,6 +44,7 @@ depends=('jsoncpp'
 #          'libevent'
          'ffmpeg'
 #          'icu' # https://crbug.com/678661
+         'gtk3'
          )
 makedepends=('libexif'
              'elfutils'
@@ -75,6 +75,8 @@ optdepends=('libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users
             #
             'libexif: Need for read EXIF metadata'
             'ttf-font: For some typography'
+            #
+            'libappindicator-gtk3: Needed for show systray icon in the panel'
             )
 source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
@@ -83,15 +85,19 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'BUILD.gn'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r4.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r1.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r2.patch'
         # Misc Patches
         "enable_vaapi_on_linux_${pkgver}.diff::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/f02f22cdc0923ab18c44dc46dda0942e078b870d/debian/patches/enable_vaapi_on_linux.diff"
         "specify-max-resolution_${pkgver}.patch::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/f02f22cdc0923ab18c44dc46dda0942e078b870d/debian/patches/specify-max-resolution.patch"
-        "fix-gl-image_${pkgver}.patch::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/f02f22cdc0923ab18c44dc46dda0942e078b870d/debian/patches/fix-gl-image.patch"
         'minizip.patch'
+        'vaapi_patch_r0.patch'
         # Patch from crbug (chromium bugtracker)
         'chromium-widevine-r1.patch'
-        'fix_668446_r1.diff'
+        'https://codereview.chromium.org/download/issue2717263003_80001.diff'
+        'https://codereview.chromium.org/download/issue2715453002_100001.diff'
+        'https://codereview.chromium.org/download/issue2697413002_160001.diff'
+        'https://codereview.chromium.org/download/issue2712533002_40001.diff'
+        'https://codereview.chromium.org/download/issue2697253002_60001.diff'
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-55.0.2873.0.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -100,15 +106,19 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'c7d9974834fc3803b5f1a1d310ff391306964caaabc807a62f8e5c3d38526ee6'
             # Patch form Gentoo
             'e3c474dbf3822a0be50695683bd8a2c9dfc82d41c1524a20b4581883c0c88986'
-            '31e619cec6e29bef0dc35879f3eb8fa2c15320a9360622aeefd8eccf9ae17e39'
+            '64d743c78183c302c42d1f289863e34c74832fca57443833e46a0a3157e2b5de'
             # Misc Patches
             'c958fa44a24f5a5f6ab126a2497da324a9a3e21365a872051e9e141c39d09598'
             '4c08d787b069585db652a5920432eb9aab7572422fe4f49f49a60157060ee205'
-            '89178b6549f09737d7455fe8923c93ead3556c59914ba4375db49789b73b45f3'
             '95ba939b9372e533ecbcc9ca034f3e9fc6621d3bddabb57c4d092ea69fa6c840'
+            'fef17ee6b80b9c60e4579ec4afec72fedb6ab1807ecc5903ab6aa2ccbb9fc8b0'
             # Patch from crbug (chromium bugtracker)
             '0d537830944814fe0854f834b5dc41dc5fc2428f77b2ad61d4a5e76b0fe99880'
-            '5f7d403e2a4cd2503ba4946d5c7226c5e9caa3c8433c2175f2545e491cfd9e5f'
+            'c05ba78df6d41ad4d014c910f7352071749d96de6a02a8f7387250ee0996cca0'
+            '9a4cc00ce359ab25c52c39d38e02bed9302cfc88cd0f6dbf1f58f1479a0eecb9'
+            'a2470c9d4a1b6c451e12aa623083d7ad4139ac28164b5e31c15e8f7136c0a241'
+            '243773e53ddb17b3835573166650a9d7b50515b11e8481d22912019affcbc293'
+            '27aee37a58a6a008711d29ba5406e98e8186719f6fd10d6e38af58a1fd0151de'
             )
 options=('!strip')
 install=chromium-dev.install
@@ -146,18 +156,6 @@ fi
 # If use PaX environment.
 if [ "${_use_pax}" = "1" ]; then
   makedepends+=('paxctl')
-fi
-
-# Build with GTK3?.
-if [ "${_use_gtk3}" = "1" ]; then
-  depends+=('gtk3')
-  _launcher_gtk='GTK=3'
-  optdepends+=('libappindicator-gtk3: Needed for show systray icon in the panel')
-  _gtk3=true
-elif [ "${_use_gtk3}" = "0" ]; then
-  depends+=('gtk2')
-  optdepends+=('libappindicator-gtk2: Needed for show systray icon in the panel')
-  _gtk3=false
 fi
 
 # Need you use ccache?.
@@ -241,6 +239,8 @@ _keeplibs=(
   'third_party/libudev'
   'third_party/libusb'
   'third_party/libva'
+  'third_party/libvpx'
+  'third_party/libvpx/source/libvpx/third_party/x86inc'
   'third_party/libwebm'
   'third_party/libyuv'
   'third_party/libxml/chromium'
@@ -311,10 +311,10 @@ _flags=(
   "google_default_client_secret=\"${_google_default_client_secret}\""
   'fieldtrial_testing_like_official_build=false'
   "remove_webcore_debug_symbols=${_strip}"
+  'use_gtk3=true'
   'use_gconf=false'
   "use_gio=false"
   "use_gnome_keyring=${_gnome_keyring}"
-  "use_gtk3=${_gtk3}"
   "use_pulseaudio=true"
   "link_pulseaudio=true"
   'use_kerberos=true'
@@ -347,7 +347,7 @@ _use_system=(
 #   'libevent' # Get segfaults and other problems https://bugs.gentoo.org/593458
   'libjpeg'
   'libpng'
-  'libvpx'
+#   'libvpx'
   'libwebp'
   'libxml'
   'libxslt'
@@ -400,13 +400,13 @@ prepare() {
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-system-ffmpeg-r4.patch"
-  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r1.patch"
+  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r2.patch"
 
   # Misc Patches:
   if [ "${_enable_vaapi}" = 1 ]; then
-    patch -p1 -i "${srcdir}/enable_vaapi_on_linux_${pkgver}.diff"
+#     patch -p1 -i "${srcdir}/enable_vaapi_on_linux_${pkgver}.diff"
+    patch -p1 -i "${srcdir}/vaapi_patch_r0.patch"
     patch -p1 -i "${srcdir}/specify-max-resolution_${pkgver}.patch"
-    patch -p1 -i "${srcdir}/fix-gl-image_${pkgver}.patch"
   fi
 
   # Fix paths.
@@ -423,8 +423,12 @@ prepare() {
   patch -p0 -i "${srcdir}/chromium-widevine-r1.patch"
   sed 's|@WIDEVINE_VERSION@|The Cake Is a Lie|g' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
 
-  # https://crbug.com/668446
-  patch -p0 -i "${srcdir}/fix_668446_r1.diff"
+  # Fix video playback (sugested by @Misc)
+  patch -Rp1 -i "${srcdir}/issue2717263003_80001.diff"
+  patch -Rp1 -i "${srcdir}/issue2715453002_100001.diff"
+  patch -Rp1 -i "${srcdir}/issue2697413002_160001.diff"
+  patch -Rp1 -i "${srcdir}/issue2712533002_40001.diff"
+  patch -Rp1 -i "${srcdir}/issue2697253002_60001.diff"
 
   # Setup nodejs dependency
   mkdir -p third_party/node/linux/node-linux-x64/bin/
@@ -507,7 +511,7 @@ _set_gcc() {
 build() {
 
   msg2 "Build the Launcher"
-  make -C "chromium-launcher-${_launcher_ver}" CHROMIUM_SUFFIX="-dev" PREFIX=/usr ${_launcher_gtk}
+  make -C "chromium-launcher-${_launcher_ver}" CHROMIUM_SUFFIX="-dev" PREFIX=/usr GTK=3
 
   cd "chromium-${pkgver}"
 
@@ -533,7 +537,7 @@ build() {
 
 package() {
   # Install launcher.
-  make -C "chromium-launcher-${_launcher_ver}" CHROMIUM_SUFFIX="-dev" PREFIX=/usr DESTDIR="${pkgdir}" ${_launcher_gtk} install-strip
+  make -C "chromium-launcher-${_launcher_ver}" CHROMIUM_SUFFIX="-dev" PREFIX=/usr DESTDIR="${pkgdir}" GTK=3 install-strip
   install -Dm644 "chromium-launcher-${_launcher_ver}/LICENSE" "${pkgdir}/usr/share/licenses/chromium-dev/LICENSE.launcher"
 
   pushd "chromium-${pkgver}/out/Release" &> /dev/null
