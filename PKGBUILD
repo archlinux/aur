@@ -2,7 +2,7 @@
 
 _gemname=json
 pkgname=ruby-$_gemname
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="This is a JSON implementation as a Ruby extension in C"
 arch=(any)
@@ -13,7 +13,7 @@ optdepends=('ruby-test-unit' 'ruby-rake')
 makedepends=('rubygems')
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('400f60ac8282da80764c5d6fbb04c096390a85950bb488652abc1eb993b411d2')
+sha512sums=('9041ebe6abc52db3ae5bc8b309148965e8e04931999685333a59ea85cf3d47c323554e58a10f2ee4e80a1815540d2a93fb49c981e76d4806a9d43842303778c8')
 
 package() {
   cd "$srcdir"
