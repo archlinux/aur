@@ -1,7 +1,7 @@
 # Maintainer: Christopher Bero <bigbero@gmail.com>
 pkgname=localplot-git
 _pkgname=localplot
-pkgver=23.5535df2
+pkgver=117.55db657
 pkgrel=1
 pkgdesc="HPGL Plotting software to drive a serial vinyl cutter."
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	/usr/lib/qt/bin/qmake -spec linux-g++ CONFIG+=release -o Makefile localplot.pro
+	qmake -spec linux-g++ CONFIG+=release -o Makefile localplot.pro
 	make
 }
 
