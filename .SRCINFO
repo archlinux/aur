@@ -1,6 +1,6 @@
 pkgbase = apulse-git
 	pkgdesc = Pulseaudio emulation for ALSA
-	pkgver = 0.1.5_14_g147c55c
+	pkgver = 0.1.7_r13_gf445ae7
 	pkgrel = 1
 	url = http://github.com/i-rinat/apulse
 	arch = i686
