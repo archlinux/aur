@@ -1,14 +1,14 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=bdsync
-pkgver=0.10
-pkgrel=2
+pkgver=0.10.1
+pkgrel=1
 pkgdesc="Fast block device synchronizing tool"
 arch=("i686" "x86_64")
 url="https://github.com/TargetHolding/bdsync"
 license=('GPL')
 depends=("openssl")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TargetHolding/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('da57d3b0e4bf2f7947c4cee2e7e2916033e3844d73718fb52d59775f76e1383e')
+sha256sums=('a75a1636636bfd4990bbc5dd78b048e81984ebdd4ac841f8e055198961e7525e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
