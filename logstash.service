@@ -1,17 +1,23 @@
 [Unit]
-Description=logstash
+Description=Logstash
+Documentation=http://www.elastic.co
 After=elasticsearch.service
 
 [Service]
-Type=simple
+Environment=LS_HOME=/var/lib/logstash
+Environment=LS_HEAP_SIZE="500m"
+Environment=LS_CONF_DIR=/etc/logstash/conf.d
+Environment=LS_LOG_DIR=/var/log/logstash
+Environment=LS_SETTINGS_DIR=/etc/logstash
 User=logstash
 Group=logstash
-Environment=LOGSTASH_CONF=/etc/logstash/
-EnvironmentFile=-/etc/conf.d/logstash
-ExecStart=/usr/share/logstash/bin/logstash "--path.settings" "$LOGSTASH_CONF"
-Restart=on-failure
-WorkingDirectory=/
-PrivateTmp=true
+ExecStart=/usr/share/logstash/bin/logstash -f $LS_CONF_DIR  --path.logs $LS_LOG_DIR --path.data $LS_HOME
+StandardOutput=null
+StandardError=journal
+SuccessExitStatus=143
+LimitNOFILE=65535
+TimeoutStopSec=20
+LimitMEMLOCK=infinity
 
 [Install]
 WantedBy=multi-user.target
