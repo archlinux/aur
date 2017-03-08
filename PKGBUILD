@@ -4,14 +4,15 @@
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 
 _pkgname=phpunit
-pkgname=${_pkgname}
+pkgname=${_pkgname}5
 pkgver=5.7.14
 pkgrel=1
-pkgdesc="PHPUnit is a programmer-oriented testing framework for PHP."
+pkgdesc="PHPUnit is a programmer-oriented testing framework for PHP. This is the old stable version"
 url="https://phpunit.de"
 arch=("any")
 license=("BSD")
 depends=("php")
+provides=("phpunit")
 install="${_pkgname}.install"
 source=("https://phar.phpunit.de/phpunit-${pkgver}.phar"
         "https://raw.githubusercontent.com/sebastianbergmann/phpunit/${pkgver}/LICENSE")
