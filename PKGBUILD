@@ -4,12 +4,12 @@ gitname=tinyMediaManager
 
 pkgname=tiny-media-manager
 pkgver=2.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-OS media managment tool"
 arch=('any')
 url="http://www.tinymediamanager.org"
 license=('Apache-2.0')
-depends=('libmediainfo' 'jre8-openjdk')
+depends=('libmediainfo' 'jdk8-openjdk')
 makedepends=('maven')
 source=("https://github.com/tinyMediaManager/tinyMediaManager/archive/$gitname-$pkgver.tar.gz"
 			  "tinyMediaManager.desktop")
