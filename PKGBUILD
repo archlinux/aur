@@ -2,11 +2,11 @@
 # Contributor: Michael Wiencek <mwtuea at gmail dot com>
 
 pkgname=echo-icon-theme-git
-_gitname=echo-icon-theme
+_gitname=echo-project
 pkgver=r389.4007669
-pkgrel=8
+pkgrel=9
 pkgdesc="The Echo icon theme from the Fedora project (development version)."
-url="https://fedorahosted.org/echo-icon-theme/"
+url="https://pagure.io/echo-project"
 arch=('any')
 license=('CCPL')
 depends=('icon-naming-utils')
@@ -16,7 +16,7 @@ optdepends=(
 )
 conflicts=('echo-icon-theme')
 provides=('echo-icon-theme')
-source=('git://git.fedorahosted.org/echo-icon-theme')
+source=('git+https://pagure.io/echo-project.git')
 sha256sums=('SKIP')
 
 pkgver() {
