@@ -2,7 +2,7 @@
 
 pkgname=audacity-extras
 pkgver=2.0.01
-pkgrel=4
+pkgrel=5
 pkgdesc="All nyquist plugins for audacity"
 arch=('any')
 depends=('audacity')
@@ -28,9 +28,9 @@ sha512sums=(
 package() {
 	cd "${srcdir}"
 	rm notch.ny
-	msg1 adding effect plugins
+	msg2 adding effect plugins
 	msg2 adding generate plugins
-	msg3 adding analyze plugins
+	msg2 adding analyze plugins
 
 	mkdir -p "${pkgdir}/usr/share/audacity/plug-ins"
 	for file in ${srcdir}/*.ny
