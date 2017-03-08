@@ -4,7 +4,7 @@
 
 pkgname=libbitcoin-network-git
 pkgver=20170307
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin P2P Network Library"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -45,9 +45,15 @@ build() {
     --sysconfdir=/etc \
     --sharedstatedir=/usr/share/libbitcoin-network \
     --localstatedir=/var/lib/libbitcoin-network \
-    --without-tests \
     --with-gnu-ld
   make -j$(($(nproc)/2))
+}
+
+check() {
+  cd ${pkgname%-git}
+
+  msg2 'Testing...'
+  make -j$(($(nproc)/2)) check
 }
 
 package() {
