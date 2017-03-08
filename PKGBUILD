@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Chain <gchain@gmail.com>
 pkgname=httplab
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive web server"
 arch=(any)
 url="http://github.com/gchaincl/httplab"
