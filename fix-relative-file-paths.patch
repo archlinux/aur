@@ -1,0 +1,62 @@
+diff --git a/cmd/zifd/main.go b/cmd/zifd/main.go
+index 24cd1fa..e55f332 100644
+--- a/cmd/zifd/main.go
++++ b/cmd/zifd/main.go
+@@ -34,6 +34,7 @@ func SetupLocalPeer(addr string) *zif.LocalPeer {
+ }
+ 
+ func main() {
++	//os.Chdir("/var/lib/zif")
+ 
+ 	log.SetLevel(log.DebugLevel)
+ 	formatter := new(log.TextFormatter)
+diff --git a/config/zifd.toml b/config/zifd.toml
+index a9346c4..b5c2059 100644
+--- a/config/zifd.toml
++++ b/config/zifd.toml
+@@ -2,21 +2,21 @@
+ zif = "0.0.0.0:5050"
+ 
+ # http is an API that allows interaction with the daemon
+-http = "127.0.0.1:8080" 
++http = "127.0.0.1:8080"
+ 
+ [database]
+ # Defaults to relative to the binary
+-path = "./data/posts.db"
++path = "/var/lib/zif/data/posts.db"
+ 
+ [tor]
+-enabled = true
++enabled = false
+ control = 10051
+ socks = 10050
+ # assumes you're using the tor config provided, running in a subfolder
+-cookiePath = "./tor/"
++cookiePath = "/etc/zif/tor/"
+ 
+ [socks]
+-enabled = true
++enabled = false
+ port = 10050
+ 
+ [net]
+diff --git a/tor/torrc b/tor/torrc
+index bced57c..f960d4d 100755
+--- a/tor/torrc
++++ b/tor/torrc
+@@ -1,11 +1,11 @@
+ Log notice stderr
+ 
+ ## The directory for keeping all the keys/etc. By default, we store
+-## things in $HOME/.tor on Unix, and in Application Data\tor on Windows.
+-DataDirectory ./
++## things in /etc/zif/tor .
++DataDirectory /etc/zif/tor/
+ 
+ ControlPort 10051
+ SocksPort 10050
+ CookieAuthentication 1
+ CookieAuthFileGroupReadable 1
+-CookieAuthFile ./cookie
++CookieAuthFile /etc/zif/tor/cookie
