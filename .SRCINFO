@@ -1,14 +1,17 @@
 pkgbase = audacity-extras
 	pkgdesc = All nyquist plugins for audacity
-	pkgver = 1.0.01
-	pkgrel = 2
+	pkgver = 2.0.01
+	pkgrel = 3
 	url = localhost:43110
 	arch = any
 	license = GPL2
 	depends = audacity
-	source = https://u.teknik.io/DqH7n.zip
+	source = https://u.teknik.io/MmbQV.zip
+	source = https://u.teknik.io/kU6Nf.zip
 	sha384sums = 3267bb20628bbb69aaca2399687f7ce2902486d240cf06a93fe90dbe5c5df24d0b407aafc0d316c45bbb57254c251da6
+	sha384sums = 4eb9186b80f4e94be63397076e36845daa414f3f2b950dca686715aa5ee900329c3c06245e1a1afb6f93cdac21888f57
 	sha512sums = aee7f211712365c9db0e2589543ca8b04ecf64384a08fecdf30c147c52774dc0c53ef8bd8f3bd51c146bce0ea889c96785cd76619665a084105efbd7ce2898a8
+	sha512sums = 427745713cf88918f4aa85ce99086af7820c86b0d187ebb1bbdc5faaae96aacc8887e3a7fd4ac5737421a69febd9eb9b58750e7132533e3f9c24ecf0a4a3de99
 
 pkgname = audacity-extras
 
