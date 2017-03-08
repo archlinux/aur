@@ -2,7 +2,7 @@
 # Contributor: Thibault Lorrain (fredszaq) <fredszaq@gmail.com>
 
 pkgname=tensorflow
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
@@ -13,7 +13,7 @@ conflicts=('tensorflow' 'libtensorflow')
 makedepends=('git' 'bazel' 'python-numpy')
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
-_commit=07bb8ea2379bd459832b23951fb20ec47f3fdbd4
+_commit=e895d5ca395c2362df4f5c8f08b68501b41f8a98
 source=("git+https://github.com/tensorflow/tensorflow#commit=$_commit")
 md5sums=('SKIP')
 
@@ -51,7 +51,7 @@ prepare() {
   export TF_NEED_HDFS=0
   # disable OpenCL support
   export TF_NEED_OPENCL=0
-  # disable XLA JIT compiler
+  # enable XLA JIT compiler
   export TF_ENABLE_XLA=1
   # enable jemalloc support
   export TF_NEED_JEMALLOC=1
