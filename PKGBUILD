@@ -1,8 +1,8 @@
 # Maintainer: Marcus Behrendt <marcus dot behrendt dot eightysix(in numbers) at bigbrothergoogle dot com
 
 pkgname=papirus-libreoffice-theme-git
-pkgver=20170119
-pkgrel=2
+pkgver=20170228
+pkgrel=1
 pkgdesc="Papirus theme for LibreOffice (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
 arch=('any')
@@ -20,11 +20,13 @@ pkgver() {
 }
 
 package() {
-  cd ${pkgname}
-  mkdir -p ${pkgdir}/usr/lib/libreoffice/share/config
-  cp --no-preserve=mode,ownership -r \
-      images_papirus.zip \
-      images_papirus_dark.zip  \
-      images_epapirus.zip \
-      ${pkgdir}/usr/lib/libreoffice/share/config
+    #cd ${pkgname}
+    #mkdir -p ${pkgdir}/usr/lib/libreoffice/share/config
+    #cp --no-preserve=mode,ownership -r \
+    #    images_papirus.zip \
+    #    images_papirus_dark.zip  \
+    #    images_epapirus.zip \
+    #    ${pkgdir}/usr/lib/libreoffice/share/config
+    cd "${srcdir}/${pkgname}"
+    make PREFIX="/usr/lib" DESTDIR="${pkgdir}" install
 }
