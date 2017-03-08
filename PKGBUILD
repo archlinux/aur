@@ -7,7 +7,7 @@ set -u
 _gitname='SICOM'
 _pkgname='rlib'
 pkgname="lib${_pkgname}" # libr seems a bit short
-pkgver='2.0.16'
+pkgver='2.0.17'
 # 2.0.10 won't compile
 pkgrel='1'
 pkgdesc='Advanced reporting engine that generates professional reports in PDF, HTML, CSV, and text formats from a simple XML definition language.'
@@ -28,7 +28,7 @@ _giturl="https://github.com/${_gitname}/${_pkgname}"
 _verwatch=("${_giturl}/releases" "${_giturl#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
 #source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz") # <=1.3.7
 source=("${_pkgname}-${pkgver}.tar.gz::${_giturl}/archive/v${pkgver}.tar.gz")
-sha256sums=('c2803ec9bbf4711d4267091f6ddce66294bae59f0c6ce85bfa7c13136e28afa8')
+sha256sums=('79c793bac264dd8418be7115f6832f92724c44fe98994ad37bc3c2d1173227cb')
 
 prepare() {
   set -u
