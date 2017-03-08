@@ -1,16 +1,16 @@
 pkgbase = preflight-app
 	pkgdesc = Validate PDF files against the PDF/A-1b standard.
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://pdfbox.apache.org
 	arch = any
 	license = Apache 2
 	depends = java-runtime
-	noextract = preflight-app-2.0.3.jar
+	noextract = preflight-app-2.0.4.jar
 	source = preflight-app
-	source = http://mirror.netcologne.de/apache.org/pdfbox/2.0.3/preflight-app-2.0.3.jar
+	source = http://mirror.netcologne.de/apache.org/pdfbox/2.0.4/preflight-app-2.0.4.jar
 	sha1sums = 0090ad58d90ca109f72808b8279452e9197d94b9
-	sha1sums = f3e218475068d076555111b63ddf7c5272d67f33
+	sha1sums = a841406420f37dd8d0bfe037431176572978e49e
 
 pkgname = preflight-app
 
