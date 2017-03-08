@@ -1,15 +1,15 @@
 # Maintainer: M0Rf30
 
 pkgname=r-studio
-pkgver=4.0.2427
+pkgver=5.4.165361
 pkgrel=1
 pkgdesc="Undelete and data recovery software"
 arch=('i686' 'x86_64')
 url="http://www.r-tt.com/data_recovery_linux/"
 license=('custom')
 depends=('xdg-utils')
-source_i686=("http://www.r-tt.com/downloads/RStudio4_i386.deb")
-source_x86_64=("http://www.r-tt.com/downloads/RStudio4_x64.deb")
+source_i686=("http://www.r-tt.com/downloads/RStudio5_i386.deb")
+source_x86_64=("http://www.r-tt.com/downloads/RStudio5_x64.deb")
 source=($pkgname.desktop
         $pkgname.png)
         
@@ -26,5 +26,5 @@ package() {
 
 md5sums=('023626f715a2581768dac0c6de07ebae'
          '21f1baf671cd9c49c740d92b506203f9')
-md5sums_i686=('1bc599ab8efc351639236eb1afc17475')
-md5sums_x86_64=('cca933360d3be5e89b776c3aae43eafd')
+md5sums_i686=('9b2d7fba8fd201a7f3236706b5e7843f')
+md5sums_x86_64=('ffba5a04573a51a0768f6714e6fa2735')
