@@ -1,7 +1,7 @@
 # Maintainer: Juan Perez gatitofeliz at protonmail at com
 
 pkgname=audacity-extras
-pkgver=2.0.01
+pkgver=2.0.3
 pkgrel=5
 pkgdesc="All nyquist plugins for audacity"
 arch=('any')
