@@ -1,6 +1,6 @@
 pkgname=aurutils
-pkgver=1.5.2
-_commit=c0085c9eaf7a45eec7d64f9703d4f23d9fe1212b
+pkgver=1.5.3
+_commit=01cbab783489eefc1859287bd0cb898de40c8100
 pkgrel=1
 pkgdesc='helper tools for the arch user repository'
 arch=('any')
