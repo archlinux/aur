@@ -1,7 +1,7 @@
 # Maintainer: Maxim Baz <cerebro@maximbaz.com>
 pkgname=cerebro-git
 _pkgname=cerebro
-pkgver=0.2.6.r16.g5b49175
+pkgver=0.2.7.r4.ga69a0a8
 pkgrel=1
 pkgdesc='Open-source productivity booster with a brain.'
 arch=('x86_64' 'i686')
@@ -9,7 +9,7 @@ url='https://cerebroapp.com/'
 license=('MIT')
 conflicts=('cerebro')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
-makedepends=('gendesk' 'yarn')
+makedepends=('gendesk' 'yarn' 'npm')
 provides=('cerebro')
 source=('git://github.com/KELiON/cerebro.git')
 sha256sums=('SKIP')

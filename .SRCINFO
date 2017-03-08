@@ -1,6 +1,6 @@
 pkgbase = cerebro-git
 	pkgdesc = Open-source productivity booster with a brain.
-	pkgver = 0.2.6.r16.g5b49175
+	pkgver = 0.2.7.r4.ga69a0a8
 	pkgrel = 1
 	url = https://cerebroapp.com/
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = cerebro-git
 	license = MIT
 	makedepends = gendesk
 	makedepends = yarn
+	makedepends = npm
 	depends = alsa-lib
 	depends = gconf
 	depends = gtk2
