@@ -4,7 +4,7 @@
 
 pkgname=gtk-theme-equinox
 pkgver=1.50
-pkgrel=2
+pkgrel=3
 pkgdesc="Gtk theme for equinox engine"
 url="http://gnome-look.org/content/show.php?content=140449"
 license=('GPL2')
