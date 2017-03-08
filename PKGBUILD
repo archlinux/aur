@@ -3,7 +3,7 @@
 pkgname=qgis-git
 _pkgname=qgis
 pkgver=2.99
-pkgrel=7
+pkgrel=8
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Development master'
 url='http://qgis.org/'
 license=('GPL')
@@ -50,6 +50,7 @@ build() {
     -DENABLE_TESTS=FALSE \
     -DWITH_INTERNAL_QWTPOLAR=FALSE \
     -DWITH_INTERNAL_{HTTPLIB2,JINJA2,MARKUPSAFE,OWSLIB,PYGMENTS,DATEUTIL,PYTZ,YAML,NOSE2,SIX,FUTURE}=FALSE \
+    -DWITH_GEOREFERENCER=FALSE
 #    -DWITH_SERVER=TRUE \
 #    -DWITH_GLOBE=TRUE
 
