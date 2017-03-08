@@ -3,7 +3,7 @@
 
 pkgname=plasma-meta
 pkgver=5.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package to install KDE Plasma'
 arch=(any)
 url='https://www.archlinux.org/'
@@ -30,4 +30,5 @@ depends=(bluedevil
 	 sddm-kcm
 	 breeze-gtk
          powerdevil
+         discover
 )
