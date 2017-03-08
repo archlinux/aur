@@ -1,0 +1,9 @@
+[Unit]
+Description=nfc-eventd service
+
+[Service]
+ExecStart=/usr/bin/nfc-eventd
+# User=nobody
+
+[Install]
+WantedBy=multi-user.target

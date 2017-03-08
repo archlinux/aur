@@ -1,0 +1,4 @@
+nfc-eventd/
+pkg/
+src/
+*.pkg.tar
