@@ -2,7 +2,7 @@ pkgbase = pidgin-embeddedvideo
 	pkgdesc = Watch videos directly into your Pidgin conversation
 	pkgver = 1.2
 	pkgrel = 2
-	url = http://code.google.com/p/pidgin-embeddedvideo/
+	url = https://github.com/stefanistrate/pidgin-embeddedvideo/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -14,8 +14,8 @@ pkgbase = pidgin-embeddedvideo
 	makedepends = flashplugin
 	depends = pidgin
 	provides = pidgin-embeddedvideo
-	source = http://pidgin-embeddedvideo.googlecode.com/files/pidgin-embeddedvideo-1.2.tar.gz
-	md5sums = c23ba4e7388fca3246eb79030a9f107e
+	source = https://raw.githubusercontent.com/stefanistrate/pidgin-embeddedvideo/master/downloads/pidgin-embeddedvideo-1.2.tar.gz
+	sha256sums = 929dadd24e05c677d3e182ca10d0bcf2cf9fe7cff87c18d55cd55eb7bfebc04c
 
 pkgname = pidgin-embeddedvideo
 
