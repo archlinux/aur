@@ -3,17 +3,17 @@
 # Based on kang's thunderbird-aurora
 _name=thunderbird
 _channel=earlybird
-_milestone=53.0a2
+_milestone=54.0a2
 _lang=ru
 
 _release_year=2017
 _release_month=03
-_release_day=06
-_release_time=$_release_year-$_release_month-$_release_day-00-40-02
-_buildid=20170306004002
+_release_day=08
+_release_time=$_release_year-$_release_month-$_release_day-00-40-24
+_buildid=20170308004024
 
 pkgname=$_name-$_channel-$_lang
-pkgver=53.0a2.$_buildid
+pkgver=54.0a2.$_buildid
 pkgrel=1
 pkgdesc="Standalone Mail/News reader - Earlybird channel [ $_lang ]"
 url="http://www.mozilla.org/${_name}/channel"
@@ -32,12 +32,12 @@ install="${pkgname}.install"
 source=("${pkgname}.desktop")
 
 _base_url="http://ftp.mozilla.org/pub/thunderbird/nightly/$_release_year/$_release_month/$_release_time-comm-aurora-l10n"
-source_i686=("$_base_url/thunderbird-53.0a2.$_lang.linux-i686.tar.bz2")
-source_x86_64=("$_base_url/thunderbird-53.0a2.$_lang.linux-x86_64.tar.bz2")
+source_i686=("$_base_url/thunderbird-54.0a2.$_lang.linux-i686.tar.bz2")
+source_x86_64=("$_base_url/thunderbird-54.0a2.$_lang.linux-x86_64.tar.bz2")
 
 sha512sums=('d7c8c55e006b619cc9a78ab0ae0a89cbf5000b54a588dd4d14f7a961fff912069ea30b9c839121667549c086ffd21392abe3bade3abd1debdd5845d2da158538')
-sha512sums_i686=('0f1cc6e8cf239fc59f6da04080da0e25491dc9372a406fd8d62369a74a1dbb235230ee0e0cfcf444dfa37b8845b7b2523051933b05112372751c34f2f9565ffd')
-sha512sums_x86_64=('a6152fbc54b40bba4eb04bca582e0f33f753dd7cf2b362fd8a2dcc158bfbfd2d482c3a4527aea7c7c1aac168ff66d06389239ed898e7237b5af0cedd70961843')
+sha512sums_i686=('0089038ec7fdf1e72341b810e926d18e3320c5ffbeaa272e71e2cd065f52059d6550baee641e50a234fa3ad64eb6978694fa31aa5657d0fa733e10a6a275c1b5')
+sha512sums_x86_64=('5d9c5de44dfe3eb4e743222e1e573c84c64912cdcba54187a3e711765681548550470de1089464d4c39d5f7a091323bf6f9357c060c582c00d4402fd84d74b52')
 
 pkgver() {
     cd "${_name}"
