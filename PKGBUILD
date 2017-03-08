@@ -1,20 +1,19 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-explorer
-pkgver=2.2.0
-pkgrel=4
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Bitcoin Command Line Tool"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
-         'czmq-git'
-         'czmqpp-git'
          'icu'
-         'libbitcoin'
          'libbitcoin-client'
+         'libbitcoin-network'
+         'libbitcoin-protocol'
+         'libbitcoin-system'
          'libpng'
          'libsecp256k1'
-         'libsodium'
          'qrencode'
          'zeromq')
 makedepends=('autoconf'
@@ -30,7 +29,7 @@ url="https://github.com/libbitcoin/libbitcoin-explorer"
 license=('AGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver
         git+https://github.com/libbitcoin/libbitcoin-explorer.wiki)
-sha256sums=('77bb3597ceb384447fc37256004018949682d1e41dccefdaf560f67cf81e2200'
+sha256sums=('c2c72a1cd8a238adc8c09a131af34be23bb6384d2900f5df0abd47b9d16fdffc'
             'SKIP')
 
 build() {
@@ -48,7 +47,7 @@ build() {
     --with-bash-completiondir=/usr/share/bash-completion/completions \
     --with-gnu-ld \
     --without-tests
-  make
+  make -j$(($(nproc)/2))
 }
 
 package() {
@@ -63,4 +62,8 @@ package() {
   msg2 'Installing documentation...'
   cp -dpr --no-preserve=ownership "$srcdir/libbitcoin-explorer.wiki" \
     "$pkgdir/usr/share/doc/libbitcoin-explorer/wiki"
+
+  msg2 'Cleaning up pkgdir...'
+  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
+  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
