@@ -1,0 +1,14 @@
+# Run the service with the root instance of systemd but use a provided user for
+# the service.
+[Unit]
+Description=irexec as service
+Requires=lircd.service
+After=lircd.service
+
+[Service]
+User=%i
+ExecStart=/usr/bin/irexec
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

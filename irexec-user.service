@@ -1,0 +1,13 @@
+# With systemd running as user, lircd is not available as target.
+[Unit]
+Description=irexec as service
+
+[Service]
+ExecStart=/usr/bin/irexec
+# Prevent fails from lircd not being started yet.
+Restart=always
+
+[Install]
+# lircd is started in multi-user
+WantedBy=multi-user.target
+
