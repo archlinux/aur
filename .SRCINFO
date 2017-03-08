@@ -1,0 +1,16 @@
+pkgbase = dotnet-sdk
+	pkgdesc = Provides the .NET core software development kit (sdk).
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.microsoft.com/net/core
+	arch = x86_64
+	license = MIT
+	depends = dotnet
+	depends = dotnet-cli
+	conflicts = dotnet-bin
+	options = staticlibs
+	source = dotnet-sdk-1.0.1.tar.gz::https://go.microsoft.com/fwlink/?LinkID=843446
+	sha256sums = 828af612b3e691f27d93153c3c7fd561e041535e907e9823f206ccab51030ecf
+
+pkgname = dotnet-sdk
+
