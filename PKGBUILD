@@ -15,6 +15,7 @@ source=("$pkgname"::'git+https://github.com/gchaincl/httplab.git')
 md5sums=(SKIP)
 
 build() {
+	export GOPATH=`pwd`/..
 	cd "$pkgname"
 	go build
 }
