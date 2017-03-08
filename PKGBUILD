@@ -1,20 +1,20 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-server-git
-pkgver=20160724
+pkgver=20170307
 pkgrel=1
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
          'icu'
-         'libbitcoin'
          'libbitcoin-blockchain'
          'libbitcoin-consensus'
          'libbitcoin-database'
          'libbitcoin-network'
          'libbitcoin-node'
          'libbitcoin-protocol'
+         'libbitcoin-system'
          'libsecp256k1'
          'zeromq')
 makedepends=('autoconf'
@@ -56,10 +56,11 @@ prepare() {
   msg2 'Configuring...'
   cp -dpr --no-preserve=ownership data/bs.cfg data/bs.cfg.in
   sed -i \
-    -e 's@^directory.*@directory = /srv/blockchain/db@' \
+    -e 's@^directory.*@directory = /srv/bs/db@' \
     -e 's@^debug_file.*@debug_file = /var/log/bs/debug.log@' \
     -e 's@^error_file.*@error_file = /var/log/bs/error.log@' \
     -e 's@^hosts_file.*@hosts_file = /etc/bs/hosts.cache@' \
+    -e 's@^archive_directory.*@archive_directory = /var/log/bs@' \
     data/bs.cfg.in
 }
 
@@ -89,7 +90,7 @@ package() {
 
   msg2 'Installing...'
   install -dm 700 "$pkgdir/etc/bs"
-  install -dm 755 "$pkgdir/srv/blockchain"
+  install -dm 755 "$pkgdir/srv/bs"
   make DESTDIR="$pkgdir" install
 
   msg2 'Installing documentation...'
