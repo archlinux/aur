@@ -3,18 +3,16 @@
 # Contributor: Matthew Gyurgyik <matthew@pyther.net>
 pkgname=icaclient
 pkgver=13.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Citrix Receiver for x86_64 (64bit) Linux (ICAClient)"
 arch=('x86_64' 'i686')
-url="http://www.citrix.com/English/ps2/products/product.asp?contentID=1689163&ntref=prod_top"
+url="https://www.citrix.com/products/receiver/"
 license=('custom:Citrix')
-depends=('alsa-lib' 'libvorbis' 'curl' 'gtk2' 'libpng12' 'libxml2' 'libxaw' 'libxext' 'libxft'
-  'libxinerama' 'libxmu' 'libxp' 'libxpm' 'libxt' 'ca-certificates')
+depends=('alsa-lib' 'libvorbis' 'curl' 'gtk2' 'libpng12' 'libxaw' 'libxp' 'speex' 'libjpeg6-turbo' 'libsoup' 'gst-plugins-base-libs')
 makedepends=('automake' 'autoconf' 'wget')
 optdepends=(
   'xerces-c: gtk2 configuration manager'
-  'webkitgtk2: gtk2 selfservice/storefront ui'
-  'gstreamer0.10-good-plugins: needed for media applications')  # optional since huge build and not everyone needs it
+  'webkitgtk2: gtk2 selfservice/storefront ui')
 conflicts=('bin32-citrix-client' 'citrix-client')
 options=(!strip)
 backup=("opt/Citrix/ICAClient/config/appsrv.ini" "opt/Citrix/ICAClient/config/wfclient.ini" "opt/Citrix/ICAClient/config/module.ini")
@@ -105,7 +103,7 @@ package() {
     install -Dm755 wfica_assoc.sh "${pkgdir}$ICAROOT"
 
     # make certificates available
-    ln -s "${pkgdir}/usr/share/ca-certificates/trust-source/*" "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts/"
+    ln -s /usr/share/ca-certificates/trust-source/* "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts/"
     c_rehash "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts/"
 
 }

@@ -1,8 +1,8 @@
 pkgbase = icaclient
 	pkgdesc = Citrix Receiver for x86_64 (64bit) Linux (ICAClient)
 	pkgver = 13.5
-	pkgrel = 1
-	url = http://www.citrix.com/English/ps2/products/product.asp?contentID=1689163&ntref=prod_top
+	pkgrel = 2
+	url = https://www.citrix.com/products/receiver/
 	install = citrix-client.install
 	arch = x86_64
 	arch = i686
@@ -15,19 +15,14 @@ pkgbase = icaclient
 	depends = curl
 	depends = gtk2
 	depends = libpng12
-	depends = libxml2
 	depends = libxaw
-	depends = libxext
-	depends = libxft
-	depends = libxinerama
-	depends = libxmu
 	depends = libxp
-	depends = libxpm
-	depends = libxt
-	depends = ca-certificates
+	depends = speex
+	depends = libjpeg6-turbo
+	depends = libsoup
+	depends = gst-plugins-base-libs
 	optdepends = xerces-c: gtk2 configuration manager
 	optdepends = webkitgtk2: gtk2 selfservice/storefront ui
-	optdepends = gstreamer0.10-good-plugins: needed for media applications
 	conflicts = bin32-citrix-client
 	conflicts = citrix-client
 	options = !strip
@@ -46,9 +41,9 @@ pkgbase = icaclient
 	md5sums = 1f214f6f456f59afd1a3275580f4240e
 	md5sums = 59f8e50cc0e0c399d47eb7ace1df5a32
 	md5sums = dca5a1f51449ef35f1441b900d622276
-	source_x86_64 = icaclient-x64-13.5.tar.gz::http://downloads.citrix.com/12939/linuxx64-13.5.0.10185126.tar.gz?__gda__=1488839149_5b3b3920a670fbfd95594a4aa30b6a1d
+	source_x86_64 = icaclient-x64-13.5.tar.gz::http://downloads.citrix.com/12939/linuxx64-13.5.0.10185126.tar.gz?__gda__=1489017057_f9681150f19d70e5319c50165a4ccae9
 	md5sums_x86_64 = ea1fd28fde956d5cda03bed74a578b4c
-	source_i686 = icaclient-x86-13.5.tar.gz::http://downloads.citrix.com/12939/linuxx86-13.5.0.10185126.tar.gz?__gda__=1488839148_a012a99e4d7177d82becd25d5718ecf8
+	source_i686 = icaclient-x86-13.5.tar.gz::http://downloads.citrix.com/12939/linuxx86-13.5.0.10185126.tar.gz?__gda__=1489017055_a88c5b800acc26bf9ec2ca857fc8865e
 	md5sums_i686 = aad1c99baed2821921188cc49700466e
 
 pkgname = icaclient
