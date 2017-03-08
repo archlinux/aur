@@ -1,5 +1,5 @@
 pkgname=captvty
-pkgver=2.5.6.1
+pkgver=2.5.6.2
 pkgrel=1
 pkgdesc='Accédez aux directs et à une multitude d’émissions proposées au rattrapage par différentes chaînes de télévision'
 arch=('any')
@@ -13,7 +13,7 @@ source=("http://releases.captvty.fr/$_code/captvty-$pkgver.zip"
         "${pkgname}.ico::http://captvty.fr/favicon.ico?v=2"
         'captvty'
         'LICENSE')
-sha1sums=('b74e96ab8fd9d086603f052e3cb2d02d6329be1a'
+sha1sums=('f377d08eda714f5dc30d97c000ab238a79714721'
           '7210acfa98cb21ab32de463ccf0456743241b48e'
           '2ee170fc5ab5d46d373074518d8a69ef72418268'
           'a1a03fcff4541bbf212eb20730d5e344ae817a5d')
