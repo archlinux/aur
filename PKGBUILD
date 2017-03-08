@@ -2,7 +2,7 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=xubuntu-artwork
-pkgver=16.10.1
+pkgver=17.04
 pkgrel=1
 _uver=yakkety
 pkgdesc="Xubuntu themes and artwork"
@@ -22,7 +22,8 @@ source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgve
 
 package() {
   #cd "${srcdir}/trunk"
-  cd "${srcdir}/${_uver}"
+  #cd "${srcdir}/${_uver}"
+  cd "${srcdir}/${pkgname}"
 
   install -dm755 "${pkgdir}/usr/"
 
@@ -41,4 +42,4 @@ package() {
 }
 # I use MD5 because is what "makepkg -g" give by default, blame Allan
 
-md5sums=('bdfebe604126126a6222b5b25f45bd3c')
+md5sums=('e8dba4027755d01be541e16fabf4b6f5')
