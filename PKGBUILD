@@ -11,7 +11,7 @@ provides=(git-mediate)
 conflicts=(git-mediate resolve-trivial-conflicts)
 replaces=(resolve-trivial-conflicts resolve-trivial-conflicts-git)
 makedepends=(git cabal-install chrpath)
-depends=(gmp)
+depends=(gmp libffi)
 source=(git+https://github.com/Peaker/git-mediate)
 md5sums=(SKIP)
 
