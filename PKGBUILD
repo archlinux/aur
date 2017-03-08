@@ -28,10 +28,6 @@ sha512sums=(
 package() {
 	cd "${srcdir}"
 	rm notch.ny
-	msg2 adding effect plugins
-	msg2 adding generate plugins
-	msg2 adding analyze plugins
-
 	mkdir -p "${pkgdir}/usr/share/audacity/plug-ins"
 	for file in ${srcdir}/*.ny
 	do
