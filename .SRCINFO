@@ -1,0 +1,13 @@
+pkgbase = jcommon
+	pkgdesc = Base routines for JFreeChart
+	pkgver = 1.0.24
+	pkgrel = 1
+	url = http://www.jfree.org/jcommon/
+	arch = any
+	makedepends = apache-ant
+	depends = java-environment
+	source = https://github.com/jfree/jcommon/archive/v1.0.24.tar.gz
+	md5sums = a860903b15afcf9c8d8a9ddbbda45c0e
+
+pkgname = jcommon
+
