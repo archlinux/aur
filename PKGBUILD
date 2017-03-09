@@ -1,7 +1,7 @@
 # Maintainer: Bennett Piater <bennett at piater dot name>
 
 pkgname=aursec
-pkgver=0.1.0b
+pkgver=0.9
 pkgrel=1
 pkgdesc='Verify AUR package sources against hashes stored in a blockchain.'
 arch=('x86_64' 'x86' 'arm' 'armv6h' 'armv7h' 'aarch64')
