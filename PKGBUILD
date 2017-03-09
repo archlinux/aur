@@ -1,6 +1,6 @@
 # Maintainer: Pablo Moyano (p4block)
 pkgname=net2plan
-pkgver=0.5.0.1
+pkgver=0.5.0.2
 pkgrel=1
 pkgdesc='Java tool for planning, optimizing and evaluating communication networks.'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/girtel/Net2Plan'
 license=('GPL3')
 depends=('glpk' 'coin-or-ipopt' 'java-environment')
 source=("https://github.com/girtel/Net2Plan/releases/download/${pkgver}/net2plan-${pkgver}.zip")
-md5sums=('237384f44cc0e0dde74491443cdad4cc')
+md5sums=('ffff5de82e04a1a6a2ff5fee62afea8a')
 
 package() {
 	mkdir $pkgdir/opt
