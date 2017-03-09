@@ -1,29 +1,30 @@
 # Maintainer: Christopher Arndt <aur at chrisarndt dot de>
 
-_module="mando"
-pkgbase="python-${_module}"
-pkgname=("${pkgbase}" "python2-${_module}")
-pkgver=0.4
-pkgrel=2
+_name="mando"
+pkgbase="python-${_name}"
+pkgname=("${pkgbase}" "python2-${_name}")
+pkgver=0.5
+pkgrel=1
 arch=('any')
-url="https://mando.readthedocs.org/"
+url="https://${_name}.readthedocs.org/"
+# Repository: https://github.com/rubik/mando
 license=('MIT')
 depends=()
-source=("https://pypi.python.org/packages/2b/52/684d9ab8c2ccfb611275f2e44d3ebc76a6a6c56f4afacd2e91237fa07ec3/${_module}-${pkgver}.tar.gz"
-  'LICENSE'
-)
-sha256sums=('853ff98f80266387b37850ecc4f8cac59d24cecc623fb7d2ef2bc5febbad2cae'
+makedepends=('python-setuptools' 'python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
+        'LICENSE')
+sha256sums=('80b5b5f0405e64d8b35ae04c5e897ecdfdcc7337154b32696df8a5418c810560'
             '6123bc92c70372634b45af73fbae39eaa70683a66782b73b833c258c4de939eb')
 
 prepare() {
-  cp -r ${_module}-${pkgver} python2-${_module}-${pkgver}
+  cp -r ${_name}-${pkgver} python2-${_name}-${pkgver}
 }
 
 build() {
-  cd "${srcdir}/${_module}-${pkgver}"
+  cd "${srcdir}/${_name}-${pkgver}"
   python setup.py build
 
-  cd "${srcdir}/python2-${_module}-${pkgver}"
+  cd "${srcdir}/python2-${_name}-${pkgver}"
   for script in capture.py run.py; do
     sed -i -e 's|python|python2|' mando/tests/${script}
   done
@@ -32,9 +33,10 @@ build() {
 
 package_python-mando() {
   pkgdesc="Python library which wraps the argparse module to help write flexible CLI applications"
-  depends=('python-sphinx')
+  depends=('python')
+  optdepends=('python-sphinx: to run unit tests')
 
-  cd "${srcdir}/${_module}-${pkgver}"
+  cd "${srcdir}/${_name}-${pkgver}"
   python setup.py install --root="$pkgdir" --skip-build --optimize=1
 
   # license
@@ -43,9 +45,10 @@ package_python-mando() {
 
 package_python2-mando() {
   pkgdesc="Python 2 library which wraps the argparse module to help write flexible CLI applications"
-  depends=('python2-sphinx')
+  depends=('python2')
+  optdepends=('python2-sphinx: to run unit tests')
 
-  cd "${srcdir}/python2-${_module}-$pkgver"
+  cd "${srcdir}/python2-${_name}-$pkgver"
   python2 setup.py install --root="$pkgdir" --skip-build --optimize=1
 
   # license
