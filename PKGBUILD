@@ -19,11 +19,11 @@ install=gitea.install
 backup=('etc/gitea/app.ini')
 source=(gitea.service
         app.ini)
-source_x86_64=(${pkgname}::https://github.com/go-gitea/gitea/releases/download/v${pkgver}/gitea-${pkgver}-linux-amd64)
-source_i686=(${pkgname}::https://github.com/go-gitea/gitea/releases/download/v${pkgver}/gitea-${pkgver}-linux-amd64)
-source_arm=(${pkgname}::https://github.com/go-gitea/gitea/releases/download/v${pkgver}/gitea-${pkgver}-linux-arm-5)
-source_armv6h=(${pkgname}::https://github.com/go-gitea/gitea/releases/download/v${pkgver}/gitea-${pkgver}-linux-arm-6)
-source_armv7h=(${pkgname}::https://github.com/go-gitea/gitea/releases/download/v${pkgver}/gitea-${pkgver}-linux-arm-7)
+source_x86_64=(${pkgname}-${pkgver}::https://github.com/go-gitea/gitea/releases/download/v${pkgver}/gitea-${pkgver}-linux-amd64)
+source_i686=(${pkgname}-${pkgver}::https://github.com/go-gitea/gitea/releases/download/v${pkgver}/gitea-${pkgver}-linux-amd64)
+source_arm=(${pkgname}-${pkgver}::https://github.com/go-gitea/gitea/releases/download/v${pkgver}/gitea-${pkgver}-linux-arm-5)
+source_armv6h=(${pkgname}-${pkgver}::https://github.com/go-gitea/gitea/releases/download/v${pkgver}/gitea-${pkgver}-linux-arm-6)
+source_armv7h=(${pkgname}-${pkgver}::https://github.com/go-gitea/gitea/releases/download/v${pkgver}/gitea-${pkgver}-linux-arm-7)
 
 sha512sums=('692ea79b3195f3222f69b485f8a7905223fa457dc5cb2b480edbac6f480ac4f74075accb04ae0c17b90e98e41f53224e661a85762310d7263921e763cb3fc257'
             'dfeaad31e2a1286d4399627587b827096e5f79411423caecde16f07684b03b18b57023c8e2c4da1045a706098ed887ab4b43d2de197d910f585f7779f1efe500')
@@ -39,7 +39,7 @@ package() {
   install -o git -g git -d -m 750 ${pkgdir}/var/log/gitea/
   install -o root -g git -d -m 775 ${pkgdir}/etc/gitea/
 
-  install -Dm755 ${srcdir}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+  install -Dm755 ${srcdir}/${pkgname}-${pkgver} ${pkgdir}/usr/bin/${pkgname}
   install -Dm644 ${srcdir}/gitea.service ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
   install -o root -g git -Dm664 ${srcdir}/app.ini ${pkgdir}/etc/gitea/app.ini
 }
