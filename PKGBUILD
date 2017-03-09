@@ -22,7 +22,7 @@ prepare() {
 	cd "${srcdir}/${_gitname}"
 
 	cp "${srcdir}/config.h" .
-	sed -i 's/CFLAGS =/CFLAGS +=/' config.mk
+	sed -i"" 's/CFLAGS =/CFLAGS +=/' config.mk
 }
 
 build() {
