@@ -1,0 +1,15 @@
+pkgbase = thunderbolt-icm-dkms-git
+	pkgdesc = DKMS Package for the thunderbolt ICM driver
+	pkgver = r2.2d1bd45
+	pkgrel = 1
+	url = https://github.com/dell/thunderbolt-icm-dkms
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	optdepends = linux-headers
+	optdepends = linux-lts-headers
+	source = git+https://github.com/dell/thunderbolt-icm-dkms.git
+	sha1sums = SKIP
+
+pkgname = thunderbolt-icm-dkms-git
+
