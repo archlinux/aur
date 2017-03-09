@@ -1,14 +1,16 @@
 # Maintainer: James W. Barnett <jbarnet4 at tulane dot edu>
 pkgname=libgmxfort
-pkgver=0.4.3
-pkgrel=3
+pkgver=0.4.4
+pkgrel=1
 pkgdesc="A Fortran library for use in analyzing GROMACS simulation output files"
 arch=(any)
 url="https://github.com/wesbarnett/libgmxfort"
 license=('GPL')
 depends=('xdrfile')
-source=(https://github.com/wesbarnett/${pkgname}/archive/${pkgver}.tar.gz)
-sha512sums=('719c75f7e643a5e1a0bfbd7e034cbf2c9b4dc61816f807caadadd73f23094b4ea10aa7f174674f5bf5a78e13af380d94fa709b67fd6f911c0ef9591f8002e860')
+source=(https://github.com/wesbarnett/${pkgname}/releases/download/${pkgver}/${pkgname}.${pkgver}.tar.gz{,.sig})
+validpgpkeys=('8535CEF3F3C38EE69555BF67E4B5E45AA3B8C5C3')
+sha512sums=('f2da1ad2ca795b1dfa9cc0c31496a2ef5db99b3d586138d651daf86ae39ff27f2e2dd40a23518f05647447e5bc5aaf67141fee40d22687a4192b3a77322468bb'
+            'SKIP')
 
 prepare() {
     mkdir build
