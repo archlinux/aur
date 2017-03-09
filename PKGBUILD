@@ -8,6 +8,7 @@ url="https://github.com/esovetkin/ledger-plots.git"
 license=('GPL')
 depends=('r')
 makedepends=('git')
+optdepends=('ledger: otherwise the script is useless')
 provides=('ledger-plots')
 replaces=()
 backup=()
