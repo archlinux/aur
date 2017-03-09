@@ -1,0 +1,14 @@
+[Unit]
+Description=Bitcoin Node: a Bitcoin full node
+Conflicts=bn-init.service bs-init.service bs.service
+
+[Service]
+Type=simple
+User=obelisk
+Group=obelisk
+ExecStart=/usr/bin/bn /etc/obelisk/bn/bn.cfg
+ExecReload=/usr/bin/kill -s SIGHUP $MAINPID
+ExecStop=/usr/bin/kill -s SIGINT $MAINPID
+
+[Install]
+WantedBy=multi-user.target

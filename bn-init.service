@@ -1,0 +1,12 @@
+[Unit]
+Description=Bitcoin Node: initialize database in the configured directory
+Conflicts=bn.service bs-init.service bs.service
+
+[Service]
+Type=oneshot
+User=obelisk
+Group=obelisk
+ExecStart=/usr/bin/bn -i /etc/obelisk/bn/bn.cfg
+
+[Install]
+WantedBy=multi-user.target

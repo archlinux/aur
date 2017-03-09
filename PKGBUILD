@@ -2,8 +2,8 @@
 
 pkgname=libbitcoin-node-git
 pkgver=20170307
-pkgrel=2
-pkgdesc="Bitcoin Full Node Library"
+pkgrel=3
+pkgdesc="Bitcoin Full Node"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
@@ -22,13 +22,24 @@ makedepends=('autoconf'
              'm4'
              'make'
              'pkg-config')
-groups=('libbitcoin')
+groups=('libbitcoin' 'obelisk')
 url="https://github.com/libbitcoin/libbitcoin-node"
 license=('AGPL3')
-source=(git+https://github.com/libbitcoin/libbitcoin-node)
-sha256sums=('SKIP')
+source=(git+https://github.com/libbitcoin/libbitcoin-node
+        git+https://github.com/libbitcoin/libbitcoin-node.wiki
+        bn.logrotate
+        bn-init.service
+        bn.service)
+sha256sums=('SKIP'
+            'SKIP'
+            'f291f3b70b430657e92fd165d6a0ebded28681ce57ab1fdb20e9324d4c68da8e'
+            'b1da043ad40e0d80519b32a8b01a66d0fb47a6d2b19e2b7ad3f1b14b6d689bdd'
+            'd3730c0c1e0fc85dec828daef1d92113a6a79f6245617934113f4b31af75bc43')
 provides=('libbitcoin-node')
 conflicts=('libbitcoin-node')
+backup=('etc/obelisk/bn/bn.cfg'
+        'etc/logrotate.d/bn')
+install=bn.install
 
 pkgver() {
   cd ${pkgname%-git}
@@ -41,11 +52,11 @@ prepare() {
   msg2 'Configuring...'
   cp -dpr --no-preserve=ownership data/bn.cfg data/bn.cfg.in
   sed -i \
-    -e 's@^directory.*@directory = /srv/bn/db@' \
-    -e 's@^debug_file.*@debug_file = /var/log/bn/debug.log@' \
-    -e 's@^error_file.*@error_file = /var/log/bn/error.log@' \
-    -e 's@^hosts_file.*@hosts_file = /etc/bn/hosts.cache@' \
-    -e 's@^archive_directory.*@archive_directory = /var/log/bn@' \
+    -e 's@^directory.*@directory = /srv/obelisk/db@' \
+    -e 's@^debug_file.*@debug_file = /var/log/obelisk/bn/debug.log@' \
+    -e 's@^error_file.*@error_file = /var/log/obelisk/bn/error.log@' \
+    -e 's@^hosts_file.*@hosts_file = /etc/obelisk/hosts.cache@' \
+    -e 's@^archive_directory.*@archive_directory = /var/log/obelisk/bn@' \
     data/bn.cfg.in
 }
 
@@ -80,11 +91,26 @@ package() {
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/libbitcoin-node"
 
   msg2 'Installing...'
-  install -dm 700 "$pkgdir/etc/bn"
-  install -dm 755 "$pkgdir/srv/bn"
-  install -dm 755 "$pkgdir/var/log/bn"
+  install -dm 700 "$pkgdir/etc/obelisk"
+  install -dm 755 "$pkgdir/srv/obelisk"
+  install -dm 755 "$pkgdir/var/log/obelisk/bn"
   make DESTDIR="$pkgdir" install
 
+  msg2 'Installing documentation...'
+  cp -dpr --no-preserve=ownership "$srcdir/libbitcoin-node.wiki" \
+    "$pkgdir/usr/share/doc/libbitcoin-node/wiki"
+
   msg2 'Installing conf...'
-  install -Dm 600 data/bn.cfg.in "$pkgdir/etc/bn/bn.cfg"
+  install -Dm 600 data/bn.cfg.in "$pkgdir/etc/obelisk/bn/bn.cfg"
+
+  msg2 'Installing systemd service files...'
+  install -Dm 644 "$srcdir/bn-init.service" -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm 644 "$srcdir/bn.service" -t "$pkgdir/usr/lib/systemd/system"
+
+  msg2 'Installing logrotate conf...'
+  install -Dm 644 "$srcdir/bn.logrotate" "$pkgdir/etc/logrotate.d/bn"
+
+  msg2 'Cleaning up pkgdir...'
+  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
+  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
