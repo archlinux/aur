@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Blunt <arch-packaging@c4k3.net>
 
 pkgname="nbted"
-pkgver="1.3.0"
+pkgver="1.3.1"
 pkgrel="1"
 pkgdesc="Command line NBT editor"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/C4K3/nbted"
 license=('custom')
 makedepends=('rust' 'cargo')
 source=("https://github.com/C4K3/nbted/archive/${pkgver}.tar.gz")
-md5sums=('75ddd5aac0748d2379e1b0701a1057ff')
+md5sums=('26167d796afa05bab7901878d4e46293')
 
 build() {
 	cd $pkgname-$pkgver
