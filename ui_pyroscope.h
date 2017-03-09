@@ -1,0 +1,34 @@
+#ifndef UI_PYROSCOPE_H
+#define UI_PYROSCOPE_H
+
+namespace ps {
+
+enum ColorKind {
+    COL_DEFAULT,
+    COL_PROGRESS0,
+    COL_PROGRESS20,
+    COL_PROGRESS40,
+    COL_PROGRESS60,
+    COL_PROGRESS80,
+    COL_PROGRESS100,
+    COL_PROGRESS120,
+    COL_COMPLETE,
+    COL_SEEDING,
+    COL_STOPPED,
+    COL_QUEUED,
+    COL_INCOMPLETE,
+    COL_LEECHING,
+    COL_ALARM,
+    COL_TITLE,
+    COL_FOOTER,
+    COL_LABEL,
+    COL_ODD,
+    COL_EVEN,
+    COL_INFO,
+    COL_FOCUS,
+    COL_MAX
+};
+
+} // namespace
+
+#endif

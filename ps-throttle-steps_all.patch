@@ -1,0 +1,68 @@
+--- rel-0.9.5/src/ui/root.cc	2015-07-02 00:32:45.000000000 +0200
++++ rtorrent-0.9.5/src/ui/root.cc	2015-07-25 18:14:20.000000000 +0200
+@@ -141,18 +141,18 @@
+   const char* keys = get_throttle_keys();
+ 
+-  m_bindings[keys[ 0]]      = std::tr1::bind(&Root::adjust_up_throttle, this, 1);
+-  m_bindings[keys[ 1]]      = std::tr1::bind(&Root::adjust_up_throttle, this, -1);
+-  m_bindings[keys[ 2]]      = std::tr1::bind(&Root::adjust_down_throttle, this, 1);
+-  m_bindings[keys[ 3]]      = std::tr1::bind(&Root::adjust_down_throttle, this, -1);
+-
+-  m_bindings[keys[ 4]]      = std::tr1::bind(&Root::adjust_up_throttle, this, 5);
+-  m_bindings[keys[ 5]]      = std::tr1::bind(&Root::adjust_up_throttle, this, -5);
+-  m_bindings[keys[ 6]]      = std::tr1::bind(&Root::adjust_down_throttle, this, 5);
+-  m_bindings[keys[ 7]]      = std::tr1::bind(&Root::adjust_down_throttle, this, -5);
+-
+-  m_bindings[keys[ 8]]      = std::tr1::bind(&Root::adjust_up_throttle, this, 50);
+-  m_bindings[keys[ 9]]      = std::tr1::bind(&Root::adjust_up_throttle, this, -50);
+-  m_bindings[keys[10]]      = std::tr1::bind(&Root::adjust_down_throttle, this, 50);
+-  m_bindings[keys[11]]      = std::tr1::bind(&Root::adjust_down_throttle, this, -50);
++  m_bindings[keys[ 0]]      = std::tr1::bind(&Root::adjust_up_throttle, this, 5);
++  m_bindings[keys[ 1]]      = std::tr1::bind(&Root::adjust_up_throttle, this, -5);
++  m_bindings[keys[ 2]]      = std::tr1::bind(&Root::adjust_down_throttle, this, 5);
++  m_bindings[keys[ 3]]      = std::tr1::bind(&Root::adjust_down_throttle, this, -5);
++
++  m_bindings[keys[ 4]]      = std::tr1::bind(&Root::adjust_up_throttle, this, 50);
++  m_bindings[keys[ 5]]      = std::tr1::bind(&Root::adjust_up_throttle, this, -50);
++  m_bindings[keys[ 6]]      = std::tr1::bind(&Root::adjust_down_throttle, this, 50);
++  m_bindings[keys[ 7]]      = std::tr1::bind(&Root::adjust_down_throttle, this, -50);
++
++  m_bindings[keys[ 8]]      = std::tr1::bind(&Root::adjust_up_throttle, this, 500);
++  m_bindings[keys[ 9]]      = std::tr1::bind(&Root::adjust_up_throttle, this, -500);
++  m_bindings[keys[10]]      = std::tr1::bind(&Root::adjust_down_throttle, this, 500);
++  m_bindings[keys[11]]      = std::tr1::bind(&Root::adjust_down_throttle, this, -500);
+ 
+   m_bindings['\x0C']        = std::tr1::bind(&display::Manager::force_redraw, m_control->display()); // ^L
+--- rel-0.9.5/src/ui/download.cc	2015-07-02 00:32:45.000000000 +0200
++++ rtorrent-0.9.5/src/ui/download.cc	2015-07-25 18:06:34.000000000 +0200
+@@ -396,18 +396,18 @@
+   const char* keys = control->ui()->get_throttle_keys();
+ 
+-  m_bindings[keys[ 0]] = std::tr1::bind(&Download::adjust_up_throttle, this, 1);
+-  m_bindings[keys[ 1]] = std::tr1::bind(&Download::adjust_up_throttle, this, -1);
+-  m_bindings[keys[ 2]] = std::tr1::bind(&Download::adjust_down_throttle, this, 1);
+-  m_bindings[keys[ 3]] = std::tr1::bind(&Download::adjust_down_throttle, this, -1);
++  m_bindings[keys[ 0]] = std::tr1::bind(&Download::adjust_up_throttle, this, 5);
++  m_bindings[keys[ 1]] = std::tr1::bind(&Download::adjust_up_throttle, this, -5);
++  m_bindings[keys[ 2]] = std::tr1::bind(&Download::adjust_down_throttle, this, 5);
++  m_bindings[keys[ 3]] = std::tr1::bind(&Download::adjust_down_throttle, this, -5);
+ 
+-  m_bindings[keys[ 4]] = std::tr1::bind(&Download::adjust_up_throttle, this, 5);
+-  m_bindings[keys[ 5]] = std::tr1::bind(&Download::adjust_up_throttle, this, -5);
+-  m_bindings[keys[ 6]] = std::tr1::bind(&Download::adjust_down_throttle, this, 5);
+-  m_bindings[keys[ 7]] = std::tr1::bind(&Download::adjust_down_throttle, this, -5);
++  m_bindings[keys[ 4]] = std::tr1::bind(&Download::adjust_up_throttle, this, 50);
++  m_bindings[keys[ 5]] = std::tr1::bind(&Download::adjust_up_throttle, this, -50);
++  m_bindings[keys[ 6]] = std::tr1::bind(&Download::adjust_down_throttle, this, 50);
++  m_bindings[keys[ 7]] = std::tr1::bind(&Download::adjust_down_throttle, this, -50);
+ 
+-  m_bindings[keys[ 8]] = std::tr1::bind(&Download::adjust_up_throttle, this, 50);
+-  m_bindings[keys[ 9]] = std::tr1::bind(&Download::adjust_up_throttle, this, -50);
+-  m_bindings[keys[10]] = std::tr1::bind(&Download::adjust_down_throttle, this, 50);
+-  m_bindings[keys[11]] = std::tr1::bind(&Download::adjust_down_throttle, this, -50);
++  m_bindings[keys[ 8]] = std::tr1::bind(&Download::adjust_up_throttle, this, 500);
++  m_bindings[keys[ 9]] = std::tr1::bind(&Download::adjust_up_throttle, this, -500);
++  m_bindings[keys[10]] = std::tr1::bind(&Download::adjust_down_throttle, this, 500);
++  m_bindings[keys[11]] = std::tr1::bind(&Download::adjust_down_throttle, this, -500);
+ }
+ 

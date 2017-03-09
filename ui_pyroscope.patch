@@ -1,0 +1,51 @@
+--- orig/src/Makefile.am	2009-11-14 08:34:04.000000000 +0100
++++ rtorrent-0.8.6/src/Makefile.am	2011-05-27 00:38:37.000000000 +0200
+@@ -37,2 +38,3 @@
+ 	main.cc \
++	ui_pyroscope.cc \
+ 	option_parser.cc \
+--- orig/src/command_helpers.cc	2009-11-12 09:03:48.000000000 +0100
++++ rtorrent-0.8.6/src/command_helpers.cc	2011-05-27 00:42:07.000000000 +0200
+@@ -77,2 +78,3 @@
+ void initialize_command_ui();
++void initialize_command_ui_pyroscope();
+ 
+@@ -91,2 +94,3 @@
+   initialize_command_scheduler();
++  initialize_command_ui_pyroscope();
+ 
+--- orig/src/display/canvas.h	2009-11-12 09:03:47.000000000 +0100
++++ rtorrent-0.8.6/src/display/canvas.h	2011-05-28 13:42:58.000000000 +0200
+@@ -134,4 +134,6 @@
+   va_start(arglist, str);
++  if (y < height()) {
+   wmove(m_window, y, x);
+   vw_printw(m_window, const_cast<char*>(str), arglist);
++  }
+   va_end(arglist);
+--- orig/src/display/window_statusbar.cc	2009-11-12 09:03:47.000000000 +0100
++++ rtorrent-0.8.6/src/display/window_statusbar.cc	2011-05-28 19:38:52.000000000 +0200
+@@ -69,2 +69,4 @@
+ 
++  void ui_pyroscope_statusbar_redraw(Window* window, display::Canvas* canvas);
++  ui_pyroscope_statusbar_redraw(this, m_canvas);
+   m_lastTick = control->tick();
+--- orig/src/display/window_download_list.cc	2009-11-12 09:03:47.000000000 +0100
++++ rtorrent-0.8.6/src/display/window_download_list.cc	2011-05-30 20:34:59.000000000 +0200
+@@ -75,2 +75,4 @@
+ 
++  bool ui_pyroscope_download_list_redraw(Window* window, display::Canvas* canvas, core::View* view);
++  if (ui_pyroscope_download_list_redraw(this, m_canvas, m_view)) return;
+   if (m_view->empty_visible() || m_canvas->width() < 5 || m_canvas->height() < 2)
+@@ -107,2 +109,4 @@
+ 
++    void ui_pyroscope_download_list_redraw_item(Window* window, display::Canvas* canvas, core::View* view, int pos, Range& range);
++    ui_pyroscope_download_list_redraw_item(this, m_canvas, m_view, pos, range);
+     ++range.first;
+--- orig/src/display/canvas.cc	2009-11-12 09:03:47.000000000 +0100
++++ rtorrent-0.8.6/src/display/canvas.cc	2011-05-30 21:07:29.000000000 +0200
+@@ -94,2 +94,4 @@
+   initscr();
++  extern void ui_pyroscope_canvas_init();
++  ui_pyroscope_canvas_init();
+   raw();
