@@ -8,7 +8,7 @@ pkgrel='1'
 _tag="${_srcname}-${pkgver}"
 arch=('x86_64')
 url="https://github.com/linux-rdma/${_srcname}"
-license=('GPL2' 'custom:BSD')
+license=('GPL2' 'custom:OpenIB.org BSD (MIT variant)')
 
 depends=('systemd')
 makedepends=('git' 'cmake' 'gcc' 'libnl' 'libsystemd' 'pkg-config' 'ninja' 'bash')
@@ -105,4 +105,7 @@ package() {
     install -D --mode=0755 rdma.mlx4-setup.sh "${pkgdir}/usr/lib/rdma/mlx4-setup.sh"
     install -D --mode=0644 ibacm.service "${pkgdir}/usr/lib/systemd/system/ibacm.service"
     install -D --mode=0644 srp_daemon.service "${pkgdir}/usr/lib/systemd/system/srp_daemon.service"
+
+    cd "${srcdir}/${_srcname}"
+    install -D --mode=0644 COPYING.BSD_MIT "${pkgdir}/usr/share/licenses/${pkgname[0]%-git}/COPYING.BSD_MIT"
 }
