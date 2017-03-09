@@ -1,0 +1,14 @@
+pkgbase = libxdf
+	pkgdesc = A C++ library for loading XDF files
+	pkgver = 0.92
+	pkgrel = 1
+	url = https://github.com/Yida-Lin/libxdf
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-base
+	source = https://github.com/Yida-Lin/libxdf/archive/v0.92.zip
+	sha1sums = be75f14debc022cdd56759c32f0ce6bf35adb182
+
+pkgname = libxdf
+
