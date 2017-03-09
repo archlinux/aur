@@ -12,15 +12,16 @@
 pkgname=firefox-esr-bin
 _pkgname=${pkgname/-bin/}
 pkgver=52.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Standalone web browser from mozilla.org - Extended Support Release'
 url='http://www.mozilla.org/en-US/firefox/organizations/'
 arch=('i686' 'x86_64')
-depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'shared-mime-info' 'gconf')
-optdepends=('libgnome: fixes file association/default browser issues on GNOME desktops.'
-			'gstreamer0.10: HTML5 video'
-			'gstreamer0.10-good-plugins: h.264 video'
-			)
+depends=(gtk3 gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
+         libvpx libevent nss hunspell sqlite ttf-font icu)
+optdepends=('networkmanager: Location detection via available WiFi networks'
+            'libnotify: Notification integration'
+            'upower: Battery API'
+            'speech-dispatcher: Text-to-Speech')
 provides=('firefox=52')
 license=('MPL' 'GPL' 'LGPL')
 install=$_pkgname.install
