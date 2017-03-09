@@ -1,0 +1,53 @@
+--- src/online/kit/KitHelper.hpp	2017-03-09 16:41:20.435936701 +0100
++++ kit/KitHelper.hpp	2017-03-09 16:40:04.095935534 +0100
+@@ -107,8 +107,6 @@
+             return "VIEW_CURSOR_VISIBLE";
+         case LOK_CALLBACK_VIEW_LOCK:
+             return "VIEW_LOCK";
+-        case LOK_CALLBACK_COMMENT:
+-            return "COMMENT";
+         }
+ 
+         return std::to_string(type);
+--- src/online/tools/KitClient.cpp	2017-03-09 16:41:21.052603377 +0100
++++ tools/KitClient.cpp	2017-03-09 16:40:20.639269120 +0100
+@@ -73,7 +73,6 @@
+             CASE(VIEW_LOCK);
+             CASE(REDLINE_TABLE_SIZE_CHANGED);
+             CASE(REDLINE_TABLE_ENTRY_MODIFIED);
+-            CASE(COMMENT);
+ #undef CASE
+         }
+         std::cout << " payload: " << payload << std::endl;
+--- src/online/kit/ChildSession.cpp	2017-03-09 16:41:20.435936701 +0100
++++ kit/ChildSession.cpp	2017-03-09 16:40:12.275935659 +0100
+@@ -1195,9 +1195,6 @@
+     case LOK_CALLBACK_REDLINE_TABLE_ENTRY_MODIFIED:
+         sendTextFrame("redlinetablemodified: " + payload);
+         break;
+-    case LOK_CALLBACK_COMMENT:
+-        sendTextFrame("comment: " + payload);
+-        break;
+     default:
+         LOG_ERR("Unknown callback event (" << type << "): " << payload);
+     }
+--- src/online/kit/Kit.cpp	2017-03-09 16:53:17.175947649 +0100
++++ kit/Kit.cpp	2017-03-09 16:58:35.792619183 +0100
+@@ -17,6 +17,7 @@
+ #include <sys/capability.h>
+ #include <unistd.h>
+ #include <utime.h>
++#include <sys/sysmacros.h>
+ 
+ #include <atomic>
+ #include <cassert>
+@@ -1140,8 +1141,7 @@
+ 
+             const auto flags = LOK_FEATURE_DOCUMENT_PASSWORD
+                              | LOK_FEATURE_DOCUMENT_PASSWORD_TO_MODIFY
+-                             | LOK_FEATURE_PART_IN_INVALIDATION_CALLBACK
+-                             | LOK_FEATURE_NO_TILED_ANNOTATIONS;
++                             | LOK_FEATURE_PART_IN_INVALIDATION_CALLBACK;
+             _loKit->setOptionalFeatures(flags);
+ 
+             // Save the provided password with us and the jailed url

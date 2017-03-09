@@ -16,13 +16,20 @@ conflicts=('libreoffice-online')
 install="libreoffice-online.install"
 
 source=("git+git://gerrit.libreoffice.org/online.git"
-	"loolwsd.service")
+	"loolwsd.service"
+	"git-fixes.patch")
 sha512sums=('SKIP'
-	    '71fd3aec864b1f084dafc602a7fadc91fed146b57dba8cacc7bc277a42f197616a6a43c07d13e2e74a604166cd691a81f5c7de447ddecb680919e3f6b451adb6')
+	    '71fd3aec864b1f084dafc602a7fadc91fed146b57dba8cacc7bc277a42f197616a6a43c07d13e2e74a604166cd691a81f5c7de447ddecb680919e3f6b451adb6'
+	    'abb8f72a19baa4c10e0bcf97f4a037d24bd6dfe1bbc49af18f800d6a7ccbefddd02a27a3a8ce60f0a79f7f882a5ffc63c01102307b78cf1a0466f428dd469fb4')
 
 pkgver() {
   cd "online"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/collabora.online.//g'
+}
+
+prepare() {
+  cd "${srcdir}/online"
+  patch -p0 -i "${srcdir}/git-fixes.patch"
 }
 
 build() {
