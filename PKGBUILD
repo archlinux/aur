@@ -3,7 +3,7 @@
 
 pkgname=libreoffice-online-git
 pkgver=2.0.branch.point.r620.gaf3a9110
-pkgrel=1
+pkgrel=2
 pkgdesc="HTML5-based/cloud-based version of the office suite"
 arch=('x86_64' 'i686')
 url="https://cgit.freedesktop.org/libreoffice/online/"
