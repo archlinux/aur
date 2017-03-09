@@ -18,7 +18,7 @@ _nanopbver=0.3.7
 
 pkgbase=grpc
 pkgname=('grpc' 'php-grpc')
-pkgver=1.1.0
+pkgver=1.1.4
 #_pkgver=release-$(echo $pkgver | tr . _)
 _pkgprefix=v
 _pkgver="$(echo "$pkgver" | tr _ -)"
@@ -33,7 +33,7 @@ source=(
     https://github.com/nanopb/nanopb/archive/nanopb-$_nanopbver.tar.gz
 )
 noextract=("nanopb-$_nanopbver.tar.gz")
-md5sums=('2fc856750df769041b935228a46bdbf8'
+md5sums=('8d800c3640a605cc95dff2d197452d1a'
          '3b3141b1eaba4feb614314659da2d8f1')
 
 prepare() {
