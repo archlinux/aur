@@ -1,0 +1,10 @@
+
+src
+pkg
+
+gmp
+
+*.tar
+*.gz
+*.xz
+
