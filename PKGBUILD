@@ -1,15 +1,19 @@
 # Maintainer: Franco Masotti <franco dot masotti at student dot unife dot it>
 # Contributor: Franco Masotti <franco dot masotti at student dot unife dot it>
 pkgname=rserve-sandbox-docker
-pkgver=r31.d7e1235
+pkgver=r32.a0040e2
 pkgrel=1
 pkgdesc="Docker spec for running Rserve in a sandbox"
 arch=('x86_64')
 url="https://github.com/frnmst/rserve-sandbox"
 license=('BSD')
-depends=('sed'
-         'r'
-         'docker')
+depends=('bash'
+         'coreutils'
+         'docker'
+         'gawk'
+         'make'
+         'sed'
+         'r')
 makedepends=('git'
              'sed')
 conflicts=('rserve-sandbox-docker-bin')

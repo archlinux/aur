@@ -1,6 +1,6 @@
 pkgbase = rserve-sandbox-docker
 	pkgdesc = Docker spec for running Rserve in a sandbox
-	pkgver = r31.d7e1235
+	pkgver = r32.a0040e2
 	pkgrel = 1
 	url = https://github.com/frnmst/rserve-sandbox
 	install = .install
@@ -8,9 +8,13 @@ pkgbase = rserve-sandbox-docker
 	license = BSD
 	makedepends = git
 	makedepends = sed
+	depends = bash
+	depends = coreutils
+	depends = docker
+	depends = gawk
+	depends = make
 	depends = sed
 	depends = r
-	depends = docker
 	conflicts = rserve-sandbox-docker-bin
 	source = git+https://github.com/frnmst/rserve-sandbox#branch=distro-package
 	md5sums = SKIP
