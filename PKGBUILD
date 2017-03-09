@@ -4,7 +4,7 @@ pkgdesc="ROS - Message and service data structures for interacting with Gazebo f
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-indigo-gazebo-msgs'
-pkgver='2.4.10'
+pkgver='2.4.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -39,7 +39,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-indigo-gazebo_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/indigo/gazebo_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('11906115381d0c69666d8fd759a94cf572836ccc574aebbcf56dfd991cf376ea')
+sha256sums=('eba28a1174edc75ec19ea553db0691538f31bcc0fbe1359d31c31fc8425204af')
 
 build() {
   # Use ROS environment variables
