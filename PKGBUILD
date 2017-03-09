@@ -21,6 +21,7 @@ build() {
   # http://forum.dcmtk.org/viewtopic.php?f=3&t=4475
   cd $_pkgname-$pkgver
   cmake . \
+        -DDCMTK_USE_CXX11_STL=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DDCMTK_INSTALL_ETCDIR=/etc/dcmtk \
         -DBUILD_SHARED_LIBS=ON
