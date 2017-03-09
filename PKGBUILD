@@ -3,7 +3,7 @@
 _pkgname=dcmtk
 pkgname=$_pkgname-snapshot
 pkgver=3.6.1_20170228
-pkgrel=1
+pkgrel=2
 pkgdesc='Collection of libraries and applications implementing large parts the DICOM standard'
 arch=('i686' 'x86_64')
 url='http://dicom.offis.de/dcmtk'
@@ -21,6 +21,7 @@ build() {
   # http://forum.dcmtk.org/viewtopic.php?f=3&t=4475
   cd $_pkgname-$pkgver
   cmake . \
+        -DDCMTK_ENABLE_CHARSET_CONVERSION=ICU \
         -DDCMTK_USE_CXX11_STL=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DDCMTK_INSTALL_ETCDIR=/etc/dcmtk \
