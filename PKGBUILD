@@ -1,6 +1,6 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=folly
-pkgver=2016.12.19.00
+pkgver=2017.03.06.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -11,7 +11,7 @@ makedepends=('python2')
 source=("https://github.com/facebook/$pkgname/archive/v${pkgver}.tar.gz"
 'gtest-1.7.0.zip::https://github.com/google/googletest/archive/release-1.7.0.zip'
 )
-md5sums=('86a68bffa3d2d7014ae9ff4d0dfa22ef'
+md5sums=('67e9c744be9e48f10c83b56d2710dc29'
          'ef5e700c8a0f3ee123e2e0209b8b4961')
 
 prepare() {
