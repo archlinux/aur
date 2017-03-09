@@ -37,4 +37,6 @@ package() {
 
 	make PREFIX=/usr DESTDIR="${pkgdir}" install
 	install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	rm -rf "${pkgdir}/usr/share/terminfo"
 }
