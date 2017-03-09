@@ -1,7 +1,7 @@
 # Maintainer: kikadf <kikadf.01@gmail.com>
 
 pkgname=clipgrab-qt5
-pkgver=3.6.3
+pkgver=3.6.4.r9.110924c
 pkgrel=1
 pkgdesc='Fork of ClipGrab to make it compatible with Qt5'
 arch=('i686' 'x86_64')
