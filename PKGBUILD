@@ -1,7 +1,7 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=meshlab-git
-pkgver=2016.12.r10.g781a39a5
-pkgrel=2
+pkgver=2016.12.r92.gbcd7f6c7
+pkgrel=3
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
 url="http://www.meshlab.net"
@@ -19,9 +19,7 @@ source=("git+https://github.com/cnr-isti-vclab/meshlab.git"
         "3ds.patch"
         "levmar.patch"
         "muparser.patch"
-        "bzip2.patch"
         "meshlabserver_GLU.patch"
-        "cpp11_abs.patch"
         "mpir.patch"
         "rpath.patch"
         "meshlab.desktop")
@@ -30,14 +28,12 @@ md5sums=('SKIP'
          'f13d58ca07fa74b3d7c8f7f9d4ee6a93'
          '753dd4753081ddb428f4db8eaefe9009'
          '038494125d7bd422074fc5635c5579ca'
-         'e51b027eb9d78b82de73c4724b3928cf'
-         '9eb027efe2d8584c693a4314db9e5bb5'
-         '64caafa96bef4208d641e889099eba26'
-         '616b0dcf018f46a490867028d6ddc533'
+         '0b338147c8c222cc4681d804bb4e7ae0'
+         'fedc40ddd411a7e41d4be57dbb452262'
+         '543c52237d91c1f6012b34579c4f0c74'
          'ca962601b06fac1fb2b6bf0b408777ad'
-         '76e48d239b21c23dcea9198c69864f69'
-         '5df295c21de5bac8d6073528823d975a'
-         '78bf780b3353fe212a77eb91db6f6b6c'
+         'cb5a75c2f2cdf154ad61f753439f226f'
+         '07da2fc11c1667e6c6a07f0042a2757d'
          '18aed0a21276a22325bf8c32166fb110')
 
 pkgver() {
@@ -57,12 +53,8 @@ prepare() {
   patch -Np0 -i rpath.patch
   msg "fix meshalbserver missing -lGLU"
   patch -Np0 -i meshlabserver_GLU.patch
-  msg "fix cpp11 abs()"
-  patch -Np0 -i cpp11_abs.patch
   msg "using system mpir lib"
   patch -Np0 -i mpir.patch
-  msg "using system bzip2 lib"
-  patch -Np0 -i bzip2.patch
   msg "using system muparser lib"
   patch -Np0 -i muparser.patch
   msg "using system levmar lib"

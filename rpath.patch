@@ -4,7 +4,7 @@ diff -Nur meshlab.orig/src/meshlab/meshlab.pro meshlab/src/meshlab/meshlab.pro
 @@ -130,11 +130,11 @@
  #}
  
- linux-g++:LIBS += -L../external/lib/linux-g++ -ljhead -L../distrib -lcommon -lGLU
+ linux-g++:LIBS += -L$$PWD/../external/lib/linux-g++ -ljhead -L../distrib -lcommon -lGLU
 -linux-g++:QMAKE_RPATHDIR += ../distrib
 +linux-g++:QMAKE_LFLAGS += -Wl,-rpath,/usr/lib/meshlab
  linux-g++-32:LIBS += -L../external/lib/linux-g++-32 -ljhead -L../distrib -lcommon -lGLU

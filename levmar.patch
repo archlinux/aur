@@ -4,9 +4,9 @@
  win32-msvc2012:LIBS	+= ../../external/lib/win32-msvc2012/levmar.lib
  win32-msvc2015:LIBS	+= ../../external/lib/win32-msvc2015/levmar.lib
  win32-g++:LIBS		+= -L../../external/lib/win32-gcc -llevmar
--linux-g++:LIBS		+= -L../../external/lib/linux-g++ -llevmar
--linux-g++-32:LIBS		+= -L../../external/lib/linux-g++-32 -llevmar
--linux-g++-64:LIBS		+= -L../../external/lib/linux-g++-64 -llevmar
+-linux-g++:LIBS		+= -L$$PWD/../../external/lib/linux-g++ -llevmar
+-linux-g++-32:LIBS		+= -L$$PWD/../../external/lib/linux-g++-32 -llevmar
+-linux-g++-64:LIBS		+= -L$$PWD/../../external/lib/linux-g++-64 -llevmar
 +linux-g++:LIBS		+= -llevmar
 +linux-g++-32:LIBS		+=  -llevmar
 +linux-g++-64:LIBS		+=  -llevmar
@@ -93,9 +93,9 @@ index 049bec6..84f6ca9 100644
  win32-msvc2013:  LIBS += ../../external/lib/win32-msvc2013/levmar.lib
  win32-msvc2015:  LIBS += ../../external/lib/win32-msvc2015/levmar.lib
  win32-g++:LIBS += -L../../external -llevmar
--linux-g++:LIBS += -L../../external/lib/linux-g++ -llevmar
--linux-g++-32:LIBS += -L../../external/lib/linux-g++-32 -llevmar
--linux-g++-64:LIBS += -L../../external/lib/linux-g++-64 -llevmar
+-linux-g++:LIBS += -L$$PWD/../../external/lib/linux-g++ -llevmar
+-linux-g++-32:LIBS += -L$$PWD/../../external/lib/linux-g++-32 -llevmar
+-linux-g++-64:LIBS += -L$$PWD/../../external/lib/linux-g++-64 -llevmar
 +linux-g++:LIBS += -llevmar
 +linux-g++-32:LIBS += -llevmar
 +linux-g++-64:LIBS += -llevmar
