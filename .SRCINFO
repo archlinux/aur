@@ -1,6 +1,6 @@
 pkgbase = rust-dwm-status
 	pkgdesc = A status bar for tiling window managers with pretty unicode symbols written in rust
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/pierrechevalier83/rust-dwm-status
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = rust-dwm-status
 	license = MIT
 	makedepends = cargo
 	depends = xorg-xsetroot
-	source = rust-dwm-status-0.1.0.tar.gz::https://crates.io/api/v1/crates/rust-dwm-status/0.1.0/download
-	sha256sums = 579dafb5f4c0de8a8c6e17f94bf7fc6cc9be6e6fa4960b3efc0c22ccca56ed21
+	source = rust-dwm-status-0.1.1.tar.gz::https://crates.io/api/v1/crates/rust-dwm-status/0.1.1/download
+	sha256sums = fc9b91b6679b795957607d16bf28acf1669bdd1e9d9a417561ee1f9f531b8f2d
 
 pkgname = rust-dwm-status
 

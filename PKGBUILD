@@ -2,7 +2,7 @@
 
 pkgname=rust-dwm-status
 _pkgname=rust-dwm-status
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A status bar for tiling window managers with pretty unicode symbols written in rust"
 url="https://github.com/pierrechevalier83/rust-dwm-status"
@@ -11,7 +11,7 @@ depends=('xorg-xsetroot')
 arch=('i686' 'x86_64')
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_pkgname/$pkgver/download")
-sha256sums=('579dafb5f4c0de8a8c6e17f94bf7fc6cc9be6e6fa4960b3efc0c22ccca56ed21')
+sha256sums=('fc9b91b6679b795957607d16bf28acf1669bdd1e9d9a417561ee1f9f531b8f2d')
 build() {
   cd "$_pkgname-$pkgver"
   cargo build --release
