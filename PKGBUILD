@@ -1,13 +1,13 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=sigviewer
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
-pkgdesc="A biosignal viewer"
+pkgdesc="A viewing application for biosignals"
 arch=('i686' 'x86_64')
 url="https://github.com/cbrnr/sigviewer"
 license=('GPL')
 groups=()
-depends=('qt4' 'libbiosig')
+depends=('qt5-base' 'libbiosig' 'libxdf')
 makedepends=('')
 optdepends=()
 provides=()
@@ -17,20 +17,17 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://sourceforge.net/projects/$pkgname/files/$pkgver/$pkgname-$pkgver-src.tar.gz
-        zoom_gui_command.patch)
+source=(https://github.com/cbrnr/sigviewer/archive/v$pkgver.zip)
 noextract=()
-sha1sums=('bc4622c23d7fde98f24bd979b6c61e9f0a2d1627'
-          'cb023fde0a4e87be137fad514990c966681e63ea')
+sha1sums=('97d11343b0aadd3218cd36ce8a624b9af78dd614')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver-src"
-  patch -p0 < ../../zoom_gui_command.patch
-  qmake-qt4
+  cd "$srcdir/sigviewer-$pkgver"
+  qmake
   make
 }
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
-  cp "$srcdir/$pkgname-$pkgver-src/bin/release/sigviewer" "$pkgdir/usr/bin"
+  cp "$srcdir/sigviewer-$pkgver/bin/release/sigviewer" "$pkgdir/usr/bin"
 }
