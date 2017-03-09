@@ -1,6 +1,6 @@
 pkgbase = dvtm-git
 	pkgdesc = Dynamic virtual terminal manager.
-	pkgver = 0.15.20.g43315c0
+	pkgver = 0.15.37.gb45828d
 	pkgrel = 1
 	url = http://www.brain-dump.org/projects/dvtm/
 	arch = i686

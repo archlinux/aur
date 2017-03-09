@@ -2,8 +2,8 @@
 
 _gitname=dvtm
 pkgname=dvtm-git
-pkgver=0.15.20.g43315c0
-pkgver() { cd $_gitname && git describe | sed 's/^v//; s/-/./g'; }
+pkgver=0.15.37.gb45828d
+pkgver() { ( cd $_gitname && git describe | sed 's/^v//; s/-/./g'; ) }
 pkgrel=1
 pkgdesc='Dynamic virtual terminal manager.'
 arch=('i686' 'x86_64')
