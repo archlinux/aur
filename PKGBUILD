@@ -2,8 +2,8 @@
 
 pkgname=libbitcoin-client-git
 pkgver=20170306
-pkgrel=2
-pkgdesc="Bitcoin Client Protocol Library"
+pkgrel=3
+pkgdesc="Bitcoin Client Query Library"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
