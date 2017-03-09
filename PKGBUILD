@@ -11,7 +11,7 @@ pkgdesc="The Ultimate 2D Game Animation Solution."
 arch=('x86_64' 'i686')
 url="https://brashmonkey.com/"
 license=('custom')
-depends=('')
+depends=('gstreamer0.10-base')
 # See http://www.brashmonkeygames.com/spriter/legacyVersions/ for new versions
 source_x86_64=("http://www.brashmonkeygames.com/spriter/legacyVersions/${pkgver/R/r}_$_date/Spriter$pkgver(64).tar.gz")
 source_i686=("http://www.brashmonkeygames.com/spriter/legacyVersions/${pkgver/R/r}_$_date/Spriter$pkgver(32).tar.gz")
