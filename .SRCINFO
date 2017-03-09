@@ -1,0 +1,14 @@
+pkgbase = kcat-docs
+	pkgdesc = Kachina 505DSP - Ham Radio Transceiver Control Program - DOCS
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.w1hkj.com
+	arch = any
+	license = GPL
+	optdepends = kcat
+	source = http://downloads.sourceforge.net/project/fldigi/kcat/kcat-help.zip
+	md5sums = bab4c8473d996d0b45c1b6cf1147cb3a
+	sha256sums = 277a662c57fe8fc155b53ed73f4e597f4cffd84c40877a0c47090c23b3d7f2a5
+
+pkgname = kcat-docs
+
