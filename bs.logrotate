@@ -1,10 +1,10 @@
-/var/log/bs/*.log {
+/var/log/obelisk/bs/*.log {
     size 5M
     missingok
     rotate 7
     compress
     delaycompress
     notifempty
-    create 644 bs bs
+    create 644 obelisk obelisk
     sharedscripts
 }
