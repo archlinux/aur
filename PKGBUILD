@@ -1,7 +1,7 @@
 # Maintainer: eyelash <eyelash@users.noreply.github.com>
 
 pkgname=xi-gtk-git
-pkgver=r39.338feab
+pkgver=r48.2b4a44d
 pkgrel=1
 pkgdesc='a GTK+ front-end for the Xi editor'
 arch=('i686' 'x86_64')
@@ -20,12 +20,13 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$pkgname"
+	if [ -d build ]; then rm -r build; fi
 	mkdir build
 }
 
 build() {
 	cd "$srcdir/$pkgname/build"
-	meson --prefix /usr --buildtype=release ..
+	meson --prefix /usr --buildtype release ..
 	ninja
 }
 

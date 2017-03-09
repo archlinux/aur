@@ -1,6 +1,6 @@
 pkgbase = xi-gtk-git
 	pkgdesc = a GTK+ front-end for the Xi editor
-	pkgver = r38.85e0859
+	pkgver = r48.2b4a44d
 	pkgrel = 1
 	url = https://github.com/eyelash/xi-gtk
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = xi-gtk-git
 	depends = xi-core-git
 	depends = gtk3
 	conflicts = xi-gtk
-	source = git+https://github.com/eyelash/xi-gtk.git
+	source = xi-gtk-git::git+https://github.com/eyelash/xi-gtk.git
 	sha256sums = SKIP
 
 pkgname = xi-gtk-git
