@@ -1,6 +1,6 @@
 # Maintainer: Johannes Pohl <johannes.pohl90@gmail.com>
 pkgname=urh
-license=('Apache')
+license=('GPL3')
 pkgver=1.5.7
 pkgrel=1
 pkgdesc="Universal Radio Hacker: investigate wireless protocols like a boss"

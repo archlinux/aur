@@ -5,7 +5,7 @@ pkgbase = urh
 	url = https://github.com/jopohl/urh
 	arch = i686
 	arch = x86_64
-	license = Apache
+	license = GPL3
 	makedepends = gcc
 	makedepends = python-setuptools
 	depends = python>=3.4
