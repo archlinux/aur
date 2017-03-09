@@ -6,8 +6,8 @@
 
 pkgname=unity-editor-beta
 _version=5.6.0
-_build=b8
-_buildtag=20170214
+_build=b10
+_buildtag=20170306
 pkgver=${_version}${_build}+${_buildtag}
 pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
@@ -33,12 +33,12 @@ optdepends=('ffmpeg: for WebGL exporting'
             'android-sdk: for Android Remote'
             'android-udev: for Android Remote')
 noextract=("unity-editor-installer-${_version}x${_build}Linux.sh")
-source=("http://beta.unity3d.com/download/1da4c632c3f6/unity-editor-installer-5.6.0xb8Linux.sh"
+source=("http://beta.unity3d.com/download/b9488c3b1f9f/unity-editor-installer-5.6.0xb10Linux.sh"
         'EULA'
         'unity-editor-beta'
         'monodevelop-unity-beta'
         'unity-monodevelop-beta.png')
-sha256sums=('85982fc2dd8e08d7cb2908f4b69720171850fbfe892b360ad129c10ab84bd706'
+sha256sums=('eae3fb763c85701bc5d8d2b13ca14aee697de98e6f58cb79e435801b4d7553dc'
             'fb53c6aacb86603f751d710a77e53a5a6ee2a8f34099b7707b0e287b6a57cb2e'
             'a6183b216e30a472b9592059f64a3a6279a9d3e56c5c343c93713b03fa863c4c'
             '336ffc3f63e622aa394e1022c15a58ce94865d7b6d9465cbcca4ce943285763a'
