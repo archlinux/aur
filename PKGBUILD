@@ -3,7 +3,7 @@
 
 _gemname=fastlane
 pkgname=$_gemname
-pkgver=2.19.1
+pkgver=2.19.3
 pkgrel=1
 pkgdesc='The easiest way to automate beta deployments and releases for your iOS and Android apps'
 arch=(any)
@@ -56,7 +56,7 @@ depends=(
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('8b15deb7f0952e40f2b005663dbcbaae5a02cfa3')
+sha1sums=('11dac53d0c6c2fc9ae89f5d56475bd94fda110ab')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
