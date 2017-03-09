@@ -1,13 +1,13 @@
 # Maintainer: Justin Ethier <justin.ethier@gmail.com>
 pkgname=cyclone-scheme
-pkgver=0.3.4.1
+pkgver=0.4
 pkgrel=1
 pkgdesc="A brand-new compiler that allows practical application development using R7RS Scheme"
 arch=('i686' 'x86_64')
 url="https://github.com/justinethier/cyclone-bootstrap"
 license=('MIT')
 groups=()
-depends=('libck')
+depends=('libck' 'libtommath' 'gcc' 'make')
 makedepends=()
 optdepends=()
 provides=()
@@ -20,7 +20,7 @@ changelog=
 source=($url/archive/v$pkgver.tar.gz)
 noextract=()
 #autofill using updpkgsums
-md5sums=('6f9f60b73f195e9bd86552d68c8405da')
+md5sums=('2709a2bc82d70dbb5a1cd4e6c4244317')
 
 build() {
   cd "cyclone-bootstrap-$pkgver"
