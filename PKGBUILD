@@ -2,7 +2,7 @@
 # Contributor: bender02 at gmx dot com
 
 pkgname=mini_httpd
-pkgver=1.25
+pkgver=1.27
 pkgrel=1
 pkgdesc="A small and simple forking http server. CGI, SSL, auth, vhosts, ipv6."
 url="http://www.acme.com/software/mini_httpd/"
@@ -21,7 +21,7 @@ source=("http://www.acme.com/software/${pkgname}/${pkgname}-${pkgver}.tar.gz"
 	'sample_perl.cgi'
 	'LICENSE')
 
-sha1sums=('a4bb2618562fc18028fbbe17be07b13b69eaa622'
+sha1sums=('6c9dc710e027dfecdb7e5ff5c3aeeb183eeb4c4a'
           'df01a85e20a1f684ba3ee80525b0ecd7c1b24b4a'
           'a941b5fc254320a1415397fd25c96bdb6ee13bf3'
           '2d7bebd481f60cc45477be3fe28c6fa62f19ac79'
