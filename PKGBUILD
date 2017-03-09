@@ -2,12 +2,12 @@
 pkgname=python-flask-git
 _pkgname=flask
 pkgver=0.12.r46.g7a5e8ef3
-pkgrel=1
+pkgrel=2
 pkgdesc='Micro webdevelopment framework for Python'
 arch=('any')
 url='http://flask.pocoo.org/'
 license=('custom:BSD')
-depends=('python-werkzeug' 'python-jinja' 'python-itsdangerous', 'python-click')
+depends=('python-werkzeug' 'python-jinja' 'python-itsdangerous' 'python-click')
 makedepends=('git')
 conflicts=('python-flask')
 provides=('python-flask')
