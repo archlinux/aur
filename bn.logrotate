@@ -1,0 +1,10 @@
+/var/log/obelisk/bn/*.log {
+    size 5M
+    missingok
+    rotate 7
+    compress
+    delaycompress
+    notifempty
+    create 644 obelisk obelisk
+    sharedscripts
+}

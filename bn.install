@@ -1,0 +1,54 @@
+_bn_user=obelisk
+_bn_group=obelisk
+
+post_install() {
+  _mkuser
+  chown -R $_bn_user:$_bn_group /etc/obelisk /srv/obelisk /var/log/obelisk
+  printf "%b\n" "$obelisk"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  _rmuser
+  rm -rf /etc/obelisk /srv/obelisk /var/log/obelisk
+}
+
+_mkuser() {
+  getent passwd $_bn_user &>/dev/null || {
+    echo -n "Creating obelisk user... "
+    grep -E "^$_bn_group:" /etc/group >/dev/null || groupadd $_bn_group
+    useradd -m -d /etc/obelisk -g $_bn_group -s /usr/bin/nologin $_bn_user
+    echo "done"
+  }
+}
+
+_rmuser() {
+  echo -n "Removing obelisk user... "
+  userdel -rf $_bn_user 2>/dev/null
+  echo "done"
+}
+
+read -d '' obelisk <<'EOF'
+########################################################################
+########################################################################
+##                                                                    ##
+##  Libbitcoin Node                                                   ##
+##  _______________                                                   ##
+##                                                                    ##
+##  To run:                                                           ##
+##                                                                    ##
+##      systemctl start bn-init # first run only                      ##
+##      systemctl start bn                                            ##
+##                                                                    ##
+##                                                                    ##
+##  Config:        /etc/obelisk/bn/bn.cfg                             ##
+##  Blockchain:    /srv/obelisk                                       ##
+##  Documentation: /usr/share/doc/libbitcoin-node                     ##
+##  Logs:          /var/log/obelisk/bn                                ##
+##                                                                    ##
+########################################################################
+########################################################################
+EOF
