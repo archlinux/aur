@@ -9,7 +9,7 @@
 
 pkgname=mediatomb
 pkgver=0.12.1
-pkgrel=14
+pkgrel=15
 pkgdesc="Free UPnP/DLNA media server"
 arch=('i686' 'x86_64' 'armv6h')
 url="http://mediatomb.cc/"
@@ -29,7 +29,8 @@ source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz
         'libav_0.7_support.patch'
         'libmp4v2_191_p497.patch'
         'libavformat.patch'
-        'symlinks.patch')
+        'symlinks.patch'
+        'truncated_auxdata.patch')
 sha256sums=('31163c34a7b9d1c9735181737cb31306f29f1f2a0335fb4f53ecccf8f62f11cd'
             '99e2602eebb9f5236107b0bee473a4187c7df7732745ad83542a3dcca9cb7d5a'
             'e46de674e49aa85116a8ff127908f7bac21198ce7625404004b8b7832eccd3f4'
@@ -41,7 +42,8 @@ sha256sums=('31163c34a7b9d1c9735181737cb31306f29f1f2a0335fb4f53ecccf8f62f11cd'
             'c6523e8bf5e2da89b7475d6777ef9bffe7d089752ef2f7b27b5e39a4130fb0ff'
             'd39c2f9aab051c5447461718fd0ec72cf5982f6c920a4a985a50831f34babe84'
             '76b11706d70ed8f5e157d96ca441c90c46c42176102fcb651b4ab1102b61bfee'
-            '72f7532d7cd827ab655df652d2912175739fe16d2b1ad989d987a0b147a1d2e8')
+            '72f7532d7cd827ab655df652d2912175739fe16d2b1ad989d987a0b147a1d2e8'
+            'a831bc5d107345bcb6e2d417b7cb0d6890dfde8e262f0cf532d21998cfc42db7')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -53,6 +55,8 @@ prepare() {
   patch -Np1 < "${srcdir}/libmp4v2_191_p497.patch"
   patch -Np1 < "${srcdir}/libavformat.patch"
   patch -Np1 < "${srcdir}/symlinks.patch"
+  # See https://sourceforge.net/p/mediatomb/bugs/78/
+  patch -Np1 < "${srcdir}/truncated_auxdata.patch"
 }
 
 build() {

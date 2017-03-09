@@ -1,0 +1,13 @@
+diff -Nru mediatomb-0.12.1/src/metadata/taglib_handler.cc mediatomb-0.12.1.new/src/metadata/taglib_handler.cc
+--- mediatomb-0.12.1/src/metadata/taglib_handler.cc	2010-03-25 15:58:10.000000000 +0100
++++ mediatomb-0.12.1.new/src/metadata/taglib_handler.cc	2013-04-16 14:23:00.772805429 +0200
+@@ -227,7 +227,8 @@
+                             {
+                                 TagLib::String frameContents = textFrame->toString();
+                                 //log_debug("We have a match!!!!: %s\n", frameContents.toCString(true));
+-                                String value(frameContents.toCString(true), frameContents.size());
++                                //String value(frameContents.toCString(true), frameContents.size());
++                                String value(frameContents.toCString(true));
+                                 value = sc->convert(value);
+                                 log_debug("Adding frame: %s with value %s\n", desiredFrame.c_str(), value.c_str());
+                                 item->setAuxData(desiredFrame, value);
