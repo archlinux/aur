@@ -2,7 +2,7 @@
 # Contributor: Franco Masotti <franco dot masotti at student dot unife dot it>
 pkgname=rserve-sandbox-docker-bin
 pkgver=r6.fb0ec65
-pkgrel=2
+pkgrel=3
 pkgdesc="Pre-compiled version of a Docker spec for running Rserve in a sandbox"
 arch=('x86_64')
 url="https://gitlab.com/frnmst/rserve-sandbox-bin"

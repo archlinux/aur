@@ -1,14 +1,16 @@
 post_install() {
     # Add rserve user and group.
-    getent group rserve &>/dev/null || groupadd -g 32749 -r rserve >/dev/null
-    getent passwd rserve &>/dev/null || useradd -u 32749 -m -d /home/rserve \
+    getent group rserve 1>/dev/null 2>/dev/null \
+|| groupadd -g 32749 -r rserve >/dev/null
+    getent passwd rserve 1>/dev/null 2>/dev/null \
+|| useradd -u 32749 -m -d /home/rserve \
 -s /bin/false -r -g rserve rserve >/dev/null    
     # Exec the chmod just like in the Makefile.
     chmod 750 /home/rserve
 
     # Add rsd user and group.
-    getent group rsd &>/dev/null || groupadd -r rsd >/dev/null
-    getent passwd rsd &>/dev/null || useradd -s /bin/false \
+    getent group rsd 1>/dev/null 2>/dev/null || groupadd -r rsd >/dev/null
+    getent passwd rsd 1>/dev/null 2>/dev/null || useradd -s /bin/false \
 -r -g rsd rsd >/dev/null
 
     # This is explained in the Arch Wiki. It seems that anyone belonging to the 
