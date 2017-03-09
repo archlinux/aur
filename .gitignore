@@ -6,6 +6,7 @@
 
 *.tar
 *.gz
+*.xz
 *.tgz
 *.bz2
 *.sig

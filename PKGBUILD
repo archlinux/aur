@@ -46,13 +46,14 @@ fi
 # Package metadata
 #####
 
-pkgname=xen
+pkgbase=xen
+pkgname=(xen xen-docs)
 pkgver="${_xen_version}"
-pkgrel=3
+pkgrel=4
 pkgdesc='Virtual Machine Hypervisor & Tools'
 url='http://www.xenproject.org/'
 license=('GPL2')
-install="${pkgname}.install"
+install="${pkgbase}.install"
 changelog='ChangeLog'
 validpgpkeys=('23E3222C145F4475FA8060A783FE14C957E82BD9') # Xen.org Xen tree code signing
 arch=('x86_64') # TODO What about ARM?
@@ -71,7 +72,7 @@ depends=(
 	libiscsi
 	libnl
 	libpng
-	lzo2
+	lzo
 	pciutils
 	python2
 	sdl
@@ -84,25 +85,20 @@ makedepends=(
 	bin86
 	cmake
 	dev86
+	fig2dev
 	figlet
+	ghostscript
 	git
 	iasl
 	markdown
+	mingw-w64-binutils
 	nasm
 	ocaml-findlib
+	pandoc
+	perl
 	spice-protocol
 	wget
 )
-
-# For building Xen EFI boot file.
-# mingw-w64-binutils only needed if
-# binutils not built with --enable-targets=x86_64-pep
-_binutils_efi=false
-if [ "$(ld -V)" = *'i386pep'* ]; then
-	_binutils_efi=true
-else
-	makedepends+=(mingw-w64-binutils)
-fi
 
 optdepends=(
 	'xen-docs: Official Xen Documentation'
@@ -110,18 +106,17 @@ optdepends=(
 )
 backup=(
 	etc/conf.d/xen{commons,domains}
-	"etc/${pkgname}/efi-xen.cfg"
-	"etc/${pkgname}/cpupool"
-	"etc/${pkgname}/grub.conf"
-	"etc/${pkgname}/oxenstored.conf"
-	"etc/${pkgname}/xl.conf"
+	"etc/${pkgbase}/efi-xen.cfg"
+	"etc/${pkgbase}/cpupool"
+	"etc/${pkgbase}/grub.conf"
+	"etc/${pkgbase}/oxenstored.conf"
+	"etc/${pkgbase}/xl.conf"
 )
-
 
 # Sources
 source=(
-	"http://bits.xensource.com/oss-xen/release/${pkgver}/${pkgname}-${pkgver}.tar.gz"
-	"http://bits.xensource.com/oss-xen/release/${pkgver}/${pkgname}-${pkgver}.tar.gz.sig"
+	"http://bits.xensource.com/oss-xen/release/${pkgver}/${pkgbase}-${pkgver}.tar.gz"
+	"http://bits.xensource.com/oss-xen/release/${pkgver}/${pkgbase}-${pkgver}.tar.gz.sig"
 	"http://xenbits.xen.org/xen-extfiles/ipxe-git-${_git_tag_ipxe}.tar.gz"
 
 	'seabios'::"git://xenbits.xen.org/seabios.git${_git_tag_seabios}"
@@ -148,7 +143,7 @@ source=(
 	'grub-mkconfig-helper'
 	'efi-xen.cfg'
 	'grub.conf'
-	"${pkgname}.conf"
+	"${pkgbase}.conf"
 	'tmpfiles.conf'
 )
 
@@ -228,7 +223,7 @@ if [ "$_build_stubdom" = true ] ; then
 fi
 
 prepare() {
-	cd "${pkgname}-${pkgver}/"
+	cd "${srcdir}/${pkgbase}-${pkgver}"
 
 	msg2 'Copying downloaded files...'
 	mkdir -p tools/firmware/{seabios,ovmf}-dir-remote/ tools/firmware/etherboot
@@ -255,12 +250,10 @@ prepare() {
 	popd
 
 	# Patch EFI binary build with mingw
-	if [ "${_binutils_efi}" != true ]; then
-		msg2 'Patching EFI build...'
-		sed -i.bak '/ EFI_LD/s/LD/LD_EFI/' xen/arch/x86/Makefile
-		sed -i.bak 's/LD/LD_EFI/' xen/arch/x86/efi/Makefile
-		sed -i.bak '/EFI_MOUNTPOINT .*/aLD_EFI ?= $(LD)' xen/Makefile
-	fi
+	msg2 'Patching EFI build...'
+	sed -i.bak '/ EFI_LD/s/LD/LD_EFI/' xen/arch/x86/Makefile
+	sed -i.bak 's/LD/LD_EFI/' xen/arch/x86/efi/Makefile
+	sed -i.bak '/EFI_MOUNTPOINT .*/aLD_EFI ?= $(LD)' xen/Makefile
 
 	# OVMF Compile support (Pulls from git repo, so patching to patch after pull request)
 	msg2 'Patching OVMF Python version...'
@@ -294,7 +287,7 @@ prepare() {
 }
 
 build() {
-	cd "${pkgname}-${pkgver}/"
+	cd "${srcdir}/${pkgbase}-${pkgver}"
 	export LD_EFI='/usr/x86_64-w64-mingw32/bin/ld'
 	if [ "${_build_stubdom}" = true ] ; then
 		local _config_stubdom='--enable-stubdom'
@@ -309,27 +302,17 @@ build() {
 		--with-sysconfig-leaf-dir=conf.d \
 		--with-initddir=/etc/init.d \
 		--enable-systemd \
-		--disable-docs \
 		--enable-ovmf \
 		"${_config_stubdom:---disable-stubdom}" \
-		--with-extra-qemuu-configure-args="--disable-bluez --disable-gtk --enable-spice --enable-usb-redir"
-		#--with-system-qemu --with-system-seabios --with-system-ovmf 
-		#defaults --enable-qemu-traditional --enable-rombios \
+		--with-extra-qemuu-configure-args="--disable-bluez --disable-gtk --enable-spice --enable-usb-redir" \
+		#--with-system-qemu --with-system-seabios --with-system-ovmf \
 
-	msg2 'Building Xen (1/3)...'
-	make LANG=C PYTHON=python2 dist-misc
-	msg2 'Building Xen (2/3)...'
-	make LANG=C PYTHON=python2 dist-xen
-	msg2 'Building Xen (3/3)...'
-	make LANG=C PYTHON=python2 dist-tools
-	if [ "$_build_stubdom" = true ] ; then
-		msg2 'Building Stubdom...'
-		make LANG=C PYTHON=python2 dist-stubdom
-	fi
+	msg2 'Building Xen...'
+	make LANG=C PYTHON=python2 dist
 }
 
-package() {
-	cd "${pkgname}-${pkgver}/"
+package_xen() {
+	cd "${srcdir}/${pkgbase}-${pkgver}"
 
 	msg2 'Installing Xen...'
 	make DESTDIR="${pkgdir}" LANG=C PYTHON=python2 install
@@ -338,7 +321,7 @@ package() {
 
 	# Install files for Arch
 	msg2 'Installing Arch-specific files...'
-	install -Dm644 "${srcdir}/tmpfiles.conf" "usr/lib/tmpfiles.d/${pkgname}.conf"
+	install -Dm644 "${srcdir}/tmpfiles.conf" "usr/lib/tmpfiles.d/${pkgbase}.conf"
 	install -Dm644 "${srcdir}/grub.conf" etc/xen/grub.conf
 	install -Dm755 "${srcdir}/grub-mkconfig-helper" etc/grub.d/09_xen
 	install -Dm644 "${srcdir}/efi-xen.cfg" etc/xen/efi-xen.cfg
@@ -389,4 +372,20 @@ package() {
 
 	# adhere to Static Library Packaging Guidelines
 	rm -f usr/lib/*.a
+}
+
+package_xen-docs() {
+	pkgdesc='Virtual Machine Hypervisor documentation'
+	install=''
+	arch=('any')
+	conflicts=()
+	provides=()
+	depends=()
+	optdepends=()
+	backup=()
+
+	cd "${srcdir}/${pkgbase}-${pkgver}"
+
+	msg2 'Installing documentation...'
+	make DESTDIR="${pkgdir}" LANG=C PYTHON=python2 install-docs
 }
