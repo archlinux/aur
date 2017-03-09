@@ -1,7 +1,7 @@
 # Maintainer: Alexander Fasching <fasching.a91@gmail.com>
 pkgname=direwolf-git
 _pkgname=direwolf
-pkgver=1.3.r2.g6207e2e
+pkgver=1.4.dev.E.r12.gb6254da
 pkgrel=1
 pkgdesc="Dire Wolf is a software modem/TNC and APRS encoder/decoder"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -11,7 +11,7 @@ depends=('alsa-lib' 'gpsd')
 makedepends=('make' 'gcc' 'patch')
 provides=('direwolf')
 conflicts=('direwolf')
-source=("git+https://github.com/wb2osz/direwolf.git"
+source=("git+https://github.com/wb2osz/direwolf.git#branch=dev"
         'Makefile.patch'
         'direwolf.service'
         'direwolf-kiss.service')
