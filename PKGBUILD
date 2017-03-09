@@ -1,6 +1,6 @@
 # Maintainer: angelsl
 pkgname=bannertool-git
-pkgver=1456909511.c518996
+pkgver=1488384336.59046e2
 pkgrel=1
 pkgdesc=" A tool for creating 3DS banners. "
 arch=('i686' 'x86_64')
@@ -32,5 +32,5 @@ build() {
 }
 
 package() {
-	install -D "$srcdir/$_gitname/output/bannertool" "$pkgdir/usr/bin/bannertool"
+	install -D "$srcdir/$_gitname/output/linux-$CARCH/bannertool" "$pkgdir/usr/bin/bannertool"
 }
