@@ -4,7 +4,7 @@ pkgdesc="ROS - Provides ROS plugins that offer message and service publishers fo
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-indigo-gazebo-ros'
-pkgver='2.4.10'
+pkgver='2.4.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -50,7 +50,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-indigo-gazebo_ros-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/indigo/gazebo_ros/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('51867091ef4384e9e4b0733aa27661192045b2fc07dc0bbd78bedb26242e5cad')
+sha256sums=('263cb7deb6a38b19ef70e3b790865e5ede81a4a5c07b694be0262d2928cf2b1d')
 
 build() {
   # Use ROS environment variables
