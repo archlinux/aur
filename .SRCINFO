@@ -20,6 +20,4 @@ pkgbase = perl-gtk2-unique
 	md5sums = f8e15e1b93e2629e1745f8e4de8524ff
 
 pkgname = perl-gtk2-unique
-	depends = perl
-	depends = gtk2-perl
-	depends = libunique
+
