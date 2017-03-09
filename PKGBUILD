@@ -12,6 +12,7 @@ depends=('libxml2' 'libwrap' 'libjpeg-turbo' 'libpng' 'libtiff')
 makedepends=('git' 'cmake' 'libsndfile' 'doxygen')
 provides=("$_pkgname")
 conflicts=("$_pkgname"{,-snapshot})
+backup=("etc/dcmtk/"{dcmpstat,dcmqrscp,filelog,logger,printers,storescp,storescu}.cfg)
 source=("git://git.dcmtk.org/dcmtk.git")
 sha256sums=("SKIP")
 
@@ -27,6 +28,7 @@ build() {
   cmake . \
         -DDCMTK_USE_CXX11_STL=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DDCMTK_INSTALL_ETCDIR=/etc/dcmtk \
         -DBUILD_SHARED_LIBS=ON
   make
   make html
