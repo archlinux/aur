@@ -2,14 +2,14 @@
 
 pkgbase=python-dj-database-url
 pkgname=('python-dj-database-url' 'python2-dj-database-url')
-pkgver=0.3.0
-pkgrel=1
+pkgver=0.4.2
+pkgrel=0
 arch=('i686' 'x86_64')
 url="https://github.com/kennethreitz/dj-database-url"
 license=('BSD')
 makedepends=('python2' 'python')
-source=("https://pypi.python.org/packages/source/d/dj-database-url/dj-database-url-$pkgver.tar.gz")
-md5sums=('28f89d403b565ee62dc25582852ae241')
+source=("https://github.com/kennethreitz/dj-database-url/archive/v$pkgver.tar.gz")
+md5sums=('c7c63c1a57ee464d15ea26d1a21e9536')
 
 prepare() {
    cp -r dj-database-url-${pkgver} python2-dj-database-url-${pkgver}
