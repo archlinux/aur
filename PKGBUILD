@@ -4,7 +4,7 @@ pkgdesc="ROS - gazebo_ros_control."
 url='http://ros.org/wiki/gazebo_ros_control'
 
 pkgname='ros-indigo-gazebo-ros-control'
-pkgver='2.4.10'
+pkgver='2.4.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -48,7 +48,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-indigo-gazebo_ros_control-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/indigo/gazebo_ros_control/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b9c7b2358e2e989b3776c39035cca1501b7de16a1b8feba58aa84b382376ebb6')
+sha256sums=('eb3b7416f01e5fb205933eb7bfd00845b2adde14948c01e304fa8ed852a8140f')
 
 build() {
   # Use ROS environment variables
