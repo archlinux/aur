@@ -1,7 +1,7 @@
 # Maintainer: James W. Barnett <jbarnet4 at tulane dot edu>
 pkgname=libgmxfort
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Fortran library for use in analyzing GROMACS simulation output files"
 arch=(any)
 url="https://github.com/wesbarnett/libgmxfort"
@@ -15,7 +15,7 @@ sha512sums=('f2da1ad2ca795b1dfa9cc0c31496a2ef5db99b3d586138d651daf86ae39ff27f2e2
 prepare() {
     mkdir build
     cd build
-    cmake "${srcdir}/${pkgname}-${pkgver}"
+    cmake "${srcdir}/${pkgname}"
 }
 
 build() {

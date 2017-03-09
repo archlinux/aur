@@ -1,7 +1,7 @@
 pkgbase = libgmxfort
 	pkgdesc = A Fortran library for use in analyzing GROMACS simulation output files
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wesbarnett/libgmxfort
 	arch = any
 	license = GPL
