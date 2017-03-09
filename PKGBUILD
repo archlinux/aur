@@ -1,0 +1,104 @@
+#!/usr/bin/bash
+# shellcheck disable=SC2034,SC2154,SC2164
+pkgname=('rdma-core')
+_srcname='rdma-core'
+pkgdesc='RDMA core userspace libraries and daemons'
+pkgver='12'
+pkgrel='1'
+_tag="${_srcname}-${pkgver}"
+arch=('x86_64')
+url="https://github.com/linux-rdma/${_srcname}"
+license=('GPL2' 'custom:BSD')
+
+depends=('systemd')
+makedepends=('git' 'cmake' 'gcc' 'libnl' 'libsystemd' 'pkg-config' 'ninja' 'bash')
+provides=("${pkgname[0]%-git}" 'rdma' 'ibacm' 'iwpmd' 'libibcm' 'libibumad' 'libibverbs' 'librdmacm')
+conflicts=("${pkgname[0]%-git}" 'rdma' 'ibacm' 'iwpmd' 'libibcm' 'libibumad' 'libibverbs' 'librdmacm')
+
+source=("${_srcname}::git+${url}.git#tag=${_tag}")
+sha512sums=('SKIP')
+validpgpkeys=('AE6B1BDA122B23B4265B1274B826A3330E572FDD')
+
+_validate_tag() {
+  local success fingerprint trusted status
+
+  parse_gpg_statusfile /dev/stdin < <( git verify-tag --raw "${_tag}" 2>&1 )
+
+  if (( ! success )); then
+    error 'failed to validate tag %s\n' "${_tag}"
+    return 1
+  fi
+
+  if ! in_array "${fingerprint}" "${validpgpkeys[@]}" && (( ! trusted )); then
+    error 'unknown or untrusted public key: %s\n' "${fingerprint}"
+    return 1
+  fi
+
+  case "${status}" in
+    'expired')
+      warning 'the signature has expired'
+      ;;
+    'expiredkey')
+      warning 'the key has expired'
+      ;;
+  esac
+
+  return 0
+}
+
+prepare() {
+    cd "${srcdir}/${_srcname}"
+
+    _validate_tag || return
+
+    find redhat -type f -exec sed --in-place \
+        --expression='s|/usr/libexec|/usr/lib/rdma|g' \
+        --expression='s|/usr/sbin|/usr/bin|g' \
+        --expression='s|/sbin|/usr/bin|g' \
+        '{}' '+'
+}
+
+build() {
+    cd "${srcdir}/${_srcname}"
+
+    mkdir build
+    cd build
+    cmake \
+        -GNinja \
+        -DENABLE_VALGRIND=0 \
+        -DCMAKE_BUILD_TYPE='Release' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DCMAKE_INSTALL_SBINDIR='bin' \
+        -DCMAKE_INSTALL_LIBDIR='lib' \
+        -DCMAKE_INSTALL_LIBEXECDIR='lib/rdma' \
+        -DCMAKE_INSTALL_SYSCONFDIR='/etc' \
+        ..
+    ninja
+}
+
+package() {
+    cd "${srcdir}/${_srcname}/build"
+    export DESTDIR="${pkgdir}"
+    ninja install
+
+    rm --recursive "${pkgdir}/etc/init.d"
+
+    cd "${srcdir}/${_srcname}/redhat"
+    install -D --mode=0644 rdma.conf "${pkgdir}/etc/rdma/rdma.conf"
+    install -D --mode=0644 rdma.sriov-vfs "${pkgdir}/etc/rdma/sriov-vfs"
+    install -D --mode=0644 rdma.mlx4.conf "${pkgdir}/etc/rdma/mlx4.conf"
+    install -D --mode=0644 rdma.service "${pkgdir}/usr/lib/systemd/system/rdma.service"
+    install -D --mode=0644 rdma.udev-ipoib-naming.rules "${pkgdir}/etc/udev/rules.d/70-persistent-ipoib.rules"
+    install -D --mode=0644 rdma.mlx4.user.modprobe "${pkgdir}/etc/modprobe.d/mlx4.conf"
+    install -D --mode=0755 rdma.modules-setup.sh "${pkgdir}/usr/lib/dracut/modules.d/05rdma/module-setup.sh"
+    install -D --mode=0644 rdma.udev-rules "${pkgdir}/usr/lib/udev/rules.d/98-rdma.rules"
+    install -D --mode=0644 rdma.mlx4.sys.modprobe "${pkgdir}/usr/lib/modprobe.d/libmlx4.conf"
+    install -D --mode=0644 rdma.cxgb3.sys.modprobe "${pkgdir}/usr/lib/modprobe.d/cxgb3.conf"
+    install -D --mode=0644 rdma.cxgb4.sys.modprobe "${pkgdir}/usr/lib/modprobe.d/cxgb4.conf"
+    install -D --mode=0755 rdma.kernel-init "${pkgdir}/usr/lib/rdma/rdma-init-kernel"
+    install -D --mode=0755 rdma.sriov-init "${pkgdir}/usr/lib/rdma/rdma-set-sriov-vf"
+    install -D --mode=0644 rdma.fixup-mtrr.awk "${pkgdir}/usr/lib/rdma/rdma-fixup-mtrr.awk"
+    install -D --mode=0755 rdma.mlx4-setup.sh "${pkgdir}/usr/lib/rdma/mlx4-setup.sh"
+    install -D --mode=0644 ibacm.service "${pkgdir}/usr/lib/systemd/system/ibacm.service"
+    install -D --mode=0644 srp_daemon.service "${pkgdir}/usr/lib/systemd/system/srp_daemon.service"
+}
