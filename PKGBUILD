@@ -24,14 +24,14 @@ pkgver() {
 prepare() {
     cd "chewing-editor"
 
-    patch -Np1 -i ../qtchooser-notfound.patch
-    mkdir -p build
+    patch -Np1 -i "../qtchooser-notfound.patch"
+    mkdir -p "build"
 }
 
 build() {
     cd "chewing-editor/build"
 
-    cmake ../ -DCMAKE_INSTALL_PREFIX='/usr'
+    cmake ../ -DCMAKE_INSTALL_PREFIX="/usr"
     make
 }
 
@@ -45,5 +45,5 @@ package() {
     cd "chewing-editor/build"
 
     make DESTDIR="$pkgdir" install
-    install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/chewing-editor/COPYING"
+    install -Dm644 "../COPYING" "$pkgdir/usr/share/licenses/chewing-editor/COPYING"
 }
