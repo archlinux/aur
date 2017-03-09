@@ -23,8 +23,11 @@ function pkgver() {
 build() {
 	cd flowd
 
-  autoreconf
-	./configure --prefix=/usr --sysconfdir=/etc
+	autoreconf
+	./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--sbindir=/usr/bin
 	make
 }
 
@@ -35,5 +38,3 @@ package() {
 	install -Dm644 LICENSE \
 		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
