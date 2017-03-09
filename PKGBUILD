@@ -53,15 +53,27 @@ pkgrel=4
 pkgdesc='Virtual Machine Hypervisor & Tools'
 url='http://www.xenproject.org/'
 license=('GPL2')
-install="${pkgbase}.install"
 changelog='ChangeLog'
 validpgpkeys=('23E3222C145F4475FA8060A783FE14C957E82BD9') # Xen.org Xen tree code signing
-arch=('x86_64') # TODO What about ARM?
-conflicts=(xen-4.2{,-testing-hg} xen-{gdbsx,hg-unstable,rc,git,igvtg} xen-4.3{,-testing-hg} xen-4.{4..8})
-provides=("xen-${pkgver}")
 options=(!buildflags !strip)
-# Dependencies
-depends=(
+makedepends=(
+	bin86
+	cmake
+	dev86
+	fig2dev
+	figlet
+	ghostscript
+	git
+	iasl
+	markdown
+	mingw-w64-binutils
+	nasm
+	ocaml-findlib
+	pandoc
+	perl
+	spice-protocol
+	wget
+	# Dependencies from xen
 	bridge-utils
 	curl
 	gnutls
@@ -80,37 +92,6 @@ depends=(
 	usbredir
 	yajl
 	# TODO why not use system's seabios, ovmf, qemu
-)
-makedepends=(
-	bin86
-	cmake
-	dev86
-	fig2dev
-	figlet
-	ghostscript
-	git
-	iasl
-	markdown
-	mingw-w64-binutils
-	nasm
-	ocaml-findlib
-	pandoc
-	perl
-	spice-protocol
-	wget
-)
-
-optdepends=(
-	'xen-docs: Official Xen Documentation'
-	'openvswitch: Optional Networking support'
-)
-backup=(
-	etc/conf.d/xen{commons,domains}
-	"etc/${pkgbase}/efi-xen.cfg"
-	"etc/${pkgbase}/cpupool"
-	"etc/${pkgbase}/grub.conf"
-	"etc/${pkgbase}/oxenstored.conf"
-	"etc/${pkgbase}/xl.conf"
 )
 
 # Sources
@@ -312,6 +293,43 @@ build() {
 }
 
 package_xen() {
+	depends=(
+		bridge-utils
+		curl
+		gnutls
+		iproute2
+		lib32-glibc
+		libaio
+		libcap-ng
+		libiscsi
+		libnl
+		libpng
+		lzo
+		pciutils
+		python2
+		sdl
+		spice
+		usbredir
+		yajl
+		# TODO why not use system's seabios, ovmf, qemu
+	)
+	optdepends=(
+		'xen-docs: Official Xen Documentation'
+		'openvswitch: Optional Networking support'
+	)
+	backup=(
+		etc/conf.d/xen{commons,domains}
+		"etc/${pkgbase}/efi-xen.cfg"
+		"etc/${pkgbase}/cpupool"
+		"etc/${pkgbase}/grub.conf"
+		"etc/${pkgbase}/oxenstored.conf"
+		"etc/${pkgbase}/xl.conf"
+	)
+	install="${pkgbase}.install"
+	arch=('x86_64') # TODO What about ARM?
+	conflicts=(xen-4.2{,-testing-hg} xen-{gdbsx,hg-unstable,rc,git,igvtg} xen-4.3{,-testing-hg} xen-4.{4..8})
+	provides=("xen-${pkgver}")
+
 	cd "${srcdir}/${pkgbase}-${pkgver}"
 
 	msg2 'Installing Xen...'
@@ -376,13 +394,9 @@ package_xen() {
 
 package_xen-docs() {
 	pkgdesc='Virtual Machine Hypervisor documentation'
-	install=''
 	arch=('any')
-	conflicts=()
-	provides=()
-	depends=()
-	optdepends=()
-	backup=()
+	conflicts=(xen-docs-4.2{,-testing-hg} xen-docs-{gdbsx,hg-unstable,rc,git,igvtg} xen-docs-4.3{,-testing-hg} xen-docs-4.{4..8})
+	provides=("xen-docs-${pkgver}")
 
 	cd "${srcdir}/${pkgbase}-${pkgver}"
 
