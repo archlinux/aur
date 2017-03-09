@@ -3,7 +3,7 @@
 
 pkgname=gqrx
 pkgver=2.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Interactive SDR receiver waterfall for many devices."
 arch=('i686' 'x86_64')
 url="http://gqrx.dk/"
@@ -17,6 +17,7 @@ md5sums=('369809501f08ae13d56115e7491c3b20'
 
 prepare() {
   cd "$srcdir"
+  echo "StartupNotify=false" >> gqrx-$pkgver/gqrx.desktop
   cp -r gqrx-$pkgver gqrx-$pkgver-alsa
   cd gqrx-$pkgver-alsa
   sed -i 's/AUDIO_BACKEND = pulse/#&/' gqrx.pro
@@ -38,10 +39,8 @@ build() {
 }
 
 package() {
-  cd "$srcdir"
-  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-
   cd "$srcdir/$pkgname-$pkgver"
+  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 "resources/icons/gqrx.svg" "$pkgdir/usr/share/pixmaps/gqrx.svg"
 
   cd "$srcdir/$pkgname-$pkgver/build"
