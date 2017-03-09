@@ -1,58 +1,47 @@
 # Contributor: Dirk Sohler <spam@0x7be.de>               
-# Maintainer: Hunter Jones <hjones2199 at gmail dot com>
-# vim: ts=4:sw=4
-
+# Contributor: Hunter Jones <hjones2199 at gmail dot com>
+# Maintainer: Thomas Bork <tab dot epic at gmail dot com>
 pkgname=worldpainter
-pkgver=1.11.1
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='An interactive map generator for Minecraft'
 
 url='http://www.worldpainter.net/'
 arch=('any')
-license=('GPLv3')
+license=('GPL')
 
-depends=('java-runtime')
+depends=('java-environment' 'sh' 'lib32-libxi')
 optdepends=('minecraft: for playing the exported maps')
 
 source=("http://www.worldpainter.net/files/${pkgname}_${pkgver}.tar.gz"
 		'worldpainter.png'
 		'worldpainter.desktop'
 		'launch-script')
-sha256sums=('00a0519db43aab2120dfd1908b24591539476b6d61a47c843cce5208ab5559d3'
+sha256sums=('03dc7351da34f7689e13b5bc90e38f285ec3132b6167b75a1432099e8a93fe12'
             'a93cd4af0e8ef470f48a8dd2773fb9d83a5302f1b9bfba67f43b4ec7500a039e'
-            '6bdff6cdee30f78887d3d602ad3e06d202e50ea737a5c30831ad3fef5ebfd3ca'
-            '31548f2fbfe224651b7df023697f6c024377816b09192af229284c8fe939aaed')
-
-
+            '669f78518b75b441f4382cfd14e207dd91ee1dc967383db1771ec202dbb07cb4'
+            'fd64d11450f03c8924cbc133a009b3373bc5f80b2589b63391b65db04d82963f')
 
 package() {
-	cd ${srcdir}
-	tar xf ${pkgname}_${pkgver}.tar.gz
+	cd "${srcdir}"
+	tar xf worldpainter_${pkgver}.tar.gz
 
-	install -dm755 ${pkgdir}/opt/$pkgname/{bin,lib,.install4j}
+	install -dm755 ${pkgdir}/opt/worldpainter/{bin,lib,.install4j}
 	install -dm755 ${pkgdir}/usr/share/{pixmaps,applications}
 
-	install -Dm644 ${srcdir}/$pkgname/bin/* \
-		${pkgdir}/opt/$pkgname/bin/
+	install -Dm644 ${srcdir}/$pkgname/bin/* ${pkgdir}/opt/$pkgname/bin/
 
-	install -Dm644  ${srcdir}/$pkgname/lib/* \
-		${pkgdir}/opt/$pkgname/lib/
+	install -Dm644  ${srcdir}/$pkgname/lib/* ${pkgdir}/opt/$pkgname/lib/
 
-	install -Dm644 ${srcdir}/$pkgname/*.vmoptions \
-		${pkgdir}/opt/$pkgname/
+	install -Dm644 ${srcdir}/$pkgname/*.vmoptions ${pkgdir}/opt/$pkgname/
 
-	install -Dm755 ${srcdir}/$pkgname/worldpainter \
-		${pkgdir}/opt/$pkgname/
+	install -Dm755 ${srcdir}/$pkgname/worldpainter ${pkgdir}/opt/$pkgname/
 
-	install -Dm755 ${srcdir}/$pkgname/.install4j/* \
-		${pkgdir}/opt/$pkgname/.install4j
+	install -Dm755 ${srcdir}/$pkgname/.install4j/* ${pkgdir}/opt/$pkgname/.install4j
 
-	install -Dm755 ${srcdir}/worldpainter.png \
-		${pkgdir}/usr/share/pixmaps/
+	install -Dm755 ${srcdir}/worldpainter.png ${pkgdir}/usr/share/pixmaps/
 
-	install -Dm755 ${srcdir}/launch-script \
-		${pkgdir}/usr/bin/worldpainter
+	install -Dm755 ${srcdir}/launch-script ${pkgdir}/usr/bin/worldpainter
 
-	install -Dm644 ${srcdir}/worldpainter.desktop \
-		${pkgdir}/usr/share/applications/worldpainter.desktop
+	install -Dm644 ${srcdir}/worldpainter.desktop ${pkgdir}/usr/share/applications/worldpainter.desktop
 }
