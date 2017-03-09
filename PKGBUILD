@@ -3,13 +3,14 @@
 
 pkgname=textext-hg
 pkgver=r289.3235507055c9
-pkgrel=1
+pkgrel=2
 pkgdesc="An inkscape extension which lets you add LaTeX equations to your drawings"
 arch=('any')
 license=('custom:BSD')
 url="https://bitbucket.org/pitgarbe/textext"
 provides=('textext')
 conflicts=('textext')
+makedepends=('mercurial')
 depends=('inkscape' 'python2' 'texlive-core')
 optdepends=('pygtk' 'python2-lxml' 'pdf2svg' 'pstoedit' 'ghostscript' 'imagemagick')
 source=("textext::hg+https://bitbucket.org/pitgarbe/textext")
