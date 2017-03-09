@@ -1,6 +1,6 @@
 # Maintainer: mawcomw <mawcomw@gmail.com>
 pkgname=limesurvey
-pkgver=2.5.0.160727
+pkgver=2.63.1.170305
 pkgrel=1
 pkgdesc="Then open source survey application."
 arch=('any')
@@ -23,14 +23,14 @@ provides=('limesurvey')
 #options=()
 #install=limesurvey.install
 #changelog
-source=('https://github.com/LimeSurvey/LimeSurvey/archive/2.50_plus_160727.tar.gz'
+source=('https://github.com/LimeSurvey/LimeSurvey/archive/2.63.1+170305.tar.gz'
 	'apache.example.conf')
 #noextract
 #md5sums=()
 #sha1sums=()
 #sha256sums=()
 #sha384sums=()
-sha512sums=('594f65572bb48fe840ca4ddcbcc9071c509d8a61f395cb607eb5616183c86554246c42379f531986a804c1369b9d087de6c8f077ac563ee541d60fe42490903e'
+sha512sums=('e6a72ff5b4d5fa53cc8092f02cb6321d427ec9c7067dbb301b055249a42c6238b159b2d580b63955245cc22728ef2453ef4e60884cc254aa98b81f661466384e'
 	    'e594a3a02cb04e1cca9ddf1c5995344f20adc9c5543fe622ad66fdc48d587fc969541530f1e2a8883e0f501ed1b2d409c23ecc7cd8e29aaea0369f625cd4f417')
 
 build() {
