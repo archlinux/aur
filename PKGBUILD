@@ -2,7 +2,7 @@
 
 pkgname=xctu
 pkgver=6.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Next Generation Configuration Platform for XBee/RF Solutions."
 arch=('i686' 'x86_64')
 url="http://www.digi.com/products/xbee-rf-solutions/xctu-software/xctu"
@@ -18,10 +18,12 @@ elif [[ $CARCH == 'x86_64' ]]; then
     md5sums=('47cfcde687bf56196de66476fe8bca27')
 fi
 source=("http://ftp1.digi.com/support/utilities/$_setup_file"
+        'launcher.sh'
         'xctu.desktop'
         'fix.patch')
-md5sums+=('53dff8062eaad0249252f0bb93ad7404'
-          '1e0ebe726f6d5304091d6e10d01de7be')
+md5sums+=('9ebb584444f6e9417bb74c1f4c5792cd'
+         '8268deecea042c3d4d557d6a47f1f004'
+         '1e0ebe726f6d5304091d6e10d01de7be')
 noextract=()
 
 prepare() {
@@ -41,7 +43,7 @@ package() {
     install -Dm644 $srcdir/$pkgname/doc/License_Agreements.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
     # Launcher
-    install -Dm755 $srcdir/$pkgname/launcher $pkgdir/usr/bin/$pkgname
+    install -Dm755 $srcdir/launcher.sh $pkgdir/usr/bin/$pkgname
 
     # Desktop file
     install -Dm644 $srcdir/$pkgname/icon.xpm $pkgdir/usr/share/icons/hicolor/256x256/apps/xctu.xpm
