@@ -1,8 +1,8 @@
 post_install() {
     # Add swish user and group with a home directory (which will contain all 
     # the packs).
-    getent group swish &>/dev/null || groupadd -r swish >/dev/null
-    getent passwd swish &>/dev/null || useradd -m -d /home/swish \
+    getent group swish 1>/dev/null 2>/dev/null || groupadd -r swish >/dev/null
+    getent passwd swish 1>/dev/null 2>/dev/null || useradd -m -d /home/swish \
 -r -g swish swish >/dev/null
 
     # Add swish user to the rserve group. If this is not done, access to the 
