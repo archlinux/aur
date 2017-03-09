@@ -1,7 +1,7 @@
 # Maintainer: Laurent Tréguier <laurent@treguier.org>
 
 pkgname=lzfse-git
-pkgver=r50.497c5c1
+pkgver=r53.88e2d27
 pkgrel=1
 pkgdesc="The LZFSE compression library and command line tool"
 arch=("i686" "x86_64")
