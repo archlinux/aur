@@ -21,7 +21,7 @@ optdepends=('libgnome: fixes file association/default browser issues on GNOME de
 			'gstreamer0.10: HTML5 video'
 			'gstreamer0.10-good-plugins: h.264 video'
 			)
-provides=('firefox=45')
+provides=('firefox=52')
 license=('MPL' 'GPL' 'LGPL')
 install=$_pkgname.install
 sha512sums=('e7179ecc044a8e2c08e3d56ca01cc777ff9a868c243a4b31abf000306751213c29261b29e9d58e108c2a3b4d1c63137888e382d6850fc792c680f693b8cead33'
