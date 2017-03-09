@@ -17,6 +17,4 @@ pkgbase = perl-gnome2-wnck
 	md5sums = 439f4569ffd7af96ef1d3feaab23760e
 
 pkgname = perl-gnome2-wnck
-	depends = perl
-	depends = gtk2-perl
-	depends = libwnck
+
