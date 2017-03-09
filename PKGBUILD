@@ -15,7 +15,7 @@ checkdepends=(shellcheck)
 
 #changelog="CHANGELOG"
 source=(https://github.com/clawoflight/aursec/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz{,.asc})
-sha512sums=('05d886761a5a853ee7d7aad014641519ff987718b9dec34ca24afd6a0c48ae0d612774003f95e2b6633c0a4d8dee8b52d00a29d880c216cc19d57034818b2f35'
+sha512sums=('6cdc05801def3295df5dc6bc0d0a87ed3dcae7dc4f9b640150f2b2d5f773d8a20ac9ea9e47e93bc5133230e3a549670e51400f6cabbea62b4153587e19157a5a'
             'SKIP')
 validpgpkeys=('871F10477DB3DDED5FC447B226C7E577EF967808'
 	          'EF685CFEA6460909C7E1EE70A3BD44B344AAE1FD')
