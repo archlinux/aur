@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Ganttproject
 Comment=GanttProject is a project scheduling application featuring gantt chart, resource management, calendaring
-Icon=/opt/ganttproject/plugins/net.sourceforge.ganttproject/data/resources/logos/icon64.png
+Icon=/opt/ganttproject/plugins-2.8.3/ganttproject/data/resources/icons/ganttproject.png
 Exec=/opt/ganttproject/ganttproject
 Terminal=false
 Type=Application
