@@ -31,7 +31,7 @@ prepare() {
 build() {
     cd "chewing-editor/build"
 
-    cmake ../ -DCMAKE_INSTALL_PREFIX="/usr"
+    cmake -DCMAKE_INSTALL_PREFIX="/usr" ../
     make
 }
 
