@@ -1,1 +1,3 @@
 /arch-https-mirrors/
+arch-https-mirrors-git-*.log
+arch-https-mirrors-git-*.pkg.tar.xz
