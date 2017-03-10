@@ -21,8 +21,8 @@ install=$pkgname.install
 options=('!emptydirs' '!makeflags')
 source=(hg+http://hg.mozilla.org/comm-central
         thunderbird-hg.desktop)
-sha256sums=('SKIP'
-            'e4613036e6073ddc508eeb6386ae4cb2170304ff0bb0dafbbdccf1953b6a3b7c')
+sha512sums=('SKIP'
+            '52d5706996e6a511fc7bc15cdf2d68888c1ddd674719dacdc10a0604dc97f159a203a051b9c2ba98536486f108fa0b74c319300ad26d5e1312bdb1f456aed788')
 _hgrepo="comm-central"
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
