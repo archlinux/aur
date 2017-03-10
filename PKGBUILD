@@ -9,7 +9,7 @@
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
 pkgver=1.10.2
-pkgrel=1
+pkgrel=2
 _commit=8076a19fdcab7e1fc1707952d652f0bb6c6db331
 arch=('i686' 'x86_64' 'armv7h')
 url='https://code.visualstudio.com/'
@@ -19,9 +19,9 @@ depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'libxtst' 'nss' 'alsa-lib')
 conflicts=('vscode-oss')
 provides=('vscode-oss')
 
-source=("${pkgver}-${pkgrel}.tar.gz::https://github.com/Microsoft/vscode/archive/${_commit}.tar.gz"
+source=("vscode::git+https://github.com/Microsoft/vscode#commit=${_commit}"
         "${pkgname}.desktop")
-sha256sums=('fce99893a486c08f558556c80d99a2835b6d55f39e06f9e07aab69985c96e804'
+sha256sums=('SKIP'
             '2ce2c6033667092c5e854036b676533fd433e9daf9ac8ce0f00606193420e72d')
 
 if (( VSCODE_NONFREE )); then
@@ -48,7 +48,7 @@ case "$CARCH" in
 esac
 
 prepare() {
-    cd "${srcdir}/vscode-${_commit}"
+    cd "${srcdir}/vscode"
 
     if (( VSCODE_NONFREE )); then
         patch -p1 -i "${srcdir}/product_json.patch"
@@ -59,7 +59,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/vscode-${_commit}"
+    cd "${srcdir}/vscode"
 
     ./scripts/npm.sh install --arch=${_vscode_arch}
 
