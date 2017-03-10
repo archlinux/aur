@@ -1,0 +1,12 @@
+pkgbase = newrelic-infra
+	pkgver = 1.0.336
+	pkgrel = 1
+	url = https://download.newrelic.com/infrastructure_agent/linux/apt/pool/main/n/newrelic-infra
+	arch = x86_64
+	license = custom
+	depends = curl
+	source = https://download.newrelic.com/infrastructure_agent/linux/apt/pool/main/n/newrelic-infra/newrelic-infra_systemd_1.0.336_amd64.deb
+	sha256sums = cbb4f9eaa497114b470d3b62b13f11c49101916d5e914294399ecaf45f330a39
+
+pkgname = newrelic-infra
+
