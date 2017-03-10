@@ -1,5 +1,5 @@
 # Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
-pkgname=python-simplesoapy
+pkgname=simplesoapy
 _pkgname=simplesoapy
 pkgver=1.1.0
 pkgrel=1
