@@ -1,6 +1,6 @@
 pkgbase = libinput-gestures-git
 	pkgdesc = Actions gestures on your touchpad using libinput
-	pkgver = r73.d5f2b84
+	pkgver = r101.fb14540
 	pkgrel = 1
 	url = https://github.com/bulletmark/libinput-gestures
 	install = libinput-gestures-git.install
@@ -10,9 +10,10 @@ pkgbase = libinput-gestures-git
 	depends = libinput
 	depends = xdotool
 	depends = python
-	provides = libinput-gestures=r73.d5f2b84
+	depends = wmctrl
+	provides = libinput-gestures=r101.fb14540
 	conflicts = libinput-gestures
-	backup = etc/conf.d/libinput-gestures.conf
+	backup = etc/libinput-gestures.conf
 	source = libinput-gestures::git+https://github.com/bulletmark/libinput-gestures
 	sha512sums = SKIP
 
