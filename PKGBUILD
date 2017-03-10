@@ -2,7 +2,7 @@
 
 _plug=yadifmod
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r9.2.gdf73634
+pkgver=r10.0.g89e70a1
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
 arch=('i686' 'x86_64')
@@ -13,24 +13,29 @@ makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-Yadifmod.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
   echo "$(git describe --long --tags | tr - .)"
 }
 
+prepare() {
+  cd "${_plug}"
+  ./autogen.sh
+}
+
 build() {
   cd "${_plug}"
   ./configure \
-    --install="${pkgdir}/usr/lib/vapoursynth" \
-    --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS}" \
-    --extra-ldflags="${LDFLAGS}"
+    --prefix=/usr \
+    --libdir=/usr/lib/vapoursynth
+
   make
 }
 
 package(){
   cd "${_plug}"
-  make install
+  make DESTDIR="${pkgdir}" install
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
