@@ -23,7 +23,7 @@ source=("https://github.com/rakshasa/$_pkgname/archive/$pkgver.tar.gz"
         "ui_pyroscope.h"
         "ui_pyroscope.patch")
 md5sums=('b8b4009f95f8543244ae1d23b1810d7c'
-         'e7e55ab66fbb8663a466723b8d6b7c10'
+         'd44e605a784ec45b0bfafce3676842c4'
          'f1539d70c74e5c74d8a15d51675aa26c'
          '2d34e8c86c1c6ed1354b55ca21819886'
          'cef14e9011d4b4af92536b02f8b611c2'
