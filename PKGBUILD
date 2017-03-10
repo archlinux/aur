@@ -3,7 +3,7 @@
 
 pkgname=cups-xerox-phaser-3600
 pkgver=3.00.27+187
-pkgrel=1
+pkgrel=2
 pkgdesc="CUPS driver for the Xerox Phaser 3600 series. Also supports fc2218, pe120, pe220, Phaser 3117, 3200, 3250, 3250, 3300, 3435, 3600, 6110, WorkCentre 3210, 3220, 4118"
 url="http://www.support.xerox.com/support/phaser-3600/downloads/enus.html?operatingSystem=linux"
 license=('custom')
@@ -34,8 +34,8 @@ package() {
         mv "${pkgdir}"/usr/lib64/* "${pkgdir}/usr/lib/"
         rmdir "${pkgdir}/usr/lib64"
     fi
-    mkdir ${pkgdir}/usr/share
-    cp -a noarch/at_opt/share/ppd ${pkgdir}/usr/share/
+    mkdir -p ${pkgdir}/usr/share/cups/model
+    cp -a noarch/at_opt/share/ppd/* ${pkgdir}/usr/share/cups/model/
     rm -rf ${pkgdir}/usr/sbin
 }
 
