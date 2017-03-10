@@ -8,7 +8,7 @@ pkgdesc='Extended rTorrent distribution with UI enhancements, colorization, and 
 url='https://github.com/pyroscope/rtorrent-ps'
 license=('GPL')
 arch=('any')
-depends=('cppunit' 'curl>=7.15.4' 'libtorrent-ps==0.13.6' 'ncurses' 'xmlrpc-c')
+depends=('cppunit' 'curl>=7.15.4' 'libtorrent-ps=0.13.6' 'ncurses' 'xmlrpc-c')
 provides=('rtorrent')
 conflicts=('rtorrent' 'rtorrent-cdl' 'rtorrent-color' 'rtorrent-git' 'rtorrent-ipv6' 'rtorrent-ps-git' 'rtorrent-pyro-git' 'rtorrent-vi-color')
 source=("https://github.com/rakshasa/$_pkgname/archive/$pkgver.tar.gz"
