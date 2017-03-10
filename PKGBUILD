@@ -1,8 +1,8 @@
 # Maintainer: crasm <crasm@aur.1.email.vczf.io>
 pkgname="openvpn-reconnect"
 pkgver="1"
-pkgrel="1"
-pkgdesc="A simple script for reconnecting openvpn."
+pkgrel="2"
+pkgdesc="A systemd hook for reconnecting OpenVPN after suspend"
 arch=("any")
 url="https://github.com/crasm/openvpn-reconnect"
 license=("ISC")
