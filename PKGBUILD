@@ -3,9 +3,9 @@
 # Contributor: Michael Schubert <mschu.dev at gmail> 
 
 pkgname=gnome-shell-extension-system-monitor-git
-pkgver=704.8b31f07
+pkgver=752.9ff9ac6
 _gitname=gnome-shell-system-monitor-applet
-pkgrel=2
+pkgrel=1
 pkgdesc="System monitor extension for Gnome-Shell (display mem swap cpu usage)"
 arch=('any')
 url="http://github.com/paradoxxxzero/gnome-shell-system-monitor-applet"
@@ -15,7 +15,7 @@ makedepends=('git')
 provides=("system-monitor-applet gnome-shell-system-monitor-applet-git")
 replaces=("gnome-shell-system-monitor-applet-git")
 conflicts=("gnome-shell-system-monitor-applet-git")
-source=('git://github.com/paradoxxxzero/gnome-shell-system-monitor-applet.git')
+source=('git+https://github.com/paradoxxxzero/gnome-shell-system-monitor-applet.git')
 sha1sums=('SKIP')
 
 package() {
