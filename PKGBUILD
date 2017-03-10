@@ -1,8 +1,8 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-opus
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 license=('GPL2')
 arch=('i686' 'x86_64')
 pkgdesc="OCaml bindings for Opus audio codec"
@@ -11,7 +11,7 @@ depends=('ocaml' 'opus' 'ocaml-ogg')
 makedepends=('ocaml-findlib')
 source=("https://github.com/savonet/ocaml-opus/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
-md5sums=('c58b1ff9859ce31b56f5cba9d22f91a2')
+md5sums=('dd96c90b18ac838e3680dd5127dc67c9')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
