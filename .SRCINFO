@@ -1,7 +1,7 @@
 pkgbase = ocaml-sqlite3
 	pkgdesc = SQLite3 bindings for OCaml
 	pkgver = 4.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mmottl/sqlite3-ocaml
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = ocaml-sqlite3
 	makedepends = ocaml
 	makedepends = ocaml-findlib
 	makedepends = sqlite3
+	makedepends = ocamlbuild
 	options = !makeflags
 	options = staticlibs
 	source = https://github.com/mmottl/sqlite3-ocaml/releases/download/v4.0.5/sqlite3-ocaml-4.0.5.tar.gz
