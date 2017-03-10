@@ -1,7 +1,7 @@
 pkgbase = uget-chrome-wrapper
 	pkgdesc = Integrate uGet Download Manager with Google Chrome
 	pkgver = 2.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/slgobinath/uget-chrome-wrapper
 	install = uget-chrome-wrapper.install
 	arch = any

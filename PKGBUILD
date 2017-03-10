@@ -1,7 +1,7 @@
 #Maintainer : Sasasu <lizhaolong0123@gmail.com>
 pkgname=uget-chrome-wrapper
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Integrate uGet Download Manager with Google Chrome"
 arch=('any')
 url="https://github.com/slgobinath/uget-chrome-wrapper"
@@ -28,4 +28,8 @@ package() {
 	#for chromium and Vivaldi if you not use chromium or vivaldi please delete them
 	mkdir -p "$pkgdir/etc/chromium/native-messaging-hosts"
 	install -Dm644 "com.javahelps.ugetchromewrapper.json" "$pkgdir"/etc/chromium/native-messaging-hosts
+	
+	#for opera if you not use opera please delete them
+	mkdir -p "$pkgdir/etc/opera/native-messaging-hosts"
+	install -Dm644 "com.javahelps.ugetchromewrapper.json" "$pkgdir"/etc/opera/native-messaging-hosts
 }
