@@ -1,14 +1,14 @@
 pkgbase = 2048-rs
-	pkgdesc = A cli implementation of the popular 2048 game written in rust
-	pkgver = 0.4.0
+	pkgdesc = A very pretty cli implementation of the popular 2048 game written in rust
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/pierrechevalier83/2048
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = 2048-rs-0.4.0.tar.gz::https://crates.io/api/v1/crates/game-2048/0.4.0/download
-	sha256sums = 73ab1f3ffa49e5149774358ffd9f0ad0bec0e6f18644f72436650dc53226e0f7
+	source = 2048-rs-0.5.0.tar.gz::https://crates.io/api/v1/crates/game-2048/0.5.0/download
+	sha256sums = 7b4c6bb8bc283427b2faac0817c0d14dcf97a04c07436f76076b941be7ddb07d
 
 pkgname = 2048-rs
 
