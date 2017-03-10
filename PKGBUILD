@@ -2,7 +2,7 @@
 
 pkgname=ginkgo-cadx
 _pkgname=ginkgocadx
-pkgver=3.8.4
+pkgver=3.8.5
 pkgrel=1
 pkgdesc='Advanced DICOM viewer and dicomizer'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('jsoncpp' 'wxgtk' 'dcmtk-snapshot' 'insight-toolkit' 'vtk6' 'openmpi')
 makedepends=('git' 'cmake' 'libwrap' 'glu' 'python2' 'qt5-webkit' 'webkitgtk2'
             'gdal' 'unixodbc' 'ffmpeg')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/gerddie/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=('4e766c1882eb7cb8c64af1a9291959a11c4f1300b3bc9af0b1dda402d3e7d63d')
+sha256sums=('c234f3f035d4ed1ed68718ed43a7e6168513758f0f434361e51aab65cea8290a')
 
 build() {
   rm -Rf build && mkdir build
