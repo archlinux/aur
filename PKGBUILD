@@ -1,10 +1,10 @@
 # Maintainer: Kasei Wang <cnsdwpc at gmail.com>
 _pkgname=kcptun
 pkgname=$_pkgname-bin
-pkgver=20170308
+pkgver=20170310
 pkgrel=1
 pkgdesc="An extremely simple udp tunnel based on KCP"
-arch=("i686" "x86_64")
+arch=("i686" "x86_64" "armv6h" "armv7h")
 url="https://github.com/xtaci/kcptun"
 license=("MIT")
 depends=()
@@ -15,13 +15,30 @@ conflicts=("kcptun")
 if [ "$CARCH" = "i686" ]; then
   _arch="386"
   source=("https://github.com/xtaci/kcptun/releases/download/v$pkgver/kcptun-linux-$_arch-$pkgver.tar.gz")
-  sha1sums=('31de1a4bbeecbba8026f329c8ff4ec2c406193f6')
+  sha1sums=('9ee7c27e9c0c595001d6a02a5cb2a369b8cbe132')
 fi
 if [ "$CARCH" = "x86_64" ]; then
   _arch="amd64"
   source=("https://github.com/xtaci/kcptun/releases/download/v$pkgver/kcptun-linux-$_arch-$pkgver.tar.gz")
-  sha1sums=('f26940bf1bf8e4c066d53f5ae5f696994be1bd18')
+  sha1sums=('6758746337fe63f9138ad24c9bf8c11d9488cb55')
 fi
+if [[ "$CARCH" = arm* ]]; then
+  case "$CARCH" in
+    "armv6h")
+      _arch="arm6"
+      ;;
+    "armv7h")
+      _arch="arm7"
+      ;;
+    *)
+      echo "Unsupported ARM architecture: $CARCH"
+      exit 1
+      ;;
+  esac
+  source=("https://github.com/xtaci/kcptun/releases/download/v$pkgver/kcptun-linux-arm-$pkgver.tar.gz")
+  sha1sums=('7c1000eef59a717c8121a232f5b65b3207fcfe76')
+fi
+
 source+=('example_client.json'
          'example_server.json'
          'kcptun@.service'
