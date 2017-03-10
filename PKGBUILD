@@ -1,17 +1,32 @@
-# Maintainer: Marcel O'Neil <marcel@marceloneil.com>
+# Maintainer: Charlie Li <vishwin AT vishwin POINT info>
 
 pkgname=cockroachdb
-pkgver=20170223
+pkgver=20170309
 pkgrel=1
 pkgdesc="An open source, survivable, strongly consistent, scale-out SQL database"
 arch=('x86_64')
 url="https://www.cockroachlabs.com/"
 license=('Apache')
-depends=('gcc-libs')
-source=("https://binaries.cockroachdb.com/cockroach-beta-${pkgver}.linux-amd64.tgz")
-sha256sums=('91851dc2aaf90d23cd4c6a100177376f47a1a0e567ea237002378e2d1d0b7dbc')
+depends=('gcc-libs>=6.0')
+makedepends=('gcc>=6.0' 'git>=1.8' 'go')
+source=("${pkgname}::git+https://github.com/cockroachdb/cockroach.git#tag=beta-${pkgver}")
+sha256sums=('SKIP')
+
+prepare() {
+	export GOPATH=$(pwd)/go
+	mkdir -p ${GOPATH}/src/github.com/cockroachdb
+	cp -r ${pkgname} ${GOPATH}/src/github.com/cockroachdb/cockroach
+}
+
+build() {
+	export GOPATH=$(pwd)/go
+	cd ${GOPATH}/src/github.com/cockroachdb/cockroach
+	make .bootstrap
+	go build -v -i -o cockroach
+}
 
 package() {
-  cd $srcdir/cockroach-beta-${pkgver}.linux-amd64/
-  install -Dm755 cockroach "${pkgdir}/usr/bin/cockroach"
+	export GOPATH=$(pwd)/go
+	cd ${GOPATH}/src/github.com/cockroachdb/cockroach
+	install -Dm755 cockroach ${pkgdir}/usr/bin/cockroach
 }
