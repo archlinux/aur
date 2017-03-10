@@ -1,6 +1,6 @@
 pkgbase = okular-light
 	pkgdesc = KDE document viewer, without Mobi/ePub/CHM and Text-to-Speech
-	pkgver = 16.12.2
+	pkgver = 16.12.3
 	pkgrel = 1
 	url = https://kde.org/applications/graphics/okular/
 	arch = i686
@@ -26,10 +26,10 @@ pkgbase = okular-light
 	depends = kparts
 	provides = okular
 	conflicts = okular
-	source = https://download.kde.org/stable/applications/16.12.2/src/okular-16.12.2.tar.xz
-	source = https://download.kde.org/stable/applications/16.12.2/src/okular-16.12.2.tar.xz.sig
+	source = https://download.kde.org/stable/applications/16.12.3/src/okular-16.12.3.tar.xz
+	source = https://download.kde.org/stable/applications/16.12.3/src/okular-16.12.3.tar.xz.sig
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
-	sha256sums = 6c8aa4eb80ff27dee18a49b71f7a336bc4ab19b69fa234e431e046e629371f08
+	sha256sums = 3b5a315030ffaedd6ddcb2bd1742737edb49063adc355c2dbba1ecb86dca34be
 	sha256sums = SKIP
 
 pkgname = okular-light
