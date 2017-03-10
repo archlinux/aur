@@ -1,0 +1,12 @@
+# Ignore downloaded source files
+*.tar.gz
+*.tar.xz
+
+# Ignore packages
+*.pkg.tar.xz
+
+# Ignore log files
+*.log
+
+# Ignore all subdirs
+*/*
