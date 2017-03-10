@@ -31,7 +31,8 @@ package() {
     cp -a "${arch_dir}/at_root/usr" "${pkgdir}/"
     cp -a "${arch_dir}/at_opt/lib" "${pkgdir}/usr/"
     if [[ "$CARCH" == "x86_64" ]]; then
-        mv ${pkgdir}/usr/lib64 ${pkgdir}/usr/lib
+        mv "${pkgdir}"/usr/lib64/* "${pkgdir}/usr/lib/"
+        rmdir "${pkgdir}/usr/lib64"
     fi
     mkdir ${pkgdir}/usr/share
     cp -a noarch/at_opt/share/ppd ${pkgdir}/usr/share/
