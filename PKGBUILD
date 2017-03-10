@@ -2,8 +2,8 @@
 # Contributor: 
 _python2_ver_major=$(pacman -Qi python2|gawk '$1~/Version/{split($3,v,".");print v[1] "." v[2]}')
 pkgname=mesos
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A cluster manager that simplifies the complexity of running applications on a shared pool of servers"
 arch=('i686' 'x86_64')
 url=http://mesos.apache.org/
@@ -18,7 +18,7 @@ source=("http://www.apache.org/dist/$pkgname/$pkgver/$pkgname-${pkgver}.tar.gz"
 
 # official signature file:
 # "http://www.apache.org/dist/$pkgname/$pkgver/$pkgname-${pkgver}.tar.gz.asc"
-md5sums=('ff89748a6668425d462dcaa12608cf8a'
+md5sums=('3585de784da66bb4c6df04a1e6bcb439'
          '42e6bb21d7682b8a8f036c23532e4fe9'
          '55cc5e556bb0622f5f913a1999f17766')
 
