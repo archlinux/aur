@@ -1,7 +1,8 @@
 # Maintainer: duffydack <duffydack73 {at] gmail {dot} com>
+
 pkgbase=linux-max98090
-_srcname=linux-4.9
-pkgver=4.9.11
+_srcname=linux-4.10
+pkgver=4.10.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -13,26 +14,23 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
-        'config' 'config.x86_64'
+        'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
         '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
-        '0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch'
+        # patch for max98090 soundcard
         'max98090.patch'
         )
 
-sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
+sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
             'SKIP'
-            '23e773a670f3cac11a92c4e442405dea6d2c28fea0f914ea2ba4bea313c26541'
+            'da560125aa350f76f0e4a5b9373a0d0a1c27ccefe3b7bd9231724f3a3c4ebb9e'
             'SKIP'
-            'a352a3461a8794d09e6a147a81b62a022d2422d887edb3c74d6747a48d9bdd09'
-            '3422b1397cc6e69360fc587b638033b8c02e0f8647181266a68869699bb6160a'
+            '3b51303e516a5327c8e1e7b8d87fe321e19e01e107cc66f76bed38f75e1cdae5'
+            'cc70123fc0b6043a5cb6f7694715de9cb1ed28285dfe2f34824d8f025e6c7517'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '85954ac18da9dc1bec5df28e2f097d13016e39fa9631074f85b6364af340fcd9'
             '3a4d8d182de94c031860c33ae35d92c5f9f3b987b0a5191c4e15366353a8d217')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -43,30 +41,17 @@ _kernelname=${pkgbase#linux}
 
 prepare() {
   cd "${srcdir}/${_srcname}"
-  
+
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
-
-  # https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-6074
-  patch -p1 -i "${srcdir}/0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
-  # remove this when a Kconfig knob is made available by upstream
-  # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
   # Patch byt-max98090 soc audio
   patch -p1 -i "${srcdir}/max98090.patch"
 
-
-  if [ "${CARCH}" = "x86_64" ]; then
-    cat "${srcdir}/config.x86_64" > ./.config
-  else
-    cat "${srcdir}/config" > ./.config
-  fi
+  cat "${srcdir}/config.${CARCH}" > ./.config
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
@@ -292,8 +277,8 @@ _package-headers() {
 #  cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
 #  find "${pkgdir}" -type f -exec chmod 444 {} \;
 #  find "${pkgdir}" -type d -exec chmod 755 {} \;
-
-  # remove a file already in linux package
+#
+#  # remove a file already in linux package
 #  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 #}
 
