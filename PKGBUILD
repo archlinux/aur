@@ -2,12 +2,12 @@
 
 pkgname=inspectrum-git
 pkgver=r309.748dc33
-pkgrel=1
+pkgrel=2
 pkgdesc="SDR signal analyzer"
 arch=('any')
 url="https://github.com/miek/inspectrum"
 license=(GPL)
-depends=('qt5-base' 'fftw')
+depends=('qt5-base' 'fftw' 'liquid-dsp-git')
 conflicts=('inspectrum')
 provides=('inspectrum')
 makedepends=('cmake' 'pkg-config')
