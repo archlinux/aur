@@ -1,5 +1,5 @@
 pkgname=osvr-steamvr-git
-pkgver=v0.1.r296.g7011d81
+pkgver=v0.1.r300.gce5ebed
 pkgrel=1
 pkgdesc="Driver for allowing applications written against SteamVR to work with hardware and software running with the OSVR software framework."
 arch=(i686 x86_64)
@@ -9,8 +9,9 @@ install=osvr-steamvr.install
 makedepends=('git' 'cmake')
 depends=('osvr-core-git' 'openvr-git' 'osvr-rendermanager-git') #TODO: add more deps
 conflicts=('osvr-display-git')
-source=("osvr-steamvr::git+https://github.com/OSVR/SteamVR-OSVR.git" #TODO: remove when it is merged
+source=("osvr-steamvr::git+https://github.com/OSVR/SteamVR-OSVR.git#branch=update-v1.0.6" #TODO: remove when it is merged
     "Findjsoncpp.cmake")
+#options=('!strip')
 
 pkgver() {
   cd "$srcdir/osvr-steamvr"
@@ -52,6 +53,10 @@ package() {
   rm -f "$pkgdir"/usr/lib/libgmock_main.a
   rm -f "$pkgdir"/usr/lib/libgtest.a
   rm -f "$pkgdir"/usr/lib/libgtest_main.a
+  rm -rf "$pkgdir"/usr/include/docopt/
+  rm -rf "$pkgdir"/usr/lib/cmake/
+  rm -f "$pkgdir"/usr/lib/libdocopt.a
+  rm -f "$pkgdir"/usr/lib/libdocopt.so
 }
 md5sums=('SKIP'
          '2dd82e55b6291d32c611dd899d8a8164')
