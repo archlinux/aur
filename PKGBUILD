@@ -4,7 +4,7 @@
 
 pkgname=searx
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="https://asciimoo.github.io/searx/"
@@ -29,7 +29,7 @@ source=("https://github.com/asciimoo/searx/archive/v$pkgver.zip"
         'searx.service')
 sha512sums=('f1f28d6135ef2a8e254a700ae9ef3366fccc83f1c2c2574f4d276347304bae6aa397f5d3a4bad4f66b19b13470c6cc724eee2c68bc004a4876a7804a7c79b97a'
             'daf98a69d87dc78ea645a02146d67b0a2903b3b219edadf2e3c987c20d0751ac147b72fe185c74bfe3e0b154ed8ee4b9b503e7ca922548fad52157aada05803c'
-            '354ec9c88018108ce0a652647faefaa23afb7afe53b42259a43adf9395b854d02c2b6d350b8d17cf105a9283f62aee0788f7dc96c2676f67c77941d3ef6edc0c')
+            '64ab805f7e0089d9b638c2972687ba60331304b3d63bfff138ce8b7903d999f40854067c384cafbc6c635afc335bd084b758cbb7c5cac397d97ed1f31e67ac6e')
 
 
 package() {
