@@ -3,7 +3,7 @@
 
 _pkgname=spectacle
 pkgname=${_pkgname}-light
-pkgver=16.12.2
+pkgver=16.12.3
 pkgrel=1
 pkgdesc="KDE screenshot capture utility, without purpose"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ makedepends=('extra-cmake-modules' 'kdoctools' 'python')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 groups=('kde-applications' 'kdegraphics')
-source=("http://download.kde.org/stable/applications/${pkgver}/src/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('07145215ae6824ddc10c5aceb76a7533ab0ada585c256f945b4c546edf44dfea' 'SKIP')
+source=("https://download.kde.org/stable/applications/${pkgver}/src/${_pkgname}-${pkgver}.tar.xz"{,.sig})
+sha256sums=('a64fa9f748e41ad63b65039aa447faf1bcdb418da0a1f81366f1e95454388ab9' 'SKIP')
 validpgpkeys=('CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7') # Albert Astals Cid <aacid@kde.org>
 
 prepare() {
@@ -28,8 +28,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DKDE_INSTALL_LIBDIR=lib \
-        -DKDEExperimentalPurpose_FOUND=OFF \
-        -DBUILD_TESTING=OFF
+        -DBUILD_TESTING=OFF \
+        -DKDEExperimentalPurpose_FOUND=OFF
     make
 }
 
