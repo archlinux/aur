@@ -1,6 +1,6 @@
 pkgname=openvr-git
 pkgver=43.7fa6470
-pkgrel=1
+pkgrel=2
 pkgdesc="API and runtime that allows access to VR hardware from multiple vendors. Contains API and samples. The runtime is under SteamVR in Tools on Steam. Note: There's no compositor for linux, so try with hellovr -nocompositor"
 arch=('x86_64')
 url="https://github.com/ValveSoftware/openvr"
@@ -24,7 +24,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/openvr"
-  # Patch for https://github.com/ValveSoftware/openvr/issues/315
 }
 
 build() {
@@ -35,8 +34,10 @@ build() {
   cmake -DBUILD_SHARED=0 -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=Release .
   make
 
-  cmake -DBUILD_SHARED=1 -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=Release .
-  make
+  # Valve's build of libopenvr_api.so contains symbols that have no source code available
+  # See: https://github.com/ValveSoftware/openvr/issues/425
+  #cmake -DBUILD_SHARED=1 -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=Release .
+  #make
 
   cd samples
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/ -Wno-dev .
