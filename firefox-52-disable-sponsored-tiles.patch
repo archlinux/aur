@@ -1,6 +1,6 @@
---- firefox-45.0esr.bak/browser/modules/DirectoryLinksProvider.jsm	2016-03-13
-+++ firefox-45.0esr/browser/modules/DirectoryLinksProvider.jsm	2016-03-13
-@@ -58,16 +58,16 @@
+--- firefox-52.0esr.bak/browser/modules/DirectoryLinksProvider.jsm	2017-03-09
++++ firefox-52.0esr/browser/modules/DirectoryLinksProvider.jsm	2017-03-09
+@@ -50,16 +50,16 @@
  const DIRECTORY_LINKS_TYPE = "application/json";
  
  // The preference that tells whether to match the OS locale
@@ -21,7 +21,7 @@
  
  // The preference that tells if newtab is enhanced
  const PREF_NEWTAB_ENHANCED = "browser.newtabpage.enhanced";
-@@ -200,30 +200,6 @@
+@@ -189,30 +189,6 @@
     * @return  the selected locale or "en-US" if none is selected
     */
    get locale() {
@@ -52,7 +52,7 @@
      return "en-US";
    },
  
-@@ -294,13 +270,6 @@
+@@ -283,13 +259,6 @@
    },
  
    _fetchAndCacheLinks: function DirectoryLinksProvider_fetchAndCacheLinks(uri) {
@@ -66,7 +66,7 @@
    },
  
    /**
-@@ -309,33 +278,6 @@
+@@ -298,33 +267,6 @@
     * @return promise resolved to json string, "{}" returned if status != 200
     */
    _downloadJsonData: function DirectoryLinksProvider__downloadJsonData(uri) {
@@ -100,7 +100,7 @@
    },
  
    /**
-@@ -343,30 +285,6 @@
+@@ -332,30 +274,6 @@
     * @return promise resolved immediately if no download needed, or upon completion
     */
    _fetchAndCacheLinksIfNecessary: function DirectoryLinksProvider_fetchAndCacheLinksIfNecessary(forceDownload=false) {
@@ -131,52 +131,10 @@
    },
  
    /**
-@@ -574,40 +492,6 @@
-     }
-     catch (ex) {}
- 
--    // Only send pings when enhancing tiles with an endpoint and valid action
--    let invalidAction = PING_ACTIONS.indexOf(action) == -1;
--    if (!newtabEnhanced || pingEndPoint == "" || invalidAction) {
--      return Promise.resolve();
--    }
--
--    let actionIndex;
--    let data = {
--      locale: this.locale,
--      tiles: sites.reduce((tiles, site, pos) => {
--        // Only add data for non-empty tiles
--        if (site) {
--          // Remember which tiles data triggered the action
--          let {link} = site;
--          let tilesIndex = tiles.length;
--          if (triggeringSiteIndex == pos) {
--            actionIndex = tilesIndex;
--          }
--
--          // Make the payload in a way so keys can be excluded when stringified
--          let id = link.directoryId;
--          tiles.push({
--            id: id || site.enhancedId,
--            pin: site.isPinned() ? 1 : undefined,
--            pos: pos != tilesIndex ? pos : undefined,
--            past_impressions: pos == triggeringSiteIndex ? pastImpressions : undefined,
--            score: Math.round(link.frecency / PING_SCORE_DIVISOR) || undefined,
--            url: site.enhancedId && "",
--          });
--        }
--        return tiles;
--      }, []),
--    };
--
-     // Provide a direct index to the tile triggering the action
-     if (actionIndex !== undefined) {
-       data[action] = actionIndex;
-@@ -1021,17 +905,6 @@
-    * @return a promise resolved when lookup Set for sites is built
+@@ -962,16 +880,6 @@
     */
    _loadInadjacentSites: function DirectoryLinksProvider_loadInadjacentSites() {
--    return this._downloadJsonData(this._inadjacentSitesUrl).then(jsonString => {
+     return this._downloadJsonData(this._inadjacentSitesUrl).then(jsonString => {
 -      let jsonObject = {};
 -      try {
 -        jsonObject = JSON.parse(jsonString);

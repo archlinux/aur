@@ -1,6 +1,5 @@
-diff -up firefox-29.0/mozilla-release/config/baseconfig.mk.orig firefox-29.0/mozilla-release/config/baseconfig.mk
---- mozilla-release/config/baseconfig.mk.orig	2014-04-22 15:38:52.948165295 +0200
-+++ mozilla-release/config/baseconfig.mk	2014-04-22 15:42:20.387481673 +0200
+--- firefox-52.0esr.bak/config/baseconfig.mk	2017-03-09 09:11:38.434104687 +0100
++++ firefox-52.0esr/config/baseconfig.mk	2017-03-09 11:26:48.571245921 +0100
 @@ -4,7 +4,7 @@
  # whether a normal build is happening or whether the check is running.
  includedir := $(includedir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
@@ -8,5 +7,5 @@ diff -up firefox-29.0/mozilla-release/config/baseconfig.mk.orig firefox-29.0/moz
 -installdir = $(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION)
 +installdir = $(libdir)/$(MOZ_APP_NAME)
  sdkdir = $(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_VERSION)
- ifndef TOP_DIST
- TOP_DIST = dist
+ ifeq (.,$(DEPTH))
+ DIST = dist
