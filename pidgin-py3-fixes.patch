@@ -67,15 +67,3 @@ diff -uprb pidgin-2.10.12.orig/libpurple/purple-remote pidgin-2.10.12/libpurple/
 -        print output
 -
 +        print(output)
-diff -uprb pidgin-2.10.12.orig/libpurple/purple-url-handler pidgin-2.10.12/libpurple/purple-url-handler
---- pidgin-2.10.12.orig/libpurple/purple-url-handler	2016-01-01 01:19:41.000000000 +0200
-+++ pidgin-2.10.12/libpurple/purple-url-handler	2016-01-02 05:39:43.084532314 +0200
-@@ -249,7 +249,7 @@ def msnim(uri):
- 
- def myim(uri):
-         protocol = "prpl-myspace"
--        print "TODO: send uri: ", uri
-+        print("TODO: send uri: %s" % uri)
-         assert False, "Not implemented"
- 
- def sip(uri):
