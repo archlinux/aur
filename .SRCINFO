@@ -1,0 +1,15 @@
+pkgbase = python-flask-oauthlib
+	pkgdesc = Flask-OAuthlib is an extension to Flask that allows you to interact with remote OAuth enabled applications
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/lepture/flask-oauthlib
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-oauthlib
+	source = https://github.com/lepture/flask-oauthlib/archive/v0.9.3.tar.gz
+	md5sums = 39cf06a3c1ab5550b8e8521604b2b102
+
+pkgname = python-flask-oauthlib
+
