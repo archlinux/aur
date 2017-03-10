@@ -1,20 +1,19 @@
 # Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
 pkgname=qspectrumanalyzer-git
-pkgver=v1.4.0.r31.e7b998f
+pkgver=v1.5.0.r0.47ea0b9
 pkgrel=1
 pkgdesc="Spectrum analyzer for multiple SDR platforms (PyQtGraph based GUI for soapy_power, rx_power, rtl_power, hackrf_sweep and other backends)"
 arch=('any')
 url="https://github.com/xmikos/qspectrumanalyzer"
 license=('GPL3')
-depends=('python-pyqt4' 'python-pyqtgraph')
+depends=('python-pyqt4' 'python-pyqtgraph' 'soapy_power')
 makedepends=('git' 'python-setuptools')
 optdepends=(
-  'soapy_power: default SoapySDR based backend (supports RTL-SDR, HackRF, Airspy, SDRplay, LimeSDR, bladeRF, USRP and other SDR devices)'
-  'rx_tools: rx_power backend for SoapySDR devices (slower than soapy_power)'
-  'rtl-sdr: rtl_power backend for RTL-SDR devices'
-  'rtl-sdr-keenerd-git: rtl_power backend for RTL-SDR devices (better implementation)'
-  'rtl_power_fftw-git: alternative fast rtl_power implementation using FFTW library'
-  'hackrf: hackrf_sweep backend for HackRF devices'
+  'rtl_power_fftw-git: alternative RTL-SDR backend using FFTW library (much faster than rtl_power)'
+  'rtl-sdr-keenerd-git: better version of rtl_power backend'
+  'rtl-sdr: original rtl_power backend (slightly broken, use rtl-sdr-keenerd-git instead)'
+  'rx_tools: rx_power backend (universal SoapySDR based backend, but seems slow and buggy)'
+  'hackrf: hackrf_sweep backend (wideband spectrum monitoring with sweep rate of 8 GHz/s)'
 )
 conflicts=('qspectrumanalyzer')
 provides=('qspectrumanalyzer')
