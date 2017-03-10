@@ -2,14 +2,14 @@
 
 pkgname=texlive-aas_macros
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 depends=('texlive-core')
 pkgdesc="Journal abbreviation macros used by ADS"
 url="http://doc.adsabs.harvard.edu/abs_doc/aas_macros.sty"
 arch=('any')
 install=texlive-aas_macros.install
 source=(http://doc.adsabs.harvard.edu/abs_doc/aas_macros.sty)
-sha1sums=('34e5a77cbf69f889652c45b23f1436ede40dd118')
+sha1sums=('247c552534aaa55605789b3243ea0ade0838bc2c')
 
 package()
 {

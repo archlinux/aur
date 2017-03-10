@@ -1,13 +1,13 @@
 pkgbase = texlive-aas_macros
 	pkgdesc = Journal abbreviation macros used by ADS
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://doc.adsabs.harvard.edu/abs_doc/aas_macros.sty
 	install = texlive-aas_macros.install
 	arch = any
 	depends = texlive-core
 	source = http://doc.adsabs.harvard.edu/abs_doc/aas_macros.sty
-	sha1sums = 34e5a77cbf69f889652c45b23f1436ede40dd118
+	sha1sums = 247c552534aaa55605789b3243ea0ade0838bc2c
 
 pkgname = texlive-aas_macros
 
