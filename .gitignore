@@ -1,2 +1,4 @@
-/P3160.tar.gz
-*.tar.xz
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
