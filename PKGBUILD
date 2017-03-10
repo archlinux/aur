@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=streamlink
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('ffmpeg: Required to play streams that are made up of separate audio
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc})
 # Charlie Drage <charlie@charliedrage.com>
 validpgpkeys=('1D2DA4B582D3E09EFA2C997CDA227403C037D617')
-sha512sums=('a7bda1796332137d88b6412b1819a06bd1ff84c87d1377321f55d8b8d27badf1726ca658b714c9edf255912a14917712419a50a9453d8dc0a040ebf31c72b9bd'
+sha512sums=('9a461e69f17b5d88e7adfdddcd0c19615c10e208c103df85028bfec26ab64bccd64a697d0509f6e581e467739b660b4abd38a0c6b747f038c94af256ac043a6d'
             'SKIP')
 
 build() {
