@@ -20,7 +20,7 @@ source=("https://github.com/JustArchi/ArchiSteamFarm/releases/download/${pkgver}
 sha256sums=('cbffb01fc2e798d6f3f1e4e6baa148d8d2100f6db4e7183f721859598e119cea'
             'a5d0324c029efb1f99264e787fea26ad53953b4df59bf642bca1ffabad4027f5'
             '63b8d4718e8cc61016ef415ff418e6180102b077315f5ce77bfcab9c03433565'
-            '39166dc6947b81ba9a3f60cc1f117198050fb5e4a7fb16a199adb2a77af2b205'
+            '183d7c2f93ca8ca95e00523c4920275e52ad83d049af95610b7cc0672983421c'
             '1948780515929c7fc8ffa6033bc79a55cbae375a1397326ef9dba0dfbe91cc56'
             'df5d5558e20a4164bc20f5b44e267baebb382c49d7289a2bbdd6c5544143182b')
 

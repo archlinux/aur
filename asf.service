@@ -7,7 +7,7 @@ After=network.target
 [Service]
 User=asf
 Group=asf
-ExecStart=/usr/bin/asf --server --path=/var/lib/asf
+ExecStart=/usr/bin/mono /opt/asf/ASF.exe --server --path=/var/lib/asf
 ProtectSystem=true
 ReadWritePaths=/var/lib/asf
 
