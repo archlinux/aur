@@ -1,7 +1,7 @@
 pkgbase = aursec
 	pkgdesc = Verify AUR package sources against hashes stored in a blockchain.
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clawoflight/aursec
 	install = aursec.install
 	arch = x86_64

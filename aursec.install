@@ -10,7 +10,7 @@ post_install() {
 
   echo "==> Please run 'aursec-init' and start and enable
        aursec-blockchain.service
-       aursec-blockhain-mine.timer
+       aursec-blockchain-mine.timer
    before using aursec."
 }
 
