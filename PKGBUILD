@@ -1,11 +1,11 @@
 # Maintainer: Bennett Piater <bennett at piater dot name>
 
-pkgname=aursec-git
-pkgver=v0.0.6b.r3.bff1e32
-pkgrel=2
+pkgname=(aursec-git aursec-tui-git)
+pkgver=v0.9.r35.08f6f6a
+pkgrel=1
 pkgdesc='Verify AUR package sources against hashes stored in a blockchain.'
 arch=(any)
-url="https://github.com/clawoflight/${pkgname%-git}"
+url="https://github.com/clawoflight/${pkgbase%-git}"
 license=('custom:MPL2')
 
 provides=("${pkgname%-git}")
@@ -20,7 +20,6 @@ checkdepends=(shellcheck)
 source=("git+https://github.com/clawoflight/${pkgname%-git}.git")
 sha256sums=('SKIP')
 validpgpkeys=('871F10477DB3DDED5FC447B226C7E577EF967808')
-install=aursec-git.install
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -30,6 +29,8 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}/aursec"
 	make
+        cd "$srcdir/${pkgname%-git}/tui"
+	make
 }
 
 check() {
@@ -37,7 +38,20 @@ check() {
 	make -k check
 }
 
-package() {
+package_aursec-git() {
+        install=aursec-git.install
+	optdepends=("aursec-tui: to manually inspect the blockchain.")
+
 	cd "$srcdir/${pkgname%-git}/aursec"
 	make PREFIX="/usr" DESTDIR="$pkgdir/" install
+}
+
+package_aursec-tui-git() {
+        pkgdesc='Inspect the aursec blockchain'
+        depends=(python python-urwid aursec)
+        provides=(aursec-tui)
+	conflicts=(aursec-tui)
+
+        cd "$srcdir/aursec/tui"
+        make PREFIX="/usr" DESTDIR="$pkgdir/" install
 }
