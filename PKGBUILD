@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-server
 pkgver=3.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -25,7 +25,8 @@ makedepends=('autoconf'
              'm4'
              'make'
              'pkg-config')
-optdepends=('libbitcoin-explorer: CurveZMQ client/server authentication')
+optdepends=('libbitcoin-explorer: CurveZMQ client/server authentication'
+            'statsd: log to statistics collection server')
 groups=('libbitcoin' 'obelisk')
 url="https://github.com/libbitcoin/libbitcoin-server"
 license=('AGPL3')
@@ -54,6 +55,9 @@ prepare() {
     -e 's@^error_file.*@error_file = /var/log/obelisk/bs/error.log@' \
     -e 's@^hosts_file.*@hosts_file = /etc/obelisk/hosts.cache@' \
     -e 's@^archive_directory.*@archive_directory = /var/log/obelisk/bs@' \
+    -e 's@^rotation_size.*@rotation_size = 5000000@' \
+    -e 's@^maximum_archive_size.*@maximum_archive_size = 35000000@' \
+    -e 's@^maximum_archive_files.*@maximum_archive_files = 7@' \
     data/bs.cfg.in
 }
 
