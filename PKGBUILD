@@ -1,7 +1,7 @@
 # Maintainer: Vianney le Clément <vleclement AT gmail·com>
 _pkgname=pplatex
 pkgname=$_pkgname-git
-pkgver=20120905.g9f37707
+pkgver=20150915.g5cec891
 pkgrel=1
 pkgdesc="Pretty-Print LaTeX: A tool to reformat the output of latex and friends into readable messages"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/stefanhepp/pplatex"
 license=('GPL3')
 depends=('pcre' 'texlive-bin')
 makedepends=('git' 'scons')
-source=("git://github.com/stefanhepp/$_pkgname.git")
+source=("git+https://github.com/stefanhepp/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
