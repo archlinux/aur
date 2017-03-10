@@ -1,3 +1,8 @@
 2017-03-10 Pierre Choffet <peuc@wanadoo.fr>
-	* 0.8.1.r3017.bf9fcc60 :
+	* 0.8.1.r3017.bf9fcc60-2 :
+	Fix return-to-the-roots.install sha256sums value
+	Add missing build dependencies
+	Add missing run dependencies
+	
+	* 0.8.1.r3017.bf9fcc60-1 :
 	Initial PKGBUILD
