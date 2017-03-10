@@ -1,15 +1,15 @@
 # Contributor: Alexander Mamzikov <av.mamzikov@gmail.com>
 
 pkgname=stereophotoview
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A cross platform stereoscopic photo viewer and editor"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/av-mamzikov/stereophotoview"
 license=('GPL3')
 groups=()
-depends=(libpng qt5-base qt5-declarative)
-makedepends=(qt5-base qt5-tools qt5-declarative qt5-multimedia qt5-quickcontrols)
+depends=(libpng qt5-base qt5-declarative ffmpeg)
+makedepends=(qt5-base qt5-tools qt5-declarative qt5-multimedia qt5-quickcontrols ffmpeg)
 optdepends=()
 provides=()
 conflicts=()
@@ -19,7 +19,7 @@ options=()
 install=.install
 source=(https://bitbucket.org/av-mamzikov/stereophotoview/get/${pkgver}.zip)
 noextract=()
-md5sums=('7c7d99724b335e29e2ffd8a02af7010f') #generate with 'makepkg -g'
+md5sums=('950c94abbdec1cf9506f5f63fcf4dc2f') #generate with 'makepkg -g'
 
 build() {
   cd "$srcdir"
