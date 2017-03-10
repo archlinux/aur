@@ -12,9 +12,9 @@ license=('GPL2' 'custom:OpenIB.org BSD (MIT variant)')
 
 depends=('systemd')
 makedepends=('git' 'cmake' 'gcc' 'libnl' 'libsystemd' 'pkg-config' 'ninja' 'bash')
-_provides=("${pkgname[0]%-git}" 'rdma' 'ibacm' 'iwpmd' 'libibcm' 'libibumad' 'libibverbs' 'librdmacm'
-          'libcxgb3' 'libcxgb4' 'libmlx4' 'libmlx5' 'libmthca' 'libnes' 'libocrdma' 'librdmacm'
-          'srptools')
+_provides=("${pkgname[0]%-git}" 'rdma' 'ibacm' 'iwpmd' 'libibcm' 'libibumad' 'libibverbs'
+           'librdmacm' 'libcxgb3' 'libcxgb4' 'libmlx4' 'libmlx5' 'libmthca' 'libnes' 'libocrdma'
+           'srptools')
 provides=("${_provides[@]}")
 conflicts=("${_provides[@]}")
 replaces=("${_provides[@]:1}")
