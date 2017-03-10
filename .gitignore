@@ -1,6 +1,7 @@
 *
 
 !.gitignore
+!.gitattributes
 !PKGBUILD
 !.SRCINFO
 !enpass-bin.install
