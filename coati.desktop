@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Coati
+GenericName=coati
+Comment="A cross-platform source explorer for C/C++ and Java"
+Icon=coati
+Exec="/usr/bin/coati"
+Terminal=false
+Categories=Development;
+StartupNotify=true
+StartupWMClass=coati

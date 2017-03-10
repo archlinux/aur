@@ -2,17 +2,18 @@
 
 pkgname=coati
 _pkgname=Coati
-# Make sure to use vercmp to check version is seen as newer. Bump epoch if not.
 pkgver=0.11.15
 _pkgver=${pkgver/\./\_}
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform source explorer for C/C++ and Java'
 arch=('i686' 'x86_64')
 url='https://www.coati.io/'
 license=('custom')
 options=(!strip)
-source=("${pkgname}-${pkgver}.tar.gz::${url}/downloads/${pkgver}/linux/64bit/")
-sha256sums=('aecf8e7dab97640e272086efd113be4f5fcfe3d571384ec62c134d9089eed8de')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/downloads/${pkgver}/linux/64bit/"
+	"coati.desktop")
+sha256sums=('aecf8e7dab97640e272086efd113be4f5fcfe3d571384ec62c134d9089eed8de'
+            '7fff951a9be6efdeadc9419a2a738fa73095d6ee435091a214ce14f652832b21')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 
 prepare() {
@@ -22,23 +23,6 @@ prepare() {
 }
 
 package() {
-(
-cat <<EOF
-[Desktop Entry]
-Type=Application
-Version=0.11.15
-Name=Coati
-GenericName=${_pkgname}
-Comment=${pkgdesc}
-Icon=${pkgname}
-Exec="/usr/bin/${pkgname}"
-Terminal=false
-Categories=Development;
-StartupNotify=true
-StartupWMClass=coati-${_pkgname}
-EOF
-) > ${srcdir}/coati-${pkgname}.desktop
-
   rsync -rtl "${srcdir}/opt" "${pkgdir}"
 
   mkdir -p "${pkgdir}/usr/bin/"
@@ -46,7 +30,7 @@ EOF
   mkdir -p "${pkgdir}/usr/share/pixmaps/"
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  install -m 644 "${srcdir}/coati-${pkgname}.desktop" \
+  install -m 644 "${srcdir}/coati.desktop" \
             "${pkgdir}/usr/share/applications/"
 
   ln -s "/opt/${pkgname}/data/gui/icon/logo_1024_1024.png" \
