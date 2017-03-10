@@ -1,0 +1,3 @@
+post_install() {
+	echo "  Put your original Settlers 2 DATA and GFX folders in /usr/share/s25rttr/S2/"
+}
