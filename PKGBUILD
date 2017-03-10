@@ -12,7 +12,7 @@ depends=('fontconfig')
 install="inziu-iosevka.install"
 source=(http://7xpdnl.dl1.z0.glb.clouddn.com/inziu-iosevka-1.11.1.7z
         'https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md')
-md5sums=('819bb53480a912a1c902fdd656bcda51'
+md5sums=('09b709350eaeefbb16a83d574cc02039'
          'b640361b29fdcbfb32ced03c7a095460')
 
 package () {
