@@ -1,14 +1,14 @@
 # Maintainer: jjacky
 pkgname=statusnotifier
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Library to use KDE's StatusNotifierItem via GObject"
 arch=('i686' 'x86_64')
-url="http://jjacky.com/statusnotifier"
+url="https://jjacky.com/statusnotifier"
 license=('GPL3+')
 depends=('glib2' 'gtk3' 'gdk-pixbuf2')
-source=(http://jjacky.com/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('6ce734ee57886ef0da05098bb8c98f5a')
+source=(https://jjacky.com/$pkgname/$pkgname-$pkgver.tar.xz)
+sha256sums=('d7f169355755e0da250a49919b3df2f4cb6a220606fcb6b1bd2e1e60afbcef9a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
