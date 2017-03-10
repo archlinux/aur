@@ -19,7 +19,7 @@ source=(
     "http://repo.sinew.in/testing/pool/beta/e/enpass/${_pkgname}_${_pkgver}beta_amd64.deb"
     "LICENSE")
 sha256sums=('5d223d09a22c3c1f5931cc875b68091d3c6cf43494c44df6c33fa9204dde835d'
-            'd556b7f2d1243b775c4096e1efa1c669aee93fe64a57401bc8cdefb14fcd0145')
+            'cffbf5627a9cefa762384b198bdff09697c8432e9a189d483cfcc771a4b68ce7')
 
 
 package() {
