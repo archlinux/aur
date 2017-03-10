@@ -1,5 +1,6 @@
 post_install()
 {
     echo "you should install uGet Integration extension to your browser"
-    echo "https://chrome.google.com/webstore/detail/uget-integration/efjgjleilhflffpbnkaofpmdnajdpepi"
+    echo "Google Chrome, Chromium & Vivaldi users: https://chrome.google.com/webstore/detail/uget-integration/efjgjleilhflffpbnkaofpmdnajdpepi"
+    echo "Opera users: https://addons.opera.com/en/extensions/details/uget-integration"
 }
