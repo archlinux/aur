@@ -13,12 +13,12 @@ source=("git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${gitname}"
 	local ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 	printf "%s" "${ver//-/.}"
 }
 
 package() {
 	install -d -m755 "${pkgdir}/etc/pacman.d"
-	install -D -m644 "${srcdir}/mirrorlist.https-only" "${pkgdir}/etc/pacman.d/"
+	install -D -m644 "${srcdir}/${gitname}/mirrorlist.https-only" "${pkgdir}/etc/pacman.d/"
 }
