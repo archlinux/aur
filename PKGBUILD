@@ -1,7 +1,7 @@
 # Maintainer: Bennett Piater <bennett at piater dot name>
 
 pkgname=(aursec-git aursec-tui-git)
-pkgver=v0.9.r35.08f6f6a
+pkgver=v0.9.r30.90d1bc7
 pkgrel=1
 pkgdesc='Verify AUR package sources against hashes stored in a blockchain.'
 arch=(any)

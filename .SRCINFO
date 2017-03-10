@@ -1,6 +1,6 @@
 pkgbase = aursec-git
 	pkgdesc = Verify AUR package sources against hashes stored in a blockchain.
-	pkgver = v0.9.r35.08f6f6a
+	pkgver = v0.9.r30.90d1bc7
 	pkgrel = 1
 	url = https://github.com/clawoflight/
 	arch = any
