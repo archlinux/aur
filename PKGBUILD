@@ -1,7 +1,7 @@
 # Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 # Source: https://github.com/nicoulaj/archlinux-packages
 pkgname=rainbow-git
-pkgver=2.5.0.203.90f474e
+pkgver=2.5.0.219.b61ce75
 pkgrel=1
 pkgdesc="Colorize commands output or STDIN using patterns."
 arch=(any)
@@ -30,6 +30,5 @@ build() {
 package() {
   cd ${pkgbase}
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -Dm 644 rainbow/completion/bash/rainbow "$pkgdir"/etc/bash_completion.d/rainbow
-  install -Dm 644 rainbow/completion/zsh/_rainbow "$pkgdir"/usr/share/zsh/site-functions/_rainbow
 }
+

@@ -1,6 +1,6 @@
 pkgbase = rainbow-git
 	pkgdesc = Colorize commands output or STDIN using patterns.
-	pkgver = 2.5.0.203.90f474e
+	pkgver = 2.5.0.219.b61ce75
 	pkgrel = 1
 	url = https://github.com/nicoulaj/rainbow
 	changelog = Changelog
