@@ -1,7 +1,7 @@
-From 866f4c5de45ae13aa590de0d40819a0c38f3f682 Mon Sep 17 00:00:00 2001
+From f9aad69bb8f781531702883e3c8646d3c0f77d43 Mon Sep 17 00:00:00 2001
 From: Mark Weiman <mark.weiman@markzz.com>
-Date: Sun, 23 Oct 2016 12:57:37 -0400
-Subject: [PATCH] pci: Enable overrides for missing ACS capabilities (4.8+)
+Date: Sun, 5 Mar 2017 10:47:35 -0500
+Subject: [PATCH] pci: Enable overrides for missing ACS capabilities (4.10+)
 
 This an updated version of Alex Williamson's patch from:
 https://lkml.org/lkml/2013/5/30/513
@@ -44,18 +44,16 @@ Note to hardware vendors, we have facilities to permanently quirk
 specific devices which enforce isolation but not provide an ACS
 capability.  Please contact me to have your devices added and save
 your customers the hassle of this boot option.
-
-Signed-off-by: Mark Weiman <mark.weiman@markzz.com>
 ---
- Documentation/kernel-parameters.txt |   9 ++++
- drivers/pci/quirks.c                | 101 ++++++++++++++++++++++++++++++++++++
- 2 files changed, 110 insertions(+)
+ Documentation/admin-guide/kernel-parameters.txt |   9 +++
+ drivers/pci/quirks.c                            | 102 ++++++++++++++++++++++++
+ 2 files changed, 111 insertions(+)
 
-diff --git a/Documentation/kernel-parameters.txt b/Documentation/kernel-parameters.txt
-index a4f4d69..d68cfab 100644
---- a/Documentation/kernel-parameters.txt
-+++ b/Documentation/kernel-parameters.txt
-@@ -2928,6 +2928,15 @@ bytes respectively. Such letter suffixes can also be entirely omitted.
+diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
+index be7c0d9506b1..97081bbc9a4e 100644
+--- a/Documentation/admin-guide/kernel-parameters.txt
++++ b/Documentation/admin-guide/kernel-parameters.txt
+@@ -2829,6 +2829,15 @@
  		nomsi		[MSI] If the PCI_MSI kernel config parameter is
  				enabled, this kernel boot option can be used to
  				disable the use of MSI interrupts system-wide.
@@ -72,10 +70,10 @@ index a4f4d69..d68cfab 100644
  				Safety option to keep boot IRQs enabled. This
  				should never be necessary.
 diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 44e0ff3..32016cb 100644
+index 1800befa8b8b..b8484c732210 100644
 --- a/drivers/pci/quirks.c
 +++ b/drivers/pci/quirks.c
-@@ -3487,6 +3487,106 @@ static int __init pci_apply_final_quirks(void)
+@@ -3605,6 +3605,107 @@ static int __init pci_apply_final_quirks(void)
  
  fs_initcall_sync(pci_apply_final_quirks);
  
@@ -179,10 +177,11 @@ index 44e0ff3..32016cb 100644
 +
 +	return -ENOTTY;
 +}
++
  /*
   * Followings are device-specific reset methods which can be used to
   * reset a single function if other methods (e.g. FLR, PM D0->D3) are
-@@ -4160,6 +4260,7 @@ static const struct pci_dev_acs_enabled {
+@@ -4278,6 +4379,7 @@ static const struct pci_dev_acs_enabled {
  	{ 0x10df, 0x720, pci_quirk_mf_endpoint_acs }, /* Emulex Skyhawk-R */
  	/* Cavium ThunderX */
  	{ PCI_VENDOR_ID_CAVIUM, PCI_ANY_ID, pci_quirk_cavium_acs },
@@ -191,5 +190,5 @@ index 44e0ff3..32016cb 100644
  };
  
 -- 
-2.10.1
+2.12.0
 
