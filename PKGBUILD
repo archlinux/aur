@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=streamlink-git
-pkgver=0.3.2.r2.g7e15e3e
+pkgver=0.4.0.r0.g0871d22
 pkgrel=1
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
@@ -24,6 +24,7 @@ pkgver() {
 
 build() {
   cd streamlink
+  #export STREAMLINK_USE_PYCOUNTRY=1
   python setup.py build_sphinx -b man
 }
 
