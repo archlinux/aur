@@ -1,3 +1,11 @@
+Git commits 02f27c4->60499dc
+	* emulated XBox version changed (0x110)
+	* uinput device version now a parameter
+	* Long press (>2s) on steam button closes and deletes uinput device
+	* Systemd service examples
+	* xbox/desktop mixed script (use steam button to switch)
+	* Verify if steam client is running
+
 Git commits 722f9bf->02f27c4
 	* Fix div by zero exception
 
