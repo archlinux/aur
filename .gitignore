@@ -1,0 +1,9 @@
+*
+
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!enpass-bin.install
+!LICENSE
+
+!*/
