@@ -3,7 +3,7 @@
 
 pkgname=stone-soup-yiuf
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A fork of Dungeon Crawl Stone Soup roguelike with old races recovered'
 arch=('i686' 'x86_64')
 url='https://github.com/yrmvgh/crawl/'
@@ -13,15 +13,16 @@ conflicts=('crawl' 'stone-soup-tile')
 license=('custom')
 source=("https://github.com/yrmvgh/crawl/archive/${pkgver}.tar.gz")
 sha256sums=('b557bb56bdc275d80f327c91a26aab9a15cfcf8b6f683926e7bd2a6d728645d1')
+install=stone-soup-yiuf.install
 
 # used by gendesk to create .desktop file
-_exec=('crawl-yiuf-tiles')
+_exec=('yiufcrawl-tiles')
 _name=('Dungeon Crawl Stone Soup (Yiuf branch)')
 
 package() {
     cd "$srcdir"
     gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
-            --exec 'crawl-yiuf-tiles' --name 'Dungeon Crawl Stone Soup (Yiuf branch)' PKGBUILD
+            --exec 'yiufcrawl-tiles' --name 'Dungeon Crawl Stone Soup (Yiuf branch)' PKGBUILD
 
     cd "crawl-${pkgver}/crawl-ref/source"
 
@@ -40,9 +41,7 @@ package() {
 
     # first build and install tiles version
 
-    make GAME=crawl-yiuf \
-         DESTDIR="${pkgdir}" \
-         SAVEDIR="~/.crawl-yiuf/" \
+    make DESTDIR="${pkgdir}" \
          DATADIR="/usr/share/${pkgname}/data" \
          USE_UNICODE=y \
          TILES=y \
@@ -50,13 +49,11 @@ package() {
 
     # rename tiles executable to avoid clashing with console crawl
 
-    mv "${pkgdir}/usr/bin/crawl-yiuf" "${pkgdir}/usr/bin/crawl-yiuf-tiles"
+    mv "${pkgdir}/usr/bin/yiufcrawl" "${pkgdir}/usr/bin/yiufcrawl-tiles"
 
     # then build and install console version
 
-    make GAME=crawl-yiuf \
-         DESTDIR="${pkgdir}" \
-         SAVEDIR="~/.crawl-yiuf/" \
+    make DESTDIR="${pkgdir}" \
          DATADIR="/usr/share/${pkgname}/data" \
          USE_UNICODE=y \
          install

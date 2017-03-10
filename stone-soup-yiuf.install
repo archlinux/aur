@@ -1,0 +1,11 @@
+post_upgrade() {
+
+    # return if old pkgver >= 0.9.0-2
+    [[ $(vercmp $2 1.3-1) -le 0 ]] && return
+
+    echo "---------------------------------------------------------------------
+    stone-soup-yiuf saves have moved to ~/.yiufcrawl.
+    If you want to keep your old saves, move ~/.crawl-yiuf to
+    ~/.yiufcrawl.
+---------------------------------------------------------------------"
+}
