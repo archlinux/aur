@@ -7,7 +7,7 @@ pkgrel=1
 _modname="${pkgname#nginx-mainline-addon-}"
 _nginxver=1.11.10
 
-pkgdesc='Lua script engine module for mainline nginx'
+pkgdesc='Redis 2.0 protocol module for mainline nginx'
 arch=('i686' 'x86_64')
 depends=('nginx-mainline')
 url="https://github.com/openresty/redis2-nginx-module"
