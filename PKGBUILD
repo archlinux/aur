@@ -12,7 +12,7 @@
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-git' 'lib32-mesa-libgl-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.1.0_devel.89569.c416d8a3bc
+pkgver=17.1.0_devel.89730.3d253d330a
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2-mako' 'lib32-libxml2' 'lib32-libx11' 'glproto' 'lib32-libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
@@ -140,7 +140,7 @@ package_lib32-mesa-git () {
 package_lib32-mesa-libgl-git () {
   pkgdesc="Mesa 3-D graphics library"
   depends=('lib32-mesa-git')
-  provides=('lib32-mesa-libgl' 'lib32-libgl' 'lib32-libgles' 'lib32-libegl')
+  provides=('lib32-mesa-libgl' 'lib32-libgl' 'lib32-libgles' 'lib32-libegl' 'lib32-opengl-provider')
   replaces=('lib32-mesa-libgl' 'lib32-libgles' 'lib32-libegl')
   conflicts=('lib32-mesa-libgl' 'lib32-libgles' 'lib32-libegl')
 
