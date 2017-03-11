@@ -1,6 +1,7 @@
-# Maintainer: TrekDev <trekdev0 at gmail dot com>
+# Maintainer: Michael Egger <michael dot egger at tsn dot at>
+# Contributor: TrekDev <trekdev0 at gmail dot com>
 pkgname=truffle-git
-pkgver=1.0.0
+pkgver=536.2ff5f1a
 pkgrel=1
 pkgdesc='A development framework for Ethereum'
 url='https://github.com/ConsenSys/truffle'
@@ -15,16 +16,15 @@ optdepends=('mocha: testing support'
             'testrpc: contract deployment'
             'geth: contract deployment')
 
+pkgver() {
+  cd "${srcdir}/truffle"
+  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
 package() {
   cd "${srcdir}/truffle"
-  rm -Rf .git*
-  npm install
-
-  mkdir -p "${pkgdir}/usr/lib/"
-  cp -R "${srcdir}/truffle" "${pkgdir}/usr/lib/"
-
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/truffle/cli.js" "${pkgdir}/usr/bin/truffle"
-
+  # speed up npm install
+  npm set progress=false
+  npm install -g --prefix "$pkgdir/usr"
   install -D -m644 "${srcdir}/truffle/LICENSE" "${pkgdir}/usr/share/licenses/truffle/LICENSE"
 }
