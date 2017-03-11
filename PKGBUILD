@@ -1,6 +1,6 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=peek-git
-pkgver=0.9.1.r186.g05f4355
+pkgver=1.0.0.r1.ge5dc628
 pkgrel=1
 pkgdesc="Simple animated GIF screen recorder with an easy to use interface (latest development release)"
 arch=('i686' 'x86_64')
