@@ -1,0 +1,25 @@
+pkgbase = libssh2-boringssl-ed25519-git
+	pkgdesc = A library implementing the SSH2 protocol as defined by Internet Drafts (with yan12125's patch for ED25519 authentication support)
+	pkgver = 1.8.0.r41.g6f0ed0f
+	pkgrel = 1
+	url = https://www.libssh2.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = go
+	makedepends = perl
+	makedepends = zlib
+	depends = glibc
+	provides = libssh2
+	conflicts = libssh2
+	options = staticlibs
+	options = !strip
+	source = git+https://github.com/yan12125/libssh2#branch=boringssl-ed25519
+	source = git+https://boringssl.googlesource.com/boringssl
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libssh2-boringssl-ed25519-git
+
