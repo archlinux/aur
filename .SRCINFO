@@ -1,4 +1,4 @@
-pkgbase = chakra-heritage-themes
+pkgbase = plasma5-themes-chakra-heritage
 	pkgdesc = Chakra Plasma 5 Look & Feel theme files
 	pkgver = 2016.12
 	pkgrel = 1
@@ -7,8 +7,9 @@ pkgbase = chakra-heritage-themes
 	license = LGPL
 	makedepends = extra-cmake-modules
 	depends = plasma-framework
+	optdepends = plasma5-wallpapers-chakra-tulip
 	source = git://git.chakralinux.org/heritage.git#commit=f72c02cc
 	md5sums = SKIP
 
-pkgname = chakra-heritage-themes
+pkgname = plasma5-themes-chakra-heritage
 

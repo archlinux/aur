@@ -1,7 +1,7 @@
 # Maintainer: BrLi <brli@chakralinux.org>
 # Contributor: AlmAck
 
-pkgname=chakra-heritage-themes
+pkgname=plasma5-themes-chakra-heritage
 pkgver=2016.12
 pkgrel=1
 pkgdesc='Chakra Plasma 5 Look & Feel theme files'
@@ -11,6 +11,7 @@ license=('LGPL')
 # remember to set the wallpaper name and resolution!! in plasma/heritage/metadata.desktop
 depends=('plasma-framework')
 makedepends=('extra-cmake-modules')
+optdepends=('plasma5-wallpapers-chakra-tulip')
 
 _gitsha='f72c02cc'
 source=("git://git.chakralinux.org/heritage.git#commit=${_gitsha}")
