@@ -1,8 +1,8 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kexi
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="A visual database applications creator"
 arch=(i686 x86_64)
 url="http://www.kexi-project.org/"
@@ -14,7 +14,7 @@ conflicts=(calligra-kexi)
 replaces=(calligra-kexi)
 groups=(calligra)
 source=("http://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz"{,.sig})
-sha1sums=('f7e7919f0a13707cdf2992da9c095ffa14cd510d'
+sha1sums=('f2eae11c42a641da1151f2a0d1a315b50db7be08'
           'SKIP')
 validpgpkeys=(4866BAF713B465677A4059643C7C0E201B6524DB) # Jarosław Staniek <staniek@kde.org>
 
