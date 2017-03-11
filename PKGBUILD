@@ -21,8 +21,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-  ./autogen.sh
-  ./configure --prefix=/usr
+  ./autogen.sh --prefix=/usr
+  ./configure 
   make
 }
 
