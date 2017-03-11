@@ -1,6 +1,6 @@
 pkgbase = twitchy-git
 	pkgdesc = CLI livestreamer wrapper for twitch.tv
-	pkgver = r119.97431c0
+	pkgver = r123.cd04489
 	pkgrel = 1
 	url = https://github.com/BasioMeusPuga/twitchy
 	arch = i686
