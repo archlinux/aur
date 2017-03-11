@@ -1,0 +1,25 @@
+diff -ura gnome-keysign-0.8.orig/setup.py gnome-keysign-0.8.new/setup.py
+--- gnome-keysign-0.8.orig/setup.py	2017-03-11 12:07:21.394620381 +0100
++++ gnome-keysign-0.8.new/setup.py	2017-03-11 12:08:02.014620656 +0100
+@@ -27,14 +27,14 @@
+         'keysign.compat',
+         'keysign.network',
+         ],
+-    py_modules = [
+-        'monkeysign.msgfmt',
+-        'monkeysign.translation',
+-        'monkeysign.gpg',
+-    ],
++    #py_modules = [
++    #    'monkeysign.msgfmt',
++    #    'monkeysign.translation',
++    #    'monkeysign.gpg',
++    #],
+     package_dir={
+-        'keysign': 'keysign',
+-        'monkeysign': 'monkeysign/monkeysign'},
++        'keysign': 'keysign'},
++        #'monkeysign': 'monkeysign'},
+     #package_data={'keysign': ['data/*']},
+     data_files=[
+         ( 'share/applications',
