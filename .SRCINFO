@@ -1,20 +1,20 @@
 pkgbase = waf
 	pkgdesc = General-purpose build system modelled after Scons
-	pkgver = 1.9.7
-	pkgrel = 2
+	pkgver = 1.9.8
+	pkgrel = 1
 	url = http://waf.io/
 	arch = any
 	license = BSD
 	makedepends = unzip
 	depends = python
 	provides = python-waf
-	source = https://waf.io/waf-1.9.7.tar.bz2
+	source = https://waf.io/waf-1.9.8.tar.bz2
 	source = wafdir.patch
 	source = building-waf.md
-	md5sums = a1f2776e2db4fa4c6ac00b224d854c3f
+	md5sums = 05e70dcb5c509891ebb241ac12f1397f
 	md5sums = ff472805caa81e02cb15bcf87031f722
 	md5sums = 93fd94b3dc4616c35e9bf13adc63b23c
-	sha256sums = 48f8dc7e37726176f59ab986d0cfe0562fe37deb1062b2953475b279923aedd7
+	sha256sums = d8ec47b85e832e97f32d4f83df3cacfa08dbf142c52ad525ee8e1a70ab658472
 	sha256sums = 432fb8e21fe31047e16ac068b761961f1a3965785e570bf54aca1c4c07d253f4
 	sha256sums = 3103524b61ac3f3af9bb71f1ac8fcb836a1e67e2bfcf59150f08dbf70a595675
 
