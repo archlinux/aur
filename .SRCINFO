@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-task-icons-git
+	pkgdesc = Adds task icons grouped by workspace to the panel.
+	pkgver = r10.68ddf46
+	pkgrel = 1
+	url = https://github.com/rliang/gnome-shell-extension-task-icons
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	conflicts = gnome-shell-extension-task-icons
+	source = gnome-shell-extension-task-icons-git::git+https://github.com/rliang/gnome-shell-extension-task-icons.git
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-task-icons-git
+
