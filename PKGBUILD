@@ -21,7 +21,6 @@ source=("git://github.com/mabels/gnupg.git#branch=quick-keytocard")
 sha1sums=('SKIP')
 
 pkgver() {
-  ls -l
   cd "$_gitname"
 
   git rev-parse --verify --short HEAD
