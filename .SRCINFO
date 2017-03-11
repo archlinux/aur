@@ -1,7 +1,7 @@
 pkgbase = chrome-token-signing
 	pkgdesc = Estonian ID Card signing for Chrome. Chrome extension and native messaging client.
 	pkgver = 1.0.4.464
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://www.id.ee/
 	arch = x86_64
