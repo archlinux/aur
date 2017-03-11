@@ -1,0 +1,18 @@
+pkgbase = nvim-pygtk3-git
+	pkgdesc = PyGTK3 frontend to Neovim with some visual GUI elements.
+	pkgver = r22.957ad44
+	pkgrel = 1
+	url = https://github.com/rliang/nvim-pygtk3
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-neovim
+	depends = python-gobject
+	depends = gtk3
+	depends = vte3
+	conflicts = nvim-pygtk3
+	source = nvim-pygtk3-git::git+https://github.com/rliang/nvim-pygtk3.git
+	md5sums = SKIP
+
+pkgname = nvim-pygtk3-git
+
