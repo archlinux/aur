@@ -37,7 +37,7 @@ package() {
   install -o git -g git -d -m 750 ${pkgdir}/var/lib/gitea/
   install -o git -g git -d -m 750 ${pkgdir}/var/lib/gitea/{repos,tmp,sessions,attachments,public,data,indexer}
   install -o git -g git -d -m 750 ${pkgdir}/var/log/gitea/
-  install -o root -g git -d -m 775 ${pkgdir}/etc/gitea/
+  install -d -m 644 ${pkgdir}/etc/gitea/
 
   install -Dm755 ${srcdir}/${pkgname}-${pkgver} ${pkgdir}/usr/bin/${pkgname}
   install -Dm644 ${srcdir}/gitea.service ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
