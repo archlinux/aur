@@ -21,7 +21,7 @@ prepare() {
 build() {
     cd "$srcdir/$pkgname-$pkgver/build"
 
-    cmake ../ -DCMAKE_INSTALL_PREFIX='/usr'
+    cmake -DCMAKE_INSTALL_PREFIX="/usr" ../
     make
 }
 
@@ -35,5 +35,5 @@ package() {
     cd "$srcdir/$pkgname-$pkgver/build"
 
     make DESTDIR="$pkgdir" install
-    install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    install -Dm644 "../COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
