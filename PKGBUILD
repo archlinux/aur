@@ -32,7 +32,5 @@ build() {
 }
 
 package() {
-  cd qactus
-  make INSTALL_ROOT="${pkgdir}" install
-  install -Dm644 qactus.desktop "$pkgdir/usr/share/applications/qactus.desktop"
+  make -C qactus INSTALL_ROOT="${pkgdir}" install
 }
