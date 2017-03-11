@@ -11,12 +11,15 @@ groups=()
 options=(!strip staticlibs !upx)
 PKGEXT='.pkg.tar'
 depends=('java-runtime')
-_bits=32
-[ $CARCH = x86_64 ] && _bits=64
-source=("DesignLab-${pkgver}-linux${_bits}.tgz::http://www.gadgetfactory.net/download/DesignLab/DesignLab-${pkgver}-linux${_bits}.tgz" 'designlab' 'designlab.desktop' 'designlab.png' 'LICENSE')
+source_i686=("DesignLab-${pkgver}-linux32.tgz::http://www.gadgetfactory.net/download/DesignLab/DesignLab-${pkgver}-linux32.tgz")
+source_x86_64=("DesignLab-${pkgver}-linux64.tgz::http://www.gadgetfactory.net/download/DesignLab/DesignLab-${pkgver}-linux64.tgz")
+source=('designlab' 
+        'designlab.desktop' 
+        'designlab.png' 
+        'LICENSE')
 install=papilio-designlab.install
-[ $CARCH = i686 ] && md5sums=('abf1d56ca2957e459455fb861ab3d9d6')
-[ $CARCH = x86_64 ] && md5sums=('08bf01f7366c5cb85b8f03ef93696cab')
+md5sums_i686=('abf1d56ca2957e459455fb861ab3d9d6')
+md5sums_x86_64=('08bf01f7366c5cb85b8f03ef93696cab')
 md5sums+=('95b470f30b17b790c95f983f20fc71f1'
          'a4d2f7a5a0508106664d158e51f7e034'
          '7e27108f30b6a253abf907f0b96c56b3'
