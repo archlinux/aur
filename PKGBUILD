@@ -1,11 +1,11 @@
 # GnuPG2 GIT version
-# Maintainer: alphazo@gmail.com
+# Maintainer: meno.abels@gmail.com
 # Based on official package maintained by Tobias Powalowski <tpowa@archlinux.org>
 # Cleanup from @holos
 
 _gitname=gnupg
 pkgname=gnupg-clavator
-pkgver=2.1.16+clavator
+pkgver=2.1.18+clavator
 pkgrel=1
 pkgdesc="GNU Privacy Guard 2 - a PGP replacement tool. Development version. Do not use in production environments. Test new ECC algorithms by using \"gpg --full-gen-key --expert\""
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -21,6 +21,7 @@ source=("git://github.com/mabels/gnupg.git#branch=quick-keytocard")
 sha1sums=('SKIP')
 
 pkgver() {
+  ls -l
   cd "$_gitname"
 
   git rev-parse --verify --short HEAD
