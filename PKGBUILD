@@ -7,7 +7,7 @@
 
 pkgname=geany-gtk3
 _pkgname=geany
-pkgver=1.29
+pkgver=1.30
 pkgrel=1
 pkgdesc='Fast and lightweight IDE'
 arch=('x86_64' 'i686')
@@ -21,7 +21,7 @@ optdepends=('geany-plugins-gtk3: various extra features'
 provides=('geany')
 conflicts=('geany')
 source=("http://download.geany.org/${_pkgname}-$pkgver.tar.bz2")
-md5sums=('9b62a443461cc917b41c94fa7d58fdb1')
+md5sums=('3abd397d528ae95e4e267225bf8419a7')
 
 prepare() {
 cd "${_pkgname}-$pkgver"
