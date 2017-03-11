@@ -3,7 +3,7 @@
 # Contributor: Otto Allmendinger <otto.allmendinger@gmail.com>
 
 pkgname=vertx
-pkgver=3.3.3
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Effortless asynchronous application development for the modern web and enterprise"
 arch=(any)
