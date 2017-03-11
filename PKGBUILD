@@ -1,58 +1,20 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
 
-_commons_cli_ver=1.3.1
-_commons_io_ver=2.5
-_commons_loggin_ver=1.2
-_httpclient_ver=4.5.2
-_httpcore_ver=4.4.5
-_protobuf_java_ver=2.6.1
-
 _pkgname=raccoon
 pkgname=$_pkgname-git
-pkgver=20160615.r185.bd74c0f
+pkgver=20170310.r108.03c2238
 pkgrel=1
 arch=('any')
 pkgdesc='Google Play desktop client'
 url='http://www.onyxbits.de/raccoon'
 license=('Apache')
 depends=('java-runtime' 'bash')
-makedepends=('apache-ant' 'java-environment' 'git')
-
-source=(
-  "$pkgname::git+https://github.com/onyxbits/Raccoon.git"
-  "$pkgname.build.xml"
-  "$pkgname.desktop"
-  "http://central.maven.org/maven2/commons-cli/commons-cli/$_commons_cli_ver/commons-cli-$_commons_cli_ver.jar"
-  "http://central.maven.org/maven2/commons-io/commons-io/$_commons_io_ver/commons-io-$_commons_io_ver.jar"
-  "http://central.maven.org/maven2/commons-logging/commons-logging/$_commons_loggin_ver/commons-logging-$_commons_loggin_ver.jar"
-  "http://central.maven.org/maven2/org/apache/httpcomponents/httpclient/$_httpclient_ver/httpclient-$_httpclient_ver.jar"
-  "http://central.maven.org/maven2/org/apache/httpcomponents/httpcore/$_httpcore_ver/httpcore-$_httpcore_ver.jar"
-  "http://central.maven.org/maven2/com/google/protobuf/protobuf-java/$_protobuf_java_ver/protobuf-java-$_protobuf_java_ver.jar"
-)
-
-sha512sums=(
-  'SKIP'
-  'fb9fb361819fbb67b14caf78bb84a9d8e67839f36ddb786ff96ad2626a4e6a382d37da24e56ca2b9a8dc82b52861fe94165acec62415c1cc89876c700f1faa56'
-  'b0bdc6234e8ddc900547a92b54592c5f4ca8beec94ed238b78e1a797abe111e75d0c6d2034c5957100d960ab938aee8846108f896ccd78d9cea7dc9e3061f08f'
-  '383ff22040787d7a27e18b414892dd204ba0f9d75e43eee775c1276d6dd6ea2a38fc349edec1b2bd332fb0bd324dcc8ccce084b98d47bcaf8aa443773fabf3de'
-  '1f6bfc215da9ae661dbabba80a0f29101a2d5e49c7d0c6ed760d1cafea005b7f0ff177b3b741e75b8e59804b0280fa453a76940b97e52b800ec03042f1692b07'
-  'ed00dbfabd9ae00efa26dd400983601d076fe36408b7d6520084b447e5d1fa527ce65bd6afdcb58506c3a808323d28e88f26cb99c6f5db9ff64f6525ecdfa557'
-  'c75a4027ca5fe08a1d2b5ac1f632df2fa6d18725dcd45735ac021e19ba24f0438b53f34ee72282f5895a25d3493499bb60d03ccc215797413ca8613ac0918431'
-  '4169e9f4091d6a6088f9a981a2648bf965bc95203b590e25490afcb7626db57a54bbc00b5e769b8fa4c016ebbeed28b5158e18736a9e7e1f28f48d845c267af0'
-  '0c16f6c582605d7e1ca57ee18cf990e1cddd6a0380e93c3da3c858625bdb81bb4d7324d85eaed2817f33521212afbc84a830f4ce552087653065edbc61ac4d2b'
-)
-
-noextract=(
-  "commons-cli-$_commons_cli_ver.jar"
-  "commons-io-$_commons_io_ver.jar"
-  "commons-logging-$_commons_loggin_ver.jar"
-  "httpclient-$_httpclient_ver.jar"
-  "httpcore-$_httpcore_ver.jar"
-  "protobuf-java-$_protobuf_java_ver.jar"
-)
+makedepends=('java-environment' 'git')
+source=('git+https://github.com/onyxbits/raccoon4.git' "$_pkgname.desktop")
+sha512sums=('SKIP' '37184cacd44f28fb8866fa9fd7c4b6f415462f4715deacecf45f831c2a17d1c2d79e97cfc620d5d6d54735404e7780a77d8d97ae2d84446364f0e318eda61202')
 
 pkgver() {
-  cd $pkgname
+  cd raccoon4
 
   printf "%s.r%s.%s" \
     "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" \
@@ -60,32 +22,17 @@ pkgver() {
     "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  # Add the build script to the source folder
-  sed 's|#commons_cli_pkgver#|'$_commons_cli_ver'|g;
-       s|#commons_io_pkgver#|'$_commons_io_ver'|g;
-       s|#commons_logging_pkgver#|'$_commons_loggin_ver'|g;
-       s|#httpclient_pkgver#|'$_httpclient_ver'|g;
-       s|#httpcore_pkgver#|'$_httpcore_ver'|g;
-       s|#protobuf_java_pkgver#|'$_protobuf_java_ver'|g' \
-         $pkgname.build.xml > $pkgname/build.xml
-
-  # Remove the build and download instructions from the README
-  sed -i '/^Building$/q' $pkgname/README.md
-  sed -i 'N;$!P;$!D;$d' $pkgname/README.md
-}
-
 build() {
-  cd $pkgname
-  ant build jar
+  cd raccoon4
+  unset _JAVA_OPTIONS
+  GRADLE_USER_HOME="$srcdir" ./gradlew -Pversion="$pkgver" launch4j
 }
 
 package() {
-  install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
-  install -Dm644 $pkgname/artwork/icon.svg "$pkgdir"/usr/share/pixmaps/$_pkgname.svg
-  install -Dm644 $pkgname/README.md "$pkgdir"/usr/share/doc/$_pkgname/README.md
-  install -Dm644 $pkgname/build/$pkgname.jar "$pkgdir"/usr/share/$_pkgname/$_pkgname.jar
-  install -d "$pkgdir"/usr/bin
+  install -Dm644 $_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm644 raccoon4/icon.ico "$pkgdir/usr/share/pixmaps/$_pkgname.ico"
+  install -Dm644 raccoon4/build/launch4j/lib/Raccoon-desktop-$pkgver.jar "$pkgdir/usr/share/$_pkgname/$_pkgname.jar"
+  install -d "$pkgdir/usr/bin"
 
   printf '%s\n\n%s\n%s\n' \
     '#!/usr/bin/env bash' \
