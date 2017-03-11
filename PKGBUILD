@@ -2,8 +2,8 @@
 # Contributor: BlackLotus89 <maxmusterm@gmail.com>
 
 pkgname=toybox
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.7.3
+pkgrel=1
 pkgdesc="A BSD-licensed alternative to busybox"
 arch=("i686" "x86_64" "armv6h" "armv7h")
 license=("BSD")
@@ -11,7 +11,6 @@ url="http://landley.net/toybox/"
 #makedepends=('')
 depends=('attr')
 source=("${pkgname}-${pkgver}.tar.gz::http://landley.net/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('5bb3069f58faf12940d5cfde3209ac7f63210bebdd9023979b0c20cede126ea7')
 
 # ToDo, prepare that chage the system minimal UID and user UIDs to the ones used in arch
 
@@ -36,3 +35,4 @@ package() {
  install -m755 "${srcdir}/${pkgname}-${pkgver}/${pkgname}" "${pkgdir}/usr/bin/"
  cp "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/toybox/"
 }
+md5sums=('6fa2a001402cb067ba541e0d8948da50')
