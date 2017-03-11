@@ -10,7 +10,7 @@ pkgname=${_pkgname}-${_lang}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 _version='55.0a1'
-pkgver=55.0a1.20170307
+pkgver=55.0a1.20170311
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -19,7 +19,7 @@ optdepends=('pulseaudio: audio support'
             'ffmpeg: h.264 video'
             'hunspell: spell checking'
             'hyphen: hyphenation')
-_url="https://download-installer.cdn.mozilla.net/pub/${_name}/nightly/latest-mozilla-central"
+_url="https://ftp.mozilla.org/pub/${_name}/nightly/latest-mozilla-central"
 _src="${_url}-l10n/${_name}-${_version}.${_lang}.linux"
 source=("${_pkgname}.desktop" 'vendor.js')
 source_i686=("${_src}-i686.tar.bz2"{,.asc})
