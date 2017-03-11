@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=GitKraken
 Comment=Unleash your repo
-Exec=bash -c "LD_PRELOAD=/usr/lib/libcurl.so.3 gitkraken"
+Exec="gitkraken"
 Icon=gitkraken
 Terminal=false
 Type=Application
