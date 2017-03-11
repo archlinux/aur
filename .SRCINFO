@@ -1,7 +1,7 @@
 pkgbase = networkmanager-consolekit-noscan
 	pkgdesc = Network Management daemon with scan disabled after connection established
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnome.org/projects/NetworkManager/
 	arch = i686
 	arch = x86_64
@@ -62,10 +62,12 @@ pkgbase = networkmanager-consolekit-noscan
 	backup = etc/NetworkManager/NetworkManager.conf
 	source = git+https://anongit.freedesktop.org/git/NetworkManager/NetworkManager#commit=037a12f96eff09aa48481fda7ea602a3388afc74
 	source = NetworkManager.conf
+	source = disable_wifi_scan_when_connected.patch
 	source = 01-org.freedesktop.NetworkManager.settings.modify.system.rules
 	source = 50-org.freedesktop.NetworkManager.rules
 	sha256sums = SKIP
 	sha256sums = 452e4f77c1de92b1e08f6f58674a6c52a2b2d65b7deb0ba436e9afa91ee15103
+	sha256sums = 3dfabdccd97074c948c924ece87935576e64675bdfef478e800a6da882861c2d
 	sha256sums = 4b815f43de58379e68653d890f529485aec4d2f83f11d050b08b31489d2267c2
 	sha256sums = 02d9f7d836d297d6ddf39482d86a8573b3e41735b408aa2cd6df22048ec5f6c4
 
