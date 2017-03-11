@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=xpybar
-pkgver=1.18.2
+pkgver=1.19
 pkgrel=1
 pkgdesc="A highly extensible minimalistic dock panel configured in Python 3"
 arch=(any)
@@ -28,18 +28,18 @@ optdepends=("alarm: for limiting the time of a file search in locks"
 makedepends=(make coreutils sed zip auto-auto-complete texinfo)
 install=xpybar.install
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(3b902b96e4795cb4c08457fd7dfabbc4d9944b28e580bc256be029a407c8fce6)
+sha256sums=(874d60ad4ec16047212068f1272d8d99d21e31053c3db596275b4b02f24fe637)
 
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make PREFIX=/usr HDPARM_PATH=/usr/bin/hdpath
+  make PREFIX=/usr HDPARM_PATH=/usr/bin/hdparm
 }
 
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make PREFIX=/usr HDPARM_PATH=/usr/bin/hdpath install DESTDIR="$pkgdir"
+  make PREFIX=/usr HDPARM_PATH=/usr/bin/hdparm install DESTDIR="$pkgdir"
   chmod 4755 "$pkgdir/usr/bin/restricted-hdparm"
 }
 
