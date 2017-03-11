@@ -8,6 +8,6 @@ note() {
 }
 
 post_upgrade() {
-	 note "Since version 2.6.1-2 this package installs a standalone leiningen.jar"
-   note "So you might want to remove ~/.lein/self-installs"
+    note "Since version 2.6.1-2 this package installs a standalone leiningen.jar"
+    note "So you might want to remove ~/.lein/self-installs"
 }

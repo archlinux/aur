@@ -1,9 +1,7 @@
-# Maintainer: Tobias Frilling <tobias@frilling-online.de>
-
+# Maintainer: Marcel Campello <tucho@prafrentex.com.br>
 pkgname=leiningen
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
-epoch=1
 pkgdesc="Automating Clojure projects without setting your hair on fire."
 arch=('any')
 url="https://github.com/technomancy/leiningen"
@@ -14,11 +12,10 @@ optdepends=('rlwrap: for readline support'
 install="leiningen.install"
 
 source=("${url}/archive/${pkgver}.tar.gz"
-        "${url}/releases/download/${pkgver}/leiningen-${pkgver}-standalone.zip"
-        "${url}/releases/download/${pkgver}/leiningen-${pkgver}-standalone.zip.asc")
+        "${url}/releases/download/${pkgver}/leiningen-${pkgver}-standalone.zip")
+sha256sums=('953c95c2656c46320c88dc683202030fdd9554e8390a4b4aaaba6d019088df6f'
+            '2ddc7e89bbb45cf1ca3d666a10dce0d3f154b77ad201aa58f430e84e71587c47')
 noextract=("leiningen-${pkgver}-standalone.zip")
-
-validpgpkeys=('2E708FB2FCECA07FF8184E275A92E04305696D78')
 
 package() {
   cd ${srcdir}/leiningen-${pkgver}
@@ -28,8 +25,3 @@ package() {
              ${pkgdir}/usr/share/java/leiningen-${pkgver}-standalone.jar
 
 }
-
-sha256sums=('db2069e9a87c72c7f83934e3068dc4b28c688115f7869056c4150392abc54c3d'
-            'b0a53fd9fa73e9d87c04ef25ba1ca174b0c062b803108648d7157176ccde7435'
-            'SKIP')
-
