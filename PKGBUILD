@@ -7,19 +7,21 @@
 pkgbase=ppsspp
 pkgname=('ppsspp' 'ppsspp-qt')
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A PSP emulator written in C++'
 arch=('i686' 'x86_64')
 url='http://www.ppsspp.org/'
 license=('GPL2')
-depends=('ffmpeg' 'sdl2')
+depends=('glew' 'libzip' 'sdl2')
 makedepends=('cmake' 'git' 'glu' 'qt5-tools')
 source=("git+https://github.com/hrydgard/ppsspp.git#tag=v${pkgver}"
-        'git+https://github.com/hrydgard/ppsspp-lang.git#commit=cdf4a8d'
+        'git+https://github.com/hrydgard/ppsspp-ffmpeg.git#commit=81379c5'
         'git+https://github.com/hrydgard/ppsspp-glslang.git#commit=4b3e84f'
+        'git+https://github.com/hrydgard/ppsspp-lang.git#commit=cdf4a8d'
         'ppsspp-armips::git+https://github.com/Kingcom/armips.git#commit=1ffab37'
         'ppsspp.desktop')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -28,7 +30,7 @@ sha256sums=('SKIP'
 prepare() {
   cd ppsspp
 
-  for submodule in lang ext/{armips,glslang}; do
+  for submodule in ffmpeg lang ext/{armips,glslang}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git submodule update ${submodule}
@@ -47,13 +49,12 @@ build() {
 
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_SKIP_RPATH='TRUE' \
-    -DUSE_SYSTEM_FFMPEG='TRUE'
+    -DCMAKE_SKIP_RPATH='TRUE'
   make
 
   cd ../build-qt
 
-  qmake-qt5 CONFIG+='release' CONFIG+='system_ffmpeg' ../Qt/PPSSPPQt.pro
+  qmake-qt5 CONFIG+='release' QMAKE_LFLAGS+='-lz' ../Qt/PPSSPPQt.pro
   make
 }
 
