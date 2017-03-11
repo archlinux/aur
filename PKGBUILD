@@ -1,7 +1,7 @@
 # Maintainer: Peter Ivanov <ivanovp@gmail.com>
 
 pkgname=papilio-designlab
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="It is an IDE specially designed to get you up and running quickly with Soft Processors on the Papilio FPGA boards"
 arch=('x86_64' 'i686')
@@ -15,8 +15,8 @@ _bits=32
 [ $CARCH = x86_64 ] && _bits=64
 source=("DesignLab-${pkgver}-linux${_bits}.tgz::http://www.gadgetfactory.net/download/DesignLab/DesignLab-${pkgver}-linux${_bits}.tgz" 'designlab' 'designlab.desktop' 'designlab.png' 'LICENSE')
 install=papilio-designlab.install
-[ $CARCH = i686 ] && md5sums=('4db3dc6859324d5d7274b4c5ae355384')
-[ $CARCH = x86_64 ] && md5sums=('b0a059e34ee43dfe26cb480a8197b485')
+[ $CARCH = i686 ] && md5sums=('abf1d56ca2957e459455fb861ab3d9d6')
+[ $CARCH = x86_64 ] && md5sums=('08bf01f7366c5cb85b8f03ef93696cab')
 md5sums+=('95b470f30b17b790c95f983f20fc71f1'
          'a4d2f7a5a0508106664d158e51f7e034'
          '7e27108f30b6a253abf907f0b96c56b3'
