@@ -1,0 +1,15 @@
+pkgbase = nord-gedit
+	pkgdesc = An arctic, north-bluish clean and elegant gedit syntax theme
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/arcticicestudio/nord-gedit
+	arch = any
+	license = Apache,
+	license = CC-BY-SA-4.0
+	makedepends = git
+	depends = gedit
+	source = nord-gedit::git+https://github.com/arcticicestudio/nord-gedit.git#tag=v0.1.0
+	md5sums = SKIP
+
+pkgname = nord-gedit
+
