@@ -1,0 +1,18 @@
+pkgbase = tarsnap-backup-git
+	pkgdesc = Haskell program for managing tarsnap backups
+	pkgver = 0.2.ge9bba7b
+	pkgrel = 1
+	url = https://github.com/irv/tarsnap-backup
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	makedepends = git
+	makedepends = cabal-install
+	makedepends = haskell-cmdargs
+	depends = tarsnap
+	provides = tarsnap-backup
+	source = tarsnap-backup-git::git+https://github.com/irv/tarsnap-backup.git
+	md5sums = SKIP
+
+pkgname = tarsnap-backup-git
+
