@@ -3,7 +3,7 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=papilio-loader-git
-pkgver=20140320
+pkgver=20150703
 pkgrel=1
 pkgdesc="Bitstream loader for Papilio One FPGA board."
 arch=("i686" "x86_64")
@@ -16,6 +16,11 @@ options=('!strip')
 source=(git://github.com/GadgetFactory/Papilio-Loader.git)
 #source=(git://github.com/ivanovp/Papilio-Loader.git)
 md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$_gitname"
+  git log -1 --format="%cd" --date=short | tr -d '-'
+}
 
 build() {
 # msg "GIT checkout done or server timeout"
