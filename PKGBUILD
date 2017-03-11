@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=gdl-git
 pkgver=3.22.0.1.g5babfa1r
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME Docking Libraries, git version"
 arch=('i686' 'x86_64')
 url="https://developer.gnome.org/gdl/"
@@ -21,8 +21,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-  ./autogen.sh --prefix=/usr
-  ./configure 
+  ./autogen.sh 
+  ./configure --prefix=/usr
   make
 }
 
