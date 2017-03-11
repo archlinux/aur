@@ -3,7 +3,7 @@
 
 _pkgname=libchewing
 pkgname=libchewing-git
-pkgver=0.5.1.r8.g583bc02
+pkgver=0.5.1.r49.g09108b2
 pkgrel=1
 epoch=1
 pkgdesc='Intelligent Chinese phonetic input method'
@@ -14,8 +14,10 @@ conflicts=('libchewing')
 provides=('libchewing')
 depends=('sqlite')
 makedepends=('git')
-source=("git+https://github.com/chewing/libchewing/")
-md5sums=('SKIP')
+source=("git+https://github.com/chewing/libchewing/"
+        "issue219.patch")
+md5sums=('SKIP'
+         '16f494709a35233177ba6bc234953871')
 
 pkgver() {
   cd "${_pkgname}"
@@ -25,11 +27,22 @@ pkgver() {
   )
 }
 
+prepare() {
+  cd "${_pkgname}"
+
+  patch -Np1 -i ../issue219.patch
+}
+
 build() {
   cd "${_pkgname}"
   ./autogen.sh
   ./configure --prefix=/usr --disable-static
   make
+}
+
+check() {
+  cd "${_pkgname}"
+  make check
 }
 
 package() {
