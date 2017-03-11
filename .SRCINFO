@@ -10,6 +10,7 @@ pkgbase = apk-preview
 	depends = python-gobject
 	depends = unzip
 	depends = android-tools
+	depends = android-sdk-build-tools
 	provides = apk-preview
 	source = apk-preview::git+https://github.com/alireza6677/apk-preview.git
 	md5sums = SKIP
