@@ -1,8 +1,8 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 # Former maintainer: Andrew Lewis <nerf@judo.za.org>
 pkgname=rspamd
-pkgver=1.5.1
-pkgrel=7
+pkgver=1.5.2
+pkgrel=2
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
 arch=('x86_64' 'i686' 'mips64el')
@@ -21,28 +21,45 @@ backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/mid.inc'
 		'etc/rspamd/mime_types.inc'
 		'etc/rspamd/modules.conf'
+		'etc/rspamd/modules.d/antivirus.conf'
+		'etc/rspamd/modules.d/asn.conf'
 		'etc/rspamd/modules.d/chartable.conf'
+		'etc/rspamd/modules.d/clickhouse.conf'
+		'etc/rspamd/modules.d/dcc.conf'
 		'etc/rspamd/modules.d/dkim.conf'
+		'etc/rspamd/modules.d/dkim_signing.conf'
 		'etc/rspamd/modules.d/dmarc.conf'
 		'etc/rspamd/modules.d/emails.conf'
 		'etc/rspamd/modules.d/fann_redis.conf'
+		'etc/rspamd/modules.d/force_actions.conf'
 		'etc/rspamd/modules.d/forged_recipients.conf'
 		'etc/rspamd/modules.d/fuzzy_check.conf'
+		'etc/rspamd/modules.d/greylist.conf'
 		'etc/rspamd/modules.d/hfilter.conf'
 		'etc/rspamd/modules.d/ip_score.conf'
 		'etc/rspamd/modules.d/maillist.conf'
+		'etc/rspamd/modules.d/metadata_exporter.conf'
+		'etc/rspamd/modules.d/metric_exporter.conf'
 		'etc/rspamd/modules.d/mid.conf'
 		'etc/rspamd/modules.d/mime_types.conf'
 		'etc/rspamd/modules.d/multimap.conf'
+		'etc/rspamd/modules.d/mx_check.conf'
 		'etc/rspamd/modules.d/once_received.conf'
 		'etc/rspamd/modules.d/phishing.conf'
 		'etc/rspamd/modules.d/ratelimit.conf'
 		'etc/rspamd/modules.d/rbl.conf'
 		'etc/rspamd/modules.d/redis.conf'
 		'etc/rspamd/modules.d/regexp.conf'
+		'etc/rspamd/modules.d/replies.conf'
+		'etc/rspamd/modules.d/rmilter_headers.conf'
 		'etc/rspamd/modules.d/rspamd_update.conf'
+		'etc/rspamd/modules.d/spamassassin.conf'
 		'etc/rspamd/modules.d/spf.conf'
 		'etc/rspamd/modules.d/surbl.conf'
+		'etc/rspamd/modules.d/trie.conf'
+		'etc/rspamd/modules.d/url_redirector.conf'
+		'etc/rspamd/modules.d/url_reputation.conf'
+		'etc/rspamd/modules.d/url_tags.conf'
 		'etc/rspamd/modules.d/whitelist.conf'
 		'etc/rspamd/options.inc'
 		'etc/rspamd/redirectors.inc'
@@ -63,7 +80,7 @@ source=("https://www.rspamd.com/downloads/${pkgname}-${pkgver}.tar.xz"
 		"${pkgname}.sysuser"
 		)
 
-sha256sums=('18e0f15d0121c3971cd11e7db1e15c0634289b1493b88656088fed0db92bc220'
+sha256sums=('6ff0c2f5956610d17bd7f470922fc6c53593bb9408f68e25294d2228b1fe315e'
             'f89edae5436a3c14e58210fb5c1d5bdd2f8a6f98c03dbc150ea9ff1a3fcfe441'
             '59646874a5036f3f26cac2898a2f60713fe6147b3c60ee964494f07b6acc313f')
 
