@@ -2,14 +2,14 @@
 
 pkgname=opencascade7
 pkgver=7.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Open CASCADE Technology, 3D modeling & numerical simulation, version 7"
 url="http://www.opencascade.org"
 arch=('i686' 'x86_64')
 license=('custom')
 makedepends=('cmake' 'flex' 'bison')
 depends=('gl2ps' 'freeimage' 'tk' 'ftgl' 'libxmu' 'vtk' 'mesa')
-optdepends=('intel-tbb')
+optdepends=('intel-tbb: multithreading support')
 source=(opencascade-${pkgver}.tar.gz::"http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V${pkgver//./_};sf=tgz")
 md5sums=('SKIP') # i don't know, the md5sum is not stable...
 
@@ -23,7 +23,7 @@ prepare(){
   #flags="$flags -D3RDPARTY_VTK_INCLUDE_DIR=/opt/vtk6/include"
   #flags="$flags -D3RDPARTY_VTK_LIBRARY_DIR=/opt/vtk6/lib"
   #flags="$flags -D3RDPARTY_VTK_BIN_DIR=/opt/vtk6/bin"
-  flags="$flags -DCMAKE_INSTALL_PREFIX=/opt/${pkgname}"
+  flags="$flags -DCMAKE_INSTALL_PREFIX=${pkgdir}/opt/${pkgname}"
   flags="$flags -DUSE_GL2PS=ON"
   flags="$flags -D3RDPARTY_GL2PS_DIR="
   flags="$flags -DUSE_FREEIMAGE=ON"
@@ -38,7 +38,6 @@ prepare(){
   else
     flags="$flags -DUSE_TBB=OFF"
   fi
-  #flags="$flags -DUSE_TBB=OFF"
   cmake $flags ..
 
   # this allows USE_VTK=ON to build
