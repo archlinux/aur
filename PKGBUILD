@@ -4,8 +4,8 @@
 
 pkgname=lirc-git
 _pkgname=lirc
-pkgver=r3024.8c87a28
-pkgrel=2
+pkgver=r3075.700f4a54
+pkgrel=1
 
 pkgdesc="Linux Infrared Remote Control utils. Git version."
 arch=('i686' 'x86_64')
@@ -18,12 +18,11 @@ provides=('lirc-utils' 'lirc')
 conflicts=('lirc-utils' 'lirc')
 replaces=('lirc-utils')
 backup=('etc/lirc/lirc_options.conf' 'etc/lirc/lircd.conf' 'etc/lirc/lircmd.conf')
-install=lirc.install
 source=("git://lirc.git.sourceforge.net/gitroot/lirc/lirc"
 lirc.logrotate lirc.tmpfiles)
 md5sums=('SKIP'
-'3deb02604b37811d41816e9b4385fcc3'
-'febf25c154a7d36f01159e84f26c2d9a')
+         '3deb02604b37811d41816e9b4385fcc3'
+         'febf25c154a7d36f01159e84f26c2d9a')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -33,7 +32,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
   ./autogen.sh
-  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var
+  HAVE_UINPUT=1 ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
