@@ -2,7 +2,7 @@
 
 pkgname=opencascade7
 pkgver=7.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open CASCADE Technology, 3D modeling & numerical simulation, version 7"
 url="http://www.opencascade.org"
 arch=('i686' 'x86_64')
@@ -50,8 +50,7 @@ prepare(){
 
 build() {
   cd "occt-V${pkgver//./_}/build"
-  #cd occt-${_short_commit_hash}/build
-  make
+  make -j$(nproc --ignore=1) #let's use all but one core to build 
 }
 
 package() {
