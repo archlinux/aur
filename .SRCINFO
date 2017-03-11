@@ -1,7 +1,7 @@
 pkgbase = owo-cli
 	pkgdesc = A bash based file uploader and URL shortener for owo.whats-th.is
 	pkgver = 0.0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://whats-th.is
 	arch = x86_64
 	license = MIT

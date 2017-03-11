@@ -1,7 +1,7 @@
 # Maintainer: Okashi <okashi@fourchin.net>
 pkgname=owo-cli
 pkgver=0.0.17
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A bash based file uploader and URL shortener for owo.whats-th.is"
 arch=('x86_64')
