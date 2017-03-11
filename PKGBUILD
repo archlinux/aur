@@ -1,7 +1,7 @@
 # Maintainer: jdkaplan <jdkaplan@metagram.net>
 
 pkgname=tako
-pkgver=0.0.19
+pkgver=0.0.20
 pkgrel=1
 pkgdesc="A command language and shell based on Python"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 conflicts=('tako-git')
 install=tako.install
 source=("https://takoshell.org/takoshell-$pkgver.tar.gz")
-sha256sums=('a064eafb7d53bd90cf6de5c891df90508bc319de49d3a0009e34fedf1e5b8aa1')
+sha256sums=('9b54fd018b804ac25ea7a3f33ffea9a51bbe8c6d341f6c5c6e3de0c532930dcd')
 
 package() {
   cd "$srcdir/takoshell-$pkgver"
