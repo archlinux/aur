@@ -7,14 +7,15 @@
 
 pkgbase=pyside2-git
 pkgname=(pyside2-common-git python2-pyside2-git python-pyside2-git)
-pkgver=2.0.0.r2080.ab092d79
+pkgver=2.0.0.r2088.455acf44
 _upver=2.0.0
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL')
 url="http://qt-project.org/wiki/PySide"
 makedepends=('python' 'python2' "qt5.6" "python"{,2}"-shiboken2-git"
-             'cmake' 'qt5.6-webkit' 'phonon-qt5' 'git')
+             'cmake' 'qt5.6-webkit' 'phonon-qt5' 'git' 'python2-sphinx'
+	     'graphviz')
 source=("$pkgbase::git+https://code.qt.io/pyside/pyside.git"
         "sphinx-build2.patch")
 md5sums=('SKIP'
