@@ -14,8 +14,8 @@ depends=('libldap' 'curl' 'bzip2' 'zlib' 'libksba>=1.2' 'libgpg-error' 'libgcryp
 license=('GPL')
 url="http://www.gnupg.org/"
 makedepends=('git' 'ghostscript' 'transfig' 'automake')
-provides=("gnupg=${pkgver}" 'dirmngr')
-conflicts=('gnupg2' 'gnupg' 'dirmngr')
+#provides=("gnupg=${pkgver}" 'dirmngr')
+#conflicts=('gnupg2' 'gnupg' 'dirmngr')
 install=${pkgname}.install
 source=("git://github.com/mabels/gnupg.git#branch=quick-keytocard")
 sha1sums=('SKIP')
@@ -30,13 +30,13 @@ pkgver() {
 build() {
   cd "$_gitname"
 
+  echo "2.1-clavator" > VERSION
   ./autogen.sh --force
-
+  echo "2.1-clavator" > VERSION
   ./configure \
     --enable-maintainer-mode \
-    --prefix=/usr \
-    --libexecdir=/usr/lib/gnupg
-
+    --prefix=/usr/local 
+  echo "2.1-clavator" > VERSION
   make
 }
 
@@ -44,7 +44,7 @@ package() {
   cd "$_gitname"
 
   make DESTDIR=${pkgdir} install
-  ln -s gpg2 "$pkgdir/usr/bin/gpg"
+#ln -s gpg2 "$pkgdir/usr/bin/gpg"
 }
 
 # vim: ft=sh syn=sh et sw=2
