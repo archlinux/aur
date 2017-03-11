@@ -1,5 +1,4 @@
-# Maintainer: youngunix <zagazaw2004 {} gmail () {}>
-# Maintainer: Caspar Friedrich <c.s.w.friedrich@gmail.com>
+# Maintainer: youngunix 
 # Contributor: Otto Allmendinger <otto.allmendinger@gmail.com>
 
 pkgname=vertx
