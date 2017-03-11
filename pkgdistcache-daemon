@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 # coding: utf-8
 #
 # pkgdistcache daemon v0.3.1
@@ -15,10 +15,9 @@ import subprocess
 import string
 import avahi
 import dbus
-import gobject
+from gi.repository import GObject as gobject
 import dbus.glib
-import SimpleHTTPServer
-import BaseHTTPServer
+import http.server
 import signal
 import socket
 
@@ -38,15 +37,15 @@ def runcmd(cmd, cwd=None):
 def daemonize():
 	try:
 		pid = os.fork()
-	except OSError, e:
-		raise Exception, "%s [%d]" % (e.strerror, e.errno)
+	except OSError as e:
+		raise Exception("%s [%d]" % (e.strerror, e.errno))
 
 	if (pid == 0):	# The first child.
 		os.setsid()
 		try:
 			pid = os.fork()	# Fork a second child.
-		except OSError, e:
-			raise Exception, "%s [%d]" % (e.strerror, e.errno)
+		except OSError as e:
+			raise Exception("%s [%d]" % (e.strerror, e.errno))
 
 		if (pid != 0):	# The second child.
 			os._exit(0)	# Exit parent (the first child) of the second child.
@@ -100,7 +99,7 @@ class AvahiPublisher:
 	def unpublish(self):
 		self.group.Reset()
 
-class HTTPServerV6(BaseHTTPServer.HTTPServer):
+class HTTPServerV6(http.server.HTTPServer):
   address_family = socket.AF_INET6
 
 def main(args):
@@ -128,7 +127,7 @@ def main(args):
 	avahi_service.publish()
 	
 	os.chdir('/var/cache/pacman/pkg')
-	handler = SimpleHTTPServer.SimpleHTTPRequestHandler
+	handler = http.server.SimpleHTTPRequestHandler
 	httpd = HTTPServerV6(('', port), handler)
 
 	try:

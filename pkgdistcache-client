@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 # coding: utf-8
 #
 # pkgdistcache client v0.3.1
@@ -12,7 +12,7 @@ import subprocess
 import string
 import avahi
 import dbus
-import gobject
+from gi.repository import GObject as gobject
 import dbus.glib
 import pickle
 
@@ -27,13 +27,13 @@ colors = {'none': '\033[0m',
 	'white': '\033[0;37m',		'bold_white': '\033[1;37m'}
 
 def printmsg(msg):
-	print "%s>> %s%s" % (colors['bold_blue'], msg, colors['none'])
+	print("%s>> %s%s" % (colors['bold_blue'], msg, colors['none']))
 
 def printerr(msg):
-	print "%s!! %s%s" % (colors['bold_red'], msg, colors['none'])
+	print("%s!! %s%s" % (colors['bold_red'], msg, colors['none']))
 
 def printwarn(msg):
-	print "%s!! %s%s" % (colors['bold_yellow'], msg, colors['none'])
+	print("%s!! %s%s" % (colors['bold_yellow'], msg, colors['none']))
 
 # Run a command synchronously, redirecting stdout and stderr to strings
 def runcmd(cmd, cwd=None):
