@@ -1,13 +1,13 @@
 # AUR/linux-tomoyo PKGBUILD
 # Maintainer: dysphoria <>
 
-# core/linux PKGBUILD 277473 2016-09-30 19:28:40Z tpowa $
+# core/linux PKGBUILD 290479 2017-03-10 11:26:15Z heftig $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-tomoyo
-_srcname=linux-4.9
-pkgver=4.9.11
+_srcname=linux-4.10
+pkgver=4.10.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -19,25 +19,21 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
-        'config' 'config.x86_64'
+        'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
         '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux-tomoyo.preset'
-        'change-default-console-loglevel.patch'
-        '0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch'
         )
 
-sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
+sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
             'SKIP'
-            '23e773a670f3cac11a92c4e442405dea6d2c28fea0f914ea2ba4bea313c26541'
+            'da560125aa350f76f0e4a5b9373a0d0a1c27ccefe3b7bd9231724f3a3c4ebb9e'
             'SKIP'
-            'b5c2a685667a884477904c9fb337d944667b6144720ac2a67d1116f711e70768'
-            'ab6c0fab5b147fab9ccef90c62b963510e92fbd068a6a33b9619537243fedca4'
+            '386051f19482672c871e7865fc62f5e2c8010d857729134ba13044734962e42c'
+            '12a87284e2935cd17e2846a207cc76f1728531416523735d66ef8a0ae690884c'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '85954ac18da9dc1bec5df28e2f097d13016e39fa9631074f85b6364af340fcd9')
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -51,22 +47,10 @@ prepare() {
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
 
-  # https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-6074
-  patch -p1 -i "${srcdir}/0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch"
-
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
-  # remove this when a Kconfig knob is made available by upstream
-  # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  if [ "${CARCH}" = "x86_64" ]; then
-    cat "${srcdir}/config.x86_64" > ./.config
-  else
-    cat "${srcdir}/config" > ./.config
-  fi
+  cat "${srcdir}/config.${CARCH}" > ./.config
 
   # Enable TOMOYO Linux
   msg "Enabling TOMOYO Linux..."
@@ -264,7 +248,7 @@ _package-headers() {
   # add objtool for external module building and enabled VALIDATION_STACK option
   if [ -f tools/objtool/objtool ]; then
       mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
-      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/
   fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
