@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=gdl-git
-pkgver=3.18r956
+pkgver=3.22.0.1.g5babfa1r
 pkgrel=1
 pkgdesc="GNOME Docking Libraries, git version"
 arch=('i686' 'x86_64')
@@ -16,8 +16,7 @@ _gitname="gdl"
 
 pkgver() {
   cd $srcdir/$_gitname
-  _mainver=3.18
-   printf "%sr%s" "$(echo $_mainver)" "$(git rev-list --count HEAD)"
+  printf "%sr%s" "$(git describe|cut -c5-|tr - .|tr _ .)"
 }
 
 build() {
