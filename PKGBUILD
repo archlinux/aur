@@ -2,7 +2,7 @@
 
 pkgname=igb
 pkgver=5.3.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux* Base Driver for Intel(R) Ethernet Network Connection"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/e1000/files/igb%20stable/"
@@ -11,14 +11,17 @@ depends=('linux>=2.6.30')
 makedepends=('linux-headers>=2.6.30')
 install=$pkgname.install
 source=("$pkgname-$pkgver-src.tar.gz::https://downloads.sourceforge.net/project/e1000/igb%20stable/$pkgver/$pkgname-$pkgver.tar.gz"
-        kernel4.9.patch)
+        kernel4.9.patch
+        kernel4.10.patch)
 sha256sums=('804fe3c5c3a65b4ce8681569175b62efd648240f5fbbc349689f14de0d3dee6d'
-            'c6dc82cf45b09271cae1818130ac215a64d96a5e9237c11f2b5bc757603111a2')
+            'c6dc82cf45b09271cae1818130ac215a64d96a5e9237c11f2b5bc757603111a2'
+            '8e3b8473cf379246574962e985f474bb53b786be218ba8574071fd845c3e1396')
 
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
     patch -p1 -i "../kernel4.9.patch"
+    patch -p1 -i "../kernel4.10.patch"
 }
 
 build() {
