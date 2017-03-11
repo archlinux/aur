@@ -2,17 +2,19 @@
 # https://github.com/ValHue/AUR-PKGBUILDs
 #
 # Contributor: Alexander Fehr <pizzapunk gmail com>
-
+#
 pkgname="jclic"
-pkgver=0.2.3.4
-pkgrel=3
+pkgver="0.3.2.1"
+pkgrel="1"
 pkgdesc="Java applications for educational activities."
 arch=('any')
-url="http://projectes.lafarga.cat/projects/jclic"
-license=('GPL')
+url="http://clic.xtec.cat/en/index.htm"
+license=('GPL2')
 depends=('java-environment')
-source=("http://clic.xtec.cat/dist/jclic/$pkgname-$pkgver.zip")
-md5sums=('d4830f1d4772042c3f5a3890906ac171')
+provides=("${pkgname}")
+
+source=("http://clic.xtec.cat/dist/${pkgname}/${pkgname}-${pkgver}.zip")
+sha256sums=('8c36a0fbedfdeef4331e43e0979778e38cb6d3ab27e1733469ec4a619c83f72c')
 
 _jclic_desktop="[Desktop Entry]
 Name=JClic
@@ -28,7 +30,7 @@ Categories=Education;"
 
 _jclic_author_desktop="[Desktop Entry]
 Name=JClic author
-Exec=java -jar /opt/jclic/jclicauthor.jar
+Exec=java -Xmx256m -jar /opt/jclic/jclicauthor.jar
 Icon=/opt/jclic/icons/author.png
 Type=Application
 GenericName=Create educational activities
@@ -62,5 +64,7 @@ package() {
     cp -r ${srcdir}/${pkgname}-${pkgver} ${pkgdir}/opt/${pkgname}
 
     install -d ${pkgdir}/usr/share/applications
-    install -m644 ${srcdir}/*.desktop ${pkgdir}/usr/share/applications
+    install -m 644 ${srcdir}/*.desktop ${pkgdir}/usr/share/applications/
 }
+
+# vim:set ts=4 sw=2 ft=sh et:
