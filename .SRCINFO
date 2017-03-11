@@ -1,0 +1,13 @@
+pkgbase = plasma5-wallpapers-chakra-tulip
+	pkgdesc = Chakra Tulip Wallpaper by almack
+	pkgver = 2016.05
+	pkgrel = 1
+	url = http://www.chakralinux.org
+	arch = any
+	license = GPL
+	license = CC-BY-SA
+	source = http://rsync.chakraos.org/sources/chakra-artwork/wallpapers/tulip/tulip_2016.05-1.tar.gz
+	md5sums = 25b914f22d367cedca93084ea10a898e
+
+pkgname = plasma5-wallpapers-chakra-tulip
+
