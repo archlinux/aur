@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-libcuckoo-git
+	pkgdesc = libcuckoo provides a high-performance, compact hash table that allows multiple concurrent reader and writer threads. (mingw-w64)
+	pkgver = r293.8d247ab
+	pkgrel = 1
+	url = https://github.com/efficient/libcuckoo
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-cmake
+	makedepends = git
+	depends = mingw-w64-crt
+	depends = mingw-w64-gcc
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = mingw-w64-libcuckoo::git+https://github.com/efficient/libcuckoo.git#branch=master
+	sha1sums = SKIP
+
+pkgname = mingw-w64-libcuckoo-git
+
