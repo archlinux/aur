@@ -1,0 +1,18 @@
+pkgbase = dotploy-git
+	pkgdesc = Deploy dotfiles using symlinks
+	pkgver = 0.1.0.r1.ga668677
+	pkgrel = 1
+	arch = any
+	license = LGPL
+	makedepends = git
+	depends = python
+	depends = python-click
+	depends = python-logbook
+	depends = python-ruamel-yaml
+	provides = dotploy=0.1.0.r1.ga668677
+	conflicts = dotploy
+	source = dotploy::git+https://github.com/vivienm/dotploy.git
+	md5sums = SKIP
+
+pkgname = dotploy-git
+
