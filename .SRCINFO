@@ -1,6 +1,6 @@
 pkgbase = mickey-scheme-git
 	pkgdesc = Incomplete, slow and buggy implementation of R7RS-small Scheme
-	pkgver = 490.a926275
+	pkgver = 500.ca43b59
 	pkgrel = 1
 	url = https://github.com/cslarsen/mickey-scheme
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = mickey-scheme-git
 	makedepends = git
 	depends = libffi
 	depends = readline
-	source = git+https://github.com/cslarsen/mickey-scheme.git
+	source = git+https://github.com/cslarsen/mickey-scheme.git#branch=origin/gc
 	md5sums = SKIP
 
 pkgname = mickey-scheme-git

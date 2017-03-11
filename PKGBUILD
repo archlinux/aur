@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=mickey-scheme-git
-pkgver=490.a926275
+pkgver=500.ca43b59
 pkgrel=1
 pkgdesc="Incomplete, slow and buggy implementation of R7RS-small Scheme"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/cslarsen/mickey-scheme"
 license=('GPL')
 depends=('libffi' 'readline')
 makedepends=('git')
-source=("git+https://github.com/cslarsen/mickey-scheme.git")
+source=("git+https://github.com/cslarsen/mickey-scheme.git#branch=origin/gc")
 md5sums=('SKIP')
 _gitname="mickey-scheme"
 
