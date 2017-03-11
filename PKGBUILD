@@ -1,7 +1,7 @@
-# Maintainer: serkho <sergey.khorev@gmail.com>
+# Maintainer: Fabian Beuke <mail@beuke.org>
 _hkgname=pointfree
 pkgname=haskell-pointfree
-pkgver=1.0.4.6
+pkgver=1.1.1.3
 pkgrel=1
 pkgdesc="Tool for refactoring expressions into pointfree form"
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -11,7 +11,7 @@ makedepends=('ghc' 'haskell-array' 'haskell-containers' 'haskell-haskell-src-ext
 depends=('gmp')
 options=('strip')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
-md5sums=('7bf1b1ff6a623a9d96b0434bce1d9e5f')
+md5sums=('77d2d2992a0a760671e9cabaee1f8486')
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
     runhaskell Setup configure --prefix=/usr --docdir=/usr/share/doc/${pkgname} -O

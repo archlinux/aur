@@ -1,6 +1,6 @@
 pkgbase = haskell-pointfree
 	pkgdesc = Tool for refactoring expressions into pointfree form
-	pkgver = 1.0.4.6
+	pkgver = 1.1.1.3
 	pkgrel = 1
 	url = http://hackage.haskell.org/package/pointfree
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = haskell-pointfree
 	makedepends = haskell-transformers
 	depends = gmp
 	options = strip
-	source = http://hackage.haskell.org/packages/archive/pointfree/1.0.4.6/pointfree-1.0.4.6.tar.gz
-	md5sums = 7bf1b1ff6a623a9d96b0434bce1d9e5f
+	source = http://hackage.haskell.org/packages/archive/pointfree/1.1.1.3/pointfree-1.1.1.3.tar.gz
+	md5sums = 77d2d2992a0a760671e9cabaee1f8486
 
 pkgname = haskell-pointfree
 
