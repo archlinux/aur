@@ -3,7 +3,7 @@
 _pkgname=rtorrent
 pkgname=rtorrent-ps
 pkgver=0.9.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Extended rTorrent distribution with UI enhancements, colorization, and some added features'
 url='https://github.com/pyroscope/rtorrent-ps'
 license=('GPL')
@@ -30,7 +30,7 @@ md5sums=('b8b4009f95f8543244ae1d23b1810d7c'
          'ee76d57dfbc40e09eeaee3845d327d94'
          '7a88f8ab5d41242fdf1428de0e2ca182'
          'bd04a0699b80c8042e1cf63a7e0e4222'
-         'afd9f0e9ed816069b584e19c88b0a4bb'
+         '2265910664e904164ffd28b5e69445e9'
          '1258acfc82c50a8f452ace87fef0b416'
          '0a2bbaf74c7160ba33876dcc2f050f14')
 
