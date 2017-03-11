@@ -12,8 +12,8 @@
 pkgbase=mesa-git
 pkgname=('mesa-git' 'mesa-libgl-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.1.0_devel.89559.f3dc318464
-pkgrel=2
+pkgver=17.1.0_devel.89730.3d253d330a
+pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'libdrm' 'glproto'
              'dri2proto' 'dri3proto' 'presentproto' 'libxml2' 'libx11' 'libxshmfence' 
@@ -132,7 +132,7 @@ package_mesa-git () {
 package_mesa-libgl-git () {
   pkgdesc="Mesa 3-D graphics library"
   depends=('mesa-git')
-  provides=('mesa-libgl' 'libgl' 'libgles' 'libegl')
+  provides=('mesa-libgl' 'libgl' 'libgles' 'libegl' 'opengl-provider')
   replaces=('mesa-libgl' 'libgles' 'libegl')
   conflicts=('mesa-libgl' 'libgles' 'libegl')
 
