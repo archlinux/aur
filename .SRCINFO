@@ -1,12 +1,12 @@
 pkgbase = zsh-theme-powerlevel9k
 	pkgdesc = Powerlevel9k theme for zsh
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bhilburn/powerlevel9k
 	arch = any
 	license = custom
 	depends = zsh
-	depends = powerline-fonts
+	optdepends = powerline-fonts: powerline fonts integration
 	optdepends = oh-my-zsh-git: oh-my-zsh integration
 	optdepends = prezto-git: Prezto integration
 	optdepends = antigen-git: Antigen integration

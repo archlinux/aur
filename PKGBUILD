@@ -5,13 +5,15 @@
 _pkgname=powerlevel9k
 pkgname=zsh-theme-"${_pkgname}"
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerlevel9k theme for zsh'
 arch=('any')
 url='https://github.com/bhilburn/powerlevel9k'
 license=('custom')
-depends=('zsh' 'powerline-fonts')
-optdepends=('oh-my-zsh-git: oh-my-zsh integration'
+depends=('zsh')
+optdepends=(
+  'powerline-fonts: powerline fonts integration'
+  'oh-my-zsh-git: oh-my-zsh integration'
   'prezto-git: Prezto integration'
   'antigen-git: Antigen integration'
   'zpm: ZPM integration'
