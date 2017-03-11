@@ -2,7 +2,7 @@
 
 pkgname=opencascade7
 pkgver=7.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open CASCADE Technology, 3D modeling & numerical simulation, version 7"
 url="http://www.opencascade.org"
 arch=('i686' 'x86_64')
@@ -15,7 +15,6 @@ md5sums=('SKIP') # i don't know, the md5sum is not stable...
 
 prepare(){
   cd "occt-V${pkgver//./_}"
-  #cd occt-${_short_commit_hash}
   mkdir -p build
   cd build
   flags=""
@@ -56,8 +55,7 @@ build() {
 }
 
 package() {
-  cd "occt-V${pkgver//./_}"
-  #cd occt-${_short_commit_hash}/build
+  cd "occt-V${pkgver//./_}/build"
   make DESTDIR="${pkgdir}" install
   install -Dm644 ../LICENSE_LGPL_21.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 ../OCCT_LGPL_EXCEPTION.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
