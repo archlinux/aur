@@ -8,18 +8,18 @@
 # Modifications to Use Git Master Source
 # ======================================
 # Maintainer: James Harvey <jamespharvey20@gmail.com>
-#    * This PKGFILE as closely as possible matches core's binutils 2.27-1
+#    * This PKGFILE as closely as possible matches core's binutils 2.28-1
 #    * All namcap warnings and errors are identical, other than:
 #       * Warning zlib is no longer a dependency
 #          * Siding with caution, leaving it as a dependency
 #       * Warning libraries libopcodes and libbfd are uninstalled dependencies
 #          * This is referencing itself, and the -git version is not installed in a chroot build because binutils is already installed, and it defaults to 'no' for the conflict
-#          * It's hardcoded to look for a version in format 2.28.51.20170308.so, rather than 2.28.r89832.15c22686d0
+#          * It's hardcoded to look for a version in format 2.28.51.20170308.so, rather than 2.28.r89848.5f4d108508
 #             * .51 is binutils' designation for their post-release development branch
 
 pkgname=binutils-git
 _pkgname=binutils-gdb
-pkgver=2.28.r89832.15c22686d0
+pkgver=2.28.r89848.5f4d108508
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (git master developmental version)"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ url="http://www.gnu.org/software/binutils/"
 license=('GPL')
 provides='binutils=${pkgver}'
 groups=('base-devel')
-depends=('glibc>=2.24' 'zlib')
+depends=('glibc>=2.25' 'zlib')
 makedepends=('git')
 checkdepends=('dejagnu' 'bc')
 provides=('binutils')
@@ -60,7 +60,6 @@ build() {
     --with-bugurl=https://bugs.archlinux.org/ \
     --enable-threads \
     --enable-shared \
-    --with-pic \
     --enable-ld=default \
     --enable-gold \
     --enable-plugins \
