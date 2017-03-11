@@ -1,0 +1,21 @@
+--- pax-3.0/src/pax.h.MAXPATH	2001-12-15 14:52:52.000000000 +0100
++++ pax-3.0/src/pax.h	2004-10-08 11:10:50.673000632 +0200
+@@ -41,6 +41,7 @@
+ /*
+  * BSD PAX global data structures and constants.
+  */
++#include <limits.h>
+ 
+ #define	MAXBLK		64512	/* MAX blocksize supported (posix SPEC) */
+ 				/* WARNING: increasing MAXBLK past 32256 */
+@@ -50,8 +51,8 @@
+ 				/* Don't even think of changing this */
+ #define DEVBLK		8192	/* default read blksize for devices */
+ #define FILEBLK		10240	/* default read blksize for files */
+-#define PAXPATHLEN	3072	/* maximium path length for pax. MUST be */
+-				/* longer than the system MAXPATHLEN */
++#define PAXPATHLEN	PATH_MAX	/* maximium path length for pax. MUST be */
++					/* longer than the system MAXPATHLEN */
+ 
+ /*
+  * Pax modes of operation

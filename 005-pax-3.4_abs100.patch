@@ -1,0 +1,17 @@
+--- pax-3.4/src/tar.c.abs100	2005-08-01 18:17:58.000000000 +0200
++++ pax-3.4/src/tar.c	2007-06-20 10:44:54.000000000 +0200
+@@ -1181,6 +1181,14 @@ name_split (name, len)
+    * prefix we can find)
+    */
+   start = name + len - TNMSZ;
++  /* if filename is absolute and exactly TNMSZ in length,
++   * before we invoke the strict interpretation of /str below, we
++   * check to see if there is another slash further along which
++   * would allow a safe split. if this search fails then we hit
++   * the end of the string and fail in a similar manner
++   */
++  if((start == name) && (*start == '/'))
++    ++start;
+   while ((*start != '\0') && (*start != '/'))
+     ++start;
+ 
