@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/WoLpH/python-progressbar"
 license=('BSD')
 depends=('python' 'python-utils')
+makedepends=('python-setuptools')
 provides=('python-progressbar')
 conflicts=('python-progressbar')
 source=("https://github.com/WoLpH/${_pkgname}/archive/v${pkgver}.tar.gz")
