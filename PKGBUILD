@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-core-addrindex-git
 pkgver=20170103
-pkgrel=4
+pkgrel=5
 pkgdesc="Bitcoin Core headless P2P node with addrindex"
 arch=('i686' 'x86_64')
 url="https://github.com/btcdrak/bitcoin"
@@ -56,7 +56,14 @@ build() {
     --with-gui=no \
     --disable-wallet \
     --with-gnu-ld
-  make
+  make -j$(($(nproc)/2))
+}
+
+check() {
+  cd ${pkgname%%-*}
+
+  msg2 'Testing...'
+  make -j$(($(nproc)/2)) check
 }
 
 package() {
