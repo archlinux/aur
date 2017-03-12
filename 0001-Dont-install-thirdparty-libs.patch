@@ -1,0 +1,26 @@
+diff --git a/dist/dist.pro b/dist/dist.pro
+index da853b2..b7e4b32 100644
+--- a/dist/dist.pro
++++ b/dist/dist.pro
+@@ -33,18 +33,18 @@ unix:{
+ 		$$[QT_INSTALL_LIBS]/libQt5Qml.so.5 \
+ 		$$[QT_INSTALL_LIBS]/libQt5Quick.so.5 \
+ 		$$[QT_INSTALL_LIBS]/libQt5SerialPort.so.5
+-	INSTALLS += qtlibs
++	#INSTALLS += qtlibs
+ 
+ 	otherlibs.path = /lib
+ 	otherlibs.files = \
+ 		$$[QT_INSTALL_LIBS]/libicudata.so.$$ICU_VERSION \
+ 		$$[QT_INSTALL_LIBS]/libicui18n.so.$$ICU_VERSION \
+ 		$$[QT_INSTALL_LIBS]/libicuuc.so.$$ICU_VERSION
+-	INSTALLS += otherlibs
++	#INSTALLS += otherlibs
+ 
+ 	qmlmodules.path = /qml
+ 	qmlmodules.files = $$[QT_INSTALL_LIBS]/../qml/QtQuick.2
+-	INSTALLS += qmlmodules
++	#INSTALLS += qmlmodules
+ }
+ else:win32:{
+ 	qtlibs.path = /
