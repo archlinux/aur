@@ -1,0 +1,4 @@
+post_install() {
+  echo "If you like it, please consider purchasing it from the Blender Market. 15usd isn't much, and every sale puts a smile on my face and motivates me to keep developing it :)"
+}
+# vim:set ts=2 sw=2 et:
