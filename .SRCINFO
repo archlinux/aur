@@ -1,13 +1,13 @@
 pkgbase = lib32-nvidia-utils-vulkan-developer-beta
-	pkgver = 375.27.13
+	pkgver = 375.27.14
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom:NVIDIA
 	makedepends = nvidia-libgl-vulkan-developer-beta
 	options = !strip
-	source = https://developer.nvidia.com/linux-3752713-32-bit
-	md5sums = e1f0620ef6cae6a4158dce72b1e67db7
+	source = https://developer.nvidia.com/linux-375271432bit
+	md5sums = 9f97042234b2ca4d4b63c3ddc384b4a7
 
 pkgname = lib32-nvidia-utils-vulkan-developer-beta
 	pkgdesc = NVIDIA driver utilities and libraries (vulkan developer beta version) (32-bit)
@@ -15,7 +15,7 @@ pkgname = lib32-nvidia-utils-vulkan-developer-beta
 	depends = lib32-gcc-libs
 	depends = nvidia-utils-vulkan-developer-beta
 	optdepends = lib32-opencl-nvidia-vulkan-developer-beta: OpenCL support
-	provides = lib32-nvidia-utils=375.27.13
+	provides = lib32-nvidia-utils=375.27.14
 	provides = lib32-libglvnd
 	provides = lib32-vulkan-driver
 	conflicts = lib32-nvidia-utils
