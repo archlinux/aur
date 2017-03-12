@@ -1,6 +1,6 @@
 pkgbase = python-azlyrics-git
 	pkgdesc = api & cli app for azlyrics.com
-	pkgver = ca914eb
+	pkgver = b2d3400
 	pkgrel = 1
 	url = https://github.com/ffmarcos/python-azlyrics
 	arch = any
