@@ -2,7 +2,7 @@
 
 pkgname=moolticute-git
 _pkgname="${pkgname%-git}"
-pkgver=0.6.0.r3.g5f3a560
+pkgver=0.6.1.r2.g135f8be
 pkgrel=1
 pkgdesc="Easy companion for Mooltipass device"
 arch=('x86_64' 'i686')
