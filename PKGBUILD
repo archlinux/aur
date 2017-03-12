@@ -7,16 +7,17 @@
 
 pkgbase=nim-git
 pkgname=('nim-git' 'nimble-git' 'nimsuggest-git')
-pkgver=20170124
+pkgver=20170312
 pkgrel=1
 arch=('i686' 'x86_64')
 groups=('nim')
 makedepends=('git' 'texlive-bin' 'texlive-core' 'texlive-fontsextra')
 source=(git+https://github.com/nim-lang/Nim
+        git+https://github.com/nim-lang/Nim.wiki
         git+https://github.com/nim-lang/csources
         git+https://github.com/nim-lang/nimble
         git+https://github.com/nim-lang/nimsuggest)
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "$srcdir/Nim"
@@ -74,6 +75,10 @@ package_nim-git() {
   install -dm 755 "$pkgdir/usr/share/doc/nim"
   cp -dpr --no-preserve=ownership examples web doc/* "$pkgdir/usr/share/doc/nim"
 
+  msg2 'Installing Nim wiki...'
+  cp -dpr --no-preserve=ownership "$srcdir/Nim.wiki" \
+    "$pkgdir/usr/share/doc/nim/wiki"
+
   msg2 'Installing Nim...'
   ./koch install "$pkgdir"
   install -Dm 755 bin/{nim,nimgrep} -t "$pkgdir/usr/bin"
@@ -98,6 +103,8 @@ package_nim-git() {
   ln -s "/usr/lib/nim/libnimrtl.so" "$pkgdir/usr/lib/libnimrtl.so"
 
   msg2 'Cleaning up pkgdir...'
+  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
+  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
   rm -rf "$pkgdir/nim"
 }
 
