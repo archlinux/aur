@@ -1,8 +1,8 @@
 pkgbase = linapple
 	pkgdesc = An Apple 2, 2e cross-platform emulator
 	pkgver = 2b
-	pkgrel = 3
-	url = http://http://linapple.sourceforge.net/index.html
+	pkgrel = 4
+	url = http://linapple.sourceforge.net/index.html
 	install = linapple.install
 	arch = x86_64
 	license = GPL

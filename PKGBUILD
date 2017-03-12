@@ -2,10 +2,10 @@
 pkgname=linapple
 _name=_src-
 pkgver=2b
-pkgrel=3
+pkgrel=4
 pkgdesc="An Apple 2, 2e cross-platform emulator "
 arch=('x86_64')
-url="http://http://linapple.sourceforge.net/index.html"
+url="http://linapple.sourceforge.net/index.html"
 license=('GPL')
 depends=('sdl' 'curl' 'zlib' 'libzip')
 makedepends=('imagemagick')
