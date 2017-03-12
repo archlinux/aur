@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-core-addrindex-git
 pkgver=20170103
-pkgrel=2
+pkgrel=3
 pkgdesc="Bitcoin Core headless P2P node with addrindex"
 arch=('i686' 'x86_64')
 url="https://github.com/btcdrak/bitcoin"
