@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-core
 pkgver=0.14.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('i686' 'x86_64')
 url="https://bitcoin.org"
@@ -50,7 +50,14 @@ build() {
     --with-gui=no \
     --disable-wallet \
     --with-gnu-ld
-  make
+  make -j$(($(nproc)/2))
+}
+
+check() {
+  cd "$srcdir/${pkgname%-core}-$pkgver"
+
+  msg2 'Testing...'
+  make -j$(($(nproc)/2)) check
 }
 
 package() {
