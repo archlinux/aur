@@ -52,7 +52,7 @@ check() {
   # How to run dbus-daemon in clean chroots?
   [[ -z "$DBUS_SESSION_BUS_ADDRESS" ]] && return
 
-  xvfb-run make test
+  GSETTINGS_SCHEMA_DIR="$srcdir/$_pkgname/bin/" xvfb-run make test
 }
 
 package() {
