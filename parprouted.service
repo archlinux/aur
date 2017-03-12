@@ -1,11 +1,10 @@
 [Unit]
-Description=proxy ARP IP bridging daemon
-
-[Install]
-WantedBy=multi-user.target
+Description=Proxy-ARP bridging daemon
 
 [Service]
 Type=forking
 EnvironmentFile=/etc/conf.d/parprouted
 ExecStart=/usr/bin/parprouted $EXTIF $INTIF
 
+[Install]
+WantedBy=multi-user.target
