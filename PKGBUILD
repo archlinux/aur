@@ -8,8 +8,7 @@
 _pkgname=ibus-chewing
 pkgname=$_pkgname-git
 pkgver=1.5.1.r38.gf4c192d
-_cmakefedoraver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Chinese Chewing Engine for IBus Framework'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -18,7 +17,7 @@ depends=('ibus' 'libchewing-git')
 makedepends=('gob2' 'cmake' 'git')
 checkdepends=('xorg-server-xvfb')
 source=("git+https://github.com/definite/ibus-chewing.git"
-        "git+https://pagure.io/cmake-fedora.git#tag=$_cmakefedoraver")
+        "git+https://pagure.io/cmake-fedora.git")
 sha512sums=('SKIP'
             'SKIP')
 provides=(ibus-chewing)
@@ -34,7 +33,10 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
-  ln -s ../cmake-fedora/Modules ./
+
+  git submodule init
+  git config submodule.cmake-fedora.url "$srcdir/cmake-fedora"
+  git submodule update
 }
 
 build() {

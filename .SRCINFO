@@ -1,7 +1,7 @@
 pkgbase = ibus-chewing-git
 	pkgdesc = Chinese Chewing Engine for IBus Framework
 	pkgver = 1.5.1.r38.gf4c192d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/definite/ibus-chewing
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ibus-chewing-git
 	provides = ibus-chewing
 	conflicts = ibus-chewing
 	source = git+https://github.com/definite/ibus-chewing.git
-	source = git+https://pagure.io/cmake-fedora.git#tag=2.6.0
+	source = git+https://pagure.io/cmake-fedora.git
 	sha512sums = SKIP
 	sha512sums = SKIP
 
