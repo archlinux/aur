@@ -8,8 +8,8 @@
 pkgbase=linux-mainline               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.10
-_patchname=patch-4.11-rc1
-pkgver=4.11rc1
+_patchname=patch-4.11-rc2
+pkgver=4.11rc2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -29,7 +29,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         )
 
 sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
-            '556cdbb12cb25fc5de26da6d01c6c7a49a880ddf0b671da0b3d1024b71a09969'
+            'edeba5ed13d2cd13f522c10d7808497f043b1f89b7ee3b843f4f6a108a5e6a53'
             '386051f19482672c871e7865fc62f5e2c8010d857729134ba13044734962e42c'
             '12a87284e2935cd17e2846a207cc76f1728531416523735d66ef8a0ae690884c'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
