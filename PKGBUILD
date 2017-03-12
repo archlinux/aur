@@ -8,21 +8,22 @@
 _build_feedreader=true
 _build_voip=true
 
+# Set this to 'true' to enable auto login
+#_autologin='true'
+
 # set this to 'true' to use clang for compiling (experimental)
-_clang=
+#_clang='true'
 
 ### Nothing to be changed below this line ###
 
 pkgname=retroshare
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
 license=('GPL' 'LGPL')
-
-#qt 5
-depends=('qt5-multimedia' 'qt5-x11extras' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd' 'sqlcipher')
+depends=('qt5-multimedia' 'qt5-x11extras' 'libupnp' 'libxss' 'libmicrohttpd' 'sqlcipher')
 makedepends=('git' 'qt5-tools')
 
 optdepends=('tor: tor hidden node support'
@@ -32,16 +33,19 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 source=("https://github.com/RetroShare/RetroShare/archive/v${pkgver}.tar.gz")
-sha256sums=('4ffbb6c61538f80d0f667c2a155c5eac38b0722a3e8d4f1dc1487d10087cfe42')
+sha256sums=('76a3ae2f2089b14562d5be34602f5ae3c73a8549aecee246ea5e67d03018de2b')
 
 # Add missing dependencies if needed
 [[ "$_build_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
 [[ "$_build_feedreader" == 'true' ]] && depends=(${depends[@]} 'curl' 'libxslt')
 [[ "$_clang" == 'true' ]] && makedepends=(${makedepends[@]} 'clang')
+[[ "$_autologin" == 'true' ]] && depends=(${depends[@]} 'libgnome-keyring')
 
 # Set options for qmake
-_options=''
-[[ "$_clang" == 'true' ]] && _options='-spec linux-clang CONFIG+=c++11'
+_optClang=''
+_optAutol=''
+[[ "$_clang" == 'true' ]] && _optClang='-spec linux-clang CONFIG+=c++11'
+[[ "$_autologin" == 'true' ]] && _optAutol='CONFIG+=rs_autologin'
 
 build() {
 	cd "${srcdir}/RetroShare-${pkgver}"
@@ -60,7 +64,8 @@ build() {
 	cd ../..
 
 	qmake   CONFIG-=debug CONFIG+=release \
-		${_options} \
+		CONFIG+=rs_nodeprecatedwarning \
+		${_optAutol} ${_optClang} \
 		QMAKE_CFLAGS_RELEASE="${CFLAGS}"\
 		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"\
 		RetroShare.pro
