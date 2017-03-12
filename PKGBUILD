@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-core
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('i686' 'x86_64')
 url="https://bitcoin.org"
