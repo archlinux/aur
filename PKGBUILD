@@ -40,7 +40,7 @@ backup=(
 options=('!strip')
 install="${pkgname}.install"
 source=(
-  "http://mirrors.gigenet.com/apache/"
+  "http://www-us.apache.org/dist/"
   # "http://mirror3.layerjet.com/apache/"
   # "http://apache.openmirror.de/"
   # "http://mirror.serversupportforum.de/apache/"
