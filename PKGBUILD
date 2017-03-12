@@ -23,7 +23,7 @@ source=("90-coolmaster-keyboard.sh"
 )
 sha256sums=('e34f8f969fe47809c3bc3f263f3fc592f816c1a0187ef37d32c414477d718a83'
             '7132b4c49badde6faef71a38091ac07a626c14c207c2f6c45c483fe9d814e0e0'
-            'b1530f6056dfa28d72eadf78df50cd9736e0ff95241434719a2636d0fe775213')
+            '4957717f4aecbae067d1673ee2f640c30977e1eddc0db5372c2f7d0e92899ea2')
 
 package() {
   cd "${srcdir}"
