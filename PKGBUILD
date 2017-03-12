@@ -8,12 +8,12 @@
 
 pkgname=gstm
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Gnome front-end to ssh tunneling"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/gstm/"
 license=('GPL')
-depends=('libgnomeui')
+depends=('libgnomeui' 'openssh')
 makedepends=('intltool')
 source=(http://downloads.sourceforge.net/sourceforge/gstm/gstm-${pkgver}.tar.gz)
 md5sums=('7fa71b86969d8d695c3b062780a5694e')
