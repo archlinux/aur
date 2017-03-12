@@ -7,10 +7,10 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt-lts         # Build kernel with a different name
 _srcname=linux-4.4
-_pkgver=4.4.47
-_rtpatchver=rt59
+_pkgver=4.4.50
+_rtpatchver=rt63
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -30,15 +30,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "${pkgbase}.preset"
         'change-default-console-loglevel.patch'
         'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch'
-        '0001-fix-rt_mutex.patch'
         '0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch'
         )
 
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '21fd72caa322800b4668b4464d6ac4d8d66faa0056e08a5925d5911dab438c18'
+            'c5756a4b7290092d875967c310b684dbd91cb57438a25a3603bce6b1d0f19b36'
             'SKIP'
-            '6ad926f1370aec5084f8b63e08e38a46672f534828d478c21e4993c0074b528e'
+            'f6f5af2f790cdbe16bb5d1dc59521f3c01e235c9107dd180a3b0d38dfbc7a19a'
             'SKIP'
             '1f609d41a9d5cd0eb88060bd0ad6726f76e9dbf0deee44d6fe3dc57f0fbb3191'
             'b28728fa4816c4f32b4b390b22c8b9d4ea52a35b150ed7041d325ab72cd8c6a3'
@@ -46,7 +45,6 @@ sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'a8886f2c9896f81f59cf0413b3e380cda2fbdc667eb9ce8dfcb0fceb6d92279f'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06'
-            '785960e97b6054274814a2354f84ccd64c0c01485761d3a3a82a4458bd7ad021'
             'ab22d941388440ee7da44535305f535cb5a2abc4151289757f5753b13ebd78e8')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -81,11 +79,7 @@ prepare() {
   msg "fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch"
   patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch"
 
-  msg "0001-fix-rt_mutex.patch"
-  patch -p1 -i "${srcdir}/0001-fix-rt_mutex.patch"
-  
-  # https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-6074
-  msg "applying 0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch"
+  msg "0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch"
   patch -p1 -i "${srcdir}/0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch"
 
   msg "All patches have successfully been applied"
