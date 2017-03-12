@@ -60,7 +60,8 @@ build() {
 		--prefix=/usr \
 		--llvm-root=/usr \
 		--enable-llvm-link-shared \
-		--jemalloc-root=/usr/lib/
+		--jemalloc-root=/usr/lib/ \
+		--disable-dist-src
 
 	make
 }
