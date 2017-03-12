@@ -1,6 +1,6 @@
 pkgbase = rclone-browser
 	pkgdesc = Simple cross-platform GUI for rclone
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://mmozeiko.github.io/RcloneBrowser/
 	arch = i686
@@ -9,10 +9,8 @@ pkgbase = rclone-browser
 	makedepends = cmake
 	depends = qt5-base
 	depends = rclone
-	source = https://github.com/mmozeiko/RcloneBrowser/archive/1.1.tar.gz
-	source = rclone-browser.desktop
-	sha256sums = 538d1985e8f2f933485035dd3c80806813a7d223f04f0cd788b9b401150d09a8
-	sha256sums = efb243a0865106562f2e4cba14da0c5bcbf4387762bd6107067e3cc6d467ed06
+	source = https://github.com/mmozeiko/RcloneBrowser/archive/1.2.tar.gz
+	sha256sums = 679c4cae5ede309e8ae8f67c482ecef0194fac5fabe9c1784fe4638c4d5bfdb6
 
 pkgname = rclone-browser
 
