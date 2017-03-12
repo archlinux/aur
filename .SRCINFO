@@ -1,9 +1,8 @@
 pkgbase = firefox-hg
-	pkgdesc = Latest firefox browser built from the trunk code
-	pkgver = 257362.8584e1ea8f6a
+	pkgdesc = Standalone web browser from mozilla.org
+	pkgver = r346974+.f9362554866b+
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
-	install = firefox.install
 	arch = i686
 	arch = x86_64
 	license = MPL
@@ -16,15 +15,14 @@ pkgbase = firefox-hg
 	makedepends = yasm
 	makedepends = mesa
 	makedepends = imake
-	makedepends = xorg-server-xvfb
+	makedepends = gconf
 	makedepends = libpulse
-	makedepends = gst-plugins-base-libs
 	makedepends = inetutils
-	makedepends = mercurial
+	makedepends = xorg-server-xvfb
 	makedepends = autoconf2.13
-	makedepends = nss>=3.19.1
-	makedepends = nspr>=4.10.8
-	makedepends = libpng>=1.6.17
+	makedepends = rustup
+	makedepends = mercurial
+	depends = gtk3
 	depends = gtk2
 	depends = mozilla-common
 	depends = libxt
@@ -32,27 +30,33 @@ pkgbase = firefox-hg
 	depends = mime-types
 	depends = dbus-glib
 	depends = alsa-lib
-	depends = desktop-file-utils
-	depends = hicolor-icon-theme
+	depends = ffmpeg
 	depends = libvpx
-	depends = icu
 	depends = libevent
-	depends = nss
+	depends = nss>=3.31
 	depends = hunspell
 	depends = sqlite
+	depends = ttf-font
+	depends = icu
 	optdepends = networkmanager: Location detection via available WiFi networks
-	optdepends = gst-plugins-good: h.264 video
-	optdepends = gst-libav: h.264 video
+	optdepends = libnotify: Notification integration
 	optdepends = upower: Battery API
+	optdepends = speech-dispatcher: Text-to-Speech
+	provides = firefox
 	conflicts = firefox
-	source = hg+http://hg.mozilla.org/mozilla-central
-	source = mozconfig
+	options = !emptydirs
+	options = !makeflags
+	source = firefox::hg+https://hg.mozilla.org/mozilla-central/
 	source = firefox.desktop
+	source = firefox-symbolic.svg
 	source = firefox-install-dir.patch
+	source = fix-wifi-scanner.diff
+	validpgpkeys = 2B90598A745E992F315E22C58AB132963A06537A
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = d2a7610393ba259c35e3227b92e02ec91095a95189f56ac93ccdf6732772719c
+	sha256sums = ada313750e6fb14558b37c764409a17c1672a351a46c73b350aa1fe4ea9220ef
+	sha256sums = a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9
 	sha256sums = d86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd
+	sha256sums = 9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8
 
 pkgname = firefox-hg
 
