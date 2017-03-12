@@ -1,0 +1,44 @@
+pkgbase = openss7-modules-lts41-git
+	pkgdesc = OpenSS7 Fast-STREAMS and protocol Suites (4.1 Kernel Modules)
+	pkgver = 1.1.8.63.g45f1b08cd
+	pkgrel = 1
+	url = http://www.openss7.org
+	install = openss7-modules-lts41-git.install
+	arch = x86_64
+	arch = i686
+	license = AGPL3
+	makedepends = doxygen
+	makedepends = gcc-gcj
+	makedepends = gcc-libs
+	makedepends = ghostscript
+	makedepends = gjdoc
+	makedepends = glibc
+	makedepends = gnupg
+	makedepends = gnuplot
+	makedepends = imagemagick
+	makedepends = latex2html
+	makedepends = linux-lts41
+	makedepends = linux-lts41-headers
+	makedepends = lsof
+	makedepends = net-snmp
+	makedepends = openssl
+	makedepends = swig
+	makedepends = systemd
+	makedepends = tcl
+	makedepends = texlive-bin
+	makedepends = texlive-core
+	makedepends = transfig
+	makedepends = gawk
+	makedepends = java-environment
+	makedepends = lm_sensors
+	makedepends = popt
+	depends = linux-lts41=4.1.35-1
+	provides = openss7-modules-lts41=1.1.8.63.g45f1b08cd
+	conflicts = openss7-modules-lts41
+	options = !emptydirs
+	options = !strip
+	source = openss7-modules-lts41-git::git+https://github.com/openss7/openss7.git
+	md5sums = SKIP
+
+pkgname = openss7-modules-lts41-git
+
