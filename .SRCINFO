@@ -7,7 +7,8 @@ pkgbase = gstm
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
-	depends = libgnomeui openssh
+	depends = libgnomeui
+	depends = openssh
 	source = http://downloads.sourceforge.net/sourceforge/gstm/gstm-1.2.tar.gz
 	md5sums = 7fa71b86969d8d695c3b062780a5694e
 
