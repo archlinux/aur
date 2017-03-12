@@ -1,0 +1,13 @@
+pkgbase = gautomatch
+	pkgdesc = A GPU accelerated program for accurate, fast, flexible and fully automatic particle picking from cryo‐EM micrographs with or without templates.
+	pkgver = 0.53
+	pkgrel = 1
+	url = http://www.mrc-lmb.cam.ac.uk/kzhang
+	arch = x86_64
+	license = CCPL:cc-by-nc-nd-3.0
+	depends = cuda
+	source = http://www.mrc-lmb.cam.ac.uk/kzhang/Gautomatch/Gautomatch_v0.53/bin/Gautomatch-v0.53_sm_20_cu8.0_x86_64
+	md5sums = f4c1568d1afdc1dd0be7aef74d67d5be
+
+pkgname = gautomatch
+
