@@ -1,3 +1,28 @@
+3.4.1
+-----
+
+ - Add selenocysteine ("U") and pyrrolysine ("O") to :py:data:`pyteomics.mass.std_aa_mass` and
+   :py:data:`pyteomics.mass.std_aa_comp`.
+
+ - An optional parameter `encoding` is now accepted by text file readers (:py:func:`pyteomics.mgf.read`
+   and :py:func:`pyteomics.fasta.read`). This can be useful for MGF files with non-ASCII spectrum
+   titles or comments.
+
+ - New function :py:func:`pyteomics.mass.mass.isotopologues`.
+
+ - Performance improvements in :py:func:`pyteomics.electrochem.pI`.
+
+ - Fix the issue in :py:mod:`pyteomics.xml` which resulted in very long processing times for indexed XML files
+   with a byte ordering mark (BOM).
+
+ - Support all standard and non-standard data array names in :py:mod:`pyteomics.mzml`.
+
+ - Change default value of ``retrieve_refs`` in :py:func:`pyteomics.mzid.read` to :py:const:`True`.
+
+ - Preserve unit information extracted from cvParam tags in PSI XML files.
+
+ - Fix in :py:mod:`pyteomics.mzxml`, other minor fixes.
+
 3.4
 ---
 
@@ -188,8 +213,8 @@ API changes
 
  - All :py:func:`fdr`, :py:func:`qvalues`, and :py:func:`!filter` functions
    now accept a new parameter `correction`. It is used for more accurate
-   estimation of the number of false positives using TDA (paper with explanation
-   submitted to JPR).
+   estimation of the number of false positives using TDA (`paper with explanation
+   <http://dx.doi.org/10.1021/acs.jproteome.6b00144>`_).
 
  - :py:func:`!filter` functions now support both iterator protocol and context
    manager protocol. They now also accept the `full_output` parameter, which has
