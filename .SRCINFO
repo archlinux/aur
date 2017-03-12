@@ -1,10 +1,10 @@
 pkgbase = mingw-w64-readerwriterqueue-git
-	pkgdesc = (mingw-w64)
+	pkgdesc = A fast single-producer, single-consumer lock-free queue for C++. (mingw-w64)
 	pkgver = r77.66a9b18
 	pkgrel = 1
 	url = https://github.com/cameron314/readerwriterqueue
 	arch = any
-	license = MIT
+	license = Simplified BSD License
 	makedepends = git
 	depends = mingw-w64-crt
 	depends = mingw-w64-gcc
