@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/jstasiak/python-zeroconf"
 license=('LGPL')
 depends=('python' 'python-netifaces' 'python-six')
+makedepends=('python-setuptools')
 source=("https://github.com/jstasiak/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('fb8ebe33eca842fa3d4ffde95ce97d8f7ee73731cd72a88ffbf94be1caf2ac76')
 
