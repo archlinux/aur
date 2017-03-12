@@ -1,5 +1,5 @@
 pkgname=starcal
-pkgver=3.0.4
+pkgver=3.0.6
 pkgrel=1
 pkgdesc='A full-featured international calendar writen in Python'
 arch=('any')
@@ -10,7 +10,7 @@ optdepends=('python-igraph')
 makedepends=()
 conflicts=('starcal-git')
 source=("https://github.com/ilius/starcal/archive/$pkgver.tar.gz")
-md5sums=('3c08c2d26c60cc6f32cb0e6cedfc4370')
+md5sums=('184ab72254d180de6f77f3c351e79ebe')
 prepare() {
     sed -i s/sudo// "$srcdir/$pkgname-$pkgver"/locale.d/install
 }
