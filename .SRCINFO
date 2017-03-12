@@ -30,7 +30,12 @@ pkgbase = firefox-aurora-pl
 	source = http://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-aurora-l10n//firefox-53.0a2.pl.linux-x86_64.tar.bz2
 	sha512sums = SKIP
 	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = 879891725555865c73ba20d1c1597ae3599b06fc4cf60532e9c938ae6e5a0805c06ce996d857baed75f6a5f77bc9a9b16e5a8ed1c2b6b5b9a421733724d025be c3a73c8708db6fcf64ef4305d88155a3192f632ef30dd73ef04fc1ce922d1f71bf58f4ff03f9ac631f17fc930197c302cc6f91d97be404441a0b61450fabc93b
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = firefox-aurora-pl
 

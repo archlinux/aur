@@ -25,7 +25,12 @@ source=(firefox-aurora-pl.desktop
 _sha512sum="$(curl -s "${_baseurl}${_filename}.checksums" | grep "${_filename}.tar.bz2" | grep sha512 | cut -d " " -f1)"
 sha512sums=('SKIP'
             'SKIP'
-            "${_sha512sum}")
+	    'SKIP'
+	    'SKIP'
+            "${_sha512sum}"
+	    'SKIP'
+	    'SKIP'
+	    'SKIP')
 	
 package()
 {
