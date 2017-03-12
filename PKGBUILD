@@ -3,7 +3,7 @@
 # Contributor: Malkov Fyodor aka krox: iksut@yandex.ru
 
 pkgname=ocrodjvu
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="ocrodjvu is a wrapper for OCR systems, that allows you to perform OCR on DjVu files."
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ optdepends=('python2-html5lib: HTML parser; required for the ``--html5`` option'
             'ocrad: OCR system'
             'gocr: OCR system'
             'ocropy: OCR system')
-source=(https://files.pythonhosted.org/packages/source/o/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('304e1b4c7cdbf965005c8423967baff250d36050c732da237e8d2f353a52d0cc')
+source=(https://github.com/jwilk/ocrodjvu/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
+sha256sums=('0dcc69ca29178cfb8f77eb85141a04f0a52b28213bd3f9b783fb3968c8850afe')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
