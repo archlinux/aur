@@ -3,14 +3,14 @@
 # Based on [aur]'s nvidia-beta: https://aur.archlinux.org/packages/nvidia-beta/
 
 pkgname=nvidia-vulkan-developer-beta
-pkgver=375.27.13
+pkgver=375.27.14
 pkgrel=1
 pkgdesc="NVIDIA driver for Arch's official 'linux' package (vulkan developer beta version)"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
-depends=('linux' "nvidia-utils-vulkan-developer-beta>=$pkgver" 'libgl')
-makedepends=('linux-headers')
+depends=('linux-lts' "nvidia-utils-vulkan-developer-beta>=$pkgver" 'libgl')
+makedepends=('linux-lts-headers')
 provides=("nvidia=$pkgver")
 conflicts=('nvidia-96xx' 'nvidia-173xx' 'nvidia')
 options=('!strip')
@@ -18,16 +18,16 @@ install=$pkgname.install
 
 # Installer name
 case "$CARCH" in
-  i686)   _pkg="linux-3752713-32-bit"; _pkg_dir="NVIDIA-Linux-x86_64-$pkgver" ;;
-  x86_64) _pkg="linux-3752713-64-bit"; _pkg_dir="NVIDIA-Linux-x86_64-$pkgver" ;;
+  i686)   _pkg="linux-3752714-32-bit"; _pkg_dir="NVIDIA-Linux-x86_64-$pkgver" ;;
+  x86_64) _pkg="linux-3752714-64-bit"; _pkg_dir="NVIDIA-Linux-x86_64-$pkgver" ;;
 esac
 
 # Source
 #source=('linux-4.8.patch')
-source_i686=("https://developer.nvidia.com/linux-3752713-32-bit")
-source_x86_64=("https://developer.nvidia.com/linux-3752713-64-bit")
-md5sums_i686=('e1f0620ef6cae6a4158dce72b1e67db7')
-md5sums_x86_64=('8c02c850ca837fe25fac0a45f8a15b2c')
+source_i686=("https://developer.nvidia.com/linux-3752714-32-bit")
+source_x86_64=("https://developer.nvidia.com/linux-3752714-64-bit")
+md5sums_i686=('9f97042234b2ca4d4b63c3ddc384b4a7')
+md5sums_x86_64=('a8b5683411bb968f616654cd4bae2e56')
 
 # Auto-detect patches (e.g. linux-4.1.patch)
 for _patch in $(find "$startdir" -maxdepth 1 -name '*.patch' -printf "%f\n"); do
@@ -52,7 +52,7 @@ prepare() {
   # Loop patches
   for _patch in $(ls "$srcdir"/*.patch 2>/dev/null); do
     # Version variables
-    _kernel=$(cat /usr/lib/modules/extramodules-*-ARCH/version)
+    _kernel=$(cat /usr/lib/modules/extramodules-*-lts/version)
     _major_patch=$(echo $_patch | grep -Po "\d+\.\d+")
       
     # Check version
@@ -65,8 +65,8 @@ prepare() {
 
 build() {
   # Version of 'linux'
-  _major=$(pacman -Q linux | grep -Po "\d+\.\d+")
-  _extramodules=extramodules-$_major-ARCH
+  _major=$(pacman -Q linux-lts | grep -Po "\d+\.\d+")
+  _extramodules=extramodules-$_major-lts
   _kernel=$(cat /usr/lib/modules/$_extramodules/version)
 
   # Build module
@@ -77,8 +77,8 @@ build() {
 
 package() {
   # Version of 'linux'
-  _major=$(pacman -Q linux | grep -Po "\d+\.\d+")
-  _extramodules=extramodules-$_major-ARCH
+  _major=$(pacman -Q linux-lts | grep -Po "\d+\.\d+")
+  _extramodules=extramodules-$_major-lts
 
   # Install
   install -Dm644 $_pkg_dir/kernel/nvidia.ko \
