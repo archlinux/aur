@@ -1,0 +1,14 @@
+pkgbase = motioncor2
+	pkgdesc = A multi-GPU program that corrects beam-induced sample motion on dose fractionated movie stacks
+	pkgver = 01302017
+	pkgrel = 1
+	url = http://msg.ucsf.edu/em/software/motioncor2.html
+	arch = x86_64
+	license = CCPL:cc-by-nc-nd-3.0
+	depends = cuda
+	depends = nvidia-utils
+	source = http://msg.ucsf.edu/MotionCor2/MotionCor2-01-30-2017.tar.gz
+	md5sums = aec2f2653ba948e6d9a91a851171ce27
+
+pkgname = motioncor2
+
