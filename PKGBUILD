@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-core
 pkgver=0.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('i686' 'x86_64')
 url="https://bitcoin.org"
@@ -70,6 +70,10 @@ package() {
       cp -dpr --no-preserve=ownership "doc/$_doc" \
         "$pkgdir/usr/share/doc/bitcoin/$_doc"
   done
+
+  msg2 'Installing essential directories'
+  install -dm 700 "$pkgdir/etc/bitcoin"
+  install -dm 755 "$pkgdir/srv/bitcoin"
 
   msg2 'Installing bitcoin...'
   make DESTDIR="$pkgdir" install
