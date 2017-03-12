@@ -1,28 +1,32 @@
-Index: vstax/src/usr/share/vstax2015/vstax2015.sh
+Index: vstax/src/usr/share/vstax2016/vstax2016.sh
 ===================================================================
---- vstax.orig/src/usr/share/vstax2015/vstax2015.sh
-+++ vstax/src/usr/share/vstax2015/vstax2015.sh
+--- vstax.orig/src/usr/share/vstax2016/vstax2016.sh
++++ vstax/src/usr/share/vstax2016/vstax2016.sh
 @@ -1,3 +1,3 @@
  #!/bin/sh
--cd /usr/share/vstax2015
--./jre/bin/java -Xmx320m -Xms320m  -jar jfw-launcher-5.0.13-obf.jar "$1"
-+cd /usr/share/java/vstax2015
-+"${JAVA_HOME}/bin/java" -Xmx320m -Xms320m  -jar jfw-launcher-5.0.13-obf.jar "$1"
-Index: vstax/src/usr/share/applications/vstax2015.desktop
+-cd /usr/share/vstax2016
+-./jre/bin/java -Xmx400m -Xms400m  -jar jfw-launcher-5.0.21-obf.jar "$1"
++cd /usr/share/java/vstax2016
++"${JAVA_HOME}/bin/java" -Xmx400m -Xms400m  -jar jfw-launcher-5.0.21-obf.jar "$1"
+Index: vstax/src/usr/share/applications/vstax2016.desktop
 ===================================================================
---- vstax.orig/src/usr/share/applications/vstax2015.desktop
-+++ vstax/src/usr/share/applications/vstax2015.desktop
+--- vstax.orig/src/usr/share/applications/vstax2016.desktop
++++ vstax/src/usr/share/applications/vstax2016.desktop
 @@ -1,11 +1,11 @@
  [Desktop Entry]
  Version=1.0
  Terminal=false
--Icon=/usr/share/vstax2015/vstax2015.png
-+Icon=/usr/share/java/vstax2015/vstax2015.png
+-Icon=/usr/share/vstax2016/vstax2016.png
++Icon=/usr/share/java/vstax2016/vstax2016.png
  Type=Application
  StartupNotify=false
  Categories=Office;
--Exec=/usr/share/vstax2015/vstax2015.sh %U
-+Exec=/usr/bin/vstax2015 %U
- MimeType=application/vstax2015;
- Name=VSTax 2015
- GenericName=VSTax 2015
+-Exec=/usr/share/vstax2016/vstax2016.sh %U
++Exec=/usr/bin/vstax2016 %U
+ MimeType=application/vstax2016;
+ Name=VSTax 2016
+ GenericName=VSTax 2016
+ GenericName[en]=VSTax 2016
+ GenericName[de]=VSTax 2016
+ GenericName[fr]=VSTax 2016
+ GenericName[it]=VSTax 2016
