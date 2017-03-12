@@ -1,9 +1,8 @@
 # Maintainer: marazmista <marazmista@gmail.com>
 
 pkgname=radeon-profile-git
-pkgbase=radeon-profile
-pkgver=20161003.r0.g4347b27
-pkgrel=1
+pkgver=20161221.r13.g4385106
+pkgrel=2
 pkgdesc="App for display info about radeon card"
 url="http://github.com/marazmista/radeon-profile"
 arch=('i686' 'x86_64')
@@ -19,16 +18,16 @@ optdepends=('radeon-profile-daemon: system daemon for reading card info'
 	'xf86-video-ati: radeon open source driver')
 provides=('radeon-profile')
 replaces=('radeon-profile')
-source=("git+https://github.com/marazmista/$pkgbase.git")
+source=("git+https://github.com/marazmista/radeon-profile.git")
 sha256sums=('SKIP')
 
 pkgver() {
-cd "$srcdir/$pkgbase"
+cd "$srcdir/radeon-profile"
 git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-cd "$srcdir/$pkgbase/radeon-profile"
+cd "$srcdir/radeon-profile/radeon-profile"
 
 lrelease radeon-profile.pro
 qmake-qt5
@@ -36,7 +35,7 @@ make
 }
 
 package() {
-cd "$srcdir/$pkgbase/radeon-profile"
+cd "$srcdir/radeon-profile/radeon-profile"
 
 install -Dm755 "radeon-profile" "$pkgdir/usr/bin/radeon-profile"
 
