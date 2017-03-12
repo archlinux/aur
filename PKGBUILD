@@ -1,9 +1,9 @@
 # Maintainer:  Andrew Gregory <andrew.gregory.8@gmail.com>
-# Co-maintainer Lone_Wolf <lonewolf.xs4all.nl>
+# Co-maintainer Lone_Wolf <lonewolf at xs4all dot nl>
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=openrc
-pkgver=0.22.3
+pkgver=0.24
 pkgrel=1
 pkgdesc='Dependency based init system that works with sysvinit.'
 arch=('i686' 'x86_64')
@@ -11,16 +11,17 @@ url='https://github.com/OpenRC/openrc/'
 license=('BSD')
 depends=('openrc-sysvinit' 'pam' 'sh')
 optdepends=('openrc-arch-services-git: collection of services for Arch'
-            'net-tools: for network service support')
+            'net-tools: for network service support'
+            'opentmpfiles: adds support for systemd-style tmpfiles.d')
 backup=(etc/openrc/inittab
         etc/openrc/rc.conf
         etc/openrc/conf.d/{bootmisc,consolefont,devfs,dmesg,fsck,hostname,hwclock,keymaps}
         etc/openrc/conf.d/{killprocs,localmount,modules,netmount,network,staticroute}
-        etc/openrc/conf.d/{tmpfiles,urandom})
+        )
 source=($pkgname-$pkgver::https://github.com/OpenRC/$pkgname/archive/$pkgver.tar.gz
         $pkgname.logrotate)
 # oldsourcelocation : http://dev.gentoo.org/~williamh/dist/$pkgname-$pkgver.tar.bz2
-sha512sums=('1eadb02c4c5cb3c6d210cfd1f3a10ba60c08041ba32b199fe9f8aa5edb7363a5b066ddce2a2dec9cd39e070c499d0a9ae0ac9eb1e0ecda854d5095b1b791f94d'
+sha512sums=('3cd0f6f44afad625f736c6fc2558fa5deb36cdc9609ef6ca807606c199f822651cf69b801bc4fb77bd732e22c90562eb663b297f271aa496f1ecb7d9ed401dc1'
             '690612fddfb2c4cf8f6b5ba7239b9faf29eb3d9b152ab4dcf62694aa2852780440d08cee56d98a9597607f446b3697c911269562821a8402bb5747cbbae34bd9')
 
 _makeargs=(BRANDING='Arch Linux')
