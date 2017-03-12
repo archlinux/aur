@@ -2,7 +2,7 @@
 # Contributor: Rogof <rogof /at/ gmx /dot/ com>
 
 pkgname=ccl-svn
-pkgver=1.12.r16702
+pkgver=1.12.r16810
 pkgrel=1
 pkgdesc="The Clozure Common Lisp implementation"
 url="http://ccl.clozure.com/"
