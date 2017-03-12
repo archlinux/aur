@@ -1,0 +1,19 @@
+pkgbase = dropbox-light-icons-git
+	pkgdesc = Dropbox light icons for dark panels
+	pkgver = 20170312
+	pkgrel = 1
+	url = https://github.com/subosito/dropbox-light-icons
+	install = dropbox-light-icons.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = hicolor-icon-theme
+	depends = dropbox
+	conflicts = dropbox-kfilebox-icons
+	conflicts = dropbox-plasma-light-icons-git
+	conflicts = dropbox-plasma-dark-icons-git
+	source = git://github.com/subosito/dropbox-light-icons.git
+	md5sums = SKIP
+
+pkgname = dropbox-light-icons-git
+
