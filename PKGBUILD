@@ -1,17 +1,17 @@
-# Id: PKGBUILD 277473 2016-09-30 19:28:40Z tpowa $
+# $Id: PKGBUILD 290479 2017-03-10 11:26:15Z heftig $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-surftab-wintron-7
 _srcname=linux
-pkgver=4.9.r32.ga867cef9b167
+pkgver=4.10.2.r11.g135e4ed9f770
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
-source=('git+https://github.com/c-mauderer/linux#branch=v4.9_trekstore_surftab_wintron_7'
+source=('git+https://github.com/c-mauderer/linux#branch=v4.10_trekstore_surftab_wintron_7'
         # the main kernel config files
         'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -21,7 +21,7 @@ source=('git+https://github.com/c-mauderer/linux#branch=v4.9_trekstore_surftab_w
         )
 
 sha256sums=('SKIP'
-            'a012c57811c117bd92ae36d2782b998daea1d9f016dd4849420f6d094274ca65'
+            '50fffd4267f1fbfdc77bac2a54144d26b6b2d396ebbf59442a9fbf3cc34d5cfe'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
@@ -49,11 +49,7 @@ prepare() {
   #  patch -p1 -i "$p"
   #done
 
-  if [ "${CARCH}" = "x86_64" ]; then
-    cat "${srcdir}/config.x86_64" > ./.config
-  else
-    cat "${srcdir}/config" > ./.config
-  fi
+  cat "${srcdir}/config.${CARCH}" > ./.config
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
