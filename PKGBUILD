@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-git
-pkgver=20170308
+pkgver=20170312
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('i686' 'x86_64')
