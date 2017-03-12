@@ -9,7 +9,7 @@ url="https://github.com/mozart/mozart2"
 license=('BSD')
 depends=('boost-libs' 'tk' 'gmp' 'hicolor-icon-theme' 'xdg-utils')
 optdepends=('emacs: Interactive programming interface (recommended)')
-makedepends=('java-runtime-headless' 'emacs' 'gcc' 'boost>=1.61' 'cmake' 'gtest' 'clang' 'llvm')
+makedepends=('java-runtime-headless' 'emacs' 'gcc' 'boost>=1.61' 'cmake' 'gtest' 'clang' 'clang-tools-extra' 'llvm')
 provides=('mozart')
 conflicts=('mozart' 'mozart-git' 'mozart2' 'mozart2-bin')
 install="${pkgname}.install"
