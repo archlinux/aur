@@ -3,9 +3,8 @@
 # Contributor: kappa <kappacurve@gmail.com>
 
 pkgname=wings3d
-_pkgname=wings
-pkgver=1.5.4
-pkgrel=2
+pkgver=2.1.5
+pkgrel=1
 pkgdesc='3D modeling program'
 arch=('x86_64' 'i686')
 url='http://www.wings3d.com/'
@@ -15,24 +14,26 @@ makedepends=('gendesk' 'imagemagick')
 optdepends=('povray: rendering support via POV-Ray')
 source=("http://downloads.sourceforge.net/project/wings/wings/$pkgver/wings-$pkgver.tar.bz2"
         "$pkgname.sh")
-sha256sums=('bd04ca1c1237f3a6f29ce3f653015e21142b849b338a3d1ab8633e3c6bcde663'
-            '46513cd05f8b6e778120af4a87b239c5250799c17b591592893d98cbf082359e')
+sha256sums=('f0f03cfe9f0ee0ee6c734a2b7e50410d5f21238441cb1f34422b0ecde25b582c'
+            '9f91da23a91bd5808a4f3ce38472e262706f648804628648703ad3695df22e27')
 
 prepare() {
   gendesk -f -n \
     --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name 'Wings3D' \
     --genericname '3D Modeler' --categories 'Graphics;3DGraphics'
 
-  convert "$_pkgname-$pkgver/win32/wings.ico" "$pkgname.png"
+  convert "${pkgname%3d}-$pkgver/win32/wings.ico" "$pkgname.png"
 
   # Path fix for building wpc_lwo
-  ln -s "$srcdir/$_pkgname-$pkgver" \
-    "$_pkgname-$pkgver/plugins_src/import_export/wings"
+  ln -s "$srcdir/${pkgname%3d}-$pkgver" \
+    "${pkgname%3d}-$pkgver/plugins_src/import_export/wings"
+  ln -s "$srcdir/${pkgname%3d}-$pkgver" "$srcdir/wings"
 }
 
 build() {
-  export ESDL_PATH=$(echo /usr/lib/erlang/lib/esdl-*)
-  make -C "$_pkgname-$pkgver" all lang
+  export ESDL_PATH="$(echo /usr/lib/erlang/lib/esdl-*)"
+  export ERL_LIBS="$srcdir"
+  make -C "${pkgname%3d}-$pkgver" all lang
 }
 
 package() {
@@ -42,9 +43,9 @@ package() {
   install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
   install -d "$pkgdir/usr/lib/$pkgname"
 
-  cd "$_pkgname-$pkgver"
-  for subdir in ebin fonts patches plugins shaders textures; do
-    cp -r "$srcdir/$_pkgname-$pkgver/$subdir/" "$pkgdir/usr/lib/$pkgname"
+  cd "${pkgname%3d}-$pkgver"
+  for subdir in e3d ebin icons plugins psd shaders src textures tools; do
+    cp -r "$srcdir/${pkgname%3d}-$pkgver/$subdir/" "$pkgdir/usr/lib/$pkgname"
   done
 }
 
