@@ -7,6 +7,7 @@ pkgbase = motioncor2
 	license = CCPL:cc-by-nc-nd-3.0
 	depends = cuda
 	depends = nvidia-utils
+	depends = libtiff
 	source = http://msg.ucsf.edu/MotionCor2/MotionCor2-01-30-2017.tar.gz
 	md5sums = aec2f2653ba948e6d9a91a851171ce27
 
