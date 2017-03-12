@@ -1,0 +1,17 @@
+pkgbase = organizr
+	pkgdesc = HTPC/HomeLab services organizer.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/causefx/Organizr
+	install = organizr.install
+	arch = any
+	license = GPL3
+	depends = php-sqlite
+	optdepends = fail2ban
+	source = Organizr-1.0.tar.gz::https://github.com/causefx/Organizr/archive/1.0.tar.gz
+	source = organizr.install
+	sha256sums = a834ace455284171b4c6f631ed6021da00e9ccb1954cc43a63ac3d3b2e617965
+	sha256sums = 75a1a4663fe4d628d88f3ce5f9c9e95761d3f6cfdc753f04d4b9d0e9c57c1735
+
+pkgname = organizr
+
