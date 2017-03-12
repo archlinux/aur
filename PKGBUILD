@@ -4,7 +4,7 @@
 # Base for this PKGBUILD is not the latest AUR package, but the package from 2016-12-14 for nvidia version 375.26
 
 pkgname=('nvidia-utils-vulkan-developer-beta' 'nvidia-libgl-vulkan-developer-beta' 'opencl-nvidia-vulkan-developer-beta')
-pkgver=375.27.13
+pkgver=375.27.14
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -13,17 +13,17 @@ options=('!strip')
 
 # Installer name
 case "$CARCH" in
-  i686)   _pkg="linux-3752713-32-bit"; _pkg_dir="NVIDIA-Linux-x86-$pkgver" ;;
-  x86_64) _pkg="linux-3752713-64-bit"; _pkg_dir="NVIDIA-Linux-x86_64-$pkgver" ;;
+  i686)   _pkg="linux-375271432bit"; _pkg_dir="NVIDIA-Linux-x86-$pkgver" ;;
+  x86_64) _pkg="linux-3752714-64-bit"; _pkg_dir="NVIDIA-Linux-x86_64-$pkgver" ;;
 esac
 
 # Source
 source=('20-nvidia.conf')
-source_i686=("https://developer.nvidia.com/linux-3752713-32-bit")
-source_x86_64=("https://developer.nvidia.com/linux-3752713-64-bit")
+source_i686=("https://developer.nvidia.com/linux-375271432bit")
+source_x86_64=("https://developer.nvidia.com/linux-3752714-64-bit")
 md5sums=('2640eac092c220073f0668a7aaff61f7')
-md5sums_i686=('e1f0620ef6cae6a4158dce72b1e67db7')
-md5sums_x86_64=('8c02c850ca837fe25fac0a45f8a15b2c')
+md5sums_i686=('9f97042234b2ca4d4b63c3ddc384b4a7')
+md5sums_x86_64=('a8b5683411bb968f616654cd4bae2e56')
 
 _create_links() {
   # create missing soname links

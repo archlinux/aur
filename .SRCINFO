@@ -1,5 +1,5 @@
 pkgbase = nvidia-utils-vulkan-developer-beta
-	pkgver = 375.27.13
+	pkgver = 375.27.14
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = nvidia-utils-vulkan-developer-beta
 	options = !strip
 	source = 20-nvidia.conf
 	md5sums = 2640eac092c220073f0668a7aaff61f7
-	source_i686 = https://developer.nvidia.com/linux-3752713-32-bit
-	md5sums_i686 = e1f0620ef6cae6a4158dce72b1e67db7
-	source_x86_64 = https://developer.nvidia.com/linux-3752713-64-bit
-	md5sums_x86_64 = 8c02c850ca837fe25fac0a45f8a15b2c
+	source_i686 = https://developer.nvidia.com/linux-375271432bit
+	md5sums_i686 = 9f97042234b2ca4d4b63c3ddc384b4a7
+	source_x86_64 = https://developer.nvidia.com/linux-3752714-64-bit
+	md5sums_x86_64 = a8b5683411bb968f616654cd4bae2e56
 
 pkgname = nvidia-utils-vulkan-developer-beta
 	pkgdesc = NVIDIA driver utilities and libraries (vulkan developer beta version)
@@ -21,7 +21,7 @@ pkgname = nvidia-utils-vulkan-developer-beta
 	optdepends = gtk3: nvidia-settings (GTK+ v3)
 	optdepends = opencl-nvidia-vulkan-developer-beta: OpenCL support
 	optdepends = xorg-server-devel: nvidia-xconfig
-	provides = nvidia-utils=375.27.13
+	provides = nvidia-utils=375.27.14
 	provides = nvidia-settings
 	provides = libglvnd
 	provides = vulkan-driver
