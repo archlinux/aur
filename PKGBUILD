@@ -3,8 +3,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5.6-webkit
-pkgver=5.6.1
-pkgrel=2
+pkgver=5.6.2
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
@@ -14,7 +14,7 @@ makedepends=('ruby' 'gperf' 'python2')
 optdepends=('gst-plugins-good: Webm codec support')
 _tarname="qtwebkit-opensource-src-${pkgver}"
 source=("http://download.qt.io/community_releases/${pkgver%.*}/${pkgver}/${_tarname}.tar.xz")
-md5sums=('9ea7cb557375ba2fc7c62742c522d093')
+md5sums=('5196f47b75e2d6cc9663c89cf9902ef0')
 
 _qmake="/opt/qt${pkgver%.*}/bin/qmake"
 

@@ -1,7 +1,7 @@
 pkgbase = qt5.6-webkit
 	pkgdesc = Classes for a WebKit2 based implementation and a new QML API
-	pkgver = 5.6.1
-	pkgrel = 2
+	pkgver = 5.6.2
+	pkgrel = 1
 	url = http://qt-project.org/
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = qt5.6-webkit
 	depends = libxcomposite
 	depends = gst-plugins-base
 	optdepends = gst-plugins-good: Webm codec support
-	source = http://download.qt.io/community_releases/5.6/5.6.1/qtwebkit-opensource-src-5.6.1.tar.xz
+	source = http://download.qt.io/community_releases/5.6/5.6.2/qtwebkit-opensource-src-5.6.2.tar.xz
 	md5sums = 9ea7cb557375ba2fc7c62742c522d093
 
 pkgname = qt5.6-webkit
