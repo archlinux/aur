@@ -23,7 +23,8 @@ source=(firefox-aurora-pl.desktop
 	"${_baseurl}/${_filename}.tar.bz2")
 
 _sha512sum=$(wget -qO- ${_baseurl}/${_filename}.checksums | awk -F' ' '$2 == "sha512" && $4 == "'"${_filename}.tar.bz2"'" { print $1 } ')
-sha512sums=(${_sha512sum})
+sha512sums=(''
+	${_sha512sum})
 	
 package()
 {
