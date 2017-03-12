@@ -10,9 +10,9 @@ license=('MIT')
 groups=()
 depends=('curl' 'xclip' 'maim' 'slop' 'grep' 'libnotify')
 changelog=
-source=("b857cd11732bd04fb5a7d8d11a561d2de69dc2883a45a914d4b574383d4738d4")
+source=("https://github.com/whats-this/owo.sh/raw/master/dist_pkgs/owo-cli-0.0.17.tar.gz")
 noextract=()
-sha256sums=('0e03bf7c729929110c48be404c279903f2b441cc0a2efb19813af763e8370e01')
+sha256sums=('b857cd11732bd04fb5a7d8d11a561d2de69dc2883a45a914d4b574383d4738d4')
 validpgpkeys=('E7C0305DCEED5E9988AE9E5ADE754D221AD4051A') # Okashi
 
 package() {
