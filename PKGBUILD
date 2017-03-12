@@ -2,7 +2,7 @@
 
 pkgname=return-to-the-roots
 pkgver=0.8.1.r3017.bf9fcc60
-pkgrel=3
+pkgrel=4
 pkgdesc="Free/libre implementation of The Settlers II game engine"
 arch=("i686" "x86_64")
 url="https://siedler25.org/"
@@ -30,7 +30,7 @@ prepare() {
 build() {
 	cd "s25client/build/"
 	
-	./cmake.sh --prefix="$pkgdir/usr" --RTTR_BINDIR="bin" --RTTR_DATADIR="share/s25rttr" --RTTR_LIBDIR="lib/s25rttr"
+	./cmake.sh --prefix="${pkgdir}/usr" --RTTR_BINDIR="bin" --RTTR_DATADIR="share/s25rttr" --RTTR_LIBDIR="lib/s25rttr"
 	make
 }
 
@@ -41,18 +41,18 @@ package() {
 	make install
 	
 	# Copy launch script
-	mv "$srcdir/rttr.sh" "$pkgdir/usr/bin/"
+	install -Dm755 "${srcdir}/rttr.sh" "${pkgdir}/usr/bin"
 	
 	# Get additional files
-	mkdir -p $pkgdir/usr/share/applications
-	cp "$srcdir/s25client/debian/s25rttr.desktop" "$pkgdir/usr/share/applications/"
+	mkdir -p ${pkgdir}/usr/share/applications
+	cp "${srcdir}/s25client/debian/s25rttr.desktop" "${pkgdir}/usr/share/applications/"
 	
-	mkdir -p $pkgdir/usr/share/pixmaps
-	cp "$srcdir/s25client/debian/s25rttr.png" "$pkgdir/usr/share/pixmaps/"
+	mkdir -p ${pkgdir}/usr/share/pixmaps
+	cp "${srcdir}/s25client/debian/s25rttr.png" "${pkgdir}/usr/share/pixmaps/"
 	
 	# Fix usr/lib directory on x86_64
-	if [ -d "$pkgdir/usr/lib64" ]
+	if [ -d "${pkgdir}/usr/lib64" ]
 	then
-		mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
+		mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"
 	fi
 }

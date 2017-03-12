@@ -1,3 +1,7 @@
+2017-03-12 Pierre Choffet <peuc@wanadoo.fr>
+	* 0.8.1.r3017.bf9fcc60-4 :
+	Fix copy of rttr.sh launch script
+	
 2017-03-10 Pierre Choffet <peuc@wanadoo.fr>
 	* 0.8.1.r3017.bf9fcc60-3 :
 	Fix package install on x86_64 systems
