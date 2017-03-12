@@ -1,0 +1,6 @@
+base16
+base16-*-x86_64.pkg.tar.xz
+LICENSE
+pkg/
+PKGBUILD
+src/
