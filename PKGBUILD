@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-core-addrindex-git
 pkgver=20170103
-pkgrel=3
+pkgrel=4
 pkgdesc="Bitcoin Core headless P2P node with addrindex"
 arch=('i686' 'x86_64')
 url="https://github.com/btcdrak/bitcoin"
@@ -77,6 +77,10 @@ package() {
       cp -dpr --no-preserve=ownership "doc/$_doc" \
         "$pkgdir/usr/share/doc/bitcoin/$_doc"
   done
+
+  msg2 'Installing essential directories'
+  install -dm 700 "$pkgdir/etc/bitcoin"
+  install -dm 755 "$pkgdir/srv/bitcoin"
 
   msg2 'Installing bitcoin...'
   make DESTDIR="$pkgdir" install
