@@ -1,8 +1,9 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: potatoe
 
 pkgname=voltron-git
 pkgver=20170212
-pkgrel=1
+pkgrel=2
 pkgdesc="UI for GDB, LLDB and Vivisect's VDB"
 arch=('any')
 depends=('python'
@@ -26,7 +27,7 @@ source=(git+https://github.com/snare/voltron
         git+https://github.com/snare/voltron.wiki)
 sha256sums=('SKIP' 'SKIP')
 provides=('voltron')
-conflicts=('voltron')
+conflicts=('python-ptrace' 'voltron')
 
 pkgver() {
   cd ${pkgname%-git}
