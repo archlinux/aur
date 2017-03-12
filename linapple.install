@@ -1,11 +1,18 @@
  
 post_install() {
 
-  echo "$(tput setaf 6)You can make changes to the application configuration at /etc/linapple/linapple.conf$(tput sgr0)"
-  echo "$(tput setaf 6)You can start the application from the graphical menu or by typing linapple in the terminal$(tput sgr0)"
-  echo "$(tput setaf 1)!!! Be aware the /etc/linapple/linapple.conf file has 777 permission! The application !!!$(tput sgr0)"
-  echo "$(tput setaf 1)!!! will not run without the conf file being writable for some reason.                !!!$(tput sgr0)"
-  echo "$(tput setaf 1)!!! I am quite sure this is a poor security practice so install and use this          !!!$(tput sgr0)"
-  echo "$(tput setaf 1)!!! application at your own risk!                                                     !!!$(tput sgr0)"
-  
+  echo "$(tput setaf 1)The configuration file /usr/share/linapple/linapple.conf has permission 777 which is a$(tput sgr0)"
+  echo "$(tput setaf 1)poor security practice but the file needs to be writable.  Do the following to put the file$(tput sgr0)"
+  echo "$(tput setaf 1)in your home directory:$(tput sgr0)"
+  echo "$(tput setaf 1) $(tput sgr0)"
+  echo "$(tput setaf 1)#As your user account:$(tput sgr0)"
+  echo "$(tput setaf 1)mkdir ~/.linapple$(tput sgr0)"
+  echo "$(tput setaf 1)cp /usr/share/linapple/linapple.conf ~/.linapple/linapple.conf$(tput sgr0)"
+  echo "$(tput setaf 1)#As root:$(tput sgr0)"
+  echo "$(tput setaf 1)rm /usr/share/linapple/linapple.conf$(tput sgr0)"
+  echo "$(tput setaf 1)ln -s ~/.linapple/linapple.conf /usr/share/linapple/linapple.conf$(tput sgr0)"
+  echo "$(tput setaf 1)#You can now edit the config file as your user.  This will only work for one user $(tput sgr0)"
+  echo "$(tput setaf 1) $(tput sgr0)"
+  echo "$(tput setaf 1)You can start the application from the graphical menu or by typing linapple in the terminal$(tput sgr0)"  
 }
+

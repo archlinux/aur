@@ -2,7 +2,7 @@
 pkgname=linapple
 _name=_src-
 pkgver=2b
-pkgrel=2
+pkgrel=3
 pkgdesc="An Apple 2, 2e cross-platform emulator "
 arch=('x86_64')
 url="http://http://linapple.sourceforge.net/index.html"
@@ -19,7 +19,7 @@ source=("http://beotiger.com/download/$pkgname$_name$pkgver"
 md5sums=('4f60543ff6e02eb3663182d215203f7c'
          '18287e71ccad023b60868268e2c9001f'
          'ec6d79f611dfc0803aeb94579c65d5fe'
-         'b5b9a932d6ef7de5e48e9bfb7528ab34')
+         'bc8a95737db69a211c307dddc9a17106')
 
 prepare() {
         cd $srcdir/$pkgname$_name$pkgver
@@ -58,9 +58,7 @@ package() {
         make INSTDIR="$pkgdir/usr/share/$pkgname" STARTUP="$pkgdir/usr/bin/$pkgname" install
         
         # Install config file in /etc/linapple
-        install -m 777 "$pkgdir"/usr/share/linapple/linapple.installed.conf "$pkgdir"/etc/$pkgname/linapple.conf
-        # Link to config file in /usr/share program needs this to start
-        ln -s /etc/$pkgname/linapple.conf "$pkgdir"/usr/share/$pkgname/linapple.conf
+        install -m 777 "$pkgdir"/usr/share/linapple/linapple.installed.conf "$pkgdir"/usr/share/linapple/linapple.conf
         rm "$pkgdir"/usr/share/linapple/linapple.installed.conf
 
         # Create icon and .desktop file to create menu entry
