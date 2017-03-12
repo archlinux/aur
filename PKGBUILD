@@ -3,7 +3,7 @@
 # Contributor: Sebastian Lindqvist <dunpin@gmail.com>
 
 pkgname=electrum-server-git
-pkgver=20151128
+pkgver=20170312
 pkgrel=1
 pkgdesc="Server to support Electrum python-based Bitcoin client"
 arch=('i686' 'x86_64')
