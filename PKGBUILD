@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/skudriashev/bashlint"
 license=('MIT')
 depends=('python')
+makedepends=('python-setuptools')
 source=("https://github.com/skudriashev/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('e23df57b2297dd94b8f1f3718e3abd22adff382a37d53ce3565d1ef511f64132')
 
