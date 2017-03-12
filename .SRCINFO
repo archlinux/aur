@@ -1,12 +1,13 @@
 pkgbase = dockboard-svn
 	pkgdesc = Outline editor for authors organizing books, articles, and other published works
 	pkgver = r152
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dockboard.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = subversion
+	depends = glib
 	depends = libglade
 	depends = enchant
 	depends = aiksaurus

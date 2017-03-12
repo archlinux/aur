@@ -3,12 +3,12 @@
 
 pkgname=dockboard-svn
 pkgver=r152
-pkgrel=1
+pkgrel=2
 pkgdesc="Outline editor for authors organizing books, articles, and other published works"
 url="http://dockboard.sourceforge.net/"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('libglade' 'enchant' 'aiksaurus')
+depends=('glib' 'libglade' 'enchant' 'aiksaurus')
 makedepends=('subversion')
 conflicts=('dockboard')
 provides=('dockboard')
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${_svnmod}"
-  ./autogen.sh --prefix=/usr
+  LDFLAGS+=$(pkg-config --libs gmodule) ./autogen.sh --prefix=/usr
   make
 }
 
