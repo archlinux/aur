@@ -1,0 +1,21 @@
+pkgbase = spiderweb
+	pkgdesc = System for Processing Image Data from Electron microscopy and Related fields
+	pkgver = 24.01
+	pkgrel = 1
+	url = https://spider.wadsworth.org
+	arch = x86_64
+	license = GPL
+	depends = openmotif
+	depends = lib32-libxext
+	depends = lib32-libsm
+	depends = python2
+	depends = tcsh
+	source = https://spider.wadsworth.org/spider_doc/spider/download/spiderweb.24.01.tar.gz
+	source = spiderweb.sh
+	source = spiderweb.csh
+	md5sums = 6611f5e596d94d4e217693b0df6ce4dd
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = spiderweb
+
