@@ -1,6 +1,6 @@
 pkgbase = openss7-modules-lts44-git
 	pkgdesc = OpenSS7 Fast-STREAMS and protocol Suites (4.4 Kernel Modules)
-	pkgver = 1.1.8.63.g45f1b08cd
+	pkgver = 1.1.8.57.g463ede4dc
 	pkgrel = 1
 	url = http://www.openss7.org
 	install = openss7-modules-lts44-git.install
@@ -33,7 +33,7 @@ pkgbase = openss7-modules-lts44-git
 	makedepends = lm_sensors
 	makedepends = popt
 	depends = linux-lts44=4.4.52-1
-	provides = openss7-modules-lts44=1.1.8.63.g45f1b08cd
+	provides = openss7-modules-lts44=1.1.8.57.g463ede4dc
 	conflicts = openss7-modules-lts44
 	options = !emptydirs
 	options = !strip
