@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/WoLpH/python-utils"
 license=('BSD')
 depends=('python' 'python-six')
+makedepends=('python-setuptools')
 source=("https://github.com/WoLpH/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('615bf41699b84bf231ad644e00101610f94182aed9170926cebbbff7ebdfec2e')
 
