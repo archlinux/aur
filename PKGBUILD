@@ -11,16 +11,23 @@ url="http://www.rust-lang.org/"
 license=('MIT' 'Apache')
 makedepends=('git' 'libffi' 'python2' 'curl' 'llvm' 'jemalloc')
 source=("git+https://github.com/rust-lang/rust.git"
+        "git+https://github.com/rust-lang/cargo.git"
         "git+https://github.com/rust-lang/compiler-rt.git"
         "git+https://github.com/rust-lang/libc.git"
         "git+https://github.com/rust-lang/hoedown.git"
         "git+https://github.com/rust-lang/rust-installer.git"
 
+        "git+https://github.com/rust-lang-nursery/nomicon.git"
+        "git+https://github.com/rust-lang-nursery/reference.git"
+
         "git+https://github.com/rust-lang/rust.vim.git"
         "git+https://github.com/rust-lang/rust-mode.git"
         "git+https://github.com/rust-lang/zsh-config.git")
-_noclone=(compiler-rt libc hoedown rust-installer)
+_noclone=(cargo compiler-rt libc hoedown rust-installer nomicon reference)
 sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
