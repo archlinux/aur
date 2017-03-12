@@ -7,6 +7,7 @@ pkgdesc="Download packages to update automatically."
 arch=('any')
 url="https://aur.archlinux.org/packages/autoupdate/"
 license=('GPL')
+install=autoupdate.install
 source=(autoupdate.service
         autoupdate.timer)
 md5sums=('315777ea88d1ca6be7a934844a48c399'
