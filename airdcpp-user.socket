@@ -1,0 +1,9 @@
+[Unit]
+Description=AirDC++ Web Client Daemon socket
+
+[Socket]
+ListenStream=5600
+Service=airdcpp.service
+
+[Install]
+WantedBy=multi-user.target

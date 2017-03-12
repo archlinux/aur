@@ -1,0 +1,8 @@
+[Unit]
+Description=AirDC++ Web Client Daemon
+
+[Service]
+ExecStart=/usr/bin/airdcppd
+
+[Install]
+WantedBy=multi-user.target
