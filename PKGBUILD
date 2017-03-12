@@ -2,8 +2,8 @@
 # Contributor: Sébastien Luttringer
 
 pkgname=unifi-beta
-pkgver=5.4.11
-_pkgver=6cbeae59e7
+pkgver=5.5.7
+_pkgver=0cbda0cd4a
 pkgrel=1
 pkgdesc='Controller for Ubiquiti UniFi accesspoints'
 arch=('any')
@@ -15,9 +15,9 @@ conflicts=('unifi' 'unifi-controller-beta')
 replaces=('unifi-controller-beta')
 backup=('opt/unifi/data/system.properties')
 install=unifi.install
-source=(https://www.ubnt.com/downloads/unifi/${pkgver}-${_pkgver}/UniFi.unix.zip
+source=(${pkgname}-${pkgver}.zip::https://www.ubnt.com/downloads/unifi/${pkgver}-${_pkgver}/UniFi.unix.zip
         unifi.service)
-sha512sums=('7fff7e41ea0ce7197556373ebdaae63a2b0b836f1d504d100d602207f6bd88477ca4b2b1267803920f3fba8487887c6d0bb5dc4f16e93ff1440eef04fcae9429'
+sha512sums=('4403edb2f03b1dfcbb538d8e4b32e1f5955de83084ad801068fee6ef02b716c126fb823816a569376e6c03a59a4d4f22bbeea18d71ba1009ea72fda7848608e9'
             'eb6625d99634dee0298a961aaead6e3c504f2bf1c502ff071c52e46e8c0817e169ff2020d2e7bda9bac0f170c5214ec6939b14c16c6c6ce8da75ac6930ca2a47')
 
 package() {
