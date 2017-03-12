@@ -1,7 +1,7 @@
 pkgbase = firefox-gtk2
 	pkgdesc = Standalone web browser from mozilla.org
-	pkgver = 51.0.1
-	pkgrel = 1
+	pkgver = 52.0
+	pkgrel = 2
 	url = https://www.mozilla.org/firefox/
 	arch = i686
 	arch = x86_64
@@ -39,25 +39,22 @@ pkgbase = firefox-gtk2
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = libnotify: Notification integration
 	optdepends = upower: Battery API
-	provides = firefox=51.0.1-1
+	optdepends = speech-dispatcher: Text-to-Speech
+	provides = firefox=52.0-2
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
-	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/51.0.1/source/firefox-51.0.1.source.tar.xz
-	source = mozconfig
+	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/52.0/source/firefox-52.0.source.tar.xz
 	source = firefox.desktop
+	source = firefox-symbolic.svg
 	source = firefox-install-dir.patch
 	source = rust-i686.patch
-	source = vendor.js
-	source = firefox-symbolic.svg
 	source = fix-wifi-scanner.diff
-	sha256sums = 30ba00ba716ea1eeda526e2ccc8642f8d18a836793fde50e87a4fcb9d9fccca9
-	sha256sums = 5488e59d08787927337b343c74a999e62e36ba1a0715f3ecb1c314e2ff8f1961
-	sha256sums = 75c526e9669b91b4fe5dcea650a1e8419220abb2e9564184f0d984c71eae82e8
+	sha256sums = 494ec86875ea60043658e402b664ccd5af4709acc3a478de8729f7cbac9ea3c1
+	sha256sums = ada313750e6fb14558b37c764409a17c1672a351a46c73b350aa1fe4ea9220ef
+	sha256sums = a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9
 	sha256sums = d86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd
 	sha256sums = f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269
-	sha256sums = 93c5df00f409988bbfa890ac175103476ead3af68f7501973ee70bd11dc472f8
-	sha256sums = a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9
 	sha256sums = 9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8
 
 pkgname = firefox-gtk2
