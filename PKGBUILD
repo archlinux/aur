@@ -1,7 +1,7 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 
 pkgname=blendercam-git
-pkgver=r494.d8c1696
+pkgver=r514.edcd11f
 pkgrel=1
 pkgdesc="An open source solution for artistic CAM"
 license=("GPL2")
@@ -19,6 +19,7 @@ pkgver() {
 
 package() {
   cd $srcdir/blendercam
-  mkdir -p "$pkgdir/usr/share/blender/2.77/"
-  cp -r scripts "$pkgdir/usr/share/blender/2.77/"
+  blenderVer="$(blender -v | head -n1 | cut -f2 -d ' ')"
+  mkdir -p "$pkgdir/usr/share/blender/${blenderVer}/"
+  cp -r scripts "$pkgdir/usr/share/blender/${blenderVer}/"
 }
