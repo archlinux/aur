@@ -4,7 +4,7 @@
 
 pkgname=qt5.6
 pkgver=5.6.2
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
@@ -13,10 +13,11 @@ depends=('libjpeg-turbo' 'xcb-util-keysyms' 'xcb-util-wm' 'xcb-util-image'
          'icu' 'tslib' 'libinput' 'libxkbcommon-x11' 'jasper' 'libmng'
 	 'libwebp' 'libpulse' 'openal' 'libxcomposite' 'pciutils'  'libxss'
 	 'libvpx' 'opus' 'libevent' 'jsoncpp' 'snappy' 'nss' 'libxslt'
-	 'gst-plugins-base-libs')
+	 'gst-plugins-base-libs' 'libxrandr' 'libsrtp' 'protobuf' 'libxdamage'
+	 'minizip' 'ffmpeg')
 makedepends=('mtdev' 'libfbclient' 'libmariadbclient' 'unixodbc' 'alsa-lib' 
              'postgresql-libs' 'gtk2' 'cups' 'freetds' 'bluez-libs' 'python2'
-	     'libxcursor' 'libxrandr' 'git' 'gperf' 'python')
+	     'libxcursor' 'git' 'gperf' 'python')
 optdepends=('qt5-svg: to use SVG icon themes'
             'postgresql-libs: PostgreSQL driver'
             'libmariadbclient: MariaDB driver'
@@ -35,6 +36,11 @@ prepare() {
 
     find . -name '*.py' -exec sed -i \
         's|#![ ]*/usr/bin/python$|&2|;s|#![ ]*/usr/bin/env python$|&2|' {} +
+
+    # Hack to force using python2
+    mkdir -p "$srcdir/bin"
+    ln -s /usr/bin/python2 "$srcdir/bin/python"
+    export PATH="$srcdir/bin:$PATH"
 }
 
 build() {
