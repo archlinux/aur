@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [[ ! $# -eq "2" ]]; then
+if [[ ! $# -eq "2" ]] || [[ $1 -lt $2 ]]; then
 	echo "Usage:"
 	echo "$0 version omege_version"
 	exit 1
