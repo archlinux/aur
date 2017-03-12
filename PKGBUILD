@@ -14,20 +14,20 @@ arch=('any')
 conflicts=('pyload-hg' 'pyload-git')
 replaces=('pyload-hg' 'pyload-git')
 backup=('var/lib/pyload/pyload.conf')
-depends=('python2' 'python2-crypto' 'python2-pycurl' 'tesseract' 
+depends=('python2' 'python2-crypto' 'python2-pycurl' 'tesseract'
          'python2-imaging' 'python2-pyopenssl')
 optdepends=('python2-pyqt: Gui'
             'python2-flup: for additional webservers'
             'python2-notify: Notifications for GUI'
             'js: ClickNLoad')
-source=("https://github.com/pyload/pyload/releases/download/v${pkgver}/pyload-src-v${pkgver}.zip"
+source=("https://github.com/pyload/pyload/archive/v${pkgver}.tar.gz"
         'http://bitbucket.org/ranan/pyload-dist/raw/bf705af8f412/debian/pyload/usr/share/applications/pyload-gui.desktop'
         'http://bitbucket.org/ranan/pyload-dist/raw/bf705af8f412/debian/pyload/usr/share/applications/pyload.desktop'
         'http://bitbucket.org/ranan/pyload-dist/raw/bf705af8f412/debian/pyload/usr/share/pixmaps/pyload-gui.png'
         'http://bitbucket.org/ranan/pyload-dist/raw/bf705af8f412/debian/pyload/usr/share/pixmaps/pyload.svg'
         'pyload.service' 'pyload.conf' 'pyLoadCore' 'pyLoadCli' 'pyLoadGui' 'suppress_jinja2_version_check.patch')
 install='pyload.install'
-sha512sums=('6265602073279763c5393b958ec2cc6825d51e872556d2f2141db1e2afd9a2aaded8275aac0576526f96863d768bc9ff3669e7ff31e7b9fb5c5f655bba920a8e'
+sha512sums=('c7235cdd5402fc5ab539f59829252bf4ff6199fb1742ef85bde079cff2c7bfea193de2c524573d1da45518a68cc8ef5a206e9d265219de8fd496af2c4d4c24c1'
             '86eb27f042adaf7096dec6c50bfd8f2ca0d099cbb1a27a47af276a3f42b6aebc5807022fbd9f5ca543e329543fe5ab1c3ee873163b9d90b8b3242523082b7a0d'
             '3f5d237d8e8ca469fa138e37b2118154146526340d151e8e75c79630c6bd01baab5d21f912d97fdce62ef6ff2e7c4c479d69ba8b66d3f17dbd4adb2636eddb08'
             '07ed25d6b1b62f6589f350854ac8e864bcb94a8b497d00522c3e7481d6ec2a25ba1a072b947872c7b82ca4de03ac30ffd96811bfae64df2f5dc586e4960282c6'
@@ -40,20 +40,20 @@ sha512sums=('6265602073279763c5393b958ec2cc6825d51e872556d2f2141db1e2afd9a2aaded
             'eb26da900c9cab96b3a08078f721686dac0bd0cc7929d48a297300cdd5693af1de98c8f581fcc2b329d9a7355b6ef7f9fc7c2ed7216ceca1becd9c9336df917f')
 
 prepare() {
-  cd ${srcdir}
-  sed -i 's_#!/usr/bin/env python$_#!/usr/bin/env python2_' pyload/pyLoad*.py
-  patch -p0 < suppress_jinja2_version_check.patch
+  cd "${srcdir}/pyload-${pkgver}"
+  sed -i 's_#!/usr/bin/env python$_#!/usr/bin/env python2_' pyLoad*.py
+  patch -p1 < "${srcdir}/suppress_jinja2_version_check.patch"
 }
 
 build() {
-  python2 -O -m compileall ${srcdir}/pyload
+  python2 -O -m compileall "${srcdir}/pyload-${pkgver}"
 }
 
 package(){
-  cd ${srcdir}
+  cd "${srcdir}"
 
   install -d -m 755 ${pkgdir}/opt/pyload
-  cp -r pyload/* ${pkgdir}/opt/pyload
+  cp -r "${srcdir}/pyload-${pkgver}"/* ${pkgdir}/opt/pyload
 
   install -d -m 755 ${pkgdir}/usr/share/applications
   install -D -m 644 pyload.desktop ${pkgdir}/usr/share/applications
