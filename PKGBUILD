@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-headless-addrindex
 pkgver=0.13.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Bitcoin Core headless P2P wallet with addrindex"
 arch=('i686' 'x86_64')
 url="https://github.com/btcdrak/bitcoin"
@@ -40,7 +40,14 @@ build() {
     --with-gui=no \
     --with-incompatible-bdb \
     --with-gnu-ld
-  make
+  make -j$(($(nproc)/2))
+}
+
+check() {
+  cd "$srcdir/${pkgname%%-*}-$pkgver"
+
+  msg2 'Testing...'
+  make -j$(($(nproc)/2)) check
 }
 
 package() {
