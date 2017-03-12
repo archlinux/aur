@@ -4,7 +4,7 @@ After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/pacman -Syuwq --noconfirm
+ExecStart=/usr/bin/nice -n 19 /usr/bin/pacman -Syuwq --noconfirm
 TimeoutStopSec=300
 KillMode=process
 KillSignal=SIGINT
