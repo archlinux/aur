@@ -4,8 +4,8 @@ _app_name='mooltipass'
 _extension_id='cdifokahonpfaoldibbjmbkdhhelblpj'
 _store_base_url='https://clients2.google.com/service/update2/crx?response=redirect&prodversion=49.0&x=id%3D'
 pkgname="chromium-app-${_app_name}"
-pkgver=2.0.61
-pkgrel=2
+pkgver=2.0.63
+pkgrel=1
 pkgdesc='Mooltipass password manager client'
 license=('custom:MIT')
 arch=('any')
@@ -14,8 +14,8 @@ depends=('chromium')
 source=("${_app_name}-app.crx::${_store_base_url}${_extension_id}%26installsource%3Dondemand%26uc"
         "${_extension_id}.json"
         'LICENSE')
-sha256sums=('3ac647c3aa0dd549d3f731fbd6d955466967503f673a996b627f12ae9dcc5019'
-            '5930a63d2f1b6a1357ebe728d3492aaec4ec1b38c4dc5d3761f0c09370a0741b'
+sha256sums=('4f573aada23532ac4cfe4e1d0dd119e3ef38a481c2d4343007aa25912a9b4227'
+            '47b55e082b8878ff1297260fd817f1d1a4b45df59a895bf36980b4063e76a477'
             '2af680c39ef493fb82830356d1d3df1acb5a06033cba2dec7a19e21caa77a866')
 noextract=("${_app_name}-app.crx")
 
