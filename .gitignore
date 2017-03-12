@@ -1,5 +1,7 @@
+libxslt/
 pkg/
 src/
 *.gz
+*.log
 *.tar
 *.xz
