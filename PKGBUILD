@@ -21,9 +21,12 @@ _baseurl=http://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-a
 _filename=firefox-${pkgver}.pl.linux-${CARCH}
 source=(firefox-aurora-pl.desktop
 	"${_baseurl}/${_filename}.tar.bz2")
-_md5=$(wget -qO- ${_baseurl}/${_filename}.checksums | awk -F' ' '$2 == "md5" && $4 == "'"${_filename}.tar.bz2"'" { print $1 } ')
-md5sums=('4d7c9c39270e17d408ffcc3ce59cd61c'
-         ${_md5})
+
+_sha512sum="$(curl -s "${_baseurl}${_filename}.checksums" | grep "${_filename}.tar.bz2" | grep sha512 | cut -d " " -f1)"
+sha512sums=('SKIP'
+            'SKIP'
+            "${_sha512sum}")
+	
 package()
 {
   mkdir -p "${pkgdir}"/{usr/{bin,share/{applications,pixmaps}},opt}
