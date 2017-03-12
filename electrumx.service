@@ -1,0 +1,17 @@
+[Unit]
+Description=ElectrumX Server
+Wants=bitcoin.service
+After=network.target bitcoin.service
+
+[Service]
+EnvironmentFile=/etc/electrumx/electrumx.conf
+ExecStart=/usr/bin/electrumx-server
+ExecReload=/usr/bin/kill -s SIGHUP $MAINPID
+ExecStop=/usr/bin/electrumx-rpc -p 8000 stop
+User=electrumx
+Group=electrumx
+LimitNOFILE=infinity
+TimeoutStopSec=30min
+
+[Install]
+WantedBy=multi-user.target
