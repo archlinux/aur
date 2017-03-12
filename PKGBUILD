@@ -9,13 +9,14 @@
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
 pkgver=1.10.2
-pkgrel=2
+pkgrel=3
 _commit=8076a19fdcab7e1fc1707952d652f0bb6c6db331
 arch=('i686' 'x86_64' 'armv7h')
 url='https://code.visualstudio.com/'
 license=('MIT')
 makedepends=('npm' 'nodejs>=6.8.0' 'gulp' 'python2' 'git')
-depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'libxtst' 'nss' 'alsa-lib')
+depends=('gtk2' 'gconf' 'libnotify' 'libxss' 'libxtst' 'libxkbfile' 'nss'
+         'alsa-lib')
 conflicts=('vscode-oss')
 provides=('vscode-oss')
 
