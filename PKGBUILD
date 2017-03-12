@@ -1,5 +1,5 @@
 pkgname=aha
-pkgver=0.4.10.3
+pkgver=0.4.10.5
 pkgrel=1
 pkgdesc="Ansi HTML Adapter: convert ANSI escape sequences to HTML."
 arch=('any')
@@ -9,7 +9,7 @@ provides=('aha')
 conflicts=('aha')
 
 source=("$url/archive/${pkgver}.tar.gz")
-sha512sums=('965dd1bb6f893435661e02748226db2600f063d7c43f6569e1f898e5c0545ca54140a2355377f0b9f729f202ee58f26c61e1e1574a572d5f16542976a05fb74a')
+sha512sums=('cd7245a333f1eb4fd941397a98849dbcc6589a0a0591bb50937d2d5a2e3c98db02da2ad57bea183a9c04d1504d8e2e1087ac5a9fb4e5d72ff3140bbd76f05c51')
 
 build() {
   cd -- "$srcdir/$pkgname-$pkgver"
