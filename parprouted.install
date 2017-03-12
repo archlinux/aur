@@ -1,7 +1,0 @@
-post_install() {
-	echo
-	echo " Supply the correct interfaces in /etc/conf.d/parprouted."
-	echo " Remember to enable the relevant sysctl settings (proxy_arp and forwarding)."
-	echo
-}
-
