@@ -6,7 +6,7 @@ pkgdesc="Proxy-ARP daemon"
 arch=(i686 x86_64)
 url="https://github.com/rsmarples/parpd"
 license=(BSD)
-_commit=master
+_commit=25189870255c8b48e52ccf2976d4e77611bf70cd
 source=("git+https://github.com/rsmarples/parpd#commit=$_commit")
 sha256sums=('SKIP')
 
