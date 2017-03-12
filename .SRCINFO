@@ -1,0 +1,15 @@
+pkgbase = gctf
+	pkgdesc = GPU accelerated program for Real-Time CTF determination, refinement, evaluation and correction.
+	pkgver = 1.06
+	pkgrel = 1
+	url = http://www.mrc-lmb.cam.ac.uk/kzhang
+	arch = x86_64
+	license = CCPL:cc-by-nc-nd-3.0
+	depends = cuda
+	source = http://www.mrc-lmb.cam.ac.uk/kzhang/Gctf/Gctf_v1.06/bin/Gctf-v1.06_sm_20_cu8.0_x86_64
+	source = http://www.mrc-lmb.cam.ac.uk/kzhang/Gctf/Gctf_v1.06/bin/Gctf-v1.06_sm_30_cu8.0_x86_64
+	md5sums = b7c66feab45e4924a48af7f7ed24a475
+	md5sums = 4f343154991ad790d99043ae40b20fba
+
+pkgname = gctf
+
