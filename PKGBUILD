@@ -7,7 +7,7 @@
 
 _pkgname=ibus-chewing
 pkgname=$_pkgname-git
-pkgver=1.5.1.r0.ge221ddd
+pkgver=1.5.1.r38.gf4c192d
 _cmakefedoraver=2.6.0
 pkgrel=1
 pkgdesc='Chinese Chewing Engine for IBus Framework'
@@ -16,8 +16,9 @@ license=('GPL')
 url='https://github.com/definite/ibus-chewing'
 depends=('ibus' 'libchewing-git')
 makedepends=('gob2' 'cmake' 'git')
+checkdepends=('xorg-server-xvfb')
 source=("git+https://github.com/definite/ibus-chewing.git"
-        "git+http://git.fedorahosted.org/git/cmake-fedora.git#tag=$_cmakefedoraver")
+        "git+https://pagure.io/cmake-fedora.git#tag=$_cmakefedoraver")
 sha512sums=('SKIP'
             'SKIP')
 provides=(ibus-chewing)
@@ -43,6 +44,15 @@ build() {
     -DLIBEXEC_DIR=/usr/lib/ibus
   make
   make translations
+}
+
+check() {
+  cd $_pkgname
+
+  # How to run dbus-daemon in clean chroots?
+  [[ -z "$DBUS_SESSION_BUS_ADDRESS" ]] && return
+
+  xvfb-run make test
 }
 
 package() {
