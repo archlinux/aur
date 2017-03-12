@@ -60,7 +60,7 @@ build() {
 }
 
 check() {
-  cd "$srcdir/${pkgname%-core}-$pkgver"
+  cd "${pkgname%%-*}"
 
   msg2 'Testing...'
   make -j$(($(nproc)/2)) check
