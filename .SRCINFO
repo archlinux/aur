@@ -1,6 +1,6 @@
 pkgbase = openss7-modules-lts316-git
 	pkgdesc = OpenSS7 Fast-STREAMS and protocol Suites (3.16 Kernel Modules)
-	pkgver = 1.1.8.57.g463ede4dc
+	pkgver = 1.1.8.63.g45f1b08cd
 	pkgrel = 1
 	url = http://www.openss7.org
 	install = openss7-modules-lts316-git.install
@@ -34,7 +34,7 @@ pkgbase = openss7-modules-lts316-git
 	makedepends = lm_sensors
 	makedepends = popt
 	depends = linux-lts316=3.16.41-1
-	provides = openss7-modules-lts316=1.1.8.57.g463ede4dc
+	provides = openss7-modules-lts316=1.1.8.63.g45f1b08cd
 	conflicts = openss7-modules-lts316
 	options = !emptydirs
 	options = !strip
