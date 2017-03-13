@@ -12,6 +12,7 @@ ExecStart=/usr/bin/bitcoind -daemon=0                       \
                             -pid=/run/bitcoind.pid
 ExecReload=/usr/bin/kill -HUP $MAINPID
 ExecStop=/usr/bin/bitcoind stop
+PrivateTmp=true
 
 [Install]
 WantedBy=multi-user.target
