@@ -1,12 +1,7 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Ye Jingchen <ye.jingchen@gmail.com>
 pkgname=capitaine-cursors
 pkgver=r2
-pkgrel=1
+pkgrel=2
 pkgdesc="An x-cursor theme inspired by macOS and based on KDE Breeze"
 arch=('any')
 url="https://github.com/keeferrourke/capitaine-cursors"
