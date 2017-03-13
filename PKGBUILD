@@ -3,12 +3,12 @@
 _pkgname=gnome-games
 pkgname=gnome-games-stable
 pkgver=3.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A game manager application for GNOME'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url='https://wiki.gnome.org/Apps/Games'
-depends=('retro-gtk' 'libarchive' 'libtracker-sparql')
+depends=('grilo' 'retro-gtk' 'libarchive' 'libtracker-sparql')
 makedepends=('git' 'intltool' 'automake' 'autoconf' 'vala')
 conflicts=('gnome-games-git')
 source=("https://git.gnome.org/browse/${_pkgname}/snapshot/${_pkgname}-${pkgver}.tar.xz")
