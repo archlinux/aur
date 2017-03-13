@@ -14,13 +14,13 @@ backup=(etc/powerpanel/pwrstatd-{powerfail,lowbatt,email}.sh
 
 if [[ $CARCH = 'x86_64' ]]; then
   source=(https://dl4jz3rbrsfum.cloudfront.net/software/powerpanel-$pkgverdl-x86_64.tar.gz pwrstatd.service)
-  sha2sums=('265099590e82303fa1082a84dda02488d41762ca5b94f2bb7fd395c9b4ac1c36'
+  sha256sums=('265099590e82303fa1082a84dda02488d41762ca5b94f2bb7fd395c9b4ac1c36'
             '2bcf5ba2c5d8c9ab886b6a5aba06f0da1630fabb440621860b2da221fcf9eb34')
 fi
 
 if [[ $CARCH = 'i686' ]]; then
   source=( https://dl4jz3rbrsfum.cloudfront.net/software/powerpanel-$pkgverdl-i386.tar.gzpwrstatd.service)
-  sha2sums=('a0931fe71b7def7b72a1a80b9fc9a6419032eb98f78ad9da2971c904f88dc8f3'
+  sha256sums=('a0931fe71b7def7b72a1a80b9fc9a6419032eb98f78ad9da2971c904f88dc8f3'
   	    '2bcf5ba2c5d8c9ab886b6a5aba06f0da1630fabb440621860b2da221fcf9eb34')
 
 fi
