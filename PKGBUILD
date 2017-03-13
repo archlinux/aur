@@ -1,7 +1,7 @@
 # Maintainer: svr3408 svr3408@gmail.com
 
 pkgname="keepass-plugin-keeautoexec"
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="A KeePass plugin allows to automatically open additional databases when opening a database."
 arch=("any")
