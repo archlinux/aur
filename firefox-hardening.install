@@ -1,5 +1,5 @@
 post_install() {
-	if [ ! -d /etc/firefox-hardening ]; then
+	if [ ! -d /etc/firefox-hardening/prefs ]; then
 		mkdir -p /etc/firefox-hardening/prefs
 	fi
 
@@ -11,7 +11,7 @@ post_install() {
 }
 
 post_upgrade() {
-	if [ ! -d /etc/firefox-hardening ] || [ ! -f /etc/firefox-hardening/ffh.conf ]; then
+	if [ ! -d /etc/firefox-hardening/prefs ] || [ ! -f /etc/firefox-hardening/ffh.conf ]; then
 		post_install
 	else
 		install -m644 -D "/usr/lib/firefox-hardening/ffh.conf.example" "/etc/firefox-hardening/ffh.conf.package"
