@@ -46,9 +46,7 @@ add_temp_key() {
   tpm_unsealdata -i "$SEALED_KEYFILE" -o "$KEYFILE" $WELL_KNOWN
 
   echo "Preparing to set a temporary LUKS passphrase..."
-  cryptsetup luksAddKey --key-slot $RESET_KEY_SLOT --key-file "$KEYFILE" $ROOT_DEVICE < /dev/tty
-
-  if [ $? -eq 0 ]; then
+  if cryptsetup luksAddKey --key-slot $RESET_KEY_SLOT --key-file "$KEYFILE" $ROOT_DEVICE < /dev/tty; then
     echo "After booting into the current kernel, run"
     echo "  luks-tpm $(echo $ORIGINAL_ARGS | sed 's/temp$/reset/')"
     echo "to generate a new TPM keyfile and remove this temporary key"
@@ -96,8 +94,7 @@ reset_tpm_key() {
 
 create_tmpfs() {
   mkdir -p "$TMPFS_MOUNT"
-  mount tmpfs "$TMPFS_MOUNT" -t tmpfs -o size=1m
-  if [ $? -ne 0 ]; then
+  if ! mount tmpfs "$TMPFS_MOUNT" -t tmpfs -o size=1m; then
     echo "Could not create tmpfs. Aborting..." >&2
     exit 3
   fi

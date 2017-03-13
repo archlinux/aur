@@ -1,6 +1,6 @@
 pkgbase = luks-tpm
 	pkgdesc = Utility to manage LUKS keyfiles sealed by the TPM
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/electrickite/luks-tpm
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = luks-tpm
 	depends = coreutils
 	depends = util-linux
 	source = luks-tpm
-	sha256sums = 97c7b2a7f45674e96ec25bd69f48bda7749c59bbf6744608d561f84410634198
+	sha256sums = 4d360ae7ec695ff3c8bf720971173c89a13625bbb34fa46e1ada85dee2bb1fb2
 
 pkgname = luks-tpm
 
