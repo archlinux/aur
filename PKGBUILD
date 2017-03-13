@@ -1,8 +1,9 @@
 # Maintainer: makz <contact+aur@makz.me>
 
 pkgname=ckb-next-git
-pkgver=v0.2.7.beta.b729569
-pkgrel=2
+pkgver=v0.2.4.r159.g22cfd77
+pkgrel=1
+epoch=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver"
 arch=('i686' 'x86_64')
 url="https://github.com/mattanger/ckb-next"
