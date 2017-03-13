@@ -1,6 +1,6 @@
 # Maintainer: Javier Fernández <WyRe12[at]gmail[dot]com>
 
-pkgname=minecrafter
+pkgname=minecrafter-ttf
 pkgver=1.0
 pkgrel=1
 pkgdesc="Minecrafter fonts from http://www.dafont.com"
