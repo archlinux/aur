@@ -1,6 +1,8 @@
-		-= Ninja Boot and Nuke =-
+		-= Ninja Boot'N'Nuke =-
 
-Ninja Boot and Nuke is and "End of Life" solution that is built around Arch
+NBAN WILL IRRECOVABLY DESTROY ALL DATA ON ALL ATTACHED DRIVES
+
+Ninja Boot'N'Nuke(NBAN) is and "End of Life" solution that is built around Arch
 native tools. The end result is to wipe all data from all attached storage
 media by zerofilling them. If SATA secure erase is available, then that is used
 instead. This will secure data off machines which are no longer in use, but
@@ -9,7 +11,9 @@ have sensative data, for allow for their disposal.
 The core NBAN image is an initcpio profile, that loads storage drivers, and then
 uses dd in parallel to overwrite all drives with zeros and then reboots.
 
-There are several ways this can be utilized.
+NBAN WILL IRRECOVABLY DESTROY ALL DATA ON ALL ATTACHED DRIVES
+
+	-USAGE-
 
 1. Compile nban directly with mkinitcpio
 
@@ -35,11 +39,26 @@ overwrite your bootloader and reboot into boot and nuke. reboot_nuke_press.sh
 is designed to be tied to a button that will nuke after a certain about of
 repeated button presses. This is for tying to keyboard shortcuts. You can use
 these to santize your Arch workstation quickly in case of an event requiring
-immediate santiation of data
+immediate santiation of data.
 
-The default is 3 button presses in 0.8 seconds. these scripts are found in:
+The default is 3 button presses in 0.8 seconds.
 
+	-CONFIG-
+Configuration is at the top of all scripts, except the initcpio profiles which
+you can edit in their /etc/ directory. See -FILES- Below for more details
+
+	-FILES-
+-+ Core scripts
+/usr/share/ninjaos/bootanuke.sh - main script that does the wiping.
+/usr/share/ninjaos/shurikenforge.sh - shuriken_forge command
+
+-+ Arch Linux initcpio profile
+/etc/mkinitcpio.d/nban.conf
+/etc/mkinitcpio.d/nban.preset
+/usr/lib/initcpio/hooks/nban
+/usr/lib/initcpio/install/nban
+
+-+ Auto Reboot
 /usr/share/ninjaos/reboot_nuke.sh
 /usr/share/ninjaos/reboot_nuke_press.sh
-
 

@@ -20,7 +20,7 @@
 # This is very much a valid security tool, and its very well documented.
 
 pkgname=ninjaos-bootandnuke
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Ninja Boot'n'Nuke. Boot'n'Nuke implemented as an initcpio image."
 url="http://ninjaos.org/projects.html#bootandnuke"
@@ -34,9 +34,11 @@ replaces=("mkinitcpio-nban")
 conflicts=("mkinitcpio-nban")
 provides=("mkinitcpio-nban")
 source=("http://ninjaos.org/downloads/projects/${pkgname}-${pkgver}.tar.gz"
+        "http://ninjaos.org/downloads/projects/${pkgname}-${pkgver}.tar.gz.sig"
         "README")
-sha256sums=('b121311063c7ecaa971d1786e5f3dcc8278c1e515c7969689b48ea05e438fb7c'
-            '1b28d8f101675d9c6c915df9f36d9a417fa38ce96561570f65e077848a7d4aaa')
+sha256sums=('64dc4c79c8d90a7bd510d7e046b8e70d57354043fa12aa6c18de4e5c301da841'
+            'SKIP'
+            '93e1fe5810a837399724d1e6fb9403aa68e852c731b93656c6667ea4bea2b075')
 validpgpkeys=('D5E76841665A4408D73C2D8796FD6113A1F8331E')
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
