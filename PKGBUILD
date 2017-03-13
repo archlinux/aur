@@ -2,7 +2,7 @@
 
 pkgbase=gtk4-git
 pkgname=(gtk4-update-icon-cache-git gtk4-git gtk4-print-backends-git)
-pkgver=3.89.4.r156.g60ab85c7bc
+pkgver=3.89.4.r175.g3eb8694cbd
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('i686' 'x86_64')
