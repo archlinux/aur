@@ -12,7 +12,6 @@ makedepends=(extra-cmake-modules python qt5-tools marble-common libmariadbclient
 optdepends=('qt5-webkit: Web browser plugin')
 conflicts=(calligra-kexi)
 replaces=(calligra-kexi)
-groups=(calligra)
 source=("http://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz"{,.sig})
 sha1sums=('3ca4195b55f4a92907bf975e5dded013274f6eec'
           'SKIP')
