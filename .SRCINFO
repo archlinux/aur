@@ -1,13 +1,14 @@
 pkgbase = firefox-hardening
 	pkgdesc = Firefox hardening stuff
-	pkgver = r28.af6d76d
+	pkgver = r64.27255a6
 	pkgrel = 1
 	url = https://github.com/ntzwrk/firefox-hardening
+	install = firefox-hardening.install
 	arch = any
 	license = GPLv3
 	makedepends = git
 	optdepends = firefox
-	provides = firefox-hardening=r28.af6d76d
+	provides = firefox-hardening=r64.27255a6
 	conflicts = firefox-hardening
 	source = git+https://github.com/ntzwrk/firefox-hardening.git
 	sha512sums = SKIP

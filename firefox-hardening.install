@@ -1,0 +1,21 @@
+post_install() {
+	if [ ! -d /etc/firefox-hardening ]; then
+		mkdir -p /etc/firefox-hardening/prefs
+		install -m644 -D "/usr/lib/firefox-hardening/ffh.conf.example" "/etc/firefox-hardening/ffh.conf"
+	fi
+	/usr/lib/firefox-hardening/beatthedeviloutofit.sh
+}
+
+post_remove() {
+	if [ -d /etc/firefox-hardening ]; then
+		rm -r /etc/firefox-hardening
+	fi
+
+	if [ -f /usr/lib/firefox/custom.cfg ]; then
+		rm /usr/lib/firefox/custom.cfg
+	fi
+
+	if [ -L /usr/lib/firefox/defaults/pref/autoconfig.js ]; then
+		rm /usr/lib/firefox/defaults/pref/autoconfig.js
+	fi
+}
