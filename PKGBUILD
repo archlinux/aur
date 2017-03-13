@@ -5,7 +5,7 @@
 # Contributor: Timm Preetz <timm@preetz.us>
 
 pkgname=vala-git
-pkgver=0.34.0+48+g4797d90
+pkgver=0.35.90
 pkgrel=1
 pkgdesc="Compiler for the GObject type system"
 url="https://wiki.gnome.org/Projects/Vala"
