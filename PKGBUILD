@@ -1,7 +1,7 @@
 # Maintainer: Bennett Piater <bennett at piater dot name>
 
 pkgname=(aursec aursec-tui)
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc='Verify AUR package sources against hashes stored in a blockchain.'
 arch=('x86_64' 'x86' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ checkdepends=(shellcheck)
 
 #changelog="CHANGELOG"
 source=(https://github.com/clawoflight/aursec/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz{,.asc})
-sha512sums=('f9b8d346a11f76f5441e00c68c46e9fd23e2a72e346be5e2a511330dfaf1a124edde5511773ebb9f50031bc043a3e6b46b1e1316068f03649ede1ebb8f93a618'
+sha512sums=('7f063b0984c6c93977e45036d7027fe1f923be6eef2c19de676938752fae38f2646b840a2faa50d69ba06aebc03bc43e407565f0f8d4f99eaf903fd444010c29'
             'SKIP')
 validpgpkeys=('871F10477DB3DDED5FC447B226C7E577EF967808'
               'EF685CFEA6460909C7E1EE70A3BD44B344AAE1FD')
