@@ -1,0 +1,23 @@
+pkgbase = lpfw-git
+	pkgdesc = Leopard Flower personal firewall
+	pkgver = 2673860
+	pkgrel = 1
+	url = https://github.com/themighty1/lpfw
+	arch = x86_64
+	arch = i686
+	license = unknown
+	makedepends = git
+	depends = libnetfilter_queue
+	depends = libnetfilter_conntrack
+	depends = libpcap
+	depends = python2
+	depends = python2-pyqt4
+	provides = lpfw
+	conflicts = lpfw
+	source = git://github.com/themighty1/lpfw.git
+	source = lpfw-gui
+	sha256sums = SKIP
+	sha256sums = 750af2f138976d7a97606036f56af807d2e7b8e13a7058492ffb8b5bc7f89569
+
+pkgname = lpfw-git
+

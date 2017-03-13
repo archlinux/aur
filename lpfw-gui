@@ -1,0 +1,4 @@
+#!/bin/sh
+# wrapper script to call lpfw gui
+python2 /usr/share/lpfw/gui/gui.py
+
