@@ -1,14 +1,14 @@
 pkgbase = pokenurse-bin
 	pkgdesc = A tool for Pokémon Go to aid in transferring and evolving Pokémon (Binary)
-	pkgver = 2.0.3
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/vinnymac/PokeNurse
 	arch = i686
 	arch = x86_64
-	source_i686 = https://github.com/vinnymac/PokeNurse/releases/download/v2.0.3/PokeNurse-ia32.deb
+	source_i686 = https://github.com/vinnymac/PokeNurse/releases/download/v2.2.0/PokeNurse-ia32.deb
 	sha256sums_i686 = 466c47b7057a4aa1fee7d7476f6ea1bad689a633056fcfd9cce259920f11f6bb
-	source_x86_64 = https://github.com/vinnymac/PokeNurse/releases/download/v2.0.3/PokeNurse-x64.deb
-	sha256sums_x86_64 = d8fb94b2a0e58a483578183e7d09c384d831f9afd906adb3b67446330916e55b
+	source_x86_64 = https://github.com/vinnymac/PokeNurse/releases/download/v2.2.0/PokeNurse-x64.deb
+	sha256sums_x86_64 = 0bf58bd2213560ceda327c0ae6e2d0309187581bce8908d61e5272ebc375ee52
 
 pkgname = pokenurse-bin
 
