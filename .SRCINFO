@@ -1,6 +1,6 @@
 pkgbase = aws-sdk-cpp-git
 	pkgdesc = AWS SDK for C++
-	pkgver = 1.0.76.r0.gcb9ae04ec
+	pkgver = 1.0.82.r0.g9a7f8e4fb
 	pkgrel = 1
 	url = https://github.com/aws/aws-sdk-cpp
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = aws-sdk-cpp-git
 	makedepends = zlib
 	makedepends = libutil-linux
 	depends = cmake
-	source = aws-sdk-cpp-git-1.0.76.r0.gcb9ae04ec::git+https://github.com/aws/aws-sdk-cpp
+	source = aws-sdk-cpp-git-1.0.82.r0.g9a7f8e4fb::git+https://github.com/aws/aws-sdk-cpp
 	sha256sums = SKIP
 
 pkgname = aws-sdk-cpp-git
