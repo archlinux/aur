@@ -2,12 +2,12 @@
 
 pkgname=mediadownloader
 pkgver=1.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Watch, preview, slideshow, download from YouTube and Google Image"
 arch=('i686' 'x86_64')
 url="http://mediadownloader.cz.cc/"
 license=('GPL')
-depends=('qt4' 'phonon')
+depends=('qt4' 'phonon-qt4')
 
 source=(http://prdownloads.sourceforge.net/googleimagedown/${pkgname}_${pkgver}-src.tar.gz
         $pkgname.desktop)
