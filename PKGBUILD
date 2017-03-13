@@ -3,7 +3,7 @@
 # Contributor: Julien Deswaef (juego) <juego@requiem4tv.com>
 
 pkgname=python-tensorflow-git
-pkgver=1.0.0+1273+gb6f16b8166
+pkgver=1.0.0+2048+g12a98726e7
 pkgrel=1
 
 pkgdesc="Open source software library for numerical computation using data flow graphs."
@@ -91,9 +91,6 @@ package() {
   TMP_PKG=`find $srcdir/tmp -name "tensor*.whl"`
   pip install --ignore-installed --upgrade --root $pkgdir/ $TMP_PKG --no-dependencies
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  # remove cache files from the installation directory
-  find ${pkgdir} -name __pycache__ -exec rm -r {} +
 }
 
 # vim:set ts=2 sw=2 et:
