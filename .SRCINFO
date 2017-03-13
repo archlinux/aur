@@ -1,7 +1,7 @@
 pkgbase = progit2-git
 	pkgdesc = The offline version of the entire Pro Git book, written by Scott Chacon and Ben Straub
 	pkgver = 2.0.0.r689.g5026c45
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/progit/progit2
 	install = progit2-git.install
 	arch = any

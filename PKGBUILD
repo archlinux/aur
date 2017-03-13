@@ -3,7 +3,7 @@
 
 pkgname=progit2-git
 pkgver=2.0.0.r689.g5026c45
-pkgrel=2
+pkgrel=3
 pkgdesc="The offline version of the entire Pro Git book, written by Scott Chacon and Ben Straub"
 arch=('any')
 
@@ -25,6 +25,7 @@ source=('git+https://github.com/progit/progit2')
 sha512sums=('SKIP')
 
 # Get the most recent un-annotated tag reachable from the last commit
+# src.: https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
 pkgver() {
     cd "${pkgname%-git}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
