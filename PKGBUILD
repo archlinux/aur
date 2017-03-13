@@ -34,7 +34,6 @@ _buildtheme=(violaceus lux_violaceus canus dark_canus caeruleus lux_caeruleus vi
 build() {
  for _theme in ${_buildtheme[*]}; do
   cd "${srcdir}/${pkgname}_${pkgver}"
-  msg "Building theme ${_theme}"
   make ${_theme}
   make arch
   install -d themes/${_theme}
