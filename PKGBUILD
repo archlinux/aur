@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-core
 pkgver=0.14.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('i686' 'x86_64')
 url="https://bitcoin.org"
@@ -24,10 +24,10 @@ source=(https://bitcoin.org/bin/bitcoin-core-$pkgver/bitcoin-$pkgver.tar.gz
         bitcoin.service
         bitcoin-reindex.service)
 sha256sums=('d743d4866a0d4c1457f81530c45258a8b6383d1cafc458eedcba8d01728a641e'
-            'f581e8b24cb2b5d848b6a5e14b3f00f7b9efb5df66aaea8df05bbfb21665959a'
+            'b1908344281498d39bfa40c3b9725f9c95bf22602cd46e6120a1f17bad9dae35'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
-            '5e45f2ceaeb7bfa60aeb66ca4167068191eb4358af03f95ac70fd96d9b006349'
-            '10ad0b8c356559886634eaf658992004045853ec26cddee143d16125cb75e8f1')
+            '9643eed2c20d78a9c7347df64099765773615f79d3b8a95693d871c933516880'
+            '35ff9331d7df8b90adfc7d82752cca4f8b7ff23a29e5d10b07e4e3fc78050679')
 backup=('etc/bitcoin/bitcoin.conf'
         'etc/logrotate.d/bitcoin')
 provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx')
