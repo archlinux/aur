@@ -4,9 +4,9 @@ pkgver=17.3.10
 pkgrel=1
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
 url="http://www.picolisp.com"
-arch=('any')
+arch=('X86-64')
 license=('MIT')
-depends=('bash' 'openssl' 'gcc-multilib')
+depends=('bash' 'openssl')
 optdepends=('jre: for picolisp ersatz.jar')
 makedepends=('make' 'git' 'gcc')
 _vendor="github.com/taij33n"
@@ -35,16 +35,9 @@ build() {
  
   # build the 64bit version
   cd "${srcdir}/${pkgname}/src64"
-  if [ $CARCH = "x86_64" ]
-  then
     # real 64-bit env
     make 
     make clean
-  else
-    # emulation of 64-bit env
-    make emu
-    make clean
-  fi
 }
 
 package() {
