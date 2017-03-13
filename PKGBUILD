@@ -4,8 +4,8 @@
 
 pkgname=jed-git
 _pkgname=${pkgname/-git/}
-pkgver=0.99.20.116
-_pkgver=0.99.20-116
+pkgver=0.99.20.126
+_pkgver=0.99.20-126
 pkgrel=1
 pkgdesc="A freely available text editor for Unix and others OS - Latest development version"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ makedepends=('libxext' 'libxt')
 options=('!makeflags')
 source=("http://www.jedsoft.org/snapshots/jed-pre${_pkgver}.tar.gz" 
 'jed-git.install')
-md5sums=('344175f44d15ddb45f3c1978a8a5e3bd'
+md5sums=('b56ae56abe5aa0c971e29ecafcfa5cc0'
          'dd95161e54793bc082fa881d67886e21')
 install="$pkgname.install"
 
