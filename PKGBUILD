@@ -2,7 +2,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=aj-snapshot
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="Command line utility to store/restore ALSA and/or JACK connections to/from an XML file."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://aj-snapshot.sourceforge.net/"
 license=('GPL3')
 depends=('jack' 'mxml')
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.bz2")
-sha256sums=('3f31e0b808ce70f1edbf058f1d36a366fb584a25aaf2ccadd57bb904cc80c28a')
+sha256sums=('c8e66143d00536b4ea3a8aefcf907a256bc7115e94a77036f64c709cee63ac7b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
