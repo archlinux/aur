@@ -1,0 +1,29 @@
+diff -Naur i8kutils/Makefile i8kutils_new/Makefile
+--- i8kutils/Makefile	2014-12-09 16:40:11.000000000 +0100
++++ i8kutils_new/Makefile	2015-01-31 13:15:21.031912744 +0100
+@@ -14,16 +14,19 @@
+ # General Public License for more details.
+ 
+ ccflags-y = -Wall
++CC = gcc 
+ 
+ all: i8kctl probe_i8k_calls_time
+ 
+-i8kctl: i8kctl.c i8kctl.o
+-	gcc -Wall i8kctl.c -o i8kctl
++i8kctl: i8kctl.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -Wall i8kctl.c -o i8kctl
+ 
+-probe_i8k_calls_time: probe_i8k_calls_time.c
+-	gcc -Wall -c -g -DLIB i8kctl.c
+-	gcc -Wall -c -g -DLIB probe_i8k_calls_time.c
+-	gcc -o probe_i8k_calls_time i8kctl.o probe_i8k_calls_time.o
++i8kctl_DLIB.o: i8kctl.c
++	$(CC) $(CFLAGS) -Wall -c -g -DLIB i8kctl.c -o i8kctl_DLIB.o
++
++probe_i8k_calls_time: i8kctl_DLIB.o probe_i8k_calls_time.c
++	$(CC) $(CFLAGS) -Wall -c -g -DLIB probe_i8k_calls_time.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -Wall -o probe_i8k_calls_time i8kctl_DLIB.o probe_i8k_calls_time.o
+ 
+ i8k:
+ 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
