@@ -1,5 +1,5 @@
 pkgname=pidgin-im-gnome-shell-extension
-pkgver=30
+pkgver=31
 pkgrel=1
 pkgdesc='Make Pidgin IM conversations appear in the Gnome Shell message tray'
 url='https://github.com/muffinmad/pidgin-im-gnome-shell-extension'
@@ -8,7 +8,7 @@ license=('GPL')
 groups=('gnome')
 depends=('pidgin' 'gnome-shell>=3.10')
 makedepends=('git')
-source=(git://github.com/muffinmad/pidgin-im-gnome-shell-extension.git#tag=v1.0.2)
+source=(git://github.com/muffinmad/pidgin-im-gnome-shell-extension.git#tag=v1.0.3)
 md5sums=('SKIP')
 
 package() {
