@@ -1,6 +1,6 @@
 pkgbase = linux-rt-bfq
 	pkgver = 4.9.13.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://algo.ing.unimo.it
 	arch = i686
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = linux-rt-bfq
 	source = 99-linux.hook
 	source = linux.preset
 	source = 0005-BFQ-update-to-v8r8.patch
+	source = 0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 64254695FFF0AA4466CC19E67B96E8162A8CF5D1
@@ -50,6 +51,7 @@ pkgbase = linux-rt-bfq
 	sha512sums = d6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22
 	sha512sums = 2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf
 	sha512sums = dab3dba300e276dd552cb86c903af5cac9f7c7954b938ac9c300745a175198c553d84cd3a5e58c350d83160f33b07f6dd20a570da4afdce178464c402ac7829b
+	sha512sums = 397fc751697cc4e2ceb7e6d854f5e7fc115ed8511df406ffe5d8f80afeec385ba64cd28c4666bb206612fdcd7a578b60ca6ff125c2138c615aee6135d86b0197
 
 pkgname = linux-rt-bfq
 	pkgdesc = Linux Kernel and modules with the RT patch and the BFQ scheduler.

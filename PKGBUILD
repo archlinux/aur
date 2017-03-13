@@ -55,7 +55,7 @@ _pkgver=4.9.13
 _rtver=12
 _rtpatchver=rt${_rtver}
 pkgver=${_pkgver}.${_rtver}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -87,7 +87,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
-        '0005-BFQ-update-to-v8r8.patch')
+        '0005-BFQ-update-to-v8r8.patch'
+        '0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch')
         
 _kernelname=${pkgbase#linux}
 
@@ -100,7 +101,11 @@ prepare() {
     
     ### Add rt patch
         msg "Add rt patch"
-        patch -Np1 -i "${srcdir}/patch-${_pkgver}-${_rtpatchver}.patch"   
+        patch -Np1 -i "${srcdir}/patch-${_pkgver}-${_rtpatchver}.patch"
+    
+    ### Patch for CVE-2017-2636
+        msg "Fix CVE-2017-2636"
+        patch -p1 -i "${srcdir}/0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch"
         
     ### A patch to fix a problem that ought to be fixed in the NVIDIA source code.
     # Stops X from hanging on certain NVIDIA cards
@@ -474,7 +479,8 @@ sha512sums=('bf67ff812cc3cb7e5059e82cc5db0d9a7c5637f7ed9a42e4730c715bf7047c81ed3
             '7a0a6eb4a2f0c4a981104ff4d09ff1a4ad75c9dc47d27276e0971b9fa16aeb208cb2c4158c491e8d067bf5f7f6c33ebd6826e18ad0d6203cac5711be453da93a'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'dab3dba300e276dd552cb86c903af5cac9f7c7954b938ac9c300745a175198c553d84cd3a5e58c350d83160f33b07f6dd20a570da4afdce178464c402ac7829b')
+            'dab3dba300e276dd552cb86c903af5cac9f7c7954b938ac9c300745a175198c553d84cd3a5e58c350d83160f33b07f6dd20a570da4afdce178464c402ac7829b'
+            '397fc751697cc4e2ceb7e6d854f5e7fc115ed8511df406ffe5d8f80afeec385ba64cd28c4666bb206612fdcd7a578b60ca6ff125c2138c615aee6135d86b0197')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
