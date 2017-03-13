@@ -1,0 +1,47 @@
+
+post_install() {
+	set -e
+	
+	# symlink java
+	ln -sf /usr/bin/java /usr/lib/scylla/jmx/symlinks/scylla-jmx
+
+	# from scylla-kernel-conf
+	sysctl -p/etc/sysctl.d/99-scylla-sched.conf
+
+	# from scylla-server
+	if [ -d /var/lib/scylla/conf ] && [ ! -L /var/lib/scylla/conf ]; then
+		mkdir -p /etc/scylla/
+		cp -a /var/lib/scylla/conf/* /etc/scylla/
+	fi
+		
+	if [ "$1" = configure ]; then
+		adduser --system \
+			--quiet \
+			--home /var/lib/scylla \
+			--no-create-home \
+			--disabled-password \
+			--group scylla
+		chown -R scylla:scylla /var/lib/scylla
+		chown -R scylla:scylla /var/lib/scylla-housekeeping
+	fi
+	
+	ln -sfT /etc/scylla /var/lib/scylla/conf
+	
+	grep -v api_ui_dir /etc/scylla/scylla.yaml | grep -v api_doc_dir > /tmp/scylla.yaml
+	echo "api_ui_dir: /usr/lib/scylla/swagger-ui/dist/" >> /tmp/scylla.yaml
+	echo "api_doc_dir: /usr/lib/scylla/api/api-doc/" >> /tmp/scylla.yaml
+	mv /tmp/scylla.yaml /etc/scylla/scylla.yaml
+
+	# starting services
+	echo 'run these commands if you need to:'
+	for svc in node-exporter scylla-housekeeping scylla-jmx scylla-server; do 
+		echo 'sudo systemctl enable '${svc}
+		echo 'sudo systemctl start '${svc}
+	done
+}
+
+pre_remove() {
+
+	# remove symlink
+	rm /usr/lib/scylla/jmx/symlinks/scylla-jmx
+}

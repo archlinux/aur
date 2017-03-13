@@ -35,10 +35,10 @@ pkgbase = scylla
 	depends = dpkg
 	depends = xmlcutty-bin
 	provides = scylla
-	source = git+https://github.com/scylladb/scylla.git
+	source = git+https://github.com/scylladb/scylla.git#tag=scylla-1.6.1
 	source = git+https://github.com/scylladb/scylla-ami.git
 	source = git+https://github.com/scylladb/scylla-swagger-ui.git
-	source = git+https://github.com/scylladb/seastar.git
+	source = git+https://github.com/scylladb/scylla-seastar.git
 	source = git+https://github.com/scylladb/fmt.git
 	source = git+https://github.com/scylladb/dpdk.git
 	source = git+https://github.com/scylladb/c-ares.git
