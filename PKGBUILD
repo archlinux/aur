@@ -20,7 +20,10 @@ package() {
 	cd "${srcdir}/${pkgname}" 
         install -d ${pkgdir}/usr/bin
         install -d ${pkgdir}/usr/share/apk-preview
-	cp -a ./apk-preview ./apk-details ${pkgdir}/usr/bin/
+	install -d ${pkgdir}/usr/share/icons/hicolor/scalable/apps/
+
+        cp -a ./apk-preview ./apk-details ${pkgdir}/usr/bin/
         cp -a ./apk-preview-ui.glade ${pkgdir}/usr/share/apk-preview
+        cp -a ./apk_preview.desktop ${pkgdir}/usr/share/icons/hicolor/scalable/apps/
 }
 
