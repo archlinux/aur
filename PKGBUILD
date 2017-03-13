@@ -14,7 +14,7 @@ md5sums=('4e5ffbe72097819d12945f6392e22dcc' 'SKIP')
 options=()
 
 prepare () {
-	echo "The program CTFFIND3 is an updated version of the program CTFFIND2, which was developed in 1998 by Nikolaus Grigorieff at the MRC Laboratory of Molecular Biology in Cambridge, UK with financial support from the MRC. This software is licensed under the terms of the Janelia Research Campus Software Copyright 1.1."
+	echo "The program CTFFIND4 was developed by Nikolaus Grigorieff at the MRC Laboratory of Molecular Biology in Cambridge, UK with financial support from the MRC. This software is licensed under the terms of the Janelia Research Campus Software Copyright 1.1."
 }
 #build() {
 #}
