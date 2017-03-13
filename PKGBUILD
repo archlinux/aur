@@ -1,5 +1,5 @@
 # Maintainer: Joshua Hardy <joshinsilico@gmail.com>
-pkgname=ctffind
+pkgname=ctffind4
 pkgver=4.1.5
 pkgrel=1
 pkgdesc="Find CTFs of electron micrographs"
