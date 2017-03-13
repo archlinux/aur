@@ -1,5 +1,4 @@
-# Maintainer: Javier Fernández (WyRe) <WyRe12 at gmail dot com>
-# Contributer: WyRe
+# Maintainer: Javier Fernández (WyRe) <WyRe12[at]gmail[dot]com> 
 
 pkgname=spigot-plugin-essentials
 epoch=1
