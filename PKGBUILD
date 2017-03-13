@@ -5,7 +5,7 @@
 # Contributor: Wei-Ning Huang <aitjcize@gmail.com>
 
 pkgname=intel-opencl
-_pkgver=3.0-57406
+_pkgver=4.0-59481
 pkgver="${_pkgver/-/.r}"
 pkgrel=1
 pkgdesc="OpenCL(TM) 2.0 Driver for Intel(R) HD, Iris(TM), and Iris(TM) Pro Graphics for Linux"
@@ -15,8 +15,8 @@ license=('custom:intel')
 depends=('zlib' 'libdrm')
 optdepends=('intel-opencl-sdk: Intel SDK for OpenCL Applications')
 provides=('opencl')
-source=("${pkgname}-${pkgver}-linux64.zip::https://software.intel.com/sites/default/files/managed/b8/65/linux64.zip")
-sha256sums=('5fc83b6626e3d1dea2864bd6f80b0de82f191ccd879c08a1345835d9ebe75349')
+source=("${pkgname}-${pkgver}-linux64.zip::https://software.intel.com/sites/default/files/managed/48/96/SRB4_linux64.zip")
+sha256sums=('d5c3c69c51b80df6705fc4c5e724b5ad613217ea514dd7d2e259159a3ddff782')
 
 _package_internal=("intel-opencl-r${_pkgver}.x86_64.tar.xz"
                    "intel-opencl-cpu-r${_pkgver}.x86_64.tar.xz")
