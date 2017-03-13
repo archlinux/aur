@@ -2,21 +2,21 @@
 # Maintainer: Benjamin Robin <dev@benjarobin.fr>
 
 pkgname=eclipse-subversive-svn-connector
-pkgver=5.0.0.I20150529_1700
-pkgrel=2
-_pluginver=5.0.0.I20150529_1700
+pkgver=6.0.4.I20161211_1700
+pkgrel=1
+_pluginver=6.0.4.I20161211_1700
 pkgdesc="Subversive SVN Connectors"
 arch=('any')
 url="http://www.polarion.com/products/svn/subversive.php"
 license=('EPL')
 depends=('eclipse-subversive')
 
-source=("$pkgname-$pkgver-feature.jar::http://community.polarion.com/projects/subversive/download/eclipse/5.0/update-site/features/org.polarion.eclipse.team.svn.connector_${pkgver//_/-}.jar" \
-        "$pkgname-$pkgver-plugin.jar::http://community.polarion.com/projects/subversive/download/eclipse/5.0/update-site/plugins/org.polarion.eclipse.team.svn.connector_${_pluginver//_/-}.jar")
+source=("$pkgname-$pkgver-feature.jar::http://community.polarion.com/projects/subversive/download/eclipse/6.0/update-site/features/org.polarion.eclipse.team.svn.connector_${pkgver//_/-}.jar" \
+        "$pkgname-$pkgver-plugin.jar::http://community.polarion.com/projects/subversive/download/eclipse/6.0/update-site/plugins/org.polarion.eclipse.team.svn.connector_${_pluginver//_/-}.jar")
 
 noextract=($pkgname-$pkgver-{feature,plugin}.jar)
-md5sums=('d9e4b67abb7f1b123044f438ed8a3315'
-         'b7d316b3ad7724ff2242ef09189cbf60')
+md5sums=('28478ba79933b6df388d30ef30cd48e0'
+         '0b218322753148a06f0c51104354ba0a')
 package()
 {
 	_dest="$pkgdir/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse"
