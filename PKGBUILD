@@ -26,11 +26,11 @@ validpgpkeys=()
 
 _gitname=${pkgname}-${pkgver}
 
-pkgver() {
-	cd $_gitname
-
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+#pkgver() {
+#	cd $_gitname
+#
+#	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+#}
 
 build() {
 	cd $_gitname
