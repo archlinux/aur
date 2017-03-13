@@ -3,7 +3,7 @@
 pkgname=powerpanel
 pkgver=1.3.2
 pkgverdl=132 # new URL doesn't include the decimal
-pkgrel=2
+pkgrel=5
 pkgdesc="CyberPower UPS daemon"
 arch=("x86_64" "i686")
 url="http://www.cyberpowersystems.com"
