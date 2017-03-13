@@ -6,9 +6,9 @@ pkgrel=1
 pkgdesc="A python implementation of the parquet format."
 url="https://github.com/dask/fastparquet"
 checkdepends=('python-pytest')
-depends=('python'
+depends=('cython'
+    'python'
     'python-numba'
-    'python-cython'
     'python-numpy'
     'python-thriftpy')
 makedepends=('python-setuptools')
