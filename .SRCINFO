@@ -1,6 +1,6 @@
 pkgbase = volctl
 	pkgdesc = Per-application volume control for GNU/Linux desktops
-	pkgver = 0.5.r0.gd50a627
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://buzz.github.io/volctl/
 	arch = any
@@ -16,4 +16,3 @@ pkgbase = volctl
 	md5sums = SKIP
 
 pkgname = volctl
-
