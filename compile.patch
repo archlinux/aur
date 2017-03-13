@@ -1,0 +1,12 @@
+diff -ruN 1/plugins/DebuggerCore/unix/linux/PlatformProcess.cpp 2/plugins/DebuggerCore/unix/linux/PlatformProcess.cpp
+--- 1/plugins/DebuggerCore/unix/linux/PlatformProcess.cpp	2017-03-13 11:40:51.106413430 +0100
++++ 2/plugins/DebuggerCore/unix/linux/PlatformProcess.cpp	2017-03-13 11:41:13.823536481 +0100
+@@ -364,7 +364,7 @@
+ 
+ 			while(in.status() == QTextStream::Ok) {
+ 				in >> ch;
+-				if(ch == '\0') {
++				if(ch.isNull()) {
+ 					if(!s.isEmpty()) {
+ 						ret << s;
+ 					}
