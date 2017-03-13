@@ -1,6 +1,6 @@
 pkgbase = xi-core-git
 	pkgdesc = A modern editor with a backend written in Rust.
-	pkgver = r242.80445b9
+	pkgver = r314.72295fa
 	pkgrel = 1
 	url = https://github.com/google/xi-editor
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = xi-core-git
 	makedepends = git
 	makedepends = cargo
 	conflicts = xi-core
-	source = git+https://github.com/google/xi-editor.git
+	source = xi-core-git::git+https://github.com/google/xi-editor.git
 	sha256sums = SKIP
 
 pkgname = xi-core-git
