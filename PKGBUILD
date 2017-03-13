@@ -1,5 +1,7 @@
 # $Id$
 # Maintainer: Patrice Peterson <runiq@archlinux.us>
+# Contributor: linus.cl <linus.vivaldi@gmail.com>
+# Contributor: Stefan Husmann
 # Contributor: YamashitaRen <lemaitre.dulotus@gmail.com>
 # Contributor: Sławomir Kowalski <suawekk+aur@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
@@ -10,13 +12,14 @@
 pkgname=anki20-bin
 _pkgname=anki
 pkgver=2.0.43
-pkgrel=3
+pkgrel=4
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="http://ankisrs.net/"
 license=('AGPL3')
 arch=('i686' 'x86_64')
 provides=('anki20' 'anki')
-conflicts=('anki20' 'anki')
+conflicts=('anki20' 'anki' 'gstreamer0.10')
+depends=('expat' 'glib2' 'sqlite' 'openssl')
 optdepends=('mplayer: sound playing')
 source=("anki")
 source_i686=("https://apps.ankiweb.net/downloads/current/${_pkgname}-${pkgver}-i386.tar.bz2")
