@@ -2,7 +2,7 @@
 
 pkgname=sqlpp11-connector-odbc
 pkgver=0.03
-pkgrel=2
+pkgrel=3
 pkgdesc="ODBC wrapper for sqlpp11"
 arch=('x86_64' 'i686')
 url="https://github.com/Erroneous1/sqlpp11-connector-odbc"
