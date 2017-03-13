@@ -7,22 +7,22 @@
 
 pkgbase=apparmor
 pkgname=($pkgbase apparmor-parser apparmor-libapparmor apparmor-utils apparmor-profiles apparmor-pam apparmor-vim)
-pkgver=2.10.1
+pkgver=2.11.0
 #_majorver=${pkgver%.*}  # bleh, AUR...
-_majorver=2.10
+_majorver=2.11
 pkgrel=1
 pkgdesc='Linux application security framework - mandatory access control for programs'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://wiki.apparmor.net/index.php/Main_Page'
-makedepends=('bzr' 'flex' 'swig' 'perl' 'python' 'perl-locale-gettext' 'perl-rpc-xml' 'audit')
+makedepends=('flex' 'swig' 'perl' 'python' 'perl-locale-gettext' 'perl-rpc-xml' 'audit')
 
-source=(https://launchpad.net/$pkgname/${_majorver}/$pkgver/+download/$pkgname-$pkgver.tar.gz{,.asc}
+source=(https://launchpad.net/$pkgname/${_majorver}/${_majorver}/+download/${pkgname}-${pkgver}.tar.gz{,.asc}
         "apparmor_load.sh"
         "apparmor_unload.sh"
         "apparmor.service")
 
-sha256sums=('07a76f338304baadc4ad69d025fe000b1ab4779a251ae8f338afdc13ef1e0f24'
+sha256sums=('b1c489ea11e7771b8e6b181532cafbf9ebe6603e3cb00e2558f21b7a5bdd739a'
             'SKIP'
             '124300162dab2a923c024b91c5a977dbee901376a22eefc64cad2f91319876d5'
             '9704478ae13fe1c3fb2747afac86c31b1b4593493f0e1425ae2b77d47878e32e'
@@ -99,7 +99,7 @@ package_apparmor() {
 
 package_apparmor-parser() {
   pkgdesc='AppArmor parser - loads AA profiles to kernel module'
-  depends=('apparmor-libapparmor' 'bash')
+  depends=('apparmor-libapparmor')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
   make -C parser install DESTDIR=${pkgdir}
@@ -113,18 +113,18 @@ package_apparmor-libapparmor() {
   depends=('python')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
-  make -C libraries/libapparmor install DESTDIR=${pkgdir}
+  make -C libraries/libapparmor install DESTDIR="${pkgdir}"
   install -D -m644 "libraries/libapparmor/swig/perl/LibAppArmor.pm" "${pkgdir}/usr/lib/perl5/vendor_perl/"
 }
 
 package_apparmor-utils() {
   pkgdesc='AppArmor userspace utilities'
   depends=('perl' 'perl-locale-gettext' 'perl-term-readkey'
-    'perl-file-tail' 'perl-rpc-xml' 'python' 'bash')
+    'perl-file-tail' 'perl-rpc-xml' 'python')
   install='apparmor-utils.install'
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
-  make -C utils install DESTDIR=${pkgdir} BINDIR=${pkgdir}/usr/bin
+  make -C utils install DESTDIR="${pkgdir}" BINDIR="${pkgdir}/usr/bin"
   install -D -m755 "${srcdir}/apparmor_load.sh" "${pkgdir}/usr/bin/apparmor_load.sh"
   install -D -m755 "${srcdir}/apparmor_unload.sh" "${pkgdir}/usr/bin/apparmor_unload.sh"
   install -D -m644 "${srcdir}/apparmor.service" "${pkgdir}/usr/lib/systemd/system/apparmor.service"
@@ -140,7 +140,7 @@ package_apparmor-profiles() {
   backup=(`echo ${_profiles[@]}`)
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
-  make -C profiles install DESTDIR=${pkgdir}
+  make -C profiles install DESTDIR="${pkgdir}"
 }
 
 package_apparmor-pam() {
@@ -148,7 +148,7 @@ package_apparmor-pam() {
   depends=('apparmor-libapparmor' 'pam')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
-  make -C changehat/pam_apparmor install DESTDIR=${pkgdir}/usr
+  make -C changehat/pam_apparmor install DESTDIR="${pkgdir}/usr"
   install -D -m644 changehat/pam_apparmor/README "${pkgdir}/usr/share/doc/apparmor/README.pam_apparmor"
 }
 package_apparmor-vim() {
