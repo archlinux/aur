@@ -10,18 +10,18 @@
 # uk : Eugeniy Fedirets <evgeniy_fedirets@ukr.net>, 2017 
 
 pkgname=azpainter
-pkgver=2.0.3
-pkgrel=2
+pkgver=2.0.4
+pkgrel=1
 pkgdesc="Painting software"
 arch=('i686' 'x86_64')
 url="http://azsky2.html.xdomain.jp/linux/azpainter/index.html"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'fontconfig' 'libjpeg-turbo' 'libxi')
 source=("https://osdn.net/dl/${pkgname}/${pkgname}-${pkgver}.tar.bz2" "ru.mtr" "en.mtr" "uk.mtr")
-sha256sums=('a6b0247dd98b6275edeeb1154623e590e5bfc8baffcde7a9ab0cef7ace27ebd3'
-            'f4e09e5de5fae7b94e9446b3a4ccb48e328ccc08ed4f22416d1bdb54d0111e8b'
+sha256sums=('6871dfe0256658424ed72675dff783863e1587a0f3a286ea3190e3cf3a2a10dd'
+            'd9e05c3cee92e75c1b344372d34da261abbdd561fc0fa6cb0a664e7d041b2c6f'
             '3a58db606cc202dda10f85631cd365bd957d3e5bae2d34b740872ecb0cee30e9'
-            '49ff02ab8eef82d93dd2d8a185080aba722bb34f9f46699268f286ecd97976b2')
+            'cfd74cc182b59a969bc3deb0b3b191dd532d824afe687023628c8d718615830e')
 
 build() {
 	cd ${pkgname}-${pkgver}
