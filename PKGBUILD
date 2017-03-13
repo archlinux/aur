@@ -1,9 +1,11 @@
 # Maintainer: Samuel Čavoj <sammko@sammserver.com>
-pkgname=ctop
+pkgname=ctop-bin
 pkgver=0.4
 pkgrel=1
 pkgdesc="Top-like interface for container metrics"
 depends=('glibc')
+provides=('ctop')
+conflicts=('ctop')
 arch=('x86_64')
 url="https://bcicen.github.io/ctop/"
 license=('MIT')
