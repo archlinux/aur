@@ -4,61 +4,59 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=3.0.0v20170307
+pkgver=3.0.0v20170313
 _pkgver=3.0.0
-_snapshot_=20170307
-_snapver_=0243
+_snapshot_=20170313
+_snapver_=0240
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot"
 arch=("i686" "x86_64")
 url="http://www.videolan.org/vlc/"
 license=("LGPL2.1" "GPL2")
-depends=("a52dec" "libdvbpsi" "libxpm" "libdca" "qt5-base" "libproxy"
-         "sdl_image" "libdvdnav" "libtiger" "lua" "libmatroska"
-         "zvbi" "taglib" "libmpcdec" "ffmpeg" "faad2" "libupnp"
-         "libshout" "libmad" "directfb" "libmpeg2" "libmodplug" "libass"
-         "xcb-util-keysyms")
-makedepends=("live-media" "libnotify" "libbluray" "flac" "fluidsynth" "libdc1394" "libavc1394" "lirc-utils"
-             "libcaca" "librsvg" "portaudio" "libgme" "xosd"
-             "projectm" "twolame" "aalib" "libmtp" "libdvdcss"
-             "libgoom2" "libtar" "vcdimager" "opus" "libssh2"
-             "mesa")
-optdepends=("avahi: for service discovery using bonjour protocol"
-            "libnotify: for notification plugin"
-            "ncurses: for ncurses interface support"
-            "libdvdcss: for decoding encrypted DVDs"
-            "lirc-utils: for lirc plugin"
-            "libavc1394: for devices using the 1394ta AV/C"
-            "libdc1394: for IEEE 1394 plugin"
-            "kdelibs: KDE Solid hardware integration"
-            "libva-vdpau-driver: vdpau back-end for nvidia"
-            "libva-intel-driver: back-end for intel cards"
-            "libbluray: for Blu-Ray support"
-            "flac: for Free Lossless Audio Codec plugin"
-            "portaudio: for portaudio support"
-            "twolame: for TwoLAME mpeg2 encoder plugin"
-            "projectm: for ProjectM visualisation plugin"
-            "libcaca: for colored ASCII art video output"
-            "libgme: for libgme plugin"
-            "librsvg: for SVG plugin"
-            "libgoom2: for libgoom plugin"
-            "vcdimager: navigate VCD with libvcdinfo"
-            "xosd: for xosd support"
-            "aalib: for ASCII art plugin"
-            "libmtp: for MTP devices support"
-            "fluidsynth: for synthesizer MIDI FluidSynth"
-            "smbclient: for SMB access plugin"
-            "libcdio: for audio CD playback support"
-            "ttf-freefont: for subtitle font "
-            "ttf-dejavu: for subtitle font"
-            "opus: for opus support"
-            "libssh2: for sftp support")
+depends=('a52dec' 'faad2' 'ffmpeg' 'libdca' 'libdvbpsi'
+         'libdvdnav' 'libmad' 'libmatroska' 'libmpcdec' 'libmpeg2'
+         'libproxy' 'libshout' 'libtar' 'libtiger' 'libupnp'
+         'libxinerama' 'libxpm' 'lua' 'sdl_image' 'mesa' 'wayland' 'wayland-protocols'
+         'taglib' 'xcb-util-keysyms' 'zvbi' 'libsecret' 'libarchive' 'qt5-base' 'libglvnd'
+         'hicolor-icon-theme' 'qt5-x11extras')
+makedepends=('aalib' 'flac' 'git'
+             'libavc1394' 'libbluray' 'libcaca' 'libdc1394' 'libdvdcss'
+             'libgme' 'libgoom2' 'libmtp' 'libnotify' 'librsvg'
+             'libssh2' 'lirc' 'live-media'  'opus'
+             'portaudio' 'projectm' 'twolame' 'vcdimager' 'xosd' 'smbclient')
+optdepends=('aalib: for ASCII art plugin'
+            'avahi: for service discovery using bonjour protocol'
+            'flac: for Free Lossless Audio Codec plugin'
+            'kdelibs: KDE Solid hardware integration'
+            'libavc1394: for devices using the 1394ta AV/C'
+            'libbluray: for Blu-Ray support'
+            'libcaca: for colored ASCII art video output'
+            'libcdio: for audio CD playback support'
+            'libdc1394: for IEEE 1394 plugin'
+            'libdvdcss: for decoding encrypted DVDs'
+            'libgme: for libgme plugin'
+            'libgoom2: for libgoom plugin'
+            'libmtp: for MTP devices support'
+            'libnotify: for notification plugin'
+            'librsvg: for SVG plugin'
+            'libssh2: for sftp support'
+            'libva-intel-driver: back-end for intel cards'
+            'libva-vdpau-driver: vdpau back-end for nvidia'
+            'lirc: for lirc plugin'
+            'lua-socket: for http interface'
+            'ncurses: for ncurses interface support'
+            'opus: for opus support'
+            'portaudio: for portaudio support'
+            'projectm: for ProjectM visualisation plugin'
+            'smbclient: for SMB access plugin'
+            'ttf-dejavu: for subtitle font'
+            'ttf-freefont: for subtitle font'
+            'twolame: for TwoLAME mpeg2 encoder plugin'
+            'vcdimager: navigate VCD with libvcdinfo')
 conflicts=("${_appname_}-plugin" "${_appname_}")
 provides=("${_appname_}")
 replaces=("${_appname_}-plugin")
-#backup=("usr/share/${_appname_}/lua/http/.hosts"
-#        "usr/share/${_appname_}/lua/http/dialogs/.hosts")
 options=("!libtool" "!emptydirs" "!debug")
 source=("http://nightlies.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}-git.tar.xz"  "update-vlc-plugin-cache.hook" "https://git.archlinux.org/svntogit/packages.git/plain/trunk/lua53_compat.patch?h=packages/vlc")
 
@@ -68,12 +66,11 @@ pkgver() {
 
 build() {
 	cd "${_appname_}-3.0.0-git"
-  RCC=/usr/bin/rcc-qt5
-	./bootstrap
+   ./bootstrap
   patch -Np1 -i "${srcdir}/vlc"
 	# Patch
 	sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
-  sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype/freetype.c
+    sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype/freetype.c
 	# Config
 	[ ${CARCH} = 'x86_64' ] && CXXFLAGS="$CXXFLAGS -fPIC"
   CFLAGS+=" -I/usr/include/samba-4.0" CPPFLAGS+=" -I/usr/include/samba-4.0" CXXFLAGS+=" -std=gnu++11" \
@@ -94,9 +91,8 @@ build() {
 				--enable-sftp \
         --enable-fdkaac \
         --enable-merge-ffmpeg \
-
-
-
+                LUAC=/usr/bin/luac  LUA_LIBS="`pkg-config --libs lua`" \
+              RCC=/usr/bin/rcc-qt5    
 	make -i
 }
 
@@ -113,6 +109,6 @@ package() {
   install -Dm644 "$srcdir"/update-vlc-plugin-cache.hook "$pkgdir"/usr/share/libalpm/hooks/update-vlc-plugin-cache.hook
 }
 
-sha256sums=('1774d1d22d89b0d6fb13cc67c231a85a279841d5788f5edbbc3e8f6719c8c22e'
+sha256sums=('846504ce9e74ef99dc0bdf5c78fa7b23dbb5ea2772b0c8b14f9ba482d9fa6dc1'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa')
