@@ -1,0 +1,18 @@
+pkgbase = mattermosti18n-git
+	pkgdesc = A tool for Mattermost used to convert translations between GNU gettext .po and JSON files
+	pkgver = r23.7e95378
+	pkgrel = 1
+	url = https://github.com/rodcorsi/mattermosti18n
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	provides = mattermosti18n
+	conflicts = mattermosti18n
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/rodcorsi/mattermosti18n
+	sha512sums = SKIP
+
+pkgname = mattermosti18n-git
+
