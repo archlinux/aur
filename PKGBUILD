@@ -53,6 +53,7 @@ pkgrel=4
 pkgdesc='Virtual Machine Hypervisor & Tools'
 url='http://www.xenproject.org/'
 license=('GPL2')
+arch=('x86_64') # TODO What about ARM?
 changelog='ChangeLog'
 validpgpkeys=('23E3222C145F4475FA8060A783FE14C957E82BD9') # Xen.org Xen tree code signing
 options=(!buildflags !strip)
@@ -326,7 +327,6 @@ package_xen() {
 		"etc/${pkgbase}/xl.conf"
 	)
 	install="${pkgbase}.install"
-	arch=('x86_64') # TODO What about ARM?
 	conflicts=(xen-4.2{,-testing-hg} xen-{gdbsx,hg-unstable,rc,git,igvtg} xen-4.3{,-testing-hg} xen-4.{4..8})
 	provides=("xen-${pkgver}")
 
