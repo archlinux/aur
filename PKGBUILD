@@ -2,6 +2,7 @@
 # Contributor: Kyle Keen <keenerd [at] gmail.com>, das-ich <das-ich [at] yandex.ru>
 pkgname=powerpanel
 pkgver=1.3.2
+pkgverdl=132 # new URL doesn't include the decimal
 pkgrel=2
 pkgdesc="CyberPower UPS daemon"
 arch=("x86_64" "i686")
@@ -12,15 +13,16 @@ backup=(etc/powerpanel/pwrstatd-{powerfail,lowbatt,email}.sh
     etc/pwrstatd.conf)
 
 if [[ $CARCH = 'x86_64' ]]; then
-  source=(http://www.cyberpowersystems.com/software/powerpanel-$pkgver-$CARCH.tar.gz pwrstatd.service)
-  md5sums=('d69233e117f92611931cb820bad141df'
-         'b945ff7c15ef206022c8df29a96338c8')
+  source=(https://dl4jz3rbrsfum.cloudfront.net/software/powerpanel-$pkgverdl-x86_64.tar.gz pwrstatd.service)
+  sha2sums=('265099590e82303fa1082a84dda02488d41762ca5b94f2bb7fd395c9b4ac1c36'
+            '2bcf5ba2c5d8c9ab886b6a5aba06f0da1630fabb440621860b2da221fcf9eb34')
 fi
 
 if [[ $CARCH = 'i686' ]]; then
-  source=(http://www.cyberpowersystems.com/software/powerpanel-$pkgver-i386.tar.gz pwrstatd.service)
-  md5sums=('833f35179a8b0ca303698de08f048c8b'
-       'b945ff7c15ef206022c8df29a96338c8')
+  source=( https://dl4jz3rbrsfum.cloudfront.net/software/powerpanel-$pkgverdl-i386.tar.gzpwrstatd.service)
+  sha2sums=('a0931fe71b7def7b72a1a80b9fc9a6419032eb98f78ad9da2971c904f88dc8f3'
+  	    '2bcf5ba2c5d8c9ab886b6a5aba06f0da1630fabb440621860b2da221fcf9eb34')
+
 fi
 
 package() {
