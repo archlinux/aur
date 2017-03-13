@@ -1,0 +1,13 @@
+pkgbase = ctffind3-ctftilt
+	pkgdesc = Determine local defocus and specimen tilt of electron micrographs
+	pkgver = 20140609
+	pkgrel = 1
+	url = http://grigoriefflab.janelia.org/ctf
+	arch = x86_64
+	license = GPL
+	depends = gcc-fortran
+	source = http://grigoriefflab.janelia.org/sites/all/modules/pubdnldcnt/pubdnldcnt.php?file=http://grigoriefflab.janelia.org/sites/default/files/ctf_140609.tar.gz
+	md5sums = 09ac38fd5e55b2480f37203650298642
+
+pkgname = ctffind3-ctftilt
+
