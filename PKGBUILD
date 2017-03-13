@@ -2,12 +2,12 @@
 
 pkgname=dakota
 pkgver=6.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A flexible, extensible interface between analysis codes and iterative systems analysis methods"
 arch=(i686 x86_64)
 url="https://dakota.sandia.gov/"
 license=('LGPL')
-depends=('boost' 'icu' 'lapack')
+depends=('boost' 'icu' 'lapack' 'tinyxml')
 makedepends=('cmake' 'gcc-fortran' 'python2')
 options=(!strip)
 source=("https://dakota.sandia.gov/sites/default/files/distributions/public/$pkgname-6.5-public.src.tar.gz")
