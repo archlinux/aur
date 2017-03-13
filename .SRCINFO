@@ -1,0 +1,17 @@
+pkgbase = minecrafter
+	pkgdesc = Minecrafter fonts from http://www.dafont.com
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.dafont.com/es/minecrafter.font
+	install = minecrafter.install
+	arch = any
+	license = CCPL
+	depends = fontconfig
+	depends = xorg-font-utils
+	depends = unzip
+	noextract = minecrafter.zip
+	source = minecrafter.zip::http://dl.dafont.com/dl/?f=minecrafter
+	md5sums = 7b2874b4e67f6a018bba648031cfa6bc
+
+pkgname = minecrafter
+
