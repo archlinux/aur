@@ -1,6 +1,6 @@
 # Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
 pkgname=soapy_power
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Obtain power spectrum from SoapySDR devices (RTL-SDR, Airspy, SDRplay, HackRF, bladeRF, USRP, LimeSDR, etc.)"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   'python-pyfftw: faster FFT calculations with FFTW library'
 )
 source=(https://github.com/xmikos/soapy_power/archive/v$pkgver.tar.gz)
-sha256sums=('185ce4fa539fc965c544503bd27010f441a44529e37692b81070cd81a2ebb37a')
+sha256sums=('bf292e9b5d0e56fb1178a07b005872dbb56a298c4e34bb14afdf93ea0dc922f6')
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
