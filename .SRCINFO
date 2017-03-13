@@ -1,0 +1,16 @@
+pkgbase = eresi-git
+	pkgdesc = Reverse engineering tool suite (includes elfsh)
+	pkgver = r1263.c2b0bb66
+	pkgrel = 1
+	url = https://github.com/thorkill/eresi
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = readline
+	depends = termcap
+	depends = bash
+	source = eresi-git::git+https://github.com/thorkill/eresi
+	sha512sums = SKIP
+
+pkgname = eresi-git
+
