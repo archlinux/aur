@@ -4,13 +4,13 @@
 
 pkgname=pantheon-workarounds
 pkgver=5
-pkgrel=1
+pkgrel=2
 pkgdesc='Workarounds for modular and minimal Pantheon Desktop Environments'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/gala'
 license=('GPL3')
 groups=('pantheon-qq')
-depends=('gconf' gnome-{keyring,settings-daemon{,-compat},session}
+depends=('gconf' gnome-{keyring,settings-daemon-{elementary,compat},session}
          'polkit-gnome' 'xdg-user-dirs-gtk')
 optdepends=("pantheon-default-settings: Pantheon configuration and themeing")
 makedepends=('bzr' 'intltool')
