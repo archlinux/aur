@@ -4,10 +4,17 @@
 KERNEL_NAME=
 KERNEL_VERSION=
 
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
 post_install () {
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
   depmod ${KERNEL_VERSION}
+
+  note "If you see an error building your initramfs you can try adding this to your mkinitcpio.conf"
+  note "    _addedmodules["dm_cache_smq"]=1"
 }
 
 post_upgrade() {
