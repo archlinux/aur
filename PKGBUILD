@@ -7,7 +7,7 @@
 pkgname=helloworld
 pkgver=0.1
 pkgrel=1
-pkgdesc="A program prints Hello world"
+pkgdesc="A program prints 'Hello world'"
 arch=(any)
 license=('GPL')
 depends=('glibc')

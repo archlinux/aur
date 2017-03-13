@@ -1,5 +1,5 @@
 pkgbase = helloworld
-	pkgdesc = A program prints 'Hello world
+	pkgdesc = A program prints 'Hello world'
 	pkgver = 0.1
 	pkgrel = 1
 	arch = any
