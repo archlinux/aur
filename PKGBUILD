@@ -1,6 +1,6 @@
 # Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
 pkgname=qspectrumanalyzer
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Spectrum analyzer for multiple SDR platforms (PyQtGraph based GUI for soapy_power, rx_power, rtl_power, hackrf_sweep and other backends)"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
   'hackrf: hackrf_sweep backend (wideband spectrum monitoring with sweep rate of 8 GHz/s)'
 )
 source=(https://github.com/xmikos/qspectrumanalyzer/archive/v$pkgver.tar.gz)
-sha256sums=('9af3e43149a9886580d5e67f7fbb1c15e4c29760d613225ce5ddd377f979a665')
+sha256sums=('aaf47a18abe4534d455a778e900c485ac149eae10b3010a9a7c56c13a3f177e7')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
