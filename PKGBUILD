@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
  
 pkgname=babe-qt-git
-pkgver=r131.9af482c
+pkgver=r188.2de4a02
 pkgrel=1
 pkgdesc='Tiny Qt Babe Music Player'
 arch=('i686' 'x86_64')
@@ -9,6 +9,7 @@ url="https://github.com/milohr/babe-qt"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'knotifications' 'ki18n' 'taglib')
 makedepends=('git')
+optdepends=('youtube-dl: youtube support')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("git+${url}.git" 'Babe.desktop')
