@@ -62,11 +62,11 @@ vmware_check
 set_product_name
 
 # Use VMware's bundled libcurl.so.4 to prevent crashes at startup/checking for updates
-if [[ $ver != 12.* ]]; then
-    for script in vmware vmplayer; do
+if [[ $ver != 13.* ]]; then
+    for script in vmware vmplayer vmware-netcfg; do
         if [[ -f /usr/bin/$script ]]; then
             if ! grep -q "libcurl" /usr/bin/$script; then
-                sed '/$vmmon/a\   export LD_LIBRARY_PATH=/usr/lib/vmware/lib/libcurl.so.4' \
+                sed '/export PRODUCT_NAME/aexport LD_LIBRARY_PATH=/usr/lib/vmware/lib/libcurl.so.4:$LD_LIBRARY_PATH' \
                     -i /usr/bin/$script
             fi
         fi
