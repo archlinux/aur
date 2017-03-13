@@ -1,7 +1,7 @@
 # Maintainer: Luke R. <g4jc@openmailbox.org> GPG: rsa4096/3EAE8697
 
 pkgname=uftp
-pkgver=4.9.2
+pkgver=4.9.3
 pkgrel=2
 pkgdesc="UFTP is an encrypted multicast file transfer program, designed to securely, reliably, and efficiently transfer files to multiple receivers simultaneously."
 arch=(i686 x86_64)
@@ -9,15 +9,14 @@ url="http://uftp-multicast.sourceforge.net/"
 license=('GPL3')
 makedepends=('gcc' 'openssl')
 source=("http://downloads.sourceforge.net/project/$pkgname-multicast/source-tar/$pkgname-$pkgver.tar.gz")
-sha512sums=('9a95e6a4c8b58a157353e43cfd4ca3dcccfced700e02b7d9d119a09f9e652474d5ffadd04a3dc7b939b94c7d58fbe186e11e581813b5417934988bfa021f0a62')
+sha512sums=('7fae87b8d436a4bfa1a8e7b3217e5a981bf5cffabea6cb8781f8a034d6ddd537e7b8d6eafe4fbe97cbe0af9feeee438b78dd566b24caa1e18c6d4966e75a327c')
+whirlpoolsums=('ee33c969caa3643717f575c213f30790b9211d01a9c32599962a9da22f0bc0061c2c59e80845a326c2f305287647968dad1988b0532343477565aab207d111a0')
 
 -prepare() {
   cd "$srcdir/${pkgname}-${pkgver}/"
 }
 
 build() {
-  whirlpoolsum=('92182508fd707e68838af3904355f7eb0edc777a8029f756c485c407e447a8aac3d0611fe64b68ca8d061f1dc5040a8334fa219c298416ab25e5daecdd9c8e25')
-  [[ "$(openssl dgst -r -whirlpool $pkgname-$pkgver.tar.gz | awk '{print $1}')" = ${whirlpoolsum} ]] && echo "Whirlpool checksum passed." || { echo "Whirlpool checksum failed!!" ;  exit 1; } # This is an added security layer. If SHA512 for some unlikely reason fails, whirlpool will check and abort if it too fails to match.
   cd "$srcdir/$pkgname-$pkgver/"
   make all || return 1
 }
@@ -25,8 +24,6 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   make DESTDIR="$pkgdir/" install
-  ## Cleanup upstream installer ##
-  mv $pkgdir/bin $pkgdir/usr/bin
   mv $pkgdir/usr/sbin/* $pkgdir/usr/bin
   rm -rf $pkgdir/usr/sbin
 }

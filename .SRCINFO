@@ -1,6 +1,6 @@
 pkgbase = uftp
 	pkgdesc = UFTP is an encrypted multicast file transfer program, designed to securely, reliably, and efficiently transfer files to multiple receivers simultaneously.
-	pkgver = 4.9.2
+	pkgver = 4.9.3
 	pkgrel = 2
 	url = http://uftp-multicast.sourceforge.net/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = uftp
 	license = GPL3
 	makedepends = gcc
 	makedepends = openssl
-	source = http://downloads.sourceforge.net/project/uftp-multicast/source-tar/uftp-4.9.2.tar.gz
-	sha512sums = 9a95e6a4c8b58a157353e43cfd4ca3dcccfced700e02b7d9d119a09f9e652474d5ffadd04a3dc7b939b94c7d58fbe186e11e581813b5417934988bfa021f0a62
+	source = http://downloads.sourceforge.net/project/uftp-multicast/source-tar/uftp-4.9.3.tar.gz
+	sha512sums = 7fae87b8d436a4bfa1a8e7b3217e5a981bf5cffabea6cb8781f8a034d6ddd537e7b8d6eafe4fbe97cbe0af9feeee438b78dd566b24caa1e18c6d4966e75a327c
 
 pkgname = uftp
 
