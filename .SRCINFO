@@ -8,7 +8,9 @@ pkgbase = ctffind4
 	optdepends = pdftk: for improved pdf output
 	optdepends = gnuplot: for improved pdf output
 	source = http://grigoriefflab.janelia.org/sites/all/modules/pubdnldcnt/pubdnldcnt.php?file=http://grigoriefflab.janelia.org/sites/default/files/ctffind-4.1.5-linux64.tar.gz
+	source = LICENSE
 	md5sums = 4e5ffbe72097819d12945f6392e22dcc
+	md5sums = SKIP
 
 pkgname = ctffind4
 
