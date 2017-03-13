@@ -8,7 +8,7 @@ _stable=4.10.2
 _patchver=4.10.3
 pkgver=${_patchver}rc1
 _rcpatch=patch-${_patchver}-rc1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -49,8 +49,8 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  # comment out for initial rc (ie 4.8 --> 4.8.1rc1
-  #patch -p1 -i "${srcdir}/patch-${_stable}"
+  # ONLY comment out for initial rc (ie 4.10 --> 4.10.1rc1) -- needed for all others
+  patch -p1 -i "${srcdir}/patch-${_stable}"
 
   # add rc patch
   patch -p1 -i "${srcdir}/$_rcpatch"
