@@ -26,10 +26,10 @@ pkgver () {
 }
 
 prepare() {
-    cd "${srcdir}/${pkgname%-*}" || exit
-    for size in "${_iconsizes[@]}"; do
-        convert assets/Icon1024.png -resize "${size}x${size}" "assets/aporia-${size}.png"
-    done
+	cd "${srcdir}/${pkgname%-*}" || exit
+	for size in "${_iconsizes[@]}"; do
+		convert assets/Icon1024.png -resize "${size}x${size}" "assets/aporia-${size}.png"
+	done
 }
 
 build() {
@@ -58,7 +58,7 @@ package() {
 	install -m644  "share/gtksourceview-2.0/styles/piekno.xml"         "${pkgdir}/usr/share/gtksourceview-2.0/styles/"
 	install -m644  "share/gtksourceview-2.0/styles/yumbum.xml"         "${pkgdir}/usr/share/gtksourceview-2.0/styles/"
 	install -Dm644 "copying.txt"                                       "${pkgdir}/usr/share/licenses/${pkgname}/copying.txt"
-    for size in "${_iconsizes[@]}"; do
-    	install -Dm644 "assets/aporia-${size}.png"  "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/aporia.png"
-    done
+	for size in "${_iconsizes[@]}"; do
+		install -Dm644 "assets/aporia-${size}.png"  "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/aporia.png"
+	done
 }
