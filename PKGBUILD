@@ -1,7 +1,7 @@
 # Maintainer: philanecros <philanecros@gmail.com>
 
 pkgname=autoupdate
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="Download packages to update automatically."
 arch=('any')
