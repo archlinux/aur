@@ -2,7 +2,7 @@
 
 pkgname=vmware-workstation
 pkgver=12.5.2_4638234
-pkgrel=12
+pkgrel=13
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -58,7 +58,7 @@ sha1sums=(
   c1dbfbad3473d12e9c82b75c5f1faf795f3cc217
 
   3f6f14f8047941c015e9067f62ae403acc7b563c
-  bd8955b45f9ac3deed99aba93d2c82bc5424167e
+  be1fb82253f1a95518c990e930c449eaa426c16b
   b4bd05f5d5a98f90fcbdd515b7bb7e6151951e11
   4958ce81e7f5b192e1417426fb70748fdd9a15b9
   51d221c5bc7e3d566d5ce27d0ac603196c12aaf4
