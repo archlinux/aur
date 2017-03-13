@@ -1,13 +1,14 @@
 pkgname=scylla
-pkgver=1.6.1
+pkg_major_minor=1.6
+pkgver=${pkg_major_minor}.1
 pkgrel=1
 pkgdesc="NoSQL data store using the Seastar framework, compatible with Apache Cassandra"
 arch=('x86_64')
 url="http://www.scylladb.com/"
 license=('AGPL')
 depends=('antlr3' 'libantlr3c' 'libyaml' 'yaml-cpp' 'lz4' 'zlib' 'snappy'
-		 'jsoncpp' 'gnutls' 'ninja' 'ragel' 'libaio' 'crypto++' 'xfsprogs'
-		 'numactl' 'hwloc' 'libpciaccess' 'libxml2' 'python-pyparsing'
+		 'jsoncpp' 'gnutls' 'ninja' 'ragel' 'libaio' 'crypto++' 'xfsprogs' 'jre8-openjdk-headless'
+		 'numactl' 'hwloc' 'libpciaccess' 'libxml2' 'python-pyparsing' 'boost-libs'
 		 'lksctp-tools' 'protobuf' 'libunwind' 'systemtap-git' 'dpkg' 'xmlcutty-bin')
 makedepends=('git' 'gcc')
 provides=('scylla')
@@ -28,8 +29,10 @@ md5sums=('SKIP'
 'SKIP'
 )
 
+# install dependencies
 prepare() {
 	# downgrade thrift
+	# TODO: replace with non-interactive command (libthrift-0.9.1.so)
 	wget -c 'http://ala.seblu.net/packages/t/thrift/thrift-0.9.1-3-x86_64.pkg.tar.xz'
 	sudo pacman -U thrift-0.9.1-3-x86_64.pkg.tar.xz
 
@@ -59,7 +62,7 @@ prepare() {
 	URL=http://downloads.scylladb.com.s3.amazonaws.com/
 	wget -c $URL -O pkgs.xml
 	
-	xmlcutty -path /ListBucketResult/Contents/Key -rename '\n' pkgs.xml | grep .deb | grep trusty_backup/scylladb-1.6/ | grep -v '~rc' | grep -v '\-dbg' > pkgs.txt
+	xmlcutty -path /ListBucketResult/Contents/Key -rename '\n' pkgs.xml | grep .deb | grep trusty_backup/scylladb-$pkg_major_minor/ | grep -v '~rc' | grep -v '\-dbg' > pkgs.txt
 	
 	mkdir -p dpkg
 	cat pkgs.txt | cut -d '/' -f 8 | cut -d '_' -f 1 | uniq > pkgs-unique.txt
@@ -72,6 +75,7 @@ prepare() {
 	done
 }
 
+# compile
 build() {
 	cd "$pkgname"
 	./configure.py --mode=release --with=scylla --disable-xen --static
@@ -80,6 +84,7 @@ build() {
 	ninja build/release/scylla -j${CORES}
 }
 
+# packaging
 package() {
 	src="$srcdir/$pkgname/dpkg"
 
@@ -100,13 +105,16 @@ package() {
 	mkdir -p ${dst}
 	cp -Rv --preserve=timestamps "$src/lib/"* ${dst}
 	
+	# overwrite missing symlink
+	ln -sf "/usr/lib/jvm/default-runtime/bin/java" "$dst/scylla/jmx/symlinks/scylla-jmx"
+	
 	# usr/bin
 	dst="$pkgdir/usr/bin"
 	mkdir -p ${dst}
 	cp -Rv --preserve=timestamps "$src/bin/"* ${dst}
 	
+	# overwrite with built 
 	src="$srcdir/$pkgname/build/release"
-	
 	install -p -m755 "$src/scylla" ${dst}
 	install -p -m755 "$src/iotune" ${dst}
 }
