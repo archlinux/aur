@@ -3,7 +3,7 @@
 pkgname=qgis-git
 _pkgname=qgis
 pkgver=2.99
-pkgrel=8
+pkgrel=9
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Development master'
 url='http://qgis.org/'
 license=('GPL')
@@ -50,7 +50,7 @@ build() {
     -DENABLE_TESTS=FALSE \
     -DWITH_INTERNAL_QWTPOLAR=FALSE \
     -DWITH_INTERNAL_{HTTPLIB2,JINJA2,MARKUPSAFE,OWSLIB,PYGMENTS,DATEUTIL,PYTZ,YAML,NOSE2,SIX,FUTURE}=FALSE \
-    -DWITH_GEOREFERENCER=FALSE
+    -DWITH_GEOREFERENCER=TRUE
 #    -DWITH_SERVER=TRUE \
 #    -DWITH_GLOBE=TRUE
 
@@ -72,27 +72,34 @@ package() {
   
   install -d -m755 $pkgdir/usr/bin
   ln -s /opt/$pkgname/bin/qgis "$pkgdir/usr/bin/qgis-git"
-
-  nonres='1024x1024|384x384|60x60'
   
   # install desktop files and icons
   install -Dm644 debian/qgis.desktop -t "$pkgdir/usr/share/applications/"
-  for resolution in `ls /usr/share/icons/hicolor/|egrep '[0-9]'|egrep -ve $nonres`; do
-    install -Dm644 debian/icons/qgis-icon${resolution}.png "$pkgdir/usr/share/icons/hicolor/${resolution}/apps/$pkgname.png"
+  for resolution in `ls /usr/share/icons/hicolor/|egrep '[0-9]'`; do
+  	if [ -e debian/icons/qgis-icon{$resolution}.png ]
+  	then
+	  	install -Dm644 debian/icons/qgis-icon${resolution}.png "$pkgdir/usr/share/icons/hicolor/${resolution}/apps/$pkgname.png"
+	  fi 
   done
 	install -Dm644 images/icons/qgis_icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
 	
   # install mime information and icon
   
   install -Dm644 debian/qgis.xml "$pkgdir/usr/share/mime/packages/qgis.xml"
-  for resolution in `ls /usr/share/icons/hicolor/|egrep '[0-9]'|egrep -ve $nonres`; do
-	  install -Dm644 debian/icons/qgis-mime-icon${resolution}.png "$pkgdir/usr/share/icons/hicolor/${resolution}/mimetypes/qgis-mime.png"
+  for resolution in `ls /usr/share/icons/hicolor/|egrep '[0-9]'`; do
+  	if [ -e debian/icons/qgis-mime-icon{$resolution}.png ]
+  	then
+	  	install -Dm644 debian/icons/qgis-mime-icon${resolution}.png "$pkgdir/usr/share/icons/hicolor/${resolution}/mimetypes/qgis-mime.png"
+	  fi
 	done
 	install -Dm644 images/icons/qgis_mime_icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/mimetypes/qgis-mime.svg"
 	  
 	for type in qgs qlr qml qpt; do
-		for resolution in `ls /usr/share/icons/hicolor/|egrep '[0-9]'|egrep -ve $nonres`; do
-	  	install -Dm644 debian/icons/qgis-${type}${resolution}.png "$pkgdir/usr/share/icons/hicolor/${resolution}/mimetypes/qgis-$type.png"
+		for resolution in `ls /usr/share/icons/hicolor/|egrep '[0-9]'`; do
+			if [ -e debian/icons/qgis-${type}${resolution}.png ]
+  		then
+	  		install -Dm644 debian/icons/qgis-${type}${resolution}.png "$pkgdir/usr/share/icons/hicolor/${resolution}/mimetypes/qgis-$type.png"
+	  	fi
 		done
 	done
 	for type in asc ddf dem dt0 dxf gml img mime mldata qgs qlr qml qpt shp sqlite; do
