@@ -2,8 +2,8 @@
 pkgname=pyunz-git
 _pkgname=pyunz
 pkgver=0.2.3.r4.ga2db5ac
-pkgrel=1
-pkgdesc='extract a package easily'
+pkgrel=2
+pkgdesc='extract packages easily'
 arch=(any)
 url='https://github.com/Sherlock-Holo/pyunz'
 license=('GPL3')
