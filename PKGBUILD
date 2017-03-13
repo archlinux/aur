@@ -1,3 +1,5 @@
+# Maintainer: Javier Fernández <WyRe12[at]gmail[dot]com>
+
 pkgname=pixeled-ttf
 pkgver=1.0
 pkgrel=1
