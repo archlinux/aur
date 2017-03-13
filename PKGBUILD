@@ -2,7 +2,7 @@
 
 pkgname=vmware-workstation
 pkgver=12.5.2_4638234
-pkgrel=13
+pkgrel=14
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -80,8 +80,8 @@ package() {
 
   mkdir -p \
     "$pkgdir/usr"/{share,bin,doc} \
-    "$pkgdir/usr/lib"/{vmware-vix,vmware-ovftool} \
-    "$pkgdir/usr/lib/vmware"/{'Shared VMs',setup} \
+    "$pkgdir/usr/lib"/{vmware/setup,vmware-vix,vmware-ovftool} \
+    "$pkgdir/var/lib/vmware/Shared VMs" \
     "$pkgdir/run/vmware" \
     "$pkgdir/etc/vmware"
 
