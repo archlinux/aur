@@ -1,0 +1,17 @@
+pkgbase = myget
+	pkgdesc = Mytget is a muti-thread downloader accelerator for GNU/Linux.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://myget.sourceforge.net
+	install = myget.install
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPLv2
+	makedepends = cmake
+	makedepends = doxygen
+	source = git+https://github.com/lytsing/mytget.git
+	md5sums = SKIP
+
+pkgname = myget
+
