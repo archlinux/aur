@@ -2,7 +2,7 @@
 
 pkgname=hfsutils
 pkgver=3.2.6
-pkgrel=8
+pkgrel=9
 pkgdesc="A comprehensive software to permit manipulation of HFS volumes"
 arch=("i686" "x86_64")
 url="http://www.mars.org/home/rob/proj/hfs/"
@@ -19,7 +19,7 @@ source=("ftp://ftp.mars.org/pub/hfs/$pkgname-$pkgver.tar.gz"
 prepare() {
 
   # Upstream bug, need patch, not build with default cppflags
-  unset CPPFLAGS
+  unset CPPFLAGS CFLAGS
 
   cd "${srcdir}/${pkgname}-${pkgver}"
 
