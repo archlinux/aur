@@ -1,18 +1,25 @@
 pkgbase = aporia-git
-	pkgdesc = IDE/Advanced text editor mainly focusing on support for the Nimrod programming language.
-	pkgver = 0.1.1.0.99
+	pkgdesc = Aporia is an IDE for the Nim programming language
+	pkgver = 0.4.1.40
 	pkgrel = 1
 	url = https://github.com/nim-lang/Aporia
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = nimble
 	makedepends = git
+	makedepends = imagemagick
+	makedepends = nim
+	makedepends = nimble
 	depends = gtksourceview2
+	depends = hicolor-icon-theme
+	optdepends = nim
+	optdepends = nimsuggest
+	provides = aporia
+	conflicts = aporia
 	source = aporia::git+https://github.com/nim-lang/Aporia.git
 	source = aporia.desktop
-	md5sums = SKIP
-	md5sums = ca13ad654b964f8f28082c6d2e033dea
+	sha256sums = SKIP
+	sha256sums = 1f14d3b4701f54aafa12b0dc167e05db6cff1ae411e1ff827643a4cb5974a4ba
 
 pkgname = aporia-git
 

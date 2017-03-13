@@ -1,65 +1,64 @@
-# Maintainer: Foppe Hemminga <foppe@hemminga.net>
+# Maintainer: Jonathon Fernyhough <jonathon att manjaro dott org>
+# Contributer: Foppe Hemminga <foppe at hemminga dot net>
 # Contributer: actionless <actionless dot loveless at gmail.com>
 # Contributer: Schala <schalaalexiazeal at gmail.com>
 pkgname=aporia-git
-pkgver=0.1.1.0.99
+pkgver=0.4.1.40
 pkgrel=1
-pkgdesc="IDE/Advanced text editor mainly focusing on support for the Nimrod programming language."
+pkgdesc="Aporia is an IDE for the Nim programming language"
 arch=('i686' 'x86_64')
 url="https://github.com/nim-lang/Aporia"
 license=("GPL2")
-makedepends=('nimble' 'git')
-depends=('gtksourceview2')
+makedepends=('git' 'imagemagick' 'nim' 'nimble')
+depends=('gtksourceview2' 'hicolor-icon-theme')
+optdepends=('nim' 'nimsuggest')
+provides=('aporia')
+conflicts=('aporia')
 source=("${pkgname%-*}::git+https://github.com/nim-lang/Aporia.git"
         'aporia.desktop')
-md5sums=('SKIP'
-         'ca13ad654b964f8f28082c6d2e033dea')
+sha256sums=('SKIP'
+            '1f14d3b4701f54aafa12b0dc167e05db6cff1ae411e1ff827643a4cb5974a4ba')
+_iconsizes=(32 48 64 96 128 256 512)
 
 pkgver () {
-	cd "$srcdir/${pkgname%-*}"
+	cd "${srcdir}/${pkgname%-*}" || exit
 	git describe --tags | sed 's|^v||;s|\(.*-.*\)-.*|\1|;s|-|.|'
 }
 
+prepare() {
+    cd "${srcdir}/${pkgname%-*}" || exit
+    for size in "${_iconsizes[@]}"; do
+        convert assets/Icon1024.png -resize "${size}x${size}" "assets/aporia-${size}.png"
+    done
+}
+
 build() {
-	cd "${srcdir}/${pkgname%-*}"
+	cd "${srcdir}/${pkgname%-*}" || exit
 	nimble build -y
 }
 
 package() {
-	cd "${srcdir}/${pkgname%-*}"
-	install -Dm644 "$srcdir/aporia.desktop" "$pkgdir/usr/share/applications/aporia.desktop"
-	install -Dm755 "aporia" "$pkgdir/usr/bin/aporia"
-	install -Dm644 "share/gtksourceview-2.0/language-specs/actionscript.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/actionscript.lang"
-	install -m644 "share/gtksourceview-2.0/language-specs/asm-intel.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/automake.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/bennugd.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/bluespec.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m755 "share/gtksourceview-2.0/language-specs/check-language.sh" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/cobol.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/gdb-log.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/idl-exelis.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/imagej.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/j.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/json.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/markdown.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/matlab.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/mxml.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/nael.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/nasm.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/netrexx.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/nim.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/objj.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/opal.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/opencl.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/protobuf.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/puppet.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/python3.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/scilab.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/sml.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -m644 "share/gtksourceview-2.0/language-specs/systemverilog.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/"
-	install -Dm644 "share/gtksourceview-2.0/styles/darknim.xml" "$pkgdir/usr/share/gtksourceview-2.0/styles/darknim.xml"
-	install -m644 "share/gtksourceview-2.0/styles/ekini_edit.xml" "$pkgdir/usr/share/gtksourceview-2.0/styles/"
-	install -m644 "share/gtksourceview-2.0/styles/piekno.xml" "$pkgdir/usr/share/gtksourceview-2.0/styles/"
-	install -m644 "share/gtksourceview-2.0/styles/yumbum.xml" "$pkgdir/usr/share/gtksourceview-2.0/styles/"
-	install -Dm644 "copying.txt" "$pkgdir/usr/share/licenses/$pkgname/copying.txt"
+	cd "${srcdir}/${pkgname%-*}" || exit
+	install -Dm755 "aporia"                                            "${pkgdir}/usr/bin/aporia"
+	install -Dm644 "${srcdir}/aporia.desktop"                          "${pkgdir}/usr/share/applications/aporia.desktop"
+	install -Dm644 "share/gtksourceview-2.0/language-specs/nael.lang"  "${pkgdir}/usr/share/gtksourceview-2.0/language-specs/nael.lang"
+	install -m644  "share/gtksourceview-2.0/language-specs/nim.lang"   "${pkgdir}/usr/share/gtksourceview-2.0/language-specs/"
+	install -Dm644 "share/gtksourceview-2.0/styles/brackets.xml"       "${pkgdir}/usr/share/gtksourceview-2.0/styles/brackets.xml"
+	install -m644  "share/gtksourceview-2.0/styles/breeze.xml"         "${pkgdir}/usr/share/gtksourceview-2.0/styles/"
+	install -m644  "share/gtksourceview-2.0/styles/dark_bliss.xml"     "${pkgdir}/usr/share/gtksourceview-2.0/styles/"
+	install -m644  "share/gtksourceview-2.0/styles/deep_blue.xml"      "${pkgdir}/usr/share/gtksourceview-2.0/styles/"
+	install -m644  "share/gtksourceview-2.0/styles/distant_shores.xml" "${pkgdir}/usr/share/gtksourceview-2.0/styles/"
+	install -m644  "share/gtksourceview-2.0/styles/darknim.xml"        "${pkgdir}/usr/share/gtksourceview-2.0/styles/"
+	install -m644  "share/gtksourceview-2.0/styles/eggshell.xml"       "${pkgdir}/usr/share/gtksourceview-2.0/styles/"
+	install -m644  "share/gtksourceview-2.0/styles/ekini_edit.xml"     "${pkgdir}/usr/share/gtksourceview-2.0/styles/"
+	install -m644  "share/gtksourceview-2.0/styles/github.xml"         "${pkgdir}/usr/share/gtksourceview-2.0/styles/"
+	install -m644  "share/gtksourceview-2.0/styles/github_classic.xml" "${pkgdir}/usr/share/gtksourceview-2.0/styles/"
+	install -m644  "share/gtksourceview-2.0/styles/less.xml"           "${pkgdir}/usr/share/gtksourceview-2.0/styles/"
+	install -m644  "share/gtksourceview-2.0/styles/monodev.xml"        "${pkgdir}/usr/share/gtksourceview-2.0/styles/"
+	install -m644  "share/gtksourceview-2.0/styles/piekno.xml"         "${pkgdir}/usr/share/gtksourceview-2.0/styles/"
+	install -m644  "share/gtksourceview-2.0/styles/yumbum.xml"         "${pkgdir}/usr/share/gtksourceview-2.0/styles/"
+	install -Dm644 "copying.txt"                                       "${pkgdir}/usr/share/licenses/${pkgname}/copying.txt"
+    for size in "${_iconsizes[@]}"; do
+    	install -Dm644 "assets/aporia-${size}.png"  "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/aporia.png"
+    done
 }
