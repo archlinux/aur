@@ -1,6 +1,6 @@
 pkgbase = coedit-bin
 	pkgdesc = Coedit is an IDE for the DMD D2 compiler.
-	pkgver = 2_update_6
+	pkgver = 3_gold
 	pkgrel = 1
 	url = https://github.com/BBasile/Coedit
 	arch = x86
@@ -9,8 +9,8 @@ pkgbase = coedit-bin
 	makedepends = unzip
 	optdepends = dlang
 	provides = coedit
-	source = https://github.com/BBasile/Coedit/releases/download/2_update_6/coedit.2update6.linux64.zip
-	md5sums = f495e0aa0041fb3a0f07d6a57ba6743e
+	source = https://github.com/BBasile/Coedit/releases/download/3_gold/coedit.3gold.linux64.zip
+	sha256sums = 382875060928607f85deeb91786160f18570f90730fdde246298c7f62bdf4e17
 
 pkgname = coedit-bin
 
