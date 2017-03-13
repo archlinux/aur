@@ -1,6 +1,6 @@
 pkgbase = knotifications-light
 	pkgdesc = Abstraction for system notifications, light version without Text-to-Speech
-	pkgver = 5.31.0
+	pkgver = 5.32.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = i686
@@ -18,10 +18,10 @@ pkgbase = knotifications-light
 	depends = kcoreaddons
 	provides = knotifications
 	conflicts = knotifications
-	source = http://download.kde.org/stable/frameworks/5.31/knotifications-5.31.0.tar.xz
-	source = http://download.kde.org/stable/frameworks/5.31/knotifications-5.31.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.32/knotifications-5.32.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.32/knotifications-5.32.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = 9e72d1240228878142d7c8075ba067041188d9ffc956f134fb95ecf9fe6ce55b
+	sha256sums = 9e0caf8599093e7c23bf0baa5f95d776f864a85f4d419bf14dc45fc1503d5719
 	sha256sums = SKIP
 
 pkgname = knotifications-light
