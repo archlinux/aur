@@ -1,5 +1,14 @@
 post_install() {
     echo "===> NOTE:  The '/usr/bin/myget' links to'/usr/bin/mytget'"
+    sudo ln -s /usr/bin/mytget /usr/bin/myget
 }
+
+post_remove() {
+    echo "===> remove the '/usr/bin/myget'"
+    sudo rm /usr/bin/myget
+}
+
+
+# vim: set ts=4 tw=60 sw=4 et:
 
 

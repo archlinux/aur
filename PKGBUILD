@@ -30,8 +30,6 @@ package() {
     
     make install DESTDIR=${pkgdir}
     #install -Dm0755 ${srcdir}/src/mytget ${pkgdir}/usr/bin/mytget
-
-    ln -s ${pkgdir}/usr/bin/mytget ${pkgdir}/usr/bin/myget
 }
 
 # vim: set ts=4 tw=60 sw=4 et:
