@@ -1,7 +1,7 @@
 # Maintainer: Kasei Wang <cnsdwpc at gmail.com>
 _pkgname=kcptun
 pkgname=$_pkgname-bin
-pkgver=20170310
+pkgver=20170313
 pkgrel=1
 pkgdesc="An extremely simple udp tunnel based on KCP"
 arch=("i686" "x86_64" "armv6h" "armv7h")
@@ -15,12 +15,12 @@ conflicts=("kcptun")
 if [ "$CARCH" = "i686" ]; then
   _arch="386"
   source=("https://github.com/xtaci/kcptun/releases/download/v$pkgver/kcptun-linux-$_arch-$pkgver.tar.gz")
-  sha1sums=('9ee7c27e9c0c595001d6a02a5cb2a369b8cbe132')
+  sha1sums=('4299a58f2ddf11cbe0354379629cc814e4b52981')
 fi
 if [ "$CARCH" = "x86_64" ]; then
   _arch="amd64"
   source=("https://github.com/xtaci/kcptun/releases/download/v$pkgver/kcptun-linux-$_arch-$pkgver.tar.gz")
-  sha1sums=('6758746337fe63f9138ad24c9bf8c11d9488cb55')
+  sha1sums=('e91e35ff684aa76533d5c0298d96416d5b1e8efc')
 fi
 if [[ "$CARCH" = arm* ]]; then
   case "$CARCH" in
@@ -36,7 +36,7 @@ if [[ "$CARCH" = arm* ]]; then
       ;;
   esac
   source=("https://github.com/xtaci/kcptun/releases/download/v$pkgver/kcptun-linux-arm-$pkgver.tar.gz")
-  sha1sums=('7c1000eef59a717c8121a232f5b65b3207fcfe76')
+  sha1sums=('57b66da01a6898e62ef91fc1e7a793ff20b6c301')
 fi
 
 source+=('example_client.json'
