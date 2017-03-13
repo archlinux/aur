@@ -1,17 +1,17 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kdb
-pkgver=3.0.1
+pkgver=3.0.1.1
 pkgrel=1
 pkgdesc="A database connectivity and creation framework for various database vendors"
 arch=(i686 x86_64)
 url="http://www.kexi-project.org/"
 license=(GPL2)
 depends=(kcoreaddons)
-makedepends=(extra-cmake-modules python2 libmariadbclient postgresql ki18n)
+makedepends=(extra-cmake-modules python2 libmariadbclient postgresql qt5-tools)
 optdepends=('mariadb: MySQL plugin' 'postgresql: PostgreSQL plugin')
 source=("http://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz"{,.sig})
-sha1sums=('aea43a6d61f9783aaf446aa83a93e4cdf2fce1b8'
+sha1sums=('eb36afc210d8882e318ea2acb4ed6d02211535e3'
           'SKIP')
 validpgpkeys=(4866BAF713B465677A4059643C7C0E201B6524DB) # Jarosław Staniek <staniek@kde.org>
 
@@ -22,7 +22,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../$pkgname-$pkgver \
+  cmake ../$pkgname-${pkgver%.*} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTING=OFF \
