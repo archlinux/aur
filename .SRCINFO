@@ -5,10 +5,8 @@ pkgbase = mytetra
 	url = https://github.com/xintrea/mytetra_dev
 	arch = x86_64
 	license = GPL3
-	depends = qt5-base
-	depends = qt5-svg
-	source = https://github.com/xintrea/mytetra_dev/archive/v.1.42.2.tar.gz
-	md5sums = b7cfdb281106b25b461d059a2a0607e2
+	source = http://webhamster.ru/db/data/articles/105/mytetra_1_42_2_lin_64.tar.gz
+	md5sums = 54e36bac3f2d06d2d1bf6fd77501bb63
 
 pkgname = mytetra
 
