@@ -1,9 +1,22 @@
 post_install() {
 	if [ ! -d /etc/firefox-hardening ]; then
 		mkdir -p /etc/firefox-hardening/prefs
+	fi
+
+	if [ ! -f /etc/firefox-hardening/ffh.conf ]; then
 		install -m644 -D "/usr/lib/firefox-hardening/ffh.conf.example" "/etc/firefox-hardening/ffh.conf"
 	fi
+
 	/usr/lib/firefox-hardening/beatthedeviloutofit.sh
+}
+
+post_upgrade() {
+	if [ ! -d /etc/firefox-hardening ] || [ ! -f /etc/firefox-hardening/ffh.conf ]; then
+		post_install
+	else
+		install -m644 -D "/usr/lib/firefox-hardening/ffh.conf.example" "/etc/firefox-hardening/ffh.conf.package"
+		/usr/lib/firefox-hardening/beatthedeviloutofit.sh
+	fi
 }
 
 post_remove() {
