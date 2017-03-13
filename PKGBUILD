@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/erebe/greenclip/releases/download/1.1/greenclip")
 noextract=()
-sha256sums=("ec4e5603f602faa169e5da1995bebaea080eb8293dd6f0ea39b2af20811e519d")
+sha256sums=("b90c920fe3c1c55210006a7ea3180ee108a575be66f4923d00f3794baf77abb0")
 
 package() {
         install -Dm 755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
