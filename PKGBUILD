@@ -2,7 +2,7 @@
 
 pkgname=electrumx
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Server implementation for the Electrum wallet"
 arch=('any')
 depends=('leveldb'
@@ -21,7 +21,7 @@ source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/kyuupichan/$pkgname
         'electrumx.conf'
         'electrumx.service')
 sha256sums=('ff29de5a0065696815256db41585bbcb00002cc7cafe3ea2f4a7d2823e109369'
-            '8ae619f49ecea09626ac038d2170aeee6d0422f0918d8ef04672a2e614c32fc8'
+            '6134f8e333fc622bea781ed334b738ade39bf7a6e4ace3704cba2e22788a4bf3'
             'a70e6d2ff4e0eb8125ba2d52bcdaec96129068363e365d48a47961f47b9fc554')
 install=electrumx.install
 
