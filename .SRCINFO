@@ -1,0 +1,18 @@
+pkgbase = pixeled-ttf
+	pkgdesc = Pixeled font from http://www.dafont.com
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.dafont.com/es/pixeled.font
+	install = pixeled-ttf.install
+	arch = any
+	license = custom:fontstruct
+	depends = fontconfig
+	depends = xorg-font-utils
+	depends = unzip
+	provides = ttf-font
+	noextract = pixeled-ttf.zip
+	source = pixeled-ttf.zip::http://dl.dafont.com/dl/?f=pixeled
+	md5sums = 4aeadb1eeb639b12a439647da4d591b9
+
+pkgname = pixeled-ttf
+
