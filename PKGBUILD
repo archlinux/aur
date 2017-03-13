@@ -1,7 +1,7 @@
 # Maintainer: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=ompl
-pkgver=1.1.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="The Open Motion Planning Library (OMPL) consists of many state-of-the-art sampling-based motion planning algorithms"
 arch=('i686' 'x86_64')
@@ -13,12 +13,10 @@ optdepends=('py++: Python binding'
             'ode: Plan using the Open Dynamics Engine'
             'eigen: For an informed sampling technique')
 source=(https://bitbucket.org/ompl/ompl/downloads/${pkgname}-${pkgver}-Source.tar.gz)
-sha512sums=('ad9331eb79d64ce61132511affc7a713611c55fbbf85c0092fa0ed5a210be3810ce181608f5c278eea56e5227914e24920dc5375e110972f22e6befaf4f199f8')
+sha512sums=('9b4a7e4a6d7992ec4456d647f3fe1ea593552fea471ac99e395cfb1a2842a6e1659ad390f8c83512d8ef3043e17ef382a1a5de6867e9fd18cdb56983cba68e35')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}-Source"
-
-  sed -e 's#\#include <boost/random/mersenne_twister.hpp>#\#include <boost/random/mersenne_twister.hpp>\n\#include <boost/type_traits/ice.hpp>#g' -i src/ompl/util/RandomNumbers.h
 
   rm -rf build
   mkdir build
@@ -41,7 +39,6 @@ check() {
 
   #make test
 }
-
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}-Source"
