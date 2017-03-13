@@ -1,12 +1,12 @@
 pkgbase = nvidia-grsec
 	pkgdesc = NVIDIA drivers for linux-grsec kernel
 	pkgver = 378.13
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.nvidia.com/
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = nvidia-libgl
+	makedepends = libgl
 	makedepends = nvidia-utils=378.13
 	makedepends = linux-grsec
 	makedepends = linux-grsec-headers>=4.9

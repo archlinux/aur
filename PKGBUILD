@@ -9,12 +9,12 @@ pkgbase=nvidia-grsec
 pkgname=(nvidia-grsec nvidia-grsec-dkms)
 pkgver=378.13
 _pkgver=375.20
-_extramodules=extramodules-4.9.13-grsec
-pkgrel=5
+_extramodules=extramodules-4.9.14-grsec
+pkgrel=6
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-headers>=4.9')
+makedepends=('libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-headers>=4.9')
 license=('custom')
 options=(!strip)
 # source=("https://www.grsecurity.net/~paxguy1/nvidia-drivers-${pkgver}-pax.patch")
