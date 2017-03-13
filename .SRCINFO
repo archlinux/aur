@@ -7,7 +7,9 @@ pkgbase = ctffind3-ctftilt
 	license = GPL
 	depends = gcc-fortran
 	source = http://grigoriefflab.janelia.org/sites/all/modules/pubdnldcnt/pubdnldcnt.php?file=http://grigoriefflab.janelia.org/sites/default/files/ctf_140609.tar.gz
+	source = LICENSE
 	md5sums = 09ac38fd5e55b2480f37203650298642
+	md5sums = SKIP
 
 pkgname = ctffind3-ctftilt
 
