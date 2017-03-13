@@ -1,5 +1,5 @@
 pkgname=python2-dulwich
-pkgver=0.16.3
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="Dulwich is a pure-Python implementation of the Git file formats and protocols."
 arch=('any')
@@ -8,7 +8,7 @@ license=('GPL2')
 depends=('python2')
 
 source=("https://www.dulwich.io/releases/dulwich-$pkgver.tar.gz")
-sha1sums=('03b0997c557d711ee65c509d4a5d313bbfa2744a')
+sha1sums=('3cd487ac54df10be35e5882cb15e54982773b266')
 
 package() {
   cd "$srcdir/dulwich-$pkgver"
