@@ -5,8 +5,8 @@
 
 pkgbase=linux-macbook
 _srcname=linux-4.9
-pkgver=4.9.11
-pkgrel=2
+pkgver=4.9.14
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -30,12 +30,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'poweroff-quirk-workaround.patch'
         'intel-pstate-backport.patch'
         'change-default-console-loglevel.patch'
-        '0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch'
         )
 
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            '23e773a670f3cac11a92c4e442405dea6d2c28fea0f914ea2ba4bea313c26541'
+            '056282412144bdb8bb1d33a5b22a5605ed836a8061dfd65926e25ba71119d518'
             'SKIP'
             '49ec194851a7f96fbeedddb6125bf51d0e73e949f28026dca0d9ff36fc4ce5ff'
             '36fa6355b46655570838351a6f4b2a4904d4e1c550ce0b7a21aa5ebe1bad2d2d'
@@ -46,8 +45,7 @@ sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             '896455ba219148e10c1fd19ec98f9871b384f9d0018598c1bb36ad7f3c8607c1'
             '24f914e16f5efd13608e835ded81b4da731798737a88228fb8684f6db80f7d2c'
             'c0a25b413bc542472868c63318213dfe788beeece750d15f7ff1568aca8968ec'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '85954ac18da9dc1bec5df28e2f097d13016e39fa9631074f85b6364af340fcd9')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -60,9 +58,6 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
-
-  # https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-6074
-  patch -p1 -i "${srcdir}/0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
