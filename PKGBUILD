@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-core-addrindex
 pkgver=0.13.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Bitcoin Core headless P2P node with addrindex"
 arch=('i686' 'x86_64')
 url="https://github.com/btcdrak/bitcoin"
@@ -24,10 +24,10 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/btcdrak/bitcoin/releases/dow
         bitcoin.service
         bitcoin-reindex.service)
 sha256sums=('a580510f8e2d020a751f0a16223f21b1e149768c28e73ee5b4692df46710c923'
-            '6321809cfc8b5d30b368d495c38450c40f0ab419f0640c111d6c68141569142e'
+            'bebd41435558e3e6ffe1c2edaaf2e26cfd27a6ba8b6ee7da907bb56065f6c20e'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
-            '5e45f2ceaeb7bfa60aeb66ca4167068191eb4358af03f95ac70fd96d9b006349'
-            '10ad0b8c356559886634eaf658992004045853ec26cddee143d16125cb75e8f1')
+            '9643eed2c20d78a9c7347df64099765773615f79d3b8a95693d871c933516880'
+            '35ff9331d7df8b90adfc7d82752cca4f8b7ff23a29e5d10b07e4e3fc78050679')
 backup=('etc/bitcoin/bitcoin.conf'
         'etc/logrotate.d/bitcoin')
 provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx')
