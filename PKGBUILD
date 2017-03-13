@@ -21,7 +21,7 @@ _cvsmod="hd-idle"
 
 prepare() {
   cd "$srcdir"
-  msg "Connecting to $_cvsmod.sourceforge.net CVS server...."
+  echo "Connecting to $_cvsmod.sourceforge.net CVS server...."
   if [ -d $_cvsmod/CVS ]; then
     cd $_cvsmod
     cvs -z3 update -d
@@ -30,8 +30,8 @@ prepare() {
     cd $_cvsmod
   fi
 
-  msg "CVS checkout done or server timeout"
-  msg "Starting make..."
+  echo "CVS checkout done or server timeout"
+  echo "Starting make..."
 
   rm -rf "$srcdir/$_cvsmod-build"
   cp -r "$srcdir/$_cvsmod" "$srcdir/$_cvsmod-build"
@@ -54,7 +54,7 @@ package() {
   cd "$srcdir/$_cvsmod-build"
 
   install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
-  install -Dm644 scripts/debian/default/hd-idle "$pkgdir/etc/conf.d/hd-idle"
+  install -Dm644 debian/hd-idle.default "$pkgdir/etc/conf.d/hd-idle"
   install -Dm644 ../hd-idle.service "$pkgdir/usr/lib/systemd/system/hd-idle.service"
 
   # must be done last, somehow breaks $pkgdir permissions
