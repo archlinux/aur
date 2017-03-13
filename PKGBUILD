@@ -2,17 +2,17 @@
 
 pkgname=lean2-git
 #_pkgver=0.2.0
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Lean Theorem Prover 2'
 arch=('x86_64')
-url="https://github.com/Bolt64/lean2"
+url="https://github.com/sayantangkhan/lean2"
 license=('Apache')
 depends=('gmp' 'mpfr' 'lua>=5.2')
 makedepends=('git' 'cmake' 'python' 'gperftools')
 optdepends=('emacs: emacs mode')
 conflicts=('lean-bin')
-source=("$pkgname::git+https://github.com/Bolt64/lean2")
+source=("$pkgname::git+https://github.com/sayantangkhan/lean2")
 md5sums=(SKIP)
 
 #pkgver() {
