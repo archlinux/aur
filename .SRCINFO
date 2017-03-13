@@ -17,9 +17,11 @@ pkgbase = fontconfig-ubuntu
 	source = https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.11.94.orig.tar.bz2
 	source = https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.11.94-0ubuntu2.debian.tar.xz
 	source = 53-monospace-lcd-filter.patch
+	source = 0001-glibc-2.25-Avoid-conflicts-with-integer-width-macros-from-TS-18.patch
 	md5sums = c988ea12f4117330246e041109152b4a
 	md5sums = 1527bc9abef9c13eef6178b4369dda2e
 	md5sums = a17e48be6a06bc056574be6756cb9738
+	md5sums = eb0c6e936a485de81dafcd7a55088fe1
 
 pkgname = fontconfig-ubuntu
 

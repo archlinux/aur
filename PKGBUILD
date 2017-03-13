@@ -1,6 +1,6 @@
 # Maintainer: Det
 # Contributors: Joris Steyn, Florian Dejonckheere, Tevin Zhang, Andrea Fagiani, Biru Ionut, Paul Bredbury
-# Installation order:  freetype2-ubuntu → fontconfig-ubuntu → cairo-ubuntu
+# Installation order:  freetype2 → fontconfig-ubuntu → cairo-ubuntu
 
 pkgname=fontconfig-ubuntu
 pkgver=2.11.94
@@ -18,22 +18,29 @@ options=('!libtool')
 install=$pkgname.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_$pkgver.orig.tar.bz2"
         "https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_$pkgver-$_ubver.debian.tar.xz"
-        '53-monospace-lcd-filter.patch')
+        '53-monospace-lcd-filter.patch'
+        '0001-glibc-2.25-Avoid-conflicts-with-integer-width-macros-from-TS-18.patch')
 md5sums=('c988ea12f4117330246e041109152b4a'
          '1527bc9abef9c13eef6178b4369dda2e'
-         'a17e48be6a06bc056574be6756cb9738')
+         'a17e48be6a06bc056574be6756cb9738'
+         'eb0c6e936a485de81dafcd7a55088fe1')
 
-# a nice page to test font matching:
+# nice pages to test font matching:
 # http://zipcon.net/~swhite/docs/computers/browsers/fonttest.html
 # http://getemoji.com/
 
 prepare() {
   cd fontconfig-$pkgver
 
-  # loop debian patches
+  # Loop Debian patches
   for _f in $(cat ../debian/patches/series); do
+    msg2 "Applying Debian patch: $_f"
     patch -Np1 -i "../debian/patches/$_f"
   done
+
+  # Glibc 2.25
+  msg2 "Applying Glibc 2.25 fix"
+  patch -Np1 -i "$srcdir"/0001-glibc-2.25-Avoid-conflicts-with-integer-width-macros-from-TS-18.patch
 
   ## patch
   #patch -u conf.d/53-monospace-lcd-filter.conf ../53-monospace-lcd-filter.patch
@@ -41,7 +48,7 @@ prepare() {
 
 build() {
   cd fontconfig-$pkgver
-  
+
   msg2 "Running ./configure.."
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
@@ -51,14 +58,14 @@ build() {
     --disable-static \
     --with-default-fonts=/usr/share/fonts \
     --with-add-fonts=/usr/share/fonts
-	
+
   msg2 "Running make.."
   make
 }
 
 package() {
   cd fontconfig-$pkgver
-  
+
   msg2 "Running 'make install'.."
   make DESTDIR="$pkgdir" install
 
