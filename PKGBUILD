@@ -2,15 +2,15 @@
 # Maintainer: Grey Christoforo <grey at christoforo dot net>
 
 pkgname=python-sdds
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc="Pure python parser for the sdds file format"
 arch=('any')
 url="https://github.com/greyltc/python-sdds/"
 license=('MIT')
 depends=('python-numpy')
-source=("https://github.com/greyltc/python-sdds/archive/v0.12.tar.gz")
-md5sums=('8b59f4281d89efffd361943661372556')
+source=("https://github.com/greyltc/python-sdds/archive/v${pkgver}.tar.gz")
+md5sums=('6f36221d2899a8648a5ec380bb14f60f')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
