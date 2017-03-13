@@ -52,7 +52,7 @@ pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _srcname=linux-4.10
 pkgver=4.10.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -80,7 +80,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
-        )
+        '0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch')
 
 _kernelname=${pkgbase#linux} 
 
@@ -89,7 +89,11 @@ prepare() {
 
     ### Add upstream patch
         msg "Add upstream patch"
-        patch -Np1 -i "${srcdir}/patch-${pkgver}" 
+        patch -Np1 -i "${srcdir}/patch-${pkgver}"
+    
+    ### Patch for CVE-2017-2636
+        msg "Fix CVE-2017-2636"
+        patch -p1 -i "${srcdir}/0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch"
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
@@ -435,7 +439,8 @@ sha512sums=('c3690125a8402df638095bd98a613fcf1a257b81de7611c84711d315cd11e2634ab
             '1f0a8695b7c106d7946d67eaa8ebcf4e0bccd2cae01b0cd5621af04aa42f7e9a1b379764fb9bd9917f85ff719ec28e081eeb7c143a682f6d179e2bd1d7d15d7e'
             '6afb164bc7a38fea08a49c70690afafb209d1245588e1ecf57998926f5b43fe85d39a1ab1a133900b82bc1d3d97538330bf5c646b62e782653d69b6139d72200'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
-            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf')
+            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
+            '397fc751697cc4e2ceb7e6d854f5e7fc115ed8511df406ffe5d8f80afeec385ba64cd28c4666bb206612fdcd7a578b60ca6ff125c2138c615aee6135d86b0197')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
