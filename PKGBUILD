@@ -1,8 +1,8 @@
 # Maintainer: kusakata <shohei atmark kusakata period com>
 
 pkgname=aobook
-pkgver=1.0.2
-_sfver=65908
+pkgver=1.0.3
+_sfver=67263
 pkgrel=1
 pkgdesc='Aozora Bunko text viewer'
 arch=('i686' 'x86_64')
@@ -23,4 +23,4 @@ package() {
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
 
-md5sums=('78fcb9c6adb7dda8ed1d2c79450fd032')
+md5sums=('ca46bde17f523edc52b05be16f70a942')
