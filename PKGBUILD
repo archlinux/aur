@@ -18,8 +18,8 @@ makedepends=('jq')
 depends=('qt4' 'fuse')
 conflicts=('pcloud-git')
 replaces=('pcloud-git')
-source_i686=() # Placeholder
-source_x86_64=() # Placeholder
+source_i686=('https://www.pcloud.com/pcloud') # Placeholder
+source_x86_64=('https://www.pcloud.com/pcloud') # Placeholder
 sha256sums_i686=('3611ae16586358bfd5e7889fa5e5be815fa2a36dcb5e033febb9f4d7205d03b6')
 sha256sums_x86_64=('634fcec47799c2c8fd9f7cdf68bd48b135102a81fed51df58161b9984faf75f6')
 
