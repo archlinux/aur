@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Tremblay gabriel@delvelabs.ca
 pkgname=i8kutils-git
 _pkgname=i8kutils
-pkgrel=1
+pkgrel=2
 pkgver=20170306.976c36a
 pkgdesc="Fan control for Dell laptops"
 makedepends=("git")

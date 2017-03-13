@@ -3,7 +3,7 @@ Description=Dell laptop thermal monitoring
 ConditionPathExists=/proc/i8k
 
 [Service]
-ExecStart=/usr/bin/i8kmon -d
+ExecStart=/usr/bin/i8kmon
 
 [Install]
 WantedBy=multi-user.target
