@@ -22,5 +22,5 @@ build() {
 
 package() {
 	cd "$pkgname"
-	install -D -s -m644 httplab "${pkgdir}/usr/bin/httplab"
+	install -D -s -m755 httplab "${pkgdir}/usr/bin/httplab"
 }
