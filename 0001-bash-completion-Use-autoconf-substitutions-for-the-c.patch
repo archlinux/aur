@@ -1,0 +1,167 @@
+From e61ea3e2251a5a84c321aab4c861497089edc791 Mon Sep 17 00:00:00 2001
+From: Mike Swanson <mikeonthecomputer@gmail.com>
+Date: Sun, 12 Mar 2017 23:27:11 -0700
+Subject: [PATCH] bash-completion: Use autoconf substitutions for the chocolate
+ name
+
+Introduce a new PROGRAM_SPREFIX variable in configure.ac, which is
+basically identical to PROGRAM_PREFIX but without the trailing hyphen.
+PROGRAM_PREFIX was also redefined so that it bases its name from
+PACKAGE_SHORTNAME, reducing the number of hardcoded chocolates in the
+source.
+---
+ configure.ac                                                 | 12 ++++++++----
+ man/bash-completion/.gitignore                               |  1 +
+ man/bash-completion/{doom.template => doom.template.in}      |  6 +++---
+ .../{heretic.template => heretic.template.in}                |  6 +++---
+ man/bash-completion/{hexen.template => hexen.template.in}    |  6 +++---
+ man/bash-completion/{strife.template => strife.template.in}  |  6 +++---
+ 6 files changed, 21 insertions(+), 16 deletions(-)
+ rename man/bash-completion/{doom.template => doom.template.in} (87%)
+ rename man/bash-completion/{heretic.template => heretic.template.in} (85%)
+ rename man/bash-completion/{hexen.template => hexen.template.in} (84%)
+ rename man/bash-completion/{strife.template => strife.template.in} (85%)
+
+diff --git a/configure.ac b/configure.ac
+index 7d1ffa9d..e622b2c1 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -146,15 +146,15 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
+ 
+ WINDOWS_RC_VERSION=`echo $PACKAGE_VERSION | sed 's/-.*//; s/\./, /g; s/$/, 0, 0/'`
+ 
+-# This controls the prefix added to the start of program names.  For example,
+-# if this is changed to "lemon-", the programs generated will be named
+-# lemon-doom, lemon-heretic, etc.
++PROGRAM_PREFIX=${PACKAGE_SHORTNAME,}-
+ 
+-PROGRAM_PREFIX=crispy-
++dnl Without a hyphen. This is used for the bash-completion scripts.
++PROGRAM_SPREFIX=${PACKAGE_SHORTNAME,}
+ 
+ AC_SUBST(PROGRAM_PREFIX)
+ AC_DEFINE_UNQUOTED(PROGRAM_PREFIX, "$PROGRAM_PREFIX",
+                    Change this when you create your awesome forked version)
++AC_SUBST(PROGRAM_SPREFIX)
+ 
+ AM_CONFIG_HEADER(config.h:config.hin)
+ 
+@@ -184,6 +184,10 @@ AC_OUTPUT([
+ Makefile
+ man/Makefile
+ man/bash-completion/Makefile
++man/bash-completion/doom.template
++man/bash-completion/heretic.template
++man/bash-completion/hexen.template
++man/bash-completion/strife.template
+ opl/Makefile
+ opl/examples/Makefile
+ pcsound/Makefile
+diff --git a/man/bash-completion/.gitignore b/man/bash-completion/.gitignore
+index 74c4d54a..488df26a 100644
+--- a/man/bash-completion/.gitignore
++++ b/man/bash-completion/.gitignore
+@@ -2,3 +2,4 @@
+ *heretic
+ *hexen
+ *strife
++*.template
+diff --git a/man/bash-completion/doom.template b/man/bash-completion/doom.template.in
+similarity index 87%
+rename from man/bash-completion/doom.template
+rename to man/bash-completion/doom.template.in
+index 535ad2a0..e4f3dcb0 100644
+--- a/man/bash-completion/doom.template
++++ b/man/bash-completion/doom.template.in
+@@ -1,6 +1,6 @@
+-# bash completion for Chocolate Doom                       -*- shell-script -*-
++# bash completion for @PACKAGE_SHORTNAME@ Doom               -*- shell-script -*-
+ 
+-_chocolate_doom()
++_@PROGRAM_SPREFIX@_doom()
+ {
+     local cur prev words cword
+     _init_completion || return
+@@ -46,6 +46,6 @@ _chocolate_doom()
+     fi
+ } &&
+ 
+-complete -F _chocolate_doom chocolate-doom
++complete -F _@PROGRAM_SPREFIX@_doom @PROGRAM_PREFIX@doom
+ 
+ # ex: ts=4 sw=4 et filetype=sh
+diff --git a/man/bash-completion/heretic.template b/man/bash-completion/heretic.template.in
+similarity index 85%
+rename from man/bash-completion/heretic.template
+rename to man/bash-completion/heretic.template.in
+index 5d658d46..a46b19cc 100644
+--- a/man/bash-completion/heretic.template
++++ b/man/bash-completion/heretic.template.in
+@@ -1,6 +1,6 @@
+-# bash completion for Chocolate Heretic                    -*- shell-script -*-
++# bash completion for @PACKAGE_SHORTNAME@ Heretic            -*- shell-script -*-
+ 
+-_chocolate_heretic()
++_@PROGRAM_SPREFIX@_heretic()
+ {
+     local cur prev words cword
+     _init_completion || return
+@@ -43,6 +43,6 @@ _chocolate_heretic()
+     fi
+ } &&
+ 
+-complete -F _chocolate_heretic chocolate-heretic
++complete -F _@PROGRAM_SPREFIX@_heretic @PROGRAM_PREFIX@heretic
+ 
+ # ex: ts=4 sw=4 et filetype=sh
+diff --git a/man/bash-completion/hexen.template b/man/bash-completion/hexen.template.in
+similarity index 84%
+rename from man/bash-completion/hexen.template
+rename to man/bash-completion/hexen.template.in
+index b7e75f7f..f80853bc 100644
+--- a/man/bash-completion/hexen.template
++++ b/man/bash-completion/hexen.template.in
+@@ -1,6 +1,6 @@
+-# bash completion for Chocolate Hexen                     -*- shell-script -*-
++# bash completion for @PACKAGE_SHORTNAME@ Hexen              -*- shell-script -*-
+ 
+-_chocolate_hexen()
++_@PROGRAM_SPREFIX@_hexen()
+ {
+     local cur prev words cword
+     _init_completion || return
+@@ -37,6 +37,6 @@ _chocolate_hexen()
+     fi
+ } &&
+ 
+-complete -F _chocolate_hexen chocolate-hexen
++complete -F _@PROGRAM_SPREFIX@_hexen @PROGRAM_PREFIX@hexen
+ 
+ # ex: ts=4 sw=4 et filetype=sh
+diff --git a/man/bash-completion/strife.template b/man/bash-completion/strife.template.in
+similarity index 85%
+rename from man/bash-completion/strife.template
+rename to man/bash-completion/strife.template.in
+index 13c8a8ce..a044ef0b 100644
+--- a/man/bash-completion/strife.template
++++ b/man/bash-completion/strife.template.in
+@@ -1,6 +1,6 @@
+-# bash completion for Chocolate Strife                     -*- shell-script -*-
++# bash completion for @PACKAGE_SHORTNAME@ Strife             -*- shell-script -*-
+ 
+-_chocolate_strife()
++_@PROGRAM_SPREFIX@_strife()
+ {
+     local cur prev words cword
+     _init_completion || return
+@@ -43,6 +43,6 @@ _chocolate_strife()
+     fi
+ } &&
+ 
+-complete -F _chocolate_strife chocolate-strife
++complete -F _@PROGRAM_SPREFIX@_strife @PROGRAM_PREFIX@strife
+ 
+ # ex: ts=4 sw=4 et filetype=sh
+-- 
+2.12.0
+
