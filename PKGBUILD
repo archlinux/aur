@@ -21,13 +21,12 @@ pkgrel=1
 pkgdesc="GNOME Settings Daemon (with ElementaryOS patches)"
 url="https://git.gnome.org/browse/gnome-settings-daemon"
 arch=(i686 x86_64)
-groups=('pantheon-qq')
 license=(GPL)
 depends=(dconf geoclue2 geocode-glib gnome-desktop gsettings-desktop-schemas-ubuntu
 	gtk3-print-backends libcanberra-pulse libgudev libgweather libnotify librsvg 
 	libsystemd libwacom nss pulseaudio pulseaudio-alsa upower)
 makedepends=(docbook-xsl git gnome-common intltool libxslt python xf86-input-wacom)
-groups=(gnome unity)
+groups=(gnome unity pantheon-qq)
 provides=(gnome-settings-daemon{,-ubuntu}="${pkgver}")
 conflicts=(gnome-settings-daemon{,-ubuntu})
 _commit=3ee42193f8772b5eb39b0b5a4d175b00abce033d  # tags/GNOME_SETTINGS_DAEMON_3_22_1^0
