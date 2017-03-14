@@ -23,22 +23,18 @@ md5sums=('765bfdb52584df48784728e6476f47d7'
          '0fe19f989f9606a825b67b9b379c9d6c'
          '8412b1e4cc11be455af993d921a68ced')
 
-prepare() {
-  case $CARCH in
-    i686) _notarch=x86_64 ;;
-    x86_64) _notarch=x86 ;;
-  esac
-  find -name "*$_notarch" -exec rm -r {} +
-}
-
 package() {
   # Prepare variables.
   destdir="$pkgdir/opt/$pkgname"
+  if [ "$CARCH" == 'i686' ]
+  then
+    CARCH=x86
+  fi
   install -d "$destdir" "$pkgdir"/usr/{bin,share/applications}
 
   # Install the game and data files.
   cp -r --no-preserve=mode,ownership "${_longname}_Data" "$destdir"
-  install "$_longname".* "$destdir"
+  install "$_longname.$CARCH" "$destdir"
 
   # Now, care for supplementary files.
   for size in 16 22 24 32 36 48 64 72 96 128 192 256 384 512; do
