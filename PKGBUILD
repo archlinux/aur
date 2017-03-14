@@ -5,7 +5,7 @@ MOZJS_DEBUG=
 
 pkgname=js45
 pkgver=45.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="JavaScript interpreter and libraries"
 arch=(i686 x86_64)
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/Releases/45"
@@ -16,16 +16,21 @@ options=(!staticlibs)
 [[ -z "$MOZJS_DEBUG" ]] || options+=(!strip)
 source=(https://people.mozilla.org/~sfink/mozjs-$pkgver.tar.bz2
         install-copy-files.patch
-        link-mozglue.patch)
+        link-mozglue.patch
+        bug1329272.patch)
 md5sums=('2ca34f998d8b5ea79d8616dd26b5fbab'
          '6b8e25f10a529c0f8aa3dc95837c981e'
-         'ad646de016de6031bfe77b6b59e87078')
+         'ad646de016de6031bfe77b6b59e87078'
+         '124277cf029fbf5f927a2576eb97a30d')
 
 prepare() {
   cd mozjs-$pkgver
   patch -p1 -i ../install-copy-files.patch
   # Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1236085
   patch -p1 -i ../link-mozglue.patch
+
+  # sed 4.3 breaks the build
+  patch -p1 -i ../bug1329272.patch
 
   cd js/src
   rm configure
