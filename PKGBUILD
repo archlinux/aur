@@ -1,8 +1,8 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=intel-xdk
-pkgver=3759
-pkgrel=2
+pkgver=3900
+pkgrel=1
 pkgdesc='Cross-platform mobile and IoT development environment'
 arch=('i686' 'x86_64')
 url='https://software.intel.com/en-us/intel-xdk'
@@ -16,10 +16,10 @@ sha256sums=('f091a3a84380b9bcd2d5daf402e3f73cc071b0f01205e773a32af6651bdce4d3'
 
 if [ "${CARCH}" == 'i686' ]; then
   _arch='32'
-  sha256sums+=('d23e188526b328227da2361e3fd30ff4cf1de27195014c65efb0f9cb10932b9b')
+  sha256sums+=('15e3d5aed608f331b725e249b9dca9efb658e45702edab8b41228ffd69eb272e')
 elif [ "${CARCH}" == 'x86_64' ]; then
   _arch='64'
-  sha256sums+=('86d0493714b0c66f109f20fb1d6ddf1e4596411003426962642746e5c5065050')
+  sha256sums+=('2ca131793364e131c9a9a4738630fb29f2753931d41fae2ebd58b3c4a8305a9c')
 fi
 
 _base="xdk_web_linux${_arch:-64}"
