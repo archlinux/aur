@@ -1,7 +1,7 @@
 pkgbase = minimetro
 	pkgdesc = minimalistic subway layout game
 	pkgver = gamma18
-	pkgrel = 2
+	pkgrel = 3
 	url = http://dinopoloclub.com/minimetro/
 	install = desktop.install
 	arch = i686

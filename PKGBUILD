@@ -6,7 +6,7 @@
 pkgname=minimetro
 _pkgname="Mini Metro"
 pkgver=gamma18
-pkgrel=2
+pkgrel=3
 pkgdesc='minimalistic subway layout game'
 url="http://dinopoloclub.com/${pkgname}/"
 license=('custom:None')
@@ -31,10 +31,13 @@ prepare() {
 }
 
 package() {
-  # First, install the game itself.
+  # Prepare variables.
   destdir="$pkgdir/opt/$pkgname"
   install -d "$destdir" "$pkgdir"/usr/{bin,share/applications}
-  cp -r ${_pkgname}{_,.}* "$destdir"
+
+  # Install the game and data files.
+  cp -r --no-preserve=mode,ownership "${_pkgname}_Data" "$destdir"
+  install "$_pkgname".* "$destdir"
 
   # Now, care for supplementary files.
   for size in 16 22 24 32 36 48 64 72 96 128 192 256 384 512; do
