@@ -1,8 +1,8 @@
 # Maintainer: Gabriel Tremblay gabriel@delvelabs.ca
 pkgname=i8kutils-git
 _pkgname=i8kutils
-pkgrel=2
-pkgver=20170306.976c36a
+pkgrel=3
+pkgver=20170307.83622d1
 pkgdesc="Fan control for Dell laptops"
 makedepends=("git")
 conflicts=("$_pkgname")
@@ -13,12 +13,10 @@ depends=("bash")
 optdepends=("tcl: for i8kmon daemon" "acpi: for i8kmon daemon" "tk: for i8kmon GUI mode")
 backup=("etc/$_pkgname/i8kmon.conf")
 source=("git+https://github.com/vitorafsr/$_pkgname.git"
-	"fix_Makefile.patch"
 	"i8kmon.service")
 
 sha1sums=("SKIP"
-	"fe5407464f59c023c5b52fdadd3275abdac720a4"
-	"5c20f5241de7e60b46117269f4e867b08734cdc8")
+	"370d2675d98d7754a265f9b1578975693204f681")
 
 prepare() {
   cd $srcdir
