@@ -8,7 +8,7 @@ arch=('x86_64')
 license=('MIT')
 depends=('bash' 'openssl')
 optdepends=('jre: for picolisp ersatz.jar')
-makedepends=('make' 'git' 'gcc')
+makedepends=('git')
 _vendor="github.com/taij33n"
 source=("git+https://$_vendor/$pkgname.git#tag=v$pkgver"
         "mkAsm")
