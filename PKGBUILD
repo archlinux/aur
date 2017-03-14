@@ -10,8 +10,7 @@ arch=('x86_64')
 url="https://github.com/linux-rdma/${_srcname}"
 license=('GPL2' 'custom:OpenIB.org BSD (MIT variant)')
 
-depends=('systemd')
-makedepends=('git' 'cmake' 'gcc' 'libnl' 'libsystemd' 'pkg-config' 'ninja' 'bash')
+makedepends=('git' 'cmake' 'gcc' 'libnl' 'libsystemd' 'systemd' 'pkg-config' 'ninja' 'bash')
 _provides=("${pkgname[0]%-git}" 'rdma' 'ibacm' 'iwpmd' 'libibcm' 'libibumad' 'libibverbs'
            'librdmacm' 'libcxgb3' 'libcxgb4' 'libmlx4' 'libmlx5' 'libmthca' 'libnes' 'libocrdma'
            'srptools')
