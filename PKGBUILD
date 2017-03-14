@@ -2,23 +2,40 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Morgan LEFIEUX <comete_AT_archlinuxfr.org>
 
-pkgname=python2-lzo
+pkgbase=python2-lzo
+pkgname=(python-lzo python2-lzo)
 pkgver=1.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Python bindings for the LZO data compression library"
 arch=('i686' 'x86_64')
 url="https://pypi.python.org/pypi/python-lzo"
 license=('GPL2')
-depends=('python2')
+makedepends=('python2' 'python')
 source=("https://pypi.python.org/packages/bc/ac/cec925b9367b8f7f18a606d462fe17069fb13b0fd2fe7df0c324a83a8018/python-lzo-$pkgver.tar.gz")
 md5sums=('b5cd60498474dab58c1ea2385adfa7bd')
 
+prepare() {
+  cp -a python-lzo-$pkgver python2-lzo-$pkgver
+}
+
 build() {
-  cd $srcdir/python-lzo-$pkgver
+  cd "$srcdir"/python-lzo-$pkgver
+  python setup.py build
+
+  cd "$srcdir"/python2-lzo-$pkgver
   python2 setup.py build
 }
 
-package() {
-  cd $srcdir/python-lzo-$pkgver
-  python2 setup.py install --root $pkgdir
+package_python-lzo() {
+  depends=('python')
+
+  cd "$srcdir"/python-lzo-$pkgver
+  python setup.py install --root "$pkgdir"
+}
+
+package_python2-lzo() {
+  depends=('python2')
+
+  cd "$srcdir"/python2-lzo-$pkgver
+  python2 setup.py install --root "$pkgdir"
 }
