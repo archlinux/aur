@@ -2,7 +2,7 @@
 
 pkgbase=bcc
 pkgname=('bcc' 'bcc-tools' 'python-bcc' 'python2-bcc')
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="BPF Compiler Collection"
 arch=('x86_64')
@@ -11,8 +11,17 @@ license=('Apache')
 conflicts=('bcc-git')
 makedepends=('cmake' 'clang>=3.7.0' 'llvm>=3.7.0' 'flex' 'bison' 'python'
              'python2')
-source=("https://github.com/iovisor/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('8bdea41286dda0605e3e52fc76d345356dc637434935a112e6378e2dcb439a70')
+source=("https://github.com/iovisor/${pkgname}/archive/v${pkgver}.tar.gz"
+        'cppex-0.3.0.patch')
+sha256sums=('88f54dff96c30c6e7b45f475938eef790b1c9485f794b1ac6791c4e56007f7cc'
+            'b28a2c5149394fb7402dad92e4c0552644b63dd41394569b966eceb96fc5477e')
+
+prepare() {
+  # the provided CMakeLists.txt compiles the cpp examples with a static copy
+  # of libbcc, ending up with ~282megs used; we'll just install the raw *.cc
+  cd "${srcdir}"
+  patch -p0 < "${srcdir}/cppex-0.3.0.patch" 
+}
 
 build() {
   # make sure repetitive builds are clean
