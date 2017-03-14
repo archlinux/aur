@@ -1,6 +1,6 @@
 # Maintainer: taij33n <bwbuiz@gmail.com>
 pkgname=picolisp      
-pkgver=17.3.10
+pkgver=17.3.11
 pkgrel=1
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
 url="http://www.picolisp.com"
@@ -19,7 +19,7 @@ install=$pkgname.install
 build() {
   # build tools first
   cd "${srcdir}/${pkgname}/src"
-  make tools gate
+  make all
   make clean
  
   # build the 64bit version
