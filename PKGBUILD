@@ -3,13 +3,13 @@
 pkgname=scratch2
 _ver=454
 pkgver="2.0.$_ver"
-pkgrel=1
+pkgrel=2
 pkgdesc="With Scratch, you can program your own interactive stories, games, and animations"
 arch=('any')
 url="https://scratch.mit.edu"
 license=('GPL')
-depends=('adobe-air' 'libxt' 'libxtst')
-depends_x86_64+=('lib32-libxt' 'lib32-libxtst')
+depends=('adobe-air' 'libxt' 'libxtst' 'alsa-lib')
+depends_x86_64+=('lib32-libxt' 'lib32-libxtst' 'lib32-alsa-lib')
 makedepends=('unzip')
 source=("https://scratch.mit.edu/scratchr2/static/sa/Scratch-$_ver.air" "$pkgname.desktop" "$pkgname.png")
 sha1sums=('c096866c40c63f36ccf11539433eb7ae66797adf'
