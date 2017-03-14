@@ -16,9 +16,6 @@ depends=('ncurses' 'python')
 source=("https://bitbucket.org/inigoserna/lfm3/downloads/lfm-$pkgver.tar.gz")
 sha256sums=('01afadd56aded43887c40dec7c81394e5361ba390a3604bd510d69cafe36e3b8')
 
-# In order to build in a clean chroot
-LC_CTYPE=en_US.UTF-8
-
 package() {
   cd $pkgname-$pkgver
   python setup.py install --root="$pkgdir"
