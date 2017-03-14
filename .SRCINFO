@@ -1,7 +1,7 @@
 pkgbase = perl-libwww-dict-leo-org
 	pkgdesc = leo - commandline interface to http://dict.leo.org/.
 	pkgver = 1.45
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/WWW::Dict::Leo::Org
 	arch = any
 	makedepends = perl
