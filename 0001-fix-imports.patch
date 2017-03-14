@@ -1,21 +1,60 @@
-From 20591aa2b437eb09a1918c343b589c986bb76ee8 Mon Sep 17 00:00:00 2001
+From ca1ad8f3034ccb50d9dbc63a913db48eea67e7da Mon Sep 17 00:00:00 2001
 From: Carl George <carl.george@rackspace.com>
 Date: Sun, 19 Feb 2017 05:44:34 -0600
 Subject: [PATCH] fix imports
 
 ---
- SickBeard.py                    | 4 ++--
- lib/tmdb_api/tmdb_api.py        | 2 +-
- sickbeard/__init__.py           | 2 +-
- sickbeard/clients/deluge.py     | 2 +-
- sickbeard/clients/generic.py    | 2 +-
- sickbeard/event_queue.py        | 2 +-
- sickbeard/network_timezones.py  | 2 +-
- sickbeard/notifiers/prowl.py    | 2 +-
- sickbeard/notifiers/pushalot.py | 2 +-
- sickbeard/nzbget.py             | 2 +-
- sickbeard/rssfeeds.py           | 2 +-
- 11 files changed, 12 insertions(+), 12 deletions(-)
+ SickBeard.py                          | 4 ++--
+ lib/tmdb_api/tmdb_api.py              | 2 +-
+ sickbeard/__init__.py                 | 2 +-
+ sickbeard/clients/deluge.py           | 2 +-
+ sickbeard/clients/generic.py          | 2 +-
+ sickbeard/event_queue.py              | 2 +-
+ sickbeard/indexermapper.py            | 2 +-
+ sickbeard/network_timezones.py        | 2 +-
+ sickbeard/notifiers/prowl.py          | 2 +-
+ sickbeard/notifiers/pushalot.py       | 2 +-
+ sickbeard/notifiers/tweet.py          | 2 +-
+ sickbeard/nzbget.py                   | 2 +-
+ sickbeard/providers/alpharatio.py     | 2 +-
+ sickbeard/providers/beyondhd.py       | 2 +-
+ sickbeard/providers/bithdtv.py        | 2 +-
+ sickbeard/providers/bitmetv.py        | 2 +-
+ sickbeard/providers/btn.py            | 2 +-
+ sickbeard/providers/btscene.py        | 2 +-
+ sickbeard/providers/dh.py             | 2 +-
+ sickbeard/providers/extratorrent.py   | 2 +-
+ sickbeard/providers/fano.py           | 2 +-
+ sickbeard/providers/filelist.py       | 2 +-
+ sickbeard/providers/freshontv.py      | 2 +-
+ sickbeard/providers/funfile.py        | 2 +-
+ sickbeard/providers/gftracker.py      | 2 +-
+ sickbeard/providers/grabtheinfo.py    | 2 +-
+ sickbeard/providers/hdspace.py        | 2 +-
+ sickbeard/providers/hdtorrents.py     | 2 +-
+ sickbeard/providers/iptorrents.py     | 2 +-
+ sickbeard/providers/limetorrents.py   | 2 +-
+ sickbeard/providers/morethan.py       | 2 +-
+ sickbeard/providers/ncore.py          | 2 +-
+ sickbeard/providers/pisexy.py         | 2 +-
+ sickbeard/providers/pretome.py        | 2 +-
+ sickbeard/providers/privatehd.py      | 2 +-
+ sickbeard/providers/ptf.py            | 2 +-
+ sickbeard/providers/revtt.py          | 2 +-
+ sickbeard/providers/scc.py            | 2 +-
+ sickbeard/providers/scenetime.py      | 2 +-
+ sickbeard/providers/shazbat.py        | 2 +-
+ sickbeard/providers/thepiratebay.py   | 2 +-
+ sickbeard/providers/torlock.py        | 2 +-
+ sickbeard/providers/torrentbytes.py   | 2 +-
+ sickbeard/providers/torrenting.py     | 2 +-
+ sickbeard/providers/torrentleech.py   | 2 +-
+ sickbeard/providers/torrentz2.py      | 2 +-
+ sickbeard/providers/transmithe_net.py | 2 +-
+ sickbeard/providers/tvchaosuk.py      | 2 +-
+ sickbeard/providers/zooqle.py         | 2 +-
+ sickbeard/rssfeeds.py                 | 2 +-
+ 50 files changed, 51 insertions(+), 51 deletions(-)
 
 diff --git a/SickBeard.py b/SickBeard.py
 index 5d6276d3..e55b11b6 100755
@@ -66,10 +105,10 @@ index 14a102cc..76dc3bd8 100755
  import trakt_helpers
  import threading
 diff --git a/sickbeard/clients/deluge.py b/sickbeard/clients/deluge.py
-index 1db6f868..dd6ce1d8 100644
+index ae8be94f..0a2a4bcb 100644
 --- a/sickbeard/clients/deluge.py
 +++ b/sickbeard/clients/deluge.py
-@@ -22,7 +22,7 @@ from base64 import b64encode
+@@ -23,7 +23,7 @@ from base64 import b64encode
  import sickbeard
  from sickbeard import logger
  from sickbeard.clients.generic import GenericClient
@@ -79,7 +118,7 @@ index 1db6f868..dd6ce1d8 100644
  
  class DelugeAPI(GenericClient):
 diff --git a/sickbeard/clients/generic.py b/sickbeard/clients/generic.py
-index 222f3b9a..07d94249 100644
+index 3d5b2fc7..c0c89469 100644
 --- a/sickbeard/clients/generic.py
 +++ b/sickbeard/clients/generic.py
 @@ -8,7 +8,7 @@ from sickbeard import logger
@@ -101,6 +140,19 @@ index fe246b3e..88daf104 100644
  
  import threading
  
+diff --git a/sickbeard/indexermapper.py b/sickbeard/indexermapper.py
+index b905356a..ae4e6836 100644
+--- a/sickbeard/indexermapper.py
++++ b/sickbeard/indexermapper.py
+@@ -23,7 +23,7 @@ import sickbeard
+ from collections import OrderedDict
+ from urllib import urlencode
+ from lib.dateutil.parser import parse
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ from libtrakt import TraktAPI
+ from libtrakt.exceptions import TraktAuthException, TraktException
+ from sickbeard import db, logger
 diff --git a/sickbeard/network_timezones.py b/sickbeard/network_timezones.py
 index 60acd15d..4f97c1af 100644
 --- a/sickbeard/network_timezones.py
@@ -140,6 +192,19 @@ index 16ab0b21..4a4602fe 100644
  
  import socket
  from urllib import urlencode
+diff --git a/sickbeard/notifiers/tweet.py b/sickbeard/notifiers/tweet.py
+index 7ec628c9..c0b91393 100644
+--- a/sickbeard/notifiers/tweet.py
++++ b/sickbeard/notifiers/tweet.py
+@@ -27,7 +27,7 @@ try:
+ except:
+     from cgi import parse_qsl  #@Reimport
+ 
+-import lib.oauth2 as oauth
++import oauth2 as oauth
+ import lib.pythontwitter as twitter
+ 
+ 
 diff --git a/sickbeard/nzbget.py b/sickbeard/nzbget.py
 index de232028..8749cf4c 100644
 --- a/sickbeard/nzbget.py
@@ -153,6 +218,487 @@ index de232028..8749cf4c 100644
  from base64 import standard_b64encode
  from common import Quality
  from sickbeard import logger
+diff --git a/sickbeard/providers/alpharatio.py b/sickbeard/providers/alpharatio.py
+index 375a44bb..b1ae31aa 100644
+--- a/sickbeard/providers/alpharatio.py
++++ b/sickbeard/providers/alpharatio.py
+@@ -24,7 +24,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class AlphaRatioProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/beyondhd.py b/sickbeard/providers/beyondhd.py
+index f4c42f31..a22c8935 100644
+--- a/sickbeard/providers/beyondhd.py
++++ b/sickbeard/providers/beyondhd.py
+@@ -21,7 +21,7 @@ import time
+ from . import generic
+ from sickbeard import logger
+ from sickbeard.exceptions import AuthException
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class BeyondHDProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/bithdtv.py b/sickbeard/providers/bithdtv.py
+index 478e3e51..81c902e2 100644
+--- a/sickbeard/providers/bithdtv.py
++++ b/sickbeard/providers/bithdtv.py
+@@ -22,7 +22,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class BitHDTVProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/bitmetv.py b/sickbeard/providers/bitmetv.py
+index 84d44792..1bf2691a 100644
+--- a/sickbeard/providers/bitmetv.py
++++ b/sickbeard/providers/bitmetv.py
+@@ -22,7 +22,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class BitmetvProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/btn.py b/sickbeard/providers/btn.py
+index 357dc8e7..2677ff0d 100644
+--- a/sickbeard/providers/btn.py
++++ b/sickbeard/providers/btn.py
+@@ -24,7 +24,7 @@ from sickbeard import helpers, logger, scene_exceptions, tvcache
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.exceptions import AuthException
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ try:
+     import json
+diff --git a/sickbeard/providers/btscene.py b/sickbeard/providers/btscene.py
+index 0b5b0709..24006f8c 100644
+--- a/sickbeard/providers/btscene.py
++++ b/sickbeard/providers/btscene.py
+@@ -23,7 +23,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class BTSceneProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/dh.py b/sickbeard/providers/dh.py
+index 2cad9adb..c8b439c8 100644
+--- a/sickbeard/providers/dh.py
++++ b/sickbeard/providers/dh.py
+@@ -22,7 +22,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class DHProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/extratorrent.py b/sickbeard/providers/extratorrent.py
+index b4cee880..07aa4c2b 100644
+--- a/sickbeard/providers/extratorrent.py
++++ b/sickbeard/providers/extratorrent.py
+@@ -23,7 +23,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class ExtraTorrentProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/fano.py b/sickbeard/providers/fano.py
+index b8ea33a0..6d0e3232 100644
+--- a/sickbeard/providers/fano.py
++++ b/sickbeard/providers/fano.py
+@@ -26,7 +26,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ FLTAG = '</a>\s+<img[^>]+%s[^<]+<br'
+ 
+diff --git a/sickbeard/providers/filelist.py b/sickbeard/providers/filelist.py
+index 78b2328b..0f6f7cbd 100644
+--- a/sickbeard/providers/filelist.py
++++ b/sickbeard/providers/filelist.py
+@@ -22,7 +22,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class FLProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/freshontv.py b/sickbeard/providers/freshontv.py
+index 7335dc09..c541f6c4 100644
+--- a/sickbeard/providers/freshontv.py
++++ b/sickbeard/providers/freshontv.py
+@@ -26,7 +26,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class FreshOnTVProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/funfile.py b/sickbeard/providers/funfile.py
+index b82d5e64..58e6d515 100644
+--- a/sickbeard/providers/funfile.py
++++ b/sickbeard/providers/funfile.py
+@@ -23,7 +23,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class FunFileProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/gftracker.py b/sickbeard/providers/gftracker.py
+index 948119c3..1eb3d2dd 100644
+--- a/sickbeard/providers/gftracker.py
++++ b/sickbeard/providers/gftracker.py
+@@ -23,7 +23,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class GFTrackerProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/grabtheinfo.py b/sickbeard/providers/grabtheinfo.py
+index e852ae75..c469f6eb 100644
+--- a/sickbeard/providers/grabtheinfo.py
++++ b/sickbeard/providers/grabtheinfo.py
+@@ -22,7 +22,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class GrabTheInfoProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/hdspace.py b/sickbeard/providers/hdspace.py
+index 9f3c3e1b..b73ea9c4 100644
+--- a/sickbeard/providers/hdspace.py
++++ b/sickbeard/providers/hdspace.py
+@@ -26,7 +26,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class HDSpaceProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/hdtorrents.py b/sickbeard/providers/hdtorrents.py
+index 2af244e7..ac452617 100644
+--- a/sickbeard/providers/hdtorrents.py
++++ b/sickbeard/providers/hdtorrents.py
+@@ -26,7 +26,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class HDTorrentsProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/iptorrents.py b/sickbeard/providers/iptorrents.py
+index 546822d0..306f8506 100644
+--- a/sickbeard/providers/iptorrents.py
++++ b/sickbeard/providers/iptorrents.py
+@@ -22,7 +22,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class IPTorrentsProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/limetorrents.py b/sickbeard/providers/limetorrents.py
+index 49e0db2f..62580d43 100644
+--- a/sickbeard/providers/limetorrents.py
++++ b/sickbeard/providers/limetorrents.py
+@@ -23,7 +23,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class LimeTorrentsProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/morethan.py b/sickbeard/providers/morethan.py
+index eeabc768..1ba5dd3f 100644
+--- a/sickbeard/providers/morethan.py
++++ b/sickbeard/providers/morethan.py
+@@ -24,7 +24,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class MoreThanProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/ncore.py b/sickbeard/providers/ncore.py
+index 0316fce0..6c99ad72 100644
+--- a/sickbeard/providers/ncore.py
++++ b/sickbeard/providers/ncore.py
+@@ -24,7 +24,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class NcoreProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/pisexy.py b/sickbeard/providers/pisexy.py
+index 248adf74..151535e3 100644
+--- a/sickbeard/providers/pisexy.py
++++ b/sickbeard/providers/pisexy.py
+@@ -20,7 +20,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class PiSexyProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/pretome.py b/sickbeard/providers/pretome.py
+index 5fb2e042..9a0310ae 100644
+--- a/sickbeard/providers/pretome.py
++++ b/sickbeard/providers/pretome.py
+@@ -17,7 +17,7 @@
+ 
+ from . import generic
+ from sickbeard.rssfeeds import RSSFeeds
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class PreToMeProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/privatehd.py b/sickbeard/providers/privatehd.py
+index 57961c51..7573df05 100644
+--- a/sickbeard/providers/privatehd.py
++++ b/sickbeard/providers/privatehd.py
+@@ -26,7 +26,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class PrivateHDProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/ptf.py b/sickbeard/providers/ptf.py
+index 7d4145fb..7b07505b 100644
+--- a/sickbeard/providers/ptf.py
++++ b/sickbeard/providers/ptf.py
+@@ -27,7 +27,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt, anon_url
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class PTFProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/revtt.py b/sickbeard/providers/revtt.py
+index 0cfabc6a..1bbe592d 100644
+--- a/sickbeard/providers/revtt.py
++++ b/sickbeard/providers/revtt.py
+@@ -22,7 +22,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class RevTTProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/scc.py b/sickbeard/providers/scc.py
+index df6aa952..bdedc913 100644
+--- a/sickbeard/providers/scc.py
++++ b/sickbeard/providers/scc.py
+@@ -23,7 +23,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class SCCProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/scenetime.py b/sickbeard/providers/scenetime.py
+index 1be278a8..17babf8f 100644
+--- a/sickbeard/providers/scenetime.py
++++ b/sickbeard/providers/scenetime.py
+@@ -23,7 +23,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt, anon_url
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class SceneTimeProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/shazbat.py b/sickbeard/providers/shazbat.py
+index a7dff22e..874c5126 100644
+--- a/sickbeard/providers/shazbat.py
++++ b/sickbeard/providers/shazbat.py
+@@ -25,7 +25,7 @@ from . import generic
+ from sickbeard import helpers, logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class ShazbatProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/thepiratebay.py b/sickbeard/providers/thepiratebay.py
+index 179dd353..c2358dd1 100644
+--- a/sickbeard/providers/thepiratebay.py
++++ b/sickbeard/providers/thepiratebay.py
+@@ -28,7 +28,7 @@ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.common import Quality, mediaExtensions
+ from sickbeard.helpers import tryInt
+ from sickbeard.name_parser.parser import NameParser, InvalidNameException, InvalidShowException
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class ThePirateBayProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/torlock.py b/sickbeard/providers/torlock.py
+index b5b561b8..b3f14a06 100644
+--- a/sickbeard/providers/torlock.py
++++ b/sickbeard/providers/torlock.py
+@@ -23,7 +23,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class TorLockProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/torrentbytes.py b/sickbeard/providers/torrentbytes.py
+index bb072acb..f154509f 100644
+--- a/sickbeard/providers/torrentbytes.py
++++ b/sickbeard/providers/torrentbytes.py
+@@ -22,7 +22,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class TorrentBytesProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/torrenting.py b/sickbeard/providers/torrenting.py
+index eb926648..c051b1c7 100644
+--- a/sickbeard/providers/torrenting.py
++++ b/sickbeard/providers/torrenting.py
+@@ -22,7 +22,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class TorrentingProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/torrentleech.py b/sickbeard/providers/torrentleech.py
+index 7da261a1..244d07a8 100644
+--- a/sickbeard/providers/torrentleech.py
++++ b/sickbeard/providers/torrentleech.py
+@@ -22,7 +22,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class TorrentLeechProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/torrentz2.py b/sickbeard/providers/torrentz2.py
+index 5b140d29..b0995d84 100644
+--- a/sickbeard/providers/torrentz2.py
++++ b/sickbeard/providers/torrentz2.py
+@@ -24,7 +24,7 @@ from . import generic
+ from sickbeard import config, logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class Torrentz2Provider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/transmithe_net.py b/sickbeard/providers/transmithe_net.py
+index 8bd9ecd4..717d28d3 100644
+--- a/sickbeard/providers/transmithe_net.py
++++ b/sickbeard/providers/transmithe_net.py
+@@ -22,7 +22,7 @@ from . import generic
+ from sickbeard import common, helpers, logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class TransmithenetProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/tvchaosuk.py b/sickbeard/providers/tvchaosuk.py
+index 6ad9a224..c0dbf74e 100644
+--- a/sickbeard/providers/tvchaosuk.py
++++ b/sickbeard/providers/tvchaosuk.py
+@@ -24,7 +24,7 @@ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.config import naming_ep_type
+ from sickbeard.helpers import tryInt
+ from dateutil.parser import parse
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class TVChaosUKProvider(generic.TorrentProvider):
+diff --git a/sickbeard/providers/zooqle.py b/sickbeard/providers/zooqle.py
+index 3cc1e43d..1a91e477 100644
+--- a/sickbeard/providers/zooqle.py
++++ b/sickbeard/providers/zooqle.py
+@@ -22,7 +22,7 @@ from . import generic
+ from sickbeard import logger
+ from sickbeard.bs4_parser import BS4Parser
+ from sickbeard.helpers import tryInt
+-from lib.unidecode import unidecode
++from unidecode import unidecode
+ 
+ 
+ class ZooqleProvider(generic.TorrentProvider):
 diff --git a/sickbeard/rssfeeds.py b/sickbeard/rssfeeds.py
 index a10ffee9..04226f12 100644
 --- a/sickbeard/rssfeeds.py
@@ -167,5 +713,5 @@ index a10ffee9..04226f12 100644
  from sickbeard import helpers, logger
  from sickbeard.exceptions import ex
 -- 
-2.11.1
+2.12.0
 

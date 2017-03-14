@@ -1,7 +1,7 @@
 # Maintainer: Carl George < arch at cgtx dot us >
 
 pkgname="sickgear"
-pkgver="0.12.9"
+pkgver="0.12.10"
 pkgrel="1"
 pkgdesc="Automate your TV enjoyment with innovation, proven stability and reliability."
 arch=("any")
@@ -18,6 +18,7 @@ depends=("python2-backports-abc"
          "python2-guessit"
          "python2-html5lib"
          "python2-js2py"
+         "python2-oauth2"
          "python2-pyjsparser"
          "python2-pytz"
          "python2-requests"
@@ -25,6 +26,7 @@ depends=("python2-backports-abc"
          "python2-singledispatch"
          "python2-six"
          "python2-sqlalchemy"
+         "python2-unidecode"
          "python2-xmltodict")
 conflicts=("$pkgname-git")
 install="$pkgname.install"
@@ -33,11 +35,11 @@ source=("$url/archive/release_$pkgver.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles"
         "0001-fix-imports.patch")
-sha256sums=('1238baadbaada766e25cc9edb576fb4dff4030856e0dbb4733c763fb2e907799'
+sha256sums=('5077238247b378a84e4bfb498dd3b75916b7c3b22a5947afb59b62e3843e4a09'
             '91cd5e6bb57f23321926757497ba6cc8d4ac82784c73795279d17eab1d26a1dc'
             '8421dae047549f0db56278e8e2a0a46762804ac4552a5438c9093840fef0f57d'
             '43ed9ebfcda9e254084cc1bd43d3bca988139267406654f96a5f78ab223a323c'
-            'd1ab26e4303192cef47f379b0585152be5bb6c09de40902425a30fade86f92e1')
+            '8ef8949822129b474d49fef790c0a7ee24fd2744dccb819b0fafe077f93472df')
 
 prepare() {
     cd "SickGear-release_$pkgver"
@@ -45,9 +47,9 @@ prepare() {
     pushd lib
     rm -v -r \
         backports backports_abc.py bs4 certifi cfscrape.py chardet configobj \
-        feedparser guessit html5lib js2py pkg_resources.py pyjsparser pytz \
-        requests singledispatch.py singledispatch_helpers.py six.py \
-        sqlalchemy xmltodict.py
+        feedparser guessit html5lib js2py oauth2 pkg_resources.py pyjsparser \
+        pytz requests singledispatch.py singledispatch_helpers.py six.py \
+        sqlalchemy unidecode xmltodict.py
     popd
     patch -p1 -i "$srcdir/0001-fix-imports.patch"
     find -type f -executable -print -exec chmod -x {} \;
