@@ -1,7 +1,8 @@
 pkgbase = perl-html-tableparser
 	pkgdesc = HTML::TableParser - Extract data from an HTML table
 	pkgver = 0.40
-	pkgrel = 1
+	pkgrel = 2
+	url = https://metacpan.org/release/HTML-TableParser
 	arch = any
 	license = GPL3
 	depends = perl-html-parser
