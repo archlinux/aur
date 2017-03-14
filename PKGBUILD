@@ -3,8 +3,9 @@
 # Contributor: Samuel Littley <samuel.littley@toastwaffle.com>
 # Contributor: William Giokas <1007380@gmail.com>
 
-pkgname=minimetro
 _pkgname="Mini Metro"
+pkgname="${_pkgname,,}"
+pkgname="${pkgname/ }"
 pkgver=gamma18
 pkgrel=3
 pkgdesc='minimalistic subway layout game'
