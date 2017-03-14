@@ -71,7 +71,7 @@ echo -n "$_mozilla_api_key" >mozilla-api-key
 cat >.mozconfig <<END
 ac_add_options --enable-application=mail
 ac_add_options --prefix=/usr
-ac_add_options --libdir=/opt/
+ac_add_options --libdir=/usr/lib
 ac_add_options --enable-release
 ac_add_options --enable-gold
 ac_add_options --enable-pie
@@ -106,7 +106,7 @@ ac_add_options --disable-updater
 ac_add_options --enable-calendar
 ac_add_options --disable-tests ###
 ac_add_options --disable-debug-symbols ###
-ac_add_options --enable-rust 
+#ac_add_options --enable-rust 
 #export CC=clang
 #export CXX=clang++
 STRIP_FLAGS="--strip-debug"
@@ -132,8 +132,8 @@ build() {
   
   # Build
     msg2 "Running make.."
-    make -f client.mk clobber
-    make -f client.mk build
+    ./mozilla/mach clobber
+    ./mozilla/mach build
 }
 
 package() {
@@ -154,16 +154,16 @@ END
 
   for i in 16 22 24 32 48 256; do
     install -Dm644 other-licenses/branding/thunderbird/mailicon$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/thunderbird.png"
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
   done
 
-  install -Dm644 ../thunderbird-beta.desktop \
+  install -Dm644 ../$pkgname.desktop \
     "$pkgdir/usr/share/applications/thunderbird-beta.desktop"
-  install -Dm644 ../thunderbird-beta-safe.desktop \
+  install -Dm644 ../$pkgname-safe.desktop \
     "$pkgdir/usr/share/applications/thunderbird-beta-safe.desktop"
   # Use system-provided dictionaries
-  rm -r "$pkgdir"/opt/thunderbird-$_major/dictionaries
-  ln -Ts /usr/share/hunspell "$pkgdir/opt/thunderbird-$_major/dictionaries"
+  rm -r "$pkgdir"/usr/lib/thunderbird-$_major/dictionaries
+  ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/thunderbird-$_major/dictionaries"
   ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/thunderbird-$_major/hyphenation"
 
   # Install a wrapper to avoid confusion about binary path
