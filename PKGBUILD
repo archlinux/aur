@@ -3,13 +3,14 @@
 
 pkgname=i3lock-cac03-git
 pkgver=2bfcb7
-pkgrel=1
+pkgrel=2
 pkgdesc="An improved screenlocker based upon XCB and PAM (cac03 fork) with clock, layout indicator, CAPS indicator"
 arch=('i686' 'x86_64')
 url="https://github.com/cac03/i3lock"
 license=('MIT')
 groups=("i3")
 depends=('xcb-util-image' 'libev' 'cairo' 'libxkbcommon-x11')
+makedepends=('git' 'libxkbfile')
 options=('docs')
 provides=('i3lock')
 conflicts=('i3lock')
