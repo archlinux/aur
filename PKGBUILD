@@ -3,7 +3,7 @@
 
 _pkgname=onedrive
 pkgname=$_pkgname-git
-pkgver=r132.ge03d384
+pkgver=r132.g88d2a94
 pkgrel=1
 epoch=1
 pkgdesc='Free OneDrive client written in D'
@@ -14,11 +14,8 @@ depends=('curl' 'gcc-libs' 'glibc' 'sqlite')
 makedepends=('dmd')
 provides=("onedrive=$pkgver")
 conflicts=('onedrive')
-backup=('etc/onedrive.conf')
-source=('git+https://github.com/skilion/onedrive.git'
-        'https://patch-diff.githubusercontent.com/raw/skilion/onedrive/pull/165.patch')
-sha256sums=('SKIP'
-            'ca804dc6cc5577cfa81f1bae47e58010345b5441c4e4faf13b6deba6208f7601')
+source=('git+https://github.com/skilion/onedrive.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -27,10 +24,7 @@ pkgver() {
 }
 
 prepare() {
-  cd $_pkgname
-
-  sed -i 's|/usr/local|/usr|g' onedrive.service
-  patch -Np1 < ../165.patch
+  sed -i 's|/usr/local|/usr|g' $_pkgname/onedrive.service
 }
 
 build() {
