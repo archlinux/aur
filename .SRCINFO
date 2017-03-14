@@ -17,7 +17,7 @@ pkgbase = minimetro
 	source = minimetro.desktop
 	source = minimetro.png::http://dinopoloclub.com/press/mini_metro/images/icon.png
 	md5sums = 765bfdb52584df48784728e6476f47d7
-	md5sums = 0fe19f989f9606a825b67b9b379c9d6c
+	md5sums = 4b6c5e6caaa5c27cc66d8399aa29672d
 	md5sums = 8412b1e4cc11be455af993d921a68ced
 
 pkgname = minimetro

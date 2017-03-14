@@ -20,7 +20,7 @@ source=("hib://${_longname/ }-${pkgver}-linux.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.png::http://dinopoloclub.com/press/mini_metro/images/icon.png")
 md5sums=('765bfdb52584df48784728e6476f47d7'
-         '0fe19f989f9606a825b67b9b379c9d6c'
+         '4b6c5e6caaa5c27cc66d8399aa29672d'
          '8412b1e4cc11be455af993d921a68ced')
 
 package() {
@@ -45,5 +45,7 @@ package() {
 
   echo "#!/opt/$pkgname/$_longname.$CARCH" > "$pkgdir"/usr/bin/${pkgname}
   chmod +x "$pkgdir"/usr/bin/$pkgname
-  cp ${pkgname}.desktop "$pkgdir"/usr/share/applications
+
+  longname="$_longname" pkgname="$pkgname" \
+    envsubst < "$pkgname.desktop" > "$pkgdir/usr/share/applications/$pkgname.desktop"
 }

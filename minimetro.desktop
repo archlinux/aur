@@ -1,8 +1,8 @@
 [Desktop Entry]
 Version=1.0
 Encoding=UTF-8
-Name=Mini Metro
-Exec=minimetro
-Icon=minimetro
+Name=$longname
+Exec=$pkgname
+Icon=$pkgname
 Type=Application
 Categories=Game;StrategyGame;Simulation;
