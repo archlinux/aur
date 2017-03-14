@@ -1,0 +1,31 @@
+pkgbase = blackcoin-git
+	pkgdesc = BlackCoin is a PoS-based cryptocurrency. Provides blackcoind and blackcoin-qt
+	pkgver = v1.2.2.r4.gea23efdc
+	pkgrel = 1
+	url = https://blackcoin.co
+	arch = any
+	license = MIT
+	makedepends = qt5-base
+	makedepends = qt5-tools
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = boost-libs
+	makedepends = boost
+	makedepends = gcc
+	makedepends = qrencode
+	makedepends = make
+	makedepends = automoc4
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = libtool
+	depends = gcc-libs
+	depends = miniupnpc
+	depends = openssl
+	depends = db
+	provides = blackcoin-qt
+	provides = blackcoind
+	source = git+https://github.com/CoinBlack/blackcoin.git
+	sha256sums = SKIP
+
+pkgname = blackcoin-git
+
