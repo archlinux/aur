@@ -10,7 +10,7 @@ process to generate a keyfile sealed against the new kernel's PCR values.
 Update Process
 --------------
 
-The script facilitates te following kernel update process:
+The script facilitates the following kernel update process:
 
   1. Kernel is updated
   2. `luks-tpm` is called, either manually or via pacman hook, and sets a
@@ -21,7 +21,7 @@ The script facilitates te following kernel update process:
   6. `luks-tpm` is called, generating a new keyfile sealed by the TPM and
      removing the temporary passphrase
 
-###LUKS Key Slots
+### LUKS Key Slots
 
 The script requires two LUKS key slots to function: one for the sealed keyfile
 and one for the temporary passphrase. You are also *strongly* encouraged to
@@ -33,6 +33,13 @@ The default key slot layout is:
   * Slot 1: TPM keyfile
   * Slot 2: Temporary passphrase
 
+### Replace Key
+
+The `replace` action allows a TPM-sealed LUKS keyfile to be replaced
+(overwritten) by a new, randomly generated key. By default, LUKS slot 1 will be
+replaced. This action will not prompt for a passphrase, so the current keyfile
+must "unsealable" by the TPM and a valid LUKS key.
+
 Usage
 -----
 
@@ -41,6 +48,7 @@ Usage
 ###Actions
   * `temp`: Set a temporary LUKS passphrase
   * `reset`: Regenerate the LUKS TPM key and remove the temporary passphrase
+  * `replace`: Replace (overwrite) a LUKS TPM key
 
 ###Options
     -h         Print help

@@ -21,8 +21,9 @@ Usage: luks-tpm [OPTION]... DEVICE ACTION
 Manage the LUKS TPM keys on DEVICE
 
 Actions:
-  temp     Set a temporary LUKS passphrase
-  reset    Reset the LUKS TPM key
+  temp       Set a temporary LUKS passphrase
+  reset      Reset the LUKS TPM key using a passphrase
+  replace    Replace (overwrite) a LUKS TPM key
 
 Options:
   -h         Print this help text
@@ -41,8 +42,6 @@ EOF
 }
 
 add_temp_key() {
-  return_code=0
-  create_tmpfs
   tpm_unsealdata -i "$SEALED_KEYFILE" -o "$KEYFILE" $WELL_KNOWN
 
   echo "Preparing to set a temporary LUKS passphrase..."
@@ -52,21 +51,16 @@ add_temp_key() {
     echo "to generate a new TPM keyfile and remove this temporary key"
   else
     echo "A temporary passphrase was not set" >&2
-    return_code=5
+    RETURN_CODE=5
   fi
-
-  destroy_tmpfs
-  exit $return_code
 }
 
 reset_tpm_key() {
-  return_code=0
   read -s -p "Enter any existing LUKS passphrase: " PASSPHRASE
   echo
 
   echo "Generating new LUKS key..."
-  create_tmpfs
-  dd bs=512 count=4 if=/dev/urandom of="$KEYFILE" > /dev/null 2>&1
+  generate_keyfile
 
   echo "Removing current TPM key from slot $TPM_KEY_SLOT..."
   echo $PASSPHRASE | cryptsetup luksKillSlot $ROOT_DEVICE $TPM_KEY_SLOT
@@ -85,11 +79,29 @@ reset_tpm_key() {
   else
     echo "There was an error resetting the TPM key in slot $TPM_KEY_SLOT!" >&2
     echo "The temporary reset ket in slot $RESET_KEY_SLOT has not been removed." >&2
-    return_code=4
+    RETURN_CODE=4
   fi
+}
 
-  destroy_tmpfs
-  exit $return_code
+replace_tpm_key() {
+  ORIGINAL_KEYFILE="$KEYFILE.orig"
+
+  echo "Usealing current keyfile..."
+  tpm_unsealdata -i "$SEALED_KEYFILE" -o "$ORIGINAL_KEYFILE" $WELL_KNOWN
+
+  generate_keyfile
+
+  echo "Replacing LUKS key..."
+  if cryptsetup luksChangeKey $ROOT_DEVICE "$KEYFILE" --key-slot $TPM_KEY_SLOT --key-file "$ORIGINAL_KEYFILE"; then
+    echo "Sealing new keyfile with the TPM..."
+    if ! tpm_sealdata $PCRS -i "$KEYFILE" -o "$SEALED_KEYFILE" $WELL_KNOWN; then
+      echo "There was an error sealing the new keyfile!" >&2
+      RETURN_CODE=7
+    fi
+  else
+    echo "There was an error replacing the TPM key in slot $TPM_KEY_SLOT!" >&2
+    RETURN_CODE=6
+  fi
 }
 
 create_tmpfs() {
@@ -103,6 +115,10 @@ create_tmpfs() {
 
 destroy_tmpfs() {
   umount "$TMPFS_MOUNT"
+}
+
+generate_keyfile() {
+  dd bs=512 count=4 if=/dev/urandom of="$KEYFILE" > /dev/null 2>&1
 }
 
 ORIGINAL_ARGS="$@"
@@ -171,6 +187,7 @@ shift $((OPTIND-1))
 
 ROOT_DEVICE="$1"
 KEYFILE="$TMPFS_MOUNT/keyfile"
+RETURN_CODE=0
 
 if [ -z $ROOT_DEVICE ]; then
   echo "Device not specified!" >&2
@@ -183,12 +200,18 @@ if [ $EUID -ne 0 ]; then
   exit 2
 fi
 
-if [ "$2" = "temp" ]; then
-  add_temp_key
-elif [ "$2" = "reset" ]; then
-  reset_tpm_key
-else
-  echo "Invalid action!" >&2
-  usage >&2
-  exit 1
-fi
+case "$2" in
+  temp) ACTION=add_temp_key;;
+  reset) ACTION=reset_tpm_key;;
+  replace) ACTION=replace_tpm_key;;
+  *)
+    echo "Invalid action!" >&2
+    usage >&2
+    exit 1
+    ;;
+esac
+
+create_tmpfs
+$ACTION
+destroy_tmpfs
+exit $RETURN_CODE
