@@ -8,12 +8,14 @@ arch=(any)
 url="https://github.com/galli-leo/Radarr"
 license=('GPL3')
 depends=('mono' 'libmediainfo' 'sqlite' 'libgdiplus')
-optdepends=('sabnzbd: an NZB downloader'
-            'nzbget: an NZB downloader'
-            'transmission-cli: a torrent downloader (CLI and daemon version)'
-            'transmission-gtk: a torrent downloader (GTK+ version)'
-            'transmission-qt: a torrent downloader (Qt version)'
-            'deluge: a torrent downloader')
+optdepends=('sabnzbd: usenet downloader'
+            'nzbget: usenet downloader'
+            'transmission-cli: torrent downloader (CLI and daemon)'
+            'transmission-gtk: torrent downloader (GTK+)'
+            'transmission-qt: torrent downloader (Qt)'
+            'deluge: torrent downloader'
+            'rtorrent: torrent downloader'
+            'jackett: torrent indexer proxy')
 install='radarr.install'
 provides=('radarr')
 source=("https://github.com/galli-leo/Radarr/releases/download/v${pkgver}/Radarr.develop.${pkgver}.linux.tar.gz"
