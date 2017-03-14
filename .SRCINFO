@@ -1,6 +1,6 @@
 pkgbase = supermodel-svn
 	pkgdesc = A Sega Model 3 Arcade Emulator
-	pkgver = 20160515.411
+	pkgver = 20170313.528
 	pkgrel = 1
 	url = http://www.supermodel3.com/
 	install = supermodel.install
@@ -14,9 +14,11 @@ pkgbase = supermodel-svn
 	depends = glu
 	source = supermodel.sh
 	source = multiuser.patch
+	source = R3DScrollFog.patch
 	source = supermodel-svn::svn+https://svn.code.sf.net/p/model3emu/code/trunk
 	md5sums = ea8274c2a37acddd026fce9c831530cc
 	md5sums = 2169d888da85c9baf9f55fc18c738ef8
+	md5sums = 5577ca768ef106f0ff69ca875a36a62f
 	md5sums = SKIP
 
 pkgname = supermodel-svn

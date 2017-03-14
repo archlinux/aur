@@ -1,0 +1,10 @@
+--- a/Makefiles/Makefile.SDL.UNIX.GCC	2017-03-14 23:48:36.703225177 +0100
++++ b/Makefiles/Makefile.SDL.UNIX.GCC	2017-03-14 23:49:25.259889742 +0100
+@@ -112,6 +112,7 @@
+ 	$(OBJ_DIR)/amp_util.o \
+ 	$(OBJ_DIR)/Crypto.o \
+ 	$(OBJ_DIR)/Logger.o \
++	$(OBJ_DIR)/R3DScrollFog.o \
+ 	$(OBJ_DIR)/Format.o
+ 
+ # If built-in debugger enabled, include all debugging classes
