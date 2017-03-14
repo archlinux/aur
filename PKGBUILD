@@ -5,7 +5,7 @@
 #Contributor: Sebastien Duquette <ekse.0x@gmail.com>
 #Contributor: Marc Poiroud <marci1@archlinux.fr>
 pkgname=verbiste
-pkgver=0.1.43
+pkgver=0.1.44
 pkgrel=1
 pkgdesc="Verbiste is a French conjugation system."
 url="http://sarrazip.com/dev/verbiste.html"
@@ -15,7 +15,7 @@ makedepends=('libgnomeui' 'perl-xml-parser')
 arch=('i686' 'x86_64')
 install=${pkgname}.install
 source=("http://perso.b2b2c.ca/~sarrazip/dev/${pkgname}-${pkgver}.tar.gz")
-md5sums=('0271dd2d1feafecf75c5c2e892db3858')
+md5sums=('643412579437653beb4326a79c757b6c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
