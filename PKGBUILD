@@ -12,7 +12,7 @@
 pkgbase=mesa-git
 pkgname=('mesa-git' 'mesa-libgl-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.1.0_devel.89730.3d253d330a
+pkgver=17.1.0_devel.89829.aed2714145
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'libdrm' 'glproto'
@@ -23,18 +23,16 @@ url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git+https://anongit.freedesktop.org/git/mesa/mesa.git'
         'LICENSE'
-        'disable-pthread-stubs-on-linux.patch'
 )
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            '1a8ffbc194a8264ae08cad7b886ec87cd331047f35272fdcb11901ddb0c6f64e2cd69af946e01254c9df8fe881ad1e42162202e1bc38db97aaf294313fb0f9ce'
 )
 
-prepare() {
-    cd mesa
+# prepare() {
+#    cd mesa
     # pthread-stubs is useless on linux
-    patch -Np1 -i "$srcdir"/disable-pthread-stubs-on-linux.patch
-}
+#    patch -Np1 -i "$srcdir"/disable-pthread-stubs-on-linux.patch
+#}
 
 pkgver() {
     cd mesa
