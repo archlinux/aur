@@ -6,7 +6,7 @@ pkgver=1.0.136
 _gwtver=2.7.0
 _ginver=1.5
 _clangver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source and enterprise-ready professional software for the R community"
 arch=('i686' 'x86_64')
 url="http://www.rstudio.com/"
@@ -64,7 +64,7 @@ build() {
 	
 	cmake -DRSTUDIO_TARGET=Desktop \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DQT_QMAKE_EXECUTABLE=/usr/lib/qt/bin/qmake \
+		-DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt5 \
 		-DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio
 }
 

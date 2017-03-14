@@ -1,7 +1,7 @@
 pkgbase = rstudio-desktop
 	pkgdesc = Open source and enterprise-ready professional software for the R community
 	pkgver = 1.0.136
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rstudio.com/
 	install = rstudio-desktop.install
 	arch = i686
