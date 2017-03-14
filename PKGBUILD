@@ -5,7 +5,7 @@
 pkgbase=linux-lts-userns
 #pkgbase=linux-lts-userns-custom
 _srcname=linux-4.9
-pkgver=4.9.13
+pkgver=4.9.14
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -20,19 +20,21 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
         '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         linux-lts-userns.preset
+        change-default-console-loglevel.patch
         ubuntu-unprivileged-overlayfs.patch
-        change-default-console-loglevel.patch)
+        0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch)
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            '87a0f07dd393e2d08850f0536417d091684535ff0c8ab8f8d9aeab1db38589bf'
+            '056282412144bdb8bb1d33a5b22a5605ed836a8061dfd65926e25ba71119d518'
             'SKIP'
             'd577759532f56b0df073cdc0f2aa3975f1325b8a91851050bb678e18ace6700c'
             '521943d91f3e2a42b9848c429063db2b554e4433366fa8341ab9186a1151d0ca'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             '9c75f46f3b52fdc5a5d4ababf18331e61201e1a8ef0d4a188289d6b15e6b138d'
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '01a6d59a55df1040127ced0412f44313b65356e3c680980210593ee43f2495aa'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
+            'd0b412416963cefbb9baa06ef055e2b9485e2b9f948da14dfe50ee863577405c')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
              )
@@ -47,6 +49,9 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # patch for CVE-2017-2636)
+  patch -p1 -i "${srcdir}/0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
