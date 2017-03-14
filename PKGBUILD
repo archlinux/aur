@@ -1,8 +1,8 @@
-# Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
+# Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 # Contributor: Markus Heuser <markus.heuser@web.de>
 
 pkgname=samtools
-pkgver=1.3.1
+pkgver=1.4
 pkgrel=1
 pkgdesc="tools for manipulating next-generation sequencing data"
 arch=('i686' 'x86_64')
@@ -12,14 +12,13 @@ depends=('htslib')
 optdepends=('luajit: needed for r2plot.lua vcfutils.lua'
             'python2: needed for varfilter.py')
 options=('staticlibs')
-source=(https://github.com/samtools/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2)
-md5sums=('a7471aa5a1eb7fc9cc4c6491d73c2d88')
+source=(https://github.com/samtools/samtools/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2)
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
 
   # prevent shipped htslib to be used
-  rm -rf htslib-1.3.1
+  rm -rf htslib-$pkgver || exit 1
 
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' \
       -i misc/varfilter.py
@@ -57,3 +56,5 @@ package() {
 
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
+
+md5sums=('8cbd7d2a0ec16d834babcd6c6d85d691')
