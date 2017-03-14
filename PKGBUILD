@@ -10,7 +10,7 @@ license=('LGPL3' 'GPL')
 
 depends=('gcc-libs' 'sh')
 makedepends=('mercurial')
-provides=('gmp')
+provides=("gmp=$pkgver")
 conflicts=('gmp')
 
 source=(
@@ -35,7 +35,7 @@ pkgver() {
 }
 
 build() {
-  cd "gmp"
+	cd "gmp"
 
 	# Optional: Use makepkg config for debug mode (see your /etc/makepkg.conf)
 	#CFLAGS=${DEBUG_CFLAGS}
@@ -43,21 +43,21 @@ build() {
 
 	./.bootstrap
 
-  ./configure --build=${CHOST} \
-    --prefix=/usr \
-    --enable-cxx \
-    --enable-fat
+	./configure --build=${CHOST} \
+		--prefix=/usr \
+		--enable-cxx \
+		--enable-fat
 
-  make
+	make
 }
 
 check() {
-  cd "gmp"
-  make check
+	cd "gmp"
+	make check
 }
 
 package() {
-  cd "gmp"
-  make DESTDIR="${pkgdir}" install
+	cd "gmp"
+	make DESTDIR="${pkgdir}" install
 }
 
