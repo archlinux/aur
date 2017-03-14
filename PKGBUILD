@@ -3,8 +3,8 @@
 # Contributor: Frederik Schwan frederik dot schwan at linux dot com>
 
 pkgname=unifi-unstable
-pkgver=5.5.6.b559495f0c
-_pkgver=5.5.6-b559495f0c
+pkgver=5.5.7.0cbda0cd4a
+_pkgver=5.5.7-0cbda0cd4a
 pkgrel=1
 pkgdesc='Centralized management system for Ubiquiti UniFi AP'
 arch=('any')
@@ -19,7 +19,7 @@ source=("UniFi-$pkgver.zip::https://www.ubnt.com/downloads/unifi/$_pkgver/UniFi.
         'unifi.service'
         'unifi.sysusers'
         'LICENSE')
-md5sums=('67de221639a2a49b39c0dc12c53b2db1'
+md5sums=('f6410763493201ce022717a13c48fb56'
          '79998cabf110d9a96ba4d3367101c94c'
          'a92291a0074a5dcf414da4dfe812bc2a'
          '2c5d961c64e9309baf12f83e401ff2a4')
