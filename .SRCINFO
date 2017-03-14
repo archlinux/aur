@@ -1,7 +1,7 @@
 pkgbase = ncpfs-module-dkms
 	pkgdesc = The NCPFS kernel module (DKMS)
 	pkgver = 1
-	pkgrel = 6
+	pkgrel = 8
 	url = https://www.kernel.org/
 	install = ncpfs-module-dkms.install
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = ncpfs-module-dkms
 	depends = dkms
 	source = ncpfs-module.tar.gz
 	source = dkms.conf
-	sha512sums = 390424e17bfeac48cab8b1e24d898aed8a57ca66b804f215d8c2c03a58265c94af04b0b66c2dbcf1b42cc0d70b15693c450ad9fae48e2c83c4cd16f0397fb073
+	sha512sums = 41125c2701d34709d1a5e1167d07421789cd8bff31517f236c96243f38eb6c6a68fedf74ef0689486c774a074dd957326c4b3978cbc695663db9a10bce2355db
 	sha512sums = 4319a2e5730b7052cb0111aaf5c38ace1d7ec33ea63256b81e35a7c2af408860bb7460e9f8f8e1b0ebbf6cf9326a6505334a71cf9b258bff3f1446be700d5542
 
 pkgname = ncpfs-module-dkms
