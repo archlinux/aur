@@ -7,7 +7,7 @@
 # Based on community/clementine PKGBUILD
 
 pkgname=clementine-git
-pkgver=1.3.1.r306.g021570781
+pkgver=1.3.1.r312.gf7eea6c50
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 url='http://www.clementine-player.org/'
@@ -24,8 +24,8 @@ optdepends=('gst-plugins-base: "Base" plugin libraries'
             'gst-plugins-ugly: "Ugly" plugin libraries'
             'gst-libav: Libav plugin'
             'gvfs: Various devices support')
-source=("git+https://github.com/clementine-player/Clementine.git" "moc-fix.diff")
-sha256sums=('SKIP' '39325b46ad17259e8a1a6987d0875375c13c352760610f4cb05b6c043ff07dd4')
+source=("git+https://github.com/clementine-player/Clementine.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/Clementine"
@@ -34,7 +34,6 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/Clementine"
-    git apply "$srcdir/moc-fix.diff"
 }
 
 build() {
