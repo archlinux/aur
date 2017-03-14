@@ -1,6 +1,6 @@
 pkgbase = oggvideotools
 	pkgdesc = A collection of tools for manipulating Ogg video files
-	pkgver = 0.8a
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = http://dev.streamnik.de/oggvideotools.html
 	arch = i686
@@ -8,12 +8,13 @@ pkgbase = oggvideotools
 	license = GPL
 	makedepends = cmake
 	makedepends = pkgconfig
+	makedepends = boost
 	depends = gd
 	depends = libtheora
 	depends = libvorbis
 	depends = sdl
-	source = http://downloads.sourceforge.net/project/oggvideotools/oggvideotools/oggvideotools-0.8a/oggvideotools-0.8a.tar.gz
-	md5sums = e7fcfcc4e91187f7a2ca4aea26c2ce64
+	source = https://downloads.sourceforge.net/oggvideotools/oggvideotools-0.9.1.tar.bz2
+	sha256sums = d9dbf7897b7cea98612209d80b9127473c97d6ee6cb0dccfc2b38fe3e8e29523
 
 pkgname = oggvideotools
 
