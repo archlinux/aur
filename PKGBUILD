@@ -1,23 +1,21 @@
-# Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
+# Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=bcftools
-pkgver=1.3.1
+pkgver=1.4
 pkgrel=1
 pkgdesc="Reading/writing BCF2/VCF/gVCF files and calling/filtering/summarising SNP and short indel sequence variants"
 arch=('i686' 'x86_64')
 url="http://samtools.github.io/bcftools/"
 license=('GPL')
 depends=('gsl' 'htslib')
-source=(https://github.com/samtools/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2
+source=(https://github.com/samtools/bcftools/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2
         makefile-system-htslib.patch)
-md5sums=('575001e9fca37cab0c7a7287ad4b1cdb'
-         '3547e133251f4d088cb087019183efa7')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
 
   # prevent shipped htslib to be used
-  rm -rf htslib-1.3.1
+  rm -rf htslib-$pkgver
 
   # patch Makefile to make it work with a system-provided htslib
   patch -i $srcdir/makefile-system-htslib.patch
@@ -40,3 +38,6 @@ package() {
 
   make prefix=/usr plugindir=/usr/lib/$pkgname USE_GPL=1 DESTDIR=$pkgdir install
 }
+
+md5sums=('50ccf0a073bd70e99cdb3c8be830416e'
+         'baba7d2fc8947c7ec29ff4498637ea85')
