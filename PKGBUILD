@@ -1,14 +1,14 @@
 _pkgbase=gimp
 pkgname=lib32-gimp
-pkgver=2.8.18
-pkgrel=5
+pkgver=2.8.20
+pkgrel=1
 pkgdesc="GNU Image Manipulation Program (32-bit)"
 arch=('x86_64')
 url="http://www.gimp.org/"
 depends=( 'lib32-glibc' 'lib32-cairo' 'lib32-gdk-pixbuf2' 'lib32-glib2' 'lib32-pango' 'gimp')
 license=('GPL' 'LGPL')
 source=(https://www.archlinux.org/packages/extra/i686/gimp/download/#gimp-i686.pkg.tar.xz)
-md5sums=('702ce43552b9eba15b6e857a009d5f7a')
+md5sums=('630c566bbc8a3baf638ae0a89b78f89f')
 pkgver() {
         cat $srcdir/.PKGINFO | grep -oP '(?<=pkgver = )\d+\.\d+\.\d+'
 }
