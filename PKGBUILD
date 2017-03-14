@@ -15,7 +15,7 @@ md5sums=('SKIP')
 prepare() {
 	cd ${pkgname}
 	cmake ./ -DCMAKE_INSTALL_PREFIX=/usr/
-	make all
+	make
 }
 
 package() {
@@ -38,6 +38,7 @@ package() {
 
 	install -Dm644 tcmu.conf \
 		"${pkgdir}/etc/tcmu/tcmu.conf"
+	echo log_level = 4 >> "${pkgdir}/etc/tcmu/tcmu.conf"
 
 	install -Dm644 libtcmu.so   "${pkgdir}/usr/lib/libtcmu.so"
 	install -Dm644 libtcmu.so.1 "${pkgdir}/usr/lib/libtcmu.so.1"
