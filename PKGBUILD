@@ -2,7 +2,7 @@
 
 pkgname=madx-dev
 pkgver=5.02.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Accelerator Optics simulation code, latest development release"
 url="http://cern.ch/mad"
 license=("custom")
@@ -16,12 +16,14 @@ arch=('x86_64')
 tarball=madx-src.tgz
 extract=madx-${pkgver}
 
-source=("http://madx.web.cern.ch/madx/releases/${pkgver}/${tarball}")
-md5sums=('11307450b9a25a9d75c7bca42ae18c2c')
+source=("http://madx.web.cern.ch/madx/releases/${pkgver}/${tarball}" madx_vim.diff)
+md5sums=('11307450b9a25a9d75c7bca42ae18c2c'
+         'befa90472e7b5725406c1dab5811102d')
 
 prepare() {
     cd ${srcdir}/${extract}
     find . -name '._*' -print0 | xargs -0 -r rm
+    patch -p0 < ${srcdir}/madx_vim.diff
 
     mkdir -p ${srcdir}/build
     cd ${srcdir}/build

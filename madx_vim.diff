@@ -1,0 +1,21 @@
+--- syntax/vim/madx.vim	2013-04-30 14:30:21.000000000 +0200
++++ syntax/vim/madx.vim	2016-10-07 14:14:39.414427774 +0200
+@@ -9,11 +9,11 @@
+ " au BufNewFile,BufRead *.madx,*.seq,*.str,*.mask setf madx
+ "
+ 
+-set ignorecase
++setlocal ignorecase
+ 
+ syntax clear
+ syntax case ignore
+-set iskeyword=a-z,A-Z,48-57,_,.
++setlocal iskeyword=a-z,A-Z,48-57,_,.
+ 
+ 
+ 
+@@ -127,4 +127,3 @@
+ 
+ highlight link madxOutput Comment
+ highlight link madxOutput2 Comment
+-
