@@ -12,6 +12,7 @@ pkgbase = python-fastparquet
 	depends = python
 	depends = python-numba
 	depends = python-numpy
+	depends = python-pytest
 	depends = python-thriftpy
 	optdepends = python-snappy
 	source = https://github.com/dask/fastparquet/archive/0.0.5.tar.gz

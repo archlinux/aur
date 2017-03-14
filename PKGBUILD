@@ -10,6 +10,7 @@ depends=('cython'
     'python'
     'python-numba'
     'python-numpy'
+    'python-pytest'
     'python-thriftpy')
 makedepends=('python-setuptools')
 optdepends=('python-snappy')
