@@ -4,7 +4,7 @@ pkgver=17.3.10
 pkgrel=1
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
 url="http://www.picolisp.com"
-arch=('X86_64')
+arch=('x86_64')
 license=('MIT')
 depends=('bash' 'openssl')
 optdepends=('jre: for picolisp ersatz.jar')
@@ -16,28 +16,17 @@ md5sums=("SKIP"
          "SKIP")
 install=$pkgname.install
 
-pkgver() {
-    cd "${pkgname}"
-    # cutting off 'foo-' prefix that presents in the git tag
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${srcdir}/${pkgname}/src64"
-  cp -f ../../../mkAsm ./ 
-}
-
 build() {
-  # build 32bit version and tools first
+  # build tools first
   cd "${srcdir}/${pkgname}/src"
-  make all
+  make tools gate
   make clean
  
   # build the 64bit version
   cd "${srcdir}/${pkgname}/src64"
-    # real 64-bit env
-    make 
-    make clean
+  # real 64-bit env
+  make 
+  make clean
 }
 
 package() {
