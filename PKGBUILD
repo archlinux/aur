@@ -1,6 +1,6 @@
 # Maintainer: Nils Czernia <nils[at]czserver[dot[de>
 pkgname=moodle
-pkgver=3.2.1
+pkgver=3.2.2
 _pkgver='stable32'
 pkgrel=1
 pkgdesc='Moodle is a open-source software learning management system'
@@ -11,7 +11,7 @@ depends=('php' 'php-intl' 'php-gd')
 conflicts=('moodle-plus')
 options=('!strip')
 source=("https://download.moodle.org/${_pkgver}/moodle-${pkgver}.tgz")
-sha256sums=('c12afd72faf7505bdbe22a8bd056afc615517acea5c97ef8415357b25226fbed')
+sha256sums=('7d520e781756a020314d913521a612e4a1b188b074eec043dc29e897f66585cb')
 
 package() {
     cd "$pkgdir"
