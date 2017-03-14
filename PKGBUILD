@@ -2,7 +2,7 @@
 
 PKGEXT=.pkg.tar
 pkgname=shotcut-bin
-pkgver=170201
+pkgver=170302
 pkgrel=1
 pkgdesc="A free, open source, cross-platform video editor."
 arch=(x86_64)
@@ -13,7 +13,7 @@ provides=('shotcut')
 install="$pkgname.install"
 source=("https://github.com/mltframework/shotcut/releases/download/v${pkgver::2}.${pkgver:2:2}/shotcut-linux-x86${CARCH/*86}-$pkgver.tar.bz2"
        "shotcut.png")
-md5sums=('31eb28b44ca4744f0274ceb3b842b9d7' '457bc6ae5a299dee017521ec058e833b')
+md5sums=('77e62ddb805a0d46599bc80e8aa29723' '457bc6ae5a299dee017521ec058e833b')
 
 
 prepare() {
