@@ -8,8 +8,8 @@ _mirror=mirror
 
 # Versions
 pkgname=${_pkgname}-editor-${_version}-${_mirror}
-_pkgrel=4
-_pkgver=1.15.0
+_pkgrel=0
+_pkgver=1.16.0
 pkgver="${_pkgver}.beta${_pkgrel}"
 _ver=$_pkgver-beta${_pkgrel}
 pkgrel=1
@@ -24,7 +24,7 @@ conflicts=('atom-editor-beta-bin' 'atom-editor-beta-arch' 'atom-editor-beta' 'at
 install=atom.install
 source=("${_pkgname}-${_pkgver}-${_version}${_pkgrel}.tar.gz::$url/${_pkgver}-${_version}${_pkgrel}/v${_pkgver}-${_version}${_pkgrel}.tar.gz"
 "${_pkgname}-${_version}.desktop")
-sha256sums=('9fe692b475806022e8221050f1a521a14c28622717204d20d3b55ff739ca47d9' 
+sha256sums=('fcb72308082809b182cc45f74f23230e52dc6a7a6b1523e23055ea114ed632a1' 
             'c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6')
 prepare() {
 	cd "$srcdir/${_pkgname}-${_pkgver}-${_version}${_pkgrel}"
