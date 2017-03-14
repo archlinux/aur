@@ -1,4 +1,4 @@
-# Maintainer: Bláithín Nic Aodih <blawheen@gmail.com>
+# Maintainer: Bláithín Nic Aoidh <blawheen@gmail.com>
 
 _pkgname=ranwhen
 pkgname=${_pkgname}-git
