@@ -1,7 +1,7 @@
 pkgbase = digikam-without-akonadi-mediawiki-vkontakte
 	pkgdesc = minimized build of Digikam for non-KDE users, without Plasma/KDE integration
-	pkgver = 5.4.0
-	pkgrel = 3
+	pkgver = 5.5.0
+	pkgrel = 1
 	url = http://www.digikam.org/
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = digikam-without-akonadi-mediawiki-vkontakte
 	depends = lensfun
 	depends = opencv
 	depends = knotifyconfig
-	depends = marble
+	depends = marble-common
 	depends = threadweaver
 	depends = kcalcore
 	optdepends = kipi-plugins: export to various online services
@@ -26,8 +26,8 @@ pkgbase = digikam-without-akonadi-mediawiki-vkontakte
 	provides = digikam
 	conflicts = digikam
 	conflicts = digikam-git
-	source = http://download.kde.org/stable/digikam/digikam-5.4.0.tar.xz
-	sha1sums = 6c58ee30cd84b40acf4427f1bb9dbb8b891eb894
+	source = http://download.kde.org/stable/digikam/digikam-5.5.0.tar.xz
+	sha256sums = df9cbf1b8dbfb9235cebc97e77c02fcb1498c5a905c7fd3b9fb42fd7accc6252
 
 pkgname = digikam-without-akonadi-mediawiki-vkontakte
 
