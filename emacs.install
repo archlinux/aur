@@ -9,7 +9,9 @@ speedbar srecode tramp url vip viper widget wisent woman)
 
 post_install() {
   gtk-update-icon-cache -q -t -f ${ICON_PATH}
-  update-desktop-database -q
+  if which update-desktop-database > /dev/null 2> /dev/null; then
+    update-desktop-database -q
+  fi
 
   [[ -x usr/bin/install-info ]] || return 0
   for f in ${INFO_FILES[@]}; do
@@ -23,7 +25,9 @@ post_upgrade() {
 
 pre_remove() {
   gtk-update-icon-cache -q -t -f ${ICON_PATH}
-  update-desktop-database -q
+  if which update-desktop-database > /dev/null 2> /dev/null; then
+    update-desktop-database -q
+  fi
 
   [[ -x usr/bin/install-info ]] || return 0
   for f in ${INFO_FILES[@]}; do
