@@ -1,11 +1,11 @@
 pkgname=('python2-pathos-3fix')
 _module='pathos'
 pkgver='0.2.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="parallel graph management and execution in heterogeneous computing fixed package - fixed deps"
 url="http://www.cacr.caltech.edu/~mmckerns/pathos.htm"
 depends=('python2' 'python2-dill' 'python2-pox' 'python2-ppft' 'python2-multiprocess')
-optdepends=('python2-pyina-git' 'python2-rpyc')
+optdepends=('python2-pyina' 'python2-rpyc')
 provides=('python2-pathos')
 conflicts=('python2-pathos')
 makedepends=('python2-setuptools')
