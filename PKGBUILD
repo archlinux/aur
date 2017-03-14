@@ -9,7 +9,7 @@
 
 pkgname=emacs-24bit
 pkgver=25.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The extensible, customizable, self-documenting real-time display editor"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -18,11 +18,11 @@ depends=('librsvg' 'gpm' 'giflib' 'libxpm' 'libotf' 'm17n-lib' 'gtk3' 'hicolor-i
 install=emacs.install
 validpgpkeys=('BE216115' 'B29426DEFB07724C3C35E5D36592E9A3A0B0F199' '28D3BED851FDF3AB57FEF93C233587A47C207910')
 source=(ftp://ftp.gnu.org/gnu/emacs/emacs-$pkgver.tar.xz{,.sig}
-        https://gist.githubusercontent.com/choppsv1/3364fd6658ef498b5e06151217187017/raw/82f872d78a101effabd0cbfe7959c464b7471b3c/emacs-25.1-24bit.diff)
+        https://gist.githubusercontent.com/choppsv1/3364fd6658ef498b5e06151217187017/raw/b9ba9e9000685abecf7ad954050b182eaef823e1/emacs-25.1-24bit.diff)
 
 sha256sums=('19f2798ee3bc26c95dca3303e7ab141e7ad65d6ea2b6945eeba4dbea7df48f33'
             'SKIP'
-            'f51541cae7c5f2aec6fe760f78e55d34794454fb58dc25e1e8be911fd956bfe0')
+            'e07dfcbe420c8fd08cc3286d6779fda6ca29ee14b05ed0c47ea1f417b90ea9b1')
 
 provides=('emacs=25.1')
 conflicts=(emacs emacs-nox)
