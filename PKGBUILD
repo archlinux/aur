@@ -19,7 +19,7 @@ install=$pkgname.install
 build() {
   # build tools first
   cd "${srcdir}/${pkgname}/src"
-  make all
+  make tools gate
   make clean
  
   # build the 64bit version
