@@ -32,6 +32,9 @@ package_simavr-asc() {
 
 package_simavr-asc-examples() {
   depends=(simavr-asc=$pkgver freeglut glu)
+  provides=(simavr-examples)
+  conflicts=(simavr-examples)
+  replaces=(simavr-examples)
   cd "$srcdir/$pkgbase"
   install -d $pkgdir/usr/share/doc
   cp -r examples $pkgdir/usr/share/doc/$pkgbase
