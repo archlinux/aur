@@ -1,6 +1,6 @@
 pkgbase = lxtask-git
 	pkgdesc = Lightweight X11 task manager and system monitor for LXDE
-	pkgver = 0.1.7.r410.20170121
+	pkgver = 0.1.8.r411.20170125
 	pkgrel = 1
 	url = http://lxde.org/
 	arch = i686
