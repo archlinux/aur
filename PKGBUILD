@@ -2,7 +2,7 @@
 
 pkgname=mytetra
 pkgver=1.42.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Personal manager for data memorization and structuring notes"
 arch=('x86_64')
 url="https://github.com/xintrea/mytetra_dev"

@@ -1,7 +1,7 @@
 pkgbase = mytetra
 	pkgdesc = Personal manager for data memorization and structuring notes
 	pkgver = 1.42.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xintrea/mytetra_dev
 	arch = x86_64
 	license = GPL3
