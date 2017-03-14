@@ -1,7 +1,7 @@
 # Maintainer: Corey Hinshaw <coreyhinshaw@gmail.com>
 
 pkgname=luks-tpm
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Utility to manage LUKS keyfiles sealed by the TPM"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('tpm-tools' 'trousers' 'cryptsetup' 'coreutils' 'util-linux')
 source=('luks-tpm')
 
-sha256sums=('c3e1369c91aac6d5bcf6efd1d9b506abd2cf6ddf35da1381887649206b51eef8')
+sha256sums=('45e4009da6ff8810cb38f4178a23023c0111563d2a500292459c58d6dd5e058c')
 
 package() {
   install -Dm755 luks-tpm "${pkgdir}/usr/bin/luks-tpm"

@@ -173,7 +173,7 @@ while getopts ":hm:k:t:r:p:z" opt; do
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
-      usage >2&
+      usage >&2
       exit 1
       ;;
     :)
