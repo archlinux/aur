@@ -1,0 +1,24 @@
+pkgbase = js52
+	pkgdesc = JavaScript interpreter and libraries
+	pkgver = 52.0
+	pkgrel = 1
+	url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey
+	arch = i686
+	arch = x86_64
+	license = MPL
+	makedepends = python2
+	makedepends = zip
+	makedepends = autoconf2.13
+	depends = nspr
+	depends = gcc-libs
+	depends = readline
+	depends = zlib
+	depends = icu
+	options = !staticlibs
+	source = https://ftp.mozilla.org/pub/firefox/releases/52.0/source/firefox-52.0.source.tar.xz
+	source = link-mozglue.patch
+	md5sums = 76cf84d46590f60f13b0b3dda65d19ae
+	md5sums = 31bf0b1a043169bd1c651331ef9c9dd8
+
+pkgname = js52
+
