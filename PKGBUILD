@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 prepare() {
 	cd ${pkgname}
-	cmake ./
+	cmake ./ -DCMAKE_INSTALL_PREFIX=/usr/
 	make all
 }
 
@@ -43,7 +43,7 @@ package() {
 	install -Dm644 libtcmu.so.1 "${pkgdir}/usr/lib/libtcmu.so.1"
 
 	for file in handler_rbd.so handler_glfs.so handler_qcow.so handler_file_async.so handler_file_optical.so; do
-		install -Dm644 $file "${pkgdir}/usr/lib/$file"
+		install -Dm644 $file "${pkgdir}/usr/lib/tcmu-runner/$file"
 	done
 
 	for file in libtcmu.h libtcmu_common.h tcmu-runner.h; do
