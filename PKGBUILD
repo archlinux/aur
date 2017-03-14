@@ -1,7 +1,7 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=airvpn-beta-bin
-pkgver=2.12.3
+pkgver=2.12.4
 pkgrel=1
 pkgdesc='AirVPN client "Eddie" based on OpenVPN, beta version.'
 arch=('i686' 'x86_64')
@@ -14,17 +14,16 @@ conflicts=('airvpn' 'airvpn-bin')
 install=airvpn.install
 source_i686=("airvpn_linux_x86_debian_${pkgver}_experimental.deb"::'https://airvpn.org/eddie/download/?platform=linux&arch=x86&ui=ui&format=debian.deb&version=experimental')
 source_x86_64=("airvpn_linux_x64_debian_${pkgver}_experimental.deb"::'https://airvpn.org/eddie/download/?platform=linux&arch=x64&ui=ui&format=debian.deb&version=experimental')
-md5sums_i686=('b6afe90ca8217a69b51aec77171bbb42')
-md5sums_x86_64=('5137523ca3e5483bfa99af0883bb25f7')
-sha256sums_i686=('90a9619a6148e61b3db8d6c0e338556bbe704aa22c3ba1c4bd0569211bc2e48b')
-sha256sums_x86_64=('29f48735ac2966833872349b346639b0bebcfcdd8ff47b08b6cc31b5925f2492')
+md5sums_i686=('41e6048cfcd0ff85841b2f68f7911b55')
+md5sums_x86_64=('517c680a839641e060a1beb3904c7fa8')
+sha256sums_i686=('7a295a45a8884396ffcb58db74a5196dea98ff1b54f53e7778a66142add1fbf2')
+sha256sums_x86_64=('1b6daec7d6a9713a75a59eec56d377621df947ebf62619f576302ace8d896d7e')
 
 package() {
   msg2 "Extracting the data.tar.gz..."
   bsdtar -xf "$srcdir/data.tar.gz"
   msg2 "Moving stuff in place..."
   install -Dm755 "$srcdir/usr/lib/AirVPN/AirVPN.exe"          "$pkgdir/usr/lib/AirVPN/AirVPN.exe"
-  install -Dm755 "$srcdir/usr/lib/AirVPN/cacert.pem"          "$pkgdir/usr/lib/AirVPN/cacert.pem"
   install -Dm755 "$srcdir/usr/lib/AirVPN/CLI.exe"             "$pkgdir/usr/lib/AirVPN/CLI.exe"
   install -Dm644 "$srcdir/usr/lib/AirVPN/Lib.Common.dll"      "$pkgdir/usr/lib/AirVPN/Lib.Common.dll"
   install -Dm644 "$srcdir/usr/lib/AirVPN/Lib.Core.dll"        "$pkgdir/usr/lib/AirVPN/Lib.Core.dll"
@@ -32,6 +31,7 @@ package() {
   install -Dm644 "$srcdir/usr/lib/AirVPN/Platforms.Linux.dll" "$pkgdir/usr/lib/AirVPN/Platforms.Linux.dll"
   install -Dm755 "$srcdir/usr/lib/AirVPN/update-resolv-conf"  "$pkgdir/usr/lib/AirVPN/update-resolv-conf"
   install -Dm755 "$srcdir/usr/bin/airvpn"                     "$pkgdir/usr/bin/airvpn"
+  install -Dm755 "$srcdir/usr/share/AirVPN/cacert.pem"        "$pkgdir/usr/share/AirVPN/cacert.pem"
   install -Dm644 "$srcdir/usr/share/doc/airvpn/changelog.gz"  "$pkgdir/usr/share/doc/airvpn/changelog.gz"
   install -Dm644 "$srcdir/usr/share/doc/airvpn/copyright"     "$pkgdir/usr/share/doc/airvpn/copyright"
   install -Dm644 "$srcdir/usr/share/man/man8/airvpn.8.gz"     "$pkgdir/usr/share/man/man1/airvpn.8.gz"
