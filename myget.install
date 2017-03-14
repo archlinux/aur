@@ -1,6 +1,6 @@
 post_install() {
-    echo "===> NOTE:  The '/usr/bin/myget' links to'/usr/bin/mytget'"
     sudo ln -s /usr/bin/mytget /usr/bin/myget
+    echo "===> NOTE:  '/usr/bin/mytget' has been linked to '/usr/bin/myget'"
 }
 
 post_remove() {
