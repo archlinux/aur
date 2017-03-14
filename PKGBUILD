@@ -1,4 +1,5 @@
 # Maintainer: XZS <d dot f dot fischer at web dot de>
+# Contributor: Martin Lukes <martin.meridius@gmail.com>
 # Contributor: Samuel Littley <samuel.littley@toastwaffle.com>
 # Contributor: William Giokas <1007380@gmail.com>
 
