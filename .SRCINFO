@@ -1,0 +1,21 @@
+pkgbase = haskell-gtk2
+	pkgdesc = The core library of the Gtk2Hs suite of libraries for Haskell based on Gtk+.
+	pkgver = 0.14.6
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/gtk
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.1
+	makedepends = haskell-gtk2hs-buildtools>=0.13.2.0
+	depends = ghc>=8.0.1
+	depends = haskell-mtl
+	depends = haskell-text>=0.11.0.6
+	depends = haskell-glib>=0.13.0.0
+	depends = haskell-pango>=0.13.0.0
+	depends = haskell-cairo>=0.13.0.0
+	depends = gtk2
+	source = https://hackage.haskell.org/packages/archive/gtk/0.14.6/gtk-0.14.6.tar.gz
+	sha256sums = 707906120cb8f0aa704fb2045a33600b7636166d74442a9c27c4262bac708327
+
+pkgname = haskell-gtk2
+
