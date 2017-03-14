@@ -14,18 +14,19 @@ md5sums=('SKIP')
 
 prepare() {
 	cd ${pkgname}
-	cmake ./ -DCMAKE_INSTALL_PREFIX=/usr/
+	cmake ./ \
+		-DCMAKE_INSTALL_PREFIX=/usr/ \
+		-DCMAKE_BUILD_TYPE=Release
 	make
 }
 
 package() {
 	cd "${pkgname}"
 
-	install -Dm755 tcmu-runner \
-		"${pkgdir}/usr/bin/tcmu-runner"
-
-	install -Dm755 tcmu-synthesizer \
-		"${pkgdir}/usr/bin/tcmu-synthesizer"
+	# Install bins
+	for bin in tcmu-runner tcmu-synthesizer consumer; do
+		install -Dm755 $bin "${pkgdir}/usr/bin/$bin"
+	done
 
 	install -Dm644 tcmu-runner.conf \
 		"${pkgdir}/etc/dbus-1/system.d/tcmu-runner.conf"
@@ -36,17 +37,21 @@ package() {
 	install -Dm644 tcmu-runner.service \
 		"${pkgdir}/usr/lib/systemd/system/tcmu-runner.service"
 
+	# Install tcmu conf
 	install -Dm644 tcmu.conf \
 		"${pkgdir}/etc/tcmu/tcmu.conf"
 	echo log_level = 4 >> "${pkgdir}/etc/tcmu/tcmu.conf"
 
+	# Install libs
 	install -Dm644 libtcmu.so   "${pkgdir}/usr/lib/libtcmu.so"
 	install -Dm644 libtcmu.so.1 "${pkgdir}/usr/lib/libtcmu.so.1"
 
-	for file in handler_rbd.so handler_glfs.so handler_qcow.so handler_file_async.so handler_file_optical.so; do
+	# Install hendlers
+	for file in handler*.so; do
 		install -Dm644 $file "${pkgdir}/usr/lib/tcmu-runner/$file"
 	done
 
+	# Install headers
 	for file in libtcmu.h libtcmu_common.h tcmu-runner.h; do
 		install -Dm644 $file "${pkgdir}/usr/include/$file"
 	done
