@@ -6,7 +6,7 @@
 pkgname=minimetro
 _pkgname="Mini Metro"
 pkgver=gamma18
-pkgrel=1
+pkgrel=2
 pkgdesc='minimalistic subway layout game'
 url="http://dinopoloclub.com/${pkgname}/"
 license=('custom:None')
@@ -35,12 +35,6 @@ package() {
   destdir="$pkgdir/opt/$pkgname"
   install -dm 755 "$destdir" "$pkgdir"/usr/{bin,share/applications}
   cp -r ${_pkgname}{_,.}* "$destdir"
-
-  # Make the log file writable by the 'games' group. This is needed to run.
-  log="$destdir"/${_pkgname}_Data/log.txt
-  touch "$log"
-  chmod 664 "$log"
-  chown :games "$log"
 
   # Now, care for supplementary files.
   for size in 16 22 24 32 36 48 64 72 96 128 192 256 384 512; do
