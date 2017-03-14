@@ -7,7 +7,7 @@ _longname="Mini Metro"
 pkgname="${_longname,,}"
 pkgname="${pkgname/ }"
 pkgver=gamma18
-pkgrel=4
+pkgrel=5
 pkgdesc='minimalistic subway layout game'
 url="http://dinopoloclub.com/${pkgname}/"
 license=('custom:None')
@@ -18,9 +18,11 @@ DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(p
 install=desktop.install
 source=("hib://${_longname/ }-${pkgver}-linux.tar.gz"
         "${pkgname}.desktop"
+        "starter.sh"
         "${pkgname}.png::http://dinopoloclub.com/press/mini_metro/images/icon.png")
 md5sums=('765bfdb52584df48784728e6476f47d7'
          'b89a42a38136d0a126c8c13657b21c3f'
+         '5006f1c488369854b7ac714168742aae'
          '8412b1e4cc11be455af993d921a68ced')
 
 package() {
@@ -36,16 +38,16 @@ package() {
   cp -r --no-preserve=mode,ownership "${_longname}_Data" "$destdir"
   install "$_longname.$CARCH" "$destdir"
 
-  # Now, care for supplementary files.
+  # Care for the icon.
   for size in 16 22 24 32 36 48 64 72 96 128 192 256 384 512; do
     size=${size}x${size}
     install -d "$pkgdir/usr/share/icons/hicolor/$size/apps"
     convert $pkgname.png -resize $size "$pkgdir/usr/share/icons/hicolor/$size/apps/$pkgname.png"
   done
 
-  echo "#!/opt/$pkgname/$_longname.$CARCH" > "$pkgdir"/usr/bin/${pkgname}
-  chmod +x "$pkgdir"/usr/bin/$pkgname
-
-  longname="$_longname" pkgname="$pkgname" pkgdesc="$pkgdesc" \
-    envsubst < "$pkgname.desktop" > "$pkgdir/usr/share/applications/$pkgname.desktop"
+  # Compose the desktop entry and starter.
+  export longname="$_longname" pkgname pkgdesc CARCH
+  envsubst < "$pkgname.desktop" > "$pkgdir/usr/share/applications/$pkgname.desktop"
+  envsubst < starter.sh > "$pkgdir/usr/bin/$pkgname"
+  chmod +x "$pkgdir/usr/bin/$pkgname"
 }
