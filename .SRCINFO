@@ -1,6 +1,6 @@
 pkgbase = fastqt
 	pkgdesc = FastQC port to Qt5: A quality control tool for high throughput sequence data.
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/labsquare/fastQt
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = fastqt
 	depends = karchive
 	depends = hicolor-icon-theme
 	depends = qt5-svg
-	source = https://github.com/labsquare/fastQt/archive/0.2.2.tar.gz
-	sha256sums = 5de44833ad3db38eefe94f0be56a527f4292bb949ef1b5e66fef09cad179348e
+	source = https://github.com/labsquare/fastQt/archive/0.2.3.tar.gz
+	sha256sums = 1a66ec8211ea07755deed996dbeda6c04c595c61b77d7e6caf913442b9a637bf
 
 pkgname = fastqt
 
