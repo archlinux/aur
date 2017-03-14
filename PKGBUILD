@@ -42,10 +42,10 @@ package() {
     # install blackcoin-daemon
     msg2 'Installing blackcoind...'
     install -Dm755 "$srcdir/$_gitname/src/blackcoind" "$pkgdir/usr/bin/blackcoind"
-    install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/blackcoin.conf" "$pkgdir/usr/share/doc/$pkgname/examples/blackcoin.conf"
+    install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/blackcoin.conf" "$pkgdir/usr/share/doc/$_gitname/examples/blackcoin.conf"
     install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/blackcoind.1" "$pkgdir/usr/share/man/man1/blackcoind.1"
     install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/blackcoin.conf.5" "$pkgdir/usr/share/man/man5/blackcoin.conf.5"
 
     # install license
-    install -D -m644 "$srcdir/$_gitname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    install -D -m644 "$srcdir/$_gitname/COPYING" "$pkgdir/usr/share/licenses/$_gitname/COPYING"
 }
