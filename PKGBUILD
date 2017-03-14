@@ -24,6 +24,9 @@ package() {
 	install -Dm755 tcmu-runner \
 		"${pkgdir}/usr/bin/tcmu-runner"
 
+	install -Dm755 tcmu-synthesizer \
+		"${pkgdir}/usr/bin/tcmu-synthesizer"
+
 	install -Dm644 tcmu-runner.conf \
 		"${pkgdir}/etc/dbus-1/system.d/tcmu-runner.conf"
 
