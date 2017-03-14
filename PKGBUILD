@@ -2,7 +2,7 @@
 # Contributor: George Gibbs <vash63 at gmail dot com>
 
 pkgname=ds4drv-git
-pkgver=0.5.0.167.a7e1735
+pkgver=0.5.1.194.f6be043
 pkgrel=1
 pkgdesc="Sony DualShock 4 Userspace Driver"
 arch=('any')
