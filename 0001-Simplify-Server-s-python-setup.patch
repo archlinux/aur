@@ -1,8 +1,7 @@
-From b18ddcf15e8af2e91c23419df8549d73f3e965c3 Mon Sep 17 00:00:00 2001
-From: Dave Page <dpage@pgadmin.org>
-Date: Thu, 28 Jan 2017 01:15:00 +0100
+From 2ad198d740cbb0ecfbda6aceeecf49ef32227be6 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Sat, 28 Jan 2017 01:19:06 +0100
 Subject: [PATCH] Simplify Server's python setup
-
 ---
  runtime/BrowserWindow.cpp |   6 +-
  runtime/ConfigWindow.cpp  |  16 +++-
@@ -10,14 +9,14 @@ Subject: [PATCH] Simplify Server's python setup
  runtime/ConfigWindow.ui   |  22 ++++-
  runtime/Server.cpp        | 227 +++++++++++-----------------------------------
  runtime/Server.h          |   6 +-
- runtime/pgAdmin4.cpp      | 103 ++++++++++-----------
- 7 files changed, 143 insertions(+), 243 deletions(-)
+ runtime/pgAdmin4.cpp      | 106 +++++++++++-----------
+ 7 files changed, 145 insertions(+), 244 deletions(-)
 
 diff --git a/runtime/BrowserWindow.cpp b/runtime/BrowserWindow.cpp
-index 4b96abe50c89b14c..6279cd4b303d8e06 100644
+index 12dabd4f145b136c..3a43fbaf01ef82f1 100644
 --- a/runtime/BrowserWindow.cpp
 +++ b/runtime/BrowserWindow.cpp
-@@ -1215,17 +1215,17 @@ void BrowserWindow::preferences()
+@@ -1174,17 +1174,17 @@ void BrowserWindow::preferences()
  
      ConfigWindow *dlg = new ConfigWindow();
      dlg->setWindowTitle(QWidget::tr("Configuration"));
@@ -153,10 +152,10 @@ index 40d87be43803204a..8b379052a1da8cd0 100644
      </layout>
     </item>
 diff --git a/runtime/Server.cpp b/runtime/Server.cpp
-index e5be20569faaf6c4..078ec1ac93dc6a1b 100644
+index d655119cb07adcc2..4c30c710d0a34705 100644
 --- a/runtime/Server.cpp
 +++ b/runtime/Server.cpp
-@@ -22,183 +22,84 @@
+@@ -22,184 +22,85 @@
  // App headers
  #include "Server.h"
  
@@ -181,10 +180,11 @@ index e5be20569faaf6c4..078ec1ac93dc6a1b 100644
 -    }
 -}
 -
- Server::Server(quint16 port)
+ Server::Server(quint16 port, QString key)
  {
-     // Appserver port
+     // Appserver port etc
      m_port = port;
+     m_key = key;
 -    m_wcAppName = NULL;
  
      // Initialise Python
@@ -393,7 +393,7 @@ index e5be20569faaf6c4..078ec1ac93dc6a1b 100644
  }
  
  bool Server::Init()
-@@ -258,33 +159,11 @@ void Server::run()
+@@ -260,33 +161,11 @@ void Server::run()
  
      // Run the app!
  #ifdef PYTHON2
@@ -428,13 +428,13 @@ index e5be20569faaf6c4..078ec1ac93dc6a1b 100644
      PyObject* PyFileObject = PyFile_FromFd(fd, m_appfile.toUtf8().data(), (char *)"r", -1, NULL, NULL,NULL,1);
      if (PyRun_SimpleFile(fdopen(PyObject_AsFileDescriptor(PyFileObject),"r"), m_appfile.toUtf8().data()) != 0)
 diff --git a/runtime/Server.h b/runtime/Server.h
-index 8df8503bb553eca4..5cc51f3d8b3e1f9b 100644
+index c8afbddb156eb31a..207e2f157db7d7a5 100644
 --- a/runtime/Server.h
 +++ b/runtime/Server.h
-@@ -39,7 +39,11 @@ private:
-     QString m_error;
+@@ -40,7 +40,11 @@ private:
  
      quint16  m_port;
+     QString m_key;
 -    wchar_t *m_wcAppName;
 +#ifdef PYTHON2
 +    char *m_pyAppName;
@@ -445,24 +445,25 @@ index 8df8503bb553eca4..5cc51f3d8b3e1f9b 100644
  
  #endif // SERVER_H
 diff --git a/runtime/pgAdmin4.cpp b/runtime/pgAdmin4.cpp
-index b1f470d811a7cfb1..e295e17b320f5e80 100644
+index 0130e027e2bec506..19b2506b5bbda1be 100644
 --- a/runtime/pgAdmin4.cpp
 +++ b/runtime/pgAdmin4.cpp
-@@ -72,68 +72,63 @@ int main(int argc, char * argv[])
- 
+@@ -78,69 +78,65 @@ int main(int argc, char * argv[])
      // Fire up the webserver
      Server *server;
-+    server = new Server(port);
  
 -    bool done = false;
--
++    server = new Server(port, key);
+ 
 -    while (done != true)
 +    if (!server->Init())
      {
--        server = new Server(port);
-+        qDebug() << server->getError();
+-        server = new Server(port, key);
++        splash->finish(NULL);
  
 -        if (!server->Init())
++        qDebug() << server->getError();
++
 +        QString error = QString(QWidget::tr("An error occurred initialising the application server:\n\n%1")).arg(server->getError());
 +        QMessageBox::critical(NULL, QString(QWidget::tr("Fatal Error")), error);
 +
@@ -501,16 +502,18 @@ index b1f470d811a7cfb1..e295e17b320f5e80 100644
 +
 +        if (ok)
          {
--            qDebug() << server->getError();
+-            splash->finish(NULL);
 +            settings.setValue("PythonExecutable", pythonexecutable);
 +            settings.setValue("ApplicationPath", applicationpath);
 +            settings.sync();
  
--            QString error = QString(QWidget::tr("An error occurred initialising the application server:\n\n%1")).arg(server->getError());
--            QMessageBox::critical(NULL, QString(QWidget::tr("Fatal Error")), error);
+-            qDebug() << server->getError();
 +            QString msg = QString(QWidget::tr("Please restart the application to allow the changes to take effect."));
 +            QMessageBox::information(NULL, QString(QWidget::tr("Restart")), msg);
  
+-            QString error = QString(QWidget::tr("An error occurred initialising the application server:\n\n%1")).arg(server->getError());
+-            QMessageBox::critical(NULL, QString(QWidget::tr("Fatal Error")), error);
+-
 -            exit(1);
 -        }
 -
@@ -567,5 +570,5 @@ index b1f470d811a7cfb1..e295e17b320f5e80 100644
  
  
 -- 
-2.11.0
+2.12.0
 
