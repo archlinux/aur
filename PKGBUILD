@@ -1,8 +1,8 @@
 # Maintainer: Romain Bazile <gromain.baz at gmail>
 pkgname=lhc-dashboard-desktop
-pkgver=1.4.13
+pkgver=1.6.2
 pkgrel=1
-pkgdesc="LHC Dashboard for desktop. Uses Electron, v1.4.13"
+pkgdesc="LHC Dashboard for desktop. Uses Electron, v1.6.2"
 arch=('i686' 'x86_64')
 url="https://lhcdashboard.web.cern.ch/"
 license=('unknown')
@@ -29,7 +29,7 @@ build() {
 		--height 720px \
 		--min-width 720px \
 		--min-height 720px \
-		--electron-version 1.4.13 \
+		--electron-version 1.6.2 \
 		--honest \
 		-i "../$pkgname.png"
 
