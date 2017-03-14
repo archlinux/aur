@@ -2,6 +2,7 @@
 Version=1.0
 Encoding=UTF-8
 Name=$longname
+Comment=$pkgdesc
 Exec=$pkgname
 Icon=$pkgname
 Type=Application

@@ -1,7 +1,7 @@
 pkgbase = minimetro
 	pkgdesc = minimalistic subway layout game
 	pkgver = gamma18
-	pkgrel = 3
+	pkgrel = 4
 	url = http://dinopoloclub.com/minimetro/
 	install = desktop.install
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = minimetro
 	source = minimetro.desktop
 	source = minimetro.png::http://dinopoloclub.com/press/mini_metro/images/icon.png
 	md5sums = 765bfdb52584df48784728e6476f47d7
-	md5sums = 4b6c5e6caaa5c27cc66d8399aa29672d
+	md5sums = b89a42a38136d0a126c8c13657b21c3f
 	md5sums = 8412b1e4cc11be455af993d921a68ced
 
 pkgname = minimetro

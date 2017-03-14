@@ -7,7 +7,7 @@ _longname="Mini Metro"
 pkgname="${_longname,,}"
 pkgname="${pkgname/ }"
 pkgver=gamma18
-pkgrel=3
+pkgrel=4
 pkgdesc='minimalistic subway layout game'
 url="http://dinopoloclub.com/${pkgname}/"
 license=('custom:None')
@@ -20,7 +20,7 @@ source=("hib://${_longname/ }-${pkgver}-linux.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.png::http://dinopoloclub.com/press/mini_metro/images/icon.png")
 md5sums=('765bfdb52584df48784728e6476f47d7'
-         '4b6c5e6caaa5c27cc66d8399aa29672d'
+         'b89a42a38136d0a126c8c13657b21c3f'
          '8412b1e4cc11be455af993d921a68ced')
 
 package() {
@@ -46,6 +46,6 @@ package() {
   echo "#!/opt/$pkgname/$_longname.$CARCH" > "$pkgdir"/usr/bin/${pkgname}
   chmod +x "$pkgdir"/usr/bin/$pkgname
 
-  longname="$_longname" pkgname="$pkgname" \
+  longname="$_longname" pkgname="$pkgname" pkgdesc="$pkgdesc" \
     envsubst < "$pkgname.desktop" > "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
