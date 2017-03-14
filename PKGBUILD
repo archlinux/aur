@@ -3,8 +3,8 @@
 # Contributor: Samuel Littley <samuel.littley@toastwaffle.com>
 # Contributor: William Giokas <1007380@gmail.com>
 
-_pkgname="Mini Metro"
-pkgname="${_pkgname,,}"
+_longname="Mini Metro"
+pkgname="${_longname,,}"
 pkgname="${pkgname/ }"
 pkgver=gamma18
 pkgrel=3
@@ -16,7 +16,7 @@ depends=('libgl' 'libx11' 'glu' 'desktop-file-utils' 'gtk-update-icon-cache')
 makedepends=('imagemagick')
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
 install=desktop.install
-source=("hib://${_pkgname/ }-${pkgver}-linux.tar.gz"
+source=("hib://${_longname/ }-${pkgver}-linux.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.png::http://dinopoloclub.com/press/mini_metro/images/icon.png")
 md5sums=('765bfdb52584df48784728e6476f47d7'
@@ -37,8 +37,8 @@ package() {
   install -d "$destdir" "$pkgdir"/usr/{bin,share/applications}
 
   # Install the game and data files.
-  cp -r --no-preserve=mode,ownership "${_pkgname}_Data" "$destdir"
-  install "$_pkgname".* "$destdir"
+  cp -r --no-preserve=mode,ownership "${_longname}_Data" "$destdir"
+  install "$_longname".* "$destdir"
 
   # Now, care for supplementary files.
   for size in 16 22 24 32 36 48 64 72 96 128 192 256 384 512; do
@@ -47,7 +47,7 @@ package() {
     convert $pkgname.png -resize $size "$pkgdir/usr/share/icons/hicolor/$size/apps/$pkgname.png"
   done
 
-  echo "#!/opt/$pkgname/${_pkgname}.$CARCH" > "$pkgdir"/usr/bin/${pkgname}
+  echo "#!/opt/$pkgname/$_longname.$CARCH" > "$pkgdir"/usr/bin/${pkgname}
   chmod +x "$pkgdir"/usr/bin/$pkgname
   cp ${pkgname}.desktop "$pkgdir"/usr/share/applications
 }
