@@ -5,6 +5,7 @@ pkgrel=1
 pkgdesc="distributed and parallel python - with deps fixed"
 url="https://github.com/uqfoundation"
 depends=('python2' 'python2-six')
+optdepends=('python2-dill')
 makedepends=('python2-setuptools')
 provides=('python2-ppft')
 conflicts=('python2-ppft')
