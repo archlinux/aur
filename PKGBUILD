@@ -15,10 +15,39 @@ md5sums=('SKIP')
 prepare() {
 	cd ${pkgname}
 	cmake ./
-	make
+	make all
 }
 
 package() {
 	cd "${pkgname}"
-	
+
+	install -Dm755 tcmu-runner \
+		"${pkgdir}/usr/bin/tcmu-runner"
+
+	install -Dm644 tcmu-runner.conf \
+		"${pkgdir}/etc/dbus-1/system.d/tcmu-runner.conf"
+
+	install -Dm644 org.kernel.TCMUService1.service \
+		"${pkgdir}/usr/share/dbus-1/system-services/org.kernel.TCMUService1.service"
+
+	install -Dm644 tcmu-runner.service \
+		"${pkgdir}/usr/lib/systemd/system/tcmu-runner.service"
+
+	install -Dm644 tcmu.conf \
+		"${pkgdir}/etc/tcmu/tcmu.conf"
+
+	install -Dm644 libtcmu.so   "${pkgdir}/usr/lib/libtcmu.so"
+	install -Dm644 libtcmu.so.1 "${pkgdir}/usr/lib/libtcmu.so.1"
+
+	for file in handler_rbd.so handler_glfs.so handler_qcow.so handler_file_async.so handler_file_optical.so; do
+		install -Dm644 $file "${pkgdir}/usr/lib/$file"
+	done
+
+	for file in libtcmu.h libtcmu_common.h tcmu-runner.h; do
+		install -Dm644 $file "${pkgdir}/usr/include/$file"
+	done
+
+	install -Dm644 tcmu-runner.8 \
+		"${pkgdir}/usr/share/man/man8/tcmu-runner.8"
+	gzip -9 "${pkgdir}/usr/share/man/man8/tcmu-runner.8"
 }
