@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=polychromatic-git
-pkgver=0.3.6.1.r44.gd13b00e
+pkgver=0.3.7.r12.ge802414
 pkgrel=1
 pkgdesc='A graphical front end for managing Razer peripherals under GNU/Linux.'
 arch=('any')
@@ -27,7 +27,7 @@ package() {
   mkdir -p $pkgdir/etc/xdg/autostart
   mkdir -p $pkgdir/usr/bin
   mkdir -p $pkgdir/usr/share/polychromatic
-  mkdir -p $pkgdir/usr/share/icons/hicolor/scalable/apps
+  mkdir -p $pkgdir/usr/share/icons/hicolor
   mkdir -p $pkgdir/usr/share/locale
   mkdir -p $pkgdir/usr/share/applications
   mkdir -p $pkgdir/$_pythondir/polychromatic
@@ -46,7 +46,7 @@ package() {
   cp -r pylib/* $pkgdir/$_pythondir/polychromatic
 
   # Copy icons
-  cp install/hicolor/scalable/apps/polychromatic.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/polychromatic.svg
+  cp -r install/hicolor/* $pkgdir/usr/share/icons/hicolor/
 
   # Copy locales
   rsync -rlpt --exclude="polychromatic-controller.pot" --exclude="polychromatic-tray-applet.pot" --exclude=*.po "locale/" $pkgdir/usr/share/locale
