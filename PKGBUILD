@@ -2,7 +2,7 @@
 # Contributor: Sam Stuewe <halosghost at archlinux dot info>
 
 pkgname=hashcat-git
-pkgver=3.30+43+g55f4d636
+pkgver=3.40+48+g72071fba
 pkgrel=1
 pkgdesc='Multithreaded advanced password recovery utility'
 url='https://hashcat.net/hashcat'
@@ -23,12 +23,12 @@ pkgver() {
 
 build() {
   cd ${pkgname}
-  make PREFIX=/usr hashcat_shared
+  make PREFIX=/usr SHARED=1
 }
 
 package() {
   cd ${pkgname}
-  make DESTDIR="${pkgdir}" PREFIX=/usr install
+  make DESTDIR="${pkgdir}" PREFIX=/usr SHARED=1 install
   install -Dm 644 docs/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
