@@ -33,7 +33,7 @@ prepare() {
 package() {
   # First, install the game itself.
   destdir="$pkgdir/opt/$pkgname"
-  install -dm 755 "$destdir" "$pkgdir"/usr/{bin,share/applications}
+  install -d "$destdir" "$pkgdir"/usr/{bin,share/applications}
   cp -r ${_pkgname}{_,.}* "$destdir"
 
   # Now, care for supplementary files.
