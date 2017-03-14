@@ -11,14 +11,8 @@ url="http://github.com/mwilliamson/locket.py"
 license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
-checkdepends=('python-nose')
 source=(https://github.com/mwilliamson/locket.py/archive/$pkgver.zip)
 sha256sums=('6897c28227c39c2066fe7987d552458d27ddd8578c9c6c2e160d0b0b93092946')
-
-check() {
-  cd "$srcdir/$_pkgname.py-$pkgver"
-  py.test
-}
 
 package(){
   cd "$srcdir/$_pkgname.py-$pkgver"
