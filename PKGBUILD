@@ -6,8 +6,8 @@
 
 pkgname=geany-plugins-nowebkitgtk
 _downloadname=geany-plugins
-pkgver=1.29
-pkgrel=2
+pkgver=1.30
+pkgrel=1
 pkgdesc='Geany plugins, minus geanypy'
 arch=('x86_64' 'i686')
 url='http://plugins.geany.org/'
@@ -20,7 +20,7 @@ provides=('geany-plugins')
 replaces=('geany-plugins')
 conflicts=('geany-plugins')
 source=("http://plugins.geany.org/$_downloadname/$_downloadname-$pkgver.tar.bz2")
-sha256sums=('2827e0cf8f58a45759c82b690af5401dbd3ea0ec8dac310e4caea55547637bd7')
+sha256sums=('8adb90645d273d9549e1fa99b69ea87dc1fd612f7467eb18eee11a6b30c9ba5b')
 
 build() {
   cd "$_downloadname-$pkgver"
