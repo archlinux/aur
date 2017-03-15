@@ -3,7 +3,7 @@
 
 pkgname=sardi-icons
 pkgver=9.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Sardi is an icon collection for any linux distro with 6 different circular icons and 10 different kind of folders. "
 arch=('any')
 url="http://sourceforge.net/projects/sardi"
