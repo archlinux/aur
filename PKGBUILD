@@ -3,8 +3,8 @@
 name=gaffer
 git_user_name=gregzaal
 pkgname=blender-plugin-${name}-git
-pkgver=r209.529be83
-pkgrel=1
+pkgver=v3.0.2.r0.g529be83
+pkgrel=2
 pkgdesc="Blender addon for light and hdri managament."
 arch=('any')
 url="https://blendermarket.com/products/gaffer-light-manager/"
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$name"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
