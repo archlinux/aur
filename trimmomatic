@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+exec java -jar /opt/Trimmomatic/trimmomatic-0.36.jar "$@"
