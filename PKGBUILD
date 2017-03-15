@@ -2,10 +2,10 @@
 # Contributors: Det, Ng Oon-Ee, Dan Vratil
 # Based on [aur]'s nvidia-beta: https://aur.archlinux.org/packages/nvidia-beta/
 
-pkgname=nvidia-vulkan-developer-beta
+pkgname=nvidia-vulkan-developer-beta-lts
 pkgver=375.27.14
 pkgrel=1
-pkgdesc="NVIDIA driver for Arch's official 'linux' package (vulkan developer beta version)"
+pkgdesc="NVIDIA driver for Arch's official 'linux-lts' package (vulkan developer beta version)"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
