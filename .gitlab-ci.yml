@@ -32,6 +32,7 @@ github:
     url: https://github.com/sanduhrs/arch-aur-traefik
   only:
     - branches
+  when: on_success
 
 aur:
   stage: deploy
@@ -45,7 +46,7 @@ aur:
     # you will overwrite your user's SSH config.
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-    - git checkout master
+    - git checkout "$CI_BUILD_REF_NAME"
     - git remote add aur ssh://aur@aur.archlinux.org/traefik-bin.git
   script:
     - echo "Deploy to Github"
@@ -55,3 +56,4 @@ aur:
     url: https://aur.archlinux.org/packages/traefik-bin
   only:
     - master
+  when: manual
