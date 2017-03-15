@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=tth  
-pkgver=4.08
+pkgver=4.09
 pkgrel=1
 pkgdesc="TeX to HTML translator"
 url="http://hutchinson.belmont.ma.us/tth/"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 depends=('sh')
 license=('custom')
 source=($pkgname-${pkgver}_C.tar.gz::http://hutchinson.belmont.ma.us/tth/tth-noncom/tth_C.tgz)
-md5sums=('779891d5235bdba69091dafcd70d5b83')
+sha256sums=('c16f4f2bdbc8c2c829eaab073982bb2594f72ff4e752cd4c4dc2220a4a69772c')
 
 build() {
   cd $srcdir/tth_C
