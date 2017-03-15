@@ -14,7 +14,7 @@ makedepends=("${_py}-setuptools")
 optdepends=("cython2: usage of C implementation") 
 options=(!emptydirs)
 source=(${_eggname}-v${pkgver}.tar.gz::https://github.com/mozman/bintrees/archive/v${pkgver}.tar.gz)
-provides=('python2-bintrees')
+provides=('python-bintrees')
 sha256sums=('2e8733956b74a847d5525f640b55b569e90726af27c945de5ed1ec7e73363e2a')
 
 package() {
