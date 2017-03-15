@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=bees-git
-pkgver=77.5a3f1be
+pkgver=v0.3.r35.g5a3f1be
 pkgrel=1
 pkgdesc="Best-Effort Extent-Same, a btrfs deduplicator daemon"
 arch=('any')
@@ -13,8 +13,8 @@ source=("$pkgname"::'git://github.com/Zygo/bees.git#branch=master')
 md5sums=('SKIP')
 
 pkgver() {
-	cd ${pkgname}
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd "$pkgname"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
