@@ -2,7 +2,7 @@
 # Contributor: Sergey Mastykov <smastykov[at]gmail[dot]com>
 
 pkgname=python-pyramid
-pkgver=1.6.1
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='Pyramid is a very general open source Python web framework.'
 arch=('any')
@@ -15,8 +15,8 @@ optdepends=(
          'python3-chameleon: pserve/pcreate'
          'python-waitress: pserve/pcreate'
 	)
-source=(https://pypi.python.org/packages/source/p/pyramid/pyramid-${pkgver}.tar.gz)
-sha256sums=('3b8ecfadec8f3d178b39e7fda67dcbb23177eafb9d49b04aaeaaeca614a25e94')
+source=(https://pypi.python.org/packages/12/e5/8cffc593b70ee6392ea08e8562843166895b96cf33ace892229bcfca410e/pyramid-${pkgver}.tar.gz)
+sha256sums=('1218140ea016dcb63b962d44e43c6d26e448e6c2a49133dc52d01f01fbb2d5c3')
 
 build() {
   msg "Building Pyramid for Python3"
@@ -25,7 +25,7 @@ build() {
 }
 
 check() {
-  cd $srcdir/pyramid-$pkgver 
+  cd $srcdir/pyramid-$pkgver
   python3 setup.py check
 }
 
