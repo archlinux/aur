@@ -27,5 +27,4 @@ package () {
 	tar -xzv \
 		-f "${srcdir}/${_pkgname}-${pkgver}/dist/${_pkgname}-${pkgver}.linux"*".tar.gz" \
 		-C "${pkgdir}"
-				
 }
