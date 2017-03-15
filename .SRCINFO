@@ -1,7 +1,7 @@
 pkgbase = seismic-unix
 	pkgdesc = A seismic processing and research environment developed at the Center for Wave Phenomena, Colorado School of Mines
-	pkgver = 44R1
-	pkgrel = 2
+	pkgver = 44R4
+	pkgrel = 1
 	url = http://www.cwp.mines.edu/cwpcodes/
 	install = seismic-unix.install
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = seismic-unix
 	depends = lesstif
 	optdepends = tcsh: some scripts
 	optdepends = gcc-fortran: Fortran support
-	source = ftp://ftp.cwp.mines.edu/pub/cwpcodes/cwp_su_all_44R1.tgz
-	sha1sums = af86de42d9686ea8c7606ddc86e6211cce8f480d
+	source = ftp://ftp.cwp.mines.edu/pub/cwpcodes/cwp_su_all_44R4.tgz
+	sha1sums = 2456bfa4145ba5e8c03d9ffe85173b6657972bb3
 
 pkgname = seismic-unix
 
