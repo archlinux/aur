@@ -2,8 +2,8 @@
 
 pkgname=simpl-sim
 pkgver=2.1.1
-pkgrel=1
-pkgdesc="SimpLC Simulator for LC-3 assembly language."
+pkgrel=2
+pkgdesc='SimpLC Simulator for LC-3 assembly language.'
 arch=('any')
 url='https://sourceforge.net/projects/simplc/files/?source=navbar'
 license=('GPL' 'BSD')
@@ -42,11 +42,18 @@ build() {
 	./config.sh
 
 	msg 'Applying patches...'
-	patch --verbose common.h < ../compile-fixes.patch
+	patch common.h < ../compile-fixes.patch
+
+	# Fix desktop file paths
 	sed -i \
-		-e "s|^Exec=.*$|Exec=/usr/bin/simpl|" \
-		-e "s|^Icon=.*$|Icon=/usr/share/$pkgname/hi16-app-simpl.png|" \
+		-e 's|^Exec=.*$|Exec=/usr/bin/simpl|' \
+		-e 's|^Icon=.*$|Icon=/usr/share/pixmaps/hi16-app-simpl.png|' \
 		simpl.desktop
+
+	# Ignore QT header warnings
+	sed -i \
+		-e 's|-Wconversion|-Wno-conversion|g' \
+		build/buildvar.sh
 
 	msg 'Compiling...'
 	make
@@ -66,8 +73,8 @@ package() {
 	mkdir -p "$pkgdir/usr/share/applications"
 	install -m644 'simpl.desktop' "$pkgdir/usr/share/applications/simpl.desktop"
 
-	mkdir -p "$pkgdir/usr/share/$pkgname"
-	install -m644 'hi16-app-simpl.png' "$pkgdir/usr/share/$pkgname/hi16-app-simpl.png"
+	mkdir -p "$pkgdir/usr/share/pixmaps"
+	install -m644 'hi16-app-simpl.png' "$pkgdir/usr/share/pixmaps/hi16-app-simpl.png"
 
 	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
 	install -m644 'COPYING' "$pkgdir/usr/share/licenses/$pkgname/LICENSE.GPL"
