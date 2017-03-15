@@ -3,7 +3,7 @@ Description=The Lounge IRC client
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/lounge
+ExecStart=/usr/bin/lounge start
 
 [Install]
 WantedBy=default.target
