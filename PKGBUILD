@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libxslt
-pkgver=1.1.29+41+gdf5330d1
-_commit=df5330d1054bdacf17f4fbd43b528fcf453cc9ec
+pkgver=1.1.29+42+gac341cbd
+_commit=ac341cbd792ee572941cc9a66e73800219a1a386
 pkgrel=1
 pkgdesc="XML stylesheet transformation library (mingw-w64)"
 arch=(any)
