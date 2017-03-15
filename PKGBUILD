@@ -3,7 +3,7 @@
 _pkgname=yaml-cpp
 pkgname=mingw-w64-${_pkgname}
 pkgver=0.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc="YAML parser and emitter in C++, written around the YAML 1.2 spec (mingw-w64)"
 url="https://github.com/jbeder/yaml-cpp"
 arch=('any')
@@ -21,9 +21,9 @@ build() {
     unset LDFLAGS
     for _arch in ${_architectures}; do
         mkdir -p build-${_arch} && pushd build-${_arch}
-        ${_arch}-cmake .. -DCMAKE_INSTALL_PREFIX=/usr/${_arch} -DBUILD_SHARED_LIBS=OFF
+        ${_arch}-cmake .. -DCMAKE_INSTALL_PREFIX=/usr/${_arch} -DBUILD_SHARED_LIBS=OFF -DYAML_CPP_BUILD_TOOLS=OFF
         make
-        ${_arch}-cmake .. -DCMAKE_INSTALL_PREFIX=/usr/${_arch} -DBUILD_SHARED_LIBS=ON
+        ${_arch}-cmake .. -DCMAKE_INSTALL_PREFIX=/usr/${_arch} -DBUILD_SHARED_LIBS=ON -DYAML_CPP_BUILD_TOOLS=OFF
         make
         popd
     done
