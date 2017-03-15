@@ -18,15 +18,15 @@ makedepends=( 'qt5-base')
 options=(!emptydirs)
 
 
-source=("http://cloudcross.mastersoft24.ru/download/archive/?r=pacman")
+source=("https://github.com/MasterSoft24/CloudCross/archive/master.tar.gz")
 
 
-md5sums=("594a362a7d657414df2bae505853ace9")
+md5sums=("d41d8cd98f00b204e9800998ecf8427e")
 
 
 build() {
 
-	cd "$srcdir/cloudcross-$pkgver-$pkgrel"
+	cd "$srcdir/CloudCross-master"
 	
 	rm -rf build
 	mkdir build
@@ -36,13 +36,13 @@ build() {
 }
  
 package() {
-	cd "$srcdir/cloudcross-$pkgver-$pkgrel/build"
+	cd "$srcdir/CloudCross-master/build"
 	
 	mkdir -p "${pkgdir}/usr/bin"
         mkdir -p "${pkgdir}/usr/share/man/man0"
 	
-	cp "$srcdir/cloudcross-$pkgver-$pkgrel/build/ccross" "${pkgdir}/usr/bin"
-        cp "$srcdir/cloudcross-$pkgver-$pkgrel/doc/ccross" "${pkgdir}/usr/share/man/man0"
+	cp "$srcdir/CloudCross-master/build/ccross" "${pkgdir}/usr/bin"
+        cp "$srcdir/CloudCross-master/doc/ccross" "${pkgdir}/usr/share/man/man0"
 	
 	#ln -s "${pkgdir}/usr/bin/ccross" "${pkgdir}/usr/bin/CloudCross" 
 	#ln -s "${pkgdir}/usr/bin/ccross" "${pkgdir}/usr/bin/grive2" 
