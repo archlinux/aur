@@ -13,5 +13,5 @@ build() {
 
 package() {
     cd $srcdir
-    cargo install --root="$pkgdir" "$pkgname"
+    cargo install --root="$pkgdir/usr" "$pkgname"
 }
