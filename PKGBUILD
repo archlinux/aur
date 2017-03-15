@@ -2,9 +2,9 @@
 
 
 pkgname=cloudcross
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
-pkgdesc="CloudCross is a improved multi-cloud client with Yandex disk, Google Drive, Dropbox and Mail.ru support."
+pkgdesc="CloudCross is a improved multi-cloud client with OneDrive, Yandex disk, Google Drive, Dropbox and Mail.ru support."
 arch=('i686' 'x86_64')
 url="http://cloudcross.mastersoft24.ru"
 license=('BSD')
