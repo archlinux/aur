@@ -30,7 +30,7 @@ exec /usr/bin/chromium --disable \
     --disable-suggestions-service \
     --disable-save-password-bubble \
     --disable-session-crashed-bubble \
-    --load-extension=.extensions/disable-x-frame-option \
+    --load-extension=.extensions/disable-x-frame-option,.extensions/aw-snap-reloader \
     --window-position="0,0" \
     --window-size="1920,1080" \
     --kiosk "$URL"

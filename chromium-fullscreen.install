@@ -7,6 +7,7 @@ pre_install() {
 
   # Create the extensions folders
   mkdir -p /home/chromium/.extensions/disable-x-frame-option
+  mkdir -p /home/chromium/.extensions/aw-snap-reloader
 }
 
 post_install() {
