@@ -1,7 +1,6 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
 pkgname=jprofiler
-_majver='9'
-pkgver="${_majver}.2.1"
+pkgver="10.0"
 pkgrel=1
 options=(!strip)
 pkgdesc="The Award-Winning All-in-One Java Profiler"
@@ -11,13 +10,13 @@ license=('custom')
 depends=('java-environment')
 source=("http://download-keycdn.ej-technologies.com/jprofiler/jprofiler_linux_$(echo $pkgver | sed 's/\./_/g').tar.gz"
         "${pkgname}.desktop")
-sha256sums=('f6bba9ef5391cefcd206aae93669479052081f9ee863c323eea793119039b8a6'
+sha256sums=('e0fb33a8c5c679aa851368a642ed19fe8e8be9310db7720b4faf0b43e32ff7fa'
             'be6fce730c9be07ca3574c1a390f93d54d8e9ab4a18233f97bc25273beacd33a')
 
 package() {
     optdir="/opt/${pkgname}"
     target="${pkgdir}${optdir}"
-    extracted="${srcdir}/jprofiler${_majver}"
+    extracted="${srcdir}/jprofiler${pkgver}"
     install -dm755 "$target"
     install -dm755 "${pkgdir}/usr/bin"
     cp -dpr --no-preserve=ownership "${extracted}/." "$target"
@@ -36,9 +35,11 @@ package() {
     mv "${target}/license.txt" "$licensedir"
     mv "${target}/license.html" "$licensedir"
 
-    cp "${target}/.install4j/i4j_extf_3_1nklpoz_u9lgq5@2x.png" "${hicolor}/64x64/apps/${pkgname}.png"
-    cp "${target}/.install4j/i4j_extf_3_1nklpoz_u9lgq5.png" "${hicolor}/32x32/apps/${pkgname}.png"
-    cp "${target}/.install4j/i4j_extf_2_1nklpoz_1u8i2ka.png" "${hicolor}/16x16/apps/${pkgname}.png"
+    local image_var="545567"
+
+    cp "${target}/.install4j/i4j_extf_3_${image_var}_u9lgq5@2x.png" "${hicolor}/64x64/apps/${pkgname}.png"
+    cp "${target}/.install4j/i4j_extf_3_${image_var}_u9lgq5.png" "${hicolor}/32x32/apps/${pkgname}.png"
+    cp "${target}/.install4j/i4j_extf_2_${image_var}_1u8i2ka.png" "${hicolor}/16x16/apps/${pkgname}.png"
 
     appsdir="${pkgdir}/usr/share/applications"
     install -dm755 "$appsdir"
