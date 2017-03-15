@@ -3,7 +3,7 @@
 
 pkgname=audacity-git
 _pkgname=audacity
-pkgver=2.1.2.r1719.g0efe931d
+pkgver=2.1.2.r1722.g2fef7f34
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=('i686' 'x86_64')
@@ -26,19 +26,12 @@ makedepends=('cmake' 'python2' 'twolame')
 options=('!makeflags')
 provides=('audacity')
 conflicts=('audacity')
-source=("$_pkgname::git+https://github.com/audacity/audacity.git"
-		'audacity-ffmpeg.patch')
-sha1sums=('SKIP'
-          '5f1733a3802bcec7d9b54cb3ec8d7d81fc38fc61')
+source=("$_pkgname::git+https://github.com/audacity/audacity.git")
+sha1sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -d'.' -f2-
-}
-
-prepare() {
-  cd "$srcdir/$_pkgname"
-  patch -p1 -i "${srcdir}/audacity-ffmpeg.patch"
 }
 
 build() {
