@@ -1,7 +1,7 @@
 # Maintainer: Streetwalrus <streetwalrus@codewalr.us>
 pkgname=sam-ba
 pkgver=3.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Atmel SAM Boot Assistant"
 arch=('i686' 'x86_64')
 url="https://github.com/atmelcorp/sam-ba"
@@ -43,7 +43,7 @@ package() {
   cp sam-ba ${pkgdir}/usr/bin
 
   mkdir -p ${pkgdir}/usr/lib/qt/qml
-  cp lib/* ${pkgdir}/usr/lib
+  cp -d lib/* ${pkgdir}/usr/lib
   cp -r qml/SAMBA ${pkgdir}/usr/lib/qt/qml
 
   mkdir -p ${pkgdir}/usr/share/doc/sam-ba
