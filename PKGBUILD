@@ -2,7 +2,7 @@
 
 pkgname=blackmagic-decklink-sdk
 pkgver=10.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Blackmagic DeckLink SDK"
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/capture-and-playback"
@@ -35,7 +35,7 @@ prepare() {
 	            -s \
 	            -d @req.json \
 	            -H "Content-Type: application/json;charset=UTF-8" \
-	            "$_srcurl"
+	            "$_srcurl" \
 	          )" || _exit_makepkg "download"
 	else
 	    msg2 "Found ${_srcfile}"
@@ -43,9 +43,10 @@ prepare() {
 	
 	# check integrity of the decklink sdk zip file (file validation)
 	msg2 "Validating ${_srcfile} with sha256sum..."
-	printf "%s" "       ${_srcfile} ... "
-	local _real_sha256sum="$(openssl dgst -sha256 "../${_srcfile}")"
+	local _real_sha256sum="$(openssl dgst -sha256 "../${_srcfile}" \
+	                             || _exit_makepkg "calculate SHA256 of")"
 	_real_sha256sum="${_real_sha256sum##* }"
+	printf "%s" "       ${_srcfile} ... "
 	if [ "$_expected_sha256sum" = "$_real_sha256sum" ] 
 	then
 	    printf "%s\n" "Passed"
