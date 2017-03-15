@@ -30,7 +30,7 @@ sha512sums_x86_64=(
 )
 
 package() {
-  mkdir -p "${pkgdir}/var/log/traefik"
+  install -d -m755 "${pkgdir}/var/log/traefik"
 
   install -D -m644 "../traefik.logrotate" "${pkgdir}/etc/logrotate.d/traefik"
   install -D -m644 "../traefik.service" "${pkgdir}/usr/lib/systemd/system/traefik.service"
