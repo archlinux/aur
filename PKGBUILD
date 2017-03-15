@@ -17,7 +17,7 @@ md5sums=('SKIP')
 build() {
         cd "$_pkgname"
         export CXX=clang++
-        cmake .
+        cmake -DCMAKE_INSTALL_PREFIX=/usr .
         make
 }
 
