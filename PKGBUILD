@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=ananicy-git
-pkgver=133.94e6a26
+pkgver=1.8.r2.g6dd10bf
 pkgrel=1
 pkgdesc="Ananicy - is Another auto nice daemon, with community rules support"
 arch=('any')
@@ -14,8 +14,8 @@ md5sums=('SKIP')
 install=$pkgname.install
 
 pkgver() {
-  cd ${pkgname}
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
