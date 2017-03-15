@@ -2,8 +2,8 @@
 
 pkgname=pingo
 pkgver=0.71e
-pkgrel=2
-pkgdesc="An experimental, visually lossless –or lossy and fast PNG/JPG optimizer (uses wine)"
+pkgrel=3
+pkgdesc="An experimental, fast Web PNG/JPG optimizer with visually lossless or lossy compression (uses wine)"
 arch=('i686' 'x86_64')
 url="http://css-ig.net/pingo/"
 license=('unknown')
