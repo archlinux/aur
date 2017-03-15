@@ -2,7 +2,7 @@
 
 pkgname=openni2-git
 pkgver=2.2.beta.r25.g1fce8ed
-pkgrel=1
+pkgrel=2
 pkgdesc="Framework for sensor-based 'Natural Interaction' (Git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/occipital/OpenNI2/"
@@ -65,7 +65,7 @@ package() {
     fi
     
     # directories creation
-    mkdir -p "${pkgdir}/usr/"{bin,include/openni2/{Linux-Arm,Linux-x86}}
+    mkdir -p "${pkgdir}/usr/"{bin,include/openni2/{Driver,Linux-Arm,Linux-x86}}
     mkdir -p "${pkgdir}/usr/lib/"{OpenNI2/Drivers,pkgconfig}
     mkdir -p "${pkgdir}/usr/share/"{doc/"${pkgname}",licenses/"${pkgname}"}
     mkdir -p "${pkgdir}/usr/lib/udev/rules.d" # usb rules (udev rules)
@@ -86,6 +86,7 @@ package() {
     # includes
     cd "${srcdir}/${pkgname}/Include"
     install -D -m644 *.h         "${pkgdir}/usr/include/openni2"
+    install -D -m644 Driver/*    "${pkgdir}/usr/include/openni2/Driver"
     install -D -m644 Linux-Arm/* "${pkgdir}/usr/include/openni2/Linux-Arm"
     install -D -m644 Linux-x86/* "${pkgdir}/usr/include/openni2/Linux-x86"
     
