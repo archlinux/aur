@@ -1,13 +1,12 @@
 pkgbase = arch-wiki-cli
 	pkgdesc = Search the arch wiki from the cli
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/deadhead420/arch-wiki
 	arch = any
 	license = GPL
 	depends = bash
-	source = https://raw.githubusercontent.com/deadhead420/arch-wiki/master/arch-wiki.sh
-	md5sums = b358943235f2413e429bef8890b3c2ea
+	source = https://github.com/deadhead420/arch-wiki.git
 
 pkgname = arch-wiki-cli
 
