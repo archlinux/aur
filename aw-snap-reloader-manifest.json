@@ -1,32 +1,14 @@
 {
-"update_url": "https://clients2.google.com/service/update2/crx",
-
     "name": "Snapper - 'Aw snap' tab reloader",
     "short_name": "Snapper",
     "description": "Reload crashed or unresponsive Chrome tabs (Aw, snap). Specifically intended for digital signage content running in kiosk mode.",
     "manifest_version": 2,
     "version": "0.9.7.0",
     "background": {
-        "scripts": ["javascript/background.js"],
+        "scripts": ["background.js"],
         "persistent": true
     },
     "permissions": [
         "tabs"
-    ],
-    "browser_action": {
-      "default_icon": {
-        "16": "icons/icon-016.png",
-        "24": "icons/icon-024.png",
-        "32": "icons/icon-032.png"
-      },
-      "default_title": "Snapper"
-    },
-    "icons": {
-        "16":  "icons/icon-016.png",
-        "19":  "icons/icon-019.png",
-        "24":  "icons/icon-024.png",
-        "32":  "icons/icon-032.png",
-        "48":  "icons/icon-048.png",
-        "128": "icons/icon-128.png"
-    }
+    ]
 }

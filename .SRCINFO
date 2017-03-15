@@ -1,7 +1,7 @@
 pkgbase = chromium-fullscreen
 	pkgdesc = A script in order to run Chromium in fullscreen mode under the chromium user
 	pkgver = 2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/chromium-fullscreen/
 	install = chromium-fullscreen.install
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = chromium-fullscreen
 	md5sums = c700c36f4ea3e353c6d49df823561fc4
 	md5sums = f543ec018edbaf5533e6bddd5068ff54
 	md5sums = a2e49410d550e79ac9c0037121522387
-	md5sums = e6bb49bafce141806d28fe03efc862b0
+	md5sums = 729c8bb0e52fdd35c9c02fd6b1394d06
 
 pkgname = chromium-fullscreen
 
