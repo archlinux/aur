@@ -1,8 +1,8 @@
-# Maintainer:  TEL.RED LLC <ask_at_tel_d0t_red>
+# Maintainer:  TEL.RED LLC <linux_at_tel_d0t_red>
 
 pkgname=sky
-pkgver=2.1.6574
-pkgrel=201703060658
+pkgver=2.1.6582
+pkgrel=201703141250
 pkgdesc="Lync and Skype for Business client on Linux"
 
 arch=(
@@ -36,8 +36,8 @@ makedepends=(
 	'xz'
 )
 
-source_x86_64=("https://tel.red/linux/sky-orign-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz")
-sha256sums_x86_64=('cfb9ead8e9b6e554c6ac90be0a8b28b972cd746f5c32d7f1e45ebbc432113827')
+source_x86_64=("https://tel.red/linux/sky-archlinux-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz")
+sha256sums_x86_64=('b532d9b00a2956b1114cfb7ff665205c54202c69ba3a33a9ca7d26a3fcb913bb')
 
 package() {
 	local _sky_libdir="/usr/lib/sky/lib64"
@@ -45,7 +45,7 @@ package() {
 	local _sky_datadir=( "${_sky_bindir}/sounds" )
 
 	cd "${pkgdir}"
-	tar -Jxf "${srcdir}/sky-orign-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz"
+	tar -Jxf "${srcdir}/sky-archlinux-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz"
 	find "${pkgdir}" -maxdepth 1 -type f -delete
 }
 
