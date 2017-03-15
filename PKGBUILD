@@ -2,7 +2,7 @@
 
 pkgname=pascalcoin
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='PascalCoin Wallet and Daemon'
 arch=('i686' 'x86_64')
 url='https://github.com/PascalCoin/PascalCoin'
