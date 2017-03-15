@@ -5,9 +5,8 @@
 # Contributor: Denis Martinez <deuns.martinez [at] gmail [dot] com>
 
 pkgname=lib32-intel-tbb
-pkgver=2017_20161128
-_tag=tbb${pkgver/\./}oss
-_file=${_tag}_src.tgz
+pkgver=2017_20170226
+_pkgver=2017_U5
 pkgrel=1
 pkgdesc="High level abstract threading library (32-bit)"
 arch=('x86_64')
@@ -15,18 +14,18 @@ url="http://threadingbuildingblocks.org"
 license=('GPL')
 depends=("${pkgname#lib32-}" 'lib32-gcc-libs')
 makedepends=('gcc-multilib')
-source=("http://threadingbuildingblocks.org/sites/default/files/software_releases/source/${_file}")
-sha1sums=('2c451a5bcf6fc31487b98b4b29651c369874277c')
+source=("https://github.com/01org/tbb/archive/${_pkgver}.tar.gz")
+sha256sums=('780baf0ad520f23b54dd20dc97bf5aae4bc562019e0a70f53bfc4c1afec6e545')
 
 build() {
-  cd "${_tag}"
+  cd "tbb-${_pkgver}"
   export CXXFLAGS+=" -fno-lifetime-dse" # FS#49898
   export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
   make arch=ia32
 }
 
 package() {
-  cd "${_tag}"
+  cd "tbb-${_pkgver}"
   install -d "${pkgdir}/usr/lib32"
   install -m755 build/linux_*/*.so* "${pkgdir}/usr/lib32"
 }
