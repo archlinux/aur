@@ -1,23 +1,22 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer: Geert Custers <geert.aj.custers@gmail.com>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 _pkgname=glportal
 pkgname=${_pkgname}-git
-pkgver=0.1.pre.393.g32cd473
+pkgver=0.4.0.188.g857969c
 pkgrel=1
 epoch=1
 pkgdesc="OpenGL puzzle game inspired by portal."
 arch=('i686' 'x86_64')
 url="http://glportal.de/"
 license=('custom')
-depends=('assimp' 'sdl2_mixer' 'tinyxml2' 'libepoxy' 'bullet')
+depends=('assimp' 'sdl2_mixer' 'tinyxml2' 'libepoxy' 'bullet' 'freeimage')
 makedepends=('git' 'cmake' 'unittestpp')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=("git://github.com/${_pkgname}/${_pkgname}.git"
-        "git://github.com/${_pkgname}/${_pkgname}_data.git")
-md5sums=('SKIP'
-         'SKIP')
+source=("git://github.com/${_pkgname}/${_pkgname}.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -27,9 +26,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  git submodule init
-  git config submodule.data.url "${srcdir}/${_pkgname}_data"
-  git submodule update
+  git submodule update --init --recursive
 }
 
 build() {
