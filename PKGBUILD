@@ -32,8 +32,9 @@ sha512sums_x86_64=(
 package() {
   mkdir -p "${pkgdir}/var/log/traefik"
 
-  install -D -m644 "../traefik.toml" "${pkgdir}/etc/traefik/traefik.toml"
+  install -D -m644 "../traefik.logrotate" "${pkgdir}/etc/logrotate.d/traefik"
   install -D -m644 "../traefik.service" "${pkgdir}/usr/lib/systemd/system/traefik.service"
+  install -D -m644 "../traefik.toml" "${pkgdir}/etc/traefik/traefik.toml"
 
   install -D -m644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -D -m755 "${_pkgname}_${CARCH}_${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
