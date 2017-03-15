@@ -8,6 +8,7 @@ pkgdesc='A modern reverse proxy'
 arch=('i686' 'x86_64')
 url='https://github.com/containous/traefik'
 license=('MIT')
+install="${_pkgname}.install"
 backup=(
   'etc/traefik/traefik.toml'
   'etc/logrotate.d/traefik'
