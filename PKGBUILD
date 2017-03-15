@@ -18,7 +18,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("${pkgname}::git+http://github.com/jerome-pouiller/${pkgname}.git")
+source=("${pkgname}::git+http://github.com/jerome-pouiller/${_pkgname}.git")
 noextract=()
 md5sums=('SKIP')
 
