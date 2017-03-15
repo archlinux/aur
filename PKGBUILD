@@ -9,10 +9,12 @@ url="http://thelifeofkenneth.com/aprx/"
 license=('custom')
 depends=('glibc')
 backup=('etc/aprx.conf')
-source=("http://thelifeofkenneth.com/$pkgname/release/$pkgname-$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::http://thelifeofkenneth.com/$pkgname/release/$pkgname-$pkgver.tar.gz"
         'aprx.service')
 sha256sums=('28841b15310459ba8b7d9a47b49c9d2c0105924bdf9ef32f0095c300f7dbf887'
             'ef586aa9c5f7dfc70e6631e60648764738923ccb1374732f7ae356d4789e69c5')
+sha512sums=('4b7b44c9fc088f9970c89cc82cdb1fe988d1991fbb54028eafaf0bae20fefbca5d310a698c50313b6ad18c5f48d3cfd4b34716dafa6a6145676b76a9cf5b99b5'
+            'e9a6d4ce894c692e2a959ae5a7644b1a18c7d2df550d44a3cba3bff484400262bc9da5f12b06b406ccc64094b242d6783a887eacd633a59b68d8519a299e0b6b')
 
 build() {
 # For a small memory system without writeable /tmp add --with-embedded   
