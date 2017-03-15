@@ -19,7 +19,7 @@ options=()
 install=.install
 source=(https://bitbucket.org/av-mamzikov/stereophotoview/get/${pkgver}.zip)
 noextract=()
-md5sums=('950c94abbdec1cf9506f5f63fcf4dc2f') #generate with 'makepkg -g'
+md5sums=('384b73a4f487a4fed6777039c80b7cc8') #generate with 'makepkg -g'
 
 build() {
   cd "$srcdir"
