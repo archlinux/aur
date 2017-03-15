@@ -2,7 +2,7 @@
 
 pkgname=pingo
 pkgver=0.71e
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental, visually lossless –or lossy and fast PNG/JPG optimizer (uses wine)"
 arch=('i686' 'x86_64')
 url="http://css-ig.net/pingo/"
@@ -33,7 +33,7 @@ prepare() {
 	        -H 'Upgrade-Insecure-Requests: 1' \
 	        -H 'User-Agent: Mozilla/5.0 (X11; Linux "$CARCH") \
 	                        AppleWebKit/537.36 (KHTML, like Gecko) \
-	                        Chrome/56.0.2924.87 \
+	                        Chrome/57.0.2987.98 \
 	                        Safari/537.36' \
 	        -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' \
 	        -H 'Referer: https://css-ig.net/pingo.php' \
