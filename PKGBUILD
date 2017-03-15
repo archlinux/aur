@@ -12,7 +12,7 @@
 pkgbase=mesa-git
 pkgname=('mesa-git' 'mesa-libgl-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=17.1.0_devel.89829.aed2714145
+pkgver=17.1.0_devel.89867.7751ed39e4
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'libdrm' 'glproto'
@@ -21,7 +21,8 @@ makedepends=('git' 'python2-mako' 'llvm-svn' 'libclc' 'clang-svn' 'libdrm' 'glpr
              'libtxc_dxtn' 'ocl-icd' 'vulkan-icd-loader' 'libgcrypt')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
-source=('mesa::git+https://anongit.freedesktop.org/git/mesa/mesa.git'
+# source=('mesa::git+https://anongit.freedesktop.org/git/mesa/mesa.git'
+source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
         'LICENSE'
 )
 sha512sums=('SKIP'

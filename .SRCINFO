@@ -1,6 +1,6 @@
 pkgbase = mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 17.1.0_devel.89829.aed2714145
+	pkgver = 17.1.0_devel.89867.7751ed39e4
 	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = mesa-git
 	makedepends = ocl-icd
 	makedepends = vulkan-icd-loader
 	makedepends = libgcrypt
-	source = mesa::git+https://anongit.freedesktop.org/git/mesa/mesa.git
+	source = mesa::git://anongit.freedesktop.org/mesa/mesa
 	source = LICENSE
 	sha512sums = SKIP
 	sha512sums = 25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2
