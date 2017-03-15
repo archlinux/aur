@@ -1,14 +1,12 @@
 post_install() {
-  getent group traefik >/dev/null || groupadd -r traefik
-  getent passwd traefik >/dev/null || useradd -g traefik -r -M -s /bin/false traefik
-  chown traefik:traefik /var/log/traefik
-  setcap 'cap_net_bind_service=+ep' /bin/traefik
+  getent group traefik &> /dev/null || groupadd -r traefik &> /dev/null
+  getent passwd traefik &> /dev/null || useradd -s /sbin/nologin -c "Traefik user" -d /var/empty -g traefik -r traefik &> /dev/null
+  chmod u+s usr/bin/traefik &>/dev/null
+  chown traefik:traefik usr/bin/traefik &>/dev/null
+  chown traefik:traefik var/log/traefik &>/dev/null
+  setcap 'cap_net_bind_service=+ep' usr/bin/traefik &>/dev/null
 }
 
 post_upgrade() {
   post_install
-}
-
-post_remove() {
-  userdel traefik
 }

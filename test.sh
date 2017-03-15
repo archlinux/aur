@@ -2,11 +2,12 @@
 
 if [ ! -z ${1+x} ];
 then
-  if [[ $1 == *\/ ]];
+  if [ -f $1 ];
   then
-    SRCINFO="$1.SRCINFO"
+    SRCINFO="$1"
   else
-    SRCINFO="$1/.SRCINFO"
+    echo "File not found $1"
+    exit 1
   fi
 else
   SRCINFO=".SRCINFO"

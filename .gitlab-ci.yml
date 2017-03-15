@@ -9,12 +9,9 @@ test:
   only:
     - master
   before_script:
-    - pacman -Syyu --noconfirm
-    - pacman -S namcap --noconfirm
+    - pacman -Syyu namcap --noconfirm
     - useradd somebody
     - echo "somebody ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-    - mkdir -p /home/somebody/
-    - chown -R somebody:somebody /home/somebody/
   script:
     - sudo -u somebody ./test.sh
 
@@ -25,11 +22,10 @@ github:
     - git checkout "$CI_BUILD_REF_NAME"
     - git remote add github https://"$GITHUB_USERNAME":"$GITHUB_TOKEN"@github.com/sanduhrs/arch-aur-traefik-bin
   script:
-    - echo "Deploy to Github"
     - git push github
   environment:
     name: staging
-    url: https://github.com/sanduhrs/arch-aur-traefik
+    url: https://github.com/sanduhrs/arch-aur-traefik-bin
   only:
     - branches
   when: on_success
@@ -49,7 +45,6 @@ aur:
     - git checkout "$CI_BUILD_REF_NAME"
     - git remote add aur ssh://aur@aur.archlinux.org/traefik-bin.git
   script:
-    - echo "Deploy to Github"
     - git push aur
   environment:
     name: production
