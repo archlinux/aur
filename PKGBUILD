@@ -1,6 +1,6 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
-pkgname=tcmu-runner
+pkgname=tcmu-runner-git
 pkgver=v1.2.0.r29.g8b429b8
 pkgrel=1
 pkgdesc="A daemon that handles the userspace side of the LIO TCM-User backstore."
