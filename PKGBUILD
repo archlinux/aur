@@ -1,8 +1,8 @@
 # Maintainer: Jeff Keyte <jeff@keyte.me>
 
 pkgname=pascalcoin
-pkgver=1.5.3
-pkgrel=2
+pkgver=1.5.4
+pkgrel=1
 pkgdesc='PascalCoin Wallet and Daemon'
 arch=('i686' 'x86_64')
 url='https://github.com/PascalCoin/PascalCoin'
@@ -11,16 +11,10 @@ depends=('qt4' 'qt4pas')
 makedepends=('lazarus' 'lazarus-qt' 'fpc')
 source=("git+https://github.com/PascalCoin/PascalCoin.git"
         "https://www.openssl.org/source/openssl-1.1.0e.tar.gz"
-        'UTime.patch'
 	'pascalcoinwallet.desktop')
 sha256sums=('SKIP'
 '57be8618979d80c910728cfc99369bf97b2a1abd8f366ab6ebdee8975ad3874c'
-'d51a3983e0141c9fe09050df03f060bd3570a6b1fd87415163d02956ebb76d9c'
 '547801a11497ee52220e4dc6cb6d2c43aeb6e94d989697cb0a54d26e4a4cad58')
-
-prepare() {
-  patch "$srcdir/PascalCoin/Units/PascalCoin/UTime.pas" "$srcdir/UTime.patch"
-}
 
 pkgver() {
 cd "$srcdir/PascalCoin"
