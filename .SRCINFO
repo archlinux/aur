@@ -17,11 +17,10 @@ pkgbase = glportal-git
 	depends = tinyxml2
 	depends = libepoxy
 	depends = bullet
+	depends = freeimage
 	provides = glportal=0.1.pre.393.g32cd473
 	conflicts = glportal
 	source = git://github.com/glportal/glportal.git
-	source = git://github.com/glportal/glportal_data.git
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = glportal-git
