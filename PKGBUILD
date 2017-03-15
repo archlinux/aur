@@ -2,9 +2,9 @@
 
 _pkgname=dstatus
 pkgname=$_pkgname-git
-pkgver=17.8ceed88
+pkgver=31.fa9adb8
 pkgrel=1
-pkgdesc="status bar for velox"
+pkgdesc="status bar for dwc"
 arch=('i686' 'x86_64')
 url="https://github.com/ametisf/dstatus"
 license=('MIT')
