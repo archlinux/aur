@@ -1,12 +1,13 @@
 # Maintainer: Streetwalrus <streetwalrus@codewalr.us>
 pkgname=sam-ba
 pkgver=3.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Atmel SAM Boot Assistant"
 arch=('i686' 'x86_64')
 url="https://github.com/atmelcorp/sam-ba"
 license=('GPL2')
 depends=('qt5-base' 'qt5-serialport' 'qt5-declarative')
+makedepends=('qt5-tools')
 source=("https://github.com/atmelcorp/sam-ba/archive/v$pkgver.tar.gz"
         "0001-Dont-install-thirdparty-libs.patch"
         "0002-Dont-rely-on-applicationDirPath.patch")
