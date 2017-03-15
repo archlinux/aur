@@ -11,6 +11,8 @@ url="http://www.dlib.net/"
 license=('Boost Software License')
 depends=('glibc')
 optdepends=('cblas: for BLAS support'
+            'cuda: for CUDA support'
+            'giflib: for GIF support'
             'lapack: for LAPACK support'
             'libjpeg-turbo: for JPEG support'
             'libpng: for PNG support'
