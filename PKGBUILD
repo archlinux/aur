@@ -13,21 +13,21 @@ makedepends=('git')
 conflicts=('gnome-shell-extension-topicons-plus')
 provides=('gnome-shell-extension-topicons-plus')
 groups=('gnome-shell-extensions')
-source=("git+https://github.com/phocean/TopIcons.git")
+source=("git+https://github.com/phocean/TopIcons-plus.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd TopIcons
+	cd TopIcons-plus
 	git describe --tags --long | sed 's/^v//; s/-/+/g'
 }
 
 build() {
-	cd TopIcons
+	cd TopIcons-plus
 	make build
 }
 
 package() {
-	cd TopIcons
+	cd TopIcons-plus
 	local uuid=$(grep -Po '(?<="uuid": ")[^"]*' _build/metadata.json)
 	local destdir="$pkgdir/usr/share/gnome-shell/extensions/$uuid"
 
