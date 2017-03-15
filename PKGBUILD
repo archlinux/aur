@@ -4,7 +4,7 @@
 
 pkgbase='drawpile'
 pkgname=("${pkgbase}"{,'-client','-server','-common'})
-pkgver=1.0.6
+pkgver=2.0.0rc
 pkgrel=1
 pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url='http://drawpile.net/'
 license=('GPL3')
 makedepends=('karchive' 'qt5-multimedia' 'qt5-tools' 'qt5-svg' 'ninja' 'cmake')
 source=("http://drawpile.net/files/src/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('fef9608ef581950745a4ec1ba73a0aa396025913ffacc2dc94d9ea6e30ffc14f')
+sha256sums=('f1afea9c5b1079c29363c68c26022deedff996746c5c30bbb6709e720b0f9e96')
 
 _cmakeargs+=('-Wno-dev')
 
@@ -55,7 +55,7 @@ package_drawpile-server() {
 	cd "${pkgbase}-${pkgver}"
 
 	DESTDIR="${pkgdir}" ninja -C 'build' install
-	rm -rfv "${pkgdir}"/usr/{share,bin/drawpile{,-1.*}}
+	rm -rfv "${pkgdir}"/usr/{share,bin/drawpile{,-2.*}}
 }
 
 package_drawpile-common() {
