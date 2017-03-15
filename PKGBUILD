@@ -22,7 +22,7 @@ pkgver() {
 package() {
 	cd "$_gitname"
 	
-	install -Dm644 README.md $pkgdir/usr/share/$_gitname/README.md
+	install -Dm644 README.md $pkgdir/usr/share/doc/$_gitname/README.md
 	install -Dm755 archtorify.sh $pkgdir/usr/bin/archtorify
 }
 
