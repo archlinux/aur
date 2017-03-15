@@ -5,6 +5,8 @@ After=syslog.target
 
 [Service]
 Type=simple
+User=traefik
+Group=traefik
 ExecStart=/usr/bin/traefik
 
 [Install]
