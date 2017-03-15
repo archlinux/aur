@@ -1,6 +1,11 @@
 post_install() {
   cd /opt/eclipse-clp
   echo -e "\n\n\n\n${JAVA_HOME}\n" | ./RUNME
+  cat << EOF
+If rlwrap is installed, create the following aliases to get line editing and input history:
+alias eclipse-clp='rlwrap eclipse-clp'
+alias jeclipse-clp='rlwrap jeclipse-clp'
+EOF
 }
 
 post_upgrade() {
