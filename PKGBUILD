@@ -2,16 +2,14 @@
 
 pkgname=pingo
 pkgver=0.72
-pkgrel=2
+pkgrel=3
 pkgdesc="An experimental, fast Web PNG/JPG optimizer with visually lossless or lossy compression (uses wine)"
 arch=('i686' 'x86_64')
 url="http://css-ig.net/pingo/"
 license=('unknown')
 depends=('wine')
 options=('!strip')
-source=( #"${pkgname}-${pkgver}.zip"::"http://css-ig.net/downloads/${pkgname}.zip"
-        "https://raw.githubusercontent.com/bermond/shellutils/master/image/${pkgname}")
-#noextract=("${pkgname}-${pkgver}.zip")
+source=("https://raw.githubusercontent.com/bermond/shellutils/master/image/${pkgname}")
 sha256sums=('454d976b5b8fdf146f19228ddec5e532f22eabe68d825ac44a153584db2646e9')
 _expected_sha256sum="0f67fa7d24a44bfea9aceeec9f4369198174b420ac86a82e6674d16f90747d46"
 _srcfile="pingo-${pkgver}.zip"
