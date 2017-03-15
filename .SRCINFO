@@ -1,7 +1,7 @@
 pkgbase = airdcpp-webclient-git
 	pkgdesc = A peer-to-peer file sharing client with web user interface.
 	pkgver = r2725.1a932a46
-	pkgrel = 1
+	pkgrel = 2
 	url = https://airdcpp-web.github.io
 	install = airdcpp.install
 	arch = i686
@@ -20,12 +20,14 @@ pkgbase = airdcpp-webclient-git
 	depends = intel-tbb
 	source = git+https://github.com/airdcpp-web/airdcpp-webclient.git
 	source = airdcpp.service
-	source = airdcpp-system.socket
-	source = airdcpp-user.socket
+	source = airdcpp.socket
+	source = airdcpp.sysusers
+	source = airdcpp.tmpfiles
 	sha256sums = SKIP
-	sha256sums = c7127ba4f361eb156b436791f7aa486636959bfe4d6d8e772e220beb4db04d30
+	sha256sums = 6fe0977db676dc4fdcd872ed866b4d8189a4800e0c96ef0c7f2ba57c93a6ff19
 	sha256sums = 452e4689a9b62c4e1c5cb30c79e2720946c8460d5228c6697444abbfbcc4bf68
-	sha256sums = 452e4689a9b62c4e1c5cb30c79e2720946c8460d5228c6697444abbfbcc4bf68
+	sha256sums = 4de13425653648ee086b924310e025b365eb0ee06c271a8f02f4161c828b4d96
+	sha256sums = b8dd6c435e1140c169211c36fdded45a8bd8e675f7b78b2db769aaa05b176659
 
 pkgname = airdcpp-webclient-git
 

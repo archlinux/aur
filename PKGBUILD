@@ -1,7 +1,7 @@
 # Maintainer: Zdenek Janecek <ycdmdj@gmail.com>
 pkgname=airdcpp-webclient-git
 pkgver=r2725.1a932a46
-pkgrel=1
+pkgrel=2
 _gitname=airdcpp-webclient
 pkgdesc="A peer-to-peer file sharing client with web user interface."
 arch=('i686' 'x86_64' 'armv7h')
@@ -11,12 +11,14 @@ depends=('miniupnpc' 'boost' 'openssl' 'geoip' 'leveldb' 'websocketpp' 'libnatpm
 makedepends=('cmake' 'git')
 source=('git+https://github.com/airdcpp-web/airdcpp-webclient.git'
         'airdcpp.service'
-        'airdcpp-system.socket'
-        'airdcpp-user.socket')
+        'airdcpp.socket'
+        'airdcpp.sysusers'
+        'airdcpp.tmpfiles')
 sha256sums=('SKIP'
-            'c7127ba4f361eb156b436791f7aa486636959bfe4d6d8e772e220beb4db04d30'
+            '6fe0977db676dc4fdcd872ed866b4d8189a4800e0c96ef0c7f2ba57c93a6ff19'
             '452e4689a9b62c4e1c5cb30c79e2720946c8460d5228c6697444abbfbcc4bf68'
-            '452e4689a9b62c4e1c5cb30c79e2720946c8460d5228c6697444abbfbcc4bf68')
+            '4de13425653648ee086b924310e025b365eb0ee06c271a8f02f4161c828b4d96'
+            'b8dd6c435e1140c169211c36fdded45a8bd8e675f7b78b2db769aaa05b176659')
 
 install=airdcpp.install
 
@@ -41,8 +43,8 @@ package() {
   rmdir ${pkgdir}/usr/lib64
 
   cd ..
-  install -d -g 170 -o 170 ${pkgdir}/var/lib/airdcpp
-  install -Dm644 airdcpp.service ${pkgdir}/usr/lib/systemd/user/airdcpp.service
-  install -Dm644 airdcpp-system.socket ${pkgdir}/usr/lib/systemd/system/airdcpp.socket
-  install -Dm644 airdcpp-user.socket ${pkgdir}/usr/lib/systemd/user/airdcpp.socket
+  install -Dm644 airdcpp.service ${pkgdir}/usr/lib/systemd/system/airdcpp.service
+  install -Dm644 airdcpp.socket ${pkgdir}/usr/lib/systemd/system/airdcpp.socket
+  install -Dm644 airdcpp.sysusers ${pkgdir}/usr/lib/sysusers.d/airdcpp.conf
+  install -Dm644 airdcpp.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/airdcpp.conf
 }

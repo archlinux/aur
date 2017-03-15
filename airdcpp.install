@@ -1,15 +1,5 @@
 post_install() {
-	getent group airdcpp &>/dev/null || groupadd -r -g 170 airdcpp >/dev/null
-	getent passwd airdcpp &>/dev/null || useradd -r -u 170 -g airdcpp -d /var/lib/airdcpp -s /bin/false airdcpp >/dev/null
-	true
-	
-	echo "Create configuration and enable user service by:"
-	echo "$ airdcppd --configure"
-	echo "$ systemctl --user enable airdcpp"
-}
-
-post_remove() {
-	getent passwd airdcpp &>/dev/null && userdel airdcpp >/dev/null
-	getent group airdcpp &>/dev/null && groupdel airdcpp >/dev/null
-	true
+  echo "Enable service by:"
+  echo "# su -s /bin/bash -c 'exec airdcppd -c=/var/lib/airdcpp --configure' airdcpp"
+  echo "# systemctl enable airdcpp"
 }
