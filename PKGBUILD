@@ -2,10 +2,10 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=2.13.1
+pkgver=2.13.2
 pkgrel=1
 _wwwpkgname=AdminLTE
-_wwwpkgver=2.5.1
+_wwwpkgver=2.5.2
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
 license=('GPL2')
@@ -31,8 +31,8 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	blacklist.txt
 	mimic_setupVars.conf.sh)
 
-md5sums=('3b9fd78dde1c8ab60552fe5dc28f07f0'
-         '9aaf44d6dd1d6630a387b925cf468b76'
+md5sums=('4fdf2df146e87920dd427f4a93bbc6c3'
+         'af36a7b3e6e09ebf2cf8f34a4afe0c1f'
          '3acf27ca01d931db363634dbfc95a061'
          '3f1aeea43af0b192edb36b9e5484ff87'
          'f39fa3e607ff7346e93febfa2d0e565e'
@@ -67,21 +67,29 @@ prepare() {
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 5" && return 1 ; fi
   sed -i '/uninstallFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
 
-  sed -n "/:::  \-[u,s]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  sed -n "/piholeCheckoutFunc() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 6" && return 1 ; fi
+  sed -i '/piholeCheckoutFunc() {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
+
+  sed -n "/:::  \-[u,s]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 7" && return 1 ; fi
   sed -i '/:::  \-[u,s]/d' "$srcdir"/$_pkgname-$pkgver/pihole
 
   sed -n "/:::  \-d/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 7" && return 1 ; fi
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 8" && return 1 ; fi
   sed -i '/:::  \-d/,+3d' "$srcdir"/$_pkgname-$pkgver/pihole
 
   sed -n "/\"\-[d,u,r,s]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 8" && return 1 ; fi
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 9" && return 1 ; fi
   sed -i '/\"\-[d,u,r,s]/d' "$srcdir"/$_pkgname-$pkgver/pihole
 
   sed -n "/uninstall/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 9" && return 1 ; fi
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 10" && return 1 ; fi
   sed -i '/uninstall/d' "$srcdir"/$_pkgname-$pkgver/pihole
+
+  sed -n "/checkout/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 11" && return 1 ; fi
+  sed -i '/checkout/d' "$srcdir"/$_pkgname-$pkgver/pihole
 
 # -----------------
 
@@ -152,22 +160,34 @@ prepare() {
   sed -i 's/\$webBranch =.*$/\$webBranch = "master";/' "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
 
   sed -n "/\$piholeCommit =.*$/w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 3" && return 1 ; fi
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 5" && return 1 ; fi
   sed -i 's/\$piholeCommit =.*$/\$piholeCommit = NULL;/' "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
   sed -n "/\$webCommit =.*$/w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 4" && return 1 ; fi
-  sed -i 's/\$webCommit =.*$/\$webCommit = NULL;/' "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
-
-  sed -n "/piholeVersion=.*$/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 5" && return 1 ; fi
-  sed -i 's/piholeVersion=.*$/piholeVersion="'"$pkgver"'";/' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
-  sed -n "/webVersion=.*$/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 6" && return 1 ; fi
-  sed -i 's/webVersion=.*$/webVersion="'"$_wwwpkgver"'";/' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
+  sed -i 's/\$webCommit =.*$/\$webCommit = NULL;/' "$srcdir"/$_wwwpkgname-$_wwwpkgver/scripts/pi-hole/php/footer.php
 
   sed -n "/\$piHoleVersion =.*$/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/index.php
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 7" && return 1 ; fi
   sed -i 's/\$piHoleVersion =.*$/\$piHoleVersion = "'"$pkgver"'";/' "$srcdir"/$_pkgname-$pkgver/advanced/index.php
+
+  sed -i "s|/var/www/html/admin/|/srv/http/pihole/admin/|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 8" && return 1 ; fi
+
+  sed -n "/\$(getLocalVersion \"\${PHGITDIR}\")/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 9" && return 1 ; fi
+  sed -i "s/\$(getLocalVersion \"\${PHGITDIR}\")/$pkgver/" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
+
+  sed -n "/\$(getLocalVersion \"\${WEBGITDIR}\")/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 9" && return 1 ; fi
+  sed -i "s/\$(getLocalVersion \"\${WEBGITDIR}\")/$_wwwpkgver/" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
+
+  sed -n "/\$(getLocalHash \"\${PHGITDIR}\")/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 9" && return 1 ; fi
+  sed -i "s/\$(getLocalHash \"\${PHGITDIR}\")/N.A./" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
+
+  sed -n "/\$(getLocalHash \"\${WEBGITDIR}\")/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 9" && return 1 ; fi
+  sed -i "s/\$(getLocalHash \"\${WEBGITDIR}\")/N.A./" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/version.sh
 
 # -----------------
 
