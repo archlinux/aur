@@ -1,0 +1,18 @@
+pkgbase = python-minepy
+	pkgdesc = minepy provides an ANSI C library for the Maximal Information-based Nonparametric Exploration (MIC and MINE family)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://minepy.readthedocs.io
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-sphinx
+	provides = python-minepy
+	options = !emptydirs
+	source = minepy-1.2.0.tar.gz::https://github.com/minepy/minepy/archive/1.2.0.tar.gz
+	sha256sums = 4c27086a9303807c88125726c999ceb3331a8e7a00f7801d9989f00e7afdf950
+
+pkgname = python-minepy
+
