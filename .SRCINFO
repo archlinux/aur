@@ -1,0 +1,14 @@
+pkgbase = kwin-scripts-dynamic-virtual-desktops-git
+	pkgdesc = KWin script that automatically adds/removes virtual desktops.
+	pkgver = r3.736b073
+	pkgrel = 1
+	url = https://github.com/rliang/kwin-dynamic-virtual-desktops
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = kwin
+	source = kwin-scripts-dynamic-virtual-desktops-git::git+https://github.com/rliang/kwin-dynamic-virtual-desktops.git
+	md5sums = SKIP
+
+pkgname = kwin-scripts-dynamic-virtual-desktops-git
+
