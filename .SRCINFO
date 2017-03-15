@@ -1,0 +1,21 @@
+pkgbase = traefik-bin
+	pkgdesc = A modern reverse proxy
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/containous/traefik
+	arch = i686
+	arch = x86_64
+	license = MIT
+	backup = etc/traefik/traefik.toml
+	backup = etc/logrotate.d/traefik
+	source_i686 = traefik_i686_1.1.2::https://github.com/containous/traefik/releases/download/v1.1.2/traefik_linux-386
+	source_i686 = https://raw.githubusercontent.com/containous/traefik/master/LICENSE.md
+	sha512sums_i686 = e08ba5893c0781df3a51d91a25fef388f16ba4dfd5ed4630e54090cd393d8b7db051bc0531847d06e3135bc04a628b3bb76bfb5da8e4a29dea397cf01d0f273c
+	sha512sums_i686 = 8ca3ccd49fccf47a67d6e80bd21ceec6a3968a9d3defd781862782cd4eb2a5763688fb028091548ed102c719267623f18f94fa532ee7a1673806246407e150e7
+	source_x86_64 = traefik_x86_64_1.1.2::https://github.com/containous/traefik/releases/download/v1.1.2/traefik_linux-amd64
+	source_x86_64 = https://raw.githubusercontent.com/containous/traefik/master/LICENSE.md
+	sha512sums_x86_64 = 02294f3fb021b0c84578285a17ca3f5b31be92d7547a155e69dea0ad0d9e53ef688fed080061849d9b6b77bbdc3cc272abbf0e771e7d3a3ef1ba89a9f6e2de25
+	sha512sums_x86_64 = 8ca3ccd49fccf47a67d6e80bd21ceec6a3968a9d3defd781862782cd4eb2a5763688fb028091548ed102c719267623f18f94fa532ee7a1673806246407e150e7
+
+pkgname = traefik-bin
+

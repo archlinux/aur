@@ -1,0 +1,11 @@
+[Unit]
+Description=Traefik reverse proxy
+After=network.target
+After=syslog.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/traefik
+
+[Install]
+WantedBy=multi-user.target
