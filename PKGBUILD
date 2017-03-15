@@ -1,6 +1,6 @@
 # Maintainer: taij33n <bwbuiz@gmail.com>
 pkgname=picolisp      
-pkgver=17.3.11
+pkgver=17.3.15
 pkgrel=1
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
 url="http://www.picolisp.com"
@@ -8,7 +8,7 @@ arch=('x86_64')
 license=('MIT')
 depends=('bash' 'openssl')
 optdepends=('jre: for picolisp ersatz.jar')
-makedepends=('git')
+makedepends=('make' 'git' 'gcc')
 _vendor="github.com/taij33n"
 source=("git+https://$_vendor/$pkgname.git#tag=v$pkgver"
         "mkAsm")
