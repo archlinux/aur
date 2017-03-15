@@ -7,7 +7,7 @@ _build_feedreader=true
 _build_voip=true
 
 # Set this to 'true' to enable auto login
-#_autologin='true'
+_autologin='true'
 
 # set this to 'true' to use clang for compiling (experimental)
 #_clang='true'
@@ -16,7 +16,7 @@ _build_voip=true
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git-no-sqlcipher
-pkgver=v0.6.2.RC1.r48.ge6cf628fb
+pkgver=v0.6.2.r12.g44f297156
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
