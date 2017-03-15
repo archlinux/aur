@@ -1,13 +1,15 @@
 pkgbase = trimmomatic
 	pkgdesc = Trimmomatic: A flexible read trimming tool for Illumina NGS data
 	pkgver = 0.36
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.usadellab.org/cms/?page=trimmomatic
 	arch = any
 	license = GPL3
 	depends = java-environment>=6
 	source = http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.36.zip
+	source = trimmomatic
 	md5sums = 8549130d86b6f0382b1a71a2eb45de39
+	md5sums = 688d7880e8fb1d46f7a35ed385d60acd
 
 pkgname = trimmomatic
 
