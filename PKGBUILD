@@ -3,7 +3,7 @@
 
 pkgname=cloudcross
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CloudCross is a improved multi-cloud client with OneDrive, Yandex disk, Google Drive, Dropbox and Mail.ru support."
 arch=('i686' 'x86_64')
 url="http://cloudcross.mastersoft24.ru"
@@ -26,7 +26,7 @@ md5sums=("594a362a7d657414df2bae505853ace9")
 
 build() {
 
-	cd "$srcdir/cloudcross-v$pkgver-$pkgrel"
+	cd "$srcdir/cloudcross-$pkgver-$pkgrel"
 	
 	rm -rf build
 	mkdir build
@@ -36,13 +36,13 @@ build() {
 }
  
 package() {
-	cd "$srcdir/cloudcross-v$pkgver-$pkgrel/build"
+	cd "$srcdir/cloudcross-$pkgver-$pkgrel/build"
 	
 	mkdir -p "${pkgdir}/usr/bin"
         mkdir -p "${pkgdir}/usr/share/man/man0"
 	
-	cp "$srcdir/cloudcross-v$pkgver-$pkgrel/build/ccross" "${pkgdir}/usr/bin"
-        cp "$srcdir/cloudcross-v$pkgver-$pkgrel/doc/ccross" "${pkgdir}/usr/share/man/man0"
+	cp "$srcdir/cloudcross-$pkgver-$pkgrel/build/ccross" "${pkgdir}/usr/bin"
+        cp "$srcdir/cloudcross-$pkgver-$pkgrel/doc/ccross" "${pkgdir}/usr/share/man/man0"
 	
 	#ln -s "${pkgdir}/usr/bin/ccross" "${pkgdir}/usr/bin/CloudCross" 
 	#ln -s "${pkgdir}/usr/bin/ccross" "${pkgdir}/usr/bin/grive2" 
