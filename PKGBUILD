@@ -4,7 +4,7 @@
 # Contributor: M Rawash <mrawash@gmail.com>
 
 gitname=urxvt-tabbedex
-pkgname=${gitname}-git
+pkgname=${gitname}-mina86-git
 pkgver=0.4.r58.gac220eb
 pkgrel=1
 pkgdesc="A tabbed extension for rxvt-unicode with several enhancements"
