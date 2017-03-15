@@ -2,8 +2,8 @@
 # * No namcap warnings or errors
 
 pkgname=libibmad
-pkgver=1.3.12
-pkgrel=2
+pkgver=1.3.13
+pkgrel=1
 pkgdesc='OpenFabrics Alliance InfiniBand MAD (MAnagement Datagram) library'
 #        Low leayer InfiniBand functions, including:
 #           * Management Datagrams (MAD)
@@ -15,7 +15,7 @@ url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libibumad')
 source=("https://www.openfabrics.org/downloads/management/${pkgname}-${pkgver}.tar.gz")
-md5sums=('7aabf50569c4d30a9a0689fd96097e4f')
+md5sums=('29c7723ec08dac02403bb307e03c86cd')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
