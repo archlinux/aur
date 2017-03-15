@@ -3,13 +3,13 @@
 
 _gitname=archtorify
 pkgname=archtorify-git
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Program for simplify the configuration of transparent proxy trough Tor Network"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/brainfucksec/archtorify/"
 license=('GPL3')
-depends=('tor' 'curl')
+depends=('tor')
 makedepends=('git')
 source=("git+https://github.com/brainfucksec/${_gitname}/")
 md5sums=('SKIP')
@@ -22,7 +22,7 @@ pkgver() {
 package() {
 	cd "$_gitname"
 	
-	install -Dm644 README.md $pkgdir/usr/share/doc/$_gitname/README.md
+	install -Dm644 README.md $pkgdir/usr/share/$_gitname/README.md
 	install -Dm755 archtorify.sh $pkgdir/usr/bin/archtorify
 }
 
