@@ -1,7 +1,7 @@
 pkgbase = chromium-fullscreen
 	pkgdesc = A script in order to run Chromium in fullscreen mode under the chromium user
-	pkgver = 1
-	pkgrel = 7
+	pkgver = 2
+	pkgrel = 1
 	install = chromium-fullscreen.install
 	arch = x86_64
 	arch = i686
@@ -18,10 +18,14 @@ pkgbase = chromium-fullscreen
 	source = chromium-fullscreen.xinitrc
 	source = disable-x-frame-option-background.js
 	source = disable-x-frame-option-manifest.json
+	source = aw-snap-reloader-background.js
+	source = aw-snap-reloader-manifest.json
 	md5sums = 9e979fbdd1e4a5a04fd0e91ce6a9a7be
-	md5sums = b5fee3c827d9b9bd3a954dd1213c1525
+	md5sums = d95b5d1a926e4144984bb6761cae4217
 	md5sums = c700c36f4ea3e353c6d49df823561fc4
 	md5sums = f543ec018edbaf5533e6bddd5068ff54
+	md5sums = a2e49410d550e79ac9c0037121522387
+	md5sums = e6bb49bafce141806d28fe03efc862b0
 
 pkgname = chromium-fullscreen
 
