@@ -1,0 +1,30 @@
+pkgbase = netzob
+	pkgdesc = Netzob is an opensource tool which supports the expert in its operations of reverse engineering, evaluation and simulation of communication protocols.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://netzob.org
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python-mock
+	depends = impacket
+	depends = python
+	depends = python-jsonpickle
+	depends = python-colorama
+	depends = python-numpy
+	depends = python-sphinx
+	depends = python-pcapy
+	depends = python-bitarray
+	depends = python-babel
+	depends = python-netaddr
+	depends = python-bintrees
+	depends = python-minepy
+	provides = netzob
+	conflicts = netzob-git
+	options = !emptydirs
+	source = netzob-Release-netzob-1.0.1.tar.gz::https://github.com/netzob/netzob/archive/Release/netzob-1.0.1.tar.gz
+	sha256sums = c1b8ed99ba631c567ff09759af0e0624546b6e3a142d458a6763e11a5a4b5931
+
+pkgname = netzob
+
