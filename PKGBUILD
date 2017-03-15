@@ -1,27 +1,39 @@
-# Maintainer: Arthur Zamarin <arthurzam@gmail.com> 
-
-_pkgname=reredirect
-pkgname=${_pkgname}-git
-pkgver=v0.1.r5.ga80845a
+# Maintainer: Gunar C. Gessner <me@gunargessner.com>
+_pkgname="reredirect"
+pkgname="${_pkgname}-git"
+pkgver=146
 pkgrel=1
 pkgdesc="Tool to dynamicly redirect outputs of a running process"
-arch=(i686 x86_64)
-url="https://github.com/jerome-pouiller/${_pkgname}/"
-license=('custom')
-source=("${_pkgname}::git+git://github.com/jerome-pouiller/${_pkgname}.git")
-sha1sums=('SKIP')
+arch=("i686" "x86_64")
+url="https://github.com/jerome-pouiller/reredirect"
+license=('MIT')
+groups=()
+depends=('glibc')
+makedepends=('git')
+optdepends=()
+provides=('reredirect')
+conflicts=('reredirect')
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("${pkgname}::git+http://github.com/jerome-pouiller/${pkgname}.git")
+noextract=()
+md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  cd "$srcdir/$pkgname"
+  git rev-list --count HEAD
 }
- 
+
 build() {
-  cd "$srcdir/${_pkgname}"
+  cd "$pkgname"
   make
 }
- 
+
 package() {
-  cd "$srcdir/${_pkgname}"
-  make PREFIX=/usr DESTDIR=${pkgdir} install
+  cd "$pkgname"
+  install -D -m 644 COPYING "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  make PREFIX=/usr DESTDIR="$pkgdir/" install
 }
