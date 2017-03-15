@@ -1,0 +1,17 @@
+pkgbase = dwc-git
+	pkgdesc = dynamic wayland compositor
+	pkgver = 24.f163ca2
+	pkgrel = 1
+	url = https://github.com/ametisf/dwc
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = swc
+	makedepends = tup
+	depends = sh
+	depends = wld
+	source = git+https://github.com/ametisf/dwc.git
+	md5sums = SKIP
+
+pkgname = dwc-git
+
