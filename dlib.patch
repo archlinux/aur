@@ -1,0 +1,20 @@
+diff -ruN dlib-19.4/dlib/CMakeLists.txt dlib-19.4-patched/dlib/CMakeLists.txt
+--- dlib-19.4/dlib/CMakeLists.txt	2017-03-08 06:19:46.000000000 +0800
++++ dlib-19.4-patched/dlib/CMakeLists.txt	2017-03-15 16:44:32.883719060 +0800
+@@ -138,7 +138,7 @@
+       option(DLIB_LINK_WITH_SQLITE3 ${DLIB_LINK_WITH_SQLITE3_STR} ON)
+       option(DLIB_USE_BLAS ${DLIB_USE_BLAS_STR} ON)
+       option(DLIB_USE_LAPACK ${DLIB_USE_LAPACK_STR} ON)
+-      option(DLIB_USE_CUDA ${DLIB_USE_CUDA_STR} ON)
++      option(DLIB_USE_CUDA ${DLIB_USE_CUDA_STR} OFF)
+       option(DLIB_PNG_SUPPORT ${DLIB_PNG_SUPPORT_STR} ON)
+       option(DLIB_GIF_SUPPORT ${DLIB_GIF_SUPPORT_STR} ON)
+       #option(DLIB_USE_FFTW ${DLIB_USE_FFTW_STR} ON)
+@@ -340,6 +340,7 @@
+          if (PNG_FOUND AND LIBPNG_IS_GOOD)
+             include_directories(${PNG_INCLUDE_DIR})
+             set (dlib_needed_libraries ${dlib_needed_libraries} ${PNG_LIBRARY})
++            set (dlib_needed_libraries ${dlib_needed_libraries} ${ZLIB_LIBRARY})
+             set(REQUIRES_LIBS " libpng")
+          else()
+             # If we can't find libpng then statically compile it in.
