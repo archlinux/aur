@@ -1,5 +1,5 @@
 post_install() {
-  getent group traefik >/dev/null || groupadd -r grafana
+  getent group traefik >/dev/null || groupadd -r traefik
   getent passwd traefik >/dev/null || useradd -g traefik -r -M -s /bin/false traefik
   chown traefik:traefik /var/log/traefik
 }
