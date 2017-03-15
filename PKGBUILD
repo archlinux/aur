@@ -14,11 +14,6 @@ conflicts=('freenas-vm-tools')
 source=("git+https://github.com/freenas/${_pkgname}.git")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build() {
         cd "$_pkgname"
         export CXX=clang++
