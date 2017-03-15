@@ -14,8 +14,8 @@ conflicts=("${pkgname%-git}")
 options=()
 source=('http://tenet.dl.sourceforge.net/project/simplc/simplc-src/2.1.1b2/simp2.1.1b2.tar.gz'
 		'compile-fixes.patch')
-sha256sums=('51609bcb167010222a86facd2faae9c57e52925a469a20e48651a6aa8dc21cb7'
-			'158c6946bdddf6df85e74314099718637da45f5839afd9b9a73dc579b4972e99')
+sha512sums=('faac1f3da89d3b0da097741ee89fb363f99ccc35d869b219276b84f31430df64cb7d8417cc7d9e5a1d5f72ce50fdfac66333ae0c8f44edff67f536fe0fd9dec8'
+			'3d8d3cf6bbcc2dde9eea6741ba5a694cd56013078cd1c23b4c9b4130551ea09e54a08d8acb82b56457489c94860a3fc3ee545e8c0e29468267b4c4f17dcc4b8e')
 
 build() {
 	cd "$srcdir/simpl-src"

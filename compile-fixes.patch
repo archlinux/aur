@@ -6,26 +6,6 @@
  #include <stdio.h>
  #include <stdlib.h>
  #include <string.h>
-@@ -519,8 +520,8 @@
-     };
-     
-     template <typename T>
--    struct Move<Ref<T> > : public RelocatableMove<Ref<T> > { }; 
--    
-+    struct Move<Ref<T> > : public RelocatableMove<Ref<T> > { };
-+
-     template <typename T>
-     struct Move<Ptr<T> > : public RelocatableMove<Ptr<T> > { };
-     
-@@ -808,7 +809,7 @@
-     
-     char* begin()
-      { return mArray.begin(); }
--    const char* begin() const   
-+    const char* begin() const
-      { return mArray.begin(); }
-     
-     bool startsWith(const char *s) const;
 @@ -818,12 +819,12 @@
      
      /* TODO: Evil casting... */
