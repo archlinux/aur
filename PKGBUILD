@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neateqn-git
-pkgver=r87.592804e
+pkgver=r90.cbb0317
 pkgrel=1
 epoch=
 pkgdesc="An eqn preprocessor for neatroff."
@@ -20,9 +20,11 @@ options=()
 changelog=
 install=
 source=("$pkgname::git://repo.or.cz/neateqn.git"
-        "http://litcave.rudi.ir/neateqn.pdf")
+        "http://litcave.rudi.ir/neateqn.pdf"
+        "git://repo.or.cz/neatroff_make.git")
 noextract=()
 md5sums=('SKIP'
+         'SKIP'
          'SKIP')
 
 pkgver() {
@@ -36,9 +38,10 @@ build() {
 }
 
 package() {
-  cd $srcdir
-  install -Dm755 $pkgname/eqn $pkgdir/usr/bin/neateqn
-  install -Dm644 $pkgname/README $pkgdir/usr/share/doc/${pkgname%-*}/README
-  install -Dm644 neateqn.pdf $pkgdir/usr/share/doc/${pkgname%-*}/neateqn.pdf
+  cd $srcdir/$pkgname
+  install -Dm755 eqn $pkgdir/usr/bin/neateqn
+  install -Dm644 README $pkgdir/usr/share/doc/${pkgname%-*}/README
+  install -Dm644 ../neateqn.pdf $pkgdir/usr/share/doc/${pkgname%-*}/neateqn.pdf
+  install -Dm644 ../neatroff_make/man/neateqn.1 $pkgdir/usr/share/man/man1/neateqn.1
 }
 
