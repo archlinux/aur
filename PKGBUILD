@@ -19,7 +19,7 @@ _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some grap
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=58.0.3029.6
+pkgver=58.0.3029.19
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -93,11 +93,6 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'vaapi_patch_r0.patch'
         # Patch from crbug (chromium bugtracker)
         'chromium-widevine-r1.patch'
-        'https://codereview.chromium.org/download/issue2717263003_80001.diff'
-        'https://codereview.chromium.org/download/issue2715453002_100001.diff'
-        'https://codereview.chromium.org/download/issue2697413002_160001.diff'
-        'https://codereview.chromium.org/download/issue2712533002_40001.diff'
-        'https://codereview.chromium.org/download/issue2697253002_60001.diff'
         )
 sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-55.0.2873.0.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
             "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -114,11 +109,6 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'fef17ee6b80b9c60e4579ec4afec72fedb6ab1807ecc5903ab6aa2ccbb9fc8b0'
             # Patch from crbug (chromium bugtracker)
             '0d537830944814fe0854f834b5dc41dc5fc2428f77b2ad61d4a5e76b0fe99880'
-            'c05ba78df6d41ad4d014c910f7352071749d96de6a02a8f7387250ee0996cca0'
-            '9a4cc00ce359ab25c52c39d38e02bed9302cfc88cd0f6dbf1f58f1479a0eecb9'
-            'a2470c9d4a1b6c451e12aa623083d7ad4139ac28164b5e31c15e8f7136c0a241'
-            '243773e53ddb17b3835573166650a9d7b50515b11e8481d22912019affcbc293'
-            '27aee37a58a6a008711d29ba5406e98e8186719f6fd10d6e38af58a1fd0151de'
             )
 options=('!strip')
 install=chromium-dev.install
@@ -422,13 +412,6 @@ prepare() {
   # https://crbug.com/473866
   patch -p0 -i "${srcdir}/chromium-widevine-r1.patch"
   sed 's|@WIDEVINE_VERSION@|The Cake Is a Lie|g' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
-
-  # Fix video playback (sugested by @Misc)
-  patch -Rp1 -i "${srcdir}/issue2717263003_80001.diff"
-  patch -Rp1 -i "${srcdir}/issue2715453002_100001.diff"
-  patch -Rp1 -i "${srcdir}/issue2697413002_160001.diff"
-  patch -Rp1 -i "${srcdir}/issue2712533002_40001.diff"
-  patch -Rp1 -i "${srcdir}/issue2697253002_60001.diff"
 
   # Setup nodejs dependency
   mkdir -p third_party/node/linux/node-linux-x64/bin/
