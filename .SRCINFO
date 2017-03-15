@@ -1,6 +1,6 @@
 pkgbase = linux-baytrail410
 	pkgver = 4.10.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = linux-baytrail410
 	source = linux-baytrail410.preset
 	sha256sums = SKIP
 	sha256sums = 60921720cdcd2ff3fc754eebbba795af52b61d681a0541ad492a606bed309f58
-	sha256sums = 17464bf884b7f44ac3217f388e47b6e6f995089195318ae43de82bfe261c19ea
+	sha256sums = eb1b1e64c20296d99c74565353fbf4b09f064acac18c8275ccc87591ddc99fa8
 	sha256sums = 16de300fec4f330f42d038534e8af7291695c8cb306e14b04882e33f68b94f45
 
 pkgname = linux-baytrail410
