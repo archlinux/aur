@@ -1,0 +1,13 @@
+pkgbase = python-imgurpython
+	pkgdesc = Imgur API official Python bindings
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = https://github.com/imgur/imgurpython
+	arch = any
+	license = MIT
+	depends = python
+	source = python-imgurpython-v1.1.8.tar.gz::https://github.com/imgur/imgurpython/archive/1.1.8.tar.gz
+	sha256sums = 06b4bea1c0dafe7e36b88388f0ef0e1afdaba0def446c7426a216b7511d5f7c6
+
+pkgname = python-imgurpython
+
