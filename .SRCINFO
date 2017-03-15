@@ -10,7 +10,9 @@ pkgbase = urxvt-tabbedex-git
 	makedepends = git
 	depends = rxvt-unicode
 	provides = urxvt-tabbedex
+	provides = urxvt-tabbedex-git
 	conflicts = urxvt-tabbedex
+	conflicts = urxvt-tabbedex-git
 	source = git+https://github.com/mina86/urxvt-tabbedex.git
 	sha512sums = SKIP
 

@@ -3,25 +3,26 @@
 # Contributor: StephenB <mail4stb at gmail dot com>
 # Contributor: M Rawash <mrawash@gmail.com>
 
-pkgname=urxvt-tabbedex-git
+gitname=urxvt-tabbedex
+pkgname=${gitname}-git
 pkgver=0.4.r58.gac220eb
 pkgrel=1
 pkgdesc="A tabbed extension for rxvt-unicode with several enhancements"
 arch=("any")
-url='https://github.com/mina86/urxvt-tabbedex'
+url="https://github.com/mina86/${gitname}"
 license=("GPL")
 depends=('rxvt-unicode')
 makedepends=('git')
-provides=('urxvt-tabbedex')
-conflicts=('urxvt-tabbedex')
+provides=("${gitname}"{,-git})
+conflicts=("${gitname}"{,-git})
 source=("git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-	cd urxvt-tabbedex
+	cd "${gitname}"
 	git describe --tags --long | sed 's/^tabbedex-//; s/-/-r/; s/-/./g'
 }
 
 package() {
-	install -Dm644 urxvt-tabbedex/tabbedex "$pkgdir"/usr/lib/urxvt/perl/tabbedex
+	install -Dm644 "${gitname}/tabbedex" "${pkgdir}/usr/lib/urxvt/perl/tabbedex"
 }
