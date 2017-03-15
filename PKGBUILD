@@ -21,7 +21,7 @@ options=(!emptydirs)
 source=("https://github.com/MasterSoft24/CloudCross/archive/master.tar.gz")
 
 
-md5sums=("d41d8cd98f00b204e9800998ecf8427e")
+md5sums=('d46b20a86571a486213719027e7504d0')
 
 
 build() {
