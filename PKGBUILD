@@ -14,7 +14,7 @@
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.83584.ge8a3498f24
+pkgver=N.83945.gd96f6df3a6
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -173,7 +173,6 @@ build() {
 	        --enable-opengl \
 	        --enable-openssl \
 	        --enable-sdl2 \
-	        --enable-x11grab \
 	        --enable-xlib \
 	        --enable-zlib \
 	        \
