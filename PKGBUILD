@@ -17,6 +17,12 @@ sha256sums=('8ca58a7ab55b65bce804bf7acd55369412b6fcdc08daa4bafafb4e10c403202e')
 
 prepare() {
   cd "$srcdir/"
+
+  # FindCUDA module may cause GPU detection failed
+  sed -i -e '39s#-DCMAKE_MODULE_PATH="$BASE_DIR/cmake/FindCUDA"##g' \
+    "${_pkgname}-${pkgver}/torch/lib/build_all.sh"
+  rm -r "${_pkgname}-${pkgver}/cmake/FindCUDA/"
+
   cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-py2"
   cd "${_pkgname}-${pkgver}"
   sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
