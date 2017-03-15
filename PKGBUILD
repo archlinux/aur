@@ -26,5 +26,5 @@ package() {
         make DESTDIR="$pkgdir/" install
         cd systemd
         mkdir -p "$pkgdir"/usr/lib/systemd/system
-        install -m755 freenas-vm-tools.service  "$pkgdir"/usr/lib/systemd/system/freenas-vm-tools.service
+        install -m644 freenas-vm-tools.service  "$pkgdir"/usr/lib/systemd/system/freenas-vm-tools.service
 }
