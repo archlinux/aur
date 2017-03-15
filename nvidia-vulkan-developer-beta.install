@@ -1,5 +1,5 @@
 _depmod() {
-    _extramodules='extramodules-4.9-lts'
+    _extramodules='extramodules-4.9-ARCH'
 
     # Update module dependencies
     depmod $(cat /usr/lib/modules/$_extramodules/version)
