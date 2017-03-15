@@ -1,8 +1,8 @@
 # Maintainer: CUI Hao <cuihao.leo@gmail.com>
 
 pkgname=seismic-unix
-pkgver=44R1
-pkgrel=2
+pkgver=44R4
+pkgrel=1
 pkgdesc="A seismic processing and research environment developed at the Center for Wave Phenomena, Colorado School of Mines"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -13,7 +13,7 @@ optdepends=(
     'gcc-fortran: Fortran support')
 makedepends=('gcc-fortran')
 source=("ftp://ftp.cwp.mines.edu/pub/cwpcodes/cwp_su_all_$pkgver.tgz")
-sha1sums=('af86de42d9686ea8c7606ddc86e6211cce8f480d')
+sha1sums=('2456bfa4145ba5e8c03d9ffe85173b6657972bb3')
 install=seismic-unix.install
 
 prepare() {
