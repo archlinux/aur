@@ -1,6 +1,6 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=ring-daemon
-pkgver=2.1.0.r906.ga06fd5925
+pkgver=2.1.0.r910.geb98a9cac
 pkgrel=1
 epoch=1
 pkgdesc="ring.cx is free software for universal communication which respects freedoms and privacy of its users (formerly known as SFLphone)"
@@ -13,7 +13,7 @@ depends=('opendht' 'yaml-cpp' 'alsa-lib' 'libpulse' 'jack' 'jsoncpp'
          'expat' 'gsm' 'libupnp' 'libnatpmp' 'crypto++' 'libva' 'boost-libs'
          'pjproject-savoirfairelinux' 'restbed-latest')
 makedepends=('git' 'boost' 'msgpack-c')
-source=("git+https://gerrit-ring.savoirfairelinux.com/ring-daemon#commit=a06fd5925c22cea44fff40f5acd98d29a96ada2b")
+source=("git+https://gerrit-ring.savoirfairelinux.com/ring-daemon#commit=eb98a9cacf71f18fce673a635eaf0c9d0004b024")
 md5sums=('SKIP')
 
 pkgver() {
