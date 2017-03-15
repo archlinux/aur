@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=krita-git
-pkgver=3.0.91.872.g9588c99312
+pkgver=3.0.91.904.gb9d9a40fe8
 pkgrel=1
 pkgdesc="A free digital painting application. Digital Painting, Creative Freedom! (GIT Version)"
 arch=('i686' 'x86_64')
