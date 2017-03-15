@@ -1,6 +1,7 @@
 pkgbase = pict-git
+	pkgdesc = Pairwise Independent Combinatorial Testing
 	pkgver = r32.890a384
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Microsoft/pict
 	arch = x86_64
 	license = MIT

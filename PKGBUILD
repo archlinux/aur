@@ -9,8 +9,8 @@
 # Maintainer: Florian Schweikert <kelvan@ist-total.org>
 pkgname=pict-git
 pkgver=r32.890a384
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="Pairwise Independent Combinatorial Testing"
 arch=("x86_64")
 url="https://github.com/Microsoft/pict"
 license=('MIT')
