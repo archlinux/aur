@@ -7,9 +7,8 @@ arch=('any')
 url="https://github.com/deadhead420/fetchmirrors"
 license=('GPL')
 depends=('curl')
-
 source=('https://raw.githubusercontent.com/deadhead420/fetchmirrors/master/fetchmirrors.sh')
-md5sums=('b23109f3ddafe56e9216a8e18d8ffd6e')
+md5sums=('1c60b2a2a5ca3deac6b2020bb6e32a37')
 
 package() {
   cd "${srcdir}"
