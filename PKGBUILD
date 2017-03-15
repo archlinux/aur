@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=blackmagic-decklink-sdk
-pkgver=10.8.3
-pkgrel=3
+pkgver=10.8.5
+pkgrel=1
 pkgdesc="Blackmagic DeckLink SDK"
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/capture-and-playback"
@@ -14,9 +14,9 @@ source=('req.json'
 sha256sums=('24938595a1f1e8ae6266e8f28c4d3e22386840c426833095e291da11cdf30f1d'
             'cc90e53ac2ef2442d2d0adfe9214119baa31ec080e75c3b087365efdbccc23df')
 _srcfile="Blackmagic_DeckLink_SDK_${pkgver}.zip"
-_downloadid="be774c1dc7394d77ba1c9156f698628b"
+_downloadid="07a7d4cc1327424b9c931148161dc5a0"
 _srcurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
-_expected_sha256sum="be6e582c878ce6abc7faa03085d1715b45d83c2cc4e7717b0f05cf01dffb8445"
+_expected_sha256sum="06c02febfe6dde2ddd19147115aa659ae1b4cd3c11c1e17cee52eedc3c43da1a"
 
 _exit_makepkg() {
 	printf "%s\n" "error: failed to ${1} ${_srcfile}"
