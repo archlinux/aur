@@ -1,15 +1,14 @@
 #moved to AUR4: GI_Jack <iamjacksemail@hackermail.com>
 
 pkgname='arachni'
-pkgver=1.4.4.gcd7b47b
+pkgver=1.5
 pkgrel=1
-groups=('blackarch' 'blackarch-webapp')
 pkgdesc='A feature-full, modular, high-performance Ruby framework aimed towards helping penetration testers and administrators evaluate the security of web applications.'
 arch=('any')
 license=('apache')
 makedepends=('git')
 depends=('ruby' 'ruby-bundler')
-url='https://www.arachni-scanner.com'
+url='http://www.arachni-scanner.com'
 source=('git+git://github.com/Arachni/arachni.git')
 install='arachni.install'
 md5sums=('SKIP')
