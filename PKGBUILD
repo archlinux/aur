@@ -25,6 +25,12 @@ pkgver () {
 
 prepare() {
   cd "$srcdir/"
+
+  # FindCUDA module may cause GPU detection failed
+  sed -i -e '39s#-DCMAKE_MODULE_PATH="$BASE_DIR/cmake/FindCUDA"##g' \
+    "${_pkgname}/torch/lib/build_all.sh"
+  rm -r "${_pkgname}/cmake/FindCUDA/"
+
   cp -a "${_pkgname}" "${_pkgname}-py2"
   cd "${_pkgname}"
   sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
