@@ -36,5 +36,6 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	sudo cp build/dino /usr/bin/
 	sudo cp build/*.so /usr/lib/
+	sudo cp build/plugins/*.so /usr/lib/
 #	make DESTDIR="$pkgdir/" install
 }
