@@ -3,8 +3,8 @@
 
 _pkgbase=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev' 'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
-pkgver=1.19.2 # http://lists.x.org/archives/xorg/2017-March/058628.html
-pkgrel=1
+pkgver=1.19.3 # https://lists.x.org/archives/xorg/2017-March/058662.html
+pkgrel=1 # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/xorg-server&id=8a67e151837c8ef7d6e1419828410e1b8944d169
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
@@ -17,17 +17,17 @@ makedepends=('pixman' 'libx11' 'mesa' 'libgl' 'xf86driproto' 'xcmiscproto' 'xtra
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
              'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols')
 source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
-        bug99358.patch
         nvidia-add-modulepath-support.patch
+        xserver-autobind-hotplug.patch
         xvfb-run
         xvfb-run.1)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
-sha256sums=('191d91d02c059c66747635e145c30bc1004e703fe3b74439e26c0d05d5c4d28b'
+sha256sums=('677a8166e03474719238dfe396ce673c4234735464d6dadf2959b600d20e5a98'
             'SKIP'
-            'f46a9d1a5ac43c5359fbd8c57b6e64b0bd313116b5cb638527bfe3701e6c3904'
             '914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8'
+            'fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
 
@@ -37,10 +37,11 @@ prepare() {
   msg2 "merged upstream in trunk"
   patch -Np1 -i ../nvidia-add-modulepath-support.patch
 
-  msg2 "Fix: Bug 99358 - Xorg crashes with SIGSEGV in sna_set_cursor_position()"
-  msg2 "https://bugs.freedesktop.org/show_bug.cgi?id=99358"
-  msg2 "https://bugs.archlinux.org/task/52808"
-  patch -Np1 -i ../bug99358.patch
+  msg2 "patch from Fedora, not yet merged"
+  patch -Np1 -i ../xserver-autobind-hotplug.patch
+
+  msg2 "Starting autoreconf..."
+  autoreconf -vfi
 }
 
 build() {
