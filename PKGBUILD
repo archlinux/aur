@@ -63,7 +63,7 @@ package_python2-pytorch-git() {
   provides=('python2-pytorch')
   depends+=('python2' 'python2-ymal' 'python2-numpy')
   cd "$srcdir/${_pkgname}-py2"
-  python2 setup.py install --root="$pkgdir"/ --optimize=1
+  python2 setup.py install --root="$pkgdir"/ --optimize=1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
 
@@ -72,7 +72,7 @@ package_python-pytorch-git() {
   provides=('python-pytorch')
   depends+=('python' 'python-ymal' 'python-numpy')
   cd "$srcdir/${_pkgname}"
-  python setup.py install --root="$pkgdir"/ --optimize=1
+  python setup.py install --root="$pkgdir"/ --optimize=1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
 
