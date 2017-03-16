@@ -1,46 +1,38 @@
-# Maintainer: David C. Rankin <drankinatty at gmail dot com>
+# $Id: $
+# Maintainer: David C. Rankin <drankinatty @ gmail.com>
 
-pkgname=cflow
-pkgver=1.4
+pkgname=gtkwrite
+pkgver=0.1.3
 pkgrel=1
-pkgdesc="The GNU cflow - for diagramming program flow"
+pkgdesc="GTKwrite Text Editor with Syntax Highlight written in C, GTK+2 & GtkSourceView2"
+url="https://github.com/drankinatty/${pkgname}"
+license=('GPL-2.0+')
+provides=('gtkwrite')
 arch=('i686' 'x86_64')
-url="http://ftp.gnu.org/gnu/cflow/cflow-1.4.tar.xz"
-license=('GPL')
-groups=()
-depends=()
-makedepends=()
-optdepends=()
-provides=("${pkgname}")
-conflicts=("${pkgname}")
-replaces=("${pkgname}")
-options=('staticlibs' 'libtool' '!emptydirs')
-# install='pkgname.install'
-source=("http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-md5sums=('3d1bb6ae5cb6c31311b5fcead625dd57')
+options=('!emptydirs')
+makedepends=('gcc' 'glib2' 'gtk2' 'gtksourceview2')
+source=("https://github.com/drankinatty/${pkgname}/archive/v${pkgver}.tar.gz")
+validpgpkeys=()
+sha1sums=('fe903f20c030a35fcf2db6c2d705bf2ef0d38ba1')
+
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    msg2 'prepare() gtkwrite - done'
+}
 
 build() {
-
-  cd ${srcdir}/${pkgname}-${pkgver}
-
-  ## configure
-  msg "Configuring - ${pkgname}..."
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc
-
-  msg "Building - ${pkgname}..."
-
-  make
-
+    msg2 'build() gtkwrite'
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make with=-DWGTKSOURCEVIEW2
 }
 
 package() {
-  msg "Packaging - $pkgname-$pkgver"
+    msg2 'package() gtkwrite'
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    
+    install -d -m755 ${pkgdir}/usr/bin
+    install -m755 bin/${pkgname} ${pkgdir}/usr/bin
 
-#   cd ${srcdir}/build  # cmake
-  cd ${srcdir}/${pkgname}            # use for non-out-of-source
-
-  make -j1 DESTDIR="$pkgdir" install
-#   make INSTALL_ROOT="${pkgdir}" install  # other form
+    install -D -m644 gpl-2.0.txt "${pkgdir}/usr/share/licenses/${pkgname}/gpl-2.0.txt"
+    install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
