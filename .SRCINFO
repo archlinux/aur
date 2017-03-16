@@ -1,7 +1,7 @@
 pkgbase = pasystray-gtk2-standalone
 	pkgdesc = PulseAudio system tray (a replacement for padevchooser gtk2 standalone version)
-	pkgver = 0.6.0.r13.gccb5b6e
-	pkgrel = 0
+	pkgver = 0.6.0.r21.g183ecfa
+	pkgrel = 1
 	url = https://github.com/christophgysin/pasystray
 	arch = i686
 	arch = x86_64
