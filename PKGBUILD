@@ -8,7 +8,7 @@
 
 _pkgname=gitlab
 pkgname=${_pkgname}-ee
-pkgver=8.17.2
+pkgver=8.17.3
 pkgrel=1
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/gitlab-org/gitlab-ee/r
         nginx-ssl.conf.example
         lighttpd.conf.example)
 install='gitlab.install'
-sha512sums=('e5acef0a3658205d9aeef84381fda842e0512e6561cdab425e3892f1dc88312789f2249ab9e2da9c160f5a1f5381a6261fd9fb11a53f6bb62c51dd23319de7b4'
+sha512sums=('3bd379c0ff619a3f6edc76fa7abd24a1abd8773e8e5c3890f9a5d80a95c8c3ab68014e20430bc22453d74cc0574a6ea3286344819f2d1df831b351e33309ed2f'
             '56cce150645ef74fa42a6100c8bc7689c4012579e1f3ba237c06c367b121246b39e968044615fa21c4757bc8e9d06f37f8ac8d39aa8b808c758e716857553f66'
             '52651e4a5dd2d632e31b7275283f9b8ab2c32c4d56b63d17bd843f300e273e382e339e5aed66222b1b2279273357cbb73aa38119f04784fe380d1550346f1ff3'
             '79cfb8ee740ab30f970c3113659b8349128abeae5e32cc81bb905f89a6db9941b7778040a094b884262daf020f66a1aee49a12d34fbb94efce6ade946bb4625b'
