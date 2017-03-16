@@ -11,7 +11,7 @@ url="https://gist.github.com/dmikalova/6103111"
 arch=("any")
 license=("GPL3")
 depends=("zsh")
-source=(http://dl.dropbox.com/u/106000/Software/Shell/_${_app_})
+source=(http://public.files.xavion.name/Software/Shell/_${_app_})
 
 package() {
 	cd "${srcdir}"
