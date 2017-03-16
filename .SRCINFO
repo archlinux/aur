@@ -1,22 +1,29 @@
 pkgbase = sirikali-git
 	pkgdesc = A Qt/C++ GUI front end to cryfs, gocryptfs, securefs and encfs
-	pkgver = 1.99.999
-	pkgrel = 2
+	pkgver = 1.2.5.r27.0b14bd6
+	pkgrel = 1
 	url = https://mhogomchungu.github.io/sirikali/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = qt5-base
 	makedepends = cmake
-	makedepends = libpwquality
 	makedepends = libgcrypt
-	makedepends = libsecret
-	makedepends = lxqt_wallet
+	makedepends = gcc-libs
+	depends = qt5-base
+	depends = libpwquality
+	depends = hicolor-icon-theme
+	optdepends = libsecret: support for Gnome libsecret password storage
+	optdepends = kwallet: support for KDE wallet storage
+	optdepends = cryfs: for CryFS support
+	optdepends = gocryptfs: for gocryptfs support
+	optdepends = securefs: for securefs support
+	optdepends = encfs: for EncFS support
+	optdepends = ecryptfs-simple: for eCryptfs support
 	provides = sirikali
 	conflicts = sirikali
 	source = sirikali::git+https://github.com/mhogomchungu/sirikali.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = sirikali-git
 
