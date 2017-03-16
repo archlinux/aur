@@ -25,10 +25,22 @@ gen_key() {
 
 post_upgrade() {
   gen_key
+  if [ "$(/usr/bin/vercmp 1.2.0 "$2")" -eq 1 ]; then
+    /usr/bin/printf "------------------------------------------------------------------------------\n"
+    /usr/bin/printf " Upstream now ship a systemd service file with a different name to the one we\n"
+    /usr/bin/printf " previously shipped. The new service name is:\n"
+    /usr/bin/printf "     'expressvpn.service'\n"
+    /usr/bin/printf " Please remember to enable it if you want the service to start at boot.\n"
+    /usr/bin/printf " If you had enabled the previous service file please manually remove its\n"
+    /usr/bin/printf " symlink:\n"
+    /usr/bin/printf "     # rm /etc/systemd/system/multi-user.target.wants/expressvpnd.service\n"
+    /usr/bin/printf " Unfortunately, you will need to reactivate your expressvpn after this update\n"
+    /usr/bin/printf "------------------------------------------------------------------------------\n"
+  fi
   /usr/bin/printf "------------------------------------------------\n"
   /usr/bin/printf " You may need to restart the expressvpn daemon:\n"
   /usr/bin/printf "     # systemctl daemon-reload\n"
-  /usr/bin/printf "     # systemctl restart expressvpnd.service\n"
+  /usr/bin/printf "     # systemctl restart expressvpn.service\n"
   /usr/bin/printf "------------------------------------------------\n"
 }
 

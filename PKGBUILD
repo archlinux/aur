@@ -2,8 +2,8 @@
 # Co-Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=expressvpn
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Proprietary VPN client for Linux"
 arch=('x86_64' 'i686')
 url="https://expressvpn.com"
@@ -12,17 +12,15 @@ license=('custom')
 depends=('net-tools')
 _date=$(date +%Y%m%d)
 install=expressvpn.install
-source=("expressvpnd.service"
-        "license-${_date}.html::https://www.expressvpn.com/vpn-software/vpn-linux/open-source")
+source=("license-${_date}.html::https://www.expressvpn.com/vpn-software/vpn-linux/open-source")
 _url="https://download.expressvpn.xyz/clients/linux"
 source_x86_64=("${_url}/${pkgname}_${pkgver}_amd64.deb"{,.asc})
 source_i686=("${_url}/${pkgname}_${pkgver}_i386.deb"{,.asc})
 
-sha512sums=('95fa06939cd318962d11076443c0f3fe46f73509fcd09ad39513a8f3ea6d010c9c9607ec38506f1503efde70519a2aa9aed3d201b7c3b37c4324c68fc91a2073'
-            'SKIP')
-sha512sums_x86_64=('4d9ca887e39297a8f50d0b08ee90fc264600514f539162c54c7f56e4389fca8b0d3d971b6e47f9ac5e422bcd2a26a002c0283bee9deb63e22d0828d765edc56a'
+sha512sums=('6d0b3d207b9c6c007bc68d469701713987831132adea703b29b28530f6d72579e9cdf02c1aca16137196f736ca90851b29aa92ca432dc20757d9b772b882145f')
+sha512sums_x86_64=('a72a674bb94e92351d8a7790ea83d929c77173c753f9f5dda50da5f0f4fdded8e50f53488c16eca2c82e8efd65d90585a804a85298255417a37c293e0e9d4421'
                    'SKIP')
-sha512sums_i686=('9f782a4ec6db8a7950325e36c3b083dbc8db39d8b5bd5a1444a6f936905f3867e489ffb2b6d9899eface4074c97d0853977aaed8d674090982f15a3e63515d9c'
+sha512sums_i686=('e3b29dcf085a39cc17de6589f705a5b90feaacfd0806350b91fbab6a32e2d82b1987d2bbd112ee81e1e29bb3abb922baa1eae5f4286b20f95bea366581046303'
                  'SKIP')
 validpgpkeys=('1D0B09AD6C93FEE93FDDBD9DAFF2A1415F6A3A38')
 
@@ -30,9 +28,20 @@ package() {
     # /usr/sbin is a symlink to /usr/bin, rewrite it
     bsdtar -C "${pkgdir}" -xf "${srcdir}/data.tar.gz" -s ":/usr/sbin:/usr/bin:"
 
-    rm -rf "${pkgdir}/etc/init.d"
-    install -Dm644 "${srcdir}/expressvpnd.service" "${pkgdir}/usr/lib/systemd/system/expressvpnd.service"
+    # Install service file to correct place
+    install -Dm644 "${pkgdir}/usr/lib/expressvpn/expressvpn.service" "${pkgdir}/usr/lib/systemd/system/expressvpn.service"
+    # Fix service file
+    sed -i -e 's:RestartSe=:RestartSec=:' -e '/EnvironmentFile/d' "${pkgdir}/usr/lib/systemd/system/expressvpn.service"
+
+    # Install bash-completion to correct place
+    install -Dm644 "${pkgdir}/usr/lib/expressvpn/bash-completion" "${pkgdir}/usr/share/bash-completion/completions/expressvpn"
+    
+    # Remove superfluous expressvpn lib dir
+    rm -r "${pkgdir}/usr/lib/expressvpn"
 
     install -Dm644 "${srcdir}/license-${_date}.html" "${pkgdir}/usr/share/licenses/${pkgname}/license.html"
     install -dm755 "$pkgdir/var/lib/expressvpn/certs"
+
+    # Remove emptydir in /etc
+    rmdir "$pkgdir/etc/default"
 }
