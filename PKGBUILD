@@ -4,7 +4,7 @@
 pkgname=pyrit
 _pkgname=Pyrit
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The famous WPA precomputed cracker'
 url='https://github.com/JPaulMora/Pyrit'
 arch=('i686' 'x86_64')
