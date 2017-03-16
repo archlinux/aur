@@ -5,6 +5,7 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=gnupg-large-rsa
+pkgbase=gnupg
 _pkgname=gnupg
 pkgver=2.1.19
 pkgrel=1
