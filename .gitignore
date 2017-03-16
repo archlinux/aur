@@ -1,0 +1,7 @@
+pkg
+src
+JACK-Client-*.tar.gz
+python-jack-client-*.pkg.tar.xz
+python2-jack-client-*.pkg.tar.xz
+python-jack-client-*.src.tar.gz
+.AURINFO
