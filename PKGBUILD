@@ -4,13 +4,13 @@ pkgname=popular-packages
 pkgver=0.3.2
 pkgrel=1
 pkgdesc="Lists popular packages not installed"
-arch=("any")
 url="http://i.imgur.com/AeWSX.jpg"
+arch=("any")
 license=("GPL3")
 depends=("bash" "wget" "package-query")
 optdepends=("pacman-cage: Better performance")
 options=(!emptydirs)
-source=(http://dl.dropbox.com/u/106000/Software/Shell/${pkgname})
+source=(http://public.files.xavion.name/Software/Shell/${pkgname})
 
 package() {
 	cd "${srcdir}"
