@@ -1,11 +1,10 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=('python-snappy')
 pkgver='0.5'
-pkgrel=2
+pkgrel=3
 pkgdesc="Python bindings for the snappy compression library."
 url="https://github.com/andrix/python-snappy"
-depends=('python')
-makedepends=('snappy')
+depends=('python' 'snappy')
 license=('BSD')
 arch=('i686' 'x86_64')
 source=("https://pypi.python.org/packages/70/fa/621594e313b2b9074585af63668f7a31839c4e4d69df536ab592e6e1e353/python-snappy-0.5.tar.gz"

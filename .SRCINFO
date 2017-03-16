@@ -1,13 +1,13 @@
 pkgbase = python-snappy
 	pkgdesc = Python bindings for the snappy compression library.
 	pkgver = 0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/andrix/python-snappy
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = snappy
 	depends = python
+	depends = snappy
 	source = https://pypi.python.org/packages/70/fa/621594e313b2b9074585af63668f7a31839c4e4d69df536ab592e6e1e353/python-snappy-0.5.tar.gz
 	source = https://patch-diff.githubusercontent.com/raw/andrix/python-snappy/pull/38.patch
 	source = LICENSE
