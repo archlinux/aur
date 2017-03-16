@@ -1,7 +1,7 @@
 # Maintainer: Robert Scott <rs at robsco dot info>
 pkgname=zita-at1
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A 'autotuner' Jack application."
 arch=('i686' 'x86_64')
 url="http://kokkinizita.linuxaudio.org/linuxaudio/zita-at1-doc/quickguide.html"
