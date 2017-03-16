@@ -1,7 +1,6 @@
 # Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
 
-_pkgname=oppai
-pkgname="$_pkgname"
+pkgname=oppai
 pkgver=0.6.2
 pkgrel=1
 pkgdesc='osu! pp advanced inspector (oppai) is pp calculator for osu! beatmaps'
@@ -20,7 +19,7 @@ sha256sums_i686=('7cfcab30f79799756c19bbf3a13342de77a3aea4f45bca5a6def2b7e813170
 sha256sums_x86_64=('d5bb82a43dcc3f6d2ad708c382f775eea8d4391b8848e0aabf276550335c1c94')
 
 package() {
-	cd "$srcdir/$_pkgname"
+	cd "$srcdir/$pkgname"
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -D -m755 oppai "$pkgdir/usr/bin/oppai"
 }
