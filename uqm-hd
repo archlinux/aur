@@ -1,0 +1,2 @@
+#!/bin/sh
+exec "/usr/lib/uqm/uqm-hd" "--contentdir=/usr/share/games/uqm-hd/content" "$@"

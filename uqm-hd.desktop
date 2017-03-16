@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=The Ur-Quan Masters HD
+Comment=An epic space adventure
+Comment[fi]=Eeppinen avaruusseikkailu
+Exec=uqm-hd
+Icon=uqm-hd
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Game;ArcadeGame;StrategyGame;
