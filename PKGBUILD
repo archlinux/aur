@@ -5,7 +5,7 @@
 
 pkgbase=network-manager-applet-git
 pkgname=(nm-connection-editor-git network-manager-applet-git)
-pkgver=1.4.3.dev.r96.g8c44cbe
+pkgver=1.4.6.r11.gc567a69b
 pkgrel=1
 pkgdesc="Applet for managing network connections"
 arch=('i686' 'x86_64')
@@ -13,14 +13,14 @@ license=('GPL2' 'LGPL2.1')
 url="http://www.gnome.org/projects/NetworkManager/"
 depends=(libnm-glib-git libgudev gtk3 mobile-broadband-provider-info iso-codes)
 makedepends=(libsecret libnotify libmm-glib intltool gobject-introspection git)
-options=('!libtool' 'emptydirs')
+options=('emptydirs')
 source=(git://git.gnome.org/network-manager-applet)
 sha256sums=('SKIP')
 sha512sums=('SKIP')
 
 pkgver() {
            cd $srcdir/network-manager-applet/
-           git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+           git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
        }
 prepare(){
 mkdir -p nma/etc/xdg nma/usr/bin \
@@ -32,13 +32,20 @@ mkdir -p nma/etc/xdg nma/usr/bin \
 build() {
 	cd $srcdir/network-manager-applet
 	
-	./configure --prefix=/usr --sysconfdir=/etc \
+	./configure --prefix=/usr \
+    --sysconfdir=/etc \
 		--localstatedir=/var \
+    runstatedir=/run \
+    --sbindir=/usr/bin \
 		--libexecdir=/usr/lib/networkmanager \
 		--disable-static \
 		--disable-maintainer-mode \
-		--disable-migration \
-		--without-modem-manager-1       
+		--enable-gtk-doc \
+    --enable-introspection \
+    --enable-ld-gc \
+    --with-team \
+    --with-wwan \
+    --without-appindicator       
 	
    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
@@ -68,7 +75,6 @@ package_nm-connection-editor-git() {
   cd usr/share
   mv "$pkgdir"/usr/share/applications/nm-applet.desktop applications/
   mv "$pkgdir"/usr/share/man/man1/nm-applet.1 man/man1/
-  mv "$pkgdir"/usr/share/nm-applet/{{8021x,gsm-unlock,info}.ui,keyring.png} nm-applet/
   
   cd icons/hicolor/22x22
   mv "$pkgdir"/usr/share/icons/hicolor/22x22/apps/nm-{adhoc,mb-roam,wwan-tower}.png apps/
