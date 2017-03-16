@@ -1,8 +1,8 @@
 # Contributor: Zeph <zeph33@gmail.com>
 # Maintainer: Zeph <zeph33@gmail.com>
 pkgname=pamac-aur
-pkgver=4.3.0
-_pkgver=4.3.0
+pkgver=4.3.1
+_pkgver=4.3.1
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm"
 arch=('any')
@@ -12,7 +12,6 @@ depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit' 'vte3>=0.38' '
          'libnotify' 'desktop-file-utils' 'pacman>=5.0' 'gnutls>=3.4')
   optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
               'lxsession: needed for authentification in Xfce, LXDE etc.'
-              'yaourt: needed for AUR support'
               'pamac-tray-appindicator: tray icon for KDE')
 makedepends=('gettext' 'itstool' 'vala>=0.28')
 backup=('etc/pamac.conf')
@@ -21,13 +20,13 @@ provides=('pamac')
 options=(!emptydirs)
 install=pamac.install
 
-source=("pamac-$pkgver-$pkgrel.tar.gz::https://github.com/manjaro/pamac/archive/v$_pkgver.tar.gz")
-sha256sums=('e4f5bc91cdfe9e07026339baa31c9ed3f792be7203ca494057c08b1f68c4598a')
+source=("pamac-$pkgver-$pkgrel.tar.gz::$url/archive/v$_pkgver.tar.gz")
+sha256sums=('25f255622bdbc8a4b4e1cc78e3ed3b3eb582e89aef345e22c18bf731ce2e167d')
   
 prepare() {
   # adjust version string
   cd "$srcdir/pamac-$_pkgver"
-  sed -i -e "s|\"$_pkgver\"|\"$pkgver-$pkgrel\"|g" src/transaction.vala
+  sed -i -e "s|\"$pkgver\"|\"$pkgver-$pkgrel\"|g" src/transaction.vala
   # patches here
 }
 
