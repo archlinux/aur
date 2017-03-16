@@ -1,0 +1,18 @@
+pkgbase = unblur
+	pkgdesc = Aligns the frames of movies recorded on an electron microscope to reduce image blurring due to beam-induced motion
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://grigoriefflab.janelia.org/unblur
+	arch = x86_64
+	license = custom
+	depends = gnuplot
+	depends = pdftk
+	depends = julia
+	optdepends = summovie: uses alignment results to calculate movie frame sums
+	source = http://grigoriefflab.janelia.org/sites/all/modules/pubdnldcnt/pubdnldcnt.php?file=http://grigoriefflab.janelia.org/sites/default/files/unblur_1.0.2.tar.gz
+	source = LICENSE
+	md5sums = b6e367061cd0cef1b62a391a6289f681
+	md5sums = SKIP
+
+pkgname = unblur
+
