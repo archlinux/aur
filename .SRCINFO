@@ -1,7 +1,7 @@
 pkgbase = drcom-cauc
 	pkgdesc = 3rd Party Dr.COM Client for CAUC
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/carlsplace/drcom-cauc
 	install = drcom.install
 	arch = i686
