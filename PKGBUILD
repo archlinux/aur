@@ -59,7 +59,7 @@ prepare() {
   msg2 "ui_pyroscope.patch"
   patch -uNp1 -i "$srcdir/ui_pyroscope.patch"
 
-  sed -i -e 's/rTorrent \" VERSION/rTorrent PS-'"$VERSION_EXTRAS"' " VERSION/' src/ui/download_list.cc
+  sed -i -e 's/rTorrent \" VERSION/rTorrent PS-'"$pkgver"' " VERSION/' src/ui/download_list.cc
 
   ./autogen.sh
 }
