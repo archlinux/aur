@@ -1,0 +1,17 @@
+pkgbase = simple2
+	pkgdesc = Single-particle IMage Processing Linux Engine for cryo-EM image processing, focusing on ab initio 3D reconstruction of low-symmetry single-particles
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://simplecryoem.com
+	arch = x86_64
+	license = GPL
+	makedepends = gcc49
+	depends = lapack
+	depends = python2
+	depends = fftw
+	depends = java-environment
+	source = http://simplecryoem.com/binaries/simple2.1.tar.gz
+	md5sums = f01eee32ec5071bdd7e5a3c505418335
+
+pkgname = simple2
+
