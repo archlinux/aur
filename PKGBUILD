@@ -1,6 +1,6 @@
 # Maintainer: Andrew Stubbs <andrew.stubbs@gmail.com>
 pkgname=mimic
-pkgver=1.2.0
+pkgver=1.2.0.2
 pkgrel=1
 pkgdesc="Text-to-speech voice synthesis from the Mycroft project."
 arch=(x86_64 i686)
@@ -15,7 +15,7 @@ options=()
 install=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MycroftAI/mimic/archive/${pkgver}.tar.gz")
 noextract=()
-md5sums=('6bd2a4e2349a8491542b2fd7739c67b8')
+md5sums=('fb9c7fc35854379ba56a11040ef2b47f')
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
 # a description of each element in the source array.
