@@ -1,9 +1,10 @@
-# Maintainer: DJ Lucas <dj_AT_linuxfromscratch_DOT_org>
+# Maintainer: Deon Spengler <deon[at]spengler[dot]co[dot]za>
+# Contributor: DJ Lucas <dj_AT_linuxfromscratch_DOT_org>
 # Contributor: Steven Hiscocks <steven [at] hiscocks [dot] me [dot] uk>
 # Contributor:  Andre Wayand <aur-sogo@awayand.sleepmail.com>
 pkgname=sogo2
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
-pkgver=2.3.18
+pkgver=2.3.20
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.sogo.nu/"
@@ -46,6 +47,11 @@ source=(
   sogo.confd
 )
 
+sha256sums=('191a0abadbfcb1d35c70e175fd8f192b21cb764b91a60c5a277795bc414fd503'
+            'e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1'
+            '0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c'
+            '8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7')
+
 prepare() {
   cd "$srcdir/SOGo-${pkgver}"
   patch configure ../sogo_configure.patch
@@ -81,27 +87,3 @@ package() {
   make PYTHON=/usr/bin/python2 install DESTDIR="${pkgdir}" \
        GNU_SYSTEM_ADMIN_TOOLS="/usr/bin"
 }
-
-# Split packages left in place for a few revisions...
-#package_sogo-openchange() {
-#pkgdesc="OpenChange module for SOGo"
-#depends=("sogo=${pkgver}" 'openchange')
-#
-#  cd "${srcdir}/SOGo-${pkgver}/OpenChange"
-#  sed 's@-Wall@-Wall -fobjc-exceptions@' -i GNUmakefile
-#  make PYTHON=/usr/bin/python2 install DESTDIR="${pkgdir}" GNU_SYSTEM_ADMIN_TOOLS="/usr/bin"
-#}
-
-#package_sogo-activesync() {
-#pkgdesc="ActiveSync module for SOGo"
-#depends=("sogo=${pkgver}" 'libwbxml')
-#
-#  cd "${srcdir}/SOGo-${pkgver}/ActiveSync"
-#  make PYTHON=/usr/bin/python2 install DESTDIR="${pkgdir}" GNU_SYSTEM_ADMIN_TOOLS="/usr/bin"
-#}
-
-sha256sums=('6cb921d4380ecef0aa2b59702025a3228e271104d5c7be1c4765b53abde1cb5c'
-            'e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1'
-            '0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c'
-            '8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7')
-
