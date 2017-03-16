@@ -3,7 +3,7 @@
 
 pkgname=linux-show-player
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Sound cue playback software designed for live musical shows and theatre plays"
 url="http://linux-show-player.sourceforge.net/"
 arch=('any')
@@ -11,8 +11,9 @@ license=('GPL3')
 depends=('python-pyqt5' 'python-gobject' 'gst-plugins-good' 'python-mido'
          'python-sortedcontainers')
 makedepends=('python-setuptools')
-optdepends=('portmidi: for portmidi support'
-            'gst-libav: for larger format support')
+optdepends=('gst-libav: for larger format support'
+            'portmidi: for portmidi support'
+            'python-jack-client: for JACK output support')
 options=('!emptydirs')
 source=("https://github.com/FrancescoCeruti/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('437509a570f8e1a3f5dbecbba2c205d0')
