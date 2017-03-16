@@ -6,6 +6,7 @@
 #include<string.h>
 #include<sstream>
 #include<cctype>
+#include<unistd.h>
 
 using namespace std;
 
@@ -121,6 +122,9 @@ int main(int argc, char *argv[]) {
             action = 7;
         }else if ( !strcmp( argv[1], "unchecked") || !strcmp( argv[1], "todo") ) {
             action = 8;
+        }else if ( !strcmp( argv[1], "edit") || !strcmp( argv[1], "mod") 
+                                             || !strcmp( argv[1], "e")  ) {
+            action = 12;
         }else {}
         else
             action = 0;
@@ -158,6 +162,7 @@ int main(int argc, char *argv[]) {
                         for ( int i =  listTodo.size()-1; i >= 0 ; --i)
                             if( listTodo.at(i).str == sargv ) {
                                 cerr << "Erreur doublon" << endl;
+                                exit(-1);
                                 break;
                             }
                         listTodo.push_back(todoFromCmd(sargv));
@@ -255,6 +260,67 @@ int main(int argc, char *argv[]) {
                         it->etat = MISSED_STATE;
                 }
                 break;
+            case 12: // Edit
+                for (auto it = begin(listTodo); it != end(listTodo); ++it) {
+                    bool active = true;
+                    for( int i = 2 ; i < argc && active ; i++ )
+                        if( it->str.find(argv[i]) == string::npos)
+                            active = false;
+                    if( active ) {
+                        const char* defaultEditor = "vim",
+                                  * const envEditor = getenv("EDITOR"),
+                                  * const visEditor = getenv("VISUAL");
+                        if( envEditor && envEditor[0] ) {
+                            defaultEditor = envEditor;
+                        }
+                        if( visEditor && visEditor[0] ) {
+                            defaultEditor = visEditor;
+                        }
+                        FILE* tmp = NULL;
+                        char fileName[] = "todo.cpp_XXXXXX";
+                        int fd = mkstemp(fileName);
+                        if( strlen( it->str.c_str() ) > 0 ) {
+                            write(fd, it->str.c_str()+1,
+                                     strlen(it->str.c_str()) -1 );
+                        }
+                        close(fd);
+
+                        char* cmd = new char[ 2 + strlen(defaultEditor) + 
+                                                strlen(fileName) ];
+                        sprintf( cmd, "%s %s", defaultEditor, fileName);
+
+                        system(cmd);
+
+
+                        ifstream file(fileName, ios::in);
+
+                        if( file ) {
+                            string line;
+                            bool first = true;
+                            while( getline(file, line) ) {
+                                if( ! first ) {
+                                    first = false;
+                                    cerr << "Erreur : Edition multi-lignes" <<
+                                            "Seule la première ligne serra "
+                                            " prise en compte" << endl;
+                                    break;
+                                }
+                                it->str = string(" ")  + line;
+                            }
+                            file.close();
+                        }else {
+                            cerr << "Impossible d'ouvrir le fichier "
+                                    "temporaire" << fileName << endl;
+                        }
+
+
+                        unlink( fileName );
+                        delete[] cmd;
+                    }
+                }
+                break;
+
+
             default:
                 cout << "Erreur : Action incomprise" << endl;
         }
