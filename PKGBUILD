@@ -1,7 +1,7 @@
 # Maintainer : Antoine Carpentier
 pkgname=python0.9
-pkgver=0.9
-pkgrel=1
+pkgver=0.9.1
+pkgrel=2
 epoch=1
 pkgdesc="The oldest version of Python I could find"
 arch=('any')
@@ -15,13 +15,13 @@ CFLAGS=""
 
 prepare()
 {
-	cd python-0.9.1/src
+	cd $srcdir/python-0.9.1/src/
 	sed -i "s/mv @python python//g" Makefile
 }
 
 build()
 {
-	cd python-0.9.1/src
+	cd $srcdir/python-0.9.1/src/
 	make clean
 	make python
 }

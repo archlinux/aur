@@ -1,7 +1,7 @@
 pkgbase = python0.9
 	pkgdesc = The oldest version of Python I could find
-	pkgver = 0.9
-	pkgrel = 1
+	pkgver = 0.9.1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.python.org
 	arch = any
