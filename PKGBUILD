@@ -22,18 +22,18 @@ source=("git+https://github.com/ketogenesis/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    printf '1.%s' "$(git rev-parse --short HEAD)"
+	cd "$srcdir/$_pkgname"
+	printf '1.%s' "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
-    cat "$_sourcefile" | rot13 > "$_filename"
-    strfile -x "$_filename" "$_filename.dat"
+	cd "$srcdir/$_pkgname"
+	rot13 < "$_sourcefile" > "$_filename"
+	strfile -x "$_filename" "$_filename.dat"
 }
 
 package() {
-    install -D -m644 "$srcdir/$_pkgname/$_filename" "$pkgdir/usr/share/fortune/off/$_filename"
-    install -D -m644 "$srcdir/$_pkgname/$_filename.dat" "$pkgdir/usr/share/fortune/off/$_filename.dat"
+	install -D -m644 "$srcdir/$_pkgname/$_filename" "$pkgdir/usr/share/fortune/off/$_filename"
+	install -D -m644 "$srcdir/$_pkgname/$_filename.dat" "$pkgdir/usr/share/fortune/off/$_filename.dat"
 }
 
