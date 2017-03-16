@@ -4,7 +4,7 @@
 
 pkgname=greyhole
 pkgver=0.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Application that uses Samba to create a storage pool of all your available hard drives and allows you to create redundant copies of the files you store, in order to prevent data loss when part of your hardware fails.'
 arch=('x86_64')
 url="https://www.greyhole.net/"
