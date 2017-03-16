@@ -1,6 +1,6 @@
 pkgbase = magicassistant-gtk
 	pkgdesc = Card Browser, Library Organizer, Deck Builder and Tournament Manager for Magic the Gathering Card Game
-	pkgver = 1.4.2.010
+	pkgver = 1.5.1.201701082017
 	pkgrel = 1
 	url = http://sourceforge.net/projects/mtgbrowser/
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = magicassistant-gtk
 	depends = gtk2
 	depends = java-runtime>=8
 	depends = unzip
-	depends = libwebkit
-	source_x86_64 = http://downloads.sourceforge.net/project/mtgbrowser/Magic_Assistant/1.4.2.010/magicassistant-1.4.2.010-linux.gtk.x86_64.zip
+	depends = webkitgtk
+	source_x86_64 = https://downloads.sourceforge.net/project/mtgbrowser/Magic_Assistant/1.5.0/magicassistant-1.5.1.201701082017-linux.gtk.x86_64.zip
 	source_x86_64 = magicassistant.desktop
-	md5sums_x86_64 = 2336f6b62536137bafc8ded226551d6d
+	md5sums_x86_64 = 7ce0e2f2f41a641cf84acdf26a238046
 	md5sums_x86_64 = 37f143dbb28032d4fcc7a0a6e4e7f239
 
 pkgname = magicassistant-gtk
