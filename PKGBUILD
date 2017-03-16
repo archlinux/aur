@@ -2,7 +2,7 @@
 # Maintainer: Matt Rickard <mrick@google.com> 
 
 pkgname=minikube
-pkgver=0.16.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="Minikube is a tool that makes it easy to run Kubernetes locally"
 url="https://github.com/kubernetes/minikube"
@@ -19,7 +19,7 @@ optdepends=(
 makedepends=()
 
 source=(minikube_$pkgver::https://storage.googleapis.com/minikube/releases/v$pkgver/minikube-linux-amd64)
-sha512sums=('50a824e95a4b514409b75730598004b58fe3b0e1dbe8c36a493eaa4e2f5e934d5aa21469f853dc887e87e72b0b7b118324654dedab012a56d6a6bf6703605ad3')
+sha512sums=('45ee1479bc3b7d2ef69867c4bedb0ce9e4c95f7a59927bf8413f070506d9ed1b12c64eb4325f152011fa05db76e5519aa4723103b0a9873852e98d38715fd1db')
 package() {
   cd "$srcdir"
   install -d "$pkgdir/usr/bin"
