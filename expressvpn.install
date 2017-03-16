@@ -2,7 +2,7 @@ post_install() {
   gen_key
   /usr/bin/printf "----------------------------------------------\n"
   /usr/bin/printf " Start the expressvpn daemon with\n"
-  /usr/bin/printf "     # systemctl start expressvpnd.service\n"
+  /usr/bin/printf "     # systemctl start expressvpn.service\n"
   /usr/bin/printf " Then activate your expressVPN account with\n"
   /usr/bin/printf "     $ expressvpn activate [activation code]\n"
   /usr/bin/printf " (Your activation code can be found at\n"
