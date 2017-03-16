@@ -1,9 +1,9 @@
 # Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 
 pkgname=powershell
-_pkgver=6.0.0-alpha.16
+_pkgver=6.0.0-alpha.17
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url="https://github.com/PowerShell/PowerShell"
