@@ -17,9 +17,11 @@ _opt_SSL=1            # 1 for SSL support, 0 for no SSL support
                       # Each device is independantly configured with or without SSL
 _opt_defaultmode='666' # default: 660
 
+_opt_Debug=0          # 0 for no symbols, 1 for symbols
+
 # The following two must be different and exactly two letters, and likely
 # lowercase.
-# This is experimental and to be used at your own risk!
+# This is experimental and changed at your own risk!
 _opt_slavettypfx='tx'  # default tx
 _opt_masterttypfx='px' # default px (this isn't very useful to users)
 
@@ -94,15 +96,16 @@ pkgname='trueport'
 pkgver='6.8.0'
 _pkgverrel='2'
 pkgrel='1'
-pkgdesc='tty driver for Perle IOLan+ DS TS SDS STS SCS JetStream LanStream LinkStream and 3rd party serial servers'
+pkgdesc='tty driver for Perle IOLan+ DS TS SDS STS SCS JetStream LanStream LinkStream and 3rd party serial console terminal device servers'
 _pkgdescshort='Perle TruePort driver for Ethernet serial servers'
 arch=('i686' 'x86_64')
 url='http://www.perle.com/'
 license=('GPL' 'custom')
 depends=('openssl' 'systemd')
 makedepends=('awk')
+conflicts=('dgrp') # running together with dgrp eventually jams up trueport
 backup=(etc/trueport/{config.tp,pktfwdcfg.tp,sslcfg.tp})
-options=('!docs' '!emptydirs')
+options=('!docs' '!emptydirs' '!strip')
 install="${pkgname}-install.sh"
 _verwatch=('https://www.perle.com/downloads/server_ds1.shtml' '\s\+<a.*trueport-linux-tgz">\([^<]\+\)<.*' 'f')
 source=(
@@ -128,20 +131,26 @@ prepare() {
   NEED_SSL= \
   sh -e -u -s -- 'rpm_build'
 
+  sed -e '# Stripping symbols is the job of PKGBUILD. We need these for crash analysis.' \
+      -e '/install/ s:-s::g' \
+      -e '# Try clang' \
+      -e '#s:^CC=.*$:CC=clang:g' \
+    -i 'Makefile'
+
   # make clean for ptyx forgets a few things
-  sed -i -e 's:rm -f ptymod\.o:rm -f ptyx.mod.o ptyx.o ptymod.o:g' 'ptyx/Makefile'
+  sed -e 's:rm -f ptymod\.o:rm -f ptyx.mod.o ptyx.o ptymod.o:g' -i 'ptyx/Makefile'
 
   # Remove CRLF line endings from some files
-  sed -i -e 's:\r$::g' 'tp_ver.h' 'ptyx/ptyx.h'
+  sed -e 's:\r$::g' -i 'tp_ver.h' 'ptyx/ptyx.h'
 
   # Change the default ttys from tx and px (experimental)
-  sed -i -e 's:\( fixed_ttyname,"\)px\(" \):'"\1${_opt_masterttypfx}\2:g" \
-         -e 's:\( slave_ttyname, "/dev/\%s\%04d","\)tx\(",\):'"\1${_opt_slavettypfx}\2:g" \
-    'trueportd.c'
-  sed -i -e 's:^\(FORMAT\)=tx:'"\1=${_opt_slavettypfx}:g" 'addports'
-  sed -i -e 's:^\(FULLTTYNAME\="\)tx:'"\1${_opt_slavettypfx}:g" \
-         -e 's:\(grep "\)tx:'"\1${_opt_slavettypfx}:g" \
-    'tplogin'
+  sed -e 's:\( fixed_ttyname,"\)px\(" \):'"\1${_opt_masterttypfx}\2:g" \
+      -e 's:\( slave_ttyname, "/dev/\%s\%04d","\)tx\(",\):'"\1${_opt_slavettypfx}\2:g" \
+    -i 'trueportd.c'
+  sed -e 's:^\(FORMAT\)=tx:'"\1=${_opt_slavettypfx}:g" 'addports'
+  sed -e 's:^\(FULLTTYNAME\="\)tx:'"\1${_opt_slavettypfx}:g" \
+      -e 's:\(grep "\)tx:'"\1${_opt_slavettypfx}:g" \
+    -i 'tplogin'
 
   # Add code for default permissions and chown group to uucp
   # I tried to change system("mknod") to mknod() but the permissions
@@ -152,14 +161,19 @@ prepare() {
   patch -b -c -p0
   # diff -c5 'trueportd.c.orig' 'trueportd.c' > '../../tty_default_permissions.patch'
 
-  make -j1 clean
+  local _mk='ma''ke' # keep git-aurcheck quiet
+  ${_mk} -j1 clean
   set +u
 }
 
 build() {
   set -u
   cd "${pkgname}-${pkgver}"
-  make -s -j1 # Too small to benefit from multi processor compile
+  local _cflags=('-s' '-g -rdynamic')
+  #_cflags[0]+=' -fno-stack-protector'
+  local _makeflags=('-s' '')
+  CFLAGS="${CFLAGS} ${_cflags[${_opt_Debug}]}" \
+  make ${_makeflags[${_opt_Debug}]} -j1 # Too small to benefit from multi processor compile
   set +u
 }
 
@@ -203,7 +217,7 @@ package() {
   # systemctl start loads the kernel module and any number of daemons. No daemon
   # is loaded if no ports are configured. systemd stops the service if nothing forks.
   # Notify was the only way I could find to keep the service running.
-  sed -i -e 's/[^a-z];;/systemd-notify --ready;;/' "${pkgdir}/etc/trueport/trueport"
+  sed -e 's/[^a-z];;/systemd-notify --ready;;/' -i "${pkgdir}/etc/trueport/trueport"
 
   # /lib is deprecated in Arch Linux
   mv -f "${pkgdir}/lib" "${pkgdir}/usr/lib/"
@@ -249,15 +263,16 @@ EOF
     ) "${pkgdir}/usr/src/${pkgname}-${pkgver}/dkms.conf"
     install -Dpm644 ptyx/* -t "${pkgdir}/usr/src/${pkgname}-${pkgver}/ptyx/"
     make -C "${pkgdir}/usr/src/${pkgname}-${pkgver}/ptyx/" clean
+    rm "${pkgdir}/usr/src/${pkgname}-${pkgver}/ptyx/modules.order"
     install -pm644 'tp_ver.h' 'tp.h' -t "${pkgdir}/usr/src/${pkgname}-${pkgver}/"
-    sed -i -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
-           -e 's:$(shell uname -r):$(KERNELRELEASE):g' \
-           -e 's:`uname -r`:$(KERNELRELEASE):g' \
-           -e '# DKMS sets KERNELRELEASE which accidentally launches phase 2 of this Makefile' \
-           -e '# Fix by changing the detection var.' \
-           -e '# SUBDIRS makes more sense to me because I can see it in the Makefile!' \
-           -e 's:^ifeq ($(KERNELRELEASE):ifeq ($(SUBDIRS):g' \
-       "${pkgdir}/usr/src/${pkgname}-${pkgver}/ptyx/Makefile"
+    sed -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
+        -e 's:$(shell uname -r):$(KERNELRELEASE):g' \
+        -e 's:`uname -r`:$(KERNELRELEASE):g' \
+        -e '# DKMS sets KERNELRELEASE which accidentally launches phase 2 of this Makefile' \
+        -e '# Fix by changing the detection var.' \
+        -e '# SUBDIRS makes more sense to me because I can see it in the Makefile!' \
+        -e 's:^ifeq ($(KERNELRELEASE):ifeq ($(SUBDIRS):g' \
+       -i "${pkgdir}/usr/src/${pkgname}-${pkgver}/ptyx/Makefile"
   fi
   set +u
 }
