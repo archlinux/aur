@@ -1,11 +1,11 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Patrick Burroughs (Celti) <celticmadman@gmail.com>
 # Contributor: Dave Reisner <dreisner@archlinux.org>
+# Contributor: Kaleb Elwert (belak) <belak@coded.io>
 # Contributor: Florian Bruhin (The-Compiler) <archlinux.org@the-compiler.org>
-# Maintainer: Kaleb Elwert (belak) <belak@coded.io>
 
 pkgname=bitlbee-git
-pkgver=3.4.2.r65.g58d285a
+pkgver=3.5.1.r0.g262a82b8
 pkgrel=1
 pkgdesc='Brings instant messaging (XMPP, MSN, Yahoo!, AIM, ICQ, Twitter) to IRC'
 url='http://www.bitlbee.org/'
@@ -43,8 +43,7 @@ build() {
     --ssl=gnutls \
     --strip=0 \
     --otr=plugin \
-    --skype=plugin \
-    --purple=1
+    --skype=plugin
 
   make
 }
