@@ -22,7 +22,10 @@ sha1sums=(
 )
 
 install=rescached-git.install
-backup=('etc/rescached/rescached.cfg')
+backup=(
+	'etc/rescached/rescached.cfg'
+	'etc/rescached/hosts.d/hosts.block'
+)
 
 pkgver() {
 	cd "$pkgname"
