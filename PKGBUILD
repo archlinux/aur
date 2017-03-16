@@ -3,15 +3,15 @@
 
 _pkgname=ruby-haste
 pkgname=ruby-haste
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Simple client for uploading text to a haste-server (hastebin)'
 url='https://github.com/seejohnrun/haste-client'
 license=('MIT')
 source=("https://rubygems.org/downloads/haste-${pkgver}.gem")
-sha256sums=('d6c9d35d152d57532e5b9c32a58debad2c4bac8549f100efc1224e37ccd7b6f3')
+sha256sums=('d7b3e1c86233afaed58ca4fdb74d128d4e69cfb4fe7c139358f66f8c20023f77')
 arch=('any')
-depends=('ruby' 'ruby-faraday-0.8' 'ruby-json')
+depends=('ruby' 'ruby-faraday' 'ruby-json')
 
 package() {
   cd "${srcdir}"
