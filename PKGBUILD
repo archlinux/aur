@@ -37,8 +37,8 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 	mkdir -p "$pkgdir/usr/lib"
 	mkdir -p "$pkgdir/usr/lib/plugins"
-	cp build/dino "$pkgdir/usr/bin/"
-	cp build/*.so "$pkgdir/usr/lib/"
-	cp build/plugins/*.so "$pkgdir/usr/lib/plugins/"
+	install build/dino "$pkgdir/usr/bin/"
+	install build/*.so "$pkgdir/usr/lib/"
+	install build/plugins/*.so "$pkgdir/usr/lib/plugins/"
 	make DESTDIR="$pkgdir/" install
 }
