@@ -26,7 +26,8 @@ build() {
   cd build
   cmake ../docopt.cpp \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib
   make
 }
 
