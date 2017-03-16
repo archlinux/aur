@@ -1,7 +1,7 @@
 diff -ru a/configure b/configure
 --- a/configure	2016-01-26 13:54:50.000000000 +0100
 +++ b/configure	2016-03-06 18:34:29.190228228 +0100
-@@ -2861,7 +2861,7 @@
+@@ -2866,7 +2866,7 @@
  
  ac_config_headers="$ac_config_headers config.h"
  
@@ -10,31 +10,10 @@ diff -ru a/configure b/configure
  
  # Find a good install program.  We prefer a C program (faster),
  # so one script is as good as another.  But avoid the broken or
-diff -ru a/configure.ac b/configure.ac
---- a/configure.ac	2016-01-26 10:36:37.000000000 +0100
-+++ b/configure.ac	2017-03-01 15:00:00.000000000 +0100
-@@ -19,7 +19,7 @@
- 
- # Process this file with autoconf to produce a configure script.
- AC_PREREQ(2.61)
--min_automake_version="1.14"
-+min_automake_version="1.15"
- 
- # To build a release you need to create a tag with the version number
- # (git tag -s gnupg-2.n.m) and run "./autogen.sh --force".  Please
-@@ -242,7 +242,7 @@
-               large_secmem=$enableval, large_secmem=no)
- AC_MSG_RESULT($large_secmem)
- if test "$large_secmem" = yes ; then
--   SECMEM_BUFFER_SIZE=65536
-+   SECMEM_BUFFER_SIZE=67108864
- else
-    SECMEM_BUFFER_SIZE=32768
- fi
 diff -ru a/g10/keygen.c b/g10/keygen.c
 --- a/g10/keygen.c	2016-01-26 10:36:37.000000000 +0100
 +++ b/g10/keygen.c	2017-03-01 15:00:00.000000000 +0100
-@@ -1611,7 +1611,7 @@
+@@ -1612,7 +1612,7 @@
    int err;
    char *keyparms;
    char nbitsstr[35];
@@ -43,7 +22,7 @@ diff -ru a/g10/keygen.c b/g10/keygen.c
  
    log_assert (is_RSA(algo));
  
-@@ -2101,6 +2101,12 @@
+@@ -2086,6 +2086,12 @@
        *max=441;
        def=255;
        break;
@@ -53,6 +32,6 @@ diff -ru a/g10/keygen.c b/g10/keygen.c
 +      *max = (opt.flags.large_rsa?16384:4096);
 +      def = 2048;
 +      break;
-     }
- 
-   tty_printf(_("%s keys may be between %u and %u bits long.\n"),
+
+    default:
+      *min = opt.compliance == CO_DE_VS ? 2048 : 1024;
