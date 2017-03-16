@@ -1,5 +1,5 @@
 pkgbase = zsurf-git
-	pkgdesc = basic webkit2gtk browser
+	pkgdesc = Ultra lightweight web browser in the spirit of Surf using QtWebKit1 with front-end logic written in Javascript.
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/SteveDeFacto/zsurf
