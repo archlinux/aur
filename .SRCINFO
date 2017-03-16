@@ -1,6 +1,6 @@
 pkgbase = guile-git
 	pkgdesc = A portable, embeddable Scheme implementation (Git snapshot)
-	pkgver = 2.1.8.8.g1d326a511
+	pkgver = 2.1.8.12.gda9dee098
 	pkgrel = 1
 	url = http://www.gnu.org/software/guile/
 	arch = i686
