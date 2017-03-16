@@ -4,7 +4,7 @@
 
 pkgname=pyfa
 pkgver=1.28.0
-pkgrel=1
+pkgrel=2
 everelname="yc119.3"
 everelver=1.0
 pkgdesc="EVE Online Fitting Assistant"
@@ -12,7 +12,7 @@ arch=('any')
 url="http://github.com/DarkFenX/Pyfa"
 license=('GPL')
 makedepends=('unzip')
-depends=('python2' 'wxpython' 'python2-sqlalchemy' 'python2-dateutil' 'python2-requests' 'python2-urllib3')
+depends=('python2' 'wxpython' 'python2-sqlalchemy' 'python2-dateutil' 'python2-requests' 'python2-urllib3' 'python2-logbook')
 optdepends=('python2-matplotlib: for graph plotting'
         'python2-numpy: for graph plotting')
 source=(https://github.com/DarkFenX/Pyfa/releases/download/v$pkgver/pyfa-$pkgver-$everelname-$everelver-linux.zip pyfa.desktop pyfa-start.sh)
