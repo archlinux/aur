@@ -1,20 +1,21 @@
-# Maintainer: Tanguy ALEXIS <tanguy@metatux.fr>
+# Maintainer: Silvio Ankermann <silvio@booq.org>
+# Contributer: Tanguy ALEXIS <tanguy@metatux.fr>
 # Contributer: Shaun Hammill <plloi.pllex@gmail.com>
 # Contributer: Travis Lyons <travis.lyons@gmail.com>
 
 pkgname=magicassistant-gtk
-pkgver=1.4.2.010
-pkgrel=2
+pkgver=1.5.1.201701082017
+pkgrel=1
 pkgdesc="Card Browser, Library Organizer, Deck Builder and Tournament Manager for Magic the Gathering Card Game"
 arch=(i686 x86_64)
 url="http://sourceforge.net/projects/mtgbrowser/"
 license=('EPL')
-depends=(gtk2 'java-runtime>=8' unzip libwebkit)
-source_x86_64=(http://downloads.sourceforge.net/project/mtgbrowser/Magic_Assistant/${pkgver}/magicassistant-${pkgver}-linux.gtk.x86_64.zip magicassistant.desktop)
-source_x86=(http://downloads.sourceforge.net/project/mtgbrowser/Magic_Assistant/${pkgver}/magicassistant-${pkgver}-linux.gtk.x86.zip magicassistant.desktop)
-md5sums_x86_64=('65884e4a7666ff510938cb21f171f8dc'
+depends=(gtk2 'java-runtime>=8' unzip webkitgtk)
+source_x86_64=(https://downloads.sourceforge.net/project/mtgbrowser/Magic_Assistant/1.5.0/magicassistant-${pkgver}-linux.gtk.x86_64.zip magicassistant.desktop)
+source_x86=(https://downloads.sourceforge.net/project/mtgbrowser/Magic_Assistant/1.5.0/magicassistant-${pkgver}-linux.gtk.x86.zip magicassistant.desktop)
+md5sums_x86_64=('7ce0e2f2f41a641cf84acdf26a238046'
                 '37f143dbb28032d4fcc7a0a6e4e7f239')
-md5sums_x86=('2336f6b62536137bafc8ded226551d6d'
+md5sums_x86=('ad0b46218f5615aaa92d24c6f6f05bec'
              '37f143dbb28032d4fcc7a0a6e4e7f239')
 
 package() {
