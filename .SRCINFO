@@ -1,7 +1,7 @@
 pkgbase = python-fastparquet
 	pkgdesc = A python implementation of the parquet format.
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dask/fastparquet
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = python-fastparquet
 	depends = python-pytest
 	depends = python-thriftpy
 	optdepends = python-snappy
+	optdepends = python-lzo
+	optdepends = python-brotlipy
 	source = https://github.com/dask/fastparquet/archive/0.0.5.tar.gz
 	sha256sums = b8091a38ffa5ed16ddd98ef96ea3561a182b2b23a3060118cdd2beeec16db798
 

@@ -2,7 +2,7 @@
 pkgname=('python-fastparquet')
 _module='fastparquet'
 pkgver='0.0.5'
-pkgrel=1
+pkgrel=2
 pkgdesc="A python implementation of the parquet format."
 url="https://github.com/dask/fastparquet"
 checkdepends=('python-pytest')
@@ -13,7 +13,9 @@ depends=('cython'
     'python-pytest'
     'python-thriftpy')
 makedepends=('python-setuptools')
-optdepends=('python-snappy')
+optdepends=('python-snappy'
+    'python-lzo'
+    'python-brotlipy')
 license=('Apache')
 arch=('i686' 'x86_64')
 source=("https://github.com/dask/fastparquet/archive/$pkgver.tar.gz")
