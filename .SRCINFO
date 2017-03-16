@@ -1,6 +1,6 @@
 pkgbase = mitmproxy
 	pkgdesc = SSL-capable man-in-the-middle HTTP proxy
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = http://mitmproxy.org/
 	arch = any
@@ -10,7 +10,6 @@ pkgbase = mitmproxy
 	checkdepends = python-pytz
 	checkdepends = python-pytest-runner
 	checkdepends = protobuf
-	makedepends = git
 	depends = python-blinker
 	depends = python-brotlipy
 	depends = python-click
@@ -38,7 +37,9 @@ pkgbase = mitmproxy
 	provides = pathod
 	conflicts = pathod
 	replaces = pathod
-	source = git+https://github.com/mitmproxy/mitmproxy.git#tag=v2.0.0
-	sha256sums = SKIP
+	source = mitmproxy-2.0.1.tar.gz::https://github.com/mitmproxy/mitmproxy/archive/v2.0.1.tar.gz
+	source = fix-test.patch
+	sha256sums = b0ccc49924762ea78290d62c463be8c041f1837f9005f583ad09c47122547e9d
+	sha256sums = f9fc3e3732ba1867b3a0befc7c15c52ddd6b32723fc348c42c1eae546d021f1f
 
 pkgname = mitmproxy
