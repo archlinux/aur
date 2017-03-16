@@ -1,6 +1,6 @@
 # Maintainer: Seppia <seppia@seppio.fish>
 pkgname=dino-git
-pkgver=r54.f277db6
+pkgver=r58.d3005bc
 pkgrel=1
 pkgdesc="Simple and modern Jabber/XMPP client written in vala"
 arch=('i686' 'x86_64' 'aarch64')
