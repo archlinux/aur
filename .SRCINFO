@@ -1,6 +1,6 @@
 pkgbase = diffoscope-git
 	pkgdesc = Tool for in-depth comparison of files, archives, and directories
-	pkgver = 70+31+gb30e152
+	pkgver = 79+1+gcbfef24
 	pkgrel = 1
 	url = https://diffoscope.org/
 	arch = i686
@@ -68,7 +68,7 @@ pkgbase = diffoscope-git
 	optdepends = xz: XZ and LZMA utilities support
 	provides = diffoscope
 	conflicts = diffoscope
-	source = diffoscope-git::git+https://anonscm.debian.org/git/reproducible/diffoscope.git
+	source = diffoscope-git::git+https://anonscm.debian.org/git/reproducible/diffoscope.git#branch=experimental
 	sha512sums = SKIP
 
 pkgname = diffoscope-git

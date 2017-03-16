@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=diffoscope-git
-pkgver=70+31+gb30e152
+pkgver=79+1+gcbfef24
 pkgrel=1
 pkgdesc='Tool for in-depth comparison of files, archives, and directories'
 url='https://diffoscope.org/'
@@ -45,7 +45,7 @@ checkdepends=(
   'mono' 'mono-tools' 'poppler' 'sqlite' 'squashfs-tools' 'tlsh' 'unzip' 'gzip' 'tar' 'vim' 'xz' 'llvm' 'colord' 'fpc' 'openssh')
 provides=('diffoscope')
 conflicts=('diffoscope')
-source=(${pkgname}::git+https://anonscm.debian.org/git/reproducible/diffoscope.git)
+source=(${pkgname}::"git+https://anonscm.debian.org/git/reproducible/diffoscope.git#branch=experimental")
 sha512sums=('SKIP')
 
 pkgver() {
