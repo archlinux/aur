@@ -1,7 +1,7 @@
 pkgbase = pyfa
 	pkgdesc = EVE Online Fitting Assistant
 	pkgver = 1.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/DarkFenX/Pyfa
 	arch = any
 	license = GPL
@@ -12,6 +12,7 @@ pkgbase = pyfa
 	depends = python2-dateutil
 	depends = python2-requests
 	depends = python2-urllib3
+	depends = python2-logbook
 	optdepends = python2-matplotlib: for graph plotting
 	optdepends = python2-numpy: for graph plotting
 	source = https://github.com/DarkFenX/Pyfa/releases/download/v1.28.0/pyfa-1.28.0-yc119.3-1.0-linux.zip
