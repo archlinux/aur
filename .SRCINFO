@@ -1,0 +1,15 @@
+pkgbase = junglediskserver
+	pkgdesc = Online backup and storage powered by Amazon S3™ and Rackspace. This is the server daemon only.
+	pkgver = 3.20.0
+	pkgrel = 2
+	url = http://www.jungledisk.com/
+	arch = x86_64
+	license = custom
+	depends = fuse2
+	source = junglediskserver.service
+	md5sums = 38cae2f4491fb54dbc936a5029d280c2
+	source_x86_64 = https://downloads.jungledisk.com/jungledisk/junglediskserver64-3200.tar.gz
+	md5sums_x86_64 = 4b5a98e2531a3988a8f2f8f99103aa94
+
+pkgname = junglediskserver
+

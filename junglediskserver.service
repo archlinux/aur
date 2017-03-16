@@ -1,0 +1,11 @@
+[Unit]
+Description=Jungledisk Server Agent
+
+[Service]
+Type=forking
+PIDFile=/var/run/junglediskserver.pid
+ExecStart=/usr/local/bin/junglediskserver
+
+[Install]
+WantedBy=multi-user.target
+
