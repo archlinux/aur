@@ -1,31 +1,30 @@
 # Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
 
-_pkgname='days-until'
-pkgname="${_pkgname}-git"
+pkgname="days-until-git"
 pkgver=0.1.rf01b6ec
 pkgrel=1
 pkgdesc='A command-line program to give you the number of days until or since certain events.'
 arch=('any')
-url="https://gitlab.com/ammongit/$_pkgname"
+url="https://gitlab.com/ammongit/${pkgname%-git}"
 license=('GPL2')
 depends=('python')
 makedepends=('git')
 optdepends=()
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 options=()
-source=("git+https://gitlab.com/ammongit/$_pkgname.git")
+source=("git+https://gitlab.com/ammongit/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-    echo "0.1.r$(git describe --always)"
+	cd "$srcdir/${pkgname%-git}"
+	echo "0.1.r$(git describe --always)"
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-    install -D -m755 'days_until.py' "$pkgdir/usr/bin/daysuntil"
-    install -D -m644 'sample_event_list.txt' "$pkgdir/usr/share/$_pkgname/sample_event_list.txt"
-    install -D -m644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$srcdir/${pkgname%-git}"
+	install -D -m755 'days_until.py' "$pkgdir/usr/bin/daysuntil"
+	install -D -m644 'sample_event_list.txt' "$pkgdir/usr/share/${pkgname%-git}/sample_event_list.txt"
+	install -D -m644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
