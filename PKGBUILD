@@ -9,7 +9,7 @@ _IA32_EFI_IN_ARCH_X64="1"
 _GRUB_EMU_BUILD="0"
 
 _pkgver="2.02"
-_GRUB_GIT_TAG="2.02-rc1"
+_GRUB_GIT_TAG="2.02-rc2"
 _GRUB_EXTRAS_COMMIT="f2a079441939eee7251bf141986cdd78946e1d20"
 
 _UNIFONT_VER="9.0.06"
@@ -22,7 +22,7 @@ _UNIFONT_VER="9.0.06"
 
 pkgname="grub"
 pkgdesc="GNU GRand Unified Bootloader (2)"
-pkgver=2.02.rc1
+pkgver=2.02.rc2
 pkgrel=1
 epoch=1
 url="https://www.gnu.org/software/grub/"

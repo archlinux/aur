@@ -1,6 +1,6 @@
 pkgbase = grub
 	pkgdesc = GNU GRand Unified Bootloader (2)
-	pkgver = 2.02.rc1
+	pkgver = 2.02.rc2
 	pkgrel = 1
 	epoch = 1
 	url = https://www.gnu.org/software/grub/
@@ -48,7 +48,7 @@ pkgbase = grub
 	backup = boot/grub/grub.cfg
 	backup = etc/default/grub
 	backup = etc/grub.d/40_custom
-	source = grub-2.02::git+git://git.sv.gnu.org/grub.git#tag=2.02-rc1
+	source = grub-2.02::git+git://git.sv.gnu.org/grub.git#tag=2.02-rc2
 	source = grub-extras::git+git://git.sv.gnu.org/grub-extras.git#commit=f2a079441939eee7251bf141986cdd78946e1d20
 	source = https://ftp.gnu.org/gnu/unifont/unifont-9.0.06/unifont-9.0.06.bdf.gz
 	source = https://ftp.gnu.org/gnu/unifont/unifont-9.0.06/unifont-9.0.06.bdf.gz.sig
