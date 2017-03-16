@@ -2,16 +2,17 @@
 
 _pkgname=rtorrent
 pkgname=rtorrent-ps
-pkgver=0.9.6
-pkgrel=4
+_pkgver=0.9.6
+pkgver=1.0.r26.gcb78fc3
+pkgrel=1
 pkgdesc='Extended rTorrent distribution with UI enhancements, colorization, and some added features'
 url='https://github.com/pyroscope/rtorrent-ps'
 license=('GPL')
 arch=('any')
-depends=('cppunit' 'curl>=7.15.4' 'libtorrent-ps=0.13.6' 'ncurses' 'xmlrpc-c')
+depends=('cppunit' 'curl>=7.15.4' 'libtorrent-ps>=1.0' 'ncurses' 'xmlrpc-c')
 provides=('rtorrent')
 conflicts=('rtorrent' 'rtorrent-cdl' 'rtorrent-color' 'rtorrent-git' 'rtorrent-ipv6' 'rtorrent-ps-git' 'rtorrent-pyro-git' 'rtorrent-vi-color')
-source=("https://github.com/rakshasa/$_pkgname/archive/$pkgver.tar.gz"
+source=("https://github.com/rakshasa/$_pkgname/archive/$_pkgver.tar.gz"
         "command_pyroscope.cc"
         "ps-fix-sort-started-stopped-views_all.patch"
         "ps-info-pane-xb-sizes_all.patch"
@@ -24,7 +25,7 @@ source=("https://github.com/rakshasa/$_pkgname/archive/$pkgver.tar.gz"
         "ui_pyroscope.h"
         "ui_pyroscope.patch")
 md5sums=('b8b4009f95f8543244ae1d23b1810d7c'
-         'd44e605a784ec45b0bfafce3676842c4'
+         '1422a6fc123d03bd0606f6d85738ec35'
          '3fd739c0d5a9442f0cdec9ed5a720eaa'
          'f1539d70c74e5c74d8a15d51675aa26c'
          '2d34e8c86c1c6ed1354b55ca21819886'
@@ -37,17 +38,16 @@ md5sums=('b8b4009f95f8543244ae1d23b1810d7c'
          '0a2bbaf74c7160ba33876dcc2f050f14')
 
 prepare() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$_pkgver"
 
   # Version handling
-  RT_HEX_VERSION=$(printf "0x%02X%02X%02X" ${pkgver//./ })
+  RT_HEX_VERSION=$(printf "0x%02X%02X%02X" ${_pkgver//./ })
   sed -i -e "s:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1  AC_DEFINE(RT_HEX_VERSION, "$RT_HEX_VERSION", for CPP if checks):" configure.ac
   grep "AC_DEFINE.*API_VERSION" configure.ac >/dev/null || sed -i -e "s:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1  AC_DEFINE(API_VERSION, 0, api version):" configure.ac
 
   # Patch rTorrent
-  for patch in "$srcdir"/ps-*.patch; do
-    msg2 "$patch"
-    patch -uNlp1 -i "$patch"
+  for corepatch in $srcdir/ps-*_{${_pkgver},all}.patch; do
+    test ! -e "$corepatch" || { msg2 "$(basename $corepatch)"; patch -uNp1 -i "$corepatch"; }
   done
 
   msg2 "pyroscope.patch"
@@ -59,13 +59,13 @@ prepare() {
   msg2 "ui_pyroscope.patch"
   patch -uNp1 -i "$srcdir/ui_pyroscope.patch"
 
-  sed -i -e 's/rTorrent \" VERSION/rTorrent-PS " VERSION/' src/ui/download_list.cc
+  sed -i -e 's/rTorrent \" VERSION/rTorrent PS-'"$VERSION_EXTRAS"' " VERSION/' src/ui/download_list.cc
 
   ./autogen.sh
 }
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$_pkgver"
 
   ./configure \
     --prefix=/usr \
@@ -76,7 +76,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$_pkgver"
 
   make DESTDIR="$pkgdir" install
 

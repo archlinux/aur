@@ -322,6 +322,7 @@ torrent::Object apply_ui_bind_key(rpc::target_type target, const torrent::Object
     const std::string& element  = (itr++)->as_string();
     const std::string& keydef   = (itr++)->as_string();
     const std::string& commands = (itr++)->as_string();
+    const bool verbose = rpc::call_command_value("ui.bind_key.verbose");
 
     // Get key index from definition
     if (keydef.empty() || keydef.size() > (keydef[0] == '0' ? 4 : keydef[0] == '^' ? 2 : 1))
@@ -365,7 +366,7 @@ torrent::Object apply_ui_bind_key(rpc::target_type target, const torrent::Object
             return torrent::Object();
     }
 
-    if (!new_binding) {
+    if (!new_binding && verbose) {
         std::string msg = "Replaced key binding";
         msg += " for " + keydef + " in " + element + " with " + commands.substr(0, 30);
         if (commands.size() > 30) msg += "...";
@@ -546,6 +547,7 @@ void initialize_command_pyroscope() {
 
     CMD2_ANY_LIST("compare", &apply_compare);
     CMD2_ANY("ui.bind_key", &apply_ui_bind_key);
+    CMD2_VAR_VALUE("ui.bind_key.verbose", 1);
     CMD2_DL("d.tracker_domain", _cxxstd_::bind(&cmd_d_tracker_domain, _cxxstd_::placeholders::_1));
     CMD2_ANY_STRING("log.messages", _cxxstd_::bind(&cmd_log_messages, _cxxstd_::placeholders::_2));
     CMD2_ANY("ui.focus.home", _cxxstd_::bind(&cmd_ui_focus_home));
