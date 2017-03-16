@@ -1,6 +1,6 @@
 pkgbase = diffoscope-git
 	pkgdesc = Tool for in-depth comparison of files, archives, and directories
-	pkgver = 79+1+gcbfef24
+	pkgver = 80
 	pkgrel = 1
 	url = https://diffoscope.org/
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = diffoscope-git
 	checkdepends = diffutils
 	checkdepends = e2fsprogs
 	checkdepends = enjarify
+	checkdepends = imagemagick
 	checkdepends = java-environment>=8
 	checkdepends = fontforge
 	checkdepends = gettext
@@ -48,8 +49,10 @@ pkgbase = diffoscope-git
 	optdepends = diffutils: diff utilities support
 	optdepends = e2fsprogs: Ext2/3/4 filesystem utilities support
 	optdepends = enjarify: Android dex file support
+	optdepends = imagemagick: ImageMagick identify support
 	optdepends = fpc: Free Pascal utilities support
 	optdepends = java-environment: java utilities support
+	optdepends = libcaca: image compare support
 	optdepends = llvm: LLVM bitcode files support
 	optdepends = fontforge: bitmap font utilities support
 	optdepends = gettext: GNU internationalization utilities support
