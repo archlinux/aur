@@ -1,8 +1,9 @@
-# Maintainer:  DJ Lucas <dj_AT_linuxfromscratch_DOT_org>
+# Maintainer: Deon Spengler <deon[at]spengler[dot]co[dot]za>
+# Contributor:  DJ Lucas <dj_AT_linuxfromscratch_DOT_org>
 # Contributor: Steven Hiscocks <steven [at] hiscocks [dot] me [dot] uk>
 # Contributor: Andre Wayand <aur-sope@awayand.sleepmail.com>
 pkgname=sope2
-pkgver=2.3.18
+pkgver=2.3.20
 pkgrel=1
 pkgdesc="application server used by SOGo"
 arch=('i686' 'x86_64')
@@ -20,6 +21,9 @@ options=('!strip')
 source=("http://www.sogo.nu/files/downloads/SOGo/Sources/SOPE-${pkgver}.tar.gz"
         "sope_configure.patch")
 
+sha256sums=('2735bff8ac57e551587524c652c4806019e4522b8106ac03e57fb3534121048c'
+            '7ff3387daffd15b5f97146da1fd61aefc9591b7b6a41f1f0e60b572106fdbc9a')
+
 prepare() {
   cd "${srcdir}/SOPE"
   patch configure ../sope_configure.patch
@@ -35,7 +39,4 @@ package() {
   cd "${srcdir}/SOPE"
   make install DESTDIR="${pkgdir}"
 }
-
-sha256sums=('326a55a0ed428fe5019c37dbd986f5f7a3a0189d4461289a20a0f010c6cd86a7'
-            '7ff3387daffd15b5f97146da1fd61aefc9591b7b6a41f1f0e60b572106fdbc9a')
 
