@@ -2,13 +2,14 @@
 
 pkgbase=('stig-git')
 pkgname=('stig-git')
-pkgver=0.1.0a.r2.9da7ec5
+pkgver=0.4.0a.r0.ecaf209
 pkgrel=1
 pkgdesc="TUI and CLI client for the Transmission daemon"
 url="https://github.com/rndusr/stig"
 depends=('python' 'python-urwid' 'python-urwidtrees-git' 'python-aiohttp'
          'python-appdirs' 'python-blinker')
 makedepends=('git' 'python-setuptools')
+optdepends=('python-geoip: shows country codes in peer lists')
 license=('GPL')
 arch=('any')
 provides=('stig')
