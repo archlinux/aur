@@ -6,13 +6,13 @@ pkgdesc="Microsoft Azure Storage Explorer (Preview) is a standalone app from Mic
 arch=(x86_64)
 url="http://storageexplorer.com/"
 license=('unknown')
-depends=('libgnome-keyring')
+depends=('gnome-keyring')
 provides=('storageexplorer')
 changelog=
 source=("StorageExplorer-linux-x64.tar.gz::https://go.microsoft.com/fwlink/?LinkId=722418"
         "storageexplorer.desktop")
 sha256sums=('84ad34d711567cfa69e71eb6fb55bf9587f6055bc6940dc51cdcab30f1268fc9'
-            '67e74fc6752c2b88ed74310d04f074fc75ed0035a7c3db39da35877b12b12a58')
+            'c11f45ad21c26007ba2f852e6a522e41e2433c527223b04d41648eb71fb7384f')
 
 package() {
     #cd "$pkgname-$pkgver"
