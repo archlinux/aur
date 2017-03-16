@@ -3,7 +3,7 @@
 
 _pkgname=pasystray
 pkgname=${_pkgname}-gtk3-standalone
-pkgver=0.6.0.r13.gccb5b6e
+pkgver=0.6.0.r21.g183ecfa
 pkgrel=1
 pkgdesc="PulseAudio system tray (a replacement for padevchooser gtk3 standalone version)"
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ pkgver() {
 prepare () {
 	cd "$srcdir/${_pkgname}"
 	autoreconf -is
-	sed -i -e '/<requires /d' -e '/license_type/d' src/pasystray.glade
+	sed -i -e '/<requires /d' -e '/license_type/d' src/pasystray.gtk3.glade
 }
 
 build () {
