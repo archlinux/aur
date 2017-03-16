@@ -5,8 +5,14 @@ pkgbase = mytetra
 	url = https://github.com/xintrea/mytetra_dev
 	arch = x86_64
 	license = GPL3
+	noextract = mytetra-1-30-icon.png
+	noextract = mytetra.desktop
 	source = http://webhamster.ru/db/data/articles/105/mytetra_1_42_2_lin_64.tar.gz
+	source = https://macin.files.wordpress.com/2012/08/mytetra-1-30-icon.png
+	source = https://gist.githubusercontent.com/cyberxndr/498db38606e53a56efb32d79a2c73b4a/raw/82f2a036d300058f6253732609654e73a8b8e020/mytetra.desktop
 	md5sums = 54e36bac3f2d06d2d1bf6fd77501bb63
+	md5sums = 5a4e7778d6e042582db6d6e04530a4a1
+	md5sums = 52f0675d8fa88fa9a388e0f4a54fa7e6
 
 pkgname = mytetra
 
