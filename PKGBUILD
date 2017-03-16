@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatvi-git
-pkgver=r189.9bf5bfb
+pkgver=r199.33fa385
 pkgrel=1
 epoch=
 pkgdesc="A small ex/vi editor."
