@@ -11,8 +11,8 @@ url='https://dfu-programmer.github.io/'
 license=('GPL')
 depends=('libusbx')
 source=(
-  "http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz")
-sha1sums=('4e1d8a09ade8b73ec94bf8d23ef8dc51d9ee7fe3')
+  "https://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('1db4d36b1aedab2adc976e8faa5495df3cf82dc4bf883633dc6ba71f7c4af995')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
