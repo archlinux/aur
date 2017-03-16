@@ -2,8 +2,7 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=vim-airline-themes
-# printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-pkgver=r1146.5a6453c
+pkgver=r1230.793ce66
 pkgrel=1
 pkgdesc='Themes for vim-airline'
 arch=('any')
@@ -11,8 +10,13 @@ url='https://github.com/vim-airline/vim-airline-themes'
 license=('MIT')
 makedepends=('git')
 groups=('vim-plugins')
-source=("git://github.com/vim-airline/$pkgname.git#commit=${pkgver#*.}")
+source=("git+https://github.com/vim-airline/$pkgname.git#commit=${pkgver#*.}")
 md5sums=('SKIP')
+
+#prepare() {
+#  cd "$pkgname"
+#  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#}
 
 package() {
   cd "$pkgname"
