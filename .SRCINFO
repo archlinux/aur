@@ -12,6 +12,7 @@ pkgbase = stig
 	depends = python-aiohttp
 	depends = python-appdirs
 	depends = python-blinker
+	optdepends = python-geoip: shows country codes in peer lists
 	source = stig-0.4.0a.tar.gz::https://github.com/rndusr/stig/archive/v0.4.0a.tar.gz
 	sha256sums = 6d506497a1713a8ba7925b0f32dcd7bd6f5f828ca7b2ef04623580fc695e9193
 

@@ -9,7 +9,7 @@ url='https://github.com/rndusr/stig'
 depends=('python' 'python-urwid' 'python-urwidtrees' 'python-aiohttp'
          'python-appdirs' 'python-blinker')
 makedepends=('python-setuptools')
-opedepends=('python-geoip: shows country codes in peer lists')
+optdepends=('python-geoip: shows country codes in peer lists')
 license=('GPL')
 arch=('any')
 source=("stig-${pkgver}.tar.gz::https://github.com/rndusr/stig/archive/v${pkgver}.tar.gz")
