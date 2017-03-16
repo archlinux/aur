@@ -1,0 +1,17 @@
+pkgbase = uqm-hd-sound
+	pkgdesc = The Ur-Quan Masters HD music and voices
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://sourceforge.net/projects/urquanmastershd/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	noextract = uqm-hd-3dovoice_0.2-1_all.deb
+	noextract = uqm-hd-3domusic_0.2-1_all.deb
+	source = https://downloads.sourceforge.net/project/urquanmastershd/Beta%201/debs/uqm-hd-3dovoice_0.2-1_all.deb
+	source = https://downloads.sourceforge.net/project/urquanmastershd/Beta%201/debs/uqm-hd-3domusic_0.2-1_all.deb
+	md5sums = 5aad9bc2b0f79ac8916299dd29ff9e40
+	md5sums = ac2841b3cb6d634888f3a7078606d9fa
+
+pkgname = uqm-hd-sound
+
