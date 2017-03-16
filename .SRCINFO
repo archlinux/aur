@@ -1,0 +1,17 @@
+pkgbase = zsurf-git
+	pkgdesc = basic webkit2gtk browser
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SteveDeFacto/zsurf
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-webkit-ng
+	provides = zsurf=$pkgver
+	conflicts = zsurf
+	source = git+https://github.com/SteveDeFacto/zsurf.git
+	md5sums = SKIP
+
+pkgname = zsurf-git
+
