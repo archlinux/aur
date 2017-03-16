@@ -3,7 +3,7 @@
 _pkgname='traefik'
 pkgname="${_pkgname}-bin"
 pkgver='1.1.2'
-pkgrel=2
+pkgrel=3
 pkgdesc='A modern reverse proxy'
 arch=('i686' 'x86_64')
 url='https://github.com/containous/traefik'
@@ -22,7 +22,7 @@ source=(
 )
 source_i686=("${_pkgname}_i686_${pkgver}"::"https://github.com/containous/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_linux-386")
 source_x86_64=("${_pkgname}_x86_64_${pkgver}"::"https://github.com/containous/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_linux-amd64")
-sha512sums=('de3e4cddedf05bdf182c31f4e1ff7ebe5a5ca425ea0669682054d699f96255f82ff84882fa151681bc7aa22dead48ba520a8a07f2e1d0f19ac840741c1b92f59'
+sha512sums=('9afe41a64ec3360449141972854d657bacc3347ce741b0aaed0f9c61269f96f6e5eb36a45c1c629f88c7568514c3b6693952d4b415a8d9c62e85e1027fd28e20'
             'd1dfacff1e7a5b9f8e8b4796fcfbb9c1bed6151013708078361ac31ae221dd956f746ec1e0bc5bd09a05763438d877318259577f6f0178d42f011bd737c31207'
             '1ba00b19f691e173eb1d69d2a3e1bcb95370025de49baf4f8024c30579cb58c6296ed743959f261b4ada6731f1c810ebe4eb0e3481e7eb17a9f09596fa004986'
             '05de0378cd4c430084c122dfcbb433c9cf8dda912dee03a5c80d1e199b133ecc0b32f6e8ae985544dca89355e21c23c8c4d04c05e1d0a72f5bf135db7fc724d2'
@@ -39,6 +39,4 @@ package() {
 
   install -D -m644 "${srcdir}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m755 "${srcdir}/${_pkgname}_${CARCH}_${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
-
-  chown traefik:traefik "${pkgdir}/var/log/${_pkgname}"
 }
