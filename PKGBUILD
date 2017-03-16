@@ -2,7 +2,7 @@
 
 _pkgsrcname=sounddevice
 pkgname=python-${_pkgsrcname}
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Play and Record Sound with Python"
 url="http://python-sounddevice.rtfd.io/"
@@ -23,4 +23,4 @@ package() {
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
 
-md5sums=('171b3e77e1e733fc17f273c2fecb8ff3')
+md5sums=('628abfc4ae311b029ce866a2c42f25ce')
