@@ -1,0 +1,13 @@
+pkgbase = python0.9
+	pkgdesc = The oldest version of Python I could find
+	pkgver = 0.9
+	pkgrel = 1
+	epoch = 1
+	url = https://www.python.org
+	arch = any
+	makedepends = make
+	source = https://www.python.org/ftp/python/src/Python-0.9.1.tar.gz
+	sha256sums = 4a9cbf404dc0628eecf06bd3942f8eaf0194797192dbc54c4433ec631ecc688c
+
+pkgname = python0.9
+
