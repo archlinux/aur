@@ -1,0 +1,19 @@
+pkgbase = uqm-hd-rus
+	pkgdesc = The Ur-Quan Masters HD russian localization
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://mosc-portal.bursa.ru/showthread.php?p=1831#post1831
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = unrar
+	noextract = UQM_HD_Rus_10.rar
+	source = http://sc.bursa.ru/download/uqm_hd/UQM_HD_Rus_10.rar
+	source = uqm-hd-rus
+	source = uqm-hd-rus.desktop
+	md5sums = e50464384d12dbad2b847e8318c88c5e
+	md5sums = bd85da9fe3099033188b61a9a3a03522
+	md5sums = 914b4f4aeff0ec245167a0a0260a3f22
+
+pkgname = uqm-hd-rus
+

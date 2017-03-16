@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Уркванские Хозяева
+Comment=An epic space adventure
+Comment[fi]=Eeppinen avaruusseikkailu
+Exec=uqm-hd-rus
+Icon=uqm-hd
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Game;ArcadeGame;StrategyGame;
