@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Simple and modern Jabber/XMPP client written in vala"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/dino/dino"
-license=('GPLv3')
+license=('')
 groups=()
 depends=('sudo')
 makedepends=('git' 'vala')
@@ -35,5 +35,6 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	sudo cp build/dino /usr/bin/
+	sudo cp build/*.so /usr/lib/
 #	make DESTDIR="$pkgdir/" install
 }
