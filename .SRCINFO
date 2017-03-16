@@ -1,6 +1,6 @@
 pkgbase = powershell-git
 	pkgdesc = A cross-platform automation and configuration tool/framework
-	pkgver = 6.0.0.alpha.16.25.ge3b59e0f
+	pkgver = 6.0.0.alpha.17.17.g3f274aad
 	pkgrel = 1
 	url = https://github.com/PowerShell/PowerShell
 	arch = x86_64

@@ -1,0 +1,6 @@
+googletest/
+pester/
+pkg/
+*.xz
+powershell/
+src/
