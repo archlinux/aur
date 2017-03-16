@@ -14,7 +14,7 @@ pkgbase = cairo-nomesa
 	depends = fontconfig
 	depends = pixman>=0.30.0
 	depends = glib2
-	depends = lzo2
+	depends = lzo
 	depends = gcc-libs
 	provides = cairo-xcb
 	provides = cairo

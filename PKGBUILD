@@ -9,7 +9,7 @@ pkgdesc="A vector graphics library"
 arch=(i686 x86_64)
 license=('LGPL' 'MPL')
 url="http://cairographics.org/"
-depends=('libpng' 'libxrender' 'libxext' 'fontconfig' 'pixman>=0.30.0' 'glib2' 'lzo2' 'gcc-libs')
+depends=('libpng' 'libxrender' 'libxext' 'fontconfig' 'pixman>=0.30.0' 'glib2' 'lzo' 'gcc-libs')
 makedepends=('gtk-doc')
 provides=('cairo-xcb' 'cairo')
 replaces=('cairo-xcb')
