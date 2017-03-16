@@ -1,6 +1,6 @@
 # Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
 pkgname=dgsh-git
-pkgver=r1325.17bf981
+pkgver=r1333.89be4ad
 pkgrel=1
 pkgdesc="Directed Graph Shell"
 arch=('any')
