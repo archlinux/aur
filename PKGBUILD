@@ -1,7 +1,7 @@
 # Maintainer : Antoine Carpentier
 pkgname=python0.9
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="The oldest version of Python I could find"
 arch=('any')
@@ -29,6 +29,6 @@ build()
 package()
 {
 	mkdir -p $pkgdir/usr/bin
-	install -m 775 python-0.9.1/src/python $pkgdir/usr/bin/python0.9
+	install -m 775 $srcdir/python-0.9.1/src/python $pkgdir/usr/bin/python0.9
 }
 
