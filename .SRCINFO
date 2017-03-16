@@ -1,0 +1,12 @@
+pkgbase = any-json
+	pkgdesc = convert (almost) anything to JSON
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/laktak/any-json
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+
+pkgname = any-json
+
