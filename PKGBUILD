@@ -1,7 +1,7 @@
 # Maintainer: Philipp Joram <mail AT phijor DOT me>
 
 pkgname=cutentr-git
-pkgver=0.1.1.r8.gb73f714
+pkgver=0.3.1.r14.ge6c92e7
 pkgrel=1
 pkgdesc="POC Qt 3DS streaming client for NTR CFW"
 arch=('x86_64')
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  git describe --always --long | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
+  git describe --tags --always --long | sed 's/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 build() {
