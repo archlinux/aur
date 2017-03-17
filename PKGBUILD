@@ -3,7 +3,7 @@
 
 pkgname=python-pyramid
 pkgver=1.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Pyramid is a very general open source Python web framework.'
 arch=('any')
 url='http://www.pylonsproject.org/'
@@ -32,7 +32,7 @@ check() {
 package_python-pyramid() {
   depends=('python' 'python-mako' 'python-webob' 'python-repoze.lru' \
     'python-zope-deprecation' 'python-zope-interface' 'python-venusian' \
-    'python-translationstring' 'python-setuptools')
+    'python-translationstring' 'python-setuptools' 'python-hupper')
   cd "$srcdir/pyramid-$pkgver"
   python setup.py install --root "${pkgdir}" --optimize=1
 }
