@@ -1,0 +1,15 @@
+pkgbase = motifsampler
+	pkgdesc = The Gibbs Motif Sampler for identifying motifs, conserved regions, in DNA or protein sequences
+	pkgver = 3.1
+	pkgrel = 3
+	url = http://ccmbweb.ccv.brown.edu/gibbs/gibbs.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source_i686 = Linux-32.3.1.tar.gz::http://ccmbweb.ccv.brown.edu/cgi-bin/download_3_1_3.pl?download_file=Linux-32-3.1.tar.gz&name=researcher&institution=research&address=research@research.com
+	md5sums_i686 = 4cb5376a7fc40049d0506b2b9463fb9b
+	source_x86_64 = Linux-64.3.1.tar.gz::http://ccmbweb.ccv.brown.edu/cgi-bin/download_3_1_3.pl?download_file=Linux-64-3.1.tar.gz&name=researcher&institution=research&address=research@research.com
+	md5sums_x86_64 = d64e9e62ef6d1b8442abccdd94ef6a73
+
+pkgname = motifsampler
+
