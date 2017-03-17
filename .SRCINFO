@@ -1,0 +1,14 @@
+pkgbase = weeder
+	pkgdesc = Motif (transcription factor binding sites) discovery in sequences from coregulated genes of a single species
+	pkgver = 1.4.2
+	pkgrel = 4
+	url = http://159.149.160.51/modtools/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = sh
+	source = http://159.149.160.51/modtools/downloads/weeder1.4.2.tar.gz
+	sha256sums = 17488fcd98d18012141e42f2e68fd71bec8cbbcae109a3a553514a179e30365a
+
+pkgname = weeder
+
