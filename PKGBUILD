@@ -5,10 +5,10 @@
 # AUR Category: devel
 
 pkgname=tortoisehg
-pkgver=4.1
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Graphical tools for Mercurial"
-url="http://tortoisehg.bitbucket.org/"
+url="https://tortoisehg.bitbucket.io"
 license=("GPL")
 depends=('python2' 'mercurial>=4.0' 'python2-pyqt4>=4.10' 'python2-qscintilla' 'python2-iniparse')
 builddepends=(python2)
@@ -30,4 +30,4 @@ package() {
 	rm "${pkgdir}/usr/lib/python2.7/site-packages/hgext3rd/__init__.pyc"
 }
 
-sha256sums=('0aea9d73b07fbc74d26a5e8bddc1d2e0edb8d628a679af966b99ae384677f770')
+sha256sums=('4f483b091d8a67e7dd3a044893a5a6a9e59b6d3a26a9ea679131920ecb2dde91')
