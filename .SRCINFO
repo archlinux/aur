@@ -1,0 +1,13 @@
+pkgbase = xatk
+	pkgdesc = xatk is a window switcher which assigns keybindings to windows dynamically
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/vlevit/xatk
+	arch = any
+	license = GPL2
+	depends = python2-xlib
+	source = https://github.com/vlevit/xatk/archive/xatk-0.2.2.tar.gz
+	md5sums = 071a740a0c9b3120970d14d40b2e56ec
+
+pkgname = xatk
+
