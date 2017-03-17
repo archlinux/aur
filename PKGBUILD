@@ -9,9 +9,9 @@
 # Based on linux package
 
 pkgbase=linux-libre-pck
-_pkgbasever=4.9-gnu
-_pkgver=4.9.11-gnu
-_pckpatchver=pck1
+_pkgbasever=4.10-gnu
+_pkgver=4.10.2-gnu
+_pckpatchver=pck2
 
 _replacesarchkernel=('linux-zen')
 _replacesoldkernels=()
@@ -21,7 +21,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}.${_pckpatchver}
 pkgrel=1
-rcnrel=armv7-x4
+rcnrel=armv7-x1
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.parabola.nu/PCK"
 license=('GPL2')
@@ -46,7 +46,6 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
         # armv7h patches
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
@@ -57,12 +56,14 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
-        '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
-sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
+        '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch'
+        '0009-drm-armada-tracing-fix.patch'
+        '0010-disable-USB3-port-on-ODROID-XU.patch')
+sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf5811fdae48fafd5a8e00d18ed9ac2e1ad4b12a657f322eb234384316ad131e0'
             'SKIP'
-            'b2fe1d938a1d1e80bba980d5aec3b38e7d508851d4abcc7b33716bbf9c41acb9bb572e4456dcd88257cf9b616db0b9ddaaeb571a14a9863555ff575f21d2a24a'
+            '02e518e8192f7b71dcb3724d1b9f4bc502d210387548a77a8edf6900281ccd13de55986382c9be00afacf0dc0ca2f13a70327be9230b1c93d95bc917cfd17643'
             'SKIP'
-            '0072bdcac83dd482cd08fb5f2e1d9bddf00a28b10d3f031a45bbf4705d605af5ae3c283b5a83bb6c86c15e7c0f35c23a5069f4436b70059dc525366e9e0f5b0e'
+            '7b9027d7a99227601979d218a62363d7ed0b52e2758ba7352a60c3d47564814c6754d92766f488f09c06d3622a9995d1f0e79df9ed43db44fc12debc543788d3'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -70,22 +71,23 @@ sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca4
             'SKIP'
             '7a3716bfe3b9f546da309c7492f3e08f8f506813afeb1c737a474c83313d5c313cf4582b65215c2cfce3b74d9d1021c96e8badafe8f6e5b01fe28d2b5c61ae78'
             'SKIP'
-            '61242b40221baa776e2599065cd6d18297ba89267fa6748b74fe76f18e3e5616b1b412b0641b2f067a3f3f1397b0fdadc1fb396702fd914687e11ccca0972663'
-            '407d57358818925ca678fc750031acbc4da092cc89cc6e413947f21e5a0342b2b99c2373aeacd9ed95d94d93843201bf1ffe07759f79fdaddef00562367cf63e'
-            '335bddab40830f6c039b1c25536dfe6788e5e3d60b9b29a20f500e29e7d21a7c1e56657c3eb87b06c0830d5695d2ad6a16bab520b5911a87ff441e1cdbaf5550'
+            'cedff1dc1b48da35353477a155fd4c636a5bb0bceb7abfda253b592da27233cf782b716a439d33ef5c94b39fc342067ed3e7b55179c8bdf5f42ab8e3954504a8'
+            '3ea4933bcd00b44418c199bb903c9b1cb84c2f751bd1ed192da6bb7bb2a2a99b0a8392758bd6ee3217f91d0c38783ea781a47cc9a084d3080317602116f735f0'
+            '9554a9b8c543ab5724fd2bf857553017e1366a6aa768c651d4e0c20c7b6bf3328675e46e37c7d63d090a26ccf2a174358b522c861833e1499a7780e00a742fac'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
-            '10e5ee3c0fa7fe248aaf56dc5b5c31316cbd427638408415fbbbb2ec3f0de034e9f4ae87c77ab63027b2c272ace96030d713244cf5ae63fd0c8b637b4b21b55f'
+            '08f47087aa71d1aca8dc4d5b7bb28cff3a7bb99f5bd64fc47664d3927ef470e256d22018da0726c186d9f9d19711c91ae4f3333aa161a0b18c082b5b60e5d74d'
             'SKIP'
-            'ccf18eb2c3d33a57871cbadd5ad825d2f2f489e69c54c7293b160abdc3e9e5c6a664ba7926a617d31affcf20b7ecb4e8de54fa78438c574aa1b257f686faade9'
-            '69f13bb2e353727acbe39034978729272511c6578aa2faf8c829e1bb89c22e769262289b76d93254314304ebd7547c45cdc8ba6afc278444a8fd09f71dff9757'
-            '47038a476ff90d7106e1ce2cf5dd3f2c356c75ab8cefc6901f8eddcbf7cd0f23c44f6ce96b2b3d57a6e3f30bdd5192cf3e75759277ab0ac6fbb179423f2431a0'
-            '75513d1d6dfeb6425763dc8fe8d7f607ddd11d2a8397230333a4e556b303ceb7e68bfdb26d0a10f4b557ef13adbf54c3aab00f5b493772a94b5cd87d143663c4'
-            '37df06631772200edc7e5a4450719155156a781e9a475383283627f6f1b8cbe94db6ba2e2fbc59107ea288846b56881b892e9b21d3d899b974fad4226c4def10'
-            '73916b59fd8f269ce2831d9a0710f503b9cd1004d94caf9e061ebff870a115cc8455409040574a609473e48c60b2f0b833c907327dacb085509e615c27dd463f'
-            'eef5d8161edcc9817832de2000ad30320507a1e16fc321fb2b97dd2d159825b8f924cd29e5a4ffa29c339c8727f106730e6b6858c50d8afe7a5000629507badd'
-            'b3aad9fd9292122fd3227f05d54742731bf4d6d57aaac680b34eca19597dfb56a7f54c7ad54f37cfc2ec7f622fbd90abe7f288f11f8eb98278ab07df32cf890a')
+            'dd4e2482d6e3d91d00e37e665933515a4fa876d39c036d639f21c48a09f03202f3dec0dbe04b7c60c4b7e1f49617b5f94ace688afacbe33dc6d6818c0c797031'
+            'cf0a3061cef91c04fa5e6d50c4ee235f817cb97f6b7a77f42d42ada707e71bd9731dfafdfcf396e767362998acd8b98ad9942a989c2dd8457e57177c354ec7d2'
+            '6866b84fac93df7eb669f71ed0041270a5f7254bddf6e4f3de7820dbf5696f09eb3051843f7f48d9ae418487ed765b203eccf4bf399d0ca95061ba0399043839'
+            'f41af76bbb6727fa415bb4e7e5da1896a5f01316354d5f34bc55b3f4451e571f2302c4e66c2b949bb330241d4187d507faba83b1584907d1b66a82a60a1c8923'
+            'ddf31c7db4c873c258763ddff4419315af3d06dc28f14f8d48b0d99e35ecd953d02a992da414c8dd1b9fd9f2bb12580393a541a3064051ece1fa6e173fc52ba2'
+            'df749d4d4f71b4514f526941af592cc11eec13214375e7c0088b84558b56508bf444ea70fb93a0c114a03cd4efd559ea816deb670064fa91f02c7b7f7483d57d'
+            'd1c6d28d22724f9d3700f5d8350164ddba7e6f64980a8d25ebb7cbcffa83250125f337e91510a925deb10bc1e30ac999cb18f3427e051e00d82f5bbaf8a848ec'
+            'd14cedaf275ea1337b18a75d72b7610cb96f982896542edc0a59306c10888d62594b8a36197e33d079e6d5a9b5d20f46892b96a2d3aab5258013f0e5991e3f9b'
+            '0a806db7df7761f5dc64b8a3b3860c6c9216cecfe135778f3019e51e1245bcc34980c6124a11447285b18e284547ffc57a4b2c1290b4dd91a55b0237a7007cc9'
+            'c02d0e1d6b399c84323937a81b702fd3ac7c6f9e08254d1697858f829fd045ee33d5952d42eb22558c290efe7fd5d8fdd7695d8ef3526742a67052fb9e303ebe')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -126,6 +128,8 @@ prepare() {
     patch -p1 -i "${srcdir}/0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch"
     patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
     patch -p1 -i "${srcdir}/0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch"
+    patch -p1 -i "${srcdir}/0009-drm-armada-tracing-fix.patch"
+    patch -p1 -i "${srcdir}/0010-disable-USB3-port-on-ODROID-XU.patch"
   fi
 
   # add freedo as boot logo
@@ -134,11 +138,6 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
-  # remove this when a Kconfig knob is made available by upstream
-  # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
@@ -176,17 +175,14 @@ build() {
 _package() {
   pkgdesc="The ${pkgbase^} kernel and modules with a handful of awesome features not merged into mainline [AUFS, BFQ, BFS, Knock, UKSM]"
   [ "${pkgbase}" = "linux-libre" ] && groups=('base' 'base-openrc')
-  depends=('coreutils' 'linux-libre-firmware' 'kmod')
+  depends=('coreutils' 'linux-libre-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country'
               'systemd-knock: to use system and service manager with TCP Stealth support'
               'openssh-knock: to use SSH with TCP Stealth support')
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
-  depends_i686=('mkinitcpio>=0.7')
-  depends_x86_64=('mkinitcpio>=0.7')
-  backup_i686=("etc/mkinitcpio.d/${pkgbase}.preset")
-  backup_x86_64=("etc/mkinitcpio.d/${pkgbase}.preset")
+  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
   cd "${srcdir}/${_srcname}"
@@ -210,15 +206,18 @@ _package() {
     "${startdir}/${install}" > "${startdir}/${install}.pkg"
   true && install=${install}.pkg
 
-  if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
-    # install mkinitcpio preset file for kernel
+  # install mkinitcpio preset file for kernel
+  if [ "${CARCH}" = "armv7h" ]; then
+    sed "s|/boot/vmlinuz-%PKGBASE%|${_kernver}|g" "${srcdir}/linux.preset" |
+      install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  elif [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
     sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
       install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-
-    # install pacman hook for initramfs regeneration
-    sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
-      install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
   fi
+
+  # install pacman hook for initramfs regeneration
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
@@ -357,7 +356,7 @@ _package-headers() {
   # add objtool for external module building and enabled VALIDATION_STACK option
   if [ -f tools/objtool/objtool ];  then
       mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
-      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/
   fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
