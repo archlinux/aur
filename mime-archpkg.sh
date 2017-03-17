@@ -64,7 +64,6 @@ update() {
                   else
                      rsvg-convert -o /tmp/archpkg.svg -f svg "$file"
                      install -m644 /tmp/archpkg.svg "$theme/$elem/$NAME.svg"
-                     echo
                   fi
                fi
             done
