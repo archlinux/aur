@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-grsec-knock
 _pkgbasever=4.9-gnu
-_pkgver=4.9.13-gnu
+_pkgver=4.9.14-gnu
 _grsecver=3.1
-_timestamp=201702270729
+_timestamp=201703121245
 _knockpatchver=4.9_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -71,9 +71,9 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP'
-            'c98ebf494a2adfe88cc3476bda4a603470febde239441ae6df5834c776e05d45badda8a5cf5d07bac6c7b5b6bb518eea5d4766b6a298024053508582ddbd73b8'
+            'd9c1d7c80f6f58758056fa190b7e66880df72858106b2ce0428bf28fc9189cbe7c0d40939722caea9de3ddcc08f6739e2438bddb75b8344044c7ee5f8c39fc98'
             'SKIP'
-            'e632024710bc60a83ef0f3fffcdbb6dc92d7bcca498bb5d62e55658152a6f2a981b004613d8b105292b4ae66d755769ff5ed5d42124bb6ac6d139f6523d3e02b'
+            'abf37d0b13ccabdc0e859bfad62360c13d3e95257bd6a2c9934a3d48f4d7e6573aa92fdd4b922321aa643ec2071b58533215e2c6c7d5a5c4bca22815a2ae360e'
             'SKIP'
             'a00e9fc0b930021242b231dfdd15160eaefbfad4aaa0ba0426bb9a25dd14acc1825cbb1bc9c680a6d43baca797591dc219e232862f566457752ff378e03600a3'
             'SKIP'
@@ -91,7 +91,7 @@ sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca4
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '565ddaea6005aa990c861a76a6e94540e9b78dd7ab9b88ad7c74fe6803c5d4a3040b697a5d6e293f45ce602c0293134f1c24bc1e446be5cbea6238b55c494b32'
+            '0491009aea3f23c6a5016ad7ad5f149fec85c2bf5fdfb46e47c7ed04bc1826e98efeb6477556a704ecf51e1521cd0a512a8298aa65a05fc28762a0c991c7701d'
             'SKIP'
             'e04da62f138b24a489daf6ea12759ecb545b77be4dd585983d3abb764f4ac3aa4a9bf4179adddc73032b81e4fa54cbf5dbf173b25dfb1723e7379583b57aa426'
             '5d3a5440b3612fb85759b34d9b455118da342928e585b11545a0dcc9d11f16f0924e1b6018e08ed0507e53d1aabab7000c9b4405bc8881a7bda775456d81df2a'
@@ -216,7 +216,7 @@ build() {
 _package() {
   pkgdesc="The ${pkgbase^} kernel and modules with grsecurity/PaX patches and support for stealth TCP sockets"
   [ "${pkgbase}" = "linux-libre" ] && groups=('base' 'base-openrc')
-  depends=('coreutils' 'linux-libre-firmware' 'kmod' 'grsec-common')
+  depends=('coreutils' 'linux-libre-firmware' 'kmod' 'mkinitcpio>=0.7' 'grsec-common')
   optdepends=('crda: to set the correct wireless channels of your country'
               'gradm: to configure and enable Role Based Access Control (RBAC)'
               'paxd-libre: to enable PaX exploit mitigations and apply exceptions automatically'
@@ -225,10 +225,7 @@ _package() {
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
-  depends_i686=('mkinitcpio>=0.7')
-  depends_x86_64=('mkinitcpio>=0.7')
-  backup_i686=("etc/mkinitcpio.d/${pkgbase}.preset")
-  backup_x86_64=("etc/mkinitcpio.d/${pkgbase}.preset")
+  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
   cd "${srcdir}/${_srcname}"
@@ -252,15 +249,18 @@ _package() {
     "${startdir}/${install}" > "${startdir}/${install}.pkg"
   true && install=${install}.pkg
 
-  if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
-    # install mkinitcpio preset file for kernel
+  # install mkinitcpio preset file for kernel
+  if [ "${CARCH}" = "armv7h" ]; then
+    sed "s|/boot/vmlinuz-%PKGBASE%|${_kernver}|g" "${srcdir}/linux.preset" |
+      install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  elif [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
     sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
       install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-
-    # install pacman hook for initramfs regeneration
-    sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
-      install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
   fi
+
+  # install pacman hook for initramfs regeneration
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
@@ -399,7 +399,7 @@ _package-headers() {
   # add objtool for external module building and enabled VALIDATION_STACK option
   if [ -f tools/objtool/objtool ];  then
       mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
-      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/
   fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
