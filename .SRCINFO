@@ -1,0 +1,15 @@
+pkgbase = ruby-logutils
+	pkgdesc = Another Logger
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/rubylibs/logutils
+	arch = any
+	license = Public Domain
+	depends = ruby
+	noextract = logutils-0.6.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/logutils-0.6.1.gem
+	sha1sums = f1998714f2bf2165a98fb91c573479481e329013
+
+pkgname = ruby-logutils
+
