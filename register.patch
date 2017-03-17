@@ -1,0 +1,26 @@
+diff --git a/src/reader.c b/src/reader.c
+index b74b661..73d6754 100644
+--- a/src/reader.c
++++ b/src/reader.c
+@@ -1940,7 +1940,7 @@ scm_to_reader (SCM reader)
+ struct scm_reader_flag_entry;
+ 
+ const struct scm_reader_flag_entry *
+-_scm_to_make_reader_flag (const char *, unsigned int);
++_scm_to_make_reader_flag (register const char *str, register size_t len);
+ 
+ /* Include the automatically-generated perfect hash function.  */
+ #include "make-reader-flags.c"
+diff --git a/src/token-readers.c b/src/token-readers.c
+index c0a9057..5181347 100644
+--- a/src/token-readers.c
++++ b/src/token-readers.c
+@@ -1139,7 +1139,7 @@ scm_read_skribe_exp (scm_t_wchar chr, SCM port, scm_reader_t reader,
+ /* Directory of standard token readers.  */
+ 
+ extern const struct scm_token_reader_entry *
+-_scm_token_reader_lookup (const char *, unsigned int);
++_scm_token_reader_lookup (register const char *str, register size_t len);
+ 
+ #include <string.h>
+ #include "token-reader-lookup.c"
