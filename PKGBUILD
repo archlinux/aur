@@ -1,12 +1,12 @@
 # Maintainer: Cyano Hao < c at cyano dot cn >
 # Contributor: Jose Riha
-# $Id: PKGBUILD 290836 2017-03-14 15:42:36Z andyrtr $
+# $Id: PKGBUILD 290981 2017-03-17 08:11:32Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-pae
 _srcname=linux-4.10
-pkgver=4.10.2
+pkgver=4.10.3
 pkgrel=1
 arch=('i686')
 url="https://www.kernel.org/"
@@ -22,17 +22,15 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # pacman hook for initramfs regeneration
         '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
-        'linux.preset'
-        0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch)
+        'linux.preset')
 
 sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
             'SKIP'
-            '3e2c2ba9dd2c421ea4f7e10150cc5f5fa5fdbaffef5377988fabb7d6f7d65bab'
+            '17459007bae81a8cda00f0ce74dfbc70c1afc5b99133649e664045e34c5d63b5'
             'SKIP'
-            '6f9a299ad46e9c704955ed5215ba8e4adfd45be09f9eece1aac640ab83e0d7c6'
+            'a123a919c4dc1c5c251f9b098b5989dbd9ce2c801811ed81a3a2178306818d2c'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'd0b412416963cefbb9baa06ef055e2b9485e2b9f948da14dfe50ee863577405c')
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -48,9 +46,6 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # patch for CVE-2017-2636)
-  patch -p1 -i "${srcdir}/0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch"
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
