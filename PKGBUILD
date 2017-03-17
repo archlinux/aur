@@ -5,7 +5,7 @@
 
 pkgname=network-manager-applet-gtk2-jlindgren90-git
 _pkgname=network-manager-applet
-pkgver=1.4.4.r3923.20170202
+pkgver=1.4.6.r3978.20170315
 pkgrel=1
 pkgdesc="GNOME frontends to NetWorkmanager for gtk2 ported by jlindgren90"
 arch=(i686 x86_64)
@@ -21,6 +21,7 @@ depends=(networkmanager
 #	mobile-broadband-provider-info
 	iso-codes)
 makedepends=(intltool
+	gtk-doc
 #	gobject-introspection
 #	modemmanager
 )
