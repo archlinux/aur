@@ -1,0 +1,30 @@
+pkgbase = hbase
+	pkgdesc = HBase - the Hadoop database
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://hbase.apache.org
+	install = hbase.install
+	arch = i686
+	arch = x86_64
+	license = apache
+	depends = java-environment>=7
+	backup = etc/hbase/hadoop-metrics2-hbase.properties
+	backup = etc/hbase/hbase-env.cmd
+	backup = etc/hbase/hbase-env.sh
+	backup = etc/hbase/hbase-policy.xml
+	backup = etc/hbase/hbase-site.xml
+	backup = etc/hbase/log4j.properties
+	backup = etc/hbase/regionservers
+	source = http://www-us.apache.org/dist/hbase/1.2.4/hbase-1.2.4-bin.tar.gz
+	source = hbase.install
+	source = hbase.profile
+	source = hbase.service
+	source = hbase-site.xml
+	sha256sums = 012d506796e28537cdf6e7cf512dc3b6b3c562e2863ca0ec5d48722bffdd265e
+	sha256sums = 07ea851195baf0f9a82686872077bbfd9ea4726b2fc618639bf0cdcb5e278c25
+	sha256sums = 8cab4654859bcc830dd0127bf8ea1c9200c46377a8885c4b726335502e3a079f
+	sha256sums = 0d99566ffac2b1b9ebb3d6e6867ecd4dcfaba2bdb348c29b293fb9673e001a7d
+	sha256sums = c3d3710f7b681a2d629df9af68c502b65bdf81c5b25c3a711bd53e20c4b16cb3
+
+pkgname = hbase
+

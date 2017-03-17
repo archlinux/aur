@@ -1,0 +1,16 @@
+[Unit]
+Description=HBase - the Hadoop database
+After=network.target
+
+[Service]
+Type=forking
+Environment=JAVA_HOME=/usr/lib/jvm/default
+Environment=HBASE_CONF_DIR=/etc/hbase
+Environment=HBASE_LOG_DIR=/var/log/hbase
+ExecStart=/usr/bin/start-hbase.sh
+ExecStop=/usr/bin/stop-hbase.sh
+User=hbase
+Group=hbase
+
+[Install]
+WantedBy=multi-user.target
