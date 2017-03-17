@@ -5,7 +5,7 @@
 
 gitname=uBlock
 pkgname=chromium-ublock-origin-git
-pkgver=4572.64c92a96
+pkgver=1.11.5b1.2.g64c92a96
 pkgrel=1
 pkgdesc="An efficient blocker for Chromium"
 arch=('any')
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${gitname}"
-    local ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    local ver="$(git describe --tags | sed 's|-|\.|g')"
     printf "%s" "${ver//-/.}"
 }
 build() {
