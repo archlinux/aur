@@ -1,12 +1,12 @@
 # Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
 pkgname=qspectrumanalyzer
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Spectrum analyzer for multiple SDR platforms (PyQtGraph based GUI for soapy_power, rx_power, rtl_power, hackrf_sweep and other backends)"
 arch=('any')
 url="https://github.com/xmikos/qspectrumanalyzer"
 license=('GPL3')
-depends=('python-pyqt5' 'python-pyqtgraph' 'soapy_power')
+depends=('python-qt.py' 'python-pyqt5' 'python-pyqtgraph' 'soapy_power')
 makedepends=('python-setuptools')
 optdepends=(
   'rtl_power_fftw-git: alternative RTL-SDR backend using FFTW library (much faster than rtl_power)'
