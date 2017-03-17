@@ -1,0 +1,14 @@
+pkgbase = sombrero
+	pkgdesc = Self-Organizing Map for Biological Regulatory Element Recognition and Ordering
+	pkgver = 1.1
+	pkgrel = 3
+	url = http://bioinf.nuigalway.ie/sombrero/download.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = dos2unix
+	source = http://bioinf.nuigalway.ie/sombrero/binaries/SOMBRERO_Linux.zip
+	md5sums = a2ee86c24bc8376adfabc983684ea856
+
+pkgname = sombrero
+
