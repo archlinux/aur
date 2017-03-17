@@ -73,27 +73,21 @@ index a367f913..c522d558 100644
 +using RecursiveLock = MUTEX_IMPL::lock_guard<MUTEX_IMPL::recursive_mutex>;
  }
 diff --git a/osquery/CMakeLists.txt b/osquery/CMakeLists.txt
-index 4c8ac8ca..195450da 100644
+index db05af9c..0b5c2291 100644
 --- a/osquery/CMakeLists.txt
 +++ b/osquery/CMakeLists.txt
-@@ -55,7 +55,7 @@ if(WINDOWS)
-   ADD_OSQUERY_LINK_CORE("ssleay32")
-   ADD_OSQUERY_LINK_CORE("eay32")
-   ADD_OSQUERY_LINK_CORE("zlibstatic")
--
-+
-   # Enable control flow guard
-   ADD_OSQUERY_LINK_CORE("-guard:cf")
- else()
-@@ -69,10 +69,11 @@ endif()
+@@ -70,12 +70,13 @@ endif()
 
  if(APPLE OR LINUX)
    ADD_OSQUERY_LINK_CORE("libdl")
 -  ADD_OSQUERY_LINK_CORE("boost_system-mt")
 -  ADD_OSQUERY_LINK_CORE("boost_filesystem-mt")
+-  ADD_OSQUERY_LINK_CORE("boost_context-mt")
 +  ADD_OSQUERY_LINK_CORE("boost_system")
 +  ADD_OSQUERY_LINK_CORE("boost_filesystem")
 +  ADD_OSQUERY_LINK_CORE("boost_thread")
++  ADD_OSQUERY_LINK_CORE("boost_context")
+
    ADD_OSQUERY_LINK_ADDITIONAL("rocksdb_lite")
 -  ADD_OSQUERY_LINK_ADDITIONAL("boost_regex-mt")
 +  ADD_OSQUERY_LINK_ADDITIONAL("boost_regex")
