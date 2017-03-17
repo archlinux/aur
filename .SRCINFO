@@ -1,0 +1,17 @@
+pkgbase = armrr-git
+	pkgdesc = Arch Linux script that downloads a pacman ranked mirrorlist.
+	pkgver = 20141015
+	pkgrel = 1
+	url = https://github.com/Gen2ly/armrr
+	arch = any
+	license = GPL-2.0
+	depends = grep
+	depends = sed
+	depends = curl
+	source = https://raw.githubusercontent.com/Gen2ly/armrr/c544b3d01e673a26fd9b638161800040099589ab/armrr
+	source = https://raw.githubusercontent.com/Gen2ly/armrr/c544b3d01e673a26fd9b638161800040099589ab/license.txt
+	sha256sums = a6957c506d7a70dce0523d5fe2e3575b5b0dd2d3181de632109995fd337666c2
+	sha256sums = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
+
+pkgname = armrr-git
+
