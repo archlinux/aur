@@ -1,0 +1,15 @@
+pkgbase = ruby-sportdb-service
+	pkgdesc = sportdb-service - sport.db addon for web service (HTTP JSON API)
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/sportdb/sport.db.service.ruby
+	arch = any
+	license = Public Domain
+	depends = ruby
+	noextract = sportdb-service-0.4.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/sportdb-service-0.4.0.gem
+	sha1sums = b2634b6db05f5ca860d21ae1121a5e9577ce4ac4
+
+pkgname = ruby-sportdb-service
+
