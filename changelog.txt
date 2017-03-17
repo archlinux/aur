@@ -1,4 +1,4 @@
-v1.3.0 -- Fri, 17 Mar 2017 09:42:36 GMT
+v1.3.1 -- Fri, 17 Mar 2017 09:42:36 GMT
 
 Fixes an error that would occur due to poor distro logo configuration handling.
 Fixes poor CSS rendering due to Safari 10 quirkiness.
