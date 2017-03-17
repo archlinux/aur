@@ -1,6 +1,6 @@
 pkgbase = neovim-youcompleteme-core-git
 	pkgdesc = A code-completion engine for Vim
-	pkgver = r2004.1d1a4f4c
+	pkgver = r2026.6583da75
 	pkgrel = 1
 	url = http://valloric.github.com/YouCompleteMe/
 	arch = i686
@@ -27,10 +27,8 @@ pkgbase = neovim-youcompleteme-core-git
 	optdepends = python-jedihttp-git: Python semantic completion
 	source = git+https://github.com/Valloric/YouCompleteMe.git
 	source = git+https://github.com/Valloric/ycmd
-	source = system_completers.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 6533f957fae4de2aa2d4be1903686328170ecd44c59487a7478aabc8544a966f
 
 pkgname = neovim-youcompleteme-core-git
 

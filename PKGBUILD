@@ -12,7 +12,7 @@
 _clang_completer=y
 
 pkgname=neovim-youcompleteme-core-git
-pkgver=r2004.1d1a4f4c
+pkgver=r2026.6583da75
 pkgrel=1
 pkgdesc='A code-completion engine for Vim'
 arch=(i686 x86_64)
@@ -27,18 +27,13 @@ optdepends=(
 	'racerd-git: Rust semantic completion'
 	'typescript: Typescript semantic completion'
 	'python-jedihttp-git: Python semantic completion')
-# missing completers:
-# OmniSharp-Roslyn - ???
+# https://github.com/Valloric/ycmd/pull/213
+#'omnisharp-roslyn: C# semantic completion'
 
 source=('git+https://github.com/Valloric/YouCompleteMe.git'
-        'git+https://github.com/Valloric/ycmd'
-        # this uses a downstream patch
-        # using system completers is not supported by upstream
-        # see https://github.com/Valloric/ycmd/pull/535
-        'system_completers.patch')
+        'git+https://github.com/Valloric/ycmd')
 sha256sums=('SKIP'
-            'SKIP'
-            '6533f957fae4de2aa2d4be1903686328170ecd44c59487a7478aabc8544a966f')
+            'SKIP')
 
 pkgver() {
 	cd "${srcdir}/YouCompleteMe"
@@ -55,9 +50,6 @@ prepare() {
 	git -C 'third_party/ycmd' reset --hard
 	git config submodule.third_party/ycmd.url "${srcdir}/ycmd"
 	git submodule update --init 'third_party/ycmd'
-	cd 'third_party/ycmd'
-
-	patch -p1 -i "${srcdir}/system_completers.patch"
 }
 
 build() {
@@ -86,6 +78,15 @@ package() {
 		ln -s "/usr/lib/clang/${clang_version}/include/" "${pkg_ycmd_dir}/clang_includes"
 		unset clang_version
 	fi
+
+        install -Ddm755 "${pkg_ycmd_dir}/third_party/JediHTTP"
+        install -Ddm755 "${pkg_ycmd_dir}/third_party/tern_runtime/node_modules/"
+        install -Ddm755 "${pkg_ycmd_dir}/third_party/gocode/"
+        install -Ddm755 "${pkg_ycmd_dir}/third_party/godef/"
+        ln -s /usr/bin/jedihttp-main.py "${pkg_ycmd_dir}/third_party/JediHTTP/jedihttp.py"
+        ln -s /usr/lib/node_modules/tern "${pkg_ycmd_dir}/third_party/tern_runtime/node_modules/"
+        ln -s /usr/bin/gocode "${pkg_ycmd_dir}/third_party/gocode/"
+        ln -s /usr/bin/godef "${pkg_ycmd_dir}/third_party/godef/"
 
 	find "${pkgdir}" \( -name .git -or -name 'test*' -or -name 'run_tests.py' -or -name 'CMakeFiles' \) -exec rm -fr {} +
 
