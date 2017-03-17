@@ -9,14 +9,15 @@ pkgname=cronie-selinux
 pkgver=1.5.1
 pkgrel=1
 pkgdesc='Daemon that runs specified programs at scheduled times and related tools with SELinux support'
-url='https://fedorahosted.org/cronie/'
+#url='https://fedorahosted.org/cronie/'
+url='https://github.com/cronie-crond/cronie'
 license=('custom:BSD')
 arch=('i686' 'x86_64')
 depends=('pam-selinux' 'bash' 'run-parts' 'libselinux')
 optdepends=('pm-utils: defer anacron on battery power'
             'smtp-server: send job output via email'
             'smtp-forwarder: forward job output to email server')
-source=("https://fedorahosted.org/releases/c/r/${pkgname/-selinux}/${pkgname/-selinux}-${pkgver}.tar.gz"
+source=("https://github.com/cronie-crond/cronie/releases/download/${pkgname/-selinux}-${pkgver}/${pkgname/-selinux}-${pkgver}.tar.gz"
         'service'
         'pam.d'
         'deny')
