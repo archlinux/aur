@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/rauc/rauc"
 license=('GPL')
 depends=('curl' 'json-glib')
+makedepends=('python')
 source=(https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz)
 #        https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz.asc)
 md5sums=('33c6f45b71f9b9c082fa852c3d5915d9')

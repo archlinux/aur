@@ -6,6 +6,7 @@ pkgbase = rauc
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = python
 	depends = curl
 	depends = json-glib
 	source = https://github.com/rauc/rauc/releases/download/v0.1/rauc-0.1.tar.xz
