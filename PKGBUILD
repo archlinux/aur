@@ -1,7 +1,7 @@
 #Maintainer: Dimitris Pappas <mitsakosgr@gmail.com>
 pkgname=minizinc-ide
-pkgver=2.1.3
-pkgrel=2
+pkgver=2.1.4
+pkgrel=1
 pkgdesc="Simple IDE for writing and running MiniZinc models"
 arch=('i686' 'x86_64')
 url="http://www.minizinc.org/ide/"
@@ -23,8 +23,8 @@ source_i686=(https://github.com/MiniZinc/MiniZincIDE/releases/download/"${pkgver
 
 md5sums=('dbc72538f4e9bfd6ca0b4dec0a013341'
          'c4aff15df2271ac84fc60b2dd9a7d192')
-md5sums_i686=('94d8fd26916a3be493cea660102781da')
-md5sums_x86_64=('95967a202cc5522e5213d5472bc96dab')
+md5sums_i686=('02cb718f5218179a2cb52c4132b92790')
+md5sums_x86_64=('17e9d99cbbcd1c64a1d8e0c28acb7cf9')
 
 
 package() {
