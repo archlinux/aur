@@ -1,17 +1,17 @@
 # Maintainer: Noi Sek <noi.t.sek | gmail>
 
 pkgname=lightdm-webkit-theme-aether
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="A sleek, straightforward Archlinux theme for lightdm."
 arch=('any')
 url="https://github.com/NoiSek/Aether"
-license=('GPLv2')
-depends=('lightdm' 'lightdm-webkit2-greeter')
+license=('GPL3')
+depends=('lightdm' 'lightdm-webkit2-greeter>=2.2.3' 'ttf-opensans')
 install='lightdm-webkit-theme-aether.install'
 changelog='changelog.txt'
 source=("https://github.com/NoiSek/Aether/archive/v$pkgver.tar.gz")
-md5sums=('0c5771274264d3c377a565573f8e073f')
+md5sums=('b9388bf02055b4d4dd47f3ab4e30869f')
 
 package() {
   cd "$pkgdir"

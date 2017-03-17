@@ -1,7 +1,13 @@
+v1.3.0 -- Fri, 17 Mar 2017 06:33:46 GMT
+Adds customization dialogue, distro logos, allows custom Date & Time formatting.
+
+Fixes login issues when used as a lockscreen, properly respects wallpaper
+directory setting.
+
 v1.2.1 -- Thu, 22 Sep 2016 09:44:53 GMT
 
 Fixes date formatting issues, adds wallpaper customization.
-Aether now respects 'background_images' setting in addition 
+Aether now respects 'background_images' setting in addition
 to allowing non-hardcoded wallpapers.
 
 See: https://github.com/NoiSek/Aether#using-your-own-wallpapers
