@@ -1,7 +1,7 @@
 # Based on mudlet-git package, all credist go there
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet-dev
-pkgver=3.0iota
+pkgver=3.0kappa
 pkgrel=1
 pkgdesc="Development prerelease of Mudlet"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('yajl' 'qt5-base' 'qt5-multimedia' 'hunspell' 'libzip' 'glu' 'lua51' 'l
 makedepends=('boost' 'qt5-tools')
 provides=('mudlet')
 conflicts=('mudlet' 'mudlet-git' 'mudlet-deb')
-source=("http://www.mudlet.org/download/Mudlet_3.0.0-iota.tar.gz")
+source=("http://www.mudlet.org/download/Mudlet_3.0.0-kappa.tar.gz")
 sha1sums=('9b3ca333b5084890c12a0b5df1281d5bd390ebc9')
 
 prepare() {
