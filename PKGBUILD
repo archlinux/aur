@@ -2,7 +2,7 @@
 
 _gitname=kleber
 pkgname="${_gitname}-git"
-pkgver=0.7.2.d41f4bd
+pkgver=0.7.2.6803523
 pkgrel=1
 pkgdesc='Kleber command line client for file uploads'
 url='https://kleber.io'
@@ -13,7 +13,7 @@ optdepends=('perl-image-exiftool')
 makedepends=('git')
 provides=('kleber')
 conflicts=('kleber')
-source=("${_gitname}::git://github.com/kleber-io/kleber-cli.git")
+source=("${_gitname}::git+https://github.com/kleber-io/kleber-cli.git")
 sha512sums=('SKIP')
 
 pkgver() {
