@@ -1,7 +1,7 @@
 pkgbase = rslsync
 	pkgdesc = Resilio Sync (ex:BitTorrent Sync) - automatically sync files via secure, distributed technology
 	pkgver = 2.4.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.getsync.com
 	install = rslsync.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = rslsync
 	arch = arm
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = custom:resilio
 	backup = etc/rslsync.conf
 	source = rslsync.service
@@ -27,6 +28,8 @@ pkgbase = rslsync
 	sha256sums_armv6h = 3a36576962f93bcefc05842f2cc7303af8a826ecb596abed4a953a7be5595532
 	source_armv7h = rslsync_armhf-2.4.4.tar.gz::https://download-cdn.resilio.com/stable/linux-armhf/resilio-sync_armhf.tar.gz
 	sha256sums_armv7h = b71fbf1f5873ddc0cc1e926356eee27b8a83d3c045a3161eaf034728076a2287
+	source_aarch64 = rslsync_armhf-2.4.4.tar.gz::https://download-cdn.resilio.com/stable/linux-armhf/resilio-sync_armhf.tar.gz
+	sha256sums_aarch64 = b71fbf1f5873ddc0cc1e926356eee27b8a83d3c045a3161eaf034728076a2287
 
 pkgname = rslsync
 
