@@ -1,12 +1,12 @@
 # Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
 pkgname=soapy_power
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Obtain power spectrum from SoapySDR devices (RTL-SDR, Airspy, SDRplay, HackRF, bladeRF, USRP, LimeSDR, etc.)"
 arch=('any')
 url="https://github.com/xmikos/soapy_power"
 license=('MIT')
-depends=('python' 'simplesoapy')
+depends=('python' 'python-numpy' 'simplesoapy' 'simplespectral')
 makedepends=('python-setuptools')
 optdepends=(
   'soapyrtlsdr-git: support for RTL-SDR (RTL2832U) dongles'
@@ -19,10 +19,11 @@ optdepends=(
   'soapyredpitaya-git: support for Red Pitaya'
   'soapyosmo-git: support for MiriSDR and RFSpace'
   'soapyremote-git: use any SoapySDR device remotely over network'
-  'python-pyfftw: faster FFT calculations with FFTW library'
+  'python-pyfftw: fastest FFT calculations with FFTW library'
+  'python-scipy: faster FFT calculations with scipy.fftpack library'
 )
 source=(https://github.com/xmikos/soapy_power/archive/v$pkgver.tar.gz)
-sha256sums=('bf292e9b5d0e56fb1178a07b005872dbb56a298c4e34bb14afdf93ea0dc922f6')
+sha256sums=('e63d03c97b205e8d1000ea8b8ddf93d50678ace79b8c412f9a53aebf3b0e840a')
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
