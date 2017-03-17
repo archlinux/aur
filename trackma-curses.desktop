@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Trackma (ncurses)
-Exec=trackma-curses
+Exec=trackma-curses %u
 Type=Application
 Categories=Network;
 Icon=trackma

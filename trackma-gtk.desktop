@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Trackma
-Exec=trackma-gtk
+Exec=trackma-gtk %u
 OnlyShowIn=GNOME;MATE;X-Cinnamon;XFCE;Unity;
 Type=Application
 Categories=Network;

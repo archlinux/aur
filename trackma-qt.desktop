@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Trackma
-Exec=trackma-qt
+Exec=trackma-qt %u
 OnlyShowIn=KDE;
 Type=Application
 Categories=Network;
