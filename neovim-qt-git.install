@@ -1,5 +1,8 @@
 post_install() {
   echo -n ":: Updating nvim help tags..."
+
+  # updates the nvim help tags index to include the doc files that were
+  # just installed with neovim-qt-git, e.g. nvim_gui_shim.txt
   /usr/bin/nvim --noplugin -u NONE -U NONE \
     --cmd ":helptags /usr/share/nvim/runtime/doc" --cmd ":q" > /dev/null 2>&1
   echo "done."

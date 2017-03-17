@@ -1,6 +1,6 @@
 # Maintainer: Aaron Abbott <aabmass at gmail dot com>
 pkgname=neovim-qt-git
-pkgver=v0.2.4.r0.g4015d8c
+pkgver=v0.2.4.r17.g7b4bbbc
 pkgrel=1
 pkgdesc="A Qt gui for Neovim (Neovim RPC and GUI using Qt5)."
 arch=('i686' 'x86_64')
@@ -42,16 +42,22 @@ package() {
   cd "${pkgname}/build"
 
   ## cmake isn't configured to install anything, do it on our own
-
   # install the binaries and libs
   install -D -m755 bin/nvim-qt "${pkgdir}/usr/bin/nvim-qt"
   install -D -m644 lib/libneovim-qt.a "${pkgdir}/usr/lib/libneovim-qt.a"
 
-  # install any plugins packaged with nvim-qt
-  mkdir -p "${pkgdir}/usr/share/nvim"
-  cp -R ../src/gui/runtime "${pkgdir}/usr/share/nvim"
-  find "${pkgdir}/usr/share/nvim/runtime" -type f -exec chmod 644 {} \;
+  ## install any plugins packaged with nvim-qt
+  # need to cd so find outputs regular paths
+  cd ../src/gui/runtime
 
+  # find .vim and .txt files and install them into pkgdir
+  find . -type f -regex ".*\.\(vim\|txt\)" \
+      -exec install -D -m644 {} ${pkgdir}/usr/share/nvim/runtime/{} \;
+
+  # go back to the previous dir
+  cd -
+
+  ## other files to install
   # install the custom license
   install -D -m644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   
