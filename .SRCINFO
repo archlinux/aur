@@ -1,0 +1,15 @@
+pkgbase = ruby-sportdb-update
+	pkgdesc = sportdb-update - sport.db addon for auto-updates (e.g. pulling n merging updates from upstream sources)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/sportdb/sport.db.update.ruby
+	arch = any
+	license = Public Domain
+	depends = ruby
+	noextract = sportdb-update-0.1.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/sportdb-update-0.1.1.gem
+	sha1sums = ee2421aedfb0ef72c3ec0d059eb84c78de2c7dc6
+
+pkgname = ruby-sportdb-update
+
