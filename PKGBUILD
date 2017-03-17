@@ -3,7 +3,7 @@
 
 pkgname=python-pyramid
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Pyramid is a very general open source Python web framework.'
 arch=('any')
 url='http://www.pylonsproject.org/'
@@ -11,8 +11,8 @@ license=('custom:BSD')
 makedepends=('python')
 optdepends=(
          'python-pyramid-debugtoolbar: development mode'
-         'python3-paste-deploy: pserve/pcreate'
-         'python3-chameleon: pserve/pcreate'
+         'python-paste-deploy: pserve/pcreate'
+         'python-chameleon: pserve/pcreate'
          'python-waitress: pserve/pcreate'
 	)
 source=(https://pypi.python.org/packages/12/e5/8cffc593b70ee6392ea08e8562843166895b96cf33ace892229bcfca410e/pyramid-${pkgver}.tar.gz)
@@ -21,12 +21,12 @@ sha256sums=('1218140ea016dcb63b962d44e43c6d26e448e6c2a49133dc52d01f01fbb2d5c3')
 build() {
   msg "Building Pyramid for Python3"
   cd "$srcdir"/pyramid-$pkgver
-  python3 setup.py build
+  python setup.py build
 }
 
 check() {
   cd $srcdir/pyramid-$pkgver
-  python3 setup.py check
+  python setup.py check
 }
 
 package_python-pyramid() {
@@ -34,7 +34,7 @@ package_python-pyramid() {
     'python-zope-deprecation' 'python-zope-interface' 'python-venusian' \
     'python-translationstring' 'python-setuptools')
   cd "$srcdir/pyramid-$pkgver"
-  python3 setup.py install --root "${pkgdir}" --optimize=1
+  python setup.py install --root "${pkgdir}" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
