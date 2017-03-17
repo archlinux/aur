@@ -1,0 +1,19 @@
+pkgbase = ruby-tagutils
+	pkgdesc = tagutils - tag utilities (tag, taggings, tag list, etc.)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/rubylibs/tagutils
+	arch = any
+	license = Public Domain
+	depends = ruby
+	depends = ruby-activerecord
+	depends = ruby-props
+	depends = ruby-logutils
+	depends = ruby-textutils
+	noextract = tagutils-0.3.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/tagutils-0.3.0.gem
+	sha1sums = a95926f73c6d54257be8c623666ec88495f35e46
+
+pkgname = ruby-tagutils
+
