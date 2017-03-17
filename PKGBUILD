@@ -2,7 +2,7 @@
 
 pkgname="sickgear"
 pkgver="0.12.11"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Automate your TV enjoyment with innovation, proven stability and reliability."
 arch=("any")
 url="https://github.com/SickGear/SickGear"
@@ -19,6 +19,7 @@ depends=("python2-backports-abc"
          "python2-html5lib"
          "python2-js2py"
          "python2-oauth2"
+         "python2-profilehooks"
          "python2-pyjsparser"
          "python2-pytz"
          "python2-requests"
