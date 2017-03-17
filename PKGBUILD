@@ -3,7 +3,7 @@
 # Contributor: Tobias Powalowski <tpowa at archlinux dot org>
 
 pkgname=lib32-pciutils
-pkgver=3.5.2
+pkgver=3.5.4
 pkgrel=1
 pkgdesc="PCI bus configuration space access library (32-bit)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=("${pkgname#lib32-}" 'lib32-kmod' 'lib32-systemd')
 makedepends=('gcc-multilib')
 source=("ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci/${pkgname#lib32-}-${pkgver}.tar.gz"
         "ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci/${pkgname#lib32-}-${pkgver}.tar.gz.sign")
-sha512sums=('5da9fddab90ae50375e305d28d84304f2bb771e3ca9effbc7bcbe4a86061875b13a5c9839eecc3f3026d82ef57911bd43613fd4c935a122e7157f0fc134f4378'
+sha512sums=('cd3ed843b8b2a31f92234be6a59bb02cd5268afad7e353872f588df281984af5129b4a9e363332bcf173dd71fda2091e501237fbd4fc39575cfe0472456d4a34'
             'SKIP')
 validpgpkeys=('5558F9399CD7836850553C6EC28E7847ED70F82D') # Martin Mares <mj@ucw.cz>
 
