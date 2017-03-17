@@ -3,7 +3,7 @@
 # Contributer: auk
 
 pkgname=hyper
-pkgver=1.2.1
+pkgver=1.3.1
 pkgrel=1
 epoch=
 pkgdesc="A terminal built on web technologies"
@@ -11,7 +11,7 @@ arch=('any')
 url="https://hyper.is/"
 license=('MIT')
 groups=()
-depends=('nodejs' 'electron')
+depends=('nodejs' 'electron' 'gconf')
 makedepends=('npm' 'python2')
 checkdepends=()
 optdepends=()
@@ -29,7 +29,7 @@ source=(
     "Hyper.desktop"
 )
 noextract=()
-md5sums=('fa6caecbd1e8d561ac4c79fbd3a44360'
+md5sums=('ac14ce7ef3bc79aab1c6ed4e03ea1e10'
          'f3481e14cba331160339b3b5ab78872b'
          '74cb7ba38e37332aa8300e4b6ba9c61c')
 validpgpkeys=()
