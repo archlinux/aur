@@ -3,7 +3,7 @@
 
 pkgname=python-pyramid
 pkgver=1.8.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Pyramid is a very general open source Python web framework.'
 arch=('any')
 url='http://www.pylonsproject.org/'
@@ -11,7 +11,7 @@ license=('custom:BSD')
 makedepends=('python')
 optdepends=(
          'python-pyramid-debugtoolbar: development mode'
-         'python-paste-deploy: pserve/pcreate'
+         'python-pastedeploy: pserve/pcreate'
          'python-chameleon: pserve/pcreate'
          'python-waitress: pserve/pcreate'
 	)
