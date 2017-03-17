@@ -1,5 +1,7 @@
---- b/MG5_aMC_v2_5_2/input/mg5_configuration.txt
-+++ a/MG5_aMC_v2_5_2/input/mg5_configuration.txt
+diff --git a/MG5_aMC_v2_5_3/input/mg5_configuration.txt b/MG5_aMC_v2_5_3.patched/input/mg5_configuration.txt
+index c089808..a3e85c5 100644
+--- a/MG5_aMC_v2_5_3/input/mg5_configuration.txt
++++ b/MG5_aMC_v2_5_3.patched/input/mg5_configuration.txt
 @@ -45,11 +45,11 @@
  
  #! Prefered WebBrower
@@ -14,7 +16,7 @@
  
  #! Time allowed to answer question (if no answer takes default value)
  #!  0: No time limit
-@@ -59,7 +59,7 @@
+@@ -59,14 +59,14 @@
  #!  Defines the path to the pythia8 installation directory (i.e. the
  #!  on containing the lib, bin and include directories) .
  #!  If using a relative path, that starts from the mg5 directory
@@ -23,6 +25,14 @@
  
  #! MG5aMC_PY8_interface path
  #!  Defines the path of the C++ driver file that is used by MG5_aMC to
+ #!  steer the Pythia8 shower.
+ #!  Can be installed directly from within MG5_aMC with the following command:
+ #!     MG5_aMC> install mg5amc_py8_interface
+-# mg5amc_py8_interface_path = ./HEPTools/MG5aMC_PY8_interface 
++mg5amc_py8_interface_path = /opt/madgraph/pythia8-interface
+ 
+ #! Herwig++/Herwig7 paths
+ #!  specify here the paths also to HepMC ant ThePEG
 @@ -75,14 +75,14 @@
  #!  WARNING: if Herwig7 has been installed with the bootstrap script,
  #!  then please set thepeg_path and hepmc_path to the same value as
@@ -42,7 +52,12 @@
  
  ################################################################################
  #  INFO FOR MADEVENT / aMC@NLO 
-@@ -140,15 +140,15 @@
+@@ -136,19 +136,19 @@
+ 
+ #! Pythia-PGS Package
+ #!  relative path start from main directory
+-# pythia-pgs_path = ./pythia-pgs
++pythia-pgs_path = /opt/madgraph/pythia-pgs
  
  #! Delphes Package
  #!  relative path start from main directory
@@ -80,3 +95,12 @@
  
  #! MCatNLO-utilities 
  #!  relative path starting from main directory
+@@ -185,7 +185,7 @@
+ #! if auto: try to find it automatically on the system (default)
+ #! if '' or None: disabling Golem95
+ #! if golem=/PATH/TO/golem/lib: use that speficif installation path for Golem95
+-# golem = auto
++golem = /usr/lib
+ 
+ #! Set the samurai directory containing samurai's library
+ #! It only supports version higher than 2.0.0

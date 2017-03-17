@@ -1,9 +1,9 @@
 # Maintainer: JP-Ellis <josh@jpellis.me>
 
 pkgname=madgraph
-pkgver=2.5.2
+pkgver=2.5.3
 _dirname="MG5_aMC_v${pkgver//./_}"
-pkgrel=3
+pkgrel=1
 pkgdesc="MadGraph5_aMC@NLO is a framework that aims at providing all the elements necessary for SM and BSM phenomenology"
 url="http://madgraph.hep.uiuc.edu/"
 arch=('i686' 'x86_64')
@@ -18,26 +18,24 @@ depends=(
 optdepends=(
     'delphes'
     'fastjet'
+    'golem95'
     'hepmc'
     'lhapdf'
     'madanalysis5'
     'madgraph-pythia-pgs'
-    'pythia8'
+    'madgraph-pythia8-interface'
 )
 source=("https://launchpad.net/mg5amcnlo/${pkgver%%.*}.0/${pkgver%.*}.x/+download/MG5_aMC_v${pkgver}.tar.gz"
         "python2.patch"
         "mg5_configuration.patch")
-sha256sums=('7968f6d0543b3af2649ba497d17c3a23b089cc6f5ba352e0fd7fa106aa07a512'
-            'b16bcfebae4d50eb145436c97a06daf706691bbef4e7f45cde1c6116d2869720'
-            '253c66568c16bf4f118c200a76a91f0cca2bf441d880719c8bf583db770cbc28')
+sha256sums=('8124ce6152fea32082ce76bc8afe6b618d3d022aa35a566864efdd37a81061c8'
+            '0b8e1a73b811a15ac2b06d65502f19e7fc64b6a24abd8c2f35474d3443ced2bb'
+            '492329cc4158414c0b9e27d9b053afa04fe3afa2436a0c0b7aa014cafda2429f')
 options=("!strip")
 
 prepare() {
     msg2 "Fixing python references for python2"
     patch -p 1 < python2.patch
-
-    msg2 "Updating configuration file"
-    patch -p 1 < mg5_configuration.patch
 
     msg2 "Extracting documentation"
     cd "${srcdir}/${_dirname}"
@@ -45,8 +43,7 @@ prepare() {
     rm doc.tgz
 
     msg2 "Removing VCS directories"
-    cd "${srcdir}/${_dirname}"
-    find . -name "CVS" \
+    find "${srcdir}/${_dirname}" -name "CVS" \
          -o -name ".svn" \
          -o -name ".bzr" -o -name ".bzrignore" \
          -o -name ".git" -o -name ".gitignore" \
@@ -65,6 +62,9 @@ build() {
     echo "exit" > $tmpfile
     "${srcdir}/${_dirname}/bin/mg5_aMC" $tmpfile 1>/dev/null
     rm $tmpfile
+
+    msg2 "Updating configuration file"
+    patch -p 1 < mg5_configuration.patch
 }
 
 package() {
