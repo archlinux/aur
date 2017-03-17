@@ -2,8 +2,8 @@
 # Contributor: Xiao-Long Chen <chenxiaolongcxl.epac.to>
 
 pkgname=indicator-powersave
-pkgver=r98
-pkgrel=6
+pkgver=r98.7
+pkgrel=1
 pkgdesc="User discretion power managment utility forked from CPU frequency indicator (bzr version)"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/indicator-cpufreq"
@@ -29,25 +29,29 @@ sha512sums=('SKIP'
             '8e929aa5d00a17be32b33085eb09aa66002a48696651adcd99678663230d73ed215b88634bb6364867140b8a336566cd02e0b04927423980ca4be9833f316b2a'
             '56f87addd1d2479446bfed262f4e95b5494fd958c6138dc68c03071b74dacba24c40e7cd946233816fde963e3bcbaf5cab4b1cf19288dfb8058ee9ff424ca367'
             'b39f5bf06ce8c65f315582e92db34649f5967936ba2e5b27b61532314dc5e39cd6172f7e2da701e5f1de962e29021d041a770384a91267d819daa35fc8d45384'
-            '99983956adefafd45292c86616ab847e9221745dff47120b0a28f00002c46ed1e5abd270a7320088513db10a7f647ebf6d5a3423de5aa9af95ee7fe819c21c14'
+            '17604026491b75388cca2cee5a61ee9512039b461a402ab2a779076d7558f487caabe4c578e4dda28405fbc0181bdb26861d697c0ccb192daa1c6b7da8c14cdb'
             'aa86b5d6028033d6fbcc3d74d63c33298c0d437972d576990dfc4cae51d5c5128d789695e98fc5612ec7f8a4e2e68ea0576cf072e98fce4e0c22896be2f8b996')
 
 pkgver() {
   cd indicator-cpufreq
 
-  printf "r%s" "$(bzr revno)"
+  printf "r%s" "$(bzr revno).7"
 }
 
 prepare() {
   cd "${srcdir}/indicator-cpufreq"
 
   #Indicator-Powersave
-  patch -Np1 -i "${srcdir}/indicator-powersave.patch"
+  patch -Np1 < "${srcdir}/indicator-powersave.patch"
 
   #Fixes
+  printf "0001_Use_cpupower.patch\n"
   patch -Np1 < "${srcdir}/0001_Use_cpupower.patch"
+  printf "cpu-online.patch\n"
   patch -Np2 < "${srcdir}/cpu-online.patch"
+  printf "schedutil.patch\n"
   patch -Np2 < "${srcdir}/schedutil.patch"
+  printf "use-sysfs.patch\n"
   patch -Np2 < "${srcdir}/use-sysfs.patch"
 }
 
