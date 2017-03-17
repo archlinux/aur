@@ -1,0 +1,25 @@
+pkgbase = inclusive
+	pkgdesc = Integrated clustering, upstream sequence retrieval and motif sampling
+	pkgver = 3.2
+	pkgrel = 3
+	url = http://homes.esat.kuleuven.be/~sistawww/bioi/thijs/download.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://homes.esat.kuleuven.be/~sistawww/bioi/thijs/download/linux_3.2/MotifSampler
+	source = http://homes.esat.kuleuven.be/~sistawww/bioi/thijs/download/linux_3.2/MotifScanner
+	source = http://homes.esat.kuleuven.be/~sistawww/bioi/thijs/download/linux_3.2/MotifLocator
+	source = http://homes.esat.kuleuven.be/~sistawww/bioi/thijs/download/linux_3.2/CreateBackgroundModel
+	source = http://homes.esat.kuleuven.be/~sistawww/bioi/thijs/download/linux_3.2/BackgroundScore
+	source = http://homes.esat.kuleuven.be/~sistawww/bioi/thijs/download/linux_3.2/MotifComparison
+	source = http://homes.esat.kuleuven.be/~sistawww/bioi/thijs/download/linux_3.2/MotifRanking
+	md5sums = c2867739e66744c43d6d0005f6d1d6c7
+	md5sums = c0006d11649daf137797e74e65fdbf95
+	md5sums = af78e57a9616b198f7b3852854488567
+	md5sums = 056e3ee499260619d9c2f60495ea5384
+	md5sums = 2a7115bd07f18963045b9ffd2d33389f
+	md5sums = 17581d84853154b5493c14e3ccb84516
+	md5sums = a3e37d685de778678ebaf876a765ab88
+
+pkgname = inclusive
+
