@@ -1,6 +1,6 @@
 pkgbase = scribus-svn
 	pkgdesc = A desktop publishing program - Version from SVN
-	pkgver = 21826
+	pkgver = 21836
 	pkgrel = 1
 	url = http://www.scribus.net
 	arch = i686
@@ -24,6 +24,7 @@ pkgbase = scribus-svn
 	depends = qt5-declarative
 	depends = libmspub
 	depends = openscenegraph
+	depends = hicolor-icon-theme
 	optdepends = lib2geom: for mesh distortion
 	provides = scribus
 	conflicts = scribus
