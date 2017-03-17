@@ -1,0 +1,16 @@
+pkgbase = ruby-fetcher
+	pkgdesc = fetcher - Fetch Text Documents or Binary Blobs via HTTP, HTTPS
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/rubylibs/fetcher
+	arch = any
+	license = Public Domain
+	depends = ruby
+	depends = ruby-logutils
+	noextract = fetcher-0.4.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fetcher-0.4.5.gem
+	sha1sums = 11e8bcf33dfdf47e37446845d930e31c51f0e73a
+
+pkgname = ruby-fetcher
+
