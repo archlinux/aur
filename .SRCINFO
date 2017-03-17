@@ -1,0 +1,19 @@
+pkgbase = ruby-textutils
+	pkgdesc = textutils - Text Filters, Helpers, Readers and More
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/textkit/textutils
+	arch = any
+	license = Public Domain
+	depends = ruby
+	depends = ruby-props
+	depends = ruby-logutils
+	depends = ruby-rubyzip
+	depends = ruby-activesupport
+	noextract = textutils-1.4.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/textutils-1.4.0.gem
+	sha1sums = 004b1338824a661bdcf05ae8f44604e7763f3ec0
+
+pkgname = ruby-textutils
+
