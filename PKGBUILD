@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-lts
 _pkgbasever=4.9-gnu
-_pkgver=4.9.13-gnu
+_pkgver=4.9.14-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -44,6 +44,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
+        '0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch'
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch'
         # armv7h patches
@@ -59,7 +60,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP'
-            'c98ebf494a2adfe88cc3476bda4a603470febde239441ae6df5834c776e05d45badda8a5cf5d07bac6c7b5b6bb518eea5d4766b6a298024053508582ddbd73b8'
+            'd9c1d7c80f6f58758056fa190b7e66880df72858106b2ce0428bf28fc9189cbe7c0d40939722caea9de3ddcc08f6739e2438bddb75b8344044c7ee5f8c39fc98'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -73,9 +74,10 @@ sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca4
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
+            '397fc751697cc4e2ceb7e6d854f5e7fc115ed8511df406ffe5d8f80afeec385ba64cd28c4666bb206612fdcd7a578b60ca6ff125c2138c615aee6135d86b0197'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '54eb1e57cdbb955d185ecef91e8ea25a0d9cc5aba65b6806b2981d555518244d430cfecca9c8fcb942304c9f8a34a7a3101939b00081d03717769b239438d4e3'
+            '789aad71ac514f9c7cb27cf1f4f0d18dad6c28353176cb9b1ff0c6a5fb516ca356f869a7c30ef2f9bbf8546e8ef444ceff56a8bb4f841a22c5366fef23b01183'
             'SKIP'
             'ccf18eb2c3d33a57871cbadd5ad825d2f2f489e69c54c7293b160abdc3e9e5c6a664ba7926a617d31affcf20b7ecb4e8de54fa78438c574aa1b257f686faade9'
             '69f13bb2e353727acbe39034978729272511c6578aa2faf8c829e1bb89c22e769262289b76d93254314304ebd7547c45cdc8ba6afc278444a8fd09f71dff9757'
@@ -133,6 +135,9 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # patch for CVE-2017-2636
+  patch -p1 -i "${srcdir}/0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
@@ -214,8 +219,13 @@ _package() {
   true && install=${install}.pkg
 
   # install mkinitcpio preset file for kernel
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
-    install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  if [ "${CARCH}" = "armv7h" ]; then
+    sed "s|/boot/vmlinuz-%PKGBASE%|${_kernver}|g" "${srcdir}/linux.preset" |
+      install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  elif [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
+    sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
+      install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  fi
 
   # install pacman hook for initramfs regeneration
   sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
@@ -358,7 +368,7 @@ _package-headers() {
   # add objtool for external module building and enabled VALIDATION_STACK option
   if [ -f tools/objtool/objtool ];  then
       mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
-      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/
   fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
