@@ -1,0 +1,30 @@
+diff --git a/compile.py b/compile.py
+index 43e92ff..c7c5db6 100755
+--- a/compile.py
++++ b/compile.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/python2
+ 
+ import subprocess
+ import sys
+diff --git a/get_pythia8_version.py b/get_pythia8_version.py
+index ad71984..12774db 100755
+--- a/get_pythia8_version.py
++++ b/get_pythia8_version.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/python2
+ 
+ import sys
+ import os
+diff --git a/make_tarball.py b/make_tarball.py
+index beae595..8f90224 100755
+--- a/make_tarball.py
++++ b/make_tarball.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/python2
+ 
+ import tarfile
+ import os
