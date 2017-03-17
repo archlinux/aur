@@ -1,6 +1,6 @@
 diff '--color=auto' -aur a/src/file-data.c b/src/file-data.c
 --- a/src/file-data.c	2016-04-07 04:37:58.000000000 -0700
-+++ b/src/file-data.c	2016-06-10 01:41:48.000000000 -0700
++++ b/src/file-data.c	2017-03-13 05:45:12.000000000 -0700
 @@ -37,7 +37,7 @@
  	fdata->content_type = NULL;
  	fdata->free_original_path = FALSE;
@@ -109,7 +109,7 @@ diff '--color=auto' -aur a/src/file-data.c b/src/file-data.c
  }
 diff '--color=auto' -aur a/src/file-data.h b/src/file-data.h
 --- a/src/file-data.h	2016-04-07 04:37:58.000000000 -0700
-+++ b/src/file-data.h	2016-06-10 01:41:48.000000000 -0700
++++ b/src/file-data.h	2017-03-13 05:45:12.000000000 -0700
 @@ -40,13 +40,14 @@
  	gboolean    dir;              /* Whether this is a directory listed in the archive */
  	goffset     dir_size;
@@ -153,7 +153,7 @@ diff '--color=auto' -aur a/src/file-data.h b/src/file-data.h
  #endif /* FILE_DATA_H */
 diff '--color=auto' -aur a/src/fr-command-7z.c b/src/fr-command-7z.c
 --- a/src/fr-command-7z.c	2016-04-07 04:37:58.000000000 -0700
-+++ b/src/fr-command-7z.c	2016-09-26 01:58:20.000000000 -0700
++++ b/src/fr-command-7z.c	2017-03-13 05:45:12.000000000 -0700
 @@ -39,7 +39,8 @@
  static void fr_command_7z_class_init  (FrCommand7zClass *class);
  static void fr_command_7z_init        (FrCommand        *afile);
@@ -173,6 +173,15 @@ diff '--color=auto' -aur a/src/fr-command-7z.c b/src/fr-command-7z.c
 +		}
  		return;
  	}
+ 
+@@ -280,7 +284,7 @@
+ {
+ 	FrCommand *comm = FR_COMMAND (data);
+ 
+-	if ((comm->volume_size > 0) && (strncmp (line, "Creating archive ", 17) == 0)) {
++	if ((comm->volume_size > 0) && (strncmp (line, "Creating archive", 16) == 0)) {
+ 		char  *volume_filename;
+ 		GFile *volume_file;
  
 @@ -371,11 +375,20 @@
  	if (from_file != NULL)
@@ -263,7 +272,7 @@ diff '--color=auto' -aur a/src/fr-command-7z.c b/src/fr-command-7z.c
  		else
 diff '--color=auto' -aur a/src/fr-command-lha.c b/src/fr-command-lha.c
 --- a/src/fr-command-lha.c	2016-04-07 04:37:58.000000000 -0700
-+++ b/src/fr-command-lha.c	2016-09-26 01:58:20.000000000 -0700
++++ b/src/fr-command-lha.c	2017-03-13 05:45:12.000000000 -0700
 @@ -120,6 +120,11 @@
  		fields[i++] = g_strdup ("");
  		line += strlen ("[unknown]");
@@ -286,9 +295,178 @@ diff '--color=auto' -aur a/src/fr-command-lha.c b/src/fr-command-lha.c
  	field = eat_spaces (line);
  	for (i = 0; i < n; i++) {
  		field = strchr (field, ' ');
+diff '--color=auto' -aur a/src/fr-command-rar.c b/src/fr-command-rar.c
+--- a/src/fr-command-rar.c	2016-04-07 04:37:58.000000000 -0700
++++ b/src/fr-command-rar.c	2017-03-13 05:45:12.000000000 -0700
+@@ -46,6 +46,10 @@
+ static FrCommandClass *parent_class = NULL;
+ 
+ 
++/* rar 5.30 and later uses YYYY-MM-DD instead DD-MM-YY in the listing output */
++
++static gboolean date_newstyle = FALSE;
++
+ static gboolean
+ have_rar (void)
+ {
+@@ -55,6 +59,60 @@
+ 
+ /* -- list -- */
+ 
++/*
++
++// SAMPLE RAR VERSION 5.30 AND NEWER LISTING OUTPUT:
++
++RAR 5.30   Copyright (c) 1993-2015 Alexander Roshal   18 Nov 2015
++Trial version             Type RAR -? for help
++
++Archive: /test.rar
++Details: RAR 4
++
++ Attributes      Size    Packed Ratio    Date    Time   Checksum  Name
++----------- ---------  -------- ----- ---------- -----  --------  ----
++ -rw-rw-r--      3165      1310  41%  2017-03-07 21:34  888D50B3  loremipsum.txt
++ -rw-rw-r--         0         8   0%  2017-03-07 21:36  00000000  file2.empty
++----------- ---------  -------- ----- ---------- -----  --------  ----
++                 3165      1318  41%                              2
++
++
++
++// SAMPLE RAR VERSION 5.00 TO 5.21 LISTING OUTPUT:
++
++RAR 5.21   Copyright (c) 1993-2015 Alexander Roshal   15 Feb 2015
++Trial version             Type RAR -? for help
++
++Archive: /test.rar
++Details: RAR 4
++
++ Attributes      Size    Packed Ratio   Date   Time   Checksum  Name
++----------- ---------  -------- ----- -------- -----  --------  ----
++ -rw-rw-r--      3165      1310  41%  07-03-17 21:34  888D50B3  loremipsum.txt
++ -rw-rw-r--         0         8   0%  07-03-17 21:36  00000000  file2.empty 
++----------- ---------  -------- ----- -------- -----  --------  ----
++                 3165      1318  41%                            2
++
++
++
++// SAMPLE RAR VERSION 4.20 AND OLDER LISTING OUTPUT:
++
++RAR 4.20   Copyright (c) 1993-2012 Alexander Roshal   9 Jun 2012
++Trial version             Type RAR -? for help
++
++Archive /test.rar
++
++Pathname/Comment
++                  Size   Packed Ratio  Date   Time     Attr      CRC   Meth Ver
++-------------------------------------------------------------------------------
++ loremipsum.txt
++                  3165     1310  41% 07-03-17 21:34 -rw-rw-r-- 888D50B3 m3b 2.9
++ file2.empty
++                     0        8   0% 07-03-17 21:36 -rw-rw-r-- 00000000 m3b 2.9
++-------------------------------------------------------------------------------
++    2             3165     1318  41%
++
++*/
+ 
+ static time_t
+ mktime_from_string (const char *date_s,
+@@ -69,11 +127,18 @@
+ 
+ 	fields = g_strsplit (date_s, "-", 3);
+ 	if (fields[0] != NULL) {
+-		tm.tm_mday = atoi (fields[0]);
++		if (date_newstyle)
++			tm.tm_year = atoi (fields[0]) - 1900;
++		else
++			tm.tm_mday = atoi (fields[0]);
+ 		if (fields[1] != NULL) {
+ 			tm.tm_mon = atoi (fields[1]) - 1;
+-			if (fields[2] != NULL)
+-				tm.tm_year = 100 + atoi (fields[2]);
++			if (fields[2] != NULL) {
++				if (date_newstyle)
++					tm.tm_mday = atoi (fields[2]);
++				else
++					tm.tm_year = 100 + atoi (fields[2]);
++			}
+ 		}
+ 	}
+ 	g_strfreev (fields);
+@@ -91,39 +156,6 @@
+ 	return mktime (&tm);
+ }
+ 
+-/* Sample rar-5 listing output:
+-
+-RAR 5.00 beta 8   Copyright (c) 1993-2013 Alexander Roshal   22 Aug 2013
+-Trial version             Type RAR -? for help
+-
+-Archive: test.rar
+-Details: RAR 4
+-
+- Attributes      Size    Packed Ratio   Date   Time   Checksum  Name
+------------ ---------  -------- ----- -------- -----  --------  ----
+- -rw-r--r--       453       304  67%  05-09-13 09:55  56DA5EF3  loremipsum.txt
+------------ ---------  -------- ----- -------- -----  --------  ----
+-                  453       304  67%                            1
+-
+- *
+- * Sample rar-4 listing output:
+- *
+-
+-RAR 4.20   Copyright (c) 1993-2012 Alexander Roshal   9 Jun 2012
+-Trial version             Type RAR -? for help
+-
+-Archive test.rar
+-
+-Pathname/Comment
+-                  Size   Packed Ratio  Date   Time     Attr      CRC   Meth Ver
+--------------------------------------------------------------------------------
+- loremipsum.txt
+-                   453      304  67% 05-09-13 09:55 -rw-r--r-- 56DA5EF3 m3b 2.9
+--------------------------------------------------------------------------------
+-    1              453      304  67%
+-
+- */
+-
+ static gboolean
+ attribute_field_with_space (char *line)
+ {
+@@ -197,11 +229,31 @@
+ 			int version;
+ 			sscanf (line, "RAR %d.", &version);
+ 			rar_comm->rar5 = (version >= 5);
++
++			if (version > 5)
++				date_newstyle = TRUE;
++			else if (version == 5)
++			{
++				sscanf (line, "RAR 5.%d ", &version);
++				if (version >= 30)
++					date_newstyle = TRUE;
++			}
++
+ 		}
+ 		else if (strncmp (line, "UNRAR ", 6) == 0) {
+ 			int version;
+ 			sscanf (line, "UNRAR %d.", &version);
+ 			rar_comm->rar5 = (version >= 5);
++
++			if (version > 5)
++				date_newstyle = TRUE;
++			else if (version == 5)
++			{
++				sscanf (line, "UNRAR 5.%d ", &version);
++				if (version >= 30)
++					date_newstyle = TRUE;
++			}
++
+ 		}
+ 		else if (strncmp (line, "--------", 8) == 0) {
+ 			rar_comm->list_started = TRUE;
 diff '--color=auto' -aur a/src/fr-command-tar.c b/src/fr-command-tar.c
 --- a/src/fr-command-tar.c	2016-05-21 07:44:10.000000000 -0700
-+++ b/src/fr-command-tar.c	2016-11-24 13:07:21.000000000 -0700
++++ b/src/fr-command-tar.c	2017-03-13 05:45:12.000000000 -0700
 @@ -198,7 +198,10 @@
  		fr_process_add_arg (comm->process, "-z");
  
@@ -313,9 +491,22 @@ diff '--color=auto' -aur a/src/fr-command-tar.c b/src/fr-command-tar.c
  
  	else if (is_mime_type (comm->mime_type, "application/x-lzop-compressed-tar"))
  		fr_process_add_arg (comm->process, "--use-compress-program=lzop");
+diff '--color=auto' -aur a/src/fr-command-zip.c b/src/fr-command-zip.c
+--- a/src/fr-command-zip.c	2016-04-07 04:37:58.000000000 -0700
++++ b/src/fr-command-zip.c	2017-03-13 05:45:12.000000000 -0700
+@@ -382,7 +382,9 @@
+ 
+ 
+ const char *zip_mime_type[] = { "application/x-cbz",
++				"application/x-ear",
+ 				"application/x-ms-dos-executable",
++				"application/x-war",
+ 				"application/zip",
+ 				NULL };
+ 
 diff '--color=auto' -aur a/src/fr-init.c b/src/fr-init.c
 --- a/src/fr-init.c	2016-04-07 04:37:58.000000000 -0700
-+++ b/src/fr-init.c	2016-12-10 17:51:06.636727000 -0700
++++ b/src/fr-init.c	2017-03-17 16:08:13.736744366 -0700
 @@ -342,6 +342,7 @@
  
  	register_command (FR_TYPE_COMMAND_TAR);
@@ -332,3 +523,67 @@ diff '--color=auto' -aur a/src/fr-init.c b/src/fr-init.c
  	register_command (FR_TYPE_COMMAND_RPM);
  	register_command (FR_TYPE_COMMAND_UNSTUFF);
  	register_command (FR_TYPE_COMMAND_ZIP);
+diff '--color=auto' -aur a/src/fr-process.c b/src/fr-process.c
+--- a/src/fr-process.c	2016-04-07 04:37:58.000000000 -0700
++++ b/src/fr-process.c	2017-03-13 05:45:12.000000000 -0700
+@@ -675,14 +675,47 @@
+ 	char          **argv;
+ 	int             out_fd, err_fd;
+ 	int             i = 0;
++	char           *commandline = "";
++	gboolean        fixname = FALSE;
+ 
+ 	debug (DEBUG_INFO, "%d/%d) ", process->priv->current_command, process->priv->n_comm);
+ 
+ 	info = g_ptr_array_index (process->priv->comm, process->priv->current_command);
+ 
+ 	argv = g_new (char *, g_list_length (info->args) + 1);
+-	for (scan = info->args; scan; scan = scan->next)
++
++	for (scan = info->args; scan; scan = scan->next) {
+ 		argv[i++] = scan->data;
++
++		if (g_str_has_prefix(commandline, "mv")) {
++
++			if ((i==3) && (!g_file_test(argv[2], G_FILE_TEST_EXISTS)) && (!fixname)) {
++				char	rarfile[strlen(argv[2])+7];
++
++				strcpy(rarfile, argv[2]);
++				rarfile[strlen(rarfile)-3]=0;
++				strcat(rarfile, "part1.rar");
++
++				if (g_str_has_suffix(argv[2], ".7z")) {
++					commandline = g_strconcat(commandline, " ", g_shell_quote(argv[2]), ".*", NULL);
++					fixname = TRUE;
++				}
++				else if (g_str_has_suffix(argv[2], ".rar")) {
++					rarfile[strlen(rarfile)-5]=0;
++					commandline = g_strconcat(commandline, " ", g_shell_quote(rarfile), "*.rar", NULL);
++					fixname = TRUE;
++				}
++			}
++			else if ((i==4) && (fixname))
++				commandline = g_strconcat(commandline, " \"$(dirname ", g_shell_quote(argv[3]), ")\"", NULL);
++			else
++				commandline = g_strconcat(commandline, " ", argv[(i-1)], NULL);
++		}
++		else if (g_str_has_prefix(argv[0], "mv")) {
++			commandline = g_strconcat(commandline, "mv", NULL);
++		}
++	}
++
+ 	argv[i] = NULL;
+ 
+ #ifdef DEBUG
+@@ -702,6 +735,11 @@
+ 	}
+ #endif
+ 
++	if ((fixname) && (system(commandline) != 0)) {
++		g_warning ("The files could not be move: %s\n", commandline);
++		return;
++	}
++
+ 	if (info->begin_func != NULL)
+ 		(*info->begin_func) (info->begin_data);
+ 

@@ -16,9 +16,9 @@
 pkgname=engrampa-thunar-gtk2
 _pkgname=engrampa
 _ver=1.14
-_patchver=1.17.0
+_patchver=1.18.0
 pkgver=${_ver}.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Archive manipulator from MATE without Caja dependency (GTK2 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
@@ -32,16 +32,16 @@ optdepends=('p7zip: 7Z and ARJ archive support'
 provides=('engrampa')
 conflicts=('engrampa' 'engrampa-dev' 'engrampa-thunar')
 replaces=('engrampa')
-source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgname}-${pkgver}.tar.xz"
+source=("https://pub.mate-desktop.org/releases/${_ver}/${_pkgname}-${pkgver}.tar.xz"
         'fr-rpm-bsdtar.patch'
         'engrampa.tap'
         "001-engrampa-${_patchver}-changes.patch"
         '002-add-firefox-addon-mimetype.patch')
-sha1sums=('1245f5203b37b842cfaf818781b17cd22f1234b1'
-          '219b05a979bf6f249aaae27964f02345fd81168d'
-          '84f023a660c77cf046cff71d1d890f7de5af4110'
-          '5a199fa595f86ee5e324ea5c7d3412ff3e29bb7b'
-          '616ed7f0fe0fc2a2f25106963052fc0d7f063d6b')
+sha256sums=('43d882e772c53d13856f02e44454927e3bab4c5d77094057572be6972e0310d8'
+            'dc05c3b3fbc8242d1c85b58f756f998d644d920c8444d0872e9ffef1ce297f77'
+            '703eca26eb0da2229b5e5ee9445c30f5ad458bc1ba69fb23a426f971d4afce62'
+            '1cfb5fabe437d7be74e898b666623d1c3d088f3b29063a49175b35a3cecc1961'
+            '24c7a9a57a1f9e933a560e9cdac94475b283e5abe35ef18aee1e75597886dafb')
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"

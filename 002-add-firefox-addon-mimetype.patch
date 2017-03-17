@@ -1,17 +1,17 @@
 diff '--color=auto' -aur a/src/fr-command-zip.c b/src/fr-command-zip.c
---- a/src/fr-command-zip.c	2016-04-07 04:37:58.000000000 -0700
-+++ b/src/fr-command-zip.c	2016-11-26 15:18:06.990065648 -0700
-@@ -383,6 +383,7 @@
- 
- const char *zip_mime_type[] = { "application/x-cbz",
+--- a/src/fr-command-zip.c	2017-03-13 05:45:12.000000000 -0700
++++ b/src/fr-command-zip.c	2017-03-17 16:13:39.116752773 -0700
+@@ -385,6 +385,7 @@
+ 				"application/x-ear",
  				"application/x-ms-dos-executable",
+ 				"application/x-war",
 +				"application/x-xpinstall",
  				"application/zip",
  				NULL };
  
 diff '--color=auto' -aur a/src/fr-init.c b/src/fr-init.c
---- a/src/fr-init.c	2016-04-07 04:37:58.000000000 -0700
-+++ b/src/fr-init.c	2016-11-26 15:01:15.596721442 -0700
+--- a/src/fr-init.c	2017-03-17 16:08:13.736744000 -0700
++++ b/src/fr-init.c	2017-03-17 16:15:15.546755263 -0700
 @@ -97,6 +97,7 @@
  	{ "application/x-tarz",                 ".tar.Z",    N_("Tar compressed with compress (.tar.Z)"), 0 },
  	{ "application/x-stuffit",              ".sit",      NULL, 0 },
