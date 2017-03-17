@@ -1,0 +1,15 @@
+pkgbase = ruby-props
+	pkgdesc = props - Manage Settings Hierachies (Commandline, User, Home, Defaults, etc.)
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/rubylibs/props
+	arch = any
+	license = Public Domain
+	depends = ruby
+	noextract = props-1.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/props-1.1.2.gem
+	sha1sums = 3e138b6bbbb8789d4fa83702659079a9b17ef6e8
+
+pkgname = ruby-props
+
