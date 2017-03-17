@@ -12,7 +12,6 @@ optdepends=('rlwrap: for a decent repl')
 provides=('gnu-scm')
 source=("http://groups.csail.mit.edu/mac/ftpdir/scm/$pkgname-$pkgver.zip")
 md5sums=('ff83b43844b4fc2efeaa102d8eed8a4a')
-install=scm.install
 options=('!makeflags')
 
 build() {
