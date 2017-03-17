@@ -1,0 +1,17 @@
+pkgbase = alignace
+	pkgdesc = Program that finds sequence elements conserved in a set of DNA sequences
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://arep.med.harvard.edu/mrnadata/mrnasoft.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	depends = sh
+	source = http://arep.med.harvard.edu/mrnadata/software/alignace.tar.gz
+	source = http://rpmfind.net/linux/redhat-archive/6.2/en/os/i386/RedHat/RPMS/libstdc++-2.9.0-30.i386.rpm
+	md5sums = 6d2d9fb0929ce03974dca874b516cd07
+	md5sums = 29ca50829f6d43c63d8fcc827b3daceb
+
+pkgname = alignace
+
