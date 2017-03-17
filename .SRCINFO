@@ -1,7 +1,7 @@
 pkgbase = python-gnusocial
 	pkgdesc = GNU Social API for Python 3
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitgud.io/dtluna/pygnusocial
 	arch = any
 	license = GPL3
