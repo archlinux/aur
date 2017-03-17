@@ -1,4 +1,6 @@
 # Maintainer: Seppia <seppia@seppio.fish>
+# Contributor: svalo <me@valo.space>
+
 pkgname=dino-git
 pkgver=r58.d3005bc
 pkgrel=2
@@ -7,8 +9,8 @@ arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/dino/dino"
 license=('')
 groups=()
-depends=('glib2' 'gtk3' 'gpgme' 'libgee' 'libnotify' 'openssl' 'sqlite')
-makedepends=('git' 'cmake' 'vala')
+depends=('glib2>=2.38' 'gtk3>=3.22' 'gpgme' 'libgee>=0.10' 'libnotify' 'openssl' 'sqlite')
+makedepends=('git' 'cmake' 'vala>=0.30')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
