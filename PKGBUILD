@@ -3,7 +3,7 @@
 pkgname=battery-stats-git
 _pkgname=battery-stats
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Log battery charge, show gnuplot graphs."
 arch=('any')
 url="https://github.com/petterreinholdtsen/battery-stats.git"
@@ -30,6 +30,8 @@ prepare() {
       -i ${_pkgname}/src/CMakeLists.txt
   sed "s/AC/AC0/" \
       -i ${_pkgname}/src/battery-stats-collector
+  sed "/set fit quiet/a \\\techo \"set fit logfile '\/dev\/null'\"" \
+      -i ${_pkgname}/src/battery-graph.in
 }
 
 build() {
