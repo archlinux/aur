@@ -8,8 +8,8 @@
 # Based on linux package
 
 pkgbase=linux-libre-nand         # Build stock kernel
-_pkgbasever=4.9-gnu
-_pkgver=4.9.11-gnu
+_pkgbasever=4.10-gnu
+_pkgver=4.10.2-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -40,13 +40,12 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
-        '0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch'
+        '0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch'
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch')
-sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
+sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf5811fdae48fafd5a8e00d18ed9ac2e1ad4b12a657f322eb234384316ad131e0'
             'SKIP'
-            'b2fe1d938a1d1e80bba980d5aec3b38e7d508851d4abcc7b33716bbf9c41acb9bb572e4456dcd88257cf9b616db0b9ddaaeb571a14a9863555ff575f21d2a24a'
+            '02e518e8192f7b71dcb3724d1b9f4bc502d210387548a77a8edf6900281ccd13de55986382c9be00afacf0dc0ca2f13a70327be9230b1c93d95bc917cfd17643'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -54,12 +53,11 @@ sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca4
             'SKIP'
             '7a3716bfe3b9f546da309c7492f3e08f8f506813afeb1c737a474c83313d5c313cf4582b65215c2cfce3b74d9d1021c96e8badafe8f6e5b01fe28d2b5c61ae78'
             'SKIP'
-            '644af5a9e4f12c6ce48d6eb60de1e83eab4833ffb3eae258a28611218ddf6ae9304c7c1095aabafb3107333f29af1072008aa52b0f554c0c9c3bcd315f36d3bc'
-            'd40eeba8b722e3a38e2a124eb8be6abdeb37a6b959a305460b1586a59f00216828233f030feb8e4f4ff1b16df9eb16b3540441aee180a1490d5fbda85022a47a'
+            '7cf0242c255d12369fb1c133ad6424e799019addaf85a536c6c1e1dba07a2e4de1e77295dfb9c6ef2cc52e87c3aae9205867d9ceb675dc8e66be7a13b47405b0'
+            '6fef7c4796da7399a3072e0178ba6ddbe2d81341054af9ac97536d18e8317b63d6b54d74e5522c888315f8deb696a062ac8f0731c868c5ed511a75098a540949'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
-            'cddd1349c0a7f7ffcd7615f31c8107144eb086326c09121cc9071e95d04d2a30ee8d7a3f5d1fe76e6377803dbf2fcb1791e482e0974b8474155419ad94c0fd2b'
+            '397fc751697cc4e2ceb7e6d854f5e7fc115ed8511df406ffe5d8f80afeec385ba64cd28c4666bb206612fdcd7a578b60ca6ff125c2138c615aee6135d86b0197'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168')
 validpgpkeys=(
@@ -88,16 +86,11 @@ prepare() {
   install -m644 -t drivers/video/logo \
     "${srcdir}/logo_linux_"{clut224.ppm,vga16.ppm,mono.pbm}
 
-  # https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-6074
-  patch -p1 -i "${srcdir}/0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch"
-
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
-  # remove this when a Kconfig knob is made available by upstream
-  # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+  # patch for CVE-2017-2636
+  patch -p1 -i "${srcdir}/0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch"
 
   # maintain the TTY over USB disconnects
   # http://www.coreboot.org/EHCI_Gadget_Debug
@@ -297,7 +290,7 @@ _package-headers() {
   # add objtool for external module building and enabled VALIDATION_STACK option
   if [ -f tools/objtool/objtool ];  then
       mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
-      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/
   fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
