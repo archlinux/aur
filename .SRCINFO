@@ -1,0 +1,14 @@
+pkgbase = gadem
+	pkgdesc = A Genetic Algorithm Guided Formation of Spaced Dyads Coupled with an EM Algorithm for Motif Discovery
+	pkgver = 1.3.1
+	pkgrel = 2
+	url = http://www.niehs.nih.gov/research/resources/software/biostatistics/gadem/index.cfm
+	arch = i686
+	arch = x86_64
+	license = gpl
+	depends = sh
+	source = gadem_v131.tar.gz::http://www.niehs.nih.gov/research/resources/assets/docs/gadem_v131targz.gz
+	md5sums = d0e35bea408c2b1a147c8e9f4db72260
+
+pkgname = gadem
+
