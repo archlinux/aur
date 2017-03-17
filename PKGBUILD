@@ -3,8 +3,8 @@
 # Maintainer: vauvenal5 <vauvenal5@gmail.com>
 
 pkgname=lilith
-pkgver=8.0.0
-pkgrel=2
+pkgver=8.1.1
+pkgrel=1
 pkgdesc="logging and access event viewer for Logback, log4j and JUL"
 arch=(any)
 url="http://lilith.huxhorn.de/"
@@ -15,8 +15,8 @@ validpgpkeys=('3CECE46C577B8BFE85B657256334E557740A1840')
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver-bin.tgz"
     "http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver-bin.tgz.asc"
     "http://sourceforge.net/p/lilith/code/ci/master/tree/icon.png?format=raw")
-md5sums=('c46c436e384dac332d5ff65597524327'
-         '4a22977037c06f58adf58aaa6c32564e'
+md5sums=('066fa2288c70fd754cd67da90596a084'
+         'ca39fec6928871ef96b3021b05d5c644'
          'd835b5c67d2ba277fa2c359ddae7d28f')
 
 prepare() {
