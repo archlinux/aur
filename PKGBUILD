@@ -7,7 +7,7 @@
 # Contributor: Donald Ephraim Curtis <dcurtis@gmail.com>
 
 pkgname=lua51-posix
-pkgver=31
+pkgver=33.4.0
 pkgrel=1
 pkgdesc='POSIX library for Lua 5.1'
 arch=('x86_64' 'i686')
@@ -16,17 +16,11 @@ license=('GPL' 'LGPL')
 depends=('lua51')
 makedepends=('lua51' 'git' 'help2man')
 options=('!makeflags')
-source=("$pkgname::git://github.com/luaposix/luaposix.git#tag=v$pkgver")
+source=("https://github.com/luaposix/luaposix/archive/release-v$pkgver.tar.gz")
 md5sums=('SKIP')
 
-prepare() {
-  cd "$pkgname"
-
-  ./bootstrap
-}
-
 build() {
-  cd "$pkgname"
+  cd "luaposix-release-v$pkgver"
 
   LUA=/usr/bin/lua5.1 \
   LUA_INCLUDE=-I/usr/include/lua5.1/ \
@@ -39,11 +33,13 @@ build() {
 }
 
 check() {
-  make -C "$pkgname" check || true
+  cd "luaposix-release-v$pkgver"
+  make check
 }
 
 package() {
-  make -C "$pkgname" DESTDIR="$pkgdir" install
+  cd "luaposix-release-v$pkgver"
+  make DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
