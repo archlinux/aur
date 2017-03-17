@@ -1,0 +1,16 @@
+pkgbase = ruby-persondb-models
+	pkgdesc = persondb-models - person schema 'n' models for easy (re)use
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/persondb/person.db.models
+	arch = any
+	license = Public Domain
+	depends = ruby
+	depends = ruby-worlddb-models
+	noextract = persondb-models-0.5.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/persondb-models-0.5.0.gem
+	sha1sums = 7d2fcbf56b4aebfe0d70e714e9fa45142086080c
+
+pkgname = ruby-persondb-models
+
