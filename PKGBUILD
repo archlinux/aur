@@ -2,7 +2,7 @@
 
 pkgname=mendeleydesktop-dev
 pkgshortname=mendeleydesktop
-pkgver=1.17.9_dev2
+pkgver=1.17.9_dev3
 pkgrel=1
 pkgdesc="Academic software for managing and sharing research papers (desktop client)"
 url=https://www.mendeley.com/release-notes/development/
@@ -15,11 +15,11 @@ sha256sums=('' '4603511767b23ba44820b1742e82043a667822146bcd3ebc8e9bdcfdb87ed050
 
 if [[ $CARCH = i686 ]];then
   _arch=i486
-  sha256sums[0]='6a160729618f7fc44465eb780a8cb53c87b4e7e3c66a6327cd3252dd04e01657'
+  sha256sums[0]='8c5f9286a8fa04055cb818aad074df750a05b3c305ca61ae0ef592b8d3d2c2f3'
 
 else
   _arch=$CARCH
-  sha256sums[0]='e7d762b2c69699cfd3acd0a78318de9e47317677cc9077123a68864ce6e7188e'
+  sha256sums[0]='2a4cd17770a316c3fbea1a56e2f807dcdd7b147e1101726949cb68eb9dfa8234'
 fi
 
 if which gconftool-2 &>/dev/null;then
@@ -50,12 +50,12 @@ package() {
     ln -s /opt/"$pkgshortname"/share/applications/mendeleydesktop.desktop "$pkgdir"/usr/share/applications/
 
     #Romove bundled Qt from package
-    #cat << __EOF__
-#Removing bundled Qt library.
-#If you used "--force-bundled-qt" to start mendeley,
-#make sure you remove any old versions of ".desktop" file of mendeley in #~/.local/share/applications/,
-#because mendeley will automatically create one there.
-#__EOF__
+    cat << __EOF__
+			Removing bundled Qt library.
+			If you have troubles with mendeleydesktop (e.g. HiDPI) please comment the following line in the PKGBUILD:
+			rm -rf "$pkgdir"/opt/"$pkgshortname"/lib/qt
+__EOF__
+		
     rm -rf "$pkgdir"/opt/"$pkgshortname"/lib/qt
 
     #Remove unneeded lines if gconf is not installed.
