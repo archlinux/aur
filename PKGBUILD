@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=guetzli-git
-pkgver=1.0.8.g6bd68ae
+pkgver=1.0.r8.g6bd68ae
 pkgrel=1
 pkgdesc="Perceptual JPEG encoder "
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "guetzli"
 
-  git describe --long --tags | sed 's/^[A-Za-z]*//;s/-/./g'
+  git describe --long --tags | sed 's/^[A-Za-z]*//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
