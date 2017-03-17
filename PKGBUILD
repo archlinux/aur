@@ -30,5 +30,5 @@ package() {
 
 	mkdir -p "${pkgdir}/opt/extensions/"
 	cp -a "$_pkgname/chrome" "${pkgdir}/opt/${pkgname}/extensions/"
-	cp -a "$_pkgname/firefox" "${pkgdir}/opt/${pkgname}/extensions/"
+	cp -a "$_pkgname/webextension" "${pkgdir}/opt/${pkgname}/webextension/"
 }
