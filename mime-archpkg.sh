@@ -10,7 +10,7 @@ declare -r NAME=application-x-archpkg
 
 
 update() {
-   local file theme elem suf
+   local file theme elem suf abc
    local -i size
    local -a taba tab
    if [[ -d $MYDIR ]]; then
@@ -28,14 +28,26 @@ update() {
             for elem in "${taba[@]}"; do
                tab=($(echo $elem|sed 's/\//\n/'))
                if [[ ${tab[0]/[0-9]/} != ${tab[0]} ]]; then
-                  size=${tab[0]/x[0-9][0-9]*/}
+                  if [[ -h $theme/${tab[0]} ]]; then         # skip link
+                     continue
+                  fi
                   if [[ ${tab[0]/@2x/} != ${tab[0]} ]]; then
+                     abc=${tab[0]/@2x/}
+                     size=${abc/x*/}
                      size=$size*2
+                  else
+                     size=${tab[0]/x*/}
                   fi
                elif [[ ${tab[1]/[0-9]/} != ${tab[1]} ]]; then
-                  size=${tab[1]/x[0-9][0-9]*/}
+                   if [[ -h $theme/${tab[1]} ]]; then      # skip link
+                     continue
+                  fi
                   if [[ ${tab[1]/@2x/} != ${tab[1]} ]]; then
+                     abc=${tab[1]/@2x/}
+                     size=${abc/x*/}
                      size=$size*2
+                  else
+                     size=${tab[1]/x*/}
                   fi
                elif [[ ${elem/scalable/} != ${elem} ]]; then
                   size=0
@@ -52,6 +64,7 @@ update() {
                   else
                      rsvg-convert -o /tmp/archpkg.svg -f svg "$file"
                      install -m644 /tmp/archpkg.svg "$theme/$elem/$NAME.svg"
+                     echo
                   fi
                fi
             done
