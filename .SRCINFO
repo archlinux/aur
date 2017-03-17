@@ -1,9 +1,8 @@
 pkgbase = awesome-terminal-fonts
 	pkgdesc = fonts/icons for powerlines
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/gabrielelana/awesome-terminal-fonts
-	install = awesome-terminal-fonts.install
 	arch = any
 	license = MIT
 	depends = fontconfig
