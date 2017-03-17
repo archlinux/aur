@@ -2,7 +2,7 @@
 
 pkgname=liberation-circuit-git
 _pkgname=liberation-circuit
-pkgver=v1.0.r17.ge594461
+pkgver=1.0.r24.gbd31bac
 pkgrel=1
 pkgdesc="A real-time strategy/programming game"
 arch=("x86_64" "i686")
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
