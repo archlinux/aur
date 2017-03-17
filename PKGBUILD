@@ -3,7 +3,7 @@
 # Contributor: Elena ``of Valhalla'' Grandi <elena.valhalla@gmail.com>
 pkgname=pdfposter-git
 _pkgname=pdfposter
-pkgver=0.6.0.r23.gd800e72
+pkgver=0.6.0.r48.gf3dafd0
 pkgrel=1
 pkgdesc="Print large posters on multiple sheets"
 arch=('any')
