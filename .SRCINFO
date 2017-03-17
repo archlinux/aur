@@ -1,0 +1,17 @@
+pkgbase = ruby-sportdb-models
+	pkgdesc = sportdb-models - sport.db schema 'n' models for easy (re)use
+	pkgver = 1.16.2
+	pkgrel = 1
+	url = https://github.com/sportdb/sport.db.models
+	arch = any
+	license = Public Domain
+	depends = ruby
+	depends = ruby-worlddb-models
+	depends = ruby-persondb-models
+	noextract = sportdb-models-1.16.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/sportdb-models-1.16.2.gem
+	sha1sums = 9faf78b2a9f966de34a0c76a992af149f2f56878
+
+pkgname = ruby-sportdb-models
+
