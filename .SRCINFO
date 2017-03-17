@@ -1,0 +1,17 @@
+pkgbase = ruby-props-activerecord
+	pkgdesc = props-activerecord - Manage Setting Hierachies Addon for Database Support (ConfDb, Props Model, etc.)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/rubylibs/props-activerecord
+	arch = any
+	license = Public Domain
+	depends = ruby
+	depends = ruby-props
+	depends = ruby-activerecord
+	noextract = props-activerecord-0.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/props-activerecord-0.1.0.gem
+	sha1sums = 06601e738f9db44b6cb841bb2ccda0f3be612603
+
+pkgname = ruby-props-activerecord
+
