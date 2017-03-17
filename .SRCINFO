@@ -1,0 +1,13 @@
+pkgbase = mdscan
+	pkgdesc = A DNA seqence motif finding programs
+	pkgver = 2004
+	pkgrel = 3
+	url = http://motif.stanford.edu/distributions/mdscan/
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://motif.stanford.edu/distributions/mdscan/MDscan.2004.zip
+	md5sums = 7326a39c9908a17595a2e02a4af00770
+
+pkgname = mdscan
+
