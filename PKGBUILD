@@ -6,7 +6,7 @@
 pkgname='python-axolotl-git'
 _pkgname='python-axolotl'
 pkgver=r70.72f7c44
-pkgrel=3
+pkgrel=4
 pkgdesc="The python-axolotl package, needed for Whatsapp Moxie support"
 url="https://github.com/tgalal/python-axolotl"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('python'
          'python-axolotl-curve25519-git'
          'python-dateutil'
          'python-protobuf'
-         'python-pycrypto')
+         'python-crypto')
 makedepends=('python-setuptools')
 provides=('python-axolotl')
 conflicts=('python-axolotl')
