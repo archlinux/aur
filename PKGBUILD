@@ -1,8 +1,8 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=pycharm-professional
-pkgver=2016.3.2
-_pkgver=2016.3.2
+pkgver=2016.3.3
+_pkgver=2016.3.3
 pkgrel=1
 pkgdesc="Powerful Python and Django IDE. Professional edition."
 arch=('any')
@@ -12,8 +12,12 @@ conflicts=('pycharm' 'pycharm-community')
 provides=('pycharm')
 license=('custom')
 install=${pkgname}.install
+# for no-jdk:
+# depends=('java-runtime-common' 'java-runtime>=8' 'ttf-font' 'libxtst' 'libxslt')
 depends=('giflib' 'ttf-font' 'libxtst' 'libxslt')
 makedepends=('python2-setuptools' 'python-setuptools')
+# for no-jdk:
+# source=(https://download.jetbrains.com/python/$pkgname-$_pkgver-no-jdk.tar.gz
 source=(https://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz
         'pycharm-professional.desktop'
         'pycharm-professional.install'
@@ -37,7 +41,9 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'python2-tox: Python environments for testing tool with Python 2'
             'python-tox: Python environments for testing tool with Python 3', 
             'jupyter: For support Jupyter Notebook')
-sha256sums=('72a7032ce618030db44179e7ae4e3b5d0ef761a7cbfeb34aeedf670b5d1059a3'
+# for no-jdk:
+# sha256sums=('e63a286cd8c0dcfa4f23e3ccaf266507289b2554c58d7c32ecb0f5345448d623'
+sha256sums=('8b76b0db5277160e7c23701cddd1a0254d601e1888ef9f01465e592dd310f496'
             '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
             'c1a74303d9e870918bd8068f761c8251b996694b1b96b3537fbca317679c4958'
             '43e79e5a786fc76385634dc0a9f1c3489b25031745b840b0822b059fc91d1060'
