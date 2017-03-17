@@ -1,0 +1,17 @@
+pkgbase = ruby-logutils-activerecord
+	pkgdesc = Another Logger - Addon for Database Support (LogDb, Log Model etc.)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/rubylibs/logutils-activerecord
+	arch = any
+	license = Public Domain
+	depends = ruby
+	depends = ruby-logutils
+	depends = ruby-activerecord
+	noextract = logutils-activerecord-0.2.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/logutils-activerecord-0.2.1.gem
+	sha1sums = ac41303ee5cb6e5eea64f6e973c1fb883cafbcf3
+
+pkgname = ruby-logutils-activerecord
+
