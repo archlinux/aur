@@ -1,0 +1,31 @@
+--- src/switchboard-plug-elementary-tweaks/src/Grids/TerminalGrid.vala	2016-10-19 23:53:06.686331000 +0900
++++ src/switchboard-plug-elementary-tweaks/src/Grids/TerminalGrid.vala.new	2016-10-20 00:01:41.754521681 +0900
+@@ -145,18 +145,6 @@
+             this.row_spacing = 6;
+             this.halign = Gtk.Align.CENTER;
+ 
+-            // Terminal Opacity tweak
+-            var opacity = new TweakWidget.with_spin_button (
+-                        _("Opacity:"),
+-                        _("How transparent the background of the terminal is"),
+-                        null,
+-                        (() => { return TerminalSettings.get_default ().opacity ; }), // get
+-                        ((val) => { TerminalSettings.get_default ().opacity = val; }), // set
+-                        (() => { TerminalSettings.get_default ().schema.reset ("opacity"); }), // reset
+-                        0, 100, 1
+-                    );
+-            this.add (opacity);
+-
+             // Terminal Theme
+             var default_themes = TerminalTheme.get_default_themes ();
+             var theme_map = new Gee.HashMap<string, string> ();
+--- src/switchboard-plug-elementary-tweaks/src/Settings/TerminalSettings.vala	2016-10-19 23:53:06.686331000 +0900
++++ src/switchboard-plug-elementary-tweaks/src/Settings/TerminalSettings.vala.new	2016-10-19 23:58:33.220030172 +0900
+@@ -24,7 +24,6 @@
+         public string cursor_color { get; set; }
+         public string font { get; set; }
+         public string foreground { get; set; }
+-        public int opacity { get; set; }
+         public string palette { get; set; }
+         public int scrollback_lines { get; set; }
+ 
