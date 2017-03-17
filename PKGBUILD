@@ -1,21 +1,30 @@
 # Maintainer: grimi <grimi at poczta dot fm>
 
 pkgname=numix-themes-green
-pkgver=2.6.6
+pkgver=2.6.6.r19.d99f46c
 pkgrel=1
 pkgdesc="A flat and light theme with a modern look using Green color (GNOME, MATE, Openbox, Unity, XFCE)"
 arch=('any')
 url='http://numixproject.org/'
 license=('GPL3')
 depends=('gtk-engine-murrine')
-makedepends=('ruby-bundler' 'inkscape')
-source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/numixproject/numix-gtk-theme/archive/${pkgver}.tar.gz")
-sha1sums=('51fab48432dcd3308251cbb76435131a1e31820e')
+makedepends=('git' 'ruby-bundler' 'inkscape')
+_commit='d99f46c88895330688f0aa306c05603017ed2334'
+source=("git+https://github.com/numixproject/numix-gtk-theme.git#commit=${_commit}")
+sha256sums=('SKIP')
+
+
+
+pkgver() {
+   cd numix-gtk-theme
+   git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./'
+}
 
 
 prepare() {
-   cd numix-gtk-theme-${pkgver}/src
-   for FILE in gtk-2.0/gtkrc \
+   local color="#697740" name="Green"
+   cd numix-gtk-theme/src
+   for file in gtk-2.0/gtkrc \
       gtk-3.0/scss/_global.scss \
       assets/*.svg \
       gtk-3.20/scss/_global.scss \
@@ -29,12 +38,12 @@ prepare() {
       index.theme \
       ../Makefile
    do
-      sed -i 's/#f1544d/#697740/Ig'  "${FILE}"
-      sed -i 's/#f0544c/#697740/Ig'  "${FILE}"
-      sed -i 's/#f06860/#697740/Ig'  "${FILE}"
-      sed -i 's/#444444/#333333/g'   "${FILE}"
-      sed -i 's/#444/#333/g'         "${FILE}"
-      sed -i 's/Numix/Numix-Green/I' "${FILE}"
+      sed -i "s/#f1544d/$color/Ig"     "${file}"
+      sed -i "s/#f0544c/$color/Ig"     "${file}"
+      sed -i "s/#f06860/$color/Ig"     "${file}"
+      #sed -i "s/#444444/#333333/g"     "${file}"
+      #sed -i "s/#444/#333/g"           "${file}"
+      sed -i "s/Numix/Numix-$name/I" "${file}"
    done
 
    rm assets/*.png
@@ -45,14 +54,14 @@ prepare() {
 
 
 build() {
-   cd numix-gtk-theme-${pkgver}
+   cd numix-gtk-theme
    bundle install --path .
    make SASS="bundle exec sass"
 }
 
 
 package() {
-   cd numix-gtk-theme-${pkgver}
+   cd numix-gtk-theme
    make SASS="bundle exec sass" DESTDIR="${pkgdir}" install
 }
 
