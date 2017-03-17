@@ -1,7 +1,7 @@
-From ca1ad8f3034ccb50d9dbc63a913db48eea67e7da Mon Sep 17 00:00:00 2001
+From ba90fff6d92aa169404e01760b42006e1a14b7a3 Mon Sep 17 00:00:00 2001
 From: Carl George <carl.george@rackspace.com>
-Date: Sun, 19 Feb 2017 05:44:34 -0600
-Subject: [PATCH] fix imports
+Date: Fri, 17 Mar 2017 14:12:54 -0500
+Subject: [PATCH] adjust imports
 
 ---
  SickBeard.py                          | 4 ++--
@@ -12,8 +12,10 @@ Subject: [PATCH] fix imports
  sickbeard/event_queue.py              | 2 +-
  sickbeard/indexermapper.py            | 2 +-
  sickbeard/network_timezones.py        | 2 +-
+ sickbeard/notifiers/emby.py           | 2 +-
  sickbeard/notifiers/prowl.py          | 2 +-
  sickbeard/notifiers/pushalot.py       | 2 +-
+ sickbeard/notifiers/pushbullet.py     | 2 +-
  sickbeard/notifiers/tweet.py          | 2 +-
  sickbeard/nzbget.py                   | 2 +-
  sickbeard/providers/alpharatio.py     | 2 +-
@@ -54,7 +56,8 @@ Subject: [PATCH] fix imports
  sickbeard/providers/tvchaosuk.py      | 2 +-
  sickbeard/providers/zooqle.py         | 2 +-
  sickbeard/rssfeeds.py                 | 2 +-
- 50 files changed, 51 insertions(+), 51 deletions(-)
+ sickbeard/webapi.py                   | 2 +-
+ 53 files changed, 54 insertions(+), 54 deletions(-)
 
 diff --git a/SickBeard.py b/SickBeard.py
 index 5d6276d3..e55b11b6 100755
@@ -166,6 +169,19 @@ index 60acd15d..4f97c1af 100644
  
  from lib.dateutil import tz, zoneinfo
  from lib.tzlocal import get_localzone
+diff --git a/sickbeard/notifiers/emby.py b/sickbeard/notifiers/emby.py
+index 71e279f5..394d3895 100644
+--- a/sickbeard/notifiers/emby.py
++++ b/sickbeard/notifiers/emby.py
+@@ -18,7 +18,7 @@
+ import sickbeard
+ from sickbeard import logger
+ from socket import socket, AF_INET, SOCK_DGRAM, SOL_SOCKET, SO_REUSEADDR, SO_BROADCAST, SHUT_RDWR
+-from lib import simplejson as json
++import json
+ 
+ 
+ class EmbyNotifier:
 diff --git a/sickbeard/notifiers/prowl.py b/sickbeard/notifiers/prowl.py
 index 8f3bb114..52deef15 100644
 --- a/sickbeard/notifiers/prowl.py
@@ -192,6 +208,19 @@ index 16ab0b21..4a4602fe 100644
  
  import socket
  from urllib import urlencode
+diff --git a/sickbeard/notifiers/pushbullet.py b/sickbeard/notifiers/pushbullet.py
+index c60dc18c..2fc43433 100644
+--- a/sickbeard/notifiers/pushbullet.py
++++ b/sickbeard/notifiers/pushbullet.py
+@@ -17,7 +17,7 @@
+ # along with SickGear. If not, see <http://www.gnu.org/licenses/>.
+ 
+ import base64
+-import simplejson as json
++import json
+ import sickbeard
+ 
+ from sickbeard import logger
 diff --git a/sickbeard/notifiers/tweet.py b/sickbeard/notifiers/tweet.py
 index 7ec628c9..c0b91393 100644
 --- a/sickbeard/notifiers/tweet.py
@@ -712,6 +741,19 @@ index a10ffee9..04226f12 100644
  
  from sickbeard import helpers, logger
  from sickbeard.exceptions import ex
+diff --git a/sickbeard/webapi.py b/sickbeard/webapi.py
+index 3e5635d0..acf61a25 100644
+--- a/sickbeard/webapi.py
++++ b/sickbeard/webapi.py
+@@ -108,7 +108,7 @@ class Api(webserve.BaseHandler):
+         _call_dispatcher = call_dispatcher
+         # if profile was set wrap "_call_dispatcher" in the profile function
+         if 'profile' in kwargs:
+-            from lib.profilehooks import profile
++            from profilehooks import profile
+ 
+             _call_dispatcher = profile(_call_dispatcher, immediate=True)
+             del kwargs["profile"]
 -- 
 2.12.0
 

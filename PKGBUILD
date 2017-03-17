@@ -1,7 +1,7 @@
 # Maintainer: Carl George < arch at cgtx dot us >
 
 pkgname="sickgear"
-pkgver="0.12.10"
+pkgver="0.12.11"
 pkgrel="1"
 pkgdesc="Automate your TV enjoyment with innovation, proven stability and reliability."
 arch=("any")
@@ -34,24 +34,44 @@ source=("$url/archive/release_$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles"
-        "0001-fix-imports.patch")
-sha256sums=('5077238247b378a84e4bfb498dd3b75916b7c3b22a5947afb59b62e3843e4a09'
+        "0001-adjust-imports.patch")
+sha256sums=('1d0399363e401292c76793f7fed2eadcb6339377e1f15338fbc47d2eaaf3d602'
             '91cd5e6bb57f23321926757497ba6cc8d4ac82784c73795279d17eab1d26a1dc'
             '8421dae047549f0db56278e8e2a0a46762804ac4552a5438c9093840fef0f57d'
             '43ed9ebfcda9e254084cc1bd43d3bca988139267406654f96a5f78ab223a323c'
-            '8ef8949822129b474d49fef790c0a7ee24fd2744dccb819b0fafe077f93472df')
+            '7160b4fe20bf411d9f23791941bfd3ac16d485a67075a2973fa227cd626c115f')
 
 prepare() {
     cd "SickGear-release_$pkgver"
     rm -v -r init-scripts tests .gitignore *.ini *.md *.txt .*.yml
     pushd lib
     rm -v -r \
-        backports backports_abc.py bs4 certifi cfscrape.py chardet configobj \
-        feedparser guessit html5lib js2py oauth2 pkg_resources.py pyjsparser \
-        pytz requests singledispatch.py singledispatch_helpers.py six.py \
-        sqlalchemy unidecode xmltodict.py
+        backports \
+        backports_abc.py \
+        bs4 \
+        certifi \
+        cfscrape.py \
+        chardet \
+        configobj \
+        feedparser \
+        guessit \
+        html5lib \
+        js2py \
+        oauth2 \
+        pkg_resources.py \
+        profilehooks.py \
+        pyjsparser \
+        pytz \
+        requests \
+        simplejson \
+        singledispatch.py \
+        singledispatch_helpers.py \
+        six.py \
+        sqlalchemy \
+        unidecode \
+        xmltodict.py
     popd
-    patch -p1 -i "$srcdir/0001-fix-imports.patch"
+    patch -p1 -i "$srcdir/0001-adjust-imports.patch"
     find -type f -executable -print -exec chmod -x {} \;
 }
 
