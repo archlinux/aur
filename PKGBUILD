@@ -1,5 +1,5 @@
 pkgname=dpluzz
-pkgver=1.6.9
+pkgver=1.6.92
 pkgrel=1
 pkgdesc="Software to retrieve videos from French website pluzz"
 arch=('any')
@@ -37,3 +37,4 @@ package(){
 
 
 
+sha1sums=('042a3a16769690a59e06a12276004935156a5ac0')
