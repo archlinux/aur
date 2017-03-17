@@ -1,0 +1,13 @@
+pkgbase = chipmunk-motif
+	pkgdesc = Fast and efficient motif discovery tool, reborn and running
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://autosome.ru/ChIPMunk/
+	arch = any
+	license = custom
+	depends = sh
+	source = http://autosome.ru/ChIPMunk/chipmunk.jar
+	sha256sums = 078d1546ec851ef96eaf76ec9fc1b0049993fc821436cc1d3a1a6b3048841748
+
+pkgname = chipmunk-motif
+
