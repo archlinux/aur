@@ -1,0 +1,13 @@
+pkgbase = bioprospector
+	pkgdesc = A DNA seqence motif finding programs
+	pkgver = 2004
+	pkgrel = 3
+	url = http://motif.stanford.edu/distributions/bioprospector/
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://motif.stanford.edu/distributions/bioprospector/BioProspector.2004.zip
+	md5sums = a7d889bb10ad0777cea39b9cf0ef8228
+
+pkgname = bioprospector
+
