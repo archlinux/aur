@@ -17,7 +17,7 @@ _url="https://download.expressvpn.xyz/clients/linux"
 source_x86_64=("${_url}/${pkgname}_${pkgver}_amd64.deb"{,.asc})
 source_i686=("${_url}/${pkgname}_${pkgver}_i386.deb"{,.asc})
 
-sha512sums=('6d0b3d207b9c6c007bc68d469701713987831132adea703b29b28530f6d72579e9cdf02c1aca16137196f736ca90851b29aa92ca432dc20757d9b772b882145f')
+sha512sums=('SKIP')
 sha512sums_x86_64=('a72a674bb94e92351d8a7790ea83d929c77173c753f9f5dda50da5f0f4fdded8e50f53488c16eca2c82e8efd65d90585a804a85298255417a37c293e0e9d4421'
                    'SKIP')
 sha512sums_i686=('e3b29dcf085a39cc17de6589f705a5b90feaacfd0806350b91fbab6a32e2d82b1987d2bbd112ee81e1e29bb3abb922baa1eae5f4286b20f95bea366581046303'
