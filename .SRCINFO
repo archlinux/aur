@@ -1,6 +1,6 @@
 pkgbase = gogs-git
 	pkgdesc = Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language.
-	pkgver = 0.10.7.0306+0+c2f0711d
+	pkgver = 0.10.18.0313+4+f54bcba33
 	pkgrel = 1
 	epoch = 2
 	url = http://gogs.io/
