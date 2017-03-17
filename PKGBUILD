@@ -1,3 +1,4 @@
+# Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 # Maintainer: Arthur Zamarin <arthurzam@gmail.com> 
 
 pkgname=clib
