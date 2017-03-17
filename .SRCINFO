@@ -1,0 +1,17 @@
+pkgbase = ruby-activerecord-utils
+	pkgdesc = activerecord-utils - utilities (e.g. random, alias_attr, etc.) for activerecord
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/rubylibs/activerecord-utils
+	arch = any
+	license = Public Domain
+	depends = ruby
+	depends = ruby-logutils
+	depends = ruby-activerecord
+	noextract = activerecord-utils-0.4.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/activerecord-utils-0.4.0.gem
+	sha1sums = c0a771beeb6d7c96ed420810a65b28f875113b93
+
+pkgname = ruby-activerecord-utils
+
