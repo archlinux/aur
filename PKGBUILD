@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-rt
 _pkgbasever=4.9-gnu
-_pkgver=4.9.9-gnu
+_pkgver=4.9.13-gnu
 _rtbasever=4.9
-_rtpatchver=rt6
+_rtpatchver=rt12
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -48,7 +48,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch'
+        '0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch'
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch'
         # armv7h patches
@@ -64,9 +64,9 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP'
-            '87917dc46c4f26506e69b23972660841302327cd2c93e6f3a19ae9d118705e7a2de9efc6433fbfd92c4b71f5a83976e6def82d9c39423d774d763d9c5c608d00'
+            'c98ebf494a2adfe88cc3476bda4a603470febde239441ae6df5834c776e05d45badda8a5cf5d07bac6c7b5b6bb518eea5d4766b6a298024053508582ddbd73b8'
             'SKIP'
-            'a337325af0a701dff4b36ebcade4b660c9c2f9fd3af6b4b024a2695f91d7c57d425df194fbc56300cdab87efb74e7767d207402c8e1fd84ad811aa13354f56ef'
+            'b95ca10d3383309e61a67841d9c98918ca87e1b743e8390fb2fd31d0b12b13789e990f76dc6b4ceaeebc9b0e364a4ff1d88d89a808067b391ae1dd9a83a9442e'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -80,10 +80,10 @@ sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca4
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
-            '002d5e0ccfa5824c1750912a6400ff722672d6587b74ba66b1127cf1228048f604bba107617cf4f4477884039af4d4d196cf1b74cefe43b0bddc82270f11940d'
+            '397fc751697cc4e2ceb7e6d854f5e7fc115ed8511df406ffe5d8f80afeec385ba64cd28c4666bb206612fdcd7a578b60ca6ff125c2138c615aee6135d86b0197'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '36f70ed9778b0c699ff924e69ca7b8dfad2ffa2cda0d94f0e497ce48eb8db472d64ae46144e233a2695216181238738cd37c9a6ebb09254fa67d311fd32892ee'
+            '2ef2b66c95373927bf627812aa0f69fa07507731770b3e01b24eeca9d1308aa8be2bdccda042d3d7323ae0d32b9fbddb8ef1de83abc6b18679e75649dc86ef86'
             'SKIP'
             'ccf18eb2c3d33a57871cbadd5ad825d2f2f489e69c54c7293b160abdc3e9e5c6a664ba7926a617d31affcf20b7ecb4e8de54fa78438c574aa1b257f686faade9'
             '69f13bb2e353727acbe39034978729272511c6578aa2faf8c829e1bb89c22e769262289b76d93254314304ebd7547c45cdc8ba6afc278444a8fd09f71dff9757'
@@ -146,13 +146,11 @@ prepare() {
   install -m644 -t drivers/video/logo \
     "${srcdir}/logo_linux_"{clut224.ppm,vga16.ppm,mono.pbm}
 
-  # Revert a commit that causes memory corruption in i686 chroots
-  # ("valgrind bash" immediately crashes)
-  # https://bugzilla.kernel.org/show_bug.cgi?id=190061
-  patch -Rp1 -i "${srcdir}/0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch"
-
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # patch for CVE-2017-2636
+  patch -p1 -i "${srcdir}/0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
@@ -204,15 +202,12 @@ build() {
 _package() {
   pkgdesc="The ${pkgbase^} kernel and modules with realtime preemption"
   [ "${pkgbase}" = "linux-libre" ] && groups=('base' 'base-openrc')
-  depends=('coreutils' 'linux-libre-firmware' 'kmod')
+  depends=('coreutils' 'linux-libre-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
-  depends_i686=('mkinitcpio>=0.7')
-  depends_x86_64=('mkinitcpio>=0.7')
-  backup_i686=("etc/mkinitcpio.d/${pkgbase}.preset")
-  backup_x86_64=("etc/mkinitcpio.d/${pkgbase}.preset")
+  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
   cd "${srcdir}/${_srcname}"
@@ -236,15 +231,18 @@ _package() {
     "${startdir}/${install}" > "${startdir}/${install}.pkg"
   true && install=${install}.pkg
 
-  if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
-    # install mkinitcpio preset file for kernel
+  # install mkinitcpio preset file for kernel
+  if [ "${CARCH}" = "armv7h" ]; then
+    sed "s|/boot/vmlinuz-%PKGBASE%|${_kernver}|g" "${srcdir}/linux.preset" |
+      install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  elif [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
     sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
       install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-
-    # install pacman hook for initramfs regeneration
-    sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
-      install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
   fi
+
+  # install pacman hook for initramfs regeneration
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
@@ -383,7 +381,7 @@ _package-headers() {
   # add objtool for external module building and enabled VALIDATION_STACK option
   if [ -f tools/objtool/objtool ];  then
       mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
-      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/
   fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
