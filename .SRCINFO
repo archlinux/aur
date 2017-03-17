@@ -1,0 +1,24 @@
+pkgbase = ruby-worlddb-models
+	pkgdesc = worlddb - world.db schema 'n' models for easy (re)use
+	pkgver = 2.3.4
+	pkgrel = 1
+	url = https://github.com/worlddb/world.db.models
+	arch = any
+	license = Public Domain
+	depends = ruby
+	depends = ruby-props
+	depends = ruby-logutils
+	depends = ruby-textutils
+	depends = ruby-tagutils
+	depends = ruby-activerecord-utils
+	depends = ruby-props-activerecord
+	depends = ruby-logutils-activerecord
+	depends = ruby-rubyzip
+	depends = ruby-activerecord
+	noextract = worlddb-models-2.3.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/worlddb-models-2.3.4.gem
+	sha1sums = 181aee5fa7bc054be24f2e5a69345a5cbeb04886
+
+pkgname = ruby-worlddb-models
+
