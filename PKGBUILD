@@ -2,7 +2,7 @@
 
 _gitname=deen
 pkgname="${_gitname}-git"
-pkgver=0.7.10.91625be
+pkgver=0.9.1.7f46640
 pkgrel=1
 pkgdesc='Generic data encoding/decoding application built with PyQt5'
 url='https://github.com/takeshixx/deen'
@@ -13,7 +13,7 @@ optdepends=('python-pyopenssl')
 makedepends=('git')
 provides=('deen')
 conflicts=('deen')
-source=("${_gitname}::git://github.com/takeshixx/deen.git")
+source=("${_gitname}::git+https://github.com/takeshixx/deen.git")
 sha512sums=('SKIP')
 
 pkgver() {
