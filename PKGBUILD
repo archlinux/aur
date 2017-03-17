@@ -2,11 +2,11 @@
 
 pkgname=guetzli-git
 pkgver=1.0.r8.g6bd68ae
-pkgrel=1
+pkgrel=2
 pkgdesc="Perceptual JPEG encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/google/guetzli"
-license=('APL')
+license=('Apache')
 depends=('gflags' 'libpng')
 makedepends=('git')
 source=("git+https://github.com/google/guetzli.git")
@@ -30,5 +30,4 @@ package() {
 
   install -d "$pkgdir/usr"
   install -Dm755 "bin/Release/guetzli" "$pkgdir/usr/bin/guetzli"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/guetzli/LICENSE"
 }
