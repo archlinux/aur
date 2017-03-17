@@ -1,8 +1,8 @@
 # Maintainer: Bart De Vries <devriesb@gmail.com>
 
 pkgname=snapcast
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="Synchronous multi-room audio player"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/badaix/snapcast"
@@ -17,27 +17,21 @@ conflicts=()
 replaces=()
 backup=('etc/default/snapserver' 'etc/default/snapclient')
 options=()
-install=
+install=snapcast.install
 changelog=
 source=("git+https://github.com/badaix/${pkgname}.git#tag=v${pkgver//_/-}"
         "${pkgname}-systemd.patch")
 noextract=()
 validpgpkeys=()
 md5sums=('SKIP'
-         '409bb645138a52462aa8800a3f1b620b')
+         '374f174354508e3a3e2ab28910a9eb5c')
 
 prepare() {
         cd "$pkgname"
         patch -p1 -i "$srcdir/$pkgname-systemd.patch"
         cd externals
-        # submodule update barfs on vorbis which is in 0.10.0, but unused!
-        # switch back to line below on next version!
-        #git submodule update --init --recursive
-        git submodule update --init asio
-        git submodule update --init flac
-        git submodule update --init ogg
-        git submodule update --init popl
-        git submodule update --init tremor
+        # update all submodules
+        git submodule update --init --recursive
 }
 
 build() {
