@@ -3,7 +3,7 @@
 _pkgname=rtorrent
 pkgname=rtorrent-ps
 _pkgver=0.9.6
-pkgver=1.0.r26.gcb78fc3
+pkgver=1.0.r29.gad0cb71
 pkgrel=1
 pkgdesc='Extended rTorrent distribution with UI enhancements, colorization, and some added features'
 url='https://github.com/pyroscope/rtorrent-ps'
