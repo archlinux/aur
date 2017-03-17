@@ -1,4 +1,10 @@
+v1.3.0 -- Fri, 17 Mar 2017 09:42:36 GMT
+
+Fixes an error that would occur due to poor distro logo configuration handling.
+Fixes poor CSS rendering due to Safari 10 quirkiness.
+
 v1.3.0 -- Fri, 17 Mar 2017 06:33:46 GMT
+
 Adds customization dialogue, distro logos, allows custom Date & Time formatting.
 
 Fixes login issues when used as a lockscreen, properly respects wallpaper
