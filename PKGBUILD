@@ -4,11 +4,11 @@
 
 pkgbase=linux-rc
 _srcname=linux-4.10
-_stable=4.10.2
-_patchver=4.10.3
+_stable=4.10.3
+_patchver=4.10.4
 pkgver=${_patchver}rc1
 _rcpatch=patch-${_patchver}-rc1
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -30,9 +30,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
             'SKIP'
-            '3e2c2ba9dd2c421ea4f7e10150cc5f5fa5fdbaffef5377988fabb7d6f7d65bab'
+            '17459007bae81a8cda00f0ce74dfbc70c1afc5b99133649e664045e34c5d63b5'
             'SKIP'
-            '3d120626c9ecff7269bf2a86e483ba210da549684a875ec558757ce0b0803300'
+            '1940613f242c8d9c4d49967880ef33ab2a8f89db3b74ec1e2391edb54aff5074'
             'SKIP'
             '386051f19482672c871e7865fc62f5e2c8010d857729134ba13044734962e42c'
             '12a87284e2935cd17e2846a207cc76f1728531416523735d66ef8a0ae690884c'
