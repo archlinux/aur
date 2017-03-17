@@ -4,7 +4,7 @@
 
 pkgname=cryfs
 pkgver=0.9.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Cryptographic filesystem for the cloud"
 arch=('armv7h' 'i686' 'x86_64')
 depends=('boost'
@@ -18,15 +18,17 @@ makedepends=('cmake' 'git' 'make')
 url="https://www.cryfs.org"
 license=('LGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/cryfs/$pkgname/tar.gz/$pkgver
-        git+https://github.com/cryfs/cryfs.wiki)
-sha256sums=('4a5745bc3a04c934c931f8a578f08f7e19e59c2e2cb42d8f940e5154e0b5ba53'
-            'SKIP')
+        git+https://github.com/cryfs/cryfs.wiki
+        spdlog.diff::https://github.com/cryfs/cryfs/commit/f1c6fa044f44e33c0c9e6eab78877d47ac4c87be.diff)
+sha256sums=('4d65c462fa988f698090f00052cbb236cfc7e7524b872f96409187bc5285eedd'
+            'SKIP'
+            '10540361f6fcf99bd88c6c3673677af5c005a449595df96670bc776b52a6bf78')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg2 'Monkey patching spdlog for great good...'
-  sed -i 's/CHAR_WIDTH/CHAR_SIZE/g' vendor/spdlog/spdlog/fmt/bundled/format.h
+  msg2 'Updating spdlog to 0.12.0...'
+  patch -p1 -i "$srcdir/spdlog.diff"
 }
 
 build() {
