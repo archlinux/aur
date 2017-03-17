@@ -10,9 +10,9 @@ license=('custom:OFL')
 url="http://be5invis.github.io/Iosevka/inziu.html"
 depends=('fontconfig')
 install="inziu-iosevka.install"
-source=(http://7xpdnl.dl1.z0.glb.clouddn.com/inziu-iosevka-1.11.1.7z
+source=('http://7xpdnl.dl1.z0.glb.clouddn.com/inziu-iosevka-1.11.4.7z'
         'https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md')
-md5sums=('09b709350eaeefbb16a83d574cc02039'
+md5sums=('be3c3b3632079c0e2338ed2d2867fea2'
          'b640361b29fdcbfb32ced03c7a095460')
 
 package () {

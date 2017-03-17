@@ -7,9 +7,9 @@ pkgbase = ttf-inziu-iosevka
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
-	source = http://7xpdnl.dl1.z0.glb.clouddn.com/inziu-iosevka-1.11.1.7z
+	source = http://7xpdnl.dl1.z0.glb.clouddn.com/inziu-iosevka-1.11.4.7z
 	source = https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md
-	md5sums = 819bb53480a912a1c902fdd656bcda51
+	md5sums = be3c3b3632079c0e2338ed2d2867fea2
 	md5sums = b640361b29fdcbfb32ced03c7a095460
 
 pkgname = ttf-inziu-iosevka
