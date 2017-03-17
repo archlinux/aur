@@ -1,0 +1,16 @@
+[Unit]
+Description=Ubooquity Service
+After=syslog.target network.target
+
+[Service]
+User=ubooquity
+Group=ubooquity
+WorkingDirectory=~
+ExecStart=/usr/bin/java -Xmx512m -jar /usr/lib/ubooquity/Ubooquity.jar -port 2202 -webadmin -headless
+Type=simple
+TimeoutStopSec=20
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

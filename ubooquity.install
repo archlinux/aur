@@ -1,0 +1,11 @@
+post_install() {
+  systemd-sysusers ubooquity.conf
+
+  mkdir -p /var/lib/ubooquity
+  chown -R ubooquity:ubooquity /var/lib/ubooquity /usr/lib/ubooquity
+}
+
+post_upgrade() {
+  post_install $1
+}
+
