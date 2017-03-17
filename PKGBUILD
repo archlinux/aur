@@ -1,7 +1,7 @@
 # Maintainer: James An <james@jamesan.ca>
 
 pkgname=solr-undertow
-pkgver=1.6.1
+pkgver=1.7.0_RC_3
 pkgrel=1
 pkgdesc='Solr / SolrCloud running in high performance server'
 arch=('i686' 'x86_64' 'any')
@@ -15,7 +15,7 @@ install="$pkgname.install"
 source=("$url/releases/download/v${pkgver//_/-}/$pkgname-${pkgver//_/-}.tgz"
         'default.conf'
         "$pkgname.service")
-md5sums=('33c77a0ae7661142858b5857e692eea6'
+md5sums=('SKIP'
          '3f8f716ddf4daa9073f32fc3666d1004'
          '4f48f542c296933ee35cd739e2189448')
 

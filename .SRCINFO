@@ -1,6 +1,6 @@
 pkgbase = solr-undertow
 	pkgdesc = Solr / SolrCloud running in high performance server
-	pkgver = 1.6.1
+	pkgver = 1.7.0_RC_3
 	pkgrel = 1
 	url = https://github.com/kohesive/solr-undertow
 	install = solr-undertow.install
@@ -12,10 +12,10 @@ pkgbase = solr-undertow
 	optdepends = solr5-war: Solr 5.x WAR file
 	optdepends = solr4-war: Solr 4.x WAR file
 	optdepends = solr3-war: Solr 3.x WAR file
-	source = https://github.com/kohesive/solr-undertow/releases/download/v1.6.1/solr-undertow-1.6.1.tgz
+	source = https://github.com/kohesive/solr-undertow/releases/download/v1.7.0-RC-3/solr-undertow-1.7.0-RC-3.tgz
 	source = default.conf
 	source = solr-undertow.service
-	md5sums = 33c77a0ae7661142858b5857e692eea6
+	md5sums = SKIP
 	md5sums = 3f8f716ddf4daa9073f32fc3666d1004
 	md5sums = 4f48f542c296933ee35cd739e2189448
 
