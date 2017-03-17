@@ -11,7 +11,7 @@
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
 _pkgbasever=4.10-gnu
-_pkgver=4.10.1-gnu
+_pkgver=4.10.2-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -44,6 +44,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
+        '0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch'
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch'
         # armv7h patches
@@ -57,10 +58,11 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch'
-        '0009-drm-armada-tracing-fix.patch')
+        '0009-drm-armada-tracing-fix.patch'
+        '0010-disable-USB3-port-on-ODROID-XU.patch')
 sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf5811fdae48fafd5a8e00d18ed9ac2e1ad4b12a657f322eb234384316ad131e0'
             'SKIP'
-            '03669d17c68d1a845db36dcc953fd98450c692d97c4273c91ae17ad5e4ec395834f6320e4862ffe5fff7eecbe2ea5888cbe3c9c9093dd16fad8603db756b8053'
+            '02e518e8192f7b71dcb3724d1b9f4bc502d210387548a77a8edf6900281ccd13de55986382c9be00afacf0dc0ca2f13a70327be9230b1c93d95bc917cfd17643'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -70,22 +72,24 @@ sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf58
             'SKIP'
             '9f402a1a61887d85966108446bbc71f9b98c44e09ed226ea21fd01edea992c55168b991ee8207b4635663a07d3df4babc379491eed65695440772e46a6dc015a'
             'bc6b1208be9a939e4831e91c27df1553510e359b4915afb071b3816a97cde9c65f306f61a9bee0a624f6439c232b102e62572126e9e1d0cf31715dacfdaa85fc'
-            'd2159ac8a81de606b44bbf19ffe9f2af907bc71a88043f3b6bb1195b69ab6cb8c6fdda8c40b41a0c8764e44a82dd2ece4a702a236e20bf764d3b3f962fd7e5c3'
+            '82b94244d3c641921b0e04da28faba10bc6b04ce94258ad01174166ed9c99acced8895d979c120cacf9cc9fcad4e1d7f57c0af655316c73cc3b093f2fd48d890'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
+            '397fc751697cc4e2ceb7e6d854f5e7fc115ed8511df406ffe5d8f80afeec385ba64cd28c4666bb206612fdcd7a578b60ca6ff125c2138c615aee6135d86b0197'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '85983a22bf5aae49504523062bf73cd278862823df24b7f176915c4fbf5854d9bc3f512cce402accff04793f86f855c45a3264d77c5025af253a56a26eca267b'
+            '08f47087aa71d1aca8dc4d5b7bb28cff3a7bb99f5bd64fc47664d3927ef470e256d22018da0726c186d9f9d19711c91ae4f3333aa161a0b18c082b5b60e5d74d'
             'SKIP'
-            'de2caaf68d817582f70b7382566108cdfd54557675172d88c0aef45a9bad9c2c4c2cbae4b4cd393a083f1f78563a05f7280dc8553f8f91cb214f88f0c4c3790c'
-            '7815bb6eded4f0fd3cb6eac3849d6f69728d4e9f5ae83064d6c1f319a5771f49d5fafad3b62c68f5d5c1f8643202e8968866005c50d069904ff57ee6dd4ce39d'
-            'cb767339d5ad2844da971dd1c8f0eed26a2aee3c08747f7d116965872cba44abb73a393408fbec420933b1d4f4b9837d12100522c1b89a376a2defc6b470d971'
-            '764d174fde06916986a46b274b63f8978ad2229eced9502a46cdb95bfe70e5e4e172b37002e19c44d1cf0b573a8c9f35b806b3f3c4d00aed6a64e41216d5a00f'
-            '1e6682960231c653c8dbcc632620adbb3bb8aa6647a58b9d1f98446ae8829c216960732e71e24561ba4dffa24cd2f868bb59ed2c367ddf5f2b8b503fc20e56ba'
-            '97cb0a576375bb4eed5f1328d1e61e912c3f7eed5f7c45e2d41a59f7f3429d23b267b3f37506dc52efa3a7f9de62fe59b629970bcc1e1a8b1ef74bf6e7e3196e'
-            '7ce4d348c3cdf218dd9ded4884d7e5712b0d18bd17d897a2fc1a6507e776b66c8ead0018437c735e1080f2d4a114abb15bcf24a0d404937ada231d7c04a2814f'
-            'a62714d52cd7f7979e69d7f26974dec7dd5f133ed6fab3d56aa0b7b232ce7dbab0f6a0dbd69b2c424313a19a218d0e96433968709104be0796549c582090ec1a'
-            'cfb61d1e09aba91c956f187828219ef0e86cf29455e1d2fa905a2a68ba4619b16acc529a721cbd55efcd8dbf548da0df0d7afb705081b41bcebf7c2398505f2b')
+            'dd4e2482d6e3d91d00e37e665933515a4fa876d39c036d639f21c48a09f03202f3dec0dbe04b7c60c4b7e1f49617b5f94ace688afacbe33dc6d6818c0c797031'
+            'cf0a3061cef91c04fa5e6d50c4ee235f817cb97f6b7a77f42d42ada707e71bd9731dfafdfcf396e767362998acd8b98ad9942a989c2dd8457e57177c354ec7d2'
+            '6866b84fac93df7eb669f71ed0041270a5f7254bddf6e4f3de7820dbf5696f09eb3051843f7f48d9ae418487ed765b203eccf4bf399d0ca95061ba0399043839'
+            'f41af76bbb6727fa415bb4e7e5da1896a5f01316354d5f34bc55b3f4451e571f2302c4e66c2b949bb330241d4187d507faba83b1584907d1b66a82a60a1c8923'
+            'ddf31c7db4c873c258763ddff4419315af3d06dc28f14f8d48b0d99e35ecd953d02a992da414c8dd1b9fd9f2bb12580393a541a3064051ece1fa6e173fc52ba2'
+            'df749d4d4f71b4514f526941af592cc11eec13214375e7c0088b84558b56508bf444ea70fb93a0c114a03cd4efd559ea816deb670064fa91f02c7b7f7483d57d'
+            'd1c6d28d22724f9d3700f5d8350164ddba7e6f64980a8d25ebb7cbcffa83250125f337e91510a925deb10bc1e30ac999cb18f3427e051e00d82f5bbaf8a848ec'
+            'd14cedaf275ea1337b18a75d72b7610cb96f982896542edc0a59306c10888d62594b8a36197e33d079e6d5a9b5d20f46892b96a2d3aab5258013f0e5991e3f9b'
+            '0a806db7df7761f5dc64b8a3b3860c6c9216cecfe135778f3019e51e1245bcc34980c6124a11447285b18e284547ffc57a4b2c1290b4dd91a55b0237a7007cc9'
+            'c02d0e1d6b399c84323937a81b702fd3ac7c6f9e08254d1697858f829fd045ee33d5952d42eb22558c290efe7fd5d8fdd7695d8ef3526742a67052fb9e303ebe')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -127,6 +131,7 @@ prepare() {
     patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
     patch -p1 -i "${srcdir}/0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch"
     patch -p1 -i "${srcdir}/0009-drm-armada-tracing-fix.patch"
+    patch -p1 -i "${srcdir}/0010-disable-USB3-port-on-ODROID-XU.patch"
   fi
 
   # add freedo as boot logo
@@ -135,6 +140,9 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # patch for CVE-2017-2636
+  patch -p1 -i "${srcdir}/0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch"
 
   # maintain the TTY over USB disconnects
   # http://www.coreboot.org/EHCI_Gadget_Debug
@@ -211,8 +219,13 @@ _package() {
   true && install=${install}.pkg
 
   # install mkinitcpio preset file for kernel
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
-    install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  if [ "${CARCH}" = "armv7h" ]; then
+    sed "s|/boot/vmlinuz-%PKGBASE%|${_kernver}|g" "${srcdir}/linux.preset" |
+      install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  elif [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
+    sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
+      install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+  fi
 
   # install pacman hook for initramfs regeneration
   sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
@@ -355,7 +368,7 @@ _package-headers() {
   # add objtool for external module building and enabled VALIDATION_STACK option
   if [ -f tools/objtool/objtool ];  then
       mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
-      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/
   fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
