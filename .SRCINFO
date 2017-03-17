@@ -1,0 +1,14 @@
+pkgbase = gapwm
+	pkgdesc = Genetic Algorithm Method for Optimizing a Position Weight Matrix
+	pkgver = 1.0
+	pkgrel = 7
+	url = http://www.niehs.nih.gov/research/resources/software/biostatistics/gapwm/index.cfm
+	arch = i686
+	arch = x86_64
+	license = gpl
+	depends = sh
+	source = gapwm10r1.tar.gz::http://www.niehs.nih.gov/research/resources/assets/docs/gapwm10r1targz.gz
+	md5sums = bae6e6202f8ac12765f58e5b442d0f97
+
+pkgname = gapwm
+
