@@ -28,11 +28,11 @@ prepare() {
     cd "openvpn-${pkgver}"/
     
     # Xor Patch
-    patch -Np1 -i ../../02-tunnelblick-openvpn_xorpatch-a.diff
-    patch -Np1 -i ../../03-tunnelblick-openvpn_xorpatch-b.diff
-    patch -Np1 -i ../../04-tunnelblick-openvpn_xorpatch-c.diff
-    patch -Np1 -i ../../05-tunnelblick-openvpn_xorpatch-d.diff
-    patch -Np1 -i ../../06-tunnelblick-openvpn_xorpatch-e.diff
+    patch -Np1 -i ../02-tunnelblick-openvpn_xorpatch-a.diff
+    patch -Np1 -i ../03-tunnelblick-openvpn_xorpatch-b.diff
+    patch -Np1 -i ../04-tunnelblick-openvpn_xorpatch-c.diff
+    patch -Np1 -i ../05-tunnelblick-openvpn_xorpatch-d.diff
+    patch -Np1 -i ../06-tunnelblick-openvpn_xorpatch-e.diff
 }
 
 build() {
