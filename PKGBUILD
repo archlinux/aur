@@ -1,6 +1,6 @@
 # Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
 pkgname=gamera
-pkgver=3.4.2
+pkgver=3.4.3
 pkgrel=1
 pkgdesc="Framework for building document analysis applications."
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
@@ -8,7 +8,7 @@ url="http://gamera.informatik.hsnr.de"
 license=('GPL')
 depends=('python2' 'libtiff' 'libpng')
 source=(https://github.com/hsnr-gamera/gamera/releases/download/$pkgver/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('f565c6bd0378e9d207bea0662cdfa5c247907bbbe51dbfcaa923ba3acee96c4169a3a96832499d437e32a7c9c055cd9ed9e54184fc64176eb06869de36a8887f')
+sha512sums=('accd5a534b529dccdf7d2c8a3aa652a132fc5639407e1026d30a32348d1cb83dae0669d3b5de55f1630788cc03d4ba2b8a3d19bd8ae6e5119f27fe63764af002')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
