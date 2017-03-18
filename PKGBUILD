@@ -4,7 +4,7 @@
 # KNOSSOS saves its user preferences in $HOME/.config/MPIMF/
 
 pkgname=knossos
-pkgver=5.0
+pkgver=5.0.1
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A software tool for the visualization and annotation of 3D image data. It was developed for the rapid reconstruction of neural morphology and connectivity."
@@ -22,7 +22,7 @@ makedepends=("boost"
 source=("https://github.com/knossos-project/knossos/archive/v$pkgver.tar.gz"
 	"knossos.desktop"
 )
-md5sums=('c6942291b5b9a9c08910584446b7273e'
+md5sums=('24d4607057faf71c8e783339b5646968'
          '1a2b3733cf5fcb3e1845ce771abb58e9')
 
 build() {
