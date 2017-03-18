@@ -1,16 +1,16 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=texlive-garamondx
-pkgver=1.099
-pkgrel=3
+pkgver=1.17
+pkgrel=1
 pkgdesc="URW Garamond No8 Adobe Type1 fonts from CTAN (for texlive)"
 arch=('any')
 license=('CUSTOM:alladin')
-url=http://www.ctan.org/tex-archive/fonts/crimson
+url=http://www.ctan.org/tex-archive/fonts/garamondx
 depends=(texlive-core)
 install=$pkgname.install
 source=(http://mirrors.ctan.org/install/fonts/garamondx.tds.zip garamondx.maps)
-md5sums=('1ced5a2bc4512dc5fc298ae21d717d63'
+md5sums=('853812ddb2b54a117db6039916dd394b'
          '80761a71120a9861400927b591ac463f')
 noextract=('garamondx.tds.zip')
 
