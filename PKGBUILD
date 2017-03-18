@@ -2,13 +2,15 @@
 
 pkgname=editorconfig-geany-git
 pkgver=r18.9dce3bb
-pkgrel=2
+pkgrel=3
 pkgdesc='EditorConfig plugin for Geany'
 url='https://github.com/editorconfig/editorconfig-geany'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('geany' 'editorconfig-core-c')
 makedepends=('git')
+provides=('editorconfig-geany')
+conflicts=('editorconfig-geany')
 source=('git+https://github.com/editorconfig/editorconfig-geany.git')
 sha256sums=('SKIP')
 
