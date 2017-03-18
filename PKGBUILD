@@ -2,7 +2,7 @@
 
 pkgname=opencascade7
 pkgver=7.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Open CASCADE Technology, 3D modeling & numerical simulation, version 7"
 url="http://www.opencascade.org"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ prepare(){
   #flags="$flags -D3RDPARTY_VTK_INCLUDE_DIR=/opt/vtk6/include"
   #flags="$flags -D3RDPARTY_VTK_LIBRARY_DIR=/opt/vtk6/lib"
   #flags="$flags -D3RDPARTY_VTK_BIN_DIR=/opt/vtk6/bin"
-  flags="$flags -DCMAKE_INSTALL_PREFIX=${pkgdir}/opt/${pkgname}"
+  flags="$flags -DCMAKE_INSTALL_PREFIX=/opt/${pkgname}"
   flags="$flags -DUSE_GL2PS=ON"
   flags="$flags -D3RDPARTY_GL2PS_DIR="
   flags="$flags -DUSE_FREEIMAGE=ON"
