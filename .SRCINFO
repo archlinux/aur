@@ -15,6 +15,7 @@ pkgbase = rdma-core
 	makedepends = pkg-config
 	makedepends = ninja
 	makedepends = bash
+	depends = libnl
 	provides = rdma-core
 	provides = rdma
 	provides = ibacm
