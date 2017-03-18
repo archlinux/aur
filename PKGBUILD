@@ -45,5 +45,4 @@ package() {
     cd "chewing-editor/build"
 
     make DESTDIR="$pkgdir" install
-    install -Dm644 "../COPYING" "$pkgdir/usr/share/licenses/chewing-editor/COPYING"
 }
