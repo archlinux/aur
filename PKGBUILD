@@ -3,9 +3,9 @@
 # Contributor: Daniel YC Lin <dlin.tw (at) gmail.com>
 #81aad9a50e380814107af0baaf5e05949f12b0cc
 pkgname=grub4dos
-pkgver="0.4.5c_20140822"
-pkgrel=2
-_rel=81aad9a50e380814107af0baaf5e05949f12b0cc
+pkgver="0.4.6a_20170306"
+pkgrel=1
+_rel=00c37ea8b24d0830e9d8a768f99de84aa3d7fa16
 pkgdesc="A GRUB boot loader support menu on windows(fat,ntfs)/linux(ext2,3,4)"
 arch=(i686 x86_64)
 url="http://grub4dos.chenall.net/"
@@ -17,7 +17,7 @@ install=grub4dos.install
 conflicts=(grub4dos)
 options=('!strip' '!buildflags' '!makeflags')
 
-md5sums=('4e97c87e13fbe0ec08585edcd84814b0'
+md5sums=('4353c6909530e5e716ed0737865ee22d'
          'd84dde7476cb6ef37df3b159a1c3f1e8'
          '32cc5705f5328dc30077e9d0a96ded3b')
 
