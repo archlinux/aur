@@ -1,0 +1,16 @@
+pkgbase = pflask-git
+	pkgdesc = Lightweight process containers for Linux
+	pkgver = r274.30d3b94
+	pkgrel = 1
+	url = https://github.com/ghedo/pflask
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	provides = pflask
+	conflicts = pflask
+	source = git://github.com/ghedo/pflask.git
+	md5sums = SKIP
+
+pkgname = pflask-git
+
