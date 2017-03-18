@@ -1,7 +1,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-covolunablu-gaming       # Build kernel with a different name
-_srcname=linux-4.8
-pkgver=4.8.14
+_srcname=linux-4.10
+pkgver=4.10.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -20,36 +20,31 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
-        'config' 'config.x86_64'
+        'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
         '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
-        'net_handle_no_dst_on_skb_in_icmp6_send.patch'
-        '0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch'
-        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-v8r4/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.8.0.patch'
-        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-v8r4/0002-block-introduce-the-BFQ-v7r11-I-O-sched-to-be-ported.patch'
-        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-v8r4/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-to-.patch'
-        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.8.0-v8r4/0004-Turn-BFQ-v7r11-into-BFQ-v8r4-for-4.8.0.patch'
-        "https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/376295e81ec217038c5467424ab317906ea3b3e3/drivers/input/joystick/xpad.c")
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.10.0-v8r8/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.10..patch'
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.10.0-v8r8/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.10.0.patch'
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.10.0-v8r8/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch'
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.10.0-v8r8/0004-Turn-BFQ-v7r11-for-4.10.0-into-BFQ-v8r8-for-4.10.0.patch'
+        "https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/1b3922d7f6bfbb323ca54bb585b96cda9a7d8439/drivers/input/joystick/xpad.c")
 
-sha256sums=('3e9150065f193d3d94bcf46a1fe9f033c7ef7122ab71d75a7fb5a2f0c9a7e11a'
+sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
             'SKIP'
-            'efa9b7d87a6ca67426e3d7f206ac987eb7cb31602ad2011e81060626de790fcb'
+            '17459007bae81a8cda00f0ce74dfbc70c1afc5b99133649e664045e34c5d63b5'
             'SKIP'
-            'f105551388ad00732eecbdb0037092597482970fe88af2634916ade8674410c7'
-            'd85f8d4e7c7672ba9bb25bcb95e8442acd9b4d784161b292c27b9f5cee95bcd7'
+            '3a2a5d314a2a2135d2e87aa8e6b44ac142fa249cc5f51f43a918393e6ce3d5a5'
+            'b2df79d0c15cb1f364164299102f2a33470e58a2e01fb092144e6288726d0188'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'b595a1588bafb3d732841cd1b73633970706914f57f2d215c9f1494212d13989'
-            '3e955e0f1aae96bb6c1507236adc952640c9bd0a134b9995ab92106a33dc02d9'
-            '1dabd969b18b7e09e2ffeffe4c2430dbc26e5df9868563d54ca95f45c690262f'
-            'c8d17a7893d5780fd0c90311470160dcc842b81621b30671150e2e3224be86d2'
-            'e47ea5b1c2f20cfade4e6a85bff1320dac84ac638e48ef4eec7285fe9e1e1def'
-            'c3c96e304aef378f0cc6e1fb18eeabe176e6ba918d13060c105f3d8cabc85f59'
-            'b40f90abeaec479cadf189fe185353cd70cde76349433ab618b9e776ab31133f')
+            'f75f39e9efd056875c2212ac52fdedac0d4a37e1878389e3557769435c28ca2d' # -- patches
+            '59d8d3403189927dff446f417505956b94159658df04732ffa708184265ea7bf'
+            '92f89c0feb9fd7463db173ea5621839e9e63aaf02021bf2d190105c97cdce0f5'
+            'e185fad01a482b53bbce681688899887881a5958e8f32b9196307383ca97affd'
+            '91282b2cfae138b78b36b3efefd66514ee0cbdcc22f25b28568c2ca8e419a1aa'
+)
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -64,26 +59,14 @@ prepare() {
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
 
-  # https://bugzilla.kernel.org/show_bug.cgi?id=189851
-  patch -p1 -i "${srcdir}/net_handle_no_dst_on_skb_in_icmp6_send.patch"
-
-  # Revert a commit that causes memory corruption in i686 chroots on our
-  # build server ("valgrind bash" immediately crashes)
-  patch -Rp1 -i "${srcdir}/0001-x86-fpu-Fix-invalid-FPU-ptrace-state-after-execve.patch"
-
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
-  # remove this when a Kconfig knob is made available by upstream
-  # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
   # add BFQ
-  patch -p1 -i "${srcdir}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.8.0.patch"
-  patch -p1 -i "${srcdir}/0002-block-introduce-the-BFQ-v7r11-I-O-sched-to-be-ported.patch"
-  patch -p1 -i "${srcdir}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-to-.patch"
-  patch -p1 -i "${srcdir}/0004-Turn-BFQ-v7r11-into-BFQ-v8r4-for-4.8.0.patch"
+  patch -p1 -i "${srcdir}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.10..patch"
+  patch -p1 -i "${srcdir}/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.10.0.patch"
+  patch -p1 -i "${srcdir}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch"
+  patch -p1 -i "${srcdir}/0004-Turn-BFQ-v7r11-for-4.10.0-into-BFQ-v8r8-for-4.10.0.patch"
 
   # use steamos version of xpad
   cp "${srcdir}/xpad.c" ./drivers/input/joystick/xpad.c
@@ -92,7 +75,7 @@ prepare() {
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
-    cat "${srcdir}/config" > ./.config
+    cat "${srcdir}/config.i686" > ./.config
   fi
 
   if [ "${_kernelname}" != "" ]; then
