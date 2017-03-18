@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=jiri-git
-pkgver=r1143
+pkgver=r1166
 pkgrel=1
 pkgdesc='A tool for multi-repo development similar to Android repo'
 arch=(i686 x86_64)
@@ -27,6 +27,19 @@ prepare() {
 
 build() {
   cd jiri
+
+  go get -d github.com/libgit2/git2go
+  mkdir -p "${GOPATH}/src/github.com/libgit2/git2go/vendor/libgit2/build"
+  pushd "${GOPATH}/src/github.com/libgit2/git2go/vendor/libgit2/build"
+  cmake -GNinja \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_C_FLAGS=-fPIC \
+    -DTHREADSAFE=ON \
+    -DBUILD_CLAR=OFF \
+    -DBUILD_SHARED_LIBS=OFF \
+    ..
+  ninja
+  popd
 
   go build -o build/jiri fuchsia.googlesource.com/jiri/cmd/jiri # -gccgoflags "$CFLAGS $LDFLAGS"
 }
