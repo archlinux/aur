@@ -1,12 +1,7 @@
 post_install() {
-   mime-archpkg -u
+   mime-archpkg -a
 }
 
-post_upgrade() {
-   mime-archpkg -r
-   mime-archpkg -u
-}
-
-post_remove() {
+pre_remove() {
    mime-archpkg -r
 }

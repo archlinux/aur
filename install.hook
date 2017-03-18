@@ -1,0 +1,10 @@
+[Trigger]
+Type = File
+Operation = Install
+Target = usr/share/icons/*/
+
+[Action]
+Description = Adding archpkg mimetypes icons...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/mime-archpkg -i
+NeedsTargets

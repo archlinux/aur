@@ -1,0 +1,10 @@
+[Trigger]
+Type = File
+Operation = Remove
+Target = usr/share/icons/*/
+
+[Action]
+Description = Removing archpkg mimetypes icons...
+When = PreTransaction
+Exec = /usr/share/libalpm/scripts/mime-archpkg -r
+NeedsTargets

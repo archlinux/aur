@@ -1,0 +1,10 @@
+[Trigger]
+Type = File
+Operation = Upgrade
+Target = usr/share/icons/*/
+
+[Action]
+Description = Updating archpkg mimetypes icons...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/mime-archpkg -u
+NeedsTargets
