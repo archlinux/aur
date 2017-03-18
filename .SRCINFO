@@ -1,6 +1,6 @@
 pkgbase = pg_qualstats-git
 	pkgdesc = postgresql background worker to capture data
-	pkgver = 05032a0
+	pkgver = b749f80
 	pkgrel = 1
 	url = https://github.com/dalibo/pg_qualstats
 	install = pg_qualstats-git.install
