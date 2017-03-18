@@ -1,6 +1,6 @@
 pkgbase = hardcode-tray
 	pkgdesc = Fixes Hardcoded Tray Icons
-	pkgver = 3.6.5
+	pkgver = 3.6.6
 	pkgrel = 1
 	url = https://github.com/bil-elmoussaoui/Hardcode-Tray
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = hardcode-tray
 	provides = hardcode-tray
 	conflicts = hardcode-tray-fixer-git
 	conflicts = hardcode-tray-git
-	source = https://github.com/bil-elmoussaoui/Hardcode-Tray/archive/v3.6.5.tar.gz
-	sha256sums = 961ba5004bd499c58a05e8926c7044face352536c5389e17d014e4e68f68ffcc
+	source = https://github.com/bil-elmoussaoui/Hardcode-Tray/archive/v3.6.6.tar.gz
+	sha256sums = 9d158f8e47d3e3252c82aab4fafac0d21d2b7b349c34cbb75c245cf19af1740e
 
 pkgname = hardcode-tray
 
