@@ -2,7 +2,7 @@
 
 pkgname=swgemu
 pkgver=0.18
-pkgrel=4
+pkgrel=5
 pkgdesc="Launcher for Star Wars Galaxies Emulator"
 arch=(any)
 license=('GPL')
@@ -11,6 +11,7 @@ _dlurl=http://launchpad2.net/SWGEmuLaunchpad_ubuntu_x86_64.tar.gz
 depends=('qt5-base'
 		 'qt5-webkit')
 source=(launchpad launchpad.desktop launchpad.install icon.png ${_dlurl})
+validpgpkeys=(120206848BD3375043BF1B253209FA22E33FF70C)
 md5sums=('b7041ff9bef465687f6df5a6fb9053db'
          '3d5fff82e58d1a1ff548f72a0cb466ea'
          '4a855d869afa0fe7eb21bb1beb015b0a'
@@ -21,7 +22,7 @@ install='launchpad.install'
 package() {
 	cd "$srcdir"
 
-	install -D -m755 "${srcdir}/launchpad" "${pkgdir}/usr/bin/launch-swg"
+	install -D -m755 "${srcdir}/launchpad" "${pkgdir}/usr/bin/swgemu"
 	install -D -m644 "${srcdir}/ubuntu64/KSWGProfCalc.dat" "${pkgdir}/opt/SWGEMU/Launchpad/KSWGProfCalc.dat"
 	install -D -m644 "${srcdir}/ubuntu64/KSWGProfCalcEditor.exe" "${pkgdir}/opt/SWGEMU/Launchpad/KSWGProfCalcEditor.exe"
 	install -D -m644 "${srcdir}/ubuntu64/SWGEmuLaunchpad" "${pkgdir}/opt/SWGEMU/Launchpad/SWGEmuLaunchpad"
