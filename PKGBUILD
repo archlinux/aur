@@ -4,14 +4,15 @@
 pkgname=secure-delete
 pkgver=3.1
 pkgfile="secure_delete-$pkgver"
-pkgrel=6
+pkgrel=7
 pkgdesc="Secure file, disk, swap, memory erasure utilities"
 url="http://www.thc.org/"
 depends=('glibc' 'sh')
-conflicts=('srm')
+conflicts=('srm' 'cfitsio')
 license=('GPL')
 arch=('i686' 'x86_64')
-source=(https://zerocount.net/hosted/secure_delete-${pkgver}.tar.gz)
+install=${pkgname}.install
+source=(http://zerocount.net/hosted/secure_delete-${pkgver}.tar.gz)
 sha256sums=('a9d846d1dce3f1bdf13bbb306e8596bc1f263198a086f6beecd90ccf7bddf8d5')
 
 build()
@@ -19,9 +20,9 @@ build()
   cd "${srcdir}/${pkgfile}"
   sed -i -e 's/mktemp/mkstemp/g' sfill.c
   sed -i -e "s/sswap smem sdel-mod.o/sswap smem/" -e '/test.*sdel-mod/d' \
-	-e "s/^srm: /srm: sdel-lib.o /" -e "s/^sfill: /sfill: sdel-lib.o /" \
-	-e "s/^sswap: /sswap: sdel-lib.o /" -e "s/^smem: /smem: sdel-lib.o /" \
-	Makefile
+    -e "s/^srm: /srm: sdel-lib.o /" -e "s/^sfill: /sfill: sdel-lib.o /" \
+    -e "s/^sswap: /sswap: sdel-lib.o /" -e "s/^smem: /smem: sdel-lib.o /" \
+    Makefile
   make
 }
 
@@ -32,6 +33,8 @@ package()
     MAN_DIR="${pkgdir}/usr/share/man" \
     DOC_DIR="${pkgdir}/usr/share/doc/secure_delete" \
     install
+  # renamed due to naming conflicts
+  mv "${pkgdir}/usr/bin/smem" "${pkgdir}/usr/bin/semem"
   chmod a+r "${pkgdir}/usr/bin"/*
 }
 

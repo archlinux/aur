@@ -1,0 +1,8 @@
+post_install(){
+  cat << EOF
+  SECURE DELETE NOTICE:
+the "smem" program has been renamed "semem"(secure erase memory) dude to file
+conflicts with other packages. This is specific to this package, and will not
+impede function. that is all
+EOF
+}
