@@ -1,7 +1,7 @@
 # Maintainer:Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=bzr-bzr
-pkgver=2.8.0.6621
+pkgver=2.8.0.6622
 pkgrel=2
 pkgdesc="A decentralized revision control system (bazaar) from launchpad"
 arch=('i686' 'x86_64')
@@ -22,7 +22,10 @@ pkgver() {
 
 prepare() {
   cd bazaar-2.8
-  sed 's|/man/man1|/share/man/man1|' -i setup.py
+  sed -i "s|'man/man1|'share/man/man1|" setup.py
+  cd bzrlib
+  sed -i '1s+python$+python2+' _patiencediff_py.py patiencediff.py tests/ssl_certs/create_ssls.py \
+      plugins/bash_completion/bashcomp.py
 }
 
 build() {

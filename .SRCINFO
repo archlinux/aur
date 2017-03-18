@@ -1,6 +1,6 @@
 pkgbase = bzr-bzr
 	pkgdesc = A decentralized revision control system (bazaar) from launchpad
-	pkgver = 2.8.0.6621
+	pkgver = 2.8.0.6622
 	pkgrel = 2
 	url = https://bazaar.canonical.com/
 	arch = i686
