@@ -7,8 +7,6 @@ pkgbase = opencascade7
 	arch = x86_64
 	license = custom
 	makedepends = cmake
-	makedepends = flex
-	makedepends = bison
 	makedepends = qt5-webkit
 	depends = gl2ps
 	depends = freeimage
@@ -16,7 +14,6 @@ pkgbase = opencascade7
 	depends = glu
 	depends = libxmu
 	depends = vtk
-	depends = mesa
 	optdepends = intel-tbb: multithreading support
 	source = opencascade-7.1.0.tar.gz::http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V7_1_0;sf=tgz
 	source = fix-install-dir-references.patch
