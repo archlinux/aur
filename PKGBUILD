@@ -1,41 +1,37 @@
-# Maintainer: Nikita Sivakov <cryptomaniac.512@gmail.com>
-# Contributor: Nikita Sivakov <cryptomaniac.512@gmail.com>
+# Maintainer: Francois Menning <f.menning@protonmail.com>
+# Contributor: Michael Lass <bevan@bi-co.net>
 
-pkgname=kodi-addon-pvr-iptvsimple-git
 _gitname=pvr.iptvsimple
-pkgver=r103.cc85463
+pkgname=kodi-addon-pvr-iptvsimple-git
+pkgver=r154.53d63cc
 pkgrel=1
-pkgdesc='IPTV Simple PVR client addon for Kodi'
-arch=('i686' 'x86_64')
-url="https://github.com/kodi-pvr/${_gitname}"
-license=('GPL')
-groups=('kodi')
-makedepends=('cmake' 'git')
-provides=('kodi-addon-pvr-iptvsimple');
-conflicts=('kodi-addon-pvr-iptvsimple');
-depends=('kodi' 'kodi-platform-git')
-source=("git+https://github.com/kodi-pvr/${_gitname}.git#branch=Jarvis")
-md5sums=('SKIP')
+pkgdesc="Kodi's IPTV Simple client addon."
+url='https://github.com/kodi-pvr/pvr.iptvsimple'
+license=('GPL3')
+source=("${_gitname}::git+https://github.com/kodi-pvr/pvr.iptvsimple")
+sha256sums=('SKIP')
+arch=('any')
+depends=('kodi' 'p8-platform')
+makedepends=('git' 'cmake' 'kodi-platform' 'kodi-dev')
+conflicts=('kodi-addon-pvr-iptvsimple' 'kodi-pvr-addons')
+provides=('kodi-addon-pvr-iptvsimple')
 
 pkgver() {
-    cd "${srcdir}/${_gitname}"
-
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${_gitname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${srcdir}/${_gitname}"
-
-    rm -rf build
-    mkdir build
-    cd build
-
-    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib/kodi -DCMAKE_BUILD_TYPE=Release  || return 1
-    make || return 1
+  cd "${srcdir}/${_gitname}"
+  cmake \
+    -DADDONS_TO_BUILD=pvr.iptvsimple \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib/kodi \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_MODULE_PATH=/usr/lib/kodi
 }
 
 package() {
-    cd "${srcdir}/${_gitname}/build"
-
-    make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${_gitname}"
+  make prefix=/usr DESTDIR="$pkgdir" install
 }
