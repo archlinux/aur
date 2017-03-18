@@ -2,12 +2,12 @@
 pkgname=microbrust-git
 _pkgname=microbrust
 pkgver=r31.61b177e
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux interface to Arturia Microbrute'
 arch=('i686' 'x86_64')
 url='https://github.com/jmatraszek/microbrust'
 license=('GPL3')
-depends=('alsalib')
+depends=('alsa-lib')
 makedepends=('cargo')
 source=("${pkgname%-*}::git+https://github.com/jmatraszek/microbrust.git")
 
