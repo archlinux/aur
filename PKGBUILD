@@ -2,14 +2,15 @@
 
 _pkgname=residualvm
 pkgname=${_pkgname}-git
-pkgver=r6768.31445f8
+pkgver=r6826.6ef37506
 pkgrel=1
 pkgdesc="A cross-platform 3D game interpreter which allows you to play LucasArts' LUA-based 3D adventures"
 arch=('i686' 'x86_64')
 url='http://www.residualvm.org'
 license=(LGPL)
-depends=('sdl' 'zlib' 'alsa-lib' 'libmad' 'mesa' 'libmpeg2' 'freetype2' 'libjpeg-turbo')
-makedepends=('git')
+depends=(sdl2 zlib alsa-lib libmad mesa libmpeg2 freetype2
+         glew libjpeg-turbo)
+makedepends=(git)
 source=(git://github.com/residualvm/residualvm.git)
 sha1sums=('SKIP')
 
