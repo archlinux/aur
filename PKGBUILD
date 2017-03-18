@@ -3,8 +3,8 @@
 # Previously:Fisher Duan <steamedfish@njuopen.com> Ryan Corder <ryanc@greengrey.org>
 
 pkgname=cyrus-imapd
-pkgver=2.5.9
-pkgrel=2
+pkgver=2.5.10
+pkgrel=1
 pkgdesc="Cyrus IMAP mail server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.cyrusimap.org/"
@@ -19,7 +19,7 @@ source=(ftp://ftp.cyrusimap.org/cyrus-imapd/$pkgname-$pkgver.tar.gz
         'cyrus-master-conf.d'
         'cyrus-imapd.install'
         'cyrus-master.service')
-sha512sums=('aad575b7bf8afb4664bb321c2e9ae2be8d9ec6998341a7ca5582db7d27b2b727376693d5e1ac776c26cbd8dc12d8e299f981a33fc0aab8d802832cbf927e454f'
+sha512sums=('78b85e37c63f1dbb60898da229f70f45810326a01244067d23b1317e2c2ae3326e48b6944787d59024e44c48c441ed2b848d6a83c451c192a3bb95c8f37880fa'
             '881540a400670e86499db76af7cc41aa663a4492e3c512dbf0687f42b4a54dc5aca9df3ad315dd1c606d084feeec1a07670d50fae82fb9e71f30d5321d94327f'
             '80bfc8a2fca10cd2aa965449c426c987adf156017b111cebc37b889b3d41b7c5ba8a574e3b858166a72101a0e55f02c16411d06aa4dadc0b6410d40d68902386'
             '6cc4bbed0d5342a28a69e4acfa4a89f7a8909c6271e2e819e8da855dca2873fdaa5cea6519cb09c169b507df273d030eff5677bb07c4bf6591939958dd8e1bfe')
