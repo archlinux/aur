@@ -1,0 +1,40 @@
+From e705071be9043653784c5e94adb052f60888d013 Mon Sep 17 00:00:00 2001
+From: Andrew Shadura <andrew.shadura@collabora.co.uk>
+Date: Mon, 17 Oct 2016 18:23:27 +0200
+Subject: [PATCH] Fix font definitions.
+
+---
+ gtk-3.0/gtk-widgets.css | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/gtk-3.0/gtk-widgets.css b/gtk-3.0/gtk-widgets.css
+index 4a107b0..5f5b057 100644
+--- a/gtk-3.0/gtk-widgets.css
++++ b/gtk-3.0/gtk-widgets.css
+@@ -1591,7 +1591,7 @@ treemenu menuitem {
+ 
+ menu,
+ .menu {
+-	font: normal;
++	font-weight: normal;
+ 	background-color: @menu_bg_color;
+ 	color: @menu_fg_color;
+ 	padding: 1px;
+@@ -1973,7 +1973,7 @@ placessidebar .view {
+ 
+ assistant .sidebar highlight {
+ 	color: @theme_fg_color;
+-	font: bold;
++	font-weight: bold;
+ }
+ 
+ assistant .sidebar {
+@@ -2523,7 +2523,7 @@ infobar:last-child,
+ }
+ 
+ .titlebar .title {
+-	font: Bold;
++	font-weight: bold;
+ }
+ 
+ /*.titlebar :first-child {*/

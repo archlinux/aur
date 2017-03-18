@@ -1,0 +1,22 @@
+From f5dfb4a4f412a298f38f2a5373dbc6d42879f759 Mon Sep 17 00:00:00 2001
+From: Andrew Shadura <andrew.shadura@collabora.co.uk>
+Date: Mon, 17 Oct 2016 18:22:30 +0200
+Subject: [PATCH] Remove stray closing brace.
+
+---
+ gtk-3.0/applications.css | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/gtk-3.0/applications.css b/gtk-3.0/applications.css
+index c66350c..eff57c3 100644
+--- a/gtk-3.0/applications.css
++++ b/gtk-3.0/applications.css
+@@ -18,8 +18,6 @@
+ 	border-image: none;
+ }
+ 
+-}
+-
+ /*******************
+  * gnome-documents *
+  *******************/
