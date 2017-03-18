@@ -2,13 +2,15 @@
 
 pkgname=guetzli-git
 pkgver=1.0.r8.g6bd68ae
-pkgrel=2
+pkgrel=3
 pkgdesc="Perceptual JPEG encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/google/guetzli"
 license=('Apache')
 depends=('gflags' 'libpng')
 makedepends=('git')
+provides=('guetzli')
+conflicts=('guetzli')
 source=("git+https://github.com/google/guetzli.git")
 sha256sums=('SKIP')
 
