@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Cosmic Express
+Comment=A puzzle game about planning the train route for the world's most awkward space colony
+Icon=cosmic-express
+Exec=/usr/bin/cosmic-express
+Categories=Game;

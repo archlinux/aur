@@ -1,0 +1,22 @@
+pkgbase = cosmic-express
+	pkgdesc = A puzzle game about planning the train route for the world's most awkward space colony
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://cosmicexpressgame.com
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	makedepends = unzip
+	depends = libgl
+	depends = libx11
+	depends = libxcursor
+	depends = libxrandr
+	source = cosmic-express-bin
+	source = cosmic-express.desktop
+	source = cosmic-express.png
+	md5sums = a30146524ba85b90273f4266e6b8ba06
+	md5sums = cbd7830bc31a155a1b2e1bf47e570ae8
+	md5sums = bfc09a1376c7a280e4174c49db48dfe1
+
+pkgname = cosmic-express
+

@@ -1,0 +1,7 @@
+#! /bin/sh
+
+if test "$(uname -m)" = x86_64; then
+    exec "/opt/cosmic-express/Cosmic Express.x86_64"
+else
+    exec "/opt/cosmic-express/Cosmic Express.x86"
+fi
