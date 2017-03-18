@@ -8,8 +8,7 @@ url="http://www.opencascade.org"
 arch=('i686' 'x86_64')
 license=('custom')
 makedepends=('cmake' 'qt5-webkit')
-depends=('gl2ps' 'freeimage' 'tk' 'glu' 'libxmu' 'vtk')
-optdepends=('intel-tbb: multithreading support')
+depends=('gl2ps' 'freeimage' 'tk' 'glu' 'libxmu' 'vtk' 'intel-tbb')
 source=("opencascade-${pkgver}.tar.gz::http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V${pkgver//./_};sf=tgz"
         "fix-install-dir-references.patch")
 md5sums=('SKIP'
@@ -37,11 +36,7 @@ prepare(){
   #flags="$flags -DBUILD_YACCLEX=ON"
   #flags="$flags -D3RDPARTY_BISON_EXECUTABLE=bison"
   #flags="$flags -D3RDPARTY_FLEX_EXECUTABLE=flex"
-  if pacman -T intel-tbb > /dev/null 2>/dev/null; then
-    flags="$flags -DUSE_TBB=ON"
-  else
-    flags="$flags -DUSE_TBB=OFF"
-  fi
+  flags="$flags -DUSE_TBB=ON"
   cmake $flags ..
 }
 

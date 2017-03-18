@@ -14,7 +14,7 @@ pkgbase = opencascade7
 	depends = glu
 	depends = libxmu
 	depends = vtk
-	optdepends = intel-tbb: multithreading support
+	depends = intel-tbb
 	source = opencascade-7.1.0.tar.gz::http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V7_1_0;sf=tgz
 	source = fix-install-dir-references.patch
 	md5sums = SKIP
