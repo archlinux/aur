@@ -1,7 +1,7 @@
 # Maintainer: Marco44 (Marc Cousin) <cousinmarc at gmail dot com>
 pkgname=pg_stat_kcache-git
 _gitname=pg_stat_kcache
-pkgver=ec62dd8
+pkgver=cc9477f
 pkgrel=1
 pkgdesc="postgresql background worker to capture data"
 arch=('i686' 'x86_64' 'armv7h')
