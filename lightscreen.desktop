@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Lightscreen
+Comment=The easy screenshot tool.
+Exec=lightscreen
+Icon=/path/to/lightscreen/src/Lightscreen-2.3/images/LS.ico
+Categories=Graphics
+Terminal=false
+Type=Application
+Version=2.4
