@@ -1,0 +1,17 @@
+pkgbase = python-adal
+	pkgdesc = ADAL for Python
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/AzureAD/azure-activedirectory-library-for-python
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-cryptography
+	depends = python-dateutil
+	depends = python-pyjwt
+	depends = python-requests
+	source = https://github.com/AzureAD/azure-activedirectory-library-for-python/archive/0.4.5.tar.gz
+	md5sums = fbd16b5888d775e7c4a38de704b7f2ff
+
+pkgname = python-adal
+
