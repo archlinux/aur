@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-attrs' 'python-toml')
 source=("git+https://github.com/Streetwalrus/metalfan.git")
 sha256sums=('SKIP')
-backup=('etc/metalfan.conf')
+backup=('etc/metalfan.toml')
 
 pkgver() {
   cd "${srcdir}/metalfan"
