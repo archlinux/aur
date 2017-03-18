@@ -2,6 +2,7 @@
 # More details on how to change this file:
 # https://wiki.archlinux.org/index.php/PKGBUILD
 # https://wiki.archlinux.org/index.php/Creating_packages
+# https://wiki.archlinux.org/index.php/Arch_User_Repository#Submitting_packages
 
 ARCH_LIST=('x86_64' 'x86' 'arm')
 HOST_ARCH=$(uname -m)
@@ -16,13 +17,9 @@ then
     NORM_ARCH="arm"
 fi
 
-PROOT_LINK=http://static.proot.me/
-MAIN_REPO=https://dl.dropboxusercontent.com/u/42449030
-QEMU_LINK=$MAIN_REPO/qemu/$NORM_ARCH
-
 pkgname=junest-git
-pkgver=5.6.9
-pkgrel=2
+pkgver=5.6.11
+pkgrel=1
 pkgdesc="The Arch Linux based distro that runs upon any Linux distros without root access"
 arch=('any')
 url="http://fsquillace.github.io/junest-site/"
@@ -41,6 +38,10 @@ install=junest.install
 source=('junest::git+https://github.com/fsquillace/junest.git#branch=master')
 md5sums=('SKIP')
 noextract=()
+
+PROOT_LINK=http://static.proot.me/
+MAIN_REPO=https://s3-eu-west-1.amazonaws.com/${pkgname%-git}-repo
+QEMU_LINK=$MAIN_REPO/qemu/$NORM_ARCH
 
 declare -A proot_md5sums
 proot_md5sums["x86_64"]='14080705dd45a6bafa20e909a68072cb'
