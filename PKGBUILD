@@ -1,19 +1,36 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
+_use_pycrypto="no"
+_use_pycountry="no"  
+
 pkgname=streamlink-git
-pkgver=0.4.0.r0.g0871d22
+pkgver=0.4.0.r23.g951edb3
 pkgrel=1
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
 url='https://streamlink.github.io/'
 license=('BSD')
-depends=("python-"{iso3166,iso639,pycryptodome,requests} 'rtmpdump')
-checkdepends=("python-"{mock,pycountry,pytest})
+
+if [ "$_use_pycrypto" = "yes" ]; then
+  depends+=('python-crypto')
+  conflicts+=('python-pycryptodome')
+else
+  depends+=('python-pycryptodome')
+fi
+
+if [ "$_use_pycountry" = "yes" ]; then
+  depends+=('python-pycountry')
+else
+  depends+=('python-iso3166' 'python-iso639')
+fi
+
+depends+=('python-requests' 'rtmpdump')
+checkdepends=("python-"{mock,pytest})
 makedepends=('git' "python-"{setuptools,sphinx})
 optdepends=('ffmpeg: Required to play streams that are made up of separate audio and video streams, eg. YouTube 1080p+'
             'python-librtmp: Required by the ustreamtv plugin to be able to use non-mobile streams.')
 provides=('streamlink')
-conflicts=('streamlink')
+conflicts+=('streamlink')
 source=('git+https://github.com/streamlink/streamlink.git')
 sha512sums=('SKIP')
 
@@ -24,7 +41,14 @@ pkgver() {
 
 build() {
   cd streamlink
-  #export STREAMLINK_USE_PYCOUNTRY=1
+  if [ "$_use_pycrypto" = "yes" ]; then
+    msg "Using pycrypto..."
+    export STREAMLINK_USE_PYCRYPTO="true"
+  fi
+  if [ "$_use_pycountry" = "yes" ]; then
+    msg "Using pycountry..."
+    export STREAMLINK_USE_PYCOUNTRY="true"
+  fi
   python setup.py build_sphinx -b man
 }
 
