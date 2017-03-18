@@ -2,7 +2,7 @@
 
 pkgname=qmplay2
 pkgver=17.03.17
-pkgrel=1
+pkgrel=2
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7' 'armv6' 'armv5')
 url='http://zaps166.sourceforge.net/?app=QMPlay2'
@@ -11,8 +11,10 @@ depends=('qt5-base' 'qt5-x11extras' 'ffmpeg' 'libass' 'libgl' 'libva' 'libxv' 'a
 optdepends=('pulseaudio: PulseAudio support'
             'game_music_emu-kode54-git: Better chiptune support (less bugs in sound, AUR package)')
 makedepends=('make' 'gcc' 'pkg-config' 'qt5-tools' 'cmake')
-source=("https://github.com/zaps166/QMPlay2/releases/download/${pkgver}/QMPlay2-src-${pkgver}.tar.xz")
-sha1sums=(14486327101334eec3a2e7908e9b3af5ac7fceba)
+source=("https://github.com/zaps166/QMPlay2/releases/download/${pkgver}/QMPlay2-src-${pkgver}.tar.xz"
+        "https://github.com/zaps166/QMPlay2/commit/1e817ed17fa2074983224035ae1f98570ed5593f.diff")
+sha1sums=(14486327101334eec3a2e7908e9b3af5ac7fceba
+          0c491ba6e7683224e1d6f34f783861a0b6b668a2)
 
 build()
 {
@@ -23,6 +25,7 @@ build()
 	#USE_JEMALLOC='-DUSE_JEMALLOC=ON'
 
 	cd $srcdir
+	patch -d QMPlay2-src-$pkgver -p1 -i ../1e817ed17fa2074983224035ae1f98570ed5593f.diff
 	mkdir -p QMPlay2-build
 	cd QMPlay2-build
 	cmake ../QMPlay2-src-$pkgver -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DUSE_QT5=ON -DUSE_LINK_TIME_OPTIMIZATION=ON $USE_JEMALLOC $USE_SIDPLAYFP
