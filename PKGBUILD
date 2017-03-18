@@ -6,7 +6,7 @@
 
 _pkgname=rhythmbox
 pkgname=$_pkgname-git
-pkgver=3.4.1+57+g8beff628
+pkgver=3.4.1+66+g50ef5a0e
 pkgrel=1
 pkgdesc="Music playback and management application"
 arch=(i686 x86_64)
@@ -50,9 +50,10 @@ build() {
     cd "$srcdir/$pkgname"
     ./configure --prefix=/usr --sysconfdir=/etc \
         --libexecdir=/usr/lib/rhythmbox \
+	MOZILLA_PLUGINDIR=/usr/lib/epiphany/plugins \
         --localstatedir=/var --disable-static \
         --enable-daap --enable-python --enable-vala \
-	--disable-Werror
+	--enable-gtk-doc
     make
 }
 
