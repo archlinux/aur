@@ -4,7 +4,7 @@
 
 pkgname=firefox-eme-free-bin
 _pkgname=${pkgname/-bin/}
-pkgver=51.0.1
+pkgver=52.0.1
 pkgrel=1
 pkgdesc='Standalone web browser from mozilla.org - EME free release'
 url='http://www.mozilla.org/en-US/firefox/organizations/'
@@ -17,7 +17,7 @@ optdepends=('libgnome: fixes file association/default browser issues on GNOME de
 provides=('firefox-eme-free')
 license=('MPL' 'GPL' 'LGPL')
 install=$_pkgname.install
-sha512sums=('48ff55351b06b7d9daebc15c77a56372f62203a2937fac80ee83aabadaca37e64fcd28f2502a25ffe2edfd06602585dbca916708b49ceefd969935e9deb38513'
+sha512sums=('6f3559bbc7ad3275d3b9ff1eda92027ce81a4a0b9361554b5299208ff88fad705d076445160170c6524d667e9ec7e24781b0de1da6d057ce6fb32c3f4576e012'
             'faecc006b7c7d95d20430492530a598f4a69e71461833082ba6de68fe17d3b76e64f416fe0e00b06ded5e658c59a3e7b9c6fb24628a9944724d46e05545f1a18')
 [[ "$CARCH" == "i686" ]] && sha512sums[0]='54f6cfc72d605666af0b96f1cacc5d91ca87dc861ffaa00a916077eca3103bf42e6556ac02e1482a5dbdb15739d69ee255b3a168fadbb0ba1d3cd2d70b1b4859'
 source=(http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${pkgver}/linux-x86_64-EME-free/en-US/firefox-${pkgver}.tar.bz2
