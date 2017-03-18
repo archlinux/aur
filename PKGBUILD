@@ -22,7 +22,7 @@ backup=('etc/webapps/selfoss/config.ini'
         'usr/share/webapps/selfoss/config.ini')
 install=${pkgname}.install
 source=("https://github.com/SSilence/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.zip")
-sha256sums=('291ff4c8d2001747f26bb11080c9283a161d51bc90d40d9cace463163495eb37')
+sha256sums=('5c880fe79326c0e584be21faeaebe805fac792f2c56b7fd5144584e5137a608d')
 
 prepare() {
   cd "${srcdir}/data/fulltextrss/standard"
