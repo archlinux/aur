@@ -1,9 +1,8 @@
 pkgbase = icon-requests
 	pkgdesc = A Gtk application to report missing icons to your theme repository
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/bil-elmoussaoui/Icon-Requests
-	install = icon-requests.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -13,7 +12,6 @@ pkgbase = icon-requests
 	makedepends = intltool
 	makedepends = itstool
 	makedepends = python
-	makedepends = yelp-tools
 	depends = desktop-file-utils
 	depends = gobject-introspection
 	depends = gtk3
@@ -22,10 +20,10 @@ pkgbase = icon-requests
 	depends = python-cairosvg
 	depends = python-requests
 	depends = python-xdg
-	provides = icon-requests=0.1.1
+	provides = icon-requests=0.1.2
 	options = !emptydirs
-	source = https://github.com/bil-elmoussaoui/Icon-Requests/archive/v0.1.1.tar.gz
-	sha256sums = 1a15eac922c3dc2f2a36f877b35cc7dd4b503c749b26ca1f254b85986a4323cb
+	source = https://github.com/bil-elmoussaoui/Icon-Requests/archive/v0.1.2.tar.gz
+	sha256sums = 47c0bc5b452cc5ce4f64013d892191f80075e06c75f88dc65b0741262aa6018f
 
 pkgname = icon-requests
 
