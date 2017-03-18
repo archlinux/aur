@@ -8,7 +8,7 @@ license=(GPL)
 arch=(i686 x86_64)
 # Upstream is currently broken.
 # Here are fixs for upstream https://github.com/anatol/google-coredumper
-source=(https://google-coredumper.googlecode.com/files/coredumper-$pkgver.tar.gz
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/google-coredumper/coredumper-$pkgver.tar.gz
         fixes.diff)
 sha1sums=('8f770458bca2d0eea878689b5ae2329d7d21d450'
           '11d4cc83b2e02210d21271fda608c9a2c2ac8716')
