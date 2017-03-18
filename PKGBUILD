@@ -4,8 +4,8 @@ _binname=Pencil
 _pkgname_base=pencil
 _pkgname=evolus-pencil
 _version=3.0.0
-_release=rc.1
-_zipname="${_binname}-${_version}-${_release}.deb"
+_release=rc.2
+_zipname="${_binname}_${_version}-${_release}_amd64.deb"
 pkgname=${_pkgname}-bin
 pkgver=${_version}_${_release}
 pkgrel=1
@@ -13,14 +13,16 @@ pkgdesc="An open-source GUI prototyping tool - Evolus release"
 arch=('x86_64')
 url="http://pencil.evolus.vn/Next.html"
 license=('GPL2')
-depends=()
+depends=('gconf')
 makedepends=('binutils' 'tar')
 provides=($_pkgname)
 conflicts=($_pkgname $_pkgname_base)
 source=("https://github.com/evolus/$_pkgname_base/releases/download/v${_version}-$_release/$_zipname"
-	"$_pkgname.desktop")
-sha1sums=('3773688558231bf3f25bf33e0ebce8d6619c100d'
-	'8844653d3ce22669ef18d818ff986f317caf78ca')
+	"${_pkgname_base}.desktop"
+	"${_pkgname}-mime.xml")
+sha1sums=('c988cfebc546e996d63925e44bdb2ddf122e35c8'
+	'fd1a937f77388e46917fa566000acd89c5d181c3'
+	'975e4818189aa041bfe4df6e20c69d82cd130298')
 
 package() {
 	# Extract data
@@ -31,13 +33,16 @@ package() {
 	
 	# Binary file
 	install -d "${pkgdir}/usr/bin/"
-	ln -s "../share/${_pkgname}/${_binname}" "${pkgdir}/usr/bin/${_pkgname_base}"
+	ln -s "../share/${_pkgname}/${_pkgname_base}" "${pkgdir}/usr/bin/${_pkgname_base}"
 	
 	# Desktop file
-	cp -L "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/"
+	cp -f "${srcdir}/${_pkgname_base}.desktop" "${pkgdir}/usr/share/applications/"
+
+	# Mimetype file
+	install -d "${pkgdir}/usr/share/mime/packages/"
+	cp "${srcdir}/${_pkgname}-mime.xml" "${pkgdir}/usr/share/mime/packages/"
 	
 	# Cleanup
 	rm -rf "${pkgdir}/opt"
 	rm -rf "${pkgdir}/usr/share/doc"
-	rm "${pkgdir}/usr/share/applications/${_binname}.desktop"
 }
