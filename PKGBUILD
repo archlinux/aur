@@ -4,7 +4,7 @@
 
 _gitname='libsigrokdecode'
 pkgname="${_gitname}-git"
-pkgver=0.2.0.r613.gd66d47e
+pkgver=0.2.0.r716.gb26c713
 pkgrel=1
 pkgdesc="Client software that supports various hardware logic analyzers, protocol decoders library (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
