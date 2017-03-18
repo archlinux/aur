@@ -1,7 +1,7 @@
 pkgbase = chewing-editor-git
 	pkgdesc = Cross platform chewing user phrase editor
 	pkgver = 0.1.1.r30.g637be39
-	pkgrel = 1
+	pkgrel = 2
 	url = http://chewing.im
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = chewing-editor-git
 	depends = libchewing
 	depends = qt5-base
 	depends = hicolor-icon-theme
+	provides = chewing-editor
+	conflicts = chewing-editor
 	source = git+https://github.com/chewing/chewing-editor.git
 	source = qtchooser-notfound.patch
 	sha256sums = SKIP
