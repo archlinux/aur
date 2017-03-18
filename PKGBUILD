@@ -1,25 +1,21 @@
 
-# Maintainer: Thomas Dziedzic < gostrc at gmail >
-# Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve>
-# Contributor: Ray Rashif <schiv@archlinux.org>
-# Contributor: Douglas Soares de Andrade <dsa@aur.archlinux.org>
-# Contributor: Bodor DÃ¡vid GÃ¡bor <david.gabor.bodor@gmail.com>
-# Contributor: Andrzej Giniewicz <gginiu@gmail.com>
+
+
 pkgbase="python-scipy-mkl"
 pkgname="python-scipy-mkl"
 true && pkgname=('python-scipy-mkl' 'python2-scipy-mkl')
 
-pkgver=0.18.1
-pkgrel=2
+pkgver=0.19.0
+pkgrel=1
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering. Compiled with intel MKL"
 arch=('i686' 'x86_64')
 url="http://www.scipy.org/"
 license=('BSD')
 makedepends=('intel-fortran-compiler' 'intel-compiler-base' 'intel-mkl' 'python-numpy' 'python2-numpy' 'swig' 'cython' 'cython2')
 checkdepends=('python-nose' 'python2-nose')
-source=("https://github.com/scipy/scipy/archive/v0.18.1.tar.gz" )
+source=("https://github.com/scipy/scipy/archive/v${pkgver}.tar.gz" )
 
-md5sums=( '96d0dd6b0b584b2693fc7b08fdda48cd' )
+sha256sums=( 'efa71d68ef0fa4a2836a3058fc1c5aa6b61d93ee0248a127cd862ea3bf22b69a' )
 
 build() {
   unset LDFLAGS
