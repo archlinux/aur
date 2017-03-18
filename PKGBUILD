@@ -7,8 +7,8 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt-lts         # Build kernel with a different name
 _srcname=linux-4.4
-_pkgver=4.4.50
-_rtpatchver=rt63
+_pkgver=4.4.53
+_rtpatchver=rt66
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -30,22 +30,20 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "${pkgbase}.preset"
         'change-default-console-loglevel.patch'
         'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch'
-        '0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch'
         )
 
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            'c5756a4b7290092d875967c310b684dbd91cb57438a25a3603bce6b1d0f19b36'
+            '51e09e851c00f42e04f27a1848a06e93e9de9abd22da0408da4745b6d2edbbdb'
             'SKIP'
-            'f6f5af2f790cdbe16bb5d1dc59521f3c01e235c9107dd180a3b0d38dfbc7a19a'
+            '5ae37454239a187f5abb3cdf375f7bd143478a31744ee17636ca42131ea74748'
             'SKIP'
             '1f609d41a9d5cd0eb88060bd0ad6726f76e9dbf0deee44d6fe3dc57f0fbb3191'
             'b28728fa4816c4f32b4b390b22c8b9d4ea52a35b150ed7041d325ab72cd8c6a3'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'a8886f2c9896f81f59cf0413b3e380cda2fbdc667eb9ce8dfcb0fceb6d92279f'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06'
-            'ab22d941388440ee7da44535305f535cb5a2abc4151289757f5753b13ebd78e8')
+            '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -78,9 +76,6 @@ prepare() {
   # Stops X from hanging on certain NVIDIA cards
   msg "fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch"
   patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch"
-
-  msg "0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch"
-  patch -p1 -i "${srcdir}/0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch"
 
   msg "All patches have successfully been applied"
 
