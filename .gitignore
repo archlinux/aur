@@ -6,7 +6,8 @@
 !PKGBUILD
 !*.install
 !*.preset
-!config
+!*.hook
+!config.i686
 !config.x86_64
 !ChangeLog
 !README.md
