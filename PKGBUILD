@@ -4,8 +4,8 @@ pkgname=editorconfig-core-c-git
 pkgver=0.12.1.r13.g1f2c30e
 pkgrel=1
 pkgdesc='EditorConfig core library written in C (for use by plugins supporting EditorConfig parsing)'
-url='https://github.com/editorconfig/editorconfig-core-c'
 arch=('i686' 'x86_64')
+url='https://github.com/editorconfig/editorconfig-core-c'
 license=('BSD')
 depends=('pcre')
 makedepends=('git' 'cmake>=2.8.7')
