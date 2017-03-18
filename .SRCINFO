@@ -1,0 +1,18 @@
+pkgbase = perl-net-ftpssl
+	pkgdesc = NET::FTPSSL perl module.
+	pkgver = 0.35
+	pkgrel = 1
+	url = https://metacpan.org/release/Net-FTPSSL
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-net-ssleay
+	depends = perl-io-socket-ssl
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/C/CL/CLEACH/Net-FTPSSL-0.35.tar.gz
+	sha256sums = cab8ca7b7d954849d0bf9e26ee84ff2995cc69154c27a9d936be0cdeb7d70228
+
+pkgname = perl-net-ftpssl
+
