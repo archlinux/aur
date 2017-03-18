@@ -18,7 +18,7 @@ then
 fi
 
 pkgname=junest-git
-pkgver=5.6.11
+pkgver=5.6.12
 pkgrel=1
 pkgdesc="The Arch Linux based distro that runs upon any Linux distros without root access"
 arch=('any')
