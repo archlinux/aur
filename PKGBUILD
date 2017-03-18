@@ -18,5 +18,5 @@ build() {
 
 package() {
   cd "msrest-for-python-$pkgver"
-  python setup.py install --root="$pkgdir"
+  python setup.py install --root="$pkgdir" --optimize=1
 }
