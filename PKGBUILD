@@ -41,19 +41,19 @@ package() {
 		"${pkgdir}/usr/share/licenses/${pkgname}/" \
 		"${pkgdir}/usr/share/applications/"
 
-	if [[ "True" = "${_eap}" ]]; then
-		cp -R --no-preserve=ownership "${srcdir}/pycharm-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
+	if [[ -e "${srcdir}/pycharm-${_buildver}/" ]]; then
+		cp -R "${srcdir}/pycharm-${_buildver}/"* "${pkgdir}/opt/${pkgname}"
 	else
-		cp -R --no-preserve=ownership "${srcdir}/pycharm-${_pkgver%.1}/"* "${pkgdir}/opt/${pkgname}"
+		cp -R "${srcdir}/pycharm-${_pkgver::(-2)}/"* "${pkgdir}/opt/${pkgname}"
 	fi
-	
+
 	if [[ "i686" = "${CARCH}" ]]; then
 		rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
 		rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
 	fi
 
 	sed -i "s/Version=/Version=${pkgver}/g" "${pkgname}.desktop"
-	install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
+	install -m755 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
 	
 	ln -s "/opt/${pkgname}/bin/pycharm.sh" "${pkgdir}/usr/bin/pycharm-eap"
 }
