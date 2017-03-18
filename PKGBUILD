@@ -9,7 +9,7 @@
 
 pkgbase=linux-libre-nand         # Build stock kernel
 _pkgbasever=4.10-gnu
-_pkgver=4.10.2-gnu
+_pkgver=4.10.3-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -40,7 +40,6 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        '0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch'
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch')
 sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf5811fdae48fafd5a8e00d18ed9ac2e1ad4b12a657f322eb234384316ad131e0'
@@ -88,9 +87,6 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # patch for CVE-2017-2636
-  patch -p1 -i "${srcdir}/0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch"
 
   # maintain the TTY over USB disconnects
   # http://www.coreboot.org/EHCI_Gadget_Debug
