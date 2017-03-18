@@ -1,7 +1,7 @@
 # Maintainer: Ruben De Smet <me at rubdos dot be>
 
 pkgname='artifact'
-pkgver="0.6.4"
+pkgver="0.6.5"
 pkgrel=1
 pkgdesc='The design doc tool made for developers'
 url='http://vitiral.github.io/artifact/'
@@ -13,7 +13,7 @@ source=(
  "https://github.com/vitiral/artifact/archive/v${pkgver}.tar.gz"
 )
 sha512sums=(
- 'a10f013f77e27412242da5895ab427cadc0cee13b3de67fdb87f211e8ad4390f89ba8315c479a733e52330b37a9989b94b04af88c1ccb44ace4eb75eb49f7d96'
+ '146530a6cf56226047a5b14bb9f5c7421ccecb1cb93a3d81d55a3b5a54765c43178a0a6546cff2cab7b33aa8f90a70b1ba73f6c722dc327c14e06a283702b884'
 )
 arch=(
  'x86_64'
@@ -23,10 +23,6 @@ depends=(
  'glibc'
  'gcc-libs'
 )
-# Currently, this package needs serde_derive v0.9.9, which needs nightly rust.
-# A big big warning will be displayed when rustup is not used.
-# We currently cannot depend on rust-nightly, because community/rustup
-# does not provide rust-nightly
 makedepends=(
  'rust'
  'cargo'
@@ -35,12 +31,8 @@ makedepends=(
 build() {
  pushd "artifact-${pkgver}"
  if [[ $(command -v rustup) ]]; then
-   rustup run nightly cargo build --release
+   rustup run stable cargo build --release
  else
-   echo "WARNING: It seems like you are not running rustup.\nKeep in mind that `artifact` needs a recent version of rust nightly!"
-   echo "Currently, this package needs serde_derive v0.9.9, which needs nightly rust."
-   echo "We currently cannot depend on rust-nightly, because community/rustup"
-   echo "does not `provide` rust-nightly, while it can actually provide it"
    cargo build --release
  fi
  popd
