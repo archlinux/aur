@@ -9,7 +9,7 @@
 
 pkgbase=linux-libre-pae
 _pkgbasever=4.10-gnu
-_pkgver=4.10.2-gnu
+_pkgver=4.10.3-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -40,12 +40,11 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        '0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch'
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch')
 sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf5811fdae48fafd5a8e00d18ed9ac2e1ad4b12a657f322eb234384316ad131e0'
             'SKIP'
-            '02e518e8192f7b71dcb3724d1b9f4bc502d210387548a77a8edf6900281ccd13de55986382c9be00afacf0dc0ca2f13a70327be9230b1c93d95bc917cfd17643'
+            'c2e674578fa3b0e86941009034c69aea09267b322e0a58f7850c7e5b79db69486d1ada277a37825e94dcbbd4798ee56655db1900dabf34f00097f331d08e5fc6'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -56,7 +55,6 @@ sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf58
             'de98cb401eb4776069b023539cbc6d35a0b67fe7027ad83ea7c9186fd8a6affc2bad5af40341fcecb001cf5b3034ac231e8402bc4108934fc4315aa6ff08e470'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '397fc751697cc4e2ceb7e6d854f5e7fc115ed8511df406ffe5d8f80afeec385ba64cd28c4666bb206612fdcd7a578b60ca6ff125c2138c615aee6135d86b0197'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168')
 validpgpkeys=(
@@ -85,9 +83,6 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # patch for CVE-2017-2636
-  patch -p1 -i "${srcdir}/0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch"
 
   # maintain the TTY over USB disconnects
   # http://www.coreboot.org/EHCI_Gadget_Debug
