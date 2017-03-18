@@ -1,0 +1,19 @@
+pkgbase = bullycpp-git
+	pkgdesc = A driver for the Bully Bootloader for the PIC24 and dsPIC33 series of microcontrollers.
+	pkgver = v1.0.r6.g52e5f0a
+	pkgrel = 1
+	url = https://github.com/thirtythreeforty/bullycpp
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = qt5-serialport
+	depends = qt5-base
+	provides = BullyCPP
+	source = bullycpp::git+https://github.com/thirtythreeforty/bullycpp.git
+	md5sums = SKIP
+
+pkgname = bullycpp-git
+
