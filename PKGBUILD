@@ -2,8 +2,8 @@
 
 _pkgbase=lzo
 pkgname=lib32-$_pkgbase
-pkgver=2.09
-pkgrel=2
+pkgver=2.10
+pkgrel=1
 pkgdesc="Portable lossless data compression library (32 bit)"
 arch=('x86_64')
 url="http://www.oberhumer.com/opensource/lzo"
@@ -12,7 +12,7 @@ depends=('lib32-glibc' $_pkgbase)
 makedepends=('gcc-multilib')
 source=(http://www.oberhumer.com/opensource/lzo/download/lzo-${pkgver}.tar.gz)
 options=(!libtool)
-sha1sums=('e2a60aca818836181e7e6f8c4f2c323aca6ac057')
+sha1sums=('4924676a9bae5db58ef129dc1cebce3baa3c4b5d')
 
 build() {
   export CC='gcc -m32'
