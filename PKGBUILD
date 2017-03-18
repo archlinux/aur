@@ -1,12 +1,12 @@
 # Maintainer: Max Bruckner
 pkgname=lampe
 pkgver=1.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive bash-script to control your Philips Hue lights."
 arch=("x86_64" "i686")
 url="https://github.com/poinck/lampe"
 license=('custom')
-depends=('curl' 'bc' 'zenity' 'json-sh' 'libsoup' 'gtk3' 'json-glib')
+depends=('curl' 'bc' 'zenity' 'json-sh' 'libsoup' 'gtk3' 'json-glib' 'lampe-bash')
 optdepends=('redshift')
 makedepends=('vala')
 source=( "git+https://github.com/poinck/${pkgname}#tag=$pkgver"
@@ -21,6 +21,5 @@ build() {
 package() {
 	cd "$srcdir/$pkgname"
 	make DESTDIR="$pkgdir" install
-	install -d -m 755 "$pkgdir/usr/share/licenses/lampe"
-	install -m 644 LICENSE "$pkgdir/usr/share/licenses/lampe/CC0"
+	rm "$pkgdir/usr/bin/lampe"
 }
