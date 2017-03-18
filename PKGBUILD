@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=miniupnpd-git
-pkgver=r60.ge7068a7
+pkgver=r76.ge6ed3c5
 pkgrel=1
 pkgdesc="Lightweight UPnP IGD daemon (git)"
 arch=('i686' 'x86_64')
@@ -10,6 +10,8 @@ license=('BSD')
 backup=(etc/miniupnpd/miniupnpd.conf)
 depends=('iptables' 'net-tools' 'util-linux')
 makedepends=('git' 'lsb-release')
+provides=('miniupnpd')
+conflicts=('miniupnpd')
 source=("git+https://github.com/miniupnp/miniupnp.git"
         miniupnpd.systemd)
 sha256sums=('SKIP'
