@@ -5,8 +5,8 @@
 _pkgname=xorg-server
 pkgname=xorg-server-hwcursor-gamma
 epoch=2
-pkgver=1.19.1
-pkgrel=1
+pkgver=1.19.3
+pkgrel=1 # 1 in the xorg-server package
 pkgdesc="Xorg X server with patch to apply gamma ramps on hardware cursors"
 depends=(libepoxy libxdmcp libxfont2 libpciaccess libdrm pixman libgcrypt libxau xorg-server-common libxshmfence libgl xf86-input-libinput)
 provides=("xorg-server=${pkgver}" 'X-ABI-VIDEODRV_VERSION=23' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server')
@@ -23,12 +23,16 @@ makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
 	     'libxshmfence' 'libunwind')
 source=(https://xorg.freedesktop.org/releases/individual/xserver/${_pkgname}-${pkgver}.tar.bz2
+	nvidia-add-modulepath-support.patch
+	xserver-autobind-hotplug.patch
         xvfb-run
         xvfb-run.1
 	0001-When-an-cursor-is-set-it-is-adjusted-to-use-the.patch
 	0002-Fix-for-full-and-semi-transparency-under-negative-im.patch
 	0003-Use-Harms-s-suggest-do-not-use-inline-if.-And-fix-si.patch)
-sha256sums=('79ae2cf39d3f6c4a91201d8dad549d1d774b3420073c5a70d390040aa965a7fb'
+sha256sums=('677a8166e03474719238dfe396ce673c4234735464d6dadf2959b600d20e5a98'
+	    '914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8'
+	    'fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
 	    'bea348631dedd66475d84ac2cfe0840f22a80a642b4680d73fead4749e47f055'
@@ -42,6 +46,16 @@ prepare() {
   patch -Np1 -i ../0001-When-an-cursor-is-set-it-is-adjusted-to-use-the.patch
   patch -Np1 -i ../0002-Fix-for-full-and-semi-transparency-under-negative-im.patch
   patch -Np1 -i ../0003-Use-Harms-s-suggest-do-not-use-inline-if.-And-fix-si.patch
+
+  # merged upstream in trunk
+  msg2 'apply nvidia patch'
+  patch -Np1 -i ../nvidia-add-modulepath-support.patch
+
+  # patch from Fedora, not yet merged
+  msg2 'apply fedora patch'
+  patch -Np1 -i ../xserver-autobind-hotplug.patch
+
+  autoreconf -vfi
 }
 
 build() {
@@ -99,10 +113,6 @@ package() {
 
   # distro specific files must be installed in /usr/share/X11/xorg.conf.d
   install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d"
-
-  # Needed for non-mesa drivers, libgl will restore it
-  mv "${pkgdir}/usr/lib/xorg/modules/extensions/libglx.so" \
-     "${pkgdir}/usr/lib/xorg/modules/extensions/libglx.xorg"
 
   rm -rf "${pkgdir}/var"
 
