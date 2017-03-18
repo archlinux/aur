@@ -2,7 +2,7 @@
 
 pkgname=igb
 pkgver=5.3.5.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Linux* Base Driver for Intel(R) Ethernet Network Connection"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/e1000/files/igb%20stable/"
@@ -38,6 +38,4 @@ package() {
 
     find './' -name '*.ko' -exec gzip --force --fast {} \;
     install -Dm644 'igb.ko.gz' "$pkgdir/$_extramodules/igb.ko.gz"
-
-    install -Dm644 '../COPYING' "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
