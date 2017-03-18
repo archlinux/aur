@@ -3,18 +3,22 @@
 
 name=cloudcompare
 pkgname=${name}-git
-pkgver=2.8.0.r112.g26401405
+pkgver=2.8.0.r113.g15a03b90
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
 license=('GPL2')
-depends=('qt5-base' 'glu' 'mesa')
+depends=('qt5-base' 'glu' 'mesa' 'vxl' 'ffmpeg' 'cgal')
 makedepends=('git' 'cmake' 'pcl' 'doxygen' 'liblas')
 optdepends=('pcl' 'liblas')
 source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git")
 md5sums=('SKIP') 
 
+prepare() {
+  cd ${srcdir}/${name}
+  git submodule update --init --recursive
+}
 
 pkgver() {
   cd ${srcdir}/${name}
@@ -27,23 +31,36 @@ build() {
   mkdir -p build && cd build
  
   cmake .. \
-     	          -DCMAKE_BUILD_TYPE=Release \
-		  -DCMAKE_INSTALL_PREFIX=/usr \
-	          -DBUILD_QPCL_PLUGIN_DOCUMENTATION=ON \
-	  	  -DINSTALL_QPCL_PLUGIN=ON \
-		  -DINSTALL_QSRA_PLUGIN=OFF \
-		  -DINSTALL_QPOISSON_RECON_PLUGIN=OFF \
-		  -DINSTALL_QHPR_PLUGIN=OFF \
-		  -DINSTALL_QRANSAC_SD_PLUGIN=OFF \
-		  -DINSTALL_QKINECT_PLUGIN=OFF \
-		  -DINSTALL_QBLUR_PLUGIN=OFF \
-		  -DINSTALL_QEDL_PLUGIN=OFF \
-		  -DINSTALL_QPCV_PLUGIN=OFF \
-		  -DINSTALL_QDUMMY_PLUGIN=OFF \
-		  -DINSTALL_QSSAO_PLUGIN=OFF \
-                  -DOPTION_USE_LIBLAS=ON \
-                  -DLIBLAS_INCLUDE_DIR=/usr/include/liblas/ \
-                  -DLIBLAS_RELEASE_LIBRARY_FILE=/usr/lib/liblas.so
+        -DCMAKE_CXX_FLAGS=-fpermissive \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DINSTALL_QBLUR_PLUGIN=ON \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCOMPILE_CC_CORE_LIB_WITH_CGAL=ON \
+        -DINSTALL_QHPR_PLUGIN=ON \
+        -DINSTALL_QPOISSON_RECON_PLUGIN=ON \
+        -DPOISSON_RECON_WITH_OPEN_MP=ON \
+        -DINSTALL_QEDL_PLUGIN=ON \
+        -DINSTALL_QSRA_PLUGIN=ON \
+        -DOPTION_USE_GDAL=ON \
+        -DOPTION_USE_DXF_LIB=ON \
+        -DINSTALL_QSSAO_PLUGIN=ON \
+        -DOPTION_USE_LIBLAS=ON \
+        -DINSTALL_QGMMREG_PLUGIN=ON \
+        -DINSTALL_QANIMATION_PLUGIN=ON \
+        -DINSTALL_QCSF_PLUGIN=ON \
+        -DINSTALL_QPHOTOSCAN_IO_PLUGIN=ON \
+        -DWITH_FFMPEG_SUPPORT=ON \
+        -DFFMPEG_INCLUDE_DIR=/usr/include \
+        -DFFMPEG_LIBRARY_DIR=/usr/lib/ \
+        -DINSTALL_QFACETS_PLUGIN=ON \
+        -DOPTION_USE_SHAPE_LIB=ON \
+        -DINSTALL_QPCV_PLUGIN=ON \
+        -DINSTALL_QM3C2_PLUGIN=ON \
+        -DINSTALL_QBROOM_PLUGIN=true \
+        -DINSTALL_QHOUGH_NORMALS_PLUGIN=true \
+        -DEIGEN_ROOT_DIR=/usr/include/eigen3 \
+        -DLIBLAS_INCLUDE_DIR=/usr/include/liblas \
+        -DLIBLAS_RELEASE_LIBRARY_FILE=/usr/lib/liblas.so
   make
 }
 
