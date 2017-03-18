@@ -1,0 +1,4 @@
+metalfan/
+*.pkg.tar.xz
+src/
+pkg/
