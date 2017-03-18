@@ -3,14 +3,14 @@
 # Contributor: alesko <askondro@gmail.com>
 
 pkgname=clutter-git
-pkgver=1.26.0.r28.g55093e304
+pkgver=1.26.0.r34.g19c48d6de
 pkgrel=1
 pkgdesc="A toolkit for creating fast, portable, compelling dynamic UIs"
 arch=('i686' 'x86_64')
 url='http://clutter-project.org/'
 license=('LGPL')
-depends=('gtk3' 'cogl' 'libinput')
-makedepends=('git' 'gobject-introspection' 'gtk-doc')
+depends=(gtk3 cogl libinput)
+makedepends=(git gobject-introspection gtk-doc)
 provides=("clutter=${pkgver}")
 conflicts=('clutter')
 source=('git://git.gnome.org/clutter')
@@ -21,10 +21,15 @@ pkgver() {
     git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
+prepare() {
+    cd clutter
+    NOCONFIGURE=1 ./autogen.sh
+}
+
 build() {
     cd clutter
 
-    ./autogen.sh --prefix=/usr \
+    ./configure --prefix=/usr \
         --enable-introspection \
         --enable-egl-backend \
         --enable-gdk-backend \
