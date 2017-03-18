@@ -3,12 +3,12 @@
 
 _gitname=pvr.iptvsimple
 pkgname=kodi-addon-pvr-iptvsimple-git
-pkgver=r154.53d63cc
+pkgver=r154.d782816
 pkgrel=1
 pkgdesc="Kodi's IPTV Simple client addon."
 url='https://github.com/kodi-pvr/pvr.iptvsimple'
 license=('GPL3')
-source=("${_gitname}::git+https://github.com/kodi-pvr/pvr.iptvsimple")
+source=("${_gitname}::git+https://github.com/kodi-pvr/pvr.iptvsimple#branch=Krypton")
 sha256sums=('SKIP')
 arch=('any')
 depends=('kodi' 'p8-platform')

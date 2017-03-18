@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-pvr-iptvsimple-git
 	pkgdesc = Kodi's IPTV Simple client addon.
-	pkgver = r154.53d63cc
+	pkgver = r154.d782816
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.iptvsimple
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = kodi-addon-pvr-iptvsimple-git
 	provides = kodi-addon-pvr-iptvsimple
 	conflicts = kodi-addon-pvr-iptvsimple
 	conflicts = kodi-pvr-addons
-	source = pvr.iptvsimple::git+https://github.com/kodi-pvr/pvr.iptvsimple
+	source = pvr.iptvsimple::git+https://github.com/kodi-pvr/pvr.iptvsimple#branch=Krypton
 	sha256sums = SKIP
 
 pkgname = kodi-addon-pvr-iptvsimple-git
