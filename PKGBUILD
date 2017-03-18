@@ -1,6 +1,6 @@
 # Maintainer: n17ikh <n17ikh@gmail.com>
 pkgname=coolkey
-pkgver=1.1.0_32
+pkgver=1.1.0_33
 pkgrel=1
 pkgdesc="Provides PKCS11 module support for smart-card readers, now with 144k smartcard/CAC support and downstream Fedora patches."
 arch=('i686' 'x86_64')
@@ -15,9 +15,9 @@ backup=()
 options=()
 install=
 changelog=
-rpmname=("$pkgname-${pkgver//_/-}.fc26.src.rpm")
+rpmname=("$pkgname-${pkgver//_/-}.fc27.src.rpm")
 source=("https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/c/$rpmname")
-sha512sums=('bfbe401700099fed61add4cc6a93328685e9a17b234bba1276bbe1d304ac15ed9ae371f5c9979f4e7e83ee7418e5952da9ff7d33ad2a7944e96f5eeda5f9de68')
+sha512sums=('c84777e454c17cffcbb750bb73f1db98fc61e4dcf0fdbe9e7d4f2e513a47cb00c01669b3fdd19eb6d4a05d254bf16ea0e33d70c7577be68f207a206e179165dd')
 
 build() {
   cd $srcdir
@@ -34,6 +34,7 @@ build() {
   patch -p1 < $srcdir/coolkey-fix-token-removal-failure.patch
   patch -p1 < $srcdir/coolkey-update.patch
   patch -p1 < $srcdir/coolkey-more-keys.patch
+  patch -p0 < $srcdir/coolkey-1.1.0-max-cpu-bug.patch
  ./configure --prefix=/usr
   make
 }
