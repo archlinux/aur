@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=miniupnpc-git
-pkgver=r62.g8c9ce4d
+pkgver=r76.ge6ed3c5
 pkgrel=1
 pkgdesc="A small UPnP client library/tool to access Internet Gateway Devices (git)"
 arch=('i686' 'x86_64')
@@ -9,6 +9,8 @@ url="http://miniupnp.free.fr"
 license=('BSD')
 depends=('sh')
 makedepends=('git')
+provides=('miniupnpc')
+conflicts=('miniupnpc')
 source=("git+https://github.com/miniupnp/miniupnp.git")
 sha256sums=('SKIP')
 
