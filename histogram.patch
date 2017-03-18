@@ -1,0 +1,12 @@
+diff --git a/vcg/math/histogram.h b/vcg/math/histogram.h
+index 829106ab..d0320d5a 100644
+--- vcglib/vcg/math/histogram.h
++++ b/vcg/math/histogram.h
+@@ -24,6 +24,7 @@
+ #define __VCG_HISTOGRAM
+ 
+ #include <assert.h>
++#include <vector>
+ #include <string>
+ #include <limits>
+ #include <vcg/math/base.h>

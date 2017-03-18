@@ -1,7 +1,7 @@
 # Maintainer: bartus <aur@bartus.33mail.com>
 pkgname=meshlab-git
-pkgver=2016.12.r92.gbcd7f6c7
-pkgrel=3
+pkgver=2016.12.r102.g01d15eab
+pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
 url="http://www.meshlab.net"
@@ -13,6 +13,7 @@ makedepends=('git')
 install="${pkgname}.install"
 source=("git+https://github.com/cnr-isti-vclab/meshlab.git"
         "git+https://github.com/cnr-isti-vclab/vcglib.git#branch=devel"
+        "histogram.patch"
         "plugin_dir.patch"
         "shaders_dir.patch"
         "external.patch"
@@ -25,6 +26,7 @@ source=("git+https://github.com/cnr-isti-vclab/meshlab.git"
         "meshlab.desktop")
 md5sums=('SKIP'
          'SKIP'
+         '324df865843b7ceb6abb0e0833d72968'
          'f13d58ca07fa74b3d7c8f7f9d4ee6a93'
          '753dd4753081ddb428f4db8eaefe9009'
          '038494125d7bd422074fc5635c5579ca'
@@ -65,6 +67,8 @@ prepare() {
   patch -Np0 -i plugin_dir.patch
   msg "put shaders in /usr/shade/meshlab"
   patch -Np0 -i shaders_dir.patch
+  msg "patch histogram.h missing header"
+  patch -Np0 -i histogram.patch 
 }
 
 build() {
