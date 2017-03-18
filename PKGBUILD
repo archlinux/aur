@@ -1,8 +1,8 @@
 # Maintainer: Jingrong Chen <crazyboycjr at gmail dot com>
 pkgname=fdu-elearning-helper
 _pkgname=${pkgname//-/_}
-pkgver=0.1.7
-pkgrel=2
+pkgver=0.1.9
+pkgrel=1
 pkgdesc='A frontend for Fudan eLearning, with many feature added. http://eh.zbyzbyzby.com/'
 arch=('any')
 url="https://github.com/zhangboyang/${_pkgname}"
