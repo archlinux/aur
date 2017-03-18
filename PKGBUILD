@@ -1,7 +1,7 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=carla-bridges-win64-git
 pkgver=3489.fd32b075
-pkgrel=1
+pkgrel=2
 pkgdesc="Carla win64 bridge"
 arch=('i686' 'x86_64')
 url="http://kxstudio.sf.net/carla"
@@ -44,7 +44,7 @@ build() {
   unset LDFLAGS
   export LDFLAGS="-static"
   cd "$srcdir/$pkgname"
-  ln -s ../../../VST3\ SDK source/includes/vst2
+  ln -sf ../../../VST3\ SDK source/includes/vst2
   sed -i 's/#if !PLATFORM_64/#if 0/' source/includes/vst2/base/source/fthread.cpp
   make win64 HAVE_LIBLO=false
   export PATH=$_path
