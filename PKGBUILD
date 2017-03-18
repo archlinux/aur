@@ -1,14 +1,15 @@
 # Maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=libxkbcommon-git
-pkgver=0.5.0.r34.gc991a7d
+pkgver=0.7.1.r0.g877fe59
 pkgrel=1
-pkgdesc="A library to handle keyboard descriptions."
+pkgdesc="Keymap handling library for toolkits and window systems"
 url="http://xkbcommon.org/"
 arch=(i686 x86_64)
 license=('custom')
-depends=('glibc' 'xkeyboard-config')
-makedepends=('git' 'xorg-util-macros' 'libxcb' 'doxygen')
+depends=(xkeyboard-config glibc)
+makedepends=(libxcb doxygen xorg-util-macros autoconf-archive git graphviz
+			 wayland wayland-protocols)
 provides=('libxkbcommon' 'libxkbcommon-x11')
 conflicts=('libxkbcommon' 'libxkbcommon-x11')
 source=(git://github.com/xkbcommon/libxkbcommon.git)
@@ -19,10 +20,15 @@ pkgver() {
 	git describe --long | sed -r 's/^xkbcommon.//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
+prepare() {
+	cd libxkbcommon
+	NOCONFIGURE=1 ./autogen.sh
+}
+
 build() {
 	cd libxkbcommon
 
-	./autogen.sh --prefix=/usr --disable-static
+	./configure --prefix=/usr --disable-static
 	make
 }
 
