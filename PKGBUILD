@@ -2,7 +2,7 @@
 
 _pkgname=raccoon
 pkgname=$_pkgname-git
-pkgver=20170310.r108.03c2238
+pkgver=20170315.r114.e60a990
 pkgrel=1
 arch=('any')
 pkgdesc='Google Play desktop client'
