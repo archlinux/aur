@@ -1,29 +1,29 @@
 # Original Author: Johannes Sauer <joh.sauer(at)gmail(dot)com>
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 
-pkgname=cloudcompare-git
-pkgver=2.6.2.r818.g51fb204
+name=cloudcompare
+pkgname=${name}-git
+pkgver=2.8.0.r112.g26401405
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
 license=('GPL2')
 depends=('qt5-base' 'glu' 'mesa')
-makedepends=('git' 'cmake' 'pcl' 'doxygen')
+makedepends=('git' 'cmake' 'pcl' 'doxygen' 'liblas')
 optdepends=('pcl' 'liblas')
-source=("git+https://github.com/cloudcompare/trunk")
+source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git")
 md5sums=('SKIP') 
 
 
 pkgver() {
-  cd "$srcdir/trunk"
-  git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  cd ${srcdir}/${name}
+  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/trunk"
+  cd ${srcdir}/${name}
   
-  [[ -d build ]] && rm -r build
   mkdir -p build && cd build
  
   cmake .. \
@@ -44,10 +44,11 @@ build() {
                   -DOPTION_USE_LIBLAS=ON \
                   -DLIBLAS_INCLUDE_DIR=/usr/include/liblas/ \
                   -DLIBLAS_RELEASE_LIBRARY_FILE=/usr/lib/liblas.so
-  make -j$(nproc)
+  make
 }
 
 package() {
-  cd "$srcdir/trunk/build"
+  cd ${srcdir}/${name}/build
   make DESTDIR="$pkgdir/" install
 }
+# vim:set sw=2 ts=2 et:
