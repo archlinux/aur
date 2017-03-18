@@ -5,8 +5,8 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=52.0
-pkgrel=2
+pkgver=52.0.1
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -17,15 +17,14 @@ makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutil
              autoconf2.13 cargo)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
-            'upower: Battery API'
             'speech-dispatcher: Text-to-Speech')
 provides=(firefox)
 conflicts=(firefox)
-options=('!emptydirs' '!makeflags')
+options=(!emptydirs !makeflags !strip)
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         firefox.desktop firefox-symbolic.svg
         firefox-install-dir.patch rust-i686.patch fix-wifi-scanner.diff)
-sha256sums=('40748a6d73ecea29257c1b4bdbb8d218c35bf98bef380173c780e922132506de'
+sha256sums=('b0298f01a8afdc769ba2a5d285e44bbb843306d07bac5a53bfcb9fa85032327f'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
@@ -75,6 +74,8 @@ ac_add_options --enable-rust
 # Branding
 ac_add_options --enable-official-branding
 ac_add_options --enable-update-channel=release
+export MOZILLA_OFFICIAL=1
+export MOZ_TELEMETRY_REPORTING=1
 export MOZ_ADDON_SIGNING=1
 export MOZ_REQUIRE_SIGNING=1
 
@@ -98,8 +99,8 @@ ac_add_options --enable-system-pixman
 
 # Features
 ac_add_options --enable-startup-notification
+ac_add_options --enable-crashreporter
 ac_add_options --enable-alsa
-ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
 
 STRIP_FLAGS="--strip-debug"
@@ -114,9 +115,6 @@ build() {
 
   # Hardening
   LDFLAGS+=" -Wl,-z,now"
-
-  # GCC 6
-  CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-schedule-insns2"
 
   export PATH="$srcdir/path:$PATH"
 
