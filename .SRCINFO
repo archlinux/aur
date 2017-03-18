@@ -18,7 +18,9 @@ pkgbase = opencascade7
 	depends = mesa
 	optdepends = intel-tbb: multithreading support
 	source = opencascade-7.1.0.tar.gz::http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V7_1_0;sf=tgz
+	source = fix-install-dir-references.patch
 	md5sums = SKIP
+	md5sums = 9614204ad945c1fcfa4c2c058c9d0423
 
 pkgname = opencascade7
 

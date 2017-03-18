@@ -10,11 +10,15 @@ license=('custom')
 makedepends=('cmake' 'flex' 'bison')
 depends=('gl2ps' 'freeimage' 'tk' 'ftgl' 'libxmu' 'vtk' 'mesa')
 optdepends=('intel-tbb: multithreading support')
-source=(opencascade-${pkgver}.tar.gz::"http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V${pkgver//./_};sf=tgz")
-md5sums=('SKIP') # i don't know, the md5sum is not stable...
+source=("opencascade-${pkgver}.tar.gz::http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V${pkgver//./_};sf=tgz"
+        "fix-install-dir-references.patch")
+md5sums=('SKIP'
+         '9614204ad945c1fcfa4c2c058c9d0423')
 
 prepare(){
   cd "occt-V${pkgver//./_}"
+  patch -Np1 -i "$srcdir/fix-install-dir-references.patch"
+
   mkdir -p build
   cd build
   flags=""
@@ -39,12 +43,6 @@ prepare(){
     flags="$flags -DUSE_TBB=OFF"
   fi
   cmake $flags ..
-
-  # this allows USE_VTK=ON to build
-  sed -i 's/-lvtkRenderingOpenGL/-lvtkRenderingOpenGL2/g' src/TKIVtk/CMakeFiles/TKIVtk.dir/link.txt
-  sed -i 's/-lvtkRenderingOpenGL/-lvtkRenderingOpenGL2/g' src/TKIVtkDraw/CMakeFiles/TKIVtkDraw.dir/link.txt
-  sed -i 's/-lvtkRenderingFreeTypeOpenGL/-lvtkRenderingFreeTypeTCL/g' src/TKIVtk/CMakeFiles/TKIVtk.dir/link.txt
-  sed -i 's/-lvtkRenderingFreeTypeOpenGL/-lvtkRenderingFreeTypeTCL/g' src/TKIVtkDraw/CMakeFiles/TKIVtkDraw.dir/link.txt
 }
 
 build() {
@@ -57,6 +55,17 @@ package() {
   make DESTDIR="${pkgdir}" install
   install -Dm644 ../LICENSE_LGPL_21.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 ../OCCT_LGPL_EXCEPTION.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+  # Fix permission of draw.sh script.
+  chmod 755 "${pkgdir}/opt/${pkgname}/bin/draw.sh"
+
+  # Remove compile scripts. If they aren't removed opencascades
+  # buildsystem tries to access (and modify?!) them in subsequent
+  # build attempts. Also they are quite useless.
+  rm "${pkgdir}/opt/${pkgname}/bin/"custom*.sh
+
+  # Remove doc folder with licence files (wrong location).
+  rm -R "${pkgdir}/opt/${pkgname}/share/doc"
   
   #install -m644 -D "${srcdir}/99_oce.conf" -t "${pkgdir}/etc/ld.so.conf.d"
   #install -m755 -D "${srcdir}/opencascade-${pkgver}/build/env.sh" -t "${pkgdir}/etc/profile.d"
