@@ -1,7 +1,7 @@
 # Maintainer: Allen Choong <allen.choong at gmail dot com>
 pkgname=klatexformula
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides GUI for generating images from LaTeX equations"
 url='http://klatexformula.sourceforge.net'
 arch=('i686' 'x86_64')
@@ -17,6 +17,6 @@ package() {
 	sed -i "s|(uninstall|(uninstall2|" cmake/klfinstallpaths.cmake
 	patch -p1 -u < ../klfbackend.patch
 	mkdir build && cd build
-	cmake ..
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib ..
 	make DESTDIR="${pkgdir}/" install
 }
