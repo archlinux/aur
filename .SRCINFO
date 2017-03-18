@@ -1,6 +1,6 @@
 pkgbase = batify
-	pkgdesc = Bash script to trigger plug and battery level notifications using udev and libnotify (multi-xusers).
-	pkgver = 0.9
+	pkgdesc = Udevrule to display plug and battery level notifications (multi-x sessions).
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/Ventto/batify.git
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = batify
 	optdepends = notification-daemon
 	provides = batify
 	conflicts = batify
-	source = https://github.com/Ventto/batify/archive/v0.9.tar.gz
-	sha256sums = 6a33475e275c895173b234bb0f6e5b9d7e454477d4c7cdb0f0a31621bf6bfdc5
+	source = https://github.com/Ventto/batify/archive/v1.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = batify
 

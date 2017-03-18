@@ -1,9 +1,9 @@
 # Maintainer: Thomas "Ventto" Venriès <thomas.venries@gmail.com>
 
 pkgname=batify
-pkgver=0.9
+pkgver=1.0
 pkgrel=1
-pkgdesc='Bash script to trigger plug and battery level notifications using udev and libnotify (multi-xusers).'
+pkgdesc='Udevrule to display plug and battery level notifications (multi-x sessions).'
 arch=('any')
 url="https://github.com/Ventto/${pkgname}.git"
 license=('MIT')
@@ -13,14 +13,9 @@ conflicts=("${pkgname}")
 makedepends=('git' 'libnotify')
 optdepends=('notification-daemon')
 source=("https://github.com/Ventto/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('6a33475e275c895173b234bb0f6e5b9d7e454477d4c7cdb0f0a31621bf6bfdc5')
-
-build() {
-  cd ${pkgname}-${pkgver}
-  make
-}
+sha256sums=('SKIP')
 
 package() {
   cd ${pkgname}-${pkgver}
-  make DESTDIR="${pkgdir}" install
+  install -Dm644 99-${pkgname}.rules ${pkgdir}/etc/udev/rules.d/99-${pkgname}.rules
 }
