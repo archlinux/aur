@@ -1,6 +1,6 @@
-# Maintainer: Moritz Kaspar Rudert (mortzu) <me@mortzu.de>
+# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
 pkgname='molly-guard'
-pkgver=0.6.2
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="protects machines from accidental shutdowns/reboots (via ssh)"
 arch=('any')
@@ -10,8 +10,6 @@ depends=('openssh' 'run-parts')
 makedepends=('docbook-xsl')
 source=("http://http.debian.net/debian/pool/main/m/$pkgname/${pkgname}_${pkgver}.tar.xz"
         'molly-guard.sh')
-md5sums=('ab3dcd91c9560acc8864b0ff4549079b'
-         'd3d171f182d45e59591dee11c911a710')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -45,3 +43,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+sha512sums=('cace8ca9d07792bee5e61586eecf56f53a8b5a221e57f5322d1f71c989106fed24c83aadbe9b0495bfa034d5ef17ea9efe5666b53e14f584e8bc777b3589e860'
+            'c3d5beacdb719e3481ac1bfee4871e7e325478a701c2b022fd687ce4911bbb78fdbbaca07878269873756644e64313275cf6220463d36fdf07db8d715f3341d9')
