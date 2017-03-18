@@ -1,0 +1,18 @@
+pkgbase = lcurse-git
+	pkgdesc = Python script to have a curse compatible client for linux
+	pkgver = 20170318_r90.043fcbf
+	pkgrel = 1
+	url = https://github.com/Darexon/lcurse
+	arch = any
+	license = Unlicense
+	makedepends = git
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-pyqt5
+	depends = python-lxml
+	provides = lcurse
+	source = git+https://github.com/Darexon/lcurse.git
+	md5sums = SKIP
+
+pkgname = lcurse-git
+
