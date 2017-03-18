@@ -4,7 +4,7 @@
 
 set -u
 pkgname='miller'
-pkgver='5.0.0'
+pkgver='5.0.1'
 pkgrel='1'
 pkgdesc='sed, awk, cut, join, and sort for name-indexed data such as CSV and tabular JSON.'
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ _verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l') 
 _srcdir="${pkgname}-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 #source[0]='https://github.com/johnkerl/miller/archive/master.tar.gz'; _srcdir='miller-master'
-sha256sums=('28fe39efd83b3134261fc5614d429f0f5df940036a4cf7577dc1a95bb9e2eec7')
+sha256sums=('94bf64f405b14e133c67435d54711ccdce9786d65d56995e68c53ed250faa58d')
 
 prepare() {
   set -u
