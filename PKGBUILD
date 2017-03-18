@@ -2,7 +2,7 @@
 
 pkgname=chewing-editor
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform chewing user phrase editor"
 arch=('i686' 'x86_64')
 url="http://chewing.im"
@@ -35,5 +35,4 @@ package() {
     cd "$srcdir/$pkgname-$pkgver/build"
 
     make DESTDIR="$pkgdir" install
-    install -Dm644 "../COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
