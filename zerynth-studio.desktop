@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Zerynth Studio
+Comment=A powerful IDE for embedded programming
+Exec=zerynth-studio %U
+Icon=zerynth-studio
+StartupNotify=false
+Categories=Development;IDE;
+Type=Application
