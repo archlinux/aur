@@ -2,8 +2,8 @@
 
 pkgname=python-msrestazure
 pkgver=0.4.7
-pkgrel=1
-pkgdesc="The runtime library for AutoRest generated Python clients."
+pkgrel=2
+pkgdesc="AutoRest swagger generator Python client runtime. Azure-specific module."
 arch=('any')
 url="https://github.com/Azure/msrestazure-for-python"
 license=('MIT')
@@ -19,5 +19,5 @@ build() {
 
 package() {
   cd "msrestazure-for-python-$pkgver"
-  python setup.py install --root="$pkgdir"
+  python setup.py install --root="$pkgdir" --optimize=1
 }
