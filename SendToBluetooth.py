@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import gi
+import os, gi
 
 try:
     gi.require_version('Nautilus', '3.0')
@@ -24,6 +24,10 @@ class ColumnExtension(GObject.GObject, Nautilus.MenuProvider):
         if len(files) < 1:
             return
         
+        for file in files:
+            if file.is_directory():
+                return
+
         item = Nautilus.MenuItem(
             name="SendToBluetooth::MenuItem",
             label="Send to bluetooth device",
