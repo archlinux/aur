@@ -1,7 +1,7 @@
 # Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 # Source: https://github.com/nicoulaj/archlinux-packages
 pkgname=rainbow-git
-pkgver=2.6.0.231.b814454
+pkgver=2.6.1.234.d15063e
 pkgrel=1
 pkgdesc="Colorize commands output or STDIN using patterns."
 arch=(any)
@@ -10,7 +10,6 @@ license=(GPL3)
 depends=(python)
 makedepends=('git'
              'python-setuptools'
-             'python-fastentrypoints'
              'python-jinja')
 changelog=Changelog
 provides=(rainbow)
