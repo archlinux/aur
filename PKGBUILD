@@ -2,13 +2,13 @@
 pkgname=pyunz-git
 _pkgname=pyunz
 pkgver=0.2.3.r4.ga2db5ac
-pkgrel=2
+pkgrel=3
 pkgdesc='extract packages easily'
 arch=(any)
 url='https://github.com/Sherlock-Holo/pyunz'
 license=('GPL3')
 depends=('python' 'zip' 'unzip' 'p7zip')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 source=("git+https://github.com/Sherlock-Holo/${_pkgname}")
 
 pkgver() {
