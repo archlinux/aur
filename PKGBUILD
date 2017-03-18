@@ -7,11 +7,11 @@ pkgdesc="Lightweight UPnP IGD daemon (git)"
 arch=('i686' 'x86_64')
 url="http://miniupnp.free.fr"
 license=('BSD')
-backup=(etc/miniupnpd/miniupnpd.conf)
 depends=('iptables' 'net-tools' 'util-linux')
 makedepends=('git' 'lsb-release')
 provides=('miniupnpd')
 conflicts=('miniupnpd')
+backup=(etc/miniupnpd/miniupnpd.conf)
 source=("git+https://github.com/miniupnp/miniupnp.git"
         miniupnpd.systemd)
 sha256sums=('SKIP'
