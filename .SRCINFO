@@ -8,7 +8,7 @@ pkgbase = lib32-libbass
 	depends = alsa-lib
 	source = http://dl.un4seen.com/files/bass24-linux.zip
 	source = LICENSE
-	md5sums = 7ba6fbf12b3893096f0ef8e238eb624b
+	md5sums = 7d7bb406d6cc82de37532ad412121eca
 	md5sums = 3ab2a50d2f88f284eb854a6a9a35f51f
 
 pkgname = lib32-libbass
