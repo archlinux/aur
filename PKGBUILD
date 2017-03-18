@@ -7,7 +7,7 @@ pkgdesc="Open CASCADE Technology, 3D modeling & numerical simulation, version 7"
 url="http://www.opencascade.org"
 arch=('i686' 'x86_64')
 license=('custom')
-makedepends=('cmake' 'flex' 'bison')
+makedepends=('cmake' 'flex' 'bison' 'qt5-webkit')
 depends=('gl2ps' 'freeimage' 'tk' 'ftgl' 'libxmu' 'vtk' 'mesa')
 optdepends=('intel-tbb: multithreading support')
 source=("opencascade-${pkgver}.tar.gz::http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V${pkgver//./_};sf=tgz"

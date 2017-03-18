@@ -9,6 +9,7 @@ pkgbase = opencascade7
 	makedepends = cmake
 	makedepends = flex
 	makedepends = bison
+	makedepends = qt5-webkit
 	depends = gl2ps
 	depends = freeimage
 	depends = tk
