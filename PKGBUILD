@@ -34,20 +34,26 @@ backup=('usr/share/doc/rtorrent/rtorrent.rc.sample')
 _url="https://raw.githubusercontent.com/pyroscope/rtorrent-ps/master/patches"
 source=("git://github.com/rakshasa/rtorrent.git#branch=$_branch"
         "rtorrent.rc.sample"
+        "${_url}/ps-fix-double-slash-319_all.patch"
+        "${_url}/ps-info-pane-xb-sizes_all.patch"
+        "${_url}/ps-item-stats-human-sizes_all.patch"
         "${_url}/ps-ui_pyroscope_all.patch"
         "${_url}/pyroscope.patch"
-        "${_url}/ui_pyroscope.patch"
         "${_url}/command_pyroscope.cc"
+        "${_url}/ui_pyroscope.patch"
         "${_url}/ui_pyroscope.cc"
         "${_url}/ui_pyroscope.h")
 
 md5sums=('SKIP'
          '35e2c69152a3c2137c5958f9f27cb906'
+         '22fae392c6e281dc438b39a5019e7e1b'
+         'f1539d70c74e5c74d8a15d51675aa26c'
+         '2d34e8c86c1c6ed1354b55ca21819886'
          '7a88f8ab5d41242fdf1428de0e2ca182'
          'bd04a0699b80c8042e1cf63a7e0e4222'
+         '01e9e7dddf9ebcdca81d88dfdd43b4dc'
          '0a2bbaf74c7160ba33876dcc2f050f14'
-         '8751215bdb661aad57ec69ab59d898f9'
-         'afd9f0e9ed816069b584e19c88b0a4bb'
+         'cd39a495ee93d9c77039fa74a9e9dc94'
          '1258acfc82c50a8f452ace87fef0b416')
 
 pkgver() {
@@ -59,24 +65,19 @@ prepare() {
     cd "$srcdir/rtorrent"
     #patch -Np1 -i "${startdir}/rtorrent.patch"
 
-    sed -i doc/scripts/update_commands_0.9.sed \
-        -e "s:':\":g"
     sed -i ../{command_pyroscope.cc,ui_pyroscope.cc} \
         -e "s:tr1:std:" \
         -e "s:print_download_info:print_download_info_full:"
-
     sed -i configure.ac \
         -e "s:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\nAC_DEFINE(RT_HEX_VERSION, 0x000907, version checks):"
     sed -i src/ui/download_list.cc \
         -e "s:rTorrent \" VERSION:rTorrent-PS git~$(git rev-parse --short $_commit) \" VERSION:"
 
     for i in ${srcdir}/*.patch; do
-        sed -f doc/scripts/update_commands_0.9.sed -i "$i"
         msg "Patching $i"
         patch -uNlp1 -i "$i"
     done
     for i in ${srcdir}/*.{cc,h}; do
-        sed -f doc/scripts/update_commands_0.9.sed -i "$i"
         ln -sf "$i" src
     done
 
