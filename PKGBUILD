@@ -3,7 +3,7 @@
 
 _pkgname=luigi
 pkgname=python2-${_pkgname}
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="Workflow mgmgt + task scheduling + dependency resolution"
 arch=('any')
@@ -13,8 +13,8 @@ optdepends=('python2-mechanize: for debugging Hadoop jobs more easily')
 url="https://github.com/spotify/luigi"
 license=('Apache')
 source=(https://github.com/spotify/luigi/archive/${pkgver}.tar.gz)
-md5sums=('49cfff8fc00a1764ec8b8f200846373f')
-sha256sums=('f9ea68453b7f0895f8a609cf11cd4dfde8ecbbf464c3234b30ac1e3a3f9c886c')
+md5sums=('57429ca2525657540c6e48473fb29fbe')
+sha256sums=('f99afe14d1a0f64020b278561027fb30ad3cab18f39c570c422e333f278a2374')
 
 build() {
   cd "$srcdir/${_pkgname}-$pkgver"
