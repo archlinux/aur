@@ -1,7 +1,7 @@
 pkgbase = batify
-	pkgdesc = Udevrule to display plug and battery level notifications (multi-x sessions).
+	pkgdesc = Udevrule triggering plug and battery level notifications (multi-x sessions).
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ventto/batify.git
 	arch = any
 	license = MIT
