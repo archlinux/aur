@@ -6,7 +6,9 @@ pkgbase = resmap
 	arch = x86_64
 	license = CCPL:cc-by-nc-nd-3.0
 	source = https://downloads.sourceforge.net/project/resmap/ResMap-1.1.4-linux64
+	source = https://downloads.sourceforge.net/project/resmap/src/ResMap-1.1.4-src.zip
 	md5sums = ed7381adf8282c6c1033b52f0c1b13c7
+	md5sums = 8465e7e6475f2d8383ac322494bb0da4
 
 pkgname = resmap
 

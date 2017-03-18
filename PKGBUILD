@@ -9,12 +9,12 @@ license=('CCPL:cc-by-nc-nd-3.0')
 depends=()
 makedepends=()
 optdepends=()
-source=("https://downloads.sourceforge.net/project/resmap/ResMap-${pkgver}-linux64")
-md5sums=('ed7381adf8282c6c1033b52f0c1b13c7')
-build() {
-	cd "${srcdir}"/
-}	
+source=("https://downloads.sourceforge.net/project/resmap/ResMap-${pkgver}-linux64" 
+"https://downloads.sourceforge.net/project/resmap/src/ResMap-${pkgver}-src.zip")
+md5sums=('ed7381adf8282c6c1033b52f0c1b13c7' '8465e7e6475f2d8383ac322494bb0da4')
 package() {
-	install -d "${pkgdir}"/usr/bin
+	cd "${srcdir}"/
+	install -d "${pkgdir}"/usr/bin "${pkgdir}"/opt/resmap
+	cp -r "${srcdir}"/* "${pkgdir}"/opt/resmap/.
 	install -D -m755 "${srcdir}"/ResMap-${pkgver}-linux64 "${pkgdir}"/usr/bin/resmap
 }
