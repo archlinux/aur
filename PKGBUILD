@@ -4,17 +4,16 @@
 
 pkgname=bibus
 pkgver=1.5.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A bibliographic database that can directly insert references in \
 OpenOffice.org/LibreOffice and generate the bibliographic index."
 url="http://sourceforge.net/projects/bibus-biblio/"
-license="GPL"
+license=('GPL')
 arch=('any')
 depends=('python2-pysqlite' 'wxpython' 'python2-lxml' 'unixodbc' 'hicolor-icon-theme')
 optdepends=('libreoffice' 'openoffice-base-bin')
 source=(http://downloads.sourceforge.net/project/$pkgname-biblio/$pkgname-biblio/${pkgname}-${pkgver}/${pkgname}_${pkgver}.orig.tar.gz)
 md5sums=('5bb8b26d0980ebb72a2882b618fbe62c')
-install=${pkgname}.install
 backup=(etc/bibus.config)
 
 package() {
