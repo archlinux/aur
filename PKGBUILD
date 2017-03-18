@@ -1,8 +1,8 @@
 # Maintainer: Jason Papakostas <vithos@gmail.com>
 # Contributor: Liganic <liganic-aur@gmx.net>
 pkgname=cpplint
-pkgver='456.r17'
-_commit=ae11811f8191818b894707223c37bf27f7b9b729
+pkgver='456.r19'
+_commit=2db65fed51cf28fb6c888b0661acffb97c50dcac
 pkgrel=1
 pkgdesc="Automated checker to make sure a C++ file follows Google's C++ style guide."
 arch=('any')
@@ -14,9 +14,9 @@ source=("cpplint-${_commit}.py::https://raw.githubusercontent.com/google/stylegu
         "README-${_commit}::https://raw.githubusercontent.com/google/styleguide/${_commit}/cpplint/README"
         "cpplint_unittest-${_commit}.py::https://raw.githubusercontent.com/google/styleguide/${_commit}/cpplint/cpplint_unittest.py"
         "cpplint_test_header-${_commit}.h::https://raw.githubusercontent.com/google/styleguide/${_commit}/cpplint/cpplint_test_header.h")
-sha256sums=('6e5067e128226ea1eb75defb83b9b5075e0eba927d2296403613a8e05f9530b5'
+sha256sums=('ecdce6d9983ad62a7f1fbdcc1144b20205b58a14cf681f83edfd51eaceb9bf29'
             'a2a49a15fc0db21a0c130e57fb5894954d81bc95962fc90be2e70d2daaa27d89'
-            '313d47e99517851ce48377eef04d0b97e9891d925a42c709bac8c447b3ec4aa1'
+            '59447ead66bb6b4b9739eae34b4b19e86a61f65882826448b1107eb8812ed663'
             'ca87382ffce185c94adf1f33d46ec5f20d13bfe41549a5e243095ce1117f0b12')
 
 build() {
