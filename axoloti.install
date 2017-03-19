@@ -10,6 +10,7 @@ remove_firmware() {
 
 post_install() {
     compile_firmware
+    echo 'Launch the GUI by running the script at /usr/bin/axoloti'
 }
 
 post_upgrade() {

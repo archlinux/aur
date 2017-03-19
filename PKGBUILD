@@ -3,13 +3,13 @@
 
 pkgname=axoloti
 pkgver=1.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Firmware and GUI for the Axoloti Core'
 arch=('x86_64')
 url='http://www.axoloti.com'
 license=('GPL')
 depends=('java-runtime=7' 'bash' 'gtk2' 'udev' 'lib32-bzip2' 'lib32-zlib' 'lib32-ncurses')
-makedepends=('apache-ant' 'unzip')
+makedepends=('apache-ant' 'unzip' 'git')
 conflicts=('axoloti-git' 'axoloti-runtime-git')
 options=('!strip')
 install="$pkgname.install"
