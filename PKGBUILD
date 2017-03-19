@@ -1,7 +1,7 @@
 # Maintainer: Kyle Keen
 # Contributor: simongmzlj
 pkgname=greed
-pkgver=3.11
+pkgver=4.2
 pkgrel=1
 pkgdesc='The strategy game of Greed.'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url='http://www.catb.org/~esr/greed/'
 license=('GPL')
 depends=('ncurses')
 source=("http://www.catb.org/~esr/greed/$pkgname-$pkgver.tar.gz")
-md5sums=('81e9e57ea26fad2bcd3e3fcdd0b7a8f6')
+md5sums=('5a31b34f53c8455f3a90ff1c1dee35e3')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
