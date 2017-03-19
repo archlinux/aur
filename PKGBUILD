@@ -1,7 +1,7 @@
 # Maintainer: VirtualTam <virtualtam@flibidi.net>
 pkgname=aseqjoy-git
-pkgver=ee9019f
-pkgrel=2
+pkgver=0.0.2
+pkgrel=1
 pkgdesc="Joystick to ALSA MIDI Sequencer Converter"
 arch=('i686' 'x86_64')
 url="https://terminatorx.org/addons/"
@@ -17,7 +17,7 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd ${_gitname}
-  git describe --always | sed 's|-|.|g'
+  git describe --tags --always | sed 's/v//'
 }
 
 build() {
