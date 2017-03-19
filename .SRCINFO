@@ -1,0 +1,14 @@
+pkgbase = python-scp
+	pkgdesc = scp module for paramiko
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/jbardin/scp.py
+	arch = any
+	license = LGPL
+	makedepends = python-setuptools
+	depends = python-paramiko
+	source = https://files.pythonhosted.org/packages/source/s/scp/scp-0.10.2.tar.gz
+	md5sums = 4c581a7fc08b3597b542aab22c36dba3
+
+pkgname = python-scp
+
