@@ -1,0 +1,14 @@
+pkgbase = avr-libc-atmel-atmega328pb
+	pkgdesc = Atmega328pb support for avr-libc-atmel
+	pkgver = 1.2.132
+	pkgrel = 1
+	url = http://packs.download.atmel.com/
+	arch = any
+	license = apache-2.0
+	depends = avr-libc-atmel
+	options = !strip
+	source = Atmel.ATmega_DFP.1.2.132.zip::http://packs.download.atmel.com/Atmel.ATmega_DFP.1.2.132.atpack
+	sha1sums = 817b568e15b2bfdcd880515391360802707ea41a
+
+pkgname = avr-libc-atmel-atmega328pb
+
