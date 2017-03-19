@@ -1,0 +1,19 @@
+pkgbase = libmatekbd-gtk2
+	pkgdesc = MATE keyboard library (GTK2 version)
+	pkgver = 1.14.1
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	depends = dconf
+	depends = gtk2
+	depends = libxklavier
+	conflicts = libmatekbd
+	conflicts = libmatekbd-gtk3
+	source = http://pub.mate-desktop.org/releases/1.14/libmatekbd-1.14.1.tar.xz
+	sha1sums = 71fcb3a85ead07dcbb7f4ac3516590dd03ba483f
+
+pkgname = libmatekbd-gtk2
+
