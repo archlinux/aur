@@ -49,7 +49,6 @@ package() {
   cp -R $srcdir/ArangoDB-$pkgver/build/etc $pkgdir
   cp -R $srcdir/ArangoDB-$pkgver/build/var $pkgdir
   cp -R $srcdir/ArangoDB-$pkgver/build/bin $pkgdir/usr
-  cp -R $srcdir/ArangoDB-$pkgver/build/lib $pkgdir/usr
   mkdir -p $pkgdir/usr/share/arangodb3/js
   mkdir -p $pkgdir/usr/share/man
   cp -R $srcdir/ArangoDB-$pkgver/js/* $pkgdir/usr/share/arangodb3/js
