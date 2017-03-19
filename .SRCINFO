@@ -1,0 +1,21 @@
+pkgbase = mate-polkit-gtk2
+	pkgdesc = PolicyKit integration for the MATE desktop (GTK2 version)
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	groups = mate-gtk2
+	license = LGPL
+	makedepends = accountsservice
+	makedepends = gobject-introspection
+	makedepends = intltool
+	depends = gtk2
+	depends = polkit
+	conflicts = mate-polkit
+	conflicts = mate-polkit-gtk3
+	source = http://pub.mate-desktop.org/releases/1.14/mate-polkit-1.14.0.tar.xz
+	sha1sums = da2b4cf7b905a24fa22dd14e8991a71814ad7777
+
+pkgname = mate-polkit-gtk2
+
