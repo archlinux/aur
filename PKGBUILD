@@ -8,7 +8,7 @@ url="http://sourceforge.net/projects/dnswalk/"
 license=('GPL')
 arch=(i686 x86_64)
 depends=('perl-net-dns')
-source=("http://heanet.dl.sourceforge.net/sourceforge/dnswalk/dnswalk-$pkgver.tar.gz" 'dnswalk.patch' 'makereports.patch')
+source=("http://superb-dca2.dl.sourceforge.net/project/dnswalk/dnswalk/$pkgver/dnswalk-$pkgver.tar.gz" 'dnswalk.patch' 'makereports.patch')
 md5sums=('62b9302822353fad71d51aefdae1cad1' 'e3cde1f934cf4ffc815453640efdad5c' '02778b076ed29d2a46d27e0d2513a8f3')
 
 prepare() {
