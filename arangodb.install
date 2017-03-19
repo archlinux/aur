@@ -25,8 +25,8 @@ post_install() {
   files, then enable and start the service:
 
    sudo systemctl daemon-reload
-   sudo systemctl enable arangodb.service
-   sudo systemctl start arangodb.service
+   sudo systemctl enable arangodb3.service
+   sudo systemctl start arangodb3.service
 
   ArangoDB 3 ships with authentication enabled. To use it you will need
   to start the server with 'authentication = false' in the following
@@ -45,7 +45,7 @@ post_install() {
 
   Set the 'authentication = true' and then restart ArangoDB:
 
-   sudo systemctl restart arangodb.service
+   sudo systemctl restart arangodb3.service
 
   You can now use your username and password to access the
   administrative interface at:
@@ -69,9 +69,8 @@ post_upgrade() {
   between versions. To upgrade existing data files run /usr/bin/arangod
   with the upgrade option:
 
-    sudo systemctl stop arangodb.service
-    sudo arangod --database.auto-upgrade
-    sudo systemctl start arangodb.service
+    sudo systemctl stop arangodb3.service
+    sudo systemctl start arangodb3.service
 
   Take a look at the Changelog to see what is new in $1:
   https://github.com/arangodb/arangodb/blob/devel/CHANGELOG
@@ -79,7 +78,7 @@ EOF
 }
 
 pre_remove() {
-  systemctl stop arangodb.service &> /dev/null
+  systemctl stop arangodb3.service &> /dev/null
 }
 
 post_remove() {

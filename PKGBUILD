@@ -18,9 +18,9 @@ conflicts=("arangodb-latest" "arangodb-git")
 options=()
 install=arangodb.install
 source=("https://www.arangodb.com/repositories/Source/ArangoDB-$pkgver.tar.bz2"
-"arangodb.service" "arangodb-tmpfile.conf")
+"arangodb3.service" "arangodb-tmpfile.conf")
 sha256sums=('021b7810de22d2a0d6d9513c7e4d2bd0f62076822325f5028a0b56fc0a3e2bf9'
-            '40ccbb4034aedaa0d2b1d2922d0d9e53271dfa024f421105a988e1f65f1eef51'
+            '7de422694ff36683849bd552bec3d5161a52455680a8ea30eba0988dcf5c1c67'
             '736581ab917755c859d17b4015f68380384f924279aa61c9c160960018e1e4e4')
 
 build() {
@@ -58,5 +58,5 @@ package() {
 
   msg2 "Preparing systemd service."
   mkdir -p $pkgdir/usr/lib/systemd/system
-  cp $srcdir/arangodb.service $pkgdir/usr/lib/systemd/system/
+  cp $srcdir/arangodb3.service $pkgdir/usr/lib/systemd/system/
 }
