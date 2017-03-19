@@ -72,7 +72,7 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/fonts/TTF"
 	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
-	cd "${srcdir}/fonts"*
+	cd "${srcdir}/fonts-${_commit}"
 
 	install -Dm644 ofl/raleway/OFL.txt "${pkgdir}/usr/share/licenses/${pkgname}"
 
