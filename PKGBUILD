@@ -3,7 +3,7 @@
 pkgbase=('python-mido')
 pkgname=('python-mido' 'python2-mido')
 _name='mido'
-pkgver='1.2.3'
+pkgver='1.2.4'
 pkgrel=1
 pkgdesc="A Python library for working with MIDI messages and ports"
 url="https://mido.readthedocs.io/"
@@ -13,7 +13,7 @@ optdepends=('portmidi: for PortMidi support')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('1592d4b87483464aeb35d5bbe375e315')
+md5sums=('50c3562294bb25adebecb418bd8402c6')
 
 prepare() {
   cp -a "${srcdir}/${_name}-${pkgver}"{,-python2}
