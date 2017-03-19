@@ -14,7 +14,7 @@ conflicts=()
 options=(!emptydirs)
 install=$pkgname.install
 source=("https://github.com/cyanogen/uchroma/archive/release/$pkgver.tar.gz")
-sha512sums=('cdf295c9e0eb666ef89a6531c96c9bb96c3970b7f153204fba38b988ddb203f1ee3a88f964e21d62927f1ad8f93cbfacaf7094226683917a1d5508707c4a4a00')
+sha512sums=('a9022f181270ca1cff39dbf5f7c09e17693ef2c144bba29778d13e187be32ab20d8613ce0419e9c992a5f2ffb84b9ba46f865bdb6a6ebc2da94b292b0fb81afe')
 
 package() {
   cd "$srcdir/$pkgname-release-$pkgver"
