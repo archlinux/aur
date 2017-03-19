@@ -1,0 +1,16 @@
+pkgbase = python-azure-mgmt-compute
+	pkgdesc = Microsoft Azure Compute Resource Management Client Library for Python
+	pkgver = 0.33.1rc1
+	pkgrel = 1
+	url = https://github.com/Azure/azure-sdk-for-python
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-azure-common
+	depends = python-azure-mgmt-nspkg
+	depends = python-msrestazure
+	source = https://files.pythonhosted.org/packages/source/a/azure-mgmt-compute/azure-mgmt-compute-0.33.1rc1.zip
+	md5sums = 05057f345ff94a0ba8bb6b238df081b1
+
+pkgname = python-azure-mgmt-compute
+
