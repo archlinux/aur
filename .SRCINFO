@@ -6,12 +6,13 @@ pkgbase = pivx
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = boost
-	makedepends = qrencode
+	makedepends = qt5-base
 	makedepends = miniupnpc
+	makedepends = openssl
+	makedepends = protobuf
+	makedepends = qrencode
+	makedepends = db4.8
 	depends = boost-libs
-	optdepends = miniupnpc: Firewall-jumping support
-	optdepends = db4.8: Wallet storage
 	source = https://github.com/PIVX-Project/PIVX/archive/v2.1.6.tar.gz
 	sha256sums = 990f70fe7c4dc487694018a41264c79c94c4e58d5529212b8dc09f4658215bb4
 
@@ -19,6 +20,8 @@ pkgname = pivx-daemon
 	pkgdesc = Transactional security and privacy-focused decentralized open source cryptocurrency (daemon)
 	depends = boost-libs
 	depends = openssl
+	depends = miniupnpc
+	depends = db4.8
 
 pkgname = pivx-cli
 	pkgdesc = Transactional security and privacy-focused decentralized open source cryptocurrency (CLI)
@@ -30,7 +33,7 @@ pkgname = pivx-qt
 	depends = boost-libs
 	depends = qt5-base
 	depends = protobuf
-	optdepends = miniupnpc: Firewall-jumping support
-	optdepends = db4.8: Wallet storage
-	optdepends = qrencode: Generate QR codes
+	depends = qrencode
+	depends = miniupnpc
+	depends = db4.8
 

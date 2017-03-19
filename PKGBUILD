@@ -4,13 +4,11 @@ pkgname=("pivx-daemon" "pivx-cli" "pivx-qt")
 pkgbase=pivx
 _pkgbase=${pkgbase^^}
 pkgver=2.1.6
-pkgrel=2
+pkgrel=3
 arch=("i686" "x86_64")
 url="https://pivx.org/"
 depends=("boost-libs")
-makedepends=("boost" "qrencode" "miniupnpc")
-optdepends=("miniupnpc: Firewall-jumping support"
-            "db4.8: Wallet storage")
+makedepends=("qt5-base" "miniupnpc" "openssl" "protobuf" "qrencode" "db4.8")
 pkgdesc="Transactional security and privacy-focused decentralized open source cryptocurrency "
 license=("MIT")
 source=("https://github.com/PIVX-Project/PIVX/archive/v2.1.6.tar.gz")
@@ -19,14 +17,13 @@ sha256sums=("990f70fe7c4dc487694018a41264c79c94c4e58d5529212b8dc09f4658215bb4")
 build() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   ./autogen.sh
-  ./configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb --enable-hardening
+  ./configure --prefix=/usr --with-gui=qt5
   make
 }
 
 package_pivx-daemon() {
   pkgdesc+="(daemon)"
-  depends+=("openssl")
-  makedepends+=("qt5-base" "protobuf")
+  depends+=("openssl" "miniupnpc" "db4.8")
 
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   install -Dm644 "contrib/init/pivxd.service"		"${pkgdir}/usr/lib/systemd/system/pivxd.service"
@@ -40,7 +37,6 @@ package_pivx-daemon() {
 package_pivx-cli() {
   pkgdesc+="(CLI)"
   depends+=("openssl")
-  makedepends+=("qt5-base")
 
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   install -Dm755 "src/pivx-cli"	"${pkgdir}/usr/bin/pivx-cli"
@@ -50,9 +46,7 @@ package_pivx-cli() {
 
 package_pivx-qt() {
   pkgdesc+="(Qt)"
-  depends+=("qt5-base" "protobuf")
-  makedepends+=("openssl")
-  optdepends+=("qrencode: Generate QR codes")
+  depends+=("qt5-base" "protobuf" "qrencode" "miniupnpc" "db4.8")
 
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   install -Dm755 "src/qt/pivx-qt"			"${pkgdir}/usr/bin/pivx-qt"
