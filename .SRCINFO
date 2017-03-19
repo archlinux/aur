@@ -1,0 +1,12 @@
+pkgbase = stargazer
+	pkgdesc = A billing system for small home and office networks
+	pkgver = 2.408
+	pkgrel = 1
+	url = http://www.stg.dp.ua
+	arch = any
+	license = GPL2
+	source = http://www.stg.dp.ua/download/server/2.408/stg-2.408.tar.gz
+	md5sums = 755d35cc9bfbcf6374b5e2a73638b8f0
+
+pkgname = stargazer
+
