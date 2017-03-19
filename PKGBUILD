@@ -5,5 +5,21 @@ pkgdesc="epub2pdf is a command-line tool that quickly generates PDF files from E
 arch=('any')
 url="http://epub2pdf.com"
 license=('GPL3')
-depends=('java-runtime')
-source=("$url/files/epub2pdf-0.5.zip")
+depends=('java-runtime>=6')
+source=("$url/files/epub2pdf-0.5.zip"
+"epub2pdf.sh")
+md5sums=('7189ee61628a72dfdb89120aa9e86a89'
+'SKIP')
+
+package() {
+    mkdir -p ${pkgdir}/usr/share/java/epub2pdf/
+    cd ${srcdir}/${pkgname}/
+    rm -f ./epub2pdf.bat
+    rm -f ./epub2pdf.sh
+    cp -R * ${pkgdir}/usr/share/java/epub2pdf/
+    find ${pkgdir}/usr/share/java/epub2pdf/* -type f -exec chmod 644 {} \;
+    find ${pkgdir}/usr/share/java/epub2pdf/* -type d -exec chmod 755 {} \;
+    mkdir -p ${pkgdir}/usr/bin/
+    install -Dm755 ${srcdir}/epub2pdf.sh \
+    ${pkgdir}/usr/bin/epub2pdf || return 1
+}
