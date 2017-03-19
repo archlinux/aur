@@ -1,0 +1,14 @@
+pkgbase = python-azure-graphrbac
+	pkgdesc = Microsoft Azure Graph RBAC Resource Management Client Library for Python
+	pkgver = 0.30.0rc6
+	pkgrel = 1
+	url = https://github.com/Azure/azure-sdk-for-python
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-azure-common
+	source = https://files.pythonhosted.org/packages/source/a/azure-graphrbac/azure-graphrbac-0.30.0rc6.zip
+	md5sums = 4c372db638f0a94153672f2f632d9164
+
+pkgname = python-azure-graphrbac
+
