@@ -23,7 +23,7 @@ url='http://www.videolan.org/developers/x264.html'
 license=('GPL')
 depends=('glibc')
 makedepends=('yasm' 'git' 'ffmpeg' 'l-smash')
-source=("git://git.videolan.org/x264.git")
+source=("git+http://git.videolan.org/git/x264.git")
 sha256sums=('SKIP')
 
 # Use the 10-bit version?
