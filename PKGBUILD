@@ -6,12 +6,12 @@ pkgname=('vala-panel-appmenu-translations-git' 'vala-panel-appmenu-xfce-git' 'va
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
 pkgver=0.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="AppMenu (Global Menu) plugin for xfce4-panel and vala-panel"
 url="https://github.com/rilian-la-te/vala-panel-appmenu"
 arch=('i686' 'x86_64')
 license=('GPL3')
-makedepends=('cmake' 'vala' 'gtk3' 'bamf>=0.5.0' 'xfce4-panel>=4.11.2' 'xfconf' 'libwnck3' 'vala-panel-git' 'mate-panel-gtk3')
+makedepends=('cmake' 'vala' 'gtk3' 'bamf>=0.5.0' 'xfce4-panel>=4.11.2' 'xfconf' 'libwnck3' 'vala-panel-git' 'mate-panel')
 source=("git://github.com/rilian-la-te/${_pkgbase}.git"
         "git://github.com/rilian-la-te/${_cmakename}.git"
         "git://github.com/rilian-la-te/${_dbusmenuname}.git")
@@ -76,7 +76,7 @@ package_vala-panel-appmenu-valapanel-git() {
 
 package_vala-panel-appmenu-mate-git() {
   pkgdesc="AppMenu (Global Menu) plugin for mate-panel"
-  depends=('gtk3' 'bamf>=0.5.0' 'mate-panel-gtk3' 'libwnck3')
+  depends=('gtk3' 'bamf>=0.5.0' 'mate-panel' 'libwnck3')
   optdepends=('gtk2-ubuntu: for hiding gtk2 menus'
             'unity-gtk-module: for gtk2/gtk3 menus'
             'gtk2-appmenu: for gtk2 menus, alternate way'
