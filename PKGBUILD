@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=uchroma
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="An advanced driver for Razer Chroma hardware in Linux"
 arch=('x86_64' 'i686')
