@@ -1,13 +1,12 @@
 # Maintainer: Thomas "Ventto" Venriès <thomas.venries@gmail.com>
 
 pkgname=xpub
-pkgver=0.5
-pkgrel=2
-pkgdesc='Bash script to get X display environment variables from anywhere.'
+pkgver=0.6
+pkgrel=1
+pkgdesc="Shell script to get user's display environment variables of any TTY from anywhere."
 arch=('any')
 url="https://github.com/Ventto/${pkgname}.git"
 license=('MIT')
-depends=('bash')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 makedepends=('help2man')
