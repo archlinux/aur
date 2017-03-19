@@ -1,0 +1,13 @@
+pkgbase = python-azure-cli-nspkg
+	pkgdesc = Microsoft Azure CLI Namespace Package
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Azure/azure-cli
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/a/azure-cli-nspkg/azure-cli-nspkg-2.0.0.tar.gz
+	md5sums = 2851775a1b0af4ebed272273ced7ba6e
+
+pkgname = python-azure-cli-nspkg
+
