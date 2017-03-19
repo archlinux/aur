@@ -1,7 +1,7 @@
 # Maintainer: Joshua Hardy <joshinsilico@gmail.com>
 pkgname=summovie
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Calculates electron microscopy movie frame sums using alignment results from Unblur"
 arch=(x86_64)
 url="http://grigoriefflab.janelia.org/unblur"
@@ -19,6 +19,6 @@ prepare () {
 package() {
 	cd "${srcdir}/summovie_${pkgver}/bin"
 	install -d $pkgdir/usr/bin/ "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -D -m755 * $pkgdir/usr/bin/summovie
+	install -D -m755 * $pkgdir/usr/bin/summovie.exe
 	install -D -m644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

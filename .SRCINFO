@@ -1,7 +1,7 @@
 pkgbase = summovie
 	pkgdesc = Calculates electron microscopy movie frame sums using alignment results from Unblur
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://grigoriefflab.janelia.org/unblur
 	arch = x86_64
 	license = custom
