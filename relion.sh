@@ -11,7 +11,7 @@ export RELION_QSUB_TEMPLATE=/opt/relion/bin/qsub.csh
 export RELION_PDFVIEWER_EXECUTABLE=evince
 
 # Default MOTIONCORR executable
-export RELION_MOTIONCORR_EXECUTABLE=/usr/bin/motioncorr
+export RELION_MOTIONCORR_EXECUTABLE=/usr/bin/MotionCor2
 
 # Default UNBLUR/SUMMOVIE executables
 export RELION_UNBLUR_EXECUTABLE=/usr/bin/unblur.exe

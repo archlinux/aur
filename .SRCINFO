@@ -19,7 +19,6 @@ pkgbase = relion-git
 	optdepends = unblur
 	optdepends = summovie
 	optdepends = resmap
-	optdepends = motioncorr
 	optdepends = motioncor2
 	provides = relion-git
 	conflicts = relion-git

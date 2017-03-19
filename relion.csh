@@ -11,7 +11,7 @@ setenv RELION_QSUB_TEMPLATE /opt/relion/bin/qsub.csh
 setenv RELION_PDFVIEWER_EXECUTABLE evince
 
 # Default MOTIONCORR executable
-setenv RELION_MOTIONCORR_EXECUTABLE /usr/bin/motioncorr
+setenv RELION_MOTIONCORR_EXECUTABLE /usr/bin/MotionCor2
 
 # Default UNBLUR/SUMMOVIE executables
 setenv RELION_UNBLUR_EXECUTABLE /usr/bin/unblur.exe
