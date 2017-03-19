@@ -1,0 +1,18 @@
+pkgbase = bbk-cli-bin
+	pkgdesc = Measurement client for Bredbandskollen
+	pkgver = 0.3.8
+	pkgrel = 1
+	url = https://support.bredbandskollen.se/support/solutions/articles/1000245679-bredbandskollen-f%C3%B6r-linux
+	arch = x86_64
+	arch = armv7h
+	arch = armv8h
+	license = custom: Copyright (c) 2017 Stiftelsen för Internetinfrastruktur <iis.se>
+	source_x86_64 = http://beta1.bredbandskollen.se/download/bbk-cli_0.3.8_amd64.deb
+	sha256sums_x86_64 = 9f205447da6c5c0f114e94e45a88a3e35febc63b8b9002e692414348ee4ce6fb
+	source_armv7h = http://beta1.bredbandskollen.se/download/bbk-cli_0.3.8_armhf.deb
+	sha256sums_armv7h = 1cb2c8cb62787f00defca0667c646c8833045de09c0de8ee5e0a301ba40c0ee8
+	source_armv8h = http://beta1.bredbandskollen.se/download/bbk-cli_0.3.8_armhf.deb
+	sha256sums_armv8h = 1cb2c8cb62787f00defca0667c646c8833045de09c0de8ee5e0a301ba40c0ee8
+
+pkgname = bbk-cli-bin
+
