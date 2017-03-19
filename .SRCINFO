@@ -1,0 +1,15 @@
+pkgbase = python-azure-mgmt-authorization
+	pkgdesc = Microsoft Azure Authorization Resource Management Client Library for Python
+	pkgver = 0.30.0rc6
+	pkgrel = 1
+	url = https://github.com/Azure/azure-sdk-for-python
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-azure-common
+	depends = python-azure-mgmt-nspkg
+	source = https://files.pythonhosted.org/packages/source/a/azure-mgmt-authorization/azure-mgmt-authorization-0.30.0rc6.zip
+	md5sums = ebde9911da99e4e90161bdb018173417
+
+pkgname = python-azure-mgmt-authorization
+
