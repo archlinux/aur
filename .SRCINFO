@@ -1,0 +1,16 @@
+pkgbase = otf-overpass
+	pkgdesc = Overpass open source web font family — Sponsored by Red Hat.
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = http://overpassfont.org
+	install = otf-overpass.install
+	arch = any
+	license = custom: SIL Open Font License 1.1
+	license = LGPL2.1
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://github.com/RedHatBrand/Overpass/releases/download/3.0.2/overpass-desktop-fonts.zip
+	sha256sums = 10d2186ad1e1e628122f2e4ea0bbde16438e34a0068c35190d41626d89bb64e4
+
+pkgname = otf-overpass
+
