@@ -2,14 +2,15 @@
 # Contributor: quasi <quasi@aur.archlinux.org>
 
 pkgname=protracker-svn
-pkgver=r996
-pkgrel=2
+pkgver=r5
+pkgrel=1
+epoch=1
 pkgdesc="Rewrite of ProTracker v2.3D (Amiga)"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/protracker/"
 license=("PD")
 makedepends=('subversion')
-depends=('sdl' 'mesa')
+depends=('sdl2')
 source=($pkgname::svn://svn.code.sf.net/p/protracker/code/trunk
 	protracker.png
 	protracker.desktop
@@ -33,8 +34,7 @@ package(){
     mkdir -p $pkgdir/usr/bin
     mkdir -p $pkgdir/usr/share/applications
     mkdir -p $pkgdir/usr/share/pixmaps/
-    cp "$srcdir/$pkgname/bin/protracker" $pkgdir/usr/bin
-    cp "$srcdir/$pkgname/bin/protracker_opengl" $pkgdir/usr/bin
+    cp "$srcdir/$pkgname/release/protracker" $pkgdir/usr/bin
     install -Dm644 protracker.png "$pkgdir/usr/share/pixmaps/protracker.png"
     install -Dm644 protracker.desktop "$pkgdir/usr/share/applications/protracker.desktop"
 }
