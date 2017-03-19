@@ -2,7 +2,7 @@
 
 _pkgname=epiphany
 pkgname=$_pkgname-git
-pkgver=3.23.5
+pkgver=3.24.0
 pkgrel=1
 install=epiphany.install
 pkgdesc="A GNOME web browser based on the WebKit rendering engine."
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=("glib2" "gtk3>=3.22.0" "libsoup>=2.48.0" 'libnotify' 'gsettings-desktop-schemas' 'webkit2gtk>=2.15.4'
 		  'nss' 'iso-codes' 'dconf' 'gobject-introspection' 'desktop-file-utils' 'libxml2' 'libsecret'
-		  'hicolor-icon-theme' 'gcr' 'gnome-desktop' 'libwnck3' 'appstream-glib' 'libhttpseverywhere')
+		  'hicolor-icon-theme' 'gcr' 'gnome-desktop' 'libwnck3' 'appstream-glib')
 makedepends=('intltool' 'gnome-doc-utils' 'gnome-common' 'git' 'startup-notification' 'yelp-tools')
 options=('!libtool' '!emptydirs')
 groups=('gnome')
@@ -29,29 +29,31 @@ sha256sums=('SKIP'
             '96973321fe715b82a69f95f77b150853b43909b05f8aaa0bec46c12aff305763')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --always | sed 's|-|+|g'
+  cd $_pkgname
+  git describe --always | sed 's/-/+/g'
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
+  patch -Np1 -i ../pluginsdir.diff
   git submodule init
   git config --local libgd.url "${srcdir}/libgd"
   git config --local gvdb.url "${srcdir}/gvdb/gvdb"
   git submodule update
-  # patch -Np1 -i ../pluginsdir.diff
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
   ./configure --prefix=/usr --sysconfdir=/etc \
-      --localstatedir=/var --disable-maintainer-mode \
-      --disable-Werror
+      --localstatedir=/var --libexecdir=/usr/lib/$pkgname
+
+  # https://bugzilla.gnome.org/show_bug.cgi?id=655517
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  make DESTDIR="$pkgdir" install
+  cd $_pkgname
+  make DESTDIR=$pkgdir install
 }
