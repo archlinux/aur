@@ -1,8 +1,9 @@
 pkgbase = boot
 	pkgdesc = A Clojure build framework and ad-hoc Clojure script evaluator
-	pkgver = 2.7.0
-	pkgrel = 2
-	url = https://github.com/boot-clj/boot
+	pkgver = 2.5.2
+	pkgrel = 1
+	epoch = 1
+	url = http://boot-clj.com
 	install = boot.install
 	arch = any
 	license = EPL

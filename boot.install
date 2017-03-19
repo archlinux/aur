@@ -4,9 +4,9 @@ blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 note() {
-    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+  printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
 }
 
 post_upgrade() {
-	 note "Run 'boot -u' to update boot.jar"
+  note "Run 'boot -u' to update boot.jar"
 }
