@@ -5,17 +5,17 @@
 
 _pkgname=lwt
 pkgname=ocaml-${_pkgname}
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="A library for cooperative threads in OCaml"
 arch=('i686' 'x86_64')
 url="http://ocsigen.org/${_pkgname}/"
 license=('custom:LGPL with OpenSSL linking exception')
-depends=('ocaml' 'camlp4' 'ocaml-ppx_tools' 'ocaml-react' 'ocaml-ssl' 'libev' 'glib2')
-makedepends=('ocaml-findlib')
-source=(https://github.com/ocsigen/${_pkgname}/archive/$pkgver.tar.gz)
-sha256sums=('bf7ff0d1c3aa8230f00f55cac149cd335a1a1183b4661c9b098ba8a2d0037cbd')
-options=(!strip !makeflags staticlibs)
+depends=('ocaml' 'camlp4' 'ocaml-ppx_tools' 'ocaml-react' 'ocaml-result' 'ocaml-ssl' 'libev' 'glib2')
+makedepends=('ocamlbuild' 'ocaml-findlib')
+source=("https://github.com/ocsigen/${_pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('00419834e0c5601b3fee6ca9efb0e10ab797a9ff8f695bf2434d89395b7252ec')
+options=('!strip' '!makeflags' 'staticlibs')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
