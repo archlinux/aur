@@ -7,10 +7,10 @@ pkgbase="libcups-ipp14"
 ### Commenting the "split packages sections - unsupported by AUR apparently ###
 #pkgname=('libcups-ipp14' 'cups-ipp14')
 pkgname=(${pkgbase})
-pkgver=2.1.3
+pkgver=2.2.2
 pkgrel=1
 arch=('i686' 'x86_64')
-provides=('libcups')
+provides=('libcups' 'libcups-ipp14')
 replaces=('libcups')
 conflicts=('libcups')
 license=('GPL')
@@ -18,7 +18,7 @@ url="http://www.cups.org/"
 makedepends=('libtiff>=4.0.0' 'libpng>=1.5.7' 'acl' 'pam' 'xdg-utils' 'krb5' 'gnutls'
              'cups-filters' 'bc' 'colord' 'xinetd' 'gzip' 'autoconf' 'libusb' 'dbus' 
              'avahi'  'hicolor-icon-theme' 'systemd' 'inetutils' 'libpaper' 'valgrind')
-source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.bz2{,.sig}
+source=(https://github.com/apple/cups/releases/download/v${pkgver}/cups-${pkgver}-source.tar.gz{,.sig}
         cups.logrotate cups.pam
         # improve build and linking
         cups-no-export-ssllibs.patch
@@ -27,23 +27,28 @@ source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.bz2{,.s
         cups-1.6.2-statedir.patch
         cups-1.6.0-fix-install-perms.patch
         # bugfixes
+        cups-systemd-socket.patch
         # IPP 1.4
         add-ipp-backend-of-cups-1.4.patch)
-md5sums=('62b8fafd590e75f72316915790b0850a'
-         'SKIP'
-         'fc8286f185e2cc5f7e1f6843bf193e2b'
-         '96f82c38f3f540b53f3e5144900acf17'
-         '3ba9e3410df1dc3015463d615ef91b3b'
-         '1beb4896f217bc241bc08a422274ec0c'
-         '90c30380d4c8cd48a908cfdadae1ea24'
-         '451609db34f95209d64c38474de27ce1'
-         '5117f65342fcc69c6a506529e4daca9e'
-         '49e1c75beb87e9b7c9511f59509839e7')
+
+sha256sums=('f589bb7d5d1dc3aa0915d7cf2b808571ef2e1530cd1a6ebe76ae8f9f4994e4f6'
+            'SKIP'
+            'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
+            '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
+            'ff3eb0782af0405f5dafe89e04b1b4ea7a49afc5496860d724343bd04f375832'
+            '1423673e16e374ed372c5b69aebc785b6674bf40601c74a5c08454f672ffa7f1'
+            'b8fc2e3bc603495f0278410350ea8f0161d9d83719feb64f573b63430cb4800b'
+            '23349c96f2f7aeb7d48e3bcd35a969f5d5ac8f55a032b0cfaa0a03d7e37ea9af'
+            '4a4a885bb2e111bd67bcb90a5780f33841b18bc02382317fb5e64c384aa0c4c8'
+            'cdad3c266cb2abb0f90af3113420fa47a09e3ed974a2ffa9fb6a642e11971d65'
+            '375614399e38ddb7af9375472a75e8a83eb3c587595ee079286cbc45094e3c26')
+
+validpgpkeys=('3737FD0D0E63B30172440D2DDBA3A7AB08D76223') # CUPS.org (CUPS.org PGP key) <security@cups.org>
 
 prepare() {
 
   cd ${_pkgbase}-${pkgver}
-  
+
   # Applying patch to add ipp14 backend:
   patch -Np1 -i ${srcdir}/add-ipp-backend-of-cups-1.4.patch
 
@@ -59,8 +64,10 @@ prepare() {
   # fix permissions on some files (by Gentoo) - alternative: cups-0755.patch by FC
   patch -Np0 -i ${srcdir}/cups-1.6.0-fix-install-perms.patch
 
-  # bug fixes 
-  
+  # bug fixes
+  # make sure network is up when starting and notify systemd - FC
+  patch -Np1 -i ${srcdir}/cups-systemd-socket.patch
+
   # set MaxLogSize to 0 to prevent using cups internal log rotation
   sed -i -e '5i\ ' conf/cupsd.conf.in
   sed -i -e '6i# Disable cups internal logging - use logrotate instead' conf/cupsd.conf.in
@@ -102,21 +109,11 @@ check() {
 package() {
 pkgdesc="The CUPS Printing System - client libraries and headers"
 depends=('gnutls' 'libtiff>=4.0.0' 'libpng>=1.5.7' 'krb5' 'avahi' 'libusb')
-backup=(etc/cups/client.conf)
 
   cd ${_pkgbase}-${pkgver}
   make BUILDROOT=${pkgdir} install-headers install-libs
   # put this into the libs pkg to make other software find the libs(no pkg-config file included)
   mkdir -p ${pkgdir}/usr/bin 
   install -m755 ${srcdir}/${_pkgbase}-${pkgver}/cups-config ${pkgdir}/usr/bin/cups-config
-  
-  # install client.conf man page and config file
-  install -dm755 ${pkgdir}/usr/share/man/man5
-  install -Dm644  ${srcdir}/${_pkgbase}-${pkgver}/man/client.conf.5 ${pkgdir}/usr/share/man/man5/
-  install -dm755 -g lp ${pkgdir}/etc/cups
-  touch ${pkgdir}/etc/cups/client.conf
-  echo "# see 'man client.conf'" >> ${pkgdir}/etc/cups/client.conf
-  echo "ServerName /run/cups/cups.sock #  alternative: ServerName hostname-or-ip-address[:port] of a remote server" >> ${pkgdir}/etc/cups/client.conf
-  chgrp -R lp ${pkgdir}/etc/cups
 }
 
