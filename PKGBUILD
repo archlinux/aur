@@ -2,23 +2,23 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=gnome-settings-daemon-redshift
-pkgver=3.22.1
+pkgver=3.22.2
 _pkgname=gnome-settings-daemon
 pkgrel=1
 pkgdesc="GNOME Settings Daemon with a patch to support changing the color temerature"
 url="https://git.gnome.org/browse/gnome-settings-daemon"
 arch=(i686 x86_64)
 license=(GPL)
-depends=(dconf gnome-desktop gsettings-desktop-schemas libcanberra-pulse
-         libnotify libsystemd libwacom pulseaudio pulseaudio-alsa upower
-         librsvg libgweather geocode-glib geoclue2 nss libgudev gtk3-print-backends)
+depends=(dconf gnome-desktop gsettings-desktop-schemas libcanberra-pulse libnotify libsystemd
+         libwacom pulseaudio pulseaudio-alsa upower librsvg libgweather geocode-glib geoclue2 nss
+         libgudev gtk3-print-backends libnm)
 makedepends=(intltool xf86-input-wacom libxslt docbook-xsl python git gnome-common)
 provides=(gnome-settings-daemon)
 conflicts=(gnome-settings-daemon)
 groups=(gnome)
-_commit=3ee42193f8772b5eb39b0b5a4d175b00abce033d  # tags/GNOME_SETTINGS_DAEMON_3_22_1^0
-source=("git://git.gnome.org/gnome-settings-daemon#commit=$_commit"
-        "git://git.gnome.org/libgnome-volume-control"
+_commit=239ccb035d17380d801d9cdde3a10dce5b64ac85  # tags/GNOME_SETTINGS_DAEMON_3_22_2^0
+source=("git+https://git.gnome.org/browse/gnome-settings-daemon#commit=$_commit"
+        "git+https://git.gnome.org/browse/libgnome-volume-control"
         "https://raw.githubusercontent.com/benzea/gnome-shell-extension-redshift/master/patches/gsd-3.22-color-Add-ability-to-change-the-color-temperature-of.patch")
 sha256sums=('SKIP'
             'SKIP'
