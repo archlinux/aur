@@ -1,7 +1,7 @@
 # Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 # Source: https://github.com/nicoulaj/archlinux-packages
 pkgname=rainbow
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Colorize commands output or STDIN using patterns."
 arch=(any)
@@ -14,7 +14,7 @@ changelog=Changelog
 provides=('rainbow-git')
 conflicts=('rainbow-git')
 source=("https://files.pythonhosted.org/packages/source/r/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('7bb78ea19be3654c0440902f0fa7d501')
+md5sums=('16dd2ae76093ff62273a22f6495dc4fd')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
