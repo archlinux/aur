@@ -6,7 +6,7 @@
 
 pkgname=arangodb
 pkgver=3.1.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-model NoSQL database, combining key-value, document and graph data models."
 arch=("i686" "x86_64" "armv7l" "armv7h")
 url="https://www.arangodb.com/"
@@ -36,12 +36,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_C_FLAGS="-O3 -fno-omit-frame-pointer" \
     -DCMAKE_CXX_FLAGS="-O3 -fno-omit-frame-pointer" \
-    -DVARDIR=/var \
-    -DETCDIR=/etc \
-    -DVARDIR=/var \
-    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-    -DCMAKE_INSTALL_DATADIR:PATH=/usr/share \
-    -DCMAKE_SKIP_RPATH:BOOL=ON \
+    -DCMAKE_INSTALL_PREFIX:PATH=/ \
+    -DCMAKE_SKIP_RPATH=On \
     ..
   msg2 "Building ArangoDB."
   make -j $(nproc)
