@@ -1,0 +1,26 @@
+pkgbase = caja-gtk2
+	pkgdesc = File manager for the MATE desktop (GTK2 version)
+	pkgver = 1.16.2
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	groups = mate-gtk2
+	license = GPL
+	makedepends = gobject-introspection
+	makedepends = intltool
+	depends = exempi
+	depends = gvfs
+	depends = libexif
+	depends = libsm
+	depends = libunique
+	depends = mate-desktop-gtk2
+	optdepends = gstreamer: automatic media playback when mouseover
+	provides = caja
+	conflicts = caja
+	conflicts = caja-gtk3
+	source = http://pub.mate-desktop.org/releases/1.16/caja-1.16.2.tar.xz
+	sha1sums = 7d4088e151435ccfea442f03b796a9e0f3f56a69
+
+pkgname = caja-gtk2
+
