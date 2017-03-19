@@ -3,7 +3,7 @@ pkgver=1.0
 pkgrel=2
 pkgdesc="Adds 'Send to bluetooth device' to nautilus right-click menu"
 arch=('any')
-url='https://github.com/alireza6677/'
+url='https://github.com/alireza6677/nautilus-send-to-bluetooth'
 license=('GPL3')
 depends=( 'python' 'nautilus' 'gnome-bluetooth' 'python2-nautilus')
 provides=("nautilus-send-to-bluetooth")
@@ -13,7 +13,7 @@ provides=("nautilus-send-to-bluetooth")
 
 package() {
 	cd "${srcdir}/" 
-        pwd        
+            
         install -d ${pkgdir}/usr/share/nautilus-python/extensions/
 
         cp -a ../SendToBluetooth.py  ${pkgdir}/usr/share/nautilus-python/extensions/
