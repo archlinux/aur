@@ -5,5 +5,5 @@ pkgdesc="epub2pdf is a command-line tool that quickly generates PDF files from E
 arch=('any')
 url="http://epub2pdf.com"
 license=('GPL3')
-depends=('jar')
+depends=('java-runtime')
 source=("$url/files/epub2pdf-0.5.zip")
