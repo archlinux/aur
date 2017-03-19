@@ -1,7 +1,7 @@
 # Maintainer: Felix Laurie von Massenbach <felix@erbridge.co.uk>
 pkgname=inky
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Editor for ink: inkle's narrative scripting language"
 arch=('x86_64')
 url="http://www.inklestudios.com/ink"
@@ -22,9 +22,7 @@ package() {
 
     cd "Inky-linux-x64"
 
-    cp -r * "${pkgdir}/usr/share/${pkgname}"
-    find "${pkgdir}/usr/share/${pkgname}" -type f -print0 | xargs -0 chmod 0644
-    find "${pkgdir}/usr/share/${pkgname}" -type d -print0 | xargs -0 chmod 0755
+    cp -a -r * "${pkgdir}/usr/share/${pkgname}"
 
     install -D -m755 Inky "${pkgdir}/usr/share/${pkgname}/Inky"
 
