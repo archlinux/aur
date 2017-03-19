@@ -1,0 +1,12 @@
+pkgbase = epub2pdf
+	pkgdesc = a multitrack non-linear video editor for Linux
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://epub2pdf.com
+	arch = any
+	license = GPL3
+	depends = jar
+	source = http://epub2pdf.com/files/epub2pdf-0.5.zip
+
+pkgname = epub2pdf
+
