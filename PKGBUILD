@@ -1,12 +1,12 @@
 # Maintainer: sumt <sumt at sci dot fi>
 pkgname=palemoon-bin
-pkgver=27.1.2
+pkgver=27.2.0
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
 url="http://linux.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
-depends=('gtk2' 'dbus-glib' 'libxt' 'mime-types' 'nss' 'alsa-lib')
+depends=('gtk2' 'dbus-glib' 'libxt' 'mime-types' 'nss' 'alsa-lib' 'icu')
 optdepends=('palemoon-i18n-default: language pack for system active language'
             'hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
@@ -18,8 +18,8 @@ source=(palemoon.desktop)
 source_i686=("palemoon-$pkgver.en-US.linux-i686.tar.bz2::http://linux.palemoon.org/installer/download.php?v=$pkgver&a=i686")
 source_x86_64=("palemoon-$pkgver.en-US.linux-x86_64.tar.bz2::http://linux.palemoon.org/installer/download.php?v=$pkgver&a=x86_64")
 sha256sums=('c6cae1c0de6b59da1d846cb2092ca2725ba2baa4d554223f747a4a71ee63002e')
-sha256sums_i686=('9444bcfed004a882d1b17406b406aca7056f0d9a5621e52f7510444a1508d0d0')
-sha256sums_x86_64=('d4def550ee274ae92b27731029e52ab4625ebdba84971ff145c5e05ae95954d3')
+sha256sums_i686=('34fbc0c94e72ea79eb38f37e00323dad011cf964bca1d6392a165135deb63d02')
+sha256sums_x86_64=('b646aae65e3cb0d0973419285468e29320befff0a8549edf3c7cd42f81c49e7c')
 
 package() {
   install -d "$pkgdir"/usr/{bin,lib}
