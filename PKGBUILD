@@ -22,6 +22,8 @@ package() {
   cp "editorconfig.plugin" "$_installdir"
   cp "editorconfig_gedit3.py" "$_installdir"
 
+  sed -i 's/python/python3/' "$_installdir/editorconfig.plugin"
+
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
