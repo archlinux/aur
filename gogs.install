@@ -28,7 +28,7 @@ pre_install() {
         passwd -l gogs
     else
         local _OldHome="$( getent passwd gogs | cut -d: -f6 )"
-        if [ ${_OldHome} != "/srv/gogs" ]; then
+        if [[ ${_OldHome} != "/srv/gogs" ]]; then
             echo
             echo "Setting gogs home directory to /srv/gogs"
             usermod -c 'Gogs service user' -g gogs -d /srv/gogs -L -s /bin/bash gogs
