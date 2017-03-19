@@ -1,7 +1,7 @@
 pkgbase=('python-gdbgui')
 pkgname=('python-gdbgui')
 _module='gdbgui'
-pkgver='0.7.4.5'
+pkgver='0.7.5.0'
 pkgrel=1
 pkgdesc="browser-based gdb frontend using Flask and JavaScript to visually debug C, C++, Go, or Rust"
 url="https://github.com/cs01/gdbgui"
@@ -11,7 +11,7 @@ license=('custom')
 arch=('any')
 install='python-gdbgui.install'
 source=("https://files.pythonhosted.org/packages/source/g/gdbgui/gdbgui-${pkgver}.tar.gz")
-md5sums=('43944d93c843117b3f9414d0e895a364')
+md5sums=('3743cc1b5d66cde3fe32282888e9540e')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
