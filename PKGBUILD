@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abiword-svn
-pkgver=35403
+pkgver=35422
 pkgrel=1
 pkgdesc='Fully-featured word processor from subversion sources'
 arch=('i686' 'x86_64')
@@ -17,7 +17,8 @@ makedepends=('asio' 'boost' 'gobject-introspection' 'python2' 'libwpd' 'subversi
 conflicts=('abiword' 'abiword-plugins')
 replaces=('abiword' 'abiword-plugins')
 options=('!makeflags')
-source=(abiword::svn+http://svn.abisource.com/abiword/trunk aiksaurus-plugin.m4 plugin-builtin.m4 plugin-configure.m4 plugin-makefiles.m4)
+source=(abiword::svn+http://svn.abisource.com/abiword/trunk \
+	aiksaurus-plugin.m4 plugin-builtin.m4 plugin-configure.m4 plugin-makefiles.m4)
 sha256sums=('SKIP'
             '5f80a2f94f9929cdba9809c5e1a87cd5d537a2518bb879bfb9eab51a71c8dac1'
             'c2d5851f66755c8b3bae8d16988f6f85a943ca76341c735b898a3635568de10f'
@@ -45,6 +46,7 @@ prepare() {
 
 build() {
   cd ${pkgname%-svn}
+  export LANG=C
   NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr \
     --enable-shared \

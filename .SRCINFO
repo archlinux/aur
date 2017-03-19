@@ -1,6 +1,6 @@
 pkgbase = abiword-svn
 	pkgdesc = Fully-featured word processor from subversion sources
-	pkgver = 35403
+	pkgver = 35422
 	pkgrel = 1
 	url = http://www.abisource.com
 	arch = i686
