@@ -1,7 +1,7 @@
 # Maintainer:  vinszent <vinszent@vinszent.com>
 
 pkgname=gnome-twitch-player-backend-gstreamer-opengl-git
-pkgver=r925.d28b630
+pkgver=r971.afc8ca1
 pkgrel=1
 pkgdesc="GStreamer OpenGL (hardware rendering) player backend for GNOME Twitch"
 arch=('i686' 'x86_64')
@@ -25,9 +25,8 @@ build()
   mkdir build
   cd build
   meson --prefix /usr --libdir lib --buildtype release \
-        -Dbuild-gnome-twitch-executable=false \
-        -Dbuild-gnome-twitch-library=false \
-        -Dbuild-player-backend-gstreamer-opengl=true ..
+        -Dbuild-executable=false \
+        -Dbuild-player-backends=gstreamer-opengl ..
   ninja
 }
 
