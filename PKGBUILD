@@ -52,7 +52,7 @@ package_pivx-qt() {
   pkgdesc+="(Qt)"
   depends+=("qt5-base" "protobuf")
   makedepends+=("openssl")
-  optdepends+=("qrencode: For generating QR codes")
+  optdepends+=("qrencode: Generate QR codes")
 
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   install -Dm755 "src/qt/pivx-qt"			"${pkgdir}/usr/bin/pivx-qt"

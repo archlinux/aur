@@ -32,5 +32,5 @@ pkgname = pivx-qt
 	depends = protobuf
 	optdepends = miniupnpc: Firewall-jumping support
 	optdepends = db4.8: Wallet storage
-	optdepends = qrencode: For generating QR codes
+	optdepends = qrencode: Generate QR codes
 
