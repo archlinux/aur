@@ -1,0 +1,14 @@
+pkgbase = python-sshtunnel
+	pkgdesc = Pure python SSH tunnels
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/pahaz/sshtunnel/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-paramiko
+	source = https://files.pythonhosted.org/packages/source/s/sshtunnel/sshtunnel-0.1.2.tar.gz
+	md5sums = e99dbebe0b643f6d68b26ed434f3acd9
+
+pkgname = python-sshtunnel
+
