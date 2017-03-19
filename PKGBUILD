@@ -11,7 +11,7 @@ depends=('openssl098' 'libusb-compat')
 makedepends=('rpmextract')
 install='vfs495-daemon.install'
 provides=('vfs495-daemon')
-source=('https://dl.dropboxusercontent.com/u/71679/Validity-Sensor-Setup-4.5-118.00.x86_64.rpm'
+source=('https://github.com/parkerlreed/vfs495-files/raw/master/Validity-Sensor-Setup-4.5-118.00.x86_64.rpm'
 	'vfs495-daemon.service')
 noextract=()
 md5sums=('b31117a84f8cb0561648b39957ba5393'
