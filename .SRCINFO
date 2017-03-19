@@ -1,0 +1,35 @@
+pkgbase = relion-git
+	pkgdesc = REgularised LIkelihood OptimisatioN: employs an empirical Bayesian approach to refinement of 3D reconstructions or 2D class averages in electron cryo-microscopy
+	pkgver = r21.d401f24
+	pkgrel = 1
+	url = https://github.com/3dem/relion
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc5
+	depends = fftw
+	depends = tcsh
+	depends = openmpi
+	depends = fltk
+	depends = cuda
+	depends = evince
+	optdepends = ctffind4
+	optdepends = gctf
+	optdepends = unblur
+	optdepends = summovie
+	optdepends = resmap
+	optdepends = motioncorr
+	optdepends = motioncor2
+	provides = relion-git
+	conflicts = relion-git
+	conflicts = relion
+	source = git+https://github.com/3dem/relion
+	source = relion.sh
+	source = relion.csh
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = relion-git
+
