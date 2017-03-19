@@ -13,7 +13,7 @@ provides=('streamstudio')
 conflicts=('streamstudio')
 options=('!strip')
 install="streamstudio.install"
-sha256sums=('0337ac1e1804cba253dd8d350c65743ca09606650035b260eab291b067343b96'
+sha256sums=('eabdf4377716125aab50693422ef0df367d90894c350d9ddbb6a9b48f07a1a82'
             'b082d39935fd289695ad9a10c9adc3cbe9963555cd410d1d83ceb9055463275b'
             '4dc8715a81bfd1297f99b3e5f41f9f50936bbf7779b9bc4ef9231261053b76ea')
 
