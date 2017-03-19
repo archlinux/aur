@@ -6,7 +6,7 @@
 
 pkgname=arangodb
 pkgver=3.1.14
-pkgrel=3
+pkgrel=4
 pkgdesc="A multi-model NoSQL database, combining key-value, document and graph data models."
 arch=("i686" "x86_64" "armv7l" "armv7h")
 url="https://www.arangodb.com/"
@@ -18,10 +18,11 @@ conflicts=("arangodb-latest" "arangodb-git")
 options=()
 install=arangodb.install
 source=("https://www.arangodb.com/repositories/Source/ArangoDB-$pkgver.tar.bz2"
-"arangodb3.service" "arangodb-tmpfile.conf")
+"arangodb3.service" "arangodb-tmpfile.conf" "arangodb-users.conf")
 sha256sums=('021b7810de22d2a0d6d9513c7e4d2bd0f62076822325f5028a0b56fc0a3e2bf9'
             '7de422694ff36683849bd552bec3d5161a52455680a8ea30eba0988dcf5c1c67'
-            '736581ab917755c859d17b4015f68380384f924279aa61c9c160960018e1e4e4')
+            '736581ab917755c859d17b4015f68380384f924279aa61c9c160960018e1e4e4'
+            '91736a42fd4e9c0bacef7369ce4ce91bd6b2e7493c0b0cc6462525fa614b009d')
 
 build() {
   msg2 "Symlinking 'python' to python2."
@@ -55,6 +56,7 @@ package() {
   cp -R $srcdir/ArangoDB-$pkgver/Documentation/man/* $pkgdir/usr/share/man
 
   install -Dm644 arangodb-tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/arangodb.conf
+  install -Dm644 arangodb-users.conf "$pkgdir"/usr/lib/sysusers.d/arangodb.conf
   install -D -m644 $srcdir/ArangoDB-$pkgver/LICENSE "${pkgdir}/usr/share/licenses/arangodb3/LICENSE"
 
   msg2 "Preparing systemd service."

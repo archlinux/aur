@@ -1,8 +1,5 @@
 pre_install() {
-  getent group arangodb >/dev/null || groupadd -r arangodb
-  getent passwd arangodb >/dev/null || useradd -r -g arangodb -d \
-  /usr/share/arangodb -s /bin/false -c "ArangoDB Application User" \
-  arangodb
+  systemd-sysusers arangodb-users.conf
 
   install -o arangodb -g arangodb -m 755 -d "/var/lib/arangodb3"
   install -o arangodb -g arangodb -m 755 -d "/var/lib/arangodb3-apps"
@@ -82,8 +79,6 @@ pre_remove() {
 }
 
 post_remove() {
-  userdel arangodb &> /dev/null
-  groupdel arangodb &> /dev/null
   # remove all the files
   rm -rf /usr/share/arangodb3
   rm -rf /var/log/arangodb3
