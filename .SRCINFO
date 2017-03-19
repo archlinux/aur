@@ -1,7 +1,7 @@
 pkgbase = digikam-without-akonadi-mediawiki-vkontakte
 	pkgdesc = minimized build of Digikam for non-KDE users, without Plasma/KDE integration
 	pkgver = 5.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.digikam.org/
 	arch = i686
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = digikam-without-akonadi-mediawiki-vkontakte
 	depends = marble-common
 	depends = threadweaver
 	depends = kcalcore
+	depends = exiv2
 	optdepends = kipi-plugins: export to various online services
 	optdepends = hugin: panorama tool
 	provides = digikam

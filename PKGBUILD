@@ -7,13 +7,13 @@
 _pkgname=digikam
 pkgname=digikam-without-akonadi-mediawiki-vkontakte
 pkgver=5.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="minimized build of Digikam for non-KDE users, without Plasma/KDE integration"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
 depends=('liblqr' 'libkipi' 'libksane' 'lensfun' 'opencv' 'knotifyconfig'
-         'marble-common' 'threadweaver' 'kcalcore')
+         'marble-common' 'threadweaver' 'kcalcore' 'exiv2')
 optdepends=('kipi-plugins: export to various online services'
             'hugin: panorama tool')
 makedepends=('extra-cmake-modules' 'boost' 'doxygen' 'eigen' 'kdoctools' 'kdesignerplugin')
