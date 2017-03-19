@@ -1,5 +1,5 @@
 pkgname='holo'
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Minimalistic configuration management'
 arch=('i686' 'x86_64' 'armv7h')
@@ -17,7 +17,7 @@ backup=(
     'etc/holorc'
 )
 source=("https://github.com/holocm/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('2acdaf3148573bd90b01f2e7f266b2936574148cb1ac8a92c88292b5d7c2008e')
+sha256sums=('1ec8795df0a5a579bdcf88875db10ccb016044865096fdbf38d6ae6ed590aa63')
 
 options=('!strip') # binaries are already stripped inside the Makefile
 
