@@ -55,7 +55,7 @@ provides=(
 	'ttf-worksans'
 )
 conflicts=(
-	"${provides[@]}"
+	"${provides[@]/ttf-font/}"
 	'ttf-adobe-fonts'
 	'ttf-google-fonts-git'
 	'ttf-google-fonts-opinionated-git'
