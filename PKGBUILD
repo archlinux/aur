@@ -4,7 +4,7 @@
 
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
-pkgver=1.19.2
+pkgver=1.19.3
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom')
@@ -19,15 +19,17 @@ makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 
              'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols')
 source=(https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2{,.sig}
         nvidia-add-modulepath-support.patch
+        xserver-autobind-hotplug.patch
         xvfb-run
         xvfb-run.1
         freedesktop-bug-865.patch)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
-sha256sums=('4f8ab9f4a1a885fe7550080555381b34b82858582559e8e3c4da96e3a85884bb'
+sha256sums=('677a8166e03474719238dfe396ce673c4234735464d6dadf2959b600d20e5a98'
             'SKIP'
             '914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8'
+            'fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
             '460615227a7e42d124639d4ae02e55d1b2a250c7bdf539e018b46de71230364f')
@@ -37,6 +39,8 @@ prepare() {
 
   # merged upstream in trunk
   patch -Np1 -i ../nvidia-add-modulepath-support.patch
+  # patch from Fedora, not yet merged
+  patch -Np1 -i ../xserver-autobind-hotplug.patch
 
   # The patch for freedesktop bug 865
   patch -Np1 -i "${srcdir}/freedesktop-bug-865.patch"
@@ -98,7 +102,7 @@ package_xorg-server-bug865() {
            libpciaccess libdrm libxshmfence) # FS#52949
   # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
-  provides=('X-ABI-VIDEODRV_VERSION=23' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server' 'xorg-server=1.19.2')
+  provides=('X-ABI-VIDEODRV_VERSION=23' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server' 'xorg-server=1.19.3')
   conflicts=('nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting' 'xorg-server')
   replaces=('glamor-egl' 'xf86-video-modesetting')
   install=xorg-server.install
