@@ -2,7 +2,7 @@
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux (a) free.fr>
 # Contributor: gem2arch 0.1
 pkgname=ruby-net-ssh
-pkgver=3.2.0
+pkgver=4.1.0
 _gemname=${pkgname#ruby-}
 pkgrel=1
 pkgdesc="A pure-Ruby implementation of the SSH2 client protocol."
@@ -23,4 +23,4 @@ package() {
 
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 }
-md5sums=('3967b10cb9c83cbb7771fefe62cfb25f')
+md5sums=('6af1ff8c42a07b11203058c9b74cbaef')
