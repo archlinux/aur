@@ -2,7 +2,7 @@
 
 pkgname=goatattack-server
 _dlname=goatattack
-pkgver=0.4.2
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="A fast-paced multiplayer pixel art shooter game."
 arch=("any")
@@ -11,10 +11,11 @@ license=('GPL')
 depends=("libpng")
 makedepends=("gc")
 source=("https://github.com/$_dlname/$_dlname/archive/$pkgver.tar.gz")
-md5sums=('80e25279ca81c5adebb79449732563c1')
+md5sums=('e6879f4adcf098905b2d453bc3f6fe00')
 
 prepare() {
 	cd "$srcdir/$_dlname-$pkgver"
+	autoreconf -i
 	./configure --prefix=/usr --enable-dedicated-server --program-suffix="-server" --datadir="/usr/share/$pkgname"
 }
 
