@@ -1,4 +1,4 @@
-# Maintainer: Yosef Or Boczko <yoseforb@gnome.org>
+# Maintainer: Adria Arrufat <adria DOT arrufat+aur AT protonmail DOT ch>
 
 _pkgname=epiphany
 pkgname=$_pkgname-git
@@ -6,22 +6,20 @@ pkgver=3.24.0
 pkgrel=1
 install=epiphany.install
 pkgdesc="A GNOME web browser based on the WebKit rendering engine."
+url="http://www.gnome.org/projects/epiphany/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=("glib2" "gtk3>=3.22.0" "libsoup>=2.48.0" 'libnotify' 'gsettings-desktop-schemas' 'webkit2gtk>=2.15.4'
-		  'nss' 'iso-codes' 'dconf' 'gobject-introspection' 'desktop-file-utils' 'libxml2' 'libsecret'
-		  'hicolor-icon-theme' 'gcr' 'gnome-desktop' 'libwnck3' 'appstream-glib')
-makedepends=('intltool' 'gnome-doc-utils' 'gnome-common' 'git' 'startup-notification' 'yelp-tools')
-options=('!libtool' '!emptydirs')
-groups=('gnome')
-url="http://www.gnome.org/projects/epiphany/"
+depends=(webkit2gtk gcr gnome-desktop)
+makedepends=(intltool itstool docbook-xml startup-notification lsb-release
+             gobject-introspection yelp-tools autoconf-archive appstream-glib git)
+groups=(gnome)
 replaces=('epiphany')
 provides=("epiphany")
 conflicts=('epiphany')
-source=('git://git.gnome.org/epiphany'
-	'git://git.gnome.org/libgd'
-	'git://git.gnome.org/gvdb'
-	'pluginsdir.diff'
+source=("git://git.gnome.org/epiphany"
+	"git://git.gnome.org/libgd"
+	"git://git.gnome.org/gvdb"
+	pluginsdir.diff
 )
 sha256sums=('SKIP'
             'SKIP'
