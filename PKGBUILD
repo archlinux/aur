@@ -2,14 +2,14 @@
 
 pkgbase=pyspider
 pkgname=(python-${pkgbase} python2-${pkgbase})
-pkgver=0.3.8
-pkgrel=2
+pkgver=0.3.9
+pkgrel=1
 pkgdesc="A Powerful Spider System in Python"
 arch=('any')
 url="https://github.com/binux/pyspider"
 license=('Apache')
 source=(${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-md5sums=('8ce2de919432c7bfab257cab2f2ee3f1')
+md5sums=('efb5c4c98f12f182af959b07e700c8dd')
 
 prepare() {
   cp -a "$srcdir/$pkgbase-$pkgver"{,-py2}
