@@ -1,9 +1,9 @@
 # Maintainer Marco Pompili <aur@emarcs.org>
 
 _npmname=markdown-styles
-_npmver=3.1.8
+_npmver=3.1.9
 pkgname=nodejs-markdown-styles # All lowercase
-pkgver=3.1.8
+pkgver=3.1.9
 pkgrel=1
 pkgdesc="Markdown to HTML generator and multiple CSS themes for Markdown"
 arch=(any)
@@ -12,7 +12,7 @@ license=()
 depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-sha1sums=('4a0063c0d4d2a9cd77790f60211348ed1d61bd21')
+sha1sums=('2ca4e6d64c1397f77392b01a910f4da61d2a7e29')
 noextract=($_npmname-$_npmver.tgz)
 
 package() {
