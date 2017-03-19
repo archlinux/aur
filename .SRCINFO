@@ -1,0 +1,28 @@
+pkgbase = mate-settings-daemon-gtk2
+	pkgdesc = The MATE Settings daemon (GTK2 version)
+	pkgver = 1.16.1
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	groups = mate-gtk2
+	license = GPL
+	makedepends = intltool
+	depends = dbus-glib
+	depends = libcanberra
+	depends = libmatekbd-gtk2
+	depends = libmatemixer
+	depends = libnotify
+	depends = mate-desktop-gtk2
+	depends = nss
+	depends = polkit
+	optdepends = libcanberra-pulse: PulseAudio support
+	optdepends = pulseaudio-alsa: PulseAudio support
+	conflicts = mate-settings-daemon
+	conflicts = mate-settings-daemon-gtk3
+	options = !emptydirs
+	source = http://pub.mate-desktop.org/releases/1.16/mate-settings-daemon-1.16.1.tar.xz
+	sha1sums = 8fcb4ae0571e9bd507b47a67e0e4245e6558693e
+
+pkgname = mate-settings-daemon-gtk2
+
