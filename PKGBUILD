@@ -45,7 +45,6 @@ build() {
 
 package() {
   msg2 "Preparing ArangoDB."
-  mkdir -p $pkgdir/usr/libexec/arangodb
   cp -R $srcdir/ArangoDB-$pkgver/build/etc $pkgdir
   cp -R $srcdir/ArangoDB-$pkgver/build/var $pkgdir
   cp -R $srcdir/ArangoDB-$pkgver/build/bin $pkgdir/usr
