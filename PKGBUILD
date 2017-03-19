@@ -10,8 +10,8 @@ url="http://www.goatattack.net/"
 license=('GPL')
 depends=("libpng")
 makedepends=("gc")
-source=("http://www.goatattack.net/installers/$_dlname-$pkgver.tar.gz")
-md5sums=('91337bcfce550befd5d7aac357ce6d5c')
+source=("https://github.com/$_dlname/$_dlname/archive/$pkgver.tar.gz")
+md5sums=('80e25279ca81c5adebb79449732563c1')
 
 prepare() {
 	cd "$srcdir/$_dlname-$pkgver"
