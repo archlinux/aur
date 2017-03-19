@@ -1,16 +1,16 @@
-# Contributor: Johannes Dewender  arch at JonnyJD dot net 
+# Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=('python-configshell-fb' 'python2-configshell-fb')
 _pkgname=configshell-fb
-pkgver=1.1.fb22
+pkgver=1.1.fb23
 pkgrel=1
 pkgdesc="python framework for building simple CLI applications (free branch)"
 arch=('any')
-url="https://github.com/agrover/configshell-fb"
+url="https://github.com/open-iscsi/configshell-fb"
 license=('Apache')
 options=()
 makedepends=('python-setuptools' 'python2-setuptools')
-source=(https://fedorahosted.org/releases/t/a/targetcli-fb/$_pkgname-$pkgver.tar.gz)
-sha256sums=('a20b95791cdba6f7587869f4fa4337e8e4effbdec102ac6f7de349fe3b5bc612')
+source=(https://github.com/open-iscsi/configshell-fb/archive/v${pkgver}.tar.gz)
+sha512sums=('71e2a30f3a484fb416ca8bda22c49c27a3abb8c826dc5ab06d5fe73dc0e0ccb3960934176164a9e37770b2b9ec6906ac1c922f418ef452e9f025fbb906517df1')
 
 package_python-configshell-fb() {
   depends=('python-pyparsing' 'python-urwid')
