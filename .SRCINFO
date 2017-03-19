@@ -5,11 +5,13 @@ pkgbase = python-pypugjs
 	url = https://github.com/matannoam/pypugjs
 	arch = any
 	license = MIT
-	makedepends = python3
+	makedepends = python-setuptools
 	depends = python
 	depends = python-six
-	source = https://pypi.python.org/packages/12/11/e57392b68f6cb6776c5306d6e9e23291a9e3f4e88225a6570355a71575e8/pypugjs-4.2.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/p/pypugjs/pypugjs-4.2.0.tar.gz
 	md5sums = 55520d17a2454404afe4b4426b185ad3
 
 pkgname = python-pypugjs
+	depends = python
+	depends = python-six
 
