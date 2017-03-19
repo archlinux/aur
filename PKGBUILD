@@ -2,7 +2,7 @@
 # Contributor: DeedleFake <yisszev at beckforce dot com>
 
 pkgname=srb2
-pkgver=2.1.16
+pkgver=2.1.17
 _dataver=2.1.14
 _patchver=2.1.15
 pkgrel=1
@@ -10,14 +10,14 @@ pkgdesc='A 3D Sonic fan game based off of Doom Legacy (aka "Sonic Robo Blast 2")
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://www.srb2.org'
-depends=('sdl2_mixer' 'libpng' "srb2-data=$_dataver")
+depends=('sdl2_mixer' 'libpng' 'libgme' "srb2-data=$_dataver")
 makedepends=('mesa' 'glu')
-[ "$CARCH" == "i686" ] && makedepends+=('nasm')
+makedepends_i686=('nasm')
 source=("https://github.com/STJr/SRB2/archive/SRB2_release_$pkgver.zip"
         "http://rosenthalcastle.org/srb2/SRB2-v${_patchver//./}-patch.zip"
         "srb2.desktop"
         "srb2-opengl.desktop")
-sha256sums=('c0c985d6afa1ffa5212c0d673c2b3597f697b7b3b7a79375c72ee12dfc611156'
+sha256sums=('943dec5e435a0ed575eb604e81c093cb06f306fcfd394bbd2395e90e700f8371'
             '89e25aaa793f3b56f0bde04b964bd239f21bb81f9ef5df34717e6afc31ee34d1'
             'ac9fa63f29ad9413797da8c6f0a4f76fa6f4dd0710d1e84a457a8c42cf6df4f9'
             'f696bab390d2b1028bf2f5c5d4d838c0981dc211cec4c4a8f349b7ec0580e701')
@@ -41,7 +41,7 @@ package() {
   install -Dm755 SRB2-SRB2_release_$pkgver/bin/Linux$IS64BIT/Release/lsdl2srb2 \
     "$pkgdir"/usr/bin/srb2
 
-  # data patch 2.1.14 → 2.1.15, no changes for 2.1.16
+  # data patch 2.1.14 → 2.1.15, no changes for 2.1.16 and 2.1.17
   install -Dm644 patch.dta "$pkgdir"/usr/share/games/SRB2/patch.dta
 
   # icon + .desktop
