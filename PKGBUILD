@@ -6,8 +6,8 @@
 #
 
 pkgname=cerbero-profiler
-pkgver=2.6.3
-pkgrel=2
+pkgver=2.7.0
+pkgrel=1
 pkgdesc="Cerbero Profiler is a tool designed primarily for malware and forensic analysis. It supports a huge number of file formats on which it performs analysis and lets the user inspect their internal layout."
 arch=('x86_64')
 url="http://cerbero.io/profiler"
@@ -26,9 +26,40 @@ provides=('cerbero-profiler')
 python_package_name='libpython3.4_3.4.3-1ubuntu1~14.04.5_amd64.deb'
 libpng_package_name='libpng12-0_1.2.50-1ubuntu2.14.04.2_amd64.deb'
 
-source=("https://store.cerbero.io/static/downloads/profiler/profiler_${pkgver}.tar.gz" "http://security.ubuntu.com/ubuntu/pool/main/p/python3.4/${python_package_name}" "http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/${libpng_package_name}")
+if [[ $pkgname == *"advanced"* ]]; then
+    tarball_url="https://store.cerbero.io/static/downloads/profiler/profiler_advanced_${pkgver}.tar.gz"
+    tarball_sha1="114f2ac4fcf19b1ff99aa07d8eb16f8ebcc71bdd"
+else
+    tarball_url="https://store.cerbero.io/static/downloads/profiler/profiler_${pkgver}.tar.gz"
+    tarball_sha1="7b02dfd91596998041552a23f9a09ef964f29048"
+fi
+
+# desktop launcher
+read -r -d '' desktop_launcher << EndOfMessage
+[Desktop Entry]
+Comment=Malware and forensic analysis tool.
+Exec=/opt/Cerbero/Profiler/cerpro-launcher.sh %%U
+Icon=/opt/Cerbero/Profiler/icons/app_256x256.png
+Name=Cerbero Profiler
+Terminal=false
+Type=Application
+Categories=Development;
+EndOfMessage
+
+# launcher script
+read -r -d '' launcher_script << EndOfMessage
+#!/usr/bin/env bash
+if [ \$# -eq 0 ] ; then
+    /opt/Cerbero/Profiler/cerpro.sh
+else
+    /opt/Cerbero/Profiler/cerpro.sh -s "\$1"
+fi
+exit \$?
+EndOfMessage
+
+source=("$tarball_url" "http://security.ubuntu.com/ubuntu/pool/main/p/python3.4/${python_package_name}" "http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/${libpng_package_name}")
 noextract=("$python_package_name" "$libpng_package_name")
-sha1sums=('37582657d452763a6b358f61f069268e8eabe844' 'a03f1df9695cb9c454f34301b5fd08dd20a5ba21' '0fd57a753a5e46659492187f804d6981158d8a00')
+sha1sums=($tarball_sha1 'a03f1df9695cb9c454f34301b5fd08dd20a5ba21' '0fd57a753a5e46659492187f804d6981158d8a00')
 
 prepare() {
 	# we have to manually extract our two external dependencies since
@@ -52,7 +83,8 @@ build() {
 	sed -i 's+dirname=`dirname $0`+dirname=/opt/Cerbero/Profiler+g' "profiler_${pkgver}/cerpro.sh"
 
 	# generate a .desktop file for the menu
-	printf '[Desktop Entry]\nComment=Malware and forensic analysis tool.\nExec=/opt/Cerbero/Profiler/cerpro.sh -s %%U\nIcon=/opt/Cerbero/Profiler/icons/app_256x256.png\nName=Cerbero Profiler\nTerminal=false\nType=Application\nCategories=Development;\n' > "${srcdir}/Cerbero Profiler.desktop"
+    printf "$desktop_launcher" > "${srcdir}/Cerbero Profiler.desktop"
+    printf "$launcher_script" > "profiler_${pkgver}/cerpro-launcher.sh"
 }
 
 package() {
@@ -71,7 +103,7 @@ package() {
 	# symlink the main executable to /usr/local/bin so that we can start the program by running the 'cerpro' command
 	local local_bin_folder="${pkgdir}/usr/local/bin"
 	mkdir -p "$local_bin_folder"
-	ln -s "/opt/Cerbero/Profiler/cerpro.sh" "${local_bin_folder}/cerpro"
+	ln -s "/opt/Cerbero/Profiler/cerpro-launcher.sh" "${local_bin_folder}/cerpro"
 
 	# fix the permissions
 	chown -R root:root "$application_folder"
