@@ -55,6 +55,7 @@ package() {
   cp -R $srcdir/ArangoDB-$pkgver/Documentation/man/* $pkgdir/usr/share/man
 
   install -Dm644 arangodb-tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/arangodb.conf
+  install -D -m644 $srcdir/ArangoDB-$pkgver/LICENSE "${pkgdir}/usr/share/licenses/arangodb3/LICENSE"
 
   msg2 "Preparing systemd service."
   mkdir -p $pkgdir/usr/lib/systemd/system
