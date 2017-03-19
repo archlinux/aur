@@ -87,6 +87,5 @@ post_remove() {
   # remove all the files
   rm -rf /usr/share/arangodb3
   rm -rf /var/log/arangodb3
-  rm -rf /var/lib/arangodb3
   rm -rf /var/lib/arangodb3-apps
 }
