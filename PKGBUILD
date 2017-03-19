@@ -2,8 +2,7 @@
 
 pkgname=ttf-google-fonts-typewolf
 _commit='35eb2d78a5006cb22c006452118f1d103ef0793b'
-_pkgver=17.2
-pkgver=17.2
+pkgver=17.2.r35eb2d7
 pkgrel=1
 pkgdesc="Typewolf's curated collection of the 40 best fonts from the Google Fonts project."
 arch=('any')
@@ -65,21 +64,17 @@ source=("fonts-${_commit}.tar.gz::https://github.com/google/fonts/archive/${_com
 md5sums=('30f8e5b48af8c5a7d7fac47c68a2c784')
 
 
-pkgver() {
-	printf "%s.r%s" "${_pkgver}" "${_commit::7}"
-}
-
 package() {
 	_fonts="${provides[@]//-/}" # Remove hyphens from each element in array.
 	_fonts="${_fonts[@]//ttf/}" # Remove 'ttf' from each element in array.
 	_regex="${_fonts[*]// /|}"  # Replace spaces with pipe symbols.
 
 	install -dm755 "${pkgdir}/usr/share/fonts/TTF"
-	install -dm755 "/usr/share/licenses/${pkgname}"
+	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
 	cd "${srcdir}/fonts"*
 
-	install -Dm644 ofl/raleway/OFL.txt "/usr/share/licenses/${pkgname}"
+	install -Dm644 ofl/raleway/OFL.txt "${pkgdir}/usr/share/licenses/${pkgname}"
 
 	find . \
 		-type f \
