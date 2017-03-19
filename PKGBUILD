@@ -3,7 +3,7 @@
 
 _gemname=netaddr
 pkgname=ruby-$_gemname
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='A package for manipulating network addresses.'
 arch=(any)
@@ -13,10 +13,10 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('d8c11f3509273ed62e497e84099fd6069b64fccb')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 }
+sha256sums=('29c1bb3da33e3d2be475ce957cd10d98a2482640b27a4d9e4bde5acca19e00c7')
