@@ -6,7 +6,7 @@
 
 pkgname=tvheadend-git
 _gitname='tvheadend-git'
-pkgver=4.1.r2189.g3de3244
+pkgver=4.1.r2483.g1f3411cd1
 pkgrel=1
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -33,6 +33,7 @@ pkgver() {
 prepare() {
     cd "${srcdir}"
     _dvbscan="${_gitname}/data/dvb-scan"
+    rm -rf "${_dvbscan}"
     cp -a "dvb-scan-tables" "${_dvbscan}"
     rm -rf "${_dvbscan}/.git"
     touch "${_dvbscan}/.stamp"
