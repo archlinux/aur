@@ -1,0 +1,24 @@
+pkgbase = mate-sensors-applet-gtk2
+	pkgdesc = A MATE Panel applet to display readings from hardware sensors, including CPU temperature, fan speeds and voltage readings (GTK2 version)
+	pkgver = 1.16.1
+	pkgrel = 1
+	url = http://mate-desktop.org
+	arch = i686
+	arch = x86_64
+	groups = mate-extra-gtk2
+	license = GPL
+	makedepends = docbook-xsl
+	makedepends = intltool
+	makedepends = itstool
+	depends = libatasmart
+	depends = libnotify
+	depends = libxnvctrl
+	depends = lm_sensors
+	depends = mate-panel-gtk2
+	conflicts = mate-sensors-applet
+	conflicts = mate-sensors-applet-gtk3
+	source = http://pub.mate-desktop.org/releases/1.16/mate-sensors-applet-1.16.1.tar.xz
+	sha1sums = a588b17b8c7ae3d01bb0871a37fa9d726c4637a1
+
+pkgname = mate-sensors-applet-gtk2
+
