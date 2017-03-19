@@ -3,7 +3,7 @@
 pkgbase=opencascade7
 pkgname=('opencascade7' 'opencascade7-docs')
 pkgver=7.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="3D modeling & numerical simulation SDK"
 url="http://www.opencascade.org"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ prepare(){
 
   flags=""
   flags="$flags -DCMAKE_BUILD_TYPE=Release"
-  flags="$flags -DCMAKE_INSTALL_PREFIX=/opt/${pkgname}"
+  flags="$flags -DCMAKE_INSTALL_PREFIX=/opt/${pkgbase}"
   flags="$flags -DUSE_GL2PS=ON"
   flags="$flags -D3RDPARTY_GL2PS_DIR="
   flags="$flags -DUSE_FREEIMAGE=ON"
@@ -52,19 +52,19 @@ package_opencascade7() {
   make DESTDIR="${pkgdir}" install
 
   # Remove doc folder with licence files (wrong location).
-  rm -R "${pkgdir}/opt/${pkgname}/share/doc"
+  rm -R "${pkgdir}/opt/${pkgbase}/share/doc"
 
   # Install license files into the right location.
-  install -Dm644 ../LICENSE_LGPL_21.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 ../OCCT_LGPL_EXCEPTION.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 ../LICENSE_LGPL_21.txt -t "$pkgdir/usr/share/licenses/${pkgbase}/"
+  install -Dm644 ../OCCT_LGPL_EXCEPTION.txt -t "$pkgdir/usr/share/licenses/${pkgbase}/"
 
   # Fix permission of draw.sh script.
-  chmod 755 "${pkgdir}/opt/${pkgname}/bin/draw.sh"
+  chmod 755 "${pkgdir}/opt/${pkgbase}/bin/draw.sh"
 
   # Remove compile scripts. If they aren't removed opencascades
   # buildsystem tries to access (and modify?!) them in subsequent
   # build attempts. Also they are quite useless.
-  rm "${pkgdir}/opt/${pkgname}/bin/"custom*.sh
+  rm "${pkgdir}/opt/${pkgbase}/bin/"custom*.sh
 }
 
 package_opencascade7-docs() {
