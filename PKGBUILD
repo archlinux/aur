@@ -5,16 +5,16 @@
 
 pkgbase=gtkhash
 pkgname=(gtkhash gtkhash-nemo gtkhash-nautilus gtkhash-thunar gtkhash-caja)
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A GTK+ utility for computing message digests or checksums"
 arch=('i686' 'x86_64' 'mips64el')
 url="http://gtkhash.sourceforge.net/"
 license=('GPL')
-makedepends=('intltool' 'librsvg' 'nemo' 'libnautilus-extension' 'thunar' 'caja-gtk3') # ← remove FMs here!
+makedepends=('intltool' 'librsvg' 'nemo' 'libnautilus-extension' 'thunar' 'caja') # ← remove FMs here!
 depends=('dconf' 'nettle' 'gtk3')
-source=("http://downloads.sourceforge.net/gtkhash/gtkhash-$pkgver.tar.xz")
-sha256sums=('ae1faac88a745953bba583c91173d08f8aab8153c30418b10ed43496ea561e45')
+source=("https://github.com/tristanheaven/gtkhash/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
+sha256sums=('c86b7d8dcfc00aad1cd6bc73fa7c5a18006fbd4ae1fa909d4b4a1e255ce5cfa2')
 
 build() {
   cd gtkhash-$pkgver
@@ -61,7 +61,7 @@ package_gtkhash-thunar() {
 
 package_gtkhash-caja() {
   pkgdesc+=' (Caja filemanager plugin)'
-  depends=('gtkhash' 'caja-gtk3')
+  depends=('gtkhash' 'caja')
 
   make -C gtkhash-$pkgver/src/nautilus DESTDIR="$pkgdir/" install
   # remove other filemanager plugins

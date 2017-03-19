@@ -1,6 +1,6 @@
 pkgbase = gtkhash
 	pkgdesc = A GTK+ utility for computing message digests or checksums
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = http://gtkhash.sourceforge.net/
 	arch = i686
@@ -12,12 +12,12 @@ pkgbase = gtkhash
 	makedepends = nemo
 	makedepends = libnautilus-extension
 	makedepends = thunar
-	makedepends = caja-gtk3
+	makedepends = caja
 	depends = dconf
 	depends = nettle
 	depends = gtk3
-	source = http://downloads.sourceforge.net/gtkhash/gtkhash-1.0.tar.xz
-	sha256sums = ae1faac88a745953bba583c91173d08f8aab8153c30418b10ed43496ea561e45
+	source = https://github.com/tristanheaven/gtkhash/releases/download/v1.1/gtkhash-1.1.tar.xz
+	sha256sums = c86b7d8dcfc00aad1cd6bc73fa7c5a18006fbd4ae1fa909d4b4a1e255ce5cfa2
 
 pkgname = gtkhash
 
@@ -39,5 +39,5 @@ pkgname = gtkhash-thunar
 pkgname = gtkhash-caja
 	pkgdesc = A GTK+ utility for computing message digests or checksums (Caja filemanager plugin)
 	depends = gtkhash
-	depends = caja-gtk3
+	depends = caja
 
