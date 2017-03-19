@@ -1,7 +1,7 @@
 # Maintainer: bartus szczepaniak <aur@bartus.33mail.com>
 pkgname=mve-git
-pkgver=r1110.94f47f0
-pkgrel=4
+pkgver=r1114.d21bfba
+pkgrel=1
 pkgdesc="Image-based geometry reconstruction pipeline, structure-from-motion, (shading-aware) multi-view-stereo, surface-reconstruction, texturing,"
 arch=('i686' 'x86_64')
 url="http://www.gcc.tu-darmstadt.de/home/proj/mve/"
@@ -36,7 +36,7 @@ apps/sceneupgrade/sceneupgrade"
 
 prepare() {
   cd ${srcdir}
-  patch -Np1 -i ../gtest.patch
+  patch -Np1 -i gtest.patch
 }
 
 pkgver() {
