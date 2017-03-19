@@ -1,0 +1,23 @@
+pkgbase = python-azure-cli-core
+	pkgdesc = Microsoft Azure Command-Line Tools Core Module
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/Azure/azure-cli
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-adal
+	depends = python-argcomplete>=1.8.0
+	depends = python-azure-cli-nspkg
+	depends = python-colorama
+	depends = python-jmespath
+	depends = python-msrestazure
+	depends = python-requests
+	depends = python-six
+	depends = python-tabulate
+	depends = python-yaml
+	source = https://files.pythonhosted.org/packages/source/a/azure-cli-core/azure-cli-core-2.0.1.tar.gz
+	md5sums = 216dea1e6cea183641409c5292544798
+
+pkgname = python-azure-cli-core
+
