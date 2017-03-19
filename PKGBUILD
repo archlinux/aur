@@ -1,13 +1,13 @@
 # Maintainer:  VirtualTam <virtualtam@flibidi.net>
 # Contributor: Eugene Yudin aka Infy <Eugene dot Yudin at gmail dot com>
 pkgname=goldendict-git
-pkgver=1.5.0.RC2.6.g039de0e
+pkgver=1.5.0.RC2.76.gadb1bf5
 pkgrel=1
 pkgdesc="Feature-rich dictionary lookup program."
 arch=('i686' 'x86_64')
 url="http://goldendict.org/"
 license=('GPL3')
-depends=('ffmpeg' 'hunspell' 'libao' 'libeb' 'libvorbis' 'libxtst' 'lzo2' 'qt4' 'qtwebkit' 'zlib')
+depends=('ffmpeg' 'hunspell' 'libao' 'libeb' 'lzo' 'qtwebkit')
 makedepends=('git')
 conflicts=('goldendict' 'goldendict-svn' 'goldendict-git-opt')
 provides=('goldendict')
