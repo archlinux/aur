@@ -1,0 +1,16 @@
+pkgbase = piplib-git
+	pkgdesc = Parametric Integer Programming Library
+	pkgver = 1.4.0.r39.77aca10
+	pkgrel = 1
+	url = http://www.piplib.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = gmp
+	provides = piplip
+	conflicts = piplib
+	source = piplib-git::git+https://github.com/periscop/piplib.git
+	md5sums = SKIP
+
+pkgname = piplib-git
+
