@@ -1,9 +1,10 @@
-# Maintainer: Ashley Towns <mail(at)ashleytowns(dot)id(dot)au>
+# Maintainer: youngunix <>
 
-_version=3.0.1
+
+_version=3.0.2
 pkgname=swift-bin
 pkgver=${_version//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Official binary builds of the Swift programming language."
 arch=('x86_64')
 url="https://swift.org"
@@ -19,8 +20,8 @@ source=(
   "https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz"
   "https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz.sig"
 )
-sha256sums=('38e7ce6a716f7f72f1868b9c0ba6f29007a83e1662adb21400cca0c6c7902b58'
-            '0cd89ca6c8c485e9f431df16c18ad840766d3980cd3555f4fa34fb2dcff8c7e4')
+sha256sums=('505119fa8de17cd8ef2c4906c9ed3b85da7a282c02ef21db94347bb44ac83959'
+            '382ed78c5deea514a19e64d87cf0315eb7f7814c2b2cb01095fcf52e3bd8a87f')
 
 package() {
     tar -C "$pkgdir" -xf "swift-${_version}-RELEASE"*.tar.gz --strip 1
