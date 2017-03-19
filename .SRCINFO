@@ -1,0 +1,14 @@
+pkgbase = luadec-git
+	pkgdesc = Decompiler for lua 5.1 , and experimental for lua 5.2 and 5.3
+	pkgver = r219.895d923
+	pkgrel = 1
+	url = https://github.com/viruscamp/luadec
+	arch = i686
+	arch = x86_64
+	license = MIT
+	conflicts = luadec51-git
+	source = luadec-git::git+https://github.com/viruscamp/luadec
+	md5sums = SKIP
+
+pkgname = luadec-git
+
