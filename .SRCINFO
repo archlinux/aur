@@ -5,8 +5,7 @@ pkgbase = epub2pdf
 	url = http://epub2pdf.com
 	arch = any
 	license = GPL3
-	depends = jar
+	depends = java-runtime
 	source = http://epub2pdf.com/files/epub2pdf-0.5.zip
 
 pkgname = epub2pdf
-
