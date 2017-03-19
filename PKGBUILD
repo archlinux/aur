@@ -1,7 +1,7 @@
 pkgname=epub2pdf
 pkgver=0.5
 pkgrel=1
-pkgdesc="a multitrack non-linear video editor for Linux"
+pkgdesc="epub2pdf is a command-line tool that quickly generates PDF files from EPUB ebooks. It will run on any platform that supports JRE version 6 or later."
 arch=('any')
 url="http://epub2pdf.com"
 license=('GPL3')
