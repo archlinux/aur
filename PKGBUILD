@@ -3,7 +3,7 @@
 # Contributor: <jnbek1972 at gmail dot com>
 # Contributor: <raku at rakutiki.tv>
 pkgname=waterfox-git
-pkgver=51.0.1+55eacc009b
+pkgver=52.0.1+3caa37ba5c
 _realpkgver=49.0b10
 _rcbuild=1
 pkgrel=1
@@ -24,19 +24,16 @@ source=(git://github.com/MrAlex94/Waterfox
         mozconfig
         waterfox.desktop
         firefox-install-dir.patch
-        unused_missing.patch
         rhbz-966424.patch
         clang-profile.patch
         vendor.js)
 sha512sums=('SKIP'
-            '2372bfae48cd7fa6162e94c9cd0689797d305ed159e8e38491022c22519b971a4ffcc8ee23c1f6473f0926b51029ca39e61a315f24f37a7813a5e6d3b55088cc'
+            'b6b9dc4bc6861de7bd6ecf8b28c6ee1ac096542020a1a0aecefee9761eb8f67e596278696d6f23659347f0acabf08dffaccf829afcaa544bd3447899ec8c549d'
             '93937770fa66d63f69c6283ed1f19ac83b9c9c4f5cc34e79d11ac31676462be9f7f37bcd35e785ceb8c7d234a09236d1f26b21e551b622854076fb21bcda44d3'
             '266989b0c4a37254a40836a6193284a186230b48716907e4d249d73616f58382b258c41baa8c1ffc98d405f77bfafcd3438f749edcf391c7bd22185399adf4bd'
-            '87225692ee6e643cd9d291608174c68e25b00818086d641847111924c457414faadf3ed6d10fddafd5bd4bc54eeea2055b7136ffeabadec8644a60e819e9356f'
             '0d69183bbfdceee89b3059c913c95e316c03b14b6b302675e16a03c32b74f30b7058344d8c6f2f5a4cfd33db9c7e6f52bf0f52d1c047a224b75e1745d0711c07'
             'c17dceeefd58447917e27a33d6688a28158b919c41867909b11478d8be7f155b61ae8fda2e0381c14210583f1c6ecf678dfb469c4826f34e24b8ee0b96a8aaa5'
             'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7')
-            
 _CORES=1
 
 # don't compress the package - we're just going to uncompress during install in a moment
@@ -63,9 +60,6 @@ prepare() {
   
   # alter the install dir
   patch -Np1 -i ../firefox-install-dir.patch
-  
-  # missing files
-  patch -Np1 -i ../unused_missing.patch
   
   # fix addon update issue - happens in arch and redhat, at the least
   patch -Np0 -i ../rhbz-966424.patch
