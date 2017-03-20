@@ -1,7 +1,7 @@
 
 pkgbase=ipython-ipyparallel
 pkgname=('ipython-ipyparallel' 'ipython2-ipyparallel')
-pkgver=6.0.0
+pkgver=6.0.2
 pkgrel=1
 pkgdesc="Interactive Parallel Computing in Python"
 url="https://github.com/ipython/ipyparallel"
@@ -9,7 +9,7 @@ arch=(any)
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/ipython/ipyparallel/archive/${pkgver}.tar.gz")
-md5sums=('6f58ff6f11675ccd64b400aa89ca5096')
+md5sums=('015b49162b424bc19ad70db27be8c19f')
 
 prepare() {
   cp -r "${srcdir}/ipyparallel-$pkgver" "${srcdir}/ipyparallel-$pkgver-py2"
