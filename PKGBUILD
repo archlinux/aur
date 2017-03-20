@@ -30,7 +30,7 @@ source_x86_64=("http://repos.systemmonitor.us/rmmagent/Debian_7.0/amd64/rmmagent
 source_i686=("http://repos.systemmonitor.us/rmmagent/Debian_7.0/i386/rmmagent_1.0.2-1_i386.deb")
 source=("rmmagentd.service")
 md5sums_x86_64=('62dd6edc1755d79800b55733f4e212e2')
-md5sums_i686=('870236044d12b7aaa236fb4475b3d3b4')
+md5sums_i686=('a2608fa15a889bf5634e14853d2ecdd0')
 md5sums=('28e9171b39f6eafcca88d70aea08195a')
 
 prepare() {
