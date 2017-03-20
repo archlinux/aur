@@ -1,13 +1,13 @@
 # Maintainer: Kitsu mail@kitsu.me
 pkgname=movian-git
-pkgver=5.0.r454.g552ad613b
-pkgrel=2
+pkgver=5.0.r472.gf5bbabd9e
+pkgrel=1
 pkgdesc="Media center (Git version)"
 arch=('i686' 'x86_64')
 url="https://movian.tv/"
 license=('GPL')
 depends=('webkitgtk2' 'libpulse' 'libvdpau' 'libxss')
-makedepends=('git')
+makedepends=('git' 'nasm')
 provides=('movian')
 conflicts=('movian')
 source=("git+git://github.com/andoma/movian.git")
