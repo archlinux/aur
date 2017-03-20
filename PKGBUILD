@@ -1,6 +1,6 @@
 # Contributor: Filip <fila pruda com>
 pkgname=ytd
-pkgver=1.57
+pkgver=1.59
 pkgrel=1
 pkgdesc="an utility for downloading multimedia content from YouTube and other online streaming services."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=()
 source=(ytd ytd.desktop http://www.pepak.net/files/youtube/ytd-$pkgver.zip)
 md5sums=(
 	'fa41961f5092fa471145ade79584fd4b' 'e10bfe126777f969da9eaf35edd0ba65'
-	'dd9491e950b24cb3d1a7c7fa1389b1fa')
+	'e0997b348138215f218c6351a2f6729d')
 
 package() {
 
