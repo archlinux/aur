@@ -5,8 +5,8 @@
 
 pkgname="smarthome-designer"
 pkgver="0.8.0"
-pkgrel=1
-pkgdesc="A flecible framework for the smart home - Eclipse based Designer"
+pkgrel=2
+pkgdesc="A flexible framework for the smart home - Eclipse based Designer"
 arch=('i686' 'x86_64')
 url="https://www.eclipse.org/smarthome/index.html"
 license=('GPL3')
