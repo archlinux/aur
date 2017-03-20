@@ -1,0 +1,17 @@
+pkgbase = python-azure-cli-acs
+	pkgdesc = Microsoft Azure Command-Line Tools ACS Command Module
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/Azure/azure-cli
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-azure-cli-core
+	depends = python-azure
+	depends = python-scp
+	depends = python-sshtunnel
+	source = https://files.pythonhosted.org/packages/source/a/azure-cli-acs/azure-cli-acs-2.0.1.tar.gz
+	md5sums = 5376d7d42e390bd267050b2339cf859d
+
+pkgname = python-azure-cli-acs
+
