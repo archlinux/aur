@@ -46,4 +46,9 @@ build() {
 
 package() {
 	make -C "$srcdir/ulam" DESTDIR="$pkgdir/" install
+	mkdir -p "$pkgdir/usr/bin"
+	for f in `ls "$pkgdir/usr/lib/ulam/ULAM/bin"`; \
+		do ln -sf "/usr/lib/ulam/ULAM/bin/$f" "$pkgdir/usr/bin/";done
+	for f in `ls "$pkgdir/usr/lib/ulam/MFM/bin"`; \
+		do ln -sf "/usr/lib/ulam/MFM/bin/$f" "$pkgdir/usr/bin/";done
 }
