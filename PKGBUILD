@@ -2,7 +2,7 @@
 
 pkgname=tilix-git
 _pkgname=tilix
-pkgver=1.5.2.r22.d4fa399
+pkgver=1.5.4.r8.bba5320
 pkgrel=1
 pkgdesc="A tiling terminal emulator based on GTK+ 3 (git master)"
 arch=('x86_64' 'i686')
@@ -37,7 +37,7 @@ prepare() {
 build() {
   cd ${_pkgname}
   ./configure --prefix=/usr
-  make DC='ldmd' DCFLAGS='-disable-linker-strip-dead -O -inline -release -version=StdLoggerDisableTrace'
+  make DC='ldmd' DCFLAGS='-O -inline -release -version=StdLoggerDisableTrace'
 }
 
 package() {
