@@ -11,12 +11,14 @@ pkgbase = flexisip
 	depends = hiredis
 	depends = mediastreamer
 	depends = protobuf
-	depends = sofia-sip-bc
+	depends = sofia-sip-bc>=1.13.12
 	depends = unixodbc
 	depends = xsd
 	depends = soci
-	source = https://github.com/BelleDonneCommunications/flexisip/archive/1.0.10.tar.gz
-	md5sums = aa42bc3fee319e731947c2e00dff4eb3
+	source = git+https://github.com/BelleDonneCommunications/flexisip.git#commit=cf47b79bd656
+	source = flexisip.service
+	sha256sums = SKIP
+	sha256sums = 2a96c6604c62ea6b70f0bd6e96c6910afef6e17ac8d44ce0a50cce60279946be
 
 pkgname = flexisip
 

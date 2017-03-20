@@ -1,8 +1,11 @@
 [Unit]
-Description=
-After=network.service
+Description=Flexisip server
+After=network.target
 
 [Service]
 Type=forking
 ExecStart=/usr/bin/flexisip --daemon -p /run/flexisip.pid
-PIDFile=/run/flexsip.pid
+PIDFile=/run/flexisip.pid
+
+[Install]
+WantedBy=multi-user.target

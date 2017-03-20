@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="http://flexisip.org"
 license=('AGPL3')
 groups=()
-depends=('belle-sip' 'boost-libs' 'hiredis' 'mediastreamer' 'protobuf' 'sofia-sip-bc' 'unixodbc' 'xsd' 'soci')
+depends=('belle-sip' 'boost-libs' 'hiredis' 'mediastreamer' 'protobuf' 'sofia-sip-bc>=1.13.12' 'unixodbc' 'xsd' 'soci')
 makedepends=()
 optdepends=()
 provides=()
@@ -17,12 +17,14 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/BelleDonneCommunications/$pkgname/archive/$pkgver.tar.gz")
+source=("git+https://github.com/BelleDonneCommunications/$pkgname.git#commit=cf47b79bd656"
+    "flexisip.service")
 noextract=()
-md5sums=('aa42bc3fee319e731947c2e00dff4eb3')
+sha256sums=('SKIP'
+            '2a96c6604c62ea6b70f0bd6e96c6910afef6e17ac8d44ce0a50cce60279946be')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   ./autogen.sh
   ./configure --prefix=/usr \
@@ -42,7 +44,8 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   make DESTDIR="$pkgdir/" install
+  install -Dm0644 "$srcdir/flexisip.service" "$pkgdir/usr/lib/systemd/system/flexisip.service"
 }
