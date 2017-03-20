@@ -19,5 +19,5 @@ changelog=ChangeLog
 
 package() {
     cd "$pkgname-$pkgver"
-    make DESTDIR="$pkgdir/" install
+    make DESTDIR="$pkgdir" INSTALLPATH="/usr/share/fortune/ru" install
 }
