@@ -14,6 +14,7 @@ arch=('i686' 'x86_64')
 url="http://www.roguetemple.com/z/hyper.php"
 license=('GPL2')
 depends=('sdl_gfx' 'sdl_ttf' 'sdl_mixer' 'mesa')
+makedepends=('glu')
 source=("http://www.roguetemple.com/z/hyper/$pkgname-${_pkgver}${_music}.zip")
 # echo "http://www.roguetemple.com/z/hyper/hyperrogue-$_pkgver{,-nomusic,-lo}.zip"
 md5sums=('3384702edc8e8e8a213ff40ec75d9b9c')
