@@ -1,11 +1,10 @@
 pkgbase = otf-overpass
-	pkgdesc = Overpass open source web font family — Sponsored by Red Hat.
+	pkgdesc = An open source font family inspired by Highway Gothic. (sans-serif, OTF format)
 	pkgver = 3.0.2
 	pkgrel = 1
 	url = http://overpassfont.org
 	install = otf-overpass.install
 	arch = any
-	license = custom: SIL Open Font License 1.1
 	license = LGPL2.1
 	depends = fontconfig
 	depends = xorg-font-utils
