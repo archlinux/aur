@@ -1,4 +1,5 @@
-# Maintainer: artoo <artoo@manjaro.org>
+# Maintainer: David P. <megver83@openmailbox.org>
+# Contributor: artoo <artoo@manjaro.org>
 # Contributor: kozec <kozec at kozec.com>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
@@ -7,7 +8,7 @@ _pkgname=polkit
 
 pkgname=polkit-elogind
 pkgver=0.113+29+g3272a98
-pkgrel=5
+pkgrel=6
 pkgdesc="PolyciKit with elogind support for non-systemd systems"
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/polkit"
