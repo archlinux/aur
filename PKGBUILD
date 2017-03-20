@@ -3,7 +3,7 @@
 _gitname=axoloti-runtime
 pkgname=${_gitname}-git
 pkgver=1.0.12.1.r3.g3a06887e
-pkgrel=1
+pkgrel=2
 pkgdesc="runtime for axoloti"
 arch=(x86_64)
 url="http://www.axoloti.com"
