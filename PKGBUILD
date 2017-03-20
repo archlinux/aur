@@ -32,7 +32,7 @@ _use_32bit_pae="no"	# "yes": Use the PAE config for 32-bit
 
 pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
 __basekernel=4.9
-_minor=14
+_minor=16
 pkgver=${__basekernel}.${_minor}
 pkgrel=1
 lqxrel=1
@@ -58,11 +58,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.
         "https://liquorix.net/sources/${__basekernel}/config.i386-pae"
         "https://liquorix.net/sources/${__basekernel}/config.amd64"
         "linux.preset"
-        "99-linux.hook")
+        "90-linux.hook")
 
 sha512sums=('bf67ff812cc3cb7e5059e82cc5db0d9a7c5637f7ed9a42e4730c715bf7047c81ed3a571225f92a33ef0b6d65f35595bc32d773356646df2627da55e9bc7f1f1a'
             'SKIP'
-            '8be43bd64d521ba517ba12a5b368f5a9ae6ae95c79bb4ea23284f43d6caede270c1900168b0b1002522e0d318507bc6803b45686436cff31558a2d5fabcde84b'
+            'ae4bdcc84c11ea6ab6e2977fafe800efa9dbd9dee4ca4c34463925f079787a05116dd57c7bc524625d38212aed469acfb157d94bc22622009b35d1b821f6ee8f'
             '6e28b793d99bbed3c8a92779227cfd1d151804a63f3a4d20c1ab17a3a75f5767524de52295281d31089c883128477262d0ec217c4f89748e0346510dfe5150df'
             '4fb0301e8f898d5feadc842c4b77c5b19940936b92928a011e4f446f47cf022f6e09daaa40103bedb9c2bcec828d9eaec27d02f057e2aabddafa3c426fd3ba03'
             'f9f8733f72395769d2d20fae1079a6c4097695f47d342cf7c84ef840ed1742d28c3efc81401f5f697c61a14a0231f47ef226257982ad1cd40274d8700ffa9e60'
@@ -203,8 +203,8 @@ mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
     install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
   # install pacman hook for initramfs regeneration
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
-    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/90-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
