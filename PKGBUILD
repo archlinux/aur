@@ -10,7 +10,7 @@ makedepends=('git')
 provides=("apk-preview")
 source=("${pkgname}::git+https://github.com/alireza6677/apk-preview.git")
 md5sums=('SKIP')
-
+install=${pkgname}.install
 
 prepare() {
     cd "${srcdir}/${pkgname}"
