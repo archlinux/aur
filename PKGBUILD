@@ -27,7 +27,7 @@ prepare() {
 build() {
   cd ${pkgname}-${pkgver}
 
-  ./configure --prefix=/usr \
+  CFLAGS=-Wno-narrowing CXXFLAGS=-Wno-narrowing ./configure --prefix=/usr \
     --mandir=/usr/share/man \
     --with-config-dir=/etc/htdig \
     --with-default-config-file=/etc/htdig/htdig.conf \
