@@ -30,7 +30,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data
-pkgver=2.1.1.r3379.9366e8ef
+pkgver=2.1.1.r3393.314c9fd7
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
