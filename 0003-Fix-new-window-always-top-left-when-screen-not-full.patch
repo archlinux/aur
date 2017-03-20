@@ -1,4 +1,4 @@
-From 68c37fbcd533ff2307c82f3b48bb090d9bbbd433 Mon Sep 17 00:00:00 2001
+From 73bbf7fed10ae33551892dcd7e029301ec826147 Mon Sep 17 00:00:00 2001
 From: jjacky <i.am.jack.mail@gmail.com>
 Date: Mon, 6 May 2013 11:00:51 +0200
 Subject: [PATCH 3/3] Fix new window always top-left when screen not full
@@ -14,10 +14,10 @@ Signed-off-by: Olivier Brunel <jjk@jjacky.com>
  1 file changed, 4 insertions(+)
 
 diff --git a/src/placement.c b/src/placement.c
-index 14969ec..a595f67 100644
+index 41c48824..19b02a84 100644
 --- a/src/placement.c
 +++ b/src/placement.c
-@@ -776,6 +776,7 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
+@@ -767,6 +767,7 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
          if (!region_hole)
              break;
  
@@ -25,7 +25,7 @@ index 14969ec..a595f67 100644
          cairo_region_destroy (region_monitor);
          cairo_region_destroy (region_used);
  
-@@ -861,6 +862,9 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
+@@ -852,6 +853,9 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
          return;
      }
  
@@ -36,5 +36,5 @@ index 14969ec..a595f67 100644
      cairo_region_destroy (region_used);
  
 -- 
-2.3.3
+2.12.0
 
