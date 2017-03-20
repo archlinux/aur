@@ -7,7 +7,7 @@
 _pkgname=gitea
 _gourl="code.gitea.io"
 pkgname=gitea-git
-pkgver=r4995.5bd22a2f
+pkgver=r5108.888dee3b
 pkgrel=1
 pkgdesc='A painless self-hosted Git service.'
 url='https://gitea.io/'
@@ -45,7 +45,7 @@ prepare() {
 
   # patch
   msg2 "Patch gitea.service"
-  patch -Np1 -i "${srcdir}/gitea.service.patch" "${srcdir}/src/${_gourl}/${_pkgname}/scripts/systemd/gitea.service"
+  patch -Np1 -i "${srcdir}/gitea.service.patch" "${srcdir}/src/${_gourl}/${_pkgname}/contrib/systemd/gitea.service"
 }
 
 build() {
@@ -58,7 +58,7 @@ package() {
   install -dm755 ${pkgdir}/var/log/gitea
   install -Dm755 "${srcdir}/src/${_gourl}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "${srcdir}/src/${_gourl}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -Dm644 "${srcdir}/src/${_gourl}/${_pkgname}/scripts/systemd/gitea.service" "${pkgdir}/usr/lib/systemd/system/gitea.service"
+  install -Dm644 "${srcdir}/src/${_gourl}/${_pkgname}/contrib/systemd/gitea.service" "${pkgdir}/usr/lib/systemd/system/gitea.service"
   install -Dm644 "${srcdir}/app.ini" "${pkgdir}/var/lib/${_pkgname}/custom/conf/app.ini"
   cp -r ${srcdir}/src/${_gourl}/${_pkgname}/{conf,templates,options,public} ${pkgdir}/var/lib/${_pkgname}
   cp -r ${srcdir}/src/${_gourl}/${_pkgname}/options/locale ${pkgdir}/var/lib/${_pkgname}/conf
