@@ -13,5 +13,6 @@ WPAConfigSection=(
     'anonymous_identity="anonymous@<UNIVERSITY>.<TLD>"' # ex: tu-dresden.de
     'identity="<ID>@<UNIVERSITY>.<TLD>"' # ex: s4234381@tu-dresden.de
     'ca_cert="/etc/ssl/certs/ca-certificates.crt"'
+    'domain_suffix_match="<UNIVERSITY>.<TLD>"'
     'password="<YOUR-SECRET>"'
 )
