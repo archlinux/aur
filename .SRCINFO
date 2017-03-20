@@ -1,0 +1,16 @@
+pkgbase = python-azure-cli-appservice
+	pkgdesc = Microsoft Azure Command-Line Tools AppService Command Module
+	pkgver = 0.1.1b6
+	pkgrel = 1
+	url = https://github.com/Azure/azure-cli
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-azure
+	depends = python-azure-cli-core
+	depends = python-pyopenssl
+	source = https://files.pythonhosted.org/packages/source/a/azure-cli-appservice/azure-cli-appservice-0.1.1b6.tar.gz
+	md5sums = 43390c25d6db3ebc0865a898f383071e
+
+pkgname = python-azure-cli-appservice
+
