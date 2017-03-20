@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Gribov <grossws at gmail dot com>
 
 pkgname=sjk
-pkgver=0.4.3
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Swiss Java Knife is CLI tool for JVM diagnostic, troubleshooting and profiling"
 arch=('any')
@@ -10,7 +10,7 @@ license=('APACHE')
 depends=('java-environment')
 source=("https://bintray.com/artifact/download/aragozin/generic/${pkgname}-${pkgver}.jar"
         "sjk")
-sha256sums=('a942d2b7930d3dc082df3546ecb8c65d358b0cbf29c85f6cceb65a394adf26fb'
+sha256sums=('02f59f6d6369aba72b324dd5dbde55321b5a62681ade8dbb217a04f00b49d280'
             '62d6e80ec8d66bd2b68760599d5b2320910d961405d85560de09481bbfb0d7c0')
 noextract=("${pkgname}-${pkgver}.jar")
 
