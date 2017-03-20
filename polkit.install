@@ -1,0 +1,9 @@
+post_install() {
+    getent group polkitd >/dev/null || groupadd -g 102 polkitd
+    getent passwd polkitd >/dev/null || useradd -c 'Policy Kit Daemon' -u 102 -g polkitd -G proc -d '/' -s /usr/bin/nologin polkitd
+    passwd -l polkitd &>/dev/null
+}
+
+post_upgrade() {
+    post_install
+}

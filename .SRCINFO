@@ -1,0 +1,31 @@
+pkgbase = polkit-elogind
+	pkgdesc = PolyciKit with elogind support for non-systemd systems
+	pkgver = 0.113+29+g3272a98
+	pkgrel = 5
+	url = http://www.freedesktop.org/wiki/Software/polkit
+	install = polkit.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = autoconf-archive
+	depends = glib2
+	depends = pam
+	depends = expat
+	depends = js
+	depends = libelogind
+	depends = libutil-linux-nosystemd
+	provides = polkit=0.113+29+g3272a98
+	conflicts = polkit
+	conflicts = polkit-consolekit
+	options = !libtool
+	source = git+https://anongit.freedesktop.org/git/polkit#commit=3272a988655c3236b55bad70e9a3af20857f384b
+	source = polkit-0.114-elogind.patch
+	sha256sums = SKIP
+	sha256sums = e5eb83a8922f1540309ce5884c4bd40b2972aa75778da945e2392501961a860b
+
+pkgname = polkit-elogind
+
