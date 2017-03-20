@@ -1,4 +1,4 @@
-From c814e9ca7749cc5e80f708f3e0051a22f0886de7 Mon Sep 17 00:00:00 2001
+From eeafe3c5de257827139b61dd1d5d5baaf1fab86b Mon Sep 17 00:00:00 2001
 From: jjacky <i.am.jack.mail@gmail.com>
 Date: Thu, 4 Apr 2013 16:58:07 +0200
 Subject: [PATCH] Add hover effects for (titlebar's) buttons of inactive
@@ -14,10 +14,10 @@ Signed-off-by: Olivier Brunel <jjk@jjacky.com>
  2 files changed, 15 insertions(+), 18 deletions(-)
 
 diff --git a/src/client.c b/src/client.c
-index 7fa9e36..b207f36 100644
+index 0d946de6..46a4b3c7 100644
 --- a/src/client.c
 +++ b/src/client.c
-@@ -3974,6 +3974,12 @@ clientGetButtonPixmap (Client *c, int button, int state)
+@@ -3986,6 +3986,12 @@ clientGetButtonPixmap (Client *c, int button, int state)
  int
  clientGetButtonState (Client *c, int button, int state)
  {
@@ -30,7 +30,7 @@ index 7fa9e36..b207f36 100644
      if (state == INACTIVE)
      {
          return (state);
-@@ -3985,12 +3991,6 @@ clientGetButtonState (Client *c, int button, int state)
+@@ -3997,12 +4003,6 @@ clientGetButtonState (Client *c, int button, int state)
          return (PRESSED);
      }
  
@@ -44,7 +44,7 @@ index 7fa9e36..b207f36 100644
  }
  
 diff --git a/src/events.c b/src/events.c
-index 50303b0..efc1db6 100644
+index 50303b03..efc1db6c 100644
 --- a/src/events.c
 +++ b/src/events.c
 @@ -1421,23 +1421,20 @@ handleEnterNotify (DisplayInfo *display_info, XCrossingEvent * ev)
@@ -81,5 +81,5 @@ index 50303b0..efc1db6 100644
  
          /* No need to process the event any further */
 -- 
-2.3.3
+2.12.0
 
