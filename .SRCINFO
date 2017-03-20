@@ -1,0 +1,12 @@
+pkgbase = pm-quirks
+	pkgdesc = Quirks data for pm-utils
+	pkgver = 0.20100619
+	pkgrel = 5
+	url = http://pm-utils.freedesktop.org/wiki/
+	arch = x86_64
+	license = GPL
+	source = http://pm-utils.freedesktop.org/releases/pm-quirks-20100619.tar.gz
+	md5sums = 3b6ee39056b9ece0cd5e073a4c272b05
+
+pkgname = pm-quirks
+
