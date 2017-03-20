@@ -7,7 +7,7 @@ _use_zeroc_ice="0"
 
 pkgname=murmur-git
 pkgver=1.2.5.2194.ge414bd3b
-pkgrel=1
+pkgrel=2
 pkgdesc="The voice chat application server for Mumble (git version)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://mumble.sourceforge.net"
@@ -56,8 +56,8 @@ package() {
 
     sed -e "1i# vi:ft=cfg" \
       -e "s|database=|database=/var/lib/murmur/murmur.sqlite|" \
-      -e "s|#logfile=murmur.log|logfile=|" \
-      -e "s|#uname=|uname=murmur|" \
+      -e "s|;logfile=murmur.log|logfile=|" \
+      -e "s|;uname=|uname=murmur|" \
       -i scripts/murmur.ini
 
     install -dm755 -o 122 -g 122 ${pkgdir}/var/lib/murmur    
