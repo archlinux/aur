@@ -2,14 +2,14 @@
 pkgname=etcher
 realver=1.0.0-beta.19
 pkgver=${realver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Burn images to SD cards & USB drives, safe & easy"
 arch=('i686' 'x86_64')
 url="http://www.etcher.io/"
 license=('apache')
 depends=('gtk2' 'dbus' 'libxi' 'libxcursor' 'libxdamage' 'libxrandr'
 	 'libxcomposite' 'libxext' 'libxfixes' 'libxrender' 'libxtst'
-	 'gconf' 'glib2' 'nss' 'xz')
+	 'gconf' 'glib2' 'nss' 'xz' 'fuse2')
 optdepends=('libnotify: for notifications'
 	    'speech-dispatcher: for text-to-speech')
 source=("etcher.in"
