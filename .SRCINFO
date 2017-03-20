@@ -1,6 +1,6 @@
 pkgbase = type_safe-git
 	pkgdesc = Zero overhead utilities for preventing bugs at compile time
-	pkgver = 0.1.r94.g1fd1130
+	pkgver = 0.1.r112.g92bb8b7
 	pkgrel = 1
 	url = https://github.com/foonathan/type_safe
 	arch = any
