@@ -2,7 +2,7 @@
 
 pkgname=editorconfig-core-c-git
 pkgver=0.12.1.r13.g1f2c30e
-pkgrel=1
+pkgrel=2
 pkgdesc="EditorConfig core library written in C (for use by plugins supporting EditorConfig parsing)"
 arch=('i686' 'x86_64')
 url="https://github.com/editorconfig/editorconfig-core-c"
@@ -39,4 +39,8 @@ package() {
 
   make DESTDIR="$pkgdir" install
   install -Dm644 "../LICENSE" "$pkgdir/usr/share/licenses/editorconfig-core-c/LICENSE"
+
+  # name clash with python-editorconfig
+  # https://bugs.archlinux.org/task/53365
+  rm "$pkgdir/usr/bin/editorconfig"
 }
