@@ -1,7 +1,7 @@
 pkgbase = polkit-elogind
 	pkgdesc = PolyciKit with elogind support for non-systemd systems
 	pkgver = 0.113+29+g3272a98
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.freedesktop.org/wiki/Software/polkit
 	install = polkit.install
 	arch = i686
