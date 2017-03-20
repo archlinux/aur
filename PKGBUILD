@@ -1,7 +1,7 @@
 # Maintainer: François Guerraz <kubrick@fgv6.net>
 pkgname=payetools-rti
 pkgver=16.1.16125.489
-pkgrel=2
+pkgrel=3
 pkgdesc="UK HMRC Basic PAYE Tools for Linux"
 arch=('x86_64')
 url="https://www.gov.uk/basic-paye-tools"
@@ -11,7 +11,7 @@ depends=('lib32-bzip2' 'lib32-e2fsprogs' 'lib32-fontconfig' 'lib32-freetype2'
 	'lib32-gcc-libs' 'lib32-glib2' 'lib32-glibc' 'lib32-harfbuzz' 'lib32-keyutils'
 	'lib32-krb5' 'lib32-libffi' 'lib32-libice' 'lib32-libpng' 'lib32-libsm'
 	'lib32-libx11' 'lib32-libxau' 'lib32-libxcb' 'lib32-libxdmcp' 'lib32-libxext'
-	'lib32-libxrender' 'lib32-pcre' 'lib32-readline' 'lib32-libpng12')
+	'lib32-libxrender' 'lib32-pcre' 'lib32-readline' 'lib32-libpng12' 'lib32-sqlite' )
 makedepends=('unzip' 'lib32-fakeroot')
 optdepends=()
 provides=()
