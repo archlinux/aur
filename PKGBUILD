@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=quickbms
-pkgver=0.7.7
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Files extractor and reimporter, archives and file formats parser, advanced tool for reversers and power users and much more."
 url="http://aluigi.altervista.org/quickbms.htm"
@@ -10,11 +10,8 @@ license=('GPL2')
 depends=('lzo' 'bzip2' 'zlib' 'openssl')
 depends_x86_64=('lib32-lzo' 'lib32-bzip2' 'lib32-zlib' 'lib32-openssl' 'lib32-gcc-libs')
 makedepends_x86_64=('gcc-multilib')
-provides=('quickbms')
-conflicts=('quickbms')
-# options='!emptydirs'
 source=("quickbms_${pkgver}.zip::http://aluigi.altervista.org/papers/quickbms_src.zip")
-sha512sums=('bec711aa7e189fc2e9bf09ed005a406cc8f698176c7018b03086c0eacccd85a03c4715264f93d6b0ae49b646d1a839ee2674dc3b99f48a259472e61788044f11')
+sha512sums=('b2f686faf335d3df3a46cb9e04c7067eaae0ce7bbb66e464744d8b74d61ca180cffe19b90ac39882aff90b112ded18b9cab2da592de90f634da6bfa9be8a0ea9')
 
 build() {
   cd $srcdir/src
@@ -22,7 +19,8 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/src/quickbms" "$pkgdir/usr/bin/quickbms"
+  cd $srcdir/src
+  make PREFIX=$pkgdir/usr install
 }
 
 # vim:set ts=2 sw=2 et:
