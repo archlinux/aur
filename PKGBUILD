@@ -35,6 +35,7 @@ sha256sums=('8800cf8bc259704a12ad1853fb0eb43bfe3857af15242e6fb9f2c3fd95b3f5c6'
 prepare() {
 	cd "vte-${_vtever}"
 	patch -p1 -i '../gperf-fix.patch'
+
 	echo '-> Making the patch-sets compatible'
 	sed -r -e 's/(\-\s*gpointer padding\[)16/\115/g' \
     	-e 's/(\+\s*gpointer padding\[)15/\114/g' \
@@ -61,8 +62,8 @@ build() {
 
 package_vte3-tilix(){
 	depends=('gtk3' 'vte-tilix-common')
-	provides=("vte3=${_vtever}" "vte3-notification=${_vtever}-2")
-	conflicts=('vte3' 'vte3-notification')
+	provides=("vte3=${_vtever}" "vte3-notification=${_vtever}-2" 'vte3-terminix-git')
+	conflicts=('vte3' 'vte3-notification' 'vte3-terminix-git')
 	cd "vte-${_vtever}"
 	make DESTDIR="${pkgdir}" install
 
@@ -72,8 +73,8 @@ package_vte3-tilix(){
 package_vte-tilix-common() {
 	pkgdesc='Common files used by vte and vte3'
 	arch=('any')
-	provides=("vte-common=${_vtever}" "vte-notification-common=${_vtever}-2")
-	conflicts=('vte-common' 'vte-notification-common')
+	provides=("vte-common=${_vtever}" "vte-notification-common=${_vtever}-2" 'vte-terminix-common-git')
+	conflicts=('vte-common' 'vte-notification-common' 'vte3-terminix-common-git')
 	cd "vte-${_vtever}"
 
 	install -Dm644 'src/vte.sh' "${pkgdir}/etc/profile.d/vte.sh"
