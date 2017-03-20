@@ -3,7 +3,7 @@
 _name=azure-cli-nspkg
 pkgname=python-$_name
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Azure CLI Namespace Package"
 arch=('any')
 url="https://github.com/Azure/azure-cli"
@@ -20,4 +20,6 @@ build() {
 package() {
   cd "$_name-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
+  rm "$pkgdir"/usr/lib/python3.?/site-packages/azure/__init__.py
+  rm "$pkgdir"/usr/lib/python3.?/site-packages/azure/__pycache__/__init__.*
 }
