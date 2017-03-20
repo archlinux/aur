@@ -1,0 +1,15 @@
+pkgbase = python-azure-cli-profile
+	pkgdesc = Microsoft Azure Command-Line Tools Profile Command Module
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/Azure/azure-cli
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-adal
+	depends = python-azure-cli-core
+	source = https://files.pythonhosted.org/packages/source/a/azure-cli-profile/azure-cli-profile-2.0.1.tar.gz
+	md5sums = 1325a99735dc38b30cb12309b3351c36
+
+pkgname = python-azure-cli-profile
+
