@@ -1,5 +1,5 @@
 pkgname=dpdk
-pkgver=16.07
+pkgver=17.02
 pkgrel=1
 pkgdesc='A set of libraries and drivers for fast packet processing'
 arch=(x86_64 i686)
@@ -10,7 +10,7 @@ depends=()
 makedepends=(linux-headers libpcap)
 checkdepends=()
 source=(http://fast.dpdk.org/rel/dpdk-$pkgver.tar.xz)
-sha1sums=('d78ef2b9ccafdd4f2c7987f6108b0e728724d1e6')
+sha1sums=('77c52b8c071e0ae86c40bcbd6d1e0cf185937f6c')
 
 prepare() {
   cd dpdk-$pkgver
