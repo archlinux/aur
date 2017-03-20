@@ -4,17 +4,17 @@
 
 pkgname=okular
 pkgver=16.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Document Viewer'
 arch=(i686 x86_64)
 url="https://kde.org/applications/graphics/okular/"
 license=(GPL LGPL FDL)
 groups=(kde-applications kdegraphics)
-depends=(chmlib djvulibre libspectre libkexiv2 poppler-qt5 qca-qt5 kpty kactivities threadweaver)
-makedepends=(extra-cmake-modules ebook-tools kdegraphics-mobipocket kdoctools khtml python)
+depends=(djvulibre libspectre libkexiv2 poppler-qt5 qca-qt5 kpty kactivities threadweaver kjs kparts)
+makedepends=(extra-cmake-modules ebook-tools kdegraphics-mobipocket kdoctools khtml python chmlib)
 optdepends=('ebook-tools: mobi and epub support'
             'kdegraphics-mobipocket: mobi support'
-            'khtml: CHM support')
+            'khtml: CHM support' 'chmlib: CHM support')
 conflicts=(kdegraphics-okular)
 replaces=(kdegraphics-okular)
 source=("https://download.kde.org/stable/applications/${pkgver}/src/okular-${pkgver}.tar.xz"{,.sig})
