@@ -1,0 +1,36 @@
+pkgbase = keepassx-dark-git
+	pkgdesc = It is an OpenSource password safe which helps you to manage your passwords in an easy and secure way
+	pkgver = 2.0.3.r78.g2448ea9
+	pkgrel = 1
+	url = https://github.com/keepassx/keepassx
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = intltool
+	makedepends = cmake
+	makedepends = qt5-base
+	makedepends = qt5-tools
+	makedepends = zlib
+	makedepends = libgcrypt
+	depends = libxtst
+	depends = shared-mime-info
+	depends = qt5-x11extras
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	provides = keepassx=2.0.3.r78.g2448ea9
+	provides = keepassx2=2.0.3.r78.g2448ea9
+	provides = keepassx-svn=2.0.3.r78.g2448ea9
+	provides = keepassx2-git=2.0.3.r78.g2448ea9
+	conflicts = keepassx-git
+	conflicts = keepassx-svn
+	conflicts = keepassx2-git
+	conflicts = keepassx
+	conflicts = keepassx2
+	conflicts = keepassx2-yubikey-git
+	options = !emptydirs
+	source = keepassx-dark::git+https://github.com/suratovvlad/keepassx.git
+	md5sums = SKIP
+
+pkgname = keepassx-dark-git
+
