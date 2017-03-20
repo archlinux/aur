@@ -1,5 +1,5 @@
 pkgbase = otf-overpass
-	pkgdesc = An open source font family inspired by Highway Gothic. (sans-serif, OTF format)
+	pkgdesc = An open source font family inspired by Highway Gothic. (sans-serif, monospace, OTF format)
 	pkgver = 3.0.2
 	pkgrel = 1
 	url = http://overpassfont.org
