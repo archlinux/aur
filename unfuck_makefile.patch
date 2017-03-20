@@ -1,7 +1,7 @@
---- a/linux64/makefile	2014-05-29 22:35:16.000000000 -0400
-+++ b/linux64/makefile	2014-10-09 05:42:54.648403900 -0400
-@@ -13,13 +13,13 @@
- #	LIBS = ../gwnum/gwnum.a ../gwnum/gwnum.ld -lm -lpthread -Wl,-Bstatic $(shell pkg-config --static --libs libcurl) -lstdc++ -Wl,-Bdynamic -ldl
+--- a/linux64/makefile	2017-03-18 21:18:04.000000000 -0400
++++ b/linux64/makefile	2017-03-20 09:38:23.273509623 -0400
+@@ -21,13 +21,13 @@
+ #	LIBS = ../gwnum/gwnum.a ../gwnum/gwnum.ld -lm -lpthread -Wl,-Bstatic $(shell pkg-config --static --libs libhwloc) -Wl,-Bstatic $(shell pkg-config --static --libs libcurl) -lstdc++ -Wl,-Bdynamic -ldl
  
  CC = gcc
 -CFLAGS = -I.. -I../gwnum -I/usr/local/include -DX86_64 -O2 
@@ -12,8 +12,8 @@
 +CPPFLAGS = -I.. -I../gwnum -march=x86-64 -O2
  
  LFLAGS = -Wl,-M -Wl,-L/usr/local/lib
--LIBS = ../gwnum/gwnum.a ../gwnum/gwnum.ld -lm -lpthread -Wl,-Bstatic -lcurl -Wl,-Bdynamic -lrt -lstdc++ -ldl
-+LIBS = ../gwnum/gwnum.a ../gwnum/gwnum.ld -lm -lpthread $(shell pkg-config --libs libcurl) -lstdc++
+-LIBS = ../gwnum/gwnum.a ../gwnum/gwnum.ld -lm -lpthread -Wl,-Bstatic -lhwloc -Wl,-Bstatic -lcurl -Wl,-Bdynamic -lrt -lstdc++ -lz -lxml2 -ldl
++LIBS = ../gwnum/gwnum.a ../gwnum/gwnum.ld -lm -lpthread $(shell pkg-config --libs libcurl) -lstdc++ $(shell pkg-config --static --libs hwloc)
  
  FACTOROBJ = factor64.o
  LINUXOBJS = prime.o menu.o
