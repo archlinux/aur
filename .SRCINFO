@@ -1,6 +1,6 @@
 pkgbase = sofia-sip-bc
 	pkgdesc = An open-source SIP User-Agent library
-	pkgver = 1.13.11bc
+	pkgver = 1.13.12bc
 	pkgrel = 1
 	url = http://sofia-sip.sourceforge.net
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = sofia-sip-bc
 	provides = sofia-sip
 	conflicts = sofia-sip
 	options = zipman
-	source = https://github.com/BelledonneCommunications/sofia-sip/archive/1.13.11bc.tar.gz
-	md5sums = 5a79be2baa08944da0eff6c759821e96
+	source = git+https://github.com/BelledonneCommunications/sofia-sip.git#commit=6c9540d48
+	sha256sums = SKIP
 
 pkgname = sofia-sip-bc
 
