@@ -1,0 +1,14 @@
+pkgbase = timertab
+	pkgdesc = An easy way to manage your Systemd Timers.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/amlamarra/timertab
+	arch = any
+	license = GPL
+	depends = bash
+	depends = systemd
+	source = timertab
+	sha256sums = b3009daa73d1d21fb8a42f2335dcc1f0ec106f86461c6915f8fe4ba563f7f90a
+
+pkgname = timertab
+
