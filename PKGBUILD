@@ -3,14 +3,14 @@
 
 pkgname=piplib-git
 pkgver=1.4.0.r39.77aca10
-pkgrel=1
+pkgrel=2
 pkgdesc="Parametric Integer Programming Library"
 arch=(x86_64)
 url="http://www.piplib.org/"
 license=('LGPL')
 depends=("gmp")
 makedepends=("git")
-provides=("piplip")
+provides=("piplib")
 conflicts=("piplib")
 source=(${pkgname}::git+https://github.com/periscop/piplib.git)
 md5sums=('SKIP')
