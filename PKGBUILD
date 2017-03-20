@@ -69,4 +69,8 @@ package() {
   install -m755 -d "$pkgdir/etc/default"
   install -o http -Dm640 "$srcdir/movim.env" "$pkgdir/etc/default/$_pkgbase"
   install -Dm644 "$srcdir/movim.service" "$pkgdir/usr/lib/systemd/system/movim.service"
+
+  # Easy access to mud.php
+  install -d "$pkgdir/usr/bin"
+  ln -s "/usr/share/webapps/$_pkgbase/mud.php" "$pkgdir/usr/bin/mud"
 }
