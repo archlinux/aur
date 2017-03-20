@@ -1,0 +1,21 @@
+pkgbase = texstudio-dark-git
+	pkgdesc = Integrated writing environment for creating LaTeX documents. Dark version.
+	pkgver = 2.12.2.r0.g2fc8075
+	pkgrel = 1
+	url = http://texstudio.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-tools
+	depends = poppler-qt5
+	depends = qt5-svg
+	depends = qt5-script
+	depends = libxkbcommon-x11
+	optdepends = evince: pdf reader
+	optdepends = okular: alternate pdf reader
+	conflicts = texstudio
+	source = texstudio-dark::git+https://github.com/suratovvlad/texstudio_dark.git
+	sha512sums = SKIP
+
+pkgname = texstudio-dark-git
+
