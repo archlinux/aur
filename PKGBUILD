@@ -18,7 +18,7 @@
 pkgbase=kodi-git
 pkgname=('kodi-git' 'kodi-eventclients-git' 'kodi-tools-texturepacker-git' 'kodi-dev-git')
 _gitname='xbmc'
-pkgver=20170304.2bbf02ddfaf
+pkgver=20170319.ff33fc014a3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
@@ -31,12 +31,14 @@ makedepends=(
   'libvdpau' 'libxrandr' 'libxslt' 'lzo' 'nasm' 'nss-mdns' 'python2-pillow'
   'python2-pybluez' 'python2-simplejson' 'rtmpdump'
   'shairplay' 'smbclient' 'swig' 'taglib' 'tinyxml' 'unzip' 'upower' 'yajl' 'zip'
-  'mesa' 'libcrossguid-git'
+  'mesa' 'libcrossguid-git' 'libfmt-git'
 )
 source=(
   "$_gitname::git://github.com/xbmc/xbmc.git"
+  '0001-fmt-does-not-have-sprintf.patch'
 )
-sha256sums=('SKIP')
+sha512sums=('SKIP'
+            '0275bd3bc9c9c5edc09878364c2acc5271cad4a5598462d29b7e4e62584e469ce6501c6fe416df0374a23cbde20f6877306f7cfc72f4f51152da145c3941fdea')
 
 pkgver() {
   cd "$srcdir/$_gitname"
@@ -47,15 +49,16 @@ prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
   mkdir kodi-build
   cd $_gitname
+  patch -p1 -i "$srcdir/0001-fmt-does-not-have-sprintf.patch"
 }
 
 build() {
-  cd kodi-build
+  cd "$_gitname"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DENABLE_EVENTCLIENTS=ON \
     -DLIRC_DEVICE=/run/lirc/lircd \
-    ../$_gitname/
+    .
   make VERBOSE=1
   make preinstall
 }
@@ -102,7 +105,7 @@ package_kodi-git() {
     'kodi-bin'
   )
 
-  cd kodi-build
+  cd "$_gitname"
   # install eventclients
   for _cmp in ${_components[@]}; do
     DESTDIR="$pkgdir" /usr/bin/cmake \
@@ -138,7 +141,7 @@ package_kodi-eventclients-git() {
     'kodi-eventclients-xbmc-send'
   )
 
-  cd kodi-build
+  cd "$_gitname"
   # install eventclients
   for _cmp in ${_components[@]}; do
     DESTDIR="$pkgdir" /usr/bin/cmake \
@@ -162,7 +165,7 @@ package_kodi-tools-texturepacker-git() {
     'kodi-tools-texturepacker'
   )
 
-  cd kodi-build
+  cd "$_gitname"
   # install eventclients
   for _cmp in ${_components[@]}; do
     DESTDIR="$pkgdir" /usr/bin/cmake \
@@ -190,7 +193,7 @@ package_kodi-dev-git() {
     'kodi-visualization-dev'
   )
 
-  cd kodi-build
+  cd "$_gitname"
   # install eventclients
   for _cmp in ${_components[@]}; do
     DESTDIR="$pkgdir" /usr/bin/cmake \
