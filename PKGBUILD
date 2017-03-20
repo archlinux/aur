@@ -29,5 +29,5 @@ package() {
   cd "$srcdir"
   find . -name '*.jar' -exec install -Dm644 {} "$pkgdir/srv/craftbukkit/plugins/"{} \;
   chown -R craftbukkit:craftbukkit $pkgdir/srv/craftbukkit/plugins/
-  chmod 775 $pkgdir/srv/craftbukkit/plugins/*.jar
+  chmod 664 $pkgdir/srv/craftbukkit/plugins/*.jar
 }
