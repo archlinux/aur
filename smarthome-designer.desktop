@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Eclipse SmartHome Designer
+Comment=A development IDE for Eclipse SmartHome
+Icon=/usr/lib/smarthome-designer/smarthome-designer.png
+Exec=smarthome-designer
+Terminal=false
+Type=Application
+Categories=Development;IDE;SmartHome;
+StartupNotify=true

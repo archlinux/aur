@@ -1,0 +1,24 @@
+pkgbase = smarthome-designer
+	pkgdesc = A flecible framework for the smart home - Eclipse based Designer
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://www.eclipse.org/smarthome/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = tar
+	depends = java-runtime
+	optdepends = webkitgtk2: internal browser support
+	optdepends = chromium: internal browser support
+	noextract = linux-x86_64.zip
+	source = smarthome-designer.desktop
+	source = smarthome-designer.png
+	md5sums = f59cd7e26ac83e2222afbe8f2094f63a
+	md5sums = dba65c384f5aba124447a9522abc747e
+	source_i686 = linux-i686.zip::https://eclipse.org/downloads/download.php?file=/smarthome/releases/0.8.0/eclipsesmarthome-incubation-0.8.0-designer-linux.zip&r=1
+	md5sums_i686 = 2307a53b203d473c62b26e93d58b0259
+	source_x86_64 = linux-x86_64.zip::https://eclipse.org/downloads/download.php?file=/smarthome/releases/0.8.0/eclipsesmarthome-incubation-0.8.0-designer-linux64.zip&r=1
+	md5sums_x86_64 = 134f59ac9056d8de10f1701fb44ad791
+
+pkgname = smarthome-designer
+
