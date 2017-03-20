@@ -18,8 +18,10 @@ md5sums=('31234b3d3cfb6a8cf324eaaf1499e757'
 else
   _arch=i686
 fi
+_ver=${pkgver//_/-}
+_ver=${_ver//+/%2B}
 install='zotero-beta.install'
-source=("https://download.zotero.org/standalone/beta/${pkgver//_/-}/Zotero-${pkgver//_/-}_linux-${_arch}.tar.bz2"
+source=("https://download.zotero.org/standalone/beta/${_ver}/Zotero-${_ver}_linux-${_arch}.tar.bz2"
         "zotero-beta.desktop")
 
 package() {
