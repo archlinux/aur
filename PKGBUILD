@@ -55,7 +55,7 @@ _pkgver=4.9.13
 _rtver=12
 _rtpatchver=rt${_rtver}
 pkgver=${_pkgver}.${_rtver}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -83,11 +83,12 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # the main kernel config files
         'config' 'config.x86_64'
          # pacman hook for initramfs regeneration
-        '99-linux.hook'
+        '90-linux.hook'
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
         '0005-BFQ-update-to-v8r8.patch'
+        '0006-BFQ-bugfix.patch'
         '0001-tty-n_hdlc-get-rid-of-racy-n_hdlc_tbuf.patch')
         
 _kernelname=${pkgbase#linux}
@@ -120,7 +121,7 @@ prepare() {
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
-        for p in "${srcdir}"/000{1,2,3,4,5}-*BFQ*.patch; do
+        for p in "${srcdir}"/000{1,2,3,4,5,6}-*BFQ*.patch; do
         msg " $p"
         patch -Np1 -i "$p"
         done
@@ -277,8 +278,8 @@ _package() {
     install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
     # install pacman hook for initramfs regeneration
-    sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
-    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
+    sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/90-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 
     # remove build and source links
     rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
@@ -472,7 +473,7 @@ sha512sums=('bf67ff812cc3cb7e5059e82cc5db0d9a7c5637f7ed9a42e4730c715bf7047c81ed3
             '953566f2b74415cd5113882352c8518234c399e0e0a6cc118ddfa259c65d6fc30de00f25b605489d53e0b1f948bc7b3ebf8f20b970538f5bf7de5a7f33a0f641'
             '8fed8499a52d685e81a1cffac7e6764a3720a923c3a3e4ccec33a4b0145dc84c24172363ff5574608d80c10462a4e824ef1b5ad3e5e5187f816e16adab774700'
             '93338e0ae23d2832e4dc75b1b4dc6d2ba34d621a71c7951f1e70ddd483d091211b2aa429683b21a7f9cf2152e2d974b6a1a8cc7b0d6549a7f639870b07f5295e'
-            'ab781ca0315316043d2074ad925288616ff4935e0c91b09090cd2a2cc392845eddf1c93b5dadda0eb434050459b51a4e2587e5099e6a9204d0d13b7f427d399c'
+            '77d80d50d8c4323ed36fd2097ba9f6b49bb8d7cae59d32ffa76b309758a7e9f972d26fedd77046d88ce2691bb01a07909f8bdc34ba214414be3bc030ee31994d'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749'
             'e7c8fd3dd50272518323ac5f27e7e911e8138dbe1268865b5cc343e1c84d531e91d3581cd11df9513952d02e213e916d0c28ecd19acf2660519fc040dfaabb94'
@@ -480,6 +481,7 @@ sha512sums=('bf67ff812cc3cb7e5059e82cc5db0d9a7c5637f7ed9a42e4730c715bf7047c81ed3
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             'dab3dba300e276dd552cb86c903af5cac9f7c7954b938ac9c300745a175198c553d84cd3a5e58c350d83160f33b07f6dd20a570da4afdce178464c402ac7829b'
+            '2fbe9ddf40a64f9b80ab3b4868e358ea678b4122742884b7c484041a913757627d1c6b0ee6e2ef46fe90d82e7e29e6332d3b6155d56355d274fdf551f8a8ef70'
             '397fc751697cc4e2ceb7e6d854f5e7fc115ed8511df406ffe5d8f80afeec385ba64cd28c4666bb206612fdcd7a578b60ca6ff125c2138c615aee6135d86b0197')
 
 validpgpkeys=(
