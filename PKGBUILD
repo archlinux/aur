@@ -2,7 +2,7 @@
 # PGP ID: 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
 
 pkgname=arduino-avr-core
-pkgver=1.6.17
+pkgver=1.6.18
 pkgrel=1
 pkgdesc="Arduino AVR core with upstream avr-gcc and avrdude"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('avrdude' 'avr-gcc' 'avr-libc')
 options=(!strip !emptydirs)
 source=("https://downloads.arduino.cc/cores/avr-${pkgver}.tar.bz2"
         "platform.patch")
-sha512sums=('0dbf8f348270485259f86a00a9d7f429eb999d0064b4f99e95e2d64c1c0eae55a198f631e28bc3cf227db01e3dd6ea894c08e88fff2f0cb946684dde1f15d0f1'
+sha512sums=('a1f238655d228767ff3635f743105d24df9614bfd67c733ad584f982366182884fce8afec96ce1525f9db36f15e5a857e4f9af089ae9c73a326b09bc3502062f'
             '306c121028a6e82f1b4e8a801776af14519741b1a657c23f755ad1e1b4c3b50db1e64b512c7e476f74f9331a2fbc31035134609e6af28b1beb4a75db5154b611')
 
 prepare()
