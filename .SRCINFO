@@ -1,0 +1,13 @@
+pkgbase = libsoc-git
+	pkgdesc = libsoc is a C library to interface with common peripherals found in System on Chips (SoC) through generic Linux Kernel interfaces.
+	pkgver = 0.8.2.r17.g5b788d4
+	pkgrel = 1
+	url = https://github.com/jackmitch/libsoc
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = autoconf
+	source = git://github.com/jackmitch/libsoc.git
+	sha256sums = SKIP
+
+pkgname = libsoc-git
