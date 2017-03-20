@@ -8,7 +8,13 @@ pkgdesc="Microsoft Azure Command-Line Tools"
 arch=('any')
 url="https://github.com/Azure/azure-cli"
 license=('MIT')
-depends=('python-azure-cli-core')
+depends=('python-azure-cli-acs' 'python-azure-cli-appservice' 'python-azure-cli-batch'
+         'python-azure-cli-cloud' 'python-azure-cli-component' 'python-azure-cli-configure'
+         'python-azure-cli-container' 'python-azure-cli-documentdb' 'python-azure-cli-find'
+         'python-azure-cli-iot' 'python-azure-cli-keyvault' 'python-azure-cli-network'
+         'python-azure-cli-profile' 'python-azure-cli-redis' 'python-azure-cli-resource'
+         'python-azure-cli-role' 'python-azure-cli-sql' 'python-azure-cli-storage'
+         'python-azure-cli-vm')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 md5sums=('f1eb3c2a9f6ac008d2741c6e37b066c4')
