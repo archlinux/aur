@@ -4,5 +4,5 @@
  Documentation=man:clamav-unofficial-sigs(8)
  
  [Service]
--ExecStart=/usr/local/bin/clamav-unofficial-sigs.sh
+-ExecStart=/usr/local/sbin/clamav-unofficial-sigs.sh
 +ExecStart=/usr/bin/clamav-unofficial-sigs.sh
