@@ -1,0 +1,46 @@
+pkgbase = linux-cubei7
+	pkgver = 4.10.4
+	pkgrel = 1
+	url = https://www.kernel.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.10.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.10.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.10.4.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.10.4.sign
+	source = config.x86_64
+	source = 99-linux.hook
+	source = linux-cubei7.preset
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = 3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b
+	sha256sums = SKIP
+	sha256sums = 68e935fbe1c3faaf186824a44b79a26f1ab85f04a1dade2e5bce5f8c2941624d
+	sha256sums = SKIP
+	sha256sums = abd262121944785cb9a2fab979cecff552304488b40079319bfe6c429293e671
+	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+
+pkgname = linux-cubei7
+	pkgdesc = The Linux-cubei7 kernel and modules
+	install = linux-cubei7.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-cubei7.preset
+
+pkgname = linux-cubei7-headers
+	pkgdesc = Header files and scripts for building modules for Linux-cubei7 kernel
+
+pkgname = linux-cubei7-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-cubei7 kernel
+
