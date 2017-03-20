@@ -5,7 +5,7 @@
 _ver=1.17
 _pkgbase=atril
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=5
 pkgdesc="MATE document viewer"
 url="http://mate-desktop.org"
@@ -25,7 +25,7 @@ optdepends=('caja: Document Properties extension'
             'yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('8c36867a654056b9cf122988f8fe859e76d0648f')
+sha1sums=('189a0808ff41016a0bf3860a20ee6a6a109dd2da')
 
 prepare() {
     cd "${srcdir}"
