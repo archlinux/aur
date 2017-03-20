@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 240297 2015-06-03 10:22:03Z fyan $
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: David P. <megver83@openmailbox.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=qt5-base
@@ -7,7 +7,7 @@ _pkgname=qt5-base
 pkgname=qt5-base-nosystemd
 _qtver=5.8.0
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
