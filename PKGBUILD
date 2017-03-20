@@ -12,7 +12,7 @@ pkgdesc="An open-source 2D game engine which uses the versatile Lua scripting la
 arch=('i686' 'x86_64')
 url="http://love2d.org/"
 license=('zlib')
-depends=('desktop-file-utils' 'devil' 'freetype2' 'hicolor-icon-theme' 'libmodplug' 'libvorbis' 'luajit' 'mpg123' 'openal' 'physfs' 'sdl' 'shared-mime-info' 'glu')
+depends=('desktop-file-utils' 'devil' 'freetype2' 'hicolor-icon-theme' 'libmodplug' 'libvorbis' 'luajit' 'mpg123' 'openal' 'physfs' 'sdl' 'shared-mime-info' 'libgl')
 install=$pkgname.install
 source=("https://bitbucket.org/rude/love/downloads/love-${pkgver}-linux-src.tar.gz"
         "https://bitbucket.org/rude/love/raw/$pkgver/license.txt"
