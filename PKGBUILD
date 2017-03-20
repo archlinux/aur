@@ -1,9 +1,9 @@
-# Maintainer: Arthur Zamarin <arthurzam@gmail.com> 
+# Maintainer: Arthur Zamarin <arthurzam@gmail.com>
 
 _pkgname=psmoveapi
 pkgname=${_pkgname}-git
 pkgver=4.0.1.r14.g1eb4525
-pkgrel=1
+pkgrel=2
 pkgdesc="Playstation Move Motion Controller API"
 arch=(i686 x86_64)
 url="http://thp.io/2010/psmove/"
@@ -50,6 +50,7 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="$pkgdir" install
+  install -D -m644 psmove_config.h "${pkgdir}"/usr/include/psmoveapi/
   install -D -m644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
