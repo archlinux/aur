@@ -1,11 +1,12 @@
 pkgbase = pivx
 	pkgdesc = Transactional security and privacy-focused decentralized open source cryptocurrency
 	pkgver = 2.1.6
-	pkgrel = 2
+	pkgrel = 4
 	url = https://pivx.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = boost
 	makedepends = qt5-base
 	makedepends = miniupnpc
 	makedepends = openssl
