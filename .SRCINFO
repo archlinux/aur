@@ -1,28 +1,40 @@
 pkgbase = elogind
-	pkgdesc = The systemd project's logind, extracted to a standalone package for use on systems without systemd installed
-	pkgver = 219.14
-	pkgrel = 1
-	url = https://github.com/wingo/elogind
-	install = elogind.install
+	pkgdesc = The systemd project's logind, extracted to a standalone package
+	pkgver = 226
+	pkgrel = 5
+	url = https://github.com/elogind/elogind
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = libcap
 	makedepends = intltool
 	makedepends = libtool
 	makedepends = gperf
 	makedepends = gtk-doc
-	depends = dbus
-	depends = polkit
-	depends = libudev.so
+	makedepends = dbus-x11
+	makedepends = git
+	makedepends = libcap
 	options = !libtool
-	backup = etc/elogind/logind.conf
-	source = https://wingolog.org/pub/elogind/elogind-219.14.tar.xz
+	source = elogind-b486765f115ebbae41117ea493c748491872c4e0.tar.gz::https://github.com/elogind/elogind/archive/b486765f115ebbae41117ea493c748491872c4e0.tar.gz
 	source = elogind-docs.patch
-	source = elogind-lrt.patch
-	sha256sums = 9dc150071a3f4c1ad1c989a7a143c2d41a2d571c643b92090e36a5d0396193c9
-	sha256sums = cafea7a13159dee700902e3837aab015d9521dfe122840faf2d909b5dc02229e
-	sha256sums = a9227ed4e97117ab5751de38c19813560a12f51379ccd882a89e7ef9842659ac
+	sha256sums = a0270a1c97d485347be9a91d9e116c5d7c895222f5c57dab62cd528e38468113
+	sha256sums = 25643e563250b0d322f817288cbe999f1cc2e4804c875725bb92fe5094a902b4
 
 pkgname = elogind
+	pkgdesc = The systemd project's logind, extracted to a standalone package
+	install = elogind.install
+	depends = libelogind
+	depends = pam
+	depends = acl
+	depends = dbus-x11
+	optdepends = elogind-openrc: elogind initscript
+	optdepends = dbus-openrc: dbus initscript
+	provides = elogind=226
+	conflicts = systemd-sysvcompat
+	conflicts = consolekit
+
+pkgname = libelogind
+	pkgdesc = elogind client libraries
+	depends = libcap
+	provides = libelogind.so
+	provides = libelogind=226
 

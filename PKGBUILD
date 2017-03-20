@@ -1,46 +1,74 @@
-# Maintainer: Chris Cromer <chris@cromer.cl>
-# Contributor: artoo <artoo@manjaro.org>
+# Maintainer: artoo <artoo@manjaro.org>
 
-pkgname=elogind
-pkgver=219.14
-pkgrel=1
-pkgdesc="The systemd project's logind, extracted to a standalone package for use on systems without systemd installed"
+_pkgname=elogind
+_commit=b486765f115ebbae41117ea493c748491872c4e0
+
+pkgbase=elogind
+pkgname=('elogind' 'libelogind')
+pkgver=226
+pkgrel=5
+pkgdesc="The systemd project's logind, extracted to a standalone package"
 arch=('i686' 'x86_64')
-url="https://github.com/wingo/elogind"
+url="https://github.com/elogind/elogind"
 license=('GPL')
-depends=('dbus' 'polkit' 'libudev.so')
-makedepends=('libcap' 'intltool' 'libtool' 'gperf' 'gtk-doc')
+makedepends=('intltool' 'libtool' 'gperf' 'gtk-doc' 'dbus-x11' 'git' 'libcap')
 options=('!libtool')
-install=elogind.install
-backup=('etc/elogind/logind.conf')
-source=("https://wingolog.org/pub/elogind/$pkgname-$pkgver.tar.xz"
-	'elogind-docs.patch'
-	'elogind-lrt.patch')
-sha256sums=('9dc150071a3f4c1ad1c989a7a143c2d41a2d571c643b92090e36a5d0396193c9'
-            'cafea7a13159dee700902e3837aab015d9521dfe122840faf2d909b5dc02229e'
-            'a9227ed4e97117ab5751de38c19813560a12f51379ccd882a89e7ef9842659ac')
+source=("elogind-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz"
+        "elogind-docs.patch")
+sha256sums=('a0270a1c97d485347be9a91d9e116c5d7c895222f5c57dab62cd528e38468113'
+            '25643e563250b0d322f817288cbe999f1cc2e4804c875725bb92fe5094a902b4')
 
 prepare() {
-	cd $srcdir/$pkgname-$pkgver
-	patch -Np 1 -i $srcdir/elogind-docs.patch
-	patch -Np 1 -i $srcdir/elogind-lrt.patch
-	sed -e "s|/bin/false|/usr/lib/elogind/elogind|" \
-		-i src/login/org.freedesktop.login1.service
-	autoreconf -vim
+    cd ${_pkgname}-${_commit}
+    patch -Np 1 -i ${srcdir}/elogind-docs.patch
+    autoreconf -vim
 }
 
 build() {
-	cd $srcdir/${pkgname}-${pkgver}
-	intltoolize
-	./configure \
-		--sysconfdir=/etc \
-		--prefix=/usr \
-		--libexecdir=/usr/lib
+    cd ${_pkgname}-${_commit}
+    intltoolize
+    ./configure \
+        --sysconfdir=/etc \
+        --prefix=/usr \
+        --libdir=/usr/lib \
+        --libexecdir=/usr/lib \
+        --enable-split-usr \
+        --disable-smack \
+        --enable-acl \
+        --enable-pam \
+        --disable-kdbus
 
-	make
+    make
 }
 
-package() {
-	cd $srcdir/${pkgname}-${pkgver}
-	make DESTDIR="${pkgdir}" install
+package_elogind() {
+    pkgdesc="The systemd project's logind, extracted to a standalone package"
+    provides=("elogind=${pkgver}")
+    depends=('libelogind' 'pam' 'acl' 'dbus-x11')
+    conflicts=('systemd-sysvcompat' 'consolekit')
+    # replaces=('consolekit')
+    optdepends=('elogind-openrc: elogind initscript'
+                'dbus-openrc: dbus initscript')
+                #'polkit-elogind: polkit with elogind session tracking')
+    install=elogind.install
+
+    cd ${_pkgname}-${_commit}
+    make DESTDIR="${pkgdir}" install
+
+    mkdir ${srcdir}/_libelogind
+    mv -v ${pkgdir}/usr/lib/pkgconfig ${srcdir}/_libelogind
+	mv -v ${pkgdir}/usr/include/ ${srcdir}/_libelogind
+	mv -v ${pkgdir}/usr/lib/libelogind*.so* ${srcdir}/_libelogind
+}
+
+package_libelogind(){
+    pkgdesc="elogind client libraries"
+    provides=('libelogind.so' "libelogind=${pkgver}")
+    depends=('libcap')
+
+    cd ${_pkgname}-${_commit}
+    install -dm755 ${pkgdir}/usr/lib
+    mv ${srcdir}/_libelogind/include ${pkgdir}/usr
+    mv ${srcdir}/_libelogind/pkgconfig ${pkgdir}/usr/lib
+    mv ${srcdir}/_libelogind/libelogind*.so* ${pkgdir}/usr/lib
 }
