@@ -28,6 +28,10 @@ source=("git://github.com/spencerharmon/MFM"
         "git://github.com/spencerharmon/ULAM")
 noextract=()
 md5sums=('SKIP' 'SKIP')
+pkgver(){
+	cd $pkgdir/ULAM
+	git describe --long | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
 	make -C MFM
