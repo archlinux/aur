@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=polychromatic
-pkgver=0.3.7
+pkgver=0.3.7.1
 pkgrel=1
 pkgdesc='A graphical front end for managing Razer peripherals under GNU/Linux.'
 arch=('any')
@@ -10,17 +10,17 @@ source=("$pkgname-v$pkgver.tar.gz::https://github.com/lah7/polychromatic/archive
 url='https://github.com/lah7/polychromatic'
 makedepends=('rsync')
 depends=('python' 'hicolor-icon-theme' 'python-razer' 'webkit2gtk' 'libappindicator-gtk3')
-sha512sums=('872ba2cf11ac35b7a1e0a19c18dd0d71bf43764a2b649f7a130c36d7a3ec1efb7365652c9c5f3925c063aadd54dc6a381b33fa7c93a38ee91367e3a0aa08362b')
+sha512sums=('985430cbc71550d9389119819e600d2d8c69308b1cd10e44c0a06752095a5db4797082c30ca7efb627ff4f130d65dd610a819aa8c0c36b9065fc991fff036e70')
 
 package() {  
   _pythondir=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
 
-  cd $srcdir/polychromatic-$pkgver
+  cd $srcdir/$pkgname-$pkgver
 
   mkdir -p $pkgdir/etc/xdg/autostart
   mkdir -p $pkgdir/usr/bin
   mkdir -p $pkgdir/usr/share/polychromatic
-  mkdir -p $pkgdir/usr/share/icons/hicolor/scalable/apps
+  mkdir -p $pkgdir/usr/share/icons/hicolor
   mkdir -p $pkgdir/usr/share/locale
   mkdir -p $pkgdir/usr/share/applications
   mkdir -p $pkgdir/$_pythondir/polychromatic
@@ -39,7 +39,7 @@ package() {
   cp -r pylib/* $pkgdir/$_pythondir/polychromatic
 
   # Copy icons
-  cp install/hicolor/scalable/apps/polychromatic.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/polychromatic.svg
+  cp -r install/hicolor/* $pkgdir/usr/share/icons/hicolor/
 
   # Copy locales
   rsync -rlpt --exclude="polychromatic-controller.pot" --exclude="polychromatic-tray-applet.pot" --exclude=*.po "locale/" $pkgdir/usr/share/locale
