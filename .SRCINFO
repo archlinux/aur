@@ -1,0 +1,19 @@
+pkgbase = proot-git
+	pkgdesc = chroot, mount --bind, and binfmt_misc without privilege/setup
+	pkgver = r1008.cffb379
+	pkgrel = 1
+	url = http://proot.me
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python-docutils
+	makedepends = libxslt
+	depends = talloc
+	provides = proot
+	conflicts = proot
+	conflicts = proot-bin
+	source = git+https://github.com/proot-me/PRoot.git
+	sha1sums = SKIP
+
+pkgname = proot-git
+
