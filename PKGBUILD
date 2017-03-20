@@ -1,22 +1,22 @@
 # Contributor: Star Brilliant <echo bTEzMjUzQGhvdG1haWwuY29tCg== | base64 -d>
+# Maintainer: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgbase=realvnc-vnc
 pkgname=('realvnc-vnc-viewer' 'realvnc-vnc-server')
-pkgver=6.0.1
+pkgver=6.0.2
 pkgrel=1
 pkgdesc='VNC remote desktop software by RealVNC'
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'armv7h')
 url='https://www.realvnc.com/'
 license=('custom')
 depends=('glibc' 'gcc-libs' 'libice' 'libsm' 'libx11' 'libxext')
 conflicts=('tightvnc' 'tigervnc' 'turbovnc')
 source_x86_64=("VNC-${pkgver}-Linux-x64-DEB.tar.gz::https://www.realvnc.com/download/file/vnc.files/VNC-${pkgver}-Linux-x64-DEB.tar.gz")
 source_i686=("VNC-${pkgver}-Linux-x86-DEB.tar.gz::https://www.realvnc.com/download/file/vnc.files/VNC-${pkgver}-Linux-x86-DEB.tar.gz")
-# The ARM version is not updated to 6.x yet
-#source_armv7h=("VNC-${pkgver}-Linux-ARM-DEB.tar.gz::https://www.realvnc.com/download/file/vnc.files/VNC-${pkgver}-Linux-ARM-DEB.tar.gz")
-sha1sums_x86_64=('b5607b157088ddf76b91c24e2fa9ec289561ae5c')
-sha1sums_i686=('3e830f192f66921e76e1ef81a44c533c7d414908')
-#sha1sums_armv7h=('cb91d82b31a2416b2964e9546d67c540f63e0603')
+source_armv7h=("VNC-${pkgver}-Linux-ARM-DEB.tar.gz::https://www.realvnc.com/download/file/vnc.files/VNC-${pkgver}-Linux-ARM-DEB.tar.gz")
+md5sums_x86_64=('3865e6489553c7abba9ce681ccb74ed4')
+md5sums_i686=('35b539168d8389a309068ac1b284d0f7')
+md5sums_armv7h=('ccdf2d01d158dc482f06cc024a059620')
 options=(!strip)
 
 build() {
