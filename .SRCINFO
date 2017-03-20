@@ -1,0 +1,15 @@
+pkgbase = python-azure-cli-role
+	pkgdesc = Microsoft Azure Command-Line Tools Role Command Module
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Azure/azure-cli
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-azure
+	depends = python-azure-cli-core
+	source = https://files.pythonhosted.org/packages/source/a/azure-cli-role/azure-cli-role-2.0.0.tar.gz
+	md5sums = 9710304492cb739c1f0c65befc4689f4
+
+pkgname = python-azure-cli-role
+
