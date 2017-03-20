@@ -1,8 +1,9 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: Earnest <zibeon@gmail.com>
 # Contributor: Eugeni Dodonov <eugeni@dodonov.net>
+# Contributor: Tom Vincent <aur@tlvince.com>
 pkgname=powerstat-git
-pkgver=0.01.09.r123.g9d6e69d
+pkgver=0.02.11.r4.g5bd6c38
 pkgrel=1
 
 pkgdesc='A tool for measuring a laptops power usage via the battery.'
@@ -22,7 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/powerstat"
-    git describe | sed 's/^V//; s/-/.r/; s/-/./'
+    git describe --long --tags | sed 's/^V//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
