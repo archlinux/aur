@@ -1,7 +1,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-covolunablu-gaming       # Build kernel with a different name
 _srcname=linux-4.10
-pkgver=4.10.3
+pkgver=4.10.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -22,7 +22,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
-        '99-linux.hook'
+        '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.10.0-v8r8/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.10..patch'
@@ -33,7 +33,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
             'SKIP'
-            '17459007bae81a8cda00f0ce74dfbc70c1afc5b99133649e664045e34c5d63b5'
+            '68e935fbe1c3faaf186824a44b79a26f1ab85f04a1dade2e5bce5f8c2941624d'
             'SKIP'
             '3a2a5d314a2a2135d2e87aa8e6b44ac142fa249cc5f51f43a918393e6ce3d5a5'
             'b2df79d0c15cb1f364164299102f2a33470e58a2e01fb092144e6288726d0188'
@@ -72,11 +72,7 @@ prepare() {
   cp "${srcdir}/xpad.c" ./drivers/input/joystick/xpad.c
 
 
-  if [ "${CARCH}" = "x86_64" ]; then
-    cat "${srcdir}/config.x86_64" > ./.config
-  else
-    cat "${srcdir}/config.i686" > ./.config
-  fi
+  cat "${srcdir}/config.${CARCH}" > ./.config
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
@@ -141,8 +137,8 @@ _package() {
     install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
   # install pacman hook for initramfs regeneration
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
-    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/90-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
