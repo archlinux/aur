@@ -1,0 +1,76 @@
+From 622a34887a1221dd194adb739710fa4ae42dcb12 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 12 Mar 2017 00:51:33 -0500
+Subject: [PATCH] Revert "Use new libtorrent 1.1.2+ utility function to
+ generate client ID instead."
+
+This reverts commit afe930cbeec5a1f8a397baf322eda9a8c4b58c80.
+---
+ src/base/bittorrent/session.cpp | 37 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 37 insertions(+)
+
+diff --git a/src/base/bittorrent/session.cpp b/src/base/bittorrent/session.cpp
+index 2497ef2a6..bfc719768 100644
+--- a/src/base/bittorrent/session.cpp
++++ b/src/base/bittorrent/session.cpp
+@@ -44,6 +44,9 @@
+ #include <QTimer>
+ 
+ #include <cstdlib>
++#if LIBTORRENT_VERSION_NUM >= 10100 && LIBTORRENT_VERSION_NUM < 10102
++#include <sstream>
++#endif
+ #include <queue>
+ #include <vector>
+ 
+@@ -194,6 +197,36 @@ namespace
+ 
+     template <typename T>
+     LowerLimited<T> lowerLimited(T limit, T ret) { return LowerLimited<T>(limit, ret); }
++
++#if LIBTORRENT_VERSION_NUM >= 10100 && LIBTORRENT_VERSION_NUM < 10102
++    std::string makeFingerprint(const char* peerId, int major, int minor, int revision, int tag)
++    {
++        Q_ASSERT(peerId);
++        Q_ASSERT(major >= 0);
++        Q_ASSERT(minor >= 0);
++        Q_ASSERT(revision >= 0);
++        Q_ASSERT(tag >= 0);
++        Q_ASSERT(std::strlen(peerId) == 2);
++
++        auto versionToChar = [](int v) -> char
++        {
++            if (v >= 0 && v < 10) return static_cast<char>('0' + v);
++            if (v >= 10) return static_cast<char>('A' + (v - 10));
++            Q_ASSERT(false);
++            return '0';
++        };
++
++        std::ostringstream buf;
++        buf << '-'
++            << peerId
++            << versionToChar(major)
++            << versionToChar(minor)
++            << versionToChar(revision)
++            << versionToChar(tag)
++            << '-';
++        return buf.str();
++    }
++#endif
+ }
+ 
+ // Session
+@@ -340,7 +373,11 @@ Session::Session(QObject *parent)
+         dispatchAlerts(alertPtr.release());
+     });
+ #else
++#if LIBTORRENT_VERSION_NUM < 10102
++    std::string peerId = makeFingerprint(PEER_ID, QBT_VERSION_MAJOR, QBT_VERSION_MINOR, QBT_VERSION_BUGFIX, QBT_VERSION_BUILD);
++#else
+     std::string peerId = libt::generate_fingerprint(PEER_ID, QBT_VERSION_MAJOR, QBT_VERSION_MINOR, QBT_VERSION_BUGFIX, QBT_VERSION_BUILD);
++#endif
+     libt::settings_pack pack;
+     pack.set_int(libt::settings_pack::alert_mask, alertMask);
+     pack.set_str(libt::settings_pack::peer_fingerprint, peerId);
+-- 
+2.12.0
