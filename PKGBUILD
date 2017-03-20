@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview
-_majordotminor=5.2
+_majordotminor=5.3
 pkgver=${_majordotminor}.0
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
@@ -9,26 +9,21 @@ license=('custom')
 depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-boost' 'mingw-w64-glew' 'mingw-w64-expat'  'mingw-w64-freetype2'  'mingw-w64-libjpeg'  'mingw-w64-libxml2' 'mingw-w64-libtheora' 'mingw-w64-libpng' 'mingw-w64-libtiff' 'mingw-w64-zlib' 'mingw-w64-jsoncpp' 'mingw-w64-pugixml' 'mingw-w64-hdf5' 'mingw-w64-lz4')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("http://paraview.org/files/v${_majordotminor}/ParaView-v${pkgver}.tar.gz"
-        'vtk_hdf5_internal.patch' 332e61a.patch 6541e9c.patch)
-sha1sums=('c578cdad44673cd3311bd5c5fec52075ea923701'
-          'cbadaa87cd775d1edb1dbc1db4dedb9f3cdc4fd5' SKIP SKIP)
+source=("http://paraview.org/files/v${_majordotminor}/ParaView-v${pkgver}.tar.gz")
+sha1sums=('c8a31039b189e63b20618bbfa91e89555ce62b6d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/ParaView-v${pkgver}"
 
-  patch -p1 -i ../vtk_hdf5_internal.patch
-
   # disable all plugins ~ -DPARAVIEW_BUILD_PLUGIN_XXX
   sed -i "s|if (PARAVIEW_BUILD_PLUGIN|if(OFF|g" CMake/ParaViewPluginsMacros.cmake
 
-  pushd VTK && patch -p1 -i "${srcdir}"/332e61a.patch && popd
-  pushd VTK && patch -p1 -i "${srcdir}"/6541e9c.patch && popd
-
   # https://gitlab.kitware.com/paraview/paraview/merge_requests/1434
   sed -i "s|#include <Windows.h>|#include <windows.h>|g" ParaViewCore/ServerManager/SMApplication/vtkInitializationHelper.cxx
+
+  sed -i "s|#include <Windows.h>|#include <windows.h>|g" Qt/Core/pqObjectBuilder.cxx
 
   # https://gitlab.kitware.com/paraview/paraview/merge_requests/1436
   echo "target_link_libraries(paraview LINK_PRIVATE msvcr90)" >> Applications/ParaView/CMakeLists.txt
