@@ -1,7 +1,7 @@
 # Contributor: Vjacheslav Gaevskih <feanor1397@gmail.com>
 
 pkgname=gspectran-git
-pkgver=0.1.0.alpha.0.ccda918
+pkgver=0.1.g4115535
 pkgrel=1
 pkgdesc="Gtk+ audio visualizer for pulseaudio. (Git Version)"
 arch=('x86_64' 'i686')
@@ -9,7 +9,8 @@ url='https://github.com/Feanor1397/gspectran'
 license=('GPLv3')
 depends=('libpulse'
          'fftw'
-         'cairo'
+         'cairomm'
+         'gtkmm3'
          )
 makedepends=('git'
              'cmake'
