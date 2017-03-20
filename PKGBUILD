@@ -6,7 +6,7 @@
 _use_zeroc_ice="0"
 
 pkgname=murmur-git
-pkgver=1.2.5.980.ga59e166
+pkgver=1.2.5.2194.ge414bd3b
 pkgrel=1
 pkgdesc="The voice chat application server for Mumble (git version)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -18,7 +18,7 @@ if [[ ${_use_zeroc_ice} == "1" ]]; then
     depends=( "${depends[@]}" zeroc-ice )
 fi
 
-makedepends=('git' 'boost')
+makedepends=('git' 'boost' 'python')
 conflicts=('murmur' 'murmur-static' 'murmur-ice')
 provides=('murmur')
 backup=("etc/murmur.ini")
