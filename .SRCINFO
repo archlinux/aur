@@ -1,0 +1,15 @@
+pkgbase = python2-msrest
+	pkgdesc = The runtime library for AutoRest generated Python clients.
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://github.com/Azure/msrest-for-python
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-isodate
+	depends = python2-requests-oauthlib
+	source = https://github.com/Azure/msrest-for-python/archive/v0.4.6.tar.gz
+	md5sums = 5b8872e572a81bac7bb78aecd6b96297
+
+pkgname = python2-msrest
+
