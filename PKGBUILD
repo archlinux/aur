@@ -3,11 +3,11 @@
 
 pkgname=osl
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenScop Library"
 arch=(x86_64)
 url="http://icps.u-strasbg.fr/people/bastoul/public_html/development/openscop/index.html"
-license=('LGPL')
+license=('BSD')
 depends=("gmp")
 provides=("osl")
 source=(http://icps.u-strasbg.fr/people/bastoul/public_html/development/openscop/docs/${pkgname}-${pkgver}.tar.gz)
@@ -31,4 +31,5 @@ check() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}/" install
+  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
