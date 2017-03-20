@@ -1,0 +1,12 @@
+pkgbase = ttf-contemporary
+	pkgdesc = Contemporary Typeface
+	pkgver = 1.0
+	pkgrel = 0
+	url = http://vicr123.github.io/contemporary
+	arch = any
+	license = custom:OFL
+	source = ttf-contemporary-1.0::https://vicr123.github.io/typeface/contemporary.zip
+	sha256sums = SKIP
+
+pkgname = ttf-contemporary
+
