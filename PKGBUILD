@@ -5,7 +5,7 @@
 _ver=1.17
 _pkgbase=pluma
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.3
+pkgver=${_ver}.4
 pkgrel=5
 pkgdesc="A powerful text editor for MATE (GTK3 version)"
 url="http://mate-desktop.org"
@@ -19,7 +19,7 @@ makedepends=('mate-common-dev' 'yelp-tools' 'gtksourceview3' 'mate-desktop-dev')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('446692469d2700225838f2ee38cc727705de7f99')
+sha1sums=('064df84f207b1658ede3dfa1cd4adb0519fbf251')
 
 prepare() {
     cd "${srcdir}"
