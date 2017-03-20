@@ -1,0 +1,21 @@
+--- a/services/sddm.pam	2015-08-17 18:06:19.000000000 +0200
++++ b/services/sddm.pam	2016-02-21 19:54:08.654091951 +0100
+@@ -4,3 +4,8 @@
+ account		include		system-login
+ password	include		system-login
+ session		include		system-login
++-auth		optional	pam_gnome_keyring.so
++-auth		optional	pam_kwallet5.so
++-password	optional	pam_gnome_keyring.so use_authtok
++-session	optional	pam_gnome_keyring.so auto_start
++-session	optional	pam_kwallet5.so auto_start
+diff --git a/services/sddm-autologin.pam b/services/sddm-autologin.pam
+index 4c82048..3b48708 100755
+--- a/services/sddm-autologin.pam
++++ b/services/sddm-autologin.pam
+@@ -9,3 +9,5 @@
+ password    include     system-local-login
+ session     include     system-local-login
+ -session    optional    pam_gnome_keyring.so auto_start
++-auth       optional    pam_kwallet5.so
++-session    optional    pam_kwallet5.so auto_start

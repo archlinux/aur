@@ -1,0 +1,36 @@
+pkgbase = sddm-elogind
+	pkgdesc = QML based X11 display manager
+	pkgver = 0.14.0
+	pkgrel = 5
+	url = http://github.com/sddm/sddm
+	install = sddm.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = python-docutils
+	makedepends = qt5-tools
+	depends = qt5-declarative
+	depends = elogind
+	depends = upower-nosystemd
+	depends = qt5-base-nosystemd
+	optdepends = displaymanager-openrc: displaymanager initscript
+	provides = display-manager
+	provides = sddm
+	conflicts = display-manager
+	conflicts = sddm
+	conflicts = sddm-consolekit
+	backup = usr/share/sddm/scripts/Xsetup
+	backup = etc/pam.d/sddm
+	backup = etc/sddm.conf
+	source = sddm-0.14.0.tar.gz::https://github.com/sddm/sddm/archive/v0.14.0.tar.gz
+	source = sddm-fix-avatars.patch::https://github.com/sddm/sddm/commit/ecb903e4.patch
+	source = sddm-pam.patch
+	source = sddm-enable-elogind.patch
+	sha256sums = a551551a6ba324e9c384c89bc63e871de65fea3740eadbea2d63df86045f8205
+	sha256sums = b091f02d6d5b2ddc9d5208b17213a181c6e8deae23e5633d694119e79b66d38b
+	sha256sums = 151b9b4a16b919a4f3a6564b2cd794effdc07773c47f2d6b860bbd467c3e4798
+	sha256sums = cff3f483415c95784d6b9977c31b89fac734d0d74facc4ac042ed8de970d5007
+
+pkgname = sddm-elogind
+
