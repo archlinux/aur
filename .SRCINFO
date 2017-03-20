@@ -1,0 +1,31 @@
+pkgbase = handshake-cracker
+	pkgdesc = Handshake capture with aircrack-ng, test with pyrit, crack with john the ripper using self-builted wordlists.
+	pkgver = 9.d3a0e42
+	pkgrel = 1
+	url = https://github.com/semeion/handshake-cracker
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = aircrack-ng
+	depends = pyrit
+	depends = scapy
+	depends = mdk3
+	depends = xterm
+	depends = ncurses
+	depends = psmisc
+	depends = gawk
+	depends = coreutils
+	depends = glibc
+	depends = sed
+	depends = gzip
+	depends = bzip2
+	depends = unzip
+	depends = wget
+	depends = sudo
+	depends = less
+	depends = john
+	source = git+https://github.com/semeion/handshake-cracker.git
+	sha256sums = SKIP
+
+pkgname = handshake-cracker
+
