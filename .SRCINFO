@@ -3,6 +3,7 @@ pkgbase = openuru-moss
 	pkgver = r41+.3e78d60a5282+
 	pkgrel = 1
 	url = openuru.org
+	install = openuru-moss.install
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -14,11 +15,15 @@ pkgbase = openuru-moss
 	source = openuru-moss::hg+http://foundry.openuru.org/hg/MOSS
 	source = include_unistd.patch
 	source = moss.service
-	source = moss_backend.service
+	source = moss-backend.service
+	source = backend.cfg.patch
+	source = main.cfg.patch
 	md5sums = SKIP
 	md5sums = 923b06d8c25265679bd35e532118f2ff
-	md5sums = d526247b757050c81679b9a7c5a6fae9
-	md5sums = fceb9167b73375048e95f55458388d47
+	md5sums = b3ad8841685bb3ee6b34cfb3ed0a1c30
+	md5sums = 65834289d108b7f87d1c9e2339be6ca7
+	md5sums = 36d6ab8ca9bfec4d401bae097e0fd9f4
+	md5sums = 112eed405369c984349bf78d47500227
 
 pkgname = openuru-moss
 

@@ -7,6 +7,8 @@ Before=moss.service
 [Service]
 Type=forking
 ExecStart=/usr/bin/moss_backend -c /etc/moss/moss_backend.cfg
+PIDFile=/var/run/moss_backend.pid
+User=moss
 
 [Install]
 WantedBy=multi-user.target

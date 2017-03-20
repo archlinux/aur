@@ -1,0 +1,11 @@
+--- openuru-moss/backend.cfg	2017-02-15 12:49:39.154087650 -0500
++++ openuru-moss/backend.cfg.foo	2017-03-10 12:54:01.781243858 -0500
+@@ -19,7 +19,7 @@
+ # log level (default is "NET")
+ # log levels: MSGS, DEBUG, NET, WARN, INFO, ERR
+ 
+-#log_dir = log
++log_dir = /var/log/moss
+ #log_level = NET
+ 
+ # the file to put the PID into (default is /var/run/moss_backend.pid)

@@ -11,14 +11,20 @@ depends=('libpqxx'
 makedepends=('mercurial')
 backup=('etc/moss/moss.cfg'
         'etc/moss/moss_backend.cfg')
+install=openuru-moss.install
 source=("$pkgname::hg+http://foundry.openuru.org/hg/MOSS"
         "include_unistd.patch"
         "moss.service"
-        "moss_backend.service")
+        "moss-backend.service"
+        "backend.cfg.patch"
+        "main.cfg.patch")
+
 md5sums=('SKIP'
          '923b06d8c25265679bd35e532118f2ff'
-         'd526247b757050c81679b9a7c5a6fae9'
-         'fceb9167b73375048e95f55458388d47')
+         'b3ad8841685bb3ee6b34cfb3ed0a1c30'
+         '65834289d108b7f87d1c9e2339be6ca7'
+         '36d6ab8ca9bfec4d401bae097e0fd9f4'
+         '112eed405369c984349bf78d47500227')
 
 prepare() {
     cd "$srcdir"
@@ -35,9 +41,14 @@ build() {
 }
 
 package() {
+    mkdir -p $pkgdir/var/log/moss
+
 	cd "$srcdir"
-    install -Dm644 moss.service $pkgdir/usr/lib/systemd/user/moss.service
-    install -Dm644 moss_backend.service $pkgdir/usr/lib/systemd/user/moss_backend.service
+	patch -p0 -i "backend.cfg.patch"
+	patch -p0 -i "main.cfg.patch"
+    install -Dm644 moss.service $pkgdir/usr/lib/systemd/system/moss.service
+    install -Dm644 moss-backend.service $pkgdir/usr/lib/systemd/system/moss-backend.service
+
     cd "$pkgname"
 	make DESTDIR="$pkgdir/" install
     install -Dm644 main.cfg $pkgdir/etc/moss/moss.cfg
