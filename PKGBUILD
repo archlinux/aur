@@ -4,11 +4,12 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=('python-gitpython' 'python2-gitpython')
 pkgver=2.1.3
-pkgrel=8
+pkgrel=9
 pkgdesc="Python Git Library"
 arch=('i686' 'x86_64')
 url="https://pypi.python.org/pypi/GitPython"
 license=('BSD')
+makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
 _pkgname=GitPython
 _pkgname2=gitpython
 provides=("python-gitpython")
@@ -25,7 +26,6 @@ sha512sums=('918ff1765a85a818619165c2bcbb0d417f35c979c2f42f1bb7e41636696c0cb4d68
 
 package_python-gitpython() {
 	depends=('python' 'python-gitdb2')
-	makedepends=('python' 'python-setuptools')
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	python3 setup.py install --root="${pkgdir}" --optimize=1
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -33,7 +33,6 @@ package_python-gitpython() {
 
 package_python2-gitpython() {
 	depends=('python2' 'python2-gitdb2')
-	makedepends=('python2' 'python2-setuptools')
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	python2 setup.py install --root="${pkgdir}" --optimize=1
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
