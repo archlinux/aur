@@ -4,12 +4,13 @@
 pkgname=tsc
 pkgver=2.0.0
 _ver=$pkgver  # $_ver was used for beta, let's keep it for a while
-pkgrel=1
+pkgrel=2
 pkgdesc="Jump'n'run game with editor and scripting facilities, fork of SMC"
 arch=('i686' 'x86_64')
 url="http://www.secretchronicles.de/en/"
 license=('GPL3')
-depends=("sdl_image" "sdl_ttf" "sdl_mixer" "devil" "boost-libs" "libxml++" "glew" "pcre" "gtk-update-icon-cache" "desktop-file-utils")
+depends=("sdl_image" "sdl_ttf" "sdl_mixer" "devil" "boost-libs" "libxml++2.6"
+         "glew" "pcre" "gtk-update-icon-cache" "desktop-file-utils")
 makedepends=("cmake" "ruby" "gperf" "pkg-config" "bison" "boost" "gettext")
 source=("ftp://ftp.secretchronicles.de/releases/TSC-$_ver.tar.xz"
         'tsc-2.0.0-mga-mandir.patch'
