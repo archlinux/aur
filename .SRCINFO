@@ -1,4 +1,4 @@
-pkgbase = i3scrot
+pkgbase = i3scrot-git
 	pkgdesc = Shell script for using scrot in i3
 	pkgver = 1.0
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = i3scrot
 	validpgpkeys = 120206848BD3375043BF1B253209FA22E33FF70C
 	md5sums = SKIP
 
-pkgname = i3scrot
+pkgname = i3scrot-git
 
