@@ -1,3 +1,13 @@
+##################################################################################################
+# This package will be discontinued by the maintainer after Firefox 52 ESR's EOL.                #
+# If you wish to continue maintainence of this package, please contact the maintainer.           #
+# This release also marks the switchup to the ESR release branch.                                #
+#                                                                                                #
+# Any questions or feedback can be directed to the comments section of this package on the AUR.  #
+#                                                                                                #
+##################################################################################################
+
+
 # Maintainer: Xavier <sapphirus@azorium.net>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
@@ -6,13 +16,14 @@
 
 pkgname=firefox-unbranded
 _pkgname=firefox
-pkgver=52.0
+pkgver=52.0.1
+_suffix=esr
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Unbranded version"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.mozilla.org/firefox/"
-provides=('firefox=51')
+provides=('firefox=52')
 conflicts=('firefox')
 depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'ffmpeg' 'libvpx' 'libevent' 'nss' 'hunspell'
@@ -22,20 +33,29 @@ makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'upower: Battery API')
 options=('!emptydirs' '!makeflags')
-source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
+source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver$_suffix/source/firefox-$pkgver$_suffix.source.tar.xz
         mozconfig
         firefox.desktop
         firefox-install-dir.patch
         vendor.js)
-sha256sums=('494ec86875ea60043658e402b664ccd5af4709acc3a478de8729f7cbac9ea3c1'
+sha256sums=('b0298f01a8afdc769ba2a5d285e44bbb843306d07bac5a53bfcb9fa85032327f'
 	    '84efbf7d1495fd0c89f684d618abfe1eb190ee336c13aee51e9ab706c910127f'
             '9f39e9d891a48b49490df0823d67f01d8cf0b3e8c5910190739e94190f768e76'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '9015feb60a23af7a3ac06620dd5fa0fbc5d1f1eec6ed65c0e530a63b07f7a992')
 
 prepare() {
-  cd $_pkgname-$pkgver
-
+  cd $_pkgname-$pkgver$_suffix
+  echo ""
+  echo "##################################################################################################"
+  echo "# This package will be discontinued by the maintainer after Firefox 52 ESR's EOL.                #"
+  echo "# If you wish to continue maintainence of this package, please contact the maintainer.           #"
+  echo "# This release also marks the switchup to the ESR release branch.                                #"
+  echo "#                                                                                                #"
+  echo "# Any questions or feedback can be directed to the comments section of this package on the AUR.  #"
+  echo "#                                                                                                #"
+  echo "##################################################################################################"
+  echo ""
   cp ../mozconfig .mozconfig
   patch -Np1 -i ../firefox-install-dir.patch
 
@@ -44,7 +64,7 @@ prepare() {
 }
 
 build() {
-  cd $_pkgname-$pkgver
+  cd $_pkgname-$pkgver$_suffix
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
@@ -64,7 +84,7 @@ build() {
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd $_pkgname-$pkgver$_suffix
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
 
   install -Dm644 ../vendor.js "$pkgdir/usr/lib/firefox/browser/defaults/preferences/vendor.js"

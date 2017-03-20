@@ -1,6 +1,6 @@
 pkgbase = firefox-unbranded
 	pkgdesc = Standalone web browser from mozilla.org - Unbranded version
-	pkgver = 52.0
+	pkgver = 52.0.1
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = i686
@@ -39,16 +39,16 @@ pkgbase = firefox-unbranded
 	depends = icu
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = upower: Battery API
-	provides = firefox=51
+	provides = firefox=52
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
-	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/52.0/source/firefox-52.0.source.tar.xz
+	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/52.0.1esr/source/firefox-52.0.1esr.source.tar.xz
 	source = mozconfig
 	source = firefox.desktop
 	source = firefox-install-dir.patch
 	source = vendor.js
-	sha256sums = 494ec86875ea60043658e402b664ccd5af4709acc3a478de8729f7cbac9ea3c1
+	sha256sums = b0298f01a8afdc769ba2a5d285e44bbb843306d07bac5a53bfcb9fa85032327f
 	sha256sums = 84efbf7d1495fd0c89f684d618abfe1eb190ee336c13aee51e9ab706c910127f
 	sha256sums = 9f39e9d891a48b49490df0823d67f01d8cf0b3e8c5910190739e94190f768e76
 	sha256sums = d86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd
