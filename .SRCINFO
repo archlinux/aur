@@ -6,7 +6,7 @@ pkgbase = piplib
 	arch = x86_64
 	license = LGPL
 	depends = gmp
-	provides = piplip
+	provides = piplib
 	source = http://www.bastoul.net/cloog/pages/download/piplib-1.4.0.tar.gz
 	md5sums = f5d1c7d45c5c40c0d64fa7d6bb143740
 
