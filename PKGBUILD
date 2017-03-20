@@ -1,7 +1,7 @@
 # Maintainer: Spencer Harmon <spencer at rsitex dot com>
 
 pkgname="ulam-git"
-pkgver=2.0.13
+pkgver=2.0.13.r259.gdcf5ea4
 pkgrel=1
 epoch=
 pkgdesc="Github version of ulam compiler and MFM simulator"
@@ -29,7 +29,7 @@ source=("git://github.com/spencerharmon/MFM"
 noextract=()
 md5sums=('SKIP' 'SKIP')
 pkgver(){
-	cd $pkgdir/ULAM
+	cd $srcdir/ULAM
 	git describe --long | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
