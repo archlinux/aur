@@ -10,9 +10,11 @@ WPAConfigSection=(
     'eap=TTLS'
     'proto=WPA2'
     'phase2="auth=PAP"'
-    'anonymous_identity="anonymous@<UNIVERSITY>.<TLD>"' # ex: tu-dresden.de
-    'identity="<ID>@<UNIVERSITY>.<TLD>"' # ex: s4234381@tu-dresden.de
+    # Server identity
     'ca_cert="/etc/ssl/certs/ca-certificates.crt"'
     'domain_suffix_match="<UNIVERSITY>.<TLD>"'
+    # Client identity
+    'anonymous_identity="anonymous@<UNIVERSITY>.<TLD>"' # ex: tu-dresden.de
+    'identity="<ID>@<UNIVERSITY>.<TLD>"' # ex: s4234381@tu-dresden.de
     'password="<YOUR-SECRET>"'
 )
