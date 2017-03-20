@@ -1,7 +1,7 @@
 pkgbase = piplib-git
 	pkgdesc = Parametric Integer Programming Library
 	pkgver = 1.4.0.r39.77aca10
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.piplib.org/
 	arch = x86_64
 	license = LGPL

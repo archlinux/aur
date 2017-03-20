@@ -3,7 +3,7 @@
 
 pkgname=piplib-git
 pkgver=1.4.0.r39.77aca10
-pkgrel=2
+pkgrel=3
 pkgdesc="Parametric Integer Programming Library"
 arch=(x86_64)
 url="http://www.piplib.org/"
@@ -40,4 +40,9 @@ check() {
 package() {
   cd "${srcdir}/${pkgname}"
   make DESTDIR="${pkgdir}/" install
+  for lib in ${pkgdir}/usr/lib/libpiplib*.so*; do
+    lib=$(basename "${lib}")
+    old_name=$(echo "${lib}" | sed 's/_sp/32/;s/_dp/64/;s/_gmp/MP/')
+    ln -s "${lib}" "${pkgdir}/usr/lib/${old_name}"
+  done
 }
