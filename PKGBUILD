@@ -1,11 +1,11 @@
-# $Id$
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: David P. <megver83@openmailbox.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
 _pkgname=upower
 
 pkgname=upower-nosystemd
 pkgver=0.99.4+12+g402640b
-pkgrel=1
+pkgrel=2
 pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics"
 arch=('i686' 'x86_64')
 url="http://upower.freedesktop.org"
