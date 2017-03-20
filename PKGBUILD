@@ -14,9 +14,9 @@ depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
          'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
          'perl' 'perl-file-basedir' 'desktop-file-utils' 'hicolor-icon-theme'
          'gconf')
-optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
+optdepends=('kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
-            'kdeutils-kwalletmanager: for storing passwords in KWallet'
+            'kwalletmanager: for storing passwords in KWallet'
             'pepper-flash: for Pepper Flash plugin [AUR]')
 makedepends=('python3' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'git' 'quilt' 'clang' 'harfbuzz-icu' 'ffmpeg')
 provides=('chromium')
