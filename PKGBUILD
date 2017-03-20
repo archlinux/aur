@@ -7,8 +7,6 @@ arch=('any')
 url="https://github.com/amlamarra/timertab"
 license=('GPL')
 depends=('bash' 'systemd')
-#makedepends=('git')
-#source=("https://raw.githubusercontent.com/amlamarra/timertab/master/$pkgname")
 source=("timertab")
 sha256sums=('b3009daa73d1d21fb8a42f2335dcc1f0ec106f86461c6915f8fe4ba563f7f90a')
 
