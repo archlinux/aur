@@ -1,0 +1,16 @@
+pkgbase = python-azure-cli-keyvault
+	pkgdesc = Microsoft Azure Command-Line Tools Keyvault Command Module
+	pkgver = 0.1.1b6
+	pkgrel = 1
+	url = https://github.com/Azure/azure-cli
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-azure
+	depends = python-azure-cli-core
+	depends = python-pyopenssl
+	source = https://files.pythonhosted.org/packages/source/a/azure-cli-keyvault/azure-cli-keyvault-0.1.1b6.tar.gz
+	md5sums = 90271efae4c19ce243d225c37c9d5b82
+
+pkgname = python-azure-cli-keyvault
+
