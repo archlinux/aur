@@ -1,0 +1,115 @@
+# $Id: PKGBUILD 240297 2015-06-03 10:22:03Z fyan $
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+
+_pkgname=qt5-base
+
+pkgname=qt5-base-nosystemd
+_qtver=5.8.0
+pkgver=${_qtver/-/}
+pkgrel=2
+arch=('i686' 'x86_64')
+url='http://qt-project.org/'
+license=('GPL3' 'LGPL3' 'FDL' 'custom')
+pkgdesc='A cross-platform application and UI framework'
+provides=('qt5-base')
+depends=('libjpeg-turbo' 'xcb-util-keysyms' 'xcb-util-renderutil' 'libgl' 'fontconfig'
+         'xcb-util-wm' 'libxrender' 'libxi' 'sqlite' 'xcb-util-image' 'icu' 'tslib' 'libinput-nosystemd'
+         'libsm' 'libxkbcommon-x11' 'libproxy' 'libcups' 'openssl' 'dbus-elogind' 'libusb-nosystemd' 'libwacom-nosystemd')
+makedepends=('libfbclient' 'libmariadbclient' 'sqlite' 'unixodbc' 'postgresql-libs' 'alsa-lib' 'gst-plugins-base-libs' 
+            'gtk3' 'libpulse-nosystemd' 'cups-nosystemd' 'freetds')
+optdepends=('qt5-svg: to use SVG icon themes'
+            'postgresql-libs: PostgreSQL driver'
+            'libmariadbclient: MariaDB driver'
+            'unixodbc: ODBC driver'
+            'libfbclient: Firebird/iBase driver'
+            'freetds: MS SQL driver'
+            'gtk3: GTK platform plugin')
+conflicts=('qtchooser' 'qt5-base')
+# groups=('qt' 'qt5')
+_pkgfqn="${_pkgname/5-/}-opensource-src-${_qtver}"
+source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
+        qt5-base-journald.patch::"https://github.com/qt/qtbase/commit/0c8f3229.patch"
+        plasma-crash-1.patch::https://github.com/qt/qtbase/commit/3bd0fd8f.patch
+        plasma-crash-2.patch::https://github.com/qt/qtbase/commit/0874861b.patch
+        plasma-crash-3.patch::https://github.com/qt/qtbase/commit/baad82d2.patch)
+md5sums=('6e1f7f6fb6333eb66e563b175c4e87e9'
+         '160fde81fe882c4241f04634f53691ad'
+         '078d8a051c06abf28451fd2cdb7f19ce'
+         '92daaa3ebd7cf10ee725b963e44c95a7'
+         '76ab122615f1ba2d68c83477f82e389e')
+
+prepare() {
+  cd ${_pkgfqn}
+
+  # Build qmake using Arch {C,LD}FLAGS
+  # This also sets default {C,CXX,LD}FLAGS for projects built using qmake
+  sed -i -e "s|^\(QMAKE_CFLAGS_RELEASE.*\)|\1 ${CFLAGS}|" \
+    mkspecs/common/gcc-base.conf
+  sed -i -e "s|^\(QMAKE_LFLAGS_RELEASE.*\)|\1 ${LDFLAGS}|" \
+    mkspecs/common/g++-unix.conf
+
+  # Use python2 for Python 2.x
+  find . -name '*.py' -exec sed -i \
+    's|#![ ]*/usr/bin/python$|&2|;s|#![ ]*/usr/bin/env python$|&2|' {} +
+
+  # Fix logging to systemd journal
+  patch -p1 -i ../qt5-base-journald.patch
+
+  # Fix some Plasma taskbar crashes https://bugs.kde.org/show_bug.cgi?id=342763
+  patch -p1 -i ../plasma-crash-1.patch
+  patch -p1 -i ../plasma-crash-2.patch
+  patch -p1 -i ../plasma-crash-3.patch
+}
+
+build() {
+  cd ${_pkgfqn}
+
+  # FS#38796
+  [[ "${CARCH}" = "i686" ]] && SSE2="-no-sse2"
+
+  echo "INCLUDEPATH += /usr/include/openssl-1.0" >> src/network/network.pro
+  export OPENSSL_LIBS='-L/usr/lib/openssl-1.0 -lssl -lcrypto'
+
+  PYTHON=/usr/bin/python2 ./configure -confirm-license -opensource -v \
+    -prefix /usr \
+    -docdir /usr/share/doc/qt \
+    -headerdir /usr/include/qt \
+    -archdatadir /usr/lib/qt \
+    -datadir /usr/share/qt \
+    -sysconfdir /etc/xdg \
+    -examplesdir /usr/share/doc/qt/examples \
+    -plugin-sql-{psql,mysql,sqlite,odbc,ibase} \
+    -system-sqlite \
+    -openssl-linked \
+    -nomake examples \
+    -no-rpath \
+    -optimized-qmake \
+    -dbus-linked \
+    -system-harfbuzz \
+    -no-use-gold-linker \
+    -reduce-relocations ${SSE2}
+
+  make
+}
+
+package() {
+  cd ${_pkgfqn}
+  make INSTALL_ROOT="${pkgdir}" install
+
+  install -D -m644 LGPL_EXCEPTION.txt \
+    "${pkgdir}"/usr/share/licenses/${_pkgname}/LGPL_EXCEPTION.txt
+
+  # Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+  find "${pkgdir}/usr/lib" -type f -name '*.prl' \
+    -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+
+  # Fix wrong qmake path in pri file
+  sed -i "s|${srcdir}/${_pkgfqn}|/usr|" \
+    "${pkgdir}"/usr/lib/qt/mkspecs/modules/qt_lib_bootstrap_private.pri
+
+  # Symlinks for backwards compatibility
+  for b in "${pkgdir}"/usr/bin/*; do
+    ln -s /usr/bin/$(basename $b) "${pkgdir}"/usr/bin/$(basename $b)-qt5
+  done
+}
