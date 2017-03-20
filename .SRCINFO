@@ -1,0 +1,14 @@
+pkgbase = python-azure-cli-component
+	pkgdesc = Microsoft Azure Command-Line Tools Component Command Module
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Azure/azure-cli
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-azure-cli-core
+	source = https://files.pythonhosted.org/packages/source/a/azure-cli-component/azure-cli-component-2.0.0.tar.gz
+	md5sums = 70f11f2d846f4f9e0de4b8a884a50c88
+
+pkgname = python-azure-cli-component
+
