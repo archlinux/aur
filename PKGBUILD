@@ -1,8 +1,8 @@
 # Maintainer: Alexandre Pujol <alexandre@pujol.io>
 
 pkgname='pass-otp'
-pkgver=0.1.0
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='A pass extension for managing one-time-password (OTP) tokens.'
 arch=('any')
 url='https://github.com/tadfisher/pass-otp'
@@ -11,7 +11,7 @@ depends=('pass'
          'oath-toolkit')
 optdepends=('qrencode: for generating QR code images')
 source=(https://github.com/tadfisher/pass-otp/archive/v${pkgver}.tar.gz)
-sha512sums=('fd11baf5c41a3b7579e5f338345166f39d9fdef585d7b374f4879ac7ae5c5df68e9914fcc6ee34ca808036638f3d693d05dff7abef411a93222d9d9453aad88b')
+sha512sums=('44f7ec9eb7ca8c5d153fd520fe55c6304bad59e208f56c84b73afbea7cec04d057d267373504786665cd77c5958a48b57938c8b3641de0b0e7f255f6afa81590')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/"
