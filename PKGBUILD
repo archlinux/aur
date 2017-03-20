@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=flexisip
 pkgver=1.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose SIP proxy with media capabilities"
 arch=('i686' 'x86_64')
 url="http://flexisip.org"
