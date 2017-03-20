@@ -1,6 +1,6 @@
 pkgbase = zotero-beta
 	pkgdesc = Zotero Standalone. A free, easy-to-use tool to help you collect, organize, cite, and share your research sources.
-	pkgver = 5.0_beta.168%2Bdd921f3
+	pkgver = 5.0_beta.168+dd921f3
 	pkgrel = 1
 	url = http://www.zotero.org/download
 	install = zotero-beta.install
