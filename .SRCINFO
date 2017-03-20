@@ -1,0 +1,14 @@
+pkgbase = plymouth-openrc-plugin
+	pkgdesc = Plymouth plugin for OpenRC
+	pkgver = 0.1.2
+	pkgrel = 2
+	url = https://github.com/Megver83/plymouth-openrc-plugin
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = GPL2
+	source = git+https://github.com/Megver83/plymouth-openrc-plugin.git
+	md5sums = SKIP
+
+pkgname = plymouth-openrc-plugin
+
