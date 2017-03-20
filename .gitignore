@@ -3,3 +3,5 @@ pkg
 src
 *tar.xz
 *tar.gz
+*.tpl
+*.py
