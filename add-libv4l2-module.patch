@@ -1,0 +1,24 @@
+diff --git a/examples/c/distance_calibration.c b/examples/c/distance_calibration.c
+index 14f8189..3c209c5 100644
+--- a/examples/c/distance_calibration.c
++++ b/examples/c/distance_calibration.c
+@@ -34,6 +34,7 @@
+ 
+ #include "opencv2/core/core_c.h"
+ #include "opencv2/highgui/highgui_c.h"
++#include "opencv2/imgcodecs/imgcodecs_c.h"
+ 
+ #include "psmove.h"
+ #include "psmove_tracker.h"
+diff --git a/src/tracker/camera_control_private.h b/src/tracker/camera_control_private.h
+index a4842b1..86aa8b7 100644
+--- a/src/tracker/camera_control_private.h
++++ b/src/tracker/camera_control_private.h
+@@ -33,6 +33,7 @@
+ #include "opencv2/core/core_c.h"
+ #include "opencv2/highgui/highgui_c.h"
+ #include "opencv2/imgproc/imgproc_c.h"
++#include "opencv2/videoio/videoio_c.h"
+ 
+ #if defined(WIN32)
+ #    include <windows.h>
