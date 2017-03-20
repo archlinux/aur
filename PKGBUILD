@@ -1,11 +1,12 @@
-# Maintainer: artoo <artoo@manjaro.org>
+# Maintainer: David P. <megver83@openmailbox.org>
+# Contributor: artoo <artoo@manjaro.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 _pkgname=sddm
 
 pkgname=sddm-elogind
 pkgver=0.14.0
-pkgrel=5
+pkgrel=6
 pkgdesc='QML based X11 display manager'
 arch=('i686' 'x86_64')
 url='http://github.com/sddm/sddm'

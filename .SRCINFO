@@ -1,7 +1,7 @@
 pkgbase = sddm-elogind
 	pkgdesc = QML based X11 display manager
 	pkgver = 0.14.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://github.com/sddm/sddm
 	install = sddm.install
 	arch = i686
