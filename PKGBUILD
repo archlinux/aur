@@ -1,3 +1,4 @@
+# Maintainer: David P. <megver83@openmailbox.org>
 
 pkgname=pm-quirks
 _date=20100619
