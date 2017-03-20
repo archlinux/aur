@@ -1,52 +1,43 @@
 pkgname="tor-browser-es"
 
 pre_install() {
-  echo
-  echo "==> Si deseas verificar la firma GPG, primero debes importar la clave pública"
-  echo "==> correspondiente (se encuentra en https://www.torproject.org/docs/signing-keys.html)."
-  echo "==> Elige la clave que firma el Tor Browser, y utiliza el siguiente comando:"
-  echo "==> "
-  echo "==> $ gpg --recv-keys <keyid>"
-  echo "==> "
-  echo "==> Comprueba que la «huella digital» sea correcta:"
-  echo "==> "
-  echo "==> $ gpg --fingerprint <keyid>"
-  echo "==> "
-  echo "==> Después, la verificación de la firma debería funcionar."
-  echo
+	echo
+	echo "==> If you want to verify the gnupg signature you have to"
+	echo "==> import the proper public key first (Found on https://www.torproject.org/docs/signing-keys.html.en)."
+	echo "==> Choose one and use the following command to import it:"
+	echo "==> "
+	echo "==> gpg --recv-keys <keyid>"
+	echo "==> "
+	echo "==> After that, signature verifying should work."
+	echo
 }
 
 post_install() {
-  echo
-  echo "==> ¡$pkgname se extraerá en tu directorio de inicio"
-  echo "==> la primera vez que ejecutes $pkgname como tu usuario normal!"
-  echo "==> Simplemente inícialo y diviértete."
-  echo
+	echo
+	echo "==> ${pkgname} will be extracted to ~/.$pkgname"
+	echo "==> the first time you run $pkgname as your normal user!"
+	echo "==> Just start it and have fun."
+	echo
 }
 
 pre_upgrade() {
-  # remove old files
-  rm -rf /opt/$pkgname
+	# remove old files
+	rm -rf /opt/$pkgname
 }
 
 post_upgrade() {
-  echo
-  echo "==> ¡La copia de $pkgname en tu directorio de inicio se actualizará"
-  echo "==> la primera vez que ejecutes $pkgname como tu usuario normal!"
-  echo "==> Simplemente inícialo y diviértete."
-  echo
+	echo 
+	echo "==> The $pkgname copy in your home directory will be upgraded at the"
+	echo "==> first time you run it as your normal user!"
+	echo "==> Just start and have fun."
+	echo 
 }
 
 post_remove() {
-  # remove old files
-  rm -rf /opt/$pkgname
-
-  echo
-  echo "==> Debes eliminar la carpeta ~/.$pkgname de tu directorio"
-  echo "==> de inicio manualmente. Como tu usuario normal, ejecuta:"
-  echo "==> "
-  echo "==> $ rm -rf ~/.$pkgname"
-  echo
+	echo 
+	echo "==> You have to remove the tor-brower directory in your home"
+	echo "==> directory by hand: As your normal user, do:"
+	echo "==> "
+	echo "==> rm -rf ~/.${pkgname}"
+	echo 
 }
-
-# vim:set ts=2 sw=2 et:
