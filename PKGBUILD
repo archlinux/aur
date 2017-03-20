@@ -3,7 +3,7 @@
 pkgname=pm-quirks
 _date=20100619
 pkgver=0.${_date}
-pkgrel=5
+pkgrel=6
 pkgdesc="Quirks data for pm-utils"
 arch=('x86_64')
 license=('GPL')
