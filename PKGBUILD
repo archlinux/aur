@@ -2,9 +2,9 @@
 
 pkgbase='vte3-tilix'
 pkgname=("${pkgbase}" 'vte-tilix-common')
-pkgver=0.46.1+1.5.4
 _vtever=0.46.1
 _tilixver=1.5.4
+pkgver=${_vtever}+${_tilixver}
 pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora and Tilix patches'
 arch=('x86_64')
@@ -22,8 +22,8 @@ source=(
 	"${_fpatchfile}::${_frepourl}/plain/${_fpatchfile}?h=${_frepobranch}"
 	'add-zsh-notfication-support.patch'
 	"gperf-fix.patch::https://git.gnome.org/browse/vte/patch/?id=1226f58cd97aa06f0ce58791153ca1f58e89658a"
-	"https://github.com/gnunn1/tilix/raw/1.5.4/experimental/vte/alternate-screen.patch"
-	"https://github.com/gnunn1/tilix/raw/1.5.4/experimental/vte/disable-bg-draw.patch"
+	"https://github.com/gnunn1/tilix/raw/${_tilixver}/experimental/vte/alternate-screen.patch"
+	"https://github.com/gnunn1/tilix/raw/${_tilixver}/experimental/vte/disable-bg-draw.patch"
 )
 sha256sums=('8800cf8bc259704a12ad1853fb0eb43bfe3857af15242e6fb9f2c3fd95b3f5c6'
             '9238ca155af79ec4f55f13b82981ea97745c26e3fcc87ab6917a1d41b4b9d852'
