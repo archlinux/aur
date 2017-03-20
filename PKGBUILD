@@ -16,7 +16,7 @@ makedepends=('cmake')
 conflicts=('gspectran')
 provides=('gspectran')
 source=("https://github.com/Feanor1397/gspectran/archive/${pkgver}.tar.gz")
-sha256sums=('9f36149abda871c69c3f3d4c33c8ce2f5f75e96975c00f983a957fb8c4095375')
+sha256sums=('34bc7f1a387114a00c19e17038c8db819cd898f369d8941ea91907d3a436e004')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
