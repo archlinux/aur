@@ -1,0 +1,19 @@
+pkgbase = the_silver_searcher_wild-git
+	pkgdesc = Allen Wild's fork of ag, which is better than ack, which is better than grep
+	pkgver = 1.0.2.r70.g398d13a
+	pkgrel = 1
+	url = https://github.com/aswild/the_silver_searcher
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = git
+	depends = pcre2
+	depends = xz
+	depends = zlib
+	provides = the_silver_searcher
+	conflicts = the_silver_searcher
+	source = git://github.com/aswild/the_silver_searcher.git
+	md5sums = SKIP
+
+pkgname = the_silver_searcher_wild-git
+

@@ -1,0 +1,6 @@
+/pkg/
+/src/
+/the_silver_searcher/
+*.pkg.tar.xz
+*.swp
+*~
