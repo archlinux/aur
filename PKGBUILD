@@ -2,7 +2,7 @@
 
 pkgname="ulam-git"
 pkgver=2.0.13.r259.gdcf5ea4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Github version of ulam compiler and MFM simulator"
 arch=('any')
