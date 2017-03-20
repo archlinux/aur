@@ -1,9 +1,9 @@
 pkgname=fortune-mod-ru
 pkgver=1.52
 pkgrel=1
-pkgdesc=""
+pkgdesc="A collection of cookie files for fortune-mod in Russian."
 arch=("any")
-url=""
+url="http://jack.kiev.ua/fortune-mod-ru/"
 license=('GPL')
 groups=()
 depends=("fortune-mod")
