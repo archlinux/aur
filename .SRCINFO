@@ -1,0 +1,26 @@
+pkgbase = upower-nosystemd
+	pkgdesc = Abstraction for enumerating power devices, listening to device events and querying history and statistics
+	pkgver = 0.99.4+12+g402640b
+	pkgrel = 1
+	url = http://upower.freedesktop.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = docbook-xsl
+	makedepends = gobject-introspection
+	makedepends = python2
+	makedepends = git
+	makedepends = gtk-doc
+	depends = eudev
+	depends = libusb-nosystemd
+	depends = libimobiledevice
+	depends = libgudev-nosystemd
+	provides = upower
+	conflicts = upower
+	backup = etc/UPower/UPower.conf
+	source = git://anongit.freedesktop.org/upower#commit=402640bee016472bf61c7a4ad9e5fac9790ea1bf
+	md5sums = SKIP
+
+pkgname = upower-nosystemd
+
