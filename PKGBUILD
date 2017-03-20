@@ -1,8 +1,8 @@
 # Maintainer: Kaleb Klein <klein.jae@gmail.com>
 
 pkgname=i3scrot-git
-pkgver=1.0
-pkgrel=1
+pkgver=1.0.1
+pkgrel=2
 pkgdesc="Shell script for using scrot in i3"
 arch=(any)
 license=('MIT')
@@ -17,4 +17,3 @@ package() {
     cd "$srcdir/i3scrot"
     PREFIX="$pkgdir/usr" make install
 }
-

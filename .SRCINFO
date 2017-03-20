@@ -1,7 +1,7 @@
 pkgbase = i3scrot-git
 	pkgdesc = Shell script for using scrot in i3
-	pkgver = 1.0
-	pkgrel = 1
+	pkgver = 1.0.1
+	pkgrel = 2
 	url = https://github.com/pazuzu156/i3scrot
 	arch = any
 	license = MIT
