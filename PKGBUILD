@@ -2,14 +2,14 @@
 
 pkgname="desktop-dimmer"
 fullpkgname="Desktop Dimmer"
-pkgver=2.7.2
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Enables darker-than-dark Desktop dimming for your displays."
 arch=("x86_64")
 url="https://github.com/sidneys/${pkgname}"
 license=("MIT")
 source=("https://github.com/sidneys/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.pacman")
-md5sums=("6D4BF707E3331C8E63B5A79CD14D3E73")
+md5sums=("2B05B940AACD2F31902D85B96CA30B79")
 replace_str="\/opt\/${fullpkgname}\/${pkgname}"
 
 package() {
