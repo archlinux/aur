@@ -1,16 +1,7 @@
-_svc="tor"
-_rlvl="default"
-
 post_install() {
-	_cmd="rc-update add ${_svc} ${_rlvl}"
-	echo "	==> run '${_cmd}'"
-}
-
-post_upgrade() {
-	post_install "$1"
-}
-
-post_remove() {
-	_cmd="rc-update del ${_svc} ${_rlvl}"
-	echo "	==> run '${_cmd}'"
+	echo "	==> /etc/tor/torrc needs these adjustments:"
+	echo "	User tor"
+	echo "	PIDFile /run/tor/tor.pid"
+	echo "	Log notice syslog"
+	echo "	DataDirectory /var/lib/tor/data"
 }
