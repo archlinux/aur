@@ -7,7 +7,6 @@ pkgbase = topydo-git
 	license = GPLv3
 	depends = python
 	depends = python-setuptools
-	depends = python-six
 	depends = python-arrow
 	depends = python-urwid
 	depends = python-watchdog
