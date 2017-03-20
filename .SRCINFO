@@ -1,0 +1,16 @@
+pkgbase = cmus-mediakeys
+	pkgdesc = Control cmus player via global mediakeys
+	pkgver = r9.b3852b6
+	pkgrel = 1
+	url = https://github.com/nogizhopaboroda/cmus-mediakeys
+	arch = any
+	license = UNLICENSED
+	depends = curl
+	depends = git
+	depends = bash
+	depends = make
+	source = git+https://github.com/nogizhopaboroda/cmus-mediakeys.git
+	md5sums = SKIP
+
+pkgname = cmus-mediakeys
+
