@@ -1,11 +1,11 @@
 # PKGBUILD for ag
 # Maintainer: Allen Wild <allenwild93 at gmail dot com>
 
-pkgdesc="Allen Wild's fork of ag, which is better than ack, which is better than grep"
+pkgdesc="Allen Wild's fork of ag, which supports pcre2 and .agrc user config"
 url='https://github.com/aswild/the_silver_searcher'
 pkgname=the_silver_searcher_wild-git
 pkgver=1.0.2.r70.g398d13a
-pkgrel=1
+pkgrel=2
 provides=('the_silver_searcher')
 conflicts=('the_silver_searcher')
 
