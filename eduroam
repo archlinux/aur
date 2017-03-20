@@ -6,9 +6,15 @@ IP='dhcp'
 TimeoutWPA=30
 WPAConfigSection=(
     'ssid="eduroam"'
-    'key_mgmt=WPA-EAP'
-    'eap=TTLS'
     'proto=WPA2'
+    'key_mgmt=WPA-EAP'
+    # EAP mechanisms
+    # Common combinations are:
+    #   PEAP + auth=MSCHAPV2
+    #   TTLS + auth=MSCHAPV2
+    #   TTLS + autheap=MSCHAPV2
+    #   TTLS + auth=PAP
+    'eap=TTLS'
     'phase2="auth=PAP"'
     # Server identity
     'ca_cert="/etc/ssl/certs/ca-certificates.crt"'
