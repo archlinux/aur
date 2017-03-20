@@ -1,7 +1,7 @@
 pkgbase = osl-git
 	pkgdesc = OpenScop Library
 	pkgver = 0.9.0.r39.g1ac1154
-	pkgrel = 1
+	pkgrel = 2
 	url = http://icps.u-strasbg.fr/people/bastoul/public_html/development/openscop/index.html
 	arch = x86_64
 	license = LGPL

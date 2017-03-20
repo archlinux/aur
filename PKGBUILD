@@ -3,7 +3,7 @@
 
 pkgname=osl-git
 pkgver=0.9.0.r39.g1ac1154
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenScop Library"
 arch=(x86_64)
 url="http://icps.u-strasbg.fr/people/bastoul/public_html/development/openscop/index.html"
@@ -35,4 +35,5 @@ check() {
 package() {
   cd "${srcdir}/${pkgname}"
   make DESTDIR="${pkgdir}/" install
+  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
