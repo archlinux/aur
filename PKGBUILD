@@ -3,7 +3,7 @@
 
 pkgname=clan-git
 pkgver=0.8.0.r10.g42a7d0c
-pkgrel=1
+pkgrel=2
 pkgdesc="Chunky Loop Analyzer: A Polyhedral Representation Extraction Tool for High Level Programs"
 arch=(x86_64)
 url="http://icps.u-strasbg.fr/people/bastoul/public_html/development/clan/index.html"
@@ -29,7 +29,7 @@ build() {
 
 check() {
   cd "${srcdir}/${pkgname}"
-  make check
+  make -j 1 check
 }
 
 package() {
