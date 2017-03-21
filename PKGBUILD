@@ -1,12 +1,12 @@
 #Maintainer: Jan Koppe <post@jankoppe.de>
 pkgname=pyca
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Capture Agent for Opencast"
 arch=('any')
 url="https://github.com/opencast/pyCA"
 license=('LGPL')
-depends=('gnutls' 'python-dateutil' 'python-configobj' 'python-pycurl' 'python-sqlalchemy')
+depends=('gnutls' 'python-dateutil' 'python-configobj' 'python-flask' 'python-pycurl' 'python-sqlalchemy')
 optdepends=('gunicorn: wsgi web interface')
 source=("https://github.com/opencast/pyCA/archive/v$pkgver.tar.gz"
         "pyca.install"
@@ -27,8 +27,8 @@ prepare() {
   sed -i 's/directory\s*=.*/directory = \/var\/lib\/pyca\/recordings\//' etc/pyca.conf
   sed -i 's/#database\s*=.*/database = sqlite:\/\/\/\/var\/lib\/pyca\/pyca.db/' etc/pyca.conf
 
-  # fix startup binary
-  #  sed -i 's/pyca/pyca.__main__/g' start.sh
+  # Backport a minor fix in agentstate worker, see https://github.com/opencast/pyCA/pull/96
+  sed -i 's/while not terminate and/while not terminate() and/g' pyca/agentstate.py
 }
 
 package() {

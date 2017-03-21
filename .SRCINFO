@@ -1,7 +1,7 @@
 pkgbase = pyca
 	pkgdesc = Python Capture Agent for Opencast
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/opencast/pyCA
 	install = pyca.install
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = pyca
 	depends = gnutls
 	depends = python-dateutil
 	depends = python-configobj
+	depends = python-flask
 	depends = python-pycurl
 	depends = python-sqlalchemy
 	optdepends = gunicorn: wsgi web interface
