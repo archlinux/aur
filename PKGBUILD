@@ -55,7 +55,10 @@ pkgver() {
   if grep -sq '#define SLIC3R_VERSION' ./xs/src/libslic3r/libslic3r.h; then
     # 6adc3477c9d08d2cfa0e6902b3d241a9193e50d4 intruduces libslic3r.h in that directory BUT
     # 8b6a8e63079978646cd98a96d6ad178b28f3067c introduces version in that header
-    _pkgver="$(awk '/#define SLIC3R_VERSION/ {gsub(/"/, "", $3); print $3 }' ./xs/src/libslic3r/libslic3r.h).$(git rev-parse --short HEAD)"
+    _pkgver="$(awk -F'"' '/#define SLIC3R_VERSION/ {print $2};' ./xs/src/libslic3r/libslic3r.h).$(git rev-parse --short HEAD)"
+  elif grep -sq 'constexpr auto SLIC3R_VERSION' ./xs/src/libslic3r/libslic3r.h; then
+    # 8250839fd5200bad9b180c056055acf515b0ad6f introduces another change
+    _pkgver="$(awk -F'"' '/constexpr auto SLIC3R_VERSION/ {print $2};' ./xs/src/libslic3r/libslic3r.h).$(git rev-parse --short HEAD)"
   else
     _pkgver="$(awk 'BEGIN{FS="\""}/VERSION/{gsub(/-dev/,"",$2); print $2 }' ./lib/Slic3r.pm).$(git rev-parse --short HEAD)"
   fi
