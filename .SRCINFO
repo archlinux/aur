@@ -1,4 +1,4 @@
-pkgbase = simple-scan
+pkgbase = simple-scan-trunk
 	pkgdesc = Simple scanning utility - the version before they broke everything
 	pkgver = 3.24.0
 	pkgrel = 1
@@ -20,5 +20,5 @@ pkgbase = simple-scan
 	source = https://launchpad.net/simple-scan/3.24/3.24.0/+download/simple-scan-3.24.0.tar.xz
 	sha256sums = 22a44ecfb28b5963f896f1d9f42e789e711f0c1aa9a73fa3c1d74ebb6ca374a6
 
-pkgname = simple-scan
+pkgname = simple-scan-trunk
 
