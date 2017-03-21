@@ -137,8 +137,10 @@ class Score:
             if (self.cur_gpa == 0):
                 print("No avilible course this semester for now")
             else:
-                print("GPA of this semester : " + str(self.cur_gpa))
-            print("GPA of all courses   : " + str(self.gpa))
+                print("GPA of this semester : ", end="")
+                print('%.2f' % (self.cur_gpa))
+            print("GPA of all courses   : ", end="")
+            print('%.2f' % (self.gpa))
         except Exception as e:
             print(e)
             self.run(retry_times - 1)
