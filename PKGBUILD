@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=mpc-qt-git
-pkgver=r819.3d7ced7
+pkgver=r820.30b2294
 pkgrel=1
 pkgdesc='A clone of Media Player Classic reimplimented in Qt.'
 url='https://github.com/cmdrkotori/mpc-qt'
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd mpc-qt
-  qmake-qt5 CONFIG+=debug mpc-qt.pro
+  qmake-qt5 mpc-qt.pro
   make
 }
 
