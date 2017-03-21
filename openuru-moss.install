@@ -1,8 +1,6 @@
 post_install() {
     useradd --user-group -r moss
     chown moss:moss var/log/moss
-    chown moss:moss usr/lib/systemd/system/moss.service
-    chown moss:moss usr/lib/systemd/system/moss-backend.service
     chown moss:moss etc/moss/moss.cfg
     chown moss:moss etc/moss/moss_backend.cfg
     systemctl daemon-reload
