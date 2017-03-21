@@ -2,7 +2,7 @@
 
 pkgname=warsaw
 pkgver=1.12.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc="GAS Tecnologia's banking security system used by Banco do Brasil"
 arch=(i686 x86_64)
 url="https://seg.bb.com.br"
@@ -17,12 +17,6 @@ sha256sums=('dde06741817b8b77d9b1150bd10110d8b22330f8e2900fcae06dcedeee10a09e')
 sha256sums_i686=('00c14f1695e39029f75288517128861715be7fac8d8ff742854331c18ce9125c')
 sha256sums_x86_64=('d8d637a2910aed6ab5e9baa9d2bd85c00259ee133e4aa6219bbf7d1dd3b04f40')
 
-  # Overwrites SRCDEST and, combined with "makepkg -fsC", this will
-  # always download the source installer in order to find out a change
-  # in the checksum - if thats the case, probably a new version was
-  # release and we definitely want to update this package.
-#SRCDEST=$srcdir
-
 if [[ $CARCH == x86_64 ]]; then
   _installer=warsaw_64_installer.run
   _warsawdir=tmp/warsaw_x64
@@ -33,7 +27,7 @@ fi
 
 prepare() {
   cd $srcdir
-    
+  
     # Make sure to have a cleaned up warsaw directory
   [ ! -d $pkgname-$pkgver ] && mkdir $pkgname-$pkgver
   [ -d $_warsawdir ] && rm -rf $_warsawdir
@@ -83,14 +77,11 @@ package() {
   chrpath -d "$pkgdir/usr/lib/warsaw/wsftdl.so"
   chrpath -d "$pkgdir/usr/lib/warsaw/wsbrmu.so"
   
-    # Use systemd service; SysVinit is deprecated
+    # Use systemd service instead of SysVinit script
   install -Dm644 "$srcdir/warsaw.service" \
     "$pkgdir/usr/lib/systemd/system/warsaw.service"
   rm -rf "$pkgdir/etc/init.d"
   
-    # Warsaw has to be called as root to open socket, not as normal user
-  rm -rf "$pkgdir/etc/xdg"
-    
     # Symlink to /usr/local, as the binaries still expect them to be valid
   install -dm755 "$pkgdir/usr/local/"{etc,bin,lib}
   ln -s /etc/warsaw/     "$pkgdir/usr/local/etc/warsaw"
