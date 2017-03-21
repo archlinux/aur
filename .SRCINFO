@@ -1,0 +1,17 @@
+pkgbase = dyncall
+	pkgdesc = Calls any plain C function with an argument list created dynamically.
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://www.dyncall.org/
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = yasm
+	source = http://www.dyncall.org/r0.9/dyncall-0.9.tar.gz
+	sha512sums = ede2698c34daddc14eba3d93ff5f8ac090ba6033f0c75208f51f7ca3286e383e0bc8fd9e4369da2478b0f2e41cac3fe350fbe8fff9b9ab5aecd230d38955ebb4
+
+pkgname = dyncall
+
