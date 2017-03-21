@@ -1,0 +1,54 @@
+diff -up ./src/check_nrpe.c.opensslv110 ./src/check_nrpe.c
+--- ./src/check_nrpe.c.opensslv110	2017-02-07 11:08:23.647733686 -0500
++++ ./src/check_nrpe.c	2017-02-07 12:44:22.314160593 -0500
+@@ -980,9 +980,10 @@ int connect_to_remote()
+ 			if (peer) {
+ 				if (sslprm.log_opts & SSL_LogIfClientCert)
+ 					syslog(LOG_NOTICE, "SSL %s has %s certificate",
+-						   rem_host, peer->valid ? "a valid" : "an invalid");
++					       rem_host, SSL_get_verify_result(ssl) ? "a valid" : "an invalid");
+ 				if (sslprm.log_opts & SSL_LogCertDetails) {
+-					syslog(LOG_NOTICE, "SSL %s Cert Name: %s", rem_host, peer->name);
++				        X509_NAME_oneline(X509_get_subject_name(peer), buffer, sizeof(buffer));
++					syslog(LOG_NOTICE, "SSL %s Cert Name: %s", rem_host, buffer);
+ 					X509_NAME_oneline(X509_get_issuer_name(peer), buffer, sizeof(buffer));
+ 					syslog(LOG_NOTICE, "SSL %s Cert Issuer: %s", rem_host, buffer);
+ 				}
+@@ -1427,7 +1428,7 @@ int verify_callback(int preverify_ok, X5
+ 	ssl = X509_STORE_CTX_get_ex_data(ctx, SSL_get_ex_data_X509_STORE_CTX_idx());
+ 
+ 	X509_NAME_oneline(X509_get_subject_name(err_cert), name, 256);
+-	X509_NAME_oneline(X509_get_issuer_name(ctx->current_cert), issuer, 256);
++	X509_NAME_oneline(X509_get_issuer_name(err_cert), issuer, 256);
+ 
+ 	if (!preverify_ok && sslprm.client_certs >= Ask_For_Cert
+ 		&& (sslprm.log_opts & SSL_LogCertDetails)) {
+diff -up ./src/nrpe.c.opensslv110 ./src/nrpe.c
+--- ./src/nrpe.c.opensslv110	2016-09-08 12:18:58.000000000 -0400
++++ ./src/nrpe.c	2017-02-07 12:42:35.667799987 -0500
+@@ -614,7 +614,7 @@ int verify_callback(int preverify_ok, X5
+ 	ssl = X509_STORE_CTX_get_ex_data(ctx, SSL_get_ex_data_X509_STORE_CTX_idx());
+ 
+ 	X509_NAME_oneline(X509_get_subject_name(err_cert), name, 256);
+-	X509_NAME_oneline(X509_get_issuer_name(ctx->current_cert), issuer, 256);
++	X509_NAME_oneline(err_cert, issuer, 256);
+ 
+ 	if (!preverify_ok && (sslprm.log_opts & SSL_LogCertDetails)) {
+ 		syslog(LOG_ERR, "SSL Client has an invalid certificate: %s (issuer=%s) err=%d:%s",
+@@ -1785,12 +1785,14 @@ int handle_conn_ssl(int sock, void *ssl_
+ 		peer = SSL_get_peer_certificate(ssl);
+ 
+ 		if (peer) {
++
+ 			if (sslprm.log_opts & SSL_LogIfClientCert)
+ 				syslog(LOG_NOTICE, "SSL Client %s has %svalid certificate",
+-					   remote_host, peer->valid ? "a " : "an in");
++				       remote_host, SSL_get_verify_result(ssl) ? "a " : "an in");
+ 			if (sslprm.log_opts & SSL_LogCertDetails) {
++				X509_NAME_oneline(X509_get_subject_name(peer), buffer, sizeof(buffer));
+ 				syslog(LOG_NOTICE, "SSL Client %s Cert Name: %s",
+-					   remote_host, peer->name);
++					   remote_host, buffer);
+ 				X509_NAME_oneline(X509_get_issuer_name(peer), buffer, sizeof(buffer));
+ 				syslog(LOG_NOTICE, "SSL Client %s Cert Issuer: %s",
+ 					   remote_host, buffer);

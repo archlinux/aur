@@ -1,0 +1,113 @@
+diff -up ./src/check_nrpe.c.opensslv110_nossl2 ./src/check_nrpe.c
+--- ./src/check_nrpe.c.opensslv110_nossl2	2017-02-07 13:51:02.848680596 -0500
++++ ./src/check_nrpe.c	2017-02-07 13:56:14.134901320 -0500
+@@ -64,7 +64,7 @@ int use_ssl = FALSE;
+ 
+ /* SSL/TLS parameters */
+ typedef enum _SSL_VER {
+-	SSL_Ver_Invalid = 0, SSLv2 = 1, SSLv2_plus, SSLv3, SSLv3_plus,
++	SSL_Ver_Invalid = 0, SSLv3=3, SSLv3_plus,
+ 	TLSv1, TLSv1_plus, TLSv1_1, TLSv1_1_plus, TLSv1_2, TLSv1_2_plus
+ } SslVer;
+ 
+@@ -402,11 +402,7 @@ int process_arguments(int argc, char **a
+ 								"overrides the config file option.");
+ 				break;
+ 			}
+-			if (!strcmp(optarg, "SSLv2"))
+-				sslprm.ssl_min_ver = SSLv2;
+-			else if (!strcmp(optarg, "SSLv2+"))
+-				sslprm.ssl_min_ver = SSLv2_plus;
+-			else if (!strcmp(optarg, "SSLv3"))
++			if (!strcmp(optarg, "SSLv3"))
+ 				sslprm.ssl_min_ver = SSLv3;
+ 			else if (!strcmp(optarg, "SSLv3+"))
+ 				sslprm.ssl_min_ver = SSLv3_plus;
+@@ -665,8 +661,8 @@ void usage(int result)
+ 		printf("                2 = Force Anonymous Diffie Hellman\n");
+ 		printf(" <size>       = Specify non-default payload size for NSClient++\n");
+ 		printf
+-			(" <ssl ver>    = The SSL/TLS version to use. Can be any one of: SSLv2 (only),\n");
+-		printf("                SSLv2+ (or above), SSLv3 (only), SSLv3+ (or above),\n");
++			(" <ssl ver>    = The SSL/TLS version to use. Can be any one of: \n");
++		printf("                SSLv3 (only), SSLv3+ (or above),\n");
+ 		printf("                TLSv1 (only), TLSv1+ (or above DEFAULT), TLSv1.1 (only),\n");
+ 		printf("                TLSv1.1+ (or above), TLSv1.2 (only), TLSv1.2+ (or above)\n");
+ 		printf(" <cipherlist> = The list of SSL ciphers to use (currently defaults\n");
+@@ -736,12 +732,6 @@ void setup_ssl()
+ 			   sslprm.allowDH == 0 ? "No" : (sslprm.allowDH == 1 ? "Allow" : "Require"));
+ 		syslog(LOG_INFO, "SSL Log Options: 0x%02x", sslprm.log_opts);
+ 		switch (sslprm.ssl_min_ver) {
+-		case SSLv2:
+-			val = "SSLv2";
+-			break;
+-		case SSLv2_plus:
+-			val = "SSLv2 And Above";
+-			break;
+ 		case SSLv3:
+ 			val = "SSLv3";
+ 			break;
+@@ -779,10 +769,6 @@ void setup_ssl()
+ 		SSL_library_init();
+ 		meth = SSLv23_client_method();
+ 
+-# ifndef OPENSSL_NO_SSL2
+-		if (sslprm.ssl_min_ver == SSLv2)
+-			meth = SSLv2_client_method();
+-# endif
+ # ifndef OPENSSL_NO_SSL3
+ 		if (sslprm.ssl_min_ver == SSLv3)
+ 			meth = SSLv3_client_method();
+diff -up ./src/nrpe.c.opensslv110_nossl2 ./src/nrpe.c
+--- ./src/nrpe.c.opensslv110_nossl2	2017-02-07 13:51:02.849680580 -0500
++++ ./src/nrpe.c	2017-02-07 13:51:02.851680549 -0500
+@@ -109,7 +109,7 @@ int       listen_queue_size = DEFAULT_LI
+ 
+ /* SSL/TLS parameters */
+ typedef enum _SSL_VER {
+-	SSLv2 = 1, SSLv2_plus, SSLv3, SSLv3_plus, TLSv1,
++	SSLv3=3, SSLv3_plus, TLSv1,
+ 	TLSv1_plus, TLSv1_1, TLSv1_1_plus, TLSv1_2, TLSv1_2_plus
+ } SslVer;
+ 
+@@ -278,10 +278,10 @@ void init_ssl(void)
+ 			}
+ 		}
+ 	}
+-# ifndef OPENSSL_NO_SSL2
+-	if (sslprm.ssl_min_ver == SSLv2)
+-		meth = SSLv2_server_method();
+-# endif
++
++
++
++
+ # ifndef OPENSSL_NO_SSL3
+ 	if (sslprm.ssl_min_ver == SSLv3)
+ 		meth = SSLv3_server_method();
+@@ -385,12 +385,6 @@ void log_ssl_startup(void)
+ 													 1 ? "Accept" : "Require"));
+ 	syslog(LOG_INFO, "SSL Log Options: 0x%02x", sslprm.log_opts);
+ 	switch (sslprm.ssl_min_ver) {
+-	case SSLv2:
+-		vers = "SSLv2";
+-		break;
+-	case SSLv2_plus:
+-		vers = "SSLv2 And Above";
+-		break;
+ 	case SSLv3:
+ 		vers = "SSLv3";
+ 		break;
+@@ -796,11 +790,7 @@ int read_config_file(char *filename)
+ 			}
+ 
+ 		} else if (!strcmp(varname, "ssl_version")) {
+-			if (!strcmp(varvalue, "SSLv2"))
+-				sslprm.ssl_min_ver = SSLv2;
+-			else if (!strcmp(varvalue, "SSLv2+"))
+-				sslprm.ssl_min_ver = SSLv2_plus;
+-			else if (!strcmp(varvalue, "SSLv3"))
++		        if (!strcmp(varvalue, "SSLv3"))
+ 				sslprm.ssl_min_ver = SSLv3;
+ 			else if (!strcmp(varvalue, "SSLv3+"))
+ 				sslprm.ssl_min_ver = SSLv3_plus;
