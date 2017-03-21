@@ -8,7 +8,8 @@ license=("custom")
 url="http://www.schristiancollins.com/generaluser.php"
 groups=('soundfonts')
 #source=("http://www.schristiancollins.com/soundfonts/GeneralUser_GS_$pkgver-FluidSynth.zip")
-source=("https://dl.dropboxusercontent.com/u/8126161/GeneralUser_GS_$pkgver.zip")
+#source=("https://dl.dropboxusercontent.com/u/8126161/GeneralUser_GS_$pkgver.zip")
+source=("https://www.dropbox.com/s/4x27l49kxcwamp5/GeneralUser_GS_$pkgver.zip")
 md5sums=('5eaa95224f6080864cf6aedc1c9820a6')
 
 package() {
