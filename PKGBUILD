@@ -2,7 +2,7 @@
 # Maintainer: mesmer <mesmer@fisica.if.uff.br>
 
 pkgname=(vim-clipboard)
-pkgver=8.0.0314
+pkgver=8.0.0427
 _versiondir=74
 pkgrel=1
 arch=(i686 x86_64)
