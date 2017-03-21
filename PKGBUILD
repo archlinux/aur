@@ -1,10 +1,9 @@
 # Maintainer: Alexander Görtz <aur@nyloc.de>
 # Community Maintainer: Sébastien "Seblu" Luttringer <seblu@archlinux.org>
 # Contributor: Frederik Schwan frederik dot schwan at linux dot com>
-
 pkgname=unifi-unstable
-pkgver=5.5.7.0cbda0cd4a
-_pkgver=5.5.7-0cbda0cd4a
+pkgver=5.5.8.f7e54e94a4
+_pkgver=5.5.8-f7e54e94a4
 pkgrel=1
 pkgdesc='Centralized management system for Ubiquiti UniFi AP'
 arch=('any')
@@ -19,7 +18,7 @@ source=("UniFi-$pkgver.zip::https://www.ubnt.com/downloads/unifi/$_pkgver/UniFi.
         'unifi.service'
         'unifi.sysusers'
         'LICENSE')
-md5sums=('f6410763493201ce022717a13c48fb56'
+md5sums=('978993adffcf2f70d0bf704d5c7ee53c'
          '79998cabf110d9a96ba4d3367101c94c'
          'a92291a0074a5dcf414da4dfe812bc2a'
          '2c5d961c64e9309baf12f83e401ff2a4')
