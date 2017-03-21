@@ -1,4 +1,4 @@
-# Maintainer: jsteel <mail at jsteel dot org>
+# Maintainer: lesto 
 
 pkgname=somagic-easycap
 pkgver=1.1
