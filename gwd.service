@@ -1,0 +1,13 @@
+[Unit]
+Description=Geneweb Genealogy Service
+
+[Service]
+Type=forking
+User=geneweb
+EnvironmentFile=/etc/conf.d/gwd
+UMask=077
+ExecStart=/usr/bin/gwd -daemon -bd ${DATABASES_DIR} $GWD_ARGS
+StandardOutput=syslog
+
+[Install]
+WantedBy=multi-user.target

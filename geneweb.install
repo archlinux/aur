@@ -1,0 +1,13 @@
+create_user_and_dir() {
+  useradd --system --create-home --home /var/lib/geneweb --shell /bin/false geneweb 2> /dev/null || true
+}
+
+post_install() {
+  create_user_and_dir
+}
+
+post_upgrade() {
+  create_user_and_dir
+}
+
+# vim:set ts=2 sw=2 et:
