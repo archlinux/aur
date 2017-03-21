@@ -1,7 +1,7 @@
 # Maintainer: juantascon <juantascon.aur@horlux.org>
 
 pkgname=cmake-uselatex
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="CMAKE commands to actually use the LaTeX compiler"
 arch=(any)
@@ -9,7 +9,7 @@ url="http://www.cmake.org/Wiki/CMakeUserUseLATEX"
 license=('GPL')
 depends=(cmake)
 source=(http://www.cmake.org/Wiki/images/8/80/UseLATEX.cmake)
-sha256sums=('e9dafa7d20f1c68bc2b71a677173a1b8c9f111666887a59620acab023b975f18')
+sha256sums=('35df2e4e3bede7f38e0d8bf984a9a0d698a64d3a62cb9af4aaeb61ae73f0067e')
 
 package() {
     cd "$srcdir"
