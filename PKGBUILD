@@ -1,7 +1,7 @@
 # Maintainer: Mario Rubio <mario.hi52 at gmail dot com>
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
-pkgname=d3js
+pkgname=d3.js
 pkgver=4.7.3
 pkgrel=1
 pkgdesc='A JavaScript library for producing dynamic, interactive data visualizations.'

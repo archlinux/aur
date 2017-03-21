@@ -1,4 +1,4 @@
-pkgbase = d3js
+pkgbase = d3.js
 	pkgdesc = A JavaScript library for producing dynamic, interactive data visualizations.
 	pkgver = 4.7.3
 	pkgrel = 1
@@ -8,5 +8,5 @@ pkgbase = d3js
 	source = https://github.com/mbostock/d3/releases/download/v4.7.3/d3.zip
 	md5sums = 7177f1f6c91cdefbe193102cae62ed74
 
-pkgname = d3js
+pkgname = d3.js
 
