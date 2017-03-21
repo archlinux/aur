@@ -1,0 +1,15 @@
+[Unit]
+Description=ARP Handler Inspection Daemon
+Before=network.target
+After=network-pre.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/arpon
+PIDFile=/run/arpon.pid
+ExecStart=/usr/bin/arpon $ARPON_OPTS
+ExecReload=/usr/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=network.target

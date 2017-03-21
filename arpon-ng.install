@@ -1,0 +1,8 @@
+post_install() {
+  printf '\n\e[1;33m'
+  printf '  ==== ATTENTION =========================================\n'
+  printf '  You must edit the file /etc/conf.d/arpon before starting\n'
+  printf '  the arpon systemd service. See its header for more info.\n'
+  printf '  ========================================================\n'
+  printf '\e[m\n'
+}
