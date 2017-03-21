@@ -19,10 +19,12 @@ options=(!emptydirs !makeflags)
 install=$pkgname.install
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
         thunderbird-beta.desktop
+        thunderbird-install-dir.patch
         fix-wifi-scanner.diff
         firefox-gcc-6.0.patch)
 sha512sums=('08db9268e4e5e67a1cdf16fb0e10cd9267896c0d4fefc7d93f5858cbbf83390711d35c95da8aec155b0e8162c3afe4a355692f99a85435c8acc38c9397a610eb'
-            'abb7ef2be514fd721d33291d9010461796f3adb42b340d0452c98daa9f29c58d7c149439b336c88e0688122ac4d024810baa2f69857559322ac5f4c6e0f2d0fb'
+            'e5649ddee3ca9cfdcf56652e9c8e6160d52c69d1439f9135b0c0d436ce61a25f17758afc0dd6cac3434c26234c584828eb07fdf9604797f7dd3f617ec194b79a'
+            '8100fd3ea37d998905498d41c8504bfdd6d86766542d6b93107c92382a7525da7f75a83f8ff1e15ad95039d51da2add7e6b18af76d45516a41cdfd1e9f98f262'
             '1bd2804bea1fe8c85b602f8c5f8777f4ba470c9e767ad284cb3d0287c6d6e1b126e760738d7c671f38933ee3ec6b8931186df8e978995b5109797ae86dfdd85a'
             '1bb8887cfc12457a83045db559bbd13954a177100309b4f6c82a5f733675e83751bfecf501f505345f81fd2688fc5b02e113962cf0a0df27b29790f40cb9406b')
 # RC
@@ -48,6 +50,9 @@ prepare() {
   ln -sf /usr/bin/python2 path/python
 
   cd thunderbird-$pkgver
+
+  msg2 "thunderbird-install-dir.patch"
+  patch -Np1 -i ../thunderbird-install-dir.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
   msg2 "fix-wifi-scanner.diff"
@@ -131,7 +136,7 @@ package() {
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
 
   # vendor.js
-  _vendorjs="$pkgdir/opt/thunderbird-$_major/defaults/preferences/vendor.js"
+  _vendorjs="$pkgdir/opt/thunderbird-beta/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$_vendorjs" <<END
 // Use LANG environment variable to choose locale
 pref("intl.locale.matchOS", true);
@@ -155,18 +160,18 @@ END
     "$pkgdir/usr/share/applications/thunderbird-beta.desktop"
 
   # Use system-provided dictionaries
-  rm -r "$pkgdir"/opt/thunderbird-$_major/dictionaries
-  ln -Ts /usr/share/hunspell "$pkgdir/opt/thunderbird-$_major/dictionaries"
-  ln -Ts /usr/share/hyphen "$pkgdir/opt/thunderbird-$_major/hyphenation"
+  rm -r "$pkgdir"/opt/thunderbird-beta/dictionaries
+  ln -Ts /usr/share/hunspell "$pkgdir/opt/thunderbird-beta/dictionaries"
+  ln -Ts /usr/share/hyphen "$pkgdir/opt/thunderbird-beta/hyphenation"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/thunderbird-beta" <<END
 #!/bin/sh
-exec /opt/thunderbird-$_major/thunderbird "\$@"
+exec /opt/thunderbird-beta/thunderbird "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -srf "$pkgdir/usr/bin/thunderbird-beta" \
-    "$pkgdir/opt/thunderbird-$_major/thunderbird-bin"
+    "$pkgdir/opt/thunderbird-beta/thunderbird-bin"
 }
