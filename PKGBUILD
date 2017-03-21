@@ -26,7 +26,7 @@ source=(https://downloads.sourceforge.net/project/$_pkgname/$_pkgname/$pkgver/${
         natspec.patch)
 sha256sums=('5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f'
             'f9bcbf21d4aa8938861a6cba992df13dec19538286e9ed747ccec6d9a4e8f983'
-            'd557e210ab392c317dc635efa2ac26739f06463b6d816348f3e8e78d3a815c38')
+            'e98506a3880da2d8b54ccbafbb3acac1bbc6b8f2552de37b658a4bfac7f498ad')
 
 prepare() {
 	cd "$srcdir/${_pkgname}_$pkgver"
