@@ -1,6 +1,7 @@
-# Maintainer : Martin Wimpress <code@flexion.org>
+# Maintainer: Christos Nouskas <nous@archlinux.us>
+# Contributor: Martin Wimpress <code@flexion.org>
 
-_ver=1.16
+_ver=1.18
 _pkgbase=mate-power-manager
 pkgname=(${_pkgbase}-upower)
 pkgver=${_ver}.0
@@ -16,7 +17,7 @@ source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.
 groups=('mate-extra')
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 provides=("${_pkgbase}")
-sha256sums=('70449008afb448daf4c18f533d3999f76c642b492594b0eaa751dec749330a3e')
+sha256sums=('dd0c5fc82d0ea81246890a95d57de92c60c3d735ad06f5946c79eebe7c52b3be')
 
 build() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
