@@ -1,13 +1,13 @@
 # Maintainer: wolftankk <wolftankk@gmail.com>
 pkgname=zephir
-pkgver=0.8.0
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="Zephir is a compiled high level language aimed to the creation of C-extensions for PHP http://zephir-lang.com/"
 url="https://github.com/phalcon/zephir"
 arch=('x86_64' 'i686')
-license=('GPL')
+license=('MIT')
 depends=('re2c' 'json-c')
-makedepends=('unzip' 'php' 'gcc' 'pcre')
+makedepends=('php' 'gcc' 'pcre')
 backup=('etc/php/conf.d/zephir.ini')
 
 if [[ $CARCH = "i686" ]]; then
@@ -15,24 +15,51 @@ if [[ $CARCH = "i686" ]]; then
 fi
 
 source=(
-	"https://github.com/phalcon/zephir/archive/$pkgver.zip"
+	"https://github.com/phalcon/zephir/archive/$pkgver.tar.gz"
 )
 
-sha256sums=('7faac752b183a4a59a790395414f0f631faa03d9ad75ccf0bbf0fbdd03fca980')
+sha256sums=('5d7819c39a3698b80713b28c48f18a6d2f3ccb4955efb6da7774391a53dc6880')
 
 #build zephir-parser
 build() {
-  cd "$srcdir/zephir-$pkgver/parser"
+  cd "$srcdir/zephir-$pkgver/parser/parser"
+
+  rm -fr *.o *.lo
 
   if [ ! -f lemon ]; then
        gcc -w lemon.c -o lemon
   fi
-  re2c -o scanner.c scanner.re && ./lemon -s parser.lemon && cat base.c >> parser.c
+  re2c -o scanner.c scanner.re 
+
+  rm -f parser.o
+  rm -f parser.lo
+  rm -f scanner.o
+  rm -f scanner.lo
+
+  if [ ! -f lemon ]; then
+      gcc -g lemon.c -o lemon
+  fi
+
+  re2c -o scanner.c scanner.re
+  ./lemon -s parser.php5.lemon
+  ./lemon -s parser.php7.lemon
+
+  echo "#include <php.h>" > parser.c
+  echo "#if PHP_VERSION_ID < 70000" >> parser.c
+  cat parser.php5.c >> parser.c
+  echo "#else" >> parser.c
+  cat parser.php7.c >> parser.c
+  echo "#endif" >> parser.c
+  cat base.c >> parser.c
+
   sed s/"\#line"/"\/\/"/g scanner.c > xx && mv -f xx scanner.c
   sed s/"#line"/"\/\/"/g parser.c > xx && mv -f xx parser.c
 
-  export CFLAGS="-g3 -O0"
-  gcc -Wl,-rpath /usr/local/lib -I/usr/local/include -L/usr/local/lib -L/opt/local/lib -g3 -w parser.c scanner.c -ljson-c -o ../bin/zephir-parser
+
+  cd "$srcdir/zephir-$pkgver/parser"
+  phpize
+  export CC="gcc" && ./configure --prefix=/usr --enable-zephir_parser
+  make -s -j2
 }
 
 package() {
@@ -40,12 +67,19 @@ package() {
   cd "$srcdir/zephir-$pkgver"
   sed "s#%ZEPHIRDIR%#$ZEPHIRDIR#g" bin/zephir > bin/zephir-cmd
 
+  cd "$srcdir/zephir-$pkgver/parser"
+  make INSTALL_ROOT="$pkgdir" install
+
+  echo "extension=zephir_parser.so" > zephir_parser.ini
+  install -Dm644 zephir_parser.ini "$pkgdir/etc/php/conf.d/zephir_parser.ini"
+
+  cd "$srcdir/zephir-$pkgver"
+  sed "s#%ZEPHIRDIR%#$ZEPHIRDIR#g" bin/zephir > bin/zephir-cmd
+
   #init
   install -d $pkgdir/{$ZEPHIRDIR,usr/bin}
 
   install -Dm777 bin/zephir-cmd "$pkgdir"/opt/zephir/bin/zephir
-  install -Dm777 bin/zephir-parser "$pkgdir"/opt/zephir/bin/zephir-parser
-
   install -Dm777 compiler.php "$pkgdir"/opt/zephir/compiler.php
   install -Dm777 bootstrap.php "$pkgdir"/opt/zephir/bootstrap.php
   cp -a Library "$pkgdir"/opt/zephir/Library
@@ -57,13 +91,12 @@ package() {
   cp -a unit-tests "$pkgdir"/opt/zephir/unit-tests
 
   ln -s /opt/zephir/bin/zephir $pkgdir/usr/bin/zephir
-  ln -s /opt/zephir/bin/zephir-parser $pkgdir/usr/bin/zephir-parser
 
-  #echo open_basedir=$(php -r "echo ini_get('open_basedir');"):/opt/zephir > zephir.ini
-  #install -Dm644 zephir.ini "$pkgdir"/etc/php/conf.d/zephir.ini
+  echo open_basedir=$(php -r "echo ini_get('open_basedir');"):/opt/zephir > zephir.ini
+  install -Dm644 zephir.ini "$pkgdir"/etc/php/conf.d/zephir.ini
 
   if [ -d "/usr/share/bash-completion/completions" ]; then
-	  install -Dm644 bin/bash_completion "$pkgdir"/usr/share/bash-completion/completions/zephir
+      install -Dm644 bin/bash_completion "$pkgdir"/usr/share/bash-completion/completions/zephir
   fi
 
   msg2 "Please add '/opt/zephir' into 'open_basedir' in 'php.ini'"
