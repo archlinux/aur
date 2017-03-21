@@ -61,14 +61,6 @@ EOF
 
 post_upgrade() {
   cat <<-EOF
-
-  The format of some of ArangoDB's internal files change sometimes
-  between versions. To upgrade existing data files run /usr/bin/arangod
-  with the upgrade option:
-
-    sudo systemctl stop arangodb3.service
-    sudo systemctl start arangodb3.service
-
   Take a look at the Changelog to see what is new in $1:
   https://github.com/arangodb/arangodb/blob/devel/CHANGELOG
 EOF
@@ -83,4 +75,8 @@ post_remove() {
   rm -rf /usr/share/arangodb3
   rm -rf /var/log/arangodb3
   rm -rf /var/lib/arangodb3-apps
+  cat <<-EOF
+  ArangoDB has been uninstalled.
+  Any data you had stored in ArangoDB is still available in /var/lib/arangodb3.
+EOF
 }
