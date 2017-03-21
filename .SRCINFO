@@ -1,6 +1,6 @@
 pkgbase = thunderbird-beta-bin
 	pkgdesc = Standalone Mail/News reader - Bleeding edge binary version
-	pkgver = 52.0rc1
+	pkgver = 52.0rc3
 	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird
 	install = thunderbird-beta-bin.install
@@ -14,16 +14,16 @@ pkgbase = thunderbird-beta-bin
 	depends = libxt
 	depends = nss
 	optdepends = libcanberra: for sound support
-	provides = thunderbird=52.0rc1
+	provides = thunderbird=52.0rc3
 	conflicts = thunderbird-beta
 	source = thunderbird-beta-bin.desktop
 	source = vendor.js
 	sha512sums = abb7ef2be514fd721d33291d9010461796f3adb42b340d0452c98daa9f29c58d7c149439b336c88e0688122ac4d024810baa2f69857559322ac5f4c6e0f2d0fb
 	sha512sums = aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5
-	source_i686 = https://ftp.mozilla.org/pub/thunderbird/candidates/52.0-candidates/build1/linux-i686/en-US/thunderbird-52.0.tar.bz2
-	sha512sums_i686 = e1922d86e30b388e502bd992351104d27c7c150cc99032e41a4ab21905b6147e61a05f9e6aac9028c52c5302b53d683ba409b32d5f98d36a7cdf91f0d6537f2f
-	source_x86_64 = https://ftp.mozilla.org/pub/thunderbird/candidates/52.0-candidates/build1/linux-x86_64/en-US/thunderbird-52.0.tar.bz2
-	sha512sums_x86_64 = bfa576f1c4ac081c234a10cee10f7708830796e38057c2dfaeae45ac14ab09279f15d554f7d2fe3d183b62167855e7a52e9f1e65f8ce18d29d032ca63f7b9ca0
+	source_i686 = https://ftp.mozilla.org/pub/thunderbird/candidates/52.0-candidates/build3/linux-i686/en-US/thunderbird-52.0.tar.bz2
+	sha512sums_i686 = 8acd58a70a0c1a506a630ace1f939fd196bb037353f60ff40d669cb4135a71af0dc77e876f43094743c494c192de82e3a719e28650681b478cd8c3f066f6999c
+	source_x86_64 = https://ftp.mozilla.org/pub/thunderbird/candidates/52.0-candidates/build3/linux-x86_64/en-US/thunderbird-52.0.tar.bz2
+	sha512sums_x86_64 = 5314e5e129f4c68fdff04f8c9bfccf549da8d5b7fe556c31551c4b5cf7be3a949d567f4790b6018b4bae3013698baeb56cd6bade49c5acb634f9ea065ac3bdfb
 
 pkgname = thunderbird-beta-bin
 
