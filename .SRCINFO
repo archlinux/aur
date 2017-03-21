@@ -1,6 +1,6 @@
 pkgbase = firefox-beta-bin
 	pkgdesc = Standalone web browser from mozilla.org - Beta
-	pkgver = 53.0b4
+	pkgver = 53.0b5
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/channel/#beta
 	install = firefox-beta-bin.install
@@ -18,13 +18,13 @@ pkgbase = firefox-beta-bin
 	optdepends = libnotify: Notification integration
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = upower: Battery API
-	provides = firefox=53.0b4
+	provides = firefox=53.0b5
 	source = firefox-beta-bin.desktop
 	sha512sums = 865c832fe683f4ebeca7704058d56f834ec5d9d56391d31912cf4a928c56a268cf25064965cf8bbf935a45f638d0a8b24ffa744a47934e5ed8b8bb78883db4c0
-	source_i686 = https://ftp.mozilla.org/pub/firefox/releases/53.0b4/linux-i686/en-US/firefox-53.0b4.tar.bz2
-	sha512sums_i686 = 64257275be4908ec7bcf3e6facc04683a483614151c2d1f3aef4a77deb1ee2f606ec10712910161ca3ca6749b5eb4c2ca126756e534655feb886433fbd8e13cd
-	source_x86_64 = https://ftp.mozilla.org/pub/firefox/releases/53.0b4/linux-x86_64/en-US/firefox-53.0b4.tar.bz2
-	sha512sums_x86_64 = 91a802a8662b6129ad538470a4a72acdd1f4388cb03476db333131c036c0d9cbaef69671c1ce94c8cd63c848c2a54f92293319348827d65f7e4cbcfa68cce78f
+	source_i686 = https://ftp.mozilla.org/pub/firefox/releases/53.0b5/linux-i686/en-US/firefox-53.0b5.tar.bz2
+	sha512sums_i686 = eb515e5d2d9bb2aa447cf77b292af68509dbbdcba700c5518646ce68eddad17cc5178df014579ed8b13b3fb6cc50d11a98a5bb08e7b3731984bfbfdf75b49f68
+	source_x86_64 = https://ftp.mozilla.org/pub/firefox/releases/53.0b5/linux-x86_64/en-US/firefox-53.0b5.tar.bz2
+	sha512sums_x86_64 = ec760eb792bfb3572b677d7c119cca0294baaf75d68beb5154163ebbfdce099c4bb6d7b20d9938d4822aa115266619ee44726382afe175460286d1ef93abfef9
 
 pkgname = firefox-beta-bin
 
