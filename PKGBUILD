@@ -19,7 +19,7 @@ _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some grap
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=58.0.3029.19
+pkgver=59.0.3043.0
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -85,10 +85,10 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'BUILD.gn'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r4.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r2.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r3.patch'
         # Misc Patches
-        "enable_vaapi_on_linux_${pkgver}.diff::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/f02f22cdc0923ab18c44dc46dda0942e078b870d/debian/patches/enable_vaapi_on_linux.diff"
-        "specify-max-resolution_${pkgver}.patch::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/f02f22cdc0923ab18c44dc46dda0942e078b870d/debian/patches/specify-max-resolution.patch"
+#         "enable_vaapi_on_linux_${pkgver}.diff::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/25539edd06a0ac9bf4010c4ad9b936d349ebc974/debian/patches/enable_vaapi_on_linux.diff"
+#         "specify-max-resolution_${pkgver}.patch::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/25539edd06a0ac9bf4010c4ad9b936d349ebc974/debian/patches/specify-max-resolution.patch"
         'minizip.patch'
         'vaapi_patch_r0.patch'
         # Patch from crbug (chromium bugtracker)
@@ -101,10 +101,10 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'c7d9974834fc3803b5f1a1d310ff391306964caaabc807a62f8e5c3d38526ee6'
             # Patch form Gentoo
             'e3c474dbf3822a0be50695683bd8a2c9dfc82d41c1524a20b4581883c0c88986'
-            '64d743c78183c302c42d1f289863e34c74832fca57443833e46a0a3157e2b5de'
+            'e101a152304a1ed911e126e3a26f332e947469d1beb3e8bc649f733134f54fc4'
             # Misc Patches
-            'c958fa44a24f5a5f6ab126a2497da324a9a3e21365a872051e9e141c39d09598'
-            '4c08d787b069585db652a5920432eb9aab7572422fe4f49f49a60157060ee205'
+#             '14377408f34e2d97b7cd5219e8363fbda249faa5534e30d9226cdf308915b9ad'
+#             'f98818c933042ce61f3940d7c8880f3edc0f300d7e0a92a6ab7c5c7fd0bf8709'
             '95ba939b9372e533ecbcc9ca034f3e9fc6621d3bddabb57c4d092ea69fa6c840'
             'fef17ee6b80b9c60e4579ec4afec72fedb6ab1807ecc5903ab6aa2ccbb9fc8b0'
             # Patch from crbug (chromium bugtracker)
@@ -390,13 +390,13 @@ prepare() {
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
   patch -p1 -i "${srcdir}/chromium-system-ffmpeg-r4.patch"
-  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r2.patch"
+  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r3.patch"
 
   # Misc Patches:
   if [ "${_enable_vaapi}" = 1 ]; then
 #     patch -p1 -i "${srcdir}/enable_vaapi_on_linux_${pkgver}.diff"
+#     patch -p1 -i "${srcdir}/specify-max-resolution_${pkgver}.patch"
     patch -p1 -i "${srcdir}/vaapi_patch_r0.patch"
-    patch -p1 -i "${srcdir}/specify-max-resolution_${pkgver}.patch"
   fi
 
   # Fix paths.
