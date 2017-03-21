@@ -13,12 +13,12 @@ sha256sums=('f2ba7cfecbc77cb2c43ec490994f3363754b6a84d6a5ca9728a2c33601acd6a0')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make
+  make ENABLE_BTRFS=1
 }
 
 package(){
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make PREFIX="/usr" DESTDIR="${pkgdir}" ENABLE_BTRFS=1 install
+  make PREFIX="/usr" DESTDIR="${pkgdir}" install
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
