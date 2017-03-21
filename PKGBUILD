@@ -1,27 +1,27 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool
-_commit=1c01afde9477d82c315e5ad1f748e5308f5e8b59
-pkgver=1.7.1.r179
-pkgrel=2
+_commit=f0c92aab5fc8382dbc902b82816e11ec4291c02f
+pkgver=1.7.3
+pkgrel=1
 pkgdesc='Lua application server integrated with a database management system'
 arch=(i686 x86_64)
-url='http://www.tarantool.org'
+url='https://www.tarantool.org'
 license=(BSD)
 depends=(readline ncurses zlib libyaml openssl)
 makedepends=(git cmake systemd)
 checkdepends=(python2-daemon python2-gevent python2-tarantool)
 install=tarantool.install
-source=(git://github.com/tarantool/tarantool.git#commit=$_commit
-        git://github.com/tarantool/luajit.git
-        git://github.com/tarantool/msgpuck.git
-        git://github.com/rtsisyk/luafun.git
-        #git://github.com/tarantool/sophia.git
-        git://github.com/tarantool/lz4.git
-        git://github.com/tarantool/libyaml.git
-        git://github.com/tarantool/zstd.git
-        git://github.com/tarantool/test-run.git
-        git://github.com/tarantool/small.git)
+source=(git+https://github.com/tarantool/tarantool.git#commit=$_commit
+        git+https://github.com/tarantool/luajit.git
+        git+https://github.com/tarantool/msgpuck.git
+        git+https://github.com/rtsisyk/luafun.git
+        #git+https://github.com/tarantool/sophia.git
+        git+https://github.com/tarantool/lz4.git
+        git+https://github.com/tarantool/libyaml.git
+        git+https://github.com/tarantool/zstd.git
+        git+https://github.com/tarantool/test-run.git
+        git+https://github.com/tarantool/small.git)
 sha1sums=('SKIP'
           'SKIP'
           'SKIP'
@@ -37,10 +37,8 @@ pkgver() {
   git describe | sed 's/^v//; s/-/.r/; s/-.*//'
 }
 
-build() {
+prepare() {
   cd tarantool
-
-  # tarantool uses git submodule, handle this
   git submodule init
   git config -f .gitmodules 'submodule.third_party/luajit.url' "$srcdir/luajit"
   git config -f .gitmodules 'submodule.src/lib/msgpuck.url' "$srcdir/msgpuck"
@@ -54,6 +52,13 @@ build() {
   git submodule sync
   git submodule update
 
+  sed -i -e 's/coros/lock/g' test-run/lib/connpool.py
+}
+
+build() {
+  cd tarantool
+
+  # tarantool uses git submodule, handle this
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_BINDIR=/usr/bin \
@@ -64,9 +69,7 @@ build() {
     -DENABLE_BUNDLED_LIBYAML:BOOL=OFF \
     -DENABLE_BACKTRACE:BOOL=ON \
     -DWITH_SYSTEMD:BOOL=ON \
-    -DENABLE_DIST:BOOL=ON \
-    .
-
+    -DENABLE_DIST:BOOL=ON
   make
 }
 
@@ -80,5 +83,4 @@ package() {
   make install DESTDIR="$pkgdir"
 
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  rm -r "$pkgdir/var/run"
 }
