@@ -4,14 +4,14 @@
 # Contributor: Jed Brown <jed@59A2.org>
 
 pkgname=sowing
-pkgver=1.1.23
+pkgver=1.1.25
 pkgrel=1
 pkgdesc="Tools for documenting and improving portability"
 arch=('any')
 url="http://www.cs.uiuc.edu/~wgropp/projects/software/sowing"
 license=('GPL')
 source=($pkgname-$pkgver.tar.gz::http://wgropp.cs.illinois.edu/projects/software/sowing/sowing.tar.gz)
-sha256sums=('4d2e845d82beebdfb094312ab8969ea72f8df9e1b3ded5cbf24ba552103e247f')
+sha256sums=('217f3035da230f32862368e9447e84ff210c6670567631da557408a069982bf3')
 
 
 build() {
