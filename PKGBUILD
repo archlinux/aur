@@ -16,11 +16,11 @@ optdepends=('libcanberra: for sound support')
 provides=("thunderbird=$pkgver")
 conflicts=('thunderbird-beta')
 install=$pkgname.install
-source=("$pkgname.desktop"
+source=('thunderbird-beta-bin.desktop'
         'vendor.js')
 source_i686=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-i686/en-US/thunderbird-$pkgver.tar.bz2")
 source_x86_64=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/en-US/thunderbird-$pkgver.tar.bz2")
-sha512sums=('abb7ef2be514fd721d33291d9010461796f3adb42b340d0452c98daa9f29c58d7c149439b336c88e0688122ac4d024810baa2f69857559322ac5f4c6e0f2d0fb'
+sha512sums=('e5649ddee3ca9cfdcf56652e9c8e6160d52c69d1439f9135b0c0d436ce61a25f17758afc0dd6cac3434c26234c584828eb07fdf9604797f7dd3f617ec194b79a'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
 sha512sums_i686=('8acd58a70a0c1a506a630ace1f939fd196bb037353f60ff40d669cb4135a71af0dc77e876f43094743c494c192de82e3a719e28650681b478cd8c3f066f6999c')
 sha512sums_x86_64=('5314e5e129f4c68fdff04f8c9bfccf549da8d5b7fe556c31551c4b5cf7be3a949d567f4790b6018b4bae3013698baeb56cd6bade49c5acb634f9ea065ac3bdfb')
