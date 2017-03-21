@@ -1,5 +1,5 @@
 pkgbase = simple-scan-trunk
-	pkgdesc = Simple scanning utility - the version before they broke everything
+	pkgdesc = Simple scanning utility (trunk version)
 	pkgver = 3.24.0
 	pkgrel = 1
 	url = http://launchpad.net/simple-scan

@@ -6,7 +6,7 @@
 pkgname=simple-scan
 pkgver=3.24.0
 pkgrel=1
-pkgdesc="Simple scanning utility - the version before they broke everything"
+pkgdesc="Simple scanning utility (trunk version)"
 url="http://launchpad.net/simple-scan"
 arch=(i686 x86_64)
 license=(GPL3)
