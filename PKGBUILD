@@ -2,7 +2,7 @@
 
 pkgname=arpon-ng
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Prevents MITM attacks on the Address Resolution Protocol (ARP)"
 arch=('i686' 'x86_64')
 url="http://arpon.sourceforge.net"
@@ -15,15 +15,18 @@ backup=('etc/arpon.conf' 'etc/conf.d/arpon')
 install="${pkgname}.install"
 source=("ArpON-${pkgver}-ng.tar.gz::https://sourceforge.net/projects/arpon/files/arpon/ArpON-${pkgver}-ng.tar.gz/download"
 	'arpon.service'
-	'arpon.service.conf')
+	'arpon.service.conf'
+	'arpon-syslog.patch')
 md5sums=('a89ef9bc18e6f0fc9aa8a89aa676a281'
-	 '3630b18dc67f9133acc8e3615462e341'
-	 '01432a91eaa5f9c2a9fc490ebc7b300d')
+	 'SKIP'
+	 'SKIP'
+	 'SKIP')
 
 prepare() {
 	cd "ArpON-${pkgver}-ng"
-	mkdir -p build
+	patch -p1 < ../arpon-syslog.patch
 	sed -i -e 's:/sbin:/usr/bin:g' src/CMakeLists.txt README
+	mkdir -p build
 }
 
 build() {

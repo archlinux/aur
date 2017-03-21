@@ -1,7 +1,7 @@
 pkgbase = arpon-ng
 	pkgdesc = Prevents MITM attacks on the Address Resolution Protocol (ARP)
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://arpon.sourceforge.net
 	install = arpon-ng.install
 	arch = i686
@@ -18,9 +18,11 @@ pkgbase = arpon-ng
 	source = ArpON-3.0-ng.tar.gz::https://sourceforge.net/projects/arpon/files/arpon/ArpON-3.0-ng.tar.gz/download
 	source = arpon.service
 	source = arpon.service.conf
+	source = arpon-syslog.patch
 	md5sums = a89ef9bc18e6f0fc9aa8a89aa676a281
-	md5sums = 3630b18dc67f9133acc8e3615462e341
-	md5sums = 01432a91eaa5f9c2a9fc490ebc7b300d
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = arpon-ng
 

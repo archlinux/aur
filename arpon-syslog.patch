@@ -1,0 +1,319 @@
+commit 120264d7527da51b0caf46af9b62a79692cd3d46
+Author: Adrian Günter <adrian@gntr.me>
+Date:   Tue Mar 21 06:43:29 2017 +0000
+
+    Convert log file functionality to syslog
+
+diff --git a/cmake/modules/FindHeaders.cmake b/cmake/modules/FindHeaders.cmake
+index 3a49e61..ded547f 100644
+--- a/cmake/modules/FindHeaders.cmake
++++ b/cmake/modules/FindHeaders.cmake
+@@ -156,6 +156,11 @@ if(NOT HAVE_ASSERT_H)
+     message(FATAL_ERROR "Could not find assert.h!")
+ endif(NOT HAVE_ASSERT_H)
+ 
++check_include_file(syslog.h HAVE_SYSLOG_H)
++if(NOT HAVE_SYSLOG_H)
++    message(FATAL_ERROR "Could not find syslog.h!")
++endif(NOT HAVE_SYSLOG_H)
++
+ #
+ # EOF
+ #
+diff --git a/src/main.c b/src/main.c
+index 7045a13..42c96d3 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -33,6 +33,7 @@
+ 
+ #include <stdio.h>
+ #include <stdbool.h>
++#include <syslog.h>
+ 
+ #include "dmn.h"
+ #include "env.h"
+@@ -49,6 +50,8 @@
+ int
+ main(int argc, char **argv, char **envp)
+ {
++    /* Initialize syslog. */
++    openlog("arpon", LOG_CONS | LOG_PID | LOG_NDELAY, LOG_DAEMON);
+ 
+     /* Audit the environment. */
+     env_audit(argv, envp);
+diff --git a/src/msg.c b/src/msg.c
+index 77ee70d..292b1c7 100644
+--- a/src/msg.c
++++ b/src/msg.c
+@@ -42,6 +42,7 @@
+ #include <errno.h>
+ #include <assert.h>
+ #include <pthread.h>
++#include <syslog.h>
+ 
+ #include "config.h"
+ #include "exit.h"
+@@ -59,22 +60,9 @@
+ #define MSG_MESSAGESIZE     512     /* 512 bytes. */
+ 
+ /*
+- * Log file permissions to 640.
+- */
+-#define MSG_LOGPERMS        S_IRUSR | S_IWUSR | S_IRGRP
+-
+-/*
+  * Function prototypes not exported.
+  */
+-static void msg_init(void);
+-static void msg_destroy(void);
+ static void msg_gettimestamp(char *ts);
+-static void msg_putmessage(FILE *stream, const char *msg);
+-
+-/*
+- * Initialize the log file stream.
+- */
+-static FILE *log = NULL;
+ 
+ /*
+  * Initialize the message mutex.
+@@ -82,7 +70,7 @@ static FILE *log = NULL;
+ static pthread_mutex_t msg_mtx = PTHREAD_MUTEX_INITIALIZER;
+ 
+ /*
+- * Initialize the log file stream and print the message with logging.
++ * Print the message.
+  * The syntax of each message is:
+  *
+  * timestamp1 [log level] message1
+@@ -98,16 +86,31 @@ msg(FILE *stream, const char *level, const char *fmt, ...)
+         char ts[MSG_TIMESTAMPSIZE], msg[MSG_MESSAGESIZE];
+         va_list ap;
+         int len1, len2, tot_len = MSG_MESSAGESIZE;
++        int syslog_lvl;
+ 
+         /* Lock the mutex of the message. */
+         if (pthread_mutex_lock(&msg_mtx) != 0)
+             break;
+ 
+-        /* Log file stream of the messages already initialized and open? */
+-        if (log == NULL) {
+-            /* Initialize the log file stream of the messages. */
+-            msg_init();
+-        }
++        if (strcmp(level, "ERROR") == 0)
++          syslog_lvl = LOG_ERR;
++        else if (strcmp(level, "WARN") == 0)
++          syslog_lvl = LOG_WARNING;
++        else if (strcmp(level, "INFO") == 0)
++          syslog_lvl = LOG_INFO;
++        else if (strcmp(level, "DEBUG") == 0)
++          syslog_lvl = LOG_DEBUG;
++        else if (strcmp(level, "BUG") == 0)
++          syslog_lvl = LOG_CRIT;
++        else
++          syslog_lvl = LOG_NOTICE;
++
++        va_start(ap, fmt);
++
++        /* Print the message to syslog. */
++        vsyslog(syslog_lvl, fmt, ap);
++
++        va_end(ap);
+ 
+         /* Get the timestamp of the message. */
+         msg_gettimestamp(ts);
+@@ -139,125 +142,17 @@ msg(FILE *stream, const char *level, const char *fmt, ...)
+         /* No message truncated. */
+         assert(tot_len > 0);
+ 
+-        /* Print the message in the log file stream and the file stream. */
+-        msg_putmessage(stream, msg);
+-
+-        /* Unlock the mutex of the message. */
+-        if (pthread_mutex_unlock(&msg_mtx) != 0)
+-            break;
+-
+-        return;
+-    } while (0);
+-
+-    ERROR("%s", strerror(errno));
+-    exit(EXIT_FAILURE);
+-}
+-
+-/*
+- * Initialize the log file stream of the messages.
+- */
+-static void
+-msg_init(void)
+-{
+-
+-    do {
+-        struct stat stats;
+-        bool UNUSED(logcreate) = false;
+-
+-        /* Check if the log file exist. */
+-        if (stat(LOG_FILE, &stats) < 0) {
+-            if (errno == ENOENT) {
+-                int fd;
+-
+-                /* Create and open the log file with the 640 perms. */
+-                if ((fd = open(LOG_FILE, O_CREAT, MSG_LOGPERMS)) < 0)
+-                    break;
+-
+-                /* Close the log file descriptor. */
+-                if (close(fd) < 0)
+-                    break;
+-
+-                /* Call again. */
+-                if (stat(LOG_FILE, &stats) < 0)
+-                    break;
+-
+-#ifndef NDEBUG
+-                /* Log file created. */
+-                logcreate = true;
+-#endif  /* !NDEBUG */
+-            } else {
+-                break;
+-            }
+-        }
+-
+-        /* Check if the log file is a regular file. */
+-        if (S_ISREG(stats.st_mode) == 0) {
+-            ERROR("%s is not a regular file", LOG_FILE);
+-            exit(EXIT_FAILURE);
+-        }
+-
+-        /* Fix the log file perms to 640. */
+-        if (chmod(LOG_FILE, MSG_LOGPERMS) < 0)
+-            break;
++        /* Print the message in the file stream. */
++        fprintf(stream, "%s", msg);
+ 
+-        /* Open the log file stream to append. */
+-        if ((log = fopen(LOG_FILE, "a")) == NULL)
++        /* Flush the file stream. */
++        if (fflush(stream) == EOF)
+             break;
+ 
+-#ifndef NDEBUG
+         /* Unlock the mutex of the message. */
+         if (pthread_mutex_unlock(&msg_mtx) != 0)
+             break;
+ 
+-        /* Log file created? */
+-        if (logcreate == true)
+-            MSG_DEBUG("Create %s with 640 perms successful", LOG_FILE);
+-#endif  /* !NDEBUG */
+-
+-        MSG_DEBUG("Open %s successful", LOG_FILE);
+-        MSG_DEBUG("Start logging");
+-
+-        /* Push msg_destroy() to be called on exit_cleanup(). */
+-        exit_push(msg_destroy, "msg_destroy");
+-
+-#ifndef NDEBUG
+-        /* Lock the mutex of the message. */
+-        if (pthread_mutex_lock(&msg_mtx) != 0)
+-            break;
+-#endif  /* !NDEBUG */
+-
+-        return;
+-    } while (0);
+-
+-    ERROR("%s", strerror(errno));
+-    exit(EXIT_FAILURE);
+-}
+-
+-/*
+- * Destroy the log file stream of the messages.
+- */
+-static void
+-msg_destroy(void)
+-{
+-
+-    do {
+-        /* Unlock the mutex of the message before the destruction. */
+-        if (pthread_mutex_unlock(&msg_mtx) != 0)
+-            break;
+-
+-        /* Log file stream of the messages already destroyed and closed? */
+-        if (log != NULL) {
+-            MSG_DEBUG("End logging");
+-            MSG_DEBUG("Close %s successful", LOG_FILE);
+-
+-            /* Close the log file stream. */
+-            if (fclose(log) == EOF)
+-                break;
+-
+-            /* Set the log file stream to NULL. */
+-            log = NULL;
+-        }
+-
+         return;
+     } while (0);
+ 
+@@ -300,64 +195,6 @@ msg_gettimestamp(char *ts)
+ }
+ 
+ /*
+- * Put the message in the log file stream and the file stream.
+- */
+-static void
+-msg_putmessage(FILE *stream, const char *msg)
+-{
+-
+-    do {
+-        struct stat stats;
+-
+-        /* Check if the log file exist. */
+-        if (stat(LOG_FILE, &stats) < 0) {
+-            if (errno == ENOENT) {
+-                /* Close the log file stream. */
+-                if (fclose(log) == EOF)
+-                    break;
+-
+-                /* Set the log file stream to NULL. */
+-                log = NULL;
+-
+-                /* Re-initialize the log file stream. */
+-                msg_init();
+-
+-                /* Call again. */
+-                if (stat(LOG_FILE, &stats) < 0)
+-                    break;
+-            } else {
+-                break;
+-            }
+-        }
+-
+-        /* Check if the log file is a regular file. */
+-        if (S_ISREG(stats.st_mode) == 0) {
+-            ERROR("%s is not a regular file", LOG_FILE);
+-            exit(EXIT_FAILURE);
+-        }
+-
+-        /* Print the message in the log file stream. */
+-        fprintf(log, "%s", msg);
+-
+-        /* Flush the log file stream. */
+-        if (fflush(log) == EOF)
+-            break;
+-
+-        /* Print the message in the file stream. */
+-        fprintf(stream, "%s", msg);
+-
+-        /* Flush the file stream. */
+-        if (fflush(stream) == EOF)
+-            break;
+-
+-        return;
+-    } while (0);
+-
+-    ERROR("%s", strerror(errno));
+-    exit(EXIT_FAILURE);
+-}
+-
+-/*
+  * EOF
+  *
+  * vim:ts=4:expandtab

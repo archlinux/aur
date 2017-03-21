@@ -8,6 +8,8 @@ EnvironmentFile=/etc/conf.d/arpon
 PIDFile=/run/arpon.pid
 ExecStart=/usr/bin/arpon $ARPON_OPTS
 ExecReload=/usr/bin/kill -HUP $MAINPID
+StandardOutput=null
+StandardError=null
 KillMode=process
 Restart=always
 
