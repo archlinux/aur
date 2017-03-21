@@ -1,0 +1,29 @@
+pkgbase = colmap-git
+	pkgdesc = COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface.
+	pkgver = 2.1.r71.g0a93918
+	pkgrel = 1
+	url = https://colmap.github.io/
+	install = colmap-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc5
+	makedepends = eigen
+	depends = suitesparse
+	depends = freeglut
+	depends = glew
+	depends = google-glog
+	depends = freeimage
+	depends = boost-libs
+	depends = qt5-base
+	source = colmap-git::git+https://github.com/colmap/colmap.git
+	source = colmap-git.install
+	source = colmap.desktop
+	md5sums = SKIP
+	md5sums = ebb1dc43e014a1e720a06422c6248a40
+	md5sums = 55d81534d969cf706719007462f20443
+
+pkgname = colmap-git
+
