@@ -1,7 +1,7 @@
 # Maintainer: Arnoud Willemsen <mail at lynthium dot com>
 
 pkgname=jdupes-git
-pkgver=1.0.1.r182.552dd62
+pkgver=1.8.r420.d1195b2
 pkgrel=1
 pkgdesc="jdupes is a program for identifying duplicate files residing within specified directories"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/jbruchon/jdupes/"
 license=('MIT')
 depends=('glibc')
 provides=('jdupes')
-conflicts=('fdupes-jody-git')
+conflicts=('jdupes')
 source=("${pkgname}::git+https://github.com/jbruchon/jdupes.git"
         "LICENSE")
 sha256sums=('SKIP'
@@ -22,14 +22,13 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  make
+  make ENABLE_BTRFS=1
 }
 
 package(){
   cd "${srcdir}/${pkgname}"
-  install -d "${pkgdir}"/usr/{share/man/man1,bin}
   make PREFIX="/usr" DESTDIR="${pkgdir}" install
-  install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
 # vim: set ts=2 sw=2 et:

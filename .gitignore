@@ -1,0 +1,4 @@
+pkg/
+src/
+jdupes-git
+*.pkg.tar.*
