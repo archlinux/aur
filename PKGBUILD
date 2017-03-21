@@ -3,8 +3,8 @@
 
 pkgname=getfem++
 _pkgname=getfem
-pkgver=5.0
-pkgrel=2
+pkgver=5.1
+pkgrel=1
 pkgdesc="Generic C++ finite element library."
 arch=('i686' 'x86_64')
 url="http://download.gna.org/getfem/html/homepage/"
@@ -17,7 +17,7 @@ makedepends=('gcc-fortran')
 conflicts=('gmm')
 provides=('getfem++' 'gmm')
 source=("http://download.gna.org/getfem/stable/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('2c824b39930ea9852077b196f63a9bbc4e3f19e098323dccae6d6fa4011c993e')
+sha256sums=('d768ff0da08536e8291d6e85e8600d285efa9e10e939709a810cdcd5935a7203')
 
 prepare(){
   cd "${srcdir}/${_pkgname}-${pkgver}"
