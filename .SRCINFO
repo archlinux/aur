@@ -1,6 +1,6 @@
 pkgbase = stack-client
 	pkgdesc = The STACK Client provides file sync to desktop clients.
-	pkgver = 2.1.1
+	pkgver = 2.2.4
 	pkgrel = 1
 	url = https://www.transip.nl/stack/
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = stack-client
 	provides = owncloud-client
 	provides = owncloud-client-ngs
 	conflicts = stack-client-bin
-	source = http://mirror.transip.net/stack/software/source/stackclient-2.1.1-sources-complete.zip
-	sha1sums = cf0d493d4ddec8428e8905a3442ba23b40d32a67
+	source = http://mirror.transip.net/stack/software/source/stackclient-2.2.4-sources.zip
+	sha256sums = 65540597542b2af3f195742ffb4983cdb9030370f44482451d7a622d033ae661
 
 pkgname = stack-client
 
