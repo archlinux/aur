@@ -1,6 +1,6 @@
 pkgbase = conan
 	pkgdesc = A distributed, open source, C/C++ package manager.
-	pkgver = 0.20.3
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://conan.io
 	arch = any
@@ -22,8 +22,10 @@ pkgbase = conan
 	depends = python-bottle<0.13
 	depends = python-distro>=1.0.2
 	depends = python-distro<1.1.0
-	source = https://github.com/conan-io/conan/archive/0.20.3.tar.gz
-	sha512sums = 0822b83a6942e2b92c2339482b10ca7935cfef5c568a2ab98e54090ce46482592d0e9f42fe62f5d19a44ba6679778f185a0aa79242194e3dc1038cf306f3f3e7
+	depends = python-pluginbase>=0.5
+	depends = python-pluginbase<1.0
+	source = https://github.com/conan-io/conan/archive/0.21.0.tar.gz
+	sha512sums = ded0b89c3adde95e0e0d1644d1430c92bfb87fd68b0637f3f6edd93053742c6c3f5bddbdde3b8323826c15846cd27ee31bcdba9bb24c29086ca72d0f018752a4
 
 pkgname = conan
 
