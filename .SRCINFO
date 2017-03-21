@@ -1,14 +1,12 @@
 pkgbase = mpc-qt-git
 	pkgdesc = A clone of Media Player Classic reimplimented in Qt.
-	pkgver = r798.69b1468
+	pkgver = r819.3d7ced7
 	pkgrel = 1
 	url = https://github.com/cmdrkotori/mpc-qt
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = imagemagick
-	makedepends = librsvg
 	depends = mpv
 	depends = qt5-x11extras
 	provides = mpc-qt
