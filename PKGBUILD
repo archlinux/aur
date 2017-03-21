@@ -683,7 +683,7 @@ package_linux-pf-preset-default()
   # install fallback mkinitcpio.conf file and preset file for kernel
   install -D -m644 "${srcdir}/linux.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
-  install -D -m644 "${srcdir}/99-linux-pf.hook" "${pkgdir}/usr/share/libalpm/hooks/99-linux-pf.hook"
+  install -D -m644 "${srcdir}/90-linux-pf.hook" "${pkgdir}/usr/share/libalpm/hooks/90-linux-pf.hook"
   
   # set correct depmod command for install
   #sed \
