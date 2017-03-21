@@ -18,11 +18,16 @@ conflicts=("arangodb-latest" "arangodb-git")
 options=()
 install=arangodb.install
 source=("https://www.arangodb.com/repositories/Source/ArangoDB-$pkgver.tar.bz2"
-"arangodb3.service" "arangodb-tmpfile.conf" "arangodb-users.conf")
-sha256sums=('021b7810de22d2a0d6d9513c7e4d2bd0f62076822325f5028a0b56fc0a3e2bf9'
-            '7de422694ff36683849bd552bec3d5161a52455680a8ea30eba0988dcf5c1c67'
-            '736581ab917755c859d17b4015f68380384f924279aa61c9c160960018e1e4e4'
-            '91736a42fd4e9c0bacef7369ce4ce91bd6b2e7493c0b0cc6462525fa614b009d')
+"https://www.arangodb.com/repositories/Source/ArangoDB-${pkgver}.tar.bz2.asc"
+"arangodb3.service"
+"arangodb-tmpfile.conf"
+"arangodb-users.conf")
+validpgpkeys=('CD8CB0F1E0AD5B52E93F41E7EA93F5E56E751E9B') # Frank Celler (ArangoDB Debian Repository) <info@arangodb.com>
+sha512sums=('09a33af07af28b457a01d9281314d0dcb99f0ef646068a70d2fa62bad98a85fc5264e518ac62f320bbef503c1ad259d13beb24cdbc7bd498f02a095c089e4989'
+            'SKIP'
+            '57a88d2250fb7db6d423338d9a8ecf7c8e315b876f99cc17c6a90cb414a4a69d6654d8dfe697e9ae174c525bb1757bc184bfd62d3dfa15f95b8a9a4a80808fd3'
+            '4dc6f0a18be2e759b89693a54f3376f52d8b646978c81f0f7069d8ed2c6d7123777a9709d000a5467a4f927b8befb5f472d933eb843db842cf853321a0ad5e7c'
+            '8a73da7dfb9cc371ce7c72efd53afc04ede26a890cd7542c82c518bf3d7c5be38abfcad66235fc9cf9d63c9955ebcdbca4c1d7056b386b1b59bf61dc1887febd')
 
 build() {
   msg2 "Symlinking 'python' to python2."
