@@ -1,0 +1,22 @@
+diff --git a/test/file/test-fs-ownergroup.js b/test/file/test-fs-ownergroup.js
+index 113ea74c..d23915cf 100644
+--- test/file/test-fs-ownergroup.js
++++ test/file/test-fs-ownergroup.js
+@@ -38,7 +38,7 @@ exports.testChangeOwner = function() {
+     assert.equal(fs.owner(testFile), java.lang.System.getProperty("user.name"));
+ 
+     assert.throws(function() {
+-        fs.changeOwner(testFile, "thisuserdoesnotexistforsureonthissystem" + Date.now());
++        fs.changeOwner(testFile, "doesnotexist" + Date.now());
+     }, java.nio.file.attribute.UserPrincipalNotFoundException);
+     assert.equal(fs.owner(testFile), java.lang.System.getProperty("user.name"));
+ };
+@@ -52,7 +52,7 @@ exports.testChangeGroup = function() {
+     var oldGroup = fs.group(testFile);
+ 
+     assert.throws(function() {
+-        fs.changeGroup(testFile, "thisgroupdoesnotexistforsureonthissystem" + Date.now());
++        fs.changeGroup(testFile, "doesnotexist" + Date.now());
+     }, java.nio.file.attribute.UserPrincipalNotFoundException);
+ 
+     assert.isTrue(fs.changeGroup(testFile, oldGroup));
