@@ -1,4 +1,5 @@
-# Maintainer: artoo <artoo@manjaro.org>
+# Maintainer: David P. <megver83@openmailbox.org>
+# Contributor: artoo <artoo@manjaro.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Thayer Williams <thayer@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
@@ -8,9 +9,9 @@ _extra=pm-quirks
 
 pkgname=pm-utils
 pkgver=1.4.1
-pkgrel=7
+pkgrel=2
 pkgdesc="Utilities and scripts for suspend and hibernate power management"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://pm-utils.freedesktop.org"
 license=('GPL')
 depends=('bash' 'procps')

@@ -1,10 +1,9 @@
 pkgbase = pm-utils
 	pkgdesc = Utilities and scripts for suspend and hibernate power management
 	pkgver = 1.4.1
-	pkgrel = 7
+	pkgrel = 2
 	url = http://pm-utils.freedesktop.org
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
 	makedepends = xmlto
 	makedepends = docbook-xml
