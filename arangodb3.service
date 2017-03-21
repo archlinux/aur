@@ -21,11 +21,6 @@ Type=forking
 User=arangodb
 Group=arangodb
 PIDFile=/run/arangodb3/arangod.pid
-# Run ExecStartPre with root-permissions
-PermissionsStartOnly=true
-# ExecStartPre run sequentially
-ExecStartPre=/usr/bin/chown -R arangodb:arangodb /var/log/arangodb3
-ExecStartPre=/usr/bin/chown -R arangodb:arangodb /var/lib/arangodb3
 ExecStartPre=/usr/bin/arangod --pid-file /run/arangodb3/arangod.pid --server.rest-server false --database.auto-upgrade true
 ExecStart=/usr/bin/arangod -c /etc/arangodb3/arangod.conf --pid-file /run/arangodb3/arangod.pid --temp.path /var/tmp/arangod --supervisor
 

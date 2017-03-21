@@ -25,7 +25,7 @@ source=("https://www.arangodb.com/repositories/Source/ArangoDB-$pkgver.tar.bz2"
 validpgpkeys=('CD8CB0F1E0AD5B52E93F41E7EA93F5E56E751E9B') # Frank Celler (ArangoDB Debian Repository) <info@arangodb.com>
 sha512sums=('09a33af07af28b457a01d9281314d0dcb99f0ef646068a70d2fa62bad98a85fc5264e518ac62f320bbef503c1ad259d13beb24cdbc7bd498f02a095c089e4989'
             'SKIP'
-            '57a88d2250fb7db6d423338d9a8ecf7c8e315b876f99cc17c6a90cb414a4a69d6654d8dfe697e9ae174c525bb1757bc184bfd62d3dfa15f95b8a9a4a80808fd3'
+            'cd5b17eeb6ed908c4c5f314bbf4b2d4fea2565684926f99938ac14814a5a08571c47b2fb5f9c9ef5054a0ffefd946d351edac759118419b30a7624cf4991df84'
             '4dc6f0a18be2e759b89693a54f3376f52d8b646978c81f0f7069d8ed2c6d7123777a9709d000a5467a4f927b8befb5f472d933eb843db842cf853321a0ad5e7c'
             '8a73da7dfb9cc371ce7c72efd53afc04ede26a890cd7542c82c518bf3d7c5be38abfcad66235fc9cf9d63c9955ebcdbca4c1d7056b386b1b59bf61dc1887febd')
 
