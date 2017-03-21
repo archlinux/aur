@@ -1,4 +1,4 @@
-# Contributor Asterios Dimitriou <steve at pci dot gr>
+# Maintainer: Asterios Dimitriou <asterios@pci.gr>
 
 _pkgname=sqlcipher
 pkgname=mingw-w64-sqlcipher
@@ -11,10 +11,18 @@ license=('BSD')
 makedepends=('mingw-w64-configure' 'tcl')
 depends=('mingw-w64-crt' 'mingw-w64-openssl')
 options=(!buildflags !strip staticlibs !makeflags)
-source=("${_pkgname}-${pkgver}.zip::https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.zip")
-sha256sums=('6f65b65a6b450279151bdec8c66122133245bc78605165482a45347cee8dc904')
+source=("${_pkgname}-${pkgver}.zip::https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.zip"
+        "https://www.zetetic.net/${_pkgname}/verify/${pkgver}/${_pkgname}-${pkgver}.zip.sig")
+sha256sums=('6f65b65a6b450279151bdec8c66122133245bc78605165482a45347cee8dc904'
+            'SKIP')
+validpgpkeys=('D83F5F9EB811D6E6B4A0D9C5D1FA3A2A97ED25C2')   # Zetetic LLC <support@zetetic.net>
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare(){
+  cd "${srcdir}/${_pkgname}-${pkgver}/"
+  sed -i 's/lemon /lemon\$(BEXE)/g' Makefile.in
+}
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}/"
@@ -27,8 +35,6 @@ build() {
         --enable-tempstore \
         --disable-tcl \
         ..
-    sed -i 's/OS_UNIX/OS_WIN/g' Makefile
-    sed -i 's/lemon /lemon\$(BEXE)/g' Makefile
     make
     popd
   done

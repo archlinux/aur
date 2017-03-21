@@ -14,7 +14,10 @@ pkgbase = mingw-w64-sqlcipher
 	options = staticlibs
 	options = !makeflags
 	source = sqlcipher-3.4.1.zip::https://github.com/sqlcipher/sqlcipher/archive/v3.4.1.zip
+	source = https://www.zetetic.net/sqlcipher/verify/3.4.1/sqlcipher-3.4.1.zip.sig
+	validpgpkeys = D83F5F9EB811D6E6B4A0D9C5D1FA3A2A97ED25C2
 	sha256sums = 6f65b65a6b450279151bdec8c66122133245bc78605165482a45347cee8dc904
+	sha256sums = SKIP
 
 pkgname = mingw-w64-sqlcipher
 
