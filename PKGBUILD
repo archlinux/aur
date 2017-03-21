@@ -11,6 +11,6 @@ source=("https://github.com/amlamarra/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('6c62723abeda776624c02ee22c1d986be51ac27642ca34831729eb58955fe407')
 
 package () {
-	install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm755 "$srcdir/$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
