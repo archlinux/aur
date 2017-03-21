@@ -14,7 +14,7 @@
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.83945.gd96f6df3a6
+pkgver=N.84293.g5e3a418b60
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -52,40 +52,29 @@ sha256sums=('SKIP'
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 	
-	# Git, tags available
-	        
-	# Method showing version based on FFmpeg Git versioning system
+	# use FFmpeg internal git versioning
 	printf "%s" "$(git describe --tags --match N | tr '-' '.')"
 }
 
 build() {
 	cd "${srcdir}/${pkgname}"
 	
-	# Add x86_64 depends and optdepends to the build if architecture is x86_64
-	if [ "$CARCH" = "x86_64" ]; then
+	# set x86_64 specific options
+	if [ "$CARCH" = "x86_64" ] 
+	then
 	    _cuda="--enable-cuda"
-	    _cudainc="-I/opt/cuda/include"
-	    _cudalib="-L/opt/cuda/lib64"
 	    _cuvid="--enable-cuvid"
 	    _libnpp="--enable-libnpp"
-	    _intelsdklib="-Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
-	else
-	    _cuda=""
-	    _cudainc=""
-	    _cudalib=""
-	    _cuvid=""
-	    _libnpp=""
-	    _intelsdklib=""
+	    _cflags="--extra-cflags=-I/opt/cuda/include"
+	    _ldflags="--extra-ldflags=-L/opt/cuda/lib64 -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
 	fi
 	
 	msg2 "Running ffmpeg configure script. Please wait..."
 	
 	./configure \
 	        --prefix=/usr \
-	        --extra-cflags="-I/usr/lib/jvm/$(archlinux-java get)/include \
-	                        -I/usr/lib/jvm/$(archlinux-java get)/include/linux \
-	                        ${_cudainc}" \
-	        --extra-ldflags="${_cudalib} ${_intelsdklib}" \
+	        $_cflags \
+	        "$_ldflags" \
 	        \
 	        --enable-rpath \
 	        --enable-gpl \
@@ -104,7 +93,6 @@ build() {
 	        --enable-gmp \
 	        --enable-gnutls \
 	        --enable-iconv \
-	        --enable-jni \
 	        --enable-ladspa \
 	        --enable-libass \
 	        --enable-libbluray \
@@ -166,7 +154,6 @@ build() {
 	        --enable-libzvbi \
 	        --enable-lzma \
 	        --enable-decklink \
-	        --enable-mediacodec \
 	        --enable-netcdf \
 	        --enable-openal \
 	        --enable-opencl \
