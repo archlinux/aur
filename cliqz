@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-
-cd /usr/lib/CLIQZ-MOZVER
-exec ./CLIQZ
