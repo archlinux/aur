@@ -10,9 +10,9 @@
 _use_ppa=true
 
 pkgname=gtk3-ubuntu
-_ubuntu_rel=1ubuntu1~ubuntu16.10.1
+_ubuntu_rel=1ubuntu2~ubuntu16.10.1
 pkgver=3.22.7
-pkgrel=1
+pkgrel=2
 pkgdesc="GObject-based multi-platform toolkit"
 arch=(i686 x86_64)
 url="http://www.gtk.org/"
@@ -36,10 +36,10 @@ else
   source+=("http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/g/gtk+3.0/gtk+3.0_${_ubuntu_ver:-${pkgver}}-${_ubuntu_rel}.debian.tar.xz")
 fi
 
-sha512sums=('f1969612a89c67fb0414843f3cc51ce91894c9fdfdf6b6e00472d761848b5b1be529d35f2da43c26d345e4b39e81980d2de53d16f194d96775ba21f3c6d0926c'
+sha512sums=('c4cf49c05a3553290013749e58f8179ff4c5ae74876e62a3d1870784b1da8846b16bad189baa57aabb65b10aa6b687d188eaf0460d83034cf47b7df5d55ddd2c'
             'ad2c0b0388f4169592b9574f0b3db673a969b7c4721548c4ac7c438eddbcdc378fcaac04e2b6c858a1562cc23ddf4804e5f7be08068340b7c9365e2b11ddcfb8'
             'f0ffd95544863f2e10fda81488b4727aa9a8a35a7d39fb96872db6664d03442db2b58af788b5990825c7b3a83681f7220ca481409cca5421dfb39b9a3bbac9ac'
-            '2bc7fb9828393149327f448e9992b70ac4fc9ede3abd8de9a2700cb26be4203d4a77a075300c6dd3b46aa3bd777bfe6b95e50065341061f618158011cb01aeb2')
+            'f6c998a2c2ad1e1c03d84c506103d952794fde8038780bd7b0294bd0b32bab619815911b3bb531f05cd2a14dae0054f4f6fd2e585a898f7256be6f546d380eb7')
 
 prepare() {
     cd "gtk+-${pkgver}"
@@ -62,6 +62,7 @@ prepare() {
         ubuntu_fileselector_behaviour.patch
         unity-border-radius.patch
         unity-headerbar-maximized-mode.patch
+	gtksocket-unscale-before-sending-configurenotify.patch
     )
 
     for i in "${patches[@]}"; do
