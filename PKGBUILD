@@ -13,7 +13,7 @@ sha256sums=('dcd077ae275ef0d54d9774a6414e690197f1e867cdb458232524f68924323b13')
 
 package() {
 	install -d ${pkgdir}/usr/share/themes
-	cp -r Dark-Aurora ${pkgdir}/usr/share/themes/Dark-Aurora
+	cp -r Dark-Aurora-3.20/Dark-Aurora ${pkgdir}/usr/share/themes/Dark-Aurora
 	find ${pkgdir} -type f -exec chmod 644 {} \;
 	find ${pkgdir} -type d -exec chmod 755 {} \;
 }
