@@ -3,7 +3,7 @@
 
 pkgname=rr
 pkgver=4.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64)
 url='http://rr-project.org/'
@@ -12,9 +12,11 @@ depends=('python2-pexpect' 'gdb')
 makedepends=('git' 'cmake' 'gdb')
 [ "$CARCH" = 'x86_64' ] && makedepends+=('gcc-multilib')
 source=(https://github.com/mozilla/${pkgname}/archive/${pkgver}.tar.gz
-        https://patch-diff.githubusercontent.com/raw/mozilla/rr/pull/2001.patch)
+        https://patch-diff.githubusercontent.com/raw/mozilla/rr/pull/2001.patch
+        https://github.com/mozilla/rr/commit/5a16d15ef348c069b82449dcdeaeea3c1eb8639b.patch)
 sha1sums=('70d3902c36fb1d0cd423cf1046df06f5153cba5b'
-          '51dba5dbbe16c3631a101409a28247075668fe7b')
+          '51dba5dbbe16c3631a101409a28247075668fe7b'
+          '401ca2e7108fc305c6644c2d27a86fdb24855fb1')
 
 prepare() {
 	cd $pkgname-$pkgver
@@ -22,6 +24,9 @@ prepare() {
 
 	# -Werror fixes
 	patch -p1 -i ../2001.patch
+	# "Newer versions of glibc are deprecating the implicit sys/sysmacros.h
+	# include via sys/types.h, so include it explicitly"
+	patch -p1 -i ../5a16d15ef348c069b82449dcdeaeea3c1eb8639b.patch
 }
 
 build() {
