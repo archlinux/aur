@@ -22,6 +22,9 @@ class Score:
         self.out.field_names = ['课程名', '考试类型', '学分', '实验成绩', '平时成绩', '期中成绩', '期末成绩', '总成绩',
                                 '选课人数', '最高分', '最低分', '排名']
         self.get_cookie()
+        self.all_courses = None
+        self.gpa = 0
+        self.cur_gpa = 0
 
     def get_cookie(self, retry_times=5):
         if retry_times == 0:
@@ -44,6 +47,16 @@ class Score:
         self.bs = BeautifulSoup(req.text, 'lxml')
         self.table = self.bs.find_all('table')[4]
         self.courses = self.table.find_all('tr')[1:]
+
+    def __get_gpa_bs(self):
+        req = requests.get('http://222.194.15.1:7777/pls/wwwbks/bkscjcx.yxkc',
+                           headers={'Cookie': self.cookie})
+        req.encoding = "GBK"
+        if len(req.text) == 0:
+            raise Exception('无法获取成绩')
+        self.bs = BeautifulSoup(req.text, 'lxml')
+        tmp = self.bs.find_all('table')[4]
+        self.all_courses = tmp.find_all('tr')[1:]
 
     def __get_score(self):
         ret = []
@@ -76,6 +89,32 @@ class Score:
             ret[td[1].text] = [td[3].text, td[4].text, td[5].text, td[6].text]
         return ret
 
+    def __get_gpa(self):
+        all_tmp = []
+        cur_tmp = []
+        for course in self.all_courses:
+            td = course.find_all('td')
+            all_tmp.append([td[3].find('p').text, td[9].find('p').text])
+        for course in self.courses:
+            td = course.find_all('td')
+            cur_tmp.append([td[2].find('p').text, td[6].find('p').text])
+        credit = 0.0
+        total_grade = 0.0
+        for course in all_tmp:
+            if(float(course[1]) >= 60.0):
+                credit += float(course[0])
+                total_grade += float(course[0]) * float(course[1])
+        self.gpa = total_grade / credit / 100 * 4
+        cur_credit = 0.0
+        cur_total_grade = 0.0
+        for course in cur_tmp:
+            cur_credit += float(course[0])
+            cur_total_grade += float(course[0]) * float(course[1])
+        if(cur_credit == 0):
+            return
+        else:
+            self.cur_gpa = cur_total_grade / cur_credit / 100 * 4
+
     @staticmethod
     def __append_rank(scores, ranks):
         ret = []
@@ -89,10 +128,17 @@ class Score:
             exit(1)
         try:
             self.__get_courses_bs()
+            self.__get_gpa_bs()
             result = self.__append_rank(self.__get_score(), self.__get_rank())
             for i in result:
                 self.out.add_row(i)
             print(self.out)
+            self.__get_gpa()
+            if (self.cur_gpa == 0):
+                print("No avilible course this semester for now")
+            else:
+                print("GPA of this semester : " + str(self.cur_gpa))
+            print("GPA of all courses   : " + str(self.gpa))
         except Exception as e:
             print(e)
             self.run(retry_times - 1)
