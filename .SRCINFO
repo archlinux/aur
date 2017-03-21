@@ -1,0 +1,18 @@
+pkgbase = python2-dockercloud
+	pkgdesc = Python Library for Dockercloud
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = http://cloud.docker.com/
+	arch = any
+	license = Apache v2
+	makedepends = python2
+	depends = python2
+	depends = python2-future
+	depends = python2-requests
+	depends = python2-six
+	depends = python2-websocket-client
+	source = https://pypi.python.org/packages/51/bd/a5c4d69dec3f663f2183db0ffb0b9ae25060441c08d1b192c337d772efa8/python-dockercloud-1.0.9.tar.gz
+	md5sums = 18a5a7571cc5ee6594a1fe4e000f6341
+
+pkgname = python2-dockercloud
+
