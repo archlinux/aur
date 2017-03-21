@@ -1,13 +1,14 @@
 pkgbase = skympc-git
 	pkgdesc = A simple MPD (Music Player Daemon) client, powerd by Qt
 	pkgver = 1.6.1.0.r128.gbf09a7b
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.soramimi.jp/skympc/index.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = ruby
+	depends = hicolor-icon-theme
 	depends = mpd
 	depends = qt5-svg
 	provides = skympc

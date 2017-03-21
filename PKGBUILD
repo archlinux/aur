@@ -2,12 +2,12 @@
 
 pkgname=skympc-git
 pkgver=1.6.1.0.r128.gbf09a7b
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple MPD (Music Player Daemon) client, powerd by Qt"
 arch=('i686' 'x86_64')
 url="http://www.soramimi.jp/skympc/index.html"
 license=('GPL3')
-depends=('mpd' 'qt5-svg')
+depends=('hicolor-icon-theme' 'mpd' 'qt5-svg')
 makedepends=('git' 'ruby')
 provides=('skympc')
 conflicts=('skympc')
@@ -39,8 +39,10 @@ build() {
 package() {
   cd SkyMPC
   install -Dm755 SkyMPC "${pkgdir}/usr/bin/SkyMPC"
-  install -Dm644 SkyMPC.svg "${pkgdir}/usr/share/pixmaps/SkyMPC.svg"
+  install -Dm644 image/appicon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/SkyMPC.svg"
+  install -Dm644 image/appicon.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/SkyMPC.png"
   install -Dm644 LinuxDesktop/SkyMPC.desktop "${pkgdir}/usr/share/applications/SkyMPC.desktop"
-  sed -i 's|Exec=/opt/SkyMPC|Exec=/usr/bin|' "${pkgdir}/usr/share/applications/SkyMPC.desktop"
-  sed -i 's|Icon=/opt/SkyMPC|Icon=/usr/share/pixmaps|' "${pkgdir}/usr/share/applications/SkyMPC.desktop"
+  sed -i 's|Exec=/opt/SkyMPC/SkyMPC|Exec=SkyMPC|' "${pkgdir}/usr/share/applications/SkyMPC.desktop"
+  sed -i 's|Icon=/opt/SkyMPC/SkyMPC.svg|Icon=SkyMPC|' "${pkgdir}/usr/share/applications/SkyMPC.desktop"
+  echo 'Categories=Qt;AudioVideo;Audio;Player;' >> "${pkgdir}/usr/share/applications/SkyMPC.desktop"
 }
