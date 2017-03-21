@@ -1,9 +1,9 @@
-# Maintainer: Sam Burgos < jsbm1089 at gmail dot com >
+# Maintainer: Sam Burgos < sam dot burgos1089 at gmail dot com >
 
 pkgname='mdm-themes-html'
 _pkgname='mint-mdm-themes-html'
 pkgver='2.0.13'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='HTML themes for the MDM Display Manager'
 arch=('any')
 url='http://packages.linuxmint.com'
