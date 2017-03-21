@@ -9,7 +9,8 @@ url="https://colmap.github.io/"
 license=('GPL')
 groups=()
 depends=('ceres-solver' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'boost-libs' 'qt5-base')
-makedepends=('boost' 'git' 'cmake' 'gcc5' 'eigen') #gcc5 to fix cud 8.0 compatibility issue.
+makedepends=('cuda' 'boost' 'git' 'cmake' 'eigen')
+optdepends=('cuda: for cuda sfm/mvs acceleration')
 provides=()
 options=()
 install=${pkgname}.install
@@ -31,7 +32,7 @@ build() {
 
   mkdir -p build
   cd build
-  cmake -DTESTS_ENABLED=OFF -DCUDA_HOST_COMPILER=/usr/bin/gcc-5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ../
+  cmake -DTESTS_ENABLED=OFF -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ../
   make
 }
 
