@@ -1,38 +1,52 @@
 #Maintainer: Jan Koppe <post@jankoppe.de>
 pkgname=pyca
-pkgver=1.0.1
-pkgrel=4
+pkgver=2.0
+pkgrel=1
 pkgdesc="Python Capture Agent for Opencast"
 arch=('any')
 url="https://github.com/opencast/pyCA"
 license=('LGPL')
-depends=('gnutls' 'python-pycurl' 'python-icalendar' 'python-dateutil' 'python-configobj')
+depends=('gnutls' 'python-dateutil' 'python-configobj' 'python-pycurl' 'python-sqlalchemy')
+optdepends=('gunicorn: wsgi web interface')
 source=("https://github.com/opencast/pyCA/archive/v$pkgver.tar.gz"
         "pyca.install"
-        "pyca.service"
-        "pyca")
+        "pyca@.service"
+        "pycaui.service"
+        "pyca.target")
 install="pyca.install"
-md5sums=("866718b5e665b7f9404c7e4875f38392"
-         "234a749da650e5fcd89a49b358c0d5ec"
-         "77664b1ea9ceaba7c091c285737f402e"
-         "e29e06fbdba00a201f816db88be5c7bf")
+md5sums=("f685b7a77934cc5faea6d53003b18ecf"
+         "d16c4e1a394f0cf356f65555e8cb0334"
+         "10481ad2e93cac66ed5086b82b7627af"
+         "8d7c9144827127d4bb7f65958dbd7683"
+         "d411287de5dcc0e1ff6d8de5350918eb")
 
 prepare() {
   cd pyCA-"${pkgver}"
 
+  # Change default locations for recordings and the internal sqlite database
   sed -i 's/directory\s*=.*/directory = \/var\/lib\/pyca\/recordings\//' etc/pyca.conf
+  sed -i 's/#database\s*=.*/database = sqlite:\/\/\/\/var\/lib\/pyca\/pyca.db/' etc/pyca.conf
+
+  # fix startup binary
+  #  sed -i 's/pyca/pyca.__main__/g' start.sh
 }
 
 package() {
   cd pyCA-"${pkgver}"
 
-  install -Dm 644 "${srcdir}"/pyca.service "${pkgdir}"/usr/lib/systemd/system/pyca.service
+  install -Dm 644 "${srcdir}"/pyca.target "${pkgdir}"/usr/lib/systemd/system/pyca.target
+  install -Dm 644 "${srcdir}"/pyca@.service "${pkgdir}"/usr/lib/systemd/system/pyca@.service
+  install -Dm 644 "${srcdir}"/pycaui.service "${pkgdir}"/usr/lib/systemd/system/pycaui.service
+  install -dm 755 "${pkgdir}"/usr/lib/systemd/system/pyca.target.wants
+  ln -s /usr/lib/systemd/system/pyca@agentstate.service "${pkgdir}"/usr/lib/systemd/system/pyca.target.wants/pyca@agentstate.service
+  ln -s /usr/lib/systemd/system/pyca@capture.service "${pkgdir}"/usr/lib/systemd/system/pyca.target.wants/pyca@capture.service
+  ln -s /usr/lib/systemd/system/pyca@ingest.service "${pkgdir}"/usr/lib/systemd/system/pyca.target.wants/pyca@ingest.service
+  ln -s /usr/lib/systemd/system/pyca@schedule.service "${pkgdir}"/usr/lib/systemd/system/pyca.target.wants/pyca@schedule.service
 
   install -dm 755 "${pkgdir}"/var/lib/pyca/recordings
   install -dm 755 "${pkgdir}"/usr/lib/python3.6/site-packages/pyca
 
   install -Dm 644 etc/pyca.conf "${pkgdir}"/etc/pyca.conf
-
-  install -Dm 755 pyca/* "${pkgdir}"/usr/lib/python3.6/site-packages/pyca
-  install -Dm 755 "${srcdir}"/pyca "${pkgdir}"/usr/bin/pyca
+  cp -dr --no-preserve=ownership pyca/* "${pkgdir}"/usr/lib/python3.6/site-packages/pyca/
+  install -Dm 755 start.sh "${pkgdir}"/usr/bin/pyca
 }
