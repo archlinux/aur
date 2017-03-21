@@ -2,7 +2,7 @@
 # Based on [extra]'s thunderbird: https://git.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/thunderbird
 
 pkgname=thunderbird-beta
-pkgver=52.0b4
+pkgver=52.0rc3
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -17,12 +17,11 @@ makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutil
 optdepends=('libcanberra: for sound support')
 options=(!emptydirs !makeflags)
 install=$pkgname.install
-source=(https://launchpad.net/~mozillateam/+archive/ubuntu/thunderbird-next/+files/thunderbird_52.0~b4+build1.orig.tar.bz2
-# source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
+source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
         thunderbird-beta.desktop
         fix-wifi-scanner.diff
         firefox-gcc-6.0.patch)
-sha512sums=('5003e4f79bba891b7ad30ce30ca592289703ee174b8c5322975ef2078b48e4c4148454246649e98825f3d75d14dcd154ea467aec062590e8c82172a4e06b0e5e'
+sha512sums=('08db9268e4e5e67a1cdf16fb0e10cd9267896c0d4fefc7d93f5858cbbf83390711d35c95da8aec155b0e8162c3afe4a355692f99a85435c8acc38c9397a610eb'
             'abb7ef2be514fd721d33291d9010461796f3adb42b340d0452c98daa9f29c58d7c149439b336c88e0688122ac4d024810baa2f69857559322ac5f4c6e0f2d0fb'
             '1bd2804bea1fe8c85b602f8c5f8777f4ba470c9e767ad284cb3d0287c6d6e1b126e760738d7c671f38933ee3ec6b8931186df8e978995b5109797ae86dfdd85a'
             '1bb8887cfc12457a83045db559bbd13954a177100309b4f6c82a5f733675e83751bfecf501f505345f81fd2688fc5b02e113962cf0a0df27b29790f40cb9406b')
@@ -48,8 +47,7 @@ prepare() {
   mkdir -p path
   ln -sf /usr/bin/python2 path/python
 
-  cd thunderbird-52.0~b4+build1
-#   cd thunderbird-$pkgver
+  cd thunderbird-$pkgver
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
   msg2 "fix-wifi-scanner.diff"
@@ -106,8 +104,7 @@ END
 }
 
 build() {
-  cd thunderbird-52.0~b4+build1
-#   cd thunderbird-$pkgver
+  cd thunderbird-$pkgver
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
@@ -127,8 +124,7 @@ build() {
 }
 
 package() {
-  cd thunderbird-52.0~b4+build1
-#   cd thunderbird-$pkgver
+  cd thunderbird-$pkgver
 
   # Install
   msg2 "Running make -f client.mk install.."
