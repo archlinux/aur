@@ -1,0 +1,27 @@
+pkgbase = openrc-ck
+	pkgdesc = OpenRC init scripts
+	pkgver = 20170311
+	pkgrel = 3
+	url = https://github.com/manjaro/packages-openrc
+	arch = any
+	license = GPL2
+	conflicts = systemd-sysvcompat
+	source = consolekit.initd::https://raw.githubusercontent.com/gentoo/gentoo/master/sys-auth/consolekit/files/consolekit-1.0.0.initd
+	source = cgproxy.initd::https://raw.githubusercontent.com/gentoo/gentoo/master/app-admin/cgmanager/files/cgproxy.initd-r1
+	source = cgmanager.initd::https://raw.githubusercontent.com/gentoo/gentoo/master/app-admin/cgmanager/files/cgmanager.initd-r1
+	sha256sums = c5e8db4e9d390bcaebcf203127a99b16d888a576d873920bd42dc56d20fa90c8
+	sha256sums = 97220fa0af6dcaa9d2cb726620ee3de8e216e55bab37cea40e5ed010ed637e35
+	sha256sums = f162685428a6593630daf5d636c198caf4992843ced977dc6d7288b7559a062c
+
+pkgname = cgmanager-openrc
+	pkgdesc = OpenRC cgmanager init script
+	depends = openrc
+	depends = cgmanager
+
+pkgname = consolekit-openrc
+	pkgdesc = OpenRC consolekit init script
+	depends = consolekit
+	depends = dbus-openrc
+	depends = cgmanager-openrc
+	depends = udev-openrc
+
