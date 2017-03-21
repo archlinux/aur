@@ -68,16 +68,8 @@ if [ "${_compile}" -ne 0 ]; then
 		./configure --prefix=/usr \
 					--sysconfdir=/etc \
 					--disable-rpath \
-					--enable-faad \
 					--enable-nls \
 					--enable-lirc \
-					--enable-ncurses \
-					--enable-realrtsp \
-					--enable-aa \
-					--enable-vcdx \
-					--enable-upnp \
-					--enable-opus \
-					--enable-sftp \
 					--enable-fluidsynth \
 					RCC=/usr/bin/rcc-qt4
 
