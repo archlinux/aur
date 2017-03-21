@@ -17,16 +17,15 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
   cd "${srcdir}/ParaView-v${pkgver}"
 
-  # disable all plugins ~ -DPARAVIEW_BUILD_PLUGIN_XXX
+  # disable all plugins ~ -DPARAVIEW_BUILD_PLUGIN_XXX=OFF
   sed -i "s|if (PARAVIEW_BUILD_PLUGIN|if(OFF|g" CMake/ParaViewPluginsMacros.cmake
 
   # https://gitlab.kitware.com/paraview/paraview/merge_requests/1434
   sed -i "s|#include <Windows.h>|#include <windows.h>|g" ParaViewCore/ServerManager/SMApplication/vtkInitializationHelper.cxx
-
   sed -i "s|#include <Windows.h>|#include <windows.h>|g" Qt/Core/pqObjectBuilder.cxx
 
   # https://gitlab.kitware.com/paraview/paraview/merge_requests/1436
-  echo "target_link_libraries(paraview LINK_PRIVATE msvcr90)" >> Applications/ParaView/CMakeLists.txt
+  sed -i "313iif(MINGW)\ntarget_link_libraries (\${BPC_NAME} LINK_PRIVATE msvcr90)\nendif()" CMake/ParaViewBranding.cmake
 }
 
 build() {
