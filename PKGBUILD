@@ -3,7 +3,7 @@
 
 pkgname=vim-airline
 pkgver=0.8
-pkgrel=4
+pkgrel=5
 pkgdesc='Lean & mean statusline/tabline for ViM'
 arch=('any')
 url='https://github.com/vim-airline/vim-airline'
@@ -26,9 +26,6 @@ package() {
   cp -R autoload/* "$_installpath/autoload"
   cp -R t/* "$_installpath/t"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  # This one conflicts with vim-airline-themes
-  rm "$pkgdir/usr/share/vim/vimfiles/autoload/airline/themes/dark.vim"
 }
 
 # getver: raw.githubusercontent.com/vim-airline/vim-airline/master/CHANGELOG.md
