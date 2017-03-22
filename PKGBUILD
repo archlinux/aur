@@ -11,17 +11,17 @@ _js_provider=qml
 
 _reponame=tageditor
 pkgname=tageditor
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus and Matroska'
 license=('GPL')
-depends=('qtutilities' 'tagparser' 'desktop-file-utils' 'xdg-utils')
-[[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('qt5-base')
+depends=('qtutilities>=5.6.0' 'tagparser>=6.2.0' 'desktop-file-utils' 'xdg-utils')
+[[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('qt5-base>=5.6')
 [[ $_webview_provider == webkit ]] && depends+=('qt5-webkit')
-[[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
-[[ $_js_provider == script ]] && depends+=('qt5-script')
-[[ $_js_provider == qml ]] && depends+=('qt5-declarative')
+[[ $_webview_provider == webengine ]] && depends+=('qt5-webengine>=5.6')
+[[ $_js_provider == script ]] && depends+=('qt5-script>=5.6')
+[[ $_js_provider == qml ]] && depends+=('qt5-declarative>=5.6')
 makedepends=('cmake' 'qt5-tools')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
