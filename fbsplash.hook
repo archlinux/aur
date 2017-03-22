@@ -8,6 +8,6 @@ run_hook() {
         dd if=${SPLASH_IMAGE} of=/dev/fb0 2> /dev/null
     else
         echo "Cannot find ${SPLASH_IMAGE}."
-        echo "Did you include it in the \"BINARIES=...\" of your /etc/mkinitcpio.conf?"
+        echo "Did you include it in the \"FILES=...\" of your /etc/mkinitcpio.conf?"
     fi
 }

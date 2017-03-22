@@ -5,7 +5,5 @@ build() {
 }
 
 help() {
-    cat <<HELPEOF
-This hook shows a simple splash screen.
-HELPEOF
+    echo "This hook shows a simple framebuffer based splash screen."
 }
