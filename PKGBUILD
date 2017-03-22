@@ -3,8 +3,8 @@
 
 _gemname=fastimage
 pkgname=ruby-$_gemname
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='FastImage - Image info fast'
 arch=(any)
 url='http://github.com/sdsykes/fastimage'
@@ -16,7 +16,7 @@ depends=(
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('653396016413b5b8d10cfb8442bc94ffbca05b99')
+sha1sums=('8fb1fe90544209cce451e381364ae60fad3b0e9e')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
