@@ -1,5 +1,5 @@
 pkgname=netctl-eduroam
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc='Example netctl profile for eduroam'
 arch=(i686 x86_64)
@@ -13,9 +13,9 @@ package() {
   cp eduroam $pkgdir/etc/netctl/examples/
   cp eduroam-umu $pkgdir/etc/netctl/examples/
 }
-md5sums=('57f90a14c3ab8d82217cbbe0749a9a4c'
-         '58e6ed6098a28af381f50630cf95b6ac')
-sha1sums=('1e393ca918ca902f6d6f1d6f78e6d0891acd0214'
-          '906e4abcebf88fce7f6c69f49cde71c6c20a9026')
-sha256sums=('a44d15b208e167c5035304015060b7bd0e852873bdc242ad3c4efc5c01cb8943'
-            '24229501275bba38bdfcc73804a9e368284d091dc2edd0a0a9987a8144440cd6')
+md5sums=('08875498a560a2b62c3f08a21f4c5542'
+         'bc3a44f8f58e396423c8b9d1e9657498')
+sha1sums=('4ca924ce03da4d29263e035300e283b958b2b613'
+          '9be833ea9e25bc2e159f0c2a3e94d6df4b42910b')
+sha256sums=('41c34b0b38e918d34dd366f1db80e4f314ff1f9b0080a0075523b10b960cd286'
+            '36ffbbc8e6b8be3b9e13c4393f2ef23bd76743c0e148bbb23fba5185f6fdac8b')
