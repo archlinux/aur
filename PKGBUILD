@@ -12,17 +12,17 @@ _js_provider=script
 _reponame=tageditor
 pkgname=mingw-w64-tageditor
 _name=${pkgname#mingw-w64-}
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 arch=('any')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus and Matroska'
 license=('GPL')
-depends=(mingw-w64-{crt,qtutilities,tagparser})
-[[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('mingw-w64-qt5-base')
+depends=('mingw-w64-crt' 'mingw-w64-qtutilities>=5.6.0' 'mingw-w64-tagparser>=6.2.0')
+[[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('mingw-w64-qt5-base>=5.6')
 [[ $_webview_provider == webkit ]] && depends+=('mingw-w64-qt5-webkit')
-[[ $_webview_provider == webengine ]] && depends+=('mingw-w64-qt5-webengine')
-[[ $_js_provider == script ]] && depends+=('mingw-w64-qt5-script')
-[[ $_js_provider == qml ]] && depends+=('mingw-w64-qt5-declarative')
+[[ $_webview_provider == webengine ]] && depends+=('mingw-w64-qt5-webengine>=5.6')
+[[ $_js_provider == script ]] && depends+=('mingw-w64-qt5-script>=5.6')
+[[ $_js_provider == qml ]] && depends+=('mingw-w64-qt5-declarative>=5.6')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
