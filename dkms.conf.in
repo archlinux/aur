@@ -3,6 +3,7 @@ PACKAGE_VERSION="@PACKAGE_VERSION@"
 AUTOINSTALL=yes
 
 PRE_BUILD="configure
+  PYTHON=/usr/bin/python
   --prefix=/usr
   --bindir=/usr/bin
   --sbindir=/usr/bin

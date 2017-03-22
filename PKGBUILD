@@ -5,14 +5,14 @@ pkgname=('linux-gpib-dkms')
 _pkgname='linux-gpib'
 pkgver=4.0.4rc2
 _pkgver=4.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A support package for GPIB (IEEE 488) hardware (DKMS version).'
 arch=('i686' 'x86_64')
 url='http://linux-gpib.sourceforge.net/'
 license=('GPL')
 provides=('linux-gpib')
 conflicts=('linux-gpib')
-depends=('bash' 'dkms' 'bison' 'perl')
+depends=('bash' 'dkms' 'bison' 'perl' 'python')
 optdepends=('fxload: firmware upload support for NI USB-B, Keithley KUSB-488 and Agilent 82357')
 source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}%20for%203.x.x%20and%202.6.x%20kernels/${_pkgver}/${_pkgname}-${pkgver}.tar.gz"
         'gpib_build.patch'
@@ -22,7 +22,7 @@ backup=('etc/gpib.conf')
 
 md5sums=('281274e45825f34e69876d38ae008b44'
          '15f3bfbf7a79ddacdd0d66db5e749648'
-         '6f15a5156759622e2890b3fb59072135')
+         '446777322e4d51e46b5a2d5b1c6cdd9c')
 
 prepare() {
 
