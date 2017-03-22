@@ -1,7 +1,7 @@
 pkgbase = hitwh-cscore
 	pkgdesc = Scores checker for undergraduate students in HITwh
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.2
+	pkgrel = 1
 	arch = i686
 	arch = x86_64
 	license = Apache
@@ -12,7 +12,7 @@ pkgbase = hitwh-cscore
 	depends = python-lxml
 	provides = cscore
 	source = cscore
-	md5sums = e228b7be4b06bfe72f3da47b4178208e
+	md5sums = 58133c5ce51fdb43bf1b57a1c2bcd23e
 
 pkgname = hitwh-cscore
 

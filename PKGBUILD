@@ -8,17 +8,17 @@
 
 # Maintainer: Ning Humbert <galaxy0419@gmail.com>
 pkgname=hitwh-cscore
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="Scores checker for undergraduate students in HITwh"
 arch=('i686' 'x86_64')
 license=('Apache')
 depends=(python python-prettytable python-beautifulsoup4 python-requests python-lxml)
 provides=("cscore")
 source=('cscore')
-md5sums=('e228b7be4b06bfe72f3da47b4178208e')
+md5sums=('58133c5ce51fdb43bf1b57a1c2bcd23e')
 
 package() {
 	mkdir -p $pkgdir/usr/bin
-	cp cscore $pkgdir/usr/bin/
+    install -Dm 755 cscore $pkgdir/usr/bin/
 }
