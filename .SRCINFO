@@ -1,12 +1,14 @@
 pkgbase = abe
 	pkgdesc = Scrolling, platform-jumping, key-collecting, ancient pyramid exploring game
 	pkgver = 1.1
-	pkgrel = 10
+	pkgrel = 11
 	url = http://abe.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = sdl_mixer
+	depends = sdl
+	depends = glibc
 	source = http://downloads.sourceforge.net/abe/abe-1.1.tar.gz
 	source = abe.patch
 	source = abe.desktop

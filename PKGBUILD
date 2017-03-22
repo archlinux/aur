@@ -1,15 +1,15 @@
-# Maintainer: 
+# Maintainer: collector1871
 # Contributor: Jonathan Steel <mail at jsteel dot org>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=abe
 pkgver=1.1
-pkgrel=10
+pkgrel=11
 pkgdesc='Scrolling, platform-jumping, key-collecting, ancient pyramid exploring game'
 arch=('i686' 'x86_64')
 url='http://abe.sourceforge.net'
 license=('GPL')
-depends=('sdl_mixer')
+depends=('sdl_mixer' 'sdl' 'glibc')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
         $pkgname.patch
         $pkgname.desktop)
