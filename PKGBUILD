@@ -3,7 +3,7 @@
 
 pkgname=mdm-nosystemd
 _pkgname=mdm
-pkgver=2.0.10
+pkgver=2.0.17
 pkgrel=1
 pkgdesc="The MDM Display Manager with consolekit support for non-systemd setups"
 arch=('i686' 'x86_64')
@@ -17,13 +17,12 @@ replaces=('mate-display-manager')
 options=('!libtool')
 install='mdm-display-manager.install'
 backup=('etc/mdm/custom.conf' 'etc/pam.d/mdm' 'etc/pam.d/mdm-autologin')
-source=(#"$_pkgname-$pkgver.zip::https://github.com/linuxmint/$_pkgname/archive/$pkgver.zip"
-	"https://github.com/linuxmint/${_pkgname}/archive/${pkgver}.tar.gz"
+source=("https://github.com/linuxmint/${_pkgname}/archive/${pkgver}.tar.gz"
 	'mdm.pam'
 	'mdm-autologin.pam'
 	'defaults.conf'
 	'org.cinnamon.pkexec.mdmsetup.policy')
-sha256sums=('5399f9fd41bd8e3f198d7238f9442fafa4f3951132d3d43954b3da80deb22b68'
+sha256sums=('60a6e5b82be42320dda06c397f61d3768f599d344c2c5f357c4a8066e91c4f49'
             'd6fa4e4c6325ba3f343c6d42675877cde1fb7d48e11cbb2f4b209b28322d8d75'
             '479e8fd4d5ef353fec5af776ad05e4f414a92d6f374f9b8f5deef77b9e301bc7'
             'ce9448356c54d8de5b8af5cdef2b5c30b4e6ae970126ce0c4ef295be557bbd2a'
