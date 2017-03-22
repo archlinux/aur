@@ -1,15 +1,15 @@
 pkgbase = ruby-colored2
 	pkgdesc = Add even more color to your life.
-	pkgver = 3.1.1
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = http://github.com/kigster/colored2
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = colored2-3.1.1.gem
+	noextract = colored2-3.1.2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/colored2-3.1.1.gem
-	sha1sums = 109e56ec11c1df5c6d4b60d9775a6b7d9d415ba9
+	source = https://rubygems.org/downloads/colored2-3.1.2.gem
+	sha1sums = d4a2b7652b746db3e2f2617a858a7993eada1d63
 
 pkgname = ruby-colored2
 

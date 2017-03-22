@@ -3,7 +3,7 @@
 
 _gemname=colored2
 pkgname=ruby-$_gemname
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc='Add even more color to your life.'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('109e56ec11c1df5c6d4b60d9775a6b7d9d415ba9')
+sha1sums=('d4a2b7652b746db3e2f2617a858a7993eada1d63')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
