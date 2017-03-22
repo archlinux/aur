@@ -1,16 +1,16 @@
 # Maintainer: Archadept
-#   Revision: 2016-05-29
+#   Revision: 2017-03-22
 
 pkgname=wesnoth-git
 _gitname=wesnoth
-pkgver=1.13.4.830.g617d22e
+pkgver=1.13.7.34.g9a288ab78c
 pkgrel=1
 pkgdesc="The latest version of a turn-based strategy game on a fantasy world"
 arch=('x86_64')
 url="http://www.wesnoth.org/"
 license=('GPL')
 depends=('boost' 'boost-libs' 'fribidi' 'sdl2' 'sdl2_ttf' 'sdl2_net' 'sdl2_mixer' 'sdl2_image' 'libvorbis' 'pango' 'python')
-makedepends=('openssh' 'cmake' 'git' 'gcc')
+makedepends=('openssh' 'scons' 'git' 'gcc')
 conflicts=('wesnoth' 'wesnoth-data')
 provides=('wesnoth')
 
@@ -30,9 +30,12 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_gitname-build/cmake"
+  cd ${_gitname}-build
 
-  cmake .. -DPREFERENCES_DIR=.local/share/wesnoth/git -DCMAKE_INSTALL_PREFIX=$pkgdir/usr
-  make
-  make install
+  scons prefsdir=.local/share/$_gitname/git prefix=/usr debug=yes || return 1
+  scons destdir=${pkgdir} install || return 1
+
+  cd ${pkgdir}
+
+  rm -R var
 }
