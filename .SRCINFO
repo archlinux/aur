@@ -12,7 +12,7 @@ pkgbase = env-modules
 	source = https://sourceforge.net/projects/modules/files/Modules/modules-3.2.10/modules-3.2.10.tar.gz
 	source = modules.sh
 	md5sums = 8b097fdcb90c514d7540bb55a3cb90fb
-	md5sums = 38e1de45377a991380602f2c011ec306
+	md5sums = af64d4aadd68d406d04ded2f33f77e04
 
 pkgname = env-modules
 

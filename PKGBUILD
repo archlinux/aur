@@ -23,7 +23,7 @@ changelog=
 source=("https://sourceforge.net/projects/modules/files/Modules/modules-$pkgver/modules-$pkgver.tar.gz" modules.sh)
 noextract=()
 md5sums=('8b097fdcb90c514d7540bb55a3cb90fb'
-         '38e1de45377a991380602f2c011ec306')
+         'af64d4aadd68d406d04ded2f33f77e04')
 validpgpkeys=()
 
 build() {
