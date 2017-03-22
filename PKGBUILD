@@ -2,7 +2,7 @@
 
 pkgname=kodi-addon-pvr-mythtv
 pkgver=4.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='MythTV PVR client addon for Kodi'
 arch=('armv7h' 'i686' 'x86_64')
 url="http://janbar.github.io/pvr.mythtv/"
@@ -10,9 +10,9 @@ license=('GPL')
 makedepends=('cmake' 'kodi-platform' 'git')
 depends=("kodi")
 source=("https://github.com/janbar/pvr.mythtv/archive/${pkgver}.tar.gz"
-        "https://github.com/xbmc/xbmc/archive/17.0-Krypton.tar.gz")
+        "https://github.com/xbmc/xbmc/archive/17.1-Krypton.tar.gz")
 sha256sums=('30b6a20f846f0f0cc14c2347efbf3b72162c876daed53a3731d3f975d370765e'
-            '4bfffa2493973ae15ab1d922632c09a2583908d6140bc4f58ec8f9314e4f6545')
+            '303f3903cbb57ccc2961f09cf3746505542bcb129a464f0687d7ca8601cebbee')
 
 build() {
   mkdir -p "pvr.mythtv-${pkgver}/build"
