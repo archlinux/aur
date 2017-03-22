@@ -12,7 +12,7 @@ _enable_kio_plugin=1
 
 _reponame=syncthingtray
 pkgname=syncthingtray
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Tray application for Syncthing'
@@ -23,6 +23,7 @@ depends=('qtutilities' 'qt5-svg' 'openssl' 'desktop-file-utils' 'xdg-utils')
 [[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
 [[ $_enable_kio_plugin ]] && optdepends+=('kio: KIO plugin for Syncthing actions in Dolphin')
 makedepends=('cmake' 'qt5-tools')
+checkdepends=('cppunit' 'syncthing')
 [[ $_enable_kio_plugin ]] && makedepends+=('kio')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
@@ -39,6 +40,11 @@ build() {
     -DSYSTEMD_SUPPORT=ON \
     $additional_args
   make
+}
+
+check() {
+  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
+  make check
 }
 
 package() {
