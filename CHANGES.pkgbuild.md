@@ -1,3 +1,6 @@
+## 1.11.11
+* echo-nginx-module removed, "incompatible types when assigning to type ..."
+
 ## 1.11.6-1
 * headers-more-0.32
 * psol-1.12.34.1-beta
