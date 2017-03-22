@@ -1,0 +1,17 @@
+pkgbase = sirfiliams-git
+	pkgdesc = Show Information About Tv Show's, Ratings And So Many Cool Fatures!
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-tvdb-api
+	depends = PTable
+	provides = sirfiliams-git
+	conflicts = sirfiliams-git
+	source = sirfiliams-git::git+https://github.com/LinArcX/sirFiliams
+	md5sums = SKIP
+
+pkgname = sirfiliams-git
+
