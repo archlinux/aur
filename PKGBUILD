@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=redo-c-git
-pkgver=r50.eeb9498
+pkgver=r51.10c33d6
 pkgrel=1
 epoch=
 pkgdesc="An implementation of the redo build system in portable C with zero dependencies."
