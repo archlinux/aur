@@ -1,6 +1,6 @@
 pkgname='holo-users-groups'
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Holo plugin for provisioning user accounts and groups'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://holocm.org'
@@ -13,6 +13,9 @@ depends=(
 makedepends=('go' 'perl')
 source=("https://github.com/holocm/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('11deb7566129eb412bcbae6e76ddb7045a7082cad6ef314a236811ed9102464e')
+backup=(
+    'etc/holorc.d/20-users-groups'
+)
 
 options=('!strip') # binaries are already stripped inside the Makefile
 
