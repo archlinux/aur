@@ -1,13 +1,14 @@
 # Contributor: noonov <noonov@gmail.com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=qemacs-cvs
-pkgver=0.3.2.r2016.06.26
+pkgver=0.3.2.r2017.03.20
 pkgrel=1
 pkgdesc="A very small but powerful UNIX editor."
 arch=('i686' 'x86_64')
 url="http://bellard.org/qemacs/"
 license=('LGPL2.1')
 depends=('libpng' 'libxv')
+optdepends=('jp2a: for converting JPG images to ASCII')
 makedepends=('cvs' 'texi2html')
 provides=('qemacs')
 conflicts=('qemacs')
