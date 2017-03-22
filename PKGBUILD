@@ -2,13 +2,13 @@
 
 _pkgname=dmenu
 pkgname=$_pkgname-ametisf-git
-pkgver=552.e344050
+pkgver=7.fd26ff8
 pkgrel=1
-pkgdesc="Wayland port of dmenu - ametisf fork"
+pkgdesc="generic menu for swc-based compositors - ametisf fork"
 url="https://github.com/ametisf/dmenu"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('sh' 'wld')
+depends=('sh' 'wld' 'stest-git')
 makedepends=('git' 'libx11' 'swc' 'tup')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -28,5 +28,6 @@ build(){
 
 package() {
 	cd $_pkgname
-	PREFIX=/usr DESTDIR=$pkgdir ./install.sh
+	mkdir -p $pkgdir/usr/bin
+	install -m 755 dmenu dmenu_path dmenu_run $pkgdir/usr/bin
 }
