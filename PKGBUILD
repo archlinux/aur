@@ -3,7 +3,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=virtualbox-headless
-pkgver=5.1.16
+pkgver=5.1.18
 pkgrel=1
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use. Headless build (no GUI, no Java).'
 arch=('i686' 'x86_64')
@@ -38,22 +38,22 @@ source=("http://download.virtualbox.org/virtualbox/$pkgver/VirtualBox-$pkgver.ta
         '007-python2-path.patch'
         '008-no-vboxvideo.patch'
         )
-md5sums=('37ebbd51370841eed8ab80f2f38446d6'
-         '984412a63aa9c07ddc3cfd970381d5df'
-         '6e2722bfd7013c1b0174382626ac1b8d'
-         'ed1341881437455d9735875ddf455fbe'
-         '7ef5b89e9b00ac5632521c4950b74a53'
-         '8ba9179c4a3516904417d773816dd992'
-         'fcf6bcef98b16849d5c9f048592739c0'
-         'bc9efed88e0469cd7fc460d5a5cd7b4b'
-         '0bab94ff2f4835fd907f89eb23ebbe21'
-         '9be7e2703afeee1fca9368bd8750e710'
-         '9e49bbaa2192b141c27ee43cef8cbab7'
-         'e8a0b47e61ddcffdeed71086585a1ef3'
-         'd82a6f19be739341ed7f1cf4ee8070ca'
-         '188ea65918309f737ce28216c2b07c3b'
-         '8e369367001e2ed3c1e3d23ac474fa33'
-         )
+sha256sums=('7ed0959bbbd02826b86b3d5dc8348931ddfab267c31f8ed36ee53c12f5522cd9'
+            '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
+            '9c5238183019f9ebc7d92a8582cad232f471eab9d3278786225abc1a1c7bf66e'
+            '033c597e0f5285d2ddb0490868e5b6f945f45c7b1b1152a02a9e6fea438b2c95'
+            '0105ce26b79dbe533085423decf042ac0f5e6aa28edb5e6a9bc713cca2ab04c5'
+            '94a808f46909a51b2d0cf2c6e0a6c9dea792034943e6413bf9649a036c921b21'
+            '01dbb921bd57a852919cc78be5b73580a564f28ebab2fe8d6c9b8301265cbfce'
+            'e6e875ef186578b53106d7f6af48e426cdaf1b4e86834f01696b8ef1c685787f'
+            '2a9d7748dc58f9d091f791da06b733a696943114f7c0d580fa00a0752eb1d2ac'
+            'ee54fe188e27b6e80e2044ea9ba1874db2ca2c026ad04f393be1be69c18d440d'
+            '188014070bce4f6fb9b2535bcd64d066119e182e848c521407ea891ab41a995b'
+            '7d2da8fe10a90f76bbfc80ad1f55df4414f118cd10e10abfb76070326abebd46'
+            '5d5af2de5b1f1c61ec793503350f2440661cf8fd640f11b8a86f10bce499c0dc'
+            '6bdb017459532537199c399eefd3d84d8dc7f1786e79997caebd3b6eb5c75d9f'
+            '8b7f241107863f82a5b0ae336aead0b3366a40103ff72dbebf33f54b512a0cbc'
+            )
 
 prepare() {
     cd "VirtualBox-$pkgver"
