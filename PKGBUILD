@@ -201,10 +201,7 @@ check() {
     cd "${srcdir}/build"
     # Dirty fix for unittests failing because the shared lib is not in the library path.
     # Also, disable the LLVM tests on i686 as they seem to fail too often there.
-    # Until bug 31610 is fixed, disable the LLVM tests altogether.
-    # Ref: https://github.com/kerberizer/llvm-svn/issues/12
-    # Ref: https://bugs.llvm.org//show_bug.cgi?id=31610
-    #[[ "${CARCH}" == "i686" ]] || LD_LIBRARY_PATH="${srcdir}/build/lib" make check
+    [[ "${CARCH}" == "i686" ]] || LD_LIBRARY_PATH="${srcdir}/build/lib" make check
     make check-clang
 }
 
