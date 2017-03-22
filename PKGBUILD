@@ -1,6 +1,6 @@
 pkgname='holo'
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimalistic configuration management'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://holocm.org'
@@ -15,6 +15,7 @@ provides=(
 )
 backup=(
     'etc/holorc'
+    'etc/holorc.d/10-files'
 )
 source=("https://github.com/holocm/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('1ec8795df0a5a579bdcf88875db10ccb016044865096fdbf38d6ae6ed590aa63')
