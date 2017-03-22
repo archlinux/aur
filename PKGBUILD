@@ -2,21 +2,22 @@
 # Contributor: Simon Conseil <contact+aur at saimon dot org>
 
 pkgname=pip-tools
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="A set of tools to keep your pinned Python dependencies fresh."
 arch=('any')
-url="https://github.com/nvie/pip-tools"
+url="https://github.com/jazzband/pip-tools/"
 license=('BSD')
 depends=('python-click' 'python-first' 'python-pip' 'python-six')
-source=("https://pypi.python.org/packages/6b/e3/032350634958091ee804102753916459a8ea2616df23e7c88cce67127e39/${pkgname}-${pkgver}.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         LICENSE.txt)
-md5sums=('d4bfe6407a7303ddc6e0d5397302b88e'
+md5sums=('8517c0eb1a0461d0dcfdf15265bb2770'
          'b542fe20de254615b3ab48020bc73441')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+
+  python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 "${srcdir}/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname"
 }
