@@ -3,8 +3,8 @@
 # Contributor: Adrian C. <anrxc..sysphere.org>
 
 pkgname=alpine
-pkgver=2.20
-pkgrel=2
+pkgver=2.21
+pkgrel=1
 arch=("i686" "x86_64")
 pkgdesc="Apache licensed PINE mail user agent"
 url="http://patches.freeiz.com/alpine/"
@@ -17,23 +17,19 @@ provides=("pine")
 conflicts=("pine" "re-alpine")
 replaces=("pine")
 options=("!makeflags")
-source=(http://patches.freeiz.com/${pkgname}/release/src/${pkgname}-${pkgver}.tar.xz
+source=(http://patches.freeiz.com/${pkgname}/release/src/${pkgname}-${pkgver}.tar.xz)
         #ftp://ftp.cac.washington.edu/${pkgname}/${pkgname}.tar.bz2
-        http://patches.freeiz.com/${pkgname}/patches/${pkgname}-${pkgver}/all.patch.gz
-        topal-1.patch
-        topal-2.patch)
-md5sums=("043b67666af73b26f9627ad97e2aaf92"
-         "9e9de69f9334decb1d75991ec67e22f9"
-         "ce47b232339b251c74dc56de73513101"
-         "e53177e123ec68fc77d55f60cd9eba9f")
-
+        #http://patches.freeiz.com/${pkgname}/patches/${pkgname}-${pkgver}/all.patch.gz
+        #topal-1.patch
+        #topal-2.patch)
+md5sums=("02dad85c1be80ce020206f222ecf5ac8")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
 # User compile time patches
 # - Eduardo Chappa patches
-  patch -p1 < ../all.patch
+#  patch -p1 < ../all.patch
 # - Phil Brooke patches (optional topal support)
   #patch -p1 < ../topal-1.patch
   #patch -p1 < ../topal-2.patch
