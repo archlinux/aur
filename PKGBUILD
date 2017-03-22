@@ -7,13 +7,15 @@
 pkgname=aide-selinux
 _srcname=aide
 pkgver=0.16
-pkgrel=1
+pkgrel=2
 pkgdesc='A file integrity checker and intrusion detection program.'
 arch=('i686' 'x86_64')
 url="http://aide.sourceforge.net/"
 license=('GPL')
-groups=('selinux')
-depends=('acl' 'e2fsprogs' 'elfutils' 'mhash' 'pcre' 'libsepol')
+groups=('selinux-extra')
+depends=('acl' 'audit' 'e2fsprogs' 'elfutils' 'libsepol' 'mhash' 'pcre')
+conflicts=('aide')
+provides=('aide')
 backup=('etc/aide.conf')
 source=(http://downloads.sourceforge.net/sourceforge/$_srcname/$_srcname-$pkgver.tar.gz{,.asc} \
         aide.conf)
@@ -40,11 +42,9 @@ build() {
 }
 
 package() {
-	conflicts=('aide')
-	provides=('aide')
 	cd $srcdir/$_srcname-$pkgver
 	make DESTDIR=$pkgdir install
 
 	install -D -m644 $srcdir/aide.conf $pkgdir/etc/aide.conf
-    mkdir -p $pkgdir/var/{log,lib}/aide/
+	mkdir -p $pkgdir/var/{log,lib}/aide/
 }
