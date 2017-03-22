@@ -2,7 +2,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Icon=/usr/share/pixmaps/orthorobot.svg
+Icon=/usr/share/pixmaps/orthorobot.png
 Exec=orthorobot
 Terminal=false
 StartupNotify=false
