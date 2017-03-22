@@ -1,8 +1,8 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool
-_commit=f0c92aab5fc8382dbc902b82816e11ec4291c02f
-pkgver=1.7.3
+_commit=375344365883ef520a904cc181fb52c014931656
+pkgver=1.7.3.r413
 pkgrel=1
 pkgdesc='Lua application server integrated with a database management system'
 arch=(i686 x86_64)
@@ -16,14 +16,11 @@ source=(git+https://github.com/tarantool/tarantool.git#commit=$_commit
         git+https://github.com/tarantool/luajit.git
         git+https://github.com/tarantool/msgpuck.git
         git+https://github.com/rtsisyk/luafun.git
-        #git+https://github.com/tarantool/sophia.git
-        git+https://github.com/tarantool/lz4.git
         git+https://github.com/tarantool/libyaml.git
         git+https://github.com/tarantool/zstd.git
         git+https://github.com/tarantool/test-run.git
         git+https://github.com/tarantool/small.git)
 sha1sums=('SKIP'
-          'SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
@@ -43,16 +40,14 @@ prepare() {
   git config -f .gitmodules 'submodule.third_party/luajit.url' "$srcdir/luajit"
   git config -f .gitmodules 'submodule.src/lib/msgpuck.url' "$srcdir/msgpuck"
   git config -f .gitmodules 'submodule.third_party/luafun.url' "$srcdir/luafun"
-  #git config -f .gitmodules 'submodule.sophia.url' "$srcdir/sophia"
   git config -f .gitmodules 'submodule.third_party/libyaml.url' "$srcdir/libyaml"
-  git config -f .gitmodules 'submodule.third_party/lz4.url' "$srcdir/lz4"
   git config -f .gitmodules 'submodule.third_party/zstd.url' "$srcdir/zstd"
   git config -f .gitmodules 'submodule.test-run.url' "$srcdir/test-run"
   git config -f .gitmodules 'submodule.src/lib/small.url' "$srcdir/small"
+
   git submodule sync
   git submodule update
-
-  sed -i -e 's/coros/lock/g' test-run/lib/connpool.py
+  #sed -i -e 's/coros/lock/g' test-run/lib/connpool.py
 }
 
 build() {
