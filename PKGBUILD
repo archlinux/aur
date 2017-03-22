@@ -1,7 +1,7 @@
 # Maintainer: Michael Gisbers <michael@gisbers.de>
 pkgname=flashprint
 pkgver=3.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Slicer for the FlashForge 3D printers."
 arch=('i686' 'x86_64')
 url="http://www.ff3dp.com/"
@@ -28,5 +28,7 @@ package() {
 #    ln -s ../share/FlashPrint/FlashPrint ${pkgdir}/usr/bin/flashprint
     # workaround for render issues
     install ${srcdir}/flashprint ${pkgdir}/usr/bin/flashprint
+    # patch desktop file, workaround for render issues
+    sed -i "/^Exec=/ c Exec=/usr/bin/flashprint" ${pkgdir}/usr/share/applications/FlashPrint.desktop
 }
 
