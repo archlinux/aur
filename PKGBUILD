@@ -1,4 +1,5 @@
 # Maintainer: Richard Neumann <mail at richard dash neumann period de>
+# Credits: Special thanks to reddit user @pahakala who inspired me to create this package.
 
 pkgname='mkinitcpio-fbsplash'
 pkgver='1.0.0'
