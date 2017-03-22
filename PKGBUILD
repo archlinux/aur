@@ -24,7 +24,7 @@ build() {
     -DBUILD_SHARED_LIBS=1 \
     -DADDONS_TO_BUILD=pvr.mythtv \
     -DADDONS_SRC_PREFIX=../.. \
-    ../../xbmc-17.0-Krypton/project/cmake/addons
+    ../../xbmc-17.1-Krypton/project/cmake/addons
   make
 }
 
