@@ -3,7 +3,7 @@
 pkgname=xpub
 pkgver=0.6
 pkgrel=1
-pkgdesc="Shell script to get user's display environment variables of any TTY from anywhere."
+pkgdesc="POSIX Shell script to get user's display environment variables of any TTY from anywhere."
 arch=('any')
 url="https://github.com/Ventto/${pkgname}.git"
 license=('MIT')
