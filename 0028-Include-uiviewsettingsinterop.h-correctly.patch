@@ -1,4 +1,4 @@
-From 37a65bf51b0747f9d306eb5c466f9b34096aa8a6 Mon Sep 17 00:00:00 2001
+From f598982149077d0cd9aeb51efe47116f3598b8eb Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 23:41:16 +0100
 Subject: [PATCH 28/30] Include uiviewsettingsinterop.h correctly
@@ -21,5 +21,5 @@ index 977bbfd11b..12cccd124b 100644
  
  #ifndef HAS_UI_VIEW_SETTINGS_INTEROP
 -- 
-2.11.1
+2.12.1
 
