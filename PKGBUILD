@@ -21,7 +21,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}_${_rtpatchver}
 pkgver=${_pkgver//-/_}.${_rtpatchver}
-pkgrel=1
+pkgrel=2
 rcnrel=armv7-x4
 arch=('i686' 'x86_64' 'armv7h')
 url="https://rt.wiki.kernel.org/"
@@ -204,7 +204,7 @@ _package() {
   [ "${pkgbase}" = "linux-libre" ] && groups=('base' 'base-openrc')
   depends=('coreutils' 'linux-libre-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
+  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}" "LINUX-ABI_VERSION=${_archpkgver}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
