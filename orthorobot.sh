@@ -1,3 +1,3 @@
 #!/bin/sh
-cd /usr/share/games/orthorobot
-love07 ./orthorobot.love
+cd /usr/share/orthorobot
+love ./orthorobot.love
