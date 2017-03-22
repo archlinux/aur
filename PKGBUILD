@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-lts-apparmor
 _pkgbasever=4.9-gnu
-_pkgver=4.9.15-gnu
+_pkgver=4.9.16-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -59,7 +59,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP'
-            '5eb6e1bd2a86fcb5386a9f1baa554daec8d79eb4cf072ad57359fcfb231eb6807dfa603c413d808101395b1ce2b4d552d5bb5cdc681a9292b611233eaa5bdbef'
+            '2afe13f7f851ab585ecff842acfaa63d30d2668978d744e6601ac64ed805f61ca7834b15f0d9f55825a68791f467064bf253a50eb21f6c3f7bb4699db329a405'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -75,7 +75,7 @@ sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca4
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            'be7a3054384cad794ff854a4c452bcac7dcabe7667df3c6049ad407ccc98c4704bae332ad7b65e909e5c1a023a042c7c09db5fe572f058e5d3514a2af5ca7e04'
+            '60595ae82d0531fef6b1cc9e1c02ccf124d77d56ae2475d527fdd1bf357c02efe1fd12195b71aa73aa0745f01eca91d2b6cdb715e3ca07ff59c0cd0265272da7'
             'SKIP'
             'ccf18eb2c3d33a57871cbadd5ad825d2f2f489e69c54c7293b160abdc3e9e5c6a664ba7926a617d31affcf20b7ecb4e8de54fa78438c574aa1b257f686faade9'
             '69f13bb2e353727acbe39034978729272511c6578aa2faf8c829e1bb89c22e769262289b76d93254314304ebd7547c45cdc8ba6afc278444a8fd09f71dff9757'
@@ -187,7 +187,7 @@ _package() {
   depends=('coreutils' 'linux-libre-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country'
               'apparmor: to configure and enable mandatory access control for programs')
-  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
+  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}" "LINUX-ABI_VERSION=${_archpkgver}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
