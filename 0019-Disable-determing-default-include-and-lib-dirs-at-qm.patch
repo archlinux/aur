@@ -1,4 +1,4 @@
-From 698d1f283e96c2d04e7482dc51bb43d43e6fd17c Mon Sep 17 00:00:00 2001
+From 12e64d649d5a01b4f878778aa6c183ceb51b28e7 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:20:25 +0200
 Subject: [PATCH 19/30] Disable determing default include and lib dirs at qmake
@@ -22,5 +22,5 @@ index 3f266dd2a4..258d374ee0 100644
              cmd_prefix = "LC_ALL=C"
              cmd_suffix = "</dev/null >/dev/null"
 -- 
-2.11.1
+2.12.1
 

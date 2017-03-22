@@ -62,5 +62,5 @@ index 3c029c8004..caa000ea53 100644
                      uninst.append("\n\t");
                  uninst.append("-$(DEL_FILE) " + escapeFilePath(dst_pc));
 -- 
-2.11.1
+2.12.1
 
