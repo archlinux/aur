@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=GNOME;Settings;DesktopSettings;Utility;
+Comment=Simple Gnome menu editor, written on QT
+Exec=gnome-menu-editor-qt
+Icon=alacarte
+MimeType=application/x-desktop;
+Name=Gnome menu editor
+Type=Application

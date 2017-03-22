@@ -1,0 +1,11 @@
+post_install() {
+	echo ">>> Updating MIME database."
+	update-mime-database /usr/share/mime 
+}
+
+post_upgrade(){
+	if [[ $(echo $2 | grep "0.0") ]]
+	then
+		post_install
+	fi
+}
