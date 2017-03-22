@@ -1,6 +1,6 @@
 pkgname=cargo-git
 _gitname=cargo
-pkgver=0.18.0.r4070.c995e9eb
+pkgver=0.19.0.r4078.3cac8941
 pkgrel=1
 pkgdesc='Rust package manager'
 url='http://crates.io/'
@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "$_gitname"
-    echo $(grep '^CFG_RELEASE_NUM=' Makefile.in|head -n1|cut -d\= -f2).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
