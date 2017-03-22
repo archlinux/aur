@@ -1,7 +1,7 @@
 # Maintainer: <clu@eeviac>
 
 pkgname=montage
-pkgver=4.0
+pkgver=5.0
 pkgrel=1
 pkgdesc="An astronomical image mosaic engine"
 arch=('i686' 'x86_64')
@@ -12,15 +12,15 @@ makedepends=()
 provides=()
 conflicts=()
 source=("http://montage.ipac.caltech.edu/download/Montage_v$pkgver.tar.gz")
-sha1sums=('e41f95b8586b721780e30146ecf3936a6ddf93f8')
+sha1sums=('c66d7ea01d3c11506b43759ade68c817092b120e')
 
 build() {
-  cd $srcdir/montage
+  cd $srcdir/Montage
   make
 }
 
 package() {
-  cd $srcdir/montage
+  cd $srcdir/Montage
   
   # The following is used because the montage developers
   # have not included an install method in their Makefile
@@ -29,7 +29,7 @@ package() {
 
   #custom license...
   mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  install -Dm644 $srcdir/montage/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 $srcdir/Montage/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
   #Find docs at:
   #http://montage.ipac.caltech.edu/docs/
