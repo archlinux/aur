@@ -9,7 +9,7 @@
 
 pkgbase=linux-libre-pae
 _pkgbasever=4.10-gnu
-_pkgver=4.10.3-gnu
+_pkgver=4.10.4-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -44,7 +44,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch')
 sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf5811fdae48fafd5a8e00d18ed9ac2e1ad4b12a657f322eb234384316ad131e0'
             'SKIP'
-            'c2e674578fa3b0e86941009034c69aea09267b322e0a58f7850c7e5b79db69486d1ada277a37825e94dcbbd4798ee56655db1900dabf34f00097f331d08e5fc6'
+            'fec60e9e40df2991ea9770786cfc5baf7cc1baf6d9e41427e3cb68c471779a21fb7374bd739aa168171198f76c35022bab4118ab21c95f90a7bd6d2cd305bc58'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -127,7 +127,7 @@ _package() {
   [ "${pkgbase}" = "linux-libre" ] && groups=('base' 'base-openrc')
   depends=('coreutils' 'linux-libre-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
+  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}" "LINUX-ABI_VERSION=${_archpkgver}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
