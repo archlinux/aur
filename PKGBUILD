@@ -4,11 +4,19 @@ _filename=rn-debugger-linux-x64.zip
 
 pkgname=react-native-debugger
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The standalone app for React Native Debugger, with React DevTools / Redux DevTools"
 arch=('x86_64')
 url='https://github.com/jhen0409/react-native-debugger'
-depends=()
+depends=(
+  gtk2
+  gconf
+  libxss
+  nss
+  gcc-libs
+  alsa-lib
+  libxtst
+)
 license=('MIT')
 source=(
     "$url/releases/download/v$pkgver/$_filename"
