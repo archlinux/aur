@@ -4,7 +4,7 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.19.57.1.18.g9fd7a4d08b
+pkgver=2.19.57.1.22.g5da0af52c0
 pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
@@ -16,7 +16,8 @@ makedepends=('fontforge' 'git' 'gsfonts' 't1utils' 'ghostscript'
 optdepends=('imagemagick: building HTML documentation'
             'ttf-kochi-substitute: building HTML documentation'
             'texi2html>=1.82: building HTML documentation'
-            'rsync: installing HTML documentation')
+            'rsync: installing HTML documentation'
+	    'extractpdfmark: for reducing the size of pdf output significantly')
 provides=('lilypond')
 conflicts=('lilypond' 'lilypond-devel')
 source=(git://git.sv.gnu.org/lilypond.git)
