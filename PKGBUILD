@@ -1,6 +1,6 @@
 pkgname='holo-ssh-keys'
-pkgver=1.2
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='Holo plugin for provisioning SSH public keys to $HOME/.ssh/authorized_keys'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://holocm.org'
@@ -11,7 +11,7 @@ depends=(
 )
 makedepends=('go' 'perl')
 source=("https://github.com/holocm/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('a1b5f313e10ae3ef8ab4cc02ea5223ac5158604a25fe2c85b5a10d8cee62c07d')
+sha256sums=('3e483da9f07963f21718634d249ec975e980c655e2ccf31d942692c606493d94')
 backup=(
     'etc/holorc.d/25-ssh-keys'
 )
