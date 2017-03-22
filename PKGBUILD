@@ -3,8 +3,8 @@
 pkgbase=('python-nose-parameterized')
 pkgname=('python-nose-parameterized' 'python2-nose-parameterized')
 _module='nose-parameterized'
-pkgver='0.5.0'
-pkgrel=3
+pkgver='0.6.0'
+pkgrel=1
 pkgdesc="Parameterized testing with any Python test framework"
 url="https://github.com/wolever/nose-parameterized"
 depends=('python' 'python2')
@@ -12,10 +12,8 @@ makedepends=('python-setuptools' 'python2-setuptools')
 checkdepends=('python-nose' 'python2-nose')
 license=('BSD')
 arch=('any')
-source=("https://pypi.python.org/packages/0d/22/44ff04785ff8a1e4f618a39b20e6d96e1dbb33088fc13d690a035b12b3f6/nose-parameterized-${pkgver}.tar.gz"
-"LICENSE.txt::https://github.com/wolever/nose-parameterized/blob/master/LICENSE.txt?raw=true")
-sha256sums=('a11c41b0cf8218e7cdc19ab7a1bdf5c141d161cd2350daee819473cc63cd0685'
-            'de9e41c9ed2561a7545f339c56caf2acace8fa65ed24968c693bfc6df02fc065')
+source=("https://pypi.python.org/packages/46/39/419354bd83a87406ec4b632d5df9436e7ab30e19f1493358bc664029e9c2/nose-parameterized-${pkgver}.tar.gz")
+sha256sums=('d35e677aba2f15135b6b7ea7feb88f792b899492ba5365ec0e269015df5214ce')
 
 prepare() {
   cd "$srcdir/"
@@ -41,12 +39,12 @@ package_python-nose-parameterized() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1
-    install -Dm644 ../LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
 
 package_python2-nose-parameterized() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}-py2"
     python2 setup.py install --root="${pkgdir}" --optimize=1
-    install -Dm644 ../LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
