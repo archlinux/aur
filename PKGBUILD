@@ -8,9 +8,9 @@ arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/modules/"
 license=('GPLv2')
 groups=()
-depends=('tcl>=7.4')
+depends=('tcl>=7.4' 'procps-ng')
 makedepends=()
-checkdepends=()
+checkdepends=('dejagnu')
 optdepends=()
 provides=()
 conflicts=()
@@ -23,9 +23,8 @@ changelog=
 source=("https://sourceforge.net/projects/modules/files/Modules/modules-$pkgver/modules-$pkgver.tar.gz" modules.sh)
 noextract=()
 md5sums=('8b097fdcb90c514d7540bb55a3cb90fb'
-         '10c1cef6604a2a5e276ba34a9ed4b453')
+         '38e1de45377a991380602f2c011ec306')
 validpgpkeys=()
-
 
 build() {
 	cd "modules-$pkgver"
