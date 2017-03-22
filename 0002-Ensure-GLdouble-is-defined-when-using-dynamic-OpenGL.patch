@@ -23,5 +23,5 @@ index aad48571b3..46f44d8b91 100644
  #ifdef Q_ENABLE_OPENGL_FUNCTIONS_DEBUG
  #include <stdio.h>
 -- 
-2.11.1
+2.12.1
 

@@ -78,7 +78,7 @@ isNoOpenGL() {
 
 pkgname=mingw-w64-qt5-base
 pkgver=5.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform application and UI framework (mingw-w64)'
 # The static variant doesn't contain any executables which need to be executed on the build machine
 isStatic && arch=('any') || arch=('i686' 'x86_64')
@@ -118,42 +118,42 @@ source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/sub
         '0023-Use-correct-pkg-config-static-flag.patch'
         '0024-Fix-qt5_wrap_ui-macro.patch'
         '0025-Ignore-errors-about-missing-feature-static.patch'
-        '0026-Enable-anf-fix-use-of-iconv.patch'
+        '0026-Enable-and-fix-use-of-iconv.patch'
         '0027-Ignore-failing-pkg-config-test.patch'
         '0028-Include-uiviewsettingsinterop.h-correctly.patch'
         '0029-Hardcode-linker-flags-for-libqwindows.dll.patch'
         '0030-Prevent-qmake-from-messing-static-lib-dependencies.patch')
 md5sums=('6e1f7f6fb6333eb66e563b175c4e87e9'
-         '4870da8aa8e01334f0daf09be09e7f32'
-         'e86ad52f472a4c4a70f9061b5474b947'
-         '4c7c1df53c99182e296932d8cf398c5f'
-         'd18a5d3fc8570b03aed954a72b68739a'
-         '685860a2ac1410c49ab82648bc24f510'
-         'e1a1ca7caf93e8033a1915af457b7b98'
-         'bd7c1c99dca91ed604c84cf9632f7e0d'
-         '7fbfcbb581e07563ab87e17c33a6b48b'
-         'df541beb0bc0cc8054aae93f462c5923'
-         '4711804aaf43ec810e70898c32948237'
-         '3d4294c3279e69864fcdf87b6f852122'
-         '55c3593dc03079c794e97ed88136845b'
-         '5d04636091f7768b940d090178997384'
-         'd4cc6c6394c795a2e6708e797e49b616'
-         '8e234c3b077a8f942ee9a7e8209bfc79'
-         '6685fe994d64f3e1b2a4bfe6a645bb6a'
-         'a0fa368726934c21d3a0e8a5a61023c9'
-         '3dc9e1efaed892d0eb24dfa68769d0f2'
-         '53c06c4a646a9572b40982c4e29b5ce4'
-         '61f4848e9e0a8a6e183458c871070a53'
-         'fd2e8c22fdbb3f9415ee500bde5980fc'
-         '6a7539edc09f66bae5dfad7e3d210614'
-         '440f7d221985abcb781a519d1bc26ee7'
-         '504e6a091aa8b35a5b6b5a8c77b7d4e3'
-         'e85f6106f31bcd8da1213f670575941a'
-         '4046dcb53c3a6c735f6d7d4b866d80a0'
-         'c964ad83bff270380aa5ac0991e57c10'
-         '3921c665e46cbe39e012432db704089d'
-         '8f47783a83f54c82650502a120af4f16'
-         '2bc5f6f3d2c1cd0e2590a8e8e1cf0ff1')
+         '59cabe2d0b5646342c6cec93f7ebc074'
+         '9d45eaf425961899c40c76dbd1151204'
+         '60fc8de6d43685fc158ff705891b12ff'
+         'f8da92ad83e2d0e0ebc6ead7d49dcd62'
+         'f4d2daf0e914d7df8ff9ea0db778164c'
+         'd198fc82d361e5a52f066e20d0f2ac1a'
+         'b8a9042191146eee8898c19090e6dd79'
+         'bcf6b7aa10e04c1093c801d2f2b5722b'
+         '50ef8614cb99b72b1e5cd5cb790b089e'
+         '381c9f451602c72c9a11512b41a7e725'
+         '6f2986a143d4d3fcbbf5ec6149742896'
+         '398499d79aeb1ccbdc02c4e604035ee9'
+         '94c63b114ee93f3d9892646090dceea2'
+         '01c49b3786ce8852607aeb40482c56ab'
+         '8d43ede146c545826b8667f4ebe1a92c'
+         '47e13ec0622a3af2d89768cb6c228774'
+         'e08a00d918adad4734e56be6f03ba9bc'
+         '4808132cbdbc320d2e0dd26033fa245f'
+         '92afca193efe77c51fe33c209047d6c5'
+         '75ef72598c4274447b5668c791d019e4'
+         '8eb99eec735bc566847ac692bec14ce6'
+         'b22a8b34e4e403256fd9cfeba5fff508'
+         '26c08be34065619f12a15b485c8c2ea3'
+         '360f6a8dae753f3649bb7bea1ca9170f'
+         'ac4b80a15f9004a8f668b80fb475ddd1'
+         'ccec8075e73f445fcf4c600b4b990fee'
+         '2a7a504e2b4572bef11855c8a0b2863a'
+         '963f27d8f720a91b2345cda9fe0be8cd'
+         'a12368572b27f714babb720258f7b81e'
+         '3aa314937307e172c30258a82dd4ed67')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 #_architectures='x86_64-w64-mingw32 i686-w64-mingw32'
@@ -301,13 +301,13 @@ build() {
 
     mkdir -p ../build-${_arch} && pushd ../build-${_arch}
     if isStatic; then
-      ../${_pkgfqn}/configure -static $qt_configure_args $qt_configure_args_mysql
+      ../${_pkgfqn}/configure -static $qt_configure_args
       make
     else
       # The LD_LIBRARY_PATH override is needed because libQt5Bootstrap* are shared
       # libraries which various compiled tools (like moc) use. As the libQt5Bootstrap*
       # libraries aren't installed at this point yet, we have to workaround this
-      ../${_pkgfqn}/configure -shared $qt_configure_args $qt_configure_args_mysql
+      ../${_pkgfqn}/configure -shared $qt_configure_args
       LD_LIBRARY_PATH="$PWD/lib" LDFLAGS="-L$PWD/lib" make
     fi
     popd

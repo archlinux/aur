@@ -25,5 +25,5 @@ index 1a1022b3a7..792bdf9e7a 100644
      HEADERS += opengl/qopengl.h \
                 opengl/qopengl_p.h \
 -- 
-2.11.1
+2.12.1
 

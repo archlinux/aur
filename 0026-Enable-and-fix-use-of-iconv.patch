@@ -1,8 +1,9 @@
-From 29b4407c73d05bb98afb3a3a65e987cd825aa7f8 Mon Sep 17 00:00:00 2001
+From c8710fe0122cc6847fb11944b657f814872954b5 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 21:08:20 +0100
-Subject: [PATCH 26/30] Enable anf fix use of iconv
+Subject: [PATCH 26/30] Enable and fix use of iconv
 
+Change-Id: I5f0ab27afca0800dec11c7af74d196190820ae5c
 ---
  config.tests/unix/gnu-libiconv/gnu-libiconv.cpp | 2 +-
  src/corelib/codecs/qiconvcodec.cpp              | 7 +++----
@@ -78,5 +79,5 @@ index 0d1954c3a8..32bbe92f57 100644
          },
          "icu": {
 -- 
-2.11.1
+2.12.1
 
