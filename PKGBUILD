@@ -2,7 +2,7 @@
 
 pkgname=spice-guest-tools-windows
 pkgver=0.132
-pkgrel=1
+pkgrel=2
 pkgdesc='Windows XP-10/2003-2016 guest drivers and agent for SPICE-enabled QEMU VMs'
 arch=('any')
 url="https://www.spice-space.org/"
@@ -23,9 +23,9 @@ label=SPICE Guest Tools ${pkgver}
 EOF
   unix2dos cdrom/autorun.inf
   cp -aL spice-guest-tools-${pkgver}.exe cdrom
-  mod_date="$(date -d "$(stat -c %y cdrom/spice-guest-tools-${pkgver}.exe)" \
+  mod_date="$(date -ud "$(stat -c %y cdrom/spice-guest-tools-${pkgver}.exe)" \
               +%Y%m%d%H%M%S%N | cut -c -16)"
-  xorrisofs -V "SPICE Guest Tools ${pkgver}" \
+  xorrisofs -V "SPICE Guest Tools ${pkgver}" -p "XORRISO, LIBISOBURN, LIBISOFS, LIBBURN" \
             --set_all_file_dates $mod_date --modification-date=$mod_date \
             -r -J -o spice-guest-tools.iso cdrom
 }
