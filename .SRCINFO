@@ -1,6 +1,6 @@
 pkgbase = otter-browser-weekly
 	pkgdesc = Browser aiming to recreate the best aspects of the classic Opera (12.x) UI using Qt5 - weekly.
-	pkgver = 0.9.91.dev167
+	pkgver = 0.9.91.dev168
 	pkgrel = 1
 	url = http://otter-browser.org
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = otter-browser-weekly
 	optdepends = qt5-webengine: for experimental backend using the Chromium browser project
 	conflicts = otter-browser-git
 	conflicts = otter-browser
-	source = otter-browser-0.9.91.dev167.tar.bz2::http://tenet.dl.sourceforge.net/project/otter-browser/otter-browser-weekly167/otter-browser-0.9.91-dev167.tar.bz2
-	md5sums = a217319f16aada3df411b91d46d62c83
+	source = otter-browser-0.9.91.dev168.tar.bz2::http://netcologne.dl.sourceforge.net/project/otter-browser/otter-browser-weekly168/otter-browser-0.9.91-dev168.tar.bz2
+	md5sums = 3fbc32e0f446b2c3fb1c55f0b4faadfc
 
 pkgname = otter-browser-weekly
 

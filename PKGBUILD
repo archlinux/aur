@@ -2,7 +2,7 @@
 # Author: Steffen Weber <-boenki-gmx-de->
 
 pkgname=otter-browser-weekly
-pkgver=0.9.91.dev167
+pkgver=0.9.91.dev168
 pkgrel=1
 pkgdesc="Browser aiming to recreate the best aspects of the classic Opera (12.x) UI using Qt5 - weekly."
 arch=('i686' 'x86_64')
@@ -13,17 +13,17 @@ makedepends=('cmake' 'qt5-declarative>=5.4')
 optdepends=('hunspell>=1.3.0: for spell checking'
             'qt5-webengine: for experimental backend using the Chromium browser project')
 conflicts=('otter-browser-git' 'otter-browser')
-source=("otter-browser-$pkgver.tar.bz2::http://tenet.dl.sourceforge.net/project/otter-browser/otter-browser-weekly167/otter-browser-0.9.91-dev167.tar.bz2")
-md5sums=('a217319f16aada3df411b91d46d62c83')
+source=("otter-browser-$pkgver.tar.bz2::http://netcologne.dl.sourceforge.net/project/otter-browser/otter-browser-weekly168/otter-browser-0.9.91-dev168.tar.bz2")
+md5sums=('3fbc32e0f446b2c3fb1c55f0b4faadfc')
 
 build() {
-  cd otter-browser-0.9.91-dev167
+  cd otter-browser-0.9.91-dev168
   lrelease resources/translations/*.ts
   cmake -DCMAKE_INSTALL_PREFIX="/usr"
   make
 }
 
 package() {
-  cd otter-browser-0.9.91-dev167
+  cd otter-browser-0.9.91-dev168
   make DESTDIR=$pkgdir install
 }
