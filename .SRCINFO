@@ -1,7 +1,7 @@
 pkgbase = apache-flink
 	pkgdesc = Apache Flink is an open source platform for distributed stream and batch data processing
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://flink.apache.org
 	install = apache-flink.install
 	arch = i686
