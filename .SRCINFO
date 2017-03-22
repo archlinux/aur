@@ -1,0 +1,13 @@
+pkgbase = skype-for-linux
+	pkgdesc = Skype for Linux BETA from Microsoft
+	pkgver = 5.0.0.5
+	pkgrel = 1
+	url = https://www.skype.com/en/download-skype/skype-for-computer/
+	arch = i686
+	arch = x86_64
+	license = custom:microsoft
+	source_x86_64 = https://go.skype.com/skypeforlinux-64-alpha.deb
+	md5sums_x86_64 = ac0c07a5b285a22ef0414dd5cd33d13f
+
+pkgname = skype-for-linux
+
