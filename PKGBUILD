@@ -2,7 +2,7 @@
 pkgname='pug'
 pkgver=1.0
 pkgrel=2
-pkgdesc='Automatically saves Pacman and AUR package lists into Gists.'
+pkgdesc='Automatically saves and synchronizes Pacman and AUR installed package lists into Gists.'
 arch=('x86_64' 'i686')
 license=('GPL')
 depends=('pacman>=5.0' 'gist>=4.5.0')

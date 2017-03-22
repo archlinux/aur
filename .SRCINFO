@@ -1,5 +1,5 @@
 pkgbase = pug
-	pkgdesc = Automatically saves Pacman and AUR package lists into Gists.
+	pkgdesc = Automatically saves and synchronizes Pacman and AUR installed package lists into Gists.
 	pkgver = 1.0
 	pkgrel = 2
 	url = https://github.com/Ventto/pug.git
