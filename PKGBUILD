@@ -2,7 +2,7 @@
 
 pkgname=apache-flink
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Apache Flink is an open source platform for distributed stream and batch data processing"
 arch=("i686" "x86_64")
 url="http://flink.apache.org"
