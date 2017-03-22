@@ -1,0 +1,22 @@
+post_install() {
+    getent group 'apache-flink' >/dev/null 2>&1 || groupadd -r -f 'apache-flink' >/dev/null
+    getent passwd 'apache-flink' /dev/null 2>&1 || useradd -r -g 'apache-flink' -d '/etc/apache-flink' 'apache-flink' >/dev/null
+
+    chown -R apache-flink:apache-flink /var/log/apache-flink
+    chown -R apache-flink:apache-flink /etc/apache-flink
+
+    if [ ! -e '/etc/apache-flink/.ssh/id_rsa' ] ; then
+        su -s '/usr/bin/bash' -c "ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa" - 'apache-flink'
+        su -s '/usr/bin/bash' -c "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys" - 'apache-flink'
+    fi
+
+}
+
+post_remove() {
+    getent passwd apache-flink >/dev/null 2>&1 || userdel -f apache-flink
+
+    getent group apache-flink >/dev/null 2>&1  || groupdelf apache-flink
+
+    # /usr/sbin/userdel apache-flink
+    # /usr/sbin/groupdel apache-flink
+}

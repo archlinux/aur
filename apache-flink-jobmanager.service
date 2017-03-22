@@ -1,0 +1,12 @@
+[Unit]
+Description=Apache Flink Standalone JobManager
+After=network.target
+
+[Service]
+User=apache-flink
+Group=apache-flink
+Environment=FLINK_LOG_DIR=/var/log/apache-flink
+ExecStart=/opt/apache-flink/bin/jobmanager.sh start
+
+[Install]
+WantedBy=multi-user.target
