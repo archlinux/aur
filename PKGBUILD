@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=env-modules
 pkgver=3.2.10
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
 arch=('i686' 'x86_64')
