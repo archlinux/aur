@@ -1,0 +1,17 @@
+pkgbase = git-standup-git
+	pkgdesc = Recall what you did on the last working day.
+	pkgver = r99.5ae7d15
+	pkgrel = 1
+	url = https://github.com/kamranahmedse/git-standup
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = bash
+	provides = git-standup
+	conflicts = git-standup
+	source = git-standup::git+https://github.com/kamranahmedse/git-standup
+	md5sums = SKIP
+
+pkgname = git-standup-git
+
