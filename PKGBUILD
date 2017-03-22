@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-grsec-knock
 _pkgbasever=4.9-gnu
-_pkgver=4.9.15-gnu
+_pkgver=4.9.16-gnu
 _grsecver=3.1
-_timestamp=201703150049
+_timestamp=201703180820
 _knockpatchver=4.9_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -71,9 +71,9 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP'
-            '5eb6e1bd2a86fcb5386a9f1baa554daec8d79eb4cf072ad57359fcfb231eb6807dfa603c413d808101395b1ce2b4d552d5bb5cdc681a9292b611233eaa5bdbef'
+            '2afe13f7f851ab585ecff842acfaa63d30d2668978d744e6601ac64ed805f61ca7834b15f0d9f55825a68791f467064bf253a50eb21f6c3f7bb4699db329a405'
             'SKIP'
-            'd5aca2b1110d1738056af7b3d90c37ecc55286add77f6657ed70262a19872f770143ab2b07fc886063bdaebaf71b5739c8e86f48a470ca2a5f387b4610d9a9c3'
+            '7c4796175d8620293b5b3576c3f366bd39ef34c4078e1ef2172e543aee646890517935e1f60593d995e1b5c6bec333722963a7cbb0593ddf7c89f4e0c601069d'
             'SKIP'
             'a00e9fc0b930021242b231dfdd15160eaefbfad4aaa0ba0426bb9a25dd14acc1825cbb1bc9c680a6d43baca797591dc219e232862f566457752ff378e03600a3'
             'SKIP'
@@ -91,7 +91,7 @@ sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca4
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            'a77b68d353c886b9ef2319ba3084821930df838b14ea3b84d834752e59e029133e7ca06f5ab0720317e6ade25b43ac779929ee4afc5bd3b3e5f8d08f9a3f5150'
+            '8321518de61f5918c1dd79c6f087fa478d4a02cd61b167d8b7bdadce4a03232d4af898de0252accdf14839032cd69bb41b964f8ac17f32fb48afc12463614040'
             'SKIP'
             'e04da62f138b24a489daf6ea12759ecb545b77be4dd585983d3abb764f4ac3aa4a9bf4179adddc73032b81e4fa54cbf5dbf173b25dfb1723e7379583b57aa426'
             '5d3a5440b3612fb85759b34d9b455118da342928e585b11545a0dcc9d11f16f0924e1b6018e08ed0507e53d1aabab7000c9b4405bc8881a7bda775456d81df2a'
@@ -222,7 +222,7 @@ _package() {
               'paxd-libre: to enable PaX exploit mitigations and apply exceptions automatically'
               'systemd-knock: to use system and service manager with TCP Stealth support'
               'openssh-knock: to use SSH with TCP Stealth support')
-  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
+  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}" "LINUX-ABI_VERSION=${_archpkgver}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
