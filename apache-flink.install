@@ -5,6 +5,7 @@ post_install() {
     chown -R apache-flink:apache-flink /var/log/apache-flink
     chown -R apache-flink:apache-flink /etc/apache-flink
     chown -R apache-flink:apache-flink /run/apache-flink
+    chmod 777 /opt/apache-flink/log
 
     if [ ! -e '/etc/apache-flink/.ssh/id_rsa' ] ; then
         su -s '/usr/bin/bash' -c "ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa" - 'apache-flink'
