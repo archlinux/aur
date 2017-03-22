@@ -5,7 +5,7 @@
 # Contributor: Dario 'Dax' Vilardi <dax [at] deelab [dot] org>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 pkgname=amule-dlp-git
-pkgver=2.3.2.r10432.5a1be4bc7
+pkgver=2.3.2.r10433.22f7128a0
 pkgrel=1
 pkgdesc="An eMule-like client for ed2k p2p network with DLP patch"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ makedepends=(git)
 optdepends=('antileech')
 install=amule.install
 provides=('amule' 'amule-dlp')
-source=("git+https://github.com/persmule/amule-dlp.git#commit=5a1be4bc72defab6e5e9dfa129f123bc914aa657"
+source=("git+https://github.com/persmule/amule-dlp.git#commit=22f7128a0229537716d56976697fc8da997a92fb"
         'amuled.systemd'
         'amuleweb.systemd')
 sha256sums=('SKIP'
