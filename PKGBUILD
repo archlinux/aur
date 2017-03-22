@@ -3,7 +3,7 @@
 pkgname=mons
 pkgver=0.5
 pkgrel=1
-pkgdesc='Shell script to quickly manage 2-monitors.'
+pkgdesc='POSIX Shell script to quickly manage 2-monitors display.'
 arch=('any')
 url="https://github.com/Ventto/${pkgname}.git"
 license=('MIT')
