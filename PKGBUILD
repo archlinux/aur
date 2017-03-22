@@ -3,7 +3,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 
 pkgname=howl-git
-pkgver=0.3.r864.g076c891f
+pkgver=0.3.r866.g96cfb2cd
 pkgrel=1
 pkgdesc='General purpose, light-weight customizable editor'
 arch=('i686' 'x86_64')
