@@ -1,10 +1,10 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=pps-tools-git
-pkgver=r20.47333f2
+pkgver=r23.9d82bc4
 pkgrel=1
 pkgdesc="LinuxPPS user-space tools"
-arch=('i686' 'x86_64')
+arch=('aarch64' 'arm7vh' 'i686' 'x86_64')
 url="http://linuxpps.org/"
 license=('GPL2')
 provides=('pps-tools')
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  make
+  LDLIBS=-lm make
 }
 
 package() {
@@ -27,5 +27,5 @@ package() {
 
   mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/include/sys"
 
-  make DESTDIR="$pkgdir/" install
+  LDLIBS=-lm make DESTDIR="$pkgdir/" install
 }
