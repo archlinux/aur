@@ -3,7 +3,7 @@
 # Submitter: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=jabref-git
-pkgver=4.0.0_v_2.9.2.r6339.2e9e7c89f
+pkgver=4.0.0_v_2.9.2.r6747.e9a4c7065
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
 arch=('any')
@@ -46,8 +46,8 @@ package() {
   install -Dm644 $srcdir/jabref.desktop \
     ${pkgdir}/usr/share/applications/jabref.desktop
 
-  install -Dm644 build/resources/main/images/icons/JabRef-icon-48.png \
-    ${pkgdir}/usr/share/pixmaps/jabref.png
+  install -Dm644 "build/resources/main/icons/${pkgname%-git}.svg" \
+    "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.svg"
 
   install -Dm644 LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
