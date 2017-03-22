@@ -1,4 +1,4 @@
-From 90dd18c931134b3a872d54e9f51df638f0ce8b4b Mon Sep 17 00:00:00 2001
+From 1c1935b0d6e6685181880f6d591677ed49b0695e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:32:00 +0200
 Subject: [PATCH 22/30] Allow usage of static version with CMake
@@ -9,13 +9,14 @@ Subject: [PATCH 22/30] Allow usage of static version with CMake
   - Use eg. find_package(Qt5Core) for dynamic version
   - and eg. find_package(StaticQt5Core) for static version
 ---
- mkspecs/features/create_cmake.prf                  |  85 ++++--
- .../features/data/cmake/Qt5BasicConfig.cmake.in    | 338 +++++++++++++++------
+ mkspecs/features/create_cmake.prf                  |  85 +++--
+ .../features/data/cmake/Qt5BasicConfig.cmake.in    | 358 ++++++++++++++-------
  .../features/data/cmake/Qt5PluginTarget.cmake.in   |  30 +-
  qmake/generators/makefile.cpp                      |   7 +
  src/corelib/Qt5CoreConfigExtras.cmake.in           |  37 ++-
  src/gui/Qt5GuiConfigExtras.cmake.in                |  12 +-
- 6 files changed, 358 insertions(+), 151 deletions(-)
+ src/testlib/Qt5TestConfigExtras.cmake.in           |   4 +
+ 7 files changed, 372 insertions(+), 161 deletions(-)
 
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
 index 461a7fdff5..c4afc5251b 100644
@@ -221,7 +222,7 @@ index 461a7fdff5..c4afc5251b 100644
  # We are generating cmake files. Most developers of Qt are not aware of cmake,
  # so we require automatic tests to be available. The only module which should
 diff --git a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
-index d2358cae4b..89575efd6f 100644
+index d2358cae4b..6365d0f9ff 100644
 --- a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 +++ b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 @@ -35,15 +35,18 @@ set(_qt5$${CMAKE_MODULE_NAME}_install_prefix \"$$[QT_INSTALL_PREFIX]\")
@@ -353,7 +354,7 @@ index d2358cae4b..89575efd6f 100644
  !!IF !no_module_headers
  !!IF !isEmpty(CMAKE_BUILD_IS_FRAMEWORK)
      set(_Qt5$${CMAKE_MODULE_NAME}_OWN_INCLUDE_DIRS
-@@ -99,33 +149,33 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -99,46 +149,50 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
        \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/$${CMAKE_LIB_DIR}Qt$${CMAKE_MODULE_NAME}.framework/Headers\"
      )
  !!IF isEmpty(CMAKE_NO_PRIVATE_INCLUDES)
@@ -362,11 +363,14 @@ index d2358cae4b..89575efd6f 100644
          \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/$${CMAKE_LIB_DIR}Qt$${CMAKE_MODULE_NAME}.framework/Versions/$$section(VERSION, ., 0, 0)/Headers/$$VERSION/\"
          \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/$${CMAKE_LIB_DIR}Qt$${CMAKE_MODULE_NAME}.framework/Versions/$$section(VERSION, ., 0, 0)/Headers/$$VERSION/$${MODULE_INCNAME}\"
      )
- !!ELSE
+-!!ELSE
 -    set(Qt5$${CMAKE_MODULE_NAME}_PRIVATE_INCLUDE_DIRS \"\")
+-!!ENDIF
+-!!ELSE
++!!ELSE // isEmpty(CMAKE_NO_PRIVATE_INCLUDES)
 +    set($${VAR_PREFIX}Qt5$${CMAKE_MODULE_NAME}_PRIVATE_INCLUDE_DIRS \"\")
- !!ENDIF
- !!ELSE
++!!ENDIF // isEmpty(CMAKE_NO_PRIVATE_INCLUDES)
++!!ELSE // !isEmpty(CMAKE_BUILD_IS_FRAMEWORK)
  !!IF isEmpty(CMAKE_INCLUDE_DIR_IS_ABSOLUTE)
      set(_Qt5$${CMAKE_MODULE_NAME}_OWN_INCLUDE_DIRS \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/$$CMAKE_INCLUDE_DIR\" \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/$${CMAKE_INCLUDE_DIR}$${MODULE_INCNAME}\")
  !!IF isEmpty(CMAKE_NO_PRIVATE_INCLUDES)
@@ -375,11 +379,14 @@ index d2358cae4b..89575efd6f 100644
          \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/$${CMAKE_INCLUDE_DIR}$${MODULE_INCNAME}/$$VERSION\"
          \"${_qt5$${CMAKE_MODULE_NAME}_install_prefix}/$${CMAKE_INCLUDE_DIR}$${MODULE_INCNAME}/$$VERSION/$${MODULE_INCNAME}\"
      )
- !!ELSE
+-!!ELSE
 -    set(Qt5$${CMAKE_MODULE_NAME}_PRIVATE_INCLUDE_DIRS \"\")
+-!!ENDIF
+-!!ELSE
++!!ELSE // isEmpty(CMAKE_NO_PRIVATE_INCLUDES)
 +    set($${VAR_PREFIX}Qt5$${CMAKE_MODULE_NAME}_PRIVATE_INCLUDE_DIRS \"\")
- !!ENDIF
- !!ELSE
++!!ENDIF // isEmpty(CMAKE_NO_PRIVATE_INCLUDES)
++!!ELSE // isEmpty(CMAKE_INCLUDE_DIR_IS_ABSOLUTE)
      set(_Qt5$${CMAKE_MODULE_NAME}_OWN_INCLUDE_DIRS \"$$CMAKE_INCLUDE_DIR\" \"$${CMAKE_INCLUDE_DIR}Qt$${CMAKE_MODULE_NAME}\")
  !!IF isEmpty(CMAKE_NO_PRIVATE_INCLUDES)
 -    set(Qt5$${CMAKE_MODULE_NAME}_PRIVATE_INCLUDE_DIRS
@@ -387,13 +394,18 @@ index d2358cae4b..89575efd6f 100644
          \"$${CMAKE_INCLUDE_DIR}$${MODULE_INCNAME}/$$VERSION\"
          \"$${CMAKE_INCLUDE_DIR}$${MODULE_INCNAME}/$$VERSION/$${MODULE_INCNAME}\"
      )
- !!ELSE
+-!!ELSE
 -    set(Qt5$${CMAKE_MODULE_NAME}_PRIVATE_INCLUDE_DIRS \"\")
+-!!ENDIF
+-!!ENDIF
+-!!ENDIF
++!!ELSE // isEmpty(CMAKE_NO_PRIVATE_INCLUDES)
 +    set($${VAR_PREFIX}Qt5$${CMAKE_MODULE_NAME}_PRIVATE_INCLUDE_DIRS \"\")
- !!ENDIF
- !!ENDIF
- !!ENDIF
-@@ -134,11 +184,15 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
++!!ENDIF // isEmpty(CMAKE_NO_PRIVATE_INCLUDES)
++!!ENDIF // isEmpty(CMAKE_INCLUDE_DIR_IS_ABSOLUTE)
++!!ENDIF // !isEmpty(CMAKE_BUILD_IS_FRAMEWORK)
+ !!IF !isEmpty(CMAKE_ADD_SOURCE_INCLUDE_DIRS)
+     include(\"${CMAKE_CURRENT_LIST_DIR}/ExtraSourceIncludes.cmake\" OPTIONAL)
  !!ENDIF
  !!ELSE
      set(_Qt5$${CMAKE_MODULE_NAME}_OWN_INCLUDE_DIRS \"\")
@@ -967,6 +979,20 @@ index 2e32911a64..31567d7da2 100644
          IMPORTED_LINK_DEPENDENT_LIBRARIES_${_config}
          ${Qt5Gui_EGL_LIBRARIES} ${Qt5Gui_OPENGL_LIBRARIES}
      )
+diff --git a/src/testlib/Qt5TestConfigExtras.cmake.in b/src/testlib/Qt5TestConfigExtras.cmake.in
+index 2a575958ae..8312c90fd1 100644
+--- a/src/testlib/Qt5TestConfigExtras.cmake.in
++++ b/src/testlib/Qt5TestConfigExtras.cmake.in
+@@ -1,5 +1,9 @@
+ 
++!!IF !isEmpty(CMAKE_STATIC_TYPE)
++set_property(TARGET StaticQt5::Test
++!!ELSE
+ set_property(TARGET Qt5::Test
++!!ENDIF
+   APPEND PROPERTY
+     INTERFACE_COMPILE_DEFINITIONS QT_TESTCASE_BUILDDIR=\\\"\${CMAKE_BINARY_DIR}\\\"
+ )
 -- 
-2.11.1
+2.12.1
 
