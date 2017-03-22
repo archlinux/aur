@@ -9,7 +9,7 @@ _extra=pm-quirks
 
 pkgname=pm-utils
 pkgver=1.4.1
-pkgrel=2
+pkgrel=7
 pkgdesc="Utilities and scripts for suspend and hibernate power management"
 arch=('any')
 url="http://pm-utils.freedesktop.org"
