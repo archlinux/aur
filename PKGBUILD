@@ -2,7 +2,7 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=pgcli
-pkgver=1.4.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="a command line interface for Postgres with auto-completion and syntax highlighting"
 url="http://pgcli.com/"
@@ -19,4 +19,4 @@ package() {
     python setup.py install --root=$pkgdir/ --optimize=1
 }
 
-md5sums=('d27b5328ae0bbf2c5bc4f26c2de0f1f9')
+md5sums=('e2c2f2ecefad8aaca6ed5421545877b1')
