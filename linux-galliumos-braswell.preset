@@ -1,0 +1,14 @@
+# mkinitcpio preset file for the 'linux-galliumos-braswell' package
+
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux-galliumos-braswell"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/initramfs-linux-galliumos-braswell.img"
+#default_options=""
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/boot/initramfs-linux-galliumos-braswell-fallback.img"
+fallback_options="-S autodetect"

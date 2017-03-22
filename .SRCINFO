@@ -1,0 +1,33 @@
+pkgbase = linux-galliumos-braswell
+	pkgver = v4.9.16
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = libelf
+	options = !strip
+	source = git+https://github.com/GalliumOS/linux.git#branch=v4.9.16
+	source = linux-galliumos-braswell.preset
+	sha256sums = SKIP
+	sha256sums = 7f9b77e1ac3b59453f6bb3858d0549c3022e6ae93ca3978427d96ae23f87e451
+
+pkgname = linux-galliumos-braswell
+	pkgdesc = The Linux kernel and modules with GalliumOS patches for braswell chromebooks
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux
+	backup = etc/mkinitcpio.d/linux-galliumos-braswell.preset
+
+pkgname = linux-galliumos-braswell-headers
+	pkgdesc = Header files and scripts for building modules for Linux kernel with GalliumOS patches for braswell chromebooks
+	provides = linux-headers
+
