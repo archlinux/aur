@@ -1,18 +1,21 @@
 pkgbase = aide-selinux
 	pkgdesc = A file integrity checker and intrusion detection program.
 	pkgver = 0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://aide.sourceforge.net/
 	arch = i686
 	arch = x86_64
-	groups = selinux
+	groups = selinux-extra
 	license = GPL
 	depends = acl
+	depends = audit
 	depends = e2fsprogs
 	depends = elfutils
+	depends = libsepol
 	depends = mhash
 	depends = pcre
-	depends = libsepol
+	provides = aide
+	conflicts = aide
 	backup = etc/aide.conf
 	source = http://downloads.sourceforge.net/sourceforge/aide/aide-0.16.tar.gz
 	source = http://downloads.sourceforge.net/sourceforge/aide/aide-0.16.tar.gz.asc
@@ -23,6 +26,4 @@ pkgbase = aide-selinux
 	md5sums = d029f9796de01dc8a791f89ac931d7fb
 
 pkgname = aide-selinux
-	provides = aide
-	conflicts = aide
 
