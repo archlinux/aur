@@ -1,7 +1,7 @@
 # Maintainer: deadhead <deadhead3492@gmail.com>
 pkgname=fetchpkg
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI frontend for pacman / AUR"
 arch=('any')
 url="https://github.com/deadhead420/fetchpkg"
@@ -15,6 +15,8 @@ package() {
   cd "${srcdir}"/fetchpkg
   install -Dm755 fetchpkg "$pkgdir"/usr/bin/fetchpkg
   install -Dm644 fetchpkg.conf "$pkgdir"/etc/fetchpkg.conf
+  install -Dm644 fetchpkg.png "$pkgdir"/usr/share/pixmaps/fetchpkg.png
+  install -Dm644 fetchpkg.desktop "$pkgdir"/usr/share/applications/fetchpkg.desktop
 }
 
 # vim:set ts=2 sw=2 et:
