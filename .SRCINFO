@@ -1,6 +1,6 @@
 pkgbase = st-ametisf-git
-	pkgdesc = Port of simple terminal to wayland - ametisf fork, static, musl
-	pkgver = 982.2a71cc0
+	pkgdesc = Port of simple terminal to wayland - ametisf fork
+	pkgver = 986.f4f6a5d
 	pkgrel = 1
 	epoch = 1
 	url = http://github.com/ametisf/st

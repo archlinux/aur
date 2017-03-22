@@ -2,9 +2,9 @@
 
 pkgname=st-ametisf-git
 _pkgname=st
-pkgver=983.209d96b
+pkgver=986.f4f6a5d
 pkgrel=1
-pkgdesc='Port of simple terminal to wayland - ametisf fork, static, musl'
+pkgdesc='Port of simple terminal to wayland - ametisf fork'
 url='http://github.com/ametisf/st'
 arch=('i686' 'x86_64')
 license=('MIT')
