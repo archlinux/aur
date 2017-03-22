@@ -1,0 +1,6 @@
+#!/bin/bash
+
+### start flashprint with LANG=C to fix render issues
+### thanks to Michael Risthaus for reporting this workaround
+### will be replaced with symlink after fix from uplink
+env LANG=C /usr/share/FlashPrint/FlashPrint
