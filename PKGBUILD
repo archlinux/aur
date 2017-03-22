@@ -10,7 +10,7 @@
 _npmname=grunt
 pkgname=nodejs-grunt # All lowercase
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The JavaScript Task Runner"
 arch=(any)
 url="http://gruntjs.com/"
@@ -28,4 +28,5 @@ package() {
 	mkdir -p $_npmdir
 	cd $_npmdir
 	npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
+#    rmdir "$pkgdir/usr/etc"
 }
