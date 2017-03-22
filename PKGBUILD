@@ -1,6 +1,6 @@
 pkgname=netctl-eduroam
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Example netctl profile for eduroam'
 arch=(i686 x86_64)
 url=http://higgsboson.tk/
