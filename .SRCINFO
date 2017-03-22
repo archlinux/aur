@@ -1,6 +1,6 @@
 pkgbase = chirp
 	pkgdesc = GUI tool for programming Ham Radios - COMPLETE version
-	pkgver = 20170306
+	pkgver = 20170322
 	pkgrel = 1
 	url = http://chirp.danplanet.com/
 	install = chirp.install

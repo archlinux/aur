@@ -5,7 +5,7 @@
 # Contributor: Nicholas Tryon (KC2YTG) <dhraak at gmail dot com>
 
 pkgname=chirp
-pkgver=20170306
+pkgver=20170322
 pkgrel=1
 pkgdesc="GUI tool for programming Ham Radios - COMPLETE version"
 arch=('any')
@@ -29,6 +29,7 @@ prepare() {
 	cd $srcdir/$pkgname
 
 	sed -i -e 's|/usr/sbin|/usr/bin|g' setup.py
+	sed -i 's:python:python2:' chirpc
 
 	date +%Y%m%d > build/version
 	export VERSION=$(cat build/version)
