@@ -10,7 +10,7 @@ url='http://goaccess.io'
 license=('GPL')
 depends=('ncurses' 'geoip' 'glib2')
 backup=('etc/goaccess.conf')
-source=("http://tar.goaccess.io/$pkgname-$pkgver.tar.gz")
+source=("http://tar.goaccess.io/goaccess-$pkgver.tar.gz")
 sha512sums=('bc31ef1e4c92608635856fa73e69b58267c161a7e3c6f2e3ca8860b862ed1c47575b93943dd975a5f8503774ee90ee0649d380563639e30908d876416638f889')
 
 build() {
