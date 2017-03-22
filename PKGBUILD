@@ -4,15 +4,15 @@
 # Set these variables to ANYTHING that is not null to enable them
 
 # Remove the bundled JRE to save space - make sure you use your own,
-# either through JAVA_HOME or by setting the path to the JDK 
-# in ~/.IntelliJIdea2016.1/config/idea.jdk
+# either through JAVA_HOME or by setting the path to the JDK
+# in ~/.IntelliJIdea*/config/idea.jdk
 _remove_bundled_jre=
 
 ### Do no edit below this line unless you know what you're doing
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=171.3780.52
+_buildver=171.3780.107
 _veryear=2017
 _verrelease=1
 _verextra=
@@ -25,12 +25,12 @@ options=(!strip)
 url="http://www.jetbrains.com/idea/"
 license=('custom')
 depends=('java-environment' 'giflib' 'libxtst')
-if [ "${_nojdkrelease}" = "true" ] && [ -n "${_remove_budled_jre}" ]; then
-  source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}-no-jdk.tar.gz")
-  sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIU-${_buildver}-no-jdk.tar.gz.sha256" | cut -f1 -d" "))
+if [ "${_nojdkrelease}" = "true" ] && [ -n "${_remove_bundled_jre}" ]; then
+  source=("https://download.jetbrains.com/idea/ideaIU-${_veryear}.${_verrelease}-no-jdk.tar.gz")
+  sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIU-${_veryear}.${_verrelease}-no-jdk.tar.gz.sha256" | cut -f1 -d" "))
 else
-  source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}.tar.gz")
-  sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIU-${_buildver}.tar.gz.sha256" | cut -f1 -d" "))
+  source=("https://download.jetbrains.com/idea/ideaIU-${_veryear}.${_verrelease}.tar.gz")
+  sha256sums=($(curl -sO "${source}.sha256" && cat "ideaIU-${_veryear}.${_verrelease}.tar.gz.sha256" | cut -f1 -d" "))
 fi
 
 package() {
@@ -64,7 +64,7 @@ EOF
 
     mkdir -p "${pkgdir}/usr/bin/"
     mkdir -p "${pkgdir}/usr/share/applications/"
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
     for i in $(ls $srcdir/idea-IU-$_buildver/license/ ); do
       ln -sf "${srcdir}/idea-IU-${_buildver}/license/$i" "${pkgdir}/usr/share/licenses/${pkgname}/$i"
