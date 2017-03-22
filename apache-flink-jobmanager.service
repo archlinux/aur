@@ -5,8 +5,11 @@ After=network.target
 [Service]
 User=apache-flink
 Group=apache-flink
-Environment=FLINK_LOG_DIR=/var/log/apache-flink
-ExecStart=/opt/apache-flink/bin/jobmanager.sh start
+Environment=FLINK_LOG_DIR=/var/log/apache-flink FLINK_PID_DIR=/run/apache-flink JAVA_HOME=/usr/lib/jvm/default-runtime FLINK_IDENT_STRING=systemd
+PIDFile=/run/apache-flink/flink-systemd-jobmanager.pid
+ExecStart=/opt/apache-flink/bin/jobmanager.sh start cluster
+Type=forking
 
 [Install]
 WantedBy=multi-user.target
+

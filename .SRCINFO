@@ -25,8 +25,8 @@ pkgbase = apache-flink
 	source = apache-flink-jobmanager.service
 	source = apache-flink-taskmanager@.service
 	md5sums = 792225bf4256b8ae2b2d9582a505c41c
-	md5sums = ee79b5786f48bd30b6e2f717e42abe5a
-	md5sums = b5da15654a4bfaa1806cd9befb1cb0e4
+	md5sums = d44f0d5c4af36313b405115168bc48c3
+	md5sums = 76146d287e355b8fae843858e8233608
 
 pkgname = apache-flink
 

@@ -5,8 +5,11 @@ After=network.target
 [Service]
 User=apache-flink
 Group=apache-flink
-Environment=FLINK_LOG_DIR=/var/log/apache-flink
+Environment=FLINK_LOG_DIR=/var/log/apache-flink FLINK_PID_DIR=/run/apache-flink JAVA_HOME=/usr/lib/jvm/default-runtime FLINK_IDENT_STRING=systemd-%I
+PIDFile=/run/apache-flink/flink-systemd-%I-taskmanager.pid
 ExecStart=/opt/apache-flink/bin/taskmanager.sh start
+Type=forking
 
 [Install]
 WantedBy=multi-user.target
+

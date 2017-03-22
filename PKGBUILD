@@ -16,8 +16,8 @@ source=("http://www-us.apache.org/dist/flink/flink-1.2.0/flink-${pkgver}-bin-had
         "apache-flink-jobmanager.service"
         "apache-flink-taskmanager@.service")
 md5sums=("792225bf4256b8ae2b2d9582a505c41c"
-         "ee79b5786f48bd30b6e2f717e42abe5a"
-         "b5da15654a4bfaa1806cd9befb1cb0e4")
+         "d44f0d5c4af36313b405115168bc48c3"
+         "76146d287e355b8fae843858e8233608")
 backup=(
     "etc/${pkgname}/flink-conf.yaml"
     "etc/${pkgname}/log4j-cli.properties"
@@ -39,7 +39,7 @@ prepare() {
 package() {
         cd "$srcdir/flink-${pkgver}"
 
-        install -d "$pkgdir/usr/bin" "$pkgdir/opt" "$pkgdir/var/log/apache-flink"
+        install -d "$pkgdir/usr/bin" "$pkgdir/opt" "$pkgdir/var/log/apache-flink" "$pkgdir/run/apache-flink"
 
         cp -r "$srcdir/flink-${pkgver}" "$pkgdir/opt/apache-flink/"
 
