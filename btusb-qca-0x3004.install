@@ -1,0 +1,21 @@
+_kernmoddir=/usr/lib/modules/`uname -r`
+
+post_install() {
+	cd $_kernmoddir/updates
+	cp $_kernmoddir/kernel/drivers/bluetooth/* .
+	sudo rm btusb.ko.gz
+	sudo gzip -9 -k btusb.ko
+	sudo depmod -a
+	sudo modprobe -r btusb
+	sudo modprobe btusb
+}
+
+post_upgrade() {
+	cd $_kernmoddir/updates
+	cp $_kernmoddir/kernel/drivers/bluetooth/* .
+	sudo rm btusb.ko.gz
+	sudo gzip -9 -k btusb.ko
+	sudo depmod -a
+	sudo modprobe -r btusb
+	sudo modprobe btusb
+}

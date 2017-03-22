@@ -1,0 +1,26 @@
+pkgbase = btusb-qca-0x3004
+	pkgdesc = patch btusb so it works on QCA devices with id 0x3004
+	pkgver = 0.8
+	pkgrel = 1
+	install = btusb-qca-0x3004.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = linux-headers
+	source = Makefile
+	source = btusb.patch
+	source = btusb-qca-0x3004.install
+	source = btusb.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btusb.c?id=refs/tags/v4.10.4
+	source = btintel.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btintel.h?id=refs/tags/v4.10.4
+	source = btbcm.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btbcm.h?id=refs/tags/v4.10.4
+	source = btrtl.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btrtl.h?id=refs/tags/v4.10.4
+	md5sums = 369ff1a06ddfa06bc68bd776d3fbc97e
+	md5sums = bf67cf7e920e90f399fafadc2d26f9d7
+	md5sums = 3b63db7fbf7aab07322b0a1f71a7ffdb
+	md5sums = 25e4e23aae21b04fa865c8e1b07a1d77
+	md5sums = 764863abf53cb70bc04a3af1c24d226e
+	md5sums = 4c5d3ed81979cc6af062b381731d25e3
+	md5sums = ed7b0912a2e3507068c0d173ed9338fa
+
+pkgname = btusb-qca-0x3004
+
