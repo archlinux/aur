@@ -1,0 +1,13 @@
+#! /usr/bin/bash
+
+# Copies the splash image into the framebuffer device
+run_hook() {
+    local SPLASH_IMAGE="/etc/splash.fb"
+
+    if [ -f "${SPLASH_IMAGE}" ]; then
+        dd if=${SPLASH_IMAGE} of=/dev/fb0 2> /dev/null
+    else
+        echo "Cannot find ${SPLASH_IMAGE}."
+        echo "Did you include it in the \"BINARIES=...\" of your /etc/mkinitcpio.conf?"
+    fi
+}
