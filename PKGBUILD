@@ -72,14 +72,14 @@ _bldtype=Release
 #_bldtype=Debug
 
 _mozcrev=280e38fe3d9db4df52f0713acf2ca65898cd697a
-_utdicver=20170116
+_utdicver=20170321
 _zipcoderel=201702
 _uimmozcrev=321.3ea28b1
 
 pkgbase=mozc-ut2
 pkgname=mozc-ut2
 true && pkgname=('mozc-ut2')
-pkgver=2.20.2673.102.20170116
+pkgver=2.20.2673.102.20170321
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc-ut2.html"
@@ -95,8 +95,8 @@ source=(
   mod-generate-dictionary.sh
 )
 sha1sums=('SKIP'
-          '7b552db7e81ff57483a3065267afeca01edea36a'
-          '3cbef322672c1327d2fbae13bf4366cbc607dba3'
+          '66b5ebb21625880d5a00e77d200111ba32455546'
+          '4a44c97c3eb68d538279dcf44beaa576d911bf0e'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
           '4a9eaeef43cca7e97a2923b344bcf361cb1d1f73'
           'b530dd3f205526e875b4506bec312f22bc737c70'
