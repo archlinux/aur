@@ -11,7 +11,7 @@ source=('git+https://github.com/al1b/KTOP.git' 'ktop')
 sha256sums=('SKIP'
             '15190d1c90ea9bc363104e62a321b6c01e46b1a6df22a59bdd8436b4dd2e05e4')
 arch=('any')
-depends=('dotnet-cli')
+depends=('dotnet-sdk')
 makedepends=('git')
 conflicts=('ktop')
 provides=('ktop')
