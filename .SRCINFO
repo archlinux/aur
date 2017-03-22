@@ -1,0 +1,18 @@
+pkgbase = stest-git
+	pkgdesc = filter files by properties - ametisf fork
+	pkgver = 4.f2676b4
+	pkgrel = 1
+	url = https://github.com/ametisf/stest
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = tup
+	depends = sh
+	provides = stest
+	conflicts = stest
+	source = git+https://github.com/ametisf/stest.git
+	sha256sums = SKIP
+
+pkgname = stest-git
+
