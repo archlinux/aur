@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-pck
 _pkgbasever=4.10-gnu
-_pkgver=4.10.3-gnu
+_pkgver=4.10.4-gnu
 _pckpatchver=pck1
 
 _replacesarchkernel=('linux-zen')
@@ -61,9 +61,9 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0010-disable-USB3-port-on-ODROID-XU.patch')
 sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf5811fdae48fafd5a8e00d18ed9ac2e1ad4b12a657f322eb234384316ad131e0'
             'SKIP'
-            'c2e674578fa3b0e86941009034c69aea09267b322e0a58f7850c7e5b79db69486d1ada277a37825e94dcbbd4798ee56655db1900dabf34f00097f331d08e5fc6'
+            'fec60e9e40df2991ea9770786cfc5baf7cc1baf6d9e41427e3cb68c471779a21fb7374bd739aa168171198f76c35022bab4118ab21c95f90a7bd6d2cd305bc58'
             'SKIP'
-            'ecd421a5d17871a8001e61219d173ef47740605b52b565b2811c5b8c6c1d8501b231fa2c0a1512a1079567da22f7c0f1a8b9e192d1ad13f23061ddbe53490832'
+            '29da5f88eb638e2a69a7fb1ec714453bb97d1b1424de2326bb1f108b502252b5be5efe00c367318a628a94925e200c42581cb70dd9dd4786a835c098e40b3fc7'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -76,7 +76,7 @@ sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf58
             '9554a9b8c543ab5724fd2bf857553017e1366a6aa768c651d4e0c20c7b6bf3328675e46e37c7d63d090a26ccf2a174358b522c861833e1499a7780e00a742fac'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '84d9cc5a46ce437ffbb83525d72473ba00ed7ab9012af52a1e0226a22380b2224a48a1bce4e1030e08dfbdde0b760702217b5107673d62770eea26d503a42e0c'
+            '057563c1be8bb020c460f02772dfff4571819fca256ce0d4e2b50eb94e7de7bf1dfa9b4a4a22d18147f4c5f8a47cdfd5126dc57e510b960f5de7cbd2374072f0'
             'SKIP'
             'dd4e2482d6e3d91d00e37e665933515a4fa876d39c036d639f21c48a09f03202f3dec0dbe04b7c60c4b7e1f49617b5f94ace688afacbe33dc6d6818c0c797031'
             'cf0a3061cef91c04fa5e6d50c4ee235f817cb97f6b7a77f42d42ada707e71bd9731dfafdfcf396e767362998acd8b98ad9942a989c2dd8457e57177c354ec7d2'
@@ -179,7 +179,7 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'systemd-knock: to use system and service manager with TCP Stealth support'
               'openssh-knock: to use SSH with TCP Stealth support')
-  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
+  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}" "LINUX-ABI_VERSION=${_archpkgver}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
