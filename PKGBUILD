@@ -1,7 +1,7 @@
 # Maintainer: Steven Allen <steven@stebalien.com>
 # Contributor: Tobias Mueller <gtklp@sirtobi.com>
 pkgname=gtklp
-pkgver=1.3.1
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="a graphical frontend for cups, the linux printing system"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ url="http://gtklp.sirtobi.com/"
 license=('GPL')
 depends=('cups' 'gtk2')
 source=(gtklp-$pkgver.src.tar.gz::https://sourceforge.net/projects/gtklp/files/gtklp/$pkgver/gtklp-$pkgver.src.tar.gz/download)
-sha256sums=('734f9b0edb4f01ffce1288553150966231253a5bf4bd76db739ee180a1f39fdb')
+sha256sums=('6e105c22b8e3e855bfba060cb3285959841f04439077b0a533f14f6aa52bfbbf')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
