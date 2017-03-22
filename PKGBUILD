@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=geo
-pkgver=170308133615
+pkgver=170321163009
 pkgrel=1
 pkgdesc="Various tools for geocaching"
 arch=('i686' 'x86_64')
@@ -13,9 +13,9 @@ optdepends=('gpsd: for GPS management'
             'gpsdrive: for GPS management'
             'foxtrotgps: for GPS management'
             'viking: for GPS management')
-source=(http://geo.rkkda.com/$pkgname-17-03-08-13-36-15.tar.gz
+source=(http://geo.rkkda.com/$pkgname-17-03-21-16-30-09.tar.gz
         geo-install-patch.diff)
-sha256sums=('9d0db8d5a11441b29c80a94746a692b19d4d3b716acfeed7b8c572f331695e9d'
+sha256sums=('3d6298e51a382bc4cbf0bbe00aecfae88fa386d0f64e95163d1b824c85648aae'
             'e50e8d05c3f845c4e6667eb3b76f7c757353d9a1df720bda8b687a1a430e1bc4')
 
 prepare() {
