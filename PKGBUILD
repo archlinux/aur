@@ -3,7 +3,7 @@
 pkgname=lux
 pkgver=1.1
 pkgrel=1
-pkgdesc='Shell script to easily control brightness on backlight controllers.'
+pkgdesc='POSIX Shell script to easily control brightness on backlight controllers.'
 arch=('any')
 url="https://github.com/Ventto/${pkgname}.git"
 license=('GPL3')
