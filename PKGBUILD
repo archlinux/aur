@@ -1,6 +1,6 @@
 pkgname='holo-run-scripts'
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Holo plugin for running custom provisioning scripts'
 arch=('any')
 url='http://holocm.org'
@@ -11,6 +11,9 @@ depends=(
 makedepends=('perl')
 source=("https://github.com/holocm/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('695cd2513a536a3ae1f583d4687f498c0576fd5689aa8f88e023d191a4ed85e8')
+backup=(
+    'etc/holorc.d/95-holo-run-scripts'
+)
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
