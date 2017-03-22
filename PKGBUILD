@@ -2,13 +2,14 @@
 # Maintainer: farawayer <farwayer@gmail.com>
 
 _gemname=google-api-client
-pkgname=ruby-$_gemname
-pkgver=0.9.24
+pkgname=ruby-$_gemname-0.9
+pkgver=0.9.28
 pkgrel=1
 pkgdesc='Client for accessing Google APIs'
 arch=(any)
 url='https://github.com/google/google-api-ruby-client'
 license=('Apache 2.0')
+provides=("ruby-$_gemname-$pkgver")
 depends=(
   ruby
   'ruby-addressable<3' 'ruby-addressable>=2.3'
@@ -25,7 +26,7 @@ depends=(
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('45ec4022aa2958378a7f5f888bd958a960d502c7')
+sha1sums=('34ddd00af6fe6e638859ddbd937962c26345dfa6')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
