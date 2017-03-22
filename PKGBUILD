@@ -1,8 +1,8 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc='The Pantheon Top Panel'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/wingpanel'
@@ -13,7 +13,7 @@ depends=('clutter' 'cogl' 'glib2' 'glibc' 'gtk3' 'libgee' 'mutter'
 makedepends=('cmake' 'gala-bzr' 'vala')
 provides=('libwingpanel-2.0.so')
 source=("https://launchpad.net/wingpanel/2.x/${pkgver}/+download/wingpanel-${pkgver}.tar.xz")
-sha256sums=('e378ba458d4d1bfb8cc8c5ef3f2cf67692f2e2bfe50e1d02c73bf375c9220f7a')
+sha256sums=('b0327022f0a37a8ac038cf85412b7ecafa0c3adeda26b46901b8434ddec3b8c4')
 
 prepare() {
   cd wingpanel-${pkgver}
