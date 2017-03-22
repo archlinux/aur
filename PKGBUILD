@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-calculator
-pkgver=0.1.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='The Pantheon Calculator'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('glib2' 'glibc' 'gtk3'
          'libgranite.so')
 makedepends=('bzr' 'cmake' 'intltool' 'vala')
 source=("https://launchpad.net/pantheon-calculator/0.4-loki/${pkgver}/+download/pantheon-calculator-${pkgver}.tar.xz")
-sha256sums=('cd1fb70ea4b4d09d29cdcbcbce7533df4a40a3b6b4b5472261d5dbb030309fea')
+sha256sums=('80f936e5a48be7c1ca9904e1ebe14b9f112b549e698937aed6a0b4e580957e15')
 
 prepare() {
   cd pantheon-calculator-${pkgver}
