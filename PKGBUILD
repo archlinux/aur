@@ -1,17 +1,16 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=spice-guest-tools-windows
-pkgver=0.100
+pkgver=0.132
 pkgrel=1
-pkgdesc='Windows XP, Vista, 7, 8, 2003, 2008, 2012 guest drivers and agent for SPICE-enabled QEMU VMs'
+pkgdesc='Windows XP-10/2003-2016 guest drivers and agent for SPICE-enabled QEMU VMs'
 arch=('any')
-url="http://www.spice-space.org/"
+url="https://www.spice-space.org/"
 license=('GPL2')
-makedepends=('cdrkit' 'dos2unix')
+makedepends=('dos2unix' 'xorriso')
 install=spice-guest-tools-windows.install
-source=(http://www.spice-space.org/download/binaries/spice-guest-tools/spice-guest-tools-${pkgver}.exe)
-sha256sums=('4b3888c6374c107d2ea7f42f6e9a6c2a3c9b3c9f78bbe758807819754c0d265d')
-noextract=("spice-guest-tools-${pkgver}.exe")
+source=(${url}download/windows/spice-guest-tools/spice-guest-tools-${pkgver}/spice-guest-tools-${pkgver}.exe)
+sha512sums=('dfd94af10cf2c8afc9344f69c87f6ec5141f82058a7a20d0d4a873d3693c8cda29497e058ab2f54294be571d8e7f1d0a7b1d779710eb9c601b0607228208b69f')
 
 build() {
   cd "$srcdir"
@@ -24,7 +23,11 @@ label=SPICE Guest Tools ${pkgver}
 EOF
   unix2dos cdrom/autorun.inf
   cp -aL spice-guest-tools-${pkgver}.exe cdrom
-  genisoimage -J -o spice-guest-tools.iso cdrom
+  mod_date="$(date -d "$(stat -c %y cdrom/spice-guest-tools-${pkgver}.exe)" \
+              +%Y%m%d%H%M%S%N | cut -c -16)"
+  xorrisofs -V "SPICE Guest Tools ${pkgver}" \
+            --set_all_file_dates $mod_date --modification-date=$mod_date \
+            -r -J -o spice-guest-tools.iso cdrom
 }
 
 package() {
