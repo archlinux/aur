@@ -3,7 +3,7 @@
 
 pkgname=overture
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A DNS upstream switcher written in Go in order to purify DNS records"
 arch=("i686" "x86_64" "armv6h" "armv7h")
 url="https://github.com/shawn1m/overture"
@@ -25,7 +25,7 @@ source=("git+https://github.com/shawn1m/${pkgname}.git#tag=$pkgver"
 
 sha256sums=("SKIP"
             "58e26e8037056729d27f37cd13852e13e9b9766146eaf0e736b6b0c00cdec279"
-            "9a48f9d7be5e2b430fbf45f0c038bc1516f845bb7e5d9326e1262df3b3c38442"
+            "a9a7000c665583c84252d0c589eab0ea3ba13997d14e7ac097c3b227e165d0ee"
             "46c344510738143bd83057494273cf78095743070ad05d80a8d985098b2ff7ec"
             "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
             "89f0e6577a42ed913ed010366695b12f51923d8e503d7eed107c0e2f13268ac1")
