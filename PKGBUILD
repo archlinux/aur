@@ -3,7 +3,7 @@
 
 pkgname='mkinitcpio-fbsplash'
 pkgver='1.0.1'
-pkgrel=1
+pkgrel=2
 url="https://aur.archlinux.org/packages/${pkgname}/"
 pkgdesc='Tools to include a framebuffer based boot splash within the initcpio'
 arch=('any')
@@ -15,6 +15,8 @@ source=('fbsplash.hook' 'fbsplash.install' 'mkfbsplash')
 sha256sums=('a9a490071b8ec3232c1e012cbbde5a871d55c29726b84ad099e1a0f0ba0ddf71'
             '2b16aa38772542d19be1c5aa652641b2acc189c2428a35681b8e55d7486e1668'
             'a2dec17047857a6af0308c383a8ba9127ebbd25aa2ebef69b96a66152c3925ec')
+conflicts=('fbsplash')
+
 
 package() {
     # Install initcpio hook and install script
