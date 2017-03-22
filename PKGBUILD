@@ -3,7 +3,7 @@
 
 pkgname=ttf-dosega
 pkgver=20150901
-pkgrel=1
+pkgrel=2
 pkgdesc='An exact copy of the DOS EGA font, by Mateusz Viste'
 arch=('any')
 license=('CCPL:by-sa')
