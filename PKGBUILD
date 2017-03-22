@@ -11,7 +11,7 @@
 pkgname=paraview
 _pkgver=5.3.0
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='Parallel Visualization Application using VTK'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
@@ -60,6 +60,7 @@ build() {
     -DPARAVIEW_ENABLE_FFMPEG:BOOL=ON \
     -DPARAVIEW_ENABLE_MATPLOTLIB:BOOL=ON \
     -DPARAVIEW_ENABLE_PYTHON:BOOL=ON \
+    -DPARAVIEW_INSTALL_DEVELOPMENT_FILES:BOOL=ON \
     -DPARAVIEW_QT_VERSION=5 \
     -DPARAVIEW_USE_MPI:BOOL=ON \
     -DPARAVIEW_USE_VISITBRIDGE:BOOL=ON \
