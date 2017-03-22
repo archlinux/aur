@@ -2,7 +2,7 @@
 # Based on [extra]'s thunderbird: https://git.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/thunderbird
 
 pkgname=thunderbird-beta
-pkgver=52.0rc3
+pkgver=52.0rc4
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -13,7 +13,7 @@ url="https://www.mozilla.org/thunderbird/"
 depends=(gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib
          libvpx libevent nss hunspell sqlite ttf-font icu)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils
-             autoconf2.13) ###
+             autoconf2.13)
 optdepends=('libcanberra: for sound support')
 options=(!emptydirs !makeflags)
 install=$pkgname.install
@@ -22,7 +22,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/sou
         thunderbird-install-dir.patch
         fix-wifi-scanner.diff
         firefox-gcc-6.0.patch)
-sha512sums=('08db9268e4e5e67a1cdf16fb0e10cd9267896c0d4fefc7d93f5858cbbf83390711d35c95da8aec155b0e8162c3afe4a355692f99a85435c8acc38c9397a610eb'
+sha512sums=('215de8ae386f6f12d7a4338bb03bac956410be0dd4de5cca218e12241e3948c8c2540756e149bfde597cd10e399b4cb4db86619a2aa50a368ba323b413c1f93c'
             'e5649ddee3ca9cfdcf56652e9c8e6160d52c69d1439f9135b0c0d436ce61a25f17758afc0dd6cac3434c26234c584828eb07fdf9604797f7dd3f617ec194b79a'
             '8100fd3ea37d998905498d41c8504bfdd6d86766542d6b93107c92382a7525da7f75a83f8ff1e15ad95039d51da2add7e6b18af76d45516a41cdfd1e9f98f262'
             '1bd2804bea1fe8c85b602f8c5f8777f4ba470c9e767ad284cb3d0287c6d6e1b126e760738d7c671f38933ee3ec6b8931186df8e978995b5109797ae86dfdd85a'
