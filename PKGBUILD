@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=openvpn
-pkgver=2.4.0
-pkgrel=3
+pkgver=2.4.1
+pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
 arch=('i686' 'x86_64')
 url='http://openvpn.net/index.php/open-source.html'
@@ -11,31 +11,16 @@ optdepends=('easy-rsa: easy CA and certificate handling')
 makedepends=('systemd')
 license=('custom')
 install=openvpn.install
-validpgpkeys=('03300E11FED16F59715F9996C29D97ED198D22A3'  # Samuli Seppänen <samuli.seppanen@gmail.com>
+validpgpkeys=('6D04F8F1B0173111F499795E29584D9F40864578'  # Samuli Seppänen <samuli@openvpn.net>
               '7ACD56B74144925C6214329757DB9DAB613B8DA1') # David Sommerseth (OpenVPN Technologies, Inc) <davids@openvpn.net>
 source=("https://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.xz"{,.asc}
-        '0001-Clean-up-plugin-path-handling.patch'
-        '0002-do-not-race-on-RuntimeDirectory.patch'
-        '0003-systemd-Move-the-READY-1-signalling-to-an-earlier-po.patch'
         '0004-openssl-1-1-0.patch')
-sha256sums=('6f23ba49a1dbeb658f49c7ae17d9ea979de6d92c7357de3d55cd4525e1b2f87e'
+sha256sums=('fde9e22c6df7a335d2d58c6a4d5967be76df173c766a5c51ece57fd044c76ee5'
             'SKIP'
-            '162a21f78fc83071643341fb4198092d7d81b8196573d53ce43548424d757be2'
-            '58ee9d2f4d8a74c3dec037265b84963171f76f9fb6689a529728cdc76fac30dd'
-            'ae8fd591c05c04ad4b500494c55df242f3a2309f2af579b45820ce9959f1df06'
-            'f3f5ef72ebb000aaa0cdd0bd1138a3ac4b670430255e92bd7f9e0db76bdf161f')
+            'd801b1118d64c0667eae87ab1da920179f339614da22c5c8bed75d17650fad03')
 
 prepare() {
   cd "${srcdir}"/${pkgname}-${pkgver}
-
-  # Clean up plugin path handling
-  patch -Np1 < "${srcdir}"/0001-Clean-up-plugin-path-handling.patch
-
-  # do not race on RuntimeDirectory
-  patch -Np1 < "${srcdir}"/0002-do-not-race-on-RuntimeDirectory.patch
-
-  # systemd: Move the READY=1 signalling to an earlier point
-  patch -Np1 < "${srcdir}"/0003-systemd-Move-the-READY-1-signalling-to-an-earlier-po.patch
 
   # allow to build against openssl 1.1.0
   patch -Np1 < "${srcdir}"/0004-openssl-1-1-0.patch
