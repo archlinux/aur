@@ -1,0 +1,39 @@
+pkgbase = gwinwrap-git
+	pkgdesc = A simple GTK gui to xwinwrap written in pygtk+glade
+	pkgver = r41.6627153
+	pkgrel = 1
+	url = https://github.com/gavintlgold/gwinwrap
+	arch = any
+	license = GPL
+	makedepends = bzr
+	makedepends = git
+	depends = pygtk
+	depends = python
+	depends = shantz-xwinwrap-bzr
+	depends = xscreensaver
+	source = git://github.com/gavintlgold/gwinwrap.git
+	source = gwinwrap.bash
+	sha256sums = SKIP
+	sha256sums = e3adcb7994a39c340ee942b7ef939ac5c275ae80bd56e026dc515c7ef54c4cd0
+
+pkgname = gwinwrap-git
+
+pkgbase = gwinwrap-git
+	pkgdesc = A simple GTK gui to xwinwrap written in pygtk+glade
+	pkgver = r41.6627153
+	pkgrel = 1
+	url = https://github.com/gavintlgold/gwinwrap
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = pygtk
+	depends = python
+	depends = shantz-xwinwrap-bzr
+	depends = xscreensaver
+	source = git://github.com/gavintlgold/gwinwrap.git
+	source = gwinwrap.bash
+	sha256sums = SKIP
+	sha256sums = e3adcb7994a39c340ee942b7ef939ac5c275ae80bd56e026dc515c7ef54c4cd0
+
+pkgname = gwinwrap-git
+
