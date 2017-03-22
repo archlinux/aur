@@ -3,13 +3,12 @@ pkgbase = ttf-dosega
 	pkgver = 20150901
 	pkgrel = 1
 	url = http://dosega.sourceforge.net
-	install = ttf-dosega.install
 	arch = any
 	license = CCPL:by-sa
 	depends = xorg-font-utils
 	depends = fontconfig
-	source = http://downloads.sourceforge.net/dosega/DOSEGA-20150901.zip
-	md5sums = f4311c29c7060bc39ac2d9dfcc04910e
+	source = https://downloads.sourceforge.net/dosega/DOSEGA-20150901.zip
+	sha256sums = 7930302af494f32511a332a54272d2b93dbe2ccbd409e4ab31683038055a9169
 
 pkgname = ttf-dosega
 

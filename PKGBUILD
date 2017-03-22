@@ -1,4 +1,5 @@
-# Maintainer: megadriver <megadriver at gmx dot com>
+# Maintainer: Michael Straube <straubem@gmx.de>
+# Contributor: megadriver <megadriver at gmx dot com>
 
 pkgname=ttf-dosega
 pkgver=20150901
@@ -8,12 +9,9 @@ arch=('any')
 license=('CCPL:by-sa')
 url='http://dosega.sourceforge.net'
 depends=('xorg-font-utils' 'fontconfig')
-install='ttf-dosega.install'
-source=("http://downloads.sourceforge.net/dosega/DOSEGA-$pkgver.zip")
-md5sums=('f4311c29c7060bc39ac2d9dfcc04910e')
+source=("https://downloads.sourceforge.net/dosega/DOSEGA-$pkgver.zip")
+sha256sums=('7930302af494f32511a332a54272d2b93dbe2ccbd409e4ab31683038055a9169')
 
 package() {
-  cd "$srcdir"
-  install -d "$pkgdir"/usr/share/fonts/TTF/
-  install -m644 DOSEGA.ttf "$pkgdir"/usr/share/fonts/TTF/
+  install -Dm644 DOSEGA.ttf "$pkgdir"/usr/share/fonts/TTF/DOSEGA.ttf
 }
