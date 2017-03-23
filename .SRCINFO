@@ -1,0 +1,22 @@
+pkgbase = quickcurver-git
+	pkgdesc = Qt Material design implementation of Achtung die Kurve with online multiplayer
+	pkgver = VERSION
+	pkgrel = 1
+	url = https://github.com/magnus-gross/quickcurver
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-svg
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	depends = qt5-graphicaleffects
+	source = git+https://github.com/magnus-gross/quickcurver.git
+	source = git+https://github.com/magnus-gross/qml-material
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = quickcurver-git
+
