@@ -1,4 +1,5 @@
-# Maintainer: artoo <artoo@manjaro.org>
+# Maintainer: David P. <megver83@openmailbox.org>
+# Contributor: artoo <artoo@manjaro.org>
 
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
