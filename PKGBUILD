@@ -6,7 +6,7 @@
 
 pkgname=firefox-esr
 pkgver=52.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -74,6 +74,7 @@ ac_add_options --enable-rust
 # Branding
 ac_add_options --enable-official-branding
 ac_add_options --enable-update-channel=release
+ac_add_options --with-distribution-id=org.archlinux
 export MOZILLA_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
 export MOZ_ADDON_SIGNING=1
@@ -142,6 +143,19 @@ pref("extensions.shownSelectionUI", true);
 
 // Opt all of us into e10s, instead of just 50%
 pref("browser.tabs.remote.autostart", true);
+END
+
+  _distini="$pkgdir/usr/lib/firefox/distribution/distribution.ini"
+  install -Dm644 /dev/stdin "$_distini" <<END
+[Global]
+id=archlinux
+version=1.0
+about=Mozilla Firefox for Arch Linux
+
+[Preferences]
+app.distributor=archlinux
+app.distributor.channel=$pkgname
+app.partner.archlinux=archlinux
 END
 
   for i in 16 22 24 32 48 256; do
