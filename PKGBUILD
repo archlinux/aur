@@ -3,7 +3,7 @@
 pkgname=mycroft-core
 # _pkgcommit=eb0a37c # Used only when the latest tag is not working
 # pkgver=0.7.20.${_pkgcommit}
-pkgver=0.8.5
+pkgver=0.8.7
 pkgrel=1
 pkgdesc="Mycroft Core, the Mycroft Artificial Intelligence platform. Contribute to this package at: https://gitlab.com/rafamanzo/aur-mycroft-core"
 arch=('i686' 'x86_64')
@@ -40,7 +40,7 @@ source=("https://codeload.github.com/MycroftAI/mycroft-core/tar.gz/release/v${pk
         "mycroft-service.service"
         "mycroft-skills.service"
         "mycroft-voice.service")
-sha512sums=(76d807feecfd48620a66781fb5d1409e84e2f3e2076b224c111f6d17205ac4ff7a4adef08218b4ef364b5894bd42ae3453c2268a62ed423d1059bbbf78e8b235
+sha512sums=(1cf615a5d6ae86329503f85fca05d5b978c83904c16a4ae0a4a7ff1a891c0160c33e5bd0dc58589f5718f9e3fb581be22b80737924372d79c0551c80f1e03bf5
 # sha512sums=(SKIP  # Git already ensures data consistency # Used only when the latest tag is not working
             a5989c9ff2b0f7338b4a6f9342c980413d71da375355abb416dce3a79e298fea7872e39b6a1505437aab860ed66755a6f344821f4f7cb31aed46792b2cef3f96
             74e9451dc38560e6efd4baf8c77cb81bdf9c0b821c1935eb2dac060614c0f14458101151583c3f444da59d9f065a744a7ad6f8daaeceec8f4e37f67d33199b6b
