@@ -16,9 +16,8 @@ depends=('python-click' 'python-setuptools'
 makedepends=('python-setuptools-scm')
 optdepends=('python-requests-oauthlib: Remotestorage support')
 checkdepends=('python-pytest' 'python-wsgi-intercept'
-              'radicale' 'python-werkzeug' 'python-pytest-xprocess'
-              'python-pytest-localserver' 'python-hypothesis'
-              'python-pytest-subtesthack')
+              'radicale' 'python-pytest-xprocess' 'python-pytest-localserver'
+              'python-hypothesis' 'python-pytest-subtesthack')
 source=("https://pypi.io/packages/source/v/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('764735185bee538e8d740079f388596b')
 
