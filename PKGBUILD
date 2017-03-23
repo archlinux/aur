@@ -2,7 +2,7 @@
 
 pkgname=gwen-web
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A web automation engine for the Gwen interpreter."
 arch=('any')
 url="https://github.com/gwen-interpreter/gwen-web"
@@ -25,6 +25,6 @@ package() {
 	cp -r lib $pkgdir/opt/gwen-web
         cp -r features $pkgdir/opt/gwen-web
 	mkdir -p $pkgdir/usr/bin
-	ln -s $pkgdir/opt/gwen-web/bin/gwen $pkgdir/usr/bin/gwen
-	ln -s $pkgdir/opt/gwen-web/bin/gwen-web $pkgdir/usr/bin/gwen-web
+	ln -s /opt/gwen-web/bin/gwen $pkgdir/usr/bin/gwen
+	ln -s /opt/gwen-web/bin/gwen-web $pkgdir/usr/bin/gwen-web
 }
