@@ -19,7 +19,7 @@ prepare(){
 	wget https://aur.archlinux.org/cgit/aur.git/snapshot/tvdb_api-git.tar.gz
 	tar xvzf tvdb_api-git.tar.gz
 	cd tvdb_api-git
-	makepkg
+	makepkg -f
 }
 
 pkgver() {
