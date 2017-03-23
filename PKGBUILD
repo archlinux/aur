@@ -1,69 +1,96 @@
-# Maintainer: Stefano Campanella <stefanocampanella1729@gmail.com>
-# Contributor: Joshua Ellis <josh@jpellis.me>
-# Contributor: Konstantin Gizdov <kgizdov@gmail.com>
+# Maintainer: Konstantin Gizdov < arch at kge dot pw >
+# Contributor: Joshua Ellis < josh at jpellis dot me >
+# Contributor: Stefano Campanella < stefanocampanella1729 at gmail dot com >
 
 pkgname=pythia
-pkgver=8.2.19
+pkgver=8.2.23
 _pkgid="${pkgname}${pkgver//./}"
-pkgrel=3
+pkgrel=2
 pkgdesc="High-energy physics events generator."
 arch=('i686' 'x86_64')
 url="http://home.thep.lu.se/Pythia/"
 license=('GPL')
-depends=('boost-libs' 'zlib')
-provides=('pythia')
+depends=('bash' 'boost' 'boost-libs')
+optdepends=('fastjet: fast jet finding in pp and e+e- collisions'
+            'hepmc: storing collisions from Monte Carlo'
+            'lhapdf: evaluate PDFs from discretised data files'
+            'root: integrate with CERN ROOT data analysis framework')
+provides=('pythia' 'pythia8')
+install=pythia.install
 source=("http://home.thep.lu.se/~torbjorn/pythia8/$_pkgid.tgz"
         "pythia.sh"
-        "shared_lib.patch")
-sha256sums=('1ea21c01d70f6ddf58457ed18405d89193f07152466ee925ca5102da1abcd08d'
-            'c4ddcb356c7b003e83b2ef6a9aed3e682e6a95698a6a591847eaaa2441aa882f'
-            'fdbcb895d3506d10f8983ee15afbf1c5947905a4ead95384eb55fd682dfe4c82')
+        "pythia.install"
+        "respect_lib_suffix.patch")
+sha256sums=('36fda65eed5e9b8cd9f7e6352a4bcb56868595539fa3d2c02814c6d4b738f837'
+            '12fabaa56db80537b94a89de18f688f1258f467ed01b1ee6595efe75cde801d2'
+            'f1796729b0403026382bca43329692f5356c8ec46fc2c09f799a8b3d12d49a6f'
+            '54efb472bc7b23287125f1a4d797b08e0b85864ff727e420eaf81a6fef2ebc25')
 _srcpath=$srcdir/$_pkgid
 
 prepare() {
     cd $srcdir/$_pkgid
-    patch -p 1 < ../shared_lib.patch
+    patch -p1 -i ${srcdir}/respect_lib_suffix.patch
 }
 
 build() {
     cd $srcdir/$_pkgid
-    ## Pythia can be configured to use other packages by enabling the additional
-    ## flags below (just uncomment and move up the relevant ones).
-    ##
-    ## Note that this requires the relevant programs to be already installed.
-    ## Some additional flags might be required in the configure script cannot
-    ## find the relevant files.
+    _inc=/usr/include/
+    _lib=/usr/lib/
+
     ./configure --prefix="/usr" \
-                --cxx-common="-D_GLIBCXX_USE_CXX11_ABI=0 -fPIC -Ofast -march=native" \
+                --prefix-include=${_inc} \
+                --prefix-lib=${_lib} \
+                --cxx-common="${CXXFLAGS} -fPIC -pthread" \
                 --enable-shared \
                 --with-boost \
+                --with-boost-include=${_inc} \
+                --with-boost-lib=${_lib} \
+                --with-evtgen \
+                --with-evtgen-include=${_inc} \
+                --with-evtgen-lib=${_lib} \
+                --with-fastjet3 \
+                --with-fastjet3-include=${_inc} \
+                --with-fastjet3-lib=${_lib} \
                 --with-gzip \
+                --with-gzip-include=${_inc} \
+                --with-gzip-lib=${_lib} \
+                --with-hepmc2 \
+                --with-hepmc2-include=${_inc} \
+                --with-hepmc2-lib=${_lib} \
+                --with-hepmc3 \
+                --with-hepmc3-include=${_inc} \
+                --with-hepmc3-lib=${_lib} \
+                --with-lhapdf5 \
+                --with-lhapdf5-include=${_inc} \
+                --with-lhapdf5-lib=${_lib} \
+                --with-lhapdf6 \
+                --with-lhapdf6-include=${_inc} \
+                --with-lhapdf6-lib=${_lib} \
+                --with-powheg \
+                --with-powheg-include=${_inc} \
+                --with-powheg-lib=${_lib} \
+                --with-promc \
+                --with-promc-include=${_inc} \
+                --with-promc-lib=${_lib} \
                 --with-python \
-                --with-python-include=/usr/include/python3.5m/
-                # --with-evtgen \
-                # --with-fastjet3 \
-                # --with-hepmc3 \
-                # --with-lhapdf6 \
-                # --with-powheg \
-                # --with-promc \
-                #--with-root \
-                #--with-root-include=/usr/include/root
-    make
+                --with-python-include=/usr/include/python3.6m/ \
+                --with-python-lib=/usr/lib/python3.6/ \
+                --with-root \
+                --with-root-include=/usr/include/root/ \
+                --with-root-lib=/usr/lib/root/
+    make ${MAKEFLAGS}
 }
 
 package() {
-    mkdir -p "$pkgdir/usr"
-    install -Dm755 "$srcdir/$_pkgid/bin/pythia8-config" "$pkgdir/usr/bin/pythia8-config"
-    install -D "$srcdir/pythia.sh" "$pkgdir/etc/profile.d/pythia.sh"
-    
-    cp -r "$srcdir/$_pkgid/include" "$pkgdir/usr/"
-    cp -r "$srcdir/$_pkgid/share" "$pkgdir/usr/"
-    cp -r "$srcdir/$_pkgid/examples" "$pkgdir/usr/share/Pythia8/"
+    mkdir -p "${pkgdir}/usr"
+    install -Dm755 "${srcdir}/${_pkgid}/bin/pythia8-config" "${pkgdir}/usr/bin/pythia8-config"
+    install -D "${srcdir}/pythia.sh" "${pkgdir}/etc/profile.d/pythia.sh"
 
-    install -Dm755 "$srcdir/$_pkgid/lib/libpythia8.so" "$pkgdir/usr/lib/libpythia8.so"
-    install -Dm755 "$srcdir/$_pkgid/lib/pythia8.py" "$pkgdir/usr/lib/python3.5/site-packages/pythia8.py"
+    cp -r "${srcdir}/${_pkgid}/include" "${pkgdir}/usr/"
+    cp -r "${srcdir}/${_pkgid}/share" "${pkgdir}/usr/"
+    cp -r "${srcdir}/${_pkgid}/examples" "${pkgdir}/usr/share/Pythia8/"
 
-    install -d ${pkgdir}/etc/ld.so.conf.d
-    echo '/usr/lib/pythia8' > ${pkgdir}/etc/ld.so.conf.d/pythia8.conf
-    
+    install -Dm755 "${srcdir}/${_pkgid}/lib/libpythia8.so" "${pkgdir}/usr/lib/libpythia8.so"
+    install -Dm755 "${srcdir}/${_pkgid}/lib/_pythia8.so" "${pkgdir}/usr/lib/python3.6/site-packages/_pythia8.so"
+    install -Dm755 "${srcdir}/${_pkgid}/lib/pythia8.py" "${pkgdir}/usr/lib/python3.6/site-packages/pythia8.py"
 }
