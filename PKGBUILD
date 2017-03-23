@@ -2,7 +2,7 @@
 
 pkgname=ringo
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-threaded JavaScript on the JVM"
 arch=('any')
 url="https://ringojs.org/"
@@ -27,7 +27,7 @@ build() {
 
 package() {
     mkdir -p "${pkgdir}/usr/lib/${pkgname}"
-    for name in bin lib modules run.jar; do
+    for name in bin lib modules tools run.jar; do
         cp -r "${srcdir}/ringojs/${name}" "${pkgdir}/usr/lib/${pkgname}/${name}"
     done
     
