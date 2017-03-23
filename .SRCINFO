@@ -11,7 +11,7 @@ pkgbase = flexisip
 	depends = hiredis
 	depends = mediastreamer
 	depends = protobuf
-	depends = sofia-sip-bc>=1.13.12
+	depends = sofia-sip-bc
 	depends = unixodbc
 	depends = xsd
 	depends = soci

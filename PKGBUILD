@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="http://flexisip.org"
 license=('AGPL3')
 groups=()
-depends=('belle-sip' 'boost-libs' 'hiredis' 'mediastreamer' 'protobuf' 'sofia-sip-bc>=1.13.12' 'unixodbc' 'xsd' 'soci')
+depends=('belle-sip' 'boost-libs' 'hiredis' 'mediastreamer' 'protobuf' 'sofia-sip-bc' 'unixodbc' 'xsd' 'soci')
 makedepends=()
 optdepends=()
 provides=()
