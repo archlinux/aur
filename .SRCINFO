@@ -1,0 +1,14 @@
+pkgbase = ofxstatement-polish-git
+	pkgdesc = ofxstatement support for some Polish banks and financial institutions
+	pkgver = r3.d1e49d7
+	pkgrel = 1
+	url = https://github.com/yay6/ofxstatement-polish
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = ofxstatement
+	source = git+https://github.com/yay6/ofxstatement-polish
+	md5sums = SKIP
+
+pkgname = ofxstatement-polish-git
+
