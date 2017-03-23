@@ -1,5 +1,6 @@
+# PKGBUILD maintainer: Eric Bailey <nerflad@gmail.com> AUR: nerflad
 # Maintainer: Josh Dye
-# Contributor: Maximilien Noal <noal dot maximilien at gmail dot com> [AUR: xcomcmdr]
+# Contributor: Maximilien Noal <noal.maximilien@gmail.com> AUR: xcomcmdr
 
 # The official website is long gone, but:
 # - the soundfont itself is available on a few other websites
@@ -16,8 +17,8 @@ pkgname='soundfont-titanic'
 pkgver='1.2'
 pkgrel=2
 pkgdesc='A public domain, high quality MIDI soundfont by Luke Sena'
-arch='any'
-license='custom: public domain'
+arch=('any')
+license=('custom: public domain')
 url='http://www.titanicsf.com'
 md5sums=('06da89576208a6384492afa7f934ffc4' 'a2c2f33d92f54e62e25da9bc647c8b35')
 source=('https://www.dropbox.com/s/g0yxy0326jgar34/titanic.sf2' 'LICENSE')
