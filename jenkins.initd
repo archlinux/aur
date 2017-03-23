@@ -1,0 +1,38 @@
+#!/usr/bin/openrc-run
+
+
+JENKINS_PIDFILE=/run/jenkins.pid
+ARGS="$JAVA_ARGS $JAVA_OPTS -jar $JENKINS_WAR $JENKINS_WEBROOT $JENKINS_PORT $JENKINS_AJPPORT $JENKINS_OPTS"
+
+depend() {
+    need net
+    use dns logger mysql postgresql
+}
+
+checkconfig() {
+    if [ ! -n "$JENKINS_HOME" ] ; then
+        eerror "JENKINS_HOME not configured"
+        return 1
+    fi
+    if [ ! -d "$JENKINS_HOME" ] ; then
+        checkpath -q -d -o jenkins:jenkins -m 0755 "$JENKINS_HOME" || return 1
+    fi
+    return 0
+}
+
+start() {
+    checkconfig || return 1
+
+    ebegin "Starting ${SVCNAME}"
+    start-stop-daemon --start --quiet --background \
+        --make-pidfile --pidfile $JENKINS_PIDFILE \
+        --user ${JENKINS_USER} \
+        --exec "${JAVA}" -- ${ARGS}
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping ${SVCNAME}"
+    start-stop-daemon --stop --quiet --pidfile $JENKINS_PIDFILE
+    eend $?
+}
