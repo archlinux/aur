@@ -7,7 +7,7 @@
 pkgname=med-salome
 _pkgname=med
 pkgver=3.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - This version is built to be linked against salome-med on x86_64"
 url="http://www.code-aster.org/outils/med/"
 license=('LGPL')
@@ -66,13 +66,27 @@ prepare() {
 build() {
   export FFLAGS="-fopenmp -fPIC -ffixed-line-length-0 ${CFLAGS}"
   export FCFLAGS="-fopenmp -fPIC -ffixed-line-length-0 ${CFLAGS}"
-  export F77=gfortran
-  export FC=gfortran
   export PYTHON="$(which python2)"
+  
+# comment to compile mpi version (you need mpi version of hdf5)
+  export CC="$(which gcc)"
+  export CXX="$(which g++)"
+  export FC="$(which gfortran)"
+  export F77="$(which gfortran)"
+
+# uncomment to compile mpi version (you need mpi version of hdf5)
+#  export MPICC="$(which mpicc)"
+#  export MPICXX="$(which mpic++)"
+#  export MPIFC="$(which mpif90)"
+#  export MPIF77="$(which mpif77)"
+#  export CC=$MPICC
+#  export CXX=$MPICXX
+#  export FC=$MPIFC
+#  export F77=$MPIF77
 
 #  comment if using cmake
   cd ${srcdir}/${_pkgname}-${pkgver}
-  ./configure --with-f90=gfortran --prefix=${_installdir} --with-med_int=int --datadir=${_sharedir} --with-swig=yes --with-hdf5=/usr
+  ./configure --prefix=${_installdir} --with-med_int=int --datadir=${_sharedir} --with-swig=yes --with-hdf5=/usr
 
 #  uncomment if using cmake
 #  mkdir "${srcdir}/build"
