@@ -8,7 +8,6 @@ arch=('any')
 url="https://pagure.io/lohit"
 license=('custom: OFL')
 depends=('fontconfig' 'xorg-font-utils')
-install=lohit.install
 _fhosted="https://releases.pagure.org/lohit/"
 source=(OFL.license
   ${_fhosted}/lohit-assamese-ttf-2.91.4.tar.gz
