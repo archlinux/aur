@@ -34,7 +34,7 @@ package() {
 	# python setup.py install --root="$pkgdir/" --optimize=1
     
 	cd "${srcdir}/${pkgname}"
-	python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
+	sudo python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
 	# sudo python setup.py install --optimize=1
 	# sudo python setup.py install --root="$pkgdir/" --optimize=1
 	# make DESTDIR="$pkgdir/" install
