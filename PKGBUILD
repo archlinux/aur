@@ -7,8 +7,8 @@ pkgdesc="Show Information About Tv Show's, Ratings And So Many Cool Fatures!"
 arch=('any')
 url="http://www.stack.blog.ir"
 license=('GPL3')
-depends=('python2-prettytable')
-makedepends=('git' 'python2-setuptools')
+depends=('python-prettytable')
+makedepends=('git' 'python-setuptools')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}::git+https://github.com/LinArcX/tvdoon")
@@ -48,7 +48,7 @@ package() {
 	# python setup.py install --root="$pkgdir/" --optimize=1
     
 	cd "${srcdir}/${pkgname}"
-	python2 setup.py install --prefix=/usr --root="$pkgdir"
+	python setup.py install --prefix=/usr --root="$pkgdir"
 	# sudo python setup.py install --optimize=1 --prefix=/usr/share/tvdoon
 	# sudo python setup.py install --root="$pkgdir/" --optimize=1
 	# make DESTDIR="$pkgdir/" install
