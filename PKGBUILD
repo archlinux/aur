@@ -1,4 +1,5 @@
-# Maintainer: artoo <artoo@manjaro.org>
+# Maintainer: David P. <megver83@openmailbox.org>
+# Contributor: artoo <artoo@manjaro.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tom Gundersen <teg@jklm.no>
@@ -9,7 +10,7 @@ _commit=8b582cb10d7cf00af7a70496aec48af24edc542b  # tags/dbus-1.10.16^0
 
 pkgname=dbus-elogind
 pkgver=1.10.16
-pkgrel=4
+pkgrel=4.aur1
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(i686 x86_64)
