@@ -1,6 +1,6 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=ggtags
-pkgver=0.8.9
+pkgver=0.8.12
 pkgrel=1
 pkgdesc="Emacs frontend to GNU Global source code tagging system"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('emacs' 'ctags')
 install=$pkgname.install
 source=("https://github.com/leoliu/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('35a0587c5b354c80ca45dad85c751737')
+md5sums=('0a846274e38c14040a3f4674a4d97ddf')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
