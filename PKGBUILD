@@ -4,7 +4,7 @@
 pkgname=thunderbird-beta-bin-uk
 _pkgname=thunderbird-beta
 _pkgname_no_lang=thunderbird-beta-bin
-pkgver=51.0b1
+pkgver=52.0b4
 _major=${pkgver/rc*}
 _build=5
 pkgrel=3
@@ -28,8 +28,8 @@ source_x86_64=(thunderbird-$pkgver-x86_64.tar.bz2::"https://ftp.mozilla.org/pub/
 sha512sums=('fc83c23f67cc5d399bc655d2486936db3ab500bafe399a905a17a0b0f63ad9befb782fc9c07d467a65a80a00e3ce984700ec3cf60e4cb3e1b29b20954c6fa775'
             '3cf4194575041bbe344d6cd17e473eb78caf7e2e1aa8b1309151f7e4677c33571014ba6d7aba267398c3ba69c825c64363272b82b15f7dbb8ae5e3e825f439b7'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_i686=('92316affeaa518d58c8e92d3a57a54d9c089eb0202bb09c6fcb60d98b91d9be8079933b82f7ecf86088e3f9e0270b59e6529b2a35bf72f86e54e554910bbc2a5')
-sha512sums_x86_64=('0fb7bd501c18af0488a3fc8db9f918df7bbe060437ff93cabb97592ab5849beb88b438a645ba347cdd13b9a1f4cf22426c5ed1bd3d5ff9aeb343847c8ea520de')
+sha512sums_i686=('3beeabbb89349a25c9a2e556db62d1ebbb1159ab35daf98f1fe990badf662b16dcb6f0b0a92cd3da4e36dabdecc8de22e27931d70da82ad36a1d84ecb73b546a')
+sha512sums_x86_64=('2ef4c6204d2380f44e0ee70b661523be9a3e8846706782b3fa75faeab3f453a721b7144584baf4ff451eedce049878c5d95b88439e7ac38cb84894fbfd545198')
 # RC
 if [[ $_build = ? ]]; then
   source_i686=(thunderbird-$pkgver-i686.tar.bz2::"https://ftp.mozilla.org/pub/thunderbird/candidates/$_major-candidates/build$_build/linux-i686/$_lang/thunderbird-$_major.tar.bz2")
