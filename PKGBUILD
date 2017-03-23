@@ -2,7 +2,7 @@
 
 pkgname="tilix"
 pkgver=1.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A tiling terminal emulator for Linux using GTK+ 3"
 arch=('x86_64' 'i686')
 url="https://github.com/gnunn1/tilix"
@@ -17,6 +17,7 @@ provides=('terminix')
 conflicts=('terminix')
 replaces=('terminix')
 source=("$url/archive/$pkgver.tar.gz")
+source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('e93af9e32aa0339fc539beaf0e171200e42149012dbde1bc753a8889babb55d1')
 
 prepare() {
@@ -27,7 +28,7 @@ prepare() {
 build() {
     cd "$pkgname-$pkgver"
     ./configure --prefix=/usr
-    make DC='ldmd' DCFLAGS='-disable-linker-strip-dead -O -inline -release -version=StdLoggerDisableTrace'
+    make DC='ldmd' DCFLAGS='-O -inline -release -version=StdLoggerDisableTrace'
 }
 
 package() {

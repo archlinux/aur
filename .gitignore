@@ -3,8 +3,8 @@
 
 # build logs
 *-build.log
-*-package.log
 *-namcap.log
+*-package*.log
 
 # packages
 *.pkg.tar.xz
