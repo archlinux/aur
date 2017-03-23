@@ -1,5 +1,5 @@
 *.pkg.tar*
 *.src.tar*
-/pps-tools/
+*.gz
 src
 pkg
