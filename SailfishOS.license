@@ -1,0 +1,76 @@
+Jolla Developer Software Agreement for the Sailfish Beta Qt5 SDK
+
+Please review this agreement (the “Agreement”) carefully before using the Software. Because you need to accept these terms before using the Software, you should take your time reading through them to make sure you are comfortable with them.  You agree to these terms by downloading or using the Software or by clicking on the “Accept” button next to this Agreement when downloading, installing and/or using the Software.
+
+This Agreement only governs the Sailfish Beta Qt5 SDK. Closer to the launch of the final version, Jolla will publish a full Developer Software Agreement that will set out in greater detail your rights enabling you to develop, test, distribute and sell your Applications.
+Please note that the Software may include certain third party software licensed under separate licenses (the “Third Party Components”) and you need to accept the license terms of the Third Party Components before your use. The list of the applicable Third Party Components for each release can be found at http://releases.sailfishos.org/sdk under respective release version directories.
+
+1 Scope of the Agreement
+This is an Agreement between you and Jolla Ltd., including its affiliates and suppliers (collectively: “Jolla”). This Agreement sets out the terms and conditions under which you are allowed to use the Software.
+This Agreement also incorporates Sailfish Platform Policies, and by accepting this Agreement you also agree to comply with those policies. 
+This Agreement does not limit any rights granted to you by licenses for Third Party Components.
+
+2 Definitions
+Application means one or more software programs developed by you pursuant to this Agreement using the Software. 
+Open Source Software means any software, which is, as included in the Software, subject to a license terms and conditions currently listed at http://opensource.org/licenses/ or meeting the criteria listed at http://www.opensource.org/docs/definition.php or which is subject to any similar free or open source license terms. Open Source Software contained in the Software is licensed under the license terms accompanying such Open Source Software and not the terms of this Agreement.
+Sailfish Platform Policies mean all policies governing the Software and made available from time to time on the then-current official URL of the Software.  
+Software means the Sailfish Beta Qt5 SDK (excluding Third Party Components and Open Source Software) and any materials provided or made available by Jolla as part of the Sailfish Beta Qt5 SDK, including but not limited to documentation and graphical assets. 
+
+3 Eligibility
+You must have the legal right to enter into agreements of this nature in order to use the Software. 
+If you are entering into this Agreement as a private individual, this means, at a minimum, that you must be old enough to enter into legal agreements and not have any restrictions on your legal competence. 
+If you are entering into this Agreement on behalf of a company or another legal entity (“Organisation”), you must have the right and authority to bind the Organisation to the terms set out in this Agreement.
+
+4 Your right to use the Software
+The Software is made accessible to you, free of charge, for the sole purpose of developing and testing your Applications. Jolla does not grant you any rights in the Software itself, and expressly prohibit any: (i) reverse-engineering (unless and to the extent allowed by applicable law), (ii) distribution, (iii) modification, and/or (iv) sub-licensing of the Software. 
+As a condition to using the Software, you agree that:
+(i) You will not use the Software in violation of this Agreement or any applicable law or regulation, including without limitation, any intellectual property or other proprietary rights, any right of any person, rights of privacy, or rights of personality;
+(ii) You will not use the Software in connection with any unlawful, offensive, abusive, obscene, pornographic, harassing, libellous or otherwise inappropriate content or material;
+(iii) You will not remove or obscure any copyright or trademark notices or other similar notices or markings or legends from the Software; and
+(iv) You will comply with all licenses applicable to Third Party Components.
+
+5 Ownership and Intellectual Property Rights
+The Software and all rights, without limitation including title and intellectual property rights therein, are owned by Jolla and/or its affiliates and licensors. No right or license, express or implied, is granted to any part of the Software except as expressly set forth herein. In addition, no licenses or immunities are granted to the combination of the Software with any other software or hardware not delivered by Jolla under this Agreement. 
+
+6 Feedback
+Jolla welcomes all feedback you might have on its products and services, including on the Software. Please send all such feedback info@sailfishos.org.
+Please remember that any feedback you send is non-confidential, and Jolla can use it freely without any obligations. This is important, as otherwise Jolla cannot use the feedback to improve its products and services.
+
+7 No warranties
+YOU ACKNOWLEDGE THAT THE SOFTWARE IS PROVIDED "AS IS" AND “WITH ALL FAULTS” BASIS AND JOLLA IS NOT OBLIGATED TO PROVIDE ANY MAINTENANCE OR TECHNICAL SUPPORT FOR THE SOFTWARE. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW NEITHER JOLLA, ITS AFFILIATES OR LICENSORS , NOR THE COPYRIGHT HOLDERS MAKE ANY REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, ACCURACY OF DOCUMENTATION AND SUPPORT MATERIAL, OR FITNESS FOR A PARTICULAR PURPOSE OR THAT SOFTWARE WILL NOT INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS, OR OTHER RIGHTS. THERE IS NO WARRANTY BY JOLLA OR BY ANY OTHER PARTY THAT THE SOFTWARE WILL FUNCTION IN ACCORDANCE WITH YOUR REQUIREMENTS OR THAT THE OPERATION OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE. YOU ASSUME ALL RESPONSIBILITY AND RISK FOR THE SELECTION OF THE SOFTWARE TO ACHIEVE YOUR INTENDED RESULTS AND FOR THE INSTALLATION, USE, AND RESULTS OBTAINED FROM IT.
+
+8 Indemnity
+You agree to defend and indemnify Jolla its affiliates from and against any and all third party claims and liabilities, assessments, losses, costs or damages resulting from or arising out of: (i) your breach of this Agreement, (ii) your infringement or violation of any intellectual property, other rights or privacy of a third party, and (iii) misuse of the Software by a third party where such misuse was made possible by your failure to take reasonable measures to protect your username and password against misuse.
+
+9 Limitation of liability
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL JOLLA, ITS EMPLOYEES,LICENSORS OR AFFILIATES BE LIABLE FOR ANY LOST PROFITS, REVENUE, SALES, DATA, OR COSTS OF PROCUREMENT OF SUBSTITUTE GOODS OR SOFTWARE, PROPERTY DAMAGE, INTERRUPTION OF BUSINESS, LOSS OF BUSINESS INFORMATION, OR FOR ANY SPECIAL, DIRECT, INDIRECT, INCIDENTAL, ECONOMIC, COVER, PUNITIVE, SPECIAL, OR CONSEQUENTIAL DAMAGES, HOWEVER CAUSED AND WHETHER ARISING UNDER CONTRACT, TORT, NEGLIGENCE, OR OTHER THEORY OF LIABILITY ARISING OUT OF THE USE OF OR INABILITY TO USE THE SOFTWARE OR THE SOFTWARE, EVEN IF JOLLA OR ITS LICENSORS OR AFFILIATES ARE ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. BECAUSE SOME COUNTRIES/STATES/JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF LIABILITY, BUT MAY ALLOW LIABILITY TO BE LIMITED, IN SUCH CASES, AGGREGATE LIABILITY OF JOLLA, ITS EMPLOYEES, LICENSORS AND AFFILIATES ARISING OUT OF OR RELATED TO THIS AGREEMENT SHALL NOT EXCEED EUR 50.00 (FIFTY EURO). NOTHING CONTAINED IN THIS AGREEMENT SHALL PREJUDICE THE STATUTORY RIGHTS OF ANY PARTY DEALING AS A CONSUMER. THE FOREGOING LIMITATIONS OF LIABILITY DO NOT APPLY WITH RESPECT TO DEATH OR PERSONAL INJURY
+
+10 Export control
+You acknowledge that the Software may be subject to export control restrictions of various countries. In related to the Software, you shall fully comply with all applicable export license restrictions and requirements as well as with all laws and regulations relating to the importation of the Software and/or Applications and shall procure all necessary governmental authorisations, including without limitation, all necessary licenses, approvals, permissions or consents, where necessary for the re-exportation of the Software or Applications. YOU HEREBY UNCONDITIONALLY ACCEPT RESPONSIBILITY FOR FULL COMPLIANCE WITH THESE REQUIREMENTS.
+
+11 Miscellaneous
+
+11.1 Notices
+All notices to Jolla under this Agreement should be delivered to:
+  Jolla Oy
+  PL 1239
+  00101 Helsinki
+  Finland
+
+11.2 Termination
+Both you and Jolla can terminate this Agreement at any time without cause by a written notice. In addition, this Agreement shall terminate automatically immediately if you breach any of the restrictions of this Agreement. Upon termination, all licenses and rights granted to you under this Agreement shall terminate and you shall immediately discontinue any (further) use of the Software.
+
+11.3 Assignment
+You shall not be entitled to assign or transfer all or any of your rights, benefits and obligations under this Agreement without the prior written consent of Jolla.  For the avoidance of doubt and without limitation, Jolla shall be freely entitled to assign or transfer any of its rights, benefits or obligations under this Agreement.
+
+11.4 Severability
+If any part of this Agreement is found void and unenforceable, it will not affect the validity of the balance of the Agreement, which shall remain valid and enforceable according to its terms.
+
+11.5 Amendments
+Jolla reserves the right to modify or amend the terms and conditions of this Agreement at any time without prior notice. Jolla will use reasonable endeavours to notify you of all changes by posting the updated version of this Agreement on the website or other location via which the Software is made available.  In order to continue using the Software, you must accept and agree to the new terms of this Agreement. If you do not agree to new terms, you do not have the right to continue using the Software. 
+
+11.6 Governing law and dispute resolution
+This Agreement is governed by the laws of Finland. All disputes arising from or relating to these Terms shall be settled by a single arbitrator appointed by the Central Chamber of Commerce of Finland. The arbitration procedure shall take place in Helsinki, Finland in the English language.
+
+11.7 Entire Agreement
+This is the entire agreement between Jolla and you relating to the Software, and it supersedes any prior representations, discussions, undertakings, end-user agreements, communications, or advertising relating to the Software.
