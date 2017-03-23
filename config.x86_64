@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.10.0-1 Kernel Configuration
+# Linux/x86 4.10.5-1 Kernel Configuration
 #
 CONFIG_64BIT=y
 CONFIG_X86_64=y
@@ -449,10 +449,12 @@ CONFIG_NO_BOOTMEM=y
 # CONFIG_MK10 is not set
 # CONFIG_MBARCELONA is not set
 # CONFIG_MBOBCAT is not set
+# CONFIG_MJAGUAR is not set
 # CONFIG_MBULLDOZER is not set
 # CONFIG_MPILEDRIVER is not set
 # CONFIG_MSTEAMROLLER is not set
-# CONFIG_MJAGUAR is not set
+# CONFIG_MEXCAVATOR is not set
+# CONFIG_MZEN is not set
 # CONFIG_MPSC is not set
 # CONFIG_MATOM is not set
 # CONFIG_MCORE2 is not set
