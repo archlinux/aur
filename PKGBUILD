@@ -15,7 +15,7 @@ source=("${pkgname}::git+https://github.com/LinArcX/tvdoon")
 md5sums=('SKIP')
 
 prepare(){
-	cd "$pkgname-$pkgver"
+	cd "${srcdir}/${pkgname}"
 	wget https://aur.archlinux.org/cgit/aur.git/snapshot/tvdb_api-git.tar.gz
 	tar tvdb_api-git.tar.gz
 	cd tvdb_api-git
