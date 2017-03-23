@@ -3,10 +3,10 @@
 
 pkgname=paradiseo
 pkgver=2.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Evolving Objects is a template-based, ANSI-C++ evolutionary computation library which helps you to write your own stochastic optimization algorithms insanely fast."
 arch=('i686' 'x86_64')
-url="http://eodev.sourceforge.net/"
+url="paradiseo.gforge.inria.fr"
 license=('LGPL')
 depends=()
 makedepends=('make' 'cmake')
