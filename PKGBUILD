@@ -1,9 +1,9 @@
-# Maintainer: redfish <redfish at galactica.pw>
+# Contributor: redfish <redfish at galactica.pw>
 # Contributor: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
-pkgname=bitcoind-unlimited-git
-pkgver=0.12.1
+pkgname=bitcoind-unlimited
+pkgver=1.0.1.3
 pkgrel=1
 pkgdesc="Bitcoin Unlimited versions of bitcoind, bitcoin-cli, and bitcoin-tx"
 arch=('i686' 'x86_64' 'armv7h')
@@ -22,7 +22,7 @@ makedepends=('autoconf'
              'make'
              'pkg-config')
 license=('MIT')
-source=(git+https://github.com/BitcoinUnlimited/BitcoinUnlimited.git#branch=0.12.1bu
+source=(git+https://github.com/BitcoinUnlimited/BitcoinUnlimited.git#tag=1.0.1.3
         bitcoin.conf
         bitcoin.logrotate)
 sha256sums=('SKIP'
@@ -35,19 +35,11 @@ backup=('etc/bitcoin/bitcoin.conf'
         'etc/logrotate.d/bitcoin')
 provides=('bitcoin' 'bitcoin-unlimited' 'bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx')
 conflicts=('bitcoin' 'bitcoin-unlimited' 'bitcoin-cli' 'bitcoin-daemon' 'bitcoin-qt'
-           'bitcoin-tx')
+           'bitcoin-tx' 'bitcoind-unlimited-git')
 install=bitcoin.install
 
-pkgver() {
-	cd "$srcdir/BitcoinUnlimited"
-
-  # The latest version was not tagged, so throw away the version we get
-  # from the top-most tag, but keep,the revision height and commit hash
-  git describe --long | sed "s/^v[^-]\+-\([0-9]\+\)/$pkgver.r\1/;s/-/./g"
-}
-
 build() {
-	cd "$srcdir/BitcoinUnlimited"
+  cd "$srcdir/BitcoinUnlimited"
 
   msg2 'Building...'
   ./autogen.sh
@@ -66,7 +58,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/BitcoinUnlimited"
+  cd "$srcdir/BitcoinUnlimited"
 
   msg2 'Installing license...'
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%%-*}"
