@@ -1,12 +1,12 @@
 pkgname=ldapxx
 pkgdesc="C++ interface to ldap.h"
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 depends=(libldap)
 arch=(x86_64 i386)
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/de-vri-es/ldapxx/archive/0.1.0.tar.gz")
-sha512sums=('3265e4dd2b21329f891105c9f7cc38bca6c80f6b7383e2ef1a0967a885a947289a3a69fca31008dec93643c127528b8d279efb3fb3a5386c2f14cecb7ebb4268')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/de-vri-es/ldapxx/archive/$pkgver.tar.gz")
+sha512sums=('e58c7d74203393ca98ce4cd2ec298d08226218071148fb1f91509532e2a513d7f066f3ffde2ef3bd260172f5145af034be89b308764d69c6834886450e3f3a06')
 
 
 
