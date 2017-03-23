@@ -5,11 +5,11 @@ pkgver=2.95.2
 pkgrel=1
 pkgdesc="Indic TrueType fonts from Fedora Project"
 arch=('any')
-url="https://fedorahosted.org/lohit/"
+url="https://pagure.io/lohit"
 license=('custom: OFL')
 depends=('fontconfig' 'xorg-font-utils')
 install=lohit.install
-_fhosted="https://fedorahosted.org/releases/l/o/lohit"
+_fhosted="https://releases.pagure.org/lohit/"
 source=(OFL.license
   ${_fhosted}/lohit-assamese-ttf-2.91.3.tar.gz
   ${_fhosted}/lohit-bengali-ttf-2.91.3.tar.gz
