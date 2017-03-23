@@ -17,6 +17,17 @@ md5sums=('SKIP')
 prepare(){
 	cd "${srcdir}/${pkgname}"
 
+	# install python-requests-cache
+	wget https://aur.archlinux.org/cgit/aur.git/snapshot/python-requests-cache.tar.gz
+	tar xvzf python-requests-cache.tar.gz
+	cd python-requests-cache
+	makepkg -f
+	echo "installing python-requests-cache from Aur."
+	requests_pkgver_3=$(grep -Po 'pkgver=\K[^ ]+' PKGBUILD)
+	requests_pkgrel_3=$(grep -Po 'pkgrel=\K[^ ]+' PKGBUILD)
+	requests_arch_3=$(grep -Po 'arch=\K[^ ]+' PKGBUILD | cut -d "(" -f2 | cut -d "'" -f2)
+	sudo pacman -U python-requests-cache-${requests_pkgver_3}-${requests_pkgrel_3}-${requests_arch_3}.pkg.tar.xz
+
 	# install tvdb_api (V2)
 	wget https://aur.archlinux.org/cgit/aur.git/snapshot/tvdb_api-git.tar.gz
 	tar xvzf tvdb_api-git.tar.gz
