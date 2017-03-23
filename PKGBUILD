@@ -1,6 +1,6 @@
 # Maintainer: Joseph Lansdowne <J49137@gmail.com>
 pkgname=xorg-choose-window
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Xorg window chooser"
 arch=(any)
@@ -8,7 +8,7 @@ url=http://ikn.org.uk/xorg-choose-window
 license=(Apache)
 depends=(libxcb xcb-util-keysyms xcb-util-wm)
 source=(http://ikn.org.uk/files/desktop/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('849c4512e9f55d1f7a349c9629a04378')
+md5sums=('71143e2e250e1eb5a1fd282adbd12371')
 
 build () {
     cd "$srcdir/$pkgname-$pkgver"
