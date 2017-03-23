@@ -1,14 +1,14 @@
 # Maintainer: Robin Thompson <robin*dot*thompson99*at*gmail*dot*com>
 _pkgname=mate-dock-applet
 pkgname=mate-applet-dock-git
-pkgver=0.74.r0.g6646d47
-pkgrel=4
+pkgver=0.77.r0.g1b27909
+pkgrel=5
 epoch=
 pkgdesc="An application dock applet for the MATE panel"
 arch=('any')
 url="https://github.com/robint99/mate-dock-applet"
 license=('GPLv3')
-depends=("mate-panel" "python" "python-xdg" "python-cairo" "python-gobject" "python-pillow")
+depends=("mate-panel" "python" "python-xdg" "python-cairo" "python-gobject" "python-pillow" "libkeybinder3")
 makedepends=("git")
 install="mate-applet-dock.install"
 source=("git+http://github.com/robint99/mate-dock-applet")
@@ -24,7 +24,7 @@ build() {
         aclocal
         automake --add-missing
         autoreconf
-	./configure --prefix=/usr --disable-schemas-compile
+	./configure --prefix=/usr --with-gtk3 --disable-schemas-compile
 	make
 }
 
