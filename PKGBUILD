@@ -20,7 +20,7 @@ pkgname=('acpid-openrc'
 		'elogind-openrc')
 
 pkgver=20170320
-pkgrel=1
+pkgrel=1.aur1
 pkgdesc="OpenRC init scripts"
 arch=('any')
 url="https://github.com/manjaro/packages-openrc"
