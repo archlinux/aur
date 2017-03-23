@@ -2,7 +2,7 @@
 _pkgname=gladrags
 pkgname=gladrags-git
 pkgver=0.22.r0.gc44c89f
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="An applet to smarten up MATE panels"
 arch=('any')
