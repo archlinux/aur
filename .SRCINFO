@@ -1,13 +1,13 @@
 pkgbase = maltego-community
 	pkgdesc = Maltego Community Edition
 	pkgver = 4.0.11.9358
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.paterva.com
 	install = maltego.install
 	arch = i686
 	arch = x86_64
 	license = Commercial
-	depends = jre8-openjdk
+	depends = java-runtime=8
 	source_i686 = https://www.paterva.com/malv4/community/MaltegoCE.v4.0.11.9358.deb
 	md5sums_i686 = 2f67cbf41ebddf490177cd65b046a21c
 	sha256sums_i686 = bfd7610647dc09e81abb6df737bcafe319e534b7d1867b1fd8f9bcd3963c25b1

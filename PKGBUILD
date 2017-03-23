@@ -5,9 +5,9 @@ pkgdesc='Maltego Community Edition'
 license=('Commercial')
 url='https://www.paterva.com'
 pkgver=4.0.11.9358
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
-depends=('jre8-openjdk')
+depends=('java-runtime=8')
 source_i686=(
   "${url}/malv4/community/MaltegoCE.v${pkgver}.deb"
 )
