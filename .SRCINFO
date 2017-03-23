@@ -1,0 +1,17 @@
+pkgbase = tvdoon-git
+	pkgdesc = Show Information About Tv Show's, Ratings And So Many Cool Fatures!
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://www.stack.blog.ir
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	provides = tvdoon-git
+	conflicts = tvdoon-git
+	source = tvdoon-git::git+https://github.com/LinArcX/tvdoon
+	md5sums = SKIP
+
+pkgname = tvdoon-git
+
