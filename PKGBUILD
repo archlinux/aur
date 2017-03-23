@@ -1,7 +1,7 @@
 # Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
 
 pkgname=fortune-mod-houseofcards
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc='Fortune quotes from "House of Cards".'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('fortune-mod')
 groups=('fortune-mods')
 _name='houseofcards'
 source=("$_name.txt")
-sha256sums=('0512e3c31e61531deda0f723ee5fcf0aaf3c2212eb2923e97925460662ae84fc')
+sha512sums=('354b9b9eb098f8275a8d3898ddeaa7168b1fba6169e1eaa1ce03376d5c2cccb10371160d2dfa3bf3bbcd93c44536d85b33049a3191d65fdd3c8c3c21f5a26b8e')
 
 build() {
     cd "$srcdir"

@@ -101,7 +101,8 @@ FRANK UNDERWOOD: The only thing more satisfying than convincing someone to do wh
     - House of Cards, Chapter 23
 %
 CLAIRE UNDERWOOD: There were political realities we couldn't ignore.
-MEGAN HENNESSY:   Do you ever wonder why so many people hate Washington? It's because of people like you using phrases like that.
+MEGAN HENNESSY:   Do you ever wonder why so many people hate Washington? It's because
+                  of people like you using phrases like that.
 
     - House of Cards, Chapter 24
 %
@@ -141,6 +142,8 @@ MAHMOUD:         There's a fine line between duty and murder. Only you have to p
                  happened to me. The next time you wield it, I hope you'll think twice.
 
     - House of Cards, Chapter 30
+%
+HEATHER DUNBAR: [To Frank] Is this how you live with yourself, by rationalizing the obscene into the palatable.
 %
 FRANK UNDERWOOD: I understand the Old Testament God, whose power was absolute, who ruled through fear.
                  [points to the Cross] But Him?
