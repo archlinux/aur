@@ -1,9 +1,13 @@
+# Maintainer: Maarten de Vries <maarten@de-vri.es>
+
 pkgname=ldapxx
 pkgdesc="C++ interface to ldap.h"
+url="https://github.com/de-vri-es/ldapxx"
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 depends=(libldap)
 arch=(x86_64 i386)
+license=(BSD)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/de-vri-es/ldapxx/archive/$pkgver.tar.gz")
 sha512sums=('e58c7d74203393ca98ce4cd2ec298d08226218071148fb1f91509532e2a513d7f066f3ffde2ef3bd260172f5145af034be89b308764d69c6834886450e3f3a06')
@@ -28,5 +32,6 @@ build() {
 package() {
 	cd "$srcdir/build"
 	make install DESTDIR="$pkgdir"
+	install -m644 -Dt "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/$pkgname-$pkgver/LICENSE"
 }
 
