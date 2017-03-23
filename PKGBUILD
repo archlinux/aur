@@ -48,7 +48,7 @@ package() {
 	# python setup.py install --root="$pkgdir/" --optimize=1
     
 	cd "${srcdir}/${pkgname}"
-	python setup.py install --prefix=/usr --root="$pkgdir"
+	python2 setup.py install --prefix=/usr --root="$pkgdir"
 	# sudo python setup.py install --optimize=1 --prefix=/usr/share/tvdoon
 	# sudo python setup.py install --root="$pkgdir/" --optimize=1
 	# make DESTDIR="$pkgdir/" install
