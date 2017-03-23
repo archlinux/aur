@@ -1,5 +1,5 @@
 pkgname=alacritty-git
-pkgver=0.1.0.396
+pkgver=0.1.0.453.g715d4f8
 pkgrel=1
 pkgdesc="A cross-platform, GPU enhanced terminal emulator"
 arch=('x86_64' 'i686')
@@ -14,12 +14,12 @@ source=($pkgname::git+https://github.com/jwilm/alacritty.git)
 sha256sums=('SKIP')
 
 pkgver() {
-    cd $pkgname
-	echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD)
+	cd $pkgname
+	echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD).g$(git describe --always)
 }
 
 build() {
-    cd $pkgname
+	cd $pkgname
 	cargo build --release
 }
 
