@@ -1,0 +1,34 @@
+pkgbase = dbus-elogind
+	pkgdesc = Freedesktop.org message bus system
+	pkgver = 1.10.16
+	pkgrel = 4
+	url = https://wiki.freedesktop.org/www/Software/dbus/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = python
+	makedepends = yelp-tools
+	makedepends = doxygen
+	makedepends = git
+	depends = expat
+	depends = libx11
+	depends = libelogind
+	optdepends = dbus-openrc: dbus initscript
+	provides = libdbus
+	provides = dbus=1.10.16
+	provides = dbus-x11=1.10.16
+	conflicts = libdbus
+	conflicts = dbus
+	conflicts = dbus-x11
+	source = git+https://anongit.freedesktop.org/git/dbus/dbus#commit=8b582cb10d7cf00af7a70496aec48af24edc542b
+	source = dbus-enable-elogind.patch
+	validpgpkeys = DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90
+	validpgpkeys = 3C8672A0F49637FE064AC30F52A43A1E4B77B059
+	sha256sums = SKIP
+	sha256sums = faffcaa5b295f49fcedeed2c9ece5298949096be3062fd99a4bf1a6ac3ad1ea0
+
+pkgname = dbus-elogind
+
