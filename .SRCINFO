@@ -1,0 +1,18 @@
+pkgbase = proot-3.2.1
+	pkgdesc = chroot, mount --bind, and binfmt_misc without privilege/setup
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = http://proot.me
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python-docutils
+	makedepends = libxslt
+	depends = talloc
+	provides = proot
+	conflicts = proot
+	source = proot-v3.2.1.tar.gz::https://github.com/cedric-vincent/PRoot/archive/v3.2.1.tar.gz
+	md5sums = 0089bfebf5b4a1f298b7fdc7a032a8d8
+
+pkgname = proot-3.2.1
+
