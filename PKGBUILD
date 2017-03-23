@@ -8,14 +8,14 @@
 
 pkgbase=linux-galliumos-braswell
 _srcname=linux
-pkgver=v4.9.16
+pkgver=4.10.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
-source=("git+https://github.com/GalliumOS/linux.git#branch=${pkgver}"
+source=("git+https://github.com/GalliumOS/linux.git#branch=v${pkgver}"
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'
