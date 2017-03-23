@@ -1,7 +1,7 @@
 # Contributor: BluePeril <blueperil (at) blueperil _dot_ de>
 
 pkgname=lombok-eclipse
-pkgver=1.16.14
+pkgver=1.16.16
 pkgrel=1
 pkgdesc="Project Lombok integrated to Eclipse installation"
 arch=("any")
@@ -24,6 +24,6 @@ package() {
     cp "$srcdir"/lombok-api.jar "${pkgdir}"/usr/lib/eclipse
 }
 
-sha256sums=('0c288109879afc5bcb88f09534a74c61306e92459a911078e1180aaee9a932f9')
+sha256sums=('fbf682c7ff113e5187a9c4b4cbd7a8ad782abd8ccff91b9fa7289a4a6aa8c19a')
 
 # vim:set ts=2 sw=2 et:
