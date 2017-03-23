@@ -1,69 +1,74 @@
+# Maintainer: Martchus <martchus@gmx.net>
 # Contributor: ant32 <antreimer@gmail.com>
+
 pkgname=mingw-w64-postgresql
-pkgver=9.6.1
+pkgver=9.6.2
 pkgrel=1
-pkgdesc="A sophisticated object-relational DBMS (mingw-w64)"
-arch=(any)
-url="http://www.postgresql.org"
-license=("custom:PostgreSQL")
-makedepends=(mingw-w64-configure libxml2)
-depends=(mingw-w64-gettext "mingw-w64-openssl>=1.0.0" mingw-w64-libxml2 mingw-w64-readline)
+pkgdesc='A sophisticated object-relational DBMS (mingw-w64)'
+arch=('any')
+url='https://www.postgresql.org'
+license=('custom:PostgreSQL')
+makedepends=('mingw-w64-configure' 'libxml2')
+depends=('mingw-w64-gettext' 'mingw-w64-openssl>=1.0.0' 'mingw-w64-libxml2' 'mingw-w64-readline')
 options=(staticlibs !strip !buildflags)
-provides=(mingw-w64-postgresql-libs)
-conflicts=(mingw-w64-postgresql-libs)
-replaces=(mingw-w64-postgresql-libs)
+provides=('mingw-w64-postgresql-libs')
+conflicts=('mingw-w64-postgresql-libs')
+replaces=('mingw-w64-postgresql-libs')
 source=("http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2"
-"postgresql-9.4.1-mingw-link.patch")
-sha256sums=('e5101e0a49141fc12a7018c6dad594694d3a3325f5ab71e93e0e51bd94e51fcd'
+        'postgresql-9.4.1-mingw-link.patch')
+sha256sums=('0187b5184be1c09034e74e44761505e52357248451b0c854dddec6c231fe50c9'
             '0f2b5c7edb48dd106900854c9323ca2d483054595c4cf8a5b796a1d536d22aad')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-	cd postgresql-$pkgver
-	patch -p1 -i ${srcdir}/postgresql-9.4.1-mingw-link.patch
+  cd postgresql-$pkgver
+  patch -p1 -i ${srcdir}/postgresql-9.4.1-mingw-link.patch
 }
 
 build() {
-	cd postgresql-$pkgver
-	for _arch in ${_architectures}; do
-		mkdir -p build-${_arch} && pushd build-${_arch}
-		${_arch}-configure \
-			--enable-thread-safety \
-			--enable-nls \
-			--with-libxml \
-			--with-openssl
+  cd postgresql-$pkgver
+  for _arch in ${_architectures}; do
+    mkdir -p build-${_arch} && pushd build-${_arch}
+    ${_arch}-configure \
+      --enable-thread-safety \
+      --enable-nls \
+      --with-libxml \
+      --with-openssl
 
-		# Make DLL definition file visible during each arch build
-		ln -s "${srcdir}/postgresql-$pkgver/src/interfaces/libpq/libpqdll.def" src/interfaces/libpq/
-		ln -s "${srcdir}/postgresql-$pkgver/src/interfaces/ecpg/ecpglib/libecpgdll.def" src/interfaces/ecpg/ecpglib/
-		ln -s "${srcdir}/postgresql-$pkgver/src/interfaces/ecpg/pgtypeslib/libpgtypesdll.def" src/interfaces/ecpg/pgtypeslib/
-		ln -s "${srcdir}/postgresql-$pkgver/src/interfaces/ecpg/compatlib/libecpg_compatdll.def" src/interfaces/ecpg/compatlib/
+    # Make DLL definition file visible during each arch build
+    ln -s "${srcdir}/postgresql-$pkgver/src/interfaces/libpq/libpqdll.def" src/interfaces/libpq/
+    ln -s "${srcdir}/postgresql-$pkgver/src/interfaces/ecpg/ecpglib/libecpgdll.def" src/interfaces/ecpg/ecpglib/
+    ln -s "${srcdir}/postgresql-$pkgver/src/interfaces/ecpg/pgtypeslib/libpgtypesdll.def" src/interfaces/ecpg/pgtypeslib/
+    ln -s "${srcdir}/postgresql-$pkgver/src/interfaces/ecpg/compatlib/libecpg_compatdll.def" src/interfaces/ecpg/compatlib/
 
     make
-		popd
-	done
+
+    # Build static lib
+    ${_arch}-ar rvs -o libpq.a src/interfaces/libpq/*.o
+    popd
+  done
 }
 
 package() {
-	for _arch in ${_architectures}; do
-		cd "$srcdir/postgresql-$pkgver/build-${_arch}"
-		mkdir -p "${pkgdir}/usr/${_arch}/"{bin,include,lib}
+  for _arch in ${_architectures}; do
+    cd "$srcdir/postgresql-$pkgver/build-${_arch}"
+    mkdir -p "${pkgdir}/usr/${_arch}/"{bin,include,lib}
 
-		make DESTDIR=$pkgdir install
-		
-		mv "$pkgdir/usr/${_arch}/lib/"*.dll "$pkgdir/usr/${_arch}/bin/"
-		find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
-    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
-    find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
-		#rm -r "$pkgdir/usr/${_arch}/share"
-		
-		# these headers are needed by the not-so-public headers of the interfaces
-		cd "${srcdir}/postgresql-$pkgver/src/include"
-		mkdir -p "${pkgdir}"/usr/${_arch}/include/{libpq,postgresql/internal/libpq}
-		install -m644 c.h "${pkgdir}/usr/${_arch}/include/postgresql/internal/"
-		install -m644 port.h "${pkgdir}/usr/${_arch}/include/postgresql/internal/"
-		install -m644 postgres_fe.h "${pkgdir}/usr/${_arch}/include/postgresql/internal/"
-		install -m644 libpq/pqcomm.h "${pkgdir}/usr/${_arch}/include/postgresql/internal/libpq/"
-	done
+    make DESTDIR=$pkgdir install
+    mv libpq.a "${pkgdir}/usr/${_arch}/lib/"
+    mv "$pkgdir/usr/${_arch}/lib/"*.dll "$pkgdir/usr/${_arch}/bin/"
+
+    find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec ${_arch}-strip --strip-all {} \;
+    find "${pkgdir}/usr/${_arch}" -name "*.dll" -exec ${_arch}-strip --strip-unneeded {} \;
+    find "${pkgdir}/usr/${_arch}" -name "*.a" -exec ${_arch}-strip -g {} \;
+
+    # these headers are needed by the not-so-public headers of the interfaces
+    cd "${srcdir}/postgresql-$pkgver/src/include"
+    mkdir -p "${pkgdir}"/usr/${_arch}/include/{libpq,postgresql/internal/libpq}
+    install -m644 c.h "${pkgdir}/usr/${_arch}/include/postgresql/internal/"
+    install -m644 port.h "${pkgdir}/usr/${_arch}/include/postgresql/internal/"
+    install -m644 postgres_fe.h "${pkgdir}/usr/${_arch}/include/postgresql/internal/"
+    install -m644 libpq/pqcomm.h "${pkgdir}/usr/${_arch}/include/postgresql/internal/libpq/"
+  done
 }
