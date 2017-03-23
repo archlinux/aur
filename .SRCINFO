@@ -1,0 +1,25 @@
+pkgbase = accountsservice-elogind
+	pkgdesc = D-Bus interface for user account query and manipulation
+	pkgver = 0.6.42+12+gdac4254
+	pkgrel = 5
+	url = https://www.freedesktop.org/software/accountsservice/
+	arch = i686
+	arch = x86_64
+	groups = elogind-nosystemd
+	license = GPL3
+	makedepends = intltool
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
+	makedepends = git
+	depends = glib2
+	depends = elogind
+	depends = polkit-elogind
+	provides = accountsservice
+	conflicts = accountsservice
+	source = git://anongit.freedesktop.org/accountsservice#commit=dac425433270c6dc38feba4d2513e4da7bd265fd
+	source = accountsservice-enable-elogind.patch
+	sha256sums = SKIP
+	sha256sums = dc233c540cf3e129479aa0c5e408a706a8c8cd52fdb94ad50aba32f8e9f765e1
+
+pkgname = accountsservice-elogind
+
