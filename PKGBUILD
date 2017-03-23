@@ -24,7 +24,6 @@ pkgver() {
 read -r -d '' _base_desktop_launcher << EndOfMessage
 [Desktop Entry]
 Comment=An open-source tool for writers.
-Exec=manuskript %%U
 Name=Manuskript
 Terminal=false
 Type=Application
@@ -37,7 +36,7 @@ package() {
     # program files
     local pkg_install_location="${pkgdir}${install_location}"
     mkdir -p "$pkg_install_location"
-    rsync -av "${srcdir}/${pkgname}" "${pkg_install_location}/Manuskript" --exclude '.git'
+    rsync -av "${srcdir}/${pkgname}/" "${pkg_install_location}/Manuskript" --exclude '.git'
 
     # symlink to the binary folder
     local pkg_bin_location="${pkgdir}${bin_location}"
@@ -50,4 +49,5 @@ package() {
     local desktop_launcher_file="${pkgdir}/usr/share/applications/manuskript.desktop"
     printf "$_base_desktop_launcher" > "$desktop_launcher_file"
     printf "\nIcon=${install_location}/Manuskript/icons/Manuskript/icon-512px.png" >> "$desktop_launcher_file"
+    printf "\nExec=${install_location}/Manuskript/bin/manuskript %%U" >> "$desktop_launcher_file"
 }
