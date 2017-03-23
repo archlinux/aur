@@ -1,7 +1,7 @@
 # Maintainer: emersion <contact@emersion.fr>
 pkgname=browserpass-git
 _pkgname=${pkgname%-git}
-pkgver=1.0.1.r8.5e8dced
+pkgver=1.0.2.r33.51579bc
 pkgrel=1
 pkgdesc="Chrome & Firefox browser extension for pass, a UNIX password manager"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -31,14 +31,13 @@ prepare() {
 build() {
 	cd "$srcdir/$_pkgname"
 
-	go build -o browserpass
+	go build -o browserpass ./cmd/browserpass
 }
 
 package() {
 	cd "$srcdir/$_pkgname"
 
-	mkdir -p "$pkgdir/usr/bin"
-	cp browserpass "$pkgdir/usr/bin/browserpass"
+	install -D browserpass "$pkgdir/usr/bin/browserpass"
 
 	host_file="/usr/bin/browserpass"
 	escaped_host_file=${host_file////\\/}
@@ -47,12 +46,7 @@ package() {
 	sed -i -e "s/%%replace%%/$escaped_host_file/" chrome-host.json
 	sed -i -e "s/%%replace%%/$escaped_host_file/" firefox-host.json
 
-	mkdir -p "$pkgdir/etc/opt/chrome/native-messaging-hosts"
-	cp chrome-host.json "$pkgdir/etc/opt/chrome/native-messaging-hosts/com.dannyvankooten.browserpass.json"
-
-	mkdir -p "$pkgdir/etc/chromium/native-messaging-hosts"
-	cp chrome-host.json "$pkgdir/etc/chromium/native-messaging-hosts/com.dannyvankooten.browserpass.json"
-
-	mkdir -p "$pkgdir/usr/lib/mozilla/native-messaging-hosts"
-	cp firefox-host.json "$pkgdir/usr/lib/mozilla/native-messaging-hosts/com.dannyvankooten.browserpass.json"
+	install -D chrome-host.json "$pkgdir/etc/opt/chrome/native-messaging-hosts/com.dannyvankooten.browserpass.json"
+	install -D chrome-host.json "$pkgdir/etc/chromium/native-messaging-hosts/com.dannyvankooten.browserpass.json"
+	install -D firefox-host.json "$pkgdir/usr/lib/mozilla/native-messaging-hosts/com.dannyvankooten.browserpass.json"
 }
