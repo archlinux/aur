@@ -7,7 +7,7 @@ pkgdesc="Show Information About Tv Show's, Ratings And So Many Cool Fatures!"
 arch=('any')
 url="http://www.stack.blog.ir"
 license=('GPL3')
-depends=('python' 'python2-prettytable' 'python-prettytable' 'python-tvdb_api')
+depends=('python' 'python2-prettytable' 'python-prettytable')
 makedepends=('git'  'python-setuptools')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -37,7 +37,7 @@ prepare(){
 	tvdb_pkgver_3=$(grep -Po 'pkgver=\K[^ ]+' PKGBUILD)
 	tvdb_pkgrel_3=$(grep -Po 'pkgrel=\K[^ ]+' PKGBUILD)
 	tvdb_arch_3=$(grep -Po 'arch=\K[^ ]+' PKGBUILD | cut -d "(" -f2 | cut -d "'" -f2)
-	sudo pacman -U tvdb_api-git-${tvdb_pkgver_3}-${tvdb_pkgrel_3}-${tvdb_arch_3}.pkg.tar.xz
+	sudo pacman -U python-tvdb_api-git-${tvdb_pkgver_3}-${tvdb_pkgrel_3}-${tvdb_arch_3}.pkg.tar.xz
 }
 
 pkgver() {
