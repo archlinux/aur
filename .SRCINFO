@@ -1,7 +1,7 @@
 pkgbase = maltego-community
 	pkgdesc = Maltego Community Edition
 	pkgver = 4.0.11.9358
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.paterva.com
 	install = maltego.install
 	arch = i686
