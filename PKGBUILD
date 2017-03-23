@@ -9,7 +9,6 @@ url="https://github.com/dsmorozov/qputty-qt5"
 license=('MIT LGPL3')
 depends=('glibc' 'gcc-libs' 'qt5-base' 'qt5-x11extras' 'libgssglue')
 makedepends=('git')
-conflicts=('qputty')
 source=('git://github.com/dsmorozov/qputty-qt5.git'
         'git://git.tartarus.org/simon/putty.git')
 md5sums=('SKIP'

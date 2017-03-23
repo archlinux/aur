@@ -12,7 +12,6 @@ pkgbase = qputty-qt5-git
 	depends = qt5-base
 	depends = qt5-x11extras
 	depends = libgssglue
-	conflicts = qputty
 	source = git://github.com/dsmorozov/qputty-qt5.git
 	source = git://git.tartarus.org/simon/putty.git
 	md5sums = SKIP
