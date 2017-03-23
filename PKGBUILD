@@ -1,36 +1,38 @@
-# Contributor: Jan Kašpar <jan.kaspar at gmail dot com>
+# Maintainer: Konstantin Gizdov < arch at kge dot pw >
+# Contributor: Jan Kašpar < jan.kaspar at gmail dot com >
 pkgname=xrootd
-pkgver=4.5.0
-pkgrel=1
-pkgdesc="The XROOTD project aims at giving high performance, scalable fault tolerant access to data repositories of many kinds."
+pkgver=4.6.0
+pkgrel=2
+pkgdesc="A project that aims at giving high performance, scalable fault tolerant access to data repositories of many kinds."
+provides=('xrootd'
+          'xrootd-abi0')
 arch=('i686' 'x86_64')
 url="http://xrootd.org/"
-license=('Stanford, Jr. University')
-depends=()
+license=('LGPL3')
+depends=('ceph'
+         'libxml2')
 makedepends=('make' 'cmake')
+options=('!emptydirs')
 
 source=(
 	"http://xrootd.org/download/v$pkgver/xrootd-$pkgver.tar.gz"
 )
 
-md5sums=(
-	'd485df3d4a991e1c35efa4bf9ef663d7'
-)
-
-build()
-{
+sha256sums=('b50f7c64ed2a4aead987de3fdf6fce7ee082407ba9297b6851cd917db72edd1d')
+build() {
 	cd "$srcdir"
 
 	rm -rf "build"
 	mkdir "build"
 	cd "build"
 
-	cmake "$srcdir/xrootd-$pkgver" -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR:PATH=lib || return 1
-	make || return 2
+	cmake "$srcdir/$pkgname-$pkgver" \
+	-DCMAKE_BUILD_TYPE:STRING=Release \
+        -DCMAKE_INSTALL_LIBDIR:PATH=lib -DCMAKE_INSTALL_PREFIX:PATH=/usr || return 1
+	make ${MAKEFLAGS} || return 2
 }
 
-package()
-{
+package() {
 	cd "$srcdir/build"
 	make DESTDIR="$pkgdir/" install
 }
