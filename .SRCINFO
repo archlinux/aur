@@ -1,7 +1,7 @@
 pkgbase = vault
 	pkgdesc = A tool for managing secrets
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vaultproject.io/
 	install = vault.install
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = vault
 	makedepends = go
 	depends = glibc
 	conflicts = vault-git
+	backup = etc/vault.hcl
 	source = https://github.com/hashicorp/vault/archive/v0.7.0.tar.gz
 	source = vault.service
 	source = vault.hcl

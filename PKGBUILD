@@ -1,7 +1,7 @@
 pkgname='vault'
 pkgdesc='A tool for managing secrets'
 pkgver='0.7.0'
-pkgrel='1'
+pkgrel='2'
 url='https://vaultproject.io/'
 license=('MPL')
 arch=('i686' 'x86_64')
@@ -9,6 +9,7 @@ makedepends=('gox' 'go')
 depends=('glibc')
 conflicts=("${pkgname}-git")
 install='vault.install'
+backup=('etc/vault.hcl')
 source=("https://github.com/hashicorp/vault/archive/v${pkgver}.tar.gz"
         'vault.service'
 		'vault.hcl')
