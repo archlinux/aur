@@ -7,8 +7,8 @@ pkgdesc="Show Information About Tv Show's, Ratings And So Many Cool Fatures!"
 arch=('any')
 url="http://www.stack.blog.ir"
 license=('GPL3')
-depends=('python2-prettytable' 'python-prettytable')
-makedepends=('git' 'python' 'python-setuptools')
+depends=('python' 'python2-prettytable' 'python-prettytable')
+makedepends=('git'  'python-setuptools')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}::git+https://github.com/LinArcX/tvdoon")
@@ -26,6 +26,28 @@ prepare(){
 	tvdb_pkgrel=$(grep -Po 'pkgrel=\K[^ ]+' PKGBUILD)
 	tvdb_arch=$(grep -Po 'arch=\K[^ ]+' PKGBUILD | cut -d "(" -f2 | cut -d "'" -f2)
 	sudo pacman -U tvdb_api-git-${tvdb_pkgver}-${tvdb_pkgrel}-${tvdb_arch}.pkg.tar.xz
+
+	# install python-pytvdbapi (V3)
+	# wget https://aur.archlinux.org/cgit/aur.git/snapshot/python-pytvdbapi.tar.gz
+	# tar python-pytvdbapi.tar.gz
+	# cd python-pytvdbapi
+	# makepkg -f
+	# echo "installing python-pytvdbapi from Aur."
+	# pytvdbapi_pkgver=$(grep -Po 'pkgver=\K[^ ]+' PKGBUILD)
+	# pytvdbapi_pkgrel=$(grep -Po 'pkgrel=\K[^ ]+' PKGBUILD)
+	# pytvdbapi_arch=$(grep -Po 'arch=\K[^ ]+' PKGBUILD | cut -d "(" -f2 | cut -d "'" -f2)
+	# sudo pacman -U python-pytvdbapi-${pytvdbapi_pkgver}-${pytvdbapi_pkgrel}-${pytvdbapi_arch}.pkg.tar.xz
+
+	# # install python-pytvdbapi2 (V2)
+	# wget https://aur.archlinux.org/cgit/aur.git/snapshot/python-pytvdbapi.tar.gz
+	# tar python-pytvdbapi.tar.gz
+	# cd python-pytvdbapi
+	# makepkg -f
+	# echo "installing python-pytvdbapi from Aur."
+	# pytvdbapi_pkgver=$(grep -Po 'pkgver=\K[^ ]+' PKGBUILD)
+	# pytvdbapi_pkgrel=$(grep -Po 'pkgrel=\K[^ ]+' PKGBUILD)
+	# pytvdbapi_arch=$(grep -Po 'arch=\K[^ ]+' PKGBUILD | cut -d "(" -f2 | cut -d "'" -f2)
+	# sudo pacman -U python-pytvdbapi-${pytvdbapi_pkgver}-${pytvdbapi_pkgrel}-${pytvdbapi_arch}.pkg.tar.xz
 }
 
 pkgver() {
@@ -48,7 +70,7 @@ package() {
 	# python setup.py install --root="$pkgdir/" --optimize=1
     
 	cd "${srcdir}/${pkgname}"
-	python2 setup.py install --prefix=/usr --root="$pkgdir"
+	python setup.py install --prefix=/usr --root="$pkgdir"
 	# sudo python setup.py install --optimize=1 --prefix=/usr/share/tvdoon
 	# sudo python setup.py install --root="$pkgdir/" --optimize=1
 	# make DESTDIR="$pkgdir/" install
