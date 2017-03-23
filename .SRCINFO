@@ -1,0 +1,21 @@
+pkgbase = openrc-video
+	pkgver = 20170314
+	pkgrel = 1.parabola2
+	url = https://github.com/manjaro/packages-openrc
+	arch = any
+	groups = openrc-video
+	license = GPL
+	source = vgl.confd::https://raw.githubusercontent.com/gentoo/gentoo/master/x11-misc/virtualgl/files/vgl.confd-r2
+	source = vgl.initd::https://raw.githubusercontent.com/gentoo/gentoo/master/x11-misc/virtualgl/files/vgl.initd-r3
+	source = https://raw.githubusercontent.com/gentoo/gentoo/master/x11-misc/virtualgl/files/vgl-helper.sh
+	sha256sums = 5356391cec2e297f2fafa370f42be225ad4238ac61182b90720a3d914261a80f
+	sha256sums = e59320152be7d3631e3bdcd10be412b2ca1bc7c1bcdb135cb19142114e6358f0
+	sha256sums = 438c928840fbfb9274604296b8178e7f97b42a3428d115e1de6e609ea3146497
+
+pkgname = virtualgl-openrc
+	pkgdesc = OpenRC virtualgl init script
+	install = virtualgl.install
+	depends = openrc
+	depends = virtualgl
+	backup = etc/conf.d/vgl
+

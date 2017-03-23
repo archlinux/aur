@@ -1,0 +1,4 @@
+post_install() {
+	chown root:video /var/lib/VirtualGL
+	chmod 0750 /var/lib/VirtualGL
+}
