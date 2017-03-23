@@ -1,0 +1,39 @@
+pkgbase = linux-xanmod-git
+	pkgver = 4.10.5
+	pkgrel = 1
+	url = http://www.xanmod.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = libelf
+	options = !strip
+	source = git+https://github.com/xanmod/linux.git
+	source = config.x86_64
+	source = 99-linux.hook
+	source = linux-xanmod-git.preset
+	sha256sums = SKIP
+	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = 80618bdbd8c0fcb41f33a00bd77daf742571eb652cb345d6b47bd995d03b12e9
+
+pkgname = linux-xanmod-git
+	pkgdesc = The Linux kernel and modules with Xanmod patches (git version)
+	install = linux-xanmod-git.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux
+	backup = etc/mkinitcpio.d/linux-xanmod-git.preset
+
+pkgname = linux-xanmod-git-headers
+	pkgdesc = Header files and scripts for building modules for Linux-xanmod-git kernel
+	provides = linux-headers
+
