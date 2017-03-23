@@ -1,7 +1,7 @@
 # Maintainer: Quentin Glidic <sardemff7@eventd.org>
 
 pkgname=eventd-git
-pkgver=0.20.0.r0.gb20d45a
+pkgver=0.21.0.r0.g47353b3a
 _gitname=eventd
 _pkgdir=${_gitname}
 pkgrel=1
@@ -17,7 +17,7 @@ license=(
     MIT
 )
 depends=(
-    'cairo>=1.14.0'
+    'cairo>=1.12.0'
     gdk-pixbuf2
     'glib2>=2.40.0'
     glib-networking
@@ -48,7 +48,7 @@ options=(
     !strip
 )
 source=(
-    git://github.com/sardemff7/${_gitname}
+    https://github.com/sardemff7/${_gitname}
 )
 sha256sums=(
     SKIP
