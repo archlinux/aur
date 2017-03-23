@@ -5,7 +5,7 @@
 pkgname=pythia
 pkgver=8.2.23
 _pkgid="${pkgname}${pkgver//./}"
-pkgrel=2
+pkgrel=3
 pkgdesc="High-energy physics events generator."
 arch=('i686' 'x86_64')
 url="http://home.thep.lu.se/Pythia/"
@@ -25,6 +25,7 @@ sha256sums=('36fda65eed5e9b8cd9f7e6352a4bcb56868595539fa3d2c02814c6d4b738f837'
             '12fabaa56db80537b94a89de18f688f1258f467ed01b1ee6595efe75cde801d2'
             'f1796729b0403026382bca43329692f5356c8ec46fc2c09f799a8b3d12d49a6f'
             '54efb472bc7b23287125f1a4d797b08e0b85864ff727e420eaf81a6fef2ebc25')
+options=('!emptydirs')
 _srcpath=$srcdir/$_pkgid
 
 prepare() {
