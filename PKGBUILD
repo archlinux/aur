@@ -24,7 +24,7 @@ build() {
         aclocal
         automake --add-missing
         autoreconf
-	./configure --prefix=/usr --disable-schemas-compile
+	./configure --prefix=/usr --with-gtk3 --disable-schemas-compile
 	make
 }
 
