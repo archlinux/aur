@@ -15,11 +15,9 @@ pkgbase = geneweb-git
 	source = gwd.conf
 	source = gwd.service
 	source = geneweb.install
-	source = Makefile.fixed-install
 	md5sums = 8219a070e2bbf6aaeeb9c0f42825720d
 	md5sums = a89d188febe37b82ab7d936a7cafccc2
 	md5sums = 42c8da80f6b1e24f0cd3243840574d58
-	md5sums = ee60c01f1724ad6677dc2eeb1770faa0
 
 pkgname = geneweb-git
 
