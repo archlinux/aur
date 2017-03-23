@@ -1,11 +1,11 @@
 pkgname=starcal
 pkgver=3.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='A full-featured international calendar writen in Python'
 arch=('any')
 url='http://ilius.github.io/starcal'
 license=('GPLv3')
-depends=('python>=3.2' 'python-gobject' 'python-httplib2' 'python-psutil' 'python-dateutil' 'python-pymongo')
+depends=('python>=3.2' 'python-gobject' 'python-httplib2' 'python-psutil' 'python-dateutil' 'python-pymongo' 'python-cairo')
 optdepends=('python-igraph'
 'libappindicator-gtk3: Better systray support')
 makedepends=()
