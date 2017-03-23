@@ -1,0 +1,28 @@
+pkgbase = openrc-accessible
+	pkgdesc = OpenRC init scripts
+	pkgver = 20170321
+	pkgrel = 1
+	url = https://github.com/manjaro/packages-openrc
+	arch = any
+	groups = openrc-accessible
+	license = GPL2
+	conflicts = systemd-sysvcompat
+	source = brltty.initd::https://raw.githubusercontent.com/gentoo/gentoo/master/app-accessibility/brltty/files/brltty.rc
+	source = espeakup.confd::https://raw.githubusercontent.com/gentoo/gentoo/master/app-accessibility/espeakup/files/espeakup.confd
+	source = espeakup.initd::https://raw.githubusercontent.com/gentoo/gentoo/master/app-accessibility/espeakup/files/espeakup.rc
+	sha256sums = 4dd0338d2f9943165d5922c8964ca3456e8e8b67b37cf5f2652435bc1f644c41
+	sha256sums = 32e6de11417ebb199a7bf46eb8cf77054b1af1c9f4bcc80b856b34758830eb9f
+	sha256sums = 9bfaf3950744a9376cdd74240c3e6b9a92d7b17a16a3b9eb0485f5fd279ff963
+
+pkgname = brltty-openrc
+	pkgdesc = OpenRC brltty init script
+	depends = openrc
+	depends = brltty
+
+pkgname = espeakup-openrc
+	pkgdesc = OpenRC espeakup init script
+	depends = openrc
+	depends = espeakup
+	optdepends = alsa-utils-openrc: alsa support
+	backup = etc/conf.d/espeakup
+
