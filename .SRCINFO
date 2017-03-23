@@ -1,19 +1,21 @@
 pkgbase = manuskript-git
-	pkgdesc = Manuskript is an open-source tool for writers (git version).
-	pkgver = 0
-	pkgrel = 1
-	url = http://www.theologeek.ch/manuskript
-	arch = any
-	license = GPL3
+    pkgdesc = Manuskript is an open-source tool for writers (git version).
+    pkgver = 0
+    pkgrel = 3
+    url = http://www.theologeek.ch/manuskript
+    arch = any
+    license = GPL3
     makedepends = git
     depends = python
     depends = python-pyqt5
     depends = qt5-svg
     depends = python-lxml
-	provides = manuskript
-	conflicts = manuskript
-	conflicts = manuskript-git
-	source = manuskript-git::git+https://github.com/olivierkes/manuskript#branch=develop
-	sha1sums = SKIP
+    depends = python-pyenchant
+    depends = hunspell-en
+    provides = manuskript
+    conflicts = manuskript
+    conflicts = manuskript-git
+    source = manuskript-git::git+https://github.com/olivierkes/manuskript#branch=master
+    sha1sums = SKIP
 
 pkgname = manuskript-git

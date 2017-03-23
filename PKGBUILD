@@ -1,6 +1,6 @@
 pkgname=manuskript-git
-pkgver=20161213_8d23989
-pkgrel=1
+pkgver=0
+pkgrel=3
 arch=('any')
 
 pkgdesc="Manuskript is an open-source tool for writers (git version)."
@@ -8,16 +8,16 @@ url="http://www.theologeek.ch/manuskript"
 license=('GPL3')
 
 makedepends=('git')
-depends=('python' 'python-pyqt5' 'qt5-svg' 'python-lxml')
+depends=('python' 'python-pyqt5' 'qt5-svg' 'python-lxml' 'python-pyenchant' 'hunspell-en')
 provides=('manuskript')
 conflicts=('manuskript' 'manuskript-git')
 
-source=("${pkgname}::git+https://github.com/olivierkes/manuskript#branch=develop")
+source=("${pkgname}::git+https://github.com/olivierkes/manuskript#branch=master")
 sha1sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
-	git log -1 --date=format:%Y%m%d --pretty=format:%ad_%h
+    cd "${srcdir}/${pkgname}"
+    git log -1 --date=format:%Y%m%d --pretty=format:%ad_%h
 }
 
 # base desktop launcher, missing only the icon
