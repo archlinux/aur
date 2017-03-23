@@ -20,8 +20,11 @@ prepare(){
 	#mv tvdb_api-git.tar.gz tvdb_api.tar.gz 
 	tar xvzf tvdb_api-git.tar.gz
 	cd tvdb_api-git
+	tvdb_pkgver = $(grep -Po 'pkgver=\K[^ ]+' PKGBUILD)
+	tvdb_pkgrel = $(grep -Po 'pkgrel=\K[^ ]+' PKGBUILD)
+	tvdb_arch = $(grep -Po 'arch=\K[^ ]+' PKGBUILD | cut -d "(" -f2 | cut -d "'" -f2)
 	makepkg -f
-	pacman -U tvdb_api-git.xz
+	sudo pacman -U tvdb_api-git-${tvdb_pkgver}-${tvdb_pkgrel}-${tvdb_arch}.tar.xz
 }
 
 pkgver() {
