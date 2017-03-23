@@ -7,7 +7,7 @@ pkgdesc="Show Information About Tv Show's, Ratings And So Many Cool Fatures!"
 arch=('any')
 url="http://www.stack.blog.ir"
 license=('GPL3')
-depends=('python' 'python2-prettytable' 'python-prettytable')
+depends=('python' 'python2-prettytable' 'python-prettytable' 'python-tvdb_api')
 makedepends=('git'  'python-setuptools')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -16,38 +16,28 @@ md5sums=('SKIP')
 
 prepare(){
 	cd "${srcdir}/${pkgname}"
+
+	# install tvdb_api (V2)
 	wget https://aur.archlinux.org/cgit/aur.git/snapshot/tvdb_api-git.tar.gz
-	#mv tvdb_api-git.tar.gz tvdb_api.tar.gz 
 	tar xvzf tvdb_api-git.tar.gz
 	cd tvdb_api-git
 	makepkg -f
-	echo "installing tvdb_api-git from Aur."
-	tvdb_pkgver=$(grep -Po 'pkgver=\K[^ ]+' PKGBUILD)
-	tvdb_pkgrel=$(grep -Po 'pkgrel=\K[^ ]+' PKGBUILD)
-	tvdb_arch=$(grep -Po 'arch=\K[^ ]+' PKGBUILD | cut -d "(" -f2 | cut -d "'" -f2)
-	sudo pacman -U tvdb_api-git-${tvdb_pkgver}-${tvdb_pkgrel}-${tvdb_arch}.pkg.tar.xz
+	echo "installing tvdb_api-git(V2) from Aur."
+	tvdb_pkgver_2=$(grep -Po 'pkgver=\K[^ ]+' PKGBUILD)
+	tvdb_pkgrel_2=$(grep -Po 'pkgrel=\K[^ ]+' PKGBUILD)
+	tvdb_arch_2=$(grep -Po 'arch=\K[^ ]+' PKGBUILD | cut -d "(" -f2 | cut -d "'" -f2)
+	sudo pacman -U tvdb_api-git-${tvdb_pkgver_2}-${tvdb_pkgrel_2}-${tvdb_arch_2}.pkg.tar.xz
 
-	# install python-pytvdbapi (V3)
-	# wget https://aur.archlinux.org/cgit/aur.git/snapshot/python-pytvdbapi.tar.gz
-	# tar python-pytvdbapi.tar.gz
-	# cd python-pytvdbapi
-	# makepkg -f
-	# echo "installing python-pytvdbapi from Aur."
-	# pytvdbapi_pkgver=$(grep -Po 'pkgver=\K[^ ]+' PKGBUILD)
-	# pytvdbapi_pkgrel=$(grep -Po 'pkgrel=\K[^ ]+' PKGBUILD)
-	# pytvdbapi_arch=$(grep -Po 'arch=\K[^ ]+' PKGBUILD | cut -d "(" -f2 | cut -d "'" -f2)
-	# sudo pacman -U python-pytvdbapi-${pytvdbapi_pkgver}-${pytvdbapi_pkgrel}-${pytvdbapi_arch}.pkg.tar.xz
-
-	# # install python-pytvdbapi2 (V2)
-	# wget https://aur.archlinux.org/cgit/aur.git/snapshot/python-pytvdbapi.tar.gz
-	# tar python-pytvdbapi.tar.gz
-	# cd python-pytvdbapi
-	# makepkg -f
-	# echo "installing python-pytvdbapi from Aur."
-	# pytvdbapi_pkgver=$(grep -Po 'pkgver=\K[^ ]+' PKGBUILD)
-	# pytvdbapi_pkgrel=$(grep -Po 'pkgrel=\K[^ ]+' PKGBUILD)
-	# pytvdbapi_arch=$(grep -Po 'arch=\K[^ ]+' PKGBUILD | cut -d "(" -f2 | cut -d "'" -f2)
-	# sudo pacman -U python-pytvdbapi-${pytvdbapi_pkgver}-${pytvdbapi_pkgrel}-${pytvdbapi_arch}.pkg.tar.xz
+	# install tvdb_api (V3)
+	wget https://aur.archlinux.org/cgit/aur.git/snapshot/python-tvdb_api-git.tar.gz
+	tar xvzf python-tvdb_api-git.tar.gz
+	cd python-tvdb_api-git
+	makepkg -f
+	echo "installing tvdb_api-git(V3) from Aur."
+	tvdb_pkgver_3=$(grep -Po 'pkgver=\K[^ ]+' PKGBUILD)
+	tvdb_pkgrel_3=$(grep -Po 'pkgrel=\K[^ ]+' PKGBUILD)
+	tvdb_arch_3=$(grep -Po 'arch=\K[^ ]+' PKGBUILD | cut -d "(" -f2 | cut -d "'" -f2)
+	sudo pacman -U tvdb_api-git-${tvdb_pkgver_3}-${tvdb_pkgrel_3}-${tvdb_arch_3}.pkg.tar.xz
 }
 
 pkgver() {
