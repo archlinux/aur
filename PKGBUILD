@@ -39,6 +39,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
+    -DPARAVIEW_INSTALL_DEVELOPMENT_FILES:BOOL=ON \
     -DCOMPILE_TOOLS_IMPORTED=OFF \
     -DParaViewCompileTools_DIR=$PWD/../build-native \
     -DBUILD_TESTING:BOOL=OFF \
@@ -85,7 +86,8 @@ package() {
   for _arch in ${_architectures}; do
     cd "$srcdir"/ParaView-v${pkgver}/build-${_arch}
     make install DESTDIR="$pkgdir"
+    rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-#     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/paraview-${_majordotminor}/*.a
   done
 }
