@@ -1,7 +1,7 @@
-# Maintainer: Dmitriy Morozov <dmorozov.mailbox@gmail.com>
+# Maintainer: Dmitry Morozov <dmorozov@outlook.com>
 
 pkgname=qputty-qt5-git
-pkgver=504
+pkgver=505
 pkgrel=1
 pkgdesc="A Qt 5 port for putty, the free telnet/ssh client"
 arch=('i686' 'x86_64')
