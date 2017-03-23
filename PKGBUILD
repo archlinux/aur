@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('git' 'python-setuptools')
 provides=($pkgname)
 conflicts=($pkgname)
-source=($_pkgname::git://github.com/dbr/tvdb_api.git)
+source=($pkgname::git://github.com/dbr/tvdb_api.git)
 md5sums=('SKIP')
 
 pkgver() {
