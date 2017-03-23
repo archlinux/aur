@@ -8,7 +8,7 @@ pkgname=('cgmanager-openrc'
 		'consolekit-openrc')
 
 pkgver=20170311
-pkgrel=3
+pkgrel=3.aur1
 pkgdesc="OpenRC init scripts"
 arch=('any')
 url="https://github.com/manjaro/packages-openrc"
@@ -22,9 +22,9 @@ sha256sums=('c5e8db4e9d390bcaebcf203127a99b16d888a576d873920bd42dc56d20fa90c8'
             '97220fa0af6dcaa9d2cb726620ee3de8e216e55bab37cea40e5ed010ed637e35'
             'f162685428a6593630daf5d636c198caf4992843ced977dc6d7288b7559a062c')
 
-pkgver() {
-	date +%Y%m%d
-}
+#pkgver() {
+#	date +%Y%m%d
+#}
 
 _inst_initd(){
 	install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

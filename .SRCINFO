@@ -1,7 +1,7 @@
 pkgbase = openrc-ck
 	pkgdesc = OpenRC init scripts
 	pkgver = 20170311
-	pkgrel = 3
+	pkgrel = 3.aur1
 	url = https://github.com/manjaro/packages-openrc
 	arch = any
 	license = GPL2
