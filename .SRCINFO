@@ -1,7 +1,7 @@
 pkgbase = accountsservice-elogind
 	pkgdesc = D-Bus interface for user account query and manipulation
 	pkgver = 0.6.42+12+gdac4254
-	pkgrel = 5
+	pkgrel = 5.aur1
 	url = https://www.freedesktop.org/software/accountsservice/
 	arch = i686
 	arch = x86_64

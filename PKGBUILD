@@ -8,7 +8,7 @@ _commit=dac425433270c6dc38feba4d2513e4da7bd265fd  # tags/0.6.43^0
 
 pkgname=accountsservice-elogind
 pkgver=0.6.42+12+gdac4254
-pkgrel=5
+pkgrel=5.aur1
 pkgdesc="D-Bus interface for user account query and manipulation"
 url="https://www.freedesktop.org/software/accountsservice/"
 arch=('i686' 'x86_64')
