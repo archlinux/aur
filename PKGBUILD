@@ -28,14 +28,14 @@ pkgver() {
 #}
 
 package() {
-	# install -d ${pkgdir}/usr/share/sirfiliams
+	# install -d ${pkgdir}/usr/share/tvdoon
 	# cp -a ./sirfiliams.py  ${pkgdir}/usr/share/sirfiliams
 	# cp -a ./setup.py ${pkgdir}
 	# python setup.py install --root="$pkgdir/" --optimize=1
     
 	cd "${srcdir}/${pkgname}"
-	sudo python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
-	# sudo python setup.py install --optimize=1
+	python2 setup.py install --prefix=/usr --root="$pkgdir"
+	# sudo python setup.py install --optimize=1 --prefix=/usr/share/tvdoon
 	# sudo python setup.py install --root="$pkgdir/" --optimize=1
 	# make DESTDIR="$pkgdir/" install
 }
