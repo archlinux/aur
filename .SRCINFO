@@ -1,0 +1,17 @@
+pkgbase = tvdb3_api-git
+	pkgdesc = easy to use interface to thetvdb.com(Python3)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/dbr/tvdb_api
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = tvdb3_api-git
+	conflicts = tvdb3_api-git
+	source = ::git://github.com/dbr/tvdb_api.git
+	md5sums = SKIP
+
+pkgname = tvdb3_api-git
+
