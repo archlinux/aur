@@ -2,7 +2,7 @@
 
 pkgname=boomaga-qt5
 _name=boomaga
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="is a virtual printer for viewing a document before printing it out using the physical printer - QT5 version without KDE"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('qt5-tools' 'ghostscript' 'snappy' 'poppler')
 makedepends=('cmake')
 conflicts=('boomaga')
 source=("https://github.com/boomaga/boomaga/archive/v$pkgver.tar.gz")
-md5sums=('9055f2dbd3fa5eb058f6b33784140672')
+md5sums=('e7e411cb5f1c5deafa1f7128da8a4bf0')
 
 build() {
    cd $srcdir/${_name}-$pkgver
