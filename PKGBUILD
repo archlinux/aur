@@ -1,7 +1,7 @@
 # Maintainer: Quentin Glidic <sardemff7@eventd.org>
 
 pkgname=eventd
-pkgver=0.20.0
+pkgver=0.21.0
 _pkgdir=${pkgname}-${pkgver}
 pkgrel=1
 pkgdesc="A small daemon to act on remote or local events"
@@ -16,7 +16,7 @@ license=(
     MIT
 )
 depends=(
-    'cairo>=1.14.0'
+    'cairo>=1.12.0'
     gdk-pixbuf2
     'glib2>=2.40.0'
     glib-networking
@@ -44,7 +44,7 @@ source=(
     https://www.eventd.org/download/${pkgname}/${pkgname}-${pkgver}.tar.xz
 )
 sha256sums=(
-    f7c9f40a841c5a5c83f40d0a52079a52dbf2be378cb5212979013b3ebcd407a0
+    f4e1bf014e3e17bf79d3b2a61d947cf4d34000d35fab0b90b869f33f002d2349
 )
 
 build() {
