@@ -1,7 +1,7 @@
 # Maintainer: Light <sidus at arbornet.org>
 
 pkgname=poseidon-browser-git
-pkgver=r121.e7d77fa
+pkgver=r122.5d91958
 pkgrel=1
 pkgdesc='A fast, minimal and lightweight browser.'
 url='https://sidus-dev.github.io/projects/poseidon/'
