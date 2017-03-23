@@ -15,7 +15,7 @@ depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 makedepends=('extra-cmake-modules' 'fontforge')
 provides=('ttf-font')
 options=('!emptydirs')
-source=("http://download.kde.org/stable/plasma/$pkgver/oxygen-fonts-$pkgver.tar.xz")
+source=("https://download.kde.org/stable/plasma/$pkgver/oxygen-fonts-$pkgver.tar.xz")
 sha256sums=('a02f6580e9a53cb16694a99adbb6dbf76f17584f3e97f469a22286299507838c')
 
 prepare() {
