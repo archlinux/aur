@@ -18,15 +18,27 @@ prepare(){
 	cd "${srcdir}/${pkgname}"
 
 	# install python-requests-cache
-	wget https://aur.archlinux.org/cgit/aur.git/snapshot/python-requests-cache.tar.gz
-	tar xvzf python-requests-cache.tar.gz
-	cd python-requests-cache
-	makepkg -f
-	echo "installing python-requests-cache from Aur."
-	requests_pkgver_3=$(grep -Po 'pkgver=\K[^ ]+' PKGBUILD)
-	requests_pkgrel_3=$(grep -Po 'pkgrel=\K[^ ]+' PKGBUILD)
-	requests_arch_3=$(grep -Po 'arch=\K[^ ]+' PKGBUILD | cut -d "(" -f2 | cut -d "'" -f2)
-	sudo pacman -U python-requests-cache-${requests_pkgver_3}-${requests_pkgrel_3}-${requests_arch_3}.pkg.tar.xz
+	# wget https://aur.archlinux.org/cgit/aur.git/snapshot/python-requests-cache.tar.gz
+	# tar xvzf python-requests-cache.tar.gz
+	# cd python-requests-cache
+	# makepkg -f
+	# echo "installing python-requests-cache from Aur."
+	# requests_pkgver_3=$(grep -Po 'pkgver=\K[^ ]+' PKGBUILD)
+	# requests_pkgrel_3=$(grep -Po 'pkgrel=\K[^ ]+' PKGBUILD)
+	# requests_arch_3=$(grep -Po 'arch=\K[^ ]+' PKGBUILD | cut -d "(" -f2 | cut -d "'" -f2)
+	# sudo pacman -U python-requests-cache-${requests_pkgver_3}-${requests_pkgrel_3}-${requests_arch_3}.pkg.tar.xz
+
+	# install tvdb_api (V3)
+	# wget https://aur.archlinux.org/cgit/aur.git/snapshot/python-tvdb_api-git.tar.gz
+	# tar xvzf python-tvdb_api-git.tar.gz
+	# cd python-tvdb_api-git
+	# makepkg -f
+	# echo "installing tvdb_api-git(V3) from Aur."
+	# tvdb_pkgver_3=$(grep -Po 'pkgver=\K[^ ]+' PKGBUILD)
+	# tvdb_pkgrel_3=$(grep -Po 'pkgrel=\K[^ ]+' PKGBUILD)
+	# tvdb_arch_3=$(grep -Po 'arch=\K[^ ]+' PKGBUILD | cut -d "(" -f2 | cut -d "'" -f2)
+	# sudo pacman -U python-tvdb_api-git-${tvdb_pkgver_3}-${tvdb_pkgrel_3}-${tvdb_arch_3}.pkg.tar.xz
+
 
 	# install tvdb_api (V2)
 	wget https://aur.archlinux.org/cgit/aur.git/snapshot/tvdb_api-git.tar.gz
@@ -40,15 +52,15 @@ prepare(){
 	sudo pacman -U tvdb_api-git-${tvdb_pkgver_2}-${tvdb_pkgrel_2}-${tvdb_arch_2}.pkg.tar.xz
 
 	# install tvdb_api (V3)
-	wget https://aur.archlinux.org/cgit/aur.git/snapshot/python-tvdb_api-git.tar.gz
-	tar xvzf python-tvdb_api-git.tar.gz
-	cd python-tvdb_api-git
+	wget https://aur.archlinux.org/cgit/aur.git/snapshot/tvdb3_api-git.tar.gz
+	tar xvzf tvdb3_api-git.tar.gz
+	cd tvdb3_api-git
 	makepkg -f
 	echo "installing tvdb_api-git(V3) from Aur."
 	tvdb_pkgver_3=$(grep -Po 'pkgver=\K[^ ]+' PKGBUILD)
 	tvdb_pkgrel_3=$(grep -Po 'pkgrel=\K[^ ]+' PKGBUILD)
 	tvdb_arch_3=$(grep -Po 'arch=\K[^ ]+' PKGBUILD | cut -d "(" -f2 | cut -d "'" -f2)
-	sudo pacman -U python-tvdb_api-git-${tvdb_pkgver_3}-${tvdb_pkgrel_3}-${tvdb_arch_3}.pkg.tar.xz
+	sudo pacman -U tvdb3_api-git-${tvdb_pkgver_3}-${tvdb_pkgrel_3}-${tvdb_arch_3}.pkg.tar.xz
 }
 
 pkgver() {
