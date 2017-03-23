@@ -17,8 +17,9 @@ md5sums=('SKIP')
 prepare(){
 	cd "${srcdir}/${pkgname}"
 	wget https://aur.archlinux.org/cgit/aur.git/snapshot/tvdb_api-git.tar.gz
-	tar xvzf tvdb_api-git.tar.gz
-	cd tvdb_api-git
+	mv tvdb_api-git.tar.gz tvdb_api.tar.gz 
+	tar xvzf tvdb_api.tar.gz
+	cd tvdb_api
 	makepkg -f
 }
 
