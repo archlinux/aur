@@ -4,13 +4,12 @@ pkgname=lispm-font
 pkgver=0.1
 pkgrel=3
 pkgdesc='M.I.T. "CADR LispMachine" main console font'
-url="http://www.eurogaran.com/downloads/lispmfont/"
+url="http://web.archive.org/web/20160304051032/http://www.eurogaran.com/downloads/lispmfont/"
 arch=('any')
 license=('MIT')
-install='lispm-font.install'
-source=('http://www.eurogaran.com/downloads/lispmfont/FixedMediumLispm-13.pcf.gz'
-        'http://www.eurogaran.com/downloads/lispmfont/lispm-8x14.psf'
-        'http://www.eurogaran.com/downloads/lispmfont/LICENSE')
+source=('http://kmkeen.com/tmp/lispmfont/FixedMediumLispm-13.pcf.gz'
+        'http://kmkeen.com/tmp/lispmfont/lispm-8x14.psf'
+        'http://kmkeen.com/tmp/lispmfont/LICENSE')
 md5sums=('001d989e6e9d8fa703371a1e470d6d4f'
          '0003d6abb28f2e54cde4bc34e6d563ed'
          'a2c819ba084de33ac2579865b367da87')
