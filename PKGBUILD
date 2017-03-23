@@ -1,7 +1,7 @@
-# Contributor: noonov <noonov@gmail.com>
-
+# Maintainer: goetzc
+# Contributor: noonov
 pkgname=lohit-fonts
-pkgver=2.95.2
+pkgver=2.95.3
 pkgrel=1
 pkgdesc="Indic TrueType fonts from Fedora Project"
 arch=('any')
