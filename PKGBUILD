@@ -1,4 +1,5 @@
-# Maintainer: speps <speps at aur dot archlinux dot org>
+# Maintainer: Michael Straube <straubem@gmx.de>
+# Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=gst-omx
 pkgver=1.10.4
@@ -10,8 +11,10 @@ url="http://gstreamer.freedesktop.org/"
 depends=('gst-plugins-bad' 'mesa')
 makedepends=('python')
 options=(!libtool)
-source=(https://gstreamer.freedesktop.org/src/$pkgname/$pkgname-$pkgver.tar.xz)
-sha256sums=('45072925cf262f0fd528fab78f0de52734e46a5a88aa802fae51c67c09c81aa2')
+source=("https://gstreamer.freedesktop.org/src/$pkgname/$pkgname-$pkgver.tar.xz"{,.asc})
+sha256sums=('45072925cf262f0fd528fab78f0de52734e46a5a88aa802fae51c67c09c81aa2'
+            'SKIP')
+validpgpkeys=('7F4BC7CC3CA06F97336BBFEB0668CC1486C2D7B5') # Sebastian Dröge
 
 build() {
   cd $pkgname-$pkgver
@@ -29,5 +32,5 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" install
 }

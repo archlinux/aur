@@ -11,7 +11,10 @@ pkgbase = gst-omx
 	depends = mesa
 	options = !libtool
 	source = https://gstreamer.freedesktop.org/src/gst-omx/gst-omx-1.10.4.tar.xz
+	source = https://gstreamer.freedesktop.org/src/gst-omx/gst-omx-1.10.4.tar.xz.asc
+	validpgpkeys = 7F4BC7CC3CA06F97336BBFEB0668CC1486C2D7B5
 	sha256sums = 45072925cf262f0fd528fab78f0de52734e46a5a88aa802fae51c67c09c81aa2
+	sha256sums = SKIP
 
 pkgname = gst-omx
 
