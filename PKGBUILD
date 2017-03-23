@@ -24,7 +24,7 @@ declare -rgA _system_libs=(
 )
 
 pkgname=inox
-pkgver=56.0.2924.87
+pkgver=57.0.2987.98
 pkgrel=1
 _launcher_ver=3
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
@@ -45,7 +45,6 @@ install=inox.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/inox.desktop
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-glib-2.24.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-system-ffmpeg-r4.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/chromium-widevine.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0019-disable-battery-status-service.patch
@@ -67,35 +66,32 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0017-disable-new-avatar-menu.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0018-disable-first-run-behaviour.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0001-fix-building-without-safebrowsing.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/0002-fix-building-without-webrtc.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/product_logo_{16,22,24,32,48,64,128,256}.png)
 
-sha256sums=('9aac081ffccaae6497068100477a4e6ac7086bd15ad3c3cd009b9a760b7a53e0'
+sha256sums=('16b5ecf70fcab8476231636ec20f5415897781b01ed21640283cb358322f792d'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
-            '6953651c002efe7fca8cda3143e963037ed38a0a4bc7ccb79304637c45340047'
             'e3c474dbf3822a0be50695683bd8a2c9dfc82d41c1524a20b4581883c0c88986'
             'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
-            'c46e918f9e469aefdf4861967dcba98a30b3af0fedb5cb0f674efbdf253bc87a'
-            '2bed04239c29040275022b73db1dc78cdb03a043b94ef5dbaf7052403454eb03'
-            'a7329d7f3099f6b8dfe4b7addeb7abbca1cf079139a86c6483a51fed0190478e'
-            '65eb73400a7bd3c3bd2735b24edf26e0af0d600829858ffc6df648c78ec76f12'
-            '3a331e004ac84a493dced9a990f71119d3ef31ebbfd67b13a7ec194e835dea11'
-            'c2bab92d8d237d341b79d868e814807c3f862d3b3c22a87bbf5e905853e516ae'
-            'ed4471fa8a984ccea7fd1900a76865e65a8f5afb6a6390faa22a4758d77bbc07'
+            '9a887b1462b0e1f68af917ade70f6738eafcf385da2925796deda46c59c353e3'
+            '335ca90982a9b718e6ab778d65f15c0cc69bb590b022af3e1bdedc77bc35f2d1'
+            '8737bbdc2e58c6b0c95bdb2600883986ea01738a0b0e1d26f17f8028f01b48a7'
+            'be5e4bd2ae2d6dcb1311fa153a479639966951197f4004bbbdf7d1b7f8ef760b'
+            'ce83ba869d5c94c12f9913f8202094d7309c0be6e308fdd26c4029c2f0c7fd22'
+            '48bbfc19d013e852a6e3bdbb5396104d96c9c37488f8979fe45344c23da1a862'
+            '2a6e7853e40c0d71d38aea7b70032e538569e576de7896d722048c4ef5a758b2'
             '562eea848542f76537a9f3993bac397b523d0ce419416daf0bb4dd17f5203c7c'
-            'b081462f645ffab7aaf2c310761c269329d3d22a36cf463dd0ba5ebb3da2141e'
-            'e325c598fa3357d7eac10a7635b63e8f543cd77d60ffc299b32560861fc16e67'
-            'bdb2b5c7174ddf71d1f172c7f99d2d11f3e62595756d31a587e1264308f7d67c'
+            'f294fb136ab128d8b5dc866a858d061ff2a1aea593c4081ed7a5fdb0e85553bc'
+            'e8a6893c82579f71095d8bb3808a24e39b17c97efc45d2fa783072c7a0a1f9d5'
+            'c5a36918c490ba5dbe4c62ff04fd17075ec0aa998465cfe261f6d931fe0e8f75'
             '8412971b2814c1135375d5e5fc52f0f005ac15ed9e7625db59f7f5297f92727e'
             '55b75daf5aad2a8929c80837f986d4474993f781c0ffa4169e38483b0af6e385'
-            'b01a3f25cb91bcce9bc950c61929d0383cee46ff4deb59fb1e371385003fcbfe'
-            '9e1ce0c47dd51595f13a6f611de39573022c7ff59fc003ab775a5319ebfedad8'
-            'bb28fcc1a2fd37ee972b2b02014bbb467cc1baef85c9e6c998b11e97d47c9ac9'
-            'ea19bf3e27a6f420c78a32ca16a7f21669cc348e8f67d7007d0598206e2933d0'
-            'c47efe038f502d4fe2b66e59347b01c58ee8739a8d8f050c6c1cc60752d24f13'
-            '27fa8a5c6354e38ff72c4dfa3a6ec01d8e336c84fd809ba4b5a69ce6d556d8cb'
-            'a5a5c298564b2ee2608ef9eb139d3200252cd1afd2d77fcb475451323d9de042'
+            'f33a013ad9101e0b79fb4002cef0210699957e6bd7a023615f96f42aee441c9f'
+            'd67b64de6a7234c5fa0866ce9849a1b37bacd6b70c31cc8dd7e3ca4ecf3b570d'
+            '6d1d6d801cf80c1df2b4ce5f0d6a25190f4117d581ef7ba0e25a99ec765ecdd7'
+            '888902c17b7de23eb6c979af2a262f7552c197fd96feb0e7e23e9160fc877741'
+            '6b583891134ca3dacf0d158c9441fa8bb90d518c5804f743a6e6f6cbad6da107'
+            'cfe73e714e7189dee2858f37b27fbfcbbd835cd88aa03b25a5dd102e8aa1265d'
             '71471fa4690894420f9e04a2e9a622af620d92ac2714a35f9a4c4e90fa3968dd'
             '4a533acefbbc1567b0d74a1c0903e9179b8c59c1beabe748850795815366e509'
             '7b88830c5e0e9819f514ad68aae885d427541a907e25607e47dee1b0f38975fd'
@@ -122,11 +118,9 @@ prepare() {
 
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-system-ffmpeg-r4.patch
-  patch -Np1 -i ../chromium-glib-2.24.patch
 
   # Apply patches to fix building
   patch -Np1 -i ../0001-fix-building-without-safebrowsing.patch
-  patch -Np1 -i ../0002-fix-building-without-webrtc.patch
 
   # Apply Inox patches
   patch -Np1 -i ../0003-disable-autofill-download-manager.patch
