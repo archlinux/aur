@@ -1,5 +1,5 @@
 pkgbase = linux-galliumos-braswell
-	pkgver = v4.9.16
+	pkgver = 4.10.5
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = linux-galliumos-braswell
 	makedepends = git
 	makedepends = libelf
 	options = !strip
-	source = git+https://github.com/GalliumOS/linux.git#branch=v4.9.16
+	source = git+https://github.com/GalliumOS/linux.git#branch=v4.10.5
 	source = linux-galliumos-braswell.preset
 	sha256sums = SKIP
 	sha256sums = 7f9b77e1ac3b59453f6bb3858d0549c3022e6ae93ca3978427d96ae23f87e451
