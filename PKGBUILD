@@ -7,7 +7,7 @@ arch=(any)
 url="http://xmlsoft.org/XSLT/"
 license=("custom")
 depends=(mingw-w64-libxml2 mingw-w64-libgcrypt)
-makedepends=(mingw-w64-configure)
+makedepends=(mingw-w64-configure git)
 options=(!strip staticlibs !buildflags !emptydirs)
 source=("git://git.gnome.org/libxslt#commit=$_commit"
 "libxslt-1.1.26-w64.patch"
