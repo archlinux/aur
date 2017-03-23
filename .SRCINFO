@@ -1,0 +1,26 @@
+pkgbase = openal-static
+	pkgdesc = Cross-platform 3D audio library, software implementation
+	pkgver = 1.17.2
+	pkgrel = 3
+	url = https://github.com/kcat/openal-soft
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = alsa-lib
+	makedepends = pkgconfig
+	makedepends = cmake
+	makedepends = libpulse
+	makedepends = qt4
+	makedepends = fluidsynth
+	makedepends = portaudio
+	makedepends = jack
+	makedepends = sdl2
+	makedepends = sdl_sound
+	makedepends = ffmpeg
+	makedepends = git
+	depends = glibc
+	source = git+https://github.com/kcat/openal-soft#tag=openal-soft-1.17.2
+	sha256sums = SKIP
+
+pkgname = openal-static
+
