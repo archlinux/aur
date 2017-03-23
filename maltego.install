@@ -1,0 +1,11 @@
+post_install() {
+  echo "#####################################"
+  echo "The bin provided is maltego_community"
+  echo "#####################################"
+}
+
+post_upgrade() {
+  echo "#####################################"
+  echo "The bin provided is maltego_community"
+  echo "#####################################"
+}
