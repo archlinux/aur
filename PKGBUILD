@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatroff-suite-git
 pkgver=r443.2b1a13e
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A complete neatroff typesetting system (neatmkfn, neatroff, neatpost, neateqn and neatrefer)."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('troff-git: The preprocessors and the macro packages can be used wit
             'bib2ref: converts bibtex files to refer databases'
             'ref2bib: converts refer databases to bibtex files'
             'nref: manages document references, it can be used as a troff preprocessor'
-            'shape: A farsi/arabic shaping preprocessor for troff')
+            'shape: A farsi/arabic shaping preprocessor for troff (for neatroff-dir)')
 checkdepends=()
 provides=('neatmkfn' 'neatroff' 'neatpost' 'neateqn' 'neatrefer')
 conflicts=('neatroff' 'neatroff-git' 'neatmkfn' 'neatmkfn-git' 
@@ -33,11 +33,11 @@ source=("neatmkfn::git://repo.or.cz/neatmkfn.git"
         "neateqn::git://repo.or.cz/neateqn.git"
         "neatrefer::git://repo.or.cz/neatrefer.git"
         "http://litcave.rudi.ir/neatroff.pdf"
-        "http://litcave.rudi.ir/neateqn.pdf")
+        "http://litcave.rudi.ir/neateqn.pdf" tmac.hyph)
 noextract=()
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
-sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 ## Ghostscript Fonts Location:
 FP="/usr/share/fonts/Type1/"
@@ -106,6 +106,7 @@ package() {
   mkdir -p $pkgdir/usr/share/${pkgname%-*-*}/tmac/
   cp -r ../neatroff_make/tmac/* $pkgdir/usr/share/${pkgname%-*-*}/tmac/
   rm -f $pkgdir/usr/share/${pkgname%-*-*}/tmac/NOTICE
+  ## neatroff dir branch
   cd $srcdir/neatroff-dir
   install -Dm755 roff $pkgdir/usr/bin/neatroff-dir
 
@@ -128,5 +129,8 @@ package() {
   ## copy hyphenation files
   mkdir -p "$pkgdir/$HYPH"
   cp -a $srcdir/hyph/* "$pkgdir/$HYPH"
+
+  ## copy hyphenation macro file
+  install -m644 $srcdir/tmac.hyph $pkgdir/$MDIR/tmac.hyph
 }
 
