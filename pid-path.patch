@@ -1,16 +1,3 @@
---- Makefile.am	2012-07-17 08:53:51.000000000 +0200
-+++ Makefile.am	2012-11-20 21:56:11.000000000 +0100
-@@ -36,8 +36,8 @@
- 	$(INSTALL) -d $(DESTDIR)$(localstatedir)/opendnssec/signconf
- 	$(INSTALL) -d $(DESTDIR)$(localstatedir)/opendnssec/unsigned
- 	$(INSTALL) -d $(DESTDIR)$(localstatedir)/opendnssec/signed
--	$(INSTALL) -d $(DESTDIR)$(localstatedir)/run
--	$(INSTALL) -d $(DESTDIR)$(localstatedir)/run/opendnssec
-+	$(INSTALL) -d $(DESTDIR)/run
-+	$(INSTALL) -d $(DESTDIR)/run/opendnssec
- 
- docs:
- 	(cd libhsm; $(MAKE) doxygen)
 --- m4/opendnssec_common.m4	2012-11-01 11:56:59.000000000 +0100
 +++ m4/opendnssec_common.m4	2012-11-20 21:52:56.000000000 +0100
 @@ -17,7 +17,7 @@
@@ -22,3 +9,16 @@
  
  AC_SUBST([OPENDNSSEC_BIN_DIR])
  AC_SUBST([OPENDNSSEC_SBIN_DIR])
+--- Makefile.am	2017-02-22 10:07:33.000000000 +0100
++++ Makefile.am2	2017-03-24 20:15:51.521144206 +0100
+@@ -36,8 +36,8 @@
+ 	$(INSTALL) @INSTALLATIONUSERARG@ @INSTALLATIONGROUPARG@ -d $(DESTDIR)$(localstatedir)/opendnssec/signconf
+ 	$(INSTALL) @INSTALLATIONUSERARG@ @INSTALLATIONGROUPARG@ -d $(DESTDIR)$(localstatedir)/opendnssec/unsigned
+ 	$(INSTALL) @INSTALLATIONUSERARG@ @INSTALLATIONGROUPARG@ -d $(DESTDIR)$(localstatedir)/opendnssec/signed
+-	$(INSTALL) -d $(DESTDIR)$(localstatedir)/run
+-	$(INSTALL) @INSTALLATIONUSERARG@ @INSTALLATIONGROUPARG@ -d $(DESTDIR)$(localstatedir)/run/opendnssec
++	$(INSTALL) -d $(DESTDIR)/run
++	$(INSTALL) @INSTALLATIONUSERARG@ @INSTALLATIONGROUPARG@ -d $(DESTDIR)/run/opendnssec
+ 
+ docs:
+ 	(cd libhsm; $(MAKE) doxygen)
