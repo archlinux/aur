@@ -4,6 +4,7 @@ pkgbase = vimix-gtk-themes-git
 	pkgrel = 1
 	url = https://github.com/vinceliuice/vimix-gtk-themes
 	arch = any
+	license = GPL3
 	makedepends = git
 	makedepends = patch
 	depends = gtk3

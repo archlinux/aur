@@ -5,6 +5,7 @@ pkgver=44.ca17c15
 pkgrel=1
 arch=('any')
 depends=('gtk3' 'gtk-engine-murrine' 'gtk-engines')
+license=('GPL3')
 source=('Install.patch'
 		'git+https://github.com/vinceliuice/vimix-gtk-themes.git')
 url='https://github.com/vinceliuice/vimix-gtk-themes'
