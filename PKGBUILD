@@ -26,7 +26,7 @@ prepare(){
 	rc_pkgver=$(grep -Po 'pkgver=\K[^ ]+' PKGBUILD)
 	rc_pkgrel=$(grep -Po 'pkgrel=\K[^ ]+' PKGBUILD)
 	rc_arch=$(grep -Po 'arch=\K[^ ]+' PKGBUILD | cut -d "(" -f2 | cut -d "'" -f2)
-	sudo pacman -U tvdb_api-git-${rc_pkgver}-${rc_pkgrel}-${rc_arch}.pkg.tar.xz
+	sudo pacman -U python-requests-cache-${rc_pkgver}-${rc_pkgrel}-${rc_arch}.pkg.tar.xz
 
 	# install tvdb_api (V2)
 	wget https://aur.archlinux.org/cgit/aur.git/snapshot/tvdb_api-git.tar.gz
