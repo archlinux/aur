@@ -3,7 +3,7 @@
 pkgname=g810-led-git
 _appname=g810-led
 _gitname=g810-led
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Linux led controller for Logitech G410, G610, G810 and G910 Keyboards"
 arch=('i686' 'x86_64')
