@@ -27,7 +27,7 @@ checkdepends=('cppunit' 'syncthing')
 [[ $_enable_kio_plugin ]] && makedepends+=('kio')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('8dfa07e224d691c3c58a5e354b9ed4bdfb8fc982fdbed47e07da3feb660f49cd')
+sha256sums=('b5eb2a3f596b6affd3b30b1a1a5b5f7cae54c9b8c389a30c7ebd6e724ad9fcef')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
