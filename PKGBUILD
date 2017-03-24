@@ -14,20 +14,18 @@ source=("https://ci.drtshock.net/job/EssentialsX/lastSuccessfulBuild/artifact/Es
 "https://ci.drtshock.net/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsChat/target/EssentialsXChat-$pkgver.jar"
 "https://ci.drtshock.net/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsGeoIP/target/EssentialsXGeoIP-$pkgver.jar"
 "https://ci.drtshock.net/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsProtect/target/EssentialsXProtect-$pkgver.jar"
-"https://ci.drtshock.net/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsSpawn/target/EssentialsXSpawn-$pkgver.jar"
-"https://ci.drtshock.net/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsXMPP/target/EssentialsXXMPP-$pkgver.jar")
+"https://ci.drtshock.net/job/EssentialsX/lastSuccessfulBuild/artifact/EssentialsSpawn/target/EssentialsXSpawn-$pkgver.jar")
 noextract=("EssentialsX-$pkgver.jar"
 "EssentialsXAntiBuild-$pkgver.jar"
 "EssentialsXChat-$pkgver.jar"
 "EssentialsXGeoIP-$pkgver.jar"
 "EssentialsXProtect-$pkgver.jar"
-"EssentialsXSpawn-$pkgver.jar"
-"EssentialsXXMPP-$pkgver.jar")
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+"EssentialsXSpawn-$pkgver.jar")
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
   cd "$srcdir"
-  find . -name '*.jar' -exec install -Dm644 {} "$pkgdir/srv/craftbukkit/plugins/"{} \;
+  find . -name '*.jar' -exec install -Dm666 {} "$pkgdir/srv/craftbukkit/plugins/"{} \;
   chown -R craftbukkit:craftbukkit $pkgdir/srv/craftbukkit/plugins/
-  chmod 664 $pkgdir/srv/craftbukkit/plugins/*.jar
+  chmod 666 $pkgdir/srv/craftbukkit/plugins/*.jar
 }
