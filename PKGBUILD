@@ -1,8 +1,5 @@
-# Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
+# Maintainer: LinArcX <LinArcX at gmail . com>
 
-# pkgbase=python-requests-cache-git
-# _pyname=requests-cache
-# pkgname=('python-requests-cache' 'python2-requests-cache')
 pkgname=python-requests-cache-git
 pkgver=0.1
 pkgrel=1
