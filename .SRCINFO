@@ -1,0 +1,35 @@
+pkgbase = udisks2-elogind
+	pkgdesc = Disk Management Service, version 2
+	pkgver = 2.1.8
+	pkgrel = 2
+	url = http://www.freedesktop.org/wiki/Software/udisks
+	arch = i686
+	arch = x86_64
+	groups = elogind-nosystemd
+	license = GPL2
+	makedepends = intltool
+	makedepends = docbook-xsl
+	makedepends = gobject-introspection
+	makedepends = python2
+	makedepends = gnome-common
+	depends = glib2
+	depends = polkit-elogind
+	depends = libatasmart-nosystemd
+	depends = libgudev-nosystemd
+	depends = acl
+	depends = eudev
+	optdepends = parted: partition management
+	optdepends = gptfdisk: GUID partition table support
+	optdepends = ntfs-3g: NTFS filesystem management support
+	optdepends = dosfstools: VFAT filesystem management support
+	provides = udisks2=2.1.8
+	conflicts = udisks2
+	options = libtool
+	options = strip
+	source = http://udisks.freedesktop.org/releases/udisks-2.1.8.tar.bz2
+	source = udisks-enable-elogind.patch
+	sha256sums = da416914812a77e5f4d82b81deb8c25799fd3228d27d52f7bf89a501b1857dda
+	sha256sums = 52e9157cdf2a1ecc02664205491c9015951213309d08fe18a32f62f54ed93095
+
+pkgname = udisks2-elogind
+

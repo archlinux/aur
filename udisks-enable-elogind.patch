@@ -1,0 +1,64 @@
+--- a/configure.ac	2016-11-09 17:01:56.847354884 +0100
++++ b/configure.ac	2016-11-09 17:06:15.057357196 +0100
+@@ -166,6 +166,17 @@
+ AC_SUBST(LIBSYSTEMD_LOGIN_CFLAGS)
+ AC_SUBST(LIBSYSTEMD_LOGIN_LIBS)
+ 
++PKG_CHECK_MODULES(LIBELOGIND, [libelogind >= 219],
++                  [have_libelogind=yes],
++                  [have_libelogins=no])
++AM_CONDITIONAL(HAVE_LIBELOGIND, test x$have_libelogind = xyes)
++if test "x$have_libelogind" = "xyes"; then
++  AC_DEFINE([HAVE_LIBELOGIND], 1, [Define to 1 if libelogind is available])
++fi
++AC_SUBST(HAVE_LIBELOGIND)
++AC_SUBST(LIBELOGIND_CFLAGS)
++AC_SUBST(LIBELOGIND_LIBS)
++
+ # udevdir
+ AC_ARG_WITH([udevdir],
+             AS_HELP_STRING([--with-udevdir=DIR], [Directory for udev]),
+@@ -254,6 +265,7 @@
+         udevdir:                    ${udevdir}
+         systemdsystemunitdir:       ${systemdsystemunitdir}
+         using libsystemd-login:     ${have_libsystemd_login}
++        using libelogind:           ${have_libelogind}
+         use /media for mounting:    ${fhs_media}
+         acl support:                ${have_acl}
+ 
+--- a/src/Makefile.am	2016-11-09 17:01:39.487354728 +0100
++++ b/src/Makefile.am	2016-11-09 17:08:10.608358230 +0100
+@@ -91,6 +91,7 @@
+ 	$(POLKIT_GOBJECT_1_CFLAGS) 			\
+ 	$(ACL_CFLAGS)					\
+ 	$(LIBSYSTEMD_LOGIN_CFLAGS)			\
++	$(LIBELOGIND_CFLAGS)				\
+ 	$(NULL)
+ 
+ libudisks_daemon_la_LIBADD =				\
+@@ -101,6 +102,7 @@
+ 	$(POLKIT_GOBJECT_1_LIBS) 			\
+ 	$(ACL_LIBS)					\
+ 	$(LIBSYSTEMD_LOGIN_LIBS)			\
++	$(LIBELOGIND_LIBS)				\
+ 	$(top_builddir)/udisks/libudisks2.la		\
+ 	$(NULL)
+ 
+--- a/src/udisksdaemonutil.c	2016-11-09 17:01:30.452354647 +0100
++++ b/src/udisksdaemonutil.c	2016-11-09 17:35:49.230353328 +0100
+@@ -44,7 +44,15 @@
+ #if defined(HAVE_LIBSYSTEMD_LOGIN)
+ #include <systemd/sd-daemon.h>
+ #include <systemd/sd-login.h>
++#endif
++
++#if defined(HAVE_ELOGIND) && !defined(HAVE_LIBSYSTEMD_LOGIN)
++#include <elogind/sd-login.h>
++/* re-use HAVE_LIBSYSTEMD_LOGIN to not clutter the source file */
++#define HAVE_LIBSYSTEMD_LOGIN 1
++#endif
+ 
++#if defined(HAVE_LIBSYSTEMD_LOGIN)
+ #define LOGIND_AVAILABLE() (access("/run/systemd/seats/", F_OK) >= 0)
+ #endif
+ 
