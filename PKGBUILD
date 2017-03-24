@@ -16,7 +16,7 @@ makedepends=('cmake')
 checkdepends=('cppunit')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('a02873bb58f5b90da8ed5a8f254a392d1914e97fb3b881e8a57228dfb2b64596')
+sha256sums=('e4fe1b24f0dc3a72d306b605c215e3ff3587c34e1c8dcf4172b990f291e47af9')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
