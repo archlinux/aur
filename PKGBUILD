@@ -3,8 +3,8 @@
 
 _ipset='ipsetpy'
 pkgname="python-${_ipset}"
-pkgver='0.0.1a2'
-pkgrel='2'
+pkgver='0.0.1a3'
+pkgrel='1'
 pkgdesc='Python ipset bindings and helper'
 arch=('any')
 url="https://github.com/sanyi/${_ipset}"
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('python' 'ipset')
 makedepends=('python' 'python-setuptools')
 source=("https://pypi.io/packages/source/${_ipset:0:1}/${_ipset}/${_ipset}-v${pkgver}.tar.gz")
-sha256sums=('c9b5807157c8d0908b86eb9312161742c584a6f8a647b5c86b31b9a7fdab368a')
+sha256sums=('448f0264d22ef0d9e50f938f42435c21ac97011c2177644620e246f8e773721d')
 
 build() {
   cd "${_ipset}-v${pkgver}"
