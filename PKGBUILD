@@ -2,18 +2,17 @@
 # Contributor: Jakob Gruber <jakob.gruber@gmail.com>
 
 pkgname=stone-soup-yiuf
-pkgver=1.4.5
+pkgver=1.5.2b1
 pkgrel=1
 pkgdesc='A fork of Dungeon Crawl Stone Soup roguelike with old races recovered'
 arch=('i686' 'x86_64')
-url='https://github.com/yrmvgh/crawl/'
+url='https://github.com/yrmvgh/yiufcrawl'
 depends=('lua51' 'ncurses' 'sdl2_image' 'sqlite' 'glu' 'freetype2' 'ttf-dejavu')
 makedepends=('bison' 'flex' 'gendesk' 'mesa')
 conflicts=('crawl' 'stone-soup-tile')
 license=('custom')
-source=("https://github.com/yrmvgh/crawl/archive/yiuf-${pkgver}.tar.gz")
-sha256sums=('fc8483e0aca296049dd2511de0d43f04fca1ed4879f4c92fb6685030cc50ce13')
-install=stone-soup-yiuf.install
+source=("https://github.com/yrmvgh/yiufcrawl/archive/${pkgver}-yiuf.tar.gz")
+sha256sums=('e6efda8f4188b0823f5d438e2a4b9307a016b12f22e3f75f8a65fd56d35cad6b')
 
 # used by gendesk to create .desktop file
 _exec=('yiufcrawl-tiles')
@@ -24,7 +23,7 @@ package() {
     gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
             --exec 'yiufcrawl-tiles' --name 'Dungeon Crawl Stone Soup (Yiuf branch)' PKGBUILD
 
-    cd "crawl-yiuf-${pkgver}/crawl-ref/source"
+    cd "yiufcrawl-${pkgver}-yiuf/crawl-ref/source"
 
     # 0.16.0 weirdness
     sed -i 's|SDL_main.h|SDL2/&|' main.cc
