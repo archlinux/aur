@@ -6,7 +6,7 @@
 pkgbase=python-django-filter
 _pkgbase="${pkgbase#python-}"
 pkgname=(python-django-filter python2-django-filter)
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Django-filter is a reusable Django application for allowing users to filter querysets dynamically.'
 arch=(any)
@@ -20,7 +20,7 @@ makedepends=(
 )
 options=(!emptydirs)
 source=("https://github.com/carltongibson/${_pkgbase}/archive/${pkgver}.tar.gz")
-sha256sums=('04c4a2d4eb17af35960dbaebe43f25a64c501a2cbf924d2866f5d68367ee717a')
+sha256sums=('fbff05f5e1ed59f73401b7d27bc4923e9ccd0f870952ca75e9518a85c0235624')
 
 package_python-django-filter() {
   depends=('python-django>=1.8')
