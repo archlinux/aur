@@ -4,7 +4,7 @@
 BUILD_SELINUX=false
 
 pkgname=389-ds-base
-pkgver=1.3.5.15
+pkgver=1.3.6.1
 pkgrel=1
 pkgdesc="389 Directory Server (base)"
 arch=(i686 x86_64)
@@ -12,6 +12,7 @@ url="http://port389.org/"
 license=(GPL)
 depends=(cyrus-sasl cyrus-sasl-gssapi icu lm_sensors net-snmp libsystemd
          openldap perl-mozldap perl-netaddr-ip perl-socket 'svrcore>=4.1.2')
+makedepends=(doxygen)
 
 if [[ "${BUILD_SELINUX}" = "true" ]]; then
   depends+=(selinux-usr-policycoreutils)
@@ -25,7 +26,7 @@ backup=(etc/default/dirsrv
 options=(!libtool)
 install=${pkgname}.install
 source=("http://www.port389.org/binaries/${pkgname}-${pkgver}.tar.bz2")
-sha512sums=('af1e82f5de80e493241c9d58f0127cd24517e18305ec0ba918bff8b2fa96dc69b32d7172d9b411a544251abfc04098ea9d0c1b41bf9d88e6caaaeae9cb15200b')
+sha512sums=('aaccea52d95d0a6b453c04a4dccb7347312963d50b8ba72a32765ca6b86337c3038ed7481bb3cac2476471912789863f513f71ce6b88b9b58e51832df4117085')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -39,7 +40,7 @@ build() {
     export USE_64=1
   fi
 
-  autoreconf
+  ./autogen.sh
 
   ./configure \
     --prefix=/usr \
@@ -50,7 +51,6 @@ build() {
     --with-systemd \
     --with-systemdsystemunitdir=/usr/lib/systemd/system \
     --with-systemdsystemconfdir=/etc/systemd/system \
-    --with-systemdgroupname=${pkgname}.target \
     --enable-autobind \
     --with-openldap \
     ${selinux} \
@@ -69,8 +69,7 @@ package() {
   make -j1 DESTDIR="${pkgdir}/" install
 
   install -dm755 "${pkgdir}"/var/log/${pkgname}/ \
-                 "${pkgdir}"/var/lib/${pkgname}/ \
-                 "${pkgdir}"/etc/systemd/system/${pkgname}.target.wants
+                 "${pkgdir}"/var/lib/${pkgname}/
 
   find "${pkgdir}" -type f -name '*.a' -delete
 }
