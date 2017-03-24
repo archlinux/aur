@@ -1,6 +1,6 @@
 pkgbase = gtk4-git
 	pkgdesc = GObject-based multi-platform GUI toolkit (GIT Version)
-	pkgver = 3.89.5.r2.gb843efcb79
+	pkgver = 3.89.5.r49.g147e0512c5
 	pkgrel = 1
 	url = http://www.gtk.org/
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = gtk4-git
 	depends = cairo>=1.14.0
 	depends = dconf
 	depends = desktop-file-utils
-	depends = glib2-git>=2.49.4
+	depends = glib2-git>=2.51.5
 	depends = gdk-pixbuf2>=2.30.0
 	depends = json-glib
 	depends = libcups
@@ -67,7 +67,7 @@ pkgname = gtk4-git
 	depends = cairo>=1.14.0
 	depends = dconf
 	depends = desktop-file-utils
-	depends = glib2-git>=2.49.4
+	depends = glib2-git>=2.51.5
 	depends = gdk-pixbuf2>=2.30.0
 	depends = json-glib
 	depends = libcups
