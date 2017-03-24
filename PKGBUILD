@@ -6,7 +6,7 @@
 
 pkgname=crossover
 pkgver=16.2.0
-pkgrel=1
+pkgrel=2
 _pkgdebrel=1
 pkgdesc="Run Windows Programs on Linux"
 arch=('i686' 'x86_64')
