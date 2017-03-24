@@ -1,7 +1,7 @@
 # Maintainer: Ashley Bone <aur DOT ashley DOT bone AT gmail DOT com>
 pkgname='organizr'
 _pkgname='Organizr'
-pkgver=1.15
+pkgver=1.20
 pkgrel=1
 pkgdesc='HTPC/HomeLab services organizer.'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('php-sqlite')
 optdepends=('fail2ban')
 install='organizr.install'
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/causefx/Organizr/archive/${pkgver}.tar.gz" "organizr.install")
-sha256sums=('9e099f6a085d001d8ab5e2905aa4ebc251ef8c382f9edfc3b4e6f84b6ed9bfe0'
+sha256sums=('167f0df2722c9f79c81625e697f72873168714ab6760ef8017e300172ca526af'
             '75a1a4663fe4d628d88f3ce5f9c9e95761d3f6cfdc753f04d4b9d0e9c57c1735')
 
 package() {
