@@ -2,7 +2,7 @@
 
 pkgbase=linux-max98090
 _srcname=linux-4.10
-pkgver=4.10.4
+pkgver=4.10.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -16,7 +16,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
-        '99-linux.hook'
+        '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         # patch for max98090 soundcard
@@ -25,10 +25,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
             'SKIP'
-            '68e935fbe1c3faaf186824a44b79a26f1ab85f04a1dade2e5bce5f8c2941624d'
+            '03c64409653b19d39af54c8781fde0a3747ba16577c9e5b0e1031e5d8fc29db6'
             'SKIP'
-            '4ccc86e3e4facc32d87eb541463bba3800ca939c64205588c14130a8edf73f90'
-            '977d4960c82fb77269b9986204fb86fc19be76973b5fc9b61b6194e4be8aa513'
+            'dd49dd2e88a07685eac7d69f663802ee1d7d36d59e4ce3473a966558f21a2a82'
+            '9749df0158c57f7c7652bb1ee804247946bcfd2770b8dfeb59ed47864e58776c'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '3a4d8d182de94c031860c33ae35d92c5f9f3b987b0a5191c4e15366353a8d217')
@@ -116,8 +116,8 @@ _package() {
     install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
   # install pacman hook for initramfs regeneration
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
-    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/90-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
