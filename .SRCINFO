@@ -16,7 +16,7 @@ pkgbase = vala-panel-appmenu-xfce-git
 	makedepends = xfconf
 	makedepends = libwnck3
 	makedepends = vala-panel-git
-	makedepends = mate-panel-gtk3
+	makedepends = mate-panel
 	source = git://github.com/rilian-la-te/vala-panel-appmenu.git
 	source = git://github.com/rilian-la-te/cmake-vala.git
 	source = git://github.com/rilian-la-te/vala-dbusmenu.git
@@ -62,7 +62,7 @@ pkgname = vala-panel-appmenu-mate-git
 	pkgdesc = AppMenu (Global Menu) plugin for mate-panel
 	depends = gtk3
 	depends = bamf>=0.5.0
-	depends = mate-panel-gtk3
+	depends = mate-panel
 	depends = libwnck3
 	optdepends = gtk2-ubuntu: for hiding gtk2 menus
 	optdepends = unity-gtk-module: for gtk2/gtk3 menus
