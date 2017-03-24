@@ -14,7 +14,7 @@ index ee72ebe..e347047 100644
 @@ -3405,6 +3407,11 @@ void pci_fixup_device(enum pci_fixup_pass pass, struct pci_dev *dev)
  		end = __end_pci_fixups_final;
  		break;
- 
+
 +	case pci_fixup_assign:
 +		start = __start_pci_fixups_assign;
 +		end = __end_pci_fixups_assign;
@@ -36,19 +36,18 @@ index 55641a3..730d6fd 100644
  		/* Fall through */
  	default:
  		pbus_size_io(bus, realloc_head ? 0 : additional_io_size,
-diff --git a/include/asm-generic/vmlinux.lds.h b/include/asm-generic/vmlinux.lds.h
 index 6a67ab9..3ba05f0 100644
 --- a/include/asm-generic/vmlinux.lds.h
 +++ b/include/asm-generic/vmlinux.lds.h
-@@ -283,6 +283,9 @@
+@@ -299,6 +299,9 @@
  		VMLINUX_SYMBOL(__start_pci_fixups_final) = .;		\
- 		*(.pci_fixup_final)					\
+ 		KEEP(*(.pci_fixup_final))				\
  		VMLINUX_SYMBOL(__end_pci_fixups_final) = .;		\
 +		VMLINUX_SYMBOL(__start_pci_fixups_assign) = .;		\
-+		*(.pci_fixup_assign)					\
++		KEEP(*(.pci_fixup_assign))				\
 +		VMLINUX_SYMBOL(__end_pci_fixups_assign) = .;		\
  		VMLINUX_SYMBOL(__start_pci_fixups_enable) = .;		\
- 		*(.pci_fixup_enable)					\
+ 		KEEP(*(.pci_fixup_enable))				\
  		VMLINUX_SYMBOL(__end_pci_fixups_enable) = .;		\
 diff --git a/include/linux/pci.h b/include/linux/pci.h
 index b67e4df..14a35bb 100644
@@ -77,10 +76,9 @@ index 48958d3..248acdb 100644
 --- a/scripts/mod/modpost.c
 +++ b/scripts/mod/modpost.c
 @@ -877,6 +877,7 @@ static void check_section(const char *modname, struct elf_info *elf,
- 
+
  #define ALL_PCI_INIT_SECTIONS	\
  	".pci_fixup_early", ".pci_fixup_header", ".pci_fixup_final", \
 +	".pci_fixup_assign", \
  	".pci_fixup_enable", ".pci_fixup_resume", \
  	".pci_fixup_resume_early", ".pci_fixup_suspend"
- 

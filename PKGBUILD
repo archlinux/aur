@@ -1,12 +1,12 @@
-# Id: PKGBUILD 277473 2016-09-30 19:28:40Z tpowa $
+# $Id: PKGBUILD 291104 2017-03-20 13:40:57Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 # Maintainer: Tony Lambiris <tony@critialstack.com>
 
 pkgbase=linux-macbook
-_srcname=linux-4.9
-pkgver=4.9.11
-pkgrel=2
+_srcname=linux-4.10
+pkgver=4.10.4
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -17,11 +17,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
-        'config' 'config.x86_64'
+        'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
-        '99-linux-macbook.hook'
+        '99-linux.hook'
         # standard config files for mkinitcpio ramdisk
-        'linux-macbook.preset'
+        'linux.preset'
         # service file for suspend/resume events
         'macbook-wakeup.service'
         # macbook specific patches
@@ -29,25 +29,21 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'macbook-suspend.patch'
         'poweroff-quirk-workaround.patch'
         'intel-pstate-backport.patch'
-        'change-default-console-loglevel.patch'
-        '0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch'
         )
 
-sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
+sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
             'SKIP'
-            '23e773a670f3cac11a92c4e442405dea6d2c28fea0f914ea2ba4bea313c26541'
+            '68e935fbe1c3faaf186824a44b79a26f1ab85f04a1dade2e5bce5f8c2941624d'
             'SKIP'
-            '49ec194851a7f96fbeedddb6125bf51d0e73e949f28026dca0d9ff36fc4ce5ff'
-            '36fa6355b46655570838351a6f4b2a4904d4e1c550ce0b7a21aa5ebe1bad2d2d'
+            '6957209a54486548de8fc217352bb50efe52986b85b7dc88c1d13ef9e8dc3e2a'
+            '37a281f78616fee061aafa4b1189284c9e13d0eb52e40d7f446f1a50dfc99800'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '72f0b3ce04f33dfae305297bd045fba8cb5e5c8594ffd7a68a4d8ed293b1b1b5'
-            'bb8af32880059e681396a250d8e78f600f248da8ad4f0e76d7923badb5ee8b42'
-            '896455ba219148e10c1fd19ec98f9871b384f9d0018598c1bb36ad7f3c8607c1'
-            '24f914e16f5efd13608e835ded81b4da731798737a88228fb8684f6db80f7d2c'
-            'c0a25b413bc542472868c63318213dfe788beeece750d15f7ff1568aca8968ec'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '85954ac18da9dc1bec5df28e2f097d13016e39fa9631074f85b6364af340fcd9')
+            'e74dbeaa3fd04dbf93ef4498015234bdb65351857e07c03c00cee69fcfc844b4'
+            '8f91c4b8b30fb0db3fdf92223618b4a399041f4be399bc8eacbbcbbe646ca678'
+            'ad800989f9cf2fd04e6db09409b9a531e883eeb825f430d14df8c6ee7870621a'
+            '3d9fdbb4bee270efa6eef1d8e40a5ae562a87d5a2edae629e0829cc51714de13')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -61,16 +57,8 @@ prepare() {
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
 
-  # https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-6074
-  patch -p1 -i "${srcdir}/0001-dccp-fix-freeing-skb-too-early-for-IPV6_RECVPKTINFO.patch"
-
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
-  # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
-  # remove this when a Kconfig knob is made available by upstream
-  # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   # macbook specific patches
   patch -p1 -F1 -i "${srcdir}/apple-gmux.patch"
@@ -78,13 +66,9 @@ prepare() {
   patch -p1 -F1 -i "${srcdir}/macbook-suspend.patch"
   patch -p1 -F1 -i "${srcdir}/poweroff-quirk-workaround.patch"
   # backported changes to the intel-pstate driver from master branch
-  #patch -p1 -F3 -i "${srcdir}/intel-pstate-backport.patch"
+  #patch -p0 -F3 -i "${srcdir}/intel-pstate-backport.patch"
 
-  if [ "${CARCH}" = "x86_64" ]; then
-    cat "${srcdir}/config.x86_64" > ./.config
-  else
-    cat "${srcdir}/config" > ./.config
-  fi
+  cat "${srcdir}/config.${CARCH}" > ./.config
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
@@ -124,7 +108,7 @@ _package() {
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
-  install=linux-macbook.install
+  install=linux.install
 
   cd "${srcdir}/${_srcname}"
 
@@ -145,11 +129,11 @@ _package() {
   true && install=${install}.pkg
 
   # install mkinitcpio preset file for kernel
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux-macbook.preset" |
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
     install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
   # install pacman hook for initramfs regeneration
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux-macbook.hook" |
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
     install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
 
   # remove build and source links

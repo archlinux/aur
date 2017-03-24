@@ -2,7 +2,7 @@
 +++ linux-4.9/drivers/pci/quirks.c	2017-02-09 21:27:32.370965329 -0500
 @@ -4551,6 +4551,24 @@
  DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL, 0x443, quirk_intel_qat_vf_cap);
- 
+
  /*
 + * On Mac Pro 11, the allocation of pci bridge memory resource
 + * broke ACPI Sleep Type register region.
