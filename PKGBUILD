@@ -15,7 +15,7 @@ sha256sums=('ba795beb9a34cf4f3eff248c800012e1caae2baf3aaf919665c2d3ed54ff4d5f')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    make PREFIX="$pkgdir/usr" install
+    make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
 
 # vim:ts=4:sw=4:expandtab
