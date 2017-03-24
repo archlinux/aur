@@ -17,19 +17,20 @@ provides=("pine")
 conflicts=("pine" "re-alpine")
 replaces=("pine")
 options=("!makeflags")
-source=(http://patches.freeiz.com/${pkgname}/release/src/${pkgname}-${pkgver}.tar.xz)
+source=(http://patches.freeiz.com/${pkgname}/release/src/${pkgname}-${pkgver}.tar.xz
         #ftp://ftp.cac.washington.edu/${pkgname}/${pkgname}.tar.bz2
-        #http://patches.freeiz.com/${pkgname}/patches/${pkgname}-${pkgver}/all.patch.gz
+        http://patches.freeiz.com/${pkgname}/patches/${pkgname}-${pkgver}/all.patch.gz)
         #topal-1.patch
         #topal-2.patch)
-md5sums=("02dad85c1be80ce020206f222ecf5ac8")
+md5sums=("02dad85c1be80ce020206f222ecf5ac8"
+	 "0f44e09742442f7aa7c50b40bb957f8b")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
 # User compile time patches
 # - Eduardo Chappa patches
-#  patch -p1 < ../all.patch
+  patch -p1 < ../all.patch
 # - Phil Brooke patches (optional topal support)
   #patch -p1 < ../topal-1.patch
   #patch -p1 < ../topal-2.patch
