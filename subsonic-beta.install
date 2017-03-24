@@ -5,7 +5,7 @@ post_install() {
 
     getent group subsonic &>/dev/null || groupadd --system subsonic > /dev/null
     getent passwd subsonic &>/dev/null || useradd --system \
-                                                  --home-dir /var/lib/subsonic \
+                                                  --home-dir ${_homedir} \
                                                   --shell /usr/bin/nologin \
                                                   --gid subsonic \
                                                   --groups audio \
