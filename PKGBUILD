@@ -153,6 +153,10 @@ _package() {
   mkdir -p "${pkgdir}/usr"
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
+  # copy macbook-wakeup.service to systemd
+  mkdir -p "${pkgdir}/usr/lib/systemd/system"
+  cp "${srcdir}/macbook-wakeup.service" "${pkgdir}/usr/lib/systemd/system"
+
   # add vmlinux
   install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
 }
