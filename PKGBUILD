@@ -2,10 +2,10 @@
 # Contributor: Matthew Wardrop <mister.wardrop@gmail.com>
 
 pkgbase=linux-surfacepro3-rt
-_srcname=linux-4.9.6
+_srcname=linux-4.9.13
 pkgver=${_srcname#linux-}
-_rtver=rt4
-pkgrel=2.25
+_rtver=rt12
+pkgrel=2.26
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-surfacepro3-rt"
 license=('GPL2')
@@ -32,9 +32,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
 )
 
-sha256sums=('f493af770a5b08a231178cbb27ab517369a81f6039625737aa8b36d69bcfce9b'
+sha256sums=('36464aec4fb32ed192252645819abb55ceb21eef17b3f7210b4a673e7486a268'
             'SKIP'
-            'a5492f54815b759c661db94665d4fe6ef2518462e50258bf566ff1cb27886b78'
+            '90dfb1397a12d39894265fdb092ca87037cc9f4d3f8417ca45e731d6b79b1ba1'
             'SKIP'
             '242d32d0fe819852e74d93b8a044cf24a40a9474d6f00ca93a19aa98298dcefa'
             '51f91681b708149fe91e565f5c40811477428e2aa86f8726a20e0e7c55c5407c'
@@ -51,7 +51,7 @@ sha256sums=('f493af770a5b08a231178cbb27ab517369a81f6039625737aa8b36d69bcfce9b'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0fcd0b22fe9ec58ba41b81b463f68d619b6898a5c405fb26c85237a183240371'
             'ed9b9e6efaf4f23e7ae3406322b4d1d3080e8dbc7ab3f03bcbf728ca2010e21b'
-            '33518bda35c07da11c8a48c4f62bb03cb6ad576001338c5ee27d320f815e59b6'
+            '44e3a245b0dd9a3df173fcbb03aba3c12e51f1efeeb67e304be10091f81d11fe'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c')
 
 validpgpkeys=(
