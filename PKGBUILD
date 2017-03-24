@@ -1,7 +1,7 @@
 # Maintainer: Simon Doppler (dopsi) <dop.simon@gmail.com>
 pkgname=console-tdm
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Console display manager based on CDM'
 arch=('any')
 url='http://github.com/dopsi/console-tdm'
