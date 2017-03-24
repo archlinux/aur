@@ -12,16 +12,16 @@
 # You will also need to install osgearth-qt4 or fcgi, respectively, before building.
 
 pkgname=qgis
-pkgver=2.18.4
+pkgver=2.18.5
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('expat' 'gcc-libs' 'gdal' 'geos' 'glibc' 'libspatialite' 'postgresql-libs' 'proj'
-         'qca-qt4' 'qscintilla-qt4<2.10' 'qt4' 'qwt' 'qwtpolar' 'spatialindex' 'sqlite'
-         'python2' 'python2-httplib2' 'python2-future' 'python2-qscintilla-qt4<2.10' 'python2-sip' 'python2-six' 'python-qscintilla-qt4-common<2.10')
-makedepends=('cmake' 'gsl' 'perl' 'txt2tags' 'sip<4.19.1' 'python2-sip<4.19.1')
+         'qt4' 'qca-qt4' 'qscintilla-qt4' 'qwt' 'qwtpolar' 'spatialindex' 'sqlite'
+         'python2' 'python2-httplib2' 'python2-future' 'python2-qscintilla-qt4' 'python2-sip' 'python2-six')
+makedepends=('cmake' 'gsl' 'perl' 'txt2tags')
 optdepends=('gpsbabel: GPS Tool plugin'
             'gsl: Georeferencer plugin'
             'python2-jinja: MetaSearch plugin'
@@ -33,11 +33,17 @@ optdepends=('gpsbabel: GPS Tool plugin'
             'python2-psycopg2: Processing plugin'
             'python2-pyspatialite: Processing plugin'
             'python2-yaml: Processing plugin')
-source=("https://qgis.org/downloads/$pkgname-$pkgver.tar.bz2")
-md5sums=('4b7607d66f1d91a827495facca487544')
+source=("https://qgis.org/downloads/$pkgname-$pkgver.tar.bz2"
+        "https://src.fedoraproject.org/cgit/rpms/qgis.git/plain/qgis_sip-ftbfs.patch")
+md5sums=('dd2fdd649613a9ff14f2e2da86a59aa5'
+         '0575d848604f0fc6dda0a643523e7e48')
 
 prepare() {
   cd $pkgname-$pkgver
+
+  # Fedora patch to fix with newer sip/pyqt4
+  sed -i '184,$d' ../qgis_sip-ftbfs.patch
+  patch -Np1 -i ../qgis_sip-ftbfs.patch
 
   # Fix references to "python"
   sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
