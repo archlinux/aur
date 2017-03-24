@@ -1,7 +1,7 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=zazu-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='A cross platform productivity application.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
 makedepends=('gendesk')
 provides=('zazu')
 source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/tinytacoteam/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('2b33ce68a3270f18b5bd3a7294032e2361db60e7605ec5e81a652801aca1f1ff')
+sha256sums=('4dd1f44a54137ba86e188e91ddf60f1962d6230cf7614c5bfd13ee3ab312b4b6')
 
 prepare() {
   gendesk -f -n --name=Zazu --pkgname="${_pkgname}" --pkgdesc="${pkgdesc}" --exec="${_pkgname}" --categories="Utility"
