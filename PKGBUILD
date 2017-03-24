@@ -8,11 +8,11 @@
 pkgname=subsonic-beta
 pkgver=6.1.beta2
 epoch=3 # 5.1.beta sorts higher than 5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('any')
 url="http://subsonic.org/"
-license=('GPL')
+license=('CUSTOM')
 depends=('java-runtime-headless')
 conflicts=('subsonic')
 provides=('subsonic')
