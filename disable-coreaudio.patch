@@ -1,0 +1,13 @@
+diff --git a/components/encoder/Makefile b/components/encoder/Makefile
+index 9035ec2..b5150db 100644
+--- a/components/encoder/Makefile
++++ b/components/encoder/Makefile
+@@ -11,7 +11,7 @@ ifneq ($(BUILD_OSX),True)
+ endif
+ 
+ ifeq ($(USE_WINE),True)
+-	FOLDERS += coreaudioconnect
++	#FOLDERS += coreaudioconnect
+ endif
+ 
+ ifeq ($(BUILD_OSX),True)
