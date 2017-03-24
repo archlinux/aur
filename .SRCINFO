@@ -1,7 +1,7 @@
 pkgbase = flash
 	pkgdesc = Hypriot flash tool for sd cards.
-	pkgver = 1
-	pkgrel = 1
+	pkgver = 1.6.0
+	pkgrel = 2
 	url = https://github.com/hypriot/flash
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = flash
 	depends = unzip
 	depends = python-pip
 	source = https://raw.githubusercontent.com/hypriot/flash/master/Linux/flash
-	sha1sums = 0182b262a6618667a2d0cfd57a955048a22b13bb
+	sha1sums = fd5254662842ae07ec92196b3d0f787b2133640e
 
 pkgname = flash
 

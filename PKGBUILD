@@ -2,8 +2,8 @@
 
 
 pkgname=flash
-pkgver=1
-pkgrel=1
+pkgver=1.6.0
+pkgrel=2
 epoch=
 pkgdesc="Hypriot flash tool for sd cards."
 arch=('x86_64')
@@ -11,8 +11,9 @@ url="https://github.com/hypriot/flash"
 license=('MIT')
 depends=('pv' 'curl' 'hdparm' 'unzip' 'python-pip')
 source=("https://raw.githubusercontent.com/hypriot/flash/master/Linux/flash")
-sha1sums=('0182b262a6618667a2d0cfd57a955048a22b13bb')
+sha1sums=('fd5254662842ae07ec92196b3d0f787b2133640e')
 
 package() {
         install -D -m751 ${srcdir}/flash ${pkgdir}/usr/local/bin/flash;
 }
+
