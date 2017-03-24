@@ -1,0 +1,15 @@
+pkgbase = python-requests-cache-git
+	pkgdesc = Persistent cache for requests library(git version)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/reclosedev/requests-cache
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	source = python-requests-cache-git::git+https://github.com/reclosedev/requests-cache
+	md5sums = SKIP
+
+pkgname = python-requests-cache-git
+
