@@ -1,0 +1,15 @@
+pkgbase = kopano-deskapp-kdeintegration
+	pkgdesc = KDE desktop integration for kopano-deskapp
+	pkgver = 1.2.78
+	pkgrel = 1
+	url = https://kopano.io
+	arch = x86_64
+	arch = i686
+	license = AGPL3
+	depends = kopano-deskapp
+	provides = kopano-deskapp-kdeintegration
+	source = https://git.thesecretgamer.de/faldon/kopano-deskapp-bin/repository/archive.tar.gz?ref=v1.2.78-kdeintegration-AUR
+	md5sums = 418ca64e69ea0d35283c766cbb9058c4
+
+pkgname = kopano-deskapp-kdeintegration
+
