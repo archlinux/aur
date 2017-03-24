@@ -3,7 +3,7 @@
 
 pkgname=nodejs-ungit
 _npmname=ungit
-pkgver=1.1.9
+pkgver=1.1.11
 pkgrel=1
 pkgdesc="Git made easy"
 arch=('i686' 'x86_64')
@@ -24,4 +24,5 @@ package() {
   msg2 'Renaming binary from 0ungit-credentials-helper to ungit-credentials-helper'
   mv "$pkgdir/usr/bin/0ungit-credentials-helper" "$pkgdir/usr/bin/ungit-credentials-helper"
 }
+
 
