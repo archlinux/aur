@@ -12,14 +12,14 @@
 
 pkgname=qgis-ltr
 _pkgname=${pkgname//-ltr}
-pkgver=2.14.12
+pkgver=2.14.13
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats; Long Term Release'
 url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('expat' 'gcc-libs' 'gdal' 'geos' 'glibc' 'libspatialite' 'postgresql-libs' 'proj'
-         'qca-qt4' 'qscintilla-qt4' 'qt4' 'qtwebkit' 'qwt' 'qwtpolar' 'spatialindex' 'sqlite'
+         'qt4' 'qca-qt4' 'qscintilla-qt4' 'qtwebkit' 'qwt' 'qwtpolar' 'spatialindex' 'sqlite'
          'python2' 'python2-httplib2' 'python2-qscintilla-qt4' 'python2-sip' 'python2-six')
 makedepends=('cmake' 'gsl' 'perl' 'txt2tags')
 optdepends=('gpsbabel: GPS Tool plugin'
@@ -36,20 +36,16 @@ optdepends=('gpsbabel: GPS Tool plugin'
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
-        "https://github.com/qgis/QGIS/commit/2efb2a38f10a5f6c4f46266dbc86a302f2e5d373.patch"
-        "https://github.com/qgis/QGIS/commit/beb55d19b17427eda275fb980530eedb35818d3f.patch")
-md5sums=('b1e7709497d6229381d694fa8f3f43a3'
-         '7e8b670f389360e648be3784d312160b'
-         'fc2153de4ed6a93a1bf1a1d80f278030')
+        "https://src.fedoraproject.org/cgit/rpms/qgis.git/plain/qgis_sip-ftbfs.patch")
+md5sums=('6d34c123ef04f23c43758b1bfad1da89'
+         '0575d848604f0fc6dda0a643523e7e48')
 
 prepare() {
   cd $_pkgname-$pkgver
 
-  # Fix build with sip 4.19.1
-  patch -Np1 < ../2efb2a38f10a5f6c4f46266dbc86a302f2e5d373.patch
-
-  # Find new QScintilla lib name
-  patch -Np1 < ../beb55d19b17427eda275fb980530eedb35818d3f.patch
+  # Fedora patch to fix with newer sip/pyqt4
+  sed -i '184,$d' ../qgis_sip-ftbfs.patch
+  patch -Np1 -i ../qgis_sip-ftbfs.patch
 
   # Fix references to "python"
   sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
