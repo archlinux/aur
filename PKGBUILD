@@ -7,12 +7,6 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
 
-# If you get the "error: jni.h: No such file or directory",
-# you may need to install java-7-openjdk and switch to it
-# via archlinux-java before installing this package.
-# After the installation, you can set archlinux-java again
-# to whatever java version you like. 
-#
 # If you don't want CUDA/CUVID support, you can remove
 # depends_x86_64=('cuda') line and 
 # $_cuda \, $_cuvid \, $_libnpp \ lines from PKGBUILD
@@ -24,7 +18,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.2.4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -41,7 +35,7 @@ depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugi
          'sdl2' 'smbclient' 'speex' 'shine' 'tesseract' 'twolame' 'v4l-utils'
          'vid.stab' 'vo-amrwbenc' 'libxcb' 'xvidcore' 'xz' 'wavpack' 'zeromq' 'zimg'
          'zlib' 'zvbi' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so'
-         'x265' 'snappy' 'xavs' 'java-environment')
+         'x265' 'snappy' 'xavs')
 depends_x86_64=('cuda')
 makedepends=('flite' 'hardening-wrapper' 'libvdpau' 'yasm' 'opencl-headers')
 optdepends=('avxsynth-git: for Avisynth support'
@@ -62,20 +56,13 @@ build() {
   cd $_pkgbasename-$pkgver
 
   # Add x86_64 (opt)depends to the build
-  if [ "$CARCH" = "x86_64" ]; then
+  if [ "$CARCH" = "x86_64" ]
+  then
       _cuda="--enable-cuda"
-      _cudainc="-I/opt/cuda/include"
-      _cudalib="-L/opt/cuda/lib64"
       _cuvid="--enable-cuvid"
       _libnpp="--enable-libnpp"
-      _intelsdklib="-Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
-  else
-      _cuda=""
-      _cudainc=""
-      _cudalib=""
-      _cuvid=""
-      _libnpp=""
-     _intelsdklib=""
+      _cflags="--extra-cflags=-I/opt/cuda/include"
+      _ldflags="--extra-ldflags=-L/opt/cuda/lib64 -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
   fi
 
   msg "Starting configure..."
@@ -84,10 +71,8 @@ build() {
   ## if you have decklink-sdk installed
   ./configure \
     --prefix=/usr \
-    --extra-cflags="-I/usr/lib/jvm/$(archlinux-java get)/include \
-                    -I/usr/lib/jvm/$(archlinux-java get)/include/linux \
-                    ${_cudainc}" \
-    --extra-ldflags="${_cudalib} ${_intelsdklib}" \
+    $_cflags \
+    "$_ldflags" \
     \
     --enable-rpath \
     --enable-gpl \
@@ -119,7 +104,6 @@ build() {
     --enable-gpl \
     --enable-gray \
     --enable-iconv \
-    --enable-jni \
     --enable-ladspa \
     --enable-libass \
     --enable-libbluray \
@@ -179,7 +163,6 @@ build() {
     --enable-libzmq \
     --enable-libzvbi \
     --enable-lzma \
-    --enable-mediacodec \
     --enable-netcdf \
     --enable-openal \
     --enable-opencl \
@@ -189,7 +172,6 @@ build() {
     --enable-vaapi \
     --enable-vdpau \
     --enable-videotoolbox \
-    --enable-x11grab \
     --enable-xlib \
     --enable-zlib
 
