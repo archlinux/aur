@@ -9,7 +9,7 @@ ExecStart=/usr/bin/mono --debug /usr/lib/radarr/Radarr.exe -nobrowser -data=/var
 Type=simple
 TimeoutStopSec=20
 KillMode=process
-Restart=on-failure
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
