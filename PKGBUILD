@@ -3,7 +3,7 @@
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Michel Brabants <michel.linux@tiscali.be>
 pkgname=vips
-pkgver=8.3.3
+pkgver=8.4.5
 pkgrel=1
 pkgdesc="A free image processing system"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=('python2: vipsprofile')
 # minimal depends: 'libxml2'
 options=('!libtool')
 source=("http://www.vips.ecs.soton.ac.uk/supported/${pkgver%.*}/$pkgname-$pkgver.tar.gz")
-md5sums=('50551b647160f14b2062f863757b812b')
+md5sums=('38347ebab211722e436e124ea067da16')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
