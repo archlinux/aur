@@ -2,7 +2,7 @@
 
 pkgname=i3-easyfocus-git
 pkgver=r34.461b6c6
-pkgrel=1
+pkgrel=2
 pkgdesc='Focus and select windows in i3.'
 arch=('x86_64')
 url='https://github.com/cornerman/i3-easyfocus'
@@ -11,7 +11,9 @@ depends=(
     'i3ipc-glib'
     'libx11'
     'xcb-util-keysyms')
-makedepends=('git gcc')
+makedepends=(
+    'git'
+    'gcc')
 provides=('i3-easyfocus')
 source=('git://github.com/cornerman/i3-easyfocus')
 sha256sums=('SKIP')
