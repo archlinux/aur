@@ -2,7 +2,7 @@
 
 pkgname=ratbagd
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='ratbagd is a system daemon to introspect and modify configurable mice'
 arch=('i686' 'x86_64')
 url='https://github.com/libratbag/ratbagd'
