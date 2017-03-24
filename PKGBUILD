@@ -8,7 +8,7 @@
 pkgname=subsonic-beta
 pkgver=6.1.beta2
 epoch=3 # 5.1.beta sorts higher than 5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('any')
 url="http://subsonic.org/"
@@ -29,7 +29,7 @@ package() {
   mkdir -p $pkgdir/var/playlists
   mkdir -p $pkgdir/usr/lib/systemd/system
   mkdir -p $pkgdir/etc/
-  sed -i 's/SUBSONIC_HOME=\/var\/subsonic/SUBSONIC_HOME=\/var\/lib\/subsonic/' subsonic.sh
+  sed -i 's/SUBSONIC_HOME=\${SUBSONIC_HOME:-\/var\/subsonic}/SUBSONIC_HOME=\${SUBSONIC_HOME:-\/var\/lib\/subsonic\/}/' subsonic.sh
   cp  * $pkgdir/var/lib/subsonic
   rm $pkgdir/var/lib/subsonic/{subsonic.bat,subsonic-${pkgver}-standalone.tar.gz}
   ln -fs /var/lib/subsonic/subsonic.sh $pkgdir/etc/subsonic.conf

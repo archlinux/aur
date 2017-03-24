@@ -1,7 +1,7 @@
 pkgbase = subsonic-beta
 	pkgdesc = A free, web-based media streamer and jukebox.
 	pkgver = 6.1.beta2
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 3
 	url = http://subsonic.org/
 	install = subsonic-beta.install
