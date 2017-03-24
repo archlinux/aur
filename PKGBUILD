@@ -1,4 +1,6 @@
-# Maintainer: Matjaž Mozetič (https://github.com/sysadminmatmoz)
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+
+# Contributor: Matjaž Mozetič (https://github.com/sysadminmatmoz)
 # Contributor: Vincent Demeester (vincent@sbr.pm)
 # Contributor: Nicolas Pouillard (http://nicolaspouillard.fr)
 # Contributor: Peter Simons <simons@cryp.to>
@@ -7,7 +9,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=myrepos
-pkgver=1.20160122
+pkgver=1.20170129
 pkgrel=1
 pkgdesc="Multiple Repository management tool"
 arch=('any')
@@ -29,8 +31,8 @@ optdepends=('bzr: support for bzr repositories'
             'vcsh: support for vcsh')
 url="http://myrepos.branchable.com"
 license=('GPL2')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/joeyh/$pkgname/tar.gz/$pkgver)
-sha256sums=('8d1632792a950a7d8684fd7c35fabf1ac52d6caab2ffab93a5c0b20e47d899da')
+source=(https://git.joeyh.name/index.cgi/myrepos.git/snapshot/${pkgname}-${pkgver}.tar.gz)
+sha256sums=('da00533b01a511ece209f0254a6fae5735852e197d3b859a6f564b3fbc612dda')
 provides=('mr' 'myrepos' 'webcheckout')
 conflicts=('mr' 'webcheckout')
 
