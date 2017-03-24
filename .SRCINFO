@@ -1,6 +1,6 @@
 pkgbase = pulseeffects
 	pkgdesc = Audio effects for Pulseaudio applications
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://github.com/wwmm/pulseeffects
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = pulseeffects
 	depends = gst-python
 	depends = swh-plugins
 	options = !emptydirs
-	source = https://github.com/wwmm/pulseeffects/archive/v0.7.tar.gz
-	md5sums = a67dd47024d8388d5841cecf92964690
+	source = https://github.com/wwmm/pulseeffects/archive/v0.8.tar.gz
+	md5sums = 0fa4af99e0a333b5f6a85e3bcb2ccb46
 
 pkgname = pulseeffects
 
