@@ -7,8 +7,8 @@ else
 _arch="x86"
 fi
 
-_major="10.2.0"
-_minor=17657
+_major="10.2.1"
+_minor=17670
 
 pkgname="komodo-edit"
 _bigname="Komodo-Edit"
@@ -30,8 +30,8 @@ source_x86_64=("${_srcbase}/${_major}/${_bigname}-${_major}-${_minor}-linux-x86_
 
 sha256sums=('98177ee92e13036baa0a4f61ef398c0e23ab5d250cf7aa1b1c5a557efaaec3a8'
             'c68d7e94955e0f7b32cf3863136891d6441d9dd3a6346481b911d2c250cf32e9')
-sha256sums_i686=('7b7e8caa90d9d8880449a67d27e9c27a6b3f093247eb03743194dda85e08b3c7')
-sha256sums_x86_64=('5e4eb7312c5f07941fcf74766be635f4fbd13fd55453b81427a85d6e1060a24e')
+sha256sums_i686=('82e3494754f9644207fbe4f36a4694ad1d1310711aa56c9085604c25e8f84710')
+sha256sums_x86_64=('d5064cd8bad709b8491aefe36cb67b37d652ae10b53c073b50f551c4a75057e4')
 
 prepare() {
   cd ${srcdir}/${_bigname}-${_major}-${_minor}-linux-${_arch}
