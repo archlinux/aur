@@ -1,0 +1,13 @@
+diff --git a/kuiviewer/org.kde.kuiviewer.desktop b/kuiviewer/org.kde.kuiviewer.desktop
+index b7216f3..b0fa8e0 100755
+--- a/kuiviewer/org.kde.kuiviewer.desktop
++++ b/kuiviewer/org.kde.kuiviewer.desktop
+@@ -56,7 +56,7 @@ Name[uk]=KUIViewer
+ Name[x-test]=xxKUIViewerxx
+ Name[zh_CN]=KUIViewer
+ Name[zh_TW]=KUIViewer
+-Exec=kuiviewer -caption %c
++Exec=kuiviewer
+ Icon=kuiviewer
+ Type=Application
+ GenericName=Qt Designer UI File Viewer
