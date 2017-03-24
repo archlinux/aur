@@ -1,0 +1,14 @@
+post_install(){
+  echo "==> To use hyphenation files, there's \`.hyph' macro, for example:"
+  echo "      .hyph de-1996"
+  echo "    Languages available (by default):"
+  echo "      af as bg bn ca cop cs cu cy da"
+  echo "      de-1901 de-1996 de-ch-1901 el-monoton el-polyton"
+  echo "      en-gb en-us eo es et eu"
+  echo "      fi fr fur ga gl grc gu hi hr hsb hu hy ia id is it ka kmr kn"
+  echo "      la la-x-classic la-x-liturgic"
+  echo "      lt lv ml mn-cyrl mr mul-ethi nb nl nn oc or pa pl pms pt rm"
+  echo "      ro ru sa sh-cyrl sh-latn sk sl sr-cyrl sv ta te th tk tr uk"
+  echo "      zh-latn-pinyin"
+}
+
