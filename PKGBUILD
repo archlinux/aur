@@ -23,7 +23,7 @@ pkgver() {
 
 package() {
     cd "$_gitname"
-    make PREFIX="$pkgdir/usr" install
+    make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
 
 # vim:ts=4:sw=4:expandtab
