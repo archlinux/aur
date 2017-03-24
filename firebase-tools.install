@@ -1,0 +1,10 @@
+post_install() {
+  # fixup permissions
+  chmod 755 /usr/lib/node_modules \
+	  /usr/lib/node_modules/firebase-tools/node_modules \
+	  /usr/lib/node_modules/firebase-tools/node_modules/.bin
+}
+
+post_upgrade() {
+  post_install
+}

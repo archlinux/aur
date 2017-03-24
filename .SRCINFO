@@ -1,0 +1,19 @@
+pkgbase = firebase-tools
+	pkgdesc = The Firebase Command Line Tools
+	pkgver = 3.5.0
+	pkgrel = 0
+	url = https://firebase.google.com/docs/cli/
+	install = firebase-tools.install
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = nodejs-firebase-tools
+	conflicts = nodejs-firebase-tools
+	replaces = nodejs-firebase-tools
+	noextract = firebase-tools-3.5.0.tgz
+	source = https://registry.npmjs.org/firebase-tools/-/firebase-tools-3.5.0.tgz
+	sha256sums = 74812897555ce1ce1251f398346db6abaf0bad4e41205eb4682c57e6d8d87a82
+
+pkgname = firebase-tools
+
