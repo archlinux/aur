@@ -1,0 +1,38 @@
+post_install() {
+    echo "post install"
+
+    _VERSION=1611
+    _EXECUTABLE=SailfishOSSDK-Beta-${_VERSION}-Qt5-linux-64-offline.run
+    _PATH=/usr/share/sailfishos-sdk-bin
+
+    _USER=`cat /usr/share/sailfishos-sdk-bin/username.txt`
+
+    echo ${_USER}
+
+    chown ${_USER}:users ${_PATH}/${_EXECUTABLE}
+    sudo -u ${_USER} chmod +x ${_PATH}/${_EXECUTABLE}
+
+    mkdir /opt/SailfishOS
+    chown ${_USER}:users -R /opt/SailfishOS
+
+    sudo -u ${_USER} ${_PATH}/${_EXECUTABLE} --verbose --script ${_PATH}/install_rules.js -platform minimal --logging-rules
+}
+
+pre_upgrade() {
+    pre_remove $2
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+pre_remove() {
+    echo "pre remove"
+
+    _USER=`cat /usr/share/sailfishos-sdk-bin/username.txt`
+
+    echo ${_USER}
+    /opt/SailfishOS/SDK/SDKMaintenanceTool --verbose --script /usr/share/sailfishos-sdk-bin/install_rules.js -platform minimal --logging-rules
+
+    rm -rf /opt/SailfishOS
+}
