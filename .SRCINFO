@@ -1,0 +1,38 @@
+pkgbase = kopano-deskapp-bin
+	pkgdesc = Desktop application for accessing the Kopano Groupware server.
+	pkgver = 1.2.78
+	pkgrel = 1
+	url = https://kopano.io
+	arch = x86_64
+	arch = i686
+	license = AGPL3
+	provides = kopano-deskapp
+	source = https://git.thesecretgamer.de/faldon/kopano-deskapp-bin/repository/archive.tar.gz?ref=v1.2.78-AUR
+	md5sums = ce3b87f2ad3fee0cbdc6da6801379d35
+
+pkgname = kopano-deskapp-bin
+
+pkgbase = kopano-deskapp-bin
+	pkgdesc = Desktop application for accessing the Kopano Groupware server.
+	pkgver = 1.2.78
+	pkgrel = 1
+	url = https://kopano.io
+	arch = x86_64
+	arch = i686
+	license = AGPL3
+	provides = kopano-deskapp
+	options = !strip
+	options = docs
+	options = !libtool
+	options = !staticlibs
+	options = emptydirs
+	options = zipman
+	options = purge
+	options = !optipng
+	options = !upx
+	options = !debug
+	source = https://git.thesecretgamer.de/faldon/kopano-deskapp-bin/repository/archive.tar.gz?ref=v1.2.78-AUR
+	md5sums = 06ee67f8ff022b4f681b2255aa5ac020
+
+pkgname = kopano-deskapp-bin
+
