@@ -1,0 +1,17 @@
+pkgbase = i3-easyfocus-git
+	pkgdesc = Focus and select windows in i3.
+	pkgver = r34.461b6c6
+	pkgrel = 1
+	url = https://github.com/cornerman/i3-easyfocus
+	arch = x86_64
+	license = GPL
+	makedepends = git gcc
+	depends = i3ipc-glib
+	depends = libx11
+	depends = xcb-util-keysyms
+	provides = i3-easyfocus
+	source = git://github.com/cornerman/i3-easyfocus
+	sha256sums = SKIP
+
+pkgname = i3-easyfocus-git
+
