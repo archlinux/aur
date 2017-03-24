@@ -1,7 +1,7 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=sfml-git
-pkgver=2.3.2.r38.g1217699
+pkgver=2.4.0.r37.g858c9ce9
 pkgrel=1
 pkgdesc="A simple, fast, cross-platform, and object-oriented multimedia API"
 arch=('i686' 'x86_64')
@@ -45,7 +45,7 @@ package() {
 
   make DESTDIR="$pkgdir/" install
 
-  install -Dm644 ./license.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 ./license.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
 
 }
 
