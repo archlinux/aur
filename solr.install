@@ -10,13 +10,31 @@ Then, create new Solr core(s) from the command line:
 EOT
 }
 
-install_solr_user() {
-  if ! getent group solr >/dev/null; then
-    groupadd -g 114 solr
+# args: <group> [options]
+_addgroup() {
+  if ! getent group "$1" >/dev/null && groupadd "$@" >/dev/null; then
+    need_group_update=1
   fi
-  if ! getent passwd solr >/dev/null; then
-    useradd -c 'Apache Solr user' -u 114 -g solr -d '/opt/solr' -s /bin/bash solr
-    passwd -l solr >/dev/null
+}
+
+# args: <group> [options]
+_adduser() {
+  if ! getent passwd "$1" >/dev/null && useradd "$@" >/dev/null; then
+    need_passwd_update=1
+  fi
+}
+
+install_solr_user() {
+  _adduser solr -c 'Apache Solr user' -u 114 -g solr -d '/opt/solr' -s /bin/bash
+  _addgroup solr -g 114
+
+  # update shadow files if needed
+  if (( need_group_update )); then
+    grpconv >/dev/null
+  fi
+
+  if (( need_passwd_update )); then
+    pwconv >/dev/null
   fi
 }
 
