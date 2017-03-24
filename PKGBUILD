@@ -2,7 +2,7 @@
 
 pkgname=piper
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Piper is a GUI interface to ratbagd, the system daemon for configurable mice'
 arch=('i686' 'x86_64')
 url='https://github.com/libratbag/piper'
