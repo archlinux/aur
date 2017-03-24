@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=xe-git
 pkgver=0.6.1.r3.g947081d
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Simple xargs and apply replacement"
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ check() {
 
 package() {
   cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" PREFIX=/usr BINDIR=/usr/bin MANDIR=/usr/share/man install
   install -Dm644 README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
   sed '1,9!d' xe.c > LICENSE
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
