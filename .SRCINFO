@@ -1,0 +1,18 @@
+pkgbase = mate-screensaver-hacks
+	pkgdesc = Enable screensavers from xscreensaver for MATE.
+	pkgver = 5.26
+	pkgrel = 1
+	url = http://www.jwz.org/xscreensaver/
+	arch = any
+	license = BSD
+	makedepends = libxslt
+	depends = xscreensaver
+	source = migrate-xscreensaver-config.sh
+	source = xscreensaver-config.xsl
+	source = LICENSE
+	sha1sums = 19195ef59f0dbc61c6ed599a968213a8f0a7a5d4
+	sha1sums = 68e8ec7a4f7077f7f870b904f370329f5e95bce0
+	sha1sums = 4209ea586b204fd1d81c382a0522c654f9fd9134
+
+pkgname = mate-screensaver-hacks
+
