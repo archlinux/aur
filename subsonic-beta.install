@@ -49,6 +49,17 @@ pre_upgrade() {
 post_upgrade() {
     post_install
 
+    if [[ $(vercmp "3:6.0.1.beta1" $2) == "0" ]]; then
+        echo "!! WARNING"
+        echo "   If you are upgrading from the retracted beta 6.0.1.beta1"
+        echo "   you need to restore your database backup from the previous"
+        echo "   version"
+        rm -f /tmp/subsonic-was-active
+        echo ""
+        echo "!! Not restarting subsonic automatically."
+        echo "   You might need to change configs"
+    fi
+
     if [[ $(vercmp 5.0.beta1 $2) == "1" ]]; then
         echo "!! Subsonics home dir is now located in /var/lib/subsonic."
         echo "   You will have to move the database located in "

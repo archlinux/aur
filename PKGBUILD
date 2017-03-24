@@ -6,7 +6,7 @@
 # This package can be found at https://github.com/thomwiggers/aur-subsonic-beta/
 
 pkgname=subsonic-beta
-pkgver=6.1.beta1
+pkgver=6.1.beta2
 epoch=3 # 5.1.beta sorts higher than 5.1
 pkgrel=1
 pkgdesc="A free, web-based media streamer and jukebox."
@@ -37,7 +37,7 @@ package() {
   chmod +x $pkgdir/var/lib/subsonic/subsonic.sh
 }
 
-sha256sums=('5a21e9ce5152ce8b78a1d4e2beae34c1dfc195a72040ba36f4a50ca4b238b583'
+sha256sums=('7141aa8e2a4e24d60a047d7f7141720161846754fd50aefffee363b0b9fe0167'
             'f5404721615b6e1ce7b5212b41f8799bc8ed09c8a1a9c5de71e439da41d2c6aa')
-sha512sums=('4d90baf0332c2d232b32fd5e2f4796a2c2014922f17440cdd629c405618aeff9213133217778645c7d062ac47a8ff1d707df672fd9636a63b40e079a2cdd249b'
+sha512sums=('07af0951f1a5f190ec01494be72aea369a25f317c2c7dbe992489bee55b73bae17d6cedf66be1d5fc251491064f3a76114e1b5a08ac1bea95b1c5f99a1e076c8'
             '9026ea4e216f359146cf325083ddbf051d1d141bf6342ec750723ab891e5a212f55411ce8d0dd9697b8636541618220498fc8aa9b4c680a8d2c34ab7ee4db02e')
