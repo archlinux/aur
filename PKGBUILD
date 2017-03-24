@@ -25,7 +25,7 @@ depends=('qtutilities>=5.6.0' 'tagparser>=6.2.0' 'desktop-file-utils' 'xdg-utils
 makedepends=('cmake' 'qt5-tools')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('4c0d260260b7c957dced77af66aea949842f927201ca2487bc8689fa36ec7dd9')
+sha256sums=('b9262d955dc9a7e032e949f526b98eb458e89fd4e88e9be6c59a8d6274645507')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
