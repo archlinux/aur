@@ -1,0 +1,18 @@
+pkgbase = python2-sourcemap-git
+	pkgdesc = Parse JavaScript source maps.
+	pkgver = r62.95ebb1f
+	pkgrel = 1
+	url = https://github.com/mattrobenolt/python-sourcemap
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	makedepends = git
+	depends = python2
+	provides = python2-sourcemap
+	conflicts = python2-sourcemap
+	options = !emptydirs
+	source = python2-sourcemap::git+https://github.com/mattrobenolt/python-sourcemap
+	md5sums = SKIP
+
+pkgname = python2-sourcemap-git
+
