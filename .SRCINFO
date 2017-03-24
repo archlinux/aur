@@ -1,0 +1,19 @@
+pkgbase = hwcrypto-native
+	pkgdesc = Web eID native component
+	pkgver = 17.3.14
+	pkgrel = 1
+	url = https://github.com/hwcrypto/hwcrypto-native
+	arch = x86_64
+	arch = i686
+	license = LGPL2.1
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = pcsclite
+	depends = ccid
+	conflicts = hwcrypto-native
+	source = git+https://github.com/hwcrypto/hwcrypto-native.git#tag=17.3.14
+	md5sums = SKIP
+
+pkgname = hwcrypto-native
+
