@@ -1,0 +1,17 @@
+pkgbase = ha-heartbeat
+	pkgdesc = Daemon that provides cluster infrastructure services to its clients
+	pkgver = 3.0.6
+	pkgrel = 1
+	url = http://linux-ha.org/wiki/Heartbeat
+	arch = x86_64
+	license = GPL
+	makedepends = docbook-xsl
+	depends = ha-glue
+	depends = gnutls
+	depends = python2
+	options = !emptydirs
+	source = heartbeat-3.0.6::hg+http://hg.linux-ha.org/heartbeat-STABLE_3_0#tag=STABLE-3.0.6
+	md5sums = SKIP
+
+pkgname = ha-heartbeat
+
