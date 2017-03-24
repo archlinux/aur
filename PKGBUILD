@@ -84,7 +84,7 @@ build() {
 	        --enable-static=no \
 	        --enable-shared=yes \
 	        --enable-fast-install=yes \
-	        --disnable-delegate-build \
+	        --disable-delegate-build \
 	        --enable-cipher \
 	        --enable-hdri \
 	        --enable-hugepages \
