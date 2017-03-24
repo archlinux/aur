@@ -1,0 +1,20 @@
+pkgbase = openrc-settingsd
+	pkgdesc = System settings D-Bus service for OpenRC
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://www.gentoo.org/proj/en/base/openrc/
+	arch = i686
+	arch = x86_64
+	groups = openrc-desktop
+	license = BSD2
+	depends = libdaemon
+	depends = dbus-elogind
+	depends = openrc
+	depends = polkit-elogind
+	conflicts = systemd-sysvcompat
+	backup = etc/conf.d/openrc-settingsd
+	source = https://dev.gentoo.org/~tetromino/distfiles/openrc-settingsd//openrc-settingsd-1.0.1.tar.xz
+	sha256sums = 2047267982c716cbc113d76d826f9b694706dbf737273eaaab239f6839d9ade2
+
+pkgname = openrc-settingsd
+
