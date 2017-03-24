@@ -1,7 +1,7 @@
 # Maintainer: Jozef Riha <jose1711 at gmail dot com>
 
 pkgname=hedgewars-hg
-pkgver=r10991.fd172f166de4
+pkgver=r12150.bbefbd1a3b0a
 pkgrel=1
 pkgdesc="Free Worms-like turn based strategy game (development version - mercurial)"
 arch=('i686' 'x86_64')
@@ -13,14 +13,18 @@ makedepends=('fpc' 'cmake' 'mercurial'
 'haskell-network'
 'haskell-bytestring-show'
 'haskell-utf8-string'
-'haskell-dataenc'
 'haskell-hslogger'
 'haskell-vector'
 'haskell-entropy'
 'haskell-sha'
 'haskell-zlib'
-'haskell-random')
-source=("${pkgname}"::'hg+https://hedgewars.googlecode.com/hg/' \
+'haskell-random'
+'haskell-base-compat'
+'haskell-sandi'
+'haskell-regex-compat-tdfa'
+'sdl2_net'
+'sdl2_ttf')
+source=("${pkgname}"::'hg+https://hg.hedgewars.org/hedgewars' \
 	hedgewars.desktop \
         hedgewars.png)
 md5sums=('SKIP'
