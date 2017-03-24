@@ -6,7 +6,7 @@
 _reponame=videodownloader
 pkgname=mingw-w64-videodownloader
 _name=${pkgname#mingw-w64-}
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 arch=('any')
 pkgdesc='A video downloader with Qt GUI (currently only YouTube and Vimeo are maintained, mingw-w64)'
@@ -14,8 +14,8 @@ license=('GPL')
 depends=('mingw-w64-crt' 'mingw-w64-qtutilities' 'mingw-w64-openssl')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg')
 url="https://github.com/Martchus/${_reponame}"
-source=("${_reponame}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('4f2ffc1762b6f3fda50c7d1b5673e85e2dbfea50543f3219792f6126a30e1bce')
+source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
+sha256sums=('60cb2e5e11a7665765dfe8904f51759bdef88b6d11cd93f9b83fab868f9c09e8')
 options=(!buildflags staticlibs !strip !emptydirs)
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
