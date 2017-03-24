@@ -24,8 +24,13 @@ noextract=("EssentialsX-$pkgver.jar"
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
+  # Packaging and fixing owner
   cd "$srcdir"
-  find . -name '*.jar' -exec install -Dm666 {} "$pkgdir/srv/craftbukkit/plugins/"{} \;
+  find . -name '*.jar' -exec install -Dm664 {} "$pkgdir/srv/craftbukkit/plugins/"{} \;
   chown -R craftbukkit:craftbukkit $pkgdir/srv/craftbukkit/plugins/
-  chmod 666 $pkgdir/srv/craftbukkit/plugins/*.jar
+
+  # Permissions to plugin folder for drag and drop
+  chmod 777 $pkgdir/srv/craftbukkit/plugins/
+  chmod 664 $pkgdir/srv/craftbukkit/plugins/*.jar
 }
+
