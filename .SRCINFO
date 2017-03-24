@@ -1,0 +1,27 @@
+pkgbase = kuiviewer-git
+	pkgdesc = Qt .ui file viewer
+	pkgver = 16.12.3.r24.gd10790d
+	pkgrel = 1
+	url = https://www.kde.org/applications/development/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-tools
+	depends = kcoreaddons
+	depends = kjobwidgets
+	depends = kio
+	depends = ki18n
+	depends = kparts
+	depends = kwidgetsaddons
+	provides = kuiviewer
+	conflicts = kdesdk-dev-utils
+	conflicts = kdesdk-kuiviewer
+	source = git://anongit.kde.org/kde-dev-utils
+	sha256sums = SKIP
+
+pkgname = kuiviewer-git
+
