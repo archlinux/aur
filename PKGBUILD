@@ -3,14 +3,15 @@
 
 pkgname='teamspeak3-server'
 pkgver='3.0.13.6'
-pkgrel=1
+pkgrel=2
 pkgdesc='A proprietary VoIP conference software'
 license=('custom')
 arch=('i686' 'x86_64')
 url="http://www.teamspeak.com"
 depends=('glibc')
 optdepends=('mariadb-connector-c: for MariaDB backend')
-backup=(etc/teamspeak3-server.ini)
+backup=(etc/teamspeak3-server.ini
+        etc/tsdns_settings.ini)
 install='teamspeak3-server.install'
 source=('teamspeak3-server.ini'
         'teamspeak3-server.service')
@@ -31,9 +32,11 @@ package() {
     cd "$srcdir"
 
     install -Dm 644 teamspeak3-server.ini "$pkgdir/etc/teamspeak3-server.ini"
+    install -Dm 644 "teamspeak3-server_linux_$_TSARCH/tsdns/tsdns_settings.ini.sample" "$pkgdir/etc/tsdns_settings.ini"
     install -Dm 644 teamspeak3-server.service "$pkgdir/usr/lib/systemd/system/teamspeak3-server.service"
 
     install -Dm 755 "teamspeak3-server_linux_$_TSARCH/ts3server" "$pkgdir/usr/bin/ts3server"
+    install -Dm 755 "teamspeak3-server_linux_$_TSARCH/tsdns/tsdnsserver" "$pkgdir/usr/bin/tsdnsserver"
     install -Dm 644 "teamspeak3-server_linux_$_TSARCH/libts3db_mariadb.so" "$pkgdir/usr/lib/libts3db_mariadb.so"
     install -Dm 644 "teamspeak3-server_linux_$_TSARCH/libts3db_sqlite3.so" "$pkgdir/usr/lib/libts3db_sqlite3.so"
     install -Dm 644 "teamspeak3-server_linux_$_TSARCH/LICENSE" "$pkgdir/usr/share/licenses/teamspeak3-server/LICENSE"
@@ -44,6 +47,7 @@ package() {
              "$pkgdir/var/log/teamspeak3-server"
 
     cp -a "teamspeak3-server_linux_$_TSARCH/doc/" "$pkgdir/usr/share/doc/teamspeak3-server/"
+    cp -a "teamspeak3-server_linux_$_TSARCH/serverquerydocs/" "$pkgdir/usr/share/doc/teamspeak3-server/"
     cp -a "teamspeak3-server_linux_$_TSARCH/sql/" "$pkgdir/usr/share/teamspeak3-server/"
 
     find "$pkgdir/usr/share/teamspeak3-server" -type d -exec chmod 755 {} \;
