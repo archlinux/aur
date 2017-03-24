@@ -1,4 +1,4 @@
-From 8c77fc6f55c450793e5bd3769dec0a62bb9b7955 Mon Sep 17 00:00:00 2001
+From 2411c8a67b4ac8d5569b81a5eb1f0e7fadd70511 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 10:21:54 +0300
 Subject: [PATCH 2/5] Makefile: general fixes
@@ -8,7 +8,7 @@ Subject: [PATCH 2/5] Makefile: general fixes
  1 file changed, 29 insertions(+), 29 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 5918515..6b707a9 100644
+index ae73d56..d4a5582 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -42,7 +42,7 @@ FOODB=$(PREFIX)/share/foomatic/db/source
@@ -20,7 +20,7 @@ index 5918515..6b707a9 100644
  ifeq ($(UNAME),Darwin)
      LPuid=-oroot
      LPgid=-gwheel
-@@ -381,8 +381,8 @@ JBGOPTS=-m 16 -d 0 -p 92	# Equivalent options for pbmtojbg
+@@ -385,8 +385,8 @@ JBGOPTS=-m 16 -d 0 -p 92	# Equivalent options for pbmtojbg
  #
  # The usual build rules
  #
@@ -31,7 +31,7 @@ index 5918515..6b707a9 100644
  	all-done
  
  all-test:
-@@ -604,8 +604,8 @@ command2foo2lava-pjl.o: command2foo2lava-pjl.c
+@@ -611,8 +611,8 @@ command2foo2lava-pjl.o: command2foo2lava-pjl.c
  #
  # Installation rules
  #
@@ -42,7 +42,7 @@ index 5918515..6b707a9 100644
  	    install-gui install-desktop install-filter \
  	    install-man install-doc
  	#
-@@ -654,8 +654,8 @@ install-prog:
+@@ -661,8 +661,8 @@ install-prog:
  	$(INSTALL) -d $(BIN)
  	$(INSTALL) -c $(PROGS) $(SHELLS) $(BIN)/
  	if [ "$(BINPROGS)" != "" ]; then \
@@ -53,7 +53,7 @@ index 5918515..6b707a9 100644
  	fi
  	#
  	# Install gamma correction files.  These are just templates,
-@@ -735,7 +735,7 @@ install-crd:
+@@ -742,7 +742,7 @@ install-crd:
  	# Install prebuilt CRD files (from m2300w project)
  	#
  	$(INSTALL) -d $(SHAREZJS)/
@@ -62,7 +62,7 @@ index 5918515..6b707a9 100644
  	for i in crd/zjs/*.*; do \
  	    $(INSTALL) -c -m 644 $$i $(SHAREZJS)/crd/; \
  	done
-@@ -743,7 +743,7 @@ install-crd:
+@@ -750,7 +750,7 @@ install-crd:
  	# Install prebuilt CRD files for CLP-300/CLP-600
  	#
  	$(INSTALL) -d $(SHAREQPDL)/
@@ -71,7 +71,7 @@ index 5918515..6b707a9 100644
  	for i in crd/qpdl/*cms* crd/qpdl/*.ps; do \
  	    $(INSTALL) -c -m 644 $$i $(SHAREQPDL)/crd/; \
  	done
-@@ -753,7 +753,7 @@ install-psfiles:
+@@ -760,7 +760,7 @@ install-psfiles:
  	# Install prebuilt psfiles files (from m2300w project)
  	#
  	$(INSTALL) -d $(SHAREHP)/
@@ -80,7 +80,7 @@ index 5918515..6b707a9 100644
  	for i in psfiles/*.*; do \
  	    $(INSTALL) -c -m 644 $$i $(SHAREHP)/psfiles/; \
  	done
-@@ -767,14 +767,14 @@ install-extra:
+@@ -774,14 +774,14 @@ install-extra:
  	#
  	$(INSTALL) -d $(SHAREZJS)/
  	# foo2zjs ICM files (if any)
@@ -97,7 +97,7 @@ index 5918515..6b707a9 100644
  	for i in sihp1*.img; do \
  	    if [ -f $$i ]; then \
  		base=`basename $$i .img`; \
-@@ -783,7 +783,7 @@ install-extra:
+@@ -790,7 +790,7 @@ install-extra:
  	    fi; \
  	done
  	# foo2xqx Firmware files (if any)
@@ -106,7 +106,7 @@ index 5918515..6b707a9 100644
  	for i in sihpP*.img; do \
  	    if [ -f $$i ]; then \
  		base=`basename $$i .img`; \
-@@ -792,49 +792,49 @@ install-extra:
+@@ -799,49 +799,49 @@ install-extra:
  	    fi; \
  	done
  	# foo2oak ICM files (if any)
@@ -163,7 +163,7 @@ index 5918515..6b707a9 100644
  	for i in hbpl*.icm; do \
  	    if [ -f $$i ]; then \
  		$(INSTALL) -c -m 644 $$i $(SHAREHBPL)/icm/; \
-@@ -851,14 +851,14 @@ install-ppd:
+@@ -858,14 +858,14 @@ install-ppd:
  	# Install PPD files for CUPS
  	#
  	export PATH=$$PATH:`pwd`:; \
@@ -180,7 +180,7 @@ index 5918515..6b707a9 100644
  	    done; \
  	    ppdmgr -u; \
  	elif [ -d $(PPD) ]; then \
-@@ -874,7 +874,7 @@ install-ppd:
+@@ -881,7 +881,7 @@ install-ppd:
  	    cd PPD; \
  	    for ppd in *.ppd; do \
  		modify-ppd <$$ppd | gzip > $(PPD)/foo2zjs/$$ppd.gz; \
@@ -189,7 +189,7 @@ index 5918515..6b707a9 100644
  	    done; \
  	fi
  	#
-@@ -884,21 +884,21 @@ install-ppd:
+@@ -891,21 +891,21 @@ install-ppd:
  	    cd PPD; \
  	    for ppd in *.ppd; do \
  		modify-ppd <$$ppd | gzip > $(MODEL)/$$ppd.gz; \
@@ -214,7 +214,7 @@ index 5918515..6b707a9 100644
  	    done; \
  	fi
  
-@@ -939,7 +939,7 @@ DEVDDIR=/etc/devd
+@@ -946,7 +946,7 @@ DEVDDIR=/etc/devd
  ifeq ($(UNAME),Darwin)
  install-hotplug: install-hotplug-test install-hotplug-osx
  else
@@ -223,7 +223,7 @@ index 5918515..6b707a9 100644
  endif
  
  install-hotplug-test:
-@@ -1040,8 +1040,8 @@ install-hotplug-osx:
+@@ -1049,8 +1049,8 @@ install-hotplug-osx:
  
  install-filter:
  	if [ "$(CUPS_SERVERBIN)" != "" ]; then \
@@ -235,5 +235,5 @@ index 5918515..6b707a9 100644
  
  CUPSDCONF=/etc/cups/cupsd.conf
 -- 
-2.10.2
+2.12.1
 
