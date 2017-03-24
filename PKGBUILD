@@ -3,21 +3,21 @@
 pkgbase=linux-baytrail49 
 _srcname=linux-baytrail49
 _gitver=4adc27092375d8c01b0665c5b9213e0237e52d58
-pkgver=4.9.13
-pkgrel=2
+pkgver=4.9.17
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=("git+https://github.com/muhviehstah/linux-baytrail49.git#tag=4.9.13"
+source=("git+https://github.com/muhviehstah/linux-baytrail49.git#tag=4.9.17"
         'config' 'config.x86_64'
         'linux-baytrail49.preset'
         )
 
 sha256sums=('SKIP'
-            '60921720cdcd2ff3fc754eebbba795af52b61d681a0541ad492a606bed309f58'
-            'dd5fc3d40e4b141ec4fcfacd9ed2d833479088c4254ed4c3317db784a1b4b010'
+            'b77f767226dbd73e2fd9d2b78a12d0224e09aafee1e2cf3e5252934117aebb27'
+            'eb1b1e64c20296d99c74565353fbf4b09f064acac18c8275ccc87591ddc99fa8'
             'd872b4454a0f7e49bece2c1719dc48aaaff3b6caf55e0fe661681951330f858a')
 
 _kernelname=${pkgbase#linux}
