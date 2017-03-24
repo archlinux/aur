@@ -7,10 +7,10 @@ pkgdesc="Show Information About Tv Show's, Ratings And So Many Cool Fatures!"
 arch=('any')
 url="https://github.com/LinArcX/tvdoon"
 license=('GPL3')
-depends=('python' 'python2-prettytable' 'python-prettytable' 'python-pyfiglet' 'tvdb3_api-git')
+depends=('python' 'python-prettytable' 'python-pyfiglet' ' python-tvdb_api')
 makedepends=('git' 'python-setuptools')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+provides=("${pkgname}" 'python-requests-cache')
+conflicts=("${pkgname}" 'python-requests-cache')
 source=("${pkgname}::git+https://github.com/LinArcX/tvdoon")
 md5sums=('SKIP')
 
