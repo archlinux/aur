@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 pkgdesc="A C++ library of designs, containing flexible implementations of common design patterns and idioms."
 url="http://loki-lib.sourceforge.net/"
 license=('MIT')
+depends=('gcc-libs')
 source=("http://downloads.sourceforge.net/sourceforge/loki-lib/loki-$pkgver.tar.gz" \
         "build.patch")
 md5sums=('005d79581fbe888ceabd65d46c99c8b1'
