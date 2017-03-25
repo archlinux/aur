@@ -14,7 +14,7 @@ pkgbase = openvpn-xor-git
 	depends = libsystemd
 	depends = pkcs11-helper
 	optdepends = easy-rsa
-	provides = openvpn=${pkg tver}
+	provides = openvpn=2.4.1
 	provides = openvpn-dev
 	conflicts = openvpn
 	conflicts = openvpn-dev

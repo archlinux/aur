@@ -10,7 +10,7 @@ depends=('openssl' 'lzo' 'iproute2' 'libsystemd' 'pkcs11-helper')
 optdepends=('easy-rsa')
 makedepends=('git' 'systemd')
 conflicts=('openvpn' 'openvpn-dev' 'openvpn-git')
-provides=('openvpn=${pkg tver}' 'openvpn-dev')
+provides=('openvpn=2.4.1' 'openvpn-dev')
 license=('custom')
 source=("https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.tar.gz"
 	   "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-${pkgver}/patches/02-tunnelblick-openvpn_xorpatch-a.diff"
