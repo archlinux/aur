@@ -1,6 +1,6 @@
 # Maintainer: Jenya Sovetkin <e dot sovetkin at gmail dot com>
 pkgname=ledger-plots-git
-pkgver=r57.afb0b0c
+pkgver=r64.75dc962
 pkgrel=1
 pkgdesc="Tool to make plots for ledger"
 arch=('i686' 'x86_64')
