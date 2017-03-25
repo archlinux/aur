@@ -3,7 +3,7 @@
 
 pkgname=brackets-bin
 _pkgname=brackets
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc="A code editor for HTML, CSS and JavaScript. "
 arch=("i686" "x86_64")
@@ -21,10 +21,10 @@ conflicts=('brackets' 'brackets-git')
 install=$pkgname.install
 
 source_i686=("https://github.com/adobe/$_pkgname/releases/download/release-$pkgver/Brackets.Release.$pkgver.32-bit.deb")
-md5sums_i686=('7d76d6d5ac8bde23a871362503725abe')
-md5sums_x86_64=('37596a5456084982a9e429f68ec1d05a')
-
 source_x86_64=("https://github.com/adobe/$_pkgname/releases/download/release-$pkgver/Brackets.Release.$pkgver.64-bit.deb")
+md5sums_i686=('dd681b20e08795051a42a6e0d3ca592e')
+md5sums_x86_64=('ad904786545fce0c854c5e00d960a031')
+
  
 prepare() {
   cd $srcdir
