@@ -6,7 +6,7 @@
 
 pkgname=xaralx
 pkgver=0.7_rev1785
-pkgrel=11
+pkgrel=12
 pkgdesc="An advanced vector graphics program, development release"
 arch=('i686' 'x86_64')
 url="http://www.xaraxtreme.org/"
@@ -16,7 +16,7 @@ makedepends=('pkgconfig')
 optdepends=('imagemagick: needed for some conversions')
 install=${pkgname}.install
 source=(http://downloads.xara.com/opensource/xaralx${pkgver}.tar.bz2)
-md5sums=('14c6b270bcc1598b9b3d38f9a6db71aa')
+sha256sums=('83de10dda870da08cc2c1285246b364e1abfe3e0eb2d8483c1aa104a74003082')
 
 if [ "$CARCH" = "x86_64" ]; then
     depends+=(lib32-{libstdc++5,pangox-compat,gtk2,libsm})
