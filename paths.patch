@@ -1,0 +1,35 @@
+diff -ura crafty-25.2.orig/chess.h crafty-25.2/chess.h
+--- crafty-25.2.orig/chess.h	2016-10-28 06:11:42.000000000 +0300
++++ crafty-25.2/chess.h	2017-03-25 20:58:32.380031222 +0300
+@@ -62,16 +62,16 @@
+ #    endif
+ #  endif
+ #  if !defined(BOOKDIR)
+-#    define   BOOKDIR      "."
++#    define   BOOKDIR      "/usr/share/crafty"
+ #  endif
+ #  if !defined(LOGDIR)
+ #    define   LOGDIR       "."
+ #  endif
+ #  if !defined(TBDIR)
+-#    define   TBDIR        "./syzygy"
++#    define   TBDIR        "/usr/share/crafty/syzygy"
+ #  endif
+ #  if !defined(RCDIR)
+-#    define   RCDIR        "."
++#    define   RCDIR        "/etc"
+ #  endif
+ #  include "lock.h"
+ #  define MAXPLY                                 129
+diff -ura crafty-25.2.orig/option.c crafty-25.2/option.c
+--- crafty-25.2.orig/option.c	2016-10-28 06:11:42.000000000 +0300
++++ crafty-25.2/option.c	2017-03-25 21:00:02.124519987 +0300
+@@ -980,7 +980,7 @@
+     char *readstat = (char *) -1;
+     int lines = 0;
+ 
+-    helpfile = fopen("crafty.hlp", "r");
++    helpfile = fopen(BOOKDIR"/crafty.hlp", "r");
+     if (!helpfile) {
+       printf("ERROR.  Unable to open \"crafty.hlp\" -- help unavailable\n");
+       return 1;

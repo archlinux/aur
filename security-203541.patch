@@ -1,0 +1,44 @@
+--- main.c.orig	2016-10-28 06:11:42.000000000 +0300
++++ main.c	2017-03-25 13:52:59.796731999 +0300
+@@ -4308,7 +4308,10 @@
+     for (i = 1; i < argc; i++) {
+       if (strstr(argv[i], "path") || strstr(argv[i], "log") ||
+           strstr(argv[1], "affinity")) {
+-        strcpy(buffer, argv[i]);
++       /*This is a security flaw (see http://bugs.debian.org/203541 */
++       /*strcpy(buffer, argv[i]); */
++        memset(buffer,'\0',sizeof(buffer));
++        strncpy(buffer,argv[i],sizeof(buffer)-1);
+         result = Option(tree);
+         if (result == 0)
+           Print(2048, "ERROR \"%s\" is unknown command-line option\n",
+@@ -4328,11 +4331,16 @@
+  */
+ #if defined(UNIX)
+   input_stream = fopen(".craftyrc", "r");
+-  if (!input_stream)
++  if (!input_stream) {
+     if ((pwd = getpwuid(getuid()))) {
+       sprintf(path, "%s/.craftyrc", pwd->pw_dir);
+       input_stream = fopen(path, "r");
+     }
++    if (!input_stream) {
++      sprintf (path, "%s/crafty.rc", rc_path);
++      input_stream = fopen (path, "r");
++    }
++  }
+   if (input_stream)
+ #else
+   sprintf(crafty_rc_file_spec, "%s/crafty.rc", rc_path);
+@@ -4375,7 +4383,10 @@
+             Print(-1, "ERROR ignoring token %s, 255 character max\n",
+                 argv[i]);
+           else {
+-            strcpy(buffer, argv[i]);
++          /* This is a security flaw (see http://bugs.debian.org/203541 */
++          /* strcpy(buffer, argv[i]); */
++          memset(buffer,'\0',sizeof(buffer));
++          strncpy(buffer,argv[i],sizeof(buffer)-1);
+             Print(32, "(info) command line option \"%s\"\n", buffer);
+             result = Option(tree);
+             if (result == 0)

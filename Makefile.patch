@@ -1,0 +1,102 @@
+--- Makefile.orig	2016-10-03 23:11:34.000000000 +0300
++++ Makefile	2017-03-25 19:59:41.178474095 +0300
+@@ -76,26 +76,24 @@
+ quick:
+ 	$(MAKE) target=UNIX \
+ 		CC=clang \
+- 		opt='-DSYZYGY -DTEST -DTRACE -DCPUS=4' \
+-		CFLAGS='-mpopcnt -Wall -Wno-array-bounds -pipe -O3' \
++		opt='$(opt) -DSYZYGY -DTEST -DTRACE' \
++		CFLAGS='$(CFLAGS) -Wall -Wno-array-bounds -pipe -O3' \
+ 		LDFLAGS='$(LDFLAGS) -lstdc++' \
+ 		crafty-make
+ 
+ unix-gcc:
+ 	$(MAKE) -j target=UNIX \
+ 		CC=gcc \
+-		opt='-DSYZYGY -DTEST -DCPUS=4' \
+-		CFLAGS='-Wall -Wno-array-bounds -pipe -O3 -fprofile-use \
+-		-mpopcnt -fprofile-correction -pthread' \
++		opt='$(opt) -DSYZYGY -DTEST' \
++		CFLAGS='$(CFLAGS) -Wall -Wno-array-bounds -pipe -O3 -fprofile-use -fprofile-correction -pthread' \
+ 		LDFLAGS='$(LDFLAGS) -fprofile-use -pthread -lstdc++' \
+ 		crafty-make
+ 
+ unix-gcc-profile:
+ 	$(MAKE) -j target=UNIX \
+ 		CC=gcc \
+-		opt='-DSYZYGY -DTEST -DCPUS=4' \
+-		CFLAGS='-Wall -Wno-array-bounds -pipe -O3 -fprofile-arcs \
+-		-mpopcnt -pthread' \
++		opt='$(opt) -DSYZYGY -DTEST' \
++		CFLAGS='$(CFLAGS) -Wall -Wno-array-bounds -pipe -O3 -fprofile-arcs -pthread' \
+ 		LDFLAGS='$(LDFLAGS) -fprofile-arcs -pthread -lstdc++ ' \
+ 		crafty-make
+ 
+@@ -103,36 +101,32 @@
+ 	@/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-profdata merge -output=crafty.profdata *.profraw
+ 	$(MAKE) -j target=UNIX \
+ 		CC=clang \
+-		opt='-DSYZYGY -DTEST -DCPUS=4' \
+-		CFLAGS='-Wall -Wno-array-bounds -pipe -O3 \
+-			-mpopcnt -fprofile-instr-use=crafty.profdata' \
++		opt='$(opt) -DSYZYGY -DTEST' \
++		CFLAGS='$(CFLAGS) -Wall -Wno-array-bounds -pipe -O3 -fprofile-instr-use=crafty.profdata' \
+ 		LDFLAGS='$(LDFLAGS) -fprofile-use -lstdc++' \
+ 		crafty-make
+ 
+ unix-clang-profile:
+ 	$(MAKE) -j target=UNIX \
+ 		CC=clang \
+-		opt='-DSYZYGY -DTEST -DCPUS=4' \
+-		CFLAGS='-Wall -Wno-array-bounds -pipe -O3 \
+-			-mpopcnt -fprofile-instr-generate' \
++		opt='$(opt) -DSYZYGY -DTEST' \
++		CFLAGS='$(CFLAGS) -Wall -Wno-array-bounds -pipe -O3 -fprofile-instr-generate' \
+ 		LDFLAGS='$(LDFLAGS) -fprofile-instr-generate -lstdc++ ' \
+ 		crafty-make
+ 
+ unix-icc:
+ 	$(MAKE) -j target=UNIX \
+ 		CC=icc \
+-		opt='-DSYZYGY -DTEST -DCPUS=4' \
+-		CFLAGS='-Wall -w -O2 -prof_use -prof_dir ./prof -fno-alias \
+-                        -mpopcnt -pthread' \
++		opt='$(opt) -DSYZYGY -DTEST' \
++		CFLAGS='$(CFLAGS) -Wall -w -O2 -prof_use -prof_dir ./prof -fno-alias -pthread' \
+ 		LDFLAGS='$(LDFLAGS) -pthread -lstdc++' \
+ 		crafty-make
+ 
+ unix-icc-profile:
+ 	$(MAKE) -j target=UNIX \
+ 		CC=icc \
+-		opt='-DSYZYGY -DTEST -DCPUS=4' \
+-		CFLAGS='-Wall -w -O2 -prof_gen -prof_dir ./prof -fno-alias \
+-                        -mpopcnt -pthread' \
++		opt='$(opt) -DSYZYGY -DTEST' \
++		CFLAGS='$(CFLAGS) -Wall -w -O2 -prof_gen -prof_dir ./prof -fno-alias -pthread' \
+ 		LDFLAGS='$(LDFLAGS) -pthread -lstdc++ ' \
+ 		crafty-make
+ 
+@@ -145,14 +139,14 @@
+ 	@mkdir prof
+ 	@touch *.c *.h
+ 	$(MAKE) -j unix-clang-profile
+-	@echo "#!/bin/csh" > runprof
+-	@echo "./crafty <<EOF" >>runprof
+-	@echo "bench" >>runprof
+-	@echo "mt=0" >>runprof
+-	@echo "quit" >>runprof
+-	@echo "EOF" >>runprof
++	@echo "#!/bin/bash" > runprof
++	@echo "./crafty <<EOF" >> runprof
++	@echo "bench" >> runprof
++	@echo "mt=4" >> runprof
++	@echo "quit" >> runprof
++	@echo "EOF" >> runprof
+ 	@chmod +x runprof
+-	@./runprof
++	@bash runprof
+ 	@rm runprof
+ 	@touch *.c *.h
+ 	$(MAKE) -j unix-clang
