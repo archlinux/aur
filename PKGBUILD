@@ -34,7 +34,7 @@ optdepends=('gpsbabel: GPS Tool plugin'
             'python2-pyspatialite: Processing plugin'
             'python2-yaml: Processing plugin')
 source=("https://qgis.org/downloads/$pkgname-$pkgver.tar.bz2"
-        "https://src.fedoraproject.org/cgit/rpms/qgis.git/plain/qgis_sip-ftbfs.patch")
+        "qgis_sip-ftbfs.patch::https://src.fedoraproject.org/cgit/rpms/qgis.git/plain/qgis_sip-ftbfs.patch?id=25b8f81ccabbfdb183d4850a66e884c183444f14")
 md5sums=('dd2fdd649613a9ff14f2e2da86a59aa5'
          '0575d848604f0fc6dda0a643523e7e48')
 
@@ -42,8 +42,7 @@ prepare() {
   cd $pkgname-$pkgver
 
   # Fedora patch to fix with newer sip/pyqt4
-  sed -i '184,$d' ../qgis_sip-ftbfs.patch
-  patch -Np1 -i ../qgis_sip-ftbfs.patch
+  patch -Np1 -i <(sed '184,$d' ../qgis_sip-ftbfs.patch)
 
   # Fix references to "python"
   sed -i 's/\(env \|\/usr\/bin\/\)python$/&2/' $(find . -iname "*.py")
