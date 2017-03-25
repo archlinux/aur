@@ -11,9 +11,9 @@ depends=('libpulse'
          'fftw'
          'cairomm'
          'gtkmm3'
-         'boost'
+         'boost-libs'
          )
-makedepends=('cmake' 'pkg-config')
+makedepends=('cmake' 'pkg-config' 'boost')
 conflicts=('gspectran')
 provides=('gspectran')
 source=("https://github.com/Feanor1397/gspectran/archive/${pkgver}.tar.gz")
