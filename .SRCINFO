@@ -1,7 +1,7 @@
 pkgbase = autopanorama
 	pkgdesc = Make panorama from multiple pictures
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tytan/AutoPanorama
 	arch = any
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = autopanorama
 	depends = jasper
 	depends = libwebp
 	provides = autopanorama
-	source = autopanorama-1.0.2::git+https://github.com/Tytan/AutoPanorama.git#tag=1.0.2.1
+	source = autopanorama-1.0.2::git+https://github.com/Tytan/AutoPanorama.git#tag=1.0.2.2
 	md5sums = SKIP
 
 pkgname = autopanorama
