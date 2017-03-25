@@ -67,7 +67,7 @@ build() {
     # The default memory limit may be too low for current versions of node
     # to successfully build vscode.  Uncomment this to set it to 2GB, or
     # change it if this number still doesn't work for your system.
-    #mem_limit="--max_ols_space_size=2048"
+    #mem_limit="--max_old_space_size=2048"
     node $mem_limit /usr/bin/gulp vscode-linux-${_vscode_arch}
 }
 
