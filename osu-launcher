@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /usr/lib/osu-lazer
+exec mono 'osu!.exe'
