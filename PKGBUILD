@@ -147,6 +147,10 @@ package() {
         find ${pkgdir} -name ${im6cmd} -delete
         find ${pkgdir} -name ${im6cmd}.1.gz -delete
     done
+    find ${pkgdir} -name ImageMagick.pc -delete
+    find ${pkgdir} -name Magick++.pc -delete
+    find ${pkgdir} -name MagickCore.pc -delete
+    find ${pkgdir} -name MagickWand.pc -delete
     find ${pkgdir} -type f -name Magick.pm -delete
     find ${pkgdir} -type f -name Image::Magick.3pm.gz -delete
 	
