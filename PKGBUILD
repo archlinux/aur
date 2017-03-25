@@ -1,8 +1,8 @@
 # Maintainer: Aner Andros <code@anerandros.info>
 
 pkgname=freeter
-pkgver=0.13.0
-pkgrel=4
+pkgver=1.0.0
+pkgrel=5
 pkgdesc="The smartest way to work on your projects"
 arch=('x86_64' 'i686')
 url="https://freeter.io"
@@ -15,7 +15,7 @@ options=(!strip)
 
 source=("https://freeter.io/download/Freeter.AppImage")
 
-md5sums=('c1ab7e6568ce1f42ea3b4caf9efd25f2')
+md5sums=('6fae81a1e182886b3a5a3b51ce8e6a63')
 
 noextract=("Freeter.AppImage")
 
