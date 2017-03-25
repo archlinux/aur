@@ -1,5 +1,6 @@
-# $Id: PKGBUILD 196553 2016-11-22 17:47:29Z anthraxx $
-# Maintainer: Eric BÃ©langer <eric@archlinux.org>
+# Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Contributor: György Balló
+# Contributor: Eric BÃ©langer <eric@archlinux.org>
 
 pkgname=xv
 pkgver=3.10a
