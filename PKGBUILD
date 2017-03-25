@@ -1,12 +1,12 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=parpd
-pkgver=1.6.r3.g8f2d1fa
+pkgver=1.7
 pkgrel=1
 pkgdesc="Proxy-ARP daemon"
 arch=(i686 x86_64)
 url="https://github.com/rsmarples/parpd"
 license=(BSD)
-_commit=8f2d1fafd1a28025b2558fc42ad03768b489facd
+_commit=e71c3a01d464c97fd543314487f009d894d76422
 source=("git+https://github.com/rsmarples/parpd#commit=$_commit")
 sha256sums=('SKIP')
 
