@@ -8,4 +8,4 @@ Restart=always
 ExecStart=/bin/bash /usr/bin/start_hqplayerd.sh
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

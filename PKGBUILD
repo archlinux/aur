@@ -1,8 +1,8 @@
 ## Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer-embedded
-_debpkgver=4.0.0a17-17_amd64
-pkgver=4.0.0a17
+_debpkgver=4.0.0a19-19_amd64
+pkgver=4.0.0a19
 pkgrel=1
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
@@ -15,8 +15,8 @@ optdepends=('rygel: for network access with upnp' 'minimserver: UPnP Audio serve
 source=("https://www.signalyst.eu/bins/hqplayerd/xenial/hqplayerd_$_debpkgver.deb" 'start_hqplayerd.sh' 'hqplayerd_rygel.service' 'hqplayerd.service')
 sha256sums=('SKIP'
 '2c1a93ea66e59a7eee1b76fc70816bb9f6169b155eb42b390ecddb4b38b31ca5'
-'649023546a37d074dab42ed90f29cb545be33bd3872f036cc4c14223db69a4a5'
-'cdbe452da60e5ed2287d9b4658175d39fbe3a9fd3b2b15b89c6a50184571e6f9')
+'227512676c39a4277bb3ec16ff85728190b070b8ae3ca0ebea398eda7d14f5a2'
+'b12f94239441adfddfffe6035c7e6be537a1868b42e731f0f000c700f266f3af')
 
 package() {
   bsdtar xf data.tar.xz -C "$srcdir"

@@ -9,4 +9,4 @@ Restart=always
 #EnvironmentFile=-/etc/default/hqplayerd
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
