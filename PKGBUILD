@@ -2,10 +2,10 @@
 
 pkgname=bashate
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A pep8 equivalent for bash scripts"
 arch=('any')
-makedepends=('setuptools')
+makedepends=('python-setuptools')
 depends=('python'
          'python-pbr'
          'python-babel')
