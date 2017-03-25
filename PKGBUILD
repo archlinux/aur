@@ -43,6 +43,12 @@ build() {
   make
 }
 
+check() {
+  cd "$_pkgname/build"
+
+  make check-libomp
+}
+
 package() {
   cd "$_pkgname"
 
