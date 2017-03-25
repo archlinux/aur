@@ -3,7 +3,7 @@
 
 pkgname=python2-youtube-dl-git
 _gitname="youtube-dl"
-pkgver=2017.03.20.r2.8a8cc339b
+pkgver=2017.03.24.r13.51ef4919d
 pkgrel=1
 pkgdesc="A small command-line program to download videos from YouTube.com and a few more sites (git version)"
 arch=('any')
