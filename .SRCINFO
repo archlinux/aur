@@ -1,6 +1,6 @@
 pkgbase = ktop-git
 	pkgdesc = Make Persian EPUBs compatible to E-Readers such as Kindle
-	pkgver = 1.5.1b.r24.g3328d2a
+	pkgver = 1.5.1b.r37.gd0c148b
 	pkgrel = 1
 	url = https://github.com/al1b/KTOP
 	install = ktop-git.install
@@ -10,7 +10,7 @@ pkgbase = ktop-git
 	depends = dotnet-sdk
 	provides = ktop
 	conflicts = ktop
-	source = git+https://github.com/psamim/KTOP.git
+	source = git+https://github.com/al1b/KTOP.git
 	source = ktop
 	sha256sums = SKIP
 	sha256sums = 15190d1c90ea9bc363104e62a321b6c01e46b1a6df22a59bdd8436b4dd2e05e4

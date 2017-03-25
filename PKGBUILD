@@ -2,12 +2,12 @@
 
 _pkgname=KTOP
 pkgname=ktop-git
-pkgver=1.5.1b.r24.g3328d2a
+pkgver=1.5.1b.r37.gd0c148b
 pkgrel=1
 pkgdesc='Make Persian EPUBs compatible to E-Readers such as Kindle'
 url='https://github.com/al1b/KTOP'
 license=('GPL3')
-source=('git+https://github.com/psamim/KTOP.git' 'ktop')
+source=('git+https://github.com/al1b/KTOP.git' 'ktop')
 sha256sums=('SKIP'
             '15190d1c90ea9bc363104e62a321b6c01e46b1a6df22a59bdd8436b4dd2e05e4')
 arch=('any')
