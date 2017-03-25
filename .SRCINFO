@@ -1,0 +1,21 @@
+pkgbase = xsetwallpaper-git
+	pkgdesc = Wallpaper setting utility for X
+	pkgver = 0.1.0+4+g9e04d1f
+	pkgrel = 1
+	url = https://github.com/stoeckmann/xsetwallpaper
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = pixman
+	depends = libpng
+	depends = xcb-util
+	depends = xcb-util-image
+	depends = libjpeg-turbo
+	provides = xsetwallpaper
+	conflicts = xsetwallpaper
+	source = xsetwallpaper-git::git+https://github.com/stoeckmann/xsetwallpaper
+	sha512sums = SKIP
+
+pkgname = xsetwallpaper-git
+
