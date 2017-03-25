@@ -30,14 +30,11 @@ build() {
 package() {
   cd "$srcdir/${pkgname%-VCS}"
 
-  install -dm755 "$pkgdir/opt/ckb/ckb-animations"
-  install -Dm755 bin/ckb{,-daemon} "$pkgdir/opt/ckb/"
-  install -D bin/ckb-animations/* "$pkgdir/opt/ckb/ckb-animations/"
-
   install -dm755 "$pkgdir/usr/bin"
-  ln -s /opt/ckb/ckb "$pkgdir/usr/bin/"
-  ln -s /opt/ckb/ckb-daemon "$pkgdir/usr/bin/"
-  
+  install -dm755 "$pkgdir/usr/lib/ckb-animations"
+  install -Dm755 bin/ckb{,-daemon} "$pkgdir/usr/bin/"
+  install -D bin/ckb-animations/* "$pkgdir/usr/lib/ckb-animations/"
+
   install -Dm644 usr/ckb.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/ckb.png"
   install -Dm644 usr/ckb.desktop "${pkgdir}/usr/share/applications/ckb.desktop"
 
