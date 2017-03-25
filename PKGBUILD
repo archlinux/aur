@@ -11,11 +11,12 @@ depends=('libpulse'
          'fftw'
          'cairomm'
          'gtkmm3'
-         'boost'
+         'boost-libs'
          )
 makedepends=('git'
              'cmake'
              'pkg-config'
+             'boost'
              )
 conflicts=('gspectran')
 provides=('gspectran')

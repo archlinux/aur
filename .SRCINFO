@@ -9,11 +9,12 @@ pkgbase = gspectran-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = pkg-config
+	makedepends = boost
 	depends = libpulse
 	depends = fftw
 	depends = cairomm
 	depends = gtkmm3
-	depends = boost
+	depends = boost-libs
 	provides = gspectran
 	conflicts = gspectran
 	source = git+https://github.com/Feanor1397/gspectran.git#branch=gspectran
