@@ -24,8 +24,8 @@ pkgver() {
 
 prepare() {
   cd "$_gitname/lisp"
-  sed -i '67s+julia-mode.el++' Makefile
-  cp /usr/share/emacs/site-lisp/julia-mode.el .
+#  sed -i '67s+julia-mode.el++' Makefile
+#  cp /usr/share/emacs/site-lisp/julia-mode.el .
 
   cd ../doc
   sed -i 's+ text html pdf++' Makefile
