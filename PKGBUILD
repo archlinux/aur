@@ -1,13 +1,13 @@
 # Maintainer: Dave Reisner <d@falconindy.com>
 
 pkgname=asp-git
-pkgver=r29.991717a
+pkgver=r62.c2b3332
 pkgrel=1
 pkgdesc="Arch Linux build source file management (git version)"
 arch=('any')
 url="http://github.com/falconindy/asp"
 license=('MIT')
-depends=('awk' 'bash' 'git')
+depends=('awk' 'bash' 'jq' 'git')
 makedepends=('asciidoc')
 conflicts=('asp')
 provides=('asp')

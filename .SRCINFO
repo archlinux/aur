@@ -1,6 +1,6 @@
 pkgbase = asp-git
 	pkgdesc = Arch Linux build source file management (git version)
-	pkgver = r29.991717a
+	pkgver = r62.c2b3332
 	pkgrel = 1
 	url = http://github.com/falconindy/asp
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = asp-git
 	makedepends = asciidoc
 	depends = awk
 	depends = bash
+	depends = jq
 	depends = git
 	provides = asp
 	conflicts = asp
