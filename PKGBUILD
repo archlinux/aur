@@ -3,21 +3,22 @@
 pkgbase=linux-baytrail411 
 _srcname=linux-baytrail411
 _gitver=c6aeac2680dcc4bd10a9c3f6f6bb76d6693e55a9
-pkgver=4.11.rc1
-pkgrel=1
+pkgver=4.11.rc3
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=("git+https://github.com/muhviehstah/linux-baytrail411.git#tag=4.11.rc1"
+source=("git+https://github.com/muhviehstah/linux-baytrail411.git#tag=4.11.rc3"
         'config' 'config.x86_64'
         'linux-baytrail411.preset')
 
 sha256sums=('SKIP'
             '60921720cdcd2ff3fc754eebbba795af52b61d681a0541ad492a606bed309f58'
-            '7921236724871fc5a53cb685b67d66be961dfe2bdced76a16be2785bb5f81a33'
+            '057636e1cf630f76b4490deb725979f2a04b43ce3f71b48778c21c9f58a55e9c'
             '68c7c52dea706afa73d1add2e9c2cb0a92ab86443f03428614f2f7fbbbb4943b')
+
 
 
 _kernelname=${pkgbase#linux}

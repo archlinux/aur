@@ -1,6 +1,6 @@
 pkgbase = linux-baytrail411
-	pkgver = 4.11.rc1
-	pkgrel = 1
+	pkgver = 4.11.rc3
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = linux-baytrail411
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = git+https://github.com/muhviehstah/linux-baytrail411.git#tag=4.11.rc1
+	source = git+https://github.com/muhviehstah/linux-baytrail411.git#tag=4.11.rc3
 	source = config
 	source = config.x86_64
 	source = linux-baytrail411.preset
 	sha256sums = SKIP
 	sha256sums = 60921720cdcd2ff3fc754eebbba795af52b61d681a0541ad492a606bed309f58
-	sha256sums = 7921236724871fc5a53cb685b67d66be961dfe2bdced76a16be2785bb5f81a33
+	sha256sums = 057636e1cf630f76b4490deb725979f2a04b43ce3f71b48778c21c9f58a55e9c
 	sha256sums = 68c7c52dea706afa73d1add2e9c2cb0a92ab86443f03428614f2f7fbbbb4943b
 
 pkgname = linux-baytrail411
