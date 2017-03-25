@@ -7,7 +7,7 @@
 # Contributor: Quentin Chateau <quentin.chateau@gmail.com>
 pkgname=autopanorama
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Make panorama from multiple pictures"
 arch=('any')
