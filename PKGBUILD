@@ -3,7 +3,7 @@
 _pkgname=lxqt-themes
 pkgname=$_pkgname-git
 pkgver=r112.f1737e9
-pkgrel=1
+pkgrel=2
 pkgdesc='Themes, graphics and icons for LXQt'
 arch=('any')
 url='https://github.com/lxde/lxqt-themes'
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('hicolor-icon-theme')
 makedepends=('git' 'cmake' 'lxqt-build-tools-git')
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("$_pkgname" "lxqt-common"{,-git})
 source=("git+https://github.com/lxde/$_pkgname.git")
 sha256sums=('SKIP')
 
