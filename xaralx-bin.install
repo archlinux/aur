@@ -1,0 +1,3 @@
+post_install() {
+  echo "Documentation, examples and templates are to be found in /usr/share/xaralx folder. "
+}
