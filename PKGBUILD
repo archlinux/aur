@@ -4,7 +4,7 @@
 
 pkgname=openmp-svn
 _pkgname=${pkgname%-svn}
-pkgver=5.0.r298684
+pkgver=5.0.r298769
 pkgrel=1
 pkgdesc="LLVM OpenMP Runtime Library"
 arch=('i686' 'x86_64')
@@ -43,11 +43,12 @@ build() {
   make
 }
 
-check() {
-  cd "$_pkgname/build"
-
-  make check-libomp
-}
+#check() {
+#  # Requires llvm-lit
+#  cd "$_pkgname/build"
+#
+#  make check-libomp
+#}
 
 package() {
   cd "$_pkgname"
