@@ -2,7 +2,7 @@
 
 pkgname=orbment-wall-git
 _gitname=orbment-wall
-pkgver=r33.8bb4672
+pkgver=r37.b998b46
 pkgrel=1
 pkgdesc="Orbment plugins for Wayland Wall protocols"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/wayland-wall/orbment-wall"
 license=('MIT')
 depends=('wayland-wall' 'wayland-protocols' 'orbment')
 makedepends=('git')
-provides=('orbment-wall' 'orbment-wall-git')
+provides=('orbment-wall' 'orbment-wall-git' 'wlc-wall-injector')
 conflicts=('orbment-wall')
 source=("git+https://github.com/wayland-wall/orbment-wall.git#branch=wip/injector")
 md5sums=('SKIP')
@@ -22,6 +22,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_gitname"
+
   git submodule update --init
   autoreconf --install
 
