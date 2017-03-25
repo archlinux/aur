@@ -1,11 +1,8 @@
 # $Id: PKGBUILD 57440 2011-10-27 20:16:15Z lcarlier $
 # Maintainer: Hector <hsearaDOTatDOTgmailDOTcom>
-# Contributor: Eduardo Martins Lopes "duca" <edumlopes@gmail.com>
-# Contributor: Abhishek Dasgupta <abhidg@gmail.com>
-# Contributor: Ricardo <rikardo.horo@gmail.com>
 
 pkgname=gromacs
-pkgver=2016.2
+pkgver=2016.3
 pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
@@ -15,7 +12,7 @@ depends=('blas' 'lapack' 'cblas' 'zlib' 'hwloc' 'libx11' 'gcc5')
 makedepends=('cmake')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/${pkgname}-${pkgver}.tar.gz)
-sha1sums=('59fd8a8a6b9fc798577c745638a5d3a447a3d2a0')
+sha1sums=('1ae1ea922b94c74f43ee066e3ea64bafa1c6c3b6')
 
 #With gcc5 currently there are less errors in the tests
 # also the compilation is possible in cuda capable machines
@@ -27,11 +24,15 @@ build() {
   mkdir -p ${srcdir}/{single,double}
 
   ###### CMAKE OPTIONS DISABLE BY DEFAULT ###########
-  # If you are using a haswell CPU, you will have   #
-  # problems compiling with AVX2 support unless you #
-  # modify march=native in the /etc/makepkg.conf:   #
+  # If you are using an AVX2 capable CPU, you will #
+  # not have AVX2 binaries unless you set -march to #
+  # 'native', your respective architecture flag: #
+  # https://gcc.gnu.org/onlinedocs/gcc-5.3.0/gcc/x86-Options.html#x86-Options #
+  # or just include '-mavx2' to the default compiler#
+  # flags in the /etc/makepkg.conf: #
   # https://wiki.archlinux.org/index.php/Makepkg#Architecture.2C_compile_flagsAdd #
   ###################################################
+ 
   msg2 "Building the double precision files"
   cd ${srcdir}/double	
   cmake ../${pkgname}-${pkgver}/ \
