@@ -4,7 +4,7 @@ _name="pdir2"
 _module="${_name%2}"
 
 pkgname=("python-$_module" "python2-$_module")
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Pretty dir printing with joy"
 arch=("any")
@@ -12,7 +12,7 @@ url="https://github.com/laike9m/$_name"
 license=("MIT")
 makedepends=("python-setuptools" "python2-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('947b374d679bc777385325ad3a24693c9a3c13e4c6854fda09b5061ae5021332')
+sha256sums=('8758291948b4264754390b6a9f4f033afd6fc7e9b181a7dd555b21f99b16d77e')
 
 build() {
     cd "$_name-$pkgver"
