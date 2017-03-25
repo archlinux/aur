@@ -1,7 +1,7 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
 _github_url=https://github.com/lopsided98/dnsupdate
 pkgname=dnsupdate-git
-pkgver=0.1.r4.g28c9dbd
+pkgver=0.2.r5.g62d7377
 pkgrel=1
 pkgdesc="A modern and flexible dynamic DNS client"
 arch=('any')
