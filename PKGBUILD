@@ -3,9 +3,9 @@
 
 _pkgbase=pygobject
 pkgbase=pygobject-patched
-pkgname=(python-gobject-patched python2-gobject-patched)
-pkgver=3.22.0
-pkgrel=2
+pkgname=(python-gobject-patched python2-gobject-patched pygobject-devel-patched)
+pkgver=3.24.0
+pkgrel=1
 pkgdesc="Python Bindings for GLib/GObject/GIO/GTK+"
 url="https://wiki.gnome.org/Projects/PyGObject"
 arch=(i686 x86_64)
@@ -15,11 +15,11 @@ makedepends=(python-cairo-git python2-cairo gobject-introspection)
 optdepends=('cairo: Cairo bindings')
 source=("https://download.gnome.org/sources/${_pkgbase}/${pkgver:0:4}/${_pkgbase}-${pkgver}.tar.xz"
 		"01_cairo_region.patch")
-sha256sums=('08b29cfb08efc80f7a8630a2734dec65a99c1b59f1e5771c671d2e4ed8a5cbe7'
+sha256sums=('4e228b1c0f36e810acd971fad1c7030014900d8427c308d63a560f3f1037fa3c'
             '70d890c4f56cb677a386dcd5cfe554957c200802b788e582b22b09ba49a423a2')
 
 prepare() {
-  mkdir -p build-py{2,3}
+  mkdir -p build-py{2,3} devel
   cd ${_pkgbase}-${pkgver}
   patch -Np1 -i "$srcdir/01_cairo_region.patch"
 }
@@ -43,7 +43,7 @@ package_python-gobject-patched() {
 
   cd build-py3
   make DESTDIR="$pkgdir" install
-  rm -r "$pkgdir"/usr/{include,lib/pkgconfig}
+  mv "$pkgdir"/usr/{include,lib/pkgconfig} "$srcdir/devel"
 }
 
 package_python2-gobject-patched() {
@@ -56,4 +56,15 @@ package_python2-gobject-patched() {
   make DESTDIR="$pkgdir" install
   python2 -m compileall "$pkgdir"/usr/lib/python2.7/site-packages/gi
   rm -r "$pkgdir"/usr/{include,lib/pkgconfig}
+}
+
+package_pygobject-devel-patched() {
+  pkgdesc="Common development files for pygobject"
+  provides=("pygobject-devel=$pkgver")
+  conflicts=("pygobject-devel")
+
+  cd devel
+  mkdir -p "$pkgdir/usr/lib"
+  mv include "$pkgdir/usr/"
+  mv pkgconfig "$pkgdir/usr/lib/"
 }
