@@ -1,7 +1,7 @@
 pkgbase = vkquake
 	pkgdesc = A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support.
-	pkgver = 0.94
-	pkgrel = 2
+	pkgver = 0.95
+	pkgrel = 1
 	url = https://github.com/Novum/vkquake
 	install = vkquake.install
 	arch = i686
@@ -22,7 +22,7 @@ pkgbase = vkquake
 	depends = tslib
 	provides = vkquake
 	conflicts = vkquake
-	source = git+https://github.com/Novum/vkquake.git#tag=0.94
+	source = git+https://github.com/Novum/vkquake.git#tag=0.95
 	source = vkquake.desktop
 	source = vkquake.png
 	md5sums = SKIP
