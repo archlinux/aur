@@ -16,7 +16,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  git describe --tags|sed 's|-|.|g'|sed -r 's|v(.+)|\1|'
+  git describe --tags|sed 's|-|+|g'|sed -r 's|v(.+)|\1|'
 }
 
 prepare() {
