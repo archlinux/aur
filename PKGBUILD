@@ -1,7 +1,7 @@
 # Maintainer: googol <googol@posteo.de>
 # Former Maintainer unknown (because the line in the PKGBUILD was accidentally removed).
 pkgname=python2-alembic
-pkgver=0.8.9
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Alembic is a lightweight database migration tool for usage with the SQLAlchemy Database Toolkit for Python 2."
 arch=('any')
@@ -11,9 +11,9 @@ depends=('python2' 'python2-sqlalchemy' 'python2-mako' 'python2-editor')
 source=(https://pypi.io/packages/source/a/alembic/alembic-${pkgver}.tar.gz
         https://pypi.io/packages/source/a/alembic/alembic-${pkgver}.tar.gz.asc)
 
-
-sha256sums=('0932bed55a4546b8aa6f59b8ad8b92b0161e7bd46adc538d50afb1c96b3571c1'
+sha256sums=('767cf6c8c4578f1f625f17bfbc8716a7d4f80a0c1efc7a9b72af30ad68954962'
             'SKIP')
+
 # Developers key: https://projects.archlinux.org/svntogit/community.git/tree/trunk/PKGBUILD?h=packages/python-sqlalchemy
 validpgpkeys=('83AF7ACE251C13E6BB7DEFBD330239C1C4DAFEE1')
 
