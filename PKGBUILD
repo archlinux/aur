@@ -3,14 +3,16 @@
 
 pkgname=stone-soup-yiuf
 pkgver=1.5.2b1
-pkgrel=1
+pkgrel=2
 pkgdesc='A fork of Dungeon Crawl Stone Soup roguelike with old races recovered'
 arch=('i686' 'x86_64')
 url='https://github.com/yrmvgh/yiufcrawl'
 depends=('lua51' 'ncurses' 'sdl2_image' 'sqlite' 'glu' 'freetype2' 'ttf-dejavu')
 makedepends=('bison' 'flex' 'gendesk' 'mesa')
+optdepends=('advancecomp: for recompressing the tilesheets
+             pngcrush: for recompressing the tilesheets')
 conflicts=('crawl' 'stone-soup-tile')
-license=('custom')
+license=('GPL' 'BSD' 'MIT' 'ZLIB' 'APACHE' 'custom:CC0' 'custom')
 source=("https://github.com/yrmvgh/yiufcrawl/archive/${pkgver}-yiuf.tar.gz")
 sha256sums=('e6efda8f4188b0823f5d438e2a4b9307a016b12f22e3f75f8a65fd56d35cad6b')
 
@@ -61,6 +63,8 @@ package() {
 
     install -D -m644 ../licence.txt \
         "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
+    install -D -m644 ../docs/license/* \
+        "${pkgdir}/usr/share/licenses/${pkgname}"
 
     # install icon and .desktop file
 
