@@ -8,7 +8,7 @@ pkgdesc="Converts DAA files (used by PowerISO) to ISO"
 arch=('i686' 'x86_64')
 url="http://aluigi.altervista.org/mytoolz.htm"
 license=('GPL')
-source=("http://dl.dropbox.com/u/24716740/mirror/$pkgname.zip")
+source=("http://aluigi.altervista.org/mytoolz/daa2iso.zip")
 md5sums=('6930ebcd8568e8ade0a175352d4a3481')
 
 build() {
