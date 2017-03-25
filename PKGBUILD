@@ -1,7 +1,7 @@
 # Maintainer: Rasmus Steinke <rasi at xssn dot at>
 
 pkgname=xininfo-git
-pkgver=21.a354f48
+pkgver=42.0bd94ad
 pkgrel=1
 pkgdesc="Small helper program for monitor layouts."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('libx11' 'libxinerama' 'libxft' 'libxrandr')
 options=(!strip)
 provides=('xininfo')
 install=xininfo-git.install
-makedepends=('git' 'clang')
+makedepends=('git')
 source=('git+https://github.com/DaveDavenport/xininfo.git')
 
 pkgver() {
@@ -22,7 +22,7 @@ pkgver() {
 build() {
     cd ${srcdir}/xininfo
     autoreconf --install
-    ./configure --prefix=/usr
+    CC=gcc ./configure --prefix=/usr
     make
 }
 
