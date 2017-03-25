@@ -1,14 +1,14 @@
 pkgbase = textroom
 	pkgdesc = Full Screen text editor heavily inspired by Q10 and JDarkRoom
 	pkgver = 0.8.2
-	pkgrel = 10
+	pkgrel = 11
 	url = http://code.google.com/p/textroom/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = mesa
 	depends = curl
-	depends = libxml++
+	depends = libxml++2.6
 	depends = hunspell
 	depends = qt4
 	depends = sdl_mixer
