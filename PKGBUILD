@@ -6,6 +6,7 @@ pkgdesc="Node.js API documentation."
 arch=(any)
 url="https://nodejs.org/en/docs/"
 license=('MIT')
+options=('docs')
 source=("https://nodejs.org/dist/v$pkgver/node-v$pkgver.tar.gz")
 sha256sums=('d76bad6e843005aa016f285e983493e344fde80eac4258b4bf9ee8654f5d6e43')
 
