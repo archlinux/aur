@@ -1,6 +1,6 @@
 pkgbase = gopass
 	pkgdesc = The slightly more awesome standard unix password manager for teams.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/justwatchcom/gopass
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = gopass
 	depends = gnupg
 	optdepends = dmenu: for dmenu support
 	optdepends = xdotool: for typing passwords selected by dmenu
-	provides = gopass=1.0.1
-	source_x86_64 = gopass-1.0.1-1-x86_64.tar.xz::https://www.justwatch.com/gopass/releases/1.0.1/gopass-1.0.1-1-x86_64.pkg.tar.xz
-	sha256sums_x86_64 = b49258e178662f667898030d9635bbbf18fd042fed0195efecfd12d7cdec5789
+	provides = gopass=1.0.2
+	source_x86_64 = gopass-1.0.2-1-x86_64.tar.xz::https://www.justwatch.com/gopass/releases/1.0.2/gopass-1.0.2-1-x86_64.pkg.tar.xz
+	sha256sums_x86_64 = 81048ee8d19b5e41fd29ca183ceb23332b5eac5260eae7f8c0c00226fb0a6b12
 
 pkgname = gopass
 
