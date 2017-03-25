@@ -1,6 +1,6 @@
 pkgbase = scribus-indigo-git
 	pkgdesc = A desktop publishing program - indigo fork
-	pkgver = r95.6ec7c4d
+	pkgver = r97.9312b67
 	pkgrel = 1
 	url = https://github.com/nitramr/scribus-indigo/wiki
 	arch = i686
