@@ -2,8 +2,8 @@
 
 pkgbase=git-it
 pkgname=git-it
-pkgrel=2
-pkgver=4.2.2
+pkgrel=3
+pkgver=4.2.3
 pkgdesc="Git-it is a desktop app that teaches you how to use Git and GitHub on the command line."
 url="https://github.com/jlord/git-it-electron"
 provides=('git-it')
@@ -18,7 +18,7 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}.png"
 )
-md5sums=('206f8fbf6a4fe9e5fb1bd93a08735e4a'
+md5sums=('bd0c24f88d1949fa74ffd3ed1ee96ee2'
 	 'cc6162296991cdb4463081962c0018f1'
 	 '3fc4074dd6efa11246481d57dae86cf1')
 
