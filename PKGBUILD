@@ -4,7 +4,7 @@
 
 pkgname=openmp-svn
 _pkgname=${pkgname%-svn}
-pkgver=5.0.r298684
+pkgver=5.0.r298769
 pkgrel=1
 pkgdesc="LLVM OpenMP Runtime Library"
 arch=('i686' 'x86_64')
@@ -14,6 +14,7 @@ depends=('glibc')
 makedepends=('cmake')
 provides=('openmp')
 conflicts=('openmp')
+options=('!check') # requires llvm-lit
 source=("${_pkgname}::svn+https://llvm.org/svn/llvm-project/${_pkgname}/trunk")
 sha512sums=('SKIP')
 
