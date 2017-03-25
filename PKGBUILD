@@ -1,6 +1,8 @@
+# Maintainer: Chanathip Srithanrat <axesd9@gmail.com>
+
 pkgname='gnome-osx-ii-gtk-theme'
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Gnome-OSX 2.0 GTK Theme'
 arch=('any')
 url='https://www.gnome-look.org/p/1171688/'
