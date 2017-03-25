@@ -1,9 +1,9 @@
 # Maintainer: Patrik Karlsson <pata.karlsson@gmail.com>
 
 pkgname=mapollage
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
-pkgdesc="mapollage is a photo album generator for Google Earth."
+pkgdesc="mapollage is a photo album generator for Google Earth"
 arch=('any')
 url="https://trixon.se/projects/mapollage/"
 license=('Apache')
@@ -15,7 +15,7 @@ source=(
 	'mapollage.desktop'
 )
 sha256sums=(
-	'23a03d59fb525339620da4581af2e8189f93b2621f880f4e60959732499f31c5'
+	'd92e0fc0c3174d03026ebf5ca79ab75dcbd7337446a222af79219bcae121682f'
 	'9f7c96ef813c3cfda38abc83db1143abff6857b79cd75074abdce224a70d9ab4'
 	'7f908c214693692d259108df6239b0ac86b5c8b56381f9cce13ef5d9f2e5f930'
 )
