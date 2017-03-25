@@ -1,6 +1,6 @@
 # Maintainer: Seth Price <ssterling@firemail.cc>
 pkgname=tmux-notify-git
-pkgver=0.1.r0.g46aa30c
+pkgver=0.1.r0.gfff2564
 pkgrel=1
 pkgdesc="Simple tmux notification system written in sh"
 arch=('any')
