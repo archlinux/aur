@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/ptpd/ptpd"
 license=('BSD')
 depends=('libpcap')
+optdepends=('net-snmp')
 provides=('ptpd')
 source=("http://sourceforge.net/projects/ptpd/files/ptpd/2.3.1/ptpd-2.3.1.tar.gz/download")
 md5sums=('253bab7ab51d969616ea811be1f132f3')
