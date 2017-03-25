@@ -15,6 +15,7 @@ url="https://davedavenport.github.io/rofi/"
 license=('MIT')
 depends=(freetype2 libxdg-basedir pango xcb-util-xrm wayland-wall)
 optdepends=('sway: use as application runner'
+            'wlc-wall-injector: injects wall wayland protocol in wlc based compositors'
             'orbment: use as application runner')
 makedepends=('git')
 provides=('rofi')
