@@ -2,7 +2,7 @@
 # Maintainer: Chrys <mail@chrys.de>
 
 pkgname='fenrir'
-pkgver=1.05
+pkgver=1.06
 pkgrel=1
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
@@ -23,7 +23,7 @@ install="$pkgname".install
 source=("https://github.com/chrys87/${pkgname}/archive/${pkgver}.zip"
   'fenrir.install')
 md5sums=('d28fdb074dc731255c6af158f14ac9d6'
-         '6e9e07056b744789e8d62fcf56b612ce') 
+         '6e9e07056b744789e8d62fcf56b612ce')
 
 package()
 {
