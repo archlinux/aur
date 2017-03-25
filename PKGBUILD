@@ -3,22 +3,23 @@
 # Contributor: Rasi <rasi@xssn.at>
 # Contributor: Sean Pringle <sean.pringle@gmail.com>
 # Contributor: SanskritFritz (gmail)
+# Contributor: Ruben De Smet <me at rubdos dot be>
 
-pkgname=rofi-git
+pkgname=rofi-wayland-git
 _gitname=rofi
-pkgver=1.1.0.r30.g4af6976
+pkgver=1.3.1.r337.gbb56bf3
 pkgrel=1
 pkgdesc="A window switcher, run dialog and dmenu replacement"
 arch=('i686' 'x86_64')
 url="https://davedavenport.github.io/rofi/"
 license=('MIT')
-depends=(libx11 libxft freetype2 libxdg-basedir pango startup-notification
-         libxcb libxkbcommon libxkbcommon-x11 xcb-util xcb-util-wm xcb-util-xrm)
-optdepends=('i3-wm: use as a window switcher')
+depends=(freetype2 libxdg-basedir pango)
+optdepends=('sway: use as application runner'
+            'orbment: use as application runner')
 makedepends=('git')
 provides=('rofi')
 conflicts=('rofi')
-source=("git+https://github.com/DaveDavenport/rofi")
+source=("git+https://github.com/DaveDavenport/rofi#branch=wip/wayland")
 md5sums=('SKIP')
 
 pkgver() {
@@ -32,7 +33,7 @@ prepare() {
   autoreconf --install
 
   # Default compiler = clang, which can be a problem if using hardening-wrapper
-  CC=gcc ./configure --prefix=/usr
+  CC=gcc ./configure --prefix=/usr --with-display-backend=wayland
 }
 
 build() {
@@ -44,7 +45,7 @@ package() {
   cd "$srcdir/$_gitname"
   make install install-man DESTDIR="$pkgdir"
 
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/rofi/COPYING"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/rofi-wayland-git/COPYING"
   install -dm755 "$pkgdir/usr/share/doc/rofi/examples"
   install -Dm755 Examples/*.sh "$pkgdir/usr/share/doc/rofi/examples"
 }
