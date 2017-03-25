@@ -17,6 +17,7 @@ pkgbase = python-geopandas
 	optdepends = python-geopy
 	optdepends = python-psycopg2
 	optdepends = python-descartes
+	optdepends = python-rtree
 	options = !emptydirs
 	source = https://github.com/geopandas/geopandas/archive/v0.2.1.tar.gz
 	sha256sums = 1e1845acbf6cf8dd2850aec9bfaa92892e462887903e3ea1abb8111e88a41206
