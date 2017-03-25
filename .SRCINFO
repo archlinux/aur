@@ -1,15 +1,15 @@
 pkgbase = writefull
 	pkgdesc = Writefull is an app that gives feedback on your writing by checking your text against databases of correct language.
-	pkgver = 3.0.0_beta12
+	pkgver = 3.0.0_beta14_gem2
 	pkgrel = 1
 	url = http://writefullapp.com/
 	arch = i686
 	arch = x86_64
 	license = custom
-	source_i686 = https://d3aw1w08kaciwn.cloudfront.net/writefull_3.0.0-beta12_ia32.deb
-	md5sums_i686 = 0536baaf9a8e3e70e6c5f5cc68bf3750
-	source_x86_64 = https://d3aw1w08kaciwn.cloudfront.net/writefull_3.0.0-beta12_amd64.deb
-	md5sums_x86_64 = 1268ec9d1053f5001712ec0dc081d635
+	source_i686 = https://d3aw1w08kaciwn.cloudfront.net/3.0.0-beta14-gem2/writefull_3.0.0-beta14-gem2_ia32.zip
+	md5sums_i686 = a99646244c586a42553b4a4a85890a62
+	source_x86_64 = https://d3aw1w08kaciwn.cloudfront.net/3.0.0-beta14-gem2/writefull_3.0.0-beta14-gem2_amd64.zip
+	md5sums_x86_64 = 851ac6778e1d00377801f36d240ba35e
 
 pkgname = writefull
 

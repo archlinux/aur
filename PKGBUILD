@@ -1,28 +1,26 @@
 # Maintainer: Shameempk <mailtoshameempk@gmail.com>
 pkgname=writefull
-pkgver=3.0.0_beta12
+pkgver=3.0.0_beta14_gem2
 pkgrel=1
 pkgdesc="Writefull is an app that gives feedback on your writing by checking your text against databases of correct language."
 arch=('i686' 'x86_64')
 url="http://writefullapp.com/"
 license=('custom')
-source_i686=("https://d3aw1w08kaciwn.cloudfront.net/${pkgname}_${pkgver//_/-}_ia32.deb")
-source_x86_64=("https://d3aw1w08kaciwn.cloudfront.net/${pkgname}_${pkgver//_/-}_amd64.deb")
-md5sums_i686=("0536baaf9a8e3e70e6c5f5cc68bf3750")
-md5sums_x86_64=("1268ec9d1053f5001712ec0dc081d635")
-
+source_i686=("https://d3aw1w08kaciwn.cloudfront.net/${pkgver//_/-}/${pkgname}_${pkgver//_/-}_ia32.zip")
+source_x86_64=("https://d3aw1w08kaciwn.cloudfront.net/${pkgver//_/-}/${pkgname}_${pkgver//_/-}_amd64.zip")
+md5sums_i686=("a99646244c586a42553b4a4a85890a62")
+md5sums_x86_64=("851ac6778e1d00377801f36d240ba35e")
 prepare() {
-	tar -xf data.tar.gz --exclude=usr/share/ -C "${srcdir}"
+	rm *.zip
 }
-
 package() {
 	install -dm755 "${pkgdir}/usr/share/${pkgname}"
 	install -dm755 "${pkgdir}/usr/bin"
-	
-	cp -a "${srcdir}/usr/local/${pkgname}/." "${pkgdir}/usr/share/${pkgname}"
-	
+
+	cp -a ${srcdir}/* "${pkgdir}/usr/share/${pkgname}"
+
 	ln -s "/usr/share/${pkgname}/Writefull" "${pkgdir}/usr/bin/writefull"
-	
+
 	install -Dm644 "${pkgdir}/usr/share/${pkgname}/Writefull.ico" "${pkgdir}/usr/share/pixmaps/writefull.ico"
 	sed -i 's/Icon=.*$/Icon=\/usr\/share\/pixmaps\/writefull.ico/' "${pkgdir}/usr/share/${pkgname}/writefull.desktop"
 	sed -i 's/Exec=.*$/Exec=writefull/' "${pkgdir}/usr/share/${pkgname}/writefull.desktop"
@@ -30,4 +28,10 @@ package() {
 	
 	install -Dm644 "${pkgdir}/usr/share/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 "${pkgdir}/usr/share/${pkgname}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
+
+	rm "${pkgdir}/usr/share/${pkgname}/Writefull.ico"
+	rm "${pkgdir}/usr/share/${pkgname}/writefull.desktop"
+	rm "${pkgdir}/usr/share/${pkgname}/LICENSE"
+	rm "${pkgdir}/usr/share/${pkgname}/LICENSES.chromium.html"
 }
+
