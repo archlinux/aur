@@ -13,7 +13,7 @@ pkgdesc="A window switcher, run dialog and dmenu replacement"
 arch=('i686' 'x86_64')
 url="https://davedavenport.github.io/rofi/"
 license=('MIT')
-depends=(freetype2 libxdg-basedir pango)
+depends=(freetype2 libxdg-basedir pango xcb-util-xrm wayland-wall)
 optdepends=('sway: use as application runner'
             'orbment: use as application runner')
 makedepends=('git')
