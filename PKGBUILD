@@ -1,6 +1,8 @@
+# Maintainer: Chanathip Srithanrat <axesd9@gmail.com>
+
 pkgname='gnome-osx-dark-shell-theme'
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Gnome-OSX Dark Shell Theme'
 arch=('any')
 url='https://www.gnome-look.org/p/1171688/'
