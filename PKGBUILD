@@ -22,7 +22,7 @@ _localmodcfg=
 pkgbase=linux-nvme               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.10
-pkgver=4.10.4
+pkgver=4.10.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -42,9 +42,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	'APST.patch'
 )
 sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
-            '68e935fbe1c3faaf186824a44b79a26f1ab85f04a1dade2e5bce5f8c2941624d'
-            '6456c9be229a83090fc19e8a38db75f2fa99c98959d5989062be585f159c9acd'
-            '83aae2804d582b0e9f8b92491eaee08ae3080270e3e7d40c5387e4fcf09b8154'
+            '03c64409653b19d39af54c8781fde0a3747ba16577c9e5b0e1031e5d8fc29db6'
+            '386051f19482672c871e7865fc62f5e2c8010d857729134ba13044734962e42c'
+            '12a87284e2935cd17e2846a207cc76f1728531416523735d66ef8a0ae690884c'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '8ba7d5596b65c7705958836ab93ac714dbccdcd7e806be49f667ed427eff3e83')
