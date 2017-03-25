@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=166769'
 license=('LGPL2.1')
 depends=('vapoursynth')
-source=("https://dl.dropbox.com/u/6596386/vapoursynth-plugins/${_plug}-${pkgver/_/-}.7z")
+source=("https://sl1pkn07.wtf/${_plug}/${_plug}-${pkgver/_/-}.7z")
 sha256sums=('138ef3bd565e54dab556080e0ae3a426ef00f62f340e8eb6c2cb134dbf14332c')
 
 _site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
