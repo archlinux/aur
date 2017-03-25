@@ -11,7 +11,7 @@ depends=('libx11' 'libxinerama' 'libxft' 'libxrandr')
 options=(!strip)
 provides=('xininfo')
 install=xininfo-git.install
-makedepends=('git')
+makedepends=('git' 'clang')
 source=('git+https://github.com/DaveDavenport/xininfo.git')
 
 pkgver() {
