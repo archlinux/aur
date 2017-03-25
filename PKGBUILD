@@ -14,6 +14,7 @@ depends=('glibc')
 makedepends=('cmake')
 provides=('openmp')
 conflicts=('openmp')
+options=('!check') # requires llvm-lit
 source=("${_pkgname}::svn+https://llvm.org/svn/llvm-project/${_pkgname}/trunk")
 sha512sums=('SKIP')
 
