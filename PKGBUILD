@@ -5,7 +5,7 @@
 pkgbase=linux-lts-userns
 #pkgbase=linux-lts-userns-custom
 _srcname=linux-4.9
-pkgver=4.9.16
+pkgver=4.9.17
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -17,7 +17,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
         # the main kernel config files
         'config' 'config.x86_64'
         # pacman hook for initramfs regeneration
-        '99-linux.hook'
+        '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         linux-lts-userns.preset
         change-default-console-loglevel.patch
@@ -25,7 +25,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            '4b4a4dfa81d559f40516676c22bab00e1876538bb507b42606d7a39dc5b0055a'
+            '6522ee75b408c47965c30aac69b1b57b00111109ab02a6578c280a2860e43ee1'
             'SKIP'
             'd577759532f56b0df073cdc0f2aa3975f1325b8a91851050bb678e18ace6700c'
             '521943d91f3e2a42b9848c429063db2b554e4433366fa8341ab9186a1151d0ca'
@@ -136,8 +136,8 @@ _package() {
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
   # install pacman hook for initramfs regeneration
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
-    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/90-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
