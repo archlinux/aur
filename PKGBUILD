@@ -4,14 +4,14 @@
 
 _name=gnome-commander
 pkgname=$_name-git
-pkgver=1.7.0.r27.ef2fd20
+pkgver=1.7.0.r123.189b6a31
 pkgrel=1
 pkgdesc="Graphical two-pane filemanager for GNOME"
 arch=('i686' 'x86_64')
 url="http://gcmd.github.io/"
 license=('GPL')
-depends=('libgnomeui' 'gnome-vfs-nosmb' 'gconf' 'python2' 'libsm' 'libunique')
-makedepends=('perl-xml-parser' 'gnome-doc-utils' 'intltool' 'gnome-common' 'git')
+depends=('libgnomeui' 'gnome-vfs-nosmb' 'gconf' 'python' 'libsm' 'libunique')
+makedepends=('perl-xml-parser' 'gnome-doc-utils' 'git')
 options=(!libtool)
 provides=($_name)
 conflicts=($_name)
@@ -23,7 +23,7 @@ pkgver() {
 
   # git describe --tags | sed -e 's/-/./g'
   _tag=$(git describe --abbrev=0)
-  v=$(grep AC_INIT configure.ac | awk -F',' '{printf $2}' | sed 's/ //')
+  v=$(grep AC_INIT configure.ac | cut -d'[' -f3 | cut -d']' -f1)
   r="$(git rev-list --count $_tag..HEAD)"
   h="$(git rev-parse --short HEAD)"
   printf "$v.r$r.$h"
@@ -31,16 +31,8 @@ pkgver() {
 
 build() {
   cd $_name
-  
-  # Python 2 fix
-  for f in doc/*/gnome-commander.xml; do
-      sed -i 's:env python$:env python2:' "$f"
-  done
-  export PYTHON=python2 #force python2 on configure procedures
-
   ./autogen.sh --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc \
               --localstatedir=/var --disable-scrollkeeper --enable-python
-
   make
 }
 
