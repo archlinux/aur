@@ -1,6 +1,6 @@
 # Maintainer: Wellington <wellingtonwallace@gmail.com>
 pkgname=pulseeffects
-pkgver=0.9
+pkgver=1.0
 pkgrel=1
 pkgdesc="Audio effects for Pulseaudio applications"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python python-gobject gtk3 gst-plugins-good gst-plugins-bad gst-python
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/wwmm/pulseeffects/archive/v$pkgver.tar.gz")
-md5sums=('dcc2b595e7c30cbe4d9b825bd3da7f67')
+md5sums=('f3893ac69f74c0c4027d5f893aed425f')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
