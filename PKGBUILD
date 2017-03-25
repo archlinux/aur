@@ -6,17 +6,16 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gnome-commander
-pkgver=1.6.2
-pkgrel=2
+pkgver=1.6.3
+pkgrel=1
 pkgdesc='Graphical two-pane filemanager for Gnome'
 arch=('i686' 'x86_64')
 url='http://gcmd.github.io/'
 license=('GPL')
 depends=('libgnomeui' 'python2' 'libunique' 'libgsf' 'exiv2' 'taglib' 'poppler-glib')
 makedepends=('perl-xml-parser' 'gnome-doc-utils' 'intltool')
-changelog=$pkgname.changelog
 source=(https://download.gnome.org/sources/gnome-commander/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('47840659c1308c363606c505f561fa101351b72a40567550715589e4cc963f78')
+sha256sums=('9ac8b0041b0b2648252d461776e2be65e87f2fc52b027815c8c93c9b448f7cb5')
 
 prepare() {
   cd "$pkgname-$pkgver"
