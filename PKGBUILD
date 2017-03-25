@@ -1,16 +1,16 @@
 # Maintainer: Ruben De Smet <me at rubdos dot be>
 
-pkgname=orbment-wall-git
+pkgname=wlc-wall-injector-git
 _gitname=orbment-wall
-pkgver=r33.8bb4672
+pkgver=r37.b998b46
 pkgrel=1
-pkgdesc="Orbment plugins for Wayland Wall protocols"
+pkgdesc="A hack that injects wayland-wall into wlc based compositors."
 arch=('i686' 'x86_64')
 url="https://github.com/wayland-wall/orbment-wall"
 license=('MIT')
-depends=('wayland-wall' 'wayland-protocols' 'orbment')
+depends=('wayland-wall' 'wayland-protocols' 'wlc')
 makedepends=('git')
-provides=('orbment-wall' 'orbment-wall-git')
+provides=('orbment-wall-git' 'wlc-wall-injector')
 conflicts=('orbment-wall')
 source=("git+https://github.com/wayland-wall/orbment-wall.git#branch=wip/injector")
 md5sums=('SKIP')
@@ -22,11 +22,13 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_gitname"
+
   git submodule update --init
   autoreconf --install
 
   ./configure \
-      --prefix=/usr
+      --prefix=/usr \
+      --disable-orbment-plugins
 }
 
 build() {
@@ -38,5 +40,5 @@ package() {
   cd "$srcdir/$_gitname"
   make install install-man DESTDIR="$pkgdir"
 
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/orbment-wall-git/COPYING"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/wlc-wall-injector-git/COPYING"
 }
