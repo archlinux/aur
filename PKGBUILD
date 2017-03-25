@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python' 'python-prettytable' 'python-pyfiglet' ' python-tvdb_api-git')
 makedepends=('git' 'python-setuptools')
 provides=("${pkgname}" 'tvdoon')
-conflicts=("${pkgname}" 'tvdoon') 
+conflicts=("${pkgname}" 'tvdoon' 'python2-requests-cache') 
 source=("${pkgname}::git+https://github.com/LinArcX/tvdoon")
 md5sums=('SKIP')
 
