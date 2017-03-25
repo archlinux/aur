@@ -2,7 +2,7 @@
 # Former maintainer: Oliver Mangold <o.mangold at gmail dot com>
 pkgname=python-alembic
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Alembic is a lightweight database migration tool for usage with the SQLAlchemy Database Toolkit for Python 3."
 arch=('any')
 url='https://bitbucket.org/zzzeek/alembic'
@@ -24,7 +24,7 @@ build() {
 
 package() {
   cd "${srcdir}/alembic-${pkgver}"
-  python setup.py install --root "${pkgdir}"
+  python setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1
   install -m 755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m 644 "${srcdir}/alembic-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
