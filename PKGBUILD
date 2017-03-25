@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=wxmaxima-git
-pkgver=r4185.be7dba3f
+pkgver=r4189.e05def70
 pkgrel=1
 pkgdesc="A document based interface for the computer algebra system Maxima."
 arch=('i686' 'x86_64')
