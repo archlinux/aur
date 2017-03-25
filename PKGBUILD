@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 285379 2017-01-06 08:14:47Z felixonmars $
-# Maintainer: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Maintainer: wangjiezhe <wangjiezhe AT yandex DOT com>
 
 _pkgbase=pygobject
 pkgbase=pygobject-git
@@ -11,7 +11,7 @@ url="https://wiki.gnome.org/Projects/PyGObject"
 arch=(i686 x86_64)
 license=(LGPL)
 depends=(gobject-introspection-runtime)
-makedepends=(python{,2}-cairo gobject-introspection git gnome-common)
+makedepends=(python-cairo-git python2-cairo gobject-introspection git gnome-common)
 optdepends=('cairo: Cairo bindings')
 source=("git://git.gnome.org/pygobject")
 sha256sums=('SKIP')
@@ -63,7 +63,6 @@ package_python2-gobject-git() {
 
 package_pygobject-devel-git() {
   pkgdesc="Common development files for pygobject"
-  optdepends=()
   provides=("pygobject-devel=$pkgver")
   conflicts=("pygobject-devel")
 
