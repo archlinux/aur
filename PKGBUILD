@@ -2,15 +2,16 @@
 
 pkgname=pps-tools-git
 pkgver=1.0.r0.9d82bc4
-pkgrel=1
+pkgrel=2
 pkgdesc="LinuxPPS user-space tools"
 arch=('aarch64' 'arm7vh' 'i686' 'x86_64')
 url="http://linuxpps.org/"
 license=('GPL2')
 provides=('pps-tools')
+conflicts=('pps-tools')
 makedepends=('git')
 source=("git+https://github.com/ago/pps-tools")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
