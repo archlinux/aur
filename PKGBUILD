@@ -1,7 +1,7 @@
 # Contributor: Vjacheslav Gaevskih <feanor1397@gmail.com>
 
 pkgname=gspectran
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Gtk+ audio visualizer for pulseaudio."
 arch=('x86_64' 'i686')
@@ -11,16 +11,19 @@ depends=('libpulse'
          'fftw'
          'cairomm'
          'gtkmm3'
+         'boost'
          )
-makedepends=('cmake')
+makedepends=('cmake' 'pkg-config')
 conflicts=('gspectran')
 provides=('gspectran')
 source=("https://github.com/Feanor1397/gspectran/archive/${pkgver}.tar.gz")
-sha256sums=('34bc7f1a387114a00c19e17038c8db819cd898f369d8941ea91907d3a436e004')
+sha256sums=('fe8d554d992f4ba489036ca5113fd57645daf6e291adb75cdeedb76b6666db39')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr
+  cmake . \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release
   make
 }
 

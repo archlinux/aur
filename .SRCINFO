@@ -1,20 +1,22 @@
 pkgbase = gspectran
 	pkgdesc = Gtk+ audio visualizer for pulseaudio.
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/Feanor1397/gspectran
 	arch = x86_64
 	arch = i686
 	license = GPLv3
 	makedepends = cmake
+	makedepends = pkg-config
 	depends = libpulse
 	depends = fftw
 	depends = cairomm
 	depends = gtkmm3
+	depends = boost
 	provides = gspectran
 	conflicts = gspectran
-	source = https://github.com/Feanor1397/gspectran/archive/0.1.tar.gz
-	sha256sums = 34bc7f1a387114a00c19e17038c8db819cd898f369d8941ea91907d3a436e004
+	source = https://github.com/Feanor1397/gspectran/archive/0.2.tar.gz
+	sha256sums = fe8d554d992f4ba489036ca5113fd57645daf6e291adb75cdeedb76b6666db39
 
 pkgname = gspectran
 
