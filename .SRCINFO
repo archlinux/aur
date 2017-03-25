@@ -45,7 +45,7 @@ pkgbase = qgis-ltr
 	provides = qgis=2.14.13
 	conflicts = qgis
 	source = https://qgis.org/downloads/qgis-2.14.13.tar.bz2
-	source = https://src.fedoraproject.org/cgit/rpms/qgis.git/plain/qgis_sip-ftbfs.patch
+	source = qgis_sip-ftbfs.patch::https://src.fedoraproject.org/cgit/rpms/qgis.git/plain/qgis_sip-ftbfs.patch?id=25b8f81ccabbfdb183d4850a66e884c183444f14
 	md5sums = 6d34c123ef04f23c43758b1bfad1da89
 	md5sums = 0575d848604f0fc6dda0a643523e7e48
 
