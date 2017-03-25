@@ -12,8 +12,8 @@ pkgbase=java8-openjdk-jetbrains
 _java_ver=8
 # Found @ https://github.com/JetBrains/jdk8u/releases
 _jdk_update=112
-_jdk_build=705
-pkgver=${_java_ver}.u${_jdk_update}
+_jdk_build=783.1
+pkgver=${_java_ver}.u${_jdk_update}.b${_jdk_build}
 _repo_ver=jb${_java_ver}u${_jdk_update}-b${_jdk_build}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -32,14 +32,14 @@ source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         nashorn-${_repo_ver}.tar.gz::${_url_src}_nashorn/archive/${_repo_ver}.tar.gz
         build_with_gcc6.patch)
 
-sha256sums=('db9c36153bb5e21756fdd437d8553e84009234e877e90918fab896b454593759'
-            '9ea3ad4fbc13a7cd58ab7a0cb2e494e03a271c287f22eb7bfe578c029eb13fd6'
-            '005df7ec7abf5b4c6678116c229a2355574709703596fcc70f3d443217a2c16c'
-            '6c6b6a5b7688f169fff56593a82f9f5def85de4c618a7bf30b4cddb009e1fb0a'
-            'b085d9f92bd4d9141f306a6b45e201a9e03c5b400fe25c841f4de3de8368b8eb'
-            'ff8b72c7a9aca9cef08b6bb16d0b9b1cf466100f7571076fe28d7237af656e22'
-            'f2bdcb8cbcc66d448e45d4475cec91b0f6265118b465df6ed01b712755c27f12'
-            '4a239bd67f1a6ee81aad986e5ae8becf11e46b3fe9c29cff978d6188bfde6f91'
+sha256sums=('5fcc4d3a831a6581a0e21ff1845f1320cabbc8bd3000a87d1fa3ce8c37829b3a'
+            'f1f9b894c60b7ad80f37a7bcd7c167830492664d907866725ff57565ec89923d'
+            '935247c52032e0cbadd0ab12e99d4e1357e385f0f4a78088250b85ccb592a13f'
+            '979deeeb96c442244a2d32398632156fd03ccacd0aa63e6c49f90ef84380bd5d'
+            '2a218a3dea15ae10a1817e0707f4110d5b74a9709f8ab654cb003a680d4d7514'
+            'a8a0b8c758a33d37bbfd61c7765d1899ad675294d2b3924e1fad71bf611233d0'
+            'b3db2f0d24254b2622f85846743bfd04cdc41c0791f8d744733148eac765421e'
+            '0a73cf5105ea530beafa78bc209f5a8b22ea5e5d461c2d9e39f933b1e52a6161'
             '7b954b746178c8613660e71fa7b1b968d892e1850f3603301436836a62e244c8')
 
 case "${CARCH}" in
@@ -279,12 +279,14 @@ package_jdk8-openjdk-jetbrains() {
 
 package_openjdk8-jetbrains-src() {
   pkgdesc='OpenJDK Java 8 sources (with JetBrains patches)'
+  options=(!strip)
 
   install -D "${srcdir}/${_imgdir}/src.zip" "${pkgdir}${_jvmdir}/src.zip"
 }
 
 package_openjdk8-jetbrains-doc() {
   pkgdesc='OpenJDK Java 8 documentation (with JetBrains patches)'
+  options=(!strip)
 
   install -d -m 755 "${pkgdir}/usr/share/doc/${pkgbase}/"
   cp -r "${srcdir}"/jdk8u-${_repo_ver}/build/linux-${_DOC_ARCH}-normal-server-release/docs/* \
