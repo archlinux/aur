@@ -2,7 +2,7 @@
 # Contributor: Alessio Sergi <asergi at archlinux dot us>
 # Contributor: Asa Marco <marcoasa90[at]gmail[.]com>
 pkgname=kupfer
-pkgver=318
+pkgver=319
 pkgrel=1
 pkgdesc="Launcher application written in python. Similar to Gnome-Do / Launchy"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('libkeybinder3' 'libwnck3' 'python' 'python-dbus' 'python-cairo' 'python-xdg' 'python-gobject')
 makedepends=('intltool')
 source=("https://github.com/kupferlauncher/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.xz")
-sha1sums=('a14fc11c300e4f809bb71078d87f9cce1c317308')
+sha1sums=('e4636ccd4ddaab166521f372070e704318f4bd48')
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
