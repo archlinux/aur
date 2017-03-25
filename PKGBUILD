@@ -1,10 +1,10 @@
 # Maintainer: Deon Spengler <deon[at]spengler[dot]co[dot]za>
-# Maintainer: DJ Lucas <dj_AT_linuxfromscratch_DOT_ort>
+# Contributor: DJ Lucas <dj_AT_linuxfromscratch_DOT_ort>
 # Contributor: Steven Hiscocks <steven [at] hiscocks [dot] me [dot] uk>
 # Contributor:  Andre Wayand <aur-sogo@awayand.sleepmail.com>
 pkgname=sogo
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
-pkgver=3.2.7
+pkgver=3.2.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.sogo.nu/"
@@ -48,6 +48,11 @@ source=(
   sogo.confd
 )
 
+sha256sums=('1b9fdd20cfa9efd564afe579171ffcd7501059ea7ed4c1e4e0efb08d88da359a'
+            'e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1'
+            '0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c'
+            '8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7')
+
 prepare() {
   cd "$srcdir/SOGo-${pkgver}"
   patch configure ../sogo_configure.patch
@@ -82,9 +87,3 @@ package() {
   make PYTHON=/usr/bin/python2 install DESTDIR="${pkgdir}" GNU_SYSTEM_ADMIN_TOOLS="/usr/bin"
 
 }
-
-sha256sums=('fdb1b97577844f79113f21d2a56f884627cb45696a91973dc463e51099efd3e3'
-            'e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1'
-            '0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c'
-            '8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7')
-
