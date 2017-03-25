@@ -2,17 +2,17 @@
 
 pkgname=freelancer-desktop-app
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Freelancer.com desktop client"
 arch=('i686' 'x86_64')
 url='https://www.freelancer.com/desktop-app'
 license=('custom:freelancer' 'custom:oracle')
 install="$pkgname.install"
 changelog=CHANGELOG.md
-source_i686=("http://desktop.freelancer.com/installers/${pkgname}_ubuntu-i386.deb")
-md5sums_i686=('d5f64ef74e3a1e2bf98714d647d3c22b')
-source_x86_64=("http://desktop.freelancer.com/installers/${pkgname}_ubuntu-amd64.deb")
-md5sums_x86_64=('6d3af725b8861f003480eb40730a32b3')
+source_i686=("http://desktop-production.freelancer.com/latest/installers/${pkgname}_ubuntu-i386.deb")
+md5sums_i686=('2bd39d0eb3c5c0ce842d6889f9b86b98')
+source_x86_64=("http://desktop-production.freelancer.com/latest/installers/${pkgname}_ubuntu-amd64.deb")
+md5sums_x86_64=('369d78d23f0f16e608817f0d51c0e2e5')
 package() {
 	# Extract zipped tar files from Ubuntu deb package
 	tar -xzf control.tar.gz
@@ -37,7 +37,7 @@ package() {
 
     # Create an execution script, without --skip-update Freelancer update process crashes with SHA1 sig invalid
 	echo "#!/bin/bash" >> "$pkgdir/usr/bin/$pkgname"
-	echo "/opt/$pkgname/$pkgname --skip-update" >> "$pkgdir/usr/bin/$pkgname"
+	echo "/opt/$pkgname/bin/$pkgname --skip-update" >> "$pkgdir/usr/bin/$pkgname"
 
     # Make launch script executable
 	chmod 755 "$pkgdir/usr/bin/$pkgname"
