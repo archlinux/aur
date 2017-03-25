@@ -2,7 +2,7 @@
 
 pkgname=elvish-git
 _pkgname=elvish
-pkgver=r2052.a25710a
+pkgver=r2198.856dde5
 pkgrel=1
 pkgdesc="A friendly and expressive Unix shell."
 arch=('i686' 'x86_64')
@@ -26,15 +26,16 @@ prepare() {
 
     mkdir -p build/src/github.com/elves
     ln -sf "$srcdir/$_pkgname" build/src/github.com/elves/
-    export GOPATH="$srcdir/build"
 }
 
 build() {
+    export GOPATH="$srcdir/build"
     cd "$GOPATH/src/github.com/elves/elvish"
     make get
 }
 
 check() {
+    export GOPATH="$srcdir/build"
     cd "$GOPATH/src/github.com/elves/elvish"
     make test
 }
