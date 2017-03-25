@@ -1,0 +1,13 @@
+pkgbase = galliumos-braswell-config
+	pkgdesc = userspace configuration for braswell chromebooks taken from GalliumOS
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/GalliumOS/galliumos-braswell
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/GalliumOS/galliumos-braswell
+	md5sums = SKIP
+
+pkgname = galliumos-braswell-config
+
