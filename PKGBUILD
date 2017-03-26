@@ -3,14 +3,14 @@
 pkgname=grub-customizer
 pkgver=5.0.6
 pkgbranch=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical grub2 settings manager"
 url="https://launchpad.net/grub-customizer"
 arch=('i686' 'x86_64')
 license=("GPL3")
 depends=('gtkmm3' 'openssl' 'hicolor-icon-theme' 'grub-common' 'libarchive' )
 optdepends=('hwinfo')
-makedepends=('cmake')
+makedepends=('cmake' 'pkg-config')
 provides=(grub-customizer)
 backup=('etc/grub-customizer/grub.cfg')
 options=()
