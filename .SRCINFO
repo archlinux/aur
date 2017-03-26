@@ -1,0 +1,17 @@
+pkgbase = wyrd
+	pkgdesc = A text-based front-end to Remind.
+	pkgver = 1.4.6
+	pkgrel = 3
+	url = http://pessimization.com/software/wyrd/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ocaml
+	makedepends = camlp4
+	depends = remind
+	depends = ncurses
+	source = http://pessimization.com/software/wyrd/wyrd-1.4.6.tar.gz
+	md5sums = 2fc561482fdac4daac0cb6735d934ebe
+
+pkgname = wyrd
+
