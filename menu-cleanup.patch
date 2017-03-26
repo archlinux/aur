@@ -1,0 +1,56 @@
+--- src/indicator-sensors-0.8/indicator-sensors/is-indicator.c	2014-10-11 19:21:18.000000000 +0900
++++ src/indicator-sensors-0.8/indicator-sensors/is-indicator.c	2015-11-17 12:24:44.989487160 +0900
+@@ -154,10 +154,6 @@
+ 
+ static void prefs_action(GtkAction *action,
+                          IsIndicator *self);
+-static void about_action(GtkAction *action,
+-                         IsIndicator *self);
+-static void quit_action(GtkAction *action,
+-                        IsIndicator *self);
+ 
+ static GtkActionEntry entries[] =
+ {
+@@ -165,14 +161,6 @@
+     "Preferences", "application-preferences", N_("Preferences…"), NULL,
+     N_("Preferences"), G_CALLBACK(prefs_action)
+   },
+-  {
+-    "About", "about", N_("About…"), NULL,
+-    N_("About"), G_CALLBACK(about_action)
+-  },
+-  {
+-    "Quit", NULL, N_("_Quit"), NULL,
+-    N_("Quit"), G_CALLBACK(quit_action)
+-  },
+ };
+ static guint n_entries = G_N_ELEMENTS(entries);
+ 
+@@ -180,8 +168,6 @@
+   "<ui>"
+   "  <popup name='Indicator'>"
+   "    <menuitem action='Preferences' />"
+-  "    <menuitem action='About' />"
+-  "    <menuitem action='Quit' />"
+   "  </popup>"
+   "</ui>";
+ 
+@@ -191,18 +177,6 @@
+   is_application_show_preferences(self->priv->application);
+ }
+ 
+-static void about_action(GtkAction *action,
+-                         IsIndicator *self)
+-{
+-  is_application_show_about(self->priv->application);
+-}
+-
+-static void quit_action(GtkAction *action,
+-                        IsIndicator *self)
+-{
+-  is_application_quit(self->priv->application);
+-}
+-
+ static void
+ is_indicator_set_label(IsIndicator *self,
+                        const gchar *label)

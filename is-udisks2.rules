@@ -1,0 +1,11 @@
+polkit.addRule(function(action, subject) {
+  var YES = polkit.Result.YES;
+  var permission = {
+    // only required for udisks2:
+    "org.freedesktop.udisks2.ata-check-power": YES,
+    "org.freedesktop.udisks2.ata-smart-update": YES,
+  };
+  if (subject.isInGroup("users")) {
+    return permission[action.id];
+  }
+});

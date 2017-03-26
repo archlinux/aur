@@ -1,0 +1,13 @@
+post_install() {
+    post_remove $1
+}
+
+post_upgrade() {
+    post_remove $1
+}
+
+post_remove() {
+    glib-compile-schemas usr/share/glib-2.0/schemas
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
