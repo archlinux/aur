@@ -1,0 +1,45 @@
+post_install() {
+  # Note admin after install/update on how to change th update_check setting.
+  cat << _EOF
+  ==> Globus Connect Personal install note:
+  ------------------------------------------------------------------------------
+  You must create an endpoint before using Globus Connect Personal.
+
+  To set up the endpoint, follow the instruction at
+  https://docs.globus.org/how-to/globus-connect-personal-linux/#globus-connect-personal-cli
+  to generate a setup key, and run the command below:
+
+  globusconnect -setup <your-setup-key>
+
+  To autostart Globus Connect Personal service, you have two options: a system service or a
+  user service.
+
+  Running as a system service ensures that GCP service is run at startup even if the user has
+  no active session. Since the system service keeps GCP running even without an active user
+  session, it is intended to be used on a server.
+
+  To enable and start the system service:
+
+  # systemctl enable globus-connect-personal@myuser.service
+  # systemctl start globus-connect-personal@myuser.service
+
+  where myuser is the actual name of your user.
+
+  Running as a user service ensures that GCP only starts after the user has logged into the
+  system (e.g. via the graphical login screen, or ssh). Thus, the user service is intended to
+  be used on a (multiuser) desktop computer. It avoids unnecessarily running GCP instances.
+
+  To enable and start the user service:
+
+  $ systemctl --user enable globus-connect-personal.service
+  $ systemctl --user start globus-connect-personal.service
+_EOF
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+    :
+}

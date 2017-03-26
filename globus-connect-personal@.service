@@ -1,0 +1,12 @@
+[Unit]
+Description=Globus Connect Personal for %I
+After=network.target
+
+[Service]
+User=%i
+ExecStart=/usr/bin/globusconnect -start
+ExecStop=/usr/bin/globusconnect -stop
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
