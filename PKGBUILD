@@ -2,19 +2,23 @@
 
 pkgname="ulam-git"
 pkgver=2.0.13.r259.gdcf5ea4
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Github version of ulam compiler and MFM simulator"
 arch=('any')
 url="https://github.com/elenasa/ULAM/wiki"
 license=('(L)GPL3')
 groups=()
-depends=('gcc'
+depends=('make'
+	'gcc'
+	'binutils'
 	'perl'
+	'sdl'
+	'sdl_image'
 	'sdl_ttf'
 	'perl-crypt-openssl-rsa'
 	'perl-capture-tiny')
-makedepends=('make' 'git')
+makedepends=('git')
 checkdepends=()
 optdepends=()
 provides=()
