@@ -17,7 +17,7 @@ makedepends=('python' 'python-doit' 'python-pygments' 'python-pillow'
              'python-blinker' 'python-natsort' 'python-setuptools'
              'python-requests' 'python-husl' 'python-piexif')
 source=("https://pypi.io/packages/source/N/Nikola/${_pyname}-${pkgver}.tar.gz")
-md5sums=('ed21b313b1906519587e06a3119495c3')
+md5sums=('de7c24536c0238f7bd9df314e8b9ff61')
 
 build() {
   cd "${srcdir}/${_pyname}-${pkgver}"
