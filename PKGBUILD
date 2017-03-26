@@ -6,6 +6,7 @@ pkgname=$_bpn-git
 pkgdesc="A multi-threaded, user space file server that speeks 9P2000.L"
 license=('GPL2')
 arch=('i686' 'x86_64')
+url="https://github.com/chaos/diod.git"
 
 source=("git+https://github.com/chaos/diod.git")
 md5sums=('SKIP')
@@ -16,8 +17,8 @@ provides=("$_bpn")
 # If munge is disabled (via configure script), it can be omitted entirely
 # LUA can be disable in configure, but config files are lua. Unclear what fallback is.
 # libwrap can be disabled, if desired
-makedepends=('git' 'libcap')
-depends=('ncurses' 'lua' 'libwrap')
+makedepends=('git')
+depends=('lua' 'libwrap' 'libcap' 'bash')
 #optdepends=('munge')
 
 # from https://wiki.archlinux.org/index.php/VCS_package_guidelines
@@ -44,11 +45,17 @@ prepare() {
 
 build () {
 	cd "$srcdir/$_bpn"
-	./configure
-	make PREFIX=/usr
+	./configure --prefix=/usr --with-ncurses --sysconfdir=/etc
+	make
 }
 
 package () {
 	cd "$srcdir/$_bpn"
-	make PREFIX=/usr "DESTDIR=$pkgdir" install
+	make "DESTDIR=$pkgdir" install
+
+	# Fix incorrect location for systemd file
+	mkdir -p "$pkgdir/usr/lib/systemd/system"
+	mv "$pkgdir"/etc/systemd/system/diod.service "$pkgdir"/usr/lib/systemd/system
+	rmdir "$pkgdir/etc/systemd/system"
+	rmdir "$pkgdir/etc/systemd"
 }
