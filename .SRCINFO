@@ -1,7 +1,7 @@
 pkgbase = squaw
 	pkgdesc = Simplistic quiet user agent for the Web
 	pkgver = 3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://fenua.org/gaetan/src/
 	arch = i686
 	arch = x86_64
