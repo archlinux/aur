@@ -2,7 +2,7 @@
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=haguichi-indicator
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Provides an indicator for Haguichi"
 arch=('x86_64' 'i686' 'arm' 'armv7h')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gtk3' 'libappindicator-gtk3' 'haguichi')
 makedepends=('cmake' 'vala')
 source=("http://launchpad.net/$pkgname/${pkgver%.*}/$pkgver/+download/$pkgname-$pkgver.tar.xz")
-sha256sums=('e5e7d740a2b3807ba96ab08e5e563b82fbda37a82f551801091d0757712cf973')
+sha256sums=('b79ede33b255b2477316413b1d4bc5b72ad44288e92ed9934f4ab06b2c5ef8cc')
 
 prepare() {
   cd $pkgname-$pkgver
