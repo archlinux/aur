@@ -2,7 +2,7 @@
 
 _pkgname=bumblebee-status
 pkgname=bumblebee-status-git
-pkgver=r309.ec19f48
+pkgver=r373.6ac6114
 pkgrel=1
 pkgdesc="A modular, theme-able status line generator for the i3 window manager."
 arch=('any')
