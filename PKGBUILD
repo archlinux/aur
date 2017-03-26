@@ -2,7 +2,7 @@
 
 pkgname=treeline-unstable
 _pkg=${pkgname%%-*}
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Tree outliner and PIM which stores any kind of information within a tree structure; unstable development snapshot"
 arch=(any)
@@ -13,7 +13,7 @@ conflicts=('treeline')
 replaces=('treeline')
 install=treeline.install
 source=("http://sourceforge.net/projects/treeline/files/${pkgver}/treeline-${pkgver}.tar.gz/download")
-md5sums=('fa0f972257c7b828468b664044ac813b')
+md5sums=('1d6880f4b20d7b2e8c9ca6f496f88747')
 
 package() {
   cd "$srcdir/TreeLine"
