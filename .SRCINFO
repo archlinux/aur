@@ -1,21 +1,19 @@
 pkgbase = brother-dcp-9020cdw
-	pkgdesc = LPR and CUPS driver for the Brother DCP-9020CDW
+	pkgdesc = CUPS driver for the Brother DCP-9020CDW
 	pkgver = 1.1.4
-	pkgrel = 1
-	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
-	install = brother-dcp-9020cdw.install
+	pkgrel = 2
+	url = http://support.brother.com/g/b/producttop.aspx?c=gb&lang=en&prod=dcp9020cdw_eu
 	arch = i686
 	arch = x86_64
-	license = mixed
-	depends = tcsh
-	depends = deb2targz
-	depends = perl
-	depends = a2ps
+	license = GPL2
+	makedepends = libarchive
+	depends = cups
+	depends = psutils
 	depends = lib32-glibc
+	source = http://download.brother.com/welcome/dlf100444/dcp9020cdw_cupswrapper_GPL_source_1.1.4-0.tar.gz
 	source = http://www.brother.com/pub/bsc/linux/dlf/dcp9020cdwlpr-1.1.2-1.i386.deb
-	source = http://download.brother.com/welcome/dlf100443/dcp9020cdwcupswrapper-1.1.4-0.i386.deb
-	md5sums = d7fb28e4d73d56b1181833787968d0fb
-	md5sums = 8283e3ca2d8e8873f852ed2321483fdc
+	sha512sums = 090aa66700dc860712fac645dde5289d316e35b4a68a5d0da0261dc17276e04cc611d57b518e6d778a8f6033a9a0ad77bb4f506d24063149f1060a75b0b2e3ea
+	sha512sums = 17d0934adca787fef15a0a985a6a895f4e1163bf3a4408bba0f6a6c8b324f9b3efcba1d25057050027caac3c545af4c8348d3586468f32d8594f0b098b67f3fb
 
 pkgname = brother-dcp-9020cdw
 
