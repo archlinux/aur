@@ -1,0 +1,19 @@
+pkgbase = gtkmm3-plplot
+	pkgdesc = A scientific plotting library for Gtkmm.
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://tschoonj.github.io/gtkmm-plplot/index.html
+	arch = any
+	license = (L)GPL3
+	makedepends = gcc
+	depends = gtkmm3
+	depends = plplot
+	optdepends = boost
+	conflicts = gtkmm3-plplot-git
+	source = https://github.com/tschoonj/gtkmm-plplot/releases/download/gtkmm-plplot-2.2/gtkmm-plplot-2.2.tar.gz
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768
+
+pkgname = gtkmm3-plplot
+
