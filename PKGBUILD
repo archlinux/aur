@@ -1,4 +1,5 @@
-# Mantainer:	Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Mantainer: grufo <madmurphy333 at gmail.com>
+# Contributor: Marcin (CTRL) Wieczorek <marcin@marcin.co>
 # Contributor: Julio González <juliolokoo at gmail dot com>
 # Contributor: Jose Valecillos <valecillosjg (at) gmail (dot) com>
 # Contributor: Thiago Perrotta <echo dGhpYWdvcGVycm90dGE5NUBnbWFpbC5jb20K | base64 -d >
@@ -16,7 +17,7 @@ source=('lampp.service'
 	'xampp-manager.desktop'
 	'xampp-manager.png')
 
-# Due to problems with proot, the file
+# Due to problems with proot the file
 # "https://sourceforge.net/projects/xampp-linux/files/${pkgname}-linux-x64-${pkgver}-0.tar.xz"
 # is a re-packed version of
 # "https://www.apachefriends.org/xampp-files/${pkgver}/${pkgname}-linux-x64-${pkgver}-0-installer.run"
