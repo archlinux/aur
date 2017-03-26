@@ -4,7 +4,7 @@
 
 pkgname=('nvidia-utils-beta' 'nvidia-egl-wayland-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
 pkgver=378.13
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -116,7 +116,7 @@ package_nvidia-egl-wayland-beta() {
 
 package_nvidia-utils-beta() {
   pkgdesc="NVIDIA driver utilities and libraries (beta version)"
-  depends=('xorg-server>=1.19.1-3')
+  depends=('xorg-server' 'mesa>=17.0.2-2')
   optdepends=('gtk2: nvidia-settings (GTK+ v2)'
               'gtk3: nvidia-settings (GTK+ v3)'
               'opencl-nvidia-beta: OpenCL support'
@@ -145,7 +145,8 @@ package_nvidia-utils-beta() {
   # GLX
   install -Dm755 libGLX.so.0 "$pkgdir"/usr/lib/libGLX.so.0
   install -Dm755 libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib/libGLX_nvidia.so.$pkgver
-  ln -s libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib/libGLX_indirect.so.0
+  # now in mesa driver
+  #ln -s libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib/libGLX_indirect.so.0
 
   # EGL
   install -Dm755 libEGL.so.1 "$pkgdir"/usr/lib/nvidia/libEGL.so.1
