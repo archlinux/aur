@@ -1,0 +1,7 @@
+pre_upgrade() {
+    /usr/bin/find /usr/share/live-usb-install -name \*.pyc -delete
+}
+
+post_remove() {
+    /usr/bin/find /usr/share/live-usb-install -name \*.pyc -delete
+}
