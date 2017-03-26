@@ -2,7 +2,7 @@
 # Contributor: Michael Straube <straubem@gmx.de>
 
 pkgname=latte-dock-git
-pkgver=0.5.91.r363.g8635fe2
+pkgver=0.5.98.r7.g06394d0
 pkgrel=1
 pkgdesc='A dock based on plasma frameworks - git version'
 arch=('i686' 'x86_64')
