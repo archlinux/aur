@@ -9,7 +9,7 @@ license=('custom')
 arch=('x86_64')
 depends=('zlib' 'gmp-ecm')
 source=("http://downloads.sourceforge.net/project/msieve/msieve/Msieve%20v${pkgver}/msieve${pkgver/./}_src.tar.gz")
-sha1sums=('6ecd72c5f86288edbad111415dbcc03b6c35b524')
+sha256sums=('c5fcbaaff266a43aa8bca55239d5b087d3e3f138d1a95d75b776c04ce4d93bb4')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
