@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://www.cs.wisc.edu/~ghost/doc/pstotext.htm"
 license=('GPL')
 depends=('ghostscript')
-source=(ftp://ftp.uni-frankfurt.de/pub/Mirrors2/gentoo.org/distfiles/$pkgname-$pkgver.tar.gz)
+source=(ftp://ftp.netbsd.org/pub/pkgsrc/distfiles/$pkgname-$pkgver.tar.gz)
 md5sums=('64576e8a10ff5514e285d98b3898ae78')
 
 build() {
