@@ -1,30 +1,30 @@
 post_install() {
-    echo "XAMPP is now installed below the /opt/lampp directory"
-    echo "To start, stop or restart XAMPP simply call the command:"
-    echo "     lampp {start, stop, restart} or xampp {start, stop, restart}"
-    echo "Then you can check that everything really works, Just enter the following URL at your web browser:"
-    echo "     http://localhost"
+	echo "XAMPP is now installed below the /opt/lampp directory"
+	echo "To start, stop or restart XAMPP simply call the command:"
+	echo "     lampp {start, stop, restart} or xampp {start, stop, restart}"
+	echo "Then you can check that everything really works, Just enter the following URL at your web browser:"
+	echo "     http://localhost"
 }
 
 pre_upgrade() {
-   /opt/lampp/lampp stop >/dev/null 2>&1
-   cp -r /opt/lampp/ /opt/lampp_backup
-   echo "Your /opt/lampp/ folder were backed up to /opt/lampp/htdocs_backup"
- }
+	/opt/lampp/lampp stop >/dev/null 2>&1
+	cp -r /opt/lampp/ /opt/lampp_backup
+	echo "Your /opt/lampp/ folder were backed up to /opt/lampp/htdocs_backup"
+}
 
- post_upgrade() {
-    echo "REMEMBER: Your /opt/lampp folder were backed up to /opt/lampp_backup"
-    echo "Restore manually the needed configuration files."
-  }
+post_upgrade() {
+	echo "REMEMBER: Your /opt/lampp folder were backed up to /opt/lampp_backup"
+	echo "Restore manually the needed configuration files."
+}
 
 
 pre_remove() {
-  echo "Stopping lampp services"
-  /opt/lampp/lampp stop >/dev/null 2>&1
-  cp -r /opt/lampp/htdocs /opt/lampp/htdocs_backup
-  echo "Your htdocs folder were backed up to /opt/lampp/htdocs_backup"
+	echo "Stopping lampp services"
+	/opt/lampp/lampp stop >/dev/null 2>&1
+	cp -r /opt/lampp/htdocs /opt/lampp/htdocs_backup
+	echo "Your htdocs folder were backed up to /opt/lampp/htdocs_backup"
 }
 
 post_remove() {
-  rm -rf /opt/lampp/{etc,var}
+	rm -rf /opt/lampp/{etc,var}
 }
