@@ -267,13 +267,13 @@ while (( "$#" )); do
         printf "\nHard drives\n/dev/[hs]d[a-z]\n" && \
         hdparm -B -M /dev/[hs]d[a-z] 2> /dev/null | sed 'N;s|\n||g; s|/dev/||g; s|\t| |g;' #SUID
 
-      printf "\nRuntime power management\n/sys/{class,bus}/*/{*,devices/*}/power/controlq\n"
+      printf "\nRuntime power management\n/sys/{class,bus}/*/{*,devices/*}/power/control\n"
       for i in /sys/devices/*/power/control; do \
         printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/class/||g; s|/sys/bus/||g; s|/devices||g; s|/power/control||g; N;s|\n|\t|'
 
       printf "\nUSB Autosuspend\n/sys/bus/usb/devices/*/power/autosuspend{,_delay_ms}\n"
       for i in /sys/bus/usb/devices/*/power/autosuspend{,_delay_ms}; do \
-        printf " ${i}\n$(cat ${i})\n"; done | sedq 's|/sys/bus/usb/devices/||g; s|/.*||g; N;s|\n|\t|'
+        printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/bus/usb/devices/||g; s|/.*||g; N;s|\n|\t|'
 
       printf "\nPower saving for modules\n/sys/module/*/parameters/power_save{,_controller}\n"
       for i in /sys/module/*/parameters/power_save{,_controller}; do \
@@ -281,7 +281,7 @@ while (( "$#" )); do
 
       printf "\nNetwork device powersaving\n/sys/class/net/{wl*,e*,*/device/power/wakeup}\n";
       [[ -n "$(command -v iw)" ]] && \
-        for i in /sys/class/net/wl*; do \q
+        for i in /sys/class/net/wl*; do \
         printf " ${i}\n$(iw dev $(printf ${i} | sed 's/^.*wl/wl/') get power_save)"; done | sed 's|^\t|  |g;s|/sys/class/net/||g; s|/.*||g'
       [[ -n "$(command -v ethtool)" ]] && \
         for i in /sys/class/net/e*; do \
