@@ -18,32 +18,27 @@ md5sums=('SKIP'
 prepare(){
   cd "occt-V${pkgver//./_}"
   patch -Np1 -i "$srcdir/fix-install-dir-references.patch"
-
-  mkdir -p build
-  cd build
-
-  flags=""
-  flags="$flags -DCMAKE_BUILD_TYPE=Release"
-  flags="$flags -DCMAKE_INSTALL_PREFIX=/opt/${pkgbase}"
-  flags="$flags -DUSE_GL2PS=ON"
-  flags="$flags -D3RDPARTY_GL2PS_DIR="
-  flags="$flags -DUSE_FREEIMAGE=ON"
-  flags="$flags -DUSE_TBB=ON"
-  flags="$flags -DUSE_VTK=ON"
-  flags="$flags -DUSE_TBB=ON"
-
-  cmake $flags ..
 }
 
 build() {
   cd "occt-V${pkgver//./_}"
+  mkdir -p build && cd build
 
-  # let's use all but one core to build 
-  (cd build && make -j$(nproc --ignore=1))
+  cmake .. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/opt/${pkgbase} \
+    -DUSE_GL2PS=ON \
+    -D3RDPARTY_GL2PS_DIR= \
+    -DUSE_FREEIMAGE=ON \
+    -DUSE_TBB=ON \
+    -DUSE_VTK=ON \
+    -DUSE_TBB=ON
+
+  make
 
   # Documentation must be built separately.
-  ./gendoc -html -overview
-  ./gendoc -html -refman
+  ../gendoc -html -overview
+  ../gendoc -html -refman
 }
 
 package_opencascade7() {
@@ -55,8 +50,8 @@ package_opencascade7() {
   rm -R "${pkgdir}/opt/${pkgbase}/share/doc"
 
   # Install license files into the right location.
-  install -Dm644 ../LICENSE_LGPL_21.txt -t "$pkgdir/usr/share/licenses/${pkgbase}/"
-  install -Dm644 ../OCCT_LGPL_EXCEPTION.txt -t "$pkgdir/usr/share/licenses/${pkgbase}/"
+  install -Dm644 ../LICENSE_LGPL_21.txt -t "${pkgdir}/usr/share/licenses/${pkgbase}/"
+  install -Dm644 ../OCCT_LGPL_EXCEPTION.txt -t "${pkgdir}/usr/share/licenses/${pkgbase}/"
 
   # Fix permission of draw.sh script.
   chmod 755 "${pkgdir}/opt/${pkgbase}/bin/draw.sh"
