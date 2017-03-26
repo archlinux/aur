@@ -3,15 +3,15 @@
 # Contributors: Florian Dejonckheere <florian@floriandejonckheere.be>, Jooch <jooch (at) gmx (dot) com>
 
 pkgname=live-usb-install
-pkgver=2.5.9
+pkgver=2.5.11
 pkgrel=1
 pkgdesc="LiveUSB Install - Create bootable usb sticks from a wide range of different Linux distributions"
 url="http://live.learnfree.eu"
 license=('GPL')
 arch=('i686' 'x86_64')
-source=('http://skss.learnfree.eu/go.php?http://download.learnfree.eu/lfu-usb/live-usb-install-2.5.9.tar.gz'
+source=('http://downloads.sourceforge.net/project/liveusbinstall/live-usb-install-2.5.11.tar.gz'
 	'live-usb-install.desktop')
-md5sums=('e195f70162707c930d77a61a5ccc137d'
+md5sums=('7d7d9811bd3e5d72d1e04f3855ef0c3c'
 '3c0c278b60d2f6fe8887a94198b1796f')
 depends=('python2'
 	'pygtk'
@@ -25,7 +25,8 @@ depends=('python2'
 	'gksu'
 	'python2-dbus')
 optdepends=('python-libtorrent: needed for downloading some distributions')
-conflicts=('live-usb-install<2.5.9')
+conflicts=('live-usb-install<2.5.11')
+install=live-usb-install.install
 
 package(){
 	cd ${srcdir}/${pkgname}
