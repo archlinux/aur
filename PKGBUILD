@@ -1,19 +1,20 @@
 # Maintainer:Bjoern Bidar <theodorstormgrade@gmail.com
+# Maintainer:Thomas Kowaliczek-Schmer <thomas.kowaliczek@posteo.de>
 #_gui_toolkit=qt # qt or gtk
 _build_server=true # set true to build server (default:false)
 _build_client=true  # set false to don't build client (default:true)
-_CMAKE_COMMON_ARGS=('-DWITH_STATIC=OFF' '-DWITH_NEL_TOOLS=OFF' '-DWITH_NEL_TESTS=OFF' '-DWITH_LUA51=ON'  '-DWITH_NEL_SAMPLES=OFF' '-DWITH_RYZOM_TOOLS=OFF'.) # cmake arguments for server and client
+_CMAKE_COMMON_ARGS=('-DWITH_STATIC=OFF' '-DWITH_NEL_TOOLS=OFF' '-DWITH_NEL_TESTS=OFF' '-DWITH_LUA53=ON'  '-DWITH_NEL_SAMPLES=OFF' '-DWITH_RYZOM_TOOLS=OFF'.) # cmake arguments for server and client
 _CMAKE_SERVER_ARGS=('-DWITH_RYZOM_SERVER=ON' '-DWITH_RYZOM_CLIENT=OFF' '-DWITH_DRIVER_OPENGL=OFF' '-DWITH_DRIVER_OPENAL=OFF' ) # cmake args for building server
 _CMAKE_CLIENT_ARGS=( '-DWITH_RYZOM_SERVER=OFF' '-DWITH_RYZOM_CLIENT=ON' ) # cmake args for building client
 pkgname=ryzom-hg 
 pkgbase=ryzom-hg
-pkgver=r5901.5f82c8b8fbec
+pkgver=r8783.97f5ac60c244
 pkgrel=1
 pkgdesc="Ryzom is a Free to Play MMORPG . This version is for playing on an official server or launch a server"
 arch=('i686' 'x86_64')
 url="http://www.ryzom.com/"
 license=('AGPL3')
-depends=('curl' 'freetype2' 'libx11' 'mesa' 'libxxf86vm' 'openal' 'freealut' 'libogg' 'libvorbis' 'libxml2'  'libpng' 'libjpeg' 'rrdtool' 'libwww' 'boost'  'luabind' 'libsquish' 'lua51'  'lua51-sql-mysql') 
+depends=('curl' 'freetype2' 'libx11' 'mesa' 'libxxf86vm' 'openal' 'freealut' 'libogg' 'libvorbis' 'libxml2'  'libpng' 'libjpeg' 'rrdtool' 'boost'  'luabind' 'libsquish' 'lua'  'lua-sql-mysql')
 conflicts=('ryzom-client-latest-hg')
 groups=('ryzom')
 makedepends=('mercurial' 'cpptest' 'cmake' 'bison')
@@ -35,17 +36,6 @@ case $_gui_toolkit in
   gtk) _CMAKE_COMMON_ARGS=( ${_CMAKE_COMMON_ARGS_ARGS[*]} '-DWITH_GTK=ON' ) ;;
 esac 
 
-
-
-prepare() {
-    cd $srcdir/$_hg_name/code
-  
-
-    for lib in WWWCACHE WWWSTREAM WWWFTP WWWGOPHER WWWNEWS WWWTELNET WWWDIR \
-			WWWINIT WWWMUX WWWXML WWWZIP XMLPARSE XMLTOK WWWSSL MD5
-    do sed "s|LIB${lib}_LIBRARY OPTIONAL|LIB${lib}_LIBRARY REQUIRED|" \
-	   -i CMakeModules/FindLibwww.cmake; done
-}
 build() {
     cd $_hg_name
     
@@ -75,7 +65,8 @@ package_ryzom-hg() {
 
 package_ryzom-client-hg() {
   pkgdesc="Ryzom is a Free to Play MMORPG . This version is for playing on an official server"
-  depends=( 'curl' 'freetype2' 'libx11' 'mesa' 'libxxf86vm' 'openal' 'freealut' 'libogg' 'libvorbis' 'libxml2' 'cmake' 'libpng' 'libjpeg' 'rrdtool' 'bison' 'libwww' 'boost' 'cpptest' 'luabind' 'libsquish' 'lua51'  'lua51-sql-mysql' 'ryzom-data' )
+  depends=( 'curl' 'freetype2' 'libx11' 'mesa' 'libxxf86vm' 'openal' 'freealut' 'libogg' 'libvorbis' 'libxml2' 'libpng' 'libjpeg' 'rrdtool' 'boost' 'luabind' 'libsquish' 'lua'  'lua-sql-mysql' 'ryzom-data' )
+  makedepends=('cpptest' 'cmake' 'bison')
   cd "$srcdir/build-client"
   make DESTDIR="$pkgdir/" install
   install -Dm 644 ${srcdir}/ryzom.desktop ${pkgdir}/usr/share/applications
@@ -96,4 +87,3 @@ fi
 if [ $_build_server = true ] ; then
   true && pkgname=( 'ryzom-client-hg' 'ryzom-server-hg')
 fi
-
