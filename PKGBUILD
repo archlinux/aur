@@ -3,35 +3,42 @@
 # Contributor: Ryon Sherman <ryon.sherman@gmail.com>
 # Contributor: Dardo Marasca <gefarion@gmail.com>
 # Contributor: Kevin Kyzer <kev@k3v.in>
-
+# Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet
-pkgver=1.1.1
-pkgrel=4
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="A modern MUD client with a graphical user inteface and built in Lua scripting"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/mudlet/"
+url="http://www.mudlet.org"
 license=('GPL')
-depends=('lua' 'qscintilla' 'qt4')
-makedepends=('cmake')
-source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}-src.tar.gz mudlet.patch)
-md5sums=('0710ec2c9c146633ef8b659a1183b612' 'c2055054ded3fc98c8cc5a954256f16c')
+depends=('yajl' 'qt5-base' 'qt5-multimedia' 'hunspell' 'libzip' 'glu' 'lua51' 'lua51-filesystem' 'luazip5.1' 'lua51-sql-sqlite' 'lrexlib-pcre5.1')
+makedepends=('boost' 'qt5-tools')
+conflicts=('mudlet-dev' 'mudlet-git' 'mudlet-deb')
+source=("http://www.mudlet.org/download/Mudlet-3.0.0.tar.xz")
+sha1sums=('3450a71345c589f53d1005fbed98e03be802e59f')
+
+prepare() {
+    cd "$srcdir/src"
+    sed -i 's,QString path = "../src/mudlet-lua/lua/LuaGlobal.lua";,QString path = "/usr/share/mudlet/lua/LuaGlobal.lua";,' TLuaInterpreter.cpp
+    sed -i 's;"mudlet.app/Contents/Resources/mudlet-lua/lua/";"mudlet.app/Contents/Resources/mudlet-lua/lua/", "/usr/share/mudlet/lua/";' mudlet-lua/lua/LuaGlobal.lua
+}
 
 build() {
-  cd ${srcdir}/${pkgname}/src
-  patch -Np3 -i ../../mudlet.patch
-  qmake
-  make
+    cd "$srcdir/src"
+    qmake-qt5 PREFIX=/usr
+    make
 }
-
 
 package() {
-  #binary
-  install -D ${srcdir}/${pkgname}/src/${pkgname}  ${pkgdir}/usr/bin/${pkgname} || return 1
+    cd $srcdir/src
+    mkdir -p ${pkgdir}/usr/bin
+    mkdir -p ${pkgdir}/usr/share/mudlet/lua/geyser
+    mkdir -p ${pkgdir}/usr/share/applications
+    mkdir -p ${pkgdir}/usr/share/pixmaps
 
-  #.desktop file and icon
-  install -D -m644 ${srcdir}/${pkgname}/${pkgname}.desktop \
-    ${pkgdir}/usr/share/applications/${pkgname}.desktop || return 1
-  install -D -m644 ${srcdir}/${pkgname}/${pkgname}.svg \
-    ${pkgdir}/usr/share/pixmaps/${pkgname}.svg || return 1
+    install -m 755 mudlet ${pkgdir}/usr/bin/mudlet
+    install -m 644 mudlet-lua/lua/*.lua ${pkgdir}/usr/share/mudlet/lua
+    install -m 644 mudlet-lua/lua/geyser/* ${pkgdir}/usr/share/mudlet/lua/geyser
+    install -m 644 ../mudlet.desktop ${pkgdir}/usr/share/applications
+    install -m 644 ../mudlet.png ${pkgdir}/usr/share/pixmaps
 }
-
