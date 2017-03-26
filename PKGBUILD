@@ -26,6 +26,11 @@ prepare() {
   then
     cp "/opt/games/$pkgname/res/data/save" "$srcdir/"
   fi
+
+  if [ -f "/opt/games/$pkgname/res/data/highscores" ]
+  then
+    cp "/opt/games/$pkgname/res/data/highscores" "$srcdir/"
+  fi
 }
 
 pkgver() {
@@ -84,16 +89,26 @@ package() {
   else
     touch "$pkgdir/opt/games/$pkgname/res/data/save"
   fi
+  
+  if [ -f "$srcdir/highscores" ] 
+  then
+    cp "$srcdir/highscores" "$pkgdir/opt/games/$pkgname/res/data/highscores"
+    rm "$srcdir/highscores"
+  else
+    touch "$pkgdir/opt/games/$pkgname/res/data/highscores"
+  fi
 
   chmod 666 "$pkgdir/opt/games/$pkgname/res/data/save"
   chmod 666 "$pkgdir/opt/games/$pkgname/res/data/config"
+  chmod 666 "$pkgdir/opt/games/$pkgname/res/data/highscores"
 
   printf "#!/bin/bash\ncd /opt/games/%s\n./infra-arcana" "$pkgname" > "$pkgdir/usr/bin/ia"
   chmod 775 "$pkgdir/usr/bin/ia"
 
   printf "\n\n\n"
-  printf "*** Note that updating the package will keep your \"config\" and \"save\" files ***\n"
+  printf "*** Note that updating the package will keep ***\n"
+  printf "*** Your \"config\", \"save\" and \"highscores\" files ***\n"
   printf "*** From under /opt/games/%s/res/data/ ***\n" "$pkgname"
-  printf "*** If anything unusual happens after an update, try deleting those ***"
+  printf "*** If anything unusual happens after an update, try deleting those ***\n"
   printf "\n\n\n"
 }
