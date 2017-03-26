@@ -5,7 +5,7 @@
 
 pkgname='moc-pulse'
 _pkgname='moc'
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc='An ncurses console audio player with support for pulseaudio'
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ provides=('moc')
 conflicts=('moc')
 source=(http://ftp.daper.net/pub/soft/moc/stable/${_pkgname}-${pkgver}.tar.bz2{,.sig}
         'pulseaudio.patch')
-sha1sums=('9e9a9bf0260cd7d7c170e4ef957041cf2275de32'
+sha1sums=('9d27a929b63099416263471c16367997c0ae6dba'
           'SKIP'
           '5c6385760ba40ee8a330d28d520c44eac2cbbae1')
 validpgpkeys=('59359B80406D9E73E80599BEF3121E4F2885A7AA')
@@ -37,12 +37,12 @@ prepare() {
 
 build() {
   cd "${_pkgname}-${pkgver}"
-  
+
   msg "Re-creating ./configure script"
   aclocal
   automake --add-missing
   autoreconf
-  
+
   msg "Begin configuring"
   ./configure --prefix=/usr --without-rcc \
     --with-pulse --with-oss --with-alsa --with-jack --with-aac \
