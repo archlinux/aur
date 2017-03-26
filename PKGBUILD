@@ -10,14 +10,21 @@ source_i686=("https://d3aw1w08kaciwn.cloudfront.net/${pkgver//_/-}/${pkgname}_${
 source_x86_64=("https://d3aw1w08kaciwn.cloudfront.net/${pkgver//_/-}/${pkgname}_${pkgver//_/-}_amd64.zip")
 md5sums_i686=("a99646244c586a42553b4a4a85890a62")
 md5sums_x86_64=("851ac6778e1d00377801f36d240ba35e")
+noextract=("${pkgname}_${pkgver//_/-}_ia32.zip" "${pkgname}_${pkgver//_/-}_amd64.zip")
+if [ "$(uname -m)" = "x86_64" ]; then
+        _arch=amd64
+elif [ "$(uname -m)" = "i686" ]; then
+        _arch=ia32
+fi
 prepare() {
-	rm *.zip
+	mkdir -p ${srcdir}/writefull
+	bsdtar -xf "${pkgname}_${pkgver//_/-}_${_arch}.zip" -C "${srcdir}/writefull"
 }
 package() {
 	install -dm755 "${pkgdir}/usr/share/${pkgname}"
 	install -dm755 "${pkgdir}/usr/bin"
 
-	cp -a ${srcdir}/* "${pkgdir}/usr/share/${pkgname}"
+	cp -a ${srcdir}/writefull/* "${pkgdir}/usr/share/${pkgname}"
 
 	ln -s "/usr/share/${pkgname}/Writefull" "${pkgdir}/usr/bin/writefull"
 
