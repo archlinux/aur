@@ -1,0 +1,10 @@
+[Unit]
+Description=A spotify playing daemon for %i
+
+[Service]
+Type=simple
+User=%i
+ExecStart=/usr/bin/spotifyd --no-daemon
+
+[Install]
+WantedBy=multi-user.target
