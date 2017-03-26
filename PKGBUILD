@@ -3,7 +3,7 @@
 
 
 pkgname=decklink-sdk
-pkgver=10.8.3
+pkgver=10.8.5
 pkgrel=1
 epoch=1
 pkgdesc="Blackmagic Design DeckLink SDK"
@@ -14,7 +14,7 @@ depends=('glu' 'mesa' 'qt4')
 makedepends=('unzip')
 options=('!strip')
 source=("local://Blackmagic_DeckLink_SDK_${pkgver}.zip")
-sha256sums=('be6e582c878ce6abc7faa03085d1715b45d83c2cc4e7717b0f05cf01dffb8445')
+sha256sums=('06c02febfe6dde2ddd19147115aa659ae1b4cd3c11c1e17cee52eedc3c43da1a')
 
 package() {
   cd "$srcdir"
