@@ -5,7 +5,7 @@
 
 pkgname=('lib32-nvidia-utils-vulkan-developer-beta' 'lib32-nvidia-libgl-vulkan-developer-beta' 'lib32-opencl-nvidia-vulkan-developer-beta')
 pkgver=375.27.14
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 makedepends=('nvidia-libgl-vulkan-developer-beta')  # To avoid conflict during installation in the build chroot
@@ -77,7 +77,6 @@ package_lib32-nvidia-libgl-vulkan-developer-beta() {
   ln -s /usr/lib32/nvidia/libGLX.so.0 "$pkgdir"/usr/lib32/libGLX.so.0
   ln -s libGLX.so.0 "$pkgdir"/usr/lib32/libGLX.so.$pkgver
   ln -s libGLX.so.0 "$pkgdir"/usr/lib32/libGLX.so
-  ln -s libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libGLX_indirect.so.0
 
   # EGL (link)	
   ln -s /usr/lib32/nvidia/libEGL.so.1 "$pkgdir"/usr/lib32/libEGL.so.1
