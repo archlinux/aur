@@ -22,7 +22,7 @@ backup=('etc/fenrir/settings/settings.conf')
 install="$pkgname".install
 source=("https://github.com/chrys87/${pkgname}/archive/${pkgver}.zip"
   'fenrir.install')
-md5sums=('d28fdb074dc731255c6af158f14ac9d6'
+md5sums=('65b3dd806540c557f219932f0c4e4122'
          '6e9e07056b744789e8d62fcf56b612ce')
 
 package()
