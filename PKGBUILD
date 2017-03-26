@@ -8,7 +8,7 @@ url='http://fenua.org/gaetan/src/'
 license=('ISC')
 arch=('i686' 'x86_64' 'armv7h')
 source=("${url}/${pkgname}-${pkgver}.c")
-sha1sums=('b1793d8a8b48f3412c7b424b234bab0cc4a98f3c')
+sha256sums=('12c46e35176c0e5b9fa529f727e7264cb8d289359e7c9a9be32f88def92b1e4b')
 
 build() {
 	cd "${srcdir}"
