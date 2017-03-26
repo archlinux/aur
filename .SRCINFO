@@ -1,6 +1,6 @@
 pkgbase = nvidia-utils-vulkan-developer-beta
 	pkgver = 375.27.14
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nvidia.com/
 	arch = i686
 	arch = x86_64
@@ -32,7 +32,8 @@ pkgname = nvidia-utils-vulkan-developer-beta
 
 pkgname = nvidia-libgl-vulkan-developer-beta
 	pkgdesc = NVIDIA driver library symlinks for 'nvidia-utils-vulkan-developer-beta'
-	depends = nvidia-utils-vulkan-developer-beta
+	depends = nvidia-utils-vulkan-developer-beta,
+	depends = mesa>=17.0.2
 	provides = libgl
 	provides = nvidia-libgl
 	conflicts = libgl

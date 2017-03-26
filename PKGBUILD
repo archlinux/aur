@@ -5,7 +5,7 @@
 
 pkgname=('nvidia-utils-vulkan-developer-beta' 'nvidia-libgl-vulkan-developer-beta' 'opencl-nvidia-vulkan-developer-beta')
 pkgver=375.27.14
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -74,7 +74,7 @@ package_opencl-nvidia-vulkan-developer-beta() {
 
 package_nvidia-libgl-vulkan-developer-beta() {
   pkgdesc="NVIDIA driver library symlinks for 'nvidia-utils-vulkan-developer-beta'"
-  depends=('nvidia-utils-vulkan-developer-beta')
+  depends=('nvidia-utils-vulkan-developer-beta', 'mesa>=17.0.2')
   provides=('libgl' 'nvidia-libgl')
   conflicts=('libgl' 'nvidia-libgl' 'mesa<10.1.0-2')
   cd $_pkg_dir
