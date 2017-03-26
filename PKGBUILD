@@ -6,11 +6,11 @@
 
 _pkgname="liferea"
 _pkgver="1.12"
-_prerelease="rc2"
+_prerelease="rc3"
 
 pkgname="${_pkgname}-unstable"
 pkgver="${_pkgver}.${_prerelease}"
-pkgrel=2
+pkgrel=1
 pkgdesc="A desktop news aggregator for online news feeds and weblogs - Unstable"
 arch=('i686' 'x86_64')
 url="http://lzone.de/liferea/"
@@ -27,7 +27,7 @@ options=('!libtool' '!emptydirs')
 provides=('liferea')
 conflicts=('liferea' 'liferea-git')
 source=("https://github.com/lwindolf/${_pkgname}/archive/v${_pkgver}-${_prerelease}.tar.gz")
-sha256sums=('dd0dc8aa3bb21f67d4759286ecedf8ab2250471ae7bb09a5c8978e371e17f38c')
+sha256sums=('b5e5b828cbb76fc4d7d43b300af8e68f3914de5ed0d4a665b71d89e74d1fec1a')
 
 build() {
     cd "${_pkgname}-${_pkgver}-${_prerelease}"
