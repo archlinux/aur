@@ -2,7 +2,7 @@
 # Contributor: FrozenCow <frozencow@gmail.com>
 
 pkgname=itch
-pkgver=23.3.1
+pkgver=23.4.0
 pkgrel=1
 pkgdesc="The best way to play itch.io games."
 
@@ -11,13 +11,13 @@ url="https://github.com/itchio/itch"
 license=('MIT')
 
 depends=('alsa-lib' 'libnotify' 'nss' 'gconf' 'gtk2' 'libxtst' 'desktop-file-utils' 'gtk-update-icon-cache' 'libxss')
-makedepends=('nodejs' 'nodejs-grunt-cli' 'npm')
+makedepends=('nodejs' 'nodejs-grunt-cli' 'npm' 'python2' 'gcc')
 options=('!strip')
 install="itch.install"
 
 # sic. - source is in itch repo, kitch is a dummy repo for canary-channel github releases
 source=("https://github.com/itchio/itch/archive/v${pkgver}.tar.gz")
-sha256sums=('11efe16a0e603a0fcf1e2518f0f12a904acda554c4bc7e61b128ff277403d31c')
+sha256sums=('09112435db159fdbe1840f11c776a9c641fd93988ff41a8d8edc1eb2bcb182db')
 
 [ "$CARCH" = "i686" ]   && _ELECTRON_ARCH=ia32; _ITCH_ARCH=i386
 [ "$CARCH" = "x86_64" ] && _ELECTRON_ARCH=x64;  _ITCH_ARCH=amd64
@@ -34,7 +34,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/itch-${pkgver}"
-  export CI_BUILD_TAG="v23.3.1"
+  export CI_BUILD_TAG="v23.4.0"
   export CI_CHANNEL="stable"
 
   release/ci-compile.js
