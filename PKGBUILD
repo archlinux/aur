@@ -2,7 +2,7 @@
 
 pkgname='macos-icons-theme'
 pkgver=3.5
-pkgrel=2
+pkgrel=3
 pkgdesc='macOS iCons Theme'
 arch=('any')
 url='https://www.gnome-look.org/p/1102582/'
@@ -16,5 +16,6 @@ prepare() {
 }
 
 package() {
+	cd "$srcdir/$_name"
 	find */ -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/icons/{}" \;
 }
