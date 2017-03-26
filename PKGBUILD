@@ -5,7 +5,7 @@
 
 pkgname=('lib32-nvidia-utils-vulkan-developer-beta' 'lib32-nvidia-libgl-vulkan-developer-beta' 'lib32-opencl-nvidia-vulkan-developer-beta')
 pkgver=375.27.14
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="http://www.nvidia.com/"
 makedepends=('nvidia-libgl-vulkan-developer-beta')  # To avoid conflict during installation in the build chroot
@@ -62,7 +62,7 @@ package_lib32-opencl-nvidia-vulkan-developer-beta() {
 
 package_lib32-nvidia-libgl-vulkan-developer-beta() {
   pkgdesc="NVIDIA driver library symlinks for 'lib32-nvidia-utils-vulkan-developer-beta'"
-  depends=('lib32-nvidia-utils-vulkan-developer-beta' 'nvidia-libgl-vulkan-developer-beta')
+  depends=('lib32-nvidia-utils-vulkan-developer-beta' 'nvidia-libgl-vulkan-developer-beta', 'lib32-mesa>=17.0.2')
   provides=('lib32-libgl' 'lib32-libegl' 'lib32-libgles' 'lib32-nvidia-libgl')
   conflicts=('lib32-libgl' 'lib32-libegl' 'lib32-libgles' 'lib32-nvidia-libgl')
   cd $_pkg_dir

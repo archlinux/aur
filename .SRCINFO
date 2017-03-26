@@ -1,6 +1,6 @@
 pkgbase = lib32-nvidia-utils-vulkan-developer-beta
 	pkgver = 375.27.14
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom:NVIDIA
@@ -24,7 +24,8 @@ pkgname = lib32-nvidia-utils-vulkan-developer-beta
 pkgname = lib32-nvidia-libgl-vulkan-developer-beta
 	pkgdesc = NVIDIA driver library symlinks for 'lib32-nvidia-utils-vulkan-developer-beta'
 	depends = lib32-nvidia-utils-vulkan-developer-beta
-	depends = nvidia-libgl-vulkan-developer-beta
+	depends = nvidia-libgl-vulkan-developer-beta,
+	depends = lib32-mesa>=17.0.2
 	provides = lib32-libgl
 	provides = lib32-libegl
 	provides = lib32-libgles
