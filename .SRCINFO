@@ -1,6 +1,6 @@
 pkgbase = aircrack-ng-svn
 	pkgdesc = Key cracker for the 802.11 WEP and WPA-PSK protocols
-	pkgver = 20160826.2860
+	pkgver = 20170324.2901
 	pkgrel = 1
 	url = http://www.aircrack-ng.org/
 	arch = i686

@@ -6,7 +6,7 @@
 
 pkgname=aircrack-ng-svn
 _pkgname=aircrack-ng
-pkgver=20160826.2860
+pkgver=20170324.2901
 pkgrel=1
 pkgdesc='Key cracker for the 802.11 WEP and WPA-PSK protocols'
 url='http://www.aircrack-ng.org/'
@@ -15,7 +15,7 @@ license=('GPL2')
 makedepends=('subversion')
 depends=('openssl' 'sqlite' 'iw' 'net-tools')
 source=("${_pkgname}::svn+http://svn.aircrack-ng.org/trunk")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
