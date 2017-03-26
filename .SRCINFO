@@ -1,0 +1,16 @@
+pkgbase = flatplat-blue-theme
+	pkgdesc = Flat-Plat-Blue Theme is a GNOME Shell/GTK Theme forked from Flat-Plat Theme with blue tones
+	pkgver = 3.24.1
+	pkgrel = 1
+	url = https://github.com/peterychuang/Flat-Plat-Blue
+	arch = any
+	license = GPL2
+	depends = gtk3>=3.18
+	depends = gtk-engine-murrine
+	depends = gnome-themes-standard
+	provides = flatplat-blue-theme
+	source = https://github.com/peterychuang/Flat-Plat-Blue/releases/download/3.24.1/Flat-Plat-Blue-20170325.tar.gz
+	sha256sums = 5d67946346f804dba239aa8c025363bebd3554cc6034a5c8c153ba11cc25eab5
+
+pkgname = flatplat-blue-theme
+
