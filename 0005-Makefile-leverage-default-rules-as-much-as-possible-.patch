@@ -1,62 +1,66 @@
-From 8bb1fc15f4151cbe19f566f98b5d17efb60d3810 Mon Sep 17 00:00:00 2001
+From 6c6f0708f7c26b75e1f7bf3eda8c4503c0eaf5bf Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 01:01:59 +0300
 Subject: [PATCH 5/5] Makefile: leverage default rules as much as possible to
  fix behavior wrt user compile flags
 
 ---
- Makefile        | 96 +++++++++++++++------------------------------------------
- icc2ps/Makefile | 13 ++++----
- 2 files changed, 31 insertions(+), 78 deletions(-)
+ Makefile        | 100 +++++++++++++++-----------------------------------------
+ icc2ps/Makefile |  13 ++++----
+ 2 files changed, 33 insertions(+), 80 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index da5dac7..aab4db6 100644
+index cb5bde5..6272778 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -456,33 +456,15 @@ all-done:
+@@ -463,35 +463,17 @@ all-done:
  	@echo "yourself."
  
  
--foo2zjs: foo2zjs.o $(LIBJBG)
--	$(CC) $(CFLAGS) -o $@ foo2zjs.o $(LIBJBG)
+-foo2ddst: foo2ddst.o $(LIBJBG)
+-	$(CC) $(CFLAGS) -o $@ foo2ddst.o $(LIBJBG)
+-
+-foo2hbpl2: foo2hbpl2.o $(LIBJBG)
+-	$(CC) $(CFLAGS) -o $@ foo2hbpl2.o $(LIBJBG)
 -
 -foo2hp: foo2hp.o $(LIBJBG)
--	# $(CC) $(CFLAGS) -o $@ foo2hp.o $(LIBJBG) /usr/local/lib/libdmalloc.a
 -	$(CC) $(CFLAGS) -o $@ foo2hp.o $(LIBJBG)
--
--foo2xqx: foo2xqx.o $(LIBJBG)
--	$(CC) $(CFLAGS) -o $@ foo2xqx.o $(LIBJBG)
--
--foo2lava: foo2lava.o $(LIBJBG)
--	$(CC) $(CFLAGS) -o $@ foo2lava.o $(LIBJBG)
--
--foo2qpdl: foo2qpdl.o $(LIBJBG)
--	$(CC) $(CFLAGS) -o $@ foo2qpdl.o $(LIBJBG)
--
--foo2oak: foo2oak.o $(LIBJBG)
--	$(CC) $(CFLAGS) -o $@ foo2oak.o $(LIBJBG)
--
--foo2slx: foo2slx.o $(LIBJBG)
--	$(CC) $(CFLAGS) -o $@ foo2slx.o $(LIBJBG)
 -
 -foo2hiperc: foo2hiperc.o $(LIBJBG)
 -	$(CC) $(CFLAGS) -o $@ foo2hiperc.o $(LIBJBG)
 -
--foo2hbpl2: foo2hbpl2.o $(LIBJBG)
--	$(CC) $(CFLAGS) -o $@ foo2hbpl2.o $(LIBJBG)
-+foo2zjs: $(LIBJBG)
-+foo2hp: $(LIBJBG)
-+foo2xqx: $(LIBJBG)
-+foo2lava: $(LIBJBG)
-+foo2qpdl: $(LIBJBG)
-+foo2oak: $(LIBJBG)
-+foo2slx: $(LIBJBG)
-+foo2hiperc: $(LIBJBG)
+-foo2lava: foo2lava.o $(LIBJBG)
+-	$(CC) $(CFLAGS) -o $@ foo2lava.o $(LIBJBG)
+-
+-foo2oak: foo2oak.o $(LIBJBG)
+-	$(CC) $(CFLAGS) -o $@ foo2oak.o $(LIBJBG)
+-
+-foo2qpdl: foo2qpdl.o $(LIBJBG)
+-	$(CC) $(CFLAGS) -o $@ foo2qpdl.o $(LIBJBG)
+-
+-foo2slx: foo2slx.o $(LIBJBG)
+-	$(CC) $(CFLAGS) -o $@ foo2slx.o $(LIBJBG)
+-
+-foo2xqx: foo2xqx.o $(LIBJBG)
+-	$(CC) $(CFLAGS) -o $@ foo2xqx.o $(LIBJBG)
+-
+-foo2zjs: foo2zjs.o $(LIBJBG)
+-	$(CC) $(CFLAGS) -o $@ foo2zjs.o $(LIBJBG)
++foo2ddst: $(LIBJBG)
 +foo2hbpl2: $(LIBJBG)
++foo2hp: $(LIBJBG)
++foo2hbpl2: $(LIBJBG)
++foo2hiperc: $(LIBJBG)
++foo2lava: $(LIBJBG)
++foo2oak: $(LIBJBG)
++foo2qpdl: $(LIBJBG)
++foo2slx: $(LIBJBG)
++foo2xqx: $(LIBJBG)
++foo2zjs: $(LIBJBG)
  
  foo2zjs-loadfw: foo2zjs-loadfw.in Makefile
  	[ ! -f $@ ] || chmod +w $@
-@@ -566,57 +548,27 @@ getweb: getweb.in Makefile
+@@ -581,57 +563,27 @@ getweb: getweb.in Makefile
  	chmod 555 $@
  
  all-icc2ps:

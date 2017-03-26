@@ -4,8 +4,8 @@
 #Contributor: Muhammed Uluyol <uluyol0@gmail.com>
 
 pkgname=foo2zjs-nightly
-pkgver=20161203
-pkgrel=2
+pkgver=20170325
+pkgrel=1
 pkgdesc="foo2zjs Printer Drivers (automatically updated). Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers."
 url="http://foo2zjs.rkkda.com/"
 license=('GPL' 'custom')
@@ -38,12 +38,12 @@ source=("foo2zjs-$(pkgver).tar.gz::http://foo2zjs.rkkda.com/foo2zjs.tar.gz"
         '0004-Makefile-fix-generating-.ppd-in-place.patch'
 	'0005-Makefile-leverage-default-rules-as-much-as-possible-.patch')
 
-sha256sums=('1514b28e529cfe66a0de8f68372c44c011b79a2e581e1ca36378980515941ff3'
-            'dbb632abc38df11e461c9003d3bcfd35794faa0cf9492b54b6f06990cb3ecddd'
-            '06cbfcca0a5127ee410ebcb40e6a23aca183058feb8925af00c285345df31874'
-            '580563bdb5fc39df238722d41a3cfdd0d6744976911fb84c617a820264bce288'
-            'c97bf5f461a7ffa1e23dc5667588d0f83770f31964eaf56ea8f1fed960da5c13'
-            'b2cc15134ff9e68a2528b6b21758293cbc541a02f3b65dfbf83a8fcb0b1ff74d')
+sha256sums=('SKIP'
+            '5bb596a33c74d80a4efbc654ee57cfa5d7fa745f46880b116247e0938a3005b0'
+            'be38f1d49290ffdd75e1b692268f0cafed97f29fc9800d2f6f0a63e93d9a8874'
+            'ab45df3afe8e25699904be6b2dc709fb4bdd0dd5e348c4f180678e27ec866177'
+            'df6c992c5efbb8f30cfbb249a7444564b27a40ad5e43b4c1975b714a56b9a90b'
+            '1961671d931a542a438377a56eae42d414f07cde25296565d0099a0d46e3ac98')
 
 prepare() {
   cd foo2zjs

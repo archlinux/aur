@@ -1,4 +1,4 @@
-From 5368e345f78ce89ee0aa1d1ba81cc2f060e946f8 Mon Sep 17 00:00:00 2001
+From 91820f100be14b1c9db30bcf315537f346e0db62 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sun, 23 Oct 2016 10:18:08 +0300
 Subject: [PATCH 3/5] Rework firmware loading
@@ -15,10 +15,10 @@ Subject: [PATCH 3/5] Rework firmware loading
  create mode 100644 usblp.conf
 
 diff --git a/Makefile b/Makefile
-index d4a5582..57c5ea8 100644
+index 022f072..ca39cf3 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -170,6 +170,7 @@ FILES	=	\
+@@ -172,6 +172,7 @@ FILES	=	\
  		ddst.h \
  		ddstdecode.c \
  		ddstdecode.1in \
@@ -26,7 +26,7 @@ index d4a5582..57c5ea8 100644
  		foo2zjs-wrapper.in \
  		foo2zjs-wrapper.1in \
  		foo2hp2600-wrapper.in \
-@@ -291,10 +292,7 @@ MANPAGES+=	foo2zjs-pstops.1 arm2hpdl.1 usb_printerid.1
+@@ -295,10 +296,7 @@ MANPAGES+=	foo2zjs-pstops.1 arm2hpdl.1 usb_printerid.1
  MANPAGES+=	printer-profile.1
  LIBJBG	=	jbig.o jbig_ar.o
  BINPROGS=
@@ -38,7 +38,7 @@ index d4a5582..57c5ea8 100644
  
  # Compiler flags
  #CFLAGS +=	-O2 -Wall -Wno-unused-but-set-variable
-@@ -385,7 +383,7 @@ JBGOPTS=-m 16 -d 0 -p 92	# Equivalent options for pbmtojbg
+@@ -392,7 +390,7 @@ JBGOPTS=-m 16 -d 0 -p 92	# Equivalent options for pbmtojbg
  #
  # The usual build rules
  #
@@ -47,9 +47,9 @@ index d4a5582..57c5ea8 100644
  	all-icc2ps man doc \
  	all-done
  
-@@ -486,6 +484,18 @@ foo2hiperc: foo2hiperc.o $(LIBJBG)
- foo2hbpl2: foo2hbpl2.o $(LIBJBG)
- 	$(CC) $(CFLAGS) -o $@ foo2hbpl2.o $(LIBJBG)
+@@ -495,6 +493,18 @@ foo2xqx: foo2xqx.o $(LIBJBG)
+ foo2zjs: foo2zjs.o $(LIBJBG)
+ 	$(CC) $(CFLAGS) -o $@ foo2zjs.o $(LIBJBG)
  
 +foo2zjs-loadfw: foo2zjs-loadfw.in Makefile
 +	[ ! -f $@ ] || chmod +w $@
@@ -64,9 +64,9 @@ index d4a5582..57c5ea8 100644
 +	    -e 's:@PREFIX@:$(PREFIX):' || (rm -f $@ && exit 1)
 +	chmod 444 $@
  
- foo2zjs-wrapper: foo2zjs-wrapper.in Makefile
+ foo2ddst-wrapper: foo2ddst-wrapper.in Makefile
  	[ ! -f $@ ] || chmod +w $@
-@@ -935,13 +945,15 @@ install-gui:
+@@ -950,13 +960,15 @@ install-gui:
  	$(INSTALL) -c -m 755 hplj10xx_gui.tcl $(SHAREZJS)
  	
  
@@ -87,7 +87,7 @@ index d4a5582..57c5ea8 100644
  
  ifeq ($(UNAME),Darwin)
  install-hotplug: install-hotplug-test install-hotplug-osx
-@@ -982,67 +994,14 @@ install-hotplug-test:
+@@ -997,67 +1009,14 @@ install-hotplug-test:
  	#
  
  install-hotplug-prog:
