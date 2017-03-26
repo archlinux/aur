@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=makehuman
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Parametrical modeling program for creating human bodies"
 arch=('any')
