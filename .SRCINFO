@@ -1,11 +1,10 @@
 pkgbase = openss7-modules-ec2-lts-git
 	pkgdesc = OpenSS7 Fast-STREAMS and protocol Suites (4.9 Kernel Modules)
 	pkgver = 1.1.8.63.g45f1b08cd
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.openss7.org
 	install = openss7-modules-ec2-lts-git.install
 	arch = x86_64
-	arch = i686
 	license = AGPL3
 	makedepends = doxygen
 	makedepends = gcc-gcj
