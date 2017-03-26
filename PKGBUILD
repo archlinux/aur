@@ -2,7 +2,7 @@
 
 pkgname=vis-git
 pkgver=0.3.r0.g4a4f9e0
-pkgrel=1
+pkgrel=2
 pkgdesc='modern, legacy free, simple yet efficient vim-like editor - git checkout'
 arch=('i686' 'x86_64')
 url='http://www.brain-dump.org/projects/vis/'
@@ -63,5 +63,7 @@ package() {
 	make DESTDIR="${pkgdir}" install
 
 	install -D -m0644 lua/visrc.lua "${pkgdir}"/etc/vis/visrc.lua
+
+	install -D -m0644 'LICENSE' "${pkgdir}/usr/share/licenses/vis/LICENSE"
 }
 
