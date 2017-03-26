@@ -1,0 +1,18 @@
+pkgbase = ripgrep-simd
+	pkgdesc = SIMD-accelerated ripgrep - A search tool that combines the usability of ag with the raw speed of grep
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/BurntSushi/ripgrep
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = UNLICENSE
+	makedepends = rustup
+	provides = ripgrep=0.5.0
+	conflicts = ripgrep
+	conflicts = ripgrep-git
+	source = https://github.com/BurntSushi/ripgrep/archive/0.5.0.tar.gz
+	sha512sums = 924e7907daf719732f888c296ea8b110db77e144cd3f7858070aca44fba93d09731d9097dd7201a851f0581ced0f0d58a7ffef6aa7c998298834170661d80256
+
+pkgname = ripgrep-simd
+
