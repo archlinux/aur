@@ -2,7 +2,7 @@
 
 pkgname=frei0r-plugins-git
 pkgver=1.5.r5.gb63f5db
-pkgrel=3
+pkgrel=4
 pkgdesc="A minimalistic plugin API for video sources and filters (Git version)"
 arch=('i686' 'x86_64')
 url="https://www.dyne.org/software/frei0r/"
@@ -33,7 +33,9 @@ build() {
     ./configure \
         --prefix=/usr \
         --enable-static=no \
-        --enable-shared=yes
+        --enable-shared=yes \
+        --enable-fast-install=yes \
+        --enable-cpuflags
     make
 }
 
