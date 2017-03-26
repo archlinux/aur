@@ -3,7 +3,7 @@
 
 pkgname=tragtor
 pkgver=0.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A graphical user interface for ffmpeg" 
 arch=('i686' 'x86_64')
 url="http://mein-neues-blog.de/tragtor-gui-for-FFmpeg/" 
@@ -12,7 +12,7 @@ depends=('python2' 'pygtk>=2.6' 'python2-dbus' 'id3v2' 'ffmpeg')
 
 source=(http://repository.mein-neues-blog.de:9000/archive/${pkgname}-${pkgver}_all.tar.gz)
 
-md5sums=('29e33bd22da1dda1311db4df661dded7')
+md5sums=('c3f5a8ac92f8c805012c224aa86becb8')
 
 package() {
 	# Patch: Force traGtor to use python2 instead of the new python3
