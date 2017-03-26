@@ -3,7 +3,7 @@
 
 pkgname=pari-git
 _pkgname=pari
-pkgver=20150608.ae00353
+pkgver=20170321.b487f4d81
 pkgrel=1
 pkgdesc='Computer algebra system designed for fast computations in number theory'
 url='http://pari.math.u-bordeaux.fr/'
@@ -13,7 +13,7 @@ depends=('gmp' 'readline' 'libx11')
 makedepends=('perl' 'texlive-core' 'git')
 optdepends=('perl: gphelp, tex2mail')
 source=('git+http://pari.math.u-bordeaux.fr/git/pari.git')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -30,7 +30,7 @@ build() {
 		--with-readline \
 		--mt=pthread \
 		--with-gmp \
-	
+
 	make all
 }
 
