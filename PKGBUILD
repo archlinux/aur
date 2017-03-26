@@ -11,7 +11,7 @@ _lock_path="/run/lock"
 _log_path="/var/log/${_pkgname}"
 
 pkgname=nginx-openssl-1.1
-pkgver=1.11.10
+pkgver=1.11.12
 pkgrel=1
 opensslver=1.1.0e
 pkgdesc="latest nginx, default build config except build with openssl 1.1."
@@ -86,6 +86,6 @@ package() {
 }
 sha1sums=('02a9b3a74b5387790c0d6d7b63abe6bf6acc686f'
     '43cf1403b04fed9e8d643e52b275b78cb3892ca5'
-    'd9c4e3361c0802eaa90aa924b8981c5d3ed771dc'
+    '75a5cee8a468aec4b53082fbacd9a531b4a729fa'
     '8bbbaf36feffadd3cb9110912a8192e665ebca4b'
 )
