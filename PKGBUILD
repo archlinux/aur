@@ -45,7 +45,7 @@ prepare() {
 
 build () {
 	cd "$srcdir/$_bpn"
-	./configure --prefix=/usr --with-ncurses --sysconfdir=/etc
+	./configure --prefix=/usr --with-ncurses --sysconfdir=/etc --sbindir=/usr/bin
 	make
 }
 
@@ -58,4 +58,5 @@ package () {
 	mv "$pkgdir"/etc/systemd/system/diod.service "$pkgdir"/usr/lib/systemd/system
 	rmdir "$pkgdir/etc/systemd/system"
 	rmdir "$pkgdir/etc/systemd"
+
 }
