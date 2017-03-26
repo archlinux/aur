@@ -2,7 +2,7 @@
 
 _gitname=darling
 pkgname=$_gitname-git
-pkgver=r1477.73eb79b1
+pkgver=r1532.a7d584bf
 pkgrel=1
 pkgdesc="A Darwin/OS X emulation layer for Linux"
 arch=('x86_64') # Can only be built on x86_64 systems
@@ -12,7 +12,7 @@ groups=('darling-git')
 depends=('darling-mach-dkms-git' 'xz' 'fuse' 'libxml2' 'icu' 'openssl' 'bzip2' 'zlib' 'libsystemd'
 	'wget' 'curl' 'sqlite' 'ruby' 'sed' 'libarchive' 'file' 'python' 'gawk' 'libunwind') # namcap complains about them
 depends_x86_64=('lib32-clang' 'lib32-bzip2' 'lib32-systemd' 'lib32-libxslt')
-makedepends=('git' 'cmake' 'clang' 'bison' 'flex' 'binutils<2.27') # binutils-2.27 bug report: https://github.com/darlinghq/darling/issues/157
+makedepends=('git' 'cmake' 'clang' 'bison' 'flex' 'binutils<2.27' 'binutils>=2.28') # binutils-2.27 bug report: https://github.com/darlinghq/darling/issues/157
 makedepends_x86_64=('gcc-multilib')
 source=('git+https://github.com/darlinghq/darling.git')
 md5sums=('SKIP')
