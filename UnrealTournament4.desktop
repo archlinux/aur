@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Unreal Tournament
+Comment=A first-person shooter
+Path=/opt/unrealtournament4/LinuxNoEditor/Engine/Binaries/Linux/
+Exec=/opt/unrealtournament4/LinuxNoEditor/Engine/Binaries/Linux/UE4-Linux-Shipping UnrealTournament
+Icon=UnrealTournament
+Terminal=false
+Categories=Game;
+
+Name[en_US]=Unreal Tournament 4
