@@ -1,6 +1,6 @@
 pkgbase = minetest-git
 	pkgdesc = Infiniminer/Minecraft inspired game
-	pkgver = 20170125.9f108b56d
+	pkgver = 20170325.22567d107
 	pkgrel = 1
 	url = http://www.minetest.net/
 	install = install
@@ -26,8 +26,8 @@ pkgbase = minetest-git
 	conflicts = minetest-server
 	source = git://github.com/minetest/minetest.git
 	source = git://github.com/minetest/minetest_game.git
-	sha1sums = SKIP
-	sha1sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = minetest-git
 
