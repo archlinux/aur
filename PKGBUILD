@@ -1,13 +1,13 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: Alex Combas <alex.combas@gmail.com>
 pkgname=luxrays-hg
-pkgver=3677+.a68fdb616d0a+
+pkgver=3744.49dbe03e39d0
 pkgrel=1
 pkgdesc="Accelerate the ray intersection process by using GPUs"
 arch=('x86_64')
 url="http://www.luxrender.net/"
 license=('GPL')
-depends=('embree-bvh_build-git' 'libcl' 'libgl' 'openimageio')
+depends=('embree-bvh_build-git' 'opencl-icd-loader' 'libgl' 'openimageio')
 makedepends=('boost' 'cmake' 'freetype2' 'gtk3' 'libpng' 'mesa' 'opencl-headers' 'glew' 'freeglut'
              'mercurial')
 optdepends=('opencl-nvidia: OpenCL support for nVidia GPUs' \
@@ -23,7 +23,7 @@ conflicts=('luxrays')
 source=('luxrays::hg+https://bitbucket.org/luxrender/luxrays#branch=default' \
         force_python3.diff)
 md5sums=('SKIP'
-         '36c9823246c2b575415c1709e065727c')
+         'ba9a42dbe073009189c6d21845bff767')
 
 pkgver() {
   cd "$srcdir/luxrays"
@@ -59,8 +59,8 @@ package() {
   cp -a include "$pkgdir"/usr
 
   # install pyluxcore to the Python search path
-  install -d -m755 "$pkgdir"/usr/lib/python3.5/
-  mv "$pkgdir"/usr/lib/pyluxcore.so "$pkgdir"/usr/lib/python3.5/
+  install -d -m755 "$pkgdir"/usr/lib/python3.6/
+  mv "$pkgdir"/usr/lib/pyluxcore.so "$pkgdir"/usr/lib/python3.6/
 }
 
 # vim:set ts=2 sw=2 et:

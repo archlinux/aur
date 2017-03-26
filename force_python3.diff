@@ -1,12 +1,12 @@
-diff -rup luxrender-luxrays-61352e6aae3f.orig/cmake/Dependencies.cmake luxrender-luxrays-61352e6aae3f/cmake/Dependencies.cmake
---- luxrender-luxrays-61352e6aae3f.orig/cmake/Dependencies.cmake	2016-05-09 22:17:57.000000000 +0200
-+++ luxrender-luxrays-61352e6aae3f/cmake/Dependencies.cmake	2016-05-29 09:04:30.913648230 +0200
-@@ -58,7 +58,7 @@ set(Boost_MINIMUM_VERSION       "1.44.0"
+diff --git a/cmake/Dependencies.cmake b/cmake/Dependencies.cmake
+--- a/cmake/Dependencies.cmake
++++ b/cmake/Dependencies.cmake
+@@ -58,7 +58,7 @@
  
  set(Boost_ADDITIONAL_VERSIONS "1.47.0" "1.46.1" "1.46" "1.46.0" "1.45" "1.45.0" "1.44" "1.44.0")
  
--set(LUXRAYS_BOOST_COMPONENTS thread program_options filesystem serialization iostreams regex system python chrono)
-+set(LUXRAYS_BOOST_COMPONENTS thread program_options filesystem serialization iostreams regex system python3 chrono)
+-set(LUXRAYS_BOOST_COMPONENTS thread program_options filesystem serialization iostreams regex system python chrono serialization)
++set(LUXRAYS_BOOST_COMPONENTS thread program_options filesystem serialization iostreams regex system python3 chrono serialization)
  find_package(Boost ${Boost_MINIMUM_VERSION} COMPONENTS ${LUXRAYS_BOOST_COMPONENTS})
  if (NOT Boost_FOUND)
          # Try again with the other type of libs
