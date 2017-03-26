@@ -1,0 +1,17 @@
+pkgbase = doxy2man-git
+	pkgdesc = Create man pages from doxygen XML output
+	pkgver = 0.0.0.r12.5ce113f
+	pkgrel = 1
+	url = https://github.com/gsauthof/doxy2man
+	arch = x86_64
+	license = GPL3
+	makedepends = asciidoc
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-xmlpatterns
+	provides = doxy2man
+	source = doxy2man-git::git+https://github.com/gsauthof/doxy2man.git
+	md5sums = SKIP
+
+pkgname = doxy2man-git
+
