@@ -3,7 +3,7 @@
 pkgbase = xfce4-sntray-plugin
 	pkgdesc = Plugin for xfce4-panel and vala-panel to show StatusNotifierItems (AppIndicators) via FlowBox
 	pkgver = 0.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rilian-la-te/xfce4-sntray-plugin
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = xfce4-sntray-plugin
 	makedepends = vala
 	makedepends = gtk3
 	makedepends = xfce4-panel>=4.11.2
-	makedepends = mate-panel-gtk3
+	makedepends = mate-panel
 	makedepends = vala-panel-git
 	source = https://github.com/rilian-la-te/xfce4-sntray-plugin/releases/download/0.4.1/xfce4-sntray-plugin-0.4.1.tar.gz
 	sha256sums = 3c94ce1e171d89ca8237e5c40a569384216fdb7b8dd18d89ecc21e8db6965e24
@@ -33,7 +33,7 @@ pkgname = mate-panel-sntray
 	pkgdesc = Plugin for mate-panel to show StatusNotifierItems (AppIndicators) via FlowBox
 	install = vala-panel-sntray.install
 	depends = gtk3
-	depends = mate-panel-gtk3
+	depends = mate-panel
 	depends = xfce4-sntray-plugin-translations
 	optdepends = vala-panel-extras-volume: ALSA volume applet
 	optdepends = vala-panel-extras-battery: UPower battery applet

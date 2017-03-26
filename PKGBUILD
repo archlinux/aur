@@ -5,12 +5,12 @@ pkgname=('xfce4-sntray-plugin' 'mate-panel-sntray' 'vala-panel-sntray' 'xfce4-sn
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
 pkgver=0.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Plugin for xfce4-panel and vala-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
 url="https://github.com/rilian-la-te/xfce4-sntray-plugin"
 arch=('i686' 'x86_64')
 license=('GPL3')
-makedepends=('cmake' 'vala' 'gtk3' 'xfce4-panel>=4.11.2' 'mate-panel-gtk3' 'vala-panel-git')
+makedepends=('cmake' 'vala' 'gtk3' 'xfce4-panel>=4.11.2' 'mate-panel' 'vala-panel-git')
 source=("https://github.com/rilian-la-te/xfce4-sntray-plugin/releases/download/${pkgver}/${pkgbase}-${pkgver}.tar.gz")
 sha256sums=('3c94ce1e171d89ca8237e5c40a569384216fdb7b8dd18d89ecc21e8db6965e24')
 
@@ -41,7 +41,7 @@ package_xfce4-sntray-plugin() {
 package_mate-panel-sntray() {
   install=vala-panel-sntray.install
   pkgdesc="Plugin for mate-panel to show StatusNotifierItems (AppIndicators) via FlowBox"
-  depends=('gtk3' 'mate-panel-gtk3' 'xfce4-sntray-plugin-translations')
+  depends=('gtk3' 'mate-panel' 'xfce4-sntray-plugin-translations')
   optdepends=('vala-panel-extras-volume: ALSA volume applet'
             'vala-panel-extras-battery: UPower battery applet'
             'vala-panel-extras-weather: Weather applet'
