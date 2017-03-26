@@ -10,7 +10,7 @@ license=('GPL')
 depends=('pari')
 makedepends=('perl')
 source=("${url}pub/pari/GP2C/$pkgname-${pkgver}.tar.gz")
-sha1sums=('e07cebffcd09c0d644d52335130984f33042b46f')
+sha256sums=('53f94d305e5ae0dcb8b9f65bdacfe6d339228f57ae8b85a959b1b0a7661d00e0')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
