@@ -2,7 +2,7 @@
 pkgname=pulseeffects
 pkgver=1.0.2
 pkgrel=1
-pkgdesc="Audio effects for Pulseaudio applications"
+pkgdesc="Limiter, reverberation and stereo equalizer effects for Pulseaudio applications"
 arch=(any)
 url="https://github.com/wwmm/pulseeffects"
 license=('GPL3')

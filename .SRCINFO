@@ -1,5 +1,5 @@
 pkgbase = pulseeffects
-	pkgdesc = Audio effects for Pulseaudio applications
+	pkgdesc = Limiter, reverberation and stereo equalizer effects for Pulseaudio applications
 	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/wwmm/pulseeffects
