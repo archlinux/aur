@@ -1,0 +1,14 @@
+pkgbase = cog-vm
+	pkgdesc = Cross-platform virtual machine for Squeak, Pharo, Cuis, and Newspeak.
+	pkgver = 5.1.201608171728
+	pkgrel = 1
+	url = http://opensmalltalk.org
+	arch = x86_64
+	license = MIT
+	provides = squeak-vm
+	conflicts = squeak-vm
+	source = https://github.com/OpenSmalltalk/opensmalltalk-vm/archive/201608171728.tar.gz
+	md5sums = f6d5c990262c69a8e59ee7842a32786a
+
+pkgname = cog-vm
+
