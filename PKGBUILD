@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=frei0r-plugins-git
-pkgver=1.5.r5.gb63f5db
-pkgrel=6
+pkgver=1.6.0.r5.gdfd4475
+pkgrel=1
 pkgdesc="A minimalistic plugin API for video effects (git version)"
 arch=('i686' 'x86_64')
 url="https://www.dyne.org/software/frei0r/"
@@ -18,12 +18,7 @@ pkgver() {
     cd "$pkgname"
     
     # git, tags available
-    _tmppkgver=$(printf "%s" "$(git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')")
-    if [ "$(echo ${_tmppkgver} | head -c1)" = "v" ]; then
-        echo "$_tmppkgver" | cut -c2-
-    else
-        echo "$_tmppkgver"
-    fi
+    printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')"
 }
 
 build() {
