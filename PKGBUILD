@@ -1,35 +1,23 @@
-# Maintainer: Robert Knauer <robert@privatdemail.net>
-
 pkgname=sendxmpp
-pkgver=1.23
+pkgver=1.24
 pkgrel=1
 pkgdesc="A perl-script to send xmpp (jabber), similar to what mail(1) does for mail"
 arch=('i686' 'x86_64')
-url="http://sendxmpp.platon.sk/"
+url="https://sendxmpp.hostname.sk/"
 license=('GPL')
 depends=('perl' 'perl-net-xmpp' 'perl-io-socket-ssl')
 options=('!emptydirs' 'docs')
-source=(
-  "http://ftp.debian.org/debian/pool/main/s/sendxmpp/sendxmpp_${pkgver}.orig.tar.gz"
-)
-sha256sums=(
-  '8a8b408ebd1df0157418981035748d9eb2464d353c5ea8ac48b074b8a85b9616'
-)
-_dirname=lhost-${pkgname}-610082b
+source=("$pkgname-$pkgver.tar.gz::https://github.com/lhost/sendxmpp/archive/v$pkgver.tar.gz")
+sha256sums=('dfaf735b4585efd6b3b0f95db31203f9ab0fe607b50e75c6951bc18a6269837d')
 
 build() {
-  cd "${srcdir}/${_dirname}"
+  cd "${srcdir}/$pkgname-$pkgver"
   perl Makefile.PL PREFIX="${pkgdir}/usr"
   make
 }
 
-check() {
-  cd "${srcdir}/${_dirname}"
-  make test
-}
-
 package() {
-  cd "${srcdir}/${_dirname}"
+  cd "${srcdir}/$pkgname-$pkgver"
   make install
   find "${pkgdir}" -name '.packlist' -delete
   find "${pkgdir}" -name '*.pod' -delete

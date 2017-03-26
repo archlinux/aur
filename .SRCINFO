@@ -1,8 +1,8 @@
 pkgbase = sendxmpp
 	pkgdesc = A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-	pkgver = 1.23
+	pkgver = 1.24
 	pkgrel = 1
-	url = http://sendxmpp.platon.sk/
+	url = https://sendxmpp.hostname.sk/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -11,8 +11,8 @@ pkgbase = sendxmpp
 	depends = perl-io-socket-ssl
 	options = !emptydirs
 	options = docs
-	source = http://ftp.debian.org/debian/pool/main/s/sendxmpp/sendxmpp_1.23.orig.tar.gz
-	sha256sums = 8a8b408ebd1df0157418981035748d9eb2464d353c5ea8ac48b074b8a85b9616
+	source = sendxmpp-1.24.tar.gz::https://github.com/lhost/sendxmpp/archive/v1.24.tar.gz
+	sha256sums = dfaf735b4585efd6b3b0f95db31203f9ab0fe607b50e75c6951bc18a6269837d
 
 pkgname = sendxmpp
 
