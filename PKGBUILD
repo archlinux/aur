@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20170123.35b2aeef
+pkgver=20170323.185d530d
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS and CBZ viewer'
 arch=('i686' 'x86_64' 'armv7h')
@@ -15,9 +15,9 @@ depends=('curl' 'freetype2' 'jbig2dec' 'libjpeg-turbo' 'libxext' 'openjpeg2')
 source=('git://git.ghostscript.com/mupdf.git'
         'git://git.ghostscript.com/mujs.git'
         'desktop')
-sha1sums=('SKIP'
-          'SKIP'
-          '31573e5da3fbf0162c0926511fc9858f2052fa6c')
+sha256sums=('SKIP'
+            'SKIP'
+            '3240d4ebda002cb2c4f42cd42793c6160f1701d349d0acb797819dfd10d4fedd')
 
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
