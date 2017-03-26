@@ -4,7 +4,7 @@
 
 pkgname=copay
 pkgver=3.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Copay Bitcoin Wallet"
 #arch=('i686' 'x86_64')
 arch=('x86_64')
@@ -18,11 +18,11 @@ options=('!strip')
 source=('copay.desktop')
 
 md5sums=('e05610d1b08a2c688efccf9d687b8b92')
-md5sums_x86_64=('7ff033094699afee187a9426758f51ee'
+md5sums_x86_64=('7c76d0e7dc013870350581247a5da125'
                 'SKIP')
 
-source_x86_64=("https://github.com/bitpay/copay/releases/download/v${pkgver}/Copay-linux.zip"
-               "https://github.com/bitpay/copay/releases/download/v${pkgver}/Copay-linux.zip.sig"
+source_x86_64=("${pkgname}-${pkgver}.zip::https://github.com/bitpay/copay/releases/download/${pkgver}/Copay-linux.zip"
+               "${pkgname}-${pkgver}.zip.sig::https://github.com/bitpay/copay/releases/download/${pkgver}/Copay-linux.zip.sig"
               )
 
 
@@ -38,11 +38,11 @@ package() {
     cd ${pkgdir}/opt/copay
 
     # Unzip the binary package
-    unzip ${startdir}/Copay-linux.zip
+    unzip ${startdir}/${pkgname}-${pkgver}.zip
     
     # Remove arch suffix 
-    mv copay-linux/* .
-    rmdir copay-linux
+    mv Copay-linux/* .
+    rmdir Copay-linux
 
     # Fix file permissions
     find ${pkgdir}/opt/copay/ -type f -print0 | xargs -0 chmod a+r
@@ -53,5 +53,5 @@ package() {
 
     # Create desktop icon
     install -Dm644 "$srcdir"/copay.desktop "$pkgdir/usr/share/applications/copay.desktop"
-    install -Dm644 "$srcdir"/copay-linux/icon-256.png "$pkgdir/usr/share/pixmaps/copay.png"
+    install -Dm644 "$srcdir"/Copay-linux/512x512.png "$pkgdir/usr/share/pixmaps/copay.png"
 }
