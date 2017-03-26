@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 makedepends=('git')
 source=('git+https://github.com/larsbrinkhoff/httptunnel')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
