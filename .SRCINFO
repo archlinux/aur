@@ -1,0 +1,18 @@
+pkgbase = xgraph-bin
+	pkgdesc = XGRAPH is a general purpose x-y data plotter with interactive buttons for panning, zooming, printing, and selecting display options.
+	pkgver = 4.30
+	pkgrel = 1
+	url = http://www.xgraph.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libx11
+	optdepends = netpbm
+	conflicts = xgraph
+	source_i686 = http://www.xgraph.org/linux/xgraph_4.30_linux32.tar.gz
+	md5sums_i686 = 14e0f03d18451ce2e6c2d5cdb25227af
+	source_x86_64 = http://www.xgraph.org/linux/xgraph_4.30_linux64.tar.gz
+	md5sums_x86_64 = 976827671b1c0ebbdb2092d1b1e71aac
+
+pkgname = xgraph-bin
+
