@@ -2,9 +2,9 @@
 
 _pyver="python2"
 pkgname=python2-scruffington
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
-pkgdesc="Scruffy is a framework for taking care of a bunch of boilerplate in Python apps."
+pkgdesc="Framework for taking care of a bunch of boilerplate in Python apps."
 arch=('any')
 depends=("${_pyver}"
          "${_pyver}-yaml"
@@ -15,7 +15,7 @@ url="https://github.com/snare/scruffy"
 license=('MIT')
 options=('!emptydirs')
 source=(scruffy-$pkgver.tar.gz::https://codeload.github.com/snare/scruffy/tar.gz/v$pkgver)
-sha256sums=('98b9933bbe3a642d21f2de87f392dbe1151ca63d62573634b588e02fe8ef1723')
+sha256sums=('43671fcc6428533e68773490eec55e54a2dd205adbbd067bb5057ddff6ed0595')
 
 build() {
   cd "$srcdir/scruffy-$pkgver"
