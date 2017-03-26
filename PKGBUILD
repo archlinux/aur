@@ -14,7 +14,7 @@ arch=('i686' 'x86_64' 'armv7h')
 makedepends=('intltool')
 depends=('glade' 'id3lib' 'libvorbis')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha1sums=('05eef662d0f0f46983ad9a1e942e6ce4ac66276d')
+sha256sums=('1f6f314e573cad848e71b32341035a8902aa13030510356b6dbabab261b9d187')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
