@@ -2,7 +2,7 @@
 
 pkgname=frei0r-plugins-git
 pkgver=1.5.r5.gb63f5db
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimalistic plugin API for video sources and filters (Git version)"
 arch=('i686' 'x86_64')
 url="https://www.dyne.org/software/frei0r/"
@@ -16,7 +16,7 @@ source=("$pkgname"::'git://code.dyne.org/frei0r.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
+    cd "$pkgname"
     
     # git, tags available
     _tmppkgver=$(printf "%s" "$(git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')")
@@ -28,7 +28,7 @@ pkgver() {
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "$pkgname"
     ./autogen.sh
     ./configure \
         --prefix=/usr \
@@ -38,6 +38,6 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
-    make DESTDIR="$pkgdir/" install
+    cd "$pkgname"
+    make DESTDIR="$pkgdir" install
 }
