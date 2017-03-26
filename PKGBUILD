@@ -9,7 +9,7 @@ license=('GPL')
 depends=('imlib2')
 arch=('i686' 'x86_64' 'armv7h')
 source=("http://webstaff.itn.liu.se/~stegu/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('4fcf2efc6e0f2e02ce32597d2ccfbfb2bf057199')
+sha256sums=('d8885a1e2e08787cb469857a9404619cadab9bddcae7fa398a565d53633291e2')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
