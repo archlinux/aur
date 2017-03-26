@@ -4,7 +4,7 @@
 
 pkgname=slock-git
 _pkgname=slock
-pkgver=20160923.a98fba8
+pkgver=20161123.2d2a21a
 pkgrel=1
 pkgdesc='Simple X display locker'
 url='http://tools.suckless.org/slock'
@@ -13,7 +13,7 @@ license=('MIT')
 makedepends=('git')
 depends=('libxrandr')
 source=('git://git.suckless.org/slock')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")

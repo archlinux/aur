@@ -1,6 +1,6 @@
 pkgbase = slock-git
 	pkgdesc = Simple X display locker
-	pkgver = 20160923.a98fba8
+	pkgver = 20161123.2d2a21a
 	pkgrel = 1
 	url = http://tools.suckless.org/slock
 	arch = i686
