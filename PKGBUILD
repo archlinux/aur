@@ -9,7 +9,7 @@ _lib32=0
 
 pkgname=('nvidia-full-beta-all' 'nvidia-utils-full-beta-all' 'nvidia-egl-wayland-full-beta-all' 'nvidia-libgl-full-beta-all' 'opencl-nvidia-full-beta-all')
 pkgver=378.13
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -172,14 +172,14 @@ package_nvidia-egl-wayland-full-beta-all() {
 
 package_nvidia-utils-full-beta-all() {
   pkgdesc="NVIDIA driver utilities and libraries for 'nvidia-full-beta-all'"
-  depends=('xorg-server>=1.19.1-3')
+  depends=('xorg-server' 'mesa>=17.0.2-2')
   optdepends=('gtk2: nvidia-settings (GTK+ v2)'
               'gtk3: nvidia-settings (GTK+ v3)'
               'opencl-nvidia-full-beta-all: OpenCL support'
               'xorg-server-devel: nvidia-xconfig'
               'egl-wayland-git: for alternative, more advanced Wayland library (libnvidia-egl-wayland.so.1.0.1)')
   provides=("nvidia-utils=$pkgver" "nvidia-settings=$pkgver" 'libglvnd' 'vulkan-driver')
-  conflicts=('nvidia-utils' 'nvidia-settings' 'libglvnd' 'xorg-server<1.19.1-3')
+  conflicts=('nvidia-utils' 'nvidia-settings' 'libglvnd')
   backup=('etc/X11/xorg.conf.d/20-nvidia.conf')
   install=$pkgname.install
   cd $_pkg
@@ -201,7 +201,8 @@ package_nvidia-utils-full-beta-all() {
   # GLX
   install -Dm755 libGLX.so.0 "$pkgdir"/usr/lib/libGLX.so.0
   install -Dm755 libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib/libGLX_nvidia.so.$pkgver
-  ln -s libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib/libGLX_indirect.so.0
+  # now in mesa driver
+  #ln -s libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib/libGLX_indirect.so.0
 
   # EGL
   install -Dm755 libEGL.so.1 "$pkgdir"/usr/lib/nvidia/libEGL.so.1
@@ -419,7 +420,7 @@ package_lib32-nvidia-libgl-full-beta-all() {
 
 package_lib32-nvidia-utils-full-beta-all() {
   pkgdesc="NVIDIA driver utilities and libraries for 'nvidia-full-beta-all' (32-bit)"
-  depends=('lib32-zlib' 'lib32-gcc-libs' 'nvidia-utils-full-beta-all')
+  depends=('lib32-zlib' 'lib32-gcc-libs' 'nvidia-utils-full-beta-all' 'lib32-mesa>=17.0.2-1')
   optdepends=('lib32-opencl-nvidia-full-beta-all: OpenCL support')
   provides=("lib32-nvidia-utils=$pkgver" 'lib32-libglvnd' 'lib32-vulkan-driver')
   conflicts=('lib32-nvidia-utils' 'lib32-libglvnd')
@@ -434,7 +435,8 @@ package_lib32-nvidia-utils-full-beta-all() {
   # GLX
   install -Dm755 32/libGLX.so.0 "$pkgdir"/usr/lib32/libGLX.so.0
   install -Dm755 32/libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libGLX_nvidia.so.$pkgver
-  ln -s libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libGLX_indirect.so.0
+  # now in lib32-mesa driver
+  #ln -s libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libGLX_indirect.so.0
 
   # EGL
   install -Dm755 32/libEGL.so.1 "$pkgdir"/usr/lib32/nvidia/libEGL.so.1
