@@ -22,7 +22,7 @@ check() {
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$pkgname-$pkgver"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/lice1nses/$pkgname/LICENSE"
 	install -D build/rippled "${pkgdir}/usr/bin/rippled"
 	install -D -m644 doc/rippled-example.cfg "${pkgdir}/etc/$pkgname/rippled.cfg"
