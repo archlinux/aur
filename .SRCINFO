@@ -1,0 +1,15 @@
+pkgbase = iri
+	pkgdesc = IOTA Reference Implementation
+	pkgver = 1.1.2.2
+	pkgrel = 1
+	url = https://www.iotatoken.com/
+	arch = any
+	license = GPL
+	makedepends = java-environment
+	makedepends = maven
+	depends = java-runtime
+	source = iri-1.1.2.2.tar.gz::https://github.com/iotaledger/iri/archive/1.1.2.2.tar.gz
+	md5sums = bafbe9656e64be7430682b568697aaff
+
+pkgname = iri
+
