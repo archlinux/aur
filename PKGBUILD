@@ -4,7 +4,7 @@
 
 pkgname=('lib32-nvidia-utils-beta' 'lib32-nvidia-libgl-beta' 'lib32-opencl-nvidia-beta')
 pkgver=378.13
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="http://www.nvidia.com/"
 makedepends=('nvidia-libgl-beta')  # To avoid conflict during installation in the build chroot
@@ -91,7 +91,7 @@ package_lib32-nvidia-libgl-beta() {
 
 package_lib32-nvidia-utils-beta() {
   pkgdesc="NVIDIA driver utilities and libraries (beta version) (32-bit)"
-  depends=('lib32-zlib' 'lib32-gcc-libs' 'nvidia-utils-beta')
+  depends=('lib32-zlib' 'lib32-gcc-libs' 'nvidia-utils-beta' 'lib32-mesa>=17.0.2-1')
   optdepends=('lib32-opencl-nvidia-beta: OpenCL support')
   provides=("lib32-nvidia-utils=$pkgver" 'lib32-libglvnd' 'lib32-vulkan-driver')
   conflicts=('lib32-nvidia-utils' 'lib32-libglvnd')
@@ -106,7 +106,8 @@ package_lib32-nvidia-utils-beta() {
   # GLX
   install -Dm755 libGLX.so.0 "$pkgdir"/usr/lib32/libGLX.so.0
   install -Dm755 libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libGLX_nvidia.so.$pkgver
-  ln -s libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libGLX_indirect.so.0
+  # now in lib32-mesa driver
+  #ln -s libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libGLX_indirect.so.0
 
   # EGL
   install -Dm755 libEGL.so.1 "$pkgdir"/usr/lib32/nvidia/libEGL.so.1
