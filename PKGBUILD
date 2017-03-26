@@ -2,7 +2,7 @@
 # Contributor: Brandon Andrews <bsa@bsa.isa-geek.com>
 # Contributor: Mael Kerbiriou <mael.kerbiriouATfreeDOTfr>
 pkgname=pfstools
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="Set of command line programs for reading, writing and manipulating high-dynamic range (HDR) images"
 arch=('i686' 'x86_64')
@@ -12,22 +12,35 @@ depends=('gcc-libs')
 provides=('pfscalibration' 'pfstmo')
 conflicts=('pfscalibration' 'pfstmo')
 optdepends=('freeglut: OpenGL image viewer' 'glu: OpenGL image viewer' \
-            'qt4: Qt GUI' 'opencv: pfsalign' \
-            'openexr: OpenEXR support' 'imagemagick: ImageMagick support' \
-            'netpbm: PBM support' 'dcraw: RAW support' \
+            'qt4: Qt GUI' \
+            'opencv: pfsalign' \
+            'openexr: OpenEXR support' \
+            'imagemagick: ImageMagick support' \
+            'netpbm: PBM support' \
+            'dcraw: RAW support' \
             'gsl: mantiuk08 tone mapping operator' \
-            'fftw: durand02 tone mapping operator')
-makedepends=('cmake' 'openexr' 'imagemagick' 'libtiff' 'freeglut' 'glu' 'netpbm' 'qt4')
+            'fftw: durand02,fattal02,ferradans11 tone mapping operators')
+makedepends=('cmake' \
+             'openexr' 'imagemagick' 'libtiff' 'netpbm' \
+             'gsl' 'fftw' 'libexif' 'opencv'
+             'freeglut' 'glu' 'qt4')
 options=(!libtool)
-source=(http://downloads.sourceforge.net/pfstools/$pkgname-$pkgver.tgz)
-md5sums=('3ebe0b0bc1e8e6d412374bcb9f695c3c')
+source=(http://downloads.sourceforge.net/pfstools/$pkgname-$pkgver.tgz \
+        opencv3.patch)
+md5sums=('c3148ed11e562c30a0fd65d114cf2de2'
+         '8bb92632fc2d8887a5f4aa03f6ee6636')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  patch -Np1 < "$srcdir/opencv3.patch"
+}
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
-  mkdir -p build
-  cd build
+  mkdir -p "$srcdir/build"
+  cd "$srcdir/build"
 
-  cmake .. \
+  cmake "$srcdir/$pkgname-$pkgver" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DWITH_Octave=OFF # disable octave, as it breaks build
@@ -36,9 +49,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver/build
+  cd "$srcdir/build"
   make DESTDIR="$pkgdir/" install
-
-  cd "$pkgdir"/usr/bin
-  chmod 755 *
 }
