@@ -1,0 +1,32 @@
+From 7379da370eca29cee82033f7372edba6ecb2d021 Mon Sep 17 00:00:00 2001
+From: tioguda <guda.flavio@gmail.com>
+Date: Tue, 21 Mar 2017 05:19:01 -0300
+Subject: teste
+
+
+diff --git a/Makefile.am b/Makefile.am
+index 9b6983e..8d3f7c6 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -9,7 +9,7 @@ lighttempdir = $(top_builddir)/arc-firefox-theme-light
+ darkertempdir = $(top_builddir)/arc-firefox-theme-darker
+ darktempdir = $(top_builddir)/arc-firefox-theme-darker
+ 
+-extensiondir = $(DESTDIR)/$(libdir)/firefox/browser/extensions
++extensiondir = $(DESTDIR)/opt/cyberfox/browser/extensions
+ 
+ 
+ EXTRA_DIST = ${top_srcdir}/README.md \
+diff --git a/arc-firefox-theme/install.rdf b/arc-firefox-theme/install.rdf
+index 14512f8..64ac2be 100644
+--- a/arc-firefox-theme/install.rdf
++++ b/arc-firefox-theme/install.rdf
+@@ -8,7 +8,7 @@
+     <em:version>52.20170311</em:version>
+     <em:type>4</em:type>
+     <em:name>Arc Theme</em:name>
+-    <em:description>Arc Theme for Firefox</em:description>
++    <em:description>Arc Theme for Cyberfox</em:description>
+     <em:creator>horst3180</em:creator>
+     <em:internalName>arc-theme</em:internalName>
+     <em:skinnable>false</em:skinnable>

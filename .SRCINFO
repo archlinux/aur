@@ -1,0 +1,20 @@
+pkgbase = arc-cyberfox-theme
+	pkgdesc = Arc Cyberfox Theme
+	pkgver = 20170311
+	pkgrel = 1
+	url = https://github.com/horst3180/arc-firefox-theme
+	arch = i686
+	arch = x86_64
+	license = Mozilla Public License version 2.0
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = unzip
+	makedepends = zip
+	depends = cyberfox>=52.0
+	source = arc-cyberfox-theme-52.20170311::https://github.com/horst3180/arc-firefox-theme/archive/52.20170311.tar.gz
+	source = arc-cyberfox-theme.patch
+	md5sums = ad0d6f7ff9958c39541019aa19dc7680
+	md5sums = cafa515d95139d99b1595728c624fca3
+
+pkgname = arc-cyberfox-theme
+
