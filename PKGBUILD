@@ -6,7 +6,7 @@
 # Maintainer: Rob Bolton <rob.a.bolton@gmail.com>
 pkgname=es-shell
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Extensible Shell, a shell based on Plan 9's rc shell, influenced by functional languages."
 arch=('any')
