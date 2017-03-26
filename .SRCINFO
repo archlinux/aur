@@ -1,6 +1,6 @@
 pkgbase = fdm-git
 	pkgdesc = Program to fetch mail and deliver it in various ways
-	pkgver = 20150605.808be67
+	pkgver = 20170124.cae4ea3
 	pkgrel = 1
 	url = https://github.com/nicm/fdm
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = fdm-git
 	provides = fdm
 	conflicts = fdm
 	source = git+https://github.com/nicm/fdm.git
-	sha1sums = SKIP
+	sha256sums = SKIP
 
 pkgname = fdm-git
 

@@ -4,7 +4,7 @@
 
 pkgname=fdm-git
 _pkgname=fdm
-pkgver=20150605.808be67
+pkgver=20170124.cae4ea3
 pkgrel=1
 pkgdesc='Program to fetch mail and deliver it in various ways'
 url='https://github.com/nicm/fdm'
@@ -13,7 +13,7 @@ arch=('i686' 'x86_64' 'armv7h')
 depends=('openssl' 'tdb')
 makedepends=('git')
 source=('git+https://github.com/nicm/fdm.git')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
