@@ -2,7 +2,7 @@
 
 pkgname=frei0r-plugins-git
 pkgver=1.5.r5.gb63f5db
-pkgrel=4
+pkgrel=5
 pkgdesc="A minimalistic plugin API for video sources and filters (Git version)"
 arch=('i686' 'x86_64')
 url="https://www.dyne.org/software/frei0r/"
@@ -11,8 +11,7 @@ depends=('gcc-libs' 'gavl' 'cairo' 'opencv')
 makedepends=('git')
 provides=('frei0r-plugins')
 conflicts=('frei0r-plugins')
-source=("$pkgname"::'git://code.dyne.org/frei0r.git')
-# source=("$pkgname"::'git+https://github.com/ddennedy/frei0r.git')
+source=("$pkgname"::'git+https://github.com/dyne/frei0r.git')
 sha256sums=('SKIP')
 
 pkgver() {
