@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 283129 2016-12-13 22:01:01Z heftig $
+# $Id: PKGBUILD 291229 2017-03-23 00:06:50Z heftig $
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
@@ -6,7 +6,7 @@
 
 pkgname=firefox-gtk2
 _pkgname=firefox
-pkgver=52.0
+pkgver=52.0.1
 pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(i686 x86_64)
@@ -15,24 +15,23 @@ url="https://www.mozilla.org/firefox/"
 depends=(gtk2 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib ffmpeg
 	 libvpx libevent nss hunspell sqlite ttf-font icu)
 makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutils xorg-server-xvfb
-	     autoconf2.13 cargo)
+	     autoconf2.13 cargo mercurial)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
-            'upower: Battery API'
             'speech-dispatcher: Text-to-Speech')
-options=(!emptydirs !makeflags)
+options=(!emptydirs !makeflags !strip)
+_repo=https://hg.mozilla.org/releases/mozilla-release
 provides=("firefox=${pkgver}-${pkgrel}")
 conflicts=("firefox")
-source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
+source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         firefox.desktop firefox-symbolic.svg
         firefox-install-dir.patch rust-i686.patch fix-wifi-scanner.diff)
-sha256sums=('494ec86875ea60043658e402b664ccd5af4709acc3a478de8729f7cbac9ea3c1'
+sha256sums=('SKIP'
             'ada313750e6fb14558b37c764409a17c1672a351a46c73b350aa1fe4ea9220ef'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             'f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8')
-validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -46,12 +45,11 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 # more information.
 _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
-
 prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
 
-  cd $_pkgname-$pkgver
+  cd mozilla-release
   patch -Np1 -i ../firefox-install-dir.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
@@ -77,6 +75,10 @@ ac_add_options --enable-default-toolkit=cairo-gtk2
 # Branding
 ac_add_options --enable-official-branding
 ac_add_options --enable-update-channel=release
+ac_add_options --with-distribution-id=org.archlinux
+export MOZILLA_OFFICIAL=1
+export MOZ_TELEMETRY_REPORTING=1
+export MOZ_SOURCE_REPO=${_repo@Q}
 export MOZ_ADDON_SIGNING=1
 export MOZ_REQUIRE_SIGNING=1
 
@@ -100,8 +102,8 @@ ac_add_options --enable-system-pixman
 
 # Features
 ac_add_options --enable-startup-notification
+ac_add_options --enable-crashreporter
 ac_add_options --enable-alsa
-ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
 
 STRIP_FLAGS="--strip-debug"
@@ -109,16 +111,13 @@ END
 }
 
 build() {
-  cd $_pkgname-$pkgver
+  cd mozilla-release
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
 
   # Hardening
   LDFLAGS+=" -Wl,-z,now"
-
-  # GCC 6
-  CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-schedule-insns2"
 
   export PATH="$srcdir/path:$PATH"
 
@@ -129,7 +128,7 @@ build() {
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd mozilla-release
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
 
   _vendorjs="$pkgdir/usr/lib/firefox/browser/defaults/preferences/vendor.js"
@@ -146,6 +145,19 @@ pref("extensions.shownSelectionUI", true);
 
 // Opt all of us into e10s, instead of just 50%
 pref("browser.tabs.remote.autostart", true);
+END
+
+  _distini="$pkgdir/usr/lib/firefox/distribution/distribution.ini"
+  install -Dm644 /dev/stdin "$_distini" <<END
+[Global]
+id=archlinux
+version=1.0
+about=Mozilla Firefox for Arch Linux
+
+[Preferences]
+app.distributor=archlinux
+app.distributor.channel=$_pkgname
+app.partner.archlinux=archlinux
 END
 
   for i in 16 22 24 32 48 256; do
