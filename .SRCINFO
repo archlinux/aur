@@ -1,6 +1,6 @@
 pkgbase = qgo-git
 	pkgdesc = Go Client based on Qt 5
-	pkgver = 20150607.397c01d
+	pkgver = 20160623.1e65b0c
 	pkgrel = 1
 	url = https://github.com/pzorin/qgo
 	arch = i686

@@ -2,7 +2,7 @@
 
 pkgname=qgo-git
 _pkgname=qgo
-pkgver=20150607.397c01d
+pkgver=20160623.1e65b0c
 pkgrel=1
 pkgdesc='Go Client based on Qt 5'
 url='https://github.com/pzorin/qgo'
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('qt5-multimedia' 'qt5-tools')
 makedepends=('git')
 source=("git://github.com/pzorin/qgo.git")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
