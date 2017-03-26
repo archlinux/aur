@@ -1,6 +1,6 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 pkgname=kolide-git
-pkgver=r62.720f425
+pkgver=r63.90fd51a
 _pkgname=kolide
 pkgrel=1
 pkgdesc="osquery command and control"
@@ -8,17 +8,17 @@ url="https://www.kolide.co/"
 arch=('x86_64' 'i686')
 license=('Apache')
 optdepends=('osquery-git' 'postgresql' 'sqlite')
-makedepends=('go')
+makedepends=('go' 'go-bindata')
 install="kolide.install"
-source=('git+https://github.com/kolide/kolide.git' 'kolide.sysusers')
+source=("${_pkgname}::git+https://github.com/kolide/kolide-archive.git" "kolide.sysusers")
 
 md5sums=('SKIP'
          '4934e838c831a12242550ae5e762a77a')
 
-#pkgver() {
-#	cd "${srcdir}/${_pkgname}"
-#	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-#}
+pkgver() {
+	cd "${srcdir}/${_pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
 	cd "${srcdir}"
@@ -30,8 +30,8 @@ prepare() {
 build() {
 	cd "${srcdir}/go/src/github.com/kolide/kolide"
 
-	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" PATH="$PATH:$GOPATH/bin" make deps
-	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" PATH="$PATH:$GOPATH/bin" make
+	sed -i -re 's/^build: .*$/build: banner generate/g' Makefile
+	GOROOT="/usr/lib/go" GOPATH="${srcdir}/go" PATH="$PATH:$GOPATH/bin" make deps build
 }
 
 package() {
