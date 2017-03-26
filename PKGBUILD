@@ -8,6 +8,7 @@ pkgdesc="Sandbox for securely executing untrusted programs"
 arch=('i686' 'x86_64')
 url="https://github.com/ioi/isolate"
 license=('GPL2')
+depends=()
 makedepends=('git' 'gcc' 'asciidoc')
 provides=('isolate')
 conflicts=('isolate-git')
