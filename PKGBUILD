@@ -5,7 +5,7 @@
 
 pkgname=('nvidia-utils-vulkan-developer-beta' 'nvidia-libgl-vulkan-developer-beta' 'opencl-nvidia-vulkan-developer-beta')
 pkgver=375.27.14
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -95,7 +95,6 @@ package_nvidia-libgl-vulkan-developer-beta() {
   ln -s /usr/lib/nvidia/libGLX.so.0 "$pkgdir"/usr/lib/libGLX.so.0
   ln -s libGLX.so.0 "$pkgdir"/usr/lib/libGLX.so.$pkgver
   ln -s libGLX.so.0 "$pkgdir"/usr/lib/libGLX.so
-  ln -s libGLX_nvidia.so.$pkgver "$pkgdir"/usr/lib/libGLX_indirect.so.0
 
   # EGL (link)
   ln -s /usr/lib/nvidia/libEGL.so.1 "$pkgdir"/usr/lib/libEGL.so.1
