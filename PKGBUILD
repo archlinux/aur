@@ -3,17 +3,17 @@
 
 _pkgname=scudcloud
 pkgname=${_pkgname}-git
-pkgver=v1.48.r2.gdb2c329
+pkgver=v1.45.r58.g2a77c09
 pkgrel=1
 pkgdesc="A Linux client for Slack"
 arch=('any')
 url="https://github.com/raelgc/${_pkgname}"
 license=('MIT')
-depends=('python-dbus' 'python-pyqt4')
+depends=('python-dbus' 'python-pyqt5')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git://github.com/raelgc/${_pkgname}.git")
+source=("git://github.com/raelgc/${_pkgname}.git#branch=254-port-to-qt5")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,9 +23,9 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  python2 setup.py build
+  python setup.py build
 }
 package() {
   cd "${srcdir}/${_pkgname}"
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1
 }
