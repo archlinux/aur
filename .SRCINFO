@@ -1,0 +1,19 @@
+pkgbase = diod-git
+	pkgdesc = A multi-threaded, user space file server that speeks 9P2000.L
+	pkgver = 1.0.24.r11.g0ea3fe3
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = libcap
+	depends = ncurses
+	depends = lua
+	depends = libwrap
+	provides = diod
+	conflicts = diod
+	source = git+https://github.com/chaos/diod.git
+	md5sums = SKIP
+
+pkgname = diod-git
+
