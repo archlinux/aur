@@ -2,7 +2,7 @@
 
 pkgbase=vis-standalone-git
 pkgname=(vis-standalone-git vis-single-git)
-pkgver=0.2.r781.gc22d020
+pkgver=0.3.r0.g4a4f9e0
 pkgrel=1
 _pkgver_libmusl=1.1.16
 _pkgver_ncurses=6.0
@@ -103,6 +103,8 @@ package_vis-standalone-git() {
 	make DESTDIR="${pkgdir}" PREFIX='/usr/' install
 
 	install -D -m0644 lua/visrc.lua "${pkgdir}"/etc/vis/visrc.lua
+
+	install -D -m0644 'LICENSE' "${pkgdir}/usr/share/licenses/vis/LICENSE"
 }
 
 package_vis-single-git() {
