@@ -2,14 +2,14 @@
 
 pkgname=stirfs
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Secure, transparent and irresistible filesystem'
 url='http://fenua.org/gaetan/src/'
 license=('ISC')
 depends=('fuse3' 'openssl')
 arch=('x86_64')
 source=("${url}/${pkgname}-${pkgver}.c")
-sha1sums=('e358ecf0869bd314a91ad59767f546f379777f26')
+sha256sums=('83419d236aea6189ff70c96a2d617c4d983cb5a75e62f9949c0162e056040d14')
 
 build() {
 	cd "${srcdir}"
