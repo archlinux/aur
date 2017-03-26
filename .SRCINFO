@@ -1,0 +1,19 @@
+pkgbase = lostconstellation
+	pkgdesc = Travel into the frozen woods in a folktale from the world of Night In The Woods.
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://finji.itch.io/lost-constellation
+	arch = i686
+	arch = x86_64
+	license = Custom:propietary
+	depends = gtk2
+	depends = glu
+	source = file:///Lost Constellation 1.1 (Linux).zip
+	source = lostconstellation.sh
+	source = lostconstellation.desktop
+	sha1sums = 8e13931828f8fefb7990b9315bae91e739db39d3
+	sha1sums = 51d5fdc20d0eb1ee68da1407389eeb5617247153
+	sha1sums = 73438c59ca144b551a48cf543a1b37154c968db6
+
+pkgname = lostconstellation
+

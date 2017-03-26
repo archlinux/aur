@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Lost Constellation
+Comment=Lost Constellation is a Longest Night ghost story. Travel into the frozen woods in a folktale from the world of Night In The Woods.
+Exec=/usr/bin/lostconstellation
+Icon=lostconstellation.png
+Terminal=false
+Type=Application
+StartupNotify=true
+Actions=Games;Puzzle;
+Encoding=UTF-8
