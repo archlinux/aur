@@ -1,6 +1,6 @@
 pkgbase = xplanet-svn
 	pkgdesc = Renders an image of the earth into the X root window
-	pkgver = 20130526.202
+	pkgver = 20170111.209
 	pkgrel = 1
 	url = http://xplanet.sourceforge.net/
 	arch = i686

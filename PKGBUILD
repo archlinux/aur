@@ -3,7 +3,7 @@
 
 pkgname=xplanet-svn
 _pkgname=xplanet
-pkgver=20130526.202
+pkgver=20170111.209
 pkgrel=1
 pkgdesc='Renders an image of the earth into the X root window'
 url='http://xplanet.sourceforge.net/'
@@ -13,8 +13,8 @@ makedepends=('subversion')
 depends=('pango' 'giflib' 'libtiff' 'libxss')
 source=("${_pkgname}::svn://svn.code.sf.net/p/xplanet/code/trunk"
         "giflib.patch")
-sha1sums=('SKIP'
-          'c9fe0f25ddc64c1aaf319d77cb5ddcb64a230667')
+sha256sums=('SKIP'
+            'c9abf31bf242d7c0940e8fbc5b64714c12edd4b995aba1ebe776ddc0c5bf019a')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -27,6 +27,7 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_pkgname}"
 	patch -p1 <"${srcdir}/giflib.patch"
+	aclocal && autoconf && automake --add-missing
 }
 
 build() {
