@@ -9,6 +9,7 @@ pkgbase = eigenpy
 	makedepends = cmake
 	makedepends = eigen
 	makedepends = boost
+	makedepends = python2
 	depends = boost-libs
 	optdepends = doxygen
 	optdepends = python2-numpy
