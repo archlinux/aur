@@ -2,7 +2,7 @@
 
 _pkgname=mumble
 pkgname=${_pkgname}-snapshot-minimal
-pkgver=1.3.0_1819_g501651b
+pkgver=1.3.0_2198_g282d672
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Mumble is an open source voice chat application similar to TeamSpeak. This release doesn't include Text2Speech, Overlay and several plugins."
@@ -13,7 +13,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 url="https://mumble.info"
 source=("https://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz")
-sha512sums=('ca50e405935ceff87c0d4706c010a8c9c7e48e4e000f9ed5163116b70c5b32cb0472ac6cee2586585418ff0d91d3bbc0b7da787bf4a38fc000d817dd2494acc8')
+sha512sums=('fe200e4dc5d303636d5aebc42700632067e537ef2a2dfb080daed33376a62cf08c881f784cdb3a1303f306e6e5cff4b84dd7b859c8ef9db3f3177eea4ddd9a7c')
 
 build() {
     cd $srcdir/mumble-${pkgver//_/\~}~snapshot
