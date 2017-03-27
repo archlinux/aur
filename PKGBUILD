@@ -3,8 +3,8 @@
 # Contributor: Jonathan Yantis
 
 pkgname=caffe-git
-pkgver=rc5.r5.g317d162ac
-pkgrel=4
+pkgver=rc5.r9.g793bd9635
+pkgrel=1
 pkgdesc="A deep learning framework made with expression, speed, and modularity in mind (git version, gpu enabled)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -99,6 +99,16 @@ build() {
     msg2 "Building target 'distribute'..."
     make distribute
 }
+
+# uncomment this block if you want to run the checks/tests
+# (usually takes a lot of time; it will prevent package to be built in case of error)
+#check() {
+#    cd "$pkgname"
+#    msg2 "Building target 'test'..."
+#    make test
+#    msg2 "Making target 'runtest'..."
+#    make runtest
+#}
 
 package() {
     # directories creation
