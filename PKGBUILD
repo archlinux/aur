@@ -16,9 +16,9 @@ source=("$pkgname::git+$_ghuser/$pkgname.git")
 md5sums=(SKIP)
 
 build() {
-  git clone "$_ghuser/$pkgname.git"
-  mv $pkgname/* ./
-  rm -rf $pkgname/
+  git clone "$_ghuser/$pkgname.git" "$pkgname-$pkgver"
+  mv $pkgname-$pkgver/* ./
+  rm -rf $pkgname-$pkgver/
 	go build -o "$pkgname"
 }
 
