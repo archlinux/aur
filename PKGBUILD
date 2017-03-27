@@ -39,6 +39,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_gitname/build"
+	unset LDFLAGS # It's needed to avoid conflicts with x86_64-apple-darwin11-ld
 	msg2 "Run 'cmake'..."
 	cmake ../.. -DCMAKE_TOOLCHAIN_FILE=../Toolchain.cmake -DCMAKE_INSTALL_PREFIX=/usr
 	msg2 "Run 'make'..."
