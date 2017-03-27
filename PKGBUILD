@@ -9,7 +9,8 @@ url="https://github.com/pimutils/todoman"
 license=('MIT')
 depends=(python-icalendar python-urwid python-xdg python-parsedatetime
          python-atomicwrites python-click python-setuptools-scm
-         python-configobj python-dateutil python-click-log python-tabulate)
+         python-configobj python-dateutil python-click-log python-tabulate
+         python-humanize)
 optdepends=('python-click-repl-git: the repl command.')
 checkdepends=('python-pytest' 'python-hypothesis' 'python-pytest-runner'
               'python-freezegun')
