@@ -2,12 +2,12 @@
 
 pkgname=hpp-fcl
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An extension of the Flexible Collision Library"
 arch=('i686' 'x86_64')
 url="https://github.com/humanoid-path-planner/hpp-fcl"
 license=('BSD 3-clause')
-depends=('eigen32')
+depends=('eigen32' 'assimp')
 optdepends=()
 makedepends=('cmake' 'pkg-config')
 conflicts=()
