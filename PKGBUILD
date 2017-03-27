@@ -3,12 +3,12 @@
 _pkgname=backintime
 pkgname=($_pkgname-git $_pkgname-cli-git)
 pkgver=1.1.12.r371.g87e7a6fb
-pkgrel=1
+pkgrel=2
 url="https://github.com/bit-team/backintime"
 license=('GPL')
 arch=('any')
 makedepends=('git' 'openssh' 'python-dbus' 'python-keyring' 'rsync' 'systemd' 'xorg-xdpyinfo')
-checkdepends=('gocryptfs')
+#checkdepends=('gocryptfs')
 source=($_pkgname::git://github.com/bit-team/backintime.git)
 md5sums=('SKIP')
 
@@ -35,8 +35,8 @@ check() {
 package_backintime-cli-git() {
   pkgdesc="Simple backup/snapshot system inspired by Flyback and TimeVault. CLI version."
   depends=('cron' 'openssh' 'python-dbus' 'python-keyring' 'rsync')
+  #'gocryptfs: encrypted filesystems'
   optdepends=('encfs: encrypted filesystems'
-              'gocryptfs: encrypted filesystems'
               'sshfs: remote filesystems')
   provides=($_pkgname-cli)
   conflicts=($_pkgname-cli)
