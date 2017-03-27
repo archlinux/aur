@@ -1,7 +1,7 @@
 pkgbase = anki20-bin
 	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) efficiently
-	pkgver = 2.0.43
-	pkgrel = 4
+	pkgver = 2.0.45
+	pkgrel = 1
 	url = http://ankisrs.net/
 	arch = i686
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = anki20-bin
 	options = !strip
 	source = anki
 	sha256sums = fc2316cf2428af18562cc13c6277ff70f8a974f1e7ef32631b8d7f81af60e0c4
-	source_i686 = https://apps.ankiweb.net/downloads/current/anki-2.0.43-i386.tar.bz2
-	sha256sums_i686 = 3afe45798811d71106993d16ae0197fc6772cfacbe329ca599c915b78a14dec2
-	source_x86_64 = https://apps.ankiweb.net/downloads/current/anki-2.0.43-amd64.tar.bz2
-	sha256sums_x86_64 = 8b4174e8c6c5f4ee61c29a7c6270709a959d605ab77588b0f5be3fed216156fa
+	source_i686 = https://apps.ankiweb.net/downloads/current/anki-2.0.45-i386.tar.bz2
+	sha256sums_i686 = 369e7ba80aced7b7aa961003ec9a7b21740fc4324cc65a61385e1426e16201e8
+	source_x86_64 = https://apps.ankiweb.net/downloads/current/anki-2.0.45-amd64.tar.bz2
+	sha256sums_x86_64 = 2371131a05ebf46816e933a452b8ec41d91af86dae91eb3ccc164240619450bb
 
 pkgname = anki20-bin
 
