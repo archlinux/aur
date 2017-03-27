@@ -1,12 +1,14 @@
 pkgbase = arch-anywhere-lang-tool-git
 	pkgdesc = A simple tool for maintain Arch Linux Anywhere translation files.
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = git+https://github.com/notramo/arch-anywhere-lang-tool
 	arch = i686
 	arch = x86_64
 	license = WTFPL
+	makedepends = git
 	makedepends = gcc
+	depends = gcc-libs
 	provides = arch-anywhere-lang-tool
 	conflicts = arch-anywhere-lang-tool
 	source = git+https://github.com/notramo/arch-anywhere-lang-tool.git
