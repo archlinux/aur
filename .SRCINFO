@@ -1,0 +1,15 @@
+pkgbase = hostsctl-git
+	pkgver = r73.eb70e6a
+	pkgrel = 1
+	url = https://github.com/0xl3vi/hostsctl
+	install = hostsctl.install
+	arch = any
+	license = GPLv3
+	depends = git
+	provides = hostsctl
+	conflicts = hostsctl
+	source = git://github.com/0xl3vi/hostsctl.git
+	md5sums = SKIP
+
+pkgname = hostsctl-git
+

@@ -1,0 +1,14 @@
+# hostsctl.install
+
+post_install() {
+  printf ">>> "
+  cp -v "/etc/hosts" "/etc/hostsctl.d/10-hosts" # Copy original hosts file.
+  printf ">>> "
+  hostsctl update # Fetch remote hosts and apply to /etc/hosts
+}
+
+# Restore the original /etc/hosts file
+# located at /etc/hostsctl.d/10-hosts.
+pre_remove() {
+  mv /etc/hostsctl.d/10-hosts /etc/hosts
+}
