@@ -6,16 +6,19 @@ pkgrel=1
 pkgdesc="Simple Twitch.tv command-line app to watch and query streams"
 arch=(any)
 url="https://deluxo.github.io/gotwitch/"
-_ghuser="https://github.com/deluxo/"
+_ghuser="https://github.com/deluxo"
 license=('GPL')
 makedepends=('go')
 depends=('youtube-dl')
 optdepends=('mpv: for watching a livestream' 'vlc: for  watching a livestream')
 options=('!strip' '!emptydirs')
-source=("$pkgname::git+$_ghuser$pkgname.git")
+source=("$pkgname::git+$_ghuser/$pkgname.git")
 md5sums=(SKIP)
 
 build() {
+  git clone "$_ghuser/$pkgname.git"
+  mv $pkgname/* ./
+  rm -rf $pkgname/
 	go build -o "$pkgname"
 }
 
