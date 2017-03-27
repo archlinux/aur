@@ -1,7 +1,7 @@
 # Maintainer: Lukas L <l.levickas@gmail.com>
 
 pkgname=gotwitch
-pkgver=1.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Simple Twitch.tv command-line app to watch and query streams"
 arch=(any)
@@ -23,3 +23,5 @@ package() {
 	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim:set ts=2 sw=2 et:
