@@ -1,0 +1,25 @@
+pkgbase = python-kwant-git
+	pkgdesc = Python package for numerical calculations on tight-binding models with a strong focus on quantum transport
+	pkgver = v1.3.0a0.r172.g3bb749e
+	pkgrel = 1
+	url = http://kwant-project.org/
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	depends = python
+	depends = python-scipy
+	depends = lapack
+	depends = blas
+	depends = python-tinyarray-git
+	optdepends = python-matplotlib: needed for plotting support and the tutorial
+	optdepends = mumps: a sparse linear algebra library for speed up and memory usage reduction (use AUR mumps-seq-shared or any other built as shared library)
+	provides = python-kwant
+	conflicts = python-kwant
+	source = kwant::git+https://gitlab.kwant-project.org/kwant/kwant.git
+	source = build.conf
+	validpgpkeys = 52299057FAD799653C4F088AC3F147F5980F3535
+	sha256sums = SKIP
+	sha256sums = 32bef0aa0a6f329102c5244d856d4b50796c601b1d25e7c708e0e9bdf54425c7
+
+pkgname = python-kwant-git
+
