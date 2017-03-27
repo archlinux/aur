@@ -2,7 +2,7 @@
 # Contributer: Christian Hesse <mail@eworm.de>
 
 pkgname=freecad-git
-pkgver=0.17pre.r3794.g4f165179e
+pkgver=0.17pre.r3954.g7e9da5e95
 pkgrel=1
 epoch=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -11,7 +11,7 @@ url='http://www.freecadweb.org/'
 license=('LGPL')
 depends=('boost-libs' 'curl' 'hicolor-icon-theme' 'libspnav' 'opencascade7'
          'med' 'xerces-c' 'python2-pivy' 'python2-pyside' 'qtwebkit'
-	 'libtheora' 'shared-mime-info' 'vtk-qt4' 'jsoncpp')
+	 'libtheora' 'shared-mime-info' 'vtk-qt4' 'jsoncpp' 'netgen-nogui-occ7')
 makedepends=('git' 'boost' 'cmake' 'coin' 'python2-pyside-tools'
              'desktop-file-utils' 'eigen' 'gcc-fortran' 'swig')
 optdepends=('python2-matplotlib'
@@ -55,7 +55,8 @@ build() {
 	      -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2 \
 	      -DPYTHON_SUFFIX=-python2.7 \
 	      -DPYTHON_BASENAME=-python2.7 \
-	      -DPYSIDEUIC4BINARY:FILEPATH=/usr/bin/python2-pyside-uic
+	      -DPYSIDEUIC4BINARY:FILEPATH=/usr/bin/python2-pyside-uic \
+	      -DBUILD_FEM_NETGEN=1
 
 	make
 }

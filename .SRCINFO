@@ -1,6 +1,6 @@
 pkgbase = freecad-git
 	pkgdesc = A general purpose 3D CAD modeler - git checkout
-	pkgver = 0.17pre.r3794.g4f165179e
+	pkgver = 0.17pre.r3954.g7e9da5e95
 	pkgrel = 1
 	epoch = 1
 	url = http://www.freecadweb.org/
@@ -30,6 +30,7 @@ pkgbase = freecad-git
 	depends = shared-mime-info
 	depends = vtk-qt4
 	depends = jsoncpp
+	depends = netgen-nogui-occ7
 	optdepends = python2-matplotlib
 	optdepends = pycollada-git: Create, edit and load COLLADA documents.
 	provides = freecad
