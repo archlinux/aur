@@ -10,7 +10,7 @@ license=('LGPL3 or any later version')
 depends=('eigen' 'boost' 'doxygen' 'python2-numpy')
 makedepends=('cmake')
 source=("https://github.com/stack-of-tasks/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('6946ae23a2b96b3885c32255151a6e0b')
+md5sums=('a57eff7bb2f7551c9ebc712dd4d6549f')
 
 build() {
     cd "$pkgname-$pkgver"
