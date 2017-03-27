@@ -8,8 +8,8 @@ pkgdesc="Versatile Commodore Emulator (Provides desktop files for easy use in Gn
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://vice-emu.sourceforge.net'
-depends=('$_pkgname')
-provides=('$_pkgname')
+depends=("$_pkgname")
+provides=("$_pkgname")
 
 source=(
   "$_pkgname.png"
