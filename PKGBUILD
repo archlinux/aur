@@ -1,7 +1,7 @@
 # Maintainer: Deluxo l.levickas@gmail.com
 
 pkgname=gotwitch
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Simple Twitch.tv command-line app to watch and query streams"
 arch=(any)

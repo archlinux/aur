@@ -1,6 +1,6 @@
 pkgbase = gotwitch
 	pkgdesc = Simple Twitch.tv command-line app to watch and query streams
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://deluxo.github.io/gotwitch/
 	arch = any
@@ -8,6 +8,9 @@ pkgbase = gotwitch
 	makedepends = go
 	optdepends = mpv: for watching a livestream
 	optdepends = vlc: for watching a livestream
+	optdepends = youtube-dl: http video streaming utility
+	options = !strip
+	options = !emptydirs
 	source = gotwitch::git+https://github.com/deluxo/gotwitch.git
 	md5sums = SKIP
 
