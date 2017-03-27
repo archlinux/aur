@@ -4,7 +4,7 @@ pkgbase=linux-baytrail410
 _srcname=linux-baytrail410
 _gitver=8d187a6230251eb0e09d20e17393b512df1f46d3
 pkgver=4.10.5
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -17,9 +17,8 @@ source=("git+https://github.com/muhviehstah/linux-baytrail410.git#tag=4.10.5-2"
 
 sha256sums=('SKIP'
             '60921720cdcd2ff3fc754eebbba795af52b61d681a0541ad492a606bed309f58'
-            'eb1b1e64c20296d99c74565353fbf4b09f064acac18c8275ccc87591ddc99fa8'
+            '04260f214751ec9cf45365f239a04c13344ec479a0f4c430c3b87c2c55364682'
             '16de300fec4f330f42d038534e8af7291695c8cb306e14b04882e33f68b94f45')
-
 
 _kernelname=${pkgbase#linux}
 
