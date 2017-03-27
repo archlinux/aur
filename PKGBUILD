@@ -2,7 +2,7 @@
 pkgname=r8723bs-git
 _pkgname=r8723bs
 pkgver=3dba47f12f8f3faadde8263a8ebbac673c6db87d
-pkgrel=5
+pkgrel=6
 url="http://www.realtek.com.tw/"
 provides=('r8723bs')
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = r8723bs-git
 	pkgver = 3dba47f12f8f3faadde8263a8ebbac673c6db87d
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.realtek.com.tw/
 	install = r8723bs-git.install
 	arch = any
