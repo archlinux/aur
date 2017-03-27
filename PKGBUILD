@@ -19,11 +19,11 @@ build() {
   git clone "$_ghuser/$pkgname.git" "$pkgname-$pkgver"
   mv $pkgname-$pkgver/* ./
   rm -rf $pkgname-$pkgver/
-	go build -o "$pkgname"
+	go build -o "$pkgname-bin"
 }
 
 package() {
-	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "$pkgname-bin" "$pkgdir/usr/bin/$pkgname"
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
