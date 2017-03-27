@@ -4,14 +4,15 @@
 
 _pkgname=powerlevel9k
 pkgname=zsh-theme-${_pkgname}-git
-pkgver=v0.3.1.r10.g2630526
-pkgrel=3
+pkgver=v0.6.2.r1.gfa21d8f
+pkgrel=1
 pkgdesc='Powerlevel9k theme for zsh'
 arch=('any')
 url='https://github.com/bhilburn/powerlevel9k'
 license=('custom')
 depends=('zsh')
-optdepends=('powerline-fonts: patched fonts for powerline'
+optdepends=(
+  'powerline-fonts: patched fonts for powerline'
   'oh-my-zsh-git: oh-my-zsh integration'
   'prezto-git: Prezto integration'
   'antigen-git: Antigen integration'
@@ -20,7 +21,9 @@ optdepends=('powerline-fonts: patched fonts for powerline'
   'awesome-terminal-fonts: icon package'
   'acpi: battery monitoring'
   'git: status of repository'
-  'mercurial: status of repository')
+  'mercurial: status of repository'
+  'systemd: virtualization detection'
+  'openssh: ssh detection')
 source=("${_pkgname}::git+https://github.com/bhilburn/${_pkgname}.git")
 sha256sums=('SKIP')
 makedepends=('git')
@@ -39,9 +42,8 @@ package()
 {
   cd "${srcdir}/${_pkgname}"
 
-  # No license
-  # Install Readme as License in case in the future some type of license is added
-  install -D -m644 README.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # Install license
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Install Documentation
   install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
