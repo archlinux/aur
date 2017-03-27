@@ -1,0 +1,16 @@
+pkgbase = colorize-git
+	pkgdesc = *nixy filter that adds color to its standard input by rows or (space separated) columns
+	pkgver = r8.aeeb2d2
+	pkgrel = 1
+	url = https://github.com/lonetwin/colorize
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	provides = colorize
+	conflicts = colorize
+	source = git://github.com/lonetwin/colorize.git
+	md5sums = SKIP
+
+pkgname = colorize-git
+
