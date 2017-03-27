@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-bignum'
-pkgver='0.19'
+pkgver='0.20'
 pkgrel='1'
 pkgdesc="Arbitrary size precision for integers, rationals and floating-point numbers."
 arch=('any')
@@ -12,8 +12,8 @@ depends=('perl-class-multimethods' 'perl-math-gmpq>=0.41' 'perl-math-gmpz>=0.39'
 makedepends=()
 url='https://metacpan.org/release/Math-BigNum'
 source=("https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/Math-BigNum-${pkgver}.tar.gz")
-md5sums=('6923ed164f57a188abd9d6b534c530d9')
-sha512sums=('b7f78faeded0d47d2fb70556495db06a709086b56a2b187d2e7002657fb13152775812cd893549d22de16dd9da551d484d6f422f9402d7888bf0230936bcd6bd')
+md5sums=('8fc83ccc4e87de0ba6979aeeb2d5b2cb')
+sha512sums=('e9740ff8ee64072b72f8bc6af4d73ae291647c60997d4c09bd8fcc3d3a20c33d1ff7521e59888e2f2f1cf185608f59f2c84c4bb4deef3ab1aa82e467415dcdc8')
 _distdir="Math-BigNum-${pkgver}"
 
 build() {
