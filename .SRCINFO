@@ -1,7 +1,7 @@
 pkgbase = openss7-modules-ec2-lts-git
 	pkgdesc = OpenSS7 Fast-STREAMS and protocol Suites (4.9 Kernel Modules)
 	pkgver = 1.1.8.63.g45f1b08cd
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.openss7.org
 	install = openss7-modules-ec2-lts-git.install
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = openss7-modules-ec2-lts-git
 	makedepends = java-environment
 	makedepends = lm_sensors
 	makedepends = popt
-	depends = linux-ec2-lts=4.9.18-1
+	depends = linux-ec2-lts=4.9.18-3
 	provides = openss7-modules-ec2-lts=1.1.8.63.g45f1b08cd
 	conflicts = openss7-modules-ec2-lts
 	options = !emptydirs
