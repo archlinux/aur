@@ -22,12 +22,6 @@ prepare() {
   git submodule update
 }
 
-pkgver() {
-  cd "$srcdir/douane-configurator"
-  # Use the tag of the last commit
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
-}
-
 build() {
   cd "$srcdir/douane-configurator"
 
