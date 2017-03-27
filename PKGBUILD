@@ -4,14 +4,21 @@
 
 pkgname=amdapp-codexl
 pkgver=2.2.511
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD CodeXL is an OpenCL, Vulkan and OpenGL Debugger and Profiler, with static OpenCL kernel analyzer. It supports OpenCL 2.0"
 arch=('x86_64')
 url="http://gpuopen.com/compute-product/codexl/"
 license=('MIT')
-options=('staticlibs' 'libtool' '!strip' '!upx')
+options=('staticlibs' 'libtool' '!upx')
 groups=('amdapp')
-depends=('libpng12' 'libgl' 'opencl-icd-loader' 'xorg-xhost')
+depends=('glu'
+  'gtk2'
+  'qt5-multimedia'
+  'qt5-webkit')
+optdepends=('libpng12: Vulkan debugging'
+  'lib32-libx11: 32 bit debugging'
+  'opencl-icd-loader: for OpenCL debugging'
+  'vulkan-icd-loader: Vulkan debugging')
 source=("https://github.com/GPUOpen-Tools/CodeXL/releases/download/v${pkgver:0:3}/CodeXL_Linux_x86_64_${pkgver}.tar.gz"
       CodeXL.sh
       codexl.png
