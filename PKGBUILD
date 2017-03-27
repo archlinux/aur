@@ -1,7 +1,7 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: Alex Combas <alex.combas@gmail.com>
 pkgname=luxrays-hg
-pkgver=3744.49dbe03e39d0
+pkgver=3748+.6941cfd544c4+
 pkgrel=1
 pkgdesc="Accelerate the ray intersection process by using GPUs"
 arch=('x86_64')
@@ -10,11 +10,9 @@ license=('GPL')
 depends=('embree-bvh_build-git' 'opencl-icd-loader' 'libgl' 'openimageio')
 makedepends=('boost' 'cmake' 'freetype2' 'gtk3' 'libpng' 'mesa' 'opencl-headers' 'glew' 'freeglut'
              'mercurial')
-optdepends=('opencl-nvidia: OpenCL support for nVidia GPUs' \
-            'amdapp-sdk: OpenCL support for AMD GPUs' \
-            'intel-opencl-runtime: OpenCL support for Intel CPUs' \
+optdepends=('opencl-driver: OpenCL support' \
             'glew: demos (SmallLuxGPU etc.)' \
-            'gtk3: luxcoreui'
+            'gtk3: luxcoreui' \
             'freeglut: demos (SmallLuxGPU etc.)' \
             'boost-libs: demos (SmallLuxGPU etc.)')
 options=('staticlibs')
