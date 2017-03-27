@@ -3,7 +3,7 @@
 #_gui_toolkit=qt # qt or gtk
 _build_server=true # set true to build server (default:false)
 _build_client=true  # set false to don't build client (default:true)
-_CMAKE_COMMON_ARGS=('-DWITH_STATIC=OFF' '-DWITH_NEL_TOOLS=OFF' '-DWITH_NEL_TESTS=OFF' '-DWITH_LUA53=ON'  '-DWITH_NEL_SAMPLES=OFF' '-DWITH_RYZOM_TOOLS=OFF'.) # cmake arguments for server and client
+_CMAKE_COMMON_ARGS=('-DWITH_STATIC=OFF' '-DWITH_NEL_TOOLS=OFF' '-DWITH_NEL_TESTS=OFF' '-DWITH_LUA53=ON'  '-DWITH_NEL_SAMPLES=OFF' '-DWITH_RYZOM_TOOLS=OFF' '-DWITH_RYZOM_PATCH=ON'.) # cmake arguments for server and client
 _CMAKE_SERVER_ARGS=('-DWITH_RYZOM_SERVER=ON' '-DWITH_RYZOM_CLIENT=OFF' '-DWITH_DRIVER_OPENGL=OFF' '-DWITH_DRIVER_OPENAL=OFF' ) # cmake args for building server
 _CMAKE_CLIENT_ARGS=( '-DWITH_RYZOM_SERVER=OFF' '-DWITH_RYZOM_CLIENT=ON' ) # cmake args for building client
 pkgname=ryzom-hg 
