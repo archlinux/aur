@@ -1,5 +1,5 @@
 pkgbase = backintime-git
-	pkgver = 1.1.12.r370.gc5cfedf5
+	pkgver = 1.1.12.r371.g87e7a6fb
 	pkgrel = 1
 	url = https://github.com/bit-team/backintime
 	arch = any
@@ -37,7 +37,7 @@ pkgname = backintime-cli-git
 	depends = python-keyring
 	depends = rsync
 	optdepends = encfs: encrypted filesystems
-	optdepends = gocrypt: encrypted filesystems
+	optdepends = gocryptfs: encrypted filesystems
 	optdepends = sshfs: remote filesystems
 	provides = backintime-cli
 	conflicts = backintime-cli
