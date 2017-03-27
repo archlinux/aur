@@ -1,4 +1,5 @@
-# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Maintainer: grufo <madmurphy333 at gmail dot com>
+# Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname='fakeuser-git'
 _pkgname='fakeuser'
