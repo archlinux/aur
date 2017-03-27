@@ -1,0 +1,14 @@
+pkgbase = python-distorm3
+	pkgdesc = Powerful Disassembler Library For x86/AMD64.
+	pkgver = 3.3.4
+	pkgrel = 1
+	url = https://github.com/gdabah/distorm
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = python
+	source = python-distorm3::https://github.com/gdabah/distorm/releases/download/v3.3.4/distorm3-3.3.4.zip
+	md5sums = SKIP
+
+pkgname = python-distorm3
+
