@@ -1,6 +1,6 @@
 # Maintainer: courk <courk at courk dot fr>
 pkgname=kaitai-struct-compiler
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="Kaitai Struct Compiler: Compiler for the Kaitai declarative binary format parsing language"
 arch=(any)
@@ -9,8 +9,8 @@ license=('GPL3')
 depends=("java-runtime")
 optdepends=()
 source=("$pkgname-$pkgver.zip::https://bintray.com/kaitai-io/universal/download_file?file_path=$pkgver%2F$pkgname-$pkgver.zip" "01-fix_lib_dir.patch")
-sha1sums=("e60d40b7fba5a9f84cb9a9d87f491a7c8e5096bd"
-          "48c0e5d2682c61d4cea023d19882eb92c191cc1a")
+sha1sums=("6df04de01a22b2a5853b286c84c893681c407936"
+          "f195c30032c7b2b8f9e2322188b698248bc27adf")
 
 prepare() {
   cd $pkgname-$pkgver

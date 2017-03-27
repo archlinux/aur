@@ -1,15 +1,15 @@
 pkgbase = kaitai-struct-compiler
 	pkgdesc = Kaitai Struct Compiler: Compiler for the Kaitai declarative binary format parsing language
-	pkgver = 0.6
+	pkgver = 0.7
 	pkgrel = 1
 	url = http://kaitai.io/
 	arch = any
 	license = GPL3
 	depends = java-runtime
-	source = kaitai-struct-compiler-0.6.zip::https://bintray.com/kaitai-io/universal/download_file?file_path=0.6%2Fkaitai-struct-compiler-0.6.zip
+	source = kaitai-struct-compiler-0.7.zip::https://bintray.com/kaitai-io/universal/download_file?file_path=0.7%2Fkaitai-struct-compiler-0.7.zip
 	source = 01-fix_lib_dir.patch
-	sha1sums = e60d40b7fba5a9f84cb9a9d87f491a7c8e5096bd
-	sha1sums = 48c0e5d2682c61d4cea023d19882eb92c191cc1a
+	sha1sums = 6df04de01a22b2a5853b286c84c893681c407936
+	sha1sums = f195c30032c7b2b8f9e2322188b698248bc27adf
 
 pkgname = kaitai-struct-compiler
 
