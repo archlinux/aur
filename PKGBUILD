@@ -1,7 +1,8 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 # Contributor: jhass <me@jhass.eu>
 pkgname=luaunbound
-pkgver=2016.01.10
+pkgver=2017.03.24
+_version=6ba23bf18032
 pkgrel=3
 pkgdesc="drop-in replacement for Prosodys internal DNS library with a binding to libunbound"
 url="https://www.zash.se/luaunbound.html"
@@ -18,7 +19,7 @@ sha512sums=('SKIP'
 prepare() {
     cd "$srcdir/$pkgname"
     # fixed commit
-    hg checkout f270a1cf86ce
+    hg checkout $_version
     patch -p1 < "$srcdir/use_cc.patch"
 }
 
