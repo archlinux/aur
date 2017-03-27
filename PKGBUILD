@@ -5,24 +5,22 @@ pkgver=2.16
 pkgrel=1
 pkgdesc="ARP Ping from Thomas Habets"
 arch=('i686' 'x86_64')
-url="http://www.habets.pp.se/synscan/programs.php"
+url="http://www.habets.pp.se/synscan/programs.php?prog=arping"
 license=('GPL')
 depends=('libnet' 'libcap' 'libpcap')
-source=("https://github.com/ThomasHabets/${_projname}/archive/${_projname}-${pkgver}.tar.gz")
-sha1sums=('a6a33da6853cab19a8cfa389117e8a6c1c68ce26')
-
-prepare() {
-	cd "${_projname}-${_projname}-$pkgver"
-	autoreconf -i
-}
+source=("http://www.habets.pp.se/synscan/files/arping-$pkgver.tar.gz"
+        "http://www.habets.pp.se/synscan/files/arping-$pkgver.tar.gz.asc")
+sha256sums=('e0086f79cb30cd64983acd46e1fbadcf11dfd63c15f1180beae1cad63a05c854'
+            'SKIP')
+validpgpkeys=('990786988A24F52F1C2E87F639A49EEA460A0169') # Thomas Habets
 
 build() {
-	cd "${_projname}-${_projname}-$pkgver"
+	cd "arping-$pkgver"
 	./configure --prefix=/usr --program-suffix=${_suffix} --sbindir=/usr/bin
 	make
 }
 
 package() {
-	cd "${_projname}-${_projname}-$pkgver"
+	cd "arping-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
