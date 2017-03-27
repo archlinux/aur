@@ -1,7 +1,7 @@
 # Contributor: grimi <grimi at poczta dot fm>
 
 pkgname=mime-archpkg
-pkgver=0.3.6.4
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="mime type for archlinux packages"
 arch=('any')
@@ -12,7 +12,7 @@ install=${pkgname}.install
 source=(${pkgname}.{xml,sh} {hicolor,gnome,Tango,oxygen,nuoveXT2,Faenza,Faience,NITRUX,Numix,breeze,FaenzaFlattr2-Zephyr,elementary}.svgz
         {install,update,remove}.hook hook-script.sh)
 sha256sums=('e3fc45b1121fa845a245c115704715ec0b6a17860a507202cc5e1b02d01c797b'
-            '9b3418ba5cb6acf32ea63bb9868554efcc0375b1f60aa8f244be38174c4f004c'
+            '2a26f7e7a2cfdfe4fbe380c12f17ea4170b452ece12e954f63d85024af5a5815'
             'fc9b1f43e5993e994707285d89e0da28be48b69046f4cac68578a8d0beef4653'
             'a59eb69c6fcdf7e8017c2596384cff0635dee46e3db5949370de766273451a85'
             '0a4951fd15afb85229ee17629686f914b5e5ed0583846dde2350e0c247007975'
@@ -25,10 +25,10 @@ sha256sums=('e3fc45b1121fa845a245c115704715ec0b6a17860a507202cc5e1b02d01c797b'
             '8af276bc4afecede207a6742a5ef9320155650364339af183f9d47e1614c30a7'
             '3f0177c13377ad94745ec0f0324ab5fb58eeccac4e4b56695ac0f2113fb4d5bb'
             'a99c2b48796d6f8299867034242c69fbddef4c380df0b68a678ee2727c841f29'
-            '814ec6d8b1318ffde6732c6ba468d66bc32534e79e486e4a4aaace0147b00d22'
-            '372f44c4e8d5d9dcca7cf80bd2e2b8ef3874aad6f6051073f4e98839dd9ed531'
+            'b0377905a4228bde2544c35cc23350dbd3b9c7849d441fa53e25819c414d2e4a'
+            '641d017a42be2c2c0659934770d8f3638ffb88c2a0941798be82cf52f4a628e8'
             '622ee32d6ddbcb46671dcc46c7b31f4b7d9d4083e416af0100ab4bcc9829bd06'
-            '2c553f584aa0be02e5d62bc1b7af005b963124dba8987af9b13c5fbd8707fb2f')
+            'f374e455f0e4bfd5327d9a9ae32410f0698c916199ac46631d53b4d8f58cbcb7')
 
 
 package() {
@@ -38,8 +38,8 @@ package() {
   install -m644 *.svgz "${pkgdir}"/usr/share/${pkgname}/
   install -Dm755 hook-script.sh "${pkgdir}"/usr/share/libalpm/scripts/${pkgname}
   install -Dm644 install.hook "${pkgdir}"/usr/share/libalpm/hooks/${pkgname}-install.hook
-  install -Dm644 update.hook "${pkgdir}"/usr/share/libalpm/hooks/${pkgname}-update.hook
-  install -Dm644 remove.hook "${pkgdir}"/usr/share/libalpm/hooks/${pkgname}-remove.hook
+  install -m644 update.hook "${pkgdir}"/usr/share/libalpm/hooks/${pkgname}-update.hook
+  install -m644 remove.hook "${pkgdir}"/usr/share/libalpm/hooks/${pkgname}-remove.hook
 }
 
 

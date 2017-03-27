@@ -3,5 +3,5 @@ post_install() {
 }
 
 pre_remove() {
-   mime-archpkg -r
+   mime-archpkg -d
 }
