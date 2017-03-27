@@ -1,6 +1,6 @@
 pkgbase = cuberite
 	pkgdesc = A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client.
-	pkgver = 1.9.4b658
+	pkgver = 1.9.4b712
 	pkgrel = 1
 	url = https://cuberite.org/
 	install = cuberite.install
@@ -28,12 +28,12 @@ pkgbase = cuberite
 	sha512sums = 2ae834c75dfc299e823308bcb500e028020f1ac47675c645c4a7832ae225f63e9f7d22c08cd1bbb754388db7cf57ab3d4c359615be70f8d234e82013c148b024
 	sha512sums = e9a452e2c674ec177bf8fec3a798088628fbdde9141ae3151071cd6b2b72ff6fc1983ea8bd5fa3aeaa6706f8b29fe82813e2a3717a9b1800ecd478b4c3abac8f
 	sha512sums = 9282301a67a612a4b757324274b6deea16d57e919b3c367a92414d7b74fe0ec4f5e54748ccf0ff14f6c62e8dbc5cb211afebfff8ad5abe63945afccf9484378f
-	sha512sums = 3710f8601dff844c4f1de3e3e3da835f5b0a89df5efaa3fc76ed7e8686b39eb870e5605389623d140782fdebbbe356dc753c2c64e8c5ffc6f76306d86657db16
-	source_i686 = Cuberite.b658_i686.tar.gz::https://builds.cuberite.org/job/Cuberite%20Linux%20x86%20Master/658/artifact/Cuberite.tar.gz
-	sha512sums_i686 = 0737c83043f6aa7b1d1f712009cdd0dc184d275c82975db987e4cab3ff59a4d3a2cd4672fe8fce7bbd1e0fb95203a006cf1e0474cab3520cd12aa335211030ea
-	source_x86_64 = Cuberite.b658_x86_64.tar.gz::https://builds.cuberite.org/job/Cuberite%20Linux%20x64%20Master/658/artifact/Cuberite.tar.gz
-	sha512sums_x86_64 = a8a6b5b6a8ac06392a78391a017f13b79ecf2d09ee2b11030b3a720ca17f47ce93bb95991f0f0978ca9623ebdfad9fcfa14de15d88df7f7b7d3b39cbe60170a9
-	source_armv7h = Cuberite.b635_armhf.tar.gz::https://builds.cuberite.org/job/Cuberite%20Linux%20raspi-armhf%20Master/635/artifact/Cuberite.tar.gz
-	sha512sums_armv7h = 72eb8c444b28949cbd9eb82531537683e28e6bd61d85c14db6af6375ff045b7878aed802372fb32514bb3386015cc5c0f9b81e37624644e36aa75bb0f21845f7
+	sha512sums = d529d2c97e7284964c21ce1e1a6652af6742c0339000574668931a653070a7f395d9f517a84a5d07df6949295086fb7c3d2ac26c5058700b96401af8ae7c71f5
+	source_i686 = Cuberite.b712_i686.tar.gz::https://builds.cuberite.org/job/Cuberite%20Linux%20x86%20Master/712/artifact/Cuberite.tar.gz
+	sha512sums_i686 = 7e25544450c598a091a6bba6786aee946e8e2281184759a6c692c8cb77552fb182e15aa224261d6be62a8d5b263791f488a83fa618ff95eda44f807022809856
+	source_x86_64 = Cuberite.b712_x86_64.tar.gz::https://builds.cuberite.org/job/Cuberite%20Linux%20x64%20Master/712/artifact/Cuberite.tar.gz
+	sha512sums_x86_64 = 3222e675086c0986d478092afd90d964fd3a5cc3bd0ad79b15b7e66c8a7cc6912a75637f1efdb53dd740ccb42354531496a65eb7bcd19b735a310ccd14e04e1a
+	source_armv7h = Cuberite.b688_armhf.tar.gz::https://builds.cuberite.org/job/Cuberite%20Linux%20raspi-armhf%20Master/688/artifact/Cuberite.tar.gz
+	sha512sums_armv7h = 36a857d927b2d243be1ff6099d4d51f179086cfc45aef272c67855b23cff462413c8f5818925a728b6b32ad314452d976dc5f94b26b56a29a1abecb65ca18243
 
 pkgname = cuberite
