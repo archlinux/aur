@@ -1,7 +1,7 @@
 # Maintainer: Deluxo l.levickas@gmail.com
 
 pkgname=gotwitch
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Simple Twitch.tv command-line app to watch and query streams"
 arch=(any)
@@ -15,13 +15,12 @@ source=("$pkgname::git+$_ghuser$pkgname.git")
 md5sums=(SKIP)
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   go build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-
+  cd "$pkgname"
   install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
