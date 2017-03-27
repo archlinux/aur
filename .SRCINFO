@@ -1,0 +1,14 @@
+pkgbase = scc-git
+	pkgdesc = The Suckless C Compiler
+	pkgver = r2448.c6dd2da
+	pkgrel = 1
+	url = http://git.suckless.org/scc/
+	arch = x86_64
+	license = custom:ISC
+	depends = qbe-git
+	depends = sh
+	source = scc-git::git+http://git.suckless.org/scc/
+	sha512sums = SKIP
+
+pkgname = scc-git
+
