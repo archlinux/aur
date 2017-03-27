@@ -1,6 +1,6 @@
 # Maintainer: Sean Enck <enckse@gmail.com>
 pkgname=texlive-conv-xkv
-pkgver=2017.01.09
+pkgver=2017.02.17
 pkgrel=1
 license=('LPPL')
 depends=('texlive-core')
@@ -8,7 +8,7 @@ pkgdesc="This small package supports key-value syntax other than the standard la
 url="http://www.ctan.org/tex-archive/macros/latex/contrib/conv-xkv"
 arch=('any')
 source=("$pkgname-$pkgver.zip::http://mirrors.ctan.org/macros/latex/contrib/conv-xkv.zip")
-sha256sums=('24ef8b121d2d6a7f0fb6d46cbabe1891925ea54ac315fa7d9f1d37b5bf3bd4e8')
+sha256sums=('ea106330d23371e919805b75d1dfb5a3a010e2c7c3dfff3877ca34e5d272f2d4')
 
 build()
 {
