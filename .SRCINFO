@@ -1,7 +1,7 @@
 pkgbase = scc-git
 	pkgdesc = The Suckless C Compiler
 	pkgver = r2448.c6dd2da
-	pkgrel = 1
+	pkgrel = 2
 	url = http://git.suckless.org/scc/
 	arch = x86_64
 	license = custom:ISC

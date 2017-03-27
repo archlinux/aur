@@ -2,7 +2,7 @@
 pkgname='scc-git'
 pkgdesc='The Suckless C Compiler'
 pkgver=r2448.c6dd2da
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 depends=('qbe-git' 'sh')
 license=('custom:ISC')
@@ -21,7 +21,7 @@ pkgver () {
 
 prepare () {
 	cd "${pkgname}"
-	sed -i 's^/libexec/scc/^/lib/scc/^' Makefile driver/posix/scc.c
+	sed -i 's^/libexec/^/lib/^' Makefile driver/posix/scc.c
 }
 
 build () {
