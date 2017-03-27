@@ -5,9 +5,9 @@ pkgbase = gpgme-python-git
 	url = https://gnupg.org/software/gpgme/index.html
 	arch = x86_64
 	license = GPL2
-	makedepends = gpgme
+	makedepends = gpgme>=1.8
 	makedepends = swig
-	makedepends = gnupg
+	makedepends = gnupg>=2
 	makedepends = libgpg-error
 	provides = gpgme-python
 	source = gpgme-python-git::git+git://git.gnupg.org/gpgme.git
