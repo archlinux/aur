@@ -2,7 +2,7 @@
 # Maintainer: Isaac Curtis <isaaccurtis1@gmail.com>
 
 pkgname=zotero-beta
-pkgver="5.0_beta.171+d357382"
+pkgver="5.0_beta.172+8edd4b0"
 pkgrel=1
 pkgdesc="Zotero Standalone. A free, easy-to-use tool to help you collect, organize, cite, and share your research sources."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ conflicts=('zotero')
 if [[ $CARCH == "x86_64" ]]
 then
   _arch=x86_64
-md5sums=('9794e568bf7afe427b917d4d6d0dd8ae'
+md5sums=('6b169aeb62f7bd43d3f6538a02af68a4'
          '3bfed397fb9d060af469eaacfe8add63')
 else
   _arch=i686
