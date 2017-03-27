@@ -49,6 +49,10 @@ post_install() {
 
     http://localhost:8529
 
+  ArangoDB now works with logrotate:
+
+     sudo logrotate /etc/logrotate.d/arangodb3
+
 
   Getting help:
     http://stackoverflow.com/questions/tagged/arangodb
