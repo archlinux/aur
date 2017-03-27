@@ -12,7 +12,7 @@
 _clang_completer=y
 
 pkgname=neovim-youcompleteme-core-git
-pkgver=r2026.6583da75
+pkgver=r2036.01570aac
 pkgrel=1
 pkgdesc='A code-completion engine for Vim'
 arch=(i686 x86_64)
@@ -59,7 +59,7 @@ build() {
 	cmake_flags="-DUSE_PYTHON2=OFF -DUSE_SYSTEM_BOOST=ON"
 
 	if [ "${_clang_completer}" == 'y' ]; then
-		cmake_flags+=" -DUSE_CLANG_COMPLETER=ON -DEXTERNAL_LIBCLANG_PATH='/usr/lib/libclang.so'"
+		cmake_flags+=" -DUSE_CLANG_COMPLETER=ON -DUSE_SYSTEM_LIBCLANG=ON"
 	fi
 
 	cmake ${cmake_flags} . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
