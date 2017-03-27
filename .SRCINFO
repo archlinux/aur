@@ -1,7 +1,7 @@
 pkgbase = quickswitch-i3
 	pkgdesc = A python utility to quickly change to and locate windows in i3
-	pkgver = 2.6.0
-	pkgrel = 3
+	pkgver = 2.7.0
+	pkgrel = 1
 	url = https://github.com/OliverUv/quickswitch-for-i3
 	arch = any
 	license = custom:WTFPL
@@ -9,8 +9,8 @@ pkgbase = quickswitch-i3
 	depends = python-setuptools
 	depends = python-i3-git
 	options = !emptydirs
-	source = https://github.com/OliverUv/quickswitch-for-i3/archive/2.6.0.tar.gz
-	sha256sums = d1a081d9523e302b781d474d4806021122a3b8a1d8e486bae46f3409d4400e8a
+	source = https://github.com/OliverUv/quickswitch-for-i3/archive/2.7.0.tar.gz
+	sha256sums = ce6339e532a31f6cd13c17e99bcc42c9f60a43299536835af4ca4f42cd3f8f7b
 
 pkgname = quickswitch-i3
 
