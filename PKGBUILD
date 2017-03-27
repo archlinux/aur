@@ -4,7 +4,7 @@
 
 pkgname=caffe-git
 pkgver=rc5.r5.g317d162ac
-pkgrel=3
+pkgrel=4
 pkgdesc="A deep learning framework made with expression, speed, and modularity in mind (git version, gpu enabled)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -69,13 +69,13 @@ prepare() {
     # use python layers
     sed -i '/WITH_PYTHON_LAYER/s/^#[[:space:]]//g' Makefile.config
     
+    # if you want to use python2 _instead_ of python3:
+    #     - uncomment this block
+    #     - comment the python3 block
+    #     - change python3 dependencies to python2
+    #     - NOTE: do not enable both python2 and python3 blocks. choose only one.
+    #     - NOTE: python2 is the Caffe default but this package uses python3 by default
     # python2 settings
-    #     if you want to use python2 _instead_ of python3:
-    #         - uncomment this block
-    #         - comment the python3 block
-    #         - change python3 depends and optdepends to python2
-    #         - NOTE: do not enable both python2 and python3 blocks. choose only one.
-    #         - NOTE: python2 is the Caffe default but this package uses python3 by default
     #_py2inc_line="$(sed -n '/PYTHON_INCLUDE[[:space:]]\:=[[:space:]]\/usr\/include\/python2\.7/=' Makefile.config)"
     #sed -i "$((_py2inc_line+1))s/dist/site/" Makefile.config
 }
