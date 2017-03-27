@@ -1,7 +1,7 @@
 pkgbase = python-ginga
 	pkgdesc = A viewer for astronomical data FITS (Flexible Image Transport System) files.
 	pkgver = 2.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ejeschke.github.io/ginga/
 	arch = i686
 	arch = x86_64

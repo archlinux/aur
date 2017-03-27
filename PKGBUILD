@@ -2,8 +2,8 @@
 
 pkgname=python-ginga
 pkgver=2.6.2
-pkgrel=1
-pkgdesc="	A viewer for astronomical data FITS (Flexible Image Transport System) files."
+pkgrel=2
+pkgdesc="A viewer for astronomical data FITS (Flexible Image Transport System) files."
 arch=('i686' 'x86_64')
 url="http://ejeschke.github.io/ginga/"
 license=('BSD')
@@ -16,6 +16,6 @@ source=("https://files.pythonhosted.org/packages/source/g/ginga/ginga-${pkgver}.
 md5sums=('a98559abd5532d41a7e6bd243bf9c1f3')
 
 package(){
-  cd $srcdir/ginga
-  python setup.py install --root="$pkgdir/" --optimize=1 --use-system-libraries
+  cd $srcdir/ginga-$pkgver
+  python setup.py install --root="$pkgdir/" --optimize=1 --use-system-libraries --offline
 }
