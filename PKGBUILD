@@ -27,14 +27,9 @@ prepare() {
     cp "../build.conf" "$srcdir/kwant/build.conf"
 }
 
-build() {
-    cd "$srcdir/kwant"
-    python setup.py build
-}
-
 package() {
     cd "$srcdir/kwant"
-    python setup.py install --skip-build --root="$pkgdir"
+    python setup.py install --root="$pkgdir/" --optimize=1
 
     # Install license
     install -D -m644 "${srcdir}/kwant/LICENSE.rst" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.rst" || return 1
