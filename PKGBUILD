@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=traccar
-pkgver=3.9
+pkgver=3.10
 pkgrel=1
 pkgdesc="Open source GPS tracking system"
 arch=('i686' 'x86_64')
@@ -18,5 +18,5 @@ package() {
   install -m644 "${srcdir}/traccar.service" "${pkgdir}/usr/lib/systemd/system/"
 }
 
-md5sums=('f354a68f964efcd841724a4eed56891a'
+md5sums=('ca1b307ee53d54d13f3ad593ff00209d'
          '0c5ebc020df4d1710c555b67e87e104f')
