@@ -20,7 +20,7 @@ pkgbase = eolie-git
 	depends = python-cairo
 	depends = libsecret
 	depends = webkit2gtk
-	depends = python-cryptography,
+	depends = python-cryptography
 	depends = python-crypto
 	optdepends = python-wikipedia: display advanced artist information
 	provides = eolie=0.1.r1.ge5a7d6f
