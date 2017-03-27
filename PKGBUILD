@@ -3,7 +3,7 @@
 pkgname=cqrlog-source
 _pkgname=cqrlog
 _authorname=ok2cqr
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="An advanced ham radio logger using MariaDB - SOURCE version."
 arch=('i686' 'x86_64')
@@ -46,5 +46,5 @@ package() {
 
 	make DESTDIR="$pkgdir/" install
 }
-md5sums=('38e2a75c6bbebf3f8d13b403c62c256f')
-sha256sums=('70aa5b09e281059d7a310ff3c2e4b428ae19e1f7413800fa4d1aaabd2c94f6a0')
+md5sums=('7635929c34dd0de37918f1f0b41b3a1e')
+sha256sums=('fce2831e93070ab68820143ea6c6a96a625d6e7869d6fa345135185c1c115c44')
