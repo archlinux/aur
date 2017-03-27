@@ -1,7 +1,7 @@
 # Maintainer: Lukas L <l.levickas@gmail.com>
 
 pkgname=gotwitch
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Simple Twitch.tv command-line app to watch and query streams"
 arch=(any)
@@ -17,19 +17,19 @@ source=("$pkgname::git+$_ghuser/$pkgname.git")
 md5sums=(SKIP)
 
 build() {
-  echo "srcdir: $srcdir"
-  echo "pkgdir: $pkgdir"
-  echo "pwd: $(pwd)"
-  mkdir -p go/bin go/src go/pkg
-  export GOPATH=go
-  export GOROOT=$GOPATH
-  go get $_gourl
-  go install $_gourl
+  mkdir -p $srcdir/$pkgname/go/src/github.com/deluxo/$pkgname
+  mkdir -p $srcdir/$pkgname/go/pkg
+  mkdir -p $srcdir/$pkgname/go/bin
+  mv $pkgname/$pkgname.go $srcdir/$pkgname/go/src/github.com/deluxo/$pkgname
+  cd $srcdir/$pkgname/go/src/github.com/deluxo/$pkgname
+  export GOPATH=$srcdir/$pkgname/go
+  GOPATH=$srcdir/$pkgname/go go get -v -d ./ ...
+  GOPATH=$srcdir/$pkgname/go go build -v -o "$srcdir/$pkgname/$pkgname"
 }
 
 package() {
-	install -Dm755 "go/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
-	#install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm755 "$srcdir/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -D -m644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
