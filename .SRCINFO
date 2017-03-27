@@ -1,0 +1,29 @@
+pkgbase = eigen32
+	pkgdesc = Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra.
+	pkgver = 3.2.10
+	pkgrel = 1
+	url = http://eigen.tuxfamily.org
+	arch = any
+	license = GPL3
+	license = LGPL2.1
+	license = BSD
+	license = custom:MPL2
+	license = custom:MINPACK
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = freeglut
+	makedepends = gcc-fortran
+	makedepends = fftw
+	makedepends = qt4
+	makedepends = suitesparse
+	makedepends = boost
+	optdepends = qt4: for example programs
+	provides = eigen3
+	provides = eigen
+	replaces = eigen3
+	replaces = eigen
+	source = eigen32-3.2.10.tar.bz2::http://bitbucket.org/eigen/eigen/get/3.2.10.tar.bz2
+	sha1sums = a85bb68c82988648c3d53ba9768d7dcbcfe105f8
+
+pkgname = eigen32
+
