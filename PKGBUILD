@@ -1,18 +1,17 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=luxrender-hg
-pkgver=4912+.55596283ec1e+
+pkgver=4916+.e8f1c5ff54b0+
 pkgrel=1
 pkgdesc="Rendering system for physically correct, unbiased image synthesis"
 arch=('x86_64')
 url="http://www.luxrender.net/"
 license=('GPL')
-depends=('boost-libs' 'freeimage' 'openexr' 'openimageio' 'libpng' 'libcl' 'libgl' 'fftw'
+depends=('boost-libs' 'freeimage' 'openexr' 'openimageio' 'libpng' 'opencl-icd-loader' 'libgl' 'fftw'
          'embree-bvh_build-git')
-optdepends=('luxblend25: Blender exporter' 'qt4: Qt GUI' \
-            'python: pylux Python interface'
-            'opencl-nvidia: OpenCL support for nVidia GPUs' \
-            'amdapp-sdk: OpenCL support for AMD GPUs' \
-            'intel-opencl-runtime: OpenCL support for Intel CPUs')
+optdepends=('luxblend25: Blender exporter' \
+            'qt4: Qt GUI' \
+            'python: pylux Python interface' \
+            'opencl-driver: OpenCL support')
 makedepends=('cmake' 'boost' 'mesa' 'qt4' "luxrays-hg" 'python' 'opencl-headers'
              'eos_portable_archive' 'mercurial')
 provides=('luxrender')
@@ -32,8 +31,6 @@ prepare() {
 
   # force use of python 3 with boost_python
   patch -Np1 < "$srcdir/force_python3.diff"
-  # the build requires some extensions
-  sed -i 's|std=c++11|std=gnu++11|' CMakeLists.txt
 }
 
 build() {
@@ -44,8 +41,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLUXRAYS_DISABLE_OPENCL=OFF \
     -DPYTHON_CUSTOM=ON \
-    -DPYTHON_LIBRARIES=/usr/lib/libpython3.5m.so \
-    -DPYTHON_INCLUDE_PATH=/usr/include/python3.5m/ \
+    -DPYTHON_LIBRARIES=/usr/lib/libpython3.6m.so \
+    -DPYTHON_INCLUDE_PATH=/usr/include/python3.6m/ \
     -DCMAKE_EXE_LINKER_FLAGS=-lpthread
   make
 }
@@ -58,7 +55,7 @@ package() {
   [ "$CARCH" = "x86_64" ] && mv "$pkgdir"/usr/lib64 "$pkgdir"/usr/lib
 
   # install pylux
-  install -D -m644 pylux.so "$pkgdir"/usr/lib/python3.5/pylux.so
+  install -D -m644 pylux.so "$pkgdir"/usr/lib/python3.6/pylux.so
 }
 
 # vim:set ts=2 sw=2 et:
