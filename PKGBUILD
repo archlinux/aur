@@ -1,7 +1,7 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=fbthrift
 pkgver=2017.03.20.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Facebook's branch of Apache Thrift, including a new C++ server"
 arch=('i686' 'x86_64')
 url="https://github.com/facebook/fbthrift"
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('folly' 'krb5' 'numactl' 'python2')
 conflicts=('thrift')
 provides=('thrift')
-makedepends=('scons' 'zstd')
+makedepends=('scons' 'zstd' 'libunwind')
 options=('!emptydirs' 'staticlibs')
 source=("https://github.com/facebook/$pkgname/archive/v${pkgver}.tar.gz")
 md5sums=('eb8b04def043e4b897e5ce1617695486')
