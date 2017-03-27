@@ -1,0 +1,13 @@
+pkgbase = gnome-osx-light-shell-theme
+	pkgdesc = Gnome-OSX Light Shell Theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1171688/
+	arch = any
+	depends = gnome-shell>=3.20
+	depends = gnome-shell-extensions
+	source = https://dl.opendesktop.org/api/files/download/id/1488138501/Gnome-OSX-Light-Shell.tar.gz
+	md5sums = 10ae878b74a53e51f5d04d1d56bb3d40
+
+pkgname = gnome-osx-light-shell-theme
+
