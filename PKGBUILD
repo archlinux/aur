@@ -6,7 +6,7 @@
 # Contributor: MetaNova
 
 pkgname=epson-inkjet-printer-escpr
-pkgver=1.6.12
+pkgver=1.6.13
 pkgrel=1
 pkgdesc="Epson Inkjet Printer Driver (ESC/P-R) for Linux"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -14,9 +14,9 @@ url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('GPL2')
 depends=('cups' 'ghostscript')
 options=('!libtool')
-source=('https://download3.ebz.epson.net/dsc/f/03/00/05/46/21/01534966894f35247dac8c8ef0a0a9c94d1c8b40/epson-inkjet-printer-escpr-1.6.12-1lsb3.2.tar.gz'
+source=('https://download3.ebz.epson.net/dsc/f/03/00/05/55/39/d16f39e5f8953e033f6f38083b38c50c543b891c/epson-inkjet-printer-escpr-1.6.13-1lsb3.2.tar.gz'
         'bug_x86_64.patch')
-sha256sums=('3773e74a0c4debf202eb9ad0aa31c6614a93d6170484ff660c14e99f8698cfda'
+sha256sums=('6b17bbd9de8b2e2541e90cdcdd6272bae4922f51898aa8e72f0a8e8378aad81d'
             '277bc9afe581d2c434217db646e20ecfd1b6045bdcce861f2f08992ccf854084')
 
 prepare() {
