@@ -2,7 +2,7 @@
 
 pkgname=gtkterm-git
 _gitname=gtkterm
-pkgver=90.0fa2adc
+pkgver=91.421f834
 pkgrel=1
 pkgdesc="A gtk+ based serial port communication program"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('gtk2' 'vte' 'systemd')
 makedepends=('git' 'intltool' 'gnome-common')
 provides=('gtkterm')
 conflicts=('gtkterm')
-source=('gtkterm::git+http://git.fedorahosted.org/git/gtkterm.git#branch=0.99.7')
+source=('gtkterm::git+https://github.com/zdavkeos/gtkterm.git#branch=0.99.7')
 md5sums=('SKIP')
 install="${pkgname}.install"
 
