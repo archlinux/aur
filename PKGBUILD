@@ -2,7 +2,7 @@
 # Contributor: John D Jones III jnbek1972 __AT__ $mailservice_by_google __DOT__ com
 
 pkgname=nodejs-tldr-git
-pkgver=r2142.8c89cf46
+pkgver=r2169.7549db27
 pkgrel=1
 pkgdesc="Simplified and community-driven man pages (git version)"
 arch=('any')
