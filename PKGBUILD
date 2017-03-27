@@ -10,7 +10,7 @@
 
 pkgname=puppet3
 pkgver=3.8.7
-pkgrel=1
+pkgrel=3
 pkgdesc="Server automation framework and application"
 arch=('any')
 url="http://puppetlabs.com/puppet/puppet-open-source"
@@ -32,6 +32,9 @@ prepare() {
   # Ruby 2.2 fixes
   sed -i 's/: "syck"$/: (defined?(Psych) \&\& YAML == Psych ? "psych" : "syck")/' \
     lib/puppet/vendor/safe_yaml/lib/safe_yaml.rb
+
+  # OpenSSL 1.1 workaround
+  sed -i '178 s/^/#/' lib/puppet/util/monkey_patches.rb
 }
 
 package() {
