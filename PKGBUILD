@@ -8,7 +8,7 @@ url="https://gnupg.org/software/gpgme/index.html"
 license=('GPL2')
 provides=('gpgme-python')
 conflicts=()
-makedepends=('gpgme' 'swig' 'gnupg' 'libgpg-error' )
+makedepends=('gpgme>=1.8' 'swig' 'gnupg>=2' 'libgpg-error' )
 source=("$pkgname::git+git://git.gnupg.org/gpgme.git" )
 md5sums=('SKIP')
 
