@@ -3,7 +3,7 @@
 pkgname=hostsctl-git
 pkgver=r73.eb70e6a
 pkgrel=1
-pkgdesc=""
+pkgdesc="Control your /etc/hosts file easily, block ads, social networks, and more."
 arch=('any')
 url="https://github.com/0xl3vi/${pkgname%-git}"
 license=('GPLv3')
