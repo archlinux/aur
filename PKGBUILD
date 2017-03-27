@@ -2,7 +2,7 @@
 # Contributor: Hugo Lobo
 
 pkgname=binkplayer
-pkgver=2.6f
+pkgver=2.6g
 pkgrel=1
 pkgdesc="Bink Video Player"
 url="http://www.radgametools.com/bnkmain.htm"
@@ -11,7 +11,7 @@ depends=('sdl' 'openal')
 depends_i686=('gcc-libs')
 # AUR helpers get confused with cached versions if the file name never changes.
 source=("BinkLinuxPlayer-$pkgver.7z"::"http://www.radgametools.com/down/Bink/BinkLinuxPlayer.7z")
-sha256sums=('ce9633ef3616f560810de8bfd7df193273f774e7f40af7fda440888d90272338')
+sha256sums=('9b9f47d58ceb3f5393d0bc958afe5997e940a661eb279cda2667ad0639cc2567')
 license=('custom')
 
 package() {
