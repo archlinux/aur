@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc='Powerlevel9k theme for zsh'
 arch=('any')
 url='https://github.com/bhilburn/powerlevel9k'
-license=('custom')
+license=('MIT')
 depends=('zsh')
 optdepends=(
   'powerline-fonts: patched fonts for powerline'
