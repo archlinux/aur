@@ -1,18 +1,19 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
 _pkgname=pinocchio
-_pkgver=1.1.2
+_pkgver=1.2.3
 pkgname=${_pkgname}-git
-pkgver=${_pkgver}.r1010.50f3e32
-pkgrel=4
-pkgdesc="Dynamic computations using Spatial Algebra"
+pkgver=$_pkgver.r1416.5449bba
+pkgrel=1
+pkgdesc="Dynamic computations using Spatial Algebra. devel branch"
 arch=('i686' 'x86_64')
 url="https://stack-of-tasks.github.io/pinocchio/"
-license=('LGPL3 or any later version')
-depends=('eigenpy')
-optdepends=('metapod-git' 'urdfdom' 'lua51')
+license=('LGPL3')
+depends=('eigenpy' 'hpp-fcl' 'urdfdom')
+optdepends=('metapod-git' 'lua51')
 makedepends=('cmake' 'pkg-config' 'git')
 conflicts=('pinocchio')
+provides=('pinocchio')
 source=("$_pkgname"::"git://github.com/stack-of-tasks/$_pkgname.git")
 md5sums=('SKIP')
 
@@ -29,7 +30,7 @@ prepare() {
 
 build() {
     cd "$_pkgname"
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_CXX_FLAGS=-std=c++03 -DBUILD_UNIT_TESTS=OFF .
     make
 }
@@ -37,6 +38,4 @@ build() {
 package() {
     cd "$_pkgname"
     make DESTDIR="$pkgdir/" install
-    mv $pkgdir/usr/lib64/* $pkgdir/usr/lib/
-    rmdir $pkgdir/usr/lib64
 }
