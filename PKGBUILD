@@ -4,7 +4,7 @@
 
 pkgname=caffe-git
 pkgver=rc5.r5.g317d162ac
-pkgrel=2
+pkgrel=3
 pkgdesc="A deep learning framework made with expression, speed, and modularity in mind (git version, gpu enabled)"
 arch=('x86_64')
 url="http://caffe.berkeleyvision.org/"
@@ -25,7 +25,7 @@ source=("${pkgname}"::"git+https://github.com/BVLC/caffe.git")
 sha256sums=('SKIP')
 
 prepare() {
-    cd "${srcdir}/${pkgname}"
+    cd "$pkgname"
     
     # prepare to configure options in Makefile.config
     cp -f Makefile.config.example Makefile.config
@@ -81,14 +81,14 @@ prepare() {
 }
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
+    cd "$pkgname"
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "$pkgname"
     msg2 "Building target 'all'..."
     make all
     msg2 "Building target 'pycaffe'..."
