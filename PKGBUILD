@@ -3,7 +3,7 @@
 
 _gemname=kaitai-struct
 pkgname=ruby-$_gemname
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc='Kaitai Struct: runtime library for Ruby'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('1fa114752e87ed25230022d4e696656bd210f56d')
+sha1sums=('f0f9993dfe552ba519c3e97d42dd884a2c563d3e')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
