@@ -1,7 +1,7 @@
 # Maintainer: Levi Sabah <0xl3vi@gmail.com
 
 pkgname=hostsctl-git
-pkgver=r73.eb70e6a
+pkgver=r76.8f3f662
 pkgrel=1
 pkgdesc="Control your /etc/hosts file easily, block ads, social networks, and more."
 arch=('any')
@@ -23,6 +23,7 @@ package() {
   cd "${srcdir}/${pkgname%-git}"
   install -Dm755 bin/hostsctl.sh "${pkgdir}/usr/bin/hostsctl"
   install -Dm644 etc/hostsctl.conf "${pkgdir}/usr/share/doc/${pkgname}/hostsctl.conf"
+  install -Dm644 hostsctl.bash-completion "${pkgdir}/usr/share/bash-completion/completions/hostsctl"
   mkdir -p "${pkgdir}/etc/hostsctl.d/"
   install -Dm644 LICENSE "${pkgdir%-git}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
