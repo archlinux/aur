@@ -20,6 +20,11 @@ sha256sums=('SKIP'
             '32bef0aa0a6f329102c5244d856d4b50796c601b1d25e7c708e0e9bdf54425c7')
 validpgpkeys=('52299057FAD799653C4F088AC3F147F5980F3535')
 
+pkgver() {
+  cd "kwant"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 # Comment the prepare function if you want to build _without_ mumps support.
 # This is discouraged because without the incurred performance penalty no
 # serious calculations can be done in a reasonable time.
