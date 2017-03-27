@@ -16,6 +16,7 @@ makedepends=('git' 'cmake' 'clang' 'bison' 'flex' 'binutils>=2.28')
 makedepends_x86_64=('gcc-multilib')
 source=('git+https://github.com/darlinghq/darling.git')
 md5sums=('SKIP')
+options=('!buildflags')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
@@ -39,7 +40,6 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_gitname/build"
-	unset LDFLAGS # It's needed to avoid conflicts with x86_64-apple-darwin11-ld
 	msg2 "Run 'cmake'..."
 	cmake ../.. -DCMAKE_TOOLCHAIN_FILE=../Toolchain.cmake -DCMAKE_INSTALL_PREFIX=/usr
 	msg2 "Run 'make'..."
