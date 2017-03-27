@@ -3,22 +3,23 @@
 pkgbase=linux-baytrail410 
 _srcname=linux-baytrail410
 _gitver=8d187a6230251eb0e09d20e17393b512df1f46d3
-pkgver=4.10.5
-pkgrel=5
+pkgver=4.10.6
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
-source=("git+https://github.com/muhviehstah/linux-baytrail410.git#tag=4.10.5-2"
+source=("git+https://github.com/muhviehstah/linux-baytrail410.git#tag=4.10.6"
         'config' 'config.x86_64'
         'linux-baytrail410.preset'
         )
 
 sha256sums=('SKIP'
             '60921720cdcd2ff3fc754eebbba795af52b61d681a0541ad492a606bed309f58'
-            '04260f214751ec9cf45365f239a04c13344ec479a0f4c430c3b87c2c55364682'
+            'eb1b1e64c20296d99c74565353fbf4b09f064acac18c8275ccc87591ddc99fa8'
             '16de300fec4f330f42d038534e8af7291695c8cb306e14b04882e33f68b94f45')
+
 
 _kernelname=${pkgbase#linux}
 
@@ -92,6 +93,12 @@ _package() {
     -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
     -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_Kernver}/" \
     -i "${startdir}/${install}"
+
+  # install firmware for RTL8723BS
+  install -D -m644 "${srcdir}/${_srcname}"/driver/net/wireless/realtek/rtl8723bs/rtl8723bs_ap_wowlan.bin" "${pkgdir}/lib/firmware/rtlwifi/rtl8723bs_ap_wowlan.bin"
+  install -D -m644 "${srcdir}/${_srcname}"/driver/net/wireless/realtek/rtl8723bs/rtl8723bs_bt.bin" "${pkgdir}/lib/firmware/rtlwifi/rtl8723bs_bt.bin"
+  install -D -m644 "${srcdir}/${_srcname}"/driver/net/wireless/realtek/rtl8723bs/rtl8723bs_nic.bin" "${pkgdir}/lib/firmware/rtlwifi/rtl8723bs_nic.bin"
+  install -D -m644 "${srcdir}/${_srcname}"/driver/net/wireless/realtek/rtl8723bs/rtl8723bs_wowlan.bin" "${pkgdir}/lib/firmware/rtlwifi/rtl8723bs_wowlan.bin"
 
   # install mkinitcpio preset file for kernel
   install -D -m644 "${srcdir}/linux-baytrail410.preset" "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
