@@ -1,5 +1,5 @@
 pkgbase = eigen32
-	pkgdesc = Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra.
+	pkgdesc = Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra. 3.2 branch.
 	pkgver = 3.2.10
 	pkgrel = 1
 	url = http://eigen.tuxfamily.org
