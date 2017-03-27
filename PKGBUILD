@@ -7,7 +7,7 @@
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
 pkgname=ttf-google-fonts-git
-pkgver=20170306
+pkgver=20170324
 pkgrel=1
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
 arch=('any')
@@ -73,7 +73,7 @@ conflicts=('adobe-source-code-pro-fonts'
            'ttf-ubuntu-font-family'
            'ttf-vollkorn')
 provides=("${conflicts[@]}" 'ttf-font')
-source=("git+${url}.git")
+source=("git+${url}.git")   
 sha256sums=('SKIP')
 
 pkgver() {
@@ -83,7 +83,7 @@ pkgver() {
 
 package() {
     install -dm755 ${pkgdir}/usr/share/fonts/TTF
-    find . -type f -name \*.ttf -exec install -Dm644 '{}' ${pkgdir}/usr/share/fonts/TTF \;
+    find . -type f -name \*.[Tt][Tt][Ff] -exec install -Dm644 '{}' ${pkgdir}/usr/share/fonts/TTF \;
 
     # remove Cantarell fonts because Google ships the original Cantarell
     # instead of the improved version of Cantarell shipped by the GNOME Project
