@@ -1,7 +1,7 @@
 pkgbase = arangodb
 	pkgdesc = A multi-model NoSQL database, combining key-value, document and graph data models.
 	pkgver = 3.1.14
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.arangodb.com/
 	install = arangodb.install
 	arch = i686
@@ -27,8 +27,8 @@ pkgbase = arangodb
 	validpgpkeys = CD8CB0F1E0AD5B52E93F41E7EA93F5E56E751E9B
 	sha512sums = 09a33af07af28b457a01d9281314d0dcb99f0ef646068a70d2fa62bad98a85fc5264e518ac62f320bbef503c1ad259d13beb24cdbc7bd498f02a095c089e4989
 	sha512sums = SKIP
-	sha512sums = cd5b17eeb6ed908c4c5f314bbf4b2d4fea2565684926f99938ac14814a5a08571c47b2fb5f9c9ef5054a0ffefd946d351edac759118419b30a7624cf4991df84
-	sha512sums = 4dc6f0a18be2e759b89693a54f3376f52d8b646978c81f0f7069d8ed2c6d7123777a9709d000a5467a4f927b8befb5f472d933eb843db842cf853321a0ad5e7c
+	sha512sums = 5f1a46324350dc9f08cfe8538df2cf3b73c41c3b6230c994bff26e47ea28f1e952c2d2138fc2b0064ceb8ea599a3e6f74bfa4384a87bdbc59d2607783cf3ea64
+	sha512sums = b1fdf8cc0525d1fc093d02b24b18a1d8361fb2cd8274974269957ef8074a26eb4f2174bdd4abd41154d535df43cd9d553c1b8205cd5945e53674d25dfa3c533f
 	sha512sums = 8a73da7dfb9cc371ce7c72efd53afc04ede26a890cd7542c82c518bf3d7c5be38abfcad66235fc9cf9d63c9955ebcdbca4c1d7056b386b1b59bf61dc1887febd
 
 pkgname = arangodb

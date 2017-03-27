@@ -22,7 +22,7 @@ User=arangodb
 Group=arangodb
 PIDFile=/run/arangodb3/arangod.pid
 ExecStartPre=/usr/bin/arangod --pid-file /run/arangodb3/arangod.pid --server.rest-server false --database.auto-upgrade true
-ExecStart=/usr/bin/arangod -c /etc/arangodb3/arangod.conf --pid-file /run/arangodb3/arangod.pid --temp.path /var/tmp/arangod --supervisor
+ExecStart=/usr/bin/arangod -c /etc/arangodb3/arangod.conf --pid-file /run/arangodb3/arangod.pid --temp.path /var/tmp/arangod3 --supervisor
 
 
 [Install]
