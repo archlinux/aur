@@ -17,8 +17,7 @@ makedepends_x86_64=('binutils' 'tar')
 depends=('gksu' 'glib2' 'libgl' 'libxml2' 'portaudio' 'pulseaudio' 'zlib' 'libxrender' 'freetype2' 'libpng12')
 makedepends=('binutils' 'tar')
 
-source=("http://downloads.guitar-pro.com/gp6/gp6-full-linux-r$pkgver.deb"
-	#"https://dl.dropbox.com/u/15563529/GuitarPro6/gp6-full-linux-r11553.deb" #previous version
+source=("gp6-full-linux-r$pkgver.deb::https://guitar-pro.com/download.php?idfile=gp6_linux"
 	"https://dl.dropboxusercontent.com/sh/29kr9dvw7gnmojk/AAC9yXcEWbxXgtBL5wUcgam_a/libcrypto.so.0.9.8"
 	"https://dl.dropboxusercontent.com/sh/29kr9dvw7gnmojk/AADCm1FBezXrR3ZosGBS8wUva/libssl.so.0.9.8")
 
@@ -38,5 +37,5 @@ package() {
 }
 
 md5sums=('3de3b59151b33965a92cd4f51162aeee'
-	 'e66ee85eccfa5e5d0aabedcd13c6c8b4'
-	 '8d7331135369f0dc131c4a95f034c4b7')
+         'e66ee85eccfa5e5d0aabedcd13c6c8b4'
+         '8d7331135369f0dc131c4a95f034c4b7')
