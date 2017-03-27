@@ -4,7 +4,8 @@
 # Contributor: Bruno Vieira <mail@bmpvieira.com>
 
 pkgname=ugene
-pkgver=1.26.1
+pkgver=1.26.2
+_srcname=${pkgname}-${pkgver}-qt-5.7
 pkgrel=1
 pkgdesc="A free cross-platform genome analysis suite"
 arch=('i686' 'x86_64')
@@ -12,27 +13,26 @@ url="http://ugene.net"
 license=('GPL')
 depends=('qt5-script' 'qt5-svg' 'qt5-webkit' 'glu' 'procps-ng' 'python')
 makedepends=('qt5-tools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ugeneunipro/ugene/archive/$pkgver.tar.gz")
-sha256sums=('04b7d8fb3fe357fb7663399ba61cd47fef7a19549bc57f6fa6132035bf1e7af7')
+source=("${_srcname}.tar.gz::https://github.com/ugeneunipro/ugene/archive/${_srcname/ugene-}.tar.gz")
+sha256sums=('0b8dfe5363ef23f71bef4c5bd463ea82de3880f7337523f9cceee7e6dd63a01f')
 
 build() {
-  cd $pkgname-$pkgver
+  cd ${_srcname}
 
   _UGENE_ARCH=
 
-  if [[ $CARCH == "x86_64" ]]; then
+  if [[ ${CARCH} == "x86_64" ]]; then
     _UGENE_ARCH=x64
   fi
 
   qmake-qt5 -r \
     PREFIX=/usr \
-    CONFIG+=$_UGENE_ARCH \
+    CONFIG+=${_UGENE_ARCH} \
     QMAKE_CFLAGS_ISYSTEM=
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
-
-  make INSTALL_ROOT="$pkgdir" install
+  cd ${_srcname}
+  make INSTALL_ROOT="${pkgdir}" install
 }
