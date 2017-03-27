@@ -1,22 +1,24 @@
-# Submitter: Kevin Brubeck Unhammer <unhammer@fsfe.org>
+# Maintainer: Michael Straube <straubem@gmx.de>
+# Contributor: Kevin Brubeck Unhammer <unhammer@fsfe.org>
 
 pkgname=python-editor
-pkgver=0.4
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Programmatically open an editor, capture the result"
-url="https://github.com/fmoo/python-editor"
-depends=('python' )
-license=('Apache')
 arch=('any')
-source=("https://pypi.python.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('30de680ec944d073e0c3f18b44d5aa15')
+url="https://github.com/fmoo/python-editor"
+license=('Apache')
+depends=('python' )
+makedepends=('python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/fmoo/python-editor/archive/$pkgver.tar.gz")
+sha256sums=('e627a2160bdf5e435dcde964cf38bae39c02cdd8da2ccf5fac313b2ca453e2a3')
 
 build() {
-    cd $srcdir/${pkgname}-${pkgver}
-    python setup.py build
+  cd $pkgname-$pkgver
+  python setup.py build
 }
 
 package() {
-    cd $srcdir/${pkgname}-${pkgver}
-    python setup.py install --root="$pkgdir"
+  cd $pkgname-$pkgver
+  python setup.py install --root="$pkgdir" --skip-build
 }
