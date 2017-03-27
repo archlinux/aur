@@ -1,0 +1,420 @@
+diff --git a/configure b/configure
+index 8aaf600..b8728ee 100755
+--- a/configure
++++ b/configure
+@@ -15354,7 +15354,7 @@ if test a$occon = atrue ; then
+ 
+ 	OCCFLAGS="-DOCCGEOMETRY -I$occdir/inc -I/usr/include/opencascade"
+ 
+-	OCCLIBS="-L$occdir/lib -lTKernel -lTKGeomBase -lTKMath -lTKG2d -lTKG3d -lTKXSBase -lTKOffset -lTKFillet -lTKShHealing -lTKMesh -lTKMeshVS -lTKTopAlgo -lTKGeomAlgo -lTKBool -lTKPrim -lTKBO -lTKIGES -lTKBRep -lTKSTEPBase -lTKSTEP -lTKSTL -lTKSTEPAttr -lTKSTEP209 -lTKXDESTEP -lTKXDEIGES -lTKXCAF -lTKLCAF -lFWOSPlugin"
++	OCCLIBS="-L$occdir/lib -lTKernel -lTKGeomBase -lTKMath -lTKG2d -lTKG3d -lTKXSBase -lTKOffset -lTKFillet -lTKShHealing -lTKMesh -lTKMeshVS -lTKTopAlgo -lTKGeomAlgo -lTKBool -lTKPrim -lTKBO -lTKIGES -lTKBRep -lTKSTEPBase -lTKSTEP -lTKSTL -lTKSTEPAttr -lTKSTEP209 -lTKXDESTEP -lTKXDEIGES -lTKXCAF -lTKLCAF"
+ 
+ 
+ #  -lTKDCAF
+diff --git a/configure.ac b/configure.ac
+index 89d2a8b..fb297f3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -43,7 +43,7 @@ AC_ARG_WITH([occ],
+ if test a$occon = atrue ; then
+ 
+ 	AC_SUBST([OCCFLAGS], ["-DOCCGEOMETRY -I$occdir/inc -I/usr/include/opencascade"])
+-	AC_SUBST([OCCLIBS], ["-L$occdir/lib -lTKernel -lTKGeomBase -lTKMath -lTKG2d -lTKG3d -lTKXSBase -lTKOffset -lTKFillet -lTKShHealing -lTKMesh -lTKMeshVS -lTKTopAlgo -lTKGeomAlgo -lTKBool -lTKPrim -lTKBO -lTKIGES -lTKBRep -lTKSTEPBase -lTKSTEP -lTKSTL -lTKSTEPAttr -lTKSTEP209 -lTKXDESTEP -lTKXDEIGES -lTKXCAF -lTKLCAF -lFWOSPlugin"])
++	AC_SUBST([OCCLIBS], ["-L$occdir/lib -lTKernel -lTKGeomBase -lTKMath -lTKG2d -lTKG3d -lTKXSBase -lTKOffset -lTKFillet -lTKShHealing -lTKMesh -lTKMeshVS -lTKTopAlgo -lTKGeomAlgo -lTKBool -lTKPrim -lTKBO -lTKIGES -lTKBRep -lTKSTEPBase -lTKSTEP -lTKSTL -lTKSTEPAttr -lTKSTEP209 -lTKXDESTEP -lTKXDEIGES -lTKXCAF -lTKLCAF"])
+ 
+ #  -lTKDCAF
+ 
+diff --git a/libsrc/meshing/improve2.hpp b/libsrc/meshing/improve2.hpp
+index 9c3c1be..387e031 100644
+--- a/libsrc/meshing/improve2.hpp
++++ b/libsrc/meshing/improve2.hpp
+@@ -4,7 +4,7 @@
+ 
+ 
+ ///
+-class MeshOptimize2d
++DLL_HEADER class MeshOptimize2d
+ {
+   int faceindex;
+   int improveedges;
+diff --git a/libsrc/meshing/meshclass.hpp b/libsrc/meshing/meshclass.hpp
+index d4bb028..e01b398 100644
+--- a/libsrc/meshing/meshclass.hpp
++++ b/libsrc/meshing/meshclass.hpp
+@@ -320,7 +320,7 @@ namespace netgen
+     { dimension = dim; }
+ 
+     /// sets internal tables
+-    void CalcSurfacesOfNode ();
++    DLL_HEADER void CalcSurfacesOfNode ();
+ 
+     /// additional (temporarily) fix points 
+     void FixPoints (const BitArray & fixpoints);
+diff --git a/libsrc/meshing/meshtype.hpp b/libsrc/meshing/meshtype.hpp
+index 04485eb..463f584 100644
+--- a/libsrc/meshing/meshtype.hpp
++++ b/libsrc/meshing/meshtype.hpp
+@@ -175,7 +175,7 @@ namespace netgen
+   }
+ 
+ 
+-  class SurfaceElementIndex
++  DLL_HEADER class SurfaceElementIndex
+   {
+     int i;
+   public:
+@@ -231,7 +231,7 @@ namespace netgen
+      Point in the mesh.
+      Contains layer (a new feature in 4.3 for overlapping meshes.
+   */
+-  class MeshPoint : public Point<3>
++  DLL_HEADER class MeshPoint : public Point<3>
+   {
+     int layer;
+     double singular; // singular factor for hp-refinement
+@@ -325,7 +325,7 @@ namespace netgen
+     ///
+     Element2d ();
+     ///
+-    Element2d (int anp);
++    DLL_HEADER Element2d (int anp);
+     ///
+     DLL_HEADER Element2d (ELEMENT_TYPE type);
+     ///
+diff --git a/libsrc/occ/Partition_Inter2d.hxx b/libsrc/occ/Partition_Inter2d.hxx
+index cfd4a9a..c107291 100644
+--- a/libsrc/occ/Partition_Inter2d.hxx
++++ b/libsrc/occ/Partition_Inter2d.hxx
+@@ -23,12 +23,13 @@
+ //
+ //  File   : Partition_Inter2d.hxx
+ //  Module : GEOM
+-
++#include <TopTools_MapOfShape.hxx>
++//  class TopTools_MapOfShape;
+ #ifndef _Partition_Inter2d_HeaderFile
+ #define _Partition_Inter2d_HeaderFile
+ 
+ #ifndef _Handle_BRepAlgo_AsDes_HeaderFile
+-#include <Handle_BRepAlgo_AsDes.hxx>
++#include <BRepAlgo_AsDes.hxx>
+ #endif
+ #ifndef _Standard_Real_HeaderFile
+ #include <Standard_Real.hxx>
+@@ -38,9 +39,8 @@
+ #endif
+ class BRepAlgo_AsDes;
+ class TopoDS_Face;
+-class TopTools_MapOfShape;
+ class TopoDS_Vertex;
+-class TopTools_ListOfShape;
++//class TopTools_ListOfShape;
+ class TopoDS_Edge;
+ 
+ 
+diff --git a/libsrc/occ/Partition_Inter3d.hxx b/libsrc/occ/Partition_Inter3d.hxx
+index d8be2c5..2c68bf9 100644
+--- a/libsrc/occ/Partition_Inter3d.hxx
++++ b/libsrc/occ/Partition_Inter3d.hxx
+@@ -23,12 +23,12 @@
+ //
+ //  File   : Partition_Inter3d.hxx
+ //  Module : GEOM
+-
++#include <TopTools_DataMapOfShapeShape.hxx>
+ #ifndef _Partition_Inter3d_HeaderFile
+ #define _Partition_Inter3d_HeaderFile
+ 
+ #ifndef _Handle_BRepAlgo_AsDes_HeaderFile
+-#include <Handle_BRepAlgo_AsDes.hxx>
++#include <BRepAlgo_AsDes.hxx>
+ #endif
+ #ifndef _TopTools_DataMapOfShapeListOfShape_HeaderFile
+ #include <TopTools_DataMapOfShapeListOfShape.hxx>
+@@ -43,10 +43,10 @@
+ #include <Standard_Boolean.hxx>
+ #endif
+ class BRepAlgo_AsDes;
+-class TopTools_ListOfShape;
+-class TopTools_DataMapOfShapeShape;
++// class TopTools_ListOfShape;
++// class TopTools_DataMapOfShapeShape;
+ class TopoDS_Face;
+-class TopTools_MapOfShape;
++// class TopTools_MapOfShape;
+ class TopoDS_Shape;
+ class TopoDS_Vertex;
+ class TopoDS_Edge;
+diff --git a/libsrc/occ/Partition_Loop.hxx b/libsrc/occ/Partition_Loop.hxx
+index 56e05e2..e493c60 100644
+--- a/libsrc/occ/Partition_Loop.hxx
++++ b/libsrc/occ/Partition_Loop.hxx
+@@ -38,7 +38,7 @@
+ #endif
+ class TopoDS_Face;
+ class TopoDS_Edge;
+-class TopTools_ListOfShape;
++//class TopTools_ListOfShape;
+ 
+ 
+ #ifndef _Standard_HeaderFile
+diff --git a/libsrc/occ/Partition_Loop2d.cxx b/libsrc/occ/Partition_Loop2d.cxx
+index d980a5c..e752ba0 100644
+--- a/libsrc/occ/Partition_Loop2d.cxx
++++ b/libsrc/occ/Partition_Loop2d.cxx
+@@ -52,6 +52,10 @@
+ #include <gp_Pnt.hxx>
+ #include <gp_Pnt2d.hxx>
+ 
++#ifndef PI
++    #define PI M_PI
++#endif
++
+ //=======================================================================
+ //function : Partition_Loop2d
+ //purpose  :
+diff --git a/libsrc/occ/Partition_Loop2d.hxx b/libsrc/occ/Partition_Loop2d.hxx
+index bdf1c25..effd7be 100644
+--- a/libsrc/occ/Partition_Loop2d.hxx
++++ b/libsrc/occ/Partition_Loop2d.hxx
+@@ -24,7 +24,7 @@
+ #endif
+ class TopoDS_Face;
+ class TopoDS_Edge;
+-class TopTools_ListOfShape;
++//class TopTools_ListOfShape;
+ class BRepAlgo_Image;
+ 
+ 
+diff --git a/libsrc/occ/Partition_Loop3d.hxx b/libsrc/occ/Partition_Loop3d.hxx
+index 52abd11..d834036 100644
+--- a/libsrc/occ/Partition_Loop3d.hxx
++++ b/libsrc/occ/Partition_Loop3d.hxx
+@@ -9,7 +9,9 @@
+ 
+ #ifndef _Partition_Loop3d_HeaderFile
+ #define _Partition_Loop3d_HeaderFile
+-
++#include <TopTools_ShapeMapHasher.hxx>
++#include <TopTools_OrientedShapeMapHasher.hxx>
++#include <TopTools_MapOfOrientedShape.hxx>
+ #ifndef _TopTools_ListOfShape_HeaderFile
+ #include <TopTools_ListOfShape.hxx>
+ #endif
+@@ -23,8 +25,8 @@
+ #include <Standard_Real.hxx>
+ #endif
+ class TopoDS_Shape;
+-class TopTools_ListOfShape;
+-class TopTools_MapOfOrientedShape;
++//class TopTools_ListOfShape;
++//class TopTools_MapOfOrientedShape;
+ class TopoDS_Edge;
+ class TopoDS_Face;
+ class gp_Vec;
+diff --git a/libsrc/occ/Partition_Spliter.hxx b/libsrc/occ/Partition_Spliter.hxx
+index f29917a..e0fbb2a 100644
+--- a/libsrc/occ/Partition_Spliter.hxx
++++ b/libsrc/occ/Partition_Spliter.hxx
+@@ -29,7 +29,7 @@
+ #include <TopTools_DataMapOfShapeShape.hxx>
+ #endif
+ #ifndef _Handle_BRepAlgo_AsDes_HeaderFile
+-#include <Handle_BRepAlgo_AsDes.hxx>
++#include <BRepAlgo_AsDes.hxx>
+ #endif
+ #ifndef _BRepAlgo_Image_HeaderFile
+ #include <BRepAlgo_Image.hxx>
+@@ -43,9 +43,12 @@
+ #ifndef _Standard_Boolean_HeaderFile
+ #include <Standard_Boolean.hxx>
+ #endif
++#include <TopTools_ShapeMapHasher.hxx>
++#include <TopTools_OrientedShapeMapHasher.hxx>
++#include <TopTools_MapOfOrientedShape.hxx>
+ class BRepAlgo_AsDes;
+ class TopoDS_Shape;
+-class TopTools_ListOfShape;
++// class TopTools_ListOfShape;
+ class TopoDS_Edge;
+ 
+ 
+diff --git a/libsrc/occ/occgeom.cpp b/libsrc/occ/occgeom.cpp
+index c1a5827..8887472 100644
+--- a/libsrc/occ/occgeom.cpp
++++ b/libsrc/occ/occgeom.cpp
+@@ -8,17 +8,20 @@
+ #include "ShapeAnalysis_CheckSmallFace.hxx"
+ #include "ShapeAnalysis_DataMapOfShapeListOfReal.hxx"
+ #include "ShapeAnalysis_Surface.hxx"
+-#include "BRepAlgoAPI_Fuse.hxx"
++
+ #include "BRepCheck_Analyzer.hxx"
+ #include "BRepLib.hxx"
+ #include "ShapeBuild_ReShape.hxx"
+ #include "ShapeFix.hxx"
++#include "ShapeFix_Edge.hxx"
+ #include "ShapeFix_FixSmallFace.hxx"
++#include "StlTransfer.hxx"
++#include "TopoDS_Iterator.hxx"
+ #include "Partition_Spliter.hxx"
+ 
+-
+ namespace netgen
+ {
++
+    void OCCGeometry :: PrintNrShapes ()
+    {
+       TopExp_Explorer e;
+@@ -937,11 +940,15 @@ namespace netgen
+ 
+    void OCCGeometry :: CalcBoundingBox ()
+    {
+-      Bnd_Box bb;
+-      BRepBndLib::Add (shape, bb);
++      Bnd_Box b;
++
++// SDS Not defined !
++
++      BRepBndLib::Add ((const TopoDS_Shape) shape, b,(Standard_Boolean)true);
+ 
++// SDS
+       double x1,y1,z1,x2,y2,z2;
+-      bb.Get (x1,y1,z1,x2,y2,z2);
++      b.Get (x1,y1,z1,x2,y2,z2);
+       Point<3> p1 = Point<3> (x1,y1,z1);
+       Point<3> p2 = Point<3> (x2,y2,z2);
+ 
+@@ -1038,9 +1045,9 @@ namespace netgen
+    {
+       cout << "writing stl..."; cout.flush();
+       StlAPI_Writer writer;
+-      writer.RelativeMode() = Standard_False;
++//      writer.RelativeMode() = Standard_False;
+ 
+-      writer.SetDeflection(0.02);
++//      writer.SetDeflection(0.02);
+       writer.Write(shape,filename);
+ 
+       cout << "done" << endl;
+diff --git a/libsrc/occ/occgeom.hpp b/libsrc/occ/occgeom.hpp
+index 2ed9281..773a8f3 100644
+--- a/libsrc/occ/occgeom.hpp
++++ b/libsrc/occ/occgeom.hpp
+@@ -167,7 +167,7 @@ namespace netgen
+ 
+ 
+ 
+-   class Line
++   DLL_HEADER class Line
+    {
+    public:
+       Point<3> p0, p1;
+@@ -189,7 +189,7 @@ namespace netgen
+ 
+ 
+ 
+-   class OCCGeometry : public NetgenGeometry
++   DLL_HEADER class OCCGeometry : public NetgenGeometry
+    {
+       Point<3> center;
+ 
+@@ -395,7 +395,7 @@ namespace netgen
+ 
+ 
+ 
+-   class OCCParameters
++   DLL_HEADER class OCCParameters
+    {
+    public:
+ 
+@@ -441,7 +441,7 @@ namespace netgen
+    // Philippose - 31.09.2009
+    // External access to the mesh generation functions within the OCC
+    // subsystem (Not sure if this is the best way to implement this....!!)
+-   extern int OCCGenerateMesh (OCCGeometry & occgeometry, Mesh*& mesh,
++   DLL_HEADER extern int OCCGenerateMesh (OCCGeometry & occgeometry, Mesh*& mesh,
+ 			       MeshingParameters & mparam,
+ 			       int perfstepsstart, int perfstepsend);
+ 
+diff --git a/libsrc/occ/occmeshsurf.hpp b/libsrc/occ/occmeshsurf.hpp
+index 198ade6..ac0c062 100644
+--- a/libsrc/occ/occmeshsurf.hpp
++++ b/libsrc/occ/occmeshsurf.hpp
+@@ -16,7 +16,7 @@ class SingularMatrixException
+ class UVBoundsException
+ {};
+ 
+-class OCCSurface
++DLL_HEADER class OCCSurface
+ {
+ public:
+   TopoDS_Face topods_face;
+@@ -103,7 +103,7 @@ public:
+ 
+ 
+ ///
+-class Meshing2OCCSurfaces : public Meshing2
++DLL_HEADER class Meshing2OCCSurfaces : public Meshing2
+ {
+   ///
+   OCCSurface surface;
+@@ -141,7 +141,7 @@ protected:
+ 
+ 
+ ///
+-class MeshOptimize2dOCCSurfaces : public MeshOptimize2d
++DLL_HEADER class MeshOptimize2dOCCSurfaces : public MeshOptimize2d
+   {
+   ///
+   const OCCGeometry & geometry;
+@@ -169,7 +169,7 @@ public:
+ class OCCGeometry;
+ 
+ 
+-class OCCRefinementSurfaces : public Refinement
++DLL_HEADER class OCCRefinementSurfaces : public Refinement
+ {
+   const OCCGeometry & geometry;
+ 
+diff --git a/libsrc/occ/vsocc.cpp b/libsrc/occ/vsocc.cpp
+index 4d80600..a2ef07c 100644
+--- a/libsrc/occ/vsocc.cpp
++++ b/libsrc/occ/vsocc.cpp
+@@ -21,6 +21,7 @@
+ #include "Poly_Triangle.hxx"
+ #include "Poly_Polygon3D.hxx"
+ #include "Poly_PolygonOnTriangulation.hxx"
++#include "Bnd_Box.hxx"
+ 
+ #include <visual.hpp>
+ 
+diff --git a/ng/Makefile.in b/ng/Makefile.in
+index deb4595..2d0995f 100644
+--- a/ng/Makefile.in
++++ b/ng/Makefile.in
+@@ -327,10 +327,7 @@ netgen_LDADD = $(top_builddir)/libsrc/visualization/libvisual.la \
+ #   /opt/netgen/lib/libngsolve.a /opt/netgen/lib/libngcomp.a /opt/netgen/lib/libngcomp.a  /opt/netgen/lib/libngfemng.a   /opt/netgen/lib/libngmg.a  /opt/netgen/lib/libngla.a  /opt/netgen/lib/libngbla.a  /opt/netgen/lib/libngstd.a -L/opt/intel/mkl/10.2.1.017/lib/em64t /opt/intel/mkl/10.2.1.017/lib/em64t/libmkl_solver_lp64.a  -lmkl_intel_lp64  -lmkl_gnu_thread -lmkl_core 
+ #
+ #
+-dist_bin_SCRIPTS = dialog.tcl menustat.tcl ngicon.tcl ng.tcl	  \
+-ngvisual.tcl sockets.tcl drawing.tcl nghelp.tcl ngshell.tcl	  \
+-ngtesting.tcl parameters.tcl variables.tcl csgeom.tcl stlgeom.tcl \
+-occgeom.tcl acisgeom.tcl netgen.ocf
++dist_bin_SCRIPTS =
+ 
+ netgen_LDFLAGS = -export-dynamic
+ all: all-am
+diff --git a/ng/ngpkg.cpp b/ng/ngpkg.cpp
+index 04d96f7..c813ae9 100644
+--- a/ng/ngpkg.cpp
++++ b/ng/ngpkg.cpp
+@@ -2266,7 +2266,7 @@ namespace netgen
+     static int gopsize = DEFAULT_GOP_SIZE;
+     static int bframes = DEFAULT_B_FRAMES;
+     static int MPGbufsize = DEFAULT_MPG_BUFSIZE;
+-    static CodecID codec_id = CODEC_ID_MPEG1VIDEO;
++    static AVCodecID codec_id = CODEC_ID_MPEG1VIDEO;
+     static FILE *MPGfile;
+     static buffer_t buff;
+     static struct SwsContext *img_convert_ctx;

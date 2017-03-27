@@ -1,0 +1,22 @@
+pkgbase = netgen-nogui-occ7
+	pkgdesc = NETGEN is an automatic 3d tetrahedral mesh generator
+	pkgver = 5.3.1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/netgen-mesher
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = patch
+	depends = opencascade7
+	depends = openmpi
+	depends = metis
+	provides = netgen
+	conflicts = netgen
+	options = !libtool
+	source = https://sourceforge.net/projects/netgen-mesher/files/netgen-mesher/5.3/netgen-5.3.1.tar.gz/download
+	source = nglib-occt7.patch
+	md5sums = afd5a9b0b1296c242a9c554f06af6510
+	md5sums = eae8f8454e07814669f4d698f0f8035f
+
+pkgname = netgen-nogui-occ7
+
