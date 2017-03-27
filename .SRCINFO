@@ -6,8 +6,11 @@ pkgbase = gotwitch
 	arch = any
 	license = GPL
 	makedepends = go
+	depends = youtube-dl: http streaming utility
 	optdepends = mpv: for watching a livestream
 	optdepends = vlc: for watching a livestream
+	options = !strip
+	options = !emptydirs
 	source = gotwitch::git+https://github.com/deluxo/gotwitch.git
 	md5sums = SKIP
 
