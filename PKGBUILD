@@ -19,14 +19,9 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-    cd "$srcdir/tinyarray"
-    python setup.py build
-}
-
 package() {
     cd "$srcdir/tinyarray"
-    python setup.py install --skip-build --root="$pkgdir" 
+    python setup.py install --root="$pkgdir/" --optimize=1
 
     # Install license
     install -D -m644 "${srcdir}/tinyarray/LICENSE.rst" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.rst" || return 1
