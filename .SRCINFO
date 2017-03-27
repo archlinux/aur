@@ -1,0 +1,17 @@
+pkgbase = python-tinyarray-git
+	pkgdesc = Similar to NumPy arrays, but optimized for small sizes
+	pkgver = v1.2.0a1.r23.gf4a3de4
+	pkgrel = 1
+	url = http://git.kwant-project.org/tinyarray/about/
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = git
+	depends = python
+	provides = python-tinyarray
+	conflicts = python-tinyarray
+	source = tinyarray::git+https://gitlab.kwant-project.org/kwant/tinyarray.git
+	sha256sums = SKIP
+
+pkgname = python-tinyarray-git
+
