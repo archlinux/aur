@@ -1,0 +1,17 @@
+pkgbase = gpgme-python-git
+	pkgdesc = A python wrapper library for GnuPG
+	pkgver = gpgme.1.8.0.r122.g348da58f
+	pkgrel = 1
+	url = https://gnupg.org/software/gpgme/index.html
+	arch = x86_64
+	license = GPL2
+	makedepends = gpgme
+	makedepends = swig
+	makedepends = gnupg
+	makedepends = libgpg-error
+	provides = gpgme-python
+	source = gpgme-python-git::git+git://git.gnupg.org/gpgme.git
+	md5sums = SKIP
+
+pkgname = gpgme-python-git
+
