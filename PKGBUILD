@@ -4,7 +4,7 @@
 
 pkgname=solr
 pkgver=6.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Popular, blazing fast open source enterprise search platform from the Apache Lucene project"
 arch=('any')
 license=('Apache')

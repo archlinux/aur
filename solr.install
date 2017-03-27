@@ -25,8 +25,8 @@ _adduser() {
 }
 
 install_solr_user() {
-  _adduser solr -c 'Apache Solr user' -u 114 -g solr -d '/opt/solr' -s /bin/bash
   _addgroup solr -g 114
+  _adduser solr -c 'Apache Solr user' -u 114 -g solr -d '/opt/solr' -s /bin/bash
 
   # update shadow files if needed
   if (( need_group_update )); then
