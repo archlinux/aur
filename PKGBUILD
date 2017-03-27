@@ -8,7 +8,7 @@ _CMAKE_SERVER_ARGS=('-DWITH_RYZOM_SERVER=ON' '-DWITH_RYZOM_CLIENT=OFF' '-DWITH_D
 _CMAKE_CLIENT_ARGS=( '-DWITH_RYZOM_SERVER=OFF' '-DWITH_RYZOM_CLIENT=ON' ) # cmake args for building client
 pkgname=ryzom-hg 
 pkgbase=ryzom-hg
-pkgver=r8783.97f5ac60c244
+pkgver=r8787.375e0bfb5e67
 pkgrel=1
 pkgdesc="Ryzom is a Free to Play MMORPG . This version is for playing on an official server or launch a server"
 arch=('i686' 'x86_64')

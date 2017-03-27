@@ -1,6 +1,6 @@
 pkgbase = ryzom-hg
 	pkgdesc = Ryzom is a Free to Play MMORPG . This version is for playing on an official server or launch a server
-	pkgver = r8783.97f5ac60c244
+	pkgver = r8787.375e0bfb5e67
 	pkgrel = 1
 	url = http://www.ryzom.com/
 	arch = i686
