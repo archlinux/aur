@@ -2,7 +2,7 @@
 
 pkgname=mighttpd2-git
 _pkgname=mighttpd2
-pkgver=3.3.4.0.gefd30f7
+pkgver=3.4.1.0.g1228392
 pkgrel=1
 pkgdesc="File/CGI web server on warp"
 arch=('x86_64')
