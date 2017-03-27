@@ -1,7 +1,7 @@
 pkgbase = opencascade7
 	pkgdesc = 3D modeling & numerical simulation SDK
 	pkgver = 7.1.0
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.opencascade.org
 	arch = i686
 	arch = x86_64

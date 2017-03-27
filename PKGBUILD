@@ -3,7 +3,7 @@
 pkgbase=opencascade7
 pkgname=('opencascade7' 'opencascade7-docs')
 pkgver=7.1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="3D modeling & numerical simulation SDK"
 url="http://www.opencascade.org"
 arch=('i686' 'x86_64')
@@ -27,6 +27,7 @@ build() {
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/opt/${pkgbase} \
+    -DCMAKE_INSTALL_RPATH=/opt/${pkgbase}/lib \
     -DUSE_GL2PS=ON \
     -D3RDPARTY_GL2PS_DIR= \
     -DUSE_FREEIMAGE=ON \
