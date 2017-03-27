@@ -1,7 +1,7 @@
 pkgbase = 389-admin
 	pkgdesc = 389 Administration Server HTTP agent
 	pkgver = 1.1.46
-	pkgrel = 1
+	pkgrel = 2
 	url = http://directory.fedoraproject.org/
 	arch = i686
 	arch = x86_64

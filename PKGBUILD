@@ -4,7 +4,7 @@
 
 pkgname=389-admin
 pkgver=1.1.46
-pkgrel=1
+pkgrel=2
 pkgdesc="389 Administration Server HTTP agent"
 arch=('i686' 'x86_64')
 url="http://directory.fedoraproject.org/"
@@ -26,7 +26,6 @@ build() {
               --with-systemd \
               --with-systemdsystemunitdir=/usr/lib/systemd/system \
               --with-systemdsystemconfdir=/etc/systemd/system \
-              --with-systemdgroupname=389-ds-base.target \
 	            --with-ldapsdk-inc=/usr/include/mozldap \
 	            --with-ldapsdk-lib=/usr/lib/mozldap \
               --with-adminutil=/usr
