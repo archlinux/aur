@@ -4,7 +4,7 @@
 
 pkgname=minecraft-server
 pkgver=1.11.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft server unit files, script, and jar"
 arch=('any')
 url="https://minecraft.net/"
@@ -27,7 +27,7 @@ sha512sums=('f147d99832e2e12f04cc56e28abe33c5acf7d3269631eb3d75aa18108425994d019
             '19ee3646bfbace353b65c0373594edb654de11c9671f29cebad3b31109f29f94ade1d529d9f409b0989c376bef9b451585b22a1e0ac4295fcc92d9565f808418'
             'b0124c8cd90a4f9901a9105c0ee51eb3e7db944d106cf30fd91b29794178e650d3a21c3be3c8e0cb454b2cef6f27541c44e7a5e77a1d50f89b9152363de51d28'
             '73132ec613e05c8ed7ebe4eda2395f1ea0733ffe94ba7e203e06246d5852139bbfb7a9073b2b01891282339a2f85676699cd889cde79d6317066e27fd65b1d67'
-            '09f03cff6cc8f5ca76d564baf28b1998f6b3c010b9f871c238307eb9a61efa895e823d565f6424da38409500dcfe15be3ad4018caa81bea40ad2c9002b326340')
+            'b7509e3e6df7764d78d9515b35ace80bfedd478c5beeeb37e1cd191155d8b0efd9c5c97eea89d6f4eb0a469bbcb781d73999283975f8d834db25063e3d6af257')
 
 _game="minecraft"
 _server_root="/srv/minecraft"
