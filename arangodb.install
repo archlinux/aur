@@ -61,8 +61,12 @@ EOF
 
 post_upgrade() {
   cat <<-EOF
-  Take a look at the Changelog to see what is new in $1:
+
+  ArangoDB has been upgraded to $1.
+
+  Take a look at the Changelog to see what is new:
   https://github.com/arangodb/arangodb/blob/devel/CHANGELOG
+
 EOF
 }
 
@@ -71,12 +75,13 @@ pre_remove() {
 }
 
 post_remove() {
-  # remove all the files
-  rm -rf /usr/share/arangodb3
-  rm -rf /var/log/arangodb3
-  rm -rf /var/lib/arangodb3-apps
   cat <<-EOF
+
   ArangoDB has been uninstalled.
+
   Any data you had stored in ArangoDB is still available in /var/lib/arangodb3.
+  Installed Foxx applications are still available in /var/lib/arangodb3-apps.
+  Log files are left in /var/log/arangodb3.
+
 EOF
 }
