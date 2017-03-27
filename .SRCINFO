@@ -1,5 +1,6 @@
 pkgbase = hostsctl-git
-	pkgver = r73.eb70e6a
+	pkgdesc = Control your /etc/hosts file easily, block ads, social networks, and more.
+	pkgver = r76.8f3f662
 	pkgrel = 1
 	url = https://github.com/0xl3vi/hostsctl
 	install = hostsctl.install
