@@ -4,7 +4,7 @@
 
 pkgname=('pidgin-hg' 'libpurple-hg' 'finch-hg')
 _hgname=pidgin
-pkgver=3.r38189.c9b74a765767
+pkgver=3.r38247.107c6c2342ff
 pkgrel=1
 pkgdesc="Multi-protocol instant messaging client. Latest mercurial build."
 arch=('i686' 'x86_64')
@@ -33,12 +33,9 @@ prepare() {
   ./autogen.sh \
     --prefix=/usr \
     --sysconfdir=/etc \
-    --disable-schemas-install \
     --disable-meanwhile \
     --disable-gnutls \
     --enable-cyrus-sasl \
-    --disable-doxygen \
-    --enable-nm \
     --disable-kwallet \
     --with-python=/usr/bin/python \
     --with-system-ssl-certs=/etc/ssl/certs
