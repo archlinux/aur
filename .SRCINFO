@@ -1,13 +1,13 @@
 pkgbase = minishift-bin
 	pkgdesc = Tool that makes it easy to run OpenShift locally.
-	pkgver = 0.9.0
+	pkgver = 1.0.0_beta.5
 	pkgrel = 1
-	url = https://github.com/jimmidyson/minishift
+	url = https://github.com/minishift/minishift
 	arch = x86_64
 	license = Apache
 	provides = minishift
-	source = minishift_0.9.0::https://github.com/jimmidyson/minishift/releases/download/v0.9.0/minishift-linux-amd64
-	sha256sums = 8a997b5083fa748dd3b2d7ce9cf3d19ac623385c352c87a091508e7cfe7e6126
+	source = https://github.com/minishift/minishift/releases/download/v1.0.0-beta.5/minishift-1.0.0-beta.5-linux-amd64.tgz
+	sha256sums = cdc2bbc7fae26a9fbee71d6f8b6f272678989a43974cb9189de87e22b51fd67f
 
 pkgname = minishift-bin
 
