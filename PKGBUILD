@@ -1,17 +1,16 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=eos_portable_archive
 pkgver=5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable binary archive to be used with boost::serialization"
 arch=('any')
 url="https://epa.codeplex.com/"
 license=('custom')
 depends=('boost')
-source=("${pkgname}_v${pkgver}.zip::http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=epa&DownloadId=1510504&FileTime=130914061641930000&Build=21031")
-md5sums=('d2deb35c23e5b4e4468f00c3d9d2f7b3')
+source=("${pkgname}_v${pkgver}.zip::http://download-codeplex.sec.s-msft.com/Download/SourceControlFileDownload.ashx?ProjectName=epa&changeSetId=45618")
+md5sums=('c38742aab0842a1cc325f118ca5ec7db')
 
 package() {
-  cd "$pkgname"
   install -d -m755 "$pkgdir/usr/include/eos"
   install -m644 eos/* "$pkgdir/usr/include/eos/"
 
