@@ -8,8 +8,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/stack-of-tasks/eigenpy"
 license=('LGPL3')
 depends=('boost-libs')
-optdepends=('doxygen' 'python2-numpy')
-makedepends=('cmake' 'eigen' 'boost' 'python2')
+optdepends=('doxygen')
+makedepends=('cmake' 'eigen' 'boost' 'python2-numpy')
 source=("https://github.com/stack-of-tasks/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 md5sums=('a57eff7bb2f7551c9ebc712dd4d6549f')
 
