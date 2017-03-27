@@ -2,7 +2,7 @@
 # Contributor: jose <jose1711 [at] gmail (dot) com>
 
 pkgname=osmfilter
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 epoch=2
 pkgdesc='A tool to filter OpenStreetMap data files for specific tags.'
@@ -11,7 +11,7 @@ license=(AGPL3)
 arch=(i686 x86_64)
 depends=(glibc)
 source=("http://m.m.i24.cc/${pkgname}.c")
-sha256sums=('b49b488ee2f945e6779cb6c247dcfc580866bb16c8b61056594c2c99345da36e')
+sha256sums=('e19ea07d907325c7a1a51a3409f82a209478ee6f945c7891b4a1e5cf5bf4cef5')
 
 build() {
   gcc "${pkgname}.c" -O3 -o "${pkgname}"
