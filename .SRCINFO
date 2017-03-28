@@ -1,0 +1,15 @@
+pkgbase = python2-pmw-mgltools2
+	pkgdesc = A toolkit for high-level compound widgets in Python using the Tkinter module
+	pkgver = 2.0.1
+	pkgrel = 3
+	url = http://pmw.sourceforge.net/
+	arch = any
+	license = MIT
+	depends = mgltools2
+	source = python-pmw-2.0.1.tar.gz::https://pypi.python.org/packages/source/P/Pmw/Pmw-2.0.1.tar.gz
+	source = LICENSE.txt
+	md5sums = 8080b0fabc731ff236f97e88e13b3938
+	md5sums = e1bd6c6e99932d324ec389bf29450c91
+
+pkgname = python2-pmw-mgltools2
+
