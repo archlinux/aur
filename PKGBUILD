@@ -3,14 +3,14 @@
 
 pkgname=('backintime' 'backintime-cli')
 _pkgname="backintime"
-pkgver=1.1.14
+pkgver=1.1.16
 pkgrel=1
 arch=('any')
 url="https://github.com/bit-team/backintime"
 license=('GPL')
 makedepends=('python')
 source=("https://github.com/bit-team/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('d97e1446434afc4694677fcb278fe84f9757f1ff62dcf71c5e9922ce0202f2b7')
+sha256sums=('1be867fbe10d4dd20cd8add32c6c69f532752d697ed2cb09e078ae765c7e9543')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
