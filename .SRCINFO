@@ -1,0 +1,11 @@
+pkgbase = launch
+	pkgdesc = Launch an independent process
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	source = launch.c
+	sha256sums = SKIP
+
+pkgname = launch
+
