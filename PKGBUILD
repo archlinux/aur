@@ -3,10 +3,10 @@
 # Contributor: Eothred <yngve.levinsen@gmail.com> (for original spotify PKGBUILD)
 
 pkgname=spotio
-_pkgver=1.0.49.125
-_another_pkgver=g72ee7853
-_yetanotherpkgrel64=111
-_yetanotherpkgrel32=22
+_pkgver=1.0.52.717
+_another_pkgver=g2f08534a
+_yetanotherpkgrel64=47
+_yetanotherpkgrel32=47
 pkgver=1.0.2_${_pkgver}.${_another_pkgver}
 pkgrel=3
 pkgdesc="A proof-of-concept Rdio-inspired skin for Spotify. Temp. using Owlinated's repo for player theme fix."
@@ -30,8 +30,8 @@ sha256sums=('989920e9360cadc1a8103b8c04acf0c87cb7911eb9a09dddb0cf4708d6249d34'
 	   '3fdc1ebd9e64bae98cfd2bc9fc3199427bd7ec680254cd6361d9b0f4bb121134'
 	   'abab92b537b10c861023927db10d71c5cd6bcc0afc7ab7a5ffae7094cc3c6f46'
 	   'SKIP')
-sha256sums_x86_64=('1d6d1cccfb7f996b835f21c8dbabc16ca4bd214878e06738dba7886640470050')
-sha256sums_i686=('96c02fdc77991feb0797089d701744c2de4584322f966a1c070b559df27f9b04')
+sha256sums_x86_64=('475af745895030f9711260a13edd9f144e92df64776057985af527b3e4250df7')
+sha256sums_i686=('feef78eeffd714935515aa7a2a24cb025f9d91e52a3abc9b285a32ec6a9e7f01')
 
 source_x86_64=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${_pkgver}.${_another_pkgver}-${_yetanotherpkgrel64}_amd64.deb")
 
