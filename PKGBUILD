@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=shyaml
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='YAML for the command line'
 arch=('x86_64')
