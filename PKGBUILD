@@ -1,7 +1,7 @@
 # Maintainer: Duarte David <deltaduartedavid@gmail.com>
 
 pkgname=nexus3
-pkgver=3.2.0
+pkgver=3.2.1
 patchver=01
 pkgrel=1
 pkgdesc="Nexus 3 Repository Manager OSS"
@@ -14,7 +14,7 @@ install="$pkgname.install"
 source=("http://download.sonatype.com/nexus/3/nexus-$pkgver-$patchver-unix.tar.gz" 
               "$pkgname.service")
 
-sha1sums=('71fa28e8bb5ef026d06c7519cc9e6ff953cc0535' 'SKIP')
+sha1sums=('3aa5a12beba9b0c35d7cea1d774a2117398f5c5b' '8ad863b2c1c4e264dcd766864b53ee3ba732c6c4')
 
 package() {
   mkdir -p $pkgdir/opt/
