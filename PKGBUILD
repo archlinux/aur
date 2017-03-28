@@ -1,7 +1,7 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=singularityviewer-alpha
-pkgver=1.8.7.6919
+pkgver=1.8.7.6937
 pkgrel=1
 pkgdesc="An exciting client for Second Life (secondlife) and OpenSim (opensimulator), which combines the look and feel of Viewer 1.23 with the latest and greatest of available technology. (alpha version)"
 url="http://www.singularityviewer.org/"
@@ -18,15 +18,17 @@ optdepends=(
 	'lib32-freealut: for OpenAL support'
 	'openal')
 
-conflicts=("singularityviewer")
+conflicts=("singularityviewer" "singularityviewer-test")
+replaces=("singularityviewer-test")
 provides=("singularityviewer")
 
 source=("http://sourceforge.net/projects/singularityview/files/alphas/SingularityAlpha-x86_64-$pkgver.tar.bz2"
 	"singularityviewer.desktop"
 	"singularityviewer.launcher")
-md5sums=('e14039660e04e6908ae3f03aa19d92e2'
+md5sums=('d52e582343b5f173fa10aef7b5eb5ce1'
          'ff7aa34dcd7548e3acdb3c2d44ae6604'
          'eb596f5cf7b6f2d0c55c0082fb99a905')
+
 package() {
 cd $srcdir
   
