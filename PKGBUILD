@@ -1,6 +1,6 @@
 #Maintainer: Jose Moruno <sniferl4bs@gmail.com>
 pkgname="mpis"
-pkgver="2.0.1"
+pkgver="v2.0.1"
 pkgrel="2.0"
 pkgdesc="Script allows to configure the system, install some applications for a regular work day thinked in developers, 
 gamers,and more."
