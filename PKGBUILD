@@ -15,12 +15,16 @@ license=('GPL')
 makedepends=('gtk-doc' 'json-glib' 'device-mapper')
 provides=("${_gitname}")
 conflicts=("${_gitname}")
-_verwatch=("${url}/releases" "${url#*github.com}/archive/${_gitname}-\(.*\)\.tar\.gz" 'l')
+_verwatch=("${url}/releases.atom" "\s\+<title>${_gitname}-\([0-9\.]\+\)</title>.*" 'f') # RSS
 _srcdir="${_gitname}-${_gitname}-${pkgver}"
-source=("${url}/archive/${_gitname}-${pkgver}.tar.gz"
-        "${pkgname}-${pkgver}.patch")
+source=(
+  "${url}/archive/${_gitname}-${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.patch"
+  'sysmacros.patch'
+)
 sha256sums=('bc2d930f46f070d446e587f65f66b2fca4af5017439f6f821ae45bff7cb944ad'
-            '7e4699a1544046a9ccc14e4ec7b36cb901123783f5d456795632d2ffa28ab886')
+            '7e4699a1544046a9ccc14e4ec7b36cb901123783f5d456795632d2ffa28ab886'
+            '5cbf10b78a032351dd32133086fc44b018509fc5c9859d8195c1deb1fba0d5e9')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   unset _verwatch
@@ -42,8 +46,11 @@ fi
 prepare() {
   set -u
   cd "${_srcdir}"
-  patch -p0 -i "${srcdir}/${pkgname}-${pkgver}.patch"
-  ./autogen.sh --prefix='/usr'
+  patch -b -p0 -i "${srcdir}/${pkgname}-${pkgver}.patch"
+  patch -b -p0 -i "${srcdir}/sysmacros.patch"
+  # prevent build error in yaourt
+  BUILDDIR= \
+  bash -u -e ./autogen.sh --prefix='/usr'
   #./configure --prefix='/usr'
   set +u
 }
@@ -51,7 +58,8 @@ prepare() {
 build() {
   set -u
   cd "${_srcdir}"
-  make -s -j "$(nproc)"
+  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+  make -s -j "${_nproc}"
   set +u
 }
 
