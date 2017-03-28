@@ -10,7 +10,6 @@ pkgbase = eigen32
 	license = custom:MPL2
 	license = custom:MINPACK
 	makedepends = cmake
-	makedepends = pkg-config
 	makedepends = freeglut
 	makedepends = gcc-fortran
 	makedepends = fftw
