@@ -1,0 +1,57 @@
+#!/bin/bash
+
+pia_cert=ca.rsa.4096.crt
+pia_cipher=AES-256-CBC
+pia_auth=SHA256
+pia_port=1197
+
+echo -n "PIA username (pNNNNNNN): "
+read pia_username
+
+if [ -z "$pia_username" ]; then
+	echo "Username is required, aborting."
+    exit 1
+fi
+
+servers=$(head -1 'servers')
+servers=$(python2 <<EOF
+import sys
+import json
+data = json.loads('$servers')
+
+for k in data.keys():
+	if k != "info":
+		print data[k]["dns"] + ':' + data[k]["name"]
+EOF
+)
+
+echo "$servers" | while read server; do
+    host=$(echo "$server" | cut -d: -f1)
+    name="PIA - "$(echo "$server" | cut -d: -f2)
+    nmfile="$name"
+
+cat <<EOF > "$nmfile"
+[connection]
+id=$name
+uuid=$(uuidgen)
+type=vpn
+autoconnect=false
+
+[vpn]
+service-type=org.freedesktop.NetworkManager.openvpn
+username=$pia_username
+comp-lzo=yes
+remote=$host
+cipher=$pia_cipher
+auth=$pia_auth
+connection-type=password
+password-flags=1
+port=$pia_port
+proto-tcp=$pia_tcp
+ca=/etc/openvpn/pia-$pia_cert
+
+[ipv4]
+method=auto
+EOF
+
+done
