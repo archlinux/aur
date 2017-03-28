@@ -1,24 +1,18 @@
 pkgbase = arangodb
 	pkgdesc = A multi-model NoSQL database, combining key-value, document and graph data models.
 	pkgver = 3.1.15
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.arangodb.com/
 	install = arangodb.install
 	arch = i686
 	arch = x86_64
-	arch = armv7l
-	arch = armv7h
 	license = APACHE
 	makedepends = cmake
-	makedepends = binutils
 	makedepends = python2
-	depends = glibc
-	depends = gcc-libs
 	depends = openssl
 	depends = systemd
-	provides = arangodb=3.1.15
-	conflicts = arangodb-latest
-	conflicts = arangodb-git
+	depends = curl
+	depends = zlib
 	source = https://www.arangodb.com/repositories/Source/ArangoDB-3.1.15.tar.bz2
 	source = https://www.arangodb.com/repositories/Source/ArangoDB-3.1.15.tar.bz2.asc
 	source = arangodb3.service

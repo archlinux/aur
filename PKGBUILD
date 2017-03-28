@@ -1,20 +1,14 @@
 # Maintainer: Mike Williamson <mike at korora dot ca>
-#
-# based on:
-# - https://aur.archlinux.org/packages/arangodb
-# - https://aur.archlinux.org/packages/arangodb-git
 
 pkgname=arangodb
 pkgver=3.1.15
-pkgrel=3
+pkgrel=4
 pkgdesc="A multi-model NoSQL database, combining key-value, document and graph data models."
-arch=("i686" "x86_64" "armv7l" "armv7h")
+arch=("i686" "x86_64")
 url="https://www.arangodb.com/"
 license=('APACHE')
-depends=("glibc" "gcc-libs" "openssl" "systemd")
-makedepends=("cmake" "binutils" "python2")
-provides=("arangodb=$pkgver")
-conflicts=("arangodb-latest" "arangodb-git")
+depends=('openssl' 'systemd' 'curl' 'zlib')
+makedepends=("cmake" "python2")
 options=()
 install=arangodb.install
 source=("https://www.arangodb.com/repositories/Source/ArangoDB-$pkgver.tar.bz2"
