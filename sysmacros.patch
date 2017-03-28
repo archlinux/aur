@@ -1,10 +1,10 @@
---- src/ldm.c   2017-03-28 09:18:32.885536944 +0900
-+++ src/ldm.c   2017-03-28 09:18:51.775537236 +0900
+--- src/ldm.c.orig	2012-09-21 06:34:41.000000000 -0400
++++ src/ldm.c	2017-03-28 01:12:09.820344261 -0400
 @@ -33,6 +33,7 @@
  #include <sys/stat.h>
  #include <unistd.h>
  #include <uuid/uuid.h>
 +#include <sys/sysmacros.h>
-
+ 
  #include "mbr.h"
  #include "gpt.h"

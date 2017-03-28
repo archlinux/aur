@@ -24,7 +24,7 @@ source=(
 )
 sha256sums=('bc2d930f46f070d446e587f65f66b2fca4af5017439f6f821ae45bff7cb944ad'
             '7e4699a1544046a9ccc14e4ec7b36cb901123783f5d456795632d2ffa28ab886'
-            '5cbf10b78a032351dd32133086fc44b018509fc5c9859d8195c1deb1fba0d5e9')
+            '503052d3fb15869f5ed3b3425299dce64b20e40d1df58eeb9d863ec97d0e7ce9')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   unset _verwatch
@@ -47,15 +47,27 @@ prepare() {
   set -u
   cd "${_srcdir}"
   patch -b -p0 -i "${srcdir}/${pkgname}-${pkgver}.patch"
-  patch -b -p0 -i "${srcdir}/sysmacros.patch"
-  # prevent build error in yaourt
-  BUILDDIR= \
-  bash -u -e ./autogen.sh --prefix='/usr'
-  #./configure --prefix='/usr'
+  patch -b -p0 -i "${srcdir}/sysmacros.patch" #  diff -u3 src/ldm.c{.orig,} > '../../sysmacros.patch'
+  _configure
+  set +u
+}
+
+_configure() {
+  set -u
+  cd "${srcdir}/${_srcdir}"
+  if [ ! -s 'Makefile' ]; then
+    # prevent build error in yaourt
+    BUILDDIR= \
+    bash -u -e ./autogen.sh --prefix='/usr'
+    #./configure --prefix='/usr'
+    #sed -e 's:-Werror::g' -i 'src/Makefile' 'test/Makefile'
+  fi
+  cd "${srcdir}"
   set +u
 }
 
 build() {
+  _configure
   set -u
   cd "${_srcdir}"
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
