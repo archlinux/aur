@@ -21,17 +21,12 @@ int main(int argc, char** argv)
 		return 0;
 	}
 
-	// swallow the leading arg and put a NULL at the end
-	for (int i = 0; i < argc - 1; ++i)
-		argv[i] = argv[i + 1];
-	argv[argc - 1] = NULL;
-
 	// silence output
 	if (!freopen("/dev/null", "w", stdout)) fprintf(stdout, "Failed to silence stdout\n");
 	if (!freopen("/dev/null", "w", stderr)) fprintf(stderr, "Failed to silence stderr\n");
 
 	// run the command
-	if (execvp(argv[0], argv))
+	if (execvp(argv[1], argv + 1))
 	{
 		if (freopen("/dev/tty", "w", stderr)) perror(argv[0]);
 	}
