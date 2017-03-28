@@ -1,4 +1,4 @@
-pkgbase = pymol2-mgtools2
+pkgbase = pymol2-mgltools2
 	pkgdesc = Molecular visualization system on an Open Source foundation
 	pkgver = 1.8.4.0
 	pkgrel = 1
@@ -25,5 +25,5 @@ pkgbase = pymol2-mgtools2
 	md5sums = 138550367b74fd62a7c7bc48d339eb2d
 	md5sums = a6d59e509c823517550d313ca09c86dc
 
-pkgname = pymol2-mgtools2
+pkgname = pymol2-mgltools2
 
