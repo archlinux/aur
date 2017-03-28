@@ -1,0 +1,33 @@
+pkgbase = mgltools2
+	pkgdesc = Visualization and analysis of molecular structures; includes AutoDockTools, Vision and PythonMoleculeViewer
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://mgltools.scripps.edu/
+	arch = x86_64
+	license = custom
+	depends = swig
+	depends = tk
+	depends = python2-numpy
+	depends = python2-imaging
+	depends = python2-pmw
+	depends = glut
+	depends = python2-zsi
+	depends = python2-simpy
+	depends = libxmu
+	depends = python2-backports.ssl
+	depends = python2-colorama
+	depends = python2-dateutil
+	depends = ipython2
+	depends = python2-apache-libcloud
+	depends = python2-matplotlib
+	depends = python2-pygments
+	depends = python2-pyside
+	depends = python2-pytz
+	depends = python2-pyzmq
+	optdepends = autodocksuite
+	options = !emptydirs
+	source = http://mgltools.scripps.edu/downloads/tars/releases/nightly/1.1/REL/mgltools2_x86_64Linux2_1.1.tar.gz
+	md5sums = db291ec19231c4b6d90a20efd34906be
+
+pkgname = mgltools2
+
