@@ -11,7 +11,7 @@
 # @see https://wiki.archlinux.org/index.php/Unreal_Engine_4
 
 pkgname='unrealtournament4'
-pkgver=3315666
+pkgver=3361702
 pkgrel=1
 pkgdesc='A first-person shooter by Epic Games based on Unreal Engine 4.'
 arch=('x86_64')
