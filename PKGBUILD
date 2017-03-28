@@ -16,7 +16,7 @@ provides=("popcorntime" "popcorntime-ce")
 conflicts=("popcorntime-ce" "popcorntime-ce-bin")
 options=("!strip")
 install="popcorntime-ce.install"
-source=("git+https://github.com/PopcornTime-CE/${_device}.git"
+source=("git+https://github.com/PopcornTimeCommunity/${_device}.git"
 	"popcorntime-ce.install"
 	"popcorntime-ce.desktop")
 sha1sums=("SKIP"
