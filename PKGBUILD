@@ -8,9 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/humanoid-path-planner/hpp-fcl"
 license=('BSD 3-clause')
 depends=('eigen32' 'assimp')
-optdepends=()
 makedepends=('cmake' 'pkg-config')
-conflicts=()
 source=("https://github.com/humanoid-path-planner/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 md5sums=('e872800a18086367ff3eb18a5beae6a4')
 
