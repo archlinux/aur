@@ -1,7 +1,7 @@
 pkgbase = griffith
 	pkgdesc = Movie collection manager application
 	pkgver = 0.13
-	pkgrel = 12
+	pkgrel = 13
 	url = http://www.griffith.cc/
 	arch = any
 	license = GPL2
@@ -19,9 +19,11 @@ pkgbase = griffith
 	source = http://launchpad.net/griffith/trunk/0.13/+download/griffith-0.13.tar.gz
 	source = https://raw.githubusercontent.com/ValHue/AUR-PKGBUILDs/master/griffith/validators.py
 	source = http://www.strits.dk/files/PluginMovieIMDB.py
+	source = http://www.strits.dk/files/PluginExportPDF.py
 	sha256sums = 60576d33aa855ab45d654288d7bf2ead8accecb72fd2acbc373656294ab8f242
 	sha256sums = f5e0b43c6ee56148b55cc650599c96b7774491867d38b47278bc121bf33fb9af
 	sha256sums = c1f1c5dbe0b975f15a6d0265e53b993390eb33aca2011f2e0d390b326a017a21
+	sha256sums = 24f0f2deab05920911b24188605ab8b52c7c6696cb5ae80d71c22d749799b9e7
 
 pkgname = griffith
 

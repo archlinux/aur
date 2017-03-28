@@ -9,7 +9,7 @@
 
 pkgname="griffith"
 pkgver=0.13
-pkgrel=12
+pkgrel=13
 pkgdesc="Movie collection manager application"
 arch=('any')
 url="http://www.griffith.cc/"
@@ -26,10 +26,12 @@ optdepends=('python2-psycopg2: postgreSQL support'
 source=("http://launchpad.net/${pkgname}/trunk/0.13/+download/${pkgname}-${pkgver}.tar.gz"
 		"https://raw.githubusercontent.com/ValHue/AUR-PKGBUILDs/master/griffith/validators.py"
 		"http://www.strits.dk/files/PluginMovieIMDB.py"
+		"http://www.strits.dk/files/PluginExportPDF.py"
 )
 sha256sums=('60576d33aa855ab45d654288d7bf2ead8accecb72fd2acbc373656294ab8f242'
             'f5e0b43c6ee56148b55cc650599c96b7774491867d38b47278bc121bf33fb9af'
             'c1f1c5dbe0b975f15a6d0265e53b993390eb33aca2011f2e0d390b326a017a21'
+            '24f0f2deab05920911b24188605ab8b52c7c6696cb5ae80d71c22d749799b9e7'
 )
 
 build() {
@@ -39,22 +41,29 @@ build() {
     sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' griffith
 
     # new bash_completion directory
-    #sed -e 's,BASHCOMPDIR = $\(ETCDIR\)/bash_completion.d,BASHCOMPDIR = $\(PREFIX\)/share/bash-completion/completions,' -i Makefile
     sed -e 's,BASHCOMPDIR = $(ETCDIR)/bash_completion.d,BASHCOMPDIR = $(PREFIX)/share/bash-completion/completions,' -i Makefile
 
     # The version 0.13.0 of griffith isn't compatible with SqlAlchemy 0.8.
     # http://forum.griffith.cc/index.php/topic,1601.msg5317.html#msg5317
-    cp -f ../validators.py ./lib/db/validators.py
+	cp -f ../validators.py ./lib/db/validators.py
 
-	# Update PluginMovieIMDB.py to version 1.15. Thanks to Strit
+	## Thanks to Strit
+	# Update PluginMovieIMDB.py to version 1.15
 	# http://www.strits.dk/files/PluginMovieIMDB.py
 	cp -f ../PluginMovieIMDB.py ./lib/plugins/movie/PluginMovieIMDB.py
+
+	# Update PluginExportPDF.py
+	# http://www.strits.dk/files/PluginExportPDF.py
+	cp -f ../PluginExportPDF.py ./lib/plugins/export/PluginExportPDF.py
 
 	# Fix dependencies version
 	sed -i '65,83d' griffith
 
 	# Fix to AttributeError: 'module' object has no attribute 'glade'
 	sed -i "35i\import gtk.glade" ./lib/initialize.py
+
+	# Fix to import movie info
+	sed -e 's,www.griffith.cc,www.google.com,' -i ./lib/movie.py
 }
 
 package() {
@@ -64,6 +73,10 @@ package() {
 
     # The program creates a wrong symlink so make a new one
 	rm ${pkgdir}/usr/bin/griffith
-	ln -s /usr/share/griffith/lib/griffith ${pkgdir}/usr/bin/griffith 
+	ln -s /usr/share/griffith/lib/griffith ${pkgdir}/usr/bin/griffith
+
+    # The program creates a etc directory empty
+    rm -rf ${pkgdir}/etc
 }
+
 # vim:set ts=4 sw=2 ft=sh et:
