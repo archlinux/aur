@@ -7,7 +7,6 @@ pkgbase = hpp-util-git
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	makedepends = pkg-config
 	depends = boost-libs
 	depends = tinyxml
 	source = hpp-util::git://github.com/humanoid-path-planner/hpp-util.git
