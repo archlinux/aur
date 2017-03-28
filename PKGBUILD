@@ -4,24 +4,17 @@
 
 pkgbase=gpgme
 pkgname=(gpgme qgpgme)
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="A C wrapper library for GnuPG"
 arch=('i686' 'x86_64')
 url="http://www.gnupg.org/related_software/gpgme/"
 license=('LGPL')
 makedepends=('libgpg-error' 'gnupg' 'qt5-base')
-source=("https://www.gnupg.org/ftp/gcrypt/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2"{,.sig}
-        '0001-remove-a-forgotten-instance-of-libsuffix.patch')
-sha256sums=('596097257c2ce22e747741f8ff3d7e24f6e26231fa198a41b2a072e62d1e5d33'
-         'SKIP'
-         'fb743604a031b9f8be816ccb643a78ed12a660d7cbeb8519387d7f44c7d33c8a')
+source=("https://www.gnupg.org/ftp/gcrypt/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2"{,.sig})
+sha256sums=('1b29fedb8bfad775e70eafac5b0590621683b2d9869db994568e6401f4034ceb'
+            'SKIP')
 validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6') # Werner Koch
-
-prepare() {
-  cd ${pkgbase}-${pkgver}
-  patch -Np1 < "${srcdir}/0001-remove-a-forgotten-instance-of-libsuffix.patch"
-}
 
 build() {
   cd ${pkgbase}-${pkgver}
