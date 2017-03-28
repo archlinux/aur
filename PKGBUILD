@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://github.com/cs50/lib50-c/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=('8feb784fcbccf8521b6fe5656bfe3112')
+md5sums=('bab3f9a12a19ee799e5e1461c08d7117')
 validpgpkeys=()
 
 build() {
