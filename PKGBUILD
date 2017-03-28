@@ -1,7 +1,7 @@
 # Maintainer: SoVerySour <gmaiadremailfeis22 at gmail dot com>
 
 pkgname=infra-arcana-git
-pkgver=v18.2.167.gfab00ec3
+pkgver=v18.2.168.g6df74630
 pkgrel=1
 
 pkgdesc="Roguelike game inspired by the writings of H.P. Lovecraft"
@@ -14,24 +14,7 @@ makedepends=('git' 'cmake')
 conflicts=('infra-arcana')
 md5sums=('SKIP')
 
-source=("git+https://github.com/martin-tornqvist/ia.git#branch=develop")
-
-prepare() {
-  if [ -f "/opt/games/$pkgname/res/data/config" ]
-  then
-    cp "/opt/games/$pkgname/res/data/config" "$srcdir/"
-  fi
-
-  if [ -f "/opt/games/$pkgname/res/data/save" ]
-  then
-    cp "/opt/games/$pkgname/res/data/save" "$srcdir/"
-  fi
-
-  if [ -f "/opt/games/$pkgname/res/data/highscores" ]
-  then
-    cp "/opt/games/$pkgname/res/data/highscores" "$srcdir/"
-  fi
-}
+source=("git+https://github.com/soverysour/ia.git#branch=develop")
 
 pkgver() {
   cd $srcdir/ia
@@ -74,41 +57,6 @@ package() {
   cp -r "$srcdir/ia/build/res" "$pkgdir/opt/games/$pkgname/"
   chmod 775 "$pkgdir/opt/games/$pkgname/res"
   
-  if [ -f "$srcdir/config" ]
-  then
-    cp "$srcdir/config" "$pkgdir/opt/games/$pkgname/res/data/config"
-    rm "$srcdir/config"
-  else
-    touch "$pkgdir/opt/games/$pkgname/res/data/config"
-  fi
-
-  if [ -f "$srcdir/save" ]
-  then
-    cp "$srcdir/save" "$pkgdir/opt/games/$pkgname/res/data/save"
-    rm "$srcdir/save"
-  else
-    touch "$pkgdir/opt/games/$pkgname/res/data/save"
-  fi
-  
-  if [ -f "$srcdir/highscores" ] 
-  then
-    cp "$srcdir/highscores" "$pkgdir/opt/games/$pkgname/res/data/highscores"
-    rm "$srcdir/highscores"
-  else
-    touch "$pkgdir/opt/games/$pkgname/res/data/highscores"
-  fi
-
-  chmod 666 "$pkgdir/opt/games/$pkgname/res/data/save"
-  chmod 666 "$pkgdir/opt/games/$pkgname/res/data/config"
-  chmod 666 "$pkgdir/opt/games/$pkgname/res/data/highscores"
-
   printf "#!/bin/bash\ncd /opt/games/%s\n./infra-arcana" "$pkgname" > "$pkgdir/usr/bin/ia"
   chmod 775 "$pkgdir/usr/bin/ia"
-
-  printf "\n\n\n"
-  printf "*** Note that updating the package will keep ***\n"
-  printf "*** Your \"config\", \"save\" and \"highscores\" files ***\n"
-  printf "*** From under /opt/games/%s/res/data/ ***\n" "$pkgname"
-  printf "*** If anything unusual happens after an update, try deleting those ***\n"
-  printf "\n\n\n"
 }
