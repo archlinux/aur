@@ -40,7 +40,7 @@ build() {
   # determine whether we can precompile CUDA kernels
     _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
     if [ "$_CUDA_PKG" != "" ]; then
-      _EXTRAOPTS="-DCUDA_ENABLED=ON -DCUDA_BUILD_CUBIN=ON -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda"
+      _EXTRAOPTS="-DCUDA_ENABLED=ON -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda"
     fi
 
   mkdir -p build
