@@ -27,7 +27,7 @@ pkgbase = eventd-git
 	provides = eventd
 	conflicts = eventd
 	options = !strip
-	source = git://github.com/sardemff7/eventd
+	source = git+https://github.com/sardemff7/eventd
 	sha256sums = SKIP
 
 pkgname = eventd-git
