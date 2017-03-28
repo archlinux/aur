@@ -1,6 +1,6 @@
 # Maintainer: Wellington <wellingtonwallace@gmail.com>
 pkgname=pulseeffects
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Limiter, reverberation and stereo equalizer effects for Pulseaudio applications"
 arch=(any)
@@ -10,7 +10,7 @@ depends=(python python-gobject gtk3 gst-plugins-bad gst-python swh-plugins caps)
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/wwmm/pulseeffects/archive/v$pkgver.tar.gz")
-md5sums=('dd504b9a0826d7d6f2327d19cb7aa83f')
+md5sums=('cc026e9ad039ce48aede06d94ea1ad9c')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
