@@ -3,7 +3,7 @@
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=discount
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="A Markdown implementation written in C"
 arch=('i686' 'x86_64')
@@ -12,12 +12,12 @@ license=('custom:BSD')
 provides=('markdown')
 conflicts=('markdown')
 source=("http://www.pell.portland.or.us/~orc/Code/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('88458c7c2cfc870f8e6cf42b300408c112e05a45c88f8af35abb33de0e96fe0e')
+sha256sums=('ec7916731e3ef8516336333f8b7aa9e2af51e57c0017b1e03fa43f1ba6978f64')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   sed -e 's/m 444/m 644/g' -i configure.inc
-  sed '1347d' -i configure.inc
+  sed '1375d' -i configure.inc
   ./configure.sh --prefix=/usr --enable-all-features --with-fenced-code --shared
   make
 }
