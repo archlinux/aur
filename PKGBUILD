@@ -3,7 +3,7 @@
 
 pkgname=python-cookiecutter
 _pkgname=cookiecutter
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A command-line utility that creates projects from project templates"
 arch=('any')
@@ -24,7 +24,7 @@ replaces=()
 backup=()
 options=(!emptydirs)
 source=("https://github.com/audreyr/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('48bf21b7e6d70bc81de6cb4a314dd26f')
+md5sums=('1d3ac4e2bcf8dd9d571c2171800dbe2e')
 
 package() {
   cd "$srcdir/${_pkgname}-${pkgver}"
