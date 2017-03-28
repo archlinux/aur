@@ -1,14 +1,14 @@
 # Maintainer: Timur Kiyivinski <timur@linux.com>
 
 pkgname=zcoin-git
-pkgver=91.6452e96
+pkgver=154.ca0bb3c
 pkgrel=1
 pkgdesc='The Zerocoin Cryptocurrency'
 arch=('any')
 url='https://github.com/zcoinofficial/zcoin'
 license=('MIT')
-depends=('boost' 'qt4')
-source=("$pkgname::git+https://github.com/zcoinofficial/zcoin.git"
+depends=('db' 'boost' 'miniupnpc' 'qt5-base')
+source=("$pkgname::git+https://github.com/TimurKiyivinski/zcoin.git"
         "${pkgname/-git/}.desktop")
 md5sums=('SKIP'
          '2e3eff2f4fd362a84687979ebb136867')
@@ -20,7 +20,8 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    qmake-qt4 USE_UPNP=- -spec /usr/share/qt4/mkspecs/linux-g++-64 -o Makefile zcoin.pro
+    git checkout fix-miniupnpc
+    qmake-qt5 USE_UPNP=1 -o Makefile zcoin.pro
     make
 }
 
