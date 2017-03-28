@@ -2,7 +2,7 @@
 Description=Dgraph database
 
 [Service]
-ExecStart=/usr/bin/dgraph -uids /var/lib/dgraph/data/u -mutations /var/lib/dgraph/data/m -postings /var/lib/dgraph/data/p
+ExecStart=/usr/bin/dgraph -w /var/lib/dgraph/data/w -p /var/lib/dgraph/data/p
 Restart=on-failure
 RestartSec=1
 

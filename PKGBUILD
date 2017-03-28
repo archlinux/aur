@@ -1,23 +1,25 @@
-# Maintainer: John Trengrove <john@retrofilter.com>
+# Maintainer: Kaley Main <kaleypoole17@gmail.com>
 
 pkgname=dgraph-bin
 _pkgname=dgraph
-pkgver=0.4.4
-pkgrel=2
+pkgver=0.7.3
+pkgrel=1
 pkgdesc='a low latency, high throughput, native and distributed graph database'
 arch=('x86_64')
 url='https://github.com/dgraph-io/dgraph'
 license=('APACHE')
-depends=('gcc-libs')
+#depends=('gcc-libs')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/dgraph-io/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-v${pkgver}.tar.gz" 'dgraph.service')
-sha256sums=('a3ae2915edcab7f2fac83d7d9205304c5d9318b36808493b57a4e87182b3c7c9' '67b405e0d92d90ec33bd5abfab7fa842165746372ba6049d3f00e482425bc974')
+sha256sums=('bd022bd934bbb9a37d0ba4f353f7901ffceeea6cce8d3fb5765fa06518c1b5dd' '8bde63f163c6a925ecb884ca12aede192a307693042ff7dddf230d3e4ec2fd7e')
 
 package() {
-  cd "$srcdir"
-  for binary in dgraph dgraphassigner dgraphlist dgraphloader dgraphmerge; do
+  cd "$srcdir/dgraph"
+  for binary in dgraph dgraphloader; do
     install -Dm755 $binary "$pkgdir/usr/bin/$binary"
   done
+  cd "$srcdir"
   install -Dm644 dgraph.service "$pkgdir/usr/lib/systemd/system/dgraph.service"
+  install -d "$pkgdir/var/lib/dgraph/data"
 }
 
 # vim:set ts=2 sw=2 et:
