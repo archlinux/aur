@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.10.5-1 Kernel Configuration
+# Linux/x86 4.10.6-1 Kernel Configuration
 #
 # CONFIG_64BIT is not set
 CONFIG_X86_32=y
@@ -5466,7 +5466,7 @@ CONFIG_SND_SOC_MAX98090=m
 # CONFIG_SND_SOC_RT5631 is not set
 # CONFIG_SND_SOC_RT5677_SPI is not set
 # CONFIG_SND_SOC_SGTL5000 is not set
-CONFIG_SND_SOC_SI476X=m
+# CONFIG_SND_SOC_SI476X is not set
 # CONFIG_SND_SOC_SIRF_AUDIO_CODEC is not set
 # CONFIG_SND_SOC_SPDIF is not set
 # CONFIG_SND_SOC_SSM2602_SPI is not set
@@ -5484,7 +5484,7 @@ CONFIG_SND_SOC_SI476X=m
 # CONFIG_SND_SOC_TLV320AIC23_SPI is not set
 # CONFIG_SND_SOC_TLV320AIC31XX is not set
 # CONFIG_SND_SOC_TLV320AIC3X is not set
-CONFIG_SND_SOC_TS3A227E=m
+# CONFIG_SND_SOC_TS3A227E is not set
 # CONFIG_SND_SOC_WM8510 is not set
 # CONFIG_SND_SOC_WM8523 is not set
 # CONFIG_SND_SOC_WM8580 is not set
