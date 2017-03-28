@@ -7,7 +7,6 @@ pkgbase = hpp-fcl
 	arch = x86_64
 	license = BSD 3-clause
 	makedepends = cmake
-	makedepends = pkg-config
 	depends = eigen32
 	depends = assimp
 	source = https://github.com/humanoid-path-planner/hpp-fcl/releases/download/v0.5/hpp-fcl-0.5.tar.gz
