@@ -5,7 +5,7 @@
 
 # Maintainer: Jestine Paul <jestine dot paul at gmail dot com>
 pkgname=libcs50
-pkgver=7.1.0
+pkgver=7.1.2
 pkgrel=1
 epoch=
 pkgdesc="CS50 Library for C (Harvard course)"

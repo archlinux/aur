@@ -1,6 +1,6 @@
 pkgbase = libcs50
 	pkgdesc = CS50 Library for C (Harvard course)
-	pkgver = 7.1.0
+	pkgver = 7.1.2
 	pkgrel = 1
 	url = https://cs50.harvard.edu/
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = libcs50
 	md5sums = 8feb784fcbccf8521b6fe5656bfe3112
 
 pkgname = libcs50
-
