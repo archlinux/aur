@@ -8,3 +8,6 @@ clean:
 cleanall: clean
 	rm -rf guayadeque-git-*.pkg.tar.xz
 
+docker:
+	docker build -t guayadeque_git .
+
