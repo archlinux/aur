@@ -1,9 +1,10 @@
 # Maintainer: Romain Porte <microjoe@mailoo.org>
+# Comaintainer: Max Bruckner <max at maxbruckner dot de>
 # Creator: chefpeyo <pierre-olivier.huguet@asp64.com>
 # Contributor: kuri <sysegv@gmail.com>
 
 pkgname=cjson-git
-pkgver=v1.4.4.r0.gb0dfcde
+pkgver=v1.4.5.r0.g3a20692
 pkgrel=1
 pkgdesc="Dave Gamble's cJSON library. Easily handle JSON data in C (git version)."
 arch=('i686' 'x86_64')
@@ -19,7 +20,7 @@ md5sums=(SKIP)
 _gitname="cJSON"
 
 pkgver() {
-	cd "$srcdir/$_gitname"
+	cd "$srcdir/$_gitname" || return 1
 	( set -o pipefail
 		git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -27,21 +28,26 @@ pkgver() {
 }
 
 build() {
-	cd $_gitname
+	cd $_gitname || return 1
 
 	rm -rf build
 	mkdir build
-	cd build
-	cmake .. -DENABLE_CJSON_UTILS=On -DENABLE_CJSON_TEST=Off -DCMAKE_INSTALL_PREFIX=/usr
+	cd build || return 1
+	cmake .. -DENABLE_CJSON_UTILS=On -DCMAKE_INSTALL_PREFIX=/usr
 	make || return 1
 }
 
-package() {
-	cd $_gitname/build
+check() {
+	cd $_gitname/build || return 1
+	make check || return 1
+}
 
-	make DESTDIR=$pkgdir install || return 1
+package() {
+	cd $_gitname/build || return 1
+
+	make DESTDIR="$pkgdir" install || return 1
 
 	# install license files
-	install -Dm644 $srcdir/$_gitname/LICENSE \
-		$pkgdir/usr/share/licenses/$pkgname/LICENSE
+	install -Dm644 "$srcdir/$_gitname/LICENSE" \
+		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
