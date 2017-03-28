@@ -1,7 +1,7 @@
 # Maintainer: Emeric <emeric.grange@gmail.com>
 # Created: 31/01/2017
 pkgname=autopanopro-beta
-pkgver=4.4.0.302
+pkgver=4.4.0.303
 pkgrel=1
 pkgdesc='Create beautiful panoramas by stitching multiple photos automatically with Autopano Pro (BETA) (trial version).'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("$_archivename::http://download.kolor.com/app/beta/linux64tarxz/"
         "$pkgname"
         "$pkgname.desktop")
 
-sha256sums=('c90090ce0367cb9a167559169e8213a7fe08ce2fb5cb67adf6655a7f5926cf74'
+sha256sums=('a1fad57772e72c4db67563bab3962b4d8287a64af5ad8dd313c6c20ae4094a43'
             'e17b9f0f43071b5d0276a506f48f1a349a10618fda718826724f29f5d3f86b55'
             'c2adb8967201d2e7d79a17992ea51829706908ad6aa39f617b8a6fa2fe10fd4e')
 
