@@ -2,7 +2,7 @@
 
 _pkgname=conky-colors
 pkgname=$_pkgname-git
-pkgver=20150806.r148.3980575
+pkgver=20160428.r157.df2bb4b
 pkgrel=1
 pkgdesc='An easier way to configure Conky'
 url='https://github.com/helmuthdu/conky_colors'
@@ -35,4 +35,3 @@ package() {
   install -dm755 "$pkgdir"/usr/bin
   make DESTDIR="$pkgdir" install
 }
-
