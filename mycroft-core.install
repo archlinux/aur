@@ -46,6 +46,7 @@ post_upgrade() {
 }
 
 post_remove() {
+  groupdel mycroftcore
   userdel mycroft-core
   rm -rf /usr/share/mycroft-core
 }
