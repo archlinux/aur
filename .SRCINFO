@@ -7,7 +7,6 @@ pkgbase = pinocchio-git
 	arch = x86_64
 	license = LGPL3
 	makedepends = cmake
-	makedepends = pkg-config
 	makedepends = git
 	depends = eigen32
 	depends = eigenpy
