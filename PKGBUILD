@@ -3,7 +3,7 @@
 pkgname=cargo-watch
 pkgver=3.2.0
 pkgrel=1
-pkgdesc="Watches over your Cargo project's source"
+pkgdesc="Utility for Cargo to compile projects when sources change"
 arch=('i686' 'x86_64')
 url="https://github.com/passcod/cargo-watch"
 license=('CC0-1.0')
