@@ -1,7 +1,7 @@
 pkgbase = autosuspend
 	pkgdesc = A daemon to suspend your server in case of inactivity
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/languitar/autosuspend
 	arch = any
 	license = GPL2
@@ -11,6 +11,8 @@ pkgbase = autosuspend
 	optdepends = python-mpd2: MPD playing status checks
 	optdepends = python-requests: Kodi playing status checks
 	optdepends = xprintidle: X server idle time cheks
+	backup = etc/autosuspend.conf
+	backup = etc/autosuspend-logging.conf
 	source = https://github.com/languitar/autosuspend/archive/release-0.4.tar.gz
 	sha256sums = c7d1f6f238b65d5257bfd4fc74ccdfe4ed5fe340060c1c59f50e7065d88a8dbc
 
