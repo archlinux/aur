@@ -1,9 +1,8 @@
 pkgbase = otf-aileron
 	pkgdesc = A grotesque sans-serif font by dot colon.
 	pkgver = 0.102
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dotcolon.net/font/aileron/
-	install = otf.install
 	arch = i686
 	arch = x86_64
 	license = custom:CC0
