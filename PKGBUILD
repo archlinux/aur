@@ -2,13 +2,13 @@
 # Based on [extra]'s thunderbird
 
 pkgname=thunderbird-beta-gtk3
-pkgver=52.0b4
+pkgver=53.0b1
 _major=${pkgver/[br]*}
-_pkgver=52.0
-_beta=b4
-_build=${pkgver/*rc}
+_pkgver=53.0
+_beta=b1
+_build=build2
 pkgrel=1
-pkgdesc="Standalone Mail/News reader - Bleeding edge version with optional PGO"
+pkgdesc="Standalone Mail/News reader - Beta version with GTK3"
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/thunderbird"
 license=('GPL' 'LGPL' 'MPL')
@@ -22,15 +22,18 @@ provides=("thunderbird=$pkgver")
 conflicts=("thunderbird-beta")
 install=$pkgname.install
 options=('!emptydirs' '!makeflags')
-source=(https://launchpadlibrarian.net/308724185/thunderbird_${_pkgver}~${_beta}+build1.orig.tar.bz2
+#source=(https://launchpadlibrarian.net/312243637/thunderbird_${_pkgver}~${_beta}+${_build}.orig.tar.bz2
 #source=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz"
+source=("https://ftp.mozilla.org/pub/thunderbird/candidates/${pkgver}-candidates/$_build/source/thunderbird-${pkgver}.source.tar.xz"
         fix-wifi-scanner.diff
         firefox-gcc-6.0.patch
+        thunderbird-install-dir.patch
         $pkgname.desktop
         $pkgname-safe.desktop)
-sha512sums=('5003e4f79bba891b7ad30ce30ca592289703ee174b8c5322975ef2078b48e4c4148454246649e98825f3d75d14dcd154ea467aec062590e8c82172a4e06b0e5e'
+sha512sums=('7ac0231a4cb36c9a83a68c9ce5c9e71718c4c33414919152581d0a2b13a9bb8eca97e08e81f73260b86a4d0b0569e748a6cd58402772b580eeb9c03328f21886'
             '1bd2804bea1fe8c85b602f8c5f8777f4ba470c9e767ad284cb3d0287c6d6e1b126e760738d7c671f38933ee3ec6b8931186df8e978995b5109797ae86dfdd85a'
             '1bb8887cfc12457a83045db559bbd13954a177100309b4f6c82a5f733675e83751bfecf501f505345f81fd2688fc5b02e113962cf0a0df27b29790f40cb9406b'
+            '8100fd3ea37d998905498d41c8504bfdd6d86766542d6b93107c92382a7525da7f75a83f8ff1e15ad95039d51da2add7e6b18af76d45516a41cdfd1e9f98f262'
             'fc83c23f67cc5d399bc655d2486936db3ab500bafe399a905a17a0b0f63ad9befb782fc9c07d467a65a80a00e3ce984700ec3cf60e4cb3e1b29b20954c6fa775'
             '3cf4194575041bbe344d6cd17e473eb78caf7e2e1aa8b1309151f7e4677c33571014ba6d7aba267398c3ba69c825c64363272b82b15f7dbb8ae5e3e825f439b7')
 # RC
@@ -55,7 +58,12 @@ prepare() {
 mkdir -p path
 ln -sf /usr/bin/python2 path/python
 
-cd thunderbird-${_pkgver}~${_beta}+build1
+#cd thunderbird-${_pkgver}~${_beta}+${_build}
+cd thunderbird-${pkgver}
+
+msg2 "thunderbird-install-dir.patch"
+  patch -Np1 -i ../thunderbird-install-dir.patch
+
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
   msg2 "fix-wifi-scanner.diff"
   patch -d mozilla -Np1 < ../fix-wifi-scanner.diff
@@ -106,7 +114,7 @@ ac_add_options --disable-updater
 ac_add_options --enable-calendar
 ac_add_options --disable-tests ###
 ac_add_options --disable-debug-symbols ###
-#ac_add_options --enable-rust 
+ac_add_options --enable-rust 
 #export CC=clang
 #export CXX=clang++
 STRIP_FLAGS="--strip-debug"
@@ -114,7 +122,7 @@ END
 }
 
 build() {
-  cd thunderbird-${_pkgver}~${_beta}+build1
+  cd thunderbird-${pkgver}
   # Build flags
    # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
@@ -137,43 +145,43 @@ build() {
 }
 
 package() {
-  cd thunderbird-${_pkgver}~${_beta}+build1
+  cd thunderbird-${pkgver}
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
-  _vendorjs="$pkgdir/opt/thunderbird-$_major/defaults/preferences/vendor.js"
+  _vendorjs="$pkgdir/usr/lib/thunderbird-beta/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$_vendorjs" <<END
 // Use LANG environment variable to choose locale
 pref("intl.locale.matchOS", true);
 
 // Disable default mailer checking.
 pref("mail.shell.checkDefaultMail", false);
-
+ 
 // Don't disable our bundled extensions in the application directory
 pref("extensions.autoDisableScopes", 11);
 pref("extensions.shownSelectionUI", true);
 END
 
   for i in 16 22 24 32 48 256; do
-    install -Dm644 other-licenses/branding/thunderbird/mailicon$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
+    install -Dm644 other-licenses/branding/thunderbird/mailicon$i.png "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/thunderbird-beta.png"
   done
-
+  
   install -Dm644 ../$pkgname.desktop \
     "$pkgdir/usr/share/applications/thunderbird-beta.desktop"
   install -Dm644 ../$pkgname-safe.desktop \
     "$pkgdir/usr/share/applications/thunderbird-beta-safe.desktop"
   # Use system-provided dictionaries
-  rm -r "$pkgdir"/usr/lib/thunderbird-$_major/dictionaries
-  ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/thunderbird-$_major/dictionaries"
-  ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/thunderbird-$_major/hyphenation"
+  rm -r "$pkgdir"/usr/lib/thunderbird-beta/dictionaries
+  ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/thunderbird-beta/dictionaries"
+  ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/thunderbird-beta/hyphenation"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/thunderbird-beta" <<END
 #!/bin/sh
-exec /usr/lib/thunderbird-52.0/thunderbird "\$@"
+exec /usr/lib/thunderbird-beta/thunderbird "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
+  rm "$pkgdir/usr/bin/thunderbird"
   ln -srf "$pkgdir/usr/bin/thunderbird-beta" \
-    "$pkgdir/usr/lib/thunderbird-52.0/thunderbird-bin"
+    "$pkgdir/usr/lib/thunderbird-beta/thunderbird-bin"
 }
