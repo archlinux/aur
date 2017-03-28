@@ -1,4 +1,4 @@
-pkgbase = pymol
+pkgbase = pymol2-mgtools2
 	pkgdesc = Molecular visualization system on an Open Source foundation
 	pkgver = 1.8.4.0
 	pkgrel = 1
