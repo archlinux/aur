@@ -32,6 +32,6 @@ build() {
 
 package() {
   cd ${_pkgname/-/_}
-  install -dm755 "$pkgdir"/usr/bin
-  make DESTDIR="$pkgdir" install
+  install -dm755 "$pkgdir/usr/bin"
+  make DESTDIR="$pkgdir" PREFIX=/usr install
 }
