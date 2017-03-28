@@ -1,15 +1,15 @@
 # Maintainer: Vlad M. <vlad@archlinux.net>
 
 pkgname=cargo-watch
-pkgver=3.1.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Watches over your Cargo project's source"
 arch=('i686' 'x86_64')
 url="https://github.com/passcod/cargo-watch"
 license=('CC0-1.0')
 depends=('cargo')
-source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('3692824d3ea3822d29425ffcc8f169914e93c2da08cd3c027d579815af6d1795')
+source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
+sha256sums=('47612b3cc507e209a63f7d58f1fe8a0a81d578f85a88f5f4958a248b4e9c580a')
 
 build() {
   cd "$pkgname-$pkgver"
