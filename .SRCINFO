@@ -1,0 +1,29 @@
+pkgbase = pymol
+	pkgdesc = Molecular visualization system on an Open Source foundation
+	pkgver = 1.8.4.0
+	pkgrel = 1
+	url = http://pymol.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = desktop-file-utils
+	makedepends = gendesk
+	depends = glew
+	depends = glut
+	depends = libgl
+	depends = libxml2
+	depends = python2-pmw-mgltools2
+	depends = mgltools2
+	source = http://downloads.sourceforge.net/project/pymol/pymol/1.8/pymol-v1.8.4.0.tar.bz2
+	source = pymol.png::https://c.fsdn.com/allura/p/pymol/icon
+	source = pymol-38899.patch
+	source = apbstools_tcltk8.6.patch
+	source = pymol.sh
+	md5sums = 85451c40abc0a359a5ed91abd363b2c2
+	md5sums = 0e9df23150d39cbcb8f79c38ce2a52e5
+	md5sums = 1f8152c4604ba2939b24e25a022937ca
+	md5sums = 138550367b74fd62a7c7bc48d339eb2d
+	md5sums = a6d59e509c823517550d313ca09c86dc
+
+pkgname = pymol2-mgtools2
+

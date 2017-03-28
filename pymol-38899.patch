@@ -1,0 +1,251 @@
+diff -ruN pymol.orig/modules/pymol/importing.py pymol/modules/pymol/importing.py
+--- pymol.orig/modules/pymol/importing.py	2014-01-15 00:02:55.000000000 +0400
++++ pymol/modules/pymol/importing.py	2014-02-14 10:19:11.275591741 +0400
+@@ -473,7 +473,7 @@
+     def _processPWG(fname,_self=cmd):
+         r = DEFAULT_ERROR
+         try:
+-            from web.pymolhttpd import PymolHttpd
++            from pymolweb.pymolhttpd import PymolHttpd
+             browser_flag = 0
+             launch_flag = 0
+             report_url = None
+diff -ruN pymol.orig/modules/web/examples/content/SOP.html pymol/modules/web/examples/content/SOP.html
+--- pymol.orig/modules/web/examples/content/SOP.html	2014-01-15 00:02:58.000000000 +0400
++++ pymol/modules/web/examples/content/SOP.html	2014-02-14 10:19:11.275591741 +0400
+@@ -49,7 +49,7 @@
+ The first seven
+ <a href="../index.html#sample01" target="_blank"> sample applications</a>
+  are implemented like this, residing in folders at
+-<code>$PYMOL_PATH/modules/web/examples/sample[0-7]</code> There
++<code>$PYMOL_PATH/modules/pymolweb/examples/sample[0-7]</code> There
+ may be future PyMOL web applications delivered with new versions of
+ PyMOL.  Of course, you are free to write your own PyMOL web
+ applications and store them on each user's machine, or perhaps on a
+diff -ruN pymol.orig/modules/web/examples/content/pwg.html pymol/modules/web/examples/content/pwg.html
+--- pymol.orig/modules/web/examples/content/pwg.html	2014-01-15 00:02:58.000000000 +0400
++++ pymol/modules/web/examples/content/pwg.html	2014-02-14 10:19:11.275591741 +0400
+@@ -58,13 +58,13 @@
+ 
+ <p>In contrast, the PWG file which launches the Sample 01 application is:</p>
+ <pre>
+-root $PYMOL_PATH/modules/web/examples/sample01/htdocs
++root $PYMOL_PATH/modules/pymolweb/examples/sample01/htdocs
+ browser
+ </pre>
+ 
+ <p>which tells PyMOL to (1) launch its internal web server on a
+ dynamically assigned port with a root content directory of
+-$PYMOL_PATH/modules/web/examples/sample01/htdocs and (2) open
++$PYMOL_PATH/modules/pymolweb/examples/sample01/htdocs and (2) open
+ up a local browser window pointing at that server instance.  The
+ assumption in this scenario is that this newly-opened web page will be
+ responsible for sending requests to the PyMOL server (and thus, will
+diff -ruN pymol.orig/modules/web/examples/content/running.html pymol/modules/web/examples/content/running.html
+--- pymol.orig/modules/web/examples/content/running.html	2014-01-15 00:02:58.000000000 +0400
++++ pymol/modules/web/examples/content/running.html	2014-02-14 10:19:11.278925074 +0400
+@@ -36,7 +36,7 @@
+ 
+ <p>The main index file with sample application links is located at</p>
+ 
+-<pre>./modules/web/examples/index.html</pre>
++<pre>./modules/pymolweb/examples/index.html</pre>
+ 
+ <p>If you are reading this file from within a browser, then you may
+ <a href="../index.html">return to it now</a> in order to try the sample
+@@ -55,7 +55,7 @@
+ 
+ <pre># from within the PyMOL folder
+ 
+-cd ./modules/web/examples
++cd ./modules/pymolweb/examples
+ 
+ # then
+ 
+diff -ruN pymol.orig/modules/web/examples/content/server.html pymol/modules/web/examples/content/server.html
+--- pymol.orig/modules/web/examples/content/server.html	2014-01-15 00:02:58.000000000 +0400
++++ pymol/modules/web/examples/content/server.html	2014-02-14 10:19:11.278925074 +0400
+@@ -18,7 +18,7 @@
+ browser window).</p>
+ 
+ <p>The source code is located at
+-<code>$PYMOL_PATH/modules/web/pymolhttpd.py</code>,
++<code>$PYMOL_PATH/modules/pymolweb/pymolhttpd.py</code>,
+ and this file serves as a python module that can be imported by any
+ python script running inside of PyMOL. </p>
+ 
+@@ -33,7 +33,7 @@
+ <p>Alternatively, pymolhttpd.py can be used as the start-up script
+ when you launch PyMOL.</p>
+ 
+-<pre>pymol $PYMOL_PATH/modules/web/pymolhttpd.py</pre>
++<pre>pymol $PYMOL_PATH/modules/pymolweb/pymolhttpd.py</pre>
+ 
+ <p>This will cause PyMOL to start serving requests on the default port
+ (8080, assuming of course that the port is not already claimed by
+@@ -44,7 +44,7 @@
+ <p>
+ The PyMOL web server module can be imported into and launched using code like this.
+ <pre>
+-from web import pymolhttpd
++from pymolweb import pymolhttpd
+ httpd = pymolhttpd.PymolHttpd("htdocs", 8080)
+ httpd.start()
+ </pre>
+diff -ruN pymol.orig/modules/web/examples/index.html pymol/modules/web/examples/index.html
+--- pymol.orig/modules/web/examples/index.html	2014-01-15 00:02:58.000000000 +0400
++++ pymol/modules/web/examples/index.html	2014-02-14 10:19:11.288925075 +0400
+@@ -156,7 +156,7 @@
+ services interface!</p>
+ 
+ <p>The code for the applications above is located inside a series of folders located at:
+-<pre>$PYMOL_PATH/modules/web/examples/sample*</pre></p>
++<pre>$PYMOL_PATH/modules/pymolweb/examples/sample*</pre></p>
+ 
+ </body>
+ </html>
+diff -ruN pymol.orig/modules/web/examples/sample01/htdocs/api.html pymol/modules/web/examples/sample01/htdocs/api.html
+--- pymol.orig/modules/web/examples/sample01/htdocs/api.html	2014-01-15 00:02:56.000000000 +0400
++++ pymol/modules/web/examples/sample01/htdocs/api.html	2014-02-14 10:19:11.288925075 +0400
+@@ -9,9 +9,9 @@
+ </ul><hr><p>Please click the link(s) below before testing methods in this section (in order).</p><pre><a target="result" href="/apply/pymol.cmd.reinitialize">/apply/pymol.cmd.reinitialize</a></pre>
+ 
+ <ul><li><p><font face="Courier" size="2"><b>load</b></font> 
+-<i>filename, object, state, format, finish, discrete, quiet, multiplex, zoom, partial</i><pre><a target="result" href="/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/web/examples/data/ref.pdb">/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/web/examples/data/ref.pdb</a></pre>
++<i>filename, object, state, format, finish, discrete, quiet, multiplex, zoom, partial</i><pre><a target="result" href="/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/pymolweb/examples/data/ref.pdb">/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/pymolweb/examples/data/ref.pdb</a></pre>
+ 
+-<pre><a target="result" href="/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/web/examples/data/map.ccp4">/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/web/examples/data/map.ccp4</a></pre>
++<pre><a target="result" href="/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/pymolweb/examples/data/map.ccp4">/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/pymolweb/examples/data/map.ccp4</a></pre>
+ 
+ </p></li>
+ <li><p><font face="Courier" size="2"><b>enable</b></font> 
+@@ -38,7 +38,7 @@
+ </p></li>
+ </ul><hr><p>Please click the link(s) below before testing methods in this section (in order).</p><pre><a target="result" href="/apply/pymol.cmd.reinitialize">/apply/pymol.cmd.reinitialize</a></pre>
+ 
+-<pre><a target="result" href="/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/web/examples/data/ref.pdb">/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/web/examples/data/ref.pdb</a></pre>
++<pre><a target="result" href="/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/pymolweb/examples/data/ref.pdb">/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/pymolweb/examples/data/ref.pdb</a></pre>
+ 
+ <ul><li><p><font face="Courier" size="2"><b>color</b></font> 
+ <i>color, selection, quiet, flags</i><pre><a target="result" href="/apply/pymol.cmd.color?color=yellow&selection=elem c">/apply/pymol.cmd.color?color=yellow&selection=elem c</a></pre>
+@@ -118,9 +118,9 @@
+ </p></li>
+ </ul><hr><p>Please click the link(s) below before testing methods in this section (in order).</p><pre><a target="result" href="/apply/pymol.cmd.reinitialize">/apply/pymol.cmd.reinitialize</a></pre>
+ 
+-<pre><a target="result" href="/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/web/examples/data/ref.pdb">/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/web/examples/data/ref.pdb</a></pre>
++<pre><a target="result" href="/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/pymolweb/examples/data/ref.pdb">/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/pymolweb/examples/data/ref.pdb</a></pre>
+ 
+-<pre><a target="result" href="/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/web/examples/data/map.ccp4">/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/web/examples/data/map.ccp4</a></pre>
++<pre><a target="result" href="/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/pymolweb/examples/data/map.ccp4">/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/pymolweb/examples/data/map.ccp4</a></pre>
+ 
+ <ul><li><p><font face="Courier" size="2"><b>isomesh</b></font> 
+ <i>name, map, level, selection, buffer, state, carve, source_state, quiet</i><pre><a target="result" href="/apply/pymol.cmd.isomesh?name=mesh&map=map&level=1.0">/apply/pymol.cmd.isomesh?name=mesh&map=map&level=1.0</a></pre>
+@@ -142,7 +142,7 @@
+ </p></li>
+ </ul><hr><p>Please click the link(s) below before testing methods in this section (in order).</p><pre><a target="result" href="/apply/pymol.cmd.reinitialize">/apply/pymol.cmd.reinitialize</a></pre>
+ 
+-<pre><a target="result" href="/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/web/examples/data/ref.pdb">/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/web/examples/data/ref.pdb</a></pre>
++<pre><a target="result" href="/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/pymolweb/examples/data/ref.pdb">/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/pymolweb/examples/data/ref.pdb</a></pre>
+ 
+ <ul><li><p><font face="Courier" size="2"><b>show</b></font> 
+ <i>representation, selection</i><pre><a target="result" href="/apply/pymol.cmd.show?representation=sticks">/apply/pymol.cmd.show?representation=sticks</a></pre>
+@@ -174,7 +174,7 @@
+ </p></li>
+ </ul><hr><p>Please click the link(s) below before testing methods in this section (in order).</p><pre><a target="result" href="/apply/pymol.cmd.reinitialize">/apply/pymol.cmd.reinitialize</a></pre>
+ 
+-<pre><a target="result" href="/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/web/examples/data/ref.pdb">/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/web/examples/data/ref.pdb</a></pre>
++<pre><a target="result" href="/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/pymolweb/examples/data/ref.pdb">/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/pymolweb/examples/data/ref.pdb</a></pre>
+ 
+ <ul><li><p><font face="Courier" size="2"><b>show_as</b></font> 
+ <i>representation, selection</i><pre><a target="result" href="/apply/pymol.cmd.show_as?representation=spheres">/apply/pymol.cmd.show_as?representation=spheres</a></pre>
+@@ -224,7 +224,7 @@
+ </p></li>
+ </ul><hr><p>Please click the link(s) below before testing methods in this section (in order).</p><pre><a target="result" href="/apply/pymol.cmd.reinitialize">/apply/pymol.cmd.reinitialize</a></pre>
+ 
+-<pre><a target="result" href="/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/web/examples/data/ref.pdb">/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/web/examples/data/ref.pdb</a></pre>
++<pre><a target="result" href="/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/pymolweb/examples/data/ref.pdb">/apply/pymol.cmd.load?filename=$PYMOL_PATH/modules/pymolweb/examples/data/ref.pdb</a></pre>
+ 
+ <ul><li><p><font face="Courier" size="2"><b>super</b></font> 
+ <i>mobile, target, cutoff, cycles, gap, extend, max_gap, object, matrix, mobile_state, target_state, quiet, max_skip, transform, reset, seq, radius, scale, base, coord, expect, window, ante</i><pre><a target="result" href="/apply/pymol.cmd.create?name=helix1&selection=polymer and 5-17/">/apply/pymol.cmd.create?name=helix1&selection=polymer and 5-17/</a></pre>
+diff -ruN pymol.orig/modules/web/examples/sample01/start.pwg pymol/modules/web/examples/sample01/start.pwg
+--- pymol.orig/modules/web/examples/sample01/start.pwg	2014-01-15 00:02:56.000000000 +0400
++++ pymol/modules/web/examples/sample01/start.pwg	2014-02-14 10:19:11.288925075 +0400
+@@ -1,2 +1,2 @@
+-root $PYMOL_PATH/modules/web/examples/sample01/htdocs
++root $PYMOL_PATH/modules/pymolweb/examples/sample01/htdocs
+ browser
+diff -ruN pymol.orig/modules/web/examples/sample02/start.pwg pymol/modules/web/examples/sample02/start.pwg
+--- pymol.orig/modules/web/examples/sample02/start.pwg	2014-01-15 00:02:56.000000000 +0400
++++ pymol/modules/web/examples/sample02/start.pwg	2014-02-14 10:19:11.292258408 +0400
+@@ -1,2 +1,2 @@
+-root $PYMOL_PATH/modules/web/examples/sample02/htdocs
++root $PYMOL_PATH/modules/pymolweb/examples/sample02/htdocs
+ browser
+diff -ruN pymol.orig/modules/web/examples/sample03/start.pwg pymol/modules/web/examples/sample03/start.pwg
+--- pymol.orig/modules/web/examples/sample03/start.pwg	2014-01-15 00:02:56.000000000 +0400
++++ pymol/modules/web/examples/sample03/start.pwg	2014-02-14 10:19:11.292258408 +0400
+@@ -1,2 +1,2 @@
+-root $PYMOL_PATH/modules/web/examples/sample03/htdocs
++root $PYMOL_PATH/modules/pymolweb/examples/sample03/htdocs
+ browser
+diff -ruN pymol.orig/modules/web/examples/sample04/htdocs/pdbshow.js pymol/modules/web/examples/sample04/htdocs/pdbshow.js
+--- pymol.orig/modules/web/examples/sample04/htdocs/pdbshow.js	2014-01-15 00:02:56.000000000 +0400
++++ pymol/modules/web/examples/sample04/htdocs/pdbshow.js	2014-02-14 10:19:11.292258408 +0400
+@@ -12,7 +12,7 @@
+ function get_protein(a) {
+   // load protein, unless already loaded
+   if (load_state[a] == undefined) {
+-    load = "load?filename=$PYMOL_PATH/modules/web/examples/data/" + a + ".pdb.gz" + zoom;
++    load = "load?filename=$PYMOL_PATH/modules/pymolweb/examples/data/" + a + ".pdb.gz" + zoom;
+     cmd(load);
+     zoom = "&zoom=0"; // subsequent loads shold not zoom
+     cmd("orient?selection=bymol organic and elem n&animate=2");
+diff -ruN pymol.orig/modules/web/examples/sample04/start.pwg pymol/modules/web/examples/sample04/start.pwg
+--- pymol.orig/modules/web/examples/sample04/start.pwg	2014-01-15 00:02:56.000000000 +0400
++++ pymol/modules/web/examples/sample04/start.pwg	2014-02-14 10:19:11.292258408 +0400
+@@ -1,2 +1,2 @@
+-root $PYMOL_PATH/modules/web/examples/sample04/htdocs
++root $PYMOL_PATH/modules/pymolweb/examples/sample04/htdocs
+ browser
+diff -ruN pymol.orig/modules/web/examples/sample05/htdocs/index.html pymol/modules/web/examples/sample05/htdocs/index.html
+--- pymol.orig/modules/web/examples/sample05/htdocs/index.html	2014-01-15 00:02:57.000000000 +0400
++++ pymol/modules/web/examples/sample05/htdocs/index.html	2014-02-14 10:19:11.292258408 +0400
+@@ -108,7 +108,7 @@
+ 
+ function loadPDB(code)
+ {
+-   return cmd('load?filename=$PYMOL_PATH/modules/web/examples/data/'+code+'.pdb');
++   return cmd('load?filename=$PYMOL_PATH/modules/pymolweb/examples/data/'+code+'.pdb');
+ }
+ 
+ </script>
+diff -ruN pymol.orig/modules/web/examples/sample05/start.pwg pymol/modules/web/examples/sample05/start.pwg
+--- pymol.orig/modules/web/examples/sample05/start.pwg	2014-01-15 00:02:57.000000000 +0400
++++ pymol/modules/web/examples/sample05/start.pwg	2014-02-14 10:19:11.292258408 +0400
+@@ -1,2 +1,2 @@
+-root $PYMOL_PATH/modules/web/examples/sample05/htdocs
++root $PYMOL_PATH/modules/pymolweb/examples/sample05/htdocs
+ browser
+diff -ruN pymol.orig/modules/web/examples/sample06/start.pwg pymol/modules/web/examples/sample06/start.pwg
+--- pymol.orig/modules/web/examples/sample06/start.pwg	2014-01-15 00:02:57.000000000 +0400
++++ pymol/modules/web/examples/sample06/start.pwg	2014-02-14 10:19:11.292258408 +0400
+@@ -1,3 +1,3 @@
+-root $PYMOL_PATH/modules/web/examples/sample06/htdocs
++root $PYMOL_PATH/modules/pymolweb/examples/sample06/htdocs
+ browser
+ logging 0
+diff -ruN pymol.orig/modules/web/examples/sample07/start.pwg pymol/modules/web/examples/sample07/start.pwg
+--- pymol.orig/modules/web/examples/sample07/start.pwg	2014-01-15 00:02:57.000000000 +0400
++++ pymol/modules/web/examples/sample07/start.pwg	2014-02-14 10:19:11.295591741 +0400
+@@ -1,2 +1,2 @@
+-root $PYMOL_PATH/modules/web/examples/sample07/htdocs
++root $PYMOL_PATH/modules/pymolweb/examples/sample07/htdocs
+ browser
+diff -ruN pymol.orig/modules/web/examples/sample08/start.pwg pymol/modules/web/examples/sample08/start.pwg
+--- pymol.orig/modules/web/examples/sample08/start.pwg	2014-01-15 00:02:57.000000000 +0400
++++ pymol/modules/web/examples/sample08/start.pwg	2014-02-14 10:19:11.295591741 +0400
+@@ -1,3 +1,3 @@
+-root $PYMOL_PATH/modules/web/examples/sample08/htdocs
++root $PYMOL_PATH/modules/pymolweb/examples/sample08/htdocs
+ browser
+ logging 0
