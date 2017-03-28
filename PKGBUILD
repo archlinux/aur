@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=20170108.c4ad2732f9
+pkgver=20170327.07ee7fb2c3
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('i686' 'x86_64' )
@@ -37,8 +37,6 @@ depends=('desktop-file-utils'
          'libvdpau'
          'fribidi'
          'netcdf'
-#          'vapoursynth'
-#          'nvidia-utils'
          )
 license=('GPL2' 'GPL3')
 url='http://mpv.io'
@@ -48,7 +46,6 @@ makedepends=('git'
              'ladspa'
              'fontconfig'
              'fribidi'
-#             'cuda'
              )
 optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
             'zsh-completions: Additional completion definitions for Zsh users'
@@ -67,6 +64,16 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
           )
+
+_enable_cuda=0
+if [ -d /opt/cuda ]; then
+  makedepends+=('cuda')
+  _enable_cuda=1
+fi
+
+if [ -f /usr/lib/libvapoursynth.so ]; then
+  depends+=('vapoursynth')
+fi
 
 pkgver() {
   cd mpv
@@ -89,9 +96,6 @@ prepare() {
     '--enable-libgme'
     '--enable-netcdf'
     '--enable-libsoxr'
-#     '--enable-cuda'
-#     '--enable-cuvid'
-#     '--extra-cflags="-I/opt/cuda/include"'
     )
   _mpv_options=(
     '--prefix=/usr'
@@ -99,6 +103,9 @@ prepare() {
     '--htmldir=/usr/share/doc/mpv/html'
     '--disable-test'
     '--disable-build-date'
+    '--enable-cdda'
+    '--enable-dvdnav'
+    '--enable-dvdread'
     '--enable-libmpv-shared'
     '--enable-openal'
     '--enable-sdl2'
@@ -108,11 +115,21 @@ prepare() {
     '--enable-libavdevice'
     '--disable-vapoursynth-lazy'
     '--enable-html-build'
-#     '--enable-cuda-hwaccel'
     )
 
-  echo ${_ffmpeg_options[@]} > ffmpeg_options
-  echo ${_mpv_options[@]} > mpv_options
+if [ ${_enable_cuda} = "1" ]; then
+    _ffmpeg_cuda=(
+      '--enable-cuda'
+      '--enable-cuvid'
+      '--extra-cflags="-I/opt/cuda/include"'
+    )
+    _mpv_cuda=(
+      '--enable-cuda-hwaccel'
+    )
+fi
+
+  echo ${_ffmpeg_options[@]} ${_ffmpeg_cuda[@]} > ffmpeg_options
+  echo ${_mpv_options[@]} ${_mpv_cuda[@]} > mpv_options
 
   cd mpv
   ./bootstrap.py
