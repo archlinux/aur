@@ -3,7 +3,7 @@ users=$(loginctl --no-legend list-users | awk '{ print $2 }' | sed ':a;N;$!ba;s/
 post_install() {
   cat << EOF
 
-You might want rtags running as systemd service:
+You might want to run rtags as a systemd service:
 
   systemctl --user enable rdm.socket
   systemctl --user start rdm.socket
