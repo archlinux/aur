@@ -5,7 +5,7 @@
 # Contributor: Tomasz Żok <tomasz dot zok at gmail dot com>
 
 _pkgbase=pymol
-pkgname=pymol2-mgtools2
+pkgname=pymol2-mgltools2
 pkgver=1.8.4.0
 pkgrel=1
 pkgdesc="Molecular visualization system on an Open Source foundation"
