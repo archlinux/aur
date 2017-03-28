@@ -1,3 +1,9 @@
+2017-03-28 Janne Heß
+	* 4.8.0-5
+	Split out SeaBIOS and OVMF
+	Disable Werror
+	Apply XSA patch: 211
+
 2017-03-09 Janne Heß
 	* 4.8.0-4
 	Merge with xen-docs

@@ -39,6 +39,16 @@ Feature list
 http://wiki.xen.org/wiki/Xen_Project_4.8_Feature_List
 __EOF__
 
+	vercmp 4.8.0-4 $1
+	if [ "${?}" -lt 0 ]; then
+		cat << __EOF__
+!!!!!
+This Xen version has split out SeaBIOS and OVMF.
+If you need to use VMs with BIOS or UEFI, install seabios or ovmf respectively.
+!!!!!
+__EOF__
+	fi
+
 }
 
 post_install() {
@@ -48,7 +58,7 @@ post_install() {
 }
 
 post_upgrade() {
-	upgrade_msg
+	upgrade_msg $@
 	systemd-tmpfiles --create
 }
 

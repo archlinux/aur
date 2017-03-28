@@ -49,7 +49,7 @@ fi
 pkgbase=xen
 pkgname=(xen xen-docs)
 pkgver="${_xen_version}"
-pkgrel=4
+pkgrel=5
 pkgdesc='Virtual Machine Hypervisor & Tools'
 url='http://www.xenproject.org/'
 license=('GPL2')
@@ -92,7 +92,6 @@ makedepends=(
 	spice
 	usbredir
 	yajl
-	# TODO why not use system's seabios, ovmf, qemu
 )
 
 # Sources
@@ -120,6 +119,8 @@ source=(
 	'https://xenbits.xen.org/xsa/xsa209-qemuu/0001-display-cirrus-ignore-source-pitch-value-as-needed-i.patch'
 	'https://xenbits.xen.org/xsa/xsa209-qemuu/0002-cirrus-add-blit_is_unsafe-call-to-cirrus_bitblt_cput.patch'
 	'https://xenbits.xen.org/xsa/xsa210.patch'
+	'https://xenbits.xen.org/xsa/xsa211-qemut.patch'
+	'https://xenbits.xen.org/xsa/xsa211-qemuu-4.8.patch'
 
 	# Files
 	'grub-mkconfig-helper'
@@ -163,6 +164,8 @@ sha256sums=(
 	'e698b73d8de24af0fe33968a43561e5e1d094f4caf2443caa447b552677d2683'
 	'50c60e45151ef2265cce4f92b204e9fd75f8bc8952f097e77ab4fe1c1446bc98'
 	'10e26c017c916dcac261c6a3c92656831f0ad037f792940e6faf6905c6e23861'
+	'9d0cf413dcc9654ee95f6b04fa9c5714f36775cbc9ab0390a3041ec4a68845ab'
+	'bea7cf4065bd9d0085f4dfc3395e59c3ca9d4de9d786a3018c8dc7fd9f3d8b6e'
 	# PKGBUILD files
 	'06c9f6140f7ef4ccfc4b1a7d9732a673313e269733180f53afcd9e43bf6c26bb'
 	'ceaff798a92a7aef1465a0a0b27b1817aedd2c857332b456aaa6dd78dc72438f'
@@ -223,12 +226,14 @@ prepare() {
 	pushd 'tools/qemu-xen-traditional'
 	patch -Np1 -i "${srcdir}/xsa208-qemut.patch"
 	patch -Np1 -i "${srcdir}/xsa209-qemut.patch"
+	patch -Np1 -i "${srcdir}/xsa211-qemut.patch"
 	popd
 	# qemu-xen upstream
 	pushd 'tools/qemu-xen'
 	patch -Np1 -i "${srcdir}/xsa208-qemuu.patch"
 	patch -Np1 -i "${srcdir}/0001-display-cirrus-ignore-source-pitch-value-as-needed-i.patch"
 	patch -Np1 -i "${srcdir}/0002-cirrus-add-blit_is_unsafe-call-to-cirrus_bitblt_cput.patch"
+	patch -Np1 -i "${srcdir}/xsa211-qemuu-4.8.patch"
 	popd
 
 	# Patch EFI binary build with mingw
@@ -285,12 +290,13 @@ build() {
 		--with-initddir=/etc/init.d \
 		--enable-systemd \
 		--enable-ovmf \
+		--with-system-ovmf \
+		--with-system-seabios \
 		"${_config_stubdom:---disable-stubdom}" \
-		--with-extra-qemuu-configure-args="--disable-bluez --disable-gtk --enable-spice --enable-usb-redir" \
-		#--with-system-qemu --with-system-seabios --with-system-ovmf \
+		--with-extra-qemuu-configure-args="--disable-bluez --disable-gtk --enable-spice --enable-usb-redir --disable-werror"
 
 	msg2 'Building Xen...'
-	make LANG=C PYTHON=python2 dist
+	make LANG=C PYTHON=python2 APPEND_CFLAGS=-Wno-error dist
 }
 
 package_xen() {
@@ -317,6 +323,8 @@ package_xen() {
 	optdepends=(
 		'xen-docs: Official Xen Documentation'
 		'openvswitch: Optional Networking support'
+		'seabios: Boot VMs with BIOS'
+		'ovmf: Boot VMs with UEFI'
 	)
 	backup=(
 		etc/conf.d/xen{commons,domains}
