@@ -8,11 +8,11 @@ pkgdesc="Visualization and analysis of molecular structures; includes AutoDockTo
 arch=('x86_64')
 url="http://mgltools.scripps.edu/"
 license=('custom')
-depends=('swig' 'tk' 'python2-numpy' 'python2-imaging' 'python2-pmw' 'glut' 'python2-zsi' 
-        'python2-simpy' 'libxmu' 'python2-backports.ssl' 'python2-colorama' 'python2-dateutil'
-        'ipython2' 'python2-apache-libcloud' 'python2-matplotlib' 'python2-pygments'
-        'python2-pyside' 'python2-pytz' 'python2-pyzmq')
-optdepends=('autodocksuite')
+#depends=('swig' 'tk' 'python2-numpy' 'python2-imaging' 'python2-pmw' 'glut' 'python2-zsi' 
+#        'python2-simpy' 'libxmu' 'python2-backports.ssl' 'python2-colorama' 'python2-dateutil'
+#        'ipython2' 'python2-apache-libcloud' 'python2-matplotlib' 'python2-pygments'
+#        'python2-pyside' 'python2-pytz' 'python2-pyzmq')
+#optdepends=('autodocksuite')
 source=("http://mgltools.scripps.edu/downloads/tars/releases/nightly/${pkgver}/REL\
 /${pkgname}_x86_64Linux2_${pkgver}.tar.gz")
 
