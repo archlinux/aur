@@ -1,6 +1,6 @@
 pkgbase = wm-switcher-git
 	pkgdesc = Simple GUI to switch window managers in Linux with minimal dependencies, git version
-	pkgver = r3.9c8525e
+	pkgver = r8.0d0d053
 	pkgrel = 1
 	url = https://github.com/xircon/wm-switcher
 	arch = i686

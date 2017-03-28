@@ -2,7 +2,7 @@
 
 pkgname='wm-switcher-git'
 pkgdesc='Simple GUI to switch window managers in Linux with minimal dependencies, git version'
-pkgver=r3.9c8525e
+pkgver=r8.0d0d053
 pkgrel=1
 
 depends=('python-pyqt4')
@@ -24,8 +24,10 @@ license=('GPL3')
 
 package() {
 	install -d -m755 "$pkgdir/usr/bin"
+	install -d -m755 "$pkgdir/usr/share/applications"
 	install -d -m755 "$pkgdir/usr/share/doc/wm-switcher"
 	install -m 755 "$srcdir/wm-switcher/wm.py" "$pkgdir/usr/bin/wm-switcher"
+	cp -dr "$srcdir/wm-switcher/wm-switcher.desktop" "$pkgdir/usr/share/applications/"
 	cp -dr "$srcdir/wm-switcher/LICENSE" "$pkgdir/usr/share/doc/wm-switcher/"
 	cp -dr "$srcdir/wm-switcher/README.md" "$pkgdir/usr/share/doc/wm-switcher/"
 }
