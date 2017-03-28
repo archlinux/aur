@@ -1,7 +1,7 @@
 pkgbase = haskell-ghc-exactprint
 	pkgdesc = GHC version of haskell-src-exts exactPrint
 	pkgver = 0.5.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hackage.haskell.org/package/ghc-exactprint
 	arch = i686
 	arch = x86_64

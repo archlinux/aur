@@ -3,7 +3,7 @@
 _hkgname=ghc-exactprint
 pkgname=haskell-ghc-exactprint
 pkgver=0.5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GHC version of haskell-src-exts exactPrint"
 arch=('i686' 'x86_64')
 url="https://hackage.haskell.org/package/${_hkgname}"
