@@ -7,7 +7,6 @@ pkgbase = pinocchio
 	arch = x86_64
 	license = LGPL3 or any later version
 	makedepends = cmake
-	makedepends = pkg-config
 	depends = hpp-fcl
 	depends = eigenpy
 	depends = urdfdom
