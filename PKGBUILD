@@ -3,14 +3,14 @@
 _pkgname=eigen
 pkgname=${_pkgname}32
 pkgver=3.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra. 3.2 branch."
 arch=('any')
 url='http://eigen.tuxfamily.org'
 license=('GPL3' 'LGPL2.1' 'BSD' 'custom:MPL2' 'custom:MINPACK')
 makedepends=('cmake' 'pkg-config' 'freeglut' 'gcc-fortran' 'fftw' 'qt4' 'suitesparse' 'boost')
 optdepends=('qt4: for example programs')
-replaces=('eigen3' 'eigen')
+conflicts=('eigen3' 'eigen')
 provides=('eigen3' 'eigen')
 source=("${pkgname}-${pkgver}.tar.bz2::http://bitbucket.org/eigen/eigen/get/${pkgver}.tar.bz2")
 sha1sums=('a85bb68c82988648c3d53ba9768d7dcbcfe105f8')
