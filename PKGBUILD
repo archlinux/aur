@@ -1,5 +1,5 @@
 # Maintainer: Max <silverhammermba@gmail.com>
-pkgname=launch
+pkgname=launch-cmd
 pkgver=1
 pkgrel=1
 pkgdesc="Launch an independent process from a shell"
