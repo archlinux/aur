@@ -39,8 +39,7 @@ Feature list
 http://wiki.xen.org/wiki/Xen_Project_4.8_Feature_List
 __EOF__
 
-	vercmp 4.8.0-4 $1
-	if [ "${?}" -lt 0 ]; then
+	if [ "$(vercmp 4.8.0-4 "$1")" -lt 0 ]; then
 		cat << __EOF__
 !!!!!
 This Xen version has split out SeaBIOS and OVMF.
