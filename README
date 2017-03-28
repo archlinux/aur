@@ -1,0 +1,23 @@
+This package installs Private Internet Access's OpenVPN configuration files.
+Additionally it allows the storage of your username and optionally your password
+for automatic login.
+
+All OpenVPN configuration files are located in /etc/openvpn/client.
+
+
+## SETUP
+
+To begin, you must put your username as the first line of
+/etc/openvpn-pia.conf. You should make the file only accessible to root
+as well.
+
+Optionally, put your password as the second line of /etc/openvpn-pia.conf
+to enable auto login.
+
+NOTE: PIA does not support IPv6. Disable it:
+https://wiki.archlinux.org/index.php/IPv6#Disable_IPv6
+
+
+## RUNNING
+
+To run, see https://wiki.archlinux.org/index.php/OpenVPN#Starting_OpenVPN
