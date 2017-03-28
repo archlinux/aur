@@ -2,8 +2,8 @@
 # Contributor: carstene1ns <url/mail: arch carsten-teibes de>
 
 pkgname=trackma-git
-pkgver=0.7.2.r0.g3387a7a
-pkgrel=2
+pkgver=0.7.3.r0.g9b46388
+pkgrel=1
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 arch=('any')
 url="http://z411.github.io/trackma/"
