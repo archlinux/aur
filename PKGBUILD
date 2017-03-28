@@ -1,24 +1,18 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=teeuniverse
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Enhanced map editor for DDNet, Teeworlds, and similar games"
 arch=('i686' 'x86_64')
 url="https://teeuniverse.net/"
 license=('AGPL' 'CC-BY-SA' 'custom')
 depends=('harfbuzz-icu' 'sdl2' 'glu' 'desktop-file-utils')
-makedepends=('cmake' 'gendesk')
+makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/teeuniverse/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('8976b82c6c605623ed84bea4021ce107')
-
-prepare() {
-  gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
-    --exec 'teeuniverse_editor' --name 'teeuniverse'      \
-    --categories 'Game;ArcadeGame;'
-}
+md5sums=('b4f94041e057ba9469746547fe9722cc')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   
   if [[ -d build ]]; then
     rm -rf build
@@ -33,12 +27,8 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver/build"
+  cd $pkgname-$pkgver/build
   make DESTDIR="$pkgdir/" install
-  
-  install -Dm644 "$srcdir/$pkgname.desktop"   \
-                     "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 ../icon.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
   
     # keep all licenses in /usr/share/licenses
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
