@@ -1,6 +1,6 @@
 pkgbase = wm-switcher
 	pkgdesc = Simple GUI to switch window managers in Linux with minimal dependencies
-	pkgver = 1.01
+	pkgver = 1.03
 	pkgrel = 1
 	url = https://github.com/xircon/wm-switcher
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = wm-switcher
 	optdepends = compiz: Switch to the Compiz window manager
 	optdepends = openbox: Switch to the Openbox window manager
 	optdepends = compton: Use the Compton compositor
-	source = https://github.com/xircon/wm-switcher/archive/v1.01.tar.gz
-	md5sums = 73e73c5b03c451f0ea2564737fb0c2ab
+	source = https://github.com/xircon/wm-switcher/archive/v1.03.tar.gz
+	md5sums = 66875f943156ca70bfffd2b87c11ff05
 
 pkgname = wm-switcher
 
