@@ -2,7 +2,7 @@
 
 pkgname=indicator-sensors-git
 pkgver=0.8.r28.gd267b5c
-pkgrel=1
+pkgrel=2
 pkgdesc="Small application to provide hardware sensor readings using the AppIndicator framework (git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/alexmurray/indicator-sensors"
@@ -13,11 +13,12 @@ depends=('dconf' 'libappindicator-gtk3' 'libatasmart' 'libnotify' 'libpeas' 'lm_
 optdepends=('libxnvctrl: NVIDIA GPU support')
 makedepends=('gnome-common' 'intltool')
 install=indicator-sensors.install
-source=(git+https://github.com/alexmurray/indicator-sensors
-        menu-cleanup.patch
-        is-udisks2.rules)
+source=("git+https://github.com/alexmurray/indicator-sensors"
+        {menu-cleanup,reduce-logging}.patch
+        'is-udisks2.rules')
 md5sums=('SKIP'
          '7f41886142704131faba29ce87ae07ed'
+         '4a1c2fc97d24d4246c7f7e04761a9362'
          '73468b5a1034ed57cb94c48ba26d2300')
 
 pkgver() {
@@ -30,6 +31,7 @@ prepare() {
 
   #Cleanup indicator menu (remove "about" and "quit")
   patch -Np2 < ../menu-cleanup.patch
+  patch -Np2 < ../reduce-logging.patch
 }
 
 build() {
@@ -42,7 +44,7 @@ build() {
 package() {
   cd indicator-sensors
   make DESTDIR="$pkgdir" install
-  mkdir -p "$pkgdir"/etc/polkit-1/rules.d/
+  mkdir -p -m 750 "$pkgdir"/etc/polkit-1/rules.d/
   install -m 644 ../is-udisks2.rules "$pkgdir"/etc/polkit-1/rules.d/
 }
 
