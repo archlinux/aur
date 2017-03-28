@@ -8,7 +8,7 @@
 
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.24.0.r112.g923f9322a1
+pkgver=0.24.0.r171.g07ee7fb2c3
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
@@ -39,7 +39,7 @@ optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
 
 makedepends=('mesa' 'python-docutils' 'ladspa' 'x264' 'x265' 'openal' 'jack'
              'samba' 'acpitool' 'inxi' 'git' 'vapoursynth' 'libvdpau' 'libva'
-              'livestreamer' 'youtube-dl')
+              'streamlink' 'youtube-dl')
 # check kind of graphic card
 if [ "$CARCH" = "x86_64" ] ; then
 makedepends+=('cuda')
