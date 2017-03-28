@@ -48,7 +48,7 @@ options=(
     !strip
 )
 source=(
-    https://github.com/sardemff7/${_gitname}
+    git+https://github.com/sardemff7/${_gitname}
 )
 sha256sums=(
     SKIP
