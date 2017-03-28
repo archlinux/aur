@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 depends=('boost-libs' 'tinyxml')
 url="https://github.com/humanoid-path-planner/hpp-util"
 license=('GPL3')
-makedepends=('cmake' 'pkg-config')
+makedepends=('cmake')
 source=("$_pkgname"::"git://github.com/humanoid-path-planner/$_pkgname.git")
 md5sums=('SKIP')
 
