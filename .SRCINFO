@@ -23,7 +23,6 @@ pkgbase = omnetpp-qt
 	depends = blt
 	depends = jdk8-openjdk
 	depends = openmpi
-	depends = openscenegraph
 	depends = libpcap
 	depends = doxygen
 	depends = graphviz
@@ -36,10 +35,10 @@ pkgbase = omnetpp-qt
 	source = omnetpp.sh
 	source = download.sh
 	source = omnetpp-5.0-src.tgz::https://omnetpp.org/omnetpp/send/30-omnet-releases/2305-omnetpp-50-linux
-	sha256sums = fe0660d45f8320378a9d3d1f0ed421e952d9fd5be8a6df6d72845a654d94b5d4
-	sha256sums = 2e921bc540c09c9cf16a49a632fe399808ba798576967be4b078055a365f087e
-	sha256sums = af925e9a553e799123992050fb8d4c2c28ab4eb42f436a5e25d904b230a5eaf2
-	sha256sums = 55dc13b719666c22f20bcd8d166a4c9aad38f29d3c02548df7771f6ea870a928
+	sha512sums = 87dfd78b441c4384f40aa160786ea847b3a7dbef569258311dc03821273f08dc22962747ef7022a1d2f65f422b34d4a909c9eae7deb4dc6839b12b1dbad56e88
+	sha512sums = facb711a01c41665c7909f82b4cee65ddee232e0c526f754ce1ab148dbc6c65abb9b24255f985be245fb2c33f91623365eac730ef83cb1a7c595a09726856fa1
+	sha512sums = 7e543c381f358fa840726cda4c8feb8773d90e923ce5cdf20a25dcb287cf0ebdfc20fef5cfc43475a859057bff81eecaffe1a12a1e92029b346365e4d62abfc9
+	sha512sums = 85315492c3863b05be030944c8ae8ba4a20997a8f3673bbeaf5456dd92075ca88eb2babd5f4ab6d012866de9905e0368c929b03cfdccf6d76705b66defb7698c
 
 pkgname = omnetpp-qt
 

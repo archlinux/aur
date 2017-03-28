@@ -7,15 +7,14 @@ _pkgname='omnetpp'
 pkgdesc='OMNeT++ Discrete Event Simulator. OMNeT++ is an extensible, modular, component-based C++ simulation library and framework, primarily for building network simulators: QT version'
 url='http://www.omnetpp.org'
 license=('custom')
-depends=(libxml2 qt4 tcl tk blt jdk8-openjdk openmpi openscenegraph libpcap doxygen graphviz osgearth-qt4 openscenegraph-qt4 clang)
+depends=(libxml2 qt4 tcl tk blt jdk8-openjdk openmpi libpcap doxygen graphviz osgearth-qt4 openscenegraph-qt4 clang)
 makedepends=(sh wget qt4 cmake gcc bison flex perl osgearth-qt4 openscenegraph-qt4)
 arch=('i686' 'x86_64')
 provides=('omnetpp')
 conflicts=('omnetpp')
 
-if [ $(echo "55dc13b719666c22f20bcd8d166a4c9aad38f29d3c02548df7771f6ea870a928  omnetpp-5.0-src.tgz" | sha256sum -c --status; echo $?) -ne 0 ];
+if [ $(echo "85315492c3863b05be030944c8ae8ba4a20997a8f3673bbeaf5456dd92075ca88eb2babd5f4ab6d012866de9905e0368c929b03cfdccf6d76705b66defb7698c  omnetpp-5.0-src.tgz" | sha512sum -c --status; echo $?) -ne 0 ];
 then
-	echo "Downloading file omnetpp-5.0-src.tgz with wget"
 	sh download.sh
 fi
 
@@ -24,16 +23,18 @@ source=(OMNeT++.desktop
 	download.sh
 	omnetpp-5.0-src.tgz::https://omnetpp.org/omnetpp/send/30-omnet-releases/2305-omnetpp-50-linux)
 
-sha256sums=('fe0660d45f8320378a9d3d1f0ed421e952d9fd5be8a6df6d72845a654d94b5d4'
-	'2e921bc540c09c9cf16a49a632fe399808ba798576967be4b078055a365f087e'
-	'af925e9a553e799123992050fb8d4c2c28ab4eb42f436a5e25d904b230a5eaf2'
-	'55dc13b719666c22f20bcd8d166a4c9aad38f29d3c02548df7771f6ea870a928')
+sha512sums=('87dfd78b441c4384f40aa160786ea847b3a7dbef569258311dc03821273f08dc22962747ef7022a1d2f65f422b34d4a909c9eae7deb4dc6839b12b1dbad56e88'
+	'facb711a01c41665c7909f82b4cee65ddee232e0c526f754ce1ab148dbc6c65abb9b24255f985be245fb2c33f91623365eac730ef83cb1a7c595a09726856fa1'
+	'7e543c381f358fa840726cda4c8feb8773d90e923ce5cdf20a25dcb287cf0ebdfc20fef5cfc43475a859057bff81eecaffe1a12a1e92029b346365e4d62abfc9'
+	'85315492c3863b05be030944c8ae8ba4a20997a8f3673bbeaf5456dd92075ca88eb2babd5f4ab6d012866de9905e0368c929b03cfdccf6d76705b66defb7698c')
+
 build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
 	PATH=${srcdir}/${_pkgname}-${pkgver}/bin:$PATH
 	LD_LIBRARY_PATH=${srcdir}/${_pkgname}-${pkgver}/lib:$LD_LIBRARY_PATH
 	./configure --prefix=/opt --libdir=/opt/lib --libexecdir=/opt/lib && make
 }
+
 package() {
 	# Install build to /opt
 	cd ${srcdir}
