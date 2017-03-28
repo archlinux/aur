@@ -1,0 +1,21 @@
+pkgbase = soundclip-git
+	pkgdesc = Theatre Sound Cue Management
+	pkgver = 0.1.3841f84
+	pkgrel = 1
+	url = https://github.com/soundclip/soundclip
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = maven>=3
+	makedepends = java-environment-jdk>=8
+	depends = java-runtime>=8
+	depends = gstreamer
+	source = soundclip::git+https://github.com/soundclip/soundclip.git
+	source = soundclip-launcher
+	source = soundclip.desktop
+	sha256sums = SKIP
+	sha256sums = 26e71d5998b5341a670d9eea0be21c14a90546a9052e3a606d52bcafbe210dfe
+	sha256sums = ed8a89f67ee4b0c0fe831da35d2fd0d3731f951c723068949705aed6d9ffdba3
+
+pkgname = soundclip-git
+

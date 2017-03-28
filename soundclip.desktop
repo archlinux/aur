@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=SoundClip
+Comment=Theatre Sound Cue Management
+Exec=soundclip
+Icon=soundclip
+StartupNotify=true
+StartupWMClass=soundclip.Soundclip
+Terminal=false
+Categories=Media;Java;
