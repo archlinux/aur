@@ -1,6 +1,6 @@
 all:
 	makepkg --printsrcinfo > .SRCINFO
-	makepkg -f
+	makepkg -fs
 
 clean:
 	rm -rf guayadeque/ pkg/ src/
