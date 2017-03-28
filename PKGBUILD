@@ -11,8 +11,8 @@
 # Maintainer: Thermi <noel [at] familie-kuntze dot de>
 
 pkgname=strongswan
-pkgver=5.5.1
-pkgrel=5
+pkgver=5.5.2
+pkgrel=1
 pkgdesc="open source IPsec implementation"
 url='http://www.strongswan.org'
 license=("GPL")
@@ -35,23 +35,19 @@ eap-sim.conf,eap-simaka-pseudonym.conf,eap-simaka-reauth.conf,eap-tls.conf,ext-a
 fips-prf.conf,forecast.conf,gmp.conf,ha.conf,hmac.conf,kernel-netlink.conf,md5.conf,mgf1.conf,nonce.conf,newhope.conf,ntru.conf,openssl.conf,\
 pem.conf,pgp.conf,pkcs1.conf,pkcs12.conf,pkcs7.conf,pkcs8.conf,pubkey.conf,random.conf,rc2.conf,resolve.conf,\
 revocation.conf,sha1.conf,sha2.conf,sha3.conf,socket-default.conf,sql.conf,sqlite.conf,sshkey.conf,stroke.conf,updown.conf,\
-vici.conf,x509.conf,xauth-eap.conf,xauth-generic.conf,xcbc.conf,unity.conf}
+vici.conf,x509.conf,xauth-eap.conf,xauth-generic.conf,xcbc.conf,unity.conf,curve25519.conf}
 )
 
 source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2"
     "https://download.strongswan.org/strongswan-${pkgver}.tar.bz2.sig"
     "configure_ac.patch"
-    "2222-charon-systemd-sighup.patch"
-    "2238-eap-dynamic-auth.patch"
     )
 
 validpgpkeys=("948F158A4E76A27BF3D07532DF42C170B34DBA77")
 
-sha256sums=('720b301991f77bdedd8d551a956f52e2d11686a0ec18e832094f86cf2b842ab7'
+sha256sums=('da976fca836f05fc7b7a38baab299745f960cb7640319969d239d8aa4ace9f6a'
             'SKIP'
-            '003750d77fa501075f1fdb6f55926dc544407c5dd26e2fd8d5eb4917ddf0b3f7'
-            'SKIP'
-            'SKIP')
+            '003750d77fa501075f1fdb6f55926dc544407c5dd26e2fd8d5eb4917ddf0b3f7')
             
 # We don't build libipsec because it would get loaded before kernel-netlink and netkey, which
 # would case processing to be handled in user space. Also, the plugin is experimental. If you need it,
@@ -60,8 +56,6 @@ prepare()
 {
     cd "${srcdir}/${pkgname}-${pkgver}"
     patch -p1 -l < "${srcdir}/configure_ac.patch"
-    patch -p1 -l < "${srcdir}/2222-charon-systemd-sighup.patch"
-    patch -p1 -l < "${srcdir}/2238-eap-dynamic-auth.patch"
     autoreconf
 }
 
@@ -87,7 +81,7 @@ build() {
         --enable-aesni --enable-eap-ttls --enable-radattr --enable-xauth-pam --enable-xauth-noauth \
         --enable-eap-dynamic --enable-eap-peap --enable-eap-tls --enable-chapoly --enable-unity \
         --with-capabilities=libcap --enable-newhope --enable-ntru --enable-mgf1 --enable-sha3 \
-        --enable-bliss
+        --enable-bliss --enable-dnscert
 # if you want networkmanager support, add --enable-nm
 #       --enable-ruby-gems --enable-python-eggs
   make
