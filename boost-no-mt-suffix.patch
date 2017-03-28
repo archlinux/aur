@@ -1,11 +1,11 @@
 --- a/configure.ac
 +++ b/configure.ac
-@@ -782,7 +782,7 @@
- AC_CHECK_HEADER([libsnark/gadgetlib1/gadget.hpp],,AC_MSG_ERROR(libsnark headers missing))
- AC_CHECK_LIB([snark],[main],LIBSNARK_LIBS=-lsnark, [AC_MSG_ERROR(libsnark missing)], [-lgmpxx])
+@@ -776,7 +776,7 @@
+   RUST_LIBS="-lrustzcash"
+ fi
  
--LIBZCASH_LIBS="-lsnark -lgmp -lgmpxx -lboost_system-mt -lcrypto -lsodium -fopenmp"
-+LIBZCASH_LIBS="-lsnark -lgmp -lgmpxx -lboost_system -lcrypto -lsodium -fopenmp"
+-LIBZCASH_LIBS="-lsnark -lgmp -lgmpxx -lboost_system-mt -lcrypto -lsodium -fopenmp $RUST_LIBS"
++LIBZCASH_LIBS="-lsnark -lgmp -lgmpxx -lboost_system -lcrypto -lsodium -fopenmp $RUST_LIBS"
  
  CXXFLAGS_TEMP="$CXXFLAGS"
  LIBS_TEMP="$LIBS"
