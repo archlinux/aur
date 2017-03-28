@@ -25,8 +25,9 @@ sha256sums=('SKIP'
             '31f3fc3b7d3424b53e779227e390dacf1a3ccfe4f1fc8eadc73e77c9a5583276'
             '974d1ae335b4b70e122c24fc82c86147d3b645c8322497486b01a82bb68e866f')
 
-_kernmajor="$(pacman -Q linux | sed -r 's/linux ([0-9]*.[0-9]*).*/\1/')"
-_kernver="$(</usr/lib/modules/extramodules-"$_kernmajor"-ARCH/version)"
+_kernmajor="$(uname -r | cut -d'.' -f-2)"
+_distro="$(uname -r | sed -e 's/[^A-Z]*//')"
+_kernver="$(</usr/lib/modules/extramodules-"$_kernmajor"-"$_distro"/version)"
 
 pkgver() {
   cd "$srcdir"/"$_pkgname"
@@ -42,8 +43,8 @@ package_hid-apple-patched-git() {
 
   do_package_general_files
 
-  install -Dm644 "$_pkgname"/hid-apple.ko "$pkgdir"/usr/lib/modules/extramodules-"$_kernmajor"-ARCH/hid-apple.ko
-  gzip "$pkgdir"/usr/lib/modules/extramodules-"$_kernmajor"-ARCH/hid-apple.ko
+  install -Dm644 "$_pkgname"/hid-apple.ko "$pkgdir"/usr/lib/modules/extramodules-"$_kernmajor"-"$_distro"/hid-apple.ko
+  gzip "$pkgdir"/usr/lib/modules/extramodules-"$_kernmajor"-"$_distro"/hid-apple.ko
 }
 
 package_hid-apple-patched-git-dkms() {
