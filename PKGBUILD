@@ -22,14 +22,14 @@ md5sums=('db291ec19231c4b6d90a20efd34906be')
 
 package() {
   cd "$srcdir/${pkgname}_x86_64Linux2_$pkgver"
-  yes y| ./install.sh -d "$pkgdir/opt"
+  mkdir -p $pkgdir/usr/bin/ $pkgdir/opt/$pkgname
+  yes y| ./install.sh -d "$pkgdir/opt/$pkgname"
   cd "$pkgdir/"
-  asd=( `find "./opt/bin/" -type f`)
-  mkdir -p usr/bin/
+  asd=( `find "./opt/$pkgname/bin/" -type f`)
   for i in ${asd[@]}
-    do echo "LD_PRELOAD='/usr/lib/libstdc++.so.6 /usr/lib/libgcc_s.so.1 /usr/lib/libxcb.so.1'" $(echo $i | sed 's/^.//g') > ./usr/bin/$(basename $i)-mg
+    do echo "LD_PRELOAD='/usr/lib/libstdc++.so.6 /usr/lib/libgcc_s.so.1 /usr/lib/libxcb.so.1'" $(echo $i | sed 's/^.//g') '$@' > ./usr/bin/$(basename $i)-mg
     if [ "$(grep MGL_ROOT\= $i 2> /dev/null)" ]
-      then sed '/MGL_ROOT\=/c\MGL_ROOT="/opt/"' -i $i
+      then sed "/MGL_ROOT\=/c\MGL_ROOT=\"/opt/$pkgname\"" -i $i
     fi
   done
   chmod +x ./usr/bin/*
