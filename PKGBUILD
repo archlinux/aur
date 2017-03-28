@@ -1,7 +1,7 @@
 # Maintainer: Alex Smith <azphreal19@protonmail.com>
 _pkgname=onedrived
 pkgname=${_pkgname}-dev
-pkgver=r160.ab9cc09
+pkgver=r162.bd73e26
 pkgrel=1
 pkgdesc="A Microsoft OneDrive client for Linux, written in Python3"
 arch=('any')
