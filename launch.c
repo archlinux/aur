@@ -26,10 +26,10 @@ int main(int argc, char** argv)
 	if (!freopen("/dev/null", "w", stderr)) fprintf(stderr, "Failed to silence stderr\n");
 
 	// run the command
-	if (execvp(argv[1], argv + 1))
-	{
-		if (freopen("/dev/tty", "w", stderr)) perror(argv[0]);
-	}
+	execvp(argv[1], argv + 1);
+
+	// if execvp returns, it's an error
+	if (freopen("/dev/tty", "w", stderr)) perror(argv[0]);
 
 	return 1;
 }
