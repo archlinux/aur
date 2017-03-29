@@ -1,6 +1,6 @@
 # Maintainer: Erez Raviv (erezraviv@gmail.com)
 pkgname=chirp-daily
-pkgver=20170324
+pkgver=20170329
 pkgrel=1
 pkgdesc="Latest build for GUI tool for programming ham radios"
 arch=('any')
@@ -12,8 +12,8 @@ options=(!emptydirs)
 conflicts=(chirp)
 provides=(chirp)
 install=
-sha1sums=("c120ff6025badcc62221b730d76c73f504fafded")
-source=("http://trac.chirp.danplanet.com/chirp_daily/daily-20170324/chirp-daily-20170324.tar.gz")
+sha1sums=("0431087e5ec7b37a40bd17a41cee3b7960256598")
+source=("http://trac.chirp.danplanet.com/chirp_daily/daily-20170329/chirp-daily-20170329.tar.gz")
 
 build() {
   tar zxvf $pkgname-$pkgver.tar.gz
