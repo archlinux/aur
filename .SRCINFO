@@ -1,7 +1,7 @@
 pkgbase = bdf-baekmuk-git
 	pkgdesc = free hangul bitmap fonts for X11
 	pkgver = 0.7.4020ae7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chocolatemelt/baekmuk
 	install = bdf-baekmuk-git.install
 	arch = any

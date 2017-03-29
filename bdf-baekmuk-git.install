@@ -7,4 +7,4 @@ post_install() {
 }
 
 post_upgrade() { post_install; }
-post_remove()  { post_install; echo "optional: remove aliases from /usr/share/fonts/misc/fonts.alias" }
+post_remove()  { post_install; }
