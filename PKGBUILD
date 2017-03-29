@@ -4,13 +4,13 @@ _base=mshr
 _fragment="#branch=master"
 pkgname=python-${_base}-git
 pkgdesc="Mesh generation component of FEniCS"
-pkgver=20161112
+pkgver=20170224
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/fenics-project/${_base}"
 license=('GPL3')
 groups=('fenics-git')
-depends=('python-dolfin-git' 'mpfr' 'vtk')
+depends=('python-dolfin-git' 'mpfr')
 makedepends=('git')
 options=(!emptydirs)
 source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git${_fragment}")
