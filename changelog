@@ -1,3 +1,15 @@
+2017-03-29 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.3.0.5-1:
+    [!] Reworked permissions, this is a breaking change [1].
+    [!] Changed behaviour of !api command, this is a breaking change [2].
+    Added !api <Bots> command (ref: #485).
+    Added !nickname command.
+    Added extra workaround for invalidating old trades [3].
+    Fixed ASF compilation on OS X, also added OS X as a test platform to our Travis CI.
+    Fixed ASF being able to trigger a rare Steam glitch that could lead to change of bot's nickname to [unassigned] when FarmOffline is set to false.
+    Fixed recent Steam breaking change introduced by Valve that broke discovering of keys being redeemed in all ASF versions prior to 2.3.0.4 (ref: #508).
+    ASF release is now compiled with latest Visual Studio 2017 by our AppVeyor CI (previously: VS15) [4].
+    Major code improvements, optimizations and bugfixes.
 2017-03-04 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.2.3.2-1:
     [!] ASF is now smart enough to automatically choose proper appID for "Series" (video) apps with trading cards in them. Previously it'd be stuck farming wrong game (ref: #473).
