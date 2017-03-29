@@ -1,8 +1,8 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=okimfpsdrv
-pkgver=1.5.0
-_pkgver=1.5-0
-pkgrel=3
+pkgver=1.6.0
+_pkgver=1.6-0
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Scanner drivers OKI multifunctional printers"
 url="http://www.oki.co.uk/support/printer/printer-drivers"
@@ -17,11 +17,11 @@ optdepends=('netpbm: support for additional output formats')
 # 2. select Linux drivers and Utilities
 # 3. download either "Scanner Driver (Red Hat i386)" or "Scanner Driver (Red Hat x86_64)"
 source=("okiscand.service")
-source_i686=("http://www.oki.com/uk/printing/download/okimfpsdrv-${_pkgver}.i386_30363.rpm")
-source_x86_64=("http://www.oki.com/uk/printing/download/okimfpsdrv-${_pkgver}.x86_64_30377.rpm")
+source_i686=("http://www.oki.com/uk/printing/download/okimfpsdrv-${_pkgver}.i386_90706.rpm")
+source_x86_64=("http://www.oki.com/uk/printing/download/okimfpsdrv-${_pkgver}.x86_64_90711.rpm")
 md5sums=('0164a329e93405806dcf20700b01008d')
-md5sums_i686=('571fb2e41943a2ad6985ab723c9df104')
-md5sums_x86_64=('cf362a4a66c71b82e832937892c0670e')
+md5sums_i686=('53c3a9fa6c7a99cead94b084dc46309c')
+md5sums_x86_64=('edd807f035911b7bbad097f57cac2f5e')
 
 package() {
   bsdtar -x -f "$srcdir"/*.rpm -C "$pkgdir"
