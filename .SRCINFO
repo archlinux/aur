@@ -1,0 +1,16 @@
+pkgbase = bdf-naga10-git
+	pkgdesc = free japanese bitmap font for X11
+	pkgver = 0.7.9b33067
+	pkgrel = 1
+	url = https://github.com/chocolatemelt/baekmuk
+	install = bdf-naga10-git.install
+	arch = any
+	makedepends = git
+	makedepends = make
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = git+https://github.com/chocolatemelt/naga10.git
+	sha256sums = SKIP
+
+pkgname = bdf-naga10-git
+
