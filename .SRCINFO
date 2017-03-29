@@ -1,11 +1,12 @@
 pkgbase = jupyter_contrib_nbextensions
 	pkgdesc = A collection of Jupyter nbextensions
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ipython-contrib/jupyter_contrib_nbextensions
 	arch = any
 	license = BSD
 	makedepends = python-pip
+	makedepends = mariadb
 	depends = python
 	depends = jupyter
 	depends = jupyter-notebook
