@@ -2,9 +2,9 @@
 # Contributor: Ng Oon-Ee <n g  o o n  e e dot t a l k AT g m a i l DOT c o m>
 # Maintainer: TWPHoenix1982 <rene DOT landscheidt AT gmx DOT de>
 pkgname=xojo
-pkgver=2016r41
-_pkgvershort=2016r41
-pkgrel=1
+pkgver=2017r1
+_pkgvershort=2017r1
+pkgrel=2
 pkgdesc="A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, the web and now with 64Bit and ARM V2 (Raspberry Pi 2) support."
 arch=(i686 x86_64)
 url="http://www.xojo.com"
@@ -21,7 +21,7 @@ source=("http://41160df63757fc043cfd-66287f38a83954e31a54d1dbe33e0650.r4.cf2.rac
 ##lib32-mesa lib32-icu lib32-gcc-libs) && makedepends=(lib32-webkitgtk2)
 [[ $CARCH == x86_64 ]] && depends=(lib32-gtk2 lib32-expat lib32-glib2 lib32-glibc lib32-mesa 
 lib32-icu lib32-gcc-libs) && makedepends=(lib32-libtinfo libtinfo)
-sha256sums=('90d9e362489d9ab4f98d9fe599622bf6e408e7ef73e2d642ff850643de4f031c'
+sha256sums=('93265d7a62df5fe53cc48fbd527768d77f5361700863cc1e8138fbbfd20b8182'
             '17250f624de25bb575a3ca5d3158a60cba95248c624d71959c0bcb823384e9ee'
             '7b084164ba9430b389a500a551a0cec5283f4eaa54dc27c01e7f0aa477e69612'
             '024cbfa8d23766b54aed636a52708f656776a45d6109cde3ca4278d463958e97')
@@ -30,7 +30,7 @@ options=(!strip)
 
 package() {
 	cd $srcdir
-	mv "xojo2016r4.1" "xojo$_pkgvershort"
+	#mv "xojo2016r4.1" "xojo$_pkgvershort"
 	find . -name '.DS_Store' -exec rm {} \;
 	find "./xojo$_pkgvershort/Extras" -type d \( -name 'OS X' -o -name 'Windows' -o -name 'Visual Studio*' -o -name 'Xcode' \) |
 	xargs -rtl1 -I {} rm -r {}
@@ -44,6 +44,8 @@ package() {
 	chmod 755 "$pkgdir/opt/xojo/Xojo Resources/SDKStubs/linux-arm/libgcc_s.so.1"
 	chmod 755 "$pkgdir/opt/xojo/Xojo Libs/XojoGUIFramework32.so"
 	chmod 755 "$pkgdir/opt/xojo/Xojo Libs/libc++.so.1"
+	#chmod 755 "$pkgdir/opt/xojo/Xojo Resoources/Linux/ld.mcld"
+	#chmod 755 "$pkgdir/opt/xojo/Xojo Resources/Linux/lld"
 	#ln -s "/opt/xojo/Xojo Resources/Linux/libc++.so.1" "$pkgdir/usr/lib32/libc++.so.1"
 	ln -s "/opt/xojo/Xojo" "$pkgdir/usr/bin/Xojo"
 	ln -s "/opt/xojo/Extras/Lingua/Lingua Linux" "$pkgdir/usr/bin/Lingua"
