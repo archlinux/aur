@@ -3,10 +3,10 @@ pkgname=ipinfo
 pkgver=0.1
 pkgrel=1
 arch=('x86_64' 'i686')
-url="https://github.com/syui/ipinfo/releases/download"
+url="https://github.com/syui/ipinfo"
 license=('MIT')
-source=("$url/$pkgver/linux_amd64_$pkgname"
-        "$url/$pkgver/linux_386_$pkgname")
+source=("$url/releases/download/$pkgver/linux_amd64_$pkgname"
+        "$url/releases/download/$pkgver/linux_386_$pkgname")
 sha1sums=('8b8ea04b4b2188023f0c8529e93e2275bd881744'
 '20326402fe40bc69128b73bfa0d98911128b984f')
 
