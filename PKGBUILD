@@ -1,7 +1,7 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-gui-git
-pkgver=v0.14.0.r0.g43a987c1c
+pkgver=v0.14.0.r8.g37bf0d5b3
 pkgrel=1
 pkgdesc='Most recent stable branch, UPNP disabled, w/ Bitcoin binaries, dev tools, GUI, and wallet'
 arch=('i686' 'x86_64')
