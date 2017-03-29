@@ -8,7 +8,7 @@ _fmodex=
 
 _name=gzdoom
 pkgname=${_name}
-pkgver=2.3.2
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support'
 arch=('i686' 'x86_64')
@@ -72,7 +72,6 @@ build() {
           -DGME_INCLUDE_DIR='/usr/include/gme' \
           -DFMOD_INCLUDE_DIR="${_fmodincdir}" \
           -DFMOD_LIBRARY="${_fmodlib}" \
-          -DFORCE_INTERNAL_GME=OFF \
           -DCMAKE_C_FLAGS="$CFLAGS -DSHARE_DIR=\\\"/usr/share/${_name}\\\"" \
           -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"/usr/share/${_name}\\\"" \
           -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -Wl,-z,noexecstack" \
