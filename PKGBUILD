@@ -3,7 +3,7 @@
 _pkgname=libtorrent
 pkgname=libtorrent-ps
 _pkgver=0.13.6
-pkgver=1.0.r26.gcb78fc3
+pkgver=1.0.r36.gbbe1ea5
 pkgrel=1
 pkgdesc='BitTorrent library written in C++'
 url='https://github.com/rakshasa/libtorrent'
@@ -13,9 +13,11 @@ depends=('openssl')
 provides=('libtorrent')
 conflicts=('libtorrent' 'libtorrent-git' 'libtorrent-ipv6' 'libtorrent-ps-git' 'libtorrent-pyro' 'libtorrent-pyro-git')
 source=("https://github.com/rakshasa/$_pkgname/archive/$_pkgver.tar.gz"
-        'lt-ps-honor_system_file_allocate_all.patch')
+        'lt-ps-honor_system_file_allocate_all.patch'
+        'lt-ps-log_open_file-reopen_all.patch')
 md5sums=('8c8eaa9fa03bd113967c68eea26493e7'
-         '8d7f8fe5ad412bd42f2ea66131a8ce6b')
+         '8d7f8fe5ad412bd42f2ea66131a8ce6b'
+         '2bfadac7770935ca98c4714c2011541a')
 
 prepare() {
   cd "$srcdir/$_pkgname-$_pkgver"
