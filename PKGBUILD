@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=yafaray-git
-pkgver=971.573e158
+pkgver=1061.ec7a1f1
 pkgrel=1
 pkgdesc="A free open-source raytracing engine"
 arch=('i686' 'x86_64')
@@ -12,15 +12,8 @@ optdepends=('qt4: QT GUI' 'python: Python bindings'
 makedepends=('cmake' 'git' 'qt4' 'swig' 'python')
 provides=('yafaray')
 conflicts=('yafaray')
-source=('yafaray::git+git://github.com/YafaRay/Core.git'
-        'pluginpath.diff')
-md5sums=('SKIP'
-         'bab516f2be6bc15491acd53df7a50a69')
-
-prepare() {
-  cd "$srcdir/yafaray"
-  patch -Np1 < "$srcdir/pluginpath.diff"
-}
+source=('yafaray::git+git://github.com/YafaRay/Core.git')
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/yafaray"
@@ -32,8 +25,8 @@ build() {
 
   cmake . \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DYAF_PY_VERSION=3.5 \
-    -DYAF_BINDINGS_PY_DIR=/usr/lib/python3.5
+    -DYAF_PY_VERSION=3.6 \
+    -DYAF_BINDINGS_PY_DIR=/usr/lib/python3.6
   make
 }
 
