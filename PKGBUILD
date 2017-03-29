@@ -9,7 +9,7 @@ arch=('x86' 'x86_64')
 depends=('libusb')
 makedepends=('git' 'make')
 source=('simple-rt::git://github.com/vvviperrr/SimpleRT' 'simple-rt.service')
-md5sums=('SKIP' 'b7fc2302ca05942f9351ef06201da0d02809eee2')
+md5sums=('SKIP' '0a06943e78519fca0ca242031a3ef2eb')
 license=('GPLv3')
 
 pkgver() {
