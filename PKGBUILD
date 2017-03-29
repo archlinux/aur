@@ -40,25 +40,27 @@ build() {
   make --directory build
 }
 
-dobin() {
-  src=$1
-  dst=$2
+doinstall() {
+  location=$1
+  mode=$2
+  src=$3
+  dst=$4
   [ -n "${dst}" ] || dst=$(basename "${src}")
-  dst="${pkgdir}"/usr/bin/"${dst}"
-  install -D -m755 "${src}" "${dst}"
+  dst="${pkgdir}"/"${location}"/"${dst}"
+  install -D -m"${mode}" "${src}" "${dst}"
+}
+
+dobin() {
+  doinstall /usr/bin 755 "$1" "$2"
 }
 
 dodoc() {
-  src=$1
-  dst=$2
-  [ -n "${dst}" ] || dst=$(basename "${src}")
-  dst="${pkgdir}"/usr/share/doc/${_pkgname}/"${dst}"
-  install -D -m644 "${src}" "${dst}"
+  doinstall /usr/share/doc/"${_pkgname}" 644 "$1" "$2"
 }
 
 package() {
   cd "$_pkgname"
-  install -D -m644 LICENSE.md ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md
+  doinstall /usr/share/licenses/"${_pkgname}" 644 LICENSE.md
   for D in CONTRIBUTING.md README.md doc/fontdiff-1.png
   do
     dodoc "${D}" "${D}"
