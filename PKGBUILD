@@ -23,5 +23,4 @@ package() {
   make all
   install -d -m755 "$pkgdir/usr/share/fonts/misc/"
   install -m644 -t "$pkgdir/usr/share/fonts/misc/" out/*.pcf.gz
-	./alias.sh
 }
