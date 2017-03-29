@@ -2,14 +2,13 @@
 # Contributor: Daniele Paolella <dp@hostess-promoter.com>
 pkgname=tmpwatch
 pkgver=2.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Removes files which haven't been accessed for a period of time"
 arch=('i686' 'x86_64')
-url="http://fedorahosted.org/tmpwatch/"
+url="https://pagure.io/tmpwatch"
 license=('GPL2')
 depends=('glibc')
-install=${pkgname}.install
-source=("https://fedorahosted.org/releases/t/m/tmpwatch/tmpwatch-$pkgver.tar.bz2")
+source=("https://releases.pagure.org/$pkgname/$pkgname-$pkgver.tar.bz2")
 sha256sums=('93168112b2515bc4c7117e8113b8d91e06b79550d2194d62a0c174fe6c2aa8d4')
 
 build() {
