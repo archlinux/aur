@@ -1,0 +1,16 @@
+pkgbase = mynotes
+	pkgdesc = Desktop post-it / sticky notes managed from system tray icon
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://sourceforge.net/projects/my-notes
+	arch = any
+	license = GPL3
+	depends = tktray
+	depends = python-ewmh
+	depends = gettext
+	depends = desktop-file-utils
+	source = mynotes-1.0.0.tar.gz::https://sourceforge.net/projects/my-notes/files/1.0.0/mynotes-1.0.0.tar.gz/download
+	sha512sums = 68cbfc521b20161610f8db0872d273363160ea250eb5592e281a002670bcbe7e013a2fcc02b0135a18b3c369f0573ba05f32a6a0cab7ad3848c0e65b58393210
+
+pkgname = mynotes
+
