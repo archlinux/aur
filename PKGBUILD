@@ -2,7 +2,7 @@
 
 pkgname=bdf-baekmuk-git
 _gitname=baekmuk
-pkgver=0.5.409289b
+pkgver=0.7.4020ae7
 pkgrel=1
 pkgdesc='free hangul bitmap fonts for X11'
 arch=('any')
