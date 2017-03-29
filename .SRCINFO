@@ -1,6 +1,6 @@
 pkgbase = xsetwallpaper
 	pkgdesc = Wallpaper setting utility for X
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/stoeckmann/xsetwallpaper
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = xsetwallpaper
 	depends = xcb-util
 	depends = xcb-util-image
 	depends = libjpeg-turbo
-	source = xsetwallpaper-0.1.0.tar.gz::https://github.com/stoeckmann/xsetwallpaper/archive/v0.1.0.tar.gz
-	sha256sums = 69aab3ec17822d381156656831ec21e3c202ac6d319ab17eab396d5cc76c5b34
-	sha512sums = a3179ca753a8d7244e163088c17e11ce3278c9b800f064de70a4eeacec2b3b64605be16fc3d7dc4ce63cda57245b74c0b09243d845423992d43ec9d70abe6d81
+	source = xsetwallpaper-0.1.1.tar.gz::https://github.com/stoeckmann/xsetwallpaper/archive/v0.1.1.tar.gz
+	sha256sums = a88bf1b77e1a0ea00873a3f09f179a5f3dac79cbab4ebe4f852a219a0938d5e2
+	sha512sums = 9c285eb51c9fe8cd9e58859731863999a7a851502940a544740078a15783a98b6bdc48bcfb1bc6f7e32f2132b2fcc4b6cad7194c52d178a5a1b270dfc47403c1
 
 pkgname = xsetwallpaper
 
