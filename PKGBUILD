@@ -7,14 +7,15 @@
 pkgname=xaralx-bin
 _pkgname=xaralx
 pkgver=0.7_rev1785
-pkgrel=14
+pkgrel=15
 pkgdesc="An advanced vector graphics program, development release"
 arch=('i686' 'x86_64')
 url="http://www.xaraxtreme.org/"
 license=('GPL')
 depends=('wxgtk' 'libpng' 'libjpeg' 'libxml2' 'desktop-file-utils')
 makedepends=('pkgconfig')
-optdepends=('imagemagick: needed for some conversions')
+optdepends=('imagemagick: needed for some conversions'
+            'java-environment: for web help')
 provides=('xaralx')
 conflicts=('xaralx')
 install=${pkgname}.install
@@ -29,12 +30,12 @@ fi
 
 
 package() {
-  cd "$srcdir"/$_pkgname
-  install -d "$pkgdir"/usr/bin "$pkgdir"/usr/share/xaralx/doc "$pkgdir"/usr/share/licenses/xaralx
-  install -Dm 755 bin/* "$pkgdir"/usr/bin 
-  cp -R share/xaralx "$pkgdir"/usr/share/
-  chmod -R 644 "$pkgdir"/usr/share/xaralx
-  install -Dm 644 share/xaralx/doc/LICENSE "$pkgdir"/usr/share/licenses/xaralx/LICENSE 
+  cd "$srcdir/$_pkgname"
+  install -dm 755 "$pkgdir/usr/bin" "$pkgdir/usr/share/xaralx" "$pkgdir/usr/share/licenses/xaralx"
+  install -Dm 755 bin/* "$pkgdir/usr/bin"
+  cp -R share/xaralx/* "$pkgdir/usr/share/xaralx"
+  #chmod -R 755 "$pkgdir"/usr/share/xaralx
+  install -Dm 644 share/xaralx/doc/LICENSE "$pkgdir/usr/share/licenses/xaralx/LICENSE"
   # Desktop compatibility
   install -Dm 644 $_pkgname.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
   install -Dm 644 $_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
