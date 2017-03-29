@@ -2,7 +2,7 @@
 
 pkgname=slashem
 pkgver=0.0.7E7F3
-pkgrel=5
+pkgrel=6
 pkgdesc='Nethack variant Super Lotsa Added Stuff Hack - Extended Magic'
 arch=('i686' 'x86_64')
 url="http://www.slashem.org/"
@@ -12,6 +12,8 @@ source=("http://downloads.sourceforge.net/project/slashem/slashem-source/0.0.7E7
 	"$pkgname-$pkgver.patch")
 md5sums=('54b4534fe85f08722e8b6b38d52c2e9a'
          'fd208bd24da31198d6a1d7d067e7377e')
+
+MAKEFLAGS='-j1' # 28-March-2017: Apparent fix for slashem build issues.
 
 prepare() {
 	cd "$pkgname-$pkgver"
