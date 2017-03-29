@@ -1,7 +1,7 @@
 # Maintainer: edub4rt <edub4rt@gmail.com>
 pkgname=mingw-w64-luajit
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Just-in-time compiler and drop-in replacement for Lua 5.1'
 arch=('i686' 'x86_64')
 url='http://luajit.org/'
@@ -33,9 +33,9 @@ build() {
     sed -i 's/^BUILDMODE= [a-z]*$/BUILDMODE= static/' Makefile
     make clean
     if [ "$_target" == "i686-w64-mingw32" ]; then
-        make PREFIX=/usr/$_target HOST_CC="gcc -m32" CROSS=${_target}- TARGET_SYS=Windows libluajit.a
+        make PREFIX=/usr/$_target HOST_CC="gcc -m32" CROSS=${_target}- TARGET_SYS=Windows amalg
     else
-        make PREFIX=/usr/$_target HOST_CC="gcc -m64" CROSS=${_target}- TARGET_SYS=Windows libluajit.a
+        make PREFIX=/usr/$_target HOST_CC="gcc -m64" CROSS=${_target}- TARGET_SYS=Windows amalg
     fi
   done
 }
