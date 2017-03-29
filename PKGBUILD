@@ -1,6 +1,6 @@
 # Maintainer: LinArcX <Linarcx at gmail . com>
+
 pkgname=python-pytvmaze
-# _pkgname=pytvmaze
 pkgver=0.1
 pkgrel=1
 pkgdesc="Python interface to the TV Maze API "
@@ -10,7 +10,6 @@ license=(MIT)
 depends=('python')
 makedepends=('git' 'python-setuptools')
 source=("${pkgname}::git+https://github.com/srob650/pytvmaze")
-# source=("https://pypi.io/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 md5sums=('SKIP')
 
 pkgver() {
@@ -22,7 +21,6 @@ pkgver() {
 }
 
 package() {
-  # cd "$srcdir/$_pkgname-$pkgver"
   cd "${srcdir}/${pkgname}"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
