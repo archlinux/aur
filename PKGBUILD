@@ -2,8 +2,8 @@
 pkgbase=python-micawber
 pkgname=('python-micawber' 'python2-micawber')
 _pyname=micawber
-pkgver=0.3.3
-pkgrel=2
+pkgver=0.3.4
+pkgrel=1
 pkgdesc='A small library for extracting rich content from URLs.'
 arch=('any')
 url='https://github.com/coleifer/micawber'
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('a6ba38745267618c091e8a8b4854a535')
+md5sums=('2b91ef64c3a5460d1e7c19697470a126')
 
 prepare() {
   cd "${srcdir}/${_pyname}-${pkgver}"
