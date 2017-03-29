@@ -5,7 +5,7 @@
 _use_ppa=true
 
 pkgbase=gtk3-ubuntu-multilib
-pkgname=({lib32-,}gtk3-ubuntu)
+pkgname=({lib32-,}gtk3-ubuntu-multilib)
 _ubuntu_rel=1ubuntu2~ubuntu16.10.1
 pkgver=3.22.7
 pkgrel=2
@@ -102,7 +102,7 @@ build() {
   popd
 }
 
-package_gtk3-ubuntu() {
+package_gtk3-ubuntu-multilib() {
   depends+=(at-spi2-atk atk cairo colord gdk-pixbuf2 
             json-glib pango rest wayland
             lib{cups,epoxy,rsvg,xcomposite,xcursor,xdamage,xi,xinerama,xkbcommon,xrandr})
@@ -129,7 +129,7 @@ package_gtk3-ubuntu() {
   done
 }
 
-package_lib32-gtk3-ubuntu() {
+package_lib32-gtk3-ubuntu-multilib() {
   pkgdesc+=" (32bit)"
   depends+=(lib32-{at-spi2-atk,atk,cairo,colord,gdk-pixbuf2,json-glib,pango,rest,wayland}
             lib32-lib{cups,epoxy,rsvg,xcomposite,xcursor,xdamage,xi,xinerama,xkbcommon,xrandr})
