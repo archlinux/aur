@@ -4,22 +4,16 @@
 
 pkgname=perl-unicode-string
 _realname=Unicode-String
-pkgver=2.09
-pkgrel=10
+pkgver=2.10
+pkgrel=1
 pkgdesc="String of Unicode characters for perl (UCS2/UTF16)"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 license=('PerlArtistic')
 url="http://search.cpan.org/dist/${_realname}/"
 depends=('perl')
 options=(!emptydirs)
-source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/${_realname}-${pkgver}.tar.gz fix-defined-hash-deprecation-warning.patch)
-md5sums=('553e68e603723bf7c631f8701ab0d678'
-         '0e8fdf57951ea92d60832fce7514e1d0')
-
-prepare() {
-  cd "${srcdir}/${_realname}-${pkgver}"
-  patch -uNp1 -i ../fix-defined-hash-deprecation-warning.patch
-}
+source=(http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/GAAS/${_realname}-${pkgver}.tar.gz)
+md5sums=('7a8210e673824b9fb90fd1c360483890')
 
 build() {
   cd "${srcdir}/${_realname}-${pkgver}"
