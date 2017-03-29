@@ -1,7 +1,7 @@
 ##PKGBUILD
 pkgname=hedera-theme-git
 pkgver=0.r1.487359f
-pkgrel=1
+pkgrel=2
 pkgdesc='Eye-friendly GUIKit based on breeze'
 arch=('x86_64')
 url='https://github.com/sixsixfive/Hedera/blob/master/readme.md'
@@ -34,6 +34,6 @@ pkgver() {
 
 package() {
   cd $srcdir/$gitname
-	install -d $pkgdir/usr/share
-	mv THEME/* $pkgdir/usr/share/
+	install -dm 755 "$pkgdir"/usr/share
+	cp -drv --no-preserve='ownership' THEME/* $pkgdir/usr/share/
 }
