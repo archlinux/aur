@@ -1,0 +1,19 @@
+pkgbase = ido-thanos
+	pkgdesc = Widgets and other objects used for indicators
+	pkgver = 13.10.0.17.04.20161028
+	pkgrel = 1
+	url = https://launchpad.net/ido
+	arch = i686
+	arch = x86_64
+	groups = unity
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = vala
+	makedepends = xorg-util-macros
+	depends = gtk3-ubuntu
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/ido_13.10.0+17.04.20161028.orig.tar.gz
+	md5sums = f666eda0d011305b163f9a73b553c205
+
+pkgname = ido-thanos
+
