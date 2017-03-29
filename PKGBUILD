@@ -22,7 +22,7 @@ md5sums=('fb34241e96f9707604bf6cd78357d5a2'
          'ee601f52f1ba2481fe1f05b25d000bb8'
          '79a1416e307e4dfb99640311b8defe07'
          'a43ab472f4d95e48ac21910bb33a5e86'
-         'a830324550a9009150839386cd70f2bc')
+         'bd75e6d2afcbc000e3593b1a66ea4ef7')
 
 build() {
   cd $srcdir/Firebird-$pkgver-0

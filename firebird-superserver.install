@@ -1,5 +1,5 @@
 post_install() {
-  echo ">>> Check /usr/lib/firebird/SYSDBA.password for default login credentials!"
+  echo ">>> Check /var/lib/firebird/system/SYSDBA.password for default login credentials!"
   echo ">>> You should change this password at the earliest opportunity!"
 }
 
