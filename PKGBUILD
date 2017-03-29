@@ -1,7 +1,7 @@
 # Contributor: Bug <bug2000@gmail.com>
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=xpra-winswitch-svn
-pkgver=14634
+pkgver=15453
 pkgrel=1
 pkgdesc="Modified version of xpra by Winswitch"
 arch=('i686' 'x86_64')
@@ -17,11 +17,11 @@ optdepends=('x264: Codec' 'python2-dbus: dbus features'
             'python-cryptography: Cryptography'
             'python2-crypto: Cryptography'
             'python-crypto: Cryptography')
-makedepends=('subversion' 'python2-setuptools' 'cython2')
+makedepends=('subversion' 'python2-setuptools' 'cython2' 'uglify-js')
 provides=('parti-all' 'xpra-winswitch')
 conflicts=('parti-all')
 backup=('etc/xpra/xpra.conf' 'etc/xpra/xorg.conf'
-        'etc/xpra/cuda.conf' 'etc/xpra/nvenc.keys'
+#        'etc/xpra/cuda.conf' 'etc/xpra/nvenc.keys'
         'etc/xpra/conf.d/05_features.conf'
         'etc/xpra/conf.d/10_network.conf'
         'etc/xpra/conf.d/12_ssl.conf'
@@ -36,12 +36,9 @@ backup=('etc/xpra/xpra.conf' 'etc/xpra/xorg.conf'
         'etc/xpra/conf.d/55_server_x11.conf'
         'etc/xpra/conf.d/60_server.conf'
         'etc/xpra/conf.d/65_proxy.conf')
-install=xpra-winswitch.install
-source=("xpra::svn+https://www.xpra.org/svn/Xpra/trunk/src"
-        "xpra-winswitch.install")
+source=("xpra::svn+https://www.xpra.org/svn/Xpra/trunk/src")
 
-md5sums=('SKIP'
-         'df5cfe00b5d1be31f10b206e7b8d7daf')
+        md5sums=('SKIP')
 
 _svnmod=xpra
 pkgver() {
