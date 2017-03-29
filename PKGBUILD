@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('git')
 depends=('qt5-webengine')
 provides=('zsurf=$pkgver')
-conflicts=('zsurf')
+conflicts=('zsurf-webkit-git')
 
 source=("git+https://github.com/SteveDeFacto/zsurf.git")
 
