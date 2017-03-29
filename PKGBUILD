@@ -8,7 +8,7 @@
 
 _stable_branch="v3_3_x"
 pkgname=qbittorrent-stable-git
-pkgver=3.3.10.r0.g4eac2cab3
+pkgver=3.3.11.r6.g2d64405eb
 pkgrel=1
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar. Built from source."
 arch=('i686' 'x86_64')
