@@ -1,11 +1,11 @@
 pkgbase = gpgme-python-git
 	pkgdesc = A python wrapper library for GnuPG
-	pkgver = gpgme.1.8.0.r122.g348da58f
+	pkgver = gpgme.1.9.0.r5.g7e9f7752
 	pkgrel = 1
 	url = https://gnupg.org/software/gpgme/index.html
 	arch = x86_64
 	license = GPL2
-	makedepends = gpgme>=1.8
+	makedepends = gpgme>=1.9
 	makedepends = swig
 	makedepends = gnupg>=2
 	makedepends = libgpg-error
