@@ -1,24 +1,40 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=libcroco
-pkgver=0.6.11
+pkgver=0.6.11+13+g86e8e22
 pkgrel=1
 pkgdesc="A CSS parsing library"
-arch=('x86_64' 'i686')
-depends=('glib2' 'libxml2')
-makedepends=('intltool')
-license=('LGPL')
-source=(https://download.gnome.org/sources/$pkgname/0.6/$pkgname-$pkgver.tar.xz)
-url="http://www.gnome.org"
-sha256sums=('132b528a948586b0dfa05d7e9e059901bca5a3be675b6071a90a90b81ae5a056')
+url="https://git.gnome.org/browse/libcroco"
+arch=(x86_64 i686)
+depends=(glib2 libxml2)
+makedepends=(intltool git gtk-doc)
+license=(LGPL)
+_commit=86e8e2284bfe250b3c03108a59c9307564302f3e  # master
+source=("git+https://git.gnome.org/browse/libcroco#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd $pkgname
+  NOCONFIGURE=1 ./autogen.sh
+}
+
+check() {
+  cd $pkgname
+  make check
+}
 
 build() {
-  cd $pkgname-$pkgver
-  ./configure --prefix=/usr --disable-static
+  cd $pkgname
+  ./configure --prefix=/usr --disable-static --enable-gtk-doc
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   make DESTDIR="$pkgdir" install
 }
