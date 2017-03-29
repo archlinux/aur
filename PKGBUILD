@@ -6,7 +6,7 @@
 
 pkgname=doomrl
 pkgver=0.9.9.7
-pkgrel=9
+pkgrel=10
 pkgdesc="A roguelike game based on the FPS Doom."
 arch=('i686' 'x86_64')
 url="http://drl.chaosforge.org/"
@@ -25,9 +25,6 @@ sha256sums=('bae5ccc863235f984a52c07d011e48a86c0c12f923be2dedd8624c7abdc22c6c'
             '62549c30bad5da0b11650e8bc6a8fa16f7c0d49df9720e38926fedca0225620f')
 sha256sums_i686=('6d217d697e94f5f2ce3fe8ebbedaf03fa68a5ed1140cb889921f18d8604a389f')
 sha256sums_x86_64=('d9d19e4a8794efb3c23963b3e11987ebadbb7bee7350b00ce6b64eaff501e488')
-
-# Unknown SSL certificate, TODO: check again after ca-certificates update!
-DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 case $CARCH in
   'i686')
