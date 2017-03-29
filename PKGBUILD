@@ -1,4 +1,4 @@
-# Maintainer: Raymond E. Hogenson <rayhogenson@gmail.com>
+# Maintainer: Winston Weinert (winny) <winston@ml1.net>
 
 pkgname=slashem
 pkgver=0.0.7E7F3
