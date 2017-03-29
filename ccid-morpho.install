@@ -4,7 +4,7 @@ post_install() {
 	echo "You may have to enable and start pcscd (pcsclite) service, e.g."
 	echo "  $ systemctl enable pcscd"
 	echo "  $ systemctl start pcscd"
-	echo "If it's already running then you need restart it."
+	echo "If it's already running then you need to restart it."
 	echo "  $ systemctl restart pcscd"
 	echo "--"
 }

@@ -1,37 +1,50 @@
 # Maintainer: Geyslan G. Bem <geyslan@gmail.com>
+# Contributor: Daniel Plaza <daniel.plaza.espi@gmail.com>
 
-pkgname=ccid-morpho
-pkgver=1.4.3_1morpho
-_pkgver=${pkgver//_/-}
-pkgrel=2
-pkgdesc="A USB Chip/Smart Card Interface Device driver (SAFRAN MORPHO YpsID Token)"
+_basepkg=ccid
+pkgname=${_basepkg}-morpho
+pkgver=1.4.3
+pkgrel=1
+epoch=1
+pkgdesc="A generic USB Chip/Smart Card Interface Devices driver (SAFRAN MORPHO YpsID Token)"
 arch=('i686' 'x86_64')
-url="https://github.com/geyslan/morpho"
+url="http://pcsclite.alioth.debian.org/ccid.html"
 license=('LGPL' 'GPL')
-depends=('pcsclite' 'libusb')
+makedepends=('pkg-config')
+depends=('pcsclite' 'libusb' 'flex')
 optdepends=('pcsc-tools')
-provides=("ccid=${pkgver}")
-conflicts=('ccid')
+provides=("${_basepkg}=${pkgver}")
+conflicts=(${_basepkg})
 install="$pkgname.install"
-source_x86_64=("https://github.com/geyslan/morpho/raw/master/libccid_${_pkgver}_amd64.deb")
-source_i686=("https://github.com/geyslan/morpho/raw/master/libccid_${_pkgver}_i386.deb")
-md5sums_i686=('429f3f59c3781a62259b7fe701983515')
-md5sums_x86_64=('20fb32fb2a418f1508b5a482b6c1b21b')
+source=("https://alioth.debian.org/frs/download.php/file/3535/ccid-${pkgver}.tar.bz2"
+	"http://ludovic.rousseau.free.fr/softwares/pcsc-lite/ccid-morpho-v7-2.patch")
+md5sums=('a269baa572be6f93ec57da279c7ec276'
+         '70c25b7c28392e2293e472e0fab4d263')
 
 prepare() {
-	tar zxf data.tar.gz
+	cd "${_basepkg}-${pkgver}"
+
+	# Safran/Morpho patch
+	# https://ludovicrousseau.blogspot.com.br/2017/02/mostly-ccid-driver-for-some-morpho.html
+	if ! patch -p1 -N -f -i ../ccid-morpho-v7-2.patch; then
+		echo "* Just avoiding error when already patched ;)"
+	fi
+}
+
+build() {
+	cd "${_basepkg}-${pkgver}"
+
+	./configure --prefix=/usr --sysconfdir=/etc
+	make
 }
 
 package() {
-	cp -R usr "$pkgdir"
+	cd "${_basepkg}-${pkgver}"
 
-	# fix doc tree to standard
-	# https://wiki.archlinux.org/index.php/Arch_packaging_standards#Directories
-	mv "$pkgdir"/usr/share/doc/{libccid,$pkgname}
+	make DESTDIR="${pkgdir}" install
 
 	# move the configuration file to /etc and create a symbolic link
-	mkdir -p "$pkgdir/etc"
-	mv "$pkgdir/usr/lib/pcsc/drivers/ifd-ypsid.bundle/Contents/Info.plist" "$pkgdir/etc/libccid_Info.plist"
-	ln -s /etc/libccid_Info.plist "$pkgdir/usr/lib/pcsc/drivers/ifd-ypsid.bundle/Contents/Info.plist"
+	mkdir -p "${pkgdir}/etc"
+	mv "${pkgdir}/usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Info.plist" "${pkgdir}/etc/libccid_Info.plist"
+	ln -s /etc/libccid_Info.plist "${pkgdir}/usr/lib/pcsc/drivers/ifd-ccid.bundle/Contents/Info.plist"
 }
-
