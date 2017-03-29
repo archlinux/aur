@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Bukowski <bbukowski@posteo.de>
 pkgname=firebird-superserver
 pkgver=2.5.7.27050
-pkgrel=1
+pkgrel=2
 pkgdesc="A open source SQL relational database management system (RDMS)"
 arch=('i686' 'x86_64')
 url="http://www.firebirdsql.org/"
@@ -68,13 +68,15 @@ package() {
   install -Dm644 $srcdir/firebird.service $pkgdir/usr/lib/systemd/system/firebird.service
   install -Dm440 $srcdir/default.password $pkgdir/var/lib/firebird/system/SYSDBA.password
   install -Dm644 $pkgdir/etc/firebird/I{,D}PLicense.txt -t $pkgdir/usr/share/licenses/${pkgname}
-  
+
   # Remove unused files and dirs
   rm $pkgdir/etc/firebird/I{,D}PLicense.txt
   rm $pkgdir/etc/firebird/README
   rm $pkgdir/etc/firebird/WhatsNew
   rm -rf $pkgdir/var/log
   rm -rf $pkgdir/run
+
+  mv $pkgdir/usr/bin/isql{,-fb}
 
   chmod -R ugo-w $pkgdir/usr/share/doc/firebird
   chmod -R o= $pkgdir/var/lib/firebird
