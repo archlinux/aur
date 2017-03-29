@@ -1,6 +1,6 @@
-# Maintainer: Juliette Monsel <j_4321@protonmail.com>
+# Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=python-tkfilebrowser
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="File browser for Tkinter, alternative to tkinter.filedialog in linux with GTK bookmarks support."
 url="https://github.com/j4321/tkFileBrowser"
@@ -8,7 +8,7 @@ arch=('any')
 license=('GPL3')
 depends=('python-psutil' 'tk')
 source=("tkFileBrowser-$pkgver.tar.gz::https://github.com/j4321/tkFileBrowser/releases/download/v$pkgver/tkFileBrowser-$pkgver.tar.gz")
-sha512sums=('dd82801e4b8a3628f48981e752f28a4553d396e56aef4ae5f893e15ab3acab53876754f6bccedbd51ca8ed0394ff1024ce3f3a58a7f06eb46abf226664e63d59')
+sha512sums=('f8f7195c3348fec9c50d7443d260e7388dd53927f9650f4dea0c6645cce6361fb030fb1cbd3b0040791c837006e55780b778bde27cdf70816eaa201c770bcaa2')
 package() {
  cd "$srcdir/tkFileBrowser-$pkgver"
  python3 setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1;
