@@ -1,0 +1,11 @@
+[Unit]
+Description=SimpleRT Daemon
+
+[Service]
+Type=idle
+ExecStart=/usr/lib/simple-rt/simple-rt
+WorkingDirectory=/usr/lib/simple-rt
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
