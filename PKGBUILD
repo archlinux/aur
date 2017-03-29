@@ -12,7 +12,7 @@ pkgdesc="An advanced vector graphics program, development release"
 arch=('i686' 'x86_64')
 url="http://www.xaraxtreme.org/"
 license=('GPL')
-depends=('wxgtk' 'libpng' 'libjpeg' 'libxml2' 'desktop-file-utils')
+depends=('libpng' 'libjpeg' 'libxml2' 'desktop-file-utils')
 makedepends=('pkgconfig')
 optdepends=('imagemagick: needed for some conversions'
             'java-environment: for web help')
