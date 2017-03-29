@@ -9,7 +9,7 @@
 # to the depends and delete "no-g15" in the configure line below
 
 pkgname=mumble-git
-pkgver=2017.03.16
+pkgver=2017.03.29
 _pkgver=1.3.0
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -17,7 +17,8 @@ pkgdesc='A voice chat application similar to TeamSpeak'
 url='http://wiki.mumble.info'
 license=('BSD')
 depends=('qt5-base' 'qt5-svg' 'speex' 'lsb-release' 'avahi' 'protobuf'
-         'libpulse' 'opus' 'xdg-utils' 'speech-dispatcher')
+         'libpulse' 'opus' 'xdg-utils' 'speech-dispatcher' 'libpng'
+         'freetype2' 'fontconfig' 'libxrender')
 makedepends=('boost' 'mesa' 'qt5-tools' 'git')
 conflicts=('mumble')
 provides=('mumble')
@@ -52,7 +53,9 @@ build() {
     CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie \
              no-server no-embed-qt-translations no-update packaged" \
     DEFINES+="PLUGIN_PATH=/usr/lib/mumble" \
-    INCLUDEPATH+="/usr/include/speech-dispatcher"
+    INCLUDEPATH+="/usr/include/speech-dispatcher /usr/include/openssl-1.0" \
+    LIBS+="-lpng16 -lfreetype -lXrender -lfontconfig" \
+    QMAKE_LFLAGS+="-L/usr/lib/openssl-1.0 -lssl -lcrypto"
 
   make release
 }
