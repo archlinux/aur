@@ -4,7 +4,7 @@
 pkgname=xojo
 pkgver=2017r1
 _pkgvershort=2017r1
-pkgrel=2
+pkgrel=3
 pkgdesc="A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, the web and now with 64Bit and ARM V2 (Raspberry Pi 2) support."
 arch=(i686 x86_64)
 url="http://www.xojo.com"
@@ -34,8 +34,7 @@ package() {
 	find . -name '.DS_Store' -exec rm {} \;
 	find "./xojo$_pkgvershort/Extras" -type d \( -name 'OS X' -o -name 'Windows' -o -name 'Visual Studio*' -o -name 'Xcode' \) |
 	xargs -rtl1 -I {} rm -r {}
-	mkdir -p "$pkgdir/usr/bin" "$pkgdir/opt" "$pkgdir/usr/share/licenses/xojo"
-	# "$pkgdir/usr/lib32"
+	mkdir -p "$pkgdir/usr/bin" "$pkgdir/opt" "$pkgdir/usr/share/licenses/xojo" "$pkgdir/usr/lib32"
 	cp -r "xojo$_pkgvershort" "$pkgdir/opt/xojo"
 	##cp "xojo.xpm" "$pkgdir/opt/xojo" Now Shipped with the App again.
 	# Reparieren der Dateirechte	
@@ -46,6 +45,7 @@ package() {
 	chmod 755 "$pkgdir/opt/xojo/Xojo Libs/libc++.so.1"
 	#chmod 755 "$pkgdir/opt/xojo/Xojo Resoources/Linux/ld.mcld"
 	#chmod 755 "$pkgdir/opt/xojo/Xojo Resources/Linux/lld"
+	ln -s "/usr/lib32/libtinfo.so.6" "$pkgdir/usr/lib32/libtinfo.so.5"
 	#ln -s "/opt/xojo/Xojo Resources/Linux/libc++.so.1" "$pkgdir/usr/lib32/libc++.so.1"
 	ln -s "/opt/xojo/Xojo" "$pkgdir/usr/bin/Xojo"
 	ln -s "/opt/xojo/Extras/Lingua/Lingua Linux" "$pkgdir/usr/bin/Lingua"
