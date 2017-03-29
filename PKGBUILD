@@ -3,7 +3,7 @@
 pkgname=pycharm-professional
 pkgver=2017.1.0
 _pkgver=2017.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful Python and Django IDE. Professional edition."
 arch=('any')
 options=('!strip')
@@ -46,7 +46,7 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
 sha256sums=('6e5223fa4b50e459ad6b03d33b6184ec59791aedd97048f50588602ded6071e7'
             '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
             'c1a74303d9e870918bd8068f761c8251b996694b1b96b3537fbca317679c4958'
-            '43e79e5a786fc76385634dc0a9f1c3489b25031745b840b0822b059fc91d1060'
+            '54603a788b4ecad5d0a92e5b7fe37a98979250d2b5fd7d037759b4254b0b1607'
             'e1cf2a280d90a55710131bdf33f4026a427d10131ddd5c776a936ee1ecf5a6fb'
             '0a753ef612fa689465aceb2e8279591bca9b8ffd02ee16da0b69d32388d81303')
 

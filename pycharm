@@ -2,4 +2,4 @@
 
 [[ -f ~/.bash_profile ]] && . ~/.bash_profile
 
-sh /opt/pycharm-professional/bin/pycharm.sh
+sh /opt/pycharm-professional/bin/pycharm.sh "$@"
