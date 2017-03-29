@@ -25,7 +25,7 @@ package() {
 		chmod +x $pkgname
 	fi
 	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-	sudo install -Dm755 "$pkgdir/usr/bin/$pkgname" /usr/bin
+	#sudo install -Dm755 "$pkgdir/usr/bin/$pkgname" /usr/bin
 }
 
 # vim:set ts=2 sw=2 et:
