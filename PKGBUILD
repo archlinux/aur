@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wolf <fatmike303 at googlemail dot com>
 pkgname=acme-git
 _pkgname=acme
-pkgver=r66.181f448
+pkgver=r73.6f42edb
 pkgrel=1
 pkgdesc="A free crossassembler, that can produce code for the 6502, 6510, 65c02 and 65816 processors"
 arch=('i686' 'x86_64')
