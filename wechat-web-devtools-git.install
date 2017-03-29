@@ -1,0 +1,7 @@
+post_install() {
+	ln -s /opt/tencent/wechat_web_devtools/nw /usr/bin/wechat_web_devtools
+}
+
+post_remove() {
+	rm -f /usr/bin/wechat_web_devtools
+}

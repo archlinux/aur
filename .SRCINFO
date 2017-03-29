@@ -1,0 +1,14 @@
+pkgbase = wechat-web-devtools-git
+	pkgdesc = Wechat Web Developer Tools
+	pkgver = r13.1c8a6ad
+	pkgrel = 1
+	url = https://github.com/yuan1994/wechat_web_devtools
+	install = wechat-web-devtools-git.install
+	arch = any
+	license = unknown
+	makedepends = git
+	source = git://github.com/yuan1994/wechat_web_devtools.git
+	md5sums = SKIP
+
+pkgname = wechat-web-devtools-git
+
