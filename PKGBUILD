@@ -18,7 +18,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.2.4
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugi
          'zlib' 'zvbi' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so'
          'x265' 'snappy' 'xavs')
 depends_x86_64=('cuda')
-makedepends=('flite' 'hardening-wrapper' 'libvdpau' 'yasm' 'opencl-headers')
+makedepends=('flite' 'libvdpau' 'yasm' 'opencl-headers')
 optdepends=('avxsynth-git: for Avisynth support'
             'blackmagic-decklink-sdk: for Blackmagic DeckLink support; need to add --enable-decklink option in this PKGBUILD')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (Experimental! See PKGBUILD of that package for additional info)')
@@ -73,6 +73,8 @@ build() {
     --prefix=/usr \
     $_cflags \
     "$_ldflags" \
+    \
+    --toolchain=hardened \
     \
     --enable-rpath \
     --enable-gpl \
