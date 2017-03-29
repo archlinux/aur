@@ -11,7 +11,7 @@ pkgbase = ido-thanos
 	makedepends = gtk-doc
 	makedepends = vala
 	makedepends = xorg-util-macros
-	depends = gtk3-ubuntu
+	depends = gtk3
 	source = https://launchpad.net/ubuntu/+archive/primary/+files/ido_13.10.0+17.04.20161028.orig.tar.gz
 	md5sums = f666eda0d011305b163f9a73b553c205
 
