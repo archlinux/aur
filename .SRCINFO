@@ -1,0 +1,15 @@
+pkgbase = python-pytvmaze
+	pkgdesc = Python interface to the TV Maze API
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/pytvmaze
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	source = python-pytvmaze::git+https://github.com/srob650/pytvmaze
+	md5sums = SKIP
+
+pkgname = python-pytvmaze
+
