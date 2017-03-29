@@ -5,17 +5,14 @@ pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/syui/ipinfo/releases/download"
 license=('MIT')
-depends=('go')
 source=("$url/$pkgver/linux_amd64_$pkgname"
         "$url/$pkgver/linux_386_$pkgname")
 sha1sums=('8b8ea04b4b2188023f0c8529e93e2275bd881744'
 '20326402fe40bc69128b73bfa0d98911128b984f')
-prepare() {
-	mkdir -p "$pkgname-$pkgver"
-}
 
-build() {
-	cd "$pkgname-$pkgver"
+package() {
+	mkdir -p ${srcdir}/${pkgname}-${pkgver}
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	if [ "`uname -m`" = "x86_64" ];then
 		mv ../linux_amd64_$pkgname $pkgname 
 		chmod +x $pkgname
@@ -24,9 +21,6 @@ build() {
 		mv ../linux_386_$pkgname $pkgname 
 		chmod +x $pkgname
 	fi
+	sudo cp -rf $pkgname $pkgdir
 }
 
-package() {
-	cd "$pkgname-$pkgver"
-	sudo cp -rf $pkgname /usr/bin
-}
