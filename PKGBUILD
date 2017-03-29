@@ -1,4 +1,4 @@
-pkgname=mate-indicator-applet
+pkgname=thanos-test
 pkgver=1.18.0
 pkgrel=1
 pkgdesc="Applet to display information from various applications consistently in the MATE panel. (depends on ido-ubuntu which depends on gtk3-ubuntu)"
