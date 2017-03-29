@@ -2,13 +2,13 @@
 # Contributor: kevku <kevku@gmx.com>
 pkgname=kodi-addon-inputstream-adaptive
 pkgver=1.0.6
-pkgrel=3
+pkgrel=4
 pkgdesc="InputStream client for adaptive streams for Kodi 17+"
 arch=('x86_64' 'i686')
-url="https://github.com/liberty-developer/inputstream.adaptive"
+url="https://github.com/peak3d/inputstream.adaptive"
 license=('GPL2')
 makedepends=('kodi-dev')
-depends=('kodi-platform=20160516.c8188d8')
+depends=('kodi-platform=20170306.36fb493')
 conflicts=("${pkgname%-git}")
 source=("https://github.com/peak3d/inputstream.adaptive/archive/v${pkgver}.tar.gz")
 md5sums=('3694af673829f35a9fbafd4cd2649abe')
