@@ -32,7 +32,7 @@ makedepends+=('bdf-unifont')
 source=(grub::'git://git.savannah.gnu.org/grub.git#branch=master')
 sha256sums=('SKIP')
 
-pkgver=2.02+beta3+16+gb524fa2
+pkgver=2.02+rc2
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader: the ultimate package (git snapshot)"
 arch=(i686 x86_64)
