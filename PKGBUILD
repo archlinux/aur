@@ -14,7 +14,7 @@ _pkgver=1.3.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A voice chat application similar to TeamSpeak'
-url='http://wiki.mumble.info'
+url='https://wiki.mumble.info'
 license=('BSD')
 depends=('qt5-base' 'qt5-svg' 'speex' 'lsb-release' 'avahi' 'protobuf'
          'libpulse' 'opus' 'xdg-utils' 'speech-dispatcher' 'libpng'
