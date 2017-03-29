@@ -1,0 +1,17 @@
+pkgbase = fontdiff-git
+	pkgdesc = Tool to trace and analyze execution of a program written in C/C++
+	pkgver = 0.2.2.r2.ga3917bb
+	pkgrel = 1
+	url = https://github.com/googlei18n/fontdiff
+	arch = arm
+	arch = x86_64
+	license = Apache2
+	makedepends = git
+	provides = fontdiff
+	conflicts = fontdiff
+	options = !emptydirs
+	source = git+https://github.com/googlei18n/fontdiff.git#commit=a3917bb
+	md5sums = SKIP
+
+pkgname = fontdiff-git
+
