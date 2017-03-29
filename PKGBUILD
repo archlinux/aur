@@ -165,7 +165,8 @@ build() {
 			--sysconfdir="/etc" \
 			--with-bootdir="/boot" \
 			--with-grubdir="grub" \
-			"${_conf_none[@]}"
+			"${_conf_none[@]}" \
+			HOST_CFLAGS="$CFLAGS" HOST_LDFLAGS="$LDFLAGS" HOST_CPPFLAGS="$CPPFLAGS"
 	fi
 
 	for _item in "${pkgname[@]}"; do
