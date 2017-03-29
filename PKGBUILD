@@ -12,7 +12,7 @@ source=("https://github.com/mate-desktop/mate-indicator-applet/archive/v${pkgver
 
 build() {
     cd ${pkgname}-${pkgver}
-    "$srcdir"/${pkgname}-${$pkgver}/autogen.sh
+    "$srcdir"/${pkgname}-${pkgver}/autogen.sh
     ./configure --prefix=/usr
     make
 }
