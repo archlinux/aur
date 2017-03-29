@@ -3,7 +3,7 @@
 pkgname=bdf-naga10-git
 _gitname=naga10
 pkgver=0.11.b0daebf
-pkgrel=1
+pkgrel=2
 pkgdesc='free japanese bitmap font for X11'
 arch=('any')
 url="https://github.com/chocolatemelt/baekmuk"
