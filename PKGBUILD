@@ -26,7 +26,7 @@ if [ "$CARCH" = "i686" ]; then
 	sha1sums[0]="369da992f097e1b872a0f7d00a62361ac9192c93"
 fi
 
-source=("https://github.com/PopcornTime-CE/desktop/releases/download/v${pkgver}-${pkgrel}/popcorn-time-community-v${pkgver}-${pkgrel}-${_platform}.tar.xz"
+source=("https://github.com/PopcornTimeCommunity/desktop/releases/download/v${pkgver}-${pkgrel}/popcorn-time-community-v${pkgver}-${pkgrel}-${_platform}.tar.xz"
 	"popcorntime-ce.install"
 	"popcorntime-ce.desktop")
 
