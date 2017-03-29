@@ -3,13 +3,13 @@
 # Contributor: Janne Haapsaari  <iki.fi: haaja>
 
 pkgname=hfstospell-git
-pkgver=0.4.1.r5.g6d359c0
+pkgver=0.4.5.r0.gd791a41
 pkgrel=1
 pkgdesc='Helsinki Finite-State Transducer Technology (HFST) tools'
 arch=('i686' 'x86_64')
 url='https://hfst.github.io/'
 license=('APACHE')
-depends=('libxml++' 'libarchive' 'icu')
+depends=('libxml++2.6' 'libarchive' 'icu')
 makedepends=('git')
 provides=(${pkgname%-*}=$pkgver)
 conflicts=(${pkgname%-*})
