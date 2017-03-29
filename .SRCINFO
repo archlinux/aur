@@ -1,0 +1,20 @@
+pkgbase = sc-im-git
+	pkgdesc = A spreadsheet program based on SC
+	pkgver = current
+	pkgrel = 1
+	url = https://github.com/andmarti1424/sc-im
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libxml2
+	depends = libzip
+	optdepends = libxlsxwriter: export to xlsx
+	conflicts = scim-spreadsheet
+	conflicts = sc-im
+	source = git://github.com/andmarti1424/sc-im
+	source = arch.patch
+	md5sums = SKIP
+	md5sums = 9a71ebf916378831bc1600d3581a126b
+
+pkgname = sc-im-git
+
