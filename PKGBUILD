@@ -15,7 +15,8 @@ optdepends=('radeon-profile-daemon: system daemon for reading card info'
 	'mesa-demos: for glxinfo'
 	'xorg-xdriinfo: display driver name'
 	'xorg-xrandr: show card connected outputs'
-	'xf86-video-ati: radeon open source driver')
+	'xf86-video-ati: radeon open source driver'
+	'xf86-video-amdgpu: amdgpu open source driver')
 provides=('radeon-profile')
 replaces=('radeon-profile')
 source=("git+https://github.com/marazmista/radeon-profile.git")
