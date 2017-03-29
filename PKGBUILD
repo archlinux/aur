@@ -1,111 +1,160 @@
-# Maintainer: Que Quotion ( quequotion at g mail dot com )
-# Contributors: Det, Charles Bos, Xiao-Long Chen, Christopher Reimer, Que Quotion
-# Based on gtk3 trunk: https://projects.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/gtk3
+# Maintainer: Que Quotion <quequotion@bugmenot.com>
+# Contributors: Michael Healy <horsemanoffaith@gmail.com>
+# Contributor: Christopher Reimer <github@creimer.net>
+
+_use_ppa=true
 
 pkgbase=gtk3-ubuntu-multilib
-pkgname=({lib32-,}gtk3-ubuntu-multilib)
-ubuntuver=3.18.9
-pkgver=3.20.3
-_debrel=1ubuntu3
-pkgrel=5
-pkgdesc="GObject-based multi-platform toolkit with Canonical patchset (multarch)"
-depends=(adwaita-icon-theme gtk-update-icon-cache shared-mime-info)
+pkgname=({lib32-,}gtk3-ubuntu)
+_ubuntu_rel=1ubuntu2~ubuntu16.10.1
+pkgver=3.22.7
+pkgrel=2
+pkgdesc="GObject-based multi-platform toolkit"
+arch=(i686 x86_64)
+url="http://www.gtk.org/"
+pkgdesc="GObject-based multi-platform toolkit (v3) from Ubuntu"
+depends=(adwaita-icon-theme gtk-update-icon-cache desktop-file-utils shared-mime-info wayland-protocols)
+makedepends=(gobject-introspection gtk-doc)
 arch=(i686 x86_64)
 url="https://launchpad.net/ubuntu/+source/gtk+3.0/"
 license=(LGPL)
-source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz
-        https://launchpad.net/ubuntu/+archive/primary/+files/gtk+3.0_$ubuntuver-$_debrel.debian.tar.xz
-        settings.ini)
-sha256sums=('3834f3bf23b260b3e5ebfea41102e2026a8af29e36c3620edf4a5cf05e82f694'
-            '42ed3bb7e66394612a0eeb25e75004f80ad7bcb580b999f65025341406b00733'
-            '14369dfd1d325c393e17c105d5d5cc5501663277bd4047ea04a50abb3cfbd119')
+source=("https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz"
+	settings.ini
+        gtk-query-immodules-3.0.hook
+        lib32-gtk-query-immodules-3.0.hook)
+
+if [[ "${_use_ppa}" != "true" ]]; then
+  source+=("https://launchpad.net/ubuntu/+archive/primary/+files/gtk+3.0_${_ubuntu_ver:-${pkgver}}-${_ubuntu_rel}.debian.tar.xz")
+else
+  source+=("http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/g/gtk+3.0/gtk+3.0_${_ubuntu_ver:-${pkgver}}-${_ubuntu_rel}.debian.tar.xz")
+fi
+sha256sums=('a3a27564bfb1679ebbc75c37cd2bcd6e727c8bdfbcd3984d29305bf9ee60d432'
+            '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
+            'de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845'
+            '141797a0b5cad8273ef66019b32ca70a41d3992f9884feab843cef455bde028a'
+            '00944de9b032d7b0aa839869187f6084b93b359370501b1d7497a62bf06e13c6')
 
 prepare() {
-  cd "gtk+-$pkgver"
+    cd "gtk+-${pkgver}"
+
+
+#    [[ "${i}" == some-patch.patch ]] && continue
 
   # Apply Patches
   for i in $(grep -v '#' "$srcdir/debian/patches/series" | sort); do
-    [[ "${i}" =~ ^# || -z "${i}" || "${i}" == *git* ]] && continue # Skip comments, newlines, and git patches
-    [[ "${i}" == message-dialog-restore-traditional-look-on-unity.patch ]] && continue
-    [[ "${i}" == uimanager-guard-against-nested-node-updates.patch ]] && continue
-    [[ "${i}" == unity-border-radius.patch ]] && continue
-    [[ "${i}" == unity-headerbar-maximized-mode.patch ]] && continue
-    [[ "${i}" == x-canonical-accel.patch ]] && continue
+    [[ "${i}" =~ ^# || -z "${i}" ]] && continue # Skip comments and newlines
     msg2 "Applying $i ..."
     patch -p1 -i "$srcdir/debian/patches/$i"
   done
+
+    NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd "gtk+-$pkgver"
+    cd "gtk+-${pkgver}"
 
   #Build native libraries
   [[ -d build-x86_64 ]] || mkdir build-x86_64
   pushd build-x86_64
 
-  CXX=/bin/false ../autogen.sh --prefix=/usr \
-      --sysconfdir=/etc \
-      --localstatedir=/var \
-      --enable-gtk2-dependency \
-      --disable-schemas-compile \
-      --enable-{x11,broadway,wayland}-backend 
+    CXX=/bin/false ../configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var \
+        --disable-schemas-compile \
+        --enable-x11-backend \
+        --enable-broadway-backend \
+        --enable-wayland-backend \
+        --enable-gtk-doc
 
-  #https://bugzilla.gnome.org/show_bug.cgi?id=655517
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+    #https://bugzilla.gnome.org/show_bug.cgi?id=655517
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
-  make
+    make
   popd
 
   #Build 32bit libraries
   [[ -d build-i686 ]] || mkdir build-i686
   pushd build-i686
 
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export LDFLAGS+=' -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-  
-  export GTK_IM_MODULE_FILE='gtk.immodules-32'
-  CXX=/bin/false ../autogen.sh --prefix=/usr \
-      --sysconfdir=/etc \
-      --localstatedir=/var \
-      --enable-gtk2-dependency \
-      --disable-schemas-compile \
-      --enable-{x11,broadway,wayland}-backend \
-      --lib{exec,}dir=/usr/lib32 \
-      --build=i686-pc-linux-gnu 
+    export CC='gcc -m32'
+    export CXX='g++ -m32'
+    export LDFLAGS+=' -m32'
+    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+    export GTK_IM_MODULE_FILE='gtk.immodules-32'
 
-  #https://bugzilla.gnome.org/show_bug.cgi?id=655517
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+    CXX=/bin/false ../configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --localstatedir=/var \
+        --disable-schemas-compile \
+        --enable-x11-backend \
+        --enable-broadway-backend \
+        --enable-wayland-backend \
+        --program-suffix="-32" \
+        --lib{exec,}dir=/usr/lib32 \
+        --build=i686-pc-linux-gnu
 
-  make
+    #https://bugzilla.gnome.org/show_bug.cgi?id=655517
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
+    make
   popd
 }
 
-package_gtk3-ubuntu-multilib() {
-  depends+=(glib2 atk cairo pango colord at-spi2-atk wayland 
-lib{cups,x{cursor,inerama,randr,i,composite,damage,kbcommon,11,ext}})
-  makedepends=(gobject-introspection python2)
-  provides=(gtk{3{,-ubuntu},-update-icon-cache}=${pkgver})
-  conflicts=(gtk{3{,-ubuntu},-update-icon-cache})
+package_gtk3-ubuntu() {
+  depends+=(at-spi2-atk atk cairo colord gdk-pixbuf2 
+            json-glib pango rest wayland
+            lib{cups,epoxy,rsvg,xcomposite,xcursor,xdamage,xi,xinerama,xkbcommon,xrandr})
+  makedepends+=(libcanberra)
+  optdepends=('libcanberra: gtk3-widget-factory demo')
+  provides=(gtk3{,-ubuntu}=${pkgver})
+  conflicts=('gtk3')
   install=gtk3-ubuntu.install
+
   cd "gtk+-$pkgver/build-x86_64"
+
   make DESTDIR="$pkgdir" install
-  install -Dm644 ../../settings.ini "$pkgdir/usr/share/gtk-3.0/settings.ini"
+  install -Dm644 ../../settings.ini "${pkgdir}"/usr/share/gtk-3.0/settings.ini
+  install -Dm644 ../../gtk-query-immodules-3.0.hook "${pkgdir}"/usr/share/libalpm/hooks/gtk-query-immodules-3.0.hook
+
+  rm "${pkgdir}"/usr/bin/gtk-update-icon-cache
+
+  cd "$pkgdir"
+  for _f in usr/lib/*/*/printbackends/*; do
+      case $_f in
+          *-file.so|*-lpr.so) continue ;;
+          *) rm "${_f}" ;;
+      esac
+  done
 }
 
-package_lib32-gtk3-ubuntu-multilib() {
+package_lib32-gtk3-ubuntu() {
   pkgdesc+=" (32bit)"
-  depends+=(lib32-{glib2,atk,cairo,pango,colord,at-spi2-atk,wayland,lib{cups,x{cursor,inerama,randr,i,composite,damage,kbcommon,11,ext}}})
-  makedepends=(lib32-{gobject-introspection,python2} 'gcc-multilib')
-  provides=(lib32-gtk{3{,-ubuntu},-update-icon-cache}=${pkgver})
-  conflicts=(lib32-gtk{3{,-ubuntu},-update-icon-cache})
+  depends+=(lib32-{at-spi2-atk,atk,cairo,colord,gdk-pixbuf2,json-glib,pango,rest,wayland}
+            lib32-lib{cups,epoxy,rsvg,xcomposite,xcursor,xdamage,xi,xinerama,xkbcommon,xrandr})
+  makedepends+=(lib32-libcanberra)
+  optdepends=('lib32-libcanberra: gtk3-widget-factory demo')
+  provides=(lib32-gtk3{,-ubuntu}=${pkgver})
+  conflicts=('lib32-gtk3')
   install=lib32-gtk3-ubuntu.install
+
   cd "gtk+-$pkgver/build-i686"
+
   make DESTDIR="$pkgdir" install
+  install -Dm644 ../../lib32-gtk-query-immodules-3.0.hook "${pkgdir}"/usr/share/libalpm/hooks/lib32-gtk-query-immodules-3.0.hook
 
-  rm -rf "${pkgdir}"/{etc,usr/{share,include}} # needs bin/
-
-  mv "${pkgdir}"/usr/bin/gtk-query-immodules-3.0{,-32}
+  rm -rf "${pkgdir}"/{etc,usr/{share,include}} # needs bin/gtk-query-immodules-3.0-32
   find "$pkgdir/usr/bin" -type f -not -name gtk-query-immodules-3.0-32 -delete
+
+  #rm "${pkgdir}"/usr/bin/gtk-update-icon-cache-32
+
+  cd "$pkgdir"
+  for _f in usr/lib32/*/*/printbackends/*; do
+      case $_f in
+          *-file.so|*-lpr.so) continue ;;
+          *) rm "${_f}" ;;
+      esac
+  done
+
 }
