@@ -23,8 +23,8 @@ pkgbase = swift-bin
 	source = https://swift.org/builds/swift-3.1-release/ubuntu1604/swift-3.1-RELEASE/swift-3.1-RELEASE-ubuntu16.04.tar.gz
 	source = https://swift.org/builds/swift-3.1-release/ubuntu1604/swift-3.1-RELEASE/swift-3.1-RELEASE-ubuntu16.04.tar.gz.sig
 	validpgpkeys = A3BAFD3556A59079C06894BD63BC1CFE91D306C6
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = ed70045a3b5afd89353eeedda26711e04dd7c6fc26dc47b3189a12bbdabc3308
+	sha256sums = 22c3ab87a0468778c5d74e267f741568d708d43ac48c08f8aa96f8f421ace3db
 
 pkgname = swift-bin
 

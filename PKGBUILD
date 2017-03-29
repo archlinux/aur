@@ -20,8 +20,8 @@ source=(
   "https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz"
   "https://swift.org/builds/swift-${_version}-release/ubuntu1604/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu16.04.tar.gz.sig"
 )
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('ed70045a3b5afd89353eeedda26711e04dd7c6fc26dc47b3189a12bbdabc3308'
+            '22c3ab87a0468778c5d74e267f741568d708d43ac48c08f8aa96f8f421ace3db')
 
 package() {
     tar -C "$pkgdir" -xf "swift-${_version}-RELEASE"*.tar.gz --strip 1
