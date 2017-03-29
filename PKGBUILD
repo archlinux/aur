@@ -12,7 +12,7 @@ depends=('qt5-webkit-ng')
 provides=('zsurf=$pkgver')
 conflicts=('zsurf')
 
-source=("git+https://github.com/SteveDeFacto/zsurf.git")
+source=("git+https://github.com/SteveDeFacto/zsurf/tree/zsurf-webkit.git")
 
 build() {
 	cd zsurf
