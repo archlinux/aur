@@ -2,7 +2,7 @@
 
 pkgname=(python2-openbabel)
 pkgver=2.4.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A library designed to interconvert between many file formats used in molecular modeling and computational chemistry: Python2 bindings"
 arch=('i686' 'x86_64')
 depends=('python2' 'openbabel')
