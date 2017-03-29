@@ -8,6 +8,7 @@ pkgdesc="A Darwin/OS X emulation layer for Linux"
 arch=('x86_64') # Can only be built on x86_64 systems
 url="http://www.darlinghq.org"
 license=('GPL3')
+install=$pkgname.install
 groups=('darling-git')
 depends=('darling-mach-dkms-git' 'xz' 'fuse' 'libxml2' 'icu' 'openssl' 'bzip2' 'zlib' 'libsystemd'
 	'wget' 'curl' 'sqlite' 'ruby' 'sed' 'libarchive' 'file' 'python' 'gawk' 'libunwind') # namcap complains about them
@@ -49,4 +50,5 @@ build() {
 package() {
 	cd "$srcdir/$_gitname/build"
 	make DESTDIR="$pkgdir" install
+	install -Dvm755 "$srcdir/$_gitname/src/setup-ld-so.sh" "$pkgdir/usr/bin/darling-setup-ld-so"
 }
