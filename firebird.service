@@ -7,8 +7,7 @@ User=firebird
 Group=firebird
 Type=forking
 PIDFile=/run/firebird/default.pid
-Environment=FIREBIRD=/opt/firebird/
-ExecStart=/opt/firebird/bin/fbguard -pidfile /run/firebird/default.pid -daemon -forever
+ExecStart=/usr/lib/firebird/bin/fbguard -pidfile /run/firebird/default.pid -daemon -forever
 SyslogIdentifier=firebird
 
 [Install]

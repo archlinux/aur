@@ -1,31 +1,57 @@
-# Maintainer: Benjamin Bukowski <benjamin.bukowski@gmail.com>
+# Maintainer: Benjamin Bukowski <bbukowski@posteo.de>
 pkgname=firebird-superserver
-pkgver=2.5.6.27020
+pkgver=2.5.7.27050
 pkgrel=1
 pkgdesc="A open source SQL relational database management system (RDMS)"
 arch=('i686' 'x86_64')
 url="http://www.firebirdsql.org/"
 license=('custom:IPL' 'custom:IDPL')
-provides=("libfbclient=${pkgver}")
 depends=('icu' 'libedit')
+provides=("libfbclient=${pkgver}")
 conflicts=('firebird-classicserver' 'libfbclient')
 options=('!makeflags')
 install=firebird-superserver.install
 
 source=("http://downloads.sourceforge.net/firebird/Firebird-$pkgver-0.tar.bz2"
+        'default.password'
         'firebird-tmpfiles.conf'
-        'firebird-systemd.service')
-md5sums=('5514798d5dca8c3525525c61cf35283e'
-         '98eff99fd8d195a45c251610d67bd473'
-         'ee9068e9bfdfa01e9dc79c72d1bfcdd8')
+        'firebird-sysusers.conf'
+        'firebird.service')
+
+md5sums=('fb34241e96f9707604bf6cd78357d5a2'
+         'ee601f52f1ba2481fe1f05b25d000bb8'
+         '79a1416e307e4dfb99640311b8defe07'
+         'a43ab472f4d95e48ac21910bb33a5e86'
+         'a830324550a9009150839386cd70f2bc')
 
 build() {
   cd $srcdir/Firebird-$pkgver-0
-  
-  ./autogen.sh --prefix=/opt/firebird --libdir=/usr/lib --includedir=/usr/include \
-               --enable-superserver --with-system-icu --with-system-editline
 
-  make CXXFLAGS='-std=gnu++98 -flifetime-dse=1'
+  ./autogen.sh \
+    --prefix=/usr \
+    --with-fbbin=/usr/bin \
+    --with-fbconf=/etc/firebird \
+    --with-fbdoc=/usr/share/doc/firebird \
+    --with-fbglock=/run/firebird \
+    --with-fbhelp=/usr/share/doc/firebird/help \
+    --with-fbinclude=/usr/include/firebird \
+    --with-fblib=/usr/lib \
+    --with-fblock=/run/firebird \
+    --with-fblog=/var/log/ \
+    --with-fbmsg=/var/lib/firebird/system \
+    --with-fbplugins=/usr/lib/firebird/plugins \
+    --with-fbsbin=/usr/lib/firebird/bin \
+    --with-fbudf=/usr/lib/firebird/UDF \
+    --with-fbsecure-db=/var/lib/firebird/system \
+    --with-fbintl=/usr/lib/firebird/intl \
+    --without-fbmisc \
+    --without-fbsample \
+    --without-fbsample-db \
+    --enable-superserver \
+    --with-system-icu \
+    --with-system-editline
+
+  CXXFLAGS+=' -std=gnu++98 -flifetime-dse=1' make
 }
 
 package() {
@@ -37,37 +63,22 @@ package() {
   
   cp -av gen/buildroot/* $pkgdir/
   
-  install -Dm644 $srcdir/firebird-systemd.service $pkgdir/usr/lib/systemd/system/firebird.service
   install -Dm644 $srcdir/firebird-tmpfiles.conf $pkgdir/usr/lib/tmpfiles.d/firebird.conf
-  install -Dm644 $pkgdir/opt/firebird/IPLicense.txt $pkgdir/usr/share/licenses/IPLicense.txt
-  install -Dm644 $pkgdir/opt/firebird/IDPLicense.txt $pkgdir/usr/share/licenses/IDPLicense.txt
-  touch $pkgdir/opt/firebird/{fb_guard,firebird.log}
+  install -Dm644 $srcdir/firebird-sysusers.conf $pkgdir/usr/lib/sysusers.d/firebird.conf
+  install -Dm644 $srcdir/firebird.service $pkgdir/usr/lib/systemd/system/firebird.service
+  install -Dm440 $srcdir/default.password $pkgdir/var/lib/firebird/system/SYSDBA.password
+  install -Dm644 $pkgdir/etc/firebird/I{,D}PLicense.txt -t $pkgdir/usr/share/licenses/${pkgname}
   
-  rm $pkgdir/opt/firebird/I{,D}PLicense.txt
- 
-  cat << EOT > $pkgdir/opt/firebird/SYSDBA.password
-# This is the default password
-# You should change this password at the earliest oportunity
-# Your password can be changed to a more suitable one using the
-# /opt/firebird/bin/gsec utility
-ISC_USER=SYSDBA
-ISC_PASSWD=masterkey
-EOT
+  # Remove unused files and dirs
+  rm $pkgdir/etc/firebird/I{,D}PLicense.txt
+  rm $pkgdir/etc/firebird/README
+  rm $pkgdir/etc/firebird/WhatsNew
+  rm -rf $pkgdir/var/log
+  rm -rf $pkgdir/run
 
-  if [ -x $pkgdir/opt/firebird/bin/fbmgr.bin ]; then
-    cat > $pkgdir/opt/firebird/bin/fbmgr << EOT
-#!/bin/sh
-FIREBIRD=/opt/firebird
-export FIREBIRD
-exec /opt/firebird/bin/fbmgr.bin \$@
-EOT
-  fi
-
-  chmod u=rw,go= $pkgdir/opt/firebird/{fb_guard,firebird.log,security2.fdb}
-  chmod -R ugo-w $pkgdir/opt/firebird/examples
-  chmod u=r,go= $pkgdir/opt/firebird/SYSDBA.password
-  chmod ugo+x $pkgdir/opt/firebird/bin/fbmgr
+  chmod -R ugo-w $pkgdir/usr/share/doc/firebird
+  chmod -R o= $pkgdir/var/lib/firebird
+  chown -R 184:184 $pkgdir/var/lib/firebird
 }
-
 
 # vim:set ts=2 sw=2 et:
