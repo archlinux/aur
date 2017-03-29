@@ -2,13 +2,13 @@
 
 pkgname=janus-gateway
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="WebRTC gateway."
 arch=('i686' 'x86_64')
 url="http://janus.conf.meetecho.com/"
 license=('GPL3')
 depends=('libmicrohttpd' 'jansson' 'libnice' 'openssl' 'libsrtp'
-         'sofia-sip' 'libusrsctp-git' 'libwebsockets15' 'libevent' 
+         'sofia-sip' 'libusrsctp-git' 'libwebsockets' 'libevent' 
          'librabbitmq-c' 'opus' 'libogg' 'glib2' 'ding-libs')
 makedepends=('gengetopt' 'paho-mqtt-c-git')
 provides=(janus-gateway)
