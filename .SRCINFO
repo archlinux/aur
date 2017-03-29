@@ -1,6 +1,6 @@
 pkgbase = perl-pod-projectdocs
 	pkgdesc = generates CPAN like pod pages
-	pkgver = 0.42
+	pkgver = 0.45
 	pkgrel = 1
 	url = https://metacpan.org/release/Pod-ProjectDocs
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = perl-pod-projectdocs
 	depends = perl-template-toolkit>=0
 	depends = perl-uri>=0
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MG/MGRUNER/Pod-ProjectDocs-0.42.tar.gz
-	md5sums = 734ebac24108ca7a91d68476bd3e10e2
-	sha512sums = 79641f3c40aa5068d9a804d946ee3a511a7e63e03d3dc5261465d7125de2e23144990acb8659ccefbd55e31ab466194ee2ba45be2efc22ffe2b07b72e200abfc
+	source = http://search.cpan.org/CPAN/authors/id/M/MG/MGRUNER/Pod-ProjectDocs-0.45.tar.gz
+	md5sums = 798311787a9e64746088dd66a4863066
+	sha512sums = 48293ba30805c24c35f1e72c8cea480a65d600bd60e95c8e57b29158c01dbc116cf6edaf9c2641fa2f6bd585dfec7d11f63281167f1bab7caa9c9bc884b273ae
 
 pkgname = perl-pod-projectdocs
 
