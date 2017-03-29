@@ -2,15 +2,15 @@
 
 pkgname=glib-networking
 pkgver=2.50.0
-pkgrel=1
-pkgdesc="Network-related giomodules for glib"
-url="https://git.gnome.org/browse/glib-networking/"
+pkgrel=2
+pkgdesc="Network extensions for GLib"
+url="https://git.gnome.org/browse/glib-networking"
 arch=(i686 x86_64)
 license=(GPL2)
 depends=(glib2 libproxy gnutls ca-certificates gsettings-desktop-schemas)
 makedepends=(intltool git)
-_commit=e5fb3e2a0463097812b301a2ba60d7e60d90845b
-source=("git://git.gnome.org/glib-networking#commit=$_commit")
+_commit=e5fb3e2a0463097812b301a2ba60d7e60d90845b  # tags/2.50.0^0
+source=("git+https://git.gnome.org/browse/glib-networking#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -33,12 +33,12 @@ build() {
 
 check() {
   cd $pkgname
-  make -j1 -k check
+  make check
 }
 
 package() {
   cd $pkgname
-  make DESTDIR="$pkgdir" install testfiles_DATA=
+  make DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
