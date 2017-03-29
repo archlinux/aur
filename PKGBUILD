@@ -1,7 +1,7 @@
 ##PKGBUILD
 pkgname=hedera-theme-git
 pkgver=0.r1.487359f
-pkgrel=2
+pkgrel=3
 pkgdesc='Eye-friendly GUIKit based on breeze'
 arch=('x86_64')
 url='https://github.com/sixsixfive/Hedera/blob/master/readme.md'
@@ -12,7 +12,7 @@ optdepends=('qt5ct-svg: needed for the darker sub theme'
 		'breeze-kde4: for qt4'
 		'gtk2: gtk2'
 		'gtk-engines: gtk2'
-		'gtk-engines-murrine: gtk2'
+		'gtk-engine-murrine: gtk2'
 		'gtk3>=3.20: gtk3'
 		'gtk3-noosb: gtk3'
 		'gtk3-nocsd-git: optional for gtk3'
