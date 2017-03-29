@@ -2,7 +2,7 @@
 
 pkgname=bdf-naga10-git
 _gitname=naga10
-pkgver=0.7.9b33067
+pkgver=0.10.a52a450
 pkgrel=1
 pkgdesc='free japanese bitmap font for X11'
 arch=('any')
@@ -23,4 +23,5 @@ package() {
   make all
   install -d -m755 "$pkgdir/usr/share/fonts/misc/"
   install -m644 -t "$pkgdir/usr/share/fonts/misc/" out/*.pcf.gz
+	./alias.sh
 }
