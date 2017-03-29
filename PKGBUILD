@@ -2,7 +2,7 @@
 
 pkgname=radeon-profile-git
 pkgver=20161221.r13.g4385106
-pkgrel=2
+pkgrel=3
 pkgdesc="App for display info about radeon card"
 url="http://github.com/marazmista/radeon-profile"
 arch=('i686' 'x86_64')
