@@ -1,7 +1,7 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=yafaray-blender-exporter-git
-pkgver=757.3ccc50e
-_blendver=2.77
+pkgver=789.7dc44f2
+_blendver=2.78
 pkgrel=1
 pkgdesc="Blender exporter for YafaRay"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ package() {
 
   # fix paths so the plugin is able to find the required files
   sed -i 's|^BIN_PATH = .*|BIN_PATH = "/usr/bin"|' "$pkgdir/usr/share/blender/$_blendver/scripts/addons/yafaray/__init__.py"
-  sed -i 's|^PLUGIN_PATH = .*|PLUGIN_PATH = "/usr/lib/yafaray"|' "$pkgdir/usr/share/blender/$_blendver/scripts/addons/yafaray/__init__.py"
+  sed -i 's|^PLUGIN_PATH = .*|PLUGIN_PATH = "/usr/lib/yafaray-plugins"|' "$pkgdir/usr/share/blender/$_blendver/scripts/addons/yafaray/__init__.py"
 }
 
 # vim:set ts=2 sw=2 et:
