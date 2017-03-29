@@ -7,7 +7,7 @@ _fmodex=
 
 _name=qzdoom
 pkgname=${_name}
-pkgver=1.2.2
+pkgver=1.3.0.1
 pkgrel=1
 pkgdesc='Advanced Doom source port with true color renderer'
 arch=('i686' 'x86_64')
@@ -72,7 +72,6 @@ build() {
           -DGME_INCLUDE_DIR='/usr/include/gme' \
           -DFMOD_INCLUDE_DIR="${_fmodincdir}" \
           -DFMOD_LIBRARY="${_fmodlib}" \
-          -DFORCE_INTERNAL_GME=OFF \
           -DCMAKE_C_FLAGS="$CFLAGS -DSHARE_DIR=\\\"/usr/share/${_name}\\\"" \
           -DCMAKE_CXX_FLAGS="$CXXFLAGS -DSHARE_DIR=\\\"/usr/share/${_name}\\\"" \
           -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS -Wl,-z,noexecstack" \
