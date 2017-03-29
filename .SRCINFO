@@ -8,6 +8,7 @@ pkgbase = hpp-util-git
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
+	makedepends = doxygen
 	depends = boost-libs
 	depends = tinyxml
 	provides = hpp-util
