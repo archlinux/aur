@@ -1,24 +1,28 @@
-# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Geyslan G. Bem <geyslan@gmail.com>
+# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgbase="wxwidgets2.8-light"
 pkgname=('wxbase2.8-light' 'wxgtk2.8-light' 'wxcommon2.8-light')
 pkgver=2.8.12.1
-pkgrel=9
+pkgrel=10
 pkgdesc="wxWidgets suite for Base and GTK2 toolkits (GNOME/GStreamer free!)"
 arch=('i686' 'x86_64')
 url="http://wxwidgets.org"
 license=('custom:wxWindows')
-makedepends=('git' 'bash' 'glu' 'gtk2' 'libsm' 'sdl' 'expat' 'zlib')
+makedepends=('git' 'bash' 'glu' 'gtk2' 'libsm' 'sdl' 'expat' 'zlib' 'gcc-libs-multilib' 'libjpeg-turbo')
+
 source=("wxwidgets::git+https://github.com/wxWidgets/wxPython.git#tag=wxPy-${pkgver}"
         'wxwidgets-2.8-collision.patch'
         'config-2.8.conf'
         'wx-config-2.8.sh'
-        'make-abicheck-non-fatal.patch')
+        'make-abicheck-non-fatal.patch'
+        'wxGTK-2.8.12.1-r2-gcc6.patch')
 sha1sums=('SKIP'
           '75d2292a0058570aa6071b4bee6eef69e47f1208'
           '1539fb4299a05d32dc739b478986cf3b3017d1b9'
           '4156d992b8fbbdc8e596a7c4e548e90295d3cf95'
-          'dfe38650c655395b90bf082b5734c4093508bfa3')
+          'dfe38650c655395b90bf082b5734c4093508bfa3'
+          'f1a3bc30ec8139d97ca239dc1bf6cbc2ceb5c5d9')
 
 prepare() {
   patch -d wxwidgets -p1 -i ../wxwidgets-2.8-collision.patch
@@ -26,6 +30,10 @@ prepare() {
   # C++ ABI check is too strict and breaks with GCC 5.1
   # https://bugzilla.redhat.com/show_bug.cgi?id=1200611
   patch -d wxwidgets -Np1 -i ../make-abicheck-non-fatal.patch
+
+  # fix gcc6 narrowing error
+  # https://bugs.gentoo.org/show_bug.cgi?id=592442
+  patch -d wxwidgets -p1 -i ../wxGTK-2.8.12.1-r2-gcc6.patch
 
   mkdir -p build-{base,gtk}
 }
@@ -58,7 +66,7 @@ build() {
 
 package_wxbase2.8-light() {
   pkgdesc="wxWidgets 2.8 Base (GNOME/GStreamer free!)"
-  depends=('wxcommon2.8-light' 'expat' 'zlib')
+  depends=('wxcommon2.8-light' 'expat' 'zlib' 'gcc-libs-multilib')
   provides=("wxbase2.8=${pkgver}")
   conflicts=('wxbase2.8')
   options=('!emptydirs')
@@ -74,7 +82,7 @@ package_wxbase2.8-light() {
 
 package_wxgtk2.8-light() {
   pkgdesc="wxWidgets 2.8 with GTK2 Toolkit (GNOME/GStreamer free!)"
-  depends=('wxbase2.8-light' 'gtk2' 'libsm' 'sdl')
+  depends=('wxbase2.8-light' 'gtk2' 'libsm' 'sdl' 'gcc-libs-multilib' 'libjpeg-turbo')
   provides=("wxgtk2.8=${pkgver}")
   conflicts=('wxgtk2.8')
   options=('!emptydirs')
