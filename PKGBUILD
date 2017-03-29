@@ -1,7 +1,7 @@
 # Maintainer: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
 
 _npmname=livereload
-_npmver=0.6.0
+_npmver=0.6.2
 pkgname=nodejs-${_npmname} # All lowercase
 pkgver=${_npmver}
 pkgrel=1
@@ -13,7 +13,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('ac02fe5b5e8b3ab768e14c7eb9bc6a9b0b37cef2')
+sha1sums=('bcd7c3f179cb0b21e2aafde22ecc7276fb44483e')
 
 package() {
   cd "$srcdir"

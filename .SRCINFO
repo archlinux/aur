@@ -1,15 +1,15 @@
 pkgbase = nodejs-livereload
 	pkgdesc = An implementation of the LiveReload server in Node.js
-	pkgver = 0.6.0
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/napcs/node-livereload/
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = livereload-0.6.0.tgz
-	source = https://registry.npmjs.org/livereload/-/livereload-0.6.0.tgz
-	sha1sums = ac02fe5b5e8b3ab768e14c7eb9bc6a9b0b37cef2
+	noextract = livereload-0.6.2.tgz
+	source = https://registry.npmjs.org/livereload/-/livereload-0.6.2.tgz
+	sha1sums = bcd7c3f179cb0b21e2aafde22ecc7276fb44483e
 
 pkgname = nodejs-livereload
 
