@@ -1,7 +1,7 @@
 ##PKGBUILD
 pkgname=hedera-theme-git
 pkgver=0.r1.487359f
-pkgrel=3
+pkgrel=5
 pkgdesc='Eye-friendly GUIKit based on breeze'
 arch=('x86_64')
 url='https://github.com/sixsixfive/Hedera/blob/master/readme.md'
@@ -34,6 +34,17 @@ pkgver() {
 
 package() {
   cd $srcdir/$gitname
-	install -dm 755 "$pkgdir"/usr/share
+	install -dm 755 "$pkgdir"/usr/share/
+  install -dm 755 "$pkgdir"/usr/share/kf5/infopage/
+  install -dm 755 "$pkgdir"/usr/share/kde4/apps/kdeui/about/
+  install -dm 755 "$pkgdir"/etc/
+  install -dm 755 "$pkgdir"/etc/xdg/
+  install -dm 755 "$pkgdir"/etc/X11/Xsession.d/
+  install -dm 755 "$pkgdir"/etc/gtk-{2.0,3.0}
+
+  #Installing Themes
 	cp -drv --no-preserve='ownership' THEME/* $pkgdir/usr/share/
+
+  #Install configs
+  cp -drv --no-preserve='ownership' MANUAL/Configs/etc/* "$pkgdir"/etc/
 }
