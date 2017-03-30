@@ -2,7 +2,7 @@
 pkgname=medigo
 pkgver=0.1
 pkgrel=1
-pkgdesc="medium cli client, api, medigo, golang, oauth"
+pkgdesc="Command line client for Medium"
 arch=('x86_64' 'i686')
 url="https://github.com/syui/medigo"
 options=('!strip' '!emptydirs')
