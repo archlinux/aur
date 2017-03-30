@@ -1,6 +1,6 @@
 # Maintainer: Leonhard Rose<kolonigulus at gmail dot com>
 
-_npmname=storj-cli
+_npmname=storjshare-cli
 pkgname=$_npmname
 pkgver=4.0.0
 pkgrel=1
