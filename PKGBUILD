@@ -13,7 +13,7 @@ options=('!emptydirs')
 depends=('perl')
 checkdepends=('perl-test-exception')
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_module-$pkgver.tar.gz")
-md5sums=('8be88e43eb0de36a91b3f0cd200241bb')
+sha256sums=('d076317d29365420a06223b1638451dc012ce2ae77d56c7a9a25bb378953dcf3')
 
 build() {
    (
