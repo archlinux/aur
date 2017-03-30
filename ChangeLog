@@ -1,5 +1,10 @@
 2014-06-08 FoolEcho <foolecho at gmail dot com>
 
+	* 4.4.0 :
+	Updated pkgbuild, switch to sha256 sums.
+	No more dependencies (qt5-multimedia).
+	Installation directory is now in /opt/kolor.
+
 	* 4.2.3-2 :
 	Changes in the url in order not to break the package version when an upstream update occurs (suggested by Niluge_KiWi).
 
