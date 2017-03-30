@@ -1,17 +1,14 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
-
 pkgname=mkvimball
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="A vimball generator"
 arch=('i686' 'x86_64')
-url="http://drchip.0sites.net/astronaut/src/index.html#MKVIMBALL"
+url="http://www.drchip.org/astronaut/src/"
 license=('unknown')
 depends=('glibc')
 makedepends=('gcc')
-source=("mkvimball.tar.gz")
-# http://drchip.0sites.net/astronaut/src/mkvimball.tar.gz
-# is broken as of 2011-10-09.  Providing a copy from 2011-04-25.
+source=("http://www.drchip.org/astronaut/src/mkvimball.tar.gz")
 md5sums=('5822baf3be7ce6eed984d8877495491b')
 
 build() {

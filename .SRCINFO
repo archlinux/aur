@@ -1,14 +1,14 @@
 pkgbase = mkvimball
 	pkgdesc = A vimball generator
 	pkgver = 1
-	pkgrel = 1
-	url = http://drchip.0sites.net/astronaut/src/index.html#MKVIMBALL
+	pkgrel = 2
+	url = http://www.drchip.org/astronaut/src/
 	arch = i686
 	arch = x86_64
 	license = unknown
 	makedepends = gcc
 	depends = glibc
-	source = mkvimball.tar.gz
+	source = http://www.drchip.org/astronaut/src/mkvimball.tar.gz
 	md5sums = 5822baf3be7ce6eed984d8877495491b
 
 pkgname = mkvimball
