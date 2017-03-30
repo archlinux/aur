@@ -2,10 +2,13 @@
 Description=Douane Daemon
 
 [Service]
-ExecStart=/etc/init.d/douane start
-ExecStop=/etc/init.d/douane stop
-TimeoutSec=0
-RemainAfterExit=yes
+User=douane
+Group=douane
+Type=simple
+ExecStart=/usr/bin/douaned
+WorkingDirectory=/var/lib/douane
+Nice=-20
+UMask=0
 
 [Install]
 WantedBy=multi-user.target

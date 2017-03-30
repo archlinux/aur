@@ -1,0 +1,20 @@
+--- rules_manager.cpp_orig	2017-03-28 18:12:01.627561793 +0200
++++ rules_manager.cpp	2017-03-28 18:11:32.010979927 +0200
+@@ -102,7 +102,7 @@
+   }
+ 
+   Tools tools;
+-  boost::filesystem::path root_path = tools.douane_root_path();
++  boost::filesystem::path root_path = "/var/lib/douane"; //tools.douane_root_path();
+   root_path /= "rules";
+   std::ofstream rules_file;
+   rules_file.open(root_path.string().c_str());
+@@ -126,7 +126,7 @@
+   LOG4CXX_DEBUG(logger, "RulesManager::load_rules_from_file...");
+ 
+   Tools tools;
+-  boost::filesystem::path root_path = tools.douane_root_path();
++  boost::filesystem::path root_path = "/var/lib/douane"; //tools.douane_root_path();
+   root_path /= "rules";
+   std::ifstream rules_file;
+   rules_file.open(root_path.string().c_str());

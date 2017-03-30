@@ -1,0 +1,22 @@
+--- Makefile_orig	2017-03-28 17:08:14.485547632 +0200
++++ Makefile	2017-03-28 17:09:42.824210273 +0200
+@@ -23,8 +23,8 @@
+ 	tools.o
+ 
+ INSTALL=/usr/bin/install -c
+-BINDIR=$(DESTDIR)/opt/douane
+-PIDSDIR=$(DESTDIR)/opt/douane/pids
++BINDIR=$(DESTDIR)/usr/bin
++PIDSDIR=$(DESTDIR)/var/lib/douane/pids
+ EXEC=douaned
+ 
+ all: $(EXEC)
+@@ -43,8 +43,6 @@
+ 
+ install: $(EXEC)
+ 	test -d $(BINDIR) || mkdir -p $(BINDIR)
+-	test -d $(DESTDIR)/etc/init.d/ || mkdir -p $(DESTDIR)/etc/init.d/
+ 	test -d $(DESTDIR)/etc/dbus-1/system.d/ || mkdir -p $(DESTDIR)/etc/dbus-1/system.d/
+ 	install -m 0500 $(EXEC) $(BINDIR)
+-	install -m 0755 init.d/douane $(DESTDIR)/etc/init.d/
+ 	install -m 0644 system.d/org.zedroot.Douane.conf $(DESTDIR)/etc/dbus-1/system.d/

@@ -1,0 +1,19 @@
+diff --git a/main.cpp b/main.cpp
+index 132c472..a5acfa9 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -321,11 +321,14 @@ int main(int argc, char * argv[])
+   } catch(const std::exception &e)
+   {
+     LOG4CXX_ERROR(logger, e.what());
++    return EXIT_FAILURE;
+   } catch (const std::string &e)
+   {
+     LOG4CXX_ERROR(logger, e);
++    return EXIT_FAILURE;
+   } catch(...)
+   {
+     LOG4CXX_ERROR(logger, "Unknown error occured!");
++    return EXIT_FAILURE;
+   }
+ }

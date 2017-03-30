@@ -1,0 +1,18 @@
+post_install() {
+  getent group douane > /dev/null || groupadd -r douane > /dev/null
+  getent passwd douane > /dev/null || useradd -g douane douane > /dev/null
+  post_upgrade
+}
+
+post_upgrade() {
+  touch /var/log/douane.log
+  chown -R douane:douane /var/lib/douane \
+                         /var/log/douane.log \
+		         /usr/bin/douaned
+}
+
+post_remove() {
+   userdel -rf douane
+   groupdel douane
+}
+
