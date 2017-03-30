@@ -3,13 +3,13 @@ _pkgname=SimpleITK
 pkgname=simpleitk
 pkgver=1.0rc3
 _pypkgver=1.0.0rc3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simplified layer built on top of ITK, intended to facilitate its use in rapid prototyping, education, interpreted languages."
 arch=('i686' 'x86_64')
 url="http://www.simpleitk.org/"
 license=('Apache')
 depends=('gcc-libs' 'insight-toolkit>=4.11.0')
-makedepends=('cmake' 'clang' 'git' 'lua51' 'mono' 'python' 'python-pip' 'python-virtualenv' 'python-numpy' 'r' 'ruby' 'swig' 'tcl' 'tk')
+makedepends=('cmake' 'git' 'lua51' 'mono' 'python' 'python-pip' 'python-virtualenv' 'python-numpy' 'r' 'ruby' 'swig' 'tcl' 'tk')
 optdepends=(
     'lua51: Lua bindings'
     'mono: C# bindings'
@@ -41,11 +41,6 @@ prepare() {
 build() {
     cd "$_pkgname/build"
 
-    export CC=clang
-    export CXX=clang++
-    export CXXFLAGS="-std=c++11 $CXXFLAGS"
-    export CPP="clang -E"
-
     # TODO: Java binding is broken with swig 3.0.9 and openjdk8
     cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -64,11 +59,6 @@ package() {
     _builddir="$srcdir/$_pkgname/build"
 
     cd $_builddir
-
-    export CC=clang
-    export CXX=clang++
-    export CXXFLAGS="-std=c++11 $CXXFLAGS"
-    export CPP="clang -E"
 
     make DESTDIR="$pkgdir/" install
 

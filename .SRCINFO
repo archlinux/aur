@@ -1,13 +1,12 @@
 pkgbase = simpleitk
 	pkgdesc = A simplified layer built on top of ITK, intended to facilitate its use in rapid prototyping, education, interpreted languages.
 	pkgver = 1.0rc3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.simpleitk.org/
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
-	makedepends = clang
 	makedepends = git
 	makedepends = lua51
 	makedepends = mono
