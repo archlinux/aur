@@ -2,7 +2,7 @@
 
 pkgname=wimlib
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A library and program to extract, create, and modify WIM files"
 arch=("i686" "x86_64")
 url="https://wimlib.net"
