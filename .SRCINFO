@@ -1,7 +1,7 @@
 pkgbase = wdt
 	pkgdesc = Tool to transfer data between 2 systems as fast as possible over multiple TCP paths
 	pkgver = 1.27.1612021
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/facebook/wdt
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = wdt
 	makedepends = cmake
 	makedepends = glog
 	makedepends = gflags
-	source = wdt-1.27.1612021-src.tar.gz::https://github.com/facebook/wdt/archive/v1.27.1612021.tar.gz
-	sha256sums = b0ab593b2dae0c9fefb53cc1d2e0f54397be55023a694c6bcc70b6c4f73cea0a
+	source = git+https://github.com/facebook/wdt.git
+	sha256sums = SKIP
 
 pkgname = wdt
 
