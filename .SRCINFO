@@ -1,0 +1,18 @@
+pkgbase = emoji-keyboard-git
+	pkgdesc = Virtual keyboard-like emoji picker for linux
+	pkgver = r2.79d6505
+	pkgrel = 1
+	url = https://github.com/OzymandiasTheGreat/emoji-keyboard
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-xlib
+	provides = emoji-keyboard
+	conflicts = emoji-keyboard
+	source = git://github.com/OzymandiasTheGreat/emoji-keyboard.git
+	md5sums = SKIP
+
+pkgname = emoji-keyboard-git
+
