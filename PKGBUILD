@@ -1,7 +1,7 @@
 # Maintainer: John Jenkins twodopeshaggy@gmail.com
 
 pkgname=rtv-git
-pkgver=r970.b1bf5f9
+pkgver=r996.edc40af
 pkgrel=1
 pkgdesc="Browse Reddit from your terminal"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 conflicts=('rtv')
 makedepends=('git' 'python-setuptools')
 depends=('python-beautifulsoup4' 'python-decorator' 'python3-kitchen' 'ncurses'
-'python' 'python-six' 'python-requests' 'python-praw')
+'python' 'python-six' 'python-requests')
 source=('git+https://github.com/michael-lazar/rtv.git')
 sha256sums=('SKIP')
 
