@@ -1,7 +1,7 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=red
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="An open source, native code compiled, dialect of Rebol"
 arch=('i686' 'x86_64')
 url="http://www.red-lang.org"
@@ -12,13 +12,13 @@ makedepends=('wget' 'rebol=2.7.8')
 checkdepends=('bash')
 conflicts=('ed')
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('b0d472617a420c5dd30044bdd8ae718f')
+sha256sums=('e448318e5754d7e591c7a687c250d4e41cb8ab63836ef7aa706fc05866f1bbf5')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
   rebol -qw red.r tests/hello.red
-  msg2 "Building Red Console..."
-  rebol -qw red.r environment/console/console.red  
+  msg2 "Compiling the Red console..."
+  rebol -qw red.r -r environment/console/console.red
   msg2 "Generating docs..."
   cd docs
   rebol -qw makedoc2.r red-system-specs.txt
