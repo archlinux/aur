@@ -3,7 +3,7 @@
 
 pkgname=frcmake-git
 pkgver=46.c66f929
-pkgrel=4
+pkgrel=5
 pkgdesc="Some CMake stuff for use with the VxWorks 6.3 GCC Toolchain"
 arch=(any)
 provides=('frcmake')
@@ -15,7 +15,7 @@ options=('!strip' 'libtool' '!zipman')
 source=("git+http://bitbucket.org/frc-cpp11/frcmake"
         "toolchain-cmake.patch")
 sha512sums=('SKIP'
-            'b8c1ed21eab5af8b04f17ae8699e6c5ccdb99eff943e42e2ff2a5f3baf4b157e2426e3677f5086ff1694b713fdb945fc3e21b88cb5e5b2ed65274726433f3972')
+            '81c857782abb69c41375e3e4e82394b026ca6e1d66b3206906741ba16777e6d937a086cfd5c93d813b086a49bb452075bd1fcb5b36da082955b5df9f1c2a9851')
 
 pkgver() {
   cd "${srcdir}/frcmake"

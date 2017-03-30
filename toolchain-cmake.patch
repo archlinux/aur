@@ -1,5 +1,5 @@
 diff --git a/toolchain.cmake.in b/toolchain.cmake.in
-index a913671..32aa4d8 100644
+index a913671..cb36e3b 100644
 --- a/toolchain.cmake.in
 +++ b/toolchain.cmake.in
 @@ -9,49 +9,40 @@ include(CMakeForceCompiler)
@@ -62,7 +62,7 @@ index a913671..32aa4d8 100644
 +set(VXWORKS_LIBSUPCXX "/usr/${TARGET}/lib/libsupc++.a")
 +#libgcc's location changes based on gcc, so ask compiler where it is
 +  execute_process(COMMAND "${TARGET}-gcc" -print-libgcc-file-name OUTPUT_VARIABLE VXWORKS_LIBGCC)
-+  
++
 +  #the above command leaves a newline at the end of VXWORKS_LIBGCC.
 +  #This triggers a bug in cmake's link script execution which will
 +  #segfault because it sees a blank line and passes an empty string to
@@ -101,7 +101,17 @@ index a913671..32aa4d8 100644
  #Set CFLAGS, LDFLAGS
  #Note that we use -nostdlib and then link with the standard library
  set(VXWORKS_COMPILE_FLAGS "${ARCH_SPEC} -nostdlib -Wall ${SYSTEM_INCLUDES} -DCPU=${CPU} -DTOOL_FAMILY=${TOOL_FAMILY} -DTOOL=${TOOL} -D_WRS_KERNEL")
-@@ -105,25 +85,6 @@ set(CMAKE_C_LINK_EXECUTABLE "<CMAKE_C_COMPILER> <FLAGS> <CMAKE_C_LINK_FLAGS> <LI
+@@ -97,33 +77,14 @@ set(VXWORKS_DKM_LINK_FLAGS "-nostdlib -r -Wl,-X -static") #should be equivalent
+ set(VXWORKS_DKM_LINK_SCRIPT_FLAG "-T \"${DKM_LINK_SCRIPT}\"")
+ 
+ #Set toolchain definitions
+-set(CMAKE_C_COMPILE_OBJECT "<CMAKE_C_COMPILER> <DEFINES> -c <SOURCE> -o <OBJECT> <FLAGS> ${VXWORKS_COMPILE_FLAGS}")
+-set(CMAKE_CXX_COMPILE_OBJECT "<CMAKE_CXX_COMPILER> <DEFINES> -c <SOURCE> -o <OBJECT> <FLAGS> ${VXWORKS_COMPILE_FLAGS}")
++set(CMAKE_C_COMPILE_OBJECT "<CMAKE_C_COMPILER> <DEFINES> <INCLUDES> -c <SOURCE> -o <OBJECT> <FLAGS> ${VXWORKS_COMPILE_FLAGS}")
++set(CMAKE_CXX_COMPILE_OBJECT "<CMAKE_CXX_COMPILER> <DEFINES> <INCLUDES> -c <SOURCE> -o <OBJECT> <FLAGS> ${VXWORKS_COMPILE_FLAGS}")
+ set(CMAKE_C_CREATE_STATIC_LIBRARY "<CMAKE_AR> cr <TARGET> <LINK_FLAGS> <OBJECTS>" "<CMAKE_RANLIB> <TARGET>")
+ set(CMAKE_CXX_CREATE_STATIC_LIBRARY "<CMAKE_AR> cr <TARGET> <LINK_FLAGS> <OBJECTS>" "<CMAKE_RANLIB> <TARGET>")
+ set(CMAKE_C_LINK_EXECUTABLE "<CMAKE_C_COMPILER> <FLAGS> <CMAKE_C_LINK_FLAGS> <LINK_FLAGS> <OBJECTS> -o <TARGET> ${VXWORKS_DKM_LINK_FLAGS} ${VXWORKS_DKM_LINK_SCRIPT_FLAG}")
  
  #link rules for C++:
  #TODO:  This will NOT work on win32!
@@ -127,9 +137,12 @@ index a913671..32aa4d8 100644
  #	Here's the crazy part...
  #	- The first line compiles the partial image - NOTE: notice we also link the standard library at this point
  #	- We munch the executable, which now contains the standard library as well
-@@ -138,12 +99,11 @@ else()
+@@ -136,14 +97,13 @@ else()
+ #
+ #	NOTE: We need to link in our own standard library, both to get its features and because there might be some conflicts
  #		in what symbols are defined, inline functions, and other internals between the kernel's stdlib (which is a whole
- #		major version old!) and the one we have.  Even if its just the headers, something might break.  The gccdist link 
+-#		major version old!) and the one we have.  Even if its just the headers, something might break.  The gccdist link 
++#		major version old!) and the one we have.  Even if its just the headers, something might break.  The gccdist link
  #		command might work, but I don't recommend it.
 -	set(CMAKE_CXX_LINK_EXECUTABLE 
 -		"<CMAKE_CXX_COMPILER> <FLAGS> <CMAKE_C_LINK_FLAGS> ${VXWORKS_DKM_LINK_FLAGS} <LINK_FLAGS> <OBJECTS> -o <TARGET>_PartialImage.out <LINK_LIBRARIES> ${VXWORKS_STDLIB_LINK}"
@@ -140,7 +153,7 @@ index a913671..32aa4d8 100644
 -		"<CMAKE_COMMAND> -E remove <TARGET>_PartialImage.out <TARGET>_ctdt.c <TARGET>_ctdt.c.o"
 -	)
 -endif()
-+set(CMAKE_CXX_LINK_EXECUTABLE 
++set(CMAKE_CXX_LINK_EXECUTABLE
 +  "<CMAKE_CXX_COMPILER> <FLAGS> <CMAKE_C_LINK_FLAGS> ${VXWORKS_DKM_LINK_FLAGS} <LINK_FLAGS> <OBJECTS> -o <TARGET>_PartialImage.out <LINK_LIBRARIES> ${VXWORKS_STDLIB_LINK}"
 +  "${MUNCH} <TARGET>_ctdt.c <TARGET>_PartialImage.out"
 +  "<CMAKE_C_COMPILER> -c <TARGET>_ctdt.c -o <TARGET>_ctdt.c.o ${VXWORKS_COMPILE_FLAGS}"
