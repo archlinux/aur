@@ -1,7 +1,7 @@
 # Maintainer: Fabian <plusfabi[AT+thegoogleadress]>
 pkgname=pokemon-revolution-online-bin
 pkgver=0.96.pink.weedle.20170205
-pkgrel=1
+pkgrel=2
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
 url="http://pokemon-revolution-online.net"
@@ -12,10 +12,10 @@ optdepends=('gtk2: required for the Unity ScreenSelector plugin')
 conflicts=('pokemon-revolution-online')
 install="INSTALL"
 source=('net.pokemon-revolution-online.desktop' 'pokemonrevolution' 'copyright' 'pokemonrevolution.svg')
-md5sums=('3215173b6f1673d868e71f1d953ed9d2'
-         '468427350f89449698740c8d2aae581e'
-         '0efcd0393015ff149217f9ced4670513'
-         '8446ead3097e1b87e3a63b667d956569')
+sha256sums=('27f22ea124b0737451a2684f4d845af0c691a9719fe45f071e0ef828df5f8f4a'
+            '90fd58143a8a201ec8708eda00bb332f57c0fc751c2da68aa633540a15ecf270'
+            'df736901de54dce3b191bd9744732f7b9970ab3cbdece8d7fbd7122e69ce32d5'
+            '65f2c8b708456e69ffb4823bed1d99dc82239631ca1e263cf70dff5a69ce6785')
 
 package() {
     cd "${srcdir}"
@@ -28,7 +28,7 @@ package() {
     __DLDIR=$(xdg-user-dir DOWNLOAD) ##downloaddirectory
     __DDLA="http://tiny.cc/PROLinux" ##download link
     __DDLFN="PROLinux64Weedle.zip" ##filename
-    __DDLFMD5="bea5e30c13c17374970eef9923e0ffbe" #md5sum
+    __DDLFSHA256="508a5e357083dfce85ee512fd8a494f83cd3ac57326140209afc9f513eb789c4" #sha256sum
 
     ## "Something's missing"? -> No One Cares - Atreyu c;
     if [ ! -f ${__DLDIR}/${__DDLFN} ]; then
@@ -38,10 +38,10 @@ package() {
         exit 1
     }
     fi
-    ## lets check the md5sum
-    if [ "$(md5sum ${__DLDIR}/${__DDLFN} | awk '{print $1}')" != "${__DDLFMD5}" ]; then
+    ## lets check the sha256sum
+    if [ "$(sha256sum ${__DLDIR}/${__DDLFN} | awk '{print $1}')" != "${__DDLFSHA256}" ]; then
     {
-        echo "${__DLDIR}/${__DDLFN} MD5 MISMATCH, please remove the old file before downloading"
+        echo "${__DLDIR}/${__DDLFN} SHA256 MISMATCH, please remove the old file before downloading"
         echo "rm \"${__DLDIR}/${__DDLFN}\""
         echo "Download: ${__DDLA}"
         echo
