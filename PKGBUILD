@@ -1,5 +1,5 @@
-# $Id$
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Maxim Kurnosenko <asusx2@mail.ru>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Håvard Pettersson <mail@haavard.me>
 # Contributor: naxuroqa <naxuroqa at gmail.com>
 # Contributor: Boohbah <boohbah at gmail.com>
@@ -7,7 +7,8 @@
 
 _pkgname=toxcore
 pkgname=toxcore-toktok-git
-pkgver=0.1.1.3978
+epoch=1
+pkgver=0.1.7.4068
 pkgrel=1
 pkgdesc='Secure, configuration-free, P2P Skype replacement backend'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
