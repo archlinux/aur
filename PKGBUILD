@@ -1,8 +1,8 @@
 # Maintainer: Jacob Mischka <jacob@mischka.me>
 # Comaintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/vorbote>
 pkgname=brave
-pkgver=0.13.5
-pkgrel=3
+pkgver=0.14.0
+pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('x86_64')
 url='https://www.brave.com/'
@@ -12,12 +12,8 @@ makedepends=('npm' 'git')
 optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support')
 provides=('brave-browser')
-source=("https://github.com/brave/browser-laptop/archive/v"$pkgver"dev.tar.gz"
-        'brave'
-	'brave.desktop')
-sha512sums=('b3bc97f99a838fc90ebbb7d12f64da426a13b8d68e5fe1aac9824a3cfeff681bc0de96d10b7be99d6b86004accae3b045675c096a6b764e726ae01d4ffab186f'
-            '4302366877e5d7c3862c9223db4afd58e4323f1c0f763e4ecc2d648945972bbc5fe64752de415ea3b6a07a28df3cf4149d4e98e8604e3d1496ffaa3c9d9f203d'
-            '337de1b406c89418fb27a49b1a9fa4cfef94eefbf2901bc60f5ddac0b9094924e940fcbcb233cbbeff2742e6b3c26cc6dbdb75cd29798eff8c8be92fce0df2e7')
+source=("https://github.com/brave/browser-laptop/archive/v"$pkgver"dev.tar.gz")
+sha512sums=('d815fdc68d07da96362240991c4699d92a146aa47134b2c525bcb02c248b2bde2feea8df5fd31193f799358a00f7a2c9c785a25ffd1f22e508715b047107a2ca')
 
 build() {
 	cd "$srcdir"/browser-laptop-"$pkgver"dev
@@ -31,17 +27,140 @@ package() {
 
 	install -dm0755 "$pkgdir"/usr/lib
 
-	cp -a --reflink=auto Brave-linux-x64 "$pkgdir"/usr/lib/brave
+	cp -a --reflink=auto Brave-linux-x64 "$pkgdir/usr/lib/$pkgname"
 
-	install -Dm0644 "$srcdir"/brave.desktop "$pkgdir"/usr/share/applications/brave.desktop
+	_launcher="$pkgdir/usr/bin/$pkgname"
+	install -Dm0755 /dev/stdin "$_launcher"<<END
+#!/usr/bin/sh
 
-	install -Dm0755 "$srcdir"/brave "$pkgdir"/usr/bin/brave
+exec /usr/lib/$pkgname/brave --no-sandbox -- "\$@"
+END
 
-	install -Dm0644 res/app.png "$pkgdir"/usr/share/pixmaps/brave.png
+	_deskfile="$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -Dm0644 /dev/stdin "$_deskfile"<<END
+[Desktop Entry]
+Version=1.0
+Name=Brave
+# Only KDE 4 seems to use GenericName, so we reuse the KDE strings.
+# From Ubuntu's language-pack-kde-XX-base packages, version 9.04-20090413.
+GenericName=Web Browser
+GenericName[ar]=متصفح الشبكة
+GenericName[bg]=Уеб браузър
+GenericName[ca]=Navegador web
+GenericName[cs]=WWW prohlížeč
+GenericName[da]=Browser
+GenericName[de]=Web-Browser
+GenericName[el]=Περιηγητής ιστού
+GenericName[en_GB]=Web Browser
+GenericName[es]=Navegador web
+GenericName[et]=Veebibrauser
+GenericName[fi]=WWW-selain
+GenericName[fr]=Navigateur Web
+GenericName[gu]=વેબ બ્રાઉઝર
+GenericName[he]=דפדפן אינטרנט
+GenericName[hi]=वेब ब्राउज़र
+GenericName[hu]=Webböngésző
+GenericName[it]=Browser Web
+GenericName[ja]=ウェブブラウザ
+GenericName[kn]=ಜಾಲ ವೀಕ್ಷಕ
+GenericName[ko]=웹 브라우저
+GenericName[lt]=Žiniatinklio naršyklė
+GenericName[lv]=Tīmekļa pārlūks
+GenericName[ml]=വെബ് ബ്രൌസര്‍
+GenericName[mr]=वेब ब्राऊजर
+GenericName[nb]=Nettleser
+GenericName[nl]=Webbrowser
+GenericName[pl]=Przeglądarka WWW
+GenericName[pt]=Navegador Web
+GenericName[pt_BR]=Navegador da Internet
+GenericName[ro]=Navigator de Internet
+GenericName[ru]=Веб-браузер
+GenericName[sl]=Spletni brskalnik
+GenericName[sv]=Webbläsare
+GenericName[ta]=இணைய உலாவி
+GenericName[th]=เว็บเบราว์เซอร์
+GenericName[tr]=Web Tarayıcı
+GenericName[uk]=Навігатор Тенет
+GenericName[zh_CN]=网页浏览器
+GenericName[zh_HK]=網頁瀏覽器
+GenericName[zh_TW]=網頁瀏覽器
+# Not translated in KDE, from Epiphany 2.26.1-0ubuntu1.
+GenericName[bn]=ওয়েব ব্রাউজার
+GenericName[fil]=Web Browser
+GenericName[hr]=Web preglednik
+GenericName[id]=Browser Web
+GenericName[or]=ଓ୍ବେବ ବ୍ରାଉଜର
+GenericName[sk]=WWW prehliadač
+GenericName[sr]=Интернет прегледник
+GenericName[te]=మహాతల అన్వేషి
+GenericName[vi]=Bộ duyệt Web
+# Gnome and KDE 3 uses Comment.
+Comment=Access the Internet
+Comment[ar]=الدخول إلى الإنترنت
+Comment[bg]=Достъп до интернет
+Comment[bn]=ইন্টারনেটটি অ্যাক্সেস করুন
+Comment[ca]=Accedeix a Internet
+Comment[cs]=Přístup k internetu
+Comment[da]=Få adgang til internettet
+Comment[de]=Internetzugriff
+Comment[el]=Πρόσβαση στο Διαδίκτυο
+Comment[en_GB]=Access the Internet
+Comment[es]=Accede a Internet.
+Comment[et]=Pääs Internetti
+Comment[fi]=Käytä internetiä
+Comment[fil]=I-access ang Internet
+Comment[fr]=Accéder à Internet
+Comment[gu]=ઇંટરનેટ ઍક્સેસ કરો
+Comment[he]=גישה אל האינטרנט
+Comment[hi]=इंटरनेट तक पहुंच स्थापित करें
+Comment[hr]=Pristup Internetu
+Comment[hu]=Internetelérés
+Comment[id]=Akses Internet
+Comment[it]=Accesso a Internet
+Comment[ja]=インターネットにアクセス
+Comment[kn]=ಇಂಟರ್ನೆಟ್ ಅನ್ನು ಪ್ರವೇಶಿಸಿ
+Comment[ko]=인터넷 연결
+Comment[lt]=Interneto prieiga
+Comment[lv]=Piekļūt internetam
+Comment[ml]=ഇന്റര്‍‌നെറ്റ് ആക്‌സസ് ചെയ്യുക
+Comment[mr]=इंटरनेटमध्ये प्रवेश करा
+Comment[nb]=Gå til Internett
+Comment[nl]=Verbinding maken met internet
+Comment[or]=ଇଣ୍ଟର୍ନେଟ୍ ପ୍ରବେଶ କରନ୍ତୁ
+Comment[pl]=Skorzystaj z internetu
+Comment[pt]=Aceder à Internet
+Comment[pt_BR]=Acessar a internet
+Comment[ro]=Accesaţi Internetul
+Comment[ru]=Доступ в Интернет
+Comment[sk]=Prístup do siete Internet
+Comment[sl]=Dostop do interneta
+Comment[sr]=Приступите Интернету
+Comment[sv]=Gå ut på Internet
+Comment[ta]=இணையத்தை அணுகுதல்
+Comment[te]=ఇంటర్నెట్‌ను ఆక్సెస్ చెయ్యండి
+Comment[th]=เข้าถึงอินเทอร์เน็ต
+Comment[tr]=İnternet'e erişin
+Comment[uk]=Доступ до Інтернету
+Comment[vi]=Truy cập Internet
+Comment[zh_CN]=访问互联网
+Comment[zh_HK]=連線到網際網路
+Comment[zh_TW]=連線到網際網路
+StartupNotify=true
+StartupWMClass=Brave
+TryExec=$pkgname
+Exec=$pkgname %U
+Terminal=false
+Icon=brave
+Type=Application
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
+END
 
-	install -Dm0644 LICENSE.txt "$pkgdir"/usr/share/licenses/brave/MPL2
+	install -Dm0644 res/app.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
-	mv "$pkgdir"/usr/lib/brave/{LICENSE,LICENSES.chromium.html} "$pkgdir"/usr/share/licenses/brave/
+	install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/MPL2"
+
+	mv "$pkgdir"/usr/lib/$pkgname/{LICENSE,LICENSES.chromium.html} "$pkgdir/usr/share/licenses/$pkgname/"
 
 	ln -s /usr/lib/PepperFlash "$pkgdir"/usr/lib/pepperflashplugin-nonfree
 }
