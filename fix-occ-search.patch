@@ -1,0 +1,24 @@
+diff --git a/cMake/FindOpenCasCade.cmake b/cMake/FindOpenCasCade.cmake
+index 9944b8ade..2f60ba7dd 100644
+--- a/cMake/FindOpenCasCade.cmake
++++ b/cMake/FindOpenCasCade.cmake
+@@ -56,17 +56,8 @@ else(OCE_FOUND) #look for OpenCASCADE
+       )
+     endif(CYGWIN OR MINGW)
+   else(WIN32)
+-    FIND_PATH(OCC_INCLUDE_DIR Standard_Version.hxx
+-      /usr/include/opencascade
+-      /usr/local/include/opencascade
+-      /opt/opencascade/include
+-      /opt/opencascade/inc
+-    )
+-    FIND_LIBRARY(OCC_LIBRARY TKernel
+-      /usr/lib
+-      /usr/local/lib
+-      /opt/opencascade/lib
+-    )
++    FIND_PATH(OCC_INCLUDE_DIR Standard_Version.hxx)
++    FIND_LIBRARY(OCC_LIBRARY TKernel)
+   endif(WIN32)
+   if(OCC_LIBRARY)
+     GET_FILENAME_COMPONENT(OCC_LIBRARY_DIR ${OCC_LIBRARY} PATH)
