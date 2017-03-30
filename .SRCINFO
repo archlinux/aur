@@ -7,6 +7,7 @@ pkgbase = wdt
 	arch = x86_64
 	license = BSD
 	checkdepends = gtest
+	makedepends = git
 	makedepends = cmake
 	makedepends = glog
 	makedepends = gflags
