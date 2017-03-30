@@ -1,0 +1,13 @@
+pkgbase = glog
+	pkgdesc = C++ implementation of the Google logging module
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/google/glog
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = glog-0.3.4-src.tar.gz::https://github.com/google/glog/archive/v0.3.4.tar.gz
+	sha256sums = ce99d58dce74458f7656a68935d7a0c048fa7b4626566a71b7f4e545920ceb10
+
+pkgname = glog
+
