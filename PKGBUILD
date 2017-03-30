@@ -2,7 +2,7 @@
 
 pkgname=glog-git
 pkgver=0.3.4.r88.gda816ea
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ implementation of the Google logging module"
 arch=('i686' 'x86_64')
 url="https://github.com/google/glog"
@@ -41,6 +41,6 @@ package() {
   cd "glog"
 
   make prefix="/usr" DESTDIR="$pkgdir" install
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/glog/LICENSE"
+  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/glog/COPYING"
 }
 
