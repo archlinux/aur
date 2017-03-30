@@ -4,9 +4,9 @@ _npmname=storj-cli
 pkgname=$_npmname
 pkgver=4.0.0
 pkgrel=1
-pkgdesc="Command line interface for accessing the storj Bridge"
+pkgdesc="Command line interface for accessing the storj Network"
 arch=('any')
-url="http://storj.io/share.html"
+url="https://github.com/storj/core-cli"
 license=('AGPL3')
 depends=('nodejs>=6.9.1' 'python2')
 makedepends=('npm' 'git>=2')
