@@ -1,10 +1,10 @@
 # Maintainer: Leonhard Rose<kolonigulus at gmail dot com>
 
-_npmname=storjshare-cli
+_npmname=storj-cli
 pkgname=$_npmname
 pkgver=4.0.0
 pkgrel=1
-pkgdesc="Command line interface for farming on the Storj network"
+pkgdesc="Command line interface for accessing the storj Bridge"
 arch=('any')
 url="http://storj.io/share.html"
 license=('AGPL3')
