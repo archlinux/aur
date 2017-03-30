@@ -23,9 +23,9 @@ source=("git+https://github.com/xanmod/linux.git"
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset")
 sha256sums=('SKIP'
+            'c7571fd6962a7e7085d65221b3dfce234cfbbed9fde666665cb1f48b734b4c26'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '80618bdbd8c0fcb41f33a00bd77daf742571eb652cb345d6b47bd995d03b12e9')
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
 _kernelname=${pkgbase#linux}
 
