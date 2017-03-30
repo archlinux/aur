@@ -2,8 +2,7 @@
 Description=LISPmob service
 
 [Service]
-ExecStart=/usr/bin/lispd -f /etc/lispd.conf
+ExecStart=/usr/bin/lispd
 
 [Install]
 WantedBy=multi-user.target
-
