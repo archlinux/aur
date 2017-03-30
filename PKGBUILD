@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-lts
 _pkgbasever=4.9-gnu
-_pkgver=4.9.16-gnu
+_pkgver=4.9.18-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -59,7 +59,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP'
-            '2afe13f7f851ab585ecff842acfaa63d30d2668978d744e6601ac64ed805f61ca7834b15f0d9f55825a68791f467064bf253a50eb21f6c3f7bb4699db329a405'
+            '71835d01abda766281943ed6ad2665c3bbe5932a76cc0366b0ba444ed95cc6334ee10a8ce1ec1caddc4f8b69fe89f28b4c36acb75d8bc48d18de1fef4f44b274'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -215,7 +215,8 @@ _package() {
 
   # install mkinitcpio preset file for kernel
   if [ "${CARCH}" = "armv7h" ]; then
-    sed "s|/boot/vmlinuz-%PKGBASE%|${_kernver}|g" "${srcdir}/linux.preset" |
+    sed "s|/boot/vmlinuz-%PKGBASE%|${_kernver}|g
+         s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
       install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
   elif [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
     sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
