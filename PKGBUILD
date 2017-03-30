@@ -17,7 +17,7 @@ license=('GPL3')
 depends=('libconfig' 'libsodium' 'libvpx' 'opus')
 makedepends=('git' 'check')
 conflicts=("tox")
-provides=("tox")
+provides=("toxcore")
 install="$pkgname.install"
 source=("$_pkgname::git+https://github.com/TokTok/c-toxcore.git"
         'toxcore.conf')
