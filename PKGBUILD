@@ -1,26 +1,25 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: John Jenkins <twodopeshaggy@gmail.com>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 _pkgname=vulture
 pkgname=python-vulture
-pkgver=0.10
+pkgver=0.13
 pkgrel=1
 pkgdesc="Finds dead code in Python projects"
 arch=('any')
-url="https://bitbucket.org/jendrikseipp/vulture"
+url="https://github.com/jendrikseipp/vulture/"
 license=('GPL3')
 depends=('python')
 makedepends=('python-setuptools')
-source=(https://bitbucket.org/jendrikseipp/vulture/get/v${pkgver}.tar.bz2)
-md5sums=('607c2b6c1c953f1dda1398d7d8d25435')
+source=(https://github.com/jendrikseipp/$_pkgname/archive/v$pkgver.tar.gz)
+md5sums=('632403f82b8d8f5da94a10cb2f804a25')
 
 build() {
-  cd *"-${_pkgname}-"*
-
+  cd "${_pkgname}-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd *"-${_pkgname}-"*
-
+  cd "${_pkgname}-$pkgver"
   python setup.py install --prefix="/usr" --root="${pkgdir}" --optimize=1
   install -Dm755 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}"/LICENSE
 }
