@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Categories=Application;Graphics;RasterGraphics;Scanning;GTK;
+
+Name=Image Scan
+GenericName=Scan Dialog
+
+Exec=sh -c "LC_NUMERIC=C utsushi scan"
+Terminal=false
+Icon=scanner
