@@ -2,8 +2,8 @@
 # Contributor: Xiao-Long Chen <chenxiaolongcxl.epac.to>
 
 pkgname=indicator-powersave
-pkgver=r98.6
-pkgrel=1
+pkgver=r98.7
+pkgrel=2
 pkgdesc="User discretion power managment utility forked from CPU frequency indicator (bzr version)"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/indicator-cpufreq"

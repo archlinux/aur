@@ -148,7 +148,6 @@ while (( "$#" )); do
       unset GOVERNOR XPSTURBO HYPERTHREADS ENERGYPERF BACKLIGHT LAPTOP DIRTYWBC NMIDOG \
             POLICY APM AAM CONTROL AUTOSUSPEND POWERSAVE CONTROLLER \
             WLPOWERSAVE WOLA WOLB LEDBRIGHT NVPM
-      [[ -z "${1}" ]] || wait # Hey, let's stop! :) *stops* ... YAY! =D
     ;;
     ht*)
       case "${1}" in \
@@ -164,7 +163,6 @@ while (( "$#" )); do
           printf "${HYPERTHREADS}" > "${i}" & done &
       [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
       unset HYPERTHREADS SHIFT
-      [[ -z "${1}" ]] || wait
     ;;
     gov*)
       case "${1}" in \
@@ -180,7 +178,6 @@ while (( "$#" )); do
         printf "${GOVERNOR}" > "${i}" & done &
       [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
       unset GOVERNOR SHIFT
-      [[ -z "${1}" ]] || wait
     ;;
     turbo*)
       case "${1}" in \
@@ -196,7 +193,6 @@ while (( "$#" )); do
           printf "${XPSTURBO}" > /sys/devices/system/cpu/intel_pstate/no_turbo &
       [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
       unset XPSTURBO SHIFT
-      [[ -z "${1}" ]] || wait
     ;;
     backlight)
       case "${2}" in \
@@ -209,7 +205,6 @@ while (( "$#" )); do
           printf "${BACKLIGHT}" > "${i}" & done &
       [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
       unset BACKLIGHT SHIFT
-      [[ -z "${1}" ]] || wait
     ;;
     gpu*)
       case "${1}" in \
@@ -226,7 +221,6 @@ while (( "$#" )); do
       DISPLAY=":0.0" nvidia-settings -a [gpu:0]/GPUPowerMizerMode="${NVPM}" > /dev/null &
       [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
       unset NVPM SHIFT
-      [[ -z "${1}" ]] || wait
     ;;
     check)
       printf "\nHyperthreads\n/sys/devices/system/cpu/cpu*/online\n"
@@ -315,4 +309,5 @@ while (( "$#" )); do
       exit
     ;;
   esac
+  [[ -z "${1}" ]] || wait # Hey, let's stop! :) *stops* ... YAY! =D
 done
