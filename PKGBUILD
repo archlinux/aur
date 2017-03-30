@@ -233,7 +233,8 @@ _package() {
 
   # install mkinitcpio preset file for kernel
   if [ "${CARCH}" = "armv7h" ]; then
-    sed "s|/boot/vmlinuz-%PKGBASE%|${_kernver}|g" "${srcdir}/linux.preset" |
+    sed "s|/boot/vmlinuz-%PKGBASE%|${_kernver}|g
+         s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
       install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
   elif [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
     sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
