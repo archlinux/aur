@@ -13,4 +13,4 @@ pkgbase = it87-dkms-git
 	sha256sums = b6feb5228fe1183b61b7428d4dbbf4f63cc2c951d5980f17d0174a95a995e670
 
 pkgname = it87-dkms-git
-
+	pkgdesc = Kernel driver it87 for ITE LPC chips 
