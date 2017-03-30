@@ -6,6 +6,7 @@ pkgbase = platformio
 	arch = any
 	license = Apache
 	depends = python2
+	depends = python2-arrow
 	depends = python2-bottle
 	depends = python2-click-5.1
 	depends = python2-colorama
