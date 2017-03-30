@@ -16,8 +16,8 @@ url='https://tox.chat'
 license=('GPL3')
 depends=('libconfig' 'libsodium' 'libvpx' 'opus')
 makedepends=('git' 'check')
-conflicts=("$_pkgname")
-provides=("$_pkgname")
+conflicts=("tox")
+provides=("tox")
 install="$pkgname.install"
 source=("$_pkgname::git+https://github.com/TokTok/c-toxcore.git"
         'toxcore.conf')
