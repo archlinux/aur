@@ -1,7 +1,7 @@
 # Maintainer: Kirek <rbuldo at gmail dot com>
 pkgname=python-langtable
 _pyname=langtable
-pkgver=0.0.33
+pkgver=0.0.37
 pkgrel=1
 pkgdesc='Guessing reasonable defaults for locale, keyboard layout, territory, and language.'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPLv3+' 'MIT')
 depends=('python' 'python-setuptools' 'gzip')
 options=(!emptydirs)
 source=("https://github.com/mike-fabian/${_pyname}/archive/${pkgver}.tar.gz")
-sha256sums=('26c9a5891c3a92995b49bfc3e32d87b66eb089dd30e1c7cda4aa44347196b363')
+sha256sums=('12999a70d5954a730a09886c17c210354b538bd22ddcfe5b1367207724a84071')
 
 _destdir=/usr
 _datadir=${_destdir}/share/langtable

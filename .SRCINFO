@@ -1,6 +1,6 @@
 pkgbase = python-langtable
 	pkgdesc = Guessing reasonable defaults for locale, keyboard layout, territory, and language.
-	pkgver = 0.0.33
+	pkgver = 0.0.37
 	pkgrel = 1
 	url = https://github.com/mike-fabian/langtable
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-langtable
 	depends = python-setuptools
 	depends = gzip
 	options = !emptydirs
-	source = https://github.com/mike-fabian/langtable/archive/0.0.33.tar.gz
-	sha256sums = 26c9a5891c3a92995b49bfc3e32d87b66eb089dd30e1c7cda4aa44347196b363
+	source = https://github.com/mike-fabian/langtable/archive/0.0.37.tar.gz
+	sha256sums = 12999a70d5954a730a09886c17c210354b538bd22ddcfe5b1367207724a84071
 
 pkgname = python-langtable
 
