@@ -3,17 +3,16 @@
 
 pkgname=ttf-font-awesome
 pkgver=4.7.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Iconic font designed for Bootstrap"
 url="http://fortawesome.github.io/Font-Awesome/"
 license=('CCPL')
 
-depends=('fontconfig' 'xorg-font-utils')
+depends=()
 arch=('any')
 source=("https://github.com/FortAwesome/Font-Awesome/archive/v$pkgver.tar.gz")
 sha256sums=('de512ba0e1dead382bbfce372cde74b3f18971d876fffb635ee9333f0db05d43')
-install=$pkgname.install
 
 package() {
   cd Font-Awesome-$pkgver/fonts
