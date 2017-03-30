@@ -1,0 +1,16 @@
+pkgbase = it87-dkms-git
+	pkgver = 59.75fdbbc
+	pkgrel = 1
+	url = https://github.com/groeck/it87
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = dkms
+	provides = it87
+	source = it87::git+https://github.com/groeck/it87.git
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = b6feb5228fe1183b61b7428d4dbbf4f63cc2c951d5980f17d0174a95a995e670
+
+pkgname = it87-dkms-git
+
