@@ -1,7 +1,7 @@
 pkgbase = wtrack-git
 	pkgdesc = Work time tracker
-	pkgver = 0.1.dev0.g9ca27c4
-	pkgrel = 2
+	pkgver = 0.1.dev0.g1eab885
+	pkgrel = 1
 	url = https://github.com/languitar/wtrack
 	arch = any
 	license = LGPL3

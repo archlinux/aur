@@ -1,8 +1,8 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=wtrack-git
-pkgver=0.1.dev0.g9ca27c4
-pkgrel=2
+pkgver=0.1.dev0.g1eab885
+pkgrel=1
 pkgdesc="Work time tracker"
 arch=(any)
 url="https://github.com/languitar/wtrack"
