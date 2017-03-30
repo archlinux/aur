@@ -1,7 +1,7 @@
 # Maintainer: Emeric <emeric.grange@gmail.com>
 # Created: 31/01/2017
 pkgname=autopanogiga-beta
-pkgver=4.4.0.303
+pkgver=4.4.0.400
 pkgrel=1
 pkgdesc='Create beautiful panoramas by stitching multiple photos automatically with Autopano Giga (BETA) (trial version).'
 arch=('x86_64')
@@ -11,11 +11,11 @@ provides=('autopanogiga')
 install="$pkgname.install"
 _archivename=AutopanoGiga_Linux64_${pkgver}.tar.xz
 
-source=("$_archivename::http://download.kolor.com/apg/beta/linux64tarxz/"
+source=("$_archivename::http://download.kolor.com/apg/stable/linux64tarxz/"
         "$pkgname"
         "$pkgname.desktop")
 
-sha256sums=('c5b0481a6246c5aa07aaec2883e5b8a20bc4bdfe434a4b879235c065d2de548c'
+sha256sums=('ab849d5c86802b55466265e4067acd7d7606d7e79e33b97413681cb8ee5a2d4b'
             '3fb1827030d4c1292297cc334671faa53bf11bcfda3dea419f9cab162080b1c5'
             '27fb5db94c2df0f5ad72a1d913b82397f1e084ce67caa4844126045390ae3854')
 
