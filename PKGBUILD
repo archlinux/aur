@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=electrumx
-pkgver=1.0
-pkgrel=2
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="Server implementation for the Electrum wallet"
 arch=('any')
 depends=('leveldb'
@@ -20,7 +20,7 @@ options=(!emptydirs)
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/kyuupichan/$pkgname/tar.gz/$pkgver
         'electrumx.conf'
         'electrumx.service')
-sha256sums=('ff29de5a0065696815256db41585bbcb00002cc7cafe3ea2f4a7d2823e109369'
+sha256sums=('b23e50084c714852c723b9b8c3fe82b8af4007079bfcb9f3ebcf77416f74b712'
             '6134f8e333fc622bea781ed334b738ade39bf7a6e4ace3704cba2e22788a4bf3'
             'a70e6d2ff4e0eb8125ba2d52bcdaec96129068363e365d48a47961f47b9fc554')
 install=electrumx.install
@@ -40,7 +40,7 @@ package() {
 
   msg2 'Installing documentation...'
   install -dm 755 "$pkgdir/usr/share/doc/$pkgname"
-  cp -dpr --no-preserve=ownership README.rst docs/* samples \
+  cp -dpr --no-preserve=ownership README.rst contrib docs/* \
     "$pkgdir/usr/share/doc/$pkgname"
 
   msg2 'Making essential directories...'
