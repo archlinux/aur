@@ -1,4 +1,5 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
+# Contributor: A.Shukaev
 
 _pkgname=conky-colors
 pkgname=$_pkgname-git
@@ -8,7 +9,7 @@ pkgdesc='An easier way to configure Conky'
 url='https://github.com/helmuthdu/conky_colors'
 license=('GPL3')
 arch=('armv6h' 'armv7h' 'arm' 'i686' 'x86_64')
-depends=('python' 'conky' 'pystatgrab' 'python2-keyring' 'ttf-ubuntu-font-family' 'hddtemp' 'curl' 'lm_sensors')
+depends=('python' 'conky' 'pystatgrab' 'python2-keyring' 'ttf-liberation' 'ttf-ubuntu-font-family' 'hddtemp' 'curl' 'lm_sensors')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
@@ -22,12 +23,13 @@ pkgver() {
 
 prepare() {
   cd ${_pkgname/-/_}
-  sed -i 's|\(ln -[^ ]* \)\$(DESTDIR)|\1/usr|;s|\$(DESTDIR)/bin|\$(DESTDIR)/usr/bin|' Makefile
+  sed -i 's|\(ln\s\+-\S\+\s\+\)\$(DESTDIR)|\1|' Makefile
+  sed -i 's|\(PREFIX\s*\):\?=|\1?=|' Makefile
 }
 
 build() {
   cd ${_pkgname/-/_}
-  make
+  make PREFIX=/usr
 }
 
 package() {
