@@ -3,7 +3,7 @@
 
 pkgname=subsurface-git
 _pkgname=subsurface
-pkgver=20170312.4db42808
+pkgver=20170329.09b5f9b9
 pkgrel=1
 pkgdesc='Divelog program'
 url='https://subsurface-divelog.org/'
@@ -26,8 +26,6 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	sed 's:tree_flags:flags:g' -i core/git-access.c
-	sed 's:GIT_MERGE_TREE_FIND_RENAMES:GIT_MERGE_FIND_RENAMES:g' -i core/git-access.c
 	sed 's:<marble:<subsurface/marble:g' -i desktop-widgets/globe.*
 }
 
