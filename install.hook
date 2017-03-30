@@ -1,8 +1,7 @@
 [Trigger]
 Type = File
 Operation = Install
-Target = usr/share/icons/*/
-Target = !usr/share/icons/*/?*
+Target = usr/share/icons/*/index.theme
 
 [Action]
 Description = Adding archpkg mimetypes icons...

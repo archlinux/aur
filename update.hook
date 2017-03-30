@@ -1,7 +1,7 @@
 [Trigger]
 Type = File
 Operation = Upgrade
-Target = usr/share/icons/*/*/
+Target = usr/share/icons/*/index.theme
 
 [Action]
 Description = Updating archpkg mimetypes icons...

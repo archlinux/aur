@@ -1,33 +1,34 @@
 # Contributor: grimi <grimi at poczta dot fm>
 
 pkgname=mime-archpkg
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="mime type for archlinux packages"
 arch=('any')
 url="http://www.archlinux.org"
 license=('GPL')
-depends=('shared-mime-info' 'gtk-update-icon-cache' 'librsvg' 'imagemagick')
+depends=('shared-mime-info' 'gtk-update-icon-cache' 'librsvg')
 install=${pkgname}.install
-source=(${pkgname}.{xml,sh} {hicolor,gnome,Tango,oxygen,nuoveXT2,Faenza,Faience,NITRUX,Numix,breeze,FaenzaFlattr2-Zephyr,elementary}.svgz
+source=(${pkgname}.{xml,sh} {hicolor,gnome,Tango,oxygen,nuoveXT2,Faenza,Faience,NITRUX,Numix,breeze,FaenzaFlattr2-Zephyr,elementary,Paper}.svgz
         {install,update,remove}.hook hook-script.sh)
 sha256sums=('e3fc45b1121fa845a245c115704715ec0b6a17860a507202cc5e1b02d01c797b'
-            '2a26f7e7a2cfdfe4fbe380c12f17ea4170b452ece12e954f63d85024af5a5815'
-            'fc9b1f43e5993e994707285d89e0da28be48b69046f4cac68578a8d0beef4653'
-            'a59eb69c6fcdf7e8017c2596384cff0635dee46e3db5949370de766273451a85'
-            '0a4951fd15afb85229ee17629686f914b5e5ed0583846dde2350e0c247007975'
-            '1249231b458fad9901e8958e1bcaa119a79bbab0303ff7eaa27ad52c4ae5a77c'
-            '4b9d0454dc82bf6475b70aaee1733236ef78afe821467a60080ddeaf3c13d9c2'
-            '2e475b3ce9bcf96510e83748eaa45b918eded89278f232570b5eb558c5fbb4fa'
-            '7739338376904d9d93e5aa7a678b7da8314cb3022e4bc6938af6353cd4e9e300'
-            '52c6986309a98e0c85ad717c867d9d9a4772ce36c3d5d5ad94dda6fb23b5c749'
-            'a26a86877f36d7ba61851659871ce6461a86b3004d3270b465931a611b64e0ef'
-            '8af276bc4afecede207a6742a5ef9320155650364339af183f9d47e1614c30a7'
-            '3f0177c13377ad94745ec0f0324ab5fb58eeccac4e4b56695ac0f2113fb4d5bb'
-            'a99c2b48796d6f8299867034242c69fbddef4c380df0b68a678ee2727c841f29'
-            'b0377905a4228bde2544c35cc23350dbd3b9c7849d441fa53e25819c414d2e4a'
-            '641d017a42be2c2c0659934770d8f3638ffb88c2a0941798be82cf52f4a628e8'
-            '622ee32d6ddbcb46671dcc46c7b31f4b7d9d4083e416af0100ab4bcc9829bd06'
+            'c9448f3702fc8a33245f6881d9699882bf8e52c47dc7006ddf847859d5bf54e2'
+            '86dd413e049c84cd422f9fa64e48c0354b1d40b5db3057cc73c20b4efaed377a'
+            '1068084050e82f914e71b6e15d90bb5b6a99ba9b1b4585bbe069ab2f93ebe4a2'
+            'c13b464f6d0b71e7c455de1e280e8189286cd565d82294a4db2d1e8641457201'
+            'c8c25594c5726705c68218c3ee21f483298b129bccb4f14aeab4fa9b7630d080'
+            'fe2edcdc32e4aa914f76921037a9b883a303aba7b0db97a225d2a0838273b751'
+            '1e0f7848e49184b23a2089bc09226ec04d9ae5655a289b0413fa5bf15bbeb04d'
+            'c191aeae5971dba6c025872929edc0409940897a126ca3053205ce186a5fcc2c'
+            '783f8fb9c9e107a0e9c9a1e88ef6d611fc79d2e1f2ee83077dc2e862a23f0456'
+            '849022b77e70527c36efc0e02a1326581814af00c2a84997a1af0a9f623ba970'
+            '44c2d8246890da621e17541560601a5db5425d41e4c3f0c9cb807e13833d8040'
+            '47561c547893ea4630ecabb84d14a0fd8e7c3e6d8e0cd4bd5e041c47bca9e739'
+            '191cfd7ee153d88fb0525bb60e40c2d02b3bd720f325f6bc3c27f2d0f8fbd9fb'
+            'cf123397456c7d2bc018f07797cd397701c9fd5c3dddc474b851ce442e260f4f'
+            'fa24289460397891c692d4a13c27b76065075b27153685ce9adf2890f41936db'
+            '6d2ee985ad7ae820d3b9d4d6016c56749ccbbe2aa2649f08794d5efeca32f05a'
+            'd0c45afb226e1dd956972990c312ccffcda4f284c720d2463c0c09b06d23a509'
             'f374e455f0e4bfd5327d9a9ae32410f0698c916199ac46631d53b4d8f58cbcb7')
 
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 # author: grimi
 # name: mime-archpkg
-# require: grep, sed, convert (imagemagick), rsvg-convert (librsvg), gtk-update-icon-cache
+# require: grep, sed, rsvg-convert (librsvg), gtk-update-icon-cache, !convert (imagemagick)
 
 declare MODE="usage"
 declare MYDIR="/usr/share/mime-archpkg"
@@ -57,12 +57,15 @@ add() {
                      else
                         suf=png
                      fi
-                     convert -resize ${size}x${size} -background none "$file" /tmp/archpkg.$suf
-                     install -m644 /tmp/archpkg.$suf "$theme/$elem/$NAME.$suf"
+                     # convert -resize ${size}x${size} -background none "$file" /tmp/$NAME.$suf
+                     rsvg-convert -o /tmp/$NAME.$suf -f $suf -w $size -h $size "$file"
+                     install -m644 /tmp/$NAME.$suf "$theme/$elem/$NAME.$suf"
+                     rm -f /tmp/$NAME.$suf
                   fi
                elif [[ -d $theme/$elem ]]; then
-                  rsvg-convert -o /tmp/archpkg.svg -f svg "$file"
-                  install -m644 /tmp/archpkg.svg "$theme/$elem/$NAME.svg"
+                  rsvg-convert -o /tmp/$NAME.svg -f svg "$file"
+                  install -m644 /tmp/$NAME.svg "$theme/$elem/$NAME.svg"
+                  rm -f /tmp/$NAME.svg
                fi
             done
             if [[ -f $theme/icon-theme.cache ]]; then
