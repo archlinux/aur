@@ -1,13 +1,13 @@
 pkgbase = glchess
 	pkgdesc = 3D Chess Frontend
 	pkgver = 1.0.6
-	pkgrel = 6
+	pkgrel = 7
 	url = http://glchess.sf.net
 	arch = any
 	license = GPL2
 	depends = gnuchess
 	depends = python2-gtkglext
-	depends = python2-imaging
+	depends = python2-pillow
 	depends = pygtk
 	depends = desktop-file-utils
 	conflicts = gnome-games
