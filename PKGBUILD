@@ -13,7 +13,7 @@ options=('!emptydirs')
 depends=('perl-moose>=2.0000')
 checkdepends=('perl-moose' 'perl-test-fatal')
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_module-$pkgver.tar.gz")
-md5sums=('78376310deba54ca644292d44566cefa')
+sha256sums=('c4850f972426c3447aaeed8dcb4033e84460ca51705ad3ea78b63af919fe0748')
 
 build() {
    (

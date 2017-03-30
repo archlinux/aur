@@ -11,7 +11,7 @@ pkgbase = perl-moosex-aliases
 	depends = perl-moose>=2.0000
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/D/DO/DOY/MooseX-Aliases-0.11.tar.gz
-	md5sums = 78376310deba54ca644292d44566cefa
+	sha256sums = c4850f972426c3447aaeed8dcb4033e84460ca51705ad3ea78b63af919fe0748
 
 pkgname = perl-moosex-aliases
 
