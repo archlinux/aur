@@ -99,7 +99,7 @@ while (( "$#" )); do
 
       # Runtime power management for devices (with exceptions for devices by VID:PID)
       # Timing the switch with hyperthread cores going up or down is tricky.
-      for i in /sys/devices/*/power/control; do \
+      for i in /sys/{class/*,bus/*/devices}/*/power/control; do \
         [[ "${CONTROL}" == "auto" ]] && \
           [[ -n "$(printf ${i} | grep msr[${CORES}-$((${CORES} * 2 - 1))])" || \
              -n "$(printf ${i} | grep machinecheck[${CORES}-$((${CORES} * 2 - 1))])" || \
@@ -268,7 +268,7 @@ while (( "$#" )); do
         hdparm -B -M /dev/[hs]d[a-z] 2> /dev/null | sed 'N;s|\n||g; s|/dev/||g; s|\t| |g;' #SUID
 
       printf "\nRuntime power management\n/sys/{class,bus}/*/{*,devices/*}/power/control\n"
-      for i in /sys/devices/*/power/control; do \
+      for i in /sys/{class,bus}/*/{*,devices/*}/power/control; do \
         printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/class/||g; s|/sys/bus/||g; s|/devices||g; s|/power/control||g; N;s|\n|\t|'
 
       printf "\nUSB Autosuspend\n/sys/bus/usb/devices/*/power/autosuspend{,_delay_ms}\n"
