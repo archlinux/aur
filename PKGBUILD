@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=ananicy-git
-pkgver=1.8.r2.g6dd10bf
+pkgver=1.8.r4.g7ba0191
 pkgrel=1
 pkgdesc="Ananicy - is Another auto nice daemon, with community rules support"
 arch=('any')
