@@ -1,0 +1,4 @@
+post_install() {
+    echo '>>> You need to set STYX_CLI_HOST to something reasonable'
+    echo '>>> for the styx command to work'
+}
