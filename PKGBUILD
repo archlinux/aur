@@ -1,7 +1,7 @@
 # Maintainer: xRemaLx <anton.komolov@gmail.com>
 
 pkgname='perl-moosex-types-path-class'
-pkgver='0.08'
+pkgver='0.09'
 pkgrel='1'
 pkgdesc="A Path::Class type library for Moose"
 _dist='MooseX-Types-Path-Class'
@@ -13,7 +13,7 @@ options=('!emptydirs' purge)
 makedepends=('perl-module-build-tiny>=0.007')
 checkdepends=('perl-extutils-makemaker>=6.30' 'perl-moose')
 source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/${_dist}-${pkgver}.tar.gz")
-sha512sums=('d206b32d765f7766e18cc15a045f1ab34efa160aa699823a9be437861bc2a3c8deee0bf66a46b7e2ccb5fc6ba25fa18c40391606f25c5a9e024f7744be7841c7')
+sha512sums=('d61f72957431852903d99257b2d9f53f88702d4d314297192345896aeb1df86ab4d80767a1d0fad76fb23b561925aae076bfda80106e3f7d0f2d8093956bdc9e')
 
 sanitize() {
 	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
