@@ -1,6 +1,6 @@
 pkgbase = thunderbird-gtk3
 	pkgdesc = Standalone mail and news reader from mozilla.org (GTK3 version)
-	pkgver = 45.7.1
+	pkgver = 45.8.0
 	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird/
 	arch = i686
@@ -34,11 +34,11 @@ pkgbase = thunderbird-gtk3
 	depends = ttf-font
 	depends = icu
 	optdepends = libcanberra: for sound support
-	provides = thunderbird=45.7.1
+	provides = thunderbird=45.8.0
 	conflicts = thunderbird
 	options = !emptydirs
 	options = !makeflags
-	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/45.7.1/source/thunderbird-45.7.1.source.tar.xz
+	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/45.8.0/source/thunderbird-45.8.0.source.tar.xz
 	source = thunderbird.desktop
 	source = thunderbird-install-dir.patch
 	source = fix-wifi-scanner.diff
@@ -46,8 +46,8 @@ pkgbase = thunderbird-gtk3
 	source = firefox-gcc-6.0.patch
 	source = mozilla-1228540.patch
 	source = mozilla-1228540-1.patch
-	sha256sums = 5fc7a39c6a1baacfa37d6a52c9384f70c171dd0bb581576d370bdb29c84b9ffb
-	sha256sums = 3fba13d88aeb003ab0811ef739463858172ce0662a1c7d62835df3d83ddbb8fb
+	sha256sums = 743cbf4856ad460a791f6b17bff175053fccec2af1edd8e8295ac6fda2634c28
+	sha256sums = e44c55501f650a4e80b9c353b81f33e07ca65808db831eff6ca616aded233827
 	sha256sums = 24599eab8862476744fe1619a9a53a5b8cdcab30b3fc5767512f31d3529bd05d
 	sha256sums = 9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8
 	sha256sums = 2e355a477f1df792cd7f9d1e3a56030543e0cf2d09051dd293ba495a7edb54fd
