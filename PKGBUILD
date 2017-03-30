@@ -1,30 +1,36 @@
-# Maintainer: Michiel <code[at]m01[dot]eu>
-pkgname=lispmob
-pkgver=0.5.2.1
+pkgname=oor
+pkgver=1.1.1.r4.gc4b9c95
 pkgrel=1
-pkgdesc="Locator/ID Separation Protocol (LISP) and LISP Mobile Node implementation"
-url="http://lispmob.org"
+pkgdesc="Open Overlay Router (formerly LISPmob) - Locator/ID Separation Protocol (LISP) and LISP Mobile Node implementation"
+url="http://openoverlayrouter.org/"
 arch=('x86_64' 'i686' 'armv6h')
 license=('GPL2')
 depends=('openssl' 'confuse' 'libcap')
 makedepends=('git' 'gengetopt')
-backup=("etc/lispd.conf")
-source=("git+https://github.com/LISPmob/lispmob.git#tag=${pkgver}"
-        "lispd.service")
+provides=('lispmob')
+replaces=('lispmob')
+backup=("etc/oor.conf")
+_commit=c4b9c950107a57db2ab7327b7f2d1d738c653512
+source=("git+https://github.com/OpenOverlayRouter/oor#commit=$_commit"
+        "oor.service")
 sha256sums=('SKIP'
-            'dcad9ed9b3f643794c5021d4cbddf4fa0ba99177465394ecdcf943fcf8019520')
+            'b952f567e6c506d09aab10b4fae49c9cee31affb89b7a18040c2fa7f1a8df153')
+
+pkgver() {
+  cd oor
+  git describe | sed 's/^v//; s/-/.r/; s/-/./'
+}
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd oor
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  make PREFIX="/usr/bin/" DESTDIR="${pkgdir}" install
-  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "${srcdir}/lispd.service" "$pkgdir/etc/systemd/system/lispd.service"
-  install -Dm644 "${srcdir}/${pkgname}/lispd/lispd.conf.example" "$pkgdir/etc/lispd.conf"
+  cd oor
+  make PREFIX="/usr/bin/" DESTDIR="$pkgdir" install
+  install -Dm644 oor/oor.conf.example "$pkgdir"/etc/oor.conf
+  install -Dm644 "$srcdir"/oor.service "$pkgdir"/usr/lib/systemd/system/oor.service
 }
 
 # vim:set ts=2 sw=2 et:
