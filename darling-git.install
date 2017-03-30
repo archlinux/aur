@@ -7,8 +7,8 @@ setup_ld() {
 
 clean_ld() {
 	cd "$DARLING_PATH/etc"
-	rm -fv ld.so.conf ld.so.cache
-	rm -rfv ld.so.conf.d
+	rm -f ld.so.conf ld.so.cache
+	rm -rf ld.so.conf.d
 }
 
 post_install() {

@@ -2,7 +2,7 @@
 
 _gitname=darling
 pkgname=$_gitname-git
-pkgver=r1741.a33de880
+pkgver=r1756.2958f4f2
 pkgrel=1
 pkgdesc="A Darwin/OS X emulation layer for Linux"
 arch=('x86_64') # Can only be built on x86_64 systems
@@ -42,7 +42,7 @@ prepare() {
 build() {
 	cd "$srcdir/$_gitname/build"
 	msg2 "Run 'cmake'..."
-	cmake ../.. -DCMAKE_TOOLCHAIN_FILE=../Toolchain.cmake -DCMAKE_INSTALL_PREFIX=/usr
+	cmake .. -DCMAKE_TOOLCHAIN_FILE=../Toolchain.cmake -DCMAKE_INSTALL_PREFIX=/usr
 	msg2 "Run 'make'..."
 	make
 }
