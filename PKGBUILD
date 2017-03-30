@@ -2,7 +2,7 @@
 pkgname=ipinfo
 pkgver=0.1
 pkgrel=1
-pkgdesc="ipinfo, ipinfo.io, darksky.io"
+pkgdesc="Command line client for ipinfo.io, darksky.io"
 arch=('x86_64' 'i686')
 url="https://github.com/syui/ipinfo"
 options=('!strip' '!emptydirs')
