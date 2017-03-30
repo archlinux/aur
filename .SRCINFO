@@ -11,7 +11,7 @@ pkgbase = perl-data-simplepath
 	depends = perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/S/ST/STG/Data-SimplePath-0.005.tar.gz
-	md5sums = 2c6fbdb436632d7476828b168f7405ed
+	sha256sums = c4b85bdde841b09010cb4cf75ddaecac4aee8f8b0c233615579f24fd732d84bd
 
 pkgname = perl-data-simplepath
 

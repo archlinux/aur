@@ -13,7 +13,7 @@ options=('!emptydirs')
 depends=('perl')
 checkdepends=('perl-test-nowarnings' 'perl-test-warn')
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_module-$pkgver.tar.gz")
-md5sums=('2c6fbdb436632d7476828b168f7405ed')
+sha256sums=('c4b85bdde841b09010cb4cf75ddaecac4aee8f8b0c233615579f24fd732d84bd')
 
 build() {
    (
