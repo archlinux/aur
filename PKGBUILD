@@ -5,7 +5,7 @@
 
 pkgname=firejail-extras
 pkgver=0.9.44
-pkgrel=30
+pkgrel=40
 pkgdesc="Extra profiles for firejail"
 arch=('any')
 url="https://github.com/triceratops1/fe"
