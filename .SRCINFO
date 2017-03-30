@@ -1,0 +1,23 @@
+pkgbase = lua-psl
+	pkgver = 0.2
+	pkgrel = 0
+	url = https://github.com/daurnimator/lua-psl
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	depends = libpsl
+	source = https://github.com/daurnimator/lua-psl/archive/v0.2.tar.gz
+	md5sums = f99781d19e18902d97fb4892150552bd
+
+pkgname = lua-psl
+	pkgdesc = libpsl bindings for Lua 5.3
+
+pkgname = lua51-psl
+	pkgdesc = libpsl bindings for Lua 5.1
+
+pkgname = lua52-psl
+	pkgdesc = libpsl bindings for Lua 5.2
+
