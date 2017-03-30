@@ -1,5 +1,5 @@
 pkgname=telegram-desktop
-pkgver=1.0.14
+pkgver=1.0.26
 pkgrel=1
 pkgdesc='Official desktop version of Telegram messaging app.'
 arch=('i686' 'x86_64')
@@ -64,7 +64,7 @@ source=(
     "https://download.qt.io/official_releases/qt/${qt_version%.*}/$qt_version/submodules/qtbase-opensource-src-$qt_version.tar.xz"
     "https://download.qt.io/official_releases/qt/${qt_version%.*}/$qt_version/submodules/qtimageformats-opensource-src-$qt_version.tar.xz"
     "https://download.qt.io/official_releases/qt/${qt_version%.*}/$qt_version/submodules/qtwayland-opensource-src-$qt_version.tar.xz"
-    "git+https://chromium.googlesource.com/external/gyp"
+    "git+https://chromium.googlesource.com/external/gyp#commit=702ac58e4772"
     "telegramdesktop.desktop"
     "tg.protocol"
     "aur-fixes.diff"
@@ -77,7 +77,7 @@ sha256sums=(
     'SKIP'
     '41c22fae6ae757936741e63aec3d0f17cafe86b2d6153cdd1d01a5581e871f17'
     'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
-    '7993641b29a0fe4379aa7bbd15a1fbd349b28a4894be102937716d97cafa0ee2'
+    '6be6c0f18ecb1f2f54d79222f3776e308ddc95f2edff752effebe6788904ecfb'
 )
 
 prepare() {
@@ -108,6 +108,8 @@ prepare() {
     fi
     
     cd "$srcdir/tdesktop"
+    git submodule init
+    git submodule update
     git apply "$srcdir/aur-fixes.diff"
 }
 
