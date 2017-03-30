@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Bukowski <bbukowski@posteo.de>
 pkgname=firebird-superserver
 pkgver=2.5.7.27050
-pkgrel=2
+pkgrel=3
 pkgdesc="A open source SQL relational database management system (RDMS)"
 arch=('i686' 'x86_64')
 url="http://www.firebirdsql.org/"
@@ -79,7 +79,8 @@ package() {
   mv $pkgdir/usr/bin/isql{,-fb}
 
   chmod -R ugo-w $pkgdir/usr/share/doc/firebird
-  chmod -R o= $pkgdir/var/lib/firebird
+  chmod 755 $pkgdir/var/lib/firebird{,/system}
+  chmod 444 $pkgdir/var/lib/firebird/system/*.msg
   chown -R 184:184 $pkgdir/var/lib/firebird
 }
 
