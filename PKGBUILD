@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-pck
 _pkgbasever=4.10-gnu
-_pkgver=4.10.4-gnu
+_pkgver=4.10.6-gnu
 _pckpatchver=pck1
 
 _replacesarchkernel=('linux-zen')
@@ -43,7 +43,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         # the main kernel config files
         'config.i686' 'config.x86_64' 'config.armv7h'
         # pacman hook for initramfs regeneration
-        '99-linux.hook'
+        '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         # armv7h patches
@@ -61,9 +61,9 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0010-disable-USB3-port-on-ODROID-XU.patch')
 sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf5811fdae48fafd5a8e00d18ed9ac2e1ad4b12a657f322eb234384316ad131e0'
             'SKIP'
-            'fec60e9e40df2991ea9770786cfc5baf7cc1baf6d9e41427e3cb68c471779a21fb7374bd739aa168171198f76c35022bab4118ab21c95f90a7bd6d2cd305bc58'
+            '4390c92afb02678e416fab6cc988139463c247047d09d4e0f69677e2239f05d8aa412842de383a3e7de603c979b1f2786017cd398fe931ba25a5b554d666ad9b'
             'SKIP'
-            '29da5f88eb638e2a69a7fb1ec714453bb97d1b1424de2326bb1f108b502252b5be5efe00c367318a628a94925e200c42581cb70dd9dd4786a835c098e40b3fc7'
+            'c76dee542c17743bd92c67225c265791f8b072d1334aafcb3eec99bff488868d968e0511ed85ba96fe39364699d142e17123be206a96dda09a1316245a8f21f7'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -71,8 +71,8 @@ sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf58
             'SKIP'
             '7a3716bfe3b9f546da309c7492f3e08f8f506813afeb1c737a474c83313d5c313cf4582b65215c2cfce3b74d9d1021c96e8badafe8f6e5b01fe28d2b5c61ae78'
             'SKIP'
-            'cedff1dc1b48da35353477a155fd4c636a5bb0bceb7abfda253b592da27233cf782b716a439d33ef5c94b39fc342067ed3e7b55179c8bdf5f42ab8e3954504a8'
-            '3ea4933bcd00b44418c199bb903c9b1cb84c2f751bd1ed192da6bb7bb2a2a99b0a8392758bd6ee3217f91d0c38783ea781a47cc9a084d3080317602116f735f0'
+            'b54bbd0d5219d2d30a81a47b2a35fbf0a3348ff2e55a5e9686a78d79f25d40b23fbb15322dc75422c4ed34af5d8bc88f81765ae951d95ebc6e8de0b22d61a47a'
+            '00b1aa6732817fd569336f2b87395ff1bf5ecd6ba7743a64797bcbac16cf5151b92bcea598e4557537bfcbf1f812669725db6ade9baf11d92a1e7383513e4544'
             '9554a9b8c543ab5724fd2bf857553017e1366a6aa768c651d4e0c20c7b6bf3328675e46e37c7d63d090a26ccf2a174358b522c861833e1499a7780e00a742fac'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
@@ -208,7 +208,8 @@ _package() {
 
   # install mkinitcpio preset file for kernel
   if [ "${CARCH}" = "armv7h" ]; then
-    sed "s|/boot/vmlinuz-%PKGBASE%|${_kernver}|g" "${srcdir}/linux.preset" |
+    sed "s|/boot/vmlinuz-%PKGBASE%|${_kernver}|g
+         s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
       install -D -m644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
   elif [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
     sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/linux.preset" |
@@ -216,8 +217,8 @@ _package() {
   fi
 
   # install pacman hook for initramfs regeneration
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
-    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/90-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
