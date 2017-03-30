@@ -1,7 +1,7 @@
 ##PKGBUILD
 pkgname=hedera-theme-git
 pkgver=0.r1.487359f
-pkgrel=5
+pkgrel=6
 pkgdesc='Eye-friendly GUIKit based on breeze'
 arch=('x86_64')
 url='https://github.com/sixsixfive/Hedera/blob/master/readme.md'
@@ -39,7 +39,7 @@ package() {
   install -dm 755 "$pkgdir"/usr/share/kde4/apps/kdeui/about/
   install -dm 755 "$pkgdir"/etc/
   install -dm 755 "$pkgdir"/etc/xdg/
-  install -dm 755 "$pkgdir"/etc/X11/Xsession.d/
+  install -dm 755 "$pkgdir"/etc/X11/xinit/xinitrc.d/
   install -dm 755 "$pkgdir"/etc/gtk-{2.0,3.0}
 
   #Installing Themes
@@ -47,4 +47,6 @@ package() {
 
   #Install configs
   cp -drv --no-preserve='ownership' MANUAL/Configs/etc/* "$pkgdir"/etc/
+  rm -r "$pkgdir"/etc/X11/Xsession.d/
+  install -Dm755 MANUAL/Configs/etc/X11/Xsession.d/98gtk3-nosb "$pkgdir"/etc/X11/xinit/xinitrc.d/gtk3-nosb.sh
 }
