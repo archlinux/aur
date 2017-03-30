@@ -1,6 +1,6 @@
 # Maintainer: Michiel <code[at]m01[dot]eu>
 pkgname=lispmob
-pkgver=0.4.1
+pkgver=0.5.2.1
 pkgrel=1
 pkgdesc="Locator/ID Separation Protocol (LISP) and LISP Mobile Node implementation"
 url="http://lispmob.org"
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('openssl' 'confuse' 'libcap')
 makedepends=('git' 'gengetopt')
 backup=("etc/lispd.conf")
-source=("git://github.com/LISPmob/lispmob.git#tag=${pkgver}"
+source=("git+https://github.com/LISPmob/lispmob.git#tag=${pkgver}"
         "lispd.service")
 sha256sums=('SKIP'
             'dcad9ed9b3f643794c5021d4cbddf4fa0ba99177465394ecdcf943fcf8019520')
