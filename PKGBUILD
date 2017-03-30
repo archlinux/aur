@@ -2,7 +2,7 @@
 
 pkgname=glog
 pkgver=0.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ implementation of the Google logging module"
 arch=('i686' 'x86_64')
 url="https://github.com/google/glog"
@@ -13,6 +13,10 @@ sha256sums=('ce99d58dce74458f7656a68935d7a0c048fa7b4626566a71b7f4e545920ceb10')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+
+  aclocal
+  autoconf
+  automake -a
 
   ./configure
   make
