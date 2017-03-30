@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python-pyqt5')
 makedepends=('python-docutils')
 source=("$pkgname::git+https://gitlab.com/goeb/$pkgname.git#tag=$pkgver")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 build() {
    cd "$pkgname"
