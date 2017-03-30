@@ -14,6 +14,7 @@ arch=('any')
 url="https://github.com/platformio/platformio-core/"
 license=('Apache')
 depends=('python2'
+	 'python2-arrow'
          'python2-bottle'
          'python2-click-5.1' # https://github.com/platformio/platformio/issues/349
          'python2-colorama'
