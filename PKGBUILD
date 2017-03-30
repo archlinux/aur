@@ -4,7 +4,7 @@
 # Contributor: Étienne Deparis <etienne [at] depar [dot] is>
 
 pkgname=khal
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc='CLI calendar application build around CalDAV'
 arch=('any')
@@ -17,7 +17,7 @@ depends=('python-urwid' "python-tzlocal>=1.0"
 optdepends=('python-setproctitle' 'vdirsyncer')
 checkdepends=('python-pytest' 'python-freezegun' 'vdirsyncer')
 source=("https://lostpackets.de/khal/downloads/khal-${pkgver}.tar.gz")
-sha256sums=('d4d748ae09fd0069124bf28ca61db1b1fbc3e8e95e2f23e597e28e2e38336ac7')
+sha256sums=('21aa1ac464383a515be9f18d6b06413d17116ef9353d5349211c540c4bd7996e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
