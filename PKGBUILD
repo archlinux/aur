@@ -4,7 +4,7 @@ pkgname='perl-moosex-aliases'
 _module='MooseX-Aliases'
 _author='D/DO/DOY'
 pkgver='0.11'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Easy aliasing of methods and attributes in Moose.'
 arch=('any')
 url="https://metacpan.org/release/$_module"
@@ -20,7 +20,7 @@ build() {
       unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
       export PERL_MM_USE_DEFAULT='1' PERL_AUTOINSTALL='--skipdeps'
       cd "$_module-$pkgver"
-      /usr/bin/perl Makefile.PL
+      perl Makefile.PL INSTALLDIRS='vendor'
       make
    )
 }
@@ -39,7 +39,9 @@ package() {
       cd "$_module-$pkgver"
       unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
       make install INSTALLDIRS='vendor' DESTDIR="$pkgdir"
-      find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+      find "$pkgdir" -name .packlist     -delete
+      find "$pkgdir" -name perllocal.pod -delete
+      find "$pkgdir" -type d -empty      -delete
    )
 }
 
