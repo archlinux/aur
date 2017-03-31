@@ -1,3 +1,11 @@
+# Dolphin upstream states that files should be placed in ~/.dolphin-emu
+# but the emulator does not ever actually populate that directory.
+#
+# In some dark corner of the Internet a kind fellow stated to put configs
+# in ~/.local/share but the actual location of these files is debatable.
+#
+# It would be nice to automate this, but I do not want to ship a seperate
+# script if the project itself does not.
 post_install() {
   printf -- "%s\n" "$(cat << EOF
 
