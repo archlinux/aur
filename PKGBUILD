@@ -1,7 +1,7 @@
 # Maintainer: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=soundcloud-m3u
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A command line tool to generate .m3u playlists pointing to Soundcloud streams"
 arch=('x86_64' 'i686')
@@ -9,7 +9,7 @@ url="http://github.com/dangodai/soundcloud-m3u"
 license=('GPL3')
 makedepends=('go' 'git')
 source=("https://github.com/dangodai/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('ad623ecf303c9dcb615cf7e9f372f47c1f645c76635cc68eefd9e9dcf7cea36a')
+sha256sums=('cf750a80c8f781d5a559af3be4cdfc923c3755eab835c4e5ca4d52410cff9e65')
 
 prepare() {
  mkdir -p "$srcdir/go"
