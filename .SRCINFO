@@ -1,0 +1,19 @@
+pkgbase = avl
+	pkgdesc = aerodynamic and flight-dynamic analysis of rigid aircraft using an extended vortex lattice model
+	pkgver = 3.36
+	pkgrel = 1
+	url = http://web.mit.edu/drela/Public/web/avl/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = gcc-libs
+	depends = libx11
+	options = !strip
+	source = http://web.mit.edu/drela/Public/web/avl/avl3.36.tgz
+	source = avl.patch
+	md5sums = 61cf7ed7629142567ac8a9c9e1ba4981
+	md5sums = e85136557dad261f79a742b8fcdfe424
+
+pkgname = avl
+

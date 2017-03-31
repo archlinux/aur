@@ -1,0 +1,71 @@
+diff -ura avl.orig/bin/Makefile.gfortran avl.new/bin/Makefile.gfortran
+--- avl.orig/bin/Makefile.gfortran	2017-02-12 11:25:41.000000000 -0800
++++ avl.new/bin/Makefile.gfortran	2017-03-30 17:31:47.645245947 -0700
+@@ -66,7 +66,7 @@
+ ##  Uncomment for gfortran
+ FC = gfortran
+ OPT = -O
+-DP =
++#DP =
+ ACHK =
+ 
+ PLTLIB = -L/usr/X11R6/lib -lX11
+@@ -77,14 +77,14 @@
+ #ACHK = -fbounds-check -finit-real=inf
+ #ACHK = -fbounds-check -finit-real=inf -ffpe-trap=invalid,zero,denormal
+ 
+-PLTOBJ = ../plotlib/libPlt_gSP.a
+-EIGOBJ = ../eispack/libeispack.a
++#PLTOBJ = ../plotlib/libPlt_gSP.a
++#EIGOBJ = ../eispack/libeispack.a
+ 
+ ##--------------------------
+ # double precision (compile appropriate eispack and libPlt)
+-#DP = -fdefault-real-8
+-#PLTOBJ = ../plotlib/libPlt_gDP.a
+-#EIGOBJ = ../eispack/libeispackDP.a
++DP = -fdefault-real-8 -fdefault-double-8
++PLTOBJ = ../plotlib/libPlt_gDP.a
++EIGOBJ = ../eispack/libeispack_gDP.a
+ ##--------------------------
+ 
+ # use -m32 for 32-bit binary, -m64 for 64-bit (check your system!)
+@@ -110,7 +110,6 @@
+ 
+ avl: $(AOBJS)
+ 	$(FC) -o avl $(AOBJS)  $(ALIBS) $(PLTOBJ) $(EIGOBJ) $(PLTLIB) $(FTNLIB) $(LFLG)
+-	$(INSTALLCMD) avl $(BINDIR)
+ 
+ dtest: dtest.o
+ 	$(FC) -o dtest dtest.o $(LFLG)
+diff -ura avl.orig/eispack/Makefile.gfortran avl.new/eispack/Makefile.gfortran
+--- avl.orig/eispack/Makefile.gfortran	2014-05-22 09:51:00.000000000 -0700
++++ avl.new/eispack/Makefile.gfortran	2017-03-30 17:33:32.799291332 -0700
+@@ -7,8 +7,8 @@
+ DP =
+ EISLIB = libeispack.a
+ 
+-#DP = -fdefault-real-8
+-#EISLIB = eispack_gDP.a
++DP = -fdefault-real-8 -fdefault-double-8
++EISLIB = libeispack_gDP.a
+ 
+ 
+ $(EISLIB): eispack.f
+diff -ura avl.orig/plotlib/config.make.gfortranDP avl.new/plotlib/config.make.gfortranDP
+--- avl.orig/plotlib/config.make.gfortranDP	2017-02-12 11:20:53.000000000 -0800
++++ avl.new/plotlib/config.make.gfortranDP	2017-03-30 17:36:16.585592359 -0700
+@@ -28,11 +28,11 @@
+ # to gcc/gfortran to give a compatible binary 32 bit or 64 bit 
+ # use -m32 for 32 bit binary, -m64 for 64 bit binary
+ MARCH =
+-#MARCH = -m64
++MARCH = -m64
+ 
+ # Fortran double precision (real) flag
+ DP =
+-DP = -fdefault-real-8
++DP = -fdefault-real-8 -fdefault-double-8
+ 
+ FFLAGS  = -O2 $(MARCH) $(DP)
+ CFLAGS  = -O2 $(MARCH) $(DEFINE)
