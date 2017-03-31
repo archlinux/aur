@@ -1,7 +1,7 @@
 pkgbase = nvidia-vulkan-developer-beta
 	pkgdesc = NVIDIA driver for Arch's official 'linux' package (vulkan developer beta version)
-	pkgver = 375.27.14
-	pkgrel = 2
+	pkgver = 375.27.15
+	pkgrel = 1
 	url = http://www.nvidia.com/
 	install = nvidia-vulkan-developer-beta.install
 	arch = i686
@@ -9,17 +9,17 @@ pkgbase = nvidia-vulkan-developer-beta
 	license = custom:NVIDIA
 	makedepends = linux-headers<4.10
 	depends = linux<4.10
-	depends = nvidia-utils-vulkan-developer-beta>=375.27.14
+	depends = nvidia-utils-vulkan-developer-beta>=375.27.15
 	depends = libgl
-	provides = nvidia=375.27.14
+	provides = nvidia=375.27.15
 	conflicts = nvidia-96xx
 	conflicts = nvidia-173xx
 	conflicts = nvidia
 	options = !strip
-	source_i686 = https://developer.nvidia.com/linux-3752714-32-bit
-	md5sums_i686 = 9f97042234b2ca4d4b63c3ddc384b4a7
-	source_x86_64 = https://developer.nvidia.com/linux-3752714-64-bit
-	md5sums_x86_64 = a8b5683411bb968f616654cd4bae2e56
+	source_i686 = https://developer.nvidia.com/linux-3752715-32-bit
+	md5sums_i686 = 0a2e0a05ed1f5babba47b5d301a4e8fa
+	source_x86_64 = https://developer.nvidia.com/linux-3752715-64-bit
+	md5sums_x86_64 = a1f786592c91c97d654fec4e84e31e56
 
 pkgname = nvidia-vulkan-developer-beta
 
