@@ -21,7 +21,7 @@
 
 pkgname=matlab-support
 pkgver=9.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Provides dependencies and common fixes for MATLAB.'
 arch=('x86_64')
 url='http://www.mathworks.com'

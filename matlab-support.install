@@ -1,6 +1,6 @@
 ## This install script will find the currently installed version of MATLAB (via
-## the PATH) and patch the mexopts.sh script to use GCC 4.7 from the AUR.  This
-## is required as MATLAB does not currently support versions newer than 4.7.
+## the PATH) and patch the mexopts.sh script to use GCC 4.9 from the AUR.  This
+## is required as MATLAB does not currently support versions newer than 4.9.
 
 post_install() {
     post_upgrade
