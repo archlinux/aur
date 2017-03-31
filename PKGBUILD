@@ -1,6 +1,6 @@
 pkgname=fftw-mpi
 pkgver=3.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="fftw, compiled with MPI and OpenMP support"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -8,10 +8,10 @@ url="http://www.fftw.org/"
 depends=('glibc' 'bash' 'openmpi')
 conflicts=('fftw')
 makedepends=('gcc-fortran')
-source=("http://www.fftw.org/fftw-${pkgver}-pl1.tar.gz")
+source=("http://www.fftw.org/fftw-${pkgver}-pl2.tar.gz")
 provides=('fftw')
 install=fftw.install
-sha1sums=('b7730928b6b420733a6fd08c18616bf8ae4f625d')
+sha1sums=('66384d4bf5da3efbcbb9d6ea92f0df264b1620b1')
 
 # notes:
 # http://www.fftw.org/fftw2_doc/fftw_6.html#SEC69
@@ -22,9 +22,9 @@ sha1sums=('b7730928b6b420733a6fd08c18616bf8ae4f625d')
 build() {
   cd ${srcdir}
   
-  cp -a fftw-${pkgver}-pl1 fftw-${pkgver}-double
-  cp -a fftw-${pkgver}-pl1 fftw-${pkgver}-long-double
-  mv fftw-${pkgver}-pl1 fftw-${pkgver}-single
+  cp -a fftw-${pkgver}-pl2 fftw-${pkgver}-double
+  cp -a fftw-${pkgver}-pl2 fftw-${pkgver}-long-double
+  mv fftw-${pkgver}-pl2 fftw-${pkgver}-single
   
 
   # use upstream default CFLAGS while keeping our -march/-mtune
