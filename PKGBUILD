@@ -2,8 +2,8 @@
 # Contributor: Jakob Gruber <jakob.gruber@gmail.com>
 
 pkgname=stone-soup-yiuf
-pkgver=1.5.2b1
-pkgrel=2
+pkgver=1.5.4
+pkgrel=1
 pkgdesc='A fork of Dungeon Crawl Stone Soup roguelike with old races recovered'
 arch=('i686' 'x86_64')
 url='https://github.com/yrmvgh/yiufcrawl'
@@ -14,7 +14,7 @@ optdepends=('advancecomp: for recompressing the tilesheets
 conflicts=('crawl' 'stone-soup-tile')
 license=('GPL' 'BSD' 'MIT' 'ZLIB' 'APACHE' 'custom:CC0' 'custom')
 source=("https://github.com/yrmvgh/yiufcrawl/archive/${pkgver}-yiuf.tar.gz")
-sha256sums=('e6efda8f4188b0823f5d438e2a4b9307a016b12f22e3f75f8a65fd56d35cad6b')
+sha256sums=('726923b619fa37fdfe347cae51bfe84564ef78af3314bcd05082dff9b45855b8')
 
 # used by gendesk to create .desktop file
 _exec=('yiufcrawl-tiles')
