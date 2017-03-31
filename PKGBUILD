@@ -5,8 +5,8 @@
 
 _pkgname=qtox
 pkgname=qtox-git
-pkgver=1.9.0.r30.g533c60b4
-pkgrel=2
+pkgver=1.9.0.r34.g50a31bc5
+pkgrel=1
 pkgdesc='Powerful Tox client written in C++/Qt that follows the Tox design guidelines.'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/qTox/qTox'
@@ -36,6 +36,12 @@ prepare() {
   install -d build
   cd build
   cmake .. -DCMAKE_INSTALL_PREFIX="/usr"
+}
+
+check() {
+  cd $_pkgname
+  cd build
+  make test
 }
 
 build() {
