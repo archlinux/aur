@@ -1,14 +1,14 @@
 pkgbase = bluez-tools
 	pkgdesc = A set of tools to manage bluetooth devices for linux from the cli
 	pkgver = 0.1.38
-	pkgrel = 5
+	pkgrel = 6
 	url = http://code.google.com/p/bluez-tools/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = bluez
 	depends = dbus-glib
-	source = http://bluez-tools.googlecode.com/files/bluez-tools-0.1.38-662e.tar.gz
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/bluez-tools/bluez-tools-0.1.38-662e.tar.gz
 	md5sums = 8fbe1986d05d699b7d8078c2d5f3db5e
 
 pkgname = bluez-tools
