@@ -61,6 +61,7 @@ build() {
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
+        -DROSBUILD
   make
 }
 
