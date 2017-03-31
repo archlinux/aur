@@ -1,5 +1,5 @@
---- /usr/share/vim/vimfiles/autoload/recover.vim	2017-03-31 16:05:13.988929922 +1100
-+++ /tmp/recover.vim	2017-03-24 08:18:47.419002712 +1100
+--- autoload/recover.vim.orig	2017-03-31 16:05:13.988929922 +1100
++++ autoload/recover.vim	2017-03-24 08:18:47.419002712 +1100
 @@ -258,7 +258,7 @@
      exe "setl filetype=".l:filetype
    endif
