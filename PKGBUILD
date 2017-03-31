@@ -2,8 +2,8 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=tanha-fonts
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.5
+pkgrel=1
 pkgdesc="A beautiful Persian font based on Samim and Vazir font."
 url="https://rastikerdar.github.io/tanha-font/"
 arch=(any)
@@ -13,7 +13,7 @@ provides=('ttf-tanha' "$pkgname")
 conflicts=('ttf-tanha' "$pkgname")
 replaces=('ttf-tanha')
 source=("$pkgname-$pkgver.zip::https://github.com/rastikerdar/tanha-font/archive/master.zip")
-sha256sums=('3e7ab70fca0198bf9c92193a37d5101b5a019437c2fbc38a0246cab8a3d7b6c2')
+sha256sums=('526a43a38c668e3fc9ab2edad1f18470b6c35682c9df5ca618b6e9cc222bcef0')
 
 package() {
   cd tanha-font-master
