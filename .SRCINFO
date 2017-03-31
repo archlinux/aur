@@ -1,8 +1,8 @@
 pkgbase = riakts
 	pkgdesc = Distributed NoSQL key/value store optimized for time series data
-	pkgver = 1.5.0
+	pkgver = 1.5.2
 	pkgrel = 1
-	url = http://docs.basho.com/riak/ts/1.5.0/downloads/
+	url = http://docs.basho.com/riak/ts/1.5.2/downloads/
 	install = riakts.install
 	arch = i686
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = riakts
 	conflicts = riak
 	options = !makeflags
 	backup = opt/riakts/etc/riak.conf
-	source = http://s3.amazonaws.com/downloads.basho.com/riak_ts/1.5/1.5.0/riak_ts-1.5.0.tar.gz
+	source = http://s3.amazonaws.com/downloads.basho.com/riak_ts/1.5/1.5.2/riak_ts-1.5.2.tar.gz
 	source = riakts.service
-	md5sums = 4babc13259a75c9b31f267bcc79b4dec
+	md5sums = 3b057d00a1ac3101a414071e69b52ee5
 	md5sums = 370ce648bfed4ac00db20178f7a6735b
 
 pkgname = riakts
