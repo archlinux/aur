@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=osquery-git
-pkgver=2.3.4.r35.g198ee7ab
+pkgver=2.3.4.r49.g5bbff293
 pkgrel=1
 pkgdesc="SQL powered operating system instrumentation, monitoring, and analytics."
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ makedepends=('asio' 'audit' 'aws-sdk-cpp-git' 'git' 'clang' 'benchmark'
 backup=('etc/osquery/osquery.conf')
 options=(!strip)
 _gitcommit="198ee7ab895cb210884cc9af46e9d1817debc402"
-#source=("${pkgname}::git+https://github.com/facebook/osquery"
-source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit}"
+#source=("${pkgname}::git+https://github.com/facebook/osquery#commit=${_gitcommit}"
+source=("${pkgname}::git+https://github.com/facebook/osquery"
 		"osqueryd.conf.d"
 		"osqueryd.service"
 		"arch-linux.patch")
@@ -29,11 +29,11 @@ sha256sums=('SKIP'
 
 _gitname=${pkgname}
 
-#pkgver() {
-#	cd $_gitname
-#
-#	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-#}
+pkgver() {
+	cd $_gitname
+
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
 	cd $_gitname
