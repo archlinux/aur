@@ -1,0 +1,65 @@
+--- t/recommendedprereqs.t	2015-08-29 23:09:03.000000000 +0200
++++ t/recommendedprereqs.t	2017-03-29 22:50:35.000000000 +0200
+@@ -3,7 +3,8 @@
+ 
+ use strict;
+ use warnings;
+-use Test::More 0.88 tests => 4; # done_testing
++use version;
++use Test::More 0.88;
+ 
+ use Test::DZil qw(Builder simple_ini);
+ use Parse::CPAN::Meta;
+@@ -22,21 +23,37 @@
+ 
+ my $meta = Parse::CPAN::Meta->load_file($tzil->tempdir->file('build/META.yml'));
+ 
+-is_deeply(
+-  $meta->{prereqs}{runtime}{recommends},
+-  { 'Foo::Bar' => '1.00',
+-    'Foo::Baz' => 0 },
+-  'runtime recommends'
+-);
+-
+-is($meta->{prereqs}{runtime}{suggests}, undef, 'runtime suggests');
+-
+-is($meta->{prereqs}{test}{recommends}, undef, 'test recommends');
++my $ver = version->new($meta->{'meta-spec'}{version});
++diag "CPAN::Meta::Spec = $ver";
+ 
+-is_deeply(
+-  $meta->{prereqs}{test}{suggests},
+-  { 'Test::Other' => 0 },
+-  'test suggests'
+-);
++if ($ver >= version->new('2')) { # See CPAN::Meta::Spec
++  is_deeply(
++    $meta->{prereqs}{runtime}{recommends},
++    { 'Foo::Bar' => '1.00',
++      'Foo::Baz' => 0 },
++    'runtime recommends'
++  );
++  
++  is($meta->{prereqs}{runtime}{suggests}, undef, 'runtime suggests');
++  
++  is($meta->{prereqs}{test}{recommends}, undef, 'test recommends');
++  
++  is_deeply(
++    $meta->{prereqs}{test}{suggests},
++    { 'Test::Other' => 0 },
++    'test suggests'
++  );
++} elsif ($ver >= version->new('1.4')) { 
++  is_deeply(
++    $meta->{recommends},
++    {
++      'Foo::Bar' => '1.00',
++      'Foo::Baz' => 0,
++    },
++    'runtime recommends'
++  );
++} else {
++  plan skip_all => "Unexpected CPAN::Meta::Spec version '$ver'";
++}
+ 
+ done_testing;

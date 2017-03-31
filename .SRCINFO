@@ -1,0 +1,18 @@
+pkgbase = perl-dist-zilla-plugins-cjm
+	pkgdesc = A collection of Dist::Zilla plugins by CJM.
+	pkgver = 4.27
+	pkgrel = 1
+	url = https://metacpan.org/release/Dist-Zilla-Plugins-CJM
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-dist-zilla
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/C/CJ/CJM/Dist-Zilla-Plugins-CJM-4.27.tar.gz
+	source = fix-recommendedprereqs-t.patch
+	sha256sums = 86fd4e68b3e444a2ecb8990136362fb14060c6c46abddddb497aa94c26e8d921
+	sha256sums = 0e96d3f444f6db0172b66f3eb5cea6b846a9e2c70fb154e2e76dc322517b25f5
+
+pkgname = perl-dist-zilla-plugins-cjm
+
