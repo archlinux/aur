@@ -5,7 +5,15 @@ pkgdesc='Embedded key-value store for fast storage'
 arch=(i686 x86_64)
 url='http://rocksdb.org'
 license=(BSD)
-depends=(gperftools zlib bzip2 lz4 snappy gcc-libs)
+depends=(
+	'bzip2'
+	'gcc-libs'
+	'gperftools'
+	'lz4'
+	'snappy'
+	'zlib'
+	)
+makedepends=('gcc' 'make')
 checkdepends=(python2)
 source=(https://github.com/facebook/rocksdb/archive/rocksdb-$pkgver.zip)
 sha256sums=('6a6c2066e1411d39d6ca8a9ce3d023a8d5c139d51dae7f165d069a4014986b36')
@@ -20,14 +28,13 @@ prepare() {
 
 build() {
   cd rocksdb-rocksdb-$pkgver
-  make shared_lib
+  make shared_lib -j4
 }
 
-check() {
-  cd rocksdb-rocksdb-$pkgver
-# The are some tests are broken in 3.6.2 release
+#check() {
+#  cd rocksdb-rocksdb-$pkgver
 #  make check
-}
+#}
 
 package() {
   cd rocksdb-rocksdb-$pkgver

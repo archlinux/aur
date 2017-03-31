@@ -7,12 +7,14 @@ pkgbase = rocksdb
 	arch = x86_64
 	license = BSD
 	checkdepends = python2
-	depends = gperftools
-	depends = zlib
+	makedepends = gcc
+	makedepends = make
 	depends = bzip2
+	depends = gcc-libs
+	depends = gperftools
 	depends = lz4
 	depends = snappy
-	depends = gcc-libs
+	depends = zlib
 	source = https://github.com/facebook/rocksdb/archive/rocksdb-5.2.1.zip
 	sha256sums = 6a6c2066e1411d39d6ca8a9ce3d023a8d5c139d51dae7f165d069a4014986b36
 
