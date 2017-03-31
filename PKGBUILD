@@ -3,7 +3,7 @@ pkgver=6.2.1
 pkgrel=1
 pkgdesc="plugin providing all the little things (and some big ones), and it protects your servers from various problems."
 arch=(any)
-url="http://dev.bukkit.org/bukkit-plugins/worldguard"
+url="http://enginehub.org/worldguard"
 license=("GPLv3")
 makedepends=(dos2unix)
 depends=("craftbukkit>=1.8.1")
