@@ -4,17 +4,17 @@
 # Base for this PKGBUILD is not the latest AUR package, but the package from 2016-12-14 for nvidia version 375.26
 
 pkgname=('lib32-nvidia-utils-vulkan-developer-beta' 'lib32-nvidia-libgl-vulkan-developer-beta' 'lib32-opencl-nvidia-vulkan-developer-beta')
-pkgver=375.27.14
-pkgrel=3
+pkgver=375.27.15
+pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
 makedepends=('nvidia-libgl-vulkan-developer-beta')  # To avoid conflict during installation in the build chroot
 license=('custom:NVIDIA')
 options=('!strip')
-_pkg="linux-375271432bit"
+_pkg="linux-375271532bit"
 _pkg_dir="NVIDIA-Linux-x86-$pkgver"
-source=("https://developer.nvidia.com/linux-375271432bit")
-md5sums=('9f97042234b2ca4d4b63c3ddc384b4a7')
+source=("https://developer.nvidia.com/linux-375271532bit")
+md5sums=('0a2e0a05ed1f5babba47b5d301a4e8fa')
 
 _create_links() {
   # create missing soname links
@@ -62,7 +62,7 @@ package_lib32-opencl-nvidia-vulkan-developer-beta() {
 
 package_lib32-nvidia-libgl-vulkan-developer-beta() {
   pkgdesc="NVIDIA driver library symlinks for 'lib32-nvidia-utils-vulkan-developer-beta'"
-  depends=('lib32-nvidia-utils-vulkan-developer-beta' 'nvidia-libgl-vulkan-developer-beta', 'lib32-mesa>=17.0.2')
+  depends=("lib32-nvidia-utils>=375.27.10" "nvidia-libgl>=375.27.10", 'lib32-mesa')
   provides=('lib32-libgl' 'lib32-libegl' 'lib32-libgles' 'lib32-nvidia-libgl')
   conflicts=('lib32-libgl' 'lib32-libegl' 'lib32-libgles' 'lib32-nvidia-libgl')
   cd $_pkg_dir
@@ -103,7 +103,7 @@ package_lib32-nvidia-libgl-vulkan-developer-beta() {
 
 package_lib32-nvidia-utils-vulkan-developer-beta() {
   pkgdesc="NVIDIA driver utilities and libraries (vulkan developer beta version) (32-bit)"
-  depends=('lib32-zlib' 'lib32-gcc-libs' 'nvidia-utils-vulkan-developer-beta')
+  depends=('lib32-zlib' 'lib32-gcc-libs' "nvidia-utils>=375.27.10")
   optdepends=('lib32-opencl-nvidia-vulkan-developer-beta: OpenCL support')
   provides=("lib32-nvidia-utils=$pkgver" 'lib32-libglvnd' 'lib32-vulkan-driver')
   conflicts=('lib32-nvidia-utils' 'lib32-libglvnd')
