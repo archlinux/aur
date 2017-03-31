@@ -1,0 +1,12 @@
+pkgbase = shufti
+	pkgdesc = shufti - the persistent image viewer
+	pkgver = 2.0
+	pkgrel = 1
+	arch = any
+	license = AGPL3
+	depends = python-pyqt5
+	source = git+https://github.com/danboid/shufti.git
+	md5sums = SKIP
+
+pkgname = shufti
+
