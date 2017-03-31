@@ -1,0 +1,18 @@
+pkgbase = dbus-typenum-git
+	pkgdesc = D-Bus Type Enumerator
+	pkgver = r5.2c2fea5
+	pkgrel = 1
+	url = https://github.com/cherry-pick/dbus-typenum
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = meson
+	depends = glibc
+	provides = dbus-typenum
+	conflicts = dbus-typenum
+	source = dbus-typenum-git::git+https://github.com/cherry-pick/dbus-typenum
+	md5sums = SKIP
+
+pkgname = dbus-typenum-git
+
