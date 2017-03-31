@@ -5,7 +5,7 @@
 
 pkgname=xfe-arch
 _pkgname=xfe
-pkgver=1.41
+pkgver=1.42
 pkgrel=1
 pkgdesc="An MS-Explorer like file manager for X with Archlinux xfp support."
 arch=('i686' 'x86_64')
@@ -19,12 +19,12 @@ optdepends=('yaourt: xfp archlinux support')
 install="$_pkgname.install"
 source=("http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.gz"
 	"arch-yaourt.patch")
-md5sums=('cd4978240decbf0449f07c5061b9c4b8'
-         '6f1401fe5a2fb101ff3d5cbf3bca28d7')
+md5sums=('34326f185070db02e7419f85f7967cdf'
+         '680403ddc2a748b2fb304080b945ac45')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
-  patch -Np1 -b -z .orig <../arch-yaourt.patch
+  patch -Np2 -b -z .orig <../arch-yaourt.patch
   aclocal
   automake --add-missing
   autoreconf
@@ -33,7 +33,7 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
   ./configure --prefix=/usr
-  make
+  make V=0
 }
 
 package() {

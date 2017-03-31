@@ -1,7 +1,7 @@
-diff -up xfe-1.41/src/FilePanel.cpp.orig xfe-1.41/src/FilePanel.cpp
---- xfe-1.41/src/FilePanel.cpp.orig	2015-12-15 15:12:44.000000000 -0700
-+++ xfe-1.41/src/FilePanel.cpp	2015-12-15 16:45:39.000000000 -0700
-@@ -4472,27 +4472,32 @@ long FilePanel::onCmdPopupMenu(FXObject*
+diff -up src/xfe-1.42/src/FilePanel.cpp.orig src/xfe-1.42/src/FilePanel.cpp
+--- src/xfe-1.42/src/FilePanel.cpp.orig	2016-07-27 03:48:17.000000000 -0600
++++ src/xfe-1.42/src/FilePanel.cpp	2017-03-30 19:47:29.000000000 -0600
+@@ -4474,27 +4474,32 @@ long FilePanel::onCmdPopupMenu(FXObject*
              // Last and before last file extensions
              FXString ext1 = name.rafter('.', 1).lower();
              FXString ext2 = name.rafter('.', 2).lower();
@@ -37,7 +37,7 @@ diff -up xfe-1.41/src/FilePanel.cpp.orig xfe-1.41/src/FilePanel.cpp
              {
                  ar = true;
                  new FXMenuCommand(menu, _("&Extract here"), archexticon, current, FilePanel::ID_EXTRACT_HERE);
-@@ -4505,7 +4510,7 @@ long FilePanel::onCmdPopupMenu(FXObject*
+@@ -4507,7 +4512,7 @@ long FilePanel::onCmdPopupMenu(FXObject*
                  new FXMenuCommand(menu, _("E&xtract to..."), archexticon, current, FilePanel::ID_EXTRACT);
              }
  #if defined(linux)
@@ -46,7 +46,7 @@ diff -up xfe-1.41/src/FilePanel.cpp.orig xfe-1.41/src/FilePanel.cpp
              {
                  ar = true;
                  new FXMenuCommand(menu, _("&View"), packageicon, current, FilePanel::ID_VIEW);
-@@ -5357,6 +5362,7 @@ long FilePanel::onCmdPkgInstall(FXObject
+@@ -5359,6 +5364,7 @@ long FilePanel::onCmdPkgInstall(FXObject
  
          // Command to perform
          FXString ext = FXPath::extension(name);
@@ -54,7 +54,7 @@ diff -up xfe-1.41/src/FilePanel.cpp.orig xfe-1.41/src/FilePanel.cpp
          if (comparecase(ext, "rpm") == 0)
          {
              cmd = "rpm -Uvh " + path;
-@@ -5365,6 +5371,10 @@ long FilePanel::onCmdPkgInstall(FXObject
+@@ -5367,6 +5373,10 @@ long FilePanel::onCmdPkgInstall(FXObject
          {
              cmd = "dpkg -i "+ path;
          }
@@ -65,7 +65,7 @@ diff -up xfe-1.41/src/FilePanel.cpp.orig xfe-1.41/src/FilePanel.cpp
  
          // Wait cursor
          getApp()->beginWaitCursor();
-@@ -5404,6 +5414,7 @@ long FilePanel::onCmdPkgUninstall(FXObje
+@@ -5406,6 +5416,7 @@ long FilePanel::onCmdPkgUninstall(FXObje
  
          // Command to perform
          FXString ext = FXPath::extension(name);
@@ -73,7 +73,7 @@ diff -up xfe-1.41/src/FilePanel.cpp.orig xfe-1.41/src/FilePanel.cpp
          if (comparecase(ext, "rpm") == 0)
          {
              name = name.section('-', 0);
-@@ -5414,6 +5425,11 @@ long FilePanel::onCmdPkgUninstall(FXObje
+@@ -5416,6 +5427,11 @@ long FilePanel::onCmdPkgUninstall(FXObje
              name = name.section('_', 0);
              cmd = "dpkg -r "+ name;
          }
@@ -85,7 +85,7 @@ diff -up xfe-1.41/src/FilePanel.cpp.orig xfe-1.41/src/FilePanel.cpp
  
          // Wait cursor
          getApp()->beginWaitCursor();
-@@ -5900,9 +5916,13 @@ long FilePanel::onCmdPkgQuery(FXObject*
+@@ -5902,9 +5918,13 @@ long FilePanel::onCmdPkgQuery(FXObject*
      {
          cmd = "rpm -qf " + ::quote(file);
      }
@@ -100,7 +100,7 @@ diff -up xfe-1.41/src/FilePanel.cpp.orig xfe-1.41/src/FilePanel.cpp
          return(0);
      }
  
-@@ -5956,6 +5976,13 @@ long FilePanel::onCmdPkgQuery(FXObject*
+@@ -5958,6 +5978,13 @@ long FilePanel::onCmdPkgQuery(FXObject*
      {
          if (str.find(' ') != -1) // Space character exists in the string
          {
@@ -114,9 +114,9 @@ diff -up xfe-1.41/src/FilePanel.cpp.orig xfe-1.41/src/FilePanel.cpp
              str = "";
          }
      }
-diff -up xfe-1.41/src/help.h.orig xfe-1.41/src/help.h
---- xfe-1.41/src/help.h.orig	2015-12-15 15:12:53.000000000 -0700
-+++ xfe-1.41/src/help.h	2015-12-15 15:30:47.000000000 -0700
+diff -up src/xfe-1.42/src/help.h.orig src/xfe-1.42/src/help.h
+--- src/xfe-1.42/src/help.h.orig	2015-11-28 04:41:59.000000000 -0700
++++ src/xfe-1.42/src/help.h	2017-03-30 19:47:29.000000000 -0600
 @@ -49,7 +49,7 @@
      - Panels synchronization and switching\n \
      - Integrated text editor and viewer (X File Write, Xfw)\n \
@@ -126,9 +126,9 @@ diff -up xfe-1.41/src/help.h.orig xfe-1.41/src/help.h
      - Custom shell scripts (like Nautilus scripts)\n \
      - Search files and directories\n \
      - Natural sort order (foo10.txt comes after foo2.txt...)\n \
-diff -up xfe-1.41/src/main.cpp.orig xfe-1.41/src/main.cpp
---- xfe-1.41/src/main.cpp.orig	2015-12-15 15:12:59.000000000 -0700
-+++ xfe-1.41/src/main.cpp	2015-12-15 16:35:25.000000000 -0700
+diff -up src/xfe-1.42/src/main.cpp.orig src/xfe-1.42/src/main.cpp
+--- src/xfe-1.42/src/main.cpp.orig	2015-12-15 06:55:15.000000000 -0700
++++ src/xfe-1.42/src/main.cpp	2017-03-30 19:47:29.000000000 -0600
 @@ -333,6 +333,7 @@ int main(int argc, char* argv[])
      // For package query on Linux systems, try to guess if the default package format is deb or rpm:
      //   - if dpkg exists then the system uses deb packages
@@ -156,9 +156,9 @@ diff -up xfe-1.41/src/main.cpp.orig xfe-1.41/src/main.cpp
          }
      }
  #endif
-diff -up xfe-1.41/src/Properties.cpp.orig xfe-1.41/src/Properties.cpp
---- xfe-1.41/src/Properties.cpp.orig	2015-12-15 15:13:09.000000000 -0700
-+++ xfe-1.41/src/Properties.cpp	2015-12-15 16:40:19.000000000 -0700
+diff -up src/xfe-1.42/src/Properties.cpp.orig src/xfe-1.42/src/Properties.cpp
+--- src/xfe-1.42/src/Properties.cpp.orig	2015-12-16 03:17:47.000000000 -0700
++++ src/xfe-1.42/src/Properties.cpp	2017-03-30 19:47:29.000000000 -0600
 @@ -169,7 +169,7 @@ PropertiesBox::PropertiesBox(FXWindow* w
      FXString    grpid, usrid;
      FXLabel*    sizelabel = NULL;
@@ -189,10 +189,10 @@ diff -up xfe-1.41/src/Properties.cpp.orig xfe-1.41/src/Properties.cpp
      {
          editlbl = _("Install/Upgrade:");
      }
-diff -up xfe-1.41/src/SearchPanel.cpp.orig xfe-1.41/src/SearchPanel.cpp
---- xfe-1.41/src/SearchPanel.cpp.orig	2015-12-15 15:13:19.000000000 -0700
-+++ xfe-1.41/src/SearchPanel.cpp	2015-12-15 16:49:20.000000000 -0700
-@@ -2262,14 +2262,15 @@ long SearchPanel::onCmdPopupMenu(FXObjec
+diff -up src/xfe-1.42/src/SearchPanel.cpp.orig src/xfe-1.42/src/SearchPanel.cpp
+--- src/xfe-1.42/src/SearchPanel.cpp.orig	2016-07-27 03:46:58.000000000 -0600
++++ src/xfe-1.42/src/SearchPanel.cpp	2017-03-30 19:47:29.000000000 -0600
+@@ -2263,14 +2263,15 @@ long SearchPanel::onCmdPopupMenu(FXObjec
              // Last and before last file extensions
              FXString ext1 = name.rafter('.', 1).lower();
              FXString ext2 = name.rafter('.', 2).lower();
@@ -210,7 +210,7 @@ diff -up xfe-1.41/src/SearchPanel.cpp.orig xfe-1.41/src/SearchPanel.cpp
              {
                  ar = true;
                  new FXMenuCommand(menu, _("&Extract here"), archexticon, this, SearchPanel::ID_EXTRACT);
-@@ -2280,7 +2281,7 @@ long SearchPanel::onCmdPopupMenu(FXObjec
+@@ -2281,7 +2282,7 @@ long SearchPanel::onCmdPopupMenu(FXObjec
                  new FXMenuCommand(menu, _("E&xtract to..."), archexticon, this, SearchPanel::ID_EXTRACT);
              }
  #if defined(linux)
@@ -219,7 +219,7 @@ diff -up xfe-1.41/src/SearchPanel.cpp.orig xfe-1.41/src/SearchPanel.cpp
              {
                  ar = true;
                  new FXMenuCommand(menu, _("&View"), packageicon, this, SearchPanel::ID_VIEW);
-@@ -4318,9 +4319,13 @@ long SearchPanel::onCmdPkgQuery(FXObject
+@@ -4319,9 +4320,13 @@ long SearchPanel::onCmdPkgQuery(FXObject
      {
          cmd = "rpm -qf " + ::quote(file);
      }
@@ -234,7 +234,7 @@ diff -up xfe-1.41/src/SearchPanel.cpp.orig xfe-1.41/src/SearchPanel.cpp
          return(0);
      }
  
-@@ -4377,6 +4382,13 @@ long SearchPanel::onCmdPkgQuery(FXObject
+@@ -4378,6 +4383,13 @@ long SearchPanel::onCmdPkgQuery(FXObject
              str = "";
          }
      }
@@ -248,16 +248,16 @@ diff -up xfe-1.41/src/SearchPanel.cpp.orig xfe-1.41/src/SearchPanel.cpp
  
      // Display the related output message
      FXString message;
-@@ -4425,5 +4437,4 @@ long SearchPanel::onUpdPkgQuery(FXObject
+@@ -4426,5 +4438,4 @@ long SearchPanel::onUpdPkgQuery(FXObject
      return(1);
  }
  
 -
  #endif
-diff -up xfe-1.41/src/xfedefs.h.orig xfe-1.41/src/xfedefs.h
---- xfe-1.41/src/xfedefs.h.orig	2015-12-15 15:13:47.000000000 -0700
-+++ xfe-1.41/src/xfedefs.h	2015-12-15 16:11:22.000000000 -0700
-@@ -274,6 +274,7 @@
+diff -up src/xfe-1.42/src/xfedefs.h.orig src/xfe-1.42/src/xfedefs.h
+--- src/xfe-1.42/src/xfedefs.h.orig	2016-07-27 05:27:41.000000000 -0600
++++ src/xfe-1.42/src/xfedefs.h	2017-03-30 19:47:29.000000000 -0600
+@@ -294,6 +294,7 @@
  // Package format
  #define DEB_PKG      0
  #define RPM_PKG      1
@@ -266,9 +266,9 @@ diff -up xfe-1.41/src/xfedefs.h.orig xfe-1.41/src/xfedefs.h
 +#define OTHER_PKG    3
  
  #endif
-diff -up xfe-1.41/src/XFilePackage.cpp.orig xfe-1.41/src/XFilePackage.cpp
---- xfe-1.41/src/XFilePackage.cpp.orig	2015-12-15 15:13:58.000000000 -0700
-+++ xfe-1.41/src/XFilePackage.cpp	2015-12-15 16:53:13.000000000 -0700
+diff -up src/xfe-1.42/src/XFilePackage.cpp.orig src/xfe-1.42/src/XFilePackage.cpp
+--- src/xfe-1.42/src/XFilePackage.cpp.orig	2015-12-15 06:53:31.000000000 -0700
++++ src/xfe-1.42/src/XFilePackage.cpp	2017-03-30 20:51:59.000000000 -0600
 @@ -32,6 +32,7 @@
  char**   args;
  FXbool   dpkg = false;
@@ -411,6 +411,6 @@ diff -up xfe-1.41/src/XFilePackage.cpp.orig xfe-1.41/src/XFilePackage.cpp
      {
 -        MessageBox::error(window, BOX_OK, _("Error"), _("No compatible package manager (rpm or dpkg) found!"));
 +        MessageBox::error(window, BOX_OK, _("Error"), _("No compatible package manager (rpm, dpkg or yaourt) found!"));
-         exit(EXIT_SUCCESS);
+         exit(EXIT_FAILURE);
      }
  
