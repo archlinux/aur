@@ -2,8 +2,8 @@
 # Contributor: XaBz <xabz.2k5@gmail.com>
 
 pkgname=iraf
-pkgver=2.15
-pkgrel=2
+pkgver=2.16
+pkgrel=1
 pkgdesc="Image Reduction and Analysis Facility"
 arch=('i686' 'x86_64')
 url="http://iraf.noao.edu/"
@@ -15,24 +15,24 @@ makedepends=()
 backup=()
 install=iraf.install
 
-source=('http://iraf.noao.edu/iraf/ftp/iraf/v215/PCIX/as.pcix.gen.gz' 
-	'http://iraf.noao.edu/iraf/ftp/iraf/v215/PCIX/nb.lnux.x86.gz' 
-	'http://iraf.noao.edu/iraf/ftp/iraf/v215/PCIX/ib.lnux.x86.gz' 
+source=('http://iraf.noao.edu/iraf/ftp/iraf/v216/PCIX/as.pcix.gen.gz' 
+	'http://iraf.noao.edu/iraf/ftp/iraf/v216/PCIX/nb.lnux.x86.gz' 
+	'http://iraf.noao.edu/iraf/ftp/iraf/v216/PCIX/ib.lnux.x86.gz' 
 	'http://iraf.noao.edu/iraf/ftp/iraf/x11iraf/x11iraf-v2.0BETA-bin.linux.tar.gz' 
 	'iraf.desktop' 'iraf.png' 'iraf.run' 'iraf-install.run')
 
-[[ $CARCH = x86_64 ]] && source=('http://iraf.noao.edu/iraf/ftp/iraf/v214/PCIX/as.pcix.gen.gz' 
-	'http://iraf.noao.edu/iraf/ftp/iraf/v215/PCIX/nb.lnux.x86_64.gz' 
-	'http://iraf.noao.edu/iraf/ftp/iraf/v215/PCIX/ib.lnux.x86_64.gz' 
+[[ $CARCH = x86_64 ]] && source=('http://iraf.noao.edu/iraf/ftp/iraf/v216/PCIX/as.pcix.gen.gz' 
+	'http://iraf.noao.edu/iraf/ftp/iraf/v216/PCIX/nb.lnux.x86_64.gz' 
+	'http://iraf.noao.edu/iraf/ftp/iraf/v216/PCIX/ib.lnux.x86_64.gz' 
 	'http://iraf.noao.edu/iraf/ftp/iraf/x11iraf/x11iraf-v2.0BETA-bin.linux.tar.gz' 
 	'iraf.desktop' 'iraf.png' 'iraf.run' 'iraf-install.run')
 
 noextract=('as.pcix.gen.gz' 'nb.lnux.x86.gz' 'ib.lnux.x86.gz' 'x11iraf-v2.0BETA-bin.linux.tar.gz')
 [[ $CARCH = x86_64 ]] && noextract=('as.pcix.gen.gz' 'nb.lnux.x86_64.gz' 'ib.lnux.x86_64.gz' 'x11iraf-v2.0BETA-bin.linux.tar.gz')
 
-md5sums=('d08b3223595fc5250276bed6369df271'
-         '903c04fe63f3563f87dee09090290b0c'
-         '8e15cd74492c5f1edca373123dd92272'
+md5sums=('83361cb665ec126d1195340a0592294f'
+         'fe40850e4baac66f6816ff7362121617'
+         'c1d93518447a3f1080d16e210acdee5e'
          '059c26f38f2656d1acf9d3972cf761b0'
          'ca522aa61b7685bb5247b606df16f31f'
          '556669a44c89e38c09aa6b75052fcee5'
