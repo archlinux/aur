@@ -6,7 +6,7 @@ pkgdesc="A simple shell script that surfaces clipboard history from clipster in 
 arch=('i686' 'x86_64')
 url="https://github.com/gilbertw1/roficlip"
 license=('GPL')
-depends=('clipster' 'gawk')
+depends=('clipster' 'gawk' 'rofi')
 source=("https://github.com/gilbertw1/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('635f3369e5229fada36ce6695cf828c2c001b354ceb80112535da2aad464ebb6')
 
