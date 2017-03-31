@@ -4,7 +4,7 @@ pkgname='perl-data-rmap'
 _module='Data-Rmap'
 _author='B/BO/BOWMANBS'
 pkgver='0.65'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Recursive map, apply a block to a data structure.'
 arch=('any')
 url="https://metacpan.org/release/$_module"
@@ -39,7 +39,9 @@ package() {
       cd "$_module-$pkgver"
       unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
       make install INSTALLDIRS='vendor' DESTDIR="$pkgdir"
-      find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+      find "$pkgdir" -name .packlist     -delete
+      find "$pkgdir" -name perllocal.pod -delete
+      find "$pkgdir" -type d -empty      -delete
    )
 }
 
