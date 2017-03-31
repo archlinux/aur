@@ -2,7 +2,7 @@
 pkgname=cliqz
 _pkgname=browser-f
 _vendorname=CLIQZ
-pkgver=1.11.1
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Firefox-based privacy aware web browser"
 arch=('i686' 'x86_64')
@@ -14,8 +14,12 @@ depends=('alsa-lib' 'dbus-glib' 'ffmpeg' 'gtk2' 'gtk3' 'hunspell'
          'ttf-font')
 makedepends=('python2' 'zip' 'autoconf2.13' 'yasm' 'libidl2' 'linux-api-headers')
 conflicts=('cliqz-bin')
-source=("https://github.com/cliqz-oss/browser-f/archive/${pkgver}.tar.gz")
-sha256sums=('653df00962403baada8632cd07a129601d43b77dbc0ca025521fd84a567c9681')
+source=("https://github.com/cliqz-oss/browser-f/archive/${pkgver}.tar.gz"
+        "rust-i686.patch"
+        "fix-wifi-scanner.diff")
+sha256sums=('cf4fcfa04a79426033c1553d2c3a85a40031a02e28f1b695613af6d050b874cf'
+            'f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269'
+            '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8')
 options=(!emptydirs !makeflags !strip)
 
 prepare() {
@@ -23,6 +27,26 @@ prepare() {
   sed -i 's/ifeq ($(OS_ARCH), Linux)/ifeq ($(OS_ARCH), Nope)/' toolkit/mozapps/installer/upload-files.mk
   sed -i "s/@MOZ_APP_DISPLAYNAME@/$_vendorname/g" toolkit/mozapps/installer/linux/rpm/mozilla.desktop
   sed -i "s/@MOZ_APP_NAME@/$pkgname/g" toolkit/mozapps/installer/linux/rpm/mozilla.desktop
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
+  patch -Np1 -i $srcdir/fix-wifi-scanner.diff
+
+  # Build with the rust targets we actually ship
+  patch -Np1 -i $srcdir/rust-i686.patch
+
+  # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
+  # Note: These are for Arch Linux use ONLY. For your own distribution, please
+  # get your own set of keys. Feel free to contact foutrelis@archlinux.org for
+  # more information.
+  echo -n "" > google-api-key
+  sed -i "s|/builds/google-desktop-api.key|${PWD@Q}/google-api-key|" browser/config/cliqz-release.mozconfig
+
+  # Mozilla API keys (see https://location.services.mozilla.com/api)
+  # Note: These are for Arch Linux use ONLY. For your own distribution, please
+  # get your own set of keys. Feel free to contact heftig@archlinux.org for
+  # more information.
+  echo -n "" > mozilla-api-key
+  sed -i "s|/builds/mozilla-desktop-geoloc-api.key|${PWD@Q}/mozilla-api-key|" browser/config/cliqz-release.mozconfig
 
   cat >.mozconfig <<END
 ac_add_options --prefix=/usr
