@@ -44,3 +44,51 @@ pkgname = libeudev
 	provides = libudev.so
 	conflicts = libudev.so
 
+pkgbase = eudev
+	pkgver = 3.2.1
+	pkgrel = 3
+	url = http://www.gentoo.org/proj/en/eudev/
+	arch = i686
+	arch = x86_64
+	groups = base
+	groups = base-openrc
+	license = GPL
+	makedepends = gobject-introspection
+	makedepends = gperf
+	makedepends = gtk-doc
+	makedepends = intltool
+	makedepends = kmod
+	options = !libtool
+	options = !staticlibs
+	source = eudev-3.2.1.tar.gz::https://github.com/gentoo/eudev/archive/v3.2.1.tar.gz
+	source = initcpio_hooks
+	source = initcpio_install
+	source = udev-hwdb.hook
+	source = gperf-3.1.patch
+	sha256sums = 88f530c1540750e6daa91b5eaeebf88e761e6f0c86515c1c28eedfd871f027c6
+	sha256sums = 892ce43218e0a458981bbce451252c8987dc398e60b8de288e7542b8f2409c13
+	sha256sums = 77dd1fd318b4456409aceb077f060b87944defb07cf39d29ad1968dc6f361875
+	sha256sums = 846e9ddbb95c8394ba7efe75107cc1308426921bc042f5d6b48fa4c2dcbac151
+	sha256sums = c45ceb0fdd65d8379ebfe574da0f8783d139f207d6e6a7f3a451fbe4a86a462e
+
+pkgname = eudev
+	pkgdesc = The userspace dev tools (udev) forked by Gentoo
+	depends = libeudev
+	depends = kbd
+	depends = kmod
+	depends = hwids
+	depends = util-linux
+	optdepends = eudev-systemd: makes packages compiled with systemd features run
+	optdepends = udev-openrc: udev starup scripts for openrc
+	provides = udev=232
+	backup = etc/udev/udev.conf
+
+pkgname = libeudev
+	pkgdesc = eudev client libraries
+	depends = glib2
+	depends = glibc
+	optdepends = libeudev-systemd: systemd client libraries
+	provides = libudev=232
+	provides = libudev.so
+	conflicts = libudev.so
+

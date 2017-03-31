@@ -1,0 +1,12 @@
+diff -Naur eudev-3.2.1-orig/src/udev/udev-builtin-keyboard.c eudev-3.2.1/src/udev/udev-builtin-keyboard.c
+--- eudev-3.2.1-orig/src/udev/udev-builtin-keyboard.c	2016-11-17 18:14:19.000000000 -0300
++++ eudev-3.2.1/src/udev/udev-builtin-keyboard.c	2017-02-18 20:39:09.960018936 -0300
+@@ -28,7 +28,7 @@
+ 
+ #include "udev.h"
+ 
+-static const struct key *keyboard_lookup_key(const char *str, unsigned len);
++static const struct key *keyboard_lookup_key(const char *str, size_t len);
+ #include "keyboard-keys-from-name.h"
+ #include "keyboard-keys-to-name.h"
+ 

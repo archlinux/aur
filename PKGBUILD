@@ -8,7 +8,7 @@ _udev_ver=232
 pkgbase=eudev
 pkgname=( 'eudev' 'libeudev')
 pkgver=3.2.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.gentoo.org/proj/en/eudev/"
 license=('GPL')
@@ -17,15 +17,21 @@ options=('!libtool' '!staticlibs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gentoo/eudev/archive/v${pkgver}.tar.gz"
 	'initcpio_hooks'
 	'initcpio_install'
-	'udev-hwdb.hook')
+	'udev-hwdb.hook'
+	'gperf-3.1.patch')
 sha256sums=('88f530c1540750e6daa91b5eaeebf88e761e6f0c86515c1c28eedfd871f027c6'
             '892ce43218e0a458981bbce451252c8987dc398e60b8de288e7542b8f2409c13'
             '77dd1fd318b4456409aceb077f060b87944defb07cf39d29ad1968dc6f361875'
-            '846e9ddbb95c8394ba7efe75107cc1308426921bc042f5d6b48fa4c2dcbac151')
+            '846e9ddbb95c8394ba7efe75107cc1308426921bc042f5d6b48fa4c2dcbac151'
+            'c45ceb0fdd65d8379ebfe574da0f8783d139f207d6e6a7f3a451fbe4a86a462e')
 
 prepare(){
 	cd "${srcdir}/${pkgbase}-${pkgver}"
-	sed -e 's/GROUP="dialout"/GROUP="uucp"/' -i rules/*.rules
+	patch -Np1 -i ${srcdir}/gperf-3.1.patch
+	sed -e 's/GROUP="dialout"/GROUP="uucp"/' \
+		-e 's/GROUP="tape"/GROUP="storage"/' \
+		-e 's/GROUP="cdrom"/GROUP="optical"/' \
+		-i rules/*.rules
 }
 
 groups=('base' 'base-openrc')
