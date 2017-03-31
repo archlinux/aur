@@ -4,13 +4,13 @@ pkgname='perl-data-simplepath'
 _module='Data-SimplePath'
 _author='S/ST/STG'
 pkgver='0.005'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Path-like access to complex data structures.'
 arch=('any')
 url="https://metacpan.org/release/$_module"
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-checkdepends=('perl-test-nowarnings' 'perl-test-warn')
+checkdepends=('perl-test-classapi' 'perl-test-nowarnings' 'perl-test-warn')
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_module-$pkgver.tar.gz")
 sha256sums=('c4b85bdde841b09010cb4cf75ddaecac4aee8f8b0c233615579f24fd732d84bd')
 

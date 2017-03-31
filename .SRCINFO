@@ -1,11 +1,12 @@
 pkgbase = perl-data-simplepath
 	pkgdesc = Path-like access to complex data structures.
 	pkgver = 0.005
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Data-SimplePath
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	checkdepends = perl-test-classapi
 	checkdepends = perl-test-nowarnings
 	checkdepends = perl-test-warn
 	options = !emptydirs
