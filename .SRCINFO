@@ -1,0 +1,21 @@
+pkgbase = xwallpaper-git
+	pkgdesc = Wallpaper setting utility for X
+	pkgver = 0.1.1+43+g94647f4
+	pkgrel = 1
+	url = https://github.com/stoeckmann/xwallpaper
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = pixman
+	depends = libpng
+	depends = xcb-util
+	depends = xcb-util-image
+	depends = libjpeg-turbo
+	provides = xwallpaper
+	conflicts = xwallpaper
+	source = xwallpaper-git::git+https://github.com/stoeckmann/xwallpaper
+	sha512sums = SKIP
+
+pkgname = xwallpaper-git
+
