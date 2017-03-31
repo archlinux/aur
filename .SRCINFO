@@ -1,6 +1,6 @@
 pkgbase = xwallpaper-git
 	pkgdesc = Wallpaper setting utility for X
-	pkgver = 0.1.1+43+g94647f4
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/stoeckmann/xwallpaper
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = xwallpaper-git
 	makedepends = git
 	depends = pixman
 	depends = libpng
+	depends = libxpm
 	depends = xcb-util
 	depends = xcb-util-image
 	depends = libjpeg-turbo
