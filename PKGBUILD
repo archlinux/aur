@@ -1,7 +1,7 @@
 # Maintainer: Arctic Ice Studio <development@arcticicestudio.com>
 pkgname=nord-tilix
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An arctic, north-bluish clean and elegant Tilix color scheme"
 arch=("any")
 url="https://github.com/arcticicestudio/nord-tilix"
