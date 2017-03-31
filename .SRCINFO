@@ -1,6 +1,6 @@
 pkgbase = lua-psl
 	pkgver = 0.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/daurnimator/lua-psl
 	arch = i686
 	arch = x86_64

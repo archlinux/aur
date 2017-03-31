@@ -2,7 +2,7 @@
 
 pkgname=(lua-psl lua51-psl lua52-psl)
 pkgver=0.2
-pkgrel=0
+pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/daurnimator/lua-psl'
 license=('MIT')
@@ -13,14 +13,14 @@ md5sums=('f99781d19e18902d97fb4892150552bd')
 
 build() {
 	cd lua-psl-"$pkgver"
-	gcc -O2 -fPIC -c psl/psl.c -o psl/psl.o
-	gcc -shared -o psl.so psl/psl.o -lpsl
+	gcc -fPIC ${CPPFLAGS} ${CFLAGS} -o psl/psl.o -c psl/psl.c
+	gcc -shared ${LDFLAGS} -o psl.so psl/psl.o -lpsl
 
-	gcc -O2 -fPIC -I/usr/include/lua5.1 -c psl/psl.c -o psl/psl.o
-	gcc -shared -o psl-5.1.so psl/psl.o -lpsl
+	gcc -fPIC -I/usr/include/lua5.1 ${CPPFLAGS} ${CFLAGS} -o psl/psl.o -c psl/psl.c
+	gcc -shared ${LDFLAGS} -o psl-5.1.so psl/psl.o -lpsl
 
-	gcc -O2 -fPIC -I/usr/include/lua5.2 -c psl/psl.c -o psl/psl.o
-	gcc -shared -o psl-5.2.so psl/psl.o -lpsl
+	gcc -fPIC -I/usr/include/lua5.2 ${CPPFLAGS} ${CFLAGS} -o psl/psl.o -c psl/psl.c
+	gcc -shared ${LDFLAGS} -o psl-5.2.so psl/psl.o -lpsl
 }
 
 package_lua-psl() {
