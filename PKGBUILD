@@ -1,29 +1,32 @@
 # Maintainer: Crescent Scroll <crescent-scroll@users.noreply.github.com>
 
-pkgname=auri
-pkgver=0.2.0_alpha
-pkgrel=1
-pkgdesc='A way to set up static Arch Linux machines'
+pkgname="auri"
+pkgver="0.3.0_beta"
+pkgrel="1"
+pkgdesc="A way to set up volatile Arch Linux machines"
 
-arch=(any)
+arch=("any")
 url="https://github.com/crescent-scroll/$pkgname"
-license=(GPL3)
+license=("GPL3")
 
-makedepends=(git)
+makedepends=("git")
 source=("$pkgname::git+$url.git#tag=${pkgver//_/-}")
-md5sums=(SKIP)
+md5sums=("SKIP")
 install="$pkgname.install"
 
 package() {
     cd "$pkgname"
     
-    install -d -m 755 "$pkgdir/usr/lib/initcpio/"{hooks,install}
+    local source="$srcdir/$pkgname" target="$pkgdir"
     
-    install -m 644 \
-        "$srcdir/$pkgname/hook/setup.sh" \
-        "$pkgdir/usr/lib/initcpio/install/$pkgname"
+    cd "$source" && make
     
-    install -m 644 \
-        "$srcdir/$pkgname/hook/script.sh" \
-        "$pkgdir/usr/lib/initcpio/hooks/$pkgname"
+    install -D -m "755" "$source/binary/auri" "$target/usr/bin/auri"
+    
+    local initcpio="$target/usr/lib/initcpio"
+    
+    install -D -m "644" "$source/hook/build.sh" "$initcpio/install/auri"
+    install -D -m "644" "$source/hook/run.sh" "$initcpio/hooks/auri"
+    
+    install -D -m "644" "$source/script/auri.sh" "$target/usr/lib/auri/script"
 }

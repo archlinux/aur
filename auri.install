@@ -1,7 +1,8 @@
 post_install() {
-    echo "Add 'auri' to the 'HOOKS' array in '/etc/mkinitcpio.conf'"
-    echo "Invoke 'mkinitcpio' to generate an initial RAM filesystem"
-    echo 'Edit the kernel command line to use the generated archive'
+    echo "In order to use Auri"
+    echo "- create a configuration file at '/etc/auri/layout'"
+    echo "- invoke 'mkinitcpio' to generate an initial RAM filesystem"
+    echo "- edit the kernel command line to use the generated archive"
 }
 
 post_upgrade() {
