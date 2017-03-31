@@ -1,12 +1,11 @@
 pkgbase = python2-rasterio
 	pkgdesc = Fast and direct raster I/O for use with Numpy and SciPy (Python 2)
-	pkgver = 1.0a7
+	pkgver = 1.0a8
 	pkgrel = 1
 	url = https://github.com/mapbox/rasterio
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = python2-setuptools
 	makedepends = cython2
 	depends = python2-affine
 	depends = python2-cligj
@@ -14,10 +13,11 @@ pkgbase = python2-rasterio
 	depends = python2-snuggs
 	depends = python2-click-plugins
 	depends = python2-enum34
+	depends = python2-setuptools
 	depends = gdal
 	options = !emptydirs
-	source = https://github.com/mapbox/rasterio/archive/1.0a7.zip
-	sha256sums = 0fa0b7e72807d36a83dac78d7d405b763ec5b46d922846492c39636667356fa8
+	source = https://github.com/mapbox/rasterio/archive/1.0a8.zip
+	sha256sums = 65aa0cc9bda60c8d2401786101b029bbbfd1a2514133c9ed46cf5fa7e41b9167
 
 pkgname = python2-rasterio
 
