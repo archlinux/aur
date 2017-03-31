@@ -1,6 +1,6 @@
 pkgbase = craftbukkit-plugin-worldguard
 	pkgdesc = plugin providing all the little things (and some big ones), and it protects your servers from various problems.
-	pkgver = 6.1.7
+	pkgver = 6.2.1
 	pkgrel = 1
 	url = http://dev.bukkit.org/bukkit-plugins/worldguard
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = craftbukkit-plugin-worldguard
 	makedepends = dos2unix
 	depends = craftbukkit>=1.8.1
 	optdepends = mariadb
-	noextract = worldedit-bukkit-6.1.7-SNAPSHOT-dist.jar
-	source = http://builds.enginehub.org/job/worldedit/9766/download/worldedit-bukkit-6.1.7-SNAPSHOT-dist.jar
-	md5sums = 2611bcfb780ec31909f59990a93364d9
+	noextract = worldguard-legacy-6.2.1-SNAPSHOT-dist.jar
+	source = http://builds.enginehub.org/job/worldguard/9687/download/worldguard-legacy-6.2.1-SNAPSHOT-dist.jar
+	md5sums = c30e606fbb70f2ed16555d8dbdce7ad0
 
 pkgname = craftbukkit-plugin-worldguard
 
