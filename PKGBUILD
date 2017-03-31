@@ -1,34 +1,34 @@
 # Maintainer: Denis A. Altoé Falqueto <denisfalqueto@gmail.com>
 pkgname=safesignidentityclient
-pkgver=3.0.77
-pkgrel=4
+pkgver=3.0.101
+pkgrel=1
 pkgdesc="Smart card PKCS#11 provider and token manager"
 arch=('i686' 'x86_64')
 url="http://www.validcertificadora.com.br/SafeSignLinux"
 license=('custom:copyright')
-depends=('pcsclite' 'gdbm183' 'wxgtk2.8' 'xdg-utils')
+depends=('pcsclite' 'gdbm183' 'wxgtk2.8-light' 'openssl098' 'xdg-utils')
 optdepends=('ccid: generic USB Chip/Smart card interface devices driver',
             'acsccid: ACS CCID PC/SC driver',
             'scmccid: binary driver for the SCM Smart Card Readers')
 makedepends=('deb2targz')
-source_i686=("http://www.validcertificadora.com.br/upload/downloads/linux32bits/${pkgname}_${pkgver}-Ubuntu_i386.deb")
-source_x86_64=("http://www.validcertificadora.com.br/upload/downloads/linux64bits/${pkgname}_${pkgver}-Ubuntu_amd64.deb")
+source_i686=("https://raw.githubusercontent.com/geyslan/morpho/master/SafeSignIC$pkgver-i386-deb6-admin.deb")
+source_x86_64=("https://raw.githubusercontent.com/geyslan/morpho/master/SafeSignIC$pkgver-x86_64-deb6-admin.deb")
 install='safesign.install'
-sha512sums_i686=("65bbf08c0049f55c6fe4f781e8e50ed3cd576fbf3e7f7fd9a8a525a8e15fd2c53fa2543bcc255b8ebffa87e98a203d0c71f6d4d09a69a1020be631956fad838f")
-sha512sums_x86_64=("ec635d3d25a8c8670273db83ecdb96a6c0fde0693a2b1745f9c0930941431b6ed1a2af3a24b0631cac3c75fb59126c9a60b844fdd426b3cab1c41c1d51a63519")
+sha512sums_i686=('1b1aca9b19eb859a23dc6173c8bc035e76bcd74319c02c2b00099f16f1ac4f9e631f0f62f91bea60f5e2c2bd75541d17038eb57aa9a44e2ce70cb3bd381b5fc4')
+sha512sums_x86_64=('b41e8e0b9bcb2ad4eb7e73b065951e46138105672f1885f97b584fdb94b565a1032cd118913a66208478b6a17e7549c43609e734841a7f05d50fee8b7ff74ef7')
 
 build() {
   cd ${srcdir}
   local _filename
   if [[ arch == "i686" ]]; then
-    _filename=${pkgname}_${pkgver}-Ubuntu_i386
+    _filename=${pkgver}-i386
   else
-    _filename=${pkgname}_${pkgver}-Ubuntu_amd64
+    _filename=${pkgver}-x86_64
   fi
 
   # Use deb2targz to extract the beefy parts of the files
-  deb2targz $_filename.deb
-  tar xvf $_filename.tar.gz
+  deb2targz SafeSignIC$_filename-deb6-admin.deb
+  tar xvf SafeSignIC$_filename-deb6-admin.tar.gz
 }
 
 package() {
@@ -38,4 +38,5 @@ package() {
 
   install -d ${pkgdir}/usr/share/licenses/${pkgname}
   install -m 644 ${srcdir}/usr/share/doc/${pkgname}/copyright ${pkgdir}/usr/share/licenses/${pkgname}/copyright
+  ln -s ${pkgdir}/usr/lib/libaetpkss.so{.3.0,}
 }
