@@ -13,6 +13,6 @@ md5sums=("SKIP")
 
 package() {
   cd "${srcdir}/${pkgname}"
-  install -dm755 "$pkgdir/usr/share/terminix/schemes"
-  install -Dm644 "src/json/nord.json" "$pkgdir/usr/share/terminix/schemes"
+  install -dm755 "$pkgdir/usr/share/tilix/schemes"
+  install -Dm644 "src/json/nord.json" "$pkgdir/usr/share/tilix/schemes"
 }
