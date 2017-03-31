@@ -9,8 +9,7 @@ arch=("any")
 url="https://github.com/crescent-scroll/$pkgname"
 license=("GPL3")
 
-depends=("clang")
-makedepends=("git")
+makedepends=("clang" "git")
 source=("$pkgname::git+$url.git#tag=${pkgver//_/-}")
 md5sums=("SKIP")
 install="$pkgname.install"

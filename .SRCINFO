@@ -6,8 +6,8 @@ pkgbase = auri
 	install = auri.install
 	arch = any
 	license = GPL3
+	makedepends = clang
 	makedepends = git
-	depends = clang
 	source = auri::git+https://github.com/crescent-scroll/auri.git#tag=0.3.0-beta
 	md5sums = SKIP
 
