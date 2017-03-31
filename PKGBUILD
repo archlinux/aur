@@ -8,17 +8,17 @@
 pkgbase=nvidia-grsec
 pkgname=(nvidia-grsec nvidia-grsec-dkms)
 pkgver=378.13
-_pkgver=375.20
-_extramodules=extramodules-4.9.16-grsec
-pkgrel=7
+_patchver=375.20
+_extramodules=extramodules-4.9.19-grsec
+pkgrel=8
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-makedepends=('libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-headers>=4.9')
+makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-headers>=4.9')
 license=('custom')
 options=(!strip)
 # source=("https://www.grsecurity.net/~paxguy1/nvidia-drivers-${pkgver}-pax.patch")
-source=("https://www.grsecurity.net/~paxguy1/nvidia-drivers-${_pkgver}-pax.patch")
+source=("https://www.grsecurity.net/~paxguy1/nvidia-drivers-${_patchver}-pax.patch")
 source_i686=("http://http.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://http.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
 sha512sums=('65ad102cc3c28c6e2d67c4f24c8fe6ca3b9b4b4f57eca6fdf437127ce9caccabebd3049af53b30ba808e68529b5627a7e3add31b42cffb09d648a69bedfa55d9')
@@ -33,7 +33,7 @@ prepare() {
     cd "${_pkg}"
     # patches here
     # Using the updated grsecurity-provided patch
-    patch -Np1 -i "../nvidia-drivers-${_pkgver}-pax.patch"
+    patch -Np1 -i "../nvidia-drivers-${_patchver}-pax.patch"
 
     cp -a kernel kernel-dkms
     cd kernel-dkms
