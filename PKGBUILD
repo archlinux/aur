@@ -2,7 +2,7 @@
 
 pkgname=brave-bin
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A web browser that stops ads and trackers by default. Binary release."
 arch=('x86_64') # Upstream supports x86_64 only
 url="https://www.brave.com/"
@@ -160,7 +160,7 @@ END
 
   install -Dm0664 "$srcdir"/MPL2 "$pkgdir/usr/share/licenses/$pkgname/MPL2"
 
-  mv "$pkgdir"/usr/lib/brave/{LICENSE,LICENSES.chromium.html} "$pkgdir/usr/share/licenses/$pkgname/"
+  mv "$pkgdir/usr/lib/$pkgname/{LICENSE,LICENSES.chromium.html}" "$pkgdir/usr/share/licenses/$pkgname/"
 
   ln -s /usr/lib/PepperFlash "$pkgdir"/usr/lib/pepperflashplugin-nonfree 
 }
