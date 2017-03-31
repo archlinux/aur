@@ -7,7 +7,7 @@ _v8_ver=3.14
 
 pkgname=plv8-bin
 pkgver=1.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="plv8js is a procedural language add-on for PostgreSQL"
 url="https://code.google.com/p/plv8js/"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ package() {
   msg2 "Unpacking data.tar.xz (Ubuntu package files)"
   tar -xf data.tar.xz
   
-  install -Dm644 ${srcdir}/usr/lib/postgresql/${_postgres_ver}/lib/plv8.so ${pkgdir}/usr/lib/postgresql/plv8.so
+  install -Dm755 ${srcdir}/usr/lib/postgresql/${_postgres_ver}/lib/plv8.so ${pkgdir}/usr/lib/postgresql/plv8.so
   install -Dm644 ${srcdir}/usr/share/postgresql/${_postgres_ver}/extension/plv8--${pkgver}.sql ${pkgdir}/usr/share/postgresql/extension/plv8--${pkgver}.sql
   install -Dm644 ${srcdir}/usr/share/postgresql/${_postgres_ver}/extension/plv8.control ${pkgdir}/usr/share/postgresql/extension/plv8.control
   install -dDm644 ${srcdir}/usr/share/doc/postgresql-${_postgres_ver}-plv8/ ${pkgdir}/usr/share/doc/postgresql-plv8/
