@@ -1,7 +1,7 @@
 # Maintainer: Ben Fox-Moore <ben.foxmoore@gmail.com>
 # Co-Maintainer: Sebastian Meyer <mail@bastimeyer.de>
 pkgname=streamlink-twitch-gui
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A multi platform Twitch.tv browser for Streamlink"
 arch=("i686" "x86_64")
@@ -16,10 +16,7 @@ depends=(
 	"libxtst"
 	"nss"
 	"xdg-utils"
-)
-optdepends=(
-	"streamlink: streaming provider"
-	"livestreamer: streaming provider (deprecated)"
+	"streamlink"
 )
 provides=("streamlink-twitch-gui")
 conflicts=("streamlink-twitch-gui-git")
@@ -29,8 +26,8 @@ source=("https://raw.githubusercontent.com/streamlink/streamlink-twitch-gui/mast
 source_i686=("https://github.com/streamlink/streamlink-twitch-gui/releases/download/v$pkgver/streamlink-twitch-gui-v$pkgver-linux32.tar.gz")
 source_x86_64=("https://github.com/streamlink/streamlink-twitch-gui/releases/download/v$pkgver/streamlink-twitch-gui-v$pkgver-linux64.tar.gz")
 sha256sums=('a3f70e2c1fabdc05bde59f20d77863362d127b1c231c735a0422fa079c40415f')
-sha256sums_i686=('e09eb8511849cd975dc80d31a6c409ffe94d9789a1069163c6379dd8d63c431c')
-sha256sums_x86_64=('7916c4eb7622c0eec9af4d9ac6d93f3f7c72a53a87b74953b23f686a042607a9')
+sha256sums_i686=('99b6cf2532771941be828eff45deba24d2a43f950d849a93c9962e902aa0b410')
+sha256sums_x86_64=('974171b029b8876de08116b40ca10d52a34aa0e7d767290f2e4f2b313e415179')
 
 package() {
 	cd "$srcdir/$pkgname"
