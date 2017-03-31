@@ -1,0 +1,17 @@
+pkgbase = perl-test-version
+	pkgdesc = Check to see that versions in modules are sane.
+	pkgver = 2.05
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-Version
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception
+	depends = perl-file-find-rule-perl
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/P/PL/PLICEASE/Test-Version-2.05.tar.gz
+	sha256sums = 39c0ec02663da0e56962bdafaef6790cf83d12b4d90e8a4cdc971d57d869d63f
+
+pkgname = perl-test-version
+

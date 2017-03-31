@@ -1,0 +1,4 @@
+This repository contains the PKGBUILD to create the «perl-test-version»
+package for the Perl module Test::Version for Arch Linux.
+
+See https://aur.archlinux.org/packages/perl-test-version/.
