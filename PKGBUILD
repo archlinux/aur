@@ -10,7 +10,7 @@ pkgname=dolphin-emu-faster-melee
 # shellcheck disable=SC2034
 pkgver=4.4
 # shellcheck disable=SC2034
-pkgrel=3
+pkgrel=4
 # shellcheck disable=SC2034
 pkgdesc='The FasterMelee NetPlay build of the Dolphin Emulator'
 # shellcheck disable=SC2034
@@ -44,7 +44,7 @@ source=("${pkgname}::git+https://github.com/Tinob/Ishiiruka.git#commit=0b00f1f62
 sha256sums=('SKIP'
             '7a512b04f1d067e7ba59f4b0c7b3720018eccfd6bb63cd5c47ac84ee82b3ccfa'
             'eae12be9d008453d09bf1379315a2299eca9c76cc093727f8f41926193981c50'
-            'a930e0490bfa95f66f96919d320e04f99d6988587209700a536bf7549d53466a'
+            '62abf45f5064fac79aeead6340120be5beb8ad7a64f25fd85c07b45e3756df3f'
             '4dd62a40be7a41c92079c9ee23f5fd458c85f275431881c707450f634fdcf24c'
             '4dd62a40be7a41c92079c9ee23f5fd458c85f275431881c707450f634fdcf24c'
             '4dd62a40be7a41c92079c9ee23f5fd458c85f275431881c707450f634fdcf24c')
