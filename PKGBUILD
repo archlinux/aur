@@ -19,12 +19,10 @@ optdepends=('transfig: convert images using fig2ps'
             'aspell: spell checking')
 makedepends=('ghostscript')
 source=("${_pkgname}::svn://svn.savannah.gnu.org/texmacs/trunk/src"
-        "0001-R-plugin-fix-preprocessor.patch"
-        "0002-Sage-plugin-fix-which-not-found.patch"
+        "0001-Sage-plugin-fix-which-not-found.patch"
         )
 sha1sums=('SKIP'
-          '57cef50905776f39c26fd7fd9c9ad45cf630233c'
-          'c755cb0c3f002129ed64df21c0dffbae49a317f0')
+          '2c3bf8ba3c879ba20fc0afb8228a431ef4b21430')
 options=('!emptydirs' '!ccache')
 provides=('texmacs')
 conflicts=('texmacs')
@@ -40,8 +38,7 @@ prepare() {
 
   cd "${srcdir}/${_pkgname}-build"
 
-  patch -Np1 -i ../0001-R-plugin-fix-preprocessor.patch
-  patch -Np1 -i ../0002-Sage-plugin-fix-which-not-found.patch
+  patch -Np1 -i ../0001-Sage-plugin-fix-which-not-found.patch
 
   autoreconf
 
