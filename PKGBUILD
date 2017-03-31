@@ -2,13 +2,13 @@
 
 pkgname=resource-agents-git
 _pkgname=resource-agents
-pkgver=3.9.7.r239.g4040e29
+pkgver=4.0.1.r31.g450540cc
 pkgrel=1
 pkgdesc="OCF resource agents for rgmanager and pacemaker"
 arch=('i686' 'x86_64')
 url='http://clusterlabs.org/'
 license=('GPL2')
-makedepends=('libxslt')
+makedepends=('git' 'libxslt' 'python')
 depends=('bash' 'perl')
 provides=($_pkgname)
 conflicts=($_pkgname)
