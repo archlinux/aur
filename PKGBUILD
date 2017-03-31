@@ -1,7 +1,7 @@
 # Contributor: noonov <noonov@gmail.com>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=qemacs-cvs
-pkgver=0.3.2.r2017.03.20
+pkgver=0.3.2.r2017.03.31
 pkgrel=1
 pkgdesc="A very small but powerful UNIX editor."
 arch=('i686' 'x86_64')
@@ -38,7 +38,7 @@ pkgver() {
 
 build() {
   cd ${srcdir}/${_cvsmod}-build
-  ./configure --prefix=/usr --enable-xshm
+  ./configure --prefix=/usr --enable-x11 --enable-xv --enable-xshm --enable-xrender
   make -j1
 }
 
