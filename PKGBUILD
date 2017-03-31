@@ -2,8 +2,8 @@
 # Contributor: Patrick Griffis <tingping@tingping.se>
 
 pkgname=xdg-desktop-portal
-pkgver=0.5
-pkgrel=3
+pkgver=0.6
+pkgrel=1
 pkgdesc='Desktop integration portals for sandboxed apps'
 arch=('i686' 'x86_64')
 url='https://github.com/flatpak/xdg-desktop-portal'
@@ -11,7 +11,7 @@ license=('LGPL2.1')
 depends=('glib2')
 makedepends=('python' 'flatpak' 'xmlto' 'docbook-xsl')
 source=(https://github.com/flatpak/xdg-desktop-portal/releases/download/$pkgver/$pkgname-$pkgver.tar.xz)
-sha256sums=('9f4aa2b4bf6b348f0e46d968c92995e7c6f762b831d1b74cc83b5ff5b5836c1f')
+sha256sums=('fbaa92c1761167a1d9bd54232843dcf8cf53bb6e47709c7bda0fa89804a1c8e5')
 
 build() {
   cd $pkgname-$pkgver
