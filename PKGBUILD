@@ -1,21 +1,19 @@
-# Maintainer: TingPing <tingping@fedoraproject.org>
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Contributors: TingPing <tingping@fedoraproject.org>
 
 _fontname=EmojiOneColor-SVGinOT
 pkgname=ttf-emojione-color
 pkgver=1.3
-pkgrel=3
-pkgdesc='A color and B&W emoji SVGinOT font built from EmojiOne'
+pkgrel=4
+pkgdesc='A color and B&W emoji SVGinOT font built from EmojiOne.'
 arch=('any')
 url='https://github.com/eosrei/emojione-color-font'
-depends=('fontconfig' 'xorg-font-utils' 'xorg-fonts-encodings')
+depends=('fontconfig')
 license=('CC-BY-4.0')
-install=ttf-font.install
 source=("https://github.com/eosrei/emojione-color-font/releases/download/v$pkgver/$_fontname-Linux-$pkgver.tar.gz"
-        "64-$pkgname.conf"
-        'ttf-font.install')
+        "64-$pkgname.conf")
 sha256sums=('afb397b2a141cd414e73e1072dbe8ff4a5e69eb38131304a99e4cd93ba348498'
-            '6f589b3879f20baf194d8a1574900391691b58c7d04990921ade9dd8ad74694a'
-            '4ab991dcf41e5a97cd163288af6e4e2233b17c7c3a9e352ae24e06b4a08a4b0e')
+            '6f589b3879f20baf194d8a1574900391691b58c7d04990921ade9dd8ad74694a')
 
 package() {
   cd "$_fontname-Linux-$pkgver"
