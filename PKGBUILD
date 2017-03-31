@@ -1,23 +1,29 @@
-# Submitter: Kevin Brubeck Unhammer <unhammer@fsfe.org>
+# Maintainer: Michael Straube <straubem@gmx.de>
+# Contributor: Kevin Brubeck Unhammer <unhammer@fsfe.org>
 
 pkgname=python2-editor
-pkgver=0.4
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Programmatically open an editor, capture the result"
-url="https://github.com/fmoo/python-editor"
-depends=('python2' )
-license=('Apache')
 arch=('any')
-_pkgname3=python-editor
-source=("https://pypi.python.org/packages/source/p/${_pkgname3}/${_pkgname3}-${pkgver}.tar.gz")
-md5sums=('30de680ec944d073e0c3f18b44d5aa15')
+url="https://github.com/fmoo/python-editor"
+license=('Apache')
+depends=('python2' )
+makedepends=('python2-setuptools')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/fmoo/python-editor/archive/$pkgver.tar.gz")
+sha256sums=('e627a2160bdf5e435dcde964cf38bae39c02cdd8da2ccf5fac313b2ca453e2a3')
+
+prepare() {
+  cd python-editor-$pkgver
+  sed -i 's/python/python2/' editor.py
+}
 
 build() {
-    cd $srcdir/${_pkgname3}-${pkgver}
-    python2 setup.py build
+  cd python-editor-$pkgver
+  python2 setup.py build
 }
 
 package() {
-    cd $srcdir/${_pkgname3}-${pkgver}
-    python2 setup.py install --root="$pkgdir"
+  cd python-editor-$pkgver
+  python2 setup.py install --root="$pkgdir" --skip-build
 }
