@@ -2,7 +2,7 @@
 
 pkgname=streamlink-twitch-gui-git
 _pkgname=streamlink-twitch-gui
-pkgver=1466.94cf58a
+pkgver=1632.a06b601
 pkgrel=1
 pkgdesc="A multi platform Twitch.tv browser for Streamlink"
 arch=("i686" "x86_64")
@@ -18,10 +18,7 @@ depends=(
 	"libxtst"
 	"nss"
 	"xdg-utils"
-)
-optdepends=(
-	"streamlink: streaming provider"
-	"livestreamer: streaming provider (deprecated)"
+	"streamlink"
 )
 makedepends=(
 	"git"
@@ -58,9 +55,6 @@ package() {
 	install -d "${pkgdir}/opt/${_pkgname}"
 	install -d "${pkgdir}/usr/bin/"
 	cp -R * "${pkgdir}/opt/${_pkgname}"
-
-	# fix file permissions
-	chmod -R g+r,o+r "${pkgdir}/opt/${_pkgname}"
 
 	# sym link from /usr/bin/${_pkgname} to start.sh
 	ln -s "/opt/${_pkgname}/start.sh" "${pkgdir}/usr/bin/${_pkgname}"
