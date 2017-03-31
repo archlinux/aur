@@ -1,7 +1,7 @@
 pkgname=electrum-ltc
 pkgver=2.8.3
-_commit=432225d
-pkgrel=1
+_commit=316c960
+pkgrel=2
 pkgdesc='Lightweight Litecoin client'
 arch=(any)
 url=https://electrum-ltc.org/
@@ -15,6 +15,7 @@ depends=(python2-btchip
          python2-pbkdf2
          python2-protobuf
          python2-pyaes
+         python2-pycryptodomex
          python2-pyqt4
          python2-pysocks
          python2-qrcode
@@ -22,7 +23,7 @@ depends=(python2-btchip
          zbar)
 makedepends=(python2-pycurl)
 source=($pkgname-$_commit.tar.gz::https://codeload.github.com/pooler/$pkgname/tar.gz/$_commit)
-sha256sums=(bb8814d6302e233687723a7b7ddd29ef40335c18f07b8e0e77bf4e1949c70281)
+sha256sums=(0fac1b3b4abe781fdb64e0549ccd2cd14d50dcbc3b35a0f3e1b125928c53d797)
 
 prepare() {
   cd $pkgname-$_commit/
