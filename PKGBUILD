@@ -21,6 +21,6 @@ package() {
 
   install -Dm755 "target/release/drop" "$pkgdir/usr/bin/drop"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/drop/README.md"
-  install -Dm644 "license" "$pkgdir/usr/share/doc/ripgrep/license"
+  install -Dm644 "license" "$pkgdir/usr/share/doc/drop/license"
   install -Dm644 "doc/drop.1" "$pkgdir/usr/share/man/man1/drop.1"
 }
