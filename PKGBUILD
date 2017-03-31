@@ -2,7 +2,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=parastoo-fonts
-pkgver=1.0.0_alpha2
+pkgver=1.0.0_alpha3
 pkgrel=1
 pkgdesc="A beautiful Persian font based on Gandom font."
 url="https://rastikerdar.github.io/parastoo-font/"
@@ -13,7 +13,7 @@ provides=('ttf-parastoo' "$pkgname")
 conflicts=('ttf-parastoo' "$pkgname")
 replaces=('ttf-parastoo')
 source=("$pkgname-$pkgver.zip::https://github.com/rastikerdar/parastoo-font/releases/download/v${pkgver//_/-}/parastoo-font-v${pkgver//_/-}.zip")
-sha256sums=('a9fc41b3a3ebdf28ab4e92b3237c9ee4d3ef82e34327028bcb4133937ae229c6')
+sha256sums=('7e02a35c0755317f2680a2d5f57cacc2503309a75b28062244ec26fc1a0a162f')
 
 package() {
   install -d "$pkgdir/usr/share/fonts/${pkgname%-fonts}"
