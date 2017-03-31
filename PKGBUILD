@@ -14,4 +14,5 @@ md5sums=('c30e606fbb70f2ed16555d8dbdce7ad0')
 
 package() {
   install -Dm644 worldguard-legacy-$pkgver-SNAPSHOT-dist.jar "$pkgdir/srv/craftbukkit/plugins/worldguard-legacy-$pkgver-SNAPSHOT-dist.jar"
+  chown craftbukkit:craftbukkit "$pkgdir/srv/craftbukkit/plugins/worldguard-legacy-$pkgver-SNAPSHOT-dist.jar"
 }
