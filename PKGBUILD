@@ -1,7 +1,7 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=sleeksnap
-pkgver=1.4.5
-_gitsha=f6238190
+pkgver=1.4.9
+_gitsha=40bedcdc
 pkgrel=1
 pkgdesc='The user-friendly screenshot program'
 arch=('any')
@@ -13,7 +13,7 @@ source=("http://cdn.probablyaserver.com/sleeksnap/Sleeksnap-${_gitsha}.jar"
         'sleeksnap'
         'sleeksnap.desktop')
 noextract=("Sleeksnap-${_gitsha}.jar")
-md5sums=('2d118ab6328cb5d26c94f53478672cd3'
+md5sums=('7d45b107a17f1f32365b7adaed8aa51a'
          '142cfa8913ad1ab91f7638e4296367a4'
          '99013580a98f44a5f9f634d916bac7d2')
 
