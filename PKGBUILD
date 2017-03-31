@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.3.0+23327.e4bef84213e7
+pkgver=4.3.0+23338.f7460c045841
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -12,7 +12,7 @@ license=('GPL')
 # are installed, octave will be linked against them.
 depends=('fftw>=3.2.2' 'curl' 'fltk' 'hdf5' 'glpk' 'arpack' 'gl2ps' 'qt5-base'
 	 'qhull' 'graphicsmagick' 'portaudio' 'mesa' 'suitesparse'
-	 'java-environment')
+	 'java-environment' 'qscintilla-qt5')
 makedepends=('pcre' 'mercurial' 'gcc-fortran' 'gperf' 'rsync' 'gnuplot'
 	     'gettext' 'suitesparse' 'transfig' 'epstool' 'texlive-core'
 	     'icoutils')
