@@ -6,7 +6,7 @@
 # Contributor: Christian Berendt <christian@thorlin.de>
 
 pkgname=cfengine
-pkgver=3.10.0
+pkgver=3.10.1
 pkgrel=1
 pkgdesc='Automated suite of programs for configuring and maintaining Unix-like computers.'
 url='http://www.cfengine.org'
@@ -23,8 +23,8 @@ source=("${pkgname}-${pkgver}.tar.gz::https://cfengine-package-repos.s3.amazonaw
         'cf-serverd.service'
 	'cfengine3.service')
 
-md5sums=('6ea3ad2cd2adb972ccbd2eb7d8c95bbb'
-         '4a465dd9dec3fc68c8548953f58cf9c2'
+md5sums=('ae7e2dc8b20faa89089002c9b9fd4e0a'
+         '7773662b93fd19a80caf9520faafeb22'
          '6edac71eaac0a19fc5b8129f17d82bb2'
          '199a7867b60a3e4013da4ac42343e22e'
          'f8783637895f6f3dd19a6ba689181d41'
