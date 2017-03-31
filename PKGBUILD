@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=7.6.beta5.r0.g36bcfa606a
+pkgver=8.0.beta0.r0.g8725c635c3
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -28,27 +28,26 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'lrs: Algorithms for linear reverse search used in game theory and for computing volume of polytopes'
   'libhomfly: for computing the homfly polynomial of links' 'libbraiding: for computing in braid groups'
   'libfes: exhaustive search of solutions for boolean equations' 'python2-pynormaliz: Normaliz backend for polyhedral computations'
+  'latte-integrale: integral point count in polyhedra'
   'three.js: alternative 3D plots engine' 'tachyon: alternative 3D plots engine')
 makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhomfly libbraiding
   mcqd coxeter3 cryptominisat2 modular_decomposition bliss-graphs tdlib python2-pkgconfig meataxe libfes git)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
-        env.patch skip-check.patch cython-sys-path.patch is-package-installed.patch package.patch
-        jupyter-path.patch test-optional.patch ecm-7.patch increase-rtol.patch r-no-readline.patch
-        sagemath-planarity3.patch fes02.patch sagemath-singular-4.1.0.p2.patch)
+        env.patch skip-check.patch cython-sys-path.patch is-package-installed.patch package.patch latte-count.patch
+        jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch ecm-7.patch r-no-readline.patch fes02.patch)
 sha256sums=('SKIP'
             '9dba04ff13626a7b6c338a8b18a6c27d343f68a547a218533cf773af3dae6635'
             '178074c0a22da4a8129ec299a6845aaae8cf3ef1da6f62b34f2ec0ed50c1e6a2'
             'ff7e034d08ab084fdb193484f7fe3a659ebcd8ab33a2b7177237d65b26de7872'
             'd60fb0fbd27991ce9496ca035a54b03334b5b53f244227a8d6e13f3327ce75d2'
             '4a2297e4d9d28f0b3a1f58e1b463e332affcb109eafde44837b1657e309c8212'
+            'b816c71d345fb1188c3faa01c4e75cfa04ba6506080231d5d2c303a2288e9b50'
             '889b65598d2a15e73eb482f543ec9b28d8992eeb57b07883c2e9627dfee15a9b'
+            '27aa73d427d92aeb2c181a233aa3a574a4158cd7dee33832808f69edaec55ea2'
             '81d08c6a760f171f3381455b66a6c84789c9f0eefddbe6ca5794075514ad8c3a'
             '06bc1e5b409e21d49fc71ef03e96ec35b7a9b524bfd1f81a2dbf5c64a55e5acf'
-            '1c068c524a2926ba222b36b0f4229a45c6f00c2225ffde0b0555e4e9659342d5'
             'ef9f401fa84fe1772af9efee6816643534f2896da4c23b809937b19771bdfbbf'
-            'a1c562ebe4538d672404ca3ac2e954a3c955afeb7463f7b4fe6eaa6fa74fe5c7'
-            'a39da083c038ada797ffc5bedc9ba47455a3f77057d42f86484ae877ef9172ea'
-            'e1912afec58b834fac3b9161c2d5a1794bb618126c6bd7a4be85c834231360e7')
+            'a39da083c038ada797ffc5bedc9ba47455a3f77057d42f86484ae877ef9172ea')
 
 pkgver() {
   cd sage
@@ -73,14 +72,12 @@ prepare(){
   patch -p1 -i ../cython-sys-path.patch
 # fix regressions with ECM 7
   patch -p1 -i ../ecm-7.patch
-# increase numerical tolerance, needed by scipy 0.18
-  patch -p1 -i ../increase-rtol.patch
 # fix freezes in R interface with readline 7 (Debian)
   patch -p1 -i ../r-no-readline.patch
-# fix build with planarity 3 (Debian)
-  patch -p2 -i ../sagemath-planarity3.patch
-# fix build with Singular 4.1.0-p2
-  patch -p0 -i ../sagemath-singular-4.1.0.p2.patch
+# use correct latte-count binary name
+  patch -p1 -i ../latte-count.patch
+# make 'sage -notebook=jupyter' work with our python3 jupyter-notebook package
+  patch -p1 -i ../sagemath-python3-notebook.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209

@@ -1,0 +1,84 @@
+diff --git a/src/sage/geometry/polyhedron/base.py b/src/sage/geometry/polyhedron/base.py
+index 50d99f99e4..3a3a8cb214 100644
+--- a/src/sage/geometry/polyhedron/base.py
++++ b/src/sage/geometry/polyhedron/base.py
+@@ -4629,7 +4629,7 @@ class Polyhedron_base(Element):
+             ...
+             RuntimeError: LattE integrale program failed (exit code 1):
+             ...
+-            Invocation: count '--redundancy-check=none' --cdd /dev/stdin
++            Invocation: latte-count '--redundancy-check=none' --cdd /dev/stdin
+             ...
+             Parse error in CDD-style input file /dev/stdin
+             sage: Q.integral_points_count(verbose=True) # optional - latte_int
+diff --git a/src/sage/geometry/polyhedron/base_ZZ.py b/src/sage/geometry/polyhedron/base_ZZ.py
+index 268af9db0d..70d41dfa30 100644
+--- a/src/sage/geometry/polyhedron/base_ZZ.py
++++ b/src/sage/geometry/polyhedron/base_ZZ.py
+@@ -228,7 +228,7 @@ class Polyhedron_ZZ(Polyhedron_base):
+             sage: p = P.ehrhart_polynomial(maxdet=5, verbose=True)  # optional - latte_int
+             This is LattE integrale ...
+             ...
+-            Invocation: count --ehrhart-polynomial '--redundancy-check=none' --cdd '--maxdet=5' /dev/stdin
++            Invocation: latte-count --ehrhart-polynomial '--redundancy-check=none' --cdd '--maxdet=5' /dev/stdin
+             ...
+             sage: p    # optional - latte_int
+             1/2*t^2 + 3/2*t + 1
+@@ -236,7 +236,7 @@ class Polyhedron_ZZ(Polyhedron_base):
+             sage: p = P.ehrhart_polynomial(dual=True, verbose=True)  # optional - latte_int
+             This is LattE integrale ...
+             ...
+-            Invocation: count --ehrhart-polynomial '--redundancy-check=none' --cdd --dual /dev/stdin
++            Invocation: latte-count --ehrhart-polynomial '--redundancy-check=none' --cdd --dual /dev/stdin
+             ...
+             sage: p   # optional - latte_int
+             1/2*t^2 + 3/2*t + 1
+@@ -244,7 +244,7 @@ class Polyhedron_ZZ(Polyhedron_base):
+             sage: p = P.ehrhart_polynomial(irrational_primal=True, verbose=True)   # optional - latte_int
+             This is LattE integrale ...
+             ...
+-            Invocation: count --ehrhart-polynomial '--redundancy-check=none' --cdd --irrational-primal /dev/stdin
++            Invocation: latte-count --ehrhart-polynomial '--redundancy-check=none' --cdd --irrational-primal /dev/stdin
+             ...
+             sage: p   # optional - latte_int
+             1/2*t^2 + 3/2*t + 1
+@@ -252,7 +252,7 @@ class Polyhedron_ZZ(Polyhedron_base):
+             sage: p = P.ehrhart_polynomial(irrational_all_primal=True, verbose=True)  # optional - latte_int
+             This is LattE integrale ...
+             ...
+-            Invocation: count --ehrhart-polynomial '--redundancy-check=none' --cdd --irrational-all-primal /dev/stdin
++            Invocation: latte-count --ehrhart-polynomial '--redundancy-check=none' --cdd --irrational-all-primal /dev/stdin
+             ...
+             sage: p   # optional - latte_int
+             1/2*t^2 + 3/2*t + 1
+@@ -264,7 +264,7 @@ class Polyhedron_ZZ(Polyhedron_base):
+             ...
+             RuntimeError: LattE integrale program failed (exit code 1):
+             ...
+-            Invocation: count --ehrhart-polynomial '--redundancy-check=none' --cdd '--bim-bam-boum=19' /dev/stdin
++            Invocation: latte-count --ehrhart-polynomial '--redundancy-check=none' --cdd '--bim-bam-boum=19' /dev/stdin
+             Unknown command/option --bim-bam-boum=19
+         """
+         if self.is_empty():
+diff --git a/src/sage/interfaces/latte.py b/src/sage/interfaces/latte.py
+index 066cedd401..302b39910d 100644
+--- a/src/sage/interfaces/latte.py
++++ b/src/sage/interfaces/latte.py
+@@ -86,7 +86,7 @@ def count(arg, ehrhart_polynomial=False, multivariate_generating_function=False,
+         sage: n = count(cddin, cdd=True, verbose=True, raw_output=True)  # optional - latte_int
+         This is LattE integrale ...
+         ...
+-        Invocation: count '--redundancy-check=none' --cdd /dev/stdin
++        Invocation: latte-count '--redundancy-check=none' --cdd /dev/stdin
+         ...
+         Total Unimodular Cones: ...
+         Maximum number of simplicial cones in memory at once: ...
+@@ -106,7 +106,7 @@ def count(arg, ehrhart_polynomial=False, multivariate_generating_function=False,
+     from sage.misc.misc import SAGE_TMP
+     from sage.rings.integer import Integer
+ 
+-    args = ['count']
++    args = ['latte-count']
+     if ehrhart_polynomial and multivariate_generating_function:
+         raise ValueError
+     if ehrhart_polynomial:

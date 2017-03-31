@@ -1,0 +1,27 @@
+diff --git a/src/bin/sage-notebook b/src/bin/sage-notebook
+index 74192da240..0ede281aad 100755
+--- a/src/bin/sage-notebook
++++ b/src/bin/sage-notebook
+@@ -96,8 +96,7 @@ class NotebookJupyter(object):
+         if not have_prerequisites():
+             print(self.PREREQUISITE_ERROR)
+             raise SystemExit(1)
+-        from notebook.notebookapp import main
+-        main(argv)
++        os.execvp('jupyter-notebook', ['jupyter-notebook'] + argv)
+ 
+ 
+ class SageNBExport(NotebookJupyter):
+diff --git a/src/sage/repl/ipython_kernel/install.py b/src/sage/repl/ipython_kernel/install.py
+index 3912b8cdf5..bd40cdadda 100644
+--- a/src/sage/repl/ipython_kernel/install.py
++++ b/src/sage/repl/ipython_kernel/install.py
+@@ -281,7 +281,6 @@ def have_prerequisites(debug=True):
+         True
+     """
+     try:
+-        from notebook.notebookapp import NotebookApp
+         return True
+     except ImportError:
+         if debug:
+
