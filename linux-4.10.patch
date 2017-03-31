@@ -1,0 +1,73 @@
+diff -Naur nv.orig/nv.c nv/nv.c
+--- nv.orig/nv.c	2017-03-31 10:49:58.133349000 +0200
++++ nv/nv.c	2017-03-31 10:54:51.852724105 +0200
+@@ -1150,6 +1150,7 @@
+ }
+ 
+ #if defined(NV_ENABLE_PAT_SUPPORT) && defined(CONFIG_HOTPLUG_CPU)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 10, 0)
+ static int
+ nv_kern_cpu_callback(struct notifier_block *nfb, unsigned long action, void *hcpu)
+ {
+@@ -1181,6 +1182,34 @@
+     .notifier_call = nv_kern_cpu_callback,
+     .priority = 0
+ };
++#else
++static int nvidia_cpu_online(unsigned int hcpu)
++{
++    unsigned int cpu = get_cpu();
++    if (cpu == hcpu)
++        __nv_setup_pat_entries(NULL);
++    else
++        NV_SMP_CALL_FUNCTION(__nv_setup_pat_entries, (void *)(long int)hcpu, 1);
++
++    put_cpu();
++
++    return 0;
++}
++
++static int nvidia_cpu_down_prep(unsigned int hcpu)
++{
++    unsigned int cpu = get_cpu();
++    if (cpu == hcpu)
++        __nv_restore_pat_entries(NULL);
++    else
++        NV_SMP_CALL_FUNCTION(__nv_restore_pat_entries, (void *)(long int)hcpu, 1);
++
++    put_cpu();
++
++    return 0;
++}
++#endif
++
+ #endif
+ 
+ 
+@@ -1418,7 +1447,14 @@
+ #if defined(NV_ENABLE_PAT_SUPPORT) && defined(CONFIG_HOTPLUG_CPU)
+         if (nv_pat_mode == NV_PAT_MODE_BUILTIN)
+         {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 10, 0)
+             if (register_hotcpu_notifier(&nv_hotcpu_nfb) != 0)
++#else
++            if (cpuhp_setup_state(CPUHP_AP_ONLINE_DYN,
++                                  "gpu/nvidia:online",
++                                  nvidia_cpu_online,
++                                  nvidia_cpu_down_prep) != 0)
++#endif
+             {
+                 __nv_disable_pat_support();
+                 rc = -EIO;
+@@ -1565,7 +1601,11 @@
+     {
+         __nv_disable_pat_support();
+ #if defined(NV_ENABLE_PAT_SUPPORT) && defined(CONFIG_HOTPLUG_CPU)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 10, 0)
+         unregister_hotcpu_notifier(&nv_hotcpu_nfb);
++#else
++        cpuhp_remove_state_nocalls(CPUHP_AP_ONLINE_DYN);
++#endif
+ #endif
+     }
+ 
