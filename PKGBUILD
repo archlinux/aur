@@ -2,7 +2,7 @@
 
 _gitname=algorithmia-cli
 pkgname=algorithmia-git
-pkgver=2017.02.09.gc5e3ad0
+pkgver=2017.03.31.g4b11175
 pkgrel=1
 pkgdesc="Algorithmia command line interface tools (git version)"
 arch=('i686' 'x86_64')
