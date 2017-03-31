@@ -1,8 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Name=Rezerwar
-Comment=Puzzle game that could be quickly described as the illegitimate child of a known tetromino game and the average pipe game.
-Exec=/usr/bin/rezerwar
-Terminal=false
-Type=Application
-Categories=Application;Game;ArcadeGame

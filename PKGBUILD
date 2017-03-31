@@ -1,37 +1,40 @@
-# Maintainer: Michał Szymański <smiszym at gmail dot com>
+# Maintainer: Michael Straube <straubem@gmx.de>
+# Contributor: Michał Szymański <smiszym at gmail dot com>
 # Contributor: Dany Martineau <dany.luc.martineau at gmail.com>
 
 pkgname=rezerwar
 pkgver=0.4.2
-pkgrel=3
-pkgdesc="Puzzle game that could be described as a mix of a known tetromino game and the average pipe game"
+pkgrel=4
+pkgdesc="Puzzle game like the known tetromino and average pipe game"
 arch=('i686' 'x86_64')
-url="http://tamentis.com/projects/rezerwar/"
+url="https://tamentis.com/projects/rezerwar"
 license=('BSD')
 depends=('sdl_mixer')
-makedepends=('make')
-source=("http://tamentis.com/projects/${pkgname}/files/${pkgname}-${pkgver}.tar.gz"
-        rezerwar.desktop)
-md5sums=('42018abe251e45ab8cc30133cde61ff8'
-         'a9afa64e7b067d89f65c2d5fe8e4b200')
+makedepends=('gendesk' 'imagemagick')
+source=("https://tamentis.com/projects/rezerwar/files/rezerwar-$pkgver.tar.gz"
+        "rezerwar.ico::https://github.com/tamentis/rezerwar/raw/master/data/gfx/icons/icon_32x32.ico")
+sha256sums=('a93ca501803c2fdac0fb695d9a1eeed45807307316d28d3eb8abac8849fcaf02'
+            'ea9f71b5f0c2c60491ad1ea3e4f253162c1d02dd4781806546b82f514d9dd09d')
 
-build()
-{
-        cd "${srcdir}/${pkgname}-${pkgver}"
-        sed -i "s|/share/games/rezerwar|/share/rezerwar|g" configure
-        sed -i "s|/games|/bin|g" configure
-        sed -i "s|/share/doc/rezerwar|/share/rezerwar/doc|g" configure
-        ./configure 
-        make
+prepare() {
+  gendesk -f -n --pkgname=$pkgname --pkgdesc="$pkgdesc"
+  convert rezerwar.ico rezerwar.png
+  sed '/^$/q' $pkgname-$pkgver/src/rezerwar.h > LICENSE
 }
 
-package()
-{
-        cd "${srcdir}/${pkgname}-${pkgver}"
-        mkdir -p ${pkgdir}/usr/share/{applications,rezerwar}
-        mkdir -p ${pkgdir}/usr/bin
-        cp -rf doc ${pkgdir}/usr/share/rezerwar/
-        cp -rf data/* ${pkgdir}/usr/share/rezerwar/
-        install -m 755 src/rezerwar ${pkgdir}/usr/bin
-        install -m 755 ${srcdir}/rezerwar.desktop ${pkgdir}/usr/share/applications
+build() {
+  cd $pkgname-$pkgver
+  TARGET_BIN=/usr/bin \
+  TARGET_DATA=/usr/share/rezerwar \
+  TARGET_DOC=/usr/share/rezerwar/doc \
+  ./configure
+  make
+}
+
+package() {
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
+  install -Dm644 ../rezerwar.desktop "$pkgdir"/usr/share/applications/rezerwar.desktop
+  install -Dm644 ../rezerwar.png "$pkgdir"/usr/share/pixmaps/rezerwar.png
+  install -Dm644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
