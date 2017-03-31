@@ -1,8 +1,8 @@
 # Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=vim-recover-git
-pkgver=r170.eed74fb
-pkgrel=1
+pkgver=r180.b95b04f
+pkgrel=2
 pkgdesc='A Vim plugin to show a diff, whenever recovering a buffer'
 arch=('any')
 url='http://www.vim.org/scripts/script.php?script_id=3068'
@@ -14,12 +14,20 @@ makedepends=('git')
 provides=('vim-recover')
 conflicts=('vim-recover')
 install=vimdoc.install
-source=('git+https://github.com/chrisbra/Recover.vim.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/chrisbra/Recover.vim.git'
+        'fix_nomenclature.patch')
+sha256sums=('SKIP'
+            '67f2652b757065f927ee4b09135e6e0de6cc5903a2d3ccd1db2fe3bd63ca807a')
 
 pkgver() {
   cd 'Recover.vim'
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd 'Recover.vim'
+  # rename "on-disk version" to something more precise https://github.com/chrisbra/Recover.vim/issues/47
+  patch -p0 <../../fix_nomenclature.patch
 }
 
 package() {
