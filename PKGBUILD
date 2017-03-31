@@ -1,4 +1,5 @@
-# Maintainer: juantascon <juantascon.aur@horlux.org>
+# Maintainer: Aetf <aetf@unlimitedcodeworks.xyz>
+# Contributor: juantascon <juantascon.aur@horlux.org>
 # Contributor: Ilya Kuzmin <i.g.kuzmin.spb@gmail.com>
 
 pkgname=( 'hid-apple-patched-git'
