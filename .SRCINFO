@@ -1,6 +1,6 @@
 pkgbase = home-assistant
 	pkgdesc = Home Assistant is an open-source home automation platform running on Python 3
-	pkgver = 0.40.2
+	pkgver = 0.41
 	pkgrel = 1
 	url = https://home-assistant.io/
 	install = hass.install
@@ -26,9 +26,9 @@ pkgbase = home-assistant
 	conflicts = python-home-assistant-git
 	replaces = python-home-assistant
 	backup = var/lib/hass/configuration.yaml
-	source = https://github.com/home-assistant/home-assistant/archive/0.40.2.tar.gz
+	source = https://github.com/home-assistant/home-assistant/archive/0.41.tar.gz
 	source = home-assistant.service
-	sha256sums = 8ba44af1de92b0caf5bd872094d40d509ca7a8d379da777341715ee403bc06d8
+	sha256sums = 06d99bd1fd23aa3f53ed495c2e37419f1fb5a670e9b560cda34d0b45582ad207
 	sha256sums = 0dd985cb17816474344f5e50b7a8d375e08f43af6fbe56ca4dc62984b69851c2
 
 pkgname = home-assistant
