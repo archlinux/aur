@@ -8,6 +8,7 @@ pkgbase = python-pytvmaze
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
+	depends = python-requests
 	source = python-pytvmaze::git+https://github.com/srob650/pytvmaze
 	md5sums = SKIP
 
