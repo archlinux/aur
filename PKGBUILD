@@ -3,12 +3,12 @@
 _pkgbasename=trakmeter
 pkgname="${_pkgbasename}-lv2"
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Loudness meter LV2 plugins for correctly setting up tracking and mixing levels"
 arch=('i686' 'x86_64')
 url="http://www.mzuther.de/en/software/trakmeter/"
 license=('GPL3')
-depends=('libxext' 'gcc-libs-multilib' 'freetype2')
+depends=('libxext' 'freetype2')
 makedepends=('premake' 'zip' 'lv2')
 source=("${_pkgbasename}::git://github.com/mzuther/traKmeter.git#branch=v2.0.0-gcc6")
 sha256sums=('SKIP')
