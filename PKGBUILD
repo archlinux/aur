@@ -2,12 +2,12 @@
 
 pkgname=xwallpaper
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Wallpaper setting utility for X'
 url='https://github.com/stoeckmann/xwallpaper'
 arch=('i686' 'x86_64')
 license=('ISC')
-depends=('pixman' 'libpng' 'xcb-util' 'xcb-util-image' 'libjpeg-turbo')
+depends=('pixman' 'libpng' 'libxpm' 'xcb-util' 'xcb-util-image' 'libjpeg-turbo')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/stoeckmann/xwallpaper/archive/v${pkgver}.tar.gz)
 sha256sums=('436bc3554b504d897d1c7599118164a4e30cc26d88846bb6e71de3f4f7ce1fdf')
 sha512sums=('3556106f9696a5aa60c28d541fc89778194e5cd5edc6f3c299f7ec95c824b7b81baa95f6ceff88688179d2627d64718ffa99291192c9d2b212ae05a694754b11')
