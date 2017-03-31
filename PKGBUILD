@@ -1,12 +1,12 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=arch-upgrade
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop app to upgrade your Arch Linux system"
 url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
 arch=("any")
-depends=("curl python-html2text")
+depends=("curl" "python-html2text")
 backup=("etc/$pkgname.conf")
 source=("$url/archive/$pkgver.tar.gz")
 install=install.sh
