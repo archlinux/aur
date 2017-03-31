@@ -1,0 +1,15 @@
+pkgbase = perl-test-lectrotest
+	pkgdesc = Easy, automatic, specification-based tests.
+	pkgver = 0.5001
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-LectroTest
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/T/TM/TMOERTEL/Test-LectroTest-0.5001.tar.gz
+	sha256sums = ac2b4f0d95899af1a1a1ec784cb740b2b90256abee11c83e7b291103ec9ed735
+
+pkgname = perl-test-lectrotest
+
