@@ -1,27 +1,38 @@
-# Maintainer: Michał Szymański <smiszym at gmail dot com>
+# Maintainer: Michael Straube <straubem@gmx.de>
+# Contributor: Michał Szymański <smiszym at gmail dot com>
 # Contributor: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: Michal Karas <largon@largon.net>
 
 pkgname=pipepanic
 pkgver=0.1.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Pipe connecting game using libSDL"
 arch=('i686' 'x86_64')
-url="http://www.users.waitrose.com/~thunor/pipepanic/"
-license=('GPL2')
+url="http://www.users.waitrose.com/~thunor/pipepanic"
+license=('GPL' 'custom:Free Art License')
 depends=('sdl')
-source=("http://www.users.waitrose.com/~thunor/pipepanic/dload/$pkgname-$pkgver-source.tar.gz")
-md5sums=('99b68e990012b2f58c184b8ba9e4fb4d')
+makedepends=('gendesk')
+source=("http://www.users.waitrose.com/~thunor/pipepanic/dload/pipepanic-$pkgver-source.tar.gz")
+sha256sums=('4b02249c92228b03f4cc3c1d999cacf3fe52c16df53c6bf76fc6c1e2caa74318')
+
+prepare() {
+  cd $pkgname-$pkgver-source
+  sed -i 's|DATADIR.*$|DATADIR "/usr/share/pipepanic/"|' main.h
+  sed -i "s|CFLAGS=-O2|CFLAGS=$CFLAGS|" Makefile
+  gendesk -f -n --pkgname=$pkgname --pkgdesc="$pkgdesc"
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver-source"
-  sed -i 's#\(\#define DATADIR \).*$#\1"/usr/share/pipepanic/"#' main.h
+  cd $pkgname-$pkgver-source
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver-source"
-  install -dm755 "$pkgdir/usr/share/pipepanic"
-  install -m644 -t "$pkgdir/usr/share/pipepanic/" {*.png,*.bmp,*.xcf}
-  install -Dm755 pipepanic "$pkgdir/usr/bin/pipepanic"
+  cd $pkgname-$pkgver-source
+  install -dm755 "$pkgdir"/usr/share/pipepanic
+  install -m644 *.bmp "$pkgdir"/usr/share/pipepanic/
+  install -Dm755 pipepanic "$pkgdir"/usr/bin/pipepanic
+  install -Dm644 pipepanic.desktop "$pkgdir"/usr/share/applications/pipepanic.desktop
+  install -Dm644 PipepanicIcon64.png "$pkgdir"/usr/share/pixmaps/pipepanic.png
+  install -Dm644 COPYING-ARTWORK "$pkgdir"/usr/share/licenses/$pkgname/COPYING-ARTWORK
 }
