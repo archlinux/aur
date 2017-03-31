@@ -2,7 +2,7 @@
 # Maintainer: blimpy <0087yugbocaj@gmail.com>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 
-pkgname=('termite-nocsd' 'termite-terminfo')
+pkgname=('termite-nocsd')
 pkgver=12
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -33,10 +33,3 @@ package_termite-nocsd() {
   install -Dm644 config "$pkgdir/etc/xdg/termite/config"
 }
 
-package_termite-terminfo() {
-  pkgdesc='Terminfo for Termite, a simple VTE-based terminal'
-
-  cd termite
-  install -d "$pkgdir/usr/share/terminfo"
-  tic -x termite.terminfo -o "$pkgdir/usr/share/terminfo"
-}

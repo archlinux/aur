@@ -19,6 +19,3 @@ pkgname = termite-nocsd
 	depends = termite-terminfo
 	backup = etc/xdg/termite/config
 
-pkgname = termite-terminfo
-	pkgdesc = Terminfo for Termite, a simple VTE-based terminal
-
