@@ -27,4 +27,10 @@ package() {
   cd "${srcdir}/${_gitname}/target/release"
   mkdir -p "$pkgdir/usr/bin/"
   install -m 755 algo "$pkgdir/usr/bin/"
+
+  cd "${srcdir}/${_gitname}"
+  mkdir -p "$pkgdir/usr/share/bash-completion/completions/"
+  install -m 644 completions/bash/algo "$pkgdir/usr/share/bash-completion/completions/"
+  mkdir -p "$pkgdir/usr/local/share/share/zsh/site-functions/"
+  install -m 644 completions/zsh/_algo "$pkgdir/usr/local/share/share/zsh/site-functions/"
 }
