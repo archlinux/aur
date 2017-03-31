@@ -3,7 +3,7 @@
 
 _pkgname=php-compat-info
 pkgname=${_pkgname}
-pkgver=5.0.5
+pkgver=5.0.6
 pkgrel=1
 pkgdesc="Library that find out the minimum version and the extensions required for a piece of code to run."
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('php' 'php-intl')
 makedepends=("php-box" "php-composer")
 source=("${_pkgname}-${pkgver}"::"https://github.com/llaville/php-compat-info/archive/${pkgver}.tar.gz")
-sha512sums=('81599f818eb4914921f0cee24892f611d3e12974405cd4ca7e32a8d2659adb1833f2504a7a5015450b697cfae5ca43686197099b0e4bcc8beaf59bf092a93025')
+sha512sums=('6c215fe8fe1a401e86cee1ae0502f118bc24529c7265849b4bff02686839d9a33271a481d9e7dd87c3df10cdec7907b2cc5baf96d52311a83c60bd9d45ba0b3b')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
