@@ -1,43 +1,42 @@
-# Maintainer: FadeMind <fademind@gmail.com>
-# Contributor: David Edmundson <david@davidedmundson.co.uk>
+# Maintainer: NBonaparte <NBonaparte@protonmail.com>
 
+_pkgparent=plasma-workspace
 _pkgname=xembed-sni-proxy
-pkgname=${_pkgname}-git
-pkgver=r105.11e8648
+pkgname=$_pkgname-git
+pkgver=v5.9.4.r182.gbf19dbba
 pkgrel=1
 pkgdesc="Convert XEmbed system tray icons to SNI icons"
 arch=('i686' 'x86_64')
-url="https://github.com/davidedmundson/${_pkgname}"
+url="https://github.com/KDE/plasma-workspace"
 license=('GPL' 'LGPL')
-depends=(qt5-{base,x11extras} kwindowsystem)
+depends=('kwindowsystem' 'libxtst')
 makedepends=('extra-cmake-modules' 'git')
-conflicts=("${_pkgname}")
-source=("git+${url}.git")
-sha256sums=('SKIP')
+conflicts=($_pkgparent)
+source=("git+${url}.git" "cmake.patch")
+sha256sums=('SKIP'
+            '215090152973a85e9757bbab3de05020a1f44b1032db1c816d4e381f4f9d1c73')
 
 pkgver() {
-    cd ${_pkgname}
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd $_pkgparent
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    if [ -d build ] ; then
-        rm build -rf
-    fi
+    patch -p0 -i "$srcdir/cmake.patch"
 }
 
 build() {
-    mkdir build && cd build
-    cmake ../${_pkgname} \
+    cd $srcdir/$_pkgparent/$_pkgname
+    cmake . \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DLIB_INSTALL_DIR=lib \
-        -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-        -DSYSCONF_INSTALL_DIR=/etc
-    make  
+	-DKDE_INSTALL_LIBDIR=lib \
+	-DKDE_INSTALL_LIBEXECDIR=lib \
+	-DBUILD_TESTING=OFF
+    make
 }
 
 package() {
-    cd build
-    make DESTDIR=${pkgdir} install
+    cd $srcdir/$_pkgparent/$_pkgname
+    make DESTDIR=$pkgdir install
 }
