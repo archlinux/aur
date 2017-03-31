@@ -41,6 +41,7 @@ build() {
 
 package_hid-apple-patched-git() {
   install=hid-apple-patched.install
+  conflits=('hid-apple-patched-git-dkms')
 
   do_package_general_files
 
