@@ -1,7 +1,7 @@
 pkgbase = overture
 	pkgdesc = A DNS upstream switcher written in Go in order to purify DNS records
 	pkgver = 1.3.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/shawn1m/overture
 	install = overture.install
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = overture
 	sha256sums = a9a7000c665583c84252d0c589eab0ea3ba13997d14e7ac097c3b227e165d0ee
 	sha256sums = 46c344510738143bd83057494273cf78095743070ad05d80a8d985098b2ff7ec
 	sha256sums = 02c82a9ffce44f1517b0b64380e11ea41d15812267a0fbff97221b5a6921df50
-	sha256sums = 89f0e6577a42ed913ed010366695b12f51923d8e503d7eed107c0e2f13268ac1
+	sha256sums = 9529e60a7963fd284ad2afb99d28803af90f16db99a1ba662ac5c7fd52903d3f
 
 pkgname = overture
 
