@@ -1,0 +1,4 @@
+# This is a hack but otherwise Arena fails to create files like "/opt/arena/ecocodes9.op".
+post_install() {
+    chmod a+w /opt/arena
+}
