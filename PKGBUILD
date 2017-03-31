@@ -3,24 +3,24 @@
 _binname=Pencil
 _pkgname_base=pencil
 _pkgname=evolus-pencil
-_version=3.0.0
-_release=rc.2
-_zipname="${_binname}_${_version}-${_release}_amd64.deb"
+_desktopfile="${_pkgname_base}.desktop"
+_mimefile="${_pkgname}-mime.xml"
+
 pkgname=${_pkgname}-bin
-pkgver=${_version}_${_release}
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="An open-source GUI prototyping tool - Evolus release"
 arch=('x86_64')
-url="http://pencil.evolus.vn/Next.html"
+url="http://pencil.evolus.vn/"
 license=('GPL2')
 depends=('gconf')
 makedepends=('binutils' 'tar')
 provides=($_pkgname)
 conflicts=($_pkgname $_pkgname_base)
-source=("https://github.com/evolus/$_pkgname_base/releases/download/v${_version}-$_release/$_zipname"
-	"${_pkgname_base}.desktop"
-	"${_pkgname}-mime.xml")
-sha1sums=('c988cfebc546e996d63925e44bdb2ddf122e35c8'
+source=("http://pencil.evolus.vn/dl/V${pkgver}/${_binname}_${pkgver}_amd64.deb"
+	"${_desktopfile}"
+	"${_mimefile}")
+sha1sums=('97923976b277f64cbc52c3045cb15e8049236a15'
 	'fd1a937f77388e46917fa566000acd89c5d181c3'
 	'975e4818189aa041bfe4df6e20c69d82cd130298')
 
@@ -36,11 +36,11 @@ package() {
 	ln -s "../share/${_pkgname}/${_pkgname_base}" "${pkgdir}/usr/bin/${_pkgname_base}"
 	
 	# Desktop file
-	cp -f "${srcdir}/${_pkgname_base}.desktop" "${pkgdir}/usr/share/applications/"
+	cp -f "${srcdir}/${_desktopfile}" "${pkgdir}/usr/share/applications/"
 
 	# Mimetype file
 	install -d "${pkgdir}/usr/share/mime/packages/"
-	cp "${srcdir}/${_pkgname}-mime.xml" "${pkgdir}/usr/share/mime/packages/"
+	cp "${srcdir}/${_mimefile}" "${pkgdir}/usr/share/mime/packages/"
 	
 	# Cleanup
 	rm -rf "${pkgdir}/opt"
