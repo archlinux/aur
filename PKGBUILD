@@ -1,6 +1,5 @@
 pkgname=msbuild-bin
-pkgver=14.1.0.0
-_pkgver=$pkgver-prerelease
+pkgver=0.03
 pkgrel=1
 pkgdesc="Microsoft Build Engine"
 arch=(i686 x86_64)
@@ -10,20 +9,24 @@ depends=('mono')
 makedepends=('nuget')
 provides=('msbuild')
 options=('!strip')
+source=("https://github.com/Microsoft/msbuild/releases/download/mono-hosted-msbuild-v${pkgver}/mono_msbuild_d25dd923839404bd64cc63f420e75acf96fc75c4.zip")
 
 build() {
-  nuget install Microsoft.Build.Mono.Debug -Version ${_pkgver} -OutputDirectory "$srcdir/msbuild" -source "https://www.myget.org/F/dotnet-buildtools/"
   cd msbuild
 }
 
 package() {
+echo
+  
   install -d "$pkgdir/usr/share"
   cp -ra msbuild "$pkgdir/usr/share/"
 
   install -d "$pkgdir/usr/bin"
   echo '#!/bin/sh
-mono /usr/share/msbuild/Microsoft.Build.Mono.Debug.'${pkgver}'-prerelease/lib/MSBuild.exe "$@"
+mono /usr/share/msbuild/MSBuild.exe "$@"
 ' > "$pkgdir/usr/bin/MSBuild.exe"
 chmod +x "$pkgdir/usr/bin/MSBuild.exe"
 ln -s MSBuild.exe "$pkgdir/usr/bin/msbuild.exe"
 }
+
+md5sums=('14345c2f2dc53aa902a89419e234d2d4')

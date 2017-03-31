@@ -1,6 +1,6 @@
 pkgbase = msbuild-bin
 	pkgdesc = Microsoft Build Engine
-	pkgver = 14.1.0.0
+	pkgver = 0.03
 	pkgrel = 1
 	url = https://github.com/dotnet/corefx/blob/8b6efd4a91288d94b13f9757c6f1a3b356d39dd8/build.sh#L102
 	arch = i686
@@ -10,6 +10,8 @@ pkgbase = msbuild-bin
 	depends = mono
 	provides = msbuild
 	options = !strip
+	source = https://github.com/Microsoft/msbuild/releases/download/mono-hosted-msbuild-v0.03/mono_msbuild_d25dd923839404bd64cc63f420e75acf96fc75c4.zip
+	md5sums = 14345c2f2dc53aa902a89419e234d2d4
 
 pkgname = msbuild-bin
 
