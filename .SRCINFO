@@ -6,7 +6,6 @@ pkgbase = xembed-sni-proxy-git
 	arch = i686
 	arch = x86_64
 	license = GPL
-	license = LGPL
 	makedepends = extra-cmake-modules
 	makedepends = git
 	depends = kwindowsystem
