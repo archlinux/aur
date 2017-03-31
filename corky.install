@@ -1,0 +1,17 @@
+rst="$(tput sgr0)"
+bld="$(tput bold)"
+blu="$(tput setaf 4)"
+ylw="$(tput setaf 3)"
+
+msg() {
+    printf "${bld}${blu}==>${ylw} NOTE:${bld} $1${rst}\n"
+}
+
+post_install() {
+    msg 'An example configuration is installed at "/usr/share/doc/corky/example/".'
+    msg 'Start the example with "conky -c /usr/share/doc/corky/example/conky.conf".'
+}
+
+post_upgrade() {
+    post_install
+}
