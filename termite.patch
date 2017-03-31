@@ -1,0 +1,10 @@
+--- /home/jacob/dev/termite-nocsd/src/termite/termite.cc	2017-03-30 16:19:30.791745134 -0700
++++ ./termite.cc	2017-03-30 16:02:18.128408314 -0700
+@@ -1612,6 +1612,7 @@
+     gtk_container_add(GTK_CONTAINER(panel_overlay), hint_overlay);
+     gtk_container_add(GTK_CONTAINER(hint_overlay), vte_widget);
+     gtk_container_add(GTK_CONTAINER(window), panel_overlay);
++    gtk_window_set_decorated(GTK_WINDOW(window), false);
+ 
+     if (!hold) {
+         g_signal_connect(vte, "child-exited", G_CALLBACK(exit_with_status), nullptr);
