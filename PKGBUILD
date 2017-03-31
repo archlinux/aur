@@ -2,16 +2,16 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='frr'
-pkgver=2.0_rc1.5171.e2ff97b9
+pkgver=2.0_rc2.5210.98b506c2
 pkgrel=1
-pkgdesc='FreeRangeRouting (quagga fork) supports BGP4/OSPF/RIP/PIM-SM/MSDP and LDP as well as very early support for IS-IS.'
+pkgdesc='FRRouting (quagga fork) supports BGP4/OSPF/RIP/PIM-SM/MSDP and LDP as well as very early support for IS-IS.'
 arch=('any')
-url="https://github.com/freerangerouting/${pkgname}"
+url="https://github.com/FRRouting/${pkgname}"
 license=('GPL2')
 depends=('libcap' 'libnl' 'readline' 'ncurses' 'perl' 'json-c' 'net-snmp')
-makedepends=('git' 'patch' 'gcc' 'grep' 'net-snmp' 'json-c' 'python-pytest')
-conflicts=("quagga" "quagga_cumulus")
-provides=("quagga" "quagga_cumulus")
+makedepends=('git' 'patch' 'gcc' 'grep' 'net-snmp' 'json-c')
+conflicts=('quagga' 'quagga_cumulus')
+provides=('quagga' 'quagga_cumulus')
 source=("${pkgname}::git+${url}"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
