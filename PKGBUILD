@@ -2,10 +2,10 @@
 
 _pkgname=treesheets
 pkgname=$_pkgname-git
-pkgver=r171.7baabf3
+pkgver=r178.1d1d6b2
 pkgrel=1
 pkgdesc='The ultimate replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases'
-url='http://treesheets.com/'
+url='http://treesheets.com'
 license=('zlib')
 depends=('wxgtk' 'webkitgtk2')
 makedepends=('git')
@@ -27,7 +27,7 @@ pkgver() {
 prepare() {
   cd $_pkgname
   patch -p1 < ../myframe.patch
-  find TS/images -type f ! -iname '*.png' -delete
+  find TS/images -type f ! -iname '*.png' -a ! -iname '*.svg' -delete
 }
 
 build() {
@@ -40,8 +40,9 @@ package() {
   install -Dm644 ZLIB_LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   cd TS
-  install -Dm644 $_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  install -Dm644 images/icon32.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  install -dm755 "$pkgdir/usr/share/applications"
+  sed 's|Icon=images/|Icon=|' $_pkgname.desktop > "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm644 images/$_pkgname.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
   install -Dm755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
 
   install -dm755 "$pkgdir/usr/share/$_pkgname"
@@ -49,4 +50,3 @@ package() {
   cp -R images "$pkgdir/usr/share/$_pkgname/images"
   cp -R docs "$pkgdir/usr/share/$_pkgname/docs"
 }
-
