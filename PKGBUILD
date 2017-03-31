@@ -2,9 +2,9 @@
 # Contributor: Jack O'Connor <oconnor663@gmail.com>
 
 pkgname=peru
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
-pkgdesc="A tool for including other people's code in your projects"
+pkgdesc="A tool for fetching code"
 arch=('any')
 depends=('git' 'python' 'python-docopt' 'python-yaml')
 makedepends=('python-setuptools')
@@ -13,7 +13,7 @@ optdepends=('mercurial: fetching from hg repos'
 url="https://github.com/buildinspace/peru"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/buildinspace/$pkgname/tar.gz/$pkgver)
-sha256sums=('0b1b24e03f4c25e88dd390f86a8bd9865edeb79cff725354c0f99fc5db90ca1f')
+sha256sums=('524661173449eb1272b5757ec7eb6fdabda7cf738ae40d3c8bb19b4f43fb951e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
