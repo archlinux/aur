@@ -2,7 +2,7 @@
 
 pkgbase=decred-git
 pkgname=('dcrd-git' 'dcrwallet-git')
-pkgver=20170216
+pkgver=20170331
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git' 'glide' 'go')
@@ -70,7 +70,8 @@ package_dcrd-git() {
               dcrd \
               dcrdbtool \
               dcrfindcheckpoint \
-              dcrgencerts; do
+              dcrgencerts \
+              dcrpromptsecret; do
     install -Dm 755 "$srcdir/bin/$_bin" -t "$pkgdir/usr/bin"
   done
 }
