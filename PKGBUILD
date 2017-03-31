@@ -3,8 +3,8 @@
 # Contributor: Frederik Schwan frederik dot schwan at linux dot com>
 
 pkgname=unifi-unstable
-pkgver=5.6.1.0fab4f5321
-_pkgver=5.6.1-0fab4f5321
+pkgver=5.6.2.224554000b
+_pkgver=5.6.2-224554000b
 pkgrel=1
 pkgdesc='Centralized management system for Ubiquiti UniFi AP'
 arch=('any')
@@ -19,7 +19,7 @@ source=("UniFi-$pkgver.zip::https://www.ubnt.com/downloads/unifi/$_pkgver/UniFi.
         'unifi.service'
         'unifi.sysusers'
         'LICENSE')
-md5sums=('cc1c53e714f2949d390873cde6b2ad64'
+md5sums=('fac96108b9c32755d3bb42f2b99d3b7c'
          '79998cabf110d9a96ba4d3367101c94c'
          'a92291a0074a5dcf414da4dfe812bc2a'
          '2c5d961c64e9309baf12f83e401ff2a4')
@@ -28,9 +28,6 @@ package() {
   # lib
   install -dm755 "$pkgdir/usr/lib/unifi"
   cp -r UniFi/{bin,dl,lib,webapps} "$pkgdir/usr/lib/unifi"
-
-  # Fix for 5.6.1 Remove in 5.6.2 see https://community.ubnt.com/t5/UniFi-Beta-Blog/UniFi-5-6-1-Unstable-has-been-released/ba-p/1875310
-  mv "$pkgdir/usr/lib/unifi/lib/native/Linux/amd64" "$pkgdir/usr/lib/unifi/lib/native/Linux/x86_64"
 
   # data
   install -dm750 "$pkgdir/var/lib/unifi"
