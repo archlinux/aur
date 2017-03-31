@@ -21,7 +21,7 @@
 
 pkgname=matlab-support
 pkgver=9.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides dependencies and common fixes for MATLAB.'
 arch=('x86_64')
 url='http://www.mathworks.com'
@@ -31,7 +31,7 @@ depends=('libx11'
          'libxt'
          'jre7-openjdk'
          'libselinux')
-optdepends=('gcc47: For MEX support')
+optdepends=('gcc49: For MEX support')
 makedepends=('gendesk')
 provides=('matlab')
 conflicts=('matlab')
