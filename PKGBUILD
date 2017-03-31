@@ -23,7 +23,7 @@ md5sums=('85451c40abc0a359a5ed91abd363b2c2'
          '0e9df23150d39cbcb8f79c38ce2a52e5'
          '1f8152c4604ba2939b24e25a022937ca'
          '138550367b74fd62a7c7bc48d339eb2d'
-         'a6d59e509c823517550d313ca09c86dc')
+         '4f0bc5cd463c0f972fcbed1db7ba1a60')
 #changelog=ChangeLog
 
 prepare() {
