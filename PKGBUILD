@@ -3,13 +3,13 @@
 # Based on [aur]'s nvidia-beta: https://aur.archlinux.org/packages/nvidia-beta/
 
 pkgname=nvidia-vulkan-developer-beta-lts
-pkgver=375.27.14
+pkgver=375.27.15
 pkgrel=1
 pkgdesc="NVIDIA driver for Arch's official 'linux-lts' package (vulkan developer beta version)"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
-depends=('linux-lts' "nvidia-utils-vulkan-developer-beta>=$pkgver" 'libgl')
+depends=('linux-lts' "nvidia-utils=$pkgver" 'libgl')
 makedepends=('linux-lts-headers')
 provides=("nvidia=$pkgver")
 conflicts=('nvidia-96xx' 'nvidia-173xx' 'nvidia')
@@ -18,16 +18,16 @@ install=$pkgname.install
 
 # Installer name
 case "$CARCH" in
-  i686)   _pkg="linux-3752714-32-bit"; _pkg_dir="NVIDIA-Linux-x86_64-$pkgver" ;;
-  x86_64) _pkg="linux-3752714-64-bit"; _pkg_dir="NVIDIA-Linux-x86_64-$pkgver" ;;
+  i686)   _pkg="linux-3752715-32-bit"; _pkg_dir="NVIDIA-Linux-x86_64-$pkgver" ;;
+  x86_64) _pkg="linux-3752715-64-bit"; _pkg_dir="NVIDIA-Linux-x86_64-$pkgver" ;;
 esac
 
 # Source
 #source=('linux-4.8.patch')
-source_i686=("https://developer.nvidia.com/linux-3752714-32-bit")
-source_x86_64=("https://developer.nvidia.com/linux-3752714-64-bit")
-md5sums_i686=('9f97042234b2ca4d4b63c3ddc384b4a7')
-md5sums_x86_64=('a8b5683411bb968f616654cd4bae2e56')
+source_i686=("https://developer.nvidia.com/linux-3752715-32-bit")
+source_x86_64=("https://developer.nvidia.com/linux-3752715-64-bit")
+md5sums_i686=('0a2e0a05ed1f5babba47b5d301a4e8fa')
+md5sums_x86_64=('a1f786592c91c97d654fec4e84e31e56')
 
 # Auto-detect patches (e.g. linux-4.1.patch)
 for _patch in $(find "$startdir" -maxdepth 1 -name '*.patch' -printf "%f\n"); do
