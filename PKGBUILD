@@ -1,7 +1,7 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
 pkgname=upass
 _pyname=upass
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc='Console UI for pass'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/Kwpolska/upass'
 license=('BSD')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('56e9cc316d163c289a87b778ac06b7d9')
+md5sums=('08b2997aca9380a1a9783949dbdf9b72')
 depends=('pass' 'python' 'python-setuptools' 'python-urwid' 'python-pyperclip')
 
 prepare() {
