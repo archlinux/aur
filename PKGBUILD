@@ -4,13 +4,13 @@
 
 pkgname=nvidia-vulkan-developer-beta
 pkgver=375.27.15
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA driver for Arch's official 'linux' package (vulkan developer beta version)"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
-depends=('linux<4.10' "nvidia-utils-vulkan-developer-beta>=$pkgver" 'libgl')
-makedepends=('linux-headers<4.10')
+depends=('linux' "nvidia-utils-vulkan-developer-beta>=$pkgver" 'libgl')
+makedepends=('linux-headers')
 provides=("nvidia=$pkgver")
 conflicts=('nvidia-96xx' 'nvidia-173xx' 'nvidia')
 options=('!strip')
