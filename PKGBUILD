@@ -10,7 +10,7 @@ url="http://www.xinetd.org/"
 license=('custom')
 optdepends=('perl: for xconv.pl script')
 backup=('etc/xinetd.conf' 'etc/xinetd.d/servers' 'etc/xinetd.d/services')
-source=("ftp://ftp.archlinux.org/other/packages/$pkgname/$pkgname-$pkgver.tar.gz"
+source=("https://sources.archlinux.org/other/packages/$pkgname/$pkgname-$pkgver.tar.gz"
         xinetd.conf
         servers
         services
