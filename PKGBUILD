@@ -25,7 +25,6 @@ md5sums=('aa5ebe86a547afa9bcc7ae8c25b02109'
 package() {
     install -d "$pkgdir"/opt
 
-    #unzip Git-it-Linux-x64.zip
     cp -R "$srcdir"/Git-it-Linux-x64/Git-it "$pkgdir"/opt/Git-it
 
     install -d "$pkgdir"/usr/bin
