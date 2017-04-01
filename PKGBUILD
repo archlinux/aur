@@ -2,15 +2,15 @@
 
 _pkgname=simplekml
 pkgname=python-simplekml
-pkgver=1.2.8
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Simplekml is a python package which enables you to generate KML with as little effort as possible.'
 arch=('any')
 url="http://www.simplekml.com/"
 license=('GPL3')
 depends=('python')
-source=("https://pypi.python.org/packages/source/s/${_pkgname}/${_pkgname}-${pkgver}.zip")
-md5sums=('16ac3ad2639c7e50ec769baf33a0278e')
+source=('https://pypi.python.org/packages/a7/dd/a7628e278507d76b3708a81f60bb719af58ca0123cbee50094f7d90e560f/simplekml-1.3.0.zip')
+md5sums=('a9f133bde1c0edff6166739faccc11a1')
 
 package() {
     cd ${_pkgname}-${pkgver}
