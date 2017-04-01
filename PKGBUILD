@@ -1,14 +1,14 @@
-# Contributor: Krash <8552246@gmail.com>\
-# Maintainer: izmntuk
+# Maintainer: desbma
 pkgname=debmirror
-pkgver=2.25
+pkgver=2.26
 pkgrel=1
 pkgdesc="Debian partial mirror script, with ftp and package pool support"
 url="https://anonscm.debian.org/cgit/collab-maint/debmirror.git/"
-arch=('i686' 'x86_64')
+arch=('any')
 license=('GPL')
 depends=('bzip2' 'perl-compress-zlib' 'perl-digest-sha1' 'perl-lockfile-simple' 'perl-libwww' 'rsync' 'perl-net-inet6glue' 'gnupg')
 source=("https://mirrors.kernel.org/debian/pool/main/d/debmirror/debmirror_$pkgver.tar.xz")
+sha512sums=('6b5582817171936dd8118db518081b9102d2e8a0bdc83355dce4eeff84bf8592c24b9080846d04b89c25d95214d5358b4510dc282da6c6f4c48a41243d6583cb')
 
 build() {
   cd "$srcdir/$pkgname"
@@ -32,5 +32,3 @@ package() {
   install -Dpm644 doc/design.txt $pkgdir/usr/share/doc/debmirror/design.txt
   install -Dpm644 TODO $pkgdir/usr/share/doc/$pkgname/TODO
 }
-
-sha512sums=('3523558b0051ea0102c3481d5be63c1cd2b15a2e0bfbd958950bf864b2fc640ca180adc859ce23c59031691ffb0bb703b0c8325fb86e07c6b372a45babbd8cc0')
