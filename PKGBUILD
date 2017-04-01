@@ -11,6 +11,7 @@ pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')
 url='http://root.cern.ch'
 license=('LGPL2.1')
+provides=('root' 'root5')
 conflicts=('root')
 depends=('cfitsio'
          'fftw'
