@@ -32,5 +32,6 @@ build() {
 
 package() {
     cd "${srcdir}/build"
+    msg2 'Installing...'
     make DESTDIR="${pkgdir}" install
 }
