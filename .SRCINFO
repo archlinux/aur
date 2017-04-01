@@ -1,14 +1,10 @@
 pkgbase = git-it
 	pkgdesc = Git-it is a desktop app that teaches you how to use Git and GitHub on the command line.
 	pkgver = 4.3.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/jlord/git-it-electron
 	arch = x86_64
 	license = BSD
-	depends = electron
-	depends = git
-	depends = atom
-	depends = unzip
 	provides = git-it
 	source = https://github.com/jlord/git-it-electron/releases/download/4.3.3/Git-it-Linux-x64.zip
 	source = git-it.desktop
