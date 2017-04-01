@@ -1,0 +1,25 @@
+pkgbase = perceptia
+	pkgdesc = Dynamic window manager with support for Wayland
+	pkgver = 0.1.0.r4.g7816c6f
+	pkgrel = 1
+	url = https://github.com/perceptia/perceptia
+	arch = i686
+	arch = x86_64
+	license = MPL-2.0
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = dbus
+	depends = libdrm
+	depends = libgl
+	depends = libegl
+	depends = udev
+	depends = libxkbcommon
+	provides = perceptia
+	conflicts = perceptia
+	source = git+https://github.com/perceptia/perceptia.git
+	md5sums = SKIP
+
+pkgname = perceptia
+
