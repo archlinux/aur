@@ -18,3 +18,5 @@ menuentry 'Arch Linux for Linode' --class arch --class gnu-linux --class gnu --c
 	initrd	/boot/initramfs-linux-linode.img
 }
 EOF
+
+echo "Wrote to grub menu: linux-linode" >&2
