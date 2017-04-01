@@ -1,37 +1,36 @@
-# Maintainer:  Konstantin Gizdov <arch@kge.pw>
-# Contributor: Carl Lei <xecycle@gmail.com>
-# Contributor: Scott Lawrence <bytbox@gmail.com>
-# Contributor: Thomas Dziedzic < gostrc at gmail >
-# Contributor: Sebastian Voecking <voeck@web.de>
+# Maintainer:  Konstantin Gizdov <arch at kge dot pw>
+# Contributor: Carl Lei <xecycle at gmail dot com>
+# Contributor: Scott Lawrence <bytbox at gmail dot com>
+# Contributor: Thomas Dziedzic < gostrc at gmail dot com>
+# Contributor: Sebastian Voecking <voeck at web dot de>
 
 pkgname=root5
 pkgver=5.34.36
-pkgrel=2
+pkgrel=3
 pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')
 url='http://root.cern.ch'
 license=('LGPL2.1')
 conflicts=('root')
 depends=('cfitsio'
-  'fftw'
-  'ftgl'
-  'giflib'
-  'glew'
-  'graphviz'
-  'gsl'
-  'libmysqlclient'
-  'postgresql-libs'
-  'python2'
-  'unixodbc'
-  'shared-mime-info'
-  'xmlrpc-c'
-  'tex-gyre-fonts'
-  'libiodbc'
-  'gtk-update-icon-cache'
-  'libafterimage')
+         'fftw'
+         'ftgl'
+         'giflib'
+         'glew'
+         'graphviz'
+         'gsl'
+         'libiodbc'
+         'libafterimage'
+         'libmysqlclient'
+         'postgresql-libs'
+         'python2'
+         'tex-gyre-fonts'
+         'unixodbc'
+         'xmlrpc-c')
 optdepends=('gcc-fortran: Enable the Fortran components of ROOT'
+            'pythia: Pythia8 event generator support'
             'tcsh: Legacy CSH support'
-)
+            'xrootd: XRootD data access support')
 install='root.install'
 options=('!emptydirs')
 source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
@@ -39,22 +38,16 @@ source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
         'root.sh'
         'rootd'
         'root.xml')
-md5sums=('6a1ad549b3b79b10bbb1f116b49067ee'
-         '886e0649f28ceb75ea4ba1beb1b6f83f'
-         '0e883ad44f99da9bc7c23bc102800b62'
-         'efd06bfa230cc2194b38e0c8939e72af'
-         'e2cf69b204192b5889ceb5b4dedc66f7')
+sha256sums=('fc868e5f4905544c3f392cc9e895ef5571a08e48682e7fe173bd44c0ba0c7dcd'
+            'cbe83392eb3d73e212236619a3ad21592c05e23e61c4b6343b0869c4b922337c'
+            '9d1f8e7ad923cb5450386edbbce085d258653c0160419cdd6ff154542cc32bd7'
+            '3c45b03761d5254142710b7004af0077f18efece7c95511910140d0542c8de8a'
+            '50c08191a5b281a39aa05ace4feb8d5405707b4c54a5dcba061f954649c38cb0')
 
-build() {
+prepare() {
   cd root
 
-  if [ ${CARCH} == 'i686' ]; then
-    TARGET=linux;
-  else
-    TARGET=linuxx8664gcc;
-  fi
-
-  msg 'python2 switch'
+  msg 'Python2 switch...'
   find . -type f -exec sed -e 's_#!/usr/bin/env python_&2_' \
                            -e 's/python -O/python2 -O/g' \
                            -e 's/python -c/python2 -c/g' -i {} \;
@@ -71,8 +64,20 @@ build() {
   # Horid glibc hack
   sed -e 's/__USE_BSD/__USE_MISC/' -i core/base/src/TTimeStamp.cxx
 
+  msg 'Applying patches...'
   ## https://sft.its.cern.ch/jira/browse/ROOT-8180
   patch -p1 < ${srcdir}/enable_gcc6.patch
+
+}
+
+build() {
+  cd root
+
+  if [ ${CARCH} == 'i686' ]; then
+    TARGET=linux;
+  else
+    TARGET=linuxx8664gcc;
+  fi
 
   local sys_libs=""
   for sys_lib in afterimage ftgl freetype glew pcre zlib lzma; do
