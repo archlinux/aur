@@ -53,60 +53,60 @@ sha256sums=('ea31b047ba6fc04b0b312667349eaf1498a254ccacd212144f15ffcb3f5c0592'
             '3c45b03761d5254142710b7004af0077f18efece7c95511910140d0542c8de8a'
             'a8db29f6acf32659daca8de35481b25ed847b2182e6033940f3568f3d1ad22fb')
 prepare() {
-    cd ${pkgname}-${pkgver}
+    cd "${pkgname}-${pkgver}"
 
     msg2 'Applying patches...'
     # Fix JupyROOT issues until upstream releases arrive
-    patch -p1 -i ${srcdir}/JupyROOT_encoding.patch
-    patch -p1 -i ${srcdir}/JupyROOT_fix.patch
+    patch -p1 -i "${srcdir}/JupyROOT_encoding.patch"
+    patch -p1 -i "${srcdir}/JupyROOT_fix.patch"
 
     msg2 'Adjusting to Python3...'
     2to3 -w etc/dictpch/makepch.py 2>&1 > /dev/null
 }
 
 build() {
-    mkdir -p ${srcdir}/build
-    cd ${srcdir}/build
+    mkdir -p "${srcdir}/build"
+    cd "${srcdir}/build"
 
     msg2 'Configuring...'
     CFLAGS="${CFLAGS} -pthread" \
     CXXFLAGS="${CXXFLAGS} -pthread" \
     LDFLAGS="${LDFLAGS} -pthread -Wl,--no-undefined" \
-    cmake -C ${srcdir}/settings.cmake ${srcdir}/${pkgname}-${pkgver}
+    cmake -C "${srcdir}/settings.cmake" "${srcdir}/${pkgname}-${pkgver}"
 
     msg2 'Compiling...'
     make ${MAKEFLAGS}
 }
 
 package() {
-    cd ${srcdir}/build
+    cd "${srcdir}/build"
 
     msg2 'Installing...'
-    make DESTDIR=${pkgdir} install
+    make DESTDIR="${pkgdir}" install
 
-    install -D ${srcdir}/root.sh \
-        ${pkgdir}/etc/profile.d/root.sh
-    install -D ${srcdir}/rootd \
-        ${pkgdir}/etc/rc.d/rootd
-    install -D -m644 ${srcdir}/root.xml \
-        ${pkgdir}/usr/share/mime/packages/root.xml
+    install -D "${srcdir}/root.sh" \
+        "${pkgdir}/etc/profile.d/root.sh"
+    install -D "${srcdir}/rootd" \
+        "${pkgdir}/etc/rc.d/rootd"
+    install -D -m644 "${srcdir}/root.xml" \
+        "${pkgdir}/usr/share/mime/packages/root.xml"
 
-    install -D -m644 ${srcdir}/${pkgname}-${pkgver}/build/package/debian/root-system-bin.desktop.in \
-        ${pkgdir}/usr/share/applications/root-system-bin.desktop
+    install -D -m644 "${srcdir}/${pkgname}-${pkgver}/build/package/debian/root-system-bin.desktop.in" \
+        "${pkgdir}/usr/share/applications/root-system-bin.desktop"
     # replace @prefix@ with /usr for the desktop
-    sed -e 's_@prefix@_/usr_' -i ${pkgdir}/usr/share/applications/root-system-bin.desktop
+    sed -e 's_@prefix@_/usr_' -i "${pkgdir}/usr/share/applications/root-system-bin.desktop"
 
     # fix python env call
-    sed -e 's/@python@/python/' -i ${pkgdir}/usr/lib/root/cmdLineUtils.py
+    sed -e 's/@python@/python/' -i "${pkgdir}/usr/lib/root/cmdLineUtils.py"
 
-    install -D -m644 ${srcdir}/${pkgname}-${pkgver}/build/package/debian/root-system-bin.png \
-        ${pkgdir}/usr/share/icons/hicolor/48x48/apps/root-system-bin.png
+    install -D -m644 "${srcdir}/${pkgname}-${pkgver}/build/package/debian/root-system-bin.png" \
+        "${pkgdir}/usr/share/icons/hicolor/48x48/apps/root-system-bin.png"
 
     msg2 'Updating system config...'
     # use a file that pacman can track instead of adding directly to ld.so.conf
-    install -d ${pkgdir}/etc/ld.so.conf.d
-    echo '/usr/lib/root' > ${pkgdir}/etc/ld.so.conf.d/root.conf
+    install -d "${pkgdir}/etc/ld.so.conf.d"
+    echo '/usr/lib/root' > "${pkgdir}/etc/ld.so.conf.d/root.conf"
 
     msg2 'Cleaning up...'
-    rm -rf ${pkgdir}/etc/root/daemons
+    rm -rf "${pkgdir}/etc/root/daemons"
 }
