@@ -4,23 +4,16 @@
 # Contributor: Laurie Clark-Michalek <bluepeppers (at) archlinux (dot) us>
 
 pkgname=blockattack
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="An open source clone of Tetris Attack based on SDL"
 arch=('i686' 'x86_64')
 url="http://www.blockattack.net"
 license=('GPL')
-depends=('boost-libs' 'jsoncpp' 'sdl2_mixer' 'sdl2_image' 'sdl2_ttf' 'physfs' 'hicolor-icon-theme')
+depends=('boost-libs' 'sdl2_mixer' 'sdl2_image' 'sdl2_ttf' 'physfs' 'hicolor-icon-theme')
 makedepends=('cmake' 'boost' 'utf8cpp' 'zip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/blockattack/blockattack-game/archive/v$pkgver.tar.gz")
-sha256sums=('14ad07c196dd61ef3aa233e9060ba7aa61139123d06177d92adfea1195a6ee53')
-
-prepare() {
-  cd $pkgname-game-$pkgver
-
-  sed -i 's/#ifndef _WIN32/#ifdef _WIN32/' \
-    source/code/sago/SagoSpriteHolder.cpp
-}
+sha256sums=('f30b3c8b57734921cd2d095d2aae8f253afcc91256fe5d3f38bfeff090524c23')
 
 build() {
   cd $pkgname-game-$pkgver
