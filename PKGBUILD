@@ -14,14 +14,14 @@ options=('!emptydirs')
 source=("http://xrootd.org/download/v${pkgver}/xrootd-${pkgver}.tar.gz")
 sha256sums=('b50f7c64ed2a4aead987de3fdf6fce7ee082407ba9297b6851cd917db72edd1d')
 build() {
-    cd ${srcdir}
+    cd "${srcdir}"
 
     rm -rf "build"
     mkdir "build"
     cd "build"
 
     msg2 'Configuring...'
-    cmake ${srcdir}/${pkgname}-${pkgver} \
+    cmake "${srcdir}/${pkgname}-${pkgver}" \
           -DCMAKE_BUILD_TYPE:STRING=Release \
           -DCMAKE_INSTALL_LIBDIR:PATH=lib \
           -DCMAKE_INSTALL_PREFIX:PATH=/usr
@@ -31,6 +31,6 @@ build() {
 }
 
 package() {
-    cd ${srcdir}/build
-    make DESTDIR=${pkgdir} install
+    cd "${srcdir}/build"
+    make DESTDIR="${pkgdir}" install
 }
