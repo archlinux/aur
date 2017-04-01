@@ -1,7 +1,7 @@
 # Maintainer: Brett Dutro <brett.dutro@gmail.com>
 pkgname=gstfs-ng
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A FUSE-based file system for dynamic gstreamer-based transcoding"
 arch=('x86_64')
 url="https://github.com/rtyle/gstfs-ng"
@@ -28,7 +28,7 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
     install -D gstfs-ng.8 "${pkgdir}"/usr/share/man/man8/gstfs-ng.8
-    install -D gstfs-ng.monitor "${pkgdir}"/usr/bin/gstfs-ng
+    install -D gstfs-ng.monitor "${pkgdir}"/usr/bin/gstfs-ng.monitor
     install -D gstfs-ng "${pkgdir}"/usr/bin/gstfs-ng
     ln -s /usr/bin/gstfs-ng "${pkgdir}"/usr/bin/mount.gstfs-ng
 }
