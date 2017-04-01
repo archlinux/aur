@@ -1,0 +1,45 @@
+# Maintainer: Amish <contact at via dot aur>
+# Contributor: Justin Davis <jrcd83@gmail.com>
+# Contributor : Tony Sokhon <tonyskn@gmail.com>
+
+pkgname='perl-par-packer'
+pkgver='1.036'
+pkgrel='1'
+pkgdesc="PAR Packager"
+arch=('any')
+url='http://search.cpan.org/dist/PAR-Packer'
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl>=5.8.1' 'perl-archive-zip>=1' 'perl-getopt-argvfile>=1.07' 'perl-module-scandeps>=1.05' 'perl-par>=1.005' 'perl-par-dist>=0.22')
+makedepends=('perl-extutils-makemaker>=6.62')
+source=("http://search.cpan.org/CPAN/authors/id/R/RS/RSCHUPP/PAR-Packer-${pkgver}.tar.gz")
+md5sums=('988e77f94bdf97f668d9347d82a6358b')
+
+build() {
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
+
+    cd "${srcdir}/PAR-Packer-${pkgver}"
+    /usr/bin/perl Makefile.PL
+    make
+  )
+}
+
+check() {
+  cd "${srcdir}/PAR-Packer-${pkgver}"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    make test
+  )
+}
+
+package() {
+  cd "${srcdir}/PAR-Packer-${pkgver}"
+  make install
+  #remove conflicting man page
+  rm "$pkgdir/usr/share/man/man1/pp.1"
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}
+

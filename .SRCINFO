@@ -1,0 +1,21 @@
+pkgbase = perl-par-packer
+	pkgdesc = PAR Packager
+	pkgver = 1.036
+	pkgrel = 1
+	url = http://search.cpan.org/dist/PAR-Packer
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-extutils-makemaker>=6.62
+	depends = perl>=5.8.1
+	depends = perl-archive-zip>=1
+	depends = perl-getopt-argvfile>=1.07
+	depends = perl-module-scandeps>=1.05
+	depends = perl-par>=1.005
+	depends = perl-par-dist>=0.22
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RS/RSCHUPP/PAR-Packer-1.036.tar.gz
+	md5sums = 988e77f94bdf97f668d9347d82a6358b
+
+pkgname = perl-par-packer
+
