@@ -1,4 +1,4 @@
-# mkinitcpio preset file for the 'linux-lts-tomyo' package
+# mkinitcpio preset file for the 'linux-lts-tomoyo' package
 
 ALL_config="/etc/mkinitcpio.conf"
 ALL_kver="/boot/vmlinuz-linux-lts"
