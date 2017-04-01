@@ -48,7 +48,7 @@ sha256sums=('fc868e5f4905544c3f392cc9e895ef5571a08e48682e7fe173bd44c0ba0c7dcd'
 prepare() {
   cd root
 
-  msg 'Python2 switch...'
+  msg2 'Python2 switch...'
   find . -type f -exec sed -e 's_#!/usr/bin/env python_&2_' \
                            -e 's/python -O/python2 -O/g' \
                            -e 's/python -c/python2 -c/g' -i {} \;
@@ -65,7 +65,7 @@ prepare() {
   # Horid glibc hack
   sed -e 's/__USE_BSD/__USE_MISC/' -i core/base/src/TTimeStamp.cxx
 
-  msg 'Applying patches...'
+  msg2 'Applying patches...'
   ## https://sft.its.cern.ch/jira/browse/ROOT-8180
   patch -p1 < ${srcdir}/enable_gcc6.patch
 
