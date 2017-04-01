@@ -1,7 +1,7 @@
 # Maintainer: Vlad M. <vlad@archlinux.net>
 
 pkgname=pijul
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Version control system based on a theory of patches"
 url='https://pijul.org'
@@ -9,7 +9,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('GPL')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=('8929e69d2abb4d5b4e94264ec6885b1a3d6822e5adb33d6a68ae2aa9374ada14')
+sha256sums=('a19fb0197a5f05a660b4c3431a9fd8dc03e7e1c4b56e25c00ea1df4409b92cdb')
 
 build() {
   cd "$pkgname-$pkgver"
