@@ -20,10 +20,18 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/avh4/elm-format/releases/download/${pkgver//_/-}/$_source_pkgname-${pkgver//_/-}-linux-x64.tgz")
+source=(
+  "https://github.com/avh4/elm-format/releases/download/${pkgver//_/-}/$_source_pkgname-${pkgver//_/-}-linux-x64.tgz"
+  "https://github.com/avh4/elm-format/releases/download/${pkgver//_/-}/$_source_pkgname-${pkgver//_/-}-linux-x64.tgz.asc"
+  )
 noextract=()
-md5sums=('6fe7b842c7d303eac123960b8bbddec5')
-validpgpkeys=()
+md5sums=(
+  '6fe7b842c7d303eac123960b8bbddec5'
+  'SKIP'
+)
+validpgpkeys=(
+  'C3B74EE9EBC8412DFEE1FECE11357FB6FDD7BEC0'
+)
 
 # prepare() {
 # }
