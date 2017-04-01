@@ -73,17 +73,20 @@ build() {
     mkdir -p ${srcdir}/build
     cd ${srcdir}/build
 
+    msg2 'Configuring...'
     CFLAGS="${CFLAGS} -pthread" \
     CXXFLAGS="${CXXFLAGS} -pthread" \
     LDFLAGS="${LDFLAGS} -pthread -Wl,--no-undefined" \
     cmake -C ${srcdir}/settings.cmake ${srcdir}/${_pkgname}-${pkgver}
 
+    msg2 'Compiling...'
     make ${MAKEFLAGS}
 }
 
 package() {
     cd ${srcdir}/build
 
+    msg2 'Installing...'
     make DESTDIR=${pkgdir} install
 
     install -D ${srcdir}/root.sh \
@@ -104,9 +107,11 @@ package() {
     install -D -m644 ${srcdir}/${_pkgname}-${pkgver}/build/package/debian/root-system-bin.png \
         ${pkgdir}/usr/share/icons/hicolor/48x48/apps/root-system-bin.png
 
+    msg2 'Updating system config...'
     # use a file that pacman can track instead of adding directly to ld.so.conf
     install -d ${pkgdir}/etc/ld.so.conf.d
     echo '/usr/lib/root' > ${pkgdir}/etc/ld.so.conf.d/root.conf
 
+    msg2 'Cleaning up...'
     rm -rf ${pkgdir}/etc/root/daemons
 }
