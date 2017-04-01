@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Lau <lauseb644 _at_ gmail _dot_ com>
 
 pkgname="liblogcpp"
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="A intuitive and highly customizable LGPL library for logging with C++."
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
