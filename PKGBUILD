@@ -4,7 +4,7 @@
 
 pkgname=scribus-svn
 pkgver=21857
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
@@ -17,8 +17,9 @@ makedepends=('subversion' 'cmake' 'qt5-tools' 'dos2unix')
 optdepends=('lib2geom: for mesh distortion')
 conflicts=('scribus')
 provides=('scribus')
-source=('scribus::svn://scribus.net/trunk')
-md5sums=('SKIP')
+source=('scribus::svn://scribus.net/trunk' python2.patch)
+md5sums=('SKIP'
+         '98b93cecd7b87a3b1425d2e483cd0a05')
 options=('!makeflags')
 _svnmod='scribus'
 
@@ -29,14 +30,11 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir"/$_svnmod/Scribus/scribus/plugins/scriptplugin
-  find . -type f -name "*.py" -exec sed -i '1s+python$+python2+' {} \;
-  cd "$srcdir"/$_svnmod/Scribus/scribus/plugins/scriptplugin/scripts
-  sed -i '1s+python$+python2+' Ligatursatz.py
+  cd "$srcdir"/$_svnmod/
+  patch -Np1 < $srcdir/python2.patch
 }
 
 build() {
-  LANG=C
   cd "$srcdir"/$_svnmod/Scribus
   cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DCMAKE_SKIP_RPATH:BOOL=YES -DWANT_GRAPHICSMAGICK=1 \
@@ -56,7 +54,7 @@ package () {
   install -d "${pkgdir}"/usr/share/pixmaps
   ln -s /usr/share/scribus/icons/1_5_0/scribus.png "${pkgdir}"/usr/share/pixmaps/scribus.png
   # move around some picture files
-  for i in AppIcon.png AllCaps.png Kapital.xpm Strike.xpm outlined.png shadow.png shade.png Revers.png
+  for i in AppIcon.png AllCaps.png Kapital.xpm Strike.xpm outlined.png shadow.png shade.png Revers.png zeichen.png
   do install "$pkgdir"/usr/share/scribus/icons/1_5_0/$i "$pkgdir"/usr/share/scribus/icons/1_5_1/$i
      rm "$pkgdir"/usr/share/scribus/icons/1_5_0/$i
   done

@@ -1,7 +1,7 @@
 pkgbase = scribus-svn
 	pkgdesc = A desktop publishing program - Version from SVN
 	pkgver = 21857
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.scribus.net
 	arch = i686
 	arch = x86_64
@@ -31,7 +31,9 @@ pkgbase = scribus-svn
 	conflicts = scribus
 	options = !makeflags
 	source = scribus::svn://scribus.net/trunk
+	source = python2.patch
 	md5sums = SKIP
+	md5sums = 98b93cecd7b87a3b1425d2e483cd0a05
 
 pkgname = scribus-svn
 
