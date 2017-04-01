@@ -4,13 +4,13 @@
 pkgname=frama-c
 _codename=Silicon
 pkgver=20161101
-pkgrel=1
+pkgrel=2
 pkgdesc='Extensible platform dedicated to source-code analysis of C software.'
 arch=('i686' 'x86_64')
 license=('LGPL2.1')
 url='http://frama-c.com'
 depends=('gtksourceview2' 'libgnomecanvas' 'zarith')
-makedepends=('lablgtk2' 'coq' 'graphviz' 'ltl2ba' 'ocaml' 'ocaml-ocamlgraph')
+makedepends=('lablgtk2' 'coq' 'graphviz' 'ltl2ba' 'ocaml' 'ocaml-ocamlgraph' 'ocaml-findlib')
 optdepends=('lablgtk2' 'coq' 'graphviz' 'ltl2ba')
 source=("http://frama-c.com/download/${pkgname}-${_codename}-${pkgver}.tar.gz")
 md5sums=('454cce7dd6c4d2ce80db2395b90f912e')
