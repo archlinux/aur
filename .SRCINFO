@@ -1,0 +1,16 @@
+pkgbase = cloud-sql-proxy-git
+	pkgdesc = The Cloud SQL Proxy allows a user with the appropriate permissions to connect to a Second Generation Cloud SQL database without having to deal with IP whitelisting or SSL certificates manually.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/GoogleCloudPlatform/cloudsql-proxy
+	arch = x86_64
+	arch = i686
+	license = Apache
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	options = !strip
+	options = !emptydirs
+
+pkgname = cloud-sql-proxy-git
+
