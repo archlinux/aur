@@ -10,7 +10,10 @@ pkgbase = elm-format-0.17-bin
 	conflicts = elm-format-0.16-bin
 	conflicts = elm-format-0.18-bin
 	source = https://github.com/avh4/elm-format/releases/download/0.6.0-alpha/elm-format-0.17-0.6.0-alpha-linux-x64.tgz
+	source = https://github.com/avh4/elm-format/releases/download/0.6.0-alpha/elm-format-0.17-0.6.0-alpha-linux-x64.tgz.asc
+	validpgpkeys = C3B74EE9EBC8412DFEE1FECE11357FB6FDD7BEC0
 	md5sums = d8763fd795c5706daf547ee741e34f25
+	md5sums = SKIP
 
 pkgname = elm-format-0.17-bin
 
