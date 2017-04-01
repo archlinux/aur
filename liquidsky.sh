@@ -1,4 +1,4 @@
 #!/bin/bash
 
-wine /opt/liquidsky/liquidsky.exe
+wine /opt/liquidsky/LiquidSkyClient.exe
 
