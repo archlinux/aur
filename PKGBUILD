@@ -1,7 +1,7 @@
 # Maintainer: NexAdn
 pkgname=obs-linuxbrowser
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Browser source plugin for obs-studio based on CEF. Alternative to obs-qtwebkit."
 arch=("x86_64")
 url="https://github.com/bazukas/obs-linuxbrowser"
@@ -16,5 +16,6 @@ sha256sums=(
 package() {
 	mkdir -p $pkgdir/$HOME/.config/obs-studio/plugins/obs-linuxbrowser
 	cp -R $srcdir/$pkgname/* $pkgdir/$HOME/.config/obs-studio/plugins/obs-linuxbrowser
-	chmod -R 0755 $pkgdir/$HOME/.config/obs-studio/plugins/obs-linuxbrowser
+	chmod -R 0750 $pkgdir/$HOME/.config/
+	chmod -R 0755 $pkgdir/$HOME/.config/obs-studio
 }
