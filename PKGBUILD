@@ -2,7 +2,7 @@
 
 _pkgname=hwcrypto-native
 pkgname=$_pkgname
-pkgver=17.3.14
+pkgver=17.3.16
 pkgrel=1
 pkgdesc="Web eID native component"
 arch=('x86_64' 'i686')
@@ -19,14 +19,14 @@ md5sums=('SKIP')
 
 build() {
     cd "$srcdir"/"$_pkgname"
-    make -C host-qt
+    make -C src
 }
 
 package() {
     cd "$srcdir"/"$_pkgname"
 
     mkdir -p $pkgdir/usr/lib
-    install -p -m 755 host-qt/hwcrypto-native $pkgdir/usr/lib
+    install -p -m 755 src/hwcrypto-native $pkgdir/usr/lib
 
     mkdir -p $pkgdir/etc/opt/chrome/native-messaging-hosts
     install -p -m 644 linux/org.hwcrypto.native.json $pkgdir/etc/opt/chrome/native-messaging-hosts/org.hwcrypto.native.json
