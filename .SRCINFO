@@ -1,5 +1,5 @@
 pkgbase = xrootd
-	pkgdesc = A project that aims at giving high performance, scalable fault tolerant access to data repositories of many kinds.
+	pkgdesc = Software framework for fast, low latency, scalable and fault tolerant data access.
 	pkgver = 4.6.0
 	pkgrel = 2
 	url = http://xrootd.org/
