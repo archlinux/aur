@@ -4,7 +4,6 @@ pkgbase = kbang
 	pkgrel = 4.4
 	arch = x86_64
 	license = GPL
-	makedepends = rpmextract
 	makedepends = qt4
 	makedepends = libpng
 	makedepends = freetype2
