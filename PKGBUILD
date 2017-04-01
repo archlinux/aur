@@ -4,7 +4,7 @@
 
 pkgname=python2-quantities
 pkgver=0.11.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Support for physical quantities with units, based on numpy"
 url="http://packages.python.org/quantities"
 arch=('any')
