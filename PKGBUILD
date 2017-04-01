@@ -16,7 +16,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}."{xz,sign}
         'config'
         'config.x86_64'
-        'menu.lst'
         '08_linux_linode'
         'hook'
         'preset')
@@ -24,7 +23,6 @@ sha512sums=('c3690125a8402df638095bd98a613fcf1a257b81de7611c84711d315cd11e2634ab
             '9760254a63fea330e33b514dda457a3bf33da6f8e06c281fc3fb36ba4c022df8200d2a04d49f4acc9ce0c9f86cbfda7edc724431ed378be3288eb299510add2e' 'SKIP'
             '97760061527a9d231b73fcda953289fc532432e30bbd5a73ac972e52bc66eb61b7cbcef1cb97c68d5622a656f1c2c0790994c0aab79b65446eda566a3726d12d'
             'dc76adc365f1fff95a076982b8cfc595fbee5093185b2a298212e59adccb2c12b0f80d79ab0a9038b6efbe265515d55998b6647817ad080dbe1ca74e010f7361'
-            '2beaa01dc9679a66ccbbca0f4abeb0f77956651e3f83f114030b2ef344a16240124a549ccee2588b6a1179be6a66b4a8dc931e2c15c4d5282afeb85bb6ada210'
             'e71181d820d9abfab0c04a4758f9aadd4d2d740a09057a76ed7f47d6c9363ddb5591a1b61d1119c792b08a5a033c67ade902237569d2e670b6f26d269ed184cf'
             'c57a6c8d9978cb6a1034bed33ba5e06bef9b134f22113761798d4fa46e8091e7b0bd26f3a14d79122ba780b2f7a93ca26850f4da6a654f81b34cc79c242f683f'
             '62870a08f000abfe8eb1f50271afdf04686af108554f7629dc5e1d7610ad14bdc9cd14d2609270b83f9edb745a520b81fa7bfb92ebcc28a146df040c895b549b')
@@ -36,7 +34,7 @@ pkgdesc="Kernel for Linode servers"
 depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
 provides=(linux)
 conflicts=(grub-legacy)
-backup=(etc/mkinitcpio.d/${pkgname}.preset boot/grub/menu.lst)
+backup=(etc/mkinitcpio.d/${pkgname}.preset)
 install=install
 
 prepare() {
@@ -90,7 +88,4 @@ package_linux-linode() {
   depmod -b "${pkgdir}" -F System.map "${_kernver}"
   mkdir -p "${pkgdir}/usr"
   mv "${pkgdir}/"{lib,usr/}
-
-  mkdir -p ${pkgdir}/boot/grub
-  sed "s/%VER%/${pkgver}-${pkgrel}/ig" ${srcdir}/menu.lst > ${pkgdir}/boot/grub/menu.lst
 }
