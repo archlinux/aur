@@ -2,12 +2,12 @@
 
 pkgname=freeter
 pkgver=1.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="The smartest way to work on your projects"
 arch=('x86_64' 'i686')
 url="https://freeter.io"
 license=('custom')
-depends=()
+depends=('glib2' 'fuse2')
 optdepends=()
 provides=('freeter')
 conflicts=('freeter')

@@ -1,11 +1,13 @@
 pkgbase = freeter
 	pkgdesc = The smartest way to work on your projects
 	pkgver = 1.1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://freeter.io
 	arch = x86_64
 	arch = i686
 	license = custom
+	depends = glib2
+	depends = fuse2
 	provides = freeter
 	conflicts = freeter
 	noextract = Freeter.AppImage
