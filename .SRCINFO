@@ -1,0 +1,20 @@
+pkgbase = gstfs-ng
+	pkgdesc = A FUSE-based file system for dynamic gstreamer-based transcoding
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/rtyle/gstfs-ng
+	arch = x86_64
+	license = LGPL3
+	depends = fuse
+	depends = boost
+	depends = boost-libs
+	depends = gstreamer
+	source = https://github.com/rtyle/gstfs-ng/archive/1.1.tar.gz
+	source = gcc6-fix.patch
+	source = boost_system.patch
+	md5sums = e49bedd78f3ab5d9838c7e073dc1a35e
+	md5sums = b4104b2ca5b5ac3bbd70c7a6c7816b6b
+	md5sums = 44866af1ff5ee83de2a7e14d589a39ed
+
+pkgname = gstfs-ng
+

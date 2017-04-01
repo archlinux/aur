@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 55c6f2d..980add3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -41,7 +41,7 @@ FILES=$(INCS) $(SRCS) Makefile COPYING gstfs-ng.8 .project .cproject ChangeLog g
+ 
+ PKGS=fuse glib-2.0 gstreamer-1.0
+ 
+-LIBS=-lboost_thread -lpthread $$(pkg-config --libs $(PKGS))
++LIBS=-lboost_thread -lboost_system -lpthread $$(pkg-config --libs $(PKGS))
+ 
+ CXXFLAGS+=-g -Wall -D_FILE_OFFSET_BITS=64 -DFUSE_USE_VERSION=26 $$(pkg-config --cflags $(PKGS))
+ 
