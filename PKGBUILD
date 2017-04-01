@@ -1,7 +1,7 @@
 # Maintainer:  vinszent <vinszent@vinszent.com>
 
 pkgname=gnome-twitch-player-backend-mpv-opengl-git
-pkgver=r971.afc8ca1
+pkgver=r1010.e74f175
 pkgrel=1
 pkgdesc="MPV OpenGL (hardware rendering) player backend for GNOME Twitch"
 arch=('i686' 'x86_64')
@@ -12,6 +12,7 @@ depends=('gnome-twitch-git' 'gtk3' 'libpeas' 'gobject-introspection' 'mpv')
 # replaces=('gnome-twitch-mpv') Once 0.4.0 is released we can replace it
 source=("$pkgname::git+https://github.com/vinszent/gnome-twitch.git")
 md5sums=('SKIP')
+conflicts=('gnome-twitch-player-backend-mpv-opengl')
 
 pkgver()
 {
