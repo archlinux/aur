@@ -6,7 +6,7 @@
 
 pkgname=texlive-pgfopts
 pkgver=2.1a
-pkgrel=1
+pkgrel=2
 license=('custom')
 depends=('texlive-core' 'texlive-latexextra')
 pkgdesc='LaTeX package options with pgfkeys'
@@ -19,6 +19,6 @@ sha256sums=('eb38d68b79bd379ef93af83f9a16ef694a47b30044b74e70bcbeb64b6fcf7ce6')
 package() {
   mkdir -p $pkgdir/usr/share/texmf/tex/latex/pgfopts
   install -D -m644 $srcdir/tex/latex/pgfopts/pgfopts.sty $pkgdir/usr/share/texmf/tex/latex/pgfopts
-  install -D -m644 $srcdir/pgfopts/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 $srcdir/doc/latex/pgfopts/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
