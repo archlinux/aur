@@ -1,22 +1,22 @@
 # Maintainer: Jelle van der Waa <jelle@archlinux.org>
 pkgname=guetzli
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Perceptual JPEG encoder"
-arch=(x86_64 i686)
+arch=('x86_64' 'i686')
 url="https://github.com/google/guetzli"
-license=('APL')
-depends=('gflags' 'libpng')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/google/guetzli/archive/v1.0.tar.gz")
-sha512sums=('da34259134df70407dabc530c6b78c3327b46b88480e42c6c002ba65c6cd527fdaffada50e40c369d46c9bcf14576b449275d151dbe4c164ae87d996a179ce45')
+license=('Apache')
+depends=('libpng')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/google/$pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('0aba6c7490699fa123d78e2c3b61c5a6ab2660ab4a3d5126f592a667e86f4ca69384e952c9bd20a9527919dae2b412972d9b3e51fc6a6302d4e0cafe81895ef3')
 
 build() {
-	cd "$pkgname-$pkgver"
-	make config=release
+  cd "$pkgname-$pkgver"
+  make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-        install -d "$pkgdir/usr/bin/"
-        install -Dm755 bin/Release/guetzli "$pkgdir/usr/bin/"
+  cd "$pkgname-$pkgver"
+  install -d "$pkgdir/usr/bin/"
+  install -Dm755 bin/Release/guetzli "$pkgdir/usr/bin/"
 }
