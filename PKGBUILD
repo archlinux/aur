@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('git' 'meson')
 depends=('gtk3' 'libsoup' 'json-glib' 'webkit2gtk' 'libpeas' 'gobject-introspection')
 conflicts=('gnome-twitch-git')
-source=("https://github.com/Ippytraxx/gnome-twitch/archive/v${pkgver}.tar.gz")
+source=("https://github.com/vinszent/gnome-twitch/archive/v${pkgver}.tar.gz")
 md5sums=('42abec672144865828a9eb4764037a3a')
 
 build()
