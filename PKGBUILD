@@ -3,21 +3,17 @@
 _pkgname=Herwig
 pkgname=herwig
 pkgver=7.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Herwig is a multi-purpose particle physics event generator."
 arch=('i686' 'x86_64')
 url="http://herwig.hepforge.org"
 license=('GPL2')
 depends=("gcc-fortran" "thepeg>=2.0.4" "fastjet" "gsl" "boost-libs" "lhapdf")
-makedepends=("sed")
-source=("http://www.hepforge.org/archive/${pkgname}/${_pkgname}-${pkgver}.tar.bz2"
-        "pdf_install_dir.patch")
-sha256sums=('e6265f6cae2944b022ee2f1495b0abdd7ed1b50fdda81063f8c17acf8a2f4ced'
-            'ed711d2dd12ce6d476f88cc40a72f983bf873effe7f73b9eb3c4fa289369f970')
+makedepends=("sed" "sudo")
+source=("http://www.hepforge.org/archive/${pkgname}/${_pkgname}-${pkgver}.tar.bz2")
+sha256sums=('e6265f6cae2944b022ee2f1495b0abdd7ed1b50fdda81063f8c17acf8a2f4ced')
 
 prepare() {
-  patch -p 1 < pdf_install_dir.patch
-
   pdfs=(MMHT2014nlo68cl MMHT2014lo68cl)
   for p in "${pdfs[@]}"; do
     if [ ! -d "/usr/share/LHAPDF/$p" ]; then
