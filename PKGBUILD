@@ -56,8 +56,8 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_srcname}"
-  CFLAGS=${CFLAGS}" -march=corei7 -mtune=corei7 -mcpu=corei7 "
-  CXXFLAGS=${CXXFLAGS}" -march=corei7 -mtune=corei7 -mcpu=corei7 "
+  CFLAGS=${CFLAGS}" -march=corei7 -mtune=corei7 "
+  CXXFLAGS=${CXXFLAGS}" -march=corei7 -mtune=corei7 "
   [[ "$MAKEFLAGS" =~ -j[0-9]* ]] || MAKEFLAGS+=" -j$(nproc)"
   ionice -c 3 nice -n 16 make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
