@@ -6,7 +6,8 @@ pkgdesc="Browser source plugin for obs-studio based on CEF. Alternative to obs-q
 arch=("x86_64")
 url="https://github.com/bazukas/obs-linuxbrowser"
 license=("GPL")
-depends=("obs-studio>=18.0.1" "libxrandr" "wget" "git")
+depends=("obs-studio>=18.0.1" "libxrandr")
+makedepends=("wget" "git")
 source=(
     "https://github.com/bazukas/obs-linuxbrowser/releases/download/0.1.0/linuxbrowser0.1.0-obs18.0.1-64bit.tgz"
 )
