@@ -1,6 +1,6 @@
 pkgbase = cups-ipp14
 	pkgver = 2.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cups.org/
 	arch = i686
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = cups-ipp14
 	makedepends = libpaper
 	makedepends = valgrind
 	provides = cups
-	provides = cups-ipp144
+	provides = cups-ipp14
 	conflicts = cups
 	replaces = cups
 	source = https://github.com/apple/cups/releases/download/v2.2.2/cups-2.2.2-source.tar.gz
@@ -59,7 +59,7 @@ pkgname = cups-ipp14
 	install = cups.install
 	depends = acl
 	depends = pam
-	depends = libcups-ipp144>=2.2.2
+	depends = libcups-ipp14>=2.2.2
 	depends = cups-filters
 	depends = bc
 	depends = dbus

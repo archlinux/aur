@@ -8,9 +8,9 @@ pkgbase="${_pkgbase}-ipp14"
 #pkgname=('libcups-ipp14' 'cups-ipp14')
 pkgname=(${pkgbase})
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
-provides=('cups' 'cups-ipp144')
+provides=('cups' 'cups-ipp14')
 replaces=('cups')
 conflicts=('cups')
 license=('GPL')
@@ -117,7 +117,7 @@ backup=(etc/cups/cupsd.conf
         etc/dbus-1/system.d/cups.conf
         etc/logrotate.d/cups
         etc/pam.d/cups)
-depends=('acl' 'pam' "libcups-ipp144>=${pkgver}" 'cups-filters' 'bc' 
+depends=('acl' 'pam' "libcups-ipp14>=${pkgver}" 'cups-filters' 'bc' 
          'dbus' 'systemd' 'libpaper' 'hicolor-icon-theme')
 optdepends=('xdg-utils: xdg .desktop file support'
             'colord: for ICC color profile support')
