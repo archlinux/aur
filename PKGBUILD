@@ -4,7 +4,7 @@
 # Based on original tikzit-aur-package made by pippin
 
 pkgname=tikzit-git
-pkgver=1.1.17.gff79a9c.297
+pkgver=297.
 pkgrel=1
 pkgdesc="Creation and modification of TeX diagrams written using the pgf/TikZ macro library"
 arch=('i686' 'x86_64')
