@@ -26,8 +26,8 @@ sha512sums=('c3690125a8402df638095bd98a613fcf1a257b81de7611c84711d315cd11e2634ab
             'dc76adc365f1fff95a076982b8cfc595fbee5093185b2a298212e59adccb2c12b0f80d79ab0a9038b6efbe265515d55998b6647817ad080dbe1ca74e010f7361'
             '2beaa01dc9679a66ccbbca0f4abeb0f77956651e3f83f114030b2ef344a16240124a549ccee2588b6a1179be6a66b4a8dc931e2c15c4d5282afeb85bb6ada210'
             'e71181d820d9abfab0c04a4758f9aadd4d2d740a09057a76ed7f47d6c9363ddb5591a1b61d1119c792b08a5a033c67ade902237569d2e670b6f26d269ed184cf'
-            'b48e2ab68a211bc1d129fcef33875c35f9bf4afa8bfbb4455537983abeedae044475b636367042e39d5fcfdd59b37e1bbf6ac1ede71913aa61853ee66b3df89b'
-            'a0a78831075336edef0a8faa34fa550986c3c4d89a89f4f39d798da0211129dc90257d162bec2cdefabef2eb5886a710e70c72074b2f3016788861d05d1e2a1f')
+            'c57a6c8d9978cb6a1034bed33ba5e06bef9b134f22113761798d4fa46e8091e7b0bd26f3a14d79122ba780b2f7a93ca26850f4da6a654f81b34cc79c242f683f'
+            '62870a08f000abfe8eb1f50271afdf04686af108554f7629dc5e1d7610ad14bdc9cd14d2609270b83f9edb745a520b81fa7bfb92ebcc28a146df040c895b549b')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -69,7 +69,7 @@ package_linux-linode() {
   mkdir -p "${pkgdir}"/{lib/{modules,firmware},boot}
   make LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}" modules_install
   rm -rf "${pkgdir}"/lib/{firmware,modules/${_kernver}/{source,build}}
-  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgname}"
+  cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuzll-${pkgname}"
   install -D -m644 vmlinux "${pkgdir}/lib/modules/${_kernver}/build/vmlinux"
   install -D -m644 "${srcdir}/preset" "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
   install -D -m644 "${srcdir}/hook" "${pkgdir}/usr/share/libalpm/hooks/99-linux-linode.hook"
@@ -78,7 +78,7 @@ package_linux-linode() {
     -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
     -i "${startdir}/install"
   sed \
-    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuz-${pkgname}\"|" \
+    -e "s|ALL_kver=.*|ALL_kver=\"/boot/vmlinuzll-${pkgname}\"|" \
     -e "s|default_image=.*|default_image=\"/boot/initramfs-${pkgname}.img\"|" \
     -e "s|fallback_image=.*|fallback_image=\"/boot/initramfs-${pkgname}-fallback.img\"|" \
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
