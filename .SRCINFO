@@ -1,6 +1,6 @@
 pkgbase = rainbow
 	pkgdesc = Colorize commands output or STDIN using patterns.
-	pkgver = 2.6.2
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/nicoulaj/rainbow
 	changelog = Changelog
@@ -11,8 +11,8 @@ pkgbase = rainbow
 	depends = python
 	provides = rainbow-git
 	conflicts = rainbow-git
-	source = https://files.pythonhosted.org/packages/source/r/rainbow/rainbow-2.6.2.tar.gz
-	md5sums = 16dd2ae76093ff62273a22f6495dc4fd
+	source = https://files.pythonhosted.org/packages/source/r/rainbow/rainbow-2.7.0.tar.gz
+	md5sums = 591659fcb0897d017efd7ccdcc0f7c02
 
 pkgname = rainbow
 
