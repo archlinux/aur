@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/actionless/oomox
 
 pkgname=oomox-git
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Graphical application for generating different color variations
 of Numix theme (GTK2, GTK3), gnome-colors and ArchDroid icon themes.
@@ -30,6 +30,7 @@ optdepends=(
 	'imagemagick: for icon theme generation'
 	'inkscape: for icon theme generation'
 	'gnome-colors-common-icon-theme: for using the generated icon theme'
+	'breeze-icons: more fallback icons'
 	'gksu: for applying Spotify theme from GUI'
 	#'gnome-colors-icon-theme: for using the generated icon theme'  it's broken ATM
 )
@@ -98,7 +99,7 @@ Type=Application
 Icon=preferences-desktop-theme
 Categories=GNOME;GTK;Settings;DesktopSettings;X-XFCE-SettingsDialog;X-XFCE-PersonalSettings;
 Keywords=color;gtk;highlight;theme;widget;numix;
-StartupWMClass=__main__.py
+StartupWMClass=oomox
 X-GNOME-Gettext-Domain=oomox
 X-Desktop-File-Install-Version=0.22
 EOF
