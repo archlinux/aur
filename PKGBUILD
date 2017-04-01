@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_py_common provides common functionality for rqt plugins writt
 url='http://ros.org/wiki/rqt_py_common'
 
 pkgname='ros-indigo-rqt-py-common'
-pkgver='0.3.13'
+pkgver='0.4.7'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=0
 license=('BSD')
 
 ros_makedepends=(ros-indigo-genmsg
@@ -32,9 +32,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="rqt_common_plugins-release-release-indigo-rqt_py_common-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/indigo/rqt_py_common/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('12f89d87a3e0151320ed4fcac297b09a314608d8a04dfd16cec7e60b839c3cd1')
+ _dir="rqt_common_plugins-release-release-indigo-rqt_py_common-${pkgver}-${_pkgver_patch}"
+ source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/indigo/rqt_py_common/${pkgver}-${_pkgver_patch}.tar.gz")
+ sha256sums=('a30c644e316245990f02a596f4a742034340b2214a38c8db5f66802b2afb4bb4')
 
 build() {
   # Use ROS environment variables
