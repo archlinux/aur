@@ -1,0 +1,9 @@
+ufodir=/usr/share/openxcom/UFO
+post_install() {
+    [ -f "$ufodir/GEODATA/WORLD.DAT" ] && exit
+
+    echo ">>> It seems your XCOM/UFO data files are not installed in the"
+    echo "    standard directory $ufodir. The Sycraft"
+    echo "    soundtrack will not be automatically detected unless it is"
+    echo "    installed into the same directory as your XCOM data files."
+}
