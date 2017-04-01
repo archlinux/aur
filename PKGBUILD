@@ -1,7 +1,7 @@
 # Maintainer: Matt Bray <mattjbray@gmail.com>
 pkgname=elm-format-0.17-bin
 _source_pkgname=elm-format-0.17
-pkgver=0.5.2_alpha
+pkgver=0.6.0_alpha
 pkgrel=1
 epoch=
 pkgdesc="Format Elm source code according to a standard set of rules based on the official Elm Style Guide."
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/avh4/elm-format/releases/download/${pkgver//_/-}/$_source_pkgname-${pkgver//_/-}-linux-x64.tgz")
 noextract=()
-md5sums=('432b1c8d80250ea6e1fe1daa5543e88e')
+md5sums=('d8763fd795c5706daf547ee741e34f25')
 validpgpkeys=()
 
 # prepare() {
