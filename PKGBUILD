@@ -2,15 +2,14 @@
 
 pkgbase=git-it
 pkgname=git-it
-pkgrel=5
+pkgrel=7
 pkgver=4.3.3
-pkgdesc="Git-it is a desktop app that teaches you how to use Git and GitHub on the command line."
+pkgdesc="Desktop app that teaches you how to use Git and GitHub on the command line."
 url="https://github.com/jlord/git-it-electron"
 provides=('git-it')
 arch=('x86_64')
 license=('BSD')
-#depends=('electron' 'git' 'atom')
-depends=()
+depends=('gnuplot' 'libxtst' 'libxss' 'alsa-lib' 'nodejs' 'nss' 'gconf')
 makedepends=()
 backup=()
 install=''
@@ -35,4 +34,5 @@ package() {
 
     install -D -m644 "./${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -D -m644 "./${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -D -m644 "${srcdir}/Git-it-Linux-x64/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
