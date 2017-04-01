@@ -2,9 +2,9 @@
 # Maintainer: tobias <tobias@archlinux.org>
 
 pkgbase=gnome-sharp
-pkgname=('gnome-sharp' 'art-sharp' 'gconf-sharp' 'gconf-sharp-peditors' 'libgnome-sharp' 'gnome-vfs-sharp')
+pkgname=('gnome-sharp' 'art-sharp' 'gconf-sharp-peditors' 'libgnome-sharp' 'gnome-vfs-sharp')
 pkgver=2.24.2
-pkgrel=4
+pkgrel=5
 arch=(i686 x86_64)
 license=(LGPL)
 url="http://gtk-sharp.sourceforge.net"
@@ -41,14 +41,6 @@ package_art-sharp() {
   make -C art install DESTDIR="${pkgdir}"
 }
 
-package_gconf-sharp() {
-  pkgdesc="Mono bindings for GConf"
-  depends=('gtk-sharp-2' 'gconf')
-
-  cd "${srcdir}/${pkgbase}-${pkgver}"
-  make -C gconf/GConf install DESTDIR="${pkgdir}"
-  make -C gconf/tools install DESTDIR="${pkgdir}"
-}
 
 package_gconf-sharp-peditors() {
   pkgdesc="Mono bindings for GConf - Property Editing classes"
