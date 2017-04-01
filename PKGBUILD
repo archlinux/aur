@@ -1,8 +1,8 @@
 # Maintainer: Justin R. St-Amant <jstamant24 at gmail dot com>
 
 pkgname=draftsight
-pkgver=2017SP0
-pkgrel=2
+pkgver=2017SP1
+pkgrel=1
 pkgdesc="Freeware CAD software for your DWG/DXF files."
 arch=('x86_64')
 url="http://www.3ds.com/products/draftsight/"
@@ -12,7 +12,6 @@ depends=('alsa-lib'
          'fontconfig'
          'gcc-libs'
          'glib2'
-         'gstreamer0.10-base'
          'gtk2'
          'libcups'
          'libgl'
@@ -25,14 +24,13 @@ depends=('alsa-lib'
          'libxext'
          'libxrender'
          'libxslt'
-         'mesa'
          'postgresql-libs'
          'qt5-base'
          'qt5-x11extras'
          'zlib')
 source=("http://www.draftsight.com/download-linux-fedora"
         "draftsight.desktop")
-md5sums=('7052ab4354064a41bc008130df4a719b'
+md5sums=('0aaf21b56544c754d87aad4be2edabc1'
          '19b26d423cae7ec0e1e6c6d78c94915d')
 
 _pkgprefix='opt/dassault-systemes/DraftSight'
