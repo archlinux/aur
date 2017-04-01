@@ -3,7 +3,7 @@
 pkgname=xrootd
 pkgver=4.6.0
 pkgrel=2
-pkgdesc="A project that aims at giving high performance, scalable fault tolerant access to data repositories of many kinds."
+pkgdesc="Software framework for fast, low latency, scalable and fault tolerant data access."
 provides=('xrootd' 'xrootd-abi0')
 arch=('i686' 'x86_64')
 url="http://xrootd.org/"
