@@ -13,29 +13,27 @@ url='http://root.cern.ch'
 license=('LGPL2.1')
 makedepends=('cmake')
 depends=('cfitsio'
-'fftw'
-'ftgl'
-'gl2ps'
-'glew'
-'graphviz'
-'gsl'
-'hicolor-icon-theme'
-'intel-tbb'
-'libafterimage'
-'libiodbc'
-'libmysqlclient'
-'postgresql-libs'
-'python'
-'sqlite'
-'tex-gyre-fonts'  # solve the pixelized font problem as per Arch Wiki
-'unixodbc'
-'unuran'
-'xmlrpc-c'
-)
+         'fftw'
+         'ftgl'
+         'gl2ps'
+         'glew'
+         'graphviz'
+         'gsl'
+         'hicolor-icon-theme'
+         'intel-tbb'
+         'libafterimage'
+         'libiodbc'
+         'libmysqlclient'
+         'postgresql-libs'
+         'python'
+         'sqlite'
+         'tex-gyre-fonts'  # solve the pixelized font problem as per Arch Wiki
+         'unixodbc'
+         'unuran'
+         'xmlrpc-c')
 optdepends=('blas: Optional extensions to TMVA'
             'gcc-fortran: Enable the Fortran components of ROOT'
-            'tcsh: Legacy CSH support'
-)
+            'tcsh: Legacy CSH support')
 options=('!emptydirs')
 install=root.install
 source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
@@ -49,7 +47,7 @@ source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
 sha256sums=('ea31b047ba6fc04b0b312667349eaf1498a254ccacd212144f15ffcb3f5c0592'
             'dbf08ee3b506a2089f58d55ec9b1e6b77f337a6d2ebbb081e69cf729e531da3f'
             'a17309295f998ed826dcbf1b5d04de7ed44d64c35221806c75b775796578783d'
-            'f1796729b0403026382bca43329692f5356c8ec46fc2c09f799a8b3d12d49a6f'
+            '72ba38e0faffa084ac2f787f360201f72b1733d27e36c3cb88eb2f3a4716fa61'
             '9d1f8e7ad923cb5450386edbbce085d258653c0160419cdd6ff154542cc32bd7'
             '50c08191a5b281a39aa05ace4feb8d5405707b4c54a5dcba061f954649c38cb0'
             '3c45b03761d5254142710b7004af0077f18efece7c95511910140d0542c8de8a'
@@ -60,8 +58,9 @@ prepare(){
     msg2 'Applying patches...'
     # Fix JupyROOT issues until upstream releases arrive
     patch -p1 -i ${srcdir}/JupyROOT_encoding.patch
-    # patch -p1 -i ${srcdir}/JupyROOT_fix.patch
+    patch -p1 -i ${srcdir}/JupyROOT_fix.patch
 
+    msg2 'Adjusting to Python3...'
     2to3 -w etc/dictpch/makepch.py 2>&1 > /dev/null
 }
 
