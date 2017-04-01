@@ -1,28 +1,29 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kbackgammon
-_pkgname=backgammon
 pkgver=0.18
 _pkgver=018
-pkgrel=2
+pkgrel=3
 pkgdesc="Backgammon game for KDE"
-arch=('i686' 'x86_64')
-url="http://kde-apps.org/content/show.php/KBackgammon?content=142680"
-license=('GPL')
-depends=('kdebase-runtime' 'libkdegames')
-makedepends=('cmake' 'automoc4')
-source=("http://kde-apps.org/CONTENT/content-files/142680-${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4c3a404f80e12b67c34f8da23159a4d4')
+arch=(i686 x86_64)
+url="https://www.linux-apps.com/content/show.php/KBackgammon?content=142680"
+license=(GPL)
+depends=(kdebase-runtime libkdegames4)
+makedepends=(cmake automoc4)
+source=("https://dl.opendesktop.org/api/files/download/id/1464969373/142680-backgammon_${pkgver//./}.tar.gz")
+sha256sums=('f767aae42e33bd9f68cbf5d956e56de540f36c402925a3a9699c0e00447a979b')
+
+prepare() {
+  mkdir -p build
+}
 
 build() {
-  cd ${_pkgname}
-  mkdir build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+  cmake ../backgammon -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
   make
 }
 
 package() {
-  cd ${_pkgname}/build
+  cd build
   make DESTDIR="$pkgdir" install
 }
