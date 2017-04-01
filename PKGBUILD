@@ -8,14 +8,71 @@
 
 pkgname=mathematica
 pkgver=11.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing."
 arch=('i686' 'x86_64')
 url="http://www.wolfram.com/mathematica/"
 license=('proprietary')
-depends=('libxml2')
-optdepends=('mesa-demos: for "fully optimized graphics capabilities"'
-            'alsa-lib: for sound support')
+optdepends=(
+    # The following list of dependencies was inferred from namcap's output.  If
+    # you believe there is an error, please let me know.  Also feel free to
+    # contribute description to dependencies if you know what they do.
+    'alsa-lib'
+    'atk'
+    'cairo'
+    'clucene'
+    'cuda'
+    'curl'
+    'espeak'
+    'ffmpeg'
+    'fluidsynth'
+    'fontconfig'
+    'freetype2'
+    'gdk-pixbuf2'
+    'glib2'
+    'glu'
+    'gmime'
+    'gmp'
+    'gmp'
+    'gtk2'
+    'harfbuzz'
+    'icu'
+    'intel-mkl'
+    'java-environment'
+    'lame'
+    'lcms2'
+    'leptonica'
+    'libbson'
+    'libffi'
+    'libjpeg-turbo'
+    'libmad'
+    'libmongoc'
+    'libnet'
+    'libogg'
+    'libpng12'
+    'libselinux'
+    'libsm'
+    'libssh2'
+    'libutil-linux'
+    'libwebp'
+    'libx11'
+    'libxml2'
+    'libxslt'
+    'libxtst'
+    'libxxf86vm'
+    'mesa-demos: for improved graphics output'
+    'ncurses'
+    'nvidia-utils'
+    'opencv'
+    'openmp'
+    'openssl'
+    'pango'
+    'pixman'
+    'portaudio'
+    'r'
+    'tesseract'
+    'zlib'
+)
 source=("local://Mathematica_${pkgver}_LINUX.sh")
 sha256sums=('3a866cc1b49dc06ec11f7d7288051916b7aa1959ae2f32f96dd1780ad228ca4d')
 options=("!strip")
