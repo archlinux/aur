@@ -52,7 +52,7 @@ pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _srcname=linux-4.10
 pkgver=4.10.8
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -80,7 +80,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
-        '0005-BFQ-bugfix.patch')
+        '0005-BFQ-update-to-v8r9.patch')
 
 _kernelname=${pkgbase#linux} 
 
@@ -436,7 +436,7 @@ sha512sums=('c3690125a8402df638095bd98a613fcf1a257b81de7611c84711d315cd11e2634ab
             '6afb164bc7a38fea08a49c70690afafb209d1245588e1ecf57998926f5b43fe85d39a1ab1a133900b82bc1d3d97538330bf5c646b62e782653d69b6139d72200'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            '2fbe9ddf40a64f9b80ab3b4868e358ea678b4122742884b7c484041a913757627d1c6b0ee6e2ef46fe90d82e7e29e6332d3b6155d56355d274fdf551f8a8ef70')
+            'ee41c3d94f16ad34077a84a1bdb49789e5d7979c75abb46970707929627542f7c78e35ae93833b45030ea03ec4ee52f21e410dad37fa967d02d1aeb72f0b5cd8')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
