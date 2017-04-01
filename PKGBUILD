@@ -36,5 +36,10 @@ package() {
   make DESTDIR=${pkgdir} install
   
   mkdir -p ${pkgdir}/usr/include
-  cp ${srcdir}/stratagus/gameheaders/stratagus-game-launcher.h ${pkgdir}/usr/include
+  cp ${srcdir}/stratagus/gameheaders/stratagus-game-launcher.h \
+    ${pkgdir}/usr/include
+  cp ${srcdir}/stratagus/gameheaders/stratagus-gameutils.h \
+    ${pkgdir}/usr/include
+  cp ${srcdir}/stratagus/gameheaders/stratagus-tinyfiledialogs.h \
+    ${pkgdir}/usr/include
 }
