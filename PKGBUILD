@@ -2,10 +2,10 @@
 
 pkgname=keeweb
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
-url="https://github.com/antelle/keeweb"
+url="https://github.com/keeweb/keeweb"
 license=('MIT')
 depends=('electron')
 makedepends=('npm' 'asar')
