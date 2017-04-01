@@ -8,7 +8,7 @@ pkgbase="libcups-ipp14"
 #pkgname=('libcups-ipp14' 'cups-ipp14')
 pkgname=(${pkgbase})
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 provides=('libcups' 'libcups-ipp14')
 replaces=('libcups')
@@ -116,4 +116,3 @@ depends=('gnutls' 'libtiff>=4.0.0' 'libpng>=1.5.7' 'krb5' 'avahi' 'libusb')
   mkdir -p ${pkgdir}/usr/bin 
   install -m755 ${srcdir}/${_pkgbase}-${pkgver}/cups-config ${pkgdir}/usr/bin/cups-config
 }
-
