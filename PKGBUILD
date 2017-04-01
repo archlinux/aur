@@ -17,6 +17,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
         'config'
         'config.x86_64'
         'menu.lst'
+        '08_linux_linode'
         'hook'
         'preset')
 sha512sums=('c3690125a8402df638095bd98a613fcf1a257b81de7611c84711d315cd11e2634ab4636302b3742aedf1e3ba9ce0fea53fe8c7d48e37865d8ee5db3565220d90' 'SKIP'
@@ -24,6 +25,7 @@ sha512sums=('c3690125a8402df638095bd98a613fcf1a257b81de7611c84711d315cd11e2634ab
             '04f049993cd006b981baf3d349f5854ce4d1b964a04ab1d2f37eb44667fe1571ab2ec5bed98b0b9eee23f68baaf358077a7f760c63617cd85e945793b32124d7'
             'c820c51a2597ca6956f9f10a8cd891ad61d88d8fc082f81cbdeefb71004934baf0c4de8868a52f156df63dd57f46a4436c3166908e53e24edf2b32c9d2dc1948'
             '2beaa01dc9679a66ccbbca0f4abeb0f77956651e3f83f114030b2ef344a16240124a549ccee2588b6a1179be6a66b4a8dc931e2c15c4d5282afeb85bb6ada210'
+            'e71181d820d9abfab0c04a4758f9aadd4d2d740a09057a76ed7f47d6c9363ddb5591a1b61d1119c792b08a5a033c67ade902237569d2e670b6f26d269ed184cf'
             'b48e2ab68a211bc1d129fcef33875c35f9bf4afa8bfbb4455537983abeedae044475b636367042e39d5fcfdd59b37e1bbf6ac1ede71913aa61853ee66b3df89b'
             'a0a78831075336edef0a8faa34fa550986c3c4d89a89f4f39d798da0211129dc90257d162bec2cdefabef2eb5886a710e70c72074b2f3016788861d05d1e2a1f')
 validpgpkeys=(
@@ -71,6 +73,7 @@ package_linux-linode() {
   install -D -m644 vmlinux "${pkgdir}/lib/modules/${_kernver}/build/vmlinux"
   install -D -m644 "${srcdir}/preset" "${pkgdir}/etc/mkinitcpio.d/${pkgname}.preset"
   install -D -m644 "${srcdir}/hook" "${pkgdir}/usr/share/libalpm/hooks/99-linux-linode.hook"
+  install -D -m755 "${srcdir}/08_linux_linode" "${pkgdir}/etc/grub.d/08_linux_linode"
   sed \
     -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
     -i "${startdir}/install"
