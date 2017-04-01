@@ -7,7 +7,7 @@ pkgname='ros-kinetic-stage'
 pkgver='4.1.1'
 _pkgver_patch=8
 arch=('any')
-pkgrel=9
+pkgrel=10
 license=('GPL')
 
 ros_makedepends=()
@@ -60,14 +60,13 @@ build() {
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF
-        -DROSBUILD
+        -DSETUPTOOLS_DEB_LAYOUT=OFF \
+        -DROSBUILD:BOOL=true
   make
 }
 
 package() {
   cd "${srcdir}/build"
   make DESTDIR="${pkgdir}/" install
-  mv ${pkgdir}/opt/ros/kinetic/lib64 ${pkgdir}/opt/ros/kinetic/lib
 }
 

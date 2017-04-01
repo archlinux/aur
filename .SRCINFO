@@ -1,7 +1,7 @@
 pkgbase = ros-kinetic-stage
 	pkgdesc = ROS - Mobile robot simulator http://rtv.github.com/Stage.
 	pkgver = 4.1.1
-	pkgrel = 9
+	pkgrel = 10
 	url = http://rtv.github.com/Stage
 	arch = any
 	license = GPL
