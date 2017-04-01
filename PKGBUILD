@@ -2,11 +2,11 @@
 
 pkgname=liquidsky
 pkgver=2
-pkgrel=0
+pkgrel=1
 pkgdesc="LiquidSky lets you instantly own and stream a powerful gaming computer to any device!"
 arch=('x86_64' 'i686')
 url='https://liquidsky.tv/'
-depends=('wine' 'wine_gecko' 'wine-mono', 'winetricks')
+depends=('wine' 'wine_gecko' 'wine-mono' 'winetricks')
 install=liquidsky.install
 source=(
     'https://cdn.liquidsky.com/assets/LiquidSkyClient.exe'
