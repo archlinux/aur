@@ -46,84 +46,87 @@ sha256sums=('fc868e5f4905544c3f392cc9e895ef5571a08e48682e7fe173bd44c0ba0c7dcd'
             '50c08191a5b281a39aa05ace4feb8d5405707b4c54a5dcba061f954649c38cb0')
 
 prepare() {
-  cd root
+    cd "${srcdir}/root"
 
-  msg2 'Python2 switch...'
-  find . -type f -exec sed -e 's_#!/usr/bin/env python_&2_' \
-                           -e 's/python -O/python2 -O/g' \
-                           -e 's/python -c/python2 -c/g' -i {} \;
-  sed \
-    -e 's/python 2/python2 2/g' \
-    -i configure
-  sed \
-    -e 's/python $(pkgpyexecdir)/python2 $(pkgpyexecdir)/g' \
-    -i cint/reflex/python/genreflex/Makefile.am
-  sed \
-    -e 's/python /python2 /' \
-    -i config/genreflex.in config/genreflex-rootcint.in
+    msg2 'Python2 switch...'
+    find . -type f -exec sed -e 's_#!/usr/bin/env python_&2_' \
+                             -e 's/python -O/python2 -O/g' \
+                             -e 's/python -c/python2 -c/g' -i {} \;
 
-  # Horid glibc hack
-  sed -e 's/__USE_BSD/__USE_MISC/' -i core/base/src/TTimeStamp.cxx
+    sed -e 's/python 2/python2 2/g' \
+        -i configure
 
-  msg2 'Applying patches...'
-  ## https://sft.its.cern.ch/jira/browse/ROOT-8180
-  patch -p1 < ${srcdir}/enable_gcc6.patch
+    sed -e 's/python $(pkgpyexecdir)/python2 $(pkgpyexecdir)/g' \
+        -i cint/reflex/python/genreflex/Makefile.am
 
+    sed -e 's/python /python2 /' \
+        -i config/genreflex.in config/genreflex-rootcint.in
+
+    # Horid glibc hack
+    sed -e 's/__USE_BSD/__USE_MISC/' -i core/base/src/TTimeStamp.cxx
+
+    msg2 'Applying patches...'
+    ## https://sft.its.cern.ch/jira/browse/ROOT-8180
+    patch -p1 < "${srcdir}/enable_gcc6.patch"
 }
 
 build() {
-  cd root
+    cd "${srcdir}/root"
 
-  if [ ${CARCH} == 'i686' ]; then
-    TARGET=linux;
-  else
-    TARGET=linuxx8664gcc;
-  fi
+    if [ ${CARCH} == 'i686' ]; then
+        TARGET=linux;
+    else
+        TARGET=linuxx8664gcc;
+    fi
 
-  local sys_libs=""
-  for sys_lib in afterimage ftgl freetype glew pcre zlib lzma; do
-    sys_libs+="--disable-builtin-${sys_lib} "
-  done
+    declare -a sys_libs
+    for sys_lib in afterimage ftgl freetype glew pcre zlib lzma; do
+        sys_libs+=("--disable-builtin-${sys_lib}")
+    done
 
-    # --cxxflags="${CXXFLAGS} -D_GLIBCXX_USE_CXX11_ABI=0" \  # add after TARGET if needed
-  ./configure \
-    ${TARGET} \
-    --prefix=/usr \
-    --enable-gdml \
-    --enable-gsl-shared \
-    --enable-minuit2 \
-    --enable-soversion \
-    --enable-roofit \
-    --with-python-incdir=/usr/include/python2.7 \
-    --with-python-libdir=/usr/lib \
-    ${sys_libs}
+    msg2 'Configuring...'
+    ./configure \
+        ${TARGET} \
+        --prefix=/usr \
+        --enable-gdml \
+        --enable-gsl-shared \
+        --enable-minuit2 \
+        --enable-soversion \
+        --enable-roofit \
+        --with-python-incdir=/usr/include/python2.7 \
+        --with-python-libdir=/usr/lib \
+        "${sys_libs[@]}"
 
-  make
+    msg2 'Compiling...'
+    make ${MAKEFLAGS}
 }
 
 package() {
-  cd root
+    cd "${srcdir}/root"
 
-  make DESTDIR=${pkgdir} install
+    msg2 'Installing...'
+    make DESTDIR="${pkgdir}" install
 
-  install -D ${srcdir}/root.sh \
-    ${pkgdir}/etc/profile.d/root.sh
-  install -D ${srcdir}/rootd \
-    ${pkgdir}/etc/rc.d/rootd
-  install -D -m644 ${srcdir}/root.xml \
-    ${pkgdir}/usr/share/mime/packages/root.xml
+    install -D "${srcdir}/root.sh" \
+        "${pkgdir}/etc/profile.d/root.sh"
+    install -D "${srcdir}/rootd" \
+        "${pkgdir}/etc/rc.d/rootd"
+    install -D -m644 "${srcdir}/root.xml" \
+        "${pkgdir}/usr/share/mime/packages/root.xml"
 
-  install -D -m644 ${srcdir}/root/build/package/debian/root-system-bin.desktop.in \
-    ${pkgdir}/usr/share/applications/root-system-bin.desktop
-  # replace @prefix@ with /usr for the desktop
-  sed -e 's_@prefix@_/usr_' -i ${pkgdir}/usr/share/applications/root-system-bin.desktop
+    install -D -m644 "${srcdir}/root/build/package/debian/root-system-bin.desktop.in" \
+        "${pkgdir}/usr/share/applications/root-system-bin.desktop"
+    # replace @prefix@ with /usr for the desktop
+    sed -e 's_@prefix@_/usr_' -i "${pkgdir}/usr/share/applications/root-system-bin.desktop"
 
-  install -D -m644 ${srcdir}/root/build/package/debian/root-system-bin.png \
-    ${pkgdir}/usr/share/icons/hicolor/48x48/apps/root-system-bin.png
+    install -D -m644 "${srcdir}/root/build/package/debian/root-system-bin.png" \
+        "${pkgdir}/usr/share/icons/hicolor/48x48/apps/root-system-bin.png"
 
-  # use a file that pacman can track instead of adding directly to ld.so.conf
-  install -d ${pkgdir}/etc/ld.so.conf.d
-  echo '/usr/lib/root' > ${pkgdir}/etc/ld.so.conf.d/root.conf
+    msg2 'Updating system config...'
+    # use a file that pacman can track instead of adding directly to ld.so.conf
+    install -d "${pkgdir}/etc/ld.so.conf.d"
+    echo '/usr/lib/root' > "${pkgdir}/etc/ld.so.conf.d/root.conf"
 
-  rm -rf ${pkgdir}/etc/root/daemons
+    msg2 'Cleaning up...'
+    rm -rf "${pkgdir}/etc/root/daemons"
 }
