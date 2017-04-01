@@ -2,7 +2,7 @@
 # Contributor: Milan Knizek <knizek@volny.cz>
 
 pkgname=scanbd
-pkgver=1.4.4
+pkgver=1.4.6
 pkgrel=1
 pkgdesc="Scanner button daemon looking for scanner button pressed"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://scanbd.sourceforge.net/"
 license=('GPL2')
 depends=('sane' 'confuse')
 source=("http://downloads.sourceforge.net/scanbd/scanbd-${pkgver}.tgz")
-sha256sums=('3a61e3bec22c6926c51510408475f2961647cc9dec325a7622108a95a64c451d')
+sha256sums=('b55374b128b4913b0c810385a49a6bf105969e75f83ee326bf1d74ceb23f3abc')
 install=scanbd.install
 backup=('etc/scanbd/scanbd.conf')
 
@@ -39,7 +39,7 @@ package() {
   sed -i 's@\(User=\)saned@\1nobody@'                                "${pkgdir}/usr/lib/systemd/system/scanbm@.service"
   sed -i 's@\(Group=\)saned@\1scanner@'                              "${pkgdir}/usr/lib/systemd/system/scanbm@.service"
   sed -i 's@\(Environment=SANE_CONFIG_DIR=/etc/scanbd\)$@\1/sane.d@' "${pkgdir}/usr/lib/systemd/system/scanbm@.service"
- 
+
   install -m644 integration/systemd/scanbm.socket   "${pkgdir}/usr/lib/systemd/system"
 
   install -d "${pkgdir}/usr/share/dbus-1/system-services"
