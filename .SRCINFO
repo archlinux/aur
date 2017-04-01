@@ -1,7 +1,7 @@
 pkgbase = gstfs-ng
 	pkgdesc = A FUSE-based file system for dynamic gstreamer-based transcoding
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rtyle/gstfs-ng
 	arch = x86_64
 	license = LGPL3
