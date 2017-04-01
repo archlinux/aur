@@ -1,8 +1,8 @@
-# Maintainer:  Konstantin Gizdov <arch at kge dot pw>
-# Contributor: Carl Lei <xecycle at gmail dot com>
-# Contributor: Scott Lawrence <bytbox at gmail dot com>
-# Contributor: Thomas Dziedzic < gostrc at gmail dot com>
-# Contributor: Sebastian Voecking <voeck at web dot de>
+# Maintainer:  Konstantin Gizdov < arch at kge dot pw >
+# Contributor: Carl Lei < xecycle at gmail dot com >
+# Contributor: Scott Lawrence < bytbox at gmail dot com >
+# Contributor: Thomas Dziedzic < gostrc at gmail dot com >
+# Contributor: Sebastian Voecking < voeck at web dot de >
 
 pkgname=root5
 pkgver=5.34.36
