@@ -1,6 +1,6 @@
 pkgbase = bumblebee-status-git
 	pkgdesc = A modular, theme-able status line generator for the i3 window manager.
-	pkgver = r373.6ac6114
+	pkgver = r377.11235d6
 	pkgrel = 1
 	url = https://github.com/tobi-wan-kenobi/bumblebee-status
 	arch = any
