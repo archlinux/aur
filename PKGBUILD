@@ -3,7 +3,7 @@
 _pkgname=Herwig
 pkgname=herwig
 pkgver=7.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Herwig is a multi-purpose particle physics event generator."
 arch=('i686' 'x86_64')
 url="http://herwig.hepforge.org"
@@ -15,8 +15,9 @@ sha256sums=('e6265f6cae2944b022ee2f1495b0abdd7ed1b50fdda81063f8c17acf8a2f4ced')
 
 prepare() {
   pdfs=(MMHT2014nlo68cl MMHT2014lo68cl)
+  lhapdfdata=$(lhapdf-config --datadir)
   for p in "${pdfs[@]}"; do
-    if [ ! -d "/usr/share/LHAPDF/$p" ]; then
+    if [ ! -d "${lhapdfdata}/$p" ]; then
         sudo lhapdf install "$p"
     else
         sudo lhapdf upgrade "$p"

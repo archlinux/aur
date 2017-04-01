@@ -1,7 +1,7 @@
 pkgbase = herwig
 	pkgdesc = Herwig is a multi-purpose particle physics event generator.
 	pkgver = 7.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://herwig.hepforge.org
 	arch = i686
 	arch = x86_64
