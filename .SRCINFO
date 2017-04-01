@@ -1,0 +1,49 @@
+pkgbase = buildbot
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = http://buildbot.net
+	arch = any
+	license = GPL
+	source = https://files.pythonhosted.org/packages/py2.py3/b/buildbot/buildbot-0.9.5-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/b/buildbot_www/buildbot_www-0.9.5-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/b/buildbot_worker/buildbot_worker-0.9.5-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/b/buildbot_waterfall_view/buildbot_waterfall_view-0.9.5-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/b/buildbot_console_view/buildbot_console_view-0.9.5-py2.py3-none-any.whl
+	md5sums = 0ae7989f497d21d78dcadc2f360934bb
+	md5sums = fbe69f0f3c62a2d564511093e91c4e96
+	md5sums = cc1c0b5b35ac22bdc3b7b63cff28f7c9
+	md5sums = 3f008d1051f8b6c3d621056cb99d67e5
+	md5sums = 5e1375648c2398d277ccffaea7473fa8
+
+pkgname = buildbot
+	pkgdesc = The Continuous Integration Framework
+	depends = python-twisted
+	depends = python-jinja
+	depends = python-migrate
+	depends = python-dateutil
+	depends = python-sqlparse
+	depends = python-pyjwt
+	depends = python-autobahn
+	depends = python-txaio
+	depends = python-future
+	depends = python-zope-interface
+	depends = python-tempita
+	depends = python-distro
+
+pkgname = python-buildbot-www
+	pkgdesc = Buildbot UI
+	depends = buildbot
+
+pkgname = buildbot-worker
+	pkgdesc = Buildbot Worker Daemon
+	depends = python-twisted
+	depends = python-future
+
+pkgname = python-buildbot-waterfall-view
+	pkgdesc = Buildbot Waterfall View plugin
+	depends = buildbot
+
+pkgname = python-buildbot-console-view
+	pkgdesc = Buildbot Console View plugin
+	depends = buildbot
+
