@@ -12,7 +12,6 @@ pkgbase = swift-bin
 	depends = libutil-linux
 	depends = libbsd
 	depends = clang
-	depends = libtinfo5
 	depends = python2-six
 	depends = libxml2
 	provides = swift-language
