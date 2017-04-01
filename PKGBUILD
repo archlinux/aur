@@ -3,7 +3,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=heirloom-cvs
 pkgver=2014.07.15
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 pkgdesc="The Heirloom Toolchest of standard UNIX utilities, derived from original UNIX tools."
 url="http://heirloom.sourceforge.net/tools.html"
@@ -29,10 +29,10 @@ prepare() {
   cvs -d:pserver:anonymous:@heirloom.cvs.sourceforge.net:/cvsroot/heirloom co -P heirloom
   rm -rf $srcdir/build
   cd "$srcdir/${pkgname%-*}"
-  patch -p1 < ../000-config.diff
-  patch -p1 < ../001-staticdep.diff
-  patch -p1 < ../002-nowhat.diff
-  patch makefile -i ../makefile.patch
+  patch -N -p1 < ../000-config.diff
+  patch -N -p1 < ../001-staticdep.diff
+  patch -N -p1 < ../002-nowhat.diff
+  patch -N makefile -i ../makefile.patch
 }
 
 build() {
