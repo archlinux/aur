@@ -17,7 +17,7 @@ optdepends=('fastjet: fast jet finding in pp and e+e- collisions'
             'lhapdf: evaluate PDFs from discretised data files'
             'root: integrate with CERN ROOT data analysis framework')
 install=pythia.install
-source=("http://home.thep.lu.se/~torbjorn/pythia8/$_pkgid.tgz"
+source=("http://home.thep.lu.se/~torbjorn/pythia8/${_pkgid}.tgz"
         "pythia.sh"
         "pythia.install"
         "respect_lib_suffix.patch")
