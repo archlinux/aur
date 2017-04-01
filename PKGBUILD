@@ -12,14 +12,14 @@
 # Contributor: Noel Kuntze <noel@familie-kuntze.de>
 
 pkgname=ansible-git
-pkgver=2.3.0.29284.32146acf4e
+pkgver=2.4.0.29615.11138abc51
 pkgrel=1
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
 url='http://www.ansible.com'
 license=('GPL3')
 depends=('python2' 'python2-yaml' 'python2-paramiko' 'python2-jinja' 'python2-six' 'python2-pexpect' 'python2-crypto')
-makedepends=('asciidoc' 'fakeroot' 'git' 'python-sphinx')
+makedepends=('asciidoc' 'fakeroot' 'git' 'python-sphinx' 'python-yaml')
 optdepends=('python2-passlib: crypt values for vars_prompt'
             'python2-netaddr: for the ipaddr filter'
             'python2-systemd: log to journal'
