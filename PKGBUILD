@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_py_console is a Python GUI plugin providing an interactive Py
 url='http://ros.org/wiki/rqt_py_console'
 
 pkgname='ros-indigo-rqt-py-console'
-pkgver='0.3.13'
+pkgver='0.4.7'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=0
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rqt_common_plugins-release-release-indigo-rqt_py_console-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/indigo/rqt_py_console/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6b261d7727c458f1b35fa242b3611b8b97f8b193b2e9253fcc2a5f25eb2a3648')
+sha256sums=('0963b18a0fcd1ee3ab7953b84680ab4a77520e3f2e8da60b52a07a20c4edcbea')
 
 build() {
   # Use ROS environment variables
