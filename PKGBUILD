@@ -55,7 +55,7 @@ _pkgver=4.9.18
 _rtver=14
 _rtpatchver=rt${_rtver}
 pkgver=${_pkgver}.${_rtver}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -88,7 +88,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
         '0005-BFQ-update-to-v8r8.patch'
-        '0006-BFQ-bugfix.patch'
+        '0006-BFQ-update-to-v8r9.patch'
         )
         
 _kernelname=${pkgbase#linux}
@@ -477,7 +477,7 @@ sha512sums=('bf67ff812cc3cb7e5059e82cc5db0d9a7c5637f7ed9a42e4730c715bf7047c81ed3
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             'dab3dba300e276dd552cb86c903af5cac9f7c7954b938ac9c300745a175198c553d84cd3a5e58c350d83160f33b07f6dd20a570da4afdce178464c402ac7829b'
-            '2fbe9ddf40a64f9b80ab3b4868e358ea678b4122742884b7c484041a913757627d1c6b0ee6e2ef46fe90d82e7e29e6332d3b6155d56355d274fdf551f8a8ef70')
+            'ee41c3d94f16ad34077a84a1bdb49789e5d7979c75abb46970707929627542f7c78e35ae93833b45030ea03ec4ee52f21e410dad37fa967d02d1aeb72f0b5cd8')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds

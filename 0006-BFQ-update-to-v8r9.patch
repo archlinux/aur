@@ -1,7 +1,7 @@
 From 2da7edbb8f54b447c0b7dfa029ee4df580a6030e Mon Sep 17 00:00:00 2001
 From: Paolo Valente <paolo.valente@linaro.org>
 Date: Thu, 16 Mar 2017 14:36:41 +0100
-Subject: [PATCH] BUGIFX: remove use of bfq queues after free
+Subject: [PATCH 1/2] BUGIFX: remove use of bfq queues after free
 
 bfq queues occasionally happened to be used after being freed, because
 they were accessed after some invocations of bfq_put_queue that could
@@ -339,3 +339,39 @@ index 2e9dc59..70aac56 100644
  }
  
  /*
+
+From 8d4b2ded945bdb75fc5c197d95089ebfe5fa24e7 Mon Sep 17 00:00:00 2001
+From: Paolo Valente <paolo.valente@linaro.org>
+Date: Tue, 21 Mar 2017 09:56:39 -0400
+Subject: [PATCH 2/2] BFQ-v8r9
+
+Signed-off-by: Paolo Valente <paolo.valente@linaro.org>
+---
+ block/bfq-iosched.c | 2 +-
+ block/bfq.h         | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/block/bfq-iosched.c b/block/bfq-iosched.c
+index f00761b..1e46d68 100644
+--- a/block/bfq-iosched.c
++++ b/block/bfq-iosched.c
+@@ -5252,7 +5252,7 @@ static struct blkcg_policy blkcg_policy_bfq = {
+ static int __init bfq_init(void)
+ {
+ 	int ret;
+-	char msg[60] = "BFQ I/O-scheduler: v8r8";
++	char msg[60] = "BFQ I/O-scheduler: v8r9";
+ 
+ #ifdef CONFIG_BFQ_GROUP_IOSCHED
+ 	ret = blkcg_policy_register(&blkcg_policy_bfq);
+diff --git a/block/bfq.h b/block/bfq.h
+index f433cfe..6faed4f 100644
+--- a/block/bfq.h
++++ b/block/bfq.h
+@@ -1,5 +1,5 @@
+ /*
+- * BFQ v8r8 for 4.10.0: data structures and common functions prototypes.
++ * BFQ v8r9 for 4.10.0: data structures and common functions prototypes.
+  *
+  * Based on ideas and code from CFQ:
+  * Copyright (C) 2003 Jens Axboe <axboe@kernel.dk>
