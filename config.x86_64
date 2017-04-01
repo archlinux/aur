@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.10.0-1 Kernel Configuration
+# Linux/x86 4.10.8-1 Kernel Configuration
 #
 CONFIG_64BIT=y
 CONFIG_X86_64=y
@@ -1993,9 +1993,15 @@ CONFIG_HID_GENERIC=y
 #
 # USB HID support
 #
-CONFIG_USB_HID=y
+CONFIG_USB_HID=m
 # CONFIG_HID_PID is not set
 # CONFIG_USB_HIDDEV is not set
+
+#
+# USB HID Boot Protocol drivers
+#
+# CONFIG_USB_KBD is not set
+# CONFIG_USB_MOUSE is not set
 
 #
 # Intel ISH HID support
