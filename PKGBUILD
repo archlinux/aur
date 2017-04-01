@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-pack
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
@@ -19,7 +19,7 @@ conflicts=('ttf-iosevka'
            'ttf-iosevka-term-zshaped')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/iosevka-pack-${pkgver}.zip"
         "https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md")
-sha256sums=('a7f2aa16d003a7f9568736b53ddad7f0efd80f795849b59593c1c74a07fcf556'
+sha256sums=('122a65a562fe5ea8f3c85ee786c804085a937e64a46bcf6565c2fdb89c018fe7'
             '6def40494d348d87c383513bab0979ba4ce26ad96249d58df04cf811f866c63f')
 
 package() {
