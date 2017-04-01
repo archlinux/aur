@@ -1,0 +1,31 @@
+From 7025bd6c00f76c6667abb023b27081243f025ad1 Mon Sep 17 00:00:00 2001
+From: sago007 <poul@poulsander.com>
+Date: Sat, 1 Apr 2017 20:27:57 +0200
+Subject: [PATCH] Hotfix for Issue #14
+
+---
+ source/code/common.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/source/code/common.cpp b/source/code/common.cpp
+index e4cf830..882aae6 100644
+--- a/source/code/common.cpp
++++ b/source/code/common.cpp
+@@ -49,7 +49,7 @@ double str2double(const string& str2parse) {
+ 	try {
+ 		return std::stod(str2parse);
+ 	}
+-	catch (std::ios_base::failure& f) {
++	catch (...) {
+ 		return 0.0;
+ 	}
+ }
+@@ -78,7 +78,7 @@ int str2int(const string& str2parse) {
+ 	try {
+ 		return std::stoi(str2parse);
+ 	}
+-	catch (std::ios_base::failure& f) {
++	catch (...) {
+ 		return 0;
+ 	}
+ }
