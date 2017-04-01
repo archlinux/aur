@@ -1,31 +1,30 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=fluid
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Library for QtQuick apps with Material Design and Universal"
-arch=("i686" "x86_64")
-url="https://github.com/lirios/fluid"
-license=("MPL")
-depends=("qt5-svg" "qt5-quickcontrols2")
-makedepends=("git" "extra-cmake-modules")
+arch=('i686' 'x86_64')
+url='https://github.com/lirios/fluid'
+license=('MPL')
+depends=('qt5-svg' 'qt5-quickcontrols2')
+makedepends=('extra-cmake-modules' 'nodejs-material-design-icons')
 replaces=('qml-material')
-source=("git+https://github.com/lirios/fluid.git#tag=v$pkgver"
-        "git+https://github.com/google/material-design-icons.git")
-sha256sums=('SKIP'
-            'SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/lirios/fluid/archive/v$pkgver.tar.gz")
+sha256sums=('67990122229349f4d36f561ee4a818359480bb88987e03d8bb40523284fc3cd5')
 
 prepare() {
   mkdir -p build
 
-  cd $pkgname
-  git clone "$srcdir/material-design-icons" material-design-icons
+  cd fluid-$pkgver
+  ln -s /usr/lib/node_modules/material-design-icons
+  sed -i '/git submodule/d' scripts/fetch_icons.sh
   scripts/fetch_icons.sh
 }
 
 build() {
   cd build
-  cmake "$srcdir/$pkgname" \
+  cmake "$srcdir"/fluid-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_LIBEXECDIR=lib \
