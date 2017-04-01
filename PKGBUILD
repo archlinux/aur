@@ -37,13 +37,13 @@ optdepends=('blas: Optional extensions to TMVA'
 options=('!emptydirs')
 install=root.install
 source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
-'JupyROOT_encoding.patch'
-'JupyROOT_fix.patch'
-'root.install'
-'root.sh'
-'root.xml'
-'rootd'
-'settings.cmake')
+        'JupyROOT_encoding.patch'
+        'JupyROOT_fix.patch'
+        'root.install'
+        'root.sh'
+        'root.xml'
+        'rootd'
+        'settings.cmake')
 sha256sums=('ea31b047ba6fc04b0b312667349eaf1498a254ccacd212144f15ffcb3f5c0592'
             'dbf08ee3b506a2089f58d55ec9b1e6b77f337a6d2ebbb081e69cf729e531da3f'
             'a17309295f998ed826dcbf1b5d04de7ed44d64c35221806c75b775796578783d'
@@ -52,7 +52,7 @@ sha256sums=('ea31b047ba6fc04b0b312667349eaf1498a254ccacd212144f15ffcb3f5c0592'
             '50c08191a5b281a39aa05ace4feb8d5405707b4c54a5dcba061f954649c38cb0'
             '3c45b03761d5254142710b7004af0077f18efece7c95511910140d0542c8de8a'
             'a8db29f6acf32659daca8de35481b25ed847b2182e6033940f3568f3d1ad22fb')
-prepare(){
+prepare() {
     cd ${pkgname}-${pkgver}
 
     msg2 'Applying patches...'
@@ -68,17 +68,20 @@ build() {
     mkdir -p ${srcdir}/build
     cd ${srcdir}/build
 
+    msg2 'Configuring...'
     CFLAGS="${CFLAGS} -pthread" \
     CXXFLAGS="${CXXFLAGS} -pthread" \
     LDFLAGS="${LDFLAGS} -pthread -Wl,--no-undefined" \
     cmake -C ${srcdir}/settings.cmake ${srcdir}/${pkgname}-${pkgver}
 
+    msg2 'Compiling...'
     make ${MAKEFLAGS}
 }
 
 package() {
     cd ${srcdir}/build
 
+    msg2 'Installing...'
     make DESTDIR=${pkgdir} install
 
     install -D ${srcdir}/root.sh \
@@ -99,9 +102,11 @@ package() {
     install -D -m644 ${srcdir}/${pkgname}-${pkgver}/build/package/debian/root-system-bin.png \
         ${pkgdir}/usr/share/icons/hicolor/48x48/apps/root-system-bin.png
 
+    msg2 'Updating system config...'
     # use a file that pacman can track instead of adding directly to ld.so.conf
     install -d ${pkgdir}/etc/ld.so.conf.d
     echo '/usr/lib/root' > ${pkgdir}/etc/ld.so.conf.d/root.conf
 
+    msg2 'Cleaning up...'
     rm -rf ${pkgdir}/etc/root/daemons
 }
