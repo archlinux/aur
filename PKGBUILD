@@ -5,12 +5,12 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=wordgrinder
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A word processor for processing words."
 url="http://cowlark.com/wordgrinder/"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('lua52' 'lua52-filesystem' 'zlib')
+depends=('lua' 'lua52' 'lua52-filesystem' 'libx11' 'libxft' 'freetype2' 'zlib')
 source=("https://github.com/davidgiven/$pkgname/archive/${pkgver}.tar.gz")
 md5sums=('f766ed92430073a12494f626476b5488')
 sha1sums=('f2bc7d7f1b32a2b1a68978086e046564420df78a')
