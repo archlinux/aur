@@ -4,7 +4,7 @@ blu="$(tput setaf 4)"
 ylw="$(tput setaf 3)"
 
 msg() {
-    printf "${bld}${blu}==>${ylw} NOTE:${bld} $1${rst}\n"
+    printf "${bld}${blu}==>${ylw} NOTE:${rst}${bld} $1${rst}\n"
 }
 
 post_install() {
