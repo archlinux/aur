@@ -2,13 +2,13 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=criu
 pkgver=2.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Checkpoint/Restore functionality for Linux in Userspace."
 url="http://criu.org"
 license=("GPL2")
 arch=("x86_64")
 source=("http://download.openvz.org/$pkgname/$pkgname-$pkgver.tar.bz2")
-depends=('protobuf-c' 'libnl')
+depends=('protobuf-c' 'libnl' 'libnet')
 makedepends=('xmlto' 'asciidoc' 'python')
 options=("!buildflags")
 changelog=Changelog
