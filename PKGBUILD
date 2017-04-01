@@ -51,12 +51,13 @@ sha256sums=('ea31b047ba6fc04b0b312667349eaf1498a254ccacd212144f15ffcb3f5c0592'
             'a17309295f998ed826dcbf1b5d04de7ed44d64c35221806c75b775796578783d'
             'f1796729b0403026382bca43329692f5356c8ec46fc2c09f799a8b3d12d49a6f'
             '9d1f8e7ad923cb5450386edbbce085d258653c0160419cdd6ff154542cc32bd7'
-            'b103d46705883590d9e07aafb890ec1150f63dc2ca5f40d67e6ebef49a6d0a32'
+            '50c08191a5b281a39aa05ace4feb8d5405707b4c54a5dcba061f954649c38cb0'
             '3c45b03761d5254142710b7004af0077f18efece7c95511910140d0542c8de8a'
             'a8db29f6acf32659daca8de35481b25ed847b2182e6033940f3568f3d1ad22fb')
 prepare(){
     cd ${pkgname}-${pkgver}
 
+    msg2 'Applying patches...'
     # Fix JupyROOT issues until upstream releases arrive
     patch -p1 -i ${srcdir}/JupyROOT_encoding.patch
     # patch -p1 -i ${srcdir}/JupyROOT_fix.patch
@@ -65,7 +66,7 @@ prepare(){
 }
 
 build() {
-    [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
+    mkdir -p ${srcdir}/build
     cd ${srcdir}/build
 
     CFLAGS="${CFLAGS} -pthread" \
