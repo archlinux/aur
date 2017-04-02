@@ -3,7 +3,7 @@ pkgbase=openss7-git
 _pkgbase=openss7
 pkgname=('openss7-git' 'openss7-modules-git' 'openss7-modules-lts-git' 'openss7-java-git')
 pkgver=1.1.8.63.g45f1b08cd
-pkgrel=4
+pkgrel=7
 pkgdesc="OpenSS7 Fast-STREAMS and Protocol Suites"
 arch=('x86_64' 'i686')
 url="http://www.openss7.org"
@@ -14,7 +14,7 @@ makedepends=('doxygen' 'gcc-gcj' 'gcc-libs' 'ghostscript' 'gjdoc' 'glibc'
 	     'linux-headers' 'linux-lts' 'linux-lts-headers' 'lsof'
 	     'net-snmp' 'openssl' 'swig' 'systemd' 'tcl' 'texlive-bin'
 	     'texlive-core' 'transfig' 'gawk' 'java-environment' 'lm_sensors'
-             'popt')
+             'popt' 'git' 'ccache')
 conflicts=("$_pkgbase" 'strigi')
 options=('!emptydirs' 'ccache' '!distcc' '!makeflags')
 #source=("$pkgbase::git+file:///u2/git/monavacon.git")
