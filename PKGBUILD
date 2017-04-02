@@ -11,7 +11,7 @@
 pkgbase=networkmanager-git
 _gitname=NetworkManager
 pkgname=(networkmanager-git libnm-glib-git libnm-git)
-pkgver=1.7.1.r17077.gc2dc1c6fa
+pkgver=1.9.0.r17339.gdb07b867a
 pkgrel=1
 pkgdesc="Network Management daemon"
 arch=(i686 x86_64)
@@ -58,7 +58,6 @@ pkgver() {
 prepare() {
      mkdir -p libnm{,-glib}/usr/{include,lib/{girepository-1.0,pkgconfig},share/{gir-1.0,gtk-doc/html,vala/vapi}}
     cd $pkgname/
-    2to3 -w libnm src tools
     NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -186,8 +185,9 @@ package_networkmanager-git() {
 
   package_libnm-git() {
   pkgdesc="NetworkManager client library"
+  provides=(libnm)
+  conflicts=(libnm)
   depends=(glib2 libgudev nss libutil-linux jansson)
-  cd $srcdir/$pkgbase
   mv libnm/* "$pkgdir"
 }
 
