@@ -1,0 +1,24 @@
+pkgbase = python-ntlm-auth
+	pkgdesc = Creates NTLM authentication structures
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/jborean93/ntlm-auth
+	arch = any
+	license = LGPL-3.0
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/ac/99/5183cbb714537e0bd31dd266f2bad894f17112f862bb5c65fd6a5367dd2b/ntlm-auth-1.0.2.zip
+	md5sums = 87e5325975c641bc6fbacca496e96748
+
+pkgname = python-ntlm-auth
+	depends = 
+	depends = python
+	depends = python-six
+	depends = python-ordereddict
+
+pkgname = python2-ntlm-auth
+	depends = 
+	depends = python2
+	depends = python2-six
+	depends = python2-ordereddict
+
