@@ -1,7 +1,10 @@
-pkgname=shellex
+# Maintainer: Maarten de Vries <maarten@de-vri.es>
+
+pkgname=shellex-git
 pkgdesc='zsh/urxvt based program launcher'
-pkgver=0.1
-pkgrel=2
+url=https://github.com/Merovius/shellex
+pkgver=0.1.r34.g3ca70d9
+pkgrel=1
 arch=('i686' 'x86_64')
 license=(BSD)
 depends=(
@@ -9,16 +12,21 @@ depends=(
 	rxvt-unicode
 	perl-x11-protocol
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Merovius/shellex/archive/$pkgver.tar.gz")
-sha512sums=('31546b13090af9c64c9c5879f9b9a2ac21c54934b8ddb83646e9154a8d5aaa9f32629ef386f11cab5db56d80f0bc8e416618b9b7abb8e863c089fb343343c173')
+source=("git+https://github.com/Merovius/shellex")
+sha512sums=('SKIP')
+
+pkgver() {
+	git -C "$srcdir/shellex" describe --long --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/shellex"
 	make
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/shellex"
+	install -d 755 "$pkgdir/etc"
 	make install DESTDIR="$pkgdir"
-	install -D -m 755 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/shellex/LICENSE"
+	install -D -m 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
