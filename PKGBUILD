@@ -10,33 +10,50 @@ url="https://github.com/buserror/simavr"
 license=('GPL3')
 depends=('elfutils')
 makedepends=('avr-libc' 'git' 'freeglut' 'glu')
-source=("${pkgbase}::git+https://github.com/buserror/simavr.git#tag=v${pkgver}")
+source=("${pkgbase}::git+https://github.com/buserror/simavr.git")
 options=(!strip)
 md5sums=('SKIP')
 provides=(simavr)
 conflicts=(simavr)
 replaces=(simavr)
 
-build() {
-  cd "$srcdir/$pkgbase"
+pkgver()
+{
+	cd "$srcdir/$pkgbase"
+	git log -1 --tags --simplify-by-decoration --pretty="format:%d"|sed 's/[\(\) ]//g; s/.*tag:v//'
+}
 
-  make AVR_ROOT=/usr/avr RELEASE=1 \
-      CFLAGS="-Wall -Wextra -fPIC -O2 -std=gnu99 -Wno-sign-compare -Wno-unused-parameter" \
-      build-simavr build-examples
+prepare()
+{
+	cd "$srcdir/$pkgbase"
+
+	cat <<-EOF > .make.options
+	V=1
+	RELEASE=1
+	CPPFLAGS=-DCONFIG_SIMAVR_TRACE=1
+	EOF
+}
+
+build() {
+	cd "$srcdir/$pkgbase"
+
+	make AVR_ROOT=/usr/avr RELEASE=1 \
+		CFLAGS="-Wall -Wextra -fPIC -O2 -std=gnu99 -Wno-sign-compare -Wno-unused-parameter" \
+		build-simavr build-examples
 }
 
 package_simavr-asc() {
-  cd "$srcdir/$pkgbase"
-  make PREFIX="/usr" DESTDIR="$pkgdir/usr" install
+	cd "$srcdir/$pkgbase"
+	make PREFIX="/usr" DESTDIR="$pkgdir/usr" RELEASE=1 install
 }
 
 package_simavr-asc-examples() {
-  depends=(simavr-asc=$pkgver freeglut glu)
-  provides=(simavr-examples)
-  conflicts=(simavr-examples)
-  replaces=(simavr-examples)
-  cd "$srcdir/$pkgbase"
-  install -d $pkgdir/usr/share/doc
-  cp -r examples $pkgdir/usr/share/doc/$pkgbase
+	depends=(simavr-asc=$pkgver freeglut glu)
+	provides=(simavr-examples)
+	conflicts=(simavr-examples)
+	replaces=(simavr-examples)
+	cd "$srcdir/$pkgbase"
+	install -d $pkgdir/usr/share/doc
+	cp -r examples $pkgdir/usr/share/doc/$pkgbase
 }
 
