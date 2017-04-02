@@ -25,15 +25,18 @@ md5sums=('1fbc57d311bd113cd89780a42f9d2ced'
          'f179eaa5e6e6674b1853cf826fc33c3a'
          'ea9fb95c6027be5f0efb64fc7038f369'
          'f361c2d577f249d00581e73d5c4af175'
-         '06fe521608a2b4dd7766d7c6b48ae8ee')
+         'd97c19ff9cd0168953289583ac50a3d5')
 
 prepare() {
   cd "$srcdir"
   msg2 "Modifying transition configuration to use adl-based launchers"
   patch -p0 < transition.conf.patch
 
-  #msg2 "Modifying launcher to avoid crash on start up"
-  #patch -p0 < dofus.patch
+  msg2 "Modifying launcher to avoid crash on start up"
+  patch -p0 < dofus.patch
+
+  msg2 "Modifying launcher to use customized updater"
+  patch -p0 < dofus.desktop.patch
 }
 
 package() {

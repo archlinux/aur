@@ -4,8 +4,8 @@
  [Desktop Entry]
  Encoding=UTF-8
  Name=Dofus
--Exec=/opt/ankama/transition/transition --configuration_file /opt/ankama/dofus/transition.conf --application-id=ankama-dofus-transition
-+Exec=/usr/bin/transition --configuration_file /opt/ankama/dofus/transition.conf --application-id=ankama-dofus-transition
+-Exec=/opt/ankama/transition/transition --configuration_file /opt/ankama/dofus/transition.conf --application-id=ankama-dofus-transition --no-session-manager
++Exec=/usr/bin/transition --configuration_file /opt/ankama/dofus/transition.conf --application-id=ankama-dofus-transition --no-session-manager
  Icon=dofus
  Terminal=false
  Type=Application
