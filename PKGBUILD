@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=python-btrfs-heatmap
-pkgver=5
+pkgver=6
 pkgrel=1
 pkgdesc="Python Btrfs HeatMap"
 arch=('any')
