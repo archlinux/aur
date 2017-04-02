@@ -4,44 +4,54 @@
 # Contributor: Schtroumpfette <fpeterschmitt@voila.fr>
 
 pkgname=dofus
-pkgver=2.40
+pkgver=2.27
 pkgrel=1
 pkgdesc='A manga inspired, Massively Multiplayer Online Role-playing Game (MMORPG) for Adobe AIR .'
 arch=('i686' 'x86_64')
 url='http://www.dofus.com/'
 license=('custom:Dofus License')
 install='dofus.install'
+backup=('opt/ankama/dofus/transition.conf')
+depends=('ankama-transition>=3.10.1-3' 'adobe-air-sdk')
 depends_x86_64+=('lib32-gtk2' 'lib32-alsa-lib' 'lib32-alsa-plugins')
 depends_i686+=('gtk2' 'alsa-lib' 'alsa-plugins')
 
-source=('dofus.desktop')
-source_i686=('http://dl.ak.ankama.com/games/installers/dofus-x86.tar.gz')
-source_x86_64=('http://dl.ak.ankama.com/games/installers/dofus-amd64.tar.gz')
-md5sums=('fcde25db66f15fe137d0412562d28a51')
-md5sums_i686=('c885019d953b751d2e2177d6386cbce2')
-md5sums_x86_64=('877c5c9fdad16fb7386726a745f500fc')
+source=('http://dl.ak.ankama.com/games/linux/dofus-release-package.tar.gz'
+        'air-generic-launcher.sh'
+        'transition.conf.patch'
+        'dofus.patch'
+        'dofus.desktop.patch')
+md5sums=('1fbc57d311bd113cd89780a42f9d2ced'
+         'f179eaa5e6e6674b1853cf826fc33c3a'
+         'ea9fb95c6027be5f0efb64fc7038f369'
+         'f361c2d577f249d00581e73d5c4af175'
+         '06fe521608a2b4dd7766d7c6b48ae8ee')
+
+prepare() {
+  cd "$srcdir"
+  msg2 "Modifying transition configuration to use adl-based launchers"
+  patch -p0 < transition.conf.patch
+
+  #msg2 "Modifying launcher to avoid crash on start up"
+  #patch -p0 < dofus.patch
+}
 
 package() {
+  cd "$srcdir"
   msg2 'Installing main applications...'
-  installdir='opt/ankama/dofus'
-  install -d "$pkgdir/$installdir"
-  cp -r "$srcdir/Dofus/"* "$pkgdir/$installdir"
+  mv usr opt "$pkgdir/"
 
   msg2 'Setting up game file permissions...'
-  chgrp -R games "$pkgdir/$_installdir"
-  chmod -R g+w "$pkgdir/$_installdir"
+  _installdir="$pkgdir/opt/ankama/dofus"
+  chgrp -R games $_installdir
+  chmod -R g+w $_installdir
 
-  msg2 'Installing launcher...'
-  install -d "$pkgdir/usr/bin"
-  ln -s "/$installdir/Dofus" "$pkgdir/usr/bin/dofus"
-  install -Dm644 "$srcdir/dofus.desktop" "$pkgdir/usr/share/applications/dofus.desktop"
-  msg2 'Installing icons...'
-  install -d "$pkgdir/usr/share/icons/hicolor"
-  for icon in "$srcdir/Dofus/share/updater_data/icons/game_icon_"*'.png'
-  do
-    size="$(basename "$icon" | grep -o '[0-9]\+x[0-9]\+')"
-    install -Dm644 "$icon" "$pkgdir/usr/share/icons/hicolor/$size/dofus.png"
-  done
+  msg2 'Installing adl based launchers...'
+  install -Dm755 'air-generic-launcher.sh' "$_installdir/bin/air-generic-launcher.sh"
+  install -Dm755 'air-generic-launcher.sh' "$_installdir/share/reg/bin/air-generic-launcher.sh"
+
+  msg2 'Installing transition update file...'
+  ln -s '/opt/ankama/transition/' "$_installdir/transition"
 }
 
 # vim:set ts=2 sw=2 et:

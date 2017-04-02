@@ -1,0 +1,11 @@
+--- usr/share/applications/dofus.desktop.orig	2014-08-21 11:30:29.655737368 -0400
++++ usr/share/applications/dofus.desktop	2014-08-21 11:31:24.428773971 -0400
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Encoding=UTF-8
+ Name=Dofus
+-Exec=/opt/ankama/transition/transition --configuration_file /opt/ankama/dofus/transition.conf --application-id=ankama-dofus-transition
++Exec=/usr/bin/transition --configuration_file /opt/ankama/dofus/transition.conf --application-id=ankama-dofus-transition
+ Icon=dofus
+ Terminal=false
+ Type=Application

@@ -1,0 +1,11 @@
+--- opt/ankama/dofus/dofus.orig	2014-08-21 11:30:54.415603233 -0400
++++ opt/ankama/dofus/dofus	2014-08-21 11:31:02.955556968 -0400
+@@ -14,7 +14,7 @@
+ 	exit 1
+ fi
+ 
+-TRANSITION="/opt/ankama/transition/transition"
++TRANSITION="/usr/bin/transition"
+ if [ ! -f $TRANSITION ];then
+         TRANSITION=$(which transition) || $(which ankama-transition) || error "Transition is not installed on your system" && exit 1
+ fi
