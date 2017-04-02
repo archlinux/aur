@@ -1,7 +1,8 @@
+# Maintainer: Frantic1048 <archer@frantic1048.com>
 # Maintainer: Fredrick Brennan <admin@8chan.co>
 pkgname=waifu2x-git
-pkgver=r295.a5228c5
-pkgrel=2
+pkgver=r427.f89dd61
+pkgrel=1
 pkgdesc="Image rescaling and noise reduction using the power of convolutional neural networks"
 arch=('x86_64')
 url=""
@@ -16,9 +17,9 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/tanakamura/waifu2x-converter-cpp.git')
-noextract=()
-md5sums=('SKIP') #generate with 'makepkg -g'
+source=('git+https://github.com/tanakamura/waifu2x-converter-cpp.git' 'waifu2x.1.gz')
+noextract=('waifu2x.1.gz')
+md5sums=('SKIP' 'bc1a849b7bc63dfa8d54497fa1297a00') #generate with 'makepkg -g'
 gitreponame="waifu2x-converter-cpp"
 
 prepare() {
@@ -38,7 +39,7 @@ package() {
   ## Waifu2x's Makefile has no `install`
   ## Just copy its binary, and some files it require...
   make DESTDIR=$pkgdir install -C$gitreponame
-  install -D ../waifu2x.1.gz $pkgdir/usr/share/man/man1/waifu2x.1.gz
+  install -D ./waifu2x.1.gz $pkgdir/usr/share/man/man1/waifu2x.1.gz
 }
 
 # From https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
