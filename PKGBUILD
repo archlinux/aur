@@ -1,17 +1,60 @@
 # Maintainer: rilian-la-te <ria.freelander@gmail.com>
 
+_disable_mate=0
+_disable_xfce=0
+_disable_vala=0
+
+_opts=(
+	-DCMAKE_INSTALL_PREFIX=/usr
+	-DCMAKE_INSTALL_LIBDIR=lib
+)
+
+pkgname=(
+'vala-panel-appmenu-translations-git'
+)
+
+makedepends=('cmake' 'vala' 'gtk3' 'libwnck3' 'bamf>=0.5.0')
+
+if (("${_disable_mate}" == 0));then
+	_opts+=(-DENABLE_MATE=ON)
+	pkgname+=('vala-panel-appmenu-mate-git')
+	makedepends+=('mate-panel')
+	msg "Mate applet enabled"
+else
+	_opts+=(-DENABLE_MATE=OFF)
+fi
+
+if (("${_disable_xfce}" == 0));then
+	_opts+=(-DENABLE_XFCE=ON)
+	pkgname+=('vala-panel-appmenu-xfce-git')
+	makedepends+=('xfce4-panel>=4.11.2' 'xfconf')
+	msg "Xfce applet enabled"
+else
+	_opts+=(-DENABLE_XFCE=OFF)
+fi
+
+if (("${_disable_vala}" == 0));then
+	_opts+=(-DENABLE_VALAPANEL=ON)
+	pkgname+=('vala-panel-appmenu-valapanel-git')
+	makedepends+=('vala-panel-git')
+	msg "Vala Panel applet enabled"
+else
+	_opts+=(-DENABLE_VALAPANEL=OFF)
+fi
+
+msg "If you wan't to disable a applet edit the pkgbuild variables _disable_[applet]"
+
 _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
-pkgname=('vala-panel-appmenu-translations-git' 'vala-panel-appmenu-xfce-git' 'vala-panel-appmenu-valapanel-git' 'vala-panel-appmenu-mate-git')
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
-pkgver=0.3.0
-pkgrel=6
-pkgdesc="AppMenu (Global Menu) plugin for xfce4-panel and vala-panel"
+pkgver=0.3.4
+pkgrel=1
+pkgdesc="AppMenu (Global Menu) plugin"
 url="https://github.com/rilian-la-te/vala-panel-appmenu"
 arch=('i686' 'x86_64')
 license=('GPL3')
-makedepends=('cmake' 'vala' 'gtk3' 'bamf>=0.5.0' 'xfce4-panel>=4.11.2' 'xfconf' 'libwnck3' 'vala-panel-git' 'mate-panel')
+
 source=("git://github.com/rilian-la-te/${_pkgbase}.git"
         "git://github.com/rilian-la-te/${_cmakename}.git"
         "git://github.com/rilian-la-te/${_dbusmenuname}.git")
@@ -36,7 +79,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgbase}"
-  cmake ./ -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_XFCE=ON -DENABLE_VALAPANEL=ON -DCMAKE_INSTALL_LIBDIR=lib
+  cmake ./ "${_opts[@]}"
   make
 }
 
@@ -55,6 +98,7 @@ package_vala-panel-appmenu-xfce-git() {
   rm -rf "${pkgdir}/usr/lib/vala-panel"
   rm -rf "${pkgdir}/usr/lib/mate-panel"
   rm -rf "${pkgdir}/usr/share/mate-panel"
+  rm -rf "${pkgdir}/usr/share/dbus-1"
 }
 
 package_vala-panel-appmenu-valapanel-git() {
@@ -72,6 +116,7 @@ package_vala-panel-appmenu-valapanel-git() {
   rm -rf "${pkgdir}/usr/lib/xfce4"
   rm -rf "${pkgdir}/usr/share"
   rm -rf "${pkgdir}/usr/lib/mate-panel"
+  rm -rf "${pkgdir}/usr/share/dbus-1"
 }
 
 package_vala-panel-appmenu-mate-git() {
@@ -100,4 +145,3 @@ package_vala-panel-appmenu-translations-git() {
   cd "${srcdir}/${_pkgbase}"
   make -C "po" DESTDIR="${pkgdir}" install
 }
-
