@@ -3,19 +3,19 @@
 pkgname=intellij-jdk
 _major=8
 _minor=112
-_build=783.1
+_build=799.5
 pkgver=${_major}u${_minor}b${_build}
 pkgrel=1
 pkgdesc="OpenJDK Java 8 development kit with some fixes and enhancements by JetBrains"
 arch=('x86_64')
-url="https://intellij-support.jetbrains.com/hc/en-us/articles/206544879-Selecting-the-JDK-version-the-IDE-will-run-under"
+url="https://bintray.com/jetbrains/intellij-jdk"
 license=('GPL2')
 depends=( 'java-runtime-common'          'ca-certificates-java'              'java-environment-common' )
 provides=("java-runtime=$_major"         "java-runtime-headless=$_major"     "java-environment=$_major"
           "java-runtime-openjdk=$_major" "java-runtime-headless-jre=$_major" "java-environment-openjdk=$_major")
 _zipname="jbsdk${pkgver}_linux_x64.tar.gz"
 source=("https://dl.bintray.com/jetbrains/intellij-jdk/${_zipname}")
-sha256sums=('8bd5a01c7310a6dd3c44407e707085125a546f22a94075dccb93634d8a47cbac')
+sha256sums=('3e8af20efdc490f9918231d92fabb474e070d2bc50b481adc02b219984e8a188')
 
 package() {
 	rm "$srcdir/$_zipname"
