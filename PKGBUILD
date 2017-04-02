@@ -2,16 +2,16 @@
 
 _pkgname=lcurse
 pkgname=${_pkgname}-git
-pkgver=20170318_r90.043fcbf
+pkgver=20170402_r91.e0de42c
 pkgrel=1
 pkgdesc="Python script to have a curse compatible client for linux"
 arch=('any')
-url="https://github.com/Darexon/lcurse"
+url="https://github.com/ephraim/lcurse"
 license=('Unlicense')
 depends=('python' 'python-beautifulsoup4' 'python-pyqt5' 'python-lxml')
 makedepends=('git')
 provides=("${_pkgname}")
-source=('git+https://github.com/Darexon/lcurse.git')
+source=('git+https://github.com/ephraim/lcurse.git')
 md5sums=('SKIP')
 
 pkgver() {
