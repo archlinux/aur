@@ -25,6 +25,7 @@ pkgbase = mwptools-git
 	depends = pango
 	depends = libxml2
 	depends = vte3
+	depends = blackbox-tools-git
 	provides = mwptools
 	conflicts = mwptools
 	source = mwptools::git+https://github.com/stronnag/mwptools.git
