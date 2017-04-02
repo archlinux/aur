@@ -9,7 +9,7 @@ pkgbase = obs-linuxbrowser
 	makedepends = git
 	depends = obs-studio>=18.0.1
 	depends = libxrandr
-	source = https://github.com/bazukas/obs-linuxbrowser/releases/download/0.1.0/linuxbrowser0.1.1-obs18.0.1-64bit.tgz
+	source = https://github.com/bazukas/obs-linuxbrowser/releases/download/0.1.1/linuxbrowser0.1.1-obs18.0.1-64bit.tgz
 	sha256sums = b239af42564275c8cf0e35213de6a4ce76f392d213f9e059b268794dacfb166d
 
 pkgname = obs-linuxbrowser
