@@ -6,27 +6,25 @@
 
 pkgname=hunspell-ca
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Catalan hunspell dictionaries. Includes Valencian ca_ES-valencia"
 arch=(any)
 url="http://www.softcatala.org/corrector"
-license=('GPL')
+license=('GPL2' 'LGPL2')
 makedepends=('hunspell')
 optdepends=('hunspell:	the spell checking libraries and apps')
-source=('https://github.com/Softcatala/catalan-dict-tools/releases/download/v3.0.1/ca.3.0.1.oxt'
-		'https://github.com/Softcatala/catalan-dict-tools/releases/download/v3.0.1/ca-valencia.3.0.1.oxt')
-sha512sums=('db242848543dc0daf7be38ff0bade4aaa32e4049226f56b97f47479b18d740cb4df078bbb8f0c1187a309327282c69178991d1b42e9b3bee81229477c0676ed7'
-            '6581ae5048de23f7573ec81a46ffc58354bdea85edbdacd6c56d39d6791245b8b0a977da79788bd18caff812cda77b8145d277eee2a194da6d67386c5377ea2a')
+source=("https://github.com/Softcatala/catalan-dict-tools/releases/download/v${pkgver}/ca.${pkgver}-all.zip")
+sha256sums=('41293099b4a65544a15f7ac4cf7657d6a7c92fac8f4db70e072dc291d8f1f10e')
 
 package(){
 
     #copy hunspell
     cd "${srcdir}"
     install -dm755 "${pkgdir}"/usr/share/hunspell
-    cp -p ca.aff "${pkgdir}"/usr/share/hunspell/ca_ES.aff
-    cp -p ca.dic "${pkgdir}"/usr/share/hunspell/ca_ES.dic
-    cp -p ca-ES-valencia.aff     "${pkgdir}"/usr/share/hunspell/ca_ES-valencia.aff
-    cp -p ca-ES-valencia.dic     "${pkgdir}"/usr/share/hunspell/ca_ES-valencia.dic
+    cp -p catalan.aff "${pkgdir}"/usr/share/hunspell/ca_ES.aff
+    cp -p catalan.dic "${pkgdir}"/usr/share/hunspell/ca_ES.dic
+    cp -p catalan-valencia.aff "${pkgdir}"/usr/share/hunspell/ca_ES-valencia.aff
+    cp -p catalan-valencia.dic "${pkgdir}"/usr/share/hunspell/ca_ES-valencia.dic
     
     #alias hunspell - comment/delete if you don't want all these alias
     ca_ES_alias="ca_AD ca_FR ca_IT"
@@ -53,11 +51,9 @@ package(){
     Copyright_ca_alias="ca_AD ca_ES ca_ES-valencia ca_FR ca_IT"
     pushd "${pkgdir}"/usr/share/licenses/"${pkgname}"
         for lang in ${Copyright_ca_alias}; do
-            install -D -m644 "${srcdir}"/LLICENCIES-ca.txt Copyright_${lang}
+            install -D -m644 "${srcdir}"/LICENSE Copyright_${lang}/LLICENCIA
         done
-    popd
-
-    
+    popd 
 }
 
 # vim:set ts=4 sw=2 ft=sh et:

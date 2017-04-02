@@ -1,16 +1,15 @@
 pkgbase = hunspell-ca
 	pkgdesc = Catalan hunspell dictionaries. Includes Valencian ca_ES-valencia
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.softcatala.org/corrector
 	arch = any
-	license = GPL
+	license = GPL2
+	license = LGPL2
 	makedepends = hunspell
 	optdepends = hunspell: the spell checking libraries and apps
-	source = https://github.com/Softcatala/catalan-dict-tools/releases/download/v3.0.1/ca.3.0.1.oxt
-	source = https://github.com/Softcatala/catalan-dict-tools/releases/download/v3.0.1/ca-valencia.3.0.1.oxt
-	sha512sums = db242848543dc0daf7be38ff0bade4aaa32e4049226f56b97f47479b18d740cb4df078bbb8f0c1187a309327282c69178991d1b42e9b3bee81229477c0676ed7
-	sha512sums = 6581ae5048de23f7573ec81a46ffc58354bdea85edbdacd6c56d39d6791245b8b0a977da79788bd18caff812cda77b8145d277eee2a194da6d67386c5377ea2a
+	source = https://github.com/Softcatala/catalan-dict-tools/releases/download/v3.0.1/ca.3.0.1-all.zip
+	sha256sums = 41293099b4a65544a15f7ac4cf7657d6a7c92fac8f4db70e072dc291d8f1f10e
 
 pkgname = hunspell-ca
 
