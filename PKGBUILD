@@ -2,15 +2,15 @@
 # Contributor: Felix Hanley <felix@seconddrawer.com.au>
 
 pkgname=boolstuff
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=1
 pkgdesc="A C++ library that supports a few operations on boolean expression binary trees"
 arch=('i686' 'x86_64')
-url="http://perso.b2b2c.ca/sarrazip/dev/boolstuff.html"
+url="http://sarrazip.com/dev/boolstuff.html"
 license=('GPL')
 depends=('gcc-libs')
-source=(http://perso.b2b2c.ca/sarrazip/dev/$pkgname-$pkgver.tar.gz)
-md5sums=('fc8397d732f696d9f5e371bab2fb2c14')
+source=("https://perso.b2b2c.ca/~sarrazip/dev/boolstuff-$pkgver.tar.gz")
+sha256sums=('c07211da584eb78501a2838e4fe19ee284acb6989dd89db7f86f88c3fdb21e83')
 
 build() {
   cd $pkgname-$pkgver
@@ -20,7 +20,7 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  make prefix=$pkgdir/usr install
+  make prefix="$pkgdir"/usr install
 }
 
 # vim:set ts=2 sw=2 et:
