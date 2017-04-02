@@ -2,10 +2,10 @@
 #Contributor: Christian Hesse <mail@eworm.de>
 
 pkgname=otter-browser-git
-pkgver=0.9.12.r713.g1a813081
+pkgver=0.9.12.r727.g83e8e4d1
 pkgrel=1
 pkgdesc='Browser aiming to recreate the best aspects of the classic Opera (12.x) UI using Qt5 - git checkout'
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='http://otter-browser.org/'
 license=('GPL3')
 provides=('otter-browser')
