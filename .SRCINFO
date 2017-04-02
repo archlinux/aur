@@ -1,7 +1,8 @@
 pkgbase = shellex
 	pkgdesc = zsh/urxvt based program launcher
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
+	url = https://github.com/Merovius/shellex/blob/master/doc/autoresize.txt
 	arch = i686
 	arch = x86_64
 	license = BSD

@@ -1,7 +1,10 @@
+#Maintainer: Maarten de Vries <maarten@de-vri.es>
+
 pkgname=shellex
 pkgdesc='zsh/urxvt based program launcher'
+url='https://github.com/Merovius/shellex/blob/master/doc/autoresize.txt'
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 license=(BSD)
 depends=(
