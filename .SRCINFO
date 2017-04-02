@@ -1,6 +1,6 @@
 pkgbase = latte-dock
 	pkgdesc = A dock based on plasma frameworks
-	pkgver = 0.5.98
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/psifidotos/Latte-Dock
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = latte-dock
 	depends = kdeclarative
 	depends = plasma-framework
 	depends = plasma-desktop
-	source = latte-dock-0.5.98.tar.gz::https://github.com/psifidotos/Latte-Dock/archive/0.5.98.tar.gz
-	sha256sums = d4594ac9dd70ad42658670e7d66506b653dddd3d381c5941eb718b786a6e9661
+	source = latte-dock-0.6.0.tar.gz::https://github.com/psifidotos/Latte-Dock/archive/v0.6.0.tar.gz
+	sha256sums = ecc573e999e0551e96baaae1ccf5fce7093281f958554e2e42195a1a57dc07af
 
 pkgname = latte-dock
 
