@@ -3,10 +3,12 @@ _info() {
     echo "Data files for GeographicLib (gravity and magnetic models)"
     echo "can be downloaded by scripts installed in /usr/bin :"
     echo "  geographiclib-get-geoids"
+    echo "  geographiclib-get-gravity"
     echo "  geographiclib-get-magnetic"
     echo "For details see:"
-    echo "  http://geographiclib.sourceforge.net/html/gravity.html"
-    echo "  http://geographiclib.sourceforge.net/html/magnetic.html"
+    echo "  https://geographiclib.sourceforge.io/html/geoid.html.html"
+    echo "  https://geographiclib.sourceforge.net/html/gravity.html"
+    echo "  https://geographiclib.sourceforge.net/html/magnetic.html"
     echo "----------------------------------------------------------"
 }
 
