@@ -8,7 +8,7 @@
 pkgbase=dbus-selinux
 pkgname=(dbus-selinux dbus-docs-selinux)
 pkgver=1.10.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(i686 x86_64)
@@ -17,8 +17,10 @@ groups=('selinux')
 depends=(libsystemd-selinux expat)
 makedepends=(systemd-selinux xmlto docbook-xsl python yelp-tools doxygen git audit libselinux)
 _commit=8b582cb10d7cf00af7a70496aec48af24edc542b  # tags/dbus-1.10.16^0
-source=("git+https://anongit.freedesktop.org/git/dbus/dbus#commit=$_commit")
-sha256sums=('SKIP')
+source=("git+https://anongit.freedesktop.org/git/dbus/dbus#commit=$_commit"
+        'dbus.sysusers')
+sha256sums=('SKIP'
+            '1ce179ba3a92ad34941d8ac7f53d01d42cbc91d43ada1136492b78c10b5d693d')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simon.mcvittie@collabora.co.uk>
               '3C8672A0F49637FE064AC30F52A43A1E4B77B059') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
@@ -65,6 +67,9 @@ package_dbus-selinux() {
   rm -r "$pkgdir/var/run"
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgbase/COPYING"
+
+  # systemd-sysusers
+  install -Dm644 "$srcdir/dbus.sysusers" "$pkgdir/usr/lib/sysusers.d/dbus.conf"
 
   # Split docs
   mv "$pkgdir/usr/share/doc" "$srcdir"
