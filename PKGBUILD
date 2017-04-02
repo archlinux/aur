@@ -10,8 +10,8 @@ depends=('fuse' 'java-runtime')
 changelog=ChangeLog
 source=("https://sourceforge.net/projects/gdatafs/files/gdatafs $pkgver.tar.gz"
         'gdatafs.sh')
-md5sums=('77e5207f1b2cfb72307087ebceb7b801'
-         '51417a54871ac6e1a3917ba7ada128a4')
+sha512sums=('172787c0d713ed7923786e296d9a8a01b425cc47c9b1612f7a133207f542b35986556d866998110a662bf7e3c9a1cb14da8cc6660ff0ad6f57f55d9bfcae1152'
+            'ef6cd615e6f3436a954f4fa59ab75d9f008228f2deb0841f344d1693c6b5df510388b3d7771d49a11591ebeb03ffe175f30c7a3489011b645d38fa72d483d8f1')
 arch=('any')
 
 package() {
