@@ -2,8 +2,8 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname="cups-nosystemd"
-pkgver=2.2.2
-pkgrel=2
+pkgver=2.2.3
+pkgrel=1
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -39,7 +39,7 @@ source=(https://github.com/apple/cups/releases/download/v${pkgver}/cups-${pkgver
 	cups-1.6.0-fix-install-perms.patch
 	cups-1.6.2-statedir.patch
 	)
-sha256sums=('f589bb7d5d1dc3aa0915d7cf2b808571ef2e1530cd1a6ebe76ae8f9f4994e4f6'
+sha256sums=('66701fe15838f2c892052c913bde1ba106bbee2e0a953c955a62ecacce76885f'
             '87cd833e7c07a36298341e35d5ce0534ce68fdf76ce3e9eda697e5455b963d1b'
             'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
