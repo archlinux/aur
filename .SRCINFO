@@ -1,17 +1,16 @@
 pkgbase = sdlhana
 	pkgdesc = SDL-based Hanafuda game
 	pkgver = 0.34
-	pkgrel = 3
+	pkgrel = 4
 	url = http://sdlhana.nongnu.org
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = gendesk
 	depends = sdl
 	depends = gcc-libs
 	source = https://nongnu.uib.no/sdlhana/sdlhana-0.34.tar.bz2
-	source = sdlhana.desktop
 	sha256sums = 13dfdf4170c971930b2028bff35b4725f55ae5e1aebc93b94c7582e9fb97d511
-	sha256sums = 88fb4117196500c4284f3717c0b748857e57ebe93ab8884a2a4a3bd4ac047fed
 
 pkgname = sdlhana
 
