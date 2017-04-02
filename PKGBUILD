@@ -2,7 +2,7 @@
 
 # This package is not named -git because there are no releases for xsettingsd.
 pkgname=xsettingsd
-pkgver=r79
+pkgver=r82
 pkgrel=1
 epoch=1
 pkgdesc="xsettingsd is a daemon that implements the XSETTINGS specification."
