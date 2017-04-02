@@ -4,8 +4,8 @@
 # Contributor: Schtroumpfette <fpeterschmitt@voila.fr>
 
 pkgname=dofus
-pkgver=2.27
-pkgrel=1
+pkgver=2.40
+pkgrel=5
 pkgdesc='A manga inspired, Massively Multiplayer Online Role-playing Game (MMORPG) for Adobe AIR .'
 arch=('i686' 'x86_64')
 url='http://www.dofus.com/'
