@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/themadinventor/esptool"
 license=('GPL2')
 makedepends=('git')
-depends=('python2 python2-pyserial')
+depends=('python2' 'python2-pyserial')
 source=(esptool::git+https://github.com/themadinventor/esptool)
 md5sums=('SKIP')
 
