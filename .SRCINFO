@@ -36,6 +36,7 @@ pkgbase = root-extra-dev
 	provides = root-extra
 	provides = root-extra-dev
 	conflicts = root
+	conflicts = root-dev
 	conflicts = root-extra
 	options = !emptydirs
 	source = https://root.cern.ch/download/root_v6.09.02.source.tar.gz
