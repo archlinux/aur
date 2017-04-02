@@ -8,7 +8,7 @@
 _emoji_res_commit="62fcc728a12a4d5b41049e6aadb5e6f039c28f8d"
 pkgname=telegram-desktop-systemqt-notoemoji
 pkgver=1.0.27
-pkgrel=1
+pkgrel=2
 pkgdesc='Experimental build of Telegram Desktop (using system Qt, emojis replaced with those from Noto Color Emoji)'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
@@ -84,6 +84,7 @@ prepare() {
 }
 
 build() {
+    export LANG=en_US.UTF-8
     export GYP_DEFINES="TDESKTOP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME"
     cd "$srcdir/tdesktop"
     export EXTRA_CPPFLAGS="-DTDESKTOP_DISABLE_AUTOUPDATE -DTDESKTOP_DISABLE_CRASH_REPORTS -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME"

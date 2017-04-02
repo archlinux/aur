@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop-systemqt-notoemoji
 	pkgdesc = Experimental build of Telegram Desktop (using system Qt, emojis replaced with those from Noto Color Emoji)
 	pkgver = 1.0.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://desktop.telegram.org/
 	install = telegram-desktop.install
 	arch = i686
