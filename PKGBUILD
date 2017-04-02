@@ -11,7 +11,6 @@ arch=('i686' 'x86_64')
 url="http://home.thep.lu.se/Pythia/"
 license=('GPL')
 depends=('bash' 'boost' 'boost-libs')
-provides=('pythia')
 conflicts=('pythia')
 source=("http://home.thep.lu.se/~torbjorn/${pkgname}/${_pkgid}.tgz"
 'pythia.sh')
