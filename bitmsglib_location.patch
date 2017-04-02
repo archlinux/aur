@@ -1,16 +1,15 @@
 diff --git a/src/proofofwork.py b/src/proofofwork.py
-index 701f34b..4bcaac6 100644
+index 493b8b0..00c3b22 100644
 --- a/src/proofofwork.py
 +++ b/src/proofofwork.py
-@@ -223,7 +223,10 @@ if "win32" == sys.platform:
+@@ -265,7 +265,9 @@ def init():
+                 bso = None
+     else:
+         try:
+-            bso = ctypes.CDLL(os.path.join(paths.codePath(), "bitmsghash", bitmsglib))
++            # Modified by Arch Linux PKGBUILD
++            # https://aur.archlinux.org/packages/pybitmessage-dev-git/
++            bso = ctypes.CDLL(os.path.join("/usr/lib/pybitmessage-dev-git", bitmsglib))
+             logger.info("Loaded C PoW DLL %s", bitmsglib)
+         except:
              bso = None
- else:
-     try:
--        bso = ctypes.CDLL(os.path.join(shared.codePath(), "bitmsghash", bitmsglib))
-+
-+        # Modified by Arch Linux PKGBUILD
-+        # https://aur.archlinux.org/packages/pybitmessage-dev-git/
-+        bso = ctypes.CDLL(os.path.join("/usr/lib/pybitmessage-dev-git", bitmsglib))
-         logger.info("Loaded C PoW DLL %s", bitmsglib)
-     except:
-         bso = None
