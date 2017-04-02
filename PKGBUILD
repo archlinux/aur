@@ -28,7 +28,7 @@
 
 pkgname=catalyst-total-hd234k
 pkgver=13.1
-pkgrel=40
+pkgrel=41
 pkgdesc="AMD/ATI legacy drivers. catalyst-dkms+ catalyst-utils + lib32-catalyst-utils"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
@@ -328,8 +328,8 @@ package() {
       patch -Np1 -i ../makesh-dont-check-gcc-version.patch
       patch -Np1 -i ../makesh-src_file.patch
       patch -Np1 -i ../4.7-cpu_has_pge-hd234k.patch
-      patch -Np1 -i ../4.9_over_4.6-arch-get_user_pages_remote.patch
-      patch -Np1 -i ../4.10-arch-sling00-virtual_address-acpi_get_table_with_size.patch
+      patch -Np1 -i ../4.9_over_4.6-arch-get_user_pages_remote-hd234k.patch
+      patch -Np1 -i ../4.10-arch-sling00-virtual_address-acpi_get_table_with_size-hd234k.patch
 
 
     # Prepare modules source files
