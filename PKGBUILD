@@ -33,7 +33,7 @@ validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 pkgdesc="Kernel for Linode servers"
-depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
+depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7' 'grub')
 provides=(linux)
 conflicts=(grub-legacy)
 backup=(etc/mkinitcpio.d/${pkgname}.preset)
