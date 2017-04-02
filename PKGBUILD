@@ -10,7 +10,8 @@ url='https://github.com/stronnag/mwptools.git'
 license=('GPLv3')
 makedepends=('git')
 depends=('ruby' 'gtk3' 'gdl' 'libchamplain' 'clutter' 'vala' 'bluez'
- 'espeak' 'libgudev' 'gstreamer' 'cairo' 'pango' 'libxml2' 'vte3')
+ 'espeak' 'libgudev' 'gstreamer' 'cairo' 'pango' 'libxml2' 'vte3'
+ 'blackbox-tools-git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url")
