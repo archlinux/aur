@@ -8,6 +8,6 @@ Type=Application
 Icon=preferences-desktop-theme
 Categories=GNOME;GTK;Settings;DesktopSettings;X-XFCE-SettingsDialog;X-XFCE-PersonalSettings;
 Keywords=color;gtk;highlight;theme;widget;numix;
-StartupWMClass=__main__.py
+StartupWMClass=oomox
 X-GNOME-Gettext-Domain=oomox
 X-Desktop-File-Install-Version=0.22
