@@ -12,7 +12,7 @@ source=(
     "https://github.com/bazukas/obs-linuxbrowser/releases/download/${pkgver}/linuxbrowser${pkgver}-obs18.0.1-64bit.tgz"
 )
 sha256sums=(
-    "b239af42564275c8cf0e35213de6a4ce76f392d213f9e059b268794dacfb166d"
+    "97dfc8b70451f34064f569d9cf325d494e73c454d7b9c8c1f661464507ed5a10"
 )
 package() {
 	mkdir -p $pkgdir/$HOME/.config/obs-studio/plugins/obs-linuxbrowser
