@@ -11,13 +11,13 @@
 
 pkgbase=linux-xanmod
 _srcname=linux
-_tag=4.10.1-xanmod3
-pkgver=4.10.1
-pkgrel=3
+_tag=4.10.8-xanmod10
+pkgver=4.10.8
+pkgrel=10
 arch=('x86_64')
 url="http://www.xanmod.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf' 'linux-firmware' 'mkinitcpio')
 options=('!strip')
 source=("git+https://github.com/xanmod/linux.git#tag=$_tag"
         # the main kernel config files
