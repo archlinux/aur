@@ -1,6 +1,6 @@
 # Maintainer: Mathias Bragagia <mathias.bragagia@gmail.com>
 pkgname=kana-p-git
-pkgver=r157.1d36445
+pkgver=r166.24afe44
 pkgrel=1
 pkgdesc="Lite Archlinux complete desktop"
 arch=('any')
@@ -125,8 +125,8 @@ depends=(
 	'srandrd'
 
 	'lightdm'
-	'lightdm-webkit-greeter'
-	'lightdm-webkit-theme-bevel-git'
+	'lightdm-webkit2-greeter'
+	'lightdm-webkit2-theme-bevel-git'
 	'i3lock-wrapper'
 
 	'compton'
