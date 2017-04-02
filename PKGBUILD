@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=wineqq-longene
 pkgver=20151109
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="Longene Wine QQ 7.8."
 arch=('i686' 'x86_64')

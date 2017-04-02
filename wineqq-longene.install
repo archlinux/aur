@@ -4,3 +4,8 @@ post_install() {
     chmod +x /opt/longene/qq/firstrun
     tar -jxvf /opt/longene/qq/wine-lib.tar.bz2
 }
+
+post_remove() {
+	rm -f /usr/bin/qq
+	rm -rf /opt/longene
+}
