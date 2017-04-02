@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=watsup
-pkgver=3.6
+pkgver=3.7
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('xdg-utils')
@@ -10,7 +10,7 @@ license=('GPL3')
 pkgdesc="Showing some system status informations"
 url="http://www.kornelix.com/watsup"
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-md5sums=('a9776507ea07079ad40c04a3a2b542ee')
+md5sums=('02607506ad8f716678c77bd703ba5e6e')
 
 build() {
   cd ${srcdir}/$pkgname-$pkgver
@@ -20,8 +20,6 @@ build() {
 
 package() { 
   cd $srcdir/$pkgname-$pkgver
-  install -Dm644 desktop \
-    $pkgdir/usr/share/applications/$pkgname.desktop
+  install -d "$pkgdir"/usr/share/icons
   make DESTDIR=$pkgdir install
-  rm $pkgdir/usr/share/doc/$pkgname/$pkgname.man
 }
