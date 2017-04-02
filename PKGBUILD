@@ -31,6 +31,7 @@ sha256sums=('SKIP'
 
 prepare() {
     cd "$srcdir/tdesktop"
+    git submodule update --init
     git apply "../aur-build-fixes.patch"
 }
 
