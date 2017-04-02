@@ -1,9 +1,8 @@
 pkgbase = doublecmd-gtk2-svn
 	pkgdesc = Twin-panel (commander-style) file manager (GTK)
-	pkgver = r7114
+	pkgver = r7478
 	pkgrel = 1
 	url = http://doublecmd.sourceforge.net/
-	install = doublecmd-svn.install
 	arch = i686
 	arch = x86_64
 	license = GPL2

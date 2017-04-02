@@ -5,14 +5,13 @@
 
 _pkgname="doublecmd"
 pkgname=("${_pkgname}-gtk2-svn")
-pkgver="r7114"
+pkgver="r7478"
 pkgrel="1"
 pkgdesc="Twin-panel (commander-style) file manager (GTK)"
 url="http://doublecmd.sourceforge.net/"
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('gtk2')
-install="${_pkgname}-svn.install"
 makedepends=('lazarus' 'fpc' 'subversion')
 optdepends=(
     'lua51: scripting'
