@@ -23,8 +23,9 @@ optdepends=(
     'xorg-xrdb: for the `xresources` theme'
     'imagemagick: for icon theme generation'
     'inkscape: for icon theme generation'
-    'gksu: for applying Spotify theme from GUI'
     'gnome-colors-common-icon-theme: for using the generated icon theme'
+    'breeze-icons: more fallback icons'
+    'gksu: for applying Spotify theme from GUI'
 )
 provides=('oomox')
 conflicts=('oomox-git')
@@ -43,7 +44,7 @@ md5sums=('d9918883bfd82193d294b04f5d52b682'
          '57cfcc4141ce6e346da7ab8bab411b14'
          'f01aa2280f8e03d6244fe6284c44a03b'
          'a9e990b0c4c0ee3be2f195c9c25d36e6'
-         '44b3eb47786551b2f2bf805d33935025')
+         '87f09004fa77db669072e8e6decf5618')
 
 package() {
     make -C ${srcdir}/${pkgname}-${pkgver} -f po.mk install
