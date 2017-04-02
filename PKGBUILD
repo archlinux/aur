@@ -5,14 +5,17 @@
 
 pkgname=telegram-desktop-systemqt
 pkgver=1.0.27
-pkgrel=1
+pkgrel=2
 pkgdesc='Experimental build of Telegram Desktop (using system Qt)'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('ffmpeg' 'hicolor-icon-theme' 'minizip' 'openal' 'qt5-base' 'qt5-imageformats')
-makedepends=('cmake' 'libappindicator-gtk3' 'dee' 'git' 'gyp-git' 'libexif' 'libva' 'libwebp' 'mtdev' 'python' 'python2')
-optdepends=('libappindicator-gtk3: AppIndicator tray icon')
+makedepends=('cmake' 'libappindicator-gtk2' 'dee' 'git' 'gyp-git' 'libexif' 'libva' 'libwebp' 'mtdev' 'python' 'python2')
+optdepends=(
+    'libappindicator-gtk2: AppIndicator tray icon'
+    'libappindicator-gtk3: AppIndicator tray icon'
+)
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
 install="telegram-desktop.install"
