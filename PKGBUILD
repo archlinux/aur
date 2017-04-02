@@ -1,26 +1,33 @@
-# Maintainer: Roman Beslik <rabeslik@gmail.com>
+# Maintainer: Roman Beslik <me@beroal.in.ua>
 pkgname=azardi
-pkgver=25.0
+pkgver=43.1
 pkgrel=1
 arch=("x86_64" "i686")
 url="http://azardi.infogridpacific.com/"
 makedepends=("deb2targz")
 pkgdesc="The AZARDI book reader by Infogrid Pacific Pte Ltd."
 if [ "$CARCH" = "x86_64" ]; then
-	_arch_file_name=amd64
-	sha512sums=(c8286aad8cab7b38d3b421bfe02ff24fd4785bf5f315a9cb1693a50031bfd4720260cf6f7c19e6b9746691dd43f233ee1fcadefe8e5c1ffcc420ecc92f943f8c)
+	_arch_file_name="amd64"
+	_azardi_deb_hash="3e4ac185f3a975f9ab335e3fe5fa86d693e61af50aba4b3024f06b1c021e119a03728a2b2dbfe1fece394fb4062daed8f4925b25dc18a607762e9360963895de"
 fi
 if [ "$CARCH" = "i686" ]; then
-	_arch_file_name=i386
-	sha512sums=(1da574118b6aca40ea8878df07f295e5b80d10ccaa46da392c4be4631009736feb4623fe35d639f0a1846544b9fa69d976295e2c105e9edd0a2e08a64796717c)
+	_arch_file_name="i386"
+	_azardi_deb_hash="dcc4e5d025dfd4b508d4dd48261cf391839efee99f0b296d01d45a48193256a1cfad44f98e05c31880d11f41f6b0865cb8505c76d2e8f431744e8578f3c09586"
 fi
-_deb_file_name=AZARDI_${pkgver}_20131113_${_arch_file_name}
-source=(https://azardi-download.s3.amazonaws.com/${_deb_file_name}.deb)
+sha512sums=("$_azardi_deb_hash"
+	"bee8db7a3f93387c6a529db26aa9a5351568d72aa6bc64d8b6ce061bfeaf6a7c73bfacb4b1cb63ca6d6924a83e49e6687f4e42fcacaab2eb845582df6ba280ea")
+_deb_file_name="AZARDI_${pkgver}_20160728_$_arch_file_name"
+source=("https://azardi-download.s3.amazonaws.com/$_deb_file_name.deb"
+	"license.html::http://azardi.infogridpacific.com/azardi-license.html")
 license=("custom:azardi")
-install=_.install
+install="_.install"
 build() {
-	deb2targz $srcdir/${_deb_file_name}.deb
+	deb2targz "$srcdir/$_deb_file_name.deb"
 }
 package() {
-	tar -xzvf $srcdir/${_deb_file_name}.tar.gz -C $pkgdir
+	cd "$srcdir"
+	FILE_NAME=$(find . -name "$_deb_file_name.tar*")
+	tar --extract --auto-compress "--file=$FILE_NAME" -C "$pkgdir"
+	# /opt/infogridpacific/azardi/LICENSE is the Mozilla license. WTF?
+	install --mode=0644 -D "--target-directory=$pkgdir/usr/share/licenses/$pkgname" "$srcdir/license.html"
 }
