@@ -1,6 +1,6 @@
 pkgbase = keme
 	pkgdesc = Open source accounting application
-	pkgver = 3.0.3.0
+	pkgver = 3.0.3.4
 	pkgrel = 1
 	url = http://keme.sourceforge.net
 	install = keme.install
@@ -13,12 +13,12 @@ pkgbase = keme
 	depends = sqlite
 	optdepends = postgresql: for PostgreSQL Database
 	optdepends = mysql: for MySQL Database
-	optdepends = kdegraphics-okular: for document viewer
+	optdepends = okular: for document viewer
 	optdepends = kile: for Tex/Latex frontend
-	source = keme-3.0.3.0.tar.gz::http://sourceforge.net/projects/keme/files/KEME-Contabilidad/3.0.3.0/keme5-3.0.3.0.tar.gz/download
+	source = keme-3.0.3.4.tar.gz::http://sourceforge.net/projects/keme/files/KEME-Contabilidad/3.0.3.4/keme5_3.0.3.4.tar.gz/download
 	source = keme.install
 	source = desktop.patch
-	md5sums = 5c92c1701739eb6dba7b5da964440531
+	md5sums = 32337c8c731e64a97fd6360ddd088bfe
 	md5sums = 5edc6b36dfb458f7546603faef67b01a
 	md5sums = fae9794370e771dd03e94ec084b5ce98
 
