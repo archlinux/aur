@@ -4,9 +4,12 @@
 # Contributor: Thomas Dziedzic < gostrc at gmail dot com >
 # Contributor: Sebastian Voecking < voeck at web dot de >
 
-pkgname=root
+pkgname=root-dev
+_pkgname=root
 pkgver=6.09.02
 pkgrel=1
+provides=('root' 'root-dev')
+conflicts=('root' 'root-extra' 'root-extra-dev')
 pkgdesc='C++ data analysis framework and interpreter from CERN - development version.'
 arch=('i686' 'x86_64')
 url='http://root.cern.ch'
@@ -49,7 +52,7 @@ sha256sums=('5348096084adea514297050884baa33f6cf6fd9e91e83e9967c6f07528588639'
             '3c45b03761d5254142710b7004af0077f18efece7c95511910140d0542c8de8a'
             'a8db29f6acf32659daca8de35481b25ed847b2182e6033940f3568f3d1ad22fb')
 prepare() {
-    cd "${pkgname}-${pkgver}"
+    cd "${_pkgname}-${pkgver}"
 
     # msg2 'Applying patches...'
     # Fix issues until upstream releases arrive
@@ -66,7 +69,7 @@ build() {
     CFLAGS="${CFLAGS} -pthread" \
     CXXFLAGS="${CXXFLAGS} -pthread" \
     LDFLAGS="${LDFLAGS} -pthread -Wl,--no-undefined" \
-    cmake -C "${srcdir}/settings.cmake" "${srcdir}/${pkgname}-${pkgver}"
+    cmake -C "${srcdir}/settings.cmake" "${srcdir}/${_pkgname}-${pkgver}"
 
     msg2 'Compiling...'
     make ${MAKEFLAGS}
@@ -85,7 +88,7 @@ package() {
     install -D -m644 "${srcdir}/root.xml" \
         "${pkgdir}/usr/share/mime/packages/root.xml"
 
-    install -D -m644 "${srcdir}/${pkgname}-${pkgver}/build/package/debian/root-system-bin.desktop.in" \
+    install -D -m644 "${srcdir}/${_pkgname}-${pkgver}/build/package/debian/root-system-bin.desktop.in" \
         "${pkgdir}/usr/share/applications/root-system-bin.desktop"
     # replace @prefix@ with /usr for the desktop
     sed -e 's_@prefix@_/usr_' -i "${pkgdir}/usr/share/applications/root-system-bin.desktop"
@@ -93,7 +96,7 @@ package() {
     # fix python env call
     sed -e 's/@python@/python/' -i "${pkgdir}/usr/lib/root/cmdLineUtils.py"
 
-    install -D -m644 "${srcdir}/${pkgname}-${pkgver}/build/package/debian/root-system-bin.png" \
+    install -D -m644 "${srcdir}/${_pkgname}-${pkgver}/build/package/debian/root-system-bin.png" \
         "${pkgdir}/usr/share/icons/hicolor/48x48/apps/root-system-bin.png"
 
     msg2 'Updating system config...'

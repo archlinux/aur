@@ -1,4 +1,4 @@
-pkgbase = root
+pkgbase = root-dev
 	pkgdesc = C++ data analysis framework and interpreter from CERN - development version.
 	pkgver = 6.09.02
 	pkgrel = 1
@@ -30,6 +30,11 @@ pkgbase = root
 	optdepends = blas: Optional extensions to TMVA
 	optdepends = gcc-fortran: Enable the Fortran components of ROOT
 	optdepends = tcsh: Legacy CSH support
+	provides = root
+	provides = root-dev
+	conflicts = root
+	conflicts = root-extra
+	conflicts = root-extra-dev
 	options = !emptydirs
 	source = https://root.cern.ch/download/root_v6.09.02.source.tar.gz
 	source = root.install
@@ -44,5 +49,5 @@ pkgbase = root
 	sha256sums = 3c45b03761d5254142710b7004af0077f18efece7c95511910140d0542c8de8a
 	sha256sums = a8db29f6acf32659daca8de35481b25ed847b2182e6033940f3568f3d1ad22fb
 
-pkgname = root
+pkgname = root-dev
 
