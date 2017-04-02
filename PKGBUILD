@@ -2,7 +2,7 @@
 # Maintainer: Prurigro
 pkgname=gdatafs
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='FUSE implementation that mounts Picasa, YouTube, and Google Docs on your filesystem'
 url='http://gdatafs.sourceforge.net'
 license=('GPL')

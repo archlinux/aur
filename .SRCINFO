@@ -1,7 +1,7 @@
 pkgbase = gdatafs
 	pkgdesc = FUSE implementation that mounts Picasa, YouTube, and Google Docs on your filesystem
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gdatafs.sourceforge.net
 	changelog = ChangeLog
 	arch = any
