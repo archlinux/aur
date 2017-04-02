@@ -4,9 +4,9 @@ pkgname=flrig-docs
 _pkgname=flrig
 __pkgname=FLRig
 _author=fldigi
-pkgver=1.3.28
+pkgver=1.3.29
 pkgrel=1
-pkgdesc="Documentation/help when using FLRIG w/out i-net access"
+pkgdesc="Documentation/help when using FLRIG w/out i-net access - Ham Radio"
 arch=('any')
 url="http://www.w1hkj.com/flrig-help"
 license=('GPL')
@@ -19,7 +19,8 @@ source=("$_pkgname::git://git.code.sf.net/p/$_author/$_pkgname#branch=master")
 pkgver() {
 	cd $_pkgname
 
-	git describe --tags | sed 's/^v//g'
+	git describe --tags | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/^v//g' | sed 's/-2//g'
+#	git describe --tags | sed 's/^v//g'
 }
 
 build() {
