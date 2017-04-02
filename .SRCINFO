@@ -1,6 +1,6 @@
 pkgbase = lbench
 	pkgdesc = Simple Linux multithread benchmarking tool
-	pkgver = 3.2
+	pkgver = 3.3
 	pkgrel = 1
 	url = http://www.kornelix.net/lbench/lbench.html
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = lbench
 	depends = gdk-pixbuf2
 	depends = pango
 	depends = lm_sensors
-	source = http://www.kornelix.net/downloads/tarballs/lbench-3.2.tar.gz
-	md5sums = c49af273926b5f9711b92c5d89d7a723
+	source = http://www.kornelix.net/downloads/tarballs/lbench-3.3.tar.gz
+	md5sums = 6e9df803b250330725d9d4bcda747a41
 
 pkgname = lbench
 
