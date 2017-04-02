@@ -1,0 +1,9 @@
+[Unit]
+Description=Reddit Placebot
+
+[Service]
+ExecStart=/usr/bin/reddit-placebot
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
