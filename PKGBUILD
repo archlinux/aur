@@ -3,7 +3,7 @@
 
 _pkgname=rebar3
 pkgname=${_pkgname}-git
-pkgver=3404.c11cf0b
+pkgver=3769.4bac0ed2
 pkgrel=1
 pkgdesc="A sophisticated build-tool for Erlang projects that follows OTP principles."
 arch=('any')
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  ./bootstrap
+  HOME="." ./bootstrap
 }
 
 package() {
