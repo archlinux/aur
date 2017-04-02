@@ -5,7 +5,7 @@
 
 pkgname=dofus
 pkgver=2.40
-pkgrel=4
+pkgrel=3
 pkgdesc='A manga inspired, Massively Multiplayer Online Role-playing Game (MMORPG) for Adobe AIR .'
 arch=('i686' 'x86_64')
 url='http://www.dofus.com/'
@@ -41,7 +41,7 @@ package() {
   for icon in "$srcdir/Dofus/share/updater_data/icons/game_icon_"*'.png'
   do
     size="$(basename "$icon" | grep -o '[0-9]\+x[0-9]\+')"
-    install -Dm644 "$icon" "$pkgdir/usr/share/icons/hicolor/$size/apps/dofus.png"
+    install -Dm644 "$icon" "$pkgdir/usr/share/icons/hicolor/$size/dofus.png"
   done
 }
 
