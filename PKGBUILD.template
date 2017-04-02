@@ -2,7 +2,7 @@
 
 pkgname=terraform
 pkgver=${version}
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool for building, changing, and versioning infrastructure safely and efficiently"
 url='http://www.terraform.io/'
 arch=('i686' 'x86_64')
@@ -35,5 +35,5 @@ package() {
 
   cd "${{srcdir}/src/${{_gourl}/${{pkgname}"
   # Zsh completion
-  install -D contrib/zsh-completion/_terraform $pkgdir/usr/share/zsh/site-functions/_terraform
+  install -D contrib/zsh-completion/_terraform ${{pkgdir}/usr/share/zsh/site-functions/_terraform
 }
