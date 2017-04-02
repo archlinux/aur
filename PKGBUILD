@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 291229 2017-03-23 00:06:50Z heftig $
+# $Id: PKGBUILD 291937 2017-03-31 06:43:45Z heftig $
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
@@ -6,8 +6,8 @@
 
 pkgname=firefox-gtk2
 _pkgname=firefox
-pkgver=52.0.1
-pkgrel=2
+pkgver=52.0.2
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
