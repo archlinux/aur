@@ -1,0 +1,28 @@
+pkgbase = python-requests-credssp
+	pkgdesc = HTTPS CredSSP authentication with the requests library.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/jborean93/requests-credssp
+	arch = any
+	license = ISC
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/76/64/c64dd2be7cc94f1fbf43c9396bac2cbe8448fe1b433b96d3c713b714839e/requests-credssp-0.0.2.zip
+	md5sums = e6dcd38d10c0f8361b88f19a5f941818
+
+pkgname = python-requests-credssp
+	depends = 
+	depends = python
+	depends = python-pyopenssl
+	depends = python-requests
+	depends = python-ordereddict
+	depends = python-ntlm-auth
+
+pkgname = python2-requests-credssp
+	depends = 
+	depends = python2
+	depends = python2-pyopenssl
+	depends = python2-requests
+	depends = python2-ordereddict
+	depends = python2-ntlm-auth
+
