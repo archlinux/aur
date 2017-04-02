@@ -11,7 +11,7 @@ makedepends=('go' 'godep' 'git' 'mercurial')
 conflicts=('terraform-bin')
 _gourl=github.com/hashicorp
 source=("https://github.com/hashicorp/terraform/archive/v${pkgver}.tar.gz")
-sha256sums=('5ba2b1bf3e395ed1f5615f47b5e86b267d6f0bdf33efa3531cf6059222dd4477')
+sha256sums=('a5e3924bf72899149b572409c82da4b7d71ac556fd460790577bdf50f27709a4')
 
 prepare() {
   mkdir -p "${srcdir}/src/${_gourl}"
