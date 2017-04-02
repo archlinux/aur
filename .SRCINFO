@@ -1,0 +1,22 @@
+pkgbase = pcmanx-gtk3-git
+	pkgdesc = A gtk+ based free BBS client (yan12125's experimental GTK+3 branch)
+	pkgver = 742.0bd42c1
+	pkgrel = 1
+	url = http://code.google.com/p/pcmanx-gtk2
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = git
+	makedepends = intltool
+	depends = gtk3
+	depends = librsvg
+	provides = pcmanx-gtk2
+	conflicts = pcmanx-gtk2
+	options = !libtool
+	source = git+https://github.com/yan12125/pcmanx#branch=wip-gtk3
+	md5sums = SKIP
+
+pkgname = pcmanx-gtk3-git
+
