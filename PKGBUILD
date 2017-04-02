@@ -3,8 +3,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus-svn
-pkgver=21857
-pkgrel=2
+pkgver=21862
+pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
@@ -31,7 +31,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir"/$_svnmod/
-  patch -Np1 < $srcdir/python2.patch
+  patch -Np1 < $srcdir/python2.patch || true
 }
 
 build() {

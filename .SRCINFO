@@ -1,7 +1,7 @@
 pkgbase = scribus-svn
 	pkgdesc = A desktop publishing program - Version from SVN
-	pkgver = 21857
-	pkgrel = 2
+	pkgver = 21862
+	pkgrel = 1
 	url = http://www.scribus.net
 	arch = i686
 	arch = x86_64
