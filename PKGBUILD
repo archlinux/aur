@@ -2,9 +2,9 @@
 
 pkgname=shellex-git
 pkgdesc='zsh/urxvt based program launcher'
-url=https://github.com/Merovius/shellex
+url='https://github.com/Merovius/shellex'
 pkgver=0.1.r34.g3ca70d9
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=(BSD)
 depends=(
