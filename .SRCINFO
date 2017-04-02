@@ -1,0 +1,17 @@
+pkgbase = python-treq
+	pkgdesc = A requests-like API built on top of twisted.web's Agent
+	pkgver = 17.3.1
+	pkgrel = 1
+	url = http://github.com/twisted/treq
+	arch = any
+	license = MIT/X
+	depends = python-attrs
+	depends = python-twisted
+	depends = python-six
+	depends = python-requests
+	depends = python-incremental
+	source = https://files.pythonhosted.org/packages/py2.py3/t/treq/treq-17.3.1-py2.py3-none-any.whl
+	md5sums = 918cbc06a91d2a420b9d2668f7d9780c
+
+pkgname = python-treq
+
