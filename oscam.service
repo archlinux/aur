@@ -1,0 +1,12 @@
+[Unit]
+Description=Open Source Conditional Access Module
+Wants=pcscd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/oscam --restart 2
+TimeoutStopSec=30
+User=oscam
+
+[Install]
+WantedBy=multi-user.target
