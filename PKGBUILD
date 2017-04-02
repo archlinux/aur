@@ -42,7 +42,7 @@ else
 	_opts+=(-DENABLE_VALAPANEL=OFF)
 fi
 
-msg "If you wan't to disable a applet edit the pkgbuild variables _disable_[applet]"
+msg "If you want to disable an applet, edit pkgbuild variables _disable_[applet]"
 
 _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
