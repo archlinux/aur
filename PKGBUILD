@@ -2,7 +2,7 @@
 # Contributor: dongfengweixiao ( dongfengweixiao [at] hotmail [dot] com  )
 
 pkgname=ttf-inziu-iosevka
-pkgver=1.11.4
+pkgver=1.21.1
 pkgrel=1
 pkgdesc="A composite of Iosevka, M+ and Source Han Sans. It is fully hinted and optimized for screen display on every device, and every resolution."
 arch=('any')
@@ -10,9 +10,9 @@ license=('custom:OFL')
 url="http://be5invis.github.io/Iosevka/inziu.html"
 depends=('fontconfig')
 install="inziu-iosevka.install"
-source=('http://7xpdnl.dl1.z0.glb.clouddn.com/inziu-iosevka-1.11.4.7z'
+source=('http://7xpdnl.dl1.z0.glb.clouddn.com/inziu-iosevka-1.12.1.7z'
         'https://raw.githubusercontent.com/be5invis/Iosevka/master/LICENSE.md')
-md5sums=('be3c3b3632079c0e2338ed2d2867fea2'
+md5sums=('cc014111495810047b5973d9ed654744'
          'b640361b29fdcbfb32ced03c7a095460')
 
 package () {
