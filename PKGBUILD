@@ -1,7 +1,7 @@
 #Maintainer: Rene Peinthor <peinthor@gmail.com>
 pkgname=smartsvn
-pkgver=9.1.2
-_pkgver=9_1_2
+pkgver=9.2.0
+_pkgver=9_2_0
 pkgrel=1
 pkgdesc="A Subversion(SVN) GUI client written in Java"
 arch=("any")
@@ -15,7 +15,7 @@ install="smartsvn.install"
 backup=('opt/smartsvn/bin/smartsvn.sh') # might contain changes to max heap size and vmoptions
 md5sums=(
 'e3dfb3bdaef28b727b491af85498f2c0'
-'703f45942e42fefe00f54b9d36b7b915'
+'0a5181aeb9dbe0e5ac2c1d114665305f'
 )
 
 
