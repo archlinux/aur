@@ -5,9 +5,9 @@ _pkgver=3.2
 pkgname=${_pkgname}-git
 pkgver=3.2.r108.caf207c
 pkgrel=2
-pkgdesc="This package gathers technical tools for the HPP project."
+pkgdesc="This package gathers technical tools for the HPP project. Devel branch"
 arch=('i686' 'x86_64')
-url="https://github.com/humanoid-path-planner/hpp-util"
+url="https://github.com/humanoid-path-planner/$_pkgname"
 license=('GPL3')
 depends=('boost' 'tinyxml')
 makedepends=('cmake' 'git' 'doxygen')
@@ -24,6 +24,7 @@ pkgver() {
 prepare() {
     cd "$_pkgname"
     git submodule update --init
+    git checkout devel
 }
 
 build() {
