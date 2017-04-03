@@ -7,6 +7,9 @@ post_install() {
   echo -n ">>> Testing for successful outgoing mail by PHP... "
   [ -z "$(php -r 'print_r(mail("example@example.com", "Test email from PHP", "Test email body."));')" ] && echo "Failed." || echo "Passed."
 
+  echo -n ">>> Disabling default pool named 'www' by commenting out all non-empty lines without a semi-colon prefix..."
+  sed --in-place 's/^\([^$;]\)/;\1/' /etc/php/php-fpm.d/www.conf
+
   echo ">>> Initialise Aegir with the following steps:"
   echo "    1. Initialise the MariaDB data directory, e.g. with the mysql install db command, and start the MariaDB service:"
   echo "       # mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql && systemctl start mysqld.service"

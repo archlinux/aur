@@ -49,7 +49,7 @@ package() {
     install -dm750 "$pkgdir/etc/sudoers.d"
     install -Dm644 msmtprc "$pkgdir/etc/msmtprc.$pkgname"
     install -Dm644 nginx.conf "$pkgdir/etc/nginx/$pkgname.conf"
-    install -Dm644 php-fpm.conf   "$pkgdir/etc/php/fpm.d/$pkgname.conf"
+    install -Dm644 php-fpm.conf   "$pkgdir/etc/php/php-fpm.d/$pkgname.conf"
     install -Dm400 sudoers "$pkgdir/etc/sudoers.d/$pkgname"
     install -Dm644 --owner=http --group=http <( ) "$pkgdir/var/spool/cron/$pkgname"
 
@@ -57,7 +57,7 @@ package() {
     install -Dm644 "$pkgname.service"  "$pkgdir/usr/lib/systemd/system/$pkgname.service"
     install -Dm644 "$pkgname.target" "$pkgdir/usr/lib/systemd/system/$pkgname.target"
     install -Dm644 nginx.systemd.conf "$pkgdir/usr/lib/systemd/system/nginx.service.d/aegir.conf"
-    install -Dm644 php-fpm.systemd.conf "$pkgdir/usr/lib/systemd/system/php-fpm.service.d/aegir.conf"
+    #~ install -Dm644 php-fpm.systemd.conf "$pkgdir/usr/lib/systemd/system/php-fpm.service.d/aegir.conf"
 
     msg2 'Creating $pkgname directory structure'
     install --directory --owner=http --group=http --mode=ug=rwxs,o=rx "$pkgdir/etc/drush"{,/cache{,/{complete,default,download,usage}}}
