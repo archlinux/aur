@@ -12,7 +12,7 @@ _firefox() {
         for _ff_profile in ${_ff_profiles[@]}; do
             # Install
             install -d -o $_user $_ff_profile/extensions/support@lastpass.com/
-            bsdtar -xf /usr/share/lastpass/lp4_*.xpi -C $_ff_profile/extensions/support@lastpass.com/
+            bsdtar -xf /usr/share/lastpass/lpfirefox_*.xpi -C $_ff_profile/extensions/support@lastpass.com/
 
             # Enable auto-installation through 'extensions.autoDisableScopes'
             echo 'user_pref("extensions.autoDisableScopes", 10);' >> $_ff_profile/prefs.js
@@ -25,7 +25,7 @@ _firefox() {
     else
         # Create our own
         install -d $_home/.mozilla/firefox/lastpass.default/extensions/support@lastpass.com/
-        bsdtar -xf /usr/share/lastpass/lp4_*.xpi -C \
+        bsdtar -xf /usr/share/lastpass/lpfirefox_*.xpi -C \
               $_home/.mozilla/firefox/lastpass.default/extensions/support@lastpass.com/
 
         # Install 'profiles.ini'

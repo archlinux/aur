@@ -58,7 +58,7 @@ prepare() {
 
 _chrome_package() {
     # Install to single place for linking
-    install -Dm644 lpchrome_$_chromver.crx "$pkgdir"/usr/share/lastpass/lpchrome_linux_$_chromver.crx
+    install -Dm644 lpchrome_$_chromver.crx "$pkgdir"/usr/share/lastpass/lpchrome_$_chromver.crx
     install -Dm755 lplinux/nplastpass$_64 "$pkgdir"/etc/opt/chrome/native-messaging-hosts/nplastpass$_64
 
     # 64-bit?
@@ -76,8 +76,8 @@ _chrome_package() {
 
 _firefox_package() {
     # Extension + profiles.ini go to $HOME, so do this in .install
-    install -Dm644 lpfirefox_$_ffver.xpi "$pkgdir"/usr/share/lastpass/lp4_$_ffver.xpi
-    install -Dm644 profiles.ini "$pkgdir"/usr/share/lastpass/profiles.ini
+    install -m644 lpfirefox_$_ffver.xpi "$pkgdir"/usr/share/lastpass/
+    install -m644 profiles.ini "$pkgdir"/usr/share/lastpass/
 
     # Binary plugin
     #bsdtar -xf lpchrome_linux_${_chromver_lib}.crx libnplastpass$_64.so
