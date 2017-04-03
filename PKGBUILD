@@ -3,7 +3,7 @@
 pkgname=pijul
 pkgver=0.4.1
 pkgrel=1
-pkgdesc="Version control system based on a theory of patches"
+pkgdesc="Patch-based distributed version control system"
 url='https://pijul.org'
 makedepends=('cargo')
 arch=('i686' 'x86_64')
