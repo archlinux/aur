@@ -1,7 +1,7 @@
 pkgbase = zoomtools
 	pkgdesc = Tools for the Zoom PS-02, PS-04, MRS-8 multitrack recorders
 	pkgver = 12222006
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.engens.com/dwight/software.html
 	arch = i686
 	arch = x86_64
