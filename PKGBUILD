@@ -19,7 +19,7 @@ fi
 
 pkgname=junest-git
 pkgver=5.6.12
-pkgrel=1
+pkgrel=2
 pkgdesc="The Arch Linux based distro that runs upon any Linux distros without root access"
 arch=('any')
 url="http://fsquillace.github.io/junest-site/"
@@ -39,8 +39,8 @@ source=('junest::git+https://github.com/fsquillace/junest.git#branch=master')
 md5sums=('SKIP')
 noextract=()
 
-PROOT_LINK=http://static.proot.me/
 MAIN_REPO=https://s3-eu-west-1.amazonaws.com/${pkgname%-git}-repo
+PROOT_LINK=${MAIN_REPO}/proot
 QEMU_LINK=$MAIN_REPO/qemu/$NORM_ARCH
 
 declare -A proot_md5sums

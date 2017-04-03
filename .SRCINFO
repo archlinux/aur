@@ -1,7 +1,7 @@
 pkgbase = junest-git
 	pkgdesc = The Arch Linux based distro that runs upon any Linux distros without root access
 	pkgver = 5.6.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fsquillace.github.io/junest-site/
 	install = junest.install
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = junest-git
 	provides = junest
 	conflicts = junest
 	source = junest::git+https://github.com/fsquillace/junest.git#branch=master
-	source = http://static.proot.me//proot-x86_64
-	source = http://static.proot.me//proot-x86
+	source = https://s3-eu-west-1.amazonaws.com/junest-repo/proot/proot-x86_64
+	source = https://s3-eu-west-1.amazonaws.com/junest-repo/proot/proot-x86
 	source = https://s3-eu-west-1.amazonaws.com/junest-repo/qemu/x86_64/qemu-x86_64-static-x86
-	source = http://static.proot.me//proot-arm
+	source = https://s3-eu-west-1.amazonaws.com/junest-repo/proot/proot-arm
 	source = https://s3-eu-west-1.amazonaws.com/junest-repo/qemu/x86_64/qemu-x86_64-static-arm
 	md5sums = SKIP
 	md5sums = 14080705dd45a6bafa20e909a68072cb
