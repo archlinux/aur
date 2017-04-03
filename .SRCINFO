@@ -22,8 +22,8 @@ pkgbase = lastpass
 	optdepends = opera: for Opera
 	optdepends = opera-beta: for Opera Beta (AUR)
 	optdepends = opera-developer: for Opera Developer (AUR)
-	noextract = lp4_4.1.44a.xpi
-	noextract = lpchrome_linux_4.1.23.crx
+	noextract = lpfirefox_4.1.44a.xpi
+	noextract = lpchrome_4.1.45.crx
 	source = lplinux_4.1.44.tar.bz2::https://lastpass.com/lplinux.tar.bz2
 	source = lpchrome_4.1.45.crx::https://clients2.google.com/service/update2/crx?response=redirect&prodversion=56.0.2924.87&x=id%3Dhdokiejnpimakedhajhdlcegeplioahd%26uc
 	source = lpchrome_lib_4.1.23.crx::https://lastpass.com/lpchrome_linux.crx

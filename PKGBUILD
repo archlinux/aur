@@ -35,8 +35,8 @@ source=(# Chrome
         #"lp4_$_ffver.xpi::$url/lp4.xpi"
         "lpfirefox_$_ffver.xpi::$url/lastpassffx/xpi.php"
         'profiles.ini')
-noextract=("lp4_$_ffver.xpi"
-           "lpchrome_linux_${_chromver_lib}.crx")
+noextract=("lpfirefox_$_ffver.xpi"
+           "lpchrome_$_chromver.crx")
 md5sums=('5a9bb6e274c8d5102400fa03a3cab776'  # Universal
          '0783421c93205618d9e55924907b92ec'  # Chrome
          'bd7678de722909acd89ba768edf0d5d5'  # Chrome with Lib
@@ -80,7 +80,7 @@ _firefox_package() {
     done
 
     # Binary plugin
-    bsdtar -xf lpchrome_linux_${_chromver_lib}.crx libnplastpass$_64.so
+    #bsdtar -xf lpchrome_linux_${_chromver_lib}.crx libnplastpass$_64.so
     install -Dm755 libnplastpass$_64.so "$pkgdir"/usr/lib/mozilla/plugins/libnplastpass$_64.so
 }
 
