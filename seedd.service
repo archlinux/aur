@@ -1,0 +1,8 @@
+[Unit]
+Description=BitBabbler entropy source daemon
+
+[Service]
+ExecStart=/usr/bin/seedd -k --socket-group adm
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+post_install() {
+  post_upgrade
+  echo 'To use device as a normal user, add user to bit-babbler group'
+
+}
+
+post_upgrade() {
+  getent group bit-babbler &> /dev/null || groupadd bit-babbler &> /dev/null
+  sysctl -q --load /etc/sysctl.d/bit-babbler-sysctl.conf
+  udevadm control --reload-rules
+}
+
+post_remove() {
+  udevadm control --reload-rules
+}
