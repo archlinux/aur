@@ -25,7 +25,7 @@ post_upgrade() {
 	chown_netdata
 }
 
-pre_remove() {
-	# This removes the group 'netdata' as well:
-	userdel netdata
-}
+#pre_remove() {
+#	# This removes the group 'netdata' as well:
+#	userdel netdata
+#}
