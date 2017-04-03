@@ -1,0 +1,26 @@
+pkgbase = screen-git
+	pkgdesc = Full-screen window manager that multiplexes a physical terminal with true-color support
+	pkgver = v.4.2.1.580.gfbee2ab
+	pkgrel = 1
+	url = https://www.gnu.org/software/screen/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	depends = pam
+	provides = screen
+	conflicts = screen
+	options = !makeflags
+	backup = etc/screenrc
+	backup = etc/pam.d/screen
+	source = screen::git+http://git.savannah.gnu.org/git/screen.git
+	source = tmpfiles.d
+	source = pam.d
+	validpgpkeys = 2EE59A5D0C50167B5535BBF1B708A383C53EF3A4
+	validpgpkeys = 71AA09D9E8870FDB0AA7B61E21F968DEF747ABD7
+	sha256sums = SKIP
+	sha256sums = 1f33ce4faca7bd05dd80403411af31e682d5d23e79558e884ae5a35f1dd96223
+	sha256sums = 971c25929ea97422c09e10679ab98e9e6c59295aae1a4a9970909d2206e23090
+
+pkgname = screen-git
+
