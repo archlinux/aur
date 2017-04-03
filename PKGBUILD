@@ -26,7 +26,6 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-VCS}"
-	sed -i '1 s/python/python2/' wifijammer.py
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = wifijammer-git
 	pkgdesc = Continuously jam all wifi clients and access points within range.
-	pkgver = r66.abf7ea0
+	pkgver = r72.5da3b2a
 	pkgrel = 1
 	url = https://github.com/DanMcInerney/wifijammer
 	arch = x86_64
