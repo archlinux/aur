@@ -3,7 +3,7 @@ _pkgname=trezord
 pkgname="${_pkgname}-git"
 gitname="${_pkgname}"
 pkgrel=1
-pkgver=1.2.0.r9.g7f45f5d
+pkgver=1.2.1.r1.g3c1bf19
 pkgdesc='TREZOR Communication Daemon'
 url='http://bitcointrezor.com/'
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ sha256sums=(
     'SKIP'
     'SKIP'
     'a4106f04d8322836905c6d300c0fb54849063bbc258ef76e28acdbec7c1c4df4'
-    '3101ef63935ca2e07457e0eccbd01e58b111f0194e998f541dbd503b1c393d8c'
+    'f35e54780fb4be945b36212b7f0829f35a627924688b94e4814ca5f4d73a7a0b'
 )
 
 prepare() {
