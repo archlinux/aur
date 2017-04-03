@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=xwxapt
+Comment=Wx Satellite APT format image engine
+Exec=xwxapt
+Icon=xwxapt
+Terminal=false
+Categories=Application;HamRadio;
+StartupNotify=true

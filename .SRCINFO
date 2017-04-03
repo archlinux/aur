@@ -1,0 +1,34 @@
+pkgbase = xwxapt
+	pkgdesc = Ham Radio - Weather Satellite APT format image decoder using X/GTK+
+	pkgver = 2.9
+	pkgrel = 1
+	url = http://www.qsl.net/5b4az/pkg/xwxapt/xwxapt.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = intltool
+	makedepends = pkg-config
+	depends = gtk2
+	depends = alsa-lib
+	depends = rtl-sdr
+	depends = hamradio-menus
+	source = http://www.qsl.net/5b4az/pkg/apt/xwxapt/xwxapt-2.9.tar.bz2
+	source = diff.Makefile.am
+	source = xwxapt.desktop
+	source = xwxapt.1
+	source = xdemorse.png
+	md5sums = 06dd1b1f83b48050b54f4f06dd813cf7
+	md5sums = 92f710ec367f09f7a6c4ec8f32815244
+	md5sums = 5b913f35d6cad963dec99c5fc0a0d5ad
+	md5sums = bcd0a1d7a87a059a3d6cfb80dfad1e6f
+	md5sums = edcd3f301ec8ea95453d40534beb6ede
+	sha256sums = cf67dd4f0f1d9ce6704f7abeb9e06ac59f47d2d2dff6632c02ebe195c97a6cce
+	sha256sums = 24b3c907aac799ad47c71914ace7476d403f2878f9c9fcb391d701367aa1794a
+	sha256sums = 51671884532f68f9ededadbbdfdcd801827bc9b543ae5cb1b5c414336b7cab07
+	sha256sums = 0ae51c280d2ce20849c078a3c2c6c1a14b5fb6f396054833a347109a3fd4886e
+	sha256sums = 857eb46c32c12333a7110fb3ea99d2246084724856638f2e04324fc2a576626d
+
+pkgname = xwxapt
+
