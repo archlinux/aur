@@ -2,8 +2,8 @@
 
 pkgname=pogo
 pkgver=0.9.2
-pkgrel=1
-pkgdesc='Plays your music. Nothing else.'
+pkgrel=2
+pkgdesc='A fast and minimalist audio player'
 arch=('any')
 url='https://github.com/jendrikseipp/pogo'
 license=('GPL')
@@ -20,6 +20,5 @@ sha256sums=('1a0555be78998c0eae770994d40b684b682b827129f4385a1f6042ba67376049')
 
 package() {
   cd $pkgname-$pkgver
-
   make DESTDIR="$pkgdir" install
 }
