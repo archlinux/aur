@@ -2,8 +2,8 @@
 # Based on axoloti-git and axoloti-runtime-git PKGBUILDs by: Joakim Reinert <mail+aur@jreinert.com>
 
 pkgname=axoloti
-pkgver=1.0.12
-pkgrel=2
+pkgver=1.0.12_1
+pkgrel=1
 pkgdesc='Firmware and GUI for the Axoloti Core'
 arch=('x86_64')
 url='http://www.axoloti.com'
@@ -44,7 +44,7 @@ sha512sums=(
 
 build() {
     cd $pkgname
-    git checkout $pkgver
+    git checkout ${pkgver//_/-}
     mkdir -p "$srcdir/${pkgname}-runtime/"{platform_linux/{bin,lib,src},chibios}
     cp -r "$srcdir/$_chibios"/* "$srcdir/${pkgname}-runtime/chibios/"
     unzip -q -o "$srcdir/${pkgname}-runtime/chibios/ext/fatfs-0.9-patched.zip" -d "$srcdir/${pkgname}-runtime/chibios/ext"
@@ -63,7 +63,9 @@ build() {
     make clean
     ldd "$srcdir/${pkgname}-runtime/platform_linux/bin/dfu-util"
     cd "$srcdir/$pkgname"
-    echo '##### building GUI... #####'
+    sed -i "s,doc,/usr/share/doc/$pkgname," src/main/java/axoloti/menus/HelpMenu.java
+    sed -i "s,file:doc,file:///usr/share/$pkgname," src/main/java/resources/about.html
+    echo '##### Building GUI #####'
     ant
 }
 
@@ -78,5 +80,7 @@ package() {
     install -Dm755 "$srcdir/$pkgname/platform_linux/compile_firmware.sh" "$pkgdir/opt/${pkgname}-runtime/platform_linux/compile_firmware.sh"
     install -Dm644 "$srcdir/$pkgname/platform_linux/49-axoloti.rules" "$pkgdir/usr/lib/udev/rules.d/49-axoloti.rules"
     install -Dm644 "$srcdir/$pkgname/dist/Axoloti.jar" "$pkgdir/usr/share/$pkgname/Axoloti.jar"
+    install -Dm644 "$srcdir/$pkgname/doc/axoloti_icon.png" "$pkgdir/usr/share/$pkgname/axoloti_icon.png"
+    install -Dm644 "$srcdir/$pkgname/doc/user guide.html" "$pkgdir/usr/share/doc/$pkgname/user guide.html"
     install -Dm755 "$srcdir/axoloti.sh" "$pkgdir/usr/bin/axoloti"
 }

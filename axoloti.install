@@ -1,5 +1,5 @@
 compile_firmware() {
-    echo '##### compiling firmware... #####'
+    echo '##### Compiling firmware #####'
     cd /opt/axoloti-runtime/platform_linux
     BUILDDIR=/opt/axoloti-runtime/firmware/build ./compile_firmware.sh
 }
@@ -10,7 +10,7 @@ remove_firmware() {
 
 post_install() {
     compile_firmware
-    echo 'Launch the GUI by running the script at /usr/bin/axoloti'
+    echo -e "\n##### Launch the GUI by running /usr/bin/axoloti #####"
 }
 
 post_upgrade() {
