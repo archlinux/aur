@@ -1,0 +1,20 @@
+pkgbase = ros-kinetic-linefollower-msgs
+	pkgdesc = ROS - linefollower_msgs provides messages for linefollower plugin in stage
+	pkgver = 0.1.0
+	pkgrel = 0
+	arch = any
+	license = GPLv2
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-kinetic-message-generation
+	makedepends = ros-kinetic-catkin
+	makedepends = ros-kinetic-std-msgs
+	makedepends = ros-kinetic-geometry-msgs
+	depends = ros-kinetic-message-runtime
+	depends = ros-kinetic-std-msgs
+	depends = ros-kinetic-geometry-msgs
+	source = ros-kinetic-linefollower-msgs::git+https://github.com/majorx234/linefollower_msgs.git
+	sha256sums = SKIP
+
+pkgname = ros-kinetic-linefollower-msgs
+
