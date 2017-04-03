@@ -1,14 +1,14 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=mynotes
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Desktop post-it / sticky notes managed from system tray icon"
 arch=('any')
 url="https://sourceforge.net/projects/my-notes"
 license=('GPL3')
-depends=('tktray' 'python-ewmh' 'gettext' 'desktop-file-utils')
+depends=('tktray' 'python-ewmh' 'gettext' 'desktop-file-utils' 'python-easywebdav')
 source=("${pkgname}-${pkgver}.tar.gz::https://sourceforge.net/projects/my-notes/files/${pkgver}/${pkgname}-${pkgver}.tar.gz/download")
-sha512sums=('cc01ebeb63ba80ac116a848e1514634652c8735237dd13598b9e068d968684bfb05357fca187e3359a021ba555376be9a6848d969d37dfc31beb851773005742')
+sha512sums=('1998a162a433154b632148d2b8d27b78d58c6a6a48a9cc28523982715399683b4f42d1b0a5beb050b52b3674a2624c6bea92bea9742361d373b572b146bbbe6c')
 
 package() {
  cd "$srcdir/${pkgname}-${pkgver}"
