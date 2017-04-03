@@ -1,9 +1,9 @@
 # Maintainer: Michael Straube <straubem@gmx.de>
 
 pkgname=pogo-git
-pkgver=0.9.1.r0.g9fd11eb
+pkgver=0.9.2.r0.g4826112
 pkgrel=1
-pkgdesc='Plays your music. Nothing else.'
+pkgdesc='A fast and minimalist audio player - git version'
 arch=('any')
 url='https://github.com/jendrikseipp/pogo'
 license=('GPL')
