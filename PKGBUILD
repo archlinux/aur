@@ -3,7 +3,7 @@
 pkgname=picard-plugins-git
 pkgver=1.4.r221.bcac3fe
 _pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="plugins from picard-plugins repository"
 arch=('any')
 url="https://picard.musicbrainz.org/plugins/"
@@ -19,12 +19,16 @@ pkgver() {
     "$(git rev-parse --short HEAD)"
 }
 
+build() {
+  cd "$srcdir/picard-plugins"
+  python2 generate.py
+}
+
 package() {
   plugindir="${pkgdir}/usr/lib/python2.7/site-packages/picard/plugins"
-  cd "$srcdir/picard-plugins/plugins"
   install -d "$plugindir"
   # copy all plugins
-  cp -r * "$plugindir"
+  cp "$srcdir/picard-plugins/plugins/"*.zip "$plugindir"
 }
 
 # vim:set ts=2 sw=2 et:
