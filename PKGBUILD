@@ -4,7 +4,7 @@
 
 pkgname=fftw-mpich
 _pkgname=fftw
-pkgver=3.3.4
+pkgver=3.3.6
 pkgrel=1
 pkgdesc="A library for computing the discrete Fourier transform (DFT)"
 arch=('i686' 'x86_64')
@@ -14,9 +14,8 @@ depends=('bash' 'gcc-libs' 'mpich')
 makedepends=('gcc-fortran')
 provides=('fftw')
 conflicts=('fftw')
-source=("http://www.fftw.org/${_pkgname}-${pkgver}.tar.gz")
-install=fftw.install
-sha1sums=('fd508bac8ac13b3a46152c54b7ac885b69734262')
+source=("http://www.fftw.org/${_pkgname}-${pkgver}-pl2.tar.gz")
+sha1sums=('66384d4bf5da3efbcbb9d6ea92f0df264b1620b1')
 
 # notes:
 # http://www.fftw.org/fftw2_doc/fftw_6.html#SEC69
@@ -26,18 +25,18 @@ sha1sums=('fd508bac8ac13b3a46152c54b7ac885b69734262')
 
 build() {
   cd ${srcdir}
-  
-  cp -a ${_pkgname}-${pkgver} ${_pkgname}-${pkgver}-double
-  cp -a ${_pkgname}-${pkgver} ${_pkgname}-${pkgver}-long-double
-  mv ${_pkgname}-${pkgver} ${_pkgname}-${pkgver}-single
-  
+
+  cp -a ${_pkgname}-${pkgver}-pl2 ${_pkgname}-${pkgver}-double
+  cp -a ${_pkgname}-${pkgver}-pl2 ${_pkgname}-${pkgver}-long-double
+  mv ${_pkgname}-${pkgver}-pl2 ${_pkgname}-${pkgver}-single
+
 
   # use upstream default CFLAGS while keeping our -march/-mtune
   CFLAGS+=" -O3 -fomit-frame-pointer -malign-double -fstrict-aliasing -ffast-math"
 
   CONFIGURE="./configure F77=gfortran --prefix=/usr \
                  --enable-shared --enable-threads \
-		 --enable-openmp
+                 --enable-openmp
                  --enable-mpi MPICC=/opt/mpich/bin/mpicc"
 
   # build double precision
@@ -64,5 +63,5 @@ package() {
   make DESTDIR=${pkgdir} install
 
   cd ${srcdir}/${_pkgname}-${pkgver}-single
-  make DESTDIR=${pkgdir} install  
+  make DESTDIR=${pkgdir} install
 }

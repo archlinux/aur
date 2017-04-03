@@ -1,9 +1,8 @@
 pkgbase = fftw-mpich
 	pkgdesc = A library for computing the discrete Fourier transform (DFT)
-	pkgver = 3.3.4
+	pkgver = 3.3.6
 	pkgrel = 1
 	url = http://www.fftw.org/
-	install = fftw.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -13,8 +12,8 @@ pkgbase = fftw-mpich
 	depends = mpich
 	provides = fftw
 	conflicts = fftw
-	source = http://www.fftw.org/fftw-3.3.4.tar.gz
-	sha1sums = fd508bac8ac13b3a46152c54b7ac885b69734262
+	source = http://www.fftw.org/fftw-3.3.6-pl2.tar.gz
+	sha1sums = 66384d4bf5da3efbcbb9d6ea92f0df264b1620b1
 
 pkgname = fftw-mpich
 
