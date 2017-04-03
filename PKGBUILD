@@ -24,8 +24,9 @@ optdepends=('chromium: for Chromium'
             'opera-beta: for Opera Beta (AUR)'
             'opera-developer: for Opera Developer (AUR)')
 install=$pkgname.install
-source=(# Chrome
+source=(# Universal
         "lplinux_$_universal.tar.bz2::$url/lplinux.tar.bz2"
+        # Chrome
         "lpchrome_$_chromver.crx::https://clients2.google.com/service/update2/crx?response=redirect&prodversion=56.0.2924.87&x=id%3Dhdokiejnpimakedhajhdlcegeplioahd%26uc"
         "lpchrome_lib_${_chromver_lib}.crx::$url/lpchrome_linux.crx"
         'com.lastpass.nplastpass.json'
@@ -35,14 +36,14 @@ source=(# Chrome
         #"lp4_$_ffver.xpi::$url/lp4.xpi"
         "lpfirefox_$_ffver.xpi::$url/lastpassffx/xpi.php"
         'profiles.ini')
-noextract=("lpfirefox_$_ffver.xpi"
-           "lpchrome_$_chromver.crx")
+noextract=("lpchrome_$_chromver.crx"
+           "lpfirefox_$_ffver.xpi")
 md5sums=('5a9bb6e274c8d5102400fa03a3cab776'  # Universal
          '0783421c93205618d9e55924907b92ec'  # Chrome
          'bd7678de722909acd89ba768edf0d5d5'  # Chrome with Lib
          '151251e415bccdffc1dc0df592d1d7e1'
          '9af777d2eea8e67ad332235718a7653d'
-         'ec5d02d9610e9953b1c0409e6230c40c'  # Firefox
+         'be3cf54832f1f1abf7820991e552f3ec'  # Firefox
          'd0f555a644484baccf649f7969794ece')
 
 # 64-bit?
