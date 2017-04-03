@@ -10,6 +10,7 @@ license=('MIT')
 provides=('mdl')
 conflicts=('MDL')
 depends=('boost-libs')
+makedepends=('cmake' 'boost')
 source=("http://github.com/dopsi/${pkgname}/archive/v${pkgver}.tar.gz")
 sha1sums=('SKIP')
 
