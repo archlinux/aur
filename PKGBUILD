@@ -2,7 +2,7 @@
 pkgname=reddit-placebot
 pkgver=r22.f44e1ec
 pkgrel=1
-pkgdesc="Automatically place pixels on reddit.com/r/place (not working yet, needs patches)"
+pkgdesc="Automatically place pixels on reddit.com/r/place"
 arch=(any)
 url="https://github.com/wijagels/reddit-placebot"
 license=('MIT')
