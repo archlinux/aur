@@ -1,6 +1,6 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 pkgname=lammps  
-pkgver=17Nov16
+pkgver=31Mar17
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator."
 url="http://lammps.sandia.gov/"
@@ -10,7 +10,7 @@ depends=('fftw' 'openmpi')
 makedepends=()
 source=(http://lammps.sandia.gov/tars/lammps-stable.tar.gz
   fftw3.patch)
-md5sums=('81a8719526ae817a71a6ce2d36e79bd2'
+md5sums=('ebfed06de79b1f265f7b540755e3eb78'
          '995c3d49f0df9c28f287fca0a3ea0752')
 build() {
   cd $srcdir/$pkgname-$pkgver/src
