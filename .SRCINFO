@@ -1,0 +1,33 @@
+pkgbase = xritty
+	pkgdesc = Ham Radio RTTY engine using X/GTK+
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://www.qsl.net/5b4az/pkg/xritty/xritty.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = intltool
+	makedepends = pkg-config
+	depends = gtk2
+	depends = alsa-lib
+	depends = hamradio-menus
+	source = http://www.qsl.net/5b4az/pkg/xritty/xritty-0.6.tar.bz2
+	source = diff.Makefile.am
+	source = xritty.desktop
+	source = xritty.1
+	source = xdemorse.png
+	md5sums = 411dd1088c21fd12a069f878a8aa4479
+	md5sums = 82186d72452d9f6798ba318ed0f44ab7
+	md5sums = 7261882a40cc69a591aa03801c5f8328
+	md5sums = b78009cf3afb7bb234bac1a404bb721d
+	md5sums = edcd3f301ec8ea95453d40534beb6ede
+	sha256sums = 43a926c0c67bb58370fe7c4188b9ee28288ecc8fbf2a90d0b4e3598823600a26
+	sha256sums = 015cf449e29d0fd9a72f9635638bd329b29150f5ef8fdc579a824c034ff12c09
+	sha256sums = f839de258e9ecfb2b2f2e7dd2ceb7473014556928a0bd8c19d2d9a456bf998c6
+	sha256sums = adffa49301d51abfbbd28552d43f44979783563f608a17e6571753471f343dd7
+	sha256sums = 857eb46c32c12333a7110fb3ea99d2246084724856638f2e04324fc2a576626d
+
+pkgname = xritty
+

@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=xritty
+Comment=rtty engine
+Exec=xritty
+Icon=xritty
+Terminal=false
+Categories=Application;HamRadio;
+StartupNotify=true
