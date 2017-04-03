@@ -1,14 +1,14 @@
 pkgbase = chef-client
 	pkgdesc = The Chef Client installation package includes everything you need to start converging your machines.
-	pkgver = 12.17.44
+	pkgver = 12.19.36
 	pkgrel = 1
 	url = https://downloads.chef.io/chef-client/
 	arch = x86_64
 	license = Apache
 	conflicts = chef
 	conflicts = chef-solo
-	source = https://packages.chef.io/stable/ubuntu/16.04/chef_12.17.44-1_amd64.deb
-	sha512sums = c29122c7da1a7757daa3796e1ed5c481c99399d80ad396f43c9b68fb1051fd418e1fa24b8302c03e8acee061490bddc24e14280628c88cd221fc396150fdc6af
+	source = https://packages.chef.io/stable/ubuntu/16.04/chef_12.19.36-1_amd64.deb
+	sha512sums = 043c5401728b4de8cdf357b504d8c08f94545bcb68e96047133706e5e009bc4a5886eff51ae7694acbd4b3e7bafffebe232493d35ad6c16c746c3e8df4a663b2
 
 pkgname = chef-client
 
