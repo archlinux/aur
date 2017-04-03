@@ -1,20 +1,4 @@
-infodir=usr/share/info
-bindir=usr/bin
-manuals=( ATM carrier cci cdi chi cnam dlpi dlpi_porting FR hlr INET ISDN
-          lab libxnet libxnsl lli mapi MG mg mtpi mxi nli npi npi_mtp
-          npi_sccp openss7 OSI PHYS porting sbc sccpi sdli sdti sg sgp
-          SIGTRAN sli SPG SPG2 ss SS7 ssg STREAMS STREAMS_FAQ tci tpi
-          tpi_sccp tri TTY VOIP voip wan X25 x25_porting x400p xcc xmap
-          XNS xti_sccp )
-
 post_install() {
-  for n in ${manuals[@]} ; do
-    for e in '' '.gz' '.bz2' '.lzma' '.xz' ; do
-      [ -f $infodir${n}.info${e} ] || continue
-      install-info --info-dir=$infodir $infodir/${n}.info${e} 2>&1 || :
-      break
-    done
-  done
   systemctl --system daemon-reload
   ldconfig -n usr/lib
   [[ -d usr/lib32 ]] && ldconfig -n usr/lib32
@@ -29,24 +13,7 @@ post_install() {
   fi
 }
 
-pre_upgrade() {
-  for n in ${manuals[@]} ; do
-    for e in '' '.gz' '.bz2' '.lzma' '.xz'; do
-      [ -f $infodir/${n}.info${e} ] || continue
-      install-info --delete --info-dir=$infodir $infodir/${n}.info${e} >/dev/null 2>&1 || :
-      break
-    done
-  done
-}
-
 post_upgrade() {
-  for n in ${manuals[@]} ; do
-    for e in '' '.gz' '.bz2' '.lzma' '.xz' ; do
-      [ -f $infodir${n}.info${e} ] || continue
-      install-info --info-dir=$infodir $infodir/${n}.info${e} 2>&1 || :
-      break
-    done
-  done
   systemctl --system daemon-reload
   ldconfig -n usr/lib
   [[ -d usr/lib32 ]] && ldconfig -n usr/lib32
@@ -71,13 +38,6 @@ pre_remove() {
   rm -f -- etc/snmp/snmp.d/*openss7
   rmdir -p -- etc/snmp/snmp.d >/dev/null 2>&1 || :
   update-snmpconf --remove
-  for n in ${manuals[@]} ; do
-    for e in '' '.gz' '.bz2' '.lzma' '.xz'; do
-      [ -f $infodir/${n}.info${e} ] || continue
-      install-info --delete --info-dir=$infodir $infodir/${n}.info${e} >/dev/null 2>&1 || :
-      break
-    done
-  done
 }
 
 post_remove() {
