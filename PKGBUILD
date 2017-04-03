@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=claws-mail-git
-pkgver=3.14.1.r208.gb68be74a3
+pkgver=3.15.0.r17.g2736853ff
 pkgrel=1
 pkgdesc='A GTK+ based e-mail client - git checkout'
 arch=('i686' 'x86_64')
@@ -32,12 +32,8 @@ optdepends=('python2:           needed for some tools and python plugin'
 replaces=('sylpheed-claws' 'claws-mail-extra-plugins')
 conflicts=('claws-mail-extra-plugins' 'claws-mail')
 provides=('claws' 'claws-mail')
-source=('claws-mail::git://git.claws-mail.org/claws.git'
-	'http://www.eworm.de/download/linux/claws-timestamp.patch'
-	'http://www.eworm.de/download/linux/claws-git-version.patch')
-sha256sums=('SKIP'
-            'bbf29f10602a74d73f1a30d791ae49c3b1d5abf20c48db0f4c81b0dca7bc0078'
-            'd377a7a6278b84152cbb8095461223829c3a21e2ca2f35aa8862c058540b61d5')
+source=('claws-mail::git://git.claws-mail.org/claws.git')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd claws-mail/
@@ -56,14 +52,6 @@ pkgver() {
 
 prepare() {
 	cd claws-mail/
-
-	# show timestamp in about dialog
-	patch -Np1 < "${srcdir}/claws-timestamp.patch"
-	git update-index --assume-unchanged src/gtk/about.c
-
-	# change length of git commit hash
-	patch -Np1 < "${srcdir}/claws-git-version.patch"
-	git update-index --assume-unchanged configure.ac
 
 	# fixes for python2
 	sed -i 's@^#!.*python.*@#!/usr/bin/python2@' tools/*.py
