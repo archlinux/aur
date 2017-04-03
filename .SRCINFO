@@ -1,6 +1,6 @@
 pkgbase = catalyst-utils
 	pkgver = 15.9
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.amd.com
 	arch = i686
 	arch = x86_64
@@ -65,7 +65,7 @@ pkgname = catalyst-libgl
 	pkgdesc = AMD/ATI drivers. Catalyst drivers libraries symlinks + experimental powerXpress support.
 	install = catalyst-libgl.install
 	depends = catalyst-utils
-	depends = mesa
+	depends = mesa-noglvnd
 	provides = libgl
 	provides = mesa-libgl
 	provides = mesa-libgl-git
@@ -76,6 +76,7 @@ pkgname = catalyst-libgl
 	conflicts = mesa-libgl-git
 	conflicts = libgles
 	conflicts = libegl
+	conflicts = libglvnd
 
 pkgname = opencl-catalyst
 	pkgdesc = AMD/ATI drivers. OpenCL implemention for AMD Catalyst

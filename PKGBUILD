@@ -13,7 +13,7 @@ pkgbase=catalyst-utils
 pkgname=('catalyst-utils' 'catalyst-libgl' 'opencl-catalyst')
 
 pkgver=15.9
-pkgrel=7
+pkgrel=8
 _amdver=15.201.1151
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
@@ -56,8 +56,8 @@ build() {
 
 package_catalyst-libgl() {
       pkgdesc="AMD/ATI drivers. Catalyst drivers libraries symlinks + experimental powerXpress support."
-      depends=('catalyst-utils' 'mesa')
-      conflicts=('libgl' 'mesa-libgl' 'mesa-libgl-git' 'libgles' 'libegl')
+      depends=('catalyst-utils' 'mesa-noglvnd')
+      conflicts=('libgl' 'mesa-libgl' 'mesa-libgl-git' 'libgles' 'libegl' 'libglvnd')
       provides=('libgl' 'mesa-libgl' 'mesa-libgl-git' 'libgles' 'libegl')
       install=catalyst-libgl.install
 
