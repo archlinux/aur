@@ -1,4 +1,4 @@
-# Contributor: Trizen <trizenx@gmail.com>
+# Maintainer : Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-anynum'
