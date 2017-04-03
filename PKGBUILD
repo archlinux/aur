@@ -1,11 +1,11 @@
 pkgname=oor
 pkgver=1.1.1.r4.gc4b9c95
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Overlay Router (formerly LISPmob) - Locator/ID Separation Protocol (LISP) and LISP Mobile Node implementation"
 url="http://openoverlayrouter.org/"
 arch=('x86_64' 'i686' 'armv6h')
 license=('GPL2')
-depends=('openssl' 'confuse' 'libcap')
+depends=('openssl' 'confuse' 'libcap' 'libxml2' 'zeromq')
 makedepends=('git' 'gengetopt')
 provides=('lispmob')
 replaces=('lispmob')
