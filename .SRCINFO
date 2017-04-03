@@ -1,29 +1,24 @@
 pkgbase = messengerfordesktop-git
 	pkgdesc = Beautiful desktop client for Facebook Messenger. Git version.
-	pkgver = 1.5.0.beta.1.r0.g810e70d
+	pkgver = 2.0.9.r0.g19a9000
 	pkgrel = 1
 	url = http://messengerfordesktop.com/
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = git
-	makedepends = gulp
+	makedepends = apm
 	makedepends = npm
-	depends = libxtst
-	depends = alsa-lib
-	depends = gtk2
-	depends = gconf
-	depends = libnotify
-	depends = nss
-	depends = xorg-xprop
-	depends = xorg-xwininfo
+	makedepends = git
+	depends = electron
 	conflicts = messengerfordesktop
 	conflicts = messengerfordesktop-bin
-	options = !strip
-	source = messengerfordesktop-git::git+https://github.com/Aluxian/Facebook-Messenger-Desktop.git#branch=V1.5.X
-	source = start.sh
-	md5sums = SKIP
-	md5sums = 31abbecf99328b1b77ee1bdb1e2d981f
+	options = !emptydirs
+	source = messengerfordesktop-git::git+https://github.com/Aluxian/Facebook-Messenger-Desktop.git
+	source = messengerfordesktop.js
+	source = use-system-electron.patch
+	sha256sums = SKIP
+	sha256sums = 55e6da47ddbf383fc8a6ef6e0aae5621b7800c8efe46422c1c352d6c029c1f45
+	sha256sums = 42c8639fb69f636cd818da550b64469c755ead1885ee22063774fb2192963207
 
 pkgname = messengerfordesktop-git
 

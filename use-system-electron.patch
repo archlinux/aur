@@ -1,0 +1,27 @@
+--- a/tasks/build.coffee
++++ b/tasks/build.coffee
+@@ -74,14 +74,6 @@
+ ['linux32', 'linux64'].forEach (dist) ->
+   gulp.task 'build:' + dist, ['resources:linux', 'compile:' + dist, 'clean:build:' + dist, 'changelog:linux'], (done) ->
+     async.series [
+-      # Rename the executable
+-      (callback) ->
+-        exeDir = './build/' + dist + '/opt/' + manifest.name + '/'
+-        fromPath = exeDir + 'electron'
+-        toPath = exeDir + manifest.name
+-
+-        fs.rename fromPath, toPath, utils.log callback, fromPath, '=>', toPath
+-
+       # Move the app's .desktop file
+       (callback) ->
+         fromPath = './build/resources/linux/app.desktop'
+--- a/tasks/clean.coffee
++++ b/tasks/clean.coffee
+@@ -15,7 +15,7 @@
+
+ # Remove the default_app folder inside the linux builds
+ ['linux32', 'linux64'].forEach (dist) ->
+-  gulp.task 'clean:build:' + dist, ['download:' + dist], ->
++  gulp.task 'clean:build:' + dist, ->
+     del './build/' + dist + '/opt/' + manifest.name + '/resources/default_app.asar'
+       .then (result) -> console.log result
