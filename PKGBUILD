@@ -1,7 +1,7 @@
 pkgname=electrum-ltc
-pkgver=2.8.3
-_commit=316c960
-pkgrel=2
+pkgver=2.8.3+20170402
+_commit=d998b00e6c66fb6c44a8eb73a8df1548ef2b2d25
+pkgrel=1
 pkgdesc='Lightweight Litecoin client'
 arch=(any)
 url=https://electrum-ltc.org/
@@ -23,16 +23,19 @@ depends=(python2-btchip
          zbar)
 makedepends=(python2-pycurl)
 source=($pkgname-$_commit.tar.gz::https://codeload.github.com/pooler/$pkgname/tar.gz/$_commit)
-sha256sums=(0fac1b3b4abe781fdb64e0549ccd2cd14d50dcbc3b35a0f3e1b125928c53d797)
+sha256sums=(987f4841470a0ad80efe1b4356378d74c9f80a13aed59c39bca3ba4ac4e0aef4)
 
 prepare() {
   cd $pkgname-$_commit/
 
-  find . -type f -exec sed -i '/^#!/ s/python$/&2/' {} +
+  find . -type f -exec sed -i '/#!/s/python$/&2/' {} +
 
-  sed -i '/set_rbf/ s/True/False/
-          s/rbf_combo = .*/& ;rbf_combo.setVisible(False)/
-          s/rbf_label = .*/& ;rbf_label.setVisible(False)/' gui/qt/main_window.py
+  for i in $(echo icons/{electrum_{dark,light}_icon,unpaid}.png)
+  do convert $i $i
+  done
+
+  sed -i '/fee_widgets.append((rbf_label, rbf_combo))/d
+          /set_rbf(True)/s/True/False/' gui/qt/main_window.py
   sed -i 's/, rbf=False//
           s/, rbf//' lib/commands.py
 }
