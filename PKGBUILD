@@ -1,16 +1,16 @@
 # Contributor: Archadept
-#    Revision: 2014-10-24
+#    Revision: 2017-04-03
 
 pkgname=astromenace-svn
-pkgver=293
+pkgver=298
 pkgrel=1
 pkgdesc="The latest version of hardcore 3D space shooter with spaceship upgrade possibilities"
-arch=x86_64
+arch=('x86_64')
 url="http://www.viewizard.com/astromenace/index_linux.php"
 license=('GPL3')
-conflicts=astromenace
+conflicts=('astromenace')
 depends=('sdl2' 'freealut'  'libjpeg'  'libvorbis'  'glu'  'freetype2')
-makedepends=('cmake')
+makedepends=('svn' 'cmake')
 source=('astromenace.desktop')
 md5sums=('b89aa017cdf9db1d6fe085889f8388fc')
 
