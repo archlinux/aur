@@ -22,13 +22,12 @@ sha256sums_armhf=("6e51c87e9783c354407b8703f1a8af2b3be9bdd9586de974fed704baa5476
 
 package() {
 	# binary
-        mkdir -p ${pkgdir}/etc
-        mkdir -p ${pkgdir}/var/{log,lib}
-        mkdir -p ${pkgdir}/usr/{bin,lib,share}
-	mkdir -p "${pkgdir}/usr/share/chronograf/canned"
+        mkdir -m755 -p ${pkgdir}/etc
+        mkdir -m755 -p ${pkgdir}/var/{log,lib}
+        mkdir -m755 -p ${pkgdir}/usr/{bin,lib,share}
+	mkdir -m755 -p "${pkgdir}/usr/share/chronograf/canned"
 	install -Dm644 "${srcdir}/${pkgname}-${pkgver}-1/etc/logrotate.d/chronograf" "${pkgdir}/etc/logrotate.d/chronograf"
         install -Dm755 "${srcdir}/${pkgname}-${pkgver}-1/usr/bin/chronograf" "${pkgdir}/usr/bin/chronograf"
 	install -Dm644 "${srcdir}/${pkgname}-${pkgver}-1/usr/lib/chronograf/scripts/chronograf.service" "${pkgdir}/usr/lib/systemd/system/chronograf.service"
 	install -Dm644 ${srcdir}/${pkgname}-${pkgver}-1/usr/share/chronograf/canned/* "${pkgdir}/usr/share/chronograf/canned/."
 }
-
