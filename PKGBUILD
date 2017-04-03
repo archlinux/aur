@@ -1,7 +1,7 @@
 # Maintainer: Mikkel Oscar Lyderik <mikkeloscar at gmail dot com>
 
 pkgname=scaleway-cli
-pkgver=1.11.1
+pkgver=1.12
 pkgrel=1
 pkgdesc="Manage BareMetal Servers from Command Line"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://scaleway.com"
 license=('MIT')
 makedepends=('go' 'git')
 source=("https://github.com/scaleway/$pkgname/archive/v${pkgver}.tar.gz")
-sha1sums=('0801388b9f697e28ae002625bf2a5ad73631bb9f')
+sha256sums=('7a23ef6960fe280dd19f8e2e9b0fff6ffaf4b8446ddc7833b530901875652e2e')
 
 prepare() {
   # setup local gopath
