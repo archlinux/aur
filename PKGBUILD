@@ -1,7 +1,7 @@
 # Maintainer: phiresky <phireskyde+git@gmail.com>
 pkgname=reddit-placebot
-pkgver=r20.3a171c3
-pkgrel=2
+pkgver=r22.f44e1ec
+pkgrel=1
 pkgdesc="Automatically place pixels on reddit.com/r/place (not working yet, needs patches)"
 arch=(any)
 url="https://github.com/wijagels/reddit-placebot"
@@ -22,7 +22,7 @@ source=(
 )
 sha256sums=('SKIP'
             '7bff9b9bab1fa52e9919f3f258588375ad4369cdc0fb6cf2f738a01f957ab082'
-            '5a395a992339b1d346be48ab0ef021ff80d68ef24f9db8931aec1aebbf4150f5')
+            'fb30bb661eba94a9d50a6212c4e8469492c1427cb0182265367bc75587c2c0ff')
 noextract=()
 
 
@@ -35,7 +35,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	git checkout service
+	git checkout origin/service
 	# git checkout "tags/$(git describe --tags --abbrev=0)"
 }
 

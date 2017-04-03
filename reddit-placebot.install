@@ -1,9 +1,5 @@
 post_install() {
 	cat <<EOF
-1. Copy the config file to ~/.config:
-
-  mkdir ~/.config/reddit-placebot
-  cp /usr/lib/node_modules/reddit-placebot/config.js ~/.config/reddit-placebot
 
 Create a file users.json in ~/.config/reddit-placebot/users.json as follows:
 
@@ -12,6 +8,7 @@ Create a file users.json in ~/.config/reddit-placebot/users.json as follows:
   "OtherAccount": "OtherPassword",
   "MoreThrowaways": "MorePasswords"
 }
+
 
 then start the service using
 	
