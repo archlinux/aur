@@ -1,5 +1,5 @@
 pkgname=kmozillahelper
-pkgver=0.6.4
+pkgver=5.0.1
 pkgrel=1
 epoch=1
 pkgdesc="Mozilla KDE Integration."
@@ -8,8 +8,8 @@ arch=("i686" "x86_64")
 license=('MIT')
 depends=("kdelibs")
 makedepends=("cmake" "automoc4" "extra-cmake-modules")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/openSUSE/kmozillahelper/archive/${pkgver}.tar.gz")
-md5sums=('0c7252a1937514f84cad21615c8eeacc')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/openSUSE/kmozillahelper/archive/v${pkgver}.tar.gz")
+md5sums=('58816fb988dc01a1b141a1d70ecd70ef')
 
 build() {
 	mkdir -p "$srcdir/$pkgname-build"
