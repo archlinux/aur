@@ -1,4 +1,4 @@
-# Maintainer: Scott Moak <scott-dot-moak-at-gmail-dot-com>
+# Maintainer: Sasha Moak <sasha-dot-moak-at-gmail-dot-com>
 
 pkgname=android-support-repository
 pkgver=r47
