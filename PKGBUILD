@@ -1,11 +1,11 @@
 # Maintainer: phiresky <phireskyde+git@gmail.com>
 pkgname=reddit-placebot
-pkgver=r18.c8fcbfb
-pkgrel=1
+pkgver=r20.3a171c3
+pkgrel=2
 pkgdesc="Automatically place pixels on reddit.com/r/place (not working yet, needs patches)"
 arch=(any)
 url="https://github.com/wijagels/reddit-placebot"
-license=('GPL3')
+license=('MIT')
 groups=()
 depends=(nodejs)
 makedepends=('git' npm)
@@ -15,12 +15,14 @@ replaces=()
 backup=()
 options=()
 install=reddit-placebot.install
-sources=(
+source=(
 	'git+https://github.com/wijagels/reddit-placebot'
 	'reddit-placebot.service'
 	'reddit-placebot.install'
 )
-
+sha256sums=('SKIP'
+            '7bff9b9bab1fa52e9919f3f258588375ad4369cdc0fb6cf2f738a01f957ab082'
+            '5a395a992339b1d346be48ab0ef021ff80d68ef24f9db8931aec1aebbf4150f5')
 noextract=()
 
 

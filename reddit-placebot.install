@@ -1,5 +1,10 @@
 post_install() {
 	cat <<EOF
+1. Copy the config file to ~/.config:
+
+  mkdir ~/.config/reddit-placebot
+  cp /usr/lib/node_modules/reddit-placebot/config.js ~/.config/reddit-placebot
+
 Create a file users.json in ~/.config/reddit-placebot/users.json as follows:
 
 {
@@ -17,4 +22,8 @@ and monitor the output using
 	journalctl --user --follow --unit reddit-placebot
 EOF
 
+}
+
+post_upgrade() {
+  post_install
 }
