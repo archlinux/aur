@@ -11,7 +11,7 @@ makedepends=('make')
 options=()
 source=("https://github.com/supervoltage/morsetran/archive/master.zip")
 noextract=()
-md5sums=('4d57ece3eb7e141bf3074e3f8c345102')
+md5sums=('67bdccd2bb1ba58ffb05e8ffd55ea62d')
 
 build() {
 	cd $srcdir/$pkgname-master
