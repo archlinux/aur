@@ -1,0 +1,19 @@
+pkgbase = hpp-statistics-git
+	pkgdesc = This package gathers technical tools for the HPP project.
+	pkgver = 1.1.r58.fe1a714
+	pkgrel = 1
+	url = https://github.com/humanoid-path-planner/hpp-statistics
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = doxygen
+	depends = hpp-util
+	provides = hpp-statistics
+	conflicts = hpp-statistics
+	source = hpp-statistics::git://github.com/humanoid-path-planner/hpp-statistics.git
+	md5sums = SKIP
+
+pkgname = hpp-statistics-git
+
