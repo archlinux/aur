@@ -28,20 +28,20 @@
 
 pkgname=catalyst-total-hd234k
 pkgver=13.1
-pkgrel=41
+pkgrel=42
 pkgdesc="AMD/ATI legacy drivers. catalyst-dkms+ catalyst-utils + lib32-catalyst-utils"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('dkms' 'linux>=3.0' 'linux<4.11' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.13.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa')
+depends=('dkms' 'linux>=3.0' 'linux<4.11' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.13.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa-noglvnd')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
 	    'acpid: acpi event support  / atieventsd'
 	    'linux-lts-headers: to build the fglrx module for the linux-lts kernel'
 	    'opencl-icd-loader: OpenCL ICD Bindings')
-conflicts=('libgl' 'xf86-video-ati' 'xf86-video-radeonhd' 'catalyst-test' 'nvidia-utils' 'nvidia' 'catalyst' 'catalyst-daemon' 'catalyst-generator' 'catalyst-dkms' 'catalyst-utils' 'mesa-libgl' 'mesa-libgl-git' 'libgles' 'libegl' 'opencl-amd')
+conflicts=('libgl' 'xf86-video-ati' 'xf86-video-radeonhd' 'catalyst-test' 'nvidia-utils' 'nvidia' 'catalyst' 'catalyst-daemon' 'catalyst-generator' 'catalyst-dkms' 'catalyst-utils' 'mesa-libgl' 'mesa-libgl-git' 'libgles' 'libegl' 'opencl-amd' 'libglvnd')
 provides=('libgl' "libatical=${pkgver}" "catalyst=${pkgver}" "catalyst-utils=${pkgver}" "catalyst-dkms=${pkgver}" "catalyst-libgl=${pkgver}" "opencl-catalyst=${pkgver}" 'dri' 'libtxc_dxtn' 'opencl-driver' 'libgles' 'libegl')
 
 if [ "${CARCH}" = "x86_64" ]; then
@@ -49,8 +49,8 @@ if [ "${CARCH}" = "x86_64" ]; then
  warning "[multilib] repository must be uncommented in /etc/pacman.conf to add lib32-catalyst-utils into the package"
   if [[ `cat /etc/pacman.conf | grep -c "#\[multilib]"` = 0 ]]; then
     warning "OK, lib32-catalyst-utils will be added to the package"
-    depends+=('lib32-libxext' 'lib32-libdrm' 'lib32-libxinerama' 'lib32-mesa')
-    conflicts+=('lib32-libgl' 'lib32-nvidia-utils' 'lib32-catalyst-utils' 'lib32-libgles' 'lib32-libegl')
+    depends+=('lib32-libxext' 'lib32-libdrm' 'lib32-libxinerama' 'lib32-mesa-noglvnd')
+    conflicts+=('lib32-libgl' 'lib32-nvidia-utils' 'lib32-catalyst-utils' 'lib32-libgles' 'lib32-libegl' 'lib32-libglvnd')
     provides+=('lib32-libgl' "lib32-catalyst-utils=${pkgver}" "lib32-catalyst-libgl=${pkgver}" "lib32-opencl-catalyst=${pkgver}" 'lib32-dri' 'lib32-libtxc_dxtn' 'lib32-opencl-driver' 'lib32-libgles' 'lib32-libegl')
     optdepends+=('lib32-opencl-icd-loader: OpenCL ICD Bindings (32-bit)')
       else
