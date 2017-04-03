@@ -1,15 +1,15 @@
 pkgbase = fldigi-docs
 	pkgdesc = Documentation/help when using FLDIGI w/out i-net access
-	pkgver = 3.23
+	pkgver = 4.0
 	pkgrel = 1
 	url = http://w1hkj.com/Fldigi.html
 	arch = any
 	license = GPL
 	optdepends = fldigi
 	optdepends = epdfview
-	source = https://sourceforge.net/projects/fldigi/files/fldigi/fldigi-help.pdf
-	md5sums = 49a27cc3a9dc51c3f7a814f040374ed2
-	sha256sums = 6b599132b7aa03d5d2d774e61c37b95cf63dd44548ccf90dc697eb7dae24a76e
+	source = https://sourceforge.net/projects/fldigi/files/fldigi/fldigi_4.0_help.pdf
+	md5sums = 8bdc51ae9ef4f47b65cfa40667ba4941
+	sha256sums = 143f2d55d9a188544b013910436d13e01ec75a31d6699182bbf74d7034ab42ef
 
 pkgname = fldigi-docs
 
