@@ -1,7 +1,7 @@
 pkgbase = perl-pdl-nohdf4
 	pkgdesc = The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display
 	pkgver = 2.017
-	pkgrel = 4
+	pkgrel = 5
 	url = http://search.cpan.org/dist/PDL
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = perl-pdl-nohdf4
 	checkdepends = perl-test-warn
 	makedepends = perl>=5.11.3
 	makedepends = fftw2
-	makedepends = perl-opengl>=0.6703
+	makedepends = perl-opengl
 	makedepends = perl-devel-checklib
 	makedepends = proj
 	depends = perl>=5.8.9
