@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ ! -f ~/xwefax/xwefaxrc ] ; then
+       mkdir -p ~/xwefax
+       cp /usr/share/doc/xwefax/examples/xwefaxrc.example ~/xwefax/xwefaxrc
+    fi
+/usr/bin/xwefax.1 $1
