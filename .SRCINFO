@@ -25,10 +25,10 @@ pkgbase = lastpass
 	noextract = lp4_4.1.44a.xpi
 	noextract = lpchrome_linux_.crx
 	source = lplinux_4.1.44.tar.bz2::https://lastpass.com/lplinux.tar.bz2
-	source = lpchrome_linux_4.1.45.crx::https://clients2.google.com/service/update2/crx?response=redirect&prodversion=56.0.2924.87&x=id%3Dhdokiejnpimakedhajhdlcegeplioahd%26uc
+	source = lpchrome_4.1.45.crx::https://clients2.google.com/service/update2/crx?response=redirect&prodversion=56.0.2924.87&x=id%3Dhdokiejnpimakedhajhdlcegeplioahd%26uc
 	source = com.lastpass.nplastpass.json
 	source = lastpass_policy.json
-	source = lp4_4.1.44a.xpi::https://lastpass.com/lastpassffx/xpi.php
+	source = lpfirefox_4.1.44a.xpi::https://lastpass.com/lastpassffx/xpi.php
 	source = profiles.ini
 	md5sums = 5a9bb6e274c8d5102400fa03a3cab776
 	md5sums = 0783421c93205618d9e55924907b92ec

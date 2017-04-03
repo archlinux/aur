@@ -26,14 +26,14 @@ optdepends=('chromium: for Chromium'
 install=$pkgname.install
 source=(# Chrome
         "lplinux_$_universal.tar.bz2::$url/lplinux.tar.bz2"
-        "lpchrome_linux_$_chromver.crx::https://clients2.google.com/service/update2/crx?response=redirect&prodversion=56.0.2924.87&x=id%3Dhdokiejnpimakedhajhdlcegeplioahd%26uc"
+        "lpchrome_$_chromver.crx::https://clients2.google.com/service/update2/crx?response=redirect&prodversion=56.0.2924.87&x=id%3Dhdokiejnpimakedhajhdlcegeplioahd%26uc"
         #"lpchrome_linux_${_chromver_lib}.crx::$url/lpchrome_linux.crx"
         'com.lastpass.nplastpass.json'
         'lastpass_policy.json'
         # Firefox
         #"lp4_$_ffver.xpi::https://addons.cdn.mozilla.net/user-media/addons/8542/lastpass_password_manager-$_ffver-an+fx.xpi"
-        "lp4_$_ffver.xpi::$url/lastpassffx/xpi.php"
         #"lp4_$_ffver.xpi::$url/lp4.xpi"
+        "lpfirefox_$_ffver.xpi::$url/lastpassffx/xpi.php"
         'profiles.ini')
 noextract=("lp4_$_ffver.xpi"
            "lpchrome_linux_${_chromver_lib}.crx")
