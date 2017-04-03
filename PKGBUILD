@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-rt
 _pkgbasever=4.9-gnu
-_pkgver=4.9.13-gnu
+_pkgver=4.9.18-gnu
 _rtbasever=4.9
-_rtpatchver=rt12
+_rtpatchver=rt14
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -21,7 +21,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}_${_rtpatchver}
 pkgver=${_pkgver//-/_}.${_rtpatchver}
-pkgrel=2
+pkgrel=1
 rcnrel=armv7-x4
 arch=('i686' 'x86_64' 'armv7h')
 url="https://rt.wiki.kernel.org/"
@@ -64,9 +64,9 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP'
-            'c98ebf494a2adfe88cc3476bda4a603470febde239441ae6df5834c776e05d45badda8a5cf5d07bac6c7b5b6bb518eea5d4766b6a298024053508582ddbd73b8'
+            '71835d01abda766281943ed6ad2665c3bbe5932a76cc0366b0ba444ed95cc6334ee10a8ce1ec1caddc4f8b69fe89f28b4c36acb75d8bc48d18de1fef4f44b274'
             'SKIP'
-            'b95ca10d3383309e61a67841d9c98918ca87e1b743e8390fb2fd31d0b12b13789e990f76dc6b4ceaeebc9b0e364a4ff1d88d89a808067b391ae1dd9a83a9442e'
+            '50a071aa0b219e1961d8b9caaf44b2c2ba1cc4d89a07df18d3cd9bd1b9d761a555efc1fb016781d8bf95836bb71f087262b0f6658274b19a70f34c6e6fecb405'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -83,7 +83,7 @@ sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca4
             '397fc751697cc4e2ceb7e6d854f5e7fc115ed8511df406ffe5d8f80afeec385ba64cd28c4666bb206612fdcd7a578b60ca6ff125c2138c615aee6135d86b0197'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '2ef2b66c95373927bf627812aa0f69fa07507731770b3e01b24eeca9d1308aa8be2bdccda042d3d7323ae0d32b9fbddb8ef1de83abc6b18679e75649dc86ef86'
+            '973f5e1516ea7bbac64f1259dbf20c260123a38bcdda31c8a537c0430c055b237d3401b0f4e546d0f6754240d81365af4ab6b46a4bd38e221a5de6fd6ab617fd'
             'SKIP'
             'ccf18eb2c3d33a57871cbadd5ad825d2f2f489e69c54c7293b160abdc3e9e5c6a664ba7926a617d31affcf20b7ecb4e8de54fa78438c574aa1b257f686faade9'
             '69f13bb2e353727acbe39034978729272511c6578aa2faf8c829e1bb89c22e769262289b76d93254314304ebd7547c45cdc8ba6afc278444a8fd09f71dff9757'
