@@ -2,40 +2,49 @@
 
 pkgname=webtorrent-desktop
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Streaming torrent client."
 arch=('i686' 'x86_64')
 url="https://webtorrent.io/desktop"
 license=('MIT')
-depends=('gconf')
-makedepends=('npm' 'git' 'zip')
+depends=('gconf' 'electron')
+makedepends=('npm')
 conflicts=('webtorrent-desktop-git' 'webtorrent-desktop-bin')
+options=(!strip)
 source=("https://github.com/feross/${pkgname}/archive/v${pkgver}.tar.gz"
+        "webtorrent-desktop"
         "${pkgname}.desktop")
 sha256sums=('25b92aab9cc6d076715a12bdaeae950f6885da19d87948a6acf007ba246b9494'
+            'b5b71281c1c93a60ff3d7219d005c33754d0e0cc9076c152b0a68615929bb5a3'
             '4eba7b17fd0cd90f77fc1a1005f74d8fcd93dac4f669d1b1abbf71734b5bafa6')
 
 [ "$CARCH" = "i686" ]   && _platform=ia32
 [ "$CARCH" = "x86_64" ] && _platform=x64
 
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  sed -i '/"electron.*":/d' package.json
+}
+
 build() {
   cd "$pkgname-$pkgver"
 
   npm install
-  npm run package -- linux --package=zip
+  npm dedupe
+  npm run build
+  npm prune --production
 }
 
 package() {
-  cd "$pkgname-$pkgver/dist"
+  cd "$pkgname-$pkgver"
 
-  install -dm755 "${pkgdir}/usr/share"
-  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/lib/${pkgname}"
+  cp -a build index.js node_modules package.json static "${pkgdir}/usr/lib/${pkgname}/"
 
-  cp -a "WebTorrent-linux-${_platform}" "${pkgdir}/usr/share/${pkgname}"
-  ln -s "/usr/share/${pkgname}/WebTorrent" "${pkgdir}/usr/bin/${pkgname}"
-
+  install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 "${srcdir}/$pkgname-$pkgver/static/WebTorrent.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
+  install -Dm644 "static/WebTorrent.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
 
-  install -Dm644 "WebTorrent-linux-${_platform}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
