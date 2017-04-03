@@ -31,7 +31,7 @@ prepare() {
 build() {
     cd "$_pkgname"
     cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_CXX_FLAGS=-std=c++03 -DBUILD_UNIT_TESTS=OFF .
+        -DCMAKE_CXX_FLAGS=-std=c++03 .
     make
 }
 
