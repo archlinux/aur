@@ -9,7 +9,7 @@ pkgdesc='A native redshift implementation for GNOME'
 url='https://github.com/benzea/gnome-shell-extension-redshift'
 arch=('any')
 license=('GPL2')
-depends=('gnome-shell>=3.22' 'gnome-settings-daemon-redshift')
+depends=('gnome-shell>=3.22' 'gnome-settings-daemon-redshift' 'gnome-maps')
 makedepends=('git' 'zip' 'unzip')
 source=('git://github.com/benzea/gnome-shell-extension-redshift.git')
 sha256sums=('SKIP')

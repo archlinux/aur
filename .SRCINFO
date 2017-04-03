@@ -10,6 +10,7 @@ pkgbase = gnome-shell-extension-redshift-native-git
 	makedepends = unzip
 	depends = gnome-shell>=3.22
 	depends = gnome-settings-daemon-redshift
+	depends = gnome-maps
 	source = git://github.com/benzea/gnome-shell-extension-redshift.git
 	sha256sums = SKIP
 
