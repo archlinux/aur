@@ -18,7 +18,7 @@ source=("${pkgname}.install")
 sha256sums=('1252f86f1e249be19eec4f7fe388300fb5f8d1cad5603b2ea87ea07362dc8768')
 sha256sums_x86_64=("0abfc202b041bb20437bba1912fc508e82b6df241d84b9f28df2afdb8a0e8dd4")
 sha256sums_i686=("a2d809b30cd19cb88f3cd457224c7bd5b54d6534b7e9f90a9a9ff307c1d9dd08")
-sha256sums_armhf=("6e51c87e9783c354407b8703f1a8af2b3be9bdd9586de974fed704baa54769ca")
+sha256sums_armv7h=("6e51c87e9783c354407b8703f1a8af2b3be9bdd9586de974fed704baa54769ca")
 
 package() {
 	# binary
