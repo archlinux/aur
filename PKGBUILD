@@ -1,6 +1,6 @@
 # Maintainer: nroi <nroi@mailbox.org>
 pkgname=cpcache-git
-pkgver=r121.4160ba4
+pkgver=r123.e61c708
 pkgrel=1
 pkgdesc="central pacman cache"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -28,11 +28,12 @@ pkgver() {
 }
 
 package() {
+  TMP="$(mktemp -d)"
   cd "${srcdir}/${pkgname%-git}"
-  /usr/bin/mix local.hex --force
-  /usr/bin/mix local.rebar --force
-  /usr/bin/mix deps.get
-  MIX_ENV=prod /usr/bin/mix release --env=prod
+  HOME="$TMP" /usr/bin/mix local.hex --force
+  HOME="$TMP" /usr/bin/mix local.rebar --force
+  HOME="$TMP" /usr/bin/mix deps.get
+  HOME="$TMP" MIX_ENV=prod /usr/bin/mix release --env=prod
   mkdir -p "${pkgdir}/usr/share/${pkgname%-git}"
   mkdir -p "${pkgdir}/var/lib/${pkgname%-git}"
   cd "${pkgdir}/usr/share/${pkgname%-git}"
@@ -42,4 +43,5 @@ package() {
   install -Dm644 "${srcdir}/sysuser.conf" "${pkgdir}/usr/lib/sysusers.d/cpcache.conf"
   install -Dm644 "${srcdir}/cpcache/conf/cpcache.yaml" "${pkgdir}/etc/cpcache.yaml"
   install -Dm755 "${srcdir}/create_db.sh" "${pkgdir}/usr/share/${pkgname%-git}/create_db.sh"
+  rm -rf "$TMP"
 }
