@@ -1,7 +1,7 @@
 # Maintainer: Andrew Kiss <ubervoltage@gmail.com>
 pkgname=morsetran
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 url="https://github.com/supervoltage/$pkgname"
 pkgdesc="ASCII morse code translator"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -9,18 +9,18 @@ license=('GPL')
 groups=('libstdc++')
 makedepends=('make')
 options=()
-source=("https://dl.dropboxusercontent.com/u/29712116/C%2B%2B/morsetran-1.0.tar.gz")
+source=("https://github.com/supervoltage/morsetran/archive/master.zip")
 noextract=()
-md5sums=('f417493ab95681f5f0990ec7a5c89044')
+md5sums=('2d6d98ef6d6c211c38e95013ac645050')
 
 build() {
-	cd $srcdir
+	cd $srcdir/$pkgname-master
 	
 	make
 }
 
 package() {
-	cd $srcdir
+	cd $srcdir/$pkgname-master
 	
-	make DESTDIR="$pkgdir/" install
+	install -m755 $srcdir/$pkgname-master/$pkgname /usr/bin/morsetran
 }
