@@ -9,7 +9,7 @@
 
 pkgbase=linux-libre-nand         # Build stock kernel
 _pkgbasever=4.10-gnu
-_pkgver=4.10.6-gnu
+_pkgver=4.10.8-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -44,7 +44,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch')
 sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf5811fdae48fafd5a8e00d18ed9ac2e1ad4b12a657f322eb234384316ad131e0'
             'SKIP'
-            '4390c92afb02678e416fab6cc988139463c247047d09d4e0f69677e2239f05d8aa412842de383a3e7de603c979b1f2786017cd398fe931ba25a5b554d666ad9b'
+            '758d1bc648695d7c49c7f4c46bd99286d81ff6d5001e8932b813f7473c136e6e379756e93c442e62b2be03b5b417a637433af18c46e3ea96e1b84357ec16f785'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
