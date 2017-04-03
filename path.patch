@@ -1,35 +1,21 @@
---- a/CheckMATE-2.0.3/tools/python/info.py
-+++ b/CheckMATE-2.0.3/tools/python/info.py
-@@ -678,9 +678,9 @@ class Info(dict):
-         if config_paths != dict() and config_paths['pythia8_lib_path']:
-             cls.paths['pythia8_lib_path'] = config_paths['pythia8_lib_path']
+diff --git a/CheckMATE-2.0.11.orig/tools/python/info.py b/CheckMATE-2.0.11/tools/python/info.py
+index 4bd10ca..91b58f9 100644
+--- a/CheckMATE-2.0.11.orig/tools/python/info.py
++++ b/CheckMATE-2.0.11/tools/python/info.py
+@@ -2,6 +2,7 @@ import os, shutil,  sys
+ import json, pickle
+ import argparse
+ import ConfigParser
++import tempfile
+ from advprint import AdvPrint
  
--        cls.paths['checkmate'] = os.path.split(os.path.split(os.path.split(os.path.realpath(__file__))[0])[0])[0]
--        
+ class Info(dict):
+@@ -671,7 +672,7 @@ class Info(dict):
+ 
+         cls.paths['checkmate'] = os.path.split(os.path.split(os.path.split(os.path.realpath(__file__))[0])[0])[0]
+         
 -        cls.paths['results'] = os.path.join(cls.paths['checkmate'], 'results')
-+        cls.paths['checkmate'] = '/usr/share/CheckMATE'
-+        
-+        cls.paths['results'] = os.path.join('/tmp/CheckMATE/', 'results')
++        cls.paths['results'] = os.path.join(tempfile.gettempdir(), 'checkmate')
          cls.paths['tools'] = os.path.join(cls.paths['checkmate'], 'tools')
          cls.paths['data'] = os.path.join(cls.paths['checkmate'], 'data')
          
---- a/CheckMATE-2.0.3/tools/python/CheckMATE.raw
-+++ b/CheckMATE-2.0.3/tools/python/CheckMATE.raw
-@@ -1,6 +1,6 @@
- #!/usr/bin/python
- import sys,os
--sys.path.append(os.path.join(os.path.split(os.path.split(os.path.realpath(__file__))[0])[0], "tools", "python"))
-+sys.path.append("/usr/share/CheckMATE/tools/python")
- sys.path.append('ROOT_LIB_DIR')
- from checkmate_core import CheckMATE2
- from advprint import AdvPrint
---- a/CheckMATE-2.0.3/tools/python/AnalysisManager.raw
-+++ b/CheckMATE-2.0.3/tools/python/AnalysisManager.raw
-@@ -3,7 +3,7 @@
- import os
- import sys
-
--sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), "tools", "python"))
-+sys.path.append("/usr/share/CheckMATE/tools/python")
-
- reload(sys)

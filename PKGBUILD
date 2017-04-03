@@ -1,8 +1,8 @@
 # Maintainer: JP-Ellis <josh@jpellis.me>
 
 pkgname=checkmate
-pkgver=2.0.3
-pkgrel=4
+pkgver=2.0.11
+pkgrel=1
 pkgdesc="A program to compare theoretical models against many recent experimental analyses"
 url="http://checkmate.hepforge.org/"
 arch=('i686' 'x86_64')
@@ -19,11 +19,11 @@ source=("http://www.hepforge.org/archive/checkmate/CheckMATE-${pkgver}.tar.gz"
         "fastjet.patch"
         "path.patch"
         "PythiaHandler.patch")
-sha256sums=('420fa42e4555e7f9f86605f7a17878fc9ff62cd852cbdd45f86361b3a27656a8'
-            '9420c9b166261a67e2febe983c37638dcff85b3660b5fd4acf1733a52b0d9402'
-            '55874c4a88f10b0307a1495028acfd7ad28f1fac6b170fcafbe3c01a5a0b0edb'
-            '1092f5bf843ec51f8cf1510673218dadd220bca26209bbd03787fb4257e6a804'
-            '89cff18a1bf2bea50238d455010157bbafaf2b6671fd2db97443bb6d283c6a94')
+sha256sums=('05eda2ddb4775408d4c6a193b529c8e43cdfb025b161c4b98fa69922e54c8927'
+            '0318bd33ae752a914e1af6102f5c648a4bcb72d87922f30561f7f9e44c80e169'
+            'c5be604f8cc3edcfd69c58b3c56c431ff2d8329e8a3ef1afea39ffd1d4f194f5'
+            '7069aaf2bfa0ad620e268f106c85f3b32688f78f5f122824ea9b4c665603c7cf'
+            'c073ee1e04a415dc3be3aa81de38feb031acec770b98b7b3429707e8cd7f81f1')
 
 prepare() {
     msg2 "Patching files"
@@ -53,6 +53,7 @@ build() {
 
     msg2 "Cleaning temporary build files"
     find . -type f -name "*.o" -o -name "*.lo" -print0 | xargs -0 rm -f
+    find . -type d -name ".libs" -empty -delete
 
     msg2 "Compiling Python files"
     python2 -O -m compileall -qf . || true
@@ -60,19 +61,14 @@ build() {
 }
 
 package() {
-    # CheckMATE does not provide `make install`; so we manually install files
-    #
-    # If any file is missing, I welcome a patch
-    install -Dm755 "${srcdir}/CheckMATE-${pkgver}/bin/CheckMATE" "${pkgdir}/usr/bin/CheckMATE"
-    install -Dm755 "${srcdir}/CheckMATE-${pkgver}/bin/AnalysisManager" "${pkgdir}/usr/bin/AnalysisManager"
+    msg2 "Copying files"
+    mkdir -p "${pkgdir}/opt/checkmate"
+    cp -r "${srcdir}/CheckMATE-${pkgver}/." "${pkgdir}/opt/checkmate/"
 
-    install -d "${pkgdir}/usr/share/CheckMATE"
-    cp -r "${srcdir}/CheckMATE-${pkgver}/tools" "${pkgdir}/usr/share/CheckMATE"
-    cp -r "${srcdir}/CheckMATE-${pkgver}/data" "${pkgdir}/usr/share/CheckMATE/"
-
-    find "${pkgdir}" -type f -name "*.o" -delete
-
-    find "${pkgdir}" -type d -name ".libs" -empty -delete
+    msg2 "Linking binaries"
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s "/opt/checkmate/bin/CheckMATE" "${pkgdir}/usr/bin"
+    ln -s "/opt/checkmate/bin/AnalysisManager" "${pkgdir}/usr/bin"
 }
 
 # Local Variables:
