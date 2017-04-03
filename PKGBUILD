@@ -1,7 +1,7 @@
 # Maintainer: phiresky <phireskyde+git@gmail.com>
 pkgname=reddit-placebot
-pkgver=1.0.0
-pkgrel=2
+pkgver=r18.c8fcbfb
+pkgrel=1
 pkgdesc="Automatically place pixels on reddit.com/r/place (not working yet, needs patches)"
 arch=(any)
 url="https://github.com/wijagels/reddit-placebot"
@@ -15,16 +15,21 @@ replaces=()
 backup=()
 options=()
 install=reddit-placebot.install
-source=('git+https://github.com/wijagels/reddit-placebot')
+sources=(
+	'git+https://github.com/wijagels/reddit-placebot'
+	'reddit-placebot.service'
+	'reddit-placebot.install'
+)
+
 noextract=()
-md5sums=('SKIP')
 
-#pkgver() {
-	# cd "$srcdir/$pkgname"
 
-# Git, tags available
+pkgver() {
+	cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	# Git, tags available
 	#printf "%s" "$(git describe --tags --abbrev=0)"
-#}
+}
 
 prepare() {
 	cd "$srcdir/$pkgname"
@@ -33,20 +38,23 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname"
-	npm install
+	npm install --cache "$srcdir/npm-cache"
 }
 
 package() {
 	cd "$srcdir/$pkgname"
 	mkdir -p "$pkgdir/usr/"{lib/systemd/user,bin}
-	cp -r "$srcdir/$pkgname" "$pkgdir/usr/lib"
-	rm -r "$pkgdir/usr/lib/$pkgname/.git"
+
+	npm install -g --user root --prefix "$pkgdir"/usr
+
 	cp "$srcdir/../reddit-placebot.service" "$pkgdir/usr/lib/systemd/user"
 	cat >> "$pkgdir/usr/bin/reddit-placebot" <<"EOF"
 #!/bin/bash
 
 cd $(mktemp -d --suffix -reddit-placebot)
-node /usr/lib/reddit-placebot/run.js
+node /usr/lib/node_modules/reddit-placebot/run.js
 EOF
 	chmod +x "$pkgdir/usr/bin/reddit-placebot"
 }
+
+
