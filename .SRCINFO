@@ -1,0 +1,15 @@
+pkgbase = otf-grundschrift
+	pkgdesc = Block letter oriented font used in german schools for teaching individual handwriting.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://fontlibrary.org/en/font/grundschrift
+	install = otf.install
+	arch = any
+	license = CCPL:by
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://fontlibrary.org/assets/downloads/grundschrift/993f56b0c71f38ffca0d804ec48f4587/grundschrift.zip
+	md5sums = 993f56b0c71f38ffca0d804ec48f4587
+
+pkgname = otf-grundschrift
+
