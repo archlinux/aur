@@ -1,9 +1,9 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 # Contributor: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 pkgname=picard-plugins-git
-pkgver=1.4.r221.bcac3fe
+pkgver=1.4.r233.1f675ae
 _pkgver=1.4
-pkgrel=2
+pkgrel=1
 pkgdesc="plugins from picard-plugins repository"
 arch=('any')
 url="https://picard.musicbrainz.org/plugins/"
