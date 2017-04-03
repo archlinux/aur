@@ -43,7 +43,7 @@ package() {
 	cp -r firefox $pkgdir/${OPT_PATH}
 
 	ln -s /${OPT_PATH}/firefox $pkgdir/usr/bin/{$_name}-${_channel}
-	# Icons
+	# Icon Stuff
 	SRC_LOC="${srcdir}"/${_name}/browser
 	DEST_LOC="${pkgdir}"/usr/share/icons/hicolor
 	for i in 16 32 48
