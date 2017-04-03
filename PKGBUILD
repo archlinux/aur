@@ -3,7 +3,7 @@
 _pkgname=rtorrent
 pkgname=rtorrent-ps
 _pkgver=0.9.6
-pkgver=1.0.r32.g832b03d
+pkgver=1.0.r40.ge768454
 pkgrel=1
 pkgdesc='Extended rTorrent distribution with UI enhancements, colorization, and some added features'
 url='https://github.com/pyroscope/rtorrent-ps'
@@ -22,12 +22,13 @@ source=("https://github.com/rakshasa/$_pkgname/archive/$_pkgver.tar.gz"
         'ps-ssl_verify_host_all.patch'
         'ps-throttle-steps_all.patch'
         'ps-ui_pyroscope_all.patch'
+        'ps-view-filter-by_all.patch'
         'pyroscope.patch'
         'ui_pyroscope.cc'
         'ui_pyroscope.h'
         'ui_pyroscope.patch')
 md5sums=('b8b4009f95f8543244ae1d23b1810d7c'
-         '01e9e7dddf9ebcdca81d88dfdd43b4dc'
+         '4fd2e4373b8dab7e37dd8684fe04a555'
          '22fae392c6e281dc438b39a5019e7e1b'
          '3fd739c0d5a9442f0cdec9ed5a720eaa'
          '2137e16f8b881170fb92fb7a6c276193'
@@ -36,6 +37,7 @@ md5sums=('b8b4009f95f8543244ae1d23b1810d7c'
          'cef14e9011d4b4af92536b02f8b611c2'
          'ee76d57dfbc40e09eeaee3845d327d94'
          '7a88f8ab5d41242fdf1428de0e2ca182'
+         '26faff00b306b6ef276a7d9e6d964994'
          'bd04a0699b80c8042e1cf63a7e0e4222'
          'cd39a495ee93d9c77039fa74a9e9dc94'
          '1258acfc82c50a8f452ace87fef0b416'

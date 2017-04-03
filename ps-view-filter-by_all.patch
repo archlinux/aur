@@ -1,0 +1,25 @@
+--- orig-096/src/core/view.h	2015-09-03 21:03:30.000000000 +0200
++++ rtorrent-0.9.6/src/core/view.h	2017-04-02 16:22:17.000000000 +0200
+@@ -122,2 +122,3 @@
+   void                filter();
++  void                filter_by(const torrent::Object& condition, base_type& result);
+   void                filter_download(core::Download* download);
+--- orig-096/src/core/view.cc	2015-09-03 21:03:30.000000000 +0200
++++ rtorrent-0.9.6/src/core/view.cc	2017-04-02 16:25:49.000000000 +0200
+@@ -292,4 +296,16 @@
+ }
+ 
++
++void
++View::filter_by(const torrent::Object& condition, View::base_type& result)
++{
++  // std::copy_if(begin_visible(), end_visible(), result.begin(), view_downloads_filter(condition));
++  view_downloads_filter matches = view_downloads_filter(condition);
++  for (iterator itr = begin_visible(); itr != end_visible(); ++itr)
++    if (matches(*itr))
++      result.push_back(*itr);
++}
++
++
+ void
+ View::filter_download(core::Download* download) {
