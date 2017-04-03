@@ -1,0 +1,18 @@
+pkgbase = hpp-model
+	pkgdesc = Implementation of kinematic chains with geometry
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://github.com/humanoid-path-planner/hpp-model
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	depends = eigen32
+	depends = hpp-util-git
+	depends = hpp-fcl
+	optdepends = assimp
+	source = https://github.com/humanoid-path-planner/hpp-model/releases/download/v3.2/hpp-model-3.2.tar.gz
+	md5sums = 428325210d9ab77c4730f458eb55bfe1
+
+pkgname = hpp-model
+
