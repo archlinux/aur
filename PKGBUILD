@@ -2,13 +2,13 @@
 
 _pkgname=dstatus
 pkgname=$_pkgname-git
-pkgver=31.fa9adb8
+pkgver=40.3ee959b
 pkgrel=1
 pkgdesc="status bar for dwc"
 arch=('i686' 'x86_64')
 url="https://github.com/ametisf/dstatus"
 license=('MIT')
-depends=('swc' 'velox')
+depends=('swc' 'dwc-git')
 makedepends=('tup')
 optdepends=('terminus-font: bitmap font for nicer rendering')
 source=("git+https://github.com/ametisf/dstatus.git")
