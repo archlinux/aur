@@ -4,7 +4,7 @@
 _limit='ipt-ratelimit'
 pkgname='ipt_ratelimit'
 pkgver='0.2'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Rate Policer as netfilter extension.'
 arch=('any')
 url="https://github.com/aabc/${_limit}"
@@ -13,11 +13,13 @@ depends=('linux' 'iptables')
 makedepends=('gcc' 'gzip')
 source=("${pkgname}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
 	"${_limit}-${pkgver}_OBS.patch"
-	"${_limit}-${pkgver}_fix_race_condition.patch")
+	"${_limit}-${pkgver}_fix_race_condition.patch"
+	"${_limit}-${pkgver}_cidr_support.patch")
 
 sha256sums=('feb9a9bf002175b7fd73a3bbbd65e5e8bbc65a7fce217a7d36ec172c315a56c5'
             'b33e074c80aeb149786a9c395e47f01cd06eda6e94f44054fa81e5994270e2e3'
-            '06cd7a1b902b9f4dfd98a1aa2114bdea5cc2e589bb395a69028d5effcaf655d2')
+            '06cd7a1b902b9f4dfd98a1aa2114bdea5cc2e589bb395a69028d5effcaf655d2'
+            '85684f4e86d13ea5f4997c2666d513c722630a0067d1191f132438b8ff2f6876')
 install="${pkgname}.install"
 _kdir="`pacman -Ql linux| awk '/(\/modules\/)([0-9.-])+-ARCH\/$/ {print $2}'`"
 _kver="`pacman -Qe linux | awk '{print $2"-ARCH"}'`"
@@ -28,6 +30,7 @@ prepare() {
   # upstream patches
   patch -p1 -i "${srcdir}/${_limit}-${pkgver}_OBS.patch"
   patch -p1 -i "${srcdir}/${_limit}-${pkgver}_fix_race_condition.patch"
+  patch -p1 -i "${srcdir}/${_limit}-${pkgver}_cidr_support.patch"
 }
 
 build() {
