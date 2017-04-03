@@ -1,14 +1,14 @@
 pkgbase = dry-bin
 	pkgdesc = dry is a terminal application to manage Docker containers and images
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 4
 	url = http://moncho.github.io/dry/
 	arch = x86_64
 	arch = i686
 	license = MIT
 	depends = docker
-	source = dry_v0.7-beta.1::https://github.com/moncho/dry/releases/download/v0.7-beta.1/dry-linux-amd64
-	sha256sums = bfca25b97d7671c5a6a5929f20b1538de19876f1eddd4704664154e9df2c8004
+	source = dry_v0.7-beta.4::https://github.com/moncho/dry/releases/download/v0.7-beta.4/dry-linux-amd64
+	sha256sums = 8b9f624b2befbe6779c578c7dc492458b88e6d71f3ff2e01064183b2b409aab1
 
 pkgname = dry-bin
 
