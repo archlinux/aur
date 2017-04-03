@@ -4,8 +4,8 @@
 # Original author: Bennett Goble <nivardus at gmail dot com>
 
 pkgname=xdemorse
-pkgver=2.9
-pkgrel=5
+pkgver=3.0
+pkgrel=1
 pkgdesc="An X/GTK+ application - decodes Morse Code signals into text."
 arch=('i686' 'x86_64')
 url="http://www.qsl.net/5b4az/pkg/morse/xdemorse/xdemorse.html"
@@ -53,11 +53,11 @@ package() {
 	mv $pkgdir/usr/bin/$pkgname $pkgdir/usr/bin/$pkgname.1
 	install -D -m 755 ../$pkgname.1 $pkgdir/usr/bin/$pkgname
 }
-md5sums=('2a4a240f958fa58b6e09854b1f444125'
+md5sums=('31c3cb8386a9f5ac6f0179802881a25f'
          'ad6b0e6dd69c1d0efd01efef63ace093'
          'abb9f6e6510c9f747d70c738eeb5a824'
          'd7f9056699f4467fd1ee6834b75cbed8')
-sha256sums=('ef14e40f220ba35f0d65da46ec061ac19a742bfb3f7cbf55991c1aa8f9593058'
+sha256sums=('9600481edaf3c71d1bdf3962e9e506eefcb00b432ba3ff66bf4c1b9e8d87cd26'
             'cc38902be0fc1026cc027cd0fdab7e78bbfb336df36b90b8f25060775636924a'
             '1a690f6c7fdb73be3ebcedb59390faf74fcfb5f71484290d9d5a682650d3c9b1'
             'ff51f11e00b872469a86d297a008b26ccad90a066d19397361e16e0b15ecb68c')
