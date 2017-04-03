@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-grsec-xen
 _pkgbasever=4.9-gnu
-_pkgver=4.9.18-gnu
+_pkgver=4.9.20-gnu
 _grsecver=3.1
-_timestamp=201703261106
+_timestamp=201703310823
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -66,9 +66,9 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP'
-            '71835d01abda766281943ed6ad2665c3bbe5932a76cc0366b0ba444ed95cc6334ee10a8ce1ec1caddc4f8b69fe89f28b4c36acb75d8bc48d18de1fef4f44b274'
+            '8de958db6f6fb48900cd7b877c99af2e2d0ed1c2ff2b566657766206f24db04b4d52b6309ad49a5b39136119a4cf57a267e018304058160daac79837d32ec99c'
             'SKIP'
-            '4d64896c0b76d9ec815b1670548a780ebdd2a2f05e151be47e33004317759395c1644e67a7a395cba2f29f63221ada8b44d5f890fc8b1774ec99b0f025abedbf'
+            '08cf26c42c7f570642d026291ace85bb47a311cba04035b47320a60fec3ac9809889067f4c621e7f06ac668b23f163c5c8960ac97de6ebaee0df3411904f04cd'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -84,7 +84,7 @@ sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca4
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '8321518de61f5918c1dd79c6f087fa478d4a02cd61b167d8b7bdadce4a03232d4af898de0252accdf14839032cd69bb41b964f8ac17f32fb48afc12463614040'
+            'fb83f0c360a39ee4e777fc303156cdb257b5898d75b99bc695fc63eb240c233e36c67caf04dcb68c1a4d885c530c66fa1b99292c6cf0f70724a3c7bbca34e841'
             'SKIP'
             'e04da62f138b24a489daf6ea12759ecb545b77be4dd585983d3abb764f4ac3aa4a9bf4179adddc73032b81e4fa54cbf5dbf173b25dfb1723e7379583b57aa426'
             '5d3a5440b3612fb85759b34d9b455118da342928e585b11545a0dcc9d11f16f0924e1b6018e08ed0507e53d1aabab7000c9b4405bc8881a7bda775456d81df2a'
