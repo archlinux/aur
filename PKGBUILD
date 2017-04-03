@@ -32,8 +32,8 @@ source=(# Universal
         'com.lastpass.nplastpass.json'
         'lastpass_policy.json'
         # Firefox
-        #"lp4_$_ffver.xpi::https://addons.cdn.mozilla.net/user-media/addons/8542/lastpass_password_manager-$_ffver-an+fx.xpi"
-        #"lp4_$_ffver.xpi::$url/lp4.xpi"
+        #"https://addons.cdn.mozilla.net/user-media/addons/8542/lastpass_password_manager-$_ffver-an+fx.xpi"
+        #"$url/lp4.xpi"
         "lpfirefox_$_ffver.xpi::$url/lastpassffx/xpi.php"
         'profiles.ini')
 noextract=("lpchrome_$_chromver.crx"
