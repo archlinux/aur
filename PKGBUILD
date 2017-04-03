@@ -2,37 +2,27 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='frr'
-pkgver=2.0_rc2.5210.98b506c2
-pkgrel=1
-pkgdesc='FRRouting (quagga fork) supports BGP4/OSPF/RIP/PIM-SM/MSDP and LDP as well as very early support for IS-IS.'
+pkgver='2.0'
+pkgrel='1'
+pkgdesc='FRRouting (quagga fork) supports BGP, OSPF, RIP, RIPng, PIM-SM/MSDP and LDP and very early support for IS-IS.'
 arch=('any')
 url="https://github.com/FRRouting/${pkgname}"
 license=('GPL2')
 depends=('libcap' 'libnl' 'readline' 'ncurses' 'perl' 'json-c' 'net-snmp')
-makedepends=('git' 'patch' 'gcc' 'grep' 'net-snmp' 'json-c')
+makedepends=('patch' 'gcc' 'net-snmp' 'json-c')
 conflicts=('quagga' 'quagga_cumulus')
 provides=('quagga' 'quagga_cumulus')
-source=("${pkgname}::git+${url}"
+source=("${url}/archive/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "${pkgname}_systemd_arch.patch")
-sha256sums=('SKIP'
+sha256sums=('70259dc379678a7b0c32abd30173034f31876612451e2ffd7d09c52ab22ac05b'
             'd3eb1648c018d37e0327dad07ba42f08dfe610838d444d454ca4ab38ece1e8c4'
             '6f8dd86ef9c600763faead3052908531e8dc8ef67058e6f7f8da01bf0fe4eb89'
             '85f3396b49e3a3c84c344ee548bb2d185152356ca8a7bdcb5a850dc2e477665d')
 
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git checkout stable/2.0 >/dev/null 2>&1
-  package_version=`gawk 'match($0, /^(AC_INIT)\((frr)\,\s([a-z0-9\-.]+)(.*)$/, a) {print a[3]}' configure.ac`
-  git_num=`git log --pretty=oneline | wc -l | tr -d '[[:space:]]'`
-  git_tag=`git log -1 --format=%h`
-  echo -e "${package_version}.${git_num}.${git_tag}" | sed -e 's:v::' -e 's|-|_|g'
-}
-
 prepare() {
-  cd "${srcdir}/${pkgname}"
-  git checkout stable/2.0
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   patch -p1 -i "${srcdir}/${pkgname}_systemd_arch.patch"
 
   autoreconf -fvi
@@ -59,12 +49,12 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   install -Dm0644 "zebra/GNOME-PRODUCT-ZEBRA-MIB" "${pkgdir}/usr/share/snmp/mibs/GNOME-PRODUCT-ZEBRA-MIB"
 
