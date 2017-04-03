@@ -2,9 +2,9 @@
 
 pkgname=crimson
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc='Crimson Fields is a turn-based tactical war game. It can be played against a human opponent in hot-seat mode in front of the same machine, over a network, or via e-mail, or against the computer.'
+pkgdesc='Turn-based tactical war game with a hex grid and multiplayer support'
 arch=('i686' 'x86_64')
 url="http://crimson.seul.org"
 license=('GPL')
