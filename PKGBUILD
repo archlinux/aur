@@ -2,8 +2,8 @@
 
 pkgname=aegir-hostmaster
 _pkgname=${pkgname#aegir-}
-pkgver=7.x_3.9
-pkgrel=6
+pkgver=7.x_3.10
+pkgrel=1
 pkgdesc="mass Drupal hosting system - frontend"
 arch=('any')
 url='http://aegirproject.org'
@@ -18,7 +18,7 @@ source=("https://ftp.drupal.org/files/projects/$_pkgname-${pkgver//_/-}-no-core.
         'hosting_https'::'git+https://gitlab.com/aegir/hosting_https.git'
         hosting_https-pkg-info.patch
         hosting-hook_hosting_TASK_OBJECT_context_options-2846897-2.patch)
-md5sums=('6d27c8b0de71db7c6e2b041da25c5fef'
+md5sums=('f2c4bbde18c7b7d04d74a5c4f6615502'
          '19561aa1a0f2e549acf5c44a8cad8e14'
          'f06c912eb4edbd48fbcc2867516726a3'
          '3068cbe488075ae166e23ea6cd29cf0f'
@@ -28,7 +28,6 @@ md5sums=('6d27c8b0de71db7c6e2b041da25c5fef'
 
 prepare() {
   patch --directory=hosting_https --strip=1 < hosting_https-pkg-info.patch
-  patch --directory="$_pkgname/modules/aegir/hosting" --strip=1 < hosting-hook_hosting_TASK_OBJECT_context_options-2846897-2.patch
 
   local -A expr=(
     [nginx_stub]='/\/etc\/init.d\/nginx/c \    return "sudo /usr/bin/systemctl try-reload-or-restart httpd.service";''/\/etc\/init.d\/nginx/c \    return "sudo /usr/bin/systemctl try-reload-or-restart httpd.service";'
@@ -52,7 +51,7 @@ package() {
   install -d "$pkgdir/var/lib/$_pkgname/sites/all/modules"
   install -d "$pkgdir/var/lib/$_pkgname/sites/all/modules/hosting_https/submodules/letsencrypt/drush/bin/letsencrypt/$_pkgname"
 
-  cp -a drupal-7.53/* "$pkgdir/usr/share/webapps/$_pkgname"
+  cp -a drupal-7.54/* "$pkgdir/usr/share/webapps/$_pkgname"
   cp -a $_pkgname "$pkgdir/usr/share/webapps/$_pkgname/profiles/$_pkgname"
   [ -d "$pkgdir/var/lib/$_pkgname" ] && rm --recursive "$pkgdir/var/lib/$_pkgname/sites"
   mv "$pkgdir/usr/share/webapps/$_pkgname/sites" "$pkgdir/var/lib/$_pkgname"
