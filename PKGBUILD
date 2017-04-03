@@ -11,7 +11,7 @@ pkgbase=lib32-$_pkgbasename
 pkgname=('lib32-catalyst-utils' 'lib32-catalyst-libgl' 'lib32-opencl-catalyst')
 
 pkgver=15.9
-pkgrel=7
+pkgrel=8
 _amdver=15.201.1151
 url="http://www.amd.com"
 arch=(x86_64)
@@ -31,8 +31,8 @@ build() {
 
 package_lib32-catalyst-libgl() {
       pkgdesc="AMD/ATI drivers. Catalyst drivers libraries symlinks (32-bit)"
-      depends=('lib32-catalyst-utils' 'lib32-mesa')
-      conflicts=('lib32-libgl' 'lib32-mesa-libgl' 'lib32-mesa-libgl-git' 'lib32-libgles' 'lib32-libegl')
+      depends=('lib32-catalyst-utils' 'lib32-mesa-noglvnd')
+      conflicts=('lib32-libgl' 'lib32-mesa-libgl' 'lib32-mesa-libgl-git' 'lib32-libgles' 'lib32-libegl' 'lib32-libglvnd')
       provides=('lib32-libgl' 'lib32-mesa-libgl' 'lib32-mesa-libgl-git' 'lib32-libgles' 'lib32-libegl')
       install=lib32-catalyst-libgl.install
 

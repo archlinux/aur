@@ -1,6 +1,6 @@
 pkgbase = lib32-catalyst-utils
 	pkgver = 15.9
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.amd.com
 	arch = x86_64
 	license = custom
@@ -30,7 +30,7 @@ pkgname = lib32-catalyst-libgl
 	pkgdesc = AMD/ATI drivers. Catalyst drivers libraries symlinks (32-bit)
 	install = lib32-catalyst-libgl.install
 	depends = lib32-catalyst-utils
-	depends = lib32-mesa
+	depends = lib32-mesa-noglvnd
 	provides = lib32-libgl
 	provides = lib32-mesa-libgl
 	provides = lib32-mesa-libgl-git
@@ -41,6 +41,7 @@ pkgname = lib32-catalyst-libgl
 	conflicts = lib32-mesa-libgl-git
 	conflicts = lib32-libgles
 	conflicts = lib32-libegl
+	conflicts = lib32-libglvnd
 
 pkgname = lib32-opencl-catalyst
 	pkgdesc = AMD/ATI drivers. OpenCL implemention for AMD Catalyst (32-bit)
