@@ -1,9 +1,8 @@
-# Maintainer: Sander Zuidema <archlinux at grunny dot demon dot nl>
-# Contributor: Lukas Grossar <lukas dot grossar at gmail dot com>
+# Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
 pkgname=moneydance
-pkgver=2017.1584
-pkgrel=3
+pkgver=2017.1597
+pkgrel=1
 epoch=
 pkgdesc="A personal finance manager for Mac, Windows and Linux"
 arch=('i686' 'x86_64')
@@ -39,7 +38,7 @@ package() {
   install -m755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname" || return 1
 
   # copy Mac icon since they're higher res
-  
+
   cd "$srcdir/Moneydance/jars"
   bsdcpio --extract --make-directories "com/moneydance/apps/md/view/gui/glyphs/appicon_128.png" < $pkgname.jar || return 1
 
@@ -52,5 +51,5 @@ package() {
 }
 md5sums=('5f95567e5a015721c6a80292d173a9e7'
          'a2c3a2f8a672ca93d52cd8d207aef3a5')
-md5sums_i686=('c0083f3cbe5bf935c724b9f2be1d7dcf')
-md5sums_x86_64=('abc061e6676aa502dd31ba8094b69c1b')
+md5sums_i686=('a238bf03130bdf944fecd1fcf2ab8bb7')
+md5sums_x86_64=('80ce4c0c690c483bb09cf22d0ac64cab')
