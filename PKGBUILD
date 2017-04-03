@@ -1,10 +1,10 @@
 # Maintainer: not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=bigcty
-pkgver=20161121
+pkgver=20170308
 pkgrel=1
 pkgdesc="The package represents databases of entities (countries), prefixes and callsigns
-        that are used by amateur radio logging software - EVERYDAY LOGGING VERSION."
+        that are used by amateur (ham) radio logging software - EVERYDAY LOGGING VERSION."
 arch=('any')
 conflicts=('cty')
 provides=('cty')
@@ -19,5 +19,5 @@ package() {
 
 	cp -R *.{csv,dat} $pkgdir/usr/share/cty
 }
-md5sums=('74294b241cd49d67b64b155218e5a331')
-sha256sums=('3433ca3b15e78ff2d10d5cb377d58954d9f65a84e290052d6be681dd0ba213b9')
+md5sums=('efef7333188278cbfda691784dcd124e')
+sha256sums=('2c334ded94fdf81419a18daefb70e7bd09531af058ff4d2db9eda81ffc98d997')
