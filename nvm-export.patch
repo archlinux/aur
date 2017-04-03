@@ -1,0 +1,67 @@
+diff --git a/src/base/reconstruction.cc b/src/base/reconstruction.cc
+index 87c96a0..efa65a6 100755
+--- a/src/base/reconstruction.cc
++++ b/src/base/reconstruction.cc
+@@ -1033,7 +1033,7 @@ void Reconstruction::ImportPLY(const std::string& path) {
+   }
+ }
+ 
+-bool Reconstruction::ExportNVM(const std::string& path) const {
++bool Reconstruction::ExportNVM(const std::string& path, const std::string& image_path) const {
+   std::ofstream file(path.c_str(), std::ios::trunc);
+   CHECK(file.is_open());
+ 
+@@ -1060,7 +1060,13 @@ bool Reconstruction::ExportNVM(const std::string& path) const {
+         -1 * camera.Params(SimpleRadialCameraModel::extra_params_idxs[0]);
+     const Eigen::Vector3d proj_center = image.ProjectionCenter();
+ 
+-    file << image.Name() << " ";
++    //fix white space in nvm path acordingly
++    std::string image_path_nvm = image_path ;
++    std::transform(image_path_nvm.begin(), image_path_nvm.end(), image_path_nvm.begin(), [](char ch) {
++    	return ch == ' ' ? '"' : ch;
++    });
++
++    file << JoinPaths(image_path_nvm, image.Name()) << " ";
+     file << f << " ";
+     file << image.Qvec(0) << " ";
+     file << image.Qvec(1) << " ";
+diff --git a/src/base/reconstruction.h b/src/base/reconstruction.h
+index 4118509..3fd7e0b 100755
+--- a/src/base/reconstruction.h
++++ b/src/base/reconstruction.h
+@@ -230,7 +230,7 @@ class Reconstruction {
+   void ImportPLY(const std::string& path);
+ 
+   // Export to other data formats.
+-  bool ExportNVM(const std::string& path) const;
++  bool ExportNVM(const std::string& path,const std::string& image_path) const;
+   bool ExportBundler(const std::string& path,
+                      const std::string& list_path) const;
+   void ExportPLY(const std::string& path) const;
+diff --git a/src/exe/model_converter.cc b/src/exe/model_converter.cc
+index 1328c24..8039c9a 100755
+--- a/src/exe/model_converter.cc
++++ b/src/exe/model_converter.cc
+@@ -45,7 +45,7 @@ int main(int argc, char** argv) {
+   reconstruction.Read(input_path);
+ 
+   if (output_type == "NVM") {
+-    reconstruction.ExportNVM(output_path);
++    reconstruction.ExportNVM(output_path,*options.image_path);
+   } else if (output_type == "Bundler") {
+     reconstruction.ExportBundler(output_path + ".bundle.out",
+                                  output_path + ".list.txt");
+diff --git a/src/ui/main_window.cc b/src/ui/main_window.cc
+index ade5d4e..2b0f5da 100755
+--- a/src/ui/main_window.cc
++++ b/src/ui/main_window.cc
+@@ -783,7 +783,7 @@ void MainWindow::ExportAs() {
+     const Reconstruction& reconstruction =
+         reconstruction_manager_.Get(SelectedReconstructionIdx());
+     if (filter == "NVM (*.nvm)") {
+-      reconstruction.ExportNVM(path);
++      reconstruction.ExportNVM(path,*options_.image_path);
+     } else if (filter == "Bundler (*.out)") {
+       reconstruction.ExportBundler(path, path + ".list.txt");
+     } else if (filter == "PLY (*.ply)") {

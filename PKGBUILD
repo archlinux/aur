@@ -1,7 +1,7 @@
 # Maintainer: bartus szczepaniak <aur@bartus.33mail.com>
 name=colmap
 pkgname=${name}-git
-pkgver=2.1.r95.g1c031a6
+pkgver=2.1.r115.g7eceea5
 pkgrel=1
 pkgdesc="COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
@@ -15,6 +15,7 @@ provides=()
 options=()
 install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/colmap/colmap.git"
+        "nvm-export.patch"
         "${pkgname}.install"
         "${name}.desktop"
         "vocabulary-tree-64K.bin::http://people.inf.ethz.ch/jschoenb/colmap/2.1/vocab_tree-65536.bin"
@@ -22,6 +23,7 @@ source=("${pkgname}::git+https://github.com/colmap/colmap.git"
         "vocabulary-tree-1M.bin::http://people.inf.ethz.ch/jschoenb/colmap/2.1/vocab_tree-1048576.bin"
         )
 md5sums=('SKIP'
+         'a59344b125e438a446f4ae1e747ea150'
          'ebb1dc43e014a1e720a06422c6248a40'
          '55d81534d969cf706719007462f20443'
          '3521ff3c601596473c6ce5256772f606'
@@ -31,6 +33,11 @@ md5sums=('SKIP'
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd ${srcdir}/${pkgname}
+  patch -Np1 -i ../nvm-export.patch
 }
 
 
