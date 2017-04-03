@@ -2,7 +2,7 @@
 # Contributor: Josh VanderLinden <arch@cloudlery.com>
 
 pkgname=execline
-pkgver=2.1.5.0
+pkgver=2.3.0.0
 pkgrel=1
 pkgdesc="A (non-interactive) scripting language, like sh"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('skalibs')
 #/usr/bin/import conflicts
 conflicts=('imagemagick')
 source=("http://skarnet.org/software/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('8a3605a6db73183baa376bf2130e8b7eb75a5b5347c7f9144e520fe86bcb1142')
+sha256sums=('a0ec43b8feba299cc1e5c65b1978ed76571afa595bc53165373e29a57468f425')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
