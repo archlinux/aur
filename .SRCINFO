@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-linefollower-msgs
 	pkgdesc = ROS - linefollower_msgs provides messages for linefollower plugin in stage
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 0
 	arch = any
 	license = GPLv2
