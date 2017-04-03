@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=rapid-photo-downloader-bzr
-pkgver=r842
+pkgver=0.9.0b1.r898
 pkgrel=1
 pkgdesc="Photo and video downloader"
 arch=('any')
@@ -23,7 +23,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd rapid
-  printf "r%s" "$(bzr revno)"
+  version=$(grep -oP "__version__ = '\K[^']+" raphodo/__about__.py)
+  printf "%s.r%s" "$version" "$(bzr revno)"
 }
 
 build() {
@@ -33,5 +34,5 @@ build() {
 
 package() {
   cd rapid
-  python setup.py install --root="${pkgdir}"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
