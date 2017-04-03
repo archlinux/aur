@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nomad
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="A Distributed, Highly Available, Datacenter-Aware Scheduler"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=(
 backup=(etc/nomad/{server,client}.conf)
 source=(https://github.com/hashicorp/nomad/archive/v$pkgver/$pkgname-$pkgver.tar.gz
         nomad-{server,client}.{service,conf})
-sha256sums=('250c2bbd06ebfb03a8fe747455855af02e3f318724ba01762ab609e4ae600097'
+sha256sums=('e5f223d6309b7eecd8c3269f4c375ffedf0db8e5a9230b4b287d2de63c461616'
             '52b0a22c3c0c72c642a8728cb48bd8797f4f6a12990e11bbb2342edcc2a9a206'
             'da475bc4aa3b1493eb62f09e7f99dcc171e8ce6d74df3da30514cfdfe72a5714'
             '4c8fb7c18c67ca20e3ee07f25cf2f0c82b66c4c173275ae8d643c91cce3c0ceb'
