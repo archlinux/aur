@@ -2,8 +2,8 @@
 
 pkgname=python2-osdetect
 pkgname_upstream=OSDetect
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="A Python 2 module to detect the operating system."
 arch=(any)
 url="http://malte70.github.com/OSDetect"
@@ -11,7 +11,7 @@ license=("BSD")
 depends=("python2")
 makedepends=("python2-distribute")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/malte70/$pkgname_upstream/archive/$pkgver.tar.gz")
-sha1sums=('7f26b9370af116c3885a2ed8676483a9c37e0887')
+sha1sums=('085b12a986c18d7dc258906fcfaf3aa4a85c7bcd')
 
 package() {
 	cd "${srcdir}/$pkgname_upstream-${pkgver}"
