@@ -1,20 +1,21 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 # Contributor: Alexey Rochev <equeim at gmail dot com>
 
-_gtk=2
+_gtk=3
 _pkgname=snw-plugin
 pkgname="xfce4-${_pkgname}"
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/equeim/snw-plugin"
 pkgdesc="Xfce panel plugin to show StatusNotifierItems (AppIndicators)"
 arch=('i686' 'x86_64')
 license=('GPL3')
+depends=('xfce4-panel')
 if [[ ${_gtk} -eq 3 ]] ; then
-	depends=('libdbusmenu-gtk3' 'xfce4-panel-git')
+	depends+=('libdbusmenu-gtk3')
 	_gtkflag="--gtk3"
 else
-	depends=('libdbusmenu-gtk2' 'xfce4-panel')
+	depends+=('libdbusmenu-gtk2')
 	_gtkflag=""
 fi
 makedepends=('vala' 'python' 'intltool')
