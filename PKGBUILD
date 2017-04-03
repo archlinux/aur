@@ -1,15 +1,15 @@
 # Maintainer: Cyano Hao < c at cyano dot cn >
 # Contributor: Jose Riha
 
-# $Id: PKGBUILD 291243 2017-03-24 07:59:53Z tpowa $
+# $Id: PKGBUILD 291948 2017-03-31 16:11:31Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-pae       # Build kernel with a different name
 _srcname=linux-4.10
-pkgver=4.10.5
+pkgver=4.10.8
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('i686')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
@@ -27,9 +27,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
             'SKIP'
-            '03c64409653b19d39af54c8781fde0a3747ba16577c9e5b0e1031e5d8fc29db6'
+            'ceb385486e34084dd53425e5ba50b9fba4a8e380d8f2815bfde142852d797da0'
             'SKIP'
-            '32a4f2443736e984a8e8bab60a9bec14c3000ce3add7d8d39699440b1d41a59e'
+            'f7fdea891aff7373c2a8ee25b4c4e5c9816e70d85a7701d3cc41b663c3172cdd'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 validpgpkeys=(
