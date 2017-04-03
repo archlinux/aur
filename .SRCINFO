@@ -1,12 +1,14 @@
 pkgbase = hpp-model-urdf
 	pkgdesc = Implements a library that allows you to load an hpp-model robot by parsing an urdf robot model file.
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/humanoid-path-planner/hpp-model-urdf
 	arch = i686
 	arch = x86_64
 	license = LGPL3
 	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
 	depends = assimp
 	depends = hpp-util-git
 	depends = hpp-model
