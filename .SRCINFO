@@ -1,0 +1,16 @@
+pkgbase = mpy-utils
+	pkgdesc = Utility programs for Micropython
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/nickzoic/mpy-utils
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyserial
+	depends = python-fusepy
+	source = mpy-utils-0.1.5.tar.gz::https://github.com/nickzoic/mpy-utils/archive/v0.1.5.tar.gz
+	sha256sums = 44059a9db90659bc6d96f3f9f4621951fe6452529f037dc08b480c278d97faa5
+
+pkgname = mpy-utils
+
