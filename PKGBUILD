@@ -11,11 +11,11 @@ makedepends=('nuget'
              'git')
 depends=('ffmpeg'
          'libglvnd'
-		 'mono')
+         'mono')
 optdepends=()
 provides=('osu-lazer')
 conflicts=('osu-lazer')
-source=("git+https://github.com/ppy/osu.git"
+source=('git+https://github.com/ppy/osu.git'
         'osu-launcher')
 sha256sums=('SKIP'
             'c499dbff1d9a8f382e7b3cf4a95b58b9f02fb98e66e50cddb5d7d6c8a5223d2d')
