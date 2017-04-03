@@ -1,0 +1,11 @@
+diff -Naur i8kutils/i8kmon new/i8kmon
+--- i8kutils/i8kmon	2015-05-21 11:33:21.596018503 +0200
++++ new/i8kmon	2015-05-21 11:35:11.958867344 +0200
+@@ -430,6 +430,7 @@
+ 
+ proc toggle_fan {fan {speed {}}} {
+     global status
++    global config
+ 
+     if {$speed != {}} {
+ 	set status($fan) $speed
