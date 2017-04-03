@@ -1,8 +1,8 @@
 # Maintainer: gavin lyons <glyons66@hotmail.com>
 # https://github.com/gavinlyonsrepo/cylon
 pkgname=cylon
-pkgver=3.4
-pkgrel=5
+pkgver=3.5
+pkgrel=6
 pkgdesc="Updates, Maintenance, backup and system checks in a menu driven Bash script"
 arch=('any')
 url="https://github.com/gavinlyonsrepo/cylon"
@@ -12,7 +12,7 @@ optdepends=(
   'gdrive: AUR package for google drive backup'
   'lostfiles: AUR package for finding lost files'
   'pacaur: AUR helper'
-  'arch-audit: AUR package collect CVE data'
+  'arch-audit: collect CVE data'
   'rmlint: Finds lint and other unwanted'
   'rkhunter: finds root kits malware'
   'clamav: used for finding malware'
@@ -29,7 +29,7 @@ optdepends=(
 )
 source=("https://github.com/gavinlyonsrepo/cylon/archive/$pkgver.tar.gz")
 
-md5sums=('51d901fff1edf21b3627379232dcb6c4')
+md5sums=('59485498e0045e15cdfcbeee8da68911')
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
     install -D -m755 Cylon.sh "$pkgdir"/usr/bin/"${pkgname}" 
