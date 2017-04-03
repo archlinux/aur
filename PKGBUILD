@@ -1,8 +1,8 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 pkgname=energyplus
-pkgver=8.6.0
+pkgver=8.7.0
 pkgrel=1
-_relcode='198c6a3cff'
+_relcode='78a111df4a'
 install="$pkgname.install"
 pkgdesc="A building energy simulation engine to model energy and water use in buildings"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('GPL')
 # source=("https://github.com/NREL/EnergyPlus/archive/v$pkgver.$pkgrel.tar.gz")
 # md5sums=('761fc37599eb6e83af0e133472959dd8')
 source=("https://github.com/NREL/EnergyPlus/releases/download/v$pkgver/EnergyPlus-$pkgver-$_relcode-Linux-x86_64.sh")
-md5sums=('0110b083bd4452e2d40f9086c483d26a')
+md5sums=('67faf50b999af9add4c50e0831ebee51')
 
 install_script=EnergyPlus-$pkgver-$_relcode-Linux-x86_64.sh
 
