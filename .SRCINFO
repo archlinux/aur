@@ -1,0 +1,20 @@
+pkgbase = hpp-pinocchio-git
+	pkgdesc = Refactoring of hpp-model using the kinematic tree of pinocchio
+	pkgver = 4.0.1.
+	pkgrel = 1
+	url = https://github.com/humanoid-path-planner/hpp-pinocchio
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = doxygen
+	depends = boost
+	depends = pinocchio
+	provides = hpp-pinocchio
+	conflicts = hpp-pinocchio
+	source = hpp-pinocchio::git://github.com/humanoid-path-planner/hpp-pinocchio.git
+	md5sums = SKIP
+
+pkgname = hpp-pinocchio-git
+
