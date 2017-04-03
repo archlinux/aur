@@ -2,8 +2,8 @@
 # Original Contributor: Bob Finch <w9ya@arrl.net>
 
 pkgname=xfhell
-pkgver=3.2
-pkgrel=2
+pkgver=3.3
+pkgrel=1
 pkgdesc="Ham Radio - GTK+ app - de/en-codes Hellschreiber signals."
 arch=('i686' 'x86_64')
 url="http://www.qsl.net/5b4az/pkg/xfhell/xfhell.html"
@@ -57,13 +57,13 @@ package() {
 	mv $pkgdir/usr/bin/$pkgname $pkgdir/usr/bin/$pkgname.1
 	install -D -m 755 ../$pkgname.1 $pkgdir/usr/bin/$pkgname
 }
-md5sums=('7119dee2d51402fea2d036f210c22a59'
+md5sums=('4bf34e4ba47ee886e47bd1d631f6a4c5'
          '0dc3caa8b1acd87b453bd0acef17b034'
          'f5b10bc9c510cb359b6cb626d628aab9'
          '9a3568a6dbdd2bfb90aa76adf2dc531f'
          'edcd3f301ec8ea95453d40534beb6ede'
          'f1b4aee1d96afc2a5aa2aed475914ce4')
-sha256sums=('2cdfd266f866d439d991fc9a7cabc9f2d504812e0da4764aff3c7be8ebe49d8a'
+sha256sums=('527f3139ece4596de6c83a8504da8c13b45359b25661d9a56c10eb30d3a92c21'
             '335a1b0407d45a2abd6260564ca50bea04e02485cc41c59a835341fa0e5dd1ee'
             '2484d70e867515fbe49fff2463a1ef8ecee02f1feb36ef4deec8fd24fcea0f7b'
             'a4bdba7b601bace48e15bd2dc6f0daadd8a10511242cbb2fdc17bf78a19647b5'
