@@ -3,7 +3,7 @@
 pkgdesc="ROS - linefollower_msgs provides messages for linefollower plugin in stage"
 
 pkgname='ros-kinetic-linefollower-msgs'
-pkgver='0.1.0'
+pkgver='0.1.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=0
