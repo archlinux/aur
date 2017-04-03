@@ -1,7 +1,7 @@
 pkgbase = iproute2-selinux
 	pkgdesc = IP Routing Utilities with SELinux support
 	pkgver = 4.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2
 	arch = i686
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgname = iproute2-selinux
 	depends = libselinux
 	optdepends = linux-atm: ATM support
 	provides = iproute
-	provides = iproute2=4.10.0-2
+	provides = iproute2=4.10.0-3
 	conflicts = iproute
 	conflicts = iproute2
 	replaces = iproute
