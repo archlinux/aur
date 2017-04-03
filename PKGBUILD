@@ -1,11 +1,11 @@
-# Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 # Contributor:  TDY <tdy@gmx.com>
 # Contributor: François Charette <firmicus ατ gmx δοτ net>
 
 _author='R/RS/RSCHUPP'
 _perlmod=PAR
 pkgname=perl-par
-pkgver=1.009
+pkgver=1.014
 pkgrel=1
 pkgdesc="Perl Archive Toolkit"
 arch=('any')
@@ -19,15 +19,13 @@ perl-par-setuptemp
 )
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('c809acc253d98fe37b6dacd790f8a63315845d873a6b1bc9f2580e709eaccb21')
+sha256sums=('a8a6ebb9130e0466fce4eec9db7e666531d25a6eb818eff83963dc685942ed4b')
+prepare(){
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
+}
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
-
-  # Install module in vendor directories.
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
   /usr/bin/perl Makefile.PL
   make
 }
