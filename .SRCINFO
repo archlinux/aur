@@ -1,7 +1,7 @@
 pkgbase = lastpass
 	pkgdesc = The Universal LastPass installer for Firefox, Chrome, and Opera
 	pkgver = 4.1.44
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lastpass.com
 	install = lastpass.install
 	arch = i686

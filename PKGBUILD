@@ -6,7 +6,7 @@ _universal=$pkgver    # Version of the universal installer: https://lastpass.com
 _chromver=4.1.45      # The actual extensions' versions
 _chromver_lib=4.1.23
 _ffver=4.1.44a
-pkgrel=2
+pkgrel=3
 pkgdesc="The Universal LastPass installer for Firefox, Chrome, and Opera"
 arch=('i686' 'x86_64')
 url="https://lastpass.com"
@@ -58,7 +58,7 @@ prepare() {
 
 _chrome_package() {
     # Install to single place for linking
-    install -Dm644 lpchrome_linux_$_chromver.crx "$pkgdir"/usr/share/lastpass/lpchrome_linux_$_chromver.crx
+    install -Dm644 lpchrome_$_chromver.crx "$pkgdir"/usr/share/lastpass/lpchrome_linux_$_chromver.crx
     install -Dm755 lplinux/nplastpass$_64 "$pkgdir"/etc/opt/chrome/native-messaging-hosts/nplastpass$_64
 
     # 64-bit?
@@ -76,9 +76,8 @@ _chrome_package() {
 
 _firefox_package() {
     # Extension + profiles.ini go to $HOME, so do this in .install
-    for i in lp4_$_ffver.xpi profiles.ini; do
-        install -Dm644 $i "$pkgdir"/usr/share/lastpass/$i
-    done
+    install -Dm644 lpfirefox_$_ffver.xpi "$pkgdir"/usr/share/lastpass/lp4_$_ffver.xpi
+    install -Dm644 profiles.ini "$pkgdir"/usr/share/lastpass/profiles.ini
 
     # Binary plugin
     #bsdtar -xf lpchrome_linux_${_chromver_lib}.crx libnplastpass$_64.so
