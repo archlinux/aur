@@ -1,29 +1,27 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=('python-easywebdav' 'python2-easywebdav')
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A straight-forward WebDAV client, implemented using Requests"
 arch=('any')
 url="https://pypi.python.org/pypi/easywebdav"
 license=('custom:ISC')
-makedepends=('python2-setuptools' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://pypi.python.org/packages/a7/de/fe77955c0a389da729ac113c5ad2c11e521e8392868531abde28d411f2ab/easywebdav-${pkgver}.tar.gz"
         "LICENSE")
 sha512sums=('f5c077f12625a2bc919032ff02f72ede2b53f8850304cd70d69bf10ce5103991570b2d4bce76ca77f5fba91b959ad206004fbbc8d1d25391439e78999df84f19'
             '34efbcffa986b9aa33c50275c3a9887052b89dc5e3556ac30db8e74f0575f6092de7853f43aef788eaebf669f076fb0cfbdae066c1858a65d3ebef6ef38dbd1b')
 
-prepare_python-easywebdav() {
-    sed -i 's/basestring/str/g' easywebdav/client.py
-}
-
 package_python-easywebdav() {
+    makedepends=('python-setuptools')
     depends=('python-requests')
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     cd "$srcdir/easywebdav-${pkgver}"
+    sed -i 's/basestring/str/g' easywebdav/client.py
     python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1;
 }
 
 package_python2-easywebdav() {
+    makedepends=('python2-setuptools')
     depends=('python2-requests')
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     cd "$srcdir/easywebdav-${pkgver}"
