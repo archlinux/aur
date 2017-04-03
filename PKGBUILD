@@ -3,9 +3,9 @@
 # Contributor: listx <linusarver <at> gmail <dot> com>
 
 pkgname=sdlmame-cheats
-pkgver=0.174
+pkgver=0.184
 pkgrel=1
-_srcver=0174
+_srcver=0184
 pkgdesc='Official XML Cheat Collection for MAME'
 url='http://www.mamecheat.co.uk/'
 license=('unknown')
@@ -13,7 +13,7 @@ arch=('any')
 depends=('sdlmame>=0.145u1') # XML cheat engine since 0.127, 7z support since 0.145u1
 optdepends=("sdlmame>=$pkgver: this package is best used with an up-to-date version of sdlmame.")
 makedepends=('unzip')
-source=("http://cheat.retrogames.com/download/cheat${_srcver}.zip")
+source=("http://pugsy.myzen.co.uk/download/cheat${_srcver}.zip")
 install=sdlmame-cheats.install
 sha1sums=('SKIP')
 
