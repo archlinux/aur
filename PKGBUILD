@@ -10,9 +10,9 @@ conflicts=("${_pkgbase}")
 url="https://scrapinghub.com/"
 license=("BSD")
 provides=("shub=${pkgver}")
+optdepends=('python-scrapy: scrapy python script.')
 
 source=("https://github.com/scrapinghub/shub/releases/download/v2.5.1/shub-v${pkgver}-linux-x64.tar.gz")
-
 sha256sums=("5e449fa2378f6f32b047aac2efd981d462440b70e762fa3eceff0a28347a3842")
 
 package() {
