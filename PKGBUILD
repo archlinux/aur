@@ -38,11 +38,11 @@ optdepends=(
 )
 
 package() {
-	OPT_PATH="opt/${_pkgname}"
+	OPT_PATH="opt/${pkgname}"
 	install -d $pkgdir/{usr/{bin,share/{applications,pixmaps}},opt}
 	cp -r firefox $pkgdir/${OPT_PATH}
 
-	ln -s ${OPT_PATH}/firefox $pkgdir/usr/bin/{$_name}-${_channel}
+	ln -s /${OPT_PATH}/firefox $pkgdir/usr/bin/{$_name}-${_channel}
 	# Icons
 	SRC_LOC="${srcdir}"/${_name}/browser
 	DEST_LOC="${pkgdir}"/usr/share/icons/hicolor
