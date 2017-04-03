@@ -23,17 +23,41 @@ license=('GPL')
 provides=('qtcreator')
 conflicts=('qtcreator')
 depends=('qt5-tools' 'qt5-declarative' 'qt5-script' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-webengine' 'clang' 'qbs')
+optdepends=('qt5-doc: integrated Qt documentation'
+            'qt5-examples: welcome page examples'
+            'qt5-translations: for other languages'
+            'gdb: debugger'
+            'cmake: cmake project support'
+            'openssh-askpass: ssh support'
+            'git: git support'
+            'mercurial: mercurial support'
+            'bzr: bazaar support'
+            'valgrind: analyze support')
 makedepends=('clang' 'qt5-base')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
 sha256sums=('9f5e28747281a2e75e5f875d37fad9422ee264357b2e752c450dad5b568229e2')
 
 build() {
-  cd "$srcdir/${_filename}"
-  QMAKESPEC=linux-clang qmake -r QTC_PREFIX=/usr qtcreator.pro ${_qmake_args}
+  local src_dir=${startdir}/src/
+  [[ -d build ]] && rm -r build
+  mkdir build && cd build
+
+  QMAKESPEC=linux-clang QTC_PREFIX=/usr LLVM_INSTALL_DIR=/usr QBS_INSTALL_DIR=/usr qmake QMAKE_CFLAGS_ISYSTEM=-I CONFIG+=journald -r ../${_filename}/qtcreator.pro
   make
+  make docs -j1
 }
 
 package() {
-  cd "$srcdir/${_filename}"
-  INSTALL_ROOT="$pkgdir" make install
+  cd build
+
+  make INSTALL_ROOT="${pkgdir}/usr/" install
+  make INSTALL_ROOT="${pkgdir}/usr/" install_docs
+
+  # Workaround for FS#40583
+  mv "${pkgdir}"/usr/bin/qtcreator "${pkgdir}"/usr/bin/qtcreator-bin
+  echo "#!/bin/sh" > "${pkgdir}"/usr/bin/qtcreator
+  echo "QT_LOGGING_TO_CONSOLE=1 qtcreator-bin \$@" >> "${pkgdir}"/usr/bin/qtcreator
+  chmod +x "${pkgdir}"/usr/bin/qtcreator
+
+  install -Dm644 ${srcdir}/${_filename}/LICENSE.GPL3-EXCEPT ${pkgdir}/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT
 }
