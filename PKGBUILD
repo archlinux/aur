@@ -6,7 +6,7 @@ pkgname=fontconfig-infinality
 _pkgname=fontconfig-ultimate
 _commit='36b60ecefe1fd0e042cad51105b0ffb29315e577'
 pkgver=2.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fontconfig is a library for configuring and customizing font access, patched with infinality patches."
 arch=('armv7h' 'i686' 'x86_64')
 license=('GPL')
@@ -19,14 +19,19 @@ provides=("fontconfig=${pkgver}")
 install='install.sh'
 source=("http://www.freedesktop.org/software/fontconfig/release/fontconfig-${pkgver}.tar.bz2"
         "90-fc-cache-ib.hook"
-        "git://github.com/bohoomil/fontconfig-ultimate.git#commit=${_commit}")
+        "git://github.com/bohoomil/fontconfig-ultimate.git#commit=${_commit}"
+        "https://raw.githubusercontent.com/voidlinux/void-packages/60e7edd3ccb79c5e4e7944a7f69050e5371a064f/srcpkgs/fontconfig/patches/0001-Avoid-conflicts-with-integer-width-macros-from-TS-18.patch")
 sha256sums=('b449a3e10c47e1d1c7a6ec6e2016cca73d3bd68fbbd4f0ae5cc6b573f7d6c7f3'
             '026971a9fac1ee4fb0ef74d5833ce5e12b4645de8ebdf1cadb3cb943cf46abd3'
-            'SKIP')
+            'SKIP'
+            '8fe9afc66332fa72157ab6449fc8cf09619d3be4986b6fde52cfd2db496c278b')
 
 prepare() {
   sed -i 's/10-hinting-slight.conf/10-hinting-$(PREFERRED_HINTING).conf/' \
     "${srcdir}/${_pkgname}/fontconfig_patches/04-Makefile.conf.d.patch"
+
+  cd "${srcdir}/fontconfig-${pkgver}"
+  patch -p0 < '../0001-Avoid-conflicts-with-integer-width-macros-from-TS-18.patch'
 }
 
 build() {
