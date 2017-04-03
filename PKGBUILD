@@ -1,5 +1,5 @@
 pkgname=fusiondirectory-plugin-netgroups-schema
-pkgver=1.0.19
+pkgver=1.0.20
 pkgrel=1
 pkgdesc="LDAP schema for FusionDirectory netgroups plugin"
 arch=("any")
@@ -10,7 +10,7 @@ depends=("fusiondirectory-schema>=$pkgver")
 
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
 "http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
-md5sums=('409aebff6a90aef73cce834485501305' 'a8502cf3ba20477f80de10a59c462c14')
+md5sums=('e5a9c45ef75891f0d56fbe35f147fd0f' '440d1a5461998c8fdf9eee0e5aed5d1e')
 
 package() {
 cd ./fusiondirectory-plugins-${pkgver}
