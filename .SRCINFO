@@ -1,0 +1,19 @@
+pkgbase = python-importanize
+	pkgdesc = Utility for organizing Python imports using PEP8 or custom rules
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/importanize/
+	arch = any
+	license = MIT
+	depends = python
+	source = https://pypi.python.org/packages/source/i/importanize/importanize-0.4.1.tar.gz
+	md5sums = 84eb9e9087c17676f8b2e5cb2668b2dd
+
+pkgname = python-importanize
+	pkgdesc = Python 3 client for importanize
+	depends = python
+
+pkgname = python2-importanize
+	pkgdesc = Python 2 client for importanize
+	depends = python2
+
