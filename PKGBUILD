@@ -3,8 +3,8 @@
 # Maintainer: Yegorius <yegorius@domic.us>
 
 pkgname=jetty
-pkgver=9.3.13
-_timestamp=v20161014
+pkgver=9.4.3
+_timestamp=v20170317
 pkgrel=1
 pkgdesc="Jetty is a pure Java-based HTTP server and Java Servlet container"
 arch=('any')
@@ -17,13 +17,11 @@ _dluri="http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/$pkgv
 source=("$_distname.tar.gz::$_dluri"
 	jetty.default
 	jetty.logrotate
-	jetty.service
-	rundir.patch)
-sha256sums=('f10a8ef66cf1d24f06baeb8061d8fe2b6550921a1e5c05d94f59e269c267a515'
+	jetty.service)
+sha256sums=('d23be69b99c4178a15bda229ef45ca9a0b3b4e2e29445cfcd7e7f50ee22a15bb'
             'e5b425043a379bde57fd37c498ff8efb822325b7606b149cc09a53737ab4297d'
             'da0402440e0a3b66e55387700b2c178c294dc65cc4a7bd079c622343845adecb'
-            '36266b7f4daf20871f4bf5636686e37fa5ffd173fd51303f2569fc8d453fa17a'
-            '596bb12d69ec25eba94b911619597786b246c6c867e9ce1e75f1585cd93663bf')
+            '36266b7f4daf20871f4bf5636686e37fa5ffd173fd51303f2569fc8d453fa17a')
 install=$pkgname.install
 
 package() {
@@ -51,7 +49,6 @@ package() {
 	install -Dm644 "$srcdir/jetty.logrotate" "$pkgdir/etc/logrotate.d/jetty"
 	install -Dm644 "$srcdir/jetty.service" "$pkgdir/usr/lib/systemd/system/jetty.service"
 
-	patch -Np1 -i "$srcdir/rundir.patch" "$pkgdir/usr/share/jetty/bin/jetty.sh"
 	sed -i 's|su - |su -s /bin/sh - |' "$pkgdir/usr/share/jetty/bin/jetty.sh"
 
 	rm "$pkgdir/usr/share/jetty/lib/setuid/libsetuid-osx.so"

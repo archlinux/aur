@@ -1,6 +1,6 @@
 pkgbase = jetty
 	pkgdesc = Jetty is a pure Java-based HTTP server and Java Servlet container
-	pkgver = 9.3.13
+	pkgver = 9.4.3
 	pkgrel = 1
 	url = http://www.eclipse.org/jetty/
 	install = jetty.install
@@ -9,16 +9,14 @@ pkgbase = jetty
 	license = EPL
 	depends = java-environment
 	options = !strip
-	source = jetty-distribution-9.3.13.v20161014.tar.gz::http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.3.13.v20161014/jetty-distribution-9.3.13.v20161014.tar.gz
+	source = jetty-distribution-9.4.3.v20170317.tar.gz::http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.4.3.v20170317/jetty-distribution-9.4.3.v20170317.tar.gz
 	source = jetty.default
 	source = jetty.logrotate
 	source = jetty.service
-	source = rundir.patch
-	sha256sums = f10a8ef66cf1d24f06baeb8061d8fe2b6550921a1e5c05d94f59e269c267a515
+	sha256sums = d23be69b99c4178a15bda229ef45ca9a0b3b4e2e29445cfcd7e7f50ee22a15bb
 	sha256sums = e5b425043a379bde57fd37c498ff8efb822325b7606b149cc09a53737ab4297d
 	sha256sums = da0402440e0a3b66e55387700b2c178c294dc65cc4a7bd079c622343845adecb
 	sha256sums = 36266b7f4daf20871f4bf5636686e37fa5ffd173fd51303f2569fc8d453fa17a
-	sha256sums = 596bb12d69ec25eba94b911619597786b246c6c867e9ce1e75f1585cd93663bf
 
 pkgname = jetty
 
