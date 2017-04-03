@@ -1,0 +1,17 @@
+pkgbase = crimson
+	pkgdesc = Crimson Fields is a turn-based tactical war game. It can be played against a human opponent in hot-seat mode in front of the same machine, over a network, or via e-mail, or against the computer.
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = http://crimson.seul.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl
+	depends = sdl_ttf
+	depends = sdl_mixer
+	depends = sdl_net
+	source = http://crimson.seul.org/files/crimson-0.5.3.tar.gz
+	sha512sums = 56a0c8c3e271f6ca53baaee23c28b594033b2d3e4b22fb4cd58c9858dc2bda556a13d1204cdba607da0a4414affb455b1403dde73e385a1accdd5162ec9e0a89
+
+pkgname = crimson
+
