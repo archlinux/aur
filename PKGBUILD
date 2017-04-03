@@ -1,8 +1,8 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 # Former maintainer: Andrew Lewis <nerf@judo.za.org>
 pkgname=rspamd
-pkgver=1.5.3
-pkgrel=1
+pkgver=1.5.4
+pkgrel=2
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
 arch=('x86_64' 'i686' 'mips64el')
@@ -36,6 +36,7 @@ backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/modules.d/fuzzy_check.conf'
 		'etc/rspamd/modules.d/greylist.conf'
 		'etc/rspamd/modules.d/hfilter.conf'
+		'etc/rspamd/modules.d/history_redis.conf'
 		'etc/rspamd/modules.d/ip_score.conf'
 		'etc/rspamd/modules.d/maillist.conf'
 		'etc/rspamd/modules.d/metadata_exporter.conf'
@@ -80,7 +81,7 @@ source=("https://www.rspamd.com/downloads/${pkgname}-${pkgver}.tar.xz"
 		"${pkgname}.sysuser"
 		)
 
-sha256sums=('a692f7eab27321924c5326efeae809ab2703fdf60b652446e9a232312d8a1e35'
+sha256sums=('f1a1f49a56f893ed9c001bdb64f8941f6babe95c3bd6783ee3edc7fe5d61ec3a'
             'f89edae5436a3c14e58210fb5c1d5bdd2f8a6f98c03dbc150ea9ff1a3fcfe441'
             '59646874a5036f3f26cac2898a2f60713fe6147b3c60ee964494f07b6acc313f')
 
