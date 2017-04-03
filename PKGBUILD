@@ -2,8 +2,8 @@
 pkgbase=openss7-git
 _pkgbase=openss7
 pkgname=('openss7-git' 'openss7-modules-git' 'openss7-modules-lts-git' 'openss7-java-git')
-pkgver=1.1.8.63.g45f1b08cd
-pkgrel=8
+pkgver=1.1.8.64.ga471796a0
+pkgrel=1
 pkgdesc="OpenSS7 Fast-STREAMS and Protocol Suites"
 arch=('x86_64' 'i686')
 url="http://www.openss7.org"
@@ -29,7 +29,7 @@ pkgver() {
 prepare() {
   cd $pkgbase
   echo "$pkgver"|awk 'BEGIN{FS="."}{print$4"."$5}'>.pkgpatchlevel
-  [ -x configure ] || autoreconf -fiv
+  [ -x configure ] || autoreconf -fi
 
   cd "$srcdir"
   cp -au openss7-git openss7-modules-git
