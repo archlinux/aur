@@ -1,0 +1,26 @@
+# Maintainer: Taiki Sugawara <buzz.taiki@gmail.com>
+_npmname=iothub-explorer
+_npmver=1.1.10
+pkgname=nodejs-${_npmname}
+pkgver=${_npmver}
+pkgrel=1
+pkgdesc="A CLI tool to manage device identities in your IoT hub registry, send and receive messages and files from your devices, and monitor your IoT hub operations."
+arch=(any)
+url="https://github.com/Azure/iothub-explorer"
+license=('MIT')
+depends=('nodejs' 'npm' )
+optdepends=()
+source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
+noextract=($_npmname-$_npmver.tgz)
+sha1sums=('4a6c0e55daa55904219f9b0376144881fcfcc786')
+
+package() {
+  cd $srcdir
+  local _npmdir="$pkgdir/usr/lib/node_modules/"
+  mkdir -p $_npmdir
+  cd $_npmdir
+  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+}
+
+# vim:set ts=2 sw=2 et:
+
