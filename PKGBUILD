@@ -1,7 +1,7 @@
 # Maintainer: Shervin Khastoo <me@shervin.org>
 
 pkgname=openvpn-xor-patched
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="OpenVPN obfuscated with xor-patch which can bypass internet censoring"
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ source=("https://github.com/Tunnelblick/Tunnelblick/raw/master/third_party/sourc
         "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-${pkgver}/patches/04-tunnelblick-openvpn_xorpatch-c.diff"
         "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-${pkgver}/patches/05-tunnelblick-openvpn_xorpatch-d.diff"
         "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-${pkgver}/patches/06-tunnelblick-openvpn_xorpatch-e.diff")
-sha256sums=('f21db525b3c03a9bbd0a7ab6d0e4fbaf8902f238bf53b8bc4e04f834e4e7caa4'
+sha256sums=('831a1a05268fe3b1646d367e2559cff94d347d213ca8995cc48a4eedc452097a'
             '03c19a5753fac87b79c4cb60d0921ec35ccad717002ba9f868d50e43b1a208c3'
             '9bd2c62cfaab9a3764215c9967674a373fdd74ad9e2105e5d1d3ec5f8f5168ea'
             'd3ab6fd2d1cb16a61919645b170ea2332f5672636d99db4fe08f6f2b71e240d5'
