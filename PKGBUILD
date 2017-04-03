@@ -2,7 +2,7 @@
 
 pkgname=particle-cli
 pkgdesc='CLI tool for the Particle hardware platform'
-pkgver=1.19.2
+pkgver=1.21.0
 pkgrel=1
 arch=(any)
 url='http://particle.io/'
@@ -13,7 +13,7 @@ optdepends=('dfu-util: local flashing'
             'openssl: local flashing')
 source=(http://registry.npmjs.org/$pkgname/-/${pkgname}-${pkgver}.tgz)
 noextract=(${pkgname}-${pkgver}.tgz)
-sha256sums=('dcae9489891ffdc55b6d4e36f5dee111bc3ee02cbc677fcf0af06d607b2180f7')
+sha256sums=('f79361778527dc3666f8d0dd8ec5d6596c3c4653a20e37603c3f783de626f340')
 
 package() {
   npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
