@@ -5,7 +5,7 @@
 pkgbase=libc++
 pkgname=(${pkgbase}{,abi,experimental})
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 url="http://libcxx.llvm.org/"
 license=('MIT' 'custom:University of Illinois/NCSA Open Source License')
 arch=('i686' 'x86_64')
@@ -71,6 +71,7 @@ package_libc++abi() {
   pkgdesc='A new implementation of low level support for a standard C++ library'
   cd ${srcdir}/build
   make DESTDIR="${pkgdir}" install-libcxxabi
+  install -Dm644 ${srcdir}/build/include/c++/v1/cxxabi.h "${pkgdir}/usr/include/c++/v1/cxxabi.h"
   install -Dm644 ${srcdir}/llvm/projects/libcxxabi/CREDITS.TXT "${pkgdir}/usr/share/licenses/${pkgname}/CREDITS"
   install -Dm644 ${srcdir}/llvm/projects/libcxxabi/LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
