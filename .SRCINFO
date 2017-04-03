@@ -1,6 +1,6 @@
 pkgbase = solarus
 	pkgdesc = An open-source Zelda-like 2D game engine used by the games zsxd and zsdx.
-	pkgver = 1.5.1
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = http://www.solarus-engine.org/
 	arch = i686
@@ -29,8 +29,8 @@ pkgbase = solarus
 	replaces = zsdxdemo-de
 	replaces = zsdxdemo-fr
 	replaces = solarus-git
-	source = http://www.zelda-solarus.com/downloads/solarus/solarus-1.5.1-src.tar.gz
-	md5sums = 647a5908e33721febf3b7dce1dbd9c39
+	source = http://solarus-games.org/downloads/solarus/solarus-1.5.3-src.tar.gz
+	md5sums = 97221827e1b3579f88292ee8669014d9
 
 pkgname = solarus
 
