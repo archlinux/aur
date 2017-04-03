@@ -1,3 +1,20 @@
 post_install() {
-	echo "start using 'systemctl --user start reddit-placebot'"
+	cat <<EOF
+Create a file users.json in ~/.config/reddit-placebot/users.json as follows:
+
+{
+  "YourRedditUserName": "YourRedditPassword",
+  "OtherAccount": "OtherPassword",
+  "MoreThrowaways": "MorePasswords"
+}
+
+then start the service using
+	
+	systemctl --user start reddit-placebot
+
+and monitor the output using
+
+	journalctl --user --follow --unit reddit-placebot
+EOF
+
 }

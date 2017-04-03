@@ -33,6 +33,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$pkgname"
+	git checkout service
 	# git checkout "tags/$(git describe --tags --abbrev=0)"
 }
 
