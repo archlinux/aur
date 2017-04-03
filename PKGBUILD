@@ -1,29 +1,28 @@
-# $Id: PKGBUILD 276535 2016-09-16 12:08:43Z dreisner $
-# Maintainer: Dave Reisner <dreisner@archlinux.org>
+# $Id$
+# Maintainer: Troy Engel <troyengel+arch@gmail.com>
+# Contributor: Dave Reisner <dreisner@archlinux.org>
 # Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Eric Belanger <eric@archlinux.org>
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
-# https://bugs.archlinux.org/task/37894
-# $ gpg --lsign 5CC908FDB71E12C2
-
 pkgname=curl-http2
 _pkgname=curl
-pkgver=7.51.0
-pkgrel=2
-pkgdesc="An URL retrieval utility and library. With http2 support."
+pkgver=7.53.1
+pkgrel=1
+pkgdesc="A URL retrieval utility and library (HTTP/2 enabled)"
 arch=('i686' 'x86_64')
 url="https://curl.haxx.se"
 license=('MIT')
-depends=('ca-certificates' 'krb5' 'libssh2' 'openssl' 'zlib' 'libpsl' 'nghttp2')
+depends=('ca-certificates' 'krb5' 'libssh2' 'openssl' 'zlib' 'libpsl'
+         'libnghttp2')
 provides=("curl=$pkgver" 'libcurl.so')
 conflicts=('curl' 'curl-git' 'curl-http2-git')
 options=('strip')
-source=("https://curl.haxx.se/download/$_pkgname-$pkgver.tar.gz"{,.asc}
-        curlbuild.h)
-validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2'   # Daniel Stenberg
-              '914C533DF9B2ADA2204F586D78E11C6B279D5C91')  # Daniel Stenberg (old key)
+source=("https://curl.haxx.se/download/$_pkgname-$pkgver.tar.gz"
+        'curlbuild.h')
+sha512sums=('f4bd2bcbf0eca312be549d2552e453b9634bbe8f74a981c1d663c42efc79cc44b419d9f37da8f6fe2f315487e55a41078cbfcd0d82af4ec84885464b56b6d217'
+            '4e71366c3faaab76a6e438fcc484fb1ce16b2ae84eefa176879cf164e8fb0b04e4a355384e66a1137e9641e95041ee573553b43da98ec92820696d7256beb4f5')
 
 build() {
   cd "$_pkgname-$pkgver"
@@ -60,7 +59,3 @@ package() {
   mv "$pkgdir/usr/include/curl/curlbuild.h" "$pkgdir/usr/include/curl/$_curlbuild"
   install -m644 "$srcdir/curlbuild.h" "$pkgdir/usr/include/curl/curlbuild.h"
 }
-
-sha512sums=('6bec021caa1befd16dd2a5221a22764b70c1bd5cf5d553eaa2cb980ef340129a0deb2f900dd9ef5c07f734f73abf0d6447eedb1f8803e16fe469d6271161fa67'
-            'SKIP'
-            '4e71366c3faaab76a6e438fcc484fb1ce16b2ae84eefa176879cf164e8fb0b04e4a355384e66a1137e9641e95041ee573553b43da98ec92820696d7256beb4f5')
