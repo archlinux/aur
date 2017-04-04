@@ -1,6 +1,6 @@
 pkgbase = unity-editor-bin
 	pkgdesc = The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences.
-	pkgver = 5.6.0xf1
+	pkgver = 5.6.0xf3
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -23,10 +23,10 @@ pkgbase = unity-editor-bin
 	optdepends = java-environment: for Android and Tizen exporting
 	optdepends = android-sdk: for Android Remote
 	optdepends = android-udev: for Android Remote
-	provides = unity-editor=5.6.0xf1
+	provides = unity-editor=5.6.0xf3
 	conflicts = unity-editor
 	options = !strip
-	source = http://beta.unity3d.com/download/e348e673a4c6/unity-editor_amd64-5.6.0xf1Linux.deb
-	sha512sums = 9f8b7094b1676d619213191dc432f4b2c21fe2ee3283b3a3d11006f5284fe9fb2c3f51b2284a55fe61cca7f6b6e478f749c1de18b0d984e5b3df875f6a06acb0
+	source = http://beta.unity3d.com/download/8bc04e1c171e/unity-editor_amd64-5.6.0xf3Linux.deb
+	sha512sums = a86f8c38fb80925d35cb126d249b885d55b1482b7eb1c679a24ee344e9e9c911a1e1696a448e73d3fe6599d6aede1edd34845b057ac17c366014c03a12b9e950
 
 pkgname = unity-editor-bin
