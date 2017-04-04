@@ -1,9 +1,6 @@
 # Maintainer: Rodrigo González López <rodrigosloop AT gmail DOT com>
 # Maintainer: Zachary Michaels <mikezackles AT gmail DOT com>
 # Contributor: Felix Kauselmann <licorn AT gmail DOT com>
-#
-#Current sha1 can be found here:
-#https://chromium.googlesource.com/chromium/buildtools/+/master/linux64/gn.sha1
 
 sha1=$(curl "https://chromium.googlesource.com/chromium/buildtools/+/master/linux64/gn.sha1?format=TEXT" | base64 --decode)
 pkgname='gn-bin'
