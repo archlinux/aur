@@ -6,6 +6,7 @@ post_install() {
 	mkdir -p $HOMEDIR
 	chmod 700 $HOMEDIR
 	chown -R octoprint:octoprint $HOMEDIR
+	chown -R octoprint:octoprint /opt/octoprint-venv
 
 	echo "To start octoprint, run: systemctl start octoprint"
 	echo "To enable octoprint at boot, run: systemctl enable octoprint"
