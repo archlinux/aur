@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=26.0.50.r128824
+pkgver=26.0.50.r128840
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -29,6 +29,7 @@ prepare() {
 
 build() {
   cd "$srcdir/emacs"
+  [[ -x configure ]] || ./autogen.sh
   ac_cv_lib_gif_EGifPutExtensionLast=yes \
     ./configure --program-transform-name='s/^ctags$/ctags.emacs/' \
     --prefix=/usr \
