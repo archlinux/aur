@@ -1,0 +1,17 @@
+pkgbase = kotlin-native-git
+	pkgdesc = A LLVM backend for the Kotlin compiler
+	pkgver = r2055.305dbd30
+	pkgrel = 1
+	url = https://github.com/JetBrains/kotlin-native
+	arch = x86_64
+	license = Apache
+	depends = java-environment
+	depends = ncurses5-compat-libs
+	options = staticlibs
+	options = libtool
+	options = !strip
+	source = git+https://github.com/JetBrains/kotlin-native.git
+	sha512sums = SKIP
+
+pkgname = kotlin-native-git
+
