@@ -1,7 +1,7 @@
 # Maintainer: Haruki Ota <ootaharuki99[at]gmail.com>
 pkgname=libarib25-git
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='ARIB STD-B25 library for Linux.'
 arch=('i686' 'x86_64')
 url='https://github.com/stz2012/libarib25'
@@ -15,13 +15,19 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/$provides/cmake"
+
   cmake ..
   make
 }
 
 package() {
   cd "$srcdir/$provides/cmake"
-  make install DESTDIR=$pkgdir
+
+  make install DESTDIR=root
+  install -d $pkgdir/usr/
+  cp -r -p root/usr/local/bin $pkgdir/usr/
+  cp -r -p root/usr/local/lib $pkgdir/usr/
+  cp -r -p root/usr/local/include $pkgdir/usr/
 
   echo "　・ソースコードを利用したことによって、特 許上のトラブルが発生しても
 　　茂木 和洋は責任を負わない
