@@ -3,7 +3,7 @@
 
 pkgname=free42
 pkgver=1.5.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete re-implementation of the HP-42S calculator and the HP-82240 printer"
 arch=('i686' 'x86_64')
 url="http://thomasokken.com/free42/"
@@ -37,6 +37,8 @@ package() {
 
   install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README_GTK"
   install -Dm644 ../README "$pkgdir/usr/share/doc/$pkgname/README"
+
+  ln -s /usr/bin/free42dec "$pkgdir/usr/bin/free42"
 
   cd ../skins
   for _f in *; do
