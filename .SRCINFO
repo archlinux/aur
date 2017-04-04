@@ -1,0 +1,15 @@
+pkgbase = apache-mod_h264_streaming
+	pkgdesc = H264 Streaming Module for Apache.
+	pkgver = 2.2.7
+	pkgrel = 1
+	url = http://h264.code-shop.com/trac/wiki/Mod-H264-Streaming-Apache-Version2
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = apache
+	depends = apache
+	source = http://h264.code-shop.com/download/apache_mod_h264_streaming-2.2.7.tar.gz
+	md5sums = 123cacef68e9ff56fe908200bd0feea5
+
+pkgname = apache-mod_h264_streaming
+
