@@ -4,9 +4,9 @@ pkgbase = gn-bin
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromium/src/tools/gn/
 	arch = x86_64
-	noextract = 6d5e6af421f8e6cc11315f411439d889edc7cb4a
-	source = https://storage.googleapis.com/chromium-gn/6d5e6af421f8e6cc11315f411439d889edc7cb4a
-	sha512sums = 42a16589b7384578145eb3a5af4ea6e8ef7ccb2c778991d480fd9b2ae21432612c5ad9304605491f4bb91b3eca49622d2df16709552076af77b206d64f644db9
+	noextract = a452edf26a551fef8a884496d143b7e56cbe2ad9
+	source = https://storage.googleapis.com/chromium-gn/a452edf26a551fef8a884496d143b7e56cbe2ad9
+	sha512sums = 483d1b8c8ab30f0f94b330a6f71b1fad0293f3522cc49d039cafa2e4c1da02758e1cd440f768cd395025baf4f3c79f5ac4780827068315dc44fb4da2e0e2fc36
 
 pkgname = gn-bin
 

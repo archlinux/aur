@@ -4,7 +4,7 @@
 #Current sha1 can be found here:
 #https://chromium.googlesource.com/chromium/buildtools/+/master/linux64/gn.sha1
 
-sha1='6d5e6af421f8e6cc11315f411439d889edc7cb4a'
+sha1='a452edf26a551fef8a884496d143b7e56cbe2ad9'
 pkgname='gn-bin'
 pkgdesc="Prebuilt binary for GN (Generate Ninja), Chromium's meta-build system"
 pkgver=r410137
@@ -15,7 +15,7 @@ source=(
   "https://storage.googleapis.com/chromium-gn/$sha1"
 )
 noextract=("$sha1")
-sha512sums=('42a16589b7384578145eb3a5af4ea6e8ef7ccb2c778991d480fd9b2ae21432612c5ad9304605491f4bb91b3eca49622d2df16709552076af77b206d64f644db9')
+sha512sums=('483d1b8c8ab30f0f94b330a6f71b1fad0293f3522cc49d039cafa2e4c1da02758e1cd440f768cd395025baf4f3c79f5ac4780827068315dc44fb4da2e0e2fc36')
 
 package () {
   install -Dm755 "$srcdir/$sha1" "$pkgdir/usr/bin/gn"
