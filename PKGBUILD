@@ -7,24 +7,28 @@
 _upstream="emerald"
 
 pkgname=emerald-git
-pkgver=0.8.12.4.r2.gee2031a
+pkgver=0.8.12.4.r38.gd3eba71
 pkgrel=1
 pkgdesc="Emerald window decorator"
 arch=('i686' 'x86_64')
 url="https://github.com/compiz-reloaded/${_upstream}"
 license=('GPL')
-depends=('compiz-core-git' 'libwnck' 'gtk2' 'libxres' 'shared-mime-info' 'xdg-utils' \
+depends=('compiz-core-git' 'libxres' 'shared-mime-info' 'xdg-utils' 'libwnck'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('intltool' 'pkg-config' 'gettext')
 groups=('compiz-fusion' 'compiz-fusion-kde' 'compiz-fusion-gtk')
 options=(!libtool)
 conflicts=('emerald0.9' 'emerald')
 provides=('emerald')
-install=emerald.install
 source=(
 	"git+https://github.com/compiz-reloaded/${_upstream}.git"
 )
 sha1sums=('SKIP')
+
+_configure_opts=(
+	'--prefix=/usr'
+	'--with-gtk=2.0'
+)
 
 pkgver() {
 	cd "${srcdir}/${_upstream}"
@@ -35,7 +39,7 @@ build() {
   cd "${srcdir}/${_upstream}"
 
   NOCONFIGURE=1 ./autogen.sh
-  LIBS+="-lm -ldl" ./configure --prefix=/usr --with-gtk=2.0
+  LIBS+="-lm -ldl" ./configure "${_configure_opts[@]}"
 
   make
 }
