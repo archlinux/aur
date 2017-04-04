@@ -3,8 +3,8 @@
 
 _pkgname=sickrage
 pkgname=$_pkgname-git
-pkgver=8.8.4.r41.g10d0371b3
-pkgrel=2
+pkgver=8.8.4.r85.gb1b4f64e5
+pkgrel=1
 pkgdesc="A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage, torrents and anime support."
 arch=('any')
 url="https://github.com/SiCKRAGETV/SickRage"
@@ -13,15 +13,15 @@ makedepends=('git')
 depends=('python2-apscheduler'
          'python2-cheetah'
          'python2-mako'
-         'python2-notify'
          'python2-tornado'
          'python2-tzlocal')
-#            'deluge: supported torrent client'
-#            'qbittorrent: supported torrent client'
-#            'rtorrent: supported torrent client'
-#            'sabnzbd: supported NZB downloader'
-#            'transmission-cli: supported torrent client'
-optdepends=('python2-pyopenssl: enable SSL'
+#            'deluge: torrent client'
+#            'qbittorrent: torrent client'
+#            'rtorrent: torrent client'
+#            'sabnzbd: NZB downloader'
+#            'transmission-cli: torrent client'
+optdepends=('python2-notify: desktop notifications'
+            'python2-pyopenssl: enable SSL'
             'unrar: RAR archives')
 provides=($_pkgname)
 conflicts=($_pkgname)
