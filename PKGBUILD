@@ -6,7 +6,7 @@ _author='R/RS/RSCHUPP'
 _perlmod=PAR
 pkgname=perl-par
 pkgver=1.014
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl Archive Toolkit"
 arch=('any')
 url="http://search.cpan.org/~rschupp/PAR"
@@ -26,7 +26,7 @@ prepare(){
 }
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
-  /usr/bin/perl Makefile.PL
+  perl Makefile.PL
   make
 }
 check(){
@@ -35,6 +35,5 @@ check(){
 }
 package() {
   cd "$srcdir/$_perlmod-$pkgver"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
