@@ -17,7 +17,7 @@ source=("http://download.tuxfamily.org/qet/tags/20151127/${pkgname}-${pkgver}-sr
 
 prepare() {
 	cd ${srcdir}/${pkgname}-${pkgver}-src
-	patch -p1 < install-dir.patch
+	patch -p1 < ${srcdir}/install-dir.patch
 }
 
 build() {
