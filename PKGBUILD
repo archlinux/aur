@@ -2,8 +2,8 @@
 # Contributor: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=lwan-git
-pkgver=r1467.b1515c2
-pkgrel=1
+pkgver=r1698.ecb28b6
+pkgrel=2
 pkgdesc='Experimental, scalable, high performance HTTP server'
 arch=('i686' 'x86_64')
 url='https://lwan.ws/'
@@ -30,7 +30,8 @@ build() {
 package() {
   cd $_gitname/build
   make DESTDIR="$pkgdir" install
-  rm -f "$pkgdir"/usr/lib/liblwan.a
+  mv "$pkgdir"/usr/lib64/liblwan.so "$pkgdir"/usr/lib/liblwan.so
+  rm -rf "$pkgdir"/usr/lib64
 }
 
 # vim:set ts=2 sw=2 et:
