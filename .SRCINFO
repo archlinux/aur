@@ -1,6 +1,6 @@
 pkgbase = j4-dmenu-desktop
 	pkgdesc = A much faster replacement for i3-dmenu-desktop. Its purpose is to find .desktop files and offer you a menu to start an application using dmenu.
-	pkgver = 2.14
+	pkgver = 2.15
 	pkgrel = 1
 	url = https://github.com/enkore/j4-dmenu-desktop
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = j4-dmenu-desktop
 	makedepends = cmake
 	depends = dmenu
 	conflicts = j4-dmenu-desktop-git
-	source = https://github.com/enkore/j4-dmenu-desktop/archive/r2.14.zip
+	source = https://github.com/enkore/j4-dmenu-desktop/archive/r2.15.zip
 	sha256sums = b42188d7bf02954b2d90fc47d90ebe8e516e9e3aa1d80aa08aab00a7b35e2f3a
 
 pkgname = j4-dmenu-desktop

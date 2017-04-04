@@ -3,7 +3,7 @@
 # Contributor: Bill Kolokithas <kolokithas.b@gmail.com>
 
 pkgname=j4-dmenu-desktop
-pkgver=2.14
+pkgver=2.15
 pkgrel=1
 pkgdesc="A much faster replacement for i3-dmenu-desktop. Its purpose is to find .desktop files and offer you a menu to start an application using dmenu."
 arch=('i686' 'x86_64')
