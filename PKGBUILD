@@ -4,6 +4,7 @@ pkgname=cylon
 pkgver=3.5
 pkgrel=6
 pkgdesc="Updates, Maintenance, backup and system checks in a menu driven Bash script"
+depends=('dialog')
 arch=('any')
 url="https://github.com/gavinlyonsrepo/cylon"
 license=('GPL')

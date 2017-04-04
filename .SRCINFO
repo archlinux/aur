@@ -5,6 +5,7 @@ pkgbase = cylon
 	url = https://github.com/gavinlyonsrepo/cylon
 	arch = any
 	license = GPL
+	depends = dialog
 	optdepends = cower: AUR package for AUR work
 	optdepends = gdrive: AUR package for google drive backup
 	optdepends = lostfiles: AUR package for finding lost files
