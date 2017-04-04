@@ -1,7 +1,8 @@
 # Maintainer: not_anonymous <nmlibertarian@gmail.com>
+# Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=masterscp
-pkgver=20170102
+pkgver=20170402
 pkgrel=1
 pkgdesc="Super Check Partial Database Files for Ham Radio Contesting"
 arch=('any')
@@ -17,5 +18,5 @@ package() {
 	cp -R *.{DTA,SCP} $pkgdir/usr/share/masterscp
 }
 
-md5sums=('85a8f6225af48769fa407c16d8dcb365')
-sha256sums=('ba1ad2f4e3cf4604476c4774ed1bd3515b03f3c2ccc2a3166a602bddc5537d8e')
+md5sums=('8e769729e19bc9db913a09689dec7441')
+sha256sums=('e419ea86fc271e3ea99748b1b1a264ee44b2351ad406bfc763d38a1466d0d456')
