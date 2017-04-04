@@ -3,7 +3,7 @@ Description=SimpleRT Daemon
 
 [Service]
 Type=idle
-ExecStart=/usr/lib/simple-rt/simple-rt
+ExecStart=/usr/lib/simple-rt/simple-rt -i enp5s0
 WorkingDirectory=/usr/lib/simple-rt
 Restart=always
 

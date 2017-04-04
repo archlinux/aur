@@ -1,7 +1,7 @@
 # Maintainer: Anatoly Rugalev <anatoly.rugalev g-mail>
 
 pkgname=simple-rt
-pkgver=20170325.64_b07bef9
+pkgver=20170403.114_616dc03
 pkgrel=1
 url="https://github.com/vvviperrr/SimpleRT"
 pkgdesc="SimpleRT - Reverse Tethering utility for Android"
@@ -9,7 +9,7 @@ arch=('x86' 'x86_64')
 depends=('libusb')
 makedepends=('git' 'make')
 source=('simple-rt::git://github.com/vvviperrr/SimpleRT' 'simple-rt.service')
-md5sums=('SKIP' '0a06943e78519fca0ca242031a3ef2eb')
+md5sums=('SKIP' 'dcb8298e9ce2e3b7dc515e47c3e880d9')
 license=('GPLv3')
 
 pkgver() {
@@ -22,8 +22,6 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$pgkname/simple-rt/simple-rt-cli"
-	# Default ArchLinux network interface name: enp5s0
-	sed -i -- 's/eth0/enp5s0/' iface_up.sh
 	make
 }
 
