@@ -1,17 +1,17 @@
 pkgbase = rooster
 	pkgdesc = A simple password manager for geeks
-	pkgver = 2.4.1
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/conradkleinespel/rooster
 	arch = i686
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = cargo
 	makedepends = pkg-config
 	makedepends = libx11
 	makedepends = libxmu
-	source = rooster-2.4.1.tar.gz::https://crates.io/api/v1/crates/rooster/2.4.1/download
-	sha256sums = 69a6893c9a98dab650e6234d559922b09a84e7aa03aa25da3a8220ff31812509
+	source = rooster-2.5.0.tar.gz::https://crates.io/api/v1/crates/rooster/2.5.0/download
+	sha256sums = f0814d09ab995f2c2dc556784310cd268cb4722ad18f9c201a50c9e795b4963d
 
 pkgname = rooster
 
