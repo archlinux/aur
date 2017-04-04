@@ -3,7 +3,7 @@
 _pkgname=mgltools
 pkgname=mgltools-bin
 pkgver=2015.01.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Visualization and analysis of molecular structures; includes AutoDockTools, Vision, AutoDock 4.2.6 and\
  PythonMoleculeViewer (includes Python 2.7)"
 arch=('x86_64')
@@ -34,22 +34,23 @@ prepare() {
 
 package() {
   cd "$srcdir/${_pkgname}_x86_64Linux2_latest"
-  mkdir -p $pkgdir/usr/bin/ $pkgdir/opt/$_pkgname
+  mkdir -p $pkgdir/usr/bin/ $pkgdir/opt/$_pkgname/AutoDockTools_for_pymol
   ./install.sh -d "$pkgdir/opt/$_pkgname" &> /dev/null
   cd "$pkgdir/"
-#  asd=( `find "./opt/$_pkgname/bin/"  -type f`)
-  asd=( ./opt/$_pkgname/bin/pythonsh )
-  dasd=( `find "./opt/$_pkgname/MGLToolsPckgs/" -name '*.py' `)
+  i="./opt/$_pkgname/bin/pythonsh"
+  echo "LD_PRELOAD='/usr/lib/libstdc++.so.6 /usr/lib/libgcc_s.so.1 /usr/lib/libxcb.so.1'" $(echo $i | sed 's/^.//g') '$@' > ./usr/bin/$(basename $i)-mg
+  asd=( `find "./opt/$_pkgname/bin/"  -type f`)
+  dasd=( `find "./opt/$_pkgname/MGLToolsPckgs/AutoDockTools/Utilities24" -name '*.py' `)
   for i in ${asd[@]}
-    do echo "LD_PRELOAD='/usr/lib/libstdc++.so.6 /usr/lib/libgcc_s.so.1 /usr/lib/libxcb.so.1'" $(echo $i | sed 's/^.//g') '$@' > ./usr/bin/$(basename $i)-mg
+    do 
     if [ "$(grep MGL_ROOT\= $i 2> /dev/null)" ]
       then sed "/MGL_ROOT\=/c\MGL_ROOT=\"/opt/$_pkgname\"" -i $i
     fi
   done
   for i in ${dasd[@]}
-    do sed -e 's/\/usr\/bin\/env python/\/usr\/bin\/env pythonsh-mg/g' -i $i
+    do echo /usr/bin/pythonsh-mg $(echo $i | sed 's/^.//g') '$@' > ./opt/$_pkgname/AutoDockTools_for_pymol/$(basename $i)
   done
-  chmod +x ./usr/bin/*
-  install -Dm 755 ./opt/mgltools/MGLToolsPckgs/binaries/autodock4 ./usr/bin/
-  install -Dm 755 ./opt/mgltools/MGLToolsPckgs/binaries/autogrid4 ./usr/bin/
+  chmod 755 ./usr/bin/* ./opt/$_pkgname/AutoDockTools_for_pymol/*
+  ln -sf /opt/mgltools/MGLToolsPckgs/binaries/autodock4 ./usr/bin/
+  ln -sf /opt/mgltools/MGLToolsPckgs/binaries/autogrid4 ./usr/bin/
 }
