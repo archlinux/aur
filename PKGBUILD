@@ -1,14 +1,19 @@
 # Maintainer:  Sapphira Armageddos <shadowkyogre.public@gmail.com>
 # Contributor: martadinata666 <martadinata666@gmail.com>
 
+# Flag for whether to use marco
 _use_marco=0
+
+# Flag for whether to use GTK+3
+# Autoset depending on marco option
+_use_gtk3=0
 
 _upstream="compiz"
 
 pkgbase=compiz-core-git
 pkgname=(compiz-core-git compiz-gtk-git)
-pkgver=0.8.12.3.r24.g292d9a2
-pkgrel=2
+pkgver=0.8.12.3.r84.g20335d7d
+pkgrel=1
 pkgdesc="This is the latest git release of Compiz without DE deps"
 url="https://github.com/compiz-reloaded/${_upstream}"
 license=('GPL' 'LGPL' 'MIT')
@@ -37,16 +42,25 @@ _configure_opts=(
 if (("${_use_marco}" == 1));then
   _configure_opts+=("--enable-marco")
   makedepends+=("marco")
-  msg "Marco theme support enabled"
+  _use_gtk3=1
+  msg "Marco theme support enabled with GTK+3"
 elif (("${_use_marco}" == 2));then
   _configure_opts+=("--enable-marco")
-  _configure_opts+=("--with-gtk=3.0")
-  makedepends+=("marco-gtk3")
-  msg "Marco theme support enabled with GTK+3"
+  makedepends+=("marco-gtk2")
+  _use_gtk3=0
+  msg "Marco theme support enabled with GTK+2"
 else
   _configure_opts+=("--disable-marco")
   msg "Marco theme support disabled, rebuild with _use_marco=1 in the PKGBUILD if you want it"
-  msg "Rebuild with _use_marco=2 in the PKGBUILD if you have marco-gtk3"
+  msg "Rebuild with _use_marco=2 in the PKGBUILD if you have marco-gtk2"
+fi
+
+if (("${_use_gtk3}" >= 1)); then
+	_configure_opts+=("--with-gtk=3.0")
+	msg "Using GTK+3 for gtk-window-decorator"
+else
+	_configure_opts+=("--with-gtk=2.0")
+	msg "Using GTK+2 for gtk-window-decorator"
 fi
 
 pkgver() {
@@ -74,6 +88,7 @@ package_compiz-core-git() {
   cd "$srcdir/${_upstream}"
 
   pkgdesc+=" (Core w/o decorator)"
+  depends+=('hicolor-icon-theme' 'libxi' 'libxcursor')
   provides=("compiz-core=$pkgver")
   conflicts=('compiz' 'compiz-core')
 
@@ -95,14 +110,21 @@ package_compiz-core-git() {
 
 package_compiz-gtk-git()
 {
+  depends+=('compiz-core-git')
   #separating libmarco-private would be nice, but this is a workaround for now
   if (("${_use_marco}" == 1));then
-    depends+=('marco')
+    depends+=('marco-gtk2')
   elif (("${_use_marco}" == 2));then
-    depends+=('marco-gtk3')
-  else
-    depends+=('gtk2')
+    depends+=('marco')
   fi
+
+  if (( "${_use_gtk3}" >= 1 ));then
+    depends+=('libwnck3')
+  else
+    depends+=('libwnck')
+  fi
+
+
   pkgdesc+=" (GTK+ window decorator)"
   provides=("compiz-gtk=$pkgver")
   conflicts=('compiz-gtk')
