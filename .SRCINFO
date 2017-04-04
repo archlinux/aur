@@ -1,20 +1,19 @@
 pkgbase = drop
 	pkgdesc = A simple screenshot, screencast, and file upload tool with S3 support
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/gilbertw1/drop
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cargo
-	depends = gawk
 	depends = s3cmd
 	depends = xsel
 	depends = slop
 	depends = imagemagick
 	depends = ffmpeg
-	source = https://github.com/gilbertw1/drop/archive/0.1.2.tar.gz
-	sha256sums = ff3658c4d8b4148490b6dc7a973f43e078de063d5c03f0c54f7b210d985da555
+	source = https://github.com/gilbertw1/drop/archive/0.1.3.tar.gz
+	sha256sums = 90e26b6e5f5dbfa03b87487c305ade1469a9c814c4eb71ade4529dcd3ea263e2
 
 pkgname = drop
 
