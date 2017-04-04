@@ -1,4 +1,4 @@
-# Maintainer: Krakn <dan.ray.beste@gmail.com>
+# Maintainer: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='mojoshader-git'
 _pkgname='mojoshader'
@@ -39,8 +39,9 @@ build() {
 
 package() {
 	cd "${srcdir}/${_pkgname}/" || exit 1
+
     install -m755 -D "${_libname}"  \
         "${pkgdir}/usr/lib/${_libname}"
-    install -m644 -D "../LICENSE"   \
+    install -m644 -D "LICENSE.txt"   \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
