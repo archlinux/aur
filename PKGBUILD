@@ -5,14 +5,14 @@
 
 _upstream="ccsm"
 
-pkgname=ccsm-git
-pkgver=0.8.12.3.r10.g4b29da9
-pkgrel=2
+pkgname=(ccsm-git ccsm-gtk3-git)
+pkgver=0.8.12.3.r33.gaaf97ec
+pkgrel=1
 pkgdesc="Compizconfig Settings Manager in Python2"
 arch=('any')
 url="https://github.com/compiz-reloaded/${_upstream}"
 license=('GPL')
-depends=("compizconfig-python-git" 'python-gobject' 'python-cairo')
+depends=("compizconfig-python-git" 'python-gobject' 'python-cairo' 'hicolor-icon-theme')
 makedepends=('intltool')
 optdepends=('compiz-gtk-standalone: option 1' 'compiz-core: option 2')
 groups=('compiz-fusion' 'compiz-fusion-gtk' 'compiz-fusion-kde')
@@ -21,7 +21,6 @@ provides=("ccsm=$pkgver")
 source=(
 	"git+https://github.com/compiz-reloaded/${_upstream}.git"
 )
-install=ccsm.install
 sha1sums=('SKIP')
 
 pkgver() {
@@ -29,7 +28,14 @@ pkgver() {
   git describe --long --tags|sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package() {
+package_ccsm-git() {
+  depends+=('gtk2')
   cd "${srcdir}/${_upstream}"
   python ./setup.py install --prefix=/usr --with-gtk=2.0 --root="${pkgdir}"
+}
+
+package_ccsm-gtk3-git() {
+  depends+=('gtk3')
+  cd "${srcdir}/${_upstream}"
+  python ./setup.py install --prefix=/usr --with-gtk=3.0 --root="${pkgdir}"
 }
