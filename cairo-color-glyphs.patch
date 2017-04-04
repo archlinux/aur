@@ -1,0 +1,11 @@
+--- a/src/cairo-ft-font.c	2015-10-27 22:04:21.000000000 +0100
++++ b/src/cairo-ft-font.c	2016-05-03 01:17:47.072670621 +0200
+@@ -2258,7 +2258,7 @@ _cairo_ft_scaled_glyph_init (void			*abs
+      * Moreover, none of our backends and compositors currently support
+      * color glyphs.  As such, this is currently disabled.
+      */
+-    /* load_flags |= FT_LOAD_COLOR; */
++    load_flags |= FT_LOAD_COLOR;
+ #endif
+ 
+     error = FT_Load_Glyph (face,
