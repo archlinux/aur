@@ -13,7 +13,7 @@ depends=('dmenu')
 makedepends=('git' 'cmake')
 conflicts=('j4-dmenu-desktop-git')
 source=("https://github.com/enkore/j4-dmenu-desktop/archive/r${pkgver}.zip")
-sha256sums=('b42188d7bf02954b2d90fc47d90ebe8e516e9e3aa1d80aa08aab00a7b35e2f3a')
+sha256sums=('4f900ec9e04c288681647553c395efafe866798f5a9c29db60e1e790744d5c47')
 
 build() {
 	cd ${pkgname}-r${pkgver}
