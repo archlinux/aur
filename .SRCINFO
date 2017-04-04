@@ -1,15 +1,15 @@
 pkgbase = omnisharp-roslyn
 	pkgdesc = .NET development platform based on on Roslyn workspaces.
-	pkgver = 1.12.0
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/OmniSharp/omnisharp-roslyn
 	arch = x86_64
 	license = MIT
 	depends = mono
 	noextract = $pkgname-$pkgver.tar.gz
-	source = omnisharp-roslyn-1.12.0.tar.gz::https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.12.0/omnisharp-mono.tar.gz
+	source = omnisharp-roslyn-1.13.0.tar.gz::https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.13.0/omnisharp-mono.tar.gz
 	source = LICENSE::https://raw.githubusercontent.com/OmniSharp/omnisharp-roslyn/dev/license.md
-	md5sums = 67ce16119e1468bfd8c5baaca4193508
+	md5sums = 19880f7c84a89dfffa21f9f0dd3ea823
 	md5sums = 19a620e118d664537fb9dac578810f8d
 
 pkgname = omnisharp-roslyn
