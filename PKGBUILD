@@ -22,7 +22,7 @@ sha256sums=('9d74d9fa04dfa182b8fa1a3caca3b65cc929b76e169bf59c6ce8c78b9c08be82'
 package_noto-fonts-lite() {
   optdepends=('noto-fonts-cjk: CJK characters' 'noto-fonts-emoji: Emoji characters')
 
-  cd $pkgbase-*/
+  cd noto-fonts-*/
   mkdir -p "$pkgdir"/usr/share/fonts/noto
   # overwritten by the hinted version
   #install -m644 unhinted/NotoMono-*.tt[fc] "$pkgdir"/usr/share/fonts/noto
