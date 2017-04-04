@@ -19,7 +19,7 @@ pkgname="${_pyver}-${_pybase}"
 _pyverother='' #python-'
 fi
 _pybase="${_pybase//-/}"
-pkgver='3.10.0'
+pkgver='3.10.1'
 pkgrel='1'
 pkgdesc='The API and CLI tools that provide access to Amazon Elastic Beanstalk awsebcli'
 arch=('any')
@@ -32,7 +32,7 @@ _srcdir="${_pybase}-${pkgver}"
 # https://bitbucket.org/pypa/pypi/issues/438/backwards-compatible-un-hashed-package
 # https://bitbucket.org/pypa/pypi/issues/447/direct-links-of-packages-gone
 source=("https://files.pythonhosted.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('4977ef3baf50784eb29987451a95c300e62b542b56516af9391035dc9a749b6a')
+sha256sums=('655cceec51801415698d789d9956977bdb2037da29c6535b4952cf57a2cb3001')
 
 # Convert python requires to PKGBUILD depends
 # $1: prefix python- or python2-
