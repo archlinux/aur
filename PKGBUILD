@@ -3,7 +3,7 @@
 # Contributor: Leo von Klenze <aur@leo.von-klenze.de>
 
 pkgname=w_scan
-pkgver=20161022
+pkgver=20170107
 pkgrel=1
 pkgdesc="Universal ATSC and DVB blind scanner"
 arch=('i686' 'x86_64' 'armv6h')
@@ -11,7 +11,7 @@ url="http://wirbel.htpc-forum.de/w_scan/index_en.html"
 license=('GPL')
 depends=('glibc')
 source=("http://wirbel.htpc-forum.de/$pkgname/$pkgname-$pkgver.tar.bz2")
-md5sums=('57aa860b4c9e6aa480ca6eb0504bd4f5')
+md5sums=('c7f9adf92d46b8da5391be80be6fbd72')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver" 
