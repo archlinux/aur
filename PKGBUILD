@@ -4,8 +4,8 @@ _pkgname=mgltools
 pkgname=mgltools-bin
 pkgver=2015.01.22
 pkgrel=1
-pkgdesc="Visualization and analysis of molecular structures; includes AutoDockTools, Vision and\
- PythonMoleculeViewer (includes Python 2.5)"
+pkgdesc="Visualization and analysis of molecular structures; includes AutoDockTools, Vision, AutoDock 4.2.6 and\
+ PythonMoleculeViewer (includes Python 2.7)"
 arch=('x86_64')
 url="http://mgltools.scripps.edu/"
 license=('custom')
@@ -13,8 +13,9 @@ source=(http://mgltools.scripps.edu/downloads/tars/releases/nightly/latest/REL/m
 'remove_licence_popup.patch')
 md5sums=('SKIP'
 '7f2e0c303999deffe2879e466ae28be7')
+options=('!emptydirs')
+
 #"http://mgltools.scripps.edu/downloads/tars/releases/nightly/${pkgver}/REL\${_pkgname}_x86_64Linux2_${pkgver}.tar.gz")
-#options=('!emptydirs')
 #depends=('swig' 'tk' 'python2-numpy' 'python2-imaging' 'python2-pmw' 'glut' 'python2-zsi' 
 #        'python2-simpy' 'libxmu' 'python2-backports.ssl' 'python2-colorama' 'python2-dateutil'
 #        'ipython2' 'python2-apache-libcloud' 'python2-matplotlib' 'python2-pygments'
@@ -34,7 +35,7 @@ prepare() {
 package() {
   cd "$srcdir/${_pkgname}_x86_64Linux2_latest"
   mkdir -p $pkgdir/usr/bin/ $pkgdir/opt/$_pkgname
-  yes y| ./install.sh -d "$pkgdir/opt/$_pkgname"
+  ./install.sh -d "$pkgdir/opt/$_pkgname" &> /dev/null
   cd "$pkgdir/"
 #  asd=( `find "./opt/$_pkgname/bin/"  -type f`)
   asd=( ./opt/$_pkgname/bin/pythonsh )
@@ -49,4 +50,6 @@ package() {
     do sed -e 's/\/usr\/bin\/env python/\/usr\/bin\/env pythonsh-mg/g' -i $i
   done
   chmod +x ./usr/bin/*
+  install -Dm 755 ./opt/mgltools/MGLToolsPckgs/binaries/autodock4 ./usr/bin/
+  install -Dm 755 ./opt/mgltools/MGLToolsPckgs/binaries/autogrid4 ./usr/bin/
 }
