@@ -2,8 +2,8 @@
 pkgbase='dbb-app'
 pkgname=("${pkgbase}" 'dbb-cli')
 gitname="${pkgbase}"
-pkgrel=2
-pkgver='2.1.0'
+pkgrel=1
+pkgver='2.1.1'
 url='https://digitalbitbox.com/'
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -22,7 +22,7 @@ build() {
     cd "${srcdir}/${gitname}"
 
     ./autogen.sh
-    ./configure --prefix=/usr --with-gui=qt5 --enable-shared=no LDFLAGS="-pthread"
+    ./configure --prefix=/usr --with-gui=qt5 --enable-shared=no --disable-udev-check LDFLAGS="-pthread"
     make
 }
 
