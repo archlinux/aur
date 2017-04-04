@@ -4,15 +4,15 @@
 #
 pkgname=go4
 _Pkgname=Go4
-pkgver=5.1.2
-pkgrel=2
+pkgver=5.2.0
+pkgrel=1
 pkgdesc='Object-oriented system (GSI Object Oriented On-line Off-line system) based on ROOT'
 arch=('i686' 'x86_64')
-depends=('root5' 'qt4')
-url="https://www.gsi.de/en/work/fairgsi/rare_isotope_beams/electronics/data_processing/data_analysis/the_go4_home_page.htm"
+depends=('root' 'qt4')
+url="https://www.gsi.de/en/work/research/electronics/data_processing/data_analysis/the_go4_home_page.htm"
 license=('GPL')
 source=("http://web-docs.gsi.de/~go4/download/go4-${pkgver}.tar.gz")
-md5sums=('8083fe20cf894225039c4347de828f73')
+md5sums=('eede668b446e899da12487f182957ed0')
 
 _USEQT=4 # qt4 - Qt 4.6.x and higher (recommended) <-- from the source code 5.1.2
 
@@ -36,7 +36,7 @@ build() {
   cd go4-${pkgver}
   make clean-bin
   make clean
-  make prefix=/usr withqt=$_USEQT GO4_OS=Linux rpath=true withdabc=no nodepend=0 debug=1 all || return 1
+  make prefix=/usr withqt=$_USEQT GO4_OS=Linux rpath=true withdabc=yes nodepend=0 debug=1 all || return 1
 
 }
 
