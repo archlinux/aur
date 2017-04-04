@@ -1,6 +1,6 @@
 pkgbase = mynotes
 	pkgdesc = Desktop post-it / sticky notes managed from system tray icon
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://sourceforge.net/projects/my-notes
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mynotes
 	depends = gettext
 	depends = desktop-file-utils
 	depends = python-easywebdav
-	source = mynotes-2.0.2.tar.gz::https://sourceforge.net/projects/my-notes/files/2.0.2/mynotes-2.0.2.tar.gz/download
-	sha512sums = 1998a162a433154b632148d2b8d27b78d58c6a6a48a9cc28523982715399683b4f42d1b0a5beb050b52b3674a2624c6bea92bea9742361d373b572b146bbbe6c
+	source = mynotes-2.0.3.tar.gz::https://sourceforge.net/projects/my-notes/files/2.0.3/mynotes-2.0.3.tar.gz/download
+	sha512sums = 0b35080dc9ff12b9c6b98898cf099b9eae966390925dbf9f602222694e3f4077138312a33938c54fbdb19d6065b69a91626349ce19aa357d67eb63ce7ad871f7
 
 pkgname = mynotes
 
