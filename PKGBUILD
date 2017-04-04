@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ocaml-ctypes-git
-pkgver=0.11.3
-pkgrel=2
+pkgver=0.11.3.1.g368e162
+pkgrel=1
 pkgdesc='Library for binding to C libraries using pure OCaml'
 arch=('i686' 'x86_64')
 url=https://github.com/ocamllabs/ocaml-ctypes
