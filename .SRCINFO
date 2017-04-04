@@ -1,7 +1,7 @@
 pkgbase = pushbullet-cli
 	pkgdesc = Command line tool for controlling PushBullet.
 	pkgver = 0.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/r-darwish/pushbullet-cli
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = pushbullet-cli
 	depends = python-pushbullet.py
 	depends = python-click
 	depends = python-keyrings-alt
+	depends = python-magic
 	provides = pushbullet-cli
 	source = https://github.com/r-darwish/pushbullet-cli/archive/0.7.5.tar.gz
 	sha256sums = e221a9ad4061247c168626106bbaff1fe2833fe6509a06e83a70e63023153a16

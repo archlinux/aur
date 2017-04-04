@@ -3,12 +3,12 @@
 
 pkgname="pushbullet-cli"
 pkgver="0.7.5"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Command line tool for controlling PushBullet."
 arch=('i686' 'x86_64')
 url="https://github.com/r-darwish/pushbullet-cli"
 license=('MIT')
-depends=('python-pushbullet.py' 'python-click' 'python-keyrings-alt')
+depends=('python-pushbullet.py' 'python-click' 'python-keyrings-alt' 'python-magic')
 provides=("${pkgname}")
 
 source=("https://github.com/r-darwish/${pkgname}/archive/0.7.5.tar.gz")
