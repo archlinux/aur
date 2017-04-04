@@ -1,7 +1,7 @@
 pkgbase = timedoctorpro
 	pkgdesc = App to track work time from timedoctor.com
 	pkgver = 1.4.75.14
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.timedoctor.com/download.html
 	arch = x86_64
 	license = proprietary
@@ -11,6 +11,7 @@ pkgbase = timedoctorpro
 	depends = qt4
 	depends = opencv
 	depends = jasper
+	conflicts = opencv2
 	source = https://updates.timedoctor.com/download/_production/tdpro/linux-ubuntu-16.04/timedoctorpro_1.4.75-14ubuntu16.04_amd64.deb
 	source = https://archive.archlinux.org/packages/j/jasper/jasper-1.900.5-1-x86_64.pkg.tar.xz
 	md5sums = 0d50154852f5f10bd8e470066f61a523

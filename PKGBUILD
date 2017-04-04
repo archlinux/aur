@@ -7,7 +7,7 @@
 pkgname=timedoctorpro
 pkgver=1.4.75.14
 urlver=$(echo $pkgver|sed 's/\.\([^.]*\)$/-\1/')
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 pkgdesc="App to track work time from timedoctor.com"
 url="https://www.timedoctor.com/download.html"
@@ -15,6 +15,7 @@ license=('proprietary')
 
 #maybe also depends=('libxss')
 depends=('libx11' 'libxcb' 'zlib' 'qt4' 'opencv' 'jasper')
+conflicts=('opencv2')
 
 source=(
     "https://updates.timedoctor.com/download/_production/tdpro/linux-ubuntu-16.04/timedoctorpro_${urlver}ubuntu16.04_amd64.deb"
