@@ -1,0 +1,15 @@
+pkgbase = apache-mod_auth_mellon
+	pkgdesc = Authentication module for Apache that authenticates the user against a SAML 2.0 IdP, and grants access to directories depending on attributes received from the IdP.
+	pkgver = 0.13.1
+	pkgrel = 1
+	url = https://github.com/UNINETT/mod_auth_mellon
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = apache
+	depends = apache
+	source = https://github.com/UNINETT/mod_auth_mellon/releases/download/v0.13.1/mod_auth_mellon-0.13.1.tar.gz
+	sha512sums = ad0479be8aa94404a832d11f7ead1f704d86cab2f11aa6f90b895be9b4028026f15ec8ee85260ca76f4a001c115ff14b4b7c9e8da74676a1f0295f6c2f0a1341
+
+pkgname = apache-mod_auth_mellon
+
