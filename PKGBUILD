@@ -2,7 +2,7 @@
 # Previous maintainer: Daniel Apolinario <dapolinario@gmail.com>
 # Contributor: Roman Timushev <romikt@gmail.com>
 pkgname=gnome-defaults-list
-pkgver=3.23.92
+pkgver=3.24.0
 pkgrel=1
 pkgdesc="default file associations for GNOME environment"
 _ubuntuver=0ubuntu1
@@ -10,7 +10,7 @@ arch=('any')
 url="http://packages.ubuntu.com/source/gnome-session"
 license=('GPL' 'LGPL')
 source=(http://archive.ubuntu.com/ubuntu/pool/main/g/gnome-session/gnome-session_${pkgver}-${_ubuntuver}.debian.tar.xz)
-sha1sums=('20a45158c3e27200bd8189473851682bc9d9ec16')
+sha1sums=('c8970c1b0987c53beb879463e3257d61bae95aa6')
 
 package() {
 	#install -d "$pkgdir/etc/gnome"
