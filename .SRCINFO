@@ -1,4 +1,4 @@
-pkgbase = noto-fonts
+pkgbase = noto-fonts-lite
 	pkgdesc = Google Noto TTF fonts (lite version)
 	pkgver = 20170307
 	pkgrel = 1
