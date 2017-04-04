@@ -3,7 +3,7 @@
 # Contributor: <jnbek1972 at gmail dot com>
 # Contributor: <raku at rakutiki.tv>
 pkgname=waterfox-git
-pkgver=52.0.1+3caa37ba5c
+pkgver=52.0.2+7eeed7053d
 _realpkgver=49.0b10
 _rcbuild=1
 pkgrel=1
@@ -15,7 +15,7 @@ depends=('gtk2' 'gtk3' 'mozilla-common' 'libxt' 'startup-notification' 'mime-typ
          'dbus-glib' 'alsa-lib' 'ffmpeg2.8' 'desktop-file-utils' 'hicolor-icon-theme'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
-             'xorg-server-xvfb' 'libpulse' 'inetutils' 'rust' 'autoconf2.13' 'clang' 'llvm')
+             'xorg-server-xvfb' 'libpulse' 'inetutils' 'rust' 'autoconf2.13' 'clang' 'llvm' 'cargo')
 provides=("waterfox=$pkgver")
 conflicts=("waterfox waterfox-bin")
 install=waterfox.install
