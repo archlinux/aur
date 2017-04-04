@@ -1,5 +1,5 @@
 pkgname=cargo-license-git
-pkgver=0.1.1.4
+pkgver=0.1.3.9
 pkgrel=1
 pkgdesc="Cargo subcommand to see license of dependencies"
 arch=('x86_64' 'i686')
