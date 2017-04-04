@@ -1,5 +1,6 @@
 # Maintainer: Rodrigo González López <rodrigosloop AT gmail DOT com>
 # Maintainer: Zachary Michaels <mikezackles AT gmail DOT com>
+# Contributor: Felix Kauselmann <licorn AT gmail DOT com>
 #
 #Current sha1 can be found here:
 #https://chromium.googlesource.com/chromium/buildtools/+/master/linux64/gn.sha1
@@ -10,6 +11,8 @@ pkgdesc="Prebuilt binary for GN (Generate Ninja), Chromium's meta-build system"
 pkgver=r410137
 pkgrel=1
 arch=('x86_64')
+conflicts=('gn-git')
+provides=('gn')
 url='https://chromium.googlesource.com/chromium/src/tools/gn/'
 source=(
   "https://storage.googleapis.com/chromium-gn/$sha1"
