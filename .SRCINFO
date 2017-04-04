@@ -1,6 +1,6 @@
 pkgbase = bup-git
 	pkgdesc = Efficient file backup system based on the git packfile format
-	pkgver = 1435.53db6ee
+	pkgver = 1449.fbe7649
 	pkgrel = 1
 	url = https://bup.github.io/
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = bup-git
 	depends = attr
 	depends = git
 	optdepends = python2-tornado: launch a web server to examine backup sets
-	provides = bup=1435.53db6ee
+	provides = bup=1449.fbe7649
 	conflicts = bup
 	source = bup-git::git+https://github.com/bup/bup.git
 	sha512sums = SKIP
