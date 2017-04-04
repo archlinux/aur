@@ -1,0 +1,19 @@
+pkgbase = lasso
+	pkgdesc = Lasso is a free software C library aiming to implement the Liberty Alliance standards. ID-WSF and SAML 2.0.
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = http://lasso.entrouvert.org/
+	arch = i686
+	arch = x86_64
+	license = GNU
+	makedepends = perl
+	makedepends = python-six
+	makedepends = jdk
+	depends = libxml2
+	depends = xmlsec
+	depends = openssl
+	source = https://dev.entrouvert.org/releases/lasso/lasso-2.5.1.tar.gz
+	sha512sums = f20bea62c04f3082d5c423f658bafe1bdde0012321c43092ed5d5a2c3ec7b21ec27d88d9fc630743fd7c99e767d9fd92b98de5d4f7d98c3a9e680717483daae1
+
+pkgname = lasso
+
