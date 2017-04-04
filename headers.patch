@@ -1,0 +1,24 @@
+diff --git a/desktop-widgets/printer.cpp b/desktop-widgets/printer.cpp
+index 1ea275cf..25d3ceeb 100644
+--- a/desktop-widgets/printer.cpp
++++ b/desktop-widgets/printer.cpp
+@@ -3,6 +3,7 @@
+ #include "core/statistics.h"
+ #include "core/helpers.h"
+ 
++#include <QtMath>
+ #include <algorithm>
+ #include <QPainter>
+ #ifdef USE_WEBENGINE
+diff --git a/desktop-widgets/printer.h b/desktop-widgets/printer.h
+index fc867bb3..f7299f01 100644
+--- a/desktop-widgets/printer.h
++++ b/desktop-widgets/printer.h
+@@ -1,6 +1,7 @@
+ #ifndef PRINTER_H
+ #define PRINTER_H
+ 
++#include <QPointer>
+ #include <QPrinter>
+ #ifdef USE_WEBENGINE
+ #include <QWebEngineView>
