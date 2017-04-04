@@ -21,25 +21,21 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$_gitname"
-
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
 prepare() {
   cd "$_gitname"
-
   patch -Np1 -i "${srcdir}/change_prng.patch"
 }
 
 build() {
   cd "$_gitname"
-
   make PREFIX=/usr
 }
 
 package() {
   cd "$_gitname"
-
   make DESTDIR="$pkgdir/" PREFIX=/usr install
 }
 
