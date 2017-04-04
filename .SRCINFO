@@ -10,7 +10,10 @@ pkgbase = kmozillahelper
 	makedepends = cmake
 	makedepends = automoc4
 	makedepends = extra-cmake-modules
-	depends = kdelibs
+	depends = kio
+	depends = knotifications
+	depends = kwindowsystem
+	depends = ki18n
 	source = kmozillahelper-5.0.1.tar.gz::https://github.com/openSUSE/kmozillahelper/archive/v5.0.1.tar.gz
 	md5sums = 58816fb988dc01a1b141a1d70ecd70ef
 
