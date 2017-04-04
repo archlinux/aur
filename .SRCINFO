@@ -1,0 +1,15 @@
+pkgbase = json11-git
+	pkgdesc = A tiny JSON library for C++11
+	pkgver = r100.f450ff3
+	pkgrel = 1
+	url = https://github.com/dropbox/json11.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	source = git+https://github.com/dropbox/json11.git
+	sha256sums = SKIP
+
+pkgname = json11-git
+
