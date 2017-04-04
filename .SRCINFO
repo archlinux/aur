@@ -8,6 +8,7 @@ pkgbase = bubbleswm-git
 	license = GPL
 	depends = libconfig
 	depends = libx11
+	depends = libxft
 	depends = libxinerama
 	provides = bubbleswm
 	source = git+https://github.com/svexican/bubbleswm.git
