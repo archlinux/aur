@@ -2,19 +2,25 @@
 
 pkgname='yakuake-sessions'
 pkgdesc='Remember your yakuake session - directory, splitting terminal and virtual environment'
-pkgver='1'
-pkgrel='3'
+pkgver=635fde7
+pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/UfoDriver/yakuake-sessions'
 license=('unknown')
-depends=('qt4')
+depends=('qt5-base')
 makedepends=('git')
 source=('git://github.com/UfoDriver/yakuake-sessions.git')
 md5sums=('SKIP')
 
+pkgver() {
+  #date +%Y%m%d
+  cd "$srcdir/$pkgname"
+  git describe --always --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^wine.//'
+}
+
 build() {
   cd "$srcdir/yakuake-sessions"
-  qmake-qt4
+  qmake-qt5
   make
 }
 
