@@ -30,6 +30,8 @@ Configs are a compromise between vanilla Linode and Arch. Most drivers are disab
 
    You may also need to install grub files to /boot: `grub-install --no-bootsector --boot-directory=/boot /dev/null`
 
+   Take extra care to make sure you're booting from the correct device name. Xen devices are called /dev/xvda while KVM devices are called /dev/sda. If you're running grub inside your old Xen linode, it will automatically add "root=/dev/xvda" to your kernel line in /boot/grub/grub.cfg. Once you migrate to KVM, this will no longer work. You'll have to either edit this file by hand before shutting down to migrate, or edit it using the interactive grub command line afterwards. Once you've migrated, running grub-mkconfig again should fix it. Also be sure to check /etc/fstab or /etc/crypttab for any other device names that might give you boot problems.
+
 # STEPS TO USE
 
 1. pacman -Syu
