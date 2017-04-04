@@ -8,7 +8,7 @@ url="http://cadabra.science/"
 license=('GPL')
 conflicts=('cadabra2-git')
 depends=('python-matplotlib' 'gtkmm3' 'jsoncpp' 'mathjax' 'boost-libs' 'python-sympy' 'texlive-core')
-makedepends=('cmake' 'boost')
+makedepends=('cmake' 'boost' 'git')
 source=("$pkgname::git+https://github.com/kpeeters/cadabra2#tag=$pkgver" "package.patch")
 md5sums=('SKIP'
          '2cf414a7280fd64858d1d19d38d4bd8c')
