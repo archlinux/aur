@@ -2,7 +2,7 @@
 # Based on [extra]'s thunderbird: https://git.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/thunderbird
 
 pkgname=thunderbird-beta
-pkgver=52.0rc4
+pkgver=52.0
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
 pkgrel=1

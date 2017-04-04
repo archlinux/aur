@@ -1,6 +1,6 @@
 pkgbase = thunderbird-beta
 	pkgdesc = Standalone mail and news reader from mozilla.org - Bleeding edge version
-	pkgver = 52.0rc4
+	pkgver = 52.0
 	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird/
 	install = thunderbird-beta.install
@@ -37,7 +37,7 @@ pkgbase = thunderbird-beta
 	optdepends = libcanberra: for sound support
 	options = !emptydirs
 	options = !makeflags
-	source = https://ftp.mozilla.org/pub/thunderbird/candidates/52.0-candidates/build4/source/thunderbird-52.0.source.tar.xz
+	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/52.0/source/thunderbird-52.0.source.tar.xz
 	source = thunderbird-beta.desktop
 	source = thunderbird-install-dir.patch
 	source = fix-wifi-scanner.diff
