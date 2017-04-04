@@ -13,7 +13,7 @@ menuentry 'Arch Linux for Linode' --class arch --class gnu-linux --class gnu --c
 	insmod gzio
 	$(prepare_grub_to_access_device ${GRUB_DEVICE_BOOT} | grub_add_tab)
 	echo	'Loading Linux linux-linode ...'
-	linux	/boot/vmlinuzll-linux-linode root=${GRUB_DEVICE} loglevel=4 rw rootflags=noatime,nodiratime,data=ordered,barrier=0,commit=5,errors=remount-ro swapaccount=0 kaslr ${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}
+	linux	/boot/vmlinuzll-linux-linode root=${GRUB_DEVICE} loglevel=4 rw rootflags=noatime,nodiratime,data=ordered,barrier=0,commit=5,errors=remount-ro swapaccount=0 kaslr ${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT} console=ttyS0,19200n8 net.ifnames=0
 	echo	'Loading initial ramdisk ...'
 	initrd	/boot/initramfs-linux-linode.img
 }
