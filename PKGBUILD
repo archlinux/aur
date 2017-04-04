@@ -27,7 +27,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-sqlite"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
-pkgver=7.0.16
+pkgver=7.0.17
 pkgrel=1
 pkgdesc="PHP scripting language package for stable release of 7.0 series"
 arch=('i686' 'x86_64')
@@ -42,11 +42,11 @@ checkdepends=('procps-ng')
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
         )
-sha256sums=('244ac39bc657448962860aa7a590e4417f68513ad5e86ee2727b1328b0537309'
+sha256sums=('471c16fcdd6a5e1a37199e97bcaeea6117626229785185be7532aaa7c6ee04be'
             'SKIP'
             '819f05d2fd5a75c96e93c863517ca77dbd021a1224dc2d8096f758fb2937df6a'
             'df075b89484eb3a08402788580de16d23123f95541b2e9aed8d928105de9b874'
-            '18482c220c45d61c56f69b3a6870186f9fd1e07604301ab08ad0e13dba40a742'
+            '75322f9b38c5961faddcb4f5333fbcb5ea5955e4f54f1eec223fc4367eb3b247'
             'b6b7f3ced56b75bf95513a46f43cde41fc28da714f5e0ed181caf2266f2f0c27'
             '2f678d039313ee613d59c8b4bf9f48068085df0fa8ac7ca4cf807e168061a8c9'
             )
