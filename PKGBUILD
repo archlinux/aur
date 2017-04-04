@@ -7,7 +7,7 @@
 
 pkgbase=ppsspp-git
 pkgname=('ppsspp-git' 'ppsspp-qt-git')
-pkgver=1.3.r554.9dd3e18ed
+pkgver=1.4.r37.e99f1c00f
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=('i686' 'x86_64')
@@ -16,13 +16,15 @@ license=('GPL2')
 depends=('gcc-libs' 'glew' 'glibc' 'libgl' 'libzip' 'sdl2' 'zlib')
 makedepends=('cmake' 'git' 'glu' 'qt5-multimedia' 'qt5-tools')
 source=('git+https://github.com/hrydgard/ppsspp.git'
-        'git+https://github.com/hrydgard/ppsspp-lang.git'
-        'ppsspp-glslang::git+https://github.com/hrydgard/glslang.git'
         'ppsspp-ffmpeg::git+https://github.com/hrydgard/ppsspp-ffmpeg.git'
-        'ppsspp-armips::git+https://github.com/Kingcom/armips.git'
+        'ppsspp-glslang::git+https://github.com/hrydgard/glslang.git'
+        'git+https://github.com/hrydgard/ppsspp-lang.git'
+        'git+https://github.com/Kingcom/armips.git'
         'armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git'
+        'git+https://github.com/KhronosGroup/SPIRV-Cross.git'
         'ppsspp.desktop')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -39,16 +41,25 @@ pkgver() {
 prepare() {
   cd ppsspp
 
-  for submodule in assets/lang ext/{armips,glslang} ffmpeg; do
+  for submodule in ffmpeg assets/lang ext/glslang; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git submodule update ${submodule}
   done
+  for submodule in ext/{SPIRV-Cross,armips}; do
+    git submodule init ${submodule}
+    git config submodule.${submodule}.url ../${submodule#*/}
+    git submodule update ${submodule}
+  done
 
   pushd ext/armips
-  git submodule init ext/tinyformat
-  git config submodule.ext/tinyformat.url ../../../armips-tinyformat
-  git submodule update ext/tinyformat
+
+  for submodule in ext/tinyformat; do
+    git submodule init ${submodule}
+    git config submodule.${submodule}.url ../../../armips-${submodule#*/}
+    git submodule update ${submodule}
+  done
+
   popd
 
   for ui in sdl qt; do
@@ -64,7 +75,7 @@ build() {
 
   cmake .. \
     -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_SKIP_RPATH='ON' 
+    -DCMAKE_SKIP_RPATH='ON'
   make
 
   cd ../build-qt
