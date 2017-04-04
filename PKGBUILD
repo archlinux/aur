@@ -4,7 +4,7 @@ _name="pdir2"
 _module="${_name%2}"
 
 pkgname=("python-$_module" "python2-$_module")
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Pretty dir printing with joy"
 arch=("any")
@@ -12,7 +12,7 @@ url="https://github.com/laike9m/$_name"
 license=("MIT")
 makedepends=("python-setuptools" "python2-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('8758291948b4264754390b6a9f4f033afd6fc7e9b181a7dd555b21f99b16d77e')
+sha256sums=('fc73f509d7d2f7ac1777dcfc98fe34ff539b4c26380a760dc8df26eb30511d9f')
 
 build() {
     cd "$_name-$pkgver"
@@ -21,14 +21,14 @@ build() {
 }
 
 package_python-pdir() {
-    depends=("python-colorama")
+    depends=("python")
     cd "$_name-$pkgver"
     python setup.py install --skip-build --root="$pkgdir" --optimize=1
     install -D --mode 644 --target-directory "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
 
 package_python2-pdir() {
-    depends=("python2-colorama" "python2-enum34")
+    depends=("python2" "python2-enum34")
     cd "$_name-$pkgver"
     python2 setup.py install --skip-build --root="$pkgdir" --optimize=1
     install -D --mode 644 --target-directory "$pkgdir/usr/share/licenses/$pkgname" LICENSE
