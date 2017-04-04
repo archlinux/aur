@@ -2,7 +2,7 @@
 # Contributor: Mathijs Kadijk <maccain13@gmail.com>
 
 pkgname=python-azkaban
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="Lightweight Azkaban client"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/mtth/azkaban"
 license=('custom')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://pypi.io/packages/source/a/azkaban/azkaban-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/a/azkaban/azkaban-$pkgver.tar.gz")
 
 package() {
     cd "$srcdir"/azkaban-$pkgver
@@ -19,4 +19,4 @@ package() {
     install -D LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('79ded11b2b59598228a7a827f3b4784d13cea5e16c57f3548c81595524d9f99f')
+sha256sums=('c31422fa3ef6849e2c1eba2f99f03056e6c90107a215838fbb0e487a82420f5f')
