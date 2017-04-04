@@ -1,14 +1,14 @@
 pkgbase = rocketchat-client
 	pkgdesc = The Ultimate Open Source Web Chat Platform
-	pkgver = 2.6.0
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://rocket.chat
 	arch = x86_64
 	license = The MIT License (MIT)
 	depends = libnotify
 	depends = gconf
-	source_x86_64 = https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/2.6.0/rocketchat_2.6.0_amd64.deb
-	md5sums_x86_64 = cbc9ef471924845744ae9b1fc32c9f66
+	source_x86_64 = https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/2.6.1/rocketchat_2.6.1_amd64.deb
+	md5sums_x86_64 = 4d4405e8c4bfc8abf7e18b3bc54193ab
 
 pkgname = rocketchat-client
 
