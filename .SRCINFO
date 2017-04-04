@@ -8,6 +8,7 @@ pkgbase = json11-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	depends = gcc-libs
 	source = git+https://github.com/dropbox/json11.git
 	sha256sums = SKIP
 
