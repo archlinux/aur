@@ -2,7 +2,7 @@
 # Based on [extra]'s thunderbird
 
 pkgname=thunderbird-beta-bin
-pkgver=52.0rc4
+pkgver=52.0
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
