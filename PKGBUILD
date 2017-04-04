@@ -1,6 +1,6 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 pkgname=python2-trackpy
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Tools for particle tracking"
 url="https://github.com/soft-matter/trackpy"
