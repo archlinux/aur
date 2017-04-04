@@ -3,14 +3,14 @@
 
 pkgname='python2-axolotl-git'
 _pkgname='python-axolotl'
-pkgver=r39.9585d72
+pkgver=0.1.39.r0.g37c5c55
 pkgrel=1
 pkgdesc="Python port of libaxolotl"
 url="https://github.com/tgalal/python-axolotl"
 arch=('any')
 license=('GPL')
-depends=('python2' 'python2-dateutil' 'python2-protobuf' 'python2-crypto' 'python2-axolotl-curve25519-git')
-makedepends=('python2-setuptools')
+depends=('python2' 'python2-protobuf' 'python2-crypto' 'python2-axolotl-curve25519-git')
+makedepends=('python2-setuptools' 'git')
 conflicts=('python2-axolotl')
 provides=('python2-axolotl')
 source=('git://github.com/tgalal/python-axolotl')
