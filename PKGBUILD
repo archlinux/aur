@@ -1,7 +1,7 @@
 # Maintainer: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='cen64'
-pkgver=0.3
+pkgver=0.3.19.g8aff451
 pkgrel=1
 pkgdesc='Cycle-accurate Nintendo 64 emulator'
 arch=(
@@ -36,7 +36,7 @@ sha256sums=(
 pkgver() {
     cd "${srcdir}/${pkgname}" || exit 1
     
-    git describe --tags | sed 's/v//'
+    git describe --tags | sed 's/v//' | sed 's/-/./g'
 }
 
 prepare() {

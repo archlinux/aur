@@ -1,6 +1,6 @@
 pkgbase = cen64
 	pkgdesc = Cycle-accurate Nintendo 64 emulator
-	pkgver = 0.3
+	pkgver = 0.3.19.g8aff451
 	pkgrel = 1
 	url = http://www.cen64.com/
 	arch = i686
