@@ -1,7 +1,6 @@
 # $Id$
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
-pkgbase=noto-fonts
 pkgname=noto-fonts-lite
 _pkgver=2017-03-07
 _commit=60aa0da2ee84b11e78725b4577edc2e80b009d56  # master
@@ -13,7 +12,7 @@ url="https://www.google.com/get/noto/"
 license=(custom:SIL)
 provides=(ttf-font noto-fonts)
 conflicts=(noto-fonts)
-source=("$pkgbase-$_commit.tar.gz::https://github.com/googlei18n/noto-fonts/archive/$_commit.tar.gz"
+source=("noto-fonts-$_commit.tar.gz::https://github.com/googlei18n/noto-fonts/archive/$_commit.tar.gz"
         66-noto-sans.conf 66-noto-serif.conf 66-noto-mono.conf)
 sha256sums=('9d74d9fa04dfa182b8fa1a3caca3b65cc929b76e169bf59c6ce8c78b9c08be82'
             '65ff237a579d438eb1b1c90bf25b5818e15ab019dbbfed2fc283b9cd12e5177f'
