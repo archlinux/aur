@@ -1,30 +1,32 @@
 # Maintainer: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=urbit-git
-_gitname=urbit
-pkgver=71085e0
+pkgver=0.4.r100.g83d0f8871
 pkgrel=1
 pkgdesc="An Operating Function"
 url="http://www.urbit.org"
-arch=("i686" "x86_64")
-license=( "public_domain" )
-depends=( "libsigsegv" "termcap" "openssl" )
-source=( $_gitname"::git+https://github.com/urbit/urbit" )
-sha1sums=( 'SKIP' )
+arch=('i686' 'x86_64')
+license=('MIT')
+depends=('libsigsegv' 'libuv' 'curl')
+makedepends=('git' 'cmake' 'python' 'ragel' 're2c')
+conflicts=('urbit')
+provides=('urbit')
+options=('!makeflags')
+source=('git+https://github.com/urbit/urbit.git')
+sha1sums=('SKIP')
 
 pkgver() {
-    cd $srcdir/$_gitname
-    local ver="$(git describe --always)"
-    printf "%s" "${ver//-/.}"
+  cd ${pkgname/-git}
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-  make || true # first time it fails
+  cd ${pkgname/-git}
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  make debinstall DESTDIR="$pkgdir"
+  cd ${pkgname/-git}
+  install -Dm755 bin/urbit "$pkgdir"/usr/bin/urbit
+  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
