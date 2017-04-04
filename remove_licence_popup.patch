@@ -1,0 +1,18 @@
+--- mgltools_x86_64Linux2_latest/Tools/install.py	2015-01-23 02:10:22.000000000 +0200
++++ src/mgltools_x86_64Linux2_latest/Tools/install.py	2017-04-04 10:17:18.032117465 +0300
+@@ -337,15 +337,7 @@
+ f.write(alias_sh)
+ f.close()
+ 
+-#license part:
+-
+-licensefile = os.path.join(mgl_root, mglPckgsDir, "mglutil", "splashregister", "license.py")
+-
+-os.chdir(mgl_root)
+-#print "license part, current directory:", os.getcwd()
+-
+ pythonscript = os.path.join(mgl_root, "bin", "pythonsh")
+-status = os.system("%s %s"%(pythonscript, licensefile))
+ 
+ print """\n MGLTools installation complete.
+ To run pmv, adt, vision or pythonsh scripts located at:
