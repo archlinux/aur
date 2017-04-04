@@ -1,6 +1,6 @@
 pkgbase = spideroak-one
 	pkgdesc = Secure file backup, sync and sharing client. This provides the client for SpiderOakONE.
-	pkgver = 6.1.5
+	pkgver = 6.1.9
 	pkgrel = 1
 	url = https://spideroak.com/
 	install = spideroak-one.install
@@ -16,10 +16,10 @@ pkgbase = spideroak-one
 	options = !strip
 	source = terms.txt
 	sha256sums = ee0d1c8c41e95ba2a11de4fe5cf0d89e2b237afc86dc411f58f3b388db8198e9
-	source_i686 = spideroakone_6.1.5_i386.deb::https://spideroak.com/getbuild?platform=ubuntu&arch=i386
-	sha256sums_i686 = a001e464b87406e775f421ff041fbc80a3f3b33548c792a095c9632e137a3e89
-	source_x86_64 = spideroakone_6.1.5_amd64.deb::https://spideroak.com/getbuild?platform=ubuntu&arch=x86_64
-	sha256sums_x86_64 = 7ef458381c17f7a3712043aa672b5509500e7e6999cd52ba5d85ba76f7a29d2c
+	source_i686 = spideroakone_6.1.9_i386.deb::https://spideroak.com/getbuild?platform=ubuntu&arch=i386
+	sha256sums_i686 = 6d924327182c72289ed16290dba8e3559284a9f5d8c58b32f8d76364cc970b9f
+	source_x86_64 = spideroakone_6.1.9_amd64.deb::https://spideroak.com/getbuild?platform=ubuntu&arch=x86_64
+	sha256sums_x86_64 = afb9903925807950a2359cd709ac62733bb678f745ca25ec3426adca783a80b8
 
 pkgname = spideroak-one
 
