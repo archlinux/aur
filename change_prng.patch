@@ -1,0 +1,51 @@
+commit ca7beb741b4708e7f2cb2e3c33aafc11b560cb59
+Author: Narrat <autumn-wind@web.de>
+Date:   Tue Apr 4 22:19:53 2017 +0200
+
+    Replace srand()/rand() combo with getrandom()
+    
+    This requires glibc-2.25.
+    
+    Reason for the move: The time based initialization is a security issue.
+    Additionally is the rand() RNG not the best one out there.
+    
+    The newly getentropy/getrandom() from glibc uses for random numbers /dev/(u)random, which are a better choice.
+
+diff --git a/src/correcthorse.c b/src/correcthorse.c
+index 506e8db..77c8a39 100644
+--- a/src/correcthorse.c
++++ b/src/correcthorse.c
+@@ -12,9 +12,9 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+-#include <time.h>
+ #include <string.h>
+ #include <ctype.h>
++#include <sys/random.h>
+ 
+ #ifdef _GNU_SOURCE
+ #include <getopt.h>
+@@ -30,15 +30,16 @@ static void print_version(char *argv0);
+ 
+ static size_t rand_index(size_t n)
+ {
+-    static int seed = 0;
++    unsigned long seed_feed[1];
++    int ret=0;
+ 
+-    if (!seed)
+-    {
+-        srand(time(NULL));
+-        seed = 1;
++    ret = getrandom(seed_feed, sizeof(long), 0);
++    if (ret <= 0) {
++        fprintf(stderr, "getrandom() returned %d: ", ret);
++        perror("");
+     }
+ 
+-    return rand() % n;
++    return *seed_feed % n;
+ }
+ 
+ static void rand_perm(size_t *dest, size_t n)
