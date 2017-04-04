@@ -1,0 +1,32 @@
+pkgbase = adobe-source-han-serif-fonts
+	pkgdesc = Adobe Source Han Serif - A set of Pan-CJK fonts designed to complement Source Serif Pro
+	pkgver = 1.000
+	pkgrel = 1
+	url = https://github.com/adobe-fonts/source-han-serif
+	install = fonts.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	source = https://github.com/adobe-fonts/source-han-serif/archive/1.000R.tar.gz
+	source = 44-source-han-serif-jp.conf
+	source = 44-source-han-serif-kr.conf
+	source = 44-source-han-serif-cn.conf
+	source = 44-source-han-serif-tw.conf
+	source = 44-source-han-serif-otc.conf
+	sha256sums = 4962a13bcc28a18d82ca6f8373294a447b85a28e10f9e66beac3f50f29950c01
+	sha256sums = 11cc3eeddaa03f90e02bc0d2a869dc411ca6e0671ff18330092040fa8f9cb9fb
+	sha256sums = c46faa5bce15917837071384281ec9503fe32e44f3e8751b6af9db1da296610a
+	sha256sums = 9ab6ada83b23f72d961cb27fe62fa7e61aece75e9f8039f77dc09e399dcaf214
+	sha256sums = 4ae2bd5d82a54ae2e7bc95b2bd8417a583b592d1df98b3934f9e028dfea8b405
+	sha256sums = a5843462df591a027e30c0e15865a0e625d4a3fc7ea2068d66ee7059890de0ce
+
+pkgname = adobe-source-han-serif-jp-fonts
+
+pkgname = adobe-source-han-serif-kr-fonts
+
+pkgname = adobe-source-han-serif-cn-fonts
+
+pkgname = adobe-source-han-serif-tw-fonts
+
+pkgname = adobe-source-han-serif-otc-fonts
+
