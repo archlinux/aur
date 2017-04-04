@@ -4,25 +4,22 @@
 # PKGBUILD based off of fldigi
 
 pkgname=fldigi-git
-pkgver=v3.23.09.r0.g8446e6e
-pkgrel=1
+pkgver=v4.0.1.r0.g476ff68e
+pkgrel=2
 pkgdesc="Digital Modem Program for Amateur Radio, git version"
 arch=('i686' 'x86_64')
 url="http://w1hkj.com"
 license=('GPL')
-depends=('fltk' 'libusb-compat')
+depends=('fltk' 'libsamplerate' 'libusb-compat')
 optdepends=('hamlib: rig control through hamlib'
 	'libsndfile: sound file support'
 	'portaudio: PortAudio support'
 	'pulseaudio: pulseaudio support'
-	'xmlrpc-c: XML-RPC control')
-makedepends=('gcc'
-	'autoconf'
-	'libsamplerate'
-	'libpng')
+	'flxmlrpc: external flxmlrpc library support'
+	'asciidoc: build documentation with asciidoc')
 provides=('fldigi')
 conflicts=('fldigi')
-source=("$pkgname::git://git.code.sf.net/p/fldigi/fldigi")
+source=("$pkgname::git+https://git.code.sf.net/p/fldigi/fldigi")
 md5sums=('SKIP')
 
 pkgver() {
