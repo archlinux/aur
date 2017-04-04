@@ -1,4 +1,4 @@
-# Maintainer: Krakn <dan.ray.beste@gmail.com>
+# Maintainer: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname=xnafiledialog-git
 _gitname=XNAFileDialog
