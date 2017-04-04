@@ -1,8 +1,9 @@
 # Maintainer: not_anonymous <nmlibertarian@gmail.com>
 # Contributor: [Vitaliy Berdinskikh](mailto:ur6lad@archlinux.org.ua) aka UR6LAD
+# Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=cty
-pkgver=2703
+pkgver=2704
 pkgrel=1
 pkgdesc="The package represents databases of entities (countries), prefixes and callsigns
 	that are used by amateur (ham) radio logging software - CONTESTING VERSION."
@@ -21,5 +22,5 @@ package() {
 	chmod 644 * old/*
 	cp -R *.{cty,dat} old $pkgdir/usr/share/cty
 }
-md5sums=('aad4db161e85e26744cc214ed3b3a903')
-sha256sums=('f00a073afcf612c6cb2fd8301b50758b84bdf50a01c0ffc0bcaf0c4699e117d3')
+md5sums=('ecc928d94e783d3b1a6d5495e518dc9e')
+sha256sums=('9aae59d42fbf4f8d8182a2bf3c28e45be5a37b52d43916be8bfad68193b94475')
