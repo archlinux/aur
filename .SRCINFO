@@ -1,7 +1,7 @@
 pkgbase = mgltools-bin
 	pkgdesc = Visualization and analysis of molecular structures; includes AutoDockTools, Vision, AutoDock 4.2.6 and PythonMoleculeViewer (includes Python 2.7)
 	pkgver = 2015.01.22
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mgltools.scripps.edu/
 	arch = x86_64
 	license = custom
