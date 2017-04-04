@@ -1,6 +1,6 @@
 pkgbase = qt5-restclient
 	pkgdesc = A library for generic JSON-based REST-APIs, with a mechanism to map JSON to Qt objects
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Skycoder42/QtRestClient
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = qt5-restclient
 	makedepends = git
 	depends = qt5-base
 	depends = qt5-tools
-	depends = qt5-jsonserializer
-	source = qt5-restclient-1.1.0::git+https://github.com/Skycoder42/QtRestClient.git#tag=1.1.0
+	depends = qt5-jsonserializer>=2.0.0
+	source = qt5-restclient-1.2.0::git+https://github.com/Skycoder42/QtRestClient.git#tag=1.2.0
 	md5sums = SKIP
 
 pkgname = qt5-restclient

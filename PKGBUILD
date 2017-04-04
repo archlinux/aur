@@ -1,12 +1,12 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=qt5-restclient
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A library for generic JSON-based REST-APIs, with a mechanism to map JSON to Qt objects"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtRestClient"
 license=('BSD')
-depends=('qt5-base' 'qt5-tools' 'qt5-jsonserializer')
+depends=('qt5-base' 'qt5-tools' 'qt5-jsonserializer>=2.0.0')
 makedepends=('git')
 source=("$pkgname-$pkgver::git+https://github.com/Skycoder42/QtRestClient.git#tag=$pkgver")
 md5sums=('SKIP')
