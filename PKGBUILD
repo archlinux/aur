@@ -4,7 +4,7 @@
 
 pkgname=mozilla-extension-gnotifier-git
 pkgver=1.9.9pre1
-pkgrel=1
+pkgrel=2
 pkgdesc='Add-on for Firefox and Thunderbird to enable integration with GNOME native notification system.'
 url='https://github.com/mkiol/GNotifier'
 arch=('any')
@@ -47,7 +47,7 @@ pkgver() {
       's/.*"version"\s*:\s*"\([[:digit:].]*\)"\s*,.*/\1/p' \
       '{}' \; -quit 2>/dev/null
     )*" -printf '%f\n' | sed 's/^gnotifier[-_]\(.*\).xpi$/\1/;
-      s/-final$//;s/-//' | sort -n | head -n1 | tr '\n' '.'
+      s/-final$//;s/-//' | sort -nr | head -n1 | tr '\n' '.'
 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
