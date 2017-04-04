@@ -1,16 +1,19 @@
 pkgbase = correcthorse-git
 	pkgdesc = Passphrase generator based on https://xkcd.com/936/
 	pkgver = 1.0.r23.g2a214af
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rmartinjak/correcthorse
 	arch = i686
 	arch = x86_64
 	license = WTFPL
 	makedepends = git
+	depends = glibc>=2.25
 	provides = correcthorse
 	conflicts = correcthorse
 	source = git://github.com/rmartinjak/correcthorse.git
+	source = seed.patch
 	md5sums = SKIP
+	md5sums = 34c953a35b1cb563d571005d62c3d199
 
 pkgname = correcthorse-git
 
