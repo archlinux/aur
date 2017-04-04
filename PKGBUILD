@@ -11,7 +11,7 @@ makedepends=('make')
 options=()
 source=("https://github.com/supervoltage/morsetran/archive/master.zip")
 noextract=()
-md5sums=('67bdccd2bb1ba58ffb05e8ffd55ea62d')
+md5sums=('cc565b4a915ca5a366832a38fe3083e9')
 
 build() {
 	cd $srcdir/$pkgname-master
@@ -22,5 +22,6 @@ build() {
 package() {
 	cd $srcdir/$pkgname-master
 	
-	make DESTDIR="$pkgfir/" install
+	mkdir -p $pkgdir/usr/bin
+	make DESTDIR="$pkgdir" install
 }
