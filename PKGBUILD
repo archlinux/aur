@@ -7,7 +7,7 @@ pkgdesc="bubbles is opinionated, tiny, bloat-less (=> fast) floating window mana
 arch=('i686' 'x86_64')
 url="https://github.com/svexican/bubbleswm"
 license=('GPL')
-depends=('libconfig' 'libx11' 'libxinerama')
+depends=('libconfig' 'libx11' 'libxft' 'libxinerama')
 provides=("${pkgname%-*}")
 source=('git+https://github.com/svexican/bubbleswm.git')
 md5sums=('SKIP')
