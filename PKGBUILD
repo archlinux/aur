@@ -1,7 +1,7 @@
 # Maintainer: HER0_01 <aconrad103 at gmail.com>
 
 pkgname=mesecons-git
-pkgver=696.fec43a3
+pkgver=784.2554164
 pkgrel=1
 pkgdesc="Minetest mod that adds digital circuitry, similar to Minecraft's redstone."
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('minetest')
 makedepends=('git')
 provides=('mesecons')
-source=("$pkgname::git://github.com/Jeija/minetest-mod-mesecons.git")
+source=("$pkgname::git://github.com/minetest-mods/mesecons.git")
 md5sums=('SKIP')
 
 pkgver() {
