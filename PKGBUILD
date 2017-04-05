@@ -2,7 +2,7 @@
 
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
-_swiftver=3.0.2-RELEASE
+_swiftver=3.1-RELEASE
 pkgver=${_swiftver//-RELEASE/}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger"
@@ -11,7 +11,7 @@ url="http://swift.org/"
 license=('apache')
 depends=('python2' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
          'sqlite' 'ncurses' 'libkqueue')
-makedepends=('git' 'cmake' 'ninja' 'swig' 'clang=3.8.1' 'python2-six' 'perl'
+makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.9' 'python2-six' 'perl'
              'python2-sphinx' 'python2-requests')
 
 source=(
@@ -26,24 +26,20 @@ source=(
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
-    "swift-sphinx2.patch" "xar-1.6.patch" "build-script.patch"
-    "swift-init-CachedVFile.patch"
+    "block_include.patch"
 )
-sha256sums=('e69764cb3d83d7209f21c2af448ae39e6612df28e37b7a3ceffa9c24f19ca0cc'
-            '194f66f522aa349061ae682bab18fa3fffe146da30e30f2d9f4b811fd544f8eb'
-            '8c9026b6f7543fc4ad2efef412da8ab186dbbcb089e8558e27b9994243faff99'
-            '2d3f8e9f9d388fd77281318b07079f552fa47c795d8c00ca6a96031991094ea3'
-            '40fc49d2f1c4075030b43f706193c1e6323e741ac5b029d2c627fd2f86da1cb4'
-            'ff96888b203cca45bc9b23e01221550faa21581fded9015bf885da836c19ae95'
-            '21b3192ffa8625e55b0d69f17418047c347acc67e5be476f4f93ca079a03c84f'
-            '4489de54204c5788837059474a1f3c7feaab0bea8753c3b67a4a04bc0732965d'
-            '42a25c90ff6249427baf27cd7f9e676430cbde73f228ea346b9ef8c7ddaa86eb'
-            'a6ec06cefdea3226e47578477559bea43733fbc0362616c08ae3cb9deea8aa79'
-            '90cb9573f22ed62d49ffff4de0e92fefdb3044a7e19391bbc14a63cc4f0ca27b'
-            '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f'
-            'df27c2bfeaed6335f49a8815b0b296fd5acc331a6a9361a40f7dfc69a7518da6'
-            '9f2512df8c495e2b8bf19fe213e951cdd17df9207538ceb8ab59a30bd6a18e3f'
-            '2543e6b4ee21e090eb7f67e07594ac95122eb5b275e1976ededa9ef71f3d8652')
+sha256sums=('bc8f4fc1cb5e9cddcdca4208dc5db89696d6ab507e739d498519a0262bd453c0'
+            '5f99110ac0fcd70b7fabf02989cfd0e7f1f1b6368b80d69f1506ce1fdc38c83e'
+            'bb4543904e82f433a6a65612c9c4d8218dc5358f8097318f4f7fd6af145dd1f5'
+            'eb10951a920b16fefccec73f919c9fc222973164b6d922a1084770b9bb822958'
+            'f0906c6048cdc93c85106090a878dea7ca3b6d862091f82fe8073e273d3fc011'
+            '578c0d28fc74df52c77dd6c1bfc91e45f0d9d2349e82855ae2f9715d1b25ac36'
+            '54e66ff2fbe06011207e07a75807b9c0d317355c655c1d74580411e705f2b824'
+            'fb52ec66d67b2c2005fd19a7a7f23cb8a6a077c9595d1514001b26690239814b'
+            '82866426aae326fb910787080ad1a994061e0da410ee5bd0a2911b9fec603e53'
+            '859742ac51832918e4400f06414ac33a3c65584681626e7e90a1b2b8eb514b1b'
+            '81677333d13bbac8b324db8c223917475e0dc229026b12e4be425d9d2899fb28'
+            'e89716c7a5bc047eddac22e7633804108c0e3c6d543c3005dec5e9b9334fb1c3')
 
 prepare() {
     # Use python2 where appropriate
@@ -70,18 +66,9 @@ prepare() {
     ln -sf swift-swift-${_swiftver} swift
     ln -sf swift-package-manager-swift-${_swiftver} swiftpm
 
-    # Sphinx 1.3.5 raises a warning (promoted to error) when using an unknown
-    # syntax highlighting language (like "swift").
-    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/swift-sphinx2.patch" )
-
-    # Fix for xar 1.6.1+ (backported from LLVM trunk)
-    ( cd "${srcdir}/llvm" && patch -p1 -i "${srcdir}/xar-1.6.patch" )
-
-    # Typo in build-script
-    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/build-script.patch" )
-
-    # Fix for missing initialization
-    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/swift-init-CachedVFile.patch" )
+    # Fix some broken includes in foundation lib
+    ( cd "${srcdir}/swift-corelibs-foundation" && \
+        patch -p1 -i "${srcdir}/block_include.patch" )
 }
 
 build() {
@@ -90,9 +77,15 @@ build() {
     export SWIFT_SOURCE_ROOT="$srcdir"
     export LDFLAGS='-ldl -lpthread'
     export PATH="$PATH:/usr/bin/core_perl"
-    utils/build-script -R \
-        --lldb --llbuild --swiftpm --xctest --foundation --libdispatch \
-        -j "$(lscpu --parse=CPU | grep -v '^#' | wc -l)"
+    _cpus="$(lscpu --parse=CPU | grep -v '^#' | wc -l)"
+    utils/build-script -R -j "$_cpus" \
+        --lldb --llbuild --swiftpm --xctest --foundation --libdispatch
+
+    # Fix the lldb swig binding's import path (matches Arch LLDB package)
+    # Need to do this before check(), since the test suite uses the lldb
+    # python bindings directly from the build dir
+    sed -i "/import_module('_lldb')/s/_lldb/lldb.&/" \
+        "${srcdir}/build/Ninja-ReleaseAssert/lldb-linux-${CARCH}/lib/python2.7/site-packages/lldb/__init__.py"
 }
 
 check() {
@@ -133,7 +126,7 @@ package_swift() {
     )
     (
         cd swiftpm-linux-$CARCH
-        install -m755 debug/swift-{build,test,package} "$pkgdir/usr/bin"
+        install -m755 release/swift-{build,test,package} "$pkgdir/usr/bin"
 
         install -dm755 "$pkgdir/usr/lib/swift/pm"
         install -m755 lib/swift/pm/libPackageDescription.so "$pkgdir/usr/lib/swift/pm"
@@ -181,4 +174,5 @@ package_swift-lldb() {
 
     # This should be provided from python2-six
     rm "$pkgdir/usr/lib/python2.7/site-packages/six.py"
+    rm "$pkgdir/usr/lib/python2.7/site-packages/six.pyc"
 }
