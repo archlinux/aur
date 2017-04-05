@@ -33,7 +33,7 @@ build() {
     source /usr/share/ros-build-tools/clear-ros-env.sh
     source /opt/ros/indigo/setup.bash
     cd "$_pkgname"
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib .
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
     make
 }
 
