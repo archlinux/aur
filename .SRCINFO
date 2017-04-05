@@ -1,0 +1,20 @@
+pkgbase = srdfdom-git
+	pkgdesc = Parser for Semantic Robot Description Format (SRDF).
+	pkgver = 0.50.0.r69.ad29a7c
+	pkgrel = 1
+	url = https://github.com/nim65s/srdfdom
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = boost
+	depends = tinyxml
+	optdepends = doxygen
+	provides = srdfdom
+	conflicts = srdfdom
+	source = srdfdom::git://github.com/nim65s/srdfdom.git
+	md5sums = SKIP
+
+pkgname = srdfdom-git
+
