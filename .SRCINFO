@@ -10,6 +10,7 @@ pkgbase = srdfdom-git
 	makedepends = git
 	depends = boost
 	depends = tinyxml
+	depends = urdfdom-headers
 	optdepends = doxygen
 	provides = srdfdom
 	conflicts = srdfdom
