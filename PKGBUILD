@@ -1,35 +1,29 @@
-# Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
+# Initial Contribution: Benjamin Chretien <chretien at lirmm dot fr>
+# Maintainer: Guilhem Saurel <gsaurel at laas dot fr>
+
 pkgname=urdfdom-headers
-pkgver=0.3.0
+_pkgname=urdfdom_headers
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="The URDF (U-Robot Description Format) headers provides core data structure headers for URDF."
 arch=('any')
-url="http://gazebosim.org/"
+url="https://github.com/ros/$_pkgname"
 license=('BSD')
 depends=()
-makedepends=('git' 'cmake')
-
-_gitroot=https://github.com/ros
-_gitrepo=urdfdom_headers
-
-_tag=${pkgver}
-_dir=${_gitrepo}
-source=("${_dir}"::"git+${_gitroot}/${_gitrepo}.git"#tag=${_tag})
-md5sums=('SKIP')
+makedepends=('cmake')
+source=("https://github.com/ros/$_pkgname/archive/$pkgver.tar.gz")
+md5sums=('af7359938ddada5e86d4e64322f1611e')
 
 build() {
-  # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
-
-  # Build project
-  cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX="/usr"
-  make
+    cd "$_pkgname-$pkgver"
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib .
+    make
 }
 
 package() {
-  cd ${srcdir}/build
-  make DESTDIR="$pkgdir/" install
+    cd "$_pkgname-$pkgver"
+    make DESTDIR="$pkgdir/" install
+
+    # install licence
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
