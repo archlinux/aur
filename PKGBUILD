@@ -2,7 +2,7 @@
 _pkgname=dada
 pkgname=dadaengine
 pkgver=1.03
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A system for generating random text from grammars."
 arch=('i686' 'x86_64')
@@ -26,6 +26,11 @@ options=()
 md5sums=('884cc1c6a8e4f2fb7b05ef772e905b0d')
 sha1sums=('96224f0ccc5de518c3a584704573a1d7481a1dc0')
 sha256sums=('3cce44d75ccc8b38c8c147002c27d31b1f3a0a84c6545b2d793e5036bdee3794')
+
+prepare() {
+  cd "$srcdir/${_pkgname}-$pkgver/src"
+  sed -i '26s/-lpb/& -lfl/' Makefile.in
+}
 
 build() {
   cd "$srcdir/${_pkgname}-$pkgver"
