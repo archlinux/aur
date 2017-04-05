@@ -1,0 +1,15 @@
+pkgbase = hpp-constraints
+	pkgdesc = Definition of basic geometric constraints for motion planning
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://github.com/humanoid-path-planner/hpp-constraints
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	depends = hpp-model
+	source = https://github.com/humanoid-path-planner/hpp-constraints/releases/download/v3.2/hpp-constraints-3.2.tar.gz
+	md5sums = 044c5f20da37f6cc2ccd903fb29a6dc5
+
+pkgname = hpp-constraints
+
