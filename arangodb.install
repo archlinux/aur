@@ -1,18 +1,11 @@
-pre_install() {
-  systemd-sysusers arangodb-users.conf
-
-  install -o arangodb -g arangodb -m 755 -d "/var/lib/arangodb3"
-  install -o arangodb -g arangodb -m 755 -d "/var/lib/arangodb3-apps"
-  install -o arangodb -g arangodb -m 755 -d "/var/log/arangodb3"
-}
-
 post_install() {
 
   chown -R arangodb:arangodb "/var/lib/arangodb3" &> /dev/null
   chown -R arangodb:arangodb "/var/lib/arangodb3-apps" &> /dev/null
   chown -R arangodb:arangodb "/var/log/arangodb3" &> /dev/null
-
-  systemd-tmpfiles --create arangodb.conf
+  install -o arangodb -g arangodb -m 755 -d "/var/lib/arangodb3"
+  install -o arangodb -g arangodb -m 755 -d "/var/lib/arangodb3-apps"
+  install -o arangodb -g arangodb -m 755 -d "/var/log/arangodb3"
 
   cat <<-EOF
 
