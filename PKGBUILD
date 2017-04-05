@@ -1,7 +1,7 @@
 # Maintainer: Bastian Löher <b.loeher@gsi.de>
 pkgname=fairroot
-pkgver=16.06a
-fairsoftver=may16p1-1
+pkgver=17.03
+fairsoftver=mar17-1
 pkgrel=1
 pkgdesc="Analysis framework based on root provided by GSI/FAIR."
 arch=('x86_64')
@@ -28,12 +28,10 @@ install=fairroot.install
 changelog=
 source=("https://github.com/FairRootGroup/FairRoot/archive/v-${pkgver}.tar.gz"
 	'fairroot.install'
-	'fix_return.patch'
 	)
 noextract=()
-md5sums=('83ecc7f45b74200b0ddc52c640921138'
-         'd2d2d7b11b308120382fba7e32c5268a'
-         '7eecd47253b1f005d4da59ddcfa28eed')
+md5sums=('77ab94317667c2d4339da992d9389e61'
+         'd2d2d7b11b308120382fba7e32c5268a')
 
 # Do not compress the package for installation
 # PKGEXT='.pkg.tar'
@@ -43,9 +41,6 @@ PKGEXT='.pkg.tar.gz'
 prepare() {
 	# Path to fairsoft installation
 	export SIMPATH=/opt/fairsoft/${fairsoftver}
-
-	cd ${srcdir}
-#	patch -Np0 -i ${startdir}/fix_return.patch
 
 	cd ${srcdir}/FairRoot-v-${pkgver}
 
