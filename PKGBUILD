@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-pycoin
-pkgver=0.76
+pkgver=0.77
 pkgrel=1
 pkgdesc="Python-based Bitcoin utility library"
 arch=('any')
@@ -10,9 +10,9 @@ makedepends=('python-setuptools')
 url="https://github.com/richardkiss/pycoin"
 license=('MIT')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/8a/ee/bf6d21b9502c784803e54128b5ea68265e6a4319c314149def93360e26e2/pycoin-0.76.tar.gz)
-md5sums=('af797098f2aa14bc155ec442595c9c66')
-sha256sums=('d1dbd4ecb5b69672523778634c415f37eccda75f00d90c318f3eb243cc63b102')
+source=(https://pypi.python.org/packages/b6/59/3438ecb8573429c65504133a8c5fd938c30a32e1693da96a3797419423d0/pycoin-0.77.tar.gz)
+md5sums=('42cb1d4be17002c28d2bdb752443d90e')
+sha256sums=('c5e2fe86690e72b63000f4cf363851116cb7b96e8eb77b69b710e718d2e251de')
 provides=('pycoin' 'python-pycoin')
 
 build() {
