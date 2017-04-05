@@ -1,0 +1,15 @@
+pkgbase = nodejs-tiddlywiki-git
+	pkgdesc = A non-linear personal web notebook
+	pkgver = 1
+	pkgrel = 1
+	url = http://tiddlywiki.com/
+	arch = any
+	license = BSD
+	depends = nodejs
+	depends = npm
+	conflicts = nodejs-tiddlywiki
+	source = git+https://github.com/Jermolene/TiddlyWiki5.git
+	md5sums = SKIP
+
+pkgname = nodejs-tiddlywiki-git
+
