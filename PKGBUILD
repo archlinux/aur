@@ -3,7 +3,7 @@
 
 # Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
 pkgname=rlite-git
-pkgver=r1979.b716ec2
+pkgver=r1985.6522969
 pkgrel=1
 pkgdesc="Recursive InterNetwork Architecture user/kernel prototype written in C."
 arch=('any')
@@ -28,7 +28,7 @@ build() {
     msg "Building on kernel ${RKVER}..."
 
     cd "$srcdir/$_gitname"
-    ./configure --prefix "$pkgdir" || exit 1
+    ./configure --prefix "$pkgdir" --libmodprefix /usr || exit 1
     make || exit 1
     msg "Build complete"
 }
@@ -37,7 +37,7 @@ package() {
     make -C "$srcdir/$_gitname" install
 
     # Install other system files
-    mkdir -p "$pkgdir/var/run/rlite"
+    mkdir -p "$pkgdir/run/rlite"
     mkdir -p "$pkgdir/usr/lib/systemd/system/"
     mkdir -p "$pkgdir/etc/modules-load.d"
     cp $srcdir/$_gitname/archlinux/rlite.service "$pkgdir/usr/lib/systemd/system/"
