@@ -13,8 +13,9 @@ depends=('apt>=1.1')
 makedepends=('python-distutils-extra' 'python2-distutils-extra')
 conflicts=()
 options=(!emptydirs)
-source=(http://ftp.debian.org/debian/pool/main/p/$_pkgname/${_pkgname}_$pkgver.tar.xz
-fix-pydebug.patch)
+# source=(http://ftp.debian.org/debian/pool/main/p/$_pkgname/${_pkgname}_$pkgver.tar.xz
+# fix-pydebug.patch)
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/${_pkgname}_${pkgver}.tar.xz" "fix-pydebug.patch")
 sha256sums=('165ddf712b536ef19085dcb170bbd9842fc9bdd23e8a6b58d3ceae6597b4e7d6'
             '8a652b45fc4cdb27d672c355858813678908a8b6ab6a8dde8b843193eb960646')
 
