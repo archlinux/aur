@@ -4,22 +4,18 @@
 # Contributor   : Nicolas Quiénot < niQo at aur >
 # Contributor   : Jens Staal <staal1978@gmail.com>
 
-pkgname="lib32-libpthread_workqueue-git"
+pkgname='lib32-libpthread_workqueue-git'
 gitname='libpwq'
-pkgver=r363.97c63b4
+pkgver=0.9.2.r74.g97c63b4
 pkgrel=1
 pkgdesc='A portable implementation of the pthread_workqueue API first introduced in Mac OS X (32-bit)'
 url='https://github.com/mheily/libpwq'
 arch=(
+    'i386'
     'x86_64'
 )
-license=(
-    'BSD'
-)
-depends=(
-    'lib32-glibc'
-)
-# 'libpthread_workqueue-git'
+license=('BSD')
+depends=('lib32-glibc')
 makedepends=(
     'git'
     'gcc-multilib'
@@ -29,32 +25,33 @@ provides=(
     'libpthread_workqueue-libpthread'
 )
 source=('git+https://github.com/mheily/libpwq')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${gitname}" || exit 1
+	cd "${gitname}"
 
-    printf "r%s.%s"                     \
-        "$(git rev-list --count HEAD)"  \
-        "$(git rev-parse --short HEAD)"
+    # TODO: Remove that additional sed statement
+    git describe --long                     \
+        | sed 's/\([^-]*-g\)/r\1/;s/-/./g'  \
+        | sed 's/v//'
 }
 
 build() {
-	cd "${srcdir}/${gitname}" || exit 1
+	cd "${gitname}"
 
 	export CC="gcc -m32"
 	export CXX="g++ -m32"
     
-    mkdir -p build && cd build || exit 1
-
+    mkdir -p build
+    cd build
     cmake ..
     make
 }
 
 package() {
-	cd "${srcdir}/${gitname}/build" || exit 1
+	cd "${gitname}/build"
 
 	make DESTDIR="${pkgdir}" install
 
-	install -Dvm644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm 644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
