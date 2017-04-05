@@ -1,41 +1,25 @@
---- core/linux/PKGBUILD	2017-03-18 21:12:53.474710528 +1000
-+++ PKGBUILD	2017-03-18 21:21:21.819683808 +1000
-@@ -2,8 +2,8 @@
- # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
- # Maintainer: Thomas Baechler <thomas@archlinux.org>
+--- PKGBUILD.old  2017-04-05 23:01:15.917261011 +1000
++++ PKGBUILD  2017-04-05 23:01:15.917261011 +1000
+@@ -4,4 +4,4 @@
  
 -pkgbase=linux               # Build stock -ARCH kernel
 -#pkgbase=linux-custom       # Build kernel with a different name
 +#pkgbase=linux               # Build stock -ARCH kernel
 +pkgbase=linux-xps13       # Build kernel with xps13 patch
  _srcname=linux-4.10
- pkgver=4.10.3
- pkgrel=1
-@@ -20,6 +20,8 @@
-         'config.i686' 'config.x86_64'
-         # pacman hook for initramfs regeneration
-         '99-linux.hook'
+@@ -22,2 +22,4 @@
+         '90-linux.hook'
 +        # xps13 patch
 +        'xps13.patch'
          # standard config files for mkinitcpio ramdisk
-         'linux.preset')
- 
-@@ -30,6 +32,7 @@
-             '386051f19482672c871e7865fc62f5e2c8010d857729134ba13044734962e42c'
-             '12a87284e2935cd17e2846a207cc76f1728531416523735d66ef8a0ae690884c'
+@@ -32,2 +34,3 @@
              '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
 +            'f7723d4a2e07da82b3698fb4edb5cf1ca0ccbbc3e789247118fcb7a44d89cdf2'
              'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
- validpgpkeys=(
-               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
-@@ -47,6 +50,10 @@
-   # add latest fixes from stable queue, if needed
-   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+@@ -49,2 +52,6 @@
  
 +  # apply the xps 13 cypress touchpad simulated multitouch patch
 +  msg "Patching source with XPS13 touchpad patch."
 +  patch -Np1 -i "${srcdir}/xps13.patch"
 +
    cat "${srcdir}/config.${CARCH}" > ./.config
- 
-   if [ "${_kernelname}" != "" ]; then
