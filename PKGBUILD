@@ -1,7 +1,7 @@
 # Maintainer: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='cen64'
-pkgver=0.3.19.g8aff451
+pkgver=0.3
 pkgrel=1
 pkgdesc='Cycle-accurate Nintendo 64 emulator'
 arch=(
@@ -9,9 +9,7 @@ arch=(
     'x86_64'
 )
 url='http://www.cen64.com/'
-license=(
-    'BSD'
-)
+license=('BSD')
 depends=(
     'mesa'
     'openal'
@@ -20,40 +18,34 @@ makedepends=(
     'cmake'
     'git'
 )
-provides=(
-    'cen64'
-)
-conflicts=(
-    'cen64-git'
-)
-source=(
-    'git+https://github.com/tj90241/cen64.git'
-)
-sha256sums=(
-    'SKIP'
-)
+provides=('cen64')
+conflicts=('cen64-git')
+source=('git+https://github.com/tj90241/cen64.git')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}" || exit 1
+    cd "${pkgname}"
     
-    git describe --tags | sed 's/v//' | sed 's/-/./g'
+    git tag | tail -n 1 | sed 's/v//'
 }
 
 prepare() {
-    cd "${srcdir}/${pkgname}" || exit 1
+    cd "${pkgname}"
+
+    git checkout "$(git tag | tail -n 1)" --quiet
     
     mkdir -p build
 }
 
 build() {
-    cd "${srcdir}/${pkgname}/build" || exit 1
+    cd "${pkgname}/build"
 
     cmake ..
     make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}/build"
+    cd "${pkgname}/build"
 
     install -Dm755  \
         "cen64" "${pkgdir}/usr/bin/cen64"
