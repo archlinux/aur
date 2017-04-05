@@ -2,7 +2,7 @@
 # Co-maintainer: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname=dybuk-git
-_pkgname=dybuk
+gitname=dybuk
 pkgver=r37.ef12906
 pkgrel=1
 pkgdesc='Prettify the ugly Rustc messages'
@@ -11,29 +11,19 @@ arch=(
     'x86_64'
 )
 url='https://github.com/Ticki/dybuk'
-license=(
-    'MIT'
-)
+license=('MIT')
 makedepends=(
     'cargo'
     'git'
     'rust'
 )
-provides=(
-    "${_pkgname}"
-)
-conflicts=(
-    "${_pkgname}"
-)
-source=(
-    'git+https://github.com/Ticki/dybuk.git'
-)
-sha256sums=(
-    'SKIP'
-)
+provides=("${gitname}")
+conflicts=("${gitname}")
+source=('git+https://github.com/Ticki/dybuk.git')
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}" || exit 1
+    cd "${gitname}"
 
     printf "r%s.%s"                     \
         "$(git rev-list --count HEAD)"  \
@@ -41,16 +31,16 @@ pkgver() {
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}" || exit 1
+    cd "${gitname}"
 
 	cargo build --release
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}" || exit 1
+    cd "${gitname}"
 
-    install -m755 \
-        -D "target/release/dybuk" "${pkgdir}/usr/bin/${_pkgname}"
-    install -m644 \
-        -D "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -m 755 \
+        -D target/release/dybuk "${pkgdir}/usr/bin/${gitname}"
+    install -m 644 \
+        -D LICENSE "${pkgdir}/usr/share/licenses/${gitname}/LICENSE"
 }
