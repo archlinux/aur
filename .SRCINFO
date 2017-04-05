@@ -1,7 +1,7 @@
 pkgbase = python-requests-credssp
 	pkgdesc = HTTPS CredSSP authentication with the requests library.
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jborean93/requests-credssp
 	arch = any
 	license = ISC
