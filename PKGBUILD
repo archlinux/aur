@@ -3,7 +3,7 @@
 
 pkgname=ocaml-mysql
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OCaml bindings for MySQL"
 arch=('i686' 'x86_64')
 url="http://ocaml-mysql.forge.ocamlcore.org/"
@@ -12,7 +12,7 @@ makedepends=('ocaml' 'ocaml-findlib' 'libmysqlclient')
 depends=(camlp4)
 options=('!strip' 'staticlibs')
 #install=
-source=(https://forge.ocamlcore.org/frs/download.php/1500/ocaml-mysql-$pkgver.tar.gz)
+source=(https://github.com/ygrek/ocaml-mysql/releases/download/v$pkgver/ocaml-mysql-$pkgver.tar.gz)
 md5sums=('776d07219ac3a6ffa000811defd91eb3')
 
 build() {
