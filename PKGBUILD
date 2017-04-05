@@ -3,7 +3,7 @@
 
 pkgname=indicator-powersave
 pkgver=r98.8
-pkgrel=1
+pkgrel=2
 pkgdesc="User discretion power managment utility forked from CPU frequency indicator (bzr version)"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/indicator-cpufreq"
@@ -27,7 +27,7 @@ sha512sums=('SKIP'
             '7e30098e35a72d66a885290a2be2aaf86b72f0242fd4d7ed62e81f9f6e7da378d70c7f7ef54701374dd1440f64173330457cdaf58a3a9bca35a59a57b29123a7'
             'a0da38fbc7e28189bdb95992880cba5a8b4882a02cac00c13415b5a59c1dc63152965fc221069aafbd39e1e12bd93e3b7d028f50ebd215223e9ace3ee2f8642d'
             '2b1229ad56651a8d55590256785119da4eba2a2f8d74e57475a8303dc076d5e9067a6481e3245d05557ea0f983d8fa1f1ac02f705fe695f4a4ef79fa86b00b89'
-            'c93dcee71e9ad465ca555a2c8f7da32247b4323a428ce1a63ecdab17fd471d51ffb86b174fa0f9662a27b656217d1bf73f9b47d6646cf99fb12f3df464d66073'
+            '1bbfbfc8b705c7b0d11200ea5df0dcade68c677da34827da7ffdfa1d3b7f4ecfcdb034203a5f26a16bbd9dadf4d6bcee28176bc45468ec3890366f22cf2177b1'
             'aa86b5d6028033d6fbcc3d74d63c33298c0d437972d576990dfc4cae51d5c5128d789695e98fc5612ec7f8a4e2e68ea0576cf072e98fce4e0c22896be2f8b996')
 
 pkgver() {

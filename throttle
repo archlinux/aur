@@ -56,13 +56,13 @@ while (( "$#" )); do
       # Hyperthreads
       for i in /sys/devices/system/cpu/cpu*/online; do \
         [[ "$(printf "${i}" | tr -cd [:digit:])" -ge "${CORES}" ]] && \
-          printf "${HYPERTHREADS}" > "${i}" & done &
+          printf "${HYPERTHREADS}" > "${i}" ; done &
+          [[ "${HYPERTHREADS}" == "1" ]] && wait
 
       # CPU Governor
       for i in /sys/bus/cpu/drivers/processor/cpu*/cpufreq/scaling_governor; do \
-        [[ "${HYPERTHREADS}" == "0" && \
-          "$(printf ${i} | tr -cd [:digit:])" -ge "${CORES}" ]] && \
-            continue ; [[ "$(cat ${i})" == "${GOVERNOR}" ]] || printf "${GOVERNOR}" > "${i}" & done &
+        [[ "${HYPERTHREADS}" == "0" && "$(printf ${i} | tr -cd [:digit:])" -ge "${CORES}" ]] && \
+            continue ; printf "${GOVERNOR}" > "${i}" & done &
 
       # Disable Intel P-State Turbo
       [[ -f /sys/devices/system/cpu/intel_pstate/no_turbo ]] && \
@@ -98,7 +98,6 @@ while (( "$#" )); do
         hdparm -qB "${APM}" -qM "${AAM}" /dev/[hs]d[a-z] 2> /dev/null &
 
       # Runtime power management for devices (with exceptions for devices by VID:PID)
-      # Timing the switch with hyperthread cores going up or down is tricky.
       for i in /sys/{class/*,bus/*/devices}/*/power/control; do \
         [[ "${CONTROL}" == "auto" ]] && \
           [[ -n "$(printf ${i} | grep msr[${CORES}-$((${CORES} * 2 - 1))])" || \
@@ -108,7 +107,7 @@ while (( "$#" )); do
              -f "$(printf ${i} | sed 's|/power.*|/idVendor|g')" && \
              "$(cat $(printf ${i} | sed 's|/power.*|/idVendor|g'))" == "0424" && \
              "$(cat $(printf ${i} | sed 's|/power.*|/idProduct|g'))" == "a700" ]] && \
-               continue || [[ "$(cat ${i})" == "${CONTROL}" ]] || printf "${CONTROL}" > "${i}" & done &
+               continue ; printf "${CONTROL}" > "${i}" & done &
 
       # USB Autosuspend (with exceptions for devices by VID:PID)
       for i in /sys/bus/usb/devices/*/power/autosuspend{,_delay_ms}; do \
@@ -118,13 +117,13 @@ while (( "$#" )); do
              -f "$(printf ${i} | sed 's|/power.*|/idVendor|g')" && \
              "$(cat $(printf ${i} | sed 's|/power.*|/idVendor|g'))" == "0424" && \
              "$(cat $(printf ${i} | sed 's|/power.*|/idProduct|g'))" == "a700" ]] && \
-               continue ; [[ "$(cat ${i})" == "${AUTOSUSPEND}" ]] || printf -- "${AUTOSUSPEND}" > "${i}" & done &
+               continue ; printf -- "${AUTOSUSPEND}" > "${i}" & done &
 
       # Powersaving for modules
       for i in /sys/module/*/parameters/power_save; do \
-        [[ "$(cat ${i})" == "${POWERSAVE}" ]] || printf "${POWERSAVE}" > "${i}" & done &
+        printf "${POWERSAVE}" > "${i}" & done &
       for i in /sys/module/*/parameters/power_save_controller; do \
-        [[ "$(cat ${i})" == "${CONTROLLER}" ]] || printf "${CONTROLLER}" > "${i}" & done &
+        printf "${CONTROLLER}" > "${i}" & done &
 
       # Network powersaving
       for i in /sys/class/net/wl*; do \
@@ -160,7 +159,8 @@ while (( "$#" )); do
       [[ -z "${HYPERTHREADS}" ]] && \
         printf "${0} ht {on,off} - Hyperthreads\n" || \
       for i in /sys/devices/system/cpu/cpu*/online; do [[ "$(printf "${i}" | tr -cd [:digit:])" -ge "${CORES}" ]] && \
-          printf "${HYPERTHREADS}" > "${i}" & done &
+          printf "${HYPERTHREADS}" > "${i}" ; done &
+          [[ "${HYPERTHREADS}" == "1" ]] && wait
       [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
       unset HYPERTHREADS SHIFT
     ;;
@@ -175,7 +175,9 @@ while (( "$#" )); do
       [[ -z "${GOVERNOR}" ]] && \
         printf "${0} gov {cut,full} - CPU Governor\n" || \
       for i in /sys/bus/cpu/drivers/processor/cpu*/cpufreq/scaling_governor; do \
-        printf "${GOVERNOR}" > "${i}" & done &
+        [[ "$(printf ${i} | tr -cd [:digit:])" -ge "${CORES}" && \
+            "$(cat /sys/devices/system/cpu/cpu$(printf ${i} | tr -cd [:digit:])/online)" == 0 ]] && \
+              continue ; printf "${GOVERNOR}" > "${i}" & done &
       [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
       unset GOVERNOR SHIFT
     ;;
