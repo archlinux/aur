@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatroff-suite-git
-pkgver=r443.2b1a13e
-pkgrel=2
+pkgver=r444.8f26d07
+pkgrel=1
 epoch=
 pkgdesc="A complete neatroff typesetting system (neatmkfn, neatroff, neatpost, neateqn and neatrefer)."
 arch=('i686' 'x86_64')
@@ -11,9 +11,9 @@ groups=()
 depends=('gsfonts')
 makedepends=('git')
 optdepends=('troff-git: The preprocessors and the macro packages can be used with neatroff'
-            'bib2ref: converts bibtex files to refer databases'
-            'ref2bib: converts refer databases to bibtex files'
-            'nref: manages document references, it can be used as a troff preprocessor'
+            'bib2ref: Converts bibtex files to refer databases'
+            'ref2bib: Converts refer databases to bibtex files'
+            'nref: Manages document references, it can be used as a troff preprocessor'
             'shape: A farsi/arabic shaping preprocessor for troff (for neatroff-dir)')
 checkdepends=()
 provides=('neatmkfn' 'neatroff' 'neatpost' 'neateqn' 'neatrefer')
