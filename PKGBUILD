@@ -1,7 +1,7 @@
 # Maintainer: Jonathan <greenbigfrog@gmail.com>
 _pkgname=okcash
 pkgname=okcash-git
-pkgver=r3354.4df27454
+pkgver=r3366.fcba9b63
 pkgrel=1
 pkgdesc="Okcash Qt Wallet, git version"
 arch=('i686' 'x86_64')
