@@ -1,0 +1,10 @@
+--- Src/CMakeLists.txt.orig	2017-04-03 14:31:01.110259132 +0000
++++ Src/CMakeLists.txt	2017-04-03 14:31:20.492746817 +0000
+@@ -37,5 +37,5 @@
+ set (CMAKE_SHARED_LINKER_FLAGS -m32)
+ endif()
+  
+-install(FILES libda.so libda.so.${API_VERSION} DESTINATION /usr/local/lib)
+-install(FILES dac.h dac_json.h DESTINATION /usr/local/include)
++install(FILES libda.so libda.so.${API_VERSION} DESTINATION /usr/lib)
++install(FILES dac.h dac_json.h DESTINATION /usr/include)
