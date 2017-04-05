@@ -1,25 +1,20 @@
-# Maintainer: Dick Choi <fluke8259@gmail.com>
+# Maintainer: Jannick Hemelhof <mister.jannick@gmail.com>
+# Contributor: Dick Choi <fluke8259@gmail.com>
 # Contributor: Romain Bazile <gromain.baz@gmail.com>
 pkgname=boostnote
-pkgver=0.6.8
+pkgver=0.8.7
 pkgrel=1
-pkgdesc="Opensource note app for developer"
+pkgdesc="Open source note-taking app for programmers"
 arch=('x86_64')
 url="https://b00st.io/"
 license=('GPL')
 
-source=(
-  "https://github.com/BoostIO/boost-releases/releases/download/v$pkgver/boostnote_${pkgver}_amd64.deb"
-  )
+source=("https://github.com/BoostIO/boost-releases/releases/download/v$pkgver/boostnote_${pkgver}_amd64.deb")
 
-noextract=()
-
-md5sums=('ab7658a2ac022c0a8212a95b6816f2de')
-
-validpgpkeys=()
+md5sums=('732f6631a49005676b6a5d348336a3f0')
 
 package() {
-      tar -xa -f ${srcdir}/data.tar.xz
-        cp -r "${srcdir}/usr" "${pkgdir}/usr"
+  tar -xa -f ${srcdir}/data.tar.xz
+  cp -r "${srcdir}/usr" "${pkgdir}/usr"
 }
 
