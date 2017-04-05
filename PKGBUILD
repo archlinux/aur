@@ -7,7 +7,7 @@
 
 pkgname=fritzing
 pkgver=0.9.3b
-pkgrel=3
+pkgrel=4
 partsrev=667a5360e53e8951e5ca6c952ae928f7077a9d5e
 pkgdesc='PCB layout prototyping application'
 arch=('i686' 'x86_64')
@@ -18,10 +18,12 @@ depends=('desktop-file-utils' 'java-environment' 'libgit2' 'python2' 'qt5-serial
 source=(https://github.com/fritzing/fritzing-app/archive/${pkgver}.tar.gz
         https://github.com/fritzing/fritzing-parts/archive/${partsrev}.tar.gz
         0001-Squashed-commit-of-the-following.patch
+        fritzing.desktop.patch
         fritzing.xml)
 sha256sums=('7d92579cf87bbde2325e641b674b6c340fd27ee28a8ffe4c03e527e9a4307d88'
             'c6f9c5275a569e86c0cadb85844120e8f79ca79bea004b00916af78772969d76'
             'e142b7443d03c644d06a4741dcc64eef7077a86b42b4461f10ee8b1f59e4775c'
+            'e48994c9d4191675ca8c53c64d99effc704bb10b67f253eb9f05b0c188805baa'
             '9aa55c4a27025b40a1573b3b09a59f48709dfa5ac637ef6a059fd8157d20192b')
 
 prepare() {
@@ -30,6 +32,7 @@ prepare() {
 
   cd "$srcdir"/fritzing-app-${pkgver}
   patch -p1 < "$srcdir"/0001-Squashed-commit-of-the-following.patch
+  patch -p0 < "$srcdir"/fritzing.desktop.patch
 }
 
 build() {

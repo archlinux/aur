@@ -1,0 +1,11 @@
+--- fritzing.desktop	2017-03-31 19:34:01.972828297 +0200
++++ fritzing.desktop.new	2017-03-31 19:33:46.542737274 +0200
+@@ -2,7 +2,7 @@
+ Name=Fritzing
+ GenericName=Fritzing
+ Comment=Electronic Design Automation software
+-Exec=Fritzing
++Exec=env QT_AUTO_SCREEN_SCALE_FACTOR=0 Fritzing
+ Icon=fritzing
+ Terminal=false
+ Type=Application
