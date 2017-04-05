@@ -13,7 +13,7 @@ post_install() {
   sudo mv "/usr/lib/betterdiscord/index.js" "/opt/discord/resources/app/index.js"
 
   echo ">>> Finishing up..."
-  sudo cp -rf "/usr/lib/betterdiscord/" "/opt/discord/resources/app/node_modules/betterdiscord"
+  sudo ln -s "/usr/lib/betterdiscord/" "/opt/discord/resources/app/node_modules/betterdiscord"
 }
 
 pre_upgrade() {
