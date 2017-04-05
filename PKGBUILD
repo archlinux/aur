@@ -2,7 +2,7 @@
 pkgname=fairroot
 pkgver=17.03
 fairsoftver=mar17-1
-pkgrel=6
+pkgrel=7
 pkgdesc="Analysis framework based on root provided by GSI/FAIR."
 arch=('x86_64')
 url="http://fairroot.gsi.de"
