@@ -1,24 +1,23 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=wingide
-_wingver=6.0.3
+_wingver=6.0.4
 _wingrel=1
-_wing_patch_lvl=2 #bump this when adding a patch
+_wing_patch_lvl=1 #bump this when adding a patch
 pkgver=$_wingver.$_wingrel.$_wing_patch_lvl
 pkgrel=1
 pkgdesc="Wing IDE Professional is the full-featured Python IDE for professional programmers."
 url="http://www.wingware.com"
 license=('custom')
 arch=('x86_64')
-_wingpatch=("fix-keyboard-open-6.0.3p1-all.tar" "drag-n-drop-6.0.3p2-all.tar")
+_wingpatch=("fix-remote-agent-install-6.0.4p1-all.tar")
 _patch_url_prefix=http://wingware.com/pub/$pkgname/$_wingver/patches/
 _wingpatch=( "${_wingpatch[@]/#/$_patch_url_prefix}" )
 source=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_wingrel-x86_64-linux.tar.bz2" ${_wingpatch[*]})
 depends=('hicolor-icon-theme' 'libpng' 'python2' 'xdg-utils')
 options=(!strip !emptydirs)
-md5sums=('302f28233292611419c2f36b44b7ee83'
-         'c0dd3a668f4353c720bcbfed485a5646'
-         'bf465ca384cc1f4a3ca3379c676e8d34')
+md5sums=('a034275c4eb8da484a86d0f14f598b33'
+         '0d483f0c2d934dd75628ca681231990d')
 
 install=${pkgname}.install
 
