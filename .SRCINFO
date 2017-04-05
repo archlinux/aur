@@ -1,15 +1,15 @@
 pkgbase = packer-io
 	pkgdesc = Packer is a tool for creating identical machine images for multiple platforms from a single source configuration.
-	pkgver = 0.12.3
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = http://www.packer.io
 	arch = x86_64
 	arch = i686
 	license = MPL2
 	depends = glibc
-	source = packer-0.12.3.zip::https://releases.hashicorp.com/packer/0.12.3/packer_0.12.3_linux_amd64.zip
+	source = packer-1.0.0.zip::https://releases.hashicorp.com/packer/1.0.0/packer_1.0.0_linux_amd64.zip
 	source = https://raw.githubusercontent.com/mitchellh/packer/master/contrib/zsh-completion/_packer
-	sha256sums = d11c7ff78f546abaced4fcc7828f59ba1346e88276326d234b7afed32c9578fe
+	sha256sums = ed697ace39f8bb7bf6ccd78e21b2075f53c0f23cdfb5276c380a053a7b906853
 	sha256sums = 070675905e14b839420282b280a15a7a72ed34c78ad403532ecd3ed5d9768459
 
 pkgname = packer-io
