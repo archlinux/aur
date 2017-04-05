@@ -2,13 +2,17 @@
 pkgname=mp3directcut
 pkgver=2.23
 _downver=223
-pkgrel=1
+pkgrel=2
 pkgdesc="fast audio editor and recorder for mp3 with no need to decompress"
 arch=('i686' 'x86_64')
 url="http://mpesch3.de1.cc/mp3dc.html"
 license=('FREEWARE')
 [ "$CARCH" = "i686" ] && depends=(wine mpg123)
 [ "$CARCH" = "x86_64" ] && depends=(wine lib32-mpg123)
+
+[ "$CARCH" = "i686" ] && optdepends=('libpulse: PulseAudio plugin')
+[ "$CARCH" = "x86_64" ] && optdepends=('lib32-libpulse: PulseAudio plugin')
+
 makedepends=()
 source=(mp3directcut mp3directcut.desktop mp3dcicon.png http://ftp.elf.stuba.sk/pub/pc/sound/mp3dc$_downver.exe)
 #http://free-pc.ru/download/mp3DC$_downver.exe
