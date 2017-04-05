@@ -4,7 +4,7 @@
 pkgdesc='Homegear plugin for Homematic BidCos communication'
 _gitname=('homegear-homematicbidcos')
 pkgname=('homegear-homematicbidcos-git')
-pkgver=0.6.138.96bda68
+pkgver=0.6.223.1271553
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -49,4 +49,7 @@ package() {
 	
 	mkdir -p $pkgdir/etc/homegear/devices
 	cp -r "${srcdir}/${_gitname}/misc/Device Description Files" $pkgdir/etc/homegear/devices/0
+
+	mkdir -p $pkgdir/usr/share/homegear/firmware
+	cp "${srcdir}/${_gitname}/misc/Data Directory/firmware/GetFirmwareUpdatesHomeMaticBidCoS.sh" $pkgdir/usr/share/homegear/firmware/
 }
