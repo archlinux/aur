@@ -1,7 +1,7 @@
 pkgbase = gctf
 	pkgdesc = GPU accelerated program for Real-Time CTF determination, refinement, evaluation and correction.
 	pkgver = 1.06
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mrc-lmb.cam.ac.uk/kzhang
 	arch = x86_64
 	license = CCPL:cc-by-nc-nd-3.0

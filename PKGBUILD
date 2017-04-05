@@ -1,7 +1,7 @@
 # Maintainer: Joshua Hardy joshinsilico@gmail.com
 pkgname=gctf
 pkgver=1.06
-pkgrel=1
+pkgrel=2
 pkgdesc="GPU accelerated program for Real-Time CTF determination, refinement, evaluation and correction."
 arch=(x86_64)
 url="http://www.mrc-lmb.cam.ac.uk/kzhang"
