@@ -8,6 +8,7 @@ pkgbase = urdf-git
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
+	makedepends = boost
 	depends = urdfdom
 	optdepends = doxygen
 	provides = urdf
