@@ -5,14 +5,14 @@
 
 # Maintainer: Joshua Hardy <joshinsilico@gmail.com>
 pkgname=eman2
-pkgver=2.2
-pkgrel=3
+pkgver=2.12
+pkgrel=4
 pkgdesc="Greyscale scientific image processing suite for processing data from transmission electron microscopes"
 arch=(x86_64)
 url="http://blake.bcm.edu/emanwiki/EMAN2"
 license=('GPL')
 depends=('python2-numpy' 'hdf5' 'fftw' 'boost' 'qtwebkit' 'cmake' 'gsl' 'ftgl' 'python2-matplotlib' 'ipython' 'python2-pyqt4' 'python2-opengl')
-source=("http://ncmi.bcm.edu/ncmi/software/counter_222/software_135/manage_addProduct/NCMI/attendee_factory/eman$pkgver.linux64.gcc5.tbz" 'eman2.sh')
+source=("http://ncmi.bcm.edu/ncmi/software/counter_222/software_133/manage_addProduct/NCMI/attendee_factory/eman$pkgver.linux64.tar.gz" 'eman2.sh')
 md5sums=('961c4c16cbb17ddc92e387f4c7ba6556' 'SKIP')
 options=(!strip)
 
