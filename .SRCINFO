@@ -1,0 +1,16 @@
+pkgbase = postgresql-plsh
+	pkgdesc = PL/sh language for Postgresql database
+	pkgver = 1.20140221
+	pkgrel = 1
+	url = https://github.com/petere/plsh
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = make
+	depends = postgresql-libs
+	depends = postgresql
+	provides = postgresql-plsh
+	source = plsh::git+https://github.com/petere/plsh.git#branch=master
+	sha512sums = SKIP
+
+pkgname = postgresql-plsh
