@@ -5,6 +5,7 @@ pkgbase = gctf
 	url = http://www.mrc-lmb.cam.ac.uk/kzhang
 	arch = x86_64
 	license = CCPL:cc-by-nc-nd-3.0
+	makedepends = prelink
 	depends = cuda
 	source = http://www.mrc-lmb.cam.ac.uk/kzhang/Gctf/Gctf_v1.06/bin/Gctf-v1.06_sm_20_cu8.0_x86_64
 	source = http://www.mrc-lmb.cam.ac.uk/kzhang/Gctf/Gctf_v1.06/bin/Gctf-v1.06_sm_30_cu8.0_x86_64
