@@ -1,6 +1,6 @@
 pkgbase = subsurface-git
 	pkgdesc = Divelog program
-	pkgver = 20170329.09b5f9b9
+	pkgver = 20170403.8c94fa26
 	pkgrel = 1
 	url = https://subsurface-divelog.org/
 	arch = i686
@@ -22,7 +22,9 @@ pkgbase = subsurface-git
 	provides = subsurface
 	conflicts = subsurface
 	source = git://git.subsurface-divelog.org/subsurface
+	source = headers.patch
 	sha256sums = SKIP
+	sha256sums = fbcbf99294e9ba9ef134eb04b832cca4b19355070020f5ee2984ce739e8f0a6c
 
 pkgname = subsurface-git
 

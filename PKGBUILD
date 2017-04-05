@@ -18,6 +18,8 @@ source=('git://git.subsurface-divelog.org/subsurface'
 sha256sums=('SKIP'
             'fbcbf99294e9ba9ef134eb04b832cca4b19355070020f5ee2984ce739e8f0a6c')
 
+# Cloud storage is broken because libQt5Network does not yet support openssl-1.1.0
+
 provides=('subsurface')
 conflicts=('subsurface')
 
