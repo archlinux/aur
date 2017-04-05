@@ -1,0 +1,12 @@
+diff -ura resource_retriever-1.50.0/src/retriever.cpp resource_retriever-1.50.0.new/src/retriever.cpp
+--- resource_retriever-1.50.0/src/retriever.cpp	2017-03-17 09:24:29.000000000 +0100
++++ resource_retriever-1.50.0.new/src/retriever.cpp	2017-04-06 00:39:48.158599000 +0200
+@@ -28,6 +28,7 @@
+ #include <boost/filesystem.hpp>
+ #include "resource_retriever/retriever.h"
+ 
++#include <sstream>
+ #include <string.h>
+ #include <console_bridge/console.h>
+ 
+Seulement dans resource_retriever-1.50.0.new/src: retriever.cpp.orig
