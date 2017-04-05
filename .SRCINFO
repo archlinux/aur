@@ -1,7 +1,7 @@
 pkgbase = python-ntlm-auth
 	pkgdesc = Creates NTLM authentication structures
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jborean93/ntlm-auth
 	arch = any
 	license = LGPL-3.0
