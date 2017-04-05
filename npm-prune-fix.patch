@@ -1,0 +1,13 @@
+--- Boostnote-0.8.7/package.json	2017-03-20 08:11:24.000000000 +0100
++++ Boostnote-0.8.7/package.new.json	2017-04-05 14:12:17.848998504 +0200
+@@ -99,10 +99,8 @@
+     "jsdom": "^9.4.2",
+     "merge-stream": "^1.0.0",
+     "nib": "^1.1.0",
+-    "react": "^15.3.0",
+     "react-color": "^2.2.2",
+     "react-css-modules": "^3.7.6",
+-    "react-dom": "^15.3.0",
+     "react-input-autosize": "^1.1.0",
+     "react-router": "^2.4.0",
+     "react-router-redux": "^4.0.4",
