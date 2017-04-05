@@ -6,9 +6,13 @@ pkgbase = python-editor
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
-	depends = python
+	makedepends = python2-setuptools
 	source = python-editor-1.0.3.tar.gz::https://github.com/fmoo/python-editor/archive/1.0.3.tar.gz
 	sha256sums = e627a2160bdf5e435dcde964cf38bae39c02cdd8da2ccf5fac313b2ca453e2a3
 
 pkgname = python-editor
+	depends = python
+
+pkgname = python2-editor
+	depends = python2
 
