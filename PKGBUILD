@@ -1,40 +1,25 @@
-# Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
+# Initial Contribution: Benjamin Chretien <chretien at lirmm dot fr>
+# Maintainer: Guilhem Saurel <gsaurel at laas dot fr>
+
 pkgname=urdfdom
-pkgver=0.3.0
-pkgrel=8
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="The URDF (U-Robot Description Format) library provides core data structures and a simple XML parsers for populating the class data structures from an URDF file."
-arch=('any')
-url="https://github.com/ros/urdfdom"
+arch=('i686' 'x86_64')
+url="https://github.com/ros/$pkgname"
 license=('BSD')
-depends=( 'boost' 'tinyxml' 'console-bridge' 'urdfdom-headers')
-makedepends=('git' 'cmake')
-
-_gitroot=https://github.com/ros
-_gitrepo=urdfdom
-
-_tag=${pkgver}
-_dir=${_gitrepo}
-source=("${_dir}"::"git+${_gitroot}/${_gitrepo}.git"#tag=${_tag}
-        "soname.patch")
-md5sums=('SKIP'
-         'ec2aeff2e5cc0d4dba6010bf7a33e81a')
+depends=('tinyxml' 'console-bridge' 'urdfdom-headers')
+makedepends=('cmake')
+source=("https://github.com/ros/$pkgname/archive/$pkgver.tar.gz")
+md5sums=('f51d7214d74470503447f28344d4e561')
 
 build() {
-  cd ${srcdir}/${_dir}
-  patch -p1 -i ${srcdir}/soname.patch
-
-  # Create build directory
-  rm -rf ${srcdir}/build && mkdir -p ${srcdir}/build
-  cd ${srcdir}/build
-
-  # Build project
-  cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX="/usr"
-  make
+    cd "$pkgname-$pkgver"
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib .
+    make
 }
 
 package() {
-  cd ${srcdir}/build
-  make DESTDIR="$pkgdir/" install
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir/" install
 }
