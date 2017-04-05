@@ -1,30 +1,26 @@
-# Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
+# Initial Contribution: Benjamin Chretien <chretien at lirmm dot fr>
+# Maintainer: Guilhem Saurel <gsaurel at laas dot fr>
+
 pkgname=console-bridge
-pkgver=0.2.7
-pkgrel=7
+_pkgname=console_bridge
+pkgver=0.3.2
+pkgrel=1
 pkgdesc="A ROS-independent package for logging that seamlessly pipes into rosconsole/rosout for ROS-dependent packages."
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://www.ros.org/"
 license=('BSD')
-depends=('boost')
+depends=('gcc-libs')
 makedepends=('cmake')
-
-source=("https://github.com/ros/console_bridge/archive/${pkgver}.tar.gz")
-sha256sums=('9145f0f97337fc87b4c062a4bab6874e383dad3a303486b635d31af69ee0d536')
+source=("https://github.com/ros/$_pkgname/archive/$pkgver.tar.gz")
+md5sums=('6c525353efe6f386fa25d58eafa72869')
 
 build() {
-  # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
-
-  # Build project
-  cmake "${srcdir}/console_bridge-${pkgver}" \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX="/usr"
-  make
+    cd "$_pkgname-$pkgver"
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib .
+    make
 }
 
 package() {
-  cd ${srcdir}/build
-  make DESTDIR="$pkgdir/" install
+    cd "$_pkgname-$pkgver"
+    make DESTDIR="$pkgdir/" install
 }
