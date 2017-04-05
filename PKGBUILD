@@ -2,7 +2,7 @@
 
 pkgname=numix-icon-theme-pack
 pkgver=20170401
-pkgrel=1
+pkgrel=2
 pkgdesc='Numix project Icon Themes - Updated with Numix Core'
 arch=('any')
 url='http://numixproject.org/'
@@ -16,7 +16,7 @@ source=(
 "numix-icon-theme-circle::git+https://github.com/numixproject/numix-icon-theme-circle.git"
 "numix-icon-theme::git+https://github.com/numixproject/numix-icon-theme.git"
 "numix-core::git+https://github.com/numixproject/numix-core.git"
-"https://gist.githubusercontent.com/boosterdev/34815dd14ce1250cf9fd06f58e56aa8b/raw/cb5c9545ffb60e559737b2e8e4d4cf9aed63fef4/gen.py"
+"gen.py::https://gist.githubusercontent.com/boosterdev/34815dd14ce1250cf9fd06f58e56aa8b/raw/cb5c9545ffb60e559737b2e8e4d4cf9aed63fef4/gen.py"
 )
 sha256sums=('SKIP'
             'SKIP'
