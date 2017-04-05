@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+require 'set'
+require 'fileutils'
+
+common = ARGV.shift
+targets = ARGV.dup
+first, *rest = targets
+
+files = targets.map do |dir|
+  Dir.chdir dir
+  g = Dir.glob("**/*").select { |file| test(?f, file) }
+  Dir.chdir ".."
+  puts "#{dir}: Found #{g.size} files"
+  Set.new(g)
+end
+
+commonfiles = files.inject(:&)
+puts "#{commonfiles.size} common files"
+
+samefiles = 0
+commonfiles.each do |file|
+  firstfile = File.join first, file
+  targetfiles = rest.map { |target| File.join target, file }
+
+  is_same = targetfiles.all? do |targetfile|
+    system "diff", "-q", firstfile, targetfile,
+      in: "/dev/null", out: "/dev/null", err: [:child, :out]
+  end
+
+  if is_same
+    commonfile = File.join common, file
+    FileUtils.mkdir_p File.dirname(commonfile)
+    FileUtils.mv firstfile, commonfile
+    FileUtils.rm(targetfiles)
+    samefiles += 1
+  else
+    puts "Divergent common file: #{file}"
+  end
+end
+
+puts "#{common}: #{samefiles} identical common files"
