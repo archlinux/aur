@@ -7,8 +7,8 @@ pkgbase = mojoshader-git
 	arch = x86_64
 	license = zlib
 	makedepends = git
-	depends = mono
-	source = git://github.com/MonoGame/mojoshader.git
+	optdepends = mono: Occasionally required for bootstrapping
+	source = git+https://github.com/MonoGame/mojoshader.git
 	sha256sums = SKIP
 
 pkgname = mojoshader-git
