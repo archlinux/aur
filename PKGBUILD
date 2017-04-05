@@ -20,7 +20,7 @@ build() {
 
 check() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    make test
+    make check
 }
 
 package() {
