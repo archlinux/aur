@@ -8,7 +8,7 @@ pkgbase = xnafiledialog-git
 	license = zlib
 	makedepends = git
 	depends = mono
-	source = git://github.com/flibitijibibo/XNAFileDialog
+	source = git+https://github.com/flibitijibibo/XNAFileDialog
 	sha256sums = SKIP
 
 pkgname = xnafiledialog-git

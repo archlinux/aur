@@ -11,38 +11,31 @@ arch=(
     'x86_64'
 )
 url='https://github.com/flibitijibibo/XNAFileDialog'
-license=(
-    'zlib'
-)
-depends=(
-    'mono'
-)
-makedepends=(
-    'git'
-)
-source=(
-    'git://github.com/flibitijibibo/XNAFileDialog'
-)
-sha256sums=(
-    'SKIP'
-)
+license=('zlib')
+depends=('mono')
+makedepends=('git')
+source=('git+https://github.com/flibitijibibo/XNAFileDialog')
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_gitname}/" || exit 1
-	printf "r%s.%s"                     \
+	cd "${_gitname}"
+
+    printf "r%s.%s"                     \
         "$(git rev-list --count HEAD)"  \
         "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${srcdir}/${_gitname}/native/" || exit 1
+	cd "${_gitname}/native"
+
 	make
 }
 
 package() {
-	cd "${srcdir}/${_gitname}/native/" || exit 1
-    install -m755 -D "${_libname}"  \
+	cd "${_gitname}/native"
+    
+    install -Dm 755 "${_libname}" \
         "${pkgdir}/usr/lib/${_libname}"
-    install -m644 -D "../LICENSE"   \
+    install -Dm 644 ../LICENSE \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
