@@ -3,7 +3,7 @@
 
 pkgname='libcs50-git'
 gitname='libcs50'
-pkgver=r137.8a353ba
+pkgver=7.1.2.r3.g8a353ba
 pkgrel=1
 pkgdesc="CS50 Library for C"
 arch=('x86_64' 'i686')
@@ -20,9 +20,9 @@ md5sums=('SKIP')
 pkgver() {
     cd "${gitname}"
 
-    printf "r%s.%s"                     \
-        "$(git rev-list --count HEAD)"  \
-        "$(git rev-parse --short HEAD)"
+    git describe --tags                     \
+        | sed 's/\([^-]*-g\)/r\1/;s/-/./g'  \
+        | sed 's/v//'
 }
 
 build() {
