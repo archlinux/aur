@@ -16,7 +16,7 @@ source=("http://www.impallari.com/media/releases/${_font}-v${pkgver}.zip")
 md5sums=('953fc04aaeccf773cdce445b96830f1d')
 
 package() {
-  cd ${srcdir}/*
+  cd ${srcdir}/Dosis\ v${pkgver}
 
   install -dm755 "${pkgdir}/usr/share/fonts/TTF/${_group}"
   install -Dpm644 *.ttf "${pkgdir}/usr/share/fonts/TTF/${_group}"
