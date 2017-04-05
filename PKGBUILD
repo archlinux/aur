@@ -2,7 +2,7 @@
 
 _pkgname=dazzle
 pkgname=${_pkgname}-git
-pkgver=r25.6543222
+pkgver=r32.8b5a4fa
 pkgrel=1
 pkgdesc="An AI playground (git version)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
