@@ -1,4 +1,6 @@
-# Contributor: Marcos Heredia <chelqo@gmail.com>
+# Original Contributor: Marcos Heredia <chelqo@gmail.com>
+# Maintainer: Jakob Jungreithmeir <https://aur.archlinux.org/account/JakobJung>
+# Last edited: 5th April 2017
 
 _font="dosis"
 _group="impallari"
