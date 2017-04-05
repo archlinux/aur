@@ -4,7 +4,7 @@
 
 pkgname=lib32-libdrm-git
 _pkgname=libdrm
-pkgver=2.4.73.r9.g1924b67
+pkgver=2.4.77.r5.g0010d312
 pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services, git 32-bit version"
 arch=(i686 x86_64)
@@ -26,13 +26,6 @@ pkgver() {
     cd "${srcdir}/${_pkgname}"
 #    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
     git describe --long | sed 's/^libdrm-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd ${_pkgname}
-  
-  # pthread is useless in Linux
-  sed -i "/pthread-stubs/d" configure.ac
 }
 
 build() {
