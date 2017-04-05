@@ -1,7 +1,7 @@
 # Maintainer: kusakata <shohei atmark kusakata period com>
 
 pkgname=ngraph-gtk
-pkgver=6.07.02
+pkgver=6.07.03
 pkgrel=1
 pkgdesc="A tool for creating scientific 2-dimensional graphs"
 url="https://github.com/htrb/ngraph-gtk"
@@ -26,8 +26,12 @@ package() {
   cd "${srcdir}/ngraph-gtk-${pkgver}/misc"
   install -Dm644 ngraph.desktop "${pkgdir}/usr/share/applications/ngraph.desktop"
   install -Dm644 ngraph.xml "${pkgdir}/usr/share/mime/packages/ngraph.xml"
+  install -Dm644 ngraph.keys "${pkgdir}/usr/share/mime-info/ngraph.keys"
+  install -Dm644 ngraph.mime "${pkgdir}/usr/share/mime-info/ngraph.mime"
   install -Dm644 ngraph.1 "${pkgdir}/usr/share/man/man1/ngraph.1"
   install -Dm644 ngp2.1 "${pkgdir}/usr/share/man/man1/ngp2.1"
+  install -Dm644 ngraph.bash "${pkgdir}/usr/share/bash-completion/completions/ngraph"
+  install -Dm644 ngraph.applications "${pkgdir}/usr/share/application-registry/ngraph.applications"
 }
 
-md5sums=('7ceb85af852fd875c57c62a5918565ed')
+md5sums=('b6cc9713661fa3ee93b1b80e2a04d25c')
