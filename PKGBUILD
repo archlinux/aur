@@ -1,8 +1,8 @@
 # Maintainer: Eric Berquist <eric DOT berquist AT gmail DOT com>
 
 pkgname=nwchem-data
-pkgver=6.6.r27746.2
-_pkgver=6.6+r27746-2
+pkgver=6.6.r27746.4
+_pkgver=6.6+r27746-4
 pkgrel=1
 pkgdesc="Open Source High-Performance Computational Chemistry (basis sets, FF params needed for Debian binary build)"
 arch=("any")
@@ -10,7 +10,7 @@ url="http://www.nwchem-sw.org"
 license=("custom:ECL2.0" "GPL3")
 options=("!strip" "libtool" "staticlibs")
 source=("http://http.us.debian.org/debian/pool/main/n/nwchem/nwchem-data_${_pkgver}_all.deb")
-sha256sums=('c14cc7abcaf52f719c2019f4a6c448e55ba92b97e73753409001ace3f1942189')
+sha256sums=('8205a8fce93676378dd0bc7c28e0314064c8ed7ffdd2afd0f15aad555fe8e209')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
