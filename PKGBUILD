@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tuxpaint-stamps-cvs
-pkgver=20170209
+pkgver=20170405
 pkgrel=1
 arch=('any')
 pkgdesc="Additional stamps for Tux Paint, cvs version"
