@@ -17,7 +17,7 @@ source=(
 )
 
 md5sums=('cb764e40ad039399aac16efc647725ed'
-         '8588f10da96f035b55384e6789931264')
+         '94d0be3ab03d1d05bc4cbd59f8d92cf4')
 
 package() {
   # Install the XDG desktop file and icon
