@@ -1,16 +1,16 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=clutter-gst
-pkgver=3.0.22
+pkgver=3.0.24
 pkgrel=1
 pkgdesc="GStreamer bindings for clutter"
-arch=(i686 x86_64)
 url="https://git.gnome.org/browse/clutter-gst"
+arch=(i686 x86_64)
 license=(LGPL)
 depends=(clutter gst-plugins-base-libs libxdamage libgudev)
 makedepends=(gobject-introspection gtk-doc git)
-_commit=439d3a08de55a49c39066add4f7f32db3164380b  # tags/3.0.22^0
-source=("git://git.gnome.org/clutter-gst#commit=$_commit")
+_commit=e2bad4876a4c4be3997c04736066bb683ee71284  # tags/3.0.24^0
+source=("git+https://git.gnome.org/browse/clutter-gst#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -42,9 +42,6 @@ check() {
 package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
-
-  # https://bugzilla.gnome.org/show_bug.cgi?id=746883
-  rm -rf "${pkgdir}"/usr/lib/gstreamer-1.0
 }
 
 # vim:set ts=2 sw=2 et:
