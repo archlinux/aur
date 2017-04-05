@@ -2,24 +2,25 @@
 # Contributor: Michael Lass <bevan@bi-co.net>
 
 pkgname=kodi-addon-pvr-mythtv-git
-pkgver=r553.80f7c89
+pkgver=r677.a2a56f3
 pkgrel=1
 if [ -z "$API" ]; then
-  error "No API Version Defined, defaulting to 16.  15 = Isengard, 16 = Jarvis, 99 = git master"
+  error "No API Version Defined, defaulting to 17.  15 = Isengard, 16 = Jarvis, 17 = Krypton, 99 = git master"
 fi
-API=${API:-16}
+API=${API:-17}
 
 _branch=$(
   case "${API}" in
     15) echo "Isengard";;
     16) echo "Jarvis";;
+    17) echo "Krypton";;
     99) echo "master";;
     *) error "Unknown API version.";;
   esac
 )
 pkgdesc='MythTV PVR client addon for Kodi'
 arch=('armv7h' 'i686' 'x86_64')
-url="https://github.com/kodi-pvr/pvr.hts"
+url="https://github.com/kodi-pvr/pvr.mythtv"
 license=('GPL')
 makedepends=('cmake' 'git' 'kodi-platform-git')
 if [ "$API" -eq "99" ]; then
