@@ -9,6 +9,7 @@ pkgbase = gydl-git
 	depends = python
 	depends = gtk3
 	depends = python-gobject
+	depends = youtube-dl
 	source = gydl-git::git://github.com/JannikHv/gydl.git
 	sha256sums = SKIP
 
