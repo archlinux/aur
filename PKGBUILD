@@ -1,7 +1,7 @@
 # Maintainer: Florijan Hamzic <fh@infinicode.de>
 
 pkgname=python-crossbar
-pkgver=0.15.0
+pkgver=17.3.1
 pkgrel=1
 pkgdesc="Crossbar.io - WAMP application router http://crossbar.io/"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python>=3.1')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(https://github.com/crossbario/crossbar/archive/v${pkgver}.tar.gz)
-sha1sums=('b2684bd09876a10addf4f527577b8f16d39a7620')
+sha1sums=('df5c1f63ffec0e009b48928eb496ca83994de121')
 
 package(){
     cd "${srcdir}/crossbar-${pkgver}"
