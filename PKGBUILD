@@ -2,12 +2,12 @@
 
 pkgname=nginx-google_filter
 _pkgname=nginx
-pkgver=1.8.0
+pkgver=1.10.0
 _mod1=ngx_http_google_filter_module
 _mod1ver=0.2.0
 _mod2=ngx_http_substitutions_filter_module
 _mod2ver=0.6.4
-pkgrel=2
+pkgrel=1
 pkgdesc="Lightweight HTTP server and IMAP/POP3 proxy server, with ngx_http_google_filter_module $_mod1ver"
 provides=("nginx=${pkgver}")
 conflicts=('nginx')
@@ -33,7 +33,7 @@ source=(http://nginx.org/download/${_pkgname}-${pkgver}.tar.gz
         service
         logrotate
         google.conf)
-sha256sums=('23cca1239990c818d8f6da118320c4979aadf5386deda691b1b7c2c96b9df3d5'
+sha256sums=('8ed647c3dd65bc4ced03b0e0f6bf9e633eff6b01bac772bcf97077d58bc2be4d'
             '9cd68c8e092efb1a419e1087bb9ca23aab1ff8650c400c0aa815d461d79385de'
             'ed4ddbcf0c434f4a1e97b61251a63ace759792764bd5cb79ff20efe348db8db3'
             '4ecbc33ce4bf2965996f51b0c7edb677904ba5cff9a32e93e1487a428d3a751b'
@@ -74,7 +74,7 @@ build() {
     --with-http_mp4_module \
     --with-http_realip_module \
     --with-http_secure_link_module \
-    --with-http_spdy_module \
+    --with-http_v2_module \
     --with-http_ssl_module \
     --with-http_stub_status_module \
     --with-http_sub_module \
