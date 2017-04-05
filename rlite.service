@@ -1,0 +1,16 @@
+[Unit]
+Description=rlite daemon running uipcps
+#ConditionPathExists=/etc/rlite/uipcp-qoscubes.qos
+#ConditionPathExists=/etc/rlite/shim-tcp4-dir
+Wants=systemd-modules-load.service
+After=systemd-modules-load.service
+#After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rlite-uipcps
+#WorkingDirectory=
+#Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

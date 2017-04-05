@@ -1,0 +1,25 @@
+pkgbase = rlite-git
+	pkgdesc = Recursive InterNetwork Architecture user/kernel prototype written in C.
+	pkgver = r1979.b716ec2
+	pkgrel = 1
+	install = rlite.install
+	arch = any
+	license = GPL
+	license = LGPL
+	makedepends = git
+	makedepends = linux-headers
+	makedepends = fakeroot
+	depends = linux
+	depends = protobuf
+	depends = python
+	source = rlite.install
+	source = rlite.conf
+	source = rlite.service
+	source = git+https://github.com/vmaffione/rlite.git
+	md5sums = 047aa5adec4c52ddbf86d12dbf300f71
+	md5sums = 4bc1bc1402aeaca56fd22ab59dfa9fb6
+	md5sums = 78bd22e673a5d3a5a0e62536758fce24
+	md5sums = SKIP
+
+pkgname = rlite-git
+
