@@ -2,15 +2,15 @@ pkgname=parity-git
 _pkgname=parity
 pkgdesc="Fast, light, robust Ethereum implementation"
 pkgrel=1
-pkgver=1.5.0.7759
+pkgver=1.7.0.8838
 arch=('i686' 'x86_64')
 conflicts=("parity")
 provides=("parity")
-url="https://github.com/ethcore/parity"
+url="https://github.com/paritytech/parity"
 license=('GPL-3.0')
 depends=('rocksdb')
-makedepends=('rust' 'cargo' 'git')
-source=('git+https://github.com/ethcore/parity.git')
+makedepends=('cargo')
+source=('git+https://github.com/paritytech/parity.git')
 sha256sums=('SKIP')
 
 pkgver() {
