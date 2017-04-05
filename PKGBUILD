@@ -3,7 +3,7 @@
 _pkgname=vice
 pkgname=$_pkgname-gnome
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Versatile Commodore Emulator (Provides desktop files for easy use in Gnome)"
 arch=('i686' 'x86_64')
 license=('GPL')
