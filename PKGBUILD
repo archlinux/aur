@@ -11,8 +11,8 @@ source=("git+https://github.com/mhinz/neovim-remote.git#tag=v${pkgver}")
 sha1sums=('SKIP')
 
 package() {
-  cd "$srcdir/$pkgname"
-  python setup.py install --root="$pkgdir/"
+	cd "$srcdir/$pkgname"
+	python setup.py install --root="$pkgdir/"
 }
 
 # vim:set ts=2 sw=2 et:
