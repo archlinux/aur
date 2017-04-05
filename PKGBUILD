@@ -6,13 +6,13 @@
 
 pkgname=drush
 pkgver=8.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Drush is a command line shell and Unix scripting interface for Drupal."
 arch=('any')
 url="https://github.com/drush-ops/drush/"
 license=('GPL')
 depends=('php')
-makedepends=('php-composer' 'php-box')
+makedepends=('composer' 'php-box')
 install=${pkgname}.install
 source=(
     "drush.install"
