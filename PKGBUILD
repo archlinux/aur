@@ -1,17 +1,16 @@
-# Maintainer: netcrusher < tobias AT miglix DOT eu >
+# former Maintainer: netcrusher < tobias AT miglix DOT eu >
 # Contributor: tze <tze@datalove.me>
 
 pkgname=ttf-unifraktur
-pkgver=20140706
-pkgrel=3
+pkgver=20170319
+pkgrel=1
 pkgdesc='A set of open-source Fraktur fonts'
 arch=('any')
 url='http://unifraktur.sourceforge.net'
 license=('custom')
-install=ttf.install
-source=('http://downloads.sourceforge.net/project/unifraktur/fonts/UnifrakturMaguntia.2014-07-06.zip'
+source=('http://downloads.sourceforge.net/project/unifraktur/fonts/UnifrakturMaguntia.2017-03-19.zip'
         'http://downloads.sourceforge.net/project/unifraktur/fonts/UnifrakturCook.2013-08-25.zip')
-md5sums=('50b1fb0cfa7369ec5975c44d48fe9ac1'
+md5sums=('f6a04d627263379c698e5781e9860d6d'
          'e93c4f39f7ce6642fdf7ebc3d8ab19fe')
 
 package() {
