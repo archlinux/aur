@@ -1,7 +1,7 @@
 # Maintainer: Samuel Martin Moro <samuel@peerio.com>
 pkgname=peerio-client
 pkgver=1.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Peerio Client"
 arch=('i686' 'x86_64')
 url='https://peerio.com'
@@ -14,8 +14,8 @@ source=('http://linux.peerio.com/sources/peerio-client-1.6.4.tar.gz')
 md5sums=('8d1a2fd3630613470cff0001e7fbf427')
 build() {
     cd "${srcdir}/${pkgname}"
-    curl http://linux.peerio.com/sources/07-build.patch >build.patch
-    if echo "cf041f3e07ae83a6965ccabed660f860  build.patch" | md5sum --check - --strict --quiet; then
+    curl http://linux.peerio.com/sources/08-build.patch >build.patch
+    if echo "1e3619ed307e579b5dad19b9df5965f6  build.patch" | md5sum --check - --strict --quiet; then
 	patch -p0 <build.patch && rm -f build.patch
 	make client
     else
