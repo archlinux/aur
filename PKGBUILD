@@ -48,6 +48,7 @@ prepare() {
 	cd ${srcdir}
 	[ -d build ] || mkdir build
 	cd build
+	sed -ie "s/std=c++11/std=c++14/" ../FairRoot-v-17.03/CMakeLists.txt
 	cmake \
 		-DUSE_DIFFERENT_COMPILER=TRUE \
 		-DCMAKE_INSTALL_PREFIX="/opt/fairroot/v-${pkgver}" \
@@ -60,7 +61,6 @@ build() {
 	export SIMPATH=/opt/fairsoft/${fairsoftver}
 	cd ${srcdir}/build
 	# Make c++14 mandatory
-	sed -ie "s/std=c++11/std=c++14/" ../FairRoot-v-17.03/CMakeLists.txt
 	make -j$(nproc)
 }
 
