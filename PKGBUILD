@@ -1,17 +1,16 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=cogl
-pkgver=1.22.2
+pkgver=1.22.2+10+g3baa2d7a
 pkgrel=1
 pkgdesc="An object oriented GL/GLES Abstraction/Utility Layer"
-arch=('i686' 'x86_64')
-url="http://www.clutter-project.org/"
-license=('GPL2')
-depends=('mesa' 'libdrm' 'libxext' 'libxdamage' 'libxcomposite' 'gdk-pixbuf2' 'pango' 'libxrandr')
-makedepends=('gobject-introspection' 'git' 'gtk-doc')
-options=(!emptydirs)
-_commit=f38cda9046913c3627c52108467ba90e53d18c33
-source=("git://git.gnome.org/cogl#commit=$_commit")
+url="https://blogs.gnome.org/clutter/"
+arch=(i686 x86_64)
+license=(GPL2)
+depends=(mesa libdrm libxext libxdamage libxcomposite gdk-pixbuf2 pango libxrandr)
+makedepends=(gobject-introspection git gtk-doc)
+_commit=3baa2d7a65bc94b74d6e49392fe14e4ed65724a5  # cogl-1.22
+source=("git+https://git.gnome.org/browse/cogl#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -34,7 +33,7 @@ build() {
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
-  make -j1
+  make
 }
 
 package() {
