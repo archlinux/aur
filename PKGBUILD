@@ -26,18 +26,12 @@ provides=('midori')
 conflicts=('midori' 'midori-gtk2-git' 'midori-git' 'midori-gtk2-bzr')
 options=('!emptydirs')
 install='midori.install'
-source=("midori::bzr+http://bazaar.launchpad.net/~midori/midori/trunk/" katzeitem.patch)
-md5sums=('SKIP'
-         'ddd357817ab1f2aec3bd10ae2662518f')
+source=("midori::bzr+http://bazaar.launchpad.net/~midori/midori/trunk/")
+md5sums=('SKIP')
 
 pkgver() {
   cd midori
   printf "r%s" "$(bzr revno)"
-}
-
-prepare() {
-  cd midori/midori
-  patch -Np1 < $srcdir/katzeitem.patch || true
 }
 
 build() {
