@@ -2,7 +2,7 @@
 # Contributor: Joel Sevilleja Febrer Joel7987[at].gmail.com
 
 pkgname=htmlunit
-pkgver=2.25
+pkgver=2.26
 pkgrel=1
 pkgdesc="A HTTP headless webclient for Java"
 arch=('any')
@@ -10,8 +10,8 @@ url="http://htmlunit.sourceforge.net/"
 license=('apache')
 depends=('java-runtime-common')
 source=("http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/${pkgname}-${pkgver}-bin.zip")
-md5sums=('62d3c30a3c201e7c6d1845f71dc27f18')
-sha256sums=('cb6932560fbe3b6d1a8078168f7392b16805b1be9f46699cea86847611750dfb')
+md5sums=('4dc54363d93ead3ce96e850cf75c66df')
+sha256sums=('f032c99ce26b9c157ebfae653392008f3faeff160a8f385a3f611e8c661fc23d')
 
 package() {
 	cd ${srcdir}/${pkgname}-${pkgver}/lib
