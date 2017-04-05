@@ -1,6 +1,6 @@
 pkgbase = r3broot-git
 	pkgdesc = Analysis framework based on root for the R3B experiment provided by GSI/FAIR.
-	pkgver = oct16
+	pkgver = apr17
 	pkgrel = 1
 	url = http://www.r3broot.gsi.de
 	install = r3broot.install

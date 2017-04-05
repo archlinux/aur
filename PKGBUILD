@@ -1,14 +1,14 @@
 # Maintainer: Bastian Löher <b.loeher@gsi.de>
 pkgname=r3broot-git
-pkgver=oct16
+pkgver=apr17
 pkgrel=1
 pkgdesc="Analysis framework based on root for the R3B experiment provided by GSI/FAIR."
 arch=('x86_64')
 url="http://www.r3broot.gsi.de"
 license=('unknown')
 groups=()
-fairsoftver=may16p1-1
-fairrootver=v-16.06a
+fairsoftver=mar17-1
+fairrootver=v-17.03
 makedepends=('cmake'
 	'clang'
 	'bison'
