@@ -1,0 +1,17 @@
+pkgbase = gnu-apl-svn
+	pkgdesc = An (almost) complete implementation of ISO standard 13751
+	pkgver = 917
+	pkgrel = 1
+	url = https://www.gnu.org/software/apl/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = subversion
+	depends = ncurses
+	depends = postgresql-libs
+	depends = gcc-libs
+	depends = sqlite
+	conflicts = gnu-apl
+
+pkgname = gnu-apl-svn
+
