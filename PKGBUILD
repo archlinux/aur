@@ -1,30 +1,33 @@
 # Maintainer: Benjamin M. <benmoran56@gmail.com>
+# Maintainer: Haruki Ota <ootaharuki99[at]gmail.com>
 pkgname=recdvb
-pkgver=1.3.0
-pkgrel=3
-pkgdesc='Simple command-line utility to record DVB streams.'
-arch=('any')
+pkgver=1.3.3
+pkgrel=1
+pkgdesc='Simple command-line utility to record DVB streams.(no b25 support)'
+arch=('i686' 'x86_64')
 url='http://github.com/k-pi/recdvb'
 license=('GPL3')
-makedepends=('git')
-optdepends=('libarib25: b25 decoding support. Must rebuild recdvb package after installing libarib25.')
+depends=('glibc')
 provides=('recdvb')
-conflicts=('recdvb-git')
-source=('git://github.com/k-pi/recdvb.git')
-md5sums=('SKIP')
+conflicts=('recdvb-b25')
+source=('https://github.com/k-pi/recdvb/archive/v1.3.3.tar.gz')
+md5sums=('7149cba23942453fad9de3be5d2206a9')
 
 build() {
-  cd "$srcdir/$provides"
+  cd "recdvb-$pkgver"
+
   chmod +x autogen.sh
   ./autogen.sh
-  ./configure --enable-b25
+  ./configure
   make
 }
 
 package() {
-  cd "$srcdir/$provides"
-  install -D -m0755 recdvb "$pkgdir/usr/bin/recdvb"
-  install -D -m0755 recdvbctl "$pkgdir/usr/bin/recdvbctl"
+  cd "recdvb-$pkgver"
+
+  install -D -m 755 recdvb "$pkgdir/usr/bin/recdvb"
+  install -D -m 755 recdvbctl "$pkgdir/usr/bin/recdvbctl"
+  install -D -m 755 recdvbchksig "$pkgdir/usr/bin/recdvbchksig"
 }
 
 
