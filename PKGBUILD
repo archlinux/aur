@@ -5,8 +5,8 @@
 # Contributor: The_Decryptor
 
 pkgname=h2o
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64')
 depends=('libuv' 'libyaml' 'wslay' 'zlib')
@@ -15,7 +15,7 @@ url="https://github.com/h2o/h2o"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/h2o/$pkgname/tar.gz/v$pkgver
         h2o.service)
-sha256sums=('41f3853f3083c2fe8e70d3ab7be02c3de3c26fb77ba5fc56fdaf46712418b999'
+sha256sums=('1f3bfa8a01b65287a3352dbfc12f0ce7a79f5e8d7649aa4d4b39b763b6e28177'
             '8a85462b6798deaaab343b5dae73437e251c5018d70d260a4a4440b9bbb053e6')
 backup=('etc/h2o.conf')
 provides=('h2o' 'libh2o')
