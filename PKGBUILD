@@ -9,7 +9,7 @@ license=('GPL2')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/lah7/polychromatic/archive/v$pkgver.tar.gz")
 url='https://github.com/lah7/polychromatic'
 makedepends=('rsync')
-depends=('python' 'hicolor-icon-theme' 'python-razer' 'webkit2gtk' 'libappindicator-gtk3')
+depends=('python' 'hicolor-icon-theme' 'python-razer' 'webkit2gtk' 'libappindicator-gtk3' 'imagemagick')
 sha512sums=('ca1953ebbf3bce301453248a2d5b6d24abab75b7fd3b862fa6d21276996364997191915c2e0f4cc5f86cc6db8b7f54311dde72842af2570dc010d98b56947f10')
 
 package() {  
