@@ -11,6 +11,7 @@ pkgbase = srdfdom-git
 	depends = boost
 	depends = tinyxml
 	depends = urdfdom-headers
+	depends = console-bridge
 	optdepends = doxygen
 	provides = srdfdom
 	conflicts = srdfdom
