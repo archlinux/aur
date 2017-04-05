@@ -1,28 +1,30 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=timeoutd
-pkgver=1.5deb10.1
-pkgrel=2
+pkgver=1.5u10.1
+pkgrel=3
 pkgdesc="Flexible user timeout daemon. Enforces user login restrictions."
 arch=('i686' 'x86_64')
-url="http://packages.debian.org/squeeze/timeoutd"
+url="https://github.com/sohonet/timeoutd"
 license=('GPL')
 depends=('libx11' 'libxext' 'libxss')
 backup=('etc/timeouts')
-source=('http://ftp.de.debian.org/debian/pool/main/t/timeoutd/timeoutd_1.5.orig.tar.gz'
-	'http://ftp.de.debian.org/debian/pool/main/t/timeoutd/timeoutd_1.5-10.1.diff.gz'
-	'makefile_arch.patch'
-	'timeoutd.service')
+source=('https://github.com/sohonet/timeoutd/archive/master.zip'
+        'makefile_arch.patch'
+        'timeoutd.service')
+
+prepare() {
+	cd "$srcdir/timeoutd-master"
+	patch -p0 < "$srcdir/makefile_arch.patch"
+}
 
 build() {
-	cd "$srcdir/timeoutd-1.5.orig"
-	patch -p1 < "../timeoutd_1.5-10.1.diff"
-	patch -p0 < "$srcdir/makefile_arch.patch"
+	cd "$srcdir/timeoutd-master"
 	make
 }
 
 package() {
-	cd "$srcdir/timeoutd-1.5.orig"
+	cd "$srcdir/timeoutd-master"
 	install -Dm0755 timeoutd "$pkgdir/usr/bin/timeoutd"
 	install -Dm0644 timeouts "$pkgdir/etc/timeouts"
 	install -Dm0644 timeoutd.8 "$pkgdir/usr/share/man/man8/timeoutd.8"
@@ -31,8 +33,6 @@ package() {
 	install -Dm0644 timeoutd.service "$pkgdir/usr/lib/systemd/system/timeoutd.service"
 }
 
-md5sums=('0be669e0111575fc5bbc8f20e27e4f88'
-         '2c1ecc3417d81cda99705078244bd3e7'
+md5sums=('48ba0c3cdc6446ce8536109aad10e726'
          '6f8a7ac7b8abdd40f04264ad132a81e6'
          '8ced5cbe1e96e0f35e240858c1b21fb6')
-
