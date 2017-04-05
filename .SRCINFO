@@ -1,6 +1,6 @@
 pkgbase = argos3-epuck-git
 	pkgdesc = ARGoS3 simulator library for epuck robot
-	pkgver = r12.fe0e358
+	pkgver = r15.56e149b
 	pkgrel = 1
 	url = https://github.com/lgarattoni/argos3-epuck
 	install = argos3-epuck-git.install

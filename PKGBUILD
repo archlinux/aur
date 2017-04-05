@@ -2,7 +2,7 @@
 
 pkgname=argos3-epuck-git
 _gitname=argos3-epuck
-pkgver=r12.fe0e358
+pkgver=r15.56e149b
 pkgrel=1
 
 pkgdesc="ARGoS3 simulator library for epuck robot"

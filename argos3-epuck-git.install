@@ -2,15 +2,15 @@ post_install() {
   RED='\033[0;31m'
   echo -e ""
   echo -e "${RED}==> ARGoS3 has already epuck librairies, so you should replace the files with the ones of this file !"
-  echo -e "${RED}$ sudo /usr/include/argos3/plugins/robots/e-puck/simulator/dynamics2d_epuck_model.h.pacnew /usr/include/argos3/plugins/robots/e-puck/simulator/dynamics2d_epuck_model.h"
-  echo -e "${RED}$ sudo /usr/include/argos3/plugins/robots/e-puck/simulator/epuck_entity.h.pacnew /usr/include/argos3/plugins/robots/e-puck/simulator/epuck_entity.h"
-  echo -e "${RED}$ sudo /usr/include/argos3/plugins/robots/e-puck/simulator/qtopengl_epuck.h.pacnew /usr/include/argos3/plugins/robots/e-puck/simulator/qtopengl_epuck.h"
-  echo -e "${RED}$ sudo /usr/lib/argos3/libargos3plugin_simulator_epuck.so.pacnew /usr/lib/argos3/libargos3plugin_simulator_epuck.so"
+  echo -e "${RED}$ sudo mv /usr/include/argos3/plugins/robots/e-puck/simulator/dynamics2d_epuck_model.h.pacnew /usr/include/argos3/plugins/robots/e-puck/simulator/dynamics2d_epuck_model.h"
+  echo -e "${RED}$ sudo mv /usr/include/argos3/plugins/robots/e-puck/simulator/epuck_entity.h.pacnew /usr/include/argos3/plugins/robots/e-puck/simulator/epuck_entity.h"
+  echo -e "${RED}$ sudo mv /usr/include/argos3/plugins/robots/e-puck/simulator/qtopengl_epuck.h.pacnew /usr/include/argos3/plugins/robots/e-puck/simulator/qtopengl_epuck.h"
+  echo -e "${RED}$ sudo mv /usr/lib/argos3/libargos3plugin_simulator_epuck.so.pacnew /usr/lib/argos3/libargos3plugin_simulator_epuck.so"
   echo -e "${RED}$ sudo ldconfig"
   echo -e "${RED}==> Otherwise the new real robots, actuators and sensors definitions will not work !!"
   echo ""
 }
 
-post_ugrade() {
+post_upgrade() {
   post_install
 }
