@@ -1,7 +1,7 @@
 pkgbase = launch-cmd
 	pkgdesc = Launch an independent process from a shell
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL
 	source = launch.c
