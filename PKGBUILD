@@ -2,7 +2,7 @@
 
 pkgname=argos3-git
 _gitname=argos3
-pkgver=3.0.0.beta43.r8.g627ce75
+pkgver=3.0.0.beta45.r1.g1971aa8
 pkgrel=1
 
 pkgdesc="ARGoS 3 Large-scale robot simulator"
@@ -12,6 +12,7 @@ license=('MIT')
 
 depends=('freeimage>=3.15' 'qt4>=4.6' 'freeglut>=2.6.0' 'libxi' 'libxmu' 'lua' 'doxygen>=1.7.3' 'graphviz>=2.28' 'asciidoc>=8.6.2')
 makedepends=('gcc>=4.4' 'git' 'cmake>=2.8')
+optdepends=('gperftools')
 
 source=('git://github.com/ilpincy/argos3.git')
 md5sums=('SKIP')
