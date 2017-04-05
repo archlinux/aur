@@ -1,6 +1,6 @@
 pkgbase = mdl
 	pkgdesc = MarkDown Less is a Markdown displayer
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/dopsi/mdl
@@ -12,7 +12,7 @@ pkgbase = mdl
 	depends = boost-libs
 	provides = mdl
 	conflicts = MDL
-	source = http://github.com/dopsi/mdl/archive/v1.1.1.tar.gz
+	source = http://github.com/dopsi/mdl/archive/v1.1.2.tar.gz
 	sha1sums = SKIP
 
 pkgname = mdl
