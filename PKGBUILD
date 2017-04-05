@@ -1,7 +1,7 @@
 # Maintainer: Zhuoyun Wei <wzyboy@wzyboy.org>
 
 pkgname=govpn
-pkgver=7.2
+pkgver=7.3
 pkgrel=1
 pkgdesc="Simple secure free software DPI/censorship-resistant VPN daemon"
 arch=('i686' 'x86_64' 'armv7h')
@@ -9,7 +9,7 @@ url="http://www.govpn.info/"
 makedepends=('go')
 license=('GPL')
 source=(http://sourceforge.net/projects/${pkgname}/files/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('8c787dcd6ffb718e850f287e959fcb457880a8a11c417bca17a86346ac9baaee')
+sha256sums=('c3a273534a44811209c4cb1dca26ebfe56644d5ad51c8216ba22ec18150a4ee8')
 
 build() {
   make -C ${pkgname}-${pkgver}

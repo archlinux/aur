@@ -2,7 +2,7 @@
 # Tue Sep 20 10:57:25 UTC 2016
 pkgbase = govpn
 	pkgdesc = Simple secure free software DPI/censorship-resistant VPN daemon
-	pkgver = 7.2
+	pkgver = 7.3
 	pkgrel = 1
 	url = http://www.govpn.info/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = govpn
 	arch = armv7h
 	license = GPL
 	makedepends = go
-	source = http://sourceforge.net/projects/govpn/files/govpn-7.2.tar.xz
-	sha256sums = 8c787dcd6ffb718e850f287e959fcb457880a8a11c417bca17a86346ac9baaee
+	source = http://sourceforge.net/projects/govpn/files/govpn-7.3.tar.xz
+	sha256sums = c3a273534a44811209c4cb1dca26ebfe56644d5ad51c8216ba22ec18150a4ee8
 
 pkgname = govpn
 
