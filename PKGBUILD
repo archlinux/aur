@@ -1,29 +1,25 @@
-# Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
+# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nuvola-app-soundcloud
-pkgdesc='SoundCloud integration for Nuvola Player 3.0'
-pkgver=1.1
+pkgver=1.3
 pkgrel=1
-
-license=('BSD' 'MIT' 'CCPL:by')
-
-# template start; name=nuvola-app; version=1.0.1;
-# Template-Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
-
-arch=('any')
+pkgdesc="SoundCloud integration for Nuvola Player"
+arch=("i686" "x86_64")
+url="https://github.com/tiliado/$pkgname"
+license=('BSD' 'MIT' 'CCPL')
 depends=('nuvolaplayer')
-makedepends=('lasem' 'scour')
-sha256sums=('bab5badce194a86efc747bffe5ddced2cdeb3ffc598cbe4b2017ae93f7de1aec')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/tiliado/${pkgname}/archive/${pkgver}.tar.gz")
-url="https://github.com/tiliado/${pkgname}"
+makedepends=('python-nuvolasdk' 'scour')
+source=("https://github.com/tiliado/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('bf6cd6c9bdd9232f15cf3f3c07ef6c1ab8a1b7418087b36bd774fdf9a207b63b')
+
+build() {
+	cd "$pkgname-$pkgver"
+	./configure --prefix=/usr --with-dbus-launcher
+	make all
+}
 
 package() {
-	cd "${pkgname}-${pkgver}"
-
-	# Optimize SVG icons (scour), generate PNG icons (lasem), build and install.
-	make install DEST="${pkgdir}/usr/share/nuvolaplayer3/web_apps"
-
-	# Install all available licenses.
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE*
+	cd "$pkgname-$pkgver"
+	install -Dm644 LICENSE-*.txt -t "$pkgdir"/usr/share/licenses/$pkgname/
+	make install DESTDIR="$pkgdir"
 }
-# template end;
