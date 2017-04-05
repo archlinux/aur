@@ -1,5 +1,5 @@
 pkgname=openturns
-pkgver=1.8
+pkgver=1.9rc1
 pkgrel=1
 pkgdesc="Uncertainty treatment library"
 license=('LGPL')
@@ -8,12 +8,11 @@ url="http://www.openturns.org/"
 depends=('libxml2' 'muparser' 'intel-tbb' 'hmat-oss' 'python-matplotlib' 'nlopt' 'r')
 makedepends=('cmake' 'swig' 'boost')
 backup=('etc/openturns/openturns.conf')
-source=("https://github.com/openturns/openturns/archive/v$pkgver.tar.gz" swig3011-truediv.patch)
-sha256sums=('a857564257fdb42a0808ef806dfdaa17265d56653634b375f57885106007f687' SKIP)
+source=("https://github.com/openturns/openturns/archive/v$pkgver.tar.gz")
+sha256sums=('a04f19c7173fe509150bc648f26823cc8b8b09f9ff54f511540af84f434a069f')
 
 build() {
   cd openturns-$pkgver
-  patch -p1 -i ../swig3011-truediv.patch
   R CMD INSTALL --library=$PWD utils/rot_1.4.6.tar.gz
   export R_LIBS=$PWD
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
