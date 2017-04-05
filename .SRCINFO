@@ -1,0 +1,17 @@
+pkgbase = bat-git
+	pkgdesc = Binary Analysis Tool
+	pkgver = 36.0.r2.gefd8d7d1
+	pkgrel = 1
+	url = http://www.binaryanalysis.org
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = python2
+	depends = python2-magic
+	optdepends = wxpython: GUI support
+	replaces = bat-svn
+	source = bat-git::git+https://github.com/armijnhemel/binaryanalysis.git
+	md5sums = SKIP
+
+pkgname = bat-git
+
