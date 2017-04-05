@@ -1,7 +1,7 @@
 # Maintainer: kusakata <shohei atmark kusakata period com>
 
 pkgname=qccrypt
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='A cross-plateform frontend for ccrypt software'
 arch=('i686' 'x86_64')
@@ -27,8 +27,8 @@ package() {
 	install -Dm644 x-cpt.desktop "${pkgdir}/usr/share/mimelnk/application/x-cpt.desktop"
 }
 
-md5sums=('e9fb32ecbd209499c1bde9d83c7e0edc'
-         'abfac965f5c045215341318667afc998'
+md5sums=('edf10d1d52cc3c2044ead8cc741363a0'
+         '97cb84c58093cb6474476baf9482e3f0'
          'bf60d5c11809910d2a9c98aaa8217911'
          '14af5e3ee3813b1812145cf20defdb70'
          '2217be2566623c28288e3bbb6f9e9922')
