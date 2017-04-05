@@ -4,11 +4,12 @@
 # Contributor: bl4ckb1t <bl4ckb1t@gmail.com>
 pkgname=toilet
 pkgver=0.3.3eb9d58
-pkgrel=1
+pkgrel=2
 pkgdesc="free replacement for the FIGlet utility."
 arch=('i686' 'x86_64')
 url="https://github.com/cacalabs/toilet"
 license=('custom:WTFPL')
+makedepends=('git')
 depends=('libcaca')
 source=('git://github.com/cacalabs/toilet.git')
 sha256sums=('SKIP')
