@@ -1,7 +1,7 @@
 pkgbase = papirus-libreoffice-theme
 	pkgdesc = Papirus theme for LibreOffice
-	pkgver = 20170228
-	pkgrel = 2
+	pkgver = 20170325
+	pkgrel = 1
 	url = https://github.com/PapirusDevelopmentTeam/papirus-libreoffice-theme
 	arch = any
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = papirus-libreoffice-theme
 	conflicts = libreoffice-papirus-theme
 	conflicts = libreoffice-papirus-theme-git
 	options = !strip
-	source = papirus-libreoffice-theme::git+https://github.com/PapirusDevelopmentTeam/papirus-libreoffice-theme.git#commit=b06f038
+	source = papirus-libreoffice-theme::git+https://github.com/PapirusDevelopmentTeam/papirus-libreoffice-theme.git#commit=2884637
 	sha256sums = SKIP
 
 pkgname = papirus-libreoffice-theme

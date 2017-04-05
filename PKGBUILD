@@ -2,9 +2,9 @@
 # Contributor: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-libreoffice-theme
-_commit=b06f038
-pkgver=20170228
-pkgrel=2
+_commit=2884637
+pkgver=20170325
+pkgrel=1
 pkgdesc="Papirus theme for LibreOffice"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname}"
 arch=('any')
@@ -23,7 +23,9 @@ pkgver() {
 
 package() {
     cd ${pkgname}
-    make install DESTDIR="$pkgdir"
+    make install \
+      PREFIX="/usr/lib" \
+      DESTDIR="$pkgdir"
 }
 
 # vim:set ts=2 sw=2 cc=80 et:
