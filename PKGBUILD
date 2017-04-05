@@ -1,6 +1,6 @@
 # Maintainer: Timur Kiyivinski <timur@linux.com>
 
-pkgname=lbry-app-bin
+pkgname=lbry-app-stable-bin
 pkgver=0.9.1
 pkgrel=1
 pkgdesc='The LBRY app built using electron'
