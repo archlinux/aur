@@ -41,7 +41,6 @@ PKGEXT='.pkg.tar.gz'
 prepare() {
 	# Path to fairsoft installation
 	export SIMPATH=/opt/fairsoft/${fairsoftver}
-	export ROOT_DIR=${SIMPATH}
 
 	cd ${srcdir}/FairRoot-v-${pkgver}
 
@@ -55,6 +54,7 @@ prepare() {
 	cmake \
 		-DUSE_DIFFERENT_COMPILER=TRUE \
 		-DCMAKE_INSTALL_PREFIX="/opt/fairroot/v-${pkgver}" \
+		-DROOT_DIR=${SIMPATH}
 		../FairRoot-v-${pkgver}
 :
 }
