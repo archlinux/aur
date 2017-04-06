@@ -1,10 +1,10 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
-pkgname=nginx-mainline-addon-njs
+pkgname=nginx-mainline-mod-njs
 pkgver=0.1.9 # http://hg.nginx.org/njs/tags
 pkgrel=1
 
-_modname="${pkgname#nginx-mainline-addon-}"
+_modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.11.10
 
 pkgdesc='nginScript module for mainline nginx'
