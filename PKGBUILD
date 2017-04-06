@@ -5,7 +5,8 @@ pkgdesc="Multi-pattern string replacement and file renaming, a command-line sear
 arch=(any)
 url="https://github.com/jlevy/repren"
 license=("Apache")
-depends=("python2")
+depends=('python2')
+makedepends=('python2-setuptools')
 sha1sums=('8e5d48f8d1aed2aa148e47c2a63170e053eb4ce3')
 source=("https://github.com/jlevy/repren/archive/$pkgver.tar.gz")
 
