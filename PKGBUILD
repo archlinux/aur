@@ -1,10 +1,10 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
-pkgname=nginx-mainline-addon-cache_purge
+pkgname=nginx-mainline-mod-cache_purge
 pkgver=2.3.1
 pkgrel=1
 
-_modname="${pkgname#nginx-mainline-addon-}"
+_modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.11.10
 
 pkgdesc='Nginx mainline module with ability to purge content from FastCGI, proxy, SCGI and uWSGI caches'
