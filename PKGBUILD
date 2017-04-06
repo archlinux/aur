@@ -17,7 +17,6 @@ replaces=()
 backup=()
 options=()
 install=${pkgname%-git}.install
-installdir=${pkgdir}/opt
 source=("${pkgname%-git}::git+http://fy.chalmers.se/~f96hajo/ucesb/ucesb.git"
 	"${pkgname%-git}.install")
 noextract=()
@@ -51,6 +50,8 @@ check() {
 }
 
 package() {
+	installdir=${pkgdir}/opt
+	export installdir
 	mkdir -p ${installdir}
 	cp -r ${srcdir}/${pkgname%-git} ${installdir}
 }
