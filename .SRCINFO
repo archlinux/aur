@@ -1,20 +1,39 @@
 pkgbase = mdbtools-git
-	pkgdesc = A set of libraries and utilities for reading Microsoft Access database (MDB) files.
-	pkgver = 0.7.r217.g9d56b0c
+	pkgdesc = Utilities for viewing data and exporting schema from Microsoft Access database files
+	pkgver = 0.7.r220.gd6f5745
 	pkgrel = 1
 	url = https://github.com/brianb/mdbtools
 	arch = i686
 	arch = x86_64
+	license = LGPL
 	license = GPL
-	makedepends = git
+	makedepends = bison
+	makedepends = flex
 	makedepends = txt2man
-	depends = gnome-doc-utils
-	depends = libgnomeui
-	provides = mdbtools
-	conflicts = mdbtools
+	makedepends = autoconf
+	makedepends = rarian
+	makedepends = unixodbc
+	makedepends = libgnomeui
+	makedepends = git
+	options = !libtool
 	options = !emptydirs
 	source = mdbtools-git::git://github.com/brianb/mdbtools.git
 	md5sums = SKIP
 
 pkgname = mdbtools-git
+	depends = unixodbc
+	depends = glib2
+	depends = flex
+	optdepends = gmdb2-git: graphical viewer for MDB files
+	provides = mdbtools
+	conflicts = mdbtools
+
+pkgname = gmdb2-git
+	pkgdesc = Graphical viewer for Microsoft Access database files
+	license = GPL
+	depends = mdbtools-git=0.7.r220.gd6f5745
+	depends = libgnomeui
+	depends = desktop-file-utils
+	provides = gmdb2
+	conflicts = gmdb2
 

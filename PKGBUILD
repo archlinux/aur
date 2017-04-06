@@ -1,41 +1,59 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Kamil Śliwak <cameel2/at/gmail/com>
 
-pkgname=mdbtools-git
-pkgver=0.7.r217.g9d56b0c
+pkgbase=mdbtools-git
+pkgname=(mdbtools-git gmdb2-git)
+pkgver=0.7.r220.gd6f5745
 pkgrel=1
-pkgdesc="A set of libraries and utilities for reading Microsoft Access database (MDB) files."
+pkgdesc="Utilities for viewing data and exporting schema from Microsoft Access database files"
 arch=('i686' 'x86_64')
 url="https://github.com/brianb/mdbtools"
-depends=('gnome-doc-utils' 'libgnomeui')
-makedepends=('git' 'txt2man')
-provides=('mdbtools')
-conflicts=('mdbtools')
-license=('GPL')
-options=('!emptydirs')
-source=("${pkgname}::git://github.com/brianb/mdbtools.git")
+license=('LGPL' 'GPL')
+makedepends=('bison' 'flex' 'txt2man' 'autoconf' 'rarian' 'unixodbc' 'libgnomeui' 'git')
+options=('!libtool' '!emptydirs')
+source=("${pkgbase}::git://github.com/brianb/mdbtools.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd ${pkgbase}
   echo $(git describe --always | sed -r 's|([^-]*-g)|r\1|;s|-|.|g')
 }
 
 prepare() {
-  cd ${pkgname}
-  autoreconf -fi
+  cd ${pkgbase}
+  sed -i -e 's, -export-symbols-regex.*,,' src/sql/Makefile.am
+# sed -i -e 's, -export-symbols-regex.*,,' src/libmdb/Makefile.am
+# sed -i -e 's, -export-symbols-regex.*,,' src/odbc/Makefile.am
+  echo "mdb_export_LDADD = ../libmdb/libmdb.la ../sql/libmdbsql.la" >>src/util/Makefile.am
+  autoreconf -i -f
 }
 
 build() {
-  cd ${pkgname}
-  ./configure --prefix=/usr \
-    --disable-maintainer-mode \
-    --disable-dependency-tracking
+  cd ${pkgbase}
+  ./configure --prefix=/usr --sysconfdir=/etc --mandir=/usr/share/man \
+              --with-unixodbc=/usr
   make V=0
 }
 
-package(){
-  cd ${pkgname}
+package_mdbtools-git() {
+  depends=('unixodbc' 'glib2' 'flex')
+  provides=(mdbtools)
+  conflicts=(mdbtools)
+  optdepends=('gmdb2-git: graphical viewer for MDB files')
+  
+  cd ${pkgbase}
   make DESTDIR="${pkgdir}" install
-  install -Dm644 "src/gmdb2/gmdb.desktop" "${pkgdir}/usr/share/applications/gmdb.desktop"
+  make DESTDIR="${pkgdir}" -C src/gmdb2 uninstall
+}
+
+package_gmdb2-git() {
+  pkgdesc='Graphical viewer for Microsoft Access database files'
+  license=('GPL')
+  provides=(gmdb2)
+  conflicts=(gmdb2)
+  depends=("mdbtools-git=$pkgver" 'libgnomeui' 'desktop-file-utils')
+
+  cd ${pkgbase}/src/gmdb2
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 gmdb.desktop "$pkgdir"/usr/share/applications/gmdb2.desktop
 }
