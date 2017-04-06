@@ -1,6 +1,6 @@
 # Maintainer: Bastian Löher <b.loeher@gsi.de>
 pkgname=ucesb-git
-pkgver=r12.f264ef0
+pkgver=r223.c2f181f
 pkgrel=1
 pkgdesc="UCESB - unpack & check every single bit"
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = ucesb-git
 	pkgdesc = UCESB - unpack & check every single bit
-	pkgver = r12.f264ef0
+	pkgver = r223.c2f181f
 	pkgrel = 1
 	url = http://fy.chalmers.se/~f96hajo/ucesb/
 	install = ucesb.install
