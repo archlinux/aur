@@ -1,5 +1,5 @@
 pkgname='apk-preview'
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A graphical user interface to see APK file details & icon (and install apk to phone)"
 arch=('x86_64')
