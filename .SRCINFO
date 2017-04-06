@@ -1,7 +1,7 @@
 pkgbase = ctmg
 	pkgdesc = Simple wrapper around cryptsetup for encrypted containers
 	pkgver = 1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.zx2c4.com/ctmg/
 	arch = any
 	license = ISC
@@ -12,7 +12,7 @@ pkgbase = ctmg
 	source = https://git.zx2c4.com/ctmg/snapshot/ctmg-1.2.tar.xz
 	source = ctmg.1
 	md5sums = ed4c016d905137eb28fe79217df7de04
-	md5sums = 32c0703d487a67d4b6a173590b7b42af
+	md5sums = bdded0046afd35ba47cba9185b81f9a3
 
 pkgname = ctmg
 

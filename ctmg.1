@@ -4,8 +4,8 @@
 ctmg \- Simple wrapper around cryptsetup for encrypted containers.
 .SH SYNOPSIS
 .B ctmg
-[ \fI\,new\/\fR | \fI\,create\/\fR | \fI\,del\/\fR | \fI\,delete\/\fR |
-\fI\,open\/\fR | \fI\,close\/\fR | \fI\,list\/\fR ] [\fI\,arguments...\/\fR]
+[ \fI\,new\/\fR | \fI\,del\/\fR | \fI\,open\/\fR | \fI\,close\/\fR |
+\fI\,list\/\fR | \fI\,help\/\fR ] [\fI\,arguments...\/\fR]
 .SH DESCRIPTION
 .PP
 ctmg is an encrypted container manager for GNU/Linux using cryptsetup and
@@ -13,21 +13,24 @@ various standard file system utilities. Containers have the extension
 \[char46]ct and are mounted at a directory of the same name, but without the
 extension. Superuser permissions are required to run this command.
 .TP
-.B new | create \fI\,filename size\/\fR
+.B n | new | create \fI\,filename size\/\fR
 creates a new container file. Both parameters are mandatory.
 .TP
-.B del | delete \fI\,filename\/\fR
+.B d | del | delete \fI\,filename\/\fR
 deletes a container file as well as the mounted directory.
 .TP
-.B open \fI\,filename\/\fR
+.B o | open \fI\,filename\/\fR
 opens a container file and mounts it temporarily in a new directory of the same
 name.
 .TP
-.B close \fI\,filename\/\fR
+.B c | close \fI\,filename\/\fR
 deletes the temporary directory. Its contents are stored in the container file.
 .TP
-.B list
+.B l | list
 list all existing mounting directories.
+.TP
+.B h | help | -h | --help
+displays a brief summary of how to use this script.
 .SH PARAMETERS
 .TP
 \fIfilename\fR
