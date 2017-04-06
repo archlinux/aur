@@ -1,7 +1,7 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=polychromatic-git
-pkgver=0.3.7.r12.ge802414
+pkgver=0.3.8.r4.gb124244
 pkgrel=1
 pkgdesc='A graphical front end for managing Razer peripherals under GNU/Linux.'
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL2')
 source=("git+https://github.com/lah7/polychromatic.git")
 url='https://github.com/lah7/polychromatic'
 makedepends=('git' 'rsync')
-depends=('python' 'hicolor-icon-theme' 'python-razer' 'webkit2gtk' 'libappindicator-gtk3')
+depends=('python' 'hicolor-icon-theme' 'python-razer' 'webkit2gtk' 'libappindicator-gtk3' 'imagemagick')
 provides=('polychromatic')
 conflicts=('polychromatic')
 md5sums=('SKIP')
@@ -49,7 +49,7 @@ package() {
   cp -r install/hicolor/* $pkgdir/usr/share/icons/hicolor/
 
   # Copy locales
-  rsync -rlpt --exclude="polychromatic-controller.pot" --exclude="polychromatic-tray-applet.pot" --exclude=*.po "locale/" $pkgdir/usr/share/locale
+  rsync -rlpt --exclude="polychromatic-controller.pot" --exclude="polychromatic-tray-applet.pot" --exclude="polychromatic-common.pot" --exclude=*.po "locale/" $pkgdir/usr/share/locale
 
   # Copy desktop launchers
   cp "install/polychromatic-controller.desktop" $pkgdir/usr/share/applications
