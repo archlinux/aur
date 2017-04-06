@@ -1,19 +1,17 @@
-# $Id: PKGBUILD 291713 2017-03-26 22:26:20Z seblu $
-# Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Maintainer: Sébastien Luttringer
-# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Contributor: Miroslaw Szot <mss@czlug.icis.pcz.pl>
-# Contributor: Daniel Micay <danielmicay@gmail.com>
-
-pkgname=nginx
+# Maintainer: Hui Yiqun <huiyiqun@gmail.com>
+pkgname=nginx-rtmp
+_pkgname=nginx
 pkgver=1.10.3
-pkgrel=4
-pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server'
+_rtmpver=1.1.11
+pkgrel=1
+pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, with nginx-rtmp-module'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
 license=('custom')
 depends=('pcre' 'zlib' 'openssl' 'geoip')
 makedepends=('hardening-wrapper')
+provides=('nginx')
+conflicts=('nginx')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
@@ -26,11 +24,13 @@ backup=('etc/nginx/fastcgi.conf'
         'etc/logrotate.d/nginx')
 install=nginx.install
 source=($url/download/nginx-$pkgver.tar.gz{,.asc}
+        https://github.com/arut/nginx-rtmp-module/archive/v$_rtmpver.tar.gz
         service
         logrotate)
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
 md5sums=('204a20cb4f0b0c9db746c630d89ff4ea'
          'SKIP'
+         'a87ab77c4414f80d394d712cceb39016'
          '09862c34cd9593bc40da81f88c5fc4b2'
          '6a01fb17af86f03707c8ae60f98a2dc2')
 
@@ -65,7 +65,7 @@ _stable_flags=(
 )
 
 build() {
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
 
   ./configure \
     --prefix=/etc/nginx \
@@ -82,14 +82,16 @@ build() {
     --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
     --http-scgi-temp-path=/var/lib/nginx/scgi \
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
+    --add-module=$srcdir/nginx-rtmp-module-$_rtmpver \
     ${_common_flags[@]} \
     ${_stable_flags[@]}
+
 
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 
   sed -e 's|\<user\s\+\w\+;|user html;|g' \
@@ -110,7 +112,8 @@ package() {
 
   install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
   install -Dm644 ../service "$pkgdir"/usr/lib/systemd/system/nginx.service
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
+  install -Dm644 ../nginx-rtmp-module-$_rtmpver/LICENSE "$pkgdir"/usr/share/licenses/nginx-rtmp-module/LICENSE
 
   rmdir "$pkgdir"/run
 
