@@ -1,0 +1,15 @@
+pkgbase = firefox-extension-leechblock
+	pkgdesc = LeechBlock is a simple free productivity tool designed to block those time-wasting sites that can suck the life out of your working day.
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/firefox/addon/leechblock/
+	arch = any
+	license = MIT
+	makedepends = unzip
+	depends = firefox
+	noextract = firefox-extension-leechblock.xpi
+	source = firefox-extension-leechblock.xpi::https://addons.mozilla.org/firefox/downloads/latest/leechblock/addon-4476-latest.xpi
+	sha512sums = 00d5c6246b31f25ad319338bfd1f4f099a9178eba8fdbd99bc1ea80eedb240464bb8b14d04dc943838f54e99c03ffb8981f60ecb2589628b76a9cf3caa111ef2
+
+pkgname = firefox-extension-leechblock
+
