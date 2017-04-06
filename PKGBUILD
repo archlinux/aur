@@ -1,7 +1,7 @@
 # Maintainer: Yaohan Chen <yaohan.chen@gmail.com>
 pkgname=ankama-transition
 pkgver=3.11.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Updater for Ankama games Dofus and Wakfu"
 arch=('i686' 'x86_64')
 url="http://www.ankama.com"
@@ -10,7 +10,7 @@ depends=('qt4' 'polkit' 'openssl')
 source=('http://dl.ak.ankama.com/games/linux/ankama-transition-release.tar.gz'
         'transition.sh')
 md5sums=('bac15a49942ac46c8270e8f5b94c3d1c'
-         'b54e01b3d6138ceffa57f976eff25e52')
+         'cedd4443adb36d718f46962023e327b4')
 install='ankama-transition.install'
 
 prepare() {
