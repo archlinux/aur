@@ -21,7 +21,7 @@ source=("${pkgname%-git}::git+http://fy.chalmers.se/~f96hajo/ucesb/ucesb.git"
 	"${pkgname%-git}.install")
 noextract=()
 md5sums=('SKIP'
-         'ddec70f697108351de86adc12d3a33ba')
+         '56e5565a9792a48892258d29c7dca4f1')
 changelog=
 
 # Do not compress the package for installation
