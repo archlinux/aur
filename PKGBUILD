@@ -18,7 +18,7 @@ backup=()
 options=()
 install=${pkgname%-git}.install
 installdir=${pkgdir}/opt
-source=("${pkgname%-git}::git+http://fy.chalmers.se/~f96hajo/ucesb/ucesb.git",
+source=("${pkgname%-git}::git+http://fy.chalmers.se/~f96hajo/ucesb/ucesb.git"
 	"${pkgname%-git}.install")
 noextract=()
 md5sums=('SKIP'
