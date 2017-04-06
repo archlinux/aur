@@ -6,13 +6,13 @@ pkgver=53.0b1
 _major=${pkgver/[br]*}
 _pkgver=53.0
 _beta=b1
-_build=build2
-pkgrel=1
+_build=build3
+pkgrel=4
 pkgdesc="Standalone Mail/News reader - Beta version with GTK3"
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/thunderbird"
 license=('GPL' 'LGPL' 'MPL')
-depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
+depends=('gtk2' 'gtk3' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'libvpx' 'libevent' 'nss' 'hunspell'
          'sqlite' 'ttf-font' 'icu')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'gconf'
@@ -26,13 +26,11 @@ options=('!emptydirs' '!makeflags')
 #source=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz"
 source=("https://ftp.mozilla.org/pub/thunderbird/candidates/${pkgver}-candidates/$_build/source/thunderbird-${pkgver}.source.tar.xz"
         fix-wifi-scanner.diff
-        firefox-gcc-6.0.patch
         thunderbird-install-dir.patch
         $pkgname.desktop
         $pkgname-safe.desktop)
-sha512sums=('7ac0231a4cb36c9a83a68c9ce5c9e71718c4c33414919152581d0a2b13a9bb8eca97e08e81f73260b86a4d0b0569e748a6cd58402772b580eeb9c03328f21886'
+sha512sums=('739390c337ffe7fb8292b7122bd27e67052be6b85be4c80e3e122d4216b8b74e26ddf0ce1bf9a487e25f1b8031e6fa5d3dc172a1ee06e7a8c66f21b96dc0a7b4'
             '1bd2804bea1fe8c85b602f8c5f8777f4ba470c9e767ad284cb3d0287c6d6e1b126e760738d7c671f38933ee3ec6b8931186df8e978995b5109797ae86dfdd85a'
-            '1bb8887cfc12457a83045db559bbd13954a177100309b4f6c82a5f733675e83751bfecf501f505345f81fd2688fc5b02e113962cf0a0df27b29790f40cb9406b'
             '8100fd3ea37d998905498d41c8504bfdd6d86766542d6b93107c92382a7525da7f75a83f8ff1e15ad95039d51da2add7e6b18af76d45516a41cdfd1e9f98f262'
             'fc83c23f67cc5d399bc655d2486936db3ab500bafe399a905a17a0b0f63ad9befb782fc9c07d467a65a80a00e3ce984700ec3cf60e4cb3e1b29b20954c6fa775'
             '3cf4194575041bbe344d6cd17e473eb78caf7e2e1aa8b1309151f7e4677c33571014ba6d7aba267398c3ba69c825c64363272b82b15f7dbb8ae5e3e825f439b7')
@@ -68,10 +66,6 @@ msg2 "thunderbird-install-dir.patch"
   msg2 "fix-wifi-scanner.diff"
   patch -d mozilla -Np1 < ../fix-wifi-scanner.diff
 
-  # Required for GCC 6
-  msg2 "firefox-gcc-6.0.patch"
-  patch -d mozilla -Np1 < ../firefox-gcc-6.0.patch
-
 echo -n "$_google_api_key" >google-api-key
 echo -n "$_mozilla_api_key" >mozilla-api-key
 
@@ -104,7 +98,8 @@ ac_add_options --enable-system-hunspell
 ac_add_options --enable-system-sqlite
 ac_add_options --enable-system-ffi
 ac_add_options --enable-system-pixman
-#ac_add_options --with-pthreads
+ac_add_options --with-pthreads
+ac_add_options --enable-alsa
 
 # Features
 ac_add_options --enable-default-toolkit=cairo-gtk3
@@ -114,9 +109,7 @@ ac_add_options --disable-updater
 ac_add_options --enable-calendar
 ac_add_options --disable-tests ###
 ac_add_options --disable-debug-symbols ###
-ac_add_options --enable-rust 
-#export CC=clang
-#export CXX=clang++
+ac_add_options --enable-rust
 STRIP_FLAGS="--strip-debug"
 END
 }
@@ -131,13 +124,10 @@ build() {
   LDFLAGS+=" -Wl,-z,now"
   #CFLAGS+="-std=c11"
 
-  # GCC 6
-  CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
-
   # Export build path
   export PATH="$srcdir/path:$PATH"
   #export PYTHON="/usr/bin/python2"
-  
+
   # Build
     msg2 "Running make.."
     ./mozilla/mach clobber
@@ -154,7 +144,7 @@ pref("intl.locale.matchOS", true);
 
 // Disable default mailer checking.
 pref("mail.shell.checkDefaultMail", false);
- 
+
 // Don't disable our bundled extensions in the application directory
 pref("extensions.autoDisableScopes", 11);
 pref("extensions.shownSelectionUI", true);
@@ -163,7 +153,7 @@ END
   for i in 16 22 24 32 48 256; do
     install -Dm644 other-licenses/branding/thunderbird/mailicon$i.png "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/thunderbird-beta.png"
   done
-  
+
   install -Dm644 ../$pkgname.desktop \
     "$pkgdir/usr/share/applications/thunderbird-beta.desktop"
   install -Dm644 ../$pkgname-safe.desktop \
