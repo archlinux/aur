@@ -1,0 +1,15 @@
+pkgbase = ruby-power_assert
+	pkgdesc = Power Assert for Ruby
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/k-tsj/power_assert
+	arch = any
+	license = BSD
+	makedepends = rubygems
+	depends = ruby
+	noextract = power_assert-1.0.1.gem
+	source = https://rubygems.org/downloads/power_assert-1.0.1.gem
+	sha256sums = a51f4adaaf3d73dd87c12ab3f2d95b86f94ec1090af7970b63ba5281a0eda8ed
+
+pkgname = ruby-power_assert
+
