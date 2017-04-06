@@ -6,25 +6,27 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-glibc-headers
-pkgver=2.24
-pkgrel=2
-_commit=fdfc9260
+pkgver=2.25
+pkgrel=1
+_commit=69e0a87cc4c570e3b7218392fc3e743b5bddcce2
 pkgdesc="GNU C Library headers (${_target})"
 arch=('any')
 url="http://www.gnu.org/software/libc/"
 license=('GPL' 'LGPL')
-depends=("${_target}-linux-api-headers>=4.7")
-makedepends=("${_target}-gcc-stage1>=6.3.1")
+depends=("${_target}-linux-api-headers>=4.10.1-1")
+makedepends=("${_target}-gcc-stage1>=6.3.1-2")
 options=('!buildflags' '!strip' 'staticlibs')
-source=(http://ftp.gnu.org/gnu/libc/glibc-${pkgver}.tar.xz{,.sig})
-md5sums=('97dc5517f92016f3d70d83e3162ad318'
-         'SKIP')
-validpgpkeys=('7273542B39962DF7B299931416792B4EA25340F8')  # Carlos O'Donell
+source=(http://ftp.gnu.org/gnu/libc/glibc-${pkgver}.tar.xz{,.sig}
+        glibc-${_commit}.patch)
+md5sums=('1496c3bf41adf9db0ebd0af01f202eed'
+         'SKIP'
+         'ead76a671d598295114b07c11bee79ba')
+validpgpkeys=('BC7C7372637EC10C57D7AA6579C43DFBF1CF2187')  # Siddhesh Poyarekar
 
 prepare() {
   cd glibc-${pkgver}
 
-  #patch -p1 -i ${srcdir}/glibc-${_commit}.patch
+  patch -p1 -i ${srcdir}/glibc-${_commit}.patch
 
   mkdir ${srcdir}/glibc-build
 }
@@ -37,10 +39,8 @@ build() {
   echo "sbindir=/bin" >> configparms
   echo "rootsbindir=/bin" >> configparms
 
-  # remove hardening options for building libraries
-  export CFLAGS="-U_FORTIFY_SOURCE -mlittle-endian -O2"
-  export CPPFLAGS="-U_FORTIFY_SOURCE -O2"
-  unset LD_LIBRARY_PATH
+  # remove fortify for building libraries
+  CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
 
   export BUILD_CC=gcc
   export CC=${_target}-gcc
@@ -48,18 +48,24 @@ build() {
   export AR=${_target}-ar
   export RANLIB=${_target}-ranlib
 
-  ../glibc-${pkgver}/configure --prefix=/ \
-      --target=${_target} --host=${_target} --build=${CHOST} \
-      --libdir=/lib --libexecdir=/lib \
+  ../glibc-${pkgver}/configure \
+      --prefix=/ \
+      --libdir=/lib \
+      --libexecdir=/lib \
       --with-headers=/usr/${_target}/include \
       --enable-add-ons \
       --enable-obsolete-rpc \
       --enable-kernel=2.6.32 \
-      --enable-bind-now --disable-profile \
+      --enable-bind-now \
+      --disable-profile \
       --enable-stackguard-randomization \
+      --enable-stack-protector=strong \
       --enable-lock-elision \
       --disable-multi-arch \
-      --disable-werror
+      --disable-werror \
+      --target=${_target} \
+      --host=${_target} \
+      --build=${CHOST}
 
   # make some libs and stubs
   make csu/subdir_lib
