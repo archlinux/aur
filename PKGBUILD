@@ -1,4 +1,5 @@
-# Maintainer: Marco Pompili <aur@emarcs.org>
+# Maintainer: Jean Lucas <jean@4ray.co>
+# Contributor: Marco Pompili <aur@emarcs.org>
 # Contributor: Paulo Alexandre <paulequilibrio at gmail dot com>
 # Contributor: morning_star<themorningstar@riseup.net>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
@@ -9,31 +10,29 @@
 # Contributor: Kamil Śliwak <cameel2 gmail>
 
 pkgname=meteor-js
-pkgver=1.4.0.1
+pkgver=1.4.3.2
 pkgrel=1
-pkgdesc="Open-source JavaScript platform for building top-quality web apps in a fraction of the time."
+pkgdesc="Meteor is a full-stack JavaScript platform for developing modern web and mobile applications"
 arch=('i686' 'x86_64')
 url="https://github.com/meteor/meteor"
 license=('MIT')
 depends=('nodejs' 'mongodb')
 options=('!strip')
-
 source_i686=("https://meteorinstall-4168.kxcdn.com/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_32.tar.gz")
 source_x86_64=("https://meteorinstall-4168.kxcdn.com/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_64.tar.gz")
-
-md5sums_i686=('aa34e9d6233fa523d42eec850f8d43ea')
-md5sums_x86_64=('79199bfdd2a33a24e6b84d8088049dd6')
+sha256sums_i686=('f6a39942a08329a60189431e9a0106b686cd11475393a59772e3c9c4722da6f3')
+sha256sums_x86_64=('0b3c58f483f991adbceb6fa02a7600e3200b0c27156a0d1fc1dda1d0b8e7b29f')
 
 package() {
-    PREFIX="/usr/local"
-    mkdir -p "$pkgdir$PREFIX/bin"
-    mkdir -p "$pkgdir$HOME/.meteor"
-    mv .meteor "$pkgdir$HOME"
-    chown -R $USER "$pkgdir$HOME/.meteor/"
-    chmod -R 755 "$pkgdir$HOME/.meteor/"
+  PREFIX="/usr/local"
+  mkdir -p "$pkgdir$PREFIX/bin"
+  mkdir -p "$pkgdir$HOME/.meteor"
+  mv .meteor "$pkgdir$HOME"
+  chown -R $USER "$pkgdir$HOME/.meteor/"
+  chmod -R 755 "$pkgdir$HOME/.meteor/"
 
-    METEOR_SYMLINK_TARGET="$(readlink "$pkgdir$HOME/.meteor/meteor")"
-    METEOR_TOOL_DIRECTORY="$(dirname "$METEOR_SYMLINK_TARGET")"
-    LAUNCHER="$HOME/.meteor/$METEOR_TOOL_DIRECTORY/scripts/admin/launch-meteor"
-    ln -s "$LAUNCHER" "$pkgdir$PREFIX/bin/meteor"
+  METEOR_SYMLINK_TARGET="$(readlink "$pkgdir$HOME/.meteor/meteor")"
+  METEOR_TOOL_DIRECTORY="$(dirname "$METEOR_SYMLINK_TARGET")"
+  LAUNCHER="$HOME/.meteor/$METEOR_TOOL_DIRECTORY/scripts/admin/launch-meteor"
+  ln -s "$LAUNCHER" "$pkgdir$PREFIX/bin/meteor"
 }
