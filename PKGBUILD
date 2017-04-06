@@ -3,7 +3,7 @@
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 
 pkgname=libxfce4ui-git
-pkgver=4.13.1.r37.g366ee37
+pkgver=4.13.1.r38.gccb432c
 pkgrel=1
 pkgdesc="Commonly used Xfce widgets among Xfce applications - git checkout"
 arch=('i686' 'x86_64')

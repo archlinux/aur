@@ -1,6 +1,6 @@
 pkgbase = libxfce4ui-git
 	pkgdesc = Commonly used Xfce widgets among Xfce applications - git checkout
-	pkgver = 4.13.1.r37.g366ee37
+	pkgver = 4.13.1.r38.gccb432c
 	pkgrel = 1
 	url = https://git.xfce.org/xfce/libxfce4ui/tree/README
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = libxfce4ui-git
 	depends = hicolor-icon-theme
 	optdepends = gtk3>=3.2.0: GTK+ 3 support
 	optdepends = startup-notification>=0.4: startup notification library
-	provides = libxfce4ui=4.13.1.r37.g366ee37
+	provides = libxfce4ui=4.13.1.r38.gccb432c
 	conflicts = libxfce4ui
 	source = libxfce4ui-git::git://git.xfce.org/xfce/libxfce4ui
 	sha256sums = SKIP
