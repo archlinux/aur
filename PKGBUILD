@@ -1,8 +1,8 @@
 # Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=winusb-git
-pkgver=599f00c
-pkgrel=2
+pkgver=r94.72aa1d9
+pkgrel=1
 pkgdesc='Simple tool to create a usb stick installer for Windows (Vista and above)'
 arch=('i686' 'x86_64')
 url="http://en.congelli.eu/prog_info_winusb.html"
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
         cd ${srcdir}/${pkgname}
-        git describe --always | sed 's|-|.|g' | sed 's|d||g'
+        echo "r$(git rev-list --count HEAD).$(git describe --always)"
 }
 
 build() {
