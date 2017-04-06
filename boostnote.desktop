@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Boostnote
-GenericName=Boostnote is an open source note-taking app made for progammers just like you.
-Comment=Boostnote is an open source note-taking app made for progammers just like you.
+GenericName=Boostnote is an open source note-taking app made for programmers just like you.
+Comment=Boostnote is an open source note-taking app made for programmers just like you.
 Exec=/usr/bin/boostnote %U
 Icon=boostnote
 Type=Application
