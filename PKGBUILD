@@ -1,6 +1,6 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
-pkgname=nginx-mainline-addon-auth_pam
+pkgname=nginx-mainline-mod-auth_pam
 pkgver=1.5.1
 pkgrel=1
 
