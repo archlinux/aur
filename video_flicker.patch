@@ -1,0 +1,73 @@
+diff -ura old/src/hiptext.cc new/src/hiptext.cc
+--- old/src/hiptext.cc	2017-04-06 03:35:10.806810093 +0200
++++ new/src/hiptext.cc	2017-04-06 03:47:00.656136140 +0200
+@@ -70,7 +70,8 @@
+       int code = to_index(graphic.Get(x, y).Copy().Opacify(bg));
+       out.PrintPixel(code);
+     }
+-    out.LineFeed();
++    if (y < height - 1)
++      out.LineFeed();
+   }
+   out.End();
+ }
+@@ -89,7 +90,8 @@
+       int code = to_index(graphic.Get(x, y).Copy().Opacify(bg));
+       out.PrintPixel(code);
+     }
+-    out.LineFeed();
++    if (y < height - 1)
++      out.LineFeed();
+   }
+   out.End();
+ }
+@@ -107,7 +109,8 @@
+       int code = to_index(graphic.Get(x, y).Copy().Opacify(bg));
+       out.PrintPixel(code);
+     }
+-    out.LineFeed();
++    if (y < height - 1)
++      out.LineFeed();
+   }
+   out.End();
+ }
+@@ -127,7 +130,8 @@
+       out << FLAGS_space;
+     }
+     out.Reset();
+-    out << "\n";
++    if (y < graphic.height() - 1)
++      out << "\n";
+   }
+ }
+ 
+@@ -145,7 +149,8 @@
+       out << kUpperHalfBlock;
+     }
+     out.Reset();
+-    out << "\n";
++    if (y < height - 2)
++      out << "\n";
+   }
+ }
+ 
+@@ -162,7 +167,8 @@
+       out << color.symbol();
+     }
+     out.Reset();
+-    out << "\n";
++    if (y < height - 2)
++      out << "\n";
+   }
+ }
+ 
+@@ -179,7 +185,8 @@
+         os << quantizer.Quantize(static_cast<int>(pixel.grey() * 255));
+       }
+     }
+-    cout << "\n";
++    if (y < graphic.height() - 1)
++      cout << "\n";
+   }
+ }
+ 

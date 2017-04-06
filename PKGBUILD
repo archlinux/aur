@@ -1,56 +1,62 @@
-# Maintainer: Max Zhao <alcasa.mz@gmail.com>
+# Maintainer: Max Zhao < alcasa dot mz at gmail dot com >
+# Contributor: Konstantin Gizdov < arch at kge dot pw >
+
 pkgname=hiptext
-pkgver=0.1
-pkgrel=2
-pkgdesc="hiptext is command line tool for rendering images and videos inside terminals."
+pkgver=0.2
+pkgrel=1
+pkgdesc="Command line tool for rendering images and videos inside terminals."
 arch=('any')
 url="https://github.com/jart/hiptext"
 license=('GPL')
-groups=()
-depends=(
-"gflags"
-"google-glog"
-)
-makedepends=(
-"libpng12"
-"libjpeg-turbo"
-"freetype2"
-"giflib"
-"ragel"
-"ffmpeg"
-)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/jart/hiptext/archive/0.1.tar.gz"
-        "ffmpeg.patch"
-	"hiptext.sh")
-noextract=()
-md5sums=('a028fb0b95a8745e81258614c92064e1'
-         '0a6b5cb5275f71f29027f1f5cc1c4b50'
-         '29c7c80e4c783406948a51034d15076c')
+depends=('gflags'
+         'google-glog')
+makedepends=('ffmpeg'
+             'freetype2'
+             'giflib'
+             'libjpeg-turbo'
+             'libpng12'
+             'ragel')
+source=("https://github.com/jart/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
+        'hiptext.sh'
+        'build_with_latest_ffmpeg.patch'
+        'gflags_namespace.patch'
+        'video_flicker.patch')
+sha256sums=('7f2217dec8775b445be6745f7bd439c24ce99c4316a9faf657bee7b42bc72e8f'
+            '1c36f396746989c12405ba052691fdfab46116d0c6f1ef262e4721db044e2fa1'
+            '59482f694811569d08596c07c2461ad9adb6c74c500b6a8755889a78eb27f4b1'
+            'ba251b4847be9f45192b60605d6211254f46c310909f706ce91eb9ff9d4f4e15'
+            'c9ddd3e4266a4f6fd0b92bf1c23d7bb5bf6ec150dfa67c76b5f17df6a92a3d49')
 
 prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "../ffmpeg.patch"
+    cd "$pkgname-$pkgver"
+    msg2 'Applying patches...'
+    patch -p1 -i "$srcdir/build_with_latest_ffmpeg.patch"
+    patch -p1 -i "$srcdir/video_flicker.patch"
+    # patch -p1 -i "$srcdir/gflags_namespace.patch"  # optional
+    msg2 'Configuring...'
+    ./configure --prefix=/usr             \
+                --includedir=/usr/include \
+                --libdir=/usr/lib         \
+                --datarootdir=/usr/share  \
+                --sysconfdir=/etc         \
+                --localstatedir=/var      \
+                --sharedstatedir=/com     \
+                LIBGFLAGS_LIBS="-lgflags" \
+                LIBGFLAGS_CFLAGS="-lgflags"
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	make
+    cd "$pkgname-$pkgver"
+    msg2 'Building...'
+    make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	mkdir -p "$pkgdir/usr/share/$pkgname/bin"
-	mkdir -p "$pkgdir/usr/bin"
-	make PREFIX="$pkgdir/usr/share/$pkgname" install
-	cp "$srcdir/hiptext.sh" "$pkgdir/usr/bin/hiptext"
-	cp "$srcdir/$pkgname-$pkgver/DejaVuSansMono.ttf" "$pkgdir/usr/share/$pkgname/dejavu.ttf"
+    cd "$pkgname-$pkgver"
+    msg2 'Installing...'
+    make DESTDIR="$pkgdir/usr/share/$pkgname" install
+    install -d "$pkgdir/usr/share/$pkgname/fonts"
+    install -Dm644 "$srcdir/$pkgname-$pkgver/DejaVuSansMono.ttf" \
+                   "$pkgdir/usr/share/hiptext/fonts/DejaVuSansMono.ttf"
+    install -Dm755 "$srcdir/hiptext.sh" "$pkgdir/usr/bin/hiptext"
 }
