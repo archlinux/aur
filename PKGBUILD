@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/daethnir/authprogs/"
 license=('GPL')
 depends=('python2')
-makedepends=('git' 'ruby-ronn')
+makedepends=('git' 'ruby-ronn' 'python-markdown')
 source=("git://github.com/daethnir/authprogs.git")
 md5sums=('SKIP')
 
