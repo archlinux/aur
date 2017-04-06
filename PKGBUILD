@@ -1,10 +1,10 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
-pkgname=nginx-mainline-addon-srcache
+pkgname=nginx-mainline-mod-srcache
 pkgver=0.31
 pkgrel=1
 
-_modname="${pkgname#nginx-mainline-addon-}"
+_modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.11.10
 
 pkgdesc='Transparent subrequest-based caching layout for arbitrary nginx locations (module for mainline nginx)'
