@@ -3,7 +3,7 @@
 _setmiscver=0.31
 _ndkver=0.3.0
 
-pkgname=nginx-mainline-addon-ndk-set-misc
+pkgname=nginx-mainline-mod-ndk-set-misc
 pkgver=$_setmiscver+$_ndkver
 pkgrel=1
 
@@ -13,8 +13,8 @@ _nginxver=1.11.10
 pkgdesc="Various set_xxx directives added to nginx's rewrite + ngx_devel_kit (module for mainline nginx)"
 arch=('i686' 'x86_64')
 depends=('nginx-mainline')
-conflicts=('nginx-mainline-addon-ndk')
-provides=('nginx-mainline-addon-ndk')
+conflicts=('nginx-mainline-mod-ndk')
+provides=('nginx-mainline-mod-ndk')
 url="https://github.com/openresty/set-misc-nginx-module"
 license=('BSD')
 
