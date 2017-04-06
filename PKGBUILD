@@ -6,8 +6,8 @@
 pkgname=python-dlib
 pkgname=('python-dlib' 'python2-dlib')
 _pkgname=dlib
-pkgver=19.2
-pkgrel=2
+pkgver=19.4
+pkgrel=1
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques."
 arch=('any')
 url="http://www.dlib.net/"
@@ -19,7 +19,7 @@ optdepends=('cblas: for BLAS support'
             'libpng: for PNG support'
             'sqlite: for sqlite support')
 source=(http://downloads.sourceforge.net/project/dclib/${_pkgname}/v${pkgver}/${_pkgname}-${pkgver}.tar.bz2)
-md5sums=('12786b3765cc98193c404ccf3c88c900')
+md5sums=('8999c4cbc71e92325fcdbe222e2bf327')
 
 avx_available=''
 if grep -q avx /proc/cpuinfo; then
