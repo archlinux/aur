@@ -6,8 +6,8 @@ pkgbase = human-git
 	arch = any
 	license = WTFPL
 	makedepends = git
-	provides = git
-	conflicts = git
+	provides = human
+	conflicts = human
 	source = git://z3bra.org/human
 	md5sums = SKIP
 
