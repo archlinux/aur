@@ -1,6 +1,6 @@
 pkgbase = oddjob
 	pkgdesc = A D-Bus service which runs odd jobs on behalf of client applications
-	pkgver = 0.33
+	pkgver = 0.34
 	pkgrel = 1
 	url = https://releases.pagure.org/oddjob/
 	install = oddjob.install
