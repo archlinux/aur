@@ -12,7 +12,7 @@ depends=('fortune-mod')
 groups=('fortune-mods')
 _name='houseofcards'
 source=("$_name.txt")
-sha512sums=('354b9b9eb098f8275a8d3898ddeaa7168b1fba6169e1eaa1ce03376d5c2cccb10371160d2dfa3bf3bbcd93c44536d85b33049a3191d65fdd3c8c3c21f5a26b8e')
+sha512sums=('c85ab8fedfd713a26cf7d8105747d0366591dec3d0fafc20f894917090e453d39ea28407da85ec3a65ffea9b8fbd0181965d693d8b4f52c68af32898ef546dad')
 
 build() {
     cd "$srcdir"
