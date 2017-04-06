@@ -6,23 +6,26 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-binutils
-pkgver=2.27
-pkgrel=1
-_commit=2870b1ba
+pkgver=2.28.0
+_basever=2.28
+pkgrel=2
+_commit=a7b47925683a22c9819c23cb18b99bd74014d066
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils/"
 license=('GPL')
-depends=('glibc>=2.24' 'zlib')
+depends=('glibc>=2.25' 'zlib')
 options=('staticlibs' '!distcc' '!ccache')
 source=(#git://sourceware.org/git/binutils-gdb.git#commit=${_commit}
-        http://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2)
-md5sums=('2869c9bf3e60ee97c74ac2a6bf4e9d68')
+        http://ftp.gnu.org/gnu/binutils/binutils-${_basever}.tar.bz2
+        binutils-${_commit}.patch)
+md5sums=('9e8340c96626b469a603c15c9d843727'
+         'e548dc836b57a95945db57876e6e8b3f')
 
 prepare() {
-  cd binutils-${pkgver}
+  cd binutils-${_basever}
 
-  #patch -p1 -i ${srcdir}/binutils-${_commit}.patch
+  patch -p1 -i ${srcdir}/binutils-${_commit}.patch
 
   # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
@@ -33,17 +36,25 @@ prepare() {
 build() {
   cd binutils-build
 
-  ../binutils-${pkgver}/configure --prefix=/usr \
+  ../binutils-${_basever}/configure \
+      --prefix=/usr \
       --program-prefix=${_target}- \
       --with-lib-path=/usr/lib/binutils/${_target} \
       --with-local-prefix=/usr/lib/${_target} \
       --with-sysroot=/usr/${_target} \
-      --target=${_target} --host=${CHOST} --build=${CHOST} \
-      --disable-nls \
-      --enable-threads --enable-shared --with-pic \
-      --enable-ld=default --enable-gold --enable-plugins \
+      --enable-threads \
+      --enable-shared \
+      --enable-ld=default \
+      --enable-gold \
+      --enable-plugins \
       --enable-deterministic-archives \
-      --disable-werror --disable-gdb --disable-sim
+      --with-pic \
+      --disable-werror \
+      --disable-gdb \
+      --disable-sim \
+      --target=${_target} \
+      --host=${CHOST} \
+      --build=${CHOST}
 
   make configure-host
 
