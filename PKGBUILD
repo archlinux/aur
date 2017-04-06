@@ -1,7 +1,7 @@
 # Maintainer: Milian Reichardt <mreichardt95@gmail.com>
 
 pkgname=check_mk-agent
-pkgver=1.2.8p18
+pkgver=1.2.8p20
 pkgrel=1
 pkgdesc="Agent to send information to a Check_MK server"
 arch=(any)
@@ -10,7 +10,7 @@ license=('GPLv2')
 install=${pkgname}.install
 depends=('xinetd')
 source=("https://mathias-kettner.de/download/check_mk-$pkgver.tar.gz")
-md5sums=('2962799ae101dc6de1b81e5cf6549e38')
+md5sums=('ed94f9de84107d878ada48b36eea531e')
 build() {
 	tar xfvz "$srcdir/check_mk-$pkgver/agents.tar.gz"
 }
