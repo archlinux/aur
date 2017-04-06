@@ -4,7 +4,7 @@ Description=Throttle Cut
 [Service]
 Type=oneshot
 RemainAfterExit=no
-ExecStart=/usr/local/sbin/throttle cut
+ExecStart=/usr/bin/throttle cut
 StandardOutput=null
 StandardError=journal
 
