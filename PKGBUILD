@@ -3,7 +3,7 @@
 # Contributor: tobias <tobias funnychar archlinux.org>
 
 pkgname=xfce4-panel-git
-pkgver=4.12.1.r163.gbcfea9be
+pkgver=4.12.1.r205.ga7f3157c
 pkgrel=2
 pkgdesc="Panel for the Xfce desktop environment - git checkout"
 arch=('i686' 'x86_64')

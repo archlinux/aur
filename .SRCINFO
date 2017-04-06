@@ -1,6 +1,6 @@
 pkgbase = xfce4-panel-git
 	pkgdesc = Panel for the Xfce desktop environment - git checkout
-	pkgver = 4.12.1.r163.gbcfea9be
+	pkgver = 4.12.1.r205.ga7f3157c
 	pkgrel = 2
 	url = http://docs.xfce.org/xfce/xfce4-panel/start
 	arch = i686
