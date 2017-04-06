@@ -3,7 +3,7 @@
 
 pkgname='dashcore';
 pkgver=0.12.1.4;
-pkgrel=1;
+pkgrel=2;
 arch=('i686' 'x86_64');
 url="https://www.dash.org/";
 depends=('qt4' 'boost' 'boost-libs' 'miniupnpc' 'openssl' 'qrencode');
