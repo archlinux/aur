@@ -1,9 +1,9 @@
 # Maintainer: Haruki Ota <ootaharuki99[at]gmail.com>
 pkgname=recdvb-b25
 pkgver=1.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple command-line utility to record DVB streams. (b25 decoding enabled)'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url='http://github.com/k-pi/recdvb'
 license=('GPL3')
 depends=('libarib25-git')
