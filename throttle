@@ -5,9 +5,9 @@ while (( "$#" )); do
   #Find the number of physical cores (for hyperthreading control)
   CORES="$(grep "^core id" /proc/cpuinfo | sort -u | wc -l)"
   case "$1" in
-    full|performance|cut|powersave)
+    full|performance|true|1|cut|powersave|false|0)
       case "${1}" in
-        full|performance)
+        full|performance|false|0)
           HYPERTHREADS="1"
           GOVERNOR="performance"
           XPSTURBO="0"
@@ -30,7 +30,7 @@ while (( "$#" )); do
           LEDBRIGHT="255"
           NVPM="1"
         ;;
-        cut|powersave)
+        cut|powersave|true|1)
           HYPERTHREADS="0"
           GOVERNOR="powersave"
           XPSTURBO="1" 
