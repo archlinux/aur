@@ -18,27 +18,27 @@ source=("hg+https://bitbucket.org/$_pkgname/$_pkgname#tag=$pkgver")
 md5sums=('SKIP')
 
 build() {
-   cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname"
 
-   patch -Np1 -i $startdir/libtcod-151.patch
+  patch -Np1 -i $startdir/libtcod-151.patch
 
-   if test "$CARCH" == x86_64; then
+  if test "$CARCH" == x86_64; then
       make -f makefiles/makefile-linux64 clean release TEMP=$srcdir/tmp
-   else
-      make -f makefiles/makefile-linux clean release TEMP=$srcdir/tmp
-   fi
+  else
+    make -f makefiles/makefile-linux clean release TEMP=$srcdir/tmp
+  fi
 }
 
 package() {
-   mkdir -p $pkgdir/usr/lib
-   mkdir -p $pkgdir/usr/include/$_pkgname-$pkgver
+  mkdir -p $pkgdir/usr/lib
+  mkdir -p $pkgdir/usr/include/$_pkgname-$pkgver
 
-   cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname"
 
-   for i in libtcod{,gui,xx}.so.${pkgver}; do
-      install -D -m 755 $i $pkgdir/usr/lib/$i
-   done
-   install -D -m 644 include/*.h* $pkgdir/usr/include/$_pkgname-$pkgver/
+  for i in libtcod{,gui,xx}.so.${pkgver}; do
+    install -D -m 755 $i $pkgdir/usr/lib/$i
+  done
+  install -D -m 644 include/*.h* $pkgdir/usr/include/$_pkgname-$pkgver/
 }
 
 # vim:set ts=2 sw=2 et:
