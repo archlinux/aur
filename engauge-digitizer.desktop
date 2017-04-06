@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Engauge Digitizer
+Type=Application
+Comment=Extract data from graphs
+Exec=engauge-digitizer
+Categories=Education;Science;
+Icon=engauge-digitizer
+Terminal=0
