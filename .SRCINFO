@@ -1,7 +1,7 @@
 pkgbase = libtcod-151
 	pkgdesc = Roguelike graphics/utility library (v1.5.1 maintained for brogue)
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/libtcod/libtcod
 	arch = i686
 	arch = x86_64

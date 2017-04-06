@@ -6,7 +6,7 @@
 _pkgname=libtcod
 pkgname=$_pkgname-151
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Roguelike graphics/utility library (v1.5.1 maintained for brogue)"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/libtcod/libtcod"
@@ -19,6 +19,8 @@ md5sums=('SKIP')
 
 build() {
    cd "$srcdir/$_pkgname"
+
+   patch -Np1 -i $startdir/libtcod-151.patch
 
    if test "$CARCH" == x86_64; then
       make -f makefiles/makefile-linux64 clean release TEMP=$srcdir/tmp
@@ -33,8 +35,8 @@ package() {
 
    cd "$srcdir/$_pkgname"
 
-   for i in libtcod{,gui,xx}.so; do
-     install -D -m 755 $i $pkgdir/usr/lib/${i}.${pkgver}
+   for i in libtcod{,gui,xx}.so.${pkgver}; do
+      install -D -m 755 $i $pkgdir/usr/lib/$i
    done
    install -D -m 644 include/*.h* $pkgdir/usr/include/$_pkgname-$pkgver/
 }

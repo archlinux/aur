@@ -1,0 +1,103 @@
+Binary files libtcod-orig/.hg/dirstate and libtcod-new/.hg/dirstate differ
+diff -ruN libtcod-orig/makefiles/makefile-linux libtcod-new/makefiles/makefile-linux
+--- libtcod-orig/makefiles/makefile-linux	2017-04-06 04:11:48.507066792 -0500
++++ libtcod-new/makefiles/makefile-linux	2017-04-06 04:12:57.093929814 -0500
+@@ -111,9 +111,9 @@
+ 
+ all : debug release
+ 
+-debug : libtcod_debug.so libtcodxx_debug.so libtcodgui_debug.so
++debug : libtcod_debug.so.1.5.1 libtcodxx_debug.so.1.5.1 libtcodgui_debug.so.1.5.1
+ 
+-release : libtcod.so libtcodxx.so libtcodgui.so
++release : libtcod.so.1.5.1 libtcodxx.so.1.5.1 libtcodgui.so.1.5.1
+ 
+ $(TEMP)/libtcod/debug/png :
+ 	mkdir -p $@
+@@ -133,24 +133,24 @@
+ libtcodxx.a : $(LIBOBJS_CPP_DEBUG)
+ 	ar r $@ $(LIBOBJS_CPP_DEBUG)
+ 
+-libtcod.so : $(TEMP)/libtcod/release/png $(LIBOBJS_C_RELEASE)
++libtcod.so.1.5.1 : $(TEMP)/libtcod/release/png $(LIBOBJS_C_RELEASE)
+ 	gcc -shared -Wl,-soname,$@ -o $@ $(LIBOBJS_C_RELEASE) $(ZLIB_LIBS) $(SDL_LIBS) $(CFLAGS) $(OPENGL_LIB)
+ 
+-libtcodxx.so : $(TEMP)/libtcod/release/png $(LIBOBJS_CPP_RELEASE)
+-	gcc -shared -Wl,-soname,$@ -o $@ $(LIBOBJS_CPP_RELEASE) -L. -ltcod $(CFLAGS)
++libtcodxx.so.1.5.1 : $(TEMP)/libtcod/release/png $(LIBOBJS_CPP_RELEASE)
++	gcc -shared -Wl,-soname,$@ -o $@ $(LIBOBJS_CPP_RELEASE) -L. -l:libtcod.so.1.5.1 $(CFLAGS)
+ 
+-libtcodgui.so : $(TEMP)/libtcod/release/gui $(GUIOBJS_RELEASE)
+-	gcc -shared -Wl,-soname,$@ -o $@ $(GUIOBJS_RELEASE) -L. -ltcod -ltcodxx $(CFLAGS)
++libtcodgui.so.1.5.1 : $(TEMP)/libtcod/release/gui $(GUIOBJS_RELEASE)
++	gcc -shared -Wl,-soname,$@ -o $@ $(GUIOBJS_RELEASE) -L. -l:libtcod.so.1.5.1 -l:libtcodxx.so.1.5.1 $(CFLAGS)
+ 
+-libtcod_debug.so : $(TEMP)/libtcod/debug/png $(LIBOBJS_C_DEBUG)
++libtcod_debug.so.1.5.1 : $(TEMP)/libtcod/debug/png $(LIBOBJS_C_DEBUG)
+ 	gcc -shared -Wl,-soname,$@ -o $@ $(LIBOBJS_C_DEBUG) $(ZLIB_LIBS) $(SDL_LIBS) $(CFLAGS) $(OPENGL_LIB)
+ 
+-libtcodxx_debug.so : $(TEMP)/libtcod/debug/png $(LIBOBJS_CPP_DEBUG)
+-	gcc -shared -Wl,-soname,$@ -o $@ $(LIBOBJS_CPP_DEBUG) -L. -ltcod_debug $(CFLAGS)
++libtcodxx_debug.so.1.5.1 : $(TEMP)/libtcod/debug/png $(LIBOBJS_CPP_DEBUG)
++	gcc -shared -Wl,-soname,$@ -o $@ $(LIBOBJS_CPP_DEBUG) -L. -l:libtcod_debug.so.1.5.1 $(CFLAGS)
+ 
+-libtcodgui_debug.so : $(TEMP)/libtcod/debug/gui $(GUIOBJS_DEBUG)
+-	gcc -shared -Wl,-soname,$@ -o $@ $(GUIOBJS_DEBUG) -L. -ltcod_debug -ltcodxx_debug $(CFLAGS)
++libtcodgui_debug.so.1.5.1 : $(TEMP)/libtcod/debug/gui $(GUIOBJS_DEBUG)
++	gcc -shared -Wl,-soname,$@ -o $@ $(GUIOBJS_DEBUG) -L. -l:libtcod_debug.so.1.5.1 -l:libtcodxx_debug.so.1.5.1 $(CFLAGS)
+ 
+ clean : 
+-	\rm -f $(LIBOBJS_C_RELEASE) $(LIBOBJS_CPP_RELEASE) $(GUIOBJS_RELEASE) $(LIBOBJS_C_DEBUG) $(LIBOBJS_CPP_DEBUG) $(GUIOBJS_DEBUG) libtcod.a libtcodxx.a libtcod.so libtcodxx.so libtcodgui.so libtcod_debug.so libtcodxx_debug.so libtcodgui_debug.so libtcodpy.pyc
++	\rm -f $(LIBOBJS_C_RELEASE) $(LIBOBJS_CPP_RELEASE) $(GUIOBJS_RELEASE) $(LIBOBJS_C_DEBUG) $(LIBOBJS_CPP_DEBUG) $(GUIOBJS_DEBUG) libtcod.a libtcodxx.a libtcod.so.1.5.1 libtcodxx.so.1.5.1 libtcodgui.so.1.5.1 libtcod_debug.so.1.5.1 libtcodxx_debug.so.1.5.1 libtcodgui_debug.so.1.5.1 libtcodpy.pyc
+ 
+diff -ruN libtcod-orig/makefiles/makefile-linux64 libtcod-new/makefiles/makefile-linux64
+--- libtcod-orig/makefiles/makefile-linux64	2017-04-06 04:11:48.507066792 -0500
++++ libtcod-new/makefiles/makefile-linux64	2017-04-06 04:12:57.093929814 -0500
+@@ -169,9 +169,9 @@
+ 
+ all : debug release
+ 
+-debug : libtcod_debug.so libtcodxx_debug.so libtcodgui_debug.so
++debug : libtcod_debug.so.1.5.1 libtcodxx_debug.so.1.5.1 libtcodgui_debug.so.1.5.1
+ 
+-release : libtcod.so libtcodxx.so libtcodgui.so
++release : libtcod.so.1.5.1 libtcodxx.so.1.5.1 libtcodgui.so.1.5.1
+ 
+ $(TEMP)/libtcod/debug/png :
+ 	mkdir -p $@
+@@ -191,24 +191,24 @@
+ libtcodxx.a : $(LIBOBJS_CPP_DEBUG)
+ 	ar r $@ $(LIBOBJS_CPP_DEBUG)
+ 
+-libtcod.so : $(TEMP)/libtcod/release/png $(LIBOBJS_C_RELEASE)
++libtcod.so.1.5.1 : $(TEMP)/libtcod/release/png $(LIBOBJS_C_RELEASE)
+ 	gcc -shared -Wl,-soname,$@ -o $@ $(LIBOBJS_C_RELEASE) $(ZLIB_LIBS) $(SDL_LIBS) $(CFLAGS) $(OPENGL_LIB)
+ 
+-libtcodxx.so : $(TEMP)/libtcod/release/png $(LIBOBJS_CPP_RELEASE)
+-	gcc -shared -Wl,-soname,$@ -o $@ $(LIBOBJS_CPP_RELEASE) -L. -ltcod $(CFLAGS)
++libtcodxx.so.1.5.1 : $(TEMP)/libtcod/release/png $(LIBOBJS_CPP_RELEASE)
++	gcc -shared -Wl,-soname,$@ -o $@ $(LIBOBJS_CPP_RELEASE) -L. -l:libtcod.so.1.5.1 $(CFLAGS)
+ 
+-libtcodgui.so : $(TEMP)/libtcod/release/gui $(GUIOBJS_RELEASE)
+-	gcc -shared -Wl,-soname,$@ -o $@ $(GUIOBJS_RELEASE) -L. -ltcod -ltcodxx $(CFLAGS)
++libtcodgui.so.1.5.1 : $(TEMP)/libtcod/release/gui $(GUIOBJS_RELEASE)
++	gcc -shared -Wl,-soname,$@ -o $@ $(GUIOBJS_RELEASE) -L. -l:libtcod.so.1.5.1 -l:libtcodxx.so.1.5.1 $(CFLAGS)
+ 
+-libtcod_debug.so : $(TEMP)/libtcod/debug/png $(LIBOBJS_C_DEBUG)
++libtcod_debug.so.1.5.1 : $(TEMP)/libtcod/debug/png $(LIBOBJS_C_DEBUG)
+ 	gcc -shared -Wl,-soname,$@ -o $@ $(LIBOBJS_C_DEBUG) $(ZLIB_LIBS) $(SDL_LIBS) $(CFLAGS) $(OPENGL_LIB)
+ 
+-libtcodxx_debug.so : $(TEMP)/libtcod/debug/png $(LIBOBJS_CPP_DEBUG)
+-	gcc -shared -Wl,-soname,$@ -o $@ $(LIBOBJS_CPP_DEBUG) -L. -ltcod_debug $(CFLAGS)
++libtcodxx_debug.so.1.5.1 : $(TEMP)/libtcod/debug/png $(LIBOBJS_CPP_DEBUG)
++	gcc -shared -Wl,-soname,$@ -o $@ $(LIBOBJS_CPP_DEBUG) -L. -l:libtcod_debug.so.1.5.1 $(CFLAGS)
+ 
+-libtcodgui_debug.so : $(TEMP)/libtcod/debug/gui $(GUIOBJS_DEBUG)
+-	gcc -shared -Wl,-soname,$@ -o $@ $(GUIOBJS_DEBUG) -L. -ltcod_debug -ltcodxx_debug $(CFLAGS)
++libtcodgui_debug.so.1.5.1 : $(TEMP)/libtcod/debug/gui $(GUIOBJS_DEBUG)
++	gcc -shared -Wl,-soname,$@ -o $@ $(GUIOBJS_DEBUG) -L. -l:libtcod_debug.so.1.5.1 -l:libtcodxx_debug.so.1.5.1 $(CFLAGS)
+ 
+ clean : 
+-	\rm -f $(LIBOBJS_C_RELEASE) $(LIBOBJS_CPP_RELEASE) $(GUIOBJS_RELEASE) $(LIBOBJS_C_DEBUG) $(LIBOBJS_CPP_DEBUG) $(GUIOBJS_DEBUG) libtcod.a libtcodxx.a libtcod.so libtcodxx.so libtcodgui.so libtcod_debug.so libtcodxx_debug.so libtcodgui_debug.so libtcodpy.pyc
++	\rm -f $(LIBOBJS_C_RELEASE) $(LIBOBJS_CPP_RELEASE) $(GUIOBJS_RELEASE) $(LIBOBJS_C_DEBUG) $(LIBOBJS_CPP_DEBUG) $(GUIOBJS_DEBUG) libtcod.a libtcodxx.a libtcod.so.1.5.1 libtcodxx.so.1.5.1 libtcodgui.so.1.5.1 libtcod_debug.so.1.5.1 libtcodxx_debug.so.1.5.1 libtcodgui_debug.so.1.5.1 libtcodpy.pyc
+ 
