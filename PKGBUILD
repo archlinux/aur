@@ -10,7 +10,7 @@ pkgver=4.8.7
 pkgrel=10
 pkgdesc='A cross-platform application and UI framework (32-bit)'
 arch=('x86_64')
-url='http://qt-project.org/'
+url='http://www.qt.io'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
 depends=("${pkgname#lib32-}" 'lib32-alsa-lib' 'lib32-dbus' 'lib32-fontconfig' 'lib32-glib2'
          'lib32-libgl' 'lib32-libmng' 'lib32-libpng' 'lib32-libsm' 'lib32-libtiff'
@@ -45,10 +45,10 @@ sha512sums=('f9f81a2e7205e1fd05c8d923dc73244f29aa33f951fa6b7c5c8193449328b370847
             'bd63961bcb695beebe8686142b84bff7702db4d85d737f5c2da927252b931700d03602f80048223cbbb05d85a5ddb9cb818321d756577f84843690b318f0c413'
             '0215f81fd0ed3483d1f79f46a53d9378f7462901410f4bc3f235325974c155454b0e75cba5222180e5ca62099cba7b80419b5fab86380ac6d951b9ae12714444'
             'efe8e1842882b784a14ba137bc6a8a579d5133e579f98c61674f5d3d9b79ff8e895775a79fcf757f7726377cd221396a678d181fa069416b0760a5241d39845a'
-            '01fbcfb8e0ad22eb614d1a55fc6db5794f395dea6a2f155e974a9b10c91cb5551cc0b30ba84c5b32f520eab985572101901ad5664849d3e96a2de6dba1827868')
+            'a19e76d64bbbf148b088e3531135dc3ababd63ea8e71147dcf7d2966802abb2d83b839766882040e5c9efdea2e364d48bc38aa712dd35b850383c7747ffa9745')
 
 prepare() {
-  cd $_pkgfqn
+  cd ${_pkgfqn}
 
   # (FS#28381) (KDEBUG#180051)
   patch -p1 -i "${srcdir}"/improve-cups-support.patch
@@ -79,10 +79,10 @@ prepare() {
 
   sed -i "/^QMAKE_LINK\s/s|g++|g++ -m32|g" mkspecs/common/g++-base.conf
   sed -i "s|-Wl,-O1|-m32 -Wl,-O1|" mkspecs/common/g++-unix.conf
-  sed -e "s|-O2|$CXXFLAGS -m32|" \
+  sed -e "s|-O2|${CXXFLAGS} -m32|" \
       -e "/^QMAKE_RPATH/s| -Wl,-rpath,||g" \
       -e "/^QMAKE_LINK\s/s|g++|g++ -m32|g" \
-      -e "/^QMAKE_LFLAGS\s/s|+=|+= $LDFLAGS|g" \
+      -e "/^QMAKE_LFLAGS\s/s|+=|+= ${LDFLAGS} -m32|g" \
       -i mkspecs/common/g++.conf
 
   cp mkspecs/common/linux{,32}.conf
@@ -94,16 +94,16 @@ prepare() {
 
   # Fix build of Qt4 applications with glibc 2.25 (Fedora)
   patch -p1 -i "$srcdir"/qt4-glibc-2.25.patch
- }
+}
 
 build() {
-  cd $_pkgfqn
-  export QT4DIR=${srcdir}/${_pkgfqn}
+  export QT4DIR="${srcdir}"/${_pkgfqn}
   export LD_LIBRARY_PATH=${QT4DIR}/lib:${LD_LIBRARY_PATH}
   export CXXFLAGS+=" -std=gnu++98" # Fix build with GCC 6
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 #  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
-  
+
+  cd ${_pkgfqn}
   ./configure -confirm-license -opensource -platform linux-g++-32 \
     -prefix /usr \
     -bindir /usr/lib/qt4/bin \
@@ -133,7 +133,7 @@ build() {
 }
 
 package() {
-  cd $_pkgfqn
+  cd ${_pkgfqn}
   make INSTALL_ROOT="${pkgdir}" install
 
   # Remove conflicting files.
