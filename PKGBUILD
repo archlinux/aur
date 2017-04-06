@@ -4,7 +4,7 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=149.0.0
+pkgver=150.0.0
 pkgrel=1
 pkgdesc="Tools and libraries SDK for managing resources on the Google Cloud Platform, plus kubectl and Python/PHP appengine SDK components"
 url="https://cloud.google.com/sdk/"
@@ -26,19 +26,20 @@ options=('!strip' 'staticlibs')
 # 64bit
 source_x86_64=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86_64.tar.gz"
                "profile.sh")
-md5sums_i686=('3a4f2cc6ce961013aea897664cc0e19b'
-              'e9fff7a8c2300c0efe9544a8fd95ea22')
-md5sums_x86_64=('6c1bbfc03c7c71530b4e31e44b76e38b'
-                'e9fff7a8c2300c0efe9544a8fd95ea22')
-
+sha256sums_x86_64=(
+  '8a2d203ff12e0d52cc8aa54f09b3c2a8e7db86737284fa90d2ae453cae52c6e0'
+  '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692')
 # 32bit
 source_i686=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86.tar.gz"
              "profile.sh")
+sha256sums_i686=(
+  '34f4fa21ca15a10c9445038a083e6964c1e7f5848f11dde81b05b791ac95e67d'
+  '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692')
 
 prepare() {
 
   msg2 "Checking for newer upstream release"
-  _LATEST=$(curl -s https://dl.google.com/dl/cloudsdk/release/sha1.txt | 
+  _LATEST=$(curl -s https://dl.google.com/dl/cloudsdk/release/sha256.txt | 
             egrep "google-cloud-sdk-.*-linux-x86_64.tar.gz" | \
             awk '{print $2}' | cut -d'-' -f4)
   if [ "$_LATEST" != "$pkgver" ]; then
