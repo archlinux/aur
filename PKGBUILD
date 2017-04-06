@@ -2,7 +2,8 @@
 
 _name=netbox
 pkgname=${_name}
-pkgver=1.9.3
+pkgver=1.9.4
+_realver="1.9.4-r1"
 pkgrel=1
 pkgdesc="IP address management (IPAM) and data center infrastructure management (DCIM) tool."
 arch=('any')
@@ -38,12 +39,12 @@ depends=('python'
 conflicts=("${_name}-git")
 replaces=("${_name}-git")
 install="${_name}.install"
-source=("${url}/archive/v${pkgver}.tar.gz"
+source=("${url}/archive/v${_realver}.tar.gz"
         "${_name}-system.service"
         "${_name}.tmpfile"
 				"debug_toolbar_middleware.patch"
 				"gunicorn_config.py")
-sha256sums=('d2052624b2411040d236b478c7a804febf3736e7d3a0f5abd9bf8f2f8b0c42c2'
+sha256sums=('577ff3ceb5c393daeb9ceae361f2083b9cc9638c029c0c99f0810fe9602449df'
             'dc83de37ff9151de3d309fd43c6eff3b30886882012b81fd3ff2f3a5a706bea6'
             '1028bac96ddcd18c10646dff26027b4891fcab4381436e2b6ea3302887a5586f'
             '2d6d55cad836eca187a7dfe40227f994e9b2f565e71fd39e296bc8bb73bf259a'
@@ -51,7 +52,7 @@ sha256sums=('d2052624b2411040d236b478c7a804febf3736e7d3a0f5abd9bf8f2f8b0c42c2'
 backup=('etc/netbox/gunicorn_config.py' 'etc/netbox/configuration.py')
 
 prepare() {
-	cd "${srcdir}/${_name}-${pkgver}"
+	cd "${srcdir}/${_name}-${_realver}"
 
 	patch -p0 -i "${srcdir}"/debug_toolbar_middleware.patch
 }
@@ -59,14 +60,14 @@ prepare() {
 package() {
 	mkdir -p "${pkgdir}/opt/${_name}"
 	chmod 775 "${pkgdir}/opt/${_name}"
-	cp -r ${_name}-${pkgver}/${_name} "$pkgdir/opt/"
+	cp -r ${_name}-${_realver}/${_name} "$pkgdir/opt/"
 
 	install -D -m644 ${_name}-system.service "$pkgdir/usr/lib/systemd/system/${_name}.service"
 	install -D -m644 ${_name}.tmpfile "$pkgdir/usr/lib/tmpfiles.d/${_name}.conf"
 
 	mkdir -p "$pkgdir/etc/netbox"
 	install -D -m644 gunicorn_config.py "$pkgdir/etc/netbox/gunicorn_config.py"
-	install -D -m644 ${_name}-${pkgver}/${_name}/${_name}/configuration.example.py "$pkgdir/etc/netbox/configuration.py"
+	install -D -m644 ${_name}-${_realver}/${_name}/${_name}/configuration.example.py "$pkgdir/etc/netbox/configuration.py"
 	ln -s /etc/netbox/configuration.py "$pkgdir/opt/netbox/netbox/configuration.py"
 }
 
