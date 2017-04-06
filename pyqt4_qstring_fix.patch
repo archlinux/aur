@@ -1,0 +1,17 @@
+diff -ura src/fabio-0.4.0/scripts/fabio_viewer src_new/fabio-0.4.0/scripts/fabio_viewer
+--- src/fabio-0.4.0/scripts/fabio_viewer	2016-07-15 05:00:21.000000000 -0400
++++ src_new/fabio-0.4.0/scripts/fabio_viewer	2017-04-03 22:30:59.606912706 -0400
+@@ -22,7 +22,12 @@
+ import os
+ import time
+ 
+-from PyQt4.QtCore import QDir, Qt, QRect, QString, QCoreApplication
++from PyQt4.QtCore import QDir, Qt, QRect, QCoreApplication
++try:
++    from PyQt4.QtCore import QString
++except ImportError:
++    QString = str
++
+ from PyQt4.QtGui import QLabel, QVBoxLayout, QWidget, QSplitter, QListWidget, \
+                         QComboBox, QApplication, QStyleFactory, QHBoxLayout, \
+                         QTabWidget, QPlainTextEdit, QPushButton, QGroupBox, \
