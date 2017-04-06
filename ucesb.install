@@ -1,6 +1,10 @@
 post_install() {
 	version=$1
+	echo "pwd=$(pwd)"
+	echo "installdir=${installdir}"
+	echo "pkgname=${pkgname%-git}"
 	cd "${installdir}/${pkgname%-git}"
+	echo "pwd=$(pwd)"
 	make -j$(nproc) empty
 	make -j$(nproc) xtst
 }
