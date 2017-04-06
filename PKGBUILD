@@ -26,4 +26,5 @@ build() {
 package() {
     cd ${pkgname%-git}
     make PREFIX=/usr DESTDIR="$pkgdir" install
+    install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname%-git}/LICENSE
 }
