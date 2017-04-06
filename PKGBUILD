@@ -3,10 +3,11 @@
 # Contributor: Jean-Pier Brochu <jeanpier.brochu@gmail.com>
 # Contributor: Samuel Littley <samuel@samuellittley.me>
 # Contributor: KillWolfVlad <github.com/KillWolfVlad>
+# Contributor: Victor Hugo Souza <vhbsouza@gmail.com>
 
 pkgname=gitkraken
 pkgrel=1
-pkgver=2.3.1
+pkgver=2.3.2
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client."
 url="http://www.gitkraken.com/"
 provides=('gitkraken')
@@ -23,7 +24,7 @@ source=(
     "eula.html"
     "gitkraken.sh"
 )
-md5sums=('9565166e4839e8899a87a932261c2d49'
+md5sums=('2cdb05fc75dff4f81a835b8a1a8abfd5'
          '55f11789f5a9ee9fc4989d0f06eee260'
          '04987b933d551d15c0813111d715bb9e'
          'e9ba6663e5f1f92cae31beb0074e8c6c'
