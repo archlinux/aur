@@ -1,6 +1,6 @@
 pkgbase = camunda-modeler
 	pkgdesc = An integrated modeling solution for BPMN and DMN based on bpmn.io
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://camunda.org/features/modeler/
 	arch = i686
@@ -17,9 +17,10 @@ pkgbase = camunda-modeler
 	md5sums = bc08d6679ab052bd7c936954f0a8d97c
 	md5sums = 2d041c2f1a6cafa0d0079d207eb635fd
 	md5sums = 22f05a8460e7b0d823dc65a2ee3f5a0e
-	source_i686 = https://camunda.org/release/camunda-modeler/1.7.1/camunda-modeler-1.7.1-linux-ia32.tar.gz
-	md5sums_i686 = 0abeee9008faeb0659694b043f4f3bcc
-	source_x86_64 = https://camunda.org/release/camunda-modeler/1.7.1/camunda-modeler-1.7.1-linux-x64.tar.gz
-	md5sums_x86_64 = 8c3d52953225f44a7575a4cf4f84fef4
+	source_i686 = https://camunda.org/release/camunda-modeler/1.7.2/camunda-modeler-1.7.2-linux-ia32.tar.gz
+	md5sums_i686 = 07b9a34157902fb62b37bf0899687c41
+	source_x86_64 = https://camunda.org/release/camunda-modeler/1.7.2/camunda-modeler-1.7.2-linux-x64.tar.gz
+	md5sums_x86_64 = 40575fcfcfd9968e7d96c489a7ae3e0a
 
 pkgname = camunda-modeler
+
