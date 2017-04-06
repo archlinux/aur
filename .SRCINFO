@@ -1,0 +1,15 @@
+pkgbase = ruby-google-protobuf
+	pkgdesc = Protocol Buffers are Google's data interchange format.
+	pkgver = 3.2.0.2
+	pkgrel = 1
+	url = https://developers.google.com/protocol-buffers
+	arch = any
+	license = BSD3
+	makedepends = rubygems
+	depends = ruby
+	noextract = google-protobuf-3.2.0.2.gem
+	source = https://rubygems.org/downloads/google-protobuf-3.2.0.2.gem
+	sha256sums = 5443d72483a0dd37ecb7e5f14e59b1c11f0a806aabe4b7d679f244731398a3cd
+
+pkgname = ruby-google-protobuf
+
