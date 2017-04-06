@@ -3,7 +3,7 @@
 pkgname=imagej
 pkgver=1.50j # https://wsr.imagej.net/src/
 _pkgver=150
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Image manipulation software for scientists"
 arch=('any')
@@ -19,7 +19,7 @@ source=("http://wsr.imagej.net/distros/cross-platform/ij$_pkgver.zip"
         "microscope.xpm")
 noextract=("ij$_pkgver.zip")
 md5sums=('a2e52e97b1c683cb4f614b4d570fb972'
-         'a659180b574f80d2704dc1b60a8f19a1'
+         '9928621314c658e501a7950c6fe8abb2'
          '7dc3fd02120f699204b3d85a7e383082'
          '9d60878b6adad0e1895ce875bf299147'
          'e7a7cef1b44ad3a8752ba63885fd88fb')
