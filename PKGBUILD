@@ -22,7 +22,7 @@ source=("https://github.com/jart/$pkgname/releases/download/$pkgver/$pkgname-$pk
         'gflags_namespace.patch'
         'video_flicker.patch')
 sha256sums=('7f2217dec8775b445be6745f7bd439c24ce99c4316a9faf657bee7b42bc72e8f'
-            '1c36f396746989c12405ba052691fdfab46116d0c6f1ef262e4721db044e2fa1'
+            'bd97c23995f372326d8d2b0b70591b595e169dbd0006317c299bfd6f44df43dc'
             '59482f694811569d08596c07c2461ad9adb6c74c500b6a8755889a78eb27f4b1'
             'ba251b4847be9f45192b60605d6211254f46c310909f706ce91eb9ff9d4f4e15'
             'c9ddd3e4266a4f6fd0b92bf1c23d7bb5bf6ec150dfa67c76b5f17df6a92a3d49')
