@@ -3,30 +3,36 @@
 # Contributor: SirClueless
 
 pkgname=libtcod
-pkgver=1.6.3
-pkgrel=1
+pkgver=1.5.1
+pkgrel=6
 pkgdesc="Roguelike graphics/utility library"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/libtcod/libtcod"
 license=('BSD')
-depends=('sdl2')
+depends=('libpng' 'sdl' 'glu')
 makedepends=('mercurial')
+options=(!makeflags)
 source=("hg+https://bitbucket.org/$pkgname/$pkgname#tag=$pkgver")
 md5sums=('SKIP')
 
 build() {
-   cd "$srcdir/$pkgname/build/autotools"
-   autoreconf -i
-   ./configure --prefix=/usr
-   make
+   cd "$srcdir/$pkgname"
+
+   if test "$CARCH" == x86_64; then
+      make -f makefiles/makefile-linux64 clean release TEMP=$srcdir/tmp
+   else
+      make -f makefiles/makefile-linux clean release TEMP=$srcdir/tmp
+   fi
 }
 
 package() {
-   cd "$srcdir/$pkgname/build/autotools"
-   make DESTDIR="$pkgdir" install
+   mkdir -p $pkgdir/usr/lib
+   mkdir -p $pkgdir/usr/include/$pkgname
+
+   cd "$srcdir/$pkgname"
    
-   mkdir -p "$pkgdir/usr/share/licenses/libtcod"
-   cp "$srcdir/$pkgname/LIBTCOD-LICENSE.txt" "$pkgdir/usr/share/licenses/libtcod"
+   install -D -m 644 libtcod{,gui,xx}.so $pkgdir/usr/lib/
+   install -D -m 644 include/*.h* $pkgdir/usr/include/$pkgname/
 }
 
 # vim:set ts=2 sw=2 et:
