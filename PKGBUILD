@@ -2,17 +2,17 @@
 
 pkgname=kdesrc-build
 pkgver=16.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A script to build KDE software from KDE's source repositories"
-url='http://kdesrc-build.kde.org/'
+url='https://kdesrc-build.kde.org/'
 arch=('any')
 license=('GPL')
-depends=('perl' 'perl-libwww' 'perl-xml-parser' 'dialog' 'perl-json')
-makedepends=('cmake')
+depends=('perl-libwww' 'perl-xml-parser' 'dialog' 'perl-json' 'perl-io-socket-ssl' 'perl-net-ssleay')
+makedepends=('cmake' 'git')
 optdepends=('subversion: download source code using svn'
             'git: download source code using git')
-source=("${pkgname}-${pkgver}.tar.gz"::"http://quickgit.kde.org/?p=kdesrc-build.git&a=snapshot&h=f187eaf9ff7b3994de649377abf18f131fee03ef&fmt=tgz")
-md5sums=('b1990b271ebc851db8862b49bd317d90')
+source=("git+https://anongit.kde.org/kdesrc-build.git#tag=v${pkgver}")
+md5sums=('SKIP')
 
 prepare() {
   mkdir -p build
