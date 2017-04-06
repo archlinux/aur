@@ -8,7 +8,7 @@
 # Contributor: Christian Schwarz <me et cschwarz punkt com>
 
 pkgname=apt-cacher-ng
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="A caching proxy specialized for package files."
 url="http://www.unix-ag.uni-kl.de/~bloch/acng/"
@@ -23,7 +23,7 @@ source=("http://ftp.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_${
 )
 
 backup=('etc/apt-cacher-ng/acng.conf')
-md5sums=('9cd2bea95833debc864957aa89d13850'
+md5sums=('4540414b5fbd7fbc2d5a42d03f5edac2'
          '180e14417a70642a53c77bcb6a7b7292'
          '9645bdcd30a6b0ddc956c2a48c7a27ff'
          '29979b8064ff52aa24017b42c37e6bfb')
