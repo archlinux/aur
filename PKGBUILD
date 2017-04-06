@@ -8,10 +8,9 @@ pkgdesc="Fonts based on the original Gentium design with more extended Latin gly
 arch=('any')
 url="http://software.sil.org/gentium/"
 license=('custom:OFL')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 conflicts=('ttf-sil-fonts')
-source=("http://software.sil.org/downloads/d/gentium/$_pkgname-$pkgver.zip"
-        "http://software.sil.org/downloads/d/gentium/$_pkgname$_pkgsubname-$pkgver.zip")
+source=("http://software.sil.org/downloads/r/gentium/$_pkgname-$pkgver.zip"
+        "http://software.sil.org/downloads/r/gentium/$_pkgname$_pkgsubname-$pkgver.zip")
 sha256sums=('335911f17bd2de4e43742e1d0367cfeff19a90abf7ed604f100a42705042e154'
             '1d8a4ff03dce90f6002b008a5e37f890c409bc22e4e26561b67f3f3c40991b5c')
 
