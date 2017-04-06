@@ -626,7 +626,7 @@ diff -Nru oddjob-0.31.2.orig/src/oddjobd.c oddjob-0.31.2/src/oddjobd.c
  		} else {
  			if (globals.debug) {
  				fprintf(stderr, "unknown attribute \"%s\" in "
-@@ -1392,12 +1170,6 @@
+@@ -1392,13 +1170,6 @@
  	while (acl != NULL) {
  		tofree = acl;
  		acl = acl->next;
@@ -635,6 +635,7 @@ diff -Nru oddjob-0.31.2.orig/src/oddjobd.c oddjob-0.31.2/src/oddjobd.c
 -		oddjob_free(tofree->selinux_user);
 -		oddjob_free(tofree->selinux_role);
 -		oddjob_free(tofree->selinux_type);
+-		oddjob_free(tofree->selinux_range);
 -#endif
  		oddjob_free(tofree->user);
  		oddjob_free(tofree);

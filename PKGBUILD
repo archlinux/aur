@@ -4,11 +4,11 @@
 build_selinux=false
 
 pkgname=oddjob
-pkgver=0.33
+pkgver=0.34
 pkgrel=1
 pkgdesc="A D-Bus service which runs odd jobs on behalf of client applications"
 arch=(i686 x86_64)
-url="http://www.fedorahosted.org/oddjob"
+url="https://releases.pagure.org/oddjob/"
 license=(BSD)
 depends=(cyrus-sasl dbus krb5 libxml2 openldap pam python2 systemd)
 
@@ -21,12 +21,12 @@ backup=(etc/oddjobd.conf.d/oddjobd-introspection.conf
         etc/oddjobd.conf)
 options=(!libtool)
 install=${pkgname}.install
-source=("http://fedorahosted.org/released/oddjob/oddjob-${pkgver}.tar.gz")
-sha512sums=('1cc8f071b54fa88f92880c08051189e0e5c57583e0c1ae4e64f6cc2942b0d3e705e11856b02ee848ef9ac9bcd92709cadc53c68cb0e45d4e99500ad1002b1d52')
+source=("https://releases.pagure.org/oddjob/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('df62a58f86087542876d614c084ec260861a7666bc267747ea45b063d000995f19d275cbc9c09a91dd7adf964f2297bf01a2a0f85339f157817c49bdbafaafab')
 
 if [[ "${build_selinux}" == "false" ]]; then
   source+=(0001_Remove_SELinux_support.patch)
-  sha512sums+=('025e28ac5fb3991909c629d2dbf67a38bd4497cef422034c4d17938c5e3420bdeeae9c4a207c65c17cd47b803934021cf685bb426da17352cc44563283550d18')
+  sha512sums+=('2a9a1ffaaf875c66844e3795f65a2efe2f054860734214ff41eaefdf9355137dbf81a5edf54ee735f4c8c70ee430ee96bc801adf365afc0e5eda5290632acdda')
 fi
 
 build() {
