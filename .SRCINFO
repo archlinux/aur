@@ -1,6 +1,6 @@
 pkgbase = teensyduino
 	pkgdesc = Arduino SDK with Teensyduino
-	pkgver = 1.35
+	pkgver = 1.36
 	pkgrel = 1
 	url = http://www.pjrc.com/teensy/teensyduino.html
 	install = teensyduino.install
@@ -30,7 +30,7 @@ pkgbase = teensyduino
 	source = arduino.xml
 	source = teensyduino.sh
 	source = teensy-loader.desktop
-	source = git+https://github.com/PaulStoffregen/teensy_loader_cli.git#commit=049fe210172bd4dc95d69ab87e93a3baf9e3adcf
+	source = git+https://github.com/PaulStoffregen/teensy_loader_cli.git#commit=82224e355f211efdd1e165e14ae773d85cc22e93
 	source = http://www.pjrc.com/teensy/49-teensy.rules
 	source = LICENSE
 	sha256sums = 473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68
@@ -39,14 +39,14 @@ pkgbase = teensyduino
 	sha256sums = SKIP
 	sha256sums = 9d1f8d89ea81bedbc1eadf535d5c0b1403e369917099b820072939e4d33ca800
 	sha256sums = 25980feb5927b8bea8b8e999f5002e110825b1bc3d546fa902c2db5c824d33f3
-	source_i686 = http://downloads.arduino.cc/arduino-1.8.1-linux32.tar.xz
-	source_i686 = http://www.pjrc.com/teensy/td_135/TeensyduinoInstall.linux32
-	sha256sums_i686 = 4ec56363796d41c9943e58b1633c6c0b6512386c242725261f6065a97c9bac3f
-	sha256sums_i686 = 3c88a679dad1c95ea9ecc8df011422273552cffdb883d8ab30d1d5959a37d5bf
-	source_x86_64 = http://downloads.arduino.cc/arduino-1.8.1-linux64.tar.xz
-	source_x86_64 = http://www.pjrc.com/teensy/td_135/TeensyduinoInstall.linux64
-	sha256sums_x86_64 = 95d566ec3cedec90f08677134ea6df6ab48a55ff87e7c3339dcd71e931d75ebd
-	sha256sums_x86_64 = 920c81f7c60eda59c9a0c4d46db37b3b05d43d7196b075f0509def646fbb82dc
+	source_i686 = http://downloads.arduino.cc/arduino-1.8.2-linux32.tar.xz
+	source_i686 = http://www.pjrc.com/teensy/td_136/TeensyduinoInstall.linux32
+	sha256sums_i686 = 31feebb562a2ef71d15468fe83606d1b5333148a171ac158c34ad82ec7668e54
+	sha256sums_i686 = c149c2bed03a8dc5dc4391fe06dcd548628022d42235b79311fdb283b7308a91
+	source_x86_64 = http://downloads.arduino.cc/arduino-1.8.2-linux64.tar.xz
+	source_x86_64 = http://www.pjrc.com/teensy/td_136/TeensyduinoInstall.linux64
+	sha256sums_x86_64 = f1d4b6a70473930ab33f5b7d416c1b56148ef2ea5fbb78d1ede9feb84c941b88
+	sha256sums_x86_64 = 5950c97ff7fbda65aa1dd9acb841a1533564d7de2eadf827f0585be3d32f6b63
 
 pkgname = teensyduino
 
