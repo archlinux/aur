@@ -1,0 +1,34 @@
+pkgbase = rxvt-unicode-ben
+	pkgdesc = Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing
+	pkgver = 9.22
+	pkgrel = 1
+	url = http://software.schmorp.de/pkg/rxvt-unicode.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxft
+	depends = perl
+	depends = startup-notification
+	depends = rxvt-unicode-terminfo
+	optdepends = gtk2-perl: to use the urxvt-tabbed
+	provides = rxvt-unicode
+	conflicts = rxvt-unicode
+	source = http://dist.schmorp.de/rxvt-unicode/rxvt-unicode-9.22.tar.bz2
+	source = urxvt.desktop
+	source = urxvtc.desktop
+	source = urxvt-tabbed.desktop
+	source = font-width-fix.patch
+	source = line-spacing-fix.patch
+	source = sgr-mouse-mode.patch
+	source = fix-smart-resize-with-x11-frame-borders.patch
+	sha1sums = e575b869782fbfed955f84f48b204ec888d91ba1
+	sha1sums = b5a4507f85ebb7bac589db2e07d9bc40106720d9
+	sha1sums = 62c4ffecfce6967def394dd4d418b68652372ea2
+	sha1sums = cd204d608d114d39c80331efe0af0231ad6b7e18
+	sha1sums = 01ee8f212add79a158dcd4ed78d0ea1324bdc59b
+	sha1sums = b7fde1c46af45e831828738874f14b092b1e795f
+	sha1sums = dfbc8729c545105eff21e20ef3a4a3841a68a192
+	sha1sums = 6dfa49a211c48193c8d87fb9993ed459b2b4387b
+
+pkgname = rxvt-unicode-ben
+
