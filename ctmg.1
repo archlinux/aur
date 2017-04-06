@@ -1,11 +1,11 @@
 .\" -*- mode: nroff; coding: UTF-8 -*-
-.TH ctmg 1 "March 2016" "User Commands"
+.TH ctmg 1 "April 2017" "User Commands"
 .SH NAME
-ctmg \- Simple wrapper around cryptsetup for encrypted containers
+ctmg \- Simple wrapper around cryptsetup for encrypted containers.
 .SH SYNOPSIS
 .B ctmg
-[ \fI\,new\/\fR | \fI\,delete\/\fR | \fI\,open\/\fR | \fI\,close\/\fR |
-\fI\,list\/\fR ] [\fI\,arguments...\/\fR]
+[ \fI\,new\/\fR | \fI\,create\/\fR | \fI\,del\/\fR | \fI\,delete\/\fR |
+\fI\,open\/\fR | \fI\,close\/\fR | \fI\,list\/\fR ] [\fI\,arguments...\/\fR]
 .SH DESCRIPTION
 .PP
 ctmg is an encrypted container manager for GNU/Linux using cryptsetup and
@@ -13,10 +13,10 @@ various standard file system utilities. Containers have the extension
 \[char46]ct and are mounted at a directory of the same name, but without the
 extension. Superuser permissions are required to run this command.
 .TP
-.B new \fI\,filename size\/\fR
+.B new | create \fI\,filename size\/\fR
 creates a new container file. Both parameters are mandatory.
 .TP
-.B delete \fI\,filename\/\fR
+.B del | delete \fI\,filename\/\fR
 deletes a container file as well as the mounted directory.
 .TP
 .B open \fI\,filename\/\fR
@@ -41,6 +41,10 @@ form 'units_suffix'.
 .PP
 Create a 100MiB encrypted container called 'foo':
 .IP
+$ ctmg new foo 100MiB
+.PP
+or:
+.IP
 $ ctmg create foo 100MiB
 .PP
 Open a container:
@@ -50,6 +54,35 @@ $ ctmg open foo
 Close a container:
 .IP
 $ ctmg close foo
+.PP
+Delete a container:
+.IP
+$ ctmg del foo
+.PP
+or:
+.IP
+$ ctmg delete foo
+.SH SECURITY CONSIDERATIONS
+.PP
+This script runs as root. As such, you shouldn't run this on paths you don't
+trust or paths that could be controlled by malicious users.
+.PP
+Since ctmg uses cryptsetup and the LUKS infrastructure, it uses the Linux block
+device encryption APIs. The state of the art in block device encryption, as of
+writing, is XTS mode, which is what ctmg uses. But do note that this does not
+guarantee, entirely, the integrity of data, just the secrecy. As such, if a
+malicious user is able to modify the encrypted content, it is possible this
+could result in differing decrypted content without you noticing. So, ctmg is
+useful for keeping things secret, but not for guaranteeing the authenticity of
+the data. If your laptop gets stolen, sleep safely knowing that your
+ctmg-secured data is safe, but if an attacker is actively modifying the .ct file
+while you're using it in one way or another, you've got trouble.
+.PP
+In order to conserve space, ctmg uses truncate to make sparse files. This means
+that the file grows as it's used. An attacker can therefore see how much of the
+container is utilized. If you care about this, it's easy enough to replace the
+single call to truncate with a single call to dd if=/dev/urandom to make a
+completely full file containing only random data.
 .SH AUTHOR
 Written by Iván Ruvalcaba.
 .SH COPYRIGHT
