@@ -3,12 +3,12 @@
 pkgname=pvim2
 _pkgname=pvim
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="pvim python version, better than pvim"
 url="https://github.com/Sherlock-Holo/pvim"
 arch=('any')
 license=('MPL')
-depends=('python-pyperclip' 'python' 'python-setuptools')
+depends=('python-pyperclip' 'python' 'python-setuptools' 'xclip')
 makedpends=('git')
 source=("git://github.com/Sherlock-Holo/${_pkgname}.git")
 md5sums=('SKIP')
