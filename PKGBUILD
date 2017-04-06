@@ -1,0 +1,58 @@
+# Maintainer: Bastian Löher <b.loeher@gsi.de>
+pkgname=ucesb-git
+pkgver=git
+pkgrel=1
+pkgdesc="UCESB - unpack & check every single bit"
+arch=('x86_64')
+url="http://fy.chalmers.se/~f96hajo/ucesb/"
+license=('LGPL2')
+groups=()
+depends=()
+makedepends=('base-devel'
+	'git'
+	'bison'
+	'flex'
+	'ncurses')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=()
+backup=()
+options=()
+install=${pkgname%-git}.install
+installdir=${pkgdir}/opt
+source=("${pkgname%-git}::git+http://fy.chalmers.se/~f96hajo/ucesb/ucesb.git",
+	"${pkgname%-git}.install")
+noextract=()
+md5sums=('SKIP'
+         'ddec70f697108351de86adc12d3a33ba')
+changelog=
+
+# Do not compress the package for installation
+# PKGEXT='.pkg.tar'
+# Compress using lightweight gzip
+PKGEXT='.pkg.tar.gz'
+
+pkgver() {
+	cd "${srcdir}/${pkgname%-git}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" \
+	    "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	:
+}
+
+build() {
+	# Building is done in the installation path, because ucesb does not
+	# fully support an 'installation' step.
+	:
+}
+
+check() {
+	:
+}
+
+package() {
+	mkdir -p ${installdir}
+	cp -r ${srcdir}/${pkgname%-git} ${installdir}
+}

@@ -1,0 +1,6 @@
+post_install() {
+	version=$1
+	cd "${installdir}/${pkgname%-git}"
+	make -j$(nproc) empty
+	make -j$(nproc) xtst
+}

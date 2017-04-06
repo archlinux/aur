@@ -1,0 +1,22 @@
+pkgbase = ucesb-git
+	pkgdesc = UCESB - unpack & check every single bit
+	pkgver = git
+	pkgrel = 1
+	url = http://fy.chalmers.se/~f96hajo/ucesb/
+	install = ucesb.install
+	arch = x86_64
+	license = LGPL2
+	makedepends = base-devel
+	makedepends = git
+	makedepends = bison
+	makedepends = flex
+	makedepends = ncurses
+	provides = ucesb
+	conflicts = ucesb
+	source = ucesb::git+http://fy.chalmers.se/~f96hajo/ucesb/ucesb.git,
+	source = ucesb.install
+	md5sums = SKIP
+	md5sums = ddec70f697108351de86adc12d3a33ba
+
+pkgname = ucesb-git
+
