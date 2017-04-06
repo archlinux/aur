@@ -1,30 +1,27 @@
-plainname=pyjnius
-pkgname="python2-$plainname"
-pkgver=1.0.3
+_name=pyjnius
+pkgname=python2-pyjnius
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Python module to access Java class as Python class, using JNI.'
-arch=('i686' 'x86_64')
-url="https://github.com/kivy/$plainname"
-license=('LGPL3')
-depends=('java-environment' 'python2')
-makedepends=('cython2')
-source=("$plainname-$pkgver.tar.gz::https://github.com/kivy/$plainname/tarball/$pkgver")
-noextract=("$plainname-$pkgver.tar.gz")
-md5sums=('dd65160abb28e0aa9e405b18a95efc55')
+arch=(any)
+url="https://github.com/kivy/$_name"
+license=(LGPL3)
+depends=(java-environment python2)
+makedepends=(cython2)
+source=("$_name-$pkgver.tar.gz::https://github.com/kivy/$_name/tarball/$pkgver")
+md5sums=(2d457e4761b27e6760cf54efb6201f17)
 
 build() {
-	cd "$srcdir"
-	if [[ ! -d "$plainname-$pkgver" ]]; then
-		mkdir "$plainname-$pkgver"
-		tar -xf "$plainname-$pkgver.tar.gz" --strip-components=1 -C "$plainname-$pkgver"
-	fi
-	cd "$plainname-$pkgver"
+	cd "kivy-$_name-"*
 	
 	python2 setup.py build_ext --inplace -f
 	python2 setup.py build
 }
 
 package() {
-	cd "$srcdir/$plainname-$pkgver"
-	python2 setup.py install --prefix="$pkgdir/usr"
+	export PYTHONPATH="$pkgdir/usr/lib/python2.7/site-packages"
+	mkdir -p "$PYTHONPATH"
+	
+	cd "$srcdir/kivy-$_name-"*
+	python2 setup.py install --prefix="$pkgdir/usr" --optimize=1
 }
