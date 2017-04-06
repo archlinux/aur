@@ -1,10 +1,10 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
-pkgname=nginx-mainline-addon-memc
+pkgname=nginx-mainline-mod-memc
 pkgver=0.17
 pkgrel=1
 
-_modname="${pkgname#nginx-mainline-addon-}"
+_modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.11.10
 
 pkgdesc='Extended version of the standard memcached module for mainline nginx'
