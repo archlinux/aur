@@ -1,0 +1,22 @@
+pkgbase = emspring
+	pkgdesc = Single Particle Reconstruction from Images of kNown Geometry
+	pkgver = 0.84
+	pkgrel = 1
+	url = http://www.sachse.embl.de/emspring/
+	arch = x86_64
+	license = GPL
+	depends = python2-pip
+	depends = libpng12
+	depends = tcsh
+	depends = qtwebkit
+	depends = glu
+	depends = java-environment
+	source = http://www.sachse.embl.de/emspring/_download/spring-latest-linux.tar.gz
+	source = emspring.sh
+	source = emspring.csh
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = emspring
+
