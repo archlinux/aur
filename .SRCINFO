@@ -11,6 +11,7 @@ pkgbase = gepetto-viewer-corba-git
 	depends = gepetto-viewer-git
 	depends = omniorb
 	depends = qt4
+	depends = omniorbpy
 	optdepends = doxygen
 	provides = gepetto-viewer-corba
 	conflicts = gepetto-viewer-corba
