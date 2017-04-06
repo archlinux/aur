@@ -4,7 +4,7 @@
 ##       "makepkg -e" to finish it.
 
 pkgname=brave-git
-pkgver=0.14.0.5876
+pkgver=0.14.0.5899
 pkgrel=1
 pkgdesc="A web browser that stops ads and trackers by default. Master branch."
 arch=('x86_64') # Upstream supports x86_64 only
@@ -50,7 +50,7 @@ package() {
   install -Dm0755 /dev/stdin "$_launcher"<<END
 #!/usr/bin/sh
 
-exec /usr/lib/brave-git/brave --no-sandbox --process-per-site -- "\$@"
+exec /usr/lib/brave-git/brave --no-sandbox -- "\$@"
 END
 
   _deskfile="$pkgdir/usr/share/applications/$pkgname.desktop"
