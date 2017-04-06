@@ -1,0 +1,55 @@
+diff -Naur ./cardapio.orig/src/DesktopEnvironment.py ./cardapio/src/DesktopEnvironment.py
+--- ./cardapio.orig/src/DesktopEnvironment.py	2017-04-06 12:42:53.829759311 -0400
++++ ./cardapio/src/DesktopEnvironment.py	2017-04-06 12:43:02.613092267 -0400
+@@ -63,13 +63,13 @@
+ 			self.environent = 'gnome3'
+ 
+ 		if   self.environment == 'kde'         : pass
+-		elif self.environment == 'xfce'        : pass
++		elif self.environment == 'xfce'        : self.init_xfce()
+ 		elif self.environment == 'lxde'        : self.init_lxde()
+ 		elif self.environment == 'lwde'        : pass
+ 		elif self.environment == 'mate'        : self.init_mate()
+-		elif self.environment == 'gnome'       : self.init_gnome()
++		elif self.environment == 'gnome'       : self.init_gnome3()
+ 		elif self.environment == 'gnome-shell' : self.init_gnome3()
+-		elif self.environment == 'cinnamon'    : self.init_gnome3()
++		elif self.environment == 'cinnamon'    : self.init_cinnamon()
+ 
+ 	def init_gnome(self):
+ 		"""
+@@ -135,6 +135,34 @@
+ 		self.save_session = 'pkill -SIGTERM lxsession'
+ 		self.shutdown = 'lxde-logout'
+ 
++	def init_xfce(self):
++		"""
++		Override some of the default variables for use in XFCE
++		"""
++		self.about_de            = 'xfce4-about'
++		self.about_distro        = None
++		self.menu_editor         = 'menulibre'
++		self.file_open           = "xdg-open '%s'"
++		self.connect_to_server   = 'thunar'
++		self.lock_screen         = 'xflock4'
++		self.save_session        = 'xfce4-session-logout'
++		self.shutdown            = 'xfce4-session-logout'
++		self.execute_in_terminal = None
++
++	def init_cinnamon(self):
++		"""
++		Override some of the default variables for use in Cinnamon
++		"""
++		self.about_de            = 'cinnamon-settings info'
++		self.about_distro        = 'cinnamon-settings info'
++		self.menu_editor         = 'cinnamon-menu-editor'
++		self.file_open           = "xdg-open '%s'"
++		self.connect_to_server   = 'nemo-connect-server'
++		self.lock_screen         = 'cinnamon-screensaver-command --lock'
++		self.save_session        = 'cinnamon-session-quit --logout'
++		self.shutdown            = 'cinnamon-session-quit --power-off'
++		self.execute_in_terminal = None
++
+ 
+ 	def register_session_close_handler(self, handler):
+ 		"""
