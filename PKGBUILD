@@ -2,8 +2,8 @@
 _skinname='material'
 pkgname='fcitx-skin-material'
 pkgver=0.2
-pkgrel=1
-pkgdesc='a Material Design-like skin for Fcitx.'
+pkgrel=2
+pkgdesc='A Material Design-like skin for Fcitx.'
 arch=('any')
 url="https://github.com/ootaharuki99/fcitx-skin-material"
 license=('Apache')
