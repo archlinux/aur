@@ -1,15 +1,15 @@
 pkgbase = zelda-xd2
 	pkgdesc = Free and opensource, amateur Zelda game with humoristic characters.
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = http://www.zelda-solarus.com/
 	arch = any
 	license = custom
 	makedepends = zip
 	makedepends = cmake
 	depends = solarus>=1.5.0
-	source = http://www.zelda-solarus.com/downloads/zelda-xd2/zelda-xd2-1.0.0.tar.gz
-	md5sums = 5f47bbc560311b729bd5f05aa800aec8
+	source = http://www.zelda-solarus.com/downloads/zelda-xd2/zelda-xd2-1.0.1.tar.gz
+	md5sums = 86bbea43042e95c27f30688f13ecef77
 
 pkgname = zelda-xd2
 

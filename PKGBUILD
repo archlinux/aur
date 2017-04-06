@@ -1,8 +1,8 @@
 # Maintainer: BenObiWan <benobiwan @t gmail dot com>
 
 pkgname=zelda-xd2
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 epoch=
 pkgdesc="Free and opensource, amateur Zelda game with humoristic characters."
 arch=('any')
@@ -22,7 +22,7 @@ install=
 changelog=
 source=(http://www.zelda-solarus.com/downloads/$pkgname/$pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('5f47bbc560311b729bd5f05aa800aec8')
+md5sums=('86bbea43042e95c27f30688f13ecef77')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
