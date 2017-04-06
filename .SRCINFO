@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-urdf-parser-plugin
 	pkgdesc = ROS - This package contains a C++ base class for URDF parsers.
-	pkgver = 1.11.12
+	pkgver = 1.11.13
 	pkgrel = 1
 	url = http://ros.org/wiki/urdf
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ros-indigo-urdf-parser-plugin
 	makedepends = ros-indigo-catkin
 	makedepends = urdfdom-headers
 	depends = urdfdom-headers
-	source = ros-indigo-urdf-parser-plugin-1.11.12-0.tar.gz::https://github.com/ros-gbp/robot_model-release/archive/release/indigo/urdf_parser_plugin/1.11.12-0.tar.gz
-	sha256sums = 13b233c46bc8d5a0dbd25ea1e92228ac068b3f7072f82b1505971ccb64e59c89
+	source = ros-indigo-urdf-parser-plugin-1.11.13-0.tar.gz::https://github.com/ros-gbp/robot_model-release/archive/release/indigo/urdf_parser_plugin/1.11.13-0.tar.gz
+	sha256sums = 63b756c119504373912aaa7e5e81eaa5533fb3e6aba99c72e7b6fc870e062aa9
 
 pkgname = ros-indigo-urdf-parser-plugin
 
