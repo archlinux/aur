@@ -4,12 +4,12 @@
 
 pkgname=flow-pomodoro
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A pomodoro app that blocks distractions while you work."
 arch=('i686' 'x86_64')
 url="https://github.com/iamsergio/flow-pomodoro"
 license=('GPL2')
-depends=('qt5-declarative')
+depends=('qt5-declarative' 'hicolor-icon-theme' 'qt5-quickcontrols')
 makedepends=('icoutils')
 source=("https://github.com/iamsergio/flow-pomodoro/archive/v$pkgver.zip")
 sha256sums=('91598e73fe4302658620bc00427161b91ef5450046e316751a1a399d0530998e')
