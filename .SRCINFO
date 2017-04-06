@@ -1,15 +1,21 @@
 pkgbase = python-pypuppetdb
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
-	url = https://github.com/puppet-community/pypuppetdb
+	url = https://github.com/voxpupuli/pypuppetdb
 	arch = any
 	license = APACHE
+	checkdepends = python2-pbr
+	checkdepends = python-pytest-cov
+	checkdepends = python-mock
+	checkdepends = python-httpretty
 	makedepends = python
 	makedepends = python2
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://github.com/puppet-community/pypuppetdb/archive/v0.3.1.tar.gz
-	sha512sums = 7ad85971c7582a20e7d357aff456f5ed63c31e887573e754cb818c21148a3997c6dd3e2287726bffd339f440535fb8bc9d3423ef86ea834f914b5a5d8f3fef59
+	makedepends = python-sphinx
+	makedepends = bandit
+	source = python2-pypuppetdb-0.3.2.tar.gz::https://github.com/voxpupuli/pypuppetdb/archive/v0.3.2.tar.gz
+	sha512sums = b402850ad40e40c544923de3556385249559a42c898eda257a3431b91d4b237c354a3165bb208641e3133b36ce510797fe6471626be8a64716e67c2913d12756
 
 pkgname = python2-pypuppetdb
 	pkgdesc = Python library for working with the PuppetDB API (Python 2 version)
@@ -19,7 +25,7 @@ pkgname = python2-pypuppetdb
 
 pkgname = python-pypuppetdb
 	pkgdesc = Python library for working with the PuppetDB API (Python 3 version)
-	depends = python
+	depends = python>=3.3.0-1
 	depends = python-requests
 	depends = python-httpretty
 
