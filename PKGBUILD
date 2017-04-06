@@ -5,7 +5,7 @@
 # Author: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 # Maintainer: Luka Karinja <luka.karinja@gmail.com>
 pkgname=oscam-emu
-pkgver=739-11380
+pkgver=11380
 pkgrel=1
 dir=OSCam-with-emu-branch
 pkgdesc="Open Source Conditional Access Module software"
