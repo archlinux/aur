@@ -7,7 +7,7 @@ index bda372d..a13a9e2 100644
  		p=q=arg;
  		/* TODO: if arg is malformed, this could segfault */
 -		while(*(q++)!=':') /* do nothing */; *(--q)='\0';
-+		while(*(q++)!='/') {
++		while(*(q++)!=':') {
 +			/* do nothing */;
 +			*(--q)='\0';
 +		}
