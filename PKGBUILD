@@ -1,20 +1,21 @@
-# Maintainer: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
+# Maintainer: Johannes Wienke <languitar@semipol.de>
+# Original Maintainer: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
 pkgname=ignition-transport
-pkgver=1.2.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="The transport library combines ZeroMQ with Protobufs to create a fast and efficient message passing system"
 arch=('i686' 'x86_64')
 url="http://ignitionrobotics.org"
 license=('Apache')
 groups=('development')
-depends=('protobuf' 'protobuf-c' 'zeromq' 'uuid')
+depends=('protobuf' 'protobuf-c' 'zeromq' 'uuid' 'ignition-msgs')
 makedepends=('cmake' 'ruby-ronn' 'pkg-config>=0.28' 'doxygen')
 optdepends=()
 conflicts=()
-source=("https://bitbucket.org/ignitionrobotics/ign-transport/get/${pkgname}_${pkgver}.tar.bz2")
-sha256sums=('bbdcccd34a906afcd316568b560e8df7910909d84138ffb6d090a85e39425f29')
+source=("https://bitbucket.org/ignitionrobotics/ign-transport/get/${pkgname}3_${pkgver}.tar.bz2")
+md5sums=('faf7298ec251e939b1bf446a3922b29c')
 
-_dir="ignitionrobotics-ign-transport-cf6b2efb2c9c"
+_dir="ignitionrobotics-ign-transport-43199f9158dc"
 
 prepare() {
   cd "${srcdir}/${_dir}"
