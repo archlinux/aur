@@ -1,28 +1,25 @@
-# Maintainer: Serge Zirukin <ftrvxmtrx@gmail.com>
-# Contributor: Sergei Lebedev <superbobry@gmail.com>
-# Contributor: Justin Davis <jrcd 83 at gmail>
-
+# Maintainer: Eric Bailey <nerflad@gmail.com>
 pkgname=ocaml-curl
-pkgver=0.5.3
-pkgrel=5
+pkgver=0.7.9
+pkgrel=1
 pkgdesc="OCaml bindings to libcurl networking library"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('ocaml' 'curl>=7.9.8')
 makedepends=('ocaml-findlib')
 options=('!strip' '!makeflags' 'staticlibs')
-url='http://sourceforge.net/projects/ocurl/'
-source=("http://sourceforge.net/projects/ocurl/files/ocurl/$pkgver/ocurl-$pkgver.tgz")
-md5sums=('c8b955e51f79dd2c62ab89577b27fe37')
+url='https://github.com/ygrek/ocurl'
+source=("${url}/releases/download/${pkgver}/ocurl-${pkgver}.tar.gz")
+sha256sums=('36a0103cf062ea2c5685a1615295cf765e49495adfcc620e4c17443e46b5a65e')
 
 build() {
-  cd "$srcdir/ocurl"
+  cd "$srcdir/ocurl-${pkgver}"
   ./configure --prefix /usr
   make
 }
 
 package() {
-  cd "$srcdir/ocurl"
+  cd "$srcdir/ocurl-${pkgver}"
   export OCAMLFIND_DESTDIR="$pkgdir$(ocamlfind printconf destdir)"
   install -dm 755 "$OCAMLFIND_DESTDIR/stublibs"
   make install FINDLIB=ocamlfind
