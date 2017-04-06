@@ -4,7 +4,7 @@ pkgdesc="ROS - Python ROS message and service generators."
 url='http://www.ros.org/'
 
 pkgname='ros-kinetic-genpy'
-pkgver='0.6.4'
+pkgver='0.6.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="genpy-release-release-kinetic-genpy-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/genpy-release/archive/release/kinetic/genpy/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d3766b188b9bf21145777050fd7f491eb8a3d14da1f43868e4a3234de0424c62')
+sha256sums=('93808160d3968d30d63969ebdc288ea2fa9e559c37cadfa9b8865d33641fe33a')
 
 build() {
   # Use ROS environment variables
