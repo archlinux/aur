@@ -4,7 +4,7 @@ pkgname=ueyed
 pkgdesc="IDS uEye camera daemon (USB and ethernet)"
 pkgver=4.81.1
 _version=4.81
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 license=(custom)
 url='https://en.ids-imaging.com'
@@ -28,7 +28,7 @@ sha512sums=(
 	'3e5d357f43e68a143b9da9c712043224304e30699618da9d17f0916297c48d4865d7af2a040561f1b13c6bdef7c613bc441549f152ce0669f67001f0d401fb5a'
 	'fe1901eb22210e7c3f23171197e9316c2a400d68e62d32b52c3900d1d30c38654c90cf101db483dc140103a1c36c2de28b28e6d8a135564c382b0d3e70d37549'
 	'c366ec985d541155f66e7ee0d97e0410b42d54136d8848398768a2b375b93dfe0d30bc1d8249ebbdab82a40db0aa26714b11c220fdbbfc69655e0d303df430f0'
-	'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e'
+	'534925507c7af8490a3c6ea40c9844058e34858c2ecaed76340589b9ceef328662252ee43922558fc13f4ec8867e4667dba94b4e3091cac1b29d61dda1f619b8'
 )
 
 prepare() {
@@ -46,6 +46,9 @@ __install_dir() {
 	local target_dir="$2"
 	local mode="$3"
 
+	[[ -d "$source_dir" ]] || return 0
+
+
 	for file in $(find "$source_dir" -type f); do
 		install -m "$mode" -D "$file" "$target_dir/${file#${source_dir}/}"
 	done
@@ -54,10 +57,11 @@ __install_dir() {
 __install_subtree() {
 	local subtree="$1"
 
-	__install_dir "$subtree/bin64"        "$pkgdir/usr/bin"                 755
-	__install_dir "$subtree/lib64"        "$pkgdir/usr/lib"                 755
-	__install_dir "$subtree/include"      "$pkgdir/usr/include"             644
-	__install_dir "$subtree/fw"           "$pkgdir/usr/share/ueye/fw"       644
+	__install_dir "$subtree/bin64"    "$pkgdir/usr/bin"                 755
+	__install_dir "$subtree/lib64"    "$pkgdir/usr/lib"                 755
+	__install_dir "$subtree/include"  "$pkgdir/usr/include"             644
+	__install_dir "$subtree/fw"       "$pkgdir/usr/share/ueye/fw"       644
+	__install_dir "$subtree/firmware" "$pkgdir/usr/share/ueye/firmware" 644
 }
 
 package() {
