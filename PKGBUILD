@@ -8,10 +8,8 @@ url="http://fy.chalmers.se/~f96hajo/ucesb/"
 license=('LGPL2')
 groups=()
 depends=()
-makedepends=('base-devel'
+makedepends=(
 	'git'
-	'bison'
-	'flex'
 	'ncurses')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
