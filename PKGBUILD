@@ -25,7 +25,7 @@ if [[ "True" = "${_eap}" ]]; then
 	sha256sums=($(wget -q "${source}.sha256" && cat "${_srcfile}.sha256" | cut -f1 -d" ")
 				"aa9573c177f5d4d3092b9dff2aef5b4c7d25ff9c2b044be222a0512dff759731")
 else
-	_srcfile="pycharm-professional-${_pkgver}.tar.gz"
+	_srcfile="pycharm-professional-${_pkgver::(-2)}.tar.gz"
 	source=("https://download.jetbrains.com/python/${_srcfile}"
 			"${pkgname}.desktop")
 	sha256sums=($(wget -q "${source}.sha256" && cat "${_srcfile}.sha256" | cut -f1 -d" ")
