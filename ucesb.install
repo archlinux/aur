@@ -1,7 +1,7 @@
 post_install() {
 	version=$1
-	echo "pwd=$(pwd)"
 	echo "installdir=${installdir}"
+	echo "pwd=$(pwd)"
 	echo "pkgname=${pkgname%-git}"
 	cd "${installdir}/${pkgname%-git}"
 	echo "pwd=$(pwd)"
