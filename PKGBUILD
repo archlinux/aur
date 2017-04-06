@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=pacsync
-pkgver=1.1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Utility to push an Arch host's package and AUR caches to other hosts"
 url="https://github.com/bulletmark/$pkgname"
@@ -8,7 +8,7 @@ license=("GPL3")
 arch=("any")
 depends=("python" "rsync" "sudo" "openssh" "pacaur")
 source=("$url/archive/$pkgver.tar.gz")
-md5sums=('166a8649be42dd8bfa87378c90f6aa80')
+md5sums=('6e4015edccd54e82b3a909e11f910150')
 
 package() {
   cd "$pkgname-$pkgver"
