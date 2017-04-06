@@ -3,12 +3,12 @@
 pkgname=typetalk
 _name=TypeTalk
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="MaryTTS (Text2Speech) frontend with batteries included"
 arch=('any')
 url="http://typetalk.github.io/TypeTalk/"
 license=('GPL3')
-depends=('java-runtime')
+depends=('jre8-openjdk')
 source=(
     "https://github.com/TypeTalk/TypeTalk/releases/download/v${pkgver}/TypeTalk.one-jar.jar"
     "https://github.com/TypeTalk/TypeTalk/archive/v${pkgver}.tar.gz"
@@ -21,7 +21,7 @@ md5sums=('ef6872d1db3eb6bf2d41ef9005abff27'
          '54579da8bfb0b404f3a3f096b8d92150'
          '5f5327ea5b39269670502c295359768b'
          '5ed943e7194994bb590de4c4d6b9fa11'
-         'add604376cd06ec2c5dbacbc5d8728cc')
+         '6b4447d08ff1e929e730d7e912cd6ee3')
 
 package() {
     mkdir -p "${pkgdir}/usr/share/java/${pkgname}/"

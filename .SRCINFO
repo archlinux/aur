@@ -1,11 +1,11 @@
 pkgbase = typetalk
 	pkgdesc = MaryTTS (Text2Speech) frontend with batteries included
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://typetalk.github.io/TypeTalk/
 	arch = any
 	license = GPL3
-	depends = java-runtime
+	depends = jre8-openjdk
 	noextract = TypeTalk.one-jar.jar
 	source = https://github.com/TypeTalk/TypeTalk/releases/download/v1.7/TypeTalk.one-jar.jar
 	source = https://github.com/TypeTalk/TypeTalk/archive/v1.7.tar.gz
@@ -16,7 +16,7 @@ pkgbase = typetalk
 	md5sums = 54579da8bfb0b404f3a3f096b8d92150
 	md5sums = 5f5327ea5b39269670502c295359768b
 	md5sums = 5ed943e7194994bb590de4c4d6b9fa11
-	md5sums = add604376cd06ec2c5dbacbc5d8728cc
+	md5sums = 6b4447d08ff1e929e730d7e912cd6ee3
 
 pkgname = typetalk
 

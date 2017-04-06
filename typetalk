@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/bin/java -jar '/usr/share/java/typetalk/TypeTalk.one-jar.jar' "$@"
+exec /usr/lib/jvm/java-8-openjdk/jre/bin/java -jar '/usr/share/java/typetalk/TypeTalk.one-jar.jar' "$@"
