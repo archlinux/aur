@@ -2,13 +2,15 @@ post_install() {
 	version=$1
 	echo "installdir=${installdir}"
 	echo "pwd=$(pwd)"
+	ls
 	echo "pkgname=${pkgname%-git}"
 	cd "${installdir}/${pkgname%-git}"
 	echo "pwd=$(pwd)"
+	ls
 	make -j$(nproc) empty
 	make -j$(nproc) xtst
 }
 
 post_upgrade() {
-	post_install
+	post_install $1
 }
