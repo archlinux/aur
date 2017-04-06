@@ -1,0 +1,8 @@
+<SearchPlugin xmlns="http://www.mozilla.org/2006/browser/search/" xmlns:os="http://a9.com/-/spec/opensearch/1.1/">
+<os:ShortName>DuckDuckGo HTML (SSL)</os:ShortName>
+<os:Description>DuckDuckGo HTML (SSL)</os:Description>
+<os:InputEncoding>UTF-8</os:InputEncoding>
+<os:Url type="text/html" method="POST" template="https://duckduckgo.com/html/" resultDomain="duckduckgo.com">
+  <os:Param name="q" value="{searchTerms}"/>
+</os:Url>
+</SearchPlugin>
