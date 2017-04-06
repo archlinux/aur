@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a C++ parser for the Collada robot descript
 url='http://ros.org/wiki/collada_parser'
 
 pkgname='ros-indigo-collada-parser'
-pkgver='1.11.12'
+pkgver='1.11.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,7 +35,7 @@ source=("${_dir}"::"git+https://github.com/ros-gbp/robot_model-release.git"#tag=
 # Tarball version (faster download)
 _dir="robot_model-release-release-indigo-collada_parser-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/indigo/collada_parser/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2a979a40ac6687a65f09c25197f6e76c65aba81bf2cac98b99036d46214b50dc')
+sha256sums=('d90a44dd132050be4dccbe138d4d698bfc8f331c560f189dac285d3597a5427d')
 
 build() {
   # Use ROS environment variables
