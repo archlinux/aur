@@ -5,13 +5,13 @@
 pkgname=boostnote
 _pkgname=Boostnote
 pkgver=0.8.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source note-taking app for programmers"
 arch=('any')
 url="https://boostnote.io/"
 license=('GPL3')
 depends=('electron')
-makedepends=('npm' 'grunt-cli')
+makedepends=('npm' 'grunt-cli' 'git')
 
 source=(
   "${pkgver}.tar.gz::https://github.com/BoostIO/"${_pkgname}"/archive/v"$pkgver".tar.gz"
