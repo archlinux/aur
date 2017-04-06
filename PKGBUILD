@@ -1,10 +1,10 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
-pkgname=nginx-mainline-addon-echo
+pkgname=nginx-mainline-mod-echo
 pkgver=0.60
 pkgrel=1
 
-_modname="${pkgname#nginx-mainline-addon-}"
+_modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.11.10
 
 pkgdesc='Directives "echo", "sleep", "time" and more (module for mainline nginx)'
