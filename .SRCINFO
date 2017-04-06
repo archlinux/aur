@@ -7,6 +7,7 @@ pkgbase = ruby-test-unit
 	license = GPL
 	makedepends = rubygems
 	depends = ruby
+	depends = ruby-power_assert
 	noextract = test-unit-3.2.3.gem
 	source = https://rubygems.org/downloads/test-unit-3.2.3.gem
 	sha256sums = fe125f1418b223b9d84ea12c2557d87ccc98d2c4ae5b7ef63c75611dc4edcfce
