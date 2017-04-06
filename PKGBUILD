@@ -1,36 +1,39 @@
-# Maintainer: Tom van der Lee <t0m.vd.l33@gmail.com>
+# Maintainer: Michael Straube <straubem@gmx.de>
+# Contributor: Tom van der Lee <t0m.vd.l33@gmail.com>
+
 pkgname=bir-git
-pkgver=r25.b14a485
+pkgver=2.0.r2.gcc32901
 pkgrel=1
-pkgdesc="Simple graphical batch image resizer: git-version"
-arch=('any')
+pkgdesc="Simple graphical batch image resizer - git version"
+arch=('i686' 'x86_64')
 url="https://github.com/agronick/BIR"
-license=('GPL')
-depends=("qt5-base")
-makedepends=('gcc'
-	     'git')
-provides=('bir')
+license=('custom:WTFPL')
+depends=('qt5-base')
+makedepends=('git')
 conflicts=('bir')
-source=("$pkgname::git+https://github.com/agronick/BIR.git")
+provides=('bir')
+source=("git+https://github.com/agronick/BIR.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  ( set -o pipefail
-    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd BIR
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  mkdir -p build
 }
 
 build() {
-  cd "$srcdir/$pkgname/build"
-  qmake-qt5 ../
+  cd build
+  qmake-qt5 ../BIR
   make
 }
 
 package() {
-  cd "$pkgname/build"
-  install -Dm644 "$srcdir/$pkgname/bir.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/bir.png"
-  install -Dm755 "$srcdir/$pkgname/bir.desktop" "$pkgdir/usr/share/applications/bir.desktop"
-  make INSTALL_ROOT="$pkgdir/" install
+  cd build
+  make INSTALL_ROOT="$pkgdir" install
+  install -Dm644 ../BIR/bir.png "$pkgdir"/usr/share/pixmaps/bir.png
+  install -Dm644 ../BIR/bir.desktop "$pkgdir"/usr/share/applications/bir.desktop
+  install -Dm644 ../BIR/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
