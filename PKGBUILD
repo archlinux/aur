@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a C++ parser for the Unified Robot Descript
 url='http://ros.org/wiki/urdf'
 
 pkgname='ros-indigo-urdf'
-pkgver='1.11.12'
+pkgver='1.11.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -39,7 +39,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="robot_model-release-release-indigo-urdf-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/indigo/urdf/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3d43fff922a84466cfba766dc1402939eec7d6676cd6e018ec68d0956b7bd067')
+sha256sums=('66b76222d3a76a697e83b39c17e0f3d76c316a379ddf8a18ce5a1cbad7dc899b')
 
 build() {
   # Use ROS environment variables
