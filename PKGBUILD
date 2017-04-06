@@ -1,10 +1,10 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
-pkgname=nginx-mainline-addon-pagespeed
+pkgname=nginx-mainline-mod-pagespeed
 pkgver=1.11.33.4
 pkgrel=1
 
-_modname="ngx_${pkgname#nginx-mainline-addon-}"
+_modname="ngx_${pkgname#nginx-mainline-mod-}"
 
 _nginxver=1.11.10
 _pagespeedver=latest-stable
