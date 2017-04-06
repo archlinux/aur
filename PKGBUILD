@@ -9,7 +9,8 @@ pkgdesc="Utilities for viewing data and exporting schema from Microsoft Access d
 arch=('i686' 'x86_64')
 url="https://github.com/brianb/mdbtools"
 license=('LGPL' 'GPL')
-makedepends=('bison' 'flex' 'txt2man' 'autoconf' 'rarian' 'unixodbc' 'libgnomeui' 'git')
+makedepends=('bison' 'flex' 'txt2man' 'autoconf' 'rarian' 'unixodbc' 'libgnomeui' 'git' 'gtk-doc'
+	     'gnome-doc-utils')
 options=('!libtool' '!emptydirs')
 source=("${pkgbase}::git://github.com/brianb/mdbtools.git")
 md5sums=('SKIP')
