@@ -1,8 +1,8 @@
 # Maintainer: Manoel Brunnen <manoel.brunnen@gmail.com>
 
 pkgname=xctu
-pkgver=6.3.2
-pkgrel=3
+pkgver=6.3.5
+pkgrel=0
 pkgdesc="Next Generation Configuration Platform for XBee/RF Solutions."
 arch=('i686' 'x86_64')
 url="http://www.digi.com/products/xbee-rf-solutions/xctu-software/xctu"
@@ -11,11 +11,11 @@ depends=('java-runtime-common')
 options=('!strip')
 # install=$pkgname.install
 if [[ $CARCH == 'i686' ]]; then
-    _setup_file=40002880_D.run
-    md5sums=('97372b7aabdc3e25897726439373f798')
+    _setup_file=40002880_G.run
+    md5sums=('906fe507935450b3e0f2ff28044c5650')
 elif [[ $CARCH == 'x86_64' ]]; then
-    _setup_file=40002881_D.run
-    md5sums=('47cfcde687bf56196de66476fe8bca27')
+    _setup_file=40002881_G.run
+    md5sums=('f378b0636d5f3b9327e43355c89151ef')
 fi
 source=("http://ftp1.digi.com/support/utilities/$_setup_file"
         'launcher.sh'
@@ -32,8 +32,8 @@ prepare() {
     # prefix option not working:
     printf "\n\n\n\n\ny\n\n$srcdir\n\n\nn\nn\n" | ./$_setup_file --mode text || true
     mv $srcdir/XCTU-NG $srcdir/$pkgname
-    # XCTU wants to write a version file in the installation directory at first startup
     echo $pkgver > $srcdir/$pkgname/version.txt
+    # change XCTU's config folder to ~/.config/xctu:
     patch -p1 -N < $srcdir/fix.patch
 }
 

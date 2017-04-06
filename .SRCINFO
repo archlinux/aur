@@ -19,3 +19,24 @@ pkgbase = xctu
 
 pkgname = xctu
 
+pkgbase = xctu
+	pkgdesc = Next Generation Configuration Platform for XBee/RF Solutions.
+	pkgver = 6.3.5
+	pkgrel = 0
+	url = http://www.digi.com/products/xbee-rf-solutions/xctu-software/xctu
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = java-runtime-common
+	options = !strip
+	source = http://ftp1.digi.com/support/utilities/40002881_G.run
+	source = launcher.sh
+	source = xctu.desktop
+	source = fix.patch
+	md5sums = f378b0636d5f3b9327e43355c89151ef
+	md5sums = 9ebb584444f6e9417bb74c1f4c5792cd
+	md5sums = 8268deecea042c3d4d557d6a47f1f004
+	md5sums = 1e0ebe726f6d5304091d6e10d01de7be
+
+pkgname = xctu
+
