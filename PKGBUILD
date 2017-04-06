@@ -4,7 +4,7 @@ pkgdesc="ROS - C++ ROS message and service generators."
 url='http://www.ros.org/'
 
 pkgname='ros-kinetic-gencpp'
-pkgver='0.5.4'
+pkgver='0.5.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="gencpp-release-release-kinetic-gencpp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gencpp-release/archive/release/kinetic/gencpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2c95c7120bf9ec6c3a7cd994ac8f99f8ace4548c24a909886c311d2c61caf6d7')
+sha256sums=('5ca997eb31381ecd869d6764dd6a1b21f3f9b98c2f1746947ffe8b284eeb1771')
 
 build() {
   # Use ROS environment variables
