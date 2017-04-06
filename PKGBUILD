@@ -1,10 +1,10 @@
 # Maintainer: Alexander Phinikarides (alexisph -at- gmail -dot- com)
 
 pkgname=microsoft-r-open
-pkgver=3.3.2
+pkgver=3.3.3
 pkgrel=1
 _majorver=3.3
-_mrandate=2016-11-01
+_mrandate=2017-03-15
 pkgdesc="Language and environment for statistical computing and graphics, modified version by Microsoft"
 arch=('x86_64')
 license=('GPL')
@@ -46,11 +46,11 @@ source=("https://mran.revolutionanalytics.com/install/mro/${pkgver}/microsoft-r-
         'mro.desktop'
         'mro.png'
         'R.conf')
-md5sums=('b6db1acf6e2c482fd79ce870733978bf'
+md5sums=('641c8636b5f3e1f5a3870ccae448d87e'
          '70e8f9d0b1eebeb1f0b45f4568bc0701'
          '8e0c51650b8a63f110fa7b09e699e9c4'
          '6c381ed007c2bfc97ab42f05bf50b57d')
-sha512sums=('8f295ae2683628635bed81df67aa8710bbe5dfe6dda647267339e7cef791a51f669fa7dda4bc44a087734005c30244e724f326d4f8e7c879b098dbf285dd5d01'
+sha512sums=('ca5943068233a5687b75f4edf923f75ba6dad75804ef1b368e464817e09f2ca7b07d0033e1d4dc9c6815c5d780fe184ece9b6a0629128c6180900e18dfa8e971'
             '2b0221bd1e0fdd399284333e6f2020bb9ad11395ad39dd2fca688b7ebc68fbbc60de59a757e1898be8bcd9e2926afccc121043f38445e7693f177c3076f92b61'
             '1491b01d3d14b86d26c383e00e2305858a52ddd498158c9f7f6b33026ee01f246408b1676cffea73f7783c8c4cf546285705c43c0286adbd75ad77706918b5fe'
             '41e6779500748eee0fa785a20bcaf7323d4aa67000386243fdfe1681152023fb4a5dd4e1f078eeae24db18c223f86fa57afbbad391da226988b0a14eec75c986')
