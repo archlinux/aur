@@ -1,5 +1,6 @@
 src
 pkg
-insomnia-*.deb
-insomnia-*-x86_64.pkg.tar*
+insomnia*.deb
+insomnia*.pkg.tar*
 .idea
+.DS_Store
