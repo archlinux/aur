@@ -1,6 +1,6 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=openboard
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64' 'i686')
@@ -8,17 +8,12 @@ url="http://openboard.ch/index.en.html"
 license=('GPL3')
 depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-script' 'qt5-webkit' 'libpaper' 'bzip2')
 source=("https://github.com/OpenBoard-org/OpenBoard/archive/v$pkgver.tar.gz"
-        "https://github.com/OpenBoard-org/OpenBoard-ThirdParty/archive/master.zip"
-        "std-abs.patch")
-md5sums=('a7dfe30d25de9285307fdab8c9b9aa20'
-         'fa1ff089f0bcc15d2a510bb90cdd3002'
-         '32689b48f23d7f513f6172c10c93aa00')
+        "https://github.com/OpenBoard-org/OpenBoard-ThirdParty/archive/master.zip")
+md5sums=('d3ff4e88b5c8f1913c12a7686ef86329'
+         'fa1ff089f0bcc15d2a510bb90cdd3002')
 
 prepare() {
   mv "$srcdir/OpenBoard-ThirdParty-master" "$srcdir/OpenBoard-ThirdParty"
-
-  cd "$srcdir/OpenBoard-$pkgver"
-  patch -p1 < "$srcdir/std-abs.patch"
 }
 
 build() {
