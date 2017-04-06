@@ -1,0 +1,14 @@
+pkgbase = modtree
+	pkgdesc = Tree based kernel module dependency viewer
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/falconindy/modtree
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = MIT
+	source = https://github.com/falconindy/modtree/archive/v1.tar.gz
+	md5sums = c10ef8b73495b21bbd365aa2152738a9
+
+pkgname = modtree
+
