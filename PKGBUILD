@@ -1,10 +1,10 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
-pkgname=nginx-mainline-addon-brotli
+pkgname=nginx-mainline-mod-brotli
 pkgver=1.11.10
 pkgrel=1
 
-_modname="ngx_${pkgname#nginx-mainline-addon-}"
+_modname="ngx_${pkgname#nginx-mainline-mod-}"
 
 # https://github.com/google/ngx_brotli
 # https://github.com/google/ngx_brotli/tree/master/deps
