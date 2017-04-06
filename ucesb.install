@@ -2,10 +2,11 @@ post_install() {
 	cd "/opt/ucesb"
 	make -j$(nproc) empty
 	make -j$(nproc) xtst
+	echo "Installation of ucesb successful."
+	echo "Make sure to add the following to your ~/.bashrc:"
+	echo "  UCESB_DIR=/opt/ucesb"
 }
 
 post_upgrade() {
-	cd "/opt/ucesb"
-	make -j$(nproc) empty
-	make -j$(nproc) xtst
+	post_install
 }
