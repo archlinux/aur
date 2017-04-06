@@ -1,6 +1,6 @@
 pkgbase = cockroachdb-bin
 	pkgdesc = An open source, survivable, strongly consistent, scale-out SQL database
-	pkgver = 20170330
+	pkgver = 20170406
 	pkgrel = 1
 	url = https://www.cockroachlabs.com/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = cockroachdb-bin
 	depends = gcc-libs
 	provides = cockroachdb
 	conflicts = cockroachdb
-	source = https://binaries.cockroachdb.com/cockroach-beta-20170330.linux-amd64.tgz
-	sha256sums = 903e2d0906d934d5c004b4edac47251d92ee1af0ef36c93499bfac66ae1feccd
+	source = https://binaries.cockroachdb.com/cockroach-beta-20170406.linux-amd64.tgz
+	sha256sums = 9d9a43608a8ade2f6aa9b4ed934c74ecf5673e7de4555f0d7a4c9b20b5e27b00
 
 pkgname = cockroachdb-bin
 
