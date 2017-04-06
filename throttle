@@ -21,6 +21,7 @@ while (( "$#" )); do
           AAM="254"
           CONTROL="on"
           AUTOSUSPEND="-1"
+          DISKAUTOSUSPEND="-1"
           POWERSAVE="0"
           CONTROLLER="N"
           WLPOWERSAVE="off"
@@ -43,6 +44,7 @@ while (( "$#" )); do
           AAM="128"
           CONTROL="auto"
           AUTOSUSPEND="1"
+          DISKAUTOSUSPEND="30000"
           POWERSAVE="1"
           CONTROLLER="Y"
           WLPOWERSAVE="on"
@@ -96,6 +98,10 @@ while (( "$#" )); do
       # Hard drives
       [[ -n "$(command -v hdparm)" ]] && \
         hdparm -qB "${APM}" -qM "${AAM}" /dev/[hs]d[a-z] 2> /dev/null &
+
+      # Block device autosuspend
+      for i in /sys/block/*/device/power/autosuspend_delay_ms; do \
+        printf -- "${DISKAUTOSUSPEND}" > "${i}" & done &
 
       # Runtime power management for devices (with exceptions for devices by VID:PID)
       for i in /sys/{class/*,bus/*/devices}/*/power/control; do \
@@ -242,7 +248,8 @@ while (( "$#" )); do
         printf "\nEnergy Perf Bias\n" && \
         x86_energy_perf_policy -r #SUID
 
-      printf "\nBacklight\n/sys/class/backlight/\n"
+      [[ -f /sys/class/backlight/acpi_video0 ]] && \
+      printf "\nBacklight\n/sys/class/backlight/\n" && \
       for i in /sys/class/backlight/acpi_video*/brightness; do \
         printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/class/backlight/||g; s|/.*||g; N;s|\n|\t|'
 
@@ -263,8 +270,12 @@ while (( "$#" )); do
         printf "\nHard drives\n/dev/[hs]d[a-z]\n" && \
         hdparm -B -M /dev/[hs]d[a-z] 2> /dev/null | sed 'N;s|\n||g; s|/dev/||g; s|\t| |g;' #SUID
 
-      printf "\nRuntime power management\n/sys/{class,bus}/*/{*,devices/*}/power/control\n"
-      for i in /sys/{class,bus}/*/{*,devices/*}/power/control; do \
+      printf "\nBlock device autosuspend\n/sys/block/*/device/power/autosuspend_delay_ms\n"
+      for i in /sys/block/*/device/power/autosuspend_delay_ms; do \
+        printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/block/||g; s|/device/.*||g; s|/.*||g; N;s|\n|\t|'
+
+      printf "\nRuntime power management\n/sys/{class/*,bus/*/devices}/*/power/control\n"
+      for i in /sys/{class/*,bus/*/devices}/*/power/control; do \
         printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/class/||g; s|/sys/bus/||g; s|/devices||g; s|/power/control||g; N;s|\n|\t|'
 
       printf "\nUSB Autosuspend\n/sys/bus/usb/devices/*/power/autosuspend{,_delay_ms}\n"
