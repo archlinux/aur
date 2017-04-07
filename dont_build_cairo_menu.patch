@@ -1,0 +1,21 @@
+diff -Naur ./awn-extras.orig/applets/Makefile.am ./awn-extras/applets/Makefile.am
+--- ./awn-extras.orig/applets/Makefile.am	2017-04-06 17:24:49.585710543 -0400
++++ ./awn-extras/applets/Makefile.am	2017-04-06 17:26:55.432371888 -0400
+@@ -35,17 +35,6 @@
+ 	unmaintained/stacks \
+ 	maintained/yama \
+ 	$(NULL)
+-if CAIRO_MENU_GNOME3
+-CONDITIONAL_APPLETS += \
+-	maintained/cairo-menu \
+-	$(NULL)
+-else
+-if CAIRO_MENU_GNOME
+-CONDITIONAL_APPLETS += \
+-	maintained/cairo-menu \
+-	$(NULL)
+-endif
+-endif
+ if GNOME_MENU
+ CONDITIONAL_APPLETS += \
+ 	unmaintained/main-menu \
