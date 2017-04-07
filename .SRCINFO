@@ -1,0 +1,22 @@
+pkgbase = mrboom-git
+	pkgdesc = Mr.Boom is a 8 players Bomberman clone
+	pkgver = 3.1.r4.ge1932f4
+	pkgrel = 1
+	url = http://mrboom.mumblecore.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = sdl2
+	makedepends = sdl2_mixer
+	provides = mrboom
+	conflicts = mrboom
+	source = mrboom-git::git+https://github.com/libretro/mrboom-libretro
+	source = mrboom.desktop
+	source = mrboom.svg
+	md5sums = SKIP
+	md5sums = 780a2c3ad5ecd62870d31fd584ab2802
+	md5sums = dcfe4201b7e8a347ee7fc4de6f90c427
+
+pkgname = mrboom-git
+
