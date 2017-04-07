@@ -7,7 +7,8 @@ _pkgrev=${pkgver}-48204
 _libvmimever=0.9.2
 pkgrel=98
 pkgdesc="A C++ class library for working with MIME messages"
-arch=('armv7h'
+arch=('aarch64'
+      'armv7h'
       'armv6h'
       'x86_64'
       'i686')
@@ -25,7 +26,9 @@ source=("https://download.zarafa.com/community/final/7.1/7.1.7-42779/sourcecode/
 	"https://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/vmime-patches/vmime-disable-rfc2231.diff"
 	"https://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/vmime-patches/vmime-ignore-multiple-colons-in-headers.diff"
 	"https://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/vmime-patches/vmime-ignore-newlines.diff"
-	"https://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/vmime-patches/vmime-remove-setlocale.diff")
+	"https://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/vmime-patches/vmime-remove-setlocale.diff"
+	"config.guess::http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD"
+	"config.sub::http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD")
 
 md5sums=('0ba65ad889488b2f851d7f028bfb6e9e'
          'f9d915f576d55caf1c175f85fe96572c'
@@ -36,7 +39,9 @@ md5sums=('0ba65ad889488b2f851d7f028bfb6e9e'
          'e3729b93760de843f04b25ccdb363ac9'
          '957cbbc72d374157475788450cee5049'
          '21dcfca3eedb6b08fac57a5c9f267490'
-         'cde4f6e8a17bf09b6069290cc53da44f')
+         'cde4f6e8a17bf09b6069290cc53da44f'
+         'SKIP'
+         'SKIP')
 
 prepare() {
     cd $srcdir/libvmime-${_libvmimever}
@@ -46,7 +51,9 @@ prepare() {
         echo "Patching ${pa}"
         patch -p1 <${pa}
     done
-
+    
+    cp -Lf $srcdir/config.guess autotools/
+    cp -Lf $srcdir/config.sub autotools/
 }
 
 build() {
