@@ -1,11 +1,11 @@
 pkgbase = python-reno
 	pkgdesc = OpenStack release notes manager
-	pkgver = 2.0.3
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = http://docs.openstack.org/developer/reno
 	arch = any
 	license = Apache
-	source = git+https://git.openstack.org/openstack/reno#tag=2.0.3
+	source = git+https://git.openstack.org/openstack/reno#tag=2.2.0
 	md5sums = SKIP
 
 pkgname = python-reno

@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-reno' 'python2-reno')
-pkgver='2.0.3'
+pkgver='2.2.0'
 pkgrel='1'
 pkgdesc='OpenStack release notes manager'
 arch=('any')
