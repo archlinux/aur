@@ -1,12 +1,12 @@
 # Maintainer : Luke Frisken <l.frisken@gmail.com>
 pkgname=qprotractor-git
-pkgver=v0.0.1
+pkgver=0.0.2
 pkgrel=1
 _pkgarch=amd64
 pkgdesc="Onscreen Protractor"
 url="http://kibergus.su/en/node/73/"
 license=('GPL')
-makedepends=('git' 'make' 'gcc' 'qt4' 'qt5-base' 'qt5-tools')
+makedepends=('git' 'make' 'gcc' 'qt5-base' 'qt5-tools')
 conflicts=('qprotractor-git')
 provides=('qprotractor-git')
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha256sums=(
 )
 
 pkgver() {
-	cd "$srcdir/go/src/github.com/calmh/syncthing"
+	cd "$srcdir/qprotractor-git"
 	git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
@@ -26,7 +26,7 @@ build() {
 	cd $srcdir/$pkgname
 	echo Running Qmake...
 	echo | ls -la
-	qmake-qt4 qprotractor.pro -r -spec linux-g++
+	qmake-qt5 qprotractor.pro -r -spec linux-g++
 
 	echo Building...
 	make
