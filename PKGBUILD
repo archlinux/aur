@@ -3,7 +3,7 @@
 
 pkgname=certbot
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free."
 arch=('any')
 license=('Apache')
@@ -22,6 +22,10 @@ validpgpkeys=('148C30F6F7E429337A72D992B00B9CC82D7ADF2C'
               'A2CFB51FA275A7286234E7B24D17C995CD9775F2')
 sha512sums=('0d0e36ee19482bf69f3dacd07fe6741ae7b639faae006c0411f1f8a3ac1d69036e6e5408eef4305b5bad5fcddf3a00dfe537684e25fd0960b43da6917e8734d3'
             'SKIP')
+
+prepare() {
+  sed -i "/'argparse',/d" $pkgname-$pkgver/setup.py
+}
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
