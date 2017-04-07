@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=redo-c-git
-pkgver=r51.10c33d6
+pkgver=r58.24b5ccb
 pkgrel=1
 epoch=
 pkgdesc="An implementation of the redo build system in portable C with zero dependencies."
@@ -13,7 +13,7 @@ makedepends=('git')
 optdepends=()
 checkdepends=()
 provides=()
-conflicts=()
+conflicts=('redo-jdebp' 'redo-python' 'redo-sh')
 replaces=()
 backup=()
 options=()
