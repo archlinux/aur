@@ -1,4 +1,5 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: shmilee <shmilee.zju at gmail dot com>
 # Contributor: mcmillan <awmcmillan at gmail dot com>
 
 _pkgbase='engauge-digitizer'
