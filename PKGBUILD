@@ -3,7 +3,7 @@
 pkgname=warsaw
 pkgver=1.12.3.11
 pkgrel=2
-pkgdesc="GAS Tecnologia's banking security system used by Banco do Brasil"
+pkgdesc="Banking security tool developed by GAS Tecnologia"
 arch=(i686 x86_64)
 url="https://seg.bb.com.br"
 license=('custom')
@@ -65,8 +65,6 @@ package() {
   rm -rf "$pkgdir/usr/share/doc"
   
     # Fix insecure RPATH to /usr/local/ directories
-  chrpath -d "$pkgdir/usr/bin/warsaw/migratecache"
-  chrpath -d "$pkgdir/usr/lib/warsaw/wsftuan.so"
   chrpath -d "$pkgdir/usr/bin/warsaw/migratecache"
   chrpath -d "$pkgdir/usr/lib/warsaw/wsftuan.so"
   chrpath -d "$pkgdir/usr/lib/warsaw/wslbmid.so"
