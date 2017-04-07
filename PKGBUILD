@@ -2,14 +2,17 @@
 # Contributor: Infy <eugene.yudin@gmail.com>
 
 pkgname=pcsxr-git
-pkgver=1.9.93.r1662.fc378b6
+pkgver=1.9.93.r1697.6484236c
 pkgrel=1
 pkgdesc='A Sony PlayStation emulator based on the PCSX-df Project'
 arch=('i686' 'x86_64')
 url='http://pcsxr.codeplex.com/'
 license=('GPL')
-depends=('gtk3' 'libarchive' 'libcdio' 'libxv' 'sdl2')
-makedepends=('git' 'intltool' 'mesa')
+depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgl' 'libpulse' 'libx11'
+         'libxext' 'libxtst' 'libxv' 'libxxf86vm' 'sdl2' 'zlib'
+         'libarchive.so' 'libavcodec.so' 'libavformat.so' 'libavutil.so'
+         'libm.so' 'libswresample.so')
+makedepends=('cmake' 'git' 'intltool' 'mesa')
 [[ $CARCH == i686 ]] && makedepends+=('nasm')
 provides=('pcsxr')
 conflicts=('pcsxr' 'pcsx-df')
@@ -23,18 +26,31 @@ pkgver() {
   echo "1.9.93.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-build() {
+prepare() {
   cd pcsxr/pcsxr
 
-  chmod +x autogen.sh
-  ./autogen.sh \
-    --prefix='/usr' \
-    --enable-{libcdio,opengl}
+  if [[ -d build ]]; then
+    rm -rf build
+  fi
+  mkdir build
+}
+
+build() {
+  cd pcsxr/pcsxr/build
+
+  cmake .. \
+    -DCMAKE_BUILD_TYPE='Release' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
+    -DSND_BACKEND='pulse' \
+    -DENABLE_CCDDA='ON' \
+    -DUSE_LIBARCHIVE='ON' \
+    -DUSE_LIBCDIO='ON'
   make
 }
 
 package() {
-  cd pcsxr/pcsxr
+  cd pcsxr/pcsxr/build
 
   make DESTDIR="${pkgdir}" install
 }
