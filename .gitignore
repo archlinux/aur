@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/libxcb/
+/*.pkg.tar.xz
