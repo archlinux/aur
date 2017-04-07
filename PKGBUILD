@@ -1,26 +1,21 @@
 # Maintainer: Michael Gisbers <michael@gisbers.de>
 pkgname=flashprint
-pkgver=3.15.0
-pkgrel=3
+pkgver=3.16.0
+pkgrel=1
 pkgdesc="Slicer for the FlashForge 3D printers."
-arch=('i686' 'x86_64')
+### no i686 link for version 3.16.0 available
+#arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.ff3dp.com/"
 depends=('qt5-base')
-source_x86_64=("${pkgname}-${pkgver}_amd64.deb::http://www.sz3dp.com/upfile/2017/02/24/20170224150536_986.deb" "flashprint")
-source_i686=("${pkgname}-${pkgver}_i686.deb::http://www.sz3dp.com/upfile/2017/01/03/20170103151329_822.deb" "flashprint")
-md5sums_i686=('f34f3103ad52ca1ede3d521ce190589d'
-              '1fa4e9abedbfb0fe9744986e2725d443')
-md5sums_x86_64=('52b43395ca182de61255011700ea5712'
+source_x86_64=("${pkgname}-${pkgver}_amd64.deb::http://www.ishare3d.com/3dapp/public/FlashPrint-ii/flashprint_3.16.0_amd64.deb" "flashprint")
+#source_i686=("${pkgname}-${pkgver}_i686.deb::http://www.sz3dp.com/upfile/2017/01/03/20170103151329_822.deb" "flashprint")
+md5sums_x86_64=('ca62ea6346f6d87b4f950da907ffa456'
                 '1fa4e9abedbfb0fe9744986e2725d443')
-sha256sums_i686=('e33d9607b70ae3472eb0a74fcdc962e9131f17ac4148e873d6761c2900a9cf14'
-                 'c981bd5d01b885ee952331f60a5545f1e667055f2c1fd0a37d9bb1d227bc281a')
-sha256sums_x86_64=('64914066ceb9a13d8c7717c5b1d96b77630a062d6be7c397a338915fc119b338'
+sha256sums_x86_64=('f6bb2d4886d2ac8a3d9b3435b51b743e76a97a746d7ab8dedfcfd55ad607c66e'
                    'c981bd5d01b885ee952331f60a5545f1e667055f2c1fd0a37d9bb1d227bc281a')
-sha512sums_i686=('2f6281a831fdda43dd75a6673d6ddc50ca2274f0fe1253e869cca058c8fb372fd6cda4349569bc4929574ce4846abfc29a2d4b0ffe4ebb6c1357be3d3f5ac2ba'
-                 'e233d1f4eac6b69ecb43bbd2a7a18ded87896109d1e20b7e41cae76377bd16901fd8defa7d89225a958f2d80aa44de52d8a6533619a2fc237aaae056d971fe0f')
-sha512sums_x86_64=('d46bc737b34cca67bd14a204b014402a6348c2e4167460faa90721c682daad872e4a0fdd32db7bb1dc1466a859167bd3e75cf340f2aca6f51c82c543deaf2625'
+sha512sums_x86_64=('1f2c93182d67858f6740dc2a9915a0e37cee5fc4db6414f28dac98fcc194a12a1eeaaecc83f34f9a2222c8a33fcd84807e45f60ce704ac8bb56a012fd6106594'
                    'e233d1f4eac6b69ecb43bbd2a7a18ded87896109d1e20b7e41cae76377bd16901fd8defa7d89225a958f2d80aa44de52d8a6533619a2fc237aaae056d971fe0f')
-
 package() {
     cd ${pkgdir}
     tar -Jxvf ${srcdir}/data.tar.xz
