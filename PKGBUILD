@@ -23,5 +23,5 @@ package() {
 
   install -Dm755 \
     ${srcdir}/opt/brother/Printers/dcpl8450cdw/cupswrapper/cupswrapperdcpl8450cdw \
-    ${pkgdir}/usr/lib/cups/filter/cupswrapperdcpl8450cdw
+    ${pkgdir}/usr/lib/cups/filter/brother_lpdwrapper_dcpl8450cdw
 }
