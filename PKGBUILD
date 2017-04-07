@@ -4,7 +4,7 @@ pkgdesc="ROS - The actionlib stack provides a standardized interface for interfa
 url='http://www.ros.org/wiki/actionlib'
 
 pkgname='ros-kinetic-actionlib'
-pkgver='1.11.7'
+pkgver='1.11.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -39,7 +39,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="actionlib-release-release-kinetic-actionlib-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/actionlib-release/archive/release/kinetic/actionlib/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('331642d2241ea8fc055c042436745ca574b85a537bd5755862bdb95e9a0528eb')
+sha256sums=('778c047042b71c31de53455562745b7f05a3afbea29962ad6e65cdfb3775fac7')
 
 build() {
   # Use ROS environment variables
