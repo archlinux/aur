@@ -3,8 +3,8 @@
 
 pkgname=kaption
 pkgver=0.1.1
-pkgrel=2
-pkgdesc="A KDE utility similar to Jing or Skitch to take and edit desktop snapshots"
+pkgrel=3
+pkgdesc="A KDE utility similar to Jing or Skitch to take and edit screenshots"
 arch=('i686' 'x86_64')
 url="http://kde-apps.org/content/show.php/Kaption?content=139302"
 license=('GPL')
