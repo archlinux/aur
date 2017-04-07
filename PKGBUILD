@@ -1,9 +1,10 @@
 # Contributor: Andres F. Urquijo <alfagalileox@gmail.com>
+# Maintainer: Sebastian Krämer <basti.kr@gmail.com>
 _name=qutip
 _pkgname=qutip
 pkgname=python-qutip
-pkgver=3.1.0
-pkgrel=2
+pkgver=4.1.0
+pkgrel=1
 pkgdesc="QuTiP is open-source software for simulating the dynamics of open quantum systems"
 arch=("any")
 url="http://qutip.org/index.html"
@@ -31,3 +32,4 @@ package() {
     cd "$srcdir/$_pkgname-$pkgver"
     python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
 }
+md5sums=('7a4047aabbc906a84a2a7ca645a6e23a')
