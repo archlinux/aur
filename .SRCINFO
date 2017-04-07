@@ -1,6 +1,6 @@
 pkgbase = fdu-elearning-helper
 	pkgdesc = A frontend for Fudan eLearning, with many feature added. http://eh.zbyzbyzby.com/
-	pkgver = 0.1.9
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/zhangboyang/fdu_elearning_helper
 	arch = any
