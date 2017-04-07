@@ -1,8 +1,8 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-troveclient' 'python2-troveclient')
-pkgver='2.7.0'
-pkgrel='3'
+pkgver='2.8.0'
+pkgrel='1'
 pkgdesc='Python client library for Trove'
 arch=('any')
 url='http://docs.openstack.org/developer/python-troveclient'
