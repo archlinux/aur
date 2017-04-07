@@ -1,6 +1,6 @@
 # Maintainer: Brandon Milton <brandon.milton21@gmail.com>
 pkgname=wallepy
-pkgver=0.01
+pkgver=0.02
 pkgrel=1
 pkgdesc="An automatic wallpaper getter and setter using feh"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/brandonio21/wallepy"
 license=('MIT')
 depends=('python>=3' 'python-click')
 source=("https://github.com/brandonio21/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('3ab8212d5da35611e98a4ecab6a7cd3456cdea50e4eba3178cad36785043b5cb')
+sha256sums=('d88ec6622d5455611d671ea385c132c252583acabdb4f84469962def4d7a9b36')
 
 package() {
   cd "$pkgname-$pkgver"
