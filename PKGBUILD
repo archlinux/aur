@@ -1,16 +1,16 @@
 # Maintainer: James W. Barnett <james at wbarnett dot us>
 
 pkgname=grub-btrfs
-pkgver=1.10
+pkgver=1.11
 pkgrel=1
-pkgdesc="grub-btrfs, Include btrfs snapshots at boot options. (grub menu)"
+pkgdesc="Include btrfs snapshots in GRUB boot options"
 arch=('any')
 url="https://github.com/Antynea/grub-btrfs"
 license=('GPL3')
 depends=('btrfs-progs' 'grub')
 conflicts=('grub-btrfs-git')
 source=("https://github.com/Antynea/grub-btrfs/archive/v${pkgver}.tar.gz")
-md5sums=('84b856c826a468b6bc235111daf7801e')
+md5sums=('847bdcea497ff1be3c788f10ebf532af')
 
 package() {
   cd $pkgname-$pkgver
