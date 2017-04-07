@@ -1,6 +1,6 @@
 pkgbase = cockroachdb
 	pkgdesc = An open source, survivable, strongly consistent, scale-out SQL database
-	pkgver = 20170330
+	pkgver = 20170406
 	pkgrel = 1
 	url = https://www.cockroachlabs.com/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cockroachdb
 	makedepends = git>=1.8
 	makedepends = go
 	depends = gcc-libs>=6.0
-	source = cockroachdb::git+https://github.com/cockroachdb/cockroach.git#tag=beta-20170330
+	source = cockroachdb::git+https://github.com/cockroachdb/cockroach.git#tag=beta-20170406
 	sha256sums = SKIP
 
 pkgname = cockroachdb

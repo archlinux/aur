@@ -1,7 +1,7 @@
 # Maintainer: Charlie Li <vishwin AT vishwin POINT info>
 
 pkgname=cockroachdb
-pkgver=20170330
+pkgver=20170406
 pkgrel=1
 pkgdesc="An open source, survivable, strongly consistent, scale-out SQL database"
 arch=('x86_64')
