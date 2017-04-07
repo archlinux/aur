@@ -3,7 +3,7 @@
 pkgname=mastodon-docker-git
 pkgver=1.0_584_g1c351709
 _branch=master
-pkgrel=1
+pkgrel=0.1
 pkgdesc="A GNU Social-compatible microblogging server"
 arch=('i686' 'x86_64')
 url="https://mastodon.social"
