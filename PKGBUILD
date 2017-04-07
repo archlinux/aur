@@ -1,5 +1,5 @@
 pkgname=mingw-w64-geos
-pkgver=3.4.2
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="C++ port of the Java Topology Suite (mingw-w64)"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://download.osgeo.org/geos/geos-$pkgver.tar.bz2")
-sha256sums=('15e8bfdf7e29087a957b56ac543ea9a80321481cef4d4f63a7b268953ad26c53')
+sha256sums=('49982b23bcfa64a53333dab136b82e25354edeb806e5a2e2f5b8aa98b1d0ae02')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
