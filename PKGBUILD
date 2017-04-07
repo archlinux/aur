@@ -2,8 +2,8 @@
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 
 pkgname=drjava
-pkgver=20140826
-_realver=stable-${pkgver}-r5761
+pkgver=20160913
+_realver=beta-${pkgver}-225446
 pkgrel=1
 pkgdesc="A lightweight development environment for writing Java programs"
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('bash' 'java-environment')
 source=(http://downloads.sourceforge.net/sourceforge/drjava/drjava-${_realver}.jar
         'drjava.sh' 'drjava.desktop' 'LICENSE')
-md5sums=('b637ffbab909fc8c03f333d55bc59237'
+md5sums=('db321486cddbeb7470d62341084e4ae9'
          'a57baea903b23dc546d8ad0ec016ec93'
          'df1e9a8e696b70ad57b1adc33a1ea19a'
          '2108800ef4928c954af10f1c44bcddfd')
