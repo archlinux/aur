@@ -1,4 +1,4 @@
-# Maintainer: David McInnis <dave@davehub.net>
+# Maintainer: David McInnis <dave@dave3.xyz>
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve>
 # Contributor: djgera
@@ -7,7 +7,7 @@
 pkgname=geany-plugins-nowebkitgtk
 _downloadname=geany-plugins
 pkgver=1.30
-pkgrel=1
+pkgrel=2
 pkgdesc='Geany plugins, minus geanypy'
 arch=('x86_64' 'i686')
 url='http://plugins.geany.org/'
