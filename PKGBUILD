@@ -4,7 +4,7 @@ _font="cabin-font"
 _group="impallari"
 pkgname=ttf-${_group}-${_font}
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A humanist sans inspired by Edward Johnston's and Eric Gill's typefaces, from Pablo Impallari"
 arch=(any)
 url="http://www.impallari.com/cabin/"
@@ -16,7 +16,7 @@ source=("http://www.impallari.com/media/releases/${_font}-v${pkgver}.zip")
 md5sums=('ae4b0e4e0298ac88589b8e57629a6a08')
 
 package() {
-  cd ${srcdir}/*
+  cd "${srcdir}/cabin font v${pkgver}"
 
   install -dm755 "${pkgdir}/usr/share/fonts/TTF/${_group}"
   install -Dpm644 *.ttf "${pkgdir}/usr/share/fonts/TTF/${_group}"

@@ -1,7 +1,7 @@
 pkgbase = ttf-impallari-cabin-font
 	pkgdesc = A humanist sans inspired by Edward Johnston's and Eric Gill's typefaces, from Pablo Impallari
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.impallari.com/cabin/
 	install = updatefont.install
 	arch = any

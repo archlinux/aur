@@ -4,7 +4,6 @@ post_install() {
   mkfontscale /usr/share/fonts/TTF
   mkfontdir /usr/share/fonts/TTF
   echo "done."
- 
 }
 
 post_upgrade() {
