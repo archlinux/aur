@@ -7,4 +7,4 @@ pkgdesc="A GNU Social-compatible microblogging server"
 arch=('i686' 'x86_64')
 url="https://mastodon.social"
 license=('AGPL-3.0')
-conflicts=("${pkgname%-docker}", "${pkgname%-docker}-git")
+conflicts=("${pkgname%-docker}", "${pkgname%-docker}-git", "${pkgname}-git")
