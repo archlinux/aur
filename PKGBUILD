@@ -4,7 +4,7 @@ pkgdesc="ROS - This package allows you to publish the state of a robot to tf."
 url='http://wiki.ros.org/robot_state_publisher'
 
 pkgname='ros-kinetic-robot-state-publisher'
-pkgver='1.13.3'
+pkgver='1.13.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -23,7 +23,8 @@ ros_makedepends=(ros-kinetic-tf2-kdl
   ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  eigen3)
+  eigen3
+  urdfdom-headers)
 
 ros_depends=(ros-kinetic-tf2-kdl
   ros-kinetic-tf
@@ -47,7 +48,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="robot_state_publisher-release-release-kinetic-robot_state_publisher-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_state_publisher-release/archive/release/kinetic/robot_state_publisher/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('32e74ee2af2c64f48f3e7cbdc35e27efe5ce0157a2ad5db80207f527636c9c68')
+sha256sums=('b9c34a02ca457a5e3cdd256c805121eb1da7dfcc281d9de98fb188d04599809c')
 
 build() {
   # Use ROS environment variables
