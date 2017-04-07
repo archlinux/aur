@@ -1,10 +1,10 @@
-# $Id$
-# Maintainer: tobias <tobias@archlinux.org>
+# Maintainer: Que Quotion <quequotion@bugmenot.org>
+# Contributor: tobias <tobias@archlinux.org>
 
 pkgbase=gnome-sharp
 pkgname=('gnome-sharp' 'art-sharp' 'gconf-sharp-peditors' 'libgnome-sharp' 'gnome-vfs-sharp')
 pkgver=2.24.2
-pkgrel=5
+pkgrel=6
 arch=(i686 x86_64)
 license=(LGPL)
 url="http://gtk-sharp.sourceforge.net"
