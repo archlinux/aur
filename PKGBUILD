@@ -1,7 +1,7 @@
 # Maintainer: Brandon Milton <brandon.milton21@gmail.com>
 pkgname=wallepy
 pkgver=0.03
-pkgrel=1
+pkgrel=2
 pkgdesc="An automatic wallpaper getter and setter using feh"
 arch=('any')
 url="https://github.com/brandonio21/wallepy"
@@ -17,4 +17,5 @@ package() {
 
   install walle.py $pkgdir/usr/bin
   cp wallepy.service $pkgdir/usr/lib/systemd/user
+  cp wallepy.timer $pkgdir/usr/lib/systemd/user
 }
