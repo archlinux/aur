@@ -4,10 +4,10 @@ pkgdesc="ROS - A common repository for CMake Modules which are not distributed w
 url='http://www.ros.org/'
 
 pkgname='ros-kinetic-cmake-modules'
-pkgver='0.4.0'
-_pkgver_patch=1
+pkgver='0.4.1'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-catkin)
@@ -26,7 +26,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="cmake_modules-release-release-kinetic-cmake_modules-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/cmake_modules-release/archive/release/kinetic/cmake_modules/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9b5d60cac5ce45cda57b2061677b33be2162d14913d98c69df0e493abfc3f0fe')
+sha256sums=('1604db9807d1df623c75bf653ef135eb8c2f1f5343e74dea13f02eaf2a69fc25')
 
 build() {
   # Use ROS environment variables
