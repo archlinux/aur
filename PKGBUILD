@@ -4,7 +4,7 @@ pkgdesc="ROS - roscpp is a C++ implementation of ROS."
 url='http://ros.org/wiki/roscpp'
 
 pkgname='ros-kinetic-roscpp'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -45,7 +45,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-roscpp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/roscpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('828128fd6494787e55c4f8f2099414d8fe860d3159bc2de538ec3de6297aa769')
+sha256sums=('4fa71a99805a5cfb30b86c95a2bcab5d0f9816e7d5560733cdfdaf81d9787bab')
 
 build() {
   # Use ROS environment variables
