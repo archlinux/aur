@@ -1,14 +1,14 @@
 pkgbase = osl
 	pkgdesc = OpenScop Library
-	pkgver = 0.9.0
-	pkgrel = 2
+	pkgver = 0.9.1
+	pkgrel = 1
 	url = http://icps.u-strasbg.fr/people/bastoul/public_html/development/openscop/index.html
 	arch = x86_64
 	license = BSD
 	depends = gmp
 	provides = osl
-	source = http://icps.u-strasbg.fr/people/bastoul/public_html/development/openscop/docs/osl-0.9.0.tar.gz
-	md5sums = d1aa20732b61c5c20e153d9d850e732f
+	source = https://github.com/periscop/openscop/releases/download/0.9.1/osl-0.9.1.tar.gz
+	md5sums = 90727c6a79d085d5b90b21cf190b618a
 
 pkgname = osl
 
