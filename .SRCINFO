@@ -1,6 +1,6 @@
 pkgbase = hwcrypto-native-git
 	pkgdesc = Web eID native component
-	pkgver = 17.3.16.r0.g62dad13
+	pkgver = 17.3.18.r1.ga133093
 	pkgrel = 1
 	url = https://github.com/hwcrypto/hwcrypto-native
 	arch = x86_64
