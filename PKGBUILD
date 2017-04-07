@@ -1,7 +1,11 @@
-#pkgbase=linux               # Build stock -ARCH kernel
-pkgbase=linux-covolunablu-gaming       # Build kernel with a different name
+# Maintainer: Matteo De Carlo <matteo.dek at gmail dot com>
+# Maintainer: Roberto Benfatto <robenfatto at covolunablu dot org>
+# Contributor: Tobias Powalowski <tpowa at archlinux dot org>
+# Contributor: Thomas Baechler <thomas at archlinux dot org>
+
+pkgbase=linux-covolunablu-gaming
 _srcname=linux-4.10
-pkgver=4.10.6
+pkgver=4.10.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -33,7 +37,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
             'SKIP'
-            '99ecfe76c427aeebfb0f02fe130264db1d22c87e3f7efd34a231fe6d5c50d75d'
+            'ceb385486e34084dd53425e5ba50b9fba4a8e380d8f2815bfde142852d797da0'
             'SKIP'
             '3a2a5d314a2a2135d2e87aa8e6b44ac142fa249cc5f51f43a918393e6ce3d5a5'
             'b2df79d0c15cb1f364164299102f2a33470e58a2e01fb092144e6288726d0188'
