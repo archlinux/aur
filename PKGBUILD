@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS Master implementation."
 url='http://ros.org/wiki/rosmaster'
 
 pkgname='ros-kinetic-rosmaster'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-rosmaster-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/rosmaster/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('95e4bd5bac1313f28aeb3e28eaf4656d070766f3f33354a680c9c833db762a97')
+sha256sums=('9f7192a4201b3fee525416380e32146fb94d70c328e7cc9792b8438a2736818c')
 
 build() {
   # Use ROS environment variables
