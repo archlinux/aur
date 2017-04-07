@@ -1,8 +1,11 @@
 pkgbase = ftree
+	pkgdesc = Convert lists of files into tree(1)-like output
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/thoughtbot/ftree
 	arch = i686
 	arch = x86_64
+	license = MIT
 	makedepends = go
 	source = ftree-0.2.0.tar.gz::https://github.com/thoughtbot/ftree/archive/v0.2.0.tar.gz
 	md5sums = eb182e84e169783b26079396bdb25da2
