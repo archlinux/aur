@@ -1,0 +1,12 @@
+diff -Naur ./awn.orig/libawn/vala-utils.h ./awn/libawn/vala-utils.h
+--- ./awn.orig/libawn/vala-utils.h	2017-04-06 14:27:57.402826040 -0400
++++ ./awn/libawn/vala-utils.h	2017-04-06 14:29:09.752822981 -0400
+@@ -31,6 +31,8 @@
+ 
+ void vala_set_dbus_error(const DBusError& dbus_error, GError** error);
+ 
++void vala_array_destroy(gpointer array, gint array_length, GDestroyNotify destroy_func);
++
+ void vala_array_free(gpointer array, gint array_length, GDestroyNotify destroy_func);
+ 
+ void vala_dbus_get_gvalue(DBusMessageIter* super_it, GValue* val);
