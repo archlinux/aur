@@ -4,7 +4,7 @@ pkgdesc="ROS - A set of message filters which take in messages and may output th
 url='http://ros.org/wiki/message_filters'
 
 pkgname='ros-kinetic-message-filters'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-message_filters-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/message_filters/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ef0d427509204bb51f7e3f9bd6e3178d02ce49894f0ee357aeeb7cc2bda36caa')
+sha256sums=('52ae2d6270cafe8f2ce12130dd8b5c766ee6d0520334a377c479688188a973d5')
 
 build() {
   # Use ROS environment variables
