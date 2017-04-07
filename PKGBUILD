@@ -1,10 +1,10 @@
-# Maintainer: David McInnis <davidm@eagles.ewu.edu>
+# Maintainer: David McInnis <dave@dave3.xyz>
 # Contributor: Gerald Kaszuba <pycallgraph@gakman.com>
 
 pkgname=('python-pycallgraph')
 _module='pycallgraph'
 pkgver='1.0.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Library and command line tool that visualises the flow of your Python application."
 url="http://pycallgraph.slowchop.com/"
 depends=('python')
