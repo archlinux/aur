@@ -1,14 +1,15 @@
 pkgbase = bunsen-images
 	pkgdesc = BunsenLabs wallpaper collection
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 8.7
+	pkgrel = 1
 	url = https://github.com/BunsenLabs/bunsen-images
 	arch = any
 	license = GPL3
+	makedepends = rsync
 	provides = bunsen-images
 	conflicts = bunsen-images
-	source = https://github.com/2ion/bunsen-images/archive/1.0.tar.gz
-	md5sums = bd6cad0231116c0f6cfdbfd4ad6f20b2
+	source = https://codeload.github.com/BunsenLabs/bunsen-images/tar.gz/8.7-1
+	sha512sums = 5b6f840c870dabfc230e5e84d01d532f7b903d44010357d6131e3f95c0b6c58d5d92feecf3c3b9b484a0df203e3ed9f9c24f55ad2eb5dc7758bcb2fe86921b12
 
 pkgname = bunsen-images
 
