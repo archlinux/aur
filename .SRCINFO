@@ -1,0 +1,22 @@
+pkgbase = protrekkr-git
+	pkgdesc = Tracker program to create electronic music (like psytrance, trance goa, hard acid, IDM, chip, techno, etc.) for small sized intros, demos or games.
+	pkgver = r687.dca6ef0
+	pkgrel = 1
+	url = http://pbat.ch/proj/protrekkr/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = sporth
+	makedepends = soundpipe
+	makedepends = runt
+	depends = liblo
+	depends = jack
+	depends = lua
+	provides = protrekkr
+	conflicts = protrekkr
+	source = git://github.com/PaulBatchelor/protrekkr.git
+	md5sums = SKIP
+
+pkgname = protrekkr-git
+
