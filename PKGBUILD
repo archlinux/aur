@@ -7,8 +7,8 @@
 pkgname=cin-bin
 name=cin
 pkgver=5.1
-pkgrel=201731
-rel=20170228
+pkgrel=20174
+rel=20170329
 pkgdesc="Cinelerra ($pkgver) ($pkgrel)"
 arch=('x86_64')
 url="https://github.com/triceratops1/Arch-cinelerra"
@@ -18,13 +18,13 @@ depends=('xorg-server' 'xorg-server-utils' 'libpng' 'libxv' 'libva'
 makedepends=('yasm' 'nasm' 'cmake'
 'libxml2' 'perl-xml-libxml' 'perl-xml-parser' 'python2')
 conflicts=('cinelerra-cv' 'cinelerra-heroine' 'cin')
-source=(https://cinelerra-cv.org/five/pkgs/arch/${name}-${pkgver}-${rel}-arch-${arch}.pkg.tar.xz
-)
-sha256sums=('3cda03c60369d15933c8294994a5ad42c0ee6bbff6cf4b04aaa19fe9b6d212c8')
-sha384sums=('906b9a2a484a9c98d7973b28681cb4d855ac2feb9fd2217b152b38a81165a6d694c47d6778db5e0bcd34eb8304a7f4b4')
-sha512sums=('220730e22899813a86d0715ceff425a520201ab5f1488337983f1754d2762d80f0aba63db254ed5df5bdb6772b7f8f69a142902289242dbf608d1234484b0452')
+source=(https://cinelerra-cv.org/five/pkgs/arch/cin-5.1-20170329-arch-x86_64.pkg.tar.xz)
+sha256sums=('5759f873f998c847a21b4f4c4fd501f76d65d8dd948b2d63507c0f566cfad10e')
+sha384sums=('ab4819b004ca52d04b1d1b821af18a122f64d61aa53791b00377e83b829f6c5ec9373fd2abe2f70489b27d8aaf3ee66c')
+sha512sums=('ad55476b68d30127dfb7bd2bd231595d32a5740f27af921b51c57e32791ef7100f2826951d8676b7d623c80aa77ab6e1f0d9ef88eb58a45d1a76564adbf8bcd6')
+
 package() {
-tar xJvf ${srcdir}/cin-${pkgver}-20170131-${arch}.pkg.tar.xz -C ${pkgdir}/
+tar xJvf ${srcdir}/*.pkg.tar.xz -C ${pkgdir}/
 }
 
 # vim:set ts=2 sw=2 et:
