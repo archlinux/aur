@@ -4,7 +4,7 @@ pkgdesc="ROS - The Kinematics and Dynamics Library (KDL) defines a tree structur
 url='http://ros.org/wiki/kdl_parser'
 
 pkgname='ros-kinetic-kdl-parser'
-pkgver='1.12.5'
+pkgver='1.12.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,7 +35,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="robot_model-release-release-kinetic-kdl_parser-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/kinetic/kdl_parser/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c9188b80d3a5d2d82877b97d6a7060dfcedd6b6380a16fcc310b6d4a475d43ed')
+sha256sums=('fc2d9d639139d4d3d1ac92b4b84a71239c9877d54cfd0d47e452f359be3ca9c4')
 
 build() {
   # Use ROS environment variables
