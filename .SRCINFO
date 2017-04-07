@@ -1,0 +1,26 @@
+pkgbase = gvsig-desktop
+	pkgdesc = A powerful, user-friendly and interoperable GIS.
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = http://www.gvsig.com/en/products/gvsig-desktop
+	arch = x86_64
+	license = GPL
+	depends = java-environment>=6
+	depends = hicolor-icon-theme
+	depends = libidn
+	depends = libldap
+	depends = libjpeg-turbo
+	depends = proj
+	depends = geos
+	depends = openssl
+	source = http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.1/builds/2501/gvSIG-desktop-2.3.1-2501-final-lin_ubuntu_16.04-x86_64.zip
+	source = gvsig-desktop.desktop
+	source = gvSIG.config
+	source = 001-patch_x64bits.patch
+	sha256sums = 987ec4e47e9d9dec43d588c07693b04f438049b8ce5b73372290e1108b45431e
+	sha256sums = f3bfca96b53572799aad64092b30ece4cec3b67db0062efada79a48d60d00ea0
+	sha256sums = d5dd810d2492486af38b2d8079dbd24554b4f7dd6fd43d1af860ae6667239bb2
+	sha256sums = 212ed4c8223c18239ca10d4e78b6cc5fbbea8631157313b51cdaf8c55bd91316
+
+pkgname = gvsig-desktop
+

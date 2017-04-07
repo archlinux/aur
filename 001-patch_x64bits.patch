@@ -1,0 +1,11 @@
+--- gvSIG.sh	2016-10-18 08:58:16.000000000 -0500
++++ gvSIG.sh.new	2017-04-07 09:46:43.528471660 -0500
+@@ -51,7 +51,7 @@
+ # Identify OS and Architecture  #
+ ####################
+ 
+-UNAME=$(uname -p -o | tr '[:upper:]' '[:lower:]')
++UNAME=$(uname -p -o -m | tr '[:upper:]' '[:lower:]')
+ case "$UNAME" in
+ *darwin*)
+     OS="darwin"

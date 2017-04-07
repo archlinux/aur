@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=gvSIG
+Icon=gvsig-desktop
+GenericName=The Open Source Geographic Information System
+Comment=gvSIG Desktop 2.2.0
+Exec=/opt/gvsig-desktop/gvSIG.sh %F
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Science;Geography
