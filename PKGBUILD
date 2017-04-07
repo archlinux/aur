@@ -1,9 +1,8 @@
 # Maintainer: Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgname=mrboom
-_gitname=mboom-libretro
 pkgver=3.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Mr.Boom is a 8 players Bomberman clone"
 arch=('i686' 'x86_64')
 conflicts=('mrboom')
@@ -15,7 +14,7 @@ makedepends=(
 			 'sdl2'
 			 'sdl2_mixer'
 			)
-source=("mboom-libretro::git+https://github.com/libretro/mrboom-libretro#tag=${pkgver}"
+source=("mrboom::git+https://github.com/libretro/mrboom-libretro#tag=${pkgver}"
 		'mrboom.desktop'
 		'mrboom.svg')
 md5sums=(
@@ -26,7 +25,7 @@ md5sums=(
 
 build() {
   
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$pkgname"
   make mrboom LIBSDL2=1
   cp mrboom.out mrboom
 
@@ -34,7 +33,7 @@ build() {
 
 package() {
 
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$pkgname"
 
   # Install main binary
   install -Dm755 mrboom "$pkgdir"/bin/mrboom

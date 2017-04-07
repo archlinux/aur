@@ -1,7 +1,7 @@
 pkgbase = mrboom
 	pkgdesc = Mr.Boom is a 8 players Bomberman clone
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 3
 	url = http://mrboom.mumblecore.org
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mrboom
 	makedepends = sdl2_mixer
 	provides = mrboom
 	conflicts = mrboom
-	source = mboom-libretro::git+https://github.com/libretro/mrboom-libretro#tag=3.1
+	source = mrboom::git+https://github.com/libretro/mrboom-libretro#tag=3.1
 	source = mrboom.desktop
 	source = mrboom.svg
 	md5sums = SKIP
