@@ -3,7 +3,7 @@
 # Contributor: oslik
 pkgname=solvespace
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A parametric 3d CAD program"
 arch=('i686' 'x86_64')
 url='http://solvespace.com/'
@@ -15,6 +15,12 @@ sha256sums=('SKIP')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
+
+    # Backport of https://github.com/solvespace/solvespace/commit/7c2417ab735cf05960939647a2a016fb51f88135
+    cd "src"
+    sed -i'' -e's/CHAR_WIDTH/CHAR_WIDTH_/g' ui.h textwin.cpp toolbar.cpp
+    cd ".."
+
     mkdir -p build
     cd "extlib"
     git submodule update --init "libdxfrw"
