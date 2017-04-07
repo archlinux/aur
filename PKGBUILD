@@ -4,16 +4,13 @@ pkgdesc="ROS - This package contains a tool for setting and publishing joint sta
 url='http://www.ros.org/wiki/joint_state_publisher'
 
 pkgname='ros-kinetic-joint-state-publisher'
-pkgver='1.12.5'
+pkgver='1.12.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-kinetic-rospy
-  ros-kinetic-catkin
-  ros-kinetic-python-qt-binding
-  ros-kinetic-sensor-msgs)
+ros_makedepends=(ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
@@ -31,7 +28,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="robot_model-release-release-kinetic-joint_state_publisher-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/kinetic/joint_state_publisher/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ff4e6fdf3f624d6bd5de55759646280c90559ea05ce3c084d922bfb3033b8853')
+sha256sums=('d966e8b06a3e15e02ab2d5a0e81399efe2ec1f2bf95316ff564ad045fb54042f')
 
 build() {
   # Use ROS environment variables
