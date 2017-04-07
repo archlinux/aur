@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS Package Tool."
 url='http://wiki.ros.org/rospack'
 
 pkgname='ros-kinetic-rospack'
-pkgver='2.3.1'
+pkgver='2.3.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rospack-release-release-kinetic-rospack-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rospack-release/archive/release/kinetic/rospack/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('14cd920af7f82e56afc29a9a48878c959a6ad7e8f94f1b1681adba3d9ccafe82')
+sha256sums=('3d03e4c0a1791d8470979fc28660c1b28ccbf555fec1efafa32683f712fc9b7f')
 
 build() {
   # Use ROS environment variables
