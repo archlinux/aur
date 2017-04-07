@@ -15,8 +15,7 @@ depends=('gtk3' 'python-gobject' 'libsecret' 'python-cairo' 'python>=3.6'
 optdepends=('libkeybinder3: for media keys plugin'
             'libappindicator-gtk3: Unity indicator applet support'
             'python-pacparser: PAC proxy support'
-            'python-pylast: Last.fm scrobbling support'
-            'libnotify: Notification support')
+            'python-pylast: Last.fm scrobbling support')
 makedepends=('intltool')
 source=(
   "https://github.com/pithos/pithos/releases/download/${pkgver}/pithos-${pkgver}.tar.xz"{,.asc}
