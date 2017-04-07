@@ -24,9 +24,16 @@ depends=(
     )
 source=("git://github.com/tootsuite/${pkgname%-git}.git#branch=$_branch")
 sha256sums=('SKIP')
+_user=mastodon
+_homedir="/var/lib/${pkgname}"
+_shell="/bin/false"
 
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/-/_/g'
 }
 
+post_install() {
+    getent group ${_user} > /dev/null || groupadd ${_user} > /dev/null
+    getent passwd ${_user} > /dev/null || useradd -d ${_homedir} -g ${_user} -s ${_shell} ${_user} > /dev/null
+}
