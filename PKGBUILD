@@ -22,7 +22,9 @@ source=("https://download.zarafa.com/community/final/7.1/7.1.7-42779/sourcecode/
 	"https://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/libical-patches/libical-event-outside-timezone-def.diff"
 	"https://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/libical-patches/libical-nth-recur-overflow.diff"
 	"https://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/libical-patches/libical-win32-add-generated-files.diff"
-	"https://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/libical-patches/libical-win32-fix-compile-errors.diff")
+	"https://download.zarafa.com/community/final/${_pkgmajver}/${_pkgrev}/sourcecode/libical-patches/libical-win32-fix-compile-errors.diff"
+        "config.guess::http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD"
+        "config.sub::http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD")
 
 md5sums=('e0403c31e1ed82569325685f8c15959c'
          '2af5986253a13374463fcafa15873a8e'
@@ -30,28 +32,33 @@ md5sums=('e0403c31e1ed82569325685f8c15959c'
          '23c5c1355539cbf66252c6a831ad2f5c'
          '0088ac43572185b52f525c0d534f42e5'
          'e641a1e9af799c056e52f31cf5f0f991'
-         '26c814b710ea249b748e531f7930a5ef')
+         '26c814b710ea249b748e531f7930a5ef'
+         'SKIP'
+         'SKIP')
 
 prepare() {
-        cd $srcdir/libical-${_libicalver}
+    cd $srcdir/libical-${_libicalver}
         
-	# Patching
-	for pa in ../*.diff; do
-	    echo "Patching ${pa}"
-	    patch -p1 <${pa}
-	done
+    # Patching
+    for pa in ../*.diff; do
+        echo "Patching ${pa}"
+        patch -p1 <${pa}
+    done
+	
+    cp -Lf $srcdir/config.guess .
+    cp -Lf $srcdir/config.sub .
 }
 
 build() {
-        cd $srcdir/libical-${_libicalver}
+    cd $srcdir/libical-${_libicalver}
 
-	./configure --prefix=/usr
-	make
+    ./configure --prefix=/usr
+    make
 }
 
 package() {
-        cd $srcdir/libical-${_libicalver}
+    cd $srcdir/libical-${_libicalver}
 
-	make install DESTDIR="$(realpath ${pkgdir})"
-        #scons prefix=$pkgdir/usr install  || return 1
+    make install DESTDIR="$(realpath ${pkgdir})"
+    #scons prefix=$pkgdir/usr install  || return 1
 }
