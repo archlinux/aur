@@ -6,7 +6,7 @@
 pkgbase=iproute2-cake
 pkgname=(iproute2-cake iproute2-cake-doc)
 pkgver=4.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="IP Routing Utilities"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -18,13 +18,13 @@ options=('staticlibs' '!makeflags')
 validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E') # Stephen Hemminger
 source=("https://www.kernel.org/pub/linux/utils/net/${pkgbase/-cake}/${pkgbase/-cake}-${pkgver}.tar."{xz,sign}
         '0001-make-iproute2-fhs-compliant.patch'
-	'950b-add-cake-to-tc.patch'
+	'950c-add-cake-to-tc.patch'
 	)
 prepare() {
   cd "${srcdir}/${pkgbase/-cake}-${pkgver}"
 
   # set correct fhs structure
-  patch -Np1 -i "${srcdir}/950b-add-cake-to-tc.patch"
+  patch -Np1 -i "${srcdir}/950c-add-cake-to-tc.patch"
   patch -Np1 -i "${srcdir}/0001-make-iproute2-fhs-compliant.patch"
 
   # do not treat warnings as errors
@@ -81,11 +81,7 @@ package_iproute2-cake-doc() {
   install -m0644 doc/*.html doc/*.pdf "${pkgdir}/usr/share/doc/iproute2/"
 }
 
-sha1sums=('fc28f956a7a9695473312d0ed35dc24a7ef9d7f6'
-          'SKIP'
-          '1ed328854983b3f9df0a143aa7c77920916a13c1'
-          '73c7e31c299fdb6d720fe0d0401b427f4cbd069c')
 sha1sums=('9e578675f6938359a3036d7886b91d48c0403a40'
           'SKIP'
           '1ed328854983b3f9df0a143aa7c77920916a13c1'
-          '35ac8bcaa03fa4d102e236adcfa519c8c992dbca')
+          'ac4e728b094c07bc6843115ee7f3697fec67e415')

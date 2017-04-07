@@ -1,0 +1,2449 @@
+diff -rupN a/include/linux/pkt_sched.h b/include/linux/pkt_sched.h
+--- a/include/linux/pkt_sched.h	2017-02-20 11:47:52.000000000 -0500
++++ b/include/linux/pkt_sched.h	2017-04-04 17:13:20.844260988 -0400
+@@ -863,4 +863,61 @@ struct tc_pie_xstats {
+ 	__u32 maxq;             /* maximum queue size */
+ 	__u32 ecn_mark;         /* packets marked with ecn*/
+ };
++
++/* CAKE */
++enum {
++	TCA_CAKE_UNSPEC,
++	TCA_CAKE_BASE_RATE,
++	TCA_CAKE_DIFFSERV_MODE,
++	TCA_CAKE_ATM,
++	TCA_CAKE_FLOW_MODE,
++	TCA_CAKE_OVERHEAD,
++	TCA_CAKE_RTT,
++	TCA_CAKE_TARGET,
++	TCA_CAKE_AUTORATE,
++	TCA_CAKE_MEMORY,
++	TCA_CAKE_NAT,
++	TCA_CAKE_ETHERNET,
++	TCA_CAKE_WASH,
++	TCA_CAKE_MPU,
++	TCA_CAKE_INGRESS,
++	__TCA_CAKE_MAX
++};
++#define TCA_CAKE_MAX	(__TCA_CAKE_MAX - 1)
++
++struct tc_cake_traffic_stats {
++	__u32 packets;
++	__u32 link_ms;
++	__u64 bytes;
++};
++
++#define TC_CAKE_MAX_TINS (8)
++struct tc_cake_xstats {
++	__u16 version;  /* == 4, increments when struct extended */
++	__u8  max_tins; /* == TC_CAKE_MAX_TINS */
++	__u8  tin_cnt;  /* <= TC_CAKE_MAX_TINS */
++
++	__u32 threshold_rate   [TC_CAKE_MAX_TINS];
++	__u32 target_us        [TC_CAKE_MAX_TINS];
++	struct tc_cake_traffic_stats sent      [TC_CAKE_MAX_TINS];
++	struct tc_cake_traffic_stats dropped   [TC_CAKE_MAX_TINS];
++	struct tc_cake_traffic_stats ecn_marked[TC_CAKE_MAX_TINS];
++	struct tc_cake_traffic_stats backlog   [TC_CAKE_MAX_TINS];
++	__u32 interval_us      [TC_CAKE_MAX_TINS];
++	__u32 way_indirect_hits[TC_CAKE_MAX_TINS];
++	__u32 way_misses       [TC_CAKE_MAX_TINS];
++	__u32 way_collisions   [TC_CAKE_MAX_TINS];
++	__u32 peak_delay_us    [TC_CAKE_MAX_TINS]; /* ~= delay to bulk flows */
++	__u32 avge_delay_us    [TC_CAKE_MAX_TINS];
++	__u32 base_delay_us    [TC_CAKE_MAX_TINS]; /* ~= delay to sparse flows */
++	__u16 sparse_flows     [TC_CAKE_MAX_TINS];
++	__u16 bulk_flows       [TC_CAKE_MAX_TINS];
++	__u16 unresponse_flows [TC_CAKE_MAX_TINS]; /* v4 - was u32 last_len  */
++	__u16 spare            [TC_CAKE_MAX_TINS]; /* v4 - split last_len */
++	__u32 max_skblen       [TC_CAKE_MAX_TINS];
++	__u32 capacity_estimate;  /* version 2 */
++	__u32 memory_limit;       /* version 3 */
++	__u32 memory_used;        /* version 3 */
++};
++
+ #endif
+diff -rupN a/include/linux/pkt_sched.h.orig b/include/linux/pkt_sched.h.orig
+--- a/include/linux/pkt_sched.h.orig	1969-12-31 19:00:00.000000000 -0500
++++ b/include/linux/pkt_sched.h.orig	2017-04-04 17:13:18.704260992 -0400
+@@ -0,0 +1,922 @@
++#ifndef __LINUX_PKT_SCHED_H
++#define __LINUX_PKT_SCHED_H
++
++#include <linux/types.h>
++
++/* Logical priority bands not depending on specific packet scheduler.
++   Every scheduler will map them to real traffic classes, if it has
++   no more precise mechanism to classify packets.
++
++   These numbers have no special meaning, though their coincidence
++   with obsolete IPv6 values is not occasional :-). New IPv6 drafts
++   preferred full anarchy inspired by diffserv group.
++
++   Note: TC_PRIO_BESTEFFORT does not mean that it is the most unhappy
++   class, actually, as rule it will be handled with more care than
++   filler or even bulk.
++ */
++
++#define TC_PRIO_BESTEFFORT		0
++#define TC_PRIO_FILLER			1
++#define TC_PRIO_BULK			2
++#define TC_PRIO_INTERACTIVE_BULK	4
++#define TC_PRIO_INTERACTIVE		6
++#define TC_PRIO_CONTROL			7
++
++#define TC_PRIO_MAX			15
++
++/* Generic queue statistics, available for all the elements.
++   Particular schedulers may have also their private records.
++ */
++
++struct tc_stats {
++	__u64	bytes;			/* Number of enqueued bytes */
++	__u32	packets;		/* Number of enqueued packets	*/
++	__u32	drops;			/* Packets dropped because of lack of resources */
++	__u32	overlimits;		/* Number of throttle events when this
++					 * flow goes out of allocated bandwidth */
++	__u32	bps;			/* Current flow byte rate */
++	__u32	pps;			/* Current flow packet rate */
++	__u32	qlen;
++	__u32	backlog;
++};
++
++struct tc_estimator {
++	signed char	interval;
++	unsigned char	ewma_log;
++};
++
++/* "Handles"
++   ---------
++
++    All the traffic control objects have 32bit identifiers, or "handles".
++
++    They can be considered as opaque numbers from user API viewpoint,
++    but actually they always consist of two fields: major and
++    minor numbers, which are interpreted by kernel specially,
++    that may be used by applications, though not recommended.
++
++    F.e. qdisc handles always have minor number equal to zero,
++    classes (or flows) have major equal to parent qdisc major, and
++    minor uniquely identifying class inside qdisc.
++
++    Macros to manipulate handles:
++ */
++
++#define TC_H_MAJ_MASK (0xFFFF0000U)
++#define TC_H_MIN_MASK (0x0000FFFFU)
++#define TC_H_MAJ(h) ((h)&TC_H_MAJ_MASK)
++#define TC_H_MIN(h) ((h)&TC_H_MIN_MASK)
++#define TC_H_MAKE(maj,min) (((maj)&TC_H_MAJ_MASK)|((min)&TC_H_MIN_MASK))
++
++#define TC_H_UNSPEC	(0U)
++#define TC_H_ROOT	(0xFFFFFFFFU)
++#define TC_H_INGRESS    (0xFFFFFFF1U)
++#define TC_H_CLSACT	TC_H_INGRESS
++
++#define TC_H_MIN_INGRESS	0xFFF2U
++#define TC_H_MIN_EGRESS		0xFFF3U
++
++/* Need to corrospond to iproute2 tc/tc_core.h "enum link_layer" */
++enum tc_link_layer {
++	TC_LINKLAYER_UNAWARE, /* Indicate unaware old iproute2 util */
++	TC_LINKLAYER_ETHERNET,
++	TC_LINKLAYER_ATM,
++};
++#define TC_LINKLAYER_MASK 0x0F /* limit use to lower 4 bits */
++
++struct tc_ratespec {
++	unsigned char	cell_log;
++	__u8		linklayer; /* lower 4 bits */
++	unsigned short	overhead;
++	short		cell_align;
++	unsigned short	mpu;
++	__u32		rate;
++};
++
++#define TC_RTAB_SIZE	1024
++
++struct tc_sizespec {
++	unsigned char	cell_log;
++	unsigned char	size_log;
++	short		cell_align;
++	int		overhead;
++	unsigned int	linklayer;
++	unsigned int	mpu;
++	unsigned int	mtu;
++	unsigned int	tsize;
++};
++
++enum {
++	TCA_STAB_UNSPEC,
++	TCA_STAB_BASE,
++	TCA_STAB_DATA,
++	__TCA_STAB_MAX
++};
++
++#define TCA_STAB_MAX (__TCA_STAB_MAX - 1)
++
++/* FIFO section */
++
++struct tc_fifo_qopt {
++	__u32	limit;	/* Queue length: bytes for bfifo, packets for pfifo */
++};
++
++/* PRIO section */
++
++#define TCQ_PRIO_BANDS	16
++#define TCQ_MIN_PRIO_BANDS 2
++
++struct tc_prio_qopt {
++	int	bands;			/* Number of bands */
++	__u8	priomap[TC_PRIO_MAX+1];	/* Map: logical priority -> PRIO band */
++};
++
++/* MULTIQ section */
++
++struct tc_multiq_qopt {
++	__u16	bands;			/* Number of bands */
++	__u16	max_bands;		/* Maximum number of queues */
++};
++
++/* PLUG section */
++
++#define TCQ_PLUG_BUFFER                0
++#define TCQ_PLUG_RELEASE_ONE           1
++#define TCQ_PLUG_RELEASE_INDEFINITE    2
++#define TCQ_PLUG_LIMIT                 3
++
++struct tc_plug_qopt {
++	/* TCQ_PLUG_BUFFER: Inset a plug into the queue and
++	 *  buffer any incoming packets
++	 * TCQ_PLUG_RELEASE_ONE: Dequeue packets from queue head
++	 *   to beginning of the next plug.
++	 * TCQ_PLUG_RELEASE_INDEFINITE: Dequeue all packets from queue.
++	 *   Stop buffering packets until the next TCQ_PLUG_BUFFER
++	 *   command is received (just act as a pass-thru queue).
++	 * TCQ_PLUG_LIMIT: Increase/decrease queue size
++	 */
++	int             action;
++	__u32           limit;
++};
++
++/* TBF section */
++
++struct tc_tbf_qopt {
++	struct tc_ratespec rate;
++	struct tc_ratespec peakrate;
++	__u32		limit;
++	__u32		buffer;
++	__u32		mtu;
++};
++
++enum {
++	TCA_TBF_UNSPEC,
++	TCA_TBF_PARMS,
++	TCA_TBF_RTAB,
++	TCA_TBF_PTAB,
++	TCA_TBF_RATE64,
++	TCA_TBF_PRATE64,
++	TCA_TBF_BURST,
++	TCA_TBF_PBURST,
++	TCA_TBF_PAD,
++	__TCA_TBF_MAX,
++};
++
++#define TCA_TBF_MAX (__TCA_TBF_MAX - 1)
++
++
++/* TEQL section */
++
++/* TEQL does not require any parameters */
++
++/* SFQ section */
++
++struct tc_sfq_qopt {
++	unsigned	quantum;	/* Bytes per round allocated to flow */
++	int		perturb_period;	/* Period of hash perturbation */
++	__u32		limit;		/* Maximal packets in queue */
++	unsigned	divisor;	/* Hash divisor  */
++	unsigned	flows;		/* Maximal number of flows  */
++};
++
++struct tc_sfqred_stats {
++	__u32           prob_drop;      /* Early drops, below max threshold */
++	__u32           forced_drop;	/* Early drops, after max threshold */
++	__u32           prob_mark;      /* Marked packets, below max threshold */
++	__u32           forced_mark;    /* Marked packets, after max threshold */
++	__u32           prob_mark_head; /* Marked packets, below max threshold */
++	__u32           forced_mark_head;/* Marked packets, after max threshold */
++};
++
++struct tc_sfq_qopt_v1 {
++	struct tc_sfq_qopt v0;
++	unsigned int	depth;		/* max number of packets per flow */
++	unsigned int	headdrop;
++/* SFQRED parameters */
++	__u32		limit;		/* HARD maximal flow queue length (bytes) */
++	__u32		qth_min;	/* Min average length threshold (bytes) */
++	__u32		qth_max;	/* Max average length threshold (bytes) */
++	unsigned char   Wlog;		/* log(W)		*/
++	unsigned char   Plog;		/* log(P_max/(qth_max-qth_min))	*/
++	unsigned char   Scell_log;	/* cell size for idle damping */
++	unsigned char	flags;
++	__u32		max_P;		/* probability, high resolution */
++/* SFQRED stats */
++	struct tc_sfqred_stats stats;
++};
++
++
++struct tc_sfq_xstats {
++	__s32		allot;
++};
++
++/* RED section */
++
++enum {
++	TCA_RED_UNSPEC,
++	TCA_RED_PARMS,
++	TCA_RED_STAB,
++	TCA_RED_MAX_P,
++	__TCA_RED_MAX,
++};
++
++#define TCA_RED_MAX (__TCA_RED_MAX - 1)
++
++struct tc_red_qopt {
++	__u32		limit;		/* HARD maximal queue length (bytes)	*/
++	__u32		qth_min;	/* Min average length threshold (bytes) */
++	__u32		qth_max;	/* Max average length threshold (bytes) */
++	unsigned char   Wlog;		/* log(W)		*/
++	unsigned char   Plog;		/* log(P_max/(qth_max-qth_min))	*/
++	unsigned char   Scell_log;	/* cell size for idle damping */
++	unsigned char	flags;
++#define TC_RED_ECN		1
++#define TC_RED_HARDDROP		2
++#define TC_RED_ADAPTATIVE	4
++};
++
++struct tc_red_xstats {
++	__u32           early;          /* Early drops */
++	__u32           pdrop;          /* Drops due to queue limits */
++	__u32           other;          /* Drops due to drop() calls */
++	__u32           marked;         /* Marked packets */
++};
++
++/* GRED section */
++
++#define MAX_DPs 16
++
++enum {
++       TCA_GRED_UNSPEC,
++       TCA_GRED_PARMS,
++       TCA_GRED_STAB,
++       TCA_GRED_DPS,
++       TCA_GRED_MAX_P,
++       TCA_GRED_LIMIT,
++       __TCA_GRED_MAX,
++};
++
++#define TCA_GRED_MAX (__TCA_GRED_MAX - 1)
++
++struct tc_gred_qopt {
++	__u32		limit;        /* HARD maximal queue length (bytes)    */
++	__u32		qth_min;      /* Min average length threshold (bytes) */
++	__u32		qth_max;      /* Max average length threshold (bytes) */
++	__u32		DP;           /* up to 2^32 DPs */
++	__u32		backlog;
++	__u32		qave;
++	__u32		forced;
++	__u32		early;
++	__u32		other;
++	__u32		pdrop;
++	__u8		Wlog;         /* log(W)               */
++	__u8		Plog;         /* log(P_max/(qth_max-qth_min)) */
++	__u8		Scell_log;    /* cell size for idle damping */
++	__u8		prio;         /* prio of this VQ */
++	__u32		packets;
++	__u32		bytesin;
++};
++
++/* gred setup */
++struct tc_gred_sopt {
++	__u32		DPs;
++	__u32		def_DP;
++	__u8		grio;
++	__u8		flags;
++	__u16		pad1;
++};
++
++/* CHOKe section */
++
++enum {
++	TCA_CHOKE_UNSPEC,
++	TCA_CHOKE_PARMS,
++	TCA_CHOKE_STAB,
++	TCA_CHOKE_MAX_P,
++	__TCA_CHOKE_MAX,
++};
++
++#define TCA_CHOKE_MAX (__TCA_CHOKE_MAX - 1)
++
++struct tc_choke_qopt {
++	__u32		limit;		/* Hard queue length (packets)	*/
++	__u32		qth_min;	/* Min average threshold (packets) */
++	__u32		qth_max;	/* Max average threshold (packets) */
++	unsigned char   Wlog;		/* log(W)		*/
++	unsigned char   Plog;		/* log(P_max/(qth_max-qth_min))	*/
++	unsigned char   Scell_log;	/* cell size for idle damping */
++	unsigned char	flags;		/* see RED flags */
++};
++
++struct tc_choke_xstats {
++	__u32		early;          /* Early drops */
++	__u32		pdrop;          /* Drops due to queue limits */
++	__u32		other;          /* Drops due to drop() calls */
++	__u32		marked;         /* Marked packets */
++	__u32		matched;	/* Drops due to flow match */
++};
++
++/* HTB section */
++#define TC_HTB_NUMPRIO		8
++#define TC_HTB_MAXDEPTH		8
++#define TC_HTB_PROTOVER		3 /* the same as HTB and TC's major */
++
++struct tc_htb_opt {
++	struct tc_ratespec 	rate;
++	struct tc_ratespec 	ceil;
++	__u32	buffer;
++	__u32	cbuffer;
++	__u32	quantum;
++	__u32	level;		/* out only */
++	__u32	prio;
++};
++struct tc_htb_glob {
++	__u32 version;		/* to match HTB/TC */
++    	__u32 rate2quantum;	/* bps->quantum divisor */
++    	__u32 defcls;		/* default class number */
++	__u32 debug;		/* debug flags */
++
++	/* stats */
++	__u32 direct_pkts; /* count of non shaped packets */
++};
++enum {
++	TCA_HTB_UNSPEC,
++	TCA_HTB_PARMS,
++	TCA_HTB_INIT,
++	TCA_HTB_CTAB,
++	TCA_HTB_RTAB,
++	TCA_HTB_DIRECT_QLEN,
++	TCA_HTB_RATE64,
++	TCA_HTB_CEIL64,
++	TCA_HTB_PAD,
++	__TCA_HTB_MAX,
++};
++
++#define TCA_HTB_MAX (__TCA_HTB_MAX - 1)
++
++struct tc_htb_xstats {
++	__u32 lends;
++	__u32 borrows;
++	__u32 giants;	/* too big packets (rate will not be accurate) */
++	__u32 tokens;
++	__u32 ctokens;
++};
++
++/* HFSC section */
++
++struct tc_hfsc_qopt {
++	__u16	defcls;		/* default class */
++};
++
++struct tc_service_curve {
++	__u32	m1;		/* slope of the first segment in bps */
++	__u32	d;		/* x-projection of the first segment in us */
++	__u32	m2;		/* slope of the second segment in bps */
++};
++
++struct tc_hfsc_stats {
++	__u64	work;		/* total work done */
++	__u64	rtwork;		/* work done by real-time criteria */
++	__u32	period;		/* current period */
++	__u32	level;		/* class level in hierarchy */
++};
++
++enum {
++	TCA_HFSC_UNSPEC,
++	TCA_HFSC_RSC,
++	TCA_HFSC_FSC,
++	TCA_HFSC_USC,
++	__TCA_HFSC_MAX,
++};
++
++#define TCA_HFSC_MAX (__TCA_HFSC_MAX - 1)
++
++
++/* CBQ section */
++
++#define TC_CBQ_MAXPRIO		8
++#define TC_CBQ_MAXLEVEL		8
++#define TC_CBQ_DEF_EWMA		5
++
++struct tc_cbq_lssopt {
++	unsigned char	change;
++	unsigned char	flags;
++#define TCF_CBQ_LSS_BOUNDED	1
++#define TCF_CBQ_LSS_ISOLATED	2
++	unsigned char  	ewma_log;
++	unsigned char  	level;
++#define TCF_CBQ_LSS_FLAGS	1
++#define TCF_CBQ_LSS_EWMA	2
++#define TCF_CBQ_LSS_MAXIDLE	4
++#define TCF_CBQ_LSS_MINIDLE	8
++#define TCF_CBQ_LSS_OFFTIME	0x10
++#define TCF_CBQ_LSS_AVPKT	0x20
++	__u32		maxidle;
++	__u32		minidle;
++	__u32		offtime;
++	__u32		avpkt;
++};
++
++struct tc_cbq_wrropt {
++	unsigned char	flags;
++	unsigned char	priority;
++	unsigned char	cpriority;
++	unsigned char	__reserved;
++	__u32		allot;
++	__u32		weight;
++};
++
++struct tc_cbq_ovl {
++	unsigned char	strategy;
++#define	TC_CBQ_OVL_CLASSIC	0
++#define	TC_CBQ_OVL_DELAY	1
++#define	TC_CBQ_OVL_LOWPRIO	2
++#define	TC_CBQ_OVL_DROP		3
++#define	TC_CBQ_OVL_RCLASSIC	4
++	unsigned char	priority2;
++	__u16		pad;
++	__u32		penalty;
++};
++
++struct tc_cbq_police {
++	unsigned char	police;
++	unsigned char	__res1;
++	unsigned short	__res2;
++};
++
++struct tc_cbq_fopt {
++	__u32		split;
++	__u32		defmap;
++	__u32		defchange;
++};
++
++struct tc_cbq_xstats {
++	__u32		borrows;
++	__u32		overactions;
++	__s32		avgidle;
++	__s32		undertime;
++};
++
++enum {
++	TCA_CBQ_UNSPEC,
++	TCA_CBQ_LSSOPT,
++	TCA_CBQ_WRROPT,
++	TCA_CBQ_FOPT,
++	TCA_CBQ_OVL_STRATEGY,
++	TCA_CBQ_RATE,
++	TCA_CBQ_RTAB,
++	TCA_CBQ_POLICE,
++	__TCA_CBQ_MAX,
++};
++
++#define TCA_CBQ_MAX	(__TCA_CBQ_MAX - 1)
++
++/* dsmark section */
++
++enum {
++	TCA_DSMARK_UNSPEC,
++	TCA_DSMARK_INDICES,
++	TCA_DSMARK_DEFAULT_INDEX,
++	TCA_DSMARK_SET_TC_INDEX,
++	TCA_DSMARK_MASK,
++	TCA_DSMARK_VALUE,
++	__TCA_DSMARK_MAX,
++};
++
++#define TCA_DSMARK_MAX (__TCA_DSMARK_MAX - 1)
++
++/* ATM  section */
++
++enum {
++	TCA_ATM_UNSPEC,
++	TCA_ATM_FD,		/* file/socket descriptor */
++	TCA_ATM_PTR,		/* pointer to descriptor - later */
++	TCA_ATM_HDR,		/* LL header */
++	TCA_ATM_EXCESS,		/* excess traffic class (0 for CLP)  */
++	TCA_ATM_ADDR,		/* PVC address (for output only) */
++	TCA_ATM_STATE,		/* VC state (ATM_VS_*; for output only) */
++	__TCA_ATM_MAX,
++};
++
++#define TCA_ATM_MAX	(__TCA_ATM_MAX - 1)
++
++/* Network emulator */
++
++enum {
++	TCA_NETEM_UNSPEC,
++	TCA_NETEM_CORR,
++	TCA_NETEM_DELAY_DIST,
++	TCA_NETEM_REORDER,
++	TCA_NETEM_CORRUPT,
++	TCA_NETEM_LOSS,
++	TCA_NETEM_RATE,
++	TCA_NETEM_ECN,
++	TCA_NETEM_RATE64,
++	TCA_NETEM_PAD,
++	__TCA_NETEM_MAX,
++};
++
++#define TCA_NETEM_MAX (__TCA_NETEM_MAX - 1)
++
++struct tc_netem_qopt {
++	__u32	latency;	/* added delay (us) */
++	__u32   limit;		/* fifo limit (packets) */
++	__u32	loss;		/* random packet loss (0=none ~0=100%) */
++	__u32	gap;		/* re-ordering gap (0 for none) */
++	__u32   duplicate;	/* random packet dup  (0=none ~0=100%) */
++	__u32	jitter;		/* random jitter in latency (us) */
++};
++
++struct tc_netem_corr {
++	__u32	delay_corr;	/* delay correlation */
++	__u32	loss_corr;	/* packet loss correlation */
++	__u32	dup_corr;	/* duplicate correlation  */
++};
++
++struct tc_netem_reorder {
++	__u32	probability;
++	__u32	correlation;
++};
++
++struct tc_netem_corrupt {
++	__u32	probability;
++	__u32	correlation;
++};
++
++struct tc_netem_rate {
++	__u32	rate;	/* byte/s */
++	__s32	packet_overhead;
++	__u32	cell_size;
++	__s32	cell_overhead;
++};
++
++enum {
++	NETEM_LOSS_UNSPEC,
++	NETEM_LOSS_GI,		/* General Intuitive - 4 state model */
++	NETEM_LOSS_GE,		/* Gilbert Elliot models */
++	__NETEM_LOSS_MAX
++};
++#define NETEM_LOSS_MAX (__NETEM_LOSS_MAX - 1)
++
++/* State transition probabilities for 4 state model */
++struct tc_netem_gimodel {
++	__u32	p13;
++	__u32	p31;
++	__u32	p32;
++	__u32	p14;
++	__u32	p23;
++};
++
++/* Gilbert-Elliot models */
++struct tc_netem_gemodel {
++	__u32 p;
++	__u32 r;
++	__u32 h;
++	__u32 k1;
++};
++
++#define NETEM_DIST_SCALE	8192
++#define NETEM_DIST_MAX		16384
++
++/* DRR */
++
++enum {
++	TCA_DRR_UNSPEC,
++	TCA_DRR_QUANTUM,
++	__TCA_DRR_MAX
++};
++
++#define TCA_DRR_MAX	(__TCA_DRR_MAX - 1)
++
++struct tc_drr_stats {
++	__u32	deficit;
++};
++
++/* MQPRIO */
++#define TC_QOPT_BITMASK 15
++#define TC_QOPT_MAX_QUEUE 16
++
++struct tc_mqprio_qopt {
++	__u8	num_tc;
++	__u8	prio_tc_map[TC_QOPT_BITMASK + 1];
++	__u8	hw;
++	__u16	count[TC_QOPT_MAX_QUEUE];
++	__u16	offset[TC_QOPT_MAX_QUEUE];
++};
++
++/* SFB */
++
++enum {
++	TCA_SFB_UNSPEC,
++	TCA_SFB_PARMS,
++	__TCA_SFB_MAX,
++};
++
++#define TCA_SFB_MAX (__TCA_SFB_MAX - 1)
++
++/*
++ * Note: increment, decrement are Q0.16 fixed-point values.
++ */
++struct tc_sfb_qopt {
++	__u32 rehash_interval;	/* delay between hash move, in ms */
++	__u32 warmup_time;	/* double buffering warmup time in ms (warmup_time < rehash_interval) */
++	__u32 max;		/* max len of qlen_min */
++	__u32 bin_size;		/* maximum queue length per bin */
++	__u32 increment;	/* probability increment, (d1 in Blue) */
++	__u32 decrement;	/* probability decrement, (d2 in Blue) */
++	__u32 limit;		/* max SFB queue length */
++	__u32 penalty_rate;	/* inelastic flows are rate limited to 'rate' pps */
++	__u32 penalty_burst;
++};
++
++struct tc_sfb_xstats {
++	__u32 earlydrop;
++	__u32 penaltydrop;
++	__u32 bucketdrop;
++	__u32 queuedrop;
++	__u32 childdrop; /* drops in child qdisc */
++	__u32 marked;
++	__u32 maxqlen;
++	__u32 maxprob;
++	__u32 avgprob;
++};
++
++#define SFB_MAX_PROB 0xFFFF
++
++/* QFQ */
++enum {
++	TCA_QFQ_UNSPEC,
++	TCA_QFQ_WEIGHT,
++	TCA_QFQ_LMAX,
++	__TCA_QFQ_MAX
++};
++
++#define TCA_QFQ_MAX	(__TCA_QFQ_MAX - 1)
++
++struct tc_qfq_stats {
++	__u32 weight;
++	__u32 lmax;
++};
++
++/* CODEL */
++
++enum {
++	TCA_CODEL_UNSPEC,
++	TCA_CODEL_TARGET,
++	TCA_CODEL_LIMIT,
++	TCA_CODEL_INTERVAL,
++	TCA_CODEL_ECN,
++	TCA_CODEL_CE_THRESHOLD,
++	__TCA_CODEL_MAX
++};
++
++#define TCA_CODEL_MAX	(__TCA_CODEL_MAX - 1)
++
++struct tc_codel_xstats {
++	__u32	maxpacket; /* largest packet we've seen so far */
++	__u32	count;	   /* how many drops we've done since the last time we
++			    * entered dropping state
++			    */
++	__u32	lastcount; /* count at entry to dropping state */
++	__u32	ldelay;    /* in-queue delay seen by most recently dequeued packet */
++	__s32	drop_next; /* time to drop next packet */
++	__u32	drop_overlimit; /* number of time max qdisc packet limit was hit */
++	__u32	ecn_mark;  /* number of packets we ECN marked instead of dropped */
++	__u32	dropping;  /* are we in dropping state ? */
++	__u32	ce_mark;   /* number of CE marked packets because of ce_threshold */
++};
++
++/* FQ_CODEL */
++
++enum {
++	TCA_FQ_CODEL_UNSPEC,
++	TCA_FQ_CODEL_TARGET,
++	TCA_FQ_CODEL_LIMIT,
++	TCA_FQ_CODEL_INTERVAL,
++	TCA_FQ_CODEL_ECN,
++	TCA_FQ_CODEL_FLOWS,
++	TCA_FQ_CODEL_QUANTUM,
++	TCA_FQ_CODEL_CE_THRESHOLD,
++	TCA_FQ_CODEL_DROP_BATCH_SIZE,
++	TCA_FQ_CODEL_MEMORY_LIMIT,
++	__TCA_FQ_CODEL_MAX
++};
++
++#define TCA_FQ_CODEL_MAX	(__TCA_FQ_CODEL_MAX - 1)
++
++enum {
++	TCA_FQ_CODEL_XSTATS_QDISC,
++	TCA_FQ_CODEL_XSTATS_CLASS,
++};
++
++struct tc_fq_codel_qd_stats {
++	__u32	maxpacket;	/* largest packet we've seen so far */
++	__u32	drop_overlimit; /* number of time max qdisc
++				 * packet limit was hit
++				 */
++	__u32	ecn_mark;	/* number of packets we ECN marked
++				 * instead of being dropped
++				 */
++	__u32	new_flow_count; /* number of time packets
++				 * created a 'new flow'
++				 */
++	__u32	new_flows_len;	/* count of flows in new list */
++	__u32	old_flows_len;	/* count of flows in old list */
++	__u32	ce_mark;	/* packets above ce_threshold */
++	__u32	memory_usage;	/* in bytes */
++	__u32	drop_overmemory;
++};
++
++struct tc_fq_codel_cl_stats {
++	__s32	deficit;
++	__u32	ldelay;		/* in-queue delay seen by most recently
++				 * dequeued packet
++				 */
++	__u32	count;
++	__u32	lastcount;
++	__u32	dropping;
++	__s32	drop_next;
++};
++
++struct tc_fq_codel_xstats {
++	__u32	type;
++	union {
++		struct tc_fq_codel_qd_stats qdisc_stats;
++		struct tc_fq_codel_cl_stats class_stats;
++	};
++};
++
++/* FQ */
++
++enum {
++	TCA_FQ_UNSPEC,
++
++	TCA_FQ_PLIMIT,		/* limit of total number of packets in queue */
++
++	TCA_FQ_FLOW_PLIMIT,	/* limit of packets per flow */
++
++	TCA_FQ_QUANTUM,		/* RR quantum */
++
++	TCA_FQ_INITIAL_QUANTUM,		/* RR quantum for new flow */
++
++	TCA_FQ_RATE_ENABLE,	/* enable/disable rate limiting */
++
++	TCA_FQ_FLOW_DEFAULT_RATE,/* obsolete, do not use */
++
++	TCA_FQ_FLOW_MAX_RATE,	/* per flow max rate */
++
++	TCA_FQ_BUCKETS_LOG,	/* log2(number of buckets) */
++
++	TCA_FQ_FLOW_REFILL_DELAY,	/* flow credit refill delay in usec */
++
++	TCA_FQ_ORPHAN_MASK,	/* mask applied to orphaned skb hashes */
++
++	TCA_FQ_LOW_RATE_THRESHOLD, /* per packet delay under this rate */
++
++	__TCA_FQ_MAX
++};
++
++#define TCA_FQ_MAX	(__TCA_FQ_MAX - 1)
++
++struct tc_fq_qd_stats {
++	__u64	gc_flows;
++	__u64	highprio_packets;
++	__u64	tcp_retrans;
++	__u64	throttled;
++	__u64	flows_plimit;
++	__u64	pkts_too_long;
++	__u64	allocation_errors;
++	__s64	time_next_delayed_flow;
++	__u32	flows;
++	__u32	inactive_flows;
++	__u32	throttled_flows;
++	__u32	unthrottle_latency_ns;
++};
++
++/* Heavy-Hitter Filter */
++
++enum {
++	TCA_HHF_UNSPEC,
++	TCA_HHF_BACKLOG_LIMIT,
++	TCA_HHF_QUANTUM,
++	TCA_HHF_HH_FLOWS_LIMIT,
++	TCA_HHF_RESET_TIMEOUT,
++	TCA_HHF_ADMIT_BYTES,
++	TCA_HHF_EVICT_TIMEOUT,
++	TCA_HHF_NON_HH_WEIGHT,
++	__TCA_HHF_MAX
++};
++
++#define TCA_HHF_MAX	(__TCA_HHF_MAX - 1)
++
++struct tc_hhf_xstats {
++	__u32	drop_overlimit; /* number of times max qdisc packet limit
++				 * was hit
++				 */
++	__u32	hh_overlimit;   /* number of times max heavy-hitters was hit */
++	__u32	hh_tot_count;   /* number of captured heavy-hitters so far */
++	__u32	hh_cur_count;   /* number of current heavy-hitters */
++};
++
++/* PIE */
++enum {
++	TCA_PIE_UNSPEC,
++	TCA_PIE_TARGET,
++	TCA_PIE_LIMIT,
++	TCA_PIE_TUPDATE,
++	TCA_PIE_ALPHA,
++	TCA_PIE_BETA,
++	TCA_PIE_ECN,
++	TCA_PIE_BYTEMODE,
++	__TCA_PIE_MAX
++};
++#define TCA_PIE_MAX   (__TCA_PIE_MAX - 1)
++
++struct tc_pie_xstats {
++	__u32 prob;             /* current probability */
++	__u32 delay;            /* current delay in ms */
++	__u32 avg_dq_rate;      /* current average dq_rate in bits/pie_time */
++	__u32 packets_in;       /* total number of packets enqueued */
++	__u32 dropped;          /* packets dropped due to pie_action */
++	__u32 overlimit;        /* dropped due to lack of space in queue */
++	__u32 maxq;             /* maximum queue size */
++	__u32 ecn_mark;         /* packets marked with ecn*/
++};
++
++/* CAKE */
++enum {
++	TCA_CAKE_UNSPEC,
++	TCA_CAKE_BASE_RATE,
++	TCA_CAKE_DIFFSERV_MODE,
++	TCA_CAKE_ATM,
++	TCA_CAKE_FLOW_MODE,
++	TCA_CAKE_OVERHEAD,
++	TCA_CAKE_RTT,
++	TCA_CAKE_TARGET,
++	TCA_CAKE_AUTORATE,
++	TCA_CAKE_MEMORY,
++	TCA_CAKE_NAT,
++	TCA_CAKE_ETHERNET,
++	TCA_CAKE_WASH,
++	TCA_CAKE_MPU,
++	__TCA_CAKE_MAX
++};
++#define TCA_CAKE_MAX	(__TCA_CAKE_MAX - 1)
++
++struct tc_cake_traffic_stats {
++	__u32 packets;
++	__u32 link_ms;
++	__u64 bytes;
++};
++
++#define TC_CAKE_MAX_TINS (8)
++struct tc_cake_xstats {
++	__u16 version;  /* == 4, increments when struct extended */
++	__u8  max_tins; /* == TC_CAKE_MAX_TINS */
++	__u8  tin_cnt;  /* <= TC_CAKE_MAX_TINS */
++
++	__u32 threshold_rate   [TC_CAKE_MAX_TINS];
++	__u32 target_us        [TC_CAKE_MAX_TINS];
++	struct tc_cake_traffic_stats sent      [TC_CAKE_MAX_TINS];
++	struct tc_cake_traffic_stats dropped   [TC_CAKE_MAX_TINS];
++	struct tc_cake_traffic_stats ecn_marked[TC_CAKE_MAX_TINS];
++	struct tc_cake_traffic_stats backlog   [TC_CAKE_MAX_TINS];
++	__u32 interval_us      [TC_CAKE_MAX_TINS];
++	__u32 way_indirect_hits[TC_CAKE_MAX_TINS];
++	__u32 way_misses       [TC_CAKE_MAX_TINS];
++	__u32 way_collisions   [TC_CAKE_MAX_TINS];
++	__u32 peak_delay_us    [TC_CAKE_MAX_TINS]; /* ~= delay to bulk flows */
++	__u32 avge_delay_us    [TC_CAKE_MAX_TINS];
++	__u32 base_delay_us    [TC_CAKE_MAX_TINS]; /* ~= delay to sparse flows */
++	__u16 sparse_flows     [TC_CAKE_MAX_TINS];
++	__u16 bulk_flows       [TC_CAKE_MAX_TINS];
++	__u16 unresponse_flows [TC_CAKE_MAX_TINS]; /* v4 - was u32 last_len  */
++	__u16 spare            [TC_CAKE_MAX_TINS]; /* v4 - split last_len */
++	__u32 max_skblen       [TC_CAKE_MAX_TINS];
++	__u32 capacity_estimate;  /* version 2 */
++	__u32 memory_limit;       /* version 3 */
++	__u32 memory_used;        /* version 3 */
++};
++
++#endif
+diff -rupN a/man/man8/Makefile b/man/man8/Makefile
+--- a/man/man8/Makefile	2017-02-20 11:47:52.000000000 -0500
++++ b/man/man8/Makefile	2017-04-04 17:13:18.704260992 -0400
+@@ -2,7 +2,7 @@ TARGETS = ip-address.8 ip-link.8 ip-rout
+ 
+ MAN8PAGES = $(TARGETS) ip.8 arpd.8 lnstat.8 routel.8 rtacct.8 rtmon.8 rtpr.8 ss.8 \
+ 	tc.8 tc-bfifo.8 tc-bpf.8 tc-cbq.8 tc-cbq-details.8 tc-choke.8 tc-codel.8 \
+-	tc-fq.8 \
++	tc-fq.8 tc-cake.8 \
+ 	tc-drr.8 tc-ematch.8 tc-fq_codel.8 tc-hfsc.8 tc-htb.8 tc-pie.8 \
+ 	tc-mqprio.8 tc-netem.8 tc-pfifo.8 tc-pfifo_fast.8 tc-prio.8 tc-red.8 \
+ 	tc-sfb.8 tc-sfq.8 tc-stab.8 tc-tbf.8 \
+diff -rupN a/man/man8/tc-cake.8 b/man/man8/tc-cake.8
+--- a/man/man8/tc-cake.8	1969-12-31 19:00:00.000000000 -0500
++++ b/man/man8/tc-cake.8	2017-04-04 17:13:18.704260992 -0400
+@@ -0,0 +1,530 @@
++.TH CAKE 8 "15 October 2015" "iproute2" "Linux"
++.SH NAME
++CAKE \- COMMON Applications Kept Enhanced (CAKE)
++.SH SYNOPSIS
++.B tc qdisc ... cake
++.br
++	[
++.B bandwidth RATE
++|
++.B unlimited
++|
++.B autorate_ingress
++]
++.br
++	[
++.B rtt
++TIME |
++.B datacenter
++|
++.B lan
++|
++.B metro
++|
++.B regional
++|
++.B internet
++|
++.B oceanic
++|
++.B satellite
++|
++.B interplanetary
++]
++.br
++	[
++.B besteffort
++|
++.B squash
++|
++.B precedence
++|
++.B diffserv8
++|
++.B diffserv4
++|
++.B diffserv3
++|
++.B diffserv-llt
++]
++.br
++	[
++.B flowblind
++|
++.B srchost
++|
++.B dsthost
++|
++.B hosts
++|
++.B flows
++|
++.B dual-srchost
++|
++.B dual-dsthost
++|
++.B triple-isolate
++]
++.br
++	[
++.B nat
++|
++.B nonat
++]
++.br
++	[
++.B ptm
++|
++.B atm
++|
++.B noatm
++]
++.br
++	[
++.B overhead BYTES
++|
++.B conservative
++|
++.B raw
++]
++.br
++	[
++.B mpu
++BYTES
++]
++.br
++	[
++.B memlimit
++SIZE
++]
++
++.SH DESCRIPTION
++CAKE (Common Applications Kept Enhanced) is a shaping queue discipline which uses both AQM and FQ.
++It combines COBALT, which is an AQM algorithm combining Codel and BLUE,
++a shaper which operates in deficit mode, and a variant of DRR for flow isolation.
++An 8-way set-associative hashing is used to virtually eliminate hash collisions.
++Priority queuing is available through a simplified diffserv implementation.
++Overhead compensation for various encapsulation schemes is tightly integrated.
++
++All settings are optional; the default settings are chosen to be sensible in most common deployments.
++Most people will only need to set the
++.B bandwidth
++parameter to get useful results, but reading the
++.B Overhead Compensation
++and
++.B Round Trip Time
++sections is strongly encouraged.
++
++
++.SH SHAPER PARAMETERS
++CAKE uses a deficit-mode shaper, which does not exhibit the initial burst typical of token-bucket shapers.
++It will automatically burst precisely as much as required to maintain the configured throughput.
++As such, it is very straightforward to configure.
++.PP
++.B unlimited
++(default)
++.br
++	No limit on the bandwidth.
++.PP
++.B bandwidth
++RATE
++.br
++	Set the shaper bandwidth.  See
++.BR tc(8)
++or examples below for details of the RATE value.
++.PP
++.B autorate_ingress
++.br
++	Automatic capacity estimation based on traffic arriving at this qdisc.
++This is most likely to be useful with cellular links, which tend to change quality randomly.  A
++.B bandwidth
++parameter can be used in conjunction to specify an initial estimate.
++The shaper will periodically be set to a bandwidth slightly below the estimated rate.
++This estimator cannot estimate the bandwidth of links downstream of itself.
++
++.SH OVERHEAD COMPENSATION PARAMETERS
++The size of each packet on the wire may differ from that seen by Linux.
++The following parameters allow CAKE to compensate for this difference by internally considering
++each packet to be bigger than Linux informs it.
++To assist users who are not expert network engineers, keywords have been provided
++to represent a number of common link technologies.
++
++.SS	Manual Overhead Specification
++.B overhead
++BYTES
++.br
++	Adds BYTES to the size of each packet.  BYTES may be negative; values between -64 and 256 (inclusive) are accepted.
++.PP
++.B mpu
++BYTES
++.br
++	Rounds each packet (including overhead) up to a minimum length BYTES. BYTES may not be negative; values between 0 and 256 (inclusive) are accepted.
++.PP
++.B atm
++.br
++	Compensates for ATM cell framing, which is normally found on ADSL links.  This is performed after the
++.B overhead
++parameter above.  ATM uses fixed 53-byte cells, each of which can carry 48 bytes payload.
++.PP
++.B ptm
++.br
++	Compensates for PTM encoding, which is normally found on VDSL2 links and uses a 64b/65b encoding scheme.
++.PP
++.B noatm
++.br
++	Disables ATM and PTM compensation.
++
++.SS	Failsafe Overhead Keywords
++These two keywords are provided for quick-and-dirty setup.  Use them if you can't be bothered to read the rest of this section.
++.PP
++.B raw
++(default)
++.br
++	Turns off all overhead compensation in CAKE.  The packet size reported by Linux will be used directly.
++.PP
++	Other overhead keywords may be added after "raw".  The effect of this is to make the overhead compensation operate
++relative to the reported packet size, not the underlying IP packet size.
++.PP
++.B conservative
++.br
++	Compensates for more overhead than is likely to occur on any widely-deployed link technology.
++.br
++	Equivalent to
++.B overhead 48 atm.
++
++.SS ADSL Overhead Keywords
++Most ADSL modems have a way to check which framing scheme is in use.
++Often this is also specified in the settings document provided by the ISP.
++The keywords in this section are intended to correspond with these sources of information.
++All of them implicitly set the
++.B atm
++flag.
++.PP
++.B pppoa-vcmux
++.br
++	Equivalent to
++.B overhead 10 atm
++.PP
++.B pppoa-llc
++.br
++	Equivalent to
++.B overhead 14 atm
++.PP
++.B pppoe-vcmux
++.br
++	Equivalent to
++.B overhead 32 atm
++.PP
++.B pppoe-llcsnap
++.br
++	Equivalent to
++.B overhead 40 atm
++.PP
++.B bridged-vcmux
++.br
++	Equivalent to
++.B overhead 24 atm
++.PP
++.B bridged-llcsnap
++.br
++	Equivalent to
++.B overhead 32 atm
++.PP
++.B ipoa-vcmux
++.br
++	Equivalent to
++.B overhead 8 atm
++.PP
++.B ipoa-llcsnap
++.br
++	Equivalent to
++.B overhead 16 atm
++.PP
++See also the Ethernet Correction Factors section below.
++
++.SS VDSL2 Overhead Keywords
++ATM was dropped from VDSL2 in favour of PTM, which is a much more straightforward framing scheme.
++Some ISPs retained PPPoE for compatibility with their existing back-end systems.
++.PP
++.B pppoe-ptm
++.br
++	Equivalent to
++.B overhead 27 ptm
++.PP
++.B bridged-ptm
++.br
++	Equivalent to
++.B overhead 19 ptm
++.PP
++See also the Ethernet Correction Factors section below.
++
++.SS DOCSIS Cable Overhead Keyword
++DOCSIS is the universal standard for providing Internet service over cable-TV infrastructure.
++
++In this case, the actual on-wire overhead is less important than the packet size the head-end equipment uses for shaping and metering.
++This is specified to be an Ethernet frame including the CRC (aka FCS).
++.PP
++.B docsis
++.br
++	Equivalent to
++.B overhead 18 mpu 64 noatm
++
++.SS Ethernet Overhead Keywords
++.PP
++.B ethernet
++.br
++	Accounts for Ethernet's preamble, inter-frame gap, and Frame Check Sequence.  Use this keyword when the bottleneck being shaped for is an actual Ethernet cable.
++.br
++	Equivalent to
++.B overhead 38 mpu 84 noatm
++.PP
++.B ether-vlan
++.br
++	Adds 4 bytes to the overhead compensation, accounting for a VLAN header appended to the Ethernet frame header.  NB: Some ISPs use one or even two of these within PPPoE; this keyword may be repeated as necessary to express this.
++
++.SH ROUND TRIP TIME PARAMETERS
++Active Queue Management (AQM) consists of embedding congestion signals in the packet flow, which
++receivers use to instruct senders to slow down when the queue is persistently occupied.  CAKE
++uses ECN signalling when available, and packet drops otherwise, according to a combination of the
++Codel and BLUE AQM algorithms called COBALT.
++
++Very short latencies require a very rapid AQM response to adequately control latency.
++However, such a rapid response tends to impair throughput when the actual RTT is relatively long.
++CAKE allows specifying the RTT it assumes for tuning various parameters.  Actual RTTs within
++an order of magnitude of this will generally work well for both throughput and latency management.
++.PP
++.B rtt
++TIME
++.br
++	Manually specify an RTT.
++.PP
++.B datacenter
++.br
++	For extremely high-performance networks only.  Equivalent to
++.B rtt 100us.
++.PP
++.B lan
++.br
++	For typical Ethernet and Wi-Fi networks, at home or in the office.  Don't use this
++when shaping for an Internet access link.  Equivalent to
++.B rtt 1ms.
++.PP
++.B metro
++.br
++	For traffic mostly within a single city.  Equivalent to
++.B rtt 10ms.
++.PP
++.B regional
++.br
++	For traffic mostly within a European-sized country.  Equivalent to
++.B rtt 30ms.
++.PP
++.B internet
++(default)
++.br
++	This is suitable for typical Internet traffic.  Equivalent to
++.B rtt 100ms.
++.PP
++.B oceanic
++.br
++	For Internet traffic with generally above-average latency, such as that suffered by Australasian residents.  Equivalent to
++.B rtt 300ms.
++.PP
++.B satellite
++.br
++	For traffic via geostationary satellites.  Equivalent to
++.B rtt 1000ms.
++.PP
++.B interplanetary
++.br
++	So named because Jupiter is about 1 light-hour from Earth.  Use this to (almost) completely disable AQM actions.  Equivalent to
++.B rtt 3600s.
++
++.SH FLOW ISOLATION PARAMETERS
++With flow isolation enabled, CAKE places packets from different flows into different queues,
++each of which carries its own AQM state.  Packets from each queue are then delivered fairly,
++according to a DRR++ algorithm which minimises latency for "sparse" flows.  CAKE uses a set-associative
++hashing algorithm to minimise flow collisions.
++
++These keywords specify whether fairness based on source address, destination address,
++individual flows, or any combination of those is desired.
++.PP
++.B flowblind
++.br
++	Disables flow isolation; all traffic passes through a single queue for each tin.
++.PP
++.B srchost
++.br
++	Flows are defined only by source address.  Could be useful on the egress path of an ISP backhaul.
++.PP
++.B dsthost
++.br
++	Flows are defined only by destination address.  Could be useful on the ingress path of an ISP backhaul.
++.PP
++.B hosts
++.br
++	Flows are defined by source-destination host pairs.  This is host isolation, rather than flow isolation.
++.PP
++.B flows
++.br
++	Flows are defined by the entire 5-tuple of source address, destination address, transport
++protocol, source port and destination port.  This is the type of flow isolation performed by
++SFQ and fq_codel.
++.PP
++.B dual-srchost
++.br
++	Flows are defined by the 5-tuple, and fairness is applied first over source addresses, then
++over individual flows.  Good for use on egress traffic from a LAN to the internet, where it'll
++prevent any one LAN host from monopolising the uplink, regardless of the number of flows they use.
++.PP
++.B dual-dsthost
++.br
++	Flows are defined by the 5-tuple, and fairness is applied first over destination addresses, then
++over individual flows.  Good for use on ingress traffic to a LAN from the internet, where it'll
++prevent any one LAN host from monopolising the downlink, regardless of the number of flows they use.
++.PP
++.B triple-isolate
++(default)
++.br
++	Flows are defined by the 5-tuple, and fairness is applied over source *and* destination addresses
++intelligently (ie. not merely by host-pairs), and also over individual flows.  Use this if you're
++not certain whether to use dual-srchost or dual-dsthost; it'll do both jobs at once, preventing
++any one host on *either* side of the link from monopolising it with a large number of flows.
++.PP
++.B nat
++.br
++	Instructs Cake to perform a NAT lookup before applying flow-isolation rules, to determine the true
++addresses and port numbers of the packet, to improve fairness between hosts "inside" the NAT.  This
++has no practical effect in "flowblind" or "flows" modes, or if NAT is performed on a different host.
++.PP
++.B nonat
++(default)
++.br
++	Cake will not perform a NAT lookup.  Flow isolation will be performed using the addresses and
++port numbers directly visible to the interface Cake is attached to.
++
++.SH PRIORITY QUEUE PARAMETERS
++CAKE can divide traffic into "tins" based on the Diffserv field.  Each tin has its own independent
++set of flow-isolation queues, and is serviced based on a WRR algorithm.  To avoid perverse Diffserv
++marking incentives, tin weights have a "priority sharing" value when bandwidth used by that tin is
++below a threshold, and a lower "bandwidth sharing" value when above.  Bandwidth is compared against
++the threshold using the same algorithm as the deficit-mode shaper.
++
++Detailed customisation of tin parameters is not provided.  The following presets perform all necessary
++tuning, relative to the current shaper bandwidth and RTT settings.
++.PP
++.B besteffort
++.br
++	Disables priority queuing by placing all traffic in one tin.
++.PP
++.B precedence
++.br
++	Enables legacy interpretation of TOS "Precedence" field.  Use of this preset on the modern Internet is firmly discouraged.
++.PP
++.B diffserv-llt
++.br
++	Provides a "Latency-Loss Tradeoff" implementation with five tins:
++.br
++		Low Loss (TOS1, TOS2), 100% threshold, increased Codel target.
++.br
++		Best Effort (general), 100% threshold, normal Codel target & interval.
++.br
++		Low Latency (TOS4, TOS5, VA, EF), 100% threshold, reduced Codel interval.
++.br
++		Bulk (CS1), 6.25% threshold, normal Codel target & interval.
++.br
++		Net Control (CS6, CS7), 6.25% threshold, increased Codel target & interval.
++.PP
++.B diffserv4
++.br
++	Provides a general-purpose Diffserv implementation with four tins:
++.br
++		Bulk (CS1), 6.25% threshold, generally low priority.
++.br
++		Best Effort (general), 100% threshold.
++.br
++		Video (AF4x, AF3x, CS3, AF2x, CS2, TOS4, TOS1), 50% threshold.
++.br
++		Voice (CS7, CS6, EF, VA, CS5, CS4), 25% threshold.
++.PP
++.B diffserv3
++(default)
++.br
++	Provides a simple, general-purpose Diffserv implementation with three tins:
++.br
++		Bulk (CS1), 6.25% threshold, generally low priority.
++.br
++		Best Effort (general), 100% threshold.
++.br
++		Voice (CS7, CS6, EF, VA, TOS4), 25% threshold, reduced Codel interval.
++
++.SH OTHER PARAMETERS
++.B memlimit
++LIMIT
++.br
++	Limit the memory consumed by Cake to LIMIT bytes. Note that this does not
++translate directly to queue size, as there is some overhead in the data
++structures containing the packets, especially for small packets.
++
++	By default, the limit is calculated based on the bandwidth and RTT settings.
++
++
++.SH EXAMPLES
++#tc qdisc add dev enp3s0 root cake bandwidth 30mbit
++.br
++#tc -s qdisc show dev enp3s0
++.br
++qdisc cake 8001: root refcnt 2 bandwidth 30Mbit diffserv4 flows rtt 100.0ms raw
++ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0)
++ backlog 0b 0p requeues 0
++capacity estimate: 30Mbit
++.br
++             Tin 0       Tin 1       Tin 2       Tin 3
++.br
++  thresh      30Mbit   28125Kbit   22500Kbit    7500Kbit
++.br
++  target       5.0ms       5.0ms       5.0ms       5.0ms
++.br
++interval     100.0ms     100.0ms     100.0ms     100.0ms
++.br
++Pk-delay         0us         0us         0us         0us
++.br
++Av-delay         0us         0us         0us         0us
++.br
++Sp-delay         0us         0us         0us         0us
++.br
++  pkts             0           0           0           0
++.br
++  bytes            0           0           0           0
++.br
++way-inds           0           0           0           0
++.br
++way-miss           0           0           0           0
++.br
++way-cols           0           0           0           0
++.br
++  drops            0           0           0           0
++.br
++  marks            0           0           0           0
++.br
++Sp-flows           0           0           0           0
++.br
++Bk-flows           0           0           0           0
++.br
++last-len           0           0           0           0
++.br
++max-len            0           0           0           0
++.br
++
++
++.SH SEE ALSO
++.BR tc (8),
++.BR tc-codel (8),
++.BR tc-fq_codel (8),
++.BR tc-red (8)
++
++.SH AUTHORS
++CAKE was implemented by Jonathan Morton, with contributions from Dave Taht,
++Kevin Darbyshire-Bryant, Toke Hoiland-Jorgensen and Loganaden Velvindron.
++This manual page was written by Loganaden Velvindron. Please report corrections
++to the Linux Networking mailing list <netdev@vger.kernel.org>.
+diff -rupN a/tc/Makefile b/tc/Makefile
+--- a/tc/Makefile	2017-02-20 11:47:52.000000000 -0500
++++ b/tc/Makefile	2017-04-04 17:13:18.704260992 -0400
+@@ -65,6 +65,7 @@ TCMODULES += q_codel.o
+ TCMODULES += q_fq_codel.o
+ TCMODULES += q_fq.o
+ TCMODULES += q_pie.o
++TCMODULES += q_cake.o
+ TCMODULES += q_hhf.o
+ TCMODULES += q_clsact.o
+ TCMODULES += e_bpf.o
+diff -rupN a/tc/Makefile.orig b/tc/Makefile.orig
+--- a/tc/Makefile.orig	1969-12-31 19:00:00.000000000 -0500
++++ b/tc/Makefile.orig	2017-02-20 11:47:52.000000000 -0500
+@@ -0,0 +1,185 @@
++TCOBJ= tc.o tc_qdisc.o tc_class.o tc_filter.o tc_util.o tc_monitor.o \
++       tc_exec.o m_police.o m_estimator.o m_action.o m_ematch.o \
++       emp_ematch.yacc.o emp_ematch.lex.o
++
++include ../Config
++
++ifeq ($(IP_CONFIG_SETNS),y)
++	CFLAGS += -DHAVE_SETNS
++endif
++
++SHARED_LIBS ?= y
++
++TCMODULES :=
++TCMODULES += q_fifo.o
++TCMODULES += q_sfq.o
++TCMODULES += q_red.o
++TCMODULES += q_prio.o
++TCMODULES += q_tbf.o
++TCMODULES += q_cbq.o
++TCMODULES += q_rr.o
++TCMODULES += q_multiq.o
++TCMODULES += q_netem.o
++TCMODULES += q_choke.o
++TCMODULES += q_sfb.o
++TCMODULES += f_rsvp.o
++TCMODULES += f_u32.o
++TCMODULES += f_route.o
++TCMODULES += f_fw.o
++TCMODULES += f_basic.o
++TCMODULES += f_bpf.o
++TCMODULES += f_flow.o
++TCMODULES += f_cgroup.o
++TCMODULES += f_flower.o
++TCMODULES += q_dsmark.o
++TCMODULES += q_gred.o
++TCMODULES += f_tcindex.o
++TCMODULES += q_ingress.o
++TCMODULES += q_hfsc.o
++TCMODULES += q_htb.o
++TCMODULES += q_drr.o
++TCMODULES += q_qfq.o
++TCMODULES += m_gact.o
++TCMODULES += m_mirred.o
++TCMODULES += m_nat.o
++TCMODULES += m_pedit.o
++TCMODULES += m_ife.o
++TCMODULES += m_skbedit.o
++TCMODULES += m_csum.o
++TCMODULES += m_simple.o
++TCMODULES += m_vlan.o
++TCMODULES += m_connmark.o
++TCMODULES += m_bpf.o
++TCMODULES += m_tunnel_key.o
++TCMODULES += p_ip.o
++TCMODULES += p_icmp.o
++TCMODULES += p_tcp.o
++TCMODULES += p_udp.o
++TCMODULES += em_nbyte.o
++TCMODULES += em_cmp.o
++TCMODULES += em_u32.o
++TCMODULES += em_canid.o
++TCMODULES += em_meta.o
++TCMODULES += q_mqprio.o
++TCMODULES += q_codel.o
++TCMODULES += q_fq_codel.o
++TCMODULES += q_fq.o
++TCMODULES += q_pie.o
++TCMODULES += q_hhf.o
++TCMODULES += q_clsact.o
++TCMODULES += e_bpf.o
++TCMODULES += f_matchall.o
++
++TCSO :=
++ifeq ($(TC_CONFIG_ATM),y)
++  TCSO += q_atm.so
++endif
++
++ifneq ($(TC_CONFIG_NO_XT),y)
++  ifeq ($(TC_CONFIG_XT),y)
++    TCSO += m_xt.so
++    ifeq ($(TC_CONFIG_IPSET),y)
++      TCMODULES += em_ipset.o
++    endif
++  else
++    ifeq ($(TC_CONFIG_XT_OLD),y)
++      TCSO += m_xt_old.so
++    else
++      ifeq ($(TC_CONFIG_XT_OLD_H),y)
++        CFLAGS += -DTC_CONFIG_XT_H
++        TCSO += m_xt_old.so
++      else
++        TCMODULES += m_ipt.o
++      endif
++    endif
++  endif
++endif
++
++TCOBJ += $(TCMODULES)
++LDLIBS += -L. -lm
++
++ifeq ($(SHARED_LIBS),y)
++LDLIBS += -ldl
++LDFLAGS += -Wl,-export-dynamic
++endif
++
++TCLIB := tc_core.o
++TCLIB += tc_red.o
++TCLIB += tc_cbq.o
++TCLIB += tc_estimator.o
++TCLIB += tc_stab.o
++
++CFLAGS += -DCONFIG_GACT -DCONFIG_GACT_PROB
++ifneq ($(IPT_LIB_DIR),)
++	CFLAGS += -DIPT_LIB_DIR=\"$(IPT_LIB_DIR)\"
++endif
++
++YACC := bison
++LEX := flex
++CFLAGS += -DYY_NO_INPUT
++
++MODDESTDIR := $(DESTDIR)$(LIBDIR)/tc
++
++%.so: %.c
++	$(QUIET_CC)$(CC) $(CFLAGS) $(LDFLAGS) -shared -fpic $< -o $@
++
++
++all: tc $(TCSO)
++
++tc: $(TCOBJ) libtc.a
++	$(QUIET_LINK)$(CC) $^ $(LDFLAGS) $(LDLIBS) -o $@
++
++libtc.a: $(TCLIB)
++	$(QUIET_AR)$(AR) rcs $@ $^
++
++install: all
++	mkdir -p $(MODDESTDIR)
++	install -m 0755 tc $(DESTDIR)$(SBINDIR)
++	for i in $(TCSO); \
++	do install -m 755 $$i $(MODDESTDIR); \
++	done
++	if [ ! -f $(MODDESTDIR)/m_ipt.so ]; then \
++	if [ -f $(MODDESTDIR)/m_xt.so ]; \
++		then ln -s m_xt.so $(MODDESTDIR)/m_ipt.so ; \
++	elif [ -f $(MODDESTDIR)/m_xt_old.so ]; \
++		then ln -s m_xt_old.so $(MODDESTDIR)/m_ipt.so ; \
++	fi; \
++	fi
++
++clean:
++	rm -f $(TCOBJ) $(TCLIB) libtc.a tc *.so emp_ematch.yacc.h; \
++	rm -f emp_ematch.yacc.*
++
++q_atm.so: q_atm.c
++	$(QUIET_CC)$(CC) $(CFLAGS) $(LDFLAGS) -shared -fpic -o q_atm.so q_atm.c -latm
++
++m_xt.so: m_xt.c
++	$(QUIET_CC)$(CC) $(CFLAGS) $(LDFLAGS) -shared -fpic -o m_xt.so m_xt.c $$($(PKG_CONFIG) xtables --cflags --libs)
++
++m_xt_old.so: m_xt_old.c
++	$(QUIET_CC)$(CC) $(CFLAGS) $(LDFLAGS) -shared -fpic -o m_xt_old.so m_xt_old.c $$($(PKG_CONFIG) xtables --cflags --libs)
++
++em_ipset.o: CFLAGS += $$($(PKG_CONFIG) xtables --cflags)
++
++%.yacc.c: %.y
++	$(QUIET_YACC)$(YACC) $(YACCFLAGS) -o $@ $<
++
++%.lex.c: %.l
++	$(QUIET_LEX)$(LEX) $(LEXFLAGS) -o$@ $<
++
++# our lexer includes the header from yacc, so make sure
++# we don't attempt to compile it before the header has
++# been generated as part of the yacc step.
++emp_ematch.lex.o: emp_ematch.yacc.c
++
++ifneq ($(SHARED_LIBS),y)
++
++tc: static-syms.o
++static-syms.o: static-syms.h
++static-syms.h: $(wildcard *.c)
++	files="$^" ; \
++	for s in `grep -B 3 '\<dlsym' $$files | sed -n '/snprintf/{s:.*"\([^"]*\)".*:\1:;s:%s::;p}'` ; do \
++		sed -n '/'$$s'[^ ]* =/{s:.* \([^ ]*'$$s'[^ ]*\) .*:extern char \1[] __attribute__((weak)); if (!strcmp(sym, "\1")) return \1;:;p}' $$files ; \
++	done > $@
++
++endif
+diff -rupN a/tc/q_cake.c b/tc/q_cake.c
+--- a/tc/q_cake.c	1969-12-31 19:00:00.000000000 -0500
++++ b/tc/q_cake.c	2017-04-04 17:13:20.844260988 -0400
+@@ -0,0 +1,708 @@
++/*
++ * Common Applications Kept Enhanced  --  CAKE
++ *
++ *  Copyright (C) 2014-2015 Jonathan Morton <chromatix99@gmail.com>
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions, and the following disclaimer,
++ *    without modification.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ * 3. The names of the authors may not be used to endorse or promote products
++ *    derived from this software without specific prior written permission.
++ *
++ * Alternatively, provided that this notice is retained in full, this
++ * software may be distributed under the terms of the GNU General
++ * Public License ("GPL") version 2, in which case the provisions of the
++ * GPL apply INSTEAD OF those given above.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
++ * DAMAGE.
++ *
++ */
++
++#include <stddef.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <unistd.h>
++#include <syslog.h>
++#include <fcntl.h>
++#include <sys/socket.h>
++#include <netinet/in.h>
++#include <arpa/inet.h>
++#include <string.h>
++
++#include "utils.h"
++#include "tc_util.h"
++
++static void explain(void)
++{
++	fprintf(stderr,
++"Usage: ... cake [ bandwidth RATE | unlimited* | autorate_ingress ]\n"
++"                [ rtt TIME | datacentre | lan | metro | regional |\n"
++"                  internet* | oceanic | satellite | interplanetary ]\n"
++"                [ besteffort | diffserv8 | diffserv4 | diffserv-llt |\n"
++"                  diffserv3* ]\n"
++"                [ flowblind | srchost | dsthost | hosts | flows |\n"
++"                  dual-srchost | dual-dsthost | triple-isolate* ]\n"
++"                [ nat | nonat* ]\n"
++"                [ wash | nowash * ]\n"
++"                [ memlimit LIMIT ]\n"
++"                [ ptm | atm | noatm* ] [ overhead N | conservative | raw* ]\n"
++"                [ mpu N ] [ ingress | egress* ]\n"
++"                (* marks defaults)\n");
++}
++
++static int cake_parse_opt(struct qdisc_util *qu, int argc, char **argv,
++			      struct nlmsghdr *n)
++{
++	int unlimited = 0;
++	unsigned bandwidth = 0;
++	unsigned interval = 0;
++	unsigned target = 0;
++	unsigned diffserv = 0;
++	unsigned memlimit = 0;
++	int  overhead = 0;
++	bool overhead_set = false;
++	bool overhead_override = false;
++	int wash = -1;
++	int mpu = 0;
++	int flowmode = -1;
++	int nat = -1;
++	int atm = -1;
++	int autorate = -1;
++	int ingress = -1;
++	struct rtattr *tail;
++
++	while (argc > 0) {
++		if (strcmp(*argv, "bandwidth") == 0) {
++			NEXT_ARG();
++			if (get_rate(&bandwidth, *argv)) {
++				fprintf(stderr, "Illegal \"bandwidth\"\n");
++				return -1;
++			}
++			unlimited = 0;
++			autorate = 0;
++		} else if (strcmp(*argv, "unlimited") == 0) {
++			bandwidth = 0;
++			unlimited = 1;
++			autorate = 0;
++		} else if (strcmp(*argv, "autorate_ingress") == 0) {
++			autorate = 1;
++
++		} else if (strcmp(*argv, "rtt") == 0) {
++			NEXT_ARG();
++			if (get_time(&interval, *argv)) {
++				fprintf(stderr, "Illegal \"rtt\"\n");
++				return -1;
++			}
++			target = interval / 20;
++			if(!target)
++				target = 1;
++		} else if (strcmp(*argv, "datacentre") == 0) {
++			interval = 100;
++			target   =   5;
++		} else if (strcmp(*argv, "lan") == 0) {
++			interval = 1000;
++			target   =   50;
++		} else if (strcmp(*argv, "metro") == 0) {
++			interval = 10000;
++			target   =   500;
++		} else if (strcmp(*argv, "regional") == 0) {
++			interval = 30000;
++			target    = 1500;
++		} else if (strcmp(*argv, "internet") == 0) {
++			interval = 100000;
++			target   =   5000;
++		} else if (strcmp(*argv, "oceanic") == 0) {
++			interval = 300000;
++			target   =  15000;
++		} else if (strcmp(*argv, "satellite") == 0) {
++			interval = 1000000;
++			target   =   50000;
++		} else if (strcmp(*argv, "interplanetary") == 0) {
++			interval = 3600000000U;
++			target   =       5000;
++
++		} else if (strcmp(*argv, "besteffort") == 0) {
++			diffserv = 1;
++		} else if (strcmp(*argv, "precedence") == 0) {
++			diffserv = 2;
++		} else if (strcmp(*argv, "diffserv8") == 0) {
++			diffserv = 3;
++		} else if (strcmp(*argv, "diffserv4") == 0) {
++			diffserv = 4;
++		} else if (strcmp(*argv, "diffserv") == 0) {
++			diffserv = 4;
++		} else if (strcmp(*argv, "diffserv-llt") == 0) {
++			diffserv = 5;
++		} else if (strcmp(*argv, "diffserv3") == 0) {
++			diffserv = 6;
++
++		} else if (strcmp(*argv, "nowash") == 0) {
++			wash = 0;
++		} else if (strcmp(*argv, "wash") == 0) {
++			wash = 1;
++
++		} else if (strcmp(*argv, "flowblind") == 0) {
++			flowmode = 0;
++		} else if (strcmp(*argv, "srchost") == 0) {
++			flowmode = 1;
++		} else if (strcmp(*argv, "dsthost") == 0) {
++			flowmode = 2;
++		} else if (strcmp(*argv, "hosts") == 0) {
++			flowmode = 3;
++		} else if (strcmp(*argv, "flows") == 0) {
++			flowmode = 4;
++		} else if (strcmp(*argv, "dual-srchost") == 0) {
++			flowmode = 5;
++		} else if (strcmp(*argv, "dual-dsthost") == 0) {
++			flowmode = 6;
++		} else if (strcmp(*argv, "triple-isolate") == 0) {
++			flowmode = 7;
++
++		} else if (strcmp(*argv, "nat") == 0) {
++			nat = 1;
++		} else if (strcmp(*argv, "nonat") == 0) {
++			nat = 0;
++
++		} else if (strcmp(*argv, "ptm") == 0) {
++			atm = 2;
++		} else if (strcmp(*argv, "atm") == 0) {
++			atm = 1;
++		} else if (strcmp(*argv, "noatm") == 0) {
++			atm = 0;
++
++		} else if (strcmp(*argv, "raw") == 0) {
++			atm = 0;
++			overhead = 0;
++			overhead_set = true;
++			overhead_override = true;
++		} else if (strcmp(*argv, "conservative") == 0) {
++			/*
++			 * Deliberately over-estimate overhead:
++			 * one whole ATM cell plus ATM framing.
++			 * A safe choice if the actual overhead is unknown.
++			 */
++			atm = 1;
++			overhead = 48;
++			overhead_set = true;
++
++		/* Various ADSL framing schemes, all over ATM cells */
++		} else if (strcmp(*argv, "ipoa-vcmux") == 0) {
++			atm = 1;
++			overhead += 8;
++			overhead_set = true;
++		} else if (strcmp(*argv, "ipoa-llcsnap") == 0) {
++			atm = 1;
++			overhead += 16;
++			overhead_set = true;
++		} else if (strcmp(*argv, "bridged-vcmux") == 0) {
++			atm = 1;
++			overhead += 24;
++			overhead_set = true;
++		} else if (strcmp(*argv, "bridged-llcsnap") == 0) {
++			atm = 1;
++			overhead += 32;
++			overhead_set = true;
++		} else if (strcmp(*argv, "pppoa-vcmux") == 0) {
++			atm = 1;
++			overhead += 10;
++			overhead_set = true;
++		} else if (strcmp(*argv, "pppoa-llc") == 0) {
++			atm = 1;
++			overhead += 14;
++			overhead_set = true;
++		} else if (strcmp(*argv, "pppoe-vcmux") == 0) {
++			atm = 1;
++			overhead += 32;
++			overhead_set = true;
++		} else if (strcmp(*argv, "pppoe-llcsnap") == 0) {
++			atm = 1;
++			overhead += 40;
++			overhead_set = true;
++
++		/* Typical VDSL2 framing schemes, both over PTM */
++		/* PTM has 64b/65b coding which absorbs some bandwidth */
++		} else if (strcmp(*argv, "pppoe-ptm") == 0) {
++			atm = 2;
++			overhead += 27;
++			overhead_set = true;
++		} else if (strcmp(*argv, "bridged-ptm") == 0) {
++			atm = 2;
++			overhead += 19;
++			overhead_set = true;
++
++		} else if (strcmp(*argv, "via-ethernet") == 0) {
++			/*
++			 * We used to use this flag to manually compensate for
++			 * Linux including the Ethernet header on Ethernet-type
++			 * interfaces, but not on IP-type interfaces.
++			 *
++			 * It is no longer needed, because Cake now adjusts for
++			 * that automatically, and is thus ignored.
++			 *
++			 * It would be deleted entirely, but it appears in the
++			 * stats output when the automatic compensation is active.
++			 */
++
++		} else if (strcmp(*argv, "ethernet") == 0) {
++			/* ethernet pre-amble & interframe gap & FCS
++			 * you may need to add vlan tag */
++			overhead += 38;
++			overhead_set = true;
++			mpu = 84;
++
++		/* Additional Ethernet-related overhead used by some ISPs */
++		} else if (strcmp(*argv, "ether-vlan") == 0) {
++			/* 802.1q VLAN tag - may be repeated */
++			overhead += 4;
++			overhead_set = true;
++
++		/*
++		 * DOCSIS cable shapers account for Ethernet frame with FCS,
++		 * but not interframe gap nor preamble.
++		 */
++		} else if (strcmp(*argv, "docsis") == 0) {
++			atm = 0;
++			overhead += 18;
++			overhead_set = true;
++			mpu = 64;
++
++		} else if (strcmp(*argv, "overhead") == 0) {
++			char* p = NULL;
++			NEXT_ARG();
++			overhead = strtol(*argv, &p, 10);
++			if(!p || *p || !*argv || overhead < -64 || overhead > 256) {
++				fprintf(stderr, "Illegal \"overhead\", valid range is -64 to 256\\n");
++				return -1;
++			}
++			overhead_set = true;
++
++		} else if (strcmp(*argv, "mpu") == 0) {
++			char* p = NULL;
++			NEXT_ARG();
++			mpu = strtol(*argv, &p, 10);
++			if(!p || *p || !*argv || mpu < 0 || mpu > 256) {
++				fprintf(stderr, "Illegal \"mpu\", valid range is 0 to 256\\n");
++				return -1;
++			}
++
++		} else if (strcmp(*argv, "ingress") == 0) {
++			ingress = 1;
++		} else if (strcmp(*argv, "egress") == 0) {
++			ingress = 0;
++
++		} else if (strcmp(*argv, "memlimit") == 0) {
++			NEXT_ARG();
++			if(get_size(&memlimit, *argv)) {
++				fprintf(stderr, "Illegal value for \"memlimit\": \"%s\"\n", *argv);
++				return -1;
++			}
++
++		} else if (strcmp(*argv, "help") == 0) {
++			explain();
++			return -1;
++		} else {
++			fprintf(stderr, "What is \"%s\"?\n", *argv);
++			explain();
++			return -1;
++		}
++		argc--; argv++;
++	}
++
++	tail = NLMSG_TAIL(n);
++	addattr_l(n, 1024, TCA_OPTIONS, NULL, 0);
++	if (bandwidth || unlimited)
++		addattr_l(n, 1024, TCA_CAKE_BASE_RATE, &bandwidth, sizeof(bandwidth));
++	if (diffserv)
++		addattr_l(n, 1024, TCA_CAKE_DIFFSERV_MODE, &diffserv, sizeof(diffserv));
++	if (atm != -1)
++		addattr_l(n, 1024, TCA_CAKE_ATM, &atm, sizeof(atm));
++	if (flowmode != -1)
++		addattr_l(n, 1024, TCA_CAKE_FLOW_MODE, &flowmode, sizeof(flowmode));
++	if (overhead_set)
++		addattr_l(n, 1024, TCA_CAKE_OVERHEAD, &overhead, sizeof(overhead));
++	if (overhead_override) {
++		unsigned zero = 0;
++		addattr_l(n, 1024, TCA_CAKE_ETHERNET, &zero, sizeof(zero));
++	}
++	if (mpu > 0)
++		addattr_l(n, 1024, TCA_CAKE_MPU, &mpu, sizeof(mpu));
++	if (interval)
++		addattr_l(n, 1024, TCA_CAKE_RTT, &interval, sizeof(interval));
++	if (target)
++		addattr_l(n, 1024, TCA_CAKE_TARGET, &target, sizeof(target));
++	if (autorate != -1)
++		addattr_l(n, 1024, TCA_CAKE_AUTORATE, &autorate, sizeof(autorate));
++	if (memlimit)
++		addattr_l(n, 1024, TCA_CAKE_MEMORY, &memlimit, sizeof(memlimit));
++	if (nat != -1)
++		addattr_l(n, 1024, TCA_CAKE_NAT, &nat, sizeof(nat));
++	if (wash != -1)
++		addattr_l(n, 1024, TCA_CAKE_WASH, &wash, sizeof(wash));
++	if (ingress != -1)
++		addattr_l(n, 1024, TCA_CAKE_INGRESS, &ingress, sizeof(ingress));
++
++	tail->rta_len = (void *) NLMSG_TAIL(n) - (void *) tail;
++	return 0;
++}
++
++
++static int cake_print_opt(struct qdisc_util *qu, FILE *f, struct rtattr *opt)
++{
++	struct rtattr *tb[TCA_CAKE_MAX + 1];
++	unsigned bandwidth = 0;
++	unsigned diffserv = 0;
++	unsigned flowmode = 0;
++	unsigned interval = 0;
++	unsigned memlimit = 0;
++	int overhead = 0;
++	int ethernet = 0;
++	int mpu = 0;
++	int atm = 0;
++	int nat = 0;
++	int autorate = 0;
++	int wash = 0;
++	int ingress = 0;
++	SPRINT_BUF(b1);
++	SPRINT_BUF(b2);
++
++	if (opt == NULL)
++		return 0;
++
++	parse_rtattr_nested(tb, TCA_CAKE_MAX, opt);
++
++	if (tb[TCA_CAKE_BASE_RATE] &&
++	    RTA_PAYLOAD(tb[TCA_CAKE_BASE_RATE]) >= sizeof(__u32)) {
++		bandwidth = rta_getattr_u32(tb[TCA_CAKE_BASE_RATE]);
++		if(bandwidth)
++			fprintf(f, "bandwidth %s ", sprint_rate(bandwidth, b1));
++		else
++			fprintf(f, "unlimited ");
++	}
++	if (tb[TCA_CAKE_AUTORATE] &&
++		RTA_PAYLOAD(tb[TCA_CAKE_AUTORATE]) >= sizeof(__u32)) {
++		autorate = rta_getattr_u32(tb[TCA_CAKE_AUTORATE]);
++		if(autorate == 1)
++			fprintf(f, "autorate_ingress ");
++		else if(autorate)
++			fprintf(f, "(?autorate?) ");
++	}
++	if (tb[TCA_CAKE_DIFFSERV_MODE] &&
++	    RTA_PAYLOAD(tb[TCA_CAKE_DIFFSERV_MODE]) >= sizeof(__u32)) {
++		diffserv = rta_getattr_u32(tb[TCA_CAKE_DIFFSERV_MODE]);
++		switch(diffserv) {
++		case 1:
++			fprintf(f, "besteffort ");
++			break;
++		case 2:
++			fprintf(f, "precedence ");
++			break;
++		case 3:
++			fprintf(f, "diffserv8 ");
++			break;
++		case 4:
++			fprintf(f, "diffserv4 ");
++			break;
++		case 5:
++			fprintf(f, "diffserv-llt ");
++			break;
++		case 6:
++			fprintf(f, "diffserv3 ");
++			break;
++		default:
++			fprintf(f, "(?diffserv?) ");
++			break;
++		};
++	}
++	if (tb[TCA_CAKE_FLOW_MODE] &&
++	    RTA_PAYLOAD(tb[TCA_CAKE_FLOW_MODE]) >= sizeof(__u32)) {
++		flowmode = rta_getattr_u32(tb[TCA_CAKE_FLOW_MODE]);
++		nat = !!(flowmode & 64);
++		flowmode &= ~64;
++		switch(flowmode) {
++		case 0:
++			fprintf(f, "flowblind ");
++			break;
++		case 1:
++			fprintf(f, "srchost ");
++			break;
++		case 2:
++			fprintf(f, "dsthost ");
++			break;
++		case 3:
++			fprintf(f, "hosts ");
++			break;
++		case 4:
++			fprintf(f, "flows ");
++			break;
++		case 5:
++			fprintf(f, "dual-srchost ");
++			break;
++		case 6:
++			fprintf(f, "dual-dsthost ");
++			break;
++		case 7:
++			fprintf(f, "triple-isolate ");
++			break;
++		default:
++			fprintf(f, "(?flowmode?) ");
++			break;
++		};
++
++		if(nat)
++			fprintf(f, "nat ");
++	}
++	if (tb[TCA_CAKE_WASH] &&
++	    RTA_PAYLOAD(tb[TCA_CAKE_WASH]) >= sizeof(__u32)) {
++		wash = rta_getattr_u32(tb[TCA_CAKE_WASH]);
++	}
++	if (tb[TCA_CAKE_ATM] &&
++	    RTA_PAYLOAD(tb[TCA_CAKE_ATM]) >= sizeof(__u32)) {
++		atm = rta_getattr_u32(tb[TCA_CAKE_ATM]);
++	}
++	if (tb[TCA_CAKE_OVERHEAD] &&
++	    RTA_PAYLOAD(tb[TCA_CAKE_OVERHEAD]) >= sizeof(__u32)) {
++		overhead = rta_getattr_u32(tb[TCA_CAKE_OVERHEAD]);
++	}
++	if (tb[TCA_CAKE_MPU] &&
++	    RTA_PAYLOAD(tb[TCA_CAKE_MPU]) >= sizeof(__u32)) {
++		mpu = rta_getattr_u32(tb[TCA_CAKE_MPU]);
++	}
++	if (tb[TCA_CAKE_INGRESS] &&
++	    RTA_PAYLOAD(tb[TCA_CAKE_INGRESS]) >= sizeof(__u32)) {
++		ingress = rta_getattr_u32(tb[TCA_CAKE_INGRESS]);
++	}
++	if (tb[TCA_CAKE_ETHERNET] &&
++	    RTA_PAYLOAD(tb[TCA_CAKE_ETHERNET]) >= sizeof(__u32)) {
++		ethernet = rta_getattr_u32(tb[TCA_CAKE_ETHERNET]);
++	}
++	if (tb[TCA_CAKE_RTT] &&
++	    RTA_PAYLOAD(tb[TCA_CAKE_RTT]) >= sizeof(__u32)) {
++		interval = rta_getattr_u32(tb[TCA_CAKE_RTT]);
++	}
++
++	if (wash)
++		fprintf(f,"wash ");
++
++	if (ingress)
++		fprintf(f,"ingress ");
++
++	if (interval)
++		fprintf(f, "rtt %s ", sprint_time(interval, b2));
++
++	if (!atm && overhead == ethernet) {
++		fprintf(f, "raw ");
++	} else {
++		if (atm == 1)
++			fprintf(f, "atm ");
++		else if (atm == 2)
++			fprintf(f, "ptm ");
++		else
++			fprintf(f, "noatm ");
++
++		fprintf(f, "overhead %d ", overhead);
++
++		// This is actually the *amount* of automatic compensation, but we only report
++		// its presence as a boolean for now.
++		if (ethernet)
++			fprintf(f, "via-ethernet ");
++	}
++
++	if (mpu) {
++		fprintf(f, "mpu %d ", mpu);
++	}
++
++	if (memlimit)
++		fprintf(f, "memlimit %s", sprint_size(memlimit, b1));
++
++	return 0;
++}
++
++static int cake_print_xstats(struct qdisc_util *qu, FILE *f,
++				 struct rtattr *xstats)
++{
++	/* fq_codel stats format borrowed */
++	struct tc_fq_codel_xstats *st;
++	struct tc_cake_xstats     *stnc;
++	SPRINT_BUF(b1);
++	SPRINT_BUF(b2);
++
++	if (xstats == NULL)
++		return 0;
++
++	if (RTA_PAYLOAD(xstats) < sizeof(st->type))
++		return -1;
++
++	st   = RTA_DATA(xstats);
++	stnc = RTA_DATA(xstats);
++
++	if (st->type == TCA_FQ_CODEL_XSTATS_QDISC && RTA_PAYLOAD(xstats) >= sizeof(*st)) {
++		fprintf(f, "  maxpacket %u drop_overlimit %u new_flow_count %u ecn_mark %u",
++			st->qdisc_stats.maxpacket,
++			st->qdisc_stats.drop_overlimit,
++			st->qdisc_stats.new_flow_count,
++			st->qdisc_stats.ecn_mark);
++		fprintf(f, "\n  new_flows_len %u old_flows_len %u",
++			st->qdisc_stats.new_flows_len,
++			st->qdisc_stats.old_flows_len);
++	} else if (st->type == TCA_FQ_CODEL_XSTATS_CLASS && RTA_PAYLOAD(xstats) >= sizeof(*st)) {
++		fprintf(f, "  deficit %d count %u lastcount %u ldelay %s",
++			st->class_stats.deficit,
++			st->class_stats.count,
++			st->class_stats.lastcount,
++			sprint_time(st->class_stats.ldelay, b1));
++		if (st->class_stats.dropping) {
++			fprintf(f, " dropping");
++			if (st->class_stats.drop_next < 0)
++				fprintf(f, " drop_next -%s",
++					sprint_time(-st->class_stats.drop_next, b1));
++			else
++				fprintf(f, " drop_next %s",
++					sprint_time(st->class_stats.drop_next, b1));
++		}
++	} else if (stnc->version >= 1 && stnc->version < 0xFF
++				&& stnc->max_tins == TC_CAKE_MAX_TINS
++				&& RTA_PAYLOAD(xstats) >= offsetof(struct tc_cake_xstats, capacity_estimate))
++	{
++		int i;
++
++		if(stnc->version >= 3)
++			fprintf(f, " memory used: %s of %s\n", sprint_size(stnc->memory_used, b1), sprint_size(stnc->memory_limit, b2));
++
++		if(stnc->version >= 2)
++			fprintf(f, " capacity estimate: %s\n", sprint_rate(stnc->capacity_estimate, b1));
++
++		switch(stnc->tin_cnt) {
++		case 3:
++			fprintf(f, "                 Bulk   Best Effort      Voice\n");
++			break;
++
++		case 4:
++			fprintf(f, "                 Bulk   Best Effort      Video       Voice\n");
++			break;
++
++		case 5:
++			fprintf(f, "              Low Loss  Best Effort   Low Delay       Bulk  Net Control\n");
++			break;
++
++		default:
++			fprintf(f, "          ");
++			for(i=0; i < stnc->tin_cnt; i++)
++				fprintf(f, "       Tin %u", i);
++			fprintf(f, "\n");
++		};
++
++		fprintf(f, "  thresh  ");
++		for(i=0; i < stnc->tin_cnt; i++)
++			fprintf(f, "%12s", sprint_rate(stnc->threshold_rate[i], b1));
++		fprintf(f, "\n");
++
++		fprintf(f, "  target  ");
++		for(i=0; i < stnc->tin_cnt; i++)
++			fprintf(f, "%12s", sprint_time(stnc->target_us[i], b1));
++		fprintf(f, "\n");
++
++		fprintf(f, "  interval");
++		for(i=0; i < stnc->tin_cnt; i++)
++			fprintf(f, "%12s", sprint_time(stnc->interval_us[i], b1));
++		fprintf(f, "\n");
++
++		fprintf(f, "  pk_delay");
++		for(i=0; i < stnc->tin_cnt; i++)
++			fprintf(f, "%12s", sprint_time(stnc->peak_delay_us[i], b1));
++		fprintf(f, "\n");
++
++		fprintf(f, "  av_delay");
++		for(i=0; i < stnc->tin_cnt; i++)
++			fprintf(f, "%12s", sprint_time(stnc->avge_delay_us[i], b1));
++		fprintf(f, "\n");
++
++		fprintf(f, "  sp_delay");
++		for(i=0; i < stnc->tin_cnt; i++)
++			fprintf(f, "%12s", sprint_time(stnc->base_delay_us[i], b1));
++		fprintf(f, "\n");
++
++		fprintf(f, "  pkts    ");
++		for(i=0; i < stnc->tin_cnt; i++)
++			fprintf(f, "%12u", stnc->sent[i].packets);
++		fprintf(f, "\n");
++
++		fprintf(f, "  bytes   ");
++		for(i=0; i < stnc->tin_cnt; i++)
++			fprintf(f, "%12llu", stnc->sent[i].bytes);
++		fprintf(f, "\n");
++
++		fprintf(f, "  way_inds");
++		for(i=0; i < stnc->tin_cnt; i++)
++			fprintf(f, "%12u", stnc->way_indirect_hits[i]);
++		fprintf(f, "\n");
++
++		fprintf(f, "  way_miss");
++		for(i=0; i < stnc->tin_cnt; i++)
++			fprintf(f, "%12u", stnc->way_misses[i]);
++		fprintf(f, "\n");
++
++		fprintf(f, "  way_cols");
++		for(i=0; i < stnc->tin_cnt; i++)
++			fprintf(f, "%12u", stnc->way_collisions[i]);
++		fprintf(f, "\n");
++
++		fprintf(f, "  drops   ");
++		for(i=0; i < stnc->tin_cnt; i++)
++			fprintf(f, "%12u", stnc->dropped[i].packets);
++		fprintf(f, "\n");
++
++		fprintf(f, "  marks   ");
++		for(i=0; i < stnc->tin_cnt; i++)
++			fprintf(f, "%12u", stnc->ecn_marked[i].packets);
++		fprintf(f, "\n");
++
++		fprintf(f, "  sp_flows");
++		for(i=0; i < stnc->tin_cnt; i++)
++			fprintf(f, "%12u", stnc->sparse_flows[i]);
++		fprintf(f, "\n");
++
++		fprintf(f, "  bk_flows");
++		for(i=0; i < stnc->tin_cnt; i++)
++			fprintf(f, "%12u", stnc->bulk_flows[i]);
++		fprintf(f, "\n");
++
++		if(stnc->version >= 4) {
++			fprintf(f, "  un_flows");
++			for(i=0; i < stnc->tin_cnt; i++)
++				fprintf(f, "%12u", stnc->unresponse_flows[i]);
++			fprintf(f, "\n");
++		}
++
++		fprintf(f, "  max_len ");
++		for(i=0; i < stnc->tin_cnt; i++)
++			fprintf(f, "%12u", stnc->max_skblen[i]);
++		fprintf(f, "\n");
++	} else {
++		return -1;
++	}
++	return 0;
++}
++
++struct qdisc_util cake_qdisc_util = {
++	.id		= "cake",
++	.parse_qopt	= cake_parse_opt,
++	.print_qopt	= cake_print_opt,
++	.print_xstats	= cake_print_xstats,
++};
