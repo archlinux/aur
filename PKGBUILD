@@ -6,12 +6,13 @@ _replace_stock_icons=0
 
 pkgname=indicator-notifications
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Recent notifications indicator"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/~jconti/+archive/ubuntu/recent-notifications"
 license=('GPL')
 depends=('libindicator-gtk3' 'libnotify')
+makedepends=('gnome-common')
 options=('strip')
 source=("https://launchpad.net/~jconti/+archive/ubuntu/recent-notifications/+files/${pkgname}_${pkgver}.orig.tar.gz")
 sha256sums=('c388c1b01413a953099168a797ea7fabcbf5fab95fb598305345a8b9eebeacc0')
