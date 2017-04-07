@@ -1,6 +1,6 @@
 # Maintainer: sumt <sumt at sci dot fi>
 pkgname=palemoon-bin
-pkgver=27.2.0
+pkgver=27.2.1
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ source=(palemoon.desktop)
 source_i686=("palemoon-$pkgver.en-US.linux-i686.tar.bz2::http://linux.palemoon.org/installer/download.php?v=$pkgver&a=i686")
 source_x86_64=("palemoon-$pkgver.en-US.linux-x86_64.tar.bz2::http://linux.palemoon.org/installer/download.php?v=$pkgver&a=x86_64")
 sha256sums=('c6cae1c0de6b59da1d846cb2092ca2725ba2baa4d554223f747a4a71ee63002e')
-sha256sums_i686=('34fbc0c94e72ea79eb38f37e00323dad011cf964bca1d6392a165135deb63d02')
-sha256sums_x86_64=('b646aae65e3cb0d0973419285468e29320befff0a8549edf3c7cd42f81c49e7c')
+sha256sums_i686=('b5227ca0ab702deac8d7fd776af46678ae342cd943f165898e19b3b0db4f7f6c')
+sha256sums_x86_64=('cb7737b4252e4ff3f352f0561a90dd892fa8f38cd47e2397975dd43cd1c32327')
 
 package() {
   install -d "$pkgdir"/usr/{bin,lib}

@@ -1,6 +1,6 @@
 pkgbase = palemoon-bin
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
-	pkgver = 27.2.0
+	pkgver = 27.2.1
 	pkgrel = 1
 	url = http://linux.palemoon.org/
 	arch = i686
@@ -19,15 +19,15 @@ pkgbase = palemoon-bin
 	optdepends = hunspell: spell checker and morphological analyzer
 	optdepends = hyphen: library for hyphenation and justification
 	optdepends = ffmpeg: record, convert, and stream audio and video
-	provides = palemoon=27.2.0
+	provides = palemoon=27.2.1
 	conflicts = palemoon
 	options = !strip
 	source = palemoon.desktop
 	sha256sums = c6cae1c0de6b59da1d846cb2092ca2725ba2baa4d554223f747a4a71ee63002e
-	source_i686 = palemoon-27.2.0.en-US.linux-i686.tar.bz2::http://linux.palemoon.org/installer/download.php?v=27.2.0&a=i686
-	sha256sums_i686 = 34fbc0c94e72ea79eb38f37e00323dad011cf964bca1d6392a165135deb63d02
-	source_x86_64 = palemoon-27.2.0.en-US.linux-x86_64.tar.bz2::http://linux.palemoon.org/installer/download.php?v=27.2.0&a=x86_64
-	sha256sums_x86_64 = b646aae65e3cb0d0973419285468e29320befff0a8549edf3c7cd42f81c49e7c
+	source_i686 = palemoon-27.2.1.en-US.linux-i686.tar.bz2::http://linux.palemoon.org/installer/download.php?v=27.2.1&a=i686
+	sha256sums_i686 = b5227ca0ab702deac8d7fd776af46678ae342cd943f165898e19b3b0db4f7f6c
+	source_x86_64 = palemoon-27.2.1.en-US.linux-x86_64.tar.bz2::http://linux.palemoon.org/installer/download.php?v=27.2.1&a=x86_64
+	sha256sums_x86_64 = cb7737b4252e4ff3f352f0561a90dd892fa8f38cd47e2397975dd43cd1c32327
 
 pkgname = palemoon-bin
 
