@@ -1,14 +1,14 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 # Contributor: Frederik “Freso” S. Olesen <archlinux@freso.dk>
-pkgname=picard-plugins-git
+pkgname=picard-plugins-v2-git
 pkgver=1.4.r233.1f675ae
 _pkgver=1.4
 pkgrel=1
-pkgdesc="plugins from picard-plugins repository"
+pkgdesc="plugins from picard-plugins repository (for picard-git/Picard 2.0, currently in development)"
 arch=('any')
 url="https://picard.musicbrainz.org/plugins/"
 license=('GPL')
-depends=('picard')
+depends=('picard>=1.4.1.r111.g4f759c7d-1')
 conflicts=("picard<=${_pkgver}")
 source=(git+https://github.com/metabrainz/picard-plugins.git)
 md5sums=('SKIP')
@@ -21,11 +21,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/picard-plugins"
-  python2 generate.py
+  python generate.py
 }
 
 package() {
-  plugindir="${pkgdir}/usr/lib/python2.7/site-packages/picard/plugins"
+  pythonver=$(python --version | sed -E 's/Python (3\.[0-9]+)\.*/\1/')
+  plugindir="${pkgdir}/usr/lib/python${pythonver}/site-packages/picard/plugins"
   install -d "$plugindir"
   # copy all plugins
   cp "$srcdir/picard-plugins/plugins/"*.zip "$plugindir"
