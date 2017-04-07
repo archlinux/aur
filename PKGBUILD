@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-  pythonver=$(python --version | sed -E 's/Python (3\.[0-9]+)\.*/\1/')
+  pythonver=$(python --version | sed -E 's/Python (3\.[0-9]+)\..*/\1/')
   plugindir="${pkgdir}/usr/lib/python${pythonver}/site-packages/picard/plugins"
   install -d "$plugindir"
   # copy all plugins
