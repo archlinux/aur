@@ -1,7 +1,7 @@
 # Contributor: jellysheep <max.mail@dameweb.de>
 
 pkgname=mingw-w64-eigen
-pkgver=3.3.2
+pkgver=3.3.3
 pkgrel=1
 pkgdesc="Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra. (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://bitbucket.org/eigen/eigen/get/${pkgver}.tar.bz2"
         'eigen-3.2_gcc58087.patch')
-sha1sums=('d6fc2c3d7c627441dfcc6089c1cca07e0b5e1be5'
+sha1sums=('b676f3f58549104e4f233e1b21354d8be435d8fd'
           '87bc1e62edce393aaa3145f66791abbafff7e08f')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
