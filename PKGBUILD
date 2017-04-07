@@ -4,10 +4,10 @@ pkgdesc="ROS - Python implementation of the URDF parser."
 url='http://wiki.ros.org/urdf_parser_py'
 
 pkgname='ros-kinetic-urdfdom-py'
-pkgver='0.3.2'
-_pkgver_patch=1
+pkgver='0.3.3'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-catkin)
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="urdfdom_py-release-release-kinetic-urdfdom_py-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/urdfdom_py-release/archive/release/kinetic/urdfdom_py/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('aee0a3975d8faf380d300f368d53386fd33d32b084759659e191b0b5797456eb')
+sha256sums=('227ecfa29755182798418037715d3467c7879788669f1c1b8b999b4512e8988d')
 
 build() {
   # Use ROS environment variables
