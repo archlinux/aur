@@ -4,7 +4,7 @@ pkgdesc="ROS - rosservice contains the rosservice command-line tool for listing 
 url='http://ros.org/wiki/rosservice'
 
 pkgname='ros-kinetic-rosservice'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-rosservice-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/rosservice/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('23c42316baaa3f1f6e8a5c06c35c0ab3f783519352feed49627216f20a42421c')
+sha256sums=('a64040af2e77f8a868ea4094cc1641bc6f84ed3fc3a28950d9e74768e22870c8')
 
 build() {
   # Use ROS environment variables
