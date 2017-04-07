@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-yaql' 'python2-yaql')
-pkgver='1.1.1'
+pkgver='1.1.3'
 pkgrel='1'
 pkgdesc='Yet Another Query Language'
 arch=('any')
