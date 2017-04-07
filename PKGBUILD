@@ -2,7 +2,7 @@
 
 pkgname=indicator-sensors-git
 pkgver=0.8.r28.gd267b5c
-pkgrel=2
+pkgrel=3
 pkgdesc="Small application to provide hardware sensor readings using the AppIndicator framework (git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/alexmurray/indicator-sensors"
@@ -31,7 +31,7 @@ prepare() {
 
   #Cleanup indicator menu (remove "about" and "quit")
   patch -Np2 < ../menu-cleanup.patch
-  patch -Np2 < ../reduce-logging.patch
+  #patch -Np2 < ../reduce-logging.patch
 }
 
 build() {
