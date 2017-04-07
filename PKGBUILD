@@ -5,7 +5,7 @@
 
 # Maintainer: Karsten Pufahl <kontakt <AT> karstenpufahl.de>
 pkgname=stm32cubemx
-pkgver=4.19.0
+pkgver=4.20.0
 pkgrel=1
 epoch=
 pkgdesc="graphical software configuration tool for STM32 microcontrollers that allows generating C initialization code"
@@ -31,7 +31,7 @@ source=("http://www.st.com/content/ccc/resource/technical/software/sw_developmen
 	"stm32cubemx.desktop"
 	"stm32cubemx.sh")
 noextract=()
-sha512sums=('b02170d82909cd35354e79bd26a315a3fe9b0c69408bc0155884586d93ad3c361609a60499c687845f821dade84a13bb2e2caa95676358020d01f6a1c48439e3'
+sha512sums=('60c35eafa084abc0e3f1c7655f4dc589fb4869dddd475e87337b3b203b5e8c78de98609f1367a4c7eda3c0aafc87458814adf02926ea6e886b65585d94d0a7b2'
             'ad1897ea5234b712d726b5d3423f05f1c0c5a64e28354afe07dce7451563ae4492366cc252ca379b44793797be20011a66458431fd5453c18a7543ccb8df5397'
             '56bff32e35f8eb09ae4df94e4e885aaf9349c687ce9f4901ddd11c83b69a32b19d99ab8dbd90c6679e86e7213c4d41640e52ab0d80b8fc4640a1bc5df9a3af32'
             'bef2450971c152c7f45565e0e36faf1863ddc6616532d5db2f29344de5d2d34852946a89e865059a632761a0c2565177cb2181724837b7b740b0697265d307c0')
@@ -72,7 +72,7 @@ package() {
 
 	#icon and desktop file
 	convert "${pkgdir}/opt/stm32cubemx/help/STM32CubeMX.ico" "${srcdir}/${pkgname}.png"
-	install -Dm 644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+	install -Dm 644 "${srcdir}/${pkgname}-6.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 	install -Dm 644 "${srcdir}/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 	
 	#license
