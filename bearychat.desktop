@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=v2
+Name=BearyChat
+StartupWMClass=BearyChat
+Icon=bearychat
+Exec=/usr/bin/bearychat %u
+Type=Application
