@@ -1,0 +1,12 @@
+diff -rupN a/tools/SourceKit/tools/sourcekitd-test/CMakeLists.txt b/tools/SourceKit/tools/sourcekitd-test/CMakeLists.txt
+--- a/tools/SourceKit/tools/sourcekitd-test/CMakeLists.txt	2017-04-05 13:13:52.288068101 -0700
++++ b/tools/SourceKit/tools/sourcekitd-test/CMakeLists.txt	2017-04-06 11:05:37.613626721 -0700
+@@ -15,7 +15,7 @@ endif()
+ add_sourcekit_executable(sourcekitd-test
+   sourcekitd-test.cpp
+   TestOptions.cpp
+-  DEPENDS ${SOURCEKITD_TEST_DEPEND} SourceKitSupport
++  DEPENDS SourceKitSupport ${SOURCEKITD_TEST_DEPEND}
+     clangRewrite clangLex clangBasic
+   LLVM_COMPONENT_DEPENDS core support option coverage lto
+ )
