@@ -11,7 +11,7 @@ license=('GPL')
 depends=('java-runtime>=8')
 makedepends=('java-environment>=8' 'maven' 'git')
 conflicts=("${_pkgname}")
-provides=("${_pkgname}=${pkgver}")
+provides=("${_pkgname}=${pkgver/\.r*/}")
 source=(${_pkgname}::git+https://github.com/violetumleditor/violetumleditor.git)
 sha256sums=('SKIP')
 
