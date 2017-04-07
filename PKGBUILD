@@ -5,7 +5,7 @@
 pkgname=netmap
 pkgver=r2392.86312f06
 pkgrel=1
-pkgdesc="Netmap is a framework for high speed network packet I/O."
+pkgdesc="A framework for high speed network packet I/O, using kernel bypass"
 arch=('any')
 url="http://info.iet.unipi.it/~luigi/netmap"
 license=('BSD')
