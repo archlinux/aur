@@ -1,8 +1,9 @@
-# Maintainer: OmeGa <omega [U+0040] mailoo [.] org>
+# Submitter: OmeGa <omega [U+0040] mailoo [.] org>
+# Maintainer: farwayer <farwayer@gmail.com>
 
-pkgname=ruby-httpclient
 _gemname=httpclient
-pkgver=2.7.1
+pkgname=ruby-$_gemname
+pkgver=2.8.3
 pkgrel=1
 pkgdesc="Gives something like the functionality of libwww-perl (LWP) in Ruby."
 arch=('any')
@@ -11,7 +12,7 @@ license=('Ruby')
 depends=('ruby')
 source=(http://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('5d0a605e42a7f591734c05c494b9b58aba162a5c')
+sha1sums=('531c6db0b5f371e3d029cbfb2f8d743f7eeb5c1b')
 
 package() {
   cd "$srcdir"
