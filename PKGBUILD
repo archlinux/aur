@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains the ROS bindings for the tf2 library, for b
 url='http://www.ros.org/wiki/tf2_ros'
 
 pkgname='ros-kinetic-tf2-ros'
-pkgver='0.5.13'
+pkgver='0.5.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -19,6 +19,7 @@ ros_makedepends=(ros-kinetic-message-filters
   ros-kinetic-rospy
   ros-kinetic-roscpp
   ros-kinetic-catkin
+  ros-kinetic-xmlrpcpp
   ros-kinetic-actionlib
   ros-kinetic-tf2-py
   ros-kinetic-rosgraph)
@@ -33,6 +34,7 @@ ros_depends=(ros-kinetic-message-filters
   ros-kinetic-tf2-msgs
   ros-kinetic-rospy
   ros-kinetic-roscpp
+  ros-kinetic-xmlrpcpp
   ros-kinetic-actionlib
   ros-kinetic-tf2-py
   ros-kinetic-rosgraph)
@@ -47,7 +49,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="geometry2-release-release-kinetic-tf2_ros-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/kinetic/tf2_ros/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('58b5f87cd0abb62c511ec05c08318f1b44702e89d14219bdec18b5c67c58bbae')
+sha256sums=('311a5525d110e6610be2042d99b0264206bf9e4b9171f82664ce30bf78a108d7')
 
 build() {
   # Use ROS environment variables
