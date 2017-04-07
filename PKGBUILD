@@ -4,12 +4,12 @@ commit="b1cc3878daaf7742dd2b5635614f389f8305d5e4"
 pkgver=2.0.1
 PN="pcloudcc"
 pkgname=$PN
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple linux console client for pCloud cloud storage."
 arch=('x86_64')
 url="https://github.com/pcloudcom/console-client"
 license=('GPL')
-depends=('zlib' 'boost' 'fuse')
+depends=('cmake' 'zlib' 'boost' 'fuse')
 source=("https://github.com/pcloudcom/console-client/archive/$commit.zip")
 
 md5sums=('99a9b9e70eeb3baa0ad759fadaae3053')
