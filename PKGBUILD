@@ -4,7 +4,7 @@ pkgdesc="ROS - The tf2_py package."
 url='http://ros.org/wiki/tf2_py'
 
 pkgname='ros-kinetic-tf2-py'
-pkgver='0.5.13'
+pkgver='0.5.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="geometry2-release-release-kinetic-tf2_py-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/kinetic/tf2_py/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('600e6753d8a94e48b231d069165dec503fa03fa1a009536b7cf7fd529383c0b4')
+sha256sums=('7a277f96ec75861cb82d67f150ab2ff443df7fd35981882b70055b2ce8109490')
 
 build() {
   # Use ROS environment variables
