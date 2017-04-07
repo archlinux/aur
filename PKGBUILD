@@ -6,13 +6,13 @@ pkgname=thunderbird-lightning-bin
 pkgver=4.7.8
 # https://addons.mozilla.org/de/thunderbird/addon/lightning/versions/
 _versionId=625724
-pkgrel=2
+pkgrel=3
 pkgdesc="A calendar that's fully integrated into Thunderbird"
 arch=('i686' 'x86_64')
 groups=('office')
 url="https://www.mozilla.org/en-US/projects/calendar/"
 license=('MPL' 'GPL' 'LGPL')
-depends=('thunderbird>=38' 'libnotify')
+depends=('thunderbird<46' 'libnotify')
 makedepends=()
 options=(!strip)
 provides=(lightning=${pkgver})
