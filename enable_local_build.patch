@@ -1,0 +1,14 @@
+diff -aur vale-0.4.0-old/Makefile vale-0.4.0-new/Makefile
+--- vale-0.4.0-old/Makefile	2017-04-02 20:07:57.000000000 +0200
++++ vale-0.4.0-new/Makefile	2017-04-08 00:24:11.679719710 +0200
+@@ -76,7 +76,9 @@
+ 	go get -u github.com/jteeuwen/go-bindata/...
+ 	go-bindata -ignore=\\.DS_Store -pkg="rule" -o rule/rule.go rule/
+ 	gometalinter --install
+-	bundle install
++	gem install bundle
++	bundle install --path /home/gizdov/.gem/ruby/2.4.0/bin
++	gem install specific_install
+ 	gem specific_install -l https://github.com/jdkato/aruba.git -b d-win-fix
+ 
+ bump:
