@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=('python-designateclient' 'python2-designateclient')
-pkgver='2.4.0'
+pkgver='2.6.0'
 pkgrel='1'
 pkgdesc='Python client library for Designate'
 arch=('any')

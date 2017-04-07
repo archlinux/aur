@@ -1,13 +1,13 @@
 pkgbase = python-designateclient
 	pkgdesc = Python client library for Designate
-	pkgver = 2.4.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = http://docs.openstack.org/developer/python-designateclient
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = git+https://git.openstack.org/openstack/python-designateclient#tag=2.4.0
+	source = git+https://git.openstack.org/openstack/python-designateclient#tag=2.6.0
 	md5sums = SKIP
 
 pkgname = python-designateclient
