@@ -23,9 +23,6 @@ _build_stubdom=${build_stubdom:-false}
 _xen_version='4.8.0'
 _xen_major_version='4'
 _xen_minor_version='8'
-# grep -R 'UPSTREAM_REVISION' src/xen-*/Config.mk
-_git_tag_seabios='#tag=rel-1.10.0'
-_git_tag_ovmf='#tag=bc54e50e0fe03c570014f363b547426913e92449'
 # grep IPXE_GIT_TAG src/xen-*/tools/firmware/etherboot
 _git_tag_ipxe='827dd1bfee67daa683935ce65316f7e0f057fe1c'
 # grep '_VERSION=' src/xen-*/stubdom/configure
@@ -49,7 +46,7 @@ fi
 pkgbase=xen
 pkgname=(xen xen-docs)
 pkgver="${_xen_version}"
-pkgrel=5
+pkgrel=6
 pkgdesc='Virtual Machine Hypervisor & Tools'
 url='http://www.xenproject.org/'
 license=('GPL2')
@@ -100,15 +97,6 @@ source=(
 	"http://bits.xensource.com/oss-xen/release/${pkgver}/${pkgbase}-${pkgver}.tar.gz.sig"
 	"http://xenbits.xen.org/xen-extfiles/ipxe-git-${_git_tag_ipxe}.tar.gz"
 
-	'seabios'::"git://xenbits.xen.org/seabios.git${_git_tag_seabios}"
-	'ovmf'::"git://xenbits.xen.org/ovmf.git${_git_tag_ovmf}"
-	# HTTP access
-	#'seabios'::"git+http://xenbits.xen.org/git-http/seabios.git${_git_tag_seabios}"
-
-	# Compile patches
-	ovmf.patch
-	patch-gcc6-ovmf-build.sh.patch
-
 	# XSA patches
 	'https://xenbits.xen.org/xsa/xsa203-4.8.patch'
 	'https://xenbits.xen.org/xsa/xsa204-4.8.patch'
@@ -121,6 +109,7 @@ source=(
 	'https://xenbits.xen.org/xsa/xsa210.patch'
 	'https://xenbits.xen.org/xsa/xsa211-qemut.patch'
 	'https://xenbits.xen.org/xsa/xsa211-qemuu-4.8.patch'
+	'https://xenbits.xen.org/xsa/xsa212.patch'
 
 	# Files
 	'grub-mkconfig-helper'
@@ -149,11 +138,6 @@ sha256sums=(
 	'SKIP'
 	'36deacb946c59ad1d6600f6e5b89d6a7a8961e65eb000900e184075920120f49'
 
-	'SKIP'
-	'SKIP'
-
-	'9cf9232c6e9a2b972cd4e1c7aacac9152bb8676db2b794381e1964c9f452e7de'
-	'6403a0478e3cfed91dcad53b5f02e71745c98d18ab53930f87aeff1da8d71d55'
 	# XSA patches
 	'4218fcfff11ec4788462a3ea9dddecb25b9d9fb1beaad17ca0f723b07b6675e4'
 	'fa2a69682868104b6263655abbfc6b326f76deebdac3273b4b65da6673f5d977'
@@ -166,6 +150,7 @@ sha256sums=(
 	'10e26c017c916dcac261c6a3c92656831f0ad037f792940e6faf6905c6e23861'
 	'9d0cf413dcc9654ee95f6b04fa9c5714f36775cbc9ab0390a3041ec4a68845ab'
 	'bea7cf4065bd9d0085f4dfc3395e59c3ca9d4de9d786a3018c8dc7fd9f3d8b6e'
+	'be1255bcda06158cdb86eb5297e8a271e05318e88cd21035c58a67f9ada6ccba'
 	# PKGBUILD files
 	'06c9f6140f7ef4ccfc4b1a7d9732a673313e269733180f53afcd9e43bf6c26bb'
 	'ceaff798a92a7aef1465a0a0b27b1817aedd2c857332b456aaa6dd78dc72438f'
@@ -211,9 +196,6 @@ prepare() {
 	cd "${srcdir}/${pkgbase}-${pkgver}"
 
 	msg2 'Copying downloaded files...'
-	mkdir -p tools/firmware/{seabios,ovmf}-dir-remote/ tools/firmware/etherboot
-	cp -r ../seabios/* tools/firmware/seabios-dir-remote/
-	cp -r ../ovmf/* tools/firmware/ovmf-dir-remote/
 	cp "${srcdir}/ipxe-git-${_git_tag_ipxe}.tar.gz" tools/firmware/etherboot/ipxe.tar.gz
 
 	# XSA Patches
@@ -222,6 +204,7 @@ prepare() {
 	patch -Np1 -i "${srcdir}/xsa204-4.8.patch"
 	patch -Np1 -i "${srcdir}/xsa207.patch"
 	patch -Np1 -i "${srcdir}/xsa210.patch"
+	patch -Np1 -i "${srcdir}/xsa212.patch"
 	# qemu-xen-traditional
 	pushd 'tools/qemu-xen-traditional'
 	patch -Np1 -i "${srcdir}/xsa208-qemut.patch"
@@ -241,11 +224,6 @@ prepare() {
 	sed -i.bak '/ EFI_LD/s/LD/LD_EFI/' xen/arch/x86/Makefile
 	sed -i.bak 's/LD/LD_EFI/' xen/arch/x86/efi/Makefile
 	sed -i.bak '/EFI_MOUNTPOINT .*/aLD_EFI ?= $(LD)' xen/Makefile
-
-	# OVMF Compile support (Pulls from git repo, so patching to patch after pull request)
-	msg2 'Patching OVMF Python version...'
-	patch -Np1 -i "${srcdir}/ovmf.patch"
-	cp "${srcdir}/patch-gcc6-ovmf-build.sh.patch" tools/firmware/
 
 	# Fix Install Paths
 	msg2 'Fixing installation paths...'
@@ -291,7 +269,7 @@ build() {
 		--enable-systemd \
 		--enable-ovmf \
 		--with-system-ovmf \
-		--with-system-seabios \
+		--with-system-seabios=/usr/share/qemu/bios-256k.bin \
 		"${_config_stubdom:---disable-stubdom}" \
 		--with-extra-qemuu-configure-args="--disable-bluez --disable-gtk --enable-spice --enable-usb-redir --disable-werror"
 
@@ -318,7 +296,6 @@ package_xen() {
 		spice
 		usbredir
 		yajl
-		# TODO why not use system's seabios, ovmf, qemu
 	)
 	optdepends=(
 		'xen-docs: Official Xen Documentation'

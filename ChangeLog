@@ -1,3 +1,9 @@
+2017-04-07 Janne Heß
+	* 4.8.0-6
+	Remove last pieces of OVMF and SeaBIOS
+	Specify location of SeaBIOS
+	Apply XSA patch: 212
+
 2017-03-28 Janne Heß
 	* 4.8.0-5
 	Split out SeaBIOS and OVMF
