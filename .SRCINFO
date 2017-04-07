@@ -1,11 +1,11 @@
 pkgbase = download-sweeper
 	pkgdesc = A stale file archive and removal tool
 	pkgver = 1.12
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/brandonio21/download-sweeper
 	arch = any
 	license = GPL
-	depends = python>=3
+	depends = python
 	depends = python-yaml
 	source = https://github.com/brandonio21/download-sweeper/archive/v1.12.tar.gz
 	sha256sums = 455a717cce5c35ce44e942702bc76bebe51536f2b956bb20a4250e1fa815042f
