@@ -22,7 +22,10 @@ license=('LGPL')
 build() {
   cd "$srcdir/ocamlgraph-$pkgver"
   ./configure --prefix=/usr
-  make all viewer doc
+  # do not build the viewer because lablgtk2 is build without
+  # libgnomecanvas, see
+  # https://git.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/lablgtk2
+  make all doc
 }
 
 package() {
@@ -32,6 +35,6 @@ package() {
   make DESTDIR=$pkgdir OCAMLFINDDEST="-destdir $OCAMLFIND_DESTDIR" install-findlib
   install -d -m 0755 "${pkgdir}/usr/share/doc/$pkgname"
   install -t "${pkgdir}/usr/share/doc/$pkgname/" doc/*
-  install -Dm 755 dgraph/dgraph.opt "${pkgdir}/usr/bin/graph-viewer"
-  install -Dm 755 editor/editor.opt "${pkgdir}/usr/bin/graph-editor"
+  #install -Dm 755 dgraph/dgraph.opt "${pkgdir}/usr/bin/graph-viewer"
+  #install -Dm 755 editor/editor.opt "${pkgdir}/usr/bin/graph-editor"
 }
