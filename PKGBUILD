@@ -3,20 +3,19 @@
 pkgname=('python-apt' 'python2-apt')
 _pkgname=python-apt
 _pkgname2=python2-apt
-pkgver=1.1.0~beta5
+pkgver=1.4.0~beta2
 pkgrel=1
 pkgdesc="Python binding of libapt-pkg"
 arch=('i686' 'x86_64')
 url="https://tracker.debian.org/pkg/python-apt"
 license=('GPL2')
-depends=('apt>=1.1')
+depends=('apt>=1.4')
 makedepends=('python-distutils-extra' 'python2-distutils-extra')
 conflicts=()
 options=(!emptydirs)
-# source=(http://ftp.debian.org/debian/pool/main/p/$_pkgname/${_pkgname}_$pkgver.tar.xz
-# fix-pydebug.patch)
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/${_pkgname}_${pkgver}.tar.xz" "fix-pydebug.patch")
-sha256sums=('165ddf712b536ef19085dcb170bbd9842fc9bdd23e8a6b58d3ceae6597b4e7d6'
+source=(http://ftp.debian.org/debian/pool/main/p/$_pkgname/${_pkgname}_$pkgver.tar.xz
+fix-pydebug.patch)
+sha256sums=('ac521853d7d675f49af81a58c9824521d48f74058b26ef5abbdc44dff4d79343'
             '8a652b45fc4cdb27d672c355858813678908a8b6ab6a8dde8b843193eb960646')
 
 prepare() {
