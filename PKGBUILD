@@ -3,7 +3,7 @@ pkgname=nginx-rtmp
 _pkgname=nginx
 pkgver=1.10.3
 _rtmpver=1.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, with nginx-rtmp-module'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -23,13 +23,11 @@ backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/win-utf'
         'etc/logrotate.d/nginx')
 install=nginx.install
-source=($url/download/nginx-$pkgver.tar.gz{,.asc}
+source=($url/download/nginx-$pkgver.tar.gz
         https://github.com/arut/nginx-rtmp-module/archive/v$_rtmpver.tar.gz
         service
         logrotate)
-validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
 md5sums=('204a20cb4f0b0c9db746c630d89ff4ea'
-         'SKIP'
          'a87ab77c4414f80d394d712cceb39016'
          '09862c34cd9593bc40da81f88c5fc4b2'
          '6a01fb17af86f03707c8ae60f98a2dc2')
