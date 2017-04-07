@@ -1,7 +1,7 @@
 pkgbase = palemoon-i18n-default
 	pkgdesc = Pale Moon language pack for system active language.
 	pkgver = 27.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.palemoon.org/langpacks.shtml
 	arch = any
 	license = MPL

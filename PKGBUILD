@@ -1,7 +1,7 @@
 # Maintainer: sumt <sumt at sci dot fi>
 pkgname=palemoon-i18n-default
 pkgver=27.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Pale Moon language pack for system active language."
 arch=('any')
 url="http://www.palemoon.org/langpacks.shtml"
@@ -25,6 +25,7 @@ md5sums=('c654129d7633ca682436825e6eb0aead'
          'c7a112c5ae1809b62006451e11fffd0e')
 
 _currlocale=$(echo $LANG | awk -F'[ .@]' '{print $1}' | tr _ -)
+#_currlocale=en-GB
 _url=http://relmirror.palemoon.org/langpacks/${pkgver%.*}.x
 
 _locales=(
@@ -50,16 +51,16 @@ do
     _locale=${_locales[$_i]}
     _langpack=palemoon-i18n-$pkgver-$_locale.xpi
     source+=("$_langpack::$_url/$_locale.xpi")
+    #md5sums=( ${md5sums[0]} ${md5sums[$_i+1]} )
+    md5sums=( ${md5sums[0]} ${md5sums[$_i+1]} )
     noextract=("$_langpack")
+    break
   fi
 done
 
-prepare() {
-  if [ ${#source[@]} -ne 2 ]; then
-    error "Language pack for $_currlocale not found"
-    exit 1
-  fi
-}
+if [ ${#source[@]} -ne 2 ]; then
+  error "Language pack for $_currlocale not found"
+fi
 
 package() {
   install -Dm644 "$_langpack" \
