@@ -1,16 +1,16 @@
 pkgbase = kaption
-	pkgdesc = A KDE utility similar to Jing or Skitch to take an edit desktop snapshots
+	pkgdesc = A KDE utility similar to Jing or Skitch to take and edit desktop snapshots
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kde-apps.org/content/show.php/Kaption?content=139302
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	makedepends = automoc4
-	depends = kdelibs
-	source = http://kde-apps.org/CONTENT/content-files/139302-kaption-0.1.1.tar.bz2
-	md5sums = f2a9427161319bae7cb793c1c50e41bc
+	depends = kdebase-runtime
+	source = https://dl.opendesktop.org/api/files/download/id/1466627852/139302-kaption-0.1.1.tar.bz2
+	sha256sums = 90d3a8b7f33d3078f788dd257b020a0af32d495792395666726e79325541931d
 
 pkgname = kaption
 

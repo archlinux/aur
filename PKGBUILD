@@ -1,23 +1,30 @@
+# Maintainer: Michael Straube <straubem@gmx.de>
 # Contributor: Adrià Arrufat <swiftscythe@gmail.com>
 
 pkgname=kaption
 pkgver=0.1.1
-pkgrel=1
-pkgdesc="A KDE utility similar to Jing or Skitch to take an edit desktop snapshots"
+pkgrel=2
+pkgdesc="A KDE utility similar to Jing or Skitch to take and edit desktop snapshots"
 arch=('i686' 'x86_64')
 url="http://kde-apps.org/content/show.php/Kaption?content=139302"
-depends=('kdelibs')
-makedepends=('cmake' 'automoc4')
-source=(http://kde-apps.org/CONTENT/content-files/139302-${pkgname}-${pkgver}.tar.bz2)
 license=('GPL')
-md5sums=('f2a9427161319bae7cb793c1c50e41bc')
+depends=('kdebase-runtime')
+makedepends=('cmake' 'automoc4')
+source=("https://dl.opendesktop.org/api/files/download/id/1466627852/139302-kaption-$pkgver.tar.bz2")
+sha256sums=('90d3a8b7f33d3078f788dd257b020a0af32d495792395666726e79325541931d')
+
+prepare() {
+  mkdir -p build
+}
 
 build() {
-  cd $srcdir/${pkgname}-${pkgver}
-  cmake CMakeLists.txt -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix`
-  make || return 1
+  cd build
+  cmake ../$pkgname-$pkgver \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  make
 }
+
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  make DESTDIR=${pkgdir} install
+  cd build
+  make DESTDIR="$pkgdir" install
 }
