@@ -27,7 +27,7 @@ build() {
   rm -rf build
   mkdir build
   cd build
-  cmake -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
