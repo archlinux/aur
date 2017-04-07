@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS console output library."
 url='http://www.ros.org/wiki/rosconsole'
 
 pkgname='ros-kinetic-rosconsole'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-rosconsole-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/rosconsole/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e728cf3213e481ae61db9067fee775c49340c499e5dfc816b1da70c0cb3f1fad')
+sha256sums=('475fb74a31e3231d6390c349e78327c173823372505a7f0fa381cd56244c9640')
 
 build() {
   # Use ROS environment variables
