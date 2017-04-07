@@ -3,10 +3,10 @@
 _pkgname=demlo
 pkgname=$_pkgname
 pkgver=3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic and extensible music library organizer"
 arch=("i686" "x86_64")
-url="http://ambrevar.bitbucket.org/$_pkgname/"
+url="http://ambrevar.bitbucket.io/demlo/"
 license=("MIT")
 depends=("ffmpeg" "lua51" "taglib")
 makedepends=("go" "git")
