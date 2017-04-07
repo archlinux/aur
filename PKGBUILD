@@ -15,7 +15,7 @@ _url=http://relmirror.palemoon.org/langpacks/${pkgver%.*}.x
 
 declare -A _languages=(
 ["cs"]="Czech"
-["de"x]="German"
+["de"]="German"
 ["en-GB"]="English (U.K.)"
 ["es-AR"]="Spanish (Argentina)"
 ["es-ES"]="Spanish (Spain)"
