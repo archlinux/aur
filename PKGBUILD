@@ -1,9 +1,9 @@
 # Maintainer: Yen Chi Hsuan <yan12125 at gmail.com>
 _pkgname=SimpleITK
 pkgname=simpleitk
-pkgver=1.0rc3
-_pypkgver=1.0.0rc3
-pkgrel=2
+pkgver=1.0.0
+_pypkgver=1.0.0
+pkgrel=1
 pkgdesc="A simplified layer built on top of ITK, intended to facilitate its use in rapid prototyping, education, interpreted languages."
 arch=('i686' 'x86_64')
 url="http://www.simpleitk.org/"
