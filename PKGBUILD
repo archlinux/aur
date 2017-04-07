@@ -4,10 +4,10 @@ pkgdesc="ROS - This stack provides Python bindings for Qt."
 url='http://ros.org/wiki/python_qt_binding'
 
 pkgname='ros-kinetic-python-qt-binding'
-pkgver='0.3.1'
-_pkgver_patch=2
+pkgver='0.3.2'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-catkin
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="python_qt_binding-release-release-kinetic-python_qt_binding-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/python_qt_binding-release/archive/release/kinetic/python_qt_binding/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b39892ba9b38e7f6929156dfdba75a4eb14b87761bd2c6c1de0c0213b66f2841')
+sha256sums=('687dfa1fc8061411c39bdeddd565f210717b8ac750d714915ba9cc159e52e14b')
 
 build() {
   # Use ROS environment variables
