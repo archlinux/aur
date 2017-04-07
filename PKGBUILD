@@ -3,13 +3,13 @@
 
 pkgname=linux-show-player
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Sound cue playback software designed for live musical shows and theatre plays"
 url="http://linux-show-player.sourceforge.net/"
 arch=('any')
 license=('GPL3')
 depends=('python-pyqt5' 'python-gobject' 'gst-plugins-good' 'python-mido'
-         'python-sortedcontainers')
+         'python-sortedcontainers' 'qt5-svg')
 makedepends=('python-setuptools')
 optdepends=('gst-libav: for larger format support'
             'portmidi: for portmidi support'
