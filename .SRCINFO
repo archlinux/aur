@@ -1,8 +1,8 @@
 pkgbase = python-oslo-context
-	pkgdesc = Oslo Log library
+	pkgdesc = Oslo context library
 	pkgver = 2.13.0
 	pkgrel = 1
-	url = https://pypi.python.org/pypi/oslo.context/2.13.0
+	url = http://docs.openstack.org/developer/oslo.context
 	arch = any
 	license = Apache
 	checkdepends = python-oslotest
