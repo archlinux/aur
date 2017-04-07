@@ -5,7 +5,7 @@
 pkgname=rlite-git
 pkgver=r1985.6522969
 pkgrel=1
-pkgdesc="Recursive InterNetwork Architecture user/kernel prototype written in C."
+pkgdesc="Recursive InterNetwork Architecture (RINA) user/kernel prototype written in C/C++"
 arch=('any')
 license=('GPL' 'LGPL')
 depends=('linux' 'protobuf' 'python')
