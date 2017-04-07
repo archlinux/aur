@@ -1,11 +1,11 @@
 pkgbase = python-munch
 	pkgdesc = A dot-accessible dictionary (a la JavaScript objects).
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/Infinidat/munch
 	arch = any
 	license = Apache
-	source = git+https://github.com/Infinidat/munch#tag=2.1.0
+	source = git+https://github.com/Infinidat/munch#tag=2.1.1
 	md5sums = SKIP
 
 pkgname = python-munch
