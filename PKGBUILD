@@ -4,7 +4,7 @@ pkgdesc="ROS - tf2_msgs."
 url='http://www.ros.org/wiki/tf2_msgs'
 
 pkgname='ros-kinetic-tf2-msgs'
-pkgver='0.5.13'
+pkgver='0.5.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="geometry2-release-release-kinetic-tf2_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/kinetic/tf2_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b722255d831d8987392593655b7ac7e9abf5dd89cccd202cb423955e12d9e98e')
+sha256sums=('d4f1d627876f9e31157f7c8dc3a4b7cedcefea07334853460a4821e7b543a06b')
 
 build() {
   # Use ROS environment variables
