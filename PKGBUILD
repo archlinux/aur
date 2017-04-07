@@ -18,6 +18,9 @@ sha256sums=('987ec4e47e9d9dec43d588c07693b04f438049b8ce5b73372290e1108b45431e'
             'd5dd810d2492486af38b2d8079dbd24554b4f7dd6fd43d1af860ae6667239bb2'
             '212ed4c8223c18239ca10d4e78b6cc5fbbea8631157313b51cdaf8c55bd91316')
 
+#if   [ "$CARCH" = "i686"   ]; then _arch="x86"
+#elif [ "$CARCH" = "x86_64" ]; then _arch="x86_64"
+#fi
 
 prepare() {
   cd ${srcdir}/${_pkgname}-${pkgver}-${_pkgrel}-final-lin_ubuntu_16.04-x86_64/
@@ -35,7 +38,7 @@ package() {
 
   install -Dm644 "gvSIG.config"  ${pkgdir}/opt/${pkgname}/gvSIG.config
 
-  install -Dm644 "$pkgname.desktop" \
+  install -Dm644 "${pkgname}.desktop" \
         ${pkgdir}/usr/share/applications/${pkgname}.desktop
 
   install -dm755 ${pkgdir}/usr/bin
@@ -43,6 +46,7 @@ package() {
   echo "#!/bin/sh" > ${pkgdir}/usr/bin/$pkgname
   echo "/opt/${pkgname}/gvSIG.sh" >> ${pkgdir}/usr/bin/${pkgname}
   chmod +x ${pkgdir}/usr/bin/${pkgname}
+  chmod -Rfv 755 ${pkgdir}/opt/${pkgname}/gvSIG
 
   for s in 16 22 48; do
     mkdir -p ${pkgdir}/usr/share/icons/hicolor/${s}x${s}/apps
