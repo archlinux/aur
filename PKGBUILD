@@ -15,18 +15,18 @@ source=('git://github.com/atmel-maxtouch/mxt-app')
 md5sums=('SKIP')
 
 pkgver() {
-    cd ${pkgname%-git}
+    cd mxt-app
     git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
 build() {
-    cd ${pkgname%-git}
+    cd mxt-app
     ./autogen.sh --prefix=/usr --enable-man
     make
 }
 
 package() {
-    cd ${pkgname%-git}
+    cd mxt-app
     make DESTDIR="$pkgdir" install
-    install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname%-git}/LICENSE
+    install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/mxt-app/LICENSE
 }
