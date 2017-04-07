@@ -3,7 +3,7 @@
 # Custom Executor Maintainer: Marc Mettke <marc@itmettke.de>
 
 pkgname=gitlab-runner-custom-executors
-pkgver=1.11.0
+pkgver=9.0.1
 pkgrel=1
 pkgdesc="The official GitLab CI runner written in Go with a LXC Executor"
 arch=('i686' 'x86_64')

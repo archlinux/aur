@@ -1,6 +1,6 @@
 pkgbase = gitlab-runner-custom-executors
 	pkgdesc = The official GitLab CI runner written in Go with a LXC Executor
-	pkgver = 1.11.0
+	pkgver = 9.0.1
 	pkgrel = 1
 	url = https://gitlab.com/gitlab-org/gitlab-ci-multi-runner
 	install = gitlab-runner.install
@@ -17,12 +17,12 @@ pkgbase = gitlab-runner-custom-executors
 	depends = git
 	depends = glibc
 	depends = tar
-	provides = gitlab-runner=1.11.0-1
+	provides = gitlab-runner=9.0.1-1
 	conflicts = gitlab-runner
 	noextract = prebuilt-x86_64.tar.xz
 	noextract = prebuilt-arm.tar.xz
 	backup = etc/gitlab-runner/config.toml
-	source = git+https://gitlab.com/gitlab-org/gitlab-ci-multi-runner.git#tag=v1.11.0
+	source = git+https://gitlab.com/gitlab-org/gitlab-ci-multi-runner.git#tag=v9.0.1
 	source = https://gitlab-ci-multi-runner-downloads.s3.amazonaws.com/master/docker/prebuilt-x86_64.tar.xz
 	source = https://gitlab-ci-multi-runner-downloads.s3.amazonaws.com/master/docker/prebuilt-arm.tar.xz
 	source = gitlab-runner.install
