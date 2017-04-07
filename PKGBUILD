@@ -9,7 +9,7 @@ url="https://github.com/endaaman/tym"
 license=('MIT')
 depends=('vte3' 'lua')
 source=("https://github.com/endaaman/${pkgname}/releases/download/$pkgver/${pkgname}-$pkgver.tar.gz")
-sha1sums=('1c625f66b16d7e3743ee592f423593439c40eede')
+sha1sums=('d8d0f735b055c77ea1d931cfb2dc8c31b2db4963')
 
 build() {
 	cd "$pkgname-$pkgver"
