@@ -1,0 +1,17 @@
+pkgbase = sporth-git
+	pkgdesc = A small stack-based audio language.
+	pkgver = r807.82b9f8a
+	pkgrel = 1
+	url = http://paulbatchelor.github.io/proj/sporth.html
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = soundpipe
+	depends = jack
+	provides = sporth
+	conflicts = sporth
+	source = git://github.com/PaulBatchelor/sporth.git
+	md5sums = SKIP
+
+pkgname = sporth-git
+
