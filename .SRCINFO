@@ -1,12 +1,13 @@
 pkgbase = wallepy
 	pkgdesc = An automatic wallpaper getter and setter using feh
 	pkgver = 0.03
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/brandonio21/wallepy
 	arch = any
 	license = MIT
 	depends = python>=3
-	depends = python-click
+	depends = python-click,
+	depends = feh
 	source = https://github.com/brandonio21/wallepy/archive/v0.03.tar.gz
 	sha256sums = df039f0fe1d9a2cc23e48209beff7e504b69b6613491eae03a0a07ce78a9e54f
 
