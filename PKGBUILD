@@ -4,7 +4,7 @@ pkgdesc="ROS - The OctoMap library implements a 3D occupancy grid mapping approa
 url='http://octomap.github.io'
 
 pkgname='ros-kinetic-octomap'
-pkgver='1.8.0'
+pkgver='1.8.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -26,7 +26,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="octomap-release-release-kinetic-octomap-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/octomap-release/archive/release/kinetic/octomap/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5cc972d7bb088f6d95460ae9c331c8aac0acdd556b71d9c465ee8f38a78fc323')
+sha256sums=('dba38c606483ef59bd981c17a08fb381cef0a9d0a20ddfbba35590a3330ecbe6')
 
 build() {
   # Use ROS environment variables
