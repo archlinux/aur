@@ -15,3 +15,9 @@ post_remove() {
   userdel cvmfs
   rm -rf /var/lib/cvmfs /cvmfs
 }
+
+post_upgrade() {
+  if ! grep -q 'added by CernVM-FS' /etc/fuse.conf; then
+     echo "CernVM-FS modifications in /etc/fuse.conf not found. You might have to enable 'user_allow_other' by hand.";
+  fi
+}
