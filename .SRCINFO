@@ -1,0 +1,23 @@
+pkgbase = python-pytest-flask
+	pkgdesc = A set of pytest fixtures to test Flask applications.
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/pytest-dev/pytest-flask
+	arch = any
+	license = MIT
+	makedepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python2-pytest
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = https://github.com/pytest-dev/pytest-flask/archive/0.10.0.tar.gz
+	sha256sums = 46751b8224189a77e47cf584acc577f9cf35fb6aa68ebc427a15590a8de5b08b
+
+pkgname = python-pytest-flask
+	depends = python-flask
+	depends = python-werkzeug
+
+pkgname = python2-pytest-flask
+	depends = python2-flask
+	depends = python2-werkzeug
+
