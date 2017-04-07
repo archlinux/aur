@@ -1,0 +1,12 @@
+pkgbase = python-stagger
+	pkgdesc = ID3v1/ID3v2 tag manipulation package in pure Python 3
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://github.com/lorentey/stagger
+	arch = any
+	makedepends = python-setuptools
+	source = https://github.com/lorentey/stagger/archive/release-1.0.1.tar.gz
+	md5sums = b4b141bc36cfda0d6f9b2d40cff3b346
+
+pkgname = python-stagger
+
