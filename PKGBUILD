@@ -4,7 +4,7 @@ pkgdesc="ROS - The dynamicEDT3D library implements an inrementally updatable Euc
 url='http://octomap.github.io'
 
 pkgname='ros-kinetic-dynamic-edt-3d'
-pkgver='1.8.0'
+pkgver='1.8.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="octomap-release-release-kinetic-dynamic_edt_3d-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/octomap-release/archive/release/kinetic/dynamic_edt_3d/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('45ddc2caef3f4c575d940aec2197bdefc894cb67cdc2cad87cf9423869b5e456')
+sha256sums=('11050cd476d6f3f1ca82e65bbc63caf0565ec6baf633eda978a170930f038a3e')
 
 build() {
   # Use ROS environment variables
