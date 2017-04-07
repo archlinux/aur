@@ -1,9 +1,8 @@
 # Contributor: Zeph <zeph33@gmail.com>
 # Maintainer: Zeph <zeph33@gmail.com>
 pkgname=pamac-gaura-git
-pkgver=4.3.0
-_pkgver=4.3.0
-pkgrel=3
+pkgver=r579.dca26af
+pkgrel=4
 pkgdesc="A Gtk3 frontend for libalpm with some additions from gaurapanasenko"
 arch=('any')
 url="https://github.com/gaurapanasenko/pamac"

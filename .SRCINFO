@@ -1,7 +1,7 @@
 pkgbase = pamac-gaura-git
 	pkgdesc = A Gtk3 frontend for libalpm with some additions from gaurapanasenko
-	pkgver = 4.3.0
-	pkgrel = 3
+	pkgver = r579.dca26af
+	pkgrel = 4
 	url = https://github.com/gaurapanasenko/pamac
 	arch = any
 	license = GPL3
