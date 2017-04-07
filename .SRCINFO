@@ -1,5 +1,5 @@
 pkgbase = python-saharaclient
-	pkgdesc = Python client library for Trove
+	pkgdesc = Python client library for Sahara
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://docs.openstack.org/developer/python-saharaclient

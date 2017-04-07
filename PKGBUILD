@@ -3,7 +3,7 @@
 pkgname=('python-saharaclient' 'python2-saharaclient')
 pkgver='1.1.0'
 pkgrel='1'
-pkgdesc='Python client library for Trove'
+pkgdesc='Python client library for Sahara'
 arch=('any')
 url='http://docs.openstack.org/developer/python-saharaclient'
 license=('Apache')
