@@ -4,7 +4,7 @@ pkgdesc="ROS - octovis is visualization tool for the OctoMap library based on Qt
 url='http://octomap.github.io'
 
 pkgname='ros-kinetic-octovis'
-pkgver='1.8.0'
+pkgver='1.8.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="octomap-release-release-kinetic-octovis-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/octomap-release/archive/release/kinetic/octovis/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a1c972e334b98171560f2af701a9252016f56988598752fa013ba46d742db5e6')
+sha256sums=('3c29b6a392cf48985126527130fdc378e60e0987e2cd63c65cdda6e90bbc282b')
 
 build() {
   # Use ROS environment variables
