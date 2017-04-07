@@ -1,6 +1,6 @@
 # Maintainer: Vincent Hourdin <aur at vinvin dot tf>
 pkgname=ser-player
-pkgver=v1.3.0.r0.g615e4db
+pkgver=v1.6.0.r36.gfef5030
 pkgrel=1
 pkgdesc="A simple SER files player, a file format used in astronomy."
 url="https://github.com/cgarry/ser-player"
@@ -11,8 +11,8 @@ makedepends=()
 conflicts=()
 replaces=()
 backup=()
-source=("git+https://github.com/cgarry/ser-player.git")
-md5sums=('SKIP')
+source=("git+https://github.com/cgarry/ser-player.git" "AppImage.patch")
+sha1sums=('SKIP' '73f2645bd9d5534a7d03b8f2222f3a69f54109fb')
 
 pkgver() {
   cd "$pkgname"
@@ -21,6 +21,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
+  patch -p0 < ../AppImage.patch
   qmake-qt5 ser-player.pro
   make
 }
