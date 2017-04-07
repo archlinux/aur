@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a C++ base class for URDF parsers."
 url='http://ros.org/wiki/urdf'
 
 pkgname='ros-kinetic-urdf-parser-plugin'
-pkgver='1.12.5'
+pkgver='1.12.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="robot_model-release-release-kinetic-urdf_parser_plugin-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/kinetic/urdf_parser_plugin/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5d3a23b2b8e40ac46dc46b155f9ba1d885d85d1f5b64df0f34c97db633156888')
+sha256sums=('6e8588e973adef48731b5ac060346ad4e9bc1c54d9b0cc6281046585f6f52840')
 
 build() {
   # Use ROS environment variables
