@@ -4,8 +4,8 @@
 # ALERTA: Estos perfiles son inestbles y pueden fallar.
 
 pkgname=firejail-extras
-pkgver=0.9.44
-pkgrel=40
+pkgver=0.9.445
+pkgrel=4
 pkgdesc="Extra profiles for firejail"
 arch=('any')
 url="https://github.com/triceratops1/fe"
