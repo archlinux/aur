@@ -4,13 +4,14 @@ pkgdesc="ROS - This package provides a set of typedefs that allow using Eigen da
 url='http://eigen.tuxfamily.org/dox/TopicUnalignedArrayAssert.html'
 
 pkgname='ros-kinetic-eigen-stl-containers'
-pkgver='0.1.6'
+pkgver='0.1.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-kinetic-catkin)
+ros_makedepends=(ros-kinetic-cmake-modules
+  ros-kinetic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen3)
@@ -28,7 +29,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="eigen_stl_containers-release-release-kinetic-eigen_stl_containers-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/eigen_stl_containers-release/archive/release/kinetic/eigen_stl_containers/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b6241711dd597168caf8f4020fbbd647a55b28bd8a50c727976ed426fd9856f2')
+sha256sums=('a1462965b24806ba0cf25c558a5a559a78568dd0f22809f0d9fbe467ec6626aa')
 
 build() {
   # Use ROS environment variables
