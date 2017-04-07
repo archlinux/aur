@@ -4,7 +4,7 @@ pkgdesc="ROS - robot_model contains packages for modeling various aspects of rob
 url='http://ros.org/wiki/robot_model'
 
 pkgname='ros-kinetic-robot-model'
-pkgver='1.12.5'
+pkgver='1.12.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="robot_model-release-release-kinetic-robot_model-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/kinetic/robot_model/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('16a2231d67262da48191500d22b64284a1aaafb15d1f24f7d6db3aaf147665ed')
+sha256sums=('d6ddd629af9fa3065b457f8ea2fe760c1894a6b50d9016469f010e3ba71d650f')
 
 build() {
   # Use ROS environment variables
