@@ -1,17 +1,17 @@
 pkgbase = picard-git
 	pkgdesc = MusicBrainz tagging application
-	pkgver = 1.4.1.r11.g5022d5dc
+	pkgver = 1.4.1.r111.g4f759c7d
 	pkgrel = 1
 	url = https://picard.musicbrainz.org
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = python2-pyqt5
-	depends = mutagen
-	optdepends = python2-discid: CD-Lookup feature
+	depends = python-pyqt5
+	depends = python-mutagen
+	optdepends = python-discid: CD-Lookup feature
 	optdepends = chromaprint: AcoustID integration
-	provides = picard=1.4.1.r11.g5022d5dc
+	provides = picard=1.4.1.r111.g4f759c7d
 	conflicts = picard
 	conflicts = picard-qt
 	conflicts = picard-bzr

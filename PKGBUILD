@@ -1,12 +1,12 @@
 pkgname=picard-git
-pkgver=1.4.1.r11.g5022d5dc
+pkgver=1.4.1.r111.g4f759c7d
 pkgrel=1
 pkgdesc="MusicBrainz tagging application"
 arch=('i686' 'x86_64')
 url="https://picard.musicbrainz.org"
 license=('GPL')
-depends=('python2-pyqt5' 'mutagen')
-optdepends=('python2-discid: CD-Lookup feature'
+depends=('python-pyqt5' 'python-mutagen')
+optdepends=('python-discid: CD-Lookup feature'
             'chromaprint: AcoustID integration')
 makedepends=('git')
 provides=("picard=$pkgver")
@@ -21,12 +21,11 @@ pkgver(){
 
 check() {
     cd "$srcdir/picard"
-    python2 setup.py build_ext -i
-    python2 setup.py test
-    rm picard/util/astrcmp.so
+    python setup.py build_ext -i
+    python setup.py test
 }
 
 package() {
     cd "$srcdir/picard"
-    python2 setup.py install --root=$pkgdir --optimize=1
+    python setup.py install --root=$pkgdir --optimize=1
 }
