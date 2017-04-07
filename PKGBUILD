@@ -3,15 +3,15 @@
 
 # Maintainer: Vincenzo Maffione <v.maffione@gmail.com>
 pkgname=netmap
-pkgver=r2217.9992ce06
+pkgver=r2392.86312f06
 pkgrel=1
 pkgdesc="Netmap is a framework for high speed network packet I/O."
 arch=('any')
 url="http://info.iet.unipi.it/~luigi/netmap"
 license=('BSD')
 groups=()
-depends=('linux' 'glibc')
-makedepends=('git' 'sed' 'gzip' 'linux-headers' 'abs' 'pacman' 'xmlto' 'docbook-xsl')
+depends=('glibc')
+makedepends=('git' 'sed' 'gzip' 'linux-headers' 'abs' 'pacman' 'xmlto' 'docbook-xsl' 'patch')
 provides=()
 conflicts=()
 replaces=()
