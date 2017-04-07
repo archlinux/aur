@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a C++ parser for the Collada robot descript
 url='http://ros.org/wiki/collada_parser'
 
 pkgname='ros-kinetic-collada-parser'
-pkgver='1.12.5'
+pkgver='1.12.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,6 +12,7 @@ license=('BSD')
 
 ros_makedepends=(ros-kinetic-roscpp
   ros-kinetic-catkin
+  ros-kinetic-urdf
   ros-kinetic-urdf-parser-plugin
   ros-kinetic-class-loader)
 makedepends=('cmake' 'ros-build-tools'
@@ -35,7 +36,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="robot_model-release-release-kinetic-collada_parser-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/kinetic/collada_parser/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('4c0e061e5611b4c335619f1c56434e92997f4b6b20361b5b535f5fe431a2b728')
+sha256sums=('378fe3c9dac0cc709b2a95fb1a3822d50d0b340c2a5a430ab564590539272bf1')
 
 build() {
   # Use ROS environment variables
