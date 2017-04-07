@@ -4,14 +4,14 @@
 # Contributor: Tony Lambiris <tony@critialstack.com>
 
 pkgname=apt
-pkgver=1.3.2
-pkgrel=3
+pkgver=1.4
+pkgrel=1
 pkgdesc="Command-line package manager used on Debian-based systems"
 arch=('i686' 'x86_64')
 url="http://packages.debian.org"
 license=('GPL2')
 depends=('gnupg' 'curl' 'xz')
-makedepends=('cmake' 'dpkg' 'docbook-xsl' 'doxygen' 'po4a' 'gtest' 'w3m')
+makedepends=('cmake' 'dpkg' 'docbook-xsl' 'doxygen' 'git' 'po4a' 'gtest' 'w3m')
 checkdepends=()
 optdepends=()
 provides=('libapt-inst' 'libapt-pkg' 'libapt-pkg-dev' "apt-utils")
