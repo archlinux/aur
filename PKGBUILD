@@ -4,7 +4,7 @@ _font="quattrocento"
 _group="impallari"
 pkgname=ttf-${_group}-${_font}
 pkgver=2.000
-pkgrel=1
+pkgrel=2
 pkgdesc="Classic, Elegant, Sober and Strong typeface, from Pablo Impallari"
 arch=(any)
 url="http://www.impallari.com/${_font}/"
@@ -17,7 +17,7 @@ source=("http://www.impallari.com/media/uploads/prosources/update-20-source.zip"
 md5sums=('1cfccff569ae135e2eadf50a7cb326a4')
 
 package() {
-  cd ${srcdir}/*
+  cd ${srcdir}/quattrocento-v2/
 
   install -dm755 "${pkgdir}/usr/share/fonts/TTF/${_group}"
   install -Dpm644 *.ttf "${pkgdir}/usr/share/fonts/TTF/${_group}"

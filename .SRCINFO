@@ -1,7 +1,7 @@
 pkgbase = ttf-impallari-quattrocento
 	pkgdesc = Classic, Elegant, Sober and Strong typeface, from Pablo Impallari
 	pkgver = 2.000
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.impallari.com/quattrocento/
 	install = updatefont.install
 	arch = any
