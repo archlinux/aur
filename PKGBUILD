@@ -4,7 +4,7 @@ pkgdesc="ROS - roslaunch is a tool for easily launching multiple ROS nodes local
 url='http://ros.org/wiki/roslaunch'
 
 pkgname='ros-kinetic-roslaunch'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,7 +35,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-roslaunch-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/roslaunch/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3955704beee0375479fd64cfbddbf64d25265ecb68ad2bf3e16650248333da27')
+sha256sums=('eda2c76afdde45adff1ed12f434ef8d908b782a8ae990bd3a308fd441e43cfe2')
 
 build() {
   # Use ROS environment variables
