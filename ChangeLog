@@ -1,3 +1,9 @@
+2017-04-07 Eugene Dvoretsky <radioxoma at gmail com>
+
+    * Switching to official Micro-manager git repo at GitHub
+    * Tested libgphoto2 support
+    * clang compiler
+
 2015-05-09 Eugene Dvoretsky <radioxoma at gmail com>
 
     1.4.21.r39.ge60756c

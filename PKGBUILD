@@ -2,7 +2,7 @@
 # Visit https://github.com/radioxoma/aur for pull requests or issue solving.
 
 pkgname=micromanager-git
-pkgver=1.4.21.r39.ge60756c
+pkgver=v2.0.0.beta2.r2147.gc6734e115
 pkgrel=1
 epoch=
 pkgdesc="Software package for control of automated microscopes. CMMCore and python2 bindings only."
@@ -10,8 +10,10 @@ arch=('x86_64' 'i686')
 url="http://www.micro-manager.org"
 license=('BSD LGPL')
 groups=()
-depends=('boost' 'libdc1394' 'python2' 'python2-numpy')
+depends=('clang' 'boost' 'libdc1394' 'python2' 'python2-numpy')
 makedepends=('git' 'swig')
+optdepends=('libgphoto2: DSLR camera support'
+            'freeimage: libgphoto2 support')
 checkdepends=()
 optdepends=()
 provides=('micromanager')
@@ -21,16 +23,18 @@ backup=()
 options=()
 install=mm.install
 changelog=ChangeLog
-# Alternative repo: https://github.com/openspim/micromanager/tree/svn/git-svn
-source=($pkgname::git+https://github.com/mdcurtis/micromanager-upstream.git#commit=e60756c
-        'micromanager-lib.conf')
+source=("$pkgname::git+https://github.com/micro-manager/micro-manager.git/#commit=c6734e1151bd59514e4ee629e24b1445f07be6c1"  # Latest commit im 'mm2' branch
+        "micromanager-lib.conf")
 noextract=()
 md5sums=('SKIP'
-         'b7b6a68ce53d8ea1a4a29d187174ee4c') #generate with 'makepkg -g'
+         'b7b6a68ce53d8ea1a4a29d187174ee4c')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  cd "$pkgname"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare() {
@@ -45,7 +49,8 @@ build() {
         # and closed-source device adapters.
 
         # Feel free to improve package to work with ImageJ or FIJI.
-        ./configure --prefix=/usr --with-java=no --with-python PYTHON="python2"
+        # You can switch to python3 here and in `package()` function.
+        CXXCPP=/usr/bin/cpp ./configure --prefix=/usr --with-java=no --with-python PYTHON="python2"
         make
 }
 
