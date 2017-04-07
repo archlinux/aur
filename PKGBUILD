@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=python-pymediainfo
-pkgver=2.1.5
+pkgver=2.1.9
 pkgrel=1
 pkgdesc='A Python wrapper around the MediaInfo command line utility'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('mediainfo' 'python-setuptools')
 makedepends=('git')
 _commit='8c26bf0b93f684f6ec4649dc7f64c6b90f30fc22'
 source=("pymediainfo-${pkgver}.tar.gz::https://github.com/sbraz/pymediainfo/archive/v${pkgver}.tar.gz")
-sha256sums=('f0840947f559ef0c47b2722d957bbec2864d1b2b85c5484ea31e6c6cf45c011b')
+sha256sums=('4ff18c3f1ccbffd4bf35893dd984623d402bb224a16722e2f3bf33d29fd2f45f')
 
 build() {
   cd pymediainfo-${pkgver}
