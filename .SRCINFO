@@ -1,6 +1,6 @@
 pkgbase = systemd-denotify
 	pkgdesc = A set of python classes that provide desktop notification upon a user login and when a systemd service fails.
-	pkgver = r441.3e0887d
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/gkarakou/systemd-denotify
 	install = systemd-denotify.install
@@ -16,8 +16,8 @@ pkgbase = systemd-denotify
 	depends = python2-notify
 	depends = libnotify
 	backup = etc/systemd-denotify.conf
-	source = systemd-denotify::git+https://github.com/gkarakou/systemd-denotify
-	md5sums = SKIP
+	source = https://github.com/gkarakou/systemd-denotify/archive/v1.2.tar.gz
+	md5sums = c1c7603bbb19a4705721a21f4c0fdb5a
 
 pkgname = systemd-denotify
 

@@ -1,7 +1,7 @@
 # Maintainer: Ilias Stamatis <stamatis.iliass at gmail dot com>
 
 pkgname=systemd-denotify
-pkgver=r441.3e0887d
+pkgver=1.2
 pkgrel=1
 pkgdesc='A set of python classes that provide desktop notification upon a user login and when a systemd service fails.'
 arch=(any)
@@ -11,15 +11,10 @@ depends=('python2' 'python2-dbus' 'python2-gobject' 'python2-pyinotify' 'python2
 makedepends=('git' 'python2-setuptools')
 backup=('etc/systemd-denotify.conf')
 install=systemd-denotify.install
-source=("${pkgname}::git+https://github.com/gkarakou/systemd-denotify")
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("https://github.com/gkarakou/systemd-denotify/archive/v${pkgver}.tar.gz")
+md5sums=('c1c7603bbb19a4705721a21f4c0fdb5a')
 
 package() {
-  cd "$pkgname"
-  python2 setup.py install --root="${pkgdir}/"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
