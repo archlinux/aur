@@ -1,7 +1,7 @@
 # Maintainer: Brandon Milton <brandon.milton21@gmail.com>
 pkgname=wallepy
 pkgver=0.04
-pkgrel=2
+pkgrel=3
 pkgdesc="An automatic wallpaper getter and setter using feh"
 arch=('any')
 url="https://github.com/brandonio21/wallepy"
