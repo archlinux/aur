@@ -4,7 +4,7 @@ pkgdesc="ROS - This is a set of tools for recording from and playing back ROS me
 url='http://www.ros.org/'
 
 pkgname='ros-kinetic-rosbag-storage'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -41,7 +41,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-rosbag_storage-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/rosbag_storage/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('57d93b92fc88685d7614f77506188909f5b43ea2e369d0f936cdf5c2db9576bf')
+sha256sums=('867ae8507eff68d9945b850fa443b72f29c59a8f087eb9c91a53b5862ec8c111')
 
 build() {
   # Use ROS environment variables
