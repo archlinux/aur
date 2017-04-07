@@ -14,8 +14,8 @@ url="http://ocamlgraph.lri.fr/index.en.html"
 source=("http://ocamlgraph.lri.fr/download/ocamlgraph-$pkgver.tar.gz")
 md5sums=('e733b8309b9374e89d96e907ecaf4f76')
 options=('!strip' '!makeflags')
-depends=('ocaml')
-makedepends=('ocaml-findlib' 'lablgtk2')
+depends=()
+makedepends=('ocaml' 'ocaml-findlib' 'lablgtk2')
 arch=('i686' 'x86_64')
 license=('LGPL')
 
