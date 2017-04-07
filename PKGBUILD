@@ -4,7 +4,7 @@ pkgdesc="ROS - rosmsg contains two command-line tools: rosmsg and rossrv."
 url='http://ros.org/wiki/rosmsg'
 
 pkgname='ros-kinetic-rosmsg'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-kinetic-rosmsg-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/kinetic/rosmsg/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c4f3aafaa261a78891f0c6d0f0c3a0b20e10d9b7e0bc9a210444a7994a424f16')
+sha256sums=('9aef6586f3f97fb785770f7bdadc4058c833c4a99fb6a945a605c72bfdde9d18')
 
 build() {
   # Use ROS environment variables
