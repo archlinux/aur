@@ -1,15 +1,16 @@
 # Maintainer: Davorin Učakar <davorin.ucakar@gmail.com>
 
 pkgname=lib32-libsquish
-pkgver=1.13
+pkgver=1.15
 pkgrel=1
 pkgdesc='DXT compression library'
 depends=('lib32-gcc-libs' 'libsquish')
+makedepends=('cmake')
 arch=('x86_64')
 url='http://sourceforge.net/projects/libsquish/'
 license=('MIT')
 source=("http://downloads.sourceforge.net/project/libsquish/libsquish-${pkgver}.tgz")
-md5sums=('ca4b9563953ad6ea9c43f7831a8c50c7')
+md5sums=('c02645800131e55b519ff8dbe7284f93')
 
 build() {
   rm -rf "$srcdir/build" && mkdir -p "$srcdir/build" && cd "$srcdir/build"
@@ -32,5 +33,5 @@ package() {
   mv "$pkgdir/usr/lib" "$pkgdir/usr/lib32"
   rm -rf "$pkgdir/usr/include"
 
-  install -Dm 644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 644 ../LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
