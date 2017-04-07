@@ -14,17 +14,17 @@ source=('git://z3bra.org/human')
 md5sums=('SKIP')
 
 pkgver() {
-    cd ${pkgname%-git}
+    cd human
     git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
 build() {
-    cd ${pkgname%-git}
+    cd human
     make
 }
 
 package() {
-    cd ${pkgname%-git}
+    cd human
     make PREFIX=/usr DESTDIR="$pkgdir" install
-    install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname%-git}/LICENSE
+    install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/human/LICENSE
 }
