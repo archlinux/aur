@@ -4,7 +4,7 @@ pkgdesc="ROS - tf2 is the second generation of the transform library, which lets
 url='http://www.ros.org/wiki/tf2'
 
 pkgname='ros-kinetic-tf2'
-pkgver='0.5.13'
+pkgver='0.5.15'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="geometry2-release-release-kinetic-tf2-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/kinetic/tf2/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a0be8afe37a3affe63c924c4860065c5aec1310c1124b8f3e35e287504d2de9c')
+sha256sums=('9bc2ed59907723979e1706b8dd43205025034dae11795d9269ea53bc008996aa')
 
 build() {
   # Use ROS environment variables
