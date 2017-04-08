@@ -4,7 +4,7 @@
 
 pkgname=mprime
 pkgver=291
-pkgrel=3
+pkgrel=4
 pkgdesc="A GIMPS, distributed computing project client, dedicated to finding Mersenne primes."
 arch=('x86_64')
 url="http://www.mersenne.org"
@@ -13,7 +13,7 @@ depends=('curl' 'hwloc')
 conflicts=('mprime-bin')
 source=("http://www.mersenne.org/ftp_root/gimps/p95v${pkgver}.source.zip"
 unfuck_makefile.patch)
-sha256sums=('a065c0b16de8c6dbfdcf7a8e1e07c9d77cc7dbbdd882ca6f03a62a769fc4a76a'
+sha256sums=('e5aada84256863882823d08e87495118c4b19e0fa03f3105da4c2fbcd26c6045'
             'c956812ed5f07c8f2f30c906734971f286558ff6267a0c2dfa602e1798e0cef9')
 
 prepare () {
