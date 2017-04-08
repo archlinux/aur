@@ -1,18 +1,19 @@
 pkgbase = checkmails
 	pkgdesc = System tray unread mail checker using IMAP protocol
-	pkgver = 1.1.1
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://sourceforge.net/projects/checkmails
 	arch = any
 	license = GPL3
+	makedepends = python-setuptools
 	depends = tktray
 	depends = python-pillow
 	depends = python-crypto
 	depends = gettext
 	depends = desktop-file-utils
 	depends = libnotify
-	source = checkmails-1.1.1.tar.gz::https://sourceforge.net/projects/checkmails/files/1.1.1/checkmails-1.1.1.tar.gz/download
-	sha512sums = d3ab1b7b3264bcbf051032719f8e96d219f10f38f0c8d8e7c09cfb21a8bdab561ed2041ed1220114bc53fa4f1852052243695239a6be94b0178631c1d8b23160
+	source = checkmails-1.1.3.tar.gz::https://sourceforge.net/projects/checkmails/files/1.1.3/checkmails-1.1.3.tar.gz/download
+	sha512sums = efb7c79ad8148ab126641faa740b0d9778a239f0a3ee2db54d062c10290201fc7abd85485b62a3660a10eb1aeef2134f0d220dd0d64748d7e1286894154cf124
 
 pkgname = checkmails
 
