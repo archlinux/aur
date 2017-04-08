@@ -17,9 +17,10 @@ provides=(gnome-settings-daemon)
 conflicts=(gnome-settings-daemon)
 groups=(gnome)
 _commit=239ccb035d17380d801d9cdde3a10dce5b64ac85  # tags/GNOME_SETTINGS_DAEMON_3_22_2^0
+_patch='gsd-3.22-color-Add-ability-to-change-the-color-temperature-of.patch'
 source=("git+https://git.gnome.org/browse/gnome-settings-daemon#commit=$_commit"
         "git+https://git.gnome.org/browse/libgnome-volume-control"
-        "https://raw.githubusercontent.com/benzea/gnome-shell-extension-redshift/master/patches/gsd-3.22-color-Add-ability-to-change-the-color-temperature-of.patch")
+        "https://raw.githubusercontent.com/benzea/gnome-shell-extension-redshift/master/patches/$_patch")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
@@ -36,7 +37,7 @@ prepare() {
   git config --local submodule."panels/media-keys/gvc".url "$srcdir/libgnome-volume-control"
   git submodule update
 
-  git apply ../gsd-3.22-color-Add-ability-to-change-the-color-temperature-of.patch
+  git apply --check "../$_patch" && git apply "../$_patch"
 
   NOCONFIGURE=1 ./autogen.sh
 }
