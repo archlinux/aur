@@ -18,6 +18,10 @@ makedepends=(
   'python2-django'
   python2-setuptools
 )
+conflicts=(
+  'python-django-rest-swagger0.3.10'
+  'python2-django-rest-swagger0.3.10'
+)
 options=(!emptydirs)
 source=("https://github.com/marcgibbons/${_pkgbase}/archive/${pkgver}.tar.gz")
 sha256sums=('78f4e0ec917f221ec03b3e937b6515585a7fecf91576ad6fde916fccbd9ae5d1')
