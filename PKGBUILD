@@ -12,7 +12,7 @@
 
 pkgname=mpv-full-git
 pkgver=0.23.0.r154.g9c90c902c1
-pkgrel=4
+pkgrel=5
 pkgdesc='A free, open source, and cross-platform media player (Git version with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -166,7 +166,9 @@ build() {
         --enable-libv4l2 \
         --enable-audio-input \
         --enable-dvbin \
-        --disable-apple-remote
+        \
+        --disable-apple-remote \
+        --disable-macos-touchbar
     
     ./waf build
 }
