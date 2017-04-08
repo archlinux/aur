@@ -1,0 +1,13 @@
+pkgbase = mssl1680-firmware
+	pkgdesc = firmware for silead mssl1680 touchscreen with the newest silead_ts driver
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = linux>=4.9.0
+	source = git+https://github.com/edward-p/mssl1680-firmware.git
+	md5sums = SKIP
+
+pkgname = mssl1680-firmware
+
