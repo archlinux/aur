@@ -1,0 +1,261 @@
+diff --git a/include/ntfs-3g/layout.h b/include/ntfs-3g/layout.h
+index 98380de..564167c 100644
+--- a/include/ntfs-3g/layout.h
++++ b/include/ntfs-3g/layout.h
+@@ -1406,28 +1406,52 @@ typedef enum {
+  * enum ACE_TYPES - The predefined ACE types (8-bit, see below).
+  */
+ typedef enum {
+-	ACCESS_MIN_MS_ACE_TYPE		= 0,
+-	ACCESS_ALLOWED_ACE_TYPE		= 0,
+-	ACCESS_DENIED_ACE_TYPE		= 1,
+-	SYSTEM_AUDIT_ACE_TYPE		= 2,
+-	SYSTEM_ALARM_ACE_TYPE		= 3, /* Not implemented as of Win2k. */
+-	ACCESS_MAX_MS_V2_ACE_TYPE	= 3,
+-
+-	ACCESS_ALLOWED_COMPOUND_ACE_TYPE= 4,
+-	ACCESS_MAX_MS_V3_ACE_TYPE	= 4,
+-
+-	/* The following are Win2k only. */
+-	ACCESS_MIN_MS_OBJECT_ACE_TYPE	= 5,
+-	ACCESS_ALLOWED_OBJECT_ACE_TYPE	= 5,
+-	ACCESS_DENIED_OBJECT_ACE_TYPE	= 6,
+-	SYSTEM_AUDIT_OBJECT_ACE_TYPE	= 7,
+-	SYSTEM_ALARM_OBJECT_ACE_TYPE	= 8,
+-	ACCESS_MAX_MS_OBJECT_ACE_TYPE	= 8,
+-
+-	ACCESS_MAX_MS_V4_ACE_TYPE	= 8,
+-
+-	/* This one is for WinNT&2k. */
+-	ACCESS_MAX_MS_ACE_TYPE		= 8,
++	ACCESS_MIN_MS_ACE_TYPE			= 0,
++	ACCESS_ALLOWED_ACE_TYPE			= 0,
++	ACCESS_DENIED_ACE_TYPE			= 1,
++	SYSTEM_AUDIT_ACE_TYPE			= 2,
++	SYSTEM_ALARM_ACE_TYPE			= 3, /* reserved */
++	ACCESS_MAX_MS_V2_ACE_TYPE		= 3,
++
++	ACCESS_ALLOWED_COMPOUND_ACE_TYPE	= 4, /* reserved */
++	ACCESS_MAX_MS_V3_ACE_TYPE		= 4,
++
++	/* Win2k and later */
++	ACCESS_MIN_MS_OBJECT_ACE_TYPE		= 5,
++	ACCESS_ALLOWED_OBJECT_ACE_TYPE		= 5,
++	ACCESS_DENIED_OBJECT_ACE_TYPE		= 6,
++	SYSTEM_AUDIT_OBJECT_ACE_TYPE		= 7,
++	SYSTEM_ALARM_OBJECT_ACE_TYPE		= 8, /* reserved */
++	ACCESS_MAX_MS_OBJECT_ACE_TYPE		= 8,
++
++	ACCESS_MAX_MS_V4_ACE_TYPE		= 8,
++
++	/* Apparently, this was the max type in Win2k, but for some reason MS
++	 * chose not to update this constant in later Windows versions */
++	ACCESS_MAX_MS_ACE_TYPE			= 8,
++
++	/* Windows XP and later */
++	ACCESS_ALLOWED_CALLBACK_ACE_TYPE	= 9,
++	ACCESS_DENIED_CALLBACK_ACE_TYPE		= 10,
++	ACCESS_ALLOWED_CALLBACK_OBJECT_ACE_TYPE	= 11,
++	ACCESS_DENIED_CALLBACK_OBJECT_ACE_TYPE	= 12,
++	SYSTEM_AUDIT_CALLBACK_ACE_TYPE		= 13,
++	SYSTEM_ALARM_CALLBACK_ACE_TYPE		= 14, /* reserved */
++	SYSTEM_AUDIT_CALLBACK_OBJECT_ACE_TYPE   = 15,
++	SYSTEM_ALARM_CALLBACK_OBJECT_ACE_TYPE   = 16, /* reserved */
++
++	/* Windows Vista and later */
++	SYSTEM_MANDATORY_LABEL_ACE_TYPE		= 17,
++
++	/* Windows 8 and later */
++	SYSTEM_RESOURCE_ATTRIBUTE_ACE_TYPE	= 18,
++	SYSTEM_SCOPED_POLICY_ID_ACE_TYPE	= 19,
++
++	/* Windows 10 and later */
++	SYSTEM_PROCESS_TRUST_LABEL_ACE_TYPE	= 20,
++
++	ACCESS_MAX_MS_V5_ACE_TYPE		= 20,
++
+ } __attribute__((__packed__)) ACE_TYPES;
+ 
+ /**
+@@ -1628,9 +1652,7 @@ typedef struct {
+  */
+ 
+ /**
+- * struct ACCESS_DENIED_ACE -
+- *
+- * ACCESS_ALLOWED_ACE, ACCESS_DENIED_ACE, SYSTEM_AUDIT_ACE, SYSTEM_ALARM_ACE
++ * struct ACCESS_ALLOWED_ACE, etc. - Base structure for all regular ACEs
+  */
+ typedef struct {
+ /*  0	ACE_HEADER; -- Unfolded here as gcc doesn't like unnamed structs. */
+@@ -1641,7 +1663,15 @@ typedef struct {
+ /*  4*/	ACCESS_MASK mask;	/* Access mask associated with the ACE. */
+ /*  8*/	SID sid;		/* The SID associated with the ACE. */
+ } __attribute__((__packed__)) ACCESS_ALLOWED_ACE, ACCESS_DENIED_ACE,
+-			       SYSTEM_AUDIT_ACE, SYSTEM_ALARM_ACE;
++			       SYSTEM_AUDIT_ACE, SYSTEM_ALARM_ACE,
++			       ACCESS_ALLOWED_CALLBACK_ACE,
++			       ACCESS_DENIED_CALLBACK_ACE,
++			       SYSTEM_AUDIT_CALLBACK_ACE,
++			       SYSTEM_ALARM_CALLBACK_ACE,
++			       SYSTEM_MANDATORY_LABEL_ACE,
++			       SYSTEM_RESOURCE_ATTRIBUTE_ACE,
++			       SYSTEM_SCOPED_POLICY_ID_ACE,
++			       SYSTEM_PROCESS_TRUST_LABEL_ACE;
+ 
+ /**
+  * enum OBJECT_ACE_FLAGS - The object ACE flags (32-bit).
+@@ -1652,7 +1682,7 @@ typedef enum {
+ } OBJECT_ACE_FLAGS;
+ 
+ /**
+- * struct ACCESS_ALLOWED_OBJECT_ACE -
++ * struct ACCESS_ALLOWED_OBJECT_ACE, etc. - Base structure for all object ACEs
+  */
+ typedef struct {
+ /*  0	ACE_HEADER; -- Unfolded here as gcc doesn't like unnamed structs. */
+@@ -1668,7 +1698,11 @@ typedef struct {
+ } __attribute__((__packed__)) ACCESS_ALLOWED_OBJECT_ACE,
+ 			       ACCESS_DENIED_OBJECT_ACE,
+ 			       SYSTEM_AUDIT_OBJECT_ACE,
+-			       SYSTEM_ALARM_OBJECT_ACE;
++			       SYSTEM_ALARM_OBJECT_ACE,
++			       ACCESS_ALLOWED_CALLBACK_OBJECT_ACE,
++			       ACCESS_DENIED_CALLBACK_OBJECT_ACE,
++			       SYSTEM_AUDIT_CALLBACK_OBJECT_ACE,
++			       SYSTEM_ALARM_CALLBACK_OBJECT_ACE;
+ 
+ /**
+  * struct ACL - An ACL is an access-control list (ACL).
+diff --git a/libntfs-3g/acls.c b/libntfs-3g/acls.c
+index b91e041..06c44d9 100644
+--- a/libntfs-3g/acls.c
++++ b/libntfs-3g/acls.c
+@@ -536,45 +536,95 @@ gid_t ntfs_find_group(const struct MAPPING* groupmapping, const SID * gsid)
+ }
+ 
+ /*
++ *		Does the ACE have the same format as ACCESS_ALLOWED_ACE?
++ */
++
++static BOOL is_regular_ace(const ACE_HEADER *pace)
++{
++	switch (pace->type) {
++	case ACCESS_ALLOWED_ACE_TYPE:
++	case ACCESS_DENIED_ACE_TYPE:
++	case SYSTEM_AUDIT_ACE_TYPE:
++	case ACCESS_ALLOWED_CALLBACK_ACE_TYPE:
++	case ACCESS_DENIED_CALLBACK_ACE_TYPE:
++	case SYSTEM_AUDIT_CALLBACK_ACE_TYPE:
++	case SYSTEM_MANDATORY_LABEL_ACE_TYPE:
++	case SYSTEM_RESOURCE_ATTRIBUTE_ACE_TYPE:
++	case SYSTEM_SCOPED_POLICY_ID_ACE_TYPE:
++	case SYSTEM_PROCESS_TRUST_LABEL_ACE_TYPE:
++		return TRUE;
++	default:
++		return FALSE;
++	}
++}
++
++/*
++ *		Does the ACE have the same format as ACCESS_ALLOWED_OBJECT_ACE?
++ */
++
++static BOOL is_object_ace(const ACE_HEADER *pace)
++{
++	switch (pace->type) {
++	case ACCESS_ALLOWED_OBJECT_ACE_TYPE:
++	case ACCESS_DENIED_OBJECT_ACE_TYPE:
++	case SYSTEM_AUDIT_OBJECT_ACE_TYPE:
++	case ACCESS_ALLOWED_CALLBACK_OBJECT_ACE_TYPE:
++	case ACCESS_DENIED_CALLBACK_OBJECT_ACE_TYPE:
++	case SYSTEM_AUDIT_CALLBACK_OBJECT_ACE_TYPE:
++		return TRUE;
++	default:
++		return FALSE;
++	}
++}
++
++/*
+  *		Check the validity of the ACEs in a DACL or SACL
++ *
++ *	If an ACE is recognized, we validate its SID.
++ *	Otherwise, we validate its size only.
+  */
+ 
+ static BOOL valid_acl(const ACL *pacl, unsigned int end)
+ {
+-	const ACCESS_ALLOWED_ACE *pace;
+-	unsigned int offace;
+-	unsigned int acecnt;
+-	unsigned int acesz;
+-	unsigned int nace;
+-	unsigned int wantsz;
+-	BOOL ok;
++	unsigned int ace_count;
++	unsigned int ace_offset;
++	unsigned int ace_size;
++	unsigned int sid_offset;
++	const ACE_HEADER *pace;
++	const SID *psid;
+ 
+-	ok = TRUE;
+-	acecnt = le16_to_cpu(pacl->ace_count);
+-	offace = sizeof(ACL);
+-	for (nace = 0; (nace < acecnt) && ok; nace++) {
+-		/* be sure the beginning is within range */
+-		if ((offace + sizeof(ACCESS_ALLOWED_ACE)) > end)
+-			ok = FALSE;
+-		else {
+-			pace = (const ACCESS_ALLOWED_ACE*)
+-				&((const char*)pacl)[offace];
+-			acesz = le16_to_cpu(pace->size);
+-			if (((offace + acesz) > end)
+-			   || !ntfs_valid_sid(&pace->sid))
+-				 ok = FALSE;
+-			else {
+-				/* Win10 may insert garbage in the last ACE */
+-				wantsz = ntfs_sid_size(&pace->sid) + 8;
+-				if (((nace < (acecnt - 1))
+-					&& (wantsz != acesz))
+-				    || (wantsz > acesz))
+-					ok = FALSE;
+-			}
+-			offace += acesz;
+-		}
++	for (ace_count = le16_to_cpu(pacl->ace_count), ace_offset = sizeof(ACL);
++	     ace_count != 0;
++	     ace_count--, ace_offset += ace_size)
++	{
++		if (sizeof(ACE_HEADER) > end - ace_offset)
++			return FALSE;
++
++		pace = (const ACE_HEADER *)((char *)pacl + ace_offset);
++		ace_size = le16_to_cpu(pace->size);
++		if (ace_size < sizeof(ACE_HEADER) ||
++		    ace_size > end - ace_offset)
++			return FALSE;
++
++		if (is_regular_ace(pace))
++			sid_offset = offsetof(ACCESS_ALLOWED_ACE, sid);
++		else if (is_object_ace(pace))
++			sid_offset = offsetof(ACCESS_ALLOWED_OBJECT_ACE, sid);
++		else
++			continue;
++
++		if (ace_size < sid_offset + sizeof(SID))
++			return FALSE;
++
++		psid = (const SID *)((char *)pace + sid_offset);
++
++		/* Note: there may be additional data after the SID. */
++		if (!ntfs_valid_sid(psid) ||
++		    ace_size < sid_offset + ntfs_sid_size(psid))
++			return FALSE;
+ 	}
+-	return (ok);
++
++	return TRUE;
+ }
+ 
+ /*
