@@ -1,0 +1,20 @@
+pkgbase = perl-cddb
+	pkgdesc = A high-level interface to cddb protocol servers (freedb and CDDB)
+	pkgver = 1.222
+	pkgrel = 1
+	url = http://search.cpan.org/~rcaputo/CDDB-1.222/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-http-message
+	depends = perl-mailtools
+	depends = perl-libwww
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/R/RC/RCAPUTO/CDDB-1.222.tar.gz
+	md5sums = 09da67cfbc54fd40144c325e320a84ed
+	sha512sums = addd0f4f3fecab7d599eb7ead93828d6a9c74a779a344f190a629e666c95af47b5eea05f885564a90bfa1fa6c128dc3e60e510f295f6f35b3eae2d8939109d98
+
+pkgname = perl-cddb
+
