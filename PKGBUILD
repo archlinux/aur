@@ -3,12 +3,12 @@
 
 pkgname=brogue
 pkgver=1.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A 26-level dungeon crawl to the Amulet of Yendor."
 arch=('i686' 'x86_64')
 url="http://sites.google.com/site/broguegame/"
 license=('AGPL3')
-depends=('sdl' 'libtcod')
+depends=('libtcod-151')
 install=brogue.install
 source=(https://sites.google.com/site/broguegame/brogue-1.7.4-linux-i386.tbz2
       'brogue.sh')
@@ -18,8 +18,8 @@ md5sums=('8ef1d4b985b4e73685f52db80200262c'
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  sed -i '/^CFLAGS=*/a CFLAGS+=-I/usr/include/libtcod' Makefile
-  sed -i 's/-ltcod/-ltcod -lSDL -lm/g' Makefile
+  sed -i '/^CFLAGS=*/a CFLAGS+=-I/usr/include/libtcod-1.5.1' Makefile
+  sed -i 's/-ltcod/-l:libtcod.so.1.5.1 -lSDL -lm/g' Makefile
 
   # todo, fix sources to use /usr/share directly and remove brogue.sh
 
