@@ -1,26 +1,22 @@
 pkgbase = amdgpu-pro-installer
-	pkgver = 16.60.379184
+	pkgver = 17.10.401251
 	pkgrel = 2
 	url = http://www.amd.com
 	arch = x86_64
 	license = custom:AMD
 	makedepends = wget
-	source = https://www2.ati.com/drivers/linux/ubuntu/amdgpu-pro-16.60-379184.tar.xz
-	source = 0001-add-archlinux-as-build-option.patch
-	source = 0002-fix_get_user_pages_calls.patch
-	source = 0003-fix_drm_connector.patch
-	source = 0004-Change-seq_printf-format-for-64-bit-context.patch
-	source = 0005-fix_drm_vma_node_verify_access.patch
-	source = 0006-fix_dm_plane_helper_funcs.patch
-	source = 0007-disable-dal-by-default.patch
-	sha256sums = d88b5a747ac765a75eb738aaf5641428c3b1c9c02bc6fde452c423de7dd620bd
-	sha256sums = 400df0077464003fad74bb77a8f6e5ba24bffc7c2e32e6b3f0dab08a17eb3486
-	sha256sums = 5708b6641bd62fe768e1cb36f88d0895c4fdf90d1d3110033bafdabc47fe1e31
-	sha256sums = b6a98ed84733bab544461991f642dc1a73ee065b32f7c1b3a235d5e2bc814943
-	sha256sums = 21c78811107d8ee59f3566d21ed4a7ccfd622f4e07350fca7ed662392ab07190
-	sha256sums = 885330f3749db53a491b7c35c7e0d9d58965a717e62434101c4d72f1a31ef39a
-	sha256sums = b10bb6b2382f995ee90f9cc807b69cb336d0edb65096b66df315f0c60132e04d
-	sha256sums = e28d79fcb808d7c275938a4d9871da3138fdd38eb7c1c69495bf9a9d36dc271a
+	source = https://www2.ati.com/drivers/linux/ubuntu/amdgpu-pro-17.10-401251.tar.xz
+	source = 0001-disable-firmware-copy.patch
+	source = 0002-linux-4.9-fixes.patch
+	source = 0003-Change-seq_printf-format-for-64-bit-context.patch
+	source = 0004-fix-warnings-for-Werror.patch
+	source = 0005-add-archlinux-as-build-option.patch
+	sha256sums = 0a10cf39841bf77eacb393ca112ce5f82ca0c4ea728d2fce975732855c039600
+	sha256sums = 6aaf7566a70d1654bfc1ddfc73f25b246518e39c504c350cd131f4c40ce5a583
+	sha256sums = 858828f9292e552dc2a20d838c602ab76e56c32384352d3de26e519c18a16db5
+	sha256sums = 1e22be9d3e3aed6848cc0030f37d3fe710b37322d6db2219521827edf02cf38c
+	sha256sums = 375a0caad148e018774fae57cc1c05926b01b71497c363b38d83163b0e6961ca
+	sha256sums = 4e29fd4c1fd319b22c42d4d9e26e5cc75b9eab61e15f65e8acbe6db8a31ca3fb
 
 pkgname = amdgpu-pro
 	pkgdesc = The AMDGPU Pro driver package
@@ -72,7 +68,7 @@ pkgname = amdgpu-pro-opencl
 pkgname = amdgpu-pro-vdpau
 	pkgdesc = The AMDGPU Pro VDPAU driver
 	arch = x86_64
-	depends = amdgpu-pro-libdrm=16.60.379184-2
+	depends = amdgpu-pro-libdrm=17.10.401251-2
 	depends = libvdpau>=1.1
 	depends = libxcb
 	depends = libxcb>=1.8
@@ -83,7 +79,7 @@ pkgname = amdgpu-pro-vdpau
 pkgname = amdgpu-pro-vulkan
 	pkgdesc = The AMDGPU Pro Vulkan driver
 	arch = x86_64
-	depends = amdgpu-pro-libdrm=16.60.379184-2
+	depends = amdgpu-pro-libdrm=17.10.401251-2
 	provides = vulkan-driver
 
 pkgname = lib32-amdgpu-pro
@@ -110,7 +106,7 @@ pkgname = lib32-amdgpu-pro
 pkgname = lib32-amdgpu-pro-libdrm
 	pkgdesc = The AMDGPU Pro userspace interface to kernel DRM services (32bit libraries)
 	arch = x86_64
-	depends = amdgpu-pro-libdrm=16.60.379184-2
+	depends = amdgpu-pro-libdrm=17.10.401251-2
 	provides = lib32-libdrm
 	conflicts = lib32-libdrm
 
@@ -130,7 +126,7 @@ pkgname = lib32-amdgpu-pro-opencl
 pkgname = lib32-amdgpu-pro-vdpau
 	pkgdesc = The AMDGPU Pro VDPAU driver (32bit libraries)
 	arch = x86_64
-	depends = amdgpu-pro-libdrm=16.60.379184-2
+	depends = amdgpu-pro-libdrm=17.10.401251-2
 	depends = lib32-libvdpau>=1.1
 	depends = lib32-libxcb
 	depends = lib32-libxcb>=1.8
@@ -141,15 +137,15 @@ pkgname = lib32-amdgpu-pro-vdpau
 pkgname = lib32-amdgpu-pro-vulkan
 	pkgdesc = The AMDGPU Pro Vulkan driver (32bit libraries)
 	arch = x86_64
-	depends = amdgpu-pro-libdrm=16.60.379184-2
+	depends = amdgpu-pro-libdrm=17.10.401251-2
 	provides = lib32-vulkan-driver
 
 pkgname = xf86-video-amdgpu-pro
 	pkgdesc = The AMDGPU Pro X.org video driver
 	arch = x86_64
 	groups = xorg-driversxorg
-	depends = amdgpu-pro-libdrm=16.60.379184-2
-	depends = amdgpu-pro=16.60.379184-2
+	depends = amdgpu-pro-libdrm=17.10.401251-2
+	depends = amdgpu-pro=17.10.401251-2
 	depends = libepoxy>=1.0
 	depends = libsystemd>=183
 	provides = xf86-video-amdgpu
