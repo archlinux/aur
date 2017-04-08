@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Easy to use password manager with built-in password generator, qt5 version"
 arch=('i686' 'x86_64')
 url="http://qpass.sourceforge.net"
-depends=('qt5-base>=5.3' 'libgcrypt')
+depends=('qt5-base>=5.3' 'qt5-tools>=5.3' 'libgcrypt')
 makedepends=('cmake')
 license=('GPL3')
 source=(qpass-qt5::git+https://github.com/veaceslav/qpass-qt5.git)
