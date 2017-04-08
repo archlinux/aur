@@ -1,15 +1,15 @@
 pkgbase = emercoin
 	pkgdesc = Emercoin is a digital currency and blockchain service platform.
-	pkgver = 0.5.1
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = http://emercoin.com/
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	source_i686 = https://sourceforge.net/projects/emercoin/files/0.5.1/emercoin-0.5.1-linux32.tar.gz
-	md5sums_i686 = 9bed206c47929f786b0c854563b4f0fa
-	source_x86_64 = https://sourceforge.net/projects/emercoin/files/0.5.1/emercoin-0.5.1-linux64.tar.gz
-	md5sums_x86_64 = d429e40760086f78162855bb9782a4bc
+	source_i686 = https://sourceforge.net/projects/emercoin/files/0.6.1/emercoin-0.6.1-linux32.tar.gz
+	md5sums_i686 = ea60601125d72f8a52ba14209a328bbc
+	source_x86_64 = https://sourceforge.net/projects/emercoin/files/0.6.1/emercoin-0.6.1-linux64.tar.gz
+	md5sums_x86_64 = b108ceb3ee3fc97a98c34f06b0dde918
 
 pkgname = emercoin
 
