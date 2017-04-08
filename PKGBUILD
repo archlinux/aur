@@ -1,7 +1,7 @@
 # Maintainer: Alex Merry <alexmerry@kde.org>
 
 pkgname='icemon'
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Icecream GUI monitor.'
 url='https://github.com/icecc/icemon'
@@ -14,7 +14,7 @@ conflicts=('icemon-git')
 arch=('i686' 'x86_64')
 install=icemon.install
 source=("https://github.com/icecc/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('0127427ac71ccb198706d2575be246ec')
+md5sums=('3ef80b5cbcf6ff0c50f8775eb498cc81')
 
 build() {
     mkdir -p build
