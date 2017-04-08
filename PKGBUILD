@@ -2,7 +2,7 @@
 # Contributor: Tai Chi Minh Ralph Eastwood <tcmreastwood@gmail.com>
 pkgname=dict-gcide
 pkgver=0.48.1
-pkgrel=6
+pkgrel=7
 pkgdesc="GNU version of the Collaborative International Dictionary of English for dictd et al."
 arch=('any')
 url="http://www.dict.org/"
@@ -13,16 +13,16 @@ provides=('dictd-gcide')
 conflicts=('dictd-gcide')
 install=$pkgname.install
 source=("ftp://ftp.debian.org/debian/pool/main/d/$pkgname/${pkgname}_$pkgver.tar.gz")
-md5sums=('44fa2d940c58e65635357fee76772a35')
+sha512sums=('87a5aae9952316e03e029424de06e36bec46ce1a24dd300eecaf73577f6785c18cbade1d4227ac38b505a8b64ad36bac64893f4a7dc25b87760df0a4e384fbc4')
 
 build() {
 	cd "$pkgname-$pkgver"
 	export CPPFLAGS="-D_FORTIFY_SOURCE=0"
 	./configure --with-local-libmaa --prefix=/usr
-	make
-	mkdir -p "../final_data"
+	make -j1
+	mkdir "../final_data"
 	make dictdir="../final_data" install
-	# fix wrong order:
+	# Fix wrong order.
 	LANG=C sort --dictionary-order --ignore-case -o "../final_data"/gcide.index{,}
 }
 
