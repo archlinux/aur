@@ -1,0 +1,21 @@
+pkgbase = osc-py3-git
+	pkgdesc = Command line client for the openSUSE Build Service
+	pkgver = 0.162.1.r93.ga455fd8
+	pkgrel = 1
+	url = https://github.com/openSUSE/osc
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python
+	depends = python-m2crypto
+	optdepends = obs-build: required to run local builds
+	optdepends = obs-service-format_spec_file: for running the format_spec_file source service
+	optdepends = obs-service-download_files: for running the download_files source service
+	optdepends = python-keyring: keyring support
+	provides = osc
+	conflicts = osc
+	source = git+https://github.com/openSUSE/osc.git#branch=python3
+	sha256sums = SKIP
+
+pkgname = osc-py3-git
+
