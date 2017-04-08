@@ -2,7 +2,7 @@
 # Contributor: lily wilson <hotaru@thinkindifferent.net>
 
 pkgname=libemf
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Library implementation of ECMA-234 API for the generation of enhanced metafiles."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://libemf.sourceforge.net/"
 license=('LGPL2.1')
 provides=('libEMF.so')
 source=("http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ee0324f705136a4d3343c2f0c3e5fa526fae0ec3680a96400d5fd209c60a3891')
+sha256sums=('dcc1f7dc09597a7e20fa808fbef03f0c5cbdd99d65a4fddd981d7f1dd6e28b81')
 
 build() {
     cd "${pkgname}-${pkgver}"
