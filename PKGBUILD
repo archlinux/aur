@@ -2,7 +2,7 @@
 
 pkgname=abrowser-bin
 pkgver=52.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary version of Abrowser, safe and easy web browser from Mozilla"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -15,10 +15,10 @@ depends=('gtk2' 'gtk3' 'gcc-libs' 'libidl2' 'mozilla-common' 'nss>=3.12.10' 'lib
 s_pkgname=abrowser
 build=build1
 ubuntu_ver=16.04.1
-trisquel_ver=8.0trisquel47
+trisquel_ver=8.0trisquel48
 
-sha256sums_i686=('e7039bc7211f30d8d10ebde9769d006c9c1a229c4fbdf7df53c176ce6ea96e26')
-sha256sums_x86_64=('afc21181fad421d4d2106826c5a9b66f951117db930b95d1fdb93c1c412e8884')
+sha256sums_i686=('e85fd34687006edc8e4087f56aa2984c53b2c18853ed095e8dba5bd0e88ce4c0')
+sha256sums_x86_64=('643a281b8c08e821da23eeca4bfc264ebe92f675219d9fd8cb51b382a7875b71')
 source_x86_64=("http://us.archive.trisquel.info/trisquel/pool/main/f/firefox/${s_pkgname}_${pkgver}+${build}-0ubuntu0.${ubuntu_ver}+${trisquel_ver}_amd64.deb")
 source_i686=("http://us.archive.trisquel.info/trisquel/pool/main/f/firefox/${s_pkgname}_${pkgver}+${build}-0ubuntu0.${ubuntu_ver}+${trisquel_ver}_i386.deb")
 
