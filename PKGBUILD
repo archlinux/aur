@@ -8,14 +8,15 @@ source=("https://bg-software.net/dls/bgsync_${pkgver}-${pkgrel}_Arch.zip")
 depends=('mono')
 makedepends=('unzip')
 
-sha256sums=('fac563e63536295cee91086d74795755f92f7404815f02ccd8eb19a43b043b3d')
+sha256sums=('db9838e122a3e6d6c091b1b4cd3fa8021af0ca1333f2c38537ef958555617cf1')
 
 package() {
 	install -d "${pkgdir}/usr/bin"
 	install -d "${pkgdir}/usr/lib/bgsync"
+	install -d "${pkgdir}/usr/lib/systemd/system"
 	
 	install -Dm755 "${srcdir}/usr/bin/bgsync" "${pkgdir}/usr/bin/bgsync"
-	install -Dm755 "${srcdir}/lib/systemd/system/bgsync.service" "${pkgdir}/lib/systemd/system/bgsync.service"
+	install -Dm755 "${srcdir}/usr/lib/systemd/system/bgsync.service" "${pkgdir}/usr/lib/systemd/system/bgsync.service"
 	install -Dm755 "${srcdir}/usr/lib/bgsync/bgsync.exe" "${pkgdir}/usr/lib/bgsync/bgsync.exe"
 	install -Dm755 "${srcdir}/usr/lib/bgsync/bgsync.service" "${pkgdir}/usr/lib/bgsync/bgsync.service"
 	install -Dm755 "${srcdir}/usr/lib/bgsync/bgsyncedit.dll" "${pkgdir}/usr/lib/bgsync/bgsyncedit.dll"
