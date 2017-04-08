@@ -1,5 +1,6 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=whatwg-html-git
+pkgbase=whatwg-html
 pkgver=latest
 pkgrel=1
 pkgdesc="Clone the WHATWG HTML specification with local resources"
@@ -7,14 +8,7 @@ arch=('any')
 url="https://whatwg.org/"
 license=('GPL')
 makedepends=(git perl)
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
 source=(git+https://www.github.com/simonaw/whatwg-html.git)
-noextract=()
 md5sums=('SKIP')
 
 _gitroot=https://www.github.com/simonaw/whatwg-html.git
