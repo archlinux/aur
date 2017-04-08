@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=libvpx-full-git
-pkgver=1.6.1.r284.g47cf7c25a2
-pkgrel=2
+pkgver=1.6.1.r442.gff1fef9607
+pkgrel=1
 pkgdesc="VP8 and VP9 video codecs (Git version with all possible options)"
 arch=('i686' 'x86_64')
 url="http://www.webmproject.org/code/"
@@ -86,7 +86,6 @@ build() {
         --enable-vp9-temporal-denoising \
         --enable-experimental \
         --enable-spatial-svc \
-        --enable-misc-fixes \
         --enable-webm-io \
         --enable-libyuv \
         --enable-vp8-encoder \
