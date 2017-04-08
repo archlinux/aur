@@ -1,15 +1,15 @@
 # Maintainer: Slash <demodevil5[at]yahoo[dot]com>
 
 pkgname=quake3-urbanterror
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="Urban Terror is a team-based tactical shooter based on the Quake 3 Engine (Quake3 Mod Version)"
 url="http://www.urbanterror.info/"
 license=('custom')
 arch=('any')
 depends=('quake3')
-source=('http://cdn.fs1.urbanterror.info/urt/43/releases/zips/UrbanTerror431_full.zip')
-sha256sums=('9c19556ad462e45bfd97e6c8cc1fa04206719c13f7480e6fef4eb8fcc4f2d6b5')
+source=('http://cdn.urbanterror.info/urt/43/releases/zips/UrbanTerror432_full.zip')
+sha256sums=('74dee1566fa6cd0eb26d866149a1b6ad7e8f18a653693f02790c05ef7ce352a4')
 PKGEXT='.pkg.tar'
 
 package() {
