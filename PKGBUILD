@@ -8,6 +8,8 @@ pkgname=ntfs-3g-wimlib-patched
 _pkgname=ntfs-3g_ntfsprogs
 pkgver=2017.3.23
 pkgrel=1
+provides=("ntfs-3g=${pkgver}")
+conflicts=('ntfs-3g')
 pkgdesc='NTFS filesystem driver and utilities - with patch from https://wimlib.net/forums/viewtopic.php?f=1&t=4&p=693#p596 applied'
 url='https://www.tuxera.com/community/open-source-ntfs-3g/'
 arch=('i686' 'x86_64')
