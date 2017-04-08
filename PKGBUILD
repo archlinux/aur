@@ -40,7 +40,7 @@ conflicts=('bitcoin' 'bitcoin-unlimited' 'bitcoin-cli' 'bitcoin-daemon' 'bitcoin
 install=bitcoin.install
 
 pkgver() {
-	cd "$srcdir/BitcoinUnlimited"
+  cd "$srcdir/BitcoinUnlimited"
 
   # The latest version was not tagged, so throw away the version we get
   # from the top-most tag, but keep,the revision height and commit hash
@@ -48,7 +48,7 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/BitcoinUnlimited"
+  cd "$srcdir/BitcoinUnlimited"
 
   msg2 'Building...'
   ./autogen.sh
@@ -67,7 +67,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/BitcoinUnlimited"
+  cd "$srcdir/BitcoinUnlimited"
 
   msg2 'Installing license...'
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%%-*}"
