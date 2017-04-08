@@ -1,14 +1,14 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=fluid-git
-pkgver=20170129.edc9025
+pkgver=20170321.59b33b6
 pkgrel=1
 pkgdesc="Components for Qt Quick applications with Material Design and Universal"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('MPL2')
 depends=('qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-svg')
-makedepends=('git' 'extra-cmake-modules')
+makedepends=('git' 'qt5-tools')
 conflicts=('fluid')
 replaces=('fluid')
 provides=('fluid')
@@ -34,15 +34,14 @@ prepare() {
 
 build() {
 	cd build
-	cmake ../${_gitname} \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DKDE_INSTALL_LIBDIR=lib \
-		-DKDE_INSTALL_LIBEXECDIR=lib
+	qmake \
+		CONFIG+=use_qt_paths \
+		CONFIG-=create_prl \
+		../${_gitname}
 	make
 }
 
 package() {
 	cd build
-	make DESTDIR="${pkgdir}" install
+	make INSTALL_ROOT="${pkgdir}" install
 }
