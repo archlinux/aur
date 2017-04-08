@@ -1,4 +1,4 @@
-pkgbase = whatwg-html-git
+pkgbase = whatwg-html
 	pkgdesc = Clone the WHATWG HTML specification with local resources
 	pkgver = latest
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = whatwg-html-git
 	source = git+https://www.github.com/simonaw/whatwg-html.git
 	md5sums = SKIP
 
-pkgname = whatwg-html-git
+pkgname = whatwg-html
 
