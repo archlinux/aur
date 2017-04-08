@@ -2,8 +2,8 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=cheese
-pkgver=3.22.1
-pkgrel=2
+pkgver=3.24.0
+pkgrel=1
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
 url="https://wiki.gnome.org/Apps/Cheese"
 arch=(i686 x86_64)
@@ -15,8 +15,8 @@ makedepends=(pkgconfig intltool gobject-introspection itstool vala gnome-common 
 optdepends=('gnome-video-effects: Camera effects')
 groups=(gnome-extra)
 options=(!emptydirs)
-_commit=175b692743d8079a48d2d18113d8e07da8c2d4f3  # gnome-3-22
-source=("git://git.gnome.org/cheese#commit=$_commit")
+_commit=e0f4befb62bb02522a364251e1be429942a1d446  # master~4
+source=("git+https://git.gnome.org/browse/cheese#commit=$_commit")
 sha256sums=('SKIP')
 
 # TODO: Consider splitting libcheese
@@ -29,7 +29,7 @@ pkgver() {
 prepare() {
   cd $pkgname
   # Fixup tags for pkgver()
-  git tag -f 3.22.1 175b692743d8079a48d2d18113d8e07da8c2d4f3
+  git tag -f 3.24.0 e0f4befb62bb02522a364251e1be429942a1d446
   NOCONFIGURE=1 ./autogen.sh
 }
 
