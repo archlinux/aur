@@ -1,7 +1,7 @@
 pkgbase = dict-gcide
 	pkgdesc = GNU version of the Collaborative International Dictionary of English for dictd et al.
 	pkgver = 0.48.1
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.dict.org/
 	install = dict-gcide.install
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = dict-gcide
 	provides = dictd-gcide
 	conflicts = dictd-gcide
 	source = ftp://ftp.debian.org/debian/pool/main/d/dict-gcide/dict-gcide_0.48.1.tar.gz
-	md5sums = 44fa2d940c58e65635357fee76772a35
+	sha512sums = 87a5aae9952316e03e029424de06e36bec46ce1a24dd300eecaf73577f6785c18cbade1d4227ac38b505a8b64ad36bac64893f4a7dc25b87760df0a4e384fbc4
 
 pkgname = dict-gcide
 
