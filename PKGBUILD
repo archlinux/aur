@@ -12,7 +12,7 @@
 
 pkgname=mpv-full-git
 pkgver=0.23.0.r154.g9c90c902c1
-pkgrel=3
+pkgrel=4
 pkgdesc='A free, open source, and cross-platform media player (Git version with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -148,10 +148,7 @@ build() {
         --disable-direct3d \
         --disable-android \
         --disable-rpi \
-        --enable-standard-gl \
-        --disable-android-gl \
         --disable-ios-gl \
-        --enable-any-gl \
         --enable-plain-gl \
         --disable-mali-fbdev \
         --enable-gl \
