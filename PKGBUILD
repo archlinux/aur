@@ -5,7 +5,7 @@
 _srcname="autotrace"
 pkgname=autotrace-nomagick
 pkgver=0.31.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A program for converting bitmap to vector graphics (no ImageMagick dependency)"
 arch=('i686' 'x86_64')
 url="http://autotrace.sourceforge.net/"
@@ -30,29 +30,29 @@ sha256sums=('5a1a923c3335dfd7cbcccb2bbd4cc3d68cafe7713686a2f46a1591ed8a92aff6'
             '666193c7b9d8d085de6c774d90262f9df2f5f2f75a4acdc7ae2167b4fc179bad')
 
 prepare() {
-	cd "$_srcname"-"$pkgver"
-	patch -Np1 -i ../autotrace-0.31.1-CVE-2013-1953.patch
-	patch -Np1 -i ../autotrace-0.31.1-CVE-2016-7392.patch
-	patch -Np0 -i ../autotrace-0.31.1-libpng-1.5.patch
-	patch -Np1 -i ../autotrace-0.31.1-pstoedit-detection-fix.patch
-	patch -Np0 -i ../autotrace-0.31.1-swf-output.patch
-	patch -Np1 -i ../autotrace-0002-Fixed-underquoted-AM_PATH_AUTOTRACE-definition.patch
+    cd "$_srcname"-"$pkgver"
+    patch -Np1 -i ../autotrace-0.31.1-CVE-2013-1953.patch
+    patch -Np1 -i ../autotrace-0.31.1-CVE-2016-7392.patch
+    patch -Np0 -i ../autotrace-0.31.1-libpng-1.5.patch
+    patch -Np1 -i ../autotrace-0.31.1-pstoedit-detection-fix.patch
+    patch -Np0 -i ../autotrace-0.31.1-swf-output.patch
+    patch -Np1 -i ../autotrace-0002-Fixed-underquoted-AM_PATH_AUTOTRACE-definition.patch
 }
 
 build() {
-	cd "$_srcname"-"$pkgver"
-	autoreconf -fis
-	./configure \
-                --prefix=/usr \
-                --mandir=/usr/share \
-                --enable-static=no \
-                --enable-shared=yes \
-                --without-magick \
-                --with-pstoedit
-	make
+    cd "$_srcname"-"$pkgver"
+    autoreconf -fis
+    ./configure \
+        --prefix=/usr \
+        --mandir=/usr/share \
+        --enable-static=no \
+        --enable-shared=yes \
+        --without-magick \
+        --with-pstoedit
+    make
 }
 
 package() {
-	cd "$_srcname"-"$pkgver"
-	make DESTDIR="$pkgdir/" install
+    cd "$_srcname"-"$pkgver"
+    make DESTDIR="$pkgdir/" install
 }
