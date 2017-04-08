@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=μ-manager
+GenericName=Micro-manager
+Comment=Microscope control
+Exec=mmimagej
+Icon=mmstudio
+Categories=Graphics;Science;Biology;ImageProcessing;Photography;Microscopy;

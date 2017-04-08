@@ -1,19 +1,19 @@
 # Maintainer: Eugene Dvoretsky <radioxoma from gmail com>
-# Visit https://github.com/radioxoma/aur for pull requests or issue solving.
 
 pkgname=micromanager-git
 pkgver=v2.0.0.beta2.r2147.gc6734e115
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc="Software package for control of automated microscopes. CMMCore and python2 bindings only."
+pkgdesc="Software package for control of automated microscopes. CMMCore, MMStudio, python2 and Java bindings"
 arch=('x86_64' 'i686')
-url="http://www.micro-manager.org"
+url="https://micro-manager.org"
 license=('BSD LGPL')
 groups=()
-depends=('clang' 'boost' 'libdc1394' 'python2' 'python2-numpy')
-makedepends=('git' 'swig')
+depends=('desktop-file-utils' 'java-runtime' 'boost' 'python2' 'python2-numpy' 'imagej')
+makedepends=('git' 'clang' 'swig' 'imagemagick')
 optdepends=('libgphoto2: DSLR camera support'
-            'freeimage: libgphoto2 support')
+            'freeimage: libgphoto2 support'
+            'libdc1394')
 checkdepends=()
 optdepends=()
 provides=('micromanager')
@@ -22,12 +22,15 @@ replaces=()
 backup=()
 options=()
 install=mm.install
-changelog=ChangeLog
 source=("$pkgname::git+https://github.com/micro-manager/micro-manager.git/#commit=c6734e1151bd59514e4ee629e24b1445f07be6c1"  # Latest commit im 'mm2' branch
-        "micromanager-lib.conf")
+        "3rdpartypublic::svn+https://valelab.ucsf.edu/svn/3rdpartypublic/"
+        "mmstudio.desktop")
 noextract=()
 md5sums=('SKIP'
-         'b7b6a68ce53d8ea1a4a29d187174ee4c')
+         'SKIP'
+         'SKIP')
+IJ_DIR='/usr/share/imagej'
+_PYTHON='python2'  # Choose python2 or python3
 
 pkgver() {
   cd "$pkgname"
@@ -38,43 +41,49 @@ pkgver() {
 }
 
 prepare() {
+        # https://micro-manager.org/wiki/Building_and_debugging_Micro-Manager_source_code
         cd "$srcdir/$pkgname"
         sh ./autogen.sh
 }
 
 build() {
         cd "$srcdir/$pkgname"
-        # With MMCore, device adapters, Python2 wrapper (MMCorePy).
-        # Without Java wrapper (MMCoreJ), MMStudio (Java GUI)
-        # and closed-source device adapters.
+        # With MMCore, device adapters, Python wrapper (MMCorePy).
+        # Without closed-source device adapters.
+        CXXCPP=/usr/bin/cpp ./configure --prefix=/usr --enable-imagej-plugin=${IJ_DIR} --with-python PYTHON=${_PYTHON}
 
-        # Feel free to improve package to work with ImageJ or FIJI.
-        # You can switch to python3 here and in `package()` function.
-        CXXCPP=/usr/bin/cpp ./configure --prefix=/usr --with-java=no --with-python PYTHON="python2"
+        # Download necessary jars. You may to have to run it multiple times!
+        # NB! Repo `https://valelab.ucsf.edu/svn/3rdpartypublic/` still needed
+        make fetchdeps
+
         make
 }
 
-# check() {
-#         cd "$srcdir/$pkgname"
-#         make -k check
-# }
-
 package() {
         cd "$srcdir/$pkgname"
-        mkdir -p "$pkgdir/usr/lib/micro-manager"
         make install DESTDIR="$pkgdir"
 
-        # Install MMCorePy
-        SPDIR="$pkgdir/usr/lib/python2.7/site-packages"
-        mkdir -p "$SPDIR"
-        mv "$pkgdir/usr/lib/micro-manager/MMCorePy.py" "$SPDIR"
-        mv "$pkgdir/usr/lib/micro-manager/_MMCorePy.so" "$SPDIR"
-        python2 -m compileall "$SPDIR"
-        python2 -O -m compileall "$SPDIR"
+        msg "Installing mmimagej script"
+        mkdir -p "$pkgdir/usr/bin/"
+        mv "$pkgdir${IJ_DIR}/mmimagej" "$pkgdir/usr/bin/"
+
+        msg "Installing MMCorePy"
+        PY_DIR=`${_PYTHON} -c "import site; print(site.getsitepackages()[0])"`
+        mkdir -p "$pkgdir${PY_DIR}"
+        mv "$pkgdir${IJ_DIR}/MMCorePy.py" "$pkgdir$PY_DIR/"
+        mv "$pkgdir${IJ_DIR}/_MMCorePy.so" "$pkgdir$PY_DIR/"
+        ${_PYTHON} -m compileall "$pkgdir$PY_DIR"
+        ${_PYTHON} -O -m compileall "$pkgdir$PY_DIR"
 
         # We need to update ldconfig cache with new libs.
-        install -Dm644 "$srcdir/micromanager-lib.conf" "$pkgdir/etc/ld.so.conf.d/micromanager-lib.conf"
+        mkdir -p "$pkgdir/etc/ld.so.conf.d/"
+        echo "${IJ_DIR}" > "$pkgdir/etc/ld.so.conf.d/micromanager-lib.conf"
         install -Dm644 "$srcdir/$pkgname/doc/copyright.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+        msg "Installing icon and desktop file"
+        convert "$srcdir/$pkgname/mmstudio/build/org/micromanager/icons/microscope.gif" "$srcdir/mmstudio.png"
+        install -Dm644 "$srcdir/mmstudio.png" "$pkgdir/usr/share/pixmaps/mmstudio.png"
+        install -Dm644 "$srcdir/mmstudio.desktop" "$pkgdir/usr/share/applications/mmstudio.desktop"
 }
 
 # This script print 'DemoCamera' property list if CMMCore and python bindings
