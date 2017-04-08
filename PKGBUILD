@@ -5,7 +5,7 @@
 _srcname="autotrace"
 pkgname=autotrace-nomagick
 pkgver=0.31.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A program for converting bitmap to vector graphics (no ImageMagick dependency)"
 arch=('i686' 'x86_64')
 url="http://autotrace.sourceforge.net/"
