@@ -9,7 +9,8 @@ arch=(x86_64 i686)
 url="https://wiki.gnome.org/Apps/Recipes"
 license=(GPL3)
 depends=(gnome-autoar gspell libcanberra)
-checkdepends=(appstream-glib itstool)
+makedepends=(itstool)
+checkdepends=(appstream-glib)
 source=("https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz")
 sha256sums=('f8f1f0f79121e91130a589b1c20ad4739d93d2253232ecdc3d4bc966db7efc45')
 
