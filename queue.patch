@@ -1,0 +1,18 @@
+--- scst/src/scst_lib.c	(revision 7103)
++++ scst/src/scst_lib.c	(working copy)
+@@ -8000,7 +8000,15 @@ static struct request *__blk_map_kern_sg(struct re
+ 
+ 	if (bw != NULL) {
+ 		atomic_set(&bw->bios_inflight, bios);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 10, 0)
++	/*
++	 * See also patch "block: split out request-only flags into a new namespace"
++	 * (commit e806402130c9).
++	 */
+ 		rq->cmd_flags |= REQ_COPY_USER;
++#else
++		rq->rq_flags |= RQF_COPY_USER;
++#endif
+ 	}
+ 
+ out:
