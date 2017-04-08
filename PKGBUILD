@@ -1,8 +1,8 @@
 # Maintainer: Adrian Sinclair <adrian@transloadit.com>
 
 pkgname=eslint-plugin-react
-pkgver=6.8.0
-pkgrel=2
+pkgver=6.10.0
+pkgrel=1
 pkgdesc='React specific linting rules for ESLint'
 arch=('any')
 url='https://github.com/yannickcr/eslint-plugin-react'
@@ -11,7 +11,7 @@ depends=('nodejs' 'eslint')
 makedepends=('npm')
 source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-md5sums=('SKIP')
+md5sums=('a289079092ec8da83f49933a6100651f')
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
