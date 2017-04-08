@@ -1,0 +1,16 @@
+pkgbase = eslint-plugin-import
+	pkgdesc = Import with safety (eslint)
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/benmosher/eslint-plugin-import
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = eslint
+	noextract = eslint-plugin-import-2.2.0.tgz
+	source = http://registry.npmjs.org/eslint-plugin-import/-/eslint-plugin-import-2.2.0.tgz
+	md5sums = 7d94b1cd89f2f4eacd01e823d44e3f16
+
+pkgname = eslint-plugin-import
+
