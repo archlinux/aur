@@ -17,8 +17,8 @@ else
 fi
 install=savage.install
 source=('savage.i686.launcher' 'savage.x86_64.launcher' 'savage.desktop' 'icon.xpm' \
-'lin-client-auth-patch.zip::http://www.newerth.com/?id=downloads&op=downloadFile&file=lin-client-auth-patch.zip&mirrorid=3' \
-'SFE-Standalone.tar.gz::http://www.newerth.com/?id=downloads&op=downloadFile&file=SFE-Standalone.tar.gz&mirrorid=3')
+'lin-client-auth-patch.zip::http://www.newerth.com/?id=downloads&op=downloadFile&file=lin-client-auth-patch.zip&mirrorid=1' \
+'SFE-Standalone.tar.gz::http://www.newerth.com/?id=downloads&op=downloadFile&file=SFE-Standalone.tar.gz&mirrorid=1')
 sha256sums=('401f458a9ff66473e329ce7f5363459877455300e5c6ba77e934e9423d7436e8'
             '2990284957c354d1f7bed8a39ffa5b0c3c76e59c366ceb976845419912940b23'
             '837a9df33bd539b3ac27549be4773b4e6bc5576247ce5fea9bb40bec5fadfdfe'
