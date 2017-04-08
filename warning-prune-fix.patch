@@ -1,0 +1,72 @@
+diff -ura a/gruntfile.js b/gruntfile.js
+--- a/gruntfile.js	2017-03-20 08:11:24.000000000 +0100
++++ b/gruntfile.js	2017-04-08 15:03:17.256859446 +0200
+@@ -6,6 +6,7 @@
+ 
+ module.exports = function (grunt) {
+   var authCode
++/*
+   try {
+     authCode = grunt.file.readJSON('secret/auth_code.json')
+   } catch (e) {
+@@ -13,6 +14,7 @@
+       console.warn('secret/auth_code.json is not found. CodeSigning is not available.')
+     }
+   }
++*/
+   const OSX_COMMON_NAME = authCode != null ? authCode.OSX_COMMON_NAME : ''
+   const WIN_CERT_PASSWORD = authCode != null ? authCode.WIN_CERT_PASSWORD : ''
+ 
+@@ -55,9 +57,6 @@
+ 
+   grunt.initConfig(initConfig)
+   grunt.loadNpmTasks('grunt-electron-installer')
+-  if (!WIN) {
+-    grunt.loadNpmTasks('grunt-electron-installer-debian')
+-  }
+ 
+   grunt.registerTask('compile', function () {
+     var done = this.async()
+diff -ura a/package.json b/package.json
+--- a/package.json	2017-03-20 08:11:24.000000000 +0100
++++ b/package.json	2017-04-08 15:33:41.702192334 +0200
+@@ -87,35 +86,29 @@
+     "css-loader": "^0.19.0",
+     "devtron": "^1.1.0",
+     "dom-storage": "^2.0.2",
+-    "electron-packager": "^6.0.0",
+-    "electron-prebuilt": "^1.2.8",
++    "electron-packager": "^8.6.0",
+     "eslint": "^3.13.1",
+     "eslint-config-standard": "^6.2.1",
+     "eslint-config-standard-jsx": "^3.2.0",
+     "faker": "^3.1.0",
+-    "grunt": "^0.4.5",
+-    "grunt-electron-installer": "^1.2.0",
++    "grunt": "^1.0.1",
++    "grunt-electron-installer": "^2.1.0",
+     "history": "^1.17.0",
+     "jsdom": "^9.4.2",
+     "merge-stream": "^1.0.0",
+     "nib": "^1.1.0",
+-    "react": "^15.3.0",
+     "react-color": "^2.2.2",
+     "react-css-modules": "^3.7.6",
+-    "react-dom": "^15.3.0",
+     "react-input-autosize": "^1.1.0",
+     "react-router": "^2.4.0",
+     "react-router-redux": "^4.0.4",
+     "standard": "^8.4.0",
+     "style-loader": "^0.12.4",
+-    "stylus": "^0.52.4",
++    "stylus": "^0.54.5",
+     "stylus-loader": "^2.3.1",
+     "webpack": "^1.12.2",
+     "webpack-dev-server": "^1.12.0"
+   },
+-  "optionalDependencies": {
+-    "grunt-electron-installer-debian": "^0.2.0"
+-  },
+   "optional": false,
+   "ava": {
+     "files": [

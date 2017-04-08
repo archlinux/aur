@@ -1,7 +1,7 @@
 pkgbase = boostnote
 	pkgdesc = Open source note-taking app for programmers
 	pkgver = 0.8.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://boostnote.io/
 	arch = any
 	license = GPL3
@@ -9,14 +9,15 @@ pkgbase = boostnote
 	makedepends = grunt-cli
 	makedepends = git
 	depends = electron
+	depends = nodejs
 	source = 0.8.7.tar.gz::https://github.com/BoostIO/Boostnote/archive/v0.8.7.tar.gz
 	source = boostnote.js
 	source = boostnote.desktop
-	source = npm-prune-fix.patch
+	source = warning-prune-fix.patch
 	sha512sums = 400bcd5f2a2fa3c858c4e5ab8ce22c8f9669a5c1c0299724937f56534248e0517c8a814b7c2f2243c8492edbb50e96b2a2a2ce787f6566cbfec1741521d5261c
 	sha512sums = f0abbdcca34d7f74d3dc66ffc2d0995416e7708c715d55fa58c4c2abc31d191ea42f3434e3105292b4817f83ac0ca89f456f5f93007ae80ab2426c8941f615f9
 	sha512sums = 18bcda13580da8ceeaa86793a77ec00a053b8fd51451dad7e2b1a19553fe1a467ac647b44b789212e783f3f6a80968cc9404e884ef7ff6b1f6588473b3229d40
-	sha512sums = c500237c18fc1fcd98f3fd6d1b0bd74764e6f53a87c258b4d68b6d4754ad2281317b89e411aaf5af4d2c9f837f67218cd3663e27fc77da5137b217724f91039c
+	sha512sums = 4b57a26cfa2bfb6e03c8c4c08f2ce2e6707cd95ad8c0593ef890cb3ae5d7d032169b829c4359b9663eb775ddd630fc4f93de515f89659a5877874eb5f23598ea
 
 pkgname = boostnote
 
