@@ -3,14 +3,20 @@
 pkgbase='pygobject-tutorial'
 pkgname=('pygobject-tutorial' 'pygobject-tutorial-devhelp')
 pkgver=3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="The PyGObject Tutorial in html format."
 arch=('any')
 url="https://github.com/sebp/PyGObject-Tutorial"
 license=('FDL1.3')
-makedepends=('python-sphinx')
+makedepends=('python-sphinx' 'python-sphinx_rtd_theme')
 source=("${pkgname}::git+https://github.com/sebp/PyGObject-Tutorial.git")
 md5sums=('SKIP')
+
+prepare(){
+	cd "${srcdir}/${pkgbase}"
+	sed -i "s/html_theme = 'default'/html_theme = 'sphinx_rtd_theme'/" \
+		./source/conf.py
+}
 
 build(){
     cd "${srcdir}/${pkgbase}"
