@@ -1,6 +1,6 @@
 # Maintainer: tritonas00 <tritonas00@gmail.com>
 pkgname=system-tar-and-restore
-pkgver=6.5
+pkgver=6.6
 pkgrel=1
 pkgdesc='Backup and Restore your system using tar or Transfer it with rsync'
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('gtkdialog: GUI wrapper' 'grub: Grub support' 'dosfstools: UEFI supp
 url="https://github.com/tritonas00/system-tar-and-restore"
 source=("https://github.com/tritonas00/system-tar-and-restore/archive/$pkgver.tar.gz")
 
-md5sums=('4bad769471209059d3756903f549cfd3')
+md5sums=('05226b35d678b64d2113d3dfe80754ab')
 
 install=readme.install
 
@@ -22,4 +22,6 @@ package() {
   install -Dm755 star-gui.sh "$pkgdir/usr/bin/star-gui.sh"
   install -Dm755 backup.conf "$pkgdir/usr/share/system-tar-and-restore/backup.conf"
   install -Dm755 changelog "$pkgdir/usr/share/system-tar-and-restore/changelog"
+  install -Dm755 pms/system-tar-and-restore.desktop "$pkgdir/usr/share/applications/system-tar-and-restore.desktop"
+  install -Dm755 pms/org.freedesktop.star-gui.policy "$pkgdir/usr/share/polkit-1/actions/org.freedesktop.star-gui.policy"
 }
