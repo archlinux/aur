@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Laskar <gabriel at lse dot epita dot fr>
 pkgname=oksh
-pkgver=0.5.0
+pkgver=0.5.9
 pkgrel=1
 url="http://www.connochaetos.org/oksh"
 pkgdesc="Ported version of ksh from OpenBSD"
@@ -8,7 +8,7 @@ license=('GPL3')
 depends=('glibc')
 arch=('i686' 'x86_64')
 source=(http://www.connochaetos.org/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('e8118f06ac41ff7ce416706ffc649192')
+md5sums=('f29996538d4ae89095f921b80ec1484f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

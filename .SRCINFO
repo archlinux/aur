@@ -1,14 +1,14 @@
 pkgbase = oksh
 	pkgdesc = Ported version of ksh from OpenBSD
-	pkgver = 0.5.0
+	pkgver = 0.5.9
 	pkgrel = 1
 	url = http://www.connochaetos.org/oksh
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = glibc
-	source = http://www.connochaetos.org/oksh/oksh-0.5.0.tar.gz
-	md5sums = e8118f06ac41ff7ce416706ffc649192
+	source = http://www.connochaetos.org/oksh/oksh-0.5.9.tar.gz
+	md5sums = f29996538d4ae89095f921b80ec1484f
 
 pkgname = oksh
 
