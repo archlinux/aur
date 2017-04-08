@@ -1,0 +1,21 @@
+pkgbase = dlm-git
+	pkgdesc = Userspace management for linux/fs/dlm
+	pkgver = 20170228.d2ef4558
+	pkgrel = 1
+	url = https://pagure.io/dlm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = git
+	depends = libutil-linux
+	depends = ncurses
+	depends = pacemaker
+	depends = zlib
+	provides = dlm
+	conflicts = dlm
+	source = git+https://pagure.io/dlm.git
+	md5sums = SKIP
+
+pkgname = dlm-git
+
