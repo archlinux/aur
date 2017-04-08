@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Oracle Java Web Start
+GenericName=Java Web Start
+Comment=Oracle Java Application Launcher
+Exec=/usr/lib/jvm/java-8-jre/jre/bin/javaws %f
+Icon=javaws
+Terminal=false
+Type=Application
+NoDisplay=true
+Categories=Network;WebBrowser;
+MimeType=application/x-java-jnlp-file;
