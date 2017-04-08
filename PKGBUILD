@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-anynum'
-pkgver='0.02'
+pkgver='0.03'
 pkgrel='1'
 pkgdesc="Arbitrary size precision for integers, rationals, floating-points and complex numbers."
 arch=('any')
@@ -12,8 +12,8 @@ depends=('perl-class-multimethods>=1.7' 'perl-math-gmpq>=0.41' 'perl-math-gmpz>=
 makedepends=()
 url='https://metacpan.org/release/Math-AnyNum'
 source=("https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/Math-AnyNum-${pkgver}.tar.gz")
-md5sums=('1b49aec66b863227400b47bc3b271240')
-sha512sums=('1a380baeae9224a7c968d74717081ec74620ffb11919d1292ba87b53540fccfc619b79a7c35329d8b544d12207dfa167802f62a46cdd7f95b3729fb3d96cd056')
+md5sums=('0b8d44a4c8cf4f4da5163c4a6b57a903')
+sha512sums=('b2b9fc6800f29fef08f711657d31e0311c3b5006ec1008c1d7d669b0c8297d953196982f87e4d1ada890dfae956135af36f6a6ad76a8d1eaff2a9b02aaf7d5d2')
 _distdir="Math-AnyNum-${pkgver}"
 
 build() {
