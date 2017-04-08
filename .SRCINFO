@@ -1,6 +1,6 @@
 pkgbase = epiphany-unstable
 	pkgdesc = A GNOME web browser based on the WebKit rendering engine (unstable version)
-	pkgver = 3.23.4
+	pkgver = 3.24.0
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Web
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = epiphany-unstable
 	depends = gnome-desktop
 	provides = epiphany
 	conflicts = epiphany
-	source = https://ftp.gnome.org/pub/GNOME/sources/epiphany/3.23/epiphany-3.23.4.tar.xz
-	md5sums = e3e98d6cbf74b939be4fac9067ae4ea3
+	source = https://ftp.gnome.org/pub/GNOME/sources/epiphany/3.24/epiphany-3.24.0.tar.xz
+	md5sums = 40b21b6c4e1f9471642135d04258b2fc
 
 pkgname = epiphany-unstable
 
