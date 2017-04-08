@@ -9,6 +9,7 @@ pkgbase = qpass-qt5
 	license = GPL3
 	makedepends = cmake
 	depends = qt5-base>=5.3
+	depends = qt5-tools>=5.3
 	depends = libgcrypt
 	conflicts = qpass
 	source = qpass-qt5::git+https://github.com/veaceslav/qpass-qt5.git
