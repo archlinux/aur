@@ -1,0 +1,14 @@
+pkgbase = whatwg-html-git
+	pkgdesc = Clone the WHATWG HTML specification with local resources
+	pkgver = latest
+	pkgrel = 1
+	url = https://whatwg.org/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = perl
+	source = git+https://www.github.com/simonaw/whatwg-html.git
+	md5sums = SKIP
+
+pkgname = whatwg-html-git
+
