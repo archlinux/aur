@@ -2,7 +2,7 @@
 
 _pkgname=cni
 pkgname=${_pkgname}-git
-pkgver=r428.de002ff
+pkgver=r543.137b497
 pkgrel=1
 pkgdesc="Specification and libraries for writing plugins to configure network interfaces in Linux containers"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  ./build
+  ./build.sh
 }
 
 package() {
