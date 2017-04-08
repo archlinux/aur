@@ -1,8 +1,8 @@
 # Maintainer: Adrian Sinclair <adrian@transloadit.com>
 
 pkgname=eslint-plugin-promise
-pkgver=3.4.0
-pkgrel=2
+pkgver=3.5.0
+pkgrel=1
 pkgdesc='Enforce best practices for JavaScript promises'
 arch=('any')
 url='https://github.com/xjamundx/eslint-plugin-promise'
@@ -11,7 +11,7 @@ depends=('nodejs' 'eslint')
 makedepends=('npm')
 source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-md5sums=('SKIP')
+md5sums=('e0526395be6a321788040d8a9ffcf10e')
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
