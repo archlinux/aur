@@ -38,6 +38,7 @@ package() {
 
     # remove the six.py dumped in python's site packages
     rm "${pkgdir}/usr/lib/python2.7/site-packages/six.py"
+    rm "${pkgdir}/usr/lib/python2.7/site-packages/six.pyc"
 
     # Ensure the items have the right permissions..
     # some tarballs from upstream seem to have the wrong ones
