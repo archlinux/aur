@@ -1,16 +1,19 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=battlestar
-pkgver=0.3
+pkgver=0.51
 pkgrel=1
 pkgdesc='Programming language for creating tiny executables'
 arch=('x86_64' 'i686')
 url='http://github.com/xyproto/battlestar'
 license=('MIT')
 makedepends=('go' 'git')
-depends=('yasm' 'gcc' 'elfkickers')
-optdepends=('dosbox: for running 16-bit programs')
-source=("git://github.com/xyproto/battlestar.git#tag=$pkgver")
+depends=('yasm' 'gcc')
+optdepends=('elfkickers: for smaller executables'
+            'dosbox: for running 16-bit programs'
+            'qemu-arch-extra: for running bootable kernels'
+            'nasm: for ndisasm and com2bts')
+source=("git+https://github.com/xyproto/battlestar.git#tag=$pkgver")
 md5sums=('SKIP')
 
 build() {
