@@ -1,0 +1,16 @@
+pkgbase = mystem
+	pkgdesc = Morphological analyser of the text for Russian, Polish and English.
+	pkgver = 3.0
+	pkgrel = 1
+	epoch = 0
+	url = https://tech.yandex.ru/mystem/
+	arch = i686
+	arch = x86_64
+	license = custom
+	source_i686 = http://download.cdn.yandex.net/mystem/mystem-3.0-linux3.5-32bit.tar.gz
+	md5sums_i686 = a8f340c4f2b6868dc5e79f5433a2b827
+	source_x86_64 = http://download.cdn.yandex.net/mystem/mystem-3.0-linux3.1-64bit.tar.gz
+	md5sums_x86_64 = 79a6ecea8423b05a76829b16d2c8aca0
+
+pkgname = mystem
+
