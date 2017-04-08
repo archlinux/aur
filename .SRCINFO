@@ -1,7 +1,7 @@
 pkgbase = gnome-settings-daemon-redshift
 	pkgdesc = GNOME Settings Daemon with a patch to support changing the color temerature
 	pkgver = 3.22.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.gnome.org/browse/gnome-settings-daemon
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = gnome-settings-daemon-redshift
 	makedepends = git
 	makedepends = gnome-common
 	depends = dconf
-	depends = gnome-desktop
+	depends = gnome-desktop<1:3.24
 	depends = gsettings-desktop-schemas
 	depends = libcanberra-pulse
 	depends = libnotify
