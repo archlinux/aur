@@ -4,15 +4,15 @@
 _plugin_name=self-destructing-cookies
 pkgname=firefox-extension-${_plugin_name}
 pkgdesc="Gets rid of a site's cookies and LocalStorage as soon as you close its tabs. Protects against trackers and zombie-cookies."
-pkgver=0.4.11
+pkgver=0.4.12
 pkgrel=1
 arch=('any')
-url="https://addons.mozilla.org/fr/firefox/addon/self-destructing-cookies/"
+url="https://addons.mozilla.org/firefox/addon/${_plugin_name}/"
 makedepends=('unzip' )
 depends=("firefox")
 license=('GPL2')
 source=("${pkgname}.xpi::https://addons.mozilla.org/firefox/downloads/latest/self-destructing-cookies/addon-415846-latest.xpi" )
-sha1sums=('97a7fc378376bbafa3c8f08d6cbe909e82089ed6')
+sha1sums=('d40a1d9cce8d8f1fedf5b18805fe5371da7ba0ad')
 noextract=("${pkgname}.xpi")
 
 pkgver(){

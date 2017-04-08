@@ -1,15 +1,15 @@
 pkgbase = firefox-extension-self-destructing-cookies
 	pkgdesc = Gets rid of a site's cookies and LocalStorage as soon as you close its tabs. Protects against trackers and zombie-cookies.
-	pkgver = 0.4.11
+	pkgver = 0.4.12
 	pkgrel = 1
-	url = https://mozilla.github.io/self-destructing-cookies/
+	url = https://addons.mozilla.org/fr/firefox/addon/self-destructing-cookies/
 	arch = any
 	license = GPL2
 	makedepends = unzip
 	depends = firefox
 	noextract = firefox-extension-self-destructing-cookies.xpi
 	source = firefox-extension-self-destructing-cookies.xpi::https://addons.mozilla.org/firefox/downloads/latest/self-destructing-cookies/addon-415846-latest.xpi
-	sha1sums = 97a7fc378376bbafa3c8f08d6cbe909e82089ed6
+	sha1sums = d40a1d9cce8d8f1fedf5b18805fe5371da7ba0ad
 
 pkgname = firefox-extension-self-destructing-cookies
 
