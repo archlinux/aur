@@ -1,0 +1,29 @@
+pkgbase = pacpl
+	pkgdesc = Convert multiple audio types from one format to another.
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = http://pacpl.sourceforge.net/
+	install = pacpl.install
+	arch = any
+	license = GPL
+	depends = perl
+	depends = perl-parse-recdescent
+	depends = perl-inline
+	depends = libogg
+	depends = flac
+	depends = perl-ogg-vorbis-header
+	depends = perl-mp3-info
+	depends = perl-mp4-info
+	depends = perl-mp3-tag
+	depends = perl-audio-flac-header
+	depends = perl-audio-musepack
+	depends = cddb_get
+	depends = vorbis-tools
+	depends = perl-switch
+	depends = perl-parallel-forkmanager
+	depends = perl-cddb
+	source = git://git.code.sf.net/p/pacpl/code
+	md5sums = SKIP
+
+pkgname = pacpl
+
