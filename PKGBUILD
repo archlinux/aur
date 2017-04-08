@@ -12,7 +12,7 @@
 # You will also need to install osgearth-qt4 or fcgi, respectively, before building.
 
 pkgname=qgis
-pkgver=2.18.5
+pkgver=2.18.6
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
@@ -35,7 +35,7 @@ optdepends=('gpsbabel: GPS Tool plugin'
             'python2-yaml: Processing plugin')
 source=("https://qgis.org/downloads/$pkgname-$pkgver.tar.bz2"
         "qgis_sip-ftbfs.patch::https://src.fedoraproject.org/cgit/rpms/qgis.git/plain/qgis_sip-ftbfs.patch?id=25b8f81ccabbfdb183d4850a66e884c183444f14")
-md5sums=('dd2fdd649613a9ff14f2e2da86a59aa5'
+md5sums=('ea6d736f1b73d3e02867002fa7fabdb1'
          '0575d848604f0fc6dda0a643523e7e48')
 
 prepare() {
