@@ -1,7 +1,7 @@
 pkgbase = anki20-bin
 	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) efficiently
 	pkgver = 2.0.45
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ankisrs.net/
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = anki20-bin
 	depends = glib2
 	depends = sqlite
 	depends = openssl
+	depends = icu48
 	optdepends = mplayer: sound playing
 	provides = anki20
 	provides = anki
