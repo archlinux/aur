@@ -4,12 +4,12 @@
 pkgname=gnome-settings-daemon-redshift
 pkgver=3.22.2
 _pkgname=gnome-settings-daemon
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME Settings Daemon with a patch to support changing the color temerature"
 url="https://git.gnome.org/browse/gnome-settings-daemon"
 arch=(i686 x86_64)
 license=(GPL)
-depends=(dconf gnome-desktop gsettings-desktop-schemas libcanberra-pulse libnotify libsystemd
+depends=(dconf 'gnome-desktop<1:3.24' gsettings-desktop-schemas libcanberra-pulse libnotify libsystemd
          libwacom pulseaudio pulseaudio-alsa upower librsvg libgweather geocode-glib geoclue2 nss
          libgudev gtk3-print-backends libnm)
 makedepends=(intltool xf86-input-wacom libxslt docbook-xsl python git gnome-common)
