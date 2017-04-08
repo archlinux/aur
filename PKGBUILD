@@ -8,7 +8,7 @@ url="http://www.rq3.com/"
 license=('custom')
 arch=('any')
 depends=('quake3')
-source=('ftp://ftp.tw.freebsd.org/pub/ports/distfiles/ReactionQuake3-v3.2-Full.zip')
+source=('http://slashbunny.com/aur/quake3-reactionq3/ReactionQuake3-v3.2-Full.zip')
 sha256sums=('c84de808ac5bd369a2047553745a1b2cb2fd8afe31a0ea6b8380424da5652bb1')
 PKGEXT='.pkg.tar'
 
