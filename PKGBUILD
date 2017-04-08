@@ -1,13 +1,13 @@
 # Contributor: Darko82 <darko 82 (hat) gmail dotcom>
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=photoflow-git
-pkgver=r1435.bc138a3
+pkgver=r1438.858e156
 pkgrel=1
 pkgdesc="Non-destructive, layer-based photo retouching including RAW image development"
 arch=('i686' 'x86_64')
 url="http://aferrero2707.github.io/PhotoFlow"
 license=('GPL3')
-depends=('libgexiv2' 'vips' 'gtkmm' 'pugixml' 'libjpeg-turbo' 'desktop-file-utils')
+depends=('exiv2' 'vips' 'gtkmm' 'pugixml' 'libjpeg-turbo')
 makedepends=('git' 'gobject-introspection' 'cmake')
 provides=('photoflow')
 conflicts=('photoflow')
@@ -23,7 +23,6 @@ pkgver() {
 
 build() {
     cd ${srcdir}/${pkgname%-*}
-	sed -i "s/am__api_version='1.14'/am__api_version='1.15'/" src/external/gexiv2/configure
     cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DINSTALL_PREFIX=/usr -DBUNDLED_GEXIV2=OFF
 	make
 }
