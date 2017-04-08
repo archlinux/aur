@@ -2,7 +2,7 @@
 
 pkgname=opengotha
 pkgver=3.44
-pkgrel=1
+pkgrel=2
 pkgdesc="Go game tournaments management program"
 url="http://vannier.info/jeux/gotournaments/opengotha.htm"
 arch=('i686' 'x86_64')
