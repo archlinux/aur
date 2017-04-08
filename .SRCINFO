@@ -14,6 +14,7 @@ pkgbase = pykaraoke-gst-git
 	depends = desktop-file-utils
 	depends = gstreamer0.10-base-plugins
 	depends = gstreamer0.10-good
+	depends = gstreamer0.10-bad
 	depends = gstreamer0.10-ugly
 	depends = gstreamer0.10-python
 	optdepends = timidity++: Midi Support
