@@ -1,0 +1,11 @@
+pkgbase = bgsync
+	pkgdesc = Synchronization Tool
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://bg-software.net/dls/bgsync_${pkgver}-${pkgrel}_Arch.zip
+	arch = any
+	license = None
+	depends = mono
+
+pkgname = bgsync
+
