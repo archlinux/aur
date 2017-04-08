@@ -1,12 +1,12 @@
 pkgbase = kindleforpc
 	pkgdesc = Kindle for PC using wine
 	pkgver = 1.16.44025
-	pkgrel = 1
+	pkgrel = 2
 	url = amazon.ca
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = unarchiver
+	makedepends = p7zip
 	depends = wine
 	depends = desktop-file-utils
 	source = https://s3.amazonaws.com/kindleforpc/44025/KindleForPC-installer-1.16.44025.exe
