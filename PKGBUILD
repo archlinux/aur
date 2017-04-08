@@ -1,8 +1,9 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
+# Maintainer: RubenKelevra <ruben@vfn-nrw.de>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=batman-adv
-pkgver=2016.4
+pkgver=2017.0.1
 pkgrel=0
 epoch=1
 pkgdesc='batman kernel module'
@@ -12,11 +13,12 @@ license=('GPL')
 install='batman-adv.install'
 source=("https://downloads.open-mesh.org/batman/releases/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'batman-adv.install'
-        '1001-batman-adv-introduce-no_rebroadcast-option.patch'
-        '1002-batman-adv-decrease-maximum-fragment-size.patch'
 )
 depends=('linux')
 makedepends=('linux-headers')
+
+sha256sums=('55c2bc9739c5ef13d6951705431a3bcc4b9e5686be9c8d742923d1149f04c47c'
+            '347599c02426a905690002885c277f91b82da2b29d3372348e5f02d03c435c37')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -41,7 +43,3 @@ package() {
   install -D -m644 README "${pkgdir}/usr/share/doc/batman-adv/README"
 }
 
-sha256sums=('bc1236dd83209db51a09368b7ed1dd3a1ce5f5b933e09260c4d6f107c0a150eb'
-            '347599c02426a905690002885c277f91b82da2b29d3372348e5f02d03c435c37'
-            'f86ba376f8563b9eb2e040fad8282949d4c61413fced068204a8de0523392c1f'
-            '1501d6fef6497461d2439505eeeb264f02f2ecfb06e7101908d72fc4d1953c14')
