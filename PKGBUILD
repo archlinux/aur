@@ -9,6 +9,7 @@ pkgdesc="TiEmu emulates Texas Instruments calculators TI-89/92/92+/V200PLT (no G
 arch=(i686 x86_64)
 url="http://tilp.info/"
 license=('GPL')
+makedepends=('wget')
 depends=('libglade' 'libticalcs' 'sdl')
 options=('!libtool')
 source=(http://download.sourceforge.net/project/gtktiemu/tiemu-linux/TIEmu%203.03/tiemu-3.03-nogdb.tar.gz
