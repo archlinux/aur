@@ -5,7 +5,7 @@
 _srcname="pstoedit"
 pkgname=pstoedit-nomagick
 pkgver=3.70
-pkgrel=3
+pkgrel=4
 pkgdesc="Translates PS/PDF graphics to other vector formats (no ImageMagick dependency)"
 arch=('i686' 'x86_64')
 url="http://www.pstoedit.net/"
@@ -24,27 +24,27 @@ sha256sums=('06b86113f7847cbcfd4e0623921a8763143bbcaef9f9098e6def650d1ff8138c'
             'edec8010f6f05126047ce8f9facf1c36a2c0480a0bac14469b8ffb31a7722625')
 
 prepare() {
-	cd "${_srcname}-${pkgver}"
-	patch -Np1 -i ../02-errors-to-stderr.patch
-	patch -Np1 -i ../04-fix-obsolete-LIBPNG_LDFLAGS.patch
-	patch -Np1 -i ../05-fix-plugin-loading.patch
+    cd "${_srcname}-${pkgver}"
+    patch -Np1 -i ../02-errors-to-stderr.patch
+    patch -Np1 -i ../04-fix-obsolete-LIBPNG_LDFLAGS.patch
+    patch -Np1 -i ../05-fix-plugin-loading.patch
 }
 
 build() {
-	cd "${_srcname}-${pkgver}"
-        ./configure \
-                --prefix=/usr \
-                --enable-static=no \
-                --enable-shared=yes \
-                --without-emf \
-                --without-magick \
-                --with-libplot \
-                --with-swf \
-                --with-pptx
-	make
+    cd "${_srcname}-${pkgver}"
+    ./configure \
+        --prefix=/usr \
+        --enable-static=no \
+        --enable-shared=yes \
+        --without-emf \
+        --without-magick \
+        --with-libplot \
+        --with-swf \
+        --with-pptx
+    make
 }
 
 package() {
-	cd "${_srcname}-${pkgver}"
-	make DESTDIR="$pkgdir/" install
+    cd "${_srcname}-${pkgver}"
+    make DESTDIR="$pkgdir/" install
 }
