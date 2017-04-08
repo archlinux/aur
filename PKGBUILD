@@ -1,7 +1,7 @@
 # Maintainer: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=ccat-git
-pkgver=r93.bf0f28e
+pkgver=r115.569fb0d
 pkgrel=1
 pkgdesc="Colorizes output for cat."
 arch=('any')
@@ -19,13 +19,19 @@ pkgver() {
 
 build() {
     cd "$srcdir/$pkgname"
+    mkdir -p "$srcdir/go"
+    export GOPATH="$srcdir/go"
+    go get github.com/mattn/go-colorable
+    go get github.com/spf13/cobra
+    go get github.com/mattn/go-isatty
+    go get github.com/sourcegraph/syntaxhighlight
     msg2 'Building ccat'
-    ./script/build
+    ./bin/build
 }
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
-  install -p -m755 $srcdir/$pkgname/ccat "$pkgdir/usr/bin"
+  install -p -m755 $srcdir/$pkgname/bin/ccat "$pkgdir/usr/bin"
   
   cd "$srcdir/$pkgname"
   mkdir -p $pkgdir/usr/share/licenses/$pkgname
