@@ -1,0 +1,26 @@
+diff --git a/bfast-0.7.0a/bfast/BLib.c b/bfast-0.7.0a/bfast/BLib.c
+index 45f1488..1894a6b 100644
+--- a/bfast-0.7.0a/bfast/BLib.c
++++ b/bfast-0.7.0a/bfast/BLib.c
+@@ -90,7 +90,7 @@ void ToLowerRead(char *r, int readLength)
+ }
+ 
+ /* TODO */
+-inline char ToUpper(char a)
++char ToUpper(char a)
+ {
+   if(97 <= a && a < 122) return (char)(a - 32);
+   return a;
+diff --git a/bfast-0.7.0a/bfast/BLib.h b/bfast-0.7.0a/bfast/BLib.h
+index 6c87810..c116899 100644
+--- a/bfast-0.7.0a/bfast/BLib.h
++++ b/bfast-0.7.0a/bfast/BLib.h
+@@ -16,7 +16,7 @@ int GetFastaHeaderLine(FILE*, char*);
+ int ParseFastaHeaderLine(char*);
+ char ToLower(char);
+ void ToLowerRead(char*, int);
+-inline char ToUpper(char);
++char ToUpper(char);
+ void ToUpperRead(char*, int);
+ void ReverseRead(char*, char*, int);
+ void ReverseReadFourBit(int8_t*, int8_t*, int);
