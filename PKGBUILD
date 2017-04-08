@@ -1,15 +1,15 @@
 # Maintainer: Remy Noel <mocramis@gmail.com>
 
 pkgname=opengotha
-pkgver=3.40.01
-pkgrel=2
+pkgver=3.44
+pkgrel=1
 pkgdesc="Go game tournaments management program"
 url="http://vannier.info/jeux/gotournaments/opengotha.htm"
 arch=('i686' 'x86_64')
 license=('GPLv2')
 depends=(java-environment java-runtime)
 source=(http://vannier.info/jeux/download/opengothaV$pkgver.zip 'opengotha.desktop' 'opengotha.sh')
-sha256sums=('95a7705c14a2b6179bfb95e9522692b6ac416995b807d0cbc3d88b9433c061a5'
+sha256sums=('32b284722a14441e0dbf7251da6fa3a6487ea883024c0c59352b154548d92582'
             'dd257f51c6902cd514f36ceaa771560fc2fe4e1268d0fc0ba5fdb94cdea4d58d'
             'f691a050dd5ecc5a23dc49580aec699b6bc48c62675b69ba8051b489287f7121')
 
