@@ -1,7 +1,7 @@
 # Contributor: Rasi <rasi@xssn.at>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=ncmpc-git
-pkgver=0.24.4.gd3fa466
+pkgver=0.27.6.g6305a54
 pkgrel=1
 pkgdesc="Fully featured MPD client using ncurses" 
 arch=('i686' 'x86_64')
