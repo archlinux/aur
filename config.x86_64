@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.10.8-1 Kernel Configuration
+# Linux/x86 4.10.9-1 Kernel Configuration
 #
 CONFIG_64BIT=y
 CONFIG_X86_64=y
@@ -5016,10 +5016,10 @@ CONFIG_DVB_HELENE=m
 # Graphics support
 #
 CONFIG_AGP=y
-# CONFIG_AGP_AMD64 is not set
+CONFIG_AGP_AMD64=m
 CONFIG_AGP_INTEL=m
-# CONFIG_AGP_SIS is not set
-# CONFIG_AGP_VIA is not set
+CONFIG_AGP_SIS=m
+CONFIG_AGP_VIA=m
 CONFIG_INTEL_GTT=m
 CONFIG_VGA_ARB=y
 CONFIG_VGA_ARB_MAX_GPUS=16

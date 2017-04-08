@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.10.8-1 Kernel Configuration
+# Linux/x86 4.10.9-1 Kernel Configuration
 #
 # CONFIG_64BIT is not set
 CONFIG_X86_32=y
@@ -4991,12 +4991,12 @@ CONFIG_AGP=y
 # CONFIG_AGP_ALI is not set
 # CONFIG_AGP_ATI is not set
 # CONFIG_AGP_AMD is not set
-# CONFIG_AGP_AMD64 is not set
+CONFIG_AGP_AMD64=m
 CONFIG_AGP_INTEL=m
 # CONFIG_AGP_NVIDIA is not set
-# CONFIG_AGP_SIS is not set
+CONFIG_AGP_SIS=m
 # CONFIG_AGP_SWORKS is not set
-# CONFIG_AGP_VIA is not set
+CONFIG_AGP_VIA=m
 # CONFIG_AGP_EFFICEON is not set
 CONFIG_INTEL_GTT=m
 CONFIG_VGA_ARB=y
