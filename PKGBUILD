@@ -6,6 +6,7 @@ arch=('any')
 license=('None')
 url='https://bg-software.net/dls/bgsync_${pkgver}-${pkgrel}_Arch.zip'
 depends=('mono')
+makedepends=('unzip')
 
 #sha256sums=('7fbf9b6f1c21d02dfaef0aea16443f473b44904705360c0469b66ceef434726e')
 
