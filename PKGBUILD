@@ -7,8 +7,8 @@
 
 _pkgname=instantclient-basic
 pkgname=oracle-${_pkgname}
-pkgver=12.1.0.2.0
-pkgrel=2
+pkgver=12.2.0.1.0
+pkgrel=1
 pkgdesc="Light replacement for the Oracle client (files to run OCI, OCCI and JDBC-OCI programs)"
 arch=('i686' 'x86_64')
 url="http://www.oracle.com/technetwork/database/features/instant-client/"
@@ -31,13 +31,13 @@ sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
 case "$CARCH" in
 	i686)
 		source[2]="manual://${_pkgname}-linux-$pkgver.zip"
-		md5sums[2]='a99eecba98e818b7e3b0a887e908dbe2'
-		sha256sums[2]='96d210d1ff9575022644a8817696ed9e90374d98cabd2631b7b458689ca7511d'
+		md5sums[2]='afc84c453dd143d6138baa1faf3e3a52'
+		sha256sums[2]='32f5a53bdaf65e87b176a68fa0097e2a5249952be6f4afc3e0ef80345591a9cf'
 		;;
 	x86_64)
 		source[2]="manual://${_pkgname}-linux.x64-$pkgver.zip"
-		md5sums[2]='d5ef30bc0506e0b0dae4dc20c76b8dbe'
-		sha256sums[2]='c4e1b7201f23bc855782157ebeaaa3635eb6f5f01189bc1d3335bbdadfcb1fbb'
+		md5sums[2]='d9639092e3dea2e023272e52e2bd42da'
+		sha256sums[2]='5015e3c9fba84e009f7519893f798a1622c37d1ae2c55104ff502c52a0fe5194'
 		;;
 esac
 
@@ -64,7 +64,7 @@ plain "[1]: http://www.oracle.com/technetwork/licenses/instant-client-lic-152016
 plain ""
 
 package() {
-	cd "$srcdir/instantclient_12_1/"
+	cd "$srcdir/instantclient_12_2/"
 	install -d "$pkgdir/usr/bin"
 	install -d "$pkgdir/usr/lib"
 	install -m 755 -t "$pkgdir/usr/bin" adrci genezi uidrvci
