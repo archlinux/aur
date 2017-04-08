@@ -5,14 +5,14 @@ pkgname=quake3-stereoquake
 pkgver=1
 pkgrel=2
 pkgdesc="Stereogram mod for Quake 3"
-url="http://stereoquake.planetquake.gamespy.com/"
+url="https://web-beta.archive.org/web/20081015212407/http://stereoquake.planetquake.gamespy.com"
 license=('custom')
 arch=('any')
 depends=('quake3' 'sh')
 conflicts=('stereoquake')
 replaces=('stereoquake')
 source=("quake3-stereoquake.desktop" "quake3-stereoquake.launcher" \
-"http://games.mirrors.tds.net/pub/planetquake3/modifications/stereoquake.zip")
+"ftp://sourceforge.mirrorservice.org/sites/quakeunity.com/modifications/stereoquake.zip")
 sha256sums=('6a917b79ba3d8d3f16d5ae9cd331ab0be096d29b0776c3019d091f8ab13db160'
             '03ff6af0fd0d9fe51cde77f9a06b631bb13545a31b86d270e102d05683945b97'
             '17218fb46476acf215cce97c760c3fe6729bf100ce5594217e22d15a025d4b72')
