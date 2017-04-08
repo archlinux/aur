@@ -1,30 +1,27 @@
 pkgname=lumail2
-pkgver=2.8
-pkgrel=2
+pkgver=2.9
+pkgrel=1
 pkgdesc="Console-based mail-client with integrated Lua scripting support"
 arch=('i686' 'x86_64')
 url="https://lumail.org"
 license=('GPL')
-depends=('lua' 'gmime' 'file' 'ncurses' 'pcre')
-makedepends=('gcc')
-provides=('lumail2')
-source=(\
-  "https://github.com/lumail/lumail2/archive/release-${pkgver}.tar.gz" \
-  "Makefile.replace")
-md5sums=(SKIP SKIP)
-_src="${pkgname}-release-${pkgver}"
-
-prepare(){
-  # Remove in next lumail release; has been fixed upstream.
-  cp Makefile.replace "$_src"/Makefile
-}
+depends=('lua' 'gmime' 'file' 'perl')
+source=("https://lumail.org/download/lumail-$pkgver.tar.gz"{,.asc})
+validpgpkeys=('D516C42B1D0E3F854CAB97231909D4080C626242') # Steve Kemp
+sha256sums=('4c0b2a6c0c8958fad261ca1a3ab1ab14822e484182821c1a23db0c16172dd1e6'
+            'SKIP')
 
 build() {
-	cd "$_src"
-	make LUA_VERSION=5.3 LVER=lua
+  cd lumail-$pkgver
+  make LUA_VERSION=5.3 LVER=lua
+}
+
+check() {
+  cd lumail-$pkgver
+  ./lumail2 --test
 }
 
 package() {
-	cd "$_src"
-	make DESTDIR="$pkgdir/" install
+  cd lumail-$pkgver
+  make DESTDIR="$pkgdir" install
 }
