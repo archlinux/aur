@@ -1,9 +1,10 @@
-# Maintainer: redfish <redfish at galactica.pw>
+# Maintainer: tuxayo <victor àt tuxayo dôt net>
+# Contributor: redfish <redfish at galactica.pw>
 # Contributor: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoind-unlimited-git
-pkgver=0.12.1
+pkgver=1.0.1.3
 pkgrel=1
 pkgdesc="Bitcoin Unlimited versions of bitcoind, bitcoin-cli, and bitcoin-tx"
 arch=('i686' 'x86_64' 'armv7h')
@@ -22,7 +23,7 @@ makedepends=('autoconf'
              'make'
              'pkg-config')
 license=('MIT')
-source=(git+https://github.com/BitcoinUnlimited/BitcoinUnlimited.git#branch=0.12.1bu
+source=(git+https://github.com/BitcoinUnlimited/BitcoinUnlimited.git#tag=1.0.1.3
         bitcoin.conf
         bitcoin.logrotate)
 sha256sums=('SKIP'
