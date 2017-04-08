@@ -1,33 +1,34 @@
-# Maintainer: zoe <chp321 AT gmail DOT com>
-# Contributor: Cilyan Olowen <gaknar@gmail.com>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=etoys
 pkgver=5.0.2408
-_realver=5.0.2408
-pkgrel=2
-pkgdesc="Educational tool for teaching children powerful ideas in compelling ways. For Sugar"
-arch=('i686' 'x86_64')
-url="http://www.sugarlabs.org/"
-license=('GPL')
-groups=('sucrose' 'glucose')
-depends=('sugar' 'squeak-vm' 'shared-mime-info')
-install=etoys.install
-source=("http://download.sugarlabs.org/sources/sucrose/glucose/${pkgname}/${pkgname}-${_realver}.tar.gz"
-        "${pkgname}.desktop" "${pkgname}.png")
-md5sums=('c79ee59d8e100cfc2934af8da90519b5'
-         '14de8b52fee032ad3065cf52a1eddb8c'
-         '78db4db90ebf3bee26d66758096dcaa5')
+pkgrel=1
+pkgdesc="Educational tool and media-rich authoring environment for teaching children"
+arch=('any')
+url="http://squeakland.org/"
+license=('Apache' 'MIT')
+depends=('squeak-vm')
+source=(http://download.sugarlabs.org/sources/sucrose/glucose/$pkgname/$pkgname-$pkgver.tar.gz
+        etoys.desktop)
+sha256sums=('65e89d6367fd9ac6a7ef9b017922510dcfcbd13c6f1417c7e6672877559c4f4f'
+            'cf9a73302eb9c69177e190a90714477f5fed8a478a5513256ac92f1b0b397774')
+
+prepare() {
+  cd $pkgname-$pkgver
+  sed -i 's@^#!.*python$@#!/usr/bin/python2@' setup.py
+}
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  PYTHON=python2 ./configure --prefix=/usr --sysconfdir=/etc || return 1
-  make || return 1
+  cd $pkgname-$pkgver
+  ./configure --prefix=/usr
 }
 
 package() {
-  install -DTm644 ${srcdir}/${pkgname}.png     "${pkgdir}/usr/share/icons/hicolor/80x80/apps/${pkgname}.png"
-  install -DTm644 ${srcdir}/${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make ROOT="$pkgdir" install-etoys install-activity || return 1
+  cd $pkgname-$pkgver
+  make ROOT="$pkgdir" install-etoys
+
+  install -Dm644 ../etoys.desktop "$pkgdir/usr/share/applications/etoys.desktop"
+  install -Dm644 activity-etoys.svg "$pkgdir/usr/share/pixmaps/etoys.svg"
+  install -dm755 "$pkgdir"/usr/share/licenses/$pkgname
+  ln -s ../../doc/etoys/NOTICE "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
 }

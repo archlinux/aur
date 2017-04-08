@@ -1,10 +1,9 @@
 [Desktop Entry]
-Encoding=UTF-8
-Exec=etoys
-Name=eToys
-GenericName=Educational tool for teaching children
-Comment=Educational tool for teaching children powerful ideas in compelling ways. For Sugar
-Icon=/usr/share/icons/hicolor/80x80/apps/etoys.png
-Terminal=false
 Type=Application
-Categories=Education
+Name=Etoys
+Comment=Media-rich authoring environment
+Exec=etoys
+Terminal=false
+Icon=etoys
+StartupWMClass=squeak
+Categories=Development;
