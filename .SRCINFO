@@ -1,6 +1,6 @@
 pkgbase = python-pytvmaze
 	pkgdesc = Python interface to the TV Maze API
-	pkgver = 0.1
+	pkgver = r401.16ed096
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/pytvmaze
 	arch = any

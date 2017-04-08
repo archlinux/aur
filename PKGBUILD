@@ -1,7 +1,7 @@
 # Maintainer: LinArcX <Linarcx at gmail . com>
 
 pkgname=python-pytvmaze
-pkgver=0.1
+pkgver=r401.16ed096
 pkgrel=1
 pkgdesc="Python interface to the TV Maze API "
 arch=(any)
