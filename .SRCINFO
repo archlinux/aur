@@ -1,0 +1,16 @@
+pkgbase = eslint-plugin-node
+	pkgdesc = Additional eslint rules for node
+	pkgver = 4.2.2
+	pkgrel = 1
+	url = https://github.com/mysticatea/eslint-plugin-react
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = eslint
+	noextract = eslint-plugin-node-4.2.2.tgz
+	source = http://registry.npmjs.org/eslint-plugin-node/-/eslint-plugin-node-4.2.2.tgz
+	md5sums = 8da5ff5a455ad21e32778a909ea6648d
+
+pkgname = eslint-plugin-node
+
