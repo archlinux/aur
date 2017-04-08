@@ -4,7 +4,7 @@ pkgname=quake3-defrag-maps
 pkgver=20091031
 pkgrel=1
 pkgdesc='Map packs for the DeFRaG Quake3 modification.'
-url='http://defrag.planetquake.gamespy.com/'
+url='https://q3df.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('quake3-defrag')
@@ -38,13 +38,13 @@ md5sums=('a3f16d49be8db65b57fb061cbef42a82'
          'fdb9687cbbb5507259c089dfbb3349f0')
 
 build() {
-	cd $srcdir
+    cd $srcdir
 
     # Create Destination Directories
     install -d $pkgdir/opt/quake3/defrag/
 
-	# Install Map Packs
-	for i in $(ls defrag{pak,cpmpak}*.zip); do
-		/usr/bin/unzip -j $i -d $pkgdir/opt/quake3/defrag/
-	done
+    # Install Map Packs
+    for i in $(ls defrag{pak,cpmpak}*.zip); do
+        /usr/bin/unzip -j $i -d $pkgdir/opt/quake3/defrag/
+    done
 }
