@@ -44,7 +44,7 @@
 pkgbase=ttf-ms-win10
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
 pkgver=10.0.15063
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=(custom)
@@ -70,6 +70,7 @@ corbel.ttf     corbelb.ttf    corbeli.ttf    corbelz.ttf    # Corbel
 framd.ttf                     framdit.ttf                   # Franklin Gothic Medium
 Gabriola.ttf                                                # Gabriola
 georgia.ttf    georgiab.ttf   georgiai.ttf   georgiaz.ttf   # Georgia
+holomdl2.ttf                                                # HoloLens MDL2 Assets
 impact.ttf                                                  # Impact
 lucon.ttf                                                   # Lucida Console
 l_10646.ttf                                                 # Lucida Sans Unicode
@@ -226,6 +227,7 @@ sha256sums=('a5b0e3e1e7e37358efa05491b085a4b26cf9c5a76b281bd0dbfc1e4bd41f3955'
             'c9d69e4e496ea776edfcb4e6f6d770985dd87b2b64b84db733f57f6303f67f8c'
             '9f73a2514fc1b5600f20f2747c718ffd648e0f7f67b7b13934aa2976cf085e00'
             '57b79bb853762ffbe633ce8ecbcf8c0b71a596c38ce7fd273b6455b6ca5799b8'
+            'c2c3a4146ac080945670eb6b0c4961b26467c797e8497367ac8611cbc3955559'
             '46f37a3fad41732fad28a6428967f04d2c543427cb146263c2c333d12c8da1b8'
             '0191be2cd860ce2020ed86168c74c0896b74175b2c1a37f53522c7645d566d28'
             '54508069dacc0a407831cbcb8cc8d7dd7abf8f79aa1da5a0e55d7dc63e7220fd'
