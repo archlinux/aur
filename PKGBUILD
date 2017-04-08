@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc='Synchronization Tool'
 arch=('any')
 license=('None')
-url='https://bg-software.net/dls/bgsync_${pkgver}-${pkgrel}_Arch.zip'
+source='https://bg-software.net/dls/bgsync_${pkgver}-${pkgrel}_Arch.zip'
 depends=('mono')
 makedepends=('unzip')
 
