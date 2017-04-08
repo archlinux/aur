@@ -5,12 +5,12 @@
 _srcname="pstoedit"
 pkgname=pstoedit-nomagick
 pkgver=3.70
-pkgrel=4
+pkgrel=5
 pkgdesc="Translates PS/PDF graphics to other vector formats (no ImageMagick dependency)"
 arch=('i686' 'x86_64')
 url="http://www.pstoedit.net/"
 license=('GPL2')
-depends=('gd' 'ming' 'libzip' 'plotutils' 'ghostscript')
+depends=('gd' 'ming' 'libzip' 'plotutils' 'ghostscript' 'libemf')
 provides=('pstoedit' 'libpstoedit.so')
 conflicts=('pstoedit')
 source=("https://sourceforge.net/projects/pstoedit/files/pstoedit/${pkgver}/${_srcname}-${pkgver}.tar.gz"
@@ -36,7 +36,7 @@ build() {
         --prefix=/usr \
         --enable-static=no \
         --enable-shared=yes \
-        --without-emf \
+        --with-emf \
         --without-magick \
         --with-libplot \
         --with-swf \
@@ -46,5 +46,5 @@ build() {
 
 package() {
     cd "${_srcname}-${pkgver}"
-    make DESTDIR="$pkgdir/" install
+    make DESTDIR="$pkgdir" install
 }
