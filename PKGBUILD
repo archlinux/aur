@@ -4,7 +4,7 @@ pkgname=quake4
 pkgver=1.4.2
 pkgrel=3
 pkgdesc="Quake 4 Engine. You need the retail .pk4 files to play."
-url="http://www.quake4game.com/"
+url="https://web.archive.org/web/20061205073314/http://www.idsoftware.com/games/quake/quake4/"
 license=('custom:"Quake 4"' \
          'custom:"PunkBuster"')
 if [ "$CARCH" = "x86_64" ]; then
@@ -17,12 +17,12 @@ fi
 arch=('i686' 'x86_64')
 install=quake4.install
 source=('quake4.desktop' 'quake4.launcher' 'quake4-dedicated.launcher' 'quake4-smp.launcher' \
-"http://www.1337-server.net/quake4/quake4-linux-${pkgver}.x86.run.gz")
+"http://www.slashbunny.com/aur/quake4/quake4-linux-${pkgver}.x86.run")
 sha256sums=('8d2ff5eb71ebf7ffef321097bc74e97755e5e510985df75863dd22cdf5a3ec2e'
             '667992139f08d3496c96ac02d15b830370ae14bcc15cc8e65ded4c58036d3f23'
             'cfb3353c8c9d8be8a9a32ba05a48dca7c2125cef20159b85de7135c78a950e73'
             '62ba170609ca961430e39f7a24e23e1a3b28376e42f779e7e28714868d7758d1'
-            'cc8d3b7279cce790d4c594931d21080509b1e2d7297f7a797544606cecf057b6')
+            '9203b387b1a4075a1b9ad1eb7be32b49a88141a448d9330d9cbe1f40a145bd6a')
 
 package() {
     cd "${srcdir}"
