@@ -12,7 +12,7 @@
 
 pkgname=mpv-full-git
 pkgver=0.23.0.r154.g9c90c902c1
-pkgrel=2
+pkgrel=3
 pkgdesc='A free, open source, and cross-platform media player (Git version with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -36,7 +36,7 @@ source=("$pkgname"::'git+https://github.com/mpv-player/mpv.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
+    cd "$pkgname"
     
     local _version="$(git tag | sort -Vr | head -n1 | sed 's/^v//')"
     local _revision="$(git rev-list v${_version}..HEAD --count)"
@@ -46,7 +46,7 @@ pkgver() {
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "$pkgname"
     
     # Add CUDA to the build if architecture is x86_64
     if [ "$CARCH" = "x86_64" ] 
@@ -175,7 +175,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "$pkgname"
     
     ./waf install --destdir="$pkgdir"
     
