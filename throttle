@@ -44,7 +44,7 @@ while (( "$#" )); do
           AAM="128"
           CONTROL="auto"
           AUTOSUSPEND="1"
-          DISKAUTOSUSPEND="30000"
+          DISKAUTOSUSPEND="60000"
           POWERSAVE="1"
           CONTROLLER="Y"
           WLPOWERSAVE="on"
