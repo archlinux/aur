@@ -2,8 +2,8 @@
 # Maintainer: Mladen Pejaković <pejakm at autistici dot org>
 
 pkgname=hunspell-sr
-pkgver=20140313
-_git=e1ff02b45c8e133a617a1c98cae146299bc0d4de
+pkgver=20170408
+_git=acb1ebbcc60216a927622dfb6ceda8f067161f27
 pkgrel=1
 pkgdesc="Serbian Cyrillic and Latin hunspell dictionaries"
 arch=(any)
@@ -11,7 +11,7 @@ url="https://github.com/grakic/hunspell-sr"
 license=('GPL' 'LGPL' 'MPL' 'CC BY-SA 3.0 Unported')
 optdepends=('hunspell:	the spell checking libraries and apps')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/grakic/hunspell-sr/archive/${_git}.tar.gz")
-sha1sums=('aa2f25f4f1dfcbc9d50d32fe63d07062eaa7054c')
+sha256sums=('867fb47cc588a8466e5fbfdb013d9f71f842227777bc8e432269315b063dc7d8')
 
 build() {
  /bin/true
