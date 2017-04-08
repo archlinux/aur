@@ -14,7 +14,7 @@ package() {
 	install -d "${pkgdir}/usr/bin"
 	install -d "${pkgdir}/usr/lib/bgsync"
 	
-	install -Dm755 "${srcdir}/bin/bgsync" "${pkgdir}/bin/bgsync"
+	install -Dm755 "${srcdir}/usr/bin/bgsync" "${pkgdir}/usr/bin/bgsync"
 	install -Dm755 "${srcdir}/lib/systemd/system/bgsync.service" "${pkgdir}/lib/systemd/system/bgsync.service"
 	install -Dm755 "${srcdir}/usr/lib/bgsync/bgsync.exe" "${pkgdir}/usr/lib/bgsync/bgsync.exe"
 	install -Dm755 "${srcdir}/usr/lib/bgsync/bgsync.service" "${pkgdir}/usr/lib/bgsync/bgsync.service"
