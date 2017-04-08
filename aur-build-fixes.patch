@@ -231,7 +231,7 @@ diff --git a/Telegram/gyp/Telegram.gyp b/Telegram/gyp/Telegram.gyp
 index fb22932c..f4743e15 100644
 --- a/Telegram/gyp/Telegram.gyp
 +++ b/Telegram/gyp/Telegram.gyp
-@@ -77,24 +77,16 @@
+@@ -78,24 +78,16 @@
        'codegen.gyp:codegen_style',
        'codegen.gyp:codegen_numbers',
        'codegen.gyp:MetaLang',
@@ -289,7 +289,7 @@ index a3212210..213723c5 100644
              }]
            ]
          },
-@@ -85,31 +81,12 @@
+@@ -85,31 +81,11 @@
              ],
            }],
            [ 'build_linux', {
@@ -317,6 +317,7 @@ index a3212210..213723c5 100644
 -              'fontconfig',
 -              'expat',
 -              'freetype',
+-              'z',
 -              'xcb-shm',
 -              'xcb-xfixes',
 -              'xcb-render',
@@ -450,7 +451,7 @@ index b42e7443..71e39897 100644
        '/usr/local/lib',
        '<(linux_path_ffmpeg)/lib',
        '<(linux_path_openal)/lib',
-@@ -50,30 +52,19 @@
+@@ -50,30 +52,18 @@
        '<(linux_path_breakpad)/lib',
      ],
      'libraries': [
@@ -478,7 +479,6 @@ index b42e7443..71e39897 100644
 +      'swresample',
 +      'swscale',
 +      'avutil',
-+      'z',
 +      'minizip',
  #      '<!(pkg-config 2> /dev/null --libs <@(pkgconfig_libs))',
      ],
@@ -494,7 +494,7 @@ diff --git a/Telegram/gyp/telegram_sources.txt b/Telegram/gyp/telegram_sources.t
 index 01f08e35..51c72634 100644
 --- a/Telegram/gyp/telegram_sources.txt
 +++ b/Telegram/gyp/telegram_sources.txt
-@@ -511,14 +511,7 @@
+@@ -522,14 +522,7 @@
  <(src_loc)/structs.cpp
  <(src_loc)/structs.h
  
