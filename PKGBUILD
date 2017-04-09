@@ -3,7 +3,7 @@
 # Contributor: Martchus <martchus@gmx.net>
 
 pkgname=networkmanager-sstp
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="SSTP support for NetworkManager"
 arch=('i686' 'x86_64')
@@ -14,12 +14,12 @@ optdepends=('ppp>=2.4.6')
 options=()
 makedepends=('git' 'intltool' 'ppp>=2.4.6' 'gawk' 'python')
 provides=('networkmanager-sstp')
-source=("https://sourceforge.net/projects/sstp-client/files/network-manager-sstp/${pkgver}/NetworkManager-sstp-${pkgver}.tar.bz2")
-sha1sums=('495949392d2d4a16cded5e1e46a7007762defb08')
+source=("https://github.com/enaess/network-manager-sstp/archive/release-${pkgver}.tar.gz")
+sha1sums=('35ba2babb265015b71aa996425b0960487f2d67d')
 
 build() {
   pppd_version=(`pppd --version 2>&1 | awk '{print $3}'`)
-  cd "${srcdir}/NetworkManager-sstp-${pkgver}"
+  cd "${srcdir}/network-manager-sstp-release-${pkgver}"
 
   autoreconf --install &&
   intltoolize --force &&
@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/NetworkManager-sstp-${pkgver}"
+  cd "${srcdir}/network-manager-sstp-release-${pkgver}"
 
   make DESTDIR="${pkgdir}/" install
 }
