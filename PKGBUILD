@@ -6,8 +6,8 @@
 
 _pkgname=instantclient-odbc
 pkgname=oracle-${_pkgname}
-pkgver=12.1.0.2.0
-pkgrel=2
+pkgver=12.2.0.1.0
+pkgrel=1
 pkgdesc="Additional libraries for enabling ODBC applications with Instant Client"
 arch=('i686' 'x86_64')
 url="http://www.oracle.com/technetwork/database/features/instant-client/"
@@ -28,13 +28,13 @@ sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2')
 case "$CARCH" in
 	i686)
 		source[1]="manual://${_pkgname}-linux-$pkgver.zip"
-		md5sums[1]='967dd2db0e482186c89423aecbdd8e67'
-		sha256sums[1]='bc686e56f544d465797a710af8ac39f49cfee1da13e4124dd080b13e49c6e573'
+		md5sums[1]='6be26ef53189faa8a622fd0a80bb7473'
+		sha256sums[1]='d6794428265756c72074c46d1fcb66f45d79600cb80954d7203c84b9fc0b7055'
 		;;
 	x86_64)
 		source[1]="manual://${_pkgname}-linux.x64-$pkgver.zip"
-		md5sums[1]='30c72d4bca33084dcafe466ab1a7c399'
-		sha256sums[1]='ba2b50f8386b971b948b338ba2552b93511a1f515053a990dfb365d9bef35cba'
+		md5sums[1]='a047b8e637624b76b80d07fd8a9f1baf'
+		sha256sums[1]='ead4f196080125114c6eb0c773f516c832bd55435b5eaba2fc9362dd0742f78b'
 		;;
 esac
 
@@ -61,7 +61,7 @@ plain "[1]: http://www.oracle.com/technetwork/licenses/instant-client-lic-152016
 plain ""
 
 package() {
-	local basedir="$srcdir/instantclient_12_1"
+	local basedir="$srcdir/instantclient_12_2"
 	install -d "$pkgdir/usr/lib"
 	install -m 755 -t "$pkgdir/usr/lib" "$basedir/"*.so.*
 
