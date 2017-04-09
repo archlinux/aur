@@ -2,7 +2,7 @@
 
 pkgname=nostromo
 pkgver=1.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, fast, and secure HTTP server'
 arch=('i686' 'x86_64')
 url='http://www.nazgul.ch/dev_nostromo.html'
@@ -20,10 +20,10 @@ source=(http://www.nazgul.ch/dev/$pkgname-$pkgver.tar.gz
         $pkgname.install
         LICENSE)
 sha1sums=('6f3d8ebc15486398f819ac55a9d2a9ac14c3b35e'
-         '57eee54e5ba9f0ee60cceae13ba96d060f870812'
+         'd47c953e2926d3b2ae8b8b98f522bdd6d2b75f95'
          'a0069cb13614bee9b3bef76188597de3948be71d'
-         '4ac52e8978c2f5222f58f01e1e2ec255978f1ade'
-         '73d871a104e7c1c5e197961dee96f33b0909c41e'
+         '82a1be1c2d481b107a9944fcb0f2e3ed7371a875'
+         '24c57e0fb9ceea3452475898dbe2b0c59c49368e'
          'e5abcccacf9d1c9136e55de2cc0dceaabdb02ec1')
 
 prepare() {
