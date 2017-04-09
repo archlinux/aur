@@ -1,7 +1,7 @@
 
 # Maintainer: Juan Toca <elan17.programacion@gmail.com>
 pkgname=snakes-git
-pkgver=1.0
+pkgver=r43.d467734
 pkgrel=1
 pkgdesc="Snake-based ZPG game"
 arch=('any')
@@ -21,7 +21,8 @@ noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-   date +%Y%m%d
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
