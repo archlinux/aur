@@ -27,7 +27,7 @@ sha256sums=('7d92579cf87bbde2325e641b674b6c340fd27ee28a8ffe4c03e527e9a4307d88'
             '9aa55c4a27025b40a1573b3b09a59f48709dfa5ac637ef6a059fd8157d20192b')
 
 prepare() {
-  mkdir "$srcdir"/fritzing-app-${pkgver}/parts
+  mkdir -p "$srcdir"/fritzing-app-${pkgver}/parts
   mv "$srcdir"/fritzing-parts-${partsrev}/* "$srcdir"/fritzing-app-${pkgver}/parts
 
   cd "$srcdir"/fritzing-app-${pkgver}
