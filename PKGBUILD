@@ -13,8 +13,8 @@ makedepends=('cmake' 'extra-cmake-modules' 'kdoctools' 'kdesignerplugin')
 source=("http://download.kde.org/stable/labplot/${pkgver}/labplot-${pkgver}-kf5.tar.xz"
 	"labplot-kf5.install")
 md5sums=('fe7cdefc5abfae5321b77973450aaa1d'
-         '7dd4a598d34b8e21411dec1247752d99'
-	 '9b8604aef63cb22ba56accf9448d3ad3')
+         '7dd4a598d34b8e21411dec1247752d99')
+	 
 install='labplot-kf5.install'
 
 prepare() {
