@@ -1,0 +1,86 @@
+# The original resolver fails if IPv6 is being used. This patch fixes that by using a pipe to call
+# dig. Only an A record is returned.
+--- resolver.bi	2009-11-18 14:41:16.000000000 -0500
++++ resolver.bi.b	2017-04-09 16:17:31.782515682 -0400
+@@ -7,69 +7,19 @@ REM one of the following error codes:
+ REM  !1 - Failed to resolve host
+ REM
+ 
+-
+-PRIVATE FUNCTION IntegerToIp(RawIpAddress AS ULONGINT) AS STRING
+-  DIM AS ULONGINT Digit1, Digit2, Digit3, Digit4
+-  DIM AS STRING Result
+-  Digit1 = (RawIpAddress AND &b00000000000000000000000011111111)
+-  Digit2 = (RawIpAddress AND &b00000000000000001111111100000000) shr 8
+-  Digit3 = (RawIpAddress AND &b00000000111111110000000000000000) shr 16
+-  Digit4 = (RawIpAddress AND &b11111111000000000000000000000000) shr 24
+-  Result = "" & Digit1 & "." & Digit2 & "." & Digit3 & "." & Digit4
+-  RETURN Result
+-END FUNCTION
+-
+-
+ FUNCTION Resolver(SomeDomain AS STRING) AS STRING
+-  REM  Check the internal DNS cache...
+-  STATIC DnsCacheTable(1 TO 2, 1 TO 20) AS STRING ' 1=Domains 2=IPs
+-  STATIC DnsCacheTableTTL(1 TO 20) AS DOUBLE
+-  DIM AS STRING Result
+-  DIM AS BYTE x, y
+-  DIM AS INTEGER MaxTTL = 600
+-  DIM CurTTL AS INTEGER
+-  DIM AS STRING CurIP, CurDomainName
+-  DIM AS ULONGINT RawIpAddress
+-  IF LEN(SomeDomain) > 0 THEN
+-    FOR x = 1 TO 20
+-      IF LCASE(DnsCacheTable(1, x)) = LCASE(SomeDomain) AND ABS(TIMER - DnsCacheTableTTL(x)) < MaxTTL THEN
+-        CurDomainName = DnsCacheTable(1, x)
+-        CurIP = DnsCacheTable(2, x)
+-        CurTTL = DnsCacheTableTTL(x)
+-        Result = CurIP
+-        FOR y = x TO 19
+-          DnsCacheTable(1, y) = DnsCacheTable(1, y + 1)
+-          DnsCacheTable(2, y) = DnsCacheTable(2, y + 1)
+-          DnsCacheTableTTL(y) = DnsCacheTableTTL(y + 1)
+-        NEXT y
+-        FOR y = 20 TO 2 STEP -1
+-          DnsCacheTable(1, y) = DnsCacheTable(1, y - 1)
+-          DnsCacheTable(2, y) = DnsCacheTable(2, y - 1)
+-          DnsCacheTableTTL(y) = DnsCacheTableTTL(y - 1)
+-        NEXT y
+-        DnsCacheTable(1, 1) = CurDomainName
+-        DnsCacheTable(2, 1) = CurIP
+-        DnsCacheTableTTL(1) = CurTTL
+-      END IF
+-    NEXT x
+-  END IF
++  DIM AS INTEGER f = freefile( )
++  DIM AS STRING Answer
+ 
+-  IF LEN(Result) = 0 THEN ' Entry wasn't present in cache
+-    RawIpAddress = Resolve(SomeDomain)
+-    IF RawIpAddress = 4294967295 OR RawIpAddress = 0 THEN
+-        Result = "!1"
+-      ELSE
+-        CurIP = IntegerToIp(RawIpAddress)
+-        Result = CurIP
+-        FOR y = 20 TO 2 STEP -1
+-          DnsCacheTable(1, y) = DnsCacheTable(1, y - 1)
+-          DnsCacheTable(2, y) = DnsCacheTable(2, y - 1)
+-          DnsCacheTableTTL(y) = DnsCacheTableTTL(y - 1)
+-        NEXT y
+-        DnsCacheTable(1, 1) = LCASE(SomeDomain)
+-        DnsCacheTable(2, 1) = CurIP
+-        DnsCacheTableTTL(1) = TIMER
++  OPEN PIPE "dig A +short " & SomeDomain FOR INPUT AS #f
++    DIM AS STRING Rec
++    LINE INPUT #f, Rec
++    IF Rec = "" THEN
++      Answer = "!1"
++    ELSE
++      Answer = Rec
+     END IF
+-  END IF
+-  RETURN Result
++  CLOSE #f
++
++  RETURN Answer
+ END FUNCTION
