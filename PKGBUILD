@@ -6,8 +6,8 @@
 
 _pkgname=instantclient-sqlplus
 pkgname=oracle-${_pkgname}
-pkgver=12.1.0.2.0
-pkgrel=2
+pkgver=12.2.0.1.0
+pkgrel=1
 pkgdesc="SQL*Plus for Oracle Instant Client"
 arch=('i686' 'x86_64')
 url="http://www.oracle.com/technetwork/database/features/instant-client/"
@@ -28,13 +28,13 @@ sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2')
 case "$CARCH" in
 	i686)
 		source[1]="manual://${_pkgname}-linux-$pkgver.zip"
-		md5sums[1]='95e31bfb4b7fee73134e726fe168de04'
-		sha256sums[1]='03062efdb88423342657a679760581af14d936a897647bddcf248453bb01105f'
+		md5sums[1]='3c9a3ec6172f620a065ee8bc68c408bf'
+		sha256sums[1]='c289ceaa6196e44a6e85d7342c9440b25c237018f6a1bdadb72d7cc2075f504c'
 		;;
 	x86_64)
 		source[1]="manual://${_pkgname}-linux.x64-$pkgver.zip"
-		md5sums[1]='f165280723ff1c96f825ba62c63b65cf'
-		sha256sums[1]='b52a7fca7279d4e9584674ea6f24464411f62f6ba95a2a16ec92979e99cac4bd'
+		md5sums[1]='93ae87df1d08bb31da57443a416edc8c'
+		sha256sums[1]='d49b2bd97376591ca07e7a836278933c3f251875c215044feac73ba9f451dfc2'
 		;;
 esac
 
@@ -61,7 +61,7 @@ plain "[1]: http://www.oracle.com/technetwork/licenses/instant-client-lic-152016
 plain ""
 
 package() {
-	local basedir="$srcdir/instantclient_12_1"
+	local basedir="$srcdir/instantclient_12_2"
 	install -d "$pkgdir/usr/bin"
 	install -d "$pkgdir/usr/lib"
 	install -m 755 -t "$pkgdir/usr/bin" "$basedir/sqlplus"
