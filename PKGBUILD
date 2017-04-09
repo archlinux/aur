@@ -16,7 +16,7 @@ _autologin='true'
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git-no-sqlcipher
-pkgver=v0.6.2.r18.gca0521cb2
+pkgver=v0.6.2.r47.g4067c9576
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
