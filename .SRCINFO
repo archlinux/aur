@@ -1,7 +1,7 @@
 pkgbase = openttd-svn
 	pkgdesc = An engine for running Transport Tycoon Deluxe (latest SVN build)
 	pkgver = r27849
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openttd.org
 	arch = i686
 	arch = x86_64

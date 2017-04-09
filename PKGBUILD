@@ -2,7 +2,7 @@
 
 pkgname=openttd-svn
 pkgver=r27849
-pkgrel=1
+pkgrel=2
 pkgdesc='An engine for running Transport Tycoon Deluxe (latest SVN build)'
 arch=('i686' 'x86_64')
 url='http://openttd.org'
