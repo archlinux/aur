@@ -1,0 +1,20 @@
+pkgbase = arc-osx-icon-theme-git
+	pkgdesc = Modern free desktop icon theme whose design is based around the use of bold colours and simple geometric shapes
+	pkgver = 1.0.0.r10.g3757199
+	pkgrel = 1
+	url = https://github.com/LinxGem33/Arc-OSX-Icons
+	arch = any
+	license = GPL3
+	license = CC-BY-SA-4.0
+	makedepends = git
+	depends = gtk-update-icon-cache
+	provides = arc-osx-icon-theme
+	provides = paper-icon-theme
+	conflicts = arc-osx-icon-theme
+	conflicts = paper-icon-theme
+	options = !strip
+	source = arc-osx-icon-theme::git+https://github.com/LinxGem33/Arc-OSX-Icons.git
+	md5sums = SKIP
+
+pkgname = arc-osx-icon-theme-git
+
