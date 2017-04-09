@@ -1,0 +1,11 @@
+post_install() {
+  post_upgrade $1
+}
+
+post_upgrade() {
+  if ! getent passwd nostromo >/dev/null; then
+    useradd --system -c 'nostromo web server user' -g daemon -d /usr/share/nostromo/htdocs -s /sbin/nologin nostromo
+  fi
+  chown -R nostromo:daemon /usr/share/nostromo/htdocs
+  chown -R nostromo:daemon /usr/share/nostromo/logs
+}

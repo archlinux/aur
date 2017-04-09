@@ -1,0 +1,13 @@
+[Unit]
+Description=Nostromo - A simple, fast, and secure HTTP server
+After=network.target
+
+[Service]
+Type=forking
+PrivateDevices=yes
+ExecStart=/usr/bin/nhttpd
+ExecReload=/bin/kill -HUP $MAINPID
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,249 @@
+diff -rupN nostromo-1.9.6/conf/nhttpd.conf-dist nostromo-1.9.6b/conf/nhttpd.conf-dist
+--- nostromo-1.9.6/conf/nhttpd.conf-dist	2016-04-12 14:54:16.000000000 -0400
++++ nostromo-1.9.6b/conf/nhttpd.conf-dist	2017-04-09 00:15:35.431740659 -0400
+@@ -2,14 +2,14 @@
+ 
+ # MAIN [MANDATORY]
+ 
+-servername		www.nazgul.ch
+-#servername		www.nazgul.ch:8080
++servername		localhost
++#servername		localhost:8080
+ serverlisten		*
+ #serverlisten		81.221.21.250 127.0.0.1 ::1
+ serveradmin		webmaster@nazgul.ch
+-serverroot		/var/nostromo
+-servermimes		conf/mimes
+-docroot			/var/nostromo/htdocs
++serverroot		/usr/share/nostromo
++servermimes		/etc/nostromo/conf/mimes
++docroot			/usr/share/nostromo/htdocs
+ docindex		index.html
+ 
+ # LOGS [OPTIONAL]
+@@ -19,12 +19,12 @@ logaccess		logs/access_log
+ 
+ # SETUID [RECOMMENDED]
+ 
+-user			_nostromo
++user			nostromo
+ 
+ # BASIC AUTHENTICATION [OPTIONAL]
+ 
+ #htaccess		.htaccess
+-#htpasswd		/var/nostromo/conf/.htpasswd
++#htpasswd		/etc/nostromo/conf/.htpasswd
+ #htpasswd		+bsdauth
+ #htpasswd		+bsdauthnossl
+ 
+@@ -44,12 +44,12 @@ user			_nostromo
+ 
+ # ALIASES [OPTIONAL]
+ 
+-/icons			/var/nostromo/icons
++/icons			/usr/share/nostromo/icons
+ 
+ # VIRTUAL HOSTS [OPTIONAL]
+ 
+-#www.rahel.ch		/var/nostromo/htdocs/www.rahel.ch
+-#www.rahel.ch:8080	/var/nostromo/htdocs/www.rahel.ch
++#www.rahel.ch		/usr/share/nostromo/htdocs/www.rahel.ch
++#www.rahel.ch:8080	/usr/share/nostromo/htdocs/www.rahel.ch
+ 
+ # HOMEDIRS [OPTIONAL]
+ 
+diff -rupN nostromo-1.9.6/GNUmakefile nostromo-1.9.6b/GNUmakefile
+--- nostromo-1.9.6/GNUmakefile	2016-04-12 14:52:41.000000000 -0400
++++ nostromo-1.9.6b/GNUmakefile	2017-04-09 01:05:33.377686037 -0400
+@@ -5,30 +5,30 @@ all:
+ 
+ install:
+ 	install -c -o root -g bin -m 555 src/nhttpd/nhttpd \
+-		/usr/local/sbin/nhttpd
++		$(DESTDIR)/usr/bin/nhttpd
+ 	install -c -o root -g bin -m 444 src/nhttpd/nhttpd.8 \
+-		/usr/share/man/man8/nhttpd.8
++		$(DESTDIR)/usr/share/man/man8/nhttpd.8
+ 	install -c -o root -g bin -m 555 src/tools/crypt \
+-		/usr/local/sbin/crypt
+-	install -d -o root -g daemon -m 755 /var/nostromo/conf
+-	install -d -o root -g daemon -m 755 /var/nostromo/htdocs
+-	install -d -o root -g daemon -m 755 /var/nostromo/htdocs/cgi-bin
+-	install -d -o root -g daemon -m 755 /var/nostromo/icons
+-	install -d -o root -g daemon -m 755 /var/nostromo/logs
++		$(DESTDIR)/usr/bin/crypt
++	install -d -o root -g daemon -m 755 $(DESTDIR)/etc/nostromo/conf
++	install -d -o root -g daemon -m 755 $(DESTDIR)/usr/share/nostromo/htdocs
++	install -d -o root -g daemon -m 755 $(DESTDIR)/usr/share/nostromo/htdocs/cgi-bin
++	install -d -o root -g daemon -m 755 $(DESTDIR)/usr/share/nostromo/icons
++	install -d -o root -g daemon -m 755 $(DESTDIR)/usr/share/nostromo/logs
+ 	install -c -o root -g bin -m 555 htdocs/cgi-bin/printenv \
+-		/var/nostromo/htdocs/cgi-bin/printenv
++		$(DESTDIR)/usr/share/nostromo/htdocs/cgi-bin/printenv
+ 	install -c -o root -g bin -m 644 conf/mimes \
+-		/var/nostromo/conf/mimes
++		$(DESTDIR)/etc/nostromo/conf/mimes
+ 	install -c -o root -g bin -m 644 conf/nhttpd.conf-dist \
+-		/var/nostromo/conf/nhttpd.conf-dist
++		$(DESTDIR)/etc/nostromo/conf/nhttpd.conf
+ 	install -c -o root -g bin -m 644 htdocs/index.html \
+-		/var/nostromo/htdocs/index.html
++		$(DESTDIR)/usr/share/nostromo/htdocs/index.html
+ 	install -c -o root -g bin -m 644 htdocs/nostromo.gif \
+-		/var/nostromo/htdocs/nostromo.gif
++		$(DESTDIR)/usr/share/nostromo/htdocs/nostromo.gif
+ 	install -c -o root -g bin -m 644 icons/dir.gif \
+-		/var/nostromo/icons/dir.gif
++		$(DESTDIR)/usr/share/nostromo/icons/dir.gif
+ 	install -c -o root -g bin -m 644 icons/file.gif \
+-		/var/nostromo/icons/file.gif
++		$(DESTDIR)/usr/share/nostromo/icons/file.gif
+ 
+ clean:
+ 	cd src; ${MAKE} clean
+diff -rupN nostromo-1.9.6/Makefile nostromo-1.9.6b/Makefile
+--- nostromo-1.9.6/Makefile	2016-04-12 14:52:41.000000000 -0400
++++ nostromo-1.9.6b/Makefile	2017-04-09 01:07:58.754173489 -0400
+@@ -3,24 +3,24 @@
+ SUBDIR+= src
+ 
+ afterinstall:
+-	install -d -o root -g daemon -m 755 /var/nostromo/conf
+-	install -d -o root -g daemon -m 755 /var/nostromo/htdocs
+-	install -d -o root -g daemon -m 755 /var/nostromo/htdocs/cgi-bin
+-	install -d -o root -g daemon -m 755 /var/nostromo/icons
+-	install -d -o root -g daemon -m 755 /var/nostromo/logs
++	install -d -o root -g daemon -m 755 $(DESTDIR)/etc/nostromo/conf
++	install -d -o root -g daemon -m 755 $(DESTDIR)/usr/share/nostromo/htdocs
++	install -d -o root -g daemon -m 755 $(DESTDIR)/usr/share/nostromo/htdocs/cgi-bin
++	install -d -o root -g daemon -m 755 $(DESTDIR)/usr/share/nostromo/icons
++	install -d -o root -g daemon -m 755 $(DESTDIR)/usr/share/nostromo/logs
+ 	install -c -o root -g bin -m 555 htdocs/cgi-bin/printenv \
+-		/var/nostromo/htdocs/cgi-bin/printenv
++		$(DESTDIR)/usr/share/nostromo/htdocs/cgi-bin/printenv
+ 	install -c -o root -g bin -m 644 conf/mimes \
+-		/var/nostromo/conf/mimes
++		$(DESTDIR)/etc/nostromo/conf/mimes
+ 	install -c -o root -g bin -m 644 conf/nhttpd.conf-dist \
+-		/var/nostromo/conf/nhttpd.conf-dist
++		$(DESTDIR)/etc/nostromo/conf/nhttpd.conf
+ 	install -c -o root -g bin -m 644 htdocs/index.html \
+-		/var/nostromo/htdocs/index.html
++		$(DESTDIR)/usr/share/nostromo/htdocs/index.html
+ 	install -c -o root -g bin -m 644 htdocs/nostromo.gif \
+-		/var/nostromo/htdocs/nostromo.gif
++		$(DESTDIR)/usr/share/nostromo/htdocs/nostromo.gif
+ 	install -c -o root -g bin -m 644 icons/dir.gif \
+-		/var/nostromo/icons/dir.gif
++		$(DESTDIR)/usr/share/nostromo/icons/dir.gif
+ 	install -c -o root -g bin -m 644 icons/file.gif \
+-		/var/nostromo/icons/file.gif
++		$(DESTDIR)/usr/share/nostromo/icons/file.gif
+ 
+ .include <bsd.subdir.mk>
+diff -rupN nostromo-1.9.6/src/nhttpd/main.c nostromo-1.9.6b/src/nhttpd/main.c
+--- nostromo-1.9.6/src/nhttpd/main.c	2016-04-12 15:02:06.000000000 -0400
++++ nostromo-1.9.6b/src/nhttpd/main.c	2017-04-09 00:15:35.431740659 -0400
+@@ -61,7 +61,7 @@
+  * global vars local
+  */
+ static int		ppid;
+-static const char	*configfile = "/var/nostromo/conf/nhttpd.conf";
++static const char	*configfile = "/etc/nostromo/conf/nhttpd.conf";
+ 
+ /*
+  * global vars extern
+diff -rupN nostromo-1.9.6/src/nhttpd/Makefile nostromo-1.9.6b/src/nhttpd/Makefile
+--- nostromo-1.9.6/src/nhttpd/Makefile	2016-04-12 15:02:06.000000000 -0400
++++ nostromo-1.9.6b/src/nhttpd/Makefile	2017-04-09 00:15:35.431740659 -0400
+@@ -12,7 +12,7 @@ MAN= nhttpd.8
+ 
+ BINOWN=	root
+ BINMOD=	0555
+-BINDIR=	/usr/local/sbin
++BINDIR=	/usr/bin
+ 
+ OS!= uname -s
+ 
+diff -rupN nostromo-1.9.6/src/nhttpd/nhttpd.8 nostromo-1.9.6b/src/nhttpd/nhttpd.8
+--- nostromo-1.9.6/src/nhttpd/nhttpd.8	2016-04-12 16:32:43.000000000 -0400
++++ nostromo-1.9.6b/src/nhttpd/nhttpd.8	2017-04-09 00:15:35.431740659 -0400
+@@ -85,7 +85,7 @@ Enable IPv6 only.
+ Uses
+ .Ar configfile
+ as configuration file.  If this option is not set,
+-.Ar /var/nostromo/conf/nhttpd.conf
++.Ar /etc/nostromo/conf/nhttpd.conf
+ will be used by default.
+ .El
+ .Sh CONFIGURATION RELOAD
+@@ -234,7 +234,7 @@ For example, to let all links starting w
+ just add the following line in your
+ .Ar configfile :
+ .Bd -literal -offset indent
+-/icons /var/nostromo/icons
++/icons /usr/share/nostromo/icons
+ .Ed
+ .Sh VIRTUAL HOSTS
+ To serve virtual hosts, just add a line for each virtual host in
+@@ -243,8 +243,8 @@ with the domain name as option and port
+ .Ar docroot
+ of that virtual host, as in this example:
+ .Bd -literal -offset indent
+-www.rahel.ch     /var/nostromo/htdocs/www.rahel.ch
+-www.nazgul.ch:81 /var/nostromo/htdocs/www.nazgul.ch
++www.rahel.ch     /usr/share/nostromo/htdocs/www.rahel.ch
++www.nazgul.ch:81 /usr/share/nostromo/htdocs/www.nazgul.ch
+ .Ed
+ .Pp
+ For each virtual host a separate access_log is written automatically with
+@@ -276,18 +276,18 @@ directory by defining it via the
+ .Ar homedirs_public
+ option.
+ .Sh FILES
+-.Bl -tag -width "/var/nostromo/conf/nhttpd.conf" -compact
+-.It Pa /var/nostromo/conf/nhttpd.conf
++.Bl -tag -width "/etc/nostromo/conf/nhttpd.conf" -compact
++.It Pa /etc/nostromo/conf/nhttpd.conf
+ server configuration
+-.It Pa /var/nostromo/conf/mimes
++.It Pa /etc/nostromo/conf/mimes
+ mime types
+-.It Pa /var/nostromo/logs/nhttpd.pid
++.It Pa /usr/share/nostromo/logs/nhttpd.pid
+ pid file
+-.It Pa /var/nostromo/logs/access_log
++.It Pa /usr/share/nostromo/logs/access_log
+ http log
+-.It Pa /usr/local/sbin/crypt
++.It Pa /usr/bin/crypt
+ create user with DES password
+-.It Pa /usr/local/sbin/nhttpd
++.It Pa /usr/bin/nhttpd
+ http daemon
+ .El
+ .Sh HISTORY
+diff -rupN nostromo-1.9.6/src/tools/crypt.c nostromo-1.9.6b/src/tools/crypt.c
+--- nostromo-1.9.6/src/tools/crypt.c	2016-04-12 15:02:58.000000000 -0400
++++ nostromo-1.9.6b/src/tools/crypt.c	2017-04-09 00:15:35.435073967 -0400
+@@ -32,7 +32,7 @@
+ #include "../libbsd/strlcat.h"
+ #endif
+ 
+-#define DEFAULT_FILENAME "/var/nostromo/conf/.htpasswd"
++#define DEFAULT_FILENAME "/etc/nostromo/conf/.htpasswd"
+ 
+ /*
+  * Prototypes
+diff -rupN nostromo-1.9.6/src/tools/Makefile nostromo-1.9.6b/src/tools/Makefile
+--- nostromo-1.9.6/src/tools/Makefile	2016-04-12 15:02:58.000000000 -0400
++++ nostromo-1.9.6b/src/tools/Makefile	2017-04-09 00:15:35.435073967 -0400
+@@ -11,7 +11,7 @@ MAN=
+ 
+ BINOWN=	root
+ BINMOD=	0555
+-BINDIR=	/usr/local/sbin
++BINDIR=	/usr/bin
+ 
+ OS!= uname -s
+ 

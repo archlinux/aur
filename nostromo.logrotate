@@ -1,0 +1,9 @@
+/usr/share/nostromo/logs/*log {
+	missingok
+	copytruncate
+	notifempty
+	sharedscripts
+	postrotate
+		systemctl reload lighttpd.service || true
+	endscript
+}

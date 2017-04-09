@@ -1,0 +1,29 @@
+pkgbase = nostromo
+	pkgdesc = A simple, fast, and secure HTTP server
+	pkgver = 1.9.6
+	pkgrel = 1
+	url = http://www.nazgul.ch/dev_nostromo.html
+	install = nostromo.install
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	makedepends = openssl
+	depends = openssl
+	backup = etc/nostromo/conf/nhttpd.conf
+	backup = etc/nostromo/conf/mimes
+	backup = etc/logrotate.d/nostromo
+	source = http://www.nazgul.ch/dev/nostromo-1.9.6.tar.gz
+	source = nostromo.service
+	source = nostromo.logrotate
+	source = nostromo.patch
+	source = nostromo.install
+	source = LICENSE
+	sha1sums = 6f3d8ebc15486398f819ac55a9d2a9ac14c3b35e
+	sha1sums = 57eee54e5ba9f0ee60cceae13ba96d060f870812
+	sha1sums = a0069cb13614bee9b3bef76188597de3948be71d
+	sha1sums = 4ac52e8978c2f5222f58f01e1e2ec255978f1ade
+	sha1sums = 73d871a104e7c1c5e197961dee96f33b0909c41e
+	sha1sums = e5abcccacf9d1c9136e55de2cc0dceaabdb02ec1
+
+pkgname = nostromo
+
