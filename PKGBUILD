@@ -2,7 +2,7 @@
 # Contributor: Andreas B. Wagner <AndreasBWagner@pointfree.net>
 pkgname=vim-easymotion
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='simpler and faster vim motions'
 arch=('any')
 url="http://www.vim.org/scripts/script.php?script_id=3526"
@@ -17,6 +17,5 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p "${pkgdir}/usr/share/vim/vimfiles/"
   cp -r autoload doc plugin t "${pkgdir}/usr/share/vim/vimfiles/"
-  rm -f "$pkgdir/usr/share/vim/vimfiles/autoload/vital.vim"
 }
 # vim:set ts=2 sw=2 et:
