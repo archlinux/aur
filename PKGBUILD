@@ -9,7 +9,7 @@ pkgdesc="Git made easy"
 arch=('i686' 'x86_64')
 depends=('nodejs')
 makedepends=('npm')
-url="https://github.com/FredrikNoren/ungit"
+url="https://www.npmjs.com/package/ungit"
 license=('MIT')
 provides=('nodejs-ungit' 'ungit')
 conflicts=('ungit')
@@ -24,4 +24,3 @@ package() {
   msg2 'Renaming binary from 0ungit-credentials-helper to ungit-credentials-helper'
   mv "$pkgdir/usr/bin/0ungit-credentials-helper" "$pkgdir/usr/bin/ungit-credentials-helper"
 }
-
