@@ -7,7 +7,7 @@ pkgver=201309
 pkgrel=1
 pkgdesc="Springer templates for LNCS proceedings (llncs), monographs (svmono), multiauthor volumes (svmult), journals (svjour3), and other lecture notes (svmultln)"
 arch=('any')
-url="http://www.springer.com/computer/lncs?SGWID=0-164-7-72376-0"
+url="https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines"
 license=('')
 groups=()
 depends=('texlive-latex3')
