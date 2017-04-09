@@ -1,0 +1,23 @@
+diff -ur openvpn-2.4.1/distro/systemd/openvpn-client@.service.in openvpn-2.4.1-patched/distro/systemd/openvpn-client@.service.in
+--- openvpn-2.4.1/distro/systemd/openvpn-client@.service.in	2017-03-22 20:04:21.000000000 +0430
++++ openvpn-2.4.1-patched/distro/systemd/openvpn-client@.service.in	2017-04-09 22:38:33.205789531 +0430
+@@ -7,7 +7,7 @@
+ Documentation=https://community.openvpn.net/openvpn/wiki/HOWTO
+ 
+ [Service]
+-Type=notify
++Type=simple
+ PrivateTmp=true
+ WorkingDirectory=/etc/openvpn/client
+ ExecStart=@sbindir@/openvpn --suppress-timestamps --nobind --config %i.conf
+diff -ur openvpn-2.4.1/distro/systemd/openvpn-server@.service.in openvpn-2.4.1-patched/distro/systemd/openvpn-server@.service.in
+--- openvpn-2.4.1/distro/systemd/openvpn-server@.service.in	2017-03-22 20:04:21.000000000 +0430
++++ openvpn-2.4.1-patched/distro/systemd/openvpn-server@.service.in	2017-04-09 22:39:31.110253972 +0430
+@@ -8,6 +8,7 @@
+ 
+ [Service]
+ Type=notify
++Restart=always
+ PrivateTmp=true
+ WorkingDirectory=/etc/openvpn/server
+ ExecStart=@sbindir@/openvpn --status %t/openvpn-server/status-%i.log --status-version 2 --suppress-timestamps --config %i.conf
