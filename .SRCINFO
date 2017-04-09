@@ -1,0 +1,16 @@
+pkgbase = etl-git
+	pkgdesc = VoriaETL: C++ STL complementory multiplatform template library
+	pkgver = r8165.bd7d8b2cc
+	pkgrel = 1
+	url = http://synfig.org
+	arch = any
+	license = GPL2
+	provides = etl
+	conflicts = synfig-etl
+	conflicts = etl
+	replaces = synfig-etl
+	source = git+https://github.com/synfig/synfig
+	md5sums = SKIP
+
+pkgname = etl-git
+
