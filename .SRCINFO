@@ -5,7 +5,8 @@ pkgbase = bliss-git
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = ffmpeg
+	depends = ffmpeg,
+	depends = cmake
 	source = git://github.com/Polochon-street/bliss
 	md5sums = SKIP
 

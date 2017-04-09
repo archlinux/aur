@@ -5,13 +5,13 @@ pkgrel=3
 pkgdesc="A music analyzer library"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('ffmpeg')
+depends=('ffmpeg', 'cmake')
 source=('git://github.com/Polochon-street/bliss')
 md5sums=('SKIP')
  
 prepare() {
-	cd "$srcdir/$_gitname"
-	mkdir -p build
+    cd "$srcdir/$_gitname"
+    mkdir -p build
 }
 
 build() {
