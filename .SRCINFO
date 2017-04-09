@@ -1,0 +1,28 @@
+pkgbase = voxelquest-git
+	pkgdesc = Both an open source voxel game engine and a role playing game.
+	pkgver = 0.1.r30.g0e1dcd5
+	pkgrel = 1
+	url = http://www.voxelquest.com
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = unzip
+	depends = freeglut
+	depends = sfml
+	conflicts = voxelquest
+	noextract = voxelquest-resources.zip
+	noextract = lzz_2_8_2_linux.zip
+	source = voxelquest-git::git+https://github.com/gavanw/vqisosmall.git#branch=master
+	source = voxelquest-resources.zip::https://github.com/gavanw/vqisosmall/releases/download/0.1/resources.zip
+	source = lzz_2_8_2_linux.zip::http://www.lazycplusplus.com/lzz_2_8_2_linux.zip
+	source = voxelquest.desktop
+	source = voxelquest.sh
+	md5sums = SKIP
+	md5sums = 3d8da23048f9a64d3f3ed7cdd7598d72
+	md5sums = 0aad7107b76ebf338a2e38e7604dbedb
+	md5sums = 2dbce2b10fc8225506b92b684e2abfa9
+	md5sums = 0d2311fcbd9fe065d1168123ade4dce0
+
+pkgname = voxelquest-git
+
