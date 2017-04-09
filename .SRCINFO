@@ -1,0 +1,12 @@
+pkgbase = python-mastodon
+	pkgdesc = python bindings for the Mastodon RPC API
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/Mastodon.py
+	arch = any
+	license = GPL
+	source = https://pypi.python.org/packages/21/d2/a5e1888996ad00d3fc88b4383bd4c3eac96a49d91e552df17266f18d58fb/Mastodon.py-1.0.6.tar.gz
+	md5sums = 0f6a9879c718adfcc1aa251a5208b7dd
+
+pkgname = python-mastodon
+
