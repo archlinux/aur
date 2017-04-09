@@ -6,8 +6,8 @@
 
 _pkgname=instantclient-jdbc
 pkgname=oracle-${_pkgname}
-pkgver=12.1.0.2.0
-pkgrel=2
+pkgver=12.2.0.1.0
+pkgrel=1
 pkgdesc="Additional support for XA, Internationalization, and RowSet operations under JDBC"
 arch=('i686' 'x86_64')
 url="http://www.oracle.com/technetwork/database/features/instant-client/"
@@ -28,13 +28,13 @@ sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2')
 case "$CARCH" in
 	i686)
 		source[1]="manual://${_pkgname}-linux-$pkgver.zip"
-		md5sums[1]='37e29bf0a25e9cb65f9cc1dc61e882bd'
-		sha256sums[1]='b40be90a26f27444ee6999ea05d7e62791ff0f01b943d48ceda51167e24f7e1d'
+		md5sums[1]='24df104cc59254ab4928d4eb3a19cbd3'
+		sha256sums[1]='c630ce7a4005bb354bf5c49744ec658046670d03b1064363aabf6a8a9f43eae7'
 		;;
 	x86_64)
 		source[1]="manual://${_pkgname}-linux.x64-$pkgver.zip"
-		md5sums[1]='d3f4afd0dbf9b74c0b1e998dd69e6c9c'
-		sha256sums[1]='444236c8881b4a6dc98342d8f2d95be5db6c2fa3ae925bdabc1d0cb684b0f20b'
+		md5sums[1]='3e6cdc6686b44160a8a5e4af0cacf5fd'
+		sha256sums[1]='1a18fcaa41984bc0499a3d3138843292550a5606556217adb47ddc59caa7a0fa'
 		;;
 esac
 
@@ -61,7 +61,7 @@ plain "[1]: http://www.oracle.com/technetwork/licenses/instant-client-lic-152016
 plain ""
 
 package() {
-	local basedir="$srcdir/instantclient_12_1"
+	local basedir="$srcdir/instantclient_12_2"
 	install -d "$pkgdir/usr/lib"
 	install -m 755 -t "$pkgdir/usr/lib" "$basedir/"*.so
 	install -m 644 -t "$pkgdir/usr/lib" "$basedir/"*.jar
