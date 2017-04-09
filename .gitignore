@@ -1,4 +1,4 @@
-nzbhydra-git
-nzbhydra-git-*.pkg.tar.xz
+*.gz
+*.xz
 pkg
 src
