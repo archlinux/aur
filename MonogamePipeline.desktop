@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=MonoGame Pipeline Tool
+GenericName=MonoGame Pipeline Tool
+Comment=Creates platform specific content files.
+Exec=monogame-pipeline-tool %F
+TryExec=monogame-pipeline-tool
+Icon=monogame
+StartupNotify=true
+Terminal=false
+Type=Application
+MimeType=text/mgcb;
+Categories=Development;

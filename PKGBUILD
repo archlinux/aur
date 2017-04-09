@@ -2,7 +2,7 @@
 
 _pkgname=monogame
 pkgname="${_pkgname}-bin"
-pkgver=3.5.1
+pkgver=3.6
 pkgrel=1
 pkgdesc="Open Source implementation of the Microsoft XNA 4 Framework (official binary build)."
 arch=('x86_64')
@@ -18,10 +18,14 @@ provides=("${_pkgname}")
 install="monogame.install"
 source=("http://www.monogame.net/releases/v${pkgver}/monogame-sdk.run"
         "https://raw.githubusercontent.com/mono/MonoGame/develop/LICENSE.txt"
-        "Monogame Pipeline.desktop")
-md5sums=('3cf5ca64bd9cb62db5d83066df568727'
+        "MonogamePipeline.desktop"
+        "monogame-pipeline-tool"
+        "mgcb")
+md5sums=('68d6b7a7403f718d2502250231db82f4'
          '2c8089207448fa9571c65eb00f0c9cd1'
-         'a8fd2a407aef36d2209faad11ae7b186')
+         '587c27465d575e4522de212346f3f5a0'
+         'e2e0f2a74547318fc0fa7dc76e79bba8'
+         'b972af897b3607d2e14bb8b51655d549')
 
 prepare() {
 	sh monogame-sdk.run --noexec --target "${_pkgname}-${pkgver}"
@@ -47,8 +51,8 @@ package() {
     chmod +x "${pkgdir}${mgroot}/Tools/ffprobe"
 
     # Pipeline tools
-    install -D -m775 "Main/monogame-pipeline" "${pkgdir}/usr/bin/monogame-pipeline"
-    install -D -m775 "Main/mgcb" "${pkgdir}/usr/bin/mgcb"
+    install -D -m775 "../monogame-pipeline-tool" "${pkgdir}/usr/bin/monogame-pipeline-tool"
+    install -D -m775 "../mgcb" "${pkgdir}/usr/bin/mgcb"
 
     # Monogame icon
     install -D -m664 "Main/monogame.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/monogame.svg"
@@ -57,7 +61,7 @@ package() {
     install -D -m664 "Main/mgcb.xml" "${pkgdir}/usr/share/mime/packages/mgcb.xml"
 
     # Application launcher
-    install -D -m664 "../Monogame Pipeline.desktop" "${pkgdir}/usr/share/applications/Monogame\ Pipeline.desktop"
+    install -D -m664 "../MonogamePipeline.desktop" "${pkgdir}/usr/share/applications/MonogamePipeline.desktop"
 
     # Monodevelop AddIn
     mkdir -p "${pkgdir}/usr/lib/monodevelop/AddIns/MonoDevelop.MonoGame"
