@@ -9,3 +9,11 @@ post_upgrade() {
   chown -R nostromo:daemon /usr/share/nostromo/htdocs
   chown -R nostromo:daemon /usr/share/nostromo/logs
 }
+
+pre_remove() {
+  systemctl stop nostromo
+}
+
+post_remove() {
+  userdel nostromo
+}
