@@ -4,12 +4,12 @@
 
 pkgname=qt4pas
 pkgver=2.5
-pkgrel=7
+pkgrel=8
 pkgdesc="Free Pascal Qt4 Binding Library"
 arch=('i686' 'x86_64')
 url="http://users.telenet.be/Jan.Van.hijfte/qtforfpc/fpcqt4.html"
 license=('LGPL')
-depends=('qt4')
+depends=('qt4' 'xdg-utils')
 source=(
     'http://users.telenet.be/Jan.Van.hijfte/qtforfpc/V2.5/qt4pas-V2.5_Qt4.5.3.tar.gz'
     'qtwebkit.patch'
