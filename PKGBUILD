@@ -1,3 +1,5 @@
+# Maintainer: Craig Barnes <cr@igbarn.es>
+
 pkgname='dex-editor'
 pkgver='1.0'
 pkgrel='1'
