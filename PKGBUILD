@@ -19,7 +19,7 @@ _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some grap
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=59.0.3053.3
+pkgver=59.0.3063.4
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -85,11 +85,12 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'chromium-dev.svg'
         'BUILD.gn'
         # Patch form Gentoo
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r4.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r5.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r4.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-dma-buf-r1.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/skia-avx2.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-libjpeg-r1.patch'
         # Misc Patches
 #         "enable_vaapi_on_linux_${pkgver}.diff::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/25539edd06a0ac9bf4010c4ad9b936d349ebc974/debian/patches/enable_vaapi_on_linux.diff"
 #         "specify-max-resolution_${pkgver}.patch::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/25539edd06a0ac9bf4010c4ad9b936d349ebc974/debian/patches/specify-max-resolution.patch"
@@ -104,11 +105,12 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1'
             'c7d9974834fc3803b5f1a1d310ff391306964caaabc807a62f8e5c3d38526ee6'
             # Patch form Gentoo
-            'e3c474dbf3822a0be50695683bd8a2c9dfc82d41c1524a20b4581883c0c88986'
+            '735f718556cc2d4730ea5dcc01bece92ad25533605ab9a9336f14c79e9abfb10'
             '619d44fc68e261d2be93c16512a46c9f10c60e5a2a4d6a3639b7f0b1b32c832c'
             '44ad4232e5e7c6fcdf01492950805ac2c950c948dfcf9631af39f6230aaeb6be'
             'ffc664a90b68600de2d80a4064df25ec6f34fb4443e96ef2f0741ccb49d90a4b'
             'aa10f5797fe28858533ceeb0fa903f37e744ed4133c889eac60f5094e4b6a596'
+            'bdad1bcb1aec958083fd0b05db1a62c15a0a35f80eb2a50b81e1c8663c202c9a'
             # Misc Patches
 #             '14377408f34e2d97b7cd5219e8363fbda249faa5534e30d9226cdf308915b9ad'
 #             'f98818c933042ce61f3940d7c8880f3edc0f300d7e0a92a6ab7c5c7fd0bf8709'
@@ -217,6 +219,7 @@ _keeplibs=(
   'third_party/fips181'
   'third_party/flatbuffers'
   'third_party/flot'
+  'third_party/freetype'
   'third_party/google_input_tools'
   'third_party/google_input_tools/third_party/closure_library'
   'third_party/google_input_tools/third_party/closure_library/third_party/closure'
@@ -229,7 +232,6 @@ _keeplibs=(
   'third_party/leveldatabase'
   'third_party/libXNVCtrl'
   'third_party/libaddressinput'
-  'third_party/libdrm'
   'third_party/libjingle'
   'third_party/libphonenumber'
   'third_party/libsecret'
@@ -257,6 +259,7 @@ _keeplibs=(
   'third_party/pdfium'
   'third_party/pdfium/third_party/agg23'
   'third_party/pdfium/third_party/base'
+  'third_party/pdfium/third_party/bigint'
   'third_party/pdfium/third_party/build'
   'third_party/pdfium/third_party/bigint'
   'third_party/pdfium/third_party/freetype'
@@ -265,7 +268,7 @@ _keeplibs=(
   'third_party/pdfium/third_party/libopenjpeg20'
   'third_party/pdfium/third_party/libpng16'
   'third_party/pdfium/third_party/libtiff'
-  'third_party/pdfium/third_party/zlib_v128'
+  'third_party/pdfium/third_party/pymock'
   'third_party/ply'
   'third_party/polymer'
   'third_party/protobuf'
@@ -343,6 +346,7 @@ _use_system=(
   'flac'
   'harfbuzz-ng'
 #  'icu' # https://crbug.com/678661
+  'libdrm'
 #   'libevent' # Get segfaults and other problems https://bugs.gentoo.org/593458
   'libjpeg'
   'libpng'
@@ -398,11 +402,11 @@ prepare() {
 
   msg2 "Patching the sources"
   # Patch sources from Gentoo.
-  patch -p1 -i "${srcdir}/chromium-system-ffmpeg-r4.patch"
-  patch -p1 -i "${srcdir}/chromium-gn-bootstrap-r4.patch"
+  patch -p1 -i "${srcdir}/chromium-system-ffmpeg-r5.patch"
   patch -p1 -i "${srcdir}/chromium-dma-buf-r1.patch"
   patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE.patch"
   patch -p1 -i "${srcdir}/skia-avx2.patch"
+  patch -p1 -i "${srcdir}/chromium-system-libjpeg-r1.patch"
 
   # Misc Patches:
   if [ "${_enable_vaapi}" = 1 ]; then
