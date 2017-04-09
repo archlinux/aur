@@ -3,12 +3,12 @@
 
 pkgname=gxneur
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GTK frontend for XNeur'
 url="http://www.xneur.ru"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('libglade' "xneur>=$pkgver" 'gconf')
+depends=('libglade' "xneur>=$pkgver" 'gconf' 'xorg-xprop')
 source=("https://raw.githubusercontent.com/AndrewCrewKuznetsov/xneur-devel/master/dists/$pkgver/gxneur_$pkgver.orig.tar.gz")
 md5sums=('fbd9099e998f49a95ff44d6c922097d2')
 
