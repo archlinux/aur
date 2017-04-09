@@ -1,20 +1,20 @@
 pkgname=sabnzbd
 _pkgname=SABnzbd
-pkgver=1.2.3
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A web-interface based binary newsgrabber with NZB file support"
 url="http://www.sabnzbd.org"
 arch=("any")
 license=("GPL")
 depends=("curl" "par2cmdline"
-         "python2" "python2-cheetah" "python2-yenc"
+         "python2" "python2-cheetah" "python2-sabyenc"
          "sqlite" "unrar" "unzip")
 optdepends=("xdg-utils: registration of .nzb files" "python2-feedparser: rss support" "python2-pyopenssl: ssl support" "par2cmdline-tbb: par2 multi-threading")
 install="${pkgname}.install"
 backup=("etc/conf.d/sabnzbd" "opt/${pkgname}/${pkgname}.ini")
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-src.tar.gz"
         "${pkgname}" "${pkgname}.desktop" "addnzb.sh" "nzb.png" "sabnzbd.png" "x-nzb.xml" "${pkgname}.service" "${pkgname}.confd")
-md5sums=('e59d437a6c702f814fce40d7caa850fb'
+md5sums=('3f8c34ef5b20855172db82080d1b9dad'
          '48d60a1c626503c7fef1bc5374390513'
          '36e5f0f60f28f67102682f80e33c6d4b'
          '69b9bcbcf67ff3e7a4cdd9f26e001341'
