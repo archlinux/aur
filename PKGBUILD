@@ -4,14 +4,15 @@ pkgname=linbox-converter-client
 pkgver=1.0.3
 pkgrel=2
 pkgdesc="Linbox (Microsoft Office documents to PDF) Converter commandline client"
-url="http://www.linbox.com/converter"
+url="http://adullact.net/projects/lbx-converter/"
+arch=('any')
 depends=('python' 'tk')
 source=(http://adullact.net/frs/download.php/468/linbox-converter-${pkgver}.tar.gz)
 md5sums=('ab5f4f96d723cf6e86da82764beb8eaf')
 backup=('etc/lbx-converter.conf')
-install=('linbox-converter-client.install')
+install='linbox-converter-client.install'
 
-build() {
+package() {
   cd ${startdir}/src/linbox-converter-${pkgver}/client
 
   install -m 0755 -d ${startdir}/pkg/etc
