@@ -2,7 +2,7 @@
 
 pkgbase=mgba-git
 pkgname=('libmgba-git' 'mgba-sdl-git' 'mgba-qt-git')
-pkgver=r3807.34db16b
+pkgver=r4416.f0ea421f
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://mgba.io/'
@@ -53,7 +53,6 @@ package_mgba-sdl-git() {
 package_mgba-qt-git() {
   pkgdesc='A Nintendo Gameboy Advance Emulator - Qt5 UI'
   depends=('libmgba-git' 'qt5-base' 'qt5-multimedia' 'sdl2' 'libepoxy')
-  install=mgba.install
   conflicts=('mgba-qt')
   provides=('mgba-qt')
 
@@ -62,5 +61,5 @@ package_mgba-qt-git() {
   install -d "$pkgdir"/usr/share/licenses/mgba-qt
   ln -s /usr/share/licenses/libmgba/LICENSE "$pkgdir"/usr/share/licenses/mgba-qt/LICENSE
   desktop-file-install "$srcdir"/mgba/res/mgba-qt.desktop --dir "$pkgdir"/usr/share/applications/
-  install -Dm644 mgba/res/mgba-256.png "$pkgdir"/usr/share/pixmaps/mgba.png
+  install -Dm644 mgba/res/mgba-512.png "$pkgdir"/usr/share/pixmaps/mgba.png
 }
