@@ -1,10 +1,10 @@
 # Maintainer : Daniel Bermond < yahoo-com: danielbermond >
  
 pkgname=nccl
-pkgver=1.3.0.1
 _srcver=1.3.0
-pkgrel=2
 _srcrel=1
+pkgver="${_srcver}.${_srcrel}"
+pkgrel=3
 pkgdesc="NVIDIA CUDA optimized primitives for collective multi-GPU communication"
 arch=('x86_64')
 url="https://github.com/NVIDIA/nccl.git"
