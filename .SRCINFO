@@ -1,7 +1,7 @@
 pkgbase = watson
 	pkgdesc = A wonderful CLI to track your time!
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tailordev.github.io/Watson/
 	arch = any
 	license = MIT
