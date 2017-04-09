@@ -2,7 +2,7 @@
 
 pkgbase=datagrip
 pkgname=(datagrip datagrip-jre)
-pkgver=2017.1
+pkgver=2017.1.1
 pkgrel=1
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity'
 arch=('any')
@@ -13,26 +13,26 @@ options=('!strip')
 makedepends=('rsync')
 source=(https://download.jetbrains.com/${pkgbase}/${pkgbase}-${pkgver}.tar.gz
         jetbrains-datagrip.desktop)
-sha512sums=('c2d613b4ddaa75d367bad3fda800cdcf019ac0fbcd0bbec6dabafc4e182a4fcc0a63753a6efa93973add20a762d2f0fb9ceeda6411e4ef51ec5882b18e4731fb'
+sha512sums=('76ee9280de5ed6e51931efb785b0682ea509df2a35ed58368697f13086fab1e89440bdcb79c24b87331250d24ee43a404418e7b56f18a9aa849901aef135148b'
             '6fa0fb2eba7017f2818a5e9d8e44d43a050fdb5b13c7dd1650fae472191f892424f904009e2ba675d5f75200e7e2f42dad95741e94b16355a8ce9eb07bd8660b')
 
 package_datagrip() {
   optdepends=('datagrip-jre: JetBrains custom Java Runtime (Recommended)'
               'java-runtime>=8: JRE - Required if datagrip-jre is not installed')
 
-  install -d -m 755 ${pkgdir}/opt/
-  install -d -m 755 ${pkgdir}/usr/bin/
-  install -d -m 755 ${pkgdir}/usr/share/applications/
-  install -d -m 755 ${pkgdir}/usr/share/pixmaps/
+  install -d -m 755 "${pkgdir}/opt/"
+  install -d -m 755 "${pkgdir}/usr/bin/"
+  install -d -m 755 "${pkgdir}/usr/share/applications/"
+  install -d -m 755 "${pkgdir}/usr/share/pixmaps/"
 
-  rsync -rtl ${srcdir}/DataGrip-${pkgver}/ ${pkgdir}/opt/${pkgbase} --exclude=/jre
+  rsync -rtl "${srcdir}/DataGrip-${pkgver}/" "${pkgdir}/opt/${pkgbase}" --exclude=/jre
 
-  ln -s /opt/${pkgbase}/bin/${pkgbase}.sh ${pkgdir}/usr/bin/${pkgbase}
-  install -D -m 644 ${srcdir}/jetbrains-${pkgbase}.desktop ${pkgdir}/usr/share/applications/
-  install -D -m 644 ${pkgdir}/opt/${pkgbase}/bin/${pkgbase}.png ${pkgdir}/usr/share/pixmaps/${pkgbase}.png
+  ln -s "/opt/${pkgbase}/bin/${pkgbase}.sh" "${pkgdir}/usr/bin/${pkgbase}"
+  install -D -m 644 "${srcdir}/jetbrains-${pkgbase}.desktop" "${pkgdir}/usr/share/applications/"
+  install -D -m 644 "${pkgdir}/opt/${pkgbase}/bin/${pkgbase}.png" "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
 }
 
 package_datagrip-jre() {
-  install -d -m 755 ${pkgdir}/opt/${pkgbase}
-  rsync -rtl ${srcdir}/DataGrip-${pkgver}/jre ${pkgdir}/opt/${pkgbase}
+  install -d -m 755 "${pkgdir}/opt/${pkgbase}"
+  rsync -rtl "${srcdir}/DataGrip-${pkgver}/jre" "${pkgdir}/opt/${pkgbase}"
 }
