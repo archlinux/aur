@@ -4,7 +4,7 @@
 _pkgname=fftw
 pkgname=lib32-${_pkgname}
 pkgver=3.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for computing the discrete Fourier transform (DFT) (32 bit)"
 arch=('x86_64')
 license=('GPL2')
@@ -12,8 +12,8 @@ url="http://www.fftw.org/"
 depends=('lib32-glibc' "${_pkgname}")
 makedepends=('gcc-fortran-multilib')
 options=('!libtool')
-source=("http://www.fftw.org/${_pkgname}-${pkgver}-pl1.tar.gz")
-md5sums=('682a0e78d6966ca37c7446d4ab4cc2a1')
+source=("http://www.fftw.org/${_pkgname}-${pkgver}-pl2.tar.gz")
+md5sums=('927e481edbb32575397eb3d62535a856')
 
 # notes:
 # http://www.fftw.org/fftw2_doc/fftw_6.html#SEC69
@@ -27,9 +27,9 @@ export CC='gcc -m32'
 export CXX='g++ -m32'
 export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   
-cp -a ${_pkgname}-${pkgver}-pl1 ${_pkgname}-${pkgver}-double
-cp -a ${_pkgname}-${pkgver}-pl1 ${_pkgname}-${pkgver}-long-double
-mv ${_pkgname}-${pkgver}-pl1 ${_pkgname}-${pkgver}-single
+cp -a ${_pkgname}-${pkgver}-pl2 ${_pkgname}-${pkgver}-double
+cp -a ${_pkgname}-${pkgver}-pl2 ${_pkgname}-${pkgver}-long-double
+mv ${_pkgname}-${pkgver}-pl2 ${_pkgname}-${pkgver}-single
 
 # use upstream default CFLAGS while keeping our -march/-mtune
 CFLAGS+=" -O3 -fomit-frame-pointer -malign-double -fstrict-aliasing -ffast-math"
