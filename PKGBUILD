@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=liblcf-git
-pkgver=0.5.0.r0.g252e4f0
+pkgver=0.5.1.r0.g84d769b
 pkgrel=1
 pkgdesc="Library to handle RPG Maker 2000/2003 and EasyRPG projects (development version)"
 arch=('i686' 'x86_64')
