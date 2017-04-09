@@ -1,0 +1,24 @@
+pkgbase = openttd-svn
+	pkgdesc = An engine for running Transport Tycoon Deluxe (latest SVN build)
+	pkgver = r27849
+	pkgrel = 1
+	url = http://openttd.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = svn
+	depends = libpng
+	depends = sdl
+	depends = icu
+	depends = fontconfig
+	depends = lzo
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = xz
+	optdepends = openttd-opengfx: free graphics
+	optdepends = openttd-opensfx: free soundset
+	source = openttd-svn::svn+svn://svn.openttd.org/trunk
+	sha256sums = SKIP
+
+pkgname = openttd-svn
+
