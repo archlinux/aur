@@ -32,7 +32,7 @@ build() {
     --install-dir=${pkgdir} \
     --doc-dir=share/doc/${pkgname} \
     --menu-name="OpenTTD-latest" \
-    --personal-dir=${pkgname}  
+    --personal-dir=.${_installname}    
 
   make
 }
