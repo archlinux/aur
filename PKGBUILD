@@ -34,7 +34,7 @@ sha256sums=('SKIP'
             '41c22fae6ae757936741e63aec3d0f17cafe86b2d6153cdd1d01a5581e871f17'
             'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
             '7a06af83609168a8eaec59a65252caa41dcd0ecc805225886435eb65073e9c82'
-            'a3723a51c60417c4a0e0cf92976eaedc46cc448d81e6bb0fdd33a622c4a1b819')
+            '25482c53c4596fe33f8a3ecde48a9ab008e425023168896c7102e3e8625cc75e')
 
 prepare() {
     cd "$srcdir/tdesktop"
@@ -53,6 +53,7 @@ build() {
     export CPPFLAGS="$CPPFLAGS $EXTRA_FLAGS"
     export CXXFLAGS="$CXXFLAGS $EXTRA_FLAGS"
     gyp \
+        -Dbuild_defines=${GYP_DEFINES:1} \
         -Gconfig=Release \
         --depth=Telegram/gyp --generator-output=../.. -Goutput_dir=out Telegram/gyp/Telegram.gyp --format=cmake
     NUM=$((`wc -l < out/Release/CMakeLists.txt` - 2))
