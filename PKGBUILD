@@ -51,9 +51,9 @@ md5sums=('SKIP'
          '2d34e8c86c1c6ed1354b55ca21819886'
          '7a88f8ab5d41242fdf1428de0e2ca182'
          'bd04a0699b80c8042e1cf63a7e0e4222'
-         '01e9e7dddf9ebcdca81d88dfdd43b4dc'
+         'e84b904230ad860e383f48bfd0efeb6e'
          '0a2bbaf74c7160ba33876dcc2f050f14'
-         'cd39a495ee93d9c77039fa74a9e9dc94'
+         'a40c2da835b16e85452f34aaa0329355'
          '1258acfc82c50a8f452ace87fef0b416')
 
 pkgver() {
