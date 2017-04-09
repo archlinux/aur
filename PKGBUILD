@@ -1,8 +1,8 @@
-# Maintainer: fclad <fcladera at fcladera.com>
+#Maintainer: fclad <fcladera at fcladera.com>
 
 _pkgname=plotly
 pkgname=python-plotly
-pkgver=1.13.0
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="An interactive, browser-based charting library for python"
 arch=('any')
@@ -10,8 +10,7 @@ url="https://plot.ly/python/"
 license=('MIT')
 depends=('python-requests' 'python-pytz')
 makedepends=('git' 'python' 'python-setuptools')
-source=('https://pypi.python.org/packages/a6/77/f58428e17a3251a9d245fb5920e7e6af56ae8de8de12fa8431c176fce329/'$_pkgname'-'$pkgver'.tar.gz')
-#source=('https://pypi.python.org/packages/source/p/'$_pkgname'/'$_pkgname'-'$pkgver'.tar.gz')
+source=('https://pypi.python.org/packages/8c/4a/9e42d13f74a2c7872ba6e7a868b152bd815c01038144570ec729ff13c065/'$_pkgname'-'$pkgver'.tar.gz')
 md5sums=('SKIP')
 
 build() {
