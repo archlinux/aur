@@ -2,7 +2,7 @@
 
 pkgname=openvpn-xor-patched
 pkgver=2.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenVPN obfuscated with xor-patch which can bypass internet censoring"
 arch=(i686 x86_64)
 url="https://github.com/Tunnelblick/Tunnelblick/tree/master/third_party/sources/openvpn"
@@ -44,7 +44,7 @@ build() {
     # Configure
     autoreconf -vi
 
-    CFLAGS="${CFLAGS} -DPLUGIN_LIBDIR=\\\"/usr/lib/openvpn\\\"" ./configure \
+    ./configure \
         --prefix=/usr \
         --enable-pkcs11 \
         --enable-crypto \
