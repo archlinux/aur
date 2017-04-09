@@ -2,7 +2,7 @@ pkgbase = latex-template-springer
 	pkgdesc = Springer templates for LNCS proceedings (llncs), monographs (svmono), multiauthor volumes (svmult), journals (svjour3), and other lecture notes (svmultln)
 	pkgver = 201309
 	pkgrel = 1
-	url = http://www.springer.com/computer/lncs?SGWID=0-164-7-72376-0
+	url = https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines
 	install = texlive.install
 	arch = any
 	makedepends = unzip
