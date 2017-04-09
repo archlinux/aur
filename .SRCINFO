@@ -1,6 +1,6 @@
 pkgbase = monogame-bin
 	pkgdesc = Open Source implementation of the Microsoft XNA 4 Framework (official binary build).
-	pkgver = 3.5.1
+	pkgver = 3.6
 	pkgrel = 1
 	url = http://www.monogame.net/
 	install = monogame.install
@@ -16,12 +16,16 @@ pkgbase = monogame-bin
 	conflicts = monogame
 	conflicts = tao-framework
 	conflicts = tao-framework-svn
-	source = http://www.monogame.net/releases/v3.5.1/monogame-sdk.run
+	source = http://www.monogame.net/releases/v3.6/monogame-sdk.run
 	source = https://raw.githubusercontent.com/mono/MonoGame/develop/LICENSE.txt
-	source = Monogame Pipeline.desktop
-	md5sums = 3cf5ca64bd9cb62db5d83066df568727
+	source = MonogamePipeline.desktop
+	source = monogame-pipeline-tool
+	source = mgcb
+	md5sums = 68d6b7a7403f718d2502250231db82f4
 	md5sums = 2c8089207448fa9571c65eb00f0c9cd1
-	md5sums = a8fd2a407aef36d2209faad11ae7b186
+	md5sums = 587c27465d575e4522de212346f3f5a0
+	md5sums = e2e0f2a74547318fc0fa7dc76e79bba8
+	md5sums = b972af897b3607d2e14bb8b51655d549
 
 pkgname = monogame-bin
 
