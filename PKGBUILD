@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gush-git
-pkgver=r30.755f5b4
+pkgver=0.1.0.1.g755f5b4
 pkgrel=1
 pkgdesc="Genetic programming / stack based language on top of Guile"
 arch=('any')
