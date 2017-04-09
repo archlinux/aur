@@ -1,7 +1,7 @@
 # Maintainer: Troy Engel <troyengel+arch@gmail.com>
 
 pkgname=nfstrace
-pkgver=0.4.3.1
+pkgver=0.4.3.2
 pkgrel=1
 pkgdesc="NFS and CIFS tracing/monitoring/capturing/analyzing tool"
 url="https://github.com/epam/nfstrace/"
@@ -11,7 +11,7 @@ makedepends=('cmake' 'libpcap' 'json-c' 'ncurses')
 
 source=("$pkgname"-"$pkgver".tar.gz::https://github.com/epam/nfstrace/archive/"$pkgver".tar.gz)
 
-sha256sums=('b2f20d66e5b167a7edf4f2bddaee81d7ae871c6f74f114e0196917bd18aed3c1')
+sha256sums=('dc57d946454d5b847e640818c912208b84bb28c03b757ba97a37bf481dba46a0')
 
 build() {
   # make sure repetitive builds are clean
