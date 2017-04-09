@@ -3,6 +3,7 @@
 pkgname=picard-plugins-v2-git
 pkgver=1.4.1.r238.0fd80b8
 _pkgver=1.4.1
+_gitbranch=2.0
 pkgrel=1
 pkgdesc="plugins from picard-plugins repository (for picard-git/Picard 2.0, currently in development)"
 arch=('any')
@@ -10,7 +11,7 @@ url="https://picard.musicbrainz.org/plugins/"
 license=('GPL')
 depends=('picard>=1.4.1.r111.g4f759c7d-1')
 conflicts=("picard<=${_pkgver}")
-source=(git+https://github.com/metabrainz/picard-plugins.git)
+source=("git+https://github.com/metabrainz/picard-plugins.git#branch=${_gitbranch}")
 md5sums=('SKIP')
 
 pkgver() {
