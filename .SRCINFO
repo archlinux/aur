@@ -1,0 +1,37 @@
+pkgbase = synfig-git
+	pkgdesc = Professional vector animation program (CLI renderer only)
+	pkgver = r8165.bd7d8b2cc
+	pkgrel = 1
+	url = http://synfig.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = boost
+	depends = libxml++2.6
+	depends = libsigc++2.0
+	depends = etl-git
+	depends = imagemagick
+	depends = ffmpeg
+	depends = fontconfig
+	depends = libpng
+	depends = libtiff
+	depends = libdv
+	depends = libmng
+	depends = cairo
+	depends = pango
+	depends = boost-libs
+	depends = mlt
+	depends = fftw
+	optdepends = openexr
+	optdepends = libsigc++
+	provides = synfig
+	conflicts = synfig-core
+	conflicts = synfig
+	replaces = synfig-core
+	source = git+https://github.com/synfig/synfig
+	source = ffmpeg-3.0.patch
+	md5sums = SKIP
+	md5sums = 62fb382cbf418f5e2f536ed73656cf89
+
+pkgname = synfig-git
+
