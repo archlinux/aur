@@ -1,20 +1,20 @@
 pkgbase = hiri
-	pkgdesc = An Exchange ready mail client aiming to replace Outlook
-	pkgver = 0.0.63.0
+	pkgdesc = An Exchange ready mail client aiming to replace Outlook (QT5)
+	pkgver = 1.0.7.0
 	pkgrel = 1
-	url = https://www.hiri.com/product/
+	url = https://www.hiri.com/
 	install = hiri.install
 	arch = x86_64
 	license = custom
 	depends = python-pyqt5
 	depends = qt5-webkit
 	depends = python-pyenchant
-	source = https://feedback.hiri.com/downloads/Hiri-x86_64-0.0.63.0.tar.gz
+	source = https://feedback.hiri.com/downloads/Hiri-x86_64-1.0.7.0.tar.gz
 	source = hiri.desktop
 	source = Hiri-EULA
 	source = hiri.sh
-	sha512sums = 039dd66f026ddd4acd504cc883d43caae37620ce184d37168a0f881596e8c6242186539435859d0a19b7571164f6591e4fe6d190af7c2f2ce6e5941e42f64fd8
-	sha512sums = c6715a2db4c6c2d873e23bea455a9ef65e0e61dd0c69c4ee9927bcb436d8b591ff89220b1b89e411a3c81858b3bb9a85265e0264e37f853c0a63f366879c8267
+	sha512sums = 4696b1fb777d66d66110b4612dc74f8491d9ebd868ae8c713cc04dd4ce05854a52349c32f8c22fec4578a8d6ac3e4243c1b75efba7a83812c4b66587a11e334b
+	sha512sums = 5afa589faa4d31419f74650d2d7735c430d236d5fe264b000154eeaeface527547db8816a45485e7d144a3151e8d5edc847fe2b5e2eb7f447ae91285064afb7d
 	sha512sums = c1640c1a3430418a72cbaa169c790a18f0571613c1c4791f8c4c12289bbc10ca361bb322baa79a1b183411bc378f7e51ed235ef49f6ace0aab92367321444b81
 	sha512sums = cafbf1f327618cb1d8914babf9cc9c2013b5db27df2a463329f9d366952c5ee592e946e727f991c8f7f558bdf7e625b91e0e029fa193650c197c6c9c6a57676d
 
