@@ -1,14 +1,14 @@
 pkgbase = ats2-contrib
 	pkgdesc = Extra libraries for the ATS2 programming language
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = http://www.ats-lang.org/
 	arch = any
 	license = GPL3
-	depends = ats2-postiats=0.3.3
+	depends = ats2-postiats=0.3.4
 	options = staticlibs
-	source = https://downloads.sourceforge.net/project/ats2-lang/ats2-lang/ats2-postiats-0.3.3/ATS2-Postiats-contrib-0.3.3.tgz
-	sha256sums = d50d04c4998daf15cc282aa7f4029f0bf184e00c1a2300c64fcab6d02a3d6556
+	source = https://downloads.sourceforge.net/project/ats2-lang/ats2-lang/ats2-postiats-0.3.4/ATS2-Postiats-contrib-0.3.4.tgz
+	sha256sums = 857829fa73ebe05dd0a457fc8c7ac54b4fb9d672fe3aee1e81a440103b0824e7
 
 pkgname = ats2-contrib
 
