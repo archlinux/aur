@@ -30,7 +30,7 @@
 
 _npmname=node-inspector
 pkgname=nodejs-$_npmname
-pkgver=0.12.8
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Web Inspector based nodeJS debugger"
 arch=('any')
@@ -40,7 +40,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('bdc6ffb4faee2ba445452bcbeb10e6160493df0f3e4b59b1e49e5313fd8a3310')
+sha256sums=('2ff855e03ba7b445066fcd14d7488673059e2e5099c450e1c70db294d56c41c3')
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$_npmname-$pkgver.tgz
