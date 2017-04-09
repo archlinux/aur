@@ -1,7 +1,7 @@
 pkgbase = kaku-bin
 	pkgdesc = The next generation music client.
 	pkgver = 1.8.5
-	pkgrel = 2
+	pkgrel = 1
 	url = http://kaku.rocks
 	arch = x86_64
 	arch = i686
@@ -14,19 +14,14 @@ pkgbase = kaku-bin
 	depends = libxss
 	depends = nss
 	depends = alsa-lib
-	optdepends = xdialog: .desktop file installation dialog
-	optdepends = zenity: .desktop file installation dialog
-	optdepends = kdialog: .desktop file installation dialog
-	optdepends = libnotify: Desktop notifications
 	conflicts = kaku
-	noextract = Kaku-1.8.5-x86_64.AppImage
 	options = !strip
 	source = https://raw.githubusercontent.com/EragonJ/Kaku/master/LICENSE
 	sha512sums = 354016d1de60b330e50f996dcdf61989091b44b28f096f7cb83f83c006cb2d51ef3da94a49d2ba73b71bc294a206a524d38a6b3c0f5bf1cc3ac6048d57624b04
-	source_x86_64 = https://github.com/EragonJ/Kaku/releases/download/1.8.5/Kaku-1.8.5-x86_64.AppImage
-	sha512sums_x86_64 = e9112dd111fcfc4d1edc9bc05f21ea3bca1f90d5759498e64a0fc453fd50fa7803f005c50f01e2b640474e497482068d8297cf020d11ce1293dc98dea80d9206
-	source_i686 = https://github.com/EragonJ/Kaku/releases/download/1.8.5/Kaku-1.8.5-ia32.AppImage
-	sha512sums_i686 = d99a5f2751fd0552e04621eb40067eb90d721a29f7be1c4d037aaff51dafbaa277d92f0e23b9293585498f6f4697f03b8638f27081fd0a34c3472fa4383e5cf0
+	source_x86_64 = https://github.com/funilrys/Kaku/releases/download/1.8.5-Linux/Kaku-1.8.5.tar.gz
+	sha512sums_x86_64 = 6de387c00e99e2b732a44942ef86be11ba98bce4869bacb6791b6cb1618f26113ae33a31ea3d9a98da2d07fb4886a71656e31458ea4ae29a7ed191565e4e3f26
+	source_i686 = https://github.com/funilrys/Kaku/releases/download/1.8.5-Linux/Kaku-1.8.5-ia32.tar.gz
+	sha512sums_i686 = 66cacc2f4e30ac4472975c46881e4446ad645d7f4adc7a6d6487c02c2a29036656017a367004b34d5ce24fdef0590b84c172fbdcabe5988e9cf5eb16e29b03f9
 
 pkgname = kaku-bin
 
