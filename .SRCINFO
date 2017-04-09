@@ -1,5 +1,5 @@
 pkgbase = linux-xanmod-git
-	pkgver = 4.10.8
+	pkgver = 4.10.9
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = i686
