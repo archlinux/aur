@@ -61,7 +61,7 @@ package() {
 
     cp -r build/${_target}/usr/share "${pkgdir}"/usr
 
-    install -Dm755 "${srcdir}"/${pkgname}.js "${pkgdir}"/usr/bin/${_pkgname}
+    install -Dm755 "${srcdir}"/${_pkgname}.js "${pkgdir}"/usr/bin/${_pkgname}
 
     install -Dm644 -t "${pkgdir}"/usr/share/licenses/${_pkgname} LICENSE.md
 
