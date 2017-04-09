@@ -1,0 +1,16 @@
+pkgbase = gifcast
+	pkgdesc = A simple GIF screen recorder
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/wfleming/gifcast
+	arch = any
+	license = MIT
+	depends = recordmydesktop
+	depends = ffmpeg
+	depends = xorg-xwininfo
+	depends = xrectsel
+	source = https://github.com/wfleming/gifcast/archive/v0.1.0.tar.gz
+	md5sums = 1f1ea71a9f972b4c9a468f063a90a956
+
+pkgname = gifcast
+
