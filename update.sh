@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm home-assistant-*pkg.tar.xz
+
 set -e
 LAST_VERSION=$(ruby -r "net/http" -r "uri" -r "json" -e 'uri = URI.parse("https://api.github.com/repos/home-assistant/home-assistant/releases"); response = Net::HTTP.get_response(uri); if response.code.to_i != 200 then puts response.code.inspect; exit(1); end; puts JSON.parse(response.body).first["name"]')
 
@@ -17,11 +19,11 @@ updpkgsums
 makepkg --printsrcinfo > .SRCINFO
 
 # install all dependencies
-cat .SRCINFO |grep -E "\s(make)?depends" | cut -d= -f2- | xargs pacaur -S --needed --noedit
+cat .SRCINFO |grep -E "\s(make)?depends" | cut -d= -f2- | awk '{print "\""$1"\""}' | xargs echo pacaur -S --needed --noedit --noconfirm
 
-makepkg -si
+makepkg -i
 
-echo "Finisedh building package"
+echo "Finished building package"
 
 sudo systemctl --no-pager status home-assistant
 
