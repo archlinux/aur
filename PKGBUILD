@@ -1,7 +1,7 @@
 # Maintainer: skydrome <skydrome at@at i2pmail do.t org>
 # Contributors:
 
-_fred=#tag=build01477
+_fred=#tag=build01478
 _contrib=#tag=v50
 
 _wot=#tag=build0019
@@ -11,7 +11,7 @@ _keyutils=#tag=v5026
 _upnp=#tag=10007
 
 pkgname=freenet
-pkgver=0.7.5.1477
+pkgver=0.7.5.1478
 pkgrel=1
 _pkgver=0.7.5
 pkgdesc="An encrypted network without censorship"
