@@ -1,0 +1,17 @@
+pkgbase = snakes-git
+	pkgdesc = Snake-based ZPG game
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/elan17/snakes-terminalsaver
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python
+	provides = snakes-git
+	conflicts = snakes-git
+	options = !emptydirs
+	source = snakes-git::git+https://github.com/elan17/snakes-terminalsaver#branch=master
+	md5sums = SKIP
+
+pkgname = snakes-git
+
