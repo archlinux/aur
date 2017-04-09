@@ -18,7 +18,7 @@
 pkgbase=kodi-git
 pkgname=('kodi-git' 'kodi-eventclients-git' 'kodi-tools-texturepacker-git' 'kodi-dev-git')
 _gitname='xbmc'
-pkgver=20170323.cb344f085b0
+pkgver=20170409.6911b811cde
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
@@ -31,14 +31,14 @@ makedepends=(
   'libvdpau' 'libxrandr' 'libxslt' 'lzo' 'nasm' 'nss-mdns' 'python2-pillow'
   'python2-pybluez' 'python2-simplejson' 'rtmpdump'
   'shairplay' 'smbclient' 'swig' 'taglib' 'tinyxml' 'unzip' 'upower' 'yajl' 'zip'
-  'mesa' 'libcrossguid-git' 'libfmt-git'
+  'mesa' 'libcrossguid-git' 'libfmt-git' 'rapidjson-git'
 )
 source=(
   "$_gitname::git://github.com/xbmc/xbmc.git"
-  '0001-fmt-does-not-have-sprintf.patch'
+  '0001-include-fmt-printf.h-to-allow-the-use-of-fmt-sprintf.patch'
 )
 sha512sums=('SKIP'
-            '0275bd3bc9c9c5edc09878364c2acc5271cad4a5598462d29b7e4e62584e469ce6501c6fe416df0374a23cbde20f6877306f7cfc72f4f51152da145c3941fdea')
+            '39c84be54caa0e4a9b57ec92a903d688703e3fc2cf6ea566efad9f2509eb286d981837e4968af1c28ffb2f5fe7a872fa546535c787a56dbdb335991514fb1a06')
 
 pkgver() {
   cd "$srcdir/$_gitname"
@@ -49,7 +49,7 @@ prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
   mkdir kodi-build
   cd $_gitname
-  patch -p1 -i "$srcdir/0001-fmt-does-not-have-sprintf.patch"
+  patch -p1 -i "$srcdir/0001-include-fmt-printf.h-to-allow-the-use-of-fmt-sprintf.patch"
 }
 
 build() {

@@ -1,0 +1,25 @@
+From 07240910e3a5a0c2f5e452d42606be75aafb7e38 Mon Sep 17 00:00:00 2001
+From: BlackEagle <ike.devolder@gmail.com>
+Date: Sun, 9 Apr 2017 15:23:04 +0200
+Subject: [PATCH] include fmt/printf.h to allow the use of fmt::sprintf
+
+Signed-off-by: BlackEagle <ike.devolder@gmail.com>
+---
+ xbmc/utils/StringUtils.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/xbmc/utils/StringUtils.h b/xbmc/utils/StringUtils.h
+index 0c1d98c2be..b04057184c 100644
+--- a/xbmc/utils/StringUtils.h
++++ b/xbmc/utils/StringUtils.h
+@@ -37,6 +37,7 @@
+ #include <locale>
+ 
+ #include <fmt/format.h>
++#include <fmt/printf.h>
+ 
+ #include "LangInfo.h"
+ #include "XBDateTime.h"
+-- 
+2.12.2
+
