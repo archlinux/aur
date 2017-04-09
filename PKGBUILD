@@ -1,8 +1,9 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: 
+# Contributor: carstene1ns <arch carsten-teibes de>
 # Contributor: DonOregano <lars@foldspace.nu>
 
 pkgname=subgit
-pkgver=3.2.2
+pkgver=3.2.4
 pkgrel=1
 pkgdesc="Provides smooth Subversion to Git migration and synchronisation"
 arch=('any')
@@ -11,7 +12,7 @@ license=('custom')
 depends=('bash' 'java-runtime>=7')
 optdepends=('subversion' 'git')
 source=("https://subgit.com/download/subgit-$pkgver.zip")
-sha256sums=('f53f20ed461326d99c85933bcd575d0f30e32506830b4bac5731ea47d3c04d57')
+sha256sums=('5c2a880c277b2c3250c726302f76a49c7e3d0b62ceaa13e4d0cb90f94584268f')
 
 package() {
   cd subgit-$pkgver
