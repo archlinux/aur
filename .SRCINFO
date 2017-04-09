@@ -1,0 +1,13 @@
+pkgbase = ruby-proj4rb
+	pkgdesc = Ruby binding for the Proj.4 Carthographic Projection library
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/rmagick/rmagick
+	arch = any
+	license = MIT
+	depends = proj
+	source = https://rubygems.org/downloads/proj4rb-1.0.0.gem
+	md5sums = 27c491bca948b72deb54e59abb87ba1e
+
+pkgname = ruby-proj4rb
+
