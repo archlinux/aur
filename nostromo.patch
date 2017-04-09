@@ -1,7 +1,7 @@
 diff -rupN nostromo-1.9.6/conf/nhttpd.conf-dist nostromo-1.9.6b/conf/nhttpd.conf-dist
 --- nostromo-1.9.6/conf/nhttpd.conf-dist	2016-04-12 14:54:16.000000000 -0400
-+++ nostromo-1.9.6b/conf/nhttpd.conf-dist	2017-04-09 00:15:35.431740659 -0400
-@@ -2,14 +2,14 @@
++++ nostromo-1.9.6b/conf/nhttpd.conf-dist	2017-04-09 11:06:02.815520612 -0400
+@@ -2,29 +2,31 @@
  
  # MAIN [MANDATORY]
  
@@ -21,7 +21,11 @@ diff -rupN nostromo-1.9.6/conf/nhttpd.conf-dist nostromo-1.9.6b/conf/nhttpd.conf
  docindex		index.html
  
  # LOGS [OPTIONAL]
-@@ -19,12 +19,12 @@ logaccess		logs/access_log
+ 
++# If you change logpid, you'll need to change the PIDFile parameter to match its absolute path
++# in the systemd nostromo.service unit.
+ logpid			logs/nhttpd.pid
+ logaccess		logs/access_log
  
  # SETUID [RECOMMENDED]
  
@@ -36,7 +40,7 @@ diff -rupN nostromo-1.9.6/conf/nhttpd.conf-dist nostromo-1.9.6b/conf/nhttpd.conf
  #htpasswd		+bsdauth
  #htpasswd		+bsdauthnossl
  
-@@ -44,12 +44,12 @@ user			_nostromo
+@@ -44,12 +46,12 @@ user			_nostromo
  
  # ALIASES [OPTIONAL]
  

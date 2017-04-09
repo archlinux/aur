@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 Type=forking
+PIDFile=/usr/share/nostromo/logs/nhttpd.pid
 PrivateDevices=yes
 ExecStart=/usr/bin/nhttpd
 ExecReload=/bin/kill -HUP $MAINPID
