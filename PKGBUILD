@@ -3,6 +3,7 @@
 _disable_mate=0
 _disable_xfce=0
 _disable_vala=0
+_disable_budgie=0
 _disable_unity_gtk_module=o
 
 _opts=(
@@ -43,6 +44,15 @@ else
 	_opts+=(-DENABLE_VALAPANEL=OFF)
 fi
 
+if (("${_disable_budgie}" == 0));then
+	_opts+=(-DENABLE_BUDGIE=ON)
+	pkgname+=('vala-panel-appmenu-budgie-git')
+	makedepends+=('budgie-desktop')
+	msg "Budgie applet enabled"
+else
+	_opts+=(-DENABLE_BUDGIE=OFF)
+fi
+
 if (("${_disable_unity_gtk_module}" == 0));then
 	_opts+=(-DENABLE_UNITY_GTK_MODULE=ON)
 	pkgname+=('appmenu-gtk-module-git')
@@ -57,7 +67,7 @@ _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
 _cmakename=cmake-vala
 _dbusmenuname=vala-dbusmenu
-pkgver=0.4.2
+pkgver=0.4.4.r0.ga36f49d
 pkgrel=1
 pkgdesc="AppMenu (Global Menu) plugin"
 url="https://github.com/rilian-la-te/vala-panel-appmenu"
@@ -108,6 +118,7 @@ package_vala-panel-appmenu-xfce-git() {
   rm -rf "${pkgdir}/usr/lib/mate-panel"
   rm -rf "${pkgdir}/usr/share/mate-panel"
   rm -rf "${pkgdir}/usr/share/dbus-1"
+  rm -rf "${pkgdir}/usr/lib/budgie-desktop"
 }
 
 package_vala-panel-appmenu-valapanel-git() {
@@ -124,6 +135,7 @@ package_vala-panel-appmenu-valapanel-git() {
   rm -rf "${pkgdir}/usr/share"
   rm -rf "${pkgdir}/usr/lib/mate-panel"
   rm -rf "${pkgdir}/usr/share/dbus-1"
+  rm -rf "${pkgdir}/usr/lib/budgie-desktop"
 }
 
 package_vala-panel-appmenu-mate-git() {
@@ -139,13 +151,32 @@ package_vala-panel-appmenu-mate-git() {
   rm -rf "${pkgdir}/usr/lib/vala-panel"
   rm -rf "${pkgdir}/usr/lib/xfce4"
   rm -rf "${pkgdir}/usr/share/xfce4"
+  rm -rf "${pkgdir}/usr/lib/budgie-desktop"
+}
+
+package_vala-panel-appmenu-budgie-git() {
+  pkgdesc="AppMenu (Global Menu) plugin for budgie-panel"
+  depends=('gtk3' 'bamf>=0.5.0' 'budgie-desktop' 'libwnck3')
+  optdepends=('gtk2-ubuntu: for hiding gtk2 menus'
+            'unity-gtk-module: for gtk2/gtk3 menus'
+            'appmenu-qt: for qt4 menus'
+            'appmenu-qt5: for qt5 menus')
+  cd "${srcdir}/${_pkgbase}"
+  make -C "lib" DESTDIR="${pkgdir}" install
+  make -C "data" DESTDIR="${pkgdir}" install
+  rm -rf "${pkgdir}/usr/lib/xfce4"
+  rm -rf "${pkgdir}/usr/share"
+  rm -rf "${pkgdir}/usr/lib/vala-panel"
+  rm -rf "${pkgdir}/usr/lib/mate-panel"
+  rm -rf "${pkgdir}/usr/share/dbus-1"
 }
 
 package_vala-panel-appmenu-translations-git() {
   pkgdesc="Translations for Global Menu"
   optdepends=('vala-panel-appmenu-xfce-git'
               'vala-panel-appmenu-valapanel-git'
-              'vala-panel-appmenu-mate-git')
+              'vala-panel-appmenu-mate-git'
+              'vala-panel-appmenu-budgie-git')
   arch=('any')
   cd "${srcdir}/${_pkgbase}"
   make -C "po" DESTDIR="${pkgdir}" install
