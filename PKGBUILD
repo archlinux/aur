@@ -3,9 +3,9 @@
 # Contributor: Splex
 
 pkgname=kokua-opensim
-pkgver=4.2.0.38988
-_pkgver=4_2_0_38988
-_pkgprever=4.2.0
+pkgver=4.2.1.39007
+_pkgver=4_2_1_39007
+_pkgprever=4.2.1
 pkgrel=1
 pkgdesc="An Open Source third party viewer for Open Simulator (opensim) grids, only."
 url="http://www.kokuaviewer.org"
@@ -15,17 +15,17 @@ depends=('apr-util' 'gtk2' 'libgl' 'libidn' 'libjpeg-turbo' 'mesa' 'nss' 'sdl' '
 optdepends=('libpulse: for PulseAudio support' 'alsa-lib: for ALSA support' 'nvidia-utils: for NVIDIA support' 'pepper-flash: for inworld Flash support' 'gstreamer0.10: for video support, may need good, bad and ugly plugins' 'lib32-freealut: for OpenAL support')
 conflicts=('kokua-secondlife')
 
-source_i686=("http://downloads.sourceforge.net/project/kokua.team-purple.p/KokuaOS-${_pkgprever}/KokuaOS_Kokua_Release_${_pkgver}_i686.tar.txz"
+source_i686=("http://downloads.sourceforge.net/project/kokua.team-purple.p/KokuaOS-${_pkgprever}/KokuaOS_${_pkgver}_i686.tar.txz"
              'kokua-opensim.desktop'
              'kokua-opensim.launcher')
 source_x86_64=("http://downloads.sourceforge.net/project/kokua.team-purple.p/KokuaOS-${_pkgprever}/KokuaOS_64_${_pkgver}_x86_64.tar.txz"
 		'kokua-opensim.desktop'
 		'kokua-opensim.launcher')
 
-md5sums_i686=('c67de927e31014d167459b968b996a79'
+md5sums_i686=('8cf03998b63ac85d5cd0d49686abf16f'
               'a5b15ff4dd93dbfc01ee6d7c799728d0'
               'dd2d31fddb0b67846c1dfd3bfed88859')
-md5sums_x86_64=('c80c9105a2e2da1eec7ed1e9de2ed105'
+md5sums_x86_64=('7ecff15fc1fc0f8166e1fbc795b8ab10'
                 'a5b15ff4dd93dbfc01ee6d7c799728d0'
                 'dd2d31fddb0b67846c1dfd3bfed88859')
 
