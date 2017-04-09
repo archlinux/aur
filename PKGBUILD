@@ -9,7 +9,7 @@ url="https://github.com/Tunnelblick/Tunnelblick/tree/master/third_party/sources/
 depends=('openssl' 'lzo' 'lz4' 'pam' 'libsystemd' 'iproute2' 'pkcs11-helper')
 optdepends=('easy-rsa: for easy key management')
 conflicts=('openvpn' 'openvpn-dev' 'openvpn-git' 'openvpn-xor-ssgit')
-provides=('openvpn=2.4.0' 'openvpn-dev')
+provides=("openvpn=${pkgver}" 'openvpn-dev')
 license=('custom')
 source=("https://github.com/Tunnelblick/Tunnelblick/raw/master/third_party/sources/openvpn/openvpn-${pkgver}/openvpn-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-${pkgver}/patches/02-tunnelblick-openvpn_xorpatch-a.diff"
@@ -18,11 +18,11 @@ source=("https://github.com/Tunnelblick/Tunnelblick/raw/master/third_party/sourc
         "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-${pkgver}/patches/05-tunnelblick-openvpn_xorpatch-d.diff"
         "https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-${pkgver}/patches/06-tunnelblick-openvpn_xorpatch-e.diff")
 sha256sums=('831a1a05268fe3b1646d367e2559cff94d347d213ca8995cc48a4eedc452097a'
-            '03c19a5753fac87b79c4cb60d0921ec35ccad717002ba9f868d50e43b1a208c3'
-            '9bd2c62cfaab9a3764215c9967674a373fdd74ad9e2105e5d1d3ec5f8f5168ea'
-            'd3ab6fd2d1cb16a61919645b170ea2332f5672636d99db4fe08f6f2b71e240d5'
-            'f6313600dda91a4df1ed3f6830fbd4c64ca6b36c1121dd44045a8d74ab3acaa6'
-            '32e1384dbbefd557dbb11e61518ca1900777dc3ca6642addd70acec96d0a6351')
+            '24e4d6d828f3b3296cc36d16c39d5bced62fab3db4226ad71e9f598ad4441993'
+            '96f755428f3ead19d0caba0098c8f9ab70cc380e9f63e5e4b705325f404f40a4'
+            'e6ee5518600fca5529dca57b4e752c0f69f98330805492f0c58869c819fd3e5a'
+            'e893bf611575d3ff749a00c5b9201d534ea1691b9c0540f15728705992780098'
+            '47b3100206b7164d7b4a1f2cce8646cd2ec6f1a62ec5902ad659df1f5e89752f')
 
 prepare() {
     cd "openvpn-${pkgver}"/
