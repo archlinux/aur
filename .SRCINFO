@@ -1,6 +1,6 @@
 pkgbase = picard-plugins-v2-git
 	pkgdesc = plugins from picard-plugins repository (for picard-git/Picard 2.0, currently in development)
-	pkgver = 1.4.1.r238.0fd80b8
+	pkgver = 1.4.1.r244.7f14c15
 	pkgrel = 1
 	url = https://picard.musicbrainz.org/plugins/
 	arch = any
