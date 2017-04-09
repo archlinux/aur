@@ -5,15 +5,16 @@
 
 pkgname="google-cloud-sdk"
 pkgver=150.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools and libraries SDK for managing resources on the Google Cloud Platform, plus kubectl and Python/PHP appengine SDK components"
 url="https://cloud.google.com/sdk/"
 license=("Apache")
 arch=('i686' 'x86_64')
 # replaces() only works for sysupgrade, not normal install/upgrade
+provides=('kubectl-bin')
 conflicts=('kubectl-bin' 'google-appengine-python-php'
            'google-appengine-python' 'google-appengine-php')
-replaces=('kubectl-bin' 'google-appengine-python-php'
+replaces=('google-appengine-python-php'
           'google-appengine-python' 'google-appengine-php')
 depends=('python2')
 makedepends=('python2')
@@ -77,7 +78,7 @@ package() {
     "$pkgdir/etc/profile.d/google-cloud-sdk.sh"
 
   msg2 "Fixing python references for python2"
-  grep -rl 'python' "$pkgdir/opt/$pkgname" | \
+  grep -Irl 'python' "$pkgdir/opt/$pkgname" | \
     xargs sed -i 's|#!.*python\b|#!/usr/bin/env python2|g'
   find "$pkgdir/opt/$pkgname/bin/" -maxdepth 1 -type f -exec \
     sed -i 's/CLOUDSDK_PYTHON=python\b/CLOUDSDK_PYTHON=python2/g' {} \;
