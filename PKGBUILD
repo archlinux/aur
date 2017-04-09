@@ -11,18 +11,21 @@ makedepends=('gcc-fortran' 'wget')
 source=("http://www.coin-or.org/download/source/Ipopt/Ipopt-$pkgver.tgz")
 sha1sums=('2a36e4a04717a8ed7012ac7d1253ae4ffbc1a8fd')
 
-build() {
+prepare(){
   cd "$srcdir/Ipopt-$pkgver/ThirdParty/ASL" && ./get.ASL
   cd "$srcdir/Ipopt-$pkgver/ThirdParty/Metis" && ./get.Metis
   cd "$srcdir/Ipopt-$pkgver/ThirdParty/Mumps" && ./get.Mumps
-  cd "$srcdir/Ipopt-$pkgver"
+}
+
+build() {
+  cd "$srcdir"
   mkdir -p build && pushd build
-  ../configure --prefix=/usr
+  "$srcdir/Ipopt-$pkgver/./configure" --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/Ipopt-$pkgver/build"
+  cd "$srcdir/build"
   PKG_CONFIG_LIBDIR="${pkgdir}/usr/lib/pkgconfig/" \
   make DESTDIR="$pkgdir/" install
 }
