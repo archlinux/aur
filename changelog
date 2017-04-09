@@ -1,0 +1,45 @@
+bracelet-generator-1.4.1-1
+  * New upstream release
+    - New feature
+        + Update checker
+    - Bug corrections
+        + Log not removed when app crashes
+        + Save button not disabled when new bracelet started
+        + App was not runnable locally on linux
+  * Added changelog
+  * Removed license installation since it is the GPL3
+
+bracelet-generator-1.4.0-1
+  * New upstream release
+    - New feature
+        + Export the pattern to text format
+    - Bug corrections
+        + mouse-scrolling in Windows
+        + mouse button bindings in OS X
+        + Added script to add Ghostscript path to the system path variable
+          in Windows because PIL cannot always find it.
+    - Compatibility
+        + Added compatibility with Tcl/Tk 8.5 since python does not
+          support Tcl/Tk 8.6 on OS X.
+  * Added python-setuptools in makedepends
+  * Removed bracelet-generator.install that uninstalled BraceletGenerator-1.2
+  * Added mimetype for bracelet files
+  
+bracelet-generator-1.3.1-4
+  * Removed gpg signature since it cannot be verified (signed by no one)
+  
+bracelet-generator-1.3.1-3
+  * Corrected download file names
+
+bracelet-generator-1.3.1-2
+  * Changed md5sums into sha512sums
+  * Added gpg signature
+
+bracelet-generator-1.3.1-1
+  * New upstream release
+    - Bug corrections: 
+        + error when opening the "about" toplevel
+        + error when opening a file that does not exist
+    - Replaced .pdf offline help by a .html page
+  * Initial AUR release
+

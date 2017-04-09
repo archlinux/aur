@@ -1,8 +1,9 @@
 pkgbase = bracelet-generator
 	pkgdesc = Friendship bracelet pattern designer
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://braceletgenerator.sourceforge.io/
+	changelog = changelog
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
@@ -13,8 +14,8 @@ pkgbase = bracelet-generator
 	depends = shared-mime-info
 	optdepends = ghostscript: export pattern to .png or .jpeg,
 	optdepends = zenity: nicer file browser and color chooser
-	source = bracelet-generator-1.4.0-src.tar.xz::https://sourceforge.net/projects/braceletgenerator/files/BraceletGenerator-1.4/bracelet-generator-1.4.0-src.tar.xz/download
-	sha512sums = 5d97d3c970cdf649f9f2ab39b81301b54f931af001ea2b793b340960d3ec1823321211a7576594a0f564963379a318ed9fb2c2f76d796a393b88ddc7c5bba83a
+	source = bracelet-generator-1.4.1-src.tar.xz::https://sourceforge.net/projects/braceletgenerator/files/BraceletGenerator-1.4/bracelet-generator-1.4.1-src.tar.xz/download
+	sha512sums = fb338e1326faf7b8bcf1e3456b00604d2cc8c7b29d1443d6720e7357fdb13e499de64f70dba2164b56ffa34d6f2454b2ad3466d8597d090dfd4202511a77e879
 
 pkgname = bracelet-generator
 
