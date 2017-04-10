@@ -1,0 +1,6 @@
+/src/
+/pkg/
+/multistrap/
+*.tar
+*.xz
+*.gz
