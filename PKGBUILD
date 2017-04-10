@@ -3,7 +3,7 @@
 
 pkgname=exomizer
 pkgver=2.0.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Compresses files in a way that tries to be as efficient as possible but still allows them to be decompressed in environments where CPU speed and RAM are limited'
 url='https://bitbucket.org/magli143/exomizer/wiki/Home'
 license=('CUSTOM')
@@ -22,7 +22,7 @@ sha512sums=(
 
 prepare() {
   if [[ "$CARCH" = 'x86_64' ]]; then
-    sed -i 's|mtune=i686|mtune=x86-64|' src/Makefile
+    sed -i 's|mtune=i686|mtune=generic|' src/Makefile
   fi
 }
 

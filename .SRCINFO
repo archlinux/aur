@@ -1,7 +1,7 @@
 pkgbase = exomizer
 	pkgdesc = Compresses files in a way that tries to be as efficient as possible but still allows them to be decompressed in environments where CPU speed and RAM are limited
 	pkgver = 2.0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bitbucket.org/magli143/exomizer/wiki/Home
 	arch = i686
 	arch = x86_64
