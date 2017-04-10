@@ -3,7 +3,7 @@
 
 _pkgname=python-jenkins
 pkgname=python-$_pkgname
-pkgver=0.4.13
+pkgver=0.4.14
 pkgrel=1
 pkgdesc="A python wrapper for the Jenkins REST API which aims to provide a more conventionally pythonic way of controlling a Jenkins server"
 url='https://git.openstack.org/cgit/openstack/python-jenkins'
@@ -12,7 +12,7 @@ arch=('any')
 makedepends=('python-setuptools')
 depends=('python' 'python-pbr' 'python-six' 'python-multi_key_dict')
 source=("https://pypi.io/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz")
-md5sums=('f0d47b7861e7eb6abd728f42b904f08e')
+md5sums=('3d3cc9e7e48809f00357ff1bbf5b6061')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
