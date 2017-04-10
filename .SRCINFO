@@ -9,7 +9,9 @@ pkgbase = regripper-git
 	depends = perl-parse-registry
 	options = !emptydirs
 	source = regripper-git::git+https://github.com/keydet89/RegRipper2.8.git
+	source = patch.diff
 	md5sums = SKIP
+	md5sums = a8455a8a0ad1fbf3880c9771db24e36e
 
 pkgname = regripper-git
 
