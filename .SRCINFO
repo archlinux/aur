@@ -1,7 +1,7 @@
 pkgbase = traefik-bin
 	pkgdesc = A modern reverse proxy
 	pkgver = 1.2.1
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/containous/traefik
 	install = traefik.install
 	arch = i686
