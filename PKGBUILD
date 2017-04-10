@@ -1,8 +1,9 @@
-# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Submitter: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Maintainer: Andrés J. Díaz <ajdiaz@ajdiaz.me>
 
 _pkgname=olm
 pkgname=libolm-git
-pkgver=1.1.0.r0.g0c3f527
+pkgver=2.2.2.r6.g001dc1e
 pkgrel=1
 pkgdesc='An implementation of a well known cryptographic ratchet in C++'
 arch=('i686' 'x86_64' 'armv7h')
@@ -25,10 +26,18 @@ build() {
   make
 }
 
-#check() {
-#  cd "$srcdir/$_pkgname"
-#  make test
-#}
+check() {
+  local flags='' major='' minor='' patch=''
+  major="${pkgver%%.*}"
+  minor="${pkgver#${major}.}"; minor="${minor%%.*}"
+  patch="${pkgver#${major}.}"; patch="${patch#${minor},}"; patch="${patch%%.*}"
+  flags+="-O2 -Iinclude -Itests/include -Ilib "
+  flags+="-DOLMLIB_VERSION_MAJOR=${major} "
+  flags+="-DOLMLIB_VERSION_MINOR=${minor} "
+  flags+="-DOLMLIB_VERSION_PATCH=${patch} "
+  cd "$srcdir/$_pkgname"
+  make test CPPFLAGS+="$flags" DEBUG_OPTIMIZE_FLAGS=''
+}
 
 package() {
   cd "$srcdir/$_pkgname"
