@@ -13,7 +13,7 @@ _upstream="compiz"
 pkgbase=compiz-core-git
 pkgname=(compiz-core-git compiz-gtk-git)
 pkgver=0.8.12.3.r84.g20335d7d
-pkgrel=1
+pkgrel=2
 pkgdesc="This is the latest git release of Compiz without DE deps"
 url="https://github.com/compiz-reloaded/${_upstream}"
 license=('GPL' 'LGPL' 'MIT')
@@ -113,9 +113,9 @@ package_compiz-gtk-git()
   depends+=('compiz-core-git')
   #separating libmarco-private would be nice, but this is a workaround for now
   if (("${_use_marco}" == 1));then
-    depends+=('marco-gtk2')
-  elif (("${_use_marco}" == 2));then
     depends+=('marco')
+  elif (("${_use_marco}" == 2));then
+    depends+=('marco-gtk2')
   fi
 
   if (( "${_use_gtk3}" >= 1 ));then
