@@ -1,3 +1,4 @@
+# Maintainer: Amos Onn <amosonn at gmail dot com>
 pkgname=python-heapdict
 pkgver=1.0.0
 pkgrel=1
