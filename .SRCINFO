@@ -1,0 +1,16 @@
+pkgbase = android-x86-system-image-17
+	pkgdesc = Android x86 Atom System Image, API-17
+	pkgver = 4.2.2_r02
+	pkgrel = 1
+	url = https://software.intel.com/en-us/android/articles/intel-atom-x86-image-for-android-4-2-jelly-bean-installation-instructions-recommended
+	arch = any
+	license = custom
+	depends = android-platform-17
+	optdepends = qemu
+	optdepends = libvirt
+	options = !strip
+	source = https://dl.google.com/android/repository/sys-img/android/sysimg_x86-17_r02.zip
+	sha1sums = bd8c7c5411431af7e051cbe961be430fc31e773d
+
+pkgname = android-x86-system-image-17
+
