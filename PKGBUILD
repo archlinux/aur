@@ -3,7 +3,7 @@
 
 pkgname=dbeaver-ee
 pkgver=4.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A free universal database tool for developers and database administrators. Enterprise Edition includes NoSQL database support"
 arch=('i686' 'x86_64')
 url="http://dbeaver.jkiss.org/"
@@ -39,9 +39,9 @@ package() {
     mkdir -p usr/share/applications
     mkdir -p usr/share/icons/hicolor/48x48/apps
 
-    cp -r $srcdir/$pkgname opt/
-    cp opt/${pkgname}/icon.xpm usr/share/icons/hicolor/48x48/apps/${pkgname}.xpm
+    cp -r $srcdir/$pkgname/dbeaver opt/$pkgname
+    chmod +x opt/$pkgname/dbeaver
+    cp opt/$pkgname/icon.xpm usr/share/icons/hicolor/48x48/apps/${pkgname}.xpm
     ln -s /opt/${pkgname}/dbeaver usr/bin/dbeaver-ee
     install -m 644 $srcdir/dbeaver-ee.desktop $pkgdir/usr/share/applications/
 }
-
