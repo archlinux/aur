@@ -3,13 +3,13 @@
 
 pkgname=('ogdf-snapshot' 'ogdf-snapshot-docs')
 pkgver=2017_02_16
-pkgrel=1
+pkgrel=2
 pkgdesc="OGDF is a self-contained C++ class library for the automatic layout of diagrams. OGDF offers sophisticated algorithms and data structures to use within your own applications or scientific projects."
 arch=('i686' 'x86_64')
 url="http://amber-v7.cs.tu-dortmund.de/doku.php/start"
 license=('GPL')
 makedepends=('cmake' 'doxygen' 'graphviz' 'bash')
-conflicts=('ogdf')
+conflicts=('ogdf' 'coin-or-clp' 'coin-or-osi' 'coin-or-coinutils')
 source=("$pkgname-${pkgver//_/-}.zip::http://amber-v7.cs.tu-dortmund.de/lib/exe/fetch.php/tech:$pkgname-${pkgver//_/-}.zip")
 sha256sums=("5c76b842dfab8e41c4cb6ab829f4c28d9ea2be9bb68a70c94e51e4867b1ca655")
 
