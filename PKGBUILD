@@ -2,7 +2,7 @@
 
 pkgbase=medusa-emu-git
 pkgname=('libmedusa-emu-git' 'medusa-emu-sdl-git' 'medusa-emu-qt-git')
-pkgver=r4792.2a968d25
+pkgver=r4806.93792900
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://mgba.io/'
@@ -18,7 +18,11 @@ pkgver() {
 }
 
 prepare() {
-  [[ ! -d build ]] && mkdir build || rm -rf build
+  if [[ -d build ]]; then
+    rm -rf build && mkdir build
+  else
+    mkdir build
+  fi
 }
 
 build() {
@@ -39,7 +43,7 @@ package_libmedusa-emu-git() {
 }
 
 package_medusa-emu-sdl-git() {
-  pkgdesc='An up and coming release of the mGBA emulator with GB, GBA and DS support (SDL)'
+  pkgdesc='An up and coming release of the mGBA emulator with DS support'
   depends=('libmedusa-emu-git' 'sdl2' 'libepoxy')
   conflicts=('medusa-emu-sdl' 'medusa')
   provides=('medusa-emu-sdl')
@@ -51,7 +55,7 @@ package_medusa-emu-sdl-git() {
 }
 
 package_medusa-emu-qt-git() {
-  pkgdesc='An up and coming release of the mGBA emulator with GB, GBA and DS support - Qt5 UI'
+  pkgdesc='An up and coming release of the mGBA emulator with DS support - Qt5 UI'
   depends=('libmedusa-emu-git' 'qt5-base' 'qt5-multimedia' 'sdl2' 'libepoxy')
   conflicts=('medusa-emu-qt')
   provides=('medusa-emu-qt')
