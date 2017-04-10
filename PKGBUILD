@@ -1,32 +1,27 @@
 pkgname=mup
 pkgver=6.5
-pkgrel=1
-pkgdesc="Mup music typesetting"
-arch=('x86_64')
-url=""
-license=('GPL')
-groups=()
-depends=('fltk')
-makedepends=('gcc')
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-#install=
-changelog=
+pkgrel=2
+pkgdesc="Music publisher, creates PostScript printed music or MIDI"
+arch=('i686' 'x86_64')
+url="http://arkkra.com"
+license=('custom:BSD-like')
+depends=('fltk' 'libxpm')
 source=('ftp://ftp.arkkra.com/pub/unix/mup65src.tar.gz')
-noextract=()
-md5sums=('ea79b26a00e0d9ef0924166429aa5a32') 
+sha256sums=('b6999b271b6a9ad3bdeabb757e83d5340482b93a7b00513b9ecc5253a62ec7fe')
+
+prepare() {
+  cd $pkgname-$pkgver
+  sed -i 's|doc/packages|doc|' makefile
+  sed -n '1,40p' mup/mainlist.c > LICENSE
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-
