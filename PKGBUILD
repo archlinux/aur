@@ -78,3 +78,9 @@ package() {
 # curly brackets ({})
 #     v-brace-straight : More straight braces.
 #     v-brace-curly : More curly braces (default).
+# dollar symbol ($):
+#     v-dollar-open : Dollar symbol with open contour.
+#     v-dollar-through : Dollar symbol with strike-through vertical bar (default).
+# Number sign (#):
+#     v-numbersign-upright : Number sign with vertical bars (default).
+#     v-numbersign-slanted : Number sign with slanted bars.
