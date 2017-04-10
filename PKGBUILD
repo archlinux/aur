@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=python2-pythonmagick
 pkgver=0.9.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Object-oriented Python2 bindings for the ImageMagick library"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
@@ -16,6 +16,7 @@ build() {
   cd "$srcdir/PythonMagick-$pkgver"
   perl autogen.pl
 
+  PYTHON=python2 \
   CPPFLAGS="`python2-config --includes`" \
   PYTHON_LIB="`python2-config --libs`" \
   ./configure --prefix=/usr
