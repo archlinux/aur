@@ -22,3 +22,9 @@ echo mkaurball -f
 mkaurball -f
 makepkg
 mksrcinfo
+
+rm sha256sums.txt
+wget "http://jenkins.terasology.org/job/DistroOmega/$2/artifact/distros/omega/build/distributions/sha256sums.txt"
+if ! sha256sum -c sha256sums.txt; then
+	exit 1
+fi
