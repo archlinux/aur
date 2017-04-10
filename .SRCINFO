@@ -1,0 +1,20 @@
+pkgbase = plasma5-applets-tempreader-widget-git
+	pkgdesc = Plasmoid for Plasma 5 which shows temperature from DS18B20 sensors.
+	pkgver = r1.172ba52
+	pkgrel = 1
+	url = https://github.com/jtyr/plasma-tempreader
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = plasma-workspace
+	depends = qt5-graphicaleffects
+	provides = plasma5-applets-tempreader-widget
+	conflicts = plasma5-applets-tempreader-widget
+	conflicts = plasma-applet-tempreader-widget-git
+	source = git+https://github.com/jtyr/plasma-tempreader.git
+	md5sums = SKIP
+
+pkgname = plasma5-applets-tempreader-widget-git
+
