@@ -1,7 +1,7 @@
 pkgbase = perl-lockfile-simple
 	pkgdesc = Perl/CPAN Module Crypt::Simple
 	pkgver = 0.208
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/LockFile-Simple
 	arch = any
 	license = GPL
