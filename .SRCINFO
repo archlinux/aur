@@ -1,0 +1,17 @@
+pkgbase = marlowe
+	pkgdesc = Shakespeare to C transpiler forked from spl with fixes
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://bitbucket.org/kcartmell/marlowe/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bison
+	depends = flex
+	source = https://bitbucket.org/kcartmell/marlowe/downloads/marlowe-1.0.tar.gz
+	source = marlowe-1.0-Makefile.patch
+	sha512sums = 48e1052e8e6fb28e97ec174784b0099613f05d6579edfdec478aa30a3498c30ccc079a0c53ebc72e3922618ceefd3e06b243f08a5a6177e2e76190448f84cc6b
+	sha512sums = 1f5699546d0fedbc59752ffd3318caf2cd3b4ac11ecb5042c97bcd60aee1b31efe894e5d9891bf2c40a7efeb5536fbde781515ec4249c3bbb9ef991f3450f516
+
+pkgname = marlowe
+

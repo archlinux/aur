@@ -1,0 +1,39 @@
+--- Makefile	2017-04-09 23:12:10.641076036 -0500
++++ Makefile2	2017-04-10 00:00:34.860597106 -0500
+@@ -26,12 +26,12 @@
+ DISTNAME = $(NAME)-$(VERSION)
+ 
+ # compiler commands 
+-AR      = ar
+-CC      = gcc
+-LEX     = flex
+-RANLIB  = ranlib
+-TAR     = tar
+-YACC    = bison
++AR      ?= ar
++CC      ?= gcc
++LEX     ?= flex
++RANLIB  ?= ranlib
++TAR     ?= tar
++YACC    = bison # Doesn't like yacc
+ 
+ INCLUDEPATH = include
+ EDITORPATH  = editor
+@@ -42,7 +42,7 @@
+ 
+ # compiler flags
+ YACCFLAGS = --verbose
+-CCFLAGS   = -O2 -Wall
++CCFLAGS   = -Wall $(CFLAGS)
+ LEXFLAGS  = -Cem
+ 
+ .PHONY: all clean examples install libspl tar
+@@ -86,7 +86,7 @@
+ 	$(CC) $(CCFLAGS) -c $<
+ 
+ spl2c: grammar.tab.o scanner.o strutils.o
+-	$(CC) $^ $(CCFLAGS) -lfl -o $@
++	$(CC) $^ $(CCFLAGS) $(LDFLAGS) -lfl -o $@
+ 
+ strutils.o: strutils.c strutils.h
+ 	$(CC) $(CCFLAGS) -c $<
