@@ -2,7 +2,7 @@
 
 pkgbase=gtk4-git
 pkgname=(gtk4-update-icon-cache-git gtk4-git gtk4-print-backends-git)
-pkgver=3.90.0.r1.gc638fb952c
+pkgver=3.90.0.r22.g79f817286e
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (GIT Version)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('adwaita-icon-theme'
          'cairo>=1.14.0'
          'dconf'
          'desktop-file-utils'
-         'glib2-git>=2.51.5'
+         'glib2-git>=2.52.0'
          'gdk-pixbuf2>=2.30.0'
          'json-glib'
          'libcups'
@@ -32,7 +32,7 @@ depends=('adwaita-icon-theme'
          'shared-mime-info'
          'wayland-git>=1.9.91'
          'wayland-protocols-git>=1.7'
-         'graphene-git>=1.5.1')
+         'graphene>=1.5.1')
 makedepends=('gobject-introspection-git'
              'gtk-doc'
              'git'
