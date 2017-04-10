@@ -3,7 +3,7 @@
 
 _pkgname=jenkins-job-builder
 pkgname=python-$_pkgname
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Takes simple descriptions of Jenkins jobs in YAML or JSON format and uses them to configure Jenkins'
 url='http://docs.openstack.org/infra/system-config/jjb.html'
@@ -12,7 +12,7 @@ arch=('any')
 makedepends=('python-setuptools')
 depends=('python-yaml' 'python-python-jenkins')
 source=("https://pypi.io/packages/source/j/$_pkgname/$_pkgname-$pkgver.tar.gz")
-md5sums=('a34d25d93937ea0a13a73414c85c6564')
+md5sums=('27877cd4ec3dada51a97442c23fa5f21')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
