@@ -2,7 +2,7 @@
 
 pkgbase=mgba-git
 pkgname=('libmgba-git' 'mgba-sdl-git' 'mgba-qt-git')
-pkgver=r4420.473ae29d
+pkgver=r4421.7bc6c579
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://mgba.io/'
@@ -18,7 +18,11 @@ pkgver() {
 }
 
 prepare() {
-  [[ ! -d build ]] && mkdir build || rm -rf build
+  if [[ -d build ]]; then
+    rm -rf build && mkdir build
+  else
+    mkdir build
+  fi
 }
 
 build() {
