@@ -1,5 +1,5 @@
 pkgname='python-calc'
-pkgver=20170331.4.28960fa
+pkgver=6.38bd96b
 pkgrel=1
 pkgdesc='A minimalist scientific calculator for python.'
 arch=('any')
@@ -10,9 +10,9 @@ source=('git+https://github.com/ewtoombs/python-calc.git')
 md5sums=('SKIP')
 
 pkgver () {
-    _date="$(date '+%Y%m%d')"
+    #_date="$(date '+%Y%m%d')"
 	cd "$srcdir/$pkgname"
-	echo "$_date.$(git rev-list --count master).$(git rev-parse --short master)"
+	echo "$(git rev-list --count master).$(git rev-parse --short master)"
 }
 
 package () {
