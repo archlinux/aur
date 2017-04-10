@@ -1,7 +1,7 @@
 
 # Maintainer: Juan Toca <elan17.programacion@gmail.com>
 pkgname=snakes-git
-pkgver=r43.d467734
+pkgver=r46.5cfde04
 pkgrel=1
 pkgdesc="Snake-based ZPG game"
 arch=('any')

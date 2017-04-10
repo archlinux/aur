@@ -1,6 +1,6 @@
 pkgbase = snakes-git
 	pkgdesc = Snake-based ZPG game
-	pkgver = r43.d467734
+	pkgver = r46.5cfde04
 	pkgrel = 1
 	url = https://github.com/elan17/snakes-terminalsaver
 	arch = any
