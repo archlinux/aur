@@ -1,16 +1,17 @@
-# Maintainer: Kevin MacMartin <prurigro@gmail.com>
+# Maintainer: Jordan Day < jordanday444 at gmail dot com >
+# Contributor: Kevin MacMartin <prurigro@gmail.com>
 
 pkgname=exomizer
 pkgver=2.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Compresses files in a way that tries to be as efficient as possible but still allows them to be decompressed in environments where CPU speed and RAM are limited'
-url='http://hem.bredband.net/magli143/exo/'
+url='https://bitbucket.org/magli143/exomizer/wiki/Home'
 license=('CUSTOM')
 arch=('i686' 'x86_64')
 depends=('glibc')
 
 source=(
-  "http://hem.bredband.net/magli143/exo/$pkgname${pkgver//\.}.zip"
+  "https://bitbucket.org/magli143/exomizer/wiki/downloads/$pkgname${pkgver//\.}.zip"
   'LICENSE'
 )
 
