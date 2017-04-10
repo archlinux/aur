@@ -1,3 +1,4 @@
+# Maintainer: Amos Onn <amosonn at gmail dot com>
 pkgname=python-zict
 pkgver=0.1.1
 pkgrel=1
