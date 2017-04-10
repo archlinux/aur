@@ -2,7 +2,7 @@
 # Contributor: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=wp-cli-git
-pkgver=r4980.ff2d57c
+pkgver=r7283.f9f27c5f
 pkgrel=1
 pkgdesc="A command-line tool for managing WordPress"
 url="http://wp-cli.org/"
@@ -41,7 +41,7 @@ check() {
 
 package() {
   cd ${pkgname}
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm655 wp-cli.phar "${pkgdir}/usr/bin/wp"
   install -Dm644 utils/wp-completion.bash "${pkgdir}/usr/share/bash-completion/completions/wp"
 }
