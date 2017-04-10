@@ -29,6 +29,11 @@ for file in $(cat filelist); do
         _fail $file
       fi
       ;;
+    INTERWIN.DAT)
+      if ! find "$_tftdpath" -path "*GEODATA/$file" -exec cp "{}" . \; &>/dev/null; then
+        _fail $file
+      fi
+      ;;
     *)
       if ! find "$_tftdpath" -name "$file" -exec cp "{}" . \; &>/dev/null; then
         _fail $file
