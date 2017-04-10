@@ -1,14 +1,14 @@
 ## Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer-network-audio-daemon
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Signalyst Network Audio Daemon"
 arch=('x86_64')
 url="http://www.signalyst.com/consumer.html"
 license=('custom')
 depends=('alsa-lib' 'gcc-libs' 'glibc')
-source=("https://www.signalyst.eu/bins/naa/linux/stretch/networkaudiod_3.5.0-34_amd64.deb" 'networkaudio@.service' 'copyright')
+source=("https://www.signalyst.eu/bins/naa/linux/xenial/networkaudiod_3.5.1-35_amd64.deb" 'networkaudio@.service' 'copyright')
 sha256sums=('SKIP' 'fe16438e5905dbe0cea2d49404aa7bed6cf7f1ab1769c3cbcccc664ebd3dd309' '9dfe227985be1cb760d1ac3166b13e46345c64132f47a3f18f82ec0d5c121118')
 
 package() {
