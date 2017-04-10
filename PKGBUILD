@@ -1,6 +1,6 @@
 # Maintainer: Shell Chen <aur@sorz.org>
 pkgname=sstp-server
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A Secure Socket Tunneling Protocol (SSTP) server."
 url="https://github.com/sorz/sstp-server"
@@ -12,7 +12,7 @@ depends=('python2>=2.7' 'python2-twisted' 'python2-service-identity' 'python2-ar
 makedepends=('python2-setuptools')
 source=("https://github.com/sorz/sstp-server/archive/v$pkgver.tar.gz"
 	"sstp-server@.service")
-sha256sums=('948884622d1b399a1d5b2195d70bbb55a1745458d905b60a880efee59803d7e7'
+sha256sums=('e715c1e3252c94a34b9d8a4bc2c817f192aae6df36969c1af73b211b4be53067'
             '15cd7335939668d7f8487574ae457192257550ceadf50fb74393536997a42c10')
 
 build() {
