@@ -12,8 +12,8 @@ _channel=developer
 
 _release_year=2017
 _release_month=04
-_release_day=08
-_release_time=07-47-47
+_release_day=09
+_release_time=07-47-15
 _release_version=54.0a2
 
 pkgname="${_name}-${_channel}-de"
@@ -45,7 +45,7 @@ package() {
     install -Dm644 $srcdir/vendor.js $pkgdir/opt/firefox-$_channel/browser/defaults/preferences/vendor.js
 }
 
-sha512sums=('91be3a998420bc7bd1a20263e142add14acef92678ad8f29e618b7614b5af4c5717d56fc0bb5ce17e49ebd287c7797ec8a2f1d060b567afe362cc6d98bfae00b'
+sha512sums=('31ee1caacc50ffe5b1258db2a08882a5f0e16ff9017638d2c019ce6ebcecc4ea6bfcd9b5fbae0323297469d2d77ac7d4ab8899447f973549280fca2c45f16886'
             'SKIP'
             'f79af68a2d34dd60c89755094ac5d8675fe968d18897683efebdeec56c5ed56ca87276d83dc48c0ba91e2697dc4c39c29fe49245d8eb22ef84e8515917ea7e2b'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
