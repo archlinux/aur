@@ -7,7 +7,7 @@ pkgname=('xorg-server-nosystemd' 'xorg-server-xephyr-nosystemd' 'xorg-server-xdm
 		 'xorg-server-xnest-nosystemd' 'xorg-server-xwayland-nosystemd' 'xorg-server-common-nosystemd' 'xorg-server-devel-nosystemd')
 _pkgbase=xorg-server
 pkgver=1.19.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
@@ -23,7 +23,8 @@ source=(https://xorg.freedesktop.org/releases/individual/xserver/${_pkgbase}-${p
         nvidia-add-modulepath-support.patch
         xvfb-run
         xvfb-run.1
-        xserver-autobind-hotplug.patch)
+        xserver-autobind-hotplug.patch
+        modesetting-Set-correct-DRM-event-context-version.patch)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
@@ -32,7 +33,8 @@ sha256sums=('677a8166e03474719238dfe396ce673c4234735464d6dadf2959b600d20e5a98'
             '914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
-            'fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57')
+            'fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57'
+            '831a70809e6bec766138d7a1c96643732df9a2c0c5f77ee44b47ce4be882e0af')
 
 prepare() {
   cd "${_pkgbase}-${pkgver}"
@@ -41,6 +43,8 @@ prepare() {
   patch -Np1 -i ../nvidia-add-modulepath-support.patch
   # patch from Fedora, not yet merged
   patch -Np1 -i ../xserver-autobind-hotplug.patch
+  # merged in trunk
+  patch -Np1 -i ../modesetting-Set-correct-DRM-event-context-version.patch
 
   autoreconf -vfi
 }
