@@ -10,8 +10,6 @@ test:
     - master
   before_script:
     - pacman -Syuw --noconfirm
-    - rm /etc/ssl/certs/ca-certificates.crt
-    - pacman -Su --noconfirm
     - pacman -Syyu namcap --noconfirm
     - useradd somebody
     - echo "somebody ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
@@ -22,8 +20,6 @@ github:
   stage: deploy
   before_script:
     - pacman -Syuw --noconfirm
-    - rm /etc/ssl/certs/ca-certificates.crt
-    - pacman -Su --noconfirm
     - pacman -Syyu git --noconfirm
     - git checkout "$CI_BUILD_REF_NAME"
     - git remote add github https://"$GITHUB_USERNAME":"$GITHUB_TOKEN"@github.com/sanduhrs/arch-aur-traefik-bin
@@ -40,8 +36,6 @@ aur:
   stage: deploy
   before_script:
     - pacman -Syuw --noconfirm
-    - rm /etc/ssl/certs/ca-certificates.crt
-    - pacman -Su --noconfirm
     - pacman -Syyu git openssh --noconfirm
     - eval $(ssh-agent -s)
     - ssh-add <(echo "$SSH_PRIVATE_KEY")
