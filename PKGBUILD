@@ -12,7 +12,7 @@ license=('apache')
 depends=('python2' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
          'sqlite' 'ncurses' 'libkqueue' 'libblocksruntime')
 makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.8' 'python2-six' 'perl'
-             'python2-sphinx' 'python2-requests')
+             'python2-sphinx' 'python2-requests' 'rsync')
 
 source=(
     "swift-${_swiftver}.tar.gz::https://github.com/apple/swift/archive/swift-${_swiftver}.tar.gz"
@@ -52,7 +52,8 @@ prepare() {
     sed -i '/^cmake_minimum_required/a set(Python_ADDITIONAL_VERSIONS 2.7)' \
          "$srcdir/swift-lldb-swift-${_swiftver}/CMakeLists.txt"
     sed -i 's/\<python\>/&2/' \
-         "$srcdir/swift-swift-${_swiftver}/utils/build-script-impl"
+         "$srcdir/swift-swift-${_swiftver}/utils/build-script-impl" \
+         "$srcdir/swift-swift-${_swiftver}/test/sil-passpipeline-dump/basic.test-sh"
 
     # Use directory names which build-script expects
     for sdir in llvm clang lldb cmark llbuild; do
