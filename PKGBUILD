@@ -42,5 +42,5 @@ package() {
     chmod 755 "$pkgdir/usr/share/$pkgname/Kaku" "$pkgdir/usr/share/$pkgname/libnode.so" "$pkgdir/usr/share/$pkgname/libffmpeg.so"
     chmod 755 -R "$pkgdir/usr/share/$pkgname/resources/"
 
-    ln -s $pkgdir/usr/share/$pkgname/Kaku $pkgdir/usr/bin/kaku
+    ln -s /usr/bin/kaku $pkgdir/usr/bin/kaku
 }
