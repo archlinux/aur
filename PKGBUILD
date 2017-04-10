@@ -14,11 +14,10 @@ optdepends=('libxnvctrl: NVIDIA GPU support')
 makedepends=('gnome-common' 'intltool')
 install=indicator-sensors.install
 source=("git+https://github.com/alexmurray/indicator-sensors"
-        {menu-cleanup,reduce-logging}.patch
+        'menu-cleanup.patch'
         'is-udisks2.rules')
 md5sums=('SKIP'
          '7f41886142704131faba29ce87ae07ed'
-         '4a1c2fc97d24d4246c7f7e04761a9362'
          '73468b5a1034ed57cb94c48ba26d2300')
 
 pkgver() {
@@ -31,7 +30,6 @@ prepare() {
 
   #Cleanup indicator menu (remove "about" and "quit")
   patch -Np2 < ../menu-cleanup.patch
-  #patch -Np2 < ../reduce-logging.patch
 }
 
 build() {
