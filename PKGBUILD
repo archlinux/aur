@@ -2,7 +2,7 @@
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 pkgname=arpage
 pkgver=0.3.3
-pkgrel=8
+pkgrel=9
 pkgdesc="JACK MIDI arpeggiator with transport and tempo sync"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/arpage/"
