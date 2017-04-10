@@ -1,5 +1,5 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
-pkgname=libtensorflow-cpu
+pkgname=libtensorflow-gpu
 pkgver=1.0.0
 pkgrel=1
 epoch=
@@ -12,7 +12,7 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=('tensorflow' 'libtensorflow', 'libtensorflow-gpu')
+conflicts=('tensorflow' 'libtensorflow', 'libtensorflow-cpu')
 replaces=()
 backup=()
 options=()

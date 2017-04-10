@@ -1,4 +1,4 @@
-pkgbase = libtensorflow-cpu
+pkgbase = libtensorflow-gpu
 	pkgdesc = Assembled TenforFlow library for computation using data flow graphs on GPU.
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -8,9 +8,9 @@ pkgbase = libtensorflow-cpu
 	license = Apache-2.0
 	conflicts = tensorflow
 	conflicts = libtensorflow,
-	conflicts = libtensorflow-gpu
+	conflicts = libtensorflow-cpu
 	source = https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-gpu-linux-x86_64-1.0.0.tar.gz
 	md5sums = 2ff7693a0dbc205a41706f368a2e23d3
 
-pkgname = libtensorflow-cpu
+pkgname = libtensorflow-gpu
 
