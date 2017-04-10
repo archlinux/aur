@@ -1,7 +1,7 @@
 pkgbase = keepass-plugin-http-git
 	pkgdesc = KeePass plugin to expose password entries securely (256bit AES/CBC) over HTTP
-	pkgver = r172.ee08d76
-	pkgrel = 2
+	pkgver = 20170203
+	pkgrel = 1
 	url = http://github.com/pfn/keepasshttp
 	arch = any
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = keepass-plugin-http-git
 	conflicts = keepasshttp
 	conflicts = keepass-plugin-http
 	source = https://github.com/pfn/keepasshttp/raw/master/KeePassHttp.plgx
-	sha256sums = 430948219b0bc282fbf0760da7b66f72b13eee4db57de457e563342d253bd8ae
+	sha256sums = SKIP
 
 pkgname = keepass-plugin-http-git
 
