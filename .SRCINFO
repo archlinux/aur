@@ -1,7 +1,7 @@
 pkgbase = testssl.sh
 	pkgdesc = Testing TLS/SSL encryption
 	pkgver = 2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/drwetter/testssl.sh
 	arch = any
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = testssl.sh
 	depends = util-linux
 	depends = openssl
 	source = testssl-2.8.sh::https://github.com/drwetter/testssl.sh/raw/v2.8/testssl.sh
-	sha256sums = 9c39a790bc90ac0e4707ca851ec2d2b9a282467db1ce091a401088692be6923c
+	sha256sums = aa5b9de55f7560a1a1c3ce174d40afd70878b2061aea889dfc9dc28f8883745e
 
 pkgname = testssl.sh
 
