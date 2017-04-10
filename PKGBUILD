@@ -6,7 +6,7 @@ _gitbranch=master
 pkgname="python-${_gitname}-git"
 pkgdesc='Themer is a colorscheme generator and manager for your desktop.'
 pkgver=0.0.0
-pkgrel=5
+pkgrel=6
 url="https://github.com/s-ol/${_gitname}"
 license=('MIT')
 arch=('any')
@@ -28,12 +28,14 @@ package() {
   cd "${_gitname}"
   python setup.py install --root="${pkgdir}" --optimize=1
 
-  # Default Configuration
-  install -Dm644 "data/default" "${pkgdir}/usr/share/${_gitname}/default"
-
-  # Fish Completion
-  install -Dm644 "data/fish/themer.fish" "${pkgdir}/usr/share/fish/completions/${_gitname}.fish"
-
   # License
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
+
+  cd data/
+
+  # Fish Completion
+  install -Dm644 "fish/themer.fish" "${pkgdir}/usr/share/fish/completions/${_gitname}.fish"
+
+  # Default Configuration
+  find default -type f -exec install -Dm 644 '{}' "${pkgdir}/usr/share/${_gitname}/{}" ';'
 }
