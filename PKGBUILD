@@ -10,12 +10,12 @@
 # -Increase fragment samplers threshold (see https://bugs.winehq.org/show_bug.cgi?id=41213 ) OPTIONAL
 
 pkgname=wine-gaming-nine
-pkgver=2.4
-pkgrel=2
+pkgver=2.5
+pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
-_d3d9ver=$_pkgbasever
-#_d3d9ver=2.3
+#_d3d9ver=$_pkgbasever
+_d3d9ver=2.4
 _winesrcdir="wine-patched-staging-$_pkgbasever"
 
 source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbasever.tar.gz"
@@ -27,7 +27,7 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
         steam.patch
         wbemprox_query_v2.patch
         )
-sha1sums=('01bed6183f1dc6409d54cf3f228a95fbf438a3d0'
+sha1sums=('65bb8c2acd62e52793dba5c382c4eac32b7810c6'
           '1924b95f6c12d7ac7efeb9482d1330d17a4b5103'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
           '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
