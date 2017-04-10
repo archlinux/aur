@@ -1,10 +1,11 @@
-# Maintainer: Doug Newgard <scimmia22 at outlook dot com>
-# Contributor: Ronald van Haren <ronald.archlinux.org>
+# Submitter: Doug Newgard <scimmia22 at outlook dot com>
+# Contributor: Ronald vandd Haren <ronald.archlinux.org>
+# Current Maintainer: chchch
 
 _pkgname=ephoto
 pkgname=$_pkgname-git
-pkgver=1.0beta2
-pkgrel=2
+pkgver=1.0beta3
+pkgrel=1
 pkgdesc="A light image viewer based on EFL"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
@@ -13,11 +14,13 @@ depends=('efl')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git://git.enlightenment.org/apps/$_pkgname.git")
+#source=("git://git.enlightenment.org/apps/$_pkgname.git")
+source=("http://www.smhouston.us/stuff/ephoto-1.0-beta3.tar.gz")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+#  cd $_pkgname-$pkgver
+cd ephoto-1.0-beta3
 
   local efl_version=$(grep -m1 EFL_VERSION configure.ac | awk -F [][] '{print $2 "." $4 "." $6}')
   efl_version=$(awk -F , -v efl_version=${efl_version%.} '/^AC_INIT/ {gsub(/efl_version/, efl_version); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
@@ -26,7 +29,8 @@ pkgver() {
 }
 
 build() {
-  cd $_pkgname
+#  cd $_pkgname-$pkgver
+cd ephoto-1.0-beta3
 
   ./autogen.sh \
     --prefix=/usr \
@@ -36,7 +40,8 @@ build() {
 }
 
 package() {
-  cd $_pkgname
+#  cd $_pkgname-$pkgver
+cd ephoto-1.0-beta3
 
   make DESTDIR="$pkgdir" install
 
