@@ -1,0 +1,16 @@
+pkgbase = perl-parse-registry
+	pkgdesc = Parse::Win32Registry is a module for parsing Windows Registry files, allowing you to read the keys and values of a registry file without going through the Windows API.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://metacpan.org/pod/Parse::Win32Registry
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/J/JM/JMACFARLA/Parse-Win32Registry-1.0.tar.gz
+	md5sums = 4451f149e8f15a5110136702c7c848a7
+
+pkgname = perl-parse-registry
+
