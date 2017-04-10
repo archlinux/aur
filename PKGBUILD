@@ -5,7 +5,7 @@
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
 pkgver=1.19.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
@@ -20,6 +20,7 @@ makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 
 source=(https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2{,.sig}
         nvidia-add-modulepath-support.patch
         xserver-autobind-hotplug.patch
+        modesetting-Set-correct-DRM-event-context-version.patch
         xvfb-run
         xvfb-run.1
         freedesktop-bug-865.patch)
@@ -30,6 +31,7 @@ sha256sums=('677a8166e03474719238dfe396ce673c4234735464d6dadf2959b600d20e5a98'
             'SKIP'
             '914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8'
             'fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57'
+            '831a70809e6bec766138d7a1c96643732df9a2c0c5f77ee44b47ce4be882e0af'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
             '460615227a7e42d124639d4ae02e55d1b2a250c7bdf539e018b46de71230364f')
@@ -41,6 +43,8 @@ prepare() {
   patch -Np1 -i ../nvidia-add-modulepath-support.patch
   # patch from Fedora, not yet merged
   patch -Np1 -i ../xserver-autobind-hotplug.patch
+  # merged in trunk
+  patch -Np1 -i ../modesetting-Set-correct-DRM-event-context-version.patch
 
   # The patch for freedesktop bug 865
   patch -Np1 -i "${srcdir}/freedesktop-bug-865.patch"
