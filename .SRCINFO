@@ -24,7 +24,6 @@ pkgbase = jdk-dcevm
 	optdepends = ttf-font: fonts
 	provides = java-runtime=8
 	provides = java-runtime-headless=8
-	provides = java-web-start=8
 	provides = java-environment=8
 	provides = java-runtime-jre=8
 	provides = java-runtime-headless-jre=8
