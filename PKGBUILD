@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=libtensorflow-cpu
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc="Assembled TenforFlow library for for computation using data flow graphs."
+pkgdesc="Assembled TenforFlow library for computation using data flow graphs on CPU."
 arch=('i686' 'x86_64')
 url="https://www.tensorflow.org"
 license=('Apache-2.0')

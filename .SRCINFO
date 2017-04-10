@@ -1,7 +1,7 @@
 pkgbase = libtensorflow-cpu
-	pkgdesc = Assembled TenforFlow library for for computation using data flow graphs.
+	pkgdesc = Assembled TenforFlow library for computation using data flow graphs on CPU.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tensorflow.org
 	arch = i686
 	arch = x86_64
