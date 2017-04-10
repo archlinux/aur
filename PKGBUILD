@@ -4,10 +4,10 @@ pkgname=firefox-decentraleyes
 pkgver=1.3.8
 pkgrel=1
 pkgdesc='Local emulation of Content Delivery Networks.'
-url=https://github.com/Synzvato/decentraleyes
+url=https://decentraleyes.org/
 arch=('any')
 license=('custom:MPLv2')
-source=("$url/releases/download/v$pkgver/Decentraleyes.v$pkgver-firefox.xpi")
+source=("https://github.com/Synzvato/decentraleyes/releases/download/v$pkgver/Decentraleyes.v$pkgver-firefox.xpi")
 noextract=("${source##*/}")
 sha512sums=('b2f5bec24dbc1ca257794deb58f7947d2ca029d5c670f174ce856975b7940459acee87328ccbe3fe1ed19d45adfa2be09883af2cbc272b2c5f9a29bb10c6b1ee')
 
