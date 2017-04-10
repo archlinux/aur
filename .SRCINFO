@@ -1,6 +1,6 @@
 pkgbase = stopmotion
 	pkgdesc = Stop motion animation creation program
-	pkgver = 0.8.0
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = http://linuxstopmotion.org/index.html
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = stopmotion
 	depends = libxml2
 	depends = libvorbis
 	conflicts = linuxstopmotion-git
-	source = linuxstopmotion::git+http://git.code.sf.net/p/linuxstopmotion/code#tag=0.8.0
+	source = linuxstopmotion::git+http://git.code.sf.net/p/linuxstopmotion/code#tag=0.8.2
 	md5sums = SKIP
 
 pkgname = stopmotion
