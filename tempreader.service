@@ -1,0 +1,10 @@
+[Unit]
+Description=RESTful API to read data from DS18B20 temperature sensors.
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/default/tempreader
+ExecStart=/usr/bin/tempreader
+
+[Install]
+WantedBy=default.target
