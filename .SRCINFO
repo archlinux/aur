@@ -1,0 +1,17 @@
+pkgbase = tkhtml3-git
+	pkgdesc = Tk widget to render html documents.
+	pkgver = 16.r173.g5749c02
+	pkgrel = 1
+	url = http://tkhtml.tcl.tk/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	depends = tk
+	depends = tcl
+	provides = tkhtml3
+	source = tkhtml3-git::git+https://github.com/olebole/tkhtml3.git
+	sha512sums = SKIP
+
+pkgname = tkhtml3-git
+
