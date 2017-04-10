@@ -1,7 +1,7 @@
 # Maintainer: Mike Cooper <mythmon@gmail.com>
 
 pkgname=fortune-mod-all-en
-pkgver=12
+pkgver=13
 pkgrel=1
 pkgdesc="Meta package for all English fortunes"
 arch=('i686' 'x86_64')
