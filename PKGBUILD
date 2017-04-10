@@ -14,8 +14,8 @@ makedepends=('git' 'linux-headers')
 source=("git+https://github.com/fifteenhex/xradio.git")
 md5sums=('SKIP')
 
-_KVER=4.10.4-1-ARCH
-#_KVER=$(uname -r)
+#_KVER=4.10.4-1-ARCH
+_KVER=$(uname -r)
 
 build() {
 	cd "xradio"
