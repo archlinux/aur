@@ -1,7 +1,7 @@
 pkgbase = pulseaudio-dlna-git
 	pkgdesc = A small DLNA server which brings DLNA/UPnP support to PulseAudio (development version)
-	pkgver = 0.5.2.r8a39674
-	pkgrel = 2
+	pkgver = 0.5.2.r98d762f
+	pkgrel = 1
 	url = https://github.com/masmu/pulseaudio-dlna
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = pulseaudio-dlna-git
 	depends = python2-netifaces
 	depends = python2-lxml
 	depends = python2-zeroconf
-	depends = python2-netaddr
+	depends = python2-pyroute2
 	depends = python2-gobject
 	optdepends = lame: MP3 transcoding support
 	optdepends = faac: AAC transcoding support
@@ -38,7 +38,7 @@ pkgbase = pulseaudio-dlna-git
 	source = distribution-arch.png
 	sha256sums = SKIP
 	sha256sums = 8e05d76654424b51f47dee6962d618d1ad6514fa29affc17dfcf764cc955bd23
-	sha256sums = 2a02b1a1b63f134d1b37d60d31d738efb787e08bf029ac1734f16ac9caea3c15
+	sha256sums = dbf3d44d5e4ff4957f07dc5dee8393abdf4726b00bad799e6b2eb8853793c397
 	sha256sums = cd8a0dde2b1ac32fdcedb28c87cca3a4d956a4e4fee8ec41f8211c41d43e5e95
 
 pkgname = pulseaudio-dlna-git
