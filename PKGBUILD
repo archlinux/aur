@@ -6,16 +6,12 @@
 
 pkgname=doomrl
 pkgver=0.9.9.7
-pkgrel=10
+pkgrel=11
 pkgdesc="A roguelike game based on the FPS Doom."
 arch=('i686' 'x86_64')
 url="http://drl.chaosforge.org/"
-license=("GPL" "CCPL:cc-by-nc-sa-4.0")
-depends=("sdl_mixer"
-        "zlib"
-        "lua"
-        "timidity++"
-        "sdl_image")
+license=('GPL' 'CCPL:cc-by-nc-sa-4.0')
+depends=('glu' 'lua' 'sdl_image' 'sdl_mixer' 'timidity++' 'zlib')
 
 source=("cc-by-nc-sa-4.0.txt" "doomrl.sh")
 source_i686=("https://drl.chaosforge.org/file_download/33/$pkgname-linux-i386-${pkgver//./}.tar.gz")
