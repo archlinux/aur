@@ -1,0 +1,13 @@
+pkgbase = tgl-ttf
+	pkgdesc = TGL DIN ISO custom font
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.1001fonts.com/tgl-font.html
+	install = tgl-ttf.install
+	arch = any
+	license = custom:SIL Open Font License v1.1
+	source = http://dl.1001fonts.com/tgl.zip
+	md5sums = 84e185e597f39e0a6629179fa2b0da5e
+
+pkgname = tgl-ttf
+
