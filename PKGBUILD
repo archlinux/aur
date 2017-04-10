@@ -4,7 +4,7 @@ _pkgname=protrekkr
 pkgname=protrekkr-git
 pkgver=r687.dca6ef0
 pkgrel=1
-pkgdesc="Tracker program to create electronic music (like psytrance, trance goa, hard acid, IDM, chip, techno, etc.) for small sized intros, demos or games."
+pkgdesc="Tracker program to for small sized intros, demos or games. (PaulBatchelor's fork)"
 arch=(i686 x86_64)
 url="http://pbat.ch/proj/protrekkr/"
 license=(BSD)
@@ -12,12 +12,13 @@ depends=(
 	liblo
 	jack
 	lua
+	sdl
 )
 makedepends=(
 	git
-	sporth
-	soundpipe
-	runt
+	sporth-git
+	soundpipe-git
+	runt-git
 )
 provides=(protrekkr)
 conflicts=(protrekkr)
