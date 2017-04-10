@@ -23,6 +23,6 @@ noextract=()
 md5sums=('SKIP')
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
