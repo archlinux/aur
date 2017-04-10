@@ -4,14 +4,14 @@
 pkgname=fortune-mod-portal
 _pkgname=portal
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fortune cookies: Portal (video game)"
 url="http://en.wikiquote.org/wiki/Portal_(game)"
 arch=('any')
 license=('unknown')
 depends=('fortune-mod')
 groups=('fortune-mods')
-source="portal"
+source=("portal")
 md5sums=('d1272b9b001b578e56fab2dc3cc3eb2e')
 
 build() {
