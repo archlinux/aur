@@ -1,0 +1,13 @@
+pkgbase = mup
+	pkgdesc = Mup music typesetting
+	pkgver = 6.5
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	depends = fltk
+	source = ftp://ftp.arkkra.com/pub/unix/mup65src.tar.gz
+	md5sums = ea79b26a00e0d9ef0924166429aa5a32
+
+pkgname = mup
+
