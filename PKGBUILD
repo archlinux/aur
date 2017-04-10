@@ -4,7 +4,7 @@
 
 pkgname=pantheon-workarounds
 pkgver=5
-pkgrel=2
+pkgrel=3
 pkgdesc='Workarounds for modular and minimal Pantheon Desktop Environments'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/gala'
@@ -12,9 +12,12 @@ license=('GPL3')
 groups=('pantheon-qq')
 depends=('gconf' gnome-{keyring,settings-daemon-{elementary,compat},session}
          'polkit-gnome' 'xdg-user-dirs-gtk')
-optdepends=("pantheon-default-settings: Pantheon configuration and themeing")
+optdepends=("pantheon-default-settings: Pantheon configuration and themeing"
+            "contractor-bzr: Service for sharing data between apps"
+            "pantheon-print-bzr: Print settings dialog"
+            "pantheon-agent-polkit-bzr: Polkit Authentication Agent")
 makedepends=('bzr' 'intltool')
-conflicts=(pantheon-session{,-bzr})
+conflicts=(pantheon-session{,-bzr} gala{,-bzr})
 install='gala.install'
 source=("pantheon-session::bzr+lp:~elementary-os/elementaryos/pantheon-xsession-settings"
         'pantheon-session.sh'
@@ -30,6 +33,10 @@ sha512sums=('SKIP'
 prepare() {
   #sed 's|policykit-1|polkit|' -i pantheon-session/autostart/polkit-gnome-authentication-agent-1-pantheon.desktop
 
+  bzr cat  lp:gala/data/org.pantheon.desktop.gala.gschema.xml.in > org.pantheon.desktop.gala.gschema.xml
+  sed -i 's|@GETTEXT_PACKAGE@|gala|g' org.pantheon.desktop.gala.gschema.xml
+  export pkgvergala="$(printf "r%s" "$(bzr version-info lp:gala | grep revno | tr -cd [:digit:])")"
+
   cd "pantheon-session"
   export pkgverpantheonsession="$(printf "r%s" "$(bzr revno)")"
 
@@ -38,11 +45,12 @@ prepare() {
   # This space reserved for pantheon-default-settings(-bzr)
 }
 
-provides=(pantheon-session{,-bzr}=${pkgverpantheonsession})
+provides=(pantheon-session{,-bzr}="${pkgverpantheonsession}" gala{,-bzr}="${pkgvergala}")
 
 package() {
-  cd "${srcdir}"/pantheon-session
+  install -Dm644 {"${srcdir}","${pkgdir}"/usr/share/glib-2.0/schemas}/org.pantheon.desktop.gala.gschema.xml
 
+  cd "${srcdir}"/pantheon-session
   mkdir -p "${pkgdir}"/{etc/xdg,usr/share/pantheon}
   cp -dr --no-preserve='ownership' autostart "${pkgdir}/etc/xdg/"
   cp -dr --no-preserve='ownership' unity-greeter "${pkgdir}/usr/share/"
