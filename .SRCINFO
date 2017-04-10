@@ -1,7 +1,7 @@
 pkgbase = jdk-dcevm
 	pkgdesc = Oracle Java Development Kit with DCEVM patches
 	pkgver = 8u112
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dcevm.github.io/
 	install = jdk-dcevm.install
 	arch = i686
