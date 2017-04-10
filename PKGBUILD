@@ -3,7 +3,6 @@ pkgbase=python-pymisp
 _pyname=PyMISP
 pkgname=('python-pymisp' 'python2-pymisp')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
-optdepends=('python-pyme' 'python2-pyme')
 pkgver=2.4.65
 pkgrel=1
 pkgdesc="API for MISP."

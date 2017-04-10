@@ -9,8 +9,6 @@ pkgbase = python-pymisp
 	makedepends = python2
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	optdepends = python-pyme
-	optdepends = python2-pyme
 	source = PyMISP-2.4.65.tar.gz::https://github.com/MISP/PyMISP/archive/v2.4.65.tar.gz
 	sha512sums = b69882ccbd4adae839633a81e175c54910f13a84d5ce73f46385c75b4d11bde91586673a46a543f47808177bb427b828c5161f89c4792a13df28f1eaba59da64
 
