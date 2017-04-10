@@ -1,8 +1,8 @@
-# Maintainer: Matthew Gamble <git@matthewgamble.net>
+# Contributor: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=python-urwidtrees
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Tree widgets for urwid"
 arch=("any")
 url="https://github.com/pazz/urwidtrees"
@@ -22,7 +22,7 @@ package() {
     cd "urwidtrees-${pkgver}"
     python setup.py install --root="${pkgdir}" --skip-build
     install -dm755 "${pkgdir}/usr/share/doc/python-urwidtrees"
-    for _file in $(ls -1 docs/build/html/*); do
+    for _file in $(find docs/build/html -type f); do
         install -Dm644 ${_file} "${pkgdir}/usr/share/doc/python-urwidtrees/$(basename ${_file})"
     done
 }
