@@ -1,7 +1,7 @@
 # Maintainer: David Adler <d dot adler aet posteo dot de>
 
 pkgname=yoshimi
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="a fork of the ZynAddSubFX software systhesizer"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ license=('GPL')
 depends=('jack' 'fltk' 'fftw' 'mxml' 'cairo' 'lv2')
 makedepends=('cmake' 'boost' 'mesa')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Yoshimi/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('0261a29273659309f53da894ddd27a16')
-sha256sums=('172b95f184368047966015a9be9632bb584908e5a801483a21ac5503982bf0f3')
+md5sums=('090c3c61c7ffebae6b621b9b0e199f56')
+sha256sums=('6f9981d919d8dcbe3251b4abf87b9b1b5989957b0feda794757dc71eeff0f182')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/src" 
