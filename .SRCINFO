@@ -1,6 +1,6 @@
 pkgbase = gtk4-git
 	pkgdesc = GObject-based multi-platform GUI toolkit (GIT Version)
-	pkgver = 3.90.0.r1.gc638fb952c
+	pkgver = 3.90.0.r22.g79f817286e
 	pkgrel = 1
 	url = http://www.gtk.org/
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = gtk4-git
 	depends = cairo>=1.14.0
 	depends = dconf
 	depends = desktop-file-utils
-	depends = glib2-git>=2.51.5
+	depends = glib2-git>=2.52.0
 	depends = gdk-pixbuf2>=2.30.0
 	depends = json-glib
 	depends = libcups
@@ -37,7 +37,7 @@ pkgbase = gtk4-git
 	depends = shared-mime-info
 	depends = wayland-git>=1.9.91
 	depends = wayland-protocols-git>=1.7
-	depends = graphene-git>=1.5.1
+	depends = graphene>=1.5.1
 	optdepends = gnome-icon-theme: Default icon theme
 	optdepends = gnome-themes-standard: Default widget theme
 	backup = usr/share/gtk-4.0/settings.ini
@@ -67,7 +67,7 @@ pkgname = gtk4-git
 	depends = cairo>=1.14.0
 	depends = dconf
 	depends = desktop-file-utils
-	depends = glib2-git>=2.51.5
+	depends = glib2-git>=2.52.0
 	depends = gdk-pixbuf2>=2.30.0
 	depends = json-glib
 	depends = libcups
@@ -85,7 +85,7 @@ pkgname = gtk4-git
 	depends = shared-mime-info
 	depends = wayland-git>=1.9.91
 	depends = wayland-protocols-git>=1.7
-	depends = graphene-git>=1.5.1
+	depends = graphene>=1.5.1
 	depends = gtk-update-icon-cache
 
 pkgname = gtk4-print-backends-git
