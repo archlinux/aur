@@ -15,8 +15,8 @@ source=("git+https://github.com/tangphillip/${_gitname}")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${_gitname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/${_gitname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
