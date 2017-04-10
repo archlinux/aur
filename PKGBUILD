@@ -7,14 +7,14 @@ pkgdesc="Simple wrapper around cryptsetup for encrypted containers"
 arch=('any')
 url="https://git.zx2c4.com/ctmg/"
 license=('ISC')
-depends=('cryptsetup' 'e2fsprogs' 'sudo' 'coreutils')
+depends=('cryptsetup' 'e2fsprogs' 'coreutils')
 source=("https://git.zx2c4.com/ctmg/snapshot/${pkgname}-${pkgver}.tar.xz"
         "ctmg.1")
 md5sums=('ed4c016d905137eb28fe79217df7de04'
          'bdded0046afd35ba47cba9185b81f9a3')
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
 
   make PREFIX="${pkgdir}/usr" install
 

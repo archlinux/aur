@@ -7,7 +7,6 @@ pkgbase = ctmg
 	license = ISC
 	depends = cryptsetup
 	depends = e2fsprogs
-	depends = sudo
 	depends = coreutils
 	source = https://git.zx2c4.com/ctmg/snapshot/ctmg-1.2.tar.xz
 	source = ctmg.1
