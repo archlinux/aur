@@ -3,7 +3,7 @@
 
 pkgname=stone-soup-yiuf
 pkgver=1.5.4a0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fork of Dungeon Crawl Stone Soup roguelike with old races recovered'
 arch=('i686' 'x86_64')
 url='https://github.com/yrmvgh/yiufcrawl'
@@ -44,6 +44,7 @@ package() {
 
     make DESTDIR="${pkgdir}" \
          DATADIR="/usr/share/${pkgname}/data" \
+         SAVEDIR="~/.yiufcrawl" \
          USE_UNICODE=y \
          TILES=y \
          install
@@ -56,6 +57,7 @@ package() {
 
     make DESTDIR="${pkgdir}" \
          DATADIR="/usr/share/${pkgname}/data" \
+         SAVEDIR="~/.yiufcrawl" \
          USE_UNICODE=y \
          install
 
