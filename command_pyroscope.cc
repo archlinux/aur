@@ -487,7 +487,7 @@ d_multicall_filtered(const torrent::Object::list_type& args) {
     viewItr = viewManager->find("default");
 
   if (viewItr == viewManager->end())
-    throw torrent::input_error("Could not find view.");
+    throw torrent::input_error("Could not find view '" + arg->as_string() + "'.");
 
   // Make a filtered copy of the current item list
   core::View::base_type dlist;
@@ -545,6 +545,70 @@ torrent::Object cmd_string_contains_i(rpc::target_type target, const torrent::Ob
 }
 
 
+torrent::Object apply_string_mutate(int operation, const torrent::Object::list_type& args) {
+    if (args.size() < 1) {
+        throw torrent::input_error("string.* takes at least a string!");
+    }
+
+    torrent::Object::list_const_iterator itr = args.begin();
+    std::string result = itr->as_string();
+
+    for (++itr; itr != args.end(); ++itr) {
+        std::string needle = itr->as_list().begin()->as_string();
+        std::string subst = itr->as_list().rbegin()->as_string();
+
+        switch (operation) {
+        case 1:
+            if (result == needle)
+                result = subst;
+            break;
+        case 2:
+            for (size_t pos = 0; (pos = result.find(needle, pos)) != std::string::npos; pos += subst.length()) {
+                result.replace(pos, needle.length(), subst);
+            }
+            break;
+        }
+    }
+
+    return result;
+}
+
+torrent::Object cmd_string_map(rpc::target_type target, const torrent::Object::list_type& args) {
+    return apply_string_mutate(1, args);
+}
+
+torrent::Object cmd_string_replace(rpc::target_type target, const torrent::Object::list_type& args) {
+    return apply_string_mutate(2, args);
+}
+
+
+torrent::Object cmd_value(rpc::target_type target, const torrent::Object::list_type& args) {
+    if (args.size() < 1) {
+        throw torrent::input_error("'value' takes at least a number argument!");
+    }
+    if (args.size() > 2) {
+        throw torrent::input_error("'value' takes at most two arguments!");
+    }
+
+    torrent::Object::value_type val = 0;
+    if (args.front().is_value()) {
+        val = args.front().as_value();
+    } else {
+        int base = args.size() > 1 ? args.back().is_value() ?
+                   args.back().as_value() : strtol(args.back().as_string().c_str(), NULL, 10) : 10;
+        char* endptr = 0;
+
+        val = strtoll(args.front().as_string().c_str(), &endptr, base);
+        while (*endptr == ' ' || *endptr == '\n') ++endptr;
+        if (*endptr) {
+            throw torrent::input_error("Junk at end of number: " + args.front().as_string());
+        }
+    }
+
+    return val;
+}
+
+
 // Backports from 0.9.2
 #if (API_VERSION < 3)
 template <typename InputIterator, typename OutputIterator> OutputIterator
@@ -595,7 +659,9 @@ torrent::Object cmd_system_env(const torrent::Object::string_type& arg) {
 
 // https://github.com/rakshasa/rtorrent/commit/30d8379391ad4cb3097d57aa56a488d061e68662
 torrent::Object cmd_ui_current_view() {
-    return control->ui()->download_list()->current_view()->name();
+    ui::DownloadList* dl = control->ui()->download_list();
+    core::View* view = dl ? dl->current_view() : 0;
+    return view ? view->name() : std::string();
 }
 #endif
 
@@ -622,6 +688,9 @@ void initialize_command_pyroscope() {
 
     CMD2_ANY_LIST("string.contains", &cmd_string_contains);
     CMD2_ANY_LIST("string.contains_i", &cmd_string_contains_i);
+    CMD2_ANY_LIST("string.map", &cmd_string_map);
+    CMD2_ANY_LIST("string.replace", &cmd_string_replace);
+    CMD2_ANY_LIST("value", &cmd_value);
     CMD2_ANY_LIST("compare", &apply_compare);
     CMD2_ANY("ui.bind_key", &apply_ui_bind_key);
     CMD2_VAR_VALUE("ui.bind_key.verbose", 1);
