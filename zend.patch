@@ -1,0 +1,81 @@
+--- pam-1.0.3/pam.c.orig	2017-04-09 16:40:13.581520943 +0530
++++ pam-1.0.3/pam.c	2017-04-09 16:55:59.156281369 +0530
+@@ -228,7 +228,7 @@
+ {
+ 	char *username, *password;
+ 	int username_len, password_len;
+-	zval *status = NULL, **server, **remote_addr;
++	zval *status = NULL, *server, *remote_addr;
+ 	zend_bool checkacctmgmt = 1;
+ 
+ 	pam_auth_t userinfo = {NULL, NULL};
+@@ -248,14 +248,15 @@
+ 		if (status) {
+ 			spprintf(&error_msg, 0, "%s (in %s)", (char *) pam_strerror(pamh, result), "pam_start");
+ 			zval_dtor(status);
+-			ZVAL_STRING(status, error_msg, 0);
++			ZVAL_STRING(status, error_msg);
++			efree(error_msg);
+ 		}
+ 		RETURN_FALSE;
+ 	}
+ 
+-	if (zend_hash_find(&EG(symbol_table), "_SERVER", sizeof("_SERVER"), (void **)&server) == SUCCESS && Z_TYPE_PP(server) == IS_ARRAY) {
+-		if (zend_hash_find(Z_ARRVAL_PP(server), "REMOTE_ADDR", sizeof("REMOTE_ADDR"), (void **)&remote_addr) == SUCCESS && Z_TYPE_PP(remote_addr) == IS_STRING) {
+-			pam_set_item(pamh, PAM_RHOST, Z_STRVAL_PP(remote_addr));
++	if ((server = zend_hash_str_find(&EG(symbol_table), "_SERVER", sizeof("_SERVER")-1)) != NULL && Z_TYPE_P(server) == IS_ARRAY) {
++		if ((remote_addr = zend_hash_str_find(Z_ARRVAL_P(server), "REMOTE_ADDR", sizeof("REMOTE_ADDR")-1)) != NULL && Z_TYPE_P(remote_addr) == IS_STRING) {
++			pam_set_item(pamh, PAM_RHOST, Z_STRVAL_P(remote_addr));
+ 		}
+ 	}
+ 
+@@ -263,7 +264,8 @@
+ 		if (status) {
+ 			spprintf(&error_msg, 0, "%s (in %s)", (char *) pam_strerror(pamh, result), "pam_authenticate");
+ 			zval_dtor(status);
+-			ZVAL_STRING(status, error_msg, 0);
++			ZVAL_STRING(status, error_msg);
++			efree(error_msg);
+ 		}
+ 		pam_end(pamh, PAM_SUCCESS);
+ 		RETURN_FALSE;
+@@ -274,7 +276,8 @@
+ 			if (status) {
+ 				spprintf(&error_msg, 0, "%s (in %s)", (char *) pam_strerror(pamh, result), "pam_acct_mgmt");
+ 				zval_dtor(status);
+-				ZVAL_STRING(status, error_msg, 0);
++				ZVAL_STRING(status, error_msg);
++				efree(error_msg);
+ 			}
+ 			pam_end(pamh, PAM_SUCCESS);
+ 			RETURN_FALSE;
+@@ -312,7 +315,8 @@
+ 		if (status) {
+ 			spprintf(&error_msg, 0, "%s (in %s)", (char *) pam_strerror(pamh, result), "pam_start");
+ 			zval_dtor(status);
+-			ZVAL_STRING(status, error_msg, 0);
++			ZVAL_STRING(status, error_msg);
++			efree(error_msg);
+ 		}
+ 		RETURN_FALSE;
+ 	}
+@@ -321,7 +325,8 @@
+ 		if (status) {
+ 			spprintf(&error_msg, 0, "%s (in %s)", (char *) pam_strerror(pamh, result), "pam_authenticate");
+ 			zval_dtor(status);
+-			ZVAL_STRING(status, error_msg, 0);
++			ZVAL_STRING(status, error_msg);
++			efree(error_msg);
+ 		}
+ 		pam_end(pamh, PAM_SUCCESS);
+ 		RETURN_FALSE;
+@@ -331,7 +336,8 @@
+ 		if (status) {
+ 			spprintf(&error_msg, 0, "%s (in %s)", (char *) pam_strerror(pamh, result), "pam_chauthtok");
+ 			zval_dtor(status);
+-			ZVAL_STRING(status, error_msg, 0);
++			ZVAL_STRING(status, error_msg);
++			efree(error_msg);
+ 		}
+ 		pam_end(pamh, PAM_SUCCESS);
+ 		RETURN_FALSE;
