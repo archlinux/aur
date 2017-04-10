@@ -1,8 +1,8 @@
 pkgbase = runt-git
-	pkgdesc = A small stack-based audio language.
+	pkgdesc = Stack-based language written in ANSI C
 	pkgver = r137.587b5fa
 	pkgrel = 1
-	url = http://paulbatchelor.github.io/proj/sporth.html
+	url = http://paulbatchelor.github.io/proj/runt/
 	arch = any
 	license = custom:public domain
 	makedepends = git
