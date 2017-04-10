@@ -1,5 +1,5 @@
 post_install() {
-	echo "
+  echo '
   Installation
   ============
   Every configuration file you want themer to update needs to be added to `~/.config/themer/templates/<name>/config.yaml`.
@@ -15,5 +15,5 @@ post_install() {
       Activate now? yN y
 
   Additional information is available at https://github.com/S0lll0s/themer
-"
+'
 }
