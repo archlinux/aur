@@ -3,12 +3,12 @@
 _pkgname=tempreader
 pkgname="${_pkgname}-git"
 pkgver=r1.c5900e3
-pkgrel=2
+pkgrel=3
 pkgdesc='RESTful API to read data from DS18B20 temperature sensors.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/${_pkgname}/"
 license=('MIT')
-makedepends=('go')
+makedepends=('go' 'git')
 backup=("etc/default/${_pkgname}")
 options=('!strip' '!emptydirs')
 source=(
@@ -23,7 +23,8 @@ sha256sums=(
 build() {
   cd "${_pkgname}-master/${_pkgname}"
 
-  go build
+  GOPATH="$srcdir" go get github.com/gorilla/mux
+  GOPATH="$srcdir" go build
 }
 
 package() {
