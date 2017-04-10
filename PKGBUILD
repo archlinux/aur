@@ -1,3 +1,4 @@
+# Maintainer: Amos Onn <amosonn at gmail dot com>
 pkgname=python-sortedcollections
 pkgver=0.5.3
 pkgrel=1
