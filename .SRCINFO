@@ -1,0 +1,16 @@
+pkgbase = b2t
+	pkgdesc = Binary to text
+	pkgver = 0.0.0_alpha
+	pkgrel = 1
+	url = https://github.com/KillWolfVlad/b2t
+	arch = x86_64
+	license = GPL3
+	depends = mono>=4.8.0
+	provides = b2t
+	conflicts = b2t
+	replaces = b2t
+	source = https://github.com/KillWolfVlad/b2t/releases/download/v0.0.0-alpha/b2t.tar.xz
+	sha512sums = 846c50775c359601ba32bf240c4b24ee2e35c771f9e6e3d3026fdf50f65a8a3650ceec4c188e09760752e0ae017bfaea81c6e4ce0b283374623756769dccf110
+
+pkgname = b2t
+
