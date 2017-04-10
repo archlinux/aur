@@ -1,0 +1,16 @@
+pkgbase = soundpipe-git
+	pkgdesc = A lightweight music DSP library.
+	pkgver = v1.5.0.r0.g3e0c985
+	pkgrel = 1
+	url = http://paulbatchelor.github.io/proj/soundpipe.html
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = libsndfile
+	provides = soundpipe
+	conflicts = soundpipe
+	source = git://github.com/PaulBatchelor/Soundpipe.git
+	md5sums = SKIP
+
+pkgname = soundpipe-git
+
