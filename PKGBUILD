@@ -1,8 +1,8 @@
 # Maintainer: Snaipe
 
 pkgname=criterion
-pkgver=2.3.1
-_fullver=2.3.1
+pkgver=2.3.2
+_fullver=2.3.2
 pkgrel=1
 pkgdesc="A KISS, non-intrusive unit testing framework for C and C++"
 arch=('i686' 'x86_64')
