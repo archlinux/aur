@@ -7,6 +7,7 @@ url="https://github.com/miracl/milagro-crypto-c"
 license=('APACHE')
 depends=()
 makedepends=('cmake')
+options=('staticlibs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/miracl/milagro-crypto-c/archive/$pkgver.tar.gz")
 sha256sums=('df350fe5d33fa92f0833581f948b809226ae7e4ac535dfcd244cb9e33e3fd2d2')
 
@@ -24,4 +25,6 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"/build
 	make DESTDIR="$pkgdir/" install
+	mkdir -p "$pkgdir"/usr/include/milagro
+	mv "$pkgdir"/usr/include/*.h "$pkgdir"/usr/include/milagro/
 }
