@@ -8,7 +8,7 @@ url="http://stormdragon.tk/fortunes/limericks"
 license=('WTFPL')
 depends=('fortune-mod')
 source=("$url")
-md5sums=('b16323a44db9b6decfeb129e185ae5d4')
+md5sums=('a1946252cbc3389653192323dbe0bab8')
 
 build()
 {
