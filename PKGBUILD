@@ -5,7 +5,7 @@
 
 pkgname=stopmotion
 _realname=linuxstopmotion
-pkgver=0.8.0
+pkgver=0.8.2
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Stop motion animation creation program"
