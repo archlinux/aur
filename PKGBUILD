@@ -9,8 +9,8 @@ pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU accelerat
 arch=('x86_64')
 url="https://github.com/pytorch/pytorch"
 license=('BSD')
-makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools' 'gcc5' 'cmake')
-depennds=('cuda' 'cudnn')
+makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools' 'gcc5' 'cmake' 'git')
+depends=('cuda' 'cudnn')
 source=("git://github.com/pytorch/pytorch")
 sha256sums=('SKIP')
 
