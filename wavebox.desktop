@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=wavebox --mailto=%u
+Name=Wavebox
+Comment=The next generation of web-desktop communication
+Icon=/usr/share/wavebox/icon.png
+MimeType=x-scheme-handler/mailto;
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Network;Email;
