@@ -1,0 +1,14 @@
+pkgbase = eclipse-goclipse
+	pkgdesc = Eclipse IDE for the Go programming language
+	pkgver = 0.16.1
+	pkgrel = 1
+	url = https://github.com/GoClipse/goclipse
+	arch = any
+	license = EPL
+	depends = eclipse
+	depends = go
+	source = https://github.com/GoClipse/goclipse.github.io/archive/0.16.1.zip
+	md5sums = c831a3a121869c1a969e40245f4175b7
+
+pkgname = eclipse-goclipse
+
