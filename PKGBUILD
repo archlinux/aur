@@ -2,7 +2,7 @@
 
 pkgname=webtorrent-desktop
 pkgver=0.18.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Streaming torrent client."
 arch=('i686' 'x86_64')
 url="https://webtorrent.io/desktop"
@@ -15,8 +15,8 @@ source=("https://github.com/feross/${pkgname}/archive/v${pkgver}.tar.gz"
         "webtorrent-desktop"
         "${pkgname}.desktop")
 sha256sums=('25b92aab9cc6d076715a12bdaeae950f6885da19d87948a6acf007ba246b9494'
-            'b5b71281c1c93a60ff3d7219d005c33754d0e0cc9076c152b0a68615929bb5a3'
-            '4eba7b17fd0cd90f77fc1a1005f74d8fcd93dac4f669d1b1abbf71734b5bafa6')
+            '4ebe403535a6552333f56e6087355c85fbb1904b06908d62127337c7c593135c'
+            '6af365f47ca47b33cca65f62c3a662218ba38af7d3d52bb891ce3e73bbb60539')
 
 [ "$CARCH" = "i686" ]   && _platform=ia32
 [ "$CARCH" = "x86_64" ] && _platform=x64

@@ -1,2 +1,2 @@
 #!/usr/bin/sh
-electron /usr/lib/webtorrent-desktop
+exec electron /usr/lib/webtorrent-desktop "$@"
