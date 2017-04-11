@@ -2,25 +2,20 @@
 
 _pkgname=wechat_web_devtools
 pkgname=wechat-web-devtools-git
-pkgver=r13.1c8a6ad
-pkgrel=1
+pkgver=0.15.152900
+pkgrel=2
 pkgdesc="Wechat Web Developer Tools"
 arch=("any")
 url="https://github.com/yuan1994/${_pkgname}"
 license=('unknown')
 groups=()
-depends=()
+depends=('nwjs-bin')
 makedepends=('git')
 provides=()
 conflicts=()
 install="wechat-web-devtools-git.install"
-source=("git://github.com/yuan1994/${_pkgname}.git")
+source=("git://github.com/yuan1994/${_pkgname}.git#branch=core")
 md5sums=('SKIP')
-
-pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
 	cd "${srcdir}/${_pkgname}"

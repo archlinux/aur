@@ -1,7 +1,7 @@
 pkgbase = wechat-web-devtools-git
 	pkgdesc = Wechat Web Developer Tools
-	pkgver = r13.1c8a6ad
-	pkgrel = 1
+	pkgver = 0.15.152900
+	pkgrel = 2
 	url = https://github.com/yuan1994/wechat_web_devtools
 	install = wechat-web-devtools-git.install
 	arch = any
