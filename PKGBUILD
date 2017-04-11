@@ -2,7 +2,7 @@
 
 pkgname=python-pycapnp
 _pkgname=pycapnp
-pkgver=0.5.6
+pkgver=0.5.11
 pkgrel=1
 pkgdesc="A cython wrapping of the C++ Cap'n Proto serialization library"
 arch=(any)
@@ -10,15 +10,15 @@ url=https://pypi.python.org/pypi/pycapnp
 license=(BSD)
 depends=(python capnproto)
 makedepends=(python-setuptools cython)
-source=(http://pypi.python.org/packages/source/p/pycapnp/${_pkgname}-${pkgver}.tar.gz)
-md5sums=(6f636c91e0291bd0b410c3f7b8076b76)
+source=("https://pypi.python.org/packages/3a/3e/ace33380da38b0d02420b0697feb5c521b9d5756e6b376d20cee145a6822/${_pkgname}-${pkgver}.tar.gz")
+md5sums=('68bca2c8c79e5843a11165e2ece3eebf')
 
 build() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
-  python setup.py install --root=${pkgdir} --optimize=1
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
