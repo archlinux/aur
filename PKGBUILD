@@ -22,7 +22,13 @@ depends=(
     'redis'
     'postgresql'
     )
-source=("git://github.com/tootsuite/${pkgname%-git}.git#branch=$_branch")
+source=(
+    "git://github.com/tootsuite/${pkgname%-git}.git#branch=$_branch"
+    "mastodon-web.service"
+    "mastodon-sidekiq.service"
+    "mastodon-streaming.service"
+    "mastodon.target"
+    )
 sha256sums=('SKIP')
 install=mastodon.install
 _user=mastodon
