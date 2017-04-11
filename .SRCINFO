@@ -1,14 +1,15 @@
 pkgbase = clan
 	pkgdesc = Chunky Loop Analyzer: A Polyhedral Representation Extraction Tool for High Level Programs
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = http://icps.u-strasbg.fr/people/bastoul/public_html/development/clan/index.html
 	arch = x86_64
 	license = LGPL
+	checkdepends = valgrind
 	depends = osl
 	provides = clan
-	source = http://icps.u-strasbg.fr/people/bastoul/public_html/development/clan/docs/clan-0.8.0.tar.gz
-	md5sums = 0dcba7f4bdf32159405f27ebce439d63
+	source = https://github.com/periscop/clan/releases/download/0.8.1/clan-0.8.1.tar.gz
+	md5sums = bffd26cc8b1360e47245ef71cea78aa3
 
 pkgname = clan
 
