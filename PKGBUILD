@@ -1,31 +1,43 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 _pkgbasename=libxslt
 pkgname=lib32-libxslt
-pkgver=1.1.29
+pkgver=1.1.29+42+gac341cbd
 pkgrel=1
 pkgdesc="XML stylesheet transformation library (32-bit)"
 arch=('x86_64')
 url="http://xmlsoft.org/XSLT/"
 license=('custom')
 depends=('lib32-libxml2' 'lib32-libgcrypt' 'libxslt' 'lib32-xz')
-makedepends=(gcc-multilib)
+makedepends=(gcc-multilib git)
 options=(!libtool)
-source=(ftp://xmlsoft.org/libxslt/${_pkgbasename}-${pkgver}.tar.gz)
-md5sums=('a129d3c44c022de3b9dcf6d6f288d72e')
+_commit=ac341cbd792ee572941cc9a66e73800219a1a386  # master
+source=("git+https://git.gnome.org/browse/libxslt#commit=$_commit")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "${_pkgbasename}"
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
+
+prepare() {
+  cd "${_pkgbasename}"
+
+  sed -e 's|/usr/bin/python -u|/usr/bin/python2 -u|g' -e 's|/usr/bin/python$|/usr/bin/python2|g' -i python/tests/*.py
+  NOCONFIGURE=1 ./autogen.sh
+}
 
 build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  cd "${srcdir}/${_pkgbasename}-${pkgver}"
-  sed -e 's|/usr/bin/python -u|/usr/bin/python2 -u|g' -e 's|/usr/bin/python$|/usr/bin/python2|g' -i python/tests/*.py
+  cd "${_pkgbasename}"
   ./configure --prefix=/usr --libdir=/usr/lib32 --without-python
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgbasename}-${pkgver}"
+  cd "${_pkgbasename}"
   make DESTDIR="${pkgdir}" install
 
   install -d "${pkgdir}"/usr/share/licenses
