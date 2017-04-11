@@ -9,12 +9,12 @@ url='https://networkit.iti.kit.edu/'
 depends=('python>=3.4' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-networkx' 'python-tabulate' 'python-powerlaw' 'python-scikit-learn')
 makedepends=('scons' 'cython' 'ipython')
 license=('MIT')
-md5sums=('c60c7fc71cee5068d52310eccf3ad77d')
-sha256sums=('7ff151da7d5ae691696d2ace501d3210de63dacaaa80e881665fc427375521f7')
+md5sums=('9faabecd3077012c7838fe42da7d49e9')
+sha256sums=('e53f72e01260a4d857227f0a6aa919223d0b515dd373203205bb33b47956891f')
 
-source=('https://networkit.iti.kit.edu/uploads/NetworKit.zip')
+source=("https://github.com/kit-parco/networkit/archive/${pkgver}.tar.gz")
 
 package() {
-  cd "NetworKit/"
+  cd "networkit-${pkgver}"
   python setup.py install --root="$pkgdir/"
 }
