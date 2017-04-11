@@ -4,12 +4,12 @@
 
 _pkgname=powerlevel9k
 pkgname=zsh-theme-"${_pkgname}"
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.6.2
+pkgrel=1
 pkgdesc='Powerlevel9k theme for zsh'
 arch=('any')
 url='https://github.com/bhilburn/powerlevel9k'
-license=('custom')
+license=('mit')
 depends=('zsh')
 optdepends=(
   'powerline-fonts: powerline fonts integration'
@@ -25,16 +25,16 @@ optdepends=(
   'systemd: virtualization detection'
   'openssh: ssh detection')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bhilburn/powerlevel9k/archive/v${pkgver}.tar.gz")
-sha512sums=('9c51063542334452334aaf489903f25ad67793d41604c35bbd3dc21565e7689b3906ac90698a1339b33ac8512f7f52daa1875614d56cb5eac97875bdc2a0e4e1')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bhilburn/powerlevel9k/archive/v${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}.tar.gz.asc::https://github.com/bhilburn/powerlevel9k/releases/download/v${pkgver}/powerlevel9k-${pkgver}.tar.gz.asc")
+sha512sums=('ca8e8282ec5eb066a1ab7a368d7fab4099b8662f4eefc06ce088e36f46320b601c9349a32b0b29cc7156aa4ab80223e0e584669a5493493005d0f50ec54f13e8'
+            'SKIP')
+validpgpkeys=('C8D4D38F9ABB16BD3C6170F7ECD0D0410C149675')
 
 package(){
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  # No license
-  # Install Readme as License in case in the future some type of license is
-  # added
-  install -D -m644 README.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Install Documentation
   install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
