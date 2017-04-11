@@ -4,7 +4,7 @@
 
 pkgname=omnitux
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Educational game based on multimedia elements"
 arch=('any')
 url="http://omnitux.sourceforge.net/"
@@ -14,7 +14,7 @@ source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz
         "${pkgname}.desktop"
         "${pkgname}.sh")
 md5sums=('e0c4da272baaa4f09b90cc060f7b605c'
-         'f3e3a6f39925f9449c467f78d030a69a'
+         '28d42be661260512ca4af9627568241a'
          'cce915823d01fc9eb169cf9c1983db25')
 
 package() {
