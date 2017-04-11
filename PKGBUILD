@@ -2,11 +2,11 @@
 
 pkgbase=vis-standalone-git
 pkgname=(vis-standalone-git vis-single-git)
-pkgver=0.3.r0.g4a4f9e0
+pkgver=0.3.r31.ge5e372c
 pkgrel=1
 _pkgver_libmusl=1.1.16
 _pkgver_ncurses=6.0
-_pkgver_libtermkey=0.19
+_pkgver_libtermkey=0.20
 _pkgver_lua=5.3.4
 _pkgver_lpeg=1.0.1
 _pkgver_attr='c1a7b53073202c67becf4df36cadc32ef4759c8a'
@@ -37,7 +37,7 @@ sha256sums=('SKIP'
             'SKIP'
             'f551c24b30ce8bfb6e96d9f59b42fbea30fa3a6123384172f9e7284bcf647260'
             'SKIP'
-            'c505aa4cb48c8fa59c526265576b97a19e6ebe7b7da20f4ecaae898b727b48b7'
+            '6c0d87c94ab9915e76ecd313baec08dedf3bd56de83743d9aa923a081935d2f5'
             'f681aa518233bc407e23acf0f5887c884f17436f000d453b2491a9f11a52400c'
             '62d9f7a9ea3c1f215c77e0cadd8534c6ad9af0fb711c3f89188a8891c72f026b'
             'faf6e5cbfa71153bd1049206ca70690c5dc96e2ec3db50eae107092c3de900ca'
