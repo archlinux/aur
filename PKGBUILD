@@ -3,13 +3,12 @@
 pkgname=xurls
 _name="${pkgname}"
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extract urls from plain text"
 url="https://github.com/mvdan/${_name}"
 license=('BSD')
 arch=('i686' 'x86_64')
 makedepends=('git' 'go')
-options=('!strip')
 source=("git+${url}#tag=v${pkgver}")
 sha1sums=('SKIP')
 
