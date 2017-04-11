@@ -2,7 +2,7 @@
 # Contributor: Florian Walch <florian+aur@fwalch.com>
 
 pkgname=libtermkey
-pkgver=0.19
+pkgver=0.20
 pkgrel=1
 pkgdesc='Library for easy processing of keyboard entry from terminal-based programs'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='http://www.leonerd.org.uk/code/libtermkey'
 license=('MIT')
 depends=('unibilium')
 source=("http://www.leonerd.org.uk/code/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('c505aa4cb48c8fa59c526265576b97a19e6ebe7b7da20f4ecaae898b727b48b7')
+sha256sums=('6c0d87c94ab9915e76ecd313baec08dedf3bd56de83743d9aa923a081935d2f5')
 
 build() {
 	cd "${pkgname}-${pkgver}/"
