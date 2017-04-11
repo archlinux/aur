@@ -1,8 +1,8 @@
 # Maintainer: Sergio Tridente <tioduke (at) gmail (dot) com>
 
 pkgname=oracle-datamodeler
-_pkgver=4.1.5
-_pkgrel=907
+_pkgver=4.2.0
+_pkgrel=921
 pkgver=${_pkgver}.${_pkgrel}
 pkgrel=1
 pkgdesc="A data modeling and database design tool that provides an environment for capturing, modeling, managing, and exploiting metadata"
@@ -17,7 +17,7 @@ source=(manual://datamodeler-${_pkgver}-${_pkgrel}-no-jre.zip
         LICENSE-OTN
         java_home.patch)
 DLAGENTS+=('manual::/usr/bin/echo The source file for this package need to be downloaded manually, since it requires a login and is not redistributable.;/usr/bin/echo Please visit http://www.oracle.com/technetwork/developer-tools/datamodeler/overview/index.html; exit 1;')
-sha256sums=('a35e02b0e70eb7aa14859df39427818cdbb78cd2587b9bf81f3623ba7fc9cb99'
+sha256sums=('87b868c900240992efe21a2a83692d45c976f97cf156d0bb6cbd231ef8f33797'
             '9618cf10af64c767c7ca3f90f54522e93f10c9766312b4a06fc9384a9e3c6cc8'
             'd61ad1cd5f6f6e665471c2b6537654beda625f24a50e19156c4fbbccebc16a24'
             '5919502a2b23a78fff277b642c8b2b989d415dd6de6fb6089424d888809a9257'
