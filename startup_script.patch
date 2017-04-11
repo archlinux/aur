@@ -1,0 +1,23 @@
+diff -rupN a/bin/code-oss b/bin/code-oss
+--- a/bin/code-oss	2017-04-10 14:45:30.501186879 -0700
++++ b/bin/code-oss	2017-04-11 09:02:09.934505159 -0700
+@@ -17,18 +17,7 @@ if [ "$(id -u)" = "0" ]; then
+ 	fi
+ fi
+ 
+-if [ ! -L $0 ]; then
+-	# if path is not a symlink, find relatively
+-	VSCODE_PATH="$(dirname $0)/.."
+-else
+-	if which readlink >/dev/null; then
+-		# if readlink exists, follow the symlink and find relatively
+-		VSCODE_PATH="$(dirname $(readlink -f $0))/.."
+-	else
+-		# else use the standard install location
+-		VSCODE_PATH="/usr/share/code-oss"
+-	fi
+-fi
++VSCODE_PATH="/usr/share/code-oss"
+ 
+ ELECTRON="$VSCODE_PATH/code-oss"
+ CLI="$VSCODE_PATH/resources/app/out/cli.js"

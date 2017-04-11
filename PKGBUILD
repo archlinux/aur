@@ -9,7 +9,7 @@
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
 pkgver=1.11.1
-pkgrel=1
+pkgrel=2
 _commit=d9484d12b38879b7f4cdd1150efeb2fd2c1fbf39
 arch=('i686' 'x86_64' 'armv7h')
 url='https://code.visualstudio.com/'
@@ -21,9 +21,11 @@ conflicts=('vscode-oss')
 provides=('vscode-oss')
 
 source=("vscode::git+https://github.com/Microsoft/vscode#commit=${_commit}"
+        "startup_script.patch"
         "${pkgname}.desktop")
 sha256sums=('SKIP'
-            '2ce2c6033667092c5e854036b676533fd433e9daf9ac8ce0f00606193420e72d')
+            '8b2feded3382e5bf6b5b292c14083bfc536c05cd00f3235dd22b75b67fba134d'
+            'f853d7d998251223b0516928a2189e1e68a312bd732f18dc8d59892659beeae9')
 
 if (( VSCODE_NONFREE )); then
     source+=('product_json.patch')
@@ -69,15 +71,22 @@ build() {
     # change it if this number still doesn't work for your system.
     #mem_limit="--max_old_space_size=2048"
     node $mem_limit /usr/bin/gulp vscode-linux-${_vscode_arch}
+
+    # Patch the startup script to know where the app is installed, rather
+    # than guessing...
+    ( cd "${srcdir}/VSCode-linux-${_vscode_arch}" && \
+            patch -p1 -i "${srcdir}/startup_script.patch" )
 }
 
 package() {
-    install -m 0755 -d "${pkgdir}/opt/VSCode-OSS"
-    cp -r "${srcdir}/VSCode-linux-${_vscode_arch}"/* "${pkgdir}/opt/VSCode-OSS"
+    install -m 0755 -d "${pkgdir}/usr/share/code-oss"
+    cp -r "${srcdir}/VSCode-linux-${_vscode_arch}"/* "${pkgdir}/usr/share/code-oss"
 
-    # Include symlink in system bin directory
-    install -m 0755 -d "${pkgdir}/usr/bin"
-    ln -s '/opt/VSCode-OSS/bin/code-oss' "${pkgdir}/usr/bin/${pkgname}"
+    # Put the startup script in /usr/bin
+    mv "${pkgdir}/usr/share/code-oss/bin" "${pkgdir}/usr"
+
+    # Add symlink to the name we provided in older versions of this package
+    ln -s code-oss "${pkgdir}/usr/bin/${pkgname}"
 
     # Add .desktop file
     install -D -m644 "${srcdir}/${pkgname}.desktop" \
