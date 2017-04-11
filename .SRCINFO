@@ -1,0 +1,17 @@
+pkgbase = lean-cli-git
+	pkgdesc = LeanCloud command line tool
+	pkgver = r317.2799385
+	pkgrel = 1
+	url = https://leancloud.cn
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	provides = lean-cli
+	conflicts = lean-cli
+	source = git+https://github.com/leancloud/lean-cli
+	md5sums = SKIP
+
+pkgname = lean-cli-git
+
