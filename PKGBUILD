@@ -6,6 +6,7 @@ pkgdesc="i3 compatible window manager for Wayland"
 arch=("i686" "x86_64")
 url="http://swaywm.org"
 license=("MIT")
+backup=("etc/sway/security")
 depends=(
 	"wlc" "xorg-server-xwayland" "json-c" "pango" "wayland" "gdk-pixbuf2"
 )
