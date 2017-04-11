@@ -1,0 +1,14 @@
+pkgbase = hypervfcopyd
+	pkgdesc = Hyper-V File Copy Daemon for Arch Linux
+	pkgver = 4.10.1
+	pkgrel = 1
+	url = https://www.kernel.org
+	arch = x86_64
+	license = GPLv3
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.10.1.tar.gz
+	source = hypervfcopyd.service
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = hypervfcopyd
+

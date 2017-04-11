@@ -1,0 +1,10 @@
+[Unit]
+Description=Hyper-V FIle Copy daemon
+ConditionalVirtualization=microsoft
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/hypervfcopyd -n
+
+[Install]
+WantedBy=multi-user.target
