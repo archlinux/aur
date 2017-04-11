@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=YOOKA-LAYLEE
+Comment=Yooka-Laylee is an all-new open-world platformer from key creative talent behind the Banjo-Kazooie and Donkey Kong Country games!
+Exec=gog-yooka-laylee
+Icon=gog-yooka-laylee
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8

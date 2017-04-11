@@ -1,0 +1,10 @@
+# Blacklist:
+*
+
+# Whitelist:
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!gog-yooka-laylee
+!gog-yooka-laylee.desktop
+
