@@ -1,6 +1,6 @@
 pkgbase = masterpdfeditor
 	pkgdesc = A complete solution for creation and editing PDF files
-	pkgver = 4.1.22
+	pkgver = 4.1.30
 	pkgrel = 1
 	url = http://code-industry.net/free-pdf-editor.php
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = masterpdfeditor
 	makedepends = patchelf
 	source = masterpdfeditor.desktop
 	sha1sums = 5b3a0392390e49d4f7f4e478dd336476436f5cfa
-	source_x86_64 = http://get.code-industry.net/public/master-pdf-editor-4.1.22_qt5.amd64.tar.gz
-	sha1sums_x86_64 = c600110782cf053ad08b6716f270c89fcc37f49f
+	source_x86_64 = http://get.code-industry.net/public/master-pdf-editor-4.1.30_qt5.amd64.tar.gz
+	sha1sums_x86_64 = c8c31aeacd5da398065d9d0ff5fa6e2e6ff18cda
 
 pkgname = masterpdfeditor
 	depends = gcc-libs
