@@ -2,14 +2,15 @@
 #             <ranaivoarivony-razanajato@hareno.me>
 
 pkgname=clan-git
-pkgver=0.8.0.r10.g42a7d0c
-pkgrel=2
+pkgver=0.8.1.r0.g379eead
+pkgrel=1
 pkgdesc="Chunky Loop Analyzer: A Polyhedral Representation Extraction Tool for High Level Programs"
 arch=(x86_64)
 url="http://icps.u-strasbg.fr/people/bastoul/public_html/development/clan/index.html"
 license=('LGPL')
 depends=("osl")
 makedepends=("git")
+checkdepends=("valgrind")
 provides=("clan")
 conflicts=("clan")
 source=(${pkgname}::git+https://github.com/periscop/clan.git)
@@ -29,7 +30,8 @@ build() {
 
 check() {
   cd "${srcdir}/${pkgname}"
-  make -j 1 check
+  make check
+  make valcheck
 }
 
 package() {

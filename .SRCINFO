@@ -1,10 +1,11 @@
 pkgbase = clan-git
 	pkgdesc = Chunky Loop Analyzer: A Polyhedral Representation Extraction Tool for High Level Programs
-	pkgver = 0.8.0.r10.g42a7d0c
-	pkgrel = 2
+	pkgver = 0.8.1.r0.g379eead
+	pkgrel = 1
 	url = http://icps.u-strasbg.fr/people/bastoul/public_html/development/clan/index.html
 	arch = x86_64
 	license = LGPL
+	checkdepends = valgrind
 	makedepends = git
 	depends = osl
 	provides = clan
