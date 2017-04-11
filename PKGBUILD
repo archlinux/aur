@@ -2,16 +2,16 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.info>
 
 pkgname=vimb
-pkgver=2.11
-pkgrel=2
+pkgver=2.12
+pkgrel=1
 pkgdesc='The vim-like browser'
 arch=('i686' 'x86_64')
 url=http://fanglingsu.github.io/vimb
 license=('GPL3')
-depends=('libsoup' 'libwebkit')
+depends=('webkitgtk2')
 makedepends=('hardening-wrapper')
 source=("vimb-$pkgver.tar.gz::https://github.com/fanglingsu/vimb/archive/$pkgver.tar.gz")
-sha256sums=('2ec583e6e425f8d620b54db6bcc56483770c7c5fd3f93b0429ddd6f7a7553935')
+sha256sums=('2443a27d625ff2a7aa7e7b694ec853e25dbdcb33b7c681c98c8fe81b1833b0b7')
 
 build() {
   cd vimb-"$pkgver"
