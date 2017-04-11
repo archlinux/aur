@@ -1,0 +1,30 @@
+pkgbase = lightdm-slick-greeter
+	pkgdesc = A slick-looking LightDM greeter
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://packages.linuxmint.com/pool/main/s/slick-greeter
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gnome-common
+	makedepends = gnome-doc-utils
+	makedepends = imagemagick
+	makedepends = intltool
+	makedepends = librsvg
+	makedepends = vala
+	makedepends = xorg-server-xvfb
+	depends = cantarell-fonts
+	depends = gnome-common
+	depends = gnome-doc-utils
+	depends = intltool
+	depends = lightdm
+	depends = libcanberra
+	depends = libxext
+	depends = pixman
+	depends = xorg-server-xvfb
+	optdepends = ttf-ubuntu-font-family: Ubuntu's default font
+	source = http://packages.linuxmint.com/pool/main/s/slick-greeter/slick-greeter_1.0.0.tar.xz
+	sha256sums = 4a8a107ed539af743f698f1104cd9769e9c2cd399dedeb31c025a5531a4a8fe3
+
+pkgname = lightdm-slick-greeter
+
