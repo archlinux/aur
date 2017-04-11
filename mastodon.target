@@ -1,0 +1,6 @@
+[Unit]
+Description=mastodon
+Wants=mastodon-web.service mastodon-sidekiq.service mastodon-streaming.service
+
+[Install]
+WantedBy=multi-user.target
