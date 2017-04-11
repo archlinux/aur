@@ -1,7 +1,7 @@
 _npmname=wikidata-cli
-_npmver=4.6.0
+_npmver=4.8.2
 pkgname=nodejs-wikidata-cli # All lowercase
-pkgver=4.6.0
+pkgver=4.8.2
 pkgrel=1
 pkgdesc="The command-line interface to Wikidata"
 arch=(any)
@@ -21,5 +21,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha1sums=('f241590f1ccb08c5232615013d456d14b3c802eb')
-sha512sums=('4bc55d51cc508f3350a8f024392d26f024e32c998805e6d236d841bbf3533fd6f85c5d60788a47bc31805be6d97e3791ad1c0d99771572122fecc862aa53c2d7')
+sha1sums=('a4b4cb190b728e6eb32b3b4185141bcbdc5eefc9')
+sha512sums=('00db7a04b02e90a56352e63cfc174c5bdf1efd8e66306fb6a12a9e3dc30b423cc8f38927db4d26b86fa399c05a0b1cf032cd01558ee9c7b495e9bfb2a590d81c')
