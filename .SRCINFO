@@ -1,0 +1,21 @@
+pkgbase = hopper-v4
+	pkgdesc = Reverse engineering tool that lets you disassemble, decompile and debug your applications
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = https://www.hopperapp.com/
+	arch = x86_64
+	license = custom
+	depends = hicolor-icon-theme
+	depends = libbsd
+	depends = ncurses5-compat-libs
+	depends = python2
+	depends = qt5-base
+	provides = hopper
+	provides = hopper-v4
+	conflicts = hopper
+	conflicts = hopper-v4
+	source = https://d2ap6ypl1xbe4k.cloudfront.net/Hopper-v4-4.1.1-Linux.deb
+	sha256sums = 140e57bee1dcea69c5bbb9c20976f4cdd123e1c69fd62bf6e08a110c24f98d71
+
+pkgname = hopper-v4
+
