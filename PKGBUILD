@@ -1,9 +1,8 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=wire-desktop-git
-_pkgname=wire-desktop
-_name=wire
-pkgver=2.11.2688.r2.ge890ff6
-pkgrel=1
+_pkgname=${pkgname%-git}
+pkgver=2.13.2739.r0.g0f405df
+pkgrel=2
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
 url='https://wire.com/'
@@ -22,7 +21,7 @@ pkgver() {
 }
 
 prepare() {
-  gendesk -f -n --name=Wire --pkgname="${_name}" --pkgdesc="${pkgdesc}" --exec="${_name}" --categories="Network"
+  gendesk -f -n --name=Wire --pkgname="${_pkgname}" --pkgdesc="${pkgdesc}" --exec="${_pkgname}" --categories="Network"
 }
 
 build() {
@@ -30,9 +29,9 @@ build() {
   npm install
   grunt 'clean:linux' 'update-keys' 'release-prod'
   if [ $CARCH == 'x86_64' ]; then
-    node_modules/.bin/build --linux --x64 --dir
+    grunt electronbuilder:linux_x64
   elif [ $CARCH == 'i686' ]; then
-    node_modules/.bin/build --linux --ia32 --dir
+    grunt electronbuilder:linux_ia32
   else
     echo "Unknown architecture"; exit 1;
   fi
@@ -40,34 +39,34 @@ build() {
 
 package() {
   # Place files
-  install -d "${pkgdir}/usr/lib/${_name}"
+  install -d "${pkgdir}/usr/lib/${_pkgname}"
   if [ $CARCH == 'x86_64' ]; then
-    cp -a "${srcdir}/${_pkgname}/wrap/dist/linux-unpacked/"* "${pkgdir}/usr/lib/${_name}"
+    cp -a "${srcdir}/${_pkgname}/wrap/dist/linux-unpacked/"* "${pkgdir}/usr/lib/${_pkgname}"
   elif [ $CARCH == 'i686' ]; then
-    cp -a "${srcdir}/${_pkgname}/wrap/dist/linux-ia32-unpacked/"* "${pkgdir}/usr/lib/${_name}"
+    cp -a "${srcdir}/${_pkgname}/wrap/dist/linux-ia32-unpacked/"* "${pkgdir}/usr/lib/${_pkgname}"
   else
     echo "Unknown architecture"; exit 1;
   fi
   
   # Symlink main binary
   install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/${_name}/${_name}" "${pkgdir}/usr/bin/${_name}"
+  ln -s "/usr/lib/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   
   # Place desktop entry and icon
-  desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/${_name}.desktop"
+  desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/${_pkgname}.desktop"
   for res in 32x32 256x256; do
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/${res}/apps"
     install -Dm644 "${srcdir}/${_pkgname}/resources/icons/${res}.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${res}/apps/${_name}.png"
+      "${pkgdir}/usr/share/icons/hicolor/${res}/apps/${_pkgname}.png"
   done
 
   # Spellcheck dictionaries
-  rm -rf "${pkgdir}/usr/lib/${_name}/resources/app/node_modules/spellchecker/vendor/hunspell_dictionaries"
-  ln -s "/usr/share/hunspell" "${pkgdir}/usr/lib/${_name}/resources/app/node_modules/spellchecker/vendor/hunspell_dictionaries"
+  rm -rf "${pkgdir}/usr/lib/${_pkgname}/resources/app/node_modules/spellchecker/vendor/hunspell_dictionaries"
+  ln -s "/usr/share/hunspell" "${pkgdir}/usr/lib/${_pkgname}/resources/app/node_modules/spellchecker/vendor/hunspell_dictionaries"
 
   # Place license files
   for license in "LICENSE.electron.txt" "LICENSES.chromium.html"; do
-    install -Dm644 "${pkgdir}/usr/lib/${_name}/${license}" "${pkgdir}/usr/share/licenses/${_name}/${license}"
-    rm "${pkgdir}/usr/lib/${_name}/${license}"
+    install -Dm644 "${pkgdir}/usr/lib/${_pkgname}/${license}" "${pkgdir}/usr/share/licenses/${_pkgname}/${license}"
+    rm "${pkgdir}/usr/lib/${_pkgname}/${license}"
   done
 }
