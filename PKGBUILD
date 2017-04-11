@@ -2,16 +2,16 @@
 # Contributor: Rax Garfield <admin at dvizho.ks.ua>
 
 pkgname=hunspell-uk
-pkgver=3.6.0
+pkgver=3.7.3
 pkgrel=1
 pkgdesc="Ukrainian spelling dictionary"
 arch=('any')
 url='https://extensions.libreoffice.org/extensions/ukrainian-spelling-dictionary-and-thesaurus'
-license=('LGPL' 'GPL' 'MPL')
+license=('MPL')
 groups=('dict-uk')
 optdepends=('hunspell: the spell checking libraries and apps')
 source=("https://extensions.libreoffice.org/extensions/ukrainian-spelling-dictionary-and-thesaurus/${pkgver/./-}/@@download/file/dict-uk_ua-$pkgver.oxt")
-sha256sums=('b8f3c3d7aca750e67d1016cfb3bcfbea331a2bb8ba1c5767d441180e1cedc465')
+sha256sums=('0437abb02ce44d3aca210842a431bbe6208f4d5380fbde85cb23c176d69da254')
 
 package() {
   cd uk_UA
