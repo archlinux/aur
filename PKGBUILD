@@ -1,6 +1,6 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
+# Maintainer: Wainer Vandelli <wainer dot vandelli at gmail dot com>
 # Contributor: Sebastien Binet binet-at-cern-ch
-# Contributor: Wainer Vandelli
 pkgname=cvmfs
 pkgver=2.3.5
 pkgrel=1
