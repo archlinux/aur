@@ -8,7 +8,7 @@ pkgbase=notmuch-git
 _pkgname=notmuch
 pkgname=('notmuch-git' 'notmuch-vim-git' 'notmuch-mutt-git' 'notmuch-runtime-git')
 pkgver=0.24.1.59.gce8c8882
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://notmuchmail.org/"
 license=('GPL3')
@@ -51,8 +51,8 @@ build() {
 package_notmuch-runtime-git(){
     pkgdesc="Runtime for notmuch and notmuch-mutt"
     depends=('xapian-core' 'gmime' 'talloc')
-    conflicts=('${pkgname//-git}')
-    provides=('${pkgname//-git}') 
+    conflicts=('notmuch-runtime')
+    provides=('notmuch-runtime')
     cd $_pkgname
 
     make DESTDIR="$pkgdir/" LIBDIR_IN_LDCONFIG=0 WITH_EMACS=0 install
@@ -66,8 +66,8 @@ package_notmuch-vim-git(){
   arch=('any')
   pkgdesc="Vim plugins for notmuch"
   depends=('notmuch-runtime-git')
-  conflicts=('${pkgname//-git}')
-  provides=('${pkgname//-git}') 
+  conflicts=('notmuch-vim')
+  provides=('notmuch-vim') 
   
   make -C ${_pkgname}/vim DESTDIR="$pkgdir" prefix="/usr/share/vim/vimfiles" install
 }
@@ -81,8 +81,8 @@ package_notmuch-git(){
                 'python2: for using the python2 bindings'
                 'ruby: for using the ruby bindings'
                 'gnupg: for email encryption')
-    conflicts=('${pkgname//-git}')
-    provides=('${pkgname//-git}') 
+    conflicts=('notmuch')
+    provides=('notmuch') 
     
     install=notmuch.install
 
@@ -96,6 +96,7 @@ package_notmuch-git(){
 
     # Install ruby bindings
     sed -i 's:INSTALL = .*[^D]$:& -D:' bindings/ruby/Makefile
+    install -d $pkgdir/usr/lib/ruby/vendor_ruby/2.4.0/x86_64-linux
     make -C bindings/ruby exec_prefix=$pkgdir/usr prefix=/usr install
 
     # Install python bindings
@@ -111,8 +112,8 @@ package_notmuch-mutt-git(){
   arch=('any')
   pkgdesc="The mail indexer"
   depends=('notmuch-runtime' 'perl-mailtools' 'perl-mail-box' 'perl-term-readline-gnu' 'perl-string-shellquote' 'perl-file-which')
-  conflicts=('${pkgname//-git}')
-  provides=('${pkgname//-git}') 
+  conflicts=('notmuch-mutt')
+  provides=('notmuch-mutt') 
     
   cd ${_pkgname}
   
