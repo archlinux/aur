@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-activities-config
 	pkgdesc = Configure the Activities Button via the Gnome Shell Extension Preferences Tool.
-	pkgver = 53
+	pkgver = 54
 	pkgrel = 1
 	url = https://extensions.gnome.org/extension/358/activities-configurator/
 	install = gschemas.install
