@@ -46,6 +46,7 @@ prepare() {
 	patch -Np1 -i "${srcdir}/0005-compositor-drm-Add-support-for-EGLDevice-EGLOutput.patch"
 	patch -Np1 -i "${srcdir}/0006-simple-egl-Do-not-set-EGL-up-until-XDG-setup-is-comp.patch"
 	patch -Np1 -i "${srcdir}/0007-Add-nvidia-release-notes-file.patch"
+	patch -Np1 -i "${srcdir}/0008-compositor-drm-Release-current-next-fb-when-deactiva.patch"
 }
 
 build() {
