@@ -1,7 +1,7 @@
 # Maintainer: Matt Bray <mattjbray@gmail.com>
 pkgname=elm-format-0.17-bin
 _source_pkgname=elm-format-0.17
-pkgver=0.6.0_alpha
+pkgver=0.6.1_alpha
 pkgrel=1
 epoch=
 pkgdesc="Format Elm source code according to a standard set of rules based on the official Elm Style Guide."
@@ -26,7 +26,7 @@ source=(
 )
 noextract=()
 md5sums=(
-  'd8763fd795c5706daf547ee741e34f25'
+  'cee58e07ca7efa478f75663a4c31b2ba'
   'SKIP'
 )
 validpgpkeys=(
