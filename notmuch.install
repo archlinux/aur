@@ -1,0 +1,8 @@
+post_upgrade() {
+  if (( $(vercmp $2 0.20) < 0 )); then
+    cat <<"EOF"
+==> notmuch-deliver was removed in notmuch 0.20.
+==> Please use `notmuch insert` instead.
+EOF
+  fi
+}

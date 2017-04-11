@@ -1,0 +1,12 @@
+diff --git a/emacs/Makefile.local b/emacs/Makefile.local
+index 040e64d4..acd5b078 100644
+--- a/emacs/Makefile.local
++++ b/emacs/Makefile.local
+@@ -5,7 +5,6 @@ emacs_sources := \
+ 	$(dir)/notmuch-lib.el \
+ 	$(dir)/notmuch-compat.el \
+ 	$(dir)/notmuch-parser.el \
+-	$(dir)/notmuch.el \
+ 	$(dir)/notmuch-query.el \
+ 	$(dir)/notmuch-show.el \
+ 	$(dir)/notmuch-tree.el \
