@@ -1,16 +1,16 @@
 # Maintainer: Alexandre Bury <alexandre.bury@gmail.com>
 
 pkgname=bearlibterminal-hg
-pkgver=r346.ec58820886ab
-pkgrel=2
+pkgver=r405.fba5b22c197f
+pkgrel=1
 pkgdesc='BearLibTerminal is a library that creates a terminal-like window facilitating flexible textual output and uncomplicated input processing.'
 arch=('i686' 'x86_64')
 url='http://foo.wyrd.name/en:bearlibterminal'
 license=('MIT')
-makedepends=('mercurial' 'cmake')
+makedepends=('mercurial' 'cmake' 'python-setuptools' 'python2-setuptools')
 provides=('bearlibterminal')
-source=('bearlibterminal-hg::hg+https://bitbucket.org/cfyzium/bearlibterminal' '__init__.py')
-md5sums=('SKIP' 'aae060316f7a787665ef85e53a7cfd38')
+source=('bearlibterminal-hg::hg+https://bitbucket.org/cfyzium/bearlibterminal')
+md5sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
@@ -18,22 +18,26 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname/Build"
 
-    cmake .
+    cmake ..
     make
 }
 
 package() {
-    install -Dm644 __init__.py "$pkgdir/usr/lib/python3.5/site-packages/bearlibterminal/__init__.py"
-    install -Dm644 __init__.py "$pkgdir/usr/lib/python2.7/site-packages/bearlibterminal/__init__.py"
+    # C shared library & header
     cd "$srcdir/$pkgname"
     SOLIB="Output/Linux64/libBearLibTerminal.so" 
     INCDIR="Terminal/Include"
     install -Dm644 "$SOLIB" "$pkgdir/usr/lib/libBearLibTerminal.so"
     install -Dm644 "$INCDIR/C/BearLibTerminal.h" "$pkgdir/usr/include/BearLibTerminal.h"
-    install -Dm644 "$INCDIR/Python/PyBearLibTerminal.py" "$pkgdir/usr/lib/python3.5/site-packages/bearlibterminal/PyBearLibTerminal.py"
-    install -Dm644 "$INCDIR/Python/PyBearLibTerminal.py" "$pkgdir/usr/lib/python2.7/site-packages/bearlibterminal/PyBearLibTerminal.py"
-    install -Dm644 "$SOLIB" "$pkgdir/usr/lib/python3.5/site-packages/bearlibterminal/libBearLibTerminal.so"
-    install -Dm644 "$SOLIB" "$pkgdir/usr/lib/python2.7/site-packages/bearlibterminal/libBearLibTerminal.so"
+
+    # And python library
+    cp CHANGELOG.md "$INCDIR/Python"
+    cp "$SOLIB" "$INCDIR/Python/bearlibterminal/"
+    cd "$INCDIR/Python"
+    python3 setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
+    python2 setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
+
+    # TODO: other languages?
 }

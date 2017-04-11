@@ -1,18 +1,18 @@
 pkgbase = bearlibterminal-hg
 	pkgdesc = BearLibTerminal is a library that creates a terminal-like window facilitating flexible textual output and uncomplicated input processing.
-	pkgver = r346.ec58820886ab
-	pkgrel = 2
+	pkgver = r405.fba5b22c197f
+	pkgrel = 1
 	url = http://foo.wyrd.name/en:bearlibterminal
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = mercurial
 	makedepends = cmake
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	provides = bearlibterminal
 	source = bearlibterminal-hg::hg+https://bitbucket.org/cfyzium/bearlibterminal
-	source = __init__.py
 	md5sums = SKIP
-	md5sums = aae060316f7a787665ef85e53a7cfd38
 
 pkgname = bearlibterminal-hg
 
