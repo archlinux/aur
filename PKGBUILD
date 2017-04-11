@@ -1,7 +1,7 @@
 # Maintainer: Dario Ostuni <dario.ostuni@gmail.com>
 
 pkgname=binaryen
-pkgver=30
+pkgver=31
 pkgrel=1
 pkgdesc="Compiler infrastructure and toolchain library for WebAssembly, in C++"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -11,8 +11,9 @@ depends=()
 makedepends=('emscripten' 'cmake')
 source=("https://github.com/WebAssembly/binaryen/archive/version_${pkgver}.tar.gz"
         "binaryen.sh")
-sha256sums=('66635b931f1daa5a4f912887388ec972d3d7dde3f2852f9f5cfa51a3e6ddf9a5'
+sha256sums=('31007e95b3b207497879d171bb2c557aa5625a14087aaa57de05d5641f7fb7c9'
             '2262d9450ee2558e48dfc056627cabe4a1760d9e6cfad9b091f485efca68607a')
+
 build() {
     cd binaryen-version_${pkgver}
     rm -rf build
