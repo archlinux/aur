@@ -3,7 +3,7 @@
 # vim: set ts=2 sts=2 et ft=sh tw=79:
 
 pkgname='poppler-minimal'
-pkgver=0.35.0
+pkgver=0.53.0
 pkgrel=1
 arch=(i686 x86_64)
 license=('GPL')
