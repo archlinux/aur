@@ -3,8 +3,8 @@
 
 _pkgname=gnucap
 pkgname=$_pkgname-git
-pkgver=20160724.r115.geb4b865
-pkgrel=2
+pkgver=20160724.r129.g44bbdc7
+pkgrel=1
 pkgdesc="GNU Circuit Analysis Package (autotools branch)"
 arch=('i686' 'x86_64')
 url="http://gnucap.org/"
