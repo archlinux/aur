@@ -19,10 +19,10 @@ pkgdesc="Provides a dense linear algebra library similar to LAPACK but for heter
 arch=("i686" "x86_64")
 url="http://icl.cs.utk.edu/magma/"
 license=(custom)
-depends=("cuda>=6.5.0" "gcc-libs-multilib" "gsl" "python" "openblas-lapack")
+depends=("cuda>=6.5.0" "gsl" "python" "openblas-lapack")
 makedepends=("gcc-fortran")
 options=('staticlibs')
-sha1sums=('7f884e4c80dd296939174282d69d19cc1cca71a5')
+sha256sums=('df5d4ace417e5bf52694eae0d91490c6bde4cde1b0da98e8d400c5c3a70d83a2')
 source=("http://icl.cs.utk.edu/projectsfiles/magma/downloads/magma-${pkgver}.tar.gz")
 
 build() {
