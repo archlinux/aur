@@ -8,6 +8,7 @@ pkgbase = when-changed-git
 	makedepends = git
 	depends = python
 	depends = python-watchdog
+	depends = python-setuptools
 	provides = when-changed
 	conflicts = when-changed
 	source = git+https://github.com/joh/when-changed.git
