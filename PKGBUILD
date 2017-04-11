@@ -3,13 +3,13 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=fuse-emulator
-pkgver=1.3.0
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="ZX Spectrum emulator."
 arch=('i686' 'x86_64')
 url="http://fuse-emulator.sourceforge.net/fuse.php"
 license=("GPL")
-depends=('gtk3' "libspectrum=$pkgver" 'sdl')
+depends=('gtk3' "libspectrum" 'sdl')
 # install="$pkgname.install"
 source=("http://downloads.sourceforge.net/sourceforge/fuse-emulator/fuse-$pkgver.tar.gz"
         "fuse-emulator.desktop")
@@ -32,5 +32,5 @@ package() {
 	done
 }
 
-md5sums=('6b6fdca1542d2f7a41147c9635185758'
+md5sums=('300fb52f5e86fa2e4b01163fa5d74a7b'
          '0abe9522e8d0bcfa51997dbd6a602197')
