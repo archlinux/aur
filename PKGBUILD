@@ -1,4 +1,5 @@
 # Maintainer: David Adler <d dot adler aet posteo dot de>
+# Maintainer: Felix Salfelder <felix aet salfelder dott org>
 
 _pkgname=gnucap
 pkgname=$_pkgname-git
@@ -22,7 +23,7 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  ./bootstrap
+  autotools/bootstrap
   ./configure --prefix=/usr
   make
 }
