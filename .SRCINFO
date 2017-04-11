@@ -1,0 +1,26 @@
+pkgbase = mymencoder
+	pkgdesc = Frontend for mencoder
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://kellerleiche.bplaced.net/
+	arch = any
+	license = GPL2
+	depends = gtkdialog
+	depends = xterm
+	depends = mplayer
+	depends = mencoder
+	depends = mediainfo
+	depends = yad
+	depends = dvdbackup
+	optdepends = gedit: editor detected by the program
+	optdepends = kwrite: editor detected by the program
+	optdepends = mousepad: editor detected by the program
+	optdepends = leafpad: editor detected by the program
+	source = MyMencoder-0.3.1-1pclos2012.src.rpm::http://ftp.nluug.nl/pub/os/Linux/distr/pclinuxos/pclinuxos/srpms/SRPMS.pclos/MyMencoder-0.3.1-1pclos2012.src.rpm
+	md5sums = c5daab767fd917be68b1dc9c7fe83c60
+	sha1sums = c738207de0441685fbcce82cb0b705f76dde6ea5
+	sha224sums = 2c72d759b2834e7cf14e4307bae65eb1961610c6e3b6755585d9fb99
+	sha256sums = ee84dfb7c413a527987512116051a432f7ecbc2d19d499c495da1bf9db074210
+
+pkgname = mymencoder
+
