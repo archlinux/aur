@@ -14,4 +14,8 @@ sha256sums=('9b50e290912dff356687b7585ea2d7a7e746231e1dd4adcb20833fa54e1f4d35')
 package() {
     mkdir -p "$pkgdir"/usr/share/doc/$pkgname/html
     cp -rf "$srcdir"/*/* "$pkgdir"/usr/share/doc/$pkgname/html/
+    printf "\x1b[1m[NOTE]\x1b[0m\n"
+    printf "You should read the document here:\n"
+    printf "\thttp://pubs.opengroup.org/onlinepubs/terms.htm#c082\n"
+    printf "If you do not agree, uninstall this package.\n"
 }
