@@ -3,7 +3,7 @@
 # Contributor: Teteros <teteros -at- opmbx -dot- org>
 
 pkgname=radium
-pkgver=4.6.6
+pkgver=4.6.8
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -38,7 +38,7 @@ source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
         "dont-empty-qt-library-paths.patch"
         "use-system-libxcb.patch"
         "use-system-vstsdk.patch")
-md5sums=('4a2e4050ce8350d1d0287524b4916cd2'
+md5sums=('6c995f432524cd3de812a3309f66e8f0'
          'd63cea387564fa21dee775e764206a45'
          'd798d5655e2899dc1b54f797d9b2bda3'
          'd068d4bc99360cd4ec933c57ab9f5159')
