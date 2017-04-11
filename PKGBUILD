@@ -1,34 +1,33 @@
 # Maintainer: grufo <madmurphy333@gmail.com>
 
-pkgname="popcorntime-ce-bin"
-_pkgname="popcorntime-ce"
-pkgver="0.4.0"
-pkgrel="2"
-pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch. Repos of the original community edition."
-arch=("x86_64" "i686")
-url="http://popcorntime.ag/"
-license=("GPL3")
-depends=("alsa-lib" "desktop-file-utils" "gconf" "gtk2" "libnotify" "libxtst" "nodejs" "nss" "python" "ttf-font")
-optdepends=("net-tools: necessary for the new vpn feature" "ttf-liberation: open source ttf fonts")
-provides=("popcorntime" "popcorntime-ce")
-conflicts=("popcorntime-ce" "popcorntime-ce-git")
-options=("!strip")
-install="popcorntime-ce.install"
+pkgname='popcorntime-ce-bin'
+_pkgname='popcorntime-ce'
+pkgver='0.4.0'
+pkgrel='2'
+pkgdesc='Stream movies from torrents. Skip the downloads. Launch, click, watch. Repos of the original community edition.'
+arch=('x86_64' 'i686')
+url='http://www.popcorn-time.is/'
+license=('GPL3')
+depends=('alsa-lib' 'desktop-file-utils' 'gconf' 'gtk2' 'libnotify' 'libxtst' 'nodejs' 'nss' 'python' 'ttf-font')
+optdepends=('net-tools: necessary for the new vpn feature' 'ttf-liberation: open source ttf fonts')
+provides=('popcorntime' 'popcorntime-ce')
+conflicts=('popcorntime-ce' 'popcorntime-ce-git')
+options=('!strip')
+install='popcorntime-ce.install'
+md5sums=('21693efbd20f41198b8ebb80e5e81588'
+         'b8996810c9862bd9b41880b82055073f'
+         '53367e600bad6229b200ed4478f8fcbb')
 
-sha1sums=("ee6a1b9314cbcb8eeabe76e9d6928f8c0bee4f42"
-	"2c22a3f1d1335abe8d7ac7dd6a33933720ba30e4"
-	"219a9c7033361e1286967452868721302b1d6da7")
+_platform='64bit'
 
-_platform="64bit"
-
-if [ "$CARCH" = "i686" ]; then
-	_platform="32bit"
-	sha1sums[0]="369da992f097e1b872a0f7d00a62361ac9192c93"
+if [ "$CARCH" = 'i686' ]; then
+	_platform='32bit'
+	sha1sums[0]='369da992f097e1b872a0f7d00a62361ac9192c93'
 fi
 
 source=("https://github.com/PopcornTimeCommunity/desktop/releases/download/v${pkgver}-${pkgrel}/popcorn-time-community-v${pkgver}-${pkgrel}-${_platform}.tar.xz"
-	"popcorntime-ce.install"
-	"popcorntime-ce.desktop")
+	'popcorntime-ce.install'
+	'popcorntime-ce.desktop')
 
 
 package() {
