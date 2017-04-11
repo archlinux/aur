@@ -5,10 +5,10 @@ After=network.target
 [Service]
 Type=simple
 User=mastodon
-WorkingDirectory=/home/mastodon/live
+WorkingDirectory=/var/lib/mastodon/live
 Environment="RAILS_ENV=production"
 Environment="PORT=3000"
-ExecStart=/home/mastodon/.rbenv/shims/bundle exec puma -C config/puma.rb
+ExecStart=/var/lib/mastodon/.rbenv/shims/bundle exec puma -C config/puma.rb
 TimeoutSec=15
 Restart=always
 
