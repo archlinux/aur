@@ -2,14 +2,13 @@
 
 pkgname=fdroidcl
 _name="${pkgname}"
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="F-Droid desktop client"
 url="https://github.com/mvdan/${_name}"
 license=('BSD')
 arch=('i686' 'x86_64')
 makedepends=('git' 'go')
-options=('!strip')
 source=("git+${url}#tag=v${pkgver}")
 sha1sums=('SKIP')
 
@@ -22,7 +21,7 @@ prepare() {
 
 build() {
 	cd "${srcdir}/src/github.com/mvdan/${_name}/cmd/${_name}"
-	GOPATH="${srcdir}" go build
+	GOPATH="${srcdir}" go build -ldflags='-s -w'
 }
 
 package() {
