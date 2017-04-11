@@ -1,7 +1,8 @@
 # Maintainer: Bash Booster "booster.sdk at gmail dot com"
 
 pkgname=numix-icon-theme-pack
-pkgver=20170405
+commit=45989553eade51f701968aa774aead09bb862aae
+pkgver=20170409
 pkgrel=1
 pkgdesc='Numix project Icon Themes - Updated with Numix Core'
 arch=('any')
