@@ -1,13 +1,13 @@
 # Maintainer: degreeme <suratovvlad@gmail.com>
 
 pkgname=texstudio-dark-git
-pkgver=2.12.2.r0.g2fc8075
+pkgver=2.12.2.r1.geca3f95
 pkgrel=1
 pkgdesc="Integrated writing environment for creating LaTeX documents. Dark version."
 arch=('i686' 'x86_64')
 url="http://texstudio.sourceforge.net/"
 license=('GPL')
-depends=('poppler-qt5' 'qt5-svg' 'qt5-script' 'libxkbcommon-x11')
+depends=('poppler-qt5' 'qt5-svg' 'qt5-script' 'libxkbcommon-x11' 'libqdark-git')
 makedepends=('qt5-tools')
 optdepends=('evince: pdf reader'
             'okular: alternate pdf reader')
