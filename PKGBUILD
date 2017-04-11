@@ -3,7 +3,7 @@
 
 pkgname=gcompris-qt
 pkgver=0.70
-pkgrel=1
+pkgrel=2
 pkgdesc="Educational software suite comprising of numerous activities for children aged 2 to 10"
 arch=('i686' 'x86_64')
 url="http://gcompris.net/"
