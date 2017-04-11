@@ -1,8 +1,8 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 _npmname=prettier
-_npmver=0.0.5
+_npmver=0.22.0
 pkgname=prettier
-pkgver=0.0.5
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="An opinionated JavaScript formatter inspired by refmt with advanced support for language features from ES2017, JSX, and Flow"
 arch=(any)
@@ -12,7 +12,6 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(9f3a67b57e5836d925e7038ea841580915c039eb)
 
 package() {
   cd $srcdir
@@ -23,3 +22,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+sha1sums=('7b37c4480d0858180407e5a8e13f0f47da7385d2')
