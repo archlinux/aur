@@ -54,7 +54,6 @@ build() {
 	./configure \
 		--prefix=/usr \
 		--libexecdir=/usr/lib/weston \
-		--enable-libinput-backend \
 		--enable-systemd-login \
 		--enable-systemd-notify \
 		--enable-xwayland \
