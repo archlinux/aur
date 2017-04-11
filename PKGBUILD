@@ -3,16 +3,16 @@
 pkgname=("pivx-daemon" "pivx-cli" "pivx-qt")
 pkgbase=pivx
 _pkgbase=${pkgbase^^}
-pkgver=2.1.6
-pkgrel=5
+pkgver=2.1.7
+pkgrel=1
 arch=("i686" "x86_64")
 url="https://pivx.org/"
 depends=("boost-libs")
 makedepends=("boost" "qt5-tools" "miniupnpc" "openssl" "protobuf" "qrencode" "db4.8")
 pkgdesc="Transactional security and privacy-focused decentralized open source cryptocurrency "
 license=("MIT")
-source=("https://github.com/PIVX-Project/PIVX/archive/v2.1.6.tar.gz")
-sha256sums=("990f70fe7c4dc487694018a41264c79c94c4e58d5529212b8dc09f4658215bb4")
+source=("https://github.com/PIVX-Project/PIVX/archive/v2.1.7.tar.gz")
+sha256sums=("68e55e3f4297635fe194f624ec98bef211e3f55811ca140627967bddfd360b29")
 
 build() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
