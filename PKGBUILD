@@ -28,7 +28,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 pkgver=7.0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP scripting language package for stable release of 7.0 series"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -36,9 +36,8 @@ license=('PHP')
 
 url='http://www.php.net'
 makedepends=('apache' 'aspell' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libmcrypt' 'libxslt' 'libzip' 'net-snmp'
-             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'freetds' 'pcre')
+             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'freetds' 'pcre' 'c-client')
 
-checkdepends=('procps-ng')
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
         )
@@ -50,8 +49,6 @@ sha256sums=('471c16fcdd6a5e1a37199e97bcaeea6117626229785185be7532aaa7c6ee04be'
             'b6b7f3ced56b75bf95513a46f43cde41fc28da714f5e0ed181caf2266f2f0c27'
             '2f678d039313ee613d59c8b4bf9f48068085df0fa8ac7ca4cf807e168061a8c9'
             )
-validpgpkeys=('1A4E8B7277C42E53DBA9C7B9BCAA30EA9C0D5763'
-              '528995BFEDFBA7191D46839EF9BA0ADA31CBD89E')
 
 prepare() {
 	cd ${srcdir}/${_pkgbase}-${pkgver}
@@ -173,25 +170,12 @@ build() {
 	cd ../../
 }
 
-check() {
-	cd ${srcdir}/${_pkgbase}-${pkgver}
-
-	# Check if sendmail was configured correctly (FS#47600)
-	${srcdir}/build/sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q '/usr/bin/sendmail'
-
-	export REPORT_EXIT_STATUS=1
-	export NO_INTERACTION=1
-	export SKIP_ONLINE_TESTS=1
-	export SKIP_SLOW_TESTS=1
-
-	${srcdir}/build/sapi/cli/php -n run-tests.php -n -P {tests,Zend}
-}
 
 package_php70() {
 	pkgdesc='A general-purpose scripting language that is especially suited to web development'
 	depends=('libxml2' 'curl' 'libzip' 'pcre')
-	replaces=('php-ldap')
-	conflicts=('php-ldap')
+	replaces=('php70-ldap')
+	conflicts=('php70-ldap')
 	provides=("${_pkgbase}=$pkgver")
 	backup=('etc/${pkgbase}/php.ini')
 
