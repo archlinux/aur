@@ -1,6 +1,6 @@
 # Maintainer: Claudio d'Angelis <claudiodangelis at gmail dot com>
 pkgname=postman-bin
-pkgver=4.10.6
+pkgver=4.10.7
 pkgrel=1
 pkgdesc="Build, test, and document your APIs faster"
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=(
     "postman.desktop"
 )
 md5sums=(
-    "85fba62c07985b6275c0f0f9e15ddb88" 
+    "d351ba80ee9626ddb87ee55e0a6c48f4" 
     "ebf1903fa3299a8cf3eb578674ee090f"
 )
 depends=('gconf')
