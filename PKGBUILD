@@ -1,14 +1,14 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=mastodon-git
-pkgver=1.1_0_g4e41cd9a
+pkgver=1.1.1_29_gc35bda05
 _branch=master
 pkgrel=0.1
 pkgdesc="A GNU Social-compatible microblogging server"
 arch=('i686' 'x86_64')
 url="https://mastodon.social"
 license=('AGPL-3.0')
-conflicts=("${pkgname%-git}", "${pkgname%-git}-docker", "${pkgname%-git}-docker-git")
+conflicts=("${pkgname%-git}" "${pkgname%-git}-docker" "${pkgname%-git}-docker-git")
 makedepends=(
     'yarn'
     )
