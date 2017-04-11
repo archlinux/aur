@@ -1,6 +1,5 @@
-diff -Naur src/desktop-0.4.1-5/package.json src/desktop-0.4.1-5/package.json
---- src/desktop-0.4.1-5/package.json
-+++ src/desktop-0.4.1-5/package.json
+--- desktop-0.4.1-5/package.json
++++ desktop-0.4.1-5/package.json
 @@ -7,7 +7,7 @@
      "url": "https://github.com/PopcornTimeCommunity/desktop.git"
    },
@@ -10,9 +9,8 @@ diff -Naur src/desktop-0.4.1-5/package.json src/desktop-0.4.1-5/package.json
    "version": "0.4.1-5",
    "node-remote": "*://*",
    "releaseName": "New Year's Eve in front of the door",
-diff -Naur src/desktop-0.4.1-5/src/app/lib/providers/trakttv.js src/desktop-0.4.1-5/src/app/lib/providers/trakttv.js
---- src/desktop-0.4.1-5/src/app/lib/providers/trakttv.js
-+++ src/desktop-0.4.1-5/src/app/lib/providers/trakttv.js
+--- desktop-0.4.1-5/src/app/lib/providers/trakttv.js
++++ desktop-0.4.1-5/src/app/lib/providers/trakttv.js
 @@ -1,4 +1,4 @@
 -(function (App) {
 +(function(App) {
@@ -708,9 +706,8 @@ diff -Naur src/desktop-0.4.1-5/src/app/lib/providers/trakttv.js src/desktop-0.4.
 -})(window.App);
 +})(window.App);
 \ No newline at end of file
-diff -Naur src/desktop-0.4.1-5/src/app/lib/views/plugins.js src/desktop-0.4.1-5/src/app/lib/views/plugins.js
---- src/desktop-0.4.1-5/src/app/lib/views/plugins.js
-+++ src/desktop-0.4.1-5/src/app/lib/views/plugins.js
+--- desktop-0.4.1-5/src/app/lib/views/plugins.js
++++ desktop-0.4.1-5/src/app/lib/views/plugins.js
 @@ -1,4 +1,4 @@
 -(function (App) {
 +(function(App) {
@@ -1067,9 +1064,8 @@ diff -Naur src/desktop-0.4.1-5/src/app/lib/views/plugins.js src/desktop-0.4.1-5/
 -})(window.App);
 +})(window.App);
 \ No newline at end of file
-diff -Naur src/desktop-0.4.1-5/src/app/templates/about.tpl src/desktop-0.4.1-5/src/app/templates/about.tpl
---- src/desktop-0.4.1-5/src/app/templates/about.tpl
-+++ src/desktop-0.4.1-5/src/app/templates/about.tpl
+--- desktop-0.4.1-5/src/app/templates/about.tpl
++++ desktop-0.4.1-5/src/app/templates/about.tpl
 @@ -2,7 +2,7 @@
      <div class="fa fa-times close-icon"></div>
      <div class="overlay-content"></div>
@@ -1087,9 +1083,8 @@ diff -Naur src/desktop-0.4.1-5/src/app/templates/about.tpl src/desktop-0.4.1-5/s
 +        <div class="changelog-text"></div>
      </div>
  </div>
-diff -Naur src/desktop-0.4.1-5/src/app/templates/disclaimer.tpl src/desktop-0.4.1-5/src/app/templates/disclaimer.tpl
---- src/desktop-0.4.1-5/src/app/templates/disclaimer.tpl
-+++ src/desktop-0.4.1-5/src/app/templates/disclaimer.tpl
+--- desktop-0.4.1-5/src/app/templates/disclaimer.tpl
++++ desktop-0.4.1-5/src/app/templates/disclaimer.tpl
 @@ -1,6 +1,6 @@
  <div class="loading-background"></div>
  <div class="disclaimer-loading"></div>
@@ -1129,9 +1124,8 @@ diff -Naur src/desktop-0.4.1-5/src/app/templates/disclaimer.tpl src/desktop-0.4.
 -</div>
 \ No newline at end of file
 +</div>
-diff -Naur src/desktop-0.4.1-5/src/app/templates/initializing.tpl src/desktop-0.4.1-5/src/app/templates/initializing.tpl
---- src/desktop-0.4.1-5/src/app/templates/initializing.tpl
-+++ src/desktop-0.4.1-5/src/app/templates/initializing.tpl
+--- desktop-0.4.1-5/src/app/templates/initializing.tpl
++++ desktop-0.4.1-5/src/app/templates/initializing.tpl
 @@ -1,5 +1,5 @@
 -<img class="icon-begin" src="/src/app/images/icon.png">
 -<img class="init-icon-title" src="/src/app/images/popcorn-time-logo.svg">
