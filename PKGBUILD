@@ -1,36 +1,36 @@
 # Maintainer: grufo <madmurphy333@gmail.com>
 
-pkgname="popcorntime-ce-git"
-_pkgname="popcorntime-ce"
-_device="desktop"
-pkgver="r306.a576c24"
+pkgname='popcorntime-ce-git'
+_pkgname='popcorntime-ce'
+_device='desktop'
+pkgver='r306.a576c24'
 pkgrel=1
-pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch. Repos of the original community edition."
-arch=("x86_64" "i686")
-url="http://popcorntime.ag/"
-license=("GPL3")
-depends=("alsa-lib" "desktop-file-utils" "gconf" "gtk2" "libnotify" "libxtst" "nodejs" "nss" "python" "ttf-font")
-makedepends=("git" "npm")
-optdepends=("net-tools: necessary for the new vpn feature" "ttf-liberation: open source ttf fonts")
-provides=("popcorntime" "popcorntime-ce")
-conflicts=("popcorntime-ce" "popcorntime-ce-bin")
-options=("!strip")
-install="popcorntime-ce.install"
+pkgdesc='Stream movies from torrents. Skip the downloads. Launch, click, watch. Repos of the original community edition.'
+arch=('x86_64' 'i686')
+url='http://www.popcorn-time.is/'
+license=('GPL3')
+depends=('alsa-lib' 'desktop-file-utils' 'gconf' 'gtk2' 'libnotify' 'libxtst' 'nodejs' 'nss' 'python' 'ttf-font')
+makedepends=('git' 'npm')
+optdepends=('net-tools: necessary for the new vpn feature' 'ttf-liberation: open source ttf fonts')
+provides=('popcorntime' 'popcorntime-ce')
+conflicts=('popcorntime-ce' 'popcorntime-ce-bin')
+options=('!strip')
+install='popcorntime-ce.install'
 source=("git+https://github.com/PopcornTimeCommunity/${_device}.git"
-	"popcorntime-ce.install"
-	"popcorntime-ce.desktop")
-sha1sums=("SKIP"
-	"2c22a3f1d1335abe8d7ac7dd6a33933720ba30e4"
-	"219a9c7033361e1286967452868721302b1d6da7")
+	'popcorntime-ce.install'
+	'popcorntime-ce.desktop')
+md5sums=('SKIP'
+         'b8996810c9862bd9b41880b82055073f'
+         '53367e600bad6229b200ed4478f8fcbb')
 
-_platform=$([ $CARCH = "x86_64" ] && echo "linux64" || echo "linux32")
-_execname="Popcorn-Time-CE"
+_platform=$([ $CARCH = 'x86_64' ] && echo 'linux64' || echo 'linux32')
+_execname='Popcorn-Time-CE'
 _bindir="${_device}/build/${_execname}/${_platform}"
 
 pkgver() {
 
 	cd "${_device}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "'r%s.%s'" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 }
 
@@ -49,7 +49,7 @@ build() {
 
 	cd "${srcdir}/${_device}"
 
-	"${srcdir}/${_device}/node_modules/.bin/gulp" build -p ${_platform}
+	"${srcdir}/${_device}/node_modules/.bin/gulp" build -p "${_platform}"
 
 }
 
