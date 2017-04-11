@@ -1,19 +1,22 @@
 diff -aur --no-dereference package.pristine/Qt/Qt_Error.cpp package.new/Qt/Qt_Error.cpp
---- package.pristine/Qt/Qt_Error.cpp	2016-10-29 19:20:29.405129735 +0200
-+++ package.new/Qt/Qt_Error.cpp	2016-10-29 19:21:28.281368400 +0200
-@@ -63,7 +63,7 @@
- QSplashScreen *g_splashscreen = NULL; // referenced by helpers.h
- 
- int main(int argc, char **argv){
+--- package.pristine/Qt/Qt_Error.cpp	2017-04-08 14:45:26.000000000 +0200
++++ package.new/Qt/Qt_Error.cpp	2017-04-11 19:26:40.613065282 +0200
+@@ -77,9 +77,9 @@
+   if(getenv("QT_QPA_PLATFORM_PLUGIN_PATH")==NULL){
+     faulty_installation = true;
+   }else
+-    QCoreApplication::setLibraryPaths(QStringList());    
++    //QCoreApplication::setLibraryPaths(QStringList());    
+ #else
 -  QCoreApplication::setLibraryPaths(QStringList());
 +  //QCoreApplication::setLibraryPaths(QStringList());
-   
+ #endif
+ 
    QApplication app(argc,argv);
-   int ret = show_message(argv[1]);
 diff -aur --no-dereference package.pristine/Qt/Qt_Main.cpp package.new/Qt/Qt_Main.cpp
---- package.pristine/Qt/Qt_Main.cpp	2016-10-29 19:20:29.405129735 +0200
-+++ package.new/Qt/Qt_Main.cpp	2016-10-29 19:21:07.024856269 +0200
-@@ -2274,7 +2274,7 @@
+--- package.pristine/Qt/Qt_Main.cpp	2017-04-08 14:45:26.000000000 +0200
++++ package.new/Qt/Qt_Main.cpp	2017-04-11 19:25:31.886938780 +0200
+@@ -2623,7 +2623,7 @@
    qInstallMsgHandler(myMessageOutput);
  #endif
    
@@ -23,14 +26,17 @@ diff -aur --no-dereference package.pristine/Qt/Qt_Main.cpp package.new/Qt/Qt_Mai
    QCoreApplication::setAttribute(Qt::AA_X11InitThreads);
  
 diff -aur --no-dereference package.pristine/crashreporter/crashreporter.cpp package.new/crashreporter/crashreporter.cpp
---- package.pristine/crashreporter/crashreporter.cpp	2016-10-29 19:20:29.541795408 +0200
-+++ package.new/crashreporter/crashreporter.cpp	2016-10-29 19:20:46.425006019 +0200
-@@ -395,7 +395,7 @@
- 
- int main(int argc, char **argv){
-   
+--- package.pristine/crashreporter/crashreporter.cpp	2017-04-08 14:45:26.000000000 +0200
++++ package.new/crashreporter/crashreporter.cpp	2017-04-11 19:27:08.169515448 +0200
+@@ -407,9 +407,9 @@
+   if(getenv("QT_QPA_PLATFORM_PLUGIN_PATH")==NULL){
+     faulty_installation = true;
+   }else
+-    QCoreApplication::setLibraryPaths(QStringList());    
++    //QCoreApplication::setLibraryPaths(QStringList());    
+ #else
 -  QCoreApplication::setLibraryPaths(QStringList());
 +  //QCoreApplication::setLibraryPaths(QStringList());
+ #endif
    
    QApplication app(argc,argv);
- 
