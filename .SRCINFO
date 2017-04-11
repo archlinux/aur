@@ -1,7 +1,7 @@
 pkgbase = alignace
 	pkgdesc = Program that finds sequence elements conserved in a set of DNA sequences
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 4
 	url = http://arep.med.harvard.edu/mrnadata/mrnasoft.html
 	arch = i686
 	arch = x86_64

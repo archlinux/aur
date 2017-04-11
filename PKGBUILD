@@ -1,7 +1,7 @@
 #Maintainer: allencch <allencch at hotmail dot com>
 pkgname=alignace
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Program that finds sequence elements conserved in a set of DNA sequences"
 arch=('i686' 'x86_64')
 url="http://arep.med.harvard.edu/mrnadata/mrnasoft.html"
@@ -13,13 +13,10 @@ md5sums=('6d2d9fb0929ce03974dca874b516cd07'
          '29ca50829f6d43c63d8fcc827b3daceb')
 
 package() {
-	rpmextract.sh "${srcdir}/libstdc++-2.9.0-30.i386.rpm"
 	cd "${srcdir}/${pkgname}"
 	mkdir -p "${pkgdir}/usr/bin"
 	mkdir -p "${pkgdir}/usr/lib"
 	install -m755 AlignACE "${pkgdir}/usr/bin"
 	install -m755 ScanACE "${pkgdir}/usr/bin"
-	#install -m755 ../usr/i386-glibc22-linux/lib/libstdc++-libc6.1-1.so.2 "${pkgdir}/usr/lib"
-	#install -m755 ../usr/i386-glibc22-linux/lib/libstdc++-2-libc6.1-1-2.9.0.so "${pkgdir}/usr/lib"
 	install -m755 ../usr/lib/libstdc++-2-libc6.1-1-2.9.0.so "${pkgdir}/usr/lib"
 }
