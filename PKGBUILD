@@ -9,7 +9,7 @@ _pkgname=lightscribe-labeler
 
 pkgname=bin32-lightscribe-labeler
 pkgver=1.18.15.1
-pkgrel=6
+pkgrel=7
 pkgdesc="LightScribe Simple Labeler"
 arch=('x86_64')
 url="http://www.pawtec.com/lightscribe"
@@ -39,7 +39,7 @@ package() {
     install -Dm644 $_pkgpath/$_realname/content/images/LabelWizardIcon.png ${pkgdir}/usr/share/pixmaps/$_pkgname.png
 
     msg2 "  -> Installing shortcut and symlink..."
-    install -Dm644 $_pkgname.desktop $pkgdir/usr/share/applications/$_pkgname
+    install -Dm644 $_pkgname.desktop $pkgdir/usr/share/applications/$_pkgname.desktop
     install -d $pkgdir/usr/bin
     ln -s /$_pkgpath/$_realname/$_realname $pkgdir/usr/bin/$_pkgname
     
