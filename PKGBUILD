@@ -9,12 +9,12 @@ arch=("any")
 url="https://github.com/yuan1994/${_pkgname}"
 license=('unknown')
 groups=()
-depends=('nwjs-bin')
+depends=()
 makedepends=('git')
 provides=()
 conflicts=()
 install="wechat-web-devtools-git.install"
-source=("git://github.com/yuan1994/${_pkgname}.git#branch=core")
+source=("git://github.com/yuan1994/${_pkgname}.git")
 md5sums=('SKIP')
 
 package() {
