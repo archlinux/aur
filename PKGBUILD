@@ -1,42 +1,48 @@
 # Maintainer: detrito <detrito@inventati.org>
 
 pkgname=therion
-pkgver=5.3.16
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="A cave surveying software"
 arch=('x86_64' 'i686')
 url="http://therion.speleo.sk"
 license=('GPL2')
 
-depends=('tk' 'bwidget' 'texlive-core' 'imagemagick' 'wxgtk' 'glu'
-  'vtk' 'webkitgtk2')
+# avoid parallel-execution errors
+MAKEFLAGS="-j1"
+
+depends=('tk' 'bwidget' 'texlive-core' 'imagemagick' 'wxgtk' 'glu' 'vtk'
+	'webkitgtk2')
 
 optdepends=('libjpeg-turbo' 'libpng' 'zlib')
-source=("${url}/downloads/${pkgname}-${pkgver}.tar.gz"
-	"loch-makefile-vtk-6.1.patch"
-	"makefile-install-path.patch"
-	"therion-ini.patch")
 
-sha256sums=('73cda5225725d3e8cadd6fada9e506ab94b093d4e7a9fc90eaf23f8c7be6eb85'
-  'd737140a4174d5b6cb55095a84010667e6bcbc2a645a1758229a422dd9daa742'
-  '9944238d0ade161143b04446b98f1627f2a20e33f29c8f9135f5d051e5af2c1e'
-  '85129bd20f12349fc7da91b262148c6c58265982fe07322b6f89cdb75e4bb5cd')
+source=("http://github.com/therion/therion/archive/v${pkgver}.tar.gz"
+	"loch_vtk7.patch"
+	"make_install.patch"
+	"therion_ini.patch")
+
+sha256sums=('0d505093fedfc0a3cfda865407067d19c1aca9e6d1823b4007d373f6e14e48cd'
+	'81cd6c75a74897831edd4116bb97c71090023abbb14725b96d2a219f67cb5613'
+	'bf3fda048fb1a4f4c49f0daf7faa7e40c630748b33ed27c47bcfabba4014571c'
+	'0639b0c4c9660af33675bf948ca4678d441167f77f7818cc015b7738a53fb8f3'
+	)
 
 build() {
-  # patch to compile loch with VTK 6.1
-  cd "${srcdir}/${pkgname}/loch"
-  patch -p0 -i ${srcdir}/loch-makefile-vtk-6.1.patch
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # patch to compile loch with VTK 7.1
+  patch -p0 -i ${srcdir}/loch_vtk7.patch
+
   # patch to install in $pkgdir
-  cd ${srcdir}/${pkgname}
-  patch -p0 -i ${srcdir}/makefile-install-path.patch
-  
-  # patch config file
-  patch -p0 -i ${srcdir}/therion-ini.patch
- 
-make
+  patch -p0 -i ${srcdir}/make_install.patch
+
+  # patch to get UTF8 and available fonts
+  patch -p0 -i ${srcdir}/therion_ini.patch
+
+  make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }

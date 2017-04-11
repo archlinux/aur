@@ -1,21 +1,21 @@
---- Makefile.old	2015-10-06 18:41:14.575020302 +0200
-+++ Makefile	2015-10-07 12:44:53.790503202 +0200
-@@ -16,10 +16,10 @@
-   lxGUI.o lxGLC.o lxOptDlg.o lxAboutDlg.o lxPres.o \
-   img.o
+--- loch/Makefile_raw	2017-04-03 22:32:08.000000000 +0200
++++ loch/Makefile	2017-04-10 18:52:01.320200225 +0200
+@@ -19,10 +19,10 @@
+ CROSS =
+ EXT =
  
 -VTKVERSION = $(shell tclsh ./getvtkver.tcl version)
 -VTKPATH = $(shell tclsh ./getvtkver.tcl incpath)
 -VTKLIBPATH = $(shell tclsh ./getvtkver.tcl libpath)
 -VTKV6 = $(shell tclsh ./getvtkver.tcl version6)
-+VTKVERSION = 6.1
-+VTKPATH = "/usr/include/vtk/"
++VTKVERSION = 7.1
++VTKPATH = "/usr/include/vtk/" 
 +VTKLIBPATH = "/usr/lib"
 +VTKV6 = 1
  ifeq ($(VTKV6),1)
  VTKLIBS = -lvtkCommonExecutionModel-$(VTKVERSION) -lvtkCommonDataModel-$(VTKVERSION) -lvtkCommonCore-$(VTKVERSION) -lvtkFiltersCore-$(VTKVERSION) -lvtkFiltersHybrid-$(VTKVERSION) -lvtkIOLegacy-$(VTKVERSION) -lfreetype -lpng -ljpeg
  else
-@@ -53,7 +53,7 @@
+@@ -56,7 +56,7 @@
  CC = gcc
  POBJECTS = lxR2P.o
  ifeq ($(VTKV6),1)
