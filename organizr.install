@@ -1,6 +1,5 @@
 post_install() {
-    chown -R http:http /usr/share/webapps/organizr
-    chown -R http:http /var/lib/organizr
+    post_upgrade
 
     echo '-------------------------------------------------------------------------------'
     echo 'Once you have added Organizr to your web server configuration, browse to'
@@ -10,4 +9,9 @@ post_install() {
     echo 'Specify this directory as the Database Path when visiting the main site for the'
     echo 'first time.'
     echo '-------------------------------------------------------------------------------'
+}
+
+post_upgrade() {
+    chown -R http:http /usr/share/webapps/organizr
+    chown -R http:http /var/lib/organizr
 }
