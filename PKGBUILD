@@ -2,13 +2,13 @@
 
 pkgname=twelf-git
 pkgver=20130819
-pkgrel=2
+pkgrel=3
 pkgdesc='An implementation of the logical framework LF'
 url='http://twelf.org/'
 license=('BSD')
 arch=('i686' 'x86_64')
-depends=('bash' 'gmp')
-makedepends=('mlton')
+depends=('bash' 'gmp' 'smlnj')
+makedepends=('smlnj')
 provides=('twelf')
 conflicts=('twelf')
 install=$pkgname.install
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  make mlton
+  make smlnj
 }
 
 package() {
