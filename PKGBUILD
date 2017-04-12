@@ -10,7 +10,7 @@ source=("http://forge.scilab.org/index.php/p/sciscipy/downloads/get/sciscipy-${p
         "fixlib.diff")
 md5sums=('80fa3e4dbd85445c2535e173c24ffc77'
          'SKIP')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools' 'scilab')
 
 prepare() {
   cd "$srcdir/sciscipy-$pkgver"
