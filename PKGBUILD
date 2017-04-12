@@ -16,7 +16,7 @@ fi
 # Uncomment for a debug build
 #_qmake_args="CONFIG+=debug"
 
-pkgname=qml-box2d
+pkgname=qml-box2d-git
 pkgver=2.3.2
 pkgrel=2
 pkgdesc='Box2D QML bindings'
