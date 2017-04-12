@@ -1,0 +1,14 @@
+pkgbase = ts-bugreport
+	pkgdesc = Bug reporter for the* apps
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/vicr123/ts-polkitagent
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	source = ts-bugreport-1.0::git+https://github.com/vicr123/ts-bugreport#branch=master
+	md5sums = SKIP
+
+pkgname = ts-bugreport
+
