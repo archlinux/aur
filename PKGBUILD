@@ -3,7 +3,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=bdisk-git
-pkgver=3.02
+pkgver=3.02.15.g6f3a0f6
 pkgrel=1
 #_pkgver=${pkgver}
 pkgdesc="An easy liveCD creator built in python. Supports hybrid ISOs/USB, iPXE, and UEFI"
@@ -59,7 +59,7 @@ pkgver() {
 package() {
 	pkgvertag=$(pkgver)
 	cd ${srcdir}/${_pkgname}
-	git checkout v${pkgvertag}
+	#git checkout v${pkgvertag}  # uncomment if you don't want HEAD of master
 	install -d -m0750 ${pkgdir}/etc/${_pkgname}
 	install -d -m0755 ${pkgdir}/usr/share/${_pkgname}
 	install -d -m0755 ${pkgdir}/usr/share/doc/${_pkgname}
