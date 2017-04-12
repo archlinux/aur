@@ -3,11 +3,11 @@
 # Contributor: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
 # Contributor: Matthew <pyther@pyther.net>
 
-pkgname=bacula-client
+pkgname=bacula5-client
 pkgver=5.2.13
 pkgrel=1
 pkgdesc='A network backup tool for Linux, Unix, Mac and Windows - client edition'
-conflicts=('bacula')
+conflicts=('bacula' 'bacula-client')
 depends=('openssl')
 provides=("bacula-fd=${pkgver}")
 arch=('i686' 'x86_64' 'arm' 'armv6h')
