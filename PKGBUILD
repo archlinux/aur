@@ -5,11 +5,11 @@ pkgver=1.171
 pkgrel=3
 pkgdesc="Unicode TT font with extensive glyph coverage"
 arch=('i686' 'x86_64')
-url="http://www.code2000.net"
+url="https://web.archive.org/web/20101122141939/http://code2000.net/"
 license=('custom')
 depends=('fontconfig' 'xorg-fonts-encodings')
 install=font.install
-source=(ftp://ftp.tw.freebsd.org/pub/ports/distfiles/code2000-1.171/CODE2000.ZIP)
+source=(https://web.archive.org/web/20101122142710/http://code2000.net/CODE2000.ZIP)
 md5sums=('1fa4e4b61d7ac0980b038e9260667a77')
 
 package() {
