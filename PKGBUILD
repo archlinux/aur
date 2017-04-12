@@ -4,7 +4,7 @@
 _pkgbase=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev' 'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
 pkgver=1.19.3 # https://lists.x.org/archives/xorg/2017-March/058662.html
-pkgrel=1 # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/xorg-server&id=8a67e151837c8ef7d6e1419828410e1b8944d169
+pkgrel=2 # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/xorg-server&id=013fa1ab41b5a4f8ba9bd1072810daacc17644a4
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
@@ -19,6 +19,7 @@ makedepends=('pixman' 'libx11' 'mesa' 'libgl' 'xf86driproto' 'xcmiscproto' 'xtra
 source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
         nvidia-add-modulepath-support.patch
         xserver-autobind-hotplug.patch
+        modesetting-Set-correct-DRM-event-context-version.patch
         xvfb-run
         xvfb-run.1)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
@@ -28,6 +29,7 @@ sha256sums=('677a8166e03474719238dfe396ce673c4234735464d6dadf2959b600d20e5a98'
             'SKIP'
             '914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8'
             'fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57'
+            '831a70809e6bec766138d7a1c96643732df9a2c0c5f77ee44b47ce4be882e0af'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
 
@@ -39,6 +41,9 @@ prepare() {
 
   msg2 "patch from Fedora, not yet merged"
   patch -Np1 -i ../xserver-autobind-hotplug.patch
+
+  msg2 "merged in trunk"
+  patch -Np1 -i ../modesetting-Set-correct-DRM-event-context-version.patch
 
   msg2 "Starting autoreconf..."
   autoreconf -vfi
