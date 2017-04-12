@@ -2,13 +2,13 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=fbpad-git
 pkgver=r269.dbf1a4f
-pkgrel=1
+pkgrel=2
 pkgdesc="A small linux framebuffer virtual terminal."
 arch=('i686' 'x86_64')
 url="http://repo.or.cz/w/fbpad.git"
 license=('custom:BSD')
 groups=()
-depends=('bash' 'vim' 'mutt')
+depends=()
 makedepends=('git' 'ft2tf' 'ttf-dejavu')
 optdepends=()
 provides=('fbpad')
