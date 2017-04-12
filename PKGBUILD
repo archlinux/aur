@@ -50,7 +50,7 @@ package() {
   install -Dm644 ${_pkgname}s_at.service "$pkgdir/usr/lib/systemd/system/${_pkgname}s@.service"
   install -Dm644 ${_pkgname}s_at.socket "$pkgdir/usr/lib/systemd/system/${_pkgname}s@.socket"
 
-  cd "${_pkgname}-${pkgver}-Source"
+  cd "${_pkgname}-${pkgver}"
 
   # install binary
   install -Dm755 bin/$_pkgname "$pkgdir/usr/bin/$_pkgname"
