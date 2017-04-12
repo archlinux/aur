@@ -1,13 +1,14 @@
 pkgbase = fortune-mod-firefly
 	pkgdesc = Fortune cookies from Joss Whedon's Firefly series.
-	pkgver = 2.1.2
+	pkgver = 3.0.0
 	pkgrel = 1
-	url = http://www.daughtersoftiresias.org/progs/firefly/
+	url = https://en.wikiquote.org/wiki/Firefly_(TV_series)
 	arch = any
-	license = unknown
+	license = custom:cc-sa-3.0
+	makedepends = curl
 	depends = fortune-mod
-	source = firefly::http://pkgs.fedoraproject.org/gitweb/?p=fortune-firefly.git;a=blob_plain;f=firefly;hb=master
-	md5sums = 0c3203d2afddad9e00189e9e27446b82
+	source = https://github.com/hashhar/blobs/raw/master/fortune-mod-firefly.tar.gz
+	sha256sums = a4bfdc78216dd8187ee001d90430162c7bbbe94bcba7f2575f55d131cb4b3801
 
 pkgname = fortune-mod-firefly
 
