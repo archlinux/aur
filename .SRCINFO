@@ -1,0 +1,13 @@
+pkgbase = libmystem
+	pkgdesc = C bindings for MyStem morphological analyser.
+	pkgver = 3.0
+	pkgrel = 1
+	epoch = 0
+	url = https://tech.yandex.ru/mystem/
+	arch = x86_64
+	license = custom
+	source_x86_64 = https://github.com/yandex/tomita-parser/releases/download/v1.0/libmystem_c_binding.so.linux_x64.zip
+	md5sums_x86_64 = 6e12995e45b804dd65c744a9ffe1eeca
+
+pkgname = libmystem
+
