@@ -3,12 +3,12 @@
 
 pkgname=xubuntu-artwork
 pkgver=17.04
-pkgrel=1
-_uver=yakkety
+pkgrel=2
+_uver=zesty
 pkgdesc="Xubuntu themes and artwork"
 arch=("any")
 url="https://launchpad.net/xubuntu-artwork"
-license=("GPL")
+license=("gpl2" "gpl3" "cc-by-sa-3.0")
 #depends=("xfce-theme-albatross" "xfce-theme-bluebird" "xfce-theme-greybird" "shimmer-wallpapers")
 makedepends=("zip")
 optdepends=("plymouth: For the plymouth theme to work"
