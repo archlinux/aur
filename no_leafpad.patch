@@ -1,0 +1,36 @@
+diff -Naur fotoxx-17.04.1.orig/fotoxx-17.04.1.cc fotoxx-17.04.1.new/fotoxx-17.04.1.cc
+--- fotoxx-17.04.1.orig/fotoxx-17.04.1.cc	2017-04-12 21:04:08.630207362 +0200
++++ fotoxx-17.04.1.new/fotoxx-17.04.1.cc	2017-04-12 21:08:28.118440955 +0200
+@@ -375,7 +375,7 @@
+ 
+ int initzfunc(void *)
+ {
+-   int      Fleafpad = 0, Fexiftool = 0, Fxdgopen = 0;
++   int      Ftexteditor = 0, Fexiftool = 0, Fxdgopen = 0;
+    int      ii, err, npid, contx;
+    FTYPE    ftype;
+    char     *pp, *pp2;
+@@ -405,8 +405,8 @@
+       if (exifver >= 8.60) Fexiftool = 1;
+    }
+ 
+-   err = shell_quiet("which leafpad 1>2 2>/dev/null");                          //  check for leafpad                  17.04
+-   if (! err) Fleafpad = 1;
++   err = shell_quiet("which $EDITOR 1>2 2>/dev/null");                          //  check for texteditor                  17.04
++   if (! err) Ftexteditor = 1;
+    err = shell_quiet("which xdg-open 1>2 2>/dev/null");                         //  check for xdg-open
+    if (! err) Fxdgopen = 1;
+    err = shell_quiet("which rawtherapee 1>2 2>/dev/null");                      //  check for Raw Therapee
+@@ -421,10 +421,10 @@
+       if (! err) PTtools = 2;
+    }
+ 
+-   if (Fexiftool + Fxdgopen + Fleafpad < 3) {                                    //  check mandatory dependencies
++   if (Fexiftool + Fxdgopen + Ftexteditor < 3) {                                    //  check mandatory dependencies
+       strcpy(badnews,ZTX("Please install missing programs:"));
+       if (! Fexiftool) strcat(badnews,"\n exiftool 8.6 or later");               //  refuse to start if any missing
+-      if (! Fleafpad) strcat(badnews,"\n leafpad");                              //  17.04
++      if (! Ftexteditor) strcat(badnews,"\n define EDITOR variable");                              //  17.04
+       if (! Fxdgopen) strcat(badnews,"\n xdg-utils");
+       zmessageACK(Mwin,badnews);
+       m_quit(0,0);
