@@ -22,9 +22,18 @@ source=("git+http://repo.or.cz/${gitname}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-   cd "${srcdir}/${gitname}"
-   local ver="$(cat VERSION).$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-   printf "%s" "${ver//-/.}"
+    cd "${srcdir}/${gitname}"
+
+    # we recently went
+    # from 2.21.204.5117359
+    # to   2.21.1.209.a9d7a00
+    # which rightfully confused pacman's version ordering
+    # so let's add a .0 to versions with only one dot
+    local v=$(cat VERSION)
+    [[ "$v" =~ ^[^\.]+\.[^\.]+\..*$ ]] || v=$v.0
+
+    local ver="${v}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    printf "%s" "${ver//-/.}"
 }
 build() {
    cd "${srcdir}/${gitname}"
