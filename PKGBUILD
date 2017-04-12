@@ -2,37 +2,39 @@
 
 pkgname=('python-mistralclient' 'python2-mistralclient')
 pkgver='3.0.0'
-pkgrel='1'
-pkgdesc='Python client library for Mistral'
+pkgrel='2'
+pkgdesc='Mistral Client Library'
 arch=('any')
-url='http://docs.openstack.org/developer/python-mistralclient'
+url='https://docs.openstack.org/developer/mistral/'
 license=('Apache')
-makedepends=('python-setuptools' 'python2-setuptools')
-source=("git+https://git.openstack.org/openstack/python-mistralclient#tag=$pkgver")
+makedepends=('git' 'python-setuptools' 'python2-setuptools')
+source=("git+https://git.openstack.org/openstack/${pkgname}#tag=${pkgver}")
 md5sums=('SKIP')
 
 prepare() {
-  cp -a python-mistralclient{,-py2}
+  cp -a "${srcdir}/${pkgname}"{,-py2}
 }
 
 build() {
-  cd "$srcdir"/python-mistralclient
+  cd "${srcdir}/${pkgname}"
   python setup.py build
 
-  cd "$srcdir"/python-mistralclient-py2
+  cd "${srcdir}/${pkgname}-py2"
   python2 setup.py build
 }
 
 package_python-mistralclient() {
-  depends=('python-six' 'python-requests' 'python-pbr' 'python-keystoneclient'
-           'python-oslo-utils' 'python-osc-lib' 'python-cliff' 'python-yaml')
+  depends=('python-cliff' 'python-osc-lib' 'python-oslo-utils'
+           'python-oslo-i18n' 'python-pbr' 'python-keystoneclient'
+           'python-yaml' 'python-requests' 'python-six' 'python-stevedore')
   cd "${srcdir}/${pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-mistralclient() {
-  depends=('python2-six' 'python2-requests' 'python2-pbr' 'python2-keystoneclient'
-           'python2-oslo-utils' 'python2-osc-lib' 'python2-cliff' 'python2-yaml')
+  depends=('python2-cliff' 'python2-osc-lib' 'python2-oslo-utils'
+           'python2-oslo-i18n' 'python2-pbr' 'python2-keystoneclient'
+           'python2-yaml' 'python2-requests' 'python2-six' 'python2-stevedore')
   cd "${srcdir}/python-mistralclient-py2"
   python2 setup.py install --root="${pkgdir}" --optimize=1
   mv "${pkgdir}"/usr/bin/mistral{,2}

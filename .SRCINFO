@@ -1,32 +1,37 @@
 pkgbase = python-mistralclient
-	pkgdesc = Python client library for Mistral
+	pkgdesc = Mistral Client Library
 	pkgver = 3.0.0
-	pkgrel = 1
-	url = http://docs.openstack.org/developer/python-mistralclient
+	pkgrel = 2
+	url = https://docs.openstack.org/developer/mistral/
 	arch = any
 	license = Apache
+	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	source = git+https://git.openstack.org/openstack/python-mistralclient#tag=3.0.0
 	md5sums = SKIP
 
 pkgname = python-mistralclient
-	depends = python-six
-	depends = python-requests
+	depends = python-cliff
+	depends = python-osc-lib
+	depends = python-oslo-utils
+	depends = python-oslo-i18n
 	depends = python-pbr
 	depends = python-keystoneclient
-	depends = python-oslo-utils
-	depends = python-osc-lib
-	depends = python-cliff
 	depends = python-yaml
+	depends = python-requests
+	depends = python-six
+	depends = python-stevedore
 
 pkgname = python2-mistralclient
-	depends = python2-six
-	depends = python2-requests
+	depends = python2-cliff
+	depends = python2-osc-lib
+	depends = python2-oslo-utils
+	depends = python2-oslo-i18n
 	depends = python2-pbr
 	depends = python2-keystoneclient
-	depends = python2-oslo-utils
-	depends = python2-osc-lib
-	depends = python2-cliff
 	depends = python2-yaml
+	depends = python2-requests
+	depends = python2-six
+	depends = python2-stevedore
 
