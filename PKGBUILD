@@ -4,7 +4,7 @@
 
 _gemname=ttfunk
 pkgname=ruby-$_gemname
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='TrueType Font Metrics Parser'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('c9c7939bacdcaeda5288e3ded4102337f7c67d84f0338386a82fa77c4aaf75ba')
+sha256sums=('8da1c20cc9e010a4b083376e6ae6996c4aa517558420bb23d9a1d8a228b6f9d5')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
