@@ -1,0 +1,11 @@
+pkgbase = vim-khr
+	pkgdesc = Vim syntax highlighting for Khronos extension specification documents
+	pkgver = 4.86b52f8
+	pkgrel = 1
+	url = https://github.com/kbenzie/vim-khr
+	arch = any
+	source = https://github.com/kbenzie/vim-khr
+	sha1sums = SKIP
+
+pkgname = vim-khr
+
