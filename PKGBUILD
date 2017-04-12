@@ -3,18 +3,16 @@
 # Contributor: Klaus Denker <kldenker@unix-ag.uni-kl.de>
 pkgname=glpresenter
 pkgbase=glpresenter
-pkgver=0.3.4 # note: if the pkgver had been '0.99-10' then use an underscore. like '0.99_10'
-pkgrel=2
+pkgver=0.3.4 
+pkgrel=3
 pkgdesc="A dual-screen OpenGL PDF presentation software"
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://www.unix-ag.uni-kl.de/~kldenker/gl_presenter/"
 license=('GPL')
 groups=()
 provides=()
 makedepends=('git')
 depends=('qt4' 'poppler-qt4' 'glu')
-#source=(http://www.unix-ag.uni-kl.de/~kldenker/gl_presenter/download/source/gl_presenter-$pkgver.tar.bz2)
-#md5sums=('738065023c500584346d1351a02c6f90')
 _gitroot="https://github.com/KLAU542/gl-presenter.git"
 _gitname="gl-presenter"
 
@@ -38,7 +36,5 @@ build()
 package() {
   cd $srcdir/${_gitname}
   mkdir -p $pkgdir/usr/bin
-  mv gl-presenter $pkgdir/usr/bin/.
-  ln $pkgdir/usr/bin/gl-presenter $pkgdir/usr/bin/glpresenter
-  ln $pkgdir/usr/bin/gl-presenter $pkgdir/usr/bin/gl_presenter
+  mv gl-presenter $pkgdir/usr/bin/glpresenter
 }
