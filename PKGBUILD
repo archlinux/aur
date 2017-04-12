@@ -1,7 +1,7 @@
 # Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
 
 pkgname=fortune-mod-houseofcards
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc='Fortune quotes from "House of Cards".'
 arch=('any')
