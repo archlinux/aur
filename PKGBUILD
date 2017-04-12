@@ -1,7 +1,7 @@
 # Maintainer: Matthew Daubert <mdaubert@gmail.com>
 
 pkgname="deis-workflow-cli-bin"
-pkgver=2.12.0
+pkgver=2.13.0
 pkgrel=1
 pkgdesc="Deis Workflow CLI is a command line utility used to interact with the Deis open source PaaS"
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://github.com/deis/workflow-cli"
 license=('APACHE')
 makedepends=()
 source=("https://storage.googleapis.com/workflow-cli-release/v${pkgver}/deis-v${pkgver}-linux-amd64")
-sha256sums=('a8325e01fa7eb5bad222a69e2d884481df6bcc95f4181d0eab1f13d7ce08a8b5')
-md5sums=('6938208339c54843709ddb16cd50d8fd')
+sha256sums=('80399d5bed755baa0b6c871d6f6c401154d58f7b37b6fd9771b6f1ea233f5b1e')
+md5sums=('c76a6f90364165ddf0e5fb04eb52f255')
 
 package() {
   cd "${srcdir}"
