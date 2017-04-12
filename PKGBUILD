@@ -31,17 +31,22 @@ pkgver() {
 }
 
 prepare() {
-	find "${_pkgname}" -type f -exec sed -i "s|/usr/local|${pkgdir}/usr|g" {} \;
+	# Replace hardcoded /usr/local prefixes
+	find "${_pkgname}" -type f -execdir sed -i "s|/usr/local|/usr|g" {} \;
+}
+
+build() {
+	cd "${_pkgname}"
+	make
 }
 
 package() {
 	cd "${_pkgname}"
-	install -dm755 "${pkgdir}/usr/bin"
-	make install
+	mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/usr/share/${_pkgname}"
 
-	# Copy over folders in bin not installed by make
-    find "bin" -mindepth 1 -maxdepth 1 -name protrekkr -o \
-		-exec cp -anr --reflink=auto "{}" "${pkgdir}/usr/share/${_pkgname}/" \;
+	# Copy over folders in bin
+	cp --recursive --reflink=auto bin/* "${pkgdir}/usr/share/${_pkgname}"
+	mv "${pkgdir}/usr/share/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/"
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
