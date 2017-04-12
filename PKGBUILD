@@ -11,7 +11,7 @@ provides=('storageexplorer')
 changelog=
 source=("StorageExplorer-linux-x64.tar.gz::https://go.microsoft.com/fwlink/?LinkId=722418"
         "storageexplorer.desktop")
-sha256sums=('84ad34d711567cfa69e71eb6fb55bf9587f6055bc6940dc51cdcab30f1268fc9'
+sha256sums=('ada50a95e00f1b8626502ec59ae4b27bc77421613ff8aab1ae8f723d2023e4d8'
             'c11f45ad21c26007ba2f852e6a522e41e2433c527223b04d41648eb71fb7384f')
 
 package() {
