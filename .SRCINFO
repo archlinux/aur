@@ -1,0 +1,38 @@
+pkgbase = protobuf-mir
+	pkgdesc = Protocol Buffers - Google's data interchange format
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://developers.google.com/protocol-buffers/
+	arch = x86_64
+	license = BSD
+	makedepends = unzip
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = clang
+	depends = gcc-libs
+	depends = zlib
+	source = protobuf-mir-3.0.2.tgz::https://github.com/google/protobuf/archive/v3.0.2.tar.gz
+	source = gtest-1.8.0.tar.gz::https://github.com/google/googletest/archive/release-1.8.0.tar.gz
+	md5sums = 845b39e4b7681a2ddfd8c7f528299fbb
+	md5sums = 16877098823401d1bf2ed7891d7dce36
+
+pkgname = protobuf-mir
+	provides = protobuf
+	conflicts = protobuf
+
+pkgname = python2-protobuf-mir
+	pkgdesc = Python 2 bindings for Google Protocol Buffers
+	depends = python2
+	depends = python2-six
+	depends = protobuf-mir=3.0.2
+	provides = python2-protobuf
+	conflicts = python2-protobuf
+
+pkgname = python-protobuf-mir
+	pkgdesc = Python 3 bindings for Google Protocol Buffers
+	depends = python
+	depends = python-six
+	depends = protobuf-mir=3.0.2
+	provides = python-protobuf
+	conflicts = python-protobuf
+
