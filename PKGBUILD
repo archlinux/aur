@@ -8,7 +8,7 @@
 pkgbase=linux-xanmod-git
 _srcname=linux
 _tag=4.10.10-xanmod12
-pkgver=4.10.0
+pkgver=4.10.10
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.xanmod.org/"
