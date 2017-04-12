@@ -4,13 +4,14 @@ pkgname=sourcetrail
 _pkgname=Sourcetrail
 pkgver=0.11.86
 _pkgver=${pkgver/\./\_}
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform source explorer for C/C++ and Java'
 arch=('x86_64')
 url='https://www.sourcetrail.com/'
 license=('custom')
+conflicts=('coati')
 replaces=('coati')
-conflict=('coati')
+provides=("${pkgname}=${pkgver}")
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/downloads/${pkgver}/linux/64bit/"
         "${pkgname}.desktop")
