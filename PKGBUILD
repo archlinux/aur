@@ -2,8 +2,8 @@
 
 pkgname=usbguard
 _pkgname=usbguard
-pkgver=0.6.2
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 license=('GPL2')
 pkgdesc='USBGuard is a software framework for implementing USB device authorization policies'
 makedepends=("git" "libxslt")
@@ -13,11 +13,13 @@ url='https://github.com/dkopecek/usbguard'
 source=(
 	"${url}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
 	"${url}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz.sig"
-	"include.patch")
+	"include.patch"
+    "disable_usecase-tests.patch")
 sha256sums=(
-	'dad33da0312b95a3a41434a7b5bbd03f5ec7096f6ea9ee238ad2f15908bc51fd'
-	'244966be0712c0b41caa9db6f56f0c5cc45fd6845d378d1247c51932f678768c'
-	'3a6ddb78a7f5c01a6a83c0a3337dd79a184ecb8a88d3adce1087e8beb4ca9c3f')
+	'1e1485a2b47ba3bde9de2851b371d2552a807047a21e0b81553cf80d7f722709'
+	'b1d9bfe555de0c8edac1d83cb3e3e986bb58a0dfcaf9b3c31cd3b45190f3d213'
+	'3a6ddb78a7f5c01a6a83c0a3337dd79a184ecb8a88d3adce1087e8beb4ca9c3f'
+    '37d4e087b473c33b558724c9438ee26734243db707cc320385872f67e3db3bae')
 validpgpkeys=("D36B9AB1E6809AF54691C23A3AEF037DB25991BC")
 provides=("usbguard")
 conflicts=("usbguard-git")
@@ -33,6 +35,7 @@ prepare() {
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	patch -p1 <../include.patch
+    patch -p1 <../disable_usecase-tests.patch
   ./configure --prefix=/usr --sysconfdir=/etc -sbindir=/usr/bin --libdir=/usr/lib \
 	--enable-systemd \
 	--with-gui-qt=qt5 \

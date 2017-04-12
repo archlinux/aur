@@ -1,7 +1,7 @@
 pkgbase = usbguard
 	pkgdesc = USBGuard is a software framework for implementing USB device authorization policies
-	pkgver = 0.6.2
-	pkgrel = 2
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://github.com/dkopecek/usbguard
 	arch = i686
 	arch = x86_64
@@ -22,13 +22,15 @@ pkgbase = usbguard
 	conflicts = usbguard-git
 	backup = etc/usbguard/usbguard-daemon.conf
 	backup = etc/usbguard/rules.conf
-	source = https://github.com/dkopecek/usbguard/releases/download/usbguard-0.6.2/usbguard-0.6.2.tar.gz
-	source = https://github.com/dkopecek/usbguard/releases/download/usbguard-0.6.2/usbguard-0.6.2.tar.gz.sig
+	source = https://github.com/dkopecek/usbguard/releases/download/usbguard-0.7.0/usbguard-0.7.0.tar.gz
+	source = https://github.com/dkopecek/usbguard/releases/download/usbguard-0.7.0/usbguard-0.7.0.tar.gz.sig
 	source = include.patch
+	source = disable_usecase-tests.patch
 	validpgpkeys = D36B9AB1E6809AF54691C23A3AEF037DB25991BC
-	sha256sums = dad33da0312b95a3a41434a7b5bbd03f5ec7096f6ea9ee238ad2f15908bc51fd
-	sha256sums = 244966be0712c0b41caa9db6f56f0c5cc45fd6845d378d1247c51932f678768c
+	sha256sums = 1e1485a2b47ba3bde9de2851b371d2552a807047a21e0b81553cf80d7f722709
+	sha256sums = b1d9bfe555de0c8edac1d83cb3e3e986bb58a0dfcaf9b3c31cd3b45190f3d213
 	sha256sums = 3a6ddb78a7f5c01a6a83c0a3337dd79a184ecb8a88d3adce1087e8beb4ca9c3f
+	sha256sums = 37d4e087b473c33b558724c9438ee26734243db707cc320385872f67e3db3bae
 
 pkgname = usbguard
 
