@@ -15,27 +15,27 @@ optdepends=(
 )
 license=('GPL2')
 source=(
-  "http://synergy-project.org/files/packages/synergy-1.4.18-r2250-Source.tar.gz?v31"
+  "https://github.com/symless/synergy/archive/1.4.18.tar.gz"
   "${_pkgname}s_at.socket"
   "${_pkgname}s_at.service"
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 sha512sums=(
-  '7d5e334c935f85db05c436c68dfe60e5fdf8daff7cbdd026dcf0f17d19c65d48335e5a0eb1aa606a2915cb8a460cd95c0fd84d52cf9b9910ed0d67e591f91630'
+   '6dd209bc593f5d1081907b357a88b6583fbf4ba2145a12e4a5e17e615a291a885b6a9adae269039a1ce86cd4e75cc52395431e63e762a682584d996b8256ad9b'
   'f9c124533dfd0bbbb1b5036b7f4b06f7f86f69165e88b9146ff17798377119eb9f1a4666f3b2ee9840bc436558d715cdbfe2fdfd7624348fae64871f785a1a62'
   'e85cc3452bb8ba8fcccb1857386c77eb1e4cabb149a1c492c56b38e1b121ac0e7d96c6fcbd3c9b522d3a4ae9d7a9974f4a89fc32b02a56f665be92af219e371c'
 )
 
 prepare() {
-  cd "${_pkgname}-${pkgver}-Source/ext"
+  cd "${_pkgname}-${pkgver}/ext"
   unzip -o gmock-1.6.0.zip -d gmock-1.6.0
   unzip -o gtest-1.6.0.zip -d gtest-1.6.0
   unzip -o cryptopp562.zip -d cryptopp562
 }
 
 build() {
-  cd "${_pkgname}-${pkgver}-Source"
+  cd "${_pkgname}-${pkgver}"
 
   CXXFLAGS=-Wno-error=terminate cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
