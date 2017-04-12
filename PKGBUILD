@@ -3,7 +3,7 @@
 pkgname=pycharm-professional
 pkgver=2017.1.1
 _pkgver=2017.1.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Powerful Python and Django IDE. Professional edition."
 arch=('any')
 options=('!strip')
