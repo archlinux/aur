@@ -2,7 +2,7 @@
 
 pkgbase=medusa-emu-git
 pkgname=('libmedusa-emu-git' 'medusa-emu-sdl-git' 'medusa-emu-qt-git')
-pkgver=r4806.93792900
+pkgver=r4827.15496611
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://mgba.io/'
@@ -37,7 +37,7 @@ package_libmedusa-emu-git() {
   conflicts=('libmgba' 'libmgba-git' 'libmedusa-emu')
   provides=('libmedusa-emu')
 
-  cmake -DCOMPONENT=libmedusa medusa -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+  cmake -DCOMPONENT=libmedusa-emu medusa-emu -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
     -P build/cmake_install.cmake
   install -Dm644 "$srcdir"/medusa/LICENSE "$pkgdir"/usr/share/licenses/libmedusa-emu/LICENSE
 }
@@ -45,10 +45,10 @@ package_libmedusa-emu-git() {
 package_medusa-emu-sdl-git() {
   pkgdesc='An up and coming release of the mGBA emulator with DS support'
   depends=('libmedusa-emu-git' 'sdl2' 'libepoxy')
-  conflicts=('medusa-emu-sdl' 'medusa')
+  conflicts=('medusa-emu-sdl')
   provides=('medusa-emu-sdl')
 
-  cmake -DCOMPONENT=medusa-sdl medusa -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+  cmake -DCOMPONENT=medusa-emu-sdl medusa-emu -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
     -P build/cmake_install.cmake
   install -d "$pkgdir"/usr/share/licenses/medusa-emu-sdl
   ln -s /usr/share/licenses/libmedusa-emu/LICENSE "$pkgdir"/usr/share/licenses/medusa-emu-sdl/LICENSE
@@ -60,10 +60,10 @@ package_medusa-emu-qt-git() {
   conflicts=('medusa-emu-qt')
   provides=('medusa-emu-qt')
 
-  cmake -DCOMPONENT=medusa-qt medusa -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+  cmake -DCOMPONENT=medusa-emu-qt medusa-emu -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
     -P build/cmake_install.cmake
   install -d "$pkgdir"/usr/share/licenses/medusa-emu-qt
   ln -s /usr/share/licenses/libmedusa-emu/LICENSE "$pkgdir"/usr/share/licenses/medusa-emu-qt/LICENSE
-  desktop-file-install "$srcdir"/medusa/res/medusa-qt.desktop --dir "$pkgdir"/usr/share/applications/
-  install -Dm644 medusa/res/medusa-256.png "$pkgdir"/usr/share/pixmaps/medusa.png
+  desktop-file-install "$srcdir"/medusa/res/medusa-emu-qt.desktop --dir "$pkgdir"/usr/share/applications/
+  install -Dm644 medusa/res/medusa-emu-256.png "$pkgdir"/usr/share/pixmaps/medusa-emu.png
 }
