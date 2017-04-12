@@ -3,16 +3,16 @@
 # Contributor: fabien Cellier <fabien.cellier@gmail.com>
 
 pkgname=pocl
-pkgver=0.13
-pkgrel=1
+pkgver=0.14
+pkgrel=2
 pkgdesc="Portable OpenCL is an open-source implementation of OpenCL which can be easily adapted for new targets"
 arch=('i686' 'x86_64')
 url="http://portablecl.org/"
 license=('GPL')
-depends=('clang' 'libcl' 'hwloc' 'libltdl' 'opencl-headers')
+depends=('clang' 'hwloc' 'libltdl' 'opencl-headers' 'opencl-icd-loader')
 source=("http://pocl.sourceforge.net/downloads/$pkgname-$pkgver.tar.gz")
 makedepends=('cmake' 'llvm' 'ocl-icd')
-sha512sums=('1892a6167bb5d48acaa79de4a9a76355c624e01a3bec31599947d6972eddcfd0b7523d61a3bd08018a30e34ab5a1b225a7ca2feaa2c2f6fcf03403fb887a6c0d')
+sha512sums=('36bf41222315e13bac6c37cc942b9c09e22af0374abf63052fa8deb1ffe383da0ed9b5dc3548844d52749642d0b1288af5e0128e8dd4deb38e70128adb28c066')
 
 build() {
   mkdir -p build
@@ -30,5 +30,4 @@ build() {
 package() {
   cd build
   make DESTDIR="$pkgdir"/ install
-  chmod +x "$pkgdir"/usr/bin/pocl-standalone
 }
