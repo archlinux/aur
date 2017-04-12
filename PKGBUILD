@@ -1,11 +1,11 @@
 pkgname=firefox-beta
 pkgver=53.0b10
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org - Beta [testing]"
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.mozilla.org/firefox/"
-depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'alsa-lib' 'ffmpeg' 'libvpx' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font' 'icu' 'nss>=3.29.5')
+depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'alsa-lib' 'ffmpeg' 'libvpx' 'libevent' 'hunspell' 'sqlite' 'ttf-font' 'icu' 'nss>=3.29.5')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf' 'libpulse' 'inetutils' 'xorg-server-xvfb' 'autoconf2.13' 'cargo')
 optdepends=('networkmanager: Location detection via available WiFi networks' 'libnotify: Notification integration' 'speech-dispatcher: Text-to-Speech')
 provides=("firefox=$pkgver")

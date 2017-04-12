@@ -1,7 +1,7 @@
 pkgbase = firefox-beta
 	pkgdesc = Standalone web browser from mozilla.org - Beta [testing]
 	pkgver = 53.0b10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
 	license = MPL
@@ -31,7 +31,6 @@ pkgbase = firefox-beta
 	depends = ffmpeg
 	depends = libvpx
 	depends = libevent
-	depends = nss
 	depends = hunspell
 	depends = sqlite
 	depends = ttf-font
