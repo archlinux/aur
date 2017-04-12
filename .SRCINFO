@@ -1,0 +1,18 @@
+pkgbase = gnome-pass-search-provider-git
+	pkgdesc = Gnome Shell search provider for the pass (passwordstore.org) password manager
+	pkgver = r9.bed2f59
+	pkgrel = 1
+	url = https://github.com/jle64/gnome-pass-search-provider
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python-gobject
+	depends = python-dbus
+	depends = pass
+	provides = gnome-pass-search-provider
+	conflicts = gnome-pass-search-provider
+	source = gnome-pass-search-provider::git://github.com/jle64/gnome-pass-search-provider.git
+	md5sums = SKIP
+
+pkgname = gnome-pass-search-provider-git
+
