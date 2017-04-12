@@ -1,14 +1,21 @@
 pkgbase = python-munch
 	pkgdesc = A dot-accessible dictionary (a la JavaScript objects).
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Infinidat/munch
 	arch = any
 	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python2-pytest
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	source = git+https://github.com/Infinidat/munch#tag=2.1.1
 	md5sums = SKIP
 
 pkgname = python-munch
+	depends = python-six
 
 pkgname = python2-munch
+	depends = python2-six
 
