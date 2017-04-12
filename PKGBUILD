@@ -1,10 +1,10 @@
 # Maintainer: Yardena Cohen <yardenack at gmail dot com>
 
 cpaname=Regexp-RegGrp
-cpanauthor=NEVESENIN
+cpanauthor=LEEJO
 pkgname=perl-regexp-reggrp
-pkgver='1.002001'
-pkgrel='1'
+pkgver=2.00
+pkgrel=1
 pkgdesc="Groups a regular expressions collection"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -13,8 +13,9 @@ depends=('perl>=5.8.9')
 makedepends=('perl-extutils-makemaker>=6.6302')
 url='http://search.cpan.org/dist/${cpaname}'
 source=("http://search.cpan.org/CPAN/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
-md5sums=('796ff413bc7563b7185e6a185a00afef')
-sha512sums=('0525e02b686616bc073de784df1e5b792c09ec033db2fe322308d40352a3a9ebd4bdafc270b4253fa29bd90cd78312bb9831aef96f55298005b7f1d1b1299ee6')
+md5sums=('c593021a19341130348f11560d15d303')
+sha256sums=('0dbce0eefd5a1b9d7a54e8f08ba95648e29db15934eda5a579fc8ae3caf9baea')
+sha512sums=('20a9bb52c403a98a8be6ace6fa2f3896edaeedd2c46fa44233787638ad2266f7858757d50862fee25fddb4eff0847487f9d1c2469687a9002ebb86e6d119dbc9')
 
 build() {
   cd "${srcdir}/${cpaname}-${pkgver}"
