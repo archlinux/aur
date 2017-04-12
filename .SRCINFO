@@ -9,6 +9,7 @@ pkgbase = gnome-pass-search-provider-git
 	depends = python-gobject
 	depends = python-dbus
 	depends = pass
+	optdepends = gpaste
 	provides = gnome-pass-search-provider
 	conflicts = gnome-pass-search-provider
 	source = gnome-pass-search-provider::git://github.com/jle64/gnome-pass-search-provider.git

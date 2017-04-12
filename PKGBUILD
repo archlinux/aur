@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/jle64/gnome-pass-search-provider"
 license=('GPL')
 depends=('python-gobject' 'python-dbus' 'pass')
+optdepends=('gpaste')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
