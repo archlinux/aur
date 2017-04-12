@@ -3,7 +3,7 @@
 pkgname=php-pam
 _extname=pam
 pkgver=1.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="This extension provides PAM (Pluggable Authentication Modules) integration in PHP."
 arch=('i686' 'x86_64')
 url="http://pecl.php.net/package/PAM"
@@ -18,6 +18,8 @@ md5sums=('2dfd378a76021245050333cd4d49ed96' '9582d5f0476e486f2c3084940f1abd86' '
 build() {
   patch -p0 < ../zend.patch
   cd "${_extname}-${pkgver}"
+  export CFLAGS="$CFLAGS -O0"
+  export CXXFLAGS="$CXXFLAGS -O0"
   phpize
   ./configure --prefix=/usr
   make
