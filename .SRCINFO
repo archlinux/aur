@@ -1,7 +1,7 @@
 pkgbase = apk-preview
 	pkgdesc = A graphical user interface to see APK file details & icon (and install apk to phone)
 	pkgver = 1.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alireza6677/apk-preview
 	install = apk-preview.install
 	arch = x86_64
