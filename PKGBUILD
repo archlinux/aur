@@ -16,7 +16,8 @@ fi
 # Uncomment for a debug build
 #_qmake_args="CONFIG+=debug"
 
-pkgname=qml-box2d-git
+_pkgname=qml-box2d
+pkgname=${_pkgname}-git
 pkgver=2.3.2
 pkgrel=2
 pkgdesc='Box2D QML bindings'
@@ -30,13 +31,13 @@ sha256sums=('SKIP')
 options=('!strip')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   ${_qmake}
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
 
 if [[ -n "$_piver" ]]; then
   local temp_pkgdir="$srcdir/refactor_package"
