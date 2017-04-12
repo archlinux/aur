@@ -1,0 +1,4 @@
+post_upgrade() {
+	echo "WARNING: Usbguard 0.7.0 introduces a backwards incompatible change to the device hash computation for Linux root hub devices."
+	echo "For certain configurations this may require an update of the hashes in the rules.conf file before restarting usbguard.service."
+}

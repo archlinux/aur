@@ -3,7 +3,7 @@
 pkgname=usbguard
 _pkgname=usbguard
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 license=('GPL2')
 pkgdesc='USBGuard is a software framework for implementing USB device authorization policies'
 makedepends=("git" "libxslt")
@@ -26,6 +26,7 @@ conflicts=("usbguard-git")
 backup=(
 	"etc/usbguard/usbguard-daemon.conf"
 	"etc/usbguard/rules.conf")
+install=usbguard.install
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
