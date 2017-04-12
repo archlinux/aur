@@ -14,7 +14,7 @@ pkgdesc="The world's most popular development platform for creating 2D and 3D mu
 arch=('x86_64')
 license=('custom')
 url="https://unity3d.com/"
-depends=('desktop-file-utils' 'xdg-utils' 'gcc-multilib' 'libgl' 'glu' 'nss' 'libpng12' 'libxtst' 'libpqxx' 'monodevelop' 'npm')
+depends=('desktop-file-utils' 'xdg-utils' 'gcc-multilib' 'libgl' 'glu' 'nss' 'libpng12' 'libxtst' 'libpqxx' 'monodevelop' 'npm' 'alsa-lib' 'gconf')
 optdepends=('ffmpeg: for WebGL exporting'
 	'nodejs: for WebGL exporting'
 	'java-runtime: for WebGL exporting'
