@@ -1,7 +1,7 @@
 pkgbase = libopenssl-1.0-compat
 	pkgdesc = The Open Source library for Secure Sockets Layer and Transport Layer Security (without versioned symbols patch)
 	pkgver = 1.0.2.k
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.openssl.org
 	arch = i686
 	arch = x86_64

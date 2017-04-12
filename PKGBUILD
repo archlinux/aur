@@ -5,7 +5,7 @@ pkgname=libopenssl-1.0-compat
 _ver=1.0.2k
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=2
+pkgrel=3
 pkgdesc='The Open Source library for Secure Sockets Layer and Transport Layer Security (without versioned symbols patch)'
 arch=('i686' 'x86_64')
 url='https://www.openssl.org'
@@ -64,7 +64,9 @@ package() {
 	install -Dm755 libcrypto.so.1.0.0 "$pkgdir/usr/lib/libcrypto-compat.so.1.0.0"
 	install -Dm755 libssl.so.1.0.0 "$pkgdir/usr/lib/libssl-compat.so.1.0.0"
 	install -d "$pkgdir/usr/lib/openssl-1.0-compat"
-	ln -sf ../libssl-compat.so.1.0.0 "$pkgdir/usr/lib/openssl-1.0-compat/libssl.so"
-	ln -sf ../libcrypto-compat.so.1.0.0 "$pkgdir/usr/lib/openssl-1.0-compat/libcrypto.so"
-	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	for _i in so so.1.0.0; do
+		ln -sf ../libssl-compat.so.1.0.0 "$pkgdir/usr/lib/openssl-1.0-compat/libssl.${_i}"
+		ln -sf ../libcrypto-compat.so.1.0.0 "$pkgdir/usr/lib/openssl-1.0-compat/libcrypto.${_i}"
+	done
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
