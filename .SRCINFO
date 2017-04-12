@@ -9,6 +9,7 @@ pkgbase = ezame
 	depends = python
 	depends = python-gobject
 	depends = desktop-file-utils
+	conflicts = ezame-git
 	source = https://github.com/linux-man/ezame/archive/v0.6.2.tar.gz
 	md5sums = 5aaa54cbc7bcb279b9bbbf349e2ffdd2
 

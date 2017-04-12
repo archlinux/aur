@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/linux-man/ezame"
 license=('GPL3')
 depends=('python' 'python-gobject' 'desktop-file-utils')
+conflicts=('ezame-git')
 source=("https://github.com/linux-man/ezame/archive/v$pkgver.tar.gz")
 md5sums=('5aaa54cbc7bcb279b9bbbf349e2ffdd2')
 
