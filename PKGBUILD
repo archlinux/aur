@@ -2,7 +2,7 @@
 # Contributor: Black_Codec <orso.f.regna@gmail.com>
  
 pkgname=guacamole-client
-pkgver=0.9.11
+pkgver=0.9.12
 pkgrel=1
 pkgdesc="Java and Maven components of Guacamole"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('maven')
 source=("http://downloads.sourceforge.net/project/guacamole/current/source/$pkgname-$pkgver-incubating.tar.gz" "guacamole.properties")
 install=guacamole-client.install
 
-md5sums=('83b5ef7dbccc4cc25b0cd7b88fac8c67'
+md5sums=('4e68e39323d49955ae36a85195f822fe'
          '1f3ec0a32cc3c6b4f7aeb8a3b2e7531b')
  
 backup=('usr/share/tomcat7/.guacamole/guacamole.properties' 'usr/share/tomcat7/.guacamole/user-mapping.xml')
