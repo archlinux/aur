@@ -2,7 +2,7 @@
 
 pkgname=ttf-code2000
 pkgver=1.171
-pkgrel=3
+pkgrel=4
 pkgdesc="Unicode TT font with extensive glyph coverage"
 arch=('any')
 url="https://web.archive.org/web/20101122141939/http://code2000.net/"
