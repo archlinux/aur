@@ -7,7 +7,7 @@
 # Contributor: menta <attila dot toth at ch dot bme dot hu>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=llpp-git
-pkgver=25.r72.g6572184
+pkgver=26b.r9.g1415638
 pkgrel=1
 pkgdesc='A graphical PDF viewer which aims to superficially resemble less(1).'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ conflicts=('llpp')
 depends=('mupdf' 'freetype2' 'jbig2dec' 'openjpeg2'
          'libgl' 'libjpeg-turbo' 'glu' 'desktop-file-utils')
 makedepends=('git' 'libmupdf' 'mupdf>=1.7' 'ocaml>=4.04')
-source=("$pkgname::git+git://repo.or.cz/llpp.git#commit=6572184")
+source=("$pkgname::git+git://repo.or.cz/llpp.git")
 sha256sums=('SKIP')
 install=llpp.install
 # Dictionary lookup: http://repo.or.cz/llpp.git/commit/29916e0cadcdf0ee3136fc3b4655b3c8b0d01a7b
@@ -60,12 +60,8 @@ prepare() {
   sed -i -e 's+-lmupdfthird+-lmupdfthird -lz -lfreetype -ljpeg -ljbig2dec -lopenjp2+' build.sh
   sed -i -e 's+-L\$srcdir/mupdf/build/native ++' build.sh
 
-  # Eliminate build errors
-  # ./link.c:1669:13: error: implicit declaration of function ‘fz_set_use_document_css’ [-Wimplicit-function-declaration]
-  sed -i -e 's+fz_set_use_document_css (state.ctx, usedoccss);+/* fz_set_use_document_css (state.ctx, usedoccss); */+' link.c
-
   # /usr/lib/libharfbuzz.so.0: error adding symbols: DSO missing from command line
-  sed -i -e 's+-lcrypto+-lcrypto -lharfbuzz+' build.sh
+  sed -i -e 's+-lmupdf+-lmupdf -lharfbuzz+' build.sh
 }
 
 build() {
@@ -83,7 +79,7 @@ package() {
 
   # helper scripts
   cd misc/
-  for i in dicx dllpp llppac gc.awk; do
+  for i in dicx dllpp llppac; do
     install -Dm755 $i $pkgdir/usr/bin/$i
   done
 
