@@ -1,7 +1,7 @@
 # Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
 
 pkgname="oppai-git"
-pkgver=0.6.2_14_g99f8fa9
+pkgver=0.9.0_6_g8626565
 pkgrel=1
 pkgdesc='osu! pp advanced inspector (oppai) is pp calculator for osu! beatmaps'
 arch=('any')
