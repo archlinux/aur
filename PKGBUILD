@@ -2,7 +2,7 @@
 
 pkgbase=medusa-emu-git
 pkgname=('libmedusa-emu-git' 'medusa-emu-sdl-git' 'medusa-emu-qt-git')
-pkgver=r4827.15496611
+pkgver=r4835.a688e621
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://mgba.io/'
@@ -34,7 +34,7 @@ build() {
 package_libmedusa-emu-git() {
   pkgdesc='Shared library of The Medusa Emulator'
   depends=('zlib' 'libpng' 'libzip' 'libedit' 'ffmpeg' 'imagemagick')
-  conflicts=('libmgba' 'libmgba-git' 'libmedusa-emu')
+  conflicts=('libmgba' 'libmedusa-emu')
   provides=('libmedusa-emu')
 
   cmake -DCOMPONENT=libmedusa-emu medusa-emu -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
