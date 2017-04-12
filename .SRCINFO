@@ -31,7 +31,7 @@ pkgbase = guacamole-server
 	replaces = libguac-client-rdp
 	source = http://downloads.sourceforge.net/project/guacamole/current/source/guacamole-server-0.9.12-incubating.tar.gz
 	source = guacd.service
-	md5sums = b60b2fbf237844c74f796b8d02abe420
+	md5sums = 23f44726590ae6827f58d25b8c91663a
 	md5sums = dfaa29349d2e73af6dac75d6cafbd762
 
 pkgname = guacamole-server

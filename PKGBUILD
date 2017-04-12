@@ -20,7 +20,7 @@ optdepends=('libssh: for ssh protocol support'
 
 source=("http://downloads.sourceforge.net/project/guacamole/current/source/$pkgname-$pkgver-incubating.tar.gz" 'guacd.service')
  
-md5sums=('b60b2fbf237844c74f796b8d02abe420'
+md5sums=('23f44726590ae6827f58d25b8c91663a'
          'dfaa29349d2e73af6dac75d6cafbd762')
  
 build() {
