@@ -1,8 +1,8 @@
 pkgbase = python-oslo-context
 	pkgdesc = Oslo context library
 	pkgver = 2.13.0
-	pkgrel = 1
-	url = http://docs.openstack.org/developer/oslo.context
+	pkgrel = 2
+	url = https://docs.openstack.org/developer/oslo.context/
 	arch = any
 	license = Apache
 	checkdepends = python-oslotest
@@ -10,8 +10,6 @@ pkgbase = python-oslo-context
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	makedepends = python-pbr
-	makedepends = python2-pbr
 	source = git+https://git.openstack.org/openstack/oslo.context#tag=2.13.0
 	md5sums = SKIP
 
