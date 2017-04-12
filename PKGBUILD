@@ -1,6 +1,4 @@
-# CPAN Name  : Math-NumSeq
-# Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
 
 pkgname='perl-math-numseq'
 pkgver='71'
@@ -43,9 +41,3 @@ package() {
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
