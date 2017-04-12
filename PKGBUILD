@@ -1,7 +1,7 @@
 # Maintainer: Mike Cooper <mythmon@gmail.com>
 
 pkgname=fortune-mod-all-en
-pkgver=13
+pkgver=14
 pkgrel=1
 pkgdesc="Meta package for all English fortunes"
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ depends=(
   'fortune-mod-eureka'
   'fortune-mod-farscape'
   'fortune-mod-ferengi_rules_of_acquisition'
-# 'fortune-mod-firefly'
+  'fortune-mod-firefly'
   'fortune-mod-foxtrot'
   'fortune-mod-freshprince'
   'fortune-mod-fringe'
