@@ -5,7 +5,8 @@ _gitname=archtorify
 pkgname=archtorify-git
 pkgver=1.8.3
 pkgrel=2
-pkgdesc="Program for simplify the configuration of transparent proxy trough Tor Network"
+pkgdesc="Program for simplify the configuration of transparent proxy through Tor 
+Network"
 arch=('any')
 url="https://github.com/brainfucksec/archtorify/"
 license=('GPL3')
