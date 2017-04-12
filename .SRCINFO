@@ -1,5 +1,5 @@
 pkgbase = gnome-pass-search-provider-git
-	pkgdesc = Gnome Shell search provider for the pass (passwordstore.org) password manager
+	pkgdesc = Gnome Shell search provider for the pass (passwordstore.org) password manager that sends passwords to clipboard (with facultative GPaste integration)
 	pkgver = r9.bed2f59
 	pkgrel = 1
 	url = https://github.com/jle64/gnome-pass-search-provider
