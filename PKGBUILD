@@ -10,6 +10,7 @@ arch=('x86_64')
 url='https://www.sourcetrail.com/'
 license=('custom')
 replaces=('coati')
+conflict=('coati')
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/downloads/${pkgver}/linux/64bit/"
         "${pkgname}.desktop")
