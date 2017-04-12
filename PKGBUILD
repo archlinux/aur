@@ -11,7 +11,7 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.8.9')
 makedepends=('perl-extutils-makemaker>=6.6302')
-url='http://search.cpan.org/dist/${cpaname}'
+url=http://search.cpan.org/dist/${cpaname}
 source=("http://search.cpan.org/CPAN/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
 md5sums=('c593021a19341130348f11560d15d303')
 sha256sums=('0dbce0eefd5a1b9d7a54e8f08ba95648e29db15934eda5a579fc8ae3caf9baea')
