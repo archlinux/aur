@@ -1,47 +1,29 @@
-# Maintainer: <jnbek1972 at gmail dot com>
-# Contributor: <raku at rakutiki.tv>
 pkgname=firefox-beta
-pkgver=49.0b10
-_realpkgver=49.0b10
-_rcbuild=1
+pkgver=53.0b10
 pkgrel=1
-pkgdesc="Standalone web browser from mozilla.org - Beta (build from source)"
-arch=('i686' 'x86_64')
+pkgdesc="Standalone web browser from mozilla.org - Beta [testing]"
+arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.mozilla.org/firefox/"
-depends=('gtk2' 'gtk3' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'alsa-lib' 'ffmpeg2.8' 'desktop-file-utils' 'hicolor-icon-theme'
-         'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
-makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
-             'xorg-server-xvfb' 'libpulse' 'inetutils' 'rust' 'autoconf2.13')
-optdepends=('networkmanager: Location detection via available WiFi networks'
-            'upower: Battery API')
+depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'alsa-lib' 'ffmpeg' 'libvpx' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font' 'icu' 'nss>=3.29.5')
+makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf' 'libpulse' 'inetutils' 'xorg-server-xvfb' 'autoconf2.13' 'cargo')
+optdepends=('networkmanager: Location detection via available WiFi networks' 'libnotify: Notification integration' 'speech-dispatcher: Text-to-Speech')
 provides=("firefox=$pkgver")
 conflicts=("firefox-beta-bin")
-install=firefox-beta.install
-options=('!emptydirs' '!makeflags')
-source=(https://download-installer.cdn.mozilla.net/pub/firefox/candidates/$_realpkgver-candidates/build$_rcbuild/source/firefox-$_realpkgver.source.tar.xz
-        mozconfig
-        firefox-beta.desktop
-        firefox-install-dir.patch
-        vendor.js
-        firefox-fixed-loading-icon.png
-        no-libnotify.patch)
-sha512sums=('7dc45b7a00c6c3381977684c0be5225ee0a480d35dbd890e77c1346a62158de4a831d44f7f980afdc6171f3b8214ea47d10af9cbef85f82ad46eefbeef3f340b'
-            '66050a95fd254baa7b670bbc0ee8149759d1b5c1bb4c6188973acf4f3113241779ee9612da4c202c217957fd07642ea851e9a25c2f711554300de2efc52808fc'
-            'dd9a563d6ad772ba440a45bbd0ee27943b319edcb785951e62cd4aefe0d33ded2acf9b63a2b15cec89ee184687c68a8d3a1cc06ec98f9a9251602f063fbaef14'
-            '266989b0c4a37254a40836a6193284a186230b48716907e4d249d73616f58382b258c41baa8c1ffc98d405f77bfafcd3438f749edcf391c7bd22185399adf4bd'
-            'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7'
-            'd51119170cc8fb99c50610a8e5e94f38a31722c1c1a2260ca32d8e376732e30c8e1deac7d8c599348892e783fb4c75ce8c38bbd238282b0c9da21608d902ba28'
-            '702dd8875c4782719e549a217695b42e77319f48e62579ffb691a7c012a55e0bbd450146a454c85b4df5d1ea59e2794674abe12a21824b51eff9c06d37fc1a12')
+options=("!emptydirs" "!makeflags" "!strip")
+source=("https://ftp.mozilla.org/pub/firefox/releases/${pkgver}/source/firefox-${pkgver}.source.tar.xz"
+'firefox-beta.desktop' 'firefox-symbolic.svg' 'firefox-install-dir.patch' 'fix-wifi-scanner.diff')
+sha256sums=('6b89322c367e6e7431fa72def2cb75243e9f12bd9b7972ae7d4a69baafce568c'
+            'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd'
+            'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
+            'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
+            '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
 # get your own set of keys. Feel free to contact foutrelis@archlinux.org for
 # more information.
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
-_google_default_client_id=413772536636.apps.googleusercontent.com
-_google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
 # Mozilla API keys (see https://location.services.mozilla.com/api)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -49,86 +31,152 @@ _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 # more information.
 _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
-
 prepare() {
-  cd firefox-$_realpkgver
+  mkdir path
+  ln -s /usr/bin/python2 path/python
 
-  cp ../mozconfig .mozconfig
+  cd firefox-$pkgver
   patch -Np1 -i ../firefox-install-dir.patch
 
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
+  patch -Np1 -i ../fix-wifi-scanner.diff
+
   echo -n "$_google_api_key" >google-api-key
-  echo "ac_add_options --with-google-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
-
-  echo -n "$_google_default_client_id $_google_default_client_secret" >google-oauth-api-key
-  echo "ac_add_options --with-google-oauth-api-keyfile=\"$PWD/google-oauth-api-key\"" >>.mozconfig
-
   echo -n "$_mozilla_api_key" >mozilla-api-key
-  echo "ac_add_options --with-mozilla-api-keyfile=\"$PWD/mozilla-api-key\"" >>.mozconfig
 
-  mkdir -p "$srcdir/path"
+  cat >.mozconfig <<END
+ac_add_options --enable-application=browser
 
-  # WebRTC build tries to execute "python" and expects Python 2
-  ln -fs /usr/bin/python2 "$srcdir/path/python"
+ac_add_options --prefix=/usr
+ac_add_options --enable-release
+ac_add_options --enable-gold
+ac_add_options --enable-pie
+ac_add_options --enable-rust
 
-  # configure script misdetects the preprocessor without an optimization level
-  # https://bugs.archlinux.org/task/34644
-  #sed -i '/ac_cpp=/s/$CPPFLAGS/& -O2/' configure
+# Branding
+ac_add_options --enable-official-branding
+ac_add_options --enable-update-channel=release
+ac_add_options --with-distribution-id=org.archlinux
+export MOZILLA_OFFICIAL=1
+export MOZ_TELEMETRY_REPORTING=1
+export MOZ_SOURCE_REPO=${_repo@Q}
+export MOZ_ADDON_SIGNING=1
+export MOZ_REQUIRE_SIGNING=1
 
-  # Fix tab loading icon (doesn't work with libpng 1.6)
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=841734
-  cp "$srcdir/firefox-fixed-loading-icon.png" \
-    browser/themes/linux/tabbrowser/loading.png
+# Keys
+ac_add_options --with-google-api-keyfile=${PWD@Q}/google-api-key
+ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
+
+# System libraries
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+ac_add_options --with-system-icu
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-zlib
+ac_add_options --with-system-bz2
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
+ac_add_options --enable-system-hunspell
+ac_add_options --enable-system-sqlite
+ac_add_options --enable-system-ffi
+ac_add_options --enable-system-pixman
+
+# Features
+ac_add_options --enable-startup-notification
+ac_add_options --enable-crashreporter
+ac_add_options --enable-alsa
+ac_add_options --disable-updater
+
+STRIP_FLAGS="--strip-debug"
+END
 }
 
 build() {
-  cd firefox-$_realpkgver
+  cd firefox-$pkgver
 
+  # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
+
+  # Hardening
+  LDFLAGS+=" -Wl,-z,now"
+
   export PATH="$srcdir/path:$PATH"
-  export PYTHON="/usr/bin/python2"
 
   # Do PGO
-  xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24" \
-    make -f client.mk build MOZ_PGO=1
+  #xvfb-run -a -n 95 -s "-extension GLX -screen 0 1280x1024x24" \
+  #  make -f client.mk build MOZ_PGO=1
+  make -f client.mk build
 }
 
 package() {
-  cd firefox-$_realpkgver
-  make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
-  mkdir -p "$pkgdir"/opt/firefox-beta
-  mv "$pkgdir"/opt/firefox/* "$pkgdir"/opt/firefox-beta/
-  rm -r "$pkgdir"/opt/firefox
+  cd firefox-$pkgver
 
-  install -Dm644 ../vendor.js "$pkgdir/opt/firefox-beta/browser/defaults/preferences/vendor.js"
+  make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
+  install -d -m755 "$pkgdir"/opt/firefox-beta
+  mv "$pkgdir"/opt/firefox/* "$pkgdir"/opt/firefox-beta/
+  rm "$pkgdir"/opt/firefox/
+
+
+  _vendorjs="$pkgdir/opt/firefox-beta/browser/defaults/preferences/vendor.js"
+  install -Dm644 /dev/stdin "$_vendorjs" <<END
+// Use LANG environment variable to choose locale
+pref("intl.locale.matchOS", true);
+
+// Disable default browser checking.
+pref("browser.shell.checkDefaultBrowser", false);
+
+// Don't disable our bundled extensions in the application directory
+pref("extensions.autoDisableScopes", 11);
+pref("extensions.shownSelectionUI", true);
+
+// Opt all of us into e10s, instead of just 50%
+pref("browser.tabs.remote.autostart", true);
+END
+
+  _distini="$pkgdir/opt/firefox-beta/distribution/distribution.ini"
+  install -Dm644 /dev/stdin "$_distini" <<END
+[Global]
+id=archlinux
+version=1.0
+about=Mozilla Firefox for Arch Linux
+
+[Preferences]
+app.distributor=archlinux
+app.distributor.channel=$pkgname
+app.partner.archlinux=archlinux
+END
 
   for i in 16 22 24 32 48 256; do
-      install -Dm644 browser/branding/official/default$i.png \
-        "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/firefox-beta.png"
+    install -Dm644 browser/branding/official/default$i.png \
+    "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/firefox.png"
   done
   install -Dm644 browser/branding/official/content/icon64.png \
-    "$pkgdir/usr/share/icons/hicolor/64x64/apps/firefox-beta.png"
+  "$pkgdir/usr/share/icons/hicolor/64x64/apps/firefox.png"
   install -Dm644 browser/branding/official/mozicon128.png \
-    "$pkgdir/usr/share/icons/hicolor/128x128/apps/firefox-beta.png"
+  "$pkgdir/usr/share/icons/hicolor/128x128/apps/firefox.png"
   install -Dm644 browser/branding/official/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/firefox-beta.png"
+  "$pkgdir/usr/share/icons/hicolor/192x192/apps/firefox.png"
   install -Dm644 browser/branding/official/content/about-logo@2x.png \
-    "$pkgdir/usr/share/icons/hicolor/384x384/apps/firefox-beta.png"
+  "$pkgdir/usr/share/icons/hicolor/384x384/apps/firefox.png"
+  install -Dm644 ../firefox-symbolic.svg \
+  "$pkgdir/usr/share/icons/hicolor/symbolic/apps/firefox-symbolic.svg"
 
-  install -Dm644 ../firefox-beta.desktop \
-    "$pkgdir/usr/share/applications/firefox-beta.desktop"
+  install -Dm644 ../firefox.desktop \
+  "$pkgdir/usr/share/applications/firefox.desktop"
 
   # Use system-provided dictionaries
-  rm -rf "$pkgdir"/opt/firefox-beta/{dictionaries,hyphenation}
-  ln -s /usr/share/hunspell "$pkgdir/opt/firefox-beta/dictionaries"
-  ln -s /usr/share/hyphen "$pkgdir/opt/firefox-beta/hyphenation"
+  rm -r "$pkgdir"/opt/firefox-beta/dictionaries
+  ln -Ts /usr/share/hunspell "$pkgdir/opt/firefox-beta/dictionaries"
+  ln -Ts /usr/share/hyphen "$pkgdir/opt/firefox-beta/hyphenation"
 
-  #workaround for now
-  #https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -sf /opt/firefox-beta/firefox "$pkgdir/opt/firefox-beta/firefox-beta-bin"
+  # Install a wrapper to avoid confusion about binary path
+  install -Dm755 /dev/stdin "$pkgdir/opt/firefox-beta" <<END
+#!/bin/sh
+exec /opt/firefox-beta/firefox "\$@"
+END
 
-  # /usr/bin symlinks
-  rm -f "$pkgdir"/usr/bin/firefox
-  ln -s /opt/firefox-beta/firefox "$pkgdir"/usr/bin/firefox-beta
-  ln -s /opt/firefox-beta/firefox "$pkgdir"/usr/bin/firefox-beta-bin
+  # Replace duplicate binary with wrapper
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
+  ln -srf "$pkgdir/opt/firefox-beta" \
+  "$pkgdir/opt/firefox-beta/firefox-beta-bin"
 }
-
