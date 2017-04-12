@@ -1,4 +1,9 @@
 post_install() {
+	echo
+	echo "Prior to building or upgrading, you MAY want to have a certificate in /etc/efi/certs/pub.cer"
+	echo
+	echo "========"
+	echo
 	echo "To install shim, do:"
 	echo "cp /usr/lib/shim/* \$esp/EFI/arch"
 	echo "efibootmgr -c -d /dev/sdX -p Y -l $esp/EFI/arch/shimx64.efi -L \"Arch Shim\""

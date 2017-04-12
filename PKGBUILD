@@ -5,8 +5,8 @@
 __pkgname="shim"
 pkgname="${__pkgname}-efi"
 
-pkgver=0.9
-pkgrel=4
+pkgver=11
+pkgrel=1
 pkgdesc="Simple bootloader for x86_64 UEFI Secure Boot"
 url="https://github.com/rhinstaller/${__pkgname}"
 arch=('x86_64')
@@ -24,8 +24,8 @@ install="${__pkgname}.install"
 changelog="${__pkgname}.changelog"
 source=("${url}/releases/download/${pkgver}/${__pkgname}-${pkgver}.tar.bz2"
 	${__pkgname}.patch)
-md5sums=('fc8fb830c0e3eb66f73b0a7872a71279'
-         '84c5d7dbe5200f0709809f8376cd2004')
+md5sums=('fc1163431582f1fd82215cd144236dec'
+         '90dc7ecd36b974440e1abb108d664ac2')
 
 prepare() {
 	cd "${srcdir}/${__pkgname}-${pkgver}/"
@@ -43,9 +43,9 @@ build() {
 	unset LDFLAGS
 	unset MAKEFLAGS
 
-	make
-	echo
-
+	# Change /etc/efi/certs/pub.cer to whatever certificate you have
+	# installed on your machine. This is just an example.
+	make VENDOR_CERT_FILE=/etc/efi/certs/pub.cer
 }
 
 package() {
@@ -53,9 +53,9 @@ package() {
 	cd "${srcdir}/${__pkgname}-${pkgver}/"
 
 	install -d "${pkgdir}/usr/lib/shim/"
-	install -D -m0644 "${srcdir}/${__pkgname}-${pkgver}/shim.efi" "${pkgdir}/usr/lib/shim/shimx64.efi"
-	install -D -m0644 "${srcdir}/${__pkgname}-${pkgver}/MokManager.efi.signed" "${pkgdir}/usr/lib/shim/MokManager.efi"
-	install -D -m0644 "${srcdir}/${__pkgname}-${pkgver}/fallback.efi.signed" "${pkgdir}/usr/lib/shim/fallback.efi"
+	install -D -m0644 "${srcdir}/${__pkgname}-${pkgver}/shimx64.efi" "${pkgdir}/usr/lib/shim"
+	install -D -m0644 "${srcdir}/${__pkgname}-${pkgver}/mmx64.efi.signed" "${pkgdir}/usr/lib/shim"
+	install -D -m0644 "${srcdir}/${__pkgname}-${pkgver}/fbx64.efi.signed" "${pkgdir}/usr/lib/shim"
 
 }
 

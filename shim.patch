@@ -1,24 +1,11 @@
---- Makefile.old	2015-08-29 17:27:15.419529644 +0000
-+++ Makefile	2015-08-29 17:30:15.936196950 +0000
-@@ -1,7 +1,7 @@
- VERSION		= 0.9
- RELEASE		:=
- ifneq ($(RELEASE),"")
--	RELEASE="-$(RELEASE)"
-+	RELEASE::="-$(RELEASE)"
+--- Makefile.old	2017-04-12 15:20:45.296682169 -0600
++++ Makefile	2017-04-12 15:20:52.366768324 -0600
+@@ -52,7 +52,7 @@
+ 	MMNAME	= mmx64
+ 	FBNAME	= fbx64
+ 	SHIMNAME= shimx64
+-	EFI_PATH:=/usr/lib64/gnuefi
++	EFI_PATH:=/usr/lib64
+ 	LIB_PATH:=/usr/lib64
+ 
  endif
- 
- CC		= $(CROSS_COMPILE)gcc
-@@ -17,10 +17,10 @@
- 
- EFI_INCLUDE	:= /usr/include/efi
- EFI_INCLUDES	= -nostdinc -ICryptlib -ICryptlib/Include -I$(EFI_INCLUDE) -I$(EFI_INCLUDE)/$(ARCH) -I$(EFI_INCLUDE)/protocol -I$(shell pwd)/include
--EFI_PATH	:= /usr/lib64/gnuefi
-+EFI_PATH	:= /usr/lib64
- 
- LIB_GCC		= $(shell $(CC) -print-libgcc-file-name)
--EFI_LIBS	= -lefi -lgnuefi --start-group Cryptlib/libcryptlib.a Cryptlib/OpenSSL/libopenssl.a --end-group $(LIB_GCC) 
-+EFI_LIBS	= -lefi -lgnuefi --start-group Cryptlib/libcryptlib.a Cryptlib/OpenSSL/libopenssl.a --end-group $(LIB_GCC)
- 
- EFI_CRT_OBJS 	= $(EFI_PATH)/crt0-efi-$(ARCH).o
- EFI_LDS		= elf_$(ARCH)_efi.lds

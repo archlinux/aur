@@ -1,3 +1,12 @@
+11
+	* generate_hash(): fix the regression (Lans Zhang)
+	* Ignore BDS when it tells us we got our own path on the command line.
+	* Support ia32
+	* Handle various different load option implementation differences
+	* TPM 1 and TPM 2 support.
+	* Update to OpenSSL 1.0.2k
+	* GCC 7 support
+
 0.9
 	Gary Ching-Pang Lin (19):
 	* Add nostdinc to the CFLAGS for lib
