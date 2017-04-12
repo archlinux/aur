@@ -1,10 +1,12 @@
 pkgbase = python-oslo-log
 	pkgdesc = Oslo Log library
-	pkgver = 3.23.0
-	pkgrel = 1
-	url = https://pypi.python.org/pypi/oslo.log/3.23.0
+	pkgver = 3.24.0
+	pkgrel = 2
+	url = https://docs.openstack.org/developer/oslo.log/
 	arch = any
 	license = Apache
+	checkdepends = python-mock
+	checkdepends = python2-mock
 	checkdepends = python-oslotest
 	checkdepends = python2-oslotest
 	checkdepends = python2-unittest2
@@ -22,13 +24,14 @@ pkgbase = python-oslo-log
 	makedepends = python-oslo-utils
 	makedepends = python2-oslo-utils
 	makedepends = python-oslo-serialization
+	makedepends = python2-oslo-serialization
 	makedepends = python-debtcollector
 	makedepends = python2-debtcollector
 	makedepends = python-pyinotify
 	makedepends = python2-pyinotify
 	makedepends = python-dateutil
 	makedepends = python2-dateutil
-	source = git+https://git.openstack.org/openstack/oslo.log#tag=3.23.0
+	source = git+https://git.openstack.org/openstack/oslo.log#tag=3.24.0
 	sha256sums = SKIP
 
 pkgname = python-oslo-log

@@ -1,23 +1,29 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 _module='oslo.log'
 pkgname=('python-oslo-log' 'python2-oslo-log')
-pkgver='3.23.0'
-pkgrel='1'
+pkgver='3.24.0'
+pkgrel='2'
 pkgdesc='Oslo Log library'
 arch=('any')
-url="https://pypi.python.org/pypi/${_module}/${pkgver}"
+url="https://docs.openstack.org/developer/${_module}/"
 license=('Apache')
-makedepends=('git' 'python-setuptools' 'python2-setuptools' 'python-pbr' 'python2-pbr' 'python-oslo-config'
-             'python2-oslo-config' 'python-oslo-context' 'python2-oslo-context' 'python-oslo-i18n' 
-             'python2-oslo-i18n' 'python-oslo-utils' 'python2-oslo-utils' 'python-oslo-serialization'
-             'python-debtcollector' 'python2-debtcollector' 'python-pyinotify' 'python2-pyinotify'
+makedepends=('git' 'python-setuptools' 'python2-setuptools'
+             'python-pbr' 'python2-pbr'
+             'python-oslo-config' 'python2-oslo-config'
+             'python-oslo-context' 'python2-oslo-context'
+             'python-oslo-i18n' 'python2-oslo-i18n'
+             'python-oslo-utils' 'python2-oslo-utils'
+             'python-oslo-serialization' 'python2-oslo-serialization'
+             'python-debtcollector' 'python2-debtcollector'
+             'python-pyinotify' 'python2-pyinotify'
              'python-dateutil' 'python2-dateutil')
-checkdepends=('python-oslotest' 'python2-oslotest' 'python2-unittest2')
+checkdepends=('python-mock' 'python2-mock'
+              'python-oslotest' 'python2-oslotest'
+              'python2-unittest2')
 source=("git+https://git.openstack.org/openstack/${_module}#tag=${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {
-  cd "${srcdir}/${_module}"
   cp -a "${srcdir}/${_module}"{,-py2}
 }
 
@@ -35,25 +41,25 @@ check() {
   sed -i 's/unittest2/unittest/g' oslo_log/tests/unit/test_versionutils.py
   python setup.py testr
 
-  cd "${srcdir}/${_module}"-py2
+  cd "${srcdir}/${_module}-py2"
   PYTHON=python2 python2 setup.py testr
 }
 
 package_python-oslo-log() {
-  depends=('python-six' 'python-pbr' 'python-oslo-config' 'python-oslo-context' 'python-oslo-i18n'
-           'python-oslo-utils' 'python-oslo-serialization' 'python-debtcollector' 'python-pyinotify'
-           'python-dateutil')
-
+  depends=('python-six' 'python-pbr' 'python-oslo-config'
+           'python-oslo-context' 'python-oslo-i18n' 'python-oslo-utils'
+           'python-oslo-serialization' 'python-debtcollector'
+           'python-pyinotify' 'python-dateutil')
   cd "${srcdir}/${_module}"
   python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 package_python2-oslo-log() {
-  depends=('python2-six' 'python2-pbr' 'python2-oslo-config' 'python2-oslo-context' 'python2-oslo-i18n'
-           'python2-oslo-utils' 'python2-oslo-serialization' 'python2-debtcollector' 'python2-pyinotify'
-           'python2-dateutil')
-
-  cd "${srcdir}/${_module}"-py2
+  depends=('python2-six' 'python2-pbr' 'python2-oslo-config'
+           'python2-oslo-context' 'python2-oslo-i18n' 'python2-oslo-utils'
+           'python2-oslo-serialization' 'python2-debtcollector'
+           'python2-pyinotify' 'python2-dateutil')
+  cd "${srcdir}/${_module}-py2"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
   mv "${pkgdir}"/usr/bin/convert-json{,2}
 }
