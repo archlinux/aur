@@ -1,6 +1,6 @@
 pkgbase = texstudio-dark-git
 	pkgdesc = Integrated writing environment for creating LaTeX documents. Dark version.
-	pkgver = 2.12.2.r1.geca3f95
+	pkgver = 2.12.2.r4.gcc40553
 	pkgrel = 1
 	url = http://texstudio.sourceforge.net/
 	arch = i686
