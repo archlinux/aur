@@ -20,13 +20,13 @@ _COMPILER="GCC49"
 ################
 
 ################
-_OPENSSL_VERSION="1.0.2k"
+_OPENSSL_VERSION="1.1.0e"
 ################
 
 _pkgname="ovmf"
 pkgname="${_pkgname}-git"
 
-pkgver=21242.f1bbd4e3cc
+pkgver=21562.d3e0c996d5
 pkgrel=1
 pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - GIT Version"
 url="https://tianocore.github.io/ovmf/"
@@ -43,10 +43,11 @@ provides=('ovmf' 'ovmf-bin' 'ovmf-svn')
 install="${_pkgname}.install"
 
 source=("${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=master"
-        "https://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz")
+        "https://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz"
+)
 
 sha1sums=('SKIP'
-          '5f26a624479c51847ebd2f22bb9f84b3b44dcb44')
+          '8bbbaf36feffadd3cb9110912a8192e665ebca4b')
 
 noextract=("openssl-${_OPENSSL_VERSION}.tar.gz")
 
@@ -112,18 +113,8 @@ _prepare_openssl_udk_dir() {
 	
 	msg "Download OpenSSL ${_OPENSSL_VERSION} Sources"
 	bsdtar -C "${_UDK_DIR}/CryptoPkg/Library/OpensslLib/" -xf "${srcdir}/openssl-${_OPENSSL_VERSION}.tar.gz"
+	mv "${_UDK_DIR}/CryptoPkg/Library/OpensslLib/openssl-${_OPENSSL_VERSION}" "${_UDK_DIR}/CryptoPkg/Library/OpensslLib/openssl"
 	echo
-	
-	msg "Apply EDK2 Patch for OpenSSL ${_OPENSSL_VERSION}"
-	cd "${_UDK_DIR}/CryptoPkg/Library/OpensslLib/openssl-${_OPENSSL_VERSION}/"
-	patch -p1 -i "${_UDK_DIR}/CryptoPkg/Library/OpensslLib/EDKII_openssl-${_OPENSSL_VERSION}.patch"
-	echo
-	
-	msg "Setup OpenSSL ${_OPENSSL_VERSION} headers in EDK2 dir"
-	cd "${_UDK_DIR}/CryptoPkg/Library/OpensslLib/"
-	chmod 0755 "${_UDK_DIR}/CryptoPkg/Library/OpensslLib/Install.sh"
-	"${_UDK_DIR}/CryptoPkg/Library/OpensslLib/Install.sh"
-	
 }
 
 prepare() {
