@@ -1,6 +1,7 @@
 pkgname=firefox-beta
-pkgver=53.0b10
-pkgrel=2
+_pkgver=53.0
+pkgver=${_pkgver}RC3
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta [testing]"
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -8,12 +9,12 @@ url="https://www.mozilla.org/firefox/"
 depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'alsa-lib' 'ffmpeg' 'libvpx' 'libevent' 'hunspell' 'sqlite' 'ttf-font' 'icu' 'nss>=3.29.5')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf' 'libpulse' 'inetutils' 'xorg-server-xvfb' 'autoconf2.13' 'cargo')
 optdepends=('networkmanager: Location detection via available WiFi networks' 'libnotify: Notification integration' 'speech-dispatcher: Text-to-Speech')
-provides=("firefox=$pkgver")
 conflicts=("firefox-beta-bin")
 options=("!emptydirs" "!makeflags" "!strip")
-source=("https://ftp.mozilla.org/pub/firefox/releases/${pkgver}/source/firefox-${pkgver}.source.tar.xz"
+source=("http://ftp.mozilla.org/pub/firefox/candidates/53.0-candidates/build3/source/firefox-53.0.source.tar.xz"
+#source=("https://ftp.mozilla.org/pub/firefox/releases/${pkgver}/source/firefox-${pkgver}.source.tar.xz"
 'firefox-beta.desktop' 'firefox-symbolic.svg' 'firefox-install-dir.patch' 'fix-wifi-scanner.diff')
-sha256sums=('6b89322c367e6e7431fa72def2cb75243e9f12bd9b7972ae7d4a69baafce568c'
+sha256sums=('757a24781799c6a8d70bc9e423fb09c1e37500440f2918b08ca0a0427215315a'
             'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
@@ -35,7 +36,7 @@ prepare() {
   mkdir path
   ln -s /usr/bin/python2 path/python
 
-  cd firefox-$pkgver
+  cd firefox-${_pkgver}
   patch -Np1 -i ../firefox-install-dir.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1314968
@@ -92,7 +93,7 @@ END
 }
 
 build() {
-  cd firefox-$pkgver
+  cd firefox-${_pkgver}
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
@@ -109,7 +110,7 @@ build() {
 }
 
 package() {
-  cd firefox-$pkgver
+  cd firefox-${_pkgver}
 
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
   install -d -m755 "$pkgdir"/opt/firefox-beta
@@ -161,8 +162,8 @@ END
   install -Dm644 ../firefox-symbolic.svg \
   "$pkgdir/usr/share/icons/hicolor/symbolic/apps/firefox-symbolic.svg"
 
-  install -Dm644 ../firefox.desktop \
-  "$pkgdir/usr/share/applications/firefox.desktop"
+  install -Dm644 ../firefox-beta.desktop \
+  "$pkgdir/usr/share/applications/firefox-beta.desktop"
 
   # Use system-provided dictionaries
   rm -r "$pkgdir"/opt/firefox-beta/dictionaries
