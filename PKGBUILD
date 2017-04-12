@@ -2,41 +2,74 @@
 
 pkgname=('python-muranoclient' 'python2-muranoclient')
 pkgver='0.12.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Python client library for Murano'
 arch=('any')
-url='http://docs.openstack.org/developer/python-muranoclient'
+url="https://docs.openstack.org/developer/${pkgname}/"
 license=('Apache')
-makedepends=('python-setuptools' 'python2-setuptools')
-source=("git+https://git.openstack.org/openstack/python-muranoclient#tag=$pkgver")
+makedepends=('git' 'python-setuptools' 'python2-setuptools')
+checkdepends=('python-pbr' 'python2-pbr'
+              'python-prettytable' 'python2-prettytable'
+              'python-glanceclient' 'python2-glanceclient'
+              'python-keystoneclient' 'python2-keystoneclient'
+              'python-iso8601' 'python2-iso8601'
+              'python-babel' 'python2-babel'
+              'python-pyopenssl' 'python2-pyopenssl'
+              'python-requests' 'python2-requests'
+              'python-yaml' 'python2-yaml'
+              'python-yaql' 'python2-yaql'
+              'python-osc-lib' 'python2-osc-lib'
+              'python-oslo-serialization' 'python2-oslo-serialization'
+              'python-oslo-utils' 'python2-oslo-utils'
+              'python-oslo-log' 'python2-oslo-log'
+              'python-oslo-i18n' 'python2-oslo-i18n'
+              'python-muranopkgcheck' 'python2-muranopkgcheck'
+              'python-fixtures' 'python2-fixtures'
+              'python-mock' 'python2-mock'
+              'python-requests-mock' 'python2-requests-mock'
+              'python-testtools' 'python2-testtools'
+              'python-oslotest' 'python2-oslotest')
+source=("git+https://git.openstack.org/openstack/${pkgname}#tag=${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {
-  cp -a python-muranoclient{,-py2}
+  cp -a "${srcdir}/${pkgname}"{,-py2}
 }
 
 build() {
-  cd "$srcdir"/python-muranoclient
+  cd "${srcdir}/${pkgname}"
   python setup.py build
 
-  cd "$srcdir"/python-muranoclient-py2
+  cd "${srcdir}/${pkgname}-py2"
   python2 setup.py build
 }
 
+check() {
+  cd "${srcdir}/${pkgname}"
+  # Fix test function name for Python 3
+  sed -i 's/assertItemsEqual/assertCountEqual/g' muranoclient/tests/unit/osc/v1/*.py
+  python setup.py testr
+
+  cd "${srcdir}/${pkgname}-py2"
+  PYTHON=python2 python2 setup.py testr
+}
+
 package_python-muranoclient() {
-  depends=('python-pbr' 'python-prettytable' 'python-glanceclient' 'python-keystoneclient'
-           'python-iso8601' 'python-babel' 'python-pyopenssl' 'python-requests'
-           'python-yaml' 'python-yaql' 'python-osc-lib' 'python-oslo-serialization'
-           'python-oslo-utils' 'python-oslo-i18n')
+  depends=('python-pbr' 'python-prettytable' 'python-glanceclient'
+           'python-keystoneclient' 'python-iso8601' 'python-babel'
+           'python-pyopenssl' 'python-requests' 'python-yaml' 'python-yaql'
+           'python-osc-lib' 'python-oslo-serialization' 'python-oslo-utils'
+           'python-oslo-log' 'python-oslo-i18n')
   cd "${srcdir}/${pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-muranoclient() {
-  depends=('python-pbr' 'python-prettytable' 'python-glanceclient' 'python-keystoneclient'
-           'python-iso8601' 'python-babel' 'python-pyopenssl' 'python-requests'
-           'python2-yaml' 'python-yaql' 'python-osc-lib' 'python-oslo-serialization'
-           'python-oslo-utils' 'python-oslo-i18n')
+  depends=('python2-pbr' 'python2-prettytable' 'python2-glanceclient'
+           'python2-keystoneclient' 'python2-iso8601' 'python2-babel'
+           'python2-pyopenssl' 'python2-requests' 'python2-yaml' 'python2-yaql'
+           'python2-osc-lib' 'python2-oslo-serialization' 'python2-oslo-utils'
+           'python2-oslo-log' 'python2-oslo-i18n')
   cd "${srcdir}/python-muranoclient-py2"
   python2 setup.py install --root="${pkgdir}" --optimize=1
   mv "${pkgdir}"/usr/bin/murano{,2}
