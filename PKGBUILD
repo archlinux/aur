@@ -3,7 +3,7 @@
 
 _gemname=clamp
 pkgname=ruby-$_gemname
-pkgver=1.0.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='a minimal framework for command-line utilities'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('892e9eb73e3c916bf9d5632c0bca1c62e694f0c1d5666c23ea9b99bf078f925a5e5aa0058d09cdedc83f950d1ac989313103c6c36604f607f392bed2c74bf256')
+sha512sums=('7c697dceab2aa3e636b885f6790f7222212afa2bcf0f27cacf95f11d54bfcb7201d1ec117386b83e752cf7468de11e8e7cba8277da8fc89836ac4fe2e5f82bce')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
