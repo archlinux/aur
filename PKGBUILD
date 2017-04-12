@@ -2,7 +2,7 @@
 
 pkgname=anbox-git
 _pkgname=anbox
-pkgdesc="Anbox"
+pkgdesc="Running Android in a container"
 pkgver=466
 pkgrel=1
 arch=('x86_64')
