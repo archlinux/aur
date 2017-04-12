@@ -2,7 +2,7 @@
 post_install() {
     echo "NOTE"
     echo ">>> You will need to have an account at http://rsbuddy.com to use OSBuddy"
-    echo ">>> You can also upgrade to OSBuddy Pro at the same URL for a price of 2GBP a month."
+    echo ">>> You can also upgrade to OSBuddy Pro at the same URL for a price of 2.50GBP a month."
     echo ">>> OSBuddy will store and upgrade itself in ~/.osbuddy/"
 }
 

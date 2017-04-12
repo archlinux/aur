@@ -1,3 +1,4 @@
 #!/usr/bin/env sh
 
-_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on' exec java -Dnofork=true -Xmx512M $OSBUDDY_VMARGS -jar /usr/share/osbuddy/OSBuddy.jar $@
+_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd' exec java -Dnofork=true -Xmx512M -Dswing.aatext=true $OSBUDDY_VMARGS -jar /usr/share/osbuddy/OSBuddy.jar $@
+
