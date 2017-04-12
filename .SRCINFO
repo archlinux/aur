@@ -1,10 +1,11 @@
 pkgbase = python-magnumclient
 	pkgdesc = Python client library for Magnum
 	pkgver = 2.5.0
-	pkgrel = 1
-	url = http://docs.openstack.org/developer/python-magnumclient
+	pkgrel = 2
+	url = http://docs.openstack.org/developer/python-magnumclient/
 	arch = any
 	license = Apache
+	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	source = git+https://git.openstack.org/openstack/python-magnumclient#tag=2.5.0
