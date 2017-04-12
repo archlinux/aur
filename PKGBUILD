@@ -2,9 +2,9 @@
 # Contributor: Max Roder <maxroder@web.de>
 # Generator  : CPANPLUS::Dist::Arch 1.19
 
-pkgname='perl-bsd-resource'
-pkgver='1.2911'
-pkgrel='1'
+pkgname=perl-bsd-resource
+pkgver=1.2911
+pkgrel=1
 pkgdesc="getrusage(), s/getrlimit(), s/getpriority()"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
