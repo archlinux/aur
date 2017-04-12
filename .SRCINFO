@@ -1,7 +1,7 @@
 pkgbase = libinput-mir
 	pkgdesc = Input device management and event handling library
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/libinput/
 	arch = x86_64
 	license = custom:X11
@@ -12,7 +12,7 @@ pkgbase = libinput-mir
 	depends = systemd
 	depends = libevdev
 	depends = libwacom
-	provides = libinput
+	provides = libinput=1.7.0
 	conflicts = libinput
 	source = https://freedesktop.org/software/libinput/libinput-1.7.0.tar.xz
 	source = https://raw.githubusercontent.com/kikadf/patches/master/libinput-mir/0001-libinput-add-orientation-and-size-of-touch-point-and.patch

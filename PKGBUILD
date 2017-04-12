@@ -2,7 +2,7 @@
 
 pkgname=libinput-mir
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Input device management and event handling library"
 arch=('x86_64')
 url="https://www.freedesktop.org/wiki/Software/libinput/"
@@ -10,7 +10,7 @@ license=(custom:X11)
 depends=('mtdev' 'systemd' 'libevdev' 'libwacom')
 makedepends=('doxygen' 'graphviz' 'gtk3')
 conflicts=('libinput')
-provides=('libinput')
+provides=("libinput=${pkgver}")
 source=(https://freedesktop.org/software/libinput/libinput-$pkgver.tar.xz
         https://raw.githubusercontent.com/kikadf/patches/master/libinput-mir/0001-libinput-add-orientation-and-size-of-touch-point-and.patch
         https://raw.githubusercontent.com/kikadf/patches/master/libinput-mir/0002-extend-tools-to-print-and-display-touch-event-proper.patch
