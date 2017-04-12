@@ -13,8 +13,10 @@ pkgbase = linux-galliumos-braswell
 	options = !strip
 	source = git+https://github.com/GalliumOS/linux.git#branch=v4.10.5
 	source = linux-galliumos-braswell.preset
+	source = cherryview-pinctrl.diff
 	sha256sums = SKIP
 	sha256sums = 7f9b77e1ac3b59453f6bb3858d0549c3022e6ae93ca3978427d96ae23f87e451
+	sha256sums = SKIP
 
 pkgname = linux-galliumos-braswell
 	pkgdesc = The Linux kernel and modules with GalliumOS patches for braswell chromebooks

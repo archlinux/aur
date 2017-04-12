@@ -9,7 +9,7 @@
 pkgbase=linux-galliumos-braswell
 _srcname=linux
 pkgver=4.10.5
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -17,21 +17,29 @@ makedepends=('kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
 source=("git+https://github.com/GalliumOS/linux.git#branch=v${pkgver}"
         # standard config files for mkinitcpio ramdisk
-        "${pkgbase}.preset")
+        "${pkgbase}.preset"
+        "cherryview-pinctrl.diff")
 sha256sums=('SKIP'
-            '7f9b77e1ac3b59453f6bb3858d0549c3022e6ae93ca3978427d96ae23f87e451')
+            '7f9b77e1ac3b59453f6bb3858d0549c3022e6ae93ca3978427d96ae23f87e451'
+            'SKIP')
 
 _kernelname=${pkgbase#linux}
 
 prepare() {
   cd "${_srcname}"
 
+  cp $srcdir/cherryview-pinctrl.diff galliumos/diffs/
+  rm galliumos/diffs/increase-cherryview-num-irqs.diff
+  sed -i 's/increase-cherryview-num-irqs.diff/cherryview-pinctrl.diff/' \
+    galliumos/diffs/sequence
   bash galliumos/diffs/apply_all.sh
 
   cp galliumos/config-braswell .config
 
   # modules for initramfs usb storage support
   sed -i \
+    -e 's/^CONFIG_INPUT_EVDEV=y/CONFIG_INPUT_EVDEV=m/' \
+    -e 's/^CONFIG_INPUT_EVBUG*/# CONFIG_INPUT_EVBUG is not set/' \
     -e 's/^CONFIG_BLK_DEV_SD=.*/CONFIG_BLK_DEV_SD=m/' \
     -e 's/^CONFIG_SCSI=.*/CONFIG_SCSI=m/' \
     -e 's/^CONFIG_SCSI_MOD=.*/CONFIG_SCSI_MOD=m/' \
