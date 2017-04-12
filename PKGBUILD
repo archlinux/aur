@@ -2,15 +2,15 @@
 
 pkgbase=python-latex
 pkgname=('python-latex' 'python2-latex')
-pkgver=0.6.1
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Python wrappers for calling LaTeX/building LaTeX documents"
 arch=('any')
 license=('MIT')
 url="https://pypi.python.org/pypi/latex/${pkgver}"
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
-source=("latex-$pkgver.tar.gz::https://github.com/mbr/latex/archive/0.6.1.tar.gz")
-md5sums=('b6748b7c06e400a0fef3aee1f46013f4')
+source=("latex-$pkgver.tar.gz::https://github.com/mbr/latex/archive/$pkgver.tar.gz")
+md5sums=('301e2d62912593abb39015fa0b7ea9d6')
 
 prepare() {
   cp -a "$srcdir/latex-$pkgver" "$srcdir/latex-$pkgver-python2"
