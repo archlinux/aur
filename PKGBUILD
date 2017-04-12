@@ -3,7 +3,7 @@
 _pkgname=tempreader
 pkgname="${_pkgname}-git"
 pkgver=r1.c5900e3
-pkgrel=3
+pkgrel=4
 pkgdesc='RESTful API to read data from DS18B20 temperature sensors.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/${_pkgname}/"
@@ -32,6 +32,7 @@ package() {
 
   install -Dm755 "${_pkgname}/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 "$startdir/${_pkgname}.service" "$pkgdir/usr/lib/systemd/system/${_pkgname}.service"
   install -Dm644 "$startdir/${_pkgname}.default" "$pkgdir/etc/default/${_pkgname}"
 }
