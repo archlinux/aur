@@ -3,8 +3,8 @@
 cpaname=Math-Prime-XS
 cpanauthor=KRYDE
 pkgname=perl-math-prime-xs
-pkgver='0.26'
-pkgrel='1'
+pkgver=0.27
+pkgrel=1
 pkgdesc="Detect and calculate prime numbers with deterministic tests"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -12,8 +12,9 @@ options=('!emptydirs')
 depends=('perl-boolean' 'perl-params-validate')
 url=http://search.cpan.org/dist/${cpaname}
 source=("http://search.cpan.org/CPAN/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
-md5sums=('5bd7727093742cc85cd6c762422c98c8')
-sha512sums=('4054114b320e15c349c6620fcd8b2ae6a94b590f2be2a6301577dae09aef3058f901cafd669ea9846c0b7adaaad46e18552cdf147c8412b297d96d5f3bbd6fa4')
+md5sums=('70a40bcf0d6d1a88375c884aa3139207')
+sha256sums=('19f7e9b95fbb29e4d103bc454325143674852e38435667dfe998629f40d13af8')
+sha512sums=('0ee15e765e660d4e989bee726530d04e34d40289dc6945bc9aed885abf1957df417ffc04449adee0ca6b1bab127e4e9e0bffd562f669ca704b7acb8a481ed42b')
 
 build() {
   cd "${srcdir}/${cpaname}-${pkgver}"
