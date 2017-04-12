@@ -1,18 +1,12 @@
 pkgbase = python-tempest
-	pkgdesc = The OpenStack Integration Test Suite
+	pkgdesc = OpenStack Integration Testing
 	pkgver = 15.0.0
-	pkgrel = 1
-	url = http://docs.openstack.org/developer/tempest
+	pkgrel = 2
+	url = http://docs.openstack.org/developer/tempest/
 	arch = any
 	license = Apache
-	checkdepends = python-mock
-	checkdepends = python2-mock
-	checkdepends = python-oslotest
-	checkdepends = python2-oslotest
-	checkdepends = python-paramiko
-	checkdepends = python2-paramiko
+	makedepends = git
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	source = git+https://git.openstack.org/openstack/tempest#tag=15.0.0
 	sha256sums = SKIP
 
@@ -38,28 +32,4 @@ pkgname = python-tempest
 	depends = python-os-testr
 	depends = python-urllib3
 	depends = python-debtcollector
-
-pkgname = python2-tempest
-	depends = python2-pbr
-	depends = python2-cliff
-	depends = python2-jsonschema
-	depends = python2-testtools
-	depends = python2-paramiko
-	depends = python2-netaddr
-	depends = python2-testrepository
-	depends = python2-oslo-concurrency
-	depends = python2-oslo-config
-	depends = python2-oslo-log
-	depends = python2-oslo-serialization
-	depends = python2-oslo-utils
-	depends = python2-six
-	depends = python2-fixtures
-	depends = python2-yaml
-	depends = python2-subunit
-	depends = python2-stevedore
-	depends = python2-prettytable
-	depends = python2-os-testr
-	depends = python2-urllib3
-	depends = python2-debtcollector
-	depends = python2-unittest2
 
