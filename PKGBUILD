@@ -1,7 +1,7 @@
 # Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
 
 pkgname=osu-lazer-git
-pkgver=2017.410.0
+pkgver=2017.410.0_21_g9eb4802e
 pkgrel=1
 pkgdesc='Freeware rhythm video game - lazer development version'
 arch=('x86_64' 'i686')
@@ -20,11 +20,14 @@ source=('git+https://github.com/ppy/osu.git'
 sha256sums=('SKIP'
             'c499dbff1d9a8f382e7b3cf4a95b58b9f02fb98e66e50cddb5d7d6c8a5223d2d')
 
-if [[ $CARCH == x86_64 ]]; then
-	readonly _arch=x64
-elif [[ $CARCH == i686 ]]; then
-	readonly _arch=x86
-fi
+case "$CARCH" in
+	x86_64)
+		_arch=x64
+		;;
+	i686)
+		_arch=x86
+		;;
+esac
 
 pkgver() {
 	cd "$srcdir/osu"
@@ -42,8 +45,7 @@ build() {
 	nuget restore
 
 	# Build
-	export MONO_IOMAP='case'
-	xbuild || xbuild
+	xbuild
 }
 
 package() {
