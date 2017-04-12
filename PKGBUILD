@@ -2,8 +2,8 @@
 
 _gitname=wget2
 pkgname=${_gitname}-git
-pkgver=0.0.r1107.gbc4010f
-pkgrel=1
+pkgver=0.0.r1110.gdd2f4b5
+pkgrel=2
 pkgdesc="Updated version of popular Wget tool"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/wget/wget.html"
@@ -41,7 +41,6 @@ pkgver() {
 check() {
   cd $_gitname
   make check
-  make clean
 }
 
 # vim:set ts=2 sw=2 tw=0 et:
