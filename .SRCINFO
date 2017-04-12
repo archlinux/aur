@@ -1,4 +1,4 @@
-pkgbase = otter-browser
+pkgbase = otter-browser-weekly
 	pkgdesc = Browser aiming to recreate the best aspects of the classic Opera (12.x) UI using Qt5 - weekly.
 	pkgver = 0.9.91.dev171
 	pkgrel = 1
@@ -19,5 +19,5 @@ pkgbase = otter-browser
 	source = otter-browser-0.9.91.dev171.tar.bz2::http://netcologne.dl.sourceforge.net/project/otter-browser/otter-browser-weekly171/otter-browser-0.9.91-dev171.tar.bz2
 	md5sums = 66778d0da47dab3860d1a52b3f967eec
 
-pkgname = otter-browser
+pkgname = otter-browser-weekly
 

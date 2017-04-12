@@ -1,7 +1,7 @@
 # Maintainer: m4sk1n <m4sk1n@vivaldi.net>
 # Author: Steffen Weber <-boenki-gmx-de->
 
-pkgname=otter-browser
+pkgname=otter-browser-weekly
 pkgver=0.9.91.dev171
 _filename=0.9.91-dev171
 _foldername=weekly171
