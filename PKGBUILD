@@ -1,5 +1,4 @@
-# Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Maintainer: Yardena Cohen <yardenack at gmail dot com>
 
 cpaname=Regexp-RegGrp
 cpanauthor=NEVESENIN
