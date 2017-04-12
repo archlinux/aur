@@ -8,7 +8,7 @@ pkgdesc="Yooka-Laylee is an all-new open-world platformer from key creative tale
 url="http://www.playtonicgames.com/games/yooka-laylee/"
 license=('custom')
 arch=('i686' 'x86_64')
-depends=('sdl2')
+depends=('sdl2' 'p7zip')
 optdepends=('firejail: Automatically sandbox this application from your OS')
 source=(
     "gog://${pkgname//-/_}_${pkgver}.sh"
@@ -16,13 +16,19 @@ source=(
     "${pkgname}"
 )
 sha256sums=(
-    'SKIP'
+    'e4aebe80ef947a0d4761770f618224a8bd7ba70e032d995c0ef05b1fb51f4451'
     'eab3d609d3146cb69b32e9b9c894164323c3eab45628a33e9d1e6e75cd9ebbca'
     '4e4c5428a1d929007fea2204b688a4dcd97a13c992b5f92a0c7866f11adc8adc'
 )
 DLAGENTS=(
     "gog::/usr/bin/echo %u Download the GOG file to $PWD or set up a gog:// DLAGENT."
 )
+
+prepare() {
+    cd "${srcdir}"
+
+    7z x gog_yooka_laylee_2.0.0.1.sh -tzip -y
+}
 
 package(){
     cd "${srcdir}"
