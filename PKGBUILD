@@ -3,7 +3,7 @@
 
 _gitname=archtorify
 pkgname=archtorify-git
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="Program for simplify the configuration of transparent proxy trough Tor Network"
 arch=('any')

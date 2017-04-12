@@ -1,6 +1,6 @@
 pkgbase = archtorify-git
 	pkgdesc = Program for simplify the configuration of transparent proxy trough Tor Network
-	pkgver = 1.8.2
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://github.com/brainfucksec/archtorify/
 	arch = any
