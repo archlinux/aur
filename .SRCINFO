@@ -1,7 +1,7 @@
 pkgbase = ezame-git
 	pkgdesc = A Desktop file Editor - that eventually will be able to edit menu structures for interfaces that still use them
 	pkgver = 0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/linux-man/ezame
 	arch = i686
 	arch = x86_64
