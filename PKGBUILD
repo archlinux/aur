@@ -18,26 +18,23 @@ sha512sums=('2679d6b28523b172e1ac4b48b018e896c083d1d45227fd0bd4d156c6dc2862edb23
 
 build() {
   cd "${srcdir}/${cpaname}-${pkgver}"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+         PERL_AUTOINSTALL=--skipdeps                            \
+         PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+         PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+         MODULEBUILDRC=/dev/null
+  perl Makefile.PL
+  make
 }
 
 check() {
   cd "${srcdir}/${cpaname}-${pkgver}"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+  make test
 }
 
 package() {
   cd "${srcdir}/${cpaname}-${pkgver}"
-  make install
-
+  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
