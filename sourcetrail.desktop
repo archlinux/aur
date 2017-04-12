@@ -1,12 +1,12 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=Coati
-GenericName=coati
+Name=Sourcetrail
+GenericName=sourcetrail
 Comment="A cross-platform source explorer for C/C++ and Java"
 Icon=coati
-Exec="/usr/bin/coati"
+Exec="/usr/bin/sourcetrail"
 Terminal=false
 Categories=Development;
 StartupNotify=true
-StartupWMClass=coati
+StartupWMClass=sourcetrail

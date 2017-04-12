@@ -4,7 +4,7 @@ pkgname=sourcetrail
 _pkgname=Sourcetrail
 pkgver=0.11.86
 _pkgver=${pkgver/\./\_}
-pkgrel=2
+pkgrel=3
 pkgdesc='A cross-platform source explorer for C/C++ and Java'
 arch=('x86_64')
 url='https://www.sourcetrail.com/'
@@ -16,7 +16,7 @@ options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/downloads/${pkgver}/linux/64bit/"
         "${pkgname}.desktop")
 sha256sums=('7e7ddc18667bb581efff37bed8e45f05e5af4812d087f9c009dc99c00c14042e'
-            '3081b2217a1f99e965ba052048ddd87afe58702dda24da96bea43c680cf6211c')
+            '77cd847c1267cd9942eb308c4c33da4e949201b6eeb4d62ed8d720279642e9af')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 
 prepare() {
