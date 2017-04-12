@@ -5,7 +5,7 @@
 _pkgname=idos-timetable-data-chaps-trains-common
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2017_2_17
+pkgver=2017_4_11
 pkgrel=1
 pkgdesc="Common files needed for train timetable data for the timetable search engines by CHAPS."
 arch=(any)
