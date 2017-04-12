@@ -9,8 +9,8 @@ license=('GPL')
 depends=('lapack' 'python2' 'fftw' 'java-environment')
 makedepends=('gcc49')
 optdepends=()
-source=("http://simplecryoem.com/binaries/simple2.1.tar.gz")
-md5sums=('f01eee32ec5071bdd7e5a3c505418335')
+source=("http://simplecryoem.com/binaries/simple2.1.tar.gz" "simple2.sh" "simple2.csh")
+md5sums=('f01eee32ec5071bdd7e5a3c505418335' 'SKIP' 'SKIP')
 build() {
 	cd "${srcdir}"/simple${pkgver}
 	cp scripts/Template_FEDORA_21x64_CPU_simple_user_input.pm simple_user_input.pm
@@ -26,5 +26,5 @@ build() {
 package() {
 	install -d "${pkgdir}"/opt "${pkgdir}"/etc/profile.d
 	cp -r "${srcdir}"/simple${pkgver} "${pkgdir}"/opt/simple2
-	install -D -m755 "${srcdir}"/simple${pkgver}/add2.bashrc "${pkgdir}"/etc/profile.d/simple2.sh
+	install -D -m755 "${srcdir}"/simple2*sh "${pkgdir}"/etc/profile.d/.
 }

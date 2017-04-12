@@ -11,7 +11,11 @@ pkgbase = simple2
 	depends = fftw
 	depends = java-environment
 	source = http://simplecryoem.com/binaries/simple2.1.tar.gz
+	source = simple2.sh
+	source = simple2.csh
 	md5sums = f01eee32ec5071bdd7e5a3c505418335
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = simple2
 
