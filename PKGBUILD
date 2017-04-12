@@ -9,8 +9,16 @@ pkgdesc="number sequences"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-file-homedir>=0' 'perl-math-factor-xs>=0.40' 'perl-math-libm>=0' 'perl-math-prime-xs>=0.23' 'perl-module-pluggable>=0' 'perl-module-util>=0' 'perl-constant-defer>=1' 'perl>=5.004')
-makedepends=()
+depends=(
+  perl
+  perl-constant-defer
+  perl-file-homedir
+  perl-math-factor-xs
+  perl-math-libm
+  perl-math-prime-xs
+  perl-module-pluggable
+  perl-module-util
+)
 url=http://search.cpan.org/dist/${cpaname}
 source=("http://search.cpan.org/CPAN/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
 md5sums=('2bb1b103470548d4fad0528e6aad475e')
