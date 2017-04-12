@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=redo-jdebp
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="An implementation of Bernstein's redo proposal"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ makedepends=('perl')
 url="https://jdebp.eu/Softwares/redo"
 license=('custom:ISC')
 source=(https://jdebp.eu/Repository/freebsd/${pkgname%-jdebp}-$pkgver.tar.gz)
-sha256sums=('ce62e82c0e3e9688767a11a94714a2640dcd20fd54d9974916c3ba4e29bd2863')
+sha256sums=('191cc99f24c450710fe4ea6dd2bea4a6ed6afab2eb870c4d0232009d4ab3a7fb')
 provides=('redo')
 conflicts=('redo')
 
