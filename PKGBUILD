@@ -5,7 +5,7 @@
 
 pkgname=('handbrake-fdkaac' 'handbrake-cli-fdkaac')
 pkgver=1.0.7
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
