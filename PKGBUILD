@@ -2,18 +2,27 @@
 
 pkgname=('python-troveclient' 'python2-troveclient')
 pkgver='2.8.0'
-pkgrel='1'
-pkgdesc='Python client library for Trove'
+pkgrel='2'
+pkgdesc='Client library for OpenStack DBaaS API'
 arch=('any')
-url='http://docs.openstack.org/developer/python-troveclient'
+url="http://docs.openstack.org/developer/${pkgname}"
 license=('Apache')
-makedepends=('python-setuptools' 'python2-setuptools')
-checkdepends=('python-coverage' 'python2-coverage'
+makedepends=('git' 'python-setuptools' 'python2-setuptools')
+checkdepends=('python-pbr' 'python2-pbr'
+              'python-prettytable' 'python2-prettytable'
+              'python-requests' 'python2-requests'
+              'python-simplejson' 'python2-simplejson'
+              'python-oslo-i18n' 'python2-oslo-i18n'
+              'python-oslo-utils' 'python2-oslo-utils'
+              'python-babel' 'python2-babel'
+              'python-keystoneauth1' 'python2-keystoneauth1'
+              'python-six' 'python2-six'
+              'python-swiftclient' 'python2-swiftclient'
+              'python-mistralclient' 'python2-mistralclient'
+              'python-osc-lib' 'python2-osc-lib'
               'python-fixtures' 'python2-fixtures'
               'python-oslotest' 'python2-oslotest'
               'python-requests-mock' 'python2-requests-mock'
-              'python-testrepository' 'python2-testrepository'
-              'python-testscenarios' 'python2-testscenarios'
               'python-testtools' 'python2-testtools'
               'python-mock' 'python2-mock'
               'python-httplib2' 'python2-httplib2'
@@ -29,7 +38,7 @@ build() {
   cd "${srcdir}/${pkgname}"
   python setup.py build
 
-  cd "${srcdir}/${pkgname}"-py2
+  cd "${srcdir}/${pkgname}-py2"
   python2 setup.py build
 }
 
