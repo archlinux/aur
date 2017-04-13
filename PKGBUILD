@@ -4,7 +4,7 @@
 
 pkgname=perl-alien-wxwidgets
 _cpan_name=Alien-wxWidgets
-pkgver=0.67
+pkgver=0.68
 pkgrel=1
 pkgdesc="building, finding and using wxWidgets binaries"
 arch=('any')
@@ -14,12 +14,13 @@ depends=('perl>=5.10.0' 'wxgtk' 'perl-module-pluggable') # Install perl-module-p
 makedepends=('perl-module-build')
 options=(!emptydirs)
 source=("http://www.cpan.org/modules/by-module/${_cpan_name%%-*}/${_cpan_name}-${pkgver}.tar.gz"
-        'https://rt.cpan.org/Ticket/Attachment/1400329/743429/wx-config-version-and-env.patch'
-        'https://rt.cpan.org/Ticket/Attachment/1239555/655334/Alien-wxWidgets-0.64-returnor.patch'
+#        'https://rt.cpan.org/Ticket/Attachment/1400329/743429/wx-config-version-and-env.patch'
+#        'https://rt.cpan.org/Ticket/Attachment/1239555/655334/Alien-wxWidgets-0.64-returnor.patch'
        )
-md5sums=('510a7817fdaf59089b50a877a621d770'
-         '1d21142e0a60bec1a4fab11dc545f955'
-         '0011e91d60a7a669426341687cb6a5e2')
+md5sums=('8771befe9e2421e355a7fa3e56651842'
+#        '1d21142e0a60bec1a4fab11dc545f955'
+#         '0011e91d60a7a669426341687cb6a5e2'
+       )
 _src_dir='${_cpan_name}-${pkgver}'
 
 #prepare() {
