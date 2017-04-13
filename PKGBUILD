@@ -8,6 +8,7 @@ pkgdesc="Android kernel driver (binder, ashmem) in DKMS format"
 arch=('i686' 'x86_64')
 license=('GPLv3')
 provides=($pkgname)
+depends=('linux-headers')
 source=("https://launchpad.net/~morphis/+archive/ubuntu/anbox-support/+files/${pkgname}_${pkgver}.tar.gz")
 sha256sums=('fa322cf025a87c69d50a08b1b007503fa00daf09db08366f3507ac3873bd8d39')
 
