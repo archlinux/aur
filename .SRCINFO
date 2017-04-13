@@ -1,0 +1,14 @@
+pkgbase = ipband
+	pkgdesc = IP Bandwdith Watchdog
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://ipband.sourceforge.net
+	arch = any
+	license = GPL
+	makedepends = tar
+	depends = libpcap
+	source = http://ipband.sourceforge.net/ipband-0.8.1.tgz
+	md5sums = 23aa932a6b97be3e831a3f8b31d21e6f
+
+pkgname = ipband
+
