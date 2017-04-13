@@ -1,6 +1,6 @@
 # Maintainer: Daniel Milde <daniel@milde.cz> 
 pkgname=python-err
-pkgver=4.3.3
+pkgver=4.3.7
 pkgrel=1
 pkgdesc="A plugin based chatbot designed to be easily deployable, extensible and maintainable."
 arch=('any')
@@ -25,13 +25,14 @@ optdepends=('python-sleekxmpp: XMPP backend'
             'python-irc: IRC backend')
 options=(!emptydirs)
 install=
-source=("https://pypi.python.org/packages/f3/d1/87eaa3de23234de49a35ceed8461694429c7d2499c68d84de1de3f5e163a/errbot-4.3.3.tar.gz#md5=82914b7f18d7fa2360d8397696601438")
-sha256sums=('64e540a6897ab65b9acff32700bbda5c0ba40aaa5e66769f2951882e5165ddfc')
+#source=("https://pypi.python.org/packages/f3/d1/87eaa3de23234de49a35ceed8461694429c7d2499c68d84de1de3f5e163a/errbot-4.3.3.tar.gz#md5=82914b7f18d7fa2360d8397696601438")
+source=("https://pypi.io/packages/source/e/errbot/errbot-$pkgver.tar.gz")
+sha256sums=('0c9258404eb64c808f7049d951364f7761646b94fe80af994b2d034a0499e16e')
 
 package() {
   cd "$srcdir/errbot-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
-  chmod 644 ${pkgdir}/usr/lib/python3.5/site-packages/errbot-${pkgver}-py3.5.egg-info/*
+  chmod 644 ${pkgdir}/usr/lib/python3.6/site-packages/errbot-${pkgver}-py3.6.egg-info/*
 }
 
 # vim:set ts=2 sw=2 et:
