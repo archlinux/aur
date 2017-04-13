@@ -1,4 +1,5 @@
 # $Id$
+# Maintainer: Volkan Gümüs
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
