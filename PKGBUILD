@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-passenger
 pkgver=5.1.2
-pkgrel=1
+pkgrel=2
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.11.10
+_nginxver=1.12.0
 
 pkgdesc="Fast and robust web server and application server for Ruby, Python and Node.js (module for mainline nginx)"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(
 	https://github.com/phusion/passenger/archive/release-$pkgver/$_modname-$pkgver.tar.gz
 )
 
-sha256sums=('778b3cabb07633f754cd9dee32fc8e22582bce22bfa407be76a806abd935533d'
+sha256sums=('b4222e26fdb620a8d3c3a3a8b955e08b713672e1bc5198d1e4f462308a795b30'
             '55c1d8748f362845da08b5a9f6f5c4ca1fafdad7a512866b05a1971f43674ca6')
 
 build() {
