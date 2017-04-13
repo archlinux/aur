@@ -1,7 +1,7 @@
 # Maintainer: kusakata <shohei atmark kusakata period com>
 
 pkgname=dm-writeboost
-pkgver=2.2.6
+pkgver=2.2.7
 pkgrel=1
 pkgdesc="Log-structured Caching for Linux"
 arch=('any')
@@ -16,4 +16,4 @@ package() {
 	install -m644 ${pkgname}-${pkgver}/src/* ${pkgdir}/usr/src/${pkgname}-${pkgver}/
 }
 
-md5sums=('ea8ceb312641a2e0fa2873e3b5a2b0f1')
+md5sums=('0918ceb0cb9c6d9b7b39072222c14029')
