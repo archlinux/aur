@@ -3,7 +3,7 @@
 pkgname=('anbox-git' 'anbox-modules-dkms-git')
 _pkgname=anbox
 pkgver=466
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://anbox.io/"
 license=('GPL3')
@@ -43,7 +43,7 @@ build() {
 }
 
 package_anbox-git() {
-  depends=('dbus-cpp' 'lxc' 'sdl2' 'protobuf')
+  depends=('dbus-cpp' 'lxc' 'sdl2' 'protobuf' 'anbox-image')
   optdepends=('anbox-modules-dkms-git: Required Android kernel modules')
   pkgdesc="Running Android in a container"
 
