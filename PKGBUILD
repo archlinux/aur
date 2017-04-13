@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=emsdk
 pkgver=1.35
-pkgrel=2
+pkgrel=3
 pkgdesc='The Emscripten SDK'
 arch=('x86_64')
 url='https://kripken.github.io/emscripten-site/'
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python2' 'cmake')
 source=("https://s3.amazonaws.com/mozilla-games/emscripten/releases/$pkgname-portable.tar.gz"
         'emsdk.sh')
-sha256sums=('39114f25e1b3f4d1e15dc8d8f59227c30be855e79cbff91fbf2e3f31f7bb2cd1'
+sha256sums=('d8531d7f57195134d01075903d2914b3f79b389f83f5fc004f4ec48b57f8bcc6'
             '88a64d125b390a0b00ab79abaa5ff7a73dedc734701ea3ccca265598f09e9d60')
 
 package()
