@@ -3,7 +3,7 @@
 
 pkgname=command-not-found
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="In case a command could not be found this utility searches for packages containing this or a similar command (bash,zsh)."
 arch=('i686' 'x86_64')
 url="http://github.com/metti/$pkgname"
