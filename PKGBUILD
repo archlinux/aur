@@ -10,10 +10,14 @@ license=('GPL3')
 makedepends=('cmake' 'git' 'glm' 'dbus-cpp' 'lxc' 'sdl2' 'protobuf')
 source=("git+https://github.com/anbox/anbox.git"
 	'anbox-container-manager.service'
-	'anbox-session-manager.service')
+	'anbox-session-manager.service'
+	'99-anbox.rules'
+	'anbox.conf')
 sha256sums=('SKIP'
             '49aa34a582de04540a01754976db89f2c05d6170f7192fec0ff14e23d14320d2'
-            '1f22dbb5a3ca6925bbf62899cd0f0bbaa0b77c879adcdd12ff9d43adfa61b1d8')
+            '1f22dbb5a3ca6925bbf62899cd0f0bbaa0b77c879adcdd12ff9d43adfa61b1d8'
+            '6faa2e596b6b5dc0d01ae66115e4d206351bde98d1726ef4bd4d4f252a1b4862'
+            '3e07dc524a827c1651857cce28a06c1565bc5188101c140ed213bbafedc5abff')
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
@@ -45,6 +49,7 @@ package_anbox-git() {
 
   install -Dm 644 -t $pkgdir/usr/lib/systemd/system $srcdir/anbox-container-manager.service
   install -Dm 644 -t $pkgdir/usr/lib/systemd/user $srcdir/anbox-session-manager.service
+  install -Dm 644 -t $pkgdir/usr/lib/udev/rules.d $srcdir/99-anbox.rules
 }
 
 package_anbox-modules-dkms-git() {
@@ -57,4 +62,6 @@ package_anbox-modules-dkms-git() {
     install -dm 755 $pkgdir/usr/src
     cp -a kernel/$mod $pkgdir/usr/src/anbox-modules-$mod-$pkgver
   done;
+
+  install -Dm 644 -t $pkgdir/etc/modules-load.d $srcdir/anbox.conf
 }
