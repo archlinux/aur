@@ -5,7 +5,7 @@
 
 pkgname=jhbuild
 pkgver=3.15.92+1081+ge10b7222
-pkgrel=3
+pkgrel=4
 pkgdesc='Tool to build the whole GNOME desktop from sources'
 arch=('any')
 url='https://wiki.gnome.org/Projects/Jhbuild'
@@ -21,7 +21,7 @@ _commit=e10b7222
 source=("$pkgname-$_commit::git+https://git.gnome.org/browse/jhbuild#commit=$_commit"
         "module_args.patch")
 sha256sums=('SKIP'
-            '587d389d3cb95d2404c9d3727f42f651ef5ffbec70736657a1a3cd5ebf012853')
+            'd840b6b18650d77f1588c67532015aa1e8a9fc408418cce62e5f0bfcd4b47128')
 
 pkgver() {
   cd $pkgname-$_commit
