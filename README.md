@@ -26,6 +26,6 @@ The printer connections are preserved across restarts (unlike with the Windows s
 
 - If your PaperCut username or password contains a colon or percent sign, then the script will fail to authenticate. 
 - If printing from Chrome, it is recommended to use the system print dialog (`Ctrl + Shift + P`) rather than Chrome's built-in one. In particular, printing to a color printer from within Chrome results in a black-and-white image. 
-- Duplex printing is not available on all printers. 
+- Duplex printing is not yet available on all printers. 
 
 Please report any bugs [here](https://github.com/djsavvy/harvard-linux-printer/issues).
