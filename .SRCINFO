@@ -1,14 +1,14 @@
 pkgbase = snowboard
 	pkgdesc = API blueprint parser and renderer
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/subosito/snowboard
 	arch = x86_64
 	license = MIT
 	source = LICENSE
 	sha256sums = 7735b9ba5dcaff4118d2bb06aa2dfa598ee87fe3da1de71a8b74a39c21b91191
-	source_x86_64 = https://github.com/subosito/snowboard/releases/download/v0.6.3/snowboard-v0.6.3.linux-amd64.tar.gz
-	sha256sums_x86_64 = dee419fdf9ada0f4e6bd0dfda74739d476945e16269fe8ebbbc1d251f53ccae0
+	source_x86_64 = https://github.com/subosito/snowboard/releases/download/v0.6.4/snowboard-v0.6.4.linux-amd64.tar.gz
+	sha256sums_x86_64 = 0a8e2c8e8fd0cd9da09b4efe8c0a8ea5e679d9f48587bf4733ca790b45faef83
 
 pkgname = snowboard
 
