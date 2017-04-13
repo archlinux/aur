@@ -1,6 +1,6 @@
 pkgbase = plexrequests
 	pkgdesc = Simple automated way for users to request new content for Plex
-	pkgver = 1.20.3
+	pkgver = 1.20.4
 	pkgrel = 1
 	url = https://github.com/lokenx/plexrequests-meteor
 	install = plexrequests.install
@@ -10,10 +10,12 @@ pkgbase = plexrequests
 	optdepends = couchpotato
 	optdepends = sickrage
 	optdepends = sonarr
-	source = https://github.com/lokenx/plexrequests-meteor/archive/v1.20.3.tar.gz
+	source = plexrequests-1.20.4.tar.gz::https://github.com/lokenx/plexrequests-meteor/archive/v1.20.4.tar.gz
 	source = plexrequests.service
-	sha256sums = 870c70e059578765ac85a0dc8e990fce36f62188b1754602f22cb2c2a4034f17
+	source = plexrequests.install
+	sha256sums = 494da3420e8fe786b02e7e81e4f942afa146e963939c8726d5070b7236eb6e08
 	sha256sums = 5e2a1c4da328172e55a9d5591e0b36311e1051c3278deb3929cf5ce9e3dfbb43
+	sha256sums = f85d5b42add3b480139656964deb837b95e2b9e0a6baba7f65634c94622cfa5f
 
 pkgname = plexrequests
 
