@@ -1,0 +1,21 @@
+pkgbase = hdf-compass-git
+	pkgdesc = Python-based viewer for HDF5 on other file formats; hdf-view replacement
+	pkgver = 0.6.0.57.g4d6367e
+	pkgrel = 1
+	url = https://github.com/HDFGroup/hdf-compass.git
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	depends = python2
+	depends = python2-numpy
+	depends = python2-matplotlib
+	depends = wxpython
+	depends = python2-h5py
+	depends = python2-requests
+	provides = hdf-compass
+	conflicts = hdf-compass
+	source = git://github.com/HDFGroup/hdf-compass.git
+	md5sums = SKIP
+
+pkgname = hdf-compass-git
+
