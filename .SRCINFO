@@ -1,7 +1,7 @@
 pkgbase = tvlinker
 	pkgdesc = TV show link scraper + downloader for tv-release.pw incl. debrid and dl manager services
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tvlinker.ozmartians.com
 	arch = any
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = tvlinker
 	depends = python-beautifulsoup4
 	depends = python-lxml
 	source = https://github.com/ozmartian/tvlinker/archive/3.5.0.tar.gz
-	md5sums = 56e25f51997c69174a5499bfafe73c29
+	md5sums = 0211853ce3f0f497512f9f8033d00c3b
 
 pkgname = tvlinker
 
