@@ -1,7 +1,7 @@
 pkgbase = webnodelegacy
 	pkgdesc = a high reliable python web library
-	pkgver = 1.0.9
-	pkgrel = 16
+	pkgver = 1.0.10
+	pkgrel = 17
 	url = http://torben.website/webnodelegacy
 	arch = any
 	license = CC-BY-3.0
@@ -11,7 +11,7 @@ pkgbase = webnodelegacy
 	depends = boostnode
 	optdepends = sqlite: for sqlite database support
 	optdepends = nginx: for autoconfiguring them as proxy server
-	source = http://torben.website/webnodelegacy/data/distributionBundle.zip
+	source = https://github.com/thaibault/webnodelegacy/raw/master/distributionBundle.zip
 	md5sums = SKIP
 
 pkgname = webnodelegacy

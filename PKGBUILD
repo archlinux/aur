@@ -10,8 +10,8 @@
 # 3.0 unported license. see http://creativecommons.org/licenses/by/3.0/deed.de
 # endregion
 pkgname=webnodelegacy
-pkgver=1.0.9
-pkgrel=16
+pkgver=1.0.10
+pkgrel=17
 pkgdesc='a high reliable python web library'
 arch=('any')
 url="http://torben.website/${pkgname}"
@@ -20,7 +20,9 @@ depends=('python2' 'python2-sqlalchemy' 'boostnode')
 makedepends=('unzip')
 optdepends=('sqlite: for sqlite database support'
             'nginx: for autoconfiguring them as proxy server')
-source=("http://torben.website/${pkgname}/data/distributionBundle.zip")
+#source=("http://torben.website/${pkgname}/data/distributionBundle.zip")
+source=("https://github.com/thaibault/${pkgname}/raw/master/distributionBundle.zip")
+
 md5sums=('SKIP')
 
 package() {
