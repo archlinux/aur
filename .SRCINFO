@@ -1,7 +1,7 @@
 pkgbase = nautilus-megasync
 	pkgdesc = Upload your files to your Mega account from nautilus.
-	pkgver = 2.9.2
-	pkgrel = 3
+	pkgver = 3.0.1
+	pkgrel = 0
 	url = https://mega.co.nz/#sync
 	install = nautilus-megasync.install
 	arch = i686
