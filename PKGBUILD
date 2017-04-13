@@ -2,9 +2,9 @@
 # Contributor: Matthew Wardrop <mister.wardrop@gmail.com>
 
 pkgbase=linux-surfacepro3-rt
-_srcname=linux-4.9.13
+_srcname=linux-4.9.20
 pkgver=${_srcname#linux-}
-_rtver=rt12
+_rtver=rt16
 pkgrel=2.27
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-surfacepro3-rt"
@@ -23,7 +23,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'https://raw.githubusercontent.com/alyptik/linux-surfacepro3-rt/github/bfs-fixes3.patch'
         'init.patch' 'kconfig.patch' 'xattr.patch'
 	'touchscreen_multitouch_fixes1.patch' 'touchscreen_multitouch_fixes2.patch'
-	'wifi.patch'
         'multitouch.patch'
         'change-default-console-loglevel.patch'
         # the main kernel config files
@@ -32,9 +31,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
 )
 
-sha256sums=('36464aec4fb32ed192252645819abb55ceb21eef17b3f7210b4a673e7486a268'
+sha256sums=('48660806dd32fb8dcbcf5932291bf6cc7d29240070372230871e0f56fea81341'
             'SKIP'
-            '90dfb1397a12d39894265fdb092ca87037cc9f4d3f8417ca45e731d6b79b1ba1'
+            '14473bfbf91aae9a998d96267a3b575e3eae9f9dcbb9caef1ba0f0a5b5109442'
             'SKIP'
             '242d32d0fe819852e74d93b8a044cf24a40a9474d6f00ca93a19aa98298dcefa'
             '51f91681b708149fe91e565f5c40811477428e2aa86f8726a20e0e7c55c5407c'
@@ -46,7 +45,6 @@ sha256sums=('36464aec4fb32ed192252645819abb55ceb21eef17b3f7210b4a673e7486a268'
             '4633ae19b9a9871a3cfffba98ec7c3cd240f64bef8a0eebcf1212219c80972fd'
             'cc78e8844d9ec4bd29cce392a3e4683061646e1ad7c100c4958a5cadabb25b52'
             '34b4e00ffcf9efc43ab47444d14febb94432d340d0f1d5bcd56153879d1be113'
-            '52e7c895aeb505bc8d3b5321a346fcdbb749f8035cacc97a237c24c1f527adbc'
             '87bde6cc0f45629aa8406b364dfbbe2c59bce2621b451b6e504160f96cf9475f'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '0fcd0b22fe9ec58ba41b81b463f68d619b6898a5c405fb26c85237a183240371'
