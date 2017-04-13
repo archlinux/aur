@@ -1,6 +1,6 @@
 # Maintainer: Fabio Zanini <fabio.zanini _at_ stanford.edu>
 pkgname='python-pysam'
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Python interface for the SAM/BAM sequence alignment and mapping format"
 arch=('x86_64')
@@ -16,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/pysam-developers/pysam/archive/v${pkgver}.tar.gz")
-md5sums=('a117c060eed6ab5b5281c4d6aa502925')
+md5sums=('175644901ed5404348a85b4c026d53b2')
 
 package() {
   cd "$srcdir/pysam-$pkgver"
