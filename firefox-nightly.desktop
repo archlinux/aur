@@ -5,7 +5,7 @@ GenericName=Web Browser
 GenericName[fr]=Navigateur web
 Comment=Browse the Web
 Comment[fr]=Naviguer sur le Web
-Exec=firefox-nightly %u
+Exec=firefox-nightly --class=FirefoxNightly %u
 Icon=firefox-nightly
 Terminal=false
 Type=Application
@@ -18,9 +18,9 @@ Actions=new-window;new-private-window;
 [Desktop Action new-window]
 Name=New Window
 Name[fr]=Nouvelle fenêtre
-Exec=firefox-nightly --new-window %u
+Exec=firefox-nightly --class=FirefoxNightly --new-window %u
 
 [Desktop Action new-private-window]
 Name=New Private Window
 Name[fr]=Nouvelle fenêtre de navigation privée
-Exec=firefox-nightly --private-window %u
+Exec=firefox-nightly --class=FirefoxNightly --private-window %u

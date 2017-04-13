@@ -10,7 +10,7 @@ pkgname=${_pkgname}-${_lang}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 _version='55.0a1'
-pkgver=55.0a1.20170311
+pkgver=55.0a1.20170413
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -25,7 +25,7 @@ source=("${_pkgname}.desktop" 'vendor.js')
 source_i686=("${_src}-i686.tar.bz2"{,.asc})
 source_x86_64=("${_src}-x86_64.tar.bz2"{,.asc})
 sha512sums=(
-    '223764bb680f2f2a057c0586d9057a660f7cecd595eec6e181342d6a343c5d1e62f546309c6fd0bb9a806704d38c61570a99195ff5e90d55b4b3629ff13dddb3'
+    '08d0cc7c0c0803e324580081a6ee8486dee88c53cefdc153bc745cd869a3989e1c5a635ef97322fd609b801d447ce8d81923d34f67c011abefb7225dfe46f561'
     'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
 )
 sha512sums_i686=('SKIP' 'SKIP')
