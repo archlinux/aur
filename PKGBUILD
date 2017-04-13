@@ -4,7 +4,7 @@ _name=netbox
 pkgname=${_name}
 pkgver=1.9.5
 _realver="${pkgver}"
-pkgrel=4
+pkgrel=5
 pkgdesc="IP address management (IPAM) and data center infrastructure management (DCIM) tool."
 arch=('any')
 url="https://github.com/digitalocean/${_name}"
@@ -35,6 +35,7 @@ depends=('python'
          'python-py-gfm'
          'python-pytz'
          'python-psycopg2'
+				 'python-simplejson'
          'python-sqlparse'
          'python-xmltodict'
 				 'python-yaml')
