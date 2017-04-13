@@ -1,0 +1,19 @@
+pkgbase = python-coreschema
+	pkgdesc = Python CoreSchema
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/core-api/python-coreschema
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = https://github.com/core-api/python-coreschema/archive/0.0.4.tar.gz
+	sha256sums = 87ecf0528caff2dff0b21be97447ef2c4f3aebe32b1315ef97daccba6c68cf20
+
+pkgname = python-coreschema
+	depends = python-jinja
+
+pkgname = python2-coreschema
+	depends = python2-jinja
+
