@@ -1,0 +1,19 @@
+pkgbase = unreel
+	pkgdesc = A GUI to create Reveal presentations
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/linux-man/unreel
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = npm
+	depends = gconf
+	depends = libnotify
+	depends = libappindicator-gtk2
+	depends = libxtst
+	depends = nss
+	source = https://github.com/linux-man/unreel/archive/v1.0.2.tar.gz
+	md5sums = 2a7526dd39834b22c3b6b4cce80b5236
+
+pkgname = unreel
+
