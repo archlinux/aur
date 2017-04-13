@@ -53,6 +53,8 @@ package_anbox-git() {
   install -Dm 644 -t $pkgdir/usr/lib/systemd/system $srcdir/anbox-container-manager.service
   install -Dm 644 -t $pkgdir/usr/lib/systemd/user $srcdir/anbox-session-manager.service
   install -Dm 644 -t $pkgdir/usr/lib/udev/rules.d $srcdir/99-anbox.rules
+  install -Dm 644 -t $pkgdir/usr/share/applications $srcdir/anbox.desktop
+  install -Dm 644 snap/gui/icon.png $pkgdir/usr/share/pixmaps/anbox.png
 }
 
 package_anbox-modules-dkms-git() {
