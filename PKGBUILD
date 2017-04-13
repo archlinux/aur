@@ -1,9 +1,10 @@
-# Maintainer: ValHue <vhuelamo at gmail dot com>
+# Maintainer: end222 <pabloorduna98 at gmail dot com>
+# Ex-maintainer: ValHue <vhuelamo at gmail dot com>
 # https://github.com/ValHue/AUR-PKGBUILDs
 
 pkgname="nautilus-megasync"
-pkgver="2.9.2"
-pkgrel="3"
+pkgver="3.0.1"
+pkgrel="0"
 pkgdesc="Upload your files to your Mega account from nautilus."
 arch=('i686' 'x86_64')
 url="https://mega.co.nz/#sync"
