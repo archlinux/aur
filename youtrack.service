@@ -10,7 +10,7 @@ Group=youtrack
 PrivateTmp=yes
 EnvironmentFile=/etc/youtrack/youtrack.conf
 
-ExecStart=/usr/bin/java ${JOPTS} -Djava.awt.headless=true -Djetty.home=/tmp -Ddatabase.location=${DB_LOCATION} -jar /usr/share/youtrack/youtrack.jar ${YPORT}
+ExecStart=/usr/bin/java $JOPTS -Djava.awt.headless=true -Djetty.home=/tmp -Ddatabase.location=${DB_LOCATION} -jar /usr/share/youtrack/youtrack.jar ${YPORT}
 SuccessExitStatus=143
 
 [Install]
