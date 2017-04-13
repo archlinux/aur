@@ -13,7 +13,7 @@ depends=('libnautilus-extension' 'megasync>=2.9.8' 'qt4')
 provides=("${pkgname}")
 
 source=("https://mega.nz/linux/MEGAsync/Debian_8.0/${pkgname}_${pkgver}.orig.tar.gz")
-sha256sums=('acb98e38d8e7c8a2621b82e3672527b409152cd91560b081962232004b110035')
+sha256sums=('b20f65224bdba0d74076a1e5c3e69eec60c1d91c7058409992deaf2f87f120a0')
 
 install="${pkgname}.install"
 
