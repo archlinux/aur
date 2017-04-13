@@ -1,0 +1,19 @@
+pkgbase = harvard-linux-printer
+	pkgdesc = Connect to Harvard University's printer network from an Arch Linux machine.
+	pkgver = 15.30afe11
+	pkgrel = 1
+	url = https://github.com/djsavvy/harvard-linux-printer
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = coreutils
+	depends = cups
+	depends = samba
+	depends = smbclient
+	depends = bash
+	optdepends = gtk3-print-backends: to print from GTK3 applications
+	source = git://github.com/djsavvy/harvard-linux-printer#branch=aur-package
+	md5sums = SKIP
+
+pkgname = harvard-linux-printer
+
