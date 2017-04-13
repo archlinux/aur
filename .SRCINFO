@@ -1,7 +1,7 @@
 pkgbase = plasma-runners-translator
 	pkgdesc = Translates words and sentences into any language
 	pkgver = 0.6.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://kde-look.org/content/show.php/krunner-googletranslator?content=156498
 	arch = i686
 	arch = x86_64

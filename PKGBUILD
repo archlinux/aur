@@ -1,7 +1,7 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=plasma-runners-translator
 pkgver=0.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Translates words and sentences into any language"
 arch=('i686' 'x86_64')
 url="http://kde-look.org/content/show.php/krunner-googletranslator?content=156498"
@@ -22,11 +22,12 @@ noextract=()
 md5sums=('81e45bb924ad70eee0d0da0186faaf46')
 
 prepare() {
+  cd krunner-translator-${pkgver}
   mkdir -p build
 }
 
 build() {
-  cd build
+  cd krunner-translator-${pkgver}/build
   export QT_SELECT=5
   cmake ../ \
     -DCMAKE_INSTALL_PREFIX=`kf5-config --prefix` \
@@ -36,6 +37,6 @@ build() {
 }
 
 package() {
-  cd build
+  cd krunner-translator-${pkgver}/build
   make DESTDIR="${pkgdir}" install
 }
