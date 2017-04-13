@@ -1,0 +1,4 @@
+#!/bin/bash
+cd "/usr/lib/easotope/linux.gtk.x86_64/eclipse"
+./easotope
+exit 0

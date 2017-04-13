@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=easotope
+Exec=easotope
+Icon=easotope
+Terminal=false
+Type=Application
+Categories=Science;
+StartupNotify=False
+Comment=Making isotopes easy
