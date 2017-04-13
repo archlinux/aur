@@ -1,9 +1,10 @@
-# Maintainer: ajs124 < aur AT ajs124 DOT de >
+# Maintainer: hashhar <hashhar_dev AT outlook DOT com>
+# Contributor: ajs124 < aur AT ajs124 DOT de >
 # Contributor: Daenyth <Daenyth+arch@gmail.com>
 
 pkgname=fortune-mod-firefly
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fortune cookies from Joss Whedon's Firefly series."
 license=('custom:cc-sa-3.0')
 arch=('any')
