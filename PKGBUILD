@@ -3,10 +3,10 @@
 _pkgname=hsync
 pkgname=$_pkgname
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A filesystem hierarchy synchronizer"
 arch=("i686" "x86_64")
-url="http://ambrevar.bitbucket.org/$_pkgname/"
+url="http://ambrevar.bitbucket.io/hsync/"
 license=("MIT")
 makedepends=("go")
 source=("$pkgname-$pkgver.tar.bz2::https://bitbucket.org/ambrevar/$_pkgname/get/v$pkgver.tar.bz2")
