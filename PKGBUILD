@@ -1,14 +1,14 @@
 pkgbase=python-twitter3
 pkgname=('python-twitter3' 'python2-twitter3')
-pkgver=3.1
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="A Python wrapper around the Twitter API"
 url="https://github.com/bear/python-twitter"
 arch=(any)
 license=('Apache')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-requests-oauthlib' 'python2-requests-oauthlib' 'python2-future' 'python-future')
-source=("https://pypi.python.org/packages/96/69/53b87d2b717a669eb8f46d6e1d180d0a691f3d303631ca6be80f9d036a2a/python-twitter-3.1.tar.gz")
-md5sums=('2e00d057a22db298709f768a96cc88ef')
+source=("https://github.com/bear/python-twitter/archive/v${pkgver}.tar.gz")
+md5sums=('4af924ba532b778f63ba4dd22e2886ba')
 
 prepare() {
   cd "${srcdir}"/python-twitter-$pkgver
