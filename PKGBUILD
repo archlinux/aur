@@ -4,7 +4,7 @@
 
 pkgname="nautilus-megasync"
 pkgver="3.0.1"
-pkgrel="0"
+pkgrel="3"
 pkgdesc="Upload your files to your Mega account from nautilus."
 arch=('i686' 'x86_64')
 url="https://mega.co.nz/#sync"
