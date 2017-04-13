@@ -2,9 +2,9 @@
 
 pkgname=nnn
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Free, fast, friendly file browser"
-arch=("i386" "x86_64")
+arch=("i686" "x86_64")
 depends=("ncurses")
 url="https://github.com/jarun/nnn"
 license=('GPL3')
