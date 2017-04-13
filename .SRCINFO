@@ -6,6 +6,7 @@ pkgbase = groupme
 	arch = x86_64
 	license = MIT
 	depends = electron
+	depends = gconf
 	options = !docs
 	options = !emptydirs
 	source = https://github.com/dcrousso/GroupMe/releases/download/v1.1.1/GroupMe-linux-1.1.1.zip
