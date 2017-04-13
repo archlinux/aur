@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=emsdk
 pkgver=1.35
-pkgrel=3
+pkgrel=4
 pkgdesc='The Emscripten SDK'
 arch=('x86_64')
 url='https://kripken.github.io/emscripten-site/'
@@ -17,7 +17,7 @@ package()
     install --mode 755 --directory "$pkgdir/usr/bin"
     install --mode 755 emsdk.sh "$pkgdir/usr/bin/emsdk"
 
-    cd "$srcdir/${pkgname}_portable"
+    cd "$srcdir/${pkgname}-portable"
 
     install --mode 755 --directory "$pkgdir/usr/lib/$pkgname"
     install --mode 755 emsdk "$pkgdir/usr/lib/$pkgname"
