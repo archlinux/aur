@@ -3,7 +3,7 @@
 # Contributor: Teteros <teteros -at- opmbx -dot- org>
 
 pkgname=radium
-pkgver=4.6.8
+pkgver=4.6.9
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -38,7 +38,7 @@ source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
         "dont-empty-qt-library-paths.patch"
         "use-system-libxcb.patch"
         "use-system-vstsdk.patch")
-md5sums=('6c995f432524cd3de812a3309f66e8f0'
+md5sums=('e792cfa1547dbd912a80b6248d1e4cf7'
          'd63cea387564fa21dee775e764206a45'
          'd798d5655e2899dc1b54f797d9b2bda3'
          'd068d4bc99360cd4ec933c57ab9f5159')
@@ -49,7 +49,7 @@ prepare() {
     msg2 "Fixing QT_QPA_PLATFORM_PLUGIN_PATH problem"
     patch -Nsp1 < "${srcdir}/dont-empty-qt-library-paths.patch"
 
-    msg2 "Switching to systemd-wide libxcb"
+    msg2 "Switching to system-wide libxcb"
     patch -Nsp1 < "${srcdir}/use-system-libxcb.patch"
 
     # Use the VST SDK from steinberg-vst36, so the user doesn't have to
