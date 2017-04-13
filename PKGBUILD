@@ -8,12 +8,12 @@ arch=('x86_64')
 url="https://launchpad.net/process-cpp"
 license=('LGPL3')
 depends=('boost-libs' 'gcc-libs')
-makedepends=('cmake')
+makedepends=('cmake' 'doxygen' 'boost' 'properties-cpp')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/process-cpp_3.0.1.orig.tar.gz")
 md5sums=('95e187de74037b70b105679f85047c12')
 
 prepare() {
-  cd "$srcdir/${pkgname}-${_pkgver}"
+  cd "$srcdir/${pkgname}-${pkgver}"
 
   # Don't build tests
   truncate -s 0 tests/CMakeLists.txt
