@@ -5,7 +5,7 @@ pkgbase=linux-surfacepro3-rt
 _srcname=linux-4.9.20
 pkgver=${_srcname#linux-}
 _rtver=rt16
-pkgrel=2.27
+pkgrel=2.3
 arch=('i686' 'x86_64')
 url="https://github.com/alyptik/linux-surfacepro3-rt"
 license=('GPL2')
@@ -95,9 +95,6 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # This patch disables some wireless optimisations which cause trouble on Surface devices.
-  patch -p1 -i "${srcdir}/wifi.patch"
 
   # These patches work around buggy hardware implementations
   # in the surface pro 3 touchscreen module.

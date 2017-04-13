@@ -1,6 +1,6 @@
 pkgbase = linux-surfacepro3-rt
 	pkgver = 4.9.20
-	pkgrel = 2.27
+	pkgrel = 2.3
 	url = https://github.com/alyptik/linux-surfacepro3-rt
 	arch = i686
 	arch = x86_64
