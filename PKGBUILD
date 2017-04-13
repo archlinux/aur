@@ -2,7 +2,7 @@
 
 pkgname=wlc-wall-injector-git
 _gitname=orbment-wall
-pkgver=r37.b998b46
+pkgver=r42.389c741
 pkgrel=1
 pkgdesc="A hack that injects wayland-wall into wlc based compositors."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('wayland-wall' 'wayland-protocols' 'wlc')
 makedepends=('git')
 provides=('orbment-wall-git' 'wlc-wall-injector')
 conflicts=('orbment-wall')
-source=("git+https://github.com/wayland-wall/orbment-wall.git#branch=wip/injector")
+source=("git+https://github.com/wayland-wall/orbment-wall.git")
 md5sums=('SKIP')
 
 pkgver() {
