@@ -3,7 +3,7 @@
 pkgbase = aurutils
 	pkgdesc = helper tools for the arch user repository
 	pkgver = 1.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AladW/aurutils
 	arch = any
 	license = ISC

@@ -1,7 +1,7 @@
 pkgname=aurutils
 pkgver=1.5.3
-_commit=01cbab783489eefc1859287bd0cb898de40c8100
-pkgrel=1
+_commit=01cbab783489eefc1859287bd0cb898de40c8100 # 1.5.3
+pkgrel=2
 pkgdesc='helper tools for the arch user repository'
 arch=('any')
 url=https://github.com/AladW/aurutils
@@ -17,11 +17,6 @@ optdepends=('devtools: systemd-nspawn support'
             'repose: repo-add alternative')
 source=("$pkgname-$pkgver::git+$url#commit=$_commit")
 sha256sums=('SKIP')
-
-check() {
-  cd "$pkgname-$pkgver"
-  make check
-}
 
 package() {
   cd "$pkgname-$pkgver"
