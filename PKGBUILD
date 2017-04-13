@@ -3,7 +3,7 @@
 pkgname=anbox-modules-dkms
 pkgver=4
 _extramodules=extramodules-4.10-ARCH
-pkgrel=1
+pkgrel=2
 pkgdesc="Android kernel driver (binder, ashmem) in DKMS format"
 arch=('i686' 'x86_64')
 license=('GPLv3')
