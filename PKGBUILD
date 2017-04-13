@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://code.launchpad.net/dbus-cpp"
 license=('LGPL3')
 depends=('process-cpp' 'dbus' 'libxml2')
-makedepends=('cmake' 'gmock' 'properties-cpp')
+makedepends=('cmake' 'gmock' 'properties-cpp' 'boost')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/dbus-cpp_5.0.0+16.10.20160809.orig.tar.gz")
 md5sums=('SKIP')
 
