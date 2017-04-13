@@ -5,7 +5,7 @@
 # AUR Category: devel
 
 pkgname=tortoisehg
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="Graphical tools for Mercurial"
 url="https://tortoisehg.bitbucket.io"
@@ -30,4 +30,4 @@ package() {
 	rm "${pkgdir}/usr/lib/python2.7/site-packages/hgext3rd/__init__.pyc"
 }
 
-sha256sums=('4f483b091d8a67e7dd3a044893a5a6a9e59b6d3a26a9ea679131920ecb2dde91')
+sha256sums=('1e1dbee323acd9046cf940d74f909f815fd07191b64b9ed1576b973af23d7feb')
