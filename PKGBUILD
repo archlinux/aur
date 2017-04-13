@@ -1,7 +1,7 @@
 # Maintainer: kusakata <shohei atmark kusakata period com>
 
 pkgname=dm-writeboost-tools
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Nice tools for dm-writeboost"
 arch=('i686' 'x86_64')
@@ -26,4 +26,4 @@ package() {
 	install -Dm755 target/release/wbstatus "${pkgdir}/usr/bin/wbstatus"
 }
 
-md5sums=('eddcb1757a64100c2289b1e8f9c7e564')
+md5sums=('1371779d3012e24d2655d61892e28b29')
