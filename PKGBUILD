@@ -3,7 +3,7 @@
 pkgname=rhythmbox-plugin-tray-icon-git
 _pkgname=rhythmbox-tray-icon
 pkgver=93.38275a7
-pkgrel=1
+pkgrel=2
 pkgdesc="Tray icon for Rhythmbox 2.9+ with rating feature"
 arch=("any")
 url="https://github.com/mendhak/rhythmbox-tray-icon"
@@ -18,8 +18,8 @@ pkgver() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  install -Dm644 tray_icon.plugin "${pkgdir}/usr/share/rhythmbox/plugins/${_pkgname}/tray_icon.plugin"
-  install -Dm644 tray_icon.py "${pkgdir}/usr/share/rhythmbox/plugins/${_pkgname}/tray_icon.py"
-  install -Dm644 tray_playing.png "${pkgdir}/usr/share/rhythmbox/plugins/${_pkgname}/tray_playing.png"
-  install -Dm644 tray_stopped.png "${pkgdir}/usr/share/rhythmbox/plugins/${_pkgname}/tray_stopped.png"
+  install -Dm644 tray_icon.plugin "${pkgdir}/usr/lib/rhythmbox/plugins/${_pkgname}/tray_icon.plugin"
+  install -Dm644 tray_icon.py "${pkgdir}/usr/lib/rhythmbox/plugins/${_pkgname}/tray_icon.py"
+  install -Dm644 tray_playing.png "${pkgdir}/usr/lib/rhythmbox/plugins/${_pkgname}/tray_playing.png"
+  install -Dm644 tray_stopped.png "${pkgdir}/usr/lib/rhythmbox/plugins/${_pkgname}/tray_stopped.png"
 }
