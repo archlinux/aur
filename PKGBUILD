@@ -12,7 +12,7 @@
 # Upstream URL: https://github.com/atom/atom
 
 pkgname=atom-editor-beta-bin-mirror
-_pkgver=1.16.0
+_pkgver=1.17.0
 _pkgrel=0
 pkgver=${_pkgver}.beta${_pkgrel}
 pkgver() {
@@ -32,7 +32,7 @@ optdepends=('gvfs')
 conflicts=('atom-editor-beta', 'atom-editor-beta-bin')
 install=$pkgname.install
 
-md5sums=('a214bac693d1031e64f4de2606a2a530' 
+md5sums=('238ba7a36500d31875c3a53ae73d742a' 
          '501719c940fcd9c3d82fb8edebdaae09'
          'b05aef80afa76162ff9a1992cef3f0f9')
 source=("atom-amd64-$(get_version).deb::https://npm.taobao.org/mirrors/atom/$(get_version)/atom-amd64.deb"
