@@ -1,7 +1,7 @@
 # Maintainer: Dave Reisner <d@falconindy.com>
 
 pkgname=asp-git
-pkgver=r63.3229a0f
+pkgver=1
 pkgrel=1
 pkgdesc="Arch Linux build source file management (git version)"
 arch=('any')
@@ -17,8 +17,7 @@ md5sums=('SKIP')
 pkgver() {
   cd 'asp'
 
-  # change this once there's a tag
-  printf 'r%s.%s\n' "$(git rev-list HEAD | wc -l)" "$(git describe --always)"
+  git describe | sed 's/^v//'
 }
 
 build() {
