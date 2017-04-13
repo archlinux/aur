@@ -1,0 +1,51 @@
+# Maintainer: Edgar Fournival <contact at edgar-fournival dot fr>
+# Contributor: jiuren <qiuwei1987@gmail.com>
+# Contributor: Benoit Favre <benoit.favre@lif.univ-mrs.fr>
+# Contributor: Kristof Marussy <kris7topher@gmail.com>
+pkgname=liblinear-multicore
+pkgver=2.11_1
+pkgrel=1
+pkgdesc="A Library for Large Linear Classification (multi-core)"
+arch=('i686' 'x86_64')
+url="http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/multicore-liblinear/"
+license=('BSD')
+groups=()
+depends=('coreutils')
+makedepends=()
+optdepends=(
+'python: bindings for latest python version'
+'python2: bindings for python 2'
+'gcc-libs')
+provides=('liblinear')
+conflicts=('liblinear')
+replaces=()
+backup=()
+options=()
+install=
+source=("https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/multicore-liblinear/$pkgname-${pkgver//_/-}.zip")
+noextract=()
+md5sums=('76def2413f05ef2de6e041b097ee2976')
+
+build() {
+    cd "$srcdir/$pkgname-${pkgver//_/-}"
+    make lib all
+}
+
+package() {
+    cd "$srcdir/$pkgname-${pkgver//_/-}"
+    install -D -m755 train $pkgdir/usr/bin/liblinear-train
+    install -D -m755 predict $pkgdir/usr/bin/liblinear-predict
+    install -D -m644 liblinear.so.3 $pkgdir/usr/lib/liblinear.so.3
+    install -D -m644 linear.h $pkgdir/usr/include/linear.h
+    ln -s liblinear.so.3 $pkgdir/usr/lib/liblinear.so
+
+    cd python
+    sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' liblinear.py
+    sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' liblinearutil.py
+    install -D -m644 liblinear.py $pkgdir/usr/lib/python2.7/liblinear.py
+    install -D -m644 liblinearutil.py $pkgdir/usr/lib/python2.7/liblinearutil.py
+    sed -i 's_#!/usr/bin/env python2_#!/usr/bin/env python3_' liblinear.py
+    sed -i 's_#!/usr/bin/env python2_#!/usr/bin/env python3_' liblinearutil.py
+    install -D -m644 liblinear.py $pkgdir/usr/lib/python3.4/liblinear.py
+    install -D -m644 liblinearutil.py $pkgdir/usr/lib/python3.4/liblinearutil.py
+}

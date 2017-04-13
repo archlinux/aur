@@ -1,0 +1,19 @@
+pkgbase = liblinear-multicore
+	pkgdesc = A Library for Large Linear Classification (multi-core)
+	pkgver = 2.11_1
+	pkgrel = 1
+	url = http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/multicore-liblinear/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = coreutils
+	optdepends = python: bindings for latest python version
+	optdepends = python2: bindings for python 2
+	optdepends = gcc-libs
+	provides = liblinear
+	conflicts = liblinear
+	source = https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/multicore-liblinear/liblinear-multicore-2.11-1.zip
+	md5sums = 76def2413f05ef2de6e041b097ee2976
+
+pkgname = liblinear-multicore
+
