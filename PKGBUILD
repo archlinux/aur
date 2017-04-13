@@ -8,7 +8,7 @@ pkgdesc="The client tools for the OpenShift platform that allow for application 
 arch=('any')
 url="https://github.com/openshift/rhc"
 license=('Apache')
-depends=('ruby' 'ruby-archive-tar-minitar' 'ruby-commander-4.2.1' 'ruby-highline-1.6' 'ruby-httpclient-2.7'
+depends=('ruby' 'ruby-archive-tar-minitar' 'ruby-commander-4.2.1' 'ruby-highline-1.6' 'ruby-httpclient-2.6'
          'ruby-net-scp' 'ruby-net-ssh' 'ruby-net-ssh-multi' 'ruby-open4')
 source=(http://rubygems.org/downloads/$pkgname-$pkgver.gem)
 noextract=($pkgname-$pkgver.gem)
