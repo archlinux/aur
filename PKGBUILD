@@ -5,7 +5,7 @@
 
 pkgname=jhbuild
 pkgver=3.15.92+1081+ge10b7222
-pkgrel=2
+pkgrel=3
 pkgdesc='Tool to build the whole GNOME desktop from sources'
 arch=('any')
 url='https://wiki.gnome.org/Projects/Jhbuild'
@@ -19,9 +19,9 @@ optdepends=('subversion: fetch subversion repositories'
             'darcs: fetch Darcs repositories')
 _commit=e10b7222
 source=("$pkgname-$_commit::git+https://git.gnome.org/browse/jhbuild#commit=$_commit"
-        "module_autogenargs.patch")
+        "module_args.patch")
 sha256sums=('SKIP'
-            '273d53cb976642692eb9ed8536a02b0fe677c47662bbef8b50d1a8bcb292665f')
+            '587d389d3cb95d2404c9d3727f42f651ef5ffbec70736657a1a3cd5ebf012853')
 
 pkgver() {
   cd $pkgname-$_commit
@@ -31,7 +31,7 @@ pkgver() {
 prepare() {
   cd $pkgname-$_commit
   msg2 "Set parameters known to be required in Arch Linux"
-  patch -p1 -i "$srcdir/module_autogenargs.patch"
+  patch -p1 -i "$srcdir/module_args.patch"
   
     # Set proper python binary according to the version
     # (see jhbuild commit id=ffd00eea72bfdfac02846a46559904bd8fa09d57)

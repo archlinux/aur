@@ -1,0 +1,30 @@
+Arguments needed to smoothly build modules without needing specific user config
+
+Some of the bug reports related to this patch:
+* itstool: https://github.com/itstool/itstool/pull/3
+* gnome-software: https://bugzilla.gnome.org/show_bug.cgi?id=781198
+* gstreamer: https://bugzilla.gnome.org/show_bug.cgi?id=781236
+
+diff --git a/jhbuild/defaults.jhbuildrc b/jhbuild/defaults.jhbuildrc
+index f6e01308..cf583107 100644
+--- a/jhbuild/defaults.jhbuildrc
++++ b/jhbuild/defaults.jhbuildrc
+@@ -90,9 +90,16 @@ repos = {}
+ cvsroots = {}
+ svnroots = {}
+ branches = {}
+-module_autogenargs = {}
++module_autogenargs = {
++    'itstool': 'PYTHON=/usr/bin/python2',
++    'telepathy-mission-control': 'PYTHON=/usr/bin/python2',
++    'WebKit': 'PYTHON=/usr/bin/python2',
++}
+ module_cmakeargs = {}
+-module_mesonargs = {}
++module_mesonargs = {
++     'gnome-software': '-Denable-rpm=false -Denable-ostree=false'
++     'gstreamer': '-Ddisable_gtkdoc=true'
++}
+ module_makeargs = {}
+ module_extra_env = {}
+ module_makecheck = {}
