@@ -1,0 +1,22 @@
+[Unit]
+Description=Factorio Server Init Script
+After=network.target
+
+[Service]
+User=factorio
+Group=games
+
+# We will store a pid file in your ${WRITE_DIR}/server.pid
+# Adjust if you change the write dir of your server
+PIDFile=/var/lib/factorio/.factorio/server.pid
+
+Type=forking
+TimeoutStartSec=20
+ExecStart=/usr/bin/factorio-init start
+TimeoutStopSec=20
+ExecStop=/usr/bin/factorio-init stop
+RestartSec=20
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

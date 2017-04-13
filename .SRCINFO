@@ -1,0 +1,19 @@
+pkgbase = factorio-init
+	pkgdesc = A simple factorio init script for linux
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/Bisa/factorio-init
+	arch = any
+	license = MIT
+	depends = bash
+	depends = factorio-headless
+	backup = etc/conf.d/factorio-init
+	source = https://github.com/Bisa/factorio-init/archive/2.5.0.tar.gz
+	source = factorio-init.service
+	source = factorio-init.conf
+	sha256sums = a1d90b5b1804a932e258ccf43dfd7cd7ffcd44ae8b83d87203187f0469d17789
+	sha256sums = 876eba92ba84dfc473fa23915525c4123cebfec474151704c515aae18ae81dfb
+	sha256sums = 0dd4fd75cf3448451a1b55bdf6bc38a4b9654a8d125cac391b180f70732a62e0
+
+pkgname = factorio-init
+
