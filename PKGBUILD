@@ -9,7 +9,7 @@ depends=("ncurses")
 url="https://github.com/jarun/nnn"
 license=('GPL3')
 source=("https://github.com/jarun/nnn/archive/v${pkgver//_/-}.tar.gz")
-md5sums=('b996d7db301d62fdb9610f058efa9f99')
+md5sums=('9434e449f284c418039fbd82270a1e83')
 
 package() {
   make -C "${pkgname}-$pkgver" DESTDIR="${pkgdir}" PREFIX="/usr" install
