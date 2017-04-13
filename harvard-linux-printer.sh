@@ -63,7 +63,7 @@ echo "Connected to HUIT-PPC-Print1."
 				sudo lpadmin -p $x -E -v smb://$papercut_username:$papercut_password@FAS_DOMAIN/HUIT-PPC-Print1.fas.harvard.edu/$x
 		fi
 	done
-} &> /dev/null
+} &> ./harvard-linux-printer.log
 
 echo "Added printers from HUIT-PPC-Print1."
 
@@ -83,13 +83,13 @@ echo "Connected to HUIT-PPC-Print2."
 				sudo lpadmin -p $x -E -v smb://$papercut_username:$papercut_password@FAS_DOMAIN/HUIT-PPC-Print2.fas.harvard.edu/$x
 		fi
 	done
-} &> /dev/null
+} &> ./harvard-linux-printer.log
 
 echo "Added printers from HUIT-PPC-Print2."
 
 printf "\n"
 
+rm ./harvard-linux-printer.log
+
 echo "Done. Enjoy!"
 echo "Please report any bugs to https://github.com/djsavvy/harvard-linux-printer/issues"
-
-
