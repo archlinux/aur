@@ -8,8 +8,12 @@ arch=('x86_64')
 url="http://anbox.io/"
 license=('GPL3')
 makedepends=('cmake' 'git' 'glm' 'dbus-cpp' 'lxc' 'sdl2' 'protobuf')
-source=("git+https://github.com/anbox/anbox.git")
-md5sums=('SKIP')
+source=("git+https://github.com/anbox/anbox.git"
+	'anbox-container-manager.service'
+	'anbox-session-manager.service')
+sha256sums=('SKIP'
+            '49aa34a582de04540a01754976db89f2c05d6170f7192fec0ff14e23d14320d2'
+            '1f22dbb5a3ca6925bbf62899cd0f0bbaa0b77c879adcdd12ff9d43adfa61b1d8')
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
@@ -38,6 +42,9 @@ package_anbox-git() {
 
   cd "$srcdir/${_pkgname}"
   make -C build DESTDIR="$pkgdir/" install
+
+  install -Dm 644 -t $pkgdir/usr/lib/systemd/system $srcdir/anbox-container-manager.service
+  install -Dm 644 -t $pkgdir/usr/lib/systemd/user $srcdir/anbox-session-manager.service
 }
 
 package_anbox-modules-dkms-git() {
@@ -47,6 +54,7 @@ package_anbox-modules-dkms-git() {
   cd "$srcdir/${_pkgname}"
   modules=(ashmem binder)
   for mod in "${modules[@]}"; do
+    install -dm 755 $pkgdir/usr/src
     cp -a kernel/$mod $pkgdir/usr/src/anbox-modules-$mod-$pkgver
   done;
 }
