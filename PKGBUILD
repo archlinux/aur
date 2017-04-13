@@ -1,6 +1,6 @@
 pkgname=i8kutils
 pkgver=1.43
-pkgrel=0
+pkgrel=1
 pkgdesc="Fan control for Dell laptops"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/i8kutils"
@@ -35,5 +35,7 @@ package() {
   install -D -m755 i8kctl i8kfan i8kmon "$pkgdir/usr/bin"
 
   install -D -m644 i8kmon.conf "$pkgdir/etc/i8kutils/i8kmon.conf"
+  install -D -m644 dell-smm-hwmon.conf "$pkgdir/etc/modules-load.d/dell-smm-hwmon.conf"
   install -D -m644 debian/i8kmon.service "$pkgdir/usr/lib/systemd/system/i8kmon.service"
+  # rmmod dell-smm-hwmon && modprobe dell-smm-hwmon
 }
