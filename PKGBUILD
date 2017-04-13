@@ -2,10 +2,10 @@
 
 pkgname=salome-gui
 pkgver=7.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - GUI Module"
 url="http://www.salome-platform.org"
-depends=("salome-kernel>=${pkgver}" "salome-kernel<${pkgver:0:2}$((${pkgver:2:1}+1)).0" "qt4" "python2-pyqt4" "opencascade>=6.9.0" "qwt" "paraview-salome=5.0.1p1" "sip>=4.19.0" "mesa>=17.0.0")
+depends=("salome-kernel>=${pkgver}" "salome-kernel<${pkgver:0:2}$((${pkgver:2:1}+1)).0" "qt4" "python2-pyqt4" "opencascade>=6.9.0" "qwt" "paraview-salome=5.0.1p1" "sip>=4.19.0")
 makedepends=('doxygen' 'swig2' 'boost' 'optipng' 'python2-sphinx')
 arch=('i686' 'x86_64')
 conflicts=()
@@ -77,9 +77,6 @@ build() {
   # debug options
   cmake_options+=" -DCMAKE_VERBOSE_MAKEFILE:BOOL=OFF"
   cmake_options+=" -DSALOME_CMAKE_DEBUG:BOOL=OFF"
-
-  # opengl: location of libGL.so
-  cmake_options+=" -DOPENGL_gl_LIBRARY=/usr/lib/mesa/libGL.so"
 
   # python2
   cmake_options+=" -DPYTHON_EXECUTABLE=/usr/bin/python2"
