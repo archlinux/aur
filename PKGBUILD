@@ -4,13 +4,13 @@
 _pkgname=radeontop
 pkgname=$_pkgname-git
 epoch=1
-pkgver=0.8.r20.g976cae0
+pkgver=1.0.r0.gc0abadf
 pkgrel=2
 pkgdesc='Radeon cards monitoring utility'
 arch=('i686' 'x86_64')
 url='https://github.com/clbr/radeontop'
 license=('GPL3')
-depends=('ncurses')
+depends=('ncurses' 'libdrm' 'libxcb')
 makedepends=('git')
 provides=('radeontop')
 conflicts=('radeontop')
