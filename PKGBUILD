@@ -1,8 +1,8 @@
 # Maintainer: Chris Trotman <chris+aur@trotman.io>
 
 pkgname=terraform
-pkgver=0.9.2
-pkgrel=3
+pkgver=0.9.3
+pkgrel=1
 pkgdesc="Tool for building, changing, and versioning infrastructure safely and efficiently"
 url='http://www.terraform.io/'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('go' 'godep' 'git' 'mercurial')
 conflicts=('terraform-bin')
 _gourl=github.com/hashicorp
 source=("https://github.com/hashicorp/terraform/archive/v${pkgver}.tar.gz")
-sha256sums=('a5e3924bf72899149b572409c82da4b7d71ac556fd460790577bdf50f27709a4')
+sha256sums=('de57ba63f0314ba4e21818f048551a22afe61662bd72b3c81b01a47284fcaf3d')
 
 prepare() {
   mkdir -p "${srcdir}/src/${_gourl}"
