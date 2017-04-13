@@ -3,7 +3,7 @@
 
 pkgname=firefox-beta-bin
 _pkgname=firefox-beta
-pkgver=53.0rc3
+pkgver=53.0rc5
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -27,8 +27,8 @@ if [[ $_build = ? ]]; then
   source_x86_64=("https://ftp.mozilla.org/pub/firefox/candidates/$_major-candidates/build$_build/linux-x86_64/en-US/firefox-$_major.tar.bz2")
 fi
 sha512sums=('865c832fe683f4ebeca7704058d56f834ec5d9d56391d31912cf4a928c56a268cf25064965cf8bbf935a45f638d0a8b24ffa744a47934e5ed8b8bb78883db4c0')
-sha512sums_i686=('8403271647f1dc7effe07a53903dfffe8c8b1e6153ca24995594c86bf84ecf8d1a0c20402f1240d6c7c818ed5c072cee5e18f1d32a303a6b0dd82675351fef9e')
-sha512sums_x86_64=('53fb02335b38965c67f4b05fe6350e2704768a51c0aadc62e7dc03ad5d8a7b202774263f8abff0632c393cef78cda61589ebb0b70cc5cbe8eda46e5fd1c14894')
+sha512sums_i686=('aabe04400b4331c49859ea43f6208c3cc2187592204276d21ee2a314be128411a0c8332cbb29f8438a5383f9d1cc9906ace70afc1de80581595d59252d9695be')
+sha512sums_x86_64=('b4ef64a26e4ea40e30a1aac426cb81a9621c18dc3e90ed75f611568c6a9debf4793ba0fb6d9eaec9595a738f8335a9a6af9e3bdf569e8fdfe85bfb03bb2b4010')
 
 package() {
   # Create directories
