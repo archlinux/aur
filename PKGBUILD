@@ -1,7 +1,7 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=plasma-runners-translator
 pkgver=0.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Translates words and sentences into any language"
 arch=('i686' 'x86_64')
 url="http://kde-look.org/content/show.php/krunner-googletranslator?content=156498"
@@ -19,7 +19,7 @@ install=()
 changelog=()
 source=('https://github.com/naraesk/krunner-translator/archive/0.6.2.zip')
 noextract=()
-md5sums=('e46938ae0aaa01afc86ec5585503e17b')
+md5sums=('81e45bb924ad70eee0d0da0186faaf46')
 
 prepare() {
   mkdir -p build
