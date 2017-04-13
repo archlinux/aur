@@ -3,12 +3,13 @@
 
 pkgname=factorio-experimental
 pkgver=0.14.22
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D game about building and maintaining factories (experimental branch)"
 arch=('i686' 'x86_64')
 url="http://www.factorio.com/"
 license=('custom: commercial')
 conflicts=('factorio' 'factorio-demo')
+provides=("factorio=$pkgver")
 depends=('libxcursor' 'gcc-libs' 'alsa-lib' 'libxrandr' 'libxinerama' 'mesa')
 md5sums=('5cacd198a3156c157a482aeab368e9a1'
          '22fce67d66c080fa5c89ab437b3d8724')
