@@ -4,7 +4,7 @@ _name=netbox
 pkgname=${_name}
 pkgver=1.9.5
 _realver="${pkgver}"
-pkgrel=6
+pkgrel=7
 pkgdesc="IP address management (IPAM) and data center infrastructure management (DCIM) tool."
 arch=('any')
 url="https://github.com/digitalocean/${_name}"
@@ -46,20 +46,12 @@ install="${_name}.install"
 source=("${url}/archive/v${_realver}.tar.gz"
         "${_name}-system.service"
         "${_name}.tmpfile"
-				"debug_toolbar_middleware.patch"
 				"gunicorn_config.py")
 sha256sums=('dcaba7f99f910d6a005ad20671adca1758e5731488b7dd27fe603e1ee289330c'
             'dc83de37ff9151de3d309fd43c6eff3b30886882012b81fd3ff2f3a5a706bea6'
             '1028bac96ddcd18c10646dff26027b4891fcab4381436e2b6ea3302887a5586f'
-            '2d6d55cad836eca187a7dfe40227f994e9b2f565e71fd39e296bc8bb73bf259a'
             '7a5ae05cad7ec14193a43ef080776b5525c80b6258762a6cb6a108db83861ff9')
 backup=('etc/netbox/gunicorn_config.py' 'etc/netbox/configuration.py')
-
-prepare() {
-	cd "${srcdir}/${_name}-${_realver}"
-
-	patch -p0 -i "${srcdir}"/debug_toolbar_middleware.patch
-}
 
 package() {
 	mkdir -p "${pkgdir}/opt/${_name}"
