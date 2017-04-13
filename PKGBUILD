@@ -1,6 +1,6 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail.com>
 pkgname=flyby-git
-pkgver=r533.964d473
+pkgver=r645.37d1d79
 pkgrel=1
 pkgdesc="A satellite tracking program"
 arch=('i686' 'x86_64' 'arm')
@@ -28,9 +28,6 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir" install
-  mkdir -p $pkgdir/usr/bin
-  cp utils/update-tle $pkgdir/usr/bin/ # Bash needed for this script
-  cp utils/fetch_satnogs_db.py $pkgdir/usr/bin/
 }
 
 # vim:set ts=2 sw=2 et:
