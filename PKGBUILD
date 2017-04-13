@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='http://blucat.sourceforge.net/blucat/'
 license=('GPL2')
 depends=(java-runtime bluez bluez-utils bluez-libs java-commons-io)
-makedepends=(java-environment-common)
+makedepends=(java-environment-common apache-ant)
 provides=(blucat)
 
 source=(
