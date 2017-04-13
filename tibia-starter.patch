@@ -1,12 +1,12 @@
---- a/tibia-11.20.4789/start-tibia.sh
-+++ b/tibia-11.20.4789/start-tibia.sh
+--- a/tibia-11.21.4812/start-tibia.sh
++++ b/tibia-11.21.4812/start-tibia.sh
 @@ -3,8 +3,6 @@
  # Adapts library load path to include Qt libraries found in the root folder of the client's binary file.
  # client shouldn't be called directly to prevent needed libraries not being found.
- 
+
 -SCRIPT=$(readlink -f "$0")
 -PATH=$(dirname "$SCRIPT")
 -BIN_PATH="$PATH/bin"
 +BIN_PATH="/opt/Tibia/bin"
- 
+
  LD_LIBRARY_PATH="$BIN_PATH" exec "$BIN_PATH/client"
