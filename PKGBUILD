@@ -2,7 +2,7 @@
 
 pkgbase='protobuf-mir'
 pkgname=('protobuf-mir' 'python2-protobuf-mir' 'python-protobuf-mir')
-pkgver=3.0.2
+pkgver=3.0.0
 _gtestver=1.8.0
 pkgrel=1
 pkgdesc="Protocol Buffers - Google's data interchange format"
@@ -12,12 +12,19 @@ license=('BSD')
 depends=('gcc-libs' 'zlib')
 makedepends=('unzip' 'python-setuptools' 'python2-setuptools' 'clang')
 source=("$pkgbase-$pkgver.tgz::https://github.com/google/protobuf/archive/v${pkgver}.tar.gz"
-        "gtest-${_gtestver}.tar.gz::https://github.com/google/googletest/archive/release-${_gtestver}.tar.gz")
-md5sums=('845b39e4b7681a2ddfd8c7f528299fbb'
-         '16877098823401d1bf2ed7891d7dce36')
+        "gtest-${_gtestver}.tar.gz::https://github.com/google/googletest/archive/release-${_gtestver}.tar.gz"
+        "https://raw.githubusercontent.com/kikadf/patches/master/protobuf-mir/Hide-unnecessary-exported-library-symbols.patch"
+        "https://raw.githubusercontent.com/kikadf/patches/master/protobuf-mir/Restore-New-Callback-into-google-protobuf-namespace.patch")
+md5sums=('d4f6ca65aadc6310b3872ee421e79fa6'
+         '16877098823401d1bf2ed7891d7dce36'
+         '17f3b316fda201b0857d1e68e703910a'
+         'b39a208f8b3104f7d040c6b322a42cc9')
 
 prepare() {
   cd "protobuf-$pkgver"
+
+  patch -p1 -i ../Hide-unnecessary-exported-library-symbols.patch
+  patch -p1 -i ../Restore-New-Callback-into-google-protobuf-namespace.patch
 
   rm -rf gmock && cp -r "$srcdir/googletest-release-${_gtestver}/googlemock" gmock
   rm -rf googletest && cp -r "$srcdir/googletest-release-${_gtestver}/googletest" googletest
