@@ -4,12 +4,13 @@
 
 pkgname=factorio-headless-experimental
 pkgver=0.14.22
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D game about building and maintaining factories - Server version (experimental branch)"
 arch=('x86_64')
 url="http://www.factorio.com/"
 license=('custom: commercial')
 conflicts=('factorio' 'factorio-demo' 'factorio-headless' 'factorio-experimental')
+provides=("factorio-headless=$pkgver")
 install=factorio-headless.install
 options=(!strip)
 backup=(etc/conf.d/factorio
