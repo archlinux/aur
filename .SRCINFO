@@ -1,0 +1,17 @@
+pkgbase = python-itypes
+	pkgdesc = Basic immutable container types for Python.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/tomchristie/itypes
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = https://github.com/tomchristie/itypes/archive/1.1.0.tar.gz
+	sha256sums = 7b5ff2cb79ad42712d0c087b538fb11858f0e7e6f9d5a39475655ce5192a73c8
+
+pkgname = python-itypes
+
+pkgname = python2-itypes
+
