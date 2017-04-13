@@ -1,8 +1,8 @@
 pkgbase = php53
-	pkgdesc = An HTML-embedded scripting language - Legacy 5.3 version
+	pkgdesc = A general-purpose scripting language that is especially suited to web development
 	pkgver = 5.3.29
-	pkgrel = 4
-	url = http://www.php.net
+	pkgrel = 6
+	url = http://php.net
 	arch = i686
 	arch = x86_64
 	license = PHP
@@ -10,7 +10,7 @@ pkgbase = php53
 	makedepends = c-client
 	makedepends = postgresql-libs
 	makedepends = libldap
-	makedepends = postfix
+	makedepends = smtp-forwarder
 	makedepends = sqlite
 	makedepends = unixodbc
 	makedepends = net-snmp
@@ -24,23 +24,24 @@ pkgbase = php53
 	makedepends = libltdl
 	makedepends = libpng
 	makedepends = libjpeg
+	makedepends = freetype2
 	makedepends = icu
 	makedepends = curl
 	makedepends = libxslt
 	makedepends = openssl
-	makedepends = bzip2
 	makedepends = db
 	makedepends = gmp
-	makedepends = freetype2
-	makedepends = sed
-	source = http://www.php.net/distributions/php-5.3.29.tar.bz2
+	makedepends = systemd
+	source = http://php.net/distributions/php-5.3.29.tar.xz
+	source = http://php.net/distributions/php-5.3.29.tar.xz.asc
 	source = http://download.suhosin.org/suhosin-patch-5.3.9-0.9.10.patch.gz
 	source = php.ini.patch
 	source = apache.conf
 	source = php-fpm.conf.in.patch
 	source = logrotate.d.php-fpm
+	source = php-fpm.service
+	source = php-fpm.tmpfiles
 	source = suhosin.patch
-	source = freetype-path.patch
 	source = CVE-2014-3587.patch
 	source = CVE-2014-3597.patch
 	source = CVE-2014-3668.patch
@@ -57,14 +58,19 @@ pkgbase = php53
 	source = CVE-2015-2787.patch
 	source = CVE-2015-3330.patch
 	source = CVE-2015-3329.patch
-	sha1sums = 6e9e492c6d5853d063ddb9a4dbef60b8e5d87444
+	validpgpkeys = 6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3
+	validpgpkeys = 0BD78B5F97500D450838F95DFE857D9A90D90EC1
+	validpgpkeys = 0A95E9A026542D53835E3F3A7DEC4E69FC9C83D7
+	sha1sums = 8772d7419511f9f066fb17929194b5492680ec9b
+	sha1sums = SKIP
 	sha1sums = 7b9ef5c3e0831154df0d6290aba0989ca90138ed
-	sha1sums = 462927954b4074487b46722b0442185100def240
+	sha1sums = b42a385359f5d033748d4d8f44a9f7a0469f628a
 	sha1sums = 82776db01f70b9186ba455de22eb06fe193f1d30
-	sha1sums = ea9a9101b9678a8461d9dddfc0df2a4412a4cb5d
-	sha1sums = b6a661523535a8e7e60d4a0c054d8f6066edf63e
+	sha1sums = 2247fb95547feefdc898fc2c01bae1817ec2dc2a
+	sha1sums = ce75999f51fa780c68e1575cca1d660ea60a5e64
+	sha1sums = 2a3607973db41aa08f7aba11057218e2d88732b7
+	sha1sums = 3c011681562bb620b1717b3829cb354461dd94d5
 	sha1sums = 4d9fea0b7ab856c59ddbf722fe6c95b8e479af9b
-	sha1sums = 8f19ee0e351aa2cdc9b110db4e33b4c8f6131b12
 	sha1sums = b5caa85fd1b76a3ece056ab5441852330989640b
 	sha1sums = 9f2aa7c2514cb66204f9f5c3dc5f8ebdda238c78
 	sha1sums = 4672c18ece397b2f99ad0c992f61220e210b2dc1
@@ -86,58 +92,53 @@ pkgname = php53
 	pkgdesc = An HTML-embedded scripting language - Legacy 5.3 version
 	depends = pcre
 	depends = libxml2
-	depends = bzip2
 	depends = curl
-	provides = php
-	provides = php-fileinfo
-	provides = php-gmp
-	provides = php-curl
-	conflicts = php
-	conflicts = php-fileinfo
-	conflicts = php-gmp
-	conflicts = php-curl
-	backup = etc/php/php.ini
+	depends = libzip
+	provides = php=5.3.29
+	backup = etc/php53/php.ini
 
 pkgname = php53-cgi
 	pkgdesc = CGI and FCGI SAPI for PHP
 	depends = php53
-	provides = php-cgi
-	conflicts = php-cgi
+	provides = php-cgi=5.3.29
 
 pkgname = php53-apache
 	pkgdesc = Apache SAPI for PHP
+	install = php-apache.install
 	depends = php53
 	depends = apache
-	provides = php-apache
-	conflicts = php-apache
-	backup = etc/httpd/conf/extra/php5_module.conf
+	provides = php-apache=5.3.29
+	backup = etc/httpd/conf/extra/php53_module.conf
 
 pkgname = php53-fpm
 	pkgdesc = FastCGI Process Manager for PHP
+	install = php-fpm.install
 	depends = php53
-	provides = php-fpm
-	conflicts = php-fpm
-	backup = etc/php/php-fpm.conf
+	depends = systemd
+	provides = php-fpm=5.3.29
+	backup = etc/php53/php-fpm.conf
 
 pkgname = php53-embed
-	pkgdesc = Embed SAPI for PHP
+	pkgdesc = Embedded PHP SAPI library
 	depends = php53
-	provides = php-embed
-	conflicts = php-embed
+	provides = php-embed=5.3.29
+
+pkgname = php53-dblib
+	pkgdesc = dblib module for PHP
+	depends = php53
+	provides = php-dblib=5.3.29
 
 pkgname = php53-pear
 	pkgdesc = PHP Extension and Application Repository
 	depends = php53
-	provides = php-pear
-	conflicts = php-pear
-	backup = etc/php/pear.conf
+	provides = php-pear=5.3.29
+	backup = etc/php53/pear.conf
 
 pkgname = php53-enchant
 	pkgdesc = enchant module for PHP
 	depends = php53
 	depends = enchant
-	provides = php-enchant
-	conflicts = php-enchant
+	provides = php-enchant=5.3.29
 
 pkgname = php53-gd
 	pkgdesc = gd module for PHP
@@ -145,90 +146,78 @@ pkgname = php53-gd
 	depends = libpng
 	depends = libjpeg
 	depends = freetype2
-	provides = php-gd
-	conflicts = php-gd
+	provides = php-gd=5.3.29
 
 pkgname = php53-imap
+	pkgdesc = imap module for PHP
 	depends = php53
 	depends = c-client
-	provides = php-imap
-	conflicts = php-imap
+	provides = php-imap=5.3.29
 
 pkgname = php53-intl
 	pkgdesc = intl module for PHP
 	depends = php53
 	depends = icu
-	provides = php-intl
-	conflicts = php-intl
+	provides = php-intl=5.3.29
 
 pkgname = php53-ldap
 	pkgdesc = ldap module for PHP
 	depends = php53
 	depends = libldap
-	provides = php-ldap
-	conflicts = php-ldap
+	provides = php53-ldap=5.3.29
 
 pkgname = php53-mcrypt
 	pkgdesc = mcrypt module for PHP
 	depends = php53
 	depends = libmcrypt
 	depends = libltdl
-	provides = php-mcrypt
-	conflicts = php-mcrypt
+	provides = php-mcrypt=5.3.29
 
 pkgname = php53-mssql
 	pkgdesc = mssql module for PHP
 	depends = php53
 	depends = freetds
-	provides = php-mssql
-	conflicts = php-mssql
+	provides = php-mssql=5.3.29
 
 pkgname = php53-odbc
 	pkgdesc = ODBC modules for PHP
 	depends = php53
 	depends = unixodbc
-	provides = php-odbc
-	conflicts = php-odbc
+	provides = php-odbc=5.3.29
 
 pkgname = php53-pgsql
 	pkgdesc = PostgreSQL modules for PHP
 	depends = php53
 	depends = postgresql-libs
-	provides = php-pgsql
-	conflicts = php-pgsql
+	provides = php-pgsql=5.3.29
 
 pkgname = php53-pspell
 	pkgdesc = pspell module for PHP
 	depends = php53
 	depends = aspell
-	provides = php-aspell
-	conflicts = php-aspell
+	provides = php-pspell=5.3.29
 
 pkgname = php53-snmp
 	pkgdesc = snmp module for PHP
 	depends = php53
 	depends = net-snmp
-	provides = php-snmp
-	conflicts = php-snmp
+	provides = php-snmp=5.3.29
 
 pkgname = php53-sqlite
 	pkgdesc = sqlite module for PHP
 	depends = php53
 	depends = sqlite
-	provides = php-sqlite
-	conflicts = php-sqlite
+	provides = php-sqlite=5.3.29
 
 pkgname = php53-tidy
 	pkgdesc = tidy module for PHP
 	depends = php53
 	depends = tidyhtml
-	provides = php-tidy
-	conflicts = php-tidy
+	provides = php-tidy=5.3.29
 
 pkgname = php53-xsl
 	pkgdesc = xsl module for PHP
 	depends = php53
 	depends = libxslt
-	provides = php-xsl
-	conflicts = php-xsl
+	provides = php-xsl=5.3.29
 
