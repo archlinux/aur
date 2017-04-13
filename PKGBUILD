@@ -1,6 +1,5 @@
 pkgname=electrum-ltc
-pkgver=2.8.3pre
-_commit=d998b00
+pkgver=2.8.3pre.git20170412
 pkgrel=1
 pkgdesc='Lightweight Litecoin client'
 arch=(any)
@@ -21,9 +20,10 @@ depends=(python2-btchip
          python2-qrcode
          python2-requests
          zbar)
-makedepends=(python2-pycurl)
+makedepends=(gettext python2-pycurl)
+_commit=d8321ec
 source=($pkgname-$_commit.tar.gz::https://codeload.github.com/pooler/$pkgname/tar.gz/$_commit)
-sha256sums=(87cde5a1c1eb14fdc6612fe69654565d7cda6f6c4a79623917f3973382c1790f)
+sha256sums=(eaf8192525c5da72386e6067c02810583b2a1902ac28bb1f7cf332886823d8fd)
 
 prepare() {
   cd $pkgname-$_commit/
@@ -35,7 +35,7 @@ prepare() {
   done
 
   sed -i '/fee_widgets.append((rbf_label, rbf_combo))/d
-          /set_rbf(True)/s/True/False/' gui/qt/main_window.py
+          s/set_rbf(True)/set_rbf(False)/' gui/qt/main_window.py
   sed -i 's/, rbf=False//
           s/, rbf//' lib/commands.py
 }
@@ -55,7 +55,7 @@ build() {
 package() {
   cd $pkgname-$_commit/
 
-  ./setup.py install --root=$pkgdir -O1
+  ./setup.py install -O1 --root=$pkgdir
 
   mkdir -p $pkgdir/usr/share/doc/$pkgname/
   cp AUTHORS LICENCE README.rst RELEASE-NOTES electrum-ltc.conf.sample \
