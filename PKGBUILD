@@ -10,7 +10,7 @@ _pkgver=4.2.3.1
 
 pkgname=djgpp-allegro4
 pkgver=${_pkgver}
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Allegro..."
 arch=('i686' 'x86_64')
@@ -43,6 +43,7 @@ prepare() {
   patch -p0 < ${startdir}/makefile.all.djgpp.patch
   patch -p0 < ${startdir}/makefile.dj.djgpp.patch
   patch -p0 < ${startdir}/misc_mdhelper_sh.djgpp.patch
+  patch -p0 < ${startdir}/src_misc_vbeafex_c.djgpp.patch
   
   sh ./fix.sh djgpp --quick
 }

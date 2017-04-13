@@ -1,0 +1,18 @@
+--- ./src/misc/vbeafex.c.orig	2017-04-13 23:35:21.340109016 +0200
++++ ./src/misc/vbeafex.c	2017-04-13 23:38:14.966004342 +0200
+@@ -343,7 +343,8 @@
+ 
+ 
+ /* for the save_ds() / load_ds() functions */
+-static unsigned short saved_ds = 0;
++//static unsigned short saved_ds = 0;
++unsigned short saved_ds = 0;
+ 
+ 
+ 
+@@ -1229,5 +1230,3 @@
+    FILL_PMODE(enableWriteCombine, enable_write_combine);
+    FILL_PMODE(backslash, put_backslash);
+ }
+-
+-
