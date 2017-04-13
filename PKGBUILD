@@ -29,13 +29,16 @@ prepare() {
 
   # Don't build tests
   truncate -s 0 tests/CMakeLists.txt
+
+  # Fix loading translators
+  sed -i 's/${CMAKE_INSTALL_PREFIX}\/${ANBOX_TRANSLATOR_INSTALL_DIR}/${ANBOX_TRANSLATOR_INSTALL_DIR}/' CMakeLists.txt
 }
 
 build() {
   mkdir -p "$srcdir/${_pkgname}/build"
   cd "$srcdir/${_pkgname}/build"
 
-  cmake .. -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release
+  cmake .. -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
   make
 }
 
@@ -45,7 +48,7 @@ package_anbox-git() {
   pkgdesc="Running Android in a container"
 
   cd "$srcdir/${_pkgname}"
-  make -C build DESTDIR="$pkgdir/" install
+  make -C build DESTDIR="$pkgdir" install
 
   install -Dm 644 -t $pkgdir/usr/lib/systemd/system $srcdir/anbox-container-manager.service
   install -Dm 644 -t $pkgdir/usr/lib/systemd/user $srcdir/anbox-session-manager.service
