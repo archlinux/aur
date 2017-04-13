@@ -4,8 +4,8 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=150.0.0
-pkgrel=2
+pkgver=151.0.0
+pkgrel=1
 pkgdesc="Tools and libraries SDK for managing resources on the Google Cloud Platform, plus kubectl and Python/PHP appengine SDK components"
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -17,7 +17,6 @@ conflicts=('kubectl-bin' 'google-appengine-python-php'
 replaces=('google-appengine-python-php'
           'google-appengine-python' 'google-appengine-php')
 depends=('python2')
-makedepends=('python2')
 optdepends=('go: for Go version of App Engine'
             'java-environment: for Java version of App Engine'
             'php: for PHP version of App Engine'
@@ -28,13 +27,13 @@ options=('!strip' 'staticlibs')
 source_x86_64=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86_64.tar.gz"
                "profile.sh")
 sha256sums_x86_64=(
-  '8a2d203ff12e0d52cc8aa54f09b3c2a8e7db86737284fa90d2ae453cae52c6e0'
+  '6e44d372df36934e216df257f9ce75d936e94690e75fe14cefed941dee3d0e06'
   '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692')
 # 32bit
 source_i686=("https://dl.google.com/dl/cloudsdk/release/downloads/$pkgname-$pkgver-linux-x86.tar.gz"
              "profile.sh")
 sha256sums_i686=(
-  '34f4fa21ca15a10c9445038a083e6964c1e7f5848f11dde81b05b791ac95e67d'
+  '1410ac56eb09d83ab17a7ff1f3d0361b0b4ad66c6607c3ccd2f90d8da33430b4'
   '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692')
 
 prepare() {
