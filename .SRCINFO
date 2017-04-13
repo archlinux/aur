@@ -1,7 +1,7 @@
 pkgbase = pacitude
 	pkgdesc = a pacman/pacaur tui based on archfi
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/undeadrevo/pacitude
 	arch = i686
 	arch = x86_64

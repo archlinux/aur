@@ -1,6 +1,8 @@
+# Maintainer/Contributor: Sachiko <undeadrevo@gmail.com>
+
 pkgname=pacitude
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="a pacman/pacaur tui based on archfi"
 arch=('i686' 'x86_64')
 url="https://github.com/undeadrevo/pacitude"
