@@ -23,7 +23,7 @@ provides=('lightworks')
 conflicts=('lightworks', 'lwks-beta')
 source=(
     "http://downloads.lwks.com/v14/lwks-$lwksver-amd64.deb"
-    "http://ala.seblu.net/packages/p/portaudio/portaudio-19_20140130-3-x86_64.pkg.tar.xz"
+    "http://pep20.net/static/portaudio-19_20140130-3-x86_64.pkg.tar.xz"
     )
 
 sha256sums=(
