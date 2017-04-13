@@ -1,0 +1,14 @@
+pkgbase = udevnotifier-git
+	pkgdesc = A Qt handler library for UDEV event system notifications
+	pkgver = 7149ecd
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = qt5-base
+	depends = libsystemd
+	source = udevnotifier-git::git+https://github.com/rogerzanoni/udevnotifier.git
+	sha256sums = SKIP
+
+pkgname = udevnotifier-git
+
