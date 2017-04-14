@@ -1,0 +1,4 @@
+/pkg
+/src
+/aarch64-none-elf-binutils-*.pkg.tar.xz
+/binutils-*.tar.bz2*
