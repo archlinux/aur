@@ -7,7 +7,7 @@ pkgdesc="Bug reporter for the* apps"
 arch=("x86_64")
 url="https://github.com/vicr123/ts-polkitagent"
 license=('GPL3')
-depends=('qt5-base')
+depends=('qt5-base' 'the-libs')
 makedepends=('git')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/ts-bugreport#branch=master')
 md5sums=('SKIP')
