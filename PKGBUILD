@@ -1,7 +1,7 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-gsm
-pkgver=1.0.14
+pkgver=1.0.16
 pkgrel=1
 pkgdesc="Shared libraries for GSM 06.10 lossy speech compression (mingw-w64)"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('mingw-w64-gcc')
 source=("http://www.quut.com/gsm/gsm-${pkgver}.tar.gz"
         'makefile.patch'
         'win32.patch')
-md5sums=('4cbb4e7b73842de3d12d30b0d74200d4'
+md5sums=('94b03ba7b9cf7da7caa8456c219a8673'
          '695bd85f65b70576c561a9d39c4fc220'
          'bb2919748d4ed7eb3174af976126f501')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -58,9 +58,9 @@ package() {
     # Install license
     install -m644 COPYRIGHT ${pkgdir}/usr/${_arch}/share/licenses/gsm/license.txt
 
+    ${_arch}-strip -s ${pkgdir}/usr/${_arch}/bin/*.exe
     ${_arch}-strip -x -g "${pkgdir}/usr/${_arch}/bin/"*.dll
     ${_arch}-strip -g "${pkgdir}/usr/${_arch}/lib/"*.a
-    rm ${pkgdir}/usr/${_arch}/bin/*.exe
     rm -r ${pkgdir}/usr/${_arch}/share/man
   done
 }
