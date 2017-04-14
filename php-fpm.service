@@ -3,7 +3,7 @@ Description=The PHP 5.3 FastCGI Process Manager
 After=syslog.target network.target
 
 [Service]
-Type=simple
+Type=notify
 PIDFile=/run/php53-fpm/php-fpm.pid
 PrivateTmp=true
 ExecStart=/usr/bin/php53-fpm --nodaemonize --pid /run/php53-fpm/php-fpm.pid
