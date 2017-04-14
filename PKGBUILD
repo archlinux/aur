@@ -4,7 +4,7 @@
 
 pkgname=mingw-w64-enca
 pkgver=1.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Charset analyser and converter (mingw-w64)"
 arch=('any')
 url="http://cihar.com/software/enca/"
@@ -52,10 +52,10 @@ package() {
 
     make DESTDIR="${pkgdir}" install
 
-    rm "${pkgdir}/usr/${_arch}"/bin/*.exe
     rm -r "${pkgdir}/usr/${_arch}/share"
     rm -r "${pkgdir}/usr/${_arch}/lib/enca"
 
+    ${_arch}-strip -s "${pkgdir}/usr/${_arch}"/bin/*.exe
     ${_arch}-strip -x -g "${pkgdir}/usr/${_arch}"/bin/*.dll
     ${_arch}-strip -g "${pkgdir}/usr/${_arch}"/lib/*.a
   done
