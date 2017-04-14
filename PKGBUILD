@@ -8,7 +8,7 @@ pkgdesc="The open-source project behind Google Chrome (Latest Snapshot)"
 arch=('x86_64')
 url="https://build.chromium.org"
 license=('BSD')
-depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
+depends=('alsa-lib' 'gconf' 'gtk3' 'libxss' 'libxtst' 'nss')
 optdepends=('kdialog:: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet'
