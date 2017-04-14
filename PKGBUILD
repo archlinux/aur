@@ -2,7 +2,7 @@
 
 pkgname=cov-analysis
 pkgver=8.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Coverity Scan Build Tool for C/C++ - REQUIRES MANUAL DOWNLOAD'
 url='https://scan.coverity.com/download'
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ md5sums=('d168d266857cdf0bb3908d7a047dfcf3')
 
 source_i686=(  "cov-analysis-linux-${pkgver}.tar.gz")
 source_x86_64=("cov-analysis-linux64-${pkgver}.tar.gz")
-md5sums_i686=(  '96546a61b6fd26d1b746f0c6c1cd3478')
-md5sums_x86_64=('3b57292fc9ec1dd7b5a935aa5b4a5725')
+md5sums_i686=(  '748ba35fb3c1eceafe55efdd515fccf7')
+md5sums_x86_64=('aa192d326046e9d98070f9cc605703e9')
 
 [ "$CARCH" = 'i686'   ] && _tarball="${source_i686}"
 [ "$CARCH" = 'x86_64' ] && _tarball="${source_x86_64}"
