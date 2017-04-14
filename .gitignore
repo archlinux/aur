@@ -1,6 +1,11 @@
+# sources
 *.tar.gz
-*.pkg.tar.xz
-*-build.log
-*-package.log
-*-namcap.log
 LICENSE
+
+# build logs
+*-build.log
+*-namcap.log
+*-package*.log
+
+# packages
+*.pkg.tar.xz
