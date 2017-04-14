@@ -2,7 +2,7 @@
 pkgname=cliqz
 _pkgname=browser-f
 _vendorname=CLIQZ
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="Firefox-based privacy aware web browser"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ conflicts=('cliqz-bin')
 source=("https://github.com/cliqz-oss/browser-f/archive/${pkgver}.tar.gz"
         "rust-i686.patch"
         "fix-wifi-scanner.diff")
-sha256sums=('cf4fcfa04a79426033c1553d2c3a85a40031a02e28f1b695613af6d050b874cf'
+sha256sums=('638bd90a95d88dfde27916dd423e5e0b62a53de9442e91b2222e4f574648e4d6'
             'f61ea706ce6905f568b9bdafd1b044b58f20737426f0aa5019ddb9b64031a269'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8')
 options=(!emptydirs !makeflags !strip)
@@ -38,14 +38,14 @@ prepare() {
   # Note: These are for Arch Linux use ONLY. For your own distribution, please
   # get your own set of keys. Feel free to contact foutrelis@archlinux.org for
   # more information.
-  echo -n "" > google-api-key
+  echo -n "AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM" > google-api-key
   sed -i "s|/builds/google-desktop-api.key|${PWD@Q}/google-api-key|" browser/config/cliqz-release.mozconfig
 
   # Mozilla API keys (see https://location.services.mozilla.com/api)
   # Note: These are for Arch Linux use ONLY. For your own distribution, please
   # get your own set of keys. Feel free to contact heftig@archlinux.org for
   # more information.
-  echo -n "" > mozilla-api-key
+  echo -n "16674381-f021-49de-8622-3021c5942aff" > mozilla-api-key
   sed -i "s|/builds/mozilla-desktop-geoloc-api.key|${PWD@Q}/mozilla-api-key|" browser/config/cliqz-release.mozconfig
 
   cat >.mozconfig <<END
@@ -80,11 +80,11 @@ END
 build() {
   cd $srcdir/$_pkgname-$pkgver
 
-  # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
 
+  # Hardening is currently deactivated as it hangs on my current machine
   # Hardening
-  LDFLAGS+=" -Wl,-z,now"
+  #LDFLAGS+=" -Wl,-z,now"
 
   ./magic_build_and_package.sh
 }
