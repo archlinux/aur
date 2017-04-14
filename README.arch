@@ -1,0 +1,27 @@
+In order to use nquakesv under Arch Linux, you need to create a ~/.nquakesv directory with the following structure:
+
+~/.nquakesv/
+├── id1
+│   └── maps
+├── ktx
+│   ├── demos
+│   ├── modes
+│   ├── progs
+│   └── sound
+│       ├── misc
+│       ├── ra
+│       ├── rune
+│       └── weapons
+├── logs
+├── qtv
+│   └── levelshots
+├── qw
+│   └── maps
+│       └── ctf
+└── qwfwd.d
+
+This can be set up automatically by running /usr/bin/nquakesv-init. This is the recommended way as it will create necessary symlinks from the ezquake install as well.
+
+Note that if you wish nquakesv to start on boot, you will need to use a sliced systemd unit:
+
+systemctl enable nquakesv@<username>.service
