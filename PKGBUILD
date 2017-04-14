@@ -1,7 +1,7 @@
 # Maintainer: jdkaplan <jdkaplan@metagram.net>
 
 pkgname=tako
-pkgver=0.0.20
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A command language and shell based on Python"
 arch=('any')
