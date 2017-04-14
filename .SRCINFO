@@ -1,16 +1,16 @@
 pkgbase = nodejs-testee
 	pkgdesc = Run your QUnit, Mocha or Jasmine tests from the command line with any browser
-	pkgver = 0.3.1
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/bitovi/testee/
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
 	optdepends = phantomjs: Headless WebKit JavaScript API, used as default browser
-	noextract = testee-0.3.1.tgz
-	source = https://registry.npmjs.org/testee/-/testee-0.3.1.tgz
-	sha1sums = 2cdc30e75f37a37b05bb92c3784571ac5a617613
+	noextract = testee-0.4.0.tgz
+	source = https://registry.npmjs.org/testee/-/testee-0.4.0.tgz
+	sha1sums = 3137a5f3220224e259f54b70d615a3b5a5d500fd
 
 pkgname = nodejs-testee
 
