@@ -1,6 +1,6 @@
 --- a/configure.ac
 +++ b/configure.ac
-@@ -900,6 +900,9 @@ if test "x$WIN32" = "xno" ; then
+@@ -1049,6 +1049,9 @@ if test "x$WIN32" = "xno" ; then
          LIBS=$SAVE_LIBS
        ]
      )
@@ -12,7 +12,7 @@
  # define on all platforms
 --- a/src/include.am
 +++ b/src/include.am
-@@ -110,3 +110,7 @@ endif
+@@ -117,3 +117,7 @@ endif
  if ANDROID
  src_libmega_la_SOURCES += src/mega_glob.c
  endif

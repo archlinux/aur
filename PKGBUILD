@@ -1,8 +1,8 @@
 # Maintainer: Cédric Connes <cedric.connes@gmail.com>
 
 pkgname=mega-sdk
-pkgver=2.8.0
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Official mega.nz SDK"
 arch=('i686' 'x86_64')
 url="https://github.com/meganz/sdk"
@@ -19,8 +19,8 @@ depends=('c-ares'
          'zlib')
 source=("https://github.com/meganz/sdk/archive/v$pkgver.tar.gz"
         'libuv.patch')
-md5sums=('b1a59b30fc7d6d99bde439a7d12a07e6'
-         '421fde0148c1a0b3d20ffc17227ab6c6')
+md5sums=('0765cc618b80d5f7982cb8252150d863'
+         '714997fd02c35c7ec68a8bc753e824bd')
 
 prepare() {
   cd "sdk-$pkgver"
