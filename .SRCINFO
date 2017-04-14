@@ -1,8 +1,8 @@
 pkgbase = nodejs-hexo-cli
 	pkgdesc = Command line interface for Hexo 3.0.0 or higher. A fast, simple & powerful blog framework, powered by Node.js.
-	pkgver = 0.1.7
+	pkgver = 1.0.2
 	pkgrel = 1
-	url = http://hexo.io
+	url = https://hexo.io
 	arch = any
 	license = MIT
 	depends = nodejs
