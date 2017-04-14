@@ -1,6 +1,6 @@
 pkgbase = tmux-notify-git
 	pkgdesc = Simple tmux notification system written in sh
-	pkgver = 0.1.r0.g46aa30c
+	pkgver = 0.3.r0.g5f16767
 	pkgrel = 1
 	url = http://www.github.com/ssterling/tmux-notify/
 	arch = any
