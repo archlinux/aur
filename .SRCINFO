@@ -1,6 +1,6 @@
 pkgbase = krautbbs
 	pkgdesc = A command line lurking tool for Krautchan
-	pkgver = 1.0.0
+	pkgver = v0.5.beta.r0.g46e03ca
 	pkgrel = 1
 	url = https://github.com/n4n0GH/KrautBBS
 	arch = any

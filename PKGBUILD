@@ -1,7 +1,7 @@
 # Maintainer: Arschbernd <address at domain dot tld>
 pkgname=krautbbs
 _pkgname=KrautBBS
-pkgver=1.0.0
+pkgver=v0.5.beta.r0.g46e03ca
 pkgrel=1
 pkgdesc="A command line lurking tool for Krautchan"
 arch=('any')
@@ -25,6 +25,11 @@ noextract=()
 md5sums=('SKIP'
          'SKIP'
          'SKIP')
+
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   echo "Nothing to build"
