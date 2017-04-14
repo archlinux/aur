@@ -10,22 +10,25 @@ pkgname=${_pkgname}-${_lang}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 _version='55.0a1'
-pkgver=55.0a1.20170413
+pkgver=55.0a1.20170414
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
-depends=('dbus-glib' 'gtk2' 'gtk3' 'libxt' 'nss' 'mime-types')
+depends=('dbus-glib' 'gtk2' 'gtk3' 'libxt' 'nss' 'mime-types' 'startup-notification')
 optdepends=('pulseaudio: audio support'
             'ffmpeg: h.264 video'
             'hunspell: spell checking'
-            'hyphen: hyphenation')
+            'hyphen: hyphenation'
+            'libnotify: notification integration'
+            'networkmanager: location detection via available WiFi networks'
+            'speech-dispatcher: text-to-speech')
 _url="https://ftp.mozilla.org/pub/${_name}/nightly/latest-mozilla-central"
 _src="${_url}-l10n/${_name}-${_version}.${_lang}.linux"
 source=("${_pkgname}.desktop" 'vendor.js')
 source_i686=("${_src}-i686.tar.bz2"{,.asc})
 source_x86_64=("${_src}-x86_64.tar.bz2"{,.asc})
 sha512sums=(
-    '08d0cc7c0c0803e324580081a6ee8486dee88c53cefdc153bc745cd869a3989e1c5a635ef97322fd609b801d447ce8d81923d34f67c011abefb7225dfe46f561'
+    'a8c616cb3ccca1a4140d559b32d413f10949318d64541badb5d1f1adf70a2819a7783596623082fd7da939ecab322b0b39917c0009858ed0a6cee3b3ec4fe754'
     'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
 )
 sha512sums_i686=('SKIP' 'SKIP')
