@@ -1,0 +1,33 @@
+pkgbase = dockingstation
+	pkgdesc = Artificial life game based on Creatures 3
+	pkgver = 195
+	pkgrel = 1
+	url = http://web.archive.org/web/20100130202018/http://www.gamewaredevelopment.co.uk/ds/ds_index.php
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = lib32-gtk
+	depends = lib32-sdl
+	depends = lib32-zlib
+	options = !strip
+	source = dockingstation_195_64.tar.bz2::http://creatures.treesprite.com/dockingstation_195_64.tar.bz2
+	source = disablelogin.zip::http://mythwoods.treesprite.com/treesprite.com/mythwoods/download/file.php?id=1018
+	source = SDL-1.2.9.tar.gz::https://www.libsdl.org/release/SDL-1.2.9.tar.gz
+	md5sums = 90a7ab012bbd4530b63c1ed64fb94464
+	md5sums = b7329fc00444cd1c8d78e5440e287461
+	md5sums = 80919ef556425ff82a8555ff40a579a0
+	sha1sums = ce488f713a65fe8745198a37d6be4711e492cc9b
+	sha1sums = 4957d39661c883d7a813ed06d818315beda47914
+	sha1sums = 8140de00e73ccdbdee196fa8fd9952ddb3cc75f1
+	sha224sums = eaaa71ccecdbef227c3370c3ee9f509eddeeabeba503075b301b7b57
+	sha224sums = b9bb1c0f0b21e035cfedca9eeb8551d4aaef310988d58832b5f1a16a
+	sha224sums = 2c020aaef1ef80d1ddb4f348381e8c841447f3eb0b6f96f3b7a2a825
+	sha256sums = 1647ca502b6b7944b84752b88ef0e039a8468725ffaed59fd97eb4eb70b03978
+	sha256sums = eb1a7deeec5b6dd77b2025bb20f5dc110c67ef521c3f9b30e8c63e6f78bd89bf
+	sha256sums = d5a168968051536641ab5a3ba5fc234383511c77a8bc5ceb8bed619bdd42e5f9
+	depends_i686 = gtk
+	depends_i686 = sdl
+	depends_i686 = zlib
+
+pkgname = dockingstation
+
