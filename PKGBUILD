@@ -1,8 +1,9 @@
 # Maintainer: makz <contact+aur@makz.me>
+# Maintainer: Light2Yellow <alexvilchansky@yahoo.com>
 
 pkgname=ckb-next-latest-git
-pkgver=v0.2.4.r195.g7ae642b
-pkgrel=2
+pkgver=v0.2.4.r198.g577d7ce
+pkgrel=1
 epoch=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver, the latest version"
 arch=('i686' 'x86_64')
@@ -17,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  echo $(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
 }
 
 
