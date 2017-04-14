@@ -18,14 +18,14 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  echo $(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
 build() {
   cd "$srcdir/${pkgname%-VCS}"
   ./qmake-auto
-  make
+  make -j$(nproc --all)
 }
 
 package() {
