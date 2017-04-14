@@ -1,0 +1,22 @@
+pkgbase = acestream-engine-i686
+	pkgdesc = ACE Stream engine
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = http://acestream.org/
+	install = acestream-engine.install
+	arch = i686
+	license = unknown
+	depends = python2-setuptools
+	depends = python2-xlib
+	depends = python2-m2crypto
+	depends = python2-apsw
+	optdepends = libappindicator-gtk2: GTK+ gui support
+	provides = acestream-engine
+	conflicts = acestream-engine
+	source = acestream-engine.service
+	source = http://dl.acestream.org/ubuntu/14/acestream_3.0.3_ubuntu_14.04_i686.tar.gz
+	sha256sums = b9863a9dd3ee6d41d18475f5f539107fe81a573f45ca1cb98013441f955f1af0
+	sha256sums = 06f329915273c3adbc2d7c2c23bbeddd3d244c837d0817acaa8c90bd648b6753
+
+pkgname = acestream-engine-i686
+
