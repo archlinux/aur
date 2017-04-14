@@ -2,8 +2,8 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=r24
-pkgrel=4
+pkgver=r25
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
 url='http://forum.doom9.org/showthread.php?t=166582'
@@ -35,7 +35,7 @@ depends=('vapoursynth'
          )
 makedepends=('git')
 source=("${_plug}-${pkgver}.tar.gz::https://github.com/HomeOfVapourSynthEvolution/havsfunc/archive/${pkgver}.tar.gz")
-sha256sums=('9ef4f5b6b783644d2c2934ea9752b74512021bf851e1c073b3126cc64d22d938')
+sha256sums=('aac44a9e667d5458bdbbc7b81ebfc3bf201518da380090591d251b051b58f818')
 
 _site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
