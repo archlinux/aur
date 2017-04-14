@@ -1,6 +1,6 @@
 pkgbase = pb-for-desktop
 	pkgdesc = The missing Desktop application for Pushbullet
-	pkgver = 4.0.6
+	pkgver = 5.4.4
 	pkgrel = 1
 	url = https://github.com/sidneys/pb-for-desktop
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = pb-for-desktop
 	depends = libxtst
 	depends = nss
 	provides = pb-for-desktop
-	source = https://github.com/sidneys/pb-for-desktop/releases/download/v4.0.6/pb-for-desktop-4.0.6.pacman
-	sha256sums = 8ddc1f02e0ed7550fb277b08bfd21eded6ea5711a4025cfae9698f62ad40a9be
+	source = https://github.com/sidneys/pb-for-desktop/releases/download/v5.4.4/pb-for-desktop-5.4.4.pacman
+	sha256sums = e9ba5db8fcb9b4784165f0a401985bf505384da145437ba9bf4fa547b404f6af
 
 pkgname = pb-for-desktop
 

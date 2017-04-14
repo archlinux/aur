@@ -2,7 +2,7 @@
 
 pkgname=pb-for-desktop
 pkgrel=1
-pkgver=4.0.6
+pkgver=5.4.4
 _pkgver="v$pkgver"
 pkgdesc="The missing Desktop application for Pushbullet"
 url="https://github.com/sidneys/pb-for-desktop"
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('unzip')
 depends=('libnotify' 'gconf' 'libappindicator-gtk2' 'libappindicator-gtk3' 'libxtst' 'nss')
 source=("${url}/releases/download/${_pkgver}/${pkgname}-${pkgver}.pacman")
-sha256sums=('8ddc1f02e0ed7550fb277b08bfd21eded6ea5711a4025cfae9698f62ad40a9be')
+sha256sums=('e9ba5db8fcb9b4784165f0a401985bf505384da145437ba9bf4fa547b404f6af')
 
 package() {
     install -d "$pkgdir"/opt
