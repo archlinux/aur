@@ -1,7 +1,7 @@
 # Maintainer: Bruno Van de Velde <bruno@texus.me>
 
 pkgname=tgui-git
-pkgver=v0.7.alpha2.r21.gffa1863
+pkgver=0.7.4.r1.g16c65f7b
 pkgrel=1
 pkgdesc="Cross-platform C++ GUI library for SFML"
 arch=('i686' 'x86_64')
