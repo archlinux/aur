@@ -2,7 +2,7 @@
 # Contributors: Danny Su <contact@dannysu.com>
 
 pkgname=keepass-plugin-http-git
-pkgver=20170203
+pkgver=20170410
 pkgrel=1
 pkgdesc="KeePass plugin to expose password entries securely (256bit AES/CBC) over HTTP"
 license=('GPL3')
@@ -14,7 +14,8 @@ source=(https://github.com/pfn/keepasshttp/raw/master/KeePassHttp.plgx)
 sha256sums=('SKIP')
 
 pkgver() {
-  git log -1 --format="%cd" --date=short | sed 's|-||g'
+	cd "${srcdir}/${_pkgname}"
+	git log -1 --format="%cd" --date=short | sed 's|-||g'
 }
 
 package() {
