@@ -7,7 +7,7 @@ pkgdesc="Common libraries for the- applications by Victor Tran"
 arch=("x86_64")
 url="https://github.com/vicr123/the-libs"
 license=('GPL3')
-depends=('qt5-base' 'ts-bugreport')
+depends=('qt5-base')
 makedepends=('git')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/the-libs#branch=master')
 md5sums=('SKIP')
