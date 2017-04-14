@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=epic5
-pkgver=2.0
+pkgver=2.0.1
 pkgrel=1
 epoch=
 pkgdesc="Enhanced Programmable ircII Client"
@@ -21,9 +21,9 @@ install=
 changelog=
 source=("http://ftp.epicsol.org/pub/epic/EPIC5-PRODUCTION/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('43ae665bf59347c387b747c59c41b8ab')
-sha1sums=('8ff73f2a01c63fb48d5b9b8cccb3ee9a86de4517')
-sha256sums=('b80b7b301f030ba70b2e2cb0f23f2138e3fd546c03a2b7d53f2ee07541750377')
+md5sums=('949d159a318c332814fac1db1afb4e52')
+sha1sums=('427257fc86c32c9dd6fcb2ff9e51f2c47596a1fc')
+sha256sums=('1a564eddeaadbb9d04af83d2df472df1c45bed8aa0c452ebbbe54e00c328e620')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
