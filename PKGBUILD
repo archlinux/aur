@@ -2,7 +2,7 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=umockdev
-pkgver=0.8.13
+pkgver=0.9
 pkgrel=1
 pkgdesc="Record/mock hardware devices for bug reports and regression tests"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ license=(LGPL)
 depends=("systemd" "libgudev")
 makedepends=(gobject-introspection gtk-doc vala)
 source=("https://github.com/martinpitt/umockdev/archive/${pkgver}.tar.gz")
-sha512sums=('5a39298c3750258040dd0f21aa2b8b692d3712635b33effec3386a45314a44153730b78619ddd20650abf5377b5f69a37791882f940cede45db30117442f21a4')
+sha512sums=('05079987cddf23aa452c01294366a811f524564e7a7e1a7f8da067bf99a315db9800d904bf34872c0fcec1c5f950fa44dacfaff9ebf203227919aa458fb9ed28')
 
 build() {
   cd "${pkgname}-${pkgver}"
