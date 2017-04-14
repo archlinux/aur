@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-lame
 pkgver=3.99.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A high quality MPEG Audio Layer III (MP3) encoder (mingw-w64)"
 arch=('any')
 url="http://lame.sourceforge.net/"
@@ -35,10 +35,10 @@ package() {
 
     make DESTDIR="$pkgdir" install
 
+    ${_arch}-strip -s $pkgdir/usr/${_arch}/bin/*.exe
     ${_arch}-strip -x -g ${pkgdir}/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/*.a
     rm -r $pkgdir/usr/${_arch}/share
-    rm -r $pkgdir/usr/${_arch}/bin/*.exe
   done
 }
 
