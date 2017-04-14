@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-ffmpeg
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
@@ -71,8 +71,7 @@ build() {
       --enable-zlib \
       --enable-shared \
       --enable-version3 \
-      --disable-doc \
-      --disable-programs
+      --disable-doc
 
     make
   done
@@ -83,6 +82,7 @@ package() {
     cd "${srcdir}"/build-${_arch}
     make DESTDIR="$pkgdir" install
 
+    ${_arch}-strip -s "${pkgdir}"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
 
