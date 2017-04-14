@@ -1,18 +1,20 @@
 # Maintainer: Radostin Stoyanov <rstoyanov1 at gmail dot com>
 pkgname=youtube-dl-mp3
-pkgver=2017.04.5
+pkgver=2017.04.14
 _appname=youtube-dl-mp3
-_release=2017.04.5
+_release=2017.04.14
 pkgrel=1
 pkgdesc="Downloads videos from YouTube and convert them to mp3."
 arch=('any')
 url="https://github.com/rst0git/youtube-dl-mp3"
-license=('MIT')
+license=('custom')
 depends=('youtube-dl')
-options=("!strip")
+optdepends=('ffmpeg: for video post-processing'
+            'rtmpdump: for rtmp streams support'
+            'atomicparsley: for embedding thumbnails into m4a files')
 source=(${pkgname})
 md5sums=('d602848d18fdb089736644f16c26ecea')
 
 package() {
-  install -Dm755 ${pkgname} $pkgdir/usr/bin/${pkgname}
+	install -Dm755 youtube-dl-mp3 "${pkgdir}/usr/bin/youtube-dl-mp3"	
 }
