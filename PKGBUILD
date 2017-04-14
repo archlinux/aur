@@ -3,17 +3,18 @@
 pkgname=rhythmbox-plugin-tray-icon-git
 _pkgname=rhythmbox-tray-icon
 pkgver=93.38275a7
-pkgrel=2
+pkgrel=3
 pkgdesc="Tray icon for Rhythmbox 2.9+ with rating feature"
 arch=("any")
 url="https://github.com/mendhak/rhythmbox-tray-icon"
 license=("GPL3")
+depends=("rhythmbox>=2.90")
 source=("git+https://github.com/mendhak/rhythmbox-tray-icon.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${_pkgname}"
+  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
