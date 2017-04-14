@@ -1,6 +1,6 @@
 pkgbase = atom-editor-bin
-	pkgdesc = Chrome-based text editor from Github - Precompiled binary from official repository
-	pkgver = 1.15.0
+	pkgdesc = Atom is a hackable text editor for the 21st century built on Electron - Precompiled binary from official repository
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/atom/atom
 	install = atom-editor-bin.install
@@ -26,11 +26,12 @@ pkgbase = atom-editor-bin
 	conflicts = atom-editor-git
 	conflicts = atom-editor-git-tagged
 	conflicts = apm
+	conflicts = atom-notracking
 	options = !strip
-	source = atom-amd64-v1.15.0.deb::https://atom-installer.github.com/v1.15.0/atom-amd64.deb
+	source = atom-amd64-v1.16.0.deb::https://atom-installer.github.com/v1.16.0/atom-amd64.deb
 	source = atom-python.patch
 	source = startupwmclass.patch
-	md5sums = 972ccf314b3d2cf695602a499f7f3c4c
+	md5sums = b457a0db1d07f020f31aa084ff3a394b
 	md5sums = 22b4763c2e8607f0ea46311ec13da9ff
 	md5sums = d472858970fc4ba6f63197729b65607c
 
