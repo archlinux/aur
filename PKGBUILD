@@ -8,14 +8,18 @@ pkgrel=2
 pkgdesc="Python XML, Dependency for selinux-refpolicy"
 arch=('any')
 url=http://downloads.sourceforge.net
-source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname_-$pkgver.tar.gz)
+source=("https://github.com/actmd/${pkgname_}/archive/${pkgver}.tar.gz")
 license=('GPL')
 depends=('python2')
-md5sums=('1f7655050cebbb664db976405fdba209')
+md5sums=('102ff038da5d9503de4e00974ccf8446')
+
+build(){
+cd "$pkgname_-$pkgver/"
+python2 setup.py build
+}
 
 package(){
 cd "$pkgname_-$pkgver/"
-python2 setup.py build
 python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
