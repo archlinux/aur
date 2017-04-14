@@ -1,0 +1,370 @@
+diff --git a/drivers/hid/hid-core.c b/drivers/hid/hid-core.c
+index 2b89c701076f..bd8b833f7fb4 100644
+--- a/drivers/hid/hid-core.c
++++ b/drivers/hid/hid-core.c
+@@ -724,12 +724,7 @@ static void hid_scan_collection(struct hid_parser *parser, unsigned type)
+ 		hid->group = HID_GROUP_SENSOR_HUB;
+ 
+ 	if (hid->vendor == USB_VENDOR_ID_MICROSOFT &&
+-	    (hid->product == USB_DEVICE_ID_MS_TYPE_COVER_PRO_3 ||
+-	     hid->product == USB_DEVICE_ID_MS_TYPE_COVER_PRO_3_2 ||
+-	     hid->product == USB_DEVICE_ID_MS_TYPE_COVER_PRO_3_JP ||
+-	     hid->product == USB_DEVICE_ID_MS_TYPE_COVER_PRO_4_JP ||
+-	     hid->product == USB_DEVICE_ID_MS_TYPE_COVER_3 ||
+-	     hid->product == USB_DEVICE_ID_MS_POWER_COVER) &&
++	    hid->product == USB_DEVICE_ID_MS_POWER_COVER &&
+ 	    hid->group == HID_GROUP_MULTITOUCH)
+ 		hid->group = HID_GROUP_GENERIC;
+ 
+@@ -1980,11 +1975,6 @@ static const struct hid_device_id hid_have_special_driver[] = {
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_DIGITAL_MEDIA_3K) },
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_WIRELESS_OPTICAL_DESKTOP_3_0) },
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_OFFICE_KB) },
+-	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_3) },
+-	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_3_2) },
+-	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_3_JP) },
+-	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_4_JP) },
+-	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_3) },
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_DIGITAL_MEDIA_7K) },
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_DIGITAL_MEDIA_600) },
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_DIGITAL_MEDIA_3KV1) },
+diff --git a/drivers/hid/hid-ids.h b/drivers/hid/hid-ids.h
+index 575aa65436d1..3c92c7aefe33 100644
+--- a/drivers/hid/hid-ids.h
++++ b/drivers/hid/hid-ids.h
+@@ -718,8 +718,9 @@
+ #define USB_DEVICE_ID_MS_TYPE_COVER_PRO_3    0x07dc
+ #define USB_DEVICE_ID_MS_TYPE_COVER_PRO_3_2  0x07e2
+ #define USB_DEVICE_ID_MS_TYPE_COVER_PRO_3_JP 0x07dd
++#define USB_DEVICE_ID_MS_TYPE_COVER_PRO_4 0x07e4
++#define USB_DEVICE_ID_MS_TYPE_COVER_PRO_4_2 0x07e8
+ #define USB_DEVICE_ID_MS_TYPE_COVER_PRO_4_JP 0x07e9
+-#define USB_DEVICE_ID_MS_TYPE_COVER_3    0x07de
+ #define USB_DEVICE_ID_MS_POWER_COVER     0x07da
+ 
+ #define USB_VENDOR_ID_MOJO		0x8282
+diff --git a/drivers/hid/hid-input.c b/drivers/hid/hid-input.c
+index fb9ace1cef8b..55db58459531 100644
+--- a/drivers/hid/hid-input.c
++++ b/drivers/hid/hid-input.c
+@@ -1468,6 +1468,31 @@ static void hidinput_cleanup_hidinput(struct hid_device *hid,
+ 	kfree(hidinput);
+ }
+ 
++static struct hid_input *hidinput_match(struct hid_report *report)
++{
++	struct hid_device *hid = report->device;
++	struct hid_input *hidinput;
++
++	list_for_each_entry(hidinput, &hid->inputs, list) {
++		if (hidinput->report &&
++		    hidinput->report->id == report->id)
++			return hidinput;
++	}
++
++	return NULL;
++}
++
++static inline void hidinput_configure_usages(struct hid_input *hidinput,
++					     struct hid_report *report)
++{
++	int i, j;
++
++	for (i = 0; i < report->maxfield; i++)
++		for (j = 0; j < report->field[i]->maxusage; j++)
++			hidinput_configure_usage(hidinput, report->field[i],
++						 report->field[i]->usage + j);
++}
++
+ /*
+  * Register the input device; print a message.
+  * Configure the input layer interface
+@@ -1478,8 +1503,8 @@ int hidinput_connect(struct hid_device *hid, unsigned int force)
+ {
+ 	struct hid_driver *drv = hid->driver;
+ 	struct hid_report *report;
+-	struct hid_input *hidinput = NULL;
+-	int i, j, k;
++	struct hid_input *next, *hidinput = NULL;
++	int i, k;
+ 
+ 	INIT_LIST_HEAD(&hid->inputs);
+ 	INIT_WORK(&hid->led_work, hidinput_led_worker);
+@@ -1509,43 +1534,40 @@ int hidinput_connect(struct hid_device *hid, unsigned int force)
+ 			if (!report->maxfield)
+ 				continue;
+ 
++			/*
++			 * Find the previous hidinput report attached
++			 * to this report id.
++			 */
++			if (hid->quirks & HID_QUIRK_MULTI_INPUT)
++				hidinput = hidinput_match(report);
++
+ 			if (!hidinput) {
+ 				hidinput = hidinput_allocate(hid);
+ 				if (!hidinput)
+ 					goto out_unwind;
+ 			}
+ 
+-			for (i = 0; i < report->maxfield; i++)
+-				for (j = 0; j < report->field[i]->maxusage; j++)
+-					hidinput_configure_usage(hidinput, report->field[i],
+-								 report->field[i]->usage + j);
+-
+-			if ((hid->quirks & HID_QUIRK_NO_EMPTY_INPUT) &&
+-			    !hidinput_has_been_populated(hidinput))
+-				continue;
++			hidinput_configure_usages(hidinput, report);
+ 
+-			if (hid->quirks & HID_QUIRK_MULTI_INPUT) {
+-				/* This will leave hidinput NULL, so that it
+-				 * allocates another one if we have more inputs on
+-				 * the same interface. Some devices (e.g. Happ's
+-				 * UGCI) cram a lot of unrelated inputs into the
+-				 * same interface. */
++			if (hid->quirks & HID_QUIRK_MULTI_INPUT)
+ 				hidinput->report = report;
+-				if (drv->input_configured &&
+-				    drv->input_configured(hid, hidinput))
+-					goto out_cleanup;
+-				if (input_register_device(hidinput->input))
+-					goto out_cleanup;
+-				hidinput = NULL;
+-			}
+ 		}
+ 	}
+ 
+-	if (hidinput && (hid->quirks & HID_QUIRK_NO_EMPTY_INPUT) &&
+-	    !hidinput_has_been_populated(hidinput)) {
+-		/* no need to register an input device not populated */
+-		hidinput_cleanup_hidinput(hid, hidinput);
+-		hidinput = NULL;
++	list_for_each_entry_safe(hidinput, next, &hid->inputs, list) {
++		if ((hid->quirks & HID_QUIRK_NO_EMPTY_INPUT) &&
++		    !hidinput_has_been_populated(hidinput)) {
++			/* no need to register an input device not populated */
++			hidinput_cleanup_hidinput(hid, hidinput);
++			continue;
++		}
++
++		if (drv->input_configured &&
++		    drv->input_configured(hid, hidinput))
++			goto out_unwind;
++		if (input_register_device(hidinput->input))
++			goto out_unwind;
++		hidinput->registered = true;
+ 	}
+ 
+ 	if (list_empty(&hid->inputs)) {
+@@ -1553,20 +1575,8 @@ int hidinput_connect(struct hid_device *hid, unsigned int force)
+ 		goto out_unwind;
+ 	}
+ 
+-	if (hidinput) {
+-		if (drv->input_configured &&
+-		    drv->input_configured(hid, hidinput))
+-			goto out_cleanup;
+-		if (input_register_device(hidinput->input))
+-			goto out_cleanup;
+-	}
+-
+ 	return 0;
+ 
+-out_cleanup:
+-	list_del(&hidinput->list);
+-	input_free_device(hidinput->input);
+-	kfree(hidinput);
+ out_unwind:
+ 	/* unwind the ones we already registered */
+ 	hidinput_disconnect(hid);
+@@ -1583,7 +1593,10 @@ void hidinput_disconnect(struct hid_device *hid)
+ 
+ 	list_for_each_entry_safe(hidinput, next, &hid->inputs, list) {
+ 		list_del(&hidinput->list);
+-		input_unregister_device(hidinput->input);
++		if (hidinput->registered)
++			input_unregister_device(hidinput->input);
++		else
++			input_free_device(hidinput->input);
+ 		kfree(hidinput);
+ 	}
+ 
+diff --git a/drivers/hid/hid-microsoft.c b/drivers/hid/hid-microsoft.c
+index c6cd392e9f99..96e7d3231d2f 100644
+--- a/drivers/hid/hid-microsoft.c
++++ b/drivers/hid/hid-microsoft.c
+@@ -274,16 +274,6 @@ static const struct hid_device_id ms_devices[] = {
+ 		.driver_data = MS_NOGET },
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_COMFORT_MOUSE_4500),
+ 		.driver_data = MS_DUPLICATE_USAGES },
+-	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_3),
+-		.driver_data = MS_HIDINPUT },
+-	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_3_2),
+-		.driver_data = MS_HIDINPUT },
+-	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_3_JP),
+-		.driver_data = MS_HIDINPUT },
+-	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_4_JP),
+-		.driver_data = MS_HIDINPUT },
+-	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_3),
+-		.driver_data = MS_HIDINPUT },
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_POWER_COVER),
+ 		.driver_data = MS_HIDINPUT },
+ 	{ HID_USB_DEVICE(USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_COMFORT_KEYBOARD),
+diff --git a/drivers/hid/hid-multitouch.c b/drivers/hid/hid-multitouch.c
+index fb6f1f447279..89e9032ab1e7 100644
+--- a/drivers/hid/hid-multitouch.c
++++ b/drivers/hid/hid-multitouch.c
+@@ -108,6 +108,7 @@ struct mt_device {
+ 	int cc_value_index;	/* contact count value index in the field */
+ 	unsigned last_slot_field;	/* the last field of a slot */
+ 	unsigned mt_report_id;	/* the report ID of the multitouch device */
++	unsigned long initial_quirks;	/* initial quirks state */
+ 	__s16 inputmode;	/* InputMode HID feature, -1 if non-existent */
+ 	__s16 inputmode_index;	/* InputMode HID feature index in the report */
+ 	__s16 maxcontact_report_id;	/* Maximum Contact Number HID feature,
+@@ -318,13 +319,10 @@ static void mt_get_feature(struct hid_device *hdev, struct hid_report *report)
+ 	u8 *buf;
+ 
+ 	/*
+-	 * Only fetch the feature report if initial reports are not already
+-	 * been retrieved. Currently this is only done for Windows 8 touch
+-	 * devices.
++	 * Do not fetch the feature report if the device has been explicitly
++	 * marked as non-capable.
+ 	 */
+-	if (!(hdev->quirks & HID_QUIRK_NO_INIT_REPORTS))
+-		return;
+-	if (td->mtclass.name != MT_CLS_WIN_8)
++	if (td->initial_quirks & HID_QUIRK_NO_INIT_REPORTS)
+ 		return;
+ 
+ 	buf = hid_alloc_report_buf(report, GFP_KERNEL);
+@@ -842,7 +840,9 @@ static int mt_input_mapping(struct hid_device *hdev, struct hid_input *hi,
+ 	if (!td->mtclass.export_all_inputs &&
+ 	    field->application != HID_DG_TOUCHSCREEN &&
+ 	    field->application != HID_DG_PEN &&
+-	    field->application != HID_DG_TOUCHPAD)
++	    field->application != HID_DG_TOUCHPAD &&
++	    field->application != HID_GD_KEYBOARD &&
++	    field->application != HID_CP_CONSUMER_CONTROL)
+ 		return -1;
+ 
+ 	/*
+@@ -1083,36 +1083,6 @@ static int mt_probe(struct hid_device *hdev, const struct hid_device_id *id)
+ 		}
+ 	}
+ 
+-	/* This allows the driver to correctly support devices
+-	 * that emit events over several HID messages.
+-	 */
+-	hdev->quirks |= HID_QUIRK_NO_INPUT_SYNC;
+-
+-	/*
+-	 * This allows the driver to handle different input sensors
+-	 * that emits events through different reports on the same HID
+-	 * device.
+-	 */
+-	hdev->quirks |= HID_QUIRK_MULTI_INPUT;
+-	hdev->quirks |= HID_QUIRK_NO_EMPTY_INPUT;
+-
+-	/*
+-	 * Handle special quirks for Windows 8 certified devices.
+-	 */
+-	if (id->group == HID_GROUP_MULTITOUCH_WIN_8)
+-		/*
+-		 * Some multitouch screens do not like to be polled for input
+-		 * reports. Fortunately, the Win8 spec says that all touches
+-		 * should be sent during each report, making the initialization
+-		 * of input reports unnecessary.
+-		 *
+-		 * In addition some touchpads do not behave well if we read
+-		 * all feature reports from them. Instead we prevent
+-		 * initial report fetching and then selectively fetch each
+-		 * report we are interested in.
+-		 */
+-		hdev->quirks |= HID_QUIRK_NO_INIT_REPORTS;
+-
+ 	td = devm_kzalloc(&hdev->dev, sizeof(struct mt_device), GFP_KERNEL);
+ 	if (!td) {
+ 		dev_err(&hdev->dev, "cannot allocate multitouch data\n");
+@@ -1136,6 +1106,39 @@ static int mt_probe(struct hid_device *hdev, const struct hid_device_id *id)
+ 	if (id->vendor == HID_ANY_ID && id->product == HID_ANY_ID)
+ 		td->serial_maybe = true;
+ 
++	/*
++	 * Store the initial quirk state
++	 */
++	td->initial_quirks = hdev->quirks;
++
++	/* This allows the driver to correctly support devices
++	 * that emit events over several HID messages.
++	 */
++	hdev->quirks |= HID_QUIRK_NO_INPUT_SYNC;
++
++	/*
++	 * This allows the driver to handle different input sensors
++	 * that emits events through different reports on the same HID
++	 * device.
++	 */
++	hdev->quirks |= HID_QUIRK_MULTI_INPUT;
++	hdev->quirks |= HID_QUIRK_NO_EMPTY_INPUT;
++
++	/*
++	 * Some multitouch screens do not like to be polled for input
++	 * reports. Fortunately, the Win8 spec says that all touches
++	 * should be sent during each report, making the initialization
++	 * of input reports unnecessary. For Win7 devices, well, let's hope
++	 * they will still be happy (this is only be a problem if a touch
++	 * was already there while probing the device).
++	 *
++	 * In addition some touchpads do not behave well if we read
++	 * all feature reports from them. Instead we prevent
++	 * initial report fetching and then selectively fetch each
++	 * report we are interested in.
++	 */
++	hdev->quirks |= HID_QUIRK_NO_INIT_REPORTS;
++
+ 	ret = hid_parse(hdev);
+ 	if (ret != 0)
+ 		return ret;
+@@ -1204,8 +1207,11 @@ static int mt_resume(struct hid_device *hdev)
+ 
+ static void mt_remove(struct hid_device *hdev)
+ {
++	struct mt_device *td = hid_get_drvdata(hdev);
++
+ 	sysfs_remove_group(&hdev->dev.kobj, &mt_attribute_group);
+ 	hid_hw_stop(hdev);
++	hdev->quirks = td->initial_quirks;
+ }
+ 
+ /*
+diff --git a/drivers/hid/usbhid/hid-quirks.c b/drivers/hid/usbhid/hid-quirks.c
+index e6cfd323babc..5c8ea9ac276f 100644
+--- a/drivers/hid/usbhid/hid-quirks.c
++++ b/drivers/hid/usbhid/hid-quirks.c
+@@ -98,11 +98,6 @@ static const struct hid_blacklist {
+ 	{ USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_SURFACE_PRO_2, HID_QUIRK_NO_INIT_REPORTS },
+ 	{ USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_2, HID_QUIRK_NO_INIT_REPORTS },
+ 	{ USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TOUCH_COVER_2, HID_QUIRK_NO_INIT_REPORTS },
+-	{ USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_3, HID_QUIRK_NO_INIT_REPORTS },
+-	{ USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_3_2, HID_QUIRK_NO_INIT_REPORTS },
+-	{ USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_3_JP, HID_QUIRK_NO_INIT_REPORTS },
+-	{ USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_PRO_4_JP, HID_QUIRK_NO_INIT_REPORTS },
+-	{ USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_TYPE_COVER_3, HID_QUIRK_NO_INIT_REPORTS },
+ 	{ USB_VENDOR_ID_MICROSOFT, USB_DEVICE_ID_MS_POWER_COVER, HID_QUIRK_NO_INIT_REPORTS },
+ 	{ USB_VENDOR_ID_MSI, USB_DEVICE_ID_MSI_GT683R_LED_PANEL, HID_QUIRK_NO_INIT_REPORTS },
+ 	{ USB_VENDOR_ID_NEXIO, USB_DEVICE_ID_NEXIO_MULTITOUCH_PTI0750, HID_QUIRK_NO_INIT_REPORTS },
+diff --git a/include/linux/hid.h b/include/linux/hid.h
+index b2ec82712baa..596b9232c19e 100644
+--- a/include/linux/hid.h
++++ b/include/linux/hid.h
+@@ -479,6 +479,7 @@ struct hid_input {
+ 	struct list_head list;
+ 	struct hid_report *report;
+ 	struct input_dev *input;
++	bool registered;
+ };
+ 
+ enum hid_type {
