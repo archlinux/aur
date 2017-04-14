@@ -5,7 +5,7 @@
 
 pkgname=mingw-w64-l-smash
 pkgver=2.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc='MP4 muxer and other tools'
 arch=('any')
 url='https://github.com/l-smash/l-smash'
@@ -37,9 +37,9 @@ package() {
 
     #install -dm 755 "${pkgdir}"/usr/share/licenses/l-smash
     #install -m 644 LICENSE "${pkgdir}"/usr/share/licenses/l-smash/
+    ${_arch}-strip -s ${pkgdir}/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded ${pkgdir}/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/*.a
-    rm ${pkgdir}/usr/${_arch}/bin/*.exe
   done
 }
 
