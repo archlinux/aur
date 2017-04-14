@@ -1,8 +1,3 @@
-# $Id: PKGBUILD 292636 2017-04-12 16:32:54Z tpowa $
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
-# Maintainer: Thomas Baechler <thomas@archlinux.org>
-
-#pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=tmkernel-bfq       # Build kernel with a different name
 _srcname=linux-4.10
 pkgver=4.10.10
@@ -16,11 +11,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-        # the main kernel config files
         'config.i686' 'config.x86_64'
-        # pacman hook for initramfs regeneration
         '90-linux.hook'
-        # standard config files for mkinitcpio ramdisk
         'linux.preset')
 
 sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
@@ -36,13 +28,14 @@ validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
              )
 
-_kernelname=${pkgbase#linux}
+_kernelname=-${pkgbase#linux}
 
 prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
   patch -p1 -i "${srcdir}/patch-${pkgver}"
+  
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -78,7 +71,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_srcname}"
 
-  make ${MAKEFLAGS} LOCALVERSION=-tmkernel-bfq bzImage modules
+  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
 _package() {
