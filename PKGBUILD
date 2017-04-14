@@ -1,7 +1,7 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-recode
 pkgver=3.6
-pkgrel=11
+pkgrel=12
 pkgdesc="Converts files between various character sets and usages (mingw-w64)"
 arch=('any')
 url="http://recode.progiciels-bpi.ca/index.html"
@@ -55,8 +55,8 @@ package() {
     make DESTDIR="${pkgdir}" install
 
     rm -r "${pkgdir}/usr/${_arch}/share"
-    rm "${pkgdir}/usr/${_arch}"/bin/*.exe
 
+    ${_arch}-strip -s "${pkgdir}/usr/${_arch}"/bin/*.exe
     ${_arch}-strip --strip-unneeded "${pkgdir}/usr/${_arch}"/bin/*.dll
     ${_arch}-strip -g "${pkgdir}/usr/${_arch}"/lib/*.a
   done
