@@ -2,7 +2,7 @@
 
 pkgbase=linux-max98090
 _srcname=linux-4.10
-pkgver=4.10.9
+pkgver=4.10.10
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
@@ -25,10 +25,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('3c95d9f049bd085e5c346d2c77f063b8425f191460fcd3ae9fe7e94e0477dc4b'
             'SKIP'
-            '9a00b962a5e30d61a0d488fc28f4a20b79c8c5c28fa21ee89c440c025c6c7c21'
+            '200cb2b47d2b6316f4cc6ee90be581187d34f90390aef8fc07d4460be11cfeb2'
             'SKIP'
-            '49410b3fc5f42a4499ff4d9ed4695cce12461bacbd9c2f934f7e6bcd254ac188'
-            'df680d41db0eff9b7269d72ea1d1c7a4e33c330edfa767a6bcc541a28453a80f'
+            '98eeae50bfc4fe17c130bf9207117b9d756ad24ea5f5e0cae4e2b23eda100aac'
+            '7dbc3483cd33636de6fd234f5ebe403178c7405dd09ce6b7ec04bd688a3783c1'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '3a4d8d182de94c031860c33ae35d92c5f9f3b987b0a5191c4e15366353a8d217')
