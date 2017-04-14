@@ -1,0 +1,19 @@
+pkgbase = gnuarmeclipse-qemu-git
+	pkgdesc = Fork, Cortex-M cores support, better integration with the GNU ARM QEMU Debugging plug-in
+	pkgver = r50620.2c99a25f9e
+	pkgrel = 1
+	url = http://gnuarmeclipse.github.io/qemu/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = git
+	depends = sdl2
+	depends = sdl2_image
+	provides = gnuarmeclipse-qemu
+	conflicts = gnuarmeclipse-qemu-bin
+	source = gnuarmeclipse-qemu::git+https://github.com/gnuarmeclipse/qemu.git#branch=gnuarmeclipse
+	md5sums = SKIP
+
+pkgname = gnuarmeclipse-qemu-git
+
