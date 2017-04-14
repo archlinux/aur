@@ -1,0 +1,14 @@
+pkgbase = python2-ntlm
+	pkgdesc = Python library that provides NTLM support, including an authentication handler for urllib2
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/python-ntlm
+	arch = any
+	license = unknown
+	makedepends = python2-setuptools
+	depends = python2
+	source = python2-ntlm-1.1.0.tar.gz::https://pypi.python.org/packages/10/0e/e7d7e1653852fe440f0f66fa65d14dd21011d894690deafe4091258ea855/python-ntlm-1.1.0.tar.gz
+	md5sums = c1b036401a29dd979ee56d48a2267686
+
+pkgname = python2-ntlm
+
