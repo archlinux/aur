@@ -1,0 +1,6 @@
+{
+        "dataType": "flow.causal.causal.CausalConfig",
+        "descriptionMemoryUrl": "/home/flow/causal/memory/description",
+        "descriptionMemoryFormat": 1,
+        "domain": "causal"
+}

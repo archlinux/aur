@@ -1,0 +1,29 @@
+pkgbase = flow-causal
+	pkgdesc = flow causal studio
+	pkgver = 0.1.0
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/RalphBariz/flow
+	install = pkg.install
+	arch = i685
+	arch = x86_64
+	groups = flow
+	license = GPL3
+	makedepends = dub
+	makedepends = unzip
+	depends = dub
+	source = flow-base.zip::https://github.com/RalphBariz/flow-base/archive/0.1.0.zip
+	source = flow-util.zip::https://github.com/RalphBariz/flow-util/archive/0.1.0.zip
+	source = flow-alien.zip::https://github.com/RalphBariz/flow-alien/archive/0.1.0.zip
+	source = flow-causal.zip::https://github.com/RalphBariz/flow-causal/archive/0.1.0.zip
+	source = web.json
+	source = causal.json
+	md5sums = 4405289e93df0e71fc00abf1ce104ea0
+	md5sums = edd89037b2300464df3176d0f249c32a
+	md5sums = eb81517aeff6f13be25d4f9352ea0f54
+	md5sums = e75d7530f3bc1fa17909e7bdaf86ade6
+	md5sums = b92fb60eac286af67f3d9c811ae5959a
+	md5sums = 60705357a2f2d74107f5570ff41ac2d0
+
+pkgname = flow-causal
+

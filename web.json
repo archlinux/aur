@@ -1,0 +1,7 @@
+{
+	"dataType": "flow.util.web.WebConfig",
+        "port": 1234,
+        "listenerAmount": 10,
+        "root": "/usr/share/flow-causal/public",
+        "domain": "causal"
+}

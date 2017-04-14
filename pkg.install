@@ -1,0 +1,7 @@
+post_install() {
+    useradd -d /home/flow -m -r -s /usr/bin/nologin flow
+}
+
+pre_remove() {
+    userdel flow
+}
