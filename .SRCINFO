@@ -1,0 +1,14 @@
+pkgbase = nodejs-generator-react-webpack
+	pkgdesc = Yeoman generator for ReactJS wirh Webpack
+	pkgver = 3.3.4
+	pkgrel = 1
+	url = https://github.com/react-webpack-generators/generator-react-webpack
+	arch = any
+	license = BSD
+	depends = nodejs-yeoman
+	noextract = generator-react-webpack-3.3.4.tgz
+	source = http://registry.npmjs.org/generator-react-webpack/-/generator-react-webpack-3.3.4.tgz
+	sha1sums = 0cb18410ea1b4c5031931211c8584848403bac3c
+
+pkgname = nodejs-generator-react-webpack
+
