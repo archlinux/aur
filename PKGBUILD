@@ -3,7 +3,7 @@
 # Contributor: xantares <xantares09 at hotmail dot com>
 pkgname=mingw-w64-openjpeg
 pkgver=1.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source JPEG 2000 codec (mingw-w64)"
 arch=(any)
 url="http://www.openjpeg.org"
@@ -57,7 +57,7 @@ package() {
     cd "${srcdir}/openjpeg-${pkgver}/"${_arch%%-*}""
     make DESTDIR="$pkgdir" install
     rm -r "$pkgdir"/usr/${_arch}/share
-    rm "$pkgdir"/usr/${_arch}/bin/*.exe
+    ${_arch}-strip -s "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
