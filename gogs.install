@@ -1,39 +1,22 @@
-pre_install() {
-  if ! getent group gogs >/dev/null; then
-    groupadd --system gogs
-  fi
-  if ! getent passwd gogs >/dev/null; then
-    useradd -m --system -c 'gogs daemon users' -g gogs -s /bin/false gogs
-  fi
-  chsh gogs -s /bin/bash
-}
-
-post_install(){
-	mkdir -p /var/log/gogs
-	chown -R gogs:gogs /var/log/gogs
-	chown -R gogs:gogs /srv/gogs
-
-	systemctl daemon-reload
-}
-
-pre_upgrade(){
-	pre_install $1
+post_install() {
+cat <<EOF
+::	If you do not have a custom configuration files finish the setup:
+		1) systemctl start gogs.service
+		2) open the installation page http://localhost:3000
+	otherwise:
+		place your custom configuration files in /var/lib/gogs/custom
+EOF
 }
 
 post_upgrade() {
-	post_install $1
-}
+	if [ $(vercmp 2:0.9.140 $2) -gt 0 ]; then
+		echo ":: Gogs configuration now placed in /var/lib/gogs/custom/conf"
 
-pre_remove() {
-	systemctl stop gogs.service
-	systemctl disable gogs.service
-}
-
-post_remove() {
-  if getent passwd gogs >/dev/null; then
-    userdel -r gogs
-  fi
-  if getent group gogs >/dev/null; then
-    groupdel gogs
-  fi
+		if  [ ! -f /var/lib/gogs/custom/conf/app.ini ] && [ -f /srv/gogs/conf/app.ini ]; then
+			echo ":: Gogs app.ini copied to new place"
+			install -d    -o gogs -g gogs    /var/lib/gogs/custom
+			install -d    -o gogs -g gogs    /var/lib/gogs/custom/conf
+			install -m644 -o gogs -g gogs -t /var/lib/gogs/custom/conf /srv/gogs/conf/app.ini
+		fi
+	fi
 }

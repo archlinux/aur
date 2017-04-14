@@ -1,98 +1,73 @@
-# Contributor: Thomas Laroche <tho.laroche@gmail.com>
-# Maintainer: Thomas Fanninger <thomas@fanninger.at>
-
 pkgname=gogs
-_pkgname=${pkgname}
-pkgver=0.9.113
+gitver="v0.11.4"
+pkgver="0.11.4"
 pkgrel=1
-epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('x86_64')
 url="http://gogs.io/"
 license=('MIT')
+depends=('git' 'sqlite')
+conflicts=('gogs' 'gogs-git')
 provides=('gogs')
-depends=('git>=1.7.1')
-optdepends=('sqlite: SQLite support'
-            'mariadb: MariaDB support'
-            'postgresql: PostgreSQL support'
-            'redis: Redis support'
-            'memcached: MemCached support'
-            'openssh: GIT over SSH support')
-makedepends=('go>=1.3' 'git>=1.7.1' 'patch' 'glide>=0.10')
-conflicts=('gogs-bin' 'gogs-git' 'gogs-git-dev')
-options=('!strip' '!emptydirs')
-backup=('srv/gogs/conf/app.ini')
+replaces=('gogs-master-git')
+options=('!buildflags')
+makedepends=('go' 'go-bindata-git' 'nodejs-less')
+install="gogs.install"
+source=("${pkgname}::git+https://github.com/gogits/gogs#tag=${gitver}"
+        "${pkgname}.service"
+        "${pkgname}.sysusers"
+        "${pkgname}.tmpfiles"
+        "${pkgname}.install"
+)
+sha256sums=('SKIP'
+            'f9f56b4946ad58f6c38ca4bda68f80ee02706d322986b5ffec2280accc83b55e'
+            'a51f93aefe8724aad67e8cacaaaa1f140c930cffcdb1f5dd951272a340c59650'
+            'e761cd82ad26d732bbeaac73307a032674612d30be98f9a9c8c769340139605c'
+            'c120a3458ad295815020441c940e81ee0dbd9d0322a2bd585b7c3d56da0e9dea')
 
-install=gogs.install
-
-_gourl=github.com/gogits/$_pkgname
-source=('gogs.service.patch'
-        'app.ini.patch'
-        "$_pkgname-$pkgver::https://${_gourl}/archive/v${pkgver}.tar.gz")
-
-sha512sums=(834e95fe9bcfa291a573ad1fa43f41bbed844658a918ff4fcf53ab8a44a296206ee4003eab1d9a2785c9126be077022f4907846d2eb6c5d64050b5e81ce47f44
-            dd88280d0ae028085d5834e7579477257331287f6892ec9489a6ba07f1c1f9f993a2b23513ea128ddf523b69ead2be9c309833ad22901a6a6ec6180720ee81bd
-            45527934b2a7b12730cbcbe4f6c92e49d3a59369cb6380ead25809340d02ac9f38f4370c0a9d1e3a84dd59dc0ab77c6b6e2c2217d95ffcb69f9a035ccf042549)
-
-_goroot="/usr/lib/go"
+_gogsdir="src/github.com/gogits/gogs"
 
 prepare() {
-  export GOROOT=/usr/lib/go
-  
-  msg2 "Prepare GO build enviroment"
-  rm -rf build
-  mkdir -p build/go
-  cd build/go
+  export GOPATH="$srcdir"
 
-  for f in "$GOROOT/"*; do
-    ln -s "$f"
-  done
+  mkdir -p ./src/github.com/gogits
 
-  rm pkg
-  mkdir pkg
-  cd pkg
+  mv    -t ./src/github.com/gogits   ./gogs
 
-  for f in "$GOROOT/pkg/"*; do
-    ln -s "$f"
-  done
+  cd "$_gogsdir"
 
-  export GOROOT="$srcdir/build/go"
-  export GOPATH="$srcdir/build"
-  
-  mkdir -p "$GOPATH/src/github.com/gogits"
+  sed -r -i conf/app.ini \
+  -e '0,             /^\[/ s/^(RUN_USER)\W.*$/\1 = gogs/' \
+  -e '/^\[server\]/, /^\[/ s/^(STATIC_ROOT_PATH)\W.*$/\1 = \/usr\/share\/gogs/' \
+  -e '/^\[log\]/,    /^\[/ s/^(ROOT_PATH)\W.*$/\1 = \/var\/log\/gogs/' \
+  ;
 
-  mv "$srcdir/$_pkgname-${pkgver}" $GOPATH/src/${_gourl}
-
-  # Glide
-  msg2 "Download dependencies via Glide"
-  cd $GOPATH/src/${_gourl}
-  glide cc
-  glide update
-  glide install
-
-  # Execute patch
-  msg2 "Execute patches"
-  patch -Np1 -i "$srcdir/app.ini.patch" "$GOPATH/src/${_gourl}/conf/app.ini"
-  patch -Np1 -i "$srcdir/gogs.service.patch" "$GOPATH/src/${_gourl}/scripts/systemd/gogs.service"
+  # Dirty hack
+  sed -i vendor/github.com/go-xorm/xorm/logger.go \
+  -e '/DEFAULT_LOG_LEVEL/ s/core\.LOG_DEBUG/core.LOG_WARNING/' vendor/github.com/go-xorm/xorm/logger.go \
+  ;
 }
 
 build() {
-  cd $GOPATH/src/${_gourl}
+  export GOPATH="$srcdir"
 
-  msg2 "Build program"
-  go fix
-  go build -x -tags='sqlite pam cert'
+  cd "$srcdir/$_gogsdir"
+
+  make PATH="$GOPATH/bin:$PATH" TAGS='libsqlite3 sqlite pam cert' build
 }
 
 package() {
-  install -Dm0755 "$srcdir/build/src/${_gourl}/$_pkgname" "$pkgdir/usr/share/$_pkgname/$_pkgname"
+  cd "$_gogsdir"
 
-  cp -r "$srcdir/build/src/${_gourl}/conf" "$pkgdir/usr/share/$_pkgname"
-  mkdir -p "$pkgdir/usr/share/themes/gogs/default/"
-  cp -r "$srcdir/build/src/${_gourl}/public" "$pkgdir/usr/share/themes/gogs/default"
-  cp -r "$srcdir/build/src/${_gourl}/templates" "$pkgdir/usr/share/themes/gogs/default"
+  rm -rf ./public/{less,config.codekit}
 
-  install -Dm0644 "$pkgdir/usr/share/$_pkgname/conf/app.ini" "$pkgdir/srv/$_pkgname/conf/app.ini"
-  install -Dm0644 "$srcdir/build/src/${_gourl}/scripts/systemd/gogs.service" "$pkgdir/usr/lib/systemd/system/gogs.service"
-  install -Dm0644 "$srcdir/build/src/${_gourl}/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname"
+  install -d "$pkgdir/usr/share/gogs"
+  cp     -rt "$pkgdir/usr/share/gogs" ./{templates,public}
+
+  install -Dm0755 -t "$pkgdir/usr/bin"                 ./gogs
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/gogs" ./LICENSE
+  install -Dm0644 -t "$pkgdir/usr/lib/systemd/system"  "$srcdir/gogs.service"
+
+  install -Dm0644 "$srcdir/gogs.sysusers" "$pkgdir/usr/lib/sysusers.d/gogs.conf"
+  install -Dm0644 "$srcdir/gogs.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/gogs.conf"
 }
