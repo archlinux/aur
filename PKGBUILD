@@ -13,7 +13,7 @@ pkgname=linux-lts310
 true && pkgname=(linux-lts310 linux-lts310-headers)
 _kernelname=-lts310
 _srcname=linux-3.10
-pkgver=3.10.101
+pkgver=3.10.105
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org"
@@ -29,11 +29,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
         'criu-no-expert.patch'
-        '0001_asmlinkage.patch'
         '0002_asmlinkage.patch')
 sha256sums=('df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544'
             'SKIP'
-            '6a23fe951e7c4f50b4b0ca54bc31a3190406327dfb44be91b351ad13cad39e4b'
+            'f80c551ebb34df1244b3cec5e06d09fb3eff30289c00cb6347f5d1c874976fda'
             'SKIP'
             'd7fada52453d12a24af9634024c36792697f97ce0bc6552939cd7b2344d00cd9'
             'abd98bed3e743ba60809fe54a1a5c6b46b9f401844b0beef8da1708b1fe8196b'
@@ -41,7 +40,6 @@ sha256sums=('df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544'
             '9f3ac423acd111057786196413798e46d7f88435d34a28eb6af882b197f11597'
             'efc600449f588e8baff59f7595c885cedd5b83af8302aa9e87a4a8171e72bd50'
             'daa75228a4c45a925cc5dbfeba884aa696a973a26af7695adc198c396474cbd5'
-            '1247a4936a0b9f2fa4a67bc1100547fc44ea96e2ab491939459b2e0e8e7c6711'
             '2696c43b1b42504f58657205a100defb8002b5055986cf363fc8fbe8e63e5923')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -66,8 +64,6 @@ prepare() {
 
   # Fix asmlinkage for GCC5 on 32bit systems
   if [ "${CARCH}" = "i686" ]; then
-    #http://kernel.opensuse.org/cgit/kernel/patch/?id=54c2f3fdb941204cad136024c7b854b7ad112ab6
-    patch -Np1 -i "${srcdir}/0001_asmlinkage.patch"
     #https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/patch/drivers/lguest/x86/core.c?id=cdd77e87eae52b7251acc5990207a1c4500a84ce
     patch -Np1 -i "${srcdir}/0002_asmlinkage.patch"
   fi
