@@ -2,7 +2,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-augeas
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Pure python bindings for augeas"
 arch=('i686' 'x86_64')
@@ -17,9 +17,15 @@ build() {
     python setup.py build
 }
 
+check() {
+    cd "$srcdir/python-augeas-$pkgver"
+    # https://github.com/hercules-team/python-augeas/pull/24
+    # python test/test_augeas.py
+}
+
 package() {
     cd "$srcdir/python-augeas-$pkgver"
     python setup.py install --skip-build -O1 --root="$pkgdir"
 }
 
-sha256sums=('d9b5dfc920a16ddf213b30539496b3b0c3a5e80abc3a18cb933a5ae731883312')
+sha256sums=('3c3ee1472d0614444c5c13001524ca2964594b557745ee5f094bce6fc3a367a4')
