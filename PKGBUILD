@@ -1,6 +1,6 @@
 # Maintainer: mdraw.gh at gmail dot com
 pkgname=('elektronn')
-pkgver='1.0.13'
+pkgver='1.0.14'
 pkgrel=1
 pkgdesc="A highly configurable toolkit for training 3d/2d CNNs and general Neural Networks"
 url="http://www.elektronn.org/"
@@ -17,7 +17,7 @@ conflicts=('elektronn-git')
 license=('GPLv3')
 arch=('any')
 source=("https://pypi.org/packages/source/e/elektronn/elektronn-${pkgver}.tar.gz")
-md5sums=('9e0dab2edeebc3a9b6962e9c1760b81c')
+sha256sums=('90b4cc88f89d3c8da443c6c7bfb2c85d6207982160d3b17dbccddc1b9ab9251b')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
