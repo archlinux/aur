@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-fribidi
 pkgver=0.19.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A Free Implementation of the Unicode Bidirectional Algorithm (mingw-w64)"
 arch=('any')
 license=('LGPL')
@@ -29,9 +29,9 @@ package() {
     cd ${srcdir}/fribidi-${pkgver}/build-${_arch}
     make DESTDIR="${pkgdir}" install
 
+    ${_arch}-strip -s ${pkgdir}/usr/${_arch}/bin/*.exe
     ${_arch}-strip -x -g ${pkgdir}/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/*.a
     rm -r ${pkgdir}/usr/${_arch}/share
-    rm ${pkgdir}/usr/${_arch}/bin/*.exe
   done
 }
