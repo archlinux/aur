@@ -1,5 +1,10 @@
 #!/bin/bash
 
-cd /opt/quake
-./mvdsv +cfg_use_home 1 +cfg_load "$@"
+if [ ! -d ~/.nquakesv ];
+then
+  /usr/bin/nquakesv-init
+fi
+
+cd ~/.nquakesv
+/usr/share/nquakesv/mvdsv  "$@"
 exit $?

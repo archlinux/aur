@@ -1,0 +1,11 @@
+[Unit]
+Description=nQuake Dedicated Server
+After=network.target
+
+[Service]
+Type=simple
+User=%I
+ExecStart=/usr/bin/nquakesv
+
+[Install]
+WantedBy=multi-user.target

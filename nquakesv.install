@@ -4,20 +4,7 @@ post_install() {
   echo 'It is *strongly* encouraged to add users to the "users" group (usermod -aG users <username>) if they will be running nQuake.
   Trust me. If you hit a bug and you are using a user not in the users group, you are testing bad and you should feel bad.'
   echo
-  echo "nQuake Server has been installed. Please copy the retail pak1.pak files (as exactly that filename) to /opt/quake/id1/
-  and do (as root):  chmod 0775 /opt/quake/id1/*.pak ; chgrp users /opt/quake/id1/*.pak'"
-  echo "Also remember to run nquakesv-init as the user(s) that will be running nquakesv."
-
-  if [ ! -f "/opt/quake/id1/pak0.pak" ];
-  then
-    cp /opt/quake/id1/pak0.pak.DEMO /opt/quake/id1/pak0.pak
-  fi
+  echo "Remember to run nquakesv-init as the user(s) that will be running nquakesv."
+  echo "Once that has been done, copy the retail pak1.pak files (as exactly that filename) to <user homedir>/.nquakesv/id1/."
+  echo "(If it exists at /opt/quake/id1/pak1.pak, it will be symlinked for you automatically.)"
 }
-
-post_upgrade() {
-
-  # fix group ownerships...
-  find /opt/quake -group games -exec chgrp users '{}' \;
-
-}
-
