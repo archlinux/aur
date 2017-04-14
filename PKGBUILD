@@ -2,13 +2,12 @@
 
 pkgname=trowser
 pkgver=1.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A browser for large line-oriented text files, implemented in Tcl/Tk"
 arch=(any)
 url="http://www.nefkom.net/tomzo/prj/trowser/"
 license=('GPL3')
 depends=('tk')
-groups=('modified')
 source=("http://www.nefkom.net/tomzo/prj/trowser/$pkgname-$pkgver.tar.gz")
 md5sums=('a8dd31314f1c0026cb747d1f9cd9bf45')
 
