@@ -2,8 +2,8 @@
 
 pkgname='pass-tomb'
 pkgver=0.5
-pkgrel=1
-pkgdesc='A pass extension that provides a convenient solution to update an existing password.'
+pkgrel=2
+pkgdesc='A pass extension that helps you to keep the whole tree of password encrypted inside a tomb.'
 arch=('any')
 url='https://github.com/roddhjav/pass-tomb'
 license=('GPL3')

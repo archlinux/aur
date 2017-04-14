@@ -1,7 +1,7 @@
 pkgbase = pass-tomb
-	pkgdesc = A pass extension that provides a convenient solution to update an existing password.
+	pkgdesc = A pass extension that helps you to keep the whole tree of password encrypted inside a tomb.
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/roddhjav/pass-tomb
 	arch = any
 	license = GPL3
