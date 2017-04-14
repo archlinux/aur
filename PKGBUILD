@@ -1,6 +1,7 @@
-# Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
+# Maintainer: Sean Enck <enckse@gmail.com>
+# Contributor: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=python-shyaml
-pkgver=0.3.4
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='YAML for the command line'
 arch=('x86_64')
