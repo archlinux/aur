@@ -3,8 +3,8 @@
 # Contributor: menta <attila dot toth at ch dot bme dot hu>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=llpp
-pkgver=23
-_pkgver=6572184
+pkgver=24
+_pkgver=1415638
 pkgrel=1
 pkgdesc='A graphical PDF viewer which aims to superficially resemble less(1).'
 arch=('i686' 'x86_64')
@@ -40,9 +40,9 @@ optdepends=(
   'texlive-core: llppac dvi conversion'
 )
 source=("http://repo.or.cz/llpp.git/snapshot/${_pkgver}.tar.gz")
-md5sums=('6b0a9b711dff41437203ed555a04c237')
-sha1sums=('bf6c1d15fafdd3ac62511e128beeedd5ce8fbca0')
-sha256sums=('fd5c6b7b67b6044f3a5a3d0da0987066e3b7ab01adf2c6ed74719cb7d298fea7')
+md5sums=('d02a01aeb3c25e9ab7254257fe5b5ae4')
+sha1sums=('4c95650d805ce9c23e8c74acb26de299b3a40cb1')
+sha256sums=('eff5ab376582a11e7258e7aab0ed73c5baaabb11bd560f39e26b53568d95c407')
 options=('!strip')
 
 prepare() {
@@ -51,12 +51,9 @@ prepare() {
   sed -i -e 's+-lmupdfthird+-lmupdfthird -lz -lfreetype -ljpeg -ljbig2dec -lopenjp2+' build.sh
   sed -i -e 's+-L\$srcdir/mupdf/build/native ++' build.sh
 
-  # Eliminate build errors
-  # ./link.c:1669:13: error: implicit declaration of function ‘fz_set_use_document_css’ [-Wimplicit-function-declaration]
-  sed -i -e 's+fz_set_use_document_css (state.ctx, usedoccss);+/* fz_set_use_document_css (state.ctx, usedoccss); */+' link.c
-
   # /usr/lib/libharfbuzz.so.0: error adding symbols: DSO missing from command line
-  sed -i -e 's+-lcrypto+-lcrypto -lharfbuzz+' build.sh
+  sed -i -e 's+-lmupdf+-lmupdf -lharfbuzz+' build.sh
+
 }
 
 build() {
@@ -74,7 +71,7 @@ package() {
 
   # helper scripts
   cd misc/
-  for i in dicx dllpp llppac gc.awk; do
+  for i in dicx dllpp llppac; do
     install -Dm755 $i $pkgdir/usr/bin/$i
   done
 
