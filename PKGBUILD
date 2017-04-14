@@ -10,6 +10,7 @@ pkgdesc="Python game library"
 arch=('i686' 'x86_64')
 url="http://www.pygame.org"
 license=('LGPL')
+makedepends=('python-setuptools')
 depends=('python' 'sdl_mixer' 'sdl_ttf' 'sdl_image' 'portmidi')
 provides=('python-pygame')
 
