@@ -4,9 +4,9 @@
 # Original maintainer: Marcin
 
 pkgname=spring-tool-suite
-pkgver=3.8.3
+pkgver=3.8.4
 _pkgver_release=$pkgver.RELEASE
-_eclipse_pkgver=e4.6.2
+_eclipse_pkgver=e4.6.3
 _eclipse_pkgver_short=e4.6
 pkgrel=1
 pkgdesc="The Spring Tool Suite (STS) from SpringSource"
@@ -19,15 +19,15 @@ makedepends=('zip')
 license=("EPL/1.1")
 
 source=(
-    "http://dist.springsource.com/release/STS/${_pkgver_release}/dist/${_eclipse_pkgver_short}/${pkgname}-${_pkgver_release}-${_eclipse_pkgver}-linux-gtk-x86_64.tar.gz"
+    "http://download.springsource.com/release/STS/${_pkgver_release}/dist/${_eclipse_pkgver_short}/${pkgname}-${_pkgver_release}-${_eclipse_pkgver}-linux-gtk-x86_64.tar.gz"
     "${pkgname}.xpm"
     "${pkgname}.desktop"
 )
 
-md5sums=('da86ad725daa01d89ff131a1f6ad2dc2'
+md5sums=('fb527ac0177c5cb15d4e931ff46d2403'
          '947d3e62d478ef537f2f2b79dac6a405'
          '713d62c23b173881bf74050718ef3d3f')
-[ "$CARCH" = "i686" ] && source[0]="http://dist.springsource.com/release/STS/${_pkgver_release}/dist/${_eclipse_pkgver_short}/${pkgname}-${_pkgver_release}.RELEASE-${_eclipse_pkgver}-linux-gtk.tar.gz"
+[ "$CARCH" = "i686" ] && source[0]="http://download.springsource.com/release/STS/${_pkgver_release}/dist/${_eclipse_pkgver_short}/${pkgname}-${_pkgver_release}.RELEASE-${_eclipse_pkgver}-linux-gtk.tar.gz"
 [ "$CARCH" = "i686" ] && md5sums[0]='507c52872083017eaeccec6a838ca2c2'
 
 package() {
