@@ -1,7 +1,7 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-libvpx
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="VP8 and VP9 codec (mingw-w64)"
 arch=('any')
 url="http://www.webmproject.org/"
@@ -12,7 +12,7 @@ makedepends=('mingw-w64-gcc' 'yasm' 'git')
 source=(libvpx-$pkgver.tar.gz::https://github.com/webmproject/libvpx/archive/v$pkgver.tar.gz
         'configure.patch')
 sha256sums=('cda8bb6f0e4848c018177d3a576fa83ed96d762554d7010fe4cfb9d70c22e588'
-            '73ffee7c361682e6483b2209b2a55887c29c23174b994229bbe0642e09214093')
+            'c904d945fe6f59d981bb6f7650be90a59b5b5704b31dfa385d3e99eb63d98086')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -40,9 +40,7 @@ build() {
         --enable-runtime-cpu-detect \
         --enable-shared \
         --enable-pic \
-        --disable-examples \
         --disable-docs \
-        --disable-install-bins \
         --disable-install-docs \
         --disable-install-srcs \
         --enable-vp8 \
@@ -62,13 +60,13 @@ package() {
     make DIST_DIR="$pkgdir/usr/${_arch}" install
 
     #Move the hacked in shared libs to bin
-    mkdir ${pkgdir}/usr/${_arch}/bin
     mv ${pkgdir}/usr/${_arch}/lib/libvpx.dll ${pkgdir}/usr/${_arch}/bin/
     mv ${pkgdir}/usr/${_arch}/lib/libvpx.dll.4* ${pkgdir}/usr/${_arch}/bin/
 
     #Install implib
     install -m 0644 ${srcdir}/libvpx-$pkgver/build-${_arch}/libvpx.dll.a ${pkgdir}/usr/${_arch}/lib/libvpx.dll.a
 
+    ${_arch}-strip -s ${pkgdir}/usr/${_arch}/bin/*.exe
     ${_arch}-strip -g --strip-unneeded ${pkgdir}/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/*.a
   done

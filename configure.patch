@@ -1,7 +1,7 @@
-diff -ru libvpx-1.6.0/build/make/configure.sh patched/build/make/configure.sh
---- libvpx-1.6.0/build/make/configure.sh	2016-07-21 03:15:41.000000000 +0200
-+++ patched/build/make/configure.sh	2016-08-09 19:20:40.093060169 +0200
-@@ -1308,11 +1308,13 @@
+diff -ru libvpx-1.6.1/build/make/configure.sh patched/build/make/configure.sh
+--- libvpx-1.6.1/build/make/configure.sh	2017-01-12 21:27:27.000000000 +0100
++++ patched/build/make/configure.sh	2017-04-14 12:02:03.691725079 +0200
+@@ -1279,11 +1279,13 @@
          win32)
            add_asflags -f win32
            enabled debug && add_asflags -g cv8
@@ -15,9 +15,9 @@ diff -ru libvpx-1.6.0/build/make/configure.sh patched/build/make/configure.sh
            EXE_SFX=.exe
            ;;
          linux*|solaris*|android*)
-diff -ru libvpx-1.6.0/build/make/Makefile patched/build/make/Makefile
---- libvpx-1.6.0/build/make/Makefile	2016-07-21 03:15:41.000000000 +0200
-+++ patched/build/make/Makefile	2016-08-09 19:20:40.093060169 +0200
+diff -ru libvpx-1.6.1/build/make/Makefile patched/build/make/Makefile
+--- libvpx-1.6.1/build/make/Makefile	2017-01-12 21:27:27.000000000 +0100
++++ patched/build/make/Makefile	2017-04-14 12:02:03.691725079 +0200
 @@ -296,6 +296,7 @@
  	$(if $(quiet),@echo "    [LD] $$@")
  	$(qexec)$$(LD) -shared $$(LDFLAGS) \
@@ -35,10 +35,10 @@ diff -ru libvpx-1.6.0/build/make/Makefile patched/build/make/Makefile
  $(foreach lib,$(filter %$(SO_VERSION_MAJOR).dylib,$(LIBS)),$(eval $(call dl_template,$(lib))))
  $(foreach lib,$(filter %$(SO_VERSION_MAJOR).dll,$(LIBS)),$(eval $(call dll_template,$(lib))))
  
-diff -ru libvpx-1.6.0/configure patched/configure
---- libvpx-1.6.0/configure	2016-07-21 03:15:41.000000000 +0200
-+++ patched/configure	2016-08-09 19:22:26.015003259 +0200
-@@ -500,23 +500,23 @@
+diff -ru libvpx-1.6.1/configure patched/configure
+--- libvpx-1.6.1/configure	2017-01-12 21:27:27.000000000 +0100
++++ patched/configure	2017-04-14 12:02:03.691725079 +0200
+@@ -491,23 +491,23 @@
  }
  
  process_detect() {
@@ -75,10 +75,22 @@ diff -ru libvpx-1.6.0/configure patched/configure
      if [ -z "$CC" ] || enabled external_build; then
          echo "Bypassing toolchain for environment detection."
          enable_feature external_build
-diff -ru libvpx-1.6.0/libs.mk patched/libs.mk
---- libvpx-1.6.0/libs.mk	2016-07-21 03:15:41.000000000 +0200
-+++ patched/libs.mk	2016-08-09 19:20:40.093060169 +0200
-@@ -252,12 +252,12 @@
+diff -ru libvpx-1.6.1/examples.mk patched/examples.mk
+--- libvpx-1.6.1/examples.mk	2017-01-12 21:27:27.000000000 +0100
++++ patched/examples.mk	2017-04-14 12:07:14.397325649 +0200
+@@ -314,7 +314,7 @@
+ ifneq ($(filter os2%,$(TGT_OS)),)
+ SHARED_LIB_SUF=_dll.a
+ else
+-SHARED_LIB_SUF=.so
++SHARED_LIB_SUF=.dll.a
+ endif
+ endif
+ CODEC_LIB_SUF=$(if $(CONFIG_SHARED),$(SHARED_LIB_SUF),.a)
+diff -ru libvpx-1.6.1/libs.mk patched/libs.mk
+--- libvpx-1.6.1/libs.mk	2017-01-12 21:27:27.000000000 +0100
++++ patched/libs.mk	2017-04-14 12:02:03.701725259 +0200
+@@ -255,12 +255,12 @@
  LIBVPX_SO_SYMLINKS      :=
  LIBVPX_SO_IMPLIB        := libvpx_dll.a
  else
@@ -95,7 +107,7 @@ diff -ru libvpx-1.6.0/libs.mk patched/libs.mk
  endif
  endif
  endif
-@@ -267,7 +267,7 @@
+@@ -270,7 +270,7 @@
                             $(if $(LIBVPX_SO_IMPLIB), $(BUILD_PFX)$(LIBVPX_SO_IMPLIB))
  $(BUILD_PFX)$(LIBVPX_SO): $(LIBVPX_OBJS) $(EXPORT_FILE)
  $(BUILD_PFX)$(LIBVPX_SO): extralibs += -lm
