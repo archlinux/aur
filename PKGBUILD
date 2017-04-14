@@ -2,13 +2,13 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r24.1.gedb855b
-pkgrel=2
+pkgver=r25.0.g7edb567
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}. (GIT Version)"
 arch=('any')
 url='http://forum.doom9.org/showthread.php?t=166582'
 license=('GPL')
-depends=('vapoursynth-git'
+depends=('vapoursynth'
          'vapoursynth-plugin-adjust-git'
          'vapoursynth-plugin-addgrain-git'
          'vapoursynth-plugin-awarpsharp2-git'
