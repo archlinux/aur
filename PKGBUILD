@@ -1,7 +1,7 @@
 # Maintainer: Lukas Fürmetz <fuermetz@mailbox.org>
 pkgname=krunner-pass
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A krunner plugin to retrieve a password from the password-store (https://www.passwordstore.org/)"
 arch=('any')
 url="https://github.com/akermu/krunner-pass"
