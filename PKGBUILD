@@ -4,7 +4,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=dropbox-latest
-pkgver=20.4.19
+pkgver=23.4.19
 pkgrel=1
 pkgdesc="A free service that lets you bring your photos, docs, and videos anywhere and share them easily. Latest stable version."
 arch=("i686" "x86_64")
