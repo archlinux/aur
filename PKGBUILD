@@ -1,7 +1,8 @@
 # Maintainer: makz <contact+aur@makz.me>
+# Maintainer: Light2Yellow <alexvilchansky@yahoo.com>
 
 pkgname=ckb-next-git
-pkgver=v0.2.4.r159.g22cfd77
+pkgver=v0.2.4.r173.g565add5
 pkgrel=1
 epoch=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver"
@@ -24,7 +25,7 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname%-VCS}"
   ./qmake-auto
-  make
+  make -j$(nproc --all)
 }
 
 package() {
