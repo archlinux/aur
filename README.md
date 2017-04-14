@@ -1,1 +1,1 @@
-Downloads videos from YouTube and convert them to mp3.
+Convert YouTube videos in HQ audio with mp3 format.

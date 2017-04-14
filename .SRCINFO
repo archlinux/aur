@@ -1,13 +1,11 @@
 pkgbase = youtube-dl-mp3
-	pkgdesc = Downloads videos from YouTube and convert them to mp3. 
+	pkgdesc = Convert YouTube videos in HQ audio with mp3 format.
 	pkgver = 2017.04.14
 	pkgrel = 1
 	url = https://github.com/rst0git/youtube-dl-mp3
 	arch = any
 	depends = youtube-dl
-	options = !strip
 	source = youtube-dl-mp3
 	md5sums = d602848d18fdb089736644f16c26ecea
 
 pkgname = youtube-dl-mp3
-

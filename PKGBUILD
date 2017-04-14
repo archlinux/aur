@@ -4,7 +4,7 @@ pkgver=2017.04.14
 _appname=youtube-dl-mp3
 _release=2017.04.14
 pkgrel=1
-pkgdesc="Downloads videos from YouTube and convert them to mp3."
+pkgdesc="Convert YouTube videos in HQ audio with mp3 format."
 arch=('any')
 url="https://github.com/rst0git/youtube-dl-mp3"
 license=('custom')
@@ -16,5 +16,5 @@ source=(${pkgname})
 md5sums=('d602848d18fdb089736644f16c26ecea')
 
 package() {
-	install -Dm755 youtube-dl-mp3 "${pkgdir}/usr/bin/youtube-dl-mp3"	
+	install -Dm755 youtube-dl-mp3 "${pkgdir}/usr/bin/youtube-dl-mp3"
 }
