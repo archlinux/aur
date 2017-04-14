@@ -2,7 +2,7 @@
 
 pkgname=openvpn-nordvpn
 pkgver=17.4.13
-pkgrel=6
+pkgrel=7
 pkgdesc="OpenVPN configuration files and helper for nordvpn.com"
 arch=(any)
 url="http://www.nordvpn.com"
