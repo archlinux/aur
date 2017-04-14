@@ -1,6 +1,6 @@
 pkgname=bgsync
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Synchronization Tool'
 arch=('any')
 license=('None')
@@ -8,7 +8,7 @@ source=("https://bg-software.net/dls/bgsync_${pkgver}-${pkgrel}_Arch.zip")
 depends=('mono')
 makedepends=('unzip')
 
-sha256sums=('2f5e02b8c527e86f6b75f9f118bf72037e1110fc31580fe42107da25693ff017')
+sha256sums=('d37cfd6f5fcde5be0c40ba723d0d36177577291a575106fd01f0cf655fd37ede')
 
 package() {
 	install -d "${pkgdir}/usr/bin"
