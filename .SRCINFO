@@ -6,6 +6,7 @@ pkgbase = ttf-oxygen
 	url = https://projects.kde.org/projects/kde/workspace/oxygen-fonts
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = custom:OFL
 	license = GPL
 	license = custom:GPL+FE
