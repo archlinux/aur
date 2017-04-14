@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-libbluray
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Library to access Blu-Ray disks for video playback (mingw-w64)'
 arch=('any')
 url='http://www.videolan.org/developers/libbluray.html'
@@ -21,7 +21,6 @@ build() {
     mkdir -p ${srcdir}/libbluray-${pkgver}/build-${_arch} && cd ${srcdir}/libbluray-${pkgver}/build-${_arch}
 
     ${_arch}-configure \
-      --disable-examples \
       --disable-bdjava
     make
   done
@@ -32,6 +31,7 @@ package() {
     cd ${srcdir}/libbluray-${pkgver}/build-${_arch}
 
     make DESTDIR="$pkgdir" install
+    ${_arch}-strip -s ${pkgdir}/usr/${_arch}/bin/*.exe
     ${_arch}-strip -x -g ${pkgdir}/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/*.a
   done
