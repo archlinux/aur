@@ -3,7 +3,7 @@
 
 pkgname=lollypop-git
 _gitname=lollypop
-pkgver=0.9.228.r73.g79d3345b
+pkgver=0.9.231.r3.g0e447a26
 pkgrel=1
 pkgdesc='Music player for GNOME'
 arch=('i686' 'x86_64')
@@ -32,5 +32,5 @@ build() {
 package() {
 	cd "$srcdir/${_gitname}"
 	make DESTDIR="${pkgdir}" install
-	chmod +x $pkgdir/usr/share/lollypop/lollypop-sp
+	#chmod +x $pkgdir/usr/share/lollypop/lollypop-sp
 }
