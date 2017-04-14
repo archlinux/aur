@@ -2,7 +2,9 @@
 *.tar.gz
 
 # build logs
-*.log
+*-build.log
+*-namcap.log
+*-package*.log
 
 # packages
 *.pkg.tar.xz
