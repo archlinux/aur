@@ -3,7 +3,7 @@ _npmver=1.0.2
 
 pkgname=nodejs-hexo-cli
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line interface for Hexo."
 arch=('any')
 url="https://hexo.io"
