@@ -1,0 +1,14 @@
+pkgbase = python2-guess-language
+	pkgdesc = Attempts to determine the natural language of a selection of Unicode (utf-8) text.
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://code.google.com/p/guess-language
+	arch = any
+	license = LGPL2
+	makedepends = python2-setuptools
+	depends = python2
+	source = python2-guess-language-0.2.tar.gz::https://pypi.python.org/packages/e4/d0/df50192865e44af5c934504d413514158c5e522b00d8ec631d818b6d8b6b/guess-language-0.2.tar.gz
+	md5sums = 3a3574c2e8b44f84e656f90684f0c6aa
+
+pkgname = python2-guess-language
+
