@@ -1,14 +1,14 @@
 # Maintainer: Bram Swenson <bram@amplified.work>
 
 pkgname='concourse-fly'
-pkgver=v2.7.0
+pkgver=v2.7.3
 pkgrel=1
 pkgdesc="A command line interface that runs a build in a container with ATC."
 arch=(x86_64)
 url="https://concourse.ci/fly-cli.html"
 license=('Apache')
-source=(https://github.com/concourse/concourse/releases/download/v2.7.0/fly_linux_amd64)
-sha512sums=('0ce31f3b004ef2ff1925a84a2bb5b626ffb15ee88c1b662c1cc784d020250560e6eff000dc8c21a931aba1a4e039c6d3e60c67062496b6905c31ea646218f257')
+source=(https://github.com/concourse/concourse/releases/download/${pkgver}/fly_linux_amd64)
+sha512sums=('2d06ac3edb662008c18bc5c4a2c837a8e55400741fe960496ce692988061214a5b6d0a3c33a911abe98e1b6e5cd73c413c22ec731b06f2ac2e52c7f097cce9fd')
 provides=('fly')
 
 package() {
