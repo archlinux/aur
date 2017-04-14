@@ -11,7 +11,6 @@ groups=()
 depends=('python2' 'python2-beautifulsoup3' 'python2-requests')
 makedepends=('git' 'python2-pip')
 optdepends=()
-_pythondep='urllib2'
 provides=()
 conflicts=()
 replaces=()
