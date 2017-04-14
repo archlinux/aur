@@ -1,0 +1,14 @@
+pkgbase = python2-phply
+	pkgdesc = Lexer and parser for PHP source implemented using PLY
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/viraptor/phply
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	source = python2-phply-1.0.0.tar.gz::https://pypi.python.org/packages/2f/b6/6f3689196078fdf9e48d11289f5d37427956fa755e62ab3284ea07ecb028/phply-1.0.0.tar.gz
+	md5sums = 5849b0eb9470aab54b0a5d59dbaf63b9
+
+pkgname = python2-phply
+
