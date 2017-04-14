@@ -1,7 +1,7 @@
 # Maintainer: HappyClown <giganitris@gmail.com>
 pkgname=adventure-qnx
 pkgver=0.0.0.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A port of Colossal Cave Adventure to modern systems."
 arch=('any')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/Giganitris/Colossal-Cave-Adventure-port/archive/QNX.zip")
 noextract=()
-md5sums=('b30204f29168f7d861a778c86e3e43aa')
+md5sums=('ea7fff63e8d30dce0b6c66571c3c347a')
 validpgpkeys=()
 
 #prepare(){}
