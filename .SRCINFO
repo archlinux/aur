@@ -1,0 +1,21 @@
+pkgbase = krautbbs
+	pkgdesc = A command line lurking tool for Krautchan
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/n4n0GH/KrautBBS
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python2-pip
+	depends = python2
+	depends = python2-beautifulsoup3
+	depends = python2-requests
+	source = KrautBBS::git+https://github.com/n4n0GH/KrautBBS.git
+	source = setup.py
+	source = krautbbs
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = krautbbs
+
