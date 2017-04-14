@@ -1,18 +1,18 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname='persepolis'
-pkgver=2.3.3
-pkgrel=2
+pkgver=2.4
+pkgrel=1
 pkgdesc="A graphical front-end for aria2 download manager with lots of features."
 arch=('any')
 url="https://persepolisdm.github.io/"
 license=('GPL3')
-depends=('aria2' 'vorbis-tools' 'libnotify' 'python' 'python-pyqt5' 'python-requests' 'qt5-svg')
+depends=('aria2' 'libnotify' 'python' 'python-pyqt5' 'python-requests' 'python-setproctitle' 'qt5-svg' 'vorbis-tools')
 optdepends=('firefox-flashgot: for integrating with firefox.')
-provides=("${pkgname}" "persepolis")
-conflicts=("${pkgname}" "persepolis")
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 source=("${pkgname}.tar.gz::https://github.com/persepolisdm/persepolis/archive/${pkgver}.tar.gz")
-sha256sums=('2d52fd03b2a98bedd2b6d57401422f42deb15dc63e52bc7384816f6ba289e8bd')
+sha256sums=('77bef001ffb1ad92be54c7dfa538b9da27208477bb84c8db27b7d5ba2ccabe20')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -21,12 +21,11 @@ prepare() {
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	install -d ${pkgdir}/usr/{bin,share/{persepolis,pixmaps,applications,licenses/persepolis}}
-	install -d ${pkgdir}/usr/share/man/man1
+	install -d ${pkgdir}/usr/share/persepolis	
 	cp -a ./files/*   ${pkgdir}/usr/share/persepolis
 	install -Dm755 ./persepolis ${pkgdir}/usr/bin/persepolis
-	install -Dm644 ./Persepolis\ Download\ Manager.desktop ${pkgdir}/usr/share/applications/persepolis.desktop
+	install -Dm644 ./persepolis.desktop ${pkgdir}/usr/share/applications/persepolis.desktop
 	install -Dm644 ./man/persepolis.1.gz ${pkgdir}/usr/share/man/man1/persepolis.1.gz
-	cp ./files/icon.svg ${pkgdir}/usr/share/pixmaps/persepolis.svg
-	cp ./LICENSE ${pkgdir}/usr/share/licenses/persepolis/
+	install -Dm644 ./files/icon.svg ${pkgdir}/usr/share/pixmaps/persepolis.svg
+	install -Dm644 ./LICENSE ${pkgdir}/usr/share/licenses/persepolis/LICENSE
 }
