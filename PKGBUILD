@@ -3,8 +3,8 @@
 
 pkgbase='ovirt-engine-sdk'
 pkgname=('python-ovirt-engine-sdk' 'python2-ovirt-engine-sdk')
-pkgver='4.1.0'
-pkgrel='2'
+pkgver='4.1.3'
+pkgrel='1'
 pkgdesc='The oVirt Python SDK is a Python package that simplyfies access to the oVirt Engine API.'
 arch=('any')
 url='http://ovirt.org/develop/release-management/features/infra/python-sdk'
@@ -12,7 +12,7 @@ makedepends=('python-setuptools'
 	     'python2-setuptools')
 license=('ASL 2.0')
 source=("http://resources.ovirt.org/pub/ovirt-4.1/src/python-${pkgbase}4/${pkgbase}-python-${pkgver}.tar.gz")
-sha256sums=('0d534d01fda1b6e920d77c1314360fd22b7c07cf33dc04c9bf2b7666cd0e1ca2')
+sha256sums=('6bfa15e793117c33c134cdcfe68b86ccb5bd094b3ef09a9982a627a66cf16b54')
 
 package_python-ovirt-engine-sdk() {
   depends=('python-pycurl' 'python-six')
