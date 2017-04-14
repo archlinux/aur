@@ -1,0 +1,19 @@
+pkgbase = libaom-git
+	pkgdesc = Alliance for Open Media codec library with encoders and decoders for AV1
+	pkgver = r20380.550a11757
+	pkgrel = 1
+	url = http://aomedia.org
+	arch = i686
+	arch = x86_64
+	license = custom:BSD-2-Clause
+	license = custom:AOM-Patent-1.0
+	makedepends = yasm
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = libaom.so
+	source = git+https://aomedia.googlesource.com/aom
+	md5sums = SKIP
+
+pkgname = libaom-git
+
