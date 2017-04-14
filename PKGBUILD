@@ -19,7 +19,7 @@ _enable_vaapi=0  # Patch for VAAPI HW acceleration NOTE: don't work in some grap
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=59.0.3063.4
+pkgver=59.0.3067.0
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -63,6 +63,7 @@ makedepends=('libexif'
              'hwids'
              'nodejs'
              'wget'
+             'sandbox'
              )
 optdepends=('libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users'
             'libva-mesa-driver: HW video acceleration for Nouveau, r600 and radeonsi users'
@@ -87,11 +88,11 @@ source=( #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgv
         'BUILD.gn'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r5.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-gn-bootstrap-r4.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-dma-buf-r1.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-FORTIFY_SOURCE.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/skia-avx2.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-libjpeg-r1.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-icu-r1.patch'
         # Misc Patches
 #         "enable_vaapi_on_linux_${pkgver}.diff::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/25539edd06a0ac9bf4010c4ad9b936d349ebc974/debian/patches/enable_vaapi_on_linux.diff"
 #         "specify-max-resolution_${pkgver}.patch::https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/25539edd06a0ac9bf4010c4ad9b936d349ebc974/debian/patches/specify-max-resolution.patch"
@@ -107,11 +108,11 @@ sha256sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/
             'c7d9974834fc3803b5f1a1d310ff391306964caaabc807a62f8e5c3d38526ee6'
             # Patch form Gentoo
             '735f718556cc2d4730ea5dcc01bece92ad25533605ab9a9336f14c79e9abfb10'
-            '619d44fc68e261d2be93c16512a46c9f10c60e5a2a4d6a3639b7f0b1b32c832c'
             '44ad4232e5e7c6fcdf01492950805ac2c950c948dfcf9631af39f6230aaeb6be'
             'ffc664a90b68600de2d80a4064df25ec6f34fb4443e96ef2f0741ccb49d90a4b'
             'aa10f5797fe28858533ceeb0fa903f37e744ed4133c889eac60f5094e4b6a596'
             'bdad1bcb1aec958083fd0b05db1a62c15a0a35f80eb2a50b81e1c8663c202c9a'
+            '99b568a00a8d7e19bb52e267a615ca47b1b4a0ca3524e58c488e792ac0c8b880'
             # Misc Patches
 #             '14377408f34e2d97b7cd5219e8363fbda249faa5534e30d9226cdf308915b9ad'
 #             'f98818c933042ce61f3940d7c8880f3edc0f300d7e0a92a6ab7c5c7fd0bf8709'
@@ -260,16 +261,13 @@ _keeplibs=(
   'third_party/pdfium'
   'third_party/pdfium/third_party/agg23'
   'third_party/pdfium/third_party/base'
-  'third_party/pdfium/third_party/bigint'
   'third_party/pdfium/third_party/build'
   'third_party/pdfium/third_party/bigint'
   'third_party/pdfium/third_party/freetype'
   'third_party/pdfium/third_party/lcms2-2.6'
-  'third_party/pdfium/third_party/libjpeg'
   'third_party/pdfium/third_party/libopenjpeg20'
   'third_party/pdfium/third_party/libpng16'
   'third_party/pdfium/third_party/libtiff'
-  'third_party/pdfium/third_party/pymock'
   'third_party/ply'
   'third_party/polymer'
   'third_party/protobuf'
@@ -324,7 +322,7 @@ _flags=(
   'use_cups=true'
   'use_sysroot=false'
   'use_gold=false'
-  "use_allocator=\"none\""
+  "use_allocator=\"tcmalloc\""
   'linux_use_bundled_binutils=false'
   'fatal_linker_warnings=false'
   'treat_warnings_as_errors=false'
@@ -408,6 +406,7 @@ prepare() {
   patch -p1 -i "${srcdir}/chromium-FORTIFY_SOURCE.patch"
   patch -p1 -i "${srcdir}/skia-avx2.patch"
   patch -p1 -i "${srcdir}/chromium-system-libjpeg-r1.patch"
+  patch -p1 -i "${srcdir}/chromium-system-icu-r1.patch"
 
   # Misc Patches:
   if [ "${_enable_vaapi}" = 1 ]; then
