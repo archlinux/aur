@@ -1,7 +1,7 @@
 # Maintainer : Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-x264
 pkgver=148.20170121
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='free library for encoding H264/AVC video streams (mingw-w64)'
 arch=('any')
@@ -48,9 +48,9 @@ package() {
       includedir=/usr/${_arch}/include \
       install
 
+    ${_arch}-strip -s ${pkgdir}/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded ${pkgdir}/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/*.a
-    rm ${pkgdir}/usr/${_arch}/bin/*.exe
   done
 }
 
