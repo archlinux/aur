@@ -5,7 +5,7 @@ make_srcinfo () {
 }
 
 build () {
-  makepkg -s
+  makepkg -s "${@}"
 }
 
 clean () {
@@ -13,7 +13,7 @@ clean () {
 }
 
 main () {
-  clean && build && make_srcinfo
+  clean && build "${@}" && make_srcinfo
 }
 
 main "$@"
