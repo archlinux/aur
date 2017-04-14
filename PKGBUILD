@@ -1,7 +1,7 @@
 # Contributor: bubla <matej.tyc@gmail.com>
 pkgname=mingw-w64-libtiff
 pkgver=4.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for manipulation of TIFF images (mingw-w64)"
 arch=(any)
 url="http://www.remotesensing.org/libtiff"
@@ -9,10 +9,17 @@ license=("custom")
 depends=(mingw-w64-libjpeg-turbo mingw-w64-zlib mingw-w64-xz)
 makedepends=(mingw-w64-configure)
 options=(staticlibs !buildflags !strip)
-source=("http://download.osgeo.org/libtiff/tiff-${pkgver}.tar.gz")
-sha1sums=('2c1b64478e88f93522a42dd5271214a0e5eae648')
+source=("http://download.osgeo.org/libtiff/tiff-${pkgver}.tar.gz"
+"fix-hylafax.patch")
+sha1sums=('2c1b64478e88f93522a42dd5271214a0e5eae648'
+          '32166444112dc283ffa4ffdb56c81f246243434c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd "${srcdir}/tiff-${pkgver}"
+  patch -Nbp1 -i ${srcdir}/fix-hylafax.patch
+}
 
 build() {
 	export CFLAGS+=" -fno-strict-aliasing"
