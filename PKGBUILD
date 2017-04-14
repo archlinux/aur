@@ -6,7 +6,7 @@
 
 pkgname=mingw-w64-dcadec
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='DTS Coherent Acoustics decoder with support for HD extensions (mingw-w64)'
 arch=('any')
 url='https://github.com/foo86/dcadec.git'
@@ -45,8 +45,8 @@ package() {
     CONFIG_SHARED='TRUE' make DESTDIR="${pkgdir}" install
     mv "${pkgdir}"/usr/${_arch}/lib/*.dll "${pkgdir}"/usr/${_arch}/bin/
     mv "${srcdir}"/build-${_arch}/libdcadec/*.a "${pkgdir}"/usr/${_arch}/lib/
-    rm "${pkgdir}"/usr/${_arch}/bin/*.exe
 
+    ${_arch}-strip -s "${pkgdir}"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
   done
