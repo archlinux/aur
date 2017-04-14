@@ -2,8 +2,8 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com_
 
 pkgname=dracut
-pkgver=044
-pkgrel=7
+pkgver=045
+pkgrel=1
 pkgdesc="Generic, modular, cross-distribution initramfs generation tool"
 arch=("i686" "x86_64")
 url="https://dracut.wiki.kernel.org/"
@@ -17,8 +17,15 @@ optdepends=("cryptsetup: Part of the Crypto setup"
 makedepends=("docbook-xsl" "asciidoc")
 backup=("etc/dracut.conf")
 install="dracut.install"
-source=("${pkgname}-${pkgver}.tar.xz::http://www.kernel.org/pub/linux/utils/boot/$pkgname/$pkgname-$pkgver.tar.xz")
+source=("http://www.kernel.org/pub/linux/utils/boot/$pkgname/${pkgname}-${pkgver}.tar.xz"
+	"http://www.kernel.org/pub/linux/utils/boot/$pkgname/${pkgname}-${pkgver}.tar.sign")
 
+# Skipp the check since it requiere rpm to work, such portable, wow deb, much other packagemanager
+#check() {
+# cd "${srcdir}/${pkgname}-${pkgver}"
+#
+# make check
+#}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -46,4 +53,6 @@ package() {
 	bashcompletiondir=/usr/share/bash-completion/completions \
 	sysconfdir=/etc loginstall=/var/log/dracut install
 }
-md5sums=('fbb8b6aea24c2f7d328021bbf11788fd')
+
+md5sums=('70d8d222dcdd00b9ee3e05e3bc1d9435'
+         'SKIP')
