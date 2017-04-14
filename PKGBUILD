@@ -14,7 +14,7 @@ makedepends=('git')
 optdepends=()
 checkdepends=()
 provides=()
-conflicts=()
+conflicts=('epic5')
 replaces=()
 backup=()
 options=()
@@ -28,11 +28,6 @@ pkgver() {
   cd "$srcdir/$pkgname"
   git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^epic5.//'
 }
-
-#prepare() {
-#  cd "$srcdir/$pkgname"
-#  ./autogen.sh
-#}
 
 build() {
   cd "$srcdir/$pkgname"
