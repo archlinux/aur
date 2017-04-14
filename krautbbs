@@ -1,9 +1,2 @@
-#!/usr/bin/python2
-# -*- coding: utf-8 -*-
-
-import site;
-
-script = site.getsitepackages()[0]
-script += '/krautbbs/krautbbs.py'
-
-execfile(script)
+#!/bin/sh
+python2 `python2 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`/krautbbs/krautbbs.py
