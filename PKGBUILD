@@ -2,7 +2,7 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux               # Build stock -ARCH kernel
+#pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=tmkernel-bfq       # Build kernel with a different name
 _srcname=linux-4.10
 pkgver=4.10.10
@@ -78,7 +78,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_srcname}"
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make ${MAKEFLAGS} LOCALVERSION=-tmkernel-bfq bzImage modules
 }
 
 _package() {
