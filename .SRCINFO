@@ -1,6 +1,6 @@
 pkgbase = openhab-beta
 	pkgdesc = openHAB2 open source home automation software
-	pkgver = 2.0.0_20170119
+	pkgver = 2.1.0_20170414
 	pkgrel = 1
 	url = http://www.openhab.org/
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = openhab-beta
 	depends = java-runtime-headless>=8
 	conflicts = openhab-runtime
 	conflicts = openhab-addons
-	noextract = openhab-2.0.0-SNAPSHOT.zip
+	noextract = openhab-2.1.0-SNAPSHOT.zip
 	backup = etc/openhab/conf/services/addons.cfg
 	backup = etc/openhab/conf/services/runtime.cfg
-	source = https://openhab.ci.cloudbees.com/job/openHAB-Distribution/lastSuccessfulBuild/artifact/distributions/openhab/target/openhab-2.0.0-SNAPSHOT.zip
+	source = https://openhab.ci.cloudbees.com/job/openHAB-Distribution/lastSuccessfulBuild/artifact/distributions/openhab/target/openhab-2.1.0-SNAPSHOT.zip
 	source = openhab.service
 	sha256sums = SKIP
 	sha256sums = 92be5e206c878bb1a1b476f62b815f24dca198e8e0055095f797d264d8521bfe
