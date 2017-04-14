@@ -1,6 +1,7 @@
-# Maintainer: Peter Crighton <PeteCrighton@gmail.com>
+# Maintainer: Sean Enck <enckse@gmail.com>
+# Contributor: Peter Crighton <PeteCrighton@gmail.com>
 pkgname=python-hiyapyco
-pkgver=0.4.6
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="A Hierarchical Yaml Python Config"
 arch=('any')
@@ -10,7 +11,7 @@ depends=('python-yaml' 'python-jinja')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/zerwes/hiyapyco/archive/release-$pkgver.tar.gz")
-md5sums=('aa0fafb0198d511efd955a7eac18663a')
+md5sums=('76356f08416ba0ba144324471e0976b1')
 
 package() {
   cd "$srcdir/hiyapyco-release-$pkgver"
