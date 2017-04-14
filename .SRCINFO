@@ -1,0 +1,19 @@
+pkgbase = libzbxmodbus-git
+	pkgdesc = Zabbix Modbus loadable module
+	pkgver = 20161101.aa2a57f
+	pkgrel = 1
+	url = https://share.zabbix.com/dir-libraries/zabbix-loadable-modules/modbus-loadable-module
+	arch = i686
+	arch = x86_64
+	license = GPL2.0
+	makedepends = git
+	makedepends = make
+	depends = zabbix-server
+	depends = libmodbus-dev
+	provides = libzbxmodbus
+	conflicts = libzbxmodbus
+	source = git://github.com/v-zhuravlev/libzbxmodbus.git
+	md5sums = SKIP
+
+pkgname = libzbxmodbus-git
+
