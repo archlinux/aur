@@ -1,5 +1,5 @@
 pkgbase = nodejs-generator-react-webpack
-	pkgdesc = Yeoman generator for ReactJS wirh Webpack
+	pkgdesc = Yeoman generator for ReactJS with Webpack
 	pkgver = 3.3.4
 	pkgrel = 1
 	url = https://github.com/react-webpack-generators/generator-react-webpack
