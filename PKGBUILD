@@ -2,7 +2,7 @@
 
 pkgname=xandikos
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='CardDAV/CalDAV server that backs onto a Git repository'
 arch=('any')
 url=https://jelmer.uk/code/xandikos/
@@ -14,6 +14,10 @@ sha512sums=('0af3c2bd511ab4014a231790fc6219c9f2589efe2af5cd6b1478f34bea96c813dcd
 
 check() {
   make check
+}
+
+build() {
+  python setup.py build
 }
 
 package() {
