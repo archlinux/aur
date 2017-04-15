@@ -1,7 +1,7 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
 
 pkgname=chessx
-pkgver=1.4.4
+pkgver=1.4.6
 pkgrel=1
 pkgdesc="Chess Database and PGN viewer"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ optdepends=('stockfish:  For a chess engine')
 makedepends=(qt5-tools)
 conflicts=($pkgname-svn)
 source=(https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.tgz)
-sha256sums=('66f6cd9711d21b636caa213d8aeca06e13a13d225f2b163411535ae7956e3396')
+sha256sums=('ad951910a3bd53f5655f9e85101e7969b536078473e09a2a7dded6ef171a68ed')
 
 build() {
   cd $pkgname-$pkgver
