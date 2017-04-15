@@ -37,7 +37,23 @@ source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}
 sha1sums=('75076beddfd4a1b590cba9fbc78eea901c7f3ddb')
 
 build() {
-  # cd "${srcdir}/${_realname}-$pkgver"
+  # where to install deal.II: change to something else (e.g., /opt/deal.II/)
+  # if desired.
+  installation_prefix=/usr
+
+  # Since deal.II relies on a relatively large number of packages that are
+  # installed in nonstandard places (i.e., the Trilinos AUR package is installed
+  # in /opt/trilinos/), source their environment variable scripts in the
+  # (likely) case that a user installed one of these packages without logging
+  # out and logging back in
+  for package in opencascade p4est-deal-ii petsc slepc trilinos
+  do
+      if pacman -Qs $package >/dev/null
+      then
+          source /etc/profile.d/$package.sh
+      fi
+  done
+
   rm -rf "${srcdir}/build"
   mkdir "${srcdir}/build"
   cd "${srcdir}/build"
