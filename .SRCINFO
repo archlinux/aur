@@ -7,7 +7,7 @@ pkgbase = picard-plugins-git
 	license = GPL
 	depends = picard
 	conflicts = picard<=1.4
-	source = git+https://github.com/metabrainz/picard-plugins.git
+	source = git+https://github.com/metabrainz/picard-plugins.git#branch=1.0
 	md5sums = SKIP
 
 pkgname = picard-plugins-git
