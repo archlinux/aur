@@ -14,13 +14,11 @@ optdepends=(
       'arpack: Fortran77 subroutines designed to solve large scale eigenvalue problems'
       'atlas-lapack: Complete LAPACK and BLAS implementation using optimized ATLAS routines'
       'bzip2: A high-quality data compression program'
-      'doxygen: A documentation system for C++, C, Java, IDL, and PHP'
       'p4est-deal-ii: The parallel forest (p4est) library, built to work with deal.II'
       'gsl: A modern numerical library for C and C++ programmers'
       'hdf5-openmpi: General purpose library and file format for storing scientific data'
       'intel-tbb: High level abstract threading library'
       'lapack: Linear Algebra PACKage'
-      'mathjax: An open source Javascript display engine for mathematics that works in all modern browsers.'
       'metis: partitioning graphs, finite element meshes, fill reducing orderings for sparse matrices.'
       'muparser: A fast math parser library'
       'netcdf-cxx-legacy: Legacy NetCDF C++ bindings'
@@ -81,24 +79,6 @@ build() {
       fi
   fi
 
-  if pacman -Qs doxygen >/dev/null
-  then
-     cmake_configuration_flags+=" -DDEAL_II_COMPONENT_DOCUMENTATION=ON"
-     cmake_configuration_flags+=" -DDEAL_II_SHARE_RELDIR=share/${pkgname}/"
-     cmake_configuration_flags+=" -DDEAL_II_DOCHTML_RELDIR=share/doc/${pkgname}/"
-     cmake_configuration_flags+=" -DDEAL_II_EXAMPLES_RELDIR=share/${pkgname}/examples/"
-
-     if pacman -Qs mathjax >/dev/null
-     then
-         # deal.II does not know where we put mathjax and does not have a
-         # configuration variable for its path, but does check this environment
-         # variable
-         export MATHJAX_ROOT=/usr/share/mathjax/
-         cmake_configuration_flags+=" -DDEAL_II_DOXYGEN_USE_ONLINE_MATHJAX=OFF"
-         cmake_configuration_flags+=" -DDEAL_II_DOXYGEN_USE_MATHJAX=ON"
-     fi
-  fi
-
   # deal.II does not compile with OpenMP: if we use Trilinos and some Epetra
   # headers have OpenMP pragmas enabled then skip unknown pragma warnings.
   extra_warning_flags=""
@@ -126,7 +106,9 @@ build() {
   # to cmake.
   cmake $cmake_configuration_flags -DCMAKE_INSTALL_PREFIX=$installation_prefix  \
         -DCMAKE_INSTALL_MESSAGE=NEVER -DCMAKE_CXX_FLAGS=" $extra_warning_flags" \
-        ../${_realname}-$pkgver
+        -DDEAL_II_SHARE_RELDIR=share/${pkgname}/                                \
+        -DDEAL_II_EXAMPLES_RELDIR=share/${pkgname}/examples/                    \
+        -DDEAL_II_COMPONENT_DOCUMENTATION=OFF ../${_realname}-$pkgver
 
   # if you do not have /etc/makepkg.conf configured, then add -jN (where N is
   # the number of concurrent build jobs, usually 2 * number of physical cores)
@@ -134,13 +116,6 @@ build() {
   # if your machine does not have the memory to support the maximum number.
   # make $MAKEFLAGS
   make -j10
-
-  # build a complete copy of the offline docs by downloading images
-  if pacman -Qs doxygen >/dev/null
-  then
-      cd doc/doxygen/deal.II/
-      bash $srcdir/${_realname}-${pkgver}/contrib/utilities/makeofflinedoc.sh
-  fi
 
   cd "${srcdir}/build"
   echo "export DEAL_II_DIR=$installation_prefix" > ./deal-ii.sh
