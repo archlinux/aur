@@ -2,7 +2,7 @@
 
 pkgname=deal-ii
 _realname=dealii
-pkgver=8.4.2
+pkgver=8.5.0
 pkgrel=1
 pkgdesc="An Open Source Finite Element Differential Equations Analysis Library"
 arch=("i686" "x86_64")
@@ -34,8 +34,7 @@ optdepends=(
 makedepends=('cmake')
 install=deal-ii.install
 source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz)
-# source=(https://dealii.googlecode.com/files/${_realname}-$pkgver.tar.gz)
-sha1sums=('9049342582ebc4fc7a3d11d4a76b8fab356f4966')
+sha1sums=('75076beddfd4a1b590cba9fbc78eea901c7f3ddb')
 
 build() {
   # cd "${srcdir}/${_realname}-$pkgver"
