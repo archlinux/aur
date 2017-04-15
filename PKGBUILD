@@ -10,7 +10,7 @@ url="https://nylas.com"
 license=('MIT')
 makedepends=('nvm' 'grunt-cli')
 depends=('gtk2' 'libgnome-keyring' 'gnome-keyring' 'desktop-file-utils' 'python2' 'gconf' 'nodejs' 'libnotify' 'libxtst' 'nss' 'alsa-lib' 'libxss')
-conflicts=('nylas-mail-bin')
+conflicts=('nylas-mail' 'nylas-mail-bin')
 source=('git://github.com/nylas/nylas-mail.git'
         ${_pkgname}.desktop
         ${_pkgname}.png)
