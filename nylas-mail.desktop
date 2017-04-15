@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Nylas Mail
+Comment=The best email app for people and teams at work
+GenericName=Nylas Mail
+Exec=/usr/bin/nylas %U
+Icon=nylas-mail
+Type=Application
+StartupNotify=true
+StartupWMClass=Nylas Mail
+Categories=GNOME;GTK;Network;Email;Utility;Development;
+MimeType=text/plain;x-scheme-handler/mailto;x-scheme-handler/nylas;
