@@ -1,4 +1,4 @@
 post_install() {
-	echo 'deal.II 8.4.2 has an online documentation available at http://www.dealii.org/8.4.1/'
-	echo 'deal.II examples are provided in /usr/examples/deal.II'
+	echo 'deal.II 8.5.0 has online documentation available at http://www.dealii.org/8.5.0/'
+	echo 'deal.II examples are provided in /usr/share/deal-ii/examples/'
 }
