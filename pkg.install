@@ -1,5 +1,6 @@
 post_install() {
     useradd -d /home/flow -m -r -s /usr/bin/nologin flow
+    chown -R flow:flow /home/flow
 }
 
 pre_remove() {

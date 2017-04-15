@@ -1,0 +1,11 @@
+[Unit]
+Description=flow causal service
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/bin/flow-causal
+Type=simple
+
+
+[Install]
+WantedBy=default.target
