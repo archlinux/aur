@@ -21,9 +21,9 @@ pkgbase = firefox-beta-bin
 	provides = firefox=53.0rc6
 	source = firefox-beta-bin.desktop
 	sha512sums = 865c832fe683f4ebeca7704058d56f834ec5d9d56391d31912cf4a928c56a268cf25064965cf8bbf935a45f638d0a8b24ffa744a47934e5ed8b8bb78883db4c0
-	source_i686 = https://ftp.mozilla.org/pub/firefox/candidates/53.0-candidates/build6/linux-i686/en-US/firefox-53.0.tar.bz2
+	source_i686 = firefox-53.0rc6.tar.bz2::https://ftp.mozilla.org/pub/firefox/candidates/53.0-candidates/build6/linux-i686/en-US/firefox-53.0.tar.bz2
 	sha512sums_i686 = 2b74620ab14cf60f8b23550b191d3110c3d82619d86cc4115e6220b78b3894c27beb68631ac05f9d2f79d48de8d6f1b4bbfa40bb057ac1cb9ae2bc295d8443b5
-	source_x86_64 = https://ftp.mozilla.org/pub/firefox/candidates/53.0-candidates/build6/linux-x86_64/en-US/firefox-53.0.tar.bz2
+	source_x86_64 = firefox-53.0rc6.tar.bz2::https://ftp.mozilla.org/pub/firefox/candidates/53.0-candidates/build6/linux-x86_64/en-US/firefox-53.0.tar.bz2
 	sha512sums_x86_64 = f8eeb74e6fc6485a851717b8dc42158e01225e9d1a39bbf5e46c48bcbd66586932077523865b131313d973667de89064eead121bcb2d8633e6ecfb669cc88198
 
 pkgname = firefox-beta-bin
