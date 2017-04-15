@@ -1,0 +1,20 @@
+pkgbase = akasha-bin
+	pkgdesc = A Next-Generation Social Media Network powered by the Ethereum world computer (Alpha)
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://akasha.world/
+	arch = x86_64
+	license = custom
+	depends = gconf
+	depends = alsa-lib
+	depends = gcc-libs-multilib
+	depends = libxtst
+	depends = gtk2
+	depends = nss
+	depends = libxss
+	provides = akasha
+	source = https://github.com/AkashaProject/Alpha/releases/download/0.5.2/AKASHA-linux-x64-0.5.2.deb
+	sha256sums = fab35557dfcaddcd2c361cbc8fb376ea543832b688667be58c67883e3aa1e398
+
+pkgname = akasha-bin
+
