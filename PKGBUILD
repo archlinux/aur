@@ -1,18 +1,18 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=vmware-ovftool
-pkgver=4.1.0.2459827
-pkgrel=3
+pkgver=4.2.0.4586971
+pkgrel=1
 pkgdesc="VMware Open Virtualization Format tool"
 arch=('i686' 'x86_64')
 url="https://www.vmware.com/support/developer/ovf/"
 license=('custom:vmware')
 makedepends=('xorg-server-xvfb')
-depends=('curl' 'libxml2')
+depends=('curl' 'expat' 'libgpg-error' 'libpng12' 'xerces-c' 'zlib')
 source_i686=("http://url.muflone.com/VMware-ovftool-${pkgver%.*}-${pkgver##*.}-lin.i386.bundle")
 source_x86_64=("http://url.muflone.com/VMware-ovftool-${pkgver%.*}-${pkgver##*.}-lin.x86_64.bundle")
-sha256sums_i686=('cd931c83ceac41f9859e5414fafe4717a1d4a49c32b11afdf4f575ac2515eba2')
-sha256sums_x86_64=('a21ce600f92321a71cde5de1bb947ca9aa62d898c81cefcba4066b756b43993f')
+sha256sums_i686=('53b894dfa977fbbdc7154b8e94e4746f7801e0a22b5881dd725b32638340bff6')
+sha256sums_x86_64=('b1f84bfff40680c594da9840be0ffb4c36e377ae26abecddad12b4cadebfa8d8')
 
 prepare() {
   # The bundle file doesn't allow extraction using symlinks or relative paths, here's then copied
@@ -31,7 +31,8 @@ build() {
   xvfb-run -a sh "${srcdir}/VMware-ovftool-${pkgver%.*}-${pkgver##*.}-${CARCH}_file.bundle" -x "${srcdir}/build"
   # Remove duplicated system libraries
   cd "${srcdir}/build/${pkgname}"
-  rm "libcurl.so.4" "libxml2.so.2"
+  rm "libcurl.so.4" "libexpat.so" "libgcc_s.so.1" "libpng12.so.0" "libstdc++.so.6" \
+     "libxerces-c-3.1.so" "libz.so.1"
 }
 
 package() {
