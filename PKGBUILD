@@ -4,7 +4,7 @@
 pkgname=firefox-unbranded-bin
 _pkgname=firefox-unbranded
 _name=firefox
-pkgver=52.0.3.1490955306
+pkgver=53.0.1492136869
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Unbranded version (binary)"
 arch=('x86_64')

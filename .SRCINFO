@@ -1,6 +1,6 @@
 pkgbase = firefox-unbranded-bin
 	pkgdesc = Standalone web browser from mozilla.org - Unbranded version (binary)
-	pkgver = 52.0.3.1490955306
+	pkgver = 53.0.1492136869
 	pkgrel = 1
 	url = https://wiki.mozilla.org/Add-ons/Extension_Signing#Latest_Builds
 	install = firefox-unbranded-bin.install
@@ -25,7 +25,7 @@ pkgbase = firefox-unbranded-bin
 	optdepends = libpulse: PulseAudio driver
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = upower: Battery API
-	provides = firefox=52.0.3.1490955306
+	provides = firefox=53.0.1492136869
 	conflicts = firefox
 	conflicts = firefox-unbranded
 	source = firefox-unbranded-bin.desktop
@@ -33,8 +33,8 @@ pkgbase = firefox-unbranded-bin
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha512sums = 88849a4d75ed528e21272364461c70a968fc92b661d1dd5007ff54aff11080d2555666cdddd34f0969e2b4bd4d9e1f588133a073323c646b507bc2be6a4e2b23
 	sha512sums = cfc78bb8dbf4bff0da690ff185e9c27ad1cdfc742d8c65aebba22e711aefb634a55c9d941bcc3c46e4e17d515fdefd3a8bb1b4d61cb946ccda0854041181c3fb
-	source_x86_64 = https://archive.mozilla.org/pub/firefox/tinderbox-builds/mozilla-release-linux64-add-on-devel/1490955306/firefox-52.0.3.en-US.linux-x86_64-add-on-devel.tar.bz2
-	sha512sums_x86_64 = 90ca0ea5d0c21bc0f1c2f0faa0bd5d2efbf52b0276f435c8df0d933aea76f6e1ca0bf1f9fb76c8c38c542a2fd2d52a6e13ba8e0f2ad59616e8822eecd06136c4
+	source_x86_64 = https://archive.mozilla.org/pub/firefox/tinderbox-builds/mozilla-release-linux64-add-on-devel/1492136869/firefox-53.0.en-US.linux-x86_64-add-on-devel.tar.bz2
+	sha512sums_x86_64 = c8287c2ee3362e820ffee856c20b615fb7d55065ac190d7465a9c89e39fe9f3da237e52c3a046619baa1ada6ecafc5e9235195b2cd43936721f26ad1e5030021
 
 pkgname = firefox-unbranded-bin
 
