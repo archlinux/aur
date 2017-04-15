@@ -15,8 +15,10 @@ pkgbase = sleepyhead
 	conflicts = sleepyhead-git
 	source = sleepyhead-1.0.0-beta-2.tar.bz2::https://gitlab.com/sleepyhead/sleepyhead-code/repository/archive.tar.bz2?ref=1.0.0-beta-2
 	source = moduleupdates.patch
+	source = Qt-5.8.patch
 	sha256sums = db6152a47df69c5cf85a75171d64c2208a953d838ea5c974c2399e8d7cc94353
 	sha256sums = af1390195fc4a5f2aa0cced24b1ce1a629dbd608a40d10dc319cfcbd959bec02
+	sha256sums = b2783268ae56ad7698ce78c4e72b58557da36d2cf24cf7a680e19ef200d2f350
 
 pkgname = sleepyhead
 
