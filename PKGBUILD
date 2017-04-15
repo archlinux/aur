@@ -2,7 +2,7 @@
 
 _pkgbase=it87
 pkgname=it87-dkms-git
-pkgver=59.75fdbbc
+pkgver=66.c792ed3
 pkgrel=1
 pkgdesc=""
 arch=('x86_64' 'i686')

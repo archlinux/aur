@@ -1,5 +1,5 @@
 pkgbase = it87-dkms-git
-	pkgver = 59.75fdbbc
+	pkgver = 66.c792ed3
 	pkgrel = 1
 	url = https://github.com/groeck/it87
 	arch = x86_64
