@@ -1,6 +1,6 @@
 pkgname=certcheck-git
-pkgver=1
-pkgrel=2
+pkgver=r3.40bf78b
+pkgrel=1
 pkgdesc="CLI tool to check x.509 cert validity on a set of TLS/SSL servers"
 arch=(any)
 url="https://github.com/2ion/certcheck"
