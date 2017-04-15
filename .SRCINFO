@@ -1,7 +1,7 @@
 pkgbase = wire-desktop-git
 	pkgdesc = Modern, private messenger. Based on Electron.
-	pkgver = 2.13.2739.r0.g0f405df
-	pkgrel = 2
+	pkgver = 2.13.2739.r3.gbbc8c91
+	pkgrel = 3
 	url = https://wire.com/
 	arch = x86_64
 	arch = i686

@@ -1,8 +1,8 @@
 # Maintainer: Conor Anderson <conor@conr.ca>
 pkgname=wire-desktop-git
 _pkgname=${pkgname%-git}
-pkgver=2.13.2739.r0.g0f405df
-pkgrel=2
+pkgver=2.13.2739.r3.gbbc8c91
+pkgrel=3
 pkgdesc='Modern, private messenger. Based on Electron.'
 arch=('x86_64' 'i686')
 url='https://wire.com/'
@@ -29,12 +29,13 @@ build() {
   npm install
   grunt 'clean:linux' 'update-keys' 'release-prod'
   if [ $CARCH == 'x86_64' ]; then
-    grunt electronbuilder:linux_x64
+    build_arch="x64"
   elif [ $CARCH == 'i686' ]; then
-    grunt electronbuilder:linux_ia32
+    build_arch="ia32"
   else
-    echo "Unknown architecture"; exit 1;
+    echo "Unsupported architecture"; exit 1;
   fi
+  grunt --arch=${build_arch} --target="dir" "electronbuilder:linux_other"
 }
 
 package() {
@@ -45,7 +46,7 @@ package() {
   elif [ $CARCH == 'i686' ]; then
     cp -a "${srcdir}/${_pkgname}/wrap/dist/linux-ia32-unpacked/"* "${pkgdir}/usr/lib/${_pkgname}"
   else
-    echo "Unknown architecture"; exit 1;
+    echo "Unsupported architecture"; exit 1;
   fi
   
   # Symlink main binary
