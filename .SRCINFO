@@ -1,16 +1,18 @@
 pkgbase = amtterm
 	pkgdesc = Tools to connect to Intel AMT enabled machines via Serial-Over-LAN
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://www.kraxel.org/blog/linux/amtterm/
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = vte3
 	depends = perl-soap-lite
-	source = https://www.kraxel.org/releases/amtterm/amtterm-1.5.tar.gz
-	source = https://www.kraxel.org/releases/amtterm/amtterm-1.5.tar.gz.asc
+	optdepends = vte3: for the gamt GUI
+	source = https://www.kraxel.org/releases/amtterm/amtterm-1.6.tar.gz
+	source = https://www.kraxel.org/releases/amtterm/amtterm-1.6.tar.gz.asc
 	validpgpkeys = A0328CFFB93A17A79901FE7D4CB6D8EED3E87138
-	md5sums = 064473485f29e7f7b6d1babfc2bb64f3
+	md5sums = 0134d1f28ca06bbf21e578f9c824e0c4
 	md5sums = SKIP
 
 pkgname = amtterm
