@@ -4,4 +4,4 @@ if [ ! -d $HOME/.magarena/Magarena ] ; then
     tar -xvzf /usr/share/magarena/default-userdata.tar.gz -C $HOME/.magarena/
 fi
 cd $HOME/.magarena
-exec java -Xms256M -Xmx512M -noverify -jar /usr/share/magarena/Magarena.jar
+JVM /usr/share/magarena/Magarena.jar
