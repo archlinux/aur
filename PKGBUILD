@@ -11,7 +11,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=('nquakesv')
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="The easiest, quickest, and most popular QuakeWorld server."
 url="http://nquake.com/"
 license=('GPL2' 'custom')
@@ -121,6 +121,7 @@ package () {
 	install -D -m 0644 ${srcdir}/CC0-1.0 ${pkgdir}/usr/share/licenses/${pkgname}/CC0-1.0
 	install -D -m 0644 ${srcdir}/dirtree.lst ${pkgdir}/usr/share/${pkgname}/dirtree.lst
 	install -D -m 0644 ${srcdir}/linktree.lst ${pkgdir}/usr/share/${pkgname}/linktree.lst
+	install -D -m 0644 ${srcdir}/nquakesv@.service ${pkgdir}/usr/share/${pkgname}/nquakesv@.service
 
 ### NQUAKE-PROVIDED ##
 	# Implement the following in ezQuake
