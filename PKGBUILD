@@ -59,9 +59,87 @@ build() {
   mkdir "${srcdir}/build"
   cd "${srcdir}/build"
 
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/ ../${_realname}-$pkgver
+  # explicitly disallow bundled packages: this disables bundled copies of boost,
+  # intel-tbb, part of suitesparse, and muparser, which are all available in the
+  # standard repositories
+  cmake_configuration_flags=" -DDEAL_II_ALLOW_BUNDLED=OFF"
 
-  make
+  # deal.II does not use more aggressive search paths (which we need) for MPI
+  # unless we explicitly enable it, so check for MPI and then turn it on:
+  if pacman -Qs openmpi >/dev/null
+  then
+      cmake_configuration_flags+=" -DDEAL_II_WITH_MPI=ON"
+  fi
+
+  # See if PETSc was configured to use 64 bit indices:
+  if pacman -Qs petsc >/dev/null
+  then
+      if grep '^#define PETSC_USE_64BIT_INDICES 1' $PETSC_DIR/include/petscconf.h >/dev/null
+      then
+         cmake_configuration_flags+=" -DDEAL_II_WITH_64BIT_INDICES=ON"
+      fi
+  fi
+
+  if pacman -Qs doxygen >/dev/null
+  then
+     cmake_configuration_flags+=" -DDEAL_II_COMPONENT_DOCUMENTATION=ON"
+     cmake_configuration_flags+=" -DDEAL_II_SHARE_RELDIR=share/${pkgname}/"
+     cmake_configuration_flags+=" -DDEAL_II_DOCHTML_RELDIR=share/doc/${pkgname}/"
+     cmake_configuration_flags+=" -DDEAL_II_EXAMPLES_RELDIR=share/${pkgname}/examples/"
+
+     if pacman -Qs mathjax >/dev/null
+     then
+         # deal.II does not know where we put mathjax and does not have a
+         # configuration variable for its path, but does check this environment
+         # variable
+         export MATHJAX_ROOT=/usr/share/mathjax/
+         cmake_configuration_flags+=" -DDEAL_II_DOXYGEN_USE_ONLINE_MATHJAX=OFF"
+         cmake_configuration_flags+=" -DDEAL_II_DOXYGEN_USE_MATHJAX=ON"
+     fi
+  fi
+
+  # deal.II does not compile with OpenMP: if we use Trilinos and some Epetra
+  # headers have OpenMP pragmas enabled then skip unknown pragma warnings.
+  extra_warning_flags=""
+  if pacman -Qs trilinos >/dev/null
+  then
+      if [ -f $TRILINOS_DIR/include/Epetra_config.h ]
+      then
+          if grep '^#define EPETRA_HAVE_OMP$' $TRILINOS_DIR/include/Epetra_config.h >/dev/null
+          then
+             extra_warning_flags+=" -Wno-unknown-pragmas"
+          fi
+      fi
+  fi
+
+  # the deal.II GCC flags are already well-chosen for speed (and -O3 is known to
+  # be slightly slower than O2), so do not use flags in /etc/makepkg.conf by
+  # default. If you want to edit this file to use other flags then pass cmake
+  # -DCMAKE_CXX_FLAGS=" flags-you-want".
+  #
+  # if you wish to disable specific optional packages, then pass (e.g., for
+  # Trilinos)
+  #
+  #     -DDEAL_II_WITH_TRILINOS=OFF
+  #
+  # to cmake.
+  cmake $cmake_configuration_flags -DCMAKE_INSTALL_PREFIX=$installation_prefix  \
+        -DCMAKE_INSTALL_MESSAGE=NEVER -DCMAKE_CXX_FLAGS=" $extra_warning_flags" \
+        ../${_realname}-$pkgver
+
+  # if you do not have /etc/makepkg.conf configured, then add -jN (where N is
+  # the number of concurrent build jobs, usually 2 * number of physical cores)
+  # to this flag. deal.II needs about 2 GB/compilation process so use fewer jobs
+  # if your machine does not have the memory to support the maximum number.
+  # make $MAKEFLAGS
+  make -j10
+
+  # build a complete copy of the offline docs by downloading images
+  if pacman -Qs doxygen >/dev/null
+  then
+      cd doc/doxygen/deal.II/
+      bash $srcdir/${_realname}-${pkgver}/contrib/utilities/makeofflinedoc.sh
+  fi
 
   cd "${srcdir}/build"
   echo "export DEAL_II_DIR=$installation_prefix" > ./deal-ii.sh
