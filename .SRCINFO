@@ -1,6 +1,6 @@
 pkgbase = waveengine
 	pkgdesc = WaveEngine - Component based game engine
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 0
 	url = https://waveengine.net/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = waveengine
 	depends = sox
 	depends = sdl
 	depends = sdl_mixer
-	source = https://wave.blob.core.windows.net/waveinstallers/WaveEngineSetup_2_3_0.deb
-	md5sums = aecb2ab42f8214358c0e534af78eb9ac
+	source = https://wave.blob.core.windows.net/waveinstallers/WaveEngineSetup_2_3_1.deb
+	sha256sums = 767afb214c4914070768d0a3ee851f11665ff50bdce9e9c7db29f884ad895ac0
 
 pkgname = waveengine
 
