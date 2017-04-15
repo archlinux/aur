@@ -62,6 +62,9 @@ build() {
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/ ../${_realname}-$pkgver
 
   make
+
+  cd "${srcdir}/build"
+  echo "export DEAL_II_DIR=$installation_prefix" > ./deal-ii.sh
 }
 
 package() {
@@ -79,6 +82,7 @@ package() {
   # remove unnecessary stuffs in pkgbuild
   #rm -rf "${pkgdir}/usr/${_realname}/cmake" "${pkgdir}/usr/${_realname}/common/"
 
+  install -D -m755 "${srcdir}/build/deal-ii.sh" "${pkgdir}/etc/profile.d/deal-ii.sh"
   install -D -m644 "${srcdir}/${_realname}-$pkgver/LICENSE" "${pkgdir}/usr/share/licenses/${_realname}-$pkgver/LICENSE"
 }
 
