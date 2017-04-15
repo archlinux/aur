@@ -3,16 +3,14 @@
 pkgname=ldapxx
 pkgdesc="C++ interface to ldap.h"
 url="https://github.com/de-vri-es/ldapxx"
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 depends=(libldap boost)
 arch=(x86_64 i386)
 license=(BSD)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/de-vri-es/ldapxx/archive/$pkgver.tar.gz")
-sha512sums=('cfe11d8f4d00d6fe9a461329145b435454cd6c507192a5c2bb06ca0ac1fded8301d6c3773d8e75c8b170b96533cce6266be93bd7a9eedab8b33a6bc00a5400bc')
-
-
+sha512sums=('07dad96d9e71cf342576866ebb3078dec6ad5bc80227918890cfec1f964d88af2baec5b5b3ee95e70313862370dd05343f95e411068ed0b10392320b05b1fb4c')
 
 prepare() {
 	rm -rf "$srcdir/build"
@@ -34,4 +32,3 @@ package() {
 	make install DESTDIR="$pkgdir"
 	install -m644 -Dt "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/$pkgname-$pkgver/LICENSE"
 }
-
