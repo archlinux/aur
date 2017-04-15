@@ -1,7 +1,7 @@
 pkgbase = ueyed
 	pkgdesc = IDS uEye camera daemon (USB and ethernet)
-	pkgver = 4.81.1
-	pkgrel = 4
+	pkgver = 4.82.00
+	pkgrel = 1
 	url = https://en.ids-imaging.com
 	install = ueyed.install
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = ueyed
 	depends = qt4
 	backup = etc/ueye/ueyeethd.conf
 	backup = etc/ueye/ueyeusbd.conf
-	source = https://en.ids-imaging.com/tl_files/downloads/uEye_SDK/driver/uEye-Linux-4.81-64-bit.tgz
+	source = https://en.ids-imaging.com/download-ueye-lin64.html?file=tl_files/downloads/uEye_SDK/driver/uEye-Linux-4.82.00-64-bit.tgz
 	source = ueyeethd.service
 	source = ueyeusbd.service
 	source = ueyeusb.rules
 	source = ueyeethd.conf
 	source = ueyeusbd.conf
-	sha512sums = ec1da826e64d9e1b35147de66749905b283d008edfcb3bb600d053d442d00cb52024b78c1172b788b7ed6e2b103c153640efdbee8451ee7a730f78328bebde25
+	sha512sums = 6997e8a3781e1884047d51ec239ba38acc4b09c3a79374ce3228bef4ce112acff84b04ceccf1a50ddea54f2e45e3a1ee0e7266b1d40ff08cf8c7e5df55f26742
 	sha512sums = 9e4156ecfc687b895ecf5055cd97e748760c675e8478caa46c2d19a49f1e2b31000e85a394198b9ab6da40d3b9ede4ffde4f960fc9f8ba7b1a44cffe69b77dbc
 	sha512sums = 3e5d357f43e68a143b9da9c712043224304e30699618da9d17f0916297c48d4865d7af2a040561f1b13c6bdef7c613bc441549f152ce0669f67001f0d401fb5a
 	sha512sums = fe1901eb22210e7c3f23171197e9316c2a400d68e62d32b52c3900d1d30c38654c90cf101db483dc140103a1c36c2de28b28e6d8a135564c382b0d3e70d37549
