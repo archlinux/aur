@@ -1,27 +1,15 @@
-In order to use nquakesv under Arch Linux, you need to create a ~/.nquakesv directory with the following structure:
-
-~/.nquakesv/
-├── id1
-│   └── maps
-├── ktx
-│   ├── demos
-│   ├── modes
-│   ├── progs
-│   └── sound
-│       ├── misc
-│       ├── ra
-│       ├── rune
-│       └── weapons
-├── logs
-├── qtv
-│   └── levelshots
-├── qw
-│   └── maps
-│       └── ctf
-└── qwfwd.d
-
-This can be set up automatically by running /usr/bin/nquakesv-init. This is the recommended way as it will create necessary symlinks from the ezquake install as well.
+In order to use nquakesv under Arch Linux, you need to create a ~/.nquakesv directory with various symlinks to the actual data files.
+This can be automatically created by running /usr/bin/nquakesv-init. It is advised to copy the retail pak1.pak to /opt/quake/id1/ first; if not,
+you will need to copy it to ~/.nquakesv/id1/ later.
 
 Note that if you wish nquakesv to start on boot, you will need to use a sliced systemd unit:
 
 systemctl enable nquakesv@<username>.service
+
+However, this by default starts game mode ktx. If you wish to change the commandline arguments, you can create a modified version.
+For example, as root,
+
+cp /usr/lib/systemd/system/nquakesv\@.service /etc/systemd/system/nquakesv-ctf\@.service
+sed -i -e 's/ktx/ctf/g' /etc/systemd/system/nquakesv-ctf\@.service
+systemctl daemon-reload
+systemctl enable nquakesv-ctf@<username>.service

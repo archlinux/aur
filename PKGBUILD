@@ -26,8 +26,8 @@ _pkgname=nquake
 _alt_pkgver=$(echo ${pkgver} | sed -e 's/\.//g')
 
 # http://nquake.sourceforge.net/nquake.ini for list of mirrors
-#_nQ_MIRROR="http://quakeservers.nquake.com" # NL
-_nQ_MIRROR="http://fnu.nquake.com" # Uppsala, SE
+_nQ_MIRROR="http://quakeservers.nquake.com" # NL
+#_nQ_MIRROR="http://fnu.nquake.com" # Uppsala, SE
 #_nQ_MIRROR="http://quake.tdhack.com/nquake" # FR
 #_nQ_MIRROR="http://nquake.quake1.de" # DE
 
@@ -76,10 +76,10 @@ sha512sums=('6a07601f56aec5d88b3463c09c4482a2d76e5d7efd8ddc24c1b4e9b662152f62070
 	    '93d6879712f7bdd56e3ab8f018810bb66a2d4d89e7dfcabf53668eaf23dd984959a1fbe4ecaa743e98b9be2b65de5b2746529b195c78b0c1ff0996e32d8fdd1b' # sv-configs.zip
 	    '1eb4436f8d58766cbe99db97e5e8c0db8a706376afd291c337de1ba7a6b066d3791dc85ad034bdd54ea336bed6e6e8e7a037d8b04b2773c9c7517b9d9921d1fa' # CC0-1.0
 	    '61fdec91aeee6b773d451b7407bca55fba5cd152654385b208c9a63c4e92c9f3fba2d8ad45b09585134ba5e1e7f6796c4ad706e5e564bbf3617026994cf30822' # nquakesv.run
-	    'b083d3884c9885ab402e58c95ec3b5288ee06afce2bab83af1610c9d2ee174ce7b77748647499cb82d9a3f4686d936e9a91b5feccae0818addd236907952c3d1' # README.arch
+	    '7b7b6286e77fbe03fee7e560757a06cfe05f050b2377b8e12e4c8f2e8462a539ed7ea0bcdb55bba93bdce081f446ea2a9849ff254fb92448a127a2b2edfbdd8b' # README.arch
 	    '2bd1a5f1aaec1332f1812d416568f8cd6d1506166f6863743e5c66c83ad5cc74e2415470c28b9f75cb2e20f04c51b930474bbb8073f2f47cb63765cfb144fda3' # dirtree.lst
 	    '562b17c114f4bc92116acce9a41dbb3d1031ae4ab5ae844e42a61ad3304ae95c86c299069c34966681af44516b5c58b05133441715f2cf4234697a9b3f58c250' # linktree.lst
-	    '21d279b5494d2cd777693eade8dde35c5ba7a6dba395828153d1b390ee768fb3ccb57d4b9c4a1dd5bc47d061a3242d9d659c23f310360c76cff95962baaf9a86' # nquakesv-init.py
+	    '96de31ae55dd590b6052062630f620edce7259700e57204ad4396a745ba3f4b73402ad595121dca7f5e298d8de366cc38931b20b0717f2c3daf2de2ef3ed1dab' # nquakesv-init.py
 	    'f78b53dd916c4dc93967d33d03c6391754a0a9b5e6618a0985846a9b55971828f3367cf43154d18456b64ff4add42d9a3dbf84be0d46696fe7a51651d2b1c58d' # nquakesv@.service
 	    'SKIP' # onwards are .sig files
 	    'SKIP'
