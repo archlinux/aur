@@ -1,5 +1,6 @@
 # Maintainer : Simone Economo <my.ekoes@gmail.com>
 # Contributor: Boudhayan Gupta <me at BaloneyGeek dot com>
+# Contributor: Tomasz Gąsior <tomaszgasior.pl>
 
 pkgname=system-config-samba
 pkgver=1.2.100
@@ -17,8 +18,8 @@ conflicts=()
 replaces=()
 backup=()
 install=system-config-samba.install
-source=("https://fedorahosted.org/released/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
-        "https://fedorahosted.org/released/${_docsname}/${_docsname}-${_docsver}.tar.bz2"
+source=("${pkgname}-${pkgver}.tar.bz2"
+        "${_docsname}-${_docsver}.tar.bz2"
         "${pkgname}.patch"
         "${_docsname}.patch"
         "${pkgname}.8")
