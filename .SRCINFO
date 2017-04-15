@@ -1,7 +1,7 @@
 pkgbase = cylon
 	pkgdesc = Updates, Maintenance, backup and system checks in a menu driven Bash script
-	pkgver = 3.6
-	pkgrel = 7
+	pkgver = 3.6.1
+	pkgrel = 8
 	url = https://github.com/gavinlyonsrepo/cylon
 	arch = any
 	license = GPL
@@ -25,8 +25,8 @@ pkgbase = cylon
 	optdepends = speedtest-cli: internet bandwidth
 	optdepends = lynis: system audit tool
 	optdepends = openbsd-netcat: used for checking network
-	source = https://github.com/gavinlyonsrepo/cylon/archive/3.6.tar.gz
-	md5sums = 7df9292ff812b98b97f803ff816c1804
+	source = https://github.com/gavinlyonsrepo/cylon/archive/3.6.1.tar.gz
+	md5sums = 586319deeae70e0b31c93ac328a6bd57
 
 pkgname = cylon
 
