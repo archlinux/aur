@@ -3,18 +3,18 @@
 
 pkgname=unreel
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI to create Reveal presentations"
 arch=('i686' 'x86_64')
 url="https://github.com/linux-man/unreel"
 license=('GPL3')
 depends=('gconf' 'libnotify' 'libappindicator-gtk2' 'libxtst' 'nss')
 makedepends=('npm')
-source=("https://github.com/linux-man/unreel/archive/v$pkgver.tar.gz")
-md5sums=('2a7526dd39834b22c3b6b4cce80b5236')
+source=("https://github.com/linux-man/unreel/archive/v$pkgver.tar.gz" "unreel.xml")
+md5sums=('2a7526dd39834b22c3b6b4cce80b5236' '6aaa81cb3511288c44ffb8e4fe9e2b5f')
 
 prepare() {
-  gendesk -f -n --name=Unreel --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --exec="${pkgname}" --categories="Office"
+  gendesk -f -n --name=Unreel --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --exec="${pkgname}" --categories="Office" --mimetypes="application/reel"
 }
 
 build() {
@@ -31,7 +31,7 @@ build() {
 
 package() {
   # Place files
-  install -d "${pkgdir}/usr/lib/${pkgname}"
+  install -d  "${pkgdir}/usr/lib/${pkgname}"
   if [ $CARCH == 'x86_64' ]; then
     cp -a "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/"* "${pkgdir}/usr/lib/${pkgname}"
   elif [ $CARCH == 'i686' ]; then
@@ -49,4 +49,8 @@ package() {
   install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/icons/icon.png" \
       "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/icons/icon.png" \
+	"${pkgdir}/usr/share/icons/hicolor/512x512/mimetypes/application-reel.png"
+  install -d "${pkgdir}/usr/share/mime/packages"
+  install -Dm644 "${srcdir}/${pkgname}.xml" "${pkgdir}/usr/share/mime/packages/${pkgname}.xml"
 }
