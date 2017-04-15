@@ -3,7 +3,7 @@
 pkgname=rhythmbox-plugin-tray-icon-git
 _pkgname=rhythmbox-tray-icon
 pkgver=93.38275a7
-pkgrel=3
+pkgrel=4
 pkgdesc="Tray icon for Rhythmbox 2.9+ with rating feature"
 arch=("any")
 url="https://github.com/mendhak/rhythmbox-tray-icon"
