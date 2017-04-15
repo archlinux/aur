@@ -1,6 +1,6 @@
 pkgbase = numix-icon-theme-pack
 	pkgdesc = Numix project Icon Themes - Updated with Numix Core
-	pkgver = 20170409
+	pkgver = 20170415
 	pkgrel = 1
 	url = http://numixproject.org/
 	arch = any

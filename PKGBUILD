@@ -1,8 +1,6 @@
-# Maintainer: Bash Booster "booster.sdk at gmail dot com"
-
+_commit="15faf073dc8476915cf6e4da4762d94367e988d2"
 pkgname=numix-icon-theme-pack
-commit=45989553eade51f701968aa774aead09bb862aae
-pkgver=20170409
+pkgver=20170415
 pkgrel=1
 pkgdesc='Numix project Icon Themes - Updated with Numix Core'
 arch=('any')
@@ -16,8 +14,7 @@ source=(
 "numix-icon-theme-square::git+https://github.com/numixproject/numix-icon-theme-square.git"
 "numix-icon-theme-circle::git+https://github.com/numixproject/numix-icon-theme-circle.git"
 "numix-icon-theme::git+https://github.com/numixproject/numix-icon-theme.git"
-"numix-core::git+https://github.com/numixproject/numix-core.git"
-)
+"numix-core::git+https://github.com/numixproject/numix-core.git")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
