@@ -1,0 +1,22 @@
+pkgbase = uget-beta
+	pkgdesc = GTK+ download manager featuring download classification and HTML import
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = http://ugetdm.com/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	depends = libnotify
+	depends = libappindicator-gtk3
+	depends = gtk3
+	depends = gstreamer
+	depends = curl
+	optdepends = aria2: alternative backend
+	provides = uget
+	conflicts = uget
+	source = https://downloads.sourceforge.net/project/urlget/uget%20%28developing%29/2.1.5/uget-2.1.5.tar.gz
+	sha256sums = a32f2fb8ad558c552caeb0c9dedb4f5825f531f71baf54b6cb9b809b0d3c0ed9
+
+pkgname = uget-beta
+
