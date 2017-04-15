@@ -1,4 +1,4 @@
-From b4c088f3e398bdf6e1f4df947442a6e9ac958fd7 Mon Sep 17 00:00:00 2001
+From c8d7a1659883e4e3632291d5ec14690c6e11da24 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michael=20La=C3=9F?= <lass@mail.uni-paderborn.de>
 Date: Thu, 19 Feb 2015 19:34:00 +0100
 Subject: [PATCH 1/3] Adjust RedHat config and service files
@@ -10,7 +10,7 @@ Basically we reuse upstream's config for RedHat but we change a few things:
  * enable network traffic encryption by default
  * wait for dkms if dkms is used
 
-Change-Id: I44dea414d837f51fc69c52e54d99aee130820e30
+Change-Id: Iddf101a047458dda34a000dec62feefd81c13421
 ---
  src/packaging/RedHat/openafs-cacheinfo      |  2 +-
  src/packaging/RedHat/openafs-client.service | 17 ++++++++---------
@@ -25,10 +25,10 @@ index dd0fd05cb..1663c79b5 100755
 -/afs:/usr/vice/cache:100000
 +/afs:/var/cache/openafs:100000
 diff --git a/src/packaging/RedHat/openafs-client.service b/src/packaging/RedHat/openafs-client.service
-index cc206318c..c0b4d85f3 100644
+index 09379bea3..a63fce486 100644
 --- a/src/packaging/RedHat/openafs-client.service
 +++ b/src/packaging/RedHat/openafs-client.service
-@@ -1,20 +1,19 @@
+@@ -1,21 +1,20 @@
  [Unit]
  Description=OpenAFS Client Service
  Wants=network-online.target
@@ -40,6 +40,8 @@ index cc206318c..c0b4d85f3 100644
  Type=forking
  RemainAfterExit=true
 -EnvironmentFile=/etc/sysconfig/openafs
++EnvironmentFile=/etc/conf.d/openafs
+ ExecStartPre=/bin/bash -c "fs sysname > /dev/null 2>/dev/null; test $? -ne 0 || (echo AFS client appears to be running -- not starting && exit 1)"
 -ExecStartPre=/bin/sed -n 'w/usr/vice/etc/CellServDB' /usr/vice/etc/CellServDB.local /usr/vice/etc/CellServDB.dist
 -ExecStartPre=/bin/chmod 0644 /usr/vice/etc/CellServDB
 -ExecStartPre=/sbin/modprobe openafs
@@ -47,7 +49,6 @@ index cc206318c..c0b4d85f3 100644
 -ExecStop=/bin/umount /afs
 -ExecStop=/usr/vice/etc/afsd -shutdown
 -ExecStop=/sbin/rmmod openafs
-+EnvironmentFile=/etc/conf.d/openafs
 +ExecStartPre=/usr/bin/modprobe openafs
 +ExecStart=/usr/bin/afsd $AFSD_ARGS
 +ExecStartPost=/usr/bin/fs setcrypt on
@@ -73,5 +74,5 @@ index ac9d3c411..0a4b3bfea 100644
  
  [Install]
 -- 
-2.11.0
+2.12.2
 
