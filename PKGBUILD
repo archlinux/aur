@@ -2,13 +2,13 @@
 
 pkgname=gimp-plugin-scale-layer-to-image-size
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Scales the contents of the layer, or layer group, to image size."
 arch=('any')
-url="http://some-gimp-plugins.com/contents/en/extensions/001/"
+url="http://slybug.deviantart.com/art/Scale-Layer-to-Image-Size-301972855"
 license=('GPL')
 depends=('gimp')
-source=("http://some-gimp-plugins.com/contents/en/extensions/001/${pkgname/gimp-plugin-/}.zip")
+source=("http://url.muflone.com/${pkgname}-${pkgver}.zip")
 sha256sums=('d95f2d257cd72f82886709125f856f5e8c60a5c615bc596578d35b3c78a68054')
 
 package() {
