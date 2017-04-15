@@ -1,5 +1,5 @@
 pkgname=dnf
-_pkgver=2.1.1
+_pkgver=2.2.0
 _rpmrel=1
 _pkgtag=$pkgname-$_pkgver-$_rpmrel
 pkgver=$_pkgver.$_rpmrel
@@ -15,7 +15,7 @@ checkdepends=('python-nose')
 backup=("etc/$pkgname/automatic.conf"
         "etc/$pkgname/$pkgname.conf")
 source=("$url/archive/$_pkgtag.tar.gz")
-md5sums=('62725dddaf93f0504cbaa96bf9418e1d')
+md5sums=('253e54f1c1bcc32a1a71a0d384735645')
 
 prepare() {
 	mv "$pkgname-$_pkgtag" "$pkgname-$pkgver"
