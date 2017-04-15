@@ -1,7 +1,7 @@
 # Maintainer: Charlie Li <vishwin AT vishwin POINT info>
 
 pkgname=cockroachdb
-pkgver=20170406
+pkgver=20170413
 pkgrel=1
 pkgdesc="An open source, survivable, strongly consistent, scale-out SQL database"
 arch=('x86_64')
@@ -21,8 +21,7 @@ prepare() {
 build() {
 	export GOPATH=$(pwd)/go
 	cd ${GOPATH}/src/github.com/cockroachdb/cockroach
-	make .bootstrap
-	go build -v -i -o cockroach
+	make build
 }
 
 package() {
