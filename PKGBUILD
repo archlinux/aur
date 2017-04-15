@@ -1,5 +1,6 @@
-# Maintainer: Michael Straube <straubem@gmx.de>
-# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer Marius <marius@habarnam.ro>
+# Initial work by: Michael Straube <straubem@gmx.de>
+#             and: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=lib32-libopenssl-1.0-compat
 _ver=1.0.2k
