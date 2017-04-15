@@ -1,8 +1,8 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname='persepolis'
-pkgver=2.4
-pkgrel=3
+pkgver=2.4.1
+pkgrel=1
 pkgdesc="A graphical front-end for aria2 download manager with lots of features."
 arch=('any')
 url="https://persepolisdm.github.io/"
@@ -12,7 +12,7 @@ optdepends=('firefox-flashgot: for integrating with firefox.')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/persepolisdm/persepolis/archive/${pkgver}.tar.gz")
-sha256sums=('e50db53531aaf73713beb9df4a257420a167de8c20a3d33573e86cf67c77d3a4')
+sha256sums=('e508babfee0a1aa2eb96f5966a9b2481fa777ffd719261808fa1985eb755cf05')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
