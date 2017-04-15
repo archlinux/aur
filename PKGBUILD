@@ -1,4 +1,5 @@
-# Maintainer: Florian Dang <florian dot coin at gmail dot com>
+# Maintainer: David Wells <dr wells at vt dot e d u>
+# Contributor: Florian Dang <florian dot coin at gmail dot com>
 
 pkgname=deal-ii
 _realname=dealii
