@@ -1,4 +1,4 @@
-# Maintainer: Muflone <webreg(at)vbsimple.net>
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=gimp-plugin-create-layer-mask-from
 pkgver=1.0
