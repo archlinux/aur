@@ -71,18 +71,6 @@ package() {
   cd "${srcdir}/build"
   make DESTDIR="${pkgdir}" install
 
-  # doc
-  #install -d "${pkgdir}/usr/share/doc/"
-  #mv "${srcdir}/${_realname}/doc/" "${pkgdir}/usr/share/doc/${_realname}"
-
-  # examples and README
-  #mv "${pkgdir}/usr/${_realname}/examples/" "${pkgdir}/usr/share/doc/${_realname}"
-  #mv "${pkgdir}/usr/${_realname}/README" "${pkgdir}/usr/share/doc/${_realname}"
-
-  # remove unnecessary stuffs in pkgbuild
-  #rm -rf "${pkgdir}/usr/${_realname}/cmake" "${pkgdir}/usr/${_realname}/common/"
-
   install -D -m755 "${srcdir}/build/deal-ii.sh" "${pkgdir}/etc/profile.d/deal-ii.sh"
   install -D -m644 "${srcdir}/${_realname}-$pkgver/LICENSE" "${pkgdir}/usr/share/licenses/${_realname}-$pkgver/LICENSE"
 }
-
