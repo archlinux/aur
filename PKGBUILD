@@ -1,6 +1,6 @@
 # Maintainer: Ivan Wu <2967948168@qq.com>
 pkgname=privoxy-adfilter
-pkgver=274.d87eabf
+pkgver=275.fe78d6d
 pkgrel=1
 pkgdesc="Privoxy rule to filter web advertisement."
 arch=('any')
