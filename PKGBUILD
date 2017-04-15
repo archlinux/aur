@@ -1,24 +1,25 @@
 # Maintainer: Rafal Malachowicz <k5hv@archlinux.info>
-# Based on qnapi maintained by: FadeMind <fademind@gmail.com>
+# Based on qnapi PKGBUILD maintained by: FadeMind <fademind@gmail.com>
 
 _pkgname=qnapi
 pkgname=$_pkgname-git
-pkgver=0.2.1.r53.gb24953d
-pkgrel=2
+pkgver=0.2.3snapshot.r0.g243281e
+pkgrel=1
 pkgdesc="Qt5 client for downloading movie subtitles from NapiProjekt, OpenSubtitles, Napisy24"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://qnapi.github.io/"
 license=('GPL2')
 depends=('qt5-base' 'libmediainfo' 'p7zip')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=('git+https://github.com/QNapi/qnapi')
+source=('git+https://github.com/QNapi/qnapi.git')
 sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  # pre 0.2.3 has been tagged as "snapshot". We'll change it to 0.2.3snapshot
+  git describe --long --tags | sed 's/snapshot/0.2.3&/' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -35,7 +36,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  make INSTALL_ROOT="${pkgdir}/" install
+  make -j2 INSTALL_ROOT="${pkgdir}/" install
   mkdir -p ${pkgdir}/usr/share/{kde4/services,kservices5}/ServiceMenus/
   mv ${pkgdir}/usr/share/doc/${_pkgname}/${_pkgname}-scan.desktop                ${pkgdir}/usr/share/kde4/services/ServiceMenus/${_pkgname}-scan.desktop 
   mv ${pkgdir}/usr/share/doc/${_pkgname}/${_pkgname}-download.desktop            ${pkgdir}/usr/share/kde4/services/ServiceMenus/${_pkgname}-download.desktop
