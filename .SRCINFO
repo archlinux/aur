@@ -1,6 +1,6 @@
 pkgbase = lutris-git
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.3.8.r61.bc2d080
+	pkgver = 0.4.7.1.r12.3a69635c
 	pkgrel = 1
 	url = https://lutris.net/
 	arch = any
