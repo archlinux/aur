@@ -8,7 +8,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=8.0.beta0.r0.g8725c635c3
+pkgver=8.0.beta1.r0.g4f31f7bc4e
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
@@ -28,26 +28,28 @@ optdepends=('cython2: to compile cython code' 'python2-pkgconfig: to compile cyt
   'lrs: Algorithms for linear reverse search used in game theory and for computing volume of polytopes'
   'libhomfly: for computing the homfly polynomial of links' 'libbraiding: for computing in braid groups'
   'libfes: exhaustive search of solutions for boolean equations' 'python2-pynormaliz: Normaliz backend for polyhedral computations'
-  'latte-integrale: integral point count in polyhedra'
+  'latte-integrale: integral point count in polyhedra' 'polymake: polymake backend for polyhedral computations'
   'three.js: alternative 3D plots engine' 'tachyon: alternative 3D plots engine')
 makedepends=(cython2 boost ratpoints symmetrica python2-jinja coin-or-cbc libhomfly libbraiding
   mcqd coxeter3 cryptominisat2 modular_decomposition bliss-graphs tdlib python2-pkgconfig meataxe libfes git)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
         env.patch skip-check.patch cython-sys-path.patch is-package-installed.patch package.patch latte-count.patch
-        jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch ecm-7.patch r-no-readline.patch fes02.patch)
+        jupyter-path.patch sagemath-python3-notebook.patch test-optional.patch ecm-7.patch r-no-readline.patch fes02.patch
+        create_extension.patch)
 sha256sums=('SKIP'
-            '9dba04ff13626a7b6c338a8b18a6c27d343f68a547a218533cf773af3dae6635'
+            'e0b5b8673300857fde823209a7e90faecf9e754ab812cc5e54297eddc0c79571'
             '178074c0a22da4a8129ec299a6845aaae8cf3ef1da6f62b34f2ec0ed50c1e6a2'
             'ff7e034d08ab084fdb193484f7fe3a659ebcd8ab33a2b7177237d65b26de7872'
-            'd60fb0fbd27991ce9496ca035a54b03334b5b53f244227a8d6e13f3327ce75d2'
+            '57349b0d1596a1719ba97f1c4d0cceb1ab0051a551c9904064145a5583c883f2'
             '4a2297e4d9d28f0b3a1f58e1b463e332affcb109eafde44837b1657e309c8212'
-            'b816c71d345fb1188c3faa01c4e75cfa04ba6506080231d5d2c303a2288e9b50'
+            'c6836783251d94c00f0229c1e671de86c58c6c6fb0f6959725317817abc64ca8'
             '889b65598d2a15e73eb482f543ec9b28d8992eeb57b07883c2e9627dfee15a9b'
             '27aa73d427d92aeb2c181a233aa3a574a4158cd7dee33832808f69edaec55ea2'
             '81d08c6a760f171f3381455b66a6c84789c9f0eefddbe6ca5794075514ad8c3a'
             '06bc1e5b409e21d49fc71ef03e96ec35b7a9b524bfd1f81a2dbf5c64a55e5acf'
             'ef9f401fa84fe1772af9efee6816643534f2896da4c23b809937b19771bdfbbf'
-            'a39da083c038ada797ffc5bedc9ba47455a3f77057d42f86484ae877ef9172ea')
+            'a39da083c038ada797ffc5bedc9ba47455a3f77057d42f86484ae877ef9172ea'
+            '362bd7603e14f729c87eebc9d3f56eb8a9ec94456038f0cb17591e81c459ef8e')
 
 pkgver() {
   cd sage
@@ -91,15 +93,22 @@ prepare(){
   sed -e 's|exec ipython|exec ipython2|' -e 's|cygdb|cygdb2|g' -i src/bin/sage
   sed -e "s|'cython'|'cython2'|" -i src/bin/sage-cython
   sed -e 's|bin/python|bin/python2|g' -i src/bin/sage-env
+
+# Add necessary patches to cython
+  mkdir -p local-python
+  cp -r /usr/lib/python2.7/site-packages/{Cython,cython.*,pyximport} local-python
+  cd local-python
+  patch -p1 -i "$srcdir"/create_extension.patch
 }
 
 build() {
   cd sage/src
 
-  export SAGE_LOCAL="/usr"
+  export SAGE_LOCAL=/usr
   export SAGE_ROOT="$PWD"
   export SAGE_SRC="$PWD"
   export CC=gcc
+  export PYTHONPATH="$PWD"/../local-python
 
   python2 setup.py build
 }

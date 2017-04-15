@@ -71,7 +71,7 @@ index 2f58d8b..eb519a2 100644
  
  from sage.rings.all import QQ, ZZ
  from sage.rings.real_double import RDF
-@@ -3691,7 +3690,9 @@ class Polyhedron_base(Element):
+@@ -4096,7 +4095,9 @@ class Polyhedron_base(Element):
  
               David Avis's lrs program.
          """

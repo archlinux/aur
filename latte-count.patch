@@ -1,16 +1,3 @@
-diff --git a/src/sage/geometry/polyhedron/base.py b/src/sage/geometry/polyhedron/base.py
-index 50d99f99e4..3a3a8cb214 100644
---- a/src/sage/geometry/polyhedron/base.py
-+++ b/src/sage/geometry/polyhedron/base.py
-@@ -4629,7 +4629,7 @@ class Polyhedron_base(Element):
-             ...
-             RuntimeError: LattE integrale program failed (exit code 1):
-             ...
--            Invocation: count '--redundancy-check=none' --cdd /dev/stdin
-+            Invocation: latte-count '--redundancy-check=none' --cdd /dev/stdin
-             ...
-             Parse error in CDD-style input file /dev/stdin
-             sage: Q.integral_points_count(verbose=True) # optional - latte_int
 diff --git a/src/sage/geometry/polyhedron/base_ZZ.py b/src/sage/geometry/polyhedron/base_ZZ.py
 index 268af9db0d..70d41dfa30 100644
 --- a/src/sage/geometry/polyhedron/base_ZZ.py
