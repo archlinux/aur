@@ -6,8 +6,8 @@
 
 pkgname=openafs-modules-dkms
 _srcname=openafs
-pkgver=1.6.20.1
-pkgrel=2
+pkgver=1.6.20.2
+pkgrel=1
 pkgdesc="Kernel module for OpenAFS (dkms)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -17,17 +17,12 @@ provides=("openafs-modules=$pkgver")
 conflicts=('openafs-features-libafs' 'openafs-modules' 'openafs<1.6.6-2')
 options=(!emptydirs)
 source=(http://openafs.org/dl/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
-        dkms.conf
-        0001-Linux-4.10-have_submounts-is-gone.patch)
-sha256sums=('dc869eecf6c81949d3dd2021eaf87118ef9b90ec5012a35f64836a02a58a8826'
-            'ea7d1e6dfb5006016e25738be722c8793765f52ad55c0bbf588dd7fdf2bdd2bf'
-            '48efa08f0c384df84ce114f418a2db8607ab3e4f32bbcfd60ef54b8c1bae2e94')
+        dkms.conf)
+sha256sums=('50234820c3da9752d2ca05fb7e83b7dc5c96a0e96a0b875ebc7ae3c835607614'
+            'ea7d1e6dfb5006016e25738be722c8793765f52ad55c0bbf588dd7fdf2bdd2bf')
 
 prepare() {
   cd ${srcdir}/${_srcname}-${pkgver}
-
-  # add upstream patch for kernel 4.10
-  patch -p1 -i "${srcdir}"/0001-Linux-4.10-have_submounts-is-gone.patch
 
   # Only needed when changes to configure were made
   # ./regen.sh -q
