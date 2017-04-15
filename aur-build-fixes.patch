@@ -158,7 +158,7 @@ index 1d4896a6..f2f876b3 100644
 -Q_IMPORT_PLUGIN(QFcitxPlatformInputContextPlugin)
  #endif // Q_OS_WIN | Q_OS_MAC | Q_OS_LINUX
 diff --git a/Telegram/SourceFiles/ui/text/text.cpp b/Telegram/SourceFiles/ui/text/text.cpp
-index 0188d70c..960fc062 100644
+index 089a17ff..a3b979c4 100644
 --- a/Telegram/SourceFiles/ui/text/text.cpp
 +++ b/Telegram/SourceFiles/ui/text/text.cpp
 @@ -1692,11 +1692,11 @@ private:
@@ -228,13 +228,13 @@ index 5d6830e9..c3f08d3f 100644
          IMPLICIT_DEPENDS CXX "${_pch_header}"
          COMMENT "Precompiling ${_name} for ${_target} (C++)")
 diff --git a/Telegram/gyp/Telegram.gyp b/Telegram/gyp/Telegram.gyp
-index a1805ebd..2ebb6d35 100644
+index 5b7ead4d..ecf80a6a 100644
 --- a/Telegram/gyp/Telegram.gyp
 +++ b/Telegram/gyp/Telegram.gyp
 @@ -78,24 +78,16 @@
-       'codegen.gyp:codegen_style',
+       'codegen.gyp:codegen_lang',
        'codegen.gyp:codegen_numbers',
-       'codegen.gyp:MetaLang',
+       'codegen.gyp:codegen_style',
 -      'utils.gyp:Updater',
      ],
  
@@ -422,7 +422,7 @@ index fde88dcd..ca149b85 100644
        ],
        'cflags_c': [
 diff --git a/Telegram/gyp/telegram_linux.gypi b/Telegram/gyp/telegram_linux.gypi
-index b42e7443..43163a4c 100644
+index b42e7443..e2da0f31 100644
 --- a/Telegram/gyp/telegram_linux.gypi
 +++ b/Telegram/gyp/telegram_linux.gypi
 @@ -35,12 +35,14 @@
@@ -481,10 +481,10 @@ index b42e7443..43163a4c 100644
      ],
      'configurations': {
 diff --git a/Telegram/gyp/telegram_sources.txt b/Telegram/gyp/telegram_sources.txt
-index 6fa7b704..431fadd6 100644
+index a08b77b7..fa91d444 100644
 --- a/Telegram/gyp/telegram_sources.txt
 +++ b/Telegram/gyp/telegram_sources.txt
-@@ -522,14 +522,7 @@
+@@ -534,14 +534,7 @@
  <(src_loc)/structs.cpp
  <(src_loc)/structs.h
  
