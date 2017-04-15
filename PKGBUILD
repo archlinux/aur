@@ -1,14 +1,14 @@
 # Maintainer: HabarNam <habarnam@gmail.com>
 # Improvements by: hamzadis <adis@hamzadis.com>
 pkgname=orion-git 
-pkgver=r326.6247c9b
-pkgrel=2
+pkgver=r429.beafd26
+pkgrel=1
 pkgdesc="QML/C++-written desktop client for Twitch.tv"
 arch=('x86_64' 'x86')
 url="https://github.com/alamminsalo/orion"
 license=('GPL')
 groups=()
-depends=('qt5-base' 'qt5-quickcontrols' 'qt5-webengine' 'qt5-svg' 'mpv')
+depends=('qt5-base' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-webengine' 'qt5-svg')
 makedepends=('git' 'qt5-webengine' 'qt5-svg' 'qt5-multimedia')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -33,7 +33,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	qmake CONFIG+=mpv
+	qmake CONFIG+=multimedia
 	make
 }
 
