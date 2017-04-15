@@ -1,12 +1,13 @@
 pkgbase = qt5-datasync
 	pkgdesc = A simple offline-first synchronisation framework, to synchronize data of Qt applications between devices
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Skycoder42/QtDataSync
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
+	makedepends = qpm
 	depends = qt5-base
 	depends = qt5-tools
 	depends = qt5-jsonserializer>=2.0.0
