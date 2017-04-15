@@ -1,7 +1,7 @@
 pkgbase = hopper
 	pkgdesc = Reverse engineering tool that lets you disassemble, decompile and debug your applications
 	pkgver = 4.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hopperapp.com/
 	arch = x86_64
 	license = Commercial

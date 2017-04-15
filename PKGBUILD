@@ -1,12 +1,9 @@
 # Maintainer: Jonathon Fernyhough <jonathon_at_manjaro_org>
 
-# This PKGBUILD essentially just unpacks and repacks upstream's package with
-# narrower deps
-
 pkgname='hopper'
 _pkgname='hopperv4'
 pkgver='4.1.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Reverse engineering tool that lets you disassemble, decompile and debug your applications'
 arch=('x86_64')
 url='https://www.hopperapp.com/'
@@ -25,6 +22,11 @@ package() {
   # Move docs to /opt
   mv ${pkgdir}/usr/share/doc/hopperv4 ${pkgdir}/opt/hopper-v4/doc
   rmdir ${pkgdir}/usr/share/doc
+
+  # Remove launcher from Accessories
+  sed -i '10s|Utility;||' ${pkgdir}/usr/share/applications/hopper-v4.desktop
+  # Pass launcher script args forward
+  sed -i '3s|Hopper|Hopper "$@"|' ${pkgdir}/opt/hopper-v4/bin/hopper-launcher.sh
 
   #TODO locate license file
   #install -Dm644 license ${pkgdir}/usr/share/licenses/${pkgname}/license
