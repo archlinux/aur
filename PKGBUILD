@@ -8,6 +8,8 @@ pkgdesc="Tray icon for Rhythmbox 2.9+ with rating feature"
 arch=("any")
 url="https://github.com/mendhak/rhythmbox-tray-icon"
 license=("GPL3")
+provides=("rhythmbox-tray-icon")
+conflicts=("rhythmbox-tray-icon" "rhythmbox-tray-icon-git")
 depends=("rhythmbox>=2.90")
 source=("git+https://github.com/mendhak/rhythmbox-tray-icon.git")
 md5sums=('SKIP')
