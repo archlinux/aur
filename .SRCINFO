@@ -1,0 +1,25 @@
+pkgbase = babe-git
+	pkgdesc = Tiny Qt Babe Music Player
+	pkgver = r8.8283c99
+	pkgrel = 1
+	url = https://milohr.github.io/BabeIt/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = python
+	depends = hicolor-icon-theme
+	depends = knotifications
+	depends = ki18n
+	depends = taglib
+	optdepends = youtube-dl: youtube support
+	provides = babe
+	conflicts = babe
+	conflicts = babe-qt
+	replaces = babe-qt
+	source = git+git://anongit.kde.org/babe.git
+	sha256sums = SKIP
+
+pkgname = babe-git
+
