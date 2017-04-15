@@ -1,7 +1,7 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=('python-distro')
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A much more elaborate, renewed alternative implementation for Python's platform.linux_distribution()"
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache')
 makedepends=('python-setuptools')
 depends=()
 source=(https://github.com/nir0s/distro/archive/v$pkgver.tar.gz)
-sha512sums=('bb78f18e95115d4db819af75e3deb1802d80bcec87cadae1f471b9a1b06d4099dce78b6b0b31c42c0e322a9b22e1b03e554b8c1e8c5f3da40423bf7b5e70c340')
+sha512sums=('117d44ff8145231e2ad7e2641c87c61d42804b84935a5d694ef4b57cdd220b336a86320c5073d2675cb6064b9285123fbea9601d644f94b4a139b7524e09faa8')
 
 build() {
   cd "$srcdir/distro-$pkgver"
