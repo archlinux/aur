@@ -2,7 +2,7 @@
 pkgname=nylas-mail-git
 _pkgname=nylas-mail
 pkgver=1.0.26.49.g52452d6d
-pkgrel=1
+pkgrel=2
 epoch=1 # Versions numbers went from 2.x to 1.x during the N1 -> Mail switch, so this is necessary
 pkgdesc="Nylas Mail: A new mail client for Linux, Mac and Windows, built on the modern web and designed to be extended. (formerly N1, git version)"
 arch=('x86_64')
