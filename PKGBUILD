@@ -1,8 +1,9 @@
-# Maintainer: Jason Lenz <Jason@Lenzplace.org>
+# Maintainer: Kevin Lewis <aur AT kevin DOT oakaged DOT io>
+# Contributor: Jason Lenz <Jason@Lenzplace.org>
 _pkgname=sleepyhead
 pkgname=$_pkgname-git
 pkgver=1.0.0.2.g0e04bd99
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source, cross platform, sleep tracking software with a focus on monitoring CPAP treatment."
 arch=('i686' 'x86_64')
 url="http://sleepyhead.jedimark.net"
@@ -11,23 +12,25 @@ depends=(
   'qt5-base'
   'qt5-serialport'
   'qt5-webkit'
-  'glu'
 )
 makedepends=('git')
-provides=()
+provides=("$_pkgname")
 conflicts=('sleepyhead')
 source=(
   "git+https://gitlab.com/sleepyhead/sleepyhead-code.git"
   'moduleupdates.patch'
+  'Qt-5.8.patch'
 )
 sha256sums=(
   'SKIP'
   af1390195fc4a5f2aa0cced24b1ce1a629dbd608a40d10dc319cfcbd959bec02 #moduleupdates.patch
+  b2783268ae56ad7698ce78c4e72b58557da36d2cf24cf7a680e19ef200d2f350 #Qt-5.8.patch
 )
 
 prepare() {
   cd sleepyhead-code
   patch -Np1 -i "$srcdir/moduleupdates.patch"
+  patch -Np1 -i "$srcdir/Qt-5.8.patch"
 }
 
 pkgver() {
