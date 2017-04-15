@@ -2,8 +2,8 @@
 # Contributor: onespaceman
 
 pkgname=menu-calc-git
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.0.1
+pkgrel=2
 pkgdesc="A calculator for Rofi/dmenu(2)"
 arch=('i686' 'x86_64')
 url="https://github.com/jessemillar/menu-calc"
@@ -29,5 +29,5 @@ prepare() {
 package() {
 	cd "$_gitname"
 
-	sudo cp "=" /usr/bin
+	sudo cp "=" ${pkgdir}/usr/bin
 }

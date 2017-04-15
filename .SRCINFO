@@ -1,7 +1,7 @@
 pkgbase = menu-calc-git
 	pkgdesc = A calculator for Rofi/dmenu(2)
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgver = 1.0.1
+	pkgrel = 2
 	url = https://github.com/jessemillar/menu-calc
 	arch = i686
 	arch = x86_64
