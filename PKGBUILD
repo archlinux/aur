@@ -2,7 +2,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=qpdfview-bzr
-pkgver=2017
+pkgver=2041
 pkgrel=1
 pkgdesc='A tabbed PDF viewer using the poppler library. (development version)'
 arch=('i686' 'x86_64' 'armv7h')
@@ -27,6 +27,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/qpdfview"
+
+  local config="with_lto"
 
   if ! pkg-config --exists poppler-qt5; then
     local config="$config without_pdf"
