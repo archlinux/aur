@@ -33,7 +33,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 pkgbase="intel-parallel-studio-xe"
-pkgname=('intel-compiler-base' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-mpi' 'intel-tbb_psxe' 'intel-vtune-amplifier-xe' 'intel-inspector' 'intel-advisor' )
+pkgname=('intel-compiler-base' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-mpi' 'intel-tbb_psxe' )
+#pkgname=('intel-compiler-base' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-mpi' 'intel-tbb_psxe' 'intel-vtune-amplifier-xe' 'intel-inspector' 'intel-advisor' )
 PKGEXT='.pkg.tar.lzo'
 packager="Ignat Harczuk"
 
@@ -52,11 +53,11 @@ _remove_static_objects_ipp=false
 ########################################
 
 _year='2017'
-_v_a='2'
-_v_b='174'
+_v_a='3'
+_v_b='191'
 # year, version a and version b found in /opt/intel/compilers_and_libraries_YEAR_A_B
 
-_update='2'
+_update='3'
 
 pkgrel=1
 #http://registrationcenter-download.intel.com/akdlm/irc_nas/9651/parallel_studio_xe_2017_update1.tgz
@@ -79,14 +80,14 @@ _inspector_ver='1.2.497970' # intel-inspector-${year}-*-${_inspector_ver}.${arch
 _advisor_ver='1.2.501009' # intel-advisor-${year}-*-${_advisor_ver}.${arch}.rpm
 
 # Different version for docs
-_vtune_man_ver='2.0.499904'
-_inspector_man_ver='1.2.497970'
-_advisor_man_ver='1.2.501009'
+#_vtune_man_ver='2.0.499904'
+#_inspector_man_ver='1.2.497970'
+#_advisor_man_ver='1.2.501009'
 
 
 pkgver=${_year}.${_icc_ver}.${_v_a}.${_v_b}
 
-_dir_nr='11298'
+_dir_nr='11464'
 
 options=(strip libtool staticlibs)
 
@@ -95,7 +96,7 @@ arch=('x86_64')
 license=('custom')
 makedepends=('libarchive' 'sed' 'gzip' 'lzop')
 
-_parallel_studio_xe_dir="parallel_studio_xe${_year:+_${_year}}${_sp:+_${_sp}}${_update:+_update${_update}}"
+_parallel_studio_xe_dir="parallel_studio_xe${_year:+_${_year}}${_sp:+_${_sp}}${_update:+_update${_update}}_composer_edition"
 
 source=(
   "http://registrationcenter-download.intel.com/akdlm/irc_nas/${_dir_nr}/${_parallel_studio_xe_dir}.tgz"
@@ -119,7 +120,7 @@ source=(
 )
 
 
-sha256sums=('83a655f0c2969409758488d70d6719fb5ea81a84b6da3feb641ce67bb240bc8a'
+sha256sums=('3648578d7bba993ebb1da37c173979bfcfb47f26e7f4e17f257e78dea8fd96ab'
             '75fcdfc246949341afddcf51b2037f606f25612a04c199ac1a743247aa7c4ea5'
             '278f9545d14c1fbec737bbfbcafb1b9090d35aab0dfeddc99d4c6e296b56057b'
             'e3103fb1c5e2ec9f0cc4090abb7e273563e735d88e185f527c66b2aebd52e733'
