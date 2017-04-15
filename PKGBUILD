@@ -7,8 +7,8 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-nvenc-manjaro
-pkgver=3.2.4
-pkgrel=2
+pkgver=3.3
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video with Nvidia CUDA Hardware Acceleration'
 arch=('x86_64')
@@ -19,14 +19,14 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gmp' 'gnutls' 'gsm' 'lame'
          'libpulse' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
          'netcdf' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
          'v4l-utils' 'xvidcore' 'zlib' 'cuda' 'nvidia-sdk-manjaro' 'mhwd-nvidia' 'vid.stab' 'libvorbis' 'libvorbisenc.so' 'libvpx' 'libx264' 'x265')
-makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm' 'nvidia-sdk-manjaro' 'mhwd-nvidia')
+makedepends=('hardening-wrapper' 'ladspa' 'libvdpau' 'yasm' 'nvidia-sdk-manjaro' 'mhwd-nvidia' 'jre8-openjdk')
 optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
           'libswscale.so' 'ffmpeg' 'ffmpeg-nvenc')
 conflicts=('ffmpeg' 'ffmpeg-nvenc' 'ffmpeg-full-nvenc')
 source=(http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2)
-sha256sums=('c0fa3593a2e9e96ace3c1757900094437ad96d1d6ca19f057c378b5f394496a4')
+sha256sums=('21e08647c9e740a4d3b85bf455b31d079fe0faba9555fa9329230e8541cf6bdc')
 
 build() {
   cd ffmpeg-${pkgver}
@@ -75,7 +75,6 @@ build() {
     --enable-netcdf \
     --enable-shared \
     --enable-version3 \
-    --enable-x11grab \
 --extra-cflags="-I/usr/include/nvidia-sdk-manjaro \
                     -I/opt/cuda/include \
                     -I/usr/lib/jvm/$(archlinux-java get)/include \
