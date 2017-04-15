@@ -2,13 +2,13 @@
 
 pkgname=ttf-lekton
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Lekton font"
 arch=('any')
 depends=('fontconfig' 'xorg-font-utils')
 url='http://www.fontsquirrel.com/fonts/lekton'
-source=("http://www.fontsquirrel.com/fonts/download/lekton")
-md5sums=('b0e29919e2ba838fe790413d7ea9fc95')
+source=("$pkgname-$pkgver.zip::http://www.fontsquirrel.com/fonts/download/lekton")
+md5sums=('bf04790dd611759ba8f8f540f3fafe1d')
 install=$pkgname.install
 license=('custom')
 
@@ -19,3 +19,4 @@ package() {
   install -Dm644 "$srcdir/SIL Open Font License.txt" \
 	  "$pkgdir/usr/share/licenses/$pkgname/SIL_Open_Font_License.txt"
 }
+
