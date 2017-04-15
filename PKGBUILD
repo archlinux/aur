@@ -11,7 +11,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=('nquakesv')
 pkgver=1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="The easiest, quickest, and most popular QuakeWorld server."
 url="http://nquake.com/"
 license=('GPL2' 'custom')
@@ -80,7 +80,7 @@ sha512sums=('6a07601f56aec5d88b3463c09c4482a2d76e5d7efd8ddc24c1b4e9b662152f62070
 	    '2bd1a5f1aaec1332f1812d416568f8cd6d1506166f6863743e5c66c83ad5cc74e2415470c28b9f75cb2e20f04c51b930474bbb8073f2f47cb63765cfb144fda3' # dirtree.lst
 	    '562b17c114f4bc92116acce9a41dbb3d1031ae4ab5ae844e42a61ad3304ae95c86c299069c34966681af44516b5c58b05133441715f2cf4234697a9b3f58c250' # linktree.lst
 	    '21d279b5494d2cd777693eade8dde35c5ba7a6dba395828153d1b390ee768fb3ccb57d4b9c4a1dd5bc47d061a3242d9d659c23f310360c76cff95962baaf9a86' # nquakesv-init.py
-	    '157cba05212f59c978a0d08f98fbd2f8b888f43d185db655f4517f70470eb304fcdfcfca26c01a244f3cbd2fd79290461971ca8109ae1ce59129fa6ba89f1347' # nquakesv@.service
+	    'f78b53dd916c4dc93967d33d03c6391754a0a9b5e6618a0985846a9b55971828f3367cf43154d18456b64ff4add42d9a3dbf84be0d46696fe7a51651d2b1c58d' # nquakesv@.service
 	    'SKIP' # onwards are .sig files
 	    'SKIP'
 	    'SKIP'
