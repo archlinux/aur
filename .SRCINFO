@@ -25,6 +25,7 @@ pkgname = aursec-git
 pkgname = aursec-tui-git
 	pkgdesc = Inspect the aursec blockchain
 	depends = python
+	depends = python-requests
 	depends = python-urwid
 	depends = aursec
 	provides = aursec-tui

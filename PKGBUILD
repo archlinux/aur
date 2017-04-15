@@ -48,7 +48,7 @@ package_aursec-git() {
 
 package_aursec-tui-git() {
         pkgdesc='Inspect the aursec blockchain'
-        depends=(python python-urwid aursec)
+        depends=(python python-requests python-urwid aursec)
         provides=(aursec-tui)
 	conflicts=(aursec-tui)
 
