@@ -1,4 +1,5 @@
 pkgbase = it87-dkms-git
+	pkgdesc = Linux Driver for ITE LPC chips
 	pkgver = 66.c792ed3
 	pkgrel = 1
 	url = https://github.com/groeck/it87
