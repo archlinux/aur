@@ -6,7 +6,7 @@
 
 pkgbase=linux-mptcp
 _srcname=mptcp
-pkgver=0.91.3.r141.g8ca719a859bc
+pkgver=0.92.rc1
 pkgrel=1
 epoch=1
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="http://www.multipath-tcp.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git')
 options=('!strip')
-source=("git+https://github.com/multipath-tcp/mptcp#commit=8ca719a859bc48b4a1b20a5605bda8047102a53a"
+source=("git+https://github.com/multipath-tcp/mptcp#commit=4b7df55ef0fd6e3863477477f0b9567555d66644"
         # the main kernel config files
         'config' 'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -23,18 +23,18 @@ source=("git+https://github.com/multipath-tcp/mptcp#commit=8ca719a859bc48b4a1b20
         'linux.preset'
         'change-default-console-loglevel.patch')
 sha256sums=('SKIP'
-            '3fb70bb34f132e0849be975592f98371160f53b9c2c457ed4468e88fdba8c0ed'
-            '09c489756410cdd9e014a5504ee7c0508401d445a050c1911b8c0667349e1451'
+            'fd08d8ae23138ed4f8f2b164988d33d0d5a1bd73a61971295b3388147e2bba6b'
+            'b587dd89f69508f3016193b1bb362263daa0af00726e1d1137193329d3bd85cb'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '567bdc00dbecae3e03c4d5306c8156d4a76485925404cf0c30f15f2c3661d32f')
 
 _kernelname=${pkgbase#linux}
 
-pkgver() {
-  cd "${srcdir}/${_srcname}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+#pkgver() {
+#  cd "${srcdir}/${_srcname}"
+#  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+#}
 
 prepare() {
   cd "${srcdir}/${_srcname}"
@@ -262,6 +262,11 @@ _package-headers() {
 
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+
+  # remove a files already in linux-docs package
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
 }
 
 _package-docs() {
