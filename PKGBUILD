@@ -16,7 +16,7 @@ options=('!strip' '!upx')
 source=('spotify'
 'spotify.protocol'
 'LICENSE')
-sha256sums=('12743e7f4338cc8d92d74bbeaedeeb0daf6bde496a9fd845663b45639920ff50'
+sha256sums=('989920e9360cadc1a8103b8c04acf0c87cb7911eb9a09dddb0cf4708d6249d34'
             'af54f3b90cac46fa100b3f919a9225d10d847617d24aa9af3d832e7689f482c3'
             '4e8bea31ca27e16cac9c9dcd8f6ec27e1f82b45de86d6fee7a1e77e23f884b92')
 sha256sums_x86_64=('6fac209d35828bc9a8bc5449320b92310462a2f78201e3ea620e743fc45e06ea')
@@ -26,7 +26,7 @@ source_x86_64=("http://repository.spotify.com/pool/non-free/s/spotify-client/spo
 
 source_i686=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}${_anotherpkgver}-${_i386_pkgrel}_i386.deb")
 
-depends=("alsa-lib>=1.0.14" "gconf" "gtk2" "glib2" "nss" "libsystemd" "libxtst" "libx11" "libxss" "libopenssl-1.0-compat" "libcurl-openssl-1.0" "desktop-file-utils" "rtmpdump")
+depends=("alsa-lib>=1.0.14" "gconf" "gtk2" "glib2" "nss" "libsystemd" "libxtst" "libx11" "libxss" "libcurl-compat" "desktop-file-utils" "rtmpdump")
 optdepends=('ffmpeg0.10: Adds support for playback of local files'
 'zenity: Adds support for importing local files'
 )
