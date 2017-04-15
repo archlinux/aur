@@ -2,7 +2,7 @@
 
 pkgname=(aursec aursec-tui)
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Verify AUR package sources against hashes stored in a blockchain.'
 arch=(any)
 url="https://github.com/clawoflight/$pkgname"
@@ -42,7 +42,7 @@ package_aursec() {
 
 package_aursec-tui() {
 	pkgdesc='Inspect the aursec blockchain'
-	depends=(python python-urwid aursec)
+	depends=(python python-urwid python-requests aursec)
 
 	cd "$srcdir/aursec-$pkgver/tui"
 	make PREFIX="/usr" DESTDIR="$pkgdir/" install

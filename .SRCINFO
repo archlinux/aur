@@ -1,7 +1,7 @@
 pkgbase = aursec
 	pkgdesc = Verify AUR package sources against hashes stored in a blockchain.
 	pkgver = 0.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clawoflight/aursec
 	arch = any
 	license = custom:MPL2
@@ -26,5 +26,6 @@ pkgname = aursec-tui
 	pkgdesc = Inspect the aursec blockchain
 	depends = python
 	depends = python-urwid
+	depends = python-requests
 	depends = aursec
 
