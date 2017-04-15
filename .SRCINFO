@@ -1,0 +1,16 @@
+pkgbase = playmusicdecrypter-git
+	pkgdesc = Decrypt MP3 files from Google Play Music offline storage (All Access)
+	pkgver = v1.0.r8.g5a2318a
+	pkgrel = 1
+	url = https://github.com/playmusicdecrypter
+	arch = any
+	license = GPL3
+	depends = python2
+	depends = python2-crypto
+	depends = mutagen
+	optdepends = android-tools
+	source = playmusicdecrypter-git::git+https://github.com/playmusicdecrypter/playmusicdecrypter
+	md5sums = SKIP
+
+pkgname = playmusicdecrypter-git
+
