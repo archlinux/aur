@@ -1,27 +1,34 @@
 # Contributor: Piotr Rogoża <rogoza dot piotr at gmail dot com>
 # Created: 08/12/2010
 # Maintainer: Salan54 <salan at fremenil dot com>
-# Modified: 05/16/2013
+# Modified: 04/15/2017
+
 pkgname=overlook-fing
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 _altpkgname=fing
 pkgdesc='The ultimate tool for network discovery and scanning'
 arch=('i686' 'x86_64')
-url='http://www.overlooksoft.com/'
+url='https://www.fing.io/'
 license=('custom:Overlook Freeware license')
 depends=('boost-libs' 'openssl' 'zlib')
 options=(!strip)
-source_i686=("${pkgname}-${arch}-${pkgver}.tgz::https://www.fingbox.com/download?plat=lx32&ext=tgz"
+
+source_i686=("${pkgname}-${arch}-${pkgver}.tgz.zip::https://www.fing.io/wp-content/uploads/2016/09/overlook-fing-3.0.tgz_-1.zip"
     "fingbox-sentinel.service"
     "fingbox-sentinel.script"
     )
-md5sums_i686=('152c9d622736b2d493ec5dfbe77b8dd7' '013488a7afe3048524df6b7527faae69' '95dbef149b9d3a9ea3bac0bd0c77b343')
-source_x86_64=("${pkgname}-${arch}-${pkgver}.tgz::https://www.fingbox.com/download?plat=lx64&ext=tgz"
+md5sums_i686=('a2ca3526282c05a9de2663313b9d6a7e' '013488a7afe3048524df6b7527faae69' '95dbef149b9d3a9ea3bac0bd0c77b343')
+
+source_x86_64=("${pkgname}-${arch}-${pkgver}.tgz.zip::https://www.fing.io/wp-content/uploads/2016/09/overlook-fing-3.0.tgz_.zip"
     "fingbox-sentinel.service"
     "fingbox-sentinel.script"
     )
-md5sums_x86_64=('0350ae0d059856ca4e2d417cd655db22' '013488a7afe3048524df6b7527faae69' '95dbef149b9d3a9ea3bac0bd0c77b343')
+md5sums_x86_64=('903da68a597386614ec3f7416c0a00a4' '013488a7afe3048524df6b7527faae69' '95dbef149b9d3a9ea3bac0bd0c77b343')
+
+prepare() {
+    tar -zxvf overlook-fing-3.0.tgz
+}
 
 package() {
   cd "$srcdir"
