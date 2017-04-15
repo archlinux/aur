@@ -1,20 +1,20 @@
 _start_if_enabled() {
     if systemctl -q is-enabled gogs.service ;then
-        echo "Starting gogs service"
+        echo "  Starting gogs service"
         systemctl start gogs.service
     fi
 }
 
 _stop_if_active() {
     if systemctl -q is-active gogs.service ;then
-        echo "Stoping gogs service"
+        echo "  Stoping gogs service"
         systemctl stop gogs.service
     fi
 }
 
 _disable_if_enabled() {
     if systemctl -q is-enabled gogs.service 2>/dev/null ;then
-        echo "Disabling gogs service"
+        echo "  Disabling gogs service"
         systemctl disable gogs.service
     fi
 }
@@ -25,17 +25,14 @@ pre_install() {
     fi
     if ! getent passwd gogs >/dev/null; then
         useradd -r -c 'Gogs service user' -g gogs -d /srv/gogs -s /bin/bash gogs
-        passwd -l gogs
+        passwd -q -l gogs
     else
         local _OldHome="$( getent passwd gogs | cut -d: -f6 )"
         if [[ ${_OldHome} != "/srv/gogs" ]]; then
-            echo
-            echo "Setting gogs home directory to /srv/gogs"
+            echo "  Setting gogs home directory to /srv/gogs"
+            echo "  You must migrate from ${_OldHome}"
+            echo "  before starting or re-enabling service"
             usermod -c 'Gogs service user' -g gogs -d /srv/gogs -L -s /bin/bash gogs
-            echo
-            echo "You must migrate from ${_OldHome}"
-            echo "before starting or re-enabling service"
-            echo
             _disable_if_enabled
         fi
     fi
@@ -43,6 +40,13 @@ pre_install() {
 
 post_install(){
     systemctl daemon-reload
+    echo "  If you do not have a custom configuration files finish the setup:"
+    echo "    1) systemctl start gogs.service"
+    echo "    2) open the installation page http://$(uname -n):3000/"
+    echo "  Otherwise:"
+    echo "    Place your custom configuration files in /srv/gogs/custom/conf"
+    echo "  The default configuration file is located at"
+    echo "  /usr/share/gogs/conf/app.ini.default"
 }
 
 pre_upgrade() {
@@ -50,9 +54,8 @@ pre_upgrade() {
     pre_install
 }
 
-
 post_upgrade() {
-    post_install
+    systemctl daemon-reload
 
     local _CustConf=/srv/gogs/custom/conf/app.ini
     local _OldConf=/etc/gogs/app.ini
@@ -62,12 +65,11 @@ post_upgrade() {
         install -Dm0750 -d -o gogs -g gogs /srv/gogs/custom
         install -Dm0750 -d -o gogs -g gogs /srv/gogs/custom/conf
         install -Dm0640 -T -o gogs -g gogs ${_OldConf}.pacsave ${_CustConf}
-        echo
-        echo "${_OldConf} moved to"
-        echo "${_CustConf}."
-        echo "You may need to manually delete"
-        echo "an old config dir /etc/gogs"
-        echo
+        echo "  ${_OldConf} copied to"
+        echo "  ${_CustConf}."
+        echo "  You may need to manually delete"
+        echo "  an old config file:"
+        echo "  ${_OldConf}"
     fi
     _start_if_enabled
 }
@@ -85,7 +87,5 @@ post_remove() {
         groupdel gogs
     fi
     systemctl daemon-reload
-    echo
-    echo "You may need to manually delete an old workdir /srv/gogs"
-    echo
+    echo "  You may need to manually delete an old workdir /srv/gogs"
 }
