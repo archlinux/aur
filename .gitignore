@@ -1,0 +1,5 @@
+src/
+pkg/
+*.tar*
+nexus-gamepad-uinput/
+nexus-gamepad-uinput-git/

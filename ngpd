@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Wait a bit for the device to become ready
+sleep 1
+
+# Based off of nexus_gamepad_uinput.sh by Phasip
+
+# rename to avoid programs using non-wrapped input
+mv /dev/input/event$1 /dev/input/nexus$1
+
+#Launch wrapper - using at so udev doesn't kill it
+/usr/bin/nexus_gamepad_uinput -d /dev/input/nexus$1

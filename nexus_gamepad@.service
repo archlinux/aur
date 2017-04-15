@@ -1,0 +1,9 @@
+[Unit]
+Description=Proper Mapping for ASUS Nexus Player gamepad on /dev/input/nexus%I
+Wants=bluetooth.service
+After=bluetooth.service
+
+[Service]
+ExecStart=/usr/bin/ngpd %I
+Type=simple
+

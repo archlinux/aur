@@ -1,0 +1,13 @@
+pkgbase = nexus-gamepad-uinput-git
+	pkgdesc = uinput mappings for ASUS Nexus Player Gamepads
+	pkgver = 1.0.5c2087d
+	pkgrel = 1
+	url = https://github.com/Phasip/nexus_gamepad_uinput
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = nexus-gamepad-uinput-git::git+https://github.com/Phasip/nexus_gamepad_uinput.git
+	sha256sums = SKIP
+
+pkgname = nexus-gamepad-uinput-git
+

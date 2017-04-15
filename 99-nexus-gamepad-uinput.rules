@@ -1,0 +1,7 @@
+#place in /etc/udev/rules.d/99-nexus-gamepad-uinput.rules
+
+#Run uinput program
+ACTION=="add", KERNEL=="event*", SUBSYSTEM=="input", ATTRS{name}=="ASUS Gamepad", TAG+="systemd", ENV{SYSTEMD_WANTS}="nexus_gamepad@%n.service"
+
+#Remove all joysticks related to this device
+ACTION=="add", KERNEL=="js[0-9]*", ATTRS{name}=="ASUS Gamepad", RUN+="/bin/rm /dev/input/js%n"
