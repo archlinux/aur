@@ -62,6 +62,9 @@ build() {
 
     make -C sc $MAKEFLAGS
     make $MAKEFLAGS
+
+    cd $build_dir
+    echo "export P4EST_DIR=$install_dir" > ./p4est-deal-ii.sh
 }
 
 check() {
@@ -92,4 +95,6 @@ package() {
             "${pkgdir}/usr/share/licenses/${_realname}-$pkgver/sc/libb64/LICENSE"
     install -D -m644 "${srcdir}/${_realname}-$pkgver/README" \
             "${pkgdir}/usr/share/licenses/${_realname}-$pkgver/license.txt"
+
+    install -D -m755 "${build_dir}/p4est-deal-ii.sh" "${pkgdir}/etc/profile.d/p4est-deal-ii.sh"
 }
