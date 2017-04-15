@@ -1,10 +1,11 @@
 # Maintainer: netcrusher < tobias AT miglix DOT eu >
 
 _basename=renderdoc
-pkgname=$_basename-bin
+pkgname=${_basename}-bin
 pkgver=0.32
-_tarname=$_basename\_$pkgver
-pkgrel=2
+_branch=v${pkgver}
+_tarname=${_basename}_${pkgver}
+pkgrel=3
 pkgdesc="OpenGL and Vulkan debugging tool - binary version"
 arch=(x86_64)
 url="https://github.com/baldurk/renderdoc"
@@ -14,7 +15,7 @@ makedepends=()
 depends=("mesa" "fontconfig" "hicolor-icon-theme")
 source=("https://renderdoc.org/stable/$pkgver/$_tarname.tar.gz"
         "https://renderdoc.org/stable/$pkgver/$_tarname.tar.gz.sig"
-        "https://raw.githubusercontent.com/baldurk/$_basename/master/LICENSE.md")
+        "https://raw.githubusercontent.com/baldurk/$_basename/$_branch/LICENSE.md")
 sha256sums=('8a40c2feb39281da44280df3e85d75f3d8c3b5787d8060c866624e2cf21e4f97'
             'SKIP'
             'f144ffb364c8504757a8a78e25929f89d840ba7ed23b410492df42d5db604d5d')
