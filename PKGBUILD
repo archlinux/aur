@@ -1,9 +1,9 @@
 # Maintainer: Rafal Malachowicz <k5hv@archlinux.info>
-# Based on dislocker maintained by: mrxx <mrxx at cyberhome dot at>
+# Based on dislocker PKGBUILD maintained by: mrxx <mrxx at cyberhome dot at>
 
 _pkgname=dislocker
 pkgname=$_pkgname-git
-pkgver=0.5.1.r2.gef39348
+pkgver=0.7.1.r0.g3939a18
 pkgrel=1
 pkgdesc="FUSE driver to read/write Windows' BitLocker-ed volumes"
 arch=('i686' 'x86_64')
@@ -13,18 +13,19 @@ depends=('fuse' 'mbedtls' 'ruby')
 makedepends=('git' 'cmake')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=('git+https://github.com/Aorimn/dislocker')
+source=('git+https://github.com/Aorimn/dislocker.git')
 sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//'
 }
 
 build() {
   cd "$srcdir/${_pkgname}"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -Dlibdir=/usr/lib \
+        -D WARN_FLAGS:STRING="-Wall -Wextra" \
         .
   make
 }
