@@ -37,10 +37,11 @@ install=deal-ii.install
 source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz)
 sha1sums=('75076beddfd4a1b590cba9fbc78eea901c7f3ddb')
 
+# where to install deal.II: change to something else (e.g., /opt/deal.II/)
+# if desired.
+installation_prefix=/usr
+
 build() {
-  # where to install deal.II: change to something else (e.g., /opt/deal.II/)
-  # if desired.
-  installation_prefix=/usr
 
   # Since deal.II relies on a relatively large number of packages that are
   # installed in nonstandard places (i.e., the Trilinos AUR package is installed
@@ -148,6 +149,10 @@ build() {
 package() {
   cd "${srcdir}/build"
   make DESTDIR="${pkgdir}" install
+
+  # delete extra files that deal.II installs into the top level directory
+  rm "${pkgdir}/${installation_prefix}/LICENSE"
+  rm "${pkgdir}/${installation_prefix}/README.md"
 
   install -D -m755 "${srcdir}/build/deal-ii.sh" "${pkgdir}/etc/profile.d/deal-ii.sh"
   install -D -m644 "${srcdir}/${_realname}-$pkgver/LICENSE" "${pkgdir}/usr/share/licenses/${_realname}-$pkgver/LICENSE"
