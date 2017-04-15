@@ -1,0 +1,243 @@
+diff -rupN bubbros-1.6.2.old/bubbob/bb.py bubbros-1.6.2/bubbob/bb.py
+--- bubbros-1.6.2.old/bubbob/bb.py	2013-10-10 11:42:30.000000000 +0200
++++ bubbros-1.6.2/bubbob/bb.py	2014-03-22 23:09:05.912252182 +0100
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python2
+ 
+ from __future__ import generators
+ 
+@@ -211,12 +211,12 @@ def parse_cmdline(argv):
+     # parse command-line
+     def usage():
+         print >> sys.stderr, 'usage:'
+-        print >> sys.stderr, '  python bb.py'
+-##        print >> sys.stderr, '  python bb.py [-w/--webbrowser=no]'
++        print >> sys.stderr, '  python2 bb.py'
++##        print >> sys.stderr, '  python2 bb.py [-w/--webbrowser=no]'
+ ##        print >> sys.stderr, 'where:'
+ ##        print >> sys.stderr, '  -w  --webbrowser=no  don''t automatically start web browser'
+         print >> sys.stderr, 'or:'
+-        print >> sys.stderr, '  python bb.py [level-file.bin] [-m] [-b#] [-s#] [-l#] [-M#]'
++        print >> sys.stderr, '  python2 bb.py [level-file.bin] [-m] [-b#] [-s#] [-l#] [-M#]'
+         print >> sys.stderr, 'with options:'
+         print >> sys.stderr, '  -m  --metaserver  register the server on the Metaserver so anyone can join'
+         print >> sys.stderr, '  -b#  --begin #    start at board number # (default 1)'
+diff -rupN bubbros-1.6.2.old/bubbob/doc/bonus-doc.py bubbros-1.6.2/bubbob/doc/bonus-doc.py
+--- bubbros-1.6.2.old/bubbob/doc/bonus-doc.py	2013-10-10 11:42:30.000000000 +0200
++++ bubbros-1.6.2/bubbob/doc/bonus-doc.py	2014-03-22 23:00:22.013598396 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import os, sys, string, struct
+ os.chdir(os.pardir)
+diff -rupN bubbros-1.6.2.old/bubbob/images/buildcolors.py bubbros-1.6.2/bubbob/images/buildcolors.py
+--- bubbros-1.6.2.old/bubbob/images/buildcolors.py	2013-10-10 11:42:30.000000000 +0200
++++ bubbros-1.6.2/bubbob/images/buildcolors.py	2014-03-22 23:00:21.960264522 +0100
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python2
+ import sys, os
+ 
+ if __name__ == '__main__':
+diff -rupN bubbros-1.6.2.old/bubbob/Makefile bubbros-1.6.2/bubbob/Makefile
+--- bubbros-1.6.2.old/bubbob/Makefile	2013-10-10 11:42:30.000000000 +0200
++++ bubbros-1.6.2/bubbob/Makefile	2014-03-22 23:02:23.998168962 +0100
+@@ -1,2 +1,2 @@
+ statesaver.so: statesaver.c
+-	python setup.py build_ext -i
++	python2 setup.py build_ext -i
+diff -rupN bubbros-1.6.2.old/bubbob/setup.py bubbros-1.6.2/bubbob/setup.py
+--- bubbros-1.6.2.old/bubbob/setup.py	2013-10-10 11:42:30.000000000 +0200
++++ bubbros-1.6.2/bubbob/setup.py	2014-03-22 23:00:22.090265840 +0100
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python2
+ 
+ from distutils.core import setup
+ from distutils.extension import Extension
+diff -rupN bubbros-1.6.2.old/BubBob.py bubbros-1.6.2/BubBob.py
+--- bubbros-1.6.2.old/BubBob.py	2013-10-10 11:42:30.000000000 +0200
++++ bubbros-1.6.2/BubBob.py	2014-03-22 23:05:28.536709312 +0100
+@@ -1,10 +1,10 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python2
+ 
+ #
+ #  This script is used to start the server.
+ #  For command-line usage please run
+ #
+-#    python bubbob/bb.py --help
++#    python2 bubbob/bb.py --help
+ #
+ 
+ # __________
+diff -rupN bubbros-1.6.2.old/display/Client.py bubbros-1.6.2/display/Client.py
+--- bubbros-1.6.2.old/display/Client.py	2013-10-10 11:42:30.000000000 +0200
++++ bubbros-1.6.2/display/Client.py	2014-03-22 23:03:47.239013938 +0100
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python2
+ 
+ # __________
+ import os, sys
+@@ -29,7 +29,7 @@ def parse_cmdline(argv):
+     # parse command-line
+     def usage():
+         print >> sys.stderr, 'usage:'
+-        print >> sys.stderr, '  python Client.py [-d#] [-s#] [extra options] [host[:port]]'
++        print >> sys.stderr, '  python2 Client.py [-d#] [-s#] [extra options] [host[:port]]'
+         print >> sys.stderr
+         print >> sys.stderr, 'options:'
+         print >> sys.stderr, '  host              search for a game on the given machine'
+diff -rupN bubbros-1.6.2.old/display/Makefile bubbros-1.6.2/display/Makefile
+--- bubbros-1.6.2.old/display/Makefile	2013-10-10 11:42:30.000000000 +0200
++++ bubbros-1.6.2/display/Makefile	2014-03-22 23:02:23.998168962 +0100
+@@ -1,2 +1,2 @@
+ xshm.so: xshm.c
+-	python setup.py build_ext -i
++	python2 setup.py build_ext -i
+diff -rupN bubbros-1.6.2.old/display/pclient.py bubbros-1.6.2/display/pclient.py
+--- bubbros-1.6.2.old/display/pclient.py	2013-10-10 11:42:30.000000000 +0200
++++ bubbros-1.6.2/display/pclient.py	2014-03-22 23:00:21.800262900 +0100
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python2
+ 
+ import sys, os
+ from socket import *
+diff -rupN bubbros-1.6.2.old/display/playback.py bubbros-1.6.2/display/playback.py
+--- bubbros-1.6.2.old/display/playback.py	2013-10-10 11:42:30.000000000 +0200
++++ bubbros-1.6.2/display/playback.py	2014-03-22 23:00:21.763595860 +0100
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python2
+ 
+ import sys, os, gzip
+ from socket import *
+diff -rupN bubbros-1.6.2.old/display/setup.py bubbros-1.6.2/display/setup.py
+--- bubbros-1.6.2.old/display/setup.py	2013-10-10 11:42:30.000000000 +0200
++++ bubbros-1.6.2/display/setup.py	2014-03-22 23:00:21.810263001 +0100
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python2
+ 
+ from distutils.core import setup
+ from distutils.extension import Extension
+diff -rupN bubbros-1.6.2.old/doc/bb.py.1 bubbros-1.6.2/doc/bb.py.1
+--- bubbros-1.6.2.old/doc/bb.py.1	2013-10-10 11:42:30.000000000 +0200
++++ bubbros-1.6.2/doc/bb.py.1	2014-03-22 23:06:37.447409469 +0100
+@@ -14,7 +14,7 @@ bb.py \- the bub-n-bros server.
+ .I level-file.bin
+ .BI "] [" options ]
+ .br
+-.B python bb.py [
++.B python2 bb.py [
+ .I level-file.bin
+ .BI "] [" options ]
+ .PP
+@@ -126,4 +126,4 @@ game servers.
+ .SH SEE ALSO
+ .BR BubBob.py (1)
+ .BR Client.py (1)
+-.BR python (1)
++.BR python2 (1)
+diff -rupN bubbros-1.6.2.old/doc/BubBob.py.1 bubbros-1.6.2/doc/BubBob.py.1
+--- bubbros-1.6.2.old/doc/BubBob.py.1	2013-10-10 11:42:30.000000000 +0200
++++ bubbros-1.6.2/doc/BubBob.py.1	2014-03-22 23:06:28.663986877 +0100
+@@ -12,7 +12,7 @@ BubBob.py \- Generic startup script for
+ .SH SYNOPSIS
+ .B BubBob.py
+ .br
+-.B python BubBob.py
++.B python2 BubBob.py
+ 
+ .SH DESCRIPTION
+ .B BubBob.py
+@@ -28,5 +28,5 @@ on Unix systems.
+ .SH SEE ALSO
+ .BR bb.py (1)
+ .BR Client.py (1)
+-.BR python (1)
++.BR python2 (1)
+ 
+diff -rupN bubbros-1.6.2.old/doc/Client.py.1 bubbros-1.6.2/doc/Client.py.1
+--- bubbros-1.6.2.old/doc/Client.py.1	2013-10-10 11:42:30.000000000 +0200
++++ bubbros-1.6.2/doc/Client.py.1	2014-03-22 23:06:19.927231432 +0100
+@@ -10,7 +10,7 @@
+ Client.py \- the bub-n-bros client
+ 
+ .SH SYNOPSIS
+-.B python Client.py [
++.B python2 Client.py [
+ .I options
+ .BI "] [" host [: port ]]
+ .PP
+@@ -61,7 +61,7 @@ option.
+ MS Windows driver.
+ .TP
+ .B pygame
+-PyGame gaming library for python (if installed) has video output. Use
++PyGame gaming library for python2 (if installed) has video output. Use
+ it if this is specified. See
+ .BR http://www.pygame.org " and the " --transparency " option."
+ .TP
+@@ -197,4 +197,4 @@ display driver. Scale output by
+ .SH SEE ALSO
+ .BR bb.py (1)
+ .BR Client.py (1)
+-.BR python (1)
+\ No newline at end of file
++.BR python2 (1)
+\ No newline at end of file
+diff -rupN bubbros-1.6.2.old/http2/sf/bb12.py bubbros-1.6.2/http2/sf/bb12.py
+--- bubbros-1.6.2.old/http2/sf/bb12.py	2013-10-10 11:42:30.000000000 +0200
++++ bubbros-1.6.2/http2/sf/bb12.py	2014-03-22 23:00:22.270267666 +0100
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python2
+ 
+ import cgi, os, string, time
+ form = cgi.FieldStorage()
+diff -rupN bubbros-1.6.2.old/Makefile bubbros-1.6.2/Makefile
+--- bubbros-1.6.2.old/Makefile	2013-10-10 11:42:30.000000000 +0200
++++ bubbros-1.6.2/Makefile	2014-03-22 23:02:23.998168962 +0100
+@@ -8,7 +8,7 @@ MANGROUP=root
+ MANDIR=/usr/local/man
+ 
+ INSTALL=install
+-PYTHON=python
++PYTHON=python2
+ 
+ export # we export all variales to sub-makes
+ 
+@@ -18,8 +18,8 @@ all:
+ 	@echo -------------------------------------------------------------
+ 	@echo \'make\' successful.
+ 	@echo ' '
+-	@echo ' Start the game interactively with: python BubBob.py'
+-	@if [ -e bubbob ]; then echo ' Server only (pure command-line): python bubbob/bb.py --help'; else echo ' Only the client is installed here.'; fi
++	@echo ' Start the game interactively with: python2 BubBob.py'
++	@if [ -e bubbob ]; then echo ' Server only (pure command-line): python2 bubbob/bb.py --help'; else echo ' Only the client is installed here.'; fi
+ 	@echo ' '
+ 	@echo -------------------------------------------------------------
+ 
+@@ -28,7 +28,7 @@ clean:
+ 	-rm -f `find -name "*.py[co]"`
+ 	-rm -fr `find -name "build"`
+ 	make -C doc clean
+-	cd bubbob/images && python buildcolors.py -c
++	cd bubbob/images && python2 buildcolors.py -c
+ 	rm -fr cache
+ 
+ sync: magma-sync codespeak-sync
+@@ -40,7 +40,7 @@ codespeak-sync:
+ 	rsync --delete -avz -e ssh ${HOME}/games/metaserver ${HOME}/games/common codespeak.net:games/
+ 
+ meta:
+-	ssh codespeak.net python games/metaserver/metaserver.py -f
++	ssh codespeak.net python2 games/metaserver/metaserver.py -f
+ 
+ docs:
+ 	make -C doc

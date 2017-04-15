@@ -1,0 +1,58 @@
+diff -rupN bubbros-1.6.2.old/bubbob/images.py bubbros-1.6.2/bubbob/images.py
+--- bubbros-1.6.2.old/bubbob/images.py	2013-10-10 11:42:30.000000000 +0200
++++ bubbros-1.6.2/bubbob/images.py	2014-03-22 23:35:54.635342868 +0100
+@@ -456,7 +456,8 @@ def generate_sprmap():
+     # check and maybe regenerate the colored image files
+     file = os.path.join('images', 'buildcolors.py')
+     g = {'__name__': '__auto__', '__file__': file}
+-    execfile(file, g)
++    # already done while building
++    #execfile(file, g)
+     # replace the entries 'filename_%d.ppm' by a family of entries,
+     # one for each color
+     sprmap = {}
+diff -rupN bubbros-1.6.2.old/display/pclient.py bubbros-1.6.2/display/pclient.py
+--- bubbros-1.6.2.old/display/pclient.py	2013-10-10 11:42:30.000000000 +0200
++++ bubbros-1.6.2/display/pclient.py	2014-03-22 23:40:11.147959827 +0100
+@@ -162,8 +162,8 @@ class Playfield:
+         if mode[-1].has_key('cfgfile'):
+             self.trackcfgfile = mode[-1]['cfgfile']
+         else:
+-            self.trackcfgfile = os.path.join(DataChunk.SOURCEDIR,
+-                                             'http2', 'config.txt')
++            self.trackcfgfile = os.path.join(os.environ.get('HOME'),
++                                             '.bubnbros')
+         self.udpsock = None
+         self.udpsock_low = None
+         self.udpsock2 = None
+diff -rupN bubbros-1.6.2.old/http2/httppages.py bubbros-1.6.2/http2/httppages.py
+--- bubbros-1.6.2.old/http2/httppages.py	2013-10-10 11:42:30.000000000 +0200
++++ bubbros-1.6.2/http2/httppages.py	2014-03-22 23:40:55.358411069 +0100
+@@ -38,7 +38,7 @@ class Options:
+ 
+ 
+ class PageServer:
+-    CONFIGFILE = 'config.txt'
++    CONFIGFILE = '.bubnbros'
+     localservers = None
+ 
+     def __init__(self, Game):
+@@ -46,7 +46,7 @@ class PageServer:
+         self.seed = hex(random.randrange(0x1000, 0x10000))
+         #self.unique_actions = {}
+         self.localhost = gamesrv.HOSTNAME
+-        self.filename = os.path.join(LOCALDIR, self.CONFIGFILE)
++        self.filename = os.path.join(os.environ.get('HOME'), self.CONFIGFILE)
+         data = self.loadoptionfile()
+         self.globaloptions = Options(data.get('*', {}))
+         self.localoptions  = Options(data.get(self.localhost, {}))
+@@ -337,7 +337,8 @@ class PageServer:
+                             'buildcolors.py')
+         if os.path.exists(file):
+             g = {'__name__': '__auto__', '__file__': file}
+-            execfile(file, g)
++            # already done while building
++            #execfile(file, g)
+ 
+         if port:
+             address = '%s:%s' % (host, port)
