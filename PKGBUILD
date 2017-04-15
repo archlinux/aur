@@ -1,7 +1,7 @@
 # Maintainer: Simon Vikstrom <aur@devsn.se>
 
 pkgname=chef-client
-pkgver=12.19.36
+pkgver=13.0.118
 pkgrel=1
 _ubuntuver=xenial
 pkgdesc="The Chef Client installation package includes everything you need to start converging your machines."
@@ -11,11 +11,11 @@ license=('Apache')
 depends=()
 conflicts=( chef chef-solo )
 source=("https://packages.chef.io/stable/ubuntu/16.04/chef_${pkgver}-1_amd64.deb")
-sha512sums=('043c5401728b4de8cdf357b504d8c08f94545bcb68e96047133706e5e009bc4a5886eff51ae7694acbd4b3e7bafffebe232493d35ad6c16c746c3e8df4a663b2')
+sha256sums=('650e80ad44584ca48716752d411989ab155845af4af7a50c530155d9718843eb')
 
 package() {
   cd "$srcdir"
-  bsdtar -xf data.tar.gz -C "$pkgdir"
+  bsdtar -xf data.tar.xz -C "$pkgdir"
 
   # link executables
   binaries="chef-apply chef-shell knife chef-client chef-solo ohai"
