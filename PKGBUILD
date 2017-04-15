@@ -1,7 +1,7 @@
 # Maintainer: goll <adrian.goll+aur[at]gmail>
 
 pkgname=mfoc-git
-pkgver=97.48156f9
+pkgver=103.9d9f01f
 pkgrel=1
 pkgdesc="Mifare Classic Offline Cracker"
 arch=('i686' 'x86_64')
@@ -20,12 +20,12 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${pkgname}"
-        autoreconf -vis
-        ./configure --prefix=/usr
+	autoreconf -vis
+	./configure --prefix=/usr
 	make
 }
 
 package() {
 	cd "${srcdir}/${pkgname}"
-        make DESTDIR="${pkgdir}" install
+	make DESTDIR="${pkgdir}" install
 }
