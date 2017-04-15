@@ -15,7 +15,6 @@ optdepends=(
       'openmpi: High performance message passing library (MPI)'
       'petsc: Portable, extensible toolkit for scientific computation'
       'slepc: Scalable library for Eigenvalue problem computations'
-      'mumps: Sparse solver library using Gaussian elimination'
       'intel-tbb: High level abstract threading library'
       'trilinos: object-oriented software framework for the solution of large-scale, complex multi-physics engineering and scientific problems'
       'metis: partitioning graphs, finite element meshes, fill reducing orderings for sparse matrices.'
