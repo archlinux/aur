@@ -12,7 +12,6 @@ pkgbase = lutris
 	depends = xorg-xrandr
 	depends = python-dbus
 	depends = python-gobject
-	depends = python-xdg
 	depends = python-yaml
 	depends = xdg-user-dirs
 	optdepends = python-evdev: Detecting connected joypads.
