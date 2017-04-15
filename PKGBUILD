@@ -9,8 +9,7 @@ arch=('any')
 url='https://lutris.net/'
 license=('GPL3')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'polkit' 'xorg-xrandr'
-         'python-dbus' 'python-gobject' 'python-xdg' 'python-yaml'
-         'xdg-user-dirs')
+         'python-dbus' 'python-gobject' 'python-yaml' 'xdg-user-dirs')
 makedepends=('git' 'python-setuptools')
 optdepends=(
   'python-evdev: Detecting connected joypads.'
