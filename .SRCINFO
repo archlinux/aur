@@ -1,13 +1,15 @@
 pkgbase = bubbros
 	pkgdesc = Bubble Bobble clone for up to 10 players
 	pkgver = 1.6.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://bub-n-bros.sourceforge.net
 	install = bubbros.install
 	arch = i686
 	arch = x86_64
 	license = MIT
+	license = custom:Artistic
 	makedepends = gendesk
+	makedepends = imagemagick
 	depends = python2
 	depends = libxext
 	optdepends = python2-pygame: alternative frontend for client
