@@ -1,7 +1,7 @@
 # Maintainer: Your Name ralph.bariz@gmail.com
 pkgname=flow-causal
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 epoch=0
 pkgdesc="flow causal studio"
 arch=('i685' 'x86_64')

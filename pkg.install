@@ -3,6 +3,12 @@ post_install() {
     chown -R flow:flow /home/flow
 }
 
+post_upgrade() {
+    systemctl restart flow-causal
+}
+
 pre_remove() {
+    systemctl stop flow-causal
+    systemctl disable flow-causal
     userdel flow
 }
