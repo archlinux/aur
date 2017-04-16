@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-sys-mmap'
-pkgver='0.17'
+pkgver='0.19'
 pkgrel='1'
 pkgdesc="uses mmap to map in a file as a Perl variable"
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='https://metacpan.org/release/Sys-Mmap'
-source=('http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/Sys-Mmap-0.17.tar.gz')
-md5sums=('1fc827d67d468c594ab486c58047d57c')
-sha512sums=('004d6160323bb185fe23295679dc0c1e8f2696ce3760c0ae6922e3a21ba7b5deb1893b2e65c5b83c6897060d589ed4bd6b5f3b703172f98a8ed57e99a0b2bad9')
-_distdir="Sys-Mmap-0.17"
+source=('http://search.cpan.org/CPAN/authors/id/S/SW/SWALTERS/Sys-Mmap-0.19.tar.gz')
+md5sums=('990c9106a88dc843035f7bcb109e6c0e')
+sha512sums=('4e6409cddd13322b4cdaad832e6d0233776e51098b499fd05d8e642e547eb1ed7add5bb9fb339e69048a3293140098e282b51698eb6d188ace71ad58c1628556')
+_distdir="Sys-Mmap-0.19"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
