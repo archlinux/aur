@@ -3,12 +3,12 @@
 _pkgname=archnews
 pkgname=${_pkgname}-git
 pkgver=3.73eb11d
-pkgrel=1
+pkgrel=2
 pkgdesc="Read latest Arch Linux News RSS from your CLI"
 arch=("any")
 url="https://github.com/leosanvieira/archnews"
 license=("GPL3")
-depends=("python" "python-beautifulsoup4" "python-html5lib" "python-colorama")
+depends=("python" "python-beautifulsoup4" "python-html5lib" "python-colorama" "python-feedparser")
 source=("git+https://github.com/leosanvieira/archnews.git")
 md5sums=('SKIP')
 
