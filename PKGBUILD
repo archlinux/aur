@@ -1,16 +1,16 @@
 # Maintainer: Arpan Kapoor <k dot arpan26 at gmail dot com>
 
-pkgname=8188eu-dkms
-_pkgname=${pkgname%-*}
-pkgver=v4.3.0.8_13968
-pkgrel=4
-pkgdesc="Driver for Realtek RTL8188EUS (RTL8188EUS, RTL8188ETV) WLAN"
+pkgname='8188eu-dkms'
+_pkgname="${pkgname%-*}"
+pkgver='v4.3.0.8_13968'
+pkgrel='5'
+pkgdesc='Driver for Realtek RTL8188EUS (RTL8188EUS, RTL8188ETV) WLAN'
 arch=('any')
-url="http://www.realtek.com.tw/"
+url='http://www.realtek.com.tw/'
 license=('GPL')
 depends=('dkms')
-install=${pkgname}.install
-source=("https://dl.dropboxusercontent.com/u/27457926/${_pkgname}-${pkgver}.tar.xz"
+install="${pkgname}.install"
+source=("https://www.dropbox.com/s/afs5d2yfgwurqm2/${_pkgname}-${pkgver}.tar.xz"
         'blacklist-r8188eu.conf'
         'date_time_macro.patch'
         'dkms.conf'
@@ -54,7 +54,7 @@ package() {
   install -Dm644 dkms.conf "${install_dir}/dkms.conf"
 
   # Blacklist r8188eu
-  install -Dm644 blacklist-r8188eu.conf "${pkgdir}"/etc/modprobe.d/r8188eu.conf
+  install -Dm644 blacklist-r8188eu.conf "${pkgdir}/etc/modprobe.d/r8188eu.conf"
 
   # Set name and version
   sed -e "s/@_PKGNAME@/${_pkgname}/" \
