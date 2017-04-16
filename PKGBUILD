@@ -3,7 +3,7 @@
 
 _gemname=fastlane
 pkgname=$_gemname
-pkgver=2.26.1
+pkgver=2.27.0
 pkgrel=1
 pkgdesc='The easiest way to automate beta deployments and releases for your iOS and Android apps'
 arch=(any)
@@ -11,23 +11,16 @@ url='https://fastlane.tools'
 license=(MIT)
 depends=(
   ruby
-  # 'ruby-activesupport<5'
-  ruby-activesupport-4
   'ruby-addressable<3' 'ruby-addressable>=2.3'
   'ruby-babosa<2' 'ruby-babosa>=1.0.2'
   'ruby-bundler<2' 'ruby-bundler>=1.12'
-  #'ruby-colored2>=3.1.1' 'ruby-colored2<4'
   ruby-colored
-  # 'ruby-commander<5' 'ruby-commander>=4.4'
-  # ruby-commander-4
   'ruby-commander-fastlane<5' 'ruby-commander-fastlane>=4.4'
-  # 'ruby-dotenv<3' 'ruby-dotenv>=2.1.1'
-  ruby-dotenv-2.1
+  'ruby-dotenv<3' 'ruby-dotenv>=2.1.1'
   'ruby-excon<1' 'ruby-excon>=0.45'
   'ruby-faraday<1' 'ruby-faraday>=0.9'
   'ruby-faraday-cookie_jar>=0.0.6' 'ruby-faraday-cookie_jar<0.1'
-  # 'ruby-faraday_middleware<1' 'ruby-faraday_middleware>=0.9'
-  ruby-faraday_middleware-0.10
+  'ruby-faraday_middleware<1' 'ruby-faraday_middleware>=0.9'
   'ruby-fastimage>=1.6'
   'ruby-gh_inspector<2' 'ruby-gh_inspector>=1.0.1'
   # 'ruby-google-api-client>=0.9.2' 'ruby-google-api-client<0.10'
@@ -48,17 +41,14 @@ depends=(
   'ruby-terminal-table<2' 'ruby-terminal-table>=1.4.5'
   'ruby-tty-screen>=0.5' 'ruby-tty-screen<0.6'
   'ruby-word_wrap<1.1' 'ruby-word_wrap>=1'
-  'ruby-xcodeproj<2' 'ruby-xcodeproj>=0.20'
+  'ruby-xcodeproj<2' 'ruby-xcodeproj>=1.4.4'
   'ruby-xcpretty<1' 'ruby-xcpretty>=0.2.4' 
   'ruby-xcpretty-travis-formatter>=0.0.3'
-  
-  # missed by other packages
-  ruby-domain_name
 )
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('f4d4c78e7b1afd113c082b2442de2ef60e738f68')
+sha1sums=('96d9c230899e9945cfc8ab4030ad0ea3cbd8ef08')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

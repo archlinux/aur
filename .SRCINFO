@@ -1,12 +1,11 @@
 pkgbase = fastlane
 	pkgdesc = The easiest way to automate beta deployments and releases for your iOS and Android apps
-	pkgver = 2.26.1
+	pkgver = 2.27.0
 	pkgrel = 1
 	url = https://fastlane.tools
 	arch = any
 	license = MIT
 	depends = ruby
-	depends = ruby-activesupport-4
 	depends = ruby-addressable<3
 	depends = ruby-addressable>=2.3
 	depends = ruby-babosa<2
@@ -16,14 +15,16 @@ pkgbase = fastlane
 	depends = ruby-colored
 	depends = ruby-commander-fastlane<5
 	depends = ruby-commander-fastlane>=4.4
-	depends = ruby-dotenv-2.1
+	depends = ruby-dotenv<3
+	depends = ruby-dotenv>=2.1.1
 	depends = ruby-excon<1
 	depends = ruby-excon>=0.45
 	depends = ruby-faraday<1
 	depends = ruby-faraday>=0.9
 	depends = ruby-faraday-cookie_jar>=0.0.6
 	depends = ruby-faraday-cookie_jar<0.1
-	depends = ruby-faraday_middleware-0.10
+	depends = ruby-faraday_middleware<1
+	depends = ruby-faraday_middleware>=0.9
 	depends = ruby-fastimage>=1.6
 	depends = ruby-gh_inspector<2
 	depends = ruby-gh_inspector>=1.0.1
@@ -52,15 +53,14 @@ pkgbase = fastlane
 	depends = ruby-word_wrap<1.1
 	depends = ruby-word_wrap>=1
 	depends = ruby-xcodeproj<2
-	depends = ruby-xcodeproj>=0.20
+	depends = ruby-xcodeproj>=1.4.4
 	depends = ruby-xcpretty<1
 	depends = ruby-xcpretty>=0.2.4
 	depends = ruby-xcpretty-travis-formatter>=0.0.3
-	depends = ruby-domain_name
-	noextract = fastlane-2.26.1.gem
+	noextract = fastlane-2.27.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fastlane-2.26.1.gem
-	sha1sums = f4d4c78e7b1afd113c082b2442de2ef60e738f68
+	source = https://rubygems.org/downloads/fastlane-2.27.0.gem
+	sha1sums = 96d9c230899e9945cfc8ab4030ad0ea3cbd8ef08
 
 pkgname = fastlane
 
