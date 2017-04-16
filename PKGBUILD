@@ -1,7 +1,7 @@
 # Maintainer: David Scholberg <recombinant.vector@gmail.com>
 
 pkgname='goblocks'
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Fast, lightweight i3status replacement written in Go'
 arch=('x86_64'
