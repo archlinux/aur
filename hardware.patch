@@ -1,0 +1,13 @@
+--- common/rpidetect.c_old	2017-04-02 15:18:48.426790651 +0200
++++ common/rpidetect.c	2017-04-02 15:19:04.359850781 +0200
+@@ -42,8 +42,8 @@
+ 
+ static  const   CHAR    match_hw_asciiz[]      = { "Hardware\t: " };
+ static  const   CHAR    match_rev_asciiz[]     = { "Revision\t: " };
+-static  const   CHAR    match_bcm2708_asciiz[] = { "BCM2708" };
+-static  const   CHAR    match_bcm2709_asciiz[] = { "BCM2709" };
++static  const   CHAR    match_bcm2708_asciiz[] = { "BCM2835" };
++static  const   CHAR    match_bcm2709_asciiz[] = { "BCM2836" };
+ 
+ 
+ // The read buffer is filled with chunk of data read from cpuinfo. The buffer is
