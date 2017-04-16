@@ -14,7 +14,7 @@ url="http://subsonic.org/"
 license=('CUSTOM')
 depends=('java-runtime-headless')
 conflicts=('subsonic')
-source=(http://subsonic.org/download/subsonic-${pkgver}-standalone.tar.gz      
+source=(https://s3-eu-west-1.amazonaws.com/subsonic-public/download/subsonic-${pkgver}-standalone.tar.gz
         'subsonic.service')
 backup=('var/lib/subsonic/db' 'var/lib/subsonic/subsonic.properties' 'var/lib/subsonic/subsonic.sh')
 install=$pkgname.install
