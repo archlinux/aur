@@ -1,0 +1,16 @@
+pkgbase = booster-gtk-themes
+	pkgver = 20170220
+	pkgrel = 1
+	url = https://github.com/boosterdev/booster-themes
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gtk3
+	depends = gtk-engine-murrine
+	depends = ttf-ubuntu-font-family
+	optdepends = arc-firefox-theme: visual integration for firefox
+	source = booster-gtk-themes::git+https://github.com/boosterdev/booster-themes.git
+	sha256sums = SKIP
+
+pkgname = booster-gtk-themes
+
