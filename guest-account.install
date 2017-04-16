@@ -1,0 +1,13 @@
+post_install() {
+    echo "This package assumes that you have a 'guest' user whose home folder is meant to be temporary."
+    echo "If 'guest' is the name of your regular user account, THIS PACKAGE WILL DELETE ALL YOUR FILES."
+    echo ""
+    echo "Some desktop environments (e.g. Plasma) automatically creates the home folder upon login, if missing."
+    echo "Still, you may want to ensure /home/guest be automatically created every time 'guest' logs in (e.g. from tty)."
+    echo "You can do so by appending the following line to /etc/pam.d/system-login:"
+    echo ""
+    echo "session    required   pam_mkhomedir.so"
+    echo ""
+    echo "See also 'man pam_mkhomedir' for more details."
+    echo "If you do not use PAM, you need to write an equivalent script on your own."
+}
