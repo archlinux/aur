@@ -9,7 +9,7 @@
 
 pkgname=apt-cacher-ng
 pkgver=3
-pkgrel=1
+pkgrel=2
 pkgdesc="A caching proxy specialized for package files."
 url="http://www.unix-ag.uni-kl.de/~bloch/acng/"
 arch=('i686' 'x86_64' 'armv7h')
