@@ -2,19 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-glib-object-introspection'
-pkgver='0.040'
+pkgver='0.042'
 pkgrel='1'
 pkgdesc="Dynamically create Perl language bindings"
 arch=('i686' 'x86_64')
-license=('LGPL')
+license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('glib-perl>=1.32' 'gobject-introspection-runtime')
-makedepends=('gobject-introspection' 'perl-extutils-depends>=0.3' 'perl-extutils-pkgconfig>=1')
+depends=('glib-perl>=1.32' 'glib2>=2.50.3' 'gobject-introspection-runtime>=1.50.0+1+gb8d92b0' 'libffi>=3.2.1' 'perl-extutils-depends>=0.3' 'perl-extutils-pkgconfig>=1')
+makedepends=()
 url='https://metacpan.org/release/Glib-Object-Introspection'
-source=('http://search.cpan.org/CPAN/authors/id/X/XA/XAOC/Glib-Object-Introspection-0.040.tar.gz')
-md5sums=('df8329c498da77677d58ef337a75fa6d')
-sha512sums=('bd5e4db8b6e331fb9641e75a50a95fff1a823597a8e4c4e9f99a81e7aa2ee30d93856c56ecfea3785b8719dba6590169bcd006ea06d97170889091e6b9480e9f')
-_distdir="Glib-Object-Introspection-0.040"
+source=('http://search.cpan.org/CPAN/authors/id/X/XA/XAOC/Glib-Object-Introspection-0.042.tar.gz')
+md5sums=('2d40625d5d45ec6ec3da0bddb9ebdc59')
+sha512sums=('a91ba7d553187ed0eb6b35bd68c70de40c82d5e42422ec0a370fa77268cc5b81be3b9b76947ceaf78541224bd188ab902f12be7a5e0efaf94638fea39ba57ba0')
+_distdir="Glib-Object-Introspection-0.042"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
