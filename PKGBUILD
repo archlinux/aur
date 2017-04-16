@@ -11,7 +11,7 @@
 # Upstream: https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/ffmpeg/PKGBUILD
 
 pkgname=ffmpeg-mmal
-pkgver=3.2.4
+pkgver=3.3
 pkgrel=1
 epoch=1
 pkgdesc='ffmpeg built with MMAL hardware acceleration support for Raspberry Pi'
@@ -35,7 +35,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc})
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('6e38ff14f080c98b58cf5967573501b8cb586e3a173b591f3807d8f0660daf7a'
+sha256sums=('599e7f7c017221c22011c4037b88bdcd1c47cd40c1e466838bc3c465f3e9569d'
             'SKIP')
 
 build() {
@@ -80,12 +80,12 @@ build() {
     --enable-libwebp \
     --enable-libx264 \
     --enable-libx265 \
+    --enable-libxcb \
     --enable-libxvid \
     --enable-mmal \
     --enable-netcdf \
     --enable-shared \
     --enable-version3 \
-    --enable-x11grab \
     $CONFIG
 
   make
