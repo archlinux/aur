@@ -1,0 +1,19 @@
+pkgbase = musixmatch-bin
+	pkgdesc = Lyrics platform where users can search and share lyrics
+	pkgver = 0.16.1
+	pkgrel = 1
+	url = https://www.musixmatch.com/
+	arch = x86_64
+	license = custom
+	depends = desktop-file-utils
+	depends = gconf
+	depends = hicolor-icon-theme
+	depends = libnotify
+	depends = libxtst
+	depends = nss
+	optdepends = spotify: Display the lyrics of the currently playing song
+	source = eula.html
+	sha256sums = cfbc4ad07b1566e0ebf88927349f35f5064ecf71d363027614ec18ec293f8664
+
+pkgname = musixmatch-bin
+
