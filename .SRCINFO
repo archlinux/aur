@@ -1,0 +1,24 @@
+pkgbase = thunderboltd-git
+	pkgdesc = Thunderbolt Daemon from the Intel Thunderbolt Software Userspace
+	pkgver = r13.1797ab5
+	pkgrel = 1
+	url = https://github.com/01org/thunderbolt-software-user-space
+	install = thunderboltd-git.install
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = dbus-c++
+	depends = libnl
+	depends = thunderbolt-icm-dkms-git
+	provides = thunderboltd
+	conflicts = thunderboltd
+	source = thunderboltd::git+https://github.com/01org/thunderbolt-software-user-space.git#branch=fwupdate
+	source = 001_fix_sysmacros_include.patch
+	source = 002_disable_postinstall.patch
+	md5sums = SKIP
+	md5sums = 713ee1db7eea31db2cd5093c615225a3
+	md5sums = eb52425947438ed6f7f334bfe48f5066
+
+pkgname = thunderboltd-git
+

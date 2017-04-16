@@ -1,0 +1,6 @@
+post_install() {
+  echo "To use the thunderbolt daemon the following steps are necessary:"
+  echo "  1) update udev rules: udevamd control --reload-rules"
+  echo "  2) load the thunderbolt-icm module: modprobe thunderbolt-icm"
+  echo "  3) start the thunderbolt service: systemctl start thunderboltd"
+}

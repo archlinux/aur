@@ -1,0 +1,10 @@
+--- ThunderboltService/Shared/include/Utils.h.orig	2017-04-16 12:58:14.030344417 +0200
++++ ThunderboltService/Shared/include/Utils.h	2017-04-16 12:58:29.493758083 +0200
+@@ -32,6 +32,7 @@
+ #define UTILS_H_
+ #include <memory>
+ #include <sstream>
++#include <sys/sysmacros.h>
+ #include "defines.h"
+ #include "MessagesWrapper.h"
+ #include "boost/crc.hpp"

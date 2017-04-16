@@ -1,0 +1,13 @@
+--- cmake_install.cmake.orig	2017-04-16 13:13:40.562121665 +0200
++++ cmake_install.cmake	2017-04-16 13:14:02.932269460 +0200
+@@ -104,10 +104,6 @@
+   endif()
+ endif()
+ 
+-if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "script" OR NOT CMAKE_INSTALL_COMPONENT)
+-  include("/home/seiichiro/Misc/AUR/thunderboltd-git/src/thunderboltd/ThunderboltService/Linux/post_install_script.cmake")
+-endif()
+-
+ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+   # Include the install script for each subdirectory.
+   include("/home/seiichiro/Misc/AUR/thunderboltd-git/src/thunderboltd/build/gmock/cmake_install.cmake")
