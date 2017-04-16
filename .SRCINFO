@@ -1,0 +1,15 @@
+pkgbase = python2-opengraph
+	pkgdesc = A module to parse the Open Graph Protocol
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://ogp.me/
+	arch = x86_64
+	license = MIT
+	makedepends = python2-distribute
+	depends = python2
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/o/opengraph/opengraph-0.5.tar.gz
+	sha256sums = 5739e3d67eb93d0002dd64aefd850e49ddd96ddaee39a77dc39aeb869fd5969d
+
+pkgname = python2-opengraph
+
