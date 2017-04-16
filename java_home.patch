@@ -1,6 +1,6 @@
 --- a/ide/bin/launcher.sh
 +++ b/ide/bin/launcher.sh
-@@ -671,21 +671,9 @@
+@@ -829,21 +829,9 @@
    # Once the new path for java has been determined, truncate the /bin/java
    # ending portion of it and set javahome with the trucated path
    #
