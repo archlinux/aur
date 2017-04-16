@@ -1,6 +1,6 @@
 pkgbase = x-corners
 	pkgdesc = A command line tool to set up hot corners under X11
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/mstraube/x-corners
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = x-corners
 	license = ISC
 	makedepends = libxfixes
 	depends = libxi
-	source = x-corners-0.2.1.tar.gz::https://github.com/mstraube/x-corners/archive/0.2.1.tar.gz
-	sha256sums = 95185a822d38ad97720272fe329de72ea573fc82402fcbfd90d5061258635218
+	source = x-corners-0.2.2.tar.gz::https://github.com/mstraube/x-corners/archive/0.2.2.tar.gz
+	sha256sums = e784c2e0b5fabb652b8f44231c94a2487a7914eee610d1f4cb1561d224fcf9d2
 
 pkgname = x-corners
 
