@@ -1,5 +1,14 @@
 post_install() {
-    echo "==> to enable you must regenerate depmod and initcpio, ex:"
+    cat << EOF
+
+==> hid-apple-patched install/upgrade note:
+------------------------------------------------------------------------------
+New functionalities are disabled by default. You can enable them by providing
+a configuration file at /etc/modprobe.d/hid_apple.conf. An example is provided
+at /etc/modprobe.d/hid_apple.conf.example.
+
+EOF
+    echo "==> You also must regenerate depmod and initcpio, ex:"
     echo "==> $ depmod -a"
     echo "==> $ mkinitcpio -p linux"
     echo "==> you need to regenerate them again on every kernel update"
