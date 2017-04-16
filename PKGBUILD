@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus-svn
-pkgver=21912
+pkgver=21918
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('hunspell' 'podofo' 'python2' 'libcups' 'graphicsmagick'
 	 'poppler' 'libcdr' 'libvisio' 'libpagemaker' 'harfbuzz-icu'
 	 'qt5-declarative' 'libmspub' 'openscenegraph'
 	 'hicolor-icon-theme' 'libvncserver')
-makedepends=('subversion' 'cmake' 'qt5-tools' 'dos2unix')
+makedepends=('subversion' 'cmake' 'qt5-tools')
 optdepends=('lib2geom: for mesh distortion')
 conflicts=('scribus')
 provides=('scribus')
