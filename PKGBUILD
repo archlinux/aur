@@ -2,12 +2,12 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=ts-qtplatform
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt Platform Abstraction for theShell"
 arch=("x86_64")
 url="https://github.com/vicr123/ts-qtplatform"
 license=('GPL3')
-depends=('qt5-base' 'contemporary-widgets' 'kiconthemes' 'ttf-contemporary')
+depends=('qt5-base' 'contemporary-widgets' 'kiconthemes' 'ttf-contemporary' 'contemporary-icons')
 makedepends=('git')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/ts-qtplatform#branch=master')
 md5sums=('SKIP')
