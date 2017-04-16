@@ -2,7 +2,7 @@
 
 _pkgname=openbazaard
 pkgname=${_pkgname}-git
-pkgver=v0.5.3.r0.g7a62067
+pkgver=v0.5.4.r33.gb37549f
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network (Latest devel version)"
 arch=(any)
@@ -18,7 +18,12 @@ source=("${_repo}::git+https://${_user}/${_repo}.git"
 )
 options=('strip' 'upx')
 
-prepare(){
+pkgver() {
+  cd ${_repo}
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build(){
   cd $srcdir
   export GOPATH="$PWD"/.gopath
   mkdir -p "$GOPATH"/src/${_user}
@@ -43,11 +48,6 @@ package() {
   msg2 "Symlinking for gui launch"
   install -dm755 $pkgdir/opt/openbazaar-go/
   ln -sr /usr/bin/${_pkgname}-next $pkgdir/opt/openbazaar-go/openbazaard
-}
-
-pkgver() {
-  cd ${_repo}
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 md5sums=('SKIP'
