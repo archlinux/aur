@@ -1,16 +1,16 @@
-# Maintainer: Levi Sabah <0xl3vi@gmail.com
+# Maintainer: Levi Sabah <x@levisabah.com>
 
 pkgname=hostsctl-git
-pkgver=r76.8f3f662
+pkgver=r94.6b12adb
 pkgrel=1
 pkgdesc="Control your /etc/hosts file easily, block ads, social networks, and more."
 arch=('any')
-url="https://github.com/0xl3vi/${pkgname%-git}"
+url="https://github.com/levisabah/${pkgname%-git}"
 license=('GPLv3')
 depends=('git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=("git://github.com/0xl3vi/${pkgname%-git}.git")
+source=("git://github.com/levisabah/${pkgname%-git}.git")
 md5sums=('SKIP')
 install=hostsctl.install
 
