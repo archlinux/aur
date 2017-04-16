@@ -34,7 +34,7 @@ pkgbase=mozc
 pkgname=mozc
 true && pkgname=('mozc')
 pkgver=2.20.2673.102
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/mozc/"
 license=('BSD' 'custom')
@@ -67,9 +67,7 @@ pkgver() {
 
 
 prepare() {
-  cd "$srcdir"
-  ln -sf `which python2` ./python
-  PATH="${srcdir}:${PATH}"
+  ln -sf `which python2` "${srcdir}/python"
 
   cd "${srcdir}/${pkgbase}/"
 
@@ -104,6 +102,8 @@ build() {
     msg2 "  * ${_p}-${pkgver}-${pkgrel}-${CARCH}${PKGEXT}"
   done
   msg2 '====================================================='
+
+  PATH="${srcdir}:${PATH}"
 
   cd "${srcdir}/${pkgbase}/src"
 
