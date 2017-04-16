@@ -1,13 +1,14 @@
 # Maintainer: Fabian <plusfabi[AT+thegoogleadress]>
+
 pkgname=pokemon-revolution-online-bin
 pkgver=0.97.super.fearow.20170416
-pkgrel=1
+pkgrel=2
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
-url="http://pokemon-revolution-online.net"
+url="https://pokemon-revolution-online.net"
 license=('custom')
-depends=('gcc-libs-multilib' 'xdg-utils' 'desktop-file-utils')
-makedepends=('unzip')
+depends=('gcc-libs-multilib' 'desktop-file-utils')
+makedepends=('unzip' 'xdg-utils')
 optdepends=('gtk2: required for the Unity ScreenSelector plugin')
 conflicts=('pokemon-revolution-online')
 install="INSTALL"
@@ -15,18 +16,18 @@ source=('net.pokemon-revolution-online.desktop' 'pokemonrevolution' 'copyright' 
 sha256sums=('8cd4510ef3c788984b5c6ce97c64d850a57ab2bf4a5133c212a77a84c1913e7e'
             '90fd58143a8a201ec8708eda00bb332f57c0fc751c2da68aa633540a15ecf270'
             'df736901de54dce3b191bd9744732f7b9970ab3cbdece8d7fbd7122e69ce32d5'
-            '65f2c8b708456e69ffb4823bed1d99dc82239631ca1e263cf70dff5a69ce6785')
+            '54b5f40a5385eba58385c49b7ba6a4485d531acdb6289c3cb97dcf6825750956')
 
 package() {
     cd "${srcdir}"
 
     # Variables
-    ## i know this isnt a good thing and nobody wants to see this on aur, but itll make things easier for me #Fabian
+    ## i know this isn't a good thing and nobody wants to see this on aur, but it'll make things easier for me #Fabian
     ## directory files naming is usually VNAMING_Date, binary VNAMING.x86_64
     __VNAMING="PROLinux64" ##like PROLinux95_45_data, PROLinux95_45.x86_64
 
     __DLDIR=$(xdg-user-dir DOWNLOAD) ##downloaddirectory
-    __DDLA="http://tiny.cc/PROLinux" ##download link
+    __DDLA="https://tiny.cc/PROLinux" ##download link
     __DDLFN="PROLinux.zip" ##filename
     __DDLFSHA256="c4eb575628be8b38be33c6f7ee9a7d0af242eae70bf751dc7969beebf430e56a" #sha256sum
 

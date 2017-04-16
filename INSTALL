@@ -11,7 +11,7 @@ post_install() {
     echo -e "\t##########################################################"
     echo
     echo
-    if [ $(date +%Y%m%d) = "20170417" ] || [ $(date +%Y%m%d) = "20170418" ]
+    if [ $(date +%Y%m%d) = "20170416" ] || [ $(date +%Y%m%d) = "20170417" ]
         then
             echo "Happy Easter!"
     fi
@@ -21,7 +21,7 @@ post_upgrade() {
     echo
     echo "Thanks for using my pkg :)"
     echo
-    if [ $(date +%Y%m%d) = "20170417" ] || [ $(date +%Y%m%d) = "20170418" ]
+    if [ $(date +%Y%m%d) = "20170416" ] || [ $(date +%Y%m%d) = "20170417" ]
         then
             echo "Happy Easter!"
     fi
