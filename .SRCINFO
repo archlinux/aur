@@ -1,0 +1,12 @@
+pkgbase = numix-holo-themes
+	pkgdesc = A fork of Numix, but uses Android blue instead of red, hence the name
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://www.xfce-look.org/p/1016603
+	arch = any
+	license = GPL
+	source = https://dl.opendesktop.org/api/files/download/id/1462388433/159304-NumixHolo.7z
+	sha256sums = 809f606415356bb0ce7caa30e94e0342e9e147d6c6f874111f8f200a04b8ae6c
+
+pkgname = numix-holo-themes
+
