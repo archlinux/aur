@@ -3,7 +3,7 @@
 
 pkgname=ombi
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple automated way for users to request new content for Plex"
 arch=('any')
 url="https://github.com/tidusjar/Ombi"
@@ -12,7 +12,7 @@ depends=('mono')
 optdepends=('couchpotato' 'sickrage' 'sonarr' 'plex-media-server' 'plex-media-server-plexpass' 'headphones')
 replaces=('plexrequests')
 install='ombi.install'
-source=("${pkgname}-${pkgver}::https://github.com/tidusjar/Ombi/releases/download/v${pkgver}/Ombi.zip"
+source=("${pkgname}-${pkgver}.zip::https://github.com/tidusjar/Ombi/releases/download/v${pkgver}/Ombi.zip"
         "${pkgname}.service"
         "${pkgname}.sysusers")
 
