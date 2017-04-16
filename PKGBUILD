@@ -3,7 +3,7 @@
 
 pkgname=fehashmac
 
-pkgver=1.5.0
+pkgver=2.1
 pkgrel=1
 
 pkgdesc="Generic Hash and HMAC Program"
@@ -12,7 +12,7 @@ url="http://fehashmac.sourceforge.net/"
 license=('GPL')
 depends=(glibc)
 source=(http://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=(515d2d78829741e15e00331c3ed2f59d)
+md5sums=(3e12e2f85b296f3b31eff3681c712558)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
