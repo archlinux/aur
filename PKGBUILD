@@ -3,7 +3,7 @@
 # * No namcap warnings or errors
 
 pkgname=bash-git-prompt
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Informative git prompt for bash and fish"
 arch=('any')
