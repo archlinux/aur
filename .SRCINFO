@@ -1,7 +1,7 @@
 pkgbase = bitcoind-unlimited-git
 	pkgdesc = Bitcoin Unlimited versions of bitcoind, bitcoin-cli, and bitcoin-tx
-	pkgver = 1.0.1.3
-	pkgrel = 2
+	pkgver = 1.0.1.3.r929
+	pkgrel = 1
 	url = http://www.bitcoinunlimited.info
 	install = bitcoin.install
 	arch = i686

@@ -4,8 +4,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoind-unlimited-git
-pkgver=1.0.1.3
-pkgrel=2
+pkgver=1.0.1.3.r929
+pkgrel=1
 pkgdesc="Bitcoin Unlimited versions of bitcoind, bitcoin-cli, and bitcoin-tx"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.bitcoinunlimited.info"
