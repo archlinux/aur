@@ -25,14 +25,14 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
-  patch -p0 -i "../../001_fix_sysmacros_include.patch"
+  patch -p0 -i "$srcdir/001_fix_sysmacros_include.patch"
   mkdir -p build
 }
 
 build() {
   cd "$srcdir/${pkgname%-git}/build"
   cmake ../ThunderboltService/Linux -DCMAKE_BUILD_TYPE=Release
-  patch -p0 -i ../../../002_disable_postinstall.patch
+  patch -p0 -i $srcdir/002_disable_postinstall.patch
   make
 }
 
