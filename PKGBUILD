@@ -2,7 +2,7 @@
 
 pkgname=greenclip
 pkgver=1.2
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="Clipboard manager to use with rofi"
 arch=('x86_64')
