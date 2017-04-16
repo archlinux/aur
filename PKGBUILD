@@ -5,7 +5,7 @@ pkgname=${_basename}-bin
 pkgver=0.33
 _branch=v${pkgver}
 _tarname=${_basename}_${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenGL and Vulkan debugging tool - binary version"
 arch=(x86_64)
 url="https://github.com/baldurk/renderdoc"
@@ -18,7 +18,7 @@ source=("https://renderdoc.org/stable/$pkgver/$_tarname.tar.gz"
         "https://raw.githubusercontent.com/baldurk/$_basename/$_branch/LICENSE.md")
 sha256sums=('dde8c1ee496568d46b89f0aec081eef8d46da23ee80237fc096b694307ac50cf'
             'SKIP'
-            'f144ffb364c8504757a8a78e25929f89d840ba7ed23b410492df42d5db604d5d')
+            'e52150c6d24d3bd7d002c394f02947136bc2c7bf85caf2fe4636db0c0155a7aa')
 validpgpkeys=('1B039DB9A4718A2D699DE031AC612C3120C34695')
 
 package() {
