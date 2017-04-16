@@ -1,6 +1,7 @@
 # Maintainer: end222 <pabloorduna98 at gmail dot com>
 # Ex-maintainer: ValHue <vhuelamo at gmail dot com>
 # https://github.com/ValHue/AUR-PKGBUILDs
+# https://github.com/end222/AUR
 
 pkgname="nautilus-megasync"
 pkgver="3.0.1"
