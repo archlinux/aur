@@ -15,7 +15,7 @@ install=${_pkgname}-${_version}.install
 source=("git+${url}")
 sha256sums=('SKIP')
 package() {
-	cd "$srcdir/${_pkgname}"
+	cd "$srcdir/numix-white"
         install -dm755 ${pkgdir}/usr/share/icons/
         cp -dr --no-preserve='ownership' Numix Numix-White "${pkgdir}"/usr/share/icons/
 }
