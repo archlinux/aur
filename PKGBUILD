@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-statistics-descriptive'
-pkgver='3.0609'
+pkgver='3.0612'
 pkgrel='1'
 pkgdesc="Module of basic descriptive statistical functions."
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-list-moreutils>=0')
 makedepends=()
 url='https://metacpan.org/release/Statistics-Descriptive'
-source=('http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Statistics-Descriptive-3.0609.tar.gz')
-md5sums=('3fa7a705742d2ba942b9e0b167fdb48b')
-sha512sums=('06e3fe107085eab058c3816211e91069ac8c52bd3c5276ee61f0ad6d684a957bd02767fe6080aa12b93f6fb3b9f4cad30814fcfa0aba446d73861868f567ff4f')
-_distdir="Statistics-Descriptive-3.0609"
+source=('http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Statistics-Descriptive-3.0612.tar.gz')
+md5sums=('e38cfbc1e3962d099b62a14a57a175f1')
+sha512sums=('1157c0259a376f44363861c515ef56a25cf5a496d67faea546e225751d39c3529f9aa7d1bd021e2e399d5e884e7f5372df67249fe4f5607a6bdd806235503d46')
+_distdir="Statistics-Descriptive-3.0612"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
