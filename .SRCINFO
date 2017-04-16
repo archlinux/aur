@@ -1,12 +1,13 @@
 pkgbase = python-pcloudapi-git
 	pkgdesc = A python3 library for accessing the pcloud.com API
 	pkgver = v0.0.2.r0.gc303afe
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tochev/python3-pcloudapi
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-requests
+	options = !emptydirs
 	source = git+https://github.com/tochev/python3-pcloudapi
 	sha512sums = SKIP
 
