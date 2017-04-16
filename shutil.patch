@@ -1,0 +1,19 @@
+--- fastoggenc	2017-04-16 22:59:30.989559964 +0200
++++ -	2017-04-16 23:00:24.341965358 +0200
+@@ -39,6 +39,7 @@
+ import sys
+ import gettext
+ import os, os.path
++import shutil
+ import re
+ import multiprocessing
+ import threading
+@@ -546,7 +547,7 @@
+             if self.decoder == 'mplayer':
+                 # Move the file for mplayer (which uses tempwav), so it works
+                 # for --preserve-wav.
+-                os.rename(tempwav, self.songwav)
++                shutil.move(tempwav, self.songwav)
+             if retcode != 0:
+                 return (False, None)
+             else:
