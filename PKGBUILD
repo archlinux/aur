@@ -15,7 +15,6 @@ sha256sums=('cfbc4ad07b1566e0ebf88927349f35f5064ecf71d363027614ec18ec293f8664')
 
 prepare() {
   curl 'https://download-app.musixmatch.com/' -A 'Linux x86_64' -D headers.txt -OJ
-  ar vx ./${_pkgname}_*_amd64.deb
 }
 
 pkgver() {
@@ -24,6 +23,7 @@ pkgver() {
 }
 
 package() {
+  ar vx "./${_pkgname}_${pkgver}_amd64.deb"
   tar xaf data.tar.xz -C "$pkgdir"
 
   mkdir -p "${pkgdir}/usr/bin"
