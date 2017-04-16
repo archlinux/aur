@@ -1,14 +1,14 @@
 pkgbase = git-annex-remote-pcloud-git
 	pkgdesc = A git-annex special remote using pCloud
 	pkgver = 0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tochev/git-annex-remote-pcloud
 	arch = any
 	license = MIT
 	depends = git-annex
 	depends = python
 	depends = python-requests
-	depends = python-pcloudapi
+	depends = python-pcloudapi-git
 	source = git+https://github.com/tochev/git-annex-remote-pcloud
 	sha512sums = SKIP
 
