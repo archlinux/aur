@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-core
-_pkgver=1.0.2
+_pkgver=1.1.0
 _rpmrel=1
 _pkgtag=$pkgname-$_pkgver-$_rpmrel
 pkgver=$_pkgver.$_rpmrel
@@ -13,7 +13,7 @@ makedepends=('cmake' 'python-sphinx')
 checkdepends=('python-nose')
 options=(!emptydirs)
 source=("$url/archive/$_pkgtag.tar.gz")
-md5sums=('4d936e0e16465227c392aced5617eece')
+md5sums=('66fa8935faf6bc5ea63003b658bde6b1')
 
 prepare() {
 	mv "$pkgname-$_pkgtag" "$pkgname-$pkgver"
