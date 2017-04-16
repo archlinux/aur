@@ -2,7 +2,7 @@
 
 _pkgname=xfwm4
 pkgname=${_pkgname}-devel
-pkgver=4.11.3
+pkgver=4.13.0
 pkgrel=1
 pkgdesc="Xfce window manager"
 arch=('i686' 'x86_64')
@@ -38,4 +38,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-md5sums=('ed91ae7b1677e77ce537a888414d7ce4')
+md5sums=('1d4e0b50b77f60988db8f61564799023')
