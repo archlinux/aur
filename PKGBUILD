@@ -4,12 +4,12 @@ pkgname=bcloud-git
 pkgver=20150609
 pkgrel=1
 pkgdesc="Baidu Pan client for Linux Desktop users"
-url="https://github.com/LiuLang/bcloud"
+url="https://github.com/Yufeikang/bcloud"
 arch=('any')
 license=('GPL3')
 makedepends=('git')
 depends=('python' 'python-keyring' 'python-urllib3' 'python-gobject'  'python-dbus'  'python-cssselect' 'python-lxml' 'python-crypto' 'webkitgtk' 'python-pyinotify')
-source=("${pkgname}"::'git+https://github.com/LiuLang/bcloud.git')
+source=("${pkgname}"::'git+https://github.com/Yufeikang/bcloud.git')
 md5sums=(SKIP)
 conflicts=("bcloud")
 
