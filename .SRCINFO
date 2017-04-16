@@ -1,0 +1,19 @@
+pkgbase = tbtfwucli-git
+	pkgdesc = NVM Controller Firmware Update Utility from the Intel Thunderbolt Software Userspace
+	pkgver = r13.1797ab5
+	pkgrel = 1
+	url = https://github.com/01org/thunderbolt-software-user-space
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = dbus-c++
+	depends = libtbtfwu
+	depends = thunderboltd
+	provides = tbtfwucli
+	conflicts = tbtfwucli
+	source = tbtfwucli::git+https://github.com/01org/thunderbolt-software-user-space.git#branch=fwupdate
+	md5sums = SKIP
+
+pkgname = tbtfwucli-git
+
