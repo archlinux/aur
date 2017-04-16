@@ -25,7 +25,7 @@ prepare() {
 
 build() {
   cd "$srcdir/${pkgname%-git}/build"
-  cmake ../fwupdate/libtbtfwu -DCMAKE_BUILD_TYPE=Release
+  cmake ../fwupdate/libtbtfwu -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release
   make
 }
 
