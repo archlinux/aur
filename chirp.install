@@ -1,0 +1,23 @@
+post_install() {
+cat <<EOT
+
+================================================================================
+In order to access your radio, you may need to adjust permissions on the serial
+device. (Note: device names may vary.)
+eg.
+  chown USER /dev/ttyUSB0
+    or
+  chmod o+rw /dev/ttyUSB0
+
+Alternatively, in order to let non-privileged users access the serial device on
+their next login, you can add them to the group that owns it.
+eg.
+  gpasswd --add USER GROUP
+================================================================================
+
+EOT
+}
+
+post_upgrade() {
+  post_install
+}

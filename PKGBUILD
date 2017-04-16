@@ -1,29 +1,58 @@
-# Maintainer: David Thurstenson thurstylark@gmail.com
+# Co-Maintainer: David Thurstenson thurstylark@gmail.com
+# Co-Maintainer: not_anonymous <nmlibertarian@gmail.com>
+# Contributor: Erez Raviv (erezraviv@gmail.com)
+# Contributor: Mathew Hiles (matthew.hiles@gmail.com)
+# Contributor: Nicholas Tryon (KC2YTG) <dhraak at gmail dot com>
+
 pkgname=chirp-hg
-pkgver=r2802+.c386ef4dc431+
+_pkgname=chirp
+pkgver=20170415
 pkgrel=1
-pkgdesc="GUI tool for programming ham radios, built from hg repo"
+pkgdesc="GUI tool for programming Ham Radios - HG/Complete version"
 arch=('any')
 url="http://chirp.danplanet.com/"
-license=('GPL')
-depends=('python2-lxml' 'python2-pyserial' 'desktop-file-utils' 'pygtk' 'curl')
+license=('GPL3')
+depends=('python2-lxml' 'python2-pyserial' 'pygtk' 'hamradio-menus')
 makedepends=('mercurial')
+options=('!emptydirs')
 provides=('chirp')
-conflicts=('chirp' 'chirp-daily')
-source=('chirp-hg::hg+http://d-rats.com/hg/chirp.hg')
-noextract=()
-md5sums=('SKIP')
+conflicts=('chirp-daily')
+install=$_pkgname.install
+source=("$_pkgname::hg+http://d-rats.com/hg/$_pkgname.hg")
 
 pkgver() {
-	cd "$srcdir/$pkgname"
-	printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+	cd $srcdir/$_pkgname
+
+	date +%Y%m%d 
 }
 
 prepare() {
-	sed -i 's|/usr/sbin|/usr/bin|' $srcdir/$pkgname/setup.py
+	cd $srcdir/$_pkgname
+
+	sed -i -e 's|/usr/sbin|/usr/bin|g' setup.py
+	sed -i 's:python:python2:' chirpc
+
+	date +%Y%m%d > build/version
+	export VERSION=$(cat build/version)
+	sed -i -e 's/^CHIRP_VERSION.*$/CHIRP_VERSION=\"'$VERSION'-arch-dev\"/' chirp/__init__.py
+}
+
+build() {
+	cd $srcdir/$_pkgname
+
+	python2 setup.py build
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd $srcdir/$_pkgname
+
 	python2 setup.py install --root="$pkgdir/" --optimize=1
+
+	install -m755 chirpc $pkgdir/usr/bin
+
+	rm -rf $pkgdir/usr/share/doc/$_pkgname/COPYING
+	install -m644 README.chirpc $pkgdir/usr/share/doc/$_pkgname
+	install -m644 README.rpttool $pkgdir/usr/share/doc/$_pkgname
 }
+md5sums=('SKIP')
+sha256sums=('SKIP')
