@@ -1,0 +1,22 @@
+pkgbase = liri-text-git
+	pkgdesc = Advanced text editor built in accordance with Material Design
+	pkgver = 20170416.8039993
+	pkgrel = 1
+	url = https://liri.io
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	groups = liri-git
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-tools
+	depends = fluid-git
+	depends = qt5-quickcontrols
+	provides = liri-text
+	conflicts = liri-text
+	source = text::git://github.com/lirios/text.git#branch=develop
+	md5sums = SKIP
+
+pkgname = liri-text-git
+
