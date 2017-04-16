@@ -72,6 +72,7 @@ _bldtype=Release
 #_bldtype=Debug
 
 _mozcrev=280e38fe3d9db4df52f0713acf2ca65898cd697a
+_mozcver=2.20.2673.102
 _utdicver=20170321
 _zipcoderel=201703
 _uimmozcrev=321.3ea28b1
@@ -79,8 +80,8 @@ _uimmozcrev=321.3ea28b1
 pkgbase=mozc-ut2
 pkgname=mozc-ut2
 true && pkgname=('mozc-ut2')
-pkgver=2.20.2673.102.20170321
-pkgrel=1
+pkgver="${_mozcver}.${_utdicver}"
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc-ut2.html"
 license=('BSD' 'GPL' 'CC-BY-SA' 'custom')
@@ -120,21 +121,8 @@ if [[ "$_emacs_mozc" == "yes" ]]; then
 fi
 
 
-mozcver() {
-  . "${srcdir}/mozc/src/data/version/mozc_version_template.bzl"
-  printf "%s.%s.%s.%s" $MAJOR $MINOR $BUILD $REVISION
-}
-
-
-pkgver() {
-  printf "%s.%s" $_mozcver "${_utdicver}"
-}
-
-
 prepare() {
-  cd "$srcdir"
-  ln -sf `which python2` ./python
-  PATH="${srcdir}:${PATH}"
+  ln -sf `which python2` "${srcdir}/python"
 
   cd "${srcdir}/mozc/"
 
@@ -142,14 +130,13 @@ prepare() {
 
   cd "${srcdir}/mozcdic-ut2-${_utdicver}"
 
-  _mozcver=`mozcver`
   "${srcdir}/mod-generate-dictionary.sh"
   msg "Generating UT dictionary seed..."
   MOZCVER="$_mozcver" DICVER="$_utdicver" NICODIC="$_NICODIC" \
     ./generate-dictionary.sh
   msg "Done."
 
-  cd "${srcdir}/${pkgbase}-`pkgver`/src"
+  cd "${srcdir}/${pkgbase}-${pkgver}/src"
 
   # uim-mozc
   if [[ "$_uim_mozc" == "yes" ]]; then
@@ -177,6 +164,8 @@ build() {
 
   msg "Starting make..."
 
+  PATH="${srcdir}:${PATH}"
+ 
   cd "${srcdir}/${pkgbase}-${pkgver}/src"
 
   _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool "
