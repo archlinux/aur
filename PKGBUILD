@@ -6,7 +6,7 @@
 
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
-pkgver=3.2.4
+pkgver=3.3
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
@@ -31,7 +31,7 @@ depends=("$_pkgbasename"
       'lib32-libva'
       'lib32-libvdpau'
       'lib32-libwebp'
-      'lib32-opencore-amr' 
+      'lib32-opencore-amr'
       'lib32-openjpeg'
       'lib32-openjpeg2'
       'lib32-opus'
@@ -58,7 +58,7 @@ source=(
 )
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 sha256sums=(
-      'c0fa3593a2e9e96ace3c1757900094437ad96d1d6ca19f057c378b5f394496a4'
+      '21e08647c9e740a4d3b85bf455b31d079fe0faba9555fa9329230e8541cf6bdc'
       'SKIP'
 )
 
@@ -102,10 +102,10 @@ build() {
     --enable-libvpx \
     --enable-libwebp \
     --enable-libx264 \
+    --enable-libxcb \
     --enable-libxvid \
     --enable-shared \
-    --enable-version3 \
-    --enable-x11grab
+    --enable-version3
 
 #    --enable-libdcadec \
 #    --enable-libx265 \
