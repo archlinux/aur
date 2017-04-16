@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 build() {
   # Use a temporary local Cargo repository.
-  local CARGO_HOME="${srcdir}/cargo-repository"
+  export CARGO_HOME="${srcdir}/cargo-repository"
 
   cd "${srcdir}/${pkgname}"
   make
@@ -23,15 +23,12 @@ build() {
 # Commented out because tests ask for sudo access
 #check() {
 #  # Use a temporary local Cargo repository.
-#  local CARGO_HOME="$srcdir/cargo-repository"
+#  export CARGO_HOME="$srcdir/cargo-repository"
 #
 #  cd "${srcdir}/${pkgname}"
 #  make test
 #}
 
 package() {
-  # Install executable.
-  ls
   install -D -m755 "${srcdir}/${pkgname}/target/debug/hab" "${pkgdir}/usr/bin/hab"
 }
-
