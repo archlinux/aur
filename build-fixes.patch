@@ -1,0 +1,57 @@
+--- qt-linux/ts3soundboard_linux.pro_orig	2017-04-16 11:03:14.429439051 +0200
++++ qt-linux/ts3soundboard_linux.pro	2017-04-16 11:03:38.873595978 +0200
+@@ -20,7 +20,7 @@
+ CONFIG(debug, release|debug):DEFINES += _DEBUG
+ CONFIG(release, release|debug):DEFINES += NDEBUG
+ 
+-INCLUDEPATH += ../include
++INCLUDEPATH += /usr/include/teamspeak3
+ 
+ LIBS += -L$(TS3DIR)
+ 
+@@ -29,7 +29,7 @@
+     -lavutil \
+     -lswresample
+ 
+-QMAKE_POST_LINK += "cp $${DESTDIR}/lib$${TARGET}.so $(TS3DIR)/plugins"
++# QMAKE_POST_LINK += "cp $${DESTDIR}/lib$${TARGET}.so $(TS3DIR)/plugins"
+ 
+ 
+ include(./ts3soundboard.pri)
+--- qt-linux/ts3soundboard.pri_orig	2017-04-16 11:03:52.417682394 +0200
++++ qt-linux/ts3soundboard.pri	2017-04-16 11:04:47.759031973 +0200
+@@ -22,6 +22,7 @@
+     ../src/SampleSource.h \
+     ../src/SampleVisualizerThread.h \
+     ../src/SoundInfo.h \
++    ../src/TalkStateManager.h \
+     ../src/ts3log.h \
+     ../src/version/version.h \
+     ../vs2015/resource.h \
+@@ -43,7 +44,7 @@
+     ../src/main.cpp \
+     ../src/HighResClock.cpp \
+     ../src/inputfileffmpeg.cpp \
+-    ../src/plugin.c \
++    ../src/plugin.cpp \
+     ../src/SampleBuffer.cpp \
+     ../src/SampleProducerThread.cpp \
+     ../src/samples.cpp \
+@@ -53,6 +54,7 @@
+     ../src/soundsettings_qt.cpp \
+     ../src/soundview_qt.cpp \
+     ../src/SpeechBubble.cpp \
++    ../src/TalkStateManager.cpp \
+     ../src/ts3log.cpp \
+     ../src/UpdateChecker.cpp \
+     ../src/updater_qt.cpp
+--- src/samples.cpp_orig	2017-04-16 11:05:06.014146183 +0200
++++ src/samples.cpp	2017-04-16 11:05:27.003276895 +0200
+@@ -18,6 +18,7 @@
+ #include <queue>
+ #include <vector>
+ #include <cassert>
++#include <math.h>
+ 
+ 
+ #define USE_SSE2
