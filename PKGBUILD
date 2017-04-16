@@ -5,7 +5,7 @@ pkgdesc="Qoobar - Audio Tagger for Classical Music"
 arch=('i686' 'x86_64')
 url="http://qoobar.sourceforge.net"
 license=('GPL')
-depends=('qt5-base' 'gstreamer' 'flac' 'libdiscid' 'enca' 'shntool')
+depends=('qt5-base' 'gstreamer0.10-base' 'flac' 'libdiscid' 'enca' 'shntool')
 source=("http://downloads.sourceforge.net/sourceforge/qoobar/qoobar-${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('1c666dc58d634fb86e53aef231d01b67')
 
