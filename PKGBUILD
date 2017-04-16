@@ -2,15 +2,15 @@
 # macOS port by metacollins, original project by donovan6000, licensed under GPLv3
 pkgname=universal-ifr-extractor-linux-git
 pkgver=r46.61c09aa
-pkgrel=3
+pkgrel=4
 #epoch=
 pkgdesc="Command-line EFI/UEFI module IFR extractor"
 arch=('x86_64' 'i386' 'i686')
 url="https://github.com/TGSoftware/Universal-IFR-Extractor-Linux"
 license=('GPL3')
 #groups=()
-depends=('cmake' 'clang' 'pacman')
-makedepends=('git')
+#depends=()
+makedepends=('git' 'cmake' 'clang')
 #checkdepends=()
 #optdepends=()
 provides=('ifrextract')
