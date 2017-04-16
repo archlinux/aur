@@ -5,7 +5,7 @@
 
 pkgname=bitcoind-unlimited-git
 pkgver=1.0.1.3.r929
-pkgrel=2
+pkgrel=3
 pkgdesc="Bitcoin Unlimited versions of bitcoind, bitcoin-cli, and bitcoin-tx"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.bitcoinunlimited.info"
@@ -44,7 +44,7 @@ pkgver() {
 
   # The latest version was not tagged, so throw away the version we get
   # from the top-most tag, but keep,the revision height and commit hash
-  git describe --long | sed "s/^v[^-]\+-\([0-9]\+\)/$pkgver.r\1/;s/-/./g"
+  git describe --long | sed "s/^v[^-]\+-\([0-9]\+\)/$pkgver/;s/-/./g"
 }
 
 build() {
