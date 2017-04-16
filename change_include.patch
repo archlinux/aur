@@ -1,0 +1,11 @@
+--- plugin.pro_orig	2017-02-11 09:08:25.324095350 +0100
++++ plugin.pro	2017-02-11 09:08:42.703146500 +0100
+@@ -12,7 +12,7 @@
+ TEMPLATE = lib
+
+ INCLUDEPATH += src
+-INCLUDEPATH += includes/pluginsdk/include
++INCLUDEPATH += /usr/include/teamspeak3
+
+ DEFINES += PLUGIN_VER=\\\"$${VERSION}\\\"
+
