@@ -5,12 +5,13 @@ pkgbase=python2-macs2
 pkgname=('python2-macs2')
 _pkgname=MACS2
 pkgver=2.1.1.20160309
-pkgrel=1
+pkgrel=2
 pkgdesc="MACS -- Model-based Analysis of ChIP-Seq"
 arch=('i686' 'x86_64')
 url="https://github.com/taoliu/MACS/"
 license=('Artistic')
 depends=('python2-numpy')
+makedepends=('python2-setuptools')
 source=("https://pypi.io/packages/source/m/macs2/MACS2-${pkgver}.tar.gz")
 md5sums=('1cc2fab44b232992060c7ab592bf43fa')
 
