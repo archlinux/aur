@@ -1,7 +1,7 @@
 # maintainer: tagener-noisu
 pkgname=otf-inconsolata-lgc
 _pkgname=inconsolata
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="a modified version of Inconsolata with added Cyrillic alphabet"
 url="https://github.com/MihailJP/Inconsolata-LGC/"
@@ -20,10 +20,15 @@ build() {
 
 package() {
   cd $_pkgname
-  install -m644 -D Inconsolata-LGC.otf "$pkgdir/usr/share/fonts/OTF/InconsolataLGC.otf"
-  install -m644 -D Inconsolata-LGC-Bold.otf "$pkgdir/usr/share/fonts/OTF/InconsolataLGC-Bold.otf"
-  install -m644 -D Inconsolata-LGC-Italic.otf "$pkgdir/usr/share/fonts/OTF/InconsolataLGC-Italic.otf"
-  install -m644 -D Inconsolata-LGC-BoldItalic.otf "$pkgdir/usr/share/fonts/OTF/InconsolataLGC-BoldItalic.otf"
+  install -m644 -D Inconsolata-LGC.otf\
+    "$pkgdir/usr/share/fonts/OTF/InconsolataLGC.otf"
+  install -m644 -D Inconsolata-LGC-Bold.otf\
+    "$pkgdir/usr/share/fonts/OTF/InconsolataLGC-Bold.otf"
+  install -m644 -D Inconsolata-LGC-Italic.otf\
+    "$pkgdir/usr/share/fonts/OTF/InconsolataLGC-Italic.otf"
+  install -m644 -D Inconsolata-LGC-BoldItalic.otf\
+    "$pkgdir/usr/share/fonts/OTF/InconsolataLGC-BoldItalic.otf"
+
   install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -m644 -D README "$pkgdir/usr/share/doc/$pkgname/README"
 }
