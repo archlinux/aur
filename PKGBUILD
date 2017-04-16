@@ -10,7 +10,7 @@ url='https://github.com/mstraube/x-corners'
 depends=('libxi')
 makedepends=('libxfixes')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mstraube/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('e784c2e0b5fabb652b8f44231c94a2487a7914eee610d1f4cb1561d224fcf9d2')
+sha256sums=('4d95fc17ff1946fd5771731aa9b8960702b04d64e9e68f06c493dc89cca9fabe')
 
 build() {
   cd $pkgname-$pkgver
