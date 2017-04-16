@@ -1,15 +1,14 @@
-# Maintainer: Holden Salomon <holden@cryptolab.net>
+# Maintainer: James Swineson <aur@public.swineson.me>
 
 pkgname=proxmark3-flasher
-pkgver=r1382.2c79288
+pkgver=r1688.bb4e6db
 pkgrel=1
 pkgdesc="Offical proxmark3 flasher"
 url="https://github.com/Proxmark/proxmark3/"
 arch=('i686' 'x86_64')
 license=('GPL3')
 makedepends=(git make arm-none-eabi-gcc arm-none-eabi-newlib)
-#depends=(devkitarm)
-depends=(devkitarm)
+depends=(devkitarm termcap)
 source=('git+https://github.com/Proxmark/proxmark3.git')
 sha256sums=('SKIP')
 
