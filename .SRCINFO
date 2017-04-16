@@ -1,6 +1,6 @@
 pkgbase = otter-browser-git
 	pkgdesc = Browser aiming to recreate the best aspects of the classic Opera (12.x) UI using Qt5 - git checkout
-	pkgver = 0.9.12.r809.g7c5de151
+	pkgver = 0.9.12.r815.g0e777436
 	pkgrel = 1
 	url = http://otter-browser.org/
 	arch = x86_64
