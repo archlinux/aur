@@ -1,0 +1,21 @@
+pkgbase = wireless-regdb-pentest
+	pkgdesc = Central Regulatory Domain Database with txpower/channels modified for pentesters. please respect the law in your country
+	pkgver = 2017.03.07
+	pkgrel = 1
+	url = http://wireless.kernel.org/en/developers/Regulatory
+	arch = any
+	license = custom
+	makedepends = crda
+	depends = sh
+	provides = wireless-regdb
+	conflicts = wireless-regdb
+	backup = etc/conf.d/wireless-regdom
+	source = https://www.kernel.org/pub/software/network/wireless-regdb/wireless-regdb-2017.03.07.tar.xz
+	source = crda.conf.d
+	source = db.txt.patch
+	sha256sums = 371eafa3b26ece916ef83aca02c4bed2e54099eb5b8c6d22d3a4358dce6535b9
+	sha256sums = 192428fd959806705356107bffc97b8b379854e79bd013c4ee140e5202326e2b
+	sha256sums = 464037af76e3a90548f30a4a0fcacc35053da8ea9d077c76f9ab728cf0772313
+
+pkgname = wireless-regdb-pentest
+
