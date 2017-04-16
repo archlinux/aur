@@ -2,12 +2,11 @@
 Description=LazyLibrarian
 
 [Service]
-ExecStart=/usr/bin/python2 /opt/lazylibrarian/LazyLibrarian.py --daemon --config /opt/lazylibrarian/lazylibrarian.ini --datadir /opt/lazylibrarian/.lazylibrarian --nolaunch --quiet
-GuessMainPID=no
-Type=forking
+ExecStart=/usr/bin/python2 /usr/lib/lazylibrarian/LazyLibrarian.py --config /etc/lazylibrarian/lazylibrarian.ini --datadir /var/lib/lazylibrarian --nolaunch
+Type=simple
 User=lazylibrarian
 Group=lazylibrarian
-Restart=on-failure
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
