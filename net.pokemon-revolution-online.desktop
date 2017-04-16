@@ -9,24 +9,29 @@ StartupNotify=false
 Terminal=false
 Type=Application
 Categories=Game;
-Actions=Support;Rules;Community;Register;
+Actions=Support;Rules;Forums;Register;AUR;
 
 [Desktop Action Support]
 Name=Support
 Name[de]=Unterstützung
-Exec=xdg-open http://pokemon-revolution-online.net/Register.php
+Exec=xdg-open https://pokemon-revolution-online.net/Support.php
 
 [Desktop Action Rules]
 Name=Rules
 Name[de]=Regeln
-Exec=xdg-open http://pokemon-revolution-online.net/rules.php
+Exec=xdg-open https://pokemon-revolution-online.net/rules.php
 
-[Desktop Action Community]
-Name=Community
-Name[de]=Community
-Exec=xdg-open http://pokemon-revolution-online.net/Forum/index.php
+[Desktop Action Forums]
+Name=Forums
+Name[de]=Forum
+Exec=xdg-open https://pokemon-revolution-online.net/Forum/index.php
 
 [Desktop Action Register]
 Name=Register
 Name[de]=Registrieren
-Exec=xdg-open http://pokemon-revolution-online.net/Support.php
+Exec=xdg-open https://pokemon-revolution-online.net/Register.php
+
+[Desktop Action AUR]
+Name=PRO AUR site
+Name[de]=PRO AUR Seite
+Exec=xdg-open https://aur.archlinux.org/packages/pokemon-revolution-online-bin/

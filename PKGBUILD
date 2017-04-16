@@ -1,7 +1,7 @@
 # Maintainer: Fabian <plusfabi[AT+thegoogleadress]>
 pkgname=pokemon-revolution-online-bin
-pkgver=0.96.pink.weedle.20170205
-pkgrel=2
+pkgver=0.97.super.fearow.20170416
+pkgrel=1
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
 url="http://pokemon-revolution-online.net"
@@ -12,7 +12,7 @@ optdepends=('gtk2: required for the Unity ScreenSelector plugin')
 conflicts=('pokemon-revolution-online')
 install="INSTALL"
 source=('net.pokemon-revolution-online.desktop' 'pokemonrevolution' 'copyright' 'pokemonrevolution.svg')
-sha256sums=('27f22ea124b0737451a2684f4d845af0c691a9719fe45f071e0ef828df5f8f4a'
+sha256sums=('8cd4510ef3c788984b5c6ce97c64d850a57ab2bf4a5133c212a77a84c1913e7e'
             '90fd58143a8a201ec8708eda00bb332f57c0fc751c2da68aa633540a15ecf270'
             'df736901de54dce3b191bd9744732f7b9970ab3cbdece8d7fbd7122e69ce32d5'
             '65f2c8b708456e69ffb4823bed1d99dc82239631ca1e263cf70dff5a69ce6785')
@@ -27,8 +27,8 @@ package() {
 
     __DLDIR=$(xdg-user-dir DOWNLOAD) ##downloaddirectory
     __DDLA="http://tiny.cc/PROLinux" ##download link
-    __DDLFN="PROLinux64Weedle.zip" ##filename
-    __DDLFSHA256="508a5e357083dfce85ee512fd8a494f83cd3ac57326140209afc9f513eb789c4" #sha256sum
+    __DDLFN="PROLinux.zip" ##filename
+    __DDLFSHA256="c4eb575628be8b38be33c6f7ee9a7d0af242eae70bf751dc7969beebf430e56a" #sha256sum
 
     ## "Something's missing"? -> No One Cares - Atreyu c;
     if [ ! -f ${__DLDIR}/${__DDLFN} ]; then
