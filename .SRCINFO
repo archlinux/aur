@@ -6,6 +6,7 @@ pkgbase = apt-cacher-ng
 	install = apt-cacher-ng.install
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = custom
 	makedepends = cmake
 	depends = zlib
