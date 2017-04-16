@@ -11,9 +11,9 @@
 # Contributor: sintaxi <brock@sintaxi.com>
 
 _npmname=harp
-_npmver=0.9.4
+_npmver=0.23.0
 pkgname=nodejs-harp # All lowercase
-pkgver=0.9.4
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Production ready web server with built in pre-processing"
 arch=(any)
@@ -23,7 +23,7 @@ depends=('nodejs' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('7cc193fc316492450801b4f678f8be8f7f648936')
+sha1sums=('5db8493f8074cdf9bd478d336de7328729f3ff0b')
 
 package() {
   cd "$srcdir"
