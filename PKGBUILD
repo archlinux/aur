@@ -1,7 +1,7 @@
 # Contributor: wxg <wxg4net@gmail.com>
 
 pkgname=bcloud-git
-pkgver=20150609
+pkgver=20170416
 pkgrel=1
 pkgdesc="Baidu Pan client for Linux Desktop users"
 url="https://github.com/Yufeikang/bcloud"
