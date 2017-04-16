@@ -16,7 +16,7 @@ source=('thunderboltd::git+https://github.com/01org/thunderbolt-software-user-sp
         '002_disable_postinstall.patch')
 md5sums=('SKIP'
          '713ee1db7eea31db2cd5093c615225a3'
-         'eb52425947438ed6f7f334bfe48f5066')
+         'e4c896b0edf447423b93983c193606e3')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -26,13 +26,13 @@ pkgver() {
 prepare() {
   cd "$srcdir/${pkgname%-git}"
   patch -p0 -i "$srcdir/001_fix_sysmacros_include.patch"
+  patch -p0 -i "$srcdir/002_disable_postinstall.patch"
   mkdir -p build
 }
 
 build() {
   cd "$srcdir/${pkgname%-git}/build"
   cmake ../ThunderboltService/Linux -DCMAKE_BUILD_TYPE=Release
-  patch -p0 -i $srcdir/002_disable_postinstall.patch
   make
 }
 
