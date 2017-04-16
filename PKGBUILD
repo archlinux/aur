@@ -190,7 +190,8 @@ package_megasync-cli-git() {
   conflicts=('megasync-cli')
   provides=('megasync-cli')
   depends=('libmega-git'
-           'pcre')
+           'pcre'
+           )
   options=('!emptydirs')
 
   install -Dm644 MEGAsync/LICENCE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
