@@ -11,14 +11,14 @@ pkgname=('libmega-git'
          'python2-megasync-git'
          'fuse-megasync-git'
          )
-pkgver=v2.9.10.0.g2e03defa
+pkgver=v3.0.1.0.0.g06d9ffec
 pkgrel=1
 pkgdesc="Sync your files to your Mega account. (GIT Version)"
 arch=('i686' 'x86_64')
 url='https://mega.co.nz/#sync'
 license=('custom:MEGA')
 source=('git+https://github.com/meganz/MEGAsync.git'
-        'git+https://github.com/meganz/sdk.git'
+        'git+https://github.com/meganz/sdk.git#branch=develop'
         'mega.svg'
         'megasync.conf'
         'megasyncd.service'
@@ -38,6 +38,7 @@ makedepends=('qt5-base'
              'python2'
              'swig'
              'fuse2'
+             'pcre'
              )
 sha256sums=('SKIP'
             'SKIP'
@@ -59,6 +60,7 @@ prepare() {
   cd MEGAsync
   git config submodule.src/MEGASync/mega.url "file://${srcdir}/sdk"
   git submodule update --init
+  (cd src/MEGASync/mega; git pull origin HEAD)
 
   cd src/MEGASync/mega
   ./autogen.sh
@@ -122,7 +124,7 @@ package_megasync-git() {
 }
 
 package_libmega-git() {
-  pkgdesc="MEGASync based on FUSE (GIT Version)"
+  pkgdesc="MEGASync libs (GIT Version)"
   conflicts=('libmega')
   provides=('libmega')
   depends=('c-ares'
@@ -136,6 +138,7 @@ package_libmega-git() {
   make -C build DESTDIR="${pkgdir}" install-data
   make -C build DESTDIR="${pkgdir}" install-libLTLIBRARIES
   make -C build DESTDIR="${pkgdir}" install-pkgconfigDATA
+  make -C build DESTDIR="${pkgdir}" install-pkglibLTLIBRARIES
   make -j1 -C build DESTDIR="${pkgdir}" uninstall-pkgpythonPYTHON
   make -j1 -C build DESTDIR="${pkgdir}" uninstall-pkgpyexecLTLIBRARIES
   make -j1 -C build DESTDIR="${pkgdir}" uninstall-nodist_pkgpythonPYTHON
@@ -143,7 +146,7 @@ package_libmega-git() {
 }
 
 package_fuse-megasync-git() {
-  pkgdesc="MEGASync libs (GIT Version)"
+  pkgdesc="MEGASync client based on FUSE (GIT Version)"
   conflicts=('fuse-megasync')
   provides=('fuse-megasync')
   depends=(libmega-git
@@ -154,8 +157,10 @@ package_fuse-megasync-git() {
   install -Dm644 MEGAsync/LICENCE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   make -C build DESTDIR="${pkgdir}" install-binPROGRAMS
   make -C build DESTDIR="${pkgdir}" uninstall-libLTLIBRARIES
-  rm -fr ${pkgdir}/usr/bin/megacli
-  rm -fr ${pkgdir}/usr/bin/megasimplesync
+  rm -fr "${pkgdir}/usr/bin/megacli"
+  rm -fr "${pkgdir}/usr/bin/megasimplesync"
+  rm -fr "${pkgdir}/usr/bin/mega-cmd"
+  rm -fr "${pkgdir}/usr/bin/mega-exec"
 }
 
 package_megasync-daemon-git() {
@@ -171,6 +176,8 @@ package_megasync-daemon-git() {
   make -C build DESTDIR="${pkgdir}" uninstall-libLTLIBRARIES
   rm -fr ${pkgdir}/usr/bin/megacli
   rm -fr ${pkgdir}/usr/bin/megafuse
+  rm -fr "${pkgdir}/usr/bin/mega-cmd"
+  rm -fr "${pkgdir}/usr/bin/mega-exec"
 
   install -Dm644 "${srcdir}/megasyncd.service" "${pkgdir}/usr/lib/systemd/system/megasyncd.service"
   install -Dm600 "${srcdir}/megasync.conf" "${pkgdir}/etc/conf.d/megasync.conf"
@@ -179,10 +186,11 @@ package_megasync-daemon-git() {
 }
 
 package_megasync-cli-git() {
-  pkgdesc="MEGASync CLI. (GIT Version)"
+  pkgdesc="MEGASync CLI client. (GIT Version)"
   conflicts=('megasync-cli')
   provides=('megasync-cli')
-  depends=('libmega-git')
+  depends=('libmega-git'
+           'pcre')
   options=('!emptydirs')
 
   install -Dm644 MEGAsync/LICENCE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
