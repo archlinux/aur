@@ -6,7 +6,7 @@
 
 pkgname=ruby-ruby_parser
 _pkgname=ruby_parser
-pkgver=3.8.4
+pkgver=3.9.0
 pkgrel=1
 pkgdesc='Ruby parser written in pure ruby.'
 arch=(any)
@@ -18,7 +18,7 @@ options=(!emptydirs)
 source=(LICENSE "http://gems.rubyforge.org/gems/${_pkgname}-${pkgver}.gem")
 noextract=("${_pkgname}-${pkgver}.gem")
 sha256sums=('46870842926785c757eb95c36c7c77235871c7fd2310e93ef72b681ac9ccfd53'
-            'fe65c8fb428692818c9f693ece50a7d994e1d19b5d5bd50ccbcf6b26ee2f89e6')
+            '76e4888893b75e563a6f60547d91e759469504b9b37607990eeced58ab5e57a1')
 
 package() {
   # install gem
