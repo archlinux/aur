@@ -24,19 +24,6 @@ index 3acf0c5..bd7612b 100644
  ])
  implementation("system/windows/services@genServices")
  examples([
-diff --git a/osquery/extensions/CMakeLists.txt b/osquery/extensions/CMakeLists.txt
-index 5147c1a9..1c072e4c 100644
---- a/osquery/extensions/CMakeLists.txt
-+++ b/osquery/extensions/CMakeLists.txt
-@@ -1,7 +1,7 @@
- # Generate the thrift intermediate/interface code.
- add_custom_command(
-   COMMAND
--    ${THRIFT_COMPILER} --gen cpp:dense --gen py:dense "${CMAKE_SOURCE_DIR}/osquery.thrift"
-+    ${THRIFT_COMPILER} --gen cpp --gen py "${CMAKE_SOURCE_DIR}/osquery.thrift"
-   DEPENDS "${CMAKE_SOURCE_DIR}/osquery.thrift"
-   WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/generated"
-   OUTPUT ${OSQUERY_THRIFT_GENERATED_FILES}
 diff --git a/include/osquery/core.h b/include/osquery/core.h
 index a367f913..c522d558 100644
 --- a/include/osquery/core.h
