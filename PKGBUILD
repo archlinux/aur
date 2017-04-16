@@ -1,14 +1,14 @@
 # Contributor: SSF <punx69 at gmx dot net>
 
 pkgname=thinkfan-git
-pkgver=1.0_beta3.r5.3b4589c
+pkgver=1.0_beta3.r35.1aa6ea0
 pkgrel=1
 pkgdesc="The minimalist fan control program"
 arch=('i686' 'x86_64')
 url="https://github.com/vmatare/thinkfan/"
 license=('GPL3')
-depends=('libatasmart')
-makedepends=('cmake' 'git')
+depends=('libatasmart' 'yaml-cpp')
+makedepends=('boost' 'cmake' 'git')
 optdepends=('lm_sensors: hwmon support')
 provides=("thinkfan=$pkgver")
 conflicts=("thinkfan")

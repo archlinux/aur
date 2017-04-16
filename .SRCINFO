@@ -1,16 +1,18 @@
 pkgbase = thinkfan-git
 	pkgdesc = The minimalist fan control program
-	pkgver = 1.0_beta3.r5.3b4589c
+	pkgver = 1.0_beta3.r35.1aa6ea0
 	pkgrel = 1
 	url = https://github.com/vmatare/thinkfan/
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = boost
 	makedepends = cmake
 	makedepends = git
 	depends = libatasmart
+	depends = yaml-cpp
 	optdepends = lm_sensors: hwmon support
-	provides = thinkfan=1.0_beta3.r5.3b4589c
+	provides = thinkfan=1.0_beta3.r35.1aa6ea0
 	conflicts = thinkfan
 	source = git+https://github.com/vmatare/thinkfan.git
 	md5sums = SKIP
