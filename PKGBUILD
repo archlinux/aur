@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=habitat-git
-pkgver=0.20.0
+pkgver=0.20.0.r64.g232f7c63
 pkgrel=1
 pkgdesc="Application automation framework that allows you to build applications that have automation built-in"
 arch=('x86_64')
@@ -11,6 +11,11 @@ depends=('libarchive' 'libsodium')
 makedepends=('cargo')
 source=("${pkgname}::git+https://github.com/habitat-sh/habitat.git")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   # Use a temporary local Cargo repository.
