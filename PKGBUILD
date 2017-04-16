@@ -1,15 +1,16 @@
-# Maintainer: fzerorubigd <fzero@rubi.gd>
+# Maintainer: Fabio Loli <loli_fabio@protonmail.com>
+# Contributor: fzerorubigd <fzero@rubi.gd>
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 _pkgbase='openage'
 pkgname="$_pkgbase-git"
-pkgver=v0.3.0.r160.g6b8ff36
+pkgver=v0.3.0.r859.g6952370a
 pkgrel=1
 pkgdesc='A free (as in freedom) clone of the Age of Empires II engine'
 arch=('i686' 'x86_64')
 url='http://openage.sft.mx/'
 license=('GPL3')
-depends=('python' 'libgl' 'libepoxy' 'ftgl' 'fontconfig' 'sdl2' 'sdl2_image' 'opusfile')
+depends=('python' 'libepoxy' 'ftgl' 'sdl2_image' 'opusfile' 'qt5-declarative' 'xdg-utils')
 makedepends=('git' 'cmake' 'python-pillow' 'gcc' 'cython' 'python-pygments' 'python-numpy' 'opus-tools')
 optdepends=('python-pillow: for the media convert script'
             'python-numpy: for the media convert script'
@@ -40,8 +41,10 @@ build() {
 package() {
   cd "$srcdir/$_pkgbase/build"
   make DESTDIR="$pkgdir/" install
-  mkdir -p $pkgdir/usr/bin
+  install -d $pkgdir/usr/bin
   cp "$srcdir/$_pkgbase/run" $pkgdir/usr/bin/openage
+  mv $pkgdir/usr/lib64/* $pkgdir/usr/lib/
+  rm -r $pkgdir/usr/lib64
 }
 
 # vim:set ts=2 sts=2 sw=2 et:
