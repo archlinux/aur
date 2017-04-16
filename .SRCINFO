@@ -4,6 +4,7 @@ pkgbase = greenclip
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/erebe/greenclip
+	changelog = changelog
 	arch = x86_64
 	license = GPL
 	depends = rofi
