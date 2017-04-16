@@ -2,8 +2,8 @@
 
 pkgname=qgis-git
 _pkgname=qgis
-pkgver=2.99
-pkgrel=9
+pkgver=2.99.0r806d225
+pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Development master'
 url='http://qgis.org/'
 license=('GPL')
@@ -21,6 +21,11 @@ optdepends=('grass: for GRASS providers and plugin (6 or 7)'
 source=("${_pkgname}::git://github.com/qgis/QGIS.git")
 md5sums=('SKIP')
 conflicts=('qgis')
+
+pkgver(){
+  cd "$srcdir"/$_gitname
+  printf "%sr%s" "$pkgver" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
   cd $_pkgname
