@@ -1,6 +1,6 @@
 pkgbase = vidcutter-git
 	pkgdesc = The simplest & sexiest tool for cutting and joining your videos without the need for re-encoding or a diploma in multimedia.
-	pkgver = 3.2.0rc6.r0.gdc55d2e
+	pkgver = 3.2.0rc6.r0.g7cda3bb
 	pkgrel = 1
 	url = http://vidcutter.ozmartians.com
 	install = vidcutter-git.install
