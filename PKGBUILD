@@ -1,6 +1,9 @@
 # Maintainer: John D Jones III jnbek1972 __AT__ $mailservice_by_google __DOT__ com
+#TODO: Fix this PKGBUILD to get rid of $srcdir and $pkgdir warnings
+_npmname=jsctags
+_npmver=5.1.1
 pkgname=nodejs-jsctags
-pkgver=0.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="jsctags is a ctags-compatible code indexing solution for JavaScript."
 arch=('any')
@@ -8,9 +11,8 @@ url="https://github.com/mozilla/doctorjs"
 license=('MIT')
 depends=('nodejs' 'npm')
 makedepends=('git')
-_npmname=jsctags
-source=("http://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
-md5sums=('6b355fcbe918a1522180b56cbd96baef')
+source=("http://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
+sha1sums=('024e7b00ce1d1dc9e975ed1205f8f981f3dea6f2')
 
 package() {
   cd "${srcdir}/package/"
