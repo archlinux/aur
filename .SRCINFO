@@ -1,0 +1,14 @@
+pkgbase = chrome-window-title-bar-xfwm-theme
+	pkgdesc = For those of you who would like the chrome-os window buttons
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://www.xfce-look.org/p/1165642
+	arch = any
+	license = GPL
+	source = https://dl.opendesktop.org/api/files/download/id/1482943695/ChrVariants-2.0.tar.gz
+	source = https://dl.opendesktop.org/api/files/download/id/1482087522/ChrButtons.tar.gz
+	sha256sums = fe24a4605e4ad46c2aef540ddbd36d7ee68fd7555cbdd9db29c59fb4ab53e761
+	sha256sums = b2117d062b6b1b85b33d2b18d6c0111fe0d66401ecde3816f365820108198b2c
+
+pkgname = chrome-window-title-bar-xfwm-theme
+
