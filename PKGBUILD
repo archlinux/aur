@@ -7,7 +7,7 @@ pkgdesc="Application automation framework that allows you to build applications 
 arch=('x86_64')
 url="https://www.habitat.sh/"
 license=('Apache')
-depends=()
+depends=('libarchive' 'libsodium')
 makedepends=('cargo')
 source=("${pkgname}::git+https://github.com/habitat-sh/habitat.git#tag=${pkgver}")
 sha256sums=('SKIP')
