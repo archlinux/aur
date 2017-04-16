@@ -1,6 +1,6 @@
 pkgbase = icecat-bin
 	pkgdesc = Binary build of the GNU version of the Mozilla Firefox browser
-	pkgver = 45.7.0
+	pkgver = 52.0.2
 	pkgrel = 1
 	url = http://www.gnu.org/software/gnuzilla/
 	arch = i686
@@ -39,13 +39,13 @@ pkgbase = icecat-bin
 	sha256sums = 05f5472a4a845c5fa81f1fb871a6f6dd90923d888f1d68c6789cbbd9537306d6
 	sha256sums = b009bc989a164c8aea7ff6a1920675b74c90d1b38bb1b3b60f96296913a8de27
 	sha256sums = b49fe5ba063002ad2cbf5e981b98d08e4157e20f5a4f00971a5f73eeca6ddbba
-	source_i686 = https://ftp.gnu.org/gnu/gnuzilla/45.7.0/icecat-45.7.0.en-US.linux-i686.tar.bz2
-	source_i686 = https://ftp.gnu.org/gnu/gnuzilla/45.7.0/icecat-45.7.0.en-US.linux-i686.tar.bz2.sig
-	sha256sums_i686 = 0815867e26c17bda41982b881990022d7e365dd77e4b31fd49be100ce085fc23
+	source_i686 = https://ftp.gnu.org/gnu/gnuzilla/52.0.2/icecat-52.0.2.en-US.linux-i686.tar.bz2
+	source_i686 = https://ftp.gnu.org/gnu/gnuzilla/52.0.2/icecat-52.0.2.en-US.linux-i686.tar.bz2.sig
+	sha256sums_i686 = 374c1d8d43e7551087e61ea7f62abab1be9274d6870776205404b9b50cfdf0e5
 	sha256sums_i686 = SKIP
-	source_x86_64 = https://ftp.gnu.org/gnu/gnuzilla/45.7.0/icecat-45.7.0.en-US.linux-x86_64.tar.bz2
-	source_x86_64 = https://ftp.gnu.org/gnu/gnuzilla/45.7.0/icecat-45.7.0.en-US.linux-x86_64.tar.bz2.sig
-	sha256sums_x86_64 = 2cf8b2f7fdee0b2145e2757e477da0015284e630c21d763a446f208429fc0f2f
+	source_x86_64 = https://ftp.gnu.org/gnu/gnuzilla/52.0.2/icecat-52.0.2.en-US.linux-x86_64.tar.bz2
+	source_x86_64 = https://ftp.gnu.org/gnu/gnuzilla/52.0.2/icecat-52.0.2.en-US.linux-x86_64.tar.bz2.sig
+	sha256sums_x86_64 = 6409ef0fcb8ca09a20fe213fdaa3a0a63a69c85cce8f637cff9363bb3b65e5f5
 	sha256sums_x86_64 = SKIP
 
 pkgname = icecat-bin
