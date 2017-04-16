@@ -20,7 +20,7 @@ optdepends=('openocd: for debugging JTAG targets')
 provides=('arm-none-eabi-gdb')
 conflicts=('cross-arm-none-eabi-gdb' 'arm-none-eabi-gdb')
 options=(!libtool !emptydirs)
-source=(https://releases.linaro.org/${_relshortdate}/components/toolchain/gdb-linaro/gdb-linaro-${_relverdate}.tar.xz)
+source=(https://releases.linaro.org/archive/${_relshortdate}/components/toolchain/gdb-linaro/gdb-linaro-${_relverdate}.tar.xz)
 _basedir=gdb-linaro-${_relverdate}
 
 build() {
