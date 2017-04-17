@@ -1,4 +1,7 @@
 # Maintainer: Randy Ramos <rramos1295@gmail.com>
+# Contributor: Peter Vasil <mail@petervasil.net>
+# Contributor: Lucas De Marchi <lucas.de.marchi@gmail.com>
+# Contributor: Matthias Meulien <orontee@gmail.com>
 
 pkgname=global
 pkgver=6.5.6
