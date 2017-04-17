@@ -30,7 +30,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data
-pkgver=2.1.2.r3422.2cf1427e
+pkgver=2.1.2.r3424.7c5678bd
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -133,8 +133,11 @@ package() {
   mkdir -p "$pkgdir/usr/lib"
   ln -sf $prefix/lib/pd-l2ork "$pkgdir/usr/lib/purr-data"
   # Just remove all the /etc stuff and the Emacs mode for now, we don't really
-  # need these.
+  # need most of these.
   rm -rf "$pkgdir/etc" "$pkgdir/usr/share/emacs"
+  # Add the bash completion file again, and edit it accordingly.
+  mkdir -p "$pkgdir/etc/bash_completion.d"
+  sed -e 's/pd-l2ork/purr-data/g' < "$srcdir/$pkgname/scripts/bash_completion/pd-l2ork" > "$pkgdir/etc/bash_completion.d/purr-data"
   # Edit the library paths in the default user.settings file so that it
   # matches our install prefix.
   cd "$pkgdir$prefix/lib/pd-l2ork"
