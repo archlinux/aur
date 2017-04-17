@@ -1,0 +1,32 @@
+diff -ruN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2017-04-16 05:38:47.000000000 +0200
++++ b/CMakeLists.txt	2017-04-16 06:09:30.000000000 +0200
+@@ -83,6 +83,10 @@
+ 
+    
+ install(FILES org.kde.babe.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
++install(FILES org.kde.babe.desktop DESTINATION ${KDE_INSTALL_APPDIR})
++install(FILES data/babe.svg DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/scalable/apps RENAME Babe.svg)
++
++
+ # install_it.path = $$OUT_PWD
+ # install_it.files = data/*
+ #
+@@ -121,14 +125,14 @@
+    )
+ 
+ add_executable (
+-   babe
++   Babe
+    ${babe_SRCS}
+    )
+ 
+-install(TARGETS babe ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
++install(TARGETS Babe ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+ 
+ target_link_libraries (
+-   babe
++   Babe
+    Qt5::Core
+    Qt5::Gui
+    Qt5::Widgets

@@ -1,11 +1,11 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
  
 pkgname=babe-git
-pkgver=r8.8283c99
+pkgver=r16.gfc845fc
 pkgrel=1
 pkgdesc='Tiny Qt Babe Music Player'
 arch=('i686' 'x86_64')
-url="https://milohr.github.io/BabeIt/"
+url="https://babe.kde.org/"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'knotifications' 'ki18n' 'taglib')
 makedepends=('extra-cmake-modules' 'git' 'python')
@@ -13,12 +13,17 @@ optdepends=('youtube-dl: youtube support')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" 'babe-qt')
 replaces=('babe-qt')
-source=('git+git://anongit.kde.org/babe.git')
-sha256sums=('SKIP')
- 
+source=('git+git://anongit.kde.org/babe.git' 'cmake.patch')
+sha256sums=('SKIP' '246133348fe676df5411bda7b1df8dd801f377d2dc7c6f3344997b81d2eb9ae2')
+
 pkgver() {
   cd babe
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd babe
+  patch -p1 < $srcdir/cmake.patch
 }
 
 build() {
@@ -28,10 +33,5 @@ build() {
 }
  
 package() {
-  cd babe
-  make DESTDIR="${pkgdir}/" install
-  install -Dm644 data/babe.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/babe.svg"
-  install -Dm755 org.kde.babe.desktop "$pkgdir/usr/share/applications/org.kde.babe.desktop"
-  sed -i 's|Exec=Babe|Exec=babe|' "${pkgdir}/usr/share/applications/org.kde.babe.desktop"
-  sed -i 's|Icon=Babe|Icon=babe|' "${pkgdir}/usr/share/applications/org.kde.babe.desktop"
+  make -C babe DESTDIR="${pkgdir}/" install
 }
