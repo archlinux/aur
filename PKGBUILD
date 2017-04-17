@@ -3,6 +3,7 @@
 pkgname=qgis-git
 _pkgname=qgis
 pkgver=2.99.0r806d225
+_pkgver=2.99.0
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Development master'
 url='http://qgis.org/'
@@ -24,7 +25,7 @@ conflicts=('qgis')
 
 pkgver(){
   cd "$srcdir"/$_gitname
-  printf "%sr%s" "$pkgver" "$(git rev-parse --short HEAD)"
+  printf "%sr%s" "$_pkgver" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
