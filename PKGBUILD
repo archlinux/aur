@@ -4,10 +4,10 @@
 pkgname=nodejs-async
 _npmname=async
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Higher-order functions and common patterns for asynchronous code"
 arch=('any')
-makedepends=('nodejs' 'nodejs-uglify-js')
+makedepends=('nodejs' 'uglify-js')
 checkdepends=('nodejs-nodeunit')
 url="https://github.com/caolan/async"
 license=('MIT')
