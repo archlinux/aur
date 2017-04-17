@@ -1,6 +1,6 @@
 pkgbase = libretro-quicknes-git
 	pkgdesc = libretro implementation of QuickNES Core. (NES)
-	pkgver = 304.c6ccc31
+	pkgver = 315.8613b48
 	pkgrel = 1
 	url = https://github.com/libretro/QuickNES_Core.git
 	arch = i686
