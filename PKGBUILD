@@ -14,7 +14,7 @@ _pppver=2.4.7
 
 pkgname=networkmanager-consolekit-noscan
 pkgver=1.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Network Management daemon with scan disabled after connection established"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')

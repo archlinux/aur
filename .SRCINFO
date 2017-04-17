@@ -1,7 +1,7 @@
 pkgbase = networkmanager-consolekit-noscan
 	pkgdesc = Network Management daemon with scan disabled after connection established
 	pkgver = 1.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnome.org/projects/NetworkManager/
 	arch = i686
 	arch = x86_64
