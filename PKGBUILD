@@ -18,12 +18,12 @@ makedepends=('linux-headers' 'git')
 
 source=("git+https://github.com/free5lot/hid-apple-patched#branch=master"
         "hid-apple-patched.conf"
-        "hid_apple.conf"
+        "hid_apple_pclayout.conf"
         "dkms.conf")
 
 sha256sums=('SKIP'
             '4b94f1f55febddad5ff60a8918487b883ceadd4e6c3fb280e98e4e235cd09663'
-            '31f3fc3b7d3424b53e779227e390dacf1a3ccfe4f1fc8eadc73e77c9a5583276'
+            '2a493d3973b80b815779643b2c1039f52c05e2e9a65cebd00b2a1da105630cbb'
             '974d1ae335b4b70e122c24fc82c86147d3b645c8322497486b01a82bb68e866f')
 
 _kernmajor="$(uname -r | cut -d'.' -f-2)"
@@ -68,6 +68,6 @@ package_hid-apple-patched-git-dkms() {
 
 do_package_general_files()
 {
-  install -Dm644 hid_apple.conf "${pkgdir}"/etc/modprobe.d/hid_apple.conf.example
+  install -Dm644 hid_apple_pclayout.conf "${pkgdir}"/etc/modprobe.d/hid_apple_pclayout.conf
   install -Dm644 hid-apple-patched.conf "$pkgdir"/etc/depmod.d/hid-apple-patched.conf
 }

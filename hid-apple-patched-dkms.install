@@ -2,36 +2,21 @@ post_install() {
     do_install ${1}
 }
 
-pre_upgrade() {
-    do_remove ${2}
-}
-
 post_upgrade() {
     do_install ${1}
-}
-
-pre_remove() {
-    do_remove ${1}
 }
 
 # -----------------------------------------------------------------------------------
 
 do_install() {
-    #dkms install hid-apple-patched/${1%%-*}
-    echo "dkms intall already handled by pacman hooks"
     cat << EOF
 
 ==> hid-apple-patched install/upgrade note:
 ------------------------------------------------------------------------------
-New functionalities are disabled by default. You can enable them by providing
-a configuration file at /etc/modprobe.d/hid_apple.conf. An example is provided
-at /etc/modprobe.d/hid_apple.conf.example.
+Configuration file is installed to /etc/modprobe.d/hid_apple_pclayout.conf.
+By default PC-like layout is enabled. You can tweak it to suit your needs
+according to https://github.com/free5lot/hid-apple-patched#configuration.
 
 EOF
-}
-
-do_remove() {
-    #dkms remove hid-apple-patched/${1%%-*} --all
-    echo "dkms remove already handled by pacman hooks"
 }
 

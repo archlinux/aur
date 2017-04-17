@@ -3,9 +3,9 @@ post_install() {
 
 ==> hid-apple-patched install/upgrade note:
 ------------------------------------------------------------------------------
-New functionalities are disabled by default. You can enable them by providing
-a configuration file at /etc/modprobe.d/hid_apple.conf. An example is provided
-at /etc/modprobe.d/hid_apple.conf.example.
+Configuration file is installed to /etc/modprobe.d/hid_apple_pclayout.conf.
+By default PC-like layout is enabled. You can tweak it to suit your needs
+according to https://github.com/free5lot/hid-apple-patched#configuration.
 
 EOF
     echo "==> You also must regenerate depmod and initcpio, ex:"
