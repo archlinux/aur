@@ -1,9 +1,5 @@
-# Maintainer: Cedric MATHIEU <me.xenom @ gmail.com>
-# Contributor: Dmitriy Bogdanov <di72nn @ gmail.com>
-# Contributor: Det <nimetonmaili @ gmail.com>
-# Contributor: coderoar <coderoar @ gmail.com>
-# Contributor: kang <kang @ mozilla.com>
-# Contributor: John Reese <jreese @ noswap.com>
+# Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
+# Contributor: Cedric MATHIEU <me.xenom @ gmail.com>
 
 # Before you complain about unverifiable signature, please read Allan's post:
 # http://allanmcrae.com/2015/01/two-pgp-keyrings-for-package-management-in-arch-linux/
@@ -11,41 +7,65 @@
 
 _name=firefox
 _channel=nightly
-pkgname="${_name}-${_channel}"
-pkgdesc='Standalone web browser from mozilla.org, nightly build'
-url='http://www.mozilla.org/projects/firefox'
-pkgver=55.0a1.20170311
+_lang=en-US
+pkgname=${_name}-${_channel}
+pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
+url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 _version=55.0a1
+pkgver=55.0a1.20170414
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
-_file="${_name}-${_version}.en-US.linux"
-_srcurl="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central"
-source=(
-  'firefox-nightly.desktop' 'firefox-nightly-safe.desktop' 'vendor.js'
-  "${_srcurl}/${_file}-${CARCH}.tar.bz2"{,.asc} "${_srcurl}/${_file}-${CARCH}.txt")
+depends=('dbus-glib' 'gtk2' 'gtk3' 'libxt' 'nss' 'mime-types' 'startup-notification')
+optdepends=('pulseaudio: audio support'
+            'ffmpeg: h.264 video'
+            'hunspell: spell checking'
+            'hyphen: hyphenation'
+            'libnotify: notification integration'
+            'networkmanager: location detection via available WiFi networks'
+            'speech-dispatcher: text-to-speech')
+_url="https://ftp.mozilla.org/pub/${_name}/nightly/latest-mozilla-central"
+_src="${_name}-${_version}.${_lang}.linux"
+source=("${pkgname}.desktop" 'vendor.js')
+source_i686=("${_url}/${_src}-i686.tar.bz2"{,.asc} "${_url}/${_src}-i686.txt")
+source_x86_64=("${_url}/${_src}-x86_64.tar.bz2"{,.asc} "${_url}/${_src}-x86_64.txt")
 sha512sums=(
-  '2d8feaf128775efbab958e2614613cd45a7a172a3c687b6af054d61eabd3592cf1dd1c85ca92bff82834f43eb7ebedeb4f8c2fe6f116b6a22eb14a7ff98a1f25'
-  '88510ea986776bb8ed9fc8c1217728f8cf0f8b3a8aa4dbc07608e7b2803cd13dcb6809363208fd9531ccee5a9ba2cee39af498a1279d3e1268511982ecb559ec'
-  'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
-  'SKIP'
-  'SKIP'
-  'SKIP')
-validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')
-depends=('alsa-lib' 'libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 'sqlite' 'dbus-glib')
+    '4543e20c1c27f6defcdb0a9755f8e664554cff8f89ff3c8902c26a3a309427d958695cebe754ffd2d7e7d1fafd94a6c02e698c93c3128ac74397dc44410cee18'
+    'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010'
+)
+sha512sums_i686=('SKIP' 'SKIP' 'SKIP')
+sha512sums_x86_64=('SKIP' 'SKIP' 'SKIP')
+validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
 
 pkgver() {
-  echo "${_version}.$(head -n1 "${srcdir}/${_file}-${CARCH}.txt" | cut -c-8)"
+  echo "${_version}.$(head -n1 ${_src}-${CARCH}.txt | cut -c-8)"
 }
 
 package() {
-  #  uncomment this line to remove these
-  #  rm -rf firefox/{extensions,plugins,searchplugins}
-  install -d "${pkgdir}"/{usr/{bin,share/{applications,pixmaps}},opt}
-  cp -r firefox "${pkgdir}/opt/firefox-${_version}"
+  OPT_PATH="opt/${pkgname}"
 
-  ln -s /opt/firefox-${_version}/firefox "${pkgdir}/usr/bin/firefox-nightly"
-  install -m644 "${srcdir}"/{firefox-nightly.desktop,firefox-nightly-safe.desktop} "${pkgdir}/usr/share/applications/"
-  install -m644 "${srcdir}/firefox/browser/icons/mozicon128.png" "${pkgdir}/usr/share/pixmaps/${pkgname}-icon.png"
-  install -Dm644 "${srcdir}/vendor.js" "${pkgdir}/opt/firefox-${_version}/browser/defaults/preferences/vendor.js"
+  # Install the package files
+  install -d "${pkgdir}"/{usr/bin,opt}
+  cp -r ${_name} "${pkgdir}"/${OPT_PATH}
+  ln -s "/${OPT_PATH}/${_name}" "${pkgdir}"/usr/bin/${pkgname}
+
+  # Install .desktop files
+  install -Dm644 "${srcdir}"/${pkgname}.desktop -t "${pkgdir}"/usr/share/applications
+
+  # Install icons
+  SRC_LOC="${srcdir}"/${_name}/browser
+  DEST_LOC="${pkgdir}"/usr/share/icons/hicolor
+  for i in 16 32 48
+  do
+      install -Dm644 "${SRC_LOC}"/chrome/icons/default/default${i}.png "${DEST_LOC}"/${i}x${i}/apps/${pkgname}.png
+  done
+  install -Dm644 "${SRC_LOC}"/icons/mozicon128.png "${DEST_LOC}"/128x128/apps/${pkgname}.png
+
+  # Disable auto-updates
+  install -Dm644 "${srcdir}"/vendor.js -t "${pkgdir}"/${OPT_PATH}/browser/defaults/preferences
+
+  # Use system-provided dictionaries
+  rm -rf "${pkgdir}"/${OPT_PATH}/{dictionaries,hyphenation}
+  ln -sf /usr/share/hunspell "${pkgdir}"/${OPT_PATH}/dictionaries
+  ln -sf /usr/share/hyphen "${pkgdir}"/${OPT_PATH}/hyphenation
 }
