@@ -1,12 +1,13 @@
 pkgbase = f2c
 	pkgdesc = Fortran to C code translator
 	pkgver = 1.0
-	pkgrel = 8
+	pkgrel = 9
 	url = http://www.netlib.org/f2c/index.html
 	arch = x86_64
 	arch = i686
 	license = custom
-	source = git://github.com/juanjosegarciaripoll/f2c.git#commit=90cda47429
+	makedepends = git
+	source = git://github.com/juanjosegarciaripoll/f2c.git#commit=d01fe07
 	md5sums = SKIP
 
 pkgname = f2c
