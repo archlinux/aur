@@ -1,14 +1,14 @@
 # Maintainer: Bryan Gilbert <gilbertw1 at gmail dot com>
 pkgname=collate-notes
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A flexible, locally hosted, cross-platform note-taking application"
 arch=('x86_64')
 url="https://collatenotes.com"
 license=('Commercial')
 depends=()
-source=("https://s3.amazonaws.com/collate/0.2.3/linux/Collate_0.2.3_amd64.deb")
-sha256sums=('4fba82232ca6fc2ed8f61207b71b0c512cd2c32edac5432dc77131b3da3c4db1')
+source=("https://s3.amazonaws.com/collate/$pkgver/linux/Collate_${pkgver}_amd64.deb")
+sha256sums=('4382a98d543e2f38a6c4e8cc50b448c810959d532a4da7d92729b5b752bf9c64')
 
 package() {
   # Extract the core package
