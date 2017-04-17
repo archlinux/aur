@@ -2,8 +2,8 @@
 
 _gitname=rapidjson
 pkgname=rapidjson-git
-pkgver=r1887.fcd263c6
-pkgrel=2
+pkgver=r1889.c6aec19e
+pkgrel=1
 pkgdesc="Rapidjson is an attempt to create the fastest JSON parser and generator."
 arch=('any')
 url="https://github.com/miloyip/rapidjson"
