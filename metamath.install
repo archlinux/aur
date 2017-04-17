@@ -1,6 +1,6 @@
 post_install() {
   echo ">>> Further info:"
-  echo "    http://us.metamath.org/#book"
+  echo "    http://us.metamath.org/"
 }
 
 post_upgrade() {
