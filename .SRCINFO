@@ -1,0 +1,17 @@
+pkgbase = go-megaannex-git
+	pkgdesc = A git-annex special remote using mega
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/dxtr/megaannex-go
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = git-annex
+	depends = go
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/dxtr/megaannex-go
+	sha512sums = SKIP
+
+pkgname = go-megaannex-git
+
