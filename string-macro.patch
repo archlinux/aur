@@ -1,0 +1,12 @@
+diff -u -r a/OdbcJdbc/Builds/Gcc.lin/makefile.linux b/OdbcJdbc/Builds/Gcc.lin/makefile.linux
+--- a/OdbcJdbc/Builds/Gcc.lin/makefile.linux	2015-07-16 11:00:41.000000000 +0300
++++ b/OdbcJdbc/Builds/Gcc.lin/makefile.linux	2017-04-17 09:34:24.303882915 +0300
+@@ -91,7 +91,7 @@
+ LIST_ODBCJDBCSETUPSRC	= $(addprefix $(ODBCJDBCDIR)/, $(ODBCJDBCSETUPSRC_LINUX))
+ LIST_ODBCJDBCSETUPOBJ	= $(addprefix $(BUILDDIR)/, $(ODBCJDBCSETUPSRC_LINUX:.cpp=.o))
+ #
+-COMPFLAGS  = -w -D_REENTRANT -D_PTHREADS -DEXTERNAL -D$(ODBCMANAGER) $(INCLUDEDIR) -I$(FBINCDIR)
++COMPFLAGS  = -std=c++03 -w -D_REENTRANT -D_PTHREADS -DEXTERNAL -D$(ODBCMANAGER) $(INCLUDEDIR) -I$(FBINCDIR)
+ 
+ ifeq ($(ARCH),x86_64)
+ COMPFLAGS   += -fPIC -m64

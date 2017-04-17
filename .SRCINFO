@@ -1,6 +1,6 @@
 pkgbase = firebird-odbc
-	pkgdesc = An ODBC Driver for Firebird RDBMS
-	pkgver = 2.0.2
+	pkgdesc = An ODBC Driver for the Firebird RDBMS
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = http://www.firebirdsql.org/en/odbc-driver/
 	arch = i686
@@ -8,10 +8,12 @@ pkgbase = firebird-odbc
 	license = custom
 	depends = unixodbc
 	depends = libfbclient
-	source = 2.0.2.153.tar.gz::http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.2-Release/OdbcFb-Source-2.0.2.153.gz/download
+	source = 2.0.4.155.tar.gz::http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/2.0.4-Release/OdbcJdbc-src-2.0.4.155.tar.gz/download
 	source = license.html::http://www.firebirdsql.org/en/initial-developer-s-public-license-version-1-0/
-	sha512sums = 956ccf724a56b8c49b6405f6868f6d93349fd7a5abac10a34003adbb6bb15148e608d10eb3c9f8288da8859079ad920277b419f1cfccf8bec797de84c567b5c0
-	sha512sums = 39e8f78c1cbe52d45b730ea40d2cb02320c00aa6a94682e78cbcd779ce50a2aa0538278647bd7d922646d78a7a529dfe31358e7d4f790533b9b745c8cae01df3
+	source = string-macro.patch
+	sha512sums = 43a2b7450e985c2d6d0cb4f658a4652956f2da0f9c8d235b7e6f7e86cf3d3d5720a77697fa98ad0628bf1cc77907916bb5d2718179ba342526a210239e7d4068
+	sha512sums = f2390c05a301759883506956346ce3f79ce3acd46e6f9f45a6e271e9598833fed997aae2899b088ad921cf048226d98efcab8984afd46af1d80c1bc3915081f3
+	sha512sums = e375d0998d2edac4a8041294001793420c4797ed348d1a88a55097d775d8f016782614c7b045e3dd2ecef4f604bbf8e152db0894d13c6be4cb36dccb63834694
 
 pkgname = firebird-odbc
 
