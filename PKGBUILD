@@ -3,12 +3,12 @@
 
 
 pkgname=bitcoinec
-pkgver=v0.14.0.0.g15436fd
-pkgrel=1
+pkgver=v0.14.0.1.g15436fd
+pkgrel=2
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1492414460
+epoch=1492432225
 
 _commit=15436fd2bf1af29523c2ea44156c1c24aec7385f
 _commitziphash=286e73c516f10f431aaaf77cb920650c83c501e222b81052da58faa38700be73
@@ -20,8 +20,7 @@ pkgdesc='A minimal patchset on top of Bitcoin Core to provide a stable implement
 arch=('i686' 'x86_64')
 url='https://bitcoinec.info'
 license=('MIT')
-depends=('desktop-file-utils' 'openssl' 'db4.8')
-makedepends=('boost' 'boost-libs' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'miniupnpc' 'protobuf' 'zeromq')
+depends=('desktop-file-utils' 'openssl' 'db4.8' 'boost' 'boost-libs' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'miniupnpc' 'protobuf' 'zeromq')
 provides=('bitcoinec' 'bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoinec' 'bitcoin' 'bitcoind' 'bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 source=("https://github.com/bitcoinec/bitcoinec/archive/$_commit.zip")
