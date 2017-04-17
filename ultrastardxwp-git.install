@@ -1,0 +1,3 @@
+post_install(){
+    echo "==> Application data directory has changed from ~/.ultrastardxwp to ~/.WorldParty, please move your files."
+}

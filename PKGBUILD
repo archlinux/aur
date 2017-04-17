@@ -1,10 +1,11 @@
 # Maintainer: fenuks
 # Based on ultrastardx-git PKGBUILD
 
+_usdx_package=WorldParty
 _pkgname=ultrastardxwp
 pkgname=${_pkgname}-git
-pkgver=r20.915f975
-pkgrel=2
+pkgver=r25.9f5f917
+pkgrel=1
 pkgdesc="UltraStar Deluxe WorldParty is a free and open source karaoke game. It allows up to six players to sing along with music using microphones in order to score points, depending on the pitch of the voice and the rhythm of singing."
 arch=("i686" "x86_64")
 url="http://ultrastar-es.org"
@@ -14,12 +15,10 @@ makedepends=("git" "fpc")
 optdepends=()
 conflicts=("${pkgname}")
 options=("!buildflags")
-# install=$pkgname.install
-source=("${_pkgname}.patch"
-        "${_pkgname}.desktop"
+install=${pkgname}.install
+source=("${_pkgname}.desktop"
         "${_pkgname}::git+https://github.com/ultrastares/usdxworldparty/")
-md5sums=('d9689465f6729ae9bb310f704206be7b'
-         '47b4f962b66c6f96929b66a27a073b2e'
+md5sums=('45e724d9c3ab756ed908774daedfac24'
          'SKIP')
 
 pkgver() {
@@ -29,7 +28,6 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    patch -p1 -i "${srcdir}/${_pkgname}.patch"
     chmod +x autogen.sh
     ./autogen.sh
 }
@@ -38,13 +36,12 @@ build() {
     cd "${srcdir}/${_pkgname}"
     chmod +x configure
     PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig" ./configure --prefix=/usr
-    make EXEEXT="wp" USDX_PACKAGE_NAME="ultrastardxwp"
+    make
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    touch COPYING.txt
-    make install DESTDIR="$pkgdir" EXEEXT="wp" USDX_PACKAGE_NAME="ultrastardxwp"
+    make install DESTDIR="$pkgdir"
     install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dm644 "${pkgdir}/usr/share/${_pkgname}/resources/icons/ultrastardx-icon.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
+    install -Dm644 "${pkgdir}/usr/share/${_usdx_package}/resources/icons/${_usdx_package}.png" "${pkgdir}/usr/share/icons/${_usdx_package}.png"
 }
