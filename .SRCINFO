@@ -1,0 +1,23 @@
+pkgbase = brother-dcpj925dw
+	pkgdesc = Driver for the Brother DCP-J925DW wifi multifuncional printer
+	pkgver = 3.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/index.html
+	install = brother-dcpj925dw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother
+	makedepends = rpmextract
+	depends = a2ps
+	depends = cups
+	optdepends = brscan4: scanning support
+	optdepends = brscan-skey: scankey support
+	source = fix_lp.patch
+	source = http://www.brother.com/pub/bsc/linux/dlf/dcpj925dwlpr-3.0.1-1.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/dcpj925dwcupswrapper-3.0.0-1.i386.rpm
+	md5sums = b1c8011e07e6eeaebde3464d5e9f7f49
+	md5sums = 9481020a4aa0cbde915cd52d0b0201fe
+	md5sums = d429fb9b1faa4e895d8af8045e83cb80
+
+pkgname = brother-dcpj925dw
+
