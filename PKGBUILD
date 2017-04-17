@@ -14,7 +14,7 @@ depends=(
 	'harfbuzz' 'libcap' 'libpng' 'libsystemd' 'libusb' 'libx11' 'libxau'
 	'libxcb' 'libxcursor' 'libxdmcp' 'libxext' 'libxfixes' 'libxi'
 	'libxinerama' 'libxkbcommon' 'libxrandr' 'libxrender' 'libxss' 'libxxf86vm'
-	'libz' 'pcre' 'raspberrypi-firmware-tools' 'sdl2'
+	'zlib' 'pcre' 'raspberrypi-firmware-tools' 'sdl2'
 )
 source=(
   "http://downloads.petrockblock.com/retropiebinaries/jessie/rpi2/emulators/retroarch.tar.gz"
