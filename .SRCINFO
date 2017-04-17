@@ -1,0 +1,18 @@
+pkgbase = emi-dkms
+	pkgdesc = Improved driver for EMI a2|6/a6|2m audio interfaces including newer firmware
+	pkgver = 20131209
+	pkgrel = 1
+	url = http://xiphmont.livejournal.com/62676.html
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = dkms
+	source = https://people.xiph.org/~xiphmont/emagic/emi-20131209.tgz
+	source = dkms.conf
+	source = emi.conf
+	sha256sums = 5068dda4af18274e3e844035855583f33019e1cff7178bf6e5d96d8a5f4d24cb
+	sha256sums = da355b81b20c9939867d78a8f4bc2278c36b7862eaf2745fa73139062dcab546
+	sha256sums = 92cd0fc6de8fc30ed5f1798ce02877ba611bd3b63f4c818ccf2dd95afe301c82
+
+pkgname = emi-dkms
+
