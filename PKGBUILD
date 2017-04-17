@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer: Randy Ramos <rramos1295@gmail.com>
 # Contributor: carstene1ns <arch carsten-teibes de>
 # Contributor: DonOregano <lars@foldspace.nu>
 
