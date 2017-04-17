@@ -1,5 +1,5 @@
 diff --git a/drivers/pinctrl/intel/pinctrl-cherryview.c b/drivers/pinctrl/intel/pinctrl-cherryview.c
-index f80134e3e0b6..9ff790174906 100644
+index 5e66860a5..5aaf1cff9 100644
 --- a/drivers/pinctrl/intel/pinctrl-cherryview.c
 +++ b/drivers/pinctrl/intel/pinctrl-cherryview.c
 @@ -13,6 +13,7 @@
@@ -10,7 +10,7 @@ index f80134e3e0b6..9ff790174906 100644
  #include <linux/kernel.h>
  #include <linux/module.h>
  #include <linux/init.h>
-@@ -1524,10 +1525,31 @@ static void chv_gpio_irq_handler(struct irq_desc *desc)
+@@ -1524,10 +1525,40 @@ static void chv_gpio_irq_handler(struct irq_desc *desc)
  	chained_irq_exit(chip, desc);
  }
  
@@ -31,6 +31,15 @@ index f80134e3e0b6..9ff790174906 100644
 +			DMI_MATCH(DMI_PRODUCT_NAME, "Edgar"),
 +			DMI_MATCH(DMI_BIOS_DATE, "05/21/2016"),
 +		},
++	},
++	{
++		/* See https://bugzilla.kernel.org/show_bug.cgi?id=194945 */
++		.ident = "Asus C301SA",
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "GOOGLE"),
++			DMI_MATCH(DMI_PRODUCT_NAME, "Terra"),
++			DMI_MATCH(DMI_BIOS_DATE, "05/26/2016"),
++		},
 +	}
 +};
 +
@@ -42,7 +51,7 @@ index f80134e3e0b6..9ff790174906 100644
  	int ret, i, offset;
  
  	*chip = chv_gpio_chip;
-@@ -1536,7 +1558,7 @@ static int chv_gpio_probe(struct chv_pinctrl *pctrl, int irq)
+@@ -1536,7 +1567,7 @@ static int chv_gpio_probe(struct chv_pinctrl *pctrl, int irq)
  	chip->label = dev_name(pctrl->dev);
  	chip->parent = pctrl->dev;
  	chip->base = -1;
@@ -51,7 +60,7 @@ index f80134e3e0b6..9ff790174906 100644
  
  	ret = devm_gpiochip_add_data(pctrl->dev, chip, pctrl);
  	if (ret) {
-@@ -1567,7 +1589,7 @@ static int chv_gpio_probe(struct chv_pinctrl *pctrl, int irq)
+@@ -1567,7 +1598,7 @@ static int chv_gpio_probe(struct chv_pinctrl *pctrl, int irq)
  		intsel &= CHV_PADCTRL0_INTSEL_MASK;
  		intsel >>= CHV_PADCTRL0_INTSEL_SHIFT;
  
