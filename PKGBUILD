@@ -4,23 +4,23 @@
 
 pkgname=dianara
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt pump.io client"
 arch=('i686' 'x86_64')
 url="http://dianara.nongnu.org/"
 license=('GPL')
 depends=('hicolor-icon-theme' 'file' 'qt5-base' 'qoauth')
 source=("http://download-mirror.savannah.gnu.org/releases/$pkgname/$pkgname-v$pkgver.tar.gz")
-sha256sums=('43020e5ff74467106d5882e0f825014dd2087105ddca59f0c4eb0ab4272ea930')
+sha256sums=('7c20a4599344d2e87022f405c1b0590ae73fe553e41edef0c6bcddba8b79ccf2')
 
 build() {
-  cd $pkgname-v$pkgver
+  cd "$pkgname-v$pkgver"
   qmake Dianara.pro
   make
 }
 
 package() {
-  cd $pkgname-v$pkgver
+  cd "$pkgname-v$pkgver"
 
   make INSTALL_ROOT="${pkgdir}" install
 
@@ -35,7 +35,7 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/64x64/apps/dianara.png"
 
   # Translations
-  install -d "$pkgdir/usr/share/dianara/translations"
+  install -d "$pkgdir/usr/share/${pkgname}/translations"
   install -Dm644 translations/* \
     "$pkgdir/usr/share/${pkgname}/translations"
 
