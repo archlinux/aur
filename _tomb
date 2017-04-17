@@ -32,10 +32,12 @@ _arguments -C -A "-*" \
     -n'[do not process hooks found in tomb]' \
     -o'[mount options used to open]' \
     -f'[force operation]' \
+    -g'[use a GnuPG key to encrypt a tomb key]' \
+    -r'[provide GnuPG recipients (separated by comma)]' \
+    -R'[provide GnuPG hidden recipients (separated by comma)]' \
     -v'[print version information]' \
     -q'[run quietly]' \
     -D'[print debugging information]' \
     --kdf'[specify the KDF method]' \
     --no-color'[do not use colors]' \
     '*: :_files' && ret=0
-
