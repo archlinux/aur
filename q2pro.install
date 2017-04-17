@@ -1,0 +1,29 @@
+post_install() {
+	echo "To play Quake 2, you need the following files from the disc:
+copy <cdromdir>/Install/Data/baseq2/pak*.pak to /usr/share/games/q2pro2/baseq2/
+copy <cdromdir>/Install/Data/baseq2/players to /usr/share/games/q2pro2/baseq2/
+copy <cdromdir>/Install/Data/baseq2/video/ to /usr/share/games/q2pro2/baseq2/"
+
+## not yet implemented
+#To play The Reckoning, you need the following files from the disc:
+#copy <cdromdir>/Data/all/pak0.pak to /usr/share/games/q2pro2/xatrix/
+#copy <cdromdir>/Data/max/xatrix/video/ to /usr/share/games/q2pro2/xatrix/
+#
+## not yet implemented
+#To play Ground Zero, you need the following files from the disc:
+#copy <cdromdir>/Data/all/pak0.pak to /usr/share/games/q2pro2/rogue/
+#copy <cdromdir>/Data/max/Rogue/video/ to /usr/share/games/q2pro2/rogue/ (optional)
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+pre_remove() {
+    /bin/true
+}
+
+op=$1
+shift
+
+$op $*
