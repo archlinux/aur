@@ -1,7 +1,8 @@
 # Maintainer: Dan Fuhry <dan@fuhry.com>
 pkgname=tunerstudio
 pkgver=3.0.18
-pkgrel=1
+pkgrel=2
+pkgdesc="Graphical engine tuning and analysis software for Megasquirt ECUs"
 arch=(any)
 depends=(java-runtime)
 makedepends=(imagemagick)
