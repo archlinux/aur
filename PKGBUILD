@@ -3,7 +3,7 @@
 
 pkgname=sailfishos-sdk-beta-bin
 pkgver=1701
-pkgrel=1
+pkgrel=2
 pkgdesc="SailfishOS SDK is a collection of tools for developing SailfishOS applications. Early Access SDK."
 arch=('x86_64')
 url="https://sailfishos.org/"
@@ -12,7 +12,7 @@ depends=('virtualbox')
 conflicts=('sailfishos-sdk-bin')
 install=${pkgname}.install
 options=(!strip)
-source=("http://releases.sailfishos.org/sdk/installers/1701/SailfishOSSDK-Beta-1701-Qt5-linux-64-offline.run"
+source=("http://releases.sailfishos.org/sdk/installers/1701-1/SailfishOSSDK-Beta-1701-1-Qt5-linux-64-offline.run"
         "install_rules.js"
         "${pkgname}.install"
         "SailfishOS.license"
@@ -22,9 +22,9 @@ source=("http://releases.sailfishos.org/sdk/installers/1701/SailfishOSSDK-Beta-1
         "LICENSE.GPL2"
         "LICENSE.GPL3"
         "LICENSE.ICU")
-sha512sums=('1af542baa7fbc45a082b95f942f644869b4dbde6d409ee9e7526a6f05b37b32d040339424e9323a51598235566de00208e589a443ef10ef29357871cf5c306db'
+sha512sums=('69f958fc2edb799de8aadcd43acb7b5a7429a5f2d82051766dfe93f4742cffa8315657d8509e96dee818e9cafd9626c6698b66fc43662080a9978e5325abc0a6'
             '6a2d9e183dfba9bc23379ec2b1edef54770cd0a896acf8179611da049beb4f59d408c266ac511b9cd8c7be5f186536712142a8e1b2bb32baa455d8b1d8b36589'
-            '4be9471271874f1a4af97c671e5f9ecf99713026993d625407843ad2cbcf27249ad54b8376c8d32639a21fcdcd0a2998d44d66ac9b271d10c015f80f74a514f6'
+            'e11ba94f8a0ecfc2de4e017a9905b381688897e8e33dd0c12cf92cb91a0e0f5293c9069ebd3a8473c29a67806db750f0545bbc79815d1d2daf3e5043dadfbe2a'
             '18f198773d1d4952dac10602081a2c4232e6d186ba54866ce6507622790a85aa4792b3666105a8cad1ceedfdd95f225dbe3c93542b8960613782a4ae061a2c55'
             'c4f1c7e8b53df02e1bb85c51e76d30ad25a4b01f08afb14d2060bd9c4b4a78b339440fd4b5dcb11d6a813a0a64f034bc4bbfd9a94d351530e606ce9c62920ca4'
             '0b0d49a2479a2e051538421a74e6f04f07ffe320e04f97e539f209d00703978d77b097a9e857deb8f40022875fb1f23b1fecd96fa73fcd714e0eae29c7d58f05'
@@ -46,7 +46,7 @@ package() {
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
     
     install -Dm644 "install_rules.js" "${pkgdir}/usr/share/${pkgname}/"
-    install -Dm644 "SailfishOSSDK-Beta-${pkgver}-Qt5-linux-64-offline.run" "${pkgdir}/usr/share/${pkgname}/"    
+    install -Dm644 "SailfishOSSDK-Beta-1701-1-Qt5-linux-64-offline.run" "${pkgdir}/usr/share/${pkgname}/"    
     install -Dm644 "username.txt" "${pkgdir}/usr/share/${pkgname}/"
 
     install -Dm644 "SailfishOS.license" "${pkgdir}/usr/share/licenses/${pkgname}/"
