@@ -1,7 +1,7 @@
 # Maintainer: Cecile Tonglet <cecile.tonglet@gmail.com>
 
 pkgname="sdl2-rbp-bin"
-pkgver="2.0.3+1rpi"
+pkgver="2.0.4+1rpi"
 pkgrel=1
 pkgdesc="A library for portable low-level access to video, audio and input (debian binary)"
 arch=('arm' 'armv6h' 'armv7h')
@@ -21,8 +21,8 @@ source=(
 )
 
 md5sums=(
-  '16b9a5dd3aef1840208423e317eaf442'
-  'ff3fd03b73827e2963430e9f04314c3b'
+  'd92163043c62ed47713cd9456641523a'
+  'cfb325b5aed924e7430e92f296249190'
 )
 
 build() {
