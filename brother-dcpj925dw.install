@@ -5,7 +5,7 @@ post_install() {
 	# cupswrapper
 	/opt/brother/Printers/dcpj925dw/cupswrapper/cupswrapperdcpj925dw
 	
-	systemctl restart cups
+	systemctl restart org.cups.cupsd.service
 }
 
 post_upgrade() {

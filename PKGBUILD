@@ -2,7 +2,7 @@
 # Based on brother-dcpj315w PKGBUILD
 pkgname=brother-dcpj925dw
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Driver for the Brother DCP-J925DW wifi multifuncional printer"
 url="http://solutions.brother.com/linux/en_us/index.html"
 license=('custom:brother')
@@ -29,6 +29,10 @@ optdepends=(
 build() {
   cd "$srcdir"
 	patch -Np0 < fix_lp.patch
+}
+
+post_install() {
+	/opt/brother/Printers/dcpj925dw/cupswrapper/cupswrapperdcpj925dw
 }
 
 package()
