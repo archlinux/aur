@@ -1,0 +1,16 @@
+--- a/Makefile  2017-04-16 11:49:29.710180797 +0000
++++ b/Makefile  2017-04-16 11:49:44.040493074 +0000
+@@ -5,10 +5,10 @@
+ 
+ LDFLAGS  += -g
+ LIBS     += -lpthread
+-LIBS_STATIC += /usr/lib/liblua5.1.a -lpthread -lm -ldl
++LIBS_STATIC += /usr/lib/liblua51.a -lpthread -lm -ldl
+ 
+-CFLAGS   += $(shell pkg-config --cflags lua5.1)
+-LIBS     += $(shell pkg-config --libs lua5.1)
++CFLAGS   += $(shell pkg-config --cflags lua51)
++LIBS     += $(shell pkg-config --libs lua51)
+ 
+ ifeq ($(shell pkg-config --exists libsystemd-daemon 2>/dev/null && echo 1),1)
+ CPPFLAGS += -DHAVE_SYSTEMD
