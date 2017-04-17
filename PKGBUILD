@@ -3,7 +3,7 @@
 
 pkgname=bowtie2
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Bowtie 2 is an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequence."
 arch=("any")
 depends=('termcap')
@@ -21,13 +21,11 @@ prepare() {
 build() {
    cd "${srcdir}/${pkgname}-${pkgver}"
    if pacman -Q intel-tbb > /dev/null 2>/dev/null; then
-      #msg2 "Building with Intel's TBB multithreading support"
-      #WITH_TBB=1 make prefix=/usr
-      # tbb is _STILL_ broken in this release...remove this when fixed
-      NO_TBB=1 make prefix=/usr
+      msg2 "Building with Intel's TBB multithreading support"
+      EXTRA_FLAGS="-std=gnu++98" NO_TBB=0 make prefix=/usr
    else
       msg2 "You haven't installed the intel-tbb package; building without Intel's TBB multithreading support"
-      NO_TBB=1 make
+      EXTRA_FLAGS="-std=gnu++98" NO_TBB=1 make prefix=/usr
    fi
 }
 
