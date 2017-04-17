@@ -1,6 +1,6 @@
 pkgbase = libretro-mednafen-supergrafx-git
 	pkgdesc = libretro implementation of Mednafen's PCE Fast. (SuperGrafx, TG-16, PC Engine, TG-CD)
-	pkgver = 567.edb41ba
+	pkgver = 618.951421d
 	pkgrel = 1
 	url = https://github.com/libretro/beetle-supergrafx-libretro.git
 	arch = i686
