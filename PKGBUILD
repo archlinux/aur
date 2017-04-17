@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-net-cups'
-pkgver='0.61'
+pkgver='0.63'
 pkgrel='1'
 pkgdesc="Common Unix Printing System Interface"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('e2fsprogs>=1.42.8' 'glibc>=2.17' 'krb5>=1.11.3' 'libcups>=1.6.2' 'perl' 'zlib>=1.2.8')
+depends=('perl' 'e2fsprogs>=1.43.4' 'glibc>=2.25' 'krb5>=1.13.7' 'libcups>=2.2.3' 'zlib>=1:1.2.11')
 makedepends=()
-url='http://search.cpan.org/dist/Net-CUPS'
-source=('http://search.cpan.org/CPAN/authors/id/D/DH/DHAGEMAN/Net-CUPS-0.61.tar.gz')
-md5sums=('1aba74db9bcf15396005091f826b50e8')
-sha512sums=('6e906dfebd7a5970f393f8187808049004d6b89fc268bb89abb4dca43145ec97ea45dd3faa51a04de2843a2aedc8051bcb88ab688f4a9886acc188166e2c2cf7')
-_distdir="Net-CUPS-0.61"
+url='https://metacpan.org/release/Net-CUPS'
+source=('http://search.cpan.org/CPAN/authors/id/N/NI/NINE/Net-CUPS-0.63.tar.gz')
+md5sums=('d4446a98ede418bb7bb6f6cb2a01965b')
+sha512sums=('ac407d1a0ebb686cd1f12f76516581073da90cf129a24ef57f10facf0a879ee9a13bdf0b498163c998030f9ec837fc237f440d24894e997e7e57ad2a13693b8a')
+_distdir="Net-CUPS-0.63"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
