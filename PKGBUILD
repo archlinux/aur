@@ -2,7 +2,7 @@
 
 pkgname=dir2ogg
 pkgver=0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="dir2ogg converts mp3, m4a, wma, and wav files into ogg-vorbis format"
 arch=('any')
 url="http://jak-linux.org/projects/dir2ogg"
@@ -10,6 +10,11 @@ license=('GPL2')
 depends=('python2' 'mutagen' 'vorbis-tools')
 source=("${url}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('2876db3926415f40d728122f5836532253a25db1bc4877505e77ebcbc0cb5fea')
+
+prepare() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+  patch -p1 < ../../os_rename__to__shutil_move.patch
+}
 
 package() {
   mkdir -p ${pkgdir}/usr/bin

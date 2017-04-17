@@ -1,0 +1,20 @@
+diff -Naur dir2ogg-0.12-old/dir2ogg dir2ogg-0.12/dir2ogg
+--- dir2ogg-0.12-old/dir2ogg	2017-04-15 14:45:21.189456773 -0600
++++ dir2ogg-0.12/dir2ogg	2017-04-15 14:46:21.439371813 -0600
+@@ -34,6 +34,7 @@
+ import locale
+ import sys
+ import os, os.path
++import shutil
+ import re
+ import warnings
+ from fnmatch import _cache, translate
+@@ -395,7 +396,7 @@
+             if self.decoder == 'mplayer':
+                 # Move the file for mplayer (which uses tempwav), so it works
+                 # for --preserve-wav.
+-                os.rename(tempwav, self.songwav)
++                shutil.move(tempwav, self.songwav)
+             if retcode != 0:
+                 return (False, None)
+             else:
