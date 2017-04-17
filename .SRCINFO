@@ -1,0 +1,13 @@
+pkgbase = clac
+	pkgdesc = A command line, stack-based calculator with postfix notation
+	pkgver = r11.828600b
+	pkgrel = 1
+	url = https://github.com/soveran/clac
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = clac::git+https://github.com/soveran/clac
+	sha1sums = SKIP
+
+pkgname = clac
+
