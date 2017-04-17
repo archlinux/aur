@@ -1,20 +1,20 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-test-tcp'
-pkgver='2.11'
+pkgver='2.17'
 pkgrel='1'
 pkgdesc="testing TCP program"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-test-sharedfork>=0.29' 'perl')
+depends=('perl-test-sharedfork>=0.29' 'perl>=5.8.1')
 makedepends=()
 url='https://metacpan.org/release/Test-TCP'
-source=('http://search.cpan.org/CPAN/authors/id/K/KA/KAZUHO/Test-TCP-2.11.tar.gz')
-md5sums=('f36949c5368861b79616a6d6ac7f3852')
-sha512sums=('778e9777c0166ac85d94e39f96a17f8a1d68eb0a59f94e0c8d39085bd243e8c63f43d2ee2486515da02f36bced4886ae4caf57e109c84c5603e640172b3eee8c')
-_distdir="Test-TCP-2.11"
+source=('http://search.cpan.org/CPAN/authors/id/S/SY/SYOHEX/Test-TCP-2.17.tar.gz')
+md5sums=('587ecdd5593be06d57216c6dc2eab12f')
+sha512sums=('41795ae4287d43b28f8892ef9e545d155cb61bb7daf35a937a5c9bfd5f480b8714b7c07f393e540ff6bc3711eebb8fc8380833e6163bf66d09e9c1d28b5a30c9')
+_distdir="Test-TCP-2.17"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
