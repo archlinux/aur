@@ -1,5 +1,5 @@
 pkgname=mingw-w64-extra-cmake-modules
-pkgver=5.32.0
+pkgver=5.33.0
 pkgrel=1
 arch=(any)
 pkgdesc="Extra modules and scripts for CMake (mingw-w64)"
@@ -11,7 +11,7 @@ url="https://projects.kde.org/projects/kdesupport/extra-cmake-modules"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/extra-cmake-modules-${pkgver}.tar.xz"
 "set-AUTOSTATICPLUGINS.patch"
 "05aa27dc0e14dab407379a4d22f895e9eff13cc0.patch")
-md5sums=('ce6f1c6e2248fe3acae948ef11006cac'
+md5sums=('6ab20f30d39c9d92ac581cd8120aa102'
          '0d249754247382f3b8dda80d6833aac4'
          '5dff00f63909b8aaf717d7e07bdff80d')
 
