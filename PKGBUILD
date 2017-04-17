@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.27
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-data-printer'
-pkgver='0.35'
-pkgrel='2'
+pkgver='0.39'
+pkgrel='1'
 pkgdesc="colored pretty-print of Perl data structures and objects"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-clone-pp' 'perl-file-homedir' 'perl-package-stash' 'perl-sort-naturally' 'perl-module-implementation')
+depends=('perl-clone-pp' 'perl-file-homedir>=0.91' 'perl-package-stash>=0.3' 'perl-sort-naturally')
 makedepends=()
-url='http://search.cpan.org/dist/Data-Printer'
-source=('http://search.cpan.org/CPAN/authors/id/G/GA/GARU/Data-Printer-0.35.tar.gz')
-md5sums=('621fde4207475fce3089a58d14c8e5c3')
-sha512sums=('ce1149c26cbc6e44d31be688003c13d11ea014c53c14b5aea0c050e133f65a355ce571f3c7a9cf32b955f348212ca61aab7e08cd06c6d62618f437cb8b238172')
-_distdir="Data-Printer-0.35"
+url='https://metacpan.org/release/Data-Printer'
+source=('http://search.cpan.org/CPAN/authors/id/G/GA/GARU/Data-Printer-0.39.tar.gz')
+md5sums=('886abbb9bae5363eca16b5728732f659')
+sha512sums=('4110f4a8c0f1516df14e418ba4b5b2b6a30790cbf838f81a9dec862f62355cf3035f482ccd0d118bb3d16f28dd381d518c23d65b95d045444438b9721062eb9c')
+_distdir="Data-Printer-0.39"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
