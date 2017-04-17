@@ -1,0 +1,17 @@
+pkgbase = git-annex-remote-b2-git
+	pkgdesc = A git-annex special remote for Backblaze's B2
+	pkgver = v0.3.r6.g2bf053c
+	pkgrel = 1
+	url = https://github.com/encryptio/git-annex-remote-b2
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = git-annex
+	depends = go
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/encryptio/git-annex-remote-b2
+	sha512sums = SKIP
+
+pkgname = git-annex-remote-b2-git
+
