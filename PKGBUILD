@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-cpanplus-dist-build'
-pkgver='0.80'
+pkgver='0.86'
 pkgrel='1'
 pkgdesc="CPANPLUS plugin to install packages that use Build.PL"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-cpanplus>=0.84' 'perl-module-build>=0.32' 'perl')
 makedepends=()
 url='https://metacpan.org/release/CPANPLUS-Dist-Build'
-source=('http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/CPANPLUS-Dist-Build-0.80.tar.gz')
-md5sums=('946eaf10c623956664d9f34b755f48fb')
-sha512sums=('91808248f01b10c66df202ea94394ad945bf14c4911135e8601aad20b204ea86dbf619417e913164e41286c706f0c95f1f49a22b409c3873bcd9aeee4bf44d99')
-_distdir="CPANPLUS-Dist-Build-0.80"
+source=('http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/CPANPLUS-Dist-Build-0.86.tar.gz')
+md5sums=('21792531f8c8f0dc0a5d6f6d528a1968')
+sha512sums=('dc895e489c5a261f619fdd7f6f53bd98a52bfb89938b09d8ebf2bfa1ed9be17aaf11636969b868de4ce6760baf49e5c46a329a2dbd15fa3a59d1c98556a5237f')
+_distdir="CPANPLUS-Dist-Build-0.86"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
