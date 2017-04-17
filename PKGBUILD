@@ -1,8 +1,8 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=4kslideshowmaker
-pkgver=1.5.6.903
-pkgrel=5
+pkgver=1.6.1.938
+pkgrel=1
 pkgdesc="A straightforward and easy-to-use app to create slideshows from music and photos, with Instagram support."
 arch=('i686' 'x86_64')
 url="http://www.4kdownload.com/products/product-slideshowmaker"
@@ -14,8 +14,8 @@ source_i686=("${pkgname}_${pkgver}_i386.tar.bz2"::"http://downloads.4kdownload.c
 source_x86_64=("${pkgname}_${pkgver}_amd64.tar.bz2"::"http://downloads.4kdownload.com/app/${pkgname}_${pkgver%.*.*}_amd64.tar.bz2")
 sha256sums=('e77851c895f713a7f615010c0b62d0749254dac5178f9853ae45a915ac1f84f0'
             '8e14e4f39f5b794b56dfe7246723e62b59ab9d664330065847cc90654aee3468')
-sha256sums_i686=('ddfe4a6143bd75115bb86a5ee21f3e666d7d20154708791e9f5added99b00b60')
-sha256sums_x86_64=('3e7b6830f5e203e041b1224fd09231f5f352d84fd78d6824463bfe75e57c2b24')
+sha256sums_i686=('295cf392bfa247c89502421ddac80c62ce8fde95f20b80f40f2b34e6ed1e8b3f')
+sha256sums_x86_64=('7c2aec195ac111c3bd8516ab598cc6975c6b38f902875ade0faba021de99d010')
 
 package() {
   # Install desktop file
