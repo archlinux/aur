@@ -1,0 +1,18 @@
+pkgbase = python2-midi
+	pkgdesc = A feature-rich, hardware-independent MIDI toolkit for Python
+	pkgver = 0.2.3
+	pkgrel = 2
+	url = https://github.com/vishnubob/python-midi
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = swig
+	depends = alsa-lib
+	depends = python2
+	source = python2-midi-0.2.3.tar.gz::https://github.com/vishnubob/python-midi/archive/v0.2.3.tar.gz
+	sha256sums = e40119ba1ae3bc129141bfd68ca0805aed9b82416a42ee9b2325d1be7e566428
+	sha512sums = 3c7612af7625328b3c7ccecf541ca74c8dacd482b3448593d22a349f904f8e42d9a6dbf00891833113e4a56b46d87981371076beb62ae907f44d89e99c40afc5
+
+pkgname = python2-midi
+
