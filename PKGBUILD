@@ -1,8 +1,8 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=4kvideotomp3
-pkgver=2.2.1.810
-pkgrel=4
+pkgver=2.3.1.833
+pkgrel=1
 pkgdesc="Extract audio in high-quality MP3 from any video."
 arch=('i686' 'x86_64')
 url="http://www.4kdownload.com/products/product-videotomp3"
@@ -14,8 +14,8 @@ source_i686=("${pkgname}_${pkgver}_i386.tar.bz2"::"http://downloads.4kdownload.c
 source_x86_64=("${pkgname}_${pkgver}_amd64.tar.bz2"::"http://downloads.4kdownload.com/app/${pkgname}_${pkgver%.*.*}_amd64.tar.bz2")
 sha256sums=('a53e776426f30fd1d35b5d78df95f3608f25a8637a7c5f0c731ff538226c2185'
             '3aa5efcf8111c63fde7397f491d2b85ff47d50fd531f7792842d94016b814a4c')
-sha256sums_i686=('ae324a40ffa399eee021d6467ddb81e3bb0ca3915106ce3e57e6f38c8d3dc3d1')
-sha256sums_x86_64=('d4676238cad42130fdf59658e09f4d6781454907319444dba96d9ba5c385e7d9')
+sha256sums_i686=('68e1c55ed72e8870e5551653851aa10e83aa970de89f1ddea6e318ff078e533e')
+sha256sums_x86_64=('5fce2541302e17747ac10a9a474005db624196c9d6cb19203c5383ff00c34c72')
 
 package() {
   # Install desktop file
