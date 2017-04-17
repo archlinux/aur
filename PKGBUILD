@@ -2,10 +2,11 @@
 pkgname=dungeonfs
 pkgver=r12.6fdee80
 pkgrel=1
-pkgdesc="A FUSE filesystem and dungeon crawling adventure game engine."
+pkgdesc="A FUSE filesystem and dungeon crawling adventure game engine, written in Go."
 arch=('x86_64'
       'i386'
-      'armv6h')
+      'armv6h'
+      'armv7h')
 url='https://github.com/ChrisRx/dungeonfs'
 license=('BSD')
 depends=('fuse2')

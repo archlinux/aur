@@ -1,11 +1,12 @@
 pkgbase = dungeonfs
-	pkgdesc = A FUSE filesystem and dungeon crawling adventure game engine.
+	pkgdesc = A FUSE filesystem and dungeon crawling adventure game engine, written in Go.
 	pkgver = r12.6fdee80
 	pkgrel = 1
 	url = https://github.com/ChrisRx/dungeonfs
 	arch = x86_64
 	arch = i386
 	arch = armv6h
+	arch = armv7h
 	license = BSD
 	makedepends = go
 	makedepends = make
