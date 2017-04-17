@@ -1,21 +1,21 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.27
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-file-changenotify'
-pkgver='0.24'
+pkgver='0.27'
 pkgrel='1'
 pkgdesc="Watch for changes to files, cross-platform style"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-class-load>=0' 'perl-list-moreutils>=0' 'perl-moose>=0' 'perl-moosex-params-validate>=0' 'perl-moosex-semiaffordanceaccessor>=0' 'perl-namespace-autoclean>=0')
+depends=('perl-class-load' 'perl-module-pluggable' 'perl-module-runtime' 'perl-moo>=1.006' 'perl-type-tiny' 'perl-namespace-autoclean')
 makedepends=()
-checkdepends=('perl-test-exception>=0')
-url='http://search.cpan.org/dist/File-ChangeNotify'
-source=('http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/File-ChangeNotify-0.24.tar.gz')
-md5sums=('959f1e52d854b4a94f357545d291edca')
-sha512sums=('e09e6a6b11ad94fcb71e61608cd6b1c1d5c0c3a13a83be7eeca0134bd6e38d459a6670f4c1ada0e92a49b1ac49876c5c7135b811dc27ca2e6a6d4e0326cbc6d9')
-_distdir="File-ChangeNotify-0.24"
+checkdepends=('perl-test-exception' 'perl-test-requires' 'perl-test-without-module')
+url='https://metacpan.org/release/File-ChangeNotify'
+source=('http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/File-ChangeNotify-0.27.tar.gz')
+md5sums=('90af25499b9b41193957f8e9d9ea1107')
+sha512sums=('aabdac4e32765df6828aa1cc72301ccfdd4c0547189234111f970eea0564cf0c691b3b9261fa32a298e599a3d20734488274ba88e6c25f76cfe64d58e83da426')
+_distdir="File-ChangeNotify-0.27"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -25,21 +25,21 @@ build() {
       MODULEBUILDRC=/dev/null
 
     cd "$srcdir/$_distdir"
-    /usr/bin/perl Build.PL
-    /usr/bin/perl Build
+    /usr/bin/perl Makefile.PL
+    make
   )
 }
 
 check() {
   cd "$srcdir/$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    /usr/bin/perl Build test
+    make test
   )
 }
 
 package() {
   cd "$srcdir/$_distdir"
-  /usr/bin/perl Build install
+  make install
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
