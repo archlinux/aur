@@ -2,20 +2,20 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-moose'
-pkgver='2.1805'
+pkgver='2.2004'
 pkgrel='1'
 pkgdesc="A postmodern object system for Perl 5"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-cpan-meta-check>=0.011' 'perl-class-load>=0.09' 'perl-class-load-xs>=0.01' 'perl-data-optlist>=0.107' 'perl-devel-globaldestruction' 'perl-devel-overloadinfo>=0.004' 'perl-devel-stacktrace>=1.33' 'perl-dist-checkconflicts>=0.02' 'perl-eval-closure>=0.04' 'perl-mro-compat>=0.05' 'perl-module-runtime>=0.014' 'perl-module-runtime-conflicts>=0.002' 'perl-package-deprecationmanager>=0.11' 'perl-package-stash>=0.32' 'perl-package-stash-xs>=0.24' 'perl-params-util>=1.00' 'perl-scalar-list-utils' 'perl-sub-exporter>=0.980' 'perl-sub-identify' 'perl-sub-name>=0.05' 'perl-try-tiny>=0.17')
+depends=('perl-cpan-meta-check>=0.011' 'perl-class-load>=0.09' 'perl-class-load-xs>=0.01' 'perl-data-optlist>=0.107' 'perl-devel-globaldestruction' 'perl-devel-overloadinfo>=0.004' 'perl-devel-stacktrace>=1.33' 'perl-dist-checkconflicts>=0.02' 'perl-eval-closure>=0.04' 'perl-mro-compat>=0.05' 'perl-module-runtime>=0.014' 'perl-module-runtime-conflicts>=0.002' 'perl-package-deprecationmanager>=0.11' 'perl-package-stash>=0.32' 'perl-package-stash-xs>=0.24' 'perl-params-util>=1.00' 'perl-scalar-list-utils' 'perl-sub-exporter>=0.980' 'perl-sub-identify' 'perl-sub-name>=0.20' 'perl-try-tiny>=0.17')
 makedepends=()
-checkdepends=('perl-test-cleannamespaces>=0.13' 'perl-test-fatal>=0.001' 'perl-test-requires>=0.05' 'perl-test-warnings>=0.016')
+checkdepends=('perl-test-cleannamespaces>=0.13' 'perl-test-fatal>=0.001' 'perl-test-requires>=0.05')
 url='https://metacpan.org/release/Moose'
-source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Moose-2.1805.tar.gz')
-md5sums=('c8632a127c0602b65f851f4e2de9f3ca')
-sha512sums=('f899de61dbad86fe78be03fbe3e68706799ef3e18dcf4044de525225af438c903d653bcbde4f59afe6c1d73d9f920aaa62c931784340e4526f8260985c560165')
-_distdir="Moose-2.1805"
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Moose-2.2004.tar.gz')
+md5sums=('f1038784cb5427d4e67868eb87ca6fa1')
+sha512sums=('30db47b7416347e059b0a43ac4c95c253aac9391a999cb5a484a040b9ce9e33404ae89b34cd28e0cce35506cdfe3a576b91fc941c4dbbe601f4a7d97a01867e9')
+_distdir="Moose-2.2004"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
