@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-mp3-tag'
-pkgver='1.13'
+pkgver='1.14'
 pkgrel='1'
 pkgdesc="Module for reading tags of MP3 audio files"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/MP3-Tag'
-source=('http://search.cpan.org/CPAN/authors/id/I/IL/ILYAZ/modules/MP3-Tag-1.13.tar.gz')
-md5sums=('1eea17c9c8a03433634eb37fc16311d3')
-sha512sums=('3dcdc186d8e2f00fc474eccadb755058fcba6cb80637c87d8565981f073bb19fa867a755de7423e3d58393bc730fe85f601f63dd928f4fe27a9fe9b80f63bfc3')
-_distdir="MP3-Tag-1.13"
+url='https://metacpan.org/release/MP3-Tag'
+source=('http://search.cpan.org/CPAN/authors/id/I/IL/ILYAZ/modules/MP3-Tag-1.14.tar.gz')
+md5sums=('fb087efa020572d8f46890db489be8bb')
+sha512sums=('05e35f024868505cfc8a07146442e248ef1e80c3c156fd1eabeb874d458356f6b391793e343a24e9e490fd537e7f280316f651b6717378c06953480d271ed2e1')
+_distdir="MP3-Tag-1.14"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
