@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/picard-plugins"
-  python generate.py
+  python generate.py "${_gitbranch}"
 }
 
 package() {
@@ -30,7 +30,7 @@ package() {
   plugindir="${pkgdir}/usr/lib/python${pythonver}/site-packages/picard/plugins"
   install -d "$plugindir"
   # copy all plugins
-  cp "$srcdir/picard-plugins/build/"*.zip "$plugindir"
+  cp "$srcdir/picard-plugins/build/$_gitbranch/"*.zip "$plugindir"
 }
 
 # vim:set ts=2 sw=2 et:
