@@ -1,6 +1,6 @@
 pkgbase = clac
 	pkgdesc = A command line, stack-based calculator with postfix notation
-	pkgver = r11.828600b
+	pkgver = 0.1.0.r0.gb24478a
 	pkgrel = 1
 	url = https://github.com/soveran/clac
 	arch = i686
