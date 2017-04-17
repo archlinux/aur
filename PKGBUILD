@@ -6,7 +6,7 @@ pkgname=( 'hid-apple-patched-git'
           'hid-apple-patched-git-dkms')
 
 pkgver=20170406.61dce7d
-pkgrel=1
+pkgrel=2
 
 _pkgname=hid-apple-patched
 
