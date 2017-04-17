@@ -7,7 +7,7 @@ url="https://www.hellion.org.uk/qcontrol/"
 license=("GPLv3")
 depends=("lua51")
 source=("https://www.hellion.org.uk/qcontrol/releases/$pkgver/$pkgname-$pkgver.tar.gz"
-        "local://Makefile.patch")
+        "Makefile.patch")
 sha1sums=('abed07a8eac2f04dacfb86d5149309786936ad7a'
           'd39b048fef7cfd6ae8e4657ce81a9235376b66d4')
 validpgpkeys=('37BE0111')
