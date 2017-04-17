@@ -5,13 +5,13 @@
 
 pkgbase=linux-pf-lts
 _major=4
-_minor=4
-_patchlevel=48
-_pfpatchlevel=47
+_minor=9
+_patchlevel=22
+_pfpatchlevel=20
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
-_pfrel=10
+_pfrel=6
 pkgrel=1
 _kernelname=-pf
 _pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
@@ -42,21 +42,35 @@ license=('GPL2')
 makedepends=('git' 'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 # That voodoo that you do
-_incr=($(for i in $(seq -w ${_pfpatchlevel} $((_patchlevel-1)) ); do echo https://www.kernel.org/pub/linux/kernel/v4.x/incr/patch-4.4.$i-$((i+1)).xz; done))
+_incr=($(for i in $(seq -w ${_pfpatchlevel} $((_patchlevel-1)) ); do echo https://www.kernel.org/pub/linux/kernel/v${_major}.x/incr/patch-${_major}.${_minor}.$i-$((i+1)).xz; done))
 
-source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
+source=(https://www.kernel.org/pub/linux/kernel/v${_major}.x/${_srcname}.tar.{xz,sign}
         # the main kernel config files
         'config' 'config.x86_64'
+        # pacman hook for initramfs regeneration
+        '90-linux.hook'
         # standard config files for mkinitcpio ramdisk
         "$pkgbase.preset"
         # pacman hook for initramfs regeneration
-        '99-linux.hook'
-        '0001-sdhci-revert.patch'
+        '90-linux.hook'
         'logo_linux_clut224.ppm.bz2'		#\
         'logo_linux_mono.pbm.bz2'		#-> the Arch Linux boot logos
         'logo_linux_vga16.ppm.bz2'		#/
         "${_pfpatchhome}${_pfpatchname}.xz"	# the -pf patchset
         ${_incr[@]})				# the incremental kernel patches
+sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
+            'SKIP'
+            '733b092bbcbb2d07dd891c77eb257104c04f21794ccec07af20b962ff81999af'
+            '377dd6e6675ec34a81bad6f3d651e23dd06b459e09320d6e6bbf4ac5507359c2'
+            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+            '1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0'
+            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
+            '03ed4eb4a35d42ae6beaaa5e6fdbada4244ed6c343944bba6462defaa6fed0bf'
+            '51ea665cfec42d9f9c7796af2b060b7edbdeb367e42811f8c02667ad729f6b19'
+            '9e1e81d80afac6f316e53947e1b081017090081cd30e6c4c473420b77af4b52b'
+            'b6ec1391e1dcea96870c2d9200f613ea928f335d83dbceb56ff501f8dfbbc559'
+            '63e6f78a1f01c5ce8af9c2904c281da68bd2705cd08c8efaabdf080ec78a91db'
+            '344d5f51a0dde9633a19f9ee5dcca4a21e8419daf9d426c6748c271272128dbb')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
              )
@@ -111,11 +125,6 @@ prepare() {
      fi
   fi
 
-  # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
-  # fixes #47778 sdhci broken on some boards
-  # https://bugzilla.kernel.org/show_bug.cgi?id=106541
-  patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
-
   # Incremental patches
   for _incrpatch in "${srcdir}"/patch-${_basekernel}.??-??; do
     msg "Patching ${_incrpatch} -- Makefile fails are harmless"
@@ -137,7 +146,6 @@ prepare() {
   #  sed -i "s/EXTRAVERSION = -${_pfrel}/EXTRAVERSION = ${_kernelname}/" Makefile
   sed -ri "s/^(EXTRAVERSION =).*/\1 ${_kernelname}/" Makefile
 
-  _arch=$CARCH
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
@@ -507,8 +515,8 @@ msg "Running package-${pkgbase}()"
   cp -f "${startdir}/${install}" "${startdir}/${install}.pkg"
   true && install=${install}.pkg
   sed \
-    -e "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
-    -e "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
+    -e  "s/KERNEL_NAME=.*/KERNEL_NAME=${_kernelname}/" \
+    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" \
     -i "${startdir}/${install}"
 
   # install mkinitcpio preset file for kernel
@@ -521,8 +529,8 @@ msg "Running package-${pkgbase}()"
     -i "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
   # install pacman hook for initramfs regeneration
-  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/99-linux.hook" |
-    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/99-${pkgbase}.hook"
+  sed "s|%PKGBASE%|${pkgbase}|g" "${srcdir}/90-linux.hook" |
+    install -D -m644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
 
   # remove build and source links
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
@@ -587,7 +595,7 @@ msg "Running package-${pkgbase}()"
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi sound trace uapi video xen; do
+    media net pcmcia scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
@@ -667,6 +675,12 @@ msg "Running package-${pkgbase}()"
     cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
   done
 
+  # add objtool for external module building and enabled VALIDATION_STACK option
+  if [ -f tools/objtool/objtool ];  then
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/
+  fi
+
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
 
@@ -698,15 +712,4 @@ for _p in ${pkgname[@]}; do
     _package${_p#${pkgbase}}
   }"
 done
-sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
-            'SKIP'
-            'f6e6c2a7adf524789d252896b5033eaee5afac071677e65e49e085ac169abea1'
-            'e2f58744ddc747a8cd3dff60b70df07093941249cb8ea07fa7d94627b6fc8015'
-            '1f036f7464da54ae510630f0edb69faa115287f86d9f17641197ffda8cfd49e0'
-            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
-            '03ed4eb4a35d42ae6beaaa5e6fdbada4244ed6c343944bba6462defaa6fed0bf'
-            '51ea665cfec42d9f9c7796af2b060b7edbdeb367e42811f8c02667ad729f6b19'
-            '9e1e81d80afac6f316e53947e1b081017090081cd30e6c4c473420b77af4b52b'
-            'cb4d3fc91475d90179f88fe9994081b8fe37c2b6c2976778425d8e61a5a6541a'
-            '76dfb59aa7f90dcb0504aedc01f3dc7b2c4339c6a1640eb04cab29b629ffb7cb')
+
