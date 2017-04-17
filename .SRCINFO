@@ -1,0 +1,19 @@
+pkgbase = chisel-tunnel
+	pkgdesc = A fast TCP tunnel over HTTP
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/jpillora/chisel
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = https://raw.githubusercontent.com/jpillora/chisel/1.2.2/README.md
+	source = https://raw.githubusercontent.com/jpillora/chisel/1.2.2/example/users.json
+	md5sums = a4b9322a6a38e3cdcd11f091241295d4
+	md5sums = 94a1b56e4b075e50eca71637dca2ba27
+	source_i686 = chisel_i686.gz::https://github.com/jpillora/chisel/releases/download/1.2.2/chisel_linux_386.gz
+	md5sums_i686 = 588094f95dd8a4022280bbb38c6a5d1a
+	source_x86_64 = chisel_x86_64.gz::https://github.com/jpillora/chisel/releases/download/1.2.2/chisel_linux_amd64.gz
+	md5sums_x86_64 = 69e4a6c7322038beea821749568cc2f3
+
+pkgname = chisel-tunnel
+
