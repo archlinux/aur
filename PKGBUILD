@@ -1,7 +1,7 @@
 # maintainer: tagener-noisu
 pkgname=otf-inconsolata-lgc
 _pkgname=inconsolata
-pkgver=1.0.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="a modified version of Inconsolata with added Cyrillic alphabet"
 url="https://github.com/MihailJP/Inconsolata-LGC/"
@@ -12,6 +12,11 @@ provides=($pkgname)
 conflicts=($pkgname)
 source=("$_pkgname::git+https://github.com/MihailJP/Inconsolata-LGC.git")
 md5sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  git describe --tags | grep -Po '(\d\.)+\d'
+}
 
 build() {
   cd $_pkgname
