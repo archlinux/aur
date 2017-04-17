@@ -10,15 +10,7 @@ depends=('glibc')
 makedepends=('cmake' 'gcc')
 changelog=ChangeLog
 source=("http://sourceforge.net/projects/soltrack/files/$pkgname-$pkgver.tar.gz")
-sha512sums=('1ec682d0b33b8792a122663a28849e08fd985a5651430be1f812cf679d07b0719b3213905e1005b050463b9cf4686fb89f2ea1578f9e63238ff7bcc0ca0d6fe6')
-
-prepare() {
-  # Work around bug in CMakeFiles.txt:
-  cd "$pkgname-$pkgver/"
-  pwd
-  mkdir doc/
-  cp CHANGELOG LICENCE README VERSION doc/
-}
+sha512sums=('1ade71b73b65fbee0237e36655f60cddff0909064d4f8b451c8c0077ecd0d038396388ac6ab9593150bad7cb7602913315972f0bc3a3db53138a219d6c76526a')
 
 build() {
     mkdir -p "$pkgname-$pkgver"/build
