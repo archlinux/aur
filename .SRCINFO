@@ -1,0 +1,16 @@
+pkgbase = tunerstudio
+	pkgver = 3.0.18
+	pkgrel = 1
+	arch = any
+	license = proprietary
+	makedepends = imagemagick
+	depends = java-runtime
+	source = http://www.tunerstudio.com/downloads2/TunerStudioMS_v3.0.18.tar.gz
+	source = tunerstudio.sh
+	source = tunerstudio.desktop
+	sha256sums = 9ad92c9b88ee5dbd4379f709298f6d0a4b6a5136ef0b3d3ceb38280f5e8f04bb
+	sha256sums = e787c1df189a86b54c16ce6a4e49fcecfe91dbf4f58ee0c3d7887de1ac1fe418
+	sha256sums = a493f95c6b311c9a3be3cdd6a06462f9bdd9c10905e73825a085339abd3eee6b
+
+pkgname = tunerstudio
+

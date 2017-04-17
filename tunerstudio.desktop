@@ -1,0 +1,13 @@
+#!/usr/bin/xdg-open
+
+[Desktop Entry]
+Version=1.0
+Name=TunerStudio MS
+GenericName=ECU Tuning Software
+Comment=Analyze and program Megasquirt ECUs
+Exec=/usr/bin/tunerstudio
+Icon=tunerstudio
+Type=Application
+StartupNotify=false
+Categories=Programming;
+Keywords=engine;efi;tune;
