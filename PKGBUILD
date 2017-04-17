@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=steam-wine-git
-pkgver=7.6d12f0e
+pkgver=0.1.r0.gb24e79e
 pkgrel=1
 pkgdesc="Steam with simple wine wrapper"
 arch=('any')
@@ -16,8 +16,8 @@ install=$pkgname.install
 backup=("etc/steam-wine.conf")
 
 pkgver() {
-    cd ${pkgname}
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    cd "$pkgname"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
