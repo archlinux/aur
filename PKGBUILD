@@ -6,14 +6,14 @@
 pkgname=stone-soup-tiles-git
 _pkgname=crawl
 pkgver=0.20.a0.r1018.ge435b50518
-pkgrel=1
+pkgrel=2
 pkgdesc="Community maintained variant of Linley's Dungeon Crawl (tiles) - git version"
 arch=('i686' 'x86_64')
 url="http://crawl.develz.org"
 depends=(lua libpng libx11 ncurses sdl2_image)
 makedepends=(pngcrush git)
 license=('GPL2')
-conflicts=('crawl')
+conflicts=('crawl' 'stone-soup-tiles')
 source=(git://github.com/crawl/crawl.git
 stone-soup-tiles-git.desktop)
 sha1sums=('SKIP'
