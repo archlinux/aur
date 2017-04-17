@@ -9,7 +9,7 @@
 pkgbase=linux-galliumos-braswell
 _srcname=linux
 pkgver=4.10.5
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
