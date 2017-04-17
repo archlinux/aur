@@ -1,21 +1,21 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-getopt-long-descriptive'
-pkgver='0.098'
+pkgver='0.100'
 pkgrel='1'
 pkgdesc="Getopt::Long, but simpler and more powerful"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-params-validate>=0.97' 'perl-sub-exporter>=0.972')
+depends=('perl-cpan-meta-check>=0.011' 'perl-params-validate>=0.97' 'perl-sub-exporter>=0.972')
 makedepends=()
 checkdepends=('perl-test-fatal' 'perl-test-warnings>=0.005')
-url='http://search.mcpan.org/dist/Getopt-Long-Descriptive'
-source=('http://search.mcpan.org/CPAN/authors/id/R/RJ/RJBS/Getopt-Long-Descriptive-0.098.tar.gz')
-md5sums=('c6a8f5b8a3a1ddf80015aa6e302a50cc')
-sha512sums=('c6db83140dd8030e4dd91810eb59722944dc675addbcb2eadf9781519842fd97ca76db1265f87a5a79197708e511ae31fc14c6b8c29ae50214e12e41f8822165')
-_distdir="Getopt-Long-Descriptive-0.098"
+url='https://metacpan.org/release/Getopt-Long-Descriptive'
+source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Getopt-Long-Descriptive-0.100.tar.gz')
+md5sums=('de219672e59bab7137d8f0e4219f41a5')
+sha512sums=('0efd6f707487b9b44d5c3b5c9e46c3718546e44bf1b66c198be6ebfc922e7bdb23a9c57c5a9c0985dc3769617141696750e1bd982457247b679e3bdb5f9f16c7')
+_distdir="Getopt-Long-Descriptive-0.100"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
