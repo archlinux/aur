@@ -9,7 +9,7 @@ arch=('any')
 url='https://github.com/biloucat/tkencfs'
 license=('GPL3')
 makedepends=('git' 'python-setuptools')
-depends=('python>=3.6' 'tk>=8.6.6')
+depends=('encfs' 'python>=3.6' 'tk>=8.6.6')
 
 source=("git+https://github.com/biloucat/tkencfs.git")
 md5sums=('SKIP')
