@@ -20,7 +20,7 @@ options=()
 install=
 changelog=
 source=("https://codeload.github.com/FAForever/client/zip/feature/ice-adapter" 'FAForever.desktop')
-sha256sums=('c3c367d90ecefbd8fc0cca5fd209bc725bc3f52f73b4bd5be354bcb165ef1d67'
+sha256sums=('c1957c806eb6897a2132f2c15b0e144ed68026e07f11885d8eddee5f67b58612'
             'f503475daa227d4ce1fa66063b065db7375ce3c0d161d77e3c2bd19c65468cbc')
 noextract=()
 validpgpkeys=()
