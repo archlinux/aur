@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-search-xapian'
-pkgver='1.2.19.0'
+pkgver='1.2.24.0'
 pkgrel='1'
 pkgdesc="Perl XS frontend to the Xapian C++ search library."
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl' 'xapian-core')
-makedepends=('perl-devel-leak')
-url='http://search.mcpan.org/dist/Search-Xapian'
-source=('http://search.mcpan.org/CPAN/authors/id/O/OL/OLLY/Search-Xapian-1.2.19.0.tar.gz')
-md5sums=('e65abe01d551049056ab93be486e3e7f')
-sha512sums=('78ba36f3b8157ef872330b88992012d3f553abc3f2322bbb1d0f3111681dd530e5b57e4989fef645401d19cb4d95f5d284a305c5470efc2911051d1765551a3f')
-_distdir="Search-Xapian-1.2.19.0"
+depends=('perl>=5.6.0' 'perl-devel-leak' 'xapian-core>=1:1.4.2')
+makedepends=()
+url='https://metacpan.org/release/Search-Xapian'
+source=('http://search.cpan.org/CPAN/authors/id/O/OL/OLLY/Search-Xapian-1.2.24.0.tar.gz')
+md5sums=('01206bf2cc71c5b3a6258a01daabfc43')
+sha512sums=('48fed912c1d20933e45ab75c064b33996642d43c157a3ec90a50f3e57070d48d655dc7816237e0da9b2df7a2aeddc14c5532bbf3a1ce4cd10d83cc7e0a74b2dd')
+_distdir="Search-Xapian-1.2.24.0"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
