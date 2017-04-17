@@ -5,7 +5,6 @@ pkgbase = subgit
 	url = http://subgit.com
 	arch = any
 	license = custom
-	depends = bash
 	depends = java-runtime>=7
 	optdepends = subversion
 	optdepends = git

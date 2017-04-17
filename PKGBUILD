@@ -9,7 +9,7 @@ pkgdesc="Provides smooth Subversion to Git migration and synchronisation"
 arch=('any')
 url="http://subgit.com"
 license=('custom')
-depends=('bash' 'java-runtime>=7')
+depends=('java-runtime>=7')
 optdepends=('subversion' 'git')
 source=("https://subgit.com/download/subgit-$pkgver.zip")
 sha256sums=('5c2a880c277b2c3250c726302f76a49c7e3d0b62ceaa13e4d0cb90f94584268f')
