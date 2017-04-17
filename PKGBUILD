@@ -1,6 +1,6 @@
 # Maintainer: John Hawthorn (john.hawthorn@gmail.com)
 pkgname=fzy
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="A better fuzzy finder"
 url="https://github.com/jhawthorn/fzy"
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=()
 
 source=(https://github.com/jhawthorn/${pkgname}/archive/${pkgver}.tar.gz)
-md5sums=('3eb3aeaaaced57bf74af82fc7ad8528e')
+md5sums=('4cfd8a005aef05ccd6d83798555c05b2')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/"

@@ -1,14 +1,14 @@
 pkgbase = fzy
 	pkgdesc = A better fuzzy finder
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://github.com/jhawthorn/fzy
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	source = https://github.com/jhawthorn/fzy/archive/0.8.tar.gz
-	md5sums = 3eb3aeaaaced57bf74af82fc7ad8528e
+	source = https://github.com/jhawthorn/fzy/archive/0.9.tar.gz
+	md5sums = 4cfd8a005aef05ccd6d83798555c05b2
 
 pkgname = fzy
 
