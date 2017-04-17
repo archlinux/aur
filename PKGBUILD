@@ -4,7 +4,7 @@
 #               Lara Maia, Padfoot, Jorge Barroso, carstene1ns
 
 pkgname=plymouth-git
-pkgver=0.9.3.r0.g2c437c3
+pkgver=0.9.2.r70.g11b0ce0
 pkgrel=1
 pkgdesc="A graphical boot splash screen with kernel mode-setting support (development version)"
 url="http://www.freedesktop.org/wiki/Software/Plymouth/"
@@ -35,7 +35,8 @@ source=('git+http://anongit.freedesktop.org/git/plymouth'
         'plymouth.initcpio_install'
         'sd-plymouth.initcpio_install'
         'plymouth-quit.service.in.patch'
-        'plymouth-update-initrd.patch')
+        'plymouth-update-initrd.patch'
+	'plymouth.patch')
 
 sha256sums=('SKIP'
             '9bac679d2494d9b60b288be87021f1d7b85a9503ebbdce93d6e37c0fc07568ae'
@@ -50,7 +51,8 @@ sha256sums=('SKIP'
             'b0467b7c490539470f726358e5d0c72951efd58d268a2d16411dafacba68041a'
             'f434dd9cc96c3cec470aedb7734663cd3e04ffa34eff2bea92708f966132a2da'
             'fc900a0c330b9bcbf84afaa6575d9df392c4e8c2ea699b72dc9a137f4972de49'
-            'bb597e2ced7c3beca8c9e9f212bc001750746d9b41e00071697a0352ec2a2e27')
+            'bb597e2ced7c3beca8c9e9f212bc001750746d9b41e00071697a0352ec2a2e27'
+	    '4ae4b4d5912cc9bff20fe0d7e85270829657b1a91a177349559d6566f3946d56')
 
 pkgver() {
   cd plymouth
@@ -62,6 +64,7 @@ prepare() {
 
 	patch -p1 -i "$srcdir"/plymouth-update-initrd.patch
 	patch -p1 -i "$srcdir"/plymouth-quit.service.in.patch
+	patch -p1 -i "$srcdir"/plymouth.patch
 }
 
 build() {

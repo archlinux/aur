@@ -1,0 +1,22 @@
+diff --git a/src/main.c b/src/main.c
+index eeb4e20..95b0872 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -1529,14 +1529,14 @@ on_escape_pressed (state_t *state)
+ 
+         ply_trigger_add_handler (state->details_trigger,
+                                  (ply_trigger_handler_t)
+-                                 toggle_between_splash_details,
++                                 toggle_between_splash_and_details,
+                                  state);
+ 
+         ply_trace ("escape key pressed");
+         ply_event_loop_watch_for_timeout (state->loop,
+                                           0.01,
+                                           (ply_event_loop_timeout_handler_t)
+-                                          ply_trigger_pull
++                                          ply_trigger_pull,
+                                           state->details_trigger);
+ }
+ 
+
