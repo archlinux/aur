@@ -30,12 +30,12 @@ diff -ruN a/systemd/qcontrold.service b/systemd/qcontrold.service
  
 diff -ruN a/systemd/qcontrol.service b/systemd/qcontrol.service
 --- a/systemd/qcontrol.service	2016-10-30 14:59:12.000000000 +0100
-+++ b/systemd/qcontrol.service	2017-04-17 20:15:48.847333712 +0200
++++ b/systemd/qcontrol.service	2017-04-17 20:48:22.049529747 +0200
 @@ -2,6 +2,7 @@
  Description=qcontrol
  # If the config file is there, we assume qcontrol works on this machine.
  ConditionPathExists=/etc/qcontrol.conf
-+Requires=qcontrold.service
++Requires=qcontrold.socket
  
  [Service]
  Type=oneshot

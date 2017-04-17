@@ -10,7 +10,7 @@ source=("https://www.hellion.org.uk/qcontrol/releases/$pkgver/$pkgname-$pkgver.t
         "patch"
         "99-platform-gpio-keys-event.rules")
 sha1sums=('abed07a8eac2f04dacfb86d5149309786936ad7a'
-          '297299f188678481bca576c6eb2e4614394f3a3f'
+          '56a449422dccd0564e1534d7e795079838e79f5e'
           '25a4c14bf4bff9be3bb75c8a5edf8446cf13525f')
 validpgpkeys=('37BE0111')
 install="$pkgname.install"
