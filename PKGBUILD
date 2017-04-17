@@ -1,14 +1,14 @@
-# Maintainer: Thiago Coutinho <root@thiagoc.net>
-# https://github.com/thiagoc/aur-packages
+# Maintainer: Michael R. Shannnon <mrshannon.aerospace@gmail.com>
 
 pkgname='python-vex'
 pkgver=0.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Run commands in a virtualenv'
 url='https://pypi.python.org/pypi/vex'
 arch=('any')
 license=('MIT')
-depends=('python')
+depends=('python' 'python-virtualenv')
+makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/v/vex/vex-${pkgver}.tar.gz")
 md5sums=('15f42bb9ca100c8f7a377e1a8f21c86a')
 

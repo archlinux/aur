@@ -1,11 +1,13 @@
 pkgbase = python-vex
 	pkgdesc = Run commands in a virtualenv
 	pkgver = 0.0.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/vex
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
+	depends = python-virtualenv
 	source = https://pypi.python.org/packages/source/v/vex/vex-0.0.18.tar.gz
 	md5sums = 15f42bb9ca100c8f7a377e1a8f21c86a
 
