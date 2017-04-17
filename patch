@@ -1,0 +1,41 @@
+diff -ruN a/Makefile b/Makefile
+--- a/Makefile	2016-10-30 14:59:12.000000000 +0100
++++ b/Makefile	2017-04-17 20:11:44.719807514 +0200
+@@ -5,10 +5,10 @@
+ 
+ LDFLAGS  += -g
+ LIBS     += -lpthread
+-LIBS_STATIC += /usr/lib/liblua5.1.a -lpthread -lm -ldl
++LIBS_STATIC += /usr/lib/liblua51.a -lpthread -lm -ldl
+ 
+-CFLAGS   += $(shell pkg-config --cflags lua5.1)
+-LIBS     += $(shell pkg-config --libs lua5.1)
++CFLAGS   += $(shell pkg-config --cflags lua51)
++LIBS     += $(shell pkg-config --libs lua51)
+ 
+ ifeq ($(shell pkg-config --exists libsystemd-daemon 2>/dev/null && echo 1),1)
+ CPPFLAGS += -DHAVE_SYSTEMD
+diff -ruN a/systemd/qcontrold.service b/systemd/qcontrold.service
+--- a/systemd/qcontrold.service	2016-10-30 14:59:12.000000000 +0100
++++ b/systemd/qcontrold.service	2017-04-17 20:14:52.507884975 +0200
+@@ -1,7 +1,7 @@
+ [Unit]
+ Description=qcontrold
+-Requires=dev-input-by\x2dpath-platform\x2dgpio\x2dkeys\x2devent.device
+-After=dev-input-by\x2dpath-platform\x2dgpio\x2dkeys\x2devent.device
++Requires=sys-devices-platform-gpio\x2dkeys-input-input0-event0.device
++After=sys-devices-platform-gpio\x2dkeys-input-input0-event0.device
+ # If the config file is there, we assume qcontrol works on this machine.
+ ConditionPathExists=/etc/qcontrol.conf
+ 
+diff -ruN a/systemd/qcontrol.service b/systemd/qcontrol.service
+--- a/systemd/qcontrol.service	2016-10-30 14:59:12.000000000 +0100
++++ b/systemd/qcontrol.service	2017-04-17 20:15:48.847333712 +0200
+@@ -2,6 +2,7 @@
+ Description=qcontrol
+ # If the config file is there, we assume qcontrol works on this machine.
+ ConditionPathExists=/etc/qcontrol.conf
++Requires=qcontrold.service
+ 
+ [Service]
+ Type=oneshot

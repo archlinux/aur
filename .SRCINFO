@@ -8,10 +8,12 @@ pkgbase = qcontrol
 	license = GPLv3
 	depends = lua51
 	source = https://www.hellion.org.uk/qcontrol/releases/0.5.5/qcontrol-0.5.5.tar.gz
-	source = local://Makefile.patch
+	source = patch
+	source = 99-platform-gpio-keys-event.rules
 	validpgpkeys = 37BE0111
 	sha1sums = abed07a8eac2f04dacfb86d5149309786936ad7a
-	sha1sums = d39b048fef7cfd6ae8e4657ce81a9235376b66d4
+	sha1sums = 297299f188678481bca576c6eb2e4614394f3a3f
+	sha1sums = 25a4c14bf4bff9be3bb75c8a5edf8446cf13525f
 
 pkgname = qcontrol
 

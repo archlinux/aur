@@ -7,15 +7,17 @@ url="https://www.hellion.org.uk/qcontrol/"
 license=("GPLv3")
 depends=("lua51")
 source=("https://www.hellion.org.uk/qcontrol/releases/$pkgver/$pkgname-$pkgver.tar.gz"
-        "Makefile.patch")
+        "patch"
+        "99-platform-gpio-keys-event.rules")
 sha1sums=('abed07a8eac2f04dacfb86d5149309786936ad7a'
-          'd39b048fef7cfd6ae8e4657ce81a9235376b66d4')
+          '297299f188678481bca576c6eb2e4614394f3a3f'
+          '25a4c14bf4bff9be3bb75c8a5edf8446cf13525f')
 validpgpkeys=('37BE0111')
 install="$pkgname.install"
 prepare() {
     cd "$pkgname-$pkgver"
-    msg "Patching Makefile..."
-    patch -s Makefile < "${startdir}/Makefile.patch"
+    msg "Patching..."
+    patch -s -p1 < "${startdir}/patch"
     msg "Done"
 }
 build() {
@@ -26,9 +28,10 @@ build() {
 }
 package() {
     cd "$pkgname-$pkgver"
-    install -D -m 644 qcontrol "${pkgdir}/usr/bin/qcontrol"
+    install -D -m 755 qcontrol "${pkgdir}/usr/bin/qcontrol"
     install -D -m 644 examples/* -t "${pkgdir}/etc/qcontrol.d"
     install -D -m 644 systemd/* -t "${pkgdir}/usr/lib/systemd/system/"
+    install -D -m 644 $srcdir/99-platform-gpio-keys-event.rules -t "${pkgdir}/etc/udev/rules.d"
     ln -s "/etc/qcontrol.d/ts219.lua" "${pkgdir}/etc/qcontrol.conf"
 }
 
