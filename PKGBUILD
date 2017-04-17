@@ -1,10 +1,10 @@
 _gitname="camisole"
 pkgname=camisole-git
-pkgver=0.1.r68.gf60a4e5
+pkgver=0.1.r110.g9203807
 pkgrel=1
 pkgdesc="An asyncio-based source compiler and test runner."
 arch=('any')
-url="https://bitbucket.org/prologin/${_gitname}"
+url="https://github.com/prologin/${_gitname}"
 license=('GPL')
 conflicts=('camisole')
 provides=('camisole')
