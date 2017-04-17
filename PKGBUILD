@@ -4,12 +4,13 @@
 _pkgbase=rtl8812au-v5
 pkgname=rtl8812au-v5-dkms-git
 pkgver=5.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="rtl8812AU Chipset driver"
 arch=('i686' 'x86_64')
 url="https://github.com/uminokoe/rtl8812AU/tree/driver-5.1.5"
 license=('GPL2')
 depends=('dkms')
+makedepends=('git')
 conflicts=("${_pkgbase}")
 source=("https://github.com/uminokoe/rtl8812AU/archive/driver-5.1.5.zip"
         'dkms.conf')
