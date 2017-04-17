@@ -1,4 +1,6 @@
 # Maintainer: Randy Ramos <rramos1295@gmail.com>
+# Contributor: Masoud Naservand <relive.mn@gmail.com>
+# Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 
 pkgname='neovim-jellybeans'
