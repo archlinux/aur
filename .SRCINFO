@@ -1,0 +1,21 @@
+pkgbase = ly2video-git
+	pkgdesc = A script to generate a video from a Lilypond sheet music file
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/aspiers/ly2video
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = ffmpeg
+	depends = lilypond>=2.15.41
+	depends = python2-imaging
+	depends = python2-midi
+	depends = python2-pypdf
+	depends = timidity++
+	provides = ly2video
+	conflicts = ly2video
+	source = ly2video::git+https://github.com/aspiers/ly2video.git
+	md5sums = SKIP
+
+pkgname = ly2video-git
+
