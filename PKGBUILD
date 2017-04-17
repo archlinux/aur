@@ -1,7 +1,7 @@
 # Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
 
 pkgname="qotd-git"
-pkgver=0.9.4_9_g7f1be22.7f1be22
+pkgver=0.10.4.a8c1549
 pkgrel=1
 pkgdesc="A simple RFC 865-compliant QOTD (quote of the day) daemon. (git version)"
 arch=('any')
