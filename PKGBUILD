@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-good
 pkgver=1.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GStreamer Multimedia Framework Good Plugins (mingw-w64)"
 arch=(any)
 url="http://gstreamer.freedesktop.org/"
@@ -24,7 +24,8 @@ build() {
     ${_arch}-configure \
       --with-package-name="GStreamer Good Plugins (Arch Linux)" \
       --with-package-origin="http://www.archlinux.org/" \
-      --disable-examples \
+      --disable-examples --disable-oss4 --disable-oss --disable-dv1394 \
+      --disable-aalib --disable-libcaca --disable-jack --disable-shout2
 
     # https://bugzilla.gnome.org/show_bug.cgi?id=655517
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
