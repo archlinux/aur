@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.27
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-file-find-rule-perl'
-pkgver='1.13'
+pkgver='1.15'
 pkgrel='1'
 pkgdesc="Common rules for searching for Perl things"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-file-find-rule>=0.20' 'perl-params-util>=0.38' 'perl')
+depends=('perl-file-find-rule>=0.20' 'perl-params-util>=0.38' 'perl>=5.006')
 makedepends=()
-url='http://search.mcpan.org/dist/File-Find-Rule-Perl'
-source=('http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/File-Find-Rule-Perl-1.13.tar.gz')
-md5sums=('c3ee4f00f643f82fdb6f1cbcebfa90de')
-sha512sums=('87f1372b9af8fe678cb512df4797ef3d128a72b262c7687d1f18d487deef99f2e2bb54fff1a1a3f17ec42cab47b40c6afa14b38514c53e9a6cce42d4202a3842')
-_distdir="File-Find-Rule-Perl-1.13"
+url='https://metacpan.org/release/File-Find-Rule-Perl'
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/File-Find-Rule-Perl-1.15.tar.gz')
+md5sums=('d8b458792b7eed83c744ae30b1bc3348')
+sha512sums=('90fc64991fbdb47bcb712f2bf7c85b2571a2b161952574606ddfd9c9ad9aeaaa2e0f3355b9c8b993ab2479d8c80e89075caa9e5413259c2bb99b1e75ef791670')
+_distdir="File-Find-Rule-Perl-1.15"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
