@@ -1,0 +1,18 @@
+pkgbase = dungeonfs
+	pkgdesc = A FUSE filesystem and dungeon crawling adventure game engine.
+	pkgver = r12.6fdee80
+	pkgrel = 1
+	url = https://github.com/ChrisRx/dungeonfs
+	arch = x86_64
+	arch = i386
+	arch = armv6h
+	license = BSD
+	makedepends = go
+	makedepends = make
+	makedepends = git
+	depends = fuse2
+	source = git://github.com/ChrisRx/dungeonfs.git
+	sha256sums = SKIP
+
+pkgname = dungeonfs
+
