@@ -24,7 +24,7 @@ source=("git+https://github.com/free5lot/hid-apple-patched#branch=master"
 sha256sums=('SKIP'
             '4b94f1f55febddad5ff60a8918487b883ceadd4e6c3fb280e98e4e235cd09663'
             '2a493d3973b80b815779643b2c1039f52c05e2e9a65cebd00b2a1da105630cbb'
-            '974d1ae335b4b70e122c24fc82c86147d3b645c8322497486b01a82bb68e866f')
+            '5d2457728a93e73a96f2ca88f66455859363f083097ad20e661bdc12dc44a9ba')
 
 _kernmajor="$(uname -r | cut -d'.' -f-2)"
 _distro="$(uname -r | sed -e 's/[^A-Z]*//')"
