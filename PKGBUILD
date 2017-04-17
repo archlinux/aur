@@ -1,8 +1,8 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=4kstogram
-pkgver=2.0.0.1115
-pkgrel=2
+pkgver=2.3.0.1232
+pkgrel=1
 pkgdesc="Download and backup Instagram photos shared by any user."
 arch=('i686' 'x86_64')
 url="http://www.4kdownload.com/products/product-stogram"
@@ -14,8 +14,8 @@ source_i686=("${pkgname}_${pkgver}_i386.tar.bz2"::"http://downloads.4kdownload.c
 source_x86_64=("${pkgname}_${pkgver}_amd64.tar.bz2"::"http://downloads.4kdownload.com/app/${pkgname}_${pkgver%.*.*}_amd64.tar.bz2")
 sha256sums=('7970c1f1aacd5a546ca8252c2d48a874478a26e23eb57769f54c5feac7316f51'
             'b1add61c84f745911dee0672b25e021a3da0d90127843f3a814864858306ab8b')
-sha256sums_i686=('057333859d6e3222fa5215057ac520fc5fa5829397deb25654924f522b062610')
-sha256sums_x86_64=('b461e8614521dbd8980788257c193e5f7dc5b5115d8ec4f078cb23ef7933b2f6')
+sha256sums_i686=('f8842348c518a72cc0ce4d0521264e04c3813bdc671b6a5e58d9e455ed7e3b61')
+sha256sums_x86_64=('903d804e7ebfc86f1affc651fd3ff0b359bc6e10d3dbe05b04caad788a47a068')
 
 package() {
   # Install desktop file
