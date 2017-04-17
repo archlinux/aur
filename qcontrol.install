@@ -1,0 +1,6 @@
+post_install() {
+    echo
+    echo "==> Adapt /etc/qcontrol.conf to your needs"
+    echo
+
+}
