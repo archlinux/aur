@@ -2,16 +2,16 @@
 # CPAN Name: Module-Starter
 
 pkgname=perl-module-starter
-pkgver=1.71
+pkgver=1.72
 pkgrel=1
 pkgdesc='a simple starter kit for any module'
 arch=('any')
-url='http://search.cpan.org/dist/Module-Starter'
+url='http://search.cpan.org/dist/Module-Starter/'
 license=('PerlArtistic' 'GPL')
 depends=('perl' 'perl-path-class')
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/X/XS/XSAWYERX/Module-Starter-${pkgver}.tar.gz")
-sha256sums=('e1b967f5c6b21cdfad0fe1eafd5681705d79bb5696db02ad9b5327e157bb050a')
+source=("http://www.cpan.org/authors/id/D/DB/DBOOK/Module-Starter-${pkgver}.tar.gz")
+sha256sums=('dd924c521538d96c0e4b5a5c911945aba42ed28f9b194c9ffe04f6f8aaf61e10')
 
 build() {
 	cd "${srcdir}/Module-Starter-${pkgver}"
