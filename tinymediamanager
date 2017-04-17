@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Launch script for tinyMediaManager
+# Based on '/usr/share/tinyMediaManager/tinyMediaManager.sh'
+
+cd "/usr/share/tinyMediaManager/"
+
+# have a look if we need to launch the updater or tmm directly
+if [ -f tmm.jar ]; then
+  ARGS="-Dsilent=noupdate"
+fi
+
+ARGS="$ARGS -Djava.net.preferIPv4Stack=true -Dappbase=http://www.tinymediamanager.org/"
+
+# execute it :)
+java $ARGS -jar getdown.jar .

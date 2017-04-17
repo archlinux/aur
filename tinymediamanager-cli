@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Command line interface for tinyMediaManager
+# Based on '/usr/share/tinyMediaManager/tinyMediaManagerCMD.sh'
+
+PARAMS=
+
+if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  PARAMS=-Djna.nosys=true
+fi
+
+cd "/usr/share/tinyMediaManager/"
+java -classpath tmm.jar:lib/* -Djna.nosys=true -Djava.net.preferIPv4Stack=true -Dfile.encoding=UTF-8 -Dappbase=http://www.tinymediamanager.org/ -Djava.awt.headless=true -Xms64m -Xmx512m -Xss512k $PARAMS org.tinymediamanager.TinyMediaManager $1 $2 $3 $4 $5
