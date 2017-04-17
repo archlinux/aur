@@ -1,7 +1,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=steam-wine-git
-pkgver=3.463a8bf
+pkgver=7.6d12f0e
 pkgrel=1
 pkgdesc="Steam with simple wine wrapper"
 arch=('any')
