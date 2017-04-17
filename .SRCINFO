@@ -1,6 +1,7 @@
 pkgbase = tunerstudio
+	pkgdesc = Graphical engine tuning and analysis software for Megasquirt ECUs
 	pkgver = 3.0.18
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = proprietary
 	makedepends = imagemagick
