@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-captcha-recaptcha'
-pkgver='0.97'
+pkgver='0.99'
 pkgrel='1'
-pkgdesc="A Perl implementation of the reCAPTCHA API"
+pkgdesc=""
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-html-tiny>=0.904' 'perl-libwww')
 makedepends=()
-url='http://search.cpan.org/dist/Captcha-reCAPTCHA'
-source=('http://search.cpan.org/CPAN/authors/id/P/PH/PHRED/Captcha-reCAPTCHA-0.97.tar.gz')
-md5sums=('0e8d3edfc5b580d99fca2bffeb7ef948')
-sha512sums=('f16be381a858b9cb94a0c8a8bd1eb2aea383818ad8f1d9854f978e70ecee8f72de92ce948c486bdde4ffc06fb912720851ea67c3dc056dcc20f619be185ccb0e')
-_distdir="Captcha-reCAPTCHA-0.97"
+url='https://metacpan.org/release/Captcha-reCaptcha'
+source=('http://search.cpan.org/CPAN/authors/id/S/SU/SUNNYP/Captcha-reCaptcha-0.99.tar.gz')
+md5sums=('f9e4b1e1c4e32f60dab22b01a32c0de7')
+sha512sums=('cdc87a1771bda31e9bc1d88dbb39a07fa0e0fb29117d61857963b9003c0e5e77c9c7c56da15c7521113e58cf90e092f0eefad60787ec7549b1cc5fb814fdb9fd')
+_distdir="Captcha-reCaptcha"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
