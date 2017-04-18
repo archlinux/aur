@@ -1,0 +1,11 @@
+post_install() {
+echo "Adding user pascal, pascalcoin-daemon runs as this user."
+useradd -m pascal
+echo "Enable and start pascalcoin.service if desired."
+echo "Giving user pascal ownership of /opt/pascalcoin/pascalcoin_daemon.ini"
+chown pascal:pascal /opt/pascalcoin/pascalcoin_daemon.ini
+chmod u+rw /opt/pascalcoin/pascalcoin_daemon.ini
+}
+post_remove() {
+echo "Remove user pascal and delete the home directory of this user if desired."
+}

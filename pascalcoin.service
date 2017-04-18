@@ -1,0 +1,14 @@
+[Unit]
+Description=PascalCoin Daemon
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/pascalcoin
+ExecStart=/opt/pascalcoin/pascalcoin_daemon -r
+User=pascal
+
+[Install]
+WantedBy=multi-user.target
+
+
