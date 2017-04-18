@@ -4,8 +4,8 @@
 _pkgname=jdk
 pkgname=bin32-jdk
 _major=8
-_minor=121
-_build=b13
+_minor=131
+_build=b11
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java Development Kit (32-bit)"
@@ -49,7 +49,7 @@ source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/e9e7ea248e2
         "jmc32-$_jname.desktop"
         "jvisualvm32-$_jname.desktop"
         "policytool32-$_jname.desktop")
-md5sums=('9e0e84f36427ce258abfca35fbeb0c55'
+md5sums=('a6741fd674372366546bd8480be735c7'
          'b3c7031bc65c28c2340302065e7d00d3'
          '30d35416b403c621fb02d0dc0b115c05'
          '9dfed511010a54eb377b692638d17585'
