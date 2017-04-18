@@ -14,31 +14,19 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=dump
-pkgver=0.4b44
-pkgrel=4
+pkgver=0.4b46
+pkgrel=1
 pkgdesc="Standard *nix for performing backups to tapedrive from ext2 and ext3 filesystems"
 arch=('i686' 'x86_64')
 url="http://dump.sourceforge.net/"
 license=('BSD')
 depends=('e2fsprogs')
 makedepends=('autoconf' 'automake' 'pkg-config')
-source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
-        'dump-buildfix.patch'
-        'autoreconf.patch'
-        'restore-rmdir.patch')
-md5sums=('daec97b1ad905c904eba926221f4be6d'
-         'c412b47327240f4daecb68ba2f6a7730'
-         '28615ed3146ae28f14050fab65ae712d'
-         '85bd0d8238a5010a4823d6c9642dc75b')
+source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
+md5sums=('4c463f797e7e8a1112fabf5cbf8e1855')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
-
-  # source: http://sourceforge.net/p/dump/bugs/157/
-  patch -p0 < "$srcdir"/restore-rmdir.patch
-  
-  # source: http://sourceforge.net/p/dump/patches/16/
-  patch < "$srcdir"/dump-buildfix.patch
 
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
@@ -49,9 +37,6 @@ build() {
     --disable-readline \
     --disable-rmt \
     --disable-transselinux
-
-  # upstream uses "autoconf" but that fails, so patch to use "autoreconf"
-  patch < "$srcdir"/autoreconf.patch
 
   make
 }
@@ -65,7 +50,7 @@ package() {
   # prefix=$pkgdir so manhandle /usr/sbin to /usr/bin
   mv -f "$pkgdir"/usr/sbin/ "$pkgdir"/usr/bin
 
-  install -Dm644 COPYRIGHT "$pkgdir"/usr/share/licenses/dump/COPYRIGHT
+  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/dump/COPYING
 }
 
 # vim:set ts=2 sw=2 et:
