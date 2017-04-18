@@ -4,8 +4,8 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=jhbuild
-pkgver=3.15.92+1081+ge10b7222
-pkgrel=4
+pkgver=3.15.92+1108+g5b676bb6
+pkgrel=1
 pkgdesc='Tool to build the whole GNOME desktop from sources'
 arch=('any')
 url='https://wiki.gnome.org/Projects/Jhbuild'
@@ -17,19 +17,19 @@ optdepends=('subversion: fetch subversion repositories'
             'bzr: fetch Bazaar repositories'
             'mercurial: fetch Mercurial repositories'
             'darcs: fetch Darcs repositories')
-_commit=e10b7222
-source=("$pkgname-$_commit::git+https://git.gnome.org/browse/jhbuild#commit=$_commit"
+_commit=5b676bb6
+source=("$pkgname::git+https://git.gnome.org/browse/jhbuild#commit=$_commit"
         "module_args.patch")
 sha256sums=('SKIP'
             'd840b6b18650d77f1588c67532015aa1e8a9fc408418cce62e5f0bfcd4b47128')
 
 pkgver() {
-  cd $pkgname-$_commit
+  cd $pkgname
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd $pkgname-$_commit
+  cd $pkgname
   msg2 "Set parameters known to be required in Arch Linux"
   patch -p1 -i "$srcdir/module_args.patch"
   
@@ -41,18 +41,18 @@ prepare() {
 }
 
 build() {
-  cd $pkgname-$_commit
+  cd $pkgname
   ./autogen.sh --prefix=/usr PYTHON=/usr/bin/python2
   make
 }
 
 package() {
-  cd $pkgname-$_commit
+  cd $pkgname
   make DESTDIR="$pkgdir" install
   install -Dm644 examples/sample.jhbuildrc "$pkgdir/usr/share/jhbuild/examples/sample.jhbuildrc"
   install -Dm644 examples/wayland.jhbuildrc "$pkgdir/usr/share/jhbuild/examples/wayland.jhbuildrc"
   install -Dm644 contrib/jhbuild_completion.bash "$pkgdir/usr/share/bash-completion/completions/jhbuild"
-  sed -i "s|$srcdir/$pkgname-$_commit|$HOME/jhbuild|g" "$pkgdir"/usr/bin/jhbuild
+  sed -i "s|$srcdir/$pkgname|$HOME/jhbuild|g" "$pkgdir"/usr/bin/jhbuild
 }
 
 # list of dependencies reported by 'jhbuild sysdeps'
