@@ -12,8 +12,8 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=fina
-pkgver=0.2.4
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="A simple, robust shell script that loads iptables rules from a rules directory."
 arch=(any)
 url="http://www.schwarzvogel.de/software-$pkgname.shtml"
@@ -23,7 +23,7 @@ source=("http://www.schwarzvogel.de/pkgs/$pkgname-$pkgver.tar.gz"
         'systemd.fina6'
         'flush-iptables.sh'
         'flush-ip6tables.sh')
-md5sums=('8790e6640cd09779db04ded631dc1d88'
+md5sums=('651306bdcfcb10eadce78de9a221abbf'
          'a286f87648a0f84ac448cbfffcd53faf'
          '184204d4e357f90d332a69a60e63f752'
          'faa4d6181f1b109c0e4e2dbf5faa9408'
