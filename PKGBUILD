@@ -8,7 +8,7 @@ _USE_GNU_EFI="1"
 #######
 
 pkgname="refind-efi-bin"
-pkgver="0.10.5"
+pkgver="0.10.7"
 pkgrel="1"
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - Precompiled binary"
 url="http://www.rodsbooks.com/refind/index.html"
@@ -17,7 +17,8 @@ license=('GPL3' 'custom')
 
 depends=('bash' 'dosfstools' 'efibootmgr')
 optdepends=('mactel-boot: For bless command in Apple Mac systems'
-            'imagemagick: For refind-mkfont script')
+            'imagemagick: For refind-mkfont script'
+            'python: For refind-mkdefault script')
 makedepends=()
 conflicts=('refind-efi')
 options=()
@@ -26,7 +27,7 @@ install="${pkgname}.install"
 
 source=('refind_linux.conf')
 md5sums=('12ce3e22a216e7b25c253478a34713b4'
-         '9f30c8d2beafe8575db9f81edcfb53bf')
+         '4277c1f3397513fa2d6146e320005828')
 
 if [[ "${_USE_GNU_EFI}" == "1" ]]; then
 	
@@ -70,11 +71,12 @@ package() {
 	msg "Install the rEFInd docs"
 	install -d "${pkgdir}/usr/share/refind/docs/html/"
 	install -d "${pkgdir}/usr/share/refind/docs/Styles/"
+	install -d "${pkgdir}/usr/share/man/man8/"
 	install -D -m0644 "${srcdir}/refind-bin-${pkgver}/docs/refind"/* "${pkgdir}/usr/share/refind/docs/html/"
 	install -D -m0644 "${srcdir}/refind-bin-${pkgver}/docs/Styles"/* "${pkgdir}/usr/share/refind/docs/Styles/"
 	install -D -m0644 "${srcdir}/refind-bin-${pkgver}/README.txt" "${pkgdir}/usr/share/refind/docs/README.txt"
 	install -D -m0644 "${srcdir}/refind-bin-${pkgver}/NEWS.txt" "${pkgdir}/usr/share/refind/docs/NEWS.txt"
-	rm -f "${pkgdir}/usr/share/refind/docs/html/.DS_Store" || true
+	install -D -m0644 "${srcdir}/refind-bin-${pkgver}/docs/man"/*.8 "${pkgdir}/usr/share/man/man8/"
 	
 	msg "Install the rEFInd fonts"
 	install -d "${pkgdir}/usr/share/refind/fonts/"
@@ -98,10 +100,9 @@ package() {
 	install -D -m0644 "${srcdir}/refind-bin-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/refind/LICENSE"
 	
 	msg "Use '#!/usr/bin/env bash' in all scripts"
-	sed 's|#!/bin/bash|#!/usr/bin/env bash|g' -i "${pkgdir}/usr/bin"/refind-* || true
+	sed 's|#!/bin/bash|#!/usr/bin/env bash|g' -i "${pkgdir}/usr/bin"/* || true
 	
 	msg "Point refind dir paths to /usr/share/refind/ in refind-install script"
-	sed -r 's|[[:space:]]+ThisDir=.*|ThisDir="/usr/share/refind/"|g' -i "${pkgdir}/usr/bin/refind-install"
-	sed -r 's|[[:space:]]+RefindDir=.*|RefindDir="/usr/share/refind/"|g' -i "${pkgdir}/usr/bin/refind-install"
+	sed 's|RefindDir=\"\$ThisDir/refind\"|RefindDir="/usr/share/refind/"|g' -i "${pkgdir}/usr/bin/refind-install"
 	
 }
