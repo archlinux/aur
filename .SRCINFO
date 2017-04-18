@@ -1,0 +1,13 @@
+pkgbase = msbuild-15-bin
+	pkgdesc = Xamarin implementation of the Microsoft build system
+	pkgver = 15.1_xamarinxplat.2017.02.14.47.38_0xamarin1
+	pkgrel = 1
+	url = https://github.com/mono/msbuild
+	arch = x86_64
+	license = MIT
+	depends = mono>=4.0.0
+	source = msbuild-amd64-v15.1+xamarinxplat.2017.02.14.47.38-0xamarin1.deb::http://download.mono-project.com/repo/ubuntu/pool/main/m/msbuild/msbuild_15.1+xamarinxplat.2017.02.14.47.38-0xamarin1_all.deb
+	sha256sums = 11056f9a789bd3421553c3bedbad17c14b4ac2c1b7a211b5cf6f2c0d60c70add
+
+pkgname = msbuild-15-bin
+
