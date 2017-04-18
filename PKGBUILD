@@ -21,11 +21,12 @@ install=
 changelog=
 source=("https://github.com/Storj/storjshare-daemon/archive/v${pkgver}.tar.gz")
 noextract=("v${pkgver}.tar.gz")
-md5sums=('SKIP')
+md5sums=('4eec46d433643fc6214c209eb939477a')
 validpgpkeys=()
 
 package() {
-	sudo npm install --global "v${pkgver}.tar.gz"
+cd "$srcdir"
+npm install --user root -g --prefix "$pkgdir/usr" "v${pkgver}.tar.gz"
 }
 
 
