@@ -1,12 +1,12 @@
 pkgbase = gcs
 	pkgdesc = WYSIWYG editor for building character sheets for GURPS 4th Edition
-	pkgver = 4.8.0
+	pkgver = 4.9.0
 	pkgrel = 1
 	url = http://gurpscharactersheet.com
 	arch = any
 	license = MPL
 	depends = java-runtime=8
-	source = http://gurpscharactersheet.com/downloads/4.8.0/gcs-4.8.0-linux.zip
+	source = http://gurpscharactersheet.com/downloads/4.9.0/gcs-4.9.0-linux.zip
 	source = gcs.sh
 	source = gcs.desktop
 	source = gcs.xml
