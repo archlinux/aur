@@ -1,8 +1,8 @@
 # Maintainer: Wellington <wellingtonwallace@gmail.com>
 pkgname=pulseeffects
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
-pkgdesc="Limiter, compressor, reverberation and stereo equalizer effects for Pulseaudio applications"
+pkgdesc="Limiter, compressor, reverberation, stereo equalizer and auto volume effects for Pulseaudio applications"
 arch=(any)
 url="https://github.com/wwmm/pulseeffects"
 license=('GPL3')
@@ -11,19 +11,12 @@ depends=(python python-gobject gtk3 gst-plugins-good gst-plugins-bad gst-python
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/wwmm/pulseeffects/archive/v$pkgver.tar.gz")
-md5sums=('1b3ecad0b534c61a6fa3fa54f64394cb')
+md5sums=('89b71553a1fdb2803b91cb972df3d255')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
-  mkdir -p "$pkgdir/usr/share/glib-2.0/schemas"
-  mkdir -p "$pkgdir/usr/share/applications"
-  mkdir -p "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-  cp "share/glib-2.0/schemas/com.github.wwmm.pulseeffects.gschema.xml" \
-     "$pkgdir/usr/share/glib-2.0/schemas"
-  cp "share/applications/pulseeffects.desktop" "$pkgdir/usr/share/applications"
-  cp "share/icons/hicolor/scalable/apps/pulseeffects.svg" \
-     "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+  cp -r "share" "$pkgdir/usr"
 }
 
 # vim:set ts=2 sw=2 et:
