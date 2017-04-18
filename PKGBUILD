@@ -1,8 +1,8 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=('conan')
-pkgver=0.22.0
-pkgrel=2
+pkgver=0.22.1
+pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
 url="https://conan.io"
@@ -19,10 +19,11 @@ depends=('python-pyjwt>=1.4.0' 'python-pyjwt<1.5.0'
          'python-bottle>=0.12.8' 'python-bottle<0.13'
          'python-distro>=1.0.2' 'python-distro<1.1.0'
          'python-pluginbase>=0.5' 'python-pluginbase<1.0'
-         'python-pylint>=1.6.4' 'python-pylint<1.6.6')
+         'python-pylint>=1.6.4' 'python-pylint<1.6.6'
+         'python-future=0.16.0')
 source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz" "pylint-1.6.4.patch")
-sha512sums=('069676785b353ff6c059a8ecabc62c53554e440b9208007eac5ef3fb3c634589c079392b7e197c5179f68b8e01655a888ffea5a2019587b7289c1f0d110de444'
-            '390efc6caf461c1c3f78a77c88847486fb97e7d1a5d81036b93dbc9526c365d084a2b2f60d2df6a2040be6aae859285d4feb9b3b238646585508a42d7eb7ea76')
+sha512sums=('cadd12cfcf483d67eb818ddb6d1bc66fe5a58ec5bddd4cd0075f0aa36cd24b5487dffa0eb52cdb49abe4e4240e70c8aaf24d44b0a02f50016e015e08e86d06e7'
+            '8708a94074cfbd7b9f8d28ef842f8a91a81b40c09b72bc4f8adf66b24e043994bbdc4c843734f179428b4c3ebb453d98b26c49f85bcd26b05be7896a37fc3618')
 
 prepare() {
  cd $pkgname-$pkgver
