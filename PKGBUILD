@@ -1,7 +1,7 @@
 # Maintainer: Alberto Sánchez Molero <alsamolero@gmail.com>
 # Contributor: cth451 <cth451@gmail.com>
 
-pkgname=flatplat-theme-base16-git
+pkgname=flatplat-theme-base16
 pkgdesc="git package for the GTK3, GTK2, Metacity, and GNOME-Shell theme Flat-Plat, adapted to base16 colours."
 arch=('any')
 url="https://github.com/asmolero/Flat-Plat-base16"
