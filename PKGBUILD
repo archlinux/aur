@@ -17,7 +17,7 @@ sha256sums=(
   'ab162fdeb9b99a47a5283b4b8644a1c75e15b74f62f5a78bdcc59580df562489'
 )
 arch=('x86_64')
-depends=('python')
+depends=('python' 'zlib')
 makedepends=('git' 'python')
 
 pkgver() {
@@ -26,7 +26,7 @@ pkgver() {
 }
 
 build() {
-  makedepends=('cmake' 'qt5-base' 'python' 'python-virtualenv' 'protobuf')
+  makedepends=('cmake' 'qt5-base' 'python' 'python-virtualenv' 'protobuf' 'zlib')
 
   mkdir -p "${srcdir}/veles/build"
   cd "${srcdir}/veles/build"
@@ -35,7 +35,7 @@ build() {
 }
 
 package_veles-git() {
-  depends=('cmake' 'qt5-base' 'python' 'python-virtualenv' 'python-veles-git' 'protobuf')
+  depends=('cmake' 'qt5-base' 'python' 'python-virtualenv' 'python-veles-git' 'protobuf' 'zlib')
   conflicts=('veles-bin' 'veles')
   provides=('veles-git' 'veles-bin' 'veles')
 
