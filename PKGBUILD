@@ -1,7 +1,7 @@
 # Maintainer: Ricardo Vieira <ricardo.vieira@tecnico.ulisboa.pt>
 
 pkgname=budgie-desktop-git
-pkgver=v10.2.9.r26.g7071987
+pkgver=v10.3.1.r1.g932cd0c
 pkgrel=1
 pkgdesc="Simple GTK3 desktop experience"
 arch=('i686' 'x86_64')
@@ -17,22 +17,27 @@ optdepends=('gnome-backgrounds: Default background'
 provides=('budgie-desktop')
 conflicts=('budgie-desktop')
 install=budgie-desktop.install
-source=("$pkgname"::'git+https://github.com/solus-project/budgie-desktop.git#commit=7071987')
+source=("$pkgname"::'git+https://github.com/solus-project/budgie-desktop.git')
 noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
-	git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+        cd "$srcdir/$pkgname"
+        git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+        cd "$srcdir/$pkgname"
+        git submodule update --init
 }
 
 build() {
-	cd "$srcdir/$pkgname"
-        ./autogen.sh --prefix=/usr
-	make
+        cd "$srcdir/$pkgname"
+        meson build --prefix=/usr --sysconfdir=/etc --buildtype plain
+        ninja -C build
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	make DESTDIR="$pkgdir/" install
+        cd "$srcdir/$pkgname"
+        DESTDIR=$pkgdir ninja -C build install
 }
