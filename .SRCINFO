@@ -1,0 +1,18 @@
+pkgbase = arukas-cli
+	pkgdesc = The Arukas CLI
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/arukasio/cli
+	arch = x86_64
+	license = MIT
+	source = https://github.com/arukasio/cli/releases/download/v0.2.0/arukas_v0.2.0_linux_amd64.zip
+	source = https://raw.githubusercontent.com/arukasio/cli/v0.2.0/README.md
+	source = https://raw.githubusercontent.com/arukasio/cli/v0.2.0/LICENSE.txt
+	source = https://raw.githubusercontent.com/arukasio/cli/v0.2.0/.env.sample
+	md5sums = 7033ddb01034e525eef768ab1ffe20cd
+	md5sums = 83ad09575e9f3c8a48014c4c4a220756
+	md5sums = a9c1a8609cc5af6e2009a83ac2411de2
+	md5sums = 9ec1ff716be381c2b4f07eb4c0e3db92
+
+pkgname = arukas-cli
+
