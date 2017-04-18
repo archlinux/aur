@@ -1,14 +1,16 @@
 pkgbase = opmsg
 	pkgdesc = opmsg message encryption
-	pkgver = 1.5s
+	pkgver = 1.75s
 	pkgrel = 1
 	url = https://github.com/stealth/opmsg
 	arch = x86_64
 	arch = i686
+	arch = armv7h
 	license = GPL3
 	depends = openssl
-	source = https://github.com/stealth/opmsg/archive/rel-1.5s.tar.gz
-	md5sums = c136b11c46c71e038aaf7169727d748b
+	conflicts = opmsg-git
+	source = https://github.com/stealth/opmsg/archive/rel-1.75s-newskey2.tar.gz
+	sha1sums = 9959faa3b3f07d55abd769d1ad5427be331893e6
 
 pkgname = opmsg
 
