@@ -10,18 +10,18 @@
 # Contributor: Kamil Śliwak <cameel2 gmail>
 
 pkgname=meteor-js
-pkgver=1.4.3.2
+pkgver=1.4.4.1
 pkgrel=1
 pkgdesc="Meteor is a full-stack JavaScript platform for developing modern web and mobile applications"
 arch=('i686' 'x86_64')
-url="https://github.com/meteor/meteor"
+url="https://www.meteor.com"
 license=('MIT')
 depends=('nodejs' 'mongodb')
 options=('!strip')
 source_i686=("https://meteorinstall-4168.kxcdn.com/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_32.tar.gz")
 source_x86_64=("https://meteorinstall-4168.kxcdn.com/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_64.tar.gz")
-sha256sums_i686=('f6a39942a08329a60189431e9a0106b686cd11475393a59772e3c9c4722da6f3')
-sha256sums_x86_64=('0b3c58f483f991adbceb6fa02a7600e3200b0c27156a0d1fc1dda1d0b8e7b29f')
+sha256sums_i686=('ef8d7dd068b485d5ffc8155d4d8e757e13cb94011fd2a00148802b88fd289437')
+sha256sums_x86_64=('028f2ff188c6cae7b98654ef60c17a873fd213b62ef044fee124539de1e5ea9f')
 
 package() {
   PREFIX="/usr/local"
