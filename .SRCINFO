@@ -1,0 +1,26 @@
+pkgbase = emacs-nox-24bit
+	pkgdesc = The extensible, customizable, self-documenting real-time display editor, without X11 support patched for 24bit colouring
+	pkgver = 25.1
+	pkgrel = 1
+	url = http://www.gnu.org/software/emacs/emacs.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = dbus
+	depends = ncurses
+	depends = perl
+	depends = libxml2
+	depends = glib2
+	depends = gnutls
+	provides = emacs
+	conflicts = emacs emacs-nox emacs-24bit
+	source = ftp://ftp.gnu.org/gnu/emacs/emacs-25.1.tar.xz
+	source = ftp://ftp.gnu.org/gnu/emacs/emacs-25.1.tar.xz.sig
+	source = https://gist.githubusercontent.com/choppsv1/3364fd6658ef498b5e06151217187017/raw/b9ba9e9000685abecf7ad954050b182eaef823e1/emacs-25.1-24bit.diff
+	validpgpkeys = 28D3BED851FDF3AB57FEF93C233587A47C207910
+	sha256sums = 19f2798ee3bc26c95dca3303e7ab141e7ad65d6ea2b6945eeba4dbea7df48f33
+	sha256sums = SKIP
+	sha256sums = e07dfcbe420c8fd08cc3286d6779fda6ca29ee14b05ed0c47ea1f417b90ea9b1
+
+pkgname = emacs-nox-24bit
+
