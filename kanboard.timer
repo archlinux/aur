@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily execution of kanboard's cronjob
+
+[Timer]
+OnCalendar=daily
+RandomizedDelaySec=1day
+Persistent=true
+
+[Install]
+WantedBy=timers.target
