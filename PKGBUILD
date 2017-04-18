@@ -1,7 +1,7 @@
 # Maintainer: Elimpfor <aur@s403.33mail.com>
 pkgname=opmsg-git
-pkgver=r131.ce12dc8
-pkgrel=2
+pkgver=r132.fe68e4e
+pkgrel=1
 epoch=
 pkgdesc="opmsg message encryption"
 arch=('x86_64' 'i686' 'armv7h')
