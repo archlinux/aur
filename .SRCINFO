@@ -1,7 +1,7 @@
 pkgbase = emacs-expand-region
 	pkgdesc = Emacs framework for incrementally selecting semantic regions
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/magnars/expand-region.el
 	arch = any
 	license = GPL3
