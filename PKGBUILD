@@ -12,7 +12,7 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=nsca
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="Integrate passive alerts and checks from remote machines and applications with Nagios. Useful for processing security alerts, as well as redundant and distributed Nagios setups."
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ backup=('etc/nsca/nsca.cfg' 'etc/nsca/send_nsca.cfg')
 url="http://www.nagios.org/"
 source=("http://downloads.sourceforge.net/nagios/nsca-$pkgver.tar.gz"
         'nsca.service')
-md5sums=('3fe2576a8cc5b252110a93f4c8d978c6'
+md5sums=('43f638c51367a3170476ed106fbb4858'
          '6f11d8d79c5f1b4d65b82e46ef26f554')
 
 build() {
