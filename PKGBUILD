@@ -4,8 +4,8 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 _upstream="compizconfig-python"
-_pkgver=0.8.12
-_micro=".1"
+_pkgver=0.8.14
+_micro=""
 
 pkgname=compizconfig-python
 pkgver="${_pkgver}${_micro}"
@@ -14,7 +14,7 @@ pkgdesc="Compizconfig bindings for python"
 arch=('i686' 'x86_64')
 url="https://github.com/compiz-reloaded/${_upstream}/"
 license=('GPL')
-depends=("compiz-core>=${pkgver}" 'libcompizconfig' 'glib2' 'python2' 'libxrandr' 'libsm' 'libxdamage')
+depends=("compiz-core>=${pkgver}" 'libcompizconfig' 'glib2' 'python' 'libxrandr' 'libsm' 'libxdamage')
 makedepends=('cython' 'intltool' 'pkgconfig')
 options=('!libtool')
 conflicts=('compizconfig-python-git')
@@ -25,7 +25,7 @@ build()
 	cd "${srcdir}/${_upstream}-${pkgver}"
 
 	NOCONFIGURE=1 ./autogen.sh
-	PYTHON=python2 ./configure --prefix=/usr
+	PYTHON=python ./configure --prefix=/usr
 	make
 }
 
@@ -36,4 +36,4 @@ package()
 	make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('ca905e3d3450ed2748d992065d53d104033e7402b1ea4789188c0d3fcce2b39a')
+sha256sums=('a119c51f4892bb5f5f8067c038e3a5b7720df0c73280ce642d87a0495c9ca256')
