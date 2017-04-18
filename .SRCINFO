@@ -5,9 +5,6 @@ pkgbase = veles
 	url = https://codisec.com/veles
 	arch = x86_64
 	license = APLv2
-	makedepends = git
-	makedepends = python
-	depends = python
 	source = git+https://github.com/codilime/veles.git#tag=2017.2.0.YAGNI
 	source = Veles.desktop
 	source = veles.png
@@ -16,14 +13,12 @@ pkgbase = veles
 	sha256sums = ab162fdeb9b99a47a5283b4b8644a1c75e15b74f62f5a78bdcc59580df562489
 
 pkgname = veles
-	depends = cmake
 	depends = qt5-base
 	depends = python
 	depends = python-virtualenv
 	depends = python-veles
 	depends = protobuf
 	depends = zlib
-	provides = veles-bin
 	conflicts = veles-bin
 	conflicts = veles-git
 
