@@ -1,6 +1,6 @@
 #AUR Maintainter: JKA Network <contacto@jkanetwork.com>
 pkgname=openlitespeed
-pkgver=1.4.24
+pkgver=1.4.25
 pkgrel=1
 pkgdesc="A high-performance, lightweight, open source HTTP server"
 arch=('x86_64' 'i686')
@@ -12,8 +12,8 @@ provides=('openlitespeed')
 options=()
 source=("http://open.litespeedtech.com/packages/openlitespeed-$pkgver.tgz"
 		'openlitespeed.service')
-md5sums=('ed538462c8d4501866a16bd69ae75add'
-		'SKIP')
+md5sums=('1f517ba539aaaaeaa91ef0b502e3c62e'
+         'f4acf3cdbf449a457818982eb933d6f7')
 install=$pkgname.install
 build() {
 	cd "$pkgname-$pkgver"
