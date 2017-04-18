@@ -12,8 +12,8 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=sysusage
-pkgver=5.4
-pkgrel=2
+pkgver=5.5
+pkgrel=1
 pkgdesc="Monitor your systems informations and generate periodical graph reports using rrdtool. All reports are shown throught a web interface."
 arch=('any')
 url="http://sysusage.darold.net/"
@@ -22,7 +22,7 @@ depends=('inetutils' 'rrdtool' 'sysstat' 'perl' 'perl-proc-queue' 'procps-ng')
 backup=('etc/sysusage.cfg')
 install="$pkgname.install"
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('c664de8983bc86ec7f0c09831974e6b6')
+md5sums=('181fc8df2624bbb224981dc450353b6c')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
