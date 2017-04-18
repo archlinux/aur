@@ -34,6 +34,9 @@ build() {
               -DKICAD_SCRIPTING=ON \
               -DKICAD_SCRIPTING_MODULES=ON \
               -DKICAD_SCRIPTING_WXPYTHON=ON
+
+  # -DKICAD_SPICE=ON is not yet added because it really depends an
+  # unreleased version of ngspice...
   make
 }
 
