@@ -12,9 +12,9 @@ changelog=ChangeLog
 source=("https://www.fosshub.com/Data-Crow.html/${_pkgfile}"
         'datacrow.sh'
         'datacrow.desktop')
-md5sums=('661cb74f927e7c381ac5fefd16c823c9'
-         '04322853e8f380f5d7a7b79a166226d8'
-         '751bab7bc4aee2d5f5d667f3dba45ef4')
+sha256sums=('832d5e7c2e58bc9ad0e2d3e7f7803b275896891471c5e0bc112ff9d477d161ea'
+            '53f6986ae3a68ca8f723248981847214b98677db2082f13fe84e766e6f59ef94'
+            '129ded3d5cea72b783bba78e2ef18f95d1cc6eaf287b27761d7717be494c3b40')
 
 prepare() {
 	cd 'dc-client'
