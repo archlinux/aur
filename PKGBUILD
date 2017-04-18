@@ -4,8 +4,8 @@
 # Contributor: Gordin <9ordin@gmail.com>
 
 pkgname=android-sdk
-pkgver=25.2.5
-pkgrel=2
+pkgver=26.0.1
+pkgrel=1
 pkgdesc='Google Android SDK'
 arch=('x86_64' 'i686')
 url='https://developer.android.com/studio/releases/sdk-tools.html'
