@@ -6,8 +6,8 @@
 # webapps from the browser.
 
 pkgname=oracle-java-extras
-pkgver=1
-pkgrel=2
+pkgver=2
+pkgrel=1
 pkgdesc="System Entries and intergration for Oracle Java"
 arch=('any')
 url="http://aur.archlinux.org"
