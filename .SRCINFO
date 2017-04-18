@@ -1,0 +1,20 @@
+pkgbase = librevideoconverter
+	pkgdesc = Simple video converter for WebM (vp8), Ogg Theora, MP4 and others, fork of Miro Video Converter
+	pkgver = 0bca12ebd3
+	pkgrel = 1
+	url = https://notabug.org/Heckyel/LibreVideoConverter
+	arch = any
+	license = GPL3
+	makedepends = python2-distribute
+	depends = python2>=2.7.0
+	depends = ffmpeg
+	depends = ffmpeg2theora
+	depends = gtk2
+	depends = hicolor-icon-theme
+	depends = pygtk
+	conflicts = miro-video-converter
+	source = librevideoconverter-0bca12ebd3::https://notabug.org/Heckyel/LibreVideoConverter/archive/0bca12ebd3bce5dc6e2aa61f7f1b552d0f101b1d.tar.gz
+	md5sums = 7e5a458d2ef78b45458d82ca96a32d28
+
+pkgname = librevideoconverter
+
