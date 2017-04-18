@@ -3,10 +3,9 @@
 
 _pkgname='bigloo'
 pkgname="${_pkgname}-devel"
-epoch=24
+epoch=25
 _pkgver='4.3a'
-_pkgsuffix='beta28Mar17'
-pkgver="${_pkgver}"."${_pkgsuffix}"
+pkgver="${_pkgver}"
 pkgrel=1
 pkgdesc="Fast scheme compiler"
 arch=('i686' 'x86_64')
@@ -19,8 +18,8 @@ optdepends=('emacs: for bee'
 provides=('bigloo=$pkgver')
 conflicts=('bigloo')
 options=('!makeflags' 'libtool' 'staticlibs' '!strip')
-source=("ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${_pkgname}${_pkgver}-${_pkgsuffix}.tar.gz" "satisfy-ldconfig.sh")
-sha256sums=('c85a93ccffc06e82e3d4cc0d7d99f4b31a5d893a21f3d7f368a32ca46d34ca55'
+source=("ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${_pkgname}${_pkgver}.tar.gz" "satisfy-ldconfig.sh")
+sha256sums=('3ca5c28d6eab6132b981eb6a8cc921d73b5cbcc22d3a32312d52f83d8dc62c0f'
             'b45d2dc176f2b8c6496da9bfaad76d9398172dbef288984f6415824c1c93a4c2')
 
 prepare() {
