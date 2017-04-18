@@ -2,7 +2,7 @@
 
 _name="sanic"
 pkgname="python-$_name"
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A microframework based on uvloop, httptools, and learnings of flask"
 arch=("any")
@@ -11,7 +11,7 @@ license=("MIT")
 makedepends=("python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/channelcat/sanic/$pkgver/LICENSE")
-sha256sums=('594fa5c1d7812a1114b4049a9ff53a167f7d929d4bf05b2e23f5619861e6e747'
+sha256sums=('f80cfdee7e02faf9a19e5b5745d64ead62ae3aec128c361fb80067fbda3bec29'
             'a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde')
 
 build() {
