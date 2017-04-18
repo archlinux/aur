@@ -2,7 +2,7 @@
 
 pkgname=minecraft-multi-server
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft server template unit files and control script"
 arch=('any')
 url="https://github.com/nathanielc/$pkgname"
