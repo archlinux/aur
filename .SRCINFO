@@ -1,0 +1,16 @@
+pkgbase = emacs-expand-region
+	pkgdesc = Emacs framework for incrementally selecting semantic regions
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/magnars/expand-region.el
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-expand-region
+	conflicts = emacs-expand-region
+	source = https://github.com/magnars/expand-region.el/archive/0.11.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = emacs-expand-region
+
