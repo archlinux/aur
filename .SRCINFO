@@ -13,7 +13,6 @@ pkgbase = veles-git
 	sha256sums = ab162fdeb9b99a47a5283b4b8644a1c75e15b74f62f5a78bdcc59580df562489
 
 pkgname = veles-git
-	depends = cmake
 	depends = qt5-base
 	depends = python
 	depends = python-virtualenv
