@@ -27,6 +27,7 @@ build() {
   cd build
   cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo \
               -DCMAKE_INSTALL_PREFIX=/usr \
+              -DCMAKE_INSTALL_LIBDIR=/usr/lib \
               -DBUILD_GITHUB_PLUGIN=ON \
               -DKICAD_SCRIPTING=ON \
               -DKICAD_SCRIPTING_MODULES=ON \
