@@ -5,10 +5,6 @@ pkgbase = veles-git
 	url = https://codisec.com/veles
 	arch = x86_64
 	license = APLv2
-	makedepends = git
-	makedepends = python
-	depends = python
-	depends = zlib
 	source = git+https://github.com/codilime/veles.git
 	source = Veles.desktop
 	source = veles.png
@@ -24,16 +20,11 @@ pkgname = veles-git
 	depends = python-veles-git
 	depends = protobuf
 	depends = zlib
-	provides = veles-git
-	provides = veles-bin
-	provides = veles
 	conflicts = veles-bin
 	conflicts = veles
 
 pkgname = python-veles-git
 	depends = python
 	depends = protobuf
-	provides = python-veles-git
-	provides = python-veles
 	conflicts = python-veles
 

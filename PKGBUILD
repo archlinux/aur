@@ -17,8 +17,6 @@ sha256sums=(
   'ab162fdeb9b99a47a5283b4b8644a1c75e15b74f62f5a78bdcc59580df562489'
 )
 arch=('x86_64')
-depends=('python' 'zlib')
-makedepends=('git' 'python')
 
 pkgver() {
   cd "${srcdir}/veles"
@@ -26,7 +24,7 @@ pkgver() {
 }
 
 build() {
-  makedepends=('cmake' 'qt5-base' 'python' 'python-virtualenv' 'protobuf' 'zlib')
+  makedepends=('git' 'cmake' 'qt5-base' 'python' 'python-virtualenv' 'protobuf' 'zlib')
 
   mkdir -p "${srcdir}/veles/build"
   cd "${srcdir}/veles/build"
@@ -37,7 +35,6 @@ build() {
 package_veles-git() {
   depends=('cmake' 'qt5-base' 'python' 'python-virtualenv' 'python-veles-git' 'protobuf' 'zlib')
   conflicts=('veles-bin' 'veles')
-  provides=('veles-git' 'veles-bin' 'veles')
 
   # Install pixmap
   install -Dm644 veles.png "${pkgdir}/usr/share/pixmaps/veles.png"
@@ -55,10 +52,9 @@ package_veles-git() {
 }
 
 package_python-veles-git() {
-  makedepends=('python-buildtools')
+  makedepends=('git' 'python' 'python-buildtools')
   depends=('python' 'protobuf')
   conflicts=('python-veles')
-  provides=('python-veles-git' 'python-veles')
 
   cd "${srcdir}/veles/python"
 
