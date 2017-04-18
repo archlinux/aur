@@ -1,24 +1,27 @@
-# Maintainer: kreon <kreon@jnode.in>
-# Maintainer: Boohbah <boohbah at gmail.com>
+# Maintainer: Giovanni Harting <539@idlegandalf.com>
+# Contributor: kreon <kreon@jnode.in>
+# Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227 at archlinux.us>
 # Contributor: Mantas Mikulėnas <grawity at gmail.com>
 
 pkgname=eggdrop
-pkgver=1.6.21
-pkgrel=8
+pkgver=1.8.1
+pkgrel=1
 pkgdesc="The world's most popular Open Source IRC bot."
 arch=('i686' 'x86_64')
 url="http://www.eggheads.org/"
 license=('GPL2')
-depends=('sh' 'tcl>=8.3' 'zlib')
-source=("http://ftp.eggheads.org/pub/$pkgname/source/1.6/$pkgname$pkgver.tar.bz2"
+depends=('sh' 'tcl')
+source=("http://ftp.eggheads.org/pub/$pkgname/source/1.8/$pkgname-$pkgver.tar.gz"
+        "http://ftp.eggheads.org/pub/$pkgname/source/1.8/$pkgname-$pkgver.tar.gz.asc"
         'dlopen.c' 'utf8.patch')
 backup=("etc/$pkgname.conf")
-options=('!makeflags')
-sha256sums=('75bd5573a609eac3940c0b6ca8251c3f38ea5d54b520e1cad93c650b4bc21754'
-            'd1758f84a69173a852e598fa55e69df0d73b8b62c6993b0ba04aa21d539213e6'
-            'cdf0b1d59bbfa3f2c5937d96b57d55836af5ad36280351c6f1421d109ad693b3')
-
+#options=('!makeflags')
+sha512sums=('cb3fafc52add6abb6376f4fb5a38a18a2a8b2be415d5658d0cc3dd3d61329e43dc0d65acc6c43f592ce444d7aeb7149329fb1e943bb6b84bacb4c3853df22b41'
+            'SKIP'
+            'e1d254a6adae76198f7e20729aaff5d01a0947cb07faed560574886c1ce3794242204ec0c2f5905584240b243bf36103fffbb06f4154c022228c1b701a070e5c'
+            '7966d4d42994e44a0e571b89f1c66cb41f672d75e6ced7051d1ece23d8c209059c3565b41de950bf9c907701ce7a5e33a215b637587075ed300a002a58eda503')
+validpgpkeys=('E01C240484DE7DBE190FE141E7667DE1D1A39AFF')
 
 # Want multiple *unique* installations? Change the pkgname, it will just work.
 _sharedir="/usr/share"
@@ -30,24 +33,21 @@ _mandir="$_sharedir/man/man1"
 readonly -a _sharedir _modulesdir _scriptsdir _helpdir _bin _mandir
 
 build() {
-  cd "$srcdir/$pkgname$pkgver"
-# UNCOMMENT IF YOU NEED UTF-8 SUPPORT
-#  patch -p1 < "$srcdir/utf8.patch"
+  cd "$srcdir/$pkgname-$pkgver"
+
+  # UNCOMMENT IF YOU NEED UTF-8 SUPPORT
+  #patch -p1 < "$srcdir/utf8.patch"
 
   # Don't complain about language files on startup.
   sed -i "s|\"./language\"|\"$_sharedir/$pkgname/language\"|g" src/eggdrop.h
 
-  CFLAGS="-std=gnu89" ./configure --with-tcllib='/usr/lib/libtcl8.6.so' \
-              --with-tclinc='/usr/include/tcl.h'
+  ./configure
   make config
-
-  # Include LDFLAGS.
-  sed -i "s|-L/usr/lib|${LDFLAGS}|g" Makefile
   make
 }
 
 check() {
-  cd "$srcdir/$pkgname$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   # If this fails, theres a rather good chance something is broken.
 
@@ -68,8 +68,8 @@ package() {
 
   # This is ugly..
 
-  cd "$srcdir/$pkgname$pkgver"
-  make DEST="$eggtmp" install
+  cd "$srcdir/$pkgname-$pkgver"
+  make install DEST="$eggtmp"
 
   find "$eggtmp" -name 'CONTENTS' -exec rm {} +
 
@@ -81,7 +81,7 @@ package() {
   mv "$eggtmp/eggdrop-$pkgver" "$pkgdir/$_bin"
   mv "$eggtmp/doc/man1/$pkgname.1" "$pkgdir/$_mandir/$pkgname.1"
   rm -r "$eggtmp/doc/man1"
-  mv "$eggtmp/doc" "$pkgdir/$_sharedir/doc/$pkgname-$pkgver"
+  mv "$eggtmp/doc" "$pkgdir/$_sharedir/doc/$pkgname"
 
   for d in language scripts help text; do
     mv "$eggtmp/${d}" "$pkgdir/$_sharedir/$pkgname"
