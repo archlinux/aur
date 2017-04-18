@@ -7,7 +7,7 @@ pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
 url="http://kicad-pcb.org/"
 license=('GPL')
-depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python' 'glm' 'curl' 'swig' 'wxpython')
+depends=('glew' 'wxgtk' 'desktop-file-utils' 'boost-libs' 'python' 'glm' 'curl' 'swig' 'wxpython' 'oce')
 makedepends=('cmake' 'git' 'zlib' 'mesa' 'boost')
 optdepends=('kicad-library: for footprints')
 conflicts=('kicad' 'kicad-bzr')
@@ -28,6 +28,8 @@ build() {
   cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo \
               -DCMAKE_INSTALL_PREFIX=/usr \
               -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+              -DKICAD_USE_OCE=ON \
+              -DOCE_DIR=/opt/oce/lib/oce-0.17 \
               -DBUILD_GITHUB_PLUGIN=ON \
               -DKICAD_SCRIPTING=ON \
               -DKICAD_SCRIPTING_MODULES=ON \
