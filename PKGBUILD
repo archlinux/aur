@@ -1,7 +1,7 @@
 # Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=scalafmt
-pkgver=0.6.3
+pkgver=0.6.8
 pkgrel=1
 pkgdesc="code formatter for the Scala programming language"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://olafurpg.github.io/scalafmt/"
 license=('Apache')
 depends=('java-environment' 'bash')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/olafurpg/scalafmt/releases/download/v$pkgver/scalafmt.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/scalameta/scalafmt/releases/download/v$pkgver/scalafmt.tar.gz"
         scalafmt.sh)
 
 package() {
@@ -17,5 +17,5 @@ package() {
   install -Dm755 $srcdir/scalafmt.sh                        $pkgdir/usr/bin/scalafmt
 }
 
-md5sums=('50e4b5e6a70b3facf957b5d821f1be2c'
+md5sums=('5e68ad7ac298acb23fdf489836f32e5f'
          '85c5625e53067977576925c9dfc0c553')
