@@ -5,8 +5,8 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 _upstream="compiz-plugins-main"
-_pkgver=0.8.12
-_micro=.2
+_pkgver=0.8.14
+_micro=""
 
 pkgname=compiz-fusion-plugins-main
 pkgver="${_pkgver}${_micro}"
@@ -38,4 +38,4 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('fd52234b594ba28a14243443d6e77fefa180cbedccafbb059ec2c32803340f66')
+sha256sums=('eca9f0a1a0db7a10d3d382ee99c54d021b00429f07e154241121a8888e3eca56')
