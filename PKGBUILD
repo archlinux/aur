@@ -2,7 +2,7 @@
 # Contributor: François M. <francois5537 @ gmail.com>
 
 pkgname=manager-accounting
-pkgver=17.1.16
+pkgver=17.4.43
 pkgrel=1
 pkgdesc='Manager is free accounting software for small business'
 arch=('i686' 'x86_64')
@@ -14,13 +14,11 @@ install=manager-accounting.install
 options=('!makeflags')
 source=(
   "LICENSE"
-  "fix-path.patch"
   "https://mngr.s3.amazonaws.com/manager-accounting.zip"
   "https://raw.githubusercontent.com/ericsink/SQLitePCL.raw/master/sqlite3/sqlite3.c"
 )
 sha256sums=(
   'bd144763506372341487683b0f28ad627e7e8923ea8ef8569541b55f4b987061'
-  '81e73bbae1a386dc76bd1f8b018868864c802cb242667d18b9d6f005518859f7'
   'SKIP'
   'SKIP'
 )
@@ -46,13 +44,24 @@ prepare() {
 
   # Extract, patch
   tar --strip-components=1 -zxvf "${pkgname}_${_pkgver}.tar.gz"
-  patch -p1 -i fix-path.patch
+
+  sed -i \
+    's|/usr/bin/cli|/usr/bin/mono|g' \
+    opt/manager-accounting/manager-accounting
+
+  sed -i \
+    's|/opt/|/usr/lib/|g' \
+    opt/manager-accounting/manager-accounting
+
+  sed -i \
+    's|/opt/|/usr/lib/|g' \
+    usr/share/applications/manager-accounting.desktop
 
   # Extract libe_sqlite.so by executing ManagerServer.exe
   # on port 1 to fail on purpose.
   # ref: https://forum.manager.io/t/manager-does-not-start-after-recent-update-on-ubuntu/7950/19
-  cd "$srcdir/opt/manager-accounting"
-  mono ManagerServer.exe -port 1 2>&1 > /dev/null
+  #cd "$srcdir/opt/manager-accounting"
+  #mono ManagerServer.exe -port 1 2>&1 > /dev/null
 }
 
 build() {
