@@ -1,0 +1,22 @@
+pkgbase = s4cmd-python3-git
+	pkgdesc = Super S3 command line tool (git) for Python 3
+	pkgver = 66.f5f5ff0
+	pkgrel = 1
+	url = https://github.com/bloomreach/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-dateutil
+	depends = python-boto3
+	optdepends = gnupg: encrypted file storage
+	provides = s4cmd
+	conflicts = s4cmd
+	source = git+https://github.com/bloomreach/.git
+	source = setup.py.patch
+	md5sums = SKIP
+	md5sums = ed8297a6a6b3c727e435ad9385eed02a
+
+pkgname = s4cmd-python3-git
+
