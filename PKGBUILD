@@ -12,7 +12,7 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=yasat
-pkgver=839
+pkgver=848
 pkgrel=1
 pkgdesc="A simple stupid audit tool"
 arch=('any')
@@ -22,7 +22,7 @@ backup=('etc/yasat/yasat.conf')
 url="http://yasat.sourceforge.net/"
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
         'yasat.conf')
-md5sums=('56b1ccb6e64fb437470dee2022ea1a40'
+md5sums=('6afa329039c145abe4dffd0fde2aeac0'
          'f4d5f19153febd51680a3895e769abdf')
 
 package() {
