@@ -51,7 +51,7 @@ _use_current=
 pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _srcname=linux-4.10
-pkgver=4.10.10
+pkgver=4.10.11
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
@@ -80,7 +80,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
          # standard config files for mkinitcpio ramdisk
         'linux.preset'
         # patches from https://github.com/linusw/linux-bfq/commits/bfq-v8
-        '0005-BFQ-update-to-v8r9.patch')
+        '0005-BFQ-update-to-v8r9.patch'
+        '0006-BFQ-update-to-v8r10.patch')
 
 _kernelname=${pkgbase#linux} 
 
@@ -93,7 +94,7 @@ prepare() {
 
     ### Patch source with BFQ
         msg "Patching source with BFQ patches"
-        for p in "${srcdir}"/000{1,2,3,4,5}-*BFQ*.patch; do
+        for p in "${srcdir}"/000{1,2,3,4,5,6}-*BFQ*.patch; do
         msg " $p"
         patch -Np1 -i "$p"
         done
@@ -425,7 +426,7 @@ done
 
 sha512sums=('c3690125a8402df638095bd98a613fcf1a257b81de7611c84711d315cd11e2634ab4636302b3742aedf1e3ba9ce0fea53fe8c7d48e37865d8ee5db3565220d90'
             'SKIP'
-            '264d156d7a3b1f3b3a80a7a9dc9a358b5cd582d8d894c482f3c9eb5af4eca64439720d5b9b141ae57f7845dfab59563497faae8e6fb666aeec86aab6b8df904a'
+            'a3515be12639f12c4433c122615e841eea4a70ae1557eb305f9c175ae2fec16439a34f3a79a4d1976c19b4068bf6ff1a7b75ff600c9b6c467cfa0edb1f24fdab'
             'SKIP'
             '03f4d45c0b3ac20baea9eaa92591e1749499e084cbca104f55a3ec4cfeda0e6c7fe6766b0eea0bb5bb4cf7f2371992e7a6002aaec09a08386fe2431c9cf0a3a8'
             'c4161e2ff79647b8e8212681c0294b6f160c135728f48adfe61b1089d6242f925584afe4d2ebf0ef9cb650ae45c057d5c7119ce0264d3aeda008bb359b2b2582'
@@ -436,7 +437,8 @@ sha512sums=('c3690125a8402df638095bd98a613fcf1a257b81de7611c84711d315cd11e2634ab
             '6afb164bc7a38fea08a49c70690afafb209d1245588e1ecf57998926f5b43fe85d39a1ab1a133900b82bc1d3d97538330bf5c646b62e782653d69b6139d72200'
             'd6faa67f3ef40052152254ae43fee031365d0b1524aa0718b659eb75afc21a3f79ea8d62d66ea311a800109bed545bc8f79e8752319cd378eef2cbd3a09aba22'
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
-            'ee41c3d94f16ad34077a84a1bdb49789e5d7979c75abb46970707929627542f7c78e35ae93833b45030ea03ec4ee52f21e410dad37fa967d02d1aeb72f0b5cd8')
+            'ee41c3d94f16ad34077a84a1bdb49789e5d7979c75abb46970707929627542f7c78e35ae93833b45030ea03ec4ee52f21e410dad37fa967d02d1aeb72f0b5cd8'
+            'c249437e86d40c4ba0d47d9b2b2bc9adf4e118ba94bc3b880ac11c2ce396029ab8b1c78517f2ccd5a403dd54193370034f8c81a239cae4be0b5ff03d91b30cc8')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
