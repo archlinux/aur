@@ -1,11 +1,10 @@
-# Maintainer: bitwave <aur [at] oomlu [dot] de>
-# Contributor: Fabian Ruch <bafain [At] gmail [dOT] com>
+# Maintainer: badcasa <sebastian.stueber [at] t-online [dot] de>
 pkgname=isabelle
-pkgver=2016
+pkgver=2016_1
 pkgrel=1
-pkgdesc="Isabelle is a generic proof assistant. It allows mathematical formulas to be expressed in a formal language and provides tools for proving those formulas in a logical calculus."
+pkgdesc="A generic proof assistant. It allows mathematical formulas to be expressed in a formal language and provides tools for proving those formulas in a logical calculus."
 arch=('i686' 'x86_64')
-url="http://www.cl.cam.ac.uk/research/hvg/Isabelle/"
+url="https://www.cl.cam.ac.uk/research/hvg/Isabelle/"
 license=('custom:BSD')
 groups=('science')
 depends=('perl' 'perl-libwww' 'python2')
@@ -14,13 +13,14 @@ if test "$CARCH" == x86_64; then
                'lib32-gcc-libs: for improved performance of Poly/ML on x86_64 machines')
 fi
 optdepends=('texlive-core: document preparation')
-source=(http://www.cl.cam.ac.uk/research/hvg/Isabelle/dist/Isabelle${pkgver//_/-}_linux.tar.gz
+source=(https://www.cl.cam.ac.uk/research/hvg/Isabelle/dist/Isabelle${pkgver//_/-}_app.tar.gz
         isabelle.desktop)
-md5sums=('d92c888eb61f7bd51917d5a79a0eb8c0'
+        
+md5sums=('7fbfd0af7ac722e3f961951106887f8a'
          'd33d0dd09e9105f4f043bd5e59458481')
-sha256sums=('64f5357f638220a855311a604eaf8fc4bb7e703b7cf3ea997723ace875c6014a'
+sha256sums=('b9ac02fc086c7242a2424839d4daf9d4d24e9360fe3368fe20598758ab7b2cf0'
             '84b61a83692939ca9e08402f1c55a06e4ccac8941664435d20b0ef0ceed9f43a')
-
+        
 build() {
 	cd "$srcdir/Isabelle${pkgver//_/-}"
 	./bin/isabelle build Pure
