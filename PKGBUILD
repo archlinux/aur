@@ -12,14 +12,21 @@ conflicts=('mediaqbot')
 makedepends=('git' 'python-setuptools')
 provides=('mediaqbot')
 url='https://github.com/raffomania/mediaqbot'
-source=("git+https://github.com/raffomania/mediaqbot.git")
-sha256sums=('SKIP')
+source=(
+    "git+https://github.com/raffomania/mediaqbot.git"
+    "git+https://github.com/hatzel/python-mpv.git"
+)
+sha256sums=('SKIP' 'SKIP')
+
+prepare() {
+    cd "${_gitname}"
+
+    git submodule init
+    git config submodule."client/mediaqclient/mpv".url ${srcdir}/mpv
+}
 
 package() {
-  cd "${_gitname}"
-  git submodule update --init --recursive
-
-  cd client
+  cd "${_gitname}/client"
   # Install
   python setup.py install --optimize=1 --root="${pkgdir}"
 
