@@ -10,6 +10,8 @@ pkgbase = indicator-kdeconnect-git
 	depends = libappindicator-gtk3
 	depends = kdeconnect
 	depends = vala
+	provides = indicator-kdeconnect
+	conflicts = indicator-kdeconnect
 	source = git://github.com/bajoja/indicator-kdeconnect.git
 	md5sums = SKIP
 
