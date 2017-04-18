@@ -10,9 +10,9 @@ pkgbase = jdk-demos
 	optdepends = java-environment>=8: Compile and run examples
 	optdepends = gradle: Compile examples
 	options = !strip
-	source_i686 = http://download.oracle.com/otn-pub/java/jdk/8u131-b11-demos/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u131-linux-i586-demos.tar.gz
+	source_i686 = http://download.oracle.com/otn-pub/java/jdk/8u131-b11-demos/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-i586-demos.tar.gz
 	md5sums_i686 = 477d9862374177c810b0b7d73b4f1e53
-	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u131-b11-demos/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u131-linux-x64-demos.tar.gz
+	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u131-b11-demos/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64-demos.tar.gz
 	md5sums_x86_64 = 477d9862374177c810b0b7d73b4f1e53
 
 pkgname = jdk-demos
