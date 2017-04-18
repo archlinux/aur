@@ -12,7 +12,7 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=sgwi
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="A web-interface to the SQLGrey greylister for Postfix."
 arch=('any')
@@ -20,8 +20,8 @@ url="http://www.vanheusden.com/sgwi/"
 license=('GPL')
 depends=('sqlgrey')
 backup=("srv/http/$pkgname/includes/config.inc.php")
-source=("${pkgname}-${pkgver}.tar.gz::http://www.vanheusden.com/sgwi/sqlgreywebinterface-{$pkgver}.tar.gz")
-md5sums=('8bc06c9dd655d91d448d3ece462aae14')
+source=("${pkgname}-${pkgver}.tar.gz::https://www.vanheusden.com/sgwi/sqlgreywebinterface-{$pkgver}.tgz")
+md5sums=('b7ea3cec4a30033e087530264cd7ea19')
 
 _INST_DIR="srv/http/$pkgname"
 _UID=33
