@@ -13,17 +13,17 @@
 
 pkgname=apache-mod_macro
 _pkgname=mod_macro
-pkgver=1.1.11
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="DSO module for Apache that allows the definition and use of macros within apache runtime configuration files. "
-url="http://coelho.net/mod_macro/"
+url="https://www.cri.ensmp.fr/~coelho/mod_macro/"
 arch=('i686' 'x86_64')
 license=('apache')
 depends=('apache')
 makedepends=('apache')
 install="$pkgname.install"
-source=("http://coelho.net/mod_macro/$_pkgname-$pkgver.tar.gz")
-md5sums=('dd372f31d788728cfead785eec420d22')
+source=("https://www.cri.ensmp.fr/~coelho/mod_macro/$_pkgname-$pkgver.tar.gz")
+md5sums=('d57f45c146a47818fb1ad346c2e4ce68')
 
 _MODDIR='usr/lib/httpd/modules'
 _DOCDIR="usr/share/doc/$pkgname"
