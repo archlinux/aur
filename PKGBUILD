@@ -12,7 +12,7 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=dalbum
-pkgver=144_174
+pkgver=144_177
 pkgrel=1
 pkgdesc="A free PHP photo album. It is small, easy to install and highly customizable at the same time. Features include slide shows, image comments, support for video and PDF files and many more."
 arch=('any')
@@ -21,7 +21,7 @@ license=('GPL')
 depends=('imagemagick' 'php>=4.1')
 backup=("etc/webapps/$pkgname/config.php")
 source=("http://www.dalbum.org/${pkgname}${pkgver}.tar.gz")
-md5sums=('f45dcea5c19ede643cf8e89ab2017767')
+md5sums=('a30a45fe606d9dbe15104cbbc409df10')
 
 package() {
   _CONF_DIR="etc/webapps/$pkgname"
