@@ -1,0 +1,33 @@
+pkgbase = veles
+	pkgdesc = Binary data analysis and visualization tool
+	pkgver = 2017.2.0.YAGNI
+	pkgrel = 1
+	url = https://codisec.com/veles
+	arch = x86_64
+	license = APLv2
+	makedepends = git
+	makedepends = python
+	depends = python
+	source = git+https://github.com/codilime/veles.git#tag=2017.2.0.YAGNI
+	source = Veles.desktop
+	source = veles.png
+	sha256sums = SKIP
+	sha256sums = 7173aa5e8ef29125004b15051b8b978e181707294ea6b79784c2c586bc209260
+	sha256sums = ab162fdeb9b99a47a5283b4b8644a1c75e15b74f62f5a78bdcc59580df562489
+
+pkgname = veles
+	depends = cmake
+	depends = qt5-base
+	depends = python
+	depends = python-virtualenv
+	depends = python-veles
+	depends = protobuf
+	provides = veles-bin
+	conflicts = veles-bin
+	conflicts = veles-git
+
+pkgname = python-veles
+	depends = python
+	depends = protobuf
+	conflicts = python-veles-git
+
