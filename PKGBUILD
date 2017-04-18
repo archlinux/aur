@@ -4,8 +4,9 @@
 pkgname=jdk-arm
 _pkgname=jdk
 _major=8
-_minor=121
-_build=b13
+_minor=131
+_build=b11
+_token="d54c1d3a095b4ff2b6607d096fa80163"
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java Development Kit (v8) for ARMv7, ARMv6 and ARMv8 (64-bit)"
@@ -44,17 +45,19 @@ source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.
 "jmc-$_jname.desktop"
 "jvisualvm-$_jname.desktop"
 "policytool-$_jname.desktop")
-source_armv6h=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/e9e7ea248e2c4826b92b3f075a80e441/$_pkgname-$pkgver-linux-arm32-vfp-hflt.tar.gz")
+
+source_armv6h=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_token/$_pkgname-$pkgver-linux-arm32-vfp-hflt.tar.gz")
 source_armv7h=("$source_armv6h")
-source_aarch64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/e9e7ea248e2c4826b92b3f075a80e441/$_pkgname-$pkgver-linux-arm64-vfp-hflt.tar.gz")
+source_aarch64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/$_token/$_pkgname-$pkgver-linux-arm64-vfp-hflt.tar.gz")
+
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          'b4f0da18e03f7a9623cb073b65dde6c1'
          '8f0ebcead2aecad67fbd12ef8ced1503'
          'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
          '98245ddb13914a74f0cc5a028fffddca')
-md5sums_armv6h=('ba6417ff462ed659e44e16e357dc574c')
+md5sums_armv6h=('95d8954b1d53c08daa854153bae3a004')
 md5sums_armv7h=("$md5sums_armv6h")
-md5sums_aarch64=('2da4b8645d2e43dda0ac0458141d4c75')
+md5sums_aarch64=('aaa40b8adb00ee3db82d13f9c3fe27d1')
 
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}

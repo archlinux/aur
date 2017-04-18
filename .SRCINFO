@@ -1,6 +1,6 @@
 pkgbase = jdk-arm
 	pkgdesc = Oracle Java Development Kit (v8) for ARMv7, ARMv6 and ARMv8 (64-bit)
-	pkgver = 8u121
+	pkgver = 8u131
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jdk-arm.install
@@ -47,12 +47,12 @@ pkgbase = jdk-arm
 	md5sums = 8f0ebcead2aecad67fbd12ef8ced1503
 	md5sums = a4a21b064ff9f3c3f3fdb95edf5ac6f3
 	md5sums = 98245ddb13914a74f0cc5a028fffddca
-	source_armv6h = http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-arm32-vfp-hflt.tar.gz
-	md5sums_armv6h = ba6417ff462ed659e44e16e357dc574c
-	source_armv7h = http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-arm32-vfp-hflt.tar.gz
-	md5sums_armv7h = ba6417ff462ed659e44e16e357dc574c
-	source_aarch64 = http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-arm64-vfp-hflt.tar.gz
-	md5sums_aarch64 = 2da4b8645d2e43dda0ac0458141d4c75
+	source_armv6h = http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-arm32-vfp-hflt.tar.gz
+	md5sums_armv6h = 95d8954b1d53c08daa854153bae3a004
+	source_armv7h = http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-arm32-vfp-hflt.tar.gz
+	md5sums_armv7h = 95d8954b1d53c08daa854153bae3a004
+	source_aarch64 = http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-arm64-vfp-hflt.tar.gz
+	md5sums_aarch64 = aaa40b8adb00ee3db82d13f9c3fe27d1
 
 pkgname = jdk-arm
 
