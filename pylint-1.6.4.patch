@@ -1,0 +1,9 @@
+diff -aur conan-pristine/conans/requirements.txt conan-archlinux_pylint_patch/conans/requirements.txt
+--- conan-pristine/conans/requirements.txt	2017-04-18 16:37:14.944424259 +0200
++++ conan-archlinux_pylint_patch/conans/requirements.txt	2017-04-18 16:37:46.277843635 +0200
+@@ -7,4 +7,4 @@
+ six>=1.10.0
+ node-semver==0.1.1
+ distro>=1.0.2, <1.1.0
+-pylint==1.6.5
++pylint==1.6.4
