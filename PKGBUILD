@@ -12,18 +12,19 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=etraxis
-pkgver=3.2.1
+_pkgname=etraxis-obsolete-etraxis
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="web-based bug tracking system written on PHP. Includes fully custom templates, advanced filters, LDAP support, email notifications, subscriptions, reminders, flexible permissions management and graphical project metrics"
 arch=(any)
-url="http://code.google.com/p/etraxis/"
+url="https://www.etraxis.com/"
 license=('GPL')
 depends=('php>=5.1' 'php-gd' 'php-xsl')
 optdepends=('php-pgsql: for postgresql database support' 'php-ldap: for ldap authentication')
 install="$pkgname.install"
-backup=("srv/http/$pkgname/engine/config.php")
-source=("http://$pkgname.googlecode.com/files/$pkgname-$pkgver.zip")
-md5sums=('5a37762870f73d4b4643580071c3bb5e')
+backup=("srv/http/$pkgname/config.php")
+source=("https://github.com/etraxis/etraxis-obsolete/archive/$pkgname-$pkgver.tar.gz")
+md5sums=('09d9949a57a1272f0cf42bacc081f315')
 
 package() {
   _INST_DIR="srv/http/$pkgname"
@@ -31,17 +32,17 @@ package() {
   
   # Install webroot files
 	install -dm755 $pkgdir/$_INST_DIR
-	cp -r $srcdir/$pkgname-$pkgver/src/* $pkgdir/$_INST_DIR
+	cp -r $srcdir/$_pkgname-$pkgver/src/* $pkgdir/$_INST_DIR
 	
   # Install SQL schema files
   install -dm755 $pkgdir/$_SHARE_DIR
-	cp -r $srcdir/$pkgname-$pkgver/tools/sql $pkgdir/$_SHARE_DIR/
+	cp -r $srcdir/$_pkgname-$pkgver/tools/sql $pkgdir/$_SHARE_DIR/
 
   # Fix our configuration file
   sed -i \
     -e "s|/usr/local/apache/htdocs/etraxis|/$_INST_DIR|g" \
     -e "s|/usr/local/etraxis/bins/|/$_INST_DIR/attachments|g" \
-    $pkgdir/$_INST_DIR/engine/config.php
+    $pkgdir/$_INST_DIR/config.php
   install -dm755 $pkgdir/$_INST_DIR/attachments
 	
   # Set correct permissions
