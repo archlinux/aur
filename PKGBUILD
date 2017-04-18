@@ -1,13 +1,13 @@
 # Maintainer: Shivam Mistry <shivam@automaton.uk>
 pkgname=osbuddy
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Launcher for the OldSchool RuneScape toolkit"
 arch=('any')
 url="https://rsbuddy.com/osbuddy"
 license=('custom')
 depends=('java-runtime=8')
-optdepends=()
+optdepends=('xorg-xrandr')
 options=()
 install='osbuddy.install'
 source=(http://cdn.rsbuddy.com/live/f/loader/OSBuddy.jar osbuddy osbuddy.desktop osbuddy.png osbuddy.install LICENSE)
