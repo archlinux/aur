@@ -1,7 +1,7 @@
 # Maintainer: Denis Yantarev <denis dot yantarev at gmail dot com>
 
 pkgname=smstools3
-pkgver=3.1.19
+pkgver=3.1.20
 pkgrel=1
 pkgdesc="SMS gateway which can send and receive messages through GSM modems and mobile phones"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(http://smstools3.kekekasvi.com/packages/$pkgname-$pkgver.tar.gz
 	smsd.tmpfiles
 	smsd.logrotate
 	smsd.service)
-md5sums=('0efd5d758ec0b404330bebf335c5772a'
+md5sums=('2f2c83aabc93b94a6a8f0f1e898635ef'
          'eabdaf793ed2fb9883ea0923b31450d3'
          '24b41505c471d0594174bca4a1555f8f'
          'ebc64ebc17f874fc0b1e6f0b4ce7fc79'
