@@ -29,5 +29,5 @@ prepare() {
 package() {
 	cd "$_gitname"
 
-	sudo cp "=" ${pkgdir}/usr/bin
+	isntall -Dm755 "=" ${pkgdir}/usr/bin
 }
