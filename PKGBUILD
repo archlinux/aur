@@ -2,13 +2,14 @@
 
 pkgname=ambienttalk
 pkgver=2.22
-pkgrel=1
-pkgdesc="AmbientTalk is an experimental object-oriented distributed programming language. The language is primarily targeted at writing programs deployed in mobile ad hoc networks."
+pkgrel=2
+pkgdesc="Interactive shell for AmbientTalk, an experimental object-oriented distributed programming language. The language is primarily targeted at writing programs deployed in mobile ad 
+hoc networks."
 arch=(any)
 url="http://soft.vub.ac.be/amop/"
 license=('MIT')
 depends=(java-runtime)
-source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ambienttalk/at2dist060213.zip ambienttalk.sh)
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ambienttalk/at2dist060213.zip iat.sh)
 noextract=()
 md5sums=('9773c4955f077a09b77b40298bbed3db'
          '2d322f998a04af289fb0f08853619c1e')
@@ -21,8 +22,8 @@ package() {
 
 	# install run script in /usr/bin
 	install -d "$pkgdir"/usr/bin
-	cp "$srcdir"/ambienttalk.sh "$pkgdir"/usr/bin/ambienttalk
-	chmod +x "$pkgdir"/usr/bin/ambienttalk
+	cp "$srcdir"/iat.sh "$pkgdir"/usr/bin/iat
+	chmod +x "$pkgdir"/usr/bin/iat
 
 	# copy bundled atlib to /usr/share/ambienttalk
 	install -d "$pkgdir"/usr/share/ambienttalk
