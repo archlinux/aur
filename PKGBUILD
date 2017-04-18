@@ -4,8 +4,8 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 _upstream="emerald-themes"
-_pkgver=0.8.12
-_micro=".1"
+_pkgver=0.8.14
+_micro=""
 
 pkgname=emerald-themes
 pkgver="${_pkgver}${_micro}"
@@ -32,4 +32,4 @@ package() {
   make DESTDIR="${pkgdir}" install 
 }
 
-sha256sums=('3ea1635e93b4713e1f7878528d08349f88566136350b10e8bc4b7299a13a6ec8')
+sha256sums=('c8a010ac71c99f59d418b31ecaa767d8e65d902fc18461161afe72c75fe17700')
