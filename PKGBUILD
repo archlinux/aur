@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-catalyst-runtime'
-pkgver='5.90104'
+pkgver='5.90114'
 pkgrel='1'
 pkgdesc="The Catalyst Framework Runtime"
 arch=('any')
@@ -12,10 +12,10 @@ depends=('perl-cgi-simple' 'perl-cgi-struct' 'perl-class-c3-adopt-next>=0.07' 'p
 makedepends=('perl-io-stringy' 'perl-json-maybexs')
 checkdepends=('perl-test-fatal')
 url='https://metacpan.org/release/Catalyst-Runtime'
-source=('http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/Catalyst-Runtime-5.90104.tar.gz')
-md5sums=('b482dbff7b6022cf991dfcf1ce929522')
-sha512sums=('8f6b58fa5cd3adb5c4ac49430d49d68e11c39173378043f3651a83ffe72ff2521e0739c28fdeee822fe06297f96ef9d29b65f10ab6cac328776b5bb28fa2013d')
-_distdir="Catalyst-Runtime-5.90104"
+source=('http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/Catalyst-Runtime-5.90114.tar.gz')
+md5sums=('07061e33a35a0c7c2c266688b4be723e')
+sha512sums=('f6b795709aa22f64bcb7f651ad83f84073793d9e699b115070a4cfa62f96e39181a90063bd5829ce8cbef30e7157908697588a5f04b2c7f843e91f26d8afe3b4')
+_distdir="Catalyst-Runtime-5.90114"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
