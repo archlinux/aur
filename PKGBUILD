@@ -2,19 +2,15 @@
 
 pkgname=android-sdk-build-tools-19.1
 pkgver=r19.1
-_ver=19.1
-pkgrel=1
+_ver=19.1.0
+pkgrel=3
 pkgdesc='Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)'
 arch=('i686' 'x86_64')
 url="http://developer.android.com/sdk/index.html"
 license=('custom')
-depends=('gcc-libs' 'zlib')
-optdepends=()
+depends_i686=('gcc-libs' 'zlib')
+depends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 provides=("android-sdk-build-tools=$pkgver")
-
-if [[ $CARCH = x86_64 ]]; then
-  depends=('lib32-gcc-libs' 'lib32-zlib')
-fi
 
 _sdk=android-sdk
 
