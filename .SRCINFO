@@ -1,18 +1,18 @@
 pkgbase = datacrow
 	pkgdesc = Movie, video, book, image, software, and music cataloger/media manager.
-	pkgver = 3.12.5
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = http://datacrow.net/
 	changelog = ChangeLog
 	arch = any
 	license = GPL3
 	depends = java-runtime
-	source = https://downloads.sourceforge.net/datacrow/datacrow_3_12_5_zipped.zip
+	source = https://www.fosshub.com/Data-Crow.html/datacrow_4_2_0_client_zipped.zip
 	source = datacrow.sh
 	source = datacrow.desktop
-	md5sums = b28bff2694f8f2886ffe7413f78772b9
-	md5sums = 04322853e8f380f5d7a7b79a166226d8
-	md5sums = 751bab7bc4aee2d5f5d667f3dba45ef4
+	sha256sums = 832d5e7c2e58bc9ad0e2d3e7f7803b275896891471c5e0bc112ff9d477d161ea
+	sha256sums = 53f6986ae3a68ca8f723248981847214b98677db2082f13fe84e766e6f59ef94
+	sha256sums = 129ded3d5cea72b783bba78e2ef18f95d1cc6eaf287b27761d7717be494c3b40
 
 pkgname = datacrow
 
