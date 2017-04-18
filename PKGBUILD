@@ -7,7 +7,7 @@ url="https://build.opensuse.org/package/show/openSUSE:Factory/mozilla-kde4-integ
 arch=("i686" "x86_64")
 license=('MIT')
 depends=("kio" "knotifications" "kwindowsystem" "ki18n")
-makedepends=("cmake" "automoc4" "extra-cmake-modules")
+makedepends=("cmake" "extra-cmake-modules")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/openSUSE/kmozillahelper/archive/v${pkgver}.tar.gz")
 md5sums=('58816fb988dc01a1b141a1d70ecd70ef')
 
