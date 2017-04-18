@@ -1,9 +1,9 @@
 # Maintainer: Jesús Eduardo <heckyel@openmailbox.org>
 # Contributor: David P. <megver83@parabola.nu>
 
-_commit=0bca12ebd3bce5dc6e2aa61f7f1b552d0f101b1d
+_commit=a421c8dd0c54c3854c7004571d725f4b2d8b32ee
 pkgname=librevideoconverter
-pkgver=0bca12ebd3
+pkgver=a421c8dd0c
 pkgrel=1
 pkgdesc="Simple video converter for WebM (vp8), Ogg Theora, MP4 and others, fork of Miro Video Converter"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('python2>=2.7.0' 'ffmpeg' 'ffmpeg2theora' 'gtk2' 'hicolor-icon-theme' '
 makedepends=('python2-distribute')
 conflicts=(miro-video-converter)
 source=("$pkgname-$pkgver::$url/archive/${_commit}.tar.gz")
-md5sums=('7e5a458d2ef78b45458d82ca96a32d28')
+md5sums=('abfb7127fadc65af2716ccfb040b3366')
 
 package() {
 	cd "$srcdir/$pkgname"
