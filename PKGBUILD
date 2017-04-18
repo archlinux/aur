@@ -3,9 +3,9 @@
 # Contributor: Phillip Fynan <pfynan@gmail.com>
 # Maintainer: Peter Sutton <foxxy@foxdogstudios.com>
 
-_pkgver_year=2016
-_pkgver_month=05
-_pkgver_day=05
+_pkgver_year=2017
+_pkgver_month=02
+_pkgver_day=02
 
 pkgname=abcmidi
 pkgver="${_pkgver_year}${_pkgver_month}${_pkgver_day}"
@@ -16,11 +16,11 @@ license=('GPL')
 depends=()
 makedepends=()
 changelog=ChangeLog
-source=("https://github.com/leesavide/abcmidi/archive/abcmidi-${_pkgver_year}.${_pkgver_month}.${_pkgver_day}.tar.gz")
+source=("https://github.com/leesavide/abcmidi/archive/abcMIDI-${_pkgver_year}.${_pkgver_month}.${_pkgver_day}.tar.gz")
 arch=(i686 x86_64)
-sha256sums=('ad5a42215ba9d247864e19f7fe2ea20906e686279dd7b5659314c52bb2df24e0')
+sha256sums=('cd2b5caa9971ae8ea666cb2be16029a73b9f4463847dd2db2cca202f1f934af2')
 
-_srcdir=abcmidi-abcmidi-${_pkgver_year}.${_pkgver_month}.${_pkgver_day}
+_srcdir=abcmidi-abcMIDI-${_pkgver_year}.${_pkgver_month}.${_pkgver_day}
 
 build() {
     cd $srcdir/$_srcdir
