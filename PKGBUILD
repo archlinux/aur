@@ -3,7 +3,7 @@
 
 _name=chrome-gnome-shell
 pkgname=$_name-git
-pkgver=8.2.r0.ge6dff05
+pkgver=9.r0.g35851c7
 pkgrel=1
 pkgdesc="Native connector for integration with extensions.gnome.org"
 arch=('any')
