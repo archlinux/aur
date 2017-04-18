@@ -21,5 +21,12 @@ Audio playback:
     - jack
     - qt5-multimedia
 
-    EOF
+Virtual camera management:
+
+    - kde-cli-tools (RECOMMENDED)
+    - gksu
+    - gtksu-git
+    - kdesudo
+
+EOF
 }
