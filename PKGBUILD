@@ -13,13 +13,17 @@ source=("git+https://github.com/anbox/anbox.git"
 	'anbox-session-manager.service'
 	'99-anbox.rules'
 	'anbox.conf'
-	'anbox.desktop')
+	'anbox.desktop'
+	'anbox-bridge.network'
+	'anbox-bridge.netdev')
 sha256sums=('SKIP'
             '49aa34a582de04540a01754976db89f2c05d6170f7192fec0ff14e23d14320d2'
             '1f22dbb5a3ca6925bbf62899cd0f0bbaa0b77c879adcdd12ff9d43adfa61b1d8'
             '6faa2e596b6b5dc0d01ae66115e4d206351bde98d1726ef4bd4d4f252a1b4862'
             '3e07dc524a827c1651857cce28a06c1565bc5188101c140ed213bbafedc5abff'
-            '7332d09865be553a259a53819cebddd21f661c7a251d78c2f46acd75c66676b6')
+            '7332d09865be553a259a53819cebddd21f661c7a251d78c2f46acd75c66676b6'
+            '933b6a5d314d3727b1a2ef1adcbb5b30d9e06cba244877a7d0bc1b8ebef9a648'
+            '7577fab18c78de99827afdf9cb12876cc5d4194064554bf740adcdcc200b7f8c')
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
@@ -54,6 +58,8 @@ package_anbox-git() {
 
   install -Dm 644 -t $pkgdir/usr/lib/systemd/system $srcdir/anbox-container-manager.service
   install -Dm 644 -t $pkgdir/usr/lib/systemd/user $srcdir/anbox-session-manager.service
+  install -Dm 644 $srcdir/anbox-bridge.network $pkgdir/usr/lib/systemd/network/80-anbox-bridge.network
+  install -Dm 644 $srcdir/anbox-bridge.netdev $pkgdir/usr/lib/systemd/network/80-anbox-bridge.netdev
   install -Dm 644 -t $pkgdir/usr/lib/udev/rules.d $srcdir/99-anbox.rules
   install -Dm 644 -t $pkgdir/usr/share/applications $srcdir/anbox.desktop
   install -Dm 644 snap/gui/icon.png $pkgdir/usr/share/pixmaps/anbox.png

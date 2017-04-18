@@ -1,0 +1,12 @@
+[Match]
+Name=anboxbr0
+Driver=bridge
+
+[Network]
+Address=0.0.0.0/24
+DHCPServer=yes
+IPMasquerade=yes
+
+[DHCPServer]
+##Manual provide DNS Server
+#DNS=8.8.8.8
