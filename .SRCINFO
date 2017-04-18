@@ -1,0 +1,19 @@
+pkgbase = jiq
+	pkgdesc = jid on jq
+	pkgver = r83.0408177
+	pkgrel = 1
+	url = https://github.com/fiatjaf/jiq
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = jq
+	options = !strip
+	options = !emptydirs
+
+pkgname = jiq
+
