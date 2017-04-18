@@ -2,7 +2,7 @@
 
 pkgname=emacs-evil-leader
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Emacs framework for setting a vim-like prefix key"
 url="https://github.com/cofi/evil-leader"
 arch=('any')
