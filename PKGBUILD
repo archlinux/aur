@@ -2,20 +2,20 @@
 
 pkgname=emacs-expand-region
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Emacs framework for incrementally selecting semantic regions"
 url="https://github.com/magnars/expand-region.el"
 arch=('any')
 license=('GPL3')
 depends=('emacs')
-makedepends=('git' 'cask')
+makedepends=('git')
 provides=('emacs-expand-region')
 source=("https://github.com/magnars/expand-region.el/archive/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/expand-region.el-${pkgver}"
-  cask build
+  emacs -Q -batch -L . -f batch-byte-compile *.el
 }
 
 package() {
