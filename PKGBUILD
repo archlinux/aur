@@ -47,8 +47,8 @@ source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.
         "jmc-$_jname.desktop"
         "jvisualvm-$_jname.desktop"
         "policytool-$_jname.desktop")
-source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/e9e7ea248e2c4826b92b3f075a80e441/$pkgname-$pkgver-linux-i586.tar.gz")
-source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/e9e7ea248e2c4826b92b3f075a80e441/$pkgname-$pkgver-linux-x64.tar.gz")
+source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/d54c1d3a095b4ff2b6607d096fa80163/$pkgname-$pkgver-linux-i586.tar.gz")
+source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/d54c1d3a095b4ff2b6607d096fa80163/$pkgname-$pkgver-linux-x64.tar.gz")
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          'b4f0da18e03f7a9623cb073b65dde6c1'
          '8f0ebcead2aecad67fbd12ef8ced1503'
