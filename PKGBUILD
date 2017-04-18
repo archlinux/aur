@@ -13,6 +13,11 @@ options=('!strip' '!emptydirs')
 _gourl=github.com/fiatjaf/jiq/cmd/jiq
 
 build() {
+  #github.com/fiatjaf/jiq (download)
+  #github.com/nsf/termbox-go (download)
+  #github.com/mattn/go-runewidth (download)
+  #github.com/mattn/go-runewidth
+  #github.com/nsf/termbox-go
   GOPATH="$srcdir" go get -fix -v ${_gourl}
 }
 
