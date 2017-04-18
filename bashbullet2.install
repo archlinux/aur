@@ -1,0 +1,19 @@
+show_message(){
+echo :: to finish install process ::
+echo ""
+cat << EOF
+	mkdir -p "\$HOME/.bashbullet2/"
+	ln -s /usr/share/bashbullet2/lib "\$HOME/.bashbullet2/"
+	ln -s /usr/share/bashbullet2/libbashbullet "\$HOME/.bashbullet2/libbashbullet"
+	cp -a /usr/share/bashbullet2/handler/ "\$HOME/.bashbullet2/"
+	cp /usr/share/bashbullet2/{config.json,handler_config} "\$HOME/.bashbullet2/"
+EOF
+echo ""
+}
+
+post_upgrade() {
+	show_message
+}
+post_install(){
+	show_message
+}
