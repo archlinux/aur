@@ -1,0 +1,14 @@
+pkgbase = blktrace-git
+	pkgdesc = Userspace utilities for tracing Linux block layer I/O - Git version
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://brick.kernel.dk/snaps/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libaio
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/axboe/blktrace.git
+	sha256sums = SKIP
+
+pkgname = blktrace-git
+
