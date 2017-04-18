@@ -1,4 +1,5 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: Zhang Hai <dreaming.in.code.zh@gmail.com>
+# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 # Contributor: Gordin <9ordin@gmail.com>
 
@@ -17,14 +18,14 @@ depends_i686=('java-environment' 'alsa-lib' 'openal' 'libstdc++5' 'libxv' 'sdl'
 install="$pkgname.install"
 optdepends=('android-udev: udev rules for Android devices'
             'android-sdk-platform-tools: adb, aapt, aidl, dexdump and dx')
-source=("https://dl.google.com/android/repository/tools_r${pkgver}-linux.zip"
+source=("https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip"
         'https://source.android.com/source/images/Android_Robot_100.png'
         "$pkgname.desktop"
         "$pkgname.sh"
         "$pkgname.csh"
         "$pkgname.conf"
         'license.html')
-sha1sums=('72df3aa1988c0a9003ccdfd7a13a7b8bd0f47fc1'
+sha1sums=('7eab0ada7ff28487e1b340cc3d866e70bcb4286e'
           'f359ac923ed008dae3a007a513d26cfbaf025626'
           '8f886de363ad91a7f93a0c6ded993e99bef3e1a7'
           '30a6ed281d54f8b7be08663a18c367f79c0d8d47'
@@ -64,5 +65,5 @@ package() {
 }
 
 # getver: developer.android.com/tools/sdk/tools-notes.html
-# see https://dl.google.com/android/repository/repository-12.xml for new versions
+# see https://dl.google.com/android/repository/repository2-1.xml for new versions
 # vim:set ts=2 sw=2 et:
