@@ -1,0 +1,19 @@
+pkgbase = mfterm-git
+	pkgdesc = Terminal for working with Mifare Classic 1-4k tags
+	pkgver = r144.c05f2ee
+	pkgrel = 1
+	url = https://github.com/4ZM/mfterm
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = automake
+	depends = libnfc
+	depends = readline
+	depends = bison
+	depends = openssl
+	depends = flex
+	source = mfterm-git::git+https://github.com/4ZM/mfterm.git
+	md5sums = SKIP
+
+pkgname = mfterm-git
+
