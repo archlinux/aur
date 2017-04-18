@@ -1,11 +1,16 @@
 # Maintainer:  Sapphira Armageddos <shadowkyogre.public@gmail.com>
 # Contributor: martadinata666 <martadinata666@gmail.com>
 
+# Flag for whether to use marco
 _use_marco=0
 
+# Flag for whether to use GTK+3
+# Autoset depending on marco option
+_use_gtk3=0
+
 _upstream="compiz"
-_pkgver=0.8.12
-_micro=.3
+_pkgver=0.8.14
+_micro=""
 
 pkgbase=compiz-core
 pkgname=(compiz-core compiz-gtk)
@@ -34,16 +39,25 @@ _configure_opts=(
 if (("${_use_marco}" == 1));then
   _configure_opts+=("--enable-marco")
   makedepends+=("marco")
-  msg "Marco theme support enabled"
+  _use_gtk3=1
+  msg "Marco theme support enabled with GTK+3"
 elif (("${_use_marco}" == 2));then
   _configure_opts+=("--enable-marco")
-  _configure_opts+=("--with-gtk=3.0")
-  makedepends+=("marco-gtk3")
-  msg "Marco theme support enabled with GTK+3"
+  makedepends+=("marco-gtk2")
+  _use_gtk3=0
+  msg "Marco theme support enabled with GTK+2"
 else
   _configure_opts+=("--disable-marco")
   msg "Marco theme support disabled, rebuild with _use_marco=1 in the PKGBUILD if you want it"
-  msg "Rebuild with _use_marco=2 in the PKGBUILD if you have marco-gtk3"
+  msg "Rebuild with _use_marco=2 in the PKGBUILD if you have marco-gtk2"
+fi
+
+if (("${_use_gtk3}" >= 1)); then
+	_configure_opts+=("--with-gtk=3.0")
+	msg "Using GTK+3 for gtk-window-decorator"
+else
+	_configure_opts+=("--with-gtk=2.0")
+	msg "Using GTK+2 for gtk-window-decorator"
 fi
 
 build()
@@ -87,17 +101,24 @@ package_compiz-core() {
 package_compiz-gtk()
 {
   #separating libmarco-private would be nice, but this is a workaround for now
+  depends+=('compiz-core-git')
+  #separating libmarco-private would be nice, but this is a workaround for now
   if (("${_use_marco}" == 1));then
     depends+=('marco')
   elif (("${_use_marco}" == 2));then
-    depends+=('marco-gtk3')
-  else
-    depends+=('gtk2')
+    depends+=('marco-gtk2')
   fi
+
+  if (( "${_use_gtk3}" >= 1 ));then
+    depends+=('libwnck3')
+  else
+    depends+=('libwnck')
+  fi
+
   pkgdesc+=" (GTK+ window decorator)"
   conflicts=('compiz-gtk-git')
 
-  cd "${srcdir}/${_upstream}-${pkgver}/gtk"
+  cd "${srcdir}/${_upstream}-${pkgver}/gtk-window-decorator"
   make DESTDIR="${pkgdir}" install
 
   cd "${srcdir}/${_upstream}-${pkgver}/images"
@@ -117,4 +138,4 @@ package_compiz-gtk()
   done
 }
 
-sha256sums=('6fc5176e3af5d6f434f26d1b654460aeeb3faf723db37f0957b46c2c23955032')
+sha256sums=('f748b3a3c5a746d509925af72fd0cae6b69f880944ea6c1fa6e2eaf9425459b6')
