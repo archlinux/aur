@@ -1,6 +1,6 @@
 pkgbase = linux-galliumos-braswell
 	pkgver = 4.10.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
