@@ -12,7 +12,7 @@ conflicts=('minecraft-server')
 backup=('etc/minecraft')
 install="${pkgname}.install"
 source=("https://github.com/nathanielc/$pkgname/archive/v${pkgver}.tar.gz")
-md5sums=('7c7eb3576efe0de93c92b7889218bc1b')
+md5sums=('12d323d2c7e171695bb4fd4eb4a16552')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"

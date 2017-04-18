@@ -14,7 +14,7 @@ pkgbase = minecraft-multi-server
 	conflicts = minecraft-server
 	backup = etc/minecraft
 	source = https://github.com/nathanielc/minecraft-multi-server/archive/v0.1.1.tar.gz
-	md5sums = 7c7eb3576efe0de93c92b7889218bc1b
+	md5sums = 12d323d2c7e171695bb4fd4eb4a16552
 
 pkgname = minecraft-multi-server
 
