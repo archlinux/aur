@@ -15,7 +15,6 @@ pkgbase = veles
 pkgname = veles
 	depends = qt5-base
 	depends = python
-	depends = python-virtualenv
 	depends = python-veles
 	depends = protobuf
 	depends = zlib
@@ -24,6 +23,8 @@ pkgname = veles
 
 pkgname = python-veles
 	depends = python
-	depends = protobuf
+	depends = python-pbr
+	depends = python-six
+	depends = python-msgpack
 	conflicts = python-veles-git
 
