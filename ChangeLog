@@ -1,3 +1,10 @@
+2017-04-18 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+
+	* 4.2.0-1 :
+	Major version bump.
+	Lots of changes upstream, causing a number of changes to how the package is
+	packaged.
+
 2014-02-25 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 3.12.5-1 :
