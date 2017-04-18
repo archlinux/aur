@@ -19,7 +19,7 @@ source=("git+https://github.com/anbox/anbox.git"
 sha256sums=('SKIP'
             '49aa34a582de04540a01754976db89f2c05d6170f7192fec0ff14e23d14320d2'
             '1f22dbb5a3ca6925bbf62899cd0f0bbaa0b77c879adcdd12ff9d43adfa61b1d8'
-            '6faa2e596b6b5dc0d01ae66115e4d206351bde98d1726ef4bd4d4f252a1b4862'
+            '210eb93342228168f7bb632c8b93d9bfda6f53f62459a6b74987fa1e17530475'
             '3e07dc524a827c1651857cce28a06c1565bc5188101c140ed213bbafedc5abff'
             '7332d09865be553a259a53819cebddd21f661c7a251d78c2f46acd75c66676b6'
             '933b6a5d314d3727b1a2ef1adcbb5b30d9e06cba244877a7d0bc1b8ebef9a648'
