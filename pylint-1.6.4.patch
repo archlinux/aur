@@ -6,6 +6,6 @@ diff -aur conan-0.22.1-pristine/conans/requirements.txt conan-0.22.1-archlinux_p
  node-semver==0.1.1
  distro>=1.0.2, <1.1.0
 -pylint==1.6.5
-+pylint==1.6.4
++pylint>=1.6.4
  future==0.16.0
  

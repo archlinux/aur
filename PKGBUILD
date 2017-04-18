@@ -2,7 +2,7 @@
 
 pkgname=('conan')
 pkgver=0.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
 url="https://conan.io"
@@ -23,7 +23,7 @@ depends=('python-pyjwt>=1.4.0' 'python-pyjwt<1.5.0'
          'python-future=0.16.0')
 source=("https://github.com/conan-io/conan/archive/${pkgver}.tar.gz" "pylint-1.6.4.patch")
 sha512sums=('cadd12cfcf483d67eb818ddb6d1bc66fe5a58ec5bddd4cd0075f0aa36cd24b5487dffa0eb52cdb49abe4e4240e70c8aaf24d44b0a02f50016e015e08e86d06e7'
-            '8708a94074cfbd7b9f8d28ef842f8a91a81b40c09b72bc4f8adf66b24e043994bbdc4c843734f179428b4c3ebb453d98b26c49f85bcd26b05be7896a37fc3618')
+            '2d4ccf533f3d6efb478cdcecc6b1e320fa1dcfe8328c7f288bfc735c99a5ae5741446a1df69cd8dbb166fd84f801bb473d1f15026ca8773f73f7640475a40aa6')
 
 prepare() {
  cd $pkgname-$pkgver
