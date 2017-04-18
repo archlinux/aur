@@ -1,20 +1,21 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-file-util'
-pkgver='4.131591'
+pkgver='4.161950'
 pkgrel='1'
 pkgdesc="Easy, versatile, portable file handling"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
-makedepends=('perl-test-nowarnings')
-url='http://search.cpan.org/dist/File-Util'
-source=('http://search.cpan.org/CPAN/authors/id/T/TO/TOMMY/File-Util-4.131591.tar.gz')
-md5sums=('375676589ff8c93785cc8c9110fe00a8')
-sha512sums=('61953b4bb375194ad5189169697616c24bf82afb20dd57ef0eb540cfec4eddd32dd522e77bcb47eb9c4117113a61127303f615f6722ac33fccdcbe7a2c44f21c')
-_distdir="File-Util-4.131591"
+depends=('perl-module-build>=0.28' 'perl>=5.8.1')
+makedepends=()
+checkdepends=('perl-test-nowarnings')
+url='https://metacpan.org/release/File-Util'
+source=('http://search.cpan.org/CPAN/authors/id/T/TO/TOMMY/File-Util-4.161950.tar.gz')
+md5sums=('5706487ecf0daae885f709914915e832')
+sha512sums=('1678d0075b2ebcb014a101cfec39e462ab4c4380db48016adb0d4d65a532dc215ecead10fe440df8a00cee9ec882a9e4df25d28228fc30f66918492ef64344de')
+_distdir="File-Util-4.161950"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
