@@ -4,14 +4,14 @@ pkgname=php-wxwidgets-git
 _gitname=wxphp
 pkgver=v3.0.2.0.r208.g0560d4f
 _pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP bindings to the cross-platform wxWidgets GUI Toolkit library."
 arch=('i686' 'x86_64')
 url="http://wxphp.org"
 install=php-wxwidgets-git.install
 license=('PHP')
 depends=('gtk2' 'libgl' 'libxxf86vm' 'libsm' 'sdl' 'sdl_sound' 'gstreamer' 'php56' 'webkitgtk2')
-makedepends=('mesa' 'glu' 'libxt' 'gstreamer' 'sdl' 'sdl_sound' 'php56' 'webkitgtk2')
+makedepends=('mesa' 'glu' 'libxt' 'gstreamer' 'sdl' 'sdl_sound' 'php56' 'webkitgtk2' 'gstreamer0.10-base-plugins')
 source=(
     "http://downloads.sourceforge.net/wxwindows/wxWidgets-${_pkgver}.tar.bz2"
     "git://github.com/wxphp/${_gitname}.git"
