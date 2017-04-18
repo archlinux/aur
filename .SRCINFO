@@ -1,7 +1,7 @@
 pkgbase = amule-dlp-git
 	pkgdesc = An eMule-like client for ed2k p2p network with DLP patch
 	pkgver = 2.3.2.r10433.22f7128a0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/persmule/amule-dlp
 	install = amule.install
 	arch = i686
