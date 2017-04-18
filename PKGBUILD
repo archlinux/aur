@@ -1,7 +1,7 @@
 # Maintainer: Phillip Smith <pkgbuild@phs.id.au>
 
 pkgname=perl-iptables-rule
-pkgver=0.01
+pkgver=0.03
 pkgrel=1
 pkgdesc="Perl extension for holding iptables rule information in objects"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/P/PH/PHILLIPS/IPTables-Rule-$pkgver.tar.gz")
-md5sums=('5105e0d0bd1e360a9b1351f55f1aee85')
+md5sums=('0d5bcfa3a9de84d50d909e779750dbd1')
 
 build() {
   cd "$srcdir"/IPTables-Rule-$pkgver
