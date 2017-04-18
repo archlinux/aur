@@ -1,20 +1,21 @@
-# Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-datetime-format-natural'
-pkgver='1.02'
+pkgver='1.04'
 pkgrel='1'
-pkgdesc="Create machine readable date/time with natural parsing logic"
+pkgdesc="Parse informal natural language date/time strings"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-boolean' 'perl-clone' 'perl-datetime' 'perl-datetime-timezone' 'perl-list-moreutils' 'perl-module-util' 'perl-params-validate')
-makedepends=('perl-test-mocktime')
-url='http://search.cpan.org/dist/DateTime-Format-Natural'
-source=('http://search.cpan.org/CPAN/authors/id/S/SC/SCHUBIGER/DateTime-Format-Natural-1.02.tar.gz')
-md5sums=('258203626de566250ef245b2b680cacc')
-sha512sums=('e291fb862499e3b823bb5ac216413ee8d316bf86d731c94d7204146f14ecb21d474d78bf90d584858e95b52b7f49fa0603da30cb59016ef65678f89f78353130')
-_distdir="DateTime-Format-Natural-1.02"
+depends=('perl-clone' 'perl-datetime' 'perl-datetime-timezone' 'perl-list-moreutils' 'perl-module-util' 'perl-params-validate' 'perl-boolean')
+makedepends=()
+checkdepends=('perl-test-mocktime')
+url='https://metacpan.org/release/DateTime-Format-Natural'
+source=('http://search.cpan.org/CPAN/authors/id/S/SC/SCHUBIGER/DateTime-Format-Natural-1.04.tar.gz')
+md5sums=('62e7a7ff35cf5f9bcfd993d1aa6984fe')
+sha512sums=('4d48ec2180f56333bc50dfe75609e09574bec502bae38a858c82467b6030dcedaec14f94fc6da182d159c1070ebe734f5e3de9d7ad0f82fe99fce885744ea213')
+_distdir="DateTime-Format-Natural-1.04"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,6 +40,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
+
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
