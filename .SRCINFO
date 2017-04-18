@@ -1,0 +1,16 @@
+pkgbase = selinux-alpm-hook
+	pkgdesc = SELinux ALPM hook
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/archlinuxhardened/selinux
+	arch = any
+	groups = selinux
+	license = GPL
+	depends = policycoreutils
+	source = relabel-selinux.hook
+	source = selinux-alpm-hook
+	sha256sums = 4df844a89a50fe1caebe0cb92fc925b3dedf7a1a8258eef53f0dd328c1cc089e
+	sha256sums = 983695a355aeec32bd4dc16a4586f560d730e269cef3fe9aaede82ea0245862b
+
+pkgname = selinux-alpm-hook
+

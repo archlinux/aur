@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = File
+Target = *
+
+[Action]
+Description = SELinux: relabel installed files
+Depends = policycoreutils
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/selinux-alpm-hook
+NeedsTargets

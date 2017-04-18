@@ -1,0 +1,85 @@
+#!/bin/bash
+# SELinux ALPM hook
+# Relabel installed files after an install or an update
+
+# Define a function to print an error mesage and exit
+die() {
+    echo >&2 "$@"
+    exit 1
+}
+
+# Verify that the hook is running with / as current working directory
+if [ "$(pwd)" != '/' ]; then
+    die 'Hook is being executed outside of root directory. Aborting.'
+fi
+
+# Do not do anything if SELinux is disabled
+if sestatus | grep '^SELinux status:\s*disabled' > /dev/null; then
+    exit 0
+fi
+
+# Read package files from stdin, as restorecon may error out on any non-existing file
+echo 'Relabeling package files...'
+while read -r FILE; do
+    if [ -e "$FILE" ] || [ -L "$FILE" ] ; then
+        /usr/bin/restorecon -F "$FILE" || die "Error while relabeling $FILE"
+    else
+        # Only show a warning when a file does not exist as this is not fatal
+        echo "Ugh, an installed file does not exist: $FILE"
+    fi
+done
+
+# The install hooks of packages create files which got labelled with the wrong SELinux user
+# (e.g. sysadm_u instead of system_u). Relabel all these files too.
+# Check the order of this list with: sed -n '/^GEN_DIRS=/,/^)/{/^ /p}' |LANG=C sort -c
+echo 'Relabeling generated directories...'
+GEN_DIRS=(
+    '/boot/' # linux:99-linux.hook
+    '/etc/ca-certificates/extracted/' # ca-certificates-utils:update-ca-trust.hook
+    '/etc/gconf/' # gconf:gconf-install.hook
+    '/etc/ld.so.cache' # glibc install: ldconfig -r .
+    '/etc/pacman.d/gnupg/' # archlinux-keyring install: pacman-key --populate archlinux
+    '/etc/ssl/certs/' # ca-certificates-utils:update-ca-trust.hook
+    '/etc/texmf/ls-R' # texlive-bin install: mktexlsr
+    '/etc/udev/hwdb.bin' # systemd:udev-hwdb.hook
+    '/etc/unbound/trusted-key.key' # unbound:unbound-key.hook
+    '/usr/lib/gdk-pixbuf-*/*/loaders.cache' # gdk-pixbuf2:gdk-pixbuf-query-loaders.hook
+    '/usr/lib/ghc-*/package.conf.d/' # ghc:ghc-register.hook, ghc:ghc-unregister.hook
+    '/usr/lib/gio/modules/' # glib2:gio-querymodules.hook
+    '/usr/lib/graphviz/' # graphviz install: dot -c
+    '/usr/lib/gtk-2.0/' # gtk2:gtk-query-immodules-2.0.hook
+    '/usr/lib/gtk-3.0/' # gtk3:gtk-query-immodules-3.0.hook
+    '/usr/lib/locale/locale-archive' # glibc install: locale-gen
+    '/usr/lib/modules/' # dkms:70-dkms-install.hook
+    '/usr/lib/vlc/plugins/plugins.dat' # vlc:update-vlc-plugin-cache.hook
+    '/usr/lib32/gdk-pixbuf-*/*/loaders.cache' # lib32-gdk-pixbuf2 install: gdk-pixbuf-query-loaders-32 --update-cache
+    '/usr/lib32/gio/modules/' # lib32-glib2:gio-querymodules-32.hook
+    '/usr/lib32/gtk-3.0/' # lib32-gtk3:gtk-query-immodules-3.0-32.hook
+    '/usr/share/.mono/certs' # mono install: cert-sync /etc/ssl/certs/ca-certificates.crt
+    '/usr/share/applications/mimeinfo.cache' # desktop-file-utils:update-desktop-database.hook
+    '/usr/share/doc/ghc/html/libraries/' # ghc:ghc-rebuild-doc-index.hook
+    '/usr/share/fonts/' # xorg-mkfontdir:xorg-mkfontdir.hook
+    '/usr/share/glib-2.0/schemas/' # glib2:glib-compile-schemes.hook
+    '/usr/share/icons/' # gtk-update-icon-cache:gtk-update-icon-cache.hook
+    '/usr/share/info/dir' # texinfo:texinfo-install.hook
+    '/usr/share/mime/' # shared-mime-info:update-mime-database.hook
+    '/usr/share/texmf*/ls-R' # texlive-bin:mktexlsr.hook
+    '/usr/share/vim/vimfiles/doc/tags' # vim-runtime:vimdoc.hook
+    '/var/cache/fontconfig/' # fontconfig:fontconfig.hook
+    '/var/cache/ldconfig/' # glibc install: ldconfig -r .
+    '/var/cache/man/' # man-db timer
+    '/var/cache/pacman/' # pacman
+    '/var/lib/dkms/' # dkms:70-dkms-install.hook
+    '/var/lib/pacman/' # pacman
+    '/var/lib/systemd/catalog/database' # systemd install: journalctl --update-catalog
+    '/var/lib/texmf/' # texlive-bin:mktexlsr.hook
+)
+
+# Do NOT put quotes around the array, so that wildcards get expanded
+# shellcheck disable=SC2068
+for DIR in ${GEN_DIRS[@]}; do
+    # Only relabel directories which exist
+    if [ -e "$DIR" ]; then
+        /usr/bin/restorecon -RF "$DIR" || die "Error while relabeling generated directories"
+    fi
+done
