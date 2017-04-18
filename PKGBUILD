@@ -1,7 +1,7 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=libclc
-pkgver=0.2.0+334+520743b
+pkgver=0.2.0+344+17648cd
 pkgrel=1
 pkgdesc="Library requirements of the OpenCL C programming language"
 arch=('any')
@@ -9,7 +9,7 @@ url="http://libclc.llvm.org/"
 license=('MIT')
 makedepends=('clang' 'llvm' 'python2' 'git')
 options=('staticlibs')
-source=('git+http://llvm.org/git/libclc#commit=520743b')
+source=('git+http://llvm.org/git/libclc.git#commit=17648cd')
 md5sums=(SKIP)
 
 pkgver() {
