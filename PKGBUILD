@@ -3,19 +3,19 @@
 # Contributor: Vladimir Koshelenko <koshelenko@rndavia.ru>
 
 pkgname=start-stop-daemon
-pkgver=1.17.27
+pkgver=1.18.23
 pkgrel=1
 pkgdesc='Start and stop system daemon programs'
 arch=('i686' 'x86_64')
 license=('GPL2')
-url='http://packages.debian.org/source/stable/dpkg'
+url='https://packages.debian.org/source/sid/dpkg'
 depends=('glibc')
 source=("http://http.debian.net/debian/pool/main/d/dpkg/dpkg_$pkgver.tar.xz")
-md5sums=('6e2d761a3c4a9a9e1856337557ec1f9e')
+md5sums=('2195338c1792b0678575309a099d2da8')
 
 build() {
   cd dpkg-$pkgver
-  ./configure --disable-dselect --disable-update-alternatives --disable-install-info
+  ./configure --disable-dselect --disable-update-alternatives
   (cd lib && make)
   cd utils && make
 }
@@ -23,7 +23,7 @@ build() {
 package() {
   cd dpkg-$pkgver
   install -D -m 755 utils/start-stop-daemon "$pkgdir/usr/bin/start-stop-daemon"
-  install -D -m 644 man/start-stop-daemon.8 "$pkgdir/usr/share/man/man8/start-stop-daemon.8"
+  install -D -m 644 man/start-stop-daemon.man "$pkgdir/usr/share/man/man8/start-stop-daemon.8"
 }
 
 # vim:set ts=2 sw=2 et:
