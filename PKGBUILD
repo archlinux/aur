@@ -2,7 +2,7 @@
 # Important: the versions of the packages linux and linux-header must match
 
 pkgname=riffa-git
-pkgver=2.2.2.git20161214
+pkgver=2.2.2.git20170213
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='RIFFA: A Reusable Integration Framework For FPGA Accelerators'
@@ -52,7 +52,7 @@ build() {
 package() {
 	# Note: Can't use the riffa provided install commands because all is hardcoded for Red Hat / Debian
 
-	_extramodules=extramodules-`uname -r | sed -e 's/\([[:digit:]]*\).\([[:digit:]]\).*/\1.\2/g'`-ARCH
+	_extramodules=extramodules-`uname -r | sed -e 's/\([[:digit:]]*\)\.\([[:digit:]]*\)\..*/\1.\2/g'`-ARCH
 	sed --follow-symlinks -i -e 's/^\([[:blank:]]*EXTRAMODULES=\).*$/\1'"$_extramodules"'/g' "${srcdir}/riffa.install"
 
 	install -Dm0755 "${srcdir}/99-riffa.rules" "${pkgdir}/etc/udev/rules.d/99-riffa.rules"
