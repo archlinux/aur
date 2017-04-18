@@ -14,11 +14,11 @@ conflicts=('nomachine nxmanager nxwebplayer nxserver nxnode nxclient')
 install=nm-ent-client.install
 
 if [ "${CARCH}" = "x86_64" ]; then
-  sha256sums=('6a6c6ae7638184f770ef9d918b5533dde92d6db54fc5a7f60c3d547e0e88a712')
+  sha256sums=('2af65229a8667289c3d097c5fba941175424d5350f79ff156b912ecf05362d5a')
   _carch=_x86_64
   source=("http://download.nomachine.com/download/5.2/Linux/${pkgname}_${pkgver}_${x64_rel}${_carch}.tar.gz")
 elif [ "${CARCH}" = "i686" ]; then
-  sha256sums=('443e69f29479fc0cf4d2496635de63d9f7c336f11fd6747170ac1e8042c97086')
+  sha256sums=('22e84483609327b347339a142625f537ce4d4e5afc7012c6900399762fc86623')
   _carch=_i686
   source=("http://download.nomachine.com/download/5.2/Linux/${pkgname}_${pkgver}_${i386_rel}${_carch}.tar.gz")
 fi
