@@ -15,15 +15,15 @@ depends_x86_64=('java-environment' 'lib32-alsa-lib' 'lib32-openal'
   'lib32-zlib' 'lib32-fontconfig' 'lib32-libpulse' 'swt')
 depends_i686=('java-environment' 'alsa-lib' 'openal' 'libstdc++5' 'libxv' 'sdl'
               'ncurses' 'swt' 'zlib')
-install="$pkgname.install"
+install="${pkgname}.install"
 optdepends=('android-udev: udev rules for Android devices'
             'android-sdk-platform-tools: adb, aapt, aidl, dexdump and dx')
 source=("https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip"
         'https://source.android.com/source/images/Android_Robot_100.png'
-        "$pkgname.desktop"
-        "$pkgname.sh"
-        "$pkgname.csh"
-        "$pkgname.conf"
+        "${pkgname}.desktop"
+        "${pkgname}.sh"
+        "${pkgname}.csh"
+        "${pkgname}.conf"
         'license.html')
 sha1sums=('7eab0ada7ff28487e1b340cc3d866e70bcb4286e'
           'f359ac923ed008dae3a007a513d26cfbaf025626'
@@ -34,18 +34,19 @@ sha1sums=('7eab0ada7ff28487e1b340cc3d866e70bcb4286e'
           'bfb91be7e0b602d765b7a1fcaf0ce1b7e1a93faa')
 
 package() {
-  install -Dm755 "$pkgname.sh" "$pkgdir/etc/profile.d/$pkgname.sh"
-  install -Dm755 "$pkgname.csh" "$pkgdir/etc/profile.d/$pkgname.csh"
-  install -Dm644 "$pkgname.conf" "$pkgdir/etc/ld.so.conf.d/$pkgname.conf"
-  install -Dm644 Android_Robot_100.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  install -Dm644 "$pkgname.desktop" \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 license.html \
-    "$pkgdir/usr/share/licenses/$pkgname/license.html"
-  install -d "$pkgdir/opt/$pkgname/platforms"
-  install -d "$pkgdir/opt/$pkgname/add-ons"
 
-  cp -a tools "$pkgdir/opt/$pkgname"
+  install -Dm755 "${pkgname}.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"
+  install -Dm755 "${pkgname}.csh" "${pkgdir}/etc/profile.d/${pkgname}.csh"
+  install -Dm644 "${pkgname}.conf" "${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf"
+  install -Dm644 Android_Robot_100.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 "${pkgname}.desktop" \
+    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 license.html \
+    "${pkgdir}/usr/share/licenses/${pkgname}/license.html"
+  install -d "${pkgdir}/opt/${pkgname}/platforms"
+  install -d "${pkgdir}/opt/${pkgname}/add-ons"
+
+  cp -a tools "${pkgdir}/opt/${pkgname}"
 
   if [[ $CARCH = i686 ]]; then
     rm -rf \
@@ -55,15 +56,13 @@ package() {
   fi
 
   # Fix broken permissions
-  chmod -R o=g "$pkgdir/opt/$pkgname"
-  find "$pkgdir/opt/$pkgname" -perm 744 -exec chmod 755 {} +
+  chmod -R o=g "${pkgdir}/opt/${pkgname}"
+  find "${pkgdir}/opt/${pkgname}" -perm 744 -exec chmod 755 {} +
 
   # Remove libstd* from the tools directory
-  for kw in libstd; do
-    find "$pkgdir/opt/$pkgname/tools" -name "$kw*" -type f -delete
-  done
+  find "${pkgdir}/opt/${pkgname}/tools" -name "libstd*" -type f -delete
 }
 
-# getver: developer.android.com/tools/sdk/tools-notes.html
+# getver: https://developer.android.com/studio/releases/sdk-tools.html
 # see https://dl.google.com/android/repository/repository2-1.xml for new versions
 # vim:set ts=2 sw=2 et:
