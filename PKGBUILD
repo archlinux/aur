@@ -3,6 +3,7 @@
 _projname=python-pam
 _user=FirefighterBlu3
 pkgname=${_projname}-git
+provides=${_projname}
 pkgver=r31.583cfe7
 pkgrel=1
 pkgdesc='Python pam module supporting py3 (and py2)'
