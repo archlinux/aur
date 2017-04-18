@@ -2,7 +2,7 @@
 # Contributor: Br. Elijah Schwab (github - eschwab)
 pkgbase=gregorio-git
 pkgname=$pkgbase
-pkgver=4.2.0_rc2.r3900.f9b4ad0
+pkgver=5.0.1.r4220.7b433477
 pkgrel=1
 pkgdesc="Command-line tool to typeset Gregorian chant"
 url=http://gregorio-project.github.io
@@ -36,17 +36,17 @@ build() {
   make -j || return 1
   msg "Building fonts..."
   cd "$srcdir/$pkgbase/fonts/"
-  make -j fonts || return 1
-  msg "Building docs..."
-  cd "$srcdir/$pkgbase/doc"
-  make -j pdf || return 1
+  make -j really-all-fonts || return 1
 }
 
 package() {
   cd "$srcdir/$pkgbase/"
   msg "Installing gregorio..."
   make -j DESTDIR="$pkgdir/" install || return 1
-  msg "Installing fonts and TeX files..."
+  msg "Installing TeX files..."
   cd "$srcdir/$pkgbase/"
-  ./install-gtex.sh dir:$pkgdir/usr/share/texmf || return 1
+  SKIP=docs ./install-gtex.sh dir:$pkgdir/usr/share/texmf || return 1
+  msg "Installing fonts..."
+  cd "$srcdir/$pkgbase/fonts"
+  texlua install_supp_fonts.lua $pkgdir/usr/share/texmf || return 1
 }
