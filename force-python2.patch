@@ -1,19 +1,19 @@
-diff --git a/bin/buckd b/bin/buckd
-index 14a6c2e..0f4441f 100755
---- a/bin/buckd
-+++ b/bin/buckd
-@@ -9,4 +9,5 @@ while [ -h "$BUCK_PATH" ]; do
- done
- BUCK_DIR=$(dirname "$BUCK_PATH")
+diff --git i/bin/buckd w/bin/buckd
+index dc13ec0cc..d5604f6b1 100755
+--- i/bin/buckd
++++ w/bin/buckd
+@@ -18,4 +18,5 @@ function abs_script_dir_path {
+ 
+ BUCK_DIR=$(abs_script_dir_path "$0")
  
 -PYTHONPATH="$BUCK_DIR"/../third-party/nailgun exec python "$BUCK_DIR"/../programs/buckd.py "$@"
 +PYTHON=$(command -v python2 python | head -1)
 +PYTHONPATH="$BUCK_DIR"/../third-party/nailgun exec $PYTHON "$BUCK_DIR"/../programs/buckd.py "$@"
-diff --git a/build.xml b/build.xml
-index 247747a..657b54f 100644
---- a/build.xml
-+++ b/build.xml
-@@ -207,7 +207,7 @@
+diff --git i/build.xml w/build.xml
+index e58a9014c..fd5603d9d 100644
+--- i/build.xml
++++ w/build.xml
+@@ -209,7 +209,7 @@
    </target>
  
    <target name="python-get-prefix">
@@ -22,8 +22,8 @@ index 247747a..657b54f 100644
        <arg value="-c" />
        <arg value="import distutils.sysconfig; print(distutils.sysconfig.PREFIX)" />
      </exec>
-@@ -679,7 +679,7 @@
-   <target name="py-test" description="runs the Python tests" depends="buck-py-test, class-loader-py-test, log-rotation-py-test, pathlib-py-test, zip-munger-py-test, buck-tool-py-test, scandir-py-test" />
+@@ -681,7 +681,7 @@
+   <target name="py-test" description="runs the Python tests" depends="buck-py-test, class-loader-py-test, log-rotation-py-test, pathlib-py-test, zip-munger-py-test, buck-tool-py-test" />
  
    <target name="buck-py-test" description="tests the BUCK parser">
 -    <exec executable="python" failonerror="true" dir="${basedir}/src/com/facebook/buck/json">
@@ -31,7 +31,7 @@ index 247747a..657b54f 100644
        <!-- The py folder is actually a python package, so use module import style here. -->
        <env key="PYTHONPATH" path="${buck.pythonpath}" />
        <arg value="-m" />
-@@ -690,21 +690,21 @@
+@@ -693,21 +693,21 @@
    </target>
  
    <target name="class-loader-py-test" description="tests BUCK's class loader setup">
@@ -56,16 +56,7 @@ index 247747a..657b54f 100644
        <!-- Needed on Python 2.6. -->
        <env key="PYTHONPATH" path="${unittest2.dir}" />
        <arg value="test_pathlib.py" />
-@@ -712,7 +712,7 @@
-   </target>
- 
-   <target name="scandir-py-test" description="tests scandir.py">
--    <exec executable="python" failonerror="true" dir="${scandir.dir}/test">
-+    <exec executable="python2" failonerror="true" dir="${scandir.dir}/test">
-       <!-- Needed on Python 2.6. -->
-       <env key="PYTHONPATH" path="${unittest2.dir}" />
-       <arg value="run_tests.py" />
-@@ -720,14 +720,14 @@
+@@ -715,14 +715,14 @@
    </target>
  
    <target name="zip-munger-py-test" description="tests munger.py">
@@ -82,7 +73,7 @@ index 247747a..657b54f 100644
        <env key="PYTHONPATH" path="${buck.pythonpath}" />
        <arg value="programs/test_buck_tool.py" />
      </exec>
-@@ -853,7 +853,7 @@
+@@ -848,7 +848,7 @@
    </target>
  
    <target name="missing-test-files-check">
@@ -91,120 +82,150 @@ index 247747a..657b54f 100644
        <arg line="verify-test-files.py" />
      </exec>
    </target>
-diff --git a/docs/presentations/droidcon-nyc-2014/images/create_images.py b/docs/presentations/droidcon-nyc-2014/images/create_images.py
-index cd6f6b9..27e02c5 100755
---- a/docs/presentations/droidcon-nyc-2014/images/create_images.py
-+++ b/docs/presentations/droidcon-nyc-2014/images/create_images.py
+diff --git i/docs/presentations/droidcon-nyc-2014/images/create_images.py w/docs/presentations/droidcon-nyc-2014/images/create_images.py
+index cd6f6b985..4bee79074 100755
+--- i/docs/presentations/droidcon-nyc-2014/images/create_images.py
++++ w/docs/presentations/droidcon-nyc-2014/images/create_images.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
-+#!/usr/bin/env python2
++#!/usr/bin/env python22
  """
  This exports a bunch of images from the base-dependency-diagram.graffle file
  using py-appscript:
-diff --git a/docs/soy2html.py b/docs/soy2html.py
-index ea55ed3..9bc7d31 100644
---- a/docs/soy2html.py
-+++ b/docs/soy2html.py
+diff --git i/docs/soy2html.py w/docs/soy2html.py
+index ea55ed362..9bc7d3108 100644
+--- i/docs/soy2html.py
++++ w/docs/soy2html.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #
  # This script is designed to be invoked by soy2html.sh.
  # Usage:
-diff --git a/programs/buck.py b/programs/buck.py
-index 33be17b..d1b8cea 100755
---- a/programs/buck.py
-+++ b/programs/buck.py
+diff --git i/docs/soy_syntax_check.py w/docs/soy_syntax_check.py
+index 0aca44467..74aab05c2 100755
+--- i/docs/soy_syntax_check.py
++++ w/docs/soy_syntax_check.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
- from __future__ import print_function
- import os
- import signal
-diff --git a/programs/buckd.py b/programs/buckd.py
-index 8ef3d06..3458bbe 100755
---- a/programs/buckd.py
-+++ b/programs/buckd.py
+ #
+ # This script runs the plovr build to make sure none of the soy files
+ # have syntax errors.
+diff --git i/programs/buck.py w/programs/buck.py
+index 4d1806774..f96581e41 100755
+--- i/programs/buck.py
++++ w/programs/buck.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  from __future__ import print_function
  import os
  import sys
-diff --git a/programs/timing.py b/programs/timing.py
-index 60c1044..5def8ac 100644
---- a/programs/timing.py
-+++ b/programs/timing.py
+diff --git i/programs/buckd.py w/programs/buckd.py
+index 8ef3d0655..3458bbe61 100755
+--- i/programs/buckd.py
++++ w/programs/buckd.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ from __future__ import print_function
+ import os
+ import sys
+diff --git i/programs/timing.py w/programs/timing.py
+index 60c1044ce..5def8acb4 100644
+--- i/programs/timing.py
++++ w/programs/timing.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  
  import ctypes
  import platform
-diff --git a/programs/tracing.py b/programs/tracing.py
-index 6027013..02adbda 100644
---- a/programs/tracing.py
-+++ b/programs/tracing.py
+diff --git i/programs/tracing.py w/programs/tracing.py
+index 60270135d..02adbdab2 100644
+--- i/programs/tracing.py
++++ w/programs/tracing.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  
  import errno
  import glob
-diff --git a/scripts/assert_code_coverage.py b/scripts/assert_code_coverage.py
-index 8f6a772..3d68ab7 100644
---- a/scripts/assert_code_coverage.py
-+++ b/scripts/assert_code_coverage.py
+diff --git i/scripts/artificialproject/__main__.py w/scripts/artificialproject/__main__.py
+index ffbac6ffa..f8a7fcb52 100755
+--- i/scripts/artificialproject/__main__.py
++++ w/scripts/artificialproject/__main__.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python23
+ 
+ import argparse
+ import collections
+diff --git i/scripts/assert_code_coverage.py w/scripts/assert_code_coverage.py
+index 8f6a77234..3d68ab70f 100644
+--- i/scripts/assert_code_coverage.py
++++ w/scripts/assert_code_coverage.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  
  import xml.etree.ElementTree as ElementTree
  import os
-diff --git a/scripts/autofix_lint.py b/scripts/autofix_lint.py
-index e7d5a62..ea127e3 100755
---- a/scripts/autofix_lint.py
-+++ b/scripts/autofix_lint.py
+diff --git i/scripts/autofix_lint.py w/scripts/autofix_lint.py
+index e7d5a62e8..ea127e38e 100755
+--- i/scripts/autofix_lint.py
++++ w/scripts/autofix_lint.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  
  import argparse
  import re
-diff --git a/scripts/intellij/generate_grammar_kit.py b/scripts/intellij/generate_grammar_kit.py
-index afb908a..b49607b 100644
---- a/scripts/intellij/generate_grammar_kit.py
-+++ b/scripts/intellij/generate_grammar_kit.py
+diff --git i/scripts/intellij/generate_grammar_kit.py w/scripts/intellij/generate_grammar_kit.py
+index afb908a0d..b49607bc8 100644
+--- i/scripts/intellij/generate_grammar_kit.py
++++ w/scripts/intellij/generate_grammar_kit.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  
  import subprocess
  import os
-diff --git a/scripts/perf_test_hg.py b/scripts/perf_test_hg.py
-index e7c8427..9c1502f 100755
---- a/scripts/perf_test_hg.py
-+++ b/scripts/perf_test_hg.py
+diff --git i/scripts/perf_test_hg.py w/scripts/perf_test_hg.py
+index 6296f0914..7ae686dfa 100755
+--- i/scripts/perf_test_hg.py
++++ w/scripts/perf_test_hg.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  """Performance test to make sure rule keys are unaffected by absolute paths.
  
  The general algorithm is:
-diff --git a/scripts/verify-javadoc.py b/scripts/verify-javadoc.py
-index 60cbbc2..ff74c3b 100755
---- a/scripts/verify-javadoc.py
-+++ b/scripts/verify-javadoc.py
+diff --git i/scripts/verify-javadoc.py w/scripts/verify-javadoc.py
+index 60cbbc26b..ff74c3bb8 100755
+--- i/scripts/verify-javadoc.py
++++ w/scripts/verify-javadoc.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #
  # Examines the output from running Javadoc via Ant and checks to see if any
  # warnings were emitted. If so, fail the build unless the warning is in the
-diff --git a/src/com/facebook/buck/apple/project_generator/build-with-buck.st b/src/com/facebook/buck/apple/project_generator/build-with-buck.st
-index f596c6d..2ba6c7c 100644
---- a/src/com/facebook/buck/apple/project_generator/build-with-buck.st
-+++ b/src/com/facebook/buck/apple/project_generator/build-with-buck.st
+diff --git i/scripts/verify-test-files.py w/scripts/verify-test-files.py
+index e9ee453cf..d91826c8b 100644
+--- i/scripts/verify-test-files.py
++++ w/scripts/verify-test-files.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ """
+ Enforce that Java files which look like they contain JUnit test cases
+ are referenced by a test BUCK target. In other words: find tests that
+diff --git i/src/com/facebook/buck/apple/project_generator/build-with-buck.st w/src/com/facebook/buck/apple/project_generator/build-with-buck.st
+index f596c6d60..2ba6c7cc1 100644
+--- i/src/com/facebook/buck/apple/project_generator/build-with-buck.st
++++ w/src/com/facebook/buck/apple/project_generator/build-with-buck.st
 @@ -1,7 +1,7 @@
  set -e
  cd <repo_root>
@@ -227,63 +248,126 @@ index f596c6d..2ba6c7c 100644
 -fi
 \ No newline at end of file
 +fi
-diff --git a/src/com/facebook/buck/python/make_pex.py b/src/com/facebook/buck/python/make_pex.py
-index 0359eef..ff54c34 100755
---- a/src/com/facebook/buck/python/make_pex.py
-+++ b/src/com/facebook/buck/python/make_pex.py
+diff --git i/src/com/facebook/buck/python/make_pex.py w/src/com/facebook/buck/python/make_pex.py
+index 0359eef2a..ff54c34ce 100755
+--- i/src/com/facebook/buck/python/make_pex.py
++++ w/src/com/facebook/buck/python/make_pex.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  
  from __future__ import print_function
  import contextlib
-diff --git a/test/com/facebook/buck/android/testdata/android_project/java/com/preprocess/convert.py b/test/com/facebook/buck/android/testdata/android_project/java/com/preprocess/convert.py
-index 84276d4..15239c6 100755
---- a/test/com/facebook/buck/android/testdata/android_project/java/com/preprocess/convert.py
-+++ b/test/com/facebook/buck/android/testdata/android_project/java/com/preprocess/convert.py
+diff --git i/test/com/facebook/buck/android/testdata/android_project/java/com/preprocess/convert.py w/test/com/facebook/buck/android/testdata/android_project/java/com/preprocess/convert.py
+index 84276d444..15239c607 100755
+--- i/test/com/facebook/buck/android/testdata/android_project/java/com/preprocess/convert.py
++++ w/test/com/facebook/buck/android/testdata/android_project/java/com/preprocess/convert.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  import sys
  import os
  import zipfile
-diff --git a/test/com/facebook/buck/rage/testdata/interactive_report/extra.py b/test/com/facebook/buck/rage/testdata/interactive_report/extra.py
-index f899a7e..69e4bc8 100755
---- a/test/com/facebook/buck/rage/testdata/interactive_report/extra.py
-+++ b/test/com/facebook/buck/rage/testdata/interactive_report/extra.py
+diff --git i/test/com/facebook/buck/rage/testdata/interactive_report/extra.py w/test/com/facebook/buck/rage/testdata/interactive_report/extra.py
+index f899a7e24..69e4bc8cf 100755
+--- i/test/com/facebook/buck/rage/testdata/interactive_report/extra.py
++++ w/test/com/facebook/buck/rage/testdata/interactive_report/extra.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  
  from __future__ import print_function
  import argparse
-diff --git a/third-party/nailgun/pynailgun/ng.py b/third-party/nailgun/pynailgun/ng.py
-index 577e868..49a0521 100755
---- a/third-party/nailgun/pynailgun/ng.py
-+++ b/third-party/nailgun/pynailgun/ng.py
+diff --git i/test/com/facebook/buck/shell/testdata/genrule_zip_scrubber/create_zip.py w/test/com/facebook/buck/shell/testdata/genrule_zip_scrubber/create_zip.py
+index 688391452..3d349ac81 100644
+--- i/test/com/facebook/buck/shell/testdata/genrule_zip_scrubber/create_zip.py
++++ w/test/com/facebook/buck/shell/testdata/genrule_zip_scrubber/create_zip.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import sys
+ import zipfile
+diff --git i/test/com/facebook/buck/shell/testdata/worker_process/script.py w/test/com/facebook/buck/shell/testdata/worker_process/script.py
+index d65d2f5b4..87e7dc901 100755
+--- i/test/com/facebook/buck/shell/testdata/worker_process/script.py
++++ w/test/com/facebook/buck/shell/testdata/worker_process/script.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import sys
+ 
+diff --git i/third-party/nailgun/pynailgun/ng.py w/third-party/nailgun/pynailgun/ng.py
+index 45dc09e27..5717b02a8 100755
+--- i/third-party/nailgun/pynailgun/ng.py
++++ w/third-party/nailgun/pynailgun/ng.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #
  # Copyright 2004-2015, Martian Software, Inc.
  #
-diff --git a/third-party/py/pywatchman/setup.py b/third-party/py/pywatchman/setup.py
-index 243e83f..4c4d277 100755
---- a/third-party/py/pywatchman/setup.py
-+++ b/third-party/py/pywatchman/setup.py
+diff --git i/third-party/py/pathlib/docs/conf.py w/third-party/py/pathlib/docs/conf.py
+index 9b9797c8f..18175861e 100644
+--- i/third-party/py/pathlib/docs/conf.py
++++ w/third-party/py/pathlib/docs/conf.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python23
+ # -*- coding: utf-8 -*-
+ #
+ # pathlib documentation build configuration file, created by
+diff --git i/third-party/py/pathlib/setup.py w/third-party/py/pathlib/setup.py
+index 269022956..a027f38e8 100755
+--- i/third-party/py/pathlib/setup.py
++++ w/third-party/py/pathlib/setup.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/env python23
+ import sys
+ from distutils.core import setup
+ 
+diff --git i/third-party/py/pex/pex/testing.py w/third-party/py/pex/pex/testing.py
+index cded62c0a..aacf1e2f2 100644
+--- i/third-party/py/pex/pex/testing.py
++++ w/third-party/py/pex/pex/testing.py
+@@ -80,7 +80,7 @@ PROJECT_CONTENT = {
+           install_requires=%(install_requires)r,
+       )
+   '''),
+-  'scripts/hello_world': '#!/usr/bin/env python\nprint("hello world!")\n',
++  'scripts/hello_world': '#!/usr/bin/env python2\nprint("hello world!")\n',
+   'scripts/shell_script': '#!/usr/bin/env bash\necho hello world\n',
+   'my_package/__init__.py': 0,
+   'my_package/my_module.py': 'def do_something():\n  print("hello world!")\n',
+diff --git i/third-party/py/pywatchman/setup.py w/third-party/py/pywatchman/setup.py
+index 243e83f77..4c4d27788 100755
+--- i/third-party/py/pywatchman/setup.py
++++ w/third-party/py/pywatchman/setup.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  # vim:ts=4:sw=4:et:
  
  try:
-diff --git a/third-party/py/pywatchman/tests/tests.py b/third-party/py/pywatchman/tests/tests.py
-index 02d9a0b..92492e9 100755
---- a/third-party/py/pywatchman/tests/tests.py
-+++ b/third-party/py/pywatchman/tests/tests.py
+diff --git i/third-party/py/pywatchman/tests/tests.py w/third-party/py/pywatchman/tests/tests.py
+index 02d9a0b63..92492e928 100755
+--- i/third-party/py/pywatchman/tests/tests.py
++++ w/third-party/py/pywatchman/tests/tests.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  # vim:ts=4:sw=4:et:
  from __future__ import absolute_import
  from __future__ import division
+diff --git i/third-party/py/typing/setup.py w/third-party/py/typing/setup.py
+index 24e7e6640..894e6b51c 100644
+--- i/third-party/py/typing/setup.py
++++ w/third-party/py/typing/setup.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # coding: utf-8
+ 
+ import sys
