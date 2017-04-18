@@ -1,0 +1,17 @@
+pkgbase = flatplat-theme-base16-git
+	pkgdesc = git package for the GTK3, GTK2, Metacity, and GNOME-Shell theme Flat-Plat, adapted to base16 colours.
+	pkgver = r362.c1870d3
+	pkgrel = 1
+	url = https://github.com/asmolero/Flat-Plat-base16
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = nodejs-base16-builder-git
+	depends = gtk3>=3.22
+	depends = gtk-engine-murrine
+	depends = gnome-themes-standard
+	source = flatplat-theme-base16-git::git+https://github.com/asmolero/Flat-Plat-base16.git
+	sha256sums = SKIP
+
+pkgname = flatplat-theme-base16-git
+
