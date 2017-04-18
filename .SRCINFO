@@ -22,6 +22,7 @@ pkgname = veles
 	depends = python-virtualenv
 	depends = python-veles
 	depends = protobuf
+	depends = zlib
 	provides = veles-bin
 	conflicts = veles-bin
 	conflicts = veles-git

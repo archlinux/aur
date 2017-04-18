@@ -21,7 +21,7 @@ depends=('python')
 makedepends=('git' 'python')
 
 build() {
-  makedepends=('cmake' 'qt5-base' 'python' 'python-virtualenv' 'protobuf')
+  makedepends=('cmake' 'qt5-base' 'python' 'python-virtualenv' 'protobuf' 'zlib')
 
   mkdir -p "${srcdir}/veles/build"
   cd "${srcdir}/veles/build"
@@ -30,7 +30,7 @@ build() {
 }
 
 package_veles() {
-  depends=('cmake' 'qt5-base' 'python' 'python-virtualenv' 'python-veles' 'protobuf')
+  depends=('cmake' 'qt5-base' 'python' 'python-virtualenv' 'python-veles' 'protobuf' 'zlib')
   conflicts=('veles-bin' 'veles-git')
   provides=('veles-bin')
 
