@@ -2,8 +2,9 @@
 
 pkgname=('anbox-git' 'anbox-modules-dkms-git')
 _pkgname=anbox
-pkgver=466
-pkgrel=2
+pkgver=r468.76be0e2
+pkgrel=1
+epoch=1
 arch=('x86_64')
 url="http://anbox.io/"
 license=('GPL3')
@@ -26,8 +27,11 @@ sha256sums=('SKIP'
             '7577fab18c78de99827afdf9cb12876cc5d4194064554bf740adcdcc200b7f8c')
 
 pkgver() {
-  cd ${srcdir}/${_pkgname}
-  git rev-list --count HEAD
+  cd "$srcdir/$_pkgname"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare() {
