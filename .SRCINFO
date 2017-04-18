@@ -1,22 +1,21 @@
 pkgbase = chirp-hg
-	pkgdesc = GUI tool for programming Ham Radios - HG/Complete version
-	pkgver = 20170415
+	pkgdesc = GUI tool for programming ham radios, built from hg repo
+	pkgver = r2879.2c4bb936f964
 	pkgrel = 1
+	epoch = 1
 	url = http://chirp.danplanet.com/
-	install = chirp.install
 	arch = any
 	license = GPL3
 	makedepends = mercurial
 	depends = python2-lxml
 	depends = python2-pyserial
 	depends = pygtk
-	depends = hamradio-menus
+	depends = curl
+	optdepends = hamradio-menus: XDG menus for ham radio software
 	provides = chirp
-	conflicts = chirp-daily
-	options = !emptydirs
-	source = chirp::hg+http://d-rats.com/hg/chirp.hg
+	conflicts = chirp
+	source = hg+http://d-rats.com/hg/chirp.hg
 	md5sums = SKIP
-	sha256sums = SKIP
 
 pkgname = chirp-hg
 

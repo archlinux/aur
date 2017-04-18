@@ -1,58 +1,30 @@
-# Co-Maintainer: David Thurstenson thurstylark@gmail.com
-# Co-Maintainer: not_anonymous <nmlibertarian@gmail.com>
-# Contributor: Erez Raviv (erezraviv@gmail.com)
-# Contributor: Mathew Hiles (matthew.hiles@gmail.com)
-# Contributor: Nicholas Tryon (KC2YTG) <dhraak at gmail dot com>
-
+# Maintainer: David Thurstenson <thurstylark@gmail.com>
 pkgname=chirp-hg
-_pkgname=chirp
-pkgver=20170415
+pkgver=r2879.2c4bb936f964
+epoch=1
 pkgrel=1
-pkgdesc="GUI tool for programming Ham Radios - HG/Complete version"
+pkgdesc="GUI tool for programming ham radios, built from hg repo"
 arch=('any')
 url="http://chirp.danplanet.com/"
 license=('GPL3')
-depends=('python2-lxml' 'python2-pyserial' 'pygtk' 'hamradio-menus')
+depends=('python2-lxml' 'python2-pyserial' 'pygtk' 'curl')
+optdepends=('hamradio-menus: XDG menus for ham radio software')
 makedepends=('mercurial')
-options=('!emptydirs')
 provides=('chirp')
-conflicts=('chirp-daily')
-install=$_pkgname.install
-source=("$_pkgname::hg+http://d-rats.com/hg/$_pkgname.hg")
+conflicts=('chirp')
+source=('hg+http://d-rats.com/hg/chirp.hg')
+md5sums=('SKIP')
 
 pkgver() {
-	cd $srcdir/$_pkgname
-
-	date +%Y%m%d 
+	cd chirp.hg
+	hg tip --template 'r{rev}.{node|short}'
 }
 
 prepare() {
-	cd $srcdir/$_pkgname
-
-	sed -i -e 's|/usr/sbin|/usr/bin|g' setup.py
-	sed -i 's:python:python2:' chirpc
-
-	date +%Y%m%d > build/version
-	export VERSION=$(cat build/version)
-	sed -i -e 's/^CHIRP_VERSION.*$/CHIRP_VERSION=\"'$VERSION'-arch-dev\"/' chirp/__init__.py
-}
-
-build() {
-	cd $srcdir/$_pkgname
-
-	python2 setup.py build
+	sed -i 's|/usr/sbin|/usr/bin|' chirp.hg/setup.py
 }
 
 package() {
-	cd $srcdir/$_pkgname
-
-	python2 setup.py install --root="$pkgdir/" --optimize=1
-
-	install -m755 chirpc $pkgdir/usr/bin
-
-	rm -rf $pkgdir/usr/share/doc/$_pkgname/COPYING
-	install -m644 README.chirpc $pkgdir/usr/share/doc/$_pkgname
-	install -m644 README.rpttool $pkgdir/usr/share/doc/$_pkgname
+	cd chirp.hg
+	python2 setup.py install --root="$pkgdir" --optimize=1
 }
-md5sums=('SKIP')
-sha256sums=('SKIP')
