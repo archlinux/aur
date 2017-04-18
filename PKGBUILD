@@ -24,7 +24,7 @@ pkgver() {
 }
 
 build() {
-  makedepends=('git' 'cmake' 'qt5-base' 'python' 'python-virtualenv' 'protobuf' 'zlib')
+  makedepends=('git' 'cmake' 'qt5-base' 'python' 'python-pbr' 'python-six' 'python-msgpack' 'python-buildtools' 'python-virtualenv' 'protobuf' 'zlib')
 
   mkdir -p "${srcdir}/veles/build"
   cd "${srcdir}/veles/build"
@@ -52,7 +52,6 @@ package_veles-git() {
 }
 
 package_python-veles-git() {
-  makedepends=('git' 'python' 'python-pbr' 'python-six' 'python-msgpack' 'python-buildtools')
   depends=('python' 'python-pbr' 'python-six' 'python-msgpack')
   conflicts=('python-veles')
 
