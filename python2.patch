@@ -1,13 +1,13 @@
---- greylistd-0.8.8.5/program/greylist	2007-01-27 19:43:38.000000000 +0300
-+++ greylistd-0.8.8.5/program/greylist.new	2011-12-30 12:48:22.000000000 +0400
+--- program/greylist	2007-01-27 19:43:38.000000000 +0300
++++ program/greylist.new	2011-12-30 12:48:22.000000000 +0400
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/python2
  ########################################################################
  ### FILE:	greylist
  ### PURPOSE:	Command line interface to "greylistd(8)"
---- greylistd-0.8.8.5/program/greylistd	2008-06-06 18:51:47.000000000 +0400
-+++ greylistd-0.8.8.5/program/greylistd.new	2011-12-30 12:48:28.000000000 +0400
+--- program/greylistd	2008-06-06 18:51:47.000000000 +0400
++++ program/greylistd.new	2011-12-30 12:48:28.000000000 +0400
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/python2
