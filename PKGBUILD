@@ -3,13 +3,13 @@
 pkgname=appimage-git
 _gitname=AppImageKit
 pkgdesc="Package desktop applications as AppImages that run on common Linux-based operating systems, such as RHEL, CentOS, Ubuntu, Fedora, debian and derivatives."
-pkgver=r473.d655e74
+pkgver=r476.ea1f74c
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://appimage.org"
 license=('MIT')
 depends=('fuse' 'glib2' 'glibc' 'binutils' 'coreutils' 'zlib' 'lz4' 'zsync' 'inotify-tools' 'openssl' 'libarchive' 'xz')
-makedepends=('git' 'wget')
+makedepends=('git' 'wget' 'vim')
 provides=('appimage')
 conflicts=('appimage')
 options=('!strip')
