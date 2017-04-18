@@ -4,7 +4,7 @@
 pkgbase="ptpython"
 pkgname=("ptpython" "ptpython2")
 pkgver="0.39"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Python REPL build on top of prompt_toolkit"
 arch=("any")
 url="https://github.com/jonathanslenders/ptpython"
@@ -34,6 +34,7 @@ package_ptpython() {
     optdepends=(
         "ipython: ptipython (ptpython + ipython)"
     )
+    provides=("ptpython3")
     cd "${srcdir}/${pkgbase}-${pkgver}"
     python setup.py install --skip-build --root="${pkgdir}" --optimize=1
     install -D --mode 644 --target-directory "$pkgdir/usr/share/licenses/$pkgname" LICENSE
