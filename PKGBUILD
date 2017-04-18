@@ -1,33 +1,45 @@
 # Maintainer: Konstantin Shalygin <k0ste@k0ste.ru>
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
-pkgname='ovirt-guest-agent'
+pkgbase='ovirt-guest-agent'
+pkgname=("${pkgbase}" "${pkgbase}-common")
 _mainver='1.0.13'
 _subrel=''
 pkgver="${_mainver}${_subrel}"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='The oVirt Guest Agent'
 arch=('x86_64')
 url="http://ovirt.org/develop/developer-guide/vdsm/guest-agent"
-depends=('systemd' 'python2' 'python2-dbus' 'python2-gobject2' 'dbus-glib' 'python2-ethtool' 'usermode')
 makedepends=('pam' 'libtool' 'python2' 'python2-pycodestyle' 'patch' 'autoconf')
 license=('ASL 2.0')
-install="${pkgname}.install"
-source=("https://evilissimo.fedorapeople.org/releases/${pkgname}/${_mainver}/${pkgname}-${pkgver}.tar.bz2"
+install="${pkgbase}.install"
+source=("https://evilissimo.fedorapeople.org/releases/${pkgbase}/${_mainver}/${pkgbase}-${pkgver}.tar.bz2"
 	"python2-arch.patch"
-	"sysusers.conf"
-	"${pkgname}.service")
+	"${pkgbase}-1.0.13_arch_pycodestyle.patch"
+	"39-ovirt-memory-hotplug.rules"
+	"console.apps_diskmapper"
+	"pam.d_diskmapper"
+	"${pkgbase}.tmpfiles"
+	"${pkgbase}.sysusers"
+	"${pkgbase}.service")
 sha256sums=('3b4d429d3e5ca1a369cc0868217910eadc70178156bb62e9d68cb1a9fde8afcc'
             '95c162b584dd137296bcec70d14079d4b93d10d8542a87bd8f1cd6ad01e4b140'
+            'ebe724b39b78a3bc21a998884b188e0efdaa2fc3ea3416fb4e4e273629394e24'
+            '78994d3cfe8f293aab84692c9d181b2c20caeb47e9854bb9377f2199b45984fb'
+            '3575b027e6364d5b0d664cff9f9bc6c27a6a57691f7f188c3cf281663ccc3c0d'
+            'f9afb37eb23e77cf59d34f8783d3cacc509ed9400936c3dc95d6db629b3b58a1'
+            'f55ea5c26a5b0548ae0dfc1397520d10869f2ca5ff184418dfebaceb7910a43f'
             'fab3d62ecd8f6546d5b193f4ca22919de20451678b4cce2c53aa0977fed4f483'
-            '545235630d6da51b547c1e8c177ddbf9f57aa81017b8683274a449d46e765cc4')
-backup=("etc/${pkgname}.conf")
+            '9d80826cb331ecbf1a3f979cbe30de3ae1704322f137e49250ce620eaf64cfc7')
+backup=("etc/${pkgbase}.conf")
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  
+  patch -p1 -i "${srcdir}/${pkgbase}-1.0.13_arch_pycodestyle.patch"
   patch -p1 -i "${srcdir}/python2-arch.patch"
-  autoreconf -fvi
 
+  autoreconf -fvi
   PYTHON=/usr/bin/python2 ./configure \
     --prefix=/usr \
     --bindir=/usr/bin \
@@ -39,23 +51,52 @@ prepare() {
     --datadir=/usr/share \
     --infodir=/usr/share/info \
     --includedir=/usr/include/security \
+    --enable-securedir=/usr/lib/security \
     --with-systemdsystemunitdir=/usr/lib/systemd/system \
     --with-pam-prefix=/etc \
     --without-gdm \
-    --without-kdm \
-    --enable-securedir=/usr/lib/security
+    --without-kdm
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make
 }
 
-package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+package_ovirt-guest-agent() {
+  depends=('qemu-guest-agent' 'python2-dbus' 'python2-gobject2' 'dbus-glib' 'python2-ethtool')
+  pkgdesc='The oVirt Guest Agent'
+  conflicts=("${pkgbase}-common")
+
+  cd "${srcdir}/${pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  libtool --finish ${pkgdir}/usr/lib/security
-  install -Dm0644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-  install -Dm0644 "${srcdir}/sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-  install -dm0775 -o 175 -g 175 "${pkgdir}/var/log/${pkgname}"
+
+  install -Dm0644 "${srcdir}/${pkgbase}.service" "${pkgdir}/usr/lib/systemd/system/${pkgbase}.service"
+  install -Dm0644 "${srcdir}/${pkgbase}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgbase}.conf"
+  install -Dm0644 "${srcdir}/${pkgbase}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgbase}.conf"
+  install -Dm0644 "${srcdir}/39-ovirt-memory-hotplug.rules" "${pkgdir}/usr/lib/udev/rules.d/39-ovirt-memory-hotplug.rules"
+  mv "${pkgdir}/etc/udev/rules.d/"* "${pkgdir}/usr/lib/udev/rules.d/"
+  rm -rf "${pkgdir}/etc/udev"
+}
+
+package_ovirt-guest-agent-common() {
+  depends=('qemu-guest-agent' 'python2' 'python2-dbus' 'python2-gobject2' 'dbus-glib' 'python2-ethtool' 'usermode')
+  pkgdesc='The oVirt Guest Agent (with X support)'
+  conflicts=("${pkgbase}")
+
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+
+  install -Dm0644 "${srcdir}/${pkgbase}.service" "${pkgdir}/usr/lib/systemd/system/${pkgbase}.service"
+  install -Dm0644 "${srcdir}/${pkgbase}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgbase}.conf"
+  install -Dm0644 "${srcdir}/${pkgbase}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgbase}.conf"
+  install -Dm0644 "${srcdir}/39-ovirt-memory-hotplug.rules" "${pkgdir}/usr/lib/udev/rules.d/39-ovirt-memory-hotplug.rules"
+  mv "${pkgdir}/etc/udev/rules.d/"* "${pkgdir}/usr/lib/udev/rules.d/"
+  rm -rf "${pkgdir}/etc/udev"
+
+# EL7 Magic
+  cp "${srcdir}/console.apps_diskmapper" "${pkgdir}/etc/security/console.apps/diskmapper"
+  cp "${srcdir}/pam.d_diskmapper" "${pkgdir}/etc/pam.d/diskmapper"
+  mv "${pkgdir}/usr/share/${pkgbase}/diskmapper" "${pkgdir}/usr/share/${pkgbase}/diskmapper.script"
+  ln -s "/usr/bin/consolehelper" "${pkgdir}/usr/share/${pkgbase}/diskmapper"
 }

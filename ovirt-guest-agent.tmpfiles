@@ -1,0 +1,3 @@
+d /var/log/ovirtagent 0750 ovirtagent ovirtagent
+d /run/ovirtagent 0750 ovirtagent ovirtagent
+

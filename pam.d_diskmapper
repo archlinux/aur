@@ -1,0 +1,4 @@
+#%PAM-1.0
+auth     sufficient  pam_succeed_if.so user = ovirtagent
+auth     required    pam_deny.so
+account  required    pam_permit.so

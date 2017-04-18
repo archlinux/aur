@@ -1,26 +1,29 @@
 post_install() {
+# EL7 magic
   /usr/bin/udevadm trigger --subsystem-match="virtio-ports" \
     --attr-match="name=com.redhat.rhevm.vdsm"
+  /usr/bin/udevadm trigger --subsystem-match="virtio-ports" \
+    --attr-match="name=ovirt-guest-agent.0"
+  /usr/bin/udevadm trigger --subsystem-match="memory"
 }
 
 pre_remove() {
   /usr/bin/systemctl stop ovirt-guest-agent.service > /dev/null 2>&1
-# Send an "uninstalled" notification to vdsm.
-  VIRTIO=`grep "^device" /etc/ovirt-guest-agent.conf | awk '{ print $3; }'`
-  if [ -w $VIRTIO ]
-  then
-  # Non blocking uninstalled notification
-  echo -e '{"__name__": "uninstalled"}\n' | dd of=$VIRTIO \
-  oflag=nonblock status=noxfer conv=nocreat 1>& /dev/null || :
-  fi
+
+# non blocking uninstalled notification
+  echo -e '{"__name__": "uninstalled"}\n' | dd \
+    of=/dev/virtio-ports/com.redhat.rhevm.vdsm \
+    oflag=nonblock status=noxfer conv=nocreat 1>& /dev/null || :
+
+  echo -e '{"__name__": "uninstalled"}\n' | dd \
+    of=/dev/virtio-ports/org.ovirt.vdsm \
+    oflag=nonblock status=noxfer conv=nocreat 1>& /dev/null || :
 }
 
 post_remove() {
-  /usr/bin/userdel ovirtagent > /dev/null
+# Let udev clear access rights
   /usr/bin/udevadm trigger --subsystem-match="virtio-ports" \
     --attr-match="name=com.redhat.rhevm.vdsm"
-}
-
-post_upgrade() {
-    /usr/bin/systemctl try-restart ovirt-guest-agent.service >/dev/null 2>&1 || :
+  /usr/bin/udevadm trigger --subsystem-match="virtio-ports" \
+    --attr-match="name=ovirt-guest-agent.0"
 }
