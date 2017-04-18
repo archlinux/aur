@@ -1,7 +1,7 @@
 # Maintainer: FD <fxd@seznam.cz>
 
 pkgname=nomachine-enterprise-client
-pkgver=5.2.11
+pkgver=5.2.21
 pkgrel=1
 x64_rel=1
 i386_rel=1
