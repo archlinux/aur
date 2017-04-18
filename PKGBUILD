@@ -4,8 +4,8 @@
 
 pkgname=('jdk-docs' 'javafx-docs')
 _major=8
-_minor=121
-_build=b13
+_minor=131
+_build=b11
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Documentation for Oracle Java Development Kit"
@@ -18,8 +18,8 @@ source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/e9e7ea248e2
         "http://download.oracle.com/otn-pub/java/javafx/$_major.0.$_minor-$_build/e9e7ea248e2c4826b92b3f075a80e441/javafx-$pkgver-apidocs.zip"
         'LICENSE-Documentation'
         'LICENSE-Oracle-Legal-Notices')
-md5sums=('20c9eb630e5db0c32b7b34b4e6e9ffb2'
-         '3fdcbe83b01a6c7b962a539be4a11485'
+md5sums=('32df9c95f67e2983fdb4f3e722442d54'
+         '9ae377f4a4fce58a5fe959c01b3614bd'
          '4d54057ca75b691366977dab2277e869'
          '3137397f4dba13f4a79157819af583a3')
 
