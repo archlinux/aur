@@ -3,44 +3,44 @@
 # Contributor: Arthur D'Andréa Alemar
 
 pkgname=prometheus
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="An open-source service monitoring system and time series database."
 arch=('i686' 'x86_64')
-url="http://prometheus.io"
+url="http://$pkgname.io"
 license=('APACHE')
 depends=('glibc')
 makedepends=('go' 'git')
 install="$pkgname.install"
-backup=('etc/prometheus/prometheus.yml')
-source=("https://github.com/prometheus/prometheus/archive/v$pkgver.tar.gz"
-        'prometheus.service')
-sha256sums=('c4881cc305263cc8da434be69a20aa039386d4feab5e58f8b89a60bfe8b556ac'
+backup=("etc/$pkgname/$pkgname.yml")
+source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz"
+        "${pkgname}.service")
+sha256sums=('eba5e1d58ee58c1c87e34eb89487c22876782071ee7f7711ac206c9abb00b1e5'
             '2d689efe588302346b7065fef1b05be812e4a91df1a8d8845830c0b2397b2ac3')
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver" || exit 1
     export GOPATH="$srcdir/gopath"
-    mkdir -p "$GOPATH/src/github.com/prometheus"
-    rm -f "$GOPATH/src/github.com/prometheus/prometheus"
-    ln -sr "$srcdir/$pkgname-$pkgver" "$GOPATH/src/github.com/prometheus/prometheus"
+    mkdir -p "$GOPATH/src/github.com/$pkgname"
+    rm -f "$GOPATH/src/github.com/$pkgname/$pkgname"
+    ln -sr "$srcdir/$pkgname-$pkgver" "$GOPATH/src/github.com/$pkgname/$pkgname"
 }
 
 build() {
     export GOPATH="$srcdir/gopath"
-    cd "$GOPATH/src/github.com/prometheus/prometheus"
+    cd "$GOPATH/src/github.com/$pkgname/$pkgname" || exit 1
     make build
 
 }
 check() {
     export GOPATH="$srcdir/gopath"
-    cd "$GOPATH/src/github.com/prometheus/prometheus"
+    cd "$GOPATH/src/github.com/$pkgname/$pkgname" || exit 1
     make test
 }
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
-    install -m755 "$srcdir/$pkgname-$pkgver/prometheus" "$pkgdir/usr/bin"
+    install -m755 "$srcdir/$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin"
     install -m755 "$srcdir/$pkgname-$pkgver/promtool" "$pkgdir/usr/bin"
 
     install -dm755 "$pkgdir/etc/prometheus"
