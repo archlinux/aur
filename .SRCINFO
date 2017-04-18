@@ -1,0 +1,14 @@
+pkgbase = yarnpkg
+	pkgdesc = Fast, reliable, and secure dependency management
+	pkgver = 0.23.2
+	pkgrel = 1
+	url = https://yarnpkg.com/en/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = nodejs
+	source = yarnpkg_0.23.2_all.deb::https://github.com/yarnpkg/yarn/releases/download/v0.23.2/yarn_0.23.2_all.deb
+	sha256sums = f4bcdee3918a91fa9115c43dc1df33da830c147aa259ca936a0ce2f733191cf4
+
+pkgname = yarnpkg
+
