@@ -1,4 +1,5 @@
-# Maintainer: Mike Cooper <mythmon@gmail.com>
+# Maintainer: hashhar <hashhar_dev AT outlook DOT com>
+# Contributor: Mike Cooper <mythmon@gmail.com>
 
 pkgname=fortune-mod-all-en
 pkgver=14
