@@ -33,7 +33,7 @@ build() {
 }
 
 package_veles-git() {
-  depends=('qt5-base' 'python' 'python-virtualenv' 'python-veles-git' 'protobuf' 'zlib')
+  depends=('qt5-base' 'python' 'python-veles-git' 'protobuf' 'zlib')
   conflicts=('veles-bin' 'veles')
 
   # Install pixmap
@@ -52,8 +52,8 @@ package_veles-git() {
 }
 
 package_python-veles-git() {
-  makedepends=('git' 'python' 'python-buildtools')
-  depends=('python' 'protobuf')
+  makedepends=('git' 'python' 'python-pbr' 'python-six' 'python-msgpack' 'python-buildtools')
+  depends=('python' 'python-pbr' 'python-six' 'python-msgpack')
   conflicts=('python-veles')
 
   cd "${srcdir}/veles/python"
