@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-maximus-ng-git
 	pkgdesc = Undecorate maximized windows, like Ubuntu's old 'Maximus' package.
-	pkgver = 114.cb79a62
+	pkgver = 120.f65f22e
 	pkgrel = 1
 	url = https://github.com/luispabon/maximus-gnome-shell
 	arch = any
