@@ -1,0 +1,18 @@
+diff --git a/applespi.c b/applespi.c
+index 4356f84..3bf40ea 100644
+--- a/applespi.c
++++ b/applespi.c
+@@ -129,11 +129,12 @@ static const unsigned char applespi_scancodes[] = {
+ 	KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, KEY_0,
+ 	KEY_ENTER, KEY_ESC, KEY_BACKSPACE, KEY_TAB, KEY_SPACE, KEY_MINUS,
+ 	KEY_EQUAL, KEY_LEFTBRACE, KEY_RIGHTBRACE, KEY_BACKSLASH, 0,
+-	KEY_SEMICOLON, KEY_APOSTROPHE, KEY_GRAVE, KEY_COMMA, KEY_DOT, KEY_SLASH,
++	KEY_SEMICOLON, KEY_APOSTROPHE, KEY_102ND, KEY_COMMA, KEY_DOT, KEY_SLASH,
+ 	KEY_CAPSLOCK,
+ 	KEY_F1, KEY_F2, KEY_F3, KEY_F4, KEY_F5, KEY_F6, KEY_F7, KEY_F8, KEY_F9,
+ 	KEY_F10, KEY_F11, KEY_F12, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+ 	KEY_RIGHT, KEY_LEFT, KEY_DOWN, KEY_UP,
++	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, KEY_GRAVE,
+ };
+ 
+ static const unsigned char applespi_controlcodes[] = {
