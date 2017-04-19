@@ -1,8 +1,8 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=ts-qtplatform
-pkgver=1.2
-pkgrel=2
+pkgver=1.3
+pkgrel=0
 pkgdesc="Qt Platform Abstraction for theShell"
 arch=("x86_64")
 url="https://github.com/vicr123/ts-qtplatform"
