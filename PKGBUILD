@@ -27,6 +27,7 @@ package() {
     rm -rf emulator/lib64/
   fi
 
+  install -d "${pkgdir}/opt/android-sdk/"
   cp -a emulator "${pkgdir}/opt/android-sdk/"
 
   # Fix broken permissions
