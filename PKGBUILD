@@ -2,7 +2,7 @@
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=otf-libertinus-git
-pkgver=6.2.r9.gee27ebc
+pkgver=6.2.r31.gefbe4ae
 pkgrel=1
 pkgdesc="Libertinus font family, a fork of Linux Libertine and Linux Biolinum with bugfixes and an OpenType math companion."
 arch=('any')
