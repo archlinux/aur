@@ -1,4 +1,4 @@
-# Maintainer: Alexander Polovtcev <sashapolo239 at gmail dot com>
+# Maintainer: Alexander Polovtcev <alex.polovtcev at gmail dot com>
 # Contributor: Tony Sweets <tony.sweets@gmail.com>
 # Contributor: Valentin-Costel Hăloiu <vially.ichb@gmail.com> (Maintainer Glassfish v3)
 # Contributor: Bernhard Friedreich <friesoft@gmail.com> (maintainer v3)
