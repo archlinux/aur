@@ -2,7 +2,7 @@
      
 pkgname=nvidia-pf
 pkgver=378.13
-pkgrel=3
+pkgrel=4
 _goodkver=4.10
 _badkver=4.11
 _modver=${_goodkver}-pf
@@ -24,9 +24,7 @@ install=nvidia.install
 options=(!strip)
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-
-
-
+source+=('kernel_4.10.patch')
 
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
@@ -39,6 +37,7 @@ prepare()
   sh "${_pkg}.run" --extract-only
   cd "${_pkg}"
   # patches here
+  patch -Np1 --no-backup-if-mismatch -i ../kernel_4.10.patch
 }
 
 build() {
@@ -69,5 +68,6 @@ package() {
   echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-pf.conf"
 }
 
+md5sums=('e81769b830b7a1e60c635e3bbe559f59')
 md5sums_i686=('dd1077750af9a067739ec291fb24175f')
 md5sums_x86_64=('fe4d25b19a780a690cafc8e3b7c0113f')
