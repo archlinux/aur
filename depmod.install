@@ -1,6 +1,6 @@
 post_upgrade() {
-  EXTRAMODULES="extramodules-$(uname -r)"
-  depmod -a "$(uname -r)"
+  EXTRAMODULES="$(basename $(readlink -f /lib/modules/$(uname -r)/extramodules/))"
+  depmod "$(uname -r)"
 }
 
 post_install() {

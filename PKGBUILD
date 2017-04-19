@@ -14,7 +14,7 @@ source=("git://github.com/swiftgeek/$_pkgname.git#branch=rtl8189fs")
 sha256sums=('SKIP')
 install=depmod.install
 
-_extramodules="extramodules-$(uname -r)"
+_extramodules="$(basename $(readlink -f /lib/modules/$(uname -r)/extramodules/))"
 
 pkgver() {
   cd "$_pkgname"
