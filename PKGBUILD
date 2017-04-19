@@ -1,7 +1,7 @@
 # Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=vim-indexed-search-git
-pkgver=r37.1d93f47
+pkgver=r40.1bae237
 pkgrel=2
 pkgdesc='A Vim plugin to show the number of matches and index when searching'
 arch=('any')
