@@ -1,4 +1,13 @@
-_patch_pip_path() {
+# Colored makepkg-like functions
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+patch_pip_path() {
   find /opt/sickrage/app/lib/python*/site-packages/sickrage -name "*.py" -exec \
       sed -i "s|\('pip_path'.*\)'pip'|\1'/opt/sickrage/app/bin/pip2'|" '{}' \;
 }
@@ -6,20 +15,25 @@ _patch_pip_path() {
 post_install() {
   systemd-sysusers sickrage.conf
   systemd-tmpfiles --create sickrage.conf
-  chown -R sickrage:sickrage /opt/sickrage
+  chown sickrage:sickrage /opt/sickrage/{,data}
+  chown -R sickrage:sickrage /opt/sickrage/app
 
   su -s /bin/bash sickrage -c "virtualenv2 /opt/sickrage/app"
-  su -s /bin/bash sickrage -c "/opt/sickrage/app/bin/pip2 install --isolated sickrage lxml pyopenssl"
-  _patch_pip_path
+  # Patch: add extra dependencies
+  #su -s /bin/bash sickrage -c "/opt/sickrage/app/bin/pip2 install --isolated sickrage"
+  su -s /bin/bash sickrage -c "/opt/sickrage/app/bin/pip2 install --isolated sickrage lxml pyopenssl python-fanart"
+  patch_pip_path
 
   echo
-  echo "==> Configuration files have moved to /opt/sickrage/data. To migrate, run the following commands as root and then reinstall:"
+  note "Configuration files have moved to /opt/sickrage/data."
+  echo "    To migrate, run the following commands as root and then reinstall:"
   echo "        systemctl stop sickrage.service"
   echo "        pacman -Rn sickrage-pip"
   echo "        cp -a /opt/sickrage{,.bak}"
   echo '        rm -r $(ls -1d /opt/sickrage/* | grep -Ev "/backup.*|/cache.*|/config.ini.*|/Log.*|/.*\.db.*")'
   echo "        mkdir -p /opt/sickrage/data"
   echo "        mv /opt/sickrage/* /opt/sickrage/data/"
+  ##note "If an upgrade fails with \"error: failed to commit transaction (conflicting files)\", then uninstall first."
   echo "==> Start and enable sickrage.service. Then visit http://localhost:8081/"
 }
 
@@ -27,8 +41,10 @@ post_upgrade() {
   if [ ! -d /opt/sickrage/app ]; then
     post_install $1
   else
-    su -s /bin/bash sickrage -c "/opt/sickrage/app/bin/pip2 install --isolated --upgrade sickrage lxml pyopenssl"
-    _patch_pip_path
+    # Patch: add extra dependencies
+    #su -s /bin/bash sickrage -c "/opt/sickrage/app/bin/pip2 install --isolated --upgrade sickrage"
+    su -s /bin/bash sickrage -c "/opt/sickrage/app/bin/pip2 install --isolated --upgrade sickrage lxml pyopenssl python-fanart"
+    patch_pip_path
   fi
 }
 

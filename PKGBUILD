@@ -4,12 +4,13 @@
 
 _pkgname=sickrage
 pkgname=$_pkgname-pip
-pkgver=8.9.4.r0
-pkgrel=2
+pkgver=9.0.12.r0
+pkgrel=1
 pkgdesc="A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage, torrents and anime support."
 arch=('any')
 url="https://github.com/SiCKRAGETV/SickRage"
 license=('GPL3')
+##makedepends=('python2-virtualenv')
 depends=('python2-virtualenv')
 #         'deluge: supported torrent client'
 #         'qbittorrent: supported torrent client'
@@ -42,5 +43,13 @@ package() {
   install -Dm644 sickrage.tmpfile "$pkgdir/usr/lib/tmpfiles.d/sickrage.conf"
 
   install -dm755 "$pkgdir"/opt/sickrage/{app,data}
+
+  ##virtualenv2 "$pkgdir/opt/sickrage/app"
+  ### Patch: add extra dependencies
+  ###"$pkgdir/opt/sickrage/app/bin/pip2" install --isolated sickrage
+  ##"$pkgdir/opt/sickrage/app/bin/pip2" install --isolated sickrage lxml pyopenssl python-fanart
+  ##
+  ##find "$pkgdir"/opt/sickrage/app/lib/python*/site-packages/sickrage -name "*.py" -exec \
+  ##    sed -i "s|\('pip_path'.*\)'pip'|\1'/opt/sickrage/app/bin/pip2'|" '{}' \;
 }
 
