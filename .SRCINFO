@@ -1,10 +1,9 @@
 pkgbase = stoplight-bin
 	pkgdesc = A kickass API toolkit.
-	pkgver = 0.14.0
+	pkgver = 0.15.3
 	pkgrel = 1
 	url = http://stoplight.io/platform/design/
 	install = stoplight-bin.install
-	arch = i686
 	arch = x86_64
 	license = unknown
 	depends = libxss
@@ -12,10 +11,8 @@ pkgbase = stoplight-bin
 	provides = stoplight-bin
 	options = !emptydirs
 	options = !strip
-	source_i686 = https://github.com/stoplightio/stoplight-app/releases/download/v0.14.0/Stoplight-0.14.0-ia32.deb
-	sha256sums_i686 = bb8abd13159aa0995ad9b9d99e68626caae0b3ce394c228ae4d2573512e91afd
-	source_x86_64 = https://github.com/stoplightio/stoplight-app/releases/download/v0.14.0/StopLight-0.14.0-x64.deb
-	sha256sums_x86_64 = a649bc14589c6b4329e3f9d5bb6af3ac08a804a7e32580ce6b2d4ebc2aa57975
+	source_x86_64 = https://github.com/stoplightio/stoplight-app/releases/download/v0.15.3/Stoplight_0.15.3_amd64.deb
+	sha256sums_x86_64 = 40a5b92d1d6de397da1301b77845959e05e2d5c460a8a10b07c42ec80eaaf8e5
 
 pkgname = stoplight-bin
 
