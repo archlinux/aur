@@ -3,7 +3,7 @@
 pkgname=powerline-patched-fonts
 pkgver=1.0.0
 pkgrel=0
-pkgdesc="Various powerline patched TTF fonts"
+pkgdesc="Various powerline patched fonts"
 arch=('any')
 url="https://github.com/powerline/fonts"
 _raw_url="https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/DejaVuSansMono"
