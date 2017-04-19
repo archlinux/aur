@@ -45,6 +45,6 @@ package() {
   FAFCLIENT_VERSION=$pkgver python2 setup.py install --root="$pkgdir" --optimize=1 
   mkdir -p "$pkgdir/usr/share"
   cp -r "res" "$pkgdir/usr/share/fafclient"
-  echo "$pkgver" > "$pkgdir/usr/share/fafclient/RELEASE-VERSION"
+  echo `expr "$pkgver" : '^\([0-9]\.[0-9][0-9]\.[0-9]*\).*'` > "$pkgdir/usr/share/fafclient/RELEASE-VERSION"
   install -D "$srcdir/FAForever.desktop" "$pkgdir/usr/share/applications/FAForever.desktop"
 }
