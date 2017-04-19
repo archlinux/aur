@@ -3,22 +3,23 @@
 # Contributor: Firmicus <firmicus āt gmx dōt net>
 
 pkgname=ttf-sil-lateef
-pkgver=1.001
+_fname=LateefGR
+pkgver=1.200
 pkgrel=1
-pkgdesc="OpenType Arabic font from SIL"
+pkgdesc='OpenType Arabic font from SIL'
 arch=('i686' 'x86_64')
-url="http://scripts.sil.org/ArabicFonts"
-license=('custom')
+url='http://software.sil.org/lateef/'
+license=('OFL')
 depends=('fontconfig' 'xorg-font-utils')
 conflicts=('ttf-sil-arabic' 'ttf-sil-fonts')
 install=ttf.install
-source=('http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=Lateef_OT_1_001&filename=LateefRegOT_1.001.zip'
+source=("http://software.sil.org/downloads/r/lateef/${_fname}-${pkgver}.zip"
         'LICENSE::http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=OFL_plaintext&filename=OFL.txt')
-md5sums=('c060ab84ab33ae8f991103258b8e7f22'
-         '6ed93967ff0dc6dd9c8d31c17f817a06')
+sha256sums=('ef6c6b4b4cb8d8502c78efc43cb99d29f391e6cb9eba1b133a661ffda3ddc7e1'
+            'ca122f3bda0154f692817450168cb650a7fc59ef96c93582acd2e7a744d464d3')
 
 package() {
-    cd "${srcdir}"
-    install -Dm644 LateefRegOT.ttf ${pkgdir}/usr/share/fonts/TTF/LateefRegOT.ttf
-    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    cd "${_fname}-${pkgver}"
+    install -Dm644 ${_fname}-Regular.ttf ${pkgdir}/usr/share/fonts/TTF/${_fname}-Regular.ttf
+    install -Dm644 OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
