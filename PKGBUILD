@@ -3,7 +3,7 @@
 
 pkgname='hyphen-en-us'
 pkgver=2.8.8
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="http://hunspell.sf.net"
 license=('GPL2' 'LGPL2.1' 'MPL')
@@ -14,7 +14,7 @@ PKGEXT='.pkg.tar'
 
 package() {
   cd hyphen-${pkgver}
-  install -Dm755 hyph_en_US.dic ${pkgdir}/usr/share/hyphen/hyph_en_US.dic
+  install -Dm644 hyph_en_US.dic ${pkgdir}/usr/share/hyphen/hyph_en_US.dic
   install -dm755 ${pkgdir}/usr/share/myspell/dicts
   cd ${pkgdir}/usr/share/myspell/dicts
   ln -sv /usr/share/hyphen/hyph_en_US.dic .
