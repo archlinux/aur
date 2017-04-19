@@ -2,8 +2,8 @@
 
 # Taken from android-sdk-platform-tools
 
-pkgname=android-sdk-platform-tools-dummy
 _pkgname=android-sdk-platform-tools
+pkgname="${_pkgname}-dummy"
 pkgver=r23.1.0
 pkgrel=1
 pkgdesc='Platform-Tools for Google Android SDK (adb and fastboot), dummy package'
