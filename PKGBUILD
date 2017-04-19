@@ -1,7 +1,7 @@
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
 pkgname=bro-git
-pkgver=2.5.r19.g04d41dc
+pkgver=2.5.r125.g81dbbbd3a
 pkgrel=1
 pkgdesc="A powerful framework for network analysis and security monitoring. (IDS Intrusion Detection System)"
 url="https://www.bro.org"
