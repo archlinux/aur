@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Signal Muon
+GenericName=Messenger
+Comment=Signal Private Messenger for the Desktop using Muon
+Icon=signal
+Exec=signal-muon
+Categories=Network;Messenger;
+StartupNotify=true
+
