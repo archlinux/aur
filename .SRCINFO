@@ -1,9 +1,8 @@
 pkgbase = gmsh-bin
-	pkgdesc = a free 3D finite element grid generator with a build-in CAD engine and post-processor
-	pkgver = 2.16.0
+	pkgdesc = A free 3D finite element grid generator with a build-in CAD engine and post-processor
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = http://gmsh.info/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = wget
@@ -14,9 +13,10 @@ pkgbase = gmsh-bin
 	depends = libxinerama
 	depends = libxcursor
 	depends = glu
-	depends = libsm
 	provides = gmsh
 	conflicts = gmsh
+	source = http://gmsh.info/bin/Linux/gmsh-3.0.1-Linux64.tgz
+	sha256sums = f7d6e7098fb79b651a539c7703d857115f2a918a2c132fb7c1b90dfe2135dc4d
 
 pkgname = gmsh-bin
 
