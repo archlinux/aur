@@ -1,19 +1,18 @@
 pkgbase = mate-indicator-applet
-	pkgdesc = Applet to display information from various applications consistently in the MATE panel. (depends on ido-ubuntu which depends on gtk3-ubuntu)
+	pkgdesc = Applet to display information from various applications consistently in the MATE panel.
 	pkgver = 1.18.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mate-desktop/mate-indicator-applet
 	arch = i686
 	arch = x86_64
 	license = GPLv3
 	makedepends = intltool
-	makedepends = autoconf
-	makedepends = mate-common
 	depends = mate-panel
 	depends = libappindicator-gtk3
+	depends = ido
 	optdepends = indicator-sound
-	source = https://github.com/mate-desktop/mate-indicator-applet/archive/v1.18.0.tar.gz
-	md5sums = 1f78fe11afaf074be8378e222289046d
+	source = https://pub.mate-desktop.org/releases/1.18/mate-indicator-applet-1.18.0.tar.xz
+	sha256sums = 4fe04328f2d86a1f0817e320a0fb841f7eb5839d0ae5131b44a8413d49489829
 
 pkgname = mate-indicator-applet
 
