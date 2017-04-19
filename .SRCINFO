@@ -1,6 +1,6 @@
 pkgbase = wire-desktop
 	pkgdesc = Modern, private messenger. Based on Electron.
-	pkgver = 2.13.2730
+	pkgver = 2.13.2740
 	pkgrel = 1
 	url = https://wire.com/
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = wire-desktop
 	optdepends = hunspell-en: for English spellcheck support
 	provides = wire-desktop
 	conflicts = wire-desktop-bin
-	source = 2.13.2730.tar.gz::https://github.com/wireapp/wire-desktop/archive/release/2.13.2730.tar.gz
-	sha256sums = 749f4c09c71fcf38145bb2a7f17af58802190f50234e91caf0ea830ab7e0a566
+	source = 2.13.2740.tar.gz::https://github.com/wireapp/wire-desktop/archive/release/2.13.2740.tar.gz
+	sha256sums = 73d86094211d55e67479ff0a891754713eff22ba813cd906e3d2e6c3f28a626c
 
 pkgname = wire-desktop
 
