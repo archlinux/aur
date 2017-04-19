@@ -2,7 +2,7 @@
 
 pkgname=emacs-evil-leader
 pkgver=0.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Emacs framework for setting a vim-like prefix key"
 url="https://github.com/cofi/evil-leader"
 arch=('any')
@@ -20,6 +20,6 @@ build() {
 
 package() {
   cd "${srcdir}/evil-leader-${pkgver}"
-  install -d "${pkgdir}/usr/share/emacs/site-lisp/evil"
-  install -m644 *.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/evil"
+  install -d "${pkgdir}/usr/share/emacs/site-lisp/evil-leader"
+  install -m644 *.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/evil-leader"
 }
