@@ -3,6 +3,7 @@
 # Contributor: Tommaso Sardelli <lacapannadelloziotom AT gmail DOT com>
 # Contributor: Philipp Joram <phijor AT t-online DOT de>
 pkgname=('python-axolotl-curve25519' 'python2-axolotl-curve25519')
+pkgbase=python-axolotl-curve25519
 pkgver=0.1
 pkgrel=1
 pkgdesc="Python wrapper for curve25519 library"
@@ -10,7 +11,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/tgalal/python-axolotl-curve25519"
 license=('GPL3')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://pypi.python.org/packages/69/e0/9605cac4c83c12d0bef5c2e9992f0bcbce4fae9a252899d545ccb7dc8717/python-axolotl-curve25519-0.1.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${pkgbase::1}/$pkgbase/$pkgbase-$pkgver.tar.gz")
 md5sums=('f28d902df9044f0bf86a35a4bd2ec092')
 
 prepare() {
