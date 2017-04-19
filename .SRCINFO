@@ -1,0 +1,18 @@
+pkgbase = xrectsel-compton
+	pkgdesc = print the geometry of a rectangular screen region
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/synaptiko/xrectsel
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = autoconf
+	makedepends = automake
+	depends = libx11
+	conflicts = xrectsel
+	conflicts = ffcast<1:2.2.0
+	source = https://github.com/synaptiko/xrectsel/archive/0.3.3.tar.gz
+	sha256sums = b2d10397051ceb11e0c5e4c38398bfc04d8f6659300afb94e80f39dfd12ac256
+
+pkgname = xrectsel-compton
+
