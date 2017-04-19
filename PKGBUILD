@@ -16,9 +16,9 @@ depends_x86_64=('java-environment' 'lib32-alsa-lib' 'lib32-openal'
 depends_i686=('java-environment' 'alsa-lib' 'openal' 'libstdc++5' 'libxv' 'sdl'
               'ncurses' 'swt' 'zlib')
 install="${pkgname}.install"
-optdepends=('android-udev: udev rules for Android devices'
+optdepends=('android-emulator: emulator has become standalone since 25.3.0'
             'android-sdk-platform-tools: adb, aapt, aidl, dexdump and dx'
-            'android-emulator: emulator has become standalone since 25.3.0')
+            'android-udev: udev rules for Android devices')
 source=('https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip'
         "${pkgname}.sh"
         "${pkgname}.csh"
