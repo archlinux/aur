@@ -14,7 +14,7 @@ conflicts=(xfce4-panel)
 provides=(xfce4-panel="${pkgver%%.r*}")
 depends=('exo>=0.11.0' 'garcon>=0.5.0' 'libxfce4ui>=4.13.0' 'libwnck3' 'hicolor-icon-theme'
          'desktop-file-utils')
-makedepends=('intltool' 'gtk-doc>=1.9' 'git')
+makedepends=('intltool' 'gtk-doc>=1.9' 'git' 'xfce4-dev-tools>=4.12.0')
 source=("$pkgname::git://git.xfce.org/xfce/xfce4-panel")
 sha256sums=('SKIP')
 
