@@ -3,7 +3,7 @@
 
 pkgname=vim-startify-git
 pkgver=1.0.r1.ga58f92e
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='A fancy start screen for Vim.'
 arch=('any')
@@ -14,7 +14,6 @@ makedepends=('git')
 conflicts=('vim-startify')
 provides=('vim-startify')
 groups=('vim-plugins')
-install='vimdoc.install'
 source=("git+https://github.com/mhinz/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
