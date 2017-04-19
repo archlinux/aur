@@ -2,7 +2,7 @@
 
 pkgname=vim-indexed-search-git
 pkgver=r37.1d93f47
-pkgrel=1
+pkgrel=2
 pkgdesc='A Vim plugin to show the number of matches and index when searching'
 arch=('any')
 url='https://github.com/henrik/vim-indexed-search'
@@ -12,7 +12,6 @@ depends=('vim')
 makedepends=('git')
 provides=('vim-indexed-search')
 conflicts=('vim-indexed-search')
-install=vimdoc.install
 source=('git+https://github.com/henrik/vim-indexed-search.git')
 sha256sums=('SKIP')
 
