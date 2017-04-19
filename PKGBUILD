@@ -10,15 +10,16 @@ pkgdesc='Google Android SDK'
 arch=('x86_64' 'i686')
 url='https://developer.android.com/studio/releases/sdk-tools.html'
 license=('custom')
-depends_x86_64=('java-environment' 'lib32-alsa-lib' 'lib32-openal'
-  'lib32-libstdc++5' 'lib32-libxv' 'lib32-mesa' 'lib32-ncurses' 'lib32-sdl'
-  'lib32-zlib' 'lib32-fontconfig' 'lib32-libpulse' 'swt')
 depends_i686=('java-environment' 'alsa-lib' 'openal' 'libstdc++5' 'libxv' 'sdl'
               'ncurses' 'swt' 'zlib')
-install="${pkgname}.install"
+depends_x86_64=('java-environment' 'lib32-alsa-lib' 'lib32-openal'
+               'lib32-libstdc++5' 'lib32-libxv' 'lib32-mesa' 'lib32-ncurses'
+               'lib32-sdl' 'lib32-zlib' 'lib32-fontconfig' 'lib32-libpulse'
+               'swt')
 optdepends=('android-emulator: emulator has become standalone since 25.3.0'
             'android-sdk-platform-tools: adb, aapt, aidl, dexdump and dx'
             'android-udev: udev rules for Android devices')
+install="${pkgname}.install"
 source=('https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip'
         "${pkgname}.sh"
         "${pkgname}.csh"
