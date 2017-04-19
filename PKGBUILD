@@ -3,7 +3,7 @@
 
 pkgname=vim-committia-git
 pkgver=r66.447fb27
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A Vim plugin for more pleasant editing of Git commit messages'
 arch=('any')
@@ -16,7 +16,6 @@ source=(${pkgname%-git}::git+https://github.com/rhysd/committia.vim)
 sha256sums=('SKIP')
 provides=('vim-committia')
 conflicts=('vim-committia')
-install=vimdoc.install
 
 pkgver() {
   cd ${pkgname%-git}
@@ -26,16 +25,16 @@ pkgver() {
 package() {
   cd ${pkgname%-git}
 
-  msg 'Installing documentation...'
+  # Installing documentation
   install -Dm 644 README.md "$pkgdir/usr/share/doc/vim-committia/README.md"
 
-  msg 'Installing appdirs...'
+  # Installing appdirs
   install -dm 755 "$pkgdir/usr/share/vim/vimfiles"
   for _appdir in autoload plugin; do
     cp -dpr --no-preserve=ownership $_appdir "$pkgdir/usr/share/vim/vimfiles/$_appdir"
   done
 
-  msg 'Cleaning up pkgdir...'
+  # Cleaning up pkgdir
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
 
   # Install licence
