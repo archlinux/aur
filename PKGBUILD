@@ -9,6 +9,7 @@ depends=()
 makedepends=("npm")
 arch=("i686" "x86_64")
 url="https://github.com/diracdeltas/signal-muon"
+conflicts=(${pkgname%-git})
 source=("git://github.com/diracdeltas/${pkgname%-git}.git"
         "signal-muon.desktop")
 sha256sums=("SKIP"
