@@ -1,4 +1,3 @@
 post_install() {
-  echo 'You need to remove /opt/android-sdk/tools/lib{,64}/libstdc++/ for emulator to work.'
   echo 'You need to source /etc/profile or relogin to add the Android SDK tools to your path.'
 }
