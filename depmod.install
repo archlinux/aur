@@ -1,6 +1,6 @@
 post_upgrade() {
   EXTRAMODULES="extramodules-$(uname -r)"
-  depmod -a $(cat /usr/lib/modules/$EXTRAMODULES/version)
+  depmod -a "$(uname -r)"
 }
 
 post_install() {
