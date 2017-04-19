@@ -2,7 +2,7 @@
 
 pkgname=nvim-r
 pkgver=0.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Vim plugin to work with R"
 arch=('any')
 url="https://github.com/jalvesaq/${pkgname}"
