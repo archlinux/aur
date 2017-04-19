@@ -1,14 +1,15 @@
 # Maintainer: Chris Oelmueller <chris.oelmueller@gmail.com>
 # Contributor: Thomas Kinnen <thomas.kinnen@gmail.com>
+# Contributor: Thomas Kowaliczek-Schmer <thomas.kowaliczek@posteo.de>
 
 pkgname=unknown-horizons-git
-pkgver=2013.3.832.ge886e11
+pkgver=2017.2.373.g8319a4773
 pkgrel=1
 pkgdesc="Open source real-time strategy game with the comfy Anno1602 feeling."
 arch=("i686" "x86_64")
 url="http://www.unknown-horizons.org"
 license=('GPL' 'CCPL')
-depends=('fife-git' 'python2' 'python2-yaml' 'python2-pillow')
+depends=('fife-git' 'python' 'python-yaml' 'python-pillow' 'python-future' )
 makedepends=('git' 'intltool')
 conflicts=('unknown-horizons-svn' 'unknown-horizons')
 replaces=('unknown-horizons-svn' 'unknown-horizons')
@@ -22,5 +23,5 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${pkgname%-*}"
-	python2 setup.py install --root="$pkgdir" --optimize=1
+	python setup.py install --root="$pkgdir" --optimize=1
 }
