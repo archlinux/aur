@@ -1,0 +1,19 @@
+pkgbase = pass-rotate-git
+	pkgdesc = A tool and library for rotating your password on online services
+	pkgver = r0.a88a767
+	pkgrel = 1
+	url = https://github.com/SirCmpwn/pass-rotate
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-docopt
+	depends = python-requests
+	provides = pass-rotate
+	conflicts = pass-rotate
+	options = !emptydirs
+	source = git+https://github.com/SirCmpwn/pass-rotate.git
+	md5sums = SKIP
+
+pkgname = pass-rotate-git
+
