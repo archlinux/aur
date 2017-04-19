@@ -1,12 +1,12 @@
 # Generated on: Thu Nov 17 19:47:52 2016
-# Maintainer: jcherqui
+# Maintainer: stoneo
 
 pkgname=rdcli
 pkgver=1.3.2
 pkgrel=1
 pkgdesc="A simple CLI tool to unrestrict links with real-debrid.com"
 arch=('any')
-url="https://github.com/jcherqui/rdcli"
+url="https://github.com/stoneo/rdcli"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
