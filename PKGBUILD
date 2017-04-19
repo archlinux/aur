@@ -2,7 +2,7 @@
 
 pkgname=signal-muon-git
 pkgver=0.1.0_1_g6e557d0
-pkgrel=0.1
+pkgrel=0.2
 license=("MPL-2.0")
 pkgdesc="Signal Private Messenger for the Desktop using Muon instead of Chrome"
 depends=()
@@ -23,8 +23,24 @@ build() {
   cd "${pkgname%-git}"
   git submodule update --recursive
   npm install
+  npm run build
 }
 
 package() {
+  install -Dm644 ${pkgname%-git}.desktop \
+      "${pkgdir}"/usr/share/applications/${pkgname%-git}.desktop
+
   cd "${pkgname%-git}"
+
+  install -Ddm755 "${pkgdir}/usr/lib/${pkgname%-git}"
+  install -Ddm755 "${pkgdir}/usr/bin"
+
+  cp -r Signal-linux-*/* "${pkgdir}/usr/lib/${pkgname%-git}/"
+
+  install -dm755 "${pkgdir}"/usr/share/icons/hicolor/256x256/apps
+  cp img/icon.png \
+      "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
+
+  echo -e "#!/usr/bin/env sh\nexec /usr/lib/${pkgname%-git}/signal" > "${pkgdir}/usr/bin/${pkgname%-git}"
+  chmod +x "${pkgdir}/usr/bin/${pkgname%-git}"
 }
