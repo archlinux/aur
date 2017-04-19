@@ -2,7 +2,7 @@
 
 pkgname=bashbullet2
 pkgver=20170419
-pkgrel=1
+pkgrel=2
 pkgdesc="A pushbullet systray notification daemon for linux. also a simple client to receive, mirror, and send pushes. version 2"
 arch=('any')
 url="https://github.com/Boteium/bashbullet2"
@@ -24,6 +24,7 @@ package() {
 
 	install -Dm 755 libbashbullet "$pkgdir/usr/share/bashbullet2/libbashbullet"
 	install -Dm 755 ./config_dir/lib/helper "$pkgdir/usr/share/bashbullet2/lib/helper"
+	install -Dm 755 ./config_dir/lib/helper_upload "$pkgdir/usr/share/bashbullet2/lib/helper_upload"
 
 	install -Dm 755 ./config_dir/lib/create_device.sh   "$pkgdir/usr/share/bashbullet2/lib/create_device.sh"
 	install -Dm 755 ./config_dir/lib/new_push.sh   "$pkgdir/usr/share/bashbullet2/lib/new_push.sh"
