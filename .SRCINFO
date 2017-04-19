@@ -1,6 +1,6 @@
 pkgbase = graylog-collector-sidecar
 	pkgdesc = A supervisor process for 3rd party log collectors like NXLog or Filebeat
-	pkgver = 0.1.0_rc.1
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Graylog2/collector-sidecar
 	install = graylog-collector-sidecar.install
@@ -9,7 +9,7 @@ pkgbase = graylog-collector-sidecar
 	license = GPL3
 	depends = filebeat
 	backup = etc/graylog/collector-sidecar/collector_sidecar.yml
-	source = https://github.com/Graylog2/collector-sidecar/releases/download/0.1.0-rc.1/collector-sidecar-0.1.0-rc.1.tar.gz
+	source = https://github.com/Graylog2/collector-sidecar/releases/download/0.1.1/collector-sidecar-0.1.1.tar.gz
 	source = default_collector_sidecar.yml
 	md5sums = SKIP
 	md5sums = SKIP
