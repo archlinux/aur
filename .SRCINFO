@@ -1,6 +1,6 @@
 pkgbase = nginx-openssl-1.1
 	pkgdesc = latest nginx, default build config except build with openssl 1.1.
-	pkgver = 1.11.12
+	pkgver = 1.11.13
 	pkgrel = 1
 	url = http://nginx.org
 	arch = i686
@@ -31,11 +31,11 @@ pkgbase = nginx-openssl-1.1
 	backup = etc/logrotate.d/nginx
 	source = nginx.conf
 	source = nginx.service
-	source = http://nginx.org/download/nginx-1.11.12.tar.gz
+	source = http://nginx.org/download/nginx-1.11.13.tar.gz
 	source = https://www.openssl.org/source/openssl-1.1.0e.tar.gz
 	sha1sums = 02a9b3a74b5387790c0d6d7b63abe6bf6acc686f
 	sha1sums = 43cf1403b04fed9e8d643e52b275b78cb3892ca5
-	sha1sums = 75a5cee8a468aec4b53082fbacd9a531b4a729fa
+	sha1sums = 84f27729754796181dc39d47da761c7e85eb3ae2
 	sha1sums = 8bbbaf36feffadd3cb9110912a8192e665ebca4b
 
 pkgname = nginx-openssl-1.1
