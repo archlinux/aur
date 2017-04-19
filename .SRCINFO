@@ -1,6 +1,6 @@
 pkgbase = suricata-git
 	pkgdesc = Suricata is a free and open source, mature, fast and robust network threat detection engine
-	pkgver = 3.2.r87.gf407d770
+	pkgver = 3.2.1.r227.gc3b4dd5a
 	pkgrel = 1
 	url = https://suricata-ids.org
 	arch = i686

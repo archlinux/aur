@@ -2,7 +2,7 @@
 # See https://phalanx.openinfosecfoundation.org/projects/suricata for more info
 
 pkgname=suricata-git
-pkgver=3.2.r87.gf407d770
+pkgver=3.2.1.r227.gc3b4dd5a
 pkgrel=1
 pkgdesc="Suricata is a free and open source, mature, fast and robust network threat detection engine"
 url="https://suricata-ids.org"
