@@ -7,7 +7,7 @@ pkgbase = python-axolotl
 	license = GPL3
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://github.com/tgalal/python-axolotl/archive/0.1.39.tar.gz
+	source = python-axolotl-0.1.39.tar.gz::https://github.com/tgalal/python-axolotl/archive/0.1.39.tar.gz
 	md5sums = 89ae2ace340f02f1377a71063265ffc6
 
 pkgname = python-axolotl

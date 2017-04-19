@@ -3,6 +3,7 @@
 # Contributor: Tommaso Sardelli <lacapannadelloziotom AT gmail DOT com>
 # Contributor: Philipp Joram <phijor AT t-online DOT de>
 pkgname=('python-axolotl' 'python2-axolotl')
+pkgbase=python-axolotl
 pkgver=0.1.39
 pkgrel=1
 pkgdesc="Python port of libaxolotl"
@@ -10,7 +11,7 @@ arch=('any')
 url="https://github.com/tgalal/python-axolotl"
 license=('GPL3')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://github.com/tgalal/python-axolotl/archive/$pkgver.tar.gz")
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/tgalal/python-axolotl/archive/$pkgver.tar.gz")
 md5sums=('89ae2ace340f02f1377a71063265ffc6')
 
 prepare() {
