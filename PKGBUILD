@@ -2,29 +2,29 @@
 
 pkgname=tresorit
 pkgver=1.0.369.609
-pkgrel=1
+pkgrel=2
 pkgdesc='Encrypted cloud storage for your confidential files. Using Tresorit, files are encrypted before being uploaded to the cloud. Start encrypting files for free.'
 arch=('i686' 'x86_64')
 url="http://www.tresorit.com/"
 install=tresorit.install
 license=('custom')
 optdepends=()
-source=("https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run")
+source=("tresorit_installer_${pkgver}.run::https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run")
 
 sha1sums=('SKIP')
 
 prepare() {
   # Validate signature
-  head -c1044 tresorit_installer.run | tail -c+20 | xxd -r -p > tresorit_installer.run.signature
-  VERIFICATION_RESULT=`tail -c+1046 tresorit_installer.run | openssl sha512 -verify ../tresorit_installer.run.pubkey -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:-1 -signature tresorit_installer.run.signature`
+  head -c1044 tresorit_installer_${pkgver}.run | tail -c+20 | xxd -r -p > tresorit_installer_${pkgver}.run.signature
+  VERIFICATION_RESULT=`tail -c+1046 tresorit_installer_${pkgver}.run | openssl sha512 -verify ../tresorit_installer.run.pubkey -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:-1 -signature tresorit_installer_${pkgver}.run.signature`
   if [ "$VERIFICATION_RESULT" != "Verified OK" ]; then
     echo "    ! Binary signature verification failed"
     exit 1
   fi
 
-  SKIP=`head tresorit_installer.run | grep "^SKIP" | sed 's/SKIP=//'`
+  SKIP=`head tresorit_installer_${pkgver}.run | grep "^SKIP" | sed 's/SKIP=//'`
   mkdir -p tresorit
-  tail -n+$SKIP tresorit_installer.run | tar xz -C tresorit
+  tail -n+$SKIP tresorit_installer_${pkgver}.run | tar xz -C tresorit
 }
 
 package() {
