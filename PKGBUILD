@@ -9,16 +9,15 @@ url="https://github.com/Filirom1/npm2arch"
 license=(MIT)
 depends=('nodejs' 'npm' )
 optdepends=()
-source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
+source=(git+http://github.com/MazeChaZer/npm2arch.git#branch=feature/upgrade-dependencies)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(05dbc5e5ce6ae0306e22d9811df170cd26454a2d)
+sha1sums=(SKIP)
 
 package() {
-  cd $srcdir
+  cd "$srcdir/$_npmname"
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p $_npmdir
-  cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+  npm install -g --prefix "$pkgdir/usr"
 }
 
 # vim:set ts=2 sw=2 et:
