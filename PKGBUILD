@@ -3,14 +3,13 @@
 
 pkgname=vim-gundo
 pkgver=2.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Vim plugin to visualize your Vim undo tree'
 arch=('any')
 url='http://www.vim.org/scripts/script.php?script_id=3304'
 license=('GPL2')
 depends=('vim>=7.3')
 groups=('vim-plugins')
-install=vimdoc.install
 source=("https://github.com/sjl/${pkgname#vim-}.vim/archive/v$pkgver.tar.gz")
 sha256sums=('eeb279f41ea3651bccced8a3f609d40e8cf914eb8ebdf403acac21af68e1b4a0')
 
