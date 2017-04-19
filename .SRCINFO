@@ -1,6 +1,6 @@
 pkgbase = theshell-blueprint
 	pkgdesc = Desktop Shell that gets out of your way
-	pkgver = 6.0b
+	pkgver = 6.2b
 	pkgrel = 0
 	url = https://github.com/vicr123/theshell
 	arch = x86_64
@@ -23,10 +23,11 @@ pkgbase = theshell-blueprint
 	depends = akonadi
 	depends = ts-polkitagent
 	depends = ts-bt
+	depends = ts-bugreport
 	optdepends = alsa-utils: for volume controls
 	optdepends = pocketsphinx: for theWave
 	optdepends = festival: for theWave
-	source = theshell-blueprint-6.0b::git+https://github.com/vicr123/theshell#branch=blueprint
+	source = theshell-blueprint-6.2b::git+https://github.com/vicr123/theshell#branch=blueprint
 	md5sums = SKIP
 
 pkgname = theshell-blueprint
