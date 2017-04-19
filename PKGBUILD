@@ -1,6 +1,6 @@
 # Maintainer: NAME <EMAIL>
 pkgname=pet-git
-pkgver=0.0.2
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Simple command-line snippet manager, written in Go.'
 arch=('i686' 'x86_64')
