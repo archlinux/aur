@@ -3,7 +3,7 @@
 
 pkgname=dracut
 pkgver=045
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic, modular, cross-distribution initramfs generation tool"
 arch=("i686" "x86_64")
 url="https://dracut.wiki.kernel.org/"
@@ -26,6 +26,13 @@ source=("http://www.kernel.org/pub/linux/utils/boot/$pkgname/${pkgname}-${pkgver
 #
 # make check
 #}
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # For it to work with current dependencies ## 14mRh4X0r 
+  sed -i 's|$(arch)|$(uname -m)|g' "${srcdir}/${pkgname}-${pkgver}/modules.d/90crypt/module-setup.sh"
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -54,5 +61,6 @@ package() {
 	sysconfdir=/etc loginstall=/var/log/dracut install
 }
 
+validpgpkeys=("4C96E1500F9421CCF82D5DCA034EB370014DF270") # Harald Hoyer
 md5sums=('70d8d222dcdd00b9ee3e05e3bc1d9435'
          'SKIP')
