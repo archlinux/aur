@@ -3,7 +3,7 @@
 
 pkgname=vim-vimwiki-dev-git
 pkgver=2.2.1.r24.g722d6e4
-pkgrel=1
+pkgrel=2
 pkgdesc='A personal wiki for Vim; dev branch'
 arch=('any')
 url='https://github.com/vimwiki/vimwiki'
@@ -13,7 +13,6 @@ depends=('vim')
 makedepends=('git')
 conflicts=('vim-vimwiki')
 provides=('vim-vimwiki')
-install=vimdoc.install
 source=('git+https://github.com/vimwiki/vimwiki.git#branch=dev')
 sha256sums=('SKIP')
 
