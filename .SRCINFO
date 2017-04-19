@@ -1,5 +1,5 @@
 pkgbase = xrectsel-compton
-	pkgdesc = print the geometry of a rectangular screen region
+	pkgdesc = print the geometry of a rectangular screen region with continuos redraw to make it work under compton
 	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/synaptiko/xrectsel
