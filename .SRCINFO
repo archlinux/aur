@@ -1,0 +1,15 @@
+pkgbase = powerline-patched-fonts
+	pkgdesc = Various powerline patched TTF fonts
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://github.com/powerline/fonts
+	install = powerline-patched-fonts.install
+	arch = any
+	license = MIT
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://github.com/powerline/fonts/archive/master.zip
+	md5sums = f3ba7f1359b3cb485eed5b285e626c30
+
+pkgname = powerline-patched-fonts
+
