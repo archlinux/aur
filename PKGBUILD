@@ -1,13 +1,13 @@
 # Author: Boteium <echo Ym90ZWl1bUBnbWFpbC5jb20=|base64 -d>
 
 pkgname=bashbullet2
-pkgver=20170418
+pkgver=20170419
 pkgrel=1
-pkgdesc="A pushbullet systray notification daemon for linux. also a simple client to receive, mirror, and send pushes."
+pkgdesc="A pushbullet systray notification daemon for linux. also a simple client to receive, mirror, and send pushes. version 2"
 arch=('any')
 url="https://github.com/Boteium/bashbullet2"
 license=('GPL')
-depends=(jshon libnotify yad xclip websocketpp cpprestsdk curl)
+depends=(libnotify yad xclip websocketpp cpprestsdk curl)
 install="bashbullet2.install"
 source=('git://github.com/Boteium/bashbullet2.git')
 md5sums=('SKIP')
