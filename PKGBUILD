@@ -2,8 +2,8 @@
 
 # Taken from android-studio
 
-pkgname=android-studio-dummy
 _pkgname=android-studio
+pkgname="${_pkgname}-dummy"
 pkgver=2.2.3.0
 pkgrel=1
 pkgdesc='The official Android IDE, dummy package'
