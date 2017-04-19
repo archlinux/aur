@@ -1,5 +1,5 @@
 pkgbase = powerline-patched-fonts
-	pkgdesc = Various powerline patched TTF fonts
+	pkgdesc = Various powerline patched fonts
 	pkgver = 1.0.0
 	pkgrel = 0
 	url = https://github.com/powerline/fonts
