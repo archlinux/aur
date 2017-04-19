@@ -1,14 +1,14 @@
 pkgbase = gmsh-docs
 	pkgdesc = TXT, HMTL and PDF doc for Gmsh
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
-	url = http://www.geuz.org/gmsh/
+	url = http://gmsh.info/
 	arch = any
 	license = GPL2
 	makedepends = cmake
 	makedepends = texlive-core
-	source = http://www.geuz.org/gmsh/src/gmsh-3.0.0-source.tgz
-	md5sums = 21fcb424b1548cefd868ce349087e9d5
+	source = http://gmsh.info/src/gmsh-3.0.1-source.tgz
+	md5sums = 2a65269f0fb425f9c4915f51c392059d
 
 pkgname = gmsh-docs
 

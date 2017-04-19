@@ -2,15 +2,15 @@
 # Contributor: mickele <mimocciola@yahoo.com>
 pkgname=gmsh-docs
 _pkgname=gmsh
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="TXT, HMTL and PDF doc for Gmsh"
 arch=('any')
-url="http://www.geuz.org/gmsh/"
+url="http://gmsh.info/"
 license=('GPL2')
 makedepends=('cmake' 'texlive-core')
 source=("${url}src/${_pkgname}-${pkgver}-source.tgz")
-md5sums=('21fcb424b1548cefd868ce349087e9d5')
+md5sums=('2a65269f0fb425f9c4915f51c392059d')
 
 build(){
    cd "${srcdir}/${_pkgname}-${pkgver}-source"
