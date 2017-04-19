@@ -2,8 +2,8 @@
 # Contributor: Ariel Popper <a@arielp.com>
 
 pkgname=vim-airline-git
-pkgver=0.7.r219.gdbb4d32
-pkgrel=4
+pkgver=0.8.r237.g4a47cd7
+pkgrel=2
 epoch=1
 pkgdesc="A lean & mean statusline for vim that's light as air."
 arch=('any')
