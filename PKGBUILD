@@ -2,7 +2,7 @@
 # Contributor: Andreas Wagner <AndreasBWagner@pointfree.net>
 
 pkgname=vim-vimwiki-dev-git
-pkgver=2.2.1.r24.g722d6e4
+pkgver=2.3.r31.g8cdc1c1
 pkgrel=2
 pkgdesc='A personal wiki for Vim; dev branch'
 arch=('any')
