@@ -1,6 +1,6 @@
 pkgbase = chromium-widevine
 	pkgdesc = A browser plugin designed for the viewing of premium video content
-	pkgver = 1.4.8.970
+	pkgver = 1.4.8.977
 	pkgrel = 1
 	epoch = 1
 	url = http://www.google.com/chrome
@@ -12,8 +12,8 @@ pkgbase = chromium-widevine
 	sha256sums = e93c01576427cad9099f2cf0df0be70d0a2cc0a3a66c743318b2138aa7c4ed93
 	source_i686 = http://mirror.retrosnub.co.uk/apt/google/pool/main/g/google-chrome-stable/google-chrome-stable_48.0.2564.116-1_i386.deb
 	sha256sums_i686 = 7401ad3698a28bf2b45e350fd2b941c44cb51dbb3f87b0e7dd1a2da72c42f594
-	source_x86_64 = https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_57.0.2987.133-1_amd64.deb
-	sha256sums_x86_64 = 4a62a77b3c7960f9313d41a40f645b7178d6a8b91f9f1141d7664026692ef63d
+	source_x86_64 = https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_58.0.3029.81-1_amd64.deb
+	sha256sums_x86_64 = baf2e0aa0727635ab086d3912a8974557d2fad8713870ac94f8deeccb292fbdc
 
 pkgname = chromium-widevine
 	depends = chromium
