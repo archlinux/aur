@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=todoman
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A simple CalDav-based todo manager."
 arch=("any")
@@ -18,7 +18,7 @@ source=("https://pypi.io/packages/source/t/$pkgname/$pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/pimutils/$pkgname/v$pkgver/bin/todo"
         )
 noextract=("$pkgname-$pkgver-py3-none-any.whl")
-md5sums=('d112f8693802c76a9ef16dcec113070c'
+md5sums=('83118c0be44ff2a70517a8935f795039'
          '929003485379647ca3967f2b395dd6f7')
 
 build() {
