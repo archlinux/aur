@@ -1,6 +1,6 @@
 pkgbase = tuxemon-git
 	pkgdesc = A free, open source monster-fighting RPG.
-	pkgver = r763.69de78a
+	pkgver = r815.5953934
 	pkgrel = 1
 	url = http://www.tuxemon.org
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = tuxemon-git
 	depends = python-pytmx
 	depends = python-six
 	depends = python-neteria
+	depends = python-pyscroll
 	optdepends = libShake: rumble library for Linux.
 	provides = tuxemon
 	conflicts = tuxemon
