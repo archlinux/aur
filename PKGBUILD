@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=signal-muon-git
-pkgver=0.1.0_1_g6e557d0
-pkgrel=0.2
+pkgver=0.1.0_3_g4ba515f
+pkgrel=1
 license=("MPL-2.0")
 pkgdesc="Signal Private Messenger for the Desktop using Muon instead of Chrome"
 depends=()
@@ -19,10 +19,14 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/-/_/g'
 }
 
+prepare() {
+  cd "${pkgname%-git}"
+  git submodule update --init --recursive
+  npm install
+}
+
 build() {
   cd "${pkgname%-git}"
-  git submodule update --recursive
-  npm install
   npm run build
 }
 
@@ -41,6 +45,6 @@ package() {
   cp img/icon.png \
       "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
 
-  echo -e "#!/usr/bin/env sh\nexec /usr/lib/${pkgname%-git}/signal" > "${pkgdir}/usr/bin/${pkgname%-git}"
+  echo -e "#!/usr/bin/env sh\nexec /usr/lib/${pkgname%-git}/signal --no-sandbox -- "'"$@"' > "${pkgdir}/usr/bin/${pkgname%-git}"
   chmod +x "${pkgdir}/usr/bin/${pkgname%-git}"
 }
