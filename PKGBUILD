@@ -6,14 +6,14 @@
 
 pkgbase=shiboken2-git
 pkgname=(python{2,}-shiboken2-git shiboken2-git)
-pkgver=2.0.0.r2447.f7fb80a
+pkgver=2.0.0.r2506.47676b5
 _upver=2.0.0
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL')
 url="http://www.pyside.org"
 makedepends=('git' 'cmake' 'qt5.6' 'python2' 'python' 'libxslt')
-source=("$pkgbase::git+https://code.qt.io/pyside/shiboken.git"
+source=("$pkgbase::git+https://code.qt.io/pyside/shiboken.git#branch=5.6"
         "sphinx-build2.patch")
 md5sums=('SKIP'
          '915d0fc351ff2e7c5deaa1066aeeae67')

@@ -1,5 +1,5 @@
 pkgbase = shiboken2-git
-	pkgver = 2.0.0.r2447.f7fb80a
+	pkgver = 2.0.0.r2506.47676b5
 	pkgrel = 1
 	url = http://www.pyside.org
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = shiboken2-git
 	makedepends = python2
 	makedepends = python
 	makedepends = libxslt
-	source = shiboken2-git::git+https://code.qt.io/pyside/shiboken.git
+	source = shiboken2-git::git+https://code.qt.io/pyside/shiboken.git#branch=5.6
 	source = sphinx-build2.patch
 	md5sums = SKIP
 	md5sums = 915d0fc351ff2e7c5deaa1066aeeae67
