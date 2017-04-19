@@ -24,8 +24,7 @@ makedepends=('python-setuptools')
 provides=('conan')
 conflicts=('conan')
 source=("conan-git::git+https://github.com/conan-io/conan.git" "pylint-1.6.4.patch")
-md5sums=('SKIP'
-         'a2259d15f3ed9d4e623b469ff026c73b')
+md5sums=('SKIP' 'a2259d15f3ed9d4e623b469ff026c73b')
 
 prepare() {
   cd "$pkgname"
