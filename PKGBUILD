@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=vim-committia-git
-pkgver=r66.447fb27
+pkgver=r90.c63831f
 pkgrel=2
 epoch=1
 pkgdesc='A Vim plugin for more pleasant editing of Git commit messages'
