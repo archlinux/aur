@@ -2,7 +2,7 @@
 
 pkgname=vim-recover-git
 pkgver=r180.b95b04f
-pkgrel=2
+pkgrel=3
 pkgdesc='A Vim plugin to show a diff, whenever recovering a buffer'
 arch=('any')
 url='http://www.vim.org/scripts/script.php?script_id=3068'
@@ -13,7 +13,6 @@ optdepends=('python: for using cvim')
 makedepends=('git')
 provides=('vim-recover')
 conflicts=('vim-recover')
-install=vimdoc.install
 source=('git+https://github.com/chrisbra/Recover.vim.git'
         'fix_nomenclature.patch')
 sha256sums=('SKIP'
