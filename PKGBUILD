@@ -1,7 +1,7 @@
 # Maintainer: Danny Su <contact@dannysu.com>
 
 pkgname=tresorit
-pkgver=1.0.350.586
+pkgver=1.0.369.609
 pkgrel=1
 pkgdesc='Encrypted cloud storage for your confidential files. Using Tresorit, files are encrypted before being uploaded to the cloud. Start encrypting files for free.'
 arch=('i686' 'x86_64')
