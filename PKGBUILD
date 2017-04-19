@@ -2,8 +2,8 @@
 
 # Taken from android-sdk-build-tools
 
-pkgname=android-sdk-build-tools-dummy
 _pkgname=android-sdk-build-tools
+pkgname="${_pkgname}-dummy"
 pkgver=r23.0.3
 pkgrel=1
 pkgdesc='Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc), dummy package'
