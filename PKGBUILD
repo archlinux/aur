@@ -4,7 +4,7 @@
 pkgname=(python2-pywinrm python-pywinrm)
 _realname=pywinrm
 pkgver=0.2.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Python library for Windows Remote Management"
 arch=(any)
 url="https://pypi.python.org/pypi/${_realname}"
@@ -16,7 +16,8 @@ sha256sums=('3030f700fbd6d06f715d4374c10b3586624bccca003b7075dd281c875705ac1b')
 package_python2-pywinrm() {
     depends=('python2' 'python2-requests' 'python2-xmltodict')
     optdepends=('python2-requests-ntlm: for HTTP NTLM authentication'
-                'python2-requests-kerberos: for kerberos authentication')
+                'python2-requests-kerberos: for kerberos authentication'
+                'python2-requests-credssp: for CredSSP authenication')
     cd ${srcdir}/${_realname}-${pkgver}
     python2 setup.py install --root=${pkgdir}/ --optimize=1
 }
@@ -24,7 +25,8 @@ package_python2-pywinrm() {
 package_python-pywinrm() {
     depends=('python' 'python-requests' 'python-xmltodict')
     optdepends=('python-requests-ntlm: for HTTP NTLM authentication'
-                'python-requests-kerberos: for kerberos authentication')
+                'python-requests-kerberos: for kerberos authentication'
+                'python-requests-credssp: for CredSSP authenication')
     cd ${srcdir}/${_realname}-${pkgver}
     python setup.py install --root=${pkgdir}/ --optimize=1
 }
