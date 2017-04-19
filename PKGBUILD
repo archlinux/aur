@@ -1,5 +1,5 @@
 pkgname=electrum-ltc
-pkgver=2.8.3pre.git20170412
+pkgver=2.8.3pre.git20170418
 pkgrel=1
 pkgdesc='Lightweight Litecoin client'
 arch=(any)
@@ -21,16 +21,16 @@ depends=(python2-btchip
          python2-requests
          zbar)
 makedepends=(gettext python2-pycurl)
-_commit=d8321ec
+_commit=21c0643
 source=($pkgname-$_commit.tar.gz::https://codeload.github.com/pooler/$pkgname/tar.gz/$_commit)
-sha256sums=(eaf8192525c5da72386e6067c02810583b2a1902ac28bb1f7cf332886823d8fd)
+sha256sums=(b685990348c9e47341f53333401f3ae6912a0c889c0ad09fc1e4e11f5f696a81)
 
 prepare() {
   cd $pkgname-$_commit/
 
   find . -type f -exec sed -i '/#!/s/python$/&2/' {} +
 
-  for i in $(echo icons/{electrum_{dark,light}_icon,unpaid}.png)
+  for i in icons/{electrum_{dark,light}_icon,unpaid}.png
   do convert $i $i
   done
 
