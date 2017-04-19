@@ -1,7 +1,7 @@
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
 pkgname=prads-git
-pkgver=0.3.3.r16.gdabcaa2
+pkgver=0.3.3.r20.g407cf7c
 pkgrel=1
 pkgdesc="A Passive Real-time Asset Detection System"
 url="http://gamelinux.github.io/prads/"

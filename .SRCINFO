@@ -1,6 +1,6 @@
 pkgbase = prads-git
 	pkgdesc = A Passive Real-time Asset Detection System
-	pkgver = 0.3.3.r16.gdabcaa2
+	pkgver = 0.3.3.r20.g407cf7c
 	pkgrel = 1
 	url = http://gamelinux.github.io/prads/
 	arch = i686
