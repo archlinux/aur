@@ -6,14 +6,14 @@
 
 pkgname=emacs-lucid
 pkgver=25.1
-pkgrel=5
+pkgrel=6
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
-depends=('librsvg' 'gpm' 'm17n-lib' 'hicolor-icon-theme' 'desktop-file-utils' 'alsa-lib' 'imagemagick' 'gnutls' 'libxrandr' 'libxinerama')
+depends=('librsvg' 'gpm' 'm17n-lib' 'hicolor-icon-theme' 'dbus' 'alsa-lib' 'imagemagick' 'gnutls' 'libxrandr' 'libxinerama')
 conflicts=('emacs')
-provides=('emacs')
+provides=('emacs=25')
 validpgpkeys=('B29426DEFB07724C3C35E5D36592E9A3A0B0F199'
               '28D3BED851FDF3AB57FEF93C233587A47C207910')
 source=(ftp://ftp.gnu.org/gnu/emacs/emacs-$pkgver.tar.xz{,.sig})
