@@ -14,7 +14,7 @@ url="http://aur.archlinux.org"
 license=('WTFPL')
 depends=('jre')
 source=("jre_weblaunch.desktop")
-sha256sums=('677a7c574f65ce631070166a8ca53937849815ab88b7c28bc0c5fe604c8bdc9c')
+sha256sums=('b3d533e683fe5f8de3eb16f494334111d1a7beb417563416c8c1ab9331752af1')
 package() {
   cd "${srcdir}"
   mkdir -p "${pkgdir}/usr/share/applications/jre_weblaunch.desktop"
