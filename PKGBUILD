@@ -76,14 +76,13 @@ package_python2-shiboken2-git() {
     cd "$srcdir/$pkgbase/build-py2"
     make DESTDIR="$pkgdir" install
 
-    cd "$srcdir/$pkgbase/build-py2"
-    cd data
-    install -Dm 644 Shiboken2Config-python2.7.cmake "$pkgdir/usr/lib/cmake/Shiboken2-$_upver/"
+    install -Dm 644 data/Shiboken2Config.cmake "$pkgdir/usr/lib/cmake/Shiboken2-$_upver/"
+
     mv "$pkgdir"/usr/lib/pkgconfig/shiboken2{,-py2}.pc
+    mv "$pkgdir/usr/lib/cmake/Shiboken2-${_upver}"/Shiboken2Config{,-python2.7}.cmake
 
     rm -rf "$pkgdir"/usr/{include,bin,share}
     rm "$pkgdir/usr/lib/cmake/Shiboken2-$_upver/Shiboken2ConfigVersion.cmake"
-    rm "$pkgdir/usr/lib/cmake/Shiboken2-$_upver/Shiboken2Config.cmake"
 }
 
 package_python-shiboken2-git() {
