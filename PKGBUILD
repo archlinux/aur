@@ -2,7 +2,7 @@
 
 pkgname=otf-bravura
 pkgver=1.204
-pkgrel=1
+pkgrel=2
 pkgdesc="an SMuFL compliant music font designed by Daniel Spreadbury at Steinberg"
 arch=('any')
 url="http://www.smufl.org/fonts/"
@@ -29,6 +29,6 @@ post_remove() {
 
 package() {
     cd "${srcdir}"
-    find . -name '*.otf' -execdir install -Dm644 {} $pkgdir/usr/share/fonts/OTF/{} \;
+    find . -name 'Bravura*.otf' -execdir install -Dm644 {} $pkgdir/usr/share/fonts/OTF/{} \;
     install -Dm644 "OFL.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
