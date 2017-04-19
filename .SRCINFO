@@ -1,0 +1,15 @@
+pkgbase = otf-saab
+	pkgdesc = Saab is the first ever freely available, Unicode 4.0 compliant, OpenType, Gurmukhi (Punjabi) font.
+	pkgver = 0.91
+	pkgrel = 1
+	url = http://guca.sourceforge.net/typography/fonts/saab/
+	install = otf-saab.install
+	arch = any
+	license = GPL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://prdownloads.sourceforge.net/guca/saab.0.91.otf
+	md5sums = 1c75f83212904341ce7fe9e77a0f8146
+
+pkgname = otf-saab
+
