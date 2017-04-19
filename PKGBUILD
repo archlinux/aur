@@ -1,11 +1,11 @@
 # Maintainer: Christoph W <c w e g e n e r at gmail dot com>
 # Maintainer: Gary van der Merwe <g a r y v d m at gmail dot com>
 
-pkgbase=('python-requests_ntlm')
-pkgname=('python-requests_ntlm' 'python2-requests_ntlm')
+pkgbase=('python-requests-ntlm')
+pkgname=('python-requests-ntlm' 'python2-requests-ntlm')
 _module='requests_ntlm'
 pkgver='1.0.0'
-pkgrel=2
+pkgrel=3
 pkgdesc="This package allows for HTTP NTLM authentication using the requests library."
 url="https://github.com/requests/requests-ntlm"
 makedepends=('python-setuptools' 'python2-setuptools')
@@ -26,16 +26,16 @@ build() {
     python2 setup.py build
 }
 
-package_python-requests_ntlm() {
+package_python-requests-ntlm() {
     depends+=('python' 'python-requests' 'python-ntlm-auth')
     cd "${srcdir}/${_module}-${pkgver}"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/python-requests_ntlm/LICENSE"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/python-requests-ntlm/LICENSE"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
-package_python2-requests_ntlm() {
+package_python2-requests-ntlm() {
     depends+=('python2' 'python2-requests' 'python2-ntlm-auth')
     cd "${srcdir}/${_module}-${pkgver}-python2"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/python2-requests_ntlm/LICENSE"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/python2-requests-ntlm/LICENSE"
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }

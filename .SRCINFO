@@ -1,7 +1,7 @@
-pkgbase = python-requests_ntlm
+pkgbase = python-requests-ntlm
 	pkgdesc = This package allows for HTTP NTLM authentication using the requests library.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/requests/requests-ntlm
 	arch = any
 	license = custom:ISC License (ISCL)
@@ -10,13 +10,13 @@ pkgbase = python-requests_ntlm
 	source = https://files.pythonhosted.org/packages/source/r/requests_ntlm/requests_ntlm-1.0.0.tar.gz
 	md5sums = 62b45ae988960b4363d944ddea3c9a28
 
-pkgname = python-requests_ntlm
+pkgname = python-requests-ntlm
 	depends = 
 	depends = python
 	depends = python-requests
 	depends = python-ntlm-auth
 
-pkgname = python2-requests_ntlm
+pkgname = python2-requests-ntlm
 	depends = 
 	depends = python2
 	depends = python2-requests
