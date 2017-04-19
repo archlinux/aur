@@ -1,7 +1,7 @@
 # Maintainer: Johannes Sauer <sauer@ient.rwth-aachen.de>
 pkgname=yuview-git 
 _actualPkgname=YUView
-pkgver=r670.8b12c88
+pkgver=r1117.b4b8918
 pkgrel=1
 pkgdesc="The Free and Open Source Cross Platform YUV Viewer with an advanced analytics toolset"
 arch=('x86_64')
