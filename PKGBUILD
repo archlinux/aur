@@ -2,8 +2,8 @@
 # Contributor: Mizuchi <ytj000+AUR@gmail.com>
 
 pkgname=vim-startify-git
-pkgver=1.0.r1.ga58f92e
-pkgrel=3
+pkgver=1.1.r127.gf80b0cb
+pkgrel=2
 epoch=1
 pkgdesc='A fancy start screen for Vim.'
 arch=('any')
