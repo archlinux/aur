@@ -17,6 +17,7 @@ pkgbase = fife-git
 	depends = openal
 	depends = swig
 	depends = python
+	depends = python-future
 	depends = zlib
 	depends = libgl
 	depends = libpng
