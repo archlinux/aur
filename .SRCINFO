@@ -8,6 +8,7 @@ pkgbase = libxfce4ui-git
 	license = GPL2
 	makedepends = intltool
 	makedepends = gtk-doc
+	makedepends = xfce4-dev-tools>=4.12.0
 	depends = libxfce4util>=4.12.0
 	depends = gtk2>=2.24.0
 	depends = xfconf>=4.12.0

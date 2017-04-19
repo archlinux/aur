@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://git.xfce.org/xfce/libxfce4ui/tree/README"
 license=('GPL2')
 depends=('libxfce4util>=4.12.0' 'gtk2>=2.24.0' 'xfconf>=4.12.0' 'libsm' 'hicolor-icon-theme')
-makedepends=('intltool' 'gtk-doc')
+makedepends=('intltool' 'gtk-doc' 'xfce4-dev-tools>=4.12.0')
 optdepends=('gtk3>=3.2.0: GTK+ 3 support'
             'startup-notification>=0.4: startup notification library')
 provides=("libxfce4ui=${pkgver}")
