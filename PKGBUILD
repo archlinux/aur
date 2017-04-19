@@ -1,7 +1,7 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=otf-bravura
-pkgver=1.18
+pkgver=1.204
 pkgrel=1
 pkgdesc="an SMuFL compliant music font designed by Daniel Spreadbury at Steinberg"
 arch=('any')
@@ -9,7 +9,7 @@ url="http://www.smufl.org/fonts/"
 license=('OFL')
 depends=('fontconfig' 'xorg-font-utils')
 source=("http://www.smufl.org/files/bravura-${pkgver}.zip")
-sha256sums=('abf55d5e01db584c9a00a7395bfc64b667e1b35240a7d188e8eb393a8fbb51b6')
+sha256sums=('d9e13fa8be3185169ae761eee684ed3d1a6f2f32b7b861186da3610e462f0ee7')
 
 post_install() {
   echo -n "Updating font cache... "
@@ -32,4 +32,3 @@ package() {
     find . -name '*.otf' -execdir install -Dm644 {} $pkgdir/usr/share/fonts/OTF/{} \;
     install -Dm644 "OFL.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
