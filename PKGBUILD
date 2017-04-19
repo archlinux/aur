@@ -21,5 +21,6 @@ depends=('esotope-bfc-git'    # handle Brainfuck sources
          'perl'               # handle Perl sources
          'php'                # handle PHP sources
          'python2'            # handle Brainfuck sources
-         'ruby')              # handle Ruby sources
+         'ruby'               # handle Ruby sources
+         'rust')              # handle Rust sources
 
