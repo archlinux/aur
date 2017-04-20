@@ -89,7 +89,7 @@ package() {
   cd "${pkgdir}/opt/r-devel/lib/R/etc"
   for i in *; do
     mv -f ${i} "${pkgdir}/etc/R-devel"
-    ln -s /etc/R/${i} ${i}
+    ln -s /etc/R-devel/${i} ${i}
   done
 
   # Install ld.so.conf.d file to ensure other applications access the shared lib
