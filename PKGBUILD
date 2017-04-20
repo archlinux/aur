@@ -1,20 +1,22 @@
-# Maintainer: 3ED <krzysztof1987 at gmail dot com>
+# Maintainer: 3ED <krzysztofas at protonmail dot com>
 #
 pkgname=perl-shell-perl
-_lastauthor=R/RS/RSAVAGE
+_author=FERREIRA
 _pkgname=Shell-Perl
-pkgver=0.0023
-pkgrel=2
+pkgver=0.003
+pkgrel=1
 pkgdesc='A read-eval-print loop in Perl '
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-class-accessor' 'perl-file-homedir' 'perl-path-class' 'perl-file-slurp')
+depends=('perl-class-accessor' 'perl-file-homedir' 'perl-path-class')
 makedepends=('perl-extutils-makemaker')
 checkdepends=('perl-test-deep')
-url="http://search.cpan.org/dist/${_pkgname}/"
-source=(http://search.cpan.org/CPAN/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tgz)
-sha256sums=('9ccdf053f9d924c052850a832d8e6062ea903c7c91df1d3ac6c53980fa40288c')
+url="https://metacpan.org/release/${_pkgname}"
+
+_lastauthor=${_author:0:1}/${_author:0:2}/${_author}
+source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
+sha256sums=('eff9c908a95792f9d45fdec33529f92fed0e1b995cd2c7cffc942c32945ceaff')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
