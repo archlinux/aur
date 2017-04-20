@@ -3,13 +3,13 @@
 
 pkgname=distrho-vst-git
 pkgver=r357.bef9436
-pkgrel=1
+pkgrel=2
 pkgdesc="DISTRHO VST audio plugins ports"
 arch=('i686' 'x86_64')
 url="http://distrho.sourceforge.net/"
 license=('GPL' 'LGPL')
 depends=('freetype2' 'alsa-lib' 'libxext')
-makedepends=('premake3' 'git' 'libxinerama' 'libxrender' 'libxcursor' 'steinberg-vst36')
+makedepends=('premake3' 'git' 'libxinerama' 'libxrender' 'libxcursor' 'steinberg-vst36' 'ladspa')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" "distrho-vst-git" "distrho-plugins-vst-git")
 source=("${pkgname%-*}::git://github.com/DISTRHO/DISTRHO-Ports")

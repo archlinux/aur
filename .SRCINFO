@@ -1,7 +1,7 @@
 pkgbase = distrho-vst-git
 	pkgdesc = DISTRHO VST audio plugins ports
 	pkgver = r357.bef9436
-	pkgrel = 1
+	pkgrel = 2
 	url = http://distrho.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = distrho-vst-git
 	makedepends = libxrender
 	makedepends = libxcursor
 	makedepends = steinberg-vst36
+	makedepends = ladspa
 	depends = freetype2
 	depends = alsa-lib
 	depends = libxext
