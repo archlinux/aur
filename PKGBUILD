@@ -2,7 +2,7 @@
 
 pkgname=python-tkencfs-git
 _gitname=tkencfs
-pkgver=0.9.r5.g648ebdc
+pkgver=0.9.r8.g081e649
 pkgrel=1
 pkgdesc='EncFS GUI for encrypted directory mounting'
 arch=('any')
