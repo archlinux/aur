@@ -2,7 +2,7 @@
 
 pkgname=kreport
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A framework for creation and generation of reports in multiple formats"
 arch=(i686 x86_64)
 url="http://www.kexi-project.org/"
@@ -10,8 +10,9 @@ license=(GPL2)
 depends=(kproperty qt5-declarative)
 makedepends=(extra-cmake-modules python2 ki18n marble-common)
 optdepends=('marble-common: support for maps in reports')
-source=("http://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz")
-sha1sums=('08f2cda7cd14bafcfb8afc85d851192a3dba7ca5')
+source=("http://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz"{,.sig})
+sha1sums=('08f2cda7cd14bafcfb8afc85d851192a3dba7ca5'
+          'SKIP')
 validpgpkeys=(4866BAF713B465677A4059643C7C0E201B6524DB) # Jarosław Staniek <staniek@kde.org>
 
 prepare() {
