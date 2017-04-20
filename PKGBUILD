@@ -1,15 +1,15 @@
-# Maintainer: André Silva <emulatorman@parabola.nu>
-# Contributor: Nicolás Reynolds <fauno@kiwwwi.com.ar>
-# Contributor: Sorin-Mihai Vârgolici <smv@yobicore.org>
-# Contributor: Michał Masłowski <mtjm@mtjm.eu>
-# Contributor: Márcio Silva <coadde@parabola.nu>
-# Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
+# Maintainer: André Silva <emulatorman@riseup.net>
+# Contributor: Márcio Silva <coadde@riseup.net>
+# Contributor (Parabola): Nicolás Reynolds <fauno@kiwwwi.com.ar>
+# Contributor (Parabola): Sorin-Mihai Vârgolici <smv@yobicore.org>
+# Contributor (Parabola): Michał Masłowski <mtjm@mtjm.eu>
+# Contributor (Parabola): Luke Shumaker <lukeshu@sbcglobal.net>
 
 # Based on linux package
 
 pkgbase=linux-libre-nand         # Build stock kernel
 _pkgbasever=4.10-gnu
-_pkgver=4.10.8-gnu
+_pkgver=4.10.11-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -28,12 +28,12 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
-        "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm"
-        "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig"
-        "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm"
-        "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm.sig"
-        "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm"
-        "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig"
+        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_clut224.ppm"
+        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_clut224.ppm.sig"
+        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_mono.pbm"
+        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_mono.pbm.sig"
+        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_vga16.ppm"
+        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_vga16.ppm.sig"
         # the main kernel config files
         'config.i686' 'config.x86_64'
         # pacman hook for initramfs regeneration
@@ -44,7 +44,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch')
 sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf5811fdae48fafd5a8e00d18ed9ac2e1ad4b12a657f322eb234384316ad131e0'
             'SKIP'
-            '758d1bc648695d7c49c7f4c46bd99286d81ff6d5001e8932b813f7473c136e6e379756e93c442e62b2be03b5b417a637433af18c46e3ea96e1b84357ec16f785'
+            '17b2fd74ce2485cee053e851687e83fe2d08fd3d6ebe0b8b9eed4919bd756f6be10024d9a2d713f0ded817f1170a04d5143869e46e72277dce612235de9de4af'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -130,7 +130,7 @@ _package() {
   [ "${pkgbase}" = "linux-libre" ] && groups=('base' 'base-openrc')
   depends=('coreutils' 'linux-libre-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}" "LINUX-ABI_VERSION=${_archpkgver}")
+  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}" "kernel=${_archpkgver}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
