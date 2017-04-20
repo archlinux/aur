@@ -7,9 +7,9 @@
 # nethack Contributor : Nick Erdmann <erdmann@date.upb.de>
 
 pkgname=jnethack
-pkgver=3.6.0_0.6
+pkgver=3.6.0_0.8
 _nethackver=${pkgver/_*/}
-pkgrel=6
+pkgrel=1
 pkgdesc='Japanized Nethack, A single player dungeon exploration game'
 arch=('i686' 'x86_64')
 url="http://jnethack.osdn.jp/"
@@ -23,7 +23,7 @@ source=("http://downloads.sourceforge.net/${pkgname#j}/${pkgname#j}-${_nethackve
         ${pkgname}-${pkgver//_/-}.diff.gz::"https://osdn.jp/frs/redir.php?m=ymu&f=%2Fjnethack%2F65948%2F${pkgname}-${pkgver//_/-}.diff.gz"
         "https://github.com/tung/nethack360-statuscolors/compare/master...statuscolors2.diff")
 md5sums=('d42147b26e5fb4746fb72536ce145984'
-         'fd6edba028a4a269021306e567613fdd'
+         '0ba570a714c27f32933d7f49b80ce6f2'
          '36008a4dacd9419b43c64515ba64bc53')
 
 prepare() {
