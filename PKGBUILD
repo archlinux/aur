@@ -1,7 +1,7 @@
 # Maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=libinput-git
-pkgver=1.5.2.r71.g738a39f
+pkgver=1.7.0.r29.g7944d89
 pkgrel=1
 pkgdesc='A library to handle input devices in Wayland compositors'
 arch=(i686 x86_64)
@@ -22,7 +22,7 @@ pkgver() {
 build() {
 	cd libinput
 
-	./autogen.sh --prefix=/usr --disable-static
+	./autogen.sh --prefix=/usr --disable-static --disable-tests
 	make
 }
 
