@@ -1,6 +1,6 @@
 pkgbase = jwildfire
 	pkgdesc = Fractal flame image and animation processor written in Java
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = http://www.andreas-maschke.com
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = jwildfire
 	depends = bash
 	provides = jwildfire
 	conflicts = jwildfire
-	source = http://www.andreas-maschke.de/java/j-wildfire-3.01.zip
+	source = http://www.andreas-maschke.de/java/j-wildfire-3.02.zip
 	source = https://raw.githubusercontent.com/thargor6/JWildfire/master/Delphi/jwildfire_icon.png
-	sha256sums = 2a1ef508cdb20417d729a7ef8cdc0b775418a1a38f4c7babd75366e29b802346
+	sha256sums = a4ef4d4b9d2e11b301db6d76cba07896f5571f13e6f5c99f334a3d5e174738cd
 	sha256sums = c4b30c591d3f00ca163f8b48da7980e0a6f327552aa7e03828d2c5b3f01c66e8
 
 pkgname = jwildfire
