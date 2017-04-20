@@ -1,8 +1,8 @@
-# Maintainer: Leonardo Vieira <leosanvieira at gmail dot com>
+# Maintainer: Leonardo Santana Vieira <leosanvieira at gmail dot com>
 
 pkgname=imagescan-plugin-networkscan
 pkgver=1.1.0
-_pkgver=1.3.18
+_pkgver=1.3.19
 pkgrel=1
 _fedrel=25
 pkgdesc="Plugin for using Epson scanners with Image Scan v3 over network"
@@ -11,25 +11,21 @@ url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=("custom:AVASYSPL")
 depends=("imagescan")
 install=imagescan-plugin-networkscan.install
+source=("imagescan-plugin-networkscan.install")
+source_x86_64=("https://download2.ebz.epson.net/imagescanv3/fedora/latest1/rpm/x64/imagescan-bundle-fedora-${_fedrel}-${_pkgver}.x64.rpm.tar.gz")
+source_i686=("https://download2.ebz.epson.net/imagescanv3/fedora/latest1/rpm/x86/imagescan-bundle-fedora-${_fedrel}-${_pkgver}.x86.rpm.tar.gz")
+md5sums=('f608c4458ec47603ce868e443d42ccd0')
+md5sums_i686=('b785e96f3133a0e9a4c545dbeb7883b8')
+md5sums_x86_64=('43d980fb835926fed0f06f5ebb8880e0')
 if [[ ${CARCH} = "x86_64" ]]; then
-    _pkgarch="x64"
-    _arch="x86_64"
-    md5sums=('b9d11620b33125746b14e1aa6d6b0077'
-             'f608c4458ec47603ce868e443d42ccd0')
-    source=("https://download2.ebz.epson.net/imagescanv3/fedora/latest1/rpm/${_pkgarch}/imagescan-bundle-fedora-${_fedrel}-${_pkgver}.${_pkgarch}.rpm.tar.gz"
-            "imagescan-plugin-networkscan.install")
+  _pkgarch="x64"
 else
-    _pkgarch="x86"
-    _arch="i686"
-    md5sums=('08899d5746320ef460544321e6b51288'
-             'f608c4458ec47603ce868e443d42ccd0')
-    source=("https://download2.ebz.epson.net/imagescanv3/fedora/latest1/rpm/${_pkgarch}/imagescan-bundle-fedora-${_fedrel}-${_pkgver}.${_pkgarch}.rpm.tar.gz"
-            "imagescan-plugin-networkscan.install")
+  _pkgarch="x86"
 fi
 
 prepare() {
   cd $srcdir/imagescan-bundle-fedora-${_fedrel}-${_pkgver}.${_pkgarch}.rpm/plugins
-  bsdtar -xf ${pkgname}-${pkgver}-1epson4fedora${_fedrel}.${_arch}.rpm
+  bsdtar -xf ${pkgname}-${pkgver}-1epson4fedora${_fedrel}.${CARCH}.rpm
 }
 
 package() {
