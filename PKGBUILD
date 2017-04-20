@@ -2,7 +2,7 @@
 # Contributor: Dan Vratil <vratil@progdansoft.com>
 
 pkgname=k3b-git
-pkgver=17.04.00.r6094.05b20b27b
+pkgver=17.07.70.r6152.649eb3438
 pkgrel=1
 pkgdesc="Feature-rich and easy to handle CD burning application. (Git version)"
 arch=('i686' 'x86_64')
@@ -27,6 +27,7 @@ makedepends=('git'
              )
 optdepends=('cdrdao: for CD DAO mode burning support'
             'libburn: for CD, DVD & BluRay burning support'
+            'dvd+rw-tools: for CD, DVD & BluRay burning support'
             'normalize: for WAV normalization'
             'vcdimager: for VCD burning support'
             'transcode: for advanced MPEG conversion support'
