@@ -1,9 +1,9 @@
 # Maintainer: Hui Yiqun <huiyiqun@gmail.com>
 pkgname=nginx-rtmp
 _pkgname=nginx
-pkgver=1.10.3
+pkgver=1.12.0
 _rtmpver=1.1.11
-pkgrel=2
+pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, with nginx-rtmp-module'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -27,13 +27,13 @@ source=($url/download/nginx-$pkgver.tar.gz
         https://github.com/arut/nginx-rtmp-module/archive/v$_rtmpver.tar.gz
         service
         logrotate)
-md5sums=('204a20cb4f0b0c9db746c630d89ff4ea'
+md5sums=('995eb0a140455cf0cfc497e5bd7f94b3'
          'a87ab77c4414f80d394d712cceb39016'
          '09862c34cd9593bc40da81f88c5fc4b2'
          '6a01fb17af86f03707c8ae60f98a2dc2')
 
 _common_flags=(
-  --with-pcre-jit
+  --with-compat
   --with-file-aio
   --with-http_addition_module
   --with-http_auth_request_module
@@ -53,13 +53,16 @@ _common_flags=(
   --with-http_v2_module
   --with-mail
   --with-mail_ssl_module
+  --with-pcre-jit
   --with-stream
+  --with-stream_geoip_module
+  --with-stream_realip_module
   --with-stream_ssl_module
+  --with-stream_ssl_preread_module
   --with-threads
 )
 
 _stable_flags=(
-  --with-ipv6
 )
 
 build() {
@@ -119,8 +122,8 @@ package() {
   gzip -9c man/nginx.8 > "$pkgdir"/usr/share/man/man8/nginx.8.gz
 
   for i in ftdetect indent syntax; do
-    install -Dm644 contrib/vim/${i}/nginx.vim \
-      "${pkgdir}/usr/share/vim/vimfiles/${i}/nginx.vim"
+    install -Dm644 contrib/vim/$i/nginx.vim \
+      "$pkgdir/usr/share/vim/vimfiles/$i/nginx.vim"
   done
 }
 
