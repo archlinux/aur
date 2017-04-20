@@ -8,7 +8,7 @@ pkgdesc="Arc Cyberfox Theme"
 url="https://github.com/horst3180/arc-firefox-theme"
 arch=('x86_64' 'i686')
 license=('Mozilla Public License version 2.0')
-depends=('cyberfox>=52.0')
+depends=('cyberfox>=52')
 makedepends=('autoconf' 'automake' 'unzip' 'zip')
 
 source=("$pkgname-$_pkgver::$url/archive/$_pkgver.tar.gz"

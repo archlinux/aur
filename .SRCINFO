@@ -10,7 +10,7 @@ pkgbase = arc-cyberfox-theme
 	makedepends = automake
 	makedepends = unzip
 	makedepends = zip
-	depends = cyberfox>=52.0
+	depends = cyberfox>=52
 	source = arc-cyberfox-theme-52.20170311::https://github.com/horst3180/arc-firefox-theme/archive/52.20170311.tar.gz
 	source = arc-cyberfox-theme.patch
 	md5sums = ad0d6f7ff9958c39541019aa19dc7680
