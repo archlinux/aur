@@ -1,0 +1,15 @@
+pkgbase = sshedit-gtk-git
+	pkgdesc = GTK+ SSH Configuration Editor (GIT version)
+	pkgver = 4.a68833e
+	pkgrel = 1
+	url = https://github.com/esmorga/sshedit-gtk
+	arch = any
+	license = MIT
+	depends = python-pip
+	depends = python-gobject
+	depends = git
+	source = https://github.com/esmorga/sshedit-gtk/archive/master.zip
+	md5sums = SKIP
+
+pkgname = sshedit-gtk-git
+
