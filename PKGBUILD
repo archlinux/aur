@@ -4,24 +4,22 @@
  
 pkgname=nvidia-304xx-lqx
 pkgver=304.135
-_extramodules=extramodules-4.9-lqx
-pkgrel=1
+_extramodules=extramodules-4.10-lqx
+pkgrel=2
 _pkgdesc="NVIDIA 304xx drivers for linux-lqx."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-lqx>=4.9' 'linux-lqx<4.10' "nvidia-304xx-libgl" "nvidia-304xx-utils=${pkgver}")
-makedepends=('linux-lqx-headers>=4.9' 'linux-lqx-headers<4.10')
+depends=('linux-lqx>=4.10' 'linux-lqx<4.11' "nvidia-304xx-libgl" "nvidia-304xx-utils=${pkgver}")
+makedepends=('linux-lqx-headers>=4.10' 'linux-lqx-headers<4.11')
 conflicts=('nvidia-lqx' 'nvidia-340xx-lqx')
 license=('custom')
 install=nvidia-304xx-lqx.install
 options=(!strip)
-source=('disable-mtrr.patch'
-         'drm-driver-legacy.patch')
+source=('kernel_4.10.patch')
 source_i686=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums=('c4becf1145a139cc0121be9ad340bcd8'
-         'a5328715e210e36e5d9bbed0f9e55223')
+md5sums=('a8d331a75fbc541f1730e95b95e9ef14')
 md5sums_i686=('0e2082ae8490b135eb306befe6db56e1')
 md5sums_x86_64=('8ee9bd0b020508bca9953181811422fa')
 
@@ -34,9 +32,7 @@ prepare() {
     cd "${_pkg}"
     # patches here
 
-    # FS#47092
-    #(cd kernel; patch -p1 --no-backup-if-mismatch -i "$srcdir"/disable-mtrr.patch)
-    (cd kernel; patch -p1 --no-backup-if-mismatch -i "$srcdir"/drm-driver-legacy.patch)
+    patch -Np1 --no-backup-if-mismatch -i ../kernel_4.10.patch
 
 }
 
