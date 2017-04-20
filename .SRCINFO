@@ -1,0 +1,30 @@
+pkgbase = openjk-bin
+	pkgdesc = Open Source Jedi Knight II + III Engine - pre built
+	pkgver = 2017.03.20.855bf349
+	pkgrel = 1
+	url = https://github.com/JACoders/OpenJK
+	arch = x86_64
+	license = GPL
+	makedepends = tr
+	depends = libgl
+	depends = openal
+	depends = zlib
+	depends = sdl2
+	depends = libjpeg
+	depends = glu
+	optdepends = libpng
+	provides = openjk
+	conflicts = openjk-git
+	source = https://builds.openjk.org/openjk-2017-03-20-855bf349-linux-64.tar.gz
+	source = openjkmp.png
+	source = openjksp.png
+	source = openjkmp.desktop
+	source = openjksp.desktop
+	sha256sums = 9a209cd0d96f5237e0e1c9b5c8ef74bba8956d431d5381f22fb74137bf981f68
+	sha256sums = 0e82e720777eeb2043c2c25cdbce702c6d4ca077543aedfe51e5c4e96cf03969
+	sha256sums = afb2c1a757720c70798e7f7218f823297a43bc61e0cb192e9443df67c2963903
+	sha256sums = d3ad7dd270e57d36a22caef21bff17f2eb4acb0ad9087f6a17ca4a0bf9c566fc
+	sha256sums = d03554bd926954218c243a1a97d39ea9700d064a2374f671249a533ebd970375
+
+pkgname = openjk-bin
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=OpenJK Single Player
+Comment="Open Source Jedi Knight II + III Engine - Single Player"
+Exec=openjk_sp
+Icon=openjksp
+Terminal=false
+StartupNotify=false
+Categories=Game
