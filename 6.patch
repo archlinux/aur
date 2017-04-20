@@ -1,0 +1,15 @@
+diff --git a/sonnet/cc/kernels/resampler_op.cc b/sonnet/cc/kernels/resampler_op.cc
+index 4e567ca..e09ce12 100644
+--- a/sonnet/cc/kernels/resampler_op.cc
++++ b/sonnet/cc/kernels/resampler_op.cc
+@@ -48,8 +48,8 @@ struct Resampler2DFunctor<CPUDevice, T>{
+                    const int data_width,
+                    const int data_channels,
+                    const int num_sampling_points){
+-    const int warp_batch_stride = num_sampling_points * 2;
+-    const int data_batch_stride = data_height * data_width * data_channels;
++    int warp_batch_stride = num_sampling_points * 2;
++    int data_batch_stride = data_height * data_width * data_channels;
+     const int output_batch_stride = num_sampling_points * data_channels;
+     const T zero = static_cast<T>(0.0);
+     const T one = static_cast<T>(1.0);

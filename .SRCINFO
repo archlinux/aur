@@ -1,0 +1,27 @@
+pkgbase = python-sonnet-git
+	pkgdesc = TensorFlow-based neural network library.
+	pkgver = 9d209830
+	pkgrel = 1
+	url = https://github.com/deepmind/sonnet
+	arch = i686
+	arch = x86_64
+	license = Apache2
+	makedepends = git
+	makedepends = python-pip
+	makedepends = bazel
+	depends = python-tensorflow
+	depends = gcc-libs
+	depends = python
+	optdepends = cuda: GPU support
+	optdepends = cudnn: GPU support
+	provides = python-sonnet
+	conflicts = python-sonnet
+	source = git+https://github.com/deepmind/sonnet
+	source = 10.patch
+	source = 6.patch
+	md5sums = SKIP
+	md5sums = 59576111303e2ab99bf106fe0dcd5ff8
+	md5sums = 67cb9424d7c8e01f822de1a4d7787c98
+
+pkgname = python-sonnet-git
+
