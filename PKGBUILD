@@ -2,7 +2,7 @@
 # Previous Contributors: kainlite <kainlite@gmail.com>
 
 pkgname=libcouchbase
-pkgver=2.6.2
+pkgver=2.7.4
 pkgrel=1
 pkgdesc="The C library provides fast access to documents in the latest Couchbase Server"
 arch=('i686' 'x86_64')
@@ -13,14 +13,14 @@ depends=('libevent')
 makedepends=('cmake')
 install=$pkgname.install
 source=(
-    "https://github.com/couchbase/libcouchbase/archive/${pkgver}.tar.gz"
+    "http://packages.couchbase.com/clients/c/libcouchbase-${pkgver}.tar.gz"
     "fix_cbc_name_clash.patch"
 )
-sha1sums=('a839bc6bfecb71d853572125aaed6369082ad859'
+sha1sums=('5967f9d7f489f7d842a80415ffb986aa5bcfc704'
           'abee74d11d177a10ee3b3075d50b0e587def2ccb')
 
 build() {
-  tar -xzf ${pkgver}.tar.gz -C "${srcdir}/libcouchbase-${pkgver}"
+  tar -xzf "libcouchbase-${pkgver}.tar.gz" -C "${srcdir}/libcouchbase-${pkgver}"
   cd "${srcdir}/libcouchbase-${pkgver}"
 
   msg2 "Fixing cbc name clash..."
