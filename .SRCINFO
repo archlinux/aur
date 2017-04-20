@@ -13,7 +13,6 @@ pkgbase = clight-git
 	depends = popt
 	depends = libconfig
 	depends = clightd-git
-	depends = xorg-xhost
 	optdepends = geoclue2: to retrieve user location through geoclue2.
 	source = git://github.com/FedeDP/Clight.git
 	sha256sums = SKIP
