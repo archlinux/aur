@@ -16,6 +16,37 @@ using namespace std;
 #define    STANDBY_STATE 2
 #define    MISSED_STATE 3
 
+#define USAGE_STRING "Usage : todo [CMD] || todo [SENTENCE]"            "\n" \
+    "Where CMD can be :"                                                "\n" \
+    "        show                    to show the todo list"             "\n" \
+    "           -- todo"                                                "\n" \
+    "        add [ITEM]              to add a item"                     "\n" \
+    "        remove [STRS]           to remove an item"                 "\n" \
+    "           -- rm"                                                  "\n" \
+    "        check [STRS]            to validate an item"               "\n" \
+    "           -- ck"                                                  "\n" \
+    "        standby [STRS]          to put an item in standby"         "\n" \
+    "           -- st | sb"                                             "\n" \
+    "        uncheck [STRS]          to devalidate an item"             "\n" \
+    "           -- uck"                                                 "\n" \
+    "        miss [STRS]             to set a item as missed"           "\n" \
+    "        set [STRS]              to priorise an item"               "\n" \
+    "                [10 levels of priority 0-9]"                       "\n" \
+    "        checked [STRS]          to show only checked items"        "\n" \
+    "        unchecked [STRS]        to show only unchecked items"      "\n" \
+    "        edit [STRS]             to edit items"                     "\n" \
+    "           -- e"                                                   "\n" \
+    "        clean                   to remove finshed items"           "\n" \
+    "            -- clear | cl"                                         "\n" \
+    ""                                                                  "\n" \
+    "Where SENTENCE must be a sentence starting by a upper latin letter" "\n" \
+    ""                                                                  "\n" \
+    " [STRS] is a list of strings. The action will be applicated to"    "\n" \
+    " every items who contains all the strings of the list."            "\n" \
+    ""                                                                  "\n" \
+    " [ITEM] is a list of strings who formed a todo-item"               "\n"
+
+
 
 struct todo {
     int priorite;
@@ -129,7 +160,7 @@ int main(int argc, char *argv[]) {
         else
             action = 0;
     if( action == -1 ) {
-        cout << "Usage : todo [show,add,remove,check,uncheck,set,clean|clear|cl,checked,unchecked,todo]" << endl;
+        cout << USAGE_STRING << endl;
     } else {
         ifstream file(".todo.txt", ios::in);
 
