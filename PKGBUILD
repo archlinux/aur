@@ -2,7 +2,7 @@
 
 _npmname=csscomb
 pkgname=nodejs-$_npmname
-pkgver=3.1.7
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Coding style formatter for CSS"
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
         'npm'
 )
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
-sha256sums=('4236da60e7003787aa3cb4e15609214646572d19faf4001bc5f471b8ab2c94b1')
+sha256sums=('8276a874964d5a5f36a658a07e2c14988cb248f5902654a4d000b1c28866e3c6')
 noextract=($_npmname-$pkgver.tgz)
 
 package() {
