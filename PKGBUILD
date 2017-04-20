@@ -1,16 +1,16 @@
-# Maintainer: André Silva <emulatorman@parabola.nu>
-# Contributor: Nicolás Reynolds <fauno@kiwwwi.com.ar>
-# Contributor: Sorin-Mihai Vârgolici <smv@yobicore.org>
-# Contributor: Michał Masłowski <mtjm@mtjm.eu>
-# Contributor: Márcio Silva <coadde@parabola.nu>
-# Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
-# Contributor: Luke R. <g4jc@openmailbox.org>
+# Maintainer: André Silva <emulatorman@riseup.net>
+# Contributor: Márcio Silva <coadde@riseup.net>
+# Contributor (Parabola): Nicolás Reynolds <fauno@kiwwwi.com.ar>
+# Contributor (Parabola): Sorin-Mihai Vârgolici <smv@yobicore.org>
+# Contributor (Parabola): Michał Masłowski <mtjm@mtjm.eu>
+# Contributor (Parabola): Luke Shumaker <lukeshu@sbcglobal.net>
+# Contributor (Parabola): Luke R. <g4jc@openmailbox.org>
 
 # Based on linux package
 
 pkgbase=linux-libre-apparmor
 _pkgbasever=4.10-gnu
-_pkgver=4.10.8-gnu
+_pkgver=4.10.11-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -31,12 +31,12 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
-        "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm"
-        "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig"
-        "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm"
-        "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm.sig"
-        "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm"
-        "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig"
+        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_clut224.ppm"
+        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_clut224.ppm.sig"
+        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_mono.pbm"
+        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_mono.pbm.sig"
+        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_vga16.ppm"
+        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_vga16.ppm.sig"
         # the main kernel config files
         'config.i686' 'config.x86_64' 'config.armv7h'
         # pacman hook for initramfs regeneration
@@ -46,8 +46,8 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch'
         # armv7h patches
-        "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
-        "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
+        "https://github.com/coadde/rcn-libre/raw/master/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
+        "https://github.com/coadde/rcn-libre/raw/master/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
         '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
         '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
         '0003-SMILE-Plug-device-tree-file.patch'
@@ -56,11 +56,10 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch'
-        '0009-drm-armada-tracing-fix.patch'
-        '0010-disable-USB3-port-on-ODROID-XU.patch')
+        '0009-disable-USB3-port-on-ODROID-XU.patch')
 sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf5811fdae48fafd5a8e00d18ed9ac2e1ad4b12a657f322eb234384316ad131e0'
             'SKIP'
-            '758d1bc648695d7c49c7f4c46bd99286d81ff6d5001e8932b813f7473c136e6e379756e93c442e62b2be03b5b417a637433af18c46e3ea96e1b84357ec16f785'
+            '17b2fd74ce2485cee053e851687e83fe2d08fd3d6ebe0b8b9eed4919bd756f6be10024d9a2d713f0ded817f1170a04d5143869e46e72277dce612235de9de4af'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -75,18 +74,17 @@ sha512sums=('44d1774a1d43a15322297d351737fbcbf92c6f433266ce2b17587437d433562cf58
             '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '1089ffb0718c6b40a6f2a3080845ebeb1a1561de35a28e46d74ab0232b98719400f85fdbf3a98fafd0105ed0fe11ec0bd726c7cc47a4a79767ab744875e9538e'
+            'cf967533f4dffa8f403d67efeb83e8e33fd01b5b3bbc1c8ca1e416756eea6a27881a2b0d0347e6a660b480afa7a2a43d81f654d8729174556c68274de75ac31d'
             'SKIP'
-            'dd4e2482d6e3d91d00e37e665933515a4fa876d39c036d639f21c48a09f03202f3dec0dbe04b7c60c4b7e1f49617b5f94ace688afacbe33dc6d6818c0c797031'
-            'cf0a3061cef91c04fa5e6d50c4ee235f817cb97f6b7a77f42d42ada707e71bd9731dfafdfcf396e767362998acd8b98ad9942a989c2dd8457e57177c354ec7d2'
-            '6866b84fac93df7eb669f71ed0041270a5f7254bddf6e4f3de7820dbf5696f09eb3051843f7f48d9ae418487ed765b203eccf4bf399d0ca95061ba0399043839'
-            'f41af76bbb6727fa415bb4e7e5da1896a5f01316354d5f34bc55b3f4451e571f2302c4e66c2b949bb330241d4187d507faba83b1584907d1b66a82a60a1c8923'
-            'ddf31c7db4c873c258763ddff4419315af3d06dc28f14f8d48b0d99e35ecd953d02a992da414c8dd1b9fd9f2bb12580393a541a3064051ece1fa6e173fc52ba2'
-            'df749d4d4f71b4514f526941af592cc11eec13214375e7c0088b84558b56508bf444ea70fb93a0c114a03cd4efd559ea816deb670064fa91f02c7b7f7483d57d'
-            'd1c6d28d22724f9d3700f5d8350164ddba7e6f64980a8d25ebb7cbcffa83250125f337e91510a925deb10bc1e30ac999cb18f3427e051e00d82f5bbaf8a848ec'
-            'd14cedaf275ea1337b18a75d72b7610cb96f982896542edc0a59306c10888d62594b8a36197e33d079e6d5a9b5d20f46892b96a2d3aab5258013f0e5991e3f9b'
-            '0a806db7df7761f5dc64b8a3b3860c6c9216cecfe135778f3019e51e1245bcc34980c6124a11447285b18e284547ffc57a4b2c1290b4dd91a55b0237a7007cc9'
-            'c02d0e1d6b399c84323937a81b702fd3ac7c6f9e08254d1697858f829fd045ee33d5952d42eb22558c290efe7fd5d8fdd7695d8ef3526742a67052fb9e303ebe')
+            '1d550ee87d3c35b4022c23feb771f9a40c34bead6eb8dc5e92cd767417723b32bcb7e0608419aa2b8a4f3306c183447d9ae713d33df68102b1c2df4e267cee39'
+            'cca509462861ac85e6229bd2bf5f5e0e4d2d2db182cf1d562f765862eb192ade5917a9e0306375642c1090143fae6826129fd531435658d906e6a8f88982ddef'
+            '8bff227b9b52b7cf9981c7224a1032abce2955488e4c21494f11c07c96d3999fe920d494ff715baa7bf6071d828f7d22533640b7bc9ac0ad7ab47021156e0f69'
+            '6b870843e8bfee9944befaddf3c4544442d550ccb2d91e5b9eddbb7ea5f48115c6815d4635d6418d3cb8d1013e9dbaf6a3c16fb75f778e215a32d582543ed38e'
+            '7864004635ed568d951eb85ba55b342b844a655abe160b30590b1d980afc12cdbc8ce235e76c92d7ff287c3847d31e5085a215ba42c453c60dca079790103d04'
+            'c00a187921dddbf6712b74af4c439d87a646ec8db3e28e59e279f919e889b9369593dabdc1e4943901b3b0a0ed50a3e910fde03e19f74f74de9591799aee9680'
+            'c33811f633adbefad6e6a1dc73e9b64a594fae3dc06b0970f4f59b11372c3c1a626fda8ff2effca09a2a7630d1dbe4d81aaf371eb04a71d72b345576da8521da'
+            'e51b1d296daa73759d9e932a4d0f72f7e4d6b53c7fa0edb0191f0cd69affe6deba2a4dd6a28165d4861d9b7117fc21190997e691d34b32bb9c96b7dc7c358c63'
+            'b36238543e6dcaa3b6086618fb0eab108480d1224898548205f56a174911d38ce140b8206636c093ad6670987e09bd8a55c7d84ab5512bc6cda45260a1031a59')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -127,8 +125,7 @@ prepare() {
     patch -p1 -i "${srcdir}/0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch"
     patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
     patch -p1 -i "${srcdir}/0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch"
-    patch -p1 -i "${srcdir}/0009-drm-armada-tracing-fix.patch"
-    patch -p1 -i "${srcdir}/0010-disable-USB3-port-on-ODROID-XU.patch"
+    patch -p1 -i "${srcdir}/0009-disable-USB3-port-on-ODROID-XU.patch"
   fi
 
   # add freedo as boot logo
@@ -186,7 +183,7 @@ _package() {
   depends=('coreutils' 'linux-libre-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country'
               'apparmor: to configure and enable mandatory access control for programs')
-  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}" "LINUX-ABI_VERSION=${_archpkgver}")
+  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}" "kernel=${_archpkgver}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
