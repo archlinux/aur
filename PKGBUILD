@@ -1,7 +1,7 @@
 # Maintainer: Hanspeter Portner <dev at open-music-kontrollers dot ch>
 pkgname=patchmatrix
-_pkgcommit=88e908d5fea4b782926ff7fa0a9f17d1679283f4
-pkgver=0.8.0
+_pkgcommit=4ffd9a6e1f48b6620ebd02f111183e627054fa8b
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A JACK patch bay in flow-matrix layout"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ options=()
 install=()
 source=("https://gitlab.com/OpenMusicKontrollers/$pkgname/repository/archive.tar.bz2?ref=$pkgver")
 noextract=()
-md5sums=('974a1f8954de97babaccc246edf1137f')
+md5sums=('480123cca2306ccfe2bc9802645884b3')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver-$_pkgcommit"

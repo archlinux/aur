@@ -1,6 +1,6 @@
 pkgbase = patchmatrix
 	pkgdesc = A JACK patch bay in flow-matrix layout
-	pkgver = 0.8.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://gitlab.com/OpenMusicKontrollers/patchmatrix
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = patchmatrix
 	depends = hicolor-icon-theme
 	depends = libxext
 	depends = libgl
-	source = https://gitlab.com/OpenMusicKontrollers/patchmatrix/repository/archive.tar.bz2?ref=0.8.0
-	md5sums = 974a1f8954de97babaccc246edf1137f
+	source = https://gitlab.com/OpenMusicKontrollers/patchmatrix/repository/archive.tar.bz2?ref=0.10.0
+	md5sums = 480123cca2306ccfe2bc9802645884b3
 
 pkgname = patchmatrix
 
