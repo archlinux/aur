@@ -14,13 +14,13 @@ pkgname = virtualbox-host-modules-lqx
 	pkgdesc = Host kernel modules for VirtualBox running under Linux-lqx.
 	install = host.install
 	license = GPL
-	depends = linux-lqx>=4.9
-	depends = linux-lqx<4.10
+	depends = linux-lqx>=4.10
+	depends = linux-lqx<4.11
 
 pkgname = virtualbox-guest-modules-lqx
 	pkgdesc = Guest kernel modules for VirtualBox running under Linux-lqx.
 	install = guest.install
 	license = GPL
-	depends = linux-lqx>=4.9
-	depends = linux-lqx<4.10
+	depends = linux-lqx>=4.10
+	depends = linux-lqx<4.11
 
