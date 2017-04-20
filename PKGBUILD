@@ -6,8 +6,8 @@
 # Maintainer: Stephen Martin <hwkiller at gmail dot com>
 pkgname=onyx-sem
 _pkgname=onyx
-pkgver=1.0.937
-_pkgver="1.0-937"
+pkgver=1.0.953
+_pkgver="1.0-953"
 pkgrel=6
 pkgdesc="A graphical interface for Structural Equation Modeling"
 arch=('any')
@@ -38,6 +38,6 @@ EOF
 	install -Dm755 $srcdir/${_pkgname}.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg
 	install -Dm 644 $srcdir/LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
 }
-md5sums=('632846c2576ffb43ed1393a9d24ceda9'
+md5sums=('64b9528be389414c58f43f9a1acca7b7'
          'a82f98998f19b746d4f7d7956a38c11c'
          'adc8301181bc7ba30838a0fd327a471c')
