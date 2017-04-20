@@ -16,8 +16,8 @@ optdepends=("java-runtime>=$_major: Run examples"
 options=('!strip')
 source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build-demos/d54c1d3a095b4ff2b6607d096fa80163/jdk-$pkgver-linux-i586-demos.tar.gz")
 source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build-demos/d54c1d3a095b4ff2b6607d096fa80163/jdk-$pkgver-linux-x64-demos.tar.gz")
-md5sums_i686=('477d9862374177c810b0b7d73b4f1e53')
-md5sums_x86_64=('477d9862374177c810b0b7d73b4f1e53')
+md5sums_i686=('9b7b7f6a79603a7e0820083befcf0a1e')
+md5sums_x86_64=('c98a647f5476c34f6052987fb8e61e4d')
 
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 
