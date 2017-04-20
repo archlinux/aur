@@ -1,7 +1,7 @@
-# Maintainer: 3ED <krzysztof1987 _at_ gmail _dot_ com>
+# Maintainer: 3ED <krzysztofas _at_ protonmail _dot_ com>
 
 pkgname=milena-data
-pkgver=0.2.88.4
+pkgver=0.2.88.5
 pkgrel=1
 pkgdesc="Milena is a Polish speech synthesizer for Linux (data)"
 arch=('any')
@@ -9,7 +9,7 @@ url="http://milena.polip.com/"
 license=('GPL')
 source=(http://tts.polip.com/files/${pkgname}-${pkgver}.tar.gz
         10-makefile_prefix.patch)
-sha512sums=('0b1d398838f3b8730de1f3c18581b040195dc1b13bfd87211ff965d4f5ff92ca461606e59dcbe43f3bdc32d16f21aa5df7ab256c8e001d2d5e6af9a48d669ee6'
+sha512sums=('7ee471aa2948637ef4e5589724aeaf40d5f4d7f59fb0f5aba8f5d6b8029be04cdb53a6a37a393071d34c5849e5862ef09fca726b95ba2d6358f5e5e1c79e7249'
             'e52f77d04b45700de3e298840752332ebe4fcbf75ab79d4d806a3f337c82b3df20500ec213d83cad6deecb185826df912d60e7c26ab0d38a0df28b6d6da8e79d')
 
 prepare() {
