@@ -1,7 +1,7 @@
 # Maintainer: Ecmel B. CANLIER <aur+ocemu(at)admicos.cf>
 pkgname="ocemu"
 pkgver=0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenComputers Emulator in Lua"
 arch=("any")
 url="https://github.com/gamax92/OCEmu"
@@ -28,7 +28,7 @@ package() {
 
     echo "#!/bin/bash" >> "$_bindir/$pkgname"
     echo "cd /usr/share/$pkgname/src" >> "$_bindir/$pkgname"
-    echo "lua5.2 boot.lua" >> "$_bindir/$pkgname"
+    echo "lua5.2 boot.lua ~/.local/share/ocemu/\$1" >> "$_bindir/$pkgname"
 
     chmod +x "$_bindir/$pkgname"
 }
