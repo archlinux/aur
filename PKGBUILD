@@ -2,7 +2,7 @@
 
 pkgname=linux-source
 _pkgname=linux
-pkgver=4.8.4
+pkgver=4.10.11
 pkgrel=1
 pkgdesc='Source files for the Linux Kernel'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=(
 )
 
 sha256sums=(
-'c1cb8d3d912ab23b7bc689b5473828ea6cc9485f13137e9c9892a2d4d81422b0'
+'1191e7dff210677b1fca8e0ab8e9e8cc50a6d8fa4f92e7fb3725439b5b2362fe'
 'SKIP')
 
 validpgpkeys=(
