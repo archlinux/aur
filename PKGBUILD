@@ -3,13 +3,13 @@
 
 pkgname=oki-400-pcl
 pkgver=5
-pkgrel=2
+pkgrel=3
 pkgdesc="CUPS drivers for OKI B4000, B400 and MB400 PCL printers"
 arch=('any')
 url="http://www.okidata.com/mkt/html/nf/Drivers.html"
 license=('GPL')
 depends=('cups' 'ghostscript' 'coreutils')
-source=("ftp://ftp2.okidata.com/pub/drivers/linux/SFP/monochrome/desktop/MB400PCLv${pkgver}.tar.gz")
+source=("https://www.sammyshp.de/misc/OKI400/MB400PCLv${pkgver}.tar.gz")
 sha1sums=('77673f953e89393d8fa3069441cd1a21f3a73b09')
 
 build() {
