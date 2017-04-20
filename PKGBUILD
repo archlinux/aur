@@ -9,9 +9,9 @@ _lang=ru
 
 _release_year=2017
 _release_month=04
-_release_day=19
-_release_time=$_release_year-$_release_month-$_release_day-07-47-07
-_buildid=20170419074707
+_release_day=20
+_release_time=$_release_year-$_release_month-$_release_day-07-46-43
+_buildid=20170420074643
 
 pkgname="${_name}-${_channel}-${_lang}"
 _pkgname="${_name}-${_channel}"
@@ -41,8 +41,8 @@ source_i686=("$_base_url/firefox-54.0a2.$_lang.linux-i686.tar.bz2")
 sha512sums=('1c0eef1129625ecfb70809dbb9ab764054d1680f05b7807f503145b5889bc42babb268cb4e2b7b102f90c50cc249114f773d91992e9ac41b5a6966e3b5c95675'
             '749bc9bb180909c7319a1576e9df1e4cb06488b33b8dd61b8f1a63e4df9208cb9bb6d0c4ecef3fbe388f78368aef4562ae1dbfda1dbbfa649aa9d247c4903610')
 
-sha512sums_i686=('38bcae57a3b405226aca9dccf5bbb56627041e0b90fea638c02ac550a7f2097a0773cf68b42c53c53a707e4b637e588c2b0d256f7c7e2337887d2069a1a7aa6d')
-sha512sums_x86_64=('beebd18101257b2cfda00d49887979368688f7fdc012bf662b257ce190a767dbba53b464a55aec6b93ded9d4c1d4340454030d27ebd139d9bbc272fdaca6bc75')
+sha512sums_i686=('SKIP')
+sha512sums_x86_64=('SKIP')
 
 pkgver() {
   cd "${_name}"
