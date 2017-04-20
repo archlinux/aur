@@ -1,8 +1,8 @@
 # Maintainer: Denis Demidov <dennis.demidov@gmail.com>
 
 pkgname=amgcl-git
-pkgver=20150713
-pkgrel=3
+pkgver=20170420
+pkgrel=4
 pkgdesc='C++ library for solving large sparse linear systems with algebraic multigrid method'
 arch=('i686' 'x86_64')
 url='http://github.com/ddemidov/amgcl'
@@ -13,20 +13,19 @@ optdepeneds=('vexcl-git': 'vexcl backend'
              'openmpi: distributed memory solver')
 provides=('amgcl')
 makedepends=('git' 'cmake' 'boost')
-source=()
+source=(git+https://github.com/ddemidov/amgcl.git)
+md5sums=('SKIP')
 
-_gitroot='git://github.com/ddemidov/amgcl.git'
-_gitname='amgcl'
+build() {
+    cd "${srcdir}/amgcl"
+    ls
+    mkdir -p build
+    cd build
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+    make
+}
 
 package() {
-  msg "Connecting to GIT server..."
-  rm -rf $_gitname
-  git clone --depth=1 $_gitroot
-  msg "GIT checkout done or server timeout"
-
-  cd $_gitname
-  install -d "$pkgdir/usr/include/amgcl"
-  find amgcl -type f -exec install -Dm644 '{}' "$pkgdir/usr/include/{}" ';' || return 1
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$_gitname/LICENSE.md" || return 1
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$_gitname/README.md" || return 1
+    cd "${srcdir}/amgcl/build"
+    DESTDIR=${pkgdir} make install
 }
