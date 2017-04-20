@@ -1,14 +1,14 @@
 # Maintainer: Charlie Li <vishwin AT vishwin POINT info>
 
 pkgname=cockroachdb
-pkgver=20170413
+pkgver=20170420
 pkgrel=1
 pkgdesc="An open source, survivable, strongly consistent, scale-out SQL database"
 arch=('x86_64')
 url="https://www.cockroachlabs.com/"
 license=('Apache')
 depends=('gcc-libs>=6.0')
-makedepends=('gcc>=6.0' 'git>=1.8' 'go')
+makedepends=('gcc>=6.0' 'git>=1.8' 'go' 'make' 'cmake')
 source=("${pkgname}::git+https://github.com/cockroachdb/cockroach.git#tag=beta-${pkgver}")
 sha256sums=('SKIP')
 
