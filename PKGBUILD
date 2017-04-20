@@ -11,7 +11,7 @@ license=('BSD')
 depends=('p7zip' 'firejail')
 optdepends=('ffmpeg: H264/AAC/MP3 decoding')
 provides=("ungoogled-chromium")
-source=($pkgname::"ungoogled-chromium::https://github.com/Eloston/ungoogled-chromium/releases/download/$pkgver-1/ungoogled-chromium_55.0.2883-75-1_linux_x64_9Morello.tar.xz"
+source=($pkgname::"https://github.com/Eloston/ungoogled-chromium/releases/download/$pkgver-1/ungoogled-chromium_55.0.2883-75-1_linux_x64_9Morello.tar.xz"
         'ungoogled.desktop' 'uchromium.sh')
 sha256sums=('93448949d64b7c08ee4fa2026ca82e68ab47a32d1f2442bb116e53427859ebe2'
             'ddb7b46bd8d986dd832f8b71dd835396f00a4abf84747c5044c20224c9b95343'
