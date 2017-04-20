@@ -1,0 +1,23 @@
+pkgbase = let-me-do
+	pkgdesc = Let someone else take control of your computer
+	pkgver = 0.0
+	pkgrel = 1
+	url = https://l0l022.github.io/let-me-do/
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = polkit
+	depends = openssh
+	depends = iptables
+	depends = xclip
+	depends = zenity
+	depends = miniupnpc
+	depends = x11vnc
+	depends = gettext
+	depends = xdg-utils
+	source = let-me-do::git+https://github.com/L0L022/let-me-do.git
+	md5sums = SKIP
+
+pkgname = let-me-do
+
