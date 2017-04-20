@@ -1,9 +1,9 @@
-# Mantainer: 3ED <krzysztof1987 at gmail dot com>
-
+# Maintainer: 3ED <krzysztofas at protonmail dot com>
+#
 pkgname=perl-www-offliberty
-_lastauthor=M/MG/MGV
+_author=MGV
 _pkgname=WWW-Offliberty
-pkgver=1.000003
+pkgver=1.000004
 pkgrel=1
 pkgdesc="a simple interface to the offliberty.com download service"
 arch=('any')
@@ -13,8 +13,10 @@ depends=('perl-html-tree')
 checkdepends=('perl-test-requiresinternet')
 makedepends=('perl-extutils-makemaker')
 url="https://metacpan.org/release/${_pkgname}"
+
+_lastauthor=${_author:0:1}/${_author:0:2}/${_author}
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('9719bd5349a62be238cb0ba3ad05d32fc9747edf509fae0dfb6e31fe647c05b0')
+sha256sums=('b6b81527fee410553b8b4a044d47cb454d020438f829ca3773865be0a9c0fc8f')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
