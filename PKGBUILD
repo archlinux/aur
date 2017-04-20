@@ -1,9 +1,9 @@
-# Maintainer: 3ED <krzysztof1987 at gmail dot com>
+# Maintainer: 3ED <krzysztofas at protonmail dot com>
 #
 pkgname=perl-rinci
-_lastauthor=P/PE/PERLANCAR
+_author=PERLANCAR
 _pkgname=Rinci
-pkgver=1.1.81
+pkgver=1.1.84
 pkgrel=1
 pkgdesc='Language-neutral metadata for your code entities'
 arch=('any')
@@ -11,8 +11,10 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-defhash' 'perl-sah')
 url="https://metacpan.org/release/${_pkgname}"
+
+_lastauthor=${_author:0:1}/${_author:0:2}/${_author}
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha512sums=('cdf78ff2790ecd89a65492b086ba9d15608e1e58e8eef66c801709e7fd4c7d1b70dbc7e129f4eb77a8cbc9c31fc2d618379c45cf10bcb075c380f11e7ad7f982')
+sha512sums=('72ac08fe4045eb9bbe5efb29b8e0288c86763d1b9b615945b9ddcb1eaa0687304dccbc23a70ef3a1d9aba40da49a7051f10aff25f4132d5686cdede6cdca0a55')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
