@@ -1,0 +1,11 @@
+--- Makefile	2017-04-20 18:53:41.661375694 +0200
++++ Makefile.new	2017-04-20 23:47:04.867298921 +0200
+@@ -10,7 +10,7 @@
+ CONTRIB_TESTS = $(patsubst test/slime-%-tests.el,%,$(wildcard test/slime-*.el))
+ SLIME_VERSION=$(shell grep "Version:" ../slime.el | grep -E -o "[0-9.]+$$")
+ 
+-ELFILES := $(shell find . -type f -iname "*.el")
++ELFILES := $(shell find . -type f -iname "*.el"|grep -v hyperdoc)
+ ELCFILES := $(patsubst %.el,%.elc,$(ELFILES))
+ 
+ %.elc: %.el

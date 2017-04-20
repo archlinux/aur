@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=slime-git
-pkgver=2.19.6.g0f3459f5
+pkgver=2.19.11.g90771f1a
 pkgrel=1
 pkgdesc="The Superior Lisp Interaction Mode for Emacs - from git"
 arch=('any')
@@ -16,22 +16,27 @@ optdepends=('awk: for recreating the documentation'
 provides=('slime')
 conflicts=('slime')
 install=slime.install
-source=("git://github.com/slime/slime")
-md5sums=('SKIP')
-_gitname="slime"
+source=("git://github.com/slime/slime" hyperdoc.patch)
+md5sums=('SKIP'
+         '54d14889a58ad2930861002b5a2c4741')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd ${pkgname%-git}
   echo $(git describe --tags | sed 's|-|.|g'|cut -c2-)
 }
 
+prepare(){
+  cd ${pkgname%-git}/contrib
+  patch -Np0 < "$srcdir"/hyperdoc.patch || true
+}
+
 build() {
-  cd "$srcdir/$_gitname"
+  cd ${pkgname%-git}
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd ${pkgname%-git}
   install -d $pkgdir/usr/share/emacs/site-lisp/slime
   cp -r $srcdir/slime/* \
     $pkgdir/usr/share/emacs/site-lisp/slime
