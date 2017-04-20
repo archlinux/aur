@@ -1,0 +1,7 @@
+pre_install() {
+	echo '>>> ldc017 is the LDC compiler from the LTS branch. It is the last version'
+    echo '>>> that does not require a D compiler to build and has the sole purpose of' 
+	echo '>>> building a modern version of LDC (1.0.0+). It can be installed in parallel'
+    echo '>>> with official ldc package and everything (binaries, libraries, config'
+    echo '>>> files, etc.) is suffixed with "-0.17"'
+}

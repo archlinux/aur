@@ -15,6 +15,7 @@ url="https://github.com/ldc-developers/ldc"
 license=('BSD')
 depends=('libconfig' 'llvm-libs' 'curl')
 makedepends=('git' 'cmake' 'llvm')
+install='ldc017.install'
 backup=("etc/ldc2-0.17.conf")
 options=('staticlibs')
 
