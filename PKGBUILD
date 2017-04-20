@@ -1,9 +1,9 @@
 # Maintainer Robert Booster > boosterdev@linuxmail.org
 # Automatic builder > https://github.com/boosterdev/autobuild
 
-_commit="c97ddcde5eddc6d51c75cccfbc93fecb8adbdfaa"
+_commit="1a59490bb6c0ae15caecc909d1c35950215704ec"
 pkgname="numix-icon-theme-pack"
-pkgver=20170418
+pkgver=20170419
 pkgrel=1
 pkgdesc='Numix project Icon Themes - Updated with Numix Core'
 arch=('any')
