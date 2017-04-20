@@ -8,7 +8,7 @@ pkgname=keybase-git
 pkgdesc='the Keybase Go client, filesystem, and GUI'
 license=('BSD')
 url='https://keybase.io'
-pkgver=1.0.21+13356.a93b17b
+pkgver=1.0.21+13401.a7d6568
 pkgver() {
   "$srcdir/client/packaging/linux/arch/keybase_git_version.sh"
 }
