@@ -8,7 +8,6 @@ pkgdesc="The HTTP load generator"
 arch=('i686' 'x86_64')
 url="https://github.com/httperf/httperf"
 license=('GPL')
-#depends=('libchewing' 'qt5-base' 'hicolor-icon-theme')
 makedepends=('git')
 provides=('httperf')
 conflicts=('httperf')
