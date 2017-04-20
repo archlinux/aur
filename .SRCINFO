@@ -1,15 +1,15 @@
 pkgbase = insomnia
 	pkgdesc = A simple and beautiful REST API and HTTP client
-	pkgver = 5.0.5
+	pkgver = 5.0.10
 	pkgrel = 1
 	url = http://insomnia.rest/
 	arch = x86_64
 	depends = libcurl-compat
 	options = !strip
 	options = !upx
-	source = https://downloads.insomnia.rest/linux/insomnia_5.0.5_amd64.deb
+	source = https://downloads.insomnia.rest/linux/insomnia_5.0.10_amd64.deb
 	source = insomnia.sh
-	md5sums = fcd03774d90c1bb03d5b9a5134737623
+	md5sums = f8f5a3eed8fe27eff5b6b0f2cc053cef
 	md5sums = a1f02a6e1658e95218fca636ea56f5a3
 
 pkgname = insomnia
