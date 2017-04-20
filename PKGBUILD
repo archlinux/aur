@@ -6,7 +6,7 @@
 pkgname=libva-intel-driver-g45-h264
 epoch=1
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="VA-API implementation for Intel G45 chipsets with H264 support."
 arch=('i686' 'x86_64')
 url='https://01.org/linuxmedia/vaapi'
@@ -15,6 +15,7 @@ depends=(libva)
 conflicts=('libva-intel-driver')
 provides=('libva-intel-driver')
 replaces=('libva-intel-driver')
+optdepends=('libva-utils: Applications and Scripts for libva (vainfo and others)')
 source=(https://bitbucket.org/alium/g45-h264/downloads/intel-driver-g45-h264-$pkgver.tar.gz)
 
 prepare () {
