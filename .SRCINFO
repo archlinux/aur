@@ -1,6 +1,6 @@
 pkgbase = nautilus-ext-git
 	pkgdesc = Nautilus extension to add important information about the current git directory Edit
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/bil-elmoussaoui/nautilus-git
 	arch = i686
@@ -16,10 +16,10 @@ pkgbase = nautilus-ext-git
 	depends = gtk3
 	depends = python2-nautilus
 	depends = nautilus
-	provides = nautilus-git=1.1
+	provides = nautilus-git=1.2
 	options = !emptydirs
-	source = https://github.com/bil-elmoussaoui/nautilus-git/archive/v1.1.tar.gz
-	sha256sums = 36423780e4543af1d24b812fbe93b6d840b9a4c8527e2a1e592e19c11bfe5346
+	source = https://github.com/bil-elmoussaoui/nautilus-git/archive/v1.2.tar.gz
+	sha256sums = 0b5785f75221e793214670d9c9fc545faa9a9c6840717074f33a89517f15b74a
 
 pkgname = nautilus-ext-git
 
