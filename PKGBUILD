@@ -2,7 +2,7 @@
 # Maintainer: Sean V Kelley <seanvk@posteo.de>
 
 pkgname=libva-utils
-pkgver=1.8.0.pre1
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Intel VA-API Media Applications and Scripts for libva"
 arch=('i686' 'x86_64')
@@ -10,12 +10,11 @@ url="https://github.com/01org/libva-utils"
 license=('MIT')
 depends=('libva' 'libdrm' 'libxfixes')
 makedepends=('mesa')
-optdepends=('libva-vdpau-driver: backend for Nvidia and AMD cards'
-            'libva-intel-driver: backend for Intel cards')
+optdepends=('libva-intel-driver: backend for Intel cards')
 options=('!emptydirs')
 changelog=
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=('502cdf07ee3572a8c9f7f8affea210590a981dbc1afe07f7ee419322ee299c88')
+sha256sums=('cbd7a88b9b2592106879d271008c9e2236457e5bf4a647efe4bb3d3eaabaf94c')
 
 build() {
 	export LD_RUN_PATH='$ORIGIN/lib/'
