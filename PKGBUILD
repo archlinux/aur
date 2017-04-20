@@ -11,7 +11,7 @@
 
 pkgname=firefox-esr-bin
 _pkgname=${pkgname/-bin/}
-pkgver=52.0.2
+pkgver=52.1.0
 pkgrel=1
 pkgdesc='Standalone web browser from mozilla.org - Extended Support Release'
 url='http://www.mozilla.org/en-US/firefox/organizations/'
@@ -25,10 +25,10 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 provides=('firefox=52')
 license=('MPL' 'GPL' 'LGPL')
 install=$_pkgname.install
-sha512sums=('1a23b016ae3727b1b0de1d6cf7f318facbdeb88dea11174583c5fa0542ec962423921b0f50bf5cc723f7973d466a5c735918f7ba4f9195315f3fe0786a8330e6'
+sha512sums=('21b1770c114723404bec3509b145d07ec8d5f40d4ed1bedfad59b036b4aacb776338b50ba9b9eb99988c5160dc4752f57177f45f264a773269bc91a608c060ad'
             '2c2c70cb48202d47e7d3b376b8181e7398b23bb83f5da7724f6290709fe1ff3dca9d9c5666310982569beeeba39ec2d55a4372819f9914c79c6583de7eec06ba'
             '8942b11a7cb3761de1185491397185743adf49daa27a2806d14a328a2be8e2cb566c71dc6449016549cb3bd0d328cfe15944490be749a4add213194f6153c3d0')
-[[ "$CARCH" == "i686" ]] && sha512sums[0]='3113e03d7a03993ab225f7c25996d2ac5724b08bae0ec2cabf3c763e34e2c80317b20d605b21f0964616eda9310acc72a3d57e30c6c57d96096d7877014cd781'
+[[ "$CARCH" == "i686" ]] && sha512sums[0]='adc33ffb9db164991f304473583453d077ce3a833e02b0f63c6b6e6c7a7e24fddd207b51c3dffb46b8ad5315b92ed12e82ef5ae510a53780f4a9e5ca2c127fd6'
 # if [[ -n "$FIREFOX_ESR_BIN_PREFER_OLDER" ]]; then
     # pkgver=38.8.0
     # provides=('firefox=38')
