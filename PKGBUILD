@@ -1,9 +1,9 @@
-# Maintainer: 3ED <krzysztof1987 at gmail dot com>
+# Maintainer: 3ED <krzysztofas at protonmail dot com>
 #
 pkgname=perl-sah
-_lastauthor=P/PE/PERLANCAR
+_author=PERLANCAR
 _pkgname=Sah
-pkgver=0.9.44
+pkgver=0.9.45
 pkgrel=1
 pkgdesc='Schema for data structures'
 arch=('any')
@@ -11,8 +11,10 @@ license=('PerlArtistic')
 options=('!emptydirs')
 depends=('perl-defhash')
 url="https://metacpan.org/release/${_pkgname}"
+
+_lastauthor=${_author:0:1}/${_author:0:2}/${_author}
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha512sums=('f3e017aa88cb1b50e8ccd95b02b41ec84d318091d5c5be0cc80283ce44b03fcb66384d63b0b1812a382c394af6b5c66365059e89fa52c499109813d658b2e672')
+sha512sums=('18b5e585f07ebba054469a15c852c99e18b63fbfd62c6edd13e1992738f0c9132d54f9c7c6e07d96b54494d3981019954dc3bf10801a09495c810bddc836a6a0')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
