@@ -2,7 +2,7 @@
 
 pkgname=oki-400-ps
 pkgver=1.4
-pkgrel=3
+pkgrel=2
 pkgdesc="CUPS drivers for OKI B4000, B400 and MB400 PS printers"
 arch=('any')
 url="http://www.okidata.com/mkt/html/nf/Drivers.html"
