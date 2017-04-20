@@ -37,12 +37,19 @@ makedepends=('clang' 'qt5-base')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
 sha256sums=('9f5e28747281a2e75e5f875d37fad9422ee264357b2e752c450dad5b568229e2')
 
+_qmake_cmd=qmake
+_qt_sdk_dir=/opt/qt-sdk
+
+if [[ -d ${_qt_sdk_dir} ]]; then
+  _qmake_cmd=${_qt_sdk_dir}/bin/qmake
+fi
+
 build() {
   local src_dir=${startdir}/src/
   [[ -d build ]] && rm -r build
   mkdir build && cd build
 
-  QMAKESPEC=linux-clang QTC_PREFIX=/usr LLVM_INSTALL_DIR=/usr QBS_INSTALL_DIR=/usr qmake QMAKE_CFLAGS_ISYSTEM=-I CONFIG+=journald -r ../${_filename}/qtcreator.pro
+  QMAKESPEC=linux-clang QTC_PREFIX=/usr LLVM_INSTALL_DIR=/usr QBS_INSTALL_DIR=/usr ${_qmake_cmd} QMAKE_CFLAGS_ISYSTEM=-I CONFIG+=journald -r ../${_filename}/qtcreator.pro
   make
   make docs -j1
 }
