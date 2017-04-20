@@ -15,6 +15,7 @@ depends=(bash
          protobuf)
 
 conflicts=(dfhack dfhack-git)
+provides=(dfhack)
 
 source_i686=(https://github.com/DFHack/dfhack/releases/download/$_pkgver/dfhack-$_pkgver-Linux-32-gcc-4.8.1.tar.bz2)
 source_x86_64=(https://github.com/DFHack/dfhack/releases/download/$_pkgver/dfhack-$_pkgver-Linux-64-gcc-4.8.1.tar.bz2)
