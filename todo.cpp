@@ -98,7 +98,7 @@ int main(int argc, char *argv[]) {
             action = 2;
         }else if ( !strcmp( argv[1], "check")   || !strcmp( argv[1], "ck") ) {
             action = 3;
-        }else if ( !strcmp( argv[1], "uncheck") ) {
+        }else if ( !strcmp( argv[1], "uncheck") || !strcmp( argv[1], "uck") ) {
             action = 9;
         }else if ( !strcmp( argv[1], "standby") || !strcmp( argv[1], "st")
                                                 || !strcmp( argv[1], "sb") ) {
