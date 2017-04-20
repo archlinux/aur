@@ -13,8 +13,8 @@ pkgname=('jre8-openjdk-headless-infinality' 'jre8-openjdk-infinality' 'jdk8-open
 pkgbase=java8-openjdk
 _java_ver=8
 # Found @ http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-_jdk_update=121
-_jdk_build=13
+_jdk_update=152
+_jdk_build=03
 pkgver=${_java_ver}.u${_jdk_update}
 _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
 pkgrel=1
@@ -32,21 +32,20 @@ source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         jaxp-${_repo_ver}.tar.gz::${_url_src}/jaxp/archive/${_repo_ver}.tar.gz
         langtools-${_repo_ver}.tar.gz::${_url_src}/langtools/archive/${_repo_ver}.tar.gz
         nashorn-${_repo_ver}.tar.gz::${_url_src}/nashorn/archive/${_repo_ver}.tar.gz
-        build_with_gcc6.patch
         add-fontconfig.patch
         enable-infinality.patch)
-
-sha256sums=('7b59600a2a19f63dda188cd19a4fd7a7f467a6f7ce3474df0cb3005ba8a540db'
-            '0fa534d45890b8cfb92c6ed39d2d80c60901e9e17c440fc8abf2f57a730dae2f'
-            '1a8af5e51986046827fccfcda94f9fc41738667c67a71e5c78936d4906939255'
-            '594f5e1c7cdffa97c1686115d9db3c7f40049d9f1dfc05cd171947fe6c20c681'
-            'b1a774d15fea52d0e7308981853c25cd88ffe7ff68a0bf61a518c44e77bcf2ad'
-            '31ef7c27c2f1fb78ce6be5c96b0b5435cd814868f2b7a05a2ed3c5c062596c9d'
-            '08da4dcb698a0ba2d7a417732823a2797c38f3e267a95829ee2403c4b1ad456e'
-            'ec388bdb56ca5886312e4a8c75aeb703102c04f86011c4e4d911a7896fa4d5a5'
-            'dcf5f495620231068b0c925a33ba7246bbeb85e9ae822b30ab77a66839c2d3b6'
+sha256sums=('e5719264ea5370815c233bb8f055eacef4e4aaaef971fb84f731926ce9bc20f6'
+            '6968085c367e832a4b166daab89eaf61bb58acbe8d930a3d944ff2327bd846a2'
+            '183f958982b2a1c4f10fc834ae8e8d4ac254bf1a65373fd001ab4e58a99b0983'
+            'ea44540bf90913ba5d122b093005d6e2ebfb0a07535187dc71f1cda639b8d185'
+            'f3d8c2342970c229985d32bb49e84d007f50df5a6b27991b8e1473ff45832bfc'
+            '843a397b1d610db27b378d006ade2d98ce53d5e1f7952bf64fa865f0119e6fd0'
+            '4d336740d2e94d2406eb310acc64b95332e5f276143e38efe663f42f67601e7b'
+            '7f94034dd260c5f14a8cf3ef66b05452ca991e3d0e7a22a5513385124a8c8fc4'
             '3e67013b249fe702b0176e5d39f7ddef85ef0df121ef0b3a898ea82772712f55'
             'efeee8db0710bc217b5e886224450f6cf50938004e8c140eb9aee0a699d2d5ac')
+
+
 
 case "${CARCH}" in
   'x86_64') _JARCH=amd64 ;;
@@ -70,7 +69,7 @@ prepare() {
     ln -s ../${subrepo}-${_repo_ver} ${subrepo}
   done
 
-  patch -p1 < ../build_with_gcc6.patch
+  #patch -p1 < ../build_with_gcc6.patch
 
   # Apply infinality patches
   cd "${srcdir}/jdk8u-${_repo_ver}/jdk"
