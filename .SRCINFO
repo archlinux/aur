@@ -1,23 +1,23 @@
 pkgbase = nvidia-340xx-lqx
 	pkgdesc = NVIDIA 340xx drivers for linux-lqx.
 	pkgver = 340.102
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nvidia.com/
 	install = nvidia-340xx-lqx.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = linux-lqx-headers>=4.9
-	makedepends = linux-lqx-headers<4.10
-	depends = linux-lqx>=4.9
-	depends = linux-lqx<4.10
+	makedepends = linux-lqx-headers>=4.10
+	makedepends = linux-lqx-headers<4.11
+	depends = linux-lqx>=4.10
+	depends = linux-lqx<4.11
 	depends = nvidia-340xx-libgl
 	depends = nvidia-340xx-utils=340.102
 	conflicts = nvidia-lqx
 	conflicts = nvidia-304xx-lqx
 	options = !strip
-	source = fs52243.patch
-	sha512sums = de4f697d64f8e73c4aadec1a407884a6bc459c0020d4bfd19740fe4177a60bb801fe8a74ef6f7fa2e89c6cd648ea4daf152799ae344a145c06480a6eef0c5bca
+	source = 4.10.0_kernel.patch
+	sha512sums = 88a2b448c1e8445dc43820328e86d8f20eb7e3cb5774e704cd44191a9fa26064264510c1adc9ea938fa2c92075496f3a27bd52ae6e6f4ec5fa6d4a829dd961e8
 	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/340.102/NVIDIA-Linux-x86-340.102.run
 	sha512sums_i686 = bea700c925a6044fcded40324bb389c5fa1aadc40831f685a76e7b0ded11161f492960950c201467e564d157dcbe0c330d13a2014f51d0073002c5a262a6f0ca
 	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/340.102/NVIDIA-Linux-x86_64-340.102-no-compat32.run
