@@ -3,7 +3,7 @@
 
 pkgname=oki-400-pcl
 pkgver=5
-pkgrel=3
+pkgrel=2
 pkgdesc="CUPS drivers for OKI B4000, B400 and MB400 PCL printers"
 arch=('any')
 url="http://www.okidata.com/mkt/html/nf/Drivers.html"
