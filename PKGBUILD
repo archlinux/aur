@@ -2,7 +2,7 @@
 # Contributor: Milan Knizek <knizek@volny.cz>
 
 pkgname=scanbd
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Scanner button daemon looking for scanner button pressed"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://scanbd.sourceforge.net/"
 license=('GPL2')
 depends=('sane' 'confuse')
 source=("http://downloads.sourceforge.net/scanbd/scanbd-${pkgver}.tgz")
-sha256sums=('6cb81f4597f03d5cb95654d6e96cc7ec57d0991b1b02e8fb108c138b82bba8cb')
+sha256sums=('b69ca5a474b81516d19c38082d949363c243df9ab9742315aaae499723267e5f')
 install=scanbd.install
 backup=('etc/scanbd/scanbd.conf')
 
