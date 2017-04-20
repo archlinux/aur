@@ -2,16 +2,18 @@
 
 pkgname=ueyed
 pkgdesc="IDS uEye camera daemon (USB and ethernet)"
-pkgver=4.82.00
-_version=4.82
-pkgrel=2
+pkgver=4.82.02
+pkgrel=1
 arch=(x86_64)
 license=(custom)
 url='https://en.ids-imaging.com'
 depends=('glibc' 'qt4')
 makedepends=('patchelf')
 install="$pkgname.install"
-backup=("etc/ueye/ueyeethd.conf" "etc/ueye/ueyeusbd.conf")
+backup=(
+	'etc/ueye/ueyeethd.conf'
+	'etc/ueye/ueyeusbd.conf'
+)
 
 source=(
 	"https://en.ids-imaging.com/download-ueye-lin64.html?file=tl_files/downloads/uEye_SDK/driver/uEye-Linux-$pkgver-64-bit.tgz"
@@ -23,7 +25,7 @@ source=(
 )
 
 sha512sums=(
-	'6997e8a3781e1884047d51ec239ba38acc4b09c3a79374ce3228bef4ce112acff84b04ceccf1a50ddea54f2e45e3a1ee0e7266b1d40ff08cf8c7e5df55f26742'
+	'f831e6c9fde3b7a64d379ece36d6bc6299cb5b36a2baa3365f4b9bf9fcec090fae6f5f05b470907ea5dcd468a161f73cc12a8878ce21d70acc54651534478780'
 	'9e4156ecfc687b895ecf5055cd97e748760c675e8478caa46c2d19a49f1e2b31000e85a394198b9ab6da40d3b9ede4ffde4f960fc9f8ba7b1a44cffe69b77dbc'
 	'3e5d357f43e68a143b9da9c712043224304e30699618da9d17f0916297c48d4865d7af2a040561f1b13c6bdef7c613bc441549f152ce0669f67001f0d401fb5a'
 	'fe1901eb22210e7c3f23171197e9316c2a400d68e62d32b52c3900d1d30c38654c90cf101db483dc140103a1c36c2de28b28e6d8a135564c382b0d3e70d37549'
@@ -35,8 +37,8 @@ prepare() {
 	cd "$srcdir"
 	mkdir -p "$srcdir/ueyeethd"
 	mkdir -p "$srcdir/ueyeusbd"
-	sh "./ueyesdk-setup-${_version}-eth-amd64.gz.run" --noexec --target "$srcdir/ueyeethd"
-	sh "./ueyesdk-setup-${_version}-usb-amd64.gz.run" --noexec --target "$srcdir/ueyeusbd"
+	sh "./ueyesdk-setup-${pkgver}-eth-amd64.gz.run" --noexec --target "$srcdir/ueyeethd"
+	sh "./ueyesdk-setup-${pkgver}-usb-amd64.gz.run" --noexec --target "$srcdir/ueyeusbd"
 
 	sed -i -e 's#/usr/local/share/ueye/bin/#/usr/bin/#' "$srcdir/ueyeethd/ueyeethdnotify"
 }
