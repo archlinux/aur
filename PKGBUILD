@@ -8,7 +8,7 @@ url="https://www.adobe.com/support/flashplayer/debug_downloads.html"
 license=(custom)
 depends=(gtk2 libxt nss curl)
 [ "$CARCH" = "x86_64" ] && depends=(lib32-gtk2 lib32-libxt lib32-nss lib32-curl)
-source=("https://fpdownload.macromedia.com/pub/flashplayer/updaters/25/flash_player_sa_linux_debug.x86_64.tar.gz")
+source=("flashplayer-standalone-debug-$pkgver-$pkgrel.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/25/flash_player_sa_linux_debug.x86_64.tar.gz")
 options=(!strip)
 md5sums=('5875f4ca92dcc7484f87d311a0cd257d')
 

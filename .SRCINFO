@@ -11,7 +11,7 @@ pkgbase = flashplayer-standalone-debug
 	depends = nss
 	depends = curl
 	options = !strip
-	source = https://fpdownload.macromedia.com/pub/flashplayer/updaters/25/flash_player_sa_linux_debug.x86_64.tar.gz
+	source = flashplayer-standalone-debug-25.0.0.148-1.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/25/flash_player_sa_linux_debug.x86_64.tar.gz
 	md5sums = 5875f4ca92dcc7484f87d311a0cd257d
 
 pkgname = flashplayer-standalone-debug
