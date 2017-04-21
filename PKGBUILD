@@ -5,16 +5,16 @@
 # Try to make a clean WINEPREFIX, such as by doing “rm -rf ~/.wine”
 
 pkgname=wine-stable
-pkgver=2.0
+pkgver=2.0.1
 pkgrel=1
 
-source=(https://dl.winehq.org/wine/source/2.0/wine-$pkgver.tar.bz2{,.sign}
+source=(https://dl.winehq.org/wine/source/2.0/wine-$pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
         0001-programs-winhlp32-Use-noyywrap-for-macro.lex.l-and-p.patch)
-sha256sums=('9756f5a2129b6a83ba701e546173cbff86caa671b0af73eb8f72c03b20c066c6'
+sha512sums=('b32d07443655898768383b7409c21093b60c028fef166a596dad5dfab5a329b9fce4552e612c6d182e4f67eb1f28ed497fe2ed6af55d0000d3e96a124547722d'
             'SKIP'
-            '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
-            'd6ab08b246be10459957aa5c5f1a620793a2974125191fc7da4a23f7e4484293')
+            '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
+            '21b964e4ee7d99b8773d27238691759456fe82f49a98095d3307e66674df94da271e055d184a50040e72ceffdee6f8f5461d74f203c831fffa604c2d0c15bcfc')
 validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
               DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
 
@@ -68,9 +68,6 @@ prepare() {
   done
 
   sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i wine/configure*
-
-  # These additional CPPFLAGS solve FS#27662 and FS#34195
-  export CPPFLAGS="${CPPFLAGS/-D_FORTIFY_SOURCE=2/} -D_FORTIFY_SOURCE=0"
 
   # Get rid of old build dirs
   rm -rf wine-{32,64}-build
