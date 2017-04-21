@@ -25,7 +25,7 @@ conflicts=('qgis')
 
 pkgver(){
   cd "$srcdir"/$_gitname
-  printf "%sr%s" "$_pkgver" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s" "$_pkgver" "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
