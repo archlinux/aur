@@ -1,0 +1,12 @@
+pkgbase = hawkeye
+	pkgdesc = A useful app for GitHub Notifications
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/harksys/HawkEye
+	arch = x86_64
+	license = MIT
+	source = https://github.com/harksys/HawkEye/releases/download/0.2.0/hawkeye-0.2.0-linux-amd64.deb
+	sha256sums = e6accf5b718aa28f40f0fd47d37fa56e4e49d55eea3c6839e63514b5b163311d
+
+pkgname = hawkeye
+
