@@ -1,6 +1,6 @@
 pkgbase = openvpn-nordvpn
 	pkgdesc = OpenVPN configuration files and helper for nordvpn.com
-	pkgver = 17.4.18
+	pkgver = 17.4.21
 	pkgrel = 7
 	url = http://www.nordvpn.com
 	install = openvpn-nordvpn.install
@@ -15,7 +15,7 @@ pkgbase = openvpn-nordvpn
 	provides = nordvpn
 	noextract = zip
 	source = https://nordvpn.com/api/files/zip
-	sha256sums = 027e6b03d6768f3c291d61b0719ade4614e7794f7e0679a0de808986982135dd
+	sha256sums = 1f264ab309875a698143083d9e4d11a053ff7c55896e52e09542e6bfc131499e
 
 pkgname = openvpn-nordvpn
 
