@@ -1,8 +1,8 @@
-# Maintainer: Igor Mosyagin <c6h10o5@gmail.com>
+# Maintainer: Igor Mosyagin (cra) <c6h10o5@gmail.com>
 
 pkgname=beamer-theme-liu-git
 pkgver=r2.0d23bc0
-pkgrel=1
+pkgrel=3
 pkgdesc="Beamer theme of Linköping University"
 arch=(any)
 url="http://git.lysator.liu.se/osund/liu-beamer"
@@ -25,17 +25,18 @@ package() {
   cd "$srcdir/liu-beamer"
 
   THEMEDIR=tex/latex/liu/liuslides
-  mkdir -p ${TEXMFDIST}/${THEMEDIR}
+  mkdir -p ${pkgdir}/${TEXMFDIST}/${THEMEDIR}
 
   for tag in '' color font inner outer
   do
-      install -m644 ${THEMEDIR}/beamer${tag}themeLiU.sty ${TEXMFDIST}/${THEMEDIR}/
+      install -m644 ${THEMEDIR}/beamer${tag}themeLiU.sty \
+                    "$pkgdir/${TEXMFDIST}/${THEMEDIR}/"
   done
 
   MEDIADIR=tex/generic/images/logo/liu
-  mkdir -p ${TEXMFDIST}/${MEDIADIR}
+  mkdir -p ${pkgdir}/${TEXMFDIST}/${MEDIADIR}
   for file in ${MEDIADIR}/*
   do
-      install -m644 ${file} ${TEXMFDIST}/${file}
+      install -m644 ${file} "$pkgdir/${TEXMFDIST}/${file}"
   done
 }

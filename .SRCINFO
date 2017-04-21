@@ -1,7 +1,7 @@
 pkgbase = beamer-theme-liu-git
 	pkgdesc = Beamer theme of Linköping University
 	pkgver = r2.0d23bc0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://git.lysator.liu.se/osund/liu-beamer
 	install = beamer-theme-liu-git.install
 	arch = any
