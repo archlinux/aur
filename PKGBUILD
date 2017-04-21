@@ -15,12 +15,12 @@ provides=('doomsday')
 optdepends=('doom1-wad: Doom shareware', 
             'heretic1-wad: Heretic shareware', 
             'hexen1-wad: Hexen shareware')
-source=("http://files.dengine.net/builds/build${pkgrel}/${_pkgname}-${pkgver}-build${pkgrel}-1.x86_64.rpm")
-md5sums=('371a8af890a983ec8c8b73694411eb93')
+source=("${_pkgname}-${pkgver}-1.x86_64.rpm::http://api.dengine.net/1/builds?dl=${_pkgname}-${pkgver}-1.x86_64.rpm")
+md5sums=('e9e7272779414f233c86026744ab57dc')
 
 package() {
 	cd $pkgdir
-	bsdtar -xf $srcdir/${_pkgname}-${pkgver}-build${pkgrel}-1.x86_64.rpm
+	bsdtar -xf $srcdir/${_pkgname}-${pkgver}-1.x86_64.rpm
 	mv usr/lib64 usr/lib
 	rm -rf usr/include/assimp
 }
