@@ -1,5 +1,3 @@
-# ignore tarballs
 *.tar.gz
-
-# ignore packages
 *.pkg.tar.xz
+*.zip
