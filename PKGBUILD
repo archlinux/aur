@@ -33,8 +33,8 @@ source=(
     "mastodon.target"
     )
 sha256sums=('SKIP'
-            'e0d3047c1b2592a987c9a0375efb242a30dcf584e0a1f2e4b33221861fcfa55d'
-            '05bf79cabdf0787ff2c6e36ff9b4fd62237d72fe336294b03b64532f665cd687'
+            '2b3a22149ee88c4bacf83aa1958b06fc791057089737596b35b6e1968b1443aa'
+            '5f72e3ee2921f8b760bac614d910a3c36334ebfefdfd4ba0c9058e21d8537c73'
             '5a7bd6a66b93480468483205a12640317f5df5de3b4b4b6fcee38976bff606e4'
             '0920e862a1ad598022743381f2b0a38c3c745c7e1a6566c3fe51275bbef82e72')
 install=mastodon.install

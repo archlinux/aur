@@ -8,7 +8,7 @@ User=mastodon
 WorkingDirectory=/var/lib/mastodon/live
 Environment="RAILS_ENV=production"
 Environment="DB_POOL=5"
-ExecStart=/var/lib/mastodon/.rbenv/shims/bundle exec sidekiq -c 5 -q default -q mailers -q pull -q push
+ExecStart=/usr/bin/bundle exec sidekiq -c 5 -q default -q mailers -q pull -q push
 TimeoutSec=15
 Restart=always
 
