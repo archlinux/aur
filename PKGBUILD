@@ -5,7 +5,7 @@
 pkgname=epsxe
 _pkgname=ePSXe
 pkgver=2.0.5
-pkgrel=12
+pkgrel=13
 pkgdesc="Enhanced PSX emulator (64-bit)"
 url="http://epsxe.com"
 arch=('x86_64')
@@ -23,17 +23,12 @@ md5sums=('aeb34e2ca34f968630ca133ea821c61c'
          'eb0c46b8ae1355c589792f6be1835e47'
          '071c43c1cb8f6b6470b7af60ad69247a'
          '79fefeb4bff26bf1d374befb35b390df')
-prepare()
-{
-  unzip "${_pkgname}${pkgver//./}linux_x64.zip"
-}
-
 package()
 {
   #srcpath="${srcdir}/${_pkgname}${pkgver//./}linux"
  # if [[ $CARCH == "x86_64" ]]; then
   #    srcpath+="_x64"
- #     binary="${pkgname}_x64"
+ _binary="${pkgname}_x64"
  # fi
 
   #cd "${srcpath}"
@@ -45,7 +40,7 @@ package()
   #  find . -name '*.cht' -execdir "install -Dm 644 -t \${pkgdir}/opt/${pkgname}/${pkgver}/cheats\"" \{\} +
 
 
-  install -Dm 755 "${_pkgname}" "${pkgdir}/opt/${pkgname}/${pkgname}"
+  install -Dm 755 "${_binary}" "${pkgdir}/opt/${pkgname}/${pkgname}"
 #  install -Dm 644 keycodes.lst "${pkgdir}/opt/${pkgname}/keycodes.lst"
 
   cd "${srcdir}"
