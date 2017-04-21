@@ -25,8 +25,7 @@ md5sums=('aeb34e2ca34f968630ca133ea821c61c'
          '79fefeb4bff26bf1d374befb35b390df')
 prepare()
 {
-  #unzip "${_pkgname}${pkgver//./}linux_x64.zip"
-  :
+  unzip "${_pkgname}${pkgver//./}linux_x64.zip"
 }
 
 package()
