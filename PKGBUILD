@@ -1,10 +1,10 @@
 # Maintainer: Simon Doppler (dopsi) <dop.simon@gmail.com>
 pkgname=firefly-iii
 pkgver=4.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc='PHP personal finances manager'
 arch=('any')
-url='https://github.com/dopsi/mdl'
+url="https://github.com/${pkgname}/${pkgname}"
 license=('custom')
 depends=('php-intl')
 makedepends=('composer')
