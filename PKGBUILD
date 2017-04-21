@@ -2,8 +2,8 @@
 
 _plug=vcmove
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=20160409
-pkgrel=2
+pkgver=20160410
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=171414'
