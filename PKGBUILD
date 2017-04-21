@@ -129,7 +129,7 @@ build() {
   fi
 
   # Work around FreeSWITCH bug FS-10257
-  export CFLAGS="${CFLAGS} -Wno-parentheses"
+  export CFLAGS="${CFLAGS} -Wno-parentheses -Wno-deprecated-declarations"
 
   ./configure --enable-optimization --disable-debug --prefix=/usr \
     --sysconfdir=/etc --localstatedir=/var --libdir=/usr/lib/freeswitch \
