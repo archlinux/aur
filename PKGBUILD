@@ -15,19 +15,15 @@ _mod1ver=0.2.0
 _mod2=ngx_http_substitutions_filter_module
 _mod2ver=0.6.4
 _mod3=nginx-ct
-_mod3ver=1.3.1
+_mod3ver=1.3.2
 
 pkgname=nginx-mainline-mod4679
-pkgver=1.11.8
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="lightweight HTTP server, statically linked against OpenSSL(Cloudflare's patch),with ngx_http_google_filter_module,nginx-ct."
 arch=('i686' 'x86_64')
-
-depends=('pcre' 'zlib' 'pam' 'gd' 'hardening-wrapper' 'libxslt')
-makedepends=(
-	'libxslt'
-	'gd'
-)
+depends=('pcre' 'zlib' 'geoip')
+makedepends=('cmake' 'git' 'hardening-wrapper')
 
 url="http://nginx.org"
 license=('custom')
@@ -48,8 +44,8 @@ source=("nginx.conf"
 	"nginx.logrotate"
 	"nginx.service"
 	"http://nginx.org/download/nginx-$pkgver.tar.gz"
-	"https://github.com/openssl/openssl/archive/OpenSSL_1_0_2j.tar.gz"
-        "https://raw.githubusercontent.com/cloudflare/sslconfig/master/patches/openssl__chacha20_poly1305_draft_and_rfc_ossl102j.patch"
+	"https://github.com/openssl/openssl/archive/OpenSSL_1_1_0e.tar.gz"
+        "https://github.com/cloudflare/sslconfig/raw/master/patches/openssl__1.1.0_chacha20_poly1305.patch"
         "${_mod1}-${_mod1ver}.tar.gz::https://github.com/cuber/${_mod1}/archive/${_mod1ver}.tar.gz"
         "${_mod2}-${_mod2ver}.tar.gz::https://github.com/yaoweibin/${_mod2}/archive/v${_mod2ver}.tar.gz"
         "${_mod3}-${_mod3ver}.tar.gz::https://github.com/grahamedgecombe/${_mod3}/archive/v${_mod3ver}.tar.gz"
@@ -58,12 +54,12 @@ source=("nginx.conf"
 sha256sums=('8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1'
             'adcf6507abb2d4edbc50bd92f498ba297927eed0460d71633df94f79637aa786'
             '225228970d779e1403ba4314e3cd8d0d7d16f8c6d48d7a22f8384db040eb0bdf'
-            '53aef3715d79015314c2dcb18f2b185a0c64368cc01b30bdf0737a215f666b34'
-            '66cf834f2145505f432a03dcaa1db290e50eb64c68be4a22a9b60884536f45ac'
-            'd6f9427d5cb63c7299563c201cd8708c7166e0f8c98b57a1fee69767362bf0f7'
+            'b4222e26fdb620a8d3c3a3a8b955e08b713672e1bc5198d1e4f462308a795b30'
+            'e703df4eca8b3687af0bec069ea2e7b9fefcb397701dd0d36620fd205cde82a5'
+            '3c1b39f8d17dc384486ebe61aa783cc4a649ed9d7b633c02f36693b8af265160'
             '9cd68c8e092efb1a419e1087bb9ca23aab1ff8650c400c0aa815d461d79385de'
             'ed4ddbcf0c434f4a1e97b61251a63ace759792764bd5cb79ff20efe348db8db3'
-            'c223b642fc541933b9cdb18b771a52ccf728fb309350898080970ab1fda18e6f')
+            'b4ceae549b9dbf84b2e511633982e4efeee0388e3b7a038a8bac555008a77b88')
 
 build() {
 	local _src_dir="${srcdir}/${_pkgname}-${pkgver}"
@@ -71,8 +67,8 @@ build() {
 	export CFLAGS="-Wno-error -fPIC"
 
 	cd ${srcdir}/
-	mv openssl-OpenSSL_1_0_2j openssl
-	cd openssl && patch -p1 < ../openssl__chacha20_poly1305_draft_and_rfc_ossl102j.patch
+	mv openssl-OpenSSL_1_1_0e openssl
+	cd openssl && patch -p1 < ../openssl__1.1.0_chacha20_poly1305.patch
 
 	cd $_src_dir
 	sed -i 's#nginx/#nginx-mod4679-#' src/core/nginx.h
