@@ -1,9 +1,8 @@
 # Maintainer Robert Booster > boosterdev@linuxmail.org
 # Automatic builder > https://github.com/boosterdev/autobuild
 
-_commit="1a59490bb6c0ae15caecc909d1c35950215704ec"
 pkgname="numix-icon-theme-pack"
-pkgver=20170419
+pkgver="LATEST"
 pkgrel=1
 pkgdesc='Numix project Icon Themes - Updated with Numix Core'
 arch=('any')
@@ -13,20 +12,11 @@ makedepends=('git' 'python-gobject' 'inkscape')
 provides=('numix-square-icon-theme' 'numix-square-light-icon-theme' 'numix-circle-icon-theme' 'numix-circle-light-icon-theme' 'numix-icon-theme')
 conflicts=('numix-square-icon-theme' 'numix-square-light-icon-theme' 'numix-circle-icon-theme' 'numix-circle-light-icon-theme' 'numix-icon-theme')
 options=('!strip')
-source=(
-"numix-icon-theme-square::git+https://github.com/numixproject/numix-icon-theme-square.git"
-"numix-icon-theme-circle::git+https://github.com/numixproject/numix-icon-theme-circle.git"
-"numix-icon-theme::git+https://github.com/numixproject/numix-icon-theme.git"
-"numix-core::git+https://github.com/numixproject/numix-core.git")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
-
-pkgver() {
-  cd $srcdir/numix-core
-  git log -1 --format="%cd" --date=short | tr -d '-'
-}
+source=("numix-icon-theme-square::git+https://github.com/numixproject/numix-icon-theme-square.git"
+        "numix-icon-theme-circle::git+https://github.com/numixproject/numix-icon-theme-circle.git"
+        "numix-icon-theme::git+https://github.com/numixproject/numix-icon-theme.git"
+        "numix-core::git+https://github.com/numixproject/numix-core.git")
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
   # update with Numix-Core
