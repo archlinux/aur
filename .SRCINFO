@@ -1,0 +1,18 @@
+pkgbase = responder
+	pkgdesc = A LLMNR and NBT-NS poisoner, with built-in HTTP/SMB/MSSQL/FTP/LDAP rogue authentication server supporting NTLMv1/NTLMv2/LMv2, Extended Security NTLMSSP and Basic HTTP authentication.
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/SpiderLabs/Responder/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2
+	source = responder::https://github.com/SpiderLabs/responder/archive/v2.3.0.tar.gz
+	source = responder.sh
+	source = dhcp-responder.sh
+	sha256sums = 7f11ca5e60f5187280fa45f3d0ddd3bef6d6d08fc48d1f90528ee452f46f6c1f
+	sha256sums = 658d17f895ad48a47babf885176a8a4e891219c7fd7d53141a1dbdbbaa0b9374
+	sha256sums = a720b7c918c63ed27356f43b788a171729f0d88c42c01a901d64efb17aa92f78
+
+pkgname = responder
+
