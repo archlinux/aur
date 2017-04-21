@@ -8,7 +8,7 @@
 
 pkgname=mpv-ahjolinna-git
 _gitname=mpv
-pkgver=0.24.0.r171.g07ee7fb2c3
+pkgver=0.24.0.r276.g591d99a988
 pkgrel=1
 #epoch=2
 pkgdesc="MPV using ahjolinna's personal pre-made conf build"
@@ -149,11 +149,7 @@ CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
 	            --enable-gbm \
 	            --enable-wayland \
 	            --enable-x11 \
-	            --enable-xss \
-	            --enable-xext \
 	            --enable-xv \
-	            --enable-xinerama \
-	            --enable-xrandr \
 	            --disable-gl-cocoa \
 	            --enable-gl-x11 \
 	            --enable-egl-x11 \
@@ -174,12 +170,7 @@ CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
 	            --enable-caca \
 	            --enable-jpeg \
 	            --disable-direct3d \
-	            --disable-android \
-	            --disable-rpi \
-	            --enable-standard-gl \
-	            --disable-android-gl \
 	            --disable-ios-gl \
-	            --enable-any-gl \
 	            --enable-plain-gl \
 	            --disable-mali-fbdev \
 	            --enable-gl \
@@ -188,6 +179,7 @@ CFLAGS="$CFLAGS -I/usr/include/samba-4.0"
 	            --disable-videotoolbox-hwaccel \
 	            --disable-videotoolbox-gl \
 	            --enable-vdpau-hwaccel \
+              --enable-vdpau-hwaccel-new \
 	            --disable-d3d-hwaccel \
               --enable-tv \
 	            --enable-tv-v4l2 \
