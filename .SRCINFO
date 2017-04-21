@@ -1,7 +1,7 @@
 pkgbase = freeswitch-core
 	pkgdesc = A scalable, open source telephony platform
-	pkgver = 1.6.12
-	pkgrel = 2
+	pkgver = 1.6.17
+	pkgrel = 1
 	url = https://freeswitch.org/
 	arch = i686
 	arch = x86_64
@@ -26,10 +26,10 @@ pkgbase = freeswitch-core
 	optdepends = ldns: for mod_enum module
 	provides = freeswitch
 	conflicts = freeswitch
-	source = https://files.freeswitch.org/releases/freeswitch/freeswitch-1.6.12.tar.xz
+	source = https://files.freeswitch.org/releases/freeswitch/freeswitch-1.6.17.tar.xz
 	source = freeswitch.service
 	source = modules.conf
-	sha256sums = ae072ca2d96fd9ef59ca6f589f932048b088c7b469d46e468bb917371de24ff9
+	sha256sums = 709b3e43362d86b9682a7db14eb344b74362493d68244dfc4e6f40218089d4e1
 	sha256sums = 7eff153fdae3c99cd884c654335b32f484df5cb7e624bd6adc630372ea83e573
 	sha256sums = SKIP
 

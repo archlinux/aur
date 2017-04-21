@@ -1,7 +1,7 @@
 # Maintainer: David Matson <gitcoder at outlook dot com>
 pkgname=freeswitch-core
-pkgver=1.6.12
-pkgrel=2
+pkgver=1.6.17
+pkgrel=1
 pkgdesc='A scalable, open source telephony platform'
 arch=('i686' 'x86_64')
 url='https://freeswitch.org/'
@@ -14,7 +14,7 @@ conflicts=('freeswitch')
 source=("https://files.freeswitch.org/releases/freeswitch/freeswitch-$pkgver.tar.xz"
         'freeswitch.service'
         'modules.conf')
-sha256sums=('ae072ca2d96fd9ef59ca6f589f932048b088c7b469d46e468bb917371de24ff9'
+sha256sums=('709b3e43362d86b9682a7db14eb344b74362493d68244dfc4e6f40218089d4e1'
             '7eff153fdae3c99cd884c654335b32f484df5cb7e624bd6adc630372ea83e573'
             'SKIP')
 
