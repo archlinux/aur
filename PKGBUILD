@@ -9,21 +9,23 @@ url='https://github.com/v1s1t0r1sh3r3/airgeddon'
 license=('GPL3')
 source=('git://github.com/v1s1t0r1sh3r3/airgeddon.git')
 depends=(
-  'net-tools'
-  'iw'
   'aircrack-ng'
-  'wireless_tools'
-  'gawk'
-  'xterm'
   'coreutils'
+  'gawk'
+  'iw'
+  'net-tools'
   'sed'
+  'wireless_tools'
+  'xterm'
 )
 optdepends=(
-  'curl: for self-updating and WPS pin database updating'
-	'xorg-xdpyinfo: for printing better on windows'
-  'ethtool: to get device information'
-  'pciutils: to get device information'
-  'rfkill: for enabling and disabling wireless devices'
+  'curl:  for self-updating and for checking internet connection'
+  'ethtool: for chipset detection'
+  'pciutils:  for chipset detection'
+  'rfkill:  for unblocking wireless devices'
+  'usbutils:  for usb devices detection'
+  'wget:  for checking internet connection'
+  'xorg-xdpyinfo:  for getting the screen resolution'
 )
 makedepends=('git' 'coreutils' 'sed')
 conflicts=('airgeddon-git')
