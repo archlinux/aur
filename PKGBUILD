@@ -5,7 +5,7 @@
 
 pkgname=caddy-full-bin
 _realname=caddy
-pkgver=0.9.5
+pkgver=0.10.0
 ghpkgrel=''
 pkgrel=1
 pkgdesc="A configurable, general-purpose HTTP/2 web server for any platform (All features enabled)"
@@ -16,22 +16,22 @@ provides=('caddy')
 conflicts=('caddy' 'caddy-git' 'caddy-all-features')
 depends=('systemd>=229')
 makedepends=('patch')
-md5sums_i686=('d46efb5859d84f1ce90042609d3f167a'
+md5sums_i686=('f5ba45c3bc598387a6d33ba8cbbda086'
               'ce5f9e54ab24ce0598da6c909995be9a')
-md5sums_x86_64=('bd0262fee1ddc864b958cc59638b62b8'
+md5sums_x86_64=('4986aea9e175a6dae1651117a801d389'
                 'ce5f9e54ab24ce0598da6c909995be9a')
-md5sums_armv7h=('300f93bfd1856ddcfb67e3fd106bebb5'
+md5sums_armv7h=('79f0393ee958e3c5c27a167630446986'
                 'ce5f9e54ab24ce0598da6c909995be9a')
-md5sums_aarch64=('300f93bfd1856ddcfb67e3fd106bebb5'
+md5sums_aarch64=('79f0393ee958e3c5c27a167630446986'
                  'ce5f9e54ab24ce0598da6c909995be9a')
-md5sums_armv6h=('59fddb37886c3bacd1fd10635b6c35d2'
+md5sums_armv6h=('b000e52a43a0b3c17bd34a528555e405'
                 'ce5f9e54ab24ce0598da6c909995be9a')
 install='caddy-full-bin.install'
 
 source_i686=("https://github.com/klingtnet/caddy-release-downloader/releases/download/${pkgver}${ghpkgrel}/caddy-all-plugins-${pkgver}${ghpkgrel}-386.tar.gz" "caddy-systemd-service.patch")
 source_x86_64=("https://github.com/klingtnet/caddy-release-downloader/releases/download/${pkgver}${ghpkgrel}/caddy-all-plugins-${pkgver}${ghpkgrel}-amd64.tar.gz" "caddy-systemd-service.patch")
-source_armv7h=("https://github.com/klingtnet/caddy-release-downloader/releases/download/${pkgver}${ghpkgrel}/caddy-all-plugins-${pkgver}${ghpkgrel}-arm.tar.gz" "caddy-systemd-service.patch")
-source_aarch64=("https://github.com/klingtnet/caddy-release-downloader/releases/download/${pkgver}${ghpkgrel}/caddy-all-plugins-${pkgver}${ghpkgrel}-arm.tar.gz" "caddy-systemd-service.patch")
+source_armv7h=("https://github.com/klingtnet/caddy-release-downloader/releases/download/${pkgver}${ghpkgrel}/caddy-all-plugins-${pkgver}${ghpkgrel}-arm7.tar.gz" "caddy-systemd-service.patch")
+source_aarch64=("https://github.com/klingtnet/caddy-release-downloader/releases/download/${pkgver}${ghpkgrel}/caddy-all-plugins-${pkgver}${ghpkgrel}-arm7.tar.gz" "caddy-systemd-service.patch")
 source_armv6h=("https://github.com/klingtnet/caddy-release-downloader/releases/download/${pkgver}${ghpkgrel}/caddy-all-plugins-${pkgver}${ghpkgrel}-arm6.tar.gz" "caddy-systemd-service.patch")
 
 prepare() {
