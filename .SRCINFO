@@ -1,6 +1,6 @@
 pkgbase = jre-devel
 	pkgdesc = Oracle Java 9 Runtime Environment Snapshot
-	pkgver = 9b165
+	pkgver = 9b166
 	pkgrel = 1
 	url = https://jdk9.java.net/
 	install = jre-devel.install
@@ -36,10 +36,10 @@ pkgbase = jre-devel
 	source = OTN-Early-Adopter-License-Terms.txt
 	sha256sums = 82679f86f9ac4502710fd2563d68e28cc23de8a60f19921d4e53e362d798984e
 	sha256sums = 5f00ffce28036cf79da41c7fe0e29801e3148597a164ecc69f49e718ae370370
-	source_i686 = http://www.java.net/download/java/jdk9/archive/165/binaries/jre-9-ea+165_linux-x86_bin.tar.gz
-	sha256sums_i686 = 7645d084a00ccf43324d14d15415ad19011f648b385c100a80316b8ecfdfd25d
-	source_x86_64 = http://www.java.net/download/java/jdk9/archive/165/binaries/jre-9-ea+165_linux-x64_bin.tar.gz
-	sha256sums_x86_64 = ca8671b86eb92ed586614f9a56200f42e296004e1dce92df93e593bc21f75374
+	source_i686 = http://www.java.net/download/java/jdk9/archive/166/binaries/jre-9-ea+166_linux-x86_bin.tar.gz
+	sha256sums_i686 = 3005903f1ab4a3df6bb1b56455fea49efc780101c061b5711fe04279f055a133
+	source_x86_64 = http://www.java.net/download/java/jdk9/archive/166/binaries/jre-9-ea+166_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = f883dd8a2ba63a872ffb541e798f6e8c391240cd3d704b5d7b8a4e97fb00a4a3
 
 pkgname = jre-devel
 
