@@ -12,6 +12,7 @@ arch=('x86_64')
 #depends=(gtk2 sdl_ttf ncurses5-compat-libs libtinfo-5 libcurl-compat)
 #depends_i686+=(gtk3 sdl_ttf libtinfo libcurl-compat)
 depends=(lib32-gtk3 lib32-libxt lib32-sdl_ttf lib32-libtinfo lib32-libcurl-compat lib32-libcanberra-gtk3)
+makedepends=('unzip')
 #depends=(gtk3 sdl_ttf ilib32-libtinfo lib32-libcurl-compat)
 license=('unknown')
 install=${pkgname}.install
@@ -22,6 +23,11 @@ md5sums=('aeb34e2ca34f968630ca133ea821c61c'
          'eb0c46b8ae1355c589792f6be1835e47'
          '071c43c1cb8f6b6470b7af60ad69247a'
          '79fefeb4bff26bf1d374befb35b390df')
+prepare()
+{
+  #unzip "${_pkgname}${pkgver//./}linux_x64.zip"
+  :
+}
 
 package()
 {
