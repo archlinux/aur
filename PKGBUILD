@@ -5,7 +5,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=52.0.2
+pkgver=52.1.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
@@ -24,7 +24,7 @@ options=(!emptydirs !makeflags !strip)
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         firefox.desktop firefox-symbolic.svg
         firefox-install-dir.patch rust-i686.patch fix-wifi-scanner.diff)
-sha256sums=('05ed22738b3ac49253fe482a316ca3b4163885b03b22404ff9177b0fba950522'
+sha256sums=('da2ba9630b8b56c6f5d36d9f3da2d984ef7986dc8b4d804f6947fcea6c24637d'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
@@ -74,7 +74,6 @@ ac_add_options --enable-rust
 # Branding
 ac_add_options --enable-official-branding
 ac_add_options --enable-update-channel=release
-ac_add_options --with-distribution-id=org.archlinux
 export MOZILLA_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
 export MOZ_ADDON_SIGNING=1
@@ -143,19 +142,6 @@ pref("extensions.shownSelectionUI", true);
 
 // Opt all of us into e10s, instead of just 50%
 pref("browser.tabs.remote.autostart", true);
-END
-
-  _distini="$pkgdir/usr/lib/firefox/distribution/distribution.ini"
-  install -Dm644 /dev/stdin "$_distini" <<END
-[Global]
-id=archlinux
-version=1.0
-about=Mozilla Firefox for Arch Linux
-
-[Preferences]
-app.distributor=archlinux
-app.distributor.channel=$pkgname
-app.partner.archlinux=archlinux
 END
 
   for i in 16 22 24 32 48 256; do
