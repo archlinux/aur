@@ -1,0 +1,7 @@
+# Ignored folders
+src/
+lua-penlight-git/
+
+# Ignored files
+*.pkg.tar.xz
+
