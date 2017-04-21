@@ -1,21 +1,33 @@
 # Maintainer: Vianney le Clément de Saint-Marcq <vleclement AT gmail · com>
 # Contributor: Michael Klier <chi@chimeric.de>
 # Contributor: Laszlo Papp <djszapi2 at gmail com>
-pkgname=upslug2-openwrt
-pkgver=41
-pkgrel=5
+_bpn=upslug2
+pkgname=$_bpn-git
+pkgrel=1
 pkgdesc="A tool to flash your NSLU2 (Slug) from a computer on a local network. (With OpenWRT patches)"
 url="http://www.nslu2-linux.org/wiki/Main/UpSlug2"
 depends=('gcc-libs')
-makedepends=('subversion')
+makedepends=('git')
+provides=("$_bpn")
+conflicts=("$_bpn")
 arch=('i686' 'x86_64')
-license=('custom')
-source=("upslug2::svn+http://svn.nslu2-linux.org/svnroot/upslug2/trunk#revision=$pkgver"
+license=('MIT')
+source=("upslug2::git+https://github.com/wspringer/upslug2.git"
         "100-libpcap_fix.patch"
         "110-wrt350nv2_support.patch")
 md5sums=('SKIP'
          'd50d808f117361f18bbe0726a73b40e2'
          '80e4028a3c79dd4ac5dde263015d6063')
+
+# from https://wiki.archlinux.org/index.php/VCS_package_guidelines
+pkgver=r30.6fde222
+pkgver() {
+	cd "$srcdir/upslug2"
+	( set -o pipefail
+		git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
+}
 
 prepare() {
   cd "$srcdir/upslug2"
