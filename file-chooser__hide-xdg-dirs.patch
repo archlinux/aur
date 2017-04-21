@@ -1,0 +1,19 @@
+--- src/gtk+/gtk/gtkplacessidebar.c	2017-04-16 00:01:55.777173000 +0200
++++ modified_files/gtkplacessidebar.c	2017-04-16 20:03:41.940424991 +0200
+@@ -596,6 +596,7 @@
+ static void
+ add_special_dirs (GtkPlacesSidebar *sidebar)
+ {
++  return;
+   GList *dirs;
+   gint index;
+ 
+@@ -1249,7 +1250,7 @@
+       root = sl->data;
+       is_native = g_file_is_native (root);
+ 
+-      if (_gtk_bookmarks_manager_get_is_builtin (sidebar->bookmarks_manager, root))
++      if (FALSE && _gtk_bookmarks_manager_get_is_builtin (sidebar->bookmarks_manager, root))
+         continue;
+ 
+       if (sidebar->local_only && !is_native)

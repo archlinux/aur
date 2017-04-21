@@ -1,0 +1,11 @@
+--- src/gtk+/gtk/gtksettings.c	2017-04-17 15:30:24.483755927 +0200
++++ modified_files/gtksettings.c	2017-04-17 15:57:50.107170798 +0200
+@@ -61,7 +61,7 @@
+ #ifdef GDK_WINDOWING_QUARTZ
+ #define PRINT_PREVIEW_COMMAND "open -a /Applications/Preview.app %f"
+ #else
+-#define PRINT_PREVIEW_COMMAND "evince --unlink-tempfile --preview --print-settings %s %f"
++#define PRINT_PREVIEW_COMMAND "atril --unlink-tempfile --preview --print-settings %s %f"
+ #endif
+ 
+ /**

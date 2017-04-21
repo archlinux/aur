@@ -1,0 +1,12 @@
+--- src/gtk+/gtk/gtkmessagedialog.c	2017-04-18 01:05:36.035465905 +0200
++++ modified_files/gtkmessagedialog.c	2017-04-18 01:04:38.112129705 +0200
+@@ -327,7 +327,8 @@
+ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+   action_area = gtk_dialog_get_action_area (GTK_DIALOG (dialog));
+ G_GNUC_END_IGNORE_DEPRECATIONS
+-  gtk_button_box_set_layout (GTK_BUTTON_BOX (action_area), GTK_BUTTONBOX_EXPAND);
++  gtk_button_box_set_layout (GTK_BUTTON_BOX (action_area), GTK_BUTTONBOX_END);
++  gtk_box_set_spacing (GTK_BUTTON_BOX (action_area), 6);
+ 
+   settings = gtk_widget_get_settings (GTK_WIDGET (dialog));
+   g_object_get (settings, "gtk-keynav-use-caret", &use_caret, NULL);

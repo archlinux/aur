@@ -1,0 +1,10 @@
+--- src/gtk+/gtk/gtkfilechooserwidget.c	2017-04-16 00:01:55.737173000 +0200
++++ modified_files/gtkfilechooserwidget_singleclick.c	2017-04-16 21:20:06.970652173 +0200
+@@ -2423,6 +2423,7 @@
+ 
+   get_selection_modifiers (widget, event, &modify, &extend);
+   if (!is_touchscreen &&
++  	  FALSE &&
+       !modify && !extend &&
+       event->type == GDK_BUTTON_PRESS &&
+       event->button == GDK_BUTTON_PRIMARY &&

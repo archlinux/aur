@@ -1,0 +1,27 @@
+--- src/gtk+/gtk/gtkheaderbar.c	2017-04-18 01:05:36.035465905 +0200
++++ modified_files/gtkheaderbar_remove-duplicated-title.c	2017-04-18 01:06:56.062136540 +0200
+@@ -1282,7 +1282,6 @@
+ 
+   if (priv->title_label != NULL)
+     {
+-      gtk_label_set_label (GTK_LABEL (priv->title_label), priv->title);
+       gtk_widget_queue_resize (GTK_WIDGET (bar));
+     }
+ 
+@@ -1338,14 +1337,13 @@
+   g_free (priv->subtitle);
+   priv->subtitle = new_subtitle;
+ 
+-  if (priv->subtitle_label != NULL)
++  if (priv->title_label != NULL && priv->subtitle_label != NULL)
+     {
+-      gtk_label_set_label (GTK_LABEL (priv->subtitle_label), priv->subtitle);
++      gtk_label_set_label (GTK_LABEL (priv->title_label), priv->subtitle);
+       gtk_widget_set_visible (priv->subtitle_label, priv->subtitle && priv->subtitle[0]);
+       gtk_widget_queue_resize (GTK_WIDGET (bar));
+     }
+ 
+-  gtk_widget_set_visible (priv->subtitle_sizing_label, priv->has_subtitle || (priv->subtitle && priv->subtitle[0]));
+ 
+   g_object_notify_by_pspec (G_OBJECT (bar), header_bar_props[PROP_SUBTITLE]);
+ }

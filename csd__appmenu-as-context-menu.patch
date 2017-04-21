@@ -1,0 +1,30 @@
+--- src/gtk+/gtk/gtkwindow.c	2017-04-17 20:07:37.054580039 +0200
++++ modified_files/gtkwindow_context-menu-appmenu.c	2017-04-17 20:06:20.311242903 +0200
+@@ -9000,13 +9000,17 @@
+   iconified = (state & GDK_WINDOW_STATE_ICONIFIED) == GDK_WINDOW_STATE_ICONIFIED;
+   maximized = priv->maximized && !iconified;
+ 
+-  priv->popup_menu = gtk_menu_new ();
++  if (gtk_application_get_app_menu (gtk_window_get_application (window)) == NULL)
++    return;
++  priv->popup_menu = gtk_menu_new_from_model (gtk_application_get_app_menu (gtk_window_get_application (window)));
+   gtk_style_context_add_class (gtk_widget_get_style_context (priv->popup_menu),
+                                GTK_STYLE_CLASS_CONTEXT_MENU);
+ 
+   gtk_menu_attach_to_widget (GTK_MENU (priv->popup_menu),
+                              GTK_WIDGET (window),
+                              popup_menu_detach);
++  gtk_menu_popup_at_pointer (GTK_MENU (priv->popup_menu), (GdkEvent *) event);
++  return;
+ 
+   menuitem = gtk_menu_item_new_with_label (_("Restore"));
+   gtk_widget_show (menuitem);
+@@ -9092,7 +9096,7 @@
+ gtk_window_do_popup (GtkWindow      *window,
+                      GdkEventButton *event)
+ {
+-  if (!gdk_window_show_window_menu (_gtk_widget_get_window (GTK_WIDGET (window)),
++  if (TRUE || !gdk_window_show_window_menu (_gtk_widget_get_window (GTK_WIDGET (window)),
+                                     (GdkEvent *) event))
+     gtk_window_do_popup_fallback (window, event);
+ }

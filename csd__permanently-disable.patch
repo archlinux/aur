@@ -1,0 +1,26 @@
+--- src/gtk+/gtk/gtkwindow.c	2017-04-17 18:09:24.420895281 +0200
++++ modified_files/gtkwindow_disable-csd.c	2017-04-17 18:06:38.944220414 +0200
+@@ -4119,6 +4119,7 @@
+ static void
+ gtk_window_enable_csd (GtkWindow *window)
+ {
++  return;
+   GtkWindowPrivate *priv = window->priv;
+   GtkWidget *widget = GTK_WIDGET (window);
+   GdkVisual *visual;
+@@ -6066,6 +6067,7 @@
+ static gboolean
+ gtk_window_should_use_csd (GtkWindow *window)
+ {
++  return;
+   GtkWindowPrivate *priv = window->priv;
+   const gchar *csd_env;
+ 
+@@ -9085,6 +9087,7 @@
+   g_signal_connect (G_OBJECT (menuitem), "activate",
+                     G_CALLBACK (close_window_clicked), window);
+   gtk_menu_shell_append (GTK_MENU_SHELL (priv->popup_menu), menuitem);
++  return;
+   gtk_menu_popup_at_pointer (GTK_MENU (priv->popup_menu), (GdkEvent *) event);
+ }
+ 

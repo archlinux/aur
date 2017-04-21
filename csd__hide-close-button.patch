@@ -1,0 +1,26 @@
+--- src/gtk+/gtk/gtkheaderbar.c	2017-04-16 00:01:55.743840000 +0200
++++ modified_files/gtkheaderbar.c	2017-04-16 20:39:12.850530576 +0200
+@@ -388,6 +388,7 @@
+               else if (strcmp (t[j], "minimize") == 0 &&
+                        is_sovereign_window)
+                 {
++                  continue;
+                   button = gtk_button_new ();
+                   gtk_widget_set_valign (button, GTK_ALIGN_CENTER);
+                   gtk_style_context_add_class (gtk_widget_get_style_context (button), "titlebutton");
+@@ -407,6 +408,7 @@
+                        gtk_window_get_resizable (window) &&
+                        is_sovereign_window)
+                 {
++                  continue;
+                   const gchar *icon_name;
+                   gboolean maximized = gtk_window_is_maximized (window);
+ 
+@@ -429,6 +431,7 @@
+               else if (strcmp (t[j], "close") == 0 &&
+                        gtk_window_get_deletable (window))
+                 {
++                  continue;
+                   button = gtk_button_new ();
+                   gtk_widget_set_valign (button, GTK_ALIGN_CENTER);
+                   image = gtk_image_new_from_icon_name ("window-close-symbolic", GTK_ICON_SIZE_MENU);

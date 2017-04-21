@@ -1,0 +1,11 @@
+--- src/gtk+/gtk/gtkscrolledwindow.c	2017-04-16 00:01:55.797173000 +0200
++++ modified_files/gtkscrolledwindow.c	2017-04-16 20:14:27.297123638 +0200
+@@ -4412,7 +4412,7 @@
+ 
+   use_indicators = priv->overlay_scrolling;
+ 
+-  if (g_strcmp0 (g_getenv ("GTK_OVERLAY_SCROLLING"), "0") == 0)
++  if (TRUE || g_strcmp0 (g_getenv ("GTK_OVERLAY_SCROLLING"), "0") == 0)
+     use_indicators = FALSE;
+ 
+   if (priv->use_indicators != use_indicators)

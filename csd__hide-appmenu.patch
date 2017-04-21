@@ -1,0 +1,10 @@
+--- src/gtk+/gtk/gtkheaderbar.c	2017-04-17 16:59:04.494019524 +0200
++++ modified_files/gtkheaderbar_hideappmenu.c	2017-04-17 18:24:03.557605504 +0200
+@@ -369,6 +369,7 @@
+                        menu != NULL &&
+                        is_sovereign_window)
+                 {
++                  continue;
+                   button = gtk_menu_button_new ();
+                   gtk_widget_set_valign (button, GTK_ALIGN_CENTER);
+                   gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (button), menu);
