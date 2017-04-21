@@ -18,7 +18,7 @@ options=(!strip)
 
 prepare () {
 	cd "$srcdir/EMAN2"
-	sed -i -e s:"EMAN2PYTHON=\$1":"EMAN2PYTHON=/usr/bin/python2":g eman2-installer
+	sed -i -e s:"EMAN2PYTHON=\$1":"EMAN2PYTHON=/opt/eman2/Python/bin/python":g eman2-installer
 }
 build() {
 	cd "$srcdir/EMAN2"
