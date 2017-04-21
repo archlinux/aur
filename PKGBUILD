@@ -4,7 +4,7 @@
 _appname=cocos2d-x
 pkgname=cocos2d-x-src
 pkgver=3.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Cocos2D-X is a game engine that supports multiple platforms such as iOS, Android, WinXP/7/8, WP8, BlackBerry, MeeGo, Marmelade, WebOS, Mac OS X"
 arch=('i686' 'x86_64')
 url="http://cdn.cocos2d-x.org/"
@@ -242,6 +242,9 @@ package() {
 		ln -sf /opt/cocos2d-x/external/linux-specific/fmod/prebuilt/32-bit/libfmod.so "$pkgdir/usr/lib/libfmod.so.6"
 		ln -sf /opt/cocos2d-x/external/linux-specific/fmod/prebuilt/32-bit/libfmodL.so "$pkgdir/usr/lib/libfmodL.so.6"
 	fi
+
+	# Update the file timestamps -- otherwise the build system will keep recompiling everything always:
+	find "$srcdir"/$_appname-$pkgver -exec touch {} +
 
 	# Set sdkbox python interpreter to python2
 	sed -e 's/python/python2/g' -i "$srcdir"/$_appname-$pkgver/tools/cocos2d-console/plugins/plugin_package/sdkbox
