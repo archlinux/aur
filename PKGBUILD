@@ -25,17 +25,17 @@ package() {
   cd "$srcdir/liu-beamer"
 
   THEMEDIR=tex/latex/liu/liuslides
-  mkdir -p ${srcdir}/${TEXMFDIST}/${THEMEDIR}
+  mkdir -p ${TEXMFDIST}/${THEMEDIR}
 
   for tag in '' color font inner outer
   do
-      install -m644 ${THEMEDIR}/beamer${tag}themeLiU.sty ${srcdir}/${TEXMFDIST}/${THEMEDIR}/
+      install -m644 ${THEMEDIR}/beamer${tag}themeLiU.sty ${TEXMFDIST}/${THEMEDIR}/
   done
 
   MEDIADIR=tex/generic/images/logo/liu
-  mkdir -p ${srcdir}/${TEXMFDIST}/${MEDIADIR}
+  mkdir -p ${TEXMFDIST}/${MEDIADIR}
   for file in ${MEDIADIR}/*
   do
-      install -m644 ${file} ${srcdir}/${TEXMFDIST}/${file}
+      install -m644 ${file} ${TEXMFDIST}/${file}
   done
 }
