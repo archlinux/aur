@@ -3,8 +3,8 @@
 # Contributor: William Giokas (KaiSforza) <1007380@gmail.com>
 
 pkgname=libbitcoin-system
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Bitcoin Cross-Platform C++ Development Toolkit"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -26,7 +26,7 @@ url="https://github.com/libbitcoin/libbitcoin"
 license=('AGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver
         git+https://github.com/libbitcoin/libbitcoin.wiki)
-sha256sums=('a59cecfd97b9b0db3bf46377cee8e5c59df343a327f548bbb9db47fb07a26777'
+sha256sums=('050d5458ec4b6def81f044a5814efef93660d9aca29a51d3faebbfb5feb7ff24'
             'SKIP')
 provides=('libbitcoin' 'libbitcoin-system')
 conflicts=('libbitcoin')
