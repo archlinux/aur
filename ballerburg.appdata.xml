@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2015 Andrea Musuruane <musuruan@gmail.com> -->
+<application>
+  <id type="desktop">ballerburg.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPLv3+</project_license>
+  <name>Ballerburg</name>
+  <summary>Two players, two castles, and a hill in between</summary>
+  <description>
+    <p>
+      Two castles, separated by a mountain, try to defeat each other with their
+      cannonballs, either by killing the opponent's king or by weakening the
+      opponent enough so that the king capitulates.
+    </p>
+    <p>
+      Ballerburg was originally written 1987 by Eckhard Kruse, for the Atari ST
+      machines (which were brand new computers at that point in time). Over 25
+      years later, here's finally the adaption of the original source code to
+      modern operating systems.
+    </p>
+  </description>
+  <url type="homepage">http://baller.tuxfamily.org/</url>
+  <screenshots>
+    <screenshot type="default">http://baller.tuxfamily.org/screenshot1.png</screenshot>
+    <screenshot>http://baller.tuxfamily.org/screenshot2.png</screenshot>
+  </screenshots>
+</application>
