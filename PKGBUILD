@@ -28,7 +28,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 pkgver=7.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP scripting language package for stable release of 7.0 series"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -49,6 +49,11 @@ sha256sums=('679cffcdf2495dee5ab89bda595e678a1096136678b3a1d08f1f57ba347c234d'
             'b6b7f3ced56b75bf95513a46f43cde41fc28da714f5e0ed181caf2266f2f0c27'
             '2f678d039313ee613d59c8b4bf9f48068085df0fa8ac7ca4cf807e168061a8c9'
             )
+# keys from http://php.net/downloads.php#gpg-7.0
+validpgpkeys=(
+	'1A4E8B7277C42E53DBA9C7B9BCAA30EA9C0D5763'
+	'6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3'
+)
 
 prepare() {
 	cd ${srcdir}/${_pkgbase}-${pkgver}

@@ -1,7 +1,7 @@
 pkgbase = php70
 	pkgdesc = PHP scripting language package for stable release of 7.0 series
 	pkgver = 7.0.18
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.php.net
 	arch = i686
 	arch = x86_64
@@ -34,6 +34,8 @@ pkgbase = php70
 	source = php-fpm.patch
 	source = php-fpm.tmpfiles
 	source = php.ini.patch
+	validpgpkeys = 1A4E8B7277C42E53DBA9C7B9BCAA30EA9C0D5763
+	validpgpkeys = 6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3
 	sha256sums = 679cffcdf2495dee5ab89bda595e678a1096136678b3a1d08f1f57ba347c234d
 	sha256sums = SKIP
 	sha256sums = 819f05d2fd5a75c96e93c863517ca77dbd021a1224dc2d8096f758fb2937df6a
