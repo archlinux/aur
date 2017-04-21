@@ -1,15 +1,15 @@
 pkgname=libcoap-git
 _gitname=libcoap
-pkgver=0
+pkgver=r867.771f013
 pkgrel=1
 pkgdesc="C-Implementation of CoAP"
 arch=('x86' 'x86_64')
 url="https://libcoap.net/"
-license=('BSD2')
+license=('BSD2' 'GPL2')
 makedepends=('git')
 provides=('libcoap')
 conflicts=('libcoap')
-source=("$_gitname::git://git.code.sf.net/p/libcoap/code")
+source=("$_gitname::git://github.com/obgm/libcoap.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-  autoconf
+  ./autogen.sh
   ./configure --prefix="/usr"
   make
 }
