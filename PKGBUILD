@@ -51,8 +51,8 @@ _use_current=
 pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _srcname=linux-4.10
-pkgver=4.10.11
-pkgrel=2
+pkgver=4.10.12
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
 license=('GPL2')
@@ -425,7 +425,7 @@ done
 
 sha512sums=('c3690125a8402df638095bd98a613fcf1a257b81de7611c84711d315cd11e2634ab4636302b3742aedf1e3ba9ce0fea53fe8c7d48e37865d8ee5db3565220d90'
             'SKIP'
-            'a3515be12639f12c4433c122615e841eea4a70ae1557eb305f9c175ae2fec16439a34f3a79a4d1976c19b4068bf6ff1a7b75ff600c9b6c467cfa0edb1f24fdab'
+            '39dacec6f9ed28a3bf3339d98c9f0cc86b977252c8d2cabf5d39572cc1dff078bf8f52afdd7e6bc3213d00f7b42474d9c6a4ba641497d091b122e748a48ff0f9'
             'SKIP'
             '03f4d45c0b3ac20baea9eaa92591e1749499e084cbca104f55a3ec4cfeda0e6c7fe6766b0eea0bb5bb4cf7f2371992e7a6002aaec09a08386fe2431c9cf0a3a8'
             'c4161e2ff79647b8e8212681c0294b6f160c135728f48adfe61b1089d6242f925584afe4d2ebf0ef9cb650ae45c057d5c7119ce0264d3aeda008bb359b2b2582'
