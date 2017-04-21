@@ -3,7 +3,7 @@
 pkgname=mastodon-git
 pkgver=1.2.2_22_ga0ed88a9
 _branch=master
-pkgrel=0.1
+pkgrel=0.2
 pkgdesc="A GNU Social-compatible microblogging server"
 arch=('i686' 'x86_64')
 url="https://mastodon.social"
@@ -32,6 +32,7 @@ source=(
     "mastodon-streaming.service"
     "mastodon.target"
     )
+backup=("etc/mastodon/env.production")
 sha256sums=('SKIP'
             '2b3a22149ee88c4bacf83aa1958b06fc791057089737596b35b6e1968b1443aa'
             '5f72e3ee2921f8b760bac614d910a3c36334ebfefdfd4ba0c9058e21d8537c73'
@@ -58,6 +59,13 @@ build() {
 }
 
 post_install() {
+  sed -i -e "/^PAPERCLIP_SECRET=\$/s/\$/$(rake secret)/" \
+         -e "/^SECRET_KEY_BASE=\$/s/\$/$(rake secret)/" \
+         -e "/^OTP_SECRET=\$/s/\$/$(rake secret)/" \
+         -e "/^REDIS_HOST=redis\$/s/redis\$/localhost/" \
+         -e "/^DB_HOST=db\$/s/redis\$/localhost/" \
+      /etc/mastodon/env.production
+
   echo "1. Configure your instance:"
   echo "    $ vim /etc/mastodon/env.production"
   echo ""
@@ -80,6 +88,8 @@ post_upgrade() {
 
 package() {
   cd "${pkgname%-git}"
+
+  install -Dm 644 .env.production.sample ${pkgdir}/etc/mastodon/env.production
 
   for service in mastodon-{web,sidekiq,streaming}.service mastodon.target; do
     install -Dm644 "${srcdir}/${service}" "${pkgdir}/usr/lib/systemd/system/${service}"
