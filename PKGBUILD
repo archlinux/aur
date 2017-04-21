@@ -47,3 +47,35 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/-/_/g'
 }
 
+prepare() {
+  bundle install --deployment --without development test
+  yarn install
+}
+
+build() {
+  cd "${pkgname%-git}"
+  RAILS_ENV=production bundle exec rails assets:precompile
+}
+
+post_install() {
+  echo "1. Configure your instance:"
+  echo "    $ vim /etc/mastodon/env.production"
+  echo ""
+  echo "2. Create a postgres user for mastodon:"
+  echo "    $ sudo -u postgres psql"
+  echo "    > CREATE USER mastodon CREATEDB;"
+  echo ""
+  echo "3. Then setup the database for the first time:"
+  echo "    $ cd ~mastodon && sudo -u mastodon RAILS_ENV=production bundle exec rails db:setup"
+  echo ""
+  echo "4. Create an administrator account:"
+  echo "    $ cd ~mastodon && sudo -u mastodon RAILS_ENV=production bundle exec rails mastodon:make_admin USERNAME=<username>"
+}
+
+post_upgrade() {
+  cd ~mastodon && sudo -u mastodon RAILS_ENV=production bundle exec rails db:migrate
+}
+
+package() {
+  cd "${pkgname%-git}"
+}
