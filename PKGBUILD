@@ -1,6 +1,6 @@
 # Maintainer: zimbatm <zimbatm@zimbatm.com>
 pkgname=direnv
-pkgver=2.10.0
+pkgver=2.11.3
 pkgrel=1
 pkgdesc='a shell extension that manages your environment'
 arch=('x86_64' 'i686')
@@ -8,7 +8,6 @@ url='http://direnv.net'
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/direnv/direnv/archive/v$pkgver.tar.gz")
-sha256sums=('0eb3a45b01dafa0d5fb9809c699820494168b74b5b723974af3370fa80e5bec0')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -24,3 +23,5 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+
+sha256sums=('2d34103a7f9645059270763a0cfe82085f6d9fe61b2a85aca558689df0e7b006')
