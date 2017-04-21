@@ -1,6 +1,6 @@
 pkgbase = cevelop
 	pkgdesc = The C++ IDE for professional developers
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://www.cevelop.com
 	install = cevelop.install
@@ -30,10 +30,10 @@ pkgbase = cevelop
 	sha256sums = 98ab055ecde507b6603743ab40db3dfdb6d6b3b24cb5fff244982ae641d865a0
 	sha256sums = d99f2f3b58aef682fcab7d1cedf20fc4fc44152c6b964af49212a9e7f4d35def
 	sha256sums = ebd2b54d0487de845093cabda98d5e0977f436fc10d40f15d2cb1598084222e4
-	source_i686 = https://www.cevelop.com/cevelop/downloads/cevelop-1.7.0-201704121451-linux.gtk.x86.tar.gz
-	sha256sums_i686 = 36469882f0c3b7fd45f4fd305bab49ae075d10c4d7414c1d9a392e0f87f27f80
-	source_x86_64 = https://www.cevelop.com/cevelop/downloads/cevelop-1.7.0-201704121451-linux.gtk.x86_64.tar.gz
-	sha256sums_x86_64 = e3de093c14e16bc0f401b8796b68e0ef433195112ef369a2a998356b2a52b9b8
+	source_i686 = https://www.cevelop.com/cevelop/downloads/cevelop-1.7.1-201704211123-linux.gtk.x86.tar.gz
+	sha256sums_i686 = 162f3b72011f7ab4436dd44ff85c6a295bcbc24b43d10b9ca5082313014de1e5
+	source_x86_64 = https://www.cevelop.com/cevelop/downloads/cevelop-1.7.1-201704211123-linux.gtk.x86_64.tar.gz
+	sha256sums_x86_64 = 4278fceece5eb2ca470b31dcf65ff0471eb4db71126bc1008aeb01bba2c5abe8
 
 pkgname = cevelop
 

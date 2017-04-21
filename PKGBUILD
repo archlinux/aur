@@ -1,8 +1,8 @@
 # Maintainer: Marcel Huber <marcelhuberfoo@gmail.com>
 
 pkgname=cevelop
-pkgver=1.7.0
-_srctimestamp=201704121451
+pkgver=1.7.1
+_srctimestamp=201704211123
 pkgrel=1
 pkgdesc="The C++ IDE for professional developers"
 license=('custom')
@@ -26,8 +26,8 @@ sha256sums=('cedcc248a90de4b96277ffc788371db2f2090d9a6c285db3b14e3d6a27f5cb30'
             '98ab055ecde507b6603743ab40db3dfdb6d6b3b24cb5fff244982ae641d865a0'
             'd99f2f3b58aef682fcab7d1cedf20fc4fc44152c6b964af49212a9e7f4d35def'
             'ebd2b54d0487de845093cabda98d5e0977f436fc10d40f15d2cb1598084222e4')
-sha256sums_i686=('36469882f0c3b7fd45f4fd305bab49ae075d10c4d7414c1d9a392e0f87f27f80')
-sha256sums_x86_64=('e3de093c14e16bc0f401b8796b68e0ef433195112ef369a2a998356b2a52b9b8')
+sha256sums_i686=('162f3b72011f7ab4436dd44ff85c6a295bcbc24b43d10b9ca5082313014de1e5')
+sha256sums_x86_64=('4278fceece5eb2ca470b31dcf65ff0471eb4db71126bc1008aeb01bba2c5abe8')
 
 prepare() {
   gendesk -n --pkgname "$pkgname" \
