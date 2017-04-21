@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-jemalloc
 	pkgdesc = General-purpose scalable concurrent malloc implementation (mingw-w64)
 	pkgver = 4.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.canonware.com/jemalloc/
 	arch = i686
 	arch = x86_64

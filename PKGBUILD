@@ -2,7 +2,7 @@
 _basename=jemalloc
 pkgname=mingw-w64-jemalloc
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='General-purpose scalable concurrent malloc implementation (mingw-w64)'
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -32,9 +32,9 @@ package() {
   for _arch in ${_architectures}; do
     cd build-${_arch}
     make DESTDIR="$pkgdir" install_include install_lib
+    mv $pkgdir/usr/${_arch}/lib/jemalloc.lib $pkgdir/usr/${_arch}/lib/libjemalloc.a
+    mv $pkgdir/usr/${_arch}/lib/jemalloc_s.lib $pkgdir/usr/${_arch}/lib/libjemalloc_s.a
     cd ..
-    find $pkdir
   done
-  find "$pkgdir" -name '*.lib' -exec sh -c 'mv "$0" "lib${0%.lib}.a"' {} \;
   find "$pkgdir" -name '*.a' -type f -exec chmod 644 {} \;
 }
