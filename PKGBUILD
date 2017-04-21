@@ -2,7 +2,7 @@
 #Contributor: Yan Burdonsky <psyrccio@gmail.com>
 pkgname=jwildfire
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fractal flame image and animation processor written in Java"
 arch=('any')
 url="http://www.andreas-maschke.com"
@@ -51,6 +51,6 @@ package() {
   mkdir "$pkgdir/usr/share/applications"
   mv "$srcdir"/jwildfire.desktop "$pkgdir/usr/share/applications/jwildfire.desktop"
   mv "$srcdir"/jwildfire "$pkgdir/usr/bin/jwildfire"
-  cp "$srcdir"/../jwildfire_icon.png "$pkgdir/usr/share/pixmaps/jwildfire.png"
+  cp "$srcdir"/jwildfire_icon.png "$pkgdir/usr/share/pixmaps/jwildfire.png"
   rm -rf "$pkgdir/opt/jwildfire/jwildfire_icon.png"
 }
