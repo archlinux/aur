@@ -2,7 +2,7 @@
 
 pkgname=qgis-git
 _pkgname=qgis
-pkgver=2.99.0.r36.a00e4e3
+pkgver=2.99.0.r38069.bcf1ef5a57
 _pkgver=2.99.0
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Development master'
@@ -24,7 +24,7 @@ md5sums=('SKIP')
 conflicts=('qgis')
 
 pkgver(){
-  cd "$srcdir"/$_gitname
+  cd "$_pkgname"
   printf "%s.r%s" "$_pkgver" "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
