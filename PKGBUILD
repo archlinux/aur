@@ -3,7 +3,7 @@
 
 pkgname=nextcloud-app-onlyoffice-git
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrate ONLYOFFICE documentserver into NextCloud"
 arch=('any')
 url="https://github.com/mabe-at/onlyoffice-nextcloud"
@@ -13,6 +13,8 @@ makedepends=()
 options=('!strip')
 source=("git+https://github.com/mabe-at/onlyoffice-nextcloud.git")
 sha512sums=("SKIP")
+provides=("nextcloud-app-onlyoffice")
+conflicts=("nextcloud-app-onlyoffice")
 
 pkgver() {
   cd "onlyoffice-nextcloud"
