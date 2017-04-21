@@ -1,12 +1,12 @@
 pkgname=caddy
-pkgver=0.9.5
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='A configurable, general-purpose HTTP/2 web server for any platform'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://caddyserver.com'
 license=('Apache')
 install='caddy.install'
-makedepends=('go>=1.7' 'git')
+makedepends=('go>=1.8.1' 'git')
 conflicts=('caddy-all-features' 'caddy-git' 'caddy-full-bin')
 
 gopkgname='github.com/mholt/caddy'
