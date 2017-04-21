@@ -1,13 +1,13 @@
 pkgbase = conan
 	pkgdesc = A distributed, open source, C/C++ package manager.
 	pkgver = 0.22.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://conan.io
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-pyjwt>=1.4.0
-	depends = python-pyjwt<1.5.0
+	depends = python-pyjwt<1.6.0
 	depends = python-requests>=2.7.0
 	depends = python-requests<2.14.0
 	depends = python-colorama>=0.3.3
@@ -29,8 +29,10 @@ pkgbase = conan
 	depends = python-future=0.16.0
 	source = https://github.com/conan-io/conan/archive/0.22.2.tar.gz
 	source = pylint-1.6.4.patch
+	source = pyjwt-1.5.0.patch
 	sha512sums = 60f019ad0d00d1ecbb153ee5e108361a8928f97c24e39eefe054838e86c5f1ea9a55f76a2eaebda647c3017d786863a8f50ebb2a8860aa202f73062405b64f01
 	sha512sums = 2d4ccf533f3d6efb478cdcecc6b1e320fa1dcfe8328c7f288bfc735c99a5ae5741446a1df69cd8dbb166fd84f801bb473d1f15026ca8773f73f7640475a40aa6
+	sha512sums = ff7d7561ffab07db03c062fccf9862415e1286e256ccba1b4200dc62a4adbea3eead16bca4ae2236a90fbc6ce1b431eac9490793643176a2e81c1997590bb2ba
 
 pkgname = conan
 
