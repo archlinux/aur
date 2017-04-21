@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=ScanGearMP
+Type=Application
+Exec=scangearmp2
+Terminal=false
+Icon=scanner.png
+Comment=Canon Scanner
+NoDisplay=false
+Categories=Graphics;
