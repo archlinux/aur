@@ -6,11 +6,11 @@ pkgver=a
 pkgrel=1
 pkgdesc="Kernel module for Realtek RTL8189FTV SDIO wireless devices."
 arch=('armv7h')
-url="https://github.com/swiftgeek/rtl8189ES_linux/tree/rtl8189fs"
+url="https://github.com/jwrdegoede/rtl8189ES_linux/tree/rtl8189fs"
 license=('GPL')
 depends=('linux')
 makedepends=('linux-headers' 'git')
-source=("git://github.com/swiftgeek/$_pkgname.git#branch=rtl8189fs")
+source=("git://github.com/jwrdegoede/$_pkgname.git#branch=rtl8189fs")
 sha256sums=('SKIP')
 install=depmod.install
 
