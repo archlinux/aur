@@ -1,0 +1,15 @@
+pkgbase = httpstat-go
+	pkgdesc = It's like curl -v, with colours.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/davecheney/httpstat
+	arch = x86_64
+	arch = i686
+	license = MIT
+	source_x86_64 = httpstat::https://github.com/davecheney/httpstat/releases/download/v1.0.0/httpstat-linux-amd64-v1.0.0
+	md5sums_x86_64 = 9389453ae98f90c1514ae4b60049ac10
+	source_i686 = httpstat::https://github.com/davecheney/httpstat/releases/download/v1.0.0/httpstat-linux-386-v1.0.0
+	md5sums_i686 = 9389453ae98f90c1514ae4b60049ac10
+
+pkgname = httpstat-go
+
