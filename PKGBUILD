@@ -4,18 +4,20 @@
 pkgname=bin32-epsxe
 _pkgname=ePSXe
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Enhanced PSX emulator (32-bit)"
 url="http://epsxe.com"
 arch=('i686' 'x86_64')
-depends=(gtk3 sdl_ttf libtinfo libcurl-compat)
+depends_i686+=(gtk3 sdl_ttf lib32-libtinfo libcurl-compat)
+#depends=(gtk3 sdl_ttf libtinfo libcurl-compat)
+depends_x86_64=(lib32-gtk3 lib32-libxt lib32-sdl_ttf lib32-libtinfo lib32-libcurl-compat lib32-libcanberra-gtk3)
 license=('unknown')
 install=${pkgname}.install
 options=(!strip)
 source=(${pkgname}.desktop ${pkgname}.png ${pkgname}.sh)
 md5sums=('aeb34e2ca34f968630ca133ea821c61c'
          'eb0c46b8ae1355c589792f6be1835e47'
-         '071c43c1cb8f6b6470b7af60ad69247a')
+         '317eb969b7a84a810169422d28fb8093')
 source+=("http://www.epsxe.com/files/ePSXe${pkgver//./}linux.zip")
 md5sums+=('3e1976822eb260722b31c9f24cb1d6e1')
 
