@@ -3,14 +3,14 @@
 _plug=vcmove
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=20160409
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=171414'
 license=('GPL')
 depends=('vapoursynth')
 source=("${_plug}-${pkgver}.7z::http://www.avisynth.nl/users/vcmohan/vcmove/vcmove_src.7z")
-sha1sums=('6a9dd0a2bb72780d11c61c29f43c3bf2de2711f6')
+sha256sums=('18d99e51d0d2ebf12274a23c92977ee11e1427dded1875390709e8203c7af0ec')
 
 prepare(){
   rm -fr VSHelper.h VapourSynth.h
