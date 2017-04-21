@@ -37,6 +37,7 @@ package () {
 
   #cd "${srcpath}"
   cd "${srcdir}"
+  ls
 #  install -m775 -g games -d "${pkgdir}/opt/${pkgname}/"{plugins,bios,memcards,cfg,cdimages,cheats,patches,sstates,snap}
   install -d "${pkgdir}"/usr/{share/doc/"${pkgname}",lib}
 
