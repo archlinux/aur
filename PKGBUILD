@@ -5,7 +5,7 @@
 
 _pkgname=vocal
 pkgname=$_pkgname-git
-pkgver=2.0.10.beta.r0.g395cdbb
+pkgver=2.0.13.beta.r13.gbced2e2
 pkgrel=1
 pkgdesc="Podcast Client for the Modern Desktop"
 arch=('i686' 'x86_64')
@@ -29,15 +29,11 @@ prepare() {
 
   # Use newer version of webkit2gtk
   sed -i 's/webkit2gtk-3.0/webkit2gtk-4.0/g' CMakeLists.txt
-
-  # Patch
-  cd data
-  mv com.github.{needle-and-thread,vocalapp}.vocal.desktop
-  mv com.github.needle-and-thread.vocal.appdata.xml com.github.vocalapp.vocal.desktop.appdata.xml
 }
 
 build() {
   cd $_pkgname
+  rm -rf build
   mkdir build
   cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr    # -DGSETTINGS_LOCALINSTALL=1 -DGSETTINGS_COMPILE=1
