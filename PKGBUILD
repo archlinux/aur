@@ -1,18 +1,18 @@
-# Maintainer: André Silva <emulatorman@parabola.nu>
-# Contributor: Nicolás Reynolds <fauno@kiwwwi.com.ar>
-# Contributor: Sorin-Mihai Vârgolici <smv@yobicore.org>
-# Contributor: Michał Masłowski <mtjm@mtjm.eu>
-# Contributor: Márcio Silva <coadde@parabola.nu>
-# Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
-# Contributor: Luke R. <g4jc@openmailbox.org>
+# Maintainer: André Silva <emulatorman@riseup.net>
+# Contributor: Márcio Silva <coadde@riseup.net>
+# Contributor (Parabola): Nicolás Reynolds <fauno@kiwwwi.com.ar>
+# Contributor (Parabola): Sorin-Mihai Vârgolici <smv@yobicore.org>
+# Contributor (Parabola): Michał Masłowski <mtjm@mtjm.eu>
+# Contributor (Parabola): Luke Shumaker <lukeshu@sbcglobal.net>
+# Contributor (Parabola): Luke R. <g4jc@openmailbox.org>
 
 # Based on linux-grsec package
 
 pkgbase=linux-libre-grsec-knock
 _pkgbasever=4.9-gnu
-_pkgver=4.9.20-gnu
+_pkgver=4.9.23-gnu
 _grsecver=3.1
-_timestamp=201703310823
+_timestamp=201704181901
 _knockpatchver=4.9_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -35,18 +35,18 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
         "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
-        "https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-${_grsecver}-${_pkgver%-*}-${_timestamp}.patch"
-        "https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-${_grsecver}-${_pkgver%-*}-${_timestamp}.patch.sig"
-        #"http://gnunet.org/sites/default/files/tcp_stealth_${_knockpatchver}.diff"
-        #"tcp_stealth_${_knockpatchver}.diff.sig::http://gnunet.org/sites/default/files/tcp_stealth_${_knockpatchver%_1}.diff_1.sig"
-        "https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_${_knockpatchver}.diff"
-        "https://repo.parabola.nu/other/knock/patches/linux-libre/tcp_stealth_${_knockpatchver}.diff.sig"
-        "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm"
-        "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig"
-        "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm"
-        "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm.sig"
-        "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm"
-        "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig"
+        "https://github.com/coadde/grsecurity-libre/raw/master/test/grsecurity-libre-${_grsecver}-${_pkgver%-*}-${_timestamp}.patch"
+        "https://github.com/coadde/grsecurity-libre/raw/master/test/grsecurity-libre-${_grsecver}-${_pkgver%-*}-${_timestamp}.patch.sig"
+        #"https://gnunet.org/sites/default/files/tcp_stealth_${_knockpatchver}.diff"
+        #"tcp_stealth_${_knockpatchver}.diff.sig::https://gnunet.org/sites/default/files/tcp_stealth_${_knockpatchver%_1}.diff_1.sig"
+        "https://github.com/coadde/knock/raw/master/linux-libre/tcp_stealth_${_knockpatchver}.diff"
+        "https://github.com/coadde/knock/raw/master/linux-libre/tcp_stealth_${_knockpatchver}.diff.sig"
+        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_clut224.ppm"
+        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_clut224.ppm.sig"
+        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_mono.pbm"
+        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_mono.pbm.sig"
+        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_vga16.ppm"
+        "https://github.com/coadde/linux-libre_logos/raw/master/logo_linux_vga16.ppm.sig"
         # the main kernel config files
         'config.i686' 'config.x86_64' 'config.armv7h'
         # pacman hook for initramfs regeneration
@@ -57,8 +57,8 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch'
         # armv7h patches
-        "https://repo.parabola.nu/other/rcn-libre-grsec/patches/${_pkgver%-*}/rcn-libre-grsec-${_pkgver%-*}-${rcnrel}.patch"
-        "https://repo.parabola.nu/other/rcn-libre-grsec/patches/${_pkgver%-*}/rcn-libre-grsec-${_pkgver%-*}-${rcnrel}.patch.sig"
+        "https://github.com/coadde/rcn-libre-grsec/raw/master/${_pkgver%-*}/rcn-libre-grsec-${_pkgver%-*}-${rcnrel}.patch"
+        "https://github.com/coadde/rcn-libre-grsec/raw/master/${_pkgver%-*}/rcn-libre-grsec-${_pkgver%-*}-${rcnrel}.patch.sig"
         '0001-ARM-disable-implicit-function-declaration-error.patch'
         '0002-ARM-fix-redefinition-error-of-atomic64_xchg_unchecked_relaxed.patch'
         '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
@@ -71,9 +71,9 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP'
-            '8de958db6f6fb48900cd7b877c99af2e2d0ed1c2ff2b566657766206f24db04b4d52b6309ad49a5b39136119a4cf57a267e018304058160daac79837d32ec99c'
+            'd95e568894ab16f16b9b24aed819a9f794949ef62b06be55aac3ac39f9292daec37355bea833ead8b83d0a8571c2c54ecbc4139e29f458456896797ee78c2943'
             'SKIP'
-            '08cf26c42c7f570642d026291ace85bb47a311cba04035b47320a60fec3ac9809889067f4c621e7f06ac668b23f163c5c8960ac97de6ebaee0df3411904f04cd'
+            'a3c7aa18a85428b82206683744a628c5fb4cd8aa2537d2378d69f59f5d32f0c3e91d9d96384ad93b86b9f396cf05fa14d5faf4542fe9bed515038407883e8031'
             'SKIP'
             'a00e9fc0b930021242b231dfdd15160eaefbfad4aaa0ba0426bb9a25dd14acc1825cbb1bc9c680a6d43baca797591dc219e232862f566457752ff378e03600a3'
             'SKIP'
@@ -91,7 +91,7 @@ sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca4
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            'fb83f0c360a39ee4e777fc303156cdb257b5898d75b99bc695fc63eb240c233e36c67caf04dcb68c1a4d885c530c66fa1b99292c6cf0f70724a3c7bbca34e841'
+            'f67bada9f9d09163a459480b85f5e7903de5e72812ba39714310ab217fb2a14739fa602f1c822b38aa7d51f17d22e6689a8bdfa55c53af5403a13677d811b2f4'
             'SKIP'
             'e04da62f138b24a489daf6ea12759ecb545b77be4dd585983d3abb764f4ac3aa4a9bf4179adddc73032b81e4fa54cbf5dbf173b25dfb1723e7379583b57aa426'
             '5d3a5440b3612fb85759b34d9b455118da342928e585b11545a0dcc9d11f16f0924e1b6018e08ed0507e53d1aabab7000c9b4405bc8881a7bda775456d81df2a'
@@ -222,7 +222,7 @@ _package() {
               'paxd-libre: to enable PaX exploit mitigations and apply exceptions automatically'
               'systemd-knock: to use system and service manager with TCP Stealth support'
               'openssh-knock: to use SSH with TCP Stealth support')
-  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}" "LINUX-ABI_VERSION=${_archpkgver}")
+  provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}" "kernel=${_archpkgver}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
