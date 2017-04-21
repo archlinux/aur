@@ -1,8 +1,8 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=qmplay2-git
-pkgver=17.04.02
-pkgrel=2
+pkgver=17.04.21
+pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7' 'armv6' 'armv5')
 url='http://zaps166.sourceforge.net/?app=QMPlay2'
