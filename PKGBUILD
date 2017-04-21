@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-blockchain
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Bitcoin Blockchain Library"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -23,7 +23,7 @@ groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-blockchain"
 license=('AGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver)
-sha256sums=('42e2c22f89b7edee638c047867919c6df56766933b56d9bd9883e30902232413')
+sha256sums=('098d60616141b558ec3fdc30e1c6b5ef0aa41c426b62e9b11a9de1f57df157be')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
