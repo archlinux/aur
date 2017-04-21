@@ -1,4 +1,4 @@
-pkgbase = gtk3-mushrooms
+pkgbase = gtk3-cosy
 	pkgdesc = GTK3 library with my modifications (see README)
 	pkgver = 3.22.12
 	pkgrel = 1
@@ -70,5 +70,5 @@ pkgbase = gtk3-mushrooms
 	sha256sums = 01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202
 	sha256sums = de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845
 
-pkgname = gtk3-mushrooms
+pkgname = gtk3-cosy
 

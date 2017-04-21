@@ -1,6 +1,6 @@
 # Maintainer: Vladimir Pinchuck <vladimir.pinchuk01@gmail.com>
 
-pkgname=gtk3-mushrooms
+pkgname=gtk3-cosy
 pkgver=3.22.12
 pkgrel=1
 conflicts=(gtk3)
