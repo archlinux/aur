@@ -1,8 +1,8 @@
 # Maintainers: Mike Cooper <mythmon at elem.us>, Mikko <mikko at 5x.fi>
 
 pkgname=terraria-server
-pkgver=1.3.4.4
-pkgrel=18
+pkgver=1.3.5.1
+pkgrel=19
 pkgdesc="Official dedicated server for Terraria"
 arch=('x86_64' 'x86')
 license=('unknown')
@@ -18,23 +18,45 @@ source=("http://terraria.org/server/${pkgname}-${_pkgver}.zip"
         'config.txt'
         'terraria-server@.service')
 
-sha256sums=('ef95d59c921e36766cbbd3a36a7494e88bb9cd47454942a84adf59050905a0dd'
+sha256sums=('16bc7b75bc4eb7478528a9d2788ca948165b83419fbc787d1273a9ff2f613559'
             '100b68ee3b88e7b095d23cd9d56e9480b21788b5165ebbf752c16b19693299f7'
-            '3823fcecd3c9d4144167c30e69f69c39c6b17d75bd40dc0abe7dc88f0d4b28cb'
+            '6a87f9f758811528913fa4828667b200ab7dcb6623734475ecbd8f8dab337b2f'
             '24478cfa6e4e21066454ab47a7748c49d6a07d644bfb740d9c284275d6428e3a')
 
 package() {
     unzip -o "${pkgname}-${_pkgver}.zip"
-    cd 'Dedicated Server/Linux'
+    cd 'Linux'
     dest="${pkgdir}/etc/terraria-server"
     install -o 697 -g 697  -d "${dest}"
+
     install -m644 FNA.dll "${dest}/"
     install -m644 FNA.dll.config "${dest}/"
-    install -m644 Ionic.Zip.CF.dll "${dest}/"
-    install -m644 Steamworks.NET.dll "${dest}/"
-    install -m644 Newtonsoft.Json.dll "${dest}/"
+
+    install -m644 Mono.Posix.dll "${dest}/"
+    install -m644 Mono.Security.dll "${dest}/"
+
+    install -m644 monoconfig "${dest}/"
+    install -m644 monomachineconfig "${dest}/"
+    install -m644 mscorlib.dll "${dest}/"
+    install -m644 open-folder "${dest}/"
+
+    install -m644 System.Configuration.dll "${dest}/"
+    install -m644 System.Core.dll "${dest}/"
+    install -m644 System.Data.dll "${dest}/"
+    install -m644 System.dll "${dest}/"
+    install -m644 System.Drawing.dll "${dest}/"
+    install -m644 System.Numerics.dll "${dest}/"
+    install -m644 System.Runtime.Serialization.dll "${dest}/"
+    install -m644 System.Security.dll "${dest}/"
+    install -m644 System.Windows.Forms.dll "${dest}/"
+    install -m644 System.Windows.Forms.dll.config "${dest}/"
+    install -m644 System.Xml.dll "${dest}/"
+    install -m644 System.Xml.Linq.dll "${dest}/"
+
     install -m644 TerrariaServer.exe "${dest}/"
     install -m755 TerrariaServer.bin.${CARCH} "${dest}/"
+
+    install -m644 WindowsBase.dll "${dest}/"
 
     cd "${srcdir}"
     install -d "${pkgdir}/usr/bin/"

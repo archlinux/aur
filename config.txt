@@ -18,15 +18,19 @@
 #-forcepriority <priority>	Sets the process priority for this task. If this is used the "priority" setting below will be ignored.
 #-disableannouncementbox   Disables the text announcements Announcement Box makes when pulsed from wire.
 #-announcementboxrange <number>   Sets the announcement box text messaging range in pixels, -1 for serverwide announcements.
+#-seed <seed> Specifies the world seed when using -autocreate
 
 #remove the # in front of commands to enable them.
 
 #Load a world and automatically start the server.
-#Make sure to set the correct permissions - the folder needs to be owned and writable by 'terraria', otherwise the server will crash!
+#Make sure to set the correct permissions - the folder needs to be writable by the user that runs the server, otherwise the server will crash!
 #world=/srv/terraria/world1.wld
 
 #Creates a new world if none is found. World size is specified by: 1(small), 2(medium), and 3(large).
 #autocreate=1
+
+#Sets the world seed when using autocreate
+#seed=AwesomeSeed
 
 #Sets the name of the world when using autocreate
 #worldname=Terraria
@@ -44,7 +48,7 @@
 #password=p@55w0rd
 
 #Set the message of the day
-#motd=Please don’t cut the purple trees!
+#motd=Please donï¿½t cut the purple trees!
 
 #Sets the folder where world files will be stored
 #worldpath=/srv/terraria/
@@ -55,8 +59,9 @@
 #Adds addition cheat protection.
 #secure=1
 
-#Sets the server language 1:English, 2:German, 3:Italian, 4:French, 5:Spanish
-#lang=1
+#Sets the server language from its language code.
+#English = en-US, German = de-DE, Italian = it-IT, French = fr-FR, Spanish = es-ES, Russian = ru-RU, Chinese = zh-Hans, Portuguese = pt-BR, Polish = pl-PL,
+#language=en-US
 
 #Automatically forward ports with uPNP
 #upnp=1
