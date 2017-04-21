@@ -3,7 +3,7 @@
 
 pkgname=crystal-git
 pkgver=0.21.1.r2.g5b32e46bc
-_last_release="0.21.1-1"
+_last_release="0.22.0-1"
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
 arch=('i686' 'x86_64')
@@ -74,5 +74,5 @@ package() {
 }
 
 sha256sums=('SKIP')
-sha256sums_i686=('8ab875309aa71d4501995e834850d40538fb66dd9890024ed812777f83085f48')
-sha256sums_x86_64=('e8a7489aba888cc0deec61e9bda5dd27ab600edb102afc17fa11582b90960875')
+sha256sums_i686=('c084846d3f9e0c3cfcba6a79fe4e0cf6c6cb6801826a969460ecf2a47abd0fe9')
+sha256sums_x86_64=('789d7b844886133428248605113ede9174c6ea4ba47d96a13f0efd1565b5810d')
