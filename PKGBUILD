@@ -8,7 +8,7 @@
 pkgname=firefox-esr-gtk2
 _pkgname=firefox-esr
 pkgver=52.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
@@ -20,7 +20,7 @@ makedepends=(unzip zip diffutils python2 yasm mesa imake gconf libpulse inetutil
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech')
-provides=(firefox)
+provides=("firefox=$pkgver")
 conflicts=(firefox)
 replaces=(firefox-gtk2)
 options=(!emptydirs !makeflags !strip)
