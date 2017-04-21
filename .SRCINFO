@@ -1,7 +1,7 @@
 pkgbase = emacs-lucid
 	pkgdesc = The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)
-	pkgver = 25.1
-	pkgrel = 6
+	pkgver = 25.2
+	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/emacs.html
 	arch = i686
 	arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = emacs-lucid
 	depends = libxinerama
 	provides = emacs=25
 	conflicts = emacs
-	source = ftp://ftp.gnu.org/gnu/emacs/emacs-25.1.tar.xz
-	source = ftp://ftp.gnu.org/gnu/emacs/emacs-25.1.tar.xz.sig
+	source = ftp://ftp.gnu.org/gnu/emacs/emacs-25.2.tar.xz
+	source = ftp://ftp.gnu.org/gnu/emacs/emacs-25.2.tar.xz.sig
 	validpgpkeys = B29426DEFB07724C3C35E5D36592E9A3A0B0F199
 	validpgpkeys = 28D3BED851FDF3AB57FEF93C233587A47C207910
-	md5sums = 4f3d42fb22823a659e16bfa89078a74c
+	md5sums = 06442d867158754bdde793eca420ca49
 	md5sums = SKIP
 
 pkgname = emacs-lucid

@@ -5,8 +5,8 @@
 # Based on emacs from [extra] and emacs-bzr from the AUR
 
 pkgname=emacs-lucid
-pkgver=25.1
-pkgrel=6
+pkgver=25.2
+pkgrel=1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -17,8 +17,8 @@ provides=('emacs=25')
 validpgpkeys=('B29426DEFB07724C3C35E5D36592E9A3A0B0F199'
               '28D3BED851FDF3AB57FEF93C233587A47C207910')
 source=(ftp://ftp.gnu.org/gnu/emacs/emacs-$pkgver.tar.xz{,.sig})
-md5sums=('4f3d42fb22823a659e16bfa89078a74c'
-	     'SKIP')
+md5sums=('06442d867158754bdde793eca420ca49'
+         'SKIP')
 
 build() {
   cd "$srcdir"/emacs-$pkgver
