@@ -1,6 +1,6 @@
 # Maintainer: nroi <nroi@mailbox.org>
 pkgname=cpcache-git
-pkgver=r146.3b598d9
+pkgver=r160.a298d16
 pkgrel=1
 pkgdesc="central pacman cache"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -8,7 +8,7 @@ url='https://github.com/nroi/cpcache'
 license=('MIT')
 makedepends=('erlang-nox' 'elixir')
 install="${pkgname%-git}.install"
-backup=('etc/cpcache.yaml')
+backup=('etc/cpcache.toml')
 source=('git+https://github.com/nroi/cpcache.git'
         'sysuser.conf'
         'cpcache.install'
@@ -40,6 +40,6 @@ package() {
   ln -s "/var/lib/${pkgname%-git}" var
   install -Dm644 "${srcdir}/cpcache.service" "${pkgdir}/usr/lib/systemd/system/cpcache.service"
   install -Dm644 "${srcdir}/sysuser.conf" "${pkgdir}/usr/lib/sysusers.d/cpcache.conf"
-  install -Dm644 "${srcdir}/cpcache/conf/cpcache.yaml" "${pkgdir}/etc/cpcache/cpcache.yaml"
+  install -Dm644 "${srcdir}/cpcache/conf/cpcache.toml" "${pkgdir}/etc/cpcache/cpcache.toml"
   rm -rf "$TMP"
 }

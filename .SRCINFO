@@ -1,6 +1,6 @@
 pkgbase = cpcache-git
 	pkgdesc = central pacman cache
-	pkgver = r146.3b598d9
+	pkgver = r160.a298d16
 	pkgrel = 1
 	url = https://github.com/nroi/cpcache
 	install = cpcache.install
@@ -11,7 +11,7 @@ pkgbase = cpcache-git
 	license = MIT
 	makedepends = erlang-nox
 	makedepends = elixir
-	backup = etc/cpcache.yaml
+	backup = etc/cpcache.toml
 	source = git+https://github.com/nroi/cpcache.git
 	source = sysuser.conf
 	source = cpcache.install
