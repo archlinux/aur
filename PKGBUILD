@@ -1,8 +1,8 @@
 # Maintainer: D. Can Celasun <dcelasun[at]gmail[dot]com>
 pkgname=nylas-mail-bin
 _pkgname=nylas-mail
-pkgver=2.0.16
-_pkgver=4d74cdf
+pkgver=2.0.18
+_pkgver=b655b53
 pkgrel=1
 pkgdesc="Nylas Mail: A new mail client for Linux, Mac and Windows, built on the modern web and designed to be extended. (formerly N1, official binary version)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gtk2' 'libgnome-keyring' 'gnome-keyring' 'desktop-file-utils' 'python2
 conflicts=('nylas-mail' 'nylas-mail-git')
 source=(NylasMail-${pkgver}.deb::https://edgehill.s3.amazonaws.com/${pkgver}-${_pkgver}/linux-deb/x64/NylasMail.deb)
 install=${_pkgname}.install
-md5sums=('b1e82dfafacf9fcc8fcdfe156bf1f18b')
+md5sums=('531bc29298494082e645232df20d0061')
 package() {
     msg2 "Extracting data.tar.gz..."
     bsdtar -xf data.tar.gz -C "${pkgdir}/"
