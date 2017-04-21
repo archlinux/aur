@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/skilion/onedrive'
 license=('GPL3')
 depends=('curl' 'gcc-libs' 'glibc' 'sqlite')
-makedepends=('dmd')
+makedepends=('dmd' 'git')
 provides=("onedrive=$pkgver")
 conflicts=('onedrive')
 source=('git+https://github.com/skilion/onedrive.git')

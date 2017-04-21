@@ -8,6 +8,7 @@ pkgbase = onedrive-git
 	arch = x86_64
 	license = GPL3
 	makedepends = dmd
+	makedepends = git
 	depends = curl
 	depends = gcc-libs
 	depends = glibc
