@@ -2,7 +2,7 @@
 # Contributor: Benjamin van der Burgh <benjaminvdb@gmail.com>
 
 pkgname=octave-hg
-pkgver=4.3.0+23418.0412433f016f
+pkgver=4.3.0+23420.1fee389bd04b
 pkgrel=1
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
@@ -68,7 +68,7 @@ package() {
   cd "$srcdir"/${_hgrepo}-local/build
   make DESTDIR=${pkgdir} install
   # add octave library path to ld.so.conf.d
-  _appver=$(awk -F", " '/bugs/ {print $2}' configure.ac|tr -d []|tr - _)
+  _appver=$(awk -F", " '/bugs/ {print $2}' ../configure.ac|tr -d []|tr - _)
   install -d "${pkgdir}/etc/ld.so.conf.d"
   echo "/usr/lib/${_hgrepo}/${_appver}" > "${pkgdir}/etc/ld.so.conf.d/${_hgrepo}.conf"
 }
