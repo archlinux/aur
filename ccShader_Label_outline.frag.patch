@@ -1,5 +1,5 @@
---- /opt/cocos2d-x/cocos/renderer/ccShader_Label_outline.frag	2016-12-29 13:42:38.000000000 -0400
-+++ /tmp/ccShader_Label_outline.frag	2017-01-04 15:03:04.226665269 -0400
+--- /opt/cocos2d-x/cocos/renderer/ccShader_Label_outline.frag	2017-03-22 15:13:34.000000000 -0400
++++ /tmp/ccShader_Label_outline.frag	2017-04-21 06:42:23.428476119 -0400
 @@ -1,10 +1,10 @@
  /*
   * LICENSE ???

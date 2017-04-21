@@ -1,5 +1,5 @@
---- /opt/cocos2d-x/cocos/renderer/ccShader_PositionColorTextureAsPointsize.vert	2016-12-29 13:42:38.000000000 -0400
-+++ /tmp/ccShader_PositionColorTextureAsPointsize.vert	2017-01-04 15:03:04.499967205 -0400
+--- /opt/cocos2d-x/cocos/renderer/ccShader_PositionColorTextureAsPointsize.vert	2017-04-12 15:00:32.000000000 -0400
++++ /tmp/ccShader_PositionColorTextureAsPointsize.vert	2017-04-21 06:42:23.528476740 -0400
 @@ -22,18 +22,18 @@
   * THE SOFTWARE.
   */
@@ -20,12 +20,12 @@
  varying vec4 v_fragmentColor;
 -#endif
 +\n#endif\n
+ uniform float u_alpha;
  
  void main()
- {
-@@ -41,4 +41,4 @@
+@@ -42,4 +42,4 @@
      gl_PointSize = a_texCoord.x;
-     v_fragmentColor = a_color;
+     v_fragmentColor = vec4(a_color.rgb * a_color.a * u_alpha, a_color.a * u_alpha);
  }
 -)";
 +);

@@ -1,5 +1,5 @@
---- /opt/cocos2d-x/cocos/renderer/ccShader_CameraClear.vert	2016-12-29 13:42:38.000000000 -0400
-+++ /tmp/ccShader_CameraClear.vert	2017-01-04 15:03:03.856707806 -0400
+--- /opt/cocos2d-x/cocos/renderer/ccShader_CameraClear.vert	2017-03-22 15:13:34.000000000 -0400
++++ /tmp/ccShader_CameraClear.vert	2017-04-21 06:42:23.625144008 -0400
 @@ -1,18 +1,18 @@
  
 -const char* ccCameraClearVert = R"(

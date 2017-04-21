@@ -1,0 +1,11 @@
+@@ -373,6 +373,11 @@ bool GLViewImpl::initWithRect(const std::string& viewName, Rect rect, float fram
+     glfwWindowHint(GLFW_DEPTH_BITS,_glContextAttrs.depthBits);
+     glfwWindowHint(GLFW_STENCIL_BITS,_glContextAttrs.stencilBits);
+ 
++    // Disable Mutli-sample Anti-aliasing (MSAA).
++    // This will make the code run faster on slower devices
++    // See: http://discuss.cocos2d-x.org/t/labels-and-anti-aliasing-in-3-2/17846/5
++    glfwWindowHint(GLFW_SAMPLES, 0);
++
+     int neededWidth = rect.size.width * _frameZoomFactor;
+     int neededHeight = rect.size.height * _frameZoomFactor;
