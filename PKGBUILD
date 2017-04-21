@@ -1,7 +1,7 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=ciopfs
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Mounts a normal directory in case insensitive fashion"
 arch=('i686' 'x86_64')
 url="http://www.brain-dump.org/projects/ciopfs/"
@@ -20,8 +20,9 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" PREFIX=/usr install
 
-  # remove sbin folder, it contains only a symlink anyway
-  rm -r $pkgdir/sbin
+  # move /sbin folder to /usr/bin
+  mv $pkgdir/sbin/* $pkgdir/usr/bin
+  rmdir $pkgdir/sbin/
 }
 
 # vim:set ts=2 sw=2 et:
