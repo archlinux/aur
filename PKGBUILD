@@ -70,6 +70,8 @@ post_install() {
   echo ""
   echo "4. Create an administrator account:"
   echo "    $ cd ~mastodon && sudo -u mastodon RAILS_ENV=production bundle exec rails mastodon:make_admin USERNAME=<username>"
+  echo ""
+  echo "5. Enable and start instance:"
 }
 
 post_upgrade() {
@@ -78,4 +80,8 @@ post_upgrade() {
 
 package() {
   cd "${pkgname%-git}"
+
+  for service in mastodon-{web,sidekiq,streaming}.service mastodon.target; do
+    install -Dm644 "${srcdir}/${service}" "${pkgdir}/usr/lib/systemd/system/${service}"
+  done
 }
