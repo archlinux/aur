@@ -19,7 +19,8 @@ sha256sums=('ae072ca2d96fd9ef59ca6f589f932048b088c7b469d46e468bb917371de24ff9'
             'SKIP')
 
 declare -A _mod_depends
-_mod_depends=(['postgresql-libs']='mod_cdr_pg_csv'
+_mod_depends=(['ldns']='mod_enum'
+              ['postgresql-libs']='mod_cdr_pg_csv'
               ['unixodbc']='mod_odbc_cdr')
 
 declare -A _mod_makedepends
