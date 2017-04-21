@@ -1,63 +1,32 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: <craven@gmx.net>
 
-# See http://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines
-# for more information on packaging from GIT sources.
-
-# Maintainer: Your Name <youremail@domain.com>
 pkgname=foment-git
-pkgver=20160506
+pkgver=20170121
 pkgrel=1
 pkgdesc="Foment scheme"
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url="https://github.com/leftmike/foment.git"
-license=('unknown')
-groups=()
-depends=()
+license=('custom:BSD')
+depends=('gcc-libs')
 makedepends=('git')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-source=()
-noextract=()
-md5sums=() #generate with 'makepkg -g'
+provides=('foment')
+conflicts=('foment')
+source=("git+https://github.com/leftmike/foment.git")
+md5sums=('SKIP')
 
-_gitroot=https://github.com/leftmike/foment.git
-_gitname=foment
+pkgver() {
+  cd foment
+  git log -1 --format="%cd" --date=short | tr -d '-'
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  #
-  # BUILD HERE
-  #
-  cd unix
+  cd foment/unix
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd foment
   install -D unix/release/foment ${pkgdir}/usr/bin/foment
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENCE
 }
-
-# vim:set ts=2 sw=2 et:
