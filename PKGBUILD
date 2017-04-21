@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-database
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Bitcoin High Performance Blockchain Database"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -20,7 +20,7 @@ groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-database"
 license=('AGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/libbitcoin/$pkgname/tar.gz/v$pkgver)
-sha256sums=('50409965b24e3a394df18b1ccbae2715c4a285fcd8e5502228b39560d365e8c4')
+sha256sums=('434e7f68b7c6c2e35dbf4f5a91fa3763a87744b3d6affc8bbeae392d510c0eca')
 provides=('libbitcoin-database')
 conflicts=('libbitcoin-database')
 
