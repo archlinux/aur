@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Ballerburg
+Comment=Two players, two castles, and a hill in between
+Exec=ballerburg
+Icon=ballerburg
+Terminal=false
+Type=Application
+Categories=Game;StrategyGame;
+
+X-Desktop-File-Install-Version=0.22
