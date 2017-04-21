@@ -1,7 +1,7 @@
 # Maintainer: detrito <detrito@inventati.org>
 
 pkgname=therion
-pkgver=5.4.0
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="A cave surveying software"
 arch=('x86_64' 'i686')
@@ -21,7 +21,7 @@ source=("http://github.com/therion/therion/archive/v${pkgver}.tar.gz"
 	"make_install.patch"
 	"therion_ini.patch")
 
-sha256sums=('0d505093fedfc0a3cfda865407067d19c1aca9e6d1823b4007d373f6e14e48cd'
+sha256sums=('6e4b88d1803bdf252cf7d4632afcd9c4005e387245e9ac95774e6cc894ae4ccd'
 	'81cd6c75a74897831edd4116bb97c71090023abbb14725b96d2a219f67cb5613'
 	'bf3fda048fb1a4f4c49f0daf7faa7e40c630748b33ed27c47bcfabba4014571c'
 	'0639b0c4c9660af33675bf948ca4678d441167f77f7818cc015b7738a53fb8f3'
