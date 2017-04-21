@@ -1,0 +1,99 @@
+# $Id: PKGBUILD 209304 2017-01-28 17:00:56Z heftig $
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Kyle Keen <keenerd@gmail.com>
+
+pkgname=seamonkey-gtk2
+_pkgname=seamonkey
+pkgver=2.46
+pkgrel=2
+pkgdesc="SeaMonkey internet suite (GTK2 version)"
+arch=('i686' 'x86_64')
+license=('MPL')
+depends=('alsa-lib'  'dbus-glib'  'desktop-file-utils'  'gtk2' 'hunspell'  'libevent'  'libnotify'  'libvpx'  'libxt' 'mime-types'  'mozilla-common'  'nss'  'sqlite'  'startup-notification' 'libpulse' 'icu' 'gconf')
+makedepends=('unzip' 'zip' 'pkg-config'  'python2' 'yasm' 'wireless_tools' 'mesa' 'autoconf2.13' 'imake' 'python3' 'gst-plugins-base')
+optdepends=('gst-plugins-base: vorbis decoding, ogg demuxing'
+            'gst-plugins-bad: aac, vp8 and opus decoding'
+            'gst-plugins-good: webm and mp4 demuxing'
+            'gst-plugins-ugly: h.264 decoding')
+url="http://www.seamonkey-project.org/"
+provides=("$_pkgname=$pkgver.$pkgrel")
+conflicts=("$_pkgname")
+source=(https://archive.mozilla.org/pub/mozilla.org/seamonkey/releases/$pkgver/source/seamonkey-$pkgver.source.tar.xz
+        mozconfig
+        seamonkey-2.0-lang.patch
+        rhbz-966424.patch
+        mozbug1323209.patch
+        mozbug1329272.patch)
+sha256sums=('39c84ce6fa1ed7c30152473e0dcd858df07437e84b29e5a18973db437a28a912'
+            '9a730ec71744e9e674a7922cd573fe2428f39ee53b0c3c8912053a910975f1d8'
+            'ab19d10fbd6258aec37ab5e5efb12429814b2c24a1193284a48dd654311b4e2e'
+            '746cb474c5a2c26fc474256e430e035e604b71b27df1003d4af85018fa263f4a'
+            '87fb92e45f161d47b9e3ca31bcce60555bc33d633116dab4baa3bfba6ad965c4'
+            '33c7031781357faf5fba7140d7723bf301c1569068922477742ac958ee82e62b')
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+  cp ../mozconfig .mozconfig
+  echo "ac_add_options --enable-default-toolkit=cairo-gtk2" >>.mozconfig
+  #patch -Np1 -i ../seamonkey-2.0-lang.patch
+
+  # FS#48404
+  #echo "ac_add_options --enable-gstreamer=1.0" >> .mozconfig
+
+  # https://bugs.archlinux.org/task/41689
+  patch -Np1 -d mozilla -i ../../rhbz-966424.patch
+
+  # Support NSS 3.28
+  patch -Np1 -d mozilla -i ../../mozbug1323209.patch
+
+  # Bugfix for icu detection
+  patch -Np1 -d mozilla -i ../../mozbug1329272.patch
+
+  # Don't exit with error when some libs are missing which we have in
+  # system.
+  sed -i '/^MOZ_PKG_FATAL_WARNINGS/s@= 1@= 0@' suite/installer/Makefile.in
+
+  # configure script misdetects the preprocessor without an optimization level
+  sed -i '/ac_cpp=/s/$CPPFLAGS/& -O2/' configure
+
+  # 2.26 build fix from wgnie (blfs ch 37)
+  sed -i 's/$(MOZ_ZLIB_CFLAGS)/& $(MOZ_PIXMAN_CFLAGS)/' config/config.mk
+}
+
+build() {
+  cd "$_pkgname-$pkgver"
+
+  export LDFLAGS="$LDFLAGS -Wl,-rpath,/usr/lib/seamonkey-$pkgver"
+  export MOZ_MAKE_FLAGS="$MAKEFLAGS"
+  unset MAKEFLAGS
+  unset CPPFLAGS
+
+  # GCC 6
+  CFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
+  CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
+
+  make -j1 -f client.mk build
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+
+  make -j1 -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
+
+  rm -rf "$pkgdir"/usr/lib/seamonkey-$pkgver/{dictionaries,hyphenation}
+  ln -s /usr/share/hunspell "$pkgdir/usr/lib/seamonkey-$pkgver/dictionaries"
+  ln -s /usr/share/hyphen "$pkgdir/usr/lib/seamonkey-$pkgver/hyphenation"
+
+  install -Dm644 suite/branding/nightly/icons/gtk/seamonkey.png \
+                "$pkgdir/usr/share/pixmaps/seamonkey.png"
+
+  install -Dm644 mozilla/toolkit/mozapps/installer/linux/rpm/mozilla.desktop \
+                "$pkgdir/usr/share/applications/seamonkey.desktop"
+  sed -i 's/@MOZ_APP_DISPLAYNAME@/SeaMonkey internet suite/' \
+                "$pkgdir/usr/share/applications/seamonkey.desktop"
+  sed -i 's/@MOZ_APP_NAME@/seamonkey/' "$pkgdir/usr/share/applications/seamonkey.desktop"
+
+  rm -f "$pkgdir/usr/lib/pkgconfig/"seamonkey-ns{s,pr}.pc
+  #rm -r "$pkgdir"/usr/{include,lib/seamonkey-devel-$pkgver,share/idl}
+}
+
