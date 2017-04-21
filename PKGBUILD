@@ -4,7 +4,7 @@
 pkgname=bin32-epsxe
 _pkgname=ePSXe
 pkgver=2.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Enhanced PSX emulator (32-bit)"
 url="http://epsxe.com"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ options=(!strip)
 source=(${pkgname}.desktop ${pkgname}.png ${pkgname}.sh)
 md5sums=('aeb34e2ca34f968630ca133ea821c61c'
          'eb0c46b8ae1355c589792f6be1835e47'
-         '317eb969b7a84a810169422d28fb8093')
+         '4684dd9aac162fcf09494a0414705318')
 source+=("http://www.epsxe.com/files/ePSXe${pkgver//./}linux.zip")
 md5sums+=('3e1976822eb260722b31c9f24cb1d6e1')
 
