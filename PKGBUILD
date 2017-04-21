@@ -3,13 +3,13 @@
 pkgbase=python-clint
 pkgname=(python-clint python2-clint)
 pkgver=0.5.1
-pkgrel=4
-pkgdesc='Module for developing commandline applications'
+pkgrel=5
+pkgdesc='Module for developing command line applications'
 arch=('any')
-url='http://pypi.python.org/pypi/clint/'
+url='https://pypi.python.org/pypi/clint/'
 license=('custom:ISC')
 makedepends=('python' 'python2')
-source=("http://pypi.python.org/packages/source/c/clint/clint-$pkgver.tar.gz")
+source=("https://pypi.python.org/packages/source/c/clint/clint-$pkgver.tar.gz")
 sha256sums=('05224c32b1075563d0b16d0015faaf9da43aa214e4a2140e51f08789e7a4c5aa')
 
 prepare() {
