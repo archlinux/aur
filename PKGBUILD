@@ -12,16 +12,18 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "${pkgname%-git}-docker" "${pkgname%-git}-docker-git")
 makedepends=(
     'yarn'
+    'ruby-bundler>=1.14.6'
     )
 depends=(
-    'imagemagick'
     'ffmpeg'
+    'imagemagick'
     'libpqxx'
     'libxml2'
     'libxslt'
     'nodejs'
-    'redis'
     'postgresql'
+    'redis'
+    'ruby>=2.4.0'
     )
 source=(
     "git://github.com/tootsuite/${pkgname%-git}.git#branch=$_branch"
