@@ -5,8 +5,8 @@
 pkgname=epsxe
 _pkgname=ePSXe
 pkgver=2.0.5
-pkgrel=11
-pkgdesc="Enhanced PSX emulator"
+pkgrel=12
+pkgdesc="Enhanced PSX emulator (64-bit)"
 url="http://epsxe.com"
 arch=('x86_64')
 #depends=(gtk2 sdl_ttf ncurses5-compat-libs libtinfo-5 libcurl-compat)
@@ -21,7 +21,7 @@ md5sums=('aeb34e2ca34f968630ca133ea821c61c'
          'eb0c46b8ae1355c589792f6be1835e47'
          '071c43c1cb8f6b6470b7af60ad69247a')
 #if [[ $CARCH == "x86_64" ]]; then
-    source+=("http://www.epsxe.com/files/ePSXe${pkgver//./}linux_x64.zip")
+    source+=("http://www.epsxe.com/files/${_pkgname}${pkgver//./}linux_x64.zip")
     md5sums+=('79fefeb4bff26bf1d374befb35b390df')
 #else
     #source+=("http://www.epsxe.com/files/ePSXe${pkgver//./}linux.zip")
@@ -30,7 +30,6 @@ md5sums=('aeb34e2ca34f968630ca133ea821c61c'
 
 package () {
   #srcpath="${srcdir}/${_pkgname}${pkgver//./}linux"
-  binary="${_pkgname}"
  # if [[ $CARCH == "x86_64" ]]; then
   #    srcpath+="_x64"
  #     binary="${pkgname}_x64"
@@ -45,7 +44,7 @@ package () {
   #  find . -name '*.cht' -execdir "install -Dm 644 -t \${pkgdir}/opt/${pkgname}/${pkgver}/cheats\"" \{\} +
 
 
-  install -Dm 755 "${binary}" "${pkgdir}/opt/${pkgname}/${pkgname}"
+  install -Dm 755 "${_pkgname}" "${pkgdir}/opt/${pkgname}/${pkgname}"
 #  install -Dm 644 keycodes.lst "${pkgdir}/opt/${pkgname}/keycodes.lst"
 
   cd "${srcdir}"
