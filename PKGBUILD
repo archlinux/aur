@@ -13,7 +13,7 @@ makedepends=('imagemagick')
 source=("${pkgname}.tar.gz::https://github.com/kmkolasinski/AwesomeBump/releases/download/Linuxv${pkgver}/AwesomeBumpV5.Bin64Linux.tar.gz"
         "ab.sh"
         "awesomebump.desktop")
-md5sums=('ddd4f676570575b78a3f2612369ba186'
+md5sums=('fb9365ee1c32a2f36ea78c296248cf2d'
          '462c8edb251cb603d78242b14189e354'
          'a798a1946042f5c06505043100a32e28')
 noextract=("${pkgname}.tar.gz") #because it doesn't expand into a subdir
