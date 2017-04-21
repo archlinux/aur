@@ -128,6 +128,9 @@ build() {
     _mod_options+=('--with-python=/usr/bin/python2')
   fi
 
+  # Work around FreeSWITCH bug FS-10257
+  export CFLAGS="${CFLAGS} -Wno-parentheses"
+
   ./configure --enable-optimization --disable-debug --prefix=/usr \
     --sysconfdir=/etc --localstatedir=/var --libdir=/usr/lib/freeswitch \
     --includedir=/usr/include/freeswitch \
