@@ -1,9 +1,10 @@
 pkgbase = trifusion
 	pkgdesc = Streamlining phylogenomic data gathering, processing and visualization
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/ODiogoSilva/TriFusion
 	arch = any
+	license = GPL3
 	depends = python2-kivy
 	depends = python2-numpy
 	depends = python2-scipy
@@ -11,8 +12,11 @@ pkgbase = trifusion
 	depends = python2-psutil
 	depends = python2-seaborn
 	depends = python2-configparser
-	source = https://github.com/ODiogoSilva/TriFusion/archive/0.4.0.tar.gz
-	md5sums = 3a5e2c57ff16b6da8aedfaa31a526b78
+	depends = python2-pandas
+	conflicts = trifusion-git
+	conflicts = trifusion-bin
+	source = https://github.com/ODiogoSilva/TriFusion/archive/0.5.0.tar.gz
+	md5sums = ab5e966cb4e5d0477c6811ca5b397106
 
 pkgname = trifusion
 
