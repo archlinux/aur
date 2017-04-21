@@ -1,4 +1,4 @@
 #!/bin/sh
 export FULLPROF=/opt/fullprof-suite
-export PATH=/opt/fullprof-suite:$PATH
+export PATH=$FULLPROF:$PATH
 exec /opt/fullprof-suite/

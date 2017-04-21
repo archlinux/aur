@@ -1,26 +1,21 @@
 pkgbase = fullprof-suite
 	pkgdesc = Crystallographic tools for Rietveld, profile matching & integrated intensity refinements of X-Ray and/or neutron data.
-	pkgver = 2016.07
+	pkgver = 2017.03
 	pkgrel = 1
 	url = https://www.ill.eu/sites/fullprof
 	install = fullprof-suite.install
-	arch = i686
 	arch = x86_64
 	groups = science
 	license = custom
 	depends = gcc-libs
-	depends = openmotif
 	optdepends = xterm: Needed to launch some programs from GUI
 	provides = fullprof
 	conflicts = fullprof
-	noextract = FullProf_Suite_Oct2013_Lin.tgz
-	noextract = FullProf_Suite_July2016_Linux64.tgz
+	noextract = FullProf_Suite_March2017_Linux64.tgz
+	source = file://FullProf_Suite_March2017_Linux64.tgz
 	source = fullprof-bin
-	md5sums = 0382c4e999d14ce61e9c1ca8571c86da
-	source_i686 = https://www.ill.eu/sites/fullprof/downloads/FullProf_Suite_Oct2013_Lin.tgz
-	md5sums_i686 = db32eb6d3e9e7ef67dacbf42bd3b65d3
-	source_x86_64 = https://www.ill.eu/sites/fullprof/downloads/FullProf_Suite_July2016_Linux64.tgz
-	md5sums_x86_64 = d112d2c9ffac37b07a26fd4c3f300671
+	md5sums = 26e75738ffe284fb1399279c46f88391
+	md5sums = e91280ece6411983c74b3a8071402eb9
 
 pkgname = fullprof-suite
 
