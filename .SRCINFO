@@ -1,16 +1,16 @@
 pkgbase = jdk-devel-docs
-	pkgver = 9b165
+	pkgver = 9b166
 	pkgrel = 1
 	url = https://jdk9.java.net/
 	arch = any
 	license = custom:Oracle BSD
 	optdepends = java-environment>=9: Compile and run examples
 	options = !strip
-	source = http://www.java.net/download/java/jdk9/archive/165/binaries/jdk-9_doc-api-spec.tar.gz
-	source = http://www.java.net/download/java/jdk9/archive/165/binaries/javafx-9_doc.zip
+	source = http://www.java.net/download/java/jdk9/archive/166/binaries/jdk-9_doc-api-spec.tar.gz
+	source = http://www.java.net/download/java/jdk9/archive/166/binaries/javafx-9_doc.zip
 	source = LICENSE
-	sha256sums = 490fdaf92baa90f2a352e938e9f6263a8bb08edc01ee3febe18c72834603c084
-	sha256sums = a28ba980a1579fa1a3b85510c9cedca0b9bcc0cb66919849eea1a2503fe33555
+	sha256sums = b5f7d6ecb2e36f13dfc6a5d8fece9a43b734e5c1506c0e581f8a9c22d8778886
+	sha256sums = fb3e0f7c9cc81ce6c6758486d0f018d3e80fa9c5c0f3973b5181e64fa3a02512
 	sha256sums = 5f00ffce28036cf79da41c7fe0e29801e3148597a164ecc69f49e718ae370370
 
 pkgname = jdk-devel-docs
