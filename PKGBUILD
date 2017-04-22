@@ -49,8 +49,11 @@ build() {
   for package in opencascade p4est-deal-ii petsc slepc trilinos
   do
       if pacman -Qs $package >/dev/null
-      then
-          source /etc/profile.d/$package.sh
+         profile_file=/etc/profile.d/$package.sh
+         if [ -f $profile_file ]
+         then
+             source /etc/profile.d/$package.sh
+         fi
       fi
   done
 
