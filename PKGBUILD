@@ -18,12 +18,9 @@ package() {
     install -d "$pkgdir/usr/share/webapps" "$pkgdir/usr/share/licenses/$pkgname" "$pkgdir/etc/webapps/$pkgname"
     php -dextension=intl.so /usr/bin/composer create-project --working-dir "$pkgdir/usr/share/webapps" "grumpydictator/$pkgname" --no-dev --prefer-dist
     install -D "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
-    echo "Start move"
     mv -v "$pkgdir/usr/share/webapps/$pkgname/.env"* "$pkgdir/etc/webapps/$pkgname"
-    echo "End move"
 
 	for i in '' '.docker' '.example' '.sandstorm' '.testing' ; do
-        echo "$i"
         mv -v "$pkgdir/etc/webapps/$pkgname/.env$i" "$pkgdir/etc/webapps/$pkgname/config.env$i"
         ln -sv "../../../../etc/webapps/firefly-iii/config.env$i" "$pkgdir/usr/share/webapps/$pkgname/.env$i"
     done
