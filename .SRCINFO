@@ -10,6 +10,7 @@ pkgbase = indicator-kdeconnect
 	depends = libappindicator-gtk3
 	depends = kdeconnect
 	depends = vala
+	depends = python-requests-oauthlib
 	conflicts = indicator-kdeconnect-git
 	source = git://github.com/bajoja/indicator-kdeconnect.git
 	md5sums = SKIP
