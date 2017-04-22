@@ -1,8 +1,8 @@
 # Maintainers: Mike Cooper <mythmon at elem.us>, Mikko <mikko at 5x.fi>
 
 pkgname=terraria-server
-pkgver=1.3.5.1
-pkgrel=19
+pkgver=1.3.5.2
+pkgrel=20
 pkgdesc="Official dedicated server for Terraria"
 arch=('x86_64' 'x86')
 license=('unknown')
@@ -18,7 +18,7 @@ source=("http://terraria.org/server/${pkgname}-${_pkgver}.zip"
         'config.txt'
         'terraria-server@.service')
 
-sha256sums=('16bc7b75bc4eb7478528a9d2788ca948165b83419fbc787d1273a9ff2f613559'
+sha256sums=('5a37f56c0cc59ba82d4cd07cea16e2b215a2e78ca75294411749897434844c59'
             '100b68ee3b88e7b095d23cd9d56e9480b21788b5165ebbf752c16b19693299f7'
             '6a87f9f758811528913fa4828667b200ab7dcb6623734475ecbd8f8dab337b2f'
             '24478cfa6e4e21066454ab47a7748c49d6a07d644bfb740d9c284275d6428e3a')
