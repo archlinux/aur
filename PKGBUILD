@@ -1,14 +1,14 @@
 # Maintainer: Dustin Falgout <dustin@antergos.com>
 
 pkgname=obs-service-set_version-git
-_pkgver=0.5.3
-pkgver="${_pkgver}.r77"
+_pkgver=0.5.5
+pkgver="${_pkgver}.r92"
 pkgrel=1
 pkgdesc="Version Service for the OpenSUSE Build Service (OBS)"
 arch=('any')
-url="https://github.com/openSUSE/${pkgname}"
+url="https://github.com/openSUSE/${pkgname%-*}"
 license=('GPL3')
-source=("${pkgname}::git+https://github.com/openSUSE/${pkgname}.git")
+source=("${pkgname}::git+https://github.com/openSUSE/${pkgname%-*}.git")
 groups=('obs')
 depends=('obs-build' 'git' 'python2')
 md5sums=('SKIP')
