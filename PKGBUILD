@@ -1,24 +1,26 @@
 # Original Maintainer: Limao Luo <luolimao+AUR@gmail.com>
 # Current Maintainer: Leopold Bloom <blinxwang@gmail.com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: Taylor Lookabaugh <jesus.christ.i.love@gmail.com>
 # Contributor: Jon Sturm <Jasturm002@aol.com>
 # Contributor: Scott Garrett <Wintervenom@archlinux.us>
 
 pkgname=libticalcs
-pkgver=1.1.8
-pkgrel=2
+pkgver=1.1.9
+pkgrel=1
 pkgdesc="TI Calculator library"
 arch=(i686 x86_64)
 url=http://lpg.ticalc.org/prj_tilp/
 license=(GPL)
 depends=(libticables libtifiles)
 options=(!libtool)
-source=(http://downloads.sourceforge.net/project/tilp/tilp2-linux/tilp2-1.17/${pkgname}2-$pkgver.tar.bz2)
-sha256sums=('a8286f8a2552bcad96beab99ce254e67b3dc1a03eb9d82f8de4bdf7b8efc3496')
-sha512sums=('0e09148006f5ee227d1b347ef44a6e755cb1dd757b8ff99e0f006aec0bc37c40dc5e293e44a0d91fc966b47da9113b4f00a71d9d9aa5cfbea4b01487232c1c08')
+source=(http://downloads.sourceforge.net/project/tilp/tilp2-linux/tilp2-1.18/${pkgname}2-$pkgver.tar.bz2)
+sha256sums=('76780788bc309b647f97513d38dd5f01611c335a72855e0bd10c7bdbf2e38921')
+sha512sums=('a55fa92df787929397f4ed3e8f922355f71c7883459ceb98fbb8d39d18f06441147188aaabf7a67083d70549443e439744e68527742e2b7b5d3d2838cc41b4da')
 
 build() {
     cd ${pkgname}2-$pkgver/
+    autoreconf -fi
     ./configure --prefix=/usr
     make
 }
