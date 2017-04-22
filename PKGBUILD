@@ -1,7 +1,7 @@
 # Maintainer: grimi <grimi at poczta dot fm>
 
 pkgname=numix-themes-green
-pkgver=2.6.6.r19.d99f46c
+pkgver=2.6.6.r27.582f09f
 pkgrel=1
 pkgdesc="A flat and light theme with a modern look using Green color (GNOME, MATE, Openbox, Unity, XFCE)"
 arch=('any')
@@ -9,8 +9,7 @@ url='http://numixproject.org/'
 license=('GPL3')
 depends=('gtk-engine-murrine')
 makedepends=('git' 'ruby-bundler' 'inkscape')
-_commit='d99f46c88895330688f0aa306c05603017ed2334'
-source=("git+https://github.com/numixproject/numix-gtk-theme.git#commit=${_commit}")
+source=("git+https://github.com/numixproject/numix-gtk-theme.git#commit=582f09f")
 sha256sums=('SKIP')
 
 
