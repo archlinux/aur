@@ -3,22 +3,22 @@
 # Contributor: John Proctor <jproctor@prium.net>
 
 pkgname=libxml2
-pkgver=2.9.4+12+ge905f081
-pkgrel=5
+pkgver=2.9.4+16+g07418011
+pkgrel=1
 pkgdesc="XML parsing library, version 2"
 arch=(i686 x86_64)
 license=('MIT')
-depends=('zlib' 'readline' 'ncurses' 'xz')
+depends=('zlib' 'readline' 'ncurses' 'xz' 'icu')
 options=(!makeflags)
 makedepends=('python2' 'python' 'git')
 url="http://www.xmlsoft.org/"
-_commit=e905f08123e4a6e7731549e6f09dadff4cab65bd  # master
-source=(git://git.gnome.org/libxml2#commit=$_commit
+_commit=074180119fc90d5fd04ef9e8a5ee1910d6f9ad8e  # master
+source=(git+https://git.gnome.org/browse/libxml2#commit=$_commit
         https://www.w3.org/XML/Test/xmlts20080827.tar.gz
-libxml2-2.9.4-remove-pyverify_fd.patch)
-md5sums=('SKIP'
-         'ae3d1ebe000a3972afa104ca7f0e1b4a'
-         '0fcbf80989e6aa1f974465226259e818')
+        libxml2-2.9.4-remove-pyverify_fd.patch)
+sha256sums=('SKIP'
+            '96151685cec997e1f9f3387e3626d61e6284d4d6e66e0e440c209286c03e9cc7'
+            'c201b0d6364a7b9df58ce40a5fc506e58945a3fbb834af9c1193a35665789d60')
 
 pkgver() {
   cd $pkgname
@@ -36,12 +36,12 @@ prepare() {
 
 build() {
   cd build-py2
-  ../$pkgname/configure --prefix=/usr --with-threads --with-history --with-python=/usr/bin/python2
+  ../$pkgname/configure --prefix=/usr --with-threads --with-history --with-python=/usr/bin/python2 --with-icu
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
   make
 
   cd ../build-py3
-  ../$pkgname/configure --prefix=/usr --with-threads --with-history --with-python=/usr/bin/python
+  ../$pkgname/configure --prefix=/usr --with-threads --with-history --with-python=/usr/bin/python --with-icu
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
   PYTHONHASHSEED=0 make
 }
