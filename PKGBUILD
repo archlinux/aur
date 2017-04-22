@@ -11,7 +11,7 @@
 
 pkgname=retroarch-git
 pkgver=1.5.0.r186.d77da6b53
-pkgrel=1
+pkgrel=2
 #epoch=1
 _gitname=RetroArch
 pkgdesc='Reference frontend for the libretro API (Git-latest)'
@@ -84,7 +84,6 @@ package() {
 
   install -dm 755 "${pkgdir}"/usr/lib/retroarch/filters/{audio,video}
   install -m 644 gfx/video_filters/*.{filt,so} "${pkgdir}"/usr/lib/retroarch/filters/video/
-  install -m 644 libretro-common/audio/dsp_filters/*.{dsp,so} "${pkgdir}"/usr/lib/retroarch/filters/audio/
 
 }
 
