@@ -6,7 +6,7 @@
 #
 pkgname=dbus-nosystemd
 pkgver=1.10.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(i686 x86_64)

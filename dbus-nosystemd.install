@@ -1,4 +1,7 @@
 post_upgrade() {
+  getent group dbus &>/dev/null || groupadd -r -g 81 dbus >/dev/null
+  getent passwd dbus &>/dev/null || useradd -r -u 81 -d / -g dbus -s /usr/bin/nologin dbus >/dev/null
+
   # Make sure new rc script can shutdown running dbus
   if [ -f run/dbus.pid -a -d run/dbus ]; then
     mv run/dbus.pid run/dbus/pid
