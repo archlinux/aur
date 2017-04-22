@@ -10,7 +10,7 @@
 #        'git+https://github.com/KhronosGroup/SPIRV-Cross.git#commit=5c24d99')
 
 pkgname=retroarch-git
-pkgver=1.4.1.r30.a2141e61f
+pkgver=1.5.0.r186.d77da6b53
 pkgrel=1
 #epoch=1
 _gitname=RetroArch
@@ -66,11 +66,13 @@ build() {
 
   ./configure \
     --prefix='/usr' \
+    --disable-cg \
     --disable-jack \
-    --disable-oss
+    --disable-oss \
+    --disable-sdl
+  make clean
   make
   make -C gfx/video_filters
-  make -C libretro-common/audio/dsp_filters
 
 }
 
