@@ -1,29 +1,38 @@
-# Maintainer: Daichi Shinozaki <dseg@shield.jp>
+# Maintainer: James An <james@jamesan.ca>
+# Contributor: Daichi Shinozaki <dseg@shield.jp>
 # Contributor: Jean-Sébastien Ney <jeansebastien.ney@gmail.com>
 # Contributor: James Cleveland <jc@blackflags.co.uk>
 # Contributor: Eimantas Bunevičius <eimantaster@gmail.com>
-_cfgdir=/opt/openresty/nginx/conf
-_tmpdir=/var/lib/openresty
-pkgname=openresty
-pkgver=1.11.2.2
+
+# Based on the AUR package @ https://aur.archlinux.org/openresty.git.
+
+pkgname=openresty-git
+_pkgname=${pkgname%-git}
+_cfgdir=/opt/$_pkgname/nginx/conf
+_tmpdir=/var/lib/$_pkgname
+pkgver=1.11.2.2.r32.g78af48d
+_pkgver=1
 pkgrel=1
 pkgdesc="A Fast and Scalable Web Platform by Extending NGINX with Lua"
 arch=('i686' 'x86_64')
 url="http://openresty.org/"
 license=('BSD')
 depends=('perl>=5.6.1' 'readline' 'pcre' 'openssl')
-install=$pkgname.install
-source=(https://openresty.org/download/$pkgname-$pkgver.tar.gz{,.asc}
+makedepends=('dos2unix' 'git' 'mercurial')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+install=$_pkgname.install
+source=("$_pkgname"::"git+https://github.com/$_pkgname/$_pkgname.git"
         service
-        $pkgname.logrotate
-        $pkgname.install)
+        $_pkgname.logrotate
+        $_pkgname.install
+        openssl-1.1.0.patch)
 noextract=()
-validpgpkeys=('25451EB088460026195BD62CB550E09EA0E98066')
-sha256sums=('7f9ca62cfa1e4aedf29df9169aed0395fd1b90de254139996e554367db4d5a01'
-            'SKIP'
+sha256sums=('SKIP'
             'ec55ac7da98f5f5ec54d096c5f79b656edec0ebca835b6b9f1d20fb7be7119c5'
             '613b0ed3fe4b5ee505ddb5122ee41604f464a5049be81c97601ee93970763a23'
-            'f071e0fd8d0d588f03fcc7db6f3cb3f7ea1b870d3416a0bde142d9aeb839d0f6')
+            'f071e0fd8d0d588f03fcc7db6f3cb3f7ea1b870d3416a0bde142d9aeb839d0f6'
+            '30fc7d2896dfe7d922964fd159b756a81b1f853a6b29cb7786e8acbef8c647e4')
 backup=(${_cfgdir:1}/fastcgi.conf
         ${_cfgdir:1}/fastcgi_params
         ${_cfgdir:1}/koi-win
@@ -35,8 +44,29 @@ backup=(${_cfgdir:1}/fastcgi.conf
         ${_cfgdir:1}/win-utf
         etc/logrotate.d/openresty)
 
+pkgver() {
+  cd "$_pkgname"
+  (
+    set -o pipefail
+    git describe --long --tag | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+  _pkgver=$(./util/ver)
+}
+
+prepare() {
+  cd "$_pkgname"
+  echo $_pkgver
+
+  patch -p1 -i ../openssl-1.1.0.patch
+  make
+}
+
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname"
+  echo $_pkgver
+
+  cd $_pkgname-$(./util/ver)
 
   ./configure \
     --prefix=/opt/openresty \
@@ -209,9 +239,11 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname"
+  cd $_pkgname-$(./util/ver)
+
   make DESTDIR="$pkgdir" install
-  install -Dm644 COPYRIGHT $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 COPYRIGHT $pkgdir/usr/share/licenses/$_pkgname/LICENSE
   install -d "$pkgdir"/etc/logrotate.d
   install -m644 "$srcdir"/openresty.logrotate "$pkgdir"/etc/logrotate.d/openresty
   install -d "$pkgdir"/$_tmpdir
