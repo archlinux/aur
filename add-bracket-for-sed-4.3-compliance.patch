@@ -1,0 +1,29 @@
+From 66fc64a75617ffc68f16780f60e39c1f368dfd41 Mon Sep 17 00:00:00 2001
+From: Daniel Stenberg <daniel@haxx.se>
+Date: Mon, 9 Jan 2017 14:37:33 +0100
+Subject: [PATCH] bug 1329272: add bracket for sed 4.3 compliance, r=glandium
+
+---
+ mozilla/build/autoconf/icu.m4 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mozilla/build/autoconf/icu.m4 b/mozilla/build/autoconf/icu.m4
+index 4f46345f435a..794ddcdf4e52 100644
+--- a/mozilla/build/autoconf/icu.m4
++++ b/mozilla/build/autoconf/icu.m4
+@@ -67,11 +67,11 @@ if test -n "$USE_ICU"; then
+         if test ! -d "$icudir"; then
+             AC_MSG_ERROR([Cannot find the ICU directory])
+         fi
+     fi
+ 
+-    version=`sed -n 's/^[[:space:]]*#[[:space:]]*define[[:space:]][[:space:]]*U_ICU_VERSION_MAJOR_NUM[[:space:]][[:space:]]*\([0-9][0-9]*\)[[:space:]]*$/\1/p' "$icudir/common/unicode/uvernum.h"`
++    version=`sed -n 's/^[[[:space:]]]*#[[:space:]]*define[[:space:]][[:space:]]*U_ICU_VERSION_MAJOR_NUM[[:space:]][[:space:]]*\([0-9][0-9]*\)[[:space:]]*$/\1/p' "$icudir/common/unicode/uvernum.h"`
+     if test x"$version" = x; then
+        AC_MSG_ERROR([cannot determine icu version number from uvernum.h header file $lineno])
+     fi
+     MOZ_ICU_VERSION="$version"
+ 
+-- 
+2.11.0
+

@@ -1,0 +1,224 @@
+diff --git a/editor/ui/locales/en-US/chrome/region/region.properties b/editor/ui/locales/en-US/chrome/region/region.properties
+index fb6fac676..8d2ae68db 100644
+--- a/editor/ui/locales/en-US/chrome/region/region.properties
++++ b/editor/ui/locales/en-US/chrome/region/region.properties
+@@ -5,4 +5,4 @@
+ #
+ # editor.js
+ # editor.properties
+-editor.throbber.url=http://www.seamonkey-project.org/
++editor.throbber.url=about:
+diff --git a/mozilla/browser/locales/en-US/chrome/browser-region/region.properties b/mozilla/browser/locales/en-US/chrome/browser-region/region.properties
+index e078ed528..ce2c5ed4d 100644
+--- a/mozilla/browser/locales/en-US/chrome/browser-region/region.properties
++++ b/mozilla/browser/locales/en-US/chrome/browser-region/region.properties
+@@ -3,17 +3,12 @@
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ # Default search engine
+-browser.search.defaultenginename=Google
++browser.search.defaultenginename=searx
+ 
+ # Search engine order (order displayed in the search bar dropdown)s
+-browser.search.order.1=Google
+-browser.search.order.2=Yahoo
+-browser.search.order.3=Bing
+-
+-# This is the default set of web based feed handlers shown in the reader
+-# selection UI
+-browser.contentHandlers.types.0.title=My Yahoo!
+-browser.contentHandlers.types.0.uri=https://add.my.yahoo.com/rss?url=%s
++browser.search.order.1=searx
++browser.search.order.2=DuckDuckGo HTML
++browser.search.order.3=DuckDuckGo Lite
+ 
+ # increment this number when anything gets changed in the list below.  This will
+ # cause Firefox to re-read these prefs and inject any new handlers into the 
+@@ -22,20 +17,10 @@ browser.contentHandlers.types.0.uri=https://add.my.yahoo.com/rss?url=%s
+ # don't make any spelling errors here.
+ gecko.handlerService.defaultHandlersVersion=4
+ 
+-# The default set of protocol handlers for webcal:
+-gecko.handlerService.schemes.webcal.0.name=30 Boxes
+-gecko.handlerService.schemes.webcal.0.uriTemplate=https://30boxes.com/external/widget?refer=ff&url=%s
+-
+-# The default set of protocol handlers for mailto:
+-gecko.handlerService.schemes.mailto.0.name=Yahoo! Mail
+-gecko.handlerService.schemes.mailto.0.uriTemplate=https://compose.mail.yahoo.com/?To=%s
+-gecko.handlerService.schemes.mailto.1.name=Gmail
+-gecko.handlerService.schemes.mailto.1.uriTemplate=https://mail.google.com/mail/?extsrc=mailto&url=%s
+-
+ # The default set of protocol handlers for irc:
+-gecko.handlerService.schemes.irc.0.name=Mibbit
+-gecko.handlerService.schemes.irc.0.uriTemplate=https://www.mibbit.com/?url=%s
++gecko.handlerService.schemes.irc.0.name=Freenode Web IRC
++gecko.handlerService.schemes.irc.0.uriTemplate=https://webchat.freenode.net
+ 
+ # The default set of protocol handlers for ircs:
+-gecko.handlerService.schemes.ircs.0.name=Mibbit
+-gecko.handlerService.schemes.ircs.0.uriTemplate=https://www.mibbit.com/?url=%s
++gecko.handlerService.schemes.ircs.0.name=Freenode Web IRC
++gecko.handlerService.schemes.ircs.0.uriTemplate=https://webchat.freenode.net
+diff --git a/suite/locales/en-US/chrome/browser/region.properties b/suite/locales/en-US/chrome/browser/region.properties
+index 1534dbf3c..b6377f20e 100644
+--- a/suite/locales/en-US/chrome/browser/region.properties
++++ b/suite/locales/en-US/chrome/browser/region.properties
+@@ -6,24 +6,13 @@
+ #
+ # all.js
+ #
+-browser.startup.homepage=http://www.seamonkey-project.org/start/
+-browser.throbber.url=http://www.seamonkey-project.org/
++browser.startup.homepage=about:
++browser.throbber.url=about:
+ 
+-browser.translation.service=http://translate.google.com/translate?prev=/language_tools&u=
+-browser.translation.serviceDomain=translate.google.com
+-browser.validate.html.service=http://validator.w3.org/check?charset=%28detect+automatically%29&doctype=Inline&uri=
++browser.translation.service=about:
++browser.translation.serviceDomain=
++browser.validate.html.service=about:
+ 
+ #config.js
+ #
+-startup.homepage_override_url=http://www.seamonkey-project.org/releases/seamonkey%VERSION%/
+-
+-# This is the default set of web based feed handlers shown in the reader
+-# selection UI
+-browser.contentHandlers.types.0.title=Feedly
+-browser.contentHandlers.types.0.uri=http://www.feedly.com/home#subscription/feed/%s
+-browser.contentHandlers.types.1.title=My Yahoo!
+-browser.contentHandlers.types.1.uri=http://add.my.yahoo.com/rss?url=%s
+-browser.contentHandlers.types.2.title=AOL Reader
+-browser.contentHandlers.types.2.uri=http://reader.aol.com/#quickadd/%s
+-browser.contentHandlers.types.3.title=Digg Reader
+-browser.contentHandlers.types.3.uri=http://digg.com/reader/search/%s
++startup.homepage_override_url=about:
+diff --git a/suite/locales/en-US/chrome/common/region.properties b/suite/locales/en-US/chrome/common/region.properties
+index a0331dc52..4e2142ef6 100644
+--- a/suite/locales/en-US/chrome/common/region.properties
++++ b/suite/locales/en-US/chrome/common/region.properties
+@@ -3,13 +3,13 @@
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+ # Default search engine
+-browser.search.defaultenginename=DuckDuckGo
++browser.search.defaultenginename=searx
+ 
+ # Search engine order (order displayed in the search bar dropdown)
+-browser.search.order.1=DuckDuckGo
+-browser.search.order.2=Google
+-browser.search.order.3=Yahoo
++browser.search.order.1=searx
++browser.search.order.2=DuckDuckGo HTML
++browser.search.order.3=DuckDuckGo Lite
+ 
+ # More information about this update link available in the update wizard.
+ # Only change this if you are providing localized release notes.
+-app.update.url.details=http://www.seamonkey-project.org/releases/
++app.update.url.details=about:
+diff --git a/suite/locales/en-US/chrome/mailnews/region.properties b/suite/locales/en-US/chrome/mailnews/region.properties
+index fd56569f1..9b3a8dcc0 100644
+--- a/suite/locales/en-US/chrome/mailnews/region.properties
++++ b/suite/locales/en-US/chrome/mailnews/region.properties
+@@ -6,9 +6,9 @@
+ # messenger.properties
+ # mailnews.js
+ mailnews.start_page.url=chrome://messenger/content/start.xhtml
+-messenger.throbber.url=http://www.seamonkey-project.org/
+-compose.throbber.url=http://www.seamonkey-project.org/
+-addressbook.throbber.url=http://www.seamonkey-project.org/
++messenger.throbber.url=about:
++compose.throbber.url=about:
++addressbook.throbber.url=about:
+ # To make mapit buttons to disappear in the addressbook, specify empty string.  For example:
+ # mail.addr_book.mapit_url.format=
+ # The mail.addr_book.mapit_url.format should start with the URL of the mapping
+diff --git a/suite/locales/en-US/profile/bookmarks.extra b/suite/locales/en-US/profile/bookmarks.extra
+index e7fd304c7..5308ce51f 100644
+--- a/suite/locales/en-US/profile/bookmarks.extra
++++ b/suite/locales/en-US/profile/bookmarks.extra
+@@ -9,10 +9,9 @@
+ 
+     <DT><H3>Search the Web</H3>
+     <DL><p>
+-        <DT><A HREF="https://duckduckgo.com/">DuckDuckGo</A>
+-        <DT><A HREF="http://www.google.com/">Google</A>
+-        <DT><A HREF="http://groups.google.com/">Google Groups</A>
+-        <DT><A HREF="http://news.google.com/">Google News</A>
++        <DT><A HREF="https://searx.laquadrature.net/">searx</A>
++        <DT><A HREF="https://duckduckgo.com/html">DuckDuckGo HTML</A>
++        <DT><A HREF="https://duckduckgo.com/lite">DuckDuckGo Lite</A>
+     </DL><p>
+ 
+ #unfilter emptyLines
+diff --git a/suite/locales/generic/profile/bookmarks.html.in b/suite/locales/generic/profile/bookmarks.html.in
+index 62a9327fc..6726af900 100644
+--- a/suite/locales/generic/profile/bookmarks.html.in
++++ b/suite/locales/generic/profile/bookmarks.html.in
+@@ -15,37 +15,36 @@ Do Not Edit! -->
+ <DL><p>
+     <DT><H3 PERSONAL_TOOLBAR_FOLDER="true" ID="NC:PersonalToolbarFolder">@personal_toolbarfolder@</H3>
+     <DL><p>
+-        <DT><A HREF="http://www.seamonkey-project.org/">@seamonkey@</a>
+-        @seamonkey_l10n@
+-        <DT><A HREF="http://www.mozilla.org/">@mozilla_org@</A>
+-        <DT><A HREF="http://www.mozillazine.org/">@mozillazine@</A>
+-        <DT><A HREF="http://www.mozdev.org/">@mozdev@</A>
++        <DT><A HREF="https://www.parabola.nu/" ICON="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABL0lEQVQ4jWNgoCcoq16VU1GzygnEBtEVDWuV8GooKFuhWVG3uiM3d5UokG4qr1szAa
++a5vGbVt4ralacwNDU0rGIrr10VBVG0+lxhwyqVsqqVtRW1q6eD5IvL19oB2V+B+D9QzQu4xtDQVZylVavygRKHqurWOlbUrknKK12qWlCwWLK8elUFA8N/xvLy5VYVtas+gzWDDVi9E2QjT1XdcufymjWpQJt1cXmnvHwVP1DzR7hmIC6vW+kOtpnYQKysW30arrlm9
++RVi9cFBRfXKJTADympWJZNsQFnN6rUQA1adAQU2SZqBXmUGBtozUDiU1qxQJtl2oCY3kO2l1avCSdYMAsBAWwyM2plkaS4p6eYGOv1YQ0MDB1kGlFWuDChuWKZBlmYQqK5eJU22ZkIAAEIlnQZQkzITAAAAAElFTkSuQmCC">Parabola GNU/Linux-libre</A>
+     </DL><p>
+-    <DT><H3>@seamonkey_and_mozilla@</H3>
++    <DT><H3>Parabola GNU/Linux-libre</H3>
+     <DL><p>
+-        <DT><A HREF="http://www.seamonkey-project.org/">@seamonkey_long@</a>
+-        @seamonkey_l10n_long@
+-        <DT><H3>@mozilla_org@</H3>
+-        <DL><p>
+-            <DT><A HREF="http://www.mozilla.org/">@mozilla_org_long@</A>
+-            <DT><A HREF="http://www.mozilla.org/projects/">@mozilla_projects@</A>
+-            <DT><A HREF="http://www.mozilla.org/about/">@mozilla_about@</A>
+-        </DL><p>
+-        <DT><H3>@extend_seamonkey@</H3>
+-        <DL><p>
+-            <DT><A HREF="https://addons.mozilla.org/@AB_CD@/seamonkey/">@seamonkey_addons@</a>
+-            <DT><A HREF="https://addons.mozilla.org/@AB_CD@/seamonkey/themes">@seamonkey_themes@</a>
+-            <DT><A HREF="https://addons.mozilla.org/@AB_CD@/seamonkey/dictionaries">@seamonkey_dictionaries@</a>
+-            <DT><A HREF="https://addons.mozilla.org/@AB_CD@/seamonkey/plugins">@seamonkey_plugins@</a>
+-            <DT><A HREF="http://www.mozdev.org/">@mozdev@</A>
+-            <DT><A HREF="http://www.mozdev.org/projects/applications/SeaMonkey.html">@mozdev_seamonkey@</A>
+-        </DL><p>
+-        <DT><H3>@community_support@</H3>
+-        <DL><p>
+-            <DT><A HREF="http://www.seamonkey-project.org/community">@seamonkey_community@</a>
+-            <DT><A HREF="http://www.mozillazine.org/">@mozillazine@</A>
+-            <DT><A HREF="http://forums.mozillazine.org/viewforum.php?f=40">@seamonkey_support@</A>
+-        </DL><p>
++        <DT><A HREF="https://www.parabola.nu/" ICON="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABL0lEQVQ4jWNgoCcoq16VU1GzygnEBtEVDWuV8GooKFuhWVG3uiM3d5UokG4qr1szAa
++a5vGbVt4ralacwNDU0rGIrr10VBVG0+lxhwyqVsqqVtRW1q6eD5IvL19oB2V+B+D9QzQu4xtDQVZylVavygRKHqurWOlbUrknKK12qWlCwWLK8elUFA8N/xvLy5VYVtas+gzWDDVi9E2QjT1XdcufymjWpQJt1cXmnvHwVP1DzR7hmIC6vW+kOtpnYQKysW30arrlm9
++RVi9cFBRfXKJTADympWJZNsQFnN6rUQA1adAQU2SZqBXmUGBtozUDiU1qxQJtl2oCY3kO2l1avCSdYMAsBAWwyM2plkaS4p6eYGOv1YQ0MDB1kGlFWuDChuWKZBlmYQqK5eJU22ZkIAAEIlnQZQkzITAAAAAElFTkSuQmCC">Parabola GNU/Linux-libre</A>
++        <DT><A HREF="https://www.parabola.nu/packages/" ICON="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABL0lEQVQ4jWNgoCcoq16VU1GzygnEBtEVDWuV8GooKFuhWVG3uiM3d5UokG4qr1szAa
++a5vGbVt4ralacwNDU0rGIrr10VBVG0+lxhwyqVsqqVtRW1q6eD5IvL19oB2V+B+D9QzQu4xtDQVZylVavygRKHqurWOlbUrknKK12qWlCwWLK8elUFA8N/xvLy5VYVtas+gzWDDVi9E2QjT1XdcufymjWpQJt1cXmnvHwVP1DzR7hmIC6vW+kOtpnYQKysW30arrlm9
++RVi9cFBRfXKJTADympWJZNsQFnN6rUQA1adAQU2SZqBXmUGBtozUDiU1qxQJtl2oCY3kO2l1avCSdYMAsBAWwyM2plkaS4p6eYGOv1YQ0MDB1kGlFWuDChuWKZBlmYQqK5eJU22ZkIAAEIlnQZQkzITAAAAAElFTkSuQmCC">Parabola GNU/Linux-libre Packages</A>
++        <DT><A HREF="https://wiki.parabola.nu/" ICON="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABL0lEQVQ4jWNgoCcoq16VU1GzygnEBtEVDWuV8GooKFuhWVG3uiM3d5UokG4qr1szAaa5vGbVt4
++ralacwNDU0rGIrr10VBVG0+lxhwyqVsqqVtRW1q6eD5IvL19oB2V+B+D9QzQu4xtDQVZylVavygRKHqurWOlbUrknKK12qWlCwWLK8elUFA8N/xvLy5VYVtas+gzWDDVi9E2QjT1XdcufymjWpQJt1cXmnvHwVP1DzR7hmIC6vW+kOtpnYQKysW30arrlm9RVi9cFBR
++fXKJTADympWJZNsQFnN6rUQA1adAQU2SZqBXmUGBtozUDiU1qxQJtl2oCY3kO2l1avCSdYMAsBAWwyM2plkaS4p6eYGOv1YQ0MDB1kGlFWuDChuWKZBlmYQqK5eJU22ZkIAAEIlnQZQkzITAAAAAElFTkSuQmCC">Parabola GNU/Linux-libre Wiki</A>
++        <DT><A HREF="https://labs.parabola.nu/" ICON="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABL0lEQVQ4jWNgoCcoq16VU1GzygnEBtEVDWuV8GooKFuhWVG3uiM3d5UokG4qr1szAaa5vGbVt4
++ralacwNDU0rGIrr10VBVG0+lxhwyqVsqqVtRW1q6eD5IvL19oB2V+B+D9QzQu4xtDQVZylVavygRKHqurWOlbUrknKK12qWlCwWLK8elUFA8N/xvLy5VYVtas+gzWDDVi9E2QjT1XdcufymjWpQJt1cXmnvHwVP1DzR7hmIC6vW+kOtpnYQKysW30arrlm9RVi9cFBR
++fXKJTADympWJZNsQFnN6rUQA1adAQU2SZqBXmUGBtozUDiU1qxQJtl2oCY3kO2l1avCSdYMAsBAWwyM2plkaS4p6eYGOv1YQ0MDB1kGlFWuDChuWKZBlmYQqK5eJU22ZkIAAEIlnQZQkzITAAAAAElFTkSuQmCC">Parabola GNU/Linux-libre Labs</A>
++    </DL><p>
++    <DT><H3>Free Software Foundation</H3>
++    <DL><p>
++        <DT><A HREF="https://www.fsf.org/" ICON="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAACXBIWXMAAAsTAAALEwEAmpwYAAADG0lEQVQoFQEQA+/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
++AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQECAAAAAAAAAAAAAAAAAAAA2qOp7tTXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAP///wAAAAAAAOCyt7pUXQcSEgcQDwAAAP
++///wAAAAAAAAD//x9NSDqNhQEBAQQAAAAAAAAAAAAAAAAQJiQGDQ0aPToZPjoAAQEAAAAAAAAAAAABAQEpZV4AAAAAAAAAAAAA////////////////pSIv05KZ////////////////////////////////AAAAAQAAAP///6krNwAAAAAAAPHc3ggSEQcSEQAAAAAAA
++AAAABY3NEGelQAAAAAAAAEBAQEAAAD///+YARAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGDg1g690CBgYAAAABAQEEAAAAAAAAS7etAAAAAAAAwGVtHklFIlJOAAAAAAAAAAAAAAAA+/X2BwYGAAAAAAAABAAAAAAAAB1IQwAAAAAAAAYNDBAmJB1IQwAAAAAAAAAA
++AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAgL//v4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAQEB//7/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAECAv/+/gAAAAAAAAAAAAAAAAA
++AAAAAAAAAAAAAAAAAAAAAAAD////////////////cqK3qzM////////////////////////////////8AAAABAAAA////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGuLjDf9F8oBAAAAAElFTkSuQmCC">Free Software Foundation</A>
++        <DT><A HREF="https://www.gnu.org/" ICON="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAGFBMVEVFRUV+fn6mpqa/v7/Ozs7Y2Njg4OD8/Pwuhn+TAAAAAWJLR0QAiAUdSAAAAAlwSFlzAAALEQAACxEBf2RfkQAAAAd0SU1FB9MBDhQ6Gd8s57cAAAEVSURBVBgZBcGxVtpgGADQL9gHSBzqSognzMixmcWWzB6pmRHhnyvku6/fewMAIPD3TwHmQxHs6vr+A16bphNum/vV0x429201hcPjAGBTDZGnR/Kw1U181+u4HXvOdSxjUcztz8jjg1xGVBG9XPYxt4PviKiaWLg168iXtbrq+mPT1utjNcR1U73deRnL43M2sRgj3+oYs8uL3rLphPd2QWmHbMu/VS/cnk6UdtSW657g9yBlcZ0UAkUWzPvyRaAYmfd+HT4IZtvC59ibEJxXiqJjQpBpNEufBYE0McoOAunGhRMEFIPc7h4goJigQEBxk8u7AgEpL3IEAUZfcgAByGFXQACm5+4MAuB19QMEgI8CAgDgP4rivVgoKP6ZAAAAAElFTkSuQmCC">The GNU Operating System and the Free Software Movement</A>
++        <DT><A HREF="https://libreplanet.org/" ICON="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACfElEQVQ4jZXTS0hUcRTH8f+9M3fGd0gRRq1a2bZdBAotWtS6TQtB6IHgKzRy0UKqjRaRCAq+R21MDMsUR83JR5fJxhmaK2lzsWAWw+ToEHJxgnFm7reFIgza66z/58P/dzhHcESZpsluIsFPwyCVSmGa5lHPEEIIkdGYTqPPvqUlP4fK8nJ2DINYNEq71YJ3fv4QlAGkUynaj+VRdfUK7580M52rEN/ZYWNjg2GrjEMSPFXsmOn0YcA0TZ4V5tNZUkJTTTWfJiZIJhJ8U1VczwcZs0o4JUHzufM0ZGcf/OQASCaTxGIxDMNA00P8iEbpuXyJ8Tw77+wWJhWZQYuVbiHoFIKwpmUC4XCYzc1NDMMgHo9z8+IFvl6/xsf7D9ArbjOpyAxLEt1C0CUErfvJDwBd14lEImxvb/N9fR1fgY3egmyWsq0sO/poUyw4pb3mLiFolyRM09wDEokEfr+fUChEJBJh4HgBS7kKn92zLIy9ZriqklFZwiEEHfsRRp1O0un0HpDa3cU9M8PKygp3Tp5AzbKgZlmYt1uYtkn02q0MyYKmnBxWNI27Nhtut5tkMrkHmKZJbWkpqqryQpFxKTJTisyEVeaVRWJIlqgpLuZRWRkejwe/34/P58ucwZvWVhYXF5l2uejIzeHGqbM4ZYmB/dy1hUV8mJpibm4On8/H1tbW4T1YXV3F6/WysLDA5Pg4nfsDe5yfz8OiIjweD5qmEQwGf7/KwWCQtbU1NE2jRZbpEoI2SWKqr49lVUXX9T/fAkAgEKC/e5SW6mo6hKD+zGn6e0bw+/x/PyaA9S/rvOwfobGukfpbddyraMDR7iCwHPg34H9KCCF+Abts3KCj/p6aAAAAAElFTkSuQmCC">LibrePlanet</A>
++        <DT><A HREF="https://www.h-node.org/" ICON="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABgElEQVQ4jaXRz2uSARzHcb0vlRGEzTVWISU1BVkFYTIyjNK1pKcxHA+yhWMWIamHYikFgpoLIi9jwegi3QbL9SzdLmMbM9J+DkJBgm5RDvEPeHeQHOyQz0OH9+V7ePGBr0pqpPmfVPsP8a0AR4MnMEwf48x9K0s/E8oAY9iEMOvD+8yP2qVjrhhRBnSN61n5sIpULqC+pGHh8wNlgEY8jPQXcGh4VXukDND5evYAl46odIuXtYdKAANSudAChO52/XeMZMohecCbcoGdH99Y+7LO72adT9+/4nh8nYOjBl7/SsoB8gBkpHk8T0S2K++pN3fRin3cfnFDHvCuWkI9rEMvHGEo5gbAHnXhnLF1BpZLeRaLOVT2A8Q3A5wMngXgWtKLxX9KPqC+rCWQvYkpeK4NWKcGOgO50ts2MJJ0cPreeQDciTHMchZYIhcwh2wcuqjn+ccwGm9v6wsTxxn0dVgQXZ7Ek3Agpq6QrcaQGmmebtxFSDkRU1fJVmL/BpT2ByV/3eDMhinRAAAAAElFTkSuQmCC">h-node</A>
+     </DL><p>
+ #include bookmarks.extra
+     <HR>
