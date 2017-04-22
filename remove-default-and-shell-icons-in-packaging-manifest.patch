@@ -1,0 +1,34 @@
+diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
+index cffcff1..85d28cc 100644
+--- a/browser/installer/package-manifest.in
++++ b/browser/installer/package-manifest.in
+@@ -653,11 +653,6 @@
+ @RESPATH@/chrome/toolkit.manifest
+ @RESPATH@/chrome/recording.manifest
+ @RESPATH@/chrome/recording/*
+-#ifdef MOZ_GTK
+-@RESPATH@/browser/chrome/icons/default/default16.png
+-@RESPATH@/browser/chrome/icons/default/default32.png
+-@RESPATH@/browser/chrome/icons/default/default48.png
+-#endif
+ @RESPATH@/browser/features/*
+ 
+ ; [Webide Files]
+@@ -670,17 +665,10 @@
+ @RESPATH@/browser/chrome/devtools.manifest
+ @RESPATH@/browser/@PREF_DIR@/devtools.js
+ 
+-; shell icons
+-#ifdef XP_UNIX
+-#ifndef XP_MACOSX
+-; shell icons
+-@RESPATH@/browser/icons/*.png
+ #ifdef MOZ_UPDATER
+ ; updater icon
+ @RESPATH@/icons/updater.png
+ #endif
+-#endif
+-#endif
+ 
+ ; [Default Preferences]
+ ; All the pref files must be part of base to prevent migration bugs
