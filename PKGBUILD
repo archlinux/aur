@@ -2,7 +2,7 @@
 
 pkgname=python-simple-crypt
 pkgver=4.1.7
-pkgrel=1
+pkgrel=1.1
 arch=('any')
 license=('custom')
 pkgdesc="Simple, secure encryption and decryption for Python 3"
