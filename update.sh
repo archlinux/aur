@@ -27,10 +27,12 @@ echo "Finished building package"
 
 sudo systemctl --no-pager status home-assistant
 
+sudo journalctl -u home-assistant -f &
+
 echo "Sleep 60sec to ensure everything is working good"
 
-for i in {1..12}; do echo -n . ; sleep 5 ; done
+sleep 60
+kill $(jobs -p)
 sudo systemctl --no-pager status home-assistant
-
 
 echo "You simply have to commit+push the changes"
