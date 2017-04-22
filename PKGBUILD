@@ -1,13 +1,12 @@
 pkgname=chipmunk6
 pkgver=6.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance 2D rigid body physics library"
 arch=('i686' 'x86_64')
 url="http://chipmunk-physics.net/"
 license=('MIT')
 depends=('glibc')
 makedepends=('cmake')
-options=('!strip')
 source=(http://files.slembcke.net/chipmunk/release/Chipmunk-${pkgver%%.*}.x/Chipmunk-$pkgver.tgz)
 provides=(chipmunk)
 replaces=(chipmunk)
