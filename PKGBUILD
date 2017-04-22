@@ -5,7 +5,7 @@
 pkgname=libinput-no-hysteresis
 _pkgname=libinput
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Input device management and event handling library sans hysteresis"
 arch=(i686 x86_64)
 url="https://www.freedesktop.org/wiki/Software/libinput/"
@@ -16,6 +16,7 @@ depends=('mtdev' 'systemd' 'libevdev' 'libwacom')
 makedepends=('doxygen' 'graphviz' 'gtk3')
 #checkdepends=('check' 'libunwind')
 conflicts=('libinput')
+replaces=('libinput')
 source=(https://freedesktop.org/software/$_pkgname/$_pkgname-$pkgver.tar.xz{,.sig} disable-hysteresis.patch)
 sha512sums=('9058eab813ea3de230835155ca843f248127cbafaf1aecc9a2e209a0215b090beef0468cc863a24320f8d0db1f2863baba680e2416e9e409e958b2c1d18e43a1'
             'SKIP'
