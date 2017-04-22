@@ -24,7 +24,7 @@ package() {
 	mkdir -p "${pkgdir}/usr/lib/monitoring-plugins"
 	make install DESTDIR=${pkgdir}
 	cp check_postgres.pl "${pkgdir}/usr/lib/monitoring-plugins/check_postgres"
-	chmod o+rx check_postgres
+	chmod o+rx "${pkgdir}/usr/lib/monitoring-plugins/check_postgres"
 	cd "${pkgdir}/usr/lib/monitoring-plugins"
 	./check_postgres --symlinks
 }
