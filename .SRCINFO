@@ -1,7 +1,7 @@
 pkgbase = vice-gtkglext
 	pkgdesc = A Versatile Commodore Emulator , with enabled gtkglext
-	pkgver = 3.0
-	pkgrel = 2
+	pkgver = 3.1
+	pkgrel = 1
 	url = http://vice-emu.sourceforge.net
 	install = vice-gtkglext.install
 	arch = i686
@@ -18,16 +18,16 @@ pkgbase = vice-gtkglext
 	depends = lame
 	depends = libpcap
 	depends = libnet
-	provides = vice=3.0
+	provides = vice=3.1
 	conflicts = vice
 	conflicts = vice-gtk
 	conflicts = vice-sdl
 	conflicts = vice-ethernet
 	replaces = vice
-	source = http://downloads.sourceforge.net/project/vice-emu/releases/vice-3.0.tar.gz
+	source = http://downloads.sourceforge.net/project/vice-emu/releases/vice-3.1.tar.gz
 	source = no-fc-cache.patch
-	sha1sums = 424860f897b2dffd7162d133ee4a15e970491cd0
-	sha1sums = 1eb7b3d0574d60f4e11edfc48566019451e94ccd
+	sha256sums = 3eb8159633816095006dec36c5c3edd055a87fd8bda193a1194a6801685d1240
+	sha256sums = 36e88f32137c96b14283b94a15c5d85425086312165d1392bde2cab7c14f45cc
 
 pkgname = vice-gtkglext
 
