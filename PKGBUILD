@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=pylibgamma
-pkgver=1.1.1.2
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Display server abstraction layer for gamma ramps and Python 3"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=(python3 'libgamma>=0.6' glibc)
 makedepends=(python3 'libgamma>=0.6' glibc make gcc cython coreutils pkg-config)
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(d57f26fe039c5f57dc7cdf95ab34e9e35b879e4499701cc29370637c3399b551)
+sha256sums=(e40f1291712e799d28eb4b4c5df9fe6b07ce5f0bf39bcd7f9416fb9d3335fb9a)
 
 
 build() {
