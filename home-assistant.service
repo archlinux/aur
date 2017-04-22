@@ -3,7 +3,7 @@ Description=Home assistant
 After=network.target
 
 [Service]
-Restart=always
+Restart=on-failure
 User=hass
 Group=hass
 
