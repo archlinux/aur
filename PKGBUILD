@@ -3,7 +3,7 @@
 
 pkgname=walinuxagent
 _pkgname=WALinuxAgent
-pkgver=2.1.6
+pkgver=2.2.10
 pkgrel=1
 pkgdesc="Microsoft Azure Linux Guest Agent"
 arch=('any')
@@ -19,26 +19,11 @@ options=()
 install=
 changelog=
 source=(
-  "https://github.com/Azure/WALinuxAgent/archive/v${pkgver}.zip"
-  "setup_default_systemd.patch")
+  "https://github.com/Azure/WALinuxAgent/archive/v${pkgver}.zip")
 sha256sums=(
-  'cb70ab8f55fc82c89f33b2c88e691c0b8809b187fdaa6c481ec7ae357f32c3a9'
-  'e7cb463690dd312a9e63a4efe1e869e1d3c04b59ea71001198cbcfd5c1cba351')
-
-prepare() {
-  #cd "$_pkgname-$pkgver"
-  #find . -type f -exec \
-  #  sed -i 's/\/usr\/sbin/\/usr\/bin/g' {} +
-  # TODO: Replace directory /usr/sbin with /usr/bin
-  patch -p1 < setup_default_systemd.patch
-}
+  '0a1225d3292fab251456a7055a929d38da76d6a913bf5549e42b1d2975112672')
 
 package() {
   cd "$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir" --prefix="/usr" --init-system=systemd --optimize=1
-  mv $pkgdir/usr/sbin $pkgdir/usr/bin
-  sed -i -e 's/\/usr\/sbin/\/usr\/bin/g' $pkgdir/usr/lib/systemd/system/waagent.service
-  #sed -i -e '0,/env python/s/env python/env python2/' $pkgdir/usr/bin/waagent
+  python setup.py install --root="$pkgdir" --prefix="/usr" --optimize=1
 }
-
-# vim:set ts=2 sw=2 et:
