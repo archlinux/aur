@@ -1,0 +1,40 @@
+--- gtk-orig/gtk/gtkfilechooserwidget.c	2017-04-08 22:15:58.000000000 +0300
++++ gtk-mod/gtk/gtkfilechooserwidget.c	2017-04-22 15:42:26.970387421 +0300
+@@ -2614,7 +2614,7 @@
+   g_signal_connect_swapped (priv->location_entry, "hide-entry",
+                             G_CALLBACK (location_entry_close_clicked), impl);
+ 
+-  _gtk_file_chooser_entry_set_local_only (GTK_FILE_CHOOSER_ENTRY (priv->location_entry), priv->local_only);
++  _gtk_file_chooser_entry_set_local_only (GTK_FILE_CHOOSER_ENTRY (priv->location_entry), 0);
+   _gtk_file_chooser_entry_set_action (GTK_FILE_CHOOSER_ENTRY (priv->location_entry), priv->action);
+   _gtk_file_chooser_entry_set_file_filter (GTK_FILE_CHOOSER_ENTRY (priv->location_entry),
+                                            priv->current_filter);
+@@ -2977,6 +2977,7 @@
+ set_local_only (GtkFileChooserWidget *impl,
+                 gboolean               local_only)
+ {
++  local_only=0;
+   GtkFileChooserWidgetPrivate *priv = impl->priv;
+ 
+   if (local_only != priv->local_only)
+@@ -2984,9 +2985,9 @@
+       priv->local_only = local_only;
+ 
+       if (priv->location_entry)
+-        _gtk_file_chooser_entry_set_local_only (GTK_FILE_CHOOSER_ENTRY (priv->location_entry), local_only);
++        _gtk_file_chooser_entry_set_local_only (GTK_FILE_CHOOSER_ENTRY (priv->location_entry), 0);
+ 
+-      gtk_places_sidebar_set_local_only (GTK_PLACES_SIDEBAR (priv->places_sidebar), local_only);
++      gtk_places_sidebar_set_local_only (GTK_PLACES_SIDEBAR (priv->places_sidebar), 0);
+ 
+       if (local_only && priv->current_folder &&
+            !_gtk_file_has_native_path (priv->current_folder))
+@@ -8652,7 +8653,7 @@
+   impl->priv = gtk_file_chooser_widget_get_instance_private (impl);
+   priv = impl->priv;
+ 
+-  priv->local_only = TRUE;
++  priv->local_only = FALSE;
+   priv->preview_widget_active = TRUE;
+   priv->use_preview_label = TRUE;
+   priv->select_multiple = FALSE;

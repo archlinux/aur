@@ -28,6 +28,7 @@ source=(
         "print-dialog__appearance.patch"
         "print-dialog__default-previewer.patch"
         "typeahead.patch"
+        "never_local_only.patch"
 
         "https://github.com/GNOME/gtk/archive/$pkgver.tar.gz"
         settings.ini
@@ -44,6 +45,7 @@ sha256sums=('d8214e11bfcee96552ce5911b1d172ce8076313685d5897f9bd0655df546341b'
             'f14cd9983ada3fab3f22ce6ef7fcdd6afb9253f0bf5b9de20255fe0e8c56d685'
             '886f9ca521285974617eff66e5060b429c4be56b205444e457b6bfdd24f60ca4'
             '958e7188f23ed5937bcb0f5c09c87332bcea0ca66b0333390d0de73b2ccbae82'
+            '58239e4945feca905788c192716073939e3dc8ceeb5d25e9fa024f0b1ed328ca'
             'bec9108c4892041988635f7e276724828b17a0522b211c190530a1f76f88cbae'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
             'de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845')
@@ -62,6 +64,7 @@ prepare() {
     patch "$gtk_source/gtkfilechooserwidget.c" "file-chooser__single-click.patch"
     patch "$gtk_source/ui/gtkfilechooserwidget.ui" "file-chooser__disable-other-locations.patch"
     patch "$gtk_source/gtkfilechooserwidget.c" -i "typeahead.patch"
+    patch "$gtk_source/gtkfilechooserwidget.c" -i "never_local_only.patch"
 
     # print dialog
     patch "$gtk_source/gtksettings.c" "print-dialog__default-previewer.patch"
