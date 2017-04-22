@@ -3,7 +3,7 @@
 pkgname=gloo-git
 pkgver=0.r113.6089900
 pkgrel=1
-pkgdesc='A fast framework for deep learning built in C++ for speed with a Python 3 interface'
+pkgdesc='Gloo is a collective communications library from the Facebook incubator. It comes with a number of collective algorithms useful for machine learning applications.'
 arch=(x86_64)
 url='https://github.com/facebookincubator/gloo'
 license=('BSD')
