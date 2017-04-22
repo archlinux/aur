@@ -1,6 +1,6 @@
 pkgbase = mupdf-git
 	pkgdesc = Lightweight PDF, XPS and CBZ viewer
-	pkgver = 20170323.185d530d
+	pkgver = 20170421.a59b4e9f
 	pkgrel = 1
 	url = http://mupdf.com/
 	arch = i686
@@ -19,9 +19,9 @@ pkgbase = mupdf-git
 	source = git://git.ghostscript.com/mupdf.git
 	source = git://git.ghostscript.com/mujs.git
 	source = desktop
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = 31573e5da3fbf0162c0926511fc9858f2052fa6c
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 3240d4ebda002cb2c4f42cd42793c6160f1701d349d0acb797819dfd10d4fedd
 
 pkgname = mupdf-git
 

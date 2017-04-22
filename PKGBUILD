@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20170323.185d530d
+pkgver=20170421.a59b4e9f
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS and CBZ viewer'
 arch=('i686' 'x86_64' 'armv7h')
@@ -38,6 +38,9 @@ prepare() {
 
 	# embedding CJK fonts into binaries is madness...
 	sed '/TOFU_CJK /c #define TOFU_CJK 1/' -i include/mupdf/fitz/config.h
+
+	# those files are gone
+	sed '/install/s:docs/\*\.txt::g' -i Makefile
 }
 
 build() {
