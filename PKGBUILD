@@ -2,7 +2,7 @@
 
 pkgname=python-sonnet-git
 pkgver=9d209830
-pkgrel=1
+pkgrel=2
 
 pkgdesc="TensorFlow-based neural network library."
 url="https://github.com/deepmind/sonnet"
