@@ -11,14 +11,14 @@ url='https://github.com/lgandx/Responder/'
 license=('GPL3')
 source=("https://github.com/lgandx/$pkgname/archive/v$pkgver.tar.gz" 'responder.sh')
 sha256sums=('269245554f7d67ebc29c1f7c97f43521cd5c445fddd77f8c1bf733a3b43ca400'
-			'3cb8d0c60e3ee5d985e7099eecbf0f0a5e24ffecd17078e8a19558b8f5c40e9a')
+			'658d17f895ad48a47babf885176a8a4e891219c7fd7d53141a1dbdbbaa0b9374')
 
 package() {
   cd "$srcdir/Responder-$pkgver"
 
   #Install directory and contents
-  install -d "$pkgdir"/opt/responder
-  cp -ar * "$pkgdir"/opt/responder/
+  install -d "$pkgdir"/usr/share/responder
+  cp -ar * "$pkgdir"/usr/share/responder/
 
   #Docs
   install -Dm644 README.md "$pkgdir"/usr/share/doc/responder/README.md
