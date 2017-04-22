@@ -1,5 +1,5 @@
 # Maintainer: enihcam <nanericwang at the google email domain which is .com>
-# Contributor: enihcam <nanericwang at the google email domain which is .com>
+# Contributor: Arun <cute.tec at the google email domain which is .com>
 
 pkgname=walinuxagent
 _pkgname=WALinuxAgent
