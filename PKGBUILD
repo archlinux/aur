@@ -2,16 +2,15 @@
 # Contributor: Marcos Heredia <chelqo at gmail dot com>
 
 pkgname=gnubik
-pkgver=2.4.1
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="The GNUbik program is an interactive, graphical, cube puzzle."
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/gnubik/"
 license=('GPL3')
 depends=('guile' 'mesa' 'gtk2' 'gtkglext')
-install=${pkgname}.install
 source=("ftp://ftp.gnu.org/gnu/gnubik/$pkgname-$pkgver.tar.gz")
-md5sums=('62433d6b65d046e7f56fb8b41ea1837c')
+md5sums=('aad4f17dda98912d5f30ca4a181bfea0')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
