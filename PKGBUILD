@@ -4,7 +4,7 @@
 pkgname=qt5-webview
 _qtver=5.8.0
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
