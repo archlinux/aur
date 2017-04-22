@@ -5,8 +5,8 @@
 # Contributor: tuxayo < victor (replace by @) tuxayo DOT net >
 # Contributor: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=webgoat
-pkgver=7.0.1
-pkgrel=3
+pkgver=7.1
+pkgrel=1
 pkgdesc='Deliberately insecure J2EE web application designed to teach web application security concepts'
 arch=('i686' 'x86_64')
 url='https://github.com/WebGoat/WebGoat'
@@ -18,7 +18,7 @@ optdepends=('webscarab: proxy for analyzing applications that communicate using 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/WebGoat/WebGoat/archive/${pkgver}.tar.gz"
         "webgoat.sh"
         "git+https://github.com/WebGoat/WebGoat-Lessons.git")
-sha256sums=('8d044f63470eb07be848566cf7cbb7058e7ba89221e00cc8289aeeea8e70d87f'
+sha256sums=('bbf5c3abbc43a7e7f5bcc01af5ab5969a9a063c0f630c82606398e5ec71a8d9e'
             '3615a09c64eb07709bede9b22782bedeffe7c7097cde1c6bcc2a07adcd28712c'
             'SKIP')
 install="$pkgname.install"
