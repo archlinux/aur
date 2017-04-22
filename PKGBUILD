@@ -2,7 +2,7 @@
 # Contributor: ssv1982 <ssv1982@gmail.com>
 
 pkgname=kerio-control-vpnclient
-pkgver=9.1.4.1535
+pkgver=9.2.1.2019
 pkgrel=1
 pkgdesc="Kerio Control VPN client for corporate networks."
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ source_x86_64=("http://download.kerio.com/dwn/control/control-${pkgver%.*}-${pkg
 sha256sums=('984ac81f6fe291ca11a4dc6822bcb1e7efaf82d14259f5395247fdbdef4c1759'
             '2f15a0d88c9fa915cd9150796638811daec911e6824b8ff5f96f131352d1e74a'
             'bd8b1aabc31b9b24c4b63ce8099bef111dc84bd4923c77d42e05d3f1704d5c17')
-sha256sums_i686=('0236da0fc4f0ec48c8f21baeb573990c82494bc93e968bc10bc814ce935808c5')
-sha256sums_x86_64=('9c30a8eb0e2eba672ca7937475645d5d6cc427bbb2bed413d16b12c7faff6193')
+sha256sums_i686=('b49173f511a533f05623dbacd060644fd1dfb86453b25529c647906a5dcd09d9')
+sha256sums_x86_64=('3a88035acf6181bfdfe2ab59ec9ac344ca70df429df3b2b7b0c10dc6c73c478d')
 
 build() {
   # Get binary sources.
