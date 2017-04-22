@@ -2,7 +2,7 @@
 
 pkgname=guile-git
 _gitname=guile
-pkgver=2.2.1.2.g02cf38514
+pkgver=2.2.2.1.g886ac3e2a
 pkgrel=1
 pkgdesc="A portable, embeddable Scheme implementation (Git snapshot)"
 arch=('i686' 'x86_64')
@@ -40,5 +40,5 @@ package() {
   done
   mv r5rs.info r5rs-2.2.info
   mv $pkgdir/usr/share/aclocal/guile.m4 $pkgdir/usr/share/aclocal/guile-2.2.m4
-  rm $pkgdir/usr/lib/libguile-2.2.so.1.1.0-gdb.scm
+  rm $pkgdir/usr/lib/libguile-2.2.so*-gdb.scm
 }
