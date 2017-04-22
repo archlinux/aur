@@ -1,5 +1,5 @@
 pkgbase = insync-nautilus
-	pkgdesc = Nautilus integration for insync
+	pkgdesc = Python extension and icons for integrating Insync with Nautilus
 	pkgver = 1.3.12.36116
 	pkgrel = 2
 	url = https://www.insynchq.com/downloads

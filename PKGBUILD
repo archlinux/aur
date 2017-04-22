@@ -5,7 +5,7 @@
 pkgname=insync-nautilus
 pkgver=1.3.12.36116
 pkgrel=2
-pkgdesc="Nautilus integration for insync"
+pkgdesc="Python extension and icons for integrating Insync with Nautilus"
 arch=('any')
 url="https://www.insynchq.com/downloads"
 license=('custom:insync')
