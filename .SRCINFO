@@ -1,7 +1,7 @@
 pkgbase = libinput-no-hysteresis
 	pkgdesc = Input device management and event handling library sans hysteresis
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/libinput/
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = libinput-no-hysteresis
 	depends = libwacom
 	provides = libinput=1.7.0
 	conflicts = libinput
+	replaces = libinput
 	source = https://freedesktop.org/software/libinput/libinput-1.7.0.tar.xz
 	source = https://freedesktop.org/software/libinput/libinput-1.7.0.tar.xz.sig
 	source = disable-hysteresis.patch
