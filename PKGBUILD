@@ -131,6 +131,8 @@ build() {
   # Work around FreeSWITCH bug FS-10257
   export CFLAGS="${CFLAGS} -Wno-parentheses -Wno-deprecated-declarations"
 
+  cp "${srcdir}"/modules.conf .
+
   ./configure --enable-optimization --disable-debug --prefix=/usr \
     --sysconfdir=/etc --localstatedir=/var --libdir=/usr/lib/freeswitch \
     --includedir=/usr/include/freeswitch \
@@ -149,7 +151,6 @@ build() {
     --with-pkgconfigdir=/usr/lib/pkgconfig \
     ${_mod_options[@]}
 
-  cp "${srcdir}"/modules.conf .
   make
 }
 
