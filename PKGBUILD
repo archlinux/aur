@@ -1,9 +1,9 @@
 # Maintainer: Dustin Falgout <dustin@antergos.com>
+# Maintainer: Giovanni Santini <itachi.sama.amaterasu@gmail.com>
 
 pkgname=obs-service-tar_scm-git
-_pkgver=0.5.3
-# Will be updated automatically by 'pkgver'
-pkgver=0.5.3.r251
+_pkgver=0.6.0
+pkgver=0.6.0.r312
 pkgrel=1
 pkgdesc="Source Service for the OpenSUSE Build Service (OBS)"
 arch=('any')
