@@ -1,0 +1,250 @@
+# Maintainer: André Silva <emulatorman@riseup.net>
+# Contributor: Márcio Silva <coadde@riseup.net>
+# Contributor (Parabola): Luke Shumaker <lukeshu@sbcglobal.net>
+# Contributor (Parabola): fauno <fauno@kiwwwi.com.ar>
+# Contributor (Parabola): Figue <ffigue@gmail.com>
+
+epoch=1
+_pkgbase=iceweasel
+pkgbase=$_pkgbase-l10n
+_pkgver=52.0.2
+pkgver=52.0.2.deb1
+pkgrel=1
+pkgdesc="Language pack for Debian ${_pkgbase^}."
+arch=('any')
+url="https://wiki.parabola.nu/$_pkgbase"
+license=('MPL' 'GPL')
+depends=("$_pkgbase=$epoch:$pkgver")
+makedepends=('unzip' 'zip' 'mozilla-searchplugins')
+
+_languages=(
+  'ach    "Acholi"'
+  'af     "Afrikaans"'
+  'an     "Aragonese"'
+  'ar     "Arabic"'
+  'as     "Assamese"'
+  'ast    "Asturian"'
+  'az     "Azerbaijani"'
+  'bg     "Bulgarian"'
+  'bn-BD  "Bengali (Bangladesh)"'
+  'bn-IN  "Bengali (India)"'
+  'br     "Breton"'
+  'bs     "Bosnian"'
+  'ca     "Catalan"'
+  'cak    "Maya Kaqchikel"'
+  'cs     "Czech"'
+  'cy     "Welsh"'
+  'da     "Danish"'
+  'de     "German"'
+  'dsb    "Lower Sorbian"'
+  'el     "Greek"'
+  'en-GB  "English (British)"'
+  'en-US  "English (US)"'
+  'en-ZA  "English (South African)"'
+  'eo     "Esperanto"'
+  'es-AR  "Spanish (Argentina)"'
+  'es-CL  "Spanish (Chile)"'
+  'es-ES  "Spanish (Spain)"'
+  'es-MX  "Spanish (Mexico)"'
+  'et     "Estonian"'
+  'eu     "Basque"'
+  'fa     "Persian"'
+  'ff     "Fulah"'
+  'fi     "Finnish"'
+  'fr     "French"'
+  'fy-NL  "Frisian"'
+  'ga-IE  "Irish"'
+  'gd     "Gaelic (Scotland)"'
+  'gl     "Galician"'
+  'gn     "Guarani"'
+  'gu-IN  "Gujarati (India)"'
+  'he     "Hebrew"'
+  'hi-IN  "Hindi (India)"'
+  'hr     "Croatian"'
+  'hsb    "Upper Sorbian"'
+  'hu     "Hungarian"'
+  'hy-AM  "Armenian"'
+  'id     "Indonesian"'
+  'is     "Icelandic"'
+  'it     "Italian"'
+  'ja     "Japanese"'
+  'kk     "Kazakh"'
+  'km     "Khmer"'
+  'kn     "Kannada"'
+  'ko     "Korean"'
+  'lij    "Ligurian"'
+  'lt     "Lithuanian"'
+  'lv     "Latvian"'
+  'mai    "Maithili"'
+  'mk     "Macedonian"'
+  'ml     "Malayalam"'
+  'mr     "Marathi"'
+  'ms     "Malay"'
+  'nb-NO  "Norwegian (Bokmål)"'
+  'nl     "Dutch"'
+  'nn-NO  "Norwegian (Nynorsk)"'
+  'or     "Oriya"'
+  'pa-IN  "Punjabi (India)"'
+  'pl     "Polish"'
+  'pt-BR  "Portuguese (Brazilian)"'
+  'pt-PT  "Portuguese (Portugal)"'
+  'rm     "Romansh"'
+  'ro     "Romanian"'
+  'ru     "Russian"'
+  'si     "Sinhala"'
+  'sk     "Slovak"'
+  'sl     "Slovenian"'
+  'son    "Songhai"'
+  'sq     "Albanian"'
+  'sr     "Serbian"'
+  'sv-SE  "Swedish"'
+  'ta     "Tamil"'
+  'te     "Telugu"'
+  'th     "Thai"'
+  'tr     "Turkish"'
+  'uk     "Ukrainian"'
+  'uz     "Uzbek"'
+  'vi     "Vietnamese"'
+  'xh     "Xhosa"'
+  'zh-CN  "Chinese (Simplified)"'
+  'zh-TW  "Chinese (Traditional)"'
+)
+
+pkgname=()
+source=('brand.dtd' 'brand.properties' 'region.properties')
+_url=https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$_pkgver/linux-i686/xpi
+
+for _lang in "${_languages[@]}"; do
+  _locale=${_lang%% *}
+  _pkgname=$pkgbase-${_locale,,}
+
+  pkgname+=($_pkgname)
+  source+=("$pkgbase-$_pkgver-$_locale.xpi::$_url/$_locale.xpi")
+  eval "package_$_pkgname() {
+    _package $_lang
+  }"
+done
+
+# Don't extract anything
+noextract=(${source[@]%%::*})
+
+_package() {
+  pkgdesc="$2 language pack for Debian Iceweasel."
+  replaces=(iceweasel-i18n-${1,,} iceweasel-libre-l10n-${1,,} firefox-i18n-${1,,})
+  conflicts=(iceweasel-i18n-${1,,} iceweasel-libre-l10n-${1,,})
+
+  unzip iceweasel-l10n-$_pkgver-$1.xpi -d $1
+  rm -v iceweasel-l10n-$_pkgver-$1.xpi
+  sed -i 's|Firefox|Iceweasel|g' $(grep -rlI 'Firefox' $1)
+  install -vDm644 $srcdir/brand.dtd $1/browser/chrome/$1/locale/branding
+  install -vDm644 $srcdir/brand.properties $1/browser/chrome/$1/locale/branding
+  install -vDm644 $srcdir/region.properties $1/browser/chrome/$1/locale/browser-region
+  sed -i -e 's/firefox/iceweasel/' $1/install.rdf
+  sed -i 's|Iceweasel|Firefox|' $1/chrome/$1/locale/$1/global/aboutRights.dtd
+  rm -rv $1/chrome/$1/locale/$1/global-platform/{mac,win}
+  rm -rv $1/browser/chrome/$1/locale/browser/searchplugins
+  cp -av /usr/lib/mozilla/searchplugins  $1/browser/chrome/$1/locale/browser
+
+  cd $1
+  zip -r langpack-$1@iceweasel.mozilla.org.xpi .
+  mv -v langpack-$1@iceweasel.mozilla.org.xpi $srcdir
+  cd ..
+  rm -rv $1
+
+  install -vDm644 langpack-$1@iceweasel.mozilla.org.xpi \
+    "$pkgdir/usr/lib/iceweasel/browser/extensions/langpack-$1@iceweasel.mozilla.org.xpi"
+}
+
+sha256sums=('d319f07f17268240cdf0c5f996952f09fbfbdfb2905f9d7b1741a7a42b4d8085'
+            '754ea5ea2fe184d3bc1b1bb60d4caf72cdaca5e4d8f16065b22b988b1ede9ad1'
+            '81d1f98843f29a81c10a9a96655505c72ee34acee45225dcd307ae9a123e63d9'
+            '46a28dec74c400b26b894ff50e386bc4cd657d09450b0b2daa643fed234a49fe'
+            'c63b3bc898c1d05acfbc69cd98192568e8e69e66e54590a418ba5de9b05d2fd4'
+            'd341e02116d166a57451a043eb8c1a33f528050483a54129c1a42b5a3257a205'
+            'b20d225e90ae1d7641faafd80e7d0e53b811473410d45a21dd2fc2dd2b3b9a77'
+            'ad300a4a43e6961a75bb50089427b292b53e90a02d5d4420aae364192e952d02'
+            'bb39846af23b0e422be4727359233cc2df3f80751a24f0ff933b094300263a62'
+            '238b8948b8dd429b96a25dced6968d4154749ade71ff2ccfdcda3ed15d694b69'
+            '98adcbaf6f62e3dc8533ba9ad304f4e2183ab6cf93434522fe748b7bd28a5b50'
+            '796e8ec22cf717829f59c697fa26d4ac22ad0f911f080a16d5fdf87774ee35cf'
+            'b90a849d2d23a223aa19f237861c793c50b0978a5129c89fd201270cf01fad6f'
+            '57c2d2b6b7a2ee58ac7955c3e3d1085cd8cfc8b308812907c8e2507ad5065501'
+            'a41b344e55c7bff518188dace17be215cdb3ed003f7373b3ed5792ed3ad9aa93'
+            '07a394409d6092353e621f526843c4dcf786375c022a46a074860d9d1bfaf974'
+            'ea03a36c7717f33be663222fb8c6e9e4f0fb088b9383ec8a43c3262b6c7959d6'
+            '63765555f13a30b00076139d9ae83666075c6ab82c2c3dd9c7cb03bf4bd30b83'
+            '5ed4f0cd18880dad59be7bfa0231c9b6c09328de8299d955ca495558ad5d3ec3'
+            '496b38aaffb4014fbc85052027c3c5fb91222264ec289c49f11b59b36b03097d'
+            '49b7a797e31288de30ec2b659940a96735bb658a7c5aa1a81e15d2708d117388'
+            '84f3d361fbb320ecc6a19d2bc6b2ed0b6fafc28527a26cea8481f1e31e6f7873'
+            'd7068492c5fe5fece28c6b02416c22ed77e33bc2bf62cf9a391fc0872b81a1ce'
+            '66001390175d8983abc372e5092fd03ce452b0eab00419cbcde263eccf372f1b'
+            '457b7309200df9d7850412740f9ca093eb84a1222792aaa87681ae2fab6e6d03'
+            '4507c1d5fc872e8f7ece588811046e4a994de4f64590771d98287c2d4eeba1af'
+            '983b6af6b5576ae92305c9f3c3e59f361256535aff167f13c494b8e9baf36bae'
+            '4e001c2ca079d338fb113c8ac173094a6b94428c18f2a987cdc2b40b015bd2e1'
+            'dc7e749e4f2ca9c6960b426b9e2f636202ac3a2cc3f1b1b06df0f03bb531e1aa'
+            'dd1d6fbea50903fd37f7f122b94b857d8d3c1ea45ad0f18735586294ef651273'
+            '06b6fbf5bf090ca988ac646f7b7ad173f81fee4cbc06efa8aff60efd0f028b2d'
+            'e58153f1cd3110d1d3a165ce7301fb618782b17454e481bc222fe231bf58ed60'
+            '19d9fbf829a8ecc937c505240be92ec8a0324f19d05bcabe5a56a3e1fefefb6a'
+            '4fa4505571ae92264ca42ca0a55cc59d137b37e77cdbb0b24fb21c56b9cce8c0'
+            '698a02e232bcbc5c67a566f666f5e462bfa66c104015cbf6a6938185fdef85f0'
+            '79f369ed2c47676fb8d13dae59499ca22bd33eb52a51ec661522070ab33c7f6e'
+            '0f3aa5e2f940c9d58a73e6388db14776f857cbd6fdaa84c2b6078f9fa2dba8fb'
+            '397c97d97183730701ed3295d7aebddf32b81207ade87c14018ffaeaad81337c'
+            '2a4ec23a859ed66eeac2da30a33333d53b69e995d5733e7ff8d4703d73a7f12d'
+            '9471b63f068a154896946d205062688b1f79646263431bbfa79d0e44c64fbe53'
+            '9b92c412edcecee43756ac709c0cd382561485ba9b2fb6c2c5e84878ed274087'
+            'cb9fe1f0eb9f08046c96a0a60781a5f87b9d3116b6b87b1a8cc131328b413ae4'
+            'b27f5139ded670a4f58c7e2f55ee413758c9f46f9190e3398bffa8137588ae53'
+            '3975a4028cf4137fbe23f8d3daab92ba0116deabccfe9feb00be9f8bb10e9cd7'
+            '8039d71d12d43f98315d734f374461d17059b5f6d84c144f42e0e39c58bec2fd'
+            'e3c7e75bc1d445a110e31aa823f2d60ba8283ceb9f1a0fb381d635a8d653c479'
+            'df1a7df836781b9d32ae33ebb3c01fd95b58ae75acf9e87655c7eb7114e4b08c'
+            '4ddcef44310b790c314e069556abb34fec9cc47fe25e0f89acfbdf2ae7c62725'
+            '9d8227c27bee38324727681f4a6a58c2d111e38998b5c2e2be645d8a81ac5acb'
+            'aeb3aee8ff4066b8f5b6947c90b50daf49a42722b64ff219be7f050fbac500fa'
+            '392d2e44f60ed162a0c1c662549d796d907529a7f48468c064f02daef4843300'
+            '9c61bfc7b21987c497941db6d8a7a8551e1af71deacd24b63971e000ecab3661'
+            '631f3391dc3918369a5ef73982c020ed77566f06fef22a633828ae81b0f591c7'
+            '34530b6a9d15c22a9edbe43ac4d4f76e8c2a352355646ecfa3acfad236f0f1af'
+            '61fc53a527bc4c5723c71dffffc2564e413f6cc8b7ad9ba1208474e7b26ded7c'
+            'b8b635b6d857a145d258fc7ef67609b4842c09de3857d3acb65058b1a9331dfa'
+            '7b951abdbff6b3f2b1b2f074e9c2ac8c23f222a3379a40f278c7a218d1b07f32'
+            'aa25a8a6b7bbf585199c655aabbd017e4dc11c05389e180d9e7d0df6245b7384'
+            'a255238cff530ffaef75dcfe45bf8a22b59fae6be781da5fac3302af8c509dd1'
+            'ca6828ae04899e618e576288bd2a45582347e31d4b1d3e3e9e27ec479cf1e280'
+            '02338b36d11863f61b1208a476b69dc0d1b4569500692a6041bce271d73ec488'
+            'cccd132a530a4a0bd20e573a5b9eb01e20a6b214b4dcb4b0b5172d438ad09098'
+            '8a06f9959060884b660b7e0c7d8ac5bca3af2cbede25fabcada56c450147cfe9'
+            'cdd57ca6da4964c3d85db9ae5b66344ea37b462e5c6a8d67cab9c5984942b9b8'
+            '575abeeaa27eadb22bb7db64455d2ea3a0e1e1489e4649084b5da888dd6a3ef5'
+            '0eb0571fe1f2ce42b531e872a75e144905feb9df3a5222539cb57625c732b1c1'
+            'f087cb5cfc1ca8a8099f1780eb4af54d45634f3b29413007cc43054c8ac0312b'
+            '36f8c050f21d068f1af7305258273257c66087849d1bb28970075057f6636434'
+            '1da04e28aa10b9af5e4f964674116a14905480d346f054f0dbf6ee69d5543a7b'
+            'f1ffa9dbfef26c65187a76d85c88cdea8fd4351fa0a7deda8d53c9af5aa3b78a'
+            'e80cc845cd383cda82fdc2bb0e4e0ddeb4029558546d2bc03e3d8239eacb8463'
+            '9e452c0562f4241302ffe682967d8635805c9733e2b7cbde2a57bca1df4d6e52'
+            '914ad44b853ef8eb25c8c255619b467dba4329be5e76ece189de72c43d5e39b5'
+            '07c385a14377d8eeba68406ab1dd40b8506147c55133bb604b048e1543bf1821'
+            '60198c04cdab52fd275abe62f56e04289ae7a22f7d84cdf61a06589431557168'
+            '619efb022f7eedefb5c3e3e9038bf6dd3e95fc73f1de8049b97631110560c93f'
+            '4e90ee6fba5bebd359541af331a0728131476e41e2b02d774f9da6b7e3e808df'
+            '21e46ea68503a8058188822dc774a9463ae60a60642bfa0b750c39c7f356aa19'
+            'd7960ff34578f09f4d9caa5630d7550b22235f36ab2b4ac876dcdd0192a444a7'
+            'bdc20ab4dacf72d375dc22677134e0b57cd79705e8a86dfcc9376e33b2fde193'
+            '42769c0e78ae845c439a606480bfe38cf7a0f0428e692f1ccb54ae9490619a1d'
+            '91eaa2f539233af915e816d2d0c165828e1b877b7ada63e86b43207900e30473'
+            'ebdfc72bec47311ccc4fb3c8d89de3ee82d6eba28a1e93a0864512f8a9df50fc'
+            'a7c06a0a0275ea9df6a496b158ae13f58943811e29ceeec98697ba3c3a1a2f51'
+            '8b91189605191a3704754f6421f7c2fb0dabc1237d44ec18b222b197b069be43'
+            '1309494d11a907096e04251978e090d85faa01af0672935cbef69e07ef513e83'
+            '0e3b4defe3da096b0592fe2140bfa1a2f1d3471c6197f7c3fc3944f5a98c63ca'
+            'ce9e641feac457f804eb3654f8bbfbf57c8a5574185f09e13ed636b3b4b6cfe2'
+            '649a1bd017a6230868ce99eb55dab3ad6e27e443ba96f0fd6382e095006aaa4a'
+            '7a8bc3e7c68853b2a32321a180d431522528bc2574cff6d37f565f58a32e2773'
+            'bb5b38a0c4edf7b777efbff8c2f832ee9422247257d0cc25c5257122e76cdfb9'
+            'b09d4dc5567d0e147c4d1ed623a65f44f60ad67601b7d285f5d5658901c594db'
+            '26061af5b560a3df1657f589741fd551c607142cb775981492bdfad888fc4cb8')
