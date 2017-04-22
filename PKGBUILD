@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=libjtopen
-pkgver=9.2
+pkgver=9.3
 pkgrel=1
 pkgdesc="Open Source version of the IBM Toolbox for Java, a series of tools to easily access to IBM AS/400 and iSeries data and resources"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('java-environment')
 replaces=('jtopen')
 conflicts=('jtopen')
 source=("http://downloads.sourceforge.net/project/jt400/JTOpen-full/${pkgver}/jtopen_${pkgver/\./_}.zip")
-sha256sums=('107842b36b0cdd291058bc9bc5a598f14dee9696be47a9d3d284f012cd15b0d4')
+sha256sums=('26b3321d3d40954ad9824d6c659ff906906222ff32b6cf34671104759245d805')
 
 package() {
   # Install files for the package
