@@ -1,0 +1,16 @@
+pkgbase = gloo-git
+	pkgdesc = A fast framework for deep learning built in C++ for speed with a Python 3 interface
+	pkgver = 0.r113.6089900
+	pkgrel = 1
+	url = https://github.com/facebookincubator/gloo
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	provides = gloo
+	conflicts = gloo
+	source = git+https://github.com/facebookincubator/gloo.git
+	sha256sums = SKIP
+
+pkgname = gloo-git
+
