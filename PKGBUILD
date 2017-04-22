@@ -41,7 +41,7 @@ prepare() {
 
 configure_tensorflow() {
   cd ${srcdir}/sonnet/tensorflow
-
+  git checkout r1.1 
   # clean and create the directory to store the wheel file
   if [ -d ${srcdir}/tmp ]; then
     rm -rf ${srcdir}/tmp
