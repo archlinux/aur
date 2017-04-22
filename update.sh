@@ -19,7 +19,7 @@ updpkgsums
 makepkg --printsrcinfo > .SRCINFO
 
 # install all dependencies
-cat .SRCINFO |grep -E "\s(make)?depends" | cut -d= -f2- | awk '{print "\""$1"\""}' | xargs echo pacaur -S --needed --noedit --noconfirm
+cat .SRCINFO |grep -E "\s(make)?depends" | sed -re 's/.* = (.*)(>|<|$).*/\1/' | xargs pacaur -S --needed --noedit --noconfirm
 
 makepkg -i
 
