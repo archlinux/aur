@@ -1,14 +1,14 @@
 pkgbase = typora
 	pkgdesc = Typora will give you a seamless experience as both a reader and a writer.
-	pkgver = 0.9.27
+	pkgver = 0.9.28
 	pkgrel = 1
 	url = https://typora.io/
 	arch = x86_64
 	license = custom:"Copyright (c) 2014 GitHub Inc."
 	depends = gconf
 	depends = libxss
-	source = https://typora.io/./linux/typora_0.9.27_amd64.deb
-	md5sums = dc783a263f67aaa2bb87a53499a9e4b1
+	source = https://typora.io/./linux/typora_0.9.28_amd64.deb
+	md5sums = 716511e17dafa3925f0f64135c1819cd
 
 pkgname = typora
 
