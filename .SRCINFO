@@ -1,0 +1,18 @@
+pkgbase = hovercraft-git
+	pkgdesc = Makes impress.js presentations from reStructuredText
+	pkgver = 211
+	pkgrel = 1
+	url = https://github.com/regebro/hovercraft
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python-pygments
+	depends = python-watchdog
+	depends = python-svg.path
+	depends = python-lxml
+	depends = python-docutils
+	source = git+https://github.com/regebro/hovercraft.git
+	md5sums = SKIP
+
+pkgname = hovercraft-git
+
