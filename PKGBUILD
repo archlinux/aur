@@ -3,7 +3,7 @@
 pkgname=p4est-deal-ii
 _realname=p4est
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The parallel forest (p4est) library, built to work with deal.II (i.e., the deal-ii package)"
 arch=("i686" "x86_64")
 url="http://www.p4est.org/"
