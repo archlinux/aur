@@ -2,7 +2,7 @@
 
 pkgname=ntpclient
 pkgver=2015.365
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple NTP (RFC-1305) client'
 url='http://doolittle.icarus.com/ntpclient/'
 arch=(x86_64 i686)
@@ -13,10 +13,11 @@ sha1sums=('7513df5b5b64797c5fac27d7c1161f53a4675b26')
 
 build() {
   cd ntpclient-${pkgver%.*}
-  make
+  make ntpclient adjtimex
 }
 
 package() {
   cd ntpclient-${pkgver%.*}
-  install -D -m755 ntpclient $pkgdir/usr/bin/ntpclient
+  install -t $pkgdir/usr/bin -D -m755 ntpclient adjtimex
+  install -t $pkgdir/usr/share/man/man1 -D -m644 ntpclient.1
 }
