@@ -8,11 +8,11 @@ pkgver=3.0.9
 pkgrel=1
 pkgdesc="A program that generates images from written instructions called a grammar"
 arch=('i686' 'x86_64')
-url="http://www.contextfreeart.org/"
+url="https://www.contextfreeart.org/"
 license=('GPL2')
 depends=('libpng' 'gcc-libs')
 makedepends=('bison' 'flex')
-source=("http://www.contextfreeart.org/download/ContextFreeSource${pkgver}.tgz")
+source=("https://www.contextfreeart.org/download/ContextFreeSource${pkgver}.tgz")
 md5sums=('8d1e2b20e105138aab44bbe157b23539')
 
 build() {
