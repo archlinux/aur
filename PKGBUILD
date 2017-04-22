@@ -1,6 +1,6 @@
 pkgbase=python-rust-ext-git
 pkgname=('python-rust-ext-git' 'python2-rust-ext-git')
-pkgver=0.1.10
+pkgver=0.1.1.32
 pkgrel=1
 pkgdesc="Distutils helpers for rust Python extensions"
 arch=('any')
