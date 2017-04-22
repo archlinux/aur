@@ -2,15 +2,15 @@
 
 pkgname=pdf2png
 pkgver=0.5
-pkgrel=1
-pkgdesc="Convert PDF books to PNG, JPG, and other image formats."
+pkgrel=2
+pkgdesc="Convert PDFs to PNG, JPG, and other image formats."
 url="https://github.com/aadityabagga/pdf2png"
 arch=('any')
 license=('GPL')
 depends=('python-gobject' 'ghostscript')
 makedepends=()
 conflicts=('pdf2img-git')
-source=("http://github.com/aadityabagga/pdf2png/archive/${pkgver}.tar.gz")
+source=("https://github.com/aadityabagga/pdf2png/archive/${pkgver}.tar.gz")
 md5sums=('f7cb3d67d5acb978e6ce910dfd213937')
 
 package() {
