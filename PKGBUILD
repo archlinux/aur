@@ -10,7 +10,7 @@
 
 pkgname=myrepos
 pkgver=1.20170129
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiple Repository management tool"
 arch=('any')
 depends=('perl')
@@ -29,30 +29,24 @@ optdepends=('bzr: support for bzr repositories'
             'svn: support for subversion repositories'
             'unison: support for unison as a vcs'
             'vcsh: support for vcsh')
-url="http://myrepos.branchable.com"
+url='http://myrepos.branchable.com'
 license=('GPL2')
-source=(https://git.joeyh.name/index.cgi/myrepos.git/snapshot/${pkgname}-${pkgver}.tar.gz)
+source=("https://git.joeyh.name/index.cgi/myrepos.git/snapshot/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('da00533b01a511ece209f0254a6fae5735852e197d3b859a6f564b3fbc612dda')
 provides=('mr' 'myrepos' 'webcheckout')
 conflicts=('mr' 'webcheckout')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Building...'
+  cd "${pkgname}-${pkgver}"
   make
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Testing...'
+  cd "${pkgname}-${pkgver}"
   make test
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Installing...'
-  make DESTDIR="$pkgdir" PREFIX=/usr install
+  cd "${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
