@@ -1,3 +1,3 @@
 #!/bin/sh
-cd /usr/share/responder
+cd /opt/responder
 exec python2 Responder.py "$@"

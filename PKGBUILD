@@ -1,35 +1,29 @@
-# Maintainer: Randy Ramos <rramos1295 at gmail dot com>
+# Maintainer: Randy Ramos <rramos1295 \at\ gmail \dot\ com>
 
 pkgname='responder'
-pkgver=2.3.0
+pkgver=2.3.3.6
 pkgrel=1
-pkgdesc='A LLMNR and NBT-NS poisoner, with built-in HTTP/SMB/MSSQL/FTP/LDAP rogue authentication server supporting NTLMv1/NTLMv2/LMv2, Extended Security NTLMSSP and Basic HTTP authentication.'
+pkgdesc='A LLMNR, NBT-NS and MDNS poisoner, with built-in HTTP/SMB/MSSQL/FTP/LDAP rogue authentication server supporting NTLMv1/NTLMv2/LMv2, Extended Security NTLMSSP and Basic HTTP authentication'
 arch=('any')
 depends=('python2')
 makedepends=('git')
-url='https://github.com/SpiderLabs/Responder/'
+url='https://github.com/lgandx/Responder/'
 license=('GPL3')
-source=($pkgname::"https://github.com/SpiderLabs/$pkgname/archive/v$pkgver.tar.gz" 'responder.sh' 'dhcp-responder.sh')
-sha256sums=('7f11ca5e60f5187280fa45f3d0ddd3bef6d6d08fc48d1f90528ee452f46f6c1f'
-			'658d17f895ad48a47babf885176a8a4e891219c7fd7d53141a1dbdbbaa0b9374'
-			'a720b7c918c63ed27356f43b788a171729f0d88c42c01a901d64efb17aa92f78'
-			)
+source=("https://github.com/lgandx/$pkgname/archive/v$pkgver.tar.gz" 'responder.sh')
+sha256sums=('269245554f7d67ebc29c1f7c97f43521cd5c445fddd77f8c1bf733a3b43ca400'
+			'3cb8d0c60e3ee5d985e7099eecbf0f0a5e24ffecd17078e8a19558b8f5c40e9a')
 
 package() {
   cd "$srcdir/Responder-$pkgver"
 
-  mkdir -p "$pkgdir"/usr/bin
-  mkdir -p "$pkgdir"/usr/share/responder
-  mkdir -p "$pkgdir"/usr/share/doc/responder
+  #Install directory and contents
+  install -d "$pkgdir"/opt/responder
+  cp -ar * "$pkgdir"/opt/responder/
 
-  install -Dm644 -t "$pkgdir"/usr/share/doc/responder README.md
+  #Docs
+  install -Dm644 README.md "$pkgdir"/usr/share/doc/responder/README.md
+  install -Dm644 LICENSE "$pkgdir"/usr/share/doc/responder/LICENSE
 
-  rm README.md
-
-  cp -a * "$pkgdir"/usr/share/responder
-
-  cd "$srcdir"
-
-  install -m 755 responder.sh "$pkgdir"/usr/bin/responder
-  install -m 755 dhcp-responder.sh "$pkgdir/usr/bin/dhcp-responder"
+  #Script
+  install -Dm755 "$srcdir"/responder.sh "$pkgdir"/usr/bin/responder
 }
