@@ -1,14 +1,14 @@
 pkgbase = ariamaestosa
 	pkgdesc = MIDI editor, player, tracker and composer
-	pkgver = 1.4.12
+	pkgver = 1.4.13
 	pkgrel = 1
 	url = http://ariamaestosa.sourceforge.net/
 	install = ariamaestosa.install
 	arch = x86_64
 	arch = i686
 	license = GPL2
-	makedepends = scons
 	makedepends = setconf
+	makedepends = python2
 	depends = wxgtk
 	depends = mesa
 	depends = alsa-lib
@@ -18,8 +18,9 @@ pkgbase = ariamaestosa
 	depends = webkitgtk2
 	optdepends = timidity++: for midi playback
 	optdepends = timidity-freepats: for midi playback
-	source = http://downloads.sourceforge.net/ariamaestosa/AriaSrc-1.4.12.tar.bz2
-	sha256sums = 5439914962f3c84386992af2227f6841139594ff02d7270d0687ce3470d84b8d
+	optdepends = fluidsynth: for midi playback
+	source = http://downloads.sourceforge.net/ariamaestosa/AriaSrc-1.4.13.tar.bz2
+	sha256sums = 6d58dd721a5cdd1a17db9004bc835c59b29ec14dbd56556a3e90899e9df943b3
 
 pkgname = ariamaestosa
 

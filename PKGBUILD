@@ -1,10 +1,11 @@
-# Maintainer: Ian D. Scott <ian@perebruin.com>
+# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+# Contributor: Ian D. Scott <ian@perebruin.com>
 # Contributer: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Hilton Medeiros <medeiros.hilton AT gmail DOT com>
 # Contributor: spider-mario <spidermario@free.fr>
 
 pkgname=ariamaestosa
-pkgver=1.4.12
+pkgver=1.4.13
 pkgrel=1
 pkgdesc='MIDI editor, player, tracker and composer'
 arch=('x86_64' 'i686')
@@ -13,20 +14,18 @@ license=('GPL2')
 depends=('wxgtk' 'mesa' 'alsa-lib' 'hicolor-icon-theme' 'xdg-utils'
          'desktop-file-utils' 'webkitgtk2')
 optdepends=('timidity++: for midi playback'
-            'timidity-freepats: for midi playback')
-makedepends=('scons' 'setconf')
+            'timidity-freepats: for midi playback'
+            'fluidsynth: for midi playback')
+makedepends=('setconf' 'python2')
 install="$pkgname.install"
 source=("http://downloads.sourceforge.net/$pkgname/AriaSrc-$pkgver.tar.bz2")
-sha256sums=('5439914962f3c84386992af2227f6841139594ff02d7270d0687ce3470d84b8d')
+sha256sums=('6d58dd721a5cdd1a17db9004bc835c59b29ec14dbd56556a3e90899e9df943b3')
 
 prepare() {
   cd "AriaSrc-$pkgver"
 
-  mv Resources/Documentation Documentation
-  mv Resources/score score2
-
   setconf Freedesktop/Aria.desktop Exec "$pkgname"
-  sed -i -e "/^Version/s:1.2.2:1.2.3:" -e "/^Icon/s:/local::" \
+  sed -i -e "/^Version/s:1.4.1:$pkgver:" -e "/^Icon/s:/local::" \
     Freedesktop/Aria.desktop
   setconf Freedesktop/Aria.desktop Icon "$pkgname"
 }
@@ -34,27 +33,17 @@ prepare() {
 build() {
   cd "AriaSrc-$pkgver"
 
-  scons \
-    config=release \
-    prefix="$pkgdir/usr" \
-    WXCONFIG='/usr/bin/wx-config'
+  python2 scons/scons.py
 }
 
 package() {
   cd "AriaSrc-$pkgver"
 
-  scons \
-    config=release \
-    prefix="$pkgdir/usr" \
-    WXCONFIG='/usr/bin/wx-config' \
-    install
-
-  cp -r score2 "$pkgdir/usr/share/Aria/score"
+  python2 scons/scons.py install prefix=$pkgdir/usr
 
   # Packaging documentation
   mkdir -p "$pkgdir/usr/share/doc"
-  cp -r Documentation "$pkgdir/usr/share/doc/$pkgname"
-  #cp -r score "$pkgdir/usr/share/Aria"
+  cp -r Resources/Documentation "$pkgdir/usr/share/doc/$pkgname"
 
   # Packaging desktop shortcut and icon
   install -Dm644 Freedesktop/Aria.desktop \
@@ -80,5 +69,3 @@ package() {
   mv "$pkgdir/usr/share/applications/Aria.desktop" \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
-
-# vim:set ts=2 sw=2 et:
