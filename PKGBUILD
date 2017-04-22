@@ -1,8 +1,8 @@
 # Maintainer: Lukas Tobler <luk4s.tobler@gmail.com>
 
 pkgname=i3lock-lixxia-git
-pkgver=7b59bd
-pkgrel=3
+pkgver=r255.d0ca5ad
+pkgrel=4
 pkgdesc="An improved screenlocker based upon XCB and PAM (Lixxia fork)"
 arch=('i686' 'x86_64')
 url="https://github.com/Lixxia/i3lock"
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/i3lock"
-  git describe --always | cut -c2- | tr "-" "."
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -38,4 +38,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
