@@ -3,7 +3,7 @@
 pkgname=nct677x-git
 _pkgname=nct6775
 pkgver=r141.bf8c5df
-pkgrel=2
+pkgrel=1
 pkgdesc="Nuvoton module for nct677x chips not yet supported in the kernel."
 arch=('i686' 'x86_64')
 url="https://github.com/groeck/nct6775"
