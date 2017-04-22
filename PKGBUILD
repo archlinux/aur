@@ -27,7 +27,7 @@ package() {
 	bsdtar -xf "${srcdir}/vk.zip" -C "${pkgdir}/usr/lib/vk"
     install -Dm644 "${pkgdir}/usr/lib/vk/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    ln -s "${pkgdir}/usr/lib/vk/vk" "${pkgdir}/usr/bin/vk"
+    ln -s "/usr/lib/vk/vk" "${pkgdir}/usr/bin/vk"
 
     sed -i 's/"updates": 1/"updates": 0/g' "${pkgdir}/usr/lib/vk/resources/app/package.json"
     sed -i '/custom_install/d' "${pkgdir}/usr/lib/vk/resources/app/package.json"
