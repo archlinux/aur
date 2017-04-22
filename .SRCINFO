@@ -1,7 +1,7 @@
 pkgbase = p4est-deal-ii
 	pkgdesc = The parallel forest (p4est) library, built to work with deal.II (i.e., the deal-ii package)
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.p4est.org/
 	arch = i686
 	arch = x86_64
