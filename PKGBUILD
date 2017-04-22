@@ -1,9 +1,9 @@
 # Maintainer: Erdbeerkaese <erbeerkaese dot arch at gmail dot com>
 
 pkgname=starsector
-pkgver=0.7.2a_RC1
+pkgver=0.8a_RC19
 pkgrel=1
-pkgdesc="A single-player sandbox style space role-playing game with strategic elements."
+pkgdesc="Starsector (formerly “Starfarer”) is an in-development open-world single-player space-combat, roleplaying, exploration, and economic game."
 arch=('i686' 'x86_64')
 url="http://fractalsoftworks.com/"
 license=('custom')
@@ -15,7 +15,7 @@ http://s3.amazonaws.com/fractalsoftworks/starsector/starsector_linux-${pkgver//_
 ${pkgname}.pdf::http://www.fractalsoftworks.com/starfarer/docs/StarfarerManual.pdf
 starsector.sh
 starsector.desktop)
-sha256sums=('e8495241fa62e4c6b9286d102669ca5790e258d20e68377b7ab320ebf19ec2dc'
+sha256sums=('f2350c17dd7079ec846b2409ee93507190b5bf315c02de55b3d8fcf31bea65fc'
             '0d9a2382e1c15e3d471b88eb3770c68f5dd93edc81710e511fd892def9f2ab16'
             'd0588ccc3eefe399d764144246718344ff5603396130028a798fc1609d4d0286'
             'becc92483d9599672b75d8b00216a64dd8fda38cfcfccd8e735238aa0ce6d8b6')
@@ -42,7 +42,7 @@ package() {
     install -Dm644 native/linux/*[!"64"].so "$pkgdir/usr/lib/$pkgname/"
   fi
   
-  find data graphics sounds -type f -print | xargs chmod 644
+  find data graphics sounds -type f -print0 | xargs -0 chmod 644
   cp -R data graphics sounds "$pkgdir/usr/share/$pkgname/"
 }
 # vim:set ts=2 sw=2 et:
