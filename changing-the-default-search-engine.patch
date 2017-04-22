@@ -1,6 +1,7 @@
-diff -Nur comm-esr38.orig/mail/locales/en-US/chrome/messenger-region/region.properties comm-esr38/mail/locales/en-US/chrome/messenger-region/region.properties
---- comm-esr38.orig/mail/locales/en-US/chrome/messenger-region/region.properties	2015-07-07 14:34:06.000000000 -0300
-+++ comm-esr38/mail/locales/en-US/chrome/messenger-region/region.properties	2015-08-16 13:30:55.466053010 -0300
+diff --git a/mail/locales/en-US/chrome/messenger-region/region.properties b/mail/locales/en-US/chrome/messenger-region/region.properties
+index fcc870d..f810450 100644
+--- a/mail/locales/en-US/chrome/messenger-region/region.properties
++++ b/mail/locales/en-US/chrome/messenger-region/region.properties
 @@ -3,12 +3,12 @@
  # file, You can obtain one at http://mozilla.org/MPL/2.0/.
  
@@ -18,13 +19,21 @@ diff -Nur comm-esr38.orig/mail/locales/en-US/chrome/messenger-region/region.prop
  
  # To make mapit buttons to disappear in the addressbook, specify empty string.  For example:
  # mail.addr_book.mapit_url.format=
-@@ -19,8 +19,8 @@
- # @ST == state
+@@ -23,14 +23,12 @@ browser.search.order.3=
  # @ZI == zip code
  # @CO == country
+ # Default map service:
 -mail.addr_book.mapit_url.format=http://maps.google.com/maps?q=@A1%20@A2%20@CI%20@ST%20@ZI%20@CO
++mail.addr_book.mapit_url.format=http://nominatim.openstreetmap.org/search.php?polygon=1&q=@A1%2C@A2%2C@CI%2C@ST%2C@ZI%2C@CO
+ # List of available map services (up to 5 can be defined here):
+-mail.addr_book.mapit_url.1.name=Google Maps
+-mail.addr_book.mapit_url.1.format=http://maps.google.com/maps?q=@A1%20@A2%20@CI%20@ST%20@ZI%20@CO
+-mail.addr_book.mapit_url.2.name=OpenStreetMap
+-mail.addr_book.mapit_url.2.format=http://nominatim.openstreetmap.org/search.php?polygon=1&q=@A1%2C@A2%2C@CI%2C@ST%2C@ZI%2C@CO
++mail.addr_book.mapit_url.1.name=OpenStreetMap
++mail.addr_book.mapit_url.1.format=http://nominatim.openstreetmap.org/search.php?polygon=1&q=@A1%2C@A2%2C@CI%2C@ST%2C@ZI%2C@CO
+ 
 -mailnews.messageid_browser.url=http://groups.google.com/search?as_umsgid=%mid
-+mail.addr_book.mapit_url.format=
 +mailnews.messageid_browser.url=
  
  # Recognize non-standard versions of "Re:" in subjects from localized versions of MS Outlook et al.

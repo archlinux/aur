@@ -1,0 +1,38 @@
+diff --git a/mailnews/base/test/unit/xpcshell.ini b/mailnews/base/test/unit/xpcshell.ini
+index 9644fdf..f098fad 100644
+--- a/mailnews/base/test/unit/xpcshell.ini
++++ b/mailnews/base/test/unit/xpcshell.ini
+@@ -19,7 +19,6 @@ support-files = nodelist_test.xml data/*
+ [test_bug471682.js]
+ [test_bug514945.js]
+ [test_compactFailure.js]
+-[test_compactColumnSave.js]
+ [test_copyChaining.js]
+ [test_copyThenMoveManual.js]
+ [test_copyToInvalidDB.js]
+diff --git a/mozilla/intl/uconv/tests/moz.build b/mozilla/intl/uconv/tests/moz.build
+index 4223d2e..fae03f4 100644
+--- a/mozilla/intl/uconv/tests/moz.build
++++ b/mozilla/intl/uconv/tests/moz.build
+@@ -4,8 +4,6 @@
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+-XPCSHELL_TESTS_MANIFESTS += ['unit/xpcshell.ini']
+-
+ # Tests disabled because they dont work in libxul builds.
+ #MOZILLA_INTERNAL_API = True
+ #
+diff --git a/mozilla/parser/xml/moz.build b/mozilla/parser/xml/moz.build
+index 484f6d1..d072795 100644
+--- a/mozilla/parser/xml/moz.build
++++ b/mozilla/parser/xml/moz.build
+@@ -4,8 +4,6 @@
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+-TEST_DIRS += ['test']
+-
+ XPIDL_SOURCES += [
+     'nsIMozSAXXMLDeclarationHandler.idl',
+     'nsISAXAttributes.idl',
