@@ -1,27 +1,31 @@
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: Gregory BELLIER <gregory.bellier -- gmail -- com>
 
 pkgname=ocaml-inotify
-pkgver=1.0
-pkgrel=4
+pkgver=2.3
+pkgrel=1
 pkgdesc="OCaml bindings for the inotify API"
 arch=('i686' 'x86_64')
-url="https://github.com/vincenthz/ocaml-inotify"
-license=('LGPL')
-makedepends=('ocaml' 'ocaml-findlib')
+url="https://github.com/whitequark/ocaml-inotify"
+license=('LGPL2.1')
+depends=('ocaml')
+optdepends=('ocaml-lwt: For the Lwt wrapper')
+makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-lwt')
 options=('!strip' 'staticlibs')
-source=("https://github.com/vincenthz/ocaml-inotify/archive/v$pkgver.tar.gz")
-sha256sums=('4b218bb5b9c9a4aa703eedb3052d07e957a99bf7fec5cbba84980335f699d5e4')
+source=("https://github.com/whitequark/ocaml-inotify/archive/v${pkgver}.tar.gz")
+sha256sums=('5965cf74c2f3245260d8f22c6ef7d9a9a81a09d542cc651ca25c71fbd60f7f4e')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "${srcdir}/ocaml-inotify-${pkgver}"
+
+  ./configure --enable-lwt
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  OCAMLFIND_DESTDIR="$pkgdir$(ocamlfind printconf destdir)"
-  install -d "$OCAMLFIND_DESTDIR"/inotify
-  make OCAMLDESTDIR="$OCAMLFIND_DESTDIR" install
-}
+  cd "${srcdir}/ocaml-inotify-${pkgver}"
 
-# vim:set ts=2 sw=2 et:
+  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
+  install -dm755 "${OCAMLFIND_DESTDIR}/stublibs"
+  make install
+}
