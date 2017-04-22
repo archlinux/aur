@@ -2,7 +2,7 @@
 
 pkgname=check_postgres
 pkgver=2.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Nagios check_postgres plugin for checking status of PostgreSQL databases"
 arch=('any')
 url="http://bucardo.org/wiki/Check_postgres"
@@ -24,6 +24,7 @@ package() {
 	mkdir -p "${pkgdir}/usr/lib/monitoring-plugins"
 	make install DESTDIR=${pkgdir}
 	cp check_postgres.pl "${pkgdir}/usr/lib/monitoring-plugins/check_postgres"
+	chmod o+rx check_postgres
 	cd "${pkgdir}/usr/lib/monitoring-plugins"
 	./check_postgres --symlinks
 }
