@@ -1,0 +1,17 @@
+pkgbase = seturgent
+	pkgdesc = Set an applications urgency hint (or not)
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/synaptiko/seturgent
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	depends = libx11
+	provides = seturgent
+	source = https://github.com/synaptiko/seturgent/archive/v1.4.tar.gz
+	sha256sums = af5fb239cd45f6305a82b9edd92025e960f91c75f05fb46458f7cd1b410368d2
+
+pkgname = seturgent
+
