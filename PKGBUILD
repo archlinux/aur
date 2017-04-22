@@ -1,5 +1,5 @@
 pkgname=svnkit
-pkgver=1.8.14
+pkgver=1.8.15
 pkgrel=1
 pkgdesc="A Subversion library for Java"
 arch=('any')
@@ -7,7 +7,7 @@ url="http://svnkit.com"
 license=('custom')
 depends=('java-runtime')
 source=(http://svnkit.com/org.tmatesoft.svn_${pkgver}.standalone.zip)
-sha256sums=('35e0f5679226ea9bf2f6963464605ec220054aac9cf8c1c6a4f20c01b56e64d7')
+sha512sums=('1447c90c94896dd2f226c75904e7a96a5971c71872593e8d56183f38143ac60ed7c716a27657eef90d1d8b41850991b0daf6217ab36cc68efa06d69321c123e2')
 
 build(){
   true
