@@ -1,12 +1,12 @@
 pkgname=rust-clippy-git
 _gitname=rust-clippy
-pkgver=0.0.124.r2428.6f2fe144
+pkgver=0.0.125.r2431.5cbe9b50
 pkgrel=1
 pkgdesc='A collection of lints to catch common mistakes and improve your Rust code'
 url='https://github.com/Manishearth/rust-clippy'
 arch=('x86_64' 'i686')
 license=('MPL')
-depends=('curl' 'rust-git')
+depends=('rust-git')
 provides=('rust-clippy')
 conflicts=('rust-clippy')
 makedepends=('cargo')
