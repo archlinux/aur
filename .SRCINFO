@@ -1,6 +1,6 @@
 pkgbase = forever
 	pkgdesc = Program which loops forever.
-	pkgver = 0.2.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/clarcharr/forever
 	arch = i686
