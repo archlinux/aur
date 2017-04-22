@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Java 7 is the only version of Java supported by starsector.
+JAVA7=/usr/lib/jvm/$(archlinux-java status | grep -m 1 java-7 | sed 's/^ *//')/bin
+[ -d ${JAVA7} ] && export PATH=${JAVA7}:${PATH}
+
 # fix for users of special IM modules
 unset XMODIFIERS GTK_IM_MODULE QT_IM_MODULE
 unset CLASSPATH

@@ -5,11 +5,10 @@ post_install() {
   echo ">>> --------------"
   echo ">>> This is the full version of the game, you need a serial key to play it."
   echo ">>> You can buy a serial key at http://fractalsoftworks.com/preorder/"
-  echo ">>> for 10$ (while in alpha)."
   echo ""
   echo ">>> RELEASE NOTES:"
   echo ">>> --------------"
-  echo ">>> http://fractalsoftworks.com/forum/index.php?topic=7279.0"
+  echo ">>> http://fractalsoftworks.com/forum/index.php?topic=11477.0"
 }
 
 ## arg 1:  the new package version
@@ -18,7 +17,7 @@ post_upgrade() {
   update-desktop-database -q
   echo ">>> RELEASE NOTES:"
   echo ">>> --------------"
-  echo ">>> http://fractalsoftworks.com/forum/index.php?topic=7279.0"
+  echo ">>> http://fractalsoftworks.com/forum/index.php?topic=11477.0"
 }
 
 post_remove() {

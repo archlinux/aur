@@ -7,7 +7,7 @@ pkgdesc="Starsector (formerly “Starfarer”) is an in-development open-world s
 arch=('i686' 'x86_64')
 url="http://fractalsoftworks.com/"
 license=('custom')
-depends=('java-runtime' 'openal' 'bash' 'desktop-file-utils')
+depends=('java-runtime=7' 'openal' 'bash' 'desktop-file-utils')
 install='starsector.install'
 replaces=('starfarer')
 source=(
@@ -17,7 +17,7 @@ starsector.sh
 starsector.desktop)
 sha256sums=('f2350c17dd7079ec846b2409ee93507190b5bf315c02de55b3d8fcf31bea65fc'
             '0d9a2382e1c15e3d471b88eb3770c68f5dd93edc81710e511fd892def9f2ab16'
-            'd0588ccc3eefe399d764144246718344ff5603396130028a798fc1609d4d0286'
+            '209f86a20f658ae9c318f315d44cc714aa0e825bcf39962654dc35d58a2d0cb9'
             'becc92483d9599672b75d8b00216a64dd8fda38cfcfccd8e735238aa0ce6d8b6')
 package() {
   install -d "$pkgdir/usr/share/$pkgname" \
