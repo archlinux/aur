@@ -2,7 +2,7 @@
 
 pkgname=resin-cli-git
 pkgdesc='Resin.io command line interface, development version'
-pkgver=5.7.1.r0.g965aa7e
+pkgver=5.7.2.r2.g2e04249
 pkgrel=1
 arch=('any')
 url='https://resin.io/'
@@ -16,7 +16,7 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
