@@ -64,7 +64,7 @@ prepare() {
     patch "$gtk_source/gtkfilechooserwidget.c" "file-chooser__single-click.patch"
     patch "$gtk_source/ui/gtkfilechooserwidget.ui" "file-chooser__disable-other-locations.patch"
     patch "$gtk_source/gtkfilechooserwidget.c" -i "typeahead.patch"
-    patch "$gtk_source/gtkfilechooserwidget.c" -i "never_local_only.patch"
+#    patch "$gtk_source/gtkfilechooserwidget.c" -i "never_local_only.patch"
 
     # print dialog
     patch "$gtk_source/gtksettings.c" "print-dialog__default-previewer.patch"
