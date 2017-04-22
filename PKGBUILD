@@ -9,6 +9,7 @@ url='https://github.com/facebookincubator/gloo'
 license=('BSD')
 
 source=('git+https://github.com/facebookincubator/gloo.git')
+depends=('cuda')
 makedepends=('git' 'cmake')
 provides=('gloo')
 conflicts=('gloo')
@@ -26,7 +27,12 @@ prepare() {
 	mkdir "$srcdir/gloo/build"
 	cd "$srcdir/gloo/build"
 
-	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+	cmake .. \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DNCCL_ROOT_DIR=/opt/cuda \
+		-DCUDA_HOST_COMPILER=/usr/bin/g++-5 \
+		-DUSE_CUDA=on
 }
 
 build() {
