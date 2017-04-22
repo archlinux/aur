@@ -1,11 +1,12 @@
 # Maintainer: Limao Luo <luolimao+AUR@gmail.com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: Taylor Lookabaugh <jesus.christ.i.love@gmail.com>
 # Contributor Jon Sturm <Jasturm002@aol.com>
 # Contributor: mickael9 <mickael9@gmail.com>
 
 pkgname=libticables
-pkgver=1.3.4
-pkgrel=2
+pkgver=1.3.5
+pkgrel=1
 pkgdesc="TI Link Cable Library"
 arch=(i686 x86_64)
 url=http://lpg.ticalc.org/prj_tilp/
@@ -13,12 +14,12 @@ license=(GPL2)
 options=(!libtool)
 depends=(libusb glib2)
 install=$pkgname.install
-source=(http://downloads.sourceforge.net/project/tilp/tilp2-linux/tilp2-1.17/${pkgname}2-$pkgver.tar.bz2
+source=(http://downloads.sourceforge.net/project/tilp/tilp2-linux/tilp2-1.18/${pkgname}2-$pkgver.tar.bz2
     69-$pkgname.rules)
-sha256sums=('45cae91ad9ee1cc2ebc0f5865923ff77f1e0adf0793d3010eeb802efc140e5b0'
-    'e14a08b6a0c03f55c0f44de79de8896f0be5e8f7ccd5dd94f800c798f4fe79f8')
-sha512sums=('fbea9ed2041a04f79e02045d40e88a3ab20edc8d86ecef4ae6a181063f3609b8b2c3aeb2ce2f4508be56655accba60eab7379116ac341921f233f469eb99b461'
-    '423e0fcf072e7f4460ca00dedcc8839c3e22515f353813a058324dff0624c1eebcbd2385ca425fad351262520a30309d6d2a3148e4c0a5ec326eddb1428dbe1c')
+sha256sums=('0c6fb6516e72ccab081ddb3aecceff694ed93aec689ddd2edba9c7c7406c4522'
+            'e14a08b6a0c03f55c0f44de79de8896f0be5e8f7ccd5dd94f800c798f4fe79f8')
+sha512sums=('171abdf41f496891c62da17a2b84d929ac32021b0f2abc0c37ed73ec93806d4a14df37a8ffbe2b0c172ff3461aa6c639fc1ba23aafb19e024b99448dd66c63bd'
+            '423e0fcf072e7f4460ca00dedcc8839c3e22515f353813a058324dff0624c1eebcbd2385ca425fad351262520a30309d6d2a3148e4c0a5ec326eddb1428dbe1c')
 
 build() {
     cd ${pkgname}2-$pkgver/
