@@ -1,5 +1,6 @@
 pkg/
 src/
+python-rtmidi-*.zip
 python-rtmidi-*.tar.bz2
 python-rtmidi-*.pkg.tar.xz
 python2-rtmidi-*.pkg.tar.xz
