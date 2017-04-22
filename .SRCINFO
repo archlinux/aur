@@ -1,0 +1,15 @@
+pkgbase = nanogui-git
+	pkgdesc = NanoGUI is a minimalistic cross-platform widget library for OpenGL 3.x or higher.
+	pkgver = VERSION
+	pkgrel = 1
+	url = https://github.com/wjakob/nanogui
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	provides = nanogui
+	conflicts = nanogui
+	source = nanogui::git+https://github.com/wjakob/nanogui
+	md5sums = SKIP
+
+pkgname = nanogui-git
+
