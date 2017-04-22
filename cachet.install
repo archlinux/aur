@@ -1,0 +1,8 @@
+post_install() {
+	chown -R http:http /usr/share/webapps/cachet/storage
+	chmod 775 /usr/share/webapps/cachet/storage
+	echo "Edit /etc/webapps/cachet/config.env"
+	echo "To complete the installation, run
+	# php artisan key:generate
+	# php artisan app:install"
+}
