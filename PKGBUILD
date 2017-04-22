@@ -3,7 +3,7 @@
 
 _pkgname=pasystray
 pkgname=${_pkgname}-gtk2-standalone
-pkgver=0.6.0.r21.g183ecfa
+pkgver=0.6.0.r22.g5320572
 pkgrel=1
 pkgdesc="PulseAudio system tray (a replacement for padevchooser gtk2 standalone version)"
 arch=('i686' 'x86_64')
