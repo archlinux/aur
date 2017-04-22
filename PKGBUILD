@@ -1,6 +1,6 @@
 # Maintainer: David Matson <gitcoder at outlook dot com>
 pkgname=freeswitch-config-demo
-pkgver=1.6.12
+pkgver=1.6.17
 pkgrel=1
 pkgdesc='Sample configuration for demonstrating FreeSWITCH'
 arch=('any')
@@ -95,19 +95,20 @@ backup=('etc/freeswitch/autoload_configs/abstraction.conf.xml'
         'etc/freeswitch/autoload_configs/xml_scgi.conf.xml'
         'etc/freeswitch/autoload_configs/zeroconf.conf.xml'
         'etc/freeswitch/chatplan/default.xml'
+        'etc/freeswitch/dialplan/default.xml'
         'etc/freeswitch/dialplan/default/00_ladspa.xml'
         'etc/freeswitch/dialplan/default/00_pizza_demo.xml'
-        'etc/freeswitch/dialplan/default/01_example.com.xml'
         'etc/freeswitch/dialplan/default/01_Talking_Clock.xml'
-        'etc/freeswitch/dialplan/default.xml'
+        'etc/freeswitch/dialplan/default/01_example.com.xml'
         'etc/freeswitch/dialplan/features.xml'
-        'etc/freeswitch/dialplan/public/00_inbound_did.xml'
         'etc/freeswitch/dialplan/public.xml'
+        'etc/freeswitch/dialplan/public/00_inbound_did.xml'
+        'etc/freeswitch/dialplan/skinny-patterns.xml'
         'etc/freeswitch/dialplan/skinny-patterns/20-Demo.xml'
         'etc/freeswitch/dialplan/skinny-patterns/20-Local_extension.xml'
         'etc/freeswitch/dialplan/skinny-patterns/90-External.xml'
         'etc/freeswitch/dialplan/skinny-patterns/99-Default_Drop.xml'
-        'etc/freeswitch/dialplan/skinny-patterns.xml'
+        'etc/freeswitch/directory/default.xml'
         'etc/freeswitch/directory/default/1000.xml'
         'etc/freeswitch/directory/default/1001.xml'
         'etc/freeswitch/directory/default/1002.xml'
@@ -132,7 +133,6 @@ backup=('etc/freeswitch/autoload_configs/abstraction.conf.xml'
         'etc/freeswitch/directory/default/default.xml'
         'etc/freeswitch/directory/default/example.com.xml'
         'etc/freeswitch/directory/default/skinny-example.xml'
-        'etc/freeswitch/directory/default.xml'
         'etc/freeswitch/extensions.conf'
         'etc/freeswitch/freeswitch.xml'
         'etc/freeswitch/fur_elise.ttml'
@@ -140,8 +140,8 @@ backup=('etc/freeswitch/autoload_configs/abstraction.conf.xml'
         'etc/freeswitch/ivr_menus/new_demo_ivr.xml'
         'etc/freeswitch/jingle_profiles/client.xml'
         'etc/freeswitch/jingle_profiles/server.xml'
-        'etc/freeswitch/lang/de/demo/demo.xml'
         'etc/freeswitch/lang/de/de.xml'
+        'etc/freeswitch/lang/de/demo/demo.xml'
         'etc/freeswitch/lang/de/vm/sounds.xml'
         'etc/freeswitch/lang/de/vm/tts.xml'
         'etc/freeswitch/lang/en/demo/demo-ivr.xml'
@@ -211,10 +211,10 @@ backup=('etc/freeswitch/autoload_configs/abstraction.conf.xml'
         'etc/freeswitch/mrcp_profiles/vestec-mrcp-v1.xml'
         'etc/freeswitch/mrcp_profiles/voxeo-prophecy-8.0-mrcp-v1.xml'
         'etc/freeswitch/notify-voicemail.tpl'
-        'etc/freeswitch/sip_profiles/external/example.xml'
-        'etc/freeswitch/sip_profiles/external-ipv6/example.xml'
         'etc/freeswitch/sip_profiles/external-ipv6.xml'
+        'etc/freeswitch/sip_profiles/external-ipv6/example.xml'
         'etc/freeswitch/sip_profiles/external.xml'
+        'etc/freeswitch/sip_profiles/external/example.xml'
         'etc/freeswitch/sip_profiles/internal-ipv6.xml'
         'etc/freeswitch/sip_profiles/internal.xml'
         'etc/freeswitch/skinny_profiles/internal.xml'
@@ -223,7 +223,7 @@ backup=('etc/freeswitch/autoload_configs/abstraction.conf.xml'
         'etc/freeswitch/voicemail.tpl'
         'etc/freeswitch/web-vm.tpl')
 source=("https://files.freeswitch.org/releases/freeswitch/freeswitch-$pkgver.tar.xz")
-sha256sums=('ae072ca2d96fd9ef59ca6f589f932048b088c7b469d46e468bb917371de24ff9')
+sha256sums=('709b3e43362d86b9682a7db14eb344b74362493d68244dfc4e6f40218089d4e1')
 
 build() {
   cd "freeswitch-$pkgver"
