@@ -1,0 +1,42 @@
+diff --git a/xkbgroup/core.py b/xkbgroup/core.py
+index ee72a52..c54f61f 100644
+--- a/xkbgroup/core.py
++++ b/xkbgroup/core.py
+@@ -124,7 +124,7 @@ class XKeyboard:
+ 
+     # Fields with default values
+ 
+-    non_symbols = {"pc", "inet", "group", "terminate"}
++    non_symbols = {"capslock", "pc", "inet", "group", "terminate"}
+ 
+ 
+     # Main methods
+@@ -451,7 +451,7 @@ class XKeyboard:
+ SymbolData = namedtuple("SymbolData", ["symbol", "variant", "index"])
+ SYMBOL_REGEX = re.compile(r"""
+     (?P<symbol>\w+)
+-    (?: \( (?P<variant>\w+) \) )?
++    (?: \( (?P<variant>\w+.*) \) )?
+     (?: : (?P<index>\d+) )?
+     """, re.VERBOSE)
+ 
+@@ -484,7 +484,7 @@ def _parse_symbols(symbols_str, non_symbols, default_index=0):
+                 match.group('variant'),
+                 int(index) - 1 if index else default_index)
+         else:
+-            raise X11Error("Malformed symbol string: \"{}\"".format(symstr))
++            raise X11Error("Malformed symbol string: {!r}".format(symstr))
+ 
+     symboldata_list = []
+     for symstr in symbols_str.split('+'):
+@@ -493,8 +493,8 @@ def _parse_symbols(symbols_str, non_symbols, default_index=0):
+             symboldata_list.append(symboldata)
+ 
+     indices = [symdata.index for symdata in symboldata_list]
+-    assert len(indices) == len(set(indices))    # No doubles
+-
++    assert len(indices) == len(set(indices)), ("Duplicate index in %r" %
++                                               symboldata_list)
+     return symboldata_list
+ 
+ 
