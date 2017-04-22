@@ -14,7 +14,7 @@ pkgbase = ungoogled-chromium-bin
 	source = uchromium.sh
 	sha256sums = 93448949d64b7c08ee4fa2026ca82e68ab47a32d1f2442bb116e53427859ebe2
 	sha256sums = ddb7b46bd8d986dd832f8b71dd835396f00a4abf84747c5044c20224c9b95343
-	sha256sums = f89b39b71556ff5c58dc829111bc959b44303e599d7e2253423e1ce5f561d56a
+	sha256sums = f78cfa06c0d3fffdb1a8c9a373abb5babc9e8aca79f053ab4c7fd13146ae9acd
 
 pkgname = ungoogled-chromium-bin
 
