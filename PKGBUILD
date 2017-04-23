@@ -5,22 +5,24 @@
 
 _pkgname=kio-extras
 pkgname=${_pkgname}-light
-pkgver=16.12.3
+pkgver=17.04.0
 pkgrel=1
 pkgdesc="Additional components to increase the functionality of KIO, without SMB/Samba support"
 arch=('i686' 'x86_64')
 url='https://www.kde.org/applications/internet/'
 license=('LGPL')
-depends=('kdelibs4support' 'khtml' 'kdnssd' 'libssh' 'exiv2' 'openexr' 'openslp' 'libmtp' 'kpty' 'kactivities')
-makedepends=('extra-cmake-modules' 'kdoctools' 'kdesignerplugin' 'qt5-webengine' 'python')
+depends=('kdelibs4support' 'kdnssd' 'libssh' 'exiv2' 'openexr' 'openslp' 'libmtp' 'kpty' 'kactivities')
+makedepends=('extra-cmake-modules' 'kdoctools' 'kdesignerplugin' 'qt5-webengine' 'python' 'gperf' 'taglib' 'khtml')
 optdepends=('qt5-webengine: HTML thumbnailer'
             'qt5-imageformats: thumbnails for additional image formats'
-            'kimageformats: thumbnails for additional image formats')
+            'kimageformats: thumbnails for additional image formats'
+            'taglib: audio file thumbnails'
+            'khtml: man kioslave')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 groups=('kde-applications' 'kdenetwork')
 source=("https://download.kde.org/stable/applications/${pkgver}/src/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('5af7b4dac320ed6d0897c8940e6043ef45a4e1d3a4f9f12e8513215633a5d7d5' 'SKIP')
+sha256sums=('29eaece2047390e0582040e86e26b455d6c0e2f1cb6c5cf4d5f4a3f470806acf' 'SKIP')
 validpgpkeys=('CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7') # Albert Astals Cid <aacid@kde.org>
 
 prepare() {
