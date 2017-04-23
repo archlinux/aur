@@ -7,9 +7,9 @@
 pkgname=vuurmuur
 _pkgname=Vuurmuur
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc='powerful front-end for iptables aimed at system-administrators who need a decent firewall, but dont have netfilter specific knowledge'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url='http://www.vuurmuur.org'
 license=('GPL')
 install='vuurmuur.install'
