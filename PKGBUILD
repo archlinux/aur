@@ -2,46 +2,27 @@
 # vim: set expandtab ts=2 sw=2:
 
 pkgname=gx
-pkgver=0.10.0.r16.gfc98488
+pkgver=0.11.0
 pkgrel=1
-epoch=
+
 pkgdesc="Packaging tool built around the distributed, content addressed filesystem IPFS. It aims to be flexible, powerful and simple."
-arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/whyrusleeping/$pkgname"
+arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
-makedepends=('git' 'go')
-optdepends=('gx-go: gx packaing module for go')
-source=("git+${url}.git")
-md5sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+depends=('glibc')
+optdepends=('gx-go: gx packaging module for go')
+makedepends=()
 
-prepare() {
-  mkdir -p "$srcdir"/src/github.com/whyrusleeping/
-  ln -fs "$srcdir/$pkgname" "$srcdir"/src/github.com/whyrusleeping/"$pkgname"
-}
+_srcroot="https://ipfs.io/ipns/dist.ipfs.io"
+source_x86_64=("$_srcroot/$pkgname/v$pkgver/gx_v${pkgver}_linux-amd64.tar.gz")
+source_i686=("$_srcroot/$pkgname/v$pkgver/gx_v${pkgver}_linux-386.tar.gz")
+source_armv7h=("$_srcroot/$pkgname/v$pkgver/gx_v${pkgver}_linux-arm.tar.gz")
 
-build() {
-  # Required for go get
-  export GOPATH="$srcdir"
-  export GOBIN="$GOPATH/bin"
-  cd "$srcdir"/src/github.com/whyrusleeping/"$pkgname"
-
-  msg2 'Installing dependencies...'
-  go get -v
-
-  msg2 'Building binary...'
-  go install -v
-}
+sha512sums_i686=('9ee10253104ca358038a26a828f097b78abe86ac4f58a92610d4a46bad5bd6ec7f5f3ab04450512ca5389f1dc3396448b5d395e583a788fca6a1e1fd989cc877')
+sha512sums_x86_64=('dce8ce3fb7384cbd5f70db5089b689a44e0488428d62f5cbaa46a7d8c18cf8572fd558ebe8018c525b02cc3c017df1017d7918d2ada3e8151189ab8af8cde538')
+sha512sums_armv7h=('f7e02cb40bc49e53ab900958237c74cfc072ac35b2c04bc0633fd8c336b42ae1497349985c31ebd2c4b9197edb27270d912877b7fcbe9d385751ca69907d80e9')
 
 package() {
-  msg2 'Packaging binary...'
-  install -Dm 755 bin/gx "${pkgdir}/usr/bin/gx"
-
-  msg2 'Packaging auxiliary files...'
-  cd "$pkgname"
-  install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+  install -Dm 755 gx/gx "${pkgdir}/usr/bin/gx"
 }
