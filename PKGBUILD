@@ -1,7 +1,7 @@
 # Maintainer: Quentin Glidic <sardemff7@eventd.org>
 
 pkgname=eventd
-pkgver=0.21.0
+pkgver=0.22.0
 _pkgdir=${pkgname}-${pkgver}
 pkgrel=1
 pkgdesc="A small daemon to act on remote or local events"
@@ -28,6 +28,8 @@ depends=(
     xcb-util-wm
 )
 makedepends=(
+    'meson>=0.39.1'
+    ninja
     libxslt
     docbook-xsl
 )
@@ -44,31 +46,29 @@ source=(
     https://www.eventd.org/download/${pkgname}/${pkgname}-${pkgver}.tar.xz
 )
 sha256sums=(
-    f4e1bf014e3e17bf79d3b2a61d947cf4d34000d35fab0b90b869f33f002d2349
+    c643dde927f1e938898a0196021f3e0f3c6cc369bd133c8ab9d70b333ecc2fa4
 )
 
 build() {
     local params=(
         --prefix=/usr
-        --enable-systemd
-        --disable-introspection
-        --disable-nd-wayland
-        --disable-im
-        --disable-sound
+        -Denable-systemd=true
+        -Denable-introspection=false
+        -Denable-nd-wayland=false
+        -Denable-im=false
+        -Denable-sound=false
     )
 
     cd "${srcdir}"/${_pkgdir}
-    ./configure "${params[@]}"
-
-    make
+    meson "${srcdir}"/build "${params[@]}"
+    ninja -C "${srcdir}"/build
 }
 
 check() {
-    cd "${srcdir}"/${_pkgdir}
-    make check
+    ninja -C "${srcdir}"/build test
 }
 
 package() {
-    cd "${srcdir}"/${_pkgdir}
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" \
+    ninja -C "${srcdir}"/build
 }
