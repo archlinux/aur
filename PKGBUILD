@@ -1,5 +1,5 @@
 pkgname=git-journal-git
-pkgver=1.3.0.261
+pkgver=1.4.2.281
 pkgrel=1
 pkgdesc="The Git Commit Message and Changelog Generation Framework"
 arch=('x86_64' 'i686')
