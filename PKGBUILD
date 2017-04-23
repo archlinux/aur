@@ -15,7 +15,7 @@ fi
 #_qmake_args="CONFIG+=debug"
 pkgname=artriculate
 conflicts=('pi-launcher')
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='QML box2d application for displaying artwork'
 arch=('any')
