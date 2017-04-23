@@ -3,7 +3,8 @@ Description=Runit service supervision
 Documentation=http://smarden.org/runit/
 
 [Service]
-ExecStart=/usr/bin/runsvdir-start
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/bin"
+ExecStart=/usr/bin/runsvdir -P /var/service 'log: ...........................................................................................................................................................................................................................................................................................................................................................................................................'
 KillSignal=SIGHUP
 KillMode=process
 Restart=always

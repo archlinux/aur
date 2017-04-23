@@ -12,7 +12,7 @@
 
 pkgname=runit-systemd
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A service supervision scheme. This package is intended to be used alongside systemd."
 url="http://smarden.org/runit/"
 license=('BSD')
@@ -22,11 +22,10 @@ makedepends=('coreutils' 'sed')
 provides=('runit')
 conflicts=('runit')
 install="runit-systemd.install"
-source=( http://smarden.org/runit/runit-$pkgver.tar.gz _sv runit.service runsvdir-start )
+source=( http://smarden.org/runit/runit-$pkgver.tar.gz _sv runit.service )
 sha256sums=('6fd0160cb0cf1207de4e66754b6d39750cff14bb0aa66ab49490992c0c47ba18'
             'c8f08a977595d16b8afd12e49048c061c483e4408bfa6f66e72af4a72d279e3d'
-            '7e80decf02cb72389ec88b4fcf60299e5604a717f9205b8ce3e474fa360d53c6'
-            'd6df03f835301c165de8baac926f4650cb244d540f42d141f7025f808a9e98d1')
+            'aef4112bb48aedfbf60ed4e3bf89e5af7a7d5b673820f179b0801683118329b3')
 
 prepare() {
   cd "$srcdir/admin/runit-$pkgver/src"
@@ -62,7 +61,6 @@ package() {
   
   install -Dm644 "$srcdir/_sv" "$pkgdir/usr/share/zsh/site-functions/_sv"
   install -Dm644 "$srcdir/runit.service" "$pkgdir/usr/lib/systemd/system/runit.service"
-  install -Dm755 "$srcdir/runsvdir-start" "$pkgdir/usr/bin"
 }
 
 # vim:set ts=2 sw=2 et:

@@ -1,7 +1,7 @@
 pkgbase = runit-systemd
 	pkgdesc = A service supervision scheme. This package is intended to be used alongside systemd.
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://smarden.org/runit/
 	install = runit-systemd.install
 	arch = i686
@@ -16,11 +16,9 @@ pkgbase = runit-systemd
 	source = http://smarden.org/runit/runit-2.1.2.tar.gz
 	source = _sv
 	source = runit.service
-	source = runsvdir-start
 	sha256sums = 6fd0160cb0cf1207de4e66754b6d39750cff14bb0aa66ab49490992c0c47ba18
 	sha256sums = c8f08a977595d16b8afd12e49048c061c483e4408bfa6f66e72af4a72d279e3d
-	sha256sums = 7e80decf02cb72389ec88b4fcf60299e5604a717f9205b8ce3e474fa360d53c6
-	sha256sums = d6df03f835301c165de8baac926f4650cb244d540f42d141f7025f808a9e98d1
+	sha256sums = aef4112bb48aedfbf60ed4e3bf89e5af7a7d5b673820f179b0801683118329b3
 
 pkgname = runit-systemd
 
