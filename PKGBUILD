@@ -11,7 +11,7 @@ pkgrel=1
 pkgdesc="Complementary wallpaper collection for the Shimmer Project Xfce themes"
 arch=("any")
 url=http://shimmerproject.org
-license=(CCPL:by-sa-3.0)
+license=('CCPL:by-sa-3.0')
 groups=("xfce-themes-shimmer-collection-git")
 replaces=("shimmer-wallpapers")
 conflicts=("shimmer-wallpapers")
@@ -21,7 +21,7 @@ optdepends=("elementary-xfce-icons: matching icon set, -git or stable"
     "xfce-theme-albatross: matching Shimmer Project Xfce theme, -git or stable"
     "xfce-theme-bluebird: matching Shimmer Project Xfce theme, -git or stablr"
     "xfce-theme-greybird: matching Shimmer Project Xfce theme, -git or stable")
-source=("${_pkgnamelong}::git://github.com/shimmerproject/${_pkgname}.git")
+source=("${_pkgnamelong}::git+https://github.com/shimmerproject/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {

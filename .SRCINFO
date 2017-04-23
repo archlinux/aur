@@ -15,7 +15,7 @@ pkgbase = shimmer-wallpapers-git
 	provides = shimmer-wallpapers-git
 	conflicts = shimmer-wallpapers
 	replaces = shimmer-wallpapers
-	source = Shimmer-Wallpapers::git://github.com/shimmerproject/Wallpapers.git
+	source = Shimmer-Wallpapers::git+https://github.com/shimmerproject/Wallpapers.git
 	md5sums = SKIP
 
 pkgname = shimmer-wallpapers-git
