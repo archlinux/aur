@@ -3,7 +3,7 @@
 
 pkgname=ttf-heuristica
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A serif latin & cyrillic font, derived from the "Adobe Utopia" font by Apanov'
 arch=('any')
 url='https://sourceforge.net/projects/heuristica/'
