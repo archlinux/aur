@@ -15,7 +15,7 @@ pkgbase = adwaita-qt
 	optdepends = qgnomeplatform: apply GNOME settings to Qt apps
 	conflicts = adwaita-qt-common
 	replaces = adwaita-qt-common
-	source = https://github.com/MartinBriza/adwaita-qt/archive/0.98.tar.gz
+	source = https://github.com/MartinBriza/adwaita-qt/archive/0.99.tar.gz
 	sha512sums = 00528863fc1b92019525a9f5010b8abb93ba99bcdf2f6d850e2971e5037ed7caf493e86824fdf0484d8d17ffebc6258a73ed427f25100283dff2f0d9cb20242e
 
 pkgname = adwaita-qt5
