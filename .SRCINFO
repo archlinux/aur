@@ -6,6 +6,7 @@ pkgbase = cutecw
 	arch = x86_64
 	license = GPL
 	depends = qt4
+	depends = pulseaudio
 	source = http://www.hamtools.org/cutecw/releases/cutecw-1.0.tar.gz
 	sha256sums = d0267dafe80047fb82ff387fc9cc4451f3f9a1b0f952eee66f0a82fa092c1146
 
