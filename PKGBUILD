@@ -119,10 +119,15 @@ build() {
   # to this flag. deal.II needs about 2 GB/compilation process so use fewer jobs
   # if your machine does not have the memory to support the maximum number.
   # make $MAKEFLAGS
-  make -j10
+  make $MAKEFLAGS
 
   cd "${srcdir}/build"
   echo "export DEAL_II_DIR=$installation_prefix" > ./deal-ii.sh
+}
+
+check() {
+    cd "${srcdir}/build"
+    make test
 }
 
 package() {
