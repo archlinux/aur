@@ -1,11 +1,13 @@
 # Maintainer: Wes Barnett <wes AT w barnett DOT us>
 pkgname=json-fortran-git
-pkgver=r577.efac226
+_pkgname=json-fortran
+pkgver=r674.b37fb998
 pkgrel=1
 pkgdesc="A Fortran 2008 JSON API"
 arch=(any)
 url="https://github.com/jacobwilliams/json-fortran"
 license=('GPL')
+depends=('gcc-fortran')
 makedepends=('git' 'cmake')
 source=('git://github.com/jacobwilliams/json-fortran.git')
 md5sums=('SKIP')
@@ -16,9 +18,18 @@ pkgver() {
 }
 
 prepare() {
-  mkdir build
+  mkdir -p build
+}
+
+build() {
   cd build
-  cmake "$srcdir/json-fortran" -DCMAKE_INSTALL_PREFIX=/usr -DUSE_GNU_INSTALL_CONVENTION=TRUE -DSKIP_DOC_GEN=TRUE
+  cmake "$srcdir/$_pkgname" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DUSE_GNU_INSTALL_CONVENTION=TRUE \
+    -DSKIP_DOC_GEN=TRUE \
+    -DCMAKE_BUILD_TYPE=Release
+  make
 }
 
 check() {
@@ -26,13 +37,7 @@ check() {
   make check
 }
 
-build() {
-  cd build
-  make
-}
-
 package() {
   cd build
   make DESTDIR="$pkgdir" install
-  mv $pkgdir/usr/lib64 $pkgdir/usr/lib
 }
