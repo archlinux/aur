@@ -12,7 +12,7 @@ depends=('plasma-framework' 'plasma-desktop' 'dnscrypt-proxy' 'systemd')
 makedepends=('cmake' 'extra-cmake-modules')
 conflicts=('dnscrypt-proxy-gui-git')
 source=("https://github.com/F1ash/dnscrypt-proxy-gui/archive/1.6.8.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('2080ba1403e210efca391dbdf2735cc6bd00304cd7cc023c366180f8aa749955')
 
 
 build() {

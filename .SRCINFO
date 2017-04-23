@@ -14,7 +14,7 @@ pkgbase = dnscrypt-proxy-gui
 	depends = systemd
 	conflicts = dnscrypt-proxy-gui-git
 	source = https://github.com/F1ash/dnscrypt-proxy-gui/archive/1.6.8.tar.gz
-	sha256sums = SKIP
+	sha256sums = 2080ba1403e210efca391dbdf2735cc6bd00304cd7cc023c366180f8aa749955
 
 pkgname = dnscrypt-proxy-gui
 
