@@ -19,6 +19,7 @@ pkgbase = gromacs-mpi
 	optdepends = opencl-mesa: OpenCL support for AMD GPU
 	optdepends = pymol: visualization
 	optdepends = vmd: visualization
+	provides = gromacs
 	conflicts = gromacs
 	source = ftp://ftp.gromacs.org/pub/gromacs/gromacs-2016.3.tar.gz
 	sha512sums = 16593df0a52620766fb86cfeb16328793503f860cb07cdbbd503ba7f41e6430efb4848389b7179ca3907b57311162666d05224b454e1afb1b74b220f38498d86

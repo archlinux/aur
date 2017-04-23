@@ -10,6 +10,7 @@ arch=('any')
 depends=('fftw' 'openmpi')
 makedepends=('cmake>=2.8.8')
 conflicts=('gromacs')
+provides=('gromacs')
 optdepends=(
   'lapack: normal modes and matrix manipulation'
   'boost-libs: better implementation support for smart pointers and exception handling'
