@@ -10,7 +10,6 @@ arch=('x86_64' 'i686')
 url="https://cs50.harvard.edu/"
 license=('unknown')
 groups=('cs50')
-depends=('glibc')
 makedepends=('git')
 provides=('libcs50')
 conflicts=('libcs50')

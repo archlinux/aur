@@ -8,7 +8,6 @@ pkgbase = libcs50-git
 	groups = cs50
 	license = unknown
 	makedepends = git
-	depends = glibc
 	provides = libcs50
 	conflicts = libcs50
 	source = git+https://github.com/cs50/libcs50.git
