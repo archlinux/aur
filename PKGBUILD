@@ -4,14 +4,14 @@
 pkgname=obs-service-tar_scm-git
 _pkgver=0.6.0
 pkgver=0.6.0.r312
-pkgrel=1
+pkgrel=2
 pkgdesc="Source Service for the OpenSUSE Build Service (OBS)"
 arch=('any')
 url="https://github.com/openSUSE/obs-service-tar_scm"
 license=('GPL3')
 source=("${pkgname}::git+https://github.com/openSUSE/${pkgname%-git}.git")
 groups=('obs')
-depends=('python2' 'obs-build' 'git')
+depends=('python2' 'obs-build' 'git' 'python2-yaml')
 optdepends=('subversion: svn repo support.'
 			'mercurial: hg repo support.'
 			'bzr: bzr repo support.')
