@@ -2,8 +2,8 @@
 
 pkgname=libbaseencode
 pkgver=1.0.1
-pkgrel=1
-pkgdesc='C library that generates TOTP and HOTP'
+pkgrel=2
+pkgdesc='Library written in C for encoding and decoding data using base32 or base64 (RFC-4648)'
 arch=('i686' 'x86_64')
 makedepends=('cmake')
 url="https://github.com/paolostivanin/libbaseencode"
