@@ -1,6 +1,6 @@
 pkgbase = qbat-qt5
 	pkgdesc = Light qt5 tool to display battery stats in system tray
-	pkgver = 20140202
+	pkgver = 20170423
 	pkgrel = 1
 	url = https://github.com/gogoprog/qbat
 	arch = i686

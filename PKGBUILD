@@ -1,6 +1,6 @@
-# Maintainer: Gauthier B <gogoprog@gmail.com>
+# Maintainer: Gauthier B <gogoprog at gmail dot com>
 pkgname=qbat-qt5
-pkgver=20140202
+pkgver=20170423
 pkgrel=1
 pkgdesc="Light qt5 tool to display battery stats in system tray"
 arch=('i686' 'x86_64')
@@ -8,13 +8,9 @@ url="https://github.com/gogoprog/qbat"
 license=('GPL2')
 depends=('qt5-base')
 makedepends=('git')
-optdepends=()
-provides=()
 conflicts=('qbat')
-replaces=()
-backup=()
 
-_gitroot="git://github.com/gogoprog/qbat.git"
+_gitroot="https://github.com/gogoprog/qbat"
 _gitname="qbat"
 
 build() {
