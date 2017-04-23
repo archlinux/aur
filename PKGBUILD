@@ -1,9 +1,9 @@
-#Maintainer James W. Barnett < jbarnet 4 at tulane dot edu >
+# Maintainer: Wes Barnett <wes AT w barnett DOT us>
 pkgname=gromacs-mpi
 _pkgname=gromacs
-pkgver=2016.1
+pkgver=2016.3
 pkgrel=1
-pkgdesc='molecular dynamics simulation suite'
+pkgdesc='versatile package to perform molecular dynamics'
 url='http://www.gromacs.org/'
 license=("LGPL2")
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   'vmd: visualization'
 )
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-sha512sums=('d30a4ad5faa6e12c95b8e94acaabc387d9aab3780490f5442c48ccac2f86bef6dca60df5bb6097dbc68ab28e6f1a15e234e1244606afdf12a841b88ece65c97b')
+sha512sums=('16593df0a52620766fb86cfeb16328793503f860cb07cdbbd503ba7f41e6430efb4848389b7179ca3907b57311162666d05224b454e1afb1b74b220f38498d86')
 
 prepare() {
   mkdir -p build
@@ -66,6 +66,6 @@ package() {
   install -m755 ${pkgdir}/usr/bin/GMXRC.csh ${pkgdir}/etc/profile.d/GMXRC.csh
   rm -f ${pkgdir}/usr/bin/GMXRC*
 
-  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/COPYING "$pkgdir"/usr/share/licenses/gromacs/LICENSE
+  install -Dm644 ${srcdir}/${_pkgname}-${pkgver}/COPYING "$pkgdir"/usr/share/licenses/gromacs/LICENSE
 }
 
