@@ -22,7 +22,7 @@ GenericName[sr@latin]=Prevodilac Raw slika
 GenericName[zh_CN]=Raw 图像转换器
 GenericName[zh_TW]=Raw 影像轉換器
 
-Comment=Convert camera RAW images to standard image files.
+Comment=A utility to read and manipulate raw images from digital cameras
 
 Keywords=graphics;photography;raw;
 Keywords[ca]=graphics;photography;raw;
@@ -50,7 +50,7 @@ Terminal=false
 StartupNotify=true
 
 Icon=nufraw
-Categories=Graphics;Photography;2DGraphics;
+Categories=Graphics;Photography;2DGraphics;GTK;
 MimeType=application/x-nufraw;image/x-dcraw;
 # https://en.wikipedia.org/wiki/Raw_image_format
 #.3fr, .ari, .arw, .bay, .crw, .cr2, .cap, .data, .dcs, .dcr, .dng, .drf, .eip, .erf, .fff, .iiq, .k25, .kdc, .mdc, .mef, .mos, .mrw, .nef, .nrw, .obm, .orf, .pef, .ptx, .pxn, .r3d, .raf, .raw, .rwl, .rw2, .rwz, .sr2, .srf, .srw, .tif, .x3f
