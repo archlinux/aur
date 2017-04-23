@@ -12,8 +12,8 @@
 
 _srcname=mpv
 pkgname=mpv-full
-pkgver=0.24.0
-pkgrel=2
+pkgver=0.25.0
+pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -34,7 +34,7 @@ provides=('mpv')
 conflicts=('mpv' 'mpv-git' 'mpv-full-git')
 options=('!emptydirs')
 source=("$_srcname-$pkgver.tar.gz::https://github.com/mpv-player/$_srcname/archive/v$pkgver.tar.gz")
-sha256sums=('a41854fa0ac35b9c309ad692aaee67c8d4495c3546f11cb4cdd0a124195d3f15')
+sha256sums=('07423ffad6921ec4da32f703cd7fbfb27012301dcb736ac8542ac8e6083b0bce')
 
 build() {
     cd "${_srcname}-${pkgver}"
@@ -112,11 +112,7 @@ build() {
         --enable-gbm \
         --enable-wayland \
         --enable-x11 \
-        --enable-xss \
-        --enable-xext \
         --enable-xv \
-        --enable-xinerama \
-        --enable-xrandr \
         --disable-gl-cocoa \
         --enable-gl-x11 \
         --enable-egl-x11 \
@@ -139,10 +135,7 @@ build() {
         --disable-direct3d \
         --disable-android \
         --disable-rpi \
-        --enable-standard-gl \
-        --disable-android-gl \
         --disable-ios-gl \
-        --enable-any-gl \
         --enable-plain-gl \
         --disable-mali-fbdev \
         --enable-gl \
@@ -152,6 +145,7 @@ build() {
         --disable-videotoolbox-hwaccel \
         --disable-videotoolbox-gl \
         --enable-vdpau-hwaccel \
+        --enable-vdpau-hwaccel-new \
         --disable-d3d-hwaccel \
         "$_cuda" \
         \
@@ -160,7 +154,9 @@ build() {
         --enable-libv4l2 \
         --enable-audio-input \
         --enable-dvbin \
-        --disable-apple-remote
+        \
+        --disable-apple-remote \
+        --disable-macos-touchbar
         
     ./waf build
 }
