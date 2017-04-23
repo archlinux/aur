@@ -1,7 +1,7 @@
 # Maintainer: Quentin Glidic <sardemff7@eventd.org>
 
 pkgname=eventd-git
-pkgver=0.21.0.r0.g47353b3a
+pkgver=0.22.0.r0.gc8d1fe20
 _gitname=eventd
 _pkgdir=${_gitname}
 pkgrel=1
@@ -29,6 +29,8 @@ depends=(
     xcb-util-wm
 )
 makedepends=(
+    'meson>=0.39.1'
+    ninja
     libxslt
     docbook-xsl
 )
@@ -62,31 +64,28 @@ pkgver() {
 prepare() {
     cd "${srcdir}"/${_pkgdir}
     git submodule update --init
-    autoreconf --install
 }
 
 build() {
     local params=(
         --prefix=/usr
-        --enable-systemd
-        --disable-introspection
-        --disable-nd-wayland
-        --disable-im
-        --disable-sound
+        -Denable-systemd=true
+        -Denable-introspection=false
+        -Denable-nd-wayland=false
+        -Denable-im=false
+        -Denable-sound=false
     )
 
     cd "${srcdir}"/${_pkgdir}
-    ./configure "${params[@]}"
-
-    make
+    meson "${srcdir}"/build "${params[@]}"
+    ninja -C "${srcdir}"/build
 }
 
 check() {
-    cd "${srcdir}"/${_pkgdir}
-    make check
+    ninja -C "${srcdir}"/build test
 }
 
 package() {
-    cd "${srcdir}"/${_pkgdir}
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" \
+    ninja -C "${srcdir}"/build
 }
