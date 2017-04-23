@@ -1,7 +1,7 @@
 # Maintainer: Justin Ethier <justin.ethier@gmail.com>
 pkgname=cyclone-scheme
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A brand-new compiler that allows practical application development using R7RS Scheme"
 arch=('i686' 'x86_64')
 url="https://github.com/justinethier/cyclone-bootstrap"
@@ -24,13 +24,13 @@ md5sums=('061930a8b2e2484640f7412425691447')
 
 build() {
   cd "cyclone-bootstrap-$pkgver"
-  make libcyclone.a PREFIX=/usr CFLAGS="-O2 -Wall -Iinclude -L."
-  make cyclone PREFIX=/usr CFLAGS="-O2 -Wall -Iinclude -L."
-  make icyc-c PREFIX=/usr CFLAGS="-O2 -Wall -Iinclude -L."
+  make libcyclone.a PREFIX=/usr CFLAGS="-O2 -fPIC -rdynamic -Wall -Iinclude -L."
+  make cyclone PREFIX=/usr CFLAGS="-O2 -fPIC -rdynamic -Wall -Iinclude -L."
+  make icyc-c PREFIX=/usr CFLAGS="-O2 -fPIC -rdynamic -Wall -Iinclude -L."
 }
 
 package() {
   cd "cyclone-bootstrap-$pkgver"
-  make DESTDIR="$pkgdir" PREFIX=/usr CFLAGS="-O2 -Wall -Iinclude -L."
+  make DESTDIR="$pkgdir" PREFIX=/usr CFLAGS="-O2 -fPIC -rdynamic -Wall -Iinclude -L."
   make DESTDIR="$pkgdir" PREFIX=/usr install
 }
