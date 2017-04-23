@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=muforth-git
-pkgver=r1928.e40b64d
+pkgver=r2038.90dc8dd
 pkgrel=1
 epoch=
 pkgdesc="A simple, indirect-threaded Forth, written in C."
@@ -51,7 +51,7 @@ package() {
   ln -rs -t $pkgdir/usr/bin/ $pkgdir/usr/lib/${pkgname%-*}/mu/muforth32
   ln -rs -t $pkgdir/usr/bin/ $pkgdir/usr/lib/${pkgname%-*}/mu/muforth64
   ln -rs $pkgdir/usr/lib/${pkgname%-*}/mu/muforth $pkgdir/usr/bin/muforth
-  install -Dm644 ../README $pkgdir/usr/share/doc/${pkgname%-*}/README
+  install -Dm644 ../README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
   install -Dm644 ../doc/README.obsolete $pkgdir/usr/share/doc/${pkgname%-*}/README.obsolete
   install -Dm644 ../LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
