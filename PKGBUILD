@@ -1,31 +1,27 @@
-# Maintainer: James W. Barnett <jbarnet4@tulane.edu>
+# Maintainer: Wes Barnett <wes AT w barnett DOT us>
 pkgname=xdrfile
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Reads/writes compressed trajectory files.'
 license=("GPL")
 arch=('i686' 'x86_64')
+makedepends=('cmake')
 source=(https://github.com/wesbarnett/lib${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('c0f137593def97354a71d783733fde572886a903a4fc9b01449000cf8167bfa3')
-
-prepare() {
-    cd ${srcdir}/lib${pkgname}-${pkgver}
-    mkdir build
-    cd build
-    cmake ..  -DCMAKE_INSTALL_PREFIX=/usr
-}
+sha512sums=('1c32261df46f2762ef69aa81716e168f706c7b78d55c7c5e11632f082a3af96248f15e5a515352277ce89209ffda18b8084471ad097ecd3963c507475b724d70')
 
 build() {
-    cd ${srcdir}/lib${pkgname}-${pkgver}/build
+    mkdir -p build
+    cd build
+    cmake ${srcdir}/lib${pkgname}-${pkgver} -DCMAKE_INSTALL_PREFIX=/usr
     make
 }
 
 check() {
-    cd ${srcdir}/lib${pkgname}-${pkgver}/build
+    cd build
     make test
 }
 
 package() {
-    cd ${srcdir}/lib${pkgname}-${pkgver}/build
+    cd build
     make DESTDIR=${pkgdir} install
 }
