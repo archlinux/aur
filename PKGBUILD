@@ -1,10 +1,10 @@
-# Maintainer: Vyacheslav Konovalov <vyachkonovalov@gmail.com>
+# Maintainer: Vyacheslav Konovalov <echo dnlhY2hrb25vdmFsb3ZAZ21haWwuY29tCg== | base64 -d>
 
 pkgname=robomongo
-pkgver=1.0.0_rc1
-_ref='6ed27b7b838059667ab48c5a1ee75449d76303c2'
+pkgver=1.0.0
+_ref='0fefd6d44307ca371d2b0ad70455ff378b0f676e'
 _pkgname=$pkgname-${_ref}
-_opensslver=1.0.1p
+_opensslver=OpenSSL_1_0_2k
 pkgrel=1
 pkgdesc='Shell-centric cross-platform open source MongoDB management tool'
 arch=('i686' 'x86_64')
@@ -15,11 +15,13 @@ makedepends=('git' 'scons' 'cmake')
 conflicts=('robomongo-bin')
 source=('git+https://github.com/paralect/robomongo-shell.git#branch=roboshell-v3.2'
         "https://github.com/paralect/robomongo/archive/${_ref}.tar.gz"
-        "ftp://ftp.openssl.org/source/old/1.0.1/openssl-${_opensslver}.tar.gz"
+        "https://github.com/openssl/openssl/archive/${_opensslver}.tar.gz"
+        'patch.diff'
         'robomongo.desktop')
 sha256sums=('SKIP'
-            '753bdb84aac8b3a7d34967d354cfce5ff2500501f4c43202ff3c5013433a9e47'
-            'bd5ee6803165c0fb60bbecbacacf244f1f90d2aa0d71353af610c29121e9b2f1'
+            '062a15f42fbb72ea2e05f57c5192b6e721ea110ba8ee8d5a4779a9630c65dd70'
+            '8173c6a6d6ab314e5e81e9cd1e1632f98586a14d7807697fd24155f162292229'
+            '18f36fcc10e1fa9efd4cc53e1274641e89489a6373d84b14c93db2933567d091'
             'bdd63f5d4bd35dd865a0164f285d19555e4ecafb2d11d01f67bdb86bd730a13d')
 
 build() {
@@ -33,7 +35,7 @@ build() {
   cd ${_openssldir}
   ./config shared
   make
-  mkdir lib
+  mkdir -p lib
   cp libssl* libcrypto* lib/
 
   _mongodir=$srcdir/robomongo-shell
@@ -43,6 +45,7 @@ build() {
   cd $srcdir/${_pkgname}
   mkdir -p ./target && cd ./target/
   cmake .. -DCMAKE_PREFIX_PATH="${_mongodir};${_openssldir}" -DCMAKE_BUILD_TYPE=Release
+  patch $srcdir/${_pkgname}/src/robomongo/gui/widgets/workarea/WelcomeTab.cpp $srcdir/patch.diff
   make
   make install
 }
