@@ -2,8 +2,8 @@
 
 _pkgname=airgeddon
 pkgname=$_pkgname-git
-pkgver=r590.6e8dd63
-pkgrel=6.2-1
+pkgver=6.2
+pkgrel=2
 pkgdesc='This is a multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
 license=('GPL3')
@@ -45,7 +45,7 @@ prepare() {
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  echo "${pkgver}"
 }
 
 package() {
