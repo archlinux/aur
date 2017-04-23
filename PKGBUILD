@@ -6,7 +6,7 @@
 
 pkgname=monotone
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A free distributed version control system'
 arch=('i686' 'x86_64')
 url='http://www.monotone.ca/'
@@ -35,7 +35,5 @@ build() {
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
     make DESTDIR="$pkgdir" install
-    install -d "${pkgdir}/usr/share/vim/vimfiles/plugin/"
     install -Dm644 contrib/monotone.zsh_completion "${pkgdir}/usr/share/zsh/site-functions/_mtn"
-    install -Dm644 contrib/{mtncommit,basicio}.vim "${pkgdir}/usr/share/vim/vimfiles/plugin/"
 }
