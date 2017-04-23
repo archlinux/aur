@@ -50,6 +50,7 @@ applications/mod_spy
 applications/mod_stress
 applications/mod_translate
 applications/mod_valet_parking
+applications/mod_video_filter
 applications/mod_vmd
 applications/mod_voicemail
 applications/mod_voicemail_ivr
@@ -62,6 +63,7 @@ codecs/mod_amr
 codecs/mod_amrwb
 codecs/mod_b64
 #codecs/mod_bv
+codecs/mod_clearmode
 #codecs/mod_codec2
 #codecs/mod_com_g729
 codecs/mod_dahdi_codec
@@ -102,6 +104,7 @@ event_handlers/mod_cdr_sqlite
 #event_handlers/mod_erlang_event
 event_handlers/mod_event_multicast
 event_handlers/mod_event_socket
+event_handlers/mod_fail2ban
 event_handlers/mod_format_cdr
 event_handlers/mod_json_cdr
 event_handlers/mod_radius_cdr
@@ -134,6 +137,7 @@ loggers/mod_console
 loggers/mod_graylog2
 loggers/mod_logfile
 loggers/mod_syslog
+loggers/mod_raven
 say/mod_say_de
 say/mod_say_en
 say/mod_say_es
