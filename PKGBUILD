@@ -25,7 +25,7 @@ package() {
 	chmod o+rx "${pkgdir}/usr/lib/monitoring-plugins/check_bareos.py"
 	mkdir -p "${pkgdir}/usr/share/icinga2/include/plugins-contrib.d/"
 	cp "contrib/icinga2-commands.conf" "${pkgdir}/usr/share/icinga2/include/plugins-contrib.d/bareos.conf"
-	mkdir -p ${pkgdir}//usr/share/licenses/${pkgname}
-	cp LICENSE "${pkgdir}//usr/share/licenses/${pkgname}/"
+	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
+	cp LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
