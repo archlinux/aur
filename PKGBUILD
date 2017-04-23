@@ -4,22 +4,23 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=3.0.0v20170313
+pkgver=3.0.0v20170423
 _pkgver=3.0.0
-_snapshot_=20170313
+_snapshot_=20170423
 _snapver_=0240
 _nightly_=${_snapshot_}-${_snapver_}
-pkgrel=1
+pkgrel=2
+_undetected_depends=()
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot"
 arch=("i686" "x86_64")
 url="http://www.videolan.org/vlc/"
 license=("LGPL2.1" "GPL2")
-depends=('a52dec' 'faad2' 'ffmpeg' 'libdca' 'libdvbpsi'
+depends=('a52dec' 'libaom-git' 'libfdk-aac' 'faad2' 'ffmpeg' 'libdca' 'daala-git' 'libdvbpsi'
          'libdvdnav' 'libmad' 'libmatroska' 'libmpcdec' 'libmpeg2'
          'libproxy' 'libshout' 'libtar' 'libtiger' 'libupnp'
          'libxinerama' 'libxpm' 'lua' 'sdl_image' 'mesa' 'wayland' 'wayland-protocols'
          'taglib' 'xcb-util-keysyms' 'zvbi' 'libsecret' 'libarchive' 'qt5-base' 'libglvnd'
-         'hicolor-icon-theme' 'qt5-x11extras')
+         'hicolor-icon-theme' 'qt5-x11extras' "${_undetected_depends[@]}")
 makedepends=('aalib' 'flac' 'git'
              'libavc1394' 'libbluray' 'libcaca' 'libdc1394' 'libdvdcss'
              'libgme' 'libgoom2' 'libmtp' 'libnotify' 'librsvg'
@@ -58,7 +59,10 @@ conflicts=("${_appname_}-plugin" "${_appname_}")
 provides=("${_appname_}")
 replaces=("${_appname_}-plugin")
 options=("!libtool" "!emptydirs" "!debug")
-source=("http://nightlies.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}-git.tar.xz"  "update-vlc-plugin-cache.hook" "https://git.archlinux.org/svntogit/packages.git/plain/trunk/lua53_compat.patch?h=packages/vlc")
+source=("http://nightlies.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}-git.tar.xz" 
+"update-vlc-plugin-cache.hook"
+"https://git.archlinux.org/svntogit/packages.git/plain/trunk/lua53_compat.patch?h=packages/vlc"
+'find-deps.py')
 
 pkgver() {
  printf 3.0.0v$_snapshot_
@@ -80,17 +84,18 @@ build() {
 				--enable-faad \
 				--enable-nls \
 				--enable-lirc \
-				--enable-pvr \
 				--enable-ncurses \
 				--enable-realrtsp \
-				--enable-xosd \
 				--enable-aa \
-				--enable-vcdx \
 				--enable-upnp \
 				--enable-opus \
 				--enable-sftp \
         --enable-fdkaac \
         --enable-merge-ffmpeg \
+        --enable-archive \
+        --enable-bluray \
+        --enable-aom \
+        --enable-daala 
                 LUAC=/usr/bin/luac  LUA_LIBS="`pkg-config --libs lua`" \
               RCC=/usr/bin/rcc-qt5    
 	make -i
@@ -107,8 +112,16 @@ package() {
 	done
 
   install -Dm644 "$srcdir"/update-vlc-plugin-cache.hook "$pkgdir"/usr/share/libalpm/hooks/update-vlc-plugin-cache.hook
+
+  # Update dependencies automatically based on dynamic libraries
+  _detected_depends=($(find "$pkgdir"/usr/lib/vlc -name "*.so" | xargs python "$srcdir"/find-deps.py))
+
+  msg 'Auto-detected dependencies:'
+  echo "${_detected_depends[@]}" | fold -s -w 79 | sed 's/^/ /'
+  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('846504ce9e74ef99dc0bdf5c78fa7b23dbb5ea2772b0c8b14f9ba482d9fa6dc1'
+sha256sums=('e50132842e22bcbd03de80b0d467716bf16b00e17c5d971fc5af089228ebc870'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
-            'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa')
+            'd1cb88a1037120ea83ef75b2a13039a16825516b776d71597d0e2eae5df2d8fa'
+            '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
