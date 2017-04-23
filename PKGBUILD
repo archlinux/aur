@@ -16,7 +16,8 @@ build() {
 	cmake . \
 		-DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
 		-DBACKWARD_TESTS=true \
-		-DBACKWARD_SHARED=true
+		-DBACKWARD_SHARED=true \
+		-DCMAKE_CXX_FLAGS=-I.
 	
 	make
 }
@@ -31,7 +32,6 @@ package() {
 	cd "$srcdir/backward-cpp-$pkgver"
 	
 	make PREFIX="$pkgdir/usr" install
-	install -vDm 755 libbackward.a "$pkgdir/usr/lib/libbackward.a"
 	install -vDm 755 libbackward.so "$pkgdir/usr/lib/libbackward.so.$pkgver"
 	install -vDm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
