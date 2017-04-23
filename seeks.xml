@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>searx</ShortName>
+  <Description>a privacy-respecting, hackable metasearch engine</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image>https://seeks.ru/static/themes/oscar/img/favicon.png</Image>
+  <LongName>searx metasearch</LongName>
+    <Url type="text/html" method="post" template="https://seeks.ru">
+        <Param name="q" value="{searchTerms}" />
+    </Url>
+</OpenSearchDescription>
