@@ -11,7 +11,7 @@ pkgbase = lbench
 	depends = pango
 	depends = lm_sensors
 	source = http://www.kornelix.net/downloads/tarballs/lbench-3.4.tar.gz
-	md5sums = 493f69e0f665709870cffa61d542b396
+	sha256sums = 7d3fd509564488732137e78c98fb74e70b3eee9b058187e860dd108854179209
 
 pkgname = lbench
 

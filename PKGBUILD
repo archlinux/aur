@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gtk3' 'gdk-pixbuf2' 'pango' 'lm_sensors')
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-md5sums=('493f69e0f665709870cffa61d542b396')
+sha256sums=('7d3fd509564488732137e78c98fb74e70b3eee9b058187e860dd108854179209')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
