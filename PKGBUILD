@@ -2,7 +2,7 @@
 
 pkgname=infamousplugins-git
 pkgver=0.2.02.r80.ga68e73d
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of open-source LV2 plugins"
 arch=('i686' 'x86_64')
 url="http://infamousplugins.sourceforge.net"
@@ -14,6 +14,7 @@ provides=('infamousplugins')
 conflicts=('infamousplugins')
 source=("${pkgname%-*}"::'git://github.com/ssj71/infamousPlugins.git')
 md5sums=('SKIP')
+options=(!buildflags)
 
 pkgver() {
     cd "$srcdir/${pkgname%-*}"
