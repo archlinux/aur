@@ -1,0 +1,13 @@
+[Unit]
+Description=Runit service supervision
+Documentation=http://smarden.org/runit/
+
+[Service]
+ExecStart=/usr/bin/runsvdir-start
+KillSignal=SIGHUP
+KillMode=process
+Restart=always
+SuccessExitStatus=111
+
+[Install]
+WantedBy=multi-user.target
