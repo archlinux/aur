@@ -1,14 +1,14 @@
 pkgbase = geany-highlightselectedword
-	pkgdesc = It is a Geany plugin that high lights (highlights) the word that is currently selected in the editor. It works with geany-1.23.1. It also works with geany-1.24.1.
-	pkgver = r5
+	pkgdesc = Geany plugin that highlights the word that is currently selected in the editor
+	pkgver = 20160801
 	pkgrel = 1
-	url = http://geanyhighlightselectedword.sourceforge.net/
+	url = https://sourceforge.net/projects/geanyhighlightselectedword/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = geany
-	source = https://sourceforge.net/projects/geanyhighlightselectedword/files/GeanyHighlightSelectedWord.zip
-	md5sums = SKIP
+	source = https://downloads.sourceforge.net/project/geanyhighlightselectedword/GeanyHighlightSelectedWord_2016-08-01T00-53-19.zip
+	md5sums = 91b9a703d3d0e6ec22c22908ce6e4e9b
 
 pkgname = geany-highlightselectedword
 
