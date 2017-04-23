@@ -135,22 +135,16 @@ build() {
 
   cp "${srcdir}"/modules.conf .
 
-  ./configure --enable-optimization --disable-debug --prefix=/usr \
-    --sysconfdir=/etc --localstatedir=/var --libdir=/usr/lib/freeswitch \
-    --includedir=/usr/include/freeswitch \
-    --with-modinstdir=/usr/lib/freeswitch/mod --with-rundir=/run \
-    --with-logfiledir=/var/log/freeswitch --with-dbdir=/var/lib/freeswitch/db \
-    --with-htdocsdir=/usr/share/freeswitch/htdocs \
-    --with-fontsdir=/usr/share/freeswitch/fonts \
-    --with-soundsdir=/usr/share/freeswitch/sounds \
-    --with-grammardir=/usr/share/freeswitch/grammar \
-    --with-certsdir=/etc/freeswitch/tls \
-    --with-scriptdir=/usr/share/freeswitch/scripts \
-    --with-recordingsdir=/var/lib/freeswitch/recordings \
-    --with-imagesdir=/usr/share/freeswitch/images \
-    --with-storagedir=/var/lib/freeswitch/storage \
+  ./configure \
+    --enable-optimization \
+    --disable-debug \
+    --prefix=/usr \
+    --localstatedir=/var \
+    --sysconfdir=/etc \
+    --with-rundir=/run \
+    --with-logfiledir=/var/log/freeswitch \
     --with-cachedir=/var/cache/freeswitch \
-    --with-pkgconfigdir=/usr/lib/pkgconfig \
+    --with-imagesdir=/usr/share/freeswitch/images \
     ${_mod_options[@]}
 
   make
