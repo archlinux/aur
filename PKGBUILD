@@ -5,13 +5,13 @@
 pkgname=aacskeys
 pkgver="0.4.0e"
 _dmover="dmo7"
-pkgrel=7
+pkgrel=7.1
 pkgdesc="A library and program to retrieve decryption keys for HD discs"
 arch=("i686" "x86_64")
 url="http://forum.doom9.org/showthread.php?t=123311"
 license=("custom")
 depends=("openssl")
-makedepends=("java-environment" "premake3")
+makedepends=("java-environment" "premake")
 source=("http://deb-multimedia.org/pool/main/a/aacskeys/${pkgname}_${pkgver}.orig.tar.gz"
 	"http://deb-multimedia.org/pool/main/a/aacskeys/${pkgname}_${pkgver}-${_dmover}.diff.gz")
 sha1sums=('8790f0d4098d6bc83304ad2136cc9681374df83a'
@@ -42,6 +42,7 @@ prepare() {
   sed -i 's|/usr/local/ssl/lib|/usr/lib|' premake.lua
   sed -i "s|/usr/lib/jvm/java-6-sun/include|$JAVA_HOME/include|" premake.lua
 
+  sed -i 's|@premake|@premake4|' Makefile
 }
 
 build() {
