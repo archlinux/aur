@@ -1,3 +1,4 @@
+# Maintainer: Rastislav Barlik <barlik-arch@gmx.com>
 # Maintainer: Jeff Parent <jecxjo@sdf.lonestar.org>
 pkgname=cutecw
 pkgver=1.0
@@ -7,7 +8,7 @@ pkgdesc="Learn CW using the Koch Method"
 arch=('i686' 'x86_64')
 url=""
 license=('GPL')
-depends=('qt4')
+depends=('qt4' 'pulseaudio')
 source=("http://www.hamtools.org/$pkgname/releases/$pkgname-$pkgver.tar.gz")
 noextract=()
 validpgpkeys=()
