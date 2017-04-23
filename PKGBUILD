@@ -3,7 +3,7 @@
 _pkgname=airgeddon
 pkgname=$_pkgname-git
 pkgver=r590.6e8dd63
-pkgrel=6.2
+pkgrel=6.2-1
 pkgdesc='This is a multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
 license=('GPL3')
@@ -27,7 +27,7 @@ optdepends=(
   'wget:  for checking internet connection'
   'xorg-xdpyinfo:  for getting the screen resolution'
 )
-makedepends=('git' 'coreutils' 'sed')
+makedepends=('git' 'coreutils' 'binutils')
 conflicts=('airgeddon-git')
 provides=('airgeddon-git')
 sha256sums=('SKIP')
