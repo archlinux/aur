@@ -8,9 +8,11 @@ pkgbase = eventd
 	license = GPL3
 	license = LGPL3
 	license = MIT
+	makedepends = meson>=0.39.1
+	makedepends = ninja
 	makedepends = libxslt
 	makedepends = docbook-xsl
-	depends = cairo>=1.14.0
+	depends = cairo>=1.12.0
 	depends = gdk-pixbuf2
 	depends = glib2>=2.40.0
 	depends = glib-networking
@@ -20,10 +22,10 @@ pkgbase = eventd
 	depends = util-linux
 	depends = xcb-util
 	depends = xcb-util-wm
-        optdepends = avahi: DNS-SD support
-        optdepends = gssdp: SSDP support
+	optdepends = avahi: DNS-SD support
+	optdepends = gssdp: SSDP support
 	optdepends = librsvg: SVG images support
-        optdepends = libsoup: WebSocket support
+	optdepends = libsoup: WebSocket support
 	options = !strip
 	source = https://www.eventd.org/download/eventd/eventd-0.22.0.tar.xz
 	sha256sums = c643dde927f1e938898a0196021f3e0f3c6cc369bd133c8ab9d70b333ecc2fa4
