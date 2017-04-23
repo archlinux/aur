@@ -1,0 +1,14 @@
+pkgbase = sselp
+	pkgdesc = Simple X selection printer. Prints the X selection to stdout.
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://tools.suckless.org/x/sselp
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	source = http://dl.suckless.org/tools/sselp-0.2.tar.gz
+	md5sums = b74d6558790d8df897db40bca90bc0f6
+
+pkgname = sselp
+
