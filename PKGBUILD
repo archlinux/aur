@@ -6,12 +6,12 @@
 #
 pkgname=iselect
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Interactive Terminal Selection"
 arch=('i686' 'x86_64')
 url="http://www.ossp.org/pkg/tool/iselect/"
-license=('unknown')
+license=('GPL2')
 groups=()
 depends=('ncurses')
 makedepends=()
@@ -29,23 +29,25 @@ noextract=()
 md5sums=('d278a61fe2557f9ce8270328b5f7b3b6')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  sh configure --prefix="$pkgdir/"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  # NOTE: this makefile does not respect DESTDIR - hence the prefix tweak
+  ./configure --prefix="${pkgdir}/usr" --mandir="${pkgdir}/usr/share"
   make
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   #make -k check
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  # NOTE: this makefile does not respect DESTDIR - hence the prefix tweak
+  make DESTDIR="${pkgdir}/" prefix="${pkgdir}/usr" mandir="${pkgdir}/usr/share" install
 }
 
 # EOF
