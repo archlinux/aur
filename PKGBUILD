@@ -1,6 +1,6 @@
 # Maintainer: Aaron DeVore <aaron.devore@gmail.com>
 pkgname=xsv
-pkgver=0.10.3
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A fast CSV toolkit written in Rust"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ license=('CUSTOM' MIT)
 depends=(gcc-libs)
 makedepends=('rust' 'cargo')
 source=("https://github.com/BurntSushi/xsv/archive/${pkgver}.tar.gz")
-md5sums=('ba2f85ea7543ea0527d84686cb71b95c')
+md5sums=('89c1495a5f26f686c6631d9d0b5e1cc9')
 
 
 build() {
