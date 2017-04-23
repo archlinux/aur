@@ -4,12 +4,12 @@
 
 pkgname=ttf-sil-scheherazade
 pkgver=2.100
-pkgrel=2
+pkgrel=3
 pkgdesc="Arabic script Unicode font designed in a similar style to traditional Naskh typefaces"
 arch=('any')
 url="http://software.sil.org/scheherazade/"
 license=('custom:OFL')
-source=('http://software.sil.org/downloads/d/scheherazade/Scheherazade-2.100.zip')
+source=('http://software.sil.org/downloads/r/scheherazade/Scheherazade-2.100.zip')
 sha256sums=('251c8817ceb87d9b661ce1d5b49e732a0116add10abc046be4b8ba5196e149b5')
 
 package() {
