@@ -1,0 +1,19 @@
+pkgbase = geany-jedi-complete-gtk3
+	pkgdesc = A Geany plugin that provides Python code completion using jedi.
+	pkgver = 8eba66e8
+	pkgrel = 1
+	url = https://github.com/notetau/geany-jedi-complete
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = geany-gtk3
+	depends = curl
+	optdepends = python-jedi: Awesome autocompletion for python
+	optdepends = python2-jedi: Awesome autocompletion for python2
+	source = geany-jedi-complete.tar.gz::https://github.com/notetau/geany-jedi-complete/archive/8eba66e8.tar.gz
+	source = geany-jedi-complete.patch
+	md5sums = 861ac1dc0d1fc3499c9bbd8641a717a5
+	md5sums = 42f30b36bb2597bf92785428a0a5108f
+
+pkgname = geany-jedi-complete-gtk3
+

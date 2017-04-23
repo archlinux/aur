@@ -1,0 +1,12 @@
+diff -NaurB a/geany-jedi-complete-8eba66e809d02bf16edffd4e432144a85dbf2225/src/preferences.cpp b/geany-jedi-complete-8eba66e809d02bf16edffd4e432144a85dbf2225/src/preferences.cpp
+--- a/geany-jedi-complete-8eba66e809d02bf16edffd4e432144a85dbf2225/src/preferences.cpp	2017-04-23 09:23:44.000000000 -0500
++++ b/geany-jedi-complete-8eba66e809d02bf16edffd4e432144a85dbf2225/src/preferences.cpp	2017-04-23 10:52:22.588264368 -0500
+@@ -119,7 +119,7 @@
+     gint ret = gtk_builder_add_from_string(builder, (gchar*)prefpy_ui, prefpy_ui_len, &err);
+     if (err) {
+ 	    printf("fail to load preference ui: %s\n", err->message);
+-	    GtkWidget* vbox = gtk_vbox_new(FALSE, 5);
++	    GtkWidget* vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
+ 	    return vbox;
+     }
+ 
