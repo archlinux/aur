@@ -27,7 +27,7 @@ md5sums=(
   'SKIP'
   'c7fc35a7eb9e23c0a9b7c593f7f9878d'
   '271579e814358390d210d57c724a3b00'
-  '183ca1792f46a21461ed6f4c6d621a37'
+  'a5bb2f9ebc7379b603e3293880dc5c12'
 )
 
 prepare() {
@@ -86,7 +86,7 @@ package() {
   cp -r Engine/Saved "$pkgdir/opt/$pkgname/Engine/Saved"
   cp -r Engine/Shaders "$pkgdir/opt/$pkgname/Engine/Shaders"
   cp -r Engine/Source "$pkgdir/opt/$pkgname/Engine/Source" # the source cannot be redistributed, but seems to be needed to compile c++ projects
-  
+
   # these folders needs to be writable, otherwise there is a segmentation fault when starting the editor
   chmod -R a+rwX "$pkgdir/opt/$pkgname/Engine"
 
