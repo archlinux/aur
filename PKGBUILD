@@ -24,5 +24,5 @@ sha512sums_x86_64=('dce8ce3fb7384cbd5f70db5089b689a44e0488428d62f5cbaa46a7d8c18c
 sha512sums_armv7h=('f7e02cb40bc49e53ab900958237c74cfc072ac35b2c04bc0633fd8c336b42ae1497349985c31ebd2c4b9197edb27270d912877b7fcbe9d385751ca69907d80e9')
 
 package() {
-  install -Dm 755 gx/gx "${pkgdir}/usr/bin/gx"
+  install -Dm 755 ${pkgname}/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
 }
