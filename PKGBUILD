@@ -1,4 +1,5 @@
-# Maintainer: Juraj Fiala <doctorjellyface at riseup dot net>
+# Maintainer: Tom Nguyen <tom81094@gmail.com>
+# Contributor: Juraj Fiala <doctorjellyface at riseup dot net>
 
 pkgbase=adwaita-qt
 pkgname=(
