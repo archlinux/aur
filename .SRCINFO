@@ -1,0 +1,21 @@
+pkgbase = epdfview-git
+	pkgdesc = Lightweight PDF document viewer
+	pkgver = 0.1.8.r43
+	pkgrel = 1
+	url = https://github.com/shimmerproject/Greybird
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = pkg-config
+	depends = desktop-file-utils
+	depends = gtk2
+	depends = hicolor-icon-theme
+	depends = poppler-glib
+	provides = epdfview
+	conflicts = epdfview
+	source = epdfview-git::git+https://github.com/jristz/epdfview.git
+	md5sums = SKIP
+
+pkgname = epdfview-git
+
