@@ -1,0 +1,14 @@
+pkgbase = ddsviewer-git
+	pkgdesc = DDS file viewer (DirectDraw Surface)
+	pkgver = 20170420
+	pkgrel = 1
+	url = https://github.com/gogoprog/ddsviewer
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = premake
+	depends = sfml
+
+pkgname = ddsviewer-git
+
