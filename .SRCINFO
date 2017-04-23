@@ -1,0 +1,14 @@
+pkgbase = backward-cpp
+	pkgdesc = A beautiful stack trace pretty printer for C++.
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/bombela/backward-cpp
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = binutils
+	source = https://github.com/bombela/backward-cpp/archive/v1.3.tar.gz
+	sha256sums = 4bf3fb7029ff551acda6578d9d8e13d438ebdd82a787a82b157728e3af6b5dec
+
+pkgname = backward-cpp
+
