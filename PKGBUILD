@@ -1,5 +1,5 @@
 pkgname=mingw-w64-kitemviews
-pkgver=5.32.0
+pkgver=5.33.0
 pkgrel=1
 arch=(any)
 pkgdesc="Widget addons for Qt Model/View (mingw-w64)"
@@ -10,7 +10,7 @@ makedepends=(mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
 options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kitemviews-${pkgver}.tar.xz")
-md5sums=('c5ef0a46252341018c9c210f9f69a3d0')
+md5sums=('64184a418ffc73d1920ba1dd10d30656')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
