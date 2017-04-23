@@ -1,0 +1,11 @@
+pkgbase = sudo-fake
+	pkgdesc = Simple script that bypasses sudo and execute the actual command. Useful for fakeroot environments.
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	provides = sudo
+	conflicts = sudo
+
+pkgname = sudo-fake
+
