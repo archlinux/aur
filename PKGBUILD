@@ -5,7 +5,7 @@
 
 pkgname=iio-sensor-proxy
 pkgver=2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="IIO accelerometer sensor to input device proxy"
 arch=("i686" "x86_64")
 url="https://github.com/hadess/iio-sensor-proxy"
