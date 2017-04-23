@@ -18,12 +18,12 @@ _pgo=false
 
 # We're getting this from Debian Sid
 _debname=firefox
-_brandingver=52.0
-_brandingrel=2
-_debver=52.0.2
+_brandingver=53.0
+_brandingrel=1
+_debver=53.0
 _debrel=deb1
 _debrepo=http://ftp.debian.org/debian/pool/main/
-_parabolarepo=https://repo.parabola.nu/other/iceweasel
+_coadderepo=https://github.com/coadde/iceweasel/raw/master/tarballs
 debfile() { echo $@|sed -r 's@(.).*@\1/&/&@'; }
 
 _pkgname=firefox
@@ -31,7 +31,7 @@ pkgname=iceweasel
 epoch=1
 pkgver=$_debver.$_debrel
 pkgrel=1
-pkgdesc="A libre version of Debian Iceweasel, the standalone web browser based on Mozilla Firefox (Parabola rebranded)."
+pkgdesc="A libre version of Debian Iceweasel, the standalone web browser based on Mozilla Firefox."
 arch=(i686 x86_64 armv7h)
 license=(MPL GPL LGPL)
 depends=(alsa-lib dbus-glib ffmpeg gtk2 gtk3 hunspell icu=58.2 libevent libvpx libxt mime-types mozilla-common nss sqlite startup-notification ttf-font)
@@ -49,10 +49,10 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 url="https://wiki.parabola.nu/$pkgname"
 replaces=("$pkgname-libre" "$_pkgname")
 conflicts=("$pkgname-libre")
-source=("$_debrepo/`debfile $_debname`_$_debver.orig.tar.xz"
-        "$_debrepo/`debfile $_debname`_$_debver-${_debrel#deb}.debian.tar.xz"
-        "$_parabolarepo/${pkgname}_$_brandingver-$_brandingrel.branding.tar.xz"
-        "$_parabolarepo/${pkgname}_$_brandingver-$_brandingrel.branding.tar.xz.sig"
+source=("$_debrepo/`debfile $_debname`_$_debver.is.$_debver.orig.tar.xz"
+        "$_debrepo/`debfile $_debname`_$_debver.is.$_debver-${_debrel#deb}.debian.tar.xz"
+        "$_coadderepo/${pkgname}_$_brandingver-$_brandingrel.branding.tar.xz"
+        "$_coadderepo/${pkgname}_$_brandingver-$_brandingrel.branding.tar.xz.sig"
         mozconfig
         libre.patch
         remove-default-and-shell-icons-in-packaging-manifest.patch
@@ -61,24 +61,22 @@ source=("$_debrepo/`debfile $_debname`_$_debver.orig.tar.xz"
         $pkgname.desktop
         $pkgname-install-dir.patch
         vendor.js
-        distribution.ini
         fix-wifi-scanner.diff
         enable-object-directory-paths.patch
         mozilla-1253216.patch
         mozilla-build-arm.patch)
-sha256sums=('0408956dfa3ab3728187394f567437f029f73603f1b295e01d5e64a2e4d1bf9e'
-            'fe536e8b1c84301c4db505b1ea23926628b42e06122bd844230f1ee52f45fea3'
-            '30bce6326cdb9a6247f3325cfe326a51c4592728b254fc44656b96c06248ccd9'
+sha256sums=('e77dbd8a4681481a5c9ab8ed3a5ac6c19caec8e25dc80f8b56461cfdf52d047a'
+            'bc8ef2662c571ee90b6b196372146a63c1895c56967dac2a4f7ec0b45802426b'
+            'b428ca162860cd8543fc1df8da6b21d4b52772ed69f4b9c1a49295f6986bb698'
             'SKIP'
-            'a0d75304583fab8d5ae830745d32ad9d04ca7098fd7202975f89df813f38479d'
-            '67e9430643cbecf69f1946fd84a5dda554fcdf1257896f9f828912b095daa08a'
+            'd17c6506c1755c89a48a9b26be28e3413c43eda6931a8e6eca2b44b99430f304'
+            '9de91fdefb330e68af1765d7528e13b0d769cfef797e374b6f50e83ba17d40d6'
             '32f1fe3ad4f80d0ae419064db2abe49b97cd7cb18c35d68be1a2befb60172a2a'
             '93e3001ce152e1d142619e215a9ef07dd429943b99d21726c25da9ceb31e31cd'
             '56eba484179c7f498076f8dc603d8795e99dce8c6ea1da9736318c59d666bff6'
             '250f7aaa3c1362f9d2bb2211cd605eab93a5e806e8540f184979d41acf46142a'
             '3aea6676f1e53a09673b6ae219d281fc28054beb6002b09973611c02f827651d'
-            '86f12cb438c93a0f019786de8be99bffc5f2f4926342bd567a3e4a1f4cef42ab'
-            'd28b14a870aa100273243039d08ab9e64d325c28b6291413441146ebdf5d38ee'
+            '90bdede15c2e85e5d081e2b822884a6354a116868ba7d9e19a2484a4e2528aaf'
             '9765bca5d63fb5525bbd0520b7ab1d27cabaed697e2fc7791400abc3fa4f13b8'
             'e260e555b261aabab1e48786dd514eeea056e4402af7cfd4dfd1d32858441484'
             'fbb6011501a74a8ea6d01c041870fcefb7ef2859c134aedc676e5f6452833f65'
@@ -145,7 +143,6 @@ prepare() {
 
   # ARM-specific changes:
   if [[ "$CARCH" == arm* ]]; then
-      sed -i '/ac_add_options --enable-rust/d' .mozconfig
       echo "ac_add_options --disable-ion" >> .mozconfig
       echo "ac_add_options --disable-elf-hack" >> .mozconfig
       echo "ac_add_options --disable-webrtc" >> .mozconfig
@@ -203,10 +200,6 @@ package() {
   install -d "$pkgdir/usr/share/applications"
   install -m644 "$srcdir/$pkgname.desktop" \
     "$pkgdir/usr/share/applications"
-
-  # Parabola rebranding
-  install -m644 "$srcdir/distribution.ini" \
-    "$pkgdir/usr/lib/$pkgname/distribution"
 
   # Use system-provided dictionaries
   rm -rf "$pkgdir/usr/lib/$pkgname/"{dictionaries,hyphenation}

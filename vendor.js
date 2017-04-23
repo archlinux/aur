@@ -68,9 +68,9 @@ pref("browser.EULA.override", true);
 // Spoof the useragent to a generic one
 pref("general.useragent.compatMode.firefox", true);
 // Spoof the useragent to a generic one
-pref("general.useragent.override", "Mozilla/5.0 (Windows NT 6.1; rv:52.0) Gecko/20100101 Firefox/52.0");
+pref("general.useragent.override", "Mozilla/5.0 (Windows NT 6.1; rv:53.0) Gecko/20100101 Firefox/53.0");
 pref("general.appname.override", "Netscape");
-pref("general.appversion.override", "52.0");
+pref("general.appversion.override", "53.0");
 pref("general.buildID.override", "Gecko/20100101");
 pref("general.oscpu.override", "Windows NT 6.1");
 pref("general.platform.override", "Win32");
