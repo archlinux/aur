@@ -1,16 +1,16 @@
 # Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
 
 pkgname=asciiplanes
-pkgver=0.05
+pkgver=0.06
 pkgrel=1
 pkgdesc="Find the planes' positions on a grid. (text-based game)"
 arch=('any')
 url="https://github.com/trizen/asciiplanes"
 license=('GPL3')
-depends=('sidef>=2.30' 'perl-text-asciitable')
+depends=('sidef>=3.00' 'perl-text-asciitable')
 
 source=("${pkgname}-$pkgver.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('0fbe6376ffea6737ffd1e21832957dcf06225b73ab749242013ef147f5706a5c')
+sha256sums=('1ac124f603269318b075a0aaa32cb3cf4c6ed3d57a20e0bf58aa4b3f82dd6ac2')
 
 package() {
   cd "$pkgname-$pkgver"
