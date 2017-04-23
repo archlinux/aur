@@ -7,7 +7,7 @@ pkgdesc="Siegfried is a signature-based file format identification tool, impleme
 file format signatures and freedesktop.org's MIME-info file format signatures.
 "
 arch=('x86_64' 'i686')
-url="ihttp://www.itforarchivists.com/siegfried"
+url="http://www.itforarchivists.com/siegfried"
 license=('APACHE20')
 depends=('go')
 makedepends=('git')
