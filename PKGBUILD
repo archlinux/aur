@@ -1,7 +1,7 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=libcroco
-pkgver=0.6.12
+pkgver=0.6.12+4+g9ad7287
 pkgrel=1
 pkgdesc="A CSS parsing library"
 url="https://git.gnome.org/browse/libcroco"
@@ -9,7 +9,7 @@ arch=(x86_64 i686)
 depends=(glib2 libxml2)
 makedepends=(intltool git gtk-doc)
 license=(LGPL)
-_commit=0d0162098ac6630113da9e66620ab29459352dd6  # tags/0.6.12^0
+_commit=9ad72875e9f08e4c519ef63d44cdbd94aa9504f7  # master
 source=("git+https://git.gnome.org/browse/libcroco#commit=$_commit")
 sha256sums=('SKIP')
 
