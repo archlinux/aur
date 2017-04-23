@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 
 build() {
-  cd "$srcdir"/dnscrypt-proxy-gui
+  cd "$srcdir"/dnscrypt-proxy-gui-$pkgver
 
   mkdir build && cd build
 
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/dnscrypt-proxy-gui/build
+  cd "$srcdir"/dnscrypt-proxy-gui-$pkgver/build
 
   make DESTDIR="$pkgdir" install
 }
