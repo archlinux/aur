@@ -1,7 +1,7 @@
 pkgbase = yaics-git
 	pkgdesc = QT based GNUSocial/status.net client - latest git revision
-	pkgver = 20150808
-	pkgrel = 1
+	pkgver = 20170423
+	pkgrel = 2
 	url = https://gitlab.com/stigatle/yaics
 	arch = any
 	license = GPL3

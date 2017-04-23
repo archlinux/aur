@@ -1,9 +1,10 @@
-#Maintainer: timttmy <marshall\\dot//cleave\\at//tiscali\\dot//co\\dot//uk>
+# Maintainer: stig_atle <stigatle\\at//cryptolab\\dot//net>
+# Contributor: timttmy <marshall\\dot//cleave\\at//tiscali\\dot//co\\dot//uk> 
 
 pkgname='yaics-git'
 _pkgname=identicurse
-pkgver=20150808
-pkgrel=1
+pkgver=20170423
+pkgrel=2
 pkgdesc="QT based GNUSocial/status.net client - latest git revision"
 arch=('any')
 url="https://gitlab.com/stigatle/yaics"
