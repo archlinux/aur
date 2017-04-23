@@ -2,13 +2,13 @@
 
 pkgname=siegfried
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Siegfried is a signature-based file format identification tool, implementing the National Archives UK's PRONOM
 file format signatures and freedesktop.org's MIME-info file format signatures.
 "
 arch=('x86_64' 'i686')
 url="http://www.itforarchivists.com/siegfried"
-license=('APACHE20')
+license=('APACHE')
 depends=('go')
 makedepends=('git')
 options=('!strip' '!emptydirs')
@@ -19,7 +19,7 @@ build() {
 }
 
 check() {
-  GOPATH="$GOPATH:$srcdir" go test -v -x ${_gourl}
+  GOPATH="$GOPATH${GOPATH+:}$srcdir" go test -v -x ${_gourl}
 }
 
 package() {
