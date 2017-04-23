@@ -1,18 +1,24 @@
-# Maintainer: Ralph Holmes <ybden@ybden.com>
+# Maintainer: Erin Kinsley <ybden@ybden.com>
 # Contributor: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
 
 pkgname=mandoc
-pkgver=1.13.4
+pkgver=1.14.1
 pkgrel=1
 pkgdesc='A suite of tools compiling mdoc from the OpenBSD project'
 arch=('i686' 'x86_64')
 url='http://mdocml.bsd.lv/'
 license=('custom: ISC')
-depends=('sqlite')
+depends=('zlib')
+provides=('man')
+conflicts=('man')
 source=("http://mdocml.bsd.lv/snapshots/mdocml-$pkgver.tar.gz"
-        'configure.local')
-sha256sums=('0a55c1addb188071d6f784599303656b8465e98ec6b2f4f264e12fb96d79e0ef'
-            '3821922c5cbafb93f48f8224befbd61c48f7742f46ef608b652cb545c46f8f87')
+        'configure.local'
+        'mandoc.service'
+        'mandoc.timer')
+sha256sums=('356954f141ec6f5635e938c826f2e16e4619bb361c64d84a31f6775d030a615b'
+            '0a341e1fe4589c0becc46dcaf5a11c336a0cf9cb05e000fe3210880407dfe867'
+            '2091411d5f87a3c371a5ba74b4773d1e454046446fa2cb045485979e52419bb6'
+            '79d4e73b6c8cab7e12d11f8b4574790938064b42effbb02afadc1548dfcf5cc4')
 
 prepare() {
 	cp "$srcdir"/configure.local mdocml-$pkgver
@@ -26,6 +32,6 @@ build() {
 
 package() {
 	cd mdocml-$pkgver
-	make -j1 install DESTDIR="$pkgdir"
+	DESTDIR="$pkgdir" make install
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

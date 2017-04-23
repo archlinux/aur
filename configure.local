@@ -1,16 +1,14 @@
+# Arch $MANPATH.
+MANPATH_DEFAULT=/usr/local/share/man:/usr/share/man
+
+# Arch paths.
 PREFIX=/usr
 SBINDIR=$PREFIX/bin
 MANDIR=$PREFIX/share/man
 
+# These conflict with man(7) and mdoc(7) from man-pages.
 MANM_MAN=mandoc_man
 MANM_MDOC=mandoc_mdoc
-MANM_ROFF=mandoc_roff
-MANM_EQN=mandoc_eqn
-MANM_TBL=mandoc_tbl
 
-BINM_MAN=mman
-BINM_SOELIM=msoelim
-BINM_APROPOS=mapropos
-BINM_WHATIS=mwhatis
-
+# _FORTIFY_SOURCE doesn't work unless an optimisation level is specified.
 CFLAGS="$CFLAGS -O2"
