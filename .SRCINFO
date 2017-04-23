@@ -1,0 +1,16 @@
+pkgbase = libscrypt-git
+	pkgdesc = Shared library that implements scrypt() functionality - a replacement for bcrypt()
+	pkgver = 1.21.r2.gf2b7923
+	pkgrel = 1
+	url = https://github.com/technion/libscrypt
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	provides = libscrypt
+	conflicts = libscrypt
+	source = git+https://github.com/technion/libscrypt
+	sha256sums = SKIP
+
+pkgname = libscrypt-git
+
