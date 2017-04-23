@@ -3,12 +3,12 @@
 pkgname=check_bareos-git
 _pkgname=check_bareos
 pkgver=r25.85f183b
-pkgrel=1
+pkgrel=2
 pkgdesc="Icinga Plugin to check Bareos Backup Director databases"
 arch=('any')
 url="https://github.com/widhalmt/check_bareos"
 license=('GPLv3')
-depends=('python' 'python-psycopg2' 'mysql-python')
+depends=('python2' 'python2-psycopg2' 'mysql-python')
 optdepends=('postgresql' 'mariadb')
 source=("git+https://github.com/widhalmt/check_bareos.git")
 sha512sums=('SKIP')
@@ -21,6 +21,7 @@ pkgver() {
 package() {
         cd ${srcdir}/${_pkgname}
 	mkdir -p "${pkgdir}/usr/lib/monitoring-plugins"
+	sed -i 's?/usr/bin/python?/usr/bin/python2?g' check_bareos.py
 	cp check_bareos.py "${pkgdir}/usr/lib/monitoring-plugins/"
 	chmod o+rx "${pkgdir}/usr/lib/monitoring-plugins/check_bareos.py"
 	mkdir -p "${pkgdir}/usr/share/icinga2/include/plugins-contrib.d/"
