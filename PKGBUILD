@@ -1,6 +1,6 @@
 #Maintainer Ivan Porto Carrero <ivan@flanders.co.nz> (@casualjim)
 pkgname=go-swagger
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Toolkit for swagger in golang (go-swagger)"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ license=("ASL 2.0")
 
 source_i686=("https://github.com/go-swagger/go-swagger/releases/download/${pkgver}/swagger_linux_386")
 source_x86_64=("https://github.com/go-swagger/go-swagger/releases/download/${pkgver}/swagger_linux_amd64")
-sha256sums_i686=('2d641c8807e23c3be59a07240bc93789067c35d25b78398ac2f46ed34b538be8')
-sha256sums_x86_64=('63d07f6c46cd5ba4ffad5eef5cc48997176a5a33ed62bfda9208188467586056')
+sha256sums_i686=('597d62d380264efcc54e75cf1e3ed233df54f2abbe9f0cdd58529298b986e9e9')
+sha256sums_x86_64=('68033b4271e6113c727ad2aaf86235b74b77c8ff2ca73213ee1e9c08f1b9aeff')
 
 package() {
   install -d ${pkgdir}/usr/bin
