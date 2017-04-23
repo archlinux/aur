@@ -3,9 +3,9 @@
 # Contributor: Sarah Hay <sarah@archlinux.org>
 
 pkgbase=gpgme
-pkgname=(gpgme qgpgme)
+pkgname=(gpgme qgpgme python-gpgme)
 pkgver=1.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A C wrapper library for GnuPG"
 arch=('i686' 'x86_64')
 url="http://www.gnupg.org/related_software/gpgme/"
@@ -38,6 +38,7 @@ package_gpgme() {
   # split qgpgme
   rm -r "${pkgdir}"/usr/include/{qgpgme,QGpgME}/
   rm -r "${pkgdir}"/usr/lib/{cmake/QGpgme/,libqgpgme.*}
+  rm -r "${pkgdir}"/usr/lib/python*
 }
 
 package_qgpgme() {
@@ -47,3 +48,12 @@ package_qgpgme() {
   cd ${pkgbase}-${pkgver}/lang/qt
   make DESTDIR="${pkgdir}" install
 }
+
+package_python-gpgme() {
+  pkgdesc="Python bindings for GPGme"
+  depends=('gpgme' 'python')
+
+  cd ${pkgbase}-${pkgver}/lang/python
+  make DESTDIR="${pkgdir}" install
+}
+
