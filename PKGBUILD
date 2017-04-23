@@ -5,7 +5,7 @@ pkgname=(
   "${pkgbase}5"
   "${pkgbase}4"
 )
-pkgver=0.98
+pkgver=0.99
 pkgrel=1
 pkgdesc='A style to bend Qt applications to look like they belong into GNOME Shell'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=('qgnomeplatform: apply GNOME settings to Qt apps')
 conflicts=('adwaita-qt-common')
 replaces=('adwaita-qt-common')
 source=("https://github.com/MartinBriza/$pkgbase/archive/$pkgver.tar.gz")
-sha512sums=('d2edfded1dfc553699ab9f0a14c3f860ff6bcc24d45fd76b4664fdfd93328bec2955958a77e35937dab2ae61788618c2752876719e45a6b1f062b577f867304a')
+sha512sums=('00528863fc1b92019525a9f5010b8abb93ba99bcdf2f6d850e2971e5037ed7caf493e86824fdf0484d8d17ffebc6258a73ed427f25100283dff2f0d9cb20242e')
 
 prepare() {
   mkdir -p $pkgbase-$pkgver/build{-qt5,-qt4}
