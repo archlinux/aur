@@ -1,0 +1,16 @@
+pkgbase = waspmote-pro-ide
+	pkgdesc = Waspmote Pro IDE from Libelium
+	pkgver = 05
+	pkgrel = 1
+	url = http://www.libelium.com/development/waspmote/sdk_applications/
+	arch = x86_64
+	license = unknow
+	depends = gtk2
+	depends = java-runtime=8
+	depends = avrdude
+	options = !strip
+	source = http://downloads.libelium.com/waspmote-pro-ide-v05-linux64.zip
+	sha1sums = 52646238eb9e8ddabbd50214065a1736a7c3b8a2
+
+pkgname = waspmote-pro-ide
+
