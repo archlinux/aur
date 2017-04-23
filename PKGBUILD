@@ -14,7 +14,7 @@ license=('GPL')
 depends=('pcre' 'lua' 'botan1.10' 'sqlite3' 'libidn' 'zlib')
 makedepends=('boost')
 source=("http://www.monotone.ca/downloads/1.1/monotone-${pkgver}.tar.bz2")
-sha1sums=('2b97559b252decaee3a374b81bf714cf33441ba3')
+sha256sums=('f95cf60a22d4e461bec9d0e72f5d3609c9a4576fb1cc45f553d0202ce2e38c88')
 
 prepare() {
     cd "$srcdir/${pkgname}-${pkgver}"
