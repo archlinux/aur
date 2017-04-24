@@ -6,6 +6,7 @@ ac_add_options --libdir=/usr/lib
 # Iceape
 ac_add_options --disable-official-branding
 ac_add_options --with-branding=suite/branding/nightly
+ac_add_options --disable-safe-browsing
 
 # System libraries
 ac_add_options --with-system-nspr
@@ -37,6 +38,3 @@ ac_add_options --disable-tests
 #ac_add_options --disable-installer
 
 export MOZILLA_OFFICIAL=1
-
-# Parabola features
-ac_add_options --disable-safe-browsing

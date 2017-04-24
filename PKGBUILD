@@ -36,7 +36,7 @@ source=("https://archive.mozilla.org/pub/mozilla.org/$_pkgname/releases/$pkgver/
 sha256sums=('39c84ce6fa1ed7c30152473e0dcd858df07437e84b29e5a18973db437a28a912'
             'ed6f0aab804235a8ea32631b8d8d664329e9507f7aa6fb016c87042bace51a44'
             'SKIP'
-            'cbc768322c5f3cc9c43594618826349c14d902ba7756d6c16c1d33430d058d3b'
+            '34876d8d34fc15b21b6343b834b2328b164d23142cae3adc36395bfbeb0ea21d'
             '46ac418fe26937460a36a593d71c8f5cef1288c9e747cac4ec4ca92db56da45d'
             'ab19d10fbd6258aec37ab5e5efb12429814b2c24a1193284a48dd654311b4e2e'
             '8a8db47b7c6a12c030ccf6b54fa926a02d27199bf6ee5aa0b059ebda33d657ac'
