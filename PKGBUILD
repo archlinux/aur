@@ -3,7 +3,7 @@
 pkgname=eventd
 pkgver=0.22.0
 _pkgdir=${pkgname}-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="A small daemon to act on remote or local events"
 arch=(
     i686
@@ -70,5 +70,5 @@ check() {
 
 package() {
     DESTDIR="${pkgdir}" \
-    ninja -C "${srcdir}"/build
+    ninja -C "${srcdir}"/build install
 }
