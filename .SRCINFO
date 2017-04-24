@@ -1,0 +1,15 @@
+pkgbase = desproxy
+	pkgdesc = TCP tunnel for HTTP proxies
+	pkgver = 0.1.0
+	pkgrel = 3
+	url = https://github.com/gilcu3/desproxy/
+	arch = i686
+	arch = x86_64
+	license = GNUv2
+	depends = gcc
+	source = git+https://github.com/gilcu3/desproxy/
+	md5sums = SKIP
+
+pkgname = desproxy
+
+
