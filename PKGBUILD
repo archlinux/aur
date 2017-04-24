@@ -15,7 +15,8 @@ depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
 optdepends=('kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet'
-            'ttf-liberation: fix fonts for some PDFs (CRBug #369991)')
+            'ttf-liberation: fix fonts for some PDFs (CRBug #369991)'
+            'xdg-utils')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
 _channel=stable

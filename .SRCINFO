@@ -16,6 +16,7 @@ pkgbase = google-chrome
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kwallet: for storing passwords in KWallet
 	optdepends = ttf-liberation: fix fonts for some PDFs (CRBug #369991)
+	optdepends = xdg-utils
 	options = !emptydirs
 	options = !strip
 	source = google-chrome-stable_58.0.3029.81_amd64.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
