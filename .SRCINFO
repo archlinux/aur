@@ -1,18 +1,19 @@
 pkgbase = glbinding
 	pkgdesc = A C++ binding for the OpenGL API, generated using the gl.xml specification
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = http://www.glbinding.org
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = MIT
 	checkdepends = python
 	makedepends = cmake
 	makedepends = mesa
 	depends = libgl
 	depends = glfw
-	source = glbinding-2.1.1.tar.gz::https://github.com/cginternals/glbinding/archive/v2.1.1.tar.gz
-	sha256sums = 253671f2b730a6efa55de92a704938bb0f1761d151f3f8e87c043c51d46ea1e4
+	source = glbinding-2.1.2.tar.gz::https://github.com/cginternals/glbinding/archive/v2.1.2.tar.gz
+	sha256sums = d453d375d3e578fc5990ec41ad648d2ad3de73917a448ff6042bd9f555c0c0c0
 
 pkgname = glbinding
 

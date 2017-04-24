@@ -2,17 +2,17 @@
 # Contributor: Xentec <xentec at aix0 dot eu>
 
 pkgname=glbinding
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="A C++ binding for the OpenGL API, generated using the gl.xml specification"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="http://www.glbinding.org"
 license=('MIT')
 depends=('libgl' 'glfw')
 makedepends=('cmake' 'mesa')
 checkdepends=('python')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/cginternals/glbinding/archive/v$pkgver.tar.gz")
-sha256sums=('253671f2b730a6efa55de92a704938bb0f1761d151f3f8e87c043c51d46ea1e4')
+sha256sums=('d453d375d3e578fc5990ec41ad648d2ad3de73917a448ff6042bd9f555c0c0c0')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -42,8 +42,6 @@ package() {
 
   make -C build DESTDIR="$pkgdir/" install
 
-  rm -r "${pkgdir}/usr/share/"
-  install -Dm644 $pkgname-config.cmake "$pkgdir"/usr/lib/cmake/$pkgname/$pkgname-config.cmake
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -d "$pkgdir"/usr/share/doc/$pkgname
   install -m644 README.md AUTHORS "$pkgdir"/usr/share/doc/$pkgname
