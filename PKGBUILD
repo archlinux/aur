@@ -4,8 +4,8 @@
 # Modified from gr-osmosdr-git PKGBUILD
 
 pkgname=gr-osmosdr-nonfree-git
-pkgver=0.1.4.72.g164a09f
-pkgrel=2
+pkgver=0.1.4.91.gcf95494
+pkgrel=1
 pkgdesc="GNU Radio source block for OsmoSDR with nonfree components, such as sdrplay, enabled."
 arch=('i686' 'x86_64')
 url="http://sdr.osmocom.org/trac/"
@@ -13,6 +13,10 @@ license=('custom')
 depends=(
     'gnuradio'
     'swig'
+    'rtl-sdr'
+    'libuhd'
+    'libmirisdr-git'
+    'libosmosdr-git'
     'airspy'
     )
 makedepends=(
@@ -23,9 +27,6 @@ makedepends=(
     )
 optdepends=(
     'gnuradio-iqbal: Osmocom IQ imbalance correction support'
-    'rtl-sdr-git: Osmocom RTLSDR support'
-    'libosmosdr-git: sysmocom OsmoSDR support'
-    'libmirisdr-git: Osmocom MiriSDR support'
     'soapysdr-git: SoapySDR support'
     'libsdrplay: SDRplay RSP support'
     'gnuradio-fcdproplus: FUNcube Dongle Pro+ support'
