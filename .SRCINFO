@@ -1,17 +1,18 @@
-pkgbase = betterdiscord
-	pkgdesc = Discord extension that introduces new features like BTTV emotes and plugin support.
-	pkgver = 0.2.82
+pkgbase = betterdiscord-git
+	pkgdesc = Discord extension that introduces new features like BTTV emotes and plugin support. Git master branch
+	pkgver = 0.2.82.r281.gb92989a
 	pkgrel = 1
 	url = https://betterdiscord.net/home/
 	install = BetterDiscord.install
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = asar
 	depends = discord
-	source = git+https://github.com/Jiiks/BetterDiscordApp.git#commit=0f2812bc10b3c9695ddf2e28b65bbfe1ae4d1ce7
+	source = betterdiscord::git+https://github.com/Jiiks/BetterDiscordApp.git
 	source = LICENSE
 	md5sums = SKIP
 	md5sums = 8414480728c5dc0d4ca9a93cfaf67acb
 
-pkgname = betterdiscord
+pkgname = betterdiscord-git
 
