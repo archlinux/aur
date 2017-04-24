@@ -1,40 +1,42 @@
 # $Id$
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
+# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
+# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -rgA _system_libs=(
+  [ffmpeg]=ffmpeg
   [flac]=flac
   [harfbuzz-ng]=harfbuzz-icu
+  [icu]=icu
   [libjpeg]=libjpeg
   [libpng]=libpng
-  [libvpx]=libvpx
+  #[libvpx]=libvpx
   [libwebp]=libwebp
-  #[libxml]=libxml2    # https://bugs.archlinux.org/task/29939
+  [libxml]=libxml2    # https://bugs.archlinux.org/task/29939
   [libxslt]=libxslt
   [re2]=re2
   [snappy]=snappy
   [yasm]=
-  #[zlib]=zlib         # Error during build
+  [zlib]=minizip
 )
 
 pkgname=iridium
-pkgver=54.0
+pkgver=58.0
 pkgrel=1
 _launcher_ver=3
 pkgdesc="a free, open, and libre browser modification of the Chromium code base"
 arch=('i686' 'x86_64')
 url="https://iridiumbrowser.de/"
 license=('BSD')
-depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
-         'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
-         'speech-dispatcher' 'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
-         'libvpx' 'perl' 'perl-file-basedir' 'desktop-file-utils'
-         'hicolor-icon-theme')
+depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libexif' 'libgcrypt'
+         'ttf-font' 'systemd' 'dbus' 'libpulse' 'perl' 'perl-file-basedir'
+         'pciutils' 'desktop-file-utils' 'hicolor-icon-theme')
 depends+=(${_system_libs[@]})
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja')
-# makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
-optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git')
+optdepends=('kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet')
 # provides=('chromium')
@@ -44,15 +46,15 @@ options=('!strip')
 source=(https://downloads.iridiumbrowser.de/source/iridium-browser-${pkgver}.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
-        chromium-widevine.patch
-        chromium-52.0.2743.116-unset-madv_free.patch
-        chromium-53.0.2785.92-last-commit-position.patch)
-sha256sums=('0f93beeba06259178fde16948f712b997408b14bd04718c7563a54374811c74e'
+        chromium-system-ffmpeg-r4.patch
+        chromium-gn-bootstrap-r2.patch
+        chromium-widevine.patch)
+sha256sums=('ec59bf66b1d686c85172c7b9dade6bbda10600df25b17f86a1847d29d8bb9d62'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
-            'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808'
-            '3b3aa9e28f29e6f539ed1c7832e79463b13128863a02e9c6fecd16c30d61c227'
-            'd3dc397956a26ec045e76c25c57a1fac5fc0acff94306b2a670daee7ba15709e')
+            'e3c474dbf3822a0be50695683bd8a2c9dfc82d41c1524a20b4581883c0c88986'
+            '64d743c78183c302c42d1f289863e34c74832fca57443833e46a0a3157e2b5de'
+            'd6fdcb922e5a7fbe15759d39ccc8ea4225821c44d98054ce0f23f9d1f00c9808')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -71,18 +73,9 @@ prepare() {
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
 
-  # Disable MADV_FREE (if set by glibc)
-  # https://bugzilla.redhat.com/show_bug.cgi?id=1361157
-  patch -Np1 -i ../chromium-52.0.2743.116-unset-madv_free.patch
-
-  # Disable last_commit_position as we don't build from git repository
-  patch -Np1 -i ../chromium-53.0.2785.92-last-commit-position.patch
-
-  # Work around bug in blink in which GCC 6 optimizes away null pointer checks
-  # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=833524
-  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=68853#c2
-  sed -i '/config("compiler")/ a cflags_cc = [ "-fno-delete-null-pointer-checks" ]' \
-    build/config/linux/BUILD.gn
+  # Fixes from Gentoo
+  patch -Np1 -i ../chromium-system-ffmpeg-r4.patch
+  patch -Np1 -i ../chromium-gn-bootstrap-r2.patch
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
@@ -90,6 +83,9 @@ prepare() {
   # There are still a lot of relative calls which need a workaround
   mkdir -p "$srcdir/python2-path"
   ln -sf /usr/bin/python2 "$srcdir/python2-path/python"
+
+  mkdir -p third_party/node/linux/node-linux-x64/bin
+  ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
@@ -99,6 +95,7 @@ prepare() {
     find -type f -path "*third_party/$_lib/*" \
       \! -path "*third_party/$_lib/chromium/*" \
       \! -path "*third_party/$_lib/google/*" \
+      \! -path "*base/third_party/icu/*" \
       \! -regex '.*\.\(gn\|gni\|isolate\|py\)' \
       -delete
   done
@@ -121,7 +118,6 @@ build() {
   local _flags=(
     'is_clang=false'
     'clang_use_chrome_plugins=false'
-    'symbol_level=0'
     'is_debug=false'
     'fatal_linker_warnings=false'
     'treat_warnings_as_errors=false'
@@ -131,19 +127,13 @@ build() {
     'proprietary_codecs=true'
     'link_pulseaudio=true'
     'linux_use_bundled_binutils=false'
-    'use_allocator="none"'
-    'use_cups=true'
     'use_gconf=false'
     'use_gnome_keyring=false'
     'use_gold=false'
-    'use_gtk3=false'
-    'use_kerberos=true'
-    'use_pulseaudio=true'
     'use_sysroot=false'
     'enable_hangout_services_extension=true'
     'enable_widevine=true'
     'enable_nacl=false'
-    'enable_nacl_nonsfi=false'
     "google_api_key=\"${_google_api_key}\""
     "google_default_client_id=\"${_google_default_client_id}\""
     "google_default_client_secret=\"${_google_default_client_secret}\""
@@ -159,7 +149,7 @@ build() {
 package() {
   cd "$srcdir/chromium-launcher-$_launcher_ver"
 
-  make PREFIX=/usr DESTDIR="$pkgdir" install-strip
+  make PREFIX=/usr DESTDIR="$pkgdir" install
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
 
@@ -173,9 +163,10 @@ package() {
   install -Dm4755 out/Release/chrome_sandbox \
     "$pkgdir/usr/lib/chromium/chrome-sandbox"
 
-  cp -a out/Release/{*.pak,*.bin,chromedriver,libwidevinecdmadapter.so,icudtl.dat} \
+  cp -a \
+    out/Release/{chrome_{100,200}_percent,resources}.pak \
+    out/Release/{*.bin,chromedriver,libwidevinecdmadapter.so} \
     out/Release/locales \
-    out/Release/gen/content/content_resources.pak \
     "$pkgdir/usr/lib/chromium/"
 
   ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
