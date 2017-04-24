@@ -1,0 +1,20 @@
+pkgbase = hgsvn
+	pkgdesc = A set of scripts to work locally on Subversion checkouts using Mercurial
+	pkgver = 0.3.12
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/hgsvn/
+	arch = any
+	license = GPL
+	checkdepends = mercurial
+	checkdepends = subversion
+	makedepends = python2-nose
+	depends = python2
+	depends = subversion
+	depends = mercurial
+	depends = python2-setuptools
+	depends = python2-hglib
+	source = https://pypi.python.org/packages/source/h/hgsvn/hgsvn-0.3.12.zip
+	md5sums = e4c4f95020c8737e5598ccb687701b4d
+
+pkgname = hgsvn
+
