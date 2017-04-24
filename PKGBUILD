@@ -8,7 +8,7 @@ epoch=1
 _brandingver=2.39
 _brandingrel=3
 pkgver=2.46
-pkgrel=2
+pkgrel=3
 pkgdesc="A libre version of Debian Iceape, the internet suite based on SeaMonkey."
 arch=(i686 x86_64 armv7h)
 license=(MPL GPL LGPL)
@@ -24,8 +24,8 @@ provides=("$_pkgname")
 install=$pkgname.install
 url="https://wiki.parabola.nu/$pkgname"
 source=("https://archive.mozilla.org/pub/mozilla.org/$_pkgname/releases/$pkgver/source/$_pkgname-$pkgver.source.tar.xz"
-        "https://repo.parabola.nu/other/$pkgname/${pkgname}_$_brandingver-$_brandingrel.branding.tar.xz"
-        "https://repo.parabola.nu/other/$pkgname/${pkgname}_$_brandingver-$_brandingrel.branding.tar.xz.sig"
+        "https://github.com/coadde/$pkgname/raw/master/tarballs/${pkgname}_$_brandingver-$_brandingrel.branding.tar.xz"
+        "https://github.com/coadde/$pkgname/raw/master/tarballs/${pkgname}_$_brandingver-$_brandingrel.branding.tar.xz.sig"
         mozconfig
         $pkgname.desktop
         $pkgname-2.0-lang.patch
@@ -39,7 +39,7 @@ sha256sums=('39c84ce6fa1ed7c30152473e0dcd858df07437e84b29e5a18973db437a28a912'
             'cbc768322c5f3cc9c43594618826349c14d902ba7756d6c16c1d33430d058d3b'
             '46ac418fe26937460a36a593d71c8f5cef1288c9e747cac4ec4ca92db56da45d'
             'ab19d10fbd6258aec37ab5e5efb12429814b2c24a1193284a48dd654311b4e2e'
-            '8055e44151f007dd176d2bc545aa3ce282e9b1a59b35ca1f9f93d1c3e21689cd'
+            '8a8db47b7c6a12c030ccf6b54fa926a02d27199bf6ee5aa0b059ebda33d657ac'
             '746cb474c5a2c26fc474256e430e035e604b71b27df1003d4af85018fa263f4a'
             'bc83b8a51c81a401da2fbe1f7cd0843248c32607d3a51119585df074d797922e'
             '705223f37b0016fe9fcf4e89d7cbed4ae0c192a5e3e1b7055ba0a9577da14077')

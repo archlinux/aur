@@ -1,5 +1,5 @@
 diff --git a/editor/ui/locales/en-US/chrome/region/region.properties b/editor/ui/locales/en-US/chrome/region/region.properties
-index fb6fac676..8d2ae68db 100644
+index fb6fac6..8d2ae68 100644
 --- a/editor/ui/locales/en-US/chrome/region/region.properties
 +++ b/editor/ui/locales/en-US/chrome/region/region.properties
 @@ -5,4 +5,4 @@
@@ -9,7 +9,7 @@ index fb6fac676..8d2ae68db 100644
 -editor.throbber.url=http://www.seamonkey-project.org/
 +editor.throbber.url=about:
 diff --git a/mozilla/browser/locales/en-US/chrome/browser-region/region.properties b/mozilla/browser/locales/en-US/chrome/browser-region/region.properties
-index e078ed528..ce2c5ed4d 100644
+index e078ed5..ce2c5ed 100644
 --- a/mozilla/browser/locales/en-US/chrome/browser-region/region.properties
 +++ b/mozilla/browser/locales/en-US/chrome/browser-region/region.properties
 @@ -3,17 +3,12 @@
@@ -60,7 +60,7 @@ index e078ed528..ce2c5ed4d 100644
 +gecko.handlerService.schemes.ircs.0.name=Freenode Web IRC
 +gecko.handlerService.schemes.ircs.0.uriTemplate=https://webchat.freenode.net
 diff --git a/suite/locales/en-US/chrome/browser/region.properties b/suite/locales/en-US/chrome/browser/region.properties
-index 1534dbf3c..b6377f20e 100644
+index 1534dbf..b6377f2 100644
 --- a/suite/locales/en-US/chrome/browser/region.properties
 +++ b/suite/locales/en-US/chrome/browser/region.properties
 @@ -6,24 +6,13 @@
@@ -95,7 +95,7 @@ index 1534dbf3c..b6377f20e 100644
 -browser.contentHandlers.types.3.uri=http://digg.com/reader/search/%s
 +startup.homepage_override_url=about:
 diff --git a/suite/locales/en-US/chrome/common/region.properties b/suite/locales/en-US/chrome/common/region.properties
-index a0331dc52..4e2142ef6 100644
+index a0331dc..4e2142e 100644
 --- a/suite/locales/en-US/chrome/common/region.properties
 +++ b/suite/locales/en-US/chrome/common/region.properties
 @@ -3,13 +3,13 @@
@@ -118,7 +118,7 @@ index a0331dc52..4e2142ef6 100644
 -app.update.url.details=http://www.seamonkey-project.org/releases/
 +app.update.url.details=about:
 diff --git a/suite/locales/en-US/chrome/mailnews/region.properties b/suite/locales/en-US/chrome/mailnews/region.properties
-index fd56569f1..9b3a8dcc0 100644
+index fd56569..9b3a8dc 100644
 --- a/suite/locales/en-US/chrome/mailnews/region.properties
 +++ b/suite/locales/en-US/chrome/mailnews/region.properties
 @@ -6,9 +6,9 @@
@@ -135,7 +135,7 @@ index fd56569f1..9b3a8dcc0 100644
  # mail.addr_book.mapit_url.format=
  # The mail.addr_book.mapit_url.format should start with the URL of the mapping
 diff --git a/suite/locales/en-US/profile/bookmarks.extra b/suite/locales/en-US/profile/bookmarks.extra
-index e7fd304c7..5308ce51f 100644
+index e7fd304..5308ce5 100644
 --- a/suite/locales/en-US/profile/bookmarks.extra
 +++ b/suite/locales/en-US/profile/bookmarks.extra
 @@ -9,10 +9,9 @@
@@ -153,10 +153,10 @@ index e7fd304c7..5308ce51f 100644
  
  #unfilter emptyLines
 diff --git a/suite/locales/generic/profile/bookmarks.html.in b/suite/locales/generic/profile/bookmarks.html.in
-index 62a9327fc..6726af900 100644
+index 62a9327..badb687 100644
 --- a/suite/locales/generic/profile/bookmarks.html.in
 +++ b/suite/locales/generic/profile/bookmarks.html.in
-@@ -15,37 +15,36 @@ Do Not Edit! -->
+@@ -15,37 +15,24 @@ Do Not Edit! -->
  <DL><p>
      <DT><H3 PERSONAL_TOOLBAR_FOLDER="true" ID="NC:PersonalToolbarFolder">@personal_toolbarfolder@</H3>
      <DL><p>
@@ -165,12 +165,15 @@ index 62a9327fc..6726af900 100644
 -        <DT><A HREF="http://www.mozilla.org/">@mozilla_org@</A>
 -        <DT><A HREF="http://www.mozillazine.org/">@mozillazine@</A>
 -        <DT><A HREF="http://www.mozdev.org/">@mozdev@</A>
-+        <DT><A HREF="https://www.parabola.nu/" ICON="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABL0lEQVQ4jWNgoCcoq16VU1GzygnEBtEVDWuV8GooKFuhWVG3uiM3d5UokG4qr1szAa
-+a5vGbVt4ralacwNDU0rGIrr10VBVG0+lxhwyqVsqqVtRW1q6eD5IvL19oB2V+B+D9QzQu4xtDQVZylVavygRKHqurWOlbUrknKK12qWlCwWLK8elUFA8N/xvLy5VYVtas+gzWDDVi9E2QjT1XdcufymjWpQJt1cXmnvHwVP1DzR7hmIC6vW+kOtpnYQKysW30arrlm9
-+RVi9cFBRfXKJTADympWJZNsQFnN6rUQA1adAQU2SZqBXmUGBtozUDiU1qxQJtl2oCY3kO2l1avCSdYMAsBAWwyM2plkaS4p6eYGOv1YQ0MDB1kGlFWuDChuWKZBlmYQqK5eJU22ZkIAAEIlnQZQkzITAAAAAElFTkSuQmCC">Parabola GNU/Linux-libre</A>
++        <DT><A HREF="https://www.fsf.org/" ICON="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAACXBIWXMAAAsTAAALEwEAmpwYAAADG0lEQVQoFQEQA+/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
++AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQECAAAAAAAAAAAAAAAAAAAA2qOp7tTXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAP///wAAAAAAAOCyt7pUXQcSEgcQDwAAAP
++///wAAAAAAAAD//x9NSDqNhQEBAQQAAAAAAAAAAAAAAAAQJiQGDQ0aPToZPjoAAQEAAAAAAAAAAAABAQEpZV4AAAAAAAAAAAAA////////////////pSIv05KZ////////////////////////////////AAAAAQAAAP///6krNwAAAAAAAPHc3ggSEQcSEQAAAAAAA
++AAAABY3NEGelQAAAAAAAAEBAQEAAAD///+YARAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGDg1g690CBgYAAAABAQEEAAAAAAAAS7etAAAAAAAAwGVtHklFIlJOAAAAAAAAAAAAAAAA+/X2BwYGAAAAAAAABAAAAAAAAB1IQwAAAAAAAAYNDBAmJB1IQwAAAAAAAAAA
++AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAgL//v4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAQEB//7/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAECAv/+/gAAAAAAAAAAAAAAAAA
++AAAAAAAAAAAAAAAAAAAAAAAD////////////////cqK3qzM////////////////////////////////8AAAABAAAA////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGuLjDf9F8oBAAAAAElFTkSuQmCC">Free Software Foundation</A>
      </DL><p>
 -    <DT><H3>@seamonkey_and_mozilla@</H3>
-+    <DT><H3>Parabola GNU/Linux-libre</H3>
++    <DT><H3>Free Software Foundation</H3>
      <DL><p>
 -        <DT><A HREF="http://www.seamonkey-project.org/">@seamonkey_long@</a>
 -        @seamonkey_l10n_long@
@@ -195,21 +198,6 @@ index 62a9327fc..6726af900 100644
 -            <DT><A HREF="http://www.mozillazine.org/">@mozillazine@</A>
 -            <DT><A HREF="http://forums.mozillazine.org/viewforum.php?f=40">@seamonkey_support@</A>
 -        </DL><p>
-+        <DT><A HREF="https://www.parabola.nu/" ICON="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABL0lEQVQ4jWNgoCcoq16VU1GzygnEBtEVDWuV8GooKFuhWVG3uiM3d5UokG4qr1szAa
-+a5vGbVt4ralacwNDU0rGIrr10VBVG0+lxhwyqVsqqVtRW1q6eD5IvL19oB2V+B+D9QzQu4xtDQVZylVavygRKHqurWOlbUrknKK12qWlCwWLK8elUFA8N/xvLy5VYVtas+gzWDDVi9E2QjT1XdcufymjWpQJt1cXmnvHwVP1DzR7hmIC6vW+kOtpnYQKysW30arrlm9
-+RVi9cFBRfXKJTADympWJZNsQFnN6rUQA1adAQU2SZqBXmUGBtozUDiU1qxQJtl2oCY3kO2l1avCSdYMAsBAWwyM2plkaS4p6eYGOv1YQ0MDB1kGlFWuDChuWKZBlmYQqK5eJU22ZkIAAEIlnQZQkzITAAAAAElFTkSuQmCC">Parabola GNU/Linux-libre</A>
-+        <DT><A HREF="https://www.parabola.nu/packages/" ICON="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABL0lEQVQ4jWNgoCcoq16VU1GzygnEBtEVDWuV8GooKFuhWVG3uiM3d5UokG4qr1szAa
-+a5vGbVt4ralacwNDU0rGIrr10VBVG0+lxhwyqVsqqVtRW1q6eD5IvL19oB2V+B+D9QzQu4xtDQVZylVavygRKHqurWOlbUrknKK12qWlCwWLK8elUFA8N/xvLy5VYVtas+gzWDDVi9E2QjT1XdcufymjWpQJt1cXmnvHwVP1DzR7hmIC6vW+kOtpnYQKysW30arrlm9
-+RVi9cFBRfXKJTADympWJZNsQFnN6rUQA1adAQU2SZqBXmUGBtozUDiU1qxQJtl2oCY3kO2l1avCSdYMAsBAWwyM2plkaS4p6eYGOv1YQ0MDB1kGlFWuDChuWKZBlmYQqK5eJU22ZkIAAEIlnQZQkzITAAAAAElFTkSuQmCC">Parabola GNU/Linux-libre Packages</A>
-+        <DT><A HREF="https://wiki.parabola.nu/" ICON="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABL0lEQVQ4jWNgoCcoq16VU1GzygnEBtEVDWuV8GooKFuhWVG3uiM3d5UokG4qr1szAaa5vGbVt4
-+ralacwNDU0rGIrr10VBVG0+lxhwyqVsqqVtRW1q6eD5IvL19oB2V+B+D9QzQu4xtDQVZylVavygRKHqurWOlbUrknKK12qWlCwWLK8elUFA8N/xvLy5VYVtas+gzWDDVi9E2QjT1XdcufymjWpQJt1cXmnvHwVP1DzR7hmIC6vW+kOtpnYQKysW30arrlm9RVi9cFBR
-+fXKJTADympWJZNsQFnN6rUQA1adAQU2SZqBXmUGBtozUDiU1qxQJtl2oCY3kO2l1avCSdYMAsBAWwyM2plkaS4p6eYGOv1YQ0MDB1kGlFWuDChuWKZBlmYQqK5eJU22ZkIAAEIlnQZQkzITAAAAAElFTkSuQmCC">Parabola GNU/Linux-libre Wiki</A>
-+        <DT><A HREF="https://labs.parabola.nu/" ICON="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABL0lEQVQ4jWNgoCcoq16VU1GzygnEBtEVDWuV8GooKFuhWVG3uiM3d5UokG4qr1szAaa5vGbVt4
-+ralacwNDU0rGIrr10VBVG0+lxhwyqVsqqVtRW1q6eD5IvL19oB2V+B+D9QzQu4xtDQVZylVavygRKHqurWOlbUrknKK12qWlCwWLK8elUFA8N/xvLy5VYVtas+gzWDDVi9E2QjT1XdcufymjWpQJt1cXmnvHwVP1DzR7hmIC6vW+kOtpnYQKysW30arrlm9RVi9cFBR
-+fXKJTADympWJZNsQFnN6rUQA1adAQU2SZqBXmUGBtozUDiU1qxQJtl2oCY3kO2l1avCSdYMAsBAWwyM2plkaS4p6eYGOv1YQ0MDB1kGlFWuDChuWKZBlmYQqK5eJU22ZkIAAEIlnQZQkzITAAAAAElFTkSuQmCC">Parabola GNU/Linux-libre Labs</A>
-+    </DL><p>
-+    <DT><H3>Free Software Foundation</H3>
-+    <DL><p>
 +        <DT><A HREF="https://www.fsf.org/" ICON="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAACXBIWXMAAAsTAAALEwEAmpwYAAADG0lEQVQoFQEQA+/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 +AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQECAAAAAAAAAAAAAAAAAAAA2qOp7tTXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAP///wAAAAAAAOCyt7pUXQcSEgcQDwAAAP
 +///wAAAAAAAAD//x9NSDqNhQEBAQQAAAAAAAAAAAAAAAAQJiQGDQ0aPToZPjoAAQEAAAAAAAAAAAABAQEpZV4AAAAAAAAAAAAA////////////////pSIv05KZ////////////////////////////////AAAAAQAAAP///6krNwAAAAAAAPHc3ggSEQcSEQAAAAAAA
