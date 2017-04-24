@@ -2,8 +2,8 @@
 
 _npmname=browser-sync
 _npmver=2.18.8
-pkgname=nodejs-$_npmname
-pkgver=$_npmver
+pkgname="nodejs-${_npmname}"
+pkgver="${_npmver}"
 pkgrel=1
 pkgdesc="Live CSS Reload & Browser Syncing"
 arch=('any')
