@@ -15,7 +15,7 @@ declare -rgA _system_libs=(
   [libpng]=libpng
   #[libvpx]=libvpx     # https://bugs.gentoo.org/show_bug.cgi?id=611394
   [libwebp]=libwebp
-  #[libxml]=libxml2    # https://bugs.archlinux.org/task/29939
+  [libxml]=libxml2
   [libxslt]=libxslt
   [re2]=re2
   [snappy]=snappy
