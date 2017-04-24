@@ -51,8 +51,12 @@ options=(
 )
 source=(
     git+https://github.com/sardemff7/${_gitname}
+    git+https://github.com/sardemff7/libnkutils
+    git+https://github.com/sardemff7/libgwater
 )
 sha256sums=(
+    SKIP
+    SKIP
     SKIP
 )
 
@@ -63,7 +67,10 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}"/${_pkgdir}
-    git submodule update --init
+    git submodule init
+    git config submodule.libnkutils.url "${srcdir}/libnkutils"
+    git config submodule.libgwater.url "${srcdir}/libgwater"
+    git submodule update
 }
 
 build() {

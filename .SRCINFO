@@ -30,6 +30,10 @@ pkgbase = eventd-git
 	conflicts = eventd
 	options = !strip
 	source = git+https://github.com/sardemff7/eventd
+	source = git+https://github.com/sardemff7/libnkutils
+	source = git+https://github.com/sardemff7/libgwater
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = eventd-git
