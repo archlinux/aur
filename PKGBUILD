@@ -18,13 +18,13 @@ fi
 
 pkgname=junest-git
 pkgver=6.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The Arch Linux based distro that runs upon any Linux distros without root access"
 arch=('any')
 url="http://fsquillace.github.io/junest-site/"
 license=('GPL')
 groups=()
-depends=('yaourt' 'pacman' 'sudo-fake')
+depends=('yaourt' 'pacman')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
