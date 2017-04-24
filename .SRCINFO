@@ -1,7 +1,7 @@
 pkgbase = dcj
 	pkgdesc = Google's Distributed Code Jam testing tool
 	pkgver = 20150611
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.google.com/codejam
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = dcj
 	source = https://code.google.com/codejam/contest/static/dcj_linux.tar.bz
 	source = dcj.sh
 	sha256sums = SKIP
-	sha256sums = 3a44e0d4897b7951ac62ae99cfd87d0ad3e61fbfa0e2beb4390789e6f4e38fe0
+	sha256sums = 3432f95e1b0cbb47e6a36f56e23c9c31f307e60d04490123d89c9f8bd11daf65
 
 pkgname = dcj
 
