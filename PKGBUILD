@@ -5,20 +5,22 @@
 
 _basename=util-linux
 pkgname=${_basename}-aes
-_basever=2.27
-pkgver=${_basever}.1
+_basever=2.29
+pkgver=${_basever}.2
 pkgrel=1
-aneurysma=${pkgver}-20151110
+aneurysma=${pkgver}
 
 pkgdesc="Miscellaneous system utilities for Linux, with loop-AES support"
 url="http://sourceforge.net/projects/loop-aes/"
 
+validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284') # Karel Zak
 license=('GPL2')
+
 arch=('any')
 groups=('base')
 
 options=('strip' 'debug' '!libtool')
-depends=('pam' 'shadow' 'coreutils' 'libsystemd' 'glibc' 'zlib')
+depends=('pam' 'shadow' 'coreutils' 'libsystemd' 'glibc' 'zlib' 'git')
 
 provides=('eject' 'zramctl' "${_basename}=${pkgver}" "lib${_basename}=${pkgver}" "${_basename}-ng=${pkgver}" 'libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so')
 replaces=('eject' 'zramctl' "${_basename}" "lib${_basename}" "${_basename}-ng" "${_basename}-ng-aes")
@@ -27,15 +29,26 @@ conflicts=(${replaces[*]})
 install=${pkgname}.install
 makedepends=('systemd' 'python' 'autoconf' 'automake')
 
-source=("https://www.kernel.org/pub/linux/utils/util-linux/v${pkgver%.?}/${_basename}-${pkgver}.tar.xz"
-#  "https://www.kernel.org/pub/linux/utils/util-linux/v${pkgver%.?}/${_basename}-${pkgver}.tar."{xz,sign}
+source=(
+  "https://www.kernel.org/pub/linux/utils/util-linux/v${_basever}/${_basename}-${pkgver}.tar."{xz,sign}
   pam-common::"https://projects.archlinux.org/svntogit/packages.git/plain/trunk/pam-common?h=packages/${_basename}"
   pam-login::"https://projects.archlinux.org/svntogit/packages.git/plain/trunk/pam-login?h=packages/${_basename}"
   pam-su::"https://projects.archlinux.org/svntogit/packages.git/plain/trunk/pam-su?h=packages/${_basename}"
-  "http://loop-aes.sourceforge.net/updates/${_basename}-${aneurysma}.diff.bz2"
+  util-linux.sysusers::"https://git.archlinux.org/svntogit/packages.git/plain/trunk/util-linux.sysusers?h=packages/${_basename}"
+  0001-sfdisk-support-empty-label-use-case.patch::"https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-sfdisk-support-empty-label-use-case.patch?h=packages/${_basename}"
+#  "http://loop-aes.sourceforge.net/updates/${_basename}-${aneurysma}.diff.bz2"
 #  "http://loop-aes.sourceforge.net/updates/${_basename}-${aneurysma}.diff.bz2"{,.sign}
-#  ${_basename}-${aneurysma}.diff
+  ${pkgname}.sysusers
+  ${pkgname}.modules
+  ${_basename}-${aneurysma}.diff
 )
+
+prepare() {
+  cd "${srcdir}/${_basename}-${pkgver}"
+
+  msg "Patching ${_basename} (1/1)"
+  patch -Np1 -i "${srcdir}/0001-sfdisk-support-empty-label-use-case.patch"
+}
 
 build() {
   cd "${srcdir}/${_basename}-${pkgver}"
@@ -60,7 +73,7 @@ build() {
     --enable-write \
     --enable-mesg \
     --enable-partx \
-    --enable-libmount-force-mountinfo \
+    --disable-tailf \
     --with-python=3
 
   msg "Starting make"
@@ -72,19 +85,14 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  cd "${pkgdir}"
-  
-  # enable modules
-  cat > "${srcdir}/${pkgname}.modules" <<EOF
-loop
-aes-i586
-cryptoloop
-EOF
-
-  [ -d /etc/modules-load.d ] && install -Dm644 "${srcdir}/${pkgname}.modules" "${pkgdir}/etc/modules-load.d/${pkgname}.conf"
-
   # setuid chfn and chsh
   chmod 4755 "${pkgdir}"/usr/bin/{newgrp,ch{sh,fn}}
+
+  # install modules
+  install -Dm644 "${srcdir}/${pkgname}.modules" "${pkgdir}/etc/modules-load.d/${pkgname}.conf"
+
+  # install sysusers
+  install -Dm644 "${srcdir}/util-linux.sysusers" "${pkgdir}/usr/lib/sysusers.d/util-linux.conf"install -Dm644 "${srcdir}/${pkgname}.modules" "${pkgdir}/etc/modules-load.d/${pkgname}.conf"
 
   # install PAM files for login-utils
   install -Dm644 "${srcdir}/pam-common" "${pkgdir}/etc/pam.d/chfn"
@@ -96,6 +104,7 @@ EOF
   # TODO(dreisner): offer this upstream?
   sed -i '/ListenStream/ aRuntimeDirectory=uuidd' "$pkgdir/usr/lib/systemd/system/uuidd.socket"
 
+  # adjust for usrmove
   # TODO(dreisner): fix configure.ac upstream so that this isn't needed
   cd "${pkgdir}"
   mv {,usr/}sbin/* usr/bin
@@ -104,9 +113,13 @@ EOF
   # DO NOT create libutil-linux split : The AUR does not support split packages!
 }
 
-md5sums=('3cd2698d1363a2c64091c2dadc974647'
+md5sums=('63c40c2068fcbb7e1d5c1d281115d973'
+         'SKIP'
          'a31374fef2cba0ca34dfc7078e2969e4'
          '4368b3f98abd8a32662e094c54e7f9b1'
          'fa85e5cce5d723275b14365ba71a8aad'
-         '2e9ab9fe6f7f5065fc5fa0e38e1f7225'
-)
+         'dfc9904f67ebc54bb347ca3cc430ef2b'
+         '6d2e3915124938577f0ff18ef701c87f'
+         'dfc9904f67ebc54bb347ca3cc430ef2b'
+         'a10bfcaff767a4cb3066106bfd4ea30b'
+         'b78b4fd5d0b4e22724a1df660e0bb4e2')
