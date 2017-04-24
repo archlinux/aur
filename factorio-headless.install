@@ -8,7 +8,7 @@ post_install() {
     # create empty game
     if [[ ! -f "$SAVE_FILE" ]]; then
         echo "Generating initial save file: $SAVE_FILE"
-        su - factorio -s /bin/sh -c "factorio --create '$SAVE_FILE' 2>&1 >/dev/null"
+        su - factorio -s /bin/bash -c "mkdir -p ~/.factorio && factorio --create '$SAVE_FILE' &>/dev/null"
     fi
 }
 
