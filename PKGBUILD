@@ -41,7 +41,7 @@ pkgver() {
 package() {
   #  uncomment this line to remove these
   #  rm -rf firefox/{extensions,plugins,searchplugins}
-  install -Dm644 "${pkgdir}"/{usr/{bin,share/{applications,pixmaps}},opt}
+  install -d "${pkgdir}"/{usr/{bin,share/{applications,pixmaps}},opt}
   cp -r firefox "${pkgdir}/opt/firefox-${_version}"
 
   ln -s "/opt/firefox-${_version}/firefox" \
