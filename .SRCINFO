@@ -7,7 +7,7 @@ pkgbase = libsdrplay
 	arch = x86_64
 	license = custom:EULA
 	depends = libusb>=1.0
-	source = local://SDRplay_RSP_API-Linux-2.10.1.run
+	source = http://www.sdrplay.com/software/SDRplay_RSP_API-Linux-2.10.1.run
 	md5sums = cb18ef3510e9b788a8d2a918e35d62c8
 
 pkgname = libsdrplay
