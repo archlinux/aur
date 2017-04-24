@@ -5,37 +5,45 @@
 
 pkgbase='vte3-notification'
 pkgname=("${pkgbase}" 'vte-notification-common')
-pkgver=0.48.2
+pkgver=0.48.2+2+g837cce9c
 pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora patches'
 arch=('i686' 'x86_64')
 url='https://wiki.gnome.org/Apps/Terminal/VTE'
 license=('LGPL')
 depends=('gtk3' 'pcre2' 'gnutls')
-makedepends=('intltool' 'gobject-introspection' 'gtk-doc' 'vala' 'gperf' 'glade')
+makedepends=('git' 'intltool' 'gobject-introspection' 'gtk-doc' 'vala' 'gperf' 'glade')
 options=('!emptydirs')
 # Fedora patches: http://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
 _frepourl='http://pkgs.fedoraproject.org/cgit/rpms/vte291.git'
 _frepobranch='f26'
 _fpatchfile='vte291-command-notify-scroll-speed.patch'
+_vtecommit=837cce9ced6bfe317cb97aeca171001da92cb3a1
 source=(
-	"https://download.gnome.org/sources/vte/${pkgver::4}/vte-${pkgver}.tar.xz"
+	"git://git.gnome.org/vte#commit=$_vtecommit"
 	"${_fpatchfile}::${_frepourl}/plain/${_fpatchfile}?h=${_frepobranch}"
 	'add-zsh-notfication-support.patch'
 )
-sha256sums=('c278b301edfe38b43baec1bccc86e225dacea5b670a96ca7ea55ca9a4b030690'
+sha256sums=('SKIP'
             'd32201c04d9f688195725bf76d7c618ae24178a2578da01c507d8216f082cf8e'
             '150a151404ca565f70259044661b2ef5cda43142ca677e7da324614eef8cf45a')
 
+pkgver() {
+	cd vte
+	git describe --tags | sed 's/-/+/g'
+}
+
 prepare () {
-	cd "vte-${pkgver}"
+	cd "vte"
 
 	patch -p1 -i "../${_fpatchfile}"
 	patch -p1 -i '../add-zsh-notfication-support.patch'
+
+	NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-	cd "vte-${pkgver}"
+	cd "vte"
 	./configure --prefix='/usr' --sysconfdir='/etc' \
 		--libexecdir='/usr/lib/vte' \
 		--localstatedir='/var' --disable-static \
@@ -48,7 +56,8 @@ package_vte3-notification(){
 	depends+=('vte-notification-common')
 	provides=("vte3=${pkgver}")
 	conflicts=('vte3')
-	cd "vte-${pkgver}"
+
+	cd "vte"
 	make DESTDIR="${pkgdir}" install
 
 	rm "${pkgdir}/etc/profile.d/vte.sh"
@@ -60,7 +69,7 @@ package_vte-notification-common() {
 	arch=('any')
 	provides=("vte-common=${pkgver}")
 	conflicts=('vte-common')
-	cd "vte-${pkgver}"
+	cd "vte"
 
 	install -Dm644 'src/vte.sh' "${pkgdir}/etc/profile.d/vte.sh"
 }
