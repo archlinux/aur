@@ -13,7 +13,7 @@ license=('custom')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 options=(staticlibs !strip !buildflags)
-source=("http://downloads.sourceforge.net/opencore-amr/fdk-aac-${pkgver}.tar.gz")
+source=("https://downloads.sourceforge.net/opencore-amr/fdk-aac-${pkgver}.tar.gz")
 sha256sums=('2164592a67b467e5b20fdcdaf5bd4c50685199067391c6fcad4fa5521c9b4dd7')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
