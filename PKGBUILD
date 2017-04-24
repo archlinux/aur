@@ -9,8 +9,6 @@ pkgdesc="Owlboy is a 'hi-bit' adventure game, where you can fly and explore a br
 url="http://www.owlboygame.com/"
 license=('custom')
 arch=('i686' 'x86_64')
-depends_x86_64=('libogg' 'libvorbis' 'openal' 'sdl2')
-depends_i686=('lib32-libogg' 'lib32-libvorbis' 'lib32-openal' 'lib32-sdl2')
 optdepends=(
     'firejail: Automatically sandbox this application from your OS'
 )
