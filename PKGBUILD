@@ -1,7 +1,7 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-uasf-git
-pkgver=v0.14.0.uasfsegwit2.r0.g2e157425a
+pkgver=v0.14.1.uasfsegwit0.3.r0.g1809845d9
 pkgrel=1
 pkgdesc='EXPERIMENTAL! Signal support for BIP148, a User Activated Soft Fork (UASF) activating segwit'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=('db4.8: Wallet portability/compatibility w/official binaries')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin-qt.install
-source=("git+${url}.git#branch=0.14"
+source=("git+${url}.git#branch=0.14-BIP148"
 				'bitcoin-qt.install')
 sha256sums=('SKIP'
             'ebf7090ca1202e2c2ccd1aa5bb03e6ac911c458141a1cedda9b41f9c26c2602c')
