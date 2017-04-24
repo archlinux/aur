@@ -1,6 +1,6 @@
 pkgbase = cower-git
 	pkgdesc = A simple AUR agent with a pretentious name
-	pkgver = 12.8.g0f374c2
+	pkgver = 17
 	pkgrel = 1
 	url = http://github.com/falconindy/cower
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = cower-git
 	makedepends = git
 	makedepends = perl
 	depends = curl
-	depends = openssl
 	depends = pacman
 	depends = yajl
 	provides = cower

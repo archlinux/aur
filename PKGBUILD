@@ -1,13 +1,13 @@
 # Maintainer: Dave Reisner <d@falconindy.com>
 
 pkgname=cower-git
-pkgver=12.8.g0f374c2
+pkgver=17
 pkgrel=1
 pkgdesc="A simple AUR agent with a pretentious name"
 arch=('i686' 'x86_64')
 url="http://github.com/falconindy/cower"
 license=('MIT')
-depends=('curl' 'openssl' 'pacman' 'yajl' )
+depends=('curl' 'pacman' 'yajl' )
 makedepends=('git' 'perl')
 conflicts=('cower')
 provides=('cower')
