@@ -11,7 +11,7 @@
 # x86_64: all from i686 and ffmpeg-full-git
 
 pkgname=mpv-full-git
-pkgver=0.24.0.r276.g591d99a988
+pkgver=0.25.0.r7.g809d160c1e
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (Git version with all possible libs)'
 arch=('i686' 'x86_64')
@@ -150,11 +150,9 @@ build() {
         --enable-gl \
         \
         --enable-vaapi-hwaccel \
-        --enable-vaapi-hwaccel-new \
         --disable-videotoolbox-hwaccel \
         --disable-videotoolbox-gl \
         --enable-vdpau-hwaccel \
-        --enable-vdpau-hwaccel-new \
         --disable-d3d-hwaccel \
         "$_cuda" \
         \
