@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-lts-knock
 _pkgbasever=4.9-gnu
-_pkgver=4.9.23-gnu
+_pkgver=4.9.24-gnu
 _knockpatchver=4.9_1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -64,7 +64,7 @@ source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/l
         '0008-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch')
 sha512sums=('885eb0a7fab45dc749acb4329b4330a43b704df2d5f2f5aac1811503c132ca53ca49452f9b1cc80b0826c7a4962dbe4937aecb697aa823b2543ba2cabc704816'
             'SKIP'
-            'd95e568894ab16f16b9b24aed819a9f794949ef62b06be55aac3ac39f9292daec37355bea833ead8b83d0a8571c2c54ecbc4139e29f458456896797ee78c2943'
+            'be50b9b7c607bd61571a2d2451dec26a6451be403905758d0635dd8a580d6c79dc45c9a37fe96ad8e72a04f0be9495a65b166857c4b13af69fb89ac5170525f3'
             'SKIP'
             'a00e9fc0b930021242b231dfdd15160eaefbfad4aaa0ba0426bb9a25dd14acc1825cbb1bc9c680a6d43baca797591dc219e232862f566457752ff378e03600a3'
             'SKIP'
@@ -121,10 +121,10 @@ prepare() {
   patch -p1 -i "${srcdir}/tcp_stealth_${_knockpatchver}.diff"
 
   if [ "${CARCH}" = "armv7h" ]; then
-    # RCN patch (CM3 firmware deblobbed, AUFS and RT removed)
-    # Note: For stability reasons, AUFS and RT have been removed in the RCN patch.
-    # We are supporting AUFS in linux-libre-pck through PCK patch and RT through its official
-    # patch in linux-libre-rt. See https://wiki.parabola.nu/PCK for further details about PCK.
+    # RCN patch (CM3 firmware deblobbed and AUFS removed)
+    # Note: For stability reasons, AUFS has been removed in the RCN patch.
+    # We are supporting AUFS in linux-libre-pck through PCK patch.
+    # See https://wiki.parabola.nu/PCK for further details.
     git apply -v "${srcdir}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
 
     # ALARM patches
