@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Boyko <brdcom@yandex.ru>
 pkgname=texlive-csltex
 _pkgname=csltex
-pkgver=1.0
+pkgver=2007.0712
 pkgrel=1
 pkgdesc="A LaTeX package for typing of Church Slavonic texts in the standard HIP (HIP-9)"
 arch=('any')
