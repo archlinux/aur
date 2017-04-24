@@ -38,8 +38,8 @@ _urlbase="https://dist.torproject.org/torbrowser/${pkgver}/${pkgname}-${_archstr
 _localetor() {
 
 	#
-	# Checks if a `tor-browser` package exists for current locale; a language can be chosen
-	# by giving a `TORBROWSER_PKGLANG` environment variable to `makepkg`, for instance:
+	# Checks if a `tor-browser` package exists for current locale; a different language can be
+	# chosen by giving a `TORBROWSER_PKGLANG` environment variable to `makepkg`, for instance:
 	#
 	#	TORBROWSER_PKGLANG='en-US' makepkg
 	#
