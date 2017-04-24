@@ -1,7 +1,7 @@
 pkgbase = combustion
 	pkgdesc = Sleek, modern web interface for Transmission
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Secretmapper/combustion
 	arch = any
 	license = MIT

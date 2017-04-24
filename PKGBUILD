@@ -1,7 +1,7 @@
 # Maintainer: gato_lento <vukk.euob at gmail>
 pkgname=combustion
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Sleek, modern web interface for Transmission'
 arch=('any')
 url='https://github.com/Secretmapper/combustion'
@@ -10,9 +10,9 @@ depends=('transmission-cli')
 makedepends=('git')
 
 source=(
-  "git+https://github.com/Secretmapper/combustion.git"
-  "combustion.sh"
-  "combustion.conf"
+  git+https://github.com/Secretmapper/combustion.git
+  combustion.sh
+  combustion.conf
 )
 
 sha1sums=(
@@ -22,11 +22,11 @@ sha1sums=(
 )
 
 package() {
-  install -D -m644 "$srcdir/combustion/LICENSE" "$pkgdir/usr/share/licenses/combustion/LICENSE"
-  install -D -m755 "$srcdir/combustion.sh" "$pkgdir/etc/profile.d/combustion.sh"
-  install -D -m644 "$srcdir/combustion.conf" "$pkgdir/usr/lib/systemd/system/transmission.service.d/combustion.conf"
-  cd "$srcdir/combustion"
+  install -D -m755 $srcdir/combustion.sh $pkgdir/etc/profile.d/combustion.sh
+  install -D -m644 $srcdir/combustion.conf $pkgdir/usr/lib/systemd/system/transmission.service.d/combustion.conf
+  cd $srcdir/combustion
   git checkout v${pkgver}
-  cp -r "$srcdir/combustion" "$pkgdir/usr/share/"
-  rm -rf "$pkgdir/usr/share/combustion/.git"
+  install -D -m644 $srcdir/combustion/LICENSE $pkgdir/usr/share/licenses/combustion/LICENSE
+  cp -r $srcdir/combustion $pkgdir/usr/share/
+  rm -rf $pkgdir/usr/share/combustion/{LICENSE,.git}
 }
