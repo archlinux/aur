@@ -16,7 +16,7 @@
 
 pkgname=libsdrplay
 pkgver=2.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Modules for the SDRplay receiver"
 arch=('i686' 'x86_64')
 url="http://www.sdrplay.com"
@@ -47,8 +47,8 @@ package() {
 		"${pkgdir}/usr/lib/libmirsdrapi-rsp.so.${_apivers}"
 	install -D -m644 mirsdrapi-rsp.h \
 		"${pkgdir}/usr/include/mirsdrapi-rsp.h"
-	install -D -m644 66-mirics.rules "\
-		${pkgdir}/etc/udev/rules.d/66-mirics.rules"
+	install -D -m644 66-mirics.rules \
+		"${pkgdir}/etc/udev/rules.d/66-mirics.rules"
 	
 	cd "${pkgdir}/usr/lib"
 	ln -s libmirsdrapi-rsp.so.${_apivers} libmirsdrapi-rsp.so.2
