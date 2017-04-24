@@ -11,7 +11,7 @@ url="https://www.browsersync.io/"
 license=('Apache')
 depends=('nodejs' 'npm')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-noextract=('${_npmname}-${_npmver}.tgz')
+noextract=("${_npmname}-${_npmver}.tgz")
 sha1sums=('2fb4de253798d7cfb839afb9c2f801968490cec2')
 
 package() {
