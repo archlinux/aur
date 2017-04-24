@@ -2,13 +2,13 @@
 
 pkgbase='swift-git'
 pkgname=('swift-im-git' 'swiften-git')
-pkgver=3.0beta2.r116.gf377207
+pkgver=4.0beta2.r191.gf93289408
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://swift.im/"
 license=('GPL3')
 makedepends=('git' 'python2' 'openssl' 'boost' 'qt5-base' 'qt5-multimedia'
-             'qt5-webkit' 'qt5-x11extras' 'qt5-tools')
+             'qt5-webkit' 'qt5-x11extras' 'qt5-tools' 'qt5-svg')
 source=("git://swift.im/swift")
 md5sums=('SKIP')
 
@@ -28,8 +28,8 @@ build() {
 
 package_swift-im-git() {
   pkgdesc='XMPP client written in C++ with Qt and Swiften'
-  depends=("swiften-git=$pkgver" 'qt5-base' 'qt5-multimedia' 'qt5-webkit' 'qt5-x11extras')
-  optdepends=('qt5-svg: for SVG avatars')
+  depends=("swiften-git=$pkgver" 'qt5-base' 'qt5-multimedia' 'qt5-webkit'
+           'qt5-x11extras' 'qt5-svg')
   provides=('swift-im=3.0')
   conflicts=('swift-im')
 
