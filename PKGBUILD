@@ -9,7 +9,7 @@ url="https://sourceforge.net/projects/geanyhighlightselectedword/"
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('geany')
-source=('https://downloads.sourceforge.net/project/geanyhighlightselectedword/GeanyHighlightSelectedWord_2016-08-01T00-53-19.zip')
+source=("https://downloads.sourceforge.net/project/geanyhighlightselectedword/GeanyHighlightSelectedWord_2016-08-01T00-53-19.zip")
 md5sums=('91b9a703d3d0e6ec22c22908ce6e4e9b')
 
 build() {
