@@ -8,7 +8,7 @@
 # Based on community/morituri and aur/morituri-git PKGBUILDs
 
 pkgname=whipper-git
-pkgver=0.4.0.r22.ga1eb337
+pkgver=0.4.0.r50.g223142f
 pkgrel=1
 pkgdesc="A Unix CD ripper aiming for accuracy over speed -- forked from morituri"
 arch=('any')
@@ -19,10 +19,6 @@ depends=(
     'cddb-py'                       # for showing but not using disc info if not in MusicBrainz (issue #28)
     'cdparanoia'                    # for the actual ripping
     'cdrdao'                        # for session, TOC, pregap, and ISRC extraction
-    'gstreamer0.10-base'            # for encoding
-    'gstreamer0.10-base-plugins'    # for appsink
-    'gstreamer0.10-good-plugins'    # for wav encoding
-    'gstreamer0.10-python'          # for encoding
     'libsndfile'                    # for reading wav files (pulls in flac, also required for reading flac files)
     'python2-musicbrainzngs'        # for metadata lookup
     'python2-pycdio'                # for storing drive identification in config file
