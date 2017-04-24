@@ -1,7 +1,7 @@
 # Maintainer: BigEagle < bigeagle(at)xdlinux(dot)info >
 
 pkgname=gnome-shell-extension-kimpanel-git
-pkgver=20140419
+pkgver=20170329
 pkgrel=1
 pkgdesc="KDE's kimpanel implementation for GNOME Shell, now support fcitx"
 arch=("i686" "x86_64")
