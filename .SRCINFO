@@ -1,0 +1,16 @@
+pkgbase = nanovg-git
+	pkgdesc = NanoVG is small antialiased vector graphics rendering library for OpenGL.
+	pkgver = r324.c75fc0b
+	pkgrel = 1
+	url = https://github.com/memononen/nanovg
+	arch = x86_64
+	license = ZLIB
+	makedepends = git
+	makedepends = premake
+	provides = nanovg
+	conflicts = nanovg
+	source = nanovg::git+https://github.com/memononen/nanovg
+	md5sums = SKIP
+
+pkgname = nanovg-git
+
